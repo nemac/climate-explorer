@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+        <meta name="apple-mobile-web-app-capable" content="yes">
+        <title>Regional Data Viewer</title>
+        <style type="text/css">
+            /* For full screen, use these styles */
+            html, body, #map {
+                margin: 0;
+                width: 100%;
+                height: 100%;
+            }
+            
+
+            /* For a container-bound implementation, modify this style 
+            #map {
+                width: 600px;
+                height: 400px;
+            }
+            */
+        </style>
+        <link rel="stylesheet" type="text/css" href="js/plugins/drawerpanel/jquery.drawerpanel.css" />        
+    </head>
+    <body>
+        <div id="map"></div>
+        <div id="panelLeft">
+            <div id="contentsArea">
+                <input id="contentsInput" type="text">
+                <button onclick="changeRightPanelContents()">Change</button>
+            </div>
+        </div>
+        <div id="panelRight">
+            Right panel
+        </div>
+        <script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+        <script src="//ajax.googleapis.com/ajax/libs/jqueryui/1.10.3/jquery-ui.min.js"></script>
+        <script src="libs/OpenLayers212/OpenLayers.js"></script>
+        <script src="libs/mustache/mustache.js"></script>
+        <script src="js/rdv.js"></script>
+        <script src="js/plugins/drawerpanel/jquery.drawerpanel.js"></script>
+        <script type="text/javascript">
+           $(function(){
+              $( '#map' ).regionalDataViewer();
+
+              $( '#panelLeft' ).drawerPanel({
+                  state: 'closed',
+                  position: 'left',
+                  title: 'Change Contents of Right Panel',
+                  resizable: true,
+                  width: 200,
+              });
+
+              $( '#panelRight' ).drawerPanel({
+                  position: 'right',
+                  width: 400,
+                  color: '#fee',
+                  openerImage: 'static/icons/ViewData.png'
+              });
+              
+           });
+           
+           function changeRightPanelContents() {
+               $( '#panelRight' ).drawerPanel( 'setContents', $( '#contentsInput' ).val() );
+           }
+        </script>
+    </body>
+</html>
