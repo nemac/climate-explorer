@@ -1,0 +1,14 @@
+/* For full screen, use these styles */
+html, body, #map {
+    margin: 0;
+    width: 100%;
+    height: 100%;
+}
+
+
+/* For a container-bound implementation, modify this style 
+#map {
+    width: 600px;
+    height: 400px;
+}
+*/
