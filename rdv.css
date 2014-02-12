@@ -12,3 +12,59 @@ html, body, #map {
     height: 400px;
 }
 */
+
+.station-detail {
+    margin-top: 5px;
+    border: 1px #000 solid;
+    height: 200px;
+    padding: 7px;
+}
+
+.station-title {
+    width: 92%;
+    float: left;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    -o-text-overflow: ellipsis;
+    white-space: nowrap;
+    margin-bottom: 3px;
+}
+
+.station-name {
+    font-size: medium;
+    font-weight: bold;
+}
+
+.station-coords {
+    font-size: small;
+    font-style: italic;
+}
+
+.remove {
+    float: right;
+    display: none;
+    width: 16px;
+    height: 16px;
+    background-image: url('static/remove.png');
+    background-position: center;
+    background-repeat: no-repeat;
+    margin: 3px 3px 0 0;
+    cursor: pointer;
+}
+
+.station-detail:hover .remove {
+    display: inline;
+}
+
+.clr {
+    clear:both;
+}
+
+.graph {
+    border: 1px #000 dashed;
+    height: 170px;
+}
+
+.label {
+    position: absolute;
+}

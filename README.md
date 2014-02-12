@@ -12,3 +12,6 @@ and displays real-time data from each station selected.
 
 ### 0.1
 - Document
+
+## Credits
+- Remove element icon is "Cross Icon" from FamFamFam Silk Icons

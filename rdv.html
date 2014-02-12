@@ -15,7 +15,8 @@
         <script src="./bower_components/drawerpanel/jquery.drawerpanel.js"></script>
         <link rel="stylesheet" type="text/css" href="./bower_components/drawerpanel/jquery.drawerpanel.css" />
         <!-- maplite - TODO: move later -->
-        <script src="http://openlayers.org/api/OpenLayers.js"></script>
+        <!-- NOTE: the version of OpenLayers used Matters - some conflict with drawerPanel for some reason -->
+        <script src="lib/OpenLayers212/OpenLayers.js"></script>
         <script src="map/jquery.maplite.js"></script>
         <link rel="stylesheet" type="text/css" href="map/jquery.maplite.css" />
 
@@ -25,8 +26,6 @@
     </head>
     <body>
         <div id="map"></div>
-        <div id="stationDetail">
-            
-        </div>
+        <div id="stationDetail"></div>
     </body>
 </html>
