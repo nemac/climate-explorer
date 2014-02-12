@@ -1,21 +1,24 @@
 $(function(){
-    // Init
-    
-    
     $( '#stationDetail' ).drawerPanel({
         state: 'closed',
         position: 'right',
         width: 400,
         color: '#fee'
     });
-    
-    
+
     $( '#map' ).mapLite({
         layers: [
             new MapliteDataSource(
-                'static/stations.json',
-                'Stations',
-                'blue',
+                'static/stations1.json',
+                'Stream Gauges',
+                $.nemac.MARKER_COLORS.BLUE,
+                'EPSG:4326',
+                clickPoint
+            ),
+            new MapliteDataSource(
+                'static/stations2.json',
+                'Precipitation Gauges',
+                $.nemac.MARKER_COLORS.GREEN,
                 'EPSG:4326',
                 clickPoint
             )

@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "dependencies": {
     "jquery": "~2.1.0",
-    "drawerpanel": "~1.0.2",
+    "drawerpanel": "~1.0.4",
     "maplite": "../maplite#~1.0.0"
   },
   "main": "rdv.js",
