@@ -1,3 +1,4 @@
+var BUILD_BASE_PATH = 'build/asset/';
 var ID_DELIMITER = '-';
 var TEMPLATE_LOCATION = 'detail.tpl.html';
 var DETAIL_TEMPLATE;
@@ -21,7 +22,7 @@ $(function(){
         width: 400,
         minWidth: 400,
         maxWidth: 600,
-        templateLocation: 'build/static/tpl/drawerpanel/panel.tpl.html'
+        templateLocation: BUILD_BASE_PATH + 'tpl/panel.tpl.html'
     });
 });
 
@@ -42,7 +43,8 @@ function deployMap() {
                 'EPSG:4326',
                 clickPoint
             )
-        ]
+        ],
+        iconPath: BUILD_BASE_PATH + 'img/'
     });
 }
 

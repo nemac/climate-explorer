@@ -19,7 +19,7 @@ npm i -D gulp
 
 Required for rdv:
 ```javascript
-npm i -D gulp-util gulp-concat gulp-bower gulp-uglify streamqueue
+npm i -D gulp-util gulp-concat gulp-bower gulp-uglify streamqueue gulp-filter gulp-flatten gulp-minify-css
 ```
 
 Once the environment is setup, installing is as simple as typing
@@ -27,6 +27,12 @@ Once the environment is setup, installing is as simple as typing
 gulp
 ```
 on the command line, and the source is built!
+
+If the library source needs to be updated, run
+```javascript
+bower update
+```
+before build.
 
 ## Todo
 
