@@ -20,7 +20,8 @@ $(function(){
         resizable: true,
         width: 400,
         minWidth: 400,
-        maxWidth: 600
+        maxWidth: 600,
+        templateLocation: 'build/static/tpl/drawerpanel/panel.tpl.html'
     });
 });
 
@@ -30,14 +31,14 @@ function deployMap() {
             new MapliteDataSource(
                 'static/stations1.json',
                 'Stream Gauges',
-                $.nemac.MARKER_COLORS.BLUE,
+                MARKER_COLORS.BLUE,
                 'EPSG:4326',
                 clickPoint
             ),
             new MapliteDataSource(
                 'static/stations2.json',
                 'Precipitation Gauges',
-                $.nemac.MARKER_COLORS.GREEN,
+                MARKER_COLORS.GREEN,
                 'EPSG:4326',
                 clickPoint
             )

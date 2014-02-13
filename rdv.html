@@ -5,27 +5,18 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
         <meta name="apple-mobile-web-app-capable" content="yes">
         <title>Regional Data Viewer</title>
-
-        <!-- TODO: include the following using some dependency resolver -->
-        <!-- common -->
-        <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
-        <script src="//ajax.googleapis.com/ajax/libs/jqueryui/1.10.4/jquery-ui.min.js"></script>        
-        <!-- drawerpanel -->
-        <script src="./bower_components/mustache/mustache.js"></script>
-        <script src="./bower_components/drawerpanel/jquery.drawerpanel.js"></script>
-        <link rel="stylesheet" type="text/css" href="./bower_components/drawerpanel/jquery.drawerpanel.css" />
-        <!-- maplite - TODO: move later -->
-        <!-- NOTE: the version of OpenLayers used Matters - some conflict with drawerPanel for some reason -->
-        <script src="lib/OpenLayers212/OpenLayers.js"></script>
-        <script src="map/jquery.maplite.js"></script>
-        <link rel="stylesheet" type="text/css" href="map/jquery.maplite.css" />
-
-        <!-- Includes -->
+        
+        <!-- TODO: change CSS to stylus -->
+        <link rel="stylesheet" type="text/css" href="./bower_components/drawerpanel/drawerpanel.css" />
+        <link rel="stylesheet" type="text/css" href="./bower_components/maplite/maplite.css" />
         <link rel="stylesheet" type="text/css" href="rdv.css" />
-        <script src="rdv.js"></script>
     </head>
     <body>
         <div id="map"></div>
         <div id="stationDetail"></div>
+        
+        <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+        <script src="//ajax.googleapis.com/ajax/libs/jqueryui/1.10.4/jquery-ui.min.js"></script>
+        <script src="build/app.js"></script>
     </body>
 </html>

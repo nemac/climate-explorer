@@ -8,6 +8,26 @@ and displays real-time data from each station selected.
 - mapLite
 - drawerPanel
 
+Building requires node, npm
+
+Initial setup (to get bower and gulp):
+```javascript
+npm i -g bower
+npm i -g gulp
+npm i -D gulp
+```
+
+Required for rdv:
+```javascript
+npm i -D gulp-util gulp-concat gulp-bower gulp-uglify streamqueue
+```
+
+Once the environment is setup, installing is as simple as typing
+```javascript
+gulp
+```
+on the command line, and the source is built!
+
 ## Todo
 
 ### 0.1
