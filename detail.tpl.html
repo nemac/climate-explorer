@@ -1,10 +1,11 @@
 <div id="{{id}}-detail" class="station-detail">
     <div class="station-header">
         <div class="station-title">
+            <span class="point-index">({{index}})</span>
             <span class="station-name">{{name}}</span>
             <span class="station-coords">({{lat}}, {{lon}})</span>
         </div>
-        <div class="remove"></div>
+        <div class="remove" onclick="removeGraph('{{index}}')"></div>
         
         <div class="clr"></div>
     </div>
