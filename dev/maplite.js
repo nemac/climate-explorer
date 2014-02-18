@@ -39,9 +39,10 @@ var MARKER_COLORS = {
     YELLOW: {hex: '#fcf357'}
 };
 
-function MapliteDataSource( url, name, color, projection, styleMap ) {
+function MapliteDataSource( url, name, id, color, projection, styleMap ) {
     this.url = url;
     this.name = name;
+    this.id = id;
     this.color = color;
     this.projection = projection;
     this.styleMap = styleMap;
@@ -113,10 +114,16 @@ function MapliteDataSource( url, name, color, projection, styleMap ) {
             var selectControl = new OpenLayers.Control.SelectFeature( 
                     deferredLayers,
                     {
-                        clickout: false,
-                        toggle: false,
+                        clickout: true,
+                        toggle: true,
                         multiple: false,
                         onSelect: function( event ) {
+                            if ( instance.options.selectCallback !== null && typeof instance.options.selectCallback === 'function' ) {
+                                instance.options.selectCallback( event );                            
+                                event.layer.redraw();                                
+                            }
+                        },
+                        onUnselect: function( event ) {
                             if ( instance.options.selectCallback !== null && typeof instance.options.selectCallback === 'function' ) {
                                 instance.options.selectCallback( event );                            
                                 event.layer.redraw();                                
@@ -175,17 +182,10 @@ function MapliteDataSource( url, name, color, projection, styleMap ) {
                 zoom: 4,
                 projection: new OpenLayers.Projection( PROJECTION )
             });
-
-            var instance = this;
             
-            olMap.zoomToProxy = olMap.zoomTo;
-            olMap.zoomTo = function() {
-                olMap.zoomToProxy.apply( this, arguments );
-                var callback = instance.options.zoomCallback;
-                if ( typeof callback === 'function' ) {
-                    callback.call();
-                }
-            };
+            if ( typeof this.options.zoomCallback === 'function' ) {
+                olMap.events.register("zoomend", olMap, this.options.zoomCallback);
+            }
             
             return olMap;
         },
@@ -215,6 +215,8 @@ function MapliteDataSource( url, name, color, projection, styleMap ) {
                         styleMap: this._setDefaultStyleMap( mapliteLayer )
                     }
             );
+
+            pointsLayer.id = mapliteLayer.id;
     
             var features = [];
 
@@ -236,6 +238,7 @@ function MapliteDataSource( url, name, color, projection, styleMap ) {
                 for (var key in obj) {
                     pointFeature.attributes[key] = obj[key];
                 }
+                pointFeature.attributes.layerDefinition = mapliteLayer;
                 
                 features.push( pointFeature );    
             });
@@ -300,6 +303,10 @@ function MapliteDataSource( url, name, color, projection, styleMap ) {
         //
         zoomToMaxExtent: function() {
             this.map.zoomToMaxExtent();
+        },
+        
+        getMap: function() {
+            return this.map;
         }
     });
 

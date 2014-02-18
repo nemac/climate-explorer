@@ -15,7 +15,7 @@ var paths = {
         ],
         vendorFiles: [
             './bower_components/maplite/lib/openlayers/OpenLayers.js',
-            //'./bower_components/maplite/maplite.js',
+            './bower_components/maplite/maplite.js',
             './bower_components/mustache/mustache.js',
             './bower_components/drawerpanel/drawerpanel.js'
         ]
@@ -53,7 +53,7 @@ gulp.task( 'bundle-assets', function() {
             .pipe( gulp.dest( './build/asset/tpl' ) );
 
     var cssStream = streamqueue( { objectMode: true } );
-    //cssStream.queue( gulp.src( paths.assets.css ) );
+    cssStream.queue( gulp.src( paths.assets.css ) );
     cssStream.queue( 
             gulp.src( './bower_components/**/*.css' )
             .pipe( filter( '!jquery-ui*/**') )
@@ -62,14 +62,14 @@ gulp.task( 'bundle-assets', function() {
     return cssStream.done()
             .pipe( minify() )
             .pipe( concat( 'app.css' ) )
-            .pipe( gulp.dest( './build/asset' ) )
+            .pipe( gulp.dest( './build/asset' ) );
 });
 
 gulp.task( 'package', function() {
     // copy scripts
     var stream = streamqueue( { objectMode: true } );
     stream.queue( gulp.src( paths.scripts.vendorFiles ) );
-    //stream.queue( gulp.src( paths.scripts.projectFiles ) );
+    stream.queue( gulp.src( paths.scripts.projectFiles ) );
 
     return stream.done()
         .pipe( concat( 'app.js' ) )

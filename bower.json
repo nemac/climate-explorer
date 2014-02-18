@@ -3,13 +3,13 @@
   "version": "1.0.0",
   "dependencies": {
     "mustache": "~0.8.1",
-    "drawerpanel": "~1.0.8",
-    "maplite": "git://github.com/cmy2k/maplite.git"
+    "maplite": "git://github.com/cmy2k/maplite.git",
+    "drawerpanel": "~1.0.9"
   },
   "overrides": {
-      "mustache": {
-          "main": "mustache.js"
-      }
+    "mustache": {
+      "main": "mustache.js"
+    }
   },
   "main": "rdv.js",
   "homepage": "https://github.com/cmy2k/rdv",

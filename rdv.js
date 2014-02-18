@@ -6,7 +6,13 @@ var PANEL_STATION_COUNT = 0;
 var LABEL_OFFSET = 14;
 var MAX_SELECTED_STATIONS = 6;
 
-var stationAndGraphLinkHash = {};
+// for a priority, a marker will be displayed for the zoom defined or higher
+// [pointPriority] = minimumZoomLevelItShouldBeDisplayedAt
+var zoomPriorityMap = [ 0, 5, 7, 9 ];
+
+var stationAndGraphLinkHash = [];
+
+var theMap;
 
 $(function(){
     $.get( TEMPLATE_LOCATION, function( template ) {
@@ -35,22 +41,29 @@ function deployMap() {
             new MapliteDataSource(
                 'static/stations1.json',
                 'Stream Gauges',
-                MARKER_COLORS.BLUE,
+                'lyr_stream',
+                MARKER_COLORS.YELLOW,
                 'EPSG:4326'
             ),
             new MapliteDataSource(
                 'static/stations2.json',
                 'Precipitation Gauges',
+                'lyr_precip',
                 MARKER_COLORS.GREEN,
                 'EPSG:4326'
             )
         ],
         iconPath: BUILD_BASE_PATH + 'img/',
-        selectCallback: clickPoint
+        selectCallback: clickPoint,
+        zoomCallback: mapZoom
     });
+    
+    // set initial view
+    theMap = $( '#map' ).mapLite('getMap');
+    mapZoom();
 }
 
-function clickPoint( point ) {
+function clickPoint( point ) {    
     var attr = point.attributes;
     
     if ( PANEL_STATION_COUNT >= MAX_SELECTED_STATIONS ) {
@@ -84,7 +97,6 @@ function clickPoint( point ) {
 
     $( '#stationDetail' ).drawerPanel( 'appendContents', contents );
     $( '#stationDetail' ).drawerPanel( 'open' );
-
 }
 
 function sanitizeString( input ) {
@@ -93,30 +105,54 @@ function sanitizeString( input ) {
 
 function removeGraph( index ) {
     // decrement any items greater than the removed
-    console.log("count is " + PANEL_STATION_COUNT);
-    console.log("selected index is " + index );
-    
-    for (var i = PANEL_STATION_COUNT; i > index ; i--) {
-        
+    for (var i = PANEL_STATION_COUNT; i > index ; i--) {        
         var shift = stationAndGraphLinkHash[i];
         // update graph label
         var newIndex = i -1;
         $( 'span.point-index', 'div#' + shift.id + '-detail' ).html( '(' + newIndex + ')' );
+        $( 'div.remove', 'div#' + shift.id + '-detail' ).attr( 'onclick', "removeGraph('" + newIndex + "')" );
         
         // update point label
         shift.point.attributes.label = newIndex;
         shift.point.layer.redraw();
     }
     
-    // remove the items to be removed
+    // remove the selected item
     var point = stationAndGraphLinkHash[index].point;
     $('div#' + stationAndGraphLinkHash[index].id + '-detail', '#stationDetail' ).remove();
     point.attributes.label = '';
     point.attributes.selected = false;
     point.layer.redraw();
-    delete stationAndGraphLinkHash[index];
+    stationAndGraphLinkHash.splice(index, 1);
     
     PANEL_STATION_COUNT--;
+}
+
+function mapZoom( event ) {
+    var map = theMap;
+    // set scope for initial trigger
+    if ( typeof this.getZoom === 'function' ) {
+        map = this;
+    }
+    
+    var zoom = map.getZoom();
+    var points = map.getLayer('lyr_stream').features.concat( map.getLayer('lyr_precip').features );
+
+    $.each( points, function( i, point ){
+        var pt = document.getElementById( point.geometry.id );
+        if ( pt !== null ) {
+            var visible = isVisible( point.attributes.weight, zoom ) || point.attributes.selected;
+            if (visible) {
+                pt.setAttribute( 'visibility', 'visible' );
+            } else {
+                pt.setAttribute( 'visibility', 'hidden' );
+            }
+        }
+    });
+}
+
+function isVisible( priority, zoom ) {
+    return zoomPriorityMap[priority] <= zoom;
 }
 
 String.prototype.toCapitalCase = function( allCapsWordLength ) {
