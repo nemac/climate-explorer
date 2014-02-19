@@ -1,25 +1,47 @@
+//
+// constants
+//
 var BUILD_BASE_PATH = 'build/asset/';
 var ID_DELIMITER = '-';
 var TEMPLATE_LOCATION = 'detail.tpl.html';
-var DETAIL_TEMPLATE;
-var PANEL_STATION_COUNT = 0;
-var LABEL_OFFSET = 14;
+var STATION_DETAIL_TEMPLATE;
 var MAX_SELECTED_STATIONS = 6;
 
-// for a priority, a marker will be displayed for the zoom defined or higher
-// [pointPriority] = minimumZoomLevelItShouldBeDisplayedAt
-var zoomPriorityMap = [ 0, 5, 7, 9 ];
-
+//
+// globals
+//
+var selectedStationCount = 0;
 var stationAndGraphLinkHash = [];
 
-var theMap;
-
+//
+// Init
+//
 $(function(){
     $.get( TEMPLATE_LOCATION, function( template ) {
-        DETAIL_TEMPLATE = template;
+        STATION_DETAIL_TEMPLATE = template;
         
         // deploy map now that the template is ready
-        deployMap();
+        $( '#map' ).mapLite({
+            layers: [
+                new MapliteDataSource(
+                    'testdata/stations1.json',
+                    'Stream Gauges',
+                    'lyr_stream',
+                    MARKER_COLORS.YELLOW,
+                    'EPSG:4326'
+                ),
+                new MapliteDataSource(
+                    'testdata/stations2.json',
+                    'Precipitation Gauges',
+                    'lyr_precip',
+                    MARKER_COLORS.GREEN,
+                    'EPSG:4326'
+                )
+            ],
+            iconPath: BUILD_BASE_PATH + 'img/',
+            selectCallback: clickPoint,
+            zoomPriorities: [ 0, 5, 7, 9 ]
+        });
     });
     
     $( '#stationDetail' ).drawerPanel({
@@ -35,38 +57,13 @@ $(function(){
     });
 });
 
-function deployMap() {
-    $( '#map' ).mapLite({
-        layers: [
-            new MapliteDataSource(
-                'static/stations1.json',
-                'Stream Gauges',
-                'lyr_stream',
-                MARKER_COLORS.YELLOW,
-                'EPSG:4326'
-            ),
-            new MapliteDataSource(
-                'static/stations2.json',
-                'Precipitation Gauges',
-                'lyr_precip',
-                MARKER_COLORS.GREEN,
-                'EPSG:4326'
-            )
-        ],
-        iconPath: BUILD_BASE_PATH + 'img/',
-        selectCallback: clickPoint,
-        zoomCallback: mapZoom
-    });
-    
-    // set initial view
-    theMap = $( '#map' ).mapLite('getMap');
-    mapZoom();
-}
-
-function clickPoint( point ) {    
+//
+// Map <-> drawer panel link
+//
+function clickPoint( point ) {
     var attr = point.attributes;
     
-    if ( PANEL_STATION_COUNT >= MAX_SELECTED_STATIONS ) {
+    if ( selectedStationCount >= MAX_SELECTED_STATIONS ) {
         return;
     }
 
@@ -74,14 +71,14 @@ function clickPoint( point ) {
         return;
     }
     
-    var index = ++PANEL_STATION_COUNT;
+    var index = ++selectedStationCount;
     attr.label = index;
     attr.selected = true;
     
     var sanitizedId = sanitizeString( attr.id );
     
     var contents = Mustache.render(
-            DETAIL_TEMPLATE, {
+            STATION_DETAIL_TEMPLATE, {
                 id: sanitizedId,
                 index: index,
                 name: attr.name.toCapitalCase(),
@@ -99,13 +96,11 @@ function clickPoint( point ) {
     $( '#stationDetail' ).drawerPanel( 'open' );
 }
 
-function sanitizeString( input ) {
-    return input.replace( /\W/g, ID_DELIMITER );
-}
-
-function removeGraph( index ) {
+function removeGraph( ind ) {
+    var index = parseInt( ind );
+    
     // decrement any items greater than the removed
-    for (var i = PANEL_STATION_COUNT; i > index ; i--) {        
+    for (var i = selectedStationCount; i > index ; i--) {        
         var shift = stationAndGraphLinkHash[i];
         // update graph label
         var newIndex = i -1;
@@ -124,35 +119,15 @@ function removeGraph( index ) {
     point.attributes.selected = false;
     point.layer.redraw();
     stationAndGraphLinkHash.splice(index, 1);
-    
-    PANEL_STATION_COUNT--;
+
+    selectedStationCount--;
 }
 
-function mapZoom( event ) {
-    var map = theMap;
-    // set scope for initial trigger
-    if ( typeof this.getZoom === 'function' ) {
-        map = this;
-    }
-    
-    var zoom = map.getZoom();
-    var points = map.getLayer('lyr_stream').features.concat( map.getLayer('lyr_precip').features );
-
-    $.each( points, function( i, point ){
-        var pt = document.getElementById( point.geometry.id );
-        if ( pt !== null ) {
-            var visible = isVisible( point.attributes.weight, zoom ) || point.attributes.selected;
-            if (visible) {
-                pt.setAttribute( 'visibility', 'visible' );
-            } else {
-                pt.setAttribute( 'visibility', 'hidden' );
-            }
-        }
-    });
-}
-
-function isVisible( priority, zoom ) {
-    return zoomPriorityMap[priority] <= zoom;
+//
+// Helpers
+//
+function sanitizeString( input ) {
+    return input.replace( /\W/g, ID_DELIMITER );
 }
 
 String.prototype.toCapitalCase = function( allCapsWordLength ) {

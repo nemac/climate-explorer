@@ -25,7 +25,7 @@ var paths = {
             'rdv.css'
         ],
         images: [
-            
+            'img/*.png'
         ],
         templates: [
             
@@ -39,10 +39,11 @@ gulp.task( 'bower', function() {
 });
 
 gulp.task( 'bundle-assets', function() {
-    // TODO: merge project images, templates
-    
     // copy bower static assets
-    gulp.src( './bower_components/**/*.png' )
+    var imageStream = streamqueue( { objectMode: true } );
+    imageStream.queue( gulp.src( paths.assets.images ) );
+    imageStream.queue( gulp.src( './bower_components/**/*.png' ) );
+    imageStream.done()    
             .pipe( filter( '!jquery-ui*/**') )
             .pipe( flatten() )
             .pipe( gulp.dest( './build/asset/img' ) );
