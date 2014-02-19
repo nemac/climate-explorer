@@ -38,6 +38,10 @@ before build.
 
 ### 0.1
 - Document
+- Add some visual effects to link the graph to the points
+  - Maybe mouseover graph and the corresponding marker gets larger?
+  - Maybe make the border around the graph get bigger when mouseover the point?
+- Further encapsulate additional OpenLayers-specific map functionality
 
 ## Credits
 - Remove element icon is "Cross Icon" from FamFamFam Silk Icons
