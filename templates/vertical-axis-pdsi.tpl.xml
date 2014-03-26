@@ -1,0 +1,4 @@
+  <verticalaxis   id="pdsi" type="number"   min="-7" max="7" length="1"  position="{{{position}}},0">
+    <title angle="90" anchor="0,-1" position="-30,0">Palmer Drought Serverity</title>
+    <binding id="pdsi-binding" min="0" max="1"/>
+  </verticalaxis>

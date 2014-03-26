@@ -1,0 +1,9 @@
+    <data>
+      <variables>
+        <variable column="0" id="snow-time" type="datetime"/>
+        <variable column="1" id="snow-snow" missingvalue="-9000" missingop="le"/>
+      </variables>
+      <values>
+{{{values}}}
+      </values>
+    </data>

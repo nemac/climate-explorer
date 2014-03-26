@@ -1,0 +1,10 @@
+    <data>
+      <variables>
+        <variable column="0" id="normal-30d-prcp-time" type="datetime"/>
+        <variable column="1" id="normal-30d-prcp-prcp" missingvalue="-9000" missingop="le"/>
+      </variables>
+      <repeat period="1Y"/>
+      <values>
+{{{values}}}
+      </values>
+    </data>

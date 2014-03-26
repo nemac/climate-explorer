@@ -1,0 +1,13 @@
+  <plot>
+    <legend label="Normal 30-Day Precipitation"/>
+    <horizontalaxis ref="time">
+      <variable ref="normal-30d-prcp-time"/>
+    </horizontalaxis>
+    <verticalaxis ref="30d-prcpmm">
+      <variable ref="normal-30d-prcp-prcp"/>
+    </verticalaxis>
+    <renderer type="line">
+      <option name="linecolor" value="0x660000"/>
+      <option name="linewidth" value="2"/>
+    </renderer>
+  </plot>

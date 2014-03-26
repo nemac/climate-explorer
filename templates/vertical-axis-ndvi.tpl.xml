@@ -1,0 +1,4 @@
+<verticalaxis id="ndvi" min="0" max="100" type="number"   length="1"  position="{{{position}}},0">
+  <title angle="90" anchor="0,-1" position="-30 0">NDVI</title>
+  <binding id="ndvi-binding" min="0" max="1"/>
+</verticalaxis>

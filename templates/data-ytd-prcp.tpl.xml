@@ -1,0 +1,9 @@
+    <data>
+      <variables>
+        <variable column="0" id="ytd-prcp-time" type="datetime"/>
+        <variable column="1" id="ytd-prcp-prcp" missingvalue="-9000" missingop="le"/>
+      </variables>
+      <values>
+{{{values}}}
+      </values>
+    </data>

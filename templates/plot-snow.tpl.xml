@@ -1,0 +1,14 @@
+  <plot>
+    <legend label="Snowfall"/>
+    <horizontalaxis ref="time">
+      <variable ref="snow-time"/>
+    </horizontalaxis>
+    <verticalaxis ref="snowmm">
+      <variable ref="snow-snow"/>
+    </verticalaxis>
+    <renderer type="bar">
+      <option name="barwidth"  value="20H"/>
+      <option name="baroffset" value="0.5"/>
+      <option name="fillcolor" value="0x00ffff"/>
+    </renderer>
+  </plot>

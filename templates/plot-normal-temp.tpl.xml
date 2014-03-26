@@ -1,0 +1,15 @@
+  <plot>
+    <legend label="Normal Daily Max/Min Temperature"/>
+    <horizontalaxis ref="time">
+      <variable ref="normal-temp-time"/>
+    </horizontalaxis>
+    <verticalaxis ref="tempc">
+      <variable ref="normal-temp-tmin"/>
+      <variable ref="normal-temp-tmax"/>
+    </verticalaxis>
+    <renderer type="band">
+      <option name="fillcolor" value="0x99ff99"/>
+      <option name="linewidth" value="0"/>
+      <option name="linecolor" value="0x99ff99"/>
+    </renderer>
+  </plot>

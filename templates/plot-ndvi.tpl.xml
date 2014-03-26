@@ -1,0 +1,13 @@
+<plot>
+  <horizontalaxis ref="time">
+    <variable ref="ndvi-time"/>
+  </horizontalaxis>
+  <verticalaxis ref="ndvi">
+    <variable ref="ndvi-ndvi"/>
+  </verticalaxis>
+  <renderer type="pointline">
+    <option name="linecolor" value="black"/>
+    <option name="pointcolor" value="blue"/>
+    <option name="pointsize" value="1.5"/>
+  </renderer>
+</plot>

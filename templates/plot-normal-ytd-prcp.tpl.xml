@@ -1,0 +1,12 @@
+  <plot>
+    <legend label="Normal YTD Precipitation"/>
+    <horizontalaxis ref="time">
+      <variable ref="normal-ytd-prcp-time"/>
+    </horizontalaxis>
+    <verticalaxis ref="ytd-prcpmm">
+      <variable ref="normal-ytd-prcp-prcp"/>
+    </verticalaxis>
+    <renderer type="line">
+      <option name="linecolor" value="0x660000"/>
+    </renderer>
+  </plot>

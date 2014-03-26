@@ -1,0 +1,9 @@
+<data>
+  <variables>
+    <variable column="0" id="ndvi-time" type="datetime"/>
+    <variable column="1" id="ndvi-ndvi"/>
+  </variables>
+  <values>
+{{{values}}}
+  </values>
+</data>

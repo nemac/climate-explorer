@@ -1,0 +1,23 @@
+  <plot>
+    <legend label="Drought (PDSI)"/>
+    <horizontalaxis ref="time">
+      <variable ref="drought-pdsi-time"/>
+    </horizontalaxis>
+    <verticalaxis ref="pdsi">
+      <variable ref="drought-pdsi-pdsi"/>
+    </verticalaxis>
+    <renderer type="bar">
+      <option name="linecolor" value="0x000000"/>
+      <option name="fillcolor"            max="-4"  value="0xfe9b00"/>		<!-- Extreme Drought -->
+      <option name="fillcolor" min="-4"   max="-3"  value="0xfece00"/>		<!-- Severe Drought -->
+      <option name="fillcolor" min="-3"   max="-2"  value="0xffff33"/>		<!-- Moderate Drought -->
+      <option name="fillcolor" min="-2"   max="2"   value="0xdddddd"/>		<!-- Near Normal -->
+      <option name="fillcolor" min="2"    max="3"   value="0x9cff89"/>		<!-- Unusually Moist -->
+      <option name="fillcolor" min="3"    max="4"   value="0x69cd52"/>		<!-- Very Moist -->
+      <option name="fillcolor" min="4"              value="0x109a00"/>		<!-- Extremely Moist -->
+      <option name="barbase" value="0"/>
+      <option name="barwidth" value="1M"/>
+      <option name="baroffset" value="0"/>
+      <option name="hidelines" value="10"/>
+    </renderer>
+  </plot>

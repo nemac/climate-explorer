@@ -94,6 +94,15 @@ function clickPoint( point ) {
 
     $( '#stationDetail' ).drawerPanel( 'appendContents', contents );
     $( '#stationDetail' ).drawerPanel( 'open' );
+    
+    $.ajax({
+        url: 'https://s3.amazonaws.com/geogaddi/ITE00100554/TMAX.csv',
+        dataType: 'application/octet-stream',
+        complete: function(jqXHR) {
+            console.log("COMPLETE");
+            //console.log(jqXHR.responseText);
+        }
+    });
 }
 
 function removeGraph( ind ) {

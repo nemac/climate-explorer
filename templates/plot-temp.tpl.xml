@@ -1,0 +1,15 @@
+  <plot>
+    <legend label="Daily Max/Min Temperature"/>
+    <horizontalaxis ref="time">
+      <variable ref="temp-time"/>
+    </horizontalaxis>
+    <verticalaxis ref="tempc">
+      <variable ref="temp-tmin"/>
+      <variable ref="temp-tmax"/>
+    </verticalaxis>
+    <renderer type="rangebar">
+      <option name="fillcolor" value="0x0000cc"/>
+      <option name="barwidth"  value="20H"/>
+      <option name="baroffset" value="0.5"/>
+    </renderer>
+  </plot>

@@ -1,0 +1,13 @@
+  <plot>
+    <legend label="YTD Precipitation"/>
+    <horizontalaxis ref="time">
+      <variable ref="ytd-prcp-time"/>
+    </horizontalaxis>
+    <verticalaxis ref="ytd-prcpmm">
+      <variable ref="ytd-prcp-prcp"/>
+    </verticalaxis>
+    <renderer type="fill">
+      <option name="fillcolor" value="0xcc3333"/>
+      <option name="fillopacity" value="0.5"/>
+    </renderer>
+  </plot>

@@ -1,0 +1,9 @@
+  <data adapter="drought-pdsi">
+    <variables>
+      <variable column="0" id="drought-pdsi-time" type="datetime"/>
+      <variable column="1" id="drought-pdsi-pdsi" type="number" missingvalue="-99" missingop="le"/>
+    </variables>
+    <values>
+{{{values}}}
+    </values>
+  </data>

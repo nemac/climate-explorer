@@ -1,0 +1,10 @@
+    <data>
+      <variables>
+        <variable column="0" id="temp-time" type="datetime"/>
+        <variable column="1" id="temp-tmin" missingvalue="-9000" missingop="le"/>
+        <variable column="2" id="temp-tmax" missingvalue="-9000" missingop="le"/>
+      </variables>
+      <values>
+{{{values}}}
+      </values>
+    </data>

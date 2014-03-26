@@ -1,0 +1,14 @@
+  <plot>
+    <legend label="Precipitation"/>
+    <horizontalaxis ref="time">
+      <variable ref="prcp-time"/>
+    </horizontalaxis>
+    <verticalaxis ref="prcpmm">
+      <variable ref="prcp-prcp"/>
+    </verticalaxis>
+    <renderer type="bar">
+      <option name="barwidth"  value="20H"/>
+      <option name="baroffset" value="0.5"/>
+      <option name="fillcolor" value="0x00ff00"/>
+    </renderer>
+  </plot>
