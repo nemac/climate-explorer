@@ -6,6 +6,7 @@ var ID_DELIMITER = '-';
 var TEMPLATE_LOCATION = 'detail.tpl.html';
 var STATION_DETAIL_TEMPLATE;
 var MAX_SELECTED_STATIONS = 6;
+var BASE_CSV_SOURCE_URL = 'https://s3.amazonaws.com/geogaddi/';
 
 //
 // globals
@@ -50,9 +51,10 @@ $(function(){
         color: '#fee',
         title: 'Station Detail',
         resizable: true,
-        width: 400,
+        width: 600,
         minWidth: 400,
-        maxWidth: 600,
+        maxWidth: 800,
+        onResizeStop: resizePanel,
         templateLocation: BUILD_BASE_PATH + 'tpl/panel.tpl.html'
     });
 });
@@ -94,15 +96,76 @@ function clickPoint( point ) {
 
     $( '#stationDetail' ).drawerPanel( 'appendContents', contents );
     $( '#stationDetail' ).drawerPanel( 'open' );
+
+    // TODO: legit parameterize
+    deployGraph( 'ITE00100554', 'TEMP' );
+}
+
+function deployGraph( id, type ) {
+    var payload = getRequests( id, type );
+    $.when.apply( $, payload.requests ).done(function(){
+        var dataString = getDataString(type, payload.data );
+        console.log(dataString);
+        /* TODO: get rest of template
+        var mugl = '<mugl><data><values>' + dataString + '</values></data></mugl>';
+        $( "#" + id + '-graph' ).empty();
+        (function( window ) {
+            var _jq = window.multigraph.jQuery;
+            _jq( "#" + id + '-graph' ).multigraph( { muglString: mugl } );
+        })( window );
+        */
+    })
+}
+
+function getRequests( id, type ) {
+    var payload = {
+        requests: [],
+        data: []
+    };
     
-    $.ajax({
-        url: 'https://s3.amazonaws.com/geogaddi/ITE00100554/TMAX.csv',
-        dataType: 'application/octet-stream',
-        complete: function(jqXHR) {
-            console.log("COMPLETE");
-            //console.log(jqXHR.responseText);
+    if (type === "TEMP") {
+        payload.requests.push(
+            $.get(BASE_CSV_SOURCE_URL + id + '/TMIN.csv')
+            .success( function( lines ){
+                payload.data['TMIN'] = lines;
+            })
+        );
+
+        payload.requests.push(
+            $.get(BASE_CSV_SOURCE_URL + id + '/TMAX.csv')
+            .success( function( lines ){
+                payload.data['TMAX'] = lines;
+            })
+        );
+    }
+    
+    return payload;
+}
+
+function getDataString( type, dataPayload ) {
+    var dataString = '';
+    var data = {};
+    if ( type === 'TEMP' ) {
+        var tmin = dataPayload['TMIN'].replace( /(\r\n|\n|\r)/gm, ';' ).split( ';' );
+        $.each(tmin, function(){
+            var ln = this.split( ',' );
+            data['_' + ln[0]] = ln[1];
+        });
+
+        var tmax = dataPayload['TMAX'].replace( /(\r\n|\n|\r)/gm, ';' ).split( ';' );
+        $.each(tmax, function(){
+            var ln = this.split( ',' );
+            data['_' + ln[0]] += ',' + ln[1];
+        });
+        
+        for ( var _key in data ) {
+            var key = _key.replace( '_', '' );
+            if ( _key !== '_' ) { // TODO: figure out how this is getting in and don't let it
+                dataString += key + ',' + data[_key] + '\r\n';
+            }
         }
-    });
+    }
+    return dataString;
 }
 
 function removeGraph( ind ) {
@@ -130,6 +193,22 @@ function removeGraph( ind ) {
     stationAndGraphLinkHash.splice(index, 1);
 
     selectedStationCount--;
+}
+
+function resizePanel() {
+    $.each(stationAndGraphLinkHash, function() {
+        var id = this.id;
+        (function(window) {
+            var _jq = window.multigraph.jQuery;
+            var width = _jq( "#" + id + '-graph' ).width();
+            var height = _jq( "#" + id + '-graph' ).height();
+            _jq( "#" + id + '-graph' ).multigraph( 'done', function( m ) {
+                m.resizeSurface( width, height );
+                m.width( width ).height( height );
+                m.redraw();
+            });
+        })(window);
+    });
 }
 
 //

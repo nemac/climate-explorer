@@ -19,7 +19,8 @@ var paths = {
             './bower_components/maplite/lib/openlayers/OpenLayers.js',
             './bower_components/maplite/maplite.js',
             './bower_components/mustache/mustache.js',
-            './bower_components/drawerpanel/drawerpanel.js'
+            './bower_components/drawerpanel/drawerpanel.js',
+            './bower_components/multigraph/index.js'
         ]
     },
     assets: {
@@ -91,7 +92,7 @@ gulp.task( 'package', function() {
     // copy scripts
     var stream = streamqueue( { objectMode: true } );
     stream.queue( gulp.src( paths.scripts.vendorFiles ) );
-    stream.queue( gulp.src( paths.scripts.projectFiles ) );
+    //stream.queue( gulp.src( paths.scripts.projectFiles ) );
     stream.queue( bundleTemplates() );
 
     return stream.done()

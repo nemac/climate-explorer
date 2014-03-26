@@ -7,6 +7,7 @@ and displays real-time data from each station selected.
 - jQuery
 - mapLite
 - drawerPanel
+- Multigraph
 
 Building requires node, npm
 
