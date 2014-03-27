@@ -101,6 +101,6 @@ gulp.task( 'package', function() {
         .pipe( gulp.dest( paths.buildDest ) ); 
 });
 
-gulp.task( 'default', ['bower', 'bundle-assets', 'package'], function() {
+gulp.task( 'default', ['bundle-assets', 'package'], function() {
     
 });

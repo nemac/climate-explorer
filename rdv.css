@@ -61,7 +61,6 @@ html, body, #map {
 }
 
 .graph {
-    border: 1px #000 dashed;
     height: 170px;
 }
 

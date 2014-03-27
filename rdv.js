@@ -60,7 +60,7 @@ $(function(){
 });
 
 //
-// Map <-> drawer panel link
+// Interactions
 //
 function clickPoint( point ) {
     var attr = point.attributes;
@@ -98,74 +98,7 @@ function clickPoint( point ) {
     $( '#stationDetail' ).drawerPanel( 'open' );
 
     // TODO: legit parameterize
-    deployGraph( 'ITE00100554', 'TEMP' );
-}
-
-function deployGraph( id, type ) {
-    var payload = getRequests( id, type );
-    $.when.apply( $, payload.requests ).done(function(){
-        var dataString = getDataString(type, payload.data );
-        console.log(dataString);
-        /* TODO: get rest of template
-        var mugl = '<mugl><data><values>' + dataString + '</values></data></mugl>';
-        $( "#" + id + '-graph' ).empty();
-        (function( window ) {
-            var _jq = window.multigraph.jQuery;
-            _jq( "#" + id + '-graph' ).multigraph( { muglString: mugl } );
-        })( window );
-        */
-    })
-}
-
-function getRequests( id, type ) {
-    var payload = {
-        requests: [],
-        data: []
-    };
-    
-    if (type === "TEMP") {
-        payload.requests.push(
-            $.get(BASE_CSV_SOURCE_URL + id + '/TMIN.csv')
-            .success( function( lines ){
-                payload.data['TMIN'] = lines;
-            })
-        );
-
-        payload.requests.push(
-            $.get(BASE_CSV_SOURCE_URL + id + '/TMAX.csv')
-            .success( function( lines ){
-                payload.data['TMAX'] = lines;
-            })
-        );
-    }
-    
-    return payload;
-}
-
-function getDataString( type, dataPayload ) {
-    var dataString = '';
-    var data = {};
-    if ( type === 'TEMP' ) {
-        var tmin = dataPayload['TMIN'].replace( /(\r\n|\n|\r)/gm, ';' ).split( ';' );
-        $.each(tmin, function(){
-            var ln = this.split( ',' );
-            data['_' + ln[0]] = ln[1];
-        });
-
-        var tmax = dataPayload['TMAX'].replace( /(\r\n|\n|\r)/gm, ';' ).split( ';' );
-        $.each(tmax, function(){
-            var ln = this.split( ',' );
-            data['_' + ln[0]] += ',' + ln[1];
-        });
-        
-        for ( var _key in data ) {
-            var key = _key.replace( '_', '' );
-            if ( _key !== '_' ) { // TODO: figure out how this is getting in and don't let it
-                dataString += key + ',' + data[_key] + '\r\n';
-            }
-        }
-    }
-    return dataString;
+    deployGraph( 'TEMP', sanitizedId );
 }
 
 function removeGraph( ind ) {
@@ -209,6 +142,114 @@ function resizePanel() {
             });
         })(window);
     });
+}
+
+//
+// Multigraph builders
+//
+function deployGraph( type, id ) {
+    // TODO: pass ID once data is in place
+    var payload = buildRequests( type, 'ITE00100554' );
+    $.when.apply( $, payload.requests ).done(function(){
+        var mugl = buildMugl( payload.data, type );
+        
+        $( "#" + id + '-graph' ).empty();
+        (function( window ) {
+            var _jq  = window.multigraph.jQuery;
+            _jq ( "#" + id + '-graph' ).multigraph( { muglString: mugl } );
+        })( window );
+    });
+}
+
+function buildMugl( data, type ) {
+    var verticalAxisPosition = 50;
+    var verticalAxisSection = buildVerticalAxisSection( type, verticalAxisPosition );
+    var plotSection = buildPlotSection( type );
+    var dataSection = buildDataSection( type, data );
+    
+    return Mustache.render(rdvMuglTemplates['mugl'], {
+        marginleft: 40 - verticalAxisPosition,
+        mindate: 17630101,
+        maxdate: 17641231,
+        verticalaxes: verticalAxisSection,
+        plots: plotSection,
+        datas: dataSection
+    });
+}
+
+function buildRequests( type, id ) {
+    var payload = {
+        requests: [],
+        data: []
+    };
+    
+    if (type === "TEMP") {
+        payload.requests.push(
+            $.get(BASE_CSV_SOURCE_URL + id + '/TMIN.csv')
+            .success( function( lines ){
+                payload.data['TMIN'] = lines;
+            })
+        );
+
+        payload.requests.push(
+            $.get(BASE_CSV_SOURCE_URL + id + '/TMAX.csv')
+            .success( function( lines ){
+                payload.data['TMAX'] = lines;
+            })
+        );
+    }
+    
+    return payload;
+}
+
+function buildVerticalAxisSection( type, position ) {
+    if ( type === 'TEMP' ) {
+        return Mustache.render(rdvMuglTemplates['vertical-axis-tempc'], {
+            position: position
+        });
+    }
+}
+
+function buildPlotSection( type ) {
+    var plots = [];
+    if ( type === 'TEMP' ) {
+        plots.push(Mustache.render(rdvMuglTemplates['plot-temp']));
+    }
+    
+    return plots.join( '' );
+}
+
+function buildDataSection( type, dataPayload ) {
+    var section = [];
+    var values = '';
+    var data = {};
+    if ( type === 'TEMP' ) {
+        var tmin = dataPayload['TMIN'].replace( /(\r\n|\n|\r)/gm, ';' ).split( ';' );
+        $.each(tmin, function(){
+            data['_' + this.split( ',' )[0]] = this;
+        });
+
+        // only append the value portion - not the date
+        var tmax = dataPayload['TMAX'].replace( /(\r\n|\n|\r)/gm, ';' ).split( ';' );
+        $.each(tmax, function(){
+            var ln = this.split( ',' );
+            data['_' + ln[0]] += ',' + ln[1];
+        });
+        
+        for ( var _key in data ) {
+            if ( _key !== '_' ) { // TODO: figure out how this is getting in and don't let it
+                values += data[_key] + '\n';
+            }
+        }
+        
+        section.push(Mustache.render(rdvMuglTemplates['data-temp'], {
+            values: values
+        }));
+        
+        // TODO: add normals
+    }
+
+    return section.join( '' );
 }
 
 //
