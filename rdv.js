@@ -13,11 +13,17 @@ var BASE_CSV_SOURCE_URL = 'https://s3.amazonaws.com/geogaddi/';
 //
 var selectedStationCount = 0;
 var stationAndGraphLinkHash = [];
+var dataSummary = {};
 
 //
 // Init
 //
 $(function(){
+    // TODO combine into deferreds
+    $.getJSON( BASE_CSV_SOURCE_URL + 'summary.json', function( data ) {
+        dataSummary = data;
+    });
+
     $.get( TEMPLATE_LOCATION, function( template ) {
         STATION_DETAIL_TEMPLATE = template;
         
@@ -30,7 +36,9 @@ $(function(){
                     'lyr_stream',
                     MARKER_COLORS.YELLOW,
                     'EPSG:4326'
-                ),
+                )
+                /*
+                ,
                 new MapliteDataSource(
                     'testdata/stations2.json',
                     'Precipitation Gauges',
@@ -38,6 +46,7 @@ $(function(){
                     MARKER_COLORS.GREEN,
                     'EPSG:4326'
                 )
+                */
             ],
             iconPath: BUILD_BASE_PATH + 'img/',
             selectCallback: clickPoint,
@@ -149,9 +158,9 @@ function resizePanel() {
 //
 function deployGraph( type, id ) {
     // TODO: pass ID once data is in place
-    var payload = buildRequests( type, 'ITE00100554' );
-    $.when.apply( $, payload.requests ).done(function(){
-        var mugl = buildMugl( payload.data, type );
+    var payload = buildRequests( type, id );
+    $.when.apply( $, payload.requests ).done( function(){
+        var mugl = buildMugl( payload.data, type, id );
         
         $( "#" + id + '-graph' ).empty();
         (function( window ) {
@@ -161,16 +170,17 @@ function deployGraph( type, id ) {
     });
 }
 
-function buildMugl( data, type ) {
+function buildMugl( data, type, id ) {
     var verticalAxisPosition = 50;
-    var verticalAxisSection = buildVerticalAxisSection( type, verticalAxisPosition );
+    var minMax = buildMinMax( type, id );
+    var verticalAxisSection = buildVerticalAxisSection( type, 0 );
     var plotSection = buildPlotSection( type );
     var dataSection = buildDataSection( type, data );
     
     return Mustache.render(rdvMuglTemplates['mugl'], {
-        marginleft: 40 - verticalAxisPosition,
-        mindate: 17630101,
-        maxdate: 17641231,
+        marginleft: verticalAxisPosition,
+        mindate: minMax.min,
+        maxdate: minMax.max,
         verticalaxes: verticalAxisSection,
         plots: plotSection,
         datas: dataSection
@@ -202,6 +212,24 @@ function buildRequests( type, id ) {
     return payload;
 }
 
+function buildMinMax( type, id ) {
+    var summary = {};
+
+    if ( type === 'TEMP' ) {        
+        var mins = [];
+        mins.push( parseInt( dataSummary[id]['TMIN'].min ) );
+        mins.push( parseInt( dataSummary[id]['TMAX'].min ) );
+        var maxs = [];
+        maxs.push( parseInt( dataSummary[id]['TMIN'].max ) );
+        maxs.push( parseInt( dataSummary[id]['TMAX'].max ) );
+
+        summary.min = $.apply( Math.max, mins )[0]; // take greater of two minima
+        summary.max = $.apply( Math.min, maxs )[0]; // take lesser of two maxima
+    }
+    
+    return summary;
+}
+
 function buildVerticalAxisSection( type, position ) {
     if ( type === 'TEMP' ) {
         return Mustache.render(rdvMuglTemplates['vertical-axis-tempc'], {
@@ -221,29 +249,32 @@ function buildPlotSection( type ) {
 
 function buildDataSection( type, dataPayload ) {
     var section = [];
-    var values = '';
-    var data = {};
     if ( type === 'TEMP' ) {
-        var tmin = dataPayload['TMIN'].replace( /(\r\n|\n|\r)/gm, ';' ).split( ';' );
-        $.each(tmin, function(){
-            data['_' + this.split( ',' )[0]] = this;
+        var data = [];
+        
+        var tmin = {};
+        $.each( dataPayload['TMIN'].replace( /(\r\n|\n|\r)/gm, ';' ).split( ';' ), function(){
+            tmin[this.split( ',' )[0]] = this;
         });
 
         // only append the value portion - not the date
-        var tmax = dataPayload['TMAX'].replace( /(\r\n|\n|\r)/gm, ';' ).split( ';' );
-        $.each(tmax, function(){
+        var tmax = {};
+        $.each( dataPayload['TMAX'].replace( /(\r\n|\n|\r)/gm, ';' ).split( ';' ), function(){
             var ln = this.split( ',' );
-            data['_' + ln[0]] += ',' + ln[1];
-        });
-        
-        for ( var _key in data ) {
-            if ( _key !== '_' ) { // TODO: figure out how this is getting in and don't let it
-                values += data[_key] + '\n';
+            if ( tmin.hasOwnProperty( ln[0] ) ) {
+                tmax[ln[0]] += ',' + ln[1];
             }
-        }
-        
-        section.push(Mustache.render(rdvMuglTemplates['data-temp'], {
-            values: values
+        });
+                
+        // back-check tmin, merge and push common keys
+        $.each( tmin, function ( key, value ) {
+            if ( tmax.hasOwnProperty( key ) ) {
+                data.push( tmin[key] + ',' + value );
+            }
+        });
+
+        section.push(Mustache.render( rdvMuglTemplates['data-temp'], {
+            values: data.join( '\n' )
         }));
         
         // TODO: add normals
@@ -256,7 +287,8 @@ function buildDataSection( type, dataPayload ) {
 // Helpers
 //
 function sanitizeString( input ) {
-    return input.replace( /\W/g, ID_DELIMITER );
+    //return input.replace( /\W/g, ID_DELIMITER );
+    return input.split( /\W/g )[1];
 }
 
 String.prototype.toCapitalCase = function( allCapsWordLength ) {
