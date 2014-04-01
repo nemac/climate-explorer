@@ -6,7 +6,7 @@ var ID_DELIMITER = '-';
 var TEMPLATE_LOCATION = 'detail.tpl.html';
 var STATION_DETAIL_TEMPLATE;
 var MAX_SELECTED_STATIONS = 6;
-var BASE_CSV_SOURCE_URL = 'https://s3.amazonaws.com/geogaddi/';
+var BASE_CSV_SOURCE_URL = 'https://s3.amazonaws.com/nemac-ghcnd/';
 
 //
 // globals
@@ -195,14 +195,14 @@ function buildRequests( type, id ) {
     
     if (type === "TEMP") {
         payload.requests.push(
-            $.get(BASE_CSV_SOURCE_URL + id + '/TMIN.csv')
+            $.get(BASE_CSV_SOURCE_URL + id + '/TMIN.csv.gz')
             .success( function( lines ){
                 payload.data['TMIN'] = lines;
             })
         );
 
         payload.requests.push(
-            $.get(BASE_CSV_SOURCE_URL + id + '/TMAX.csv')
+            $.get(BASE_CSV_SOURCE_URL + id + '/TMAX.csv.gz')
             .success( function( lines ){
                 payload.data['TMAX'] = lines;
             })
