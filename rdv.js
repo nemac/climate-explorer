@@ -254,22 +254,23 @@ function buildDataSection( type, dataPayload ) {
         
         var tmin = {};
         $.each( dataPayload['TMIN'].replace( /(\r\n|\n|\r)/gm, ';' ).split( ';' ), function(){
-            tmin[this.split( ',' )[0]] = this;
+            var ln = this.split( ',' );
+            tmin[ln[0]] = temptransform(ln[1]);
         });
-
+        
         // only append the value portion - not the date
         var tmax = {};
         $.each( dataPayload['TMAX'].replace( /(\r\n|\n|\r)/gm, ';' ).split( ';' ), function(){
             var ln = this.split( ',' );
             if ( tmin.hasOwnProperty( ln[0] ) ) {
-                tmax[ln[0]] += ',' + ln[1];
+                tmax[ln[0]] = temptransform(ln[1]);
             }
         });
                 
         // back-check tmin, merge and push common keys
         $.each( tmin, function ( key, value ) {
             if ( tmax.hasOwnProperty( key ) ) {
-                data.push( tmin[key] + ',' + value );
+                data.push( key + ',' + value + ',' + tmax[key] );
             }
         });
 
@@ -277,10 +278,27 @@ function buildDataSection( type, dataPayload ) {
             values: data.join( '\n' )
         }));
         
+        console.log(data);
+        
         // TODO: add normals
     }
 
     return section.join( '' );
+}
+
+//
+// Data transforms
+//
+function temptransform(x) {
+    var v = parseFloat(x);
+    v = v / 10.0;
+    return sprintf("%.1f", v);
+}
+
+function normaltemptransform(x) {
+    var f = parseFloat(x);
+    var c = (f-32.0)*5.0/9.0;
+    return sprintf("%.1f", c);
 }
 
 //
