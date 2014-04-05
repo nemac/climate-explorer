@@ -37,16 +37,6 @@ $(function(){
                     MARKER_COLORS.RED,
                     'EPSG:4326'
                 )
-                /*
-                ,
-                new MapliteDataSource(
-                    'testdata/stations2.json',
-                    'Precipitation Gauges',
-                    'lyr_precip',
-                    MARKER_COLORS.GREEN,
-                    'EPSG:4326'
-                )
-                */
             ],
             iconPath: BUILD_BASE_PATH + 'img/',
             selectCallback: clickPoint
