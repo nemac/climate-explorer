@@ -31,10 +31,10 @@ $(function(){
         $( '#map' ).mapLite({
             layers: [
                 new MapliteDataSource(
-                    'testdata/stations1.json',
-                    'Stream Gauges',
-                    'lyr_stream',
-                    MARKER_COLORS.YELLOW,
+                    'testdata/stations.json',
+                    'GHCND Stations',
+                    'lyr_ghcnd',
+                    MARKER_COLORS.RED,
                     'EPSG:4326'
                 )
                 /*
@@ -49,8 +49,8 @@ $(function(){
                 */
             ],
             iconPath: BUILD_BASE_PATH + 'img/',
-            selectCallback: clickPoint,
-            zoomPriorities: [ 0, 5, 7, 9 ]
+            selectCallback: clickPoint
+            //zoomPriorities: [ 0, 5, 7, 9 ]
         });
     });
     
@@ -277,9 +277,7 @@ function buildDataSection( type, dataPayload ) {
         section.push(Mustache.render( rdvMuglTemplates['data-temp'], {
             values: data.join( '\n' )
         }));
-        
-        console.log(data);
-        
+                
         // TODO: add normals
     }
 
