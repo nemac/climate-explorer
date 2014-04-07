@@ -7,6 +7,7 @@ var TEMPLATE_LOCATION = 'detail.tpl.html';
 var STATION_DETAIL_TEMPLATE;
 var MAX_SELECTED_STATIONS = 6;
 var BASE_CSV_SOURCE_URL = 'https://s3.amazonaws.com/nemac-ghcnd/';
+var NORMALS_CSV_SOURCE_URL = 'https://s3.amazonaws.com/nemac-normals/NORMAL_';
 
 //
 // globals
@@ -147,7 +148,6 @@ function resizePanel() {
 // Multigraph builders
 //
 function deployGraph( type, id ) {
-    // TODO: pass ID once data is in place
     var payload = buildRequests( type, id );
     $.when.apply( $, payload.requests ).done( function(){
         var mugl = buildMugl( payload.data, type, id );
@@ -192,9 +192,23 @@ function buildRequests( type, id ) {
         );
 
         payload.requests.push(
+            $.get(NORMALS_CSV_SOURCE_URL + 'TMIN/' + id + '.csv.gz')
+            .success( function( lines ){
+                payload.data['TMIN_NORMAL'] = lines;
+            })
+        );
+
+        payload.requests.push(
             $.get(BASE_CSV_SOURCE_URL + id + '/TMAX.csv.gz')
             .success( function( lines ){
                 payload.data['TMAX'] = lines;
+            })
+        );
+
+        payload.requests.push(
+            $.get(NORMALS_CSV_SOURCE_URL + 'TMAX/' + id + '.csv.gz')
+            .success( function( lines ){
+                payload.data['TMAX_NORMAL'] = lines;
             })
         );
     }
@@ -231,6 +245,7 @@ function buildVerticalAxisSection( type, position ) {
 function buildPlotSection( type ) {
     var plots = [];
     if ( type === 'TEMP' ) {
+        plots.push(Mustache.render(rdvMuglTemplates['plot-normal-temp']));
         plots.push(Mustache.render(rdvMuglTemplates['plot-temp']));
     }
     
@@ -240,6 +255,36 @@ function buildPlotSection( type ) {
 function buildDataSection( type, dataPayload ) {
     var section = [];
     if ( type === 'TEMP' ) {
+        // normals
+        var normals = [];
+        
+        var tminNormal = {};
+        $.each( dataPayload['TMIN_NORMAL'].replace( /(\r\n|\n|\r)/gm, ';' ).split( ';' ), function(){
+            var ln = this.split( ',' );
+            tminNormal[ln[0]] = normaltemptransform(ln[1]);
+        });
+        
+        // only append the value portion - not the date
+        var tmaxNormal = {};
+        $.each( dataPayload['TMAX_NORMAL'].replace( /(\r\n|\n|\r)/gm, ';' ).split( ';' ), function(){
+            var ln = this.split( ',' );
+            if ( tminNormal.hasOwnProperty( ln[0] ) ) {
+                tmaxNormal[ln[0]] = normaltemptransform(ln[1]);
+            }
+        });
+                
+        // back-check tmin, merge and push common keys
+        $.each( tminNormal, function ( key, value ) {
+            if ( tmaxNormal.hasOwnProperty( key ) ) {
+                normals.push( key + ',' + value + ',' + tmaxNormal[key] );
+            }
+        });
+        
+        section.push(Mustache.render( rdvMuglTemplates['data-normal-temp'], {
+            values: normals.join( '\n' )
+        }));
+        
+        // data
         var data = [];
         
         var tmin = {};
@@ -268,7 +313,6 @@ function buildDataSection( type, dataPayload ) {
             values: data.join( '\n' )
         }));
                 
-        // TODO: add normals
     }
 
     return section.join( '' );
