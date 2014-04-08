@@ -22,7 +22,7 @@ Transformer.findMinMax = function( params, data ) {
     $.each(params, function() {
         minima.push( parseInt( data[this].min ) );
         maxima.push( parseInt( data[this].max ) );
-    }) ;
+    });
     
     summary.min = $.apply( Math.max, minima )[0];
     summary.max = $.apply( Math.min, maxima )[0];
@@ -59,7 +59,7 @@ Transformer.mergeCSV = function( csv1, csv2, transform ) {
     // back-check keys, merge and push common keys
     $.each( colA, function ( key, value ) {
         if ( colB.hasOwnProperty( key ) ) {
-            merge.push( key + ',' + value + ',' + colB[key] );
+            merge.push( sprintf( '%s,%s,%s', key, value, colB[key] ) );
         }
     });
     
