@@ -1,2 +1,2 @@
-var rdvMuglTemplates = {
+var MUGLTEMPLATES = {
 };

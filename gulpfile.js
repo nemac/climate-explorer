@@ -13,7 +13,9 @@ var paths = {
     buildDest : './build',
     scripts: {
         projectFiles: [
-           'rdv.js'
+           'rdv.js',
+           'utils/transform.js',
+           'utils/muglHelper.js'
         ],
         vendorFiles: [
             './bower_components/maplite/lib/openlayers/OpenLayers.js',
@@ -39,7 +41,7 @@ var paths = {
 function bundleTemplates() {
     return gulp.src( paths.assets.templateBaseDir + paths.assets.aggregateTemplate )
         .pipe( inject( gulp.src( paths.assets.templates, { read: true } ), {
-            starttag: 'var rdvMuglTemplates = {',
+            starttag: 'var MUGLTEMPLATES = {',
             endtag: '};',
             transform: function(path, file, i, length) {
                 // remove line breaks, spaces leading tags, and any remaining places where many spaces should be replaced with a single space
