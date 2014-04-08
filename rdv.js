@@ -24,8 +24,8 @@ $(function(){
         $.getJSON( BASE_CSV_SOURCE_URL + 'summary.json'), 
         $.get( TEMPLATE_LOCATION ) )
     .done( function( r1, r2 ){
-        DATA_SUMMARY = r1;
-        STATION_DETAIL_TEMPLATE = r2;
+        DATA_SUMMARY = r1[0];
+        STATION_DETAIL_TEMPLATE = r2[0];
         
         // deploy map now that the template is ready
         $( '#map' ).mapLite({
