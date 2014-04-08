@@ -1,8 +1,8 @@
-function MuglHelper(  ) {
-
+function MuglHelper() {
+    //
 }
 
-MuglHelper.getData = function ( type, id ) {
+MuglHelper.getDataRequests = function ( type, id ) {
     var payload = {
         requests: [],
         data: []

@@ -20,13 +20,12 @@ var DATA_SUMMARY = {};
 // Init
 //
 $(function(){
-    // TODO combine into deferreds
-    $.getJSON( BASE_CSV_SOURCE_URL + 'summary.json', function( data ) {
-        DATA_SUMMARY = data;
-    });
-
-    $.get( TEMPLATE_LOCATION, function( template ) {
-        STATION_DETAIL_TEMPLATE = template;
+    $.when(
+        $.getJSON( BASE_CSV_SOURCE_URL + 'summary.json'), 
+        $.get( TEMPLATE_LOCATION ) )
+    .done( function( r1, r2 ){
+        DATA_SUMMARY = r1;
+        STATION_DETAIL_TEMPLATE = r2;
         
         // deploy map now that the template is ready
         $( '#map' ).mapLite({
@@ -97,7 +96,7 @@ function clickPoint( point ) {
     $( '#stationDetail' ).drawerPanel( 'appendContents', contents );
     $( '#stationDetail' ).drawerPanel( 'open' );
 
-    // TODO: legit parameterize
+    // TODO: add other data params
     deployGraph( 'TEMP', sanitizedId );
 }
 
@@ -109,8 +108,9 @@ function removeGraph( ind ) {
         var shift = stationAndGraphLinkHash[i];
         // update graph label
         var newIndex = i -1;
-        $( 'span.point-index', 'div#' + shift.id + '-detail' ).html( '(' + newIndex + ')' );
-        $( 'div.remove', 'div#' + shift.id + '-detail' ).attr( 'onclick', "removeGraph('" + newIndex + "')" );
+        var shiftRef = 'div#' + shift.id + '-detail';
+        $( 'span.point-index', shiftRef ).html( '(' + newIndex + ')' );
+        $( 'div.remove', shiftRef ).attr( 'onclick', "removeGraph('" + newIndex + "')" );
         
         // update point label
         shift.point.attributes.label = newIndex;
@@ -132,10 +132,11 @@ function resizePanel() {
     $.each(stationAndGraphLinkHash, function() {
         var id = this.id;
         (function(window) {
+            var graphRef = '#' + id + '-graph';
             var _jq = window.multigraph.jQuery;
-            var width = _jq( "#" + id + '-graph' ).width();
-            var height = _jq( "#" + id + '-graph' ).height();
-            _jq( "#" + id + '-graph' ).multigraph( 'done', function( m ) {
+            var width = _jq( graphRef ).width();
+            var height = _jq( graphRef ).height();
+            _jq( graphRef ).multigraph( 'done', function( m ) {
                 m.resizeSurface( width, height );
                 m.width( width ).height( height );
                 m.redraw();
@@ -145,15 +146,16 @@ function resizePanel() {
 }
 
 //
-// Multigraph builders
+// Multigraph builder
 //
 function deployGraph( type, id ) {
-    var payload = MuglHelper.getData( type, id );
-    $.when.apply( $, payload.requests ).done( function(){       
-        $( "#" + id + '-graph' ).empty();
+    var payload = MuglHelper.getDataRequests( type, id );
+    $.when.apply( $, payload.requests ).done( function(){
+        var graphRef = '#' + id + '-graph';
+        $( graphRef ).empty();
         (function( window ) {
             var _jq  = window.multigraph.jQuery;
-            _jq ( "#" + id + '-graph' ).multigraph( {
+            _jq ( graphRef ).multigraph( {
                 muglString: MuglHelper.buildMugl(
                     payload.data,
                     type,

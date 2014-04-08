@@ -2,7 +2,7 @@
  * Transformer contains a number of data transformation utility classes
  */
 function Transformer() {
-    
+    //
 }
 
 /**
@@ -38,18 +38,16 @@ Transformer.findMinMax = function( params, data ) {
  * @param function transform : transformation that should be applied to each data column
  * @returns array            : a merged three-column CSV
  */
-Transformer.mergeCSV = function( csv1, csv2, transform ) {
-    var merge = [];
-    
+Transformer.mergeCSV = function( csv1, csv2, transform ) {    
     var colA = {};
-    $.each( csv1.replace( /(\r\n|\n|\r)/gm, ';' ).split( ';' ), function(){
+    $.each( csv1.replace( /(\r\n|\n|\r)/gm, ';' ).split( ';' ), function() {
         var ln = this.split( ',' );
         colA[ln[0]] = transform(ln[1]);
     });
     
     // only append the value portion - not the date
     var colB = {};
-    $.each( csv2.replace( /(\r\n|\n|\r)/gm, ';' ).split( ';' ), function(){
+    $.each( csv2.replace( /(\r\n|\n|\r)/gm, ';' ).split( ';' ), function() {
         var ln = this.split( ',' );
         if ( colA.hasOwnProperty( ln[0] ) ) {
             colB[ln[0]] = transform(ln[1]);
@@ -57,6 +55,7 @@ Transformer.mergeCSV = function( csv1, csv2, transform ) {
     });
     
     // back-check keys, merge and push common keys
+    var merge = [];
     $.each( colA, function ( key, value ) {
         if ( colB.hasOwnProperty( key ) ) {
             merge.push( sprintf( '%s,%s,%s', key, value, colB[key] ) );
@@ -69,11 +68,11 @@ Transformer.mergeCSV = function( csv1, csv2, transform ) {
 Transformer.tempTransform = function( x ) {
     var v = parseFloat(x);
     v = v / 10.0;
-    return sprintf( "%.1f", v );
+    return sprintf( '%.1f', v );
 };
 
 Transformer.normalTempTransform = function ( x ) {
     var f = parseFloat( x );
     var c = ( f-32.0 ) *5.0 /9.0;
-    return sprintf( "%.1f", c );
+    return sprintf( '%.1f', c );
 };
