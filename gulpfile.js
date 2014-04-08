@@ -94,7 +94,7 @@ gulp.task( 'package', function() {
     // copy scripts
     var stream = streamqueue( { objectMode: true } );
     stream.queue( gulp.src( paths.scripts.vendorFiles ) );
-    //stream.queue( gulp.src( paths.scripts.projectFiles ) );
+    stream.queue( gulp.src( paths.scripts.projectFiles ) );
     stream.queue( bundleTemplates() );
 
     return stream.done()
