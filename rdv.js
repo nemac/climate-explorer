@@ -8,6 +8,7 @@ var STATION_DETAIL_TEMPLATE;
 var MAX_SELECTED_STATIONS = 6;
 var BASE_CSV_SOURCE_URL = 'https://s3.amazonaws.com/nemac-ghcnd/';
 var NORMALS_CSV_SOURCE_URL = 'https://s3.amazonaws.com/nemac-normals/NORMAL_';
+var BASE_LAYER_URL = "http://server.arcgisonline.com/ArcGIS/rest/services/World_Street_Map/MapServer";
 
 //
 // globals
@@ -22,13 +23,23 @@ var DATA_SUMMARY = {};
 $(function(){
     $.when(
         $.getJSON( BASE_CSV_SOURCE_URL + 'summary.json'), 
-        $.get( TEMPLATE_LOCATION ) )
-    .done( function( r1, r2 ){
+        $.get( TEMPLATE_LOCATION ) ),
+        $.ajax({ 
+            url: BASE_LAYER_URL + '?f=json&pretty=true',
+            dataType: 'jsonp',
+        })
+    .done( function( r1, r2, r3 ){
         DATA_SUMMARY = r1[0];
         STATION_DETAIL_TEMPLATE = r2[0];
+        var baseLayerInfo = r3;
         
         // deploy map now that the template is ready
         $( '#map' ).mapLite({
+            baseLayer: new OpenLayers.Layer.ArcGISCache(
+            "AGSCache", 
+            BASE_LAYER_URL, {
+                layerInfo: baseLayerInfo
+            }),
             layers: [
                 new MapliteDataSource(
                     'testdata/stations.json',
