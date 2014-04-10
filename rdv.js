@@ -21,25 +21,35 @@ var DATA_SUMMARY = {};
 // Init
 //
 $(function(){
-    $.when(
-        $.getJSON( BASE_CSV_SOURCE_URL + 'summary.json'), 
-        $.get( TEMPLATE_LOCATION ) ),
-        $.ajax({ 
+    
+    var baseLayerInfo;
+    var requests = [
+        $.getJSON( BASE_CSV_SOURCE_URL + 'summary.json', function( data ) {
+            DATA_SUMMARY = data;
+        }),
+        $.get( TEMPLATE_LOCATION, function( template ) {
+            STATION_DETAIL_TEMPLATE = template;            
+        }),
+        $.ajax({
             url: BASE_LAYER_URL + '?f=json&pretty=true',
-            dataType: 'jsonp',
+            dataType: "jsonp",
+            success: function ( info ) {
+                baseLayerInfo = info;
+            }
         })
-    .done( function( r1, r2, r3 ){
-        DATA_SUMMARY = r1[0];
-        STATION_DETAIL_TEMPLATE = r2[0];
-        var baseLayerInfo = r3;
+    ];
+    
+    $.when.apply( $, requests ).done( function(){
+        var baseLayer = new OpenLayers.Layer.ArcGISCache( "AGSCache", BASE_LAYER_URL, {
+            layerInfo: baseLayerInfo
+        });
         
         // deploy map now that the template is ready
         $( '#map' ).mapLite({
-            baseLayer: new OpenLayers.Layer.ArcGISCache(
-            "AGSCache", 
-            BASE_LAYER_URL, {
-                layerInfo: baseLayerInfo
-            }),
+            baseLayer: baseLayer,
+            mapOptions: {
+                resolutions: baseLayer.resolutions
+            },
             layers: [
                 new MapliteDataSource(
                     'testdata/stations.json',
@@ -50,7 +60,7 @@ $(function(){
                 )
             ],
             iconPath: BUILD_BASE_PATH + 'img/',
-            selectCallback: clickPoint
+            selectCallback: clickPoint,
             //zoomPriorities: [ 0, 5, 7, 9 ]
         });
     });
