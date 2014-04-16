@@ -43,13 +43,27 @@ $(function(){
         var baseLayer = new OpenLayers.Layer.ArcGISCache( "AGSCache", BASE_LAYER_URL, {
             layerInfo: baseLayerInfo
         });
+
+        var pl = Permalink(URL({url: window.location.toString()}));
         
         // deploy map now that the template is ready
-        $( '#map' ).mapLite({
+        var mapOptions = {
+            resolutions: baseLayer.resolutions
+        };
+        if (pl.haveZoom()) {
+            mapOptions.zoom = pl.getZoom();
+        }
+        if (pl.haveCenter()) {
+            mapOptions.center = pl.getCenter();
+        }
+        var $mapl = $( '#map' ).mapLite({
             baseLayer: baseLayer,
-            mapOptions: {
-                resolutions: baseLayer.resolutions
+            moveCallback: function(o) {
+                pl.setCenter(o.center);
+                pl.setZoom(o.zoom);
+                window.history.replaceState({}, "RDV", pl.toString());
             },
+            mapOptions: mapOptions,
             layers: [
                 new MapliteDataSource(
                     'testdata/stations.json',
@@ -63,6 +77,12 @@ $(function(){
             selectCallback: clickPoint,
             //zoomPriorities: [ 0, 5, 7, 9 ]
         });
+        // initialize the pl object from the initial map state:
+        (function(o) {
+            pl.setCenter(o.center);
+            pl.setZoom(o.zoom);
+            window.history.replaceState({}, "RDV", pl.toString());
+        }($mapl.mapLite('getCenterAndZoom')));
     });
     
     $( '#stationDetail' ).drawerPanel({
@@ -185,6 +205,113 @@ function deployGraph( type, id ) {
                     )});
         })( window );
     });
+}
+
+//
+// RDV Permalink object
+//
+// This object provides a convenient API for translating between permalink URLs and
+// application state.
+// 
+// Usage:
+//    var pl = Permalink(URL(window.location.toString()));
+//
+function Permalink(url) {
+    var center = null, zoom = null;
+    if ('zoom' in url.params) {
+        zoom = parseInt(url.params.zoom, 10);
+    }
+    if ('center' in url.params) {
+        center = url.params.center.split(',').map(function(s) { return parseFloat(s); });
+    }
+    return {
+        'toString' : function() { return url.toString(); },
+        'haveCenter' : function() { return center !== null; },
+        'getCenter'  : function() { return center; },
+        'setCenter'  : function(c) {
+            center = c;
+            url.params.center = center[0] + "," + center[1];
+        },
+        'haveZoom' : function() { return zoom !== null; },
+        'getZoom'  : function() { return zoom; },
+        'setZoom'  : function(z) {
+            zoom = z;
+            url.params.zoom = zoom.toString();
+        }
+    };
+}
+
+//
+// URL utility object
+// 
+// Call this function to create a URL utility object.  Returns an object containing properties
+// that make it convenient to access and/or construct parts of a URL.
+// 
+// For example:
+// 
+//     // accessing parts of an existing URL:
+//     var url = URL({url: "http://www.example.com/look/ma?x=no&y=hands"});
+//     console.log(url.baseurl);    // ==> "http://www.example.com/look/ma"
+//     console.log(url.params);     // ==> { 'x' : 'no', 'y' : 'hands' }
+//     console.log(url.toString()); // ==> "http://www.example.com/look/ma?x=no&y=hands"
+// 
+//     // constructing a new url:
+//     var url = URL({baseurl: "http://www.example.com/look/ma"});
+//     url.params.x = 42;
+//     url.params.y = 101;
+//     url.params.fred = 'yes';
+//     console.log(url.toString()); // ==> "http:www.example.com/look/ma?x=42&y=101&fred=yes"
+//
+function URL(options) {
+    var paramstring, params, url, i, name, value;
+    var obj = {
+        'params' : {},
+        'baseurl' : null,
+        'toString' : function() {
+            var prop, vals = [];
+            for (prop in obj.params) {
+                vals.push(prop + '=' + obj.params[prop]);
+            }
+            return obj.baseurl + '?' + vals.join("&");
+        }
+    };
+
+    if ('url' in options) {
+        url = options.url;
+
+        i = url.indexOf('?');
+        if (i < 0) {
+            obj.baseurl = url;
+            paramstring = "";
+        } else {
+            obj.baseurl = url.substring(0,i);
+            paramstring = url.substring(i+1); // Remove everything up to and including the first '?' char.
+        }
+
+        if (paramstring.length > 0) {
+            paramstring.split('&').forEach(function(c) {
+                i = c.indexOf('=');
+                if (i >= 0) {
+                    name = c.substring(0,i);
+                    value = c.substring(i+1);
+                } else {
+                    name = c;
+                    value = null;
+                }
+                obj.params[name] = value;
+            });
+        }
+    } else if ('baseurl' in options) {
+        url = options.baseurl;
+        i = url.indexOf('?');
+        if (i < 0) {
+            obj.baseurl = url;
+        } else {
+            obj.baseurl = url.substring(0,i);
+        }
+    }
+
+    return obj;
 }
 
 //
