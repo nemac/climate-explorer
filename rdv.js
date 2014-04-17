@@ -38,6 +38,13 @@ $(function(){
             }
         })
     ];
+
+    var $permalink = $( '#permalink' ).permalink();
+
+    function updatePermalinkDisplay(pl) {
+        window.history.replaceState({}, "RDV", pl.toString());
+        $permalink.permalink('url', pl.toString());
+    }
     
     $.when.apply( $, requests ).done( function(){
         var baseLayer = new OpenLayers.Layer.ArcGISCache( "AGSCache", BASE_LAYER_URL, {
@@ -61,7 +68,8 @@ $(function(){
             moveCallback: function(o) {
                 pl.setCenter(o.center);
                 pl.setZoom(o.zoom);
-                window.history.replaceState({}, "RDV", pl.toString());
+                updatePermalinkDisplay(pl);
+                $permalink.permalink('dismiss');
             },
             mapOptions: mapOptions,
             layers: [
@@ -81,7 +89,7 @@ $(function(){
         (function(o) {
             pl.setCenter(o.center);
             pl.setZoom(o.zoom);
-            window.history.replaceState({}, "RDV", pl.toString());
+            updatePermalinkDisplay(pl);
         }($mapl.mapLite('getCenterAndZoom')));
     });
     
@@ -97,6 +105,7 @@ $(function(){
         onResizeStop: resizePanel,
         templateLocation: BUILD_BASE_PATH + 'tpl/panel.tpl.html'
     });
+
 });
 
 //

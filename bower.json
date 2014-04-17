@@ -4,6 +4,7 @@
   "dependencies": {
     "mustache": "~0.8.1",
     "maplite": "git://github.com/cmy2k/maplite.git",
+    "permalink": "git://github.com/embeepea/permalink.git",
     "drawerpanel": "~1.0.9",
     "multigraph": "http://multigraph.github.io/download/multigraph-min.js"
   },

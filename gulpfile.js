@@ -22,6 +22,7 @@ var paths = {
             './bower_components/maplite/maplite.js',
             './bower_components/mustache/mustache.js',
             './bower_components/drawerpanel/drawerpanel.js',
+            './bower_components/permalink/permalink.js',
             './bower_components/multigraph/index.js'
         ]
     },
@@ -31,6 +32,10 @@ var paths = {
         ],
         images: [
             'img/*.png'
+        ],
+        cssimages: [
+            'bower_components/permalink/link.png',
+            'bower_components/permalink/closebutton.png'
         ],
         templates: './templates/*.xml',
         templateBaseDir: './templates/',
@@ -76,6 +81,9 @@ gulp.task( 'bundle-assets', function() {
         .pipe( filter( '!jquery-ui*/**') )
         .pipe( flatten() )
         .pipe( gulp.dest( paths.buildDest + '/asset/tpl' ) );
+
+    gulp.src( paths.assets.cssimages )
+        .pipe( gulp.dest( paths.buildDest + '/asset' ) );
 
     var cssStream = streamqueue( { objectMode: true } );
     cssStream.queue( gulp.src( paths.assets.css ) );
