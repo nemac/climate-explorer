@@ -94,8 +94,15 @@ $(function(){
     });
 
     var initialPanelState = 'closed';
+    var initialPanelWidth = 600;
     if (pl.haveGp()) {
-        initialPanelState = 'opened';
+        var gp = pl.getGp();
+        if ('open' in gp && gp.open) {
+            initialPanelState = 'opened';
+        }
+        if ('width' in gp) {
+            initialPanelWidth = gp.width;
+        }
     }
     
     $( '#stationDetail' ).drawerPanel({
@@ -104,7 +111,7 @@ $(function(){
         color: '#fee',
         title: 'Station Detail',
         resizable: true,
-        width: 600,
+        width: initialPanelWidth,
         minWidth: 400,
         maxWidth: 800,
         onResizeStop: resizePanel,
@@ -113,11 +120,31 @@ $(function(){
             updatePermalinkDisplay();
         },
         onOpen: function() {
-            pl.setGp({'open' : true});
+            pl.setGp({'open' : true, 'width' : $( '#stationDetail div.drawer' ).width()});
             updatePermalinkDisplay();
         },
         templateLocation: BUILD_BASE_PATH + 'tpl/panel.tpl.html'
     });
+
+
+    function resizePanel() {
+        pl.setGp({ open : 1, width :  $( '#stationDetail div.drawer' ).width() });
+        updatePermalinkDisplay();
+        $.each(stationAndGraphLinkHash, function() {
+            var id = this.id;
+            (function(window) {
+                var graphRef = '#' + id + '-graph';
+                var _jq = window.multigraph.jQuery;
+                var width = _jq( graphRef ).width();
+                var height = _jq( graphRef ).height();
+                _jq( graphRef ).multigraph( 'done', function( m ) {
+                    m.resizeSurface( width, height );
+                    m.width( width ).height( height );
+                    m.redraw();
+                });
+            })(window);
+        });
+    }
 
 });
 
@@ -189,23 +216,6 @@ function removeGraph( ind ) {
     stationAndGraphLinkHash.splice(index, 1);
 
     selectedStationCount--;
-}
-
-function resizePanel() {
-    $.each(stationAndGraphLinkHash, function() {
-        var id = this.id;
-        (function(window) {
-            var graphRef = '#' + id + '-graph';
-            var _jq = window.multigraph.jQuery;
-            var width = _jq( graphRef ).width();
-            var height = _jq( graphRef ).height();
-            _jq( graphRef ).multigraph( 'done', function( m ) {
-                m.resizeSurface( width, height );
-                m.width( width ).height( height );
-                m.redraw();
-            });
-        })(window);
-    });
 }
 
 //
