@@ -41,18 +41,18 @@ $(function(){
 
     var $permalink = $( '#permalink' ).permalink();
 
-    function updatePermalinkDisplay(pl) {
+    var pl = Permalink(URL({url: window.location.toString()}));
+
+    function updatePermalinkDisplay() {
         window.history.replaceState({}, "RDV", pl.toString());
         $permalink.permalink('url', pl.toString());
     }
-    
+        
     $.when.apply( $, requests ).done( function(){
         var baseLayer = new OpenLayers.Layer.ArcGISCache( "AGSCache", BASE_LAYER_URL, {
             layerInfo: baseLayerInfo
         });
 
-        var pl = Permalink(URL({url: window.location.toString()}));
-        
         // deploy map now that the template is ready
         var mapOptions = {
             resolutions: baseLayer.resolutions
@@ -68,7 +68,7 @@ $(function(){
             moveCallback: function(o) {
                 pl.setCenter(o.center);
                 pl.setZoom(o.zoom);
-                updatePermalinkDisplay(pl);
+                updatePermalinkDisplay();
                 $permalink.permalink('dismiss');
             },
             mapOptions: mapOptions,
@@ -89,12 +89,17 @@ $(function(){
         (function(o) {
             pl.setCenter(o.center);
             pl.setZoom(o.zoom);
-            updatePermalinkDisplay(pl);
+            updatePermalinkDisplay();
         }($mapl.mapLite('getCenterAndZoom')));
     });
+
+    var initialPanelState = 'closed';
+    if (pl.haveGp()) {
+        initialPanelState = 'opened';
+    }
     
     $( '#stationDetail' ).drawerPanel({
-        state: 'closed',
+        state: initialPanelState,
         position: 'right',
         color: '#fee',
         title: 'Station Detail',
@@ -103,6 +108,14 @@ $(function(){
         minWidth: 400,
         maxWidth: 800,
         onResizeStop: resizePanel,
+        onClose: function() {
+            pl.setGp({'open' : false});
+            updatePermalinkDisplay();
+        },
+        onOpen: function() {
+            pl.setGp({'open' : true});
+            updatePermalinkDisplay();
+        },
         templateLocation: BUILD_BASE_PATH + 'tpl/panel.tpl.html'
     });
 
@@ -226,12 +239,21 @@ function deployGraph( type, id ) {
 //    var pl = Permalink(URL(window.location.toString()));
 //
 function Permalink(url) {
-    var center = null, zoom = null;
+    var center = null, zoom = null, gp = null;
     if ('zoom' in url.params) {
         zoom = parseInt(url.params.zoom, 10);
     }
     if ('center' in url.params) {
         center = url.params.center.split(',').map(function(s) { return parseFloat(s); });
+    }
+    if ('gp' in url.params) {
+        var fields = url.params.gp.split(':');
+        gp = {
+            'open'  : parseInt(fields[0],10) !== 0
+        }
+        if (fields.length > 1) {
+            gp.width = parseInt(fields[1],10);
+        }
     }
     return {
         'toString' : function() { return url.toString(); },
@@ -246,6 +268,15 @@ function Permalink(url) {
         'setZoom'  : function(z) {
             zoom = z;
             url.params.zoom = zoom.toString();
+        },
+        'haveGp'   : function() { return gp !== null; },
+        'getGp'    : function() { return gp; },
+        'setGp'    : function(g) {
+            gp = g;
+            url.params.gp = gp.open ? "1" : "0";
+            if ('width' in gp) {
+                url.params.gp = url.params.gp + ":" + gp.width;
+            }
         }
     };
 }
