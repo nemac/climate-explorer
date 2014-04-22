@@ -324,6 +324,13 @@ function Permalink(url) {
         'haveGraphs' : function() { return graphs.length > 0; },
         'getGraphs' : function() { return graphs; },
         'addGraph' : function(graph) {
+            var i;
+            // don't add this graph if it's already in the list
+            for (i=0; i<graphs.length; ++i) {
+                if (graphs[i].id === graph.id && graphs[i].type == graph.type) {
+                    return;
+                }
+            }
             graphs.push(graph);
             url.params.graphs = graphs.map(function(g) { return g.id + ":" + g.type; }).join(",");
         },
