@@ -80,7 +80,19 @@ $(function(){
                     'GHCND Stations',
                     'lyr_ghcnd',
                     MARKER_COLORS.RED,
-                    'EPSG:4326'
+                    'EPSG:4326',
+                    null,
+                    function( zoom, points ) {
+                        var filtered = [];
+                        
+                        $.each(points, function( i, point ) {
+                            if ( Math.random() < (zoom + 1) / 10 ) {
+                                filtered.push( point );
+                            }
+                        });
+                        
+                        return filtered;
+                    }
                 )
             ],
             iconPath: BUILD_BASE_PATH + 'img/',
