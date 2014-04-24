@@ -106,18 +106,6 @@ $(function(){
                     });
                     mL.redrawLayer('lyr_ghcnd');
                 }
-                if (pl.haveScales()) {
-                    var scales = pl.getScales();
-                    for (bindingId in scales) {
-                        //TODO: this is where we need to set the initial scales used by the multigraphs
-                        //But the graphs (probably) haven't been created at this point. And there's no easy way to
-                        //adjust the mugl templates to allow the axis scales to be set.  So we probably need
-                        //to create a deferred that resolves when both (a) the graphs have been created, and (b)
-                        //this code right here has run; when that deferred resolves, we set the graph scales.
-                        //Whew, complicated!  Is there a better way???
-                        //console.log(bindingId + ": " + scales[bindingId].min + ": " + scales[bindingId].max);
-                    }
-                }
             }
             //zoomPriorities: [ 0, 5, 7, 9 ]
         });
@@ -228,6 +216,20 @@ $(function(){
                     //var yearFormatter = new window.multigraph.core.DatetimeFormatter("%Y-%M-%D");
                     for (i=0; i<naxes; ++i) {
                         (function(axis) {
+                            if (pl.haveScales()) {
+                                var scales = pl.getScales();
+                                var bindingId = axis.binding().id().replace('-binding','');
+                                var parser;
+                                if (bindingId === "time") {
+                                    parser = window.multigraph.core.DatetimeValue;
+                                } else {
+                                    parser = window.multigraph.core.NumberValue;
+                                }
+                                if (bindingId in scales) {
+                                    axis.setDataRange(parser.parse(scales[bindingId].min),
+                                                      parser.parse(scales[bindingId].max));
+                                }
+                            }
                             axis.addListener('dataRangeSet', function(e) {
                                 updateAxisDebounce(axis.binding().id(), e.min, e.max);
                             });
