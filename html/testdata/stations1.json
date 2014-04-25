@@ -1,0 +1,11 @@
+[
+    { "id": "GHCND:USW00024036", "name": "LEWISTOWN MUNICIPAL AIRPORT, MT US", "lon": -109.458000, "lat": 47.049200, "weight": 0 },
+    { "id": "GHCND:USC00412266", "name": "DANEVANG 1 W, TX US", "lon": -96.231900, "lat": 29.056700, "weight": 1 },
+    { "id": "GHCND:USC00475932", "name": "NEW LONDON, WI US", "lon": -88.718800, "lat": 44.358800, "weight": 2 },
+    { "id": "GHCND:USC00441209", "name": "BURKES GARDEN, VA US", "lon": -81.335800, "lat": 37.092500, "weight": 3 },
+    { "id": "GHCND:USC00200779", "name": "BIG RAPIDS WATERWORK, MI US", "lon": -85.482200, "lat": 43.707200, "weight": 4 },
+    { "id": "GHCND:USC00136103", "name": "NORTHWOOD, IA US", "lon": -93.225200, "lat": 43.438600, "weight": 0 },
+    { "id": "GHCND:USC00410832", "name": "BLANCO, TX US", "lon": -98.428500, "lat": 30.106100, "weight": 1 },
+    { "id": "GHCND:USC00123547", "name": "GREENSBURG, IN US", "lon": -85.489100, "lat": 39.347500, "weight": 2 },
+    { "id": "GHCND:USC00476922", "name": "RACINE, WI US", "lon": -87.786100, "lat": 42.702200, "weight": 3 }
+]

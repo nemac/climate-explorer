@@ -13,7 +13,7 @@ var paths = {
     buildDest : './build',
     scripts: {
         projectFiles: [
-           'rdv.js',
+//         'rdv.js',
            'utils/transformer.js',
            'utils/muglHelper.js'
         ],
@@ -98,11 +98,36 @@ gulp.task( 'bundle-assets', function() {
         .pipe( gulp.dest( paths.buildDest + '/asset' ) );
 });
 
+gulp.task( 'html', ['default'], function() {
+
+    gulp.src( './rdv.html' )
+        .pipe( concat( 'index.html' ) )
+        .pipe( gulp.dest( './html') );
+
+    gulp.src( './build/**' )
+        .pipe( gulp.dest( './html/build') );
+
+    gulp.src( './testdata/**' )
+        .pipe( gulp.dest( './html/testdata') );
+
+    gulp.src( './rdv.js' )
+        .pipe( gulp.dest( './html') );
+
+    gulp.src( './detail.tpl.html' )
+        .pipe( gulp.dest( './html') );
+
+//cp -r build html
+//cp -r testdata html
+//cp rdv.js html
+//cp detail.tpl.html html
+
+});
+
 gulp.task( 'package', function() {
     // copy scripts
     var stream = streamqueue( { objectMode: true } );
     stream.queue( gulp.src( paths.scripts.vendorFiles ) );
-    //stream.queue( gulp.src( paths.scripts.projectFiles ) );
+    stream.queue( gulp.src( paths.scripts.projectFiles ) );
     stream.queue( bundleTemplates() );
 
     return stream.done()

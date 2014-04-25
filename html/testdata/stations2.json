@@ -1,0 +1,16 @@
+[
+    { "id": "GHCND:USW00013724", "name": "ATLANTIC CITY, NJ US", "lon": -74.424300, "lat": 39.379200, "weight": 0 },
+    { "id": "GHCND:USW00094728", "name": "NEW YORK CENTRAL PARK OBS BELVEDERE TOWER, NY US", "lon": -73.969200, "lat": 40.778900, "weight": 1 },
+    { "id": "GHCND:USW00024128", "name": "WINNEMUCCA MUNICIPAL AIRPORT, NV US", "lon": -117.808000, "lat": 40.901700, "weight": 2 },
+    { "id": "GHCND:USW00023271", "name": "SACRAMENTO 5 ESE, CA US", "lon": -121.417000, "lat": 38.555500, "weight": 3 },
+    { "id": "GHCND:USW00014936", "name": "HURON REGIONAL AIRPORT, SD US", "lon": -98.223100, "lat": 44.398100, "weight": 4 },
+    { "id": "GHCND:USC00035186", "name": "NEWPORT, AR US", "lon": -91.274400, "lat": 35.604200, "weight": 0 },
+    { "id": "GHCND:USC00215638", "name": "MORRIS WC EXPERIMENTAL STATION, MN US", "lon": -95.874700, "lat": 45.590200, "weight": 1 },
+    { "id": "GHCND:USC00031152", "name": "CAMDEN 1, AR US", "lon": -92.823600, "lat": 33.590000, "weight": 2 },
+    { "id": "GHCND:USC00200146", "name": "ALMA, MI US", "lon": -84.649100, "lat": 43.386300, "weight": 3 },
+    { "id": "GHCND:USC00200032", "name": "ADRIAN, MI US", "lon": -84.015800, "lat": 41.916300, "weight": 4 },
+    { "id": "GHCND:USC00463544", "name": "GLENVILLE, WV US", "lon": -80.832500, "lat": 38.933900, "weight": 0 },
+    { "id": "GHCND:USC00126001", "name": "MOUNT VERNON, IN US", "lon": -87.895500, "lat": 37.928600, "weight": 1 },
+    { "id": "GHCND:USC00476718", "name": "PORTAGE, WI US", "lon": -89.434100, "lat": 43.527700, "weight": 2 },
+    { "id": "GHCND:USC00252205", "name": "DAVID CITY, NE US", "lon": -97.132700, "lat": 41.249100, "weight": 3 }
+]
