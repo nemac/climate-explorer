@@ -23,7 +23,6 @@ var removeGraph; // gets populated below, but this needs to change
 // Init
 //
 $(function(){
-    
     var baseLayerInfo;
     var requests = [
         $.getJSON( BASE_CSV_SOURCE_URL + 'summary.json', function( data ) {
@@ -295,21 +294,19 @@ $(function(){
             $( 'span.point-index', shiftRef ).html( '(' + newIndex + ')' );
             $( 'div.remove', shiftRef ).attr( 'onclick', "removeGraph('" + newIndex + "')" );
             
-            // update point label
-            shift.point.attributes.label = newIndex;
-            shift.point.layer.redraw();
+            // TODO improve - the selected layer gets rebuilt each time
+            $( '#map' ).mapLite('setLabel', shift.point.id, newIndex);
         }
         
         // remove the selected item
         var point = stationAndGraphLinkHash[index].point;
         $('div#' + stationAndGraphLinkHash[index].id + '-detail', '#stationDetail' ).remove();
-        point.attributes.label = '';
-        point.attributes.selected = false;
-        point.layer.redraw();
+        
+        // TODO parameterize reference?
+        $( '#map' ).mapLite('unselectPoint', point.id);
         stationAndGraphLinkHash.splice(index, 1);
-
         selectedStationCount--;
-    }
+    };
 
 
 
