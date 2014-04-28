@@ -14,6 +14,7 @@ Building requires node, npm
 Initial setup (to get bower and gulp):
 ```javascript
 npm i -g bower
+bower update
 npm i -g gulp
 npm i -D gulp
 ```
