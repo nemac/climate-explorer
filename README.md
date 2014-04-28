@@ -1,6 +1,6 @@
-# Regional Data Viewer
+# Climate Explorer
 
-Regional Data Viewer is an interactive map application built on top of mapLite 
+Climate Explorer is an interactive map application built on top of mapLite 
 and displays real-time data from each station selected.
 
 ## Dependencies
