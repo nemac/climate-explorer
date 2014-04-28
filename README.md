@@ -46,3 +46,4 @@ before build.
 
 ## Credits
 - Remove element icon is "Cross Icon" from FamFamFam Silk Icons
+
