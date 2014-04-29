@@ -23,7 +23,6 @@ var removeGraph; // gets populated below, but this needs to change
 // Init
 //
 $(function(){
-    
     var baseLayerInfo;
     var requests = [
         $.getJSON( BASE_CSV_SOURCE_URL + 'summary.json', function( data ) {
@@ -86,7 +85,7 @@ $(function(){
                         var filtered = [];
                         
                         $.each(points, function( i, point ) {
-                            if ( Math.random() < (zoom + 1) / 10 ) {
+                            if ( Math.random() < (zoom + 1) / 20 ) {
                                 filtered.push( point );
                             }
                         });
@@ -102,6 +101,7 @@ $(function(){
                 if (pl.haveGraphs()) {
                     pl.getGraphs().forEach(function(graph) {
                         var point = mL.getPoint('lyr_ghcnd', "GHCND:" + graph.id);
+                        mL.selectPoint( 'lyr_ghcnd', "GHCND:" + graph.id );
                         clickPoint(point);
                     });
                     mL.redrawLayer('lyr_ghcnd');
@@ -244,30 +244,22 @@ $(function(){
     //
     // Interactions
     //
-    function clickPoint( point ) {
-        var attr = point.attributes;
-        
+    function clickPoint( point ) {       
         if ( selectedStationCount >= MAX_SELECTED_STATIONS ) {
-            return;
-        }
-
-        if ( attr.selected ) {
             return;
         }
         
         var index = ++selectedStationCount;
-        attr.label = index;
-        attr.selected = true;
         
-        var sanitizedId = sanitizeString( attr.id );
+        var sanitizedId = sanitizeString( point.id );
         
         var contents = Mustache.render(
             STATION_DETAIL_TEMPLATE, {
                 id: sanitizedId,
                 index: index,
-                name: attr.name.toCapitalCase(),
-                lat: attr.lat,
-                lon: attr.lon
+                name: point.name.toCapitalCase(),
+                lat: point.lat,
+                lon: point.lon
             }
         );
         
@@ -302,21 +294,19 @@ $(function(){
             $( 'span.point-index', shiftRef ).html( '(' + newIndex + ')' );
             $( 'div.remove', shiftRef ).attr( 'onclick', "removeGraph('" + newIndex + "')" );
             
-            // update point label
-            shift.point.attributes.label = newIndex;
-            shift.point.layer.redraw();
+            // TODO improve - the selected layer gets rebuilt each time
+            $( '#map' ).mapLite('setLabel', shift.point.id, newIndex);
         }
         
         // remove the selected item
         var point = stationAndGraphLinkHash[index].point;
         $('div#' + stationAndGraphLinkHash[index].id + '-detail', '#stationDetail' ).remove();
-        point.attributes.label = '';
-        point.attributes.selected = false;
-        point.layer.redraw();
+        
+        // TODO parameterize reference?
+        $( '#map' ).mapLite('unselectPoint', point.id);
         stationAndGraphLinkHash.splice(index, 1);
-
         selectedStationCount--;
-    }
+    };
 
 
 
