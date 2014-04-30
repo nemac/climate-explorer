@@ -8,6 +8,6 @@ for (var i = 0; i < stations.length; i++) {
 }
 
 fs.writeFile( 'weighted_stations.json', JSON.stringify(stations), function(e) {
-	if (e) console.log(e);
-	console.log('written');
+    if (e) console.log(e);
+    console.log('written');
 });
