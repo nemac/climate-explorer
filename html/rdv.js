@@ -75,7 +75,7 @@ $(function(){
             mapOptions: mapOptions,
             layers: [
                 new MapliteDataSource(
-                    'testdata/stations.json',
+                    'testdata/weighted_stations.json',
                     'GHCND Stations',
                     'lyr_ghcnd',
                     MARKER_COLORS.RED,
@@ -84,8 +84,20 @@ $(function(){
                     function( zoom, points ) {
                         var filtered = [];
                         
+                        var cutoff = 1;
+                        
+                        if ( 6 <= zoom && zoom < 8  ) {
+                            cutoff = 2;
+                        } else if ( 8 <= zoom && zoom < 10) {
+                            cutoff = 3;
+                        } else if ( 10 <= zoom && zoom < 12 ) {
+                            cutoff = 4; 
+                        } else if ( 12 <= zoom ) {
+                            cutoff = 5;
+                        }
+                        
                         $.each(points, function( i, point ) {
-                            if ( Math.random() < (zoom + 1) / 20 ) {
+                            if ( point.weight <= cutoff ) {
                                 filtered.push( point );
                             }
                         });
