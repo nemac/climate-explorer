@@ -15,7 +15,8 @@ var paths = {
         projectFiles: [
 //         'rdv.js',
            'utils/transformer.js',
-           'utils/muglHelper.js'
+           'utils/muglHelper.js',
+           'utils/urlUtils.js'
         ],
         vendorFiles: [
             './bower_components/maplite/lib/openlayers/OpenLayers.js',

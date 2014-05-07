@@ -42,14 +42,20 @@ MuglHelper.getDataRequests = function ( type, id ) {
 };
 
 MuglHelper.buildMugl = function( data, type, summary, templates ) {
+    /*
     if (type === 'TEMP') {
         var minMax = Transformer.findMinMax( ['TMIN', 'TMAX'], summary );
     }
+    */
+    var d = new Date();
+    var max = $.datepicker.formatDate( 'yymmdd', d );
+    d.setFullYear( d.getFullYear() -1 );
+    var min = $.datepicker.formatDate( 'yymmdd', d );
 
     return Mustache.render(templates['mugl'], {
         marginleft: 50,
-        mindate: minMax.min,
-        maxdate: minMax.max,
+        mindate: min,
+        maxdate: max,
         verticalaxes: MuglHelper.buildVerticalAxisSection( type, 0, templates ),
         plots: MuglHelper.buildPlotSection( type, templates ),
         datas: MuglHelper.buildDataSection( type, data, templates )
