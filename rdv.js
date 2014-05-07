@@ -181,6 +181,7 @@ $(function(){
         pl.setGp({ open : 1, width :  $( '#stationDetail div.drawer' ).width() });
         updatePermalinkDisplay();
         $.each(stationAndGraphLinkHash, function() {
+            console.log('resize');
             var id = this.id;
             (function(window) {
                 var graphRef = '#' + id + '-graph';
@@ -222,9 +223,16 @@ $(function(){
     function deployGraph( type, id ) {
         pl.addGraph({type: type, id : id});
         updatePermalinkDisplay();
+        
+        // add graph area to panel
+        $('<div/>', {
+            id: id + '-' + type + '-graph',
+            class: 'graph'
+        }).appendTo( '#' + id + '-detail' );
+        
         var payload = MuglHelper.getDataRequests( type, id );
         $.when.apply( $, payload.requests ).done( function(){
-            var graphRef = '#' + id + '-graph';
+            var graphRef = '#' + id + '-' + type + '-graph';
             $( graphRef ).empty();
             (function( window ) {
                 var _jq  = window.multigraph.jQuery;
@@ -278,6 +286,7 @@ $(function(){
         
         var sanitizedId = sanitizeString( point.id );
         
+        // put contents into panel
         var contents = Mustache.render(
             STATION_DETAIL_TEMPLATE, {
                 id: sanitizedId,
@@ -285,23 +294,24 @@ $(function(){
                 name: point.name.toCapitalCase(),
                 lat: point.lat,
                 lon: point.lon
-            }
-        );
+        });
         
-        // TODO: add other data params
-        var type = 'TEMP';
-
-        stationAndGraphLinkHash[index] = {
-            id: sanitizedId,
-            type: type,
-            point: point
-        };
-
         $( '#stationDetail' ).drawerPanel( 'appendContents', contents );
         $( '#stationDetail' ).drawerPanel( 'open' );
+        
+        // check types that are currently selected, launch graphs for those        
+        $.each( SUPPORTED_STATION_VARS, function( type, obj ) {
+            if ( obj.selected ) {
+                
+                stationAndGraphLinkHash[index] = {
+                    id: sanitizedId,
+                    type: type,
+                    point: point
+                };
 
-        // TODO: add other data params
-        deployGraph( type, sanitizedId );
+                deployGraph( type, sanitizedId );
+            }
+        });
     }
 
     removeGraph = function removeGraph( ind ) {
@@ -336,7 +346,7 @@ $(function(){
 });
 
 // station data selector helpers
-   
+
 function deployStationDataOptionsSelector() {
     var contents = '';
     $.each(SUPPORTED_STATION_VARS, function( key, obj ) {
@@ -354,22 +364,14 @@ function deployStationDataOptionsSelector() {
         var type = id.replace( '-chk', '' );
 
         if ( this.checked ) {
-            
+            selectVar( type );
         } else {
-            
+            unselectVar( type );
         }
     });
 }
 
-function selectVar() {
-    
-}
-
-function unselectVar() {
-    
-}
-
-function buildStationDataOptionSelector(key, label, selected) {
+function buildStationDataOptionSelector( key, label, selected ) {
     var sel = '';
     if ( selected ) {
         sel = 'checked=""';
@@ -385,9 +387,12 @@ function buildStationDataOptionSelector(key, label, selected) {
     });
 }
 
-function selectDataOption( key ) {
-    // see if checked
-    $( '#' + key + '-chk' )
+function selectVar( type ) {
+    SUPPORTED_STATION_VARS[type].selected = true;
+}
+
+function unselectVar( type ) {
+    SUPPORTED_STATION_VARS[type].selected = false;
 }
 
 //

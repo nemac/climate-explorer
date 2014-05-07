@@ -8,35 +8,47 @@ MuglHelper.getDataRequests = function ( type, id ) {
         data: []
     };
     
-    if (type === "TEMP") {
+    if ( type === 'TEMP' ) {
         payload.requests.push(
             $.get(BASE_CSV_SOURCE_URL + id + '/TMIN.csv.gz')
             .success( function( lines ){
-                payload.data['TMIN'] = lines;
-            })
-        );
+                payload.data['TMIN'] = lines; 
+        }));
 
         payload.requests.push(
             $.get(NORMALS_CSV_SOURCE_URL + 'TMIN/' + id + '.csv.gz')
             .success( function( lines ){
-                payload.data['TMIN_NORMAL'] = lines;
-            })
-        );
+                payload.data['TMIN_NORMAL'] = lines; 
+        }));
 
         payload.requests.push(
             $.get(BASE_CSV_SOURCE_URL + id + '/TMAX.csv.gz')
             .success( function( lines ){
                 payload.data['TMAX'] = lines;
-            })
-        );
+        }));
 
         payload.requests.push(
             $.get(NORMALS_CSV_SOURCE_URL + 'TMAX/' + id + '.csv.gz')
             .success( function( lines ){
-                payload.data['TMAX_NORMAL'] = lines;
-            })
-        );
+                payload.data['TMAX_NORMAL'] = lines; 
+        }));
+            
+    } else { 
+        payload.requests.push(
+            $.get(BASE_CSV_SOURCE_URL + id + '/' + type + '.csv.gz')
+            .success( function( lines ){
+                payload.data[type] = lines; 
+        }));
+
+        /*
+        payload.requests.push(
+            $.get(NORMALS_CSV_SOURCE_URL + type + '/' + id + '.csv.gz')
+            .success( function( lines ){
+                payload.data[type + '_NORMAL'] = lines; 
+        }));
+        */
     }
+    
     
     return payload;
 };
@@ -63,47 +75,96 @@ MuglHelper.buildMugl = function( data, type, summary, templates ) {
 };
 
 MuglHelper.buildVerticalAxisSection = function( type, position, templates ) {
-    if ( type === 'TEMP' ) {
-        return Mustache.render( templates['vertical-axis-tempc'], {
-            position: position
-        });
+    var template;
+    switch ( type ) {
+        case 'TEMP' :
+            template = templates['vertical-axis-tempc'];
+            break;
+        case 'PRCP_YTD' :
+            template = templates['vertical-axis-ytd-prcpmm'];
+            break;
     }
+    
+    return Mustache.render( template, {
+        position: position 
+    });
+
 };
 
 MuglHelper.buildPlotSection = function( type, templates ) {
     var plots = [];
-    if ( type === 'TEMP' ) {
-        plots.push( Mustache.render( templates['plot-normal-temp'] ) );
-        plots.push( Mustache.render( templates['plot-temp'] ) );
+    switch ( type ) {
+        case 'TEMP' :
+            plots.push( Mustache.render( templates['plot-normal-temp'] ) );
+            plots.push( Mustache.render( templates['plot-temp'] ) );
+            break;
+        case 'YTD_PRCP' :
+            //plots.push( Mustache.render( templates['plot-normal-ytd-prcp'] ) );
+            plots.push( Mustache.render( templates['plot-ytd-prcp'] ) );
+            break;
     }
     
     return plots.join( '' );
 };
 
 MuglHelper.buildDataSection = function( type, payload, templates ) {
-    var section = [];
+    var normals = [];
+    var normalTemplate;
+    var data = [];
+    var dataTemplate;
     
     if ( type === 'TEMP' ) {
         // normals        
-        var normals = Transformer.mergeCSV( 
+        normals = Transformer.mergeCSV( 
                 payload['TMIN_NORMAL'], 
                 payload['TMAX_NORMAL'], 
-                Transformer.normalTempTransform);
+                Transformer.normalTempTransform );
         
-        section.push(Mustache.render( templates['data-normal-temp'], {
-            values: normals
-        }));
-        
+        normalTemplate = templates['data-normal-temp'];
+                
         // data
-        var data = Transformer.mergeCSV( 
+        data = Transformer.mergeCSV( 
                 payload['TMIN'], 
                 payload['TMAX'], 
                 Transformer.tempTransform );
+                
+        dataTemplate = templates['data-temp'];
 
-        section.push(Mustache.render( templates['data-temp'], {
-            values: data
+    } else {
+        // normals
+        /*
+        normals = Transformer.transformCSV(
+                payload[type + '_NORMAL'],
+                Transformer.transformations[type + '_NORMAL'] );
+         */
+        
+        var simpleF = function ( x ) {
+            return x;
+        };
+        
+        data = Transformer.transformCSV(
+                payload[type],
+                simpleF ); // Transformer.transformations[type]
+                
+        switch ( type ) {
+            case 'PRCP_YTD' :
+                normalTemplate = templates['data-normal-ytd-prcp'];
+                dataTemplate = templates['data-ytd-prcp'];
+                break
+        }
+    }
+    
+    var section = [];
+    
+    if ( normals.length !== 0 ) {
+        section.push(Mustache.render( normalTemplate, {
+            values: normals
         }));
     }
+    
+    section.push(Mustache.render( dataTemplate, {
+        values: data
+    }));
 
     return section.join( '' );
 };

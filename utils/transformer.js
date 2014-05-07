@@ -33,8 +33,8 @@ Transformer.findMinMax = function( params, data ) {
 /**
  * Merges two two-column CSV strings by the intersection of the first columns
  * 
- * @param {type} csv1        : the first two-column CSV string
- * @param {type} csv2        : the second two-column CSV string
+ * @param array csv1        : the first two-column CSV string
+ * @param array csv2        : the second two-column CSV string
  * @param function transform : transformation that should be applied to each data column
  * @returns array            : a merged three-column CSV
  */
@@ -42,7 +42,7 @@ Transformer.mergeCSV = function( csv1, csv2, transform ) {
     var colA = {};
     $.each( csv1.replace( /(\r\n|\n|\r)/gm, ';' ).split( ';' ), function() {
         var ln = this.split( ',' );
-        colA[ln[0]] = transform(ln[1]);
+        colA[ln[0]] = transform( ln[1] );
     });
     
     // only append the value portion - not the date
@@ -50,7 +50,7 @@ Transformer.mergeCSV = function( csv1, csv2, transform ) {
     $.each( csv2.replace( /(\r\n|\n|\r)/gm, ';' ).split( ';' ), function() {
         var ln = this.split( ',' );
         if ( colA.hasOwnProperty( ln[0] ) ) {
-            colB[ln[0]] = transform(ln[1]);
+            colB[ln[0]] = transform( ln[1] );
         }
     });
     
@@ -63,6 +63,38 @@ Transformer.mergeCSV = function( csv1, csv2, transform ) {
     });
     
     return merge.join( '\n' );
+};
+
+/**
+ * Transforms the data column of a two-column CSV string using a provided transform function
+ * 
+ * @param {type} csv1        : the two-column CSV string
+ * @param function transform : transformation that should be applied to each data column
+ * @returns array            : a transformed CSV
+ */
+Transformer.transformCSV = function( csv, transform ) {
+    var xform = [];
+    $.each( csv.replace( /(\r\n|\n|\r)/gm, ';' ).split( ';' ), function() {
+        var ln = this.split( ',' );
+        xform.push( sprintf( '%s,%s', ln[0], transform( ln[1] ) ) );
+    });
+    
+    return xform.join( '\n' );
+};
+
+Transformer.transformations = {
+    'PRCP_YTD': Transformer.precipYtdTransform,
+    'PRCP_YTD_NORMAL': Transformer.normalPrecipYtdTransform,
+    'TEMP': Transformer.tempTransform,
+    'TEMP_NORMAL': Transformer.normalTempTransform
+};
+
+Transformer.precipYtdTransform = function ( x ) {
+    return x;
+};
+
+Transformer.normalPrecipYtdTransform = function ( x ) {
+    return x;
 };
 
 Transformer.tempTransform = function( x ) {

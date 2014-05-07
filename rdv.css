@@ -16,7 +16,6 @@ html, body, #map {
 .station-detail {
     margin-top: 5px;
     border: 1px #000 solid;
-    height: 200px;
     padding: 7px;
 }
 
