@@ -40,15 +40,12 @@ MuglHelper.getDataRequests = function ( type, id ) {
                 payload.data[type] = lines; 
         }));
 
-        /*
         payload.requests.push(
             $.get(NORMALS_CSV_SOURCE_URL + type + '/' + id + '.csv.gz')
             .success( function( lines ){
                 payload.data[type + '_NORMAL'] = lines; 
         }));
-        */
     }
-    
     
     return payload;
 };
@@ -118,7 +115,7 @@ MuglHelper.buildDataSection = function( type, payload, templates ) {
         normals = Transformer.mergeCSV( 
                 payload['TMIN_NORMAL'], 
                 payload['TMAX_NORMAL'], 
-                Transformer.normalTempTransform );
+                Transformer.transformations[type + '_NORMAL'] );
         
         normalTemplate = templates['data-normal-temp'];
                 
@@ -126,25 +123,19 @@ MuglHelper.buildDataSection = function( type, payload, templates ) {
         data = Transformer.mergeCSV( 
                 payload['TMIN'], 
                 payload['TMAX'], 
-                Transformer.tempTransform );
+                Transformer.transformations[type] );
                 
         dataTemplate = templates['data-temp'];
 
     } else {
         // normals
-        /*
         normals = Transformer.transformCSV(
                 payload[type + '_NORMAL'],
                 Transformer.transformations[type + '_NORMAL'] );
-         */
-        
-        var simpleF = function ( x ) {
-            return x;
-        };
-        
+                
         data = Transformer.transformCSV(
                 payload[type],
-                simpleF ); // Transformer.transformations[type]
+                Transformer.transformations[type] );
                 
         switch ( type ) {
             case 'PRCP_YTD' :
