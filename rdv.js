@@ -191,7 +191,6 @@ $(function(){
     }
     
     function resizeGraphs() {
-        console.log( 'resize' );
         $.each(stationAndGraphLinkHash, function() {
             var id = this.id;
             if ( id ) {
@@ -372,7 +371,6 @@ $(function(){
     removeGraph = function removeGraph( ind ) {
         var index = parseInt( ind );
         
-        console.log( stationAndGraphLinkHash[index] );
         pl.removeGraph(stationAndGraphLinkHash[index]);
         updatePermalinkDisplay();
 
