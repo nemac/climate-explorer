@@ -9,6 +9,16 @@ var MAX_SELECTED_STATIONS = 6;
 var BASE_CSV_SOURCE_URL = 'https://s3.amazonaws.com/nemac-ghcnd/';
 var NORMALS_CSV_SOURCE_URL = 'https://s3.amazonaws.com/nemac-normals/NORMAL_';
 var BASE_LAYER_URL = "http://server.arcgisonline.com/ArcGIS/rest/services/World_Street_Map/MapServer";
+var SUPPORTED_STATION_VARS = {
+    TEMP: {
+        label: 'Temperature',
+        selected: true
+    },
+    PRCP_YTD: {
+        label: 'YTD Precipitation',
+        selected: false
+    }
+};
 
 //
 // globals
@@ -51,7 +61,8 @@ $(function(){
         
     $.when.apply( $, requests ).done( function(){
         var baseLayer = new OpenLayers.Layer.ArcGISCache( "AGSCache", BASE_LAYER_URL, {
-            layerInfo: baseLayerInfo
+            layerInfo: baseLayerInfo,
+            displayInLayerSwitcher: false
         });
 
         // deploy map now that the template is ready
@@ -104,7 +115,11 @@ $(function(){
                         
                         return filtered;
                     }
-                )
+                ),
+                new OpenLayers.Layer.WMS(
+                    "Drought",
+                    "http://torka.unl.edu:8080/cgi-bin/mapserv.exe?map=/ms4w/apps/dm/service/usdm_current_wms.map",
+                    {layers: 'usdm_current', transparent: true})
             ],
             iconPath: BUILD_BASE_PATH + 'img/',
             selectCallback: clickPoint,
@@ -112,14 +127,19 @@ $(function(){
                 // deploy any graphs that should initally be open, based on permalink url params:
                 if (pl.haveGraphs()) {
                     pl.getGraphs().forEach(function(graph) {
-                        var point = mL.getPoint('lyr_ghcnd', "GHCND:" + graph.id);
-                        mL.selectPoint( 'lyr_ghcnd', "GHCND:" + graph.id );
-                        clickPoint(point);
+                        if ( SUPPORTED_STATION_VARS[graph.type] ) {
+                            // mark type as selected
+                            SUPPORTED_STATION_VARS[graph.type].selected = true;
+                            mL.selectPoint( 'lyr_ghcnd', "GHCND:" + graph.id );
+                            deployGraph( graph.id, graph.type );
+                        }
                     });
-                    mL.redrawLayer('lyr_ghcnd');
+                    //mL.redrawLayer('lyr_ghcnd');
                 }
+                
+                // add to selector
+                deployStationDataOptionsSelector();
             }
-            //zoomPriorities: [ 0, 5, 7, 9 ]
         });
 
         // initialize the pl object from the initial map state:
@@ -163,23 +183,32 @@ $(function(){
         templateLocation: BUILD_BASE_PATH + 'tpl/panel.tpl.html'
     });
 
-
     function resizePanel() {
-        pl.setGp({ open : 1, width :  $( '#stationDetail div.drawer' ).width() });
+        pl.setGp({ open : 1, width :  $( '#stationDetail div.drawer' ).width() });        
         updatePermalinkDisplay();
+        
+        resizeGraphs();
+    }
+    
+    function resizeGraphs() {
         $.each(stationAndGraphLinkHash, function() {
             var id = this.id;
-            (function(window) {
-                var graphRef = '#' + id + '-graph';
-                var _jq = window.multigraph.jQuery;
-                var width = _jq( graphRef ).width();
-                var height = _jq( graphRef ).height();
-                _jq( graphRef ).multigraph( 'done', function( m ) {
-                    m.resizeSurface( width, height );
-                    m.width( width ).height( height );
-                    m.redraw();
-                });
-            })(window);
+            if ( id ) {
+                (function(window) {
+                    var _jq = window.multigraph.jQuery;
+                    var _jqRef = _jq( 'div.graph', '#' + id + '-detail' );
+                    // resize if multigraph exists
+                    if ( _jqRef.html().length > 0 ) {
+                        var width = _jqRef.width();
+                        var height = _jqRef.height();
+                        _jqRef.multigraph( 'done', function( m ) {
+                            m.resizeSurface( width, height );
+                            m.width( width ).height( height );
+                            m.redraw();
+                        });
+                    }
+                })(window);
+            }
         });
     }
 
@@ -206,12 +235,41 @@ $(function(){
     //
     // Multigraph builder
     //
-    function deployGraph( type, id ) {
+    function deployGraph( id, type ) {
+        if ( selectedStationCount >= MAX_SELECTED_STATIONS ) {
+            return;
+        }
+        
+        // not already a container for this station, deploy and register the station 
+        if ( $('#' + id + '-detail', '#stationDetail').length === 0 ) {
+            deployAndRegisterStation( id );
+        }
+        
         pl.addGraph({type: type, id : id});
         updatePermalinkDisplay();
+        
+        // add graph area to panel
+        $('<div/>', {
+            id: id + '-' + type + '-graph',
+            class: 'graph'
+        }).appendTo( '#' + id + '-detail' );
+        
+        // register type
+        $.each( stationAndGraphLinkHash, function( i, obj ) {
+            if (obj && obj.id === id) {
+                obj.types.push( type );
+                return false;
+            }
+        });
+        
+        // resize all other graphs in case a scrollbar will appeared
+        if ( selectedStationCount > 1 ) {
+            //resizeGraphs();
+        }
+        
         var payload = MuglHelper.getDataRequests( type, id );
         $.when.apply( $, payload.requests ).done( function(){
-            var graphRef = '#' + id + '-graph';
+            var graphRef = '#' + id + '-' + type + '-graph';
             $( graphRef ).empty();
             (function( window ) {
                 var _jq  = window.multigraph.jQuery;
@@ -248,57 +306,76 @@ $(function(){
                         }(mg.graphs().at(0).axes().at(i)));
                     }
                 });
-
+                
             })( window );
         });
+    }
+    
+    function deployAndRegisterStation( id ) {
+        var index = ++selectedStationCount; // TODO: revise so that is not effectively a 1-indexed array
+        var point = $( '#map' ).mapLite( 'getPoint', 'lyr_ghcnd', "GHCND:" + id);
+            
+        // put contents into panel
+        var contents = Mustache.render(
+            STATION_DETAIL_TEMPLATE, {
+                id: id,
+                index: index,
+                name: point.name.toCapitalCase(),
+                lat: point.lat,
+                lon: point.lon
+        });
+        
+        $( '#stationDetail' ).drawerPanel( 'appendContents', contents );
+        
+        // register selected types
+        stationAndGraphLinkHash[index] = {
+            id: id,
+            types: [],
+            point: point
+        };
     }
 
     //
     // Interactions
     //
-    function clickPoint( point ) {       
+    function clickPoint( point ) {
         if ( selectedStationCount >= MAX_SELECTED_STATIONS ) {
             return;
         }
         
-        var index = ++selectedStationCount;
+        var types = [];
+        
+        // build list of types currently selected
+        $.each( SUPPORTED_STATION_VARS, function( type, obj ) {
+            if ( obj.selected ) {
+                types.push( type );
+            }
+        });
+
+        // disallow selection if no data are to be displayed
+        if ( types.length === 0 ) {
+            $( '#map' ).mapLite('unselectPoint', point.id );
+            return;
+        }
+        
+        $( '#stationDetail' ).drawerPanel( 'open' );
         
         var sanitizedId = sanitizeString( point.id );
         
-        var contents = Mustache.render(
-            STATION_DETAIL_TEMPLATE, {
-                id: sanitizedId,
-                index: index,
-                name: point.name.toCapitalCase(),
-                lat: point.lat,
-                lon: point.lon
-            }
-        );
-        
-        // TODO: add other data params
-        var type = 'TEMP';
-
-        stationAndGraphLinkHash[index] = {
-            id: sanitizedId,
-            type: type,
-            point: point
-        };
-
-        $( '#stationDetail' ).drawerPanel( 'appendContents', contents );
-        $( '#stationDetail' ).drawerPanel( 'open' );
-
-        // TODO: add other data params
-        deployGraph( type, sanitizedId );
+        // deploy for each type
+        $.each( types, function( i, type ){
+            deployGraph( sanitizedId, type );
+        });
     }
 
     removeGraph = function removeGraph( ind ) {
         var index = parseInt( ind );
-
+        
         pl.removeGraph(stationAndGraphLinkHash[index]);
         updatePermalinkDisplay();
-        
+
         // decrement any items greater than the removed
-        for (var i = selectedStationCount; i > index ; i--) {        
+        for (var i = selectedStationCount; i > index ; i--) {
             var shift = stationAndGraphLinkHash[i];
             // update graph label
             var newIndex = i -1;
@@ -318,199 +395,88 @@ $(function(){
         $( '#map' ).mapLite('unselectPoint', point.id);
         stationAndGraphLinkHash.splice(index, 1);
         selectedStationCount--;
+        
+        if ( selectedStationCount === 0 ) {
+            $( '#stationDetail' ).drawerPanel( 'close' );
+        }
     };
-
-
-
-
-
-});
-
-//
-// RDV Permalink object
-//
-// This object provides a convenient API for translating between permalink URLs and
-// application state.
-// 
-// Usage:
-//    var pl = Permalink(URL(window.location.toString()));
-//
-function Permalink(url) {
-    var center = null, zoom = null, gp = null;
-    var graphs = [];
-    var scales = {};
-    if ('zoom' in url.params) {
-        zoom = parseInt(url.params.zoom, 10);
-    }
-    if ('center' in url.params) {
-        center = url.params.center.split(',').map(function(s) { return parseFloat(s); });
-    }
-    if ('gp' in url.params) {
-        var fields = url.params.gp.split(':');
-        gp = {
-            'open'  : parseInt(fields[0],10) !== 0
-        }
-        if (fields.length > 1) {
-            gp.width = parseInt(fields[1],10);
-        }
-    }
-    if ('graphs' in url.params) {
-        url.params.graphs.split(',').forEach(function(graphString) {
-            var fields = graphString.split(':');
-            graphs.push({id:fields[0], type:fields[1]});
+    
+    // station data selector helpers
+    
+    function deployStationDataOptionsSelector() {
+        var contents = '';
+        $.each(SUPPORTED_STATION_VARS, function( key, obj ) {
+            contents += buildStationDataOptionSelector( key, obj.label, obj.selected );
         });
-    }
-    if ('scales' in url.params) {
-        url.params.scales.split(',').forEach(function(scale) {
-            var fields = scale.split(':');
-            scales[fields[0]] = { min : fields[1], max : fields[2] };
-        });
-    }
-    return {
-        'toString' : function() { return url.toString(); },
-        'haveCenter' : function() { return center !== null; },
-        'getCenter'  : function() { return center; },
-        'setCenter'  : function(c) {
-            center = c;
-            url.params.center = center[0] + "," + center[1];
-        },
-        'haveZoom' : function() { return zoom !== null; },
-        'getZoom'  : function() { return zoom; },
-        'setZoom'  : function(z) {
-            zoom = z;
-            url.params.zoom = zoom.toString();
-        },
-        'haveGp'   : function() { return gp !== null; },
-        'getGp'    : function() { return gp; },
-        'setGp'    : function(g) {
-            gp = g;
-            url.params.gp = gp.open ? "1" : "0";
-            if ('width' in gp) {
-                url.params.gp = url.params.gp + ":" + gp.width;
-            }
-        },
-        'haveGraphs' : function() { return graphs.length > 0; },
-        'getGraphs' : function() { return graphs; },
-        'addGraph' : function(graph) {
-            var i;
-            // don't add this graph if it's already in the list
-            for (i=0; i<graphs.length; ++i) {
-                if (graphs[i].id === graph.id && graphs[i].type == graph.type) {
-                    return;
-                }
-            }
-            graphs.push(graph);
-            url.params.graphs = graphs.map(function(g) { return g.id + ":" + g.type; }).join(",");
-        },
-        'removeGraph' : function(graph) {
-            var i, j=-1;
-            for (i = 0; i < graphs.length; ++i) {
-                if (graphs[i].type === graph.type && graphs[i].id === graph.id) {
-                    j = i;
-                    break;
-                }
-            }
-            if (j >= 0) {
-                graphs.splice(j,1);
-            }
-            if (graphs.length > 0) {
-                url.params.graphs = graphs.map(function(g) { return g.id + ":" + g.type; }).join(",");
+        
+        $('div.layersDiv').append(
+            '<div id="stationVarLabel" class="dataLbl">Station Data Types</div>' +
+            '<div id="stationVarSelector" class="dataLayersDiv">' + 
+            contents +
+            '</div>');
+        
+        $( 'input.station-var-chk' ).click( function() {
+            var id = this.id;
+            var type = id.replace( '-chk', '' );
+            
+            if ( this.checked ) {
+                selectVar( type );
             } else {
-                delete url.params.graphs;
+                unselectVar( type );
             }
-        },
-        'setScales' : function(aR) {
-            var bindingId;
-            for (bindingId in aR) {
-                if (!(bindingId in scales)) {
-                    scales[bindingId] = {};
-                }
-                scales[bindingId].min = aR[bindingId].min;
-                scales[bindingId].max = aR[bindingId].max;
-            }
-            url.params.scales = Object.keys(scales).map(function(bindingId) {
-                return bindingId.replace("-binding", "") + ":" + scales[bindingId].min + ":" + scales[bindingId].max;
-            }).join(",");
-        },
-        'haveScales' : function() {
-            return Object.keys(scales).length > 0;
-        },
-        'getScales' : function() { return scales; }
-    };
-}
-
-//
-// URL utility object
-// 
-// Call this function to create a URL utility object.  Returns an object containing properties
-// that make it convenient to access and/or construct parts of a URL.
-// 
-// For example:
-// 
-//     // accessing parts of an existing URL:
-//     var url = URL({url: "http://www.example.com/look/ma?x=no&y=hands"});
-//     console.log(url.baseurl);    // ==> "http://www.example.com/look/ma"
-//     console.log(url.params);     // ==> { 'x' : 'no', 'y' : 'hands' }
-//     console.log(url.toString()); // ==> "http://www.example.com/look/ma?x=no&y=hands"
-// 
-//     // constructing a new url:
-//     var url = URL({baseurl: "http://www.example.com/look/ma"});
-//     url.params.x = 42;
-//     url.params.y = 101;
-//     url.params.fred = 'yes';
-//     console.log(url.toString()); // ==> "http:www.example.com/look/ma?x=42&y=101&fred=yes"
-//
-function URL(options) {
-    var paramstring, params, url, i, name, value;
-    var obj = {
-        'params' : {},
-        'baseurl' : null,
-        'toString' : function() {
-            var prop, vals = [];
-            for (prop in obj.params) {
-                vals.push(prop + '=' + obj.params[prop]);
-            }
-            return obj.baseurl + '?' + vals.join("&");
-        }
-    };
-
-    if ('url' in options) {
-        url = options.url;
-
-        i = url.indexOf('?');
-        if (i < 0) {
-            obj.baseurl = url;
-            paramstring = "";
-        } else {
-            obj.baseurl = url.substring(0,i);
-            paramstring = url.substring(i+1); // Remove everything up to and including the first '?' char.
-        }
-
-        if (paramstring.length > 0) {
-            paramstring.split('&').forEach(function(c) {
-                i = c.indexOf('=');
-                if (i >= 0) {
-                    name = c.substring(0,i);
-                    value = c.substring(i+1);
-                } else {
-                    name = c;
-                    value = null;
-                }
-                obj.params[name] = value;
-            });
-        }
-    } else if ('baseurl' in options) {
-        url = options.baseurl;
-        i = url.indexOf('?');
-        if (i < 0) {
-            obj.baseurl = url;
-        } else {
-            obj.baseurl = url.substring(0,i);
-        }
+        });
     }
-
-    return obj;
-}
+    
+    function buildStationDataOptionSelector( key, label, selected ) {
+        var sel = '';
+        if ( selected ) {
+            sel = 'checked=""';
+        }
+        
+        var selectorTemplate = '<input id="{{key}}-chk" type="checkbox" name="{{label}}" value="{{label}}" {{sel}} class="station-var-chk">' +
+            '<label class="labelSpan olButton" style="vertical-align: baseline;">{{label}}</label>' +
+            '<br>';
+        return Mustache.render( selectorTemplate, {
+            key: key,
+            label: label,
+            sel: sel
+        });
+    }
+    
+    function selectVar( type ) {
+        SUPPORTED_STATION_VARS[type].selected = true;
+        
+        // register selected types
+        $.each( stationAndGraphLinkHash, function( i, obj ){
+            if ( obj ) { // have to skip idx 0, because it is a 1-indexed array
+                //obj.types.push( type );
+                deployGraph( obj.id, type );
+            }
+        });
+    }
+    
+    function unselectVar( type ) {
+        SUPPORTED_STATION_VARS[type].selected = false;
+        
+        var rem = [];
+        
+        $.each( stationAndGraphLinkHash, function( i, obj ){
+            if ( obj ) { // have to skip idx 0, because it is a 1-indexed array
+                // check if last graph for station, remove entirely if so
+                if ( obj.types.length <= 1 ) {
+                    rem.push( i );
+                } else {
+                    obj.types.splice( obj.types.indexOf(type), 1 );
+                    $( '#' + obj.id + '-' + type + '-graph' ).remove();
+                }
+            }
+        });
+        
+        $.each( rem, function( i, val ) {
+            removeGraph( val );
+        });
+    }
+});
 
 //
 // Helpers
