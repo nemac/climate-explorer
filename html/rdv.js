@@ -126,15 +126,19 @@ $(function(){
             onCreate: function(mL) {
                 // deploy any graphs that should initally be open, based on permalink url params:
                 if (pl.haveGraphs()) {
+                    var stationVars = {};
                     pl.getGraphs().forEach(function(graph) {
                         if ( SUPPORTED_STATION_VARS[graph.type] ) {
                             // mark type as selected
-                            SUPPORTED_STATION_VARS[graph.type].selected = true;
+                            stationVars[graph.type] = true;
                             mL.selectPoint( 'lyr_ghcnd', "GHCND:" + graph.id );
                             deployGraph( graph.id, graph.type );
                         }
                     });
-                    //mL.redrawLayer('lyr_ghcnd');
+                    
+                    $.each( SUPPORTED_STATION_VARS, function( key ){
+                         SUPPORTED_STATION_VARS[key].selected = stationVars.hasOwnProperty( key );
+                    });
                 }
                 
                 // add to selector
