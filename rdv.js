@@ -115,7 +115,11 @@ $(function(){
                         
                         return filtered;
                     }
-                )
+                ),
+                new OpenLayers.Layer.WMS(
+                    "Drought",
+                    "http://torka.unl.edu:8080/cgi-bin/mapserv.exe?map=/ms4w/apps/dm/service/usdm_current_wms.map",
+                    {layers: 'usdm_current', transparent: true})
             ],
             iconPath: BUILD_BASE_PATH + 'img/',
             selectCallback: clickPoint,
@@ -123,11 +127,14 @@ $(function(){
                 // deploy any graphs that should initally be open, based on permalink url params:
                 if (pl.haveGraphs()) {
                     pl.getGraphs().forEach(function(graph) {
-                        var point = mL.getPoint('lyr_ghcnd', "GHCND:" + graph.id);
-                        mL.selectPoint( 'lyr_ghcnd', "GHCND:" + graph.id );
-                        clickPoint(point);
+                        if ( SUPPORTED_STATION_VARS[graph.type] ) {
+                            // mark type as selected
+                            SUPPORTED_STATION_VARS[graph.type].selected = true;
+                            mL.selectPoint( 'lyr_ghcnd', "GHCND:" + graph.id );
+                            deployGraph( graph.id, graph.type );
+                        }
                     });
-                    mL.redrawLayer('lyr_ghcnd');
+                    //mL.redrawLayer('lyr_ghcnd');
                 }
                 
                 // add to selector
@@ -176,24 +183,33 @@ $(function(){
         templateLocation: BUILD_BASE_PATH + 'tpl/panel.tpl.html'
     });
 
-
     function resizePanel() {
-        pl.setGp({ open : 1, width :  $( '#stationDetail div.drawer' ).width() });
+        pl.setGp({ open : 1, width :  $( '#stationDetail div.drawer' ).width() });        
         updatePermalinkDisplay();
+        
+        resizeGraphs();
+    }
+    
+    function resizeGraphs() {
+        console.log( 'resize' );
         $.each(stationAndGraphLinkHash, function() {
-            console.log('resize');
             var id = this.id;
-            (function(window) {
-                var graphRef = '#' + id + '-graph';
-                var _jq = window.multigraph.jQuery;
-                var width = _jq( graphRef ).width();
-                var height = _jq( graphRef ).height();
-                _jq( graphRef ).multigraph( 'done', function( m ) {
-                    m.resizeSurface( width, height );
-                    m.width( width ).height( height );
-                    m.redraw();
-                });
-            })(window);
+            if ( id ) {
+                (function(window) {
+                    var _jq = window.multigraph.jQuery;
+                    var _jqRef = _jq( 'div.graph', '#' + id + '-detail' );
+                    // resize if multigraph exists
+                    if ( _jqRef.html().length > 0 ) {
+                        var width = _jqRef.width();
+                        var height = _jqRef.height();
+                        _jqRef.multigraph( 'done', function( m ) {
+                            m.resizeSurface( width, height );
+                            m.width( width ).height( height );
+                            m.redraw();
+                        });
+                    }
+                })(window);
+            }
         });
     }
 
@@ -220,7 +236,16 @@ $(function(){
     //
     // Multigraph builder
     //
-    function deployGraph( type, id ) {
+    function deployGraph( id, type ) {
+        if ( selectedStationCount >= MAX_SELECTED_STATIONS ) {
+            return;
+        }
+        
+        // not already a container for this station, deploy and register the station 
+        if ( $('#' + id + '-detail', '#stationDetail').length === 0 ) {
+            deployAndRegisterStation( id );
+        }
+        
         pl.addGraph({type: type, id : id});
         updatePermalinkDisplay();
         
@@ -229,6 +254,19 @@ $(function(){
             id: id + '-' + type + '-graph',
             class: 'graph'
         }).appendTo( '#' + id + '-detail' );
+        
+        // register type
+        $.each( stationAndGraphLinkHash, function( i, obj ) {
+            if (obj && obj.id === id) {
+                obj.types.push( type );
+                return false;
+            }
+        });
+        
+        // resize all other graphs in case a scrollbar will appeared
+        if ( selectedStationCount > 1 ) {
+            //resizeGraphs();
+        }
         
         var payload = MuglHelper.getDataRequests( type, id );
         $.when.apply( $, payload.requests ).done( function(){
@@ -269,27 +307,19 @@ $(function(){
                         }(mg.graphs().at(0).axes().at(i)));
                     }
                 });
-
+                
             })( window );
         });
     }
-
-    //
-    // Interactions
-    //
-    function clickPoint( point ) {       
-        if ( selectedStationCount >= MAX_SELECTED_STATIONS ) {
-            return;
-        }
-        
-        var index = ++selectedStationCount;
-        
-        var sanitizedId = sanitizeString( point.id );
-        
+    
+    function deployAndRegisterStation( id ) {
+        var index = ++selectedStationCount; // TODO: revise so that is not effectively a 1-indexed array
+        var point = $( '#map' ).mapLite( 'getPoint', 'lyr_ghcnd', "GHCND:" + id);
+            
         // put contents into panel
         var contents = Mustache.render(
             STATION_DETAIL_TEMPLATE, {
-                id: sanitizedId,
+                id: id,
                 index: index,
                 name: point.name.toCapitalCase(),
                 lat: point.lat,
@@ -297,31 +327,57 @@ $(function(){
         });
         
         $( '#stationDetail' ).drawerPanel( 'appendContents', contents );
-        $( '#stationDetail' ).drawerPanel( 'open' );
         
-        // check types that are currently selected, launch graphs for those        
+        // register selected types
+        stationAndGraphLinkHash[index] = {
+            id: id,
+            types: [],
+            point: point
+        };
+    }
+
+    //
+    // Interactions
+    //
+    function clickPoint( point ) {
+        if ( selectedStationCount >= MAX_SELECTED_STATIONS ) {
+            return;
+        }
+        
+        var types = [];
+        
+        // build list of types currently selected
         $.each( SUPPORTED_STATION_VARS, function( type, obj ) {
             if ( obj.selected ) {
-                
-                stationAndGraphLinkHash[index] = {
-                    id: sanitizedId,
-                    type: type,
-                    point: point
-                };
-
-                deployGraph( type, sanitizedId );
+                types.push( type );
             }
+        });
+
+        // disallow selection if no data are to be displayed
+        if ( types.length === 0 ) {
+            $( '#map' ).mapLite('unselectPoint', point.id );
+            return;
+        }
+        
+        $( '#stationDetail' ).drawerPanel( 'open' );
+        
+        var sanitizedId = sanitizeString( point.id );
+        
+        // deploy for each type
+        $.each( types, function( i, type ){
+            deployGraph( sanitizedId, type );
         });
     }
 
     removeGraph = function removeGraph( ind ) {
         var index = parseInt( ind );
-
+        
+        console.log( stationAndGraphLinkHash[index] );
         pl.removeGraph(stationAndGraphLinkHash[index]);
         updatePermalinkDisplay();
-        
+
         // decrement any items greater than the removed
-        for (var i = selectedStationCount; i > index ; i--) {        
+        for (var i = selectedStationCount; i > index ; i--) {
             var shift = stationAndGraphLinkHash[i];
             // update graph label
             var newIndex = i -1;
@@ -341,59 +397,88 @@ $(function(){
         $( '#map' ).mapLite('unselectPoint', point.id);
         stationAndGraphLinkHash.splice(index, 1);
         selectedStationCount--;
-    };
         
-});
-
-// station data selector helpers
-
-function deployStationDataOptionsSelector() {
-    var contents = '';
-    $.each(SUPPORTED_STATION_VARS, function( key, obj ) {
-        contents += buildStationDataOptionSelector( key, obj.label, obj.selected );
-    });
-
-    $('div.layersDiv').append(
-        '<div id="stationVarLabel" class="dataLbl">Station Data Types</div>' +
-        '<div id="stationVarSelector" class="dataLayersDiv">' + 
-        contents +
-        '</div>');
-
-    $( 'input.station-var-chk' ).click( function() {
-        var id = this.id;
-        var type = id.replace( '-chk', '' );
-
-        if ( this.checked ) {
-            selectVar( type );
-        } else {
-            unselectVar( type );
+        if ( selectedStationCount === 0 ) {
+            $( '#stationDetail' ).drawerPanel( 'close' );
         }
-    });
-}
-
-function buildStationDataOptionSelector( key, label, selected ) {
-    var sel = '';
-    if ( selected ) {
-        sel = 'checked=""';
+    };
+    
+    // station data selector helpers
+    
+    function deployStationDataOptionsSelector() {
+        var contents = '';
+        $.each(SUPPORTED_STATION_VARS, function( key, obj ) {
+            contents += buildStationDataOptionSelector( key, obj.label, obj.selected );
+        });
+        
+        $('div.layersDiv').append(
+            '<div id="stationVarLabel" class="dataLbl">Station Data Types</div>' +
+            '<div id="stationVarSelector" class="dataLayersDiv">' + 
+            contents +
+            '</div>');
+        
+        $( 'input.station-var-chk' ).click( function() {
+            var id = this.id;
+            var type = id.replace( '-chk', '' );
+            
+            if ( this.checked ) {
+                selectVar( type );
+            } else {
+                unselectVar( type );
+            }
+        });
     }
     
-    var selectorTemplate = '<input id="{{key}}-chk" type="checkbox" name="{{label}}" value="{{label}}" {{sel}} class="station-var-chk">' +
+    function buildStationDataOptionSelector( key, label, selected ) {
+        var sel = '';
+        if ( selected ) {
+            sel = 'checked=""';
+        }
+        
+        var selectorTemplate = '<input id="{{key}}-chk" type="checkbox" name="{{label}}" value="{{label}}" {{sel}} class="station-var-chk">' +
             '<label class="labelSpan olButton" style="vertical-align: baseline;">{{label}}</label>' +
             '<br>';
-    return Mustache.render( selectorTemplate, {
-        key: key,
-        label: label,
-        sel: sel
-    });
-}
-
-function selectVar( type ) {
-    SUPPORTED_STATION_VARS[type].selected = true;
-}
-
-function unselectVar( type ) {
-    SUPPORTED_STATION_VARS[type].selected = false;
-}
+        return Mustache.render( selectorTemplate, {
+            key: key,
+            label: label,
+            sel: sel
+        });
+    }
+    
+    function selectVar( type ) {
+        SUPPORTED_STATION_VARS[type].selected = true;
+        
+        // register selected types
+        $.each( stationAndGraphLinkHash, function( i, obj ){
+            if ( obj ) { // have to skip idx 0, because it is a 1-indexed array
+                //obj.types.push( type );
+                deployGraph( obj.id, type );
+            }
+        });
+    }
+    
+    function unselectVar( type ) {
+        SUPPORTED_STATION_VARS[type].selected = false;
+        
+        var rem = [];
+        
+        $.each( stationAndGraphLinkHash, function( i, obj ){
+            if ( obj ) { // have to skip idx 0, because it is a 1-indexed array
+                // check if last graph for station, remove entirely if so
+                if ( obj.types.length <= 1 ) {
+                    rem.push( i );
+                } else {
+                    obj.types.splice( obj.types.indexOf(type), 1 );
+                    $( '#' + obj.id + '-' + type + '-graph' ).remove();
+                }
+            }
+        });
+        
+        $.each( rem, function( i, val ) {
+            removeGraph( val );
+        });
+    }
+});
 
 //
 // Helpers

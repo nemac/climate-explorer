@@ -76,12 +76,15 @@ function Permalink(url) {
             url.params.graphs = graphs.map(function(g) { return g.id + ":" + g.type; }).join(",");
         },
         'removeGraph' : function(graph) {
-            var i, j=-1;
+            var i, j, k =-1;
             for (i = 0; i < graphs.length; ++i) {
-                if (graphs[i].type === graph.type && graphs[i].id === graph.id) {
-                    j = i;
-                    break;
+                for ( k = 0; k < graph.types.length; k++ ) {
+                    if (graphs[i].type === graph.types[k] && graphs[i].id === graph.id) {
+                        j = i;
+                        break;
+                    }
                 }
+                
             }
             if (j >= 0) {
                 graphs.splice(j,1);

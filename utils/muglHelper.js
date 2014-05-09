@@ -95,8 +95,8 @@ MuglHelper.buildPlotSection = function( type, templates ) {
             plots.push( Mustache.render( templates['plot-normal-temp'] ) );
             plots.push( Mustache.render( templates['plot-temp'] ) );
             break;
-        case 'YTD_PRCP' :
-            //plots.push( Mustache.render( templates['plot-normal-ytd-prcp'] ) );
+        case 'PRCP_YTD' :
+            plots.push( Mustache.render( templates['plot-normal-ytd-prcp'] ) );
             plots.push( Mustache.render( templates['plot-ytd-prcp'] ) );
             break;
     }
@@ -132,7 +132,7 @@ MuglHelper.buildDataSection = function( type, payload, templates ) {
         normals = Transformer.transformCSV(
                 payload[type + '_NORMAL'],
                 Transformer.transformations[type + '_NORMAL'] );
-                
+
         data = Transformer.transformCSV(
                 payload[type],
                 Transformer.transformations[type] );
