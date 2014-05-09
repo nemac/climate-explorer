@@ -103,19 +103,23 @@ gulp.task( 'html', ['default'], function() {
 
     gulp.src( './rdv.html' )
         .pipe( concat( 'index.html' ) )
-        .pipe( gulp.dest( './html') );
+        .pipe( gulp.dest( './html' ) );
 
     gulp.src( './build/**' )
-        .pipe( gulp.dest( './html/build') );
+        .pipe( gulp.dest( './html/build' ) );
 
     gulp.src( './testdata/**' )
-        .pipe( gulp.dest( './html/testdata') );
+        .pipe( gulp.dest( './html/testdata' ) );
 
     gulp.src( './rdv.js' )
-        .pipe( gulp.dest( './html') );
+        .pipe( gulp.dest( './html' ) );
 
     gulp.src( './detail.tpl.html' )
-        .pipe( gulp.dest( './html') );
+        .pipe( gulp.dest( './html' ) );
+
+    // temporary fix - need to override how OL references images
+    gulp.src( './img/**' )
+	.pipe( gulp.dest( './html/img' ) );
 
 //cp -r build html
 //cp -r testdata html
