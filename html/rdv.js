@@ -201,8 +201,8 @@ $(function(){
                 (function(window) {
                     var _jq = window.multigraph.jQuery;
                     var _jqRef = _jq( 'div.graph', '#' + id + '-detail' );
-                    // resize if multigraph exists
-                    if ( _jqRef.html().length > 0 ) {
+                    // resize if multigraph has been deployed
+                    if ( typeof _jqRef.find( 'canvas' ).html() !== 'undefined' && _jqRef.find( 'canvas' ).html().length > 0 ) {
                         var width = _jqRef.width();
                         var height = _jqRef.height();
                         _jqRef.multigraph( 'done', function( m ) {
@@ -258,6 +258,9 @@ $(function(){
             class: 'graph'
         }).appendTo( '#' + id + '-detail' );
         
+        // resize other graphs in case scrollbar appears
+        resizeGraphs();
+        
         // register type
         $.each( stationAndGraphLinkHash, function( i, obj ) {
             if (obj && obj.id === id) {
@@ -265,11 +268,6 @@ $(function(){
                 return false;
             }
         });
-        
-        // resize all other graphs in case a scrollbar will appeared
-        if ( selectedStationCount > 1 ) {
-            //resizeGraphs();
-        }
         
         var payload = MuglHelper.getDataRequests( type, id );
         $.when.apply( $, payload.requests ).done( function(){
@@ -470,7 +468,11 @@ $(function(){
                 if ( obj.types.length <= 1 ) {
                     rem.push( i );
                 } else {
-                    obj.types.splice( obj.types.indexOf(type), 1 );
+                    // remove url param
+                    pl.removeGraph( $.extend( {}, obj, { types: [ type ] }) );
+                    updatePermalinkDisplay();
+                    
+                    obj.types.splice( obj.types.indexOf( type ), 1 );
                     $( '#' + obj.id + '-' + type + '-graph' ).remove();
                 }
             }
