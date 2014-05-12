@@ -76,19 +76,15 @@ function Permalink(url) {
             url.params.graphs = graphs.map(function(g) { return g.id + ":" + g.type; }).join(",");
         },
         'removeGraph' : function(graph) {
-            var i, j, k =-1;
-            for (i = 0; i < graphs.length; ++i) {
-                for ( k = 0; k < graph.types.length; k++ ) {
-                    if (graphs[i].type === graph.types[k] && graphs[i].id === graph.id) {
-                        j = i;
+            for ( var i = graphs.length - 1; i >= 0; i-- ) {
+                for ( var j = 0; j < graph.types.length; j++ ) {
+                    if (graphs[i].type === graph.types[j] && graphs[i].id === graph.id) {    
+                        graphs.splice ( i, 1 );
                         break;
                     }
-                }
-                
+                }   
             }
-            if (j >= 0) {
-                graphs.splice(j,1);
-            }
+
             if (graphs.length > 0) {
                 url.params.graphs = graphs.map(function(g) { return g.id + ":" + g.type; }).join(",");
             } else {

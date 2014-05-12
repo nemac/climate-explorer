@@ -72,7 +72,7 @@ html, body, #map {
 
 #permalink {
    position: absolute;
-   top: 13px;
+   top: 11px;
    left: 65px;
    z-index: 10000;
    font-weight: bold;

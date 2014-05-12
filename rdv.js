@@ -470,7 +470,11 @@ $(function(){
                 if ( obj.types.length <= 1 ) {
                     rem.push( i );
                 } else {
-                    obj.types.splice( obj.types.indexOf(type), 1 );
+                    // remove url param
+                    pl.removeGraph( $.extend( {}, obj, { types: [ type ] }) );
+                    updatePermalinkDisplay();
+                    
+                    obj.types.splice( obj.types.indexOf( type ), 1 );
                     $( '#' + obj.id + '-' + type + '-graph' ).remove();
                 }
             }
