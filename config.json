@@ -1,0 +1,15 @@
+{
+    "baseLayers": [ {
+        "id": "",
+        "type": "arcgis",
+        "name": "Street",
+        "url": "http://server.arcgisonline.com/ArcGIS/rest/services/World_Street_Map/MapServer",
+        "toggle": false
+    }],
+    "wms": [ {
+        "id": "",
+        "name": "Drought",
+        "url": "http://torka.unl.edu:8080/cgi-bin/mapserv.exe?map=/ms4w/apps/dm/service/usdm_current_wms.map",
+        "layers": "usdm_current"
+    }]
+}

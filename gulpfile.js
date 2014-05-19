@@ -14,13 +14,12 @@ var paths = {
     scripts: {
         projectFiles: [
 //         'rdv.js',
-           'utils/transformer.js',
-           'utils/muglHelper.js',
-           'utils/urlUtils.js'
+           './utils/*.js'
         ],
         vendorFiles: [
             './bower_components/maplite/lib/openlayers/OpenLayers.js',
             './bower_components/maplite/maplite.js',
+            './bower_components/maplite/config.js',
             './bower_components/mustache/mustache.js',
             './bower_components/drawerpanel/drawerpanel.js',
             './bower_components/permalink/permalink.js',

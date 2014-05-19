@@ -8,7 +8,7 @@ var STATION_DETAIL_TEMPLATE;
 var MAX_SELECTED_STATIONS = 6;
 var BASE_CSV_SOURCE_URL = 'https://s3.amazonaws.com/nemac-ghcnd/';
 var NORMALS_CSV_SOURCE_URL = 'https://s3.amazonaws.com/nemac-normals/NORMAL_';
-var BASE_LAYER_URL = "http://server.arcgisonline.com/ArcGIS/rest/services/World_Street_Map/MapServer";
+var APP_CONFIG_URL = 'config.json';
 var SUPPORTED_STATION_VARS = {
     TEMP: {
         label: 'Temperature',
@@ -33,20 +33,12 @@ var removeGraph; // gets populated below, but this needs to change
 // Init
 //
 $(function(){
-    var baseLayerInfo;
     var requests = [
         $.getJSON( BASE_CSV_SOURCE_URL + 'summary.json', function( data ) {
             DATA_SUMMARY = data;
         }),
         $.get( TEMPLATE_LOCATION, function( template ) {
             STATION_DETAIL_TEMPLATE = template;            
-        }),
-        $.ajax({
-            url: BASE_LAYER_URL + '?f=json&pretty=true',
-            dataType: "jsonp",
-            success: function ( info ) {
-                baseLayerInfo = info;
-            }
         })
     ];
 
@@ -60,15 +52,8 @@ $(function(){
     }
         
     $.when.apply( $, requests ).done( function(){
-        var baseLayer = new OpenLayers.Layer.ArcGISCache( "AGSCache", BASE_LAYER_URL, {
-            layerInfo: baseLayerInfo,
-            displayInLayerSwitcher: false
-        });
-
+        var mapOptions = {};
         // deploy map now that the template is ready
-        var mapOptions = {
-            resolutions: baseLayer.resolutions
-        };
         if (pl.haveZoom()) {
             mapOptions.zoom = pl.getZoom();
         }
@@ -76,14 +61,14 @@ $(function(){
             mapOptions.center = pl.getCenter();
         }
         var $mapl = $( '#map' ).mapLite({
-            baseLayer: baseLayer,
+            config: APP_CONFIG_URL,
+            mapOptions: mapOptions,
             moveCallback: function(o) {
                 pl.setCenter(o.center);
                 pl.setZoom(o.zoom);
                 updatePermalinkDisplay();
                 $permalink.permalink('dismiss');
             },
-            mapOptions: mapOptions,
             layers: [
                 new MapliteDataSource(
                     'testdata/weighted_stations.json',
@@ -115,11 +100,7 @@ $(function(){
                         
                         return filtered;
                     }
-                ),
-                new OpenLayers.Layer.WMS(
-                    "Drought",
-                    "http://torka.unl.edu:8080/cgi-bin/mapserv.exe?map=/ms4w/apps/dm/service/usdm_current_wms.map",
-                    {layers: 'usdm_current', transparent: true})
+                )
             ],
             iconPath: BUILD_BASE_PATH + 'img/',
             selectCallback: clickPoint,
@@ -143,15 +124,16 @@ $(function(){
                 
                 // add to selector
                 deployStationDataOptionsSelector();
+                
+                // TODO is this problematic to move this into the onCreate method, as opposed to outside as it was before?
+                // initialize the pl object from the initial map state:
+                (function(o) {
+                    pl.setCenter(o.center);
+                    pl.setZoom(o.zoom);
+                    updatePermalinkDisplay();
+                }($mapl.mapLite('getCenterAndZoom')));
             }
         });
-
-        // initialize the pl object from the initial map state:
-        (function(o) {
-            pl.setCenter(o.center);
-            pl.setZoom(o.zoom);
-            updatePermalinkDisplay();
-        }($mapl.mapLite('getCenterAndZoom')));
     });
 
     var initialPanelState = 'closed';
@@ -483,31 +465,3 @@ $(function(){
         });
     }
 });
-
-//
-// Helpers
-//
-function sanitizeString( input ) {
-    //return input.replace( /\W/g, ID_DELIMITER );
-    return input.split( /\W/g )[1];
-}
-
-String.prototype.toCapitalCase = function( allCapsWordLength ) {
-    if ( isNaN( parseInt( allCapsWordLength ) ) ) {
-        allCapsWordLength = 3;
-    }
-    
-    var words = this.split(' ');
-    var capitalCaseString = '';
-    
-    for ( var i = 0; i < words.length; i++ ) {
-        var word = words[i];
-        if (word.length > allCapsWordLength) {
-            capitalCaseString += word.substring(0, 1).toUpperCase() + word.substring(1).toLowerCase() + ' ';
-        } else {
-            capitalCaseString += word.toUpperCase() + ' ';
-        }
-    }
-
-    return capitalCaseString;
-};
