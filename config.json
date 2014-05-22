@@ -7,9 +7,15 @@
         "toggle": false
     }],
     "wms": [ {
-        "id": "",
+        "id": "aaa",
         "name": "Drought",
         "url": "http://torka.unl.edu:8080/cgi-bin/mapserv.exe?map=/ms4w/apps/dm/service/usdm_current_wms.map",
         "layers": "usdm_current"
+    }, {
+        "id": "aab",
+        "name": "Sea Level Rise Inundation (1ft)",
+        "url": "http://csc.noaa.gov/arcgis/services/dc_slr/slr_1ft/MapServer/WMSServer",
+        "layers": "0",
+        "projection": "EPSG:3857"
     }]
 }
