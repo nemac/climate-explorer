@@ -393,9 +393,9 @@ $(function(){
             contents += buildStationDataOptionSelector( key, obj.label, obj.selected );
         });
         
-        $('div.layersDiv').append(
-            '<div id="stationVarLabel" class="dataLbl">Station Data Types</div>' +
-            '<div id="stationVarSelector" class="dataLayersDiv">' + 
+        $('#mlLayerList').append(
+            '<div id="stationVarLabel" class="mlDataLbl">Station Data Types</div>' +
+            '<div id="stationVarSelector">' + 
             contents +
             '</div>');
         
@@ -417,9 +417,9 @@ $(function(){
             sel = 'checked=""';
         }
         
-        var selectorTemplate = '<input id="{{key}}-chk" type="checkbox" name="{{label}}" value="{{label}}" {{sel}} class="station-var-chk">' +
+        var selectorTemplate = '<div class="mlLayerSelect"><input id="{{key}}-chk" type="checkbox" name="{{label}}" value="{{label}}" {{sel}} class="station-var-chk">' +
             '<label class="labelSpan olButton" style="vertical-align: baseline;">{{label}}</label>' +
-            '<br>';
+            '</div>';
         return Mustache.render( selectorTemplate, {
             key: key,
             label: label,
