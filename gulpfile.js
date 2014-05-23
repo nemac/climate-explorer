@@ -116,6 +116,9 @@ gulp.task( 'html', ['default'], function() {
     gulp.src( './detail.tpl.html' )
         .pipe( gulp.dest( './html' ) );
 
+    gulp.src( './config.json' )
+        .pipe( gulp.dest( './html' ) );
+
     // temporary fix - need to override how OL references images
     gulp.src( './img/**' )
 	.pipe( gulp.dest( './html/img' ) );
