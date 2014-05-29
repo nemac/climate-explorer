@@ -62,7 +62,7 @@ MuglHelper.buildMugl = function( data, type, summary, templates ) {
     var min = $.datepicker.formatDate( 'yymmdd', d );
 
     return Mustache.render(templates['mugl'], {
-        marginleft: 50,
+        marginleft: 40,
         mindate: min,
         maxdate: max,
         verticalaxes: MuglHelper.buildVerticalAxisSection( type, 0, templates ),
@@ -75,10 +75,10 @@ MuglHelper.buildVerticalAxisSection = function( type, position, templates ) {
     var template;
     switch ( type ) {
         case 'TEMP' :
-            template = templates['vertical-axis-tempc'];
+            template = templates['vertical-axis-temp'];
             break;
         case 'PRCP_YTD' :
-            template = templates['vertical-axis-ytd-prcpmm'];
+            template = templates['vertical-axis-ytd-prcp'];
             break;
     }
     

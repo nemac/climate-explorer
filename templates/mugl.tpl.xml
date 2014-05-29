@@ -4,14 +4,14 @@
     <icon border="0"/>
   </legend>
   <window margin="0" padding="5" border="1" bordercolor="0x000000"/>
-  <plotarea margintop="10" marginleft="{{{marginleft}}}" marginbottom="35" marginright="10"/>
+  <plotarea margintop="5" marginleft="{{{marginleft}}}" marginbottom="20" marginright="5"/>
   <horizontalaxis id="time" type="datetime" min="{{{mindate}}}" max="{{{maxdate}}}" length="1" base="-1,-1" anchor="-1" tickmin="-5" tickmax="5">
     <labels start="0" anchor="0,0" position="0,-10">
       <label format="%Y" spacing="1000Y 500Y 200Y 100Y 50Y 20Y 10Y 5Y 2Y 1Y"/>
       <label format="%Y-%M" spacing="6M 3M 2M 1M"/>
       <label format="%Y-%M-%D" spacing="30D 20D 15D 10D 5D 2D 1D"/>
     </labels>
-    <title>Year</title>
+    <title></title>
     <binding id="time-binding" min="1900" max="2000"/>
   </horizontalaxis>
 {{{verticalaxes}}}

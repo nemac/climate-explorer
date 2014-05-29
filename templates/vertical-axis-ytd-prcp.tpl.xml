@@ -1,0 +1,13 @@
+    <verticalaxis id="ytd-prcpmm" length="1" position="-1000,0">
+      <labels format="%1d" start="0" spacing="1000 500 200 100 50 20 10 5 2 1" anchor="0,0" position="-15,0" angle="0" />
+      <title angle="90" anchor="0,-1" position="-27,0">YTD Precipitation (mm)</title>
+      <binding id="ytd-prcpmm-binding" min="0" max="1000"/>
+    </verticalaxis>
+    <verticalaxis id="ytd-prcpin"  min="0" max="60" length="1" position="{{{position}}},0">
+      <labels format="%1d" start="0" spacing="1000 500 200 100 50 20 10 5 2 1" anchor="0,0" position="-15,0" angle="0" />
+      <title angle="90" anchor="0,-1" position="-30,0">YTD Precipitation (in)</title>
+      <pan allowed="no"/>
+      <zoom anchor="0" max="250"/>
+      <binding id="ytd-prcpmm-binding" min="0" max="39.37"/>
+    </verticalaxis>
+

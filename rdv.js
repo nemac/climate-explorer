@@ -62,6 +62,16 @@ $(function(){
         }
         var $mapl = $( '#map' ).mapLite({
             config: APP_CONFIG_URL,
+            changeOpacityCallback: function( layerId, opacity ) {
+                // TODO
+                console.log( layerId );
+                console.log( opacity );
+            },
+            layerToggleCallback: function( layerId, isEnabled ) {
+                // TODO
+                console.log( layerId );
+                console.log( isEnabled );
+            },
             mapOptions: mapOptions,
             moveCallback: function(o) {
                 pl.setCenter(o.center);
@@ -182,16 +192,21 @@ $(function(){
             if ( id ) {
                 (function(window) {
                     var _jq = window.multigraph.jQuery;
-                    var _jqRef = _jq( 'div.graph', '#' + id + '-detail' );
+                    var ref = '#' + id + '-detail';
+
                     // resize if multigraph has been deployed
-                    if ( typeof _jqRef.find( 'canvas' ).html() !== 'undefined' && _jqRef.find( 'canvas' ).html().length > 0 ) {
-                        var width = _jqRef.width();
-                        var height = _jqRef.height();
-                        _jqRef.multigraph( 'done', function( m ) {
-                            m.resizeSurface( width, height );
-                            m.width( width ).height( height );
-                            m.redraw();
-                        });
+                    if ( _jq( 'div.graph',  ref ).children().length > 0 ) {
+                        var width = _jq( 'div.graph',  ref ).parent().width();
+                        var height = _jq( 'div.graph',  ref ).height();
+                        try {
+                            _jq( 'div.graph',  ref ).multigraph( 'done', function( m ) {
+                                m.resizeSurface( width, height );
+                                m.width( width ).height( height );
+                                m.redraw();
+                            });
+                        } catch( e ) {
+                            // TODO need better way to figure out if multigraph is initialized
+                        }
                     }
                 })(window);
             }
