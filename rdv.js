@@ -50,7 +50,7 @@ $(function(){
         window.history.replaceState({}, "RDV", pl.toString());
         $permalink.permalink('url', pl.toString());
     }
-        
+
     $.when.apply( $, requests ).done( function(){
         var mapOptions = {};
         // deploy map now that the template is ready
@@ -63,14 +63,16 @@ $(function(){
         var $mapl = $( '#map' ).mapLite({
             config: APP_CONFIG_URL,
             changeOpacityCallback: function( layerId, opacity ) {
-                // TODO
-                console.log( layerId );
-                console.log( opacity );
+                pl.setLayerOpacity(layerId, opacity);
+                updatePermalinkDisplay();
             },
             layerToggleCallback: function( layerId, isEnabled ) {
-                // TODO
-                console.log( layerId );
-                console.log( isEnabled );
+                if (isEnabled) {
+                    pl.addLayer(layerId);
+                } else {
+                    pl.removeLayer(layerId);
+                }
+                updatePermalinkDisplay();
             },
             mapOptions: mapOptions,
             moveCallback: function(o) {
@@ -493,6 +495,7 @@ $(function(){
 function Permalink(url) {
     var center = null, zoom = null, gp = null;
     var graphs = [];
+    var layers = [];
     var scales = {};
     if ('zoom' in url.params) {
         zoom = parseInt(url.params.zoom, 10);
@@ -519,6 +522,12 @@ function Permalink(url) {
         url.params.scales.split(',').forEach(function(scale) {
             var fields = scale.split(':');
             scales[fields[0]] = { min : fields[1], max : fields[2] };
+        });
+    }
+    if ('layers' in url.params) {
+        url.params.layers.split(',').forEach(function(layerString) {
+            var fields = layerString.split(':');
+            layers.push({id:fields[0], opacity:fields[1]});
         });
     }
     return {
@@ -589,7 +598,45 @@ function Permalink(url) {
         'haveScales' : function() {
             return Object.keys(scales).length > 0;
         },
-        'getScales' : function() { return scales; }
+        'getScales' : function() { return scales; },
+        'haveLayers' : function() { return layers.length > 0; },
+        'getLayers' : function() { return layers; },
+        'addLayer' : function(layerId) {
+            var i;
+            // don't add this layer if it's already in the list
+            for (i=0; i<layers.length; ++i) {
+                if (layers[i].id === layerId) {
+                    return;
+                }
+            }
+            layers.push({id : layerId, opacity : 1});
+            url.params.layers = layers.map(function(lyr) { return lyr.id + ":" + lyr.opacity; }).join(",");
+        },
+        'setLayerOpacity' : function(layerId, opacity) {
+            var i;
+            // don't add this layer if it's already in the list
+            for (i=0; i<layers.length; ++i) {
+                if (layers[i].id === layerId) {
+                    layers[i].opacity = opacity;
+                    url.params.layers = layers.map(function(g) { return g.id + ":" + g.opacity; }).join(",");
+                    return;
+                }
+            }
+        },
+        'removeLayer' : function(layerId) {
+            for ( var i = layers.length - 1; i >= 0; i-- ) {
+                if (layers[i].id === layerId) {    
+                    layers.splice ( i, 1 );
+                    break;
+                }
+            }
+            if (layers.length > 0) {
+                url.params.layers = layers.map(function(g) { return g.id + ":" + g.opacity; }).join(",");
+            } else {
+                delete url.params.layers;
+            }
+        }
+
     };
 }
 
