@@ -50,7 +50,7 @@ $(function(){
         window.history.replaceState({}, "RDV", pl.toString());
         $permalink.permalink('url', pl.toString());
     }
-        
+
     $.when.apply( $, requests ).done( function(){
         var mapOptions = {};
         // deploy map now that the template is ready
@@ -63,14 +63,16 @@ $(function(){
         var $mapl = $( '#map' ).mapLite({
             config: APP_CONFIG_URL,
             changeOpacityCallback: function( layerId, opacity ) {
-                // TODO
-                console.log( layerId );
-                console.log( opacity );
+                pl.setLayerOpacity(layerId, opacity);
+                updatePermalinkDisplay();
             },
             layerToggleCallback: function( layerId, isEnabled ) {
-                // TODO
-                console.log( layerId );
-                console.log( isEnabled );
+                if (isEnabled) {
+                    pl.addLayer(layerId);
+                } else {
+                    pl.removeLayer(layerId);
+                }
+                updatePermalinkDisplay();
             },
             mapOptions: mapOptions,
             moveCallback: function(o) {
@@ -115,7 +117,7 @@ $(function(){
             iconPath: BUILD_BASE_PATH + 'img/',
             selectCallback: clickPoint,
             onCreate: function(mL) {
-                // deploy any graphs that should initally be open, based on permalink url params:
+                // deploy any graphs present in the url params:
                 if (pl.haveGraphs()) {
                     var stationVars = {};
                     pl.getGraphs().forEach(function(graph) {
@@ -131,6 +133,12 @@ $(function(){
                          SUPPORTED_STATION_VARS[key].selected = stationVars.hasOwnProperty( key );
                     });
                 }
+
+                // turn on any overlay layers present in the url params:
+                pl.getLayers().forEach(function(layer) {
+                    mL.setLayerVisibility(layer.id, true);
+                    mL.setLayerOpacity(layer.id, layer.opacity);
+                });
                 
                 // add to selector
                 deployStationDataOptionsSelector();
@@ -480,3 +488,161 @@ $(function(){
         });
     }
 });
+
+//
+// RDV Permalink object
+//
+// This object provides a convenient API for translating between permalink URLs and
+// application state.
+// 
+// Usage:
+//    var pl = Permalink(URL(window.location.toString()));
+//
+function Permalink(url) {
+    var center = null, zoom = null, gp = null;
+    var graphs = [];
+    var layers = [];
+    var scales = {};
+    if ('zoom' in url.params) {
+        zoom = parseInt(url.params.zoom, 10);
+    }
+    if ('center' in url.params) {
+        center = url.params.center.split(',').map(function(s) { return parseFloat(s); });
+    }
+    if ('gp' in url.params) {
+        var fields = url.params.gp.split(':');
+        gp = {
+            'open'  : parseInt(fields[0],10) !== 0
+        }
+        if (fields.length > 1) {
+            gp.width = parseInt(fields[1],10);
+        }
+    }
+    if ('graphs' in url.params) {
+        url.params.graphs.split(',').forEach(function(graphString) {
+            var fields = graphString.split(':');
+            graphs.push({id:fields[0], type:fields[1]});
+        });
+    }
+    if ('scales' in url.params) {
+        url.params.scales.split(',').forEach(function(scale) {
+            var fields = scale.split(':');
+            scales[fields[0]] = { min : fields[1], max : fields[2] };
+        });
+    }
+    if ('layers' in url.params) {
+        url.params.layers.split(',').forEach(function(layerString) {
+            var fields = layerString.split(':');
+            layers.push({id:fields[0], opacity:fields[1]});
+        });
+    }
+    return {
+        'toString' : function() { return url.toString(); },
+        'haveCenter' : function() { return center !== null; },
+        'getCenter'  : function() { return center; },
+        'setCenter'  : function(c) {
+            center = c;
+            url.params.center = center[0] + "," + center[1];
+        },
+        'haveZoom' : function() { return zoom !== null; },
+        'getZoom'  : function() { return zoom; },
+        'setZoom'  : function(z) {
+            zoom = z;
+            url.params.zoom = zoom.toString();
+        },
+        'haveGp'   : function() { return gp !== null; },
+        'getGp'    : function() { return gp; },
+        'setGp'    : function(g) {
+            gp = g;
+            url.params.gp = gp.open ? "1" : "0";
+            if ('width' in gp) {
+                url.params.gp = url.params.gp + ":" + gp.width;
+            }
+        },
+        'haveGraphs' : function() { return graphs.length > 0; },
+        'getGraphs' : function() { return graphs; },
+        'addGraph' : function(graph) {
+            var i;
+            // don't add this graph if it's already in the list
+            for (i=0; i<graphs.length; ++i) {
+                if (graphs[i].id === graph.id && graphs[i].type == graph.type) {
+                    return;
+                }
+            }
+            graphs.push(graph);
+            url.params.graphs = graphs.map(function(g) { return g.id + ":" + g.type; }).join(",");
+        },
+        'removeGraph' : function(graph) {
+            for ( var i = graphs.length - 1; i >= 0; i-- ) {
+                for ( var j = 0; j < graph.types.length; j++ ) {
+                    if (graphs[i].type === graph.types[j] && graphs[i].id === graph.id) {    
+                        graphs.splice ( i, 1 );
+                        break;
+                    }
+                }   
+            }
+
+            if (graphs.length > 0) {
+                url.params.graphs = graphs.map(function(g) { return g.id + ":" + g.type; }).join(",");
+            } else {
+                delete url.params.graphs;
+            }
+        },
+        'setScales' : function(aR) {
+            var bindingId;
+            for (bindingId in aR) {
+                if (!(bindingId in scales)) {
+                    scales[bindingId] = {};
+                }
+                scales[bindingId].min = aR[bindingId].min;
+                scales[bindingId].max = aR[bindingId].max;
+            }
+            url.params.scales = Object.keys(scales).map(function(bindingId) {
+                return bindingId.replace("-binding", "") + ":" + scales[bindingId].min + ":" + scales[bindingId].max;
+            }).join(",");
+        },
+        'haveScales' : function() {
+            return Object.keys(scales).length > 0;
+        },
+        'getScales' : function() { return scales; },
+        'haveLayers' : function() { return layers.length > 0; },
+        'getLayers' : function() { return layers; },
+        'addLayer' : function(layerId) {
+            var i;
+            // don't add this layer if it's already in the list
+            for (i=0; i<layers.length; ++i) {
+                if (layers[i].id === layerId) {
+                    return;
+                }
+            }
+            layers.push({id : layerId, opacity : 1});
+            url.params.layers = layers.map(function(lyr) { return lyr.id + ":" + lyr.opacity; }).join(",");
+        },
+        'setLayerOpacity' : function(layerId, opacity) {
+            var i;
+            // don't add this layer if it's already in the list
+            for (i=0; i<layers.length; ++i) {
+                if (layers[i].id === layerId) {
+                    layers[i].opacity = opacity;
+                    url.params.layers = layers.map(function(g) { return g.id + ":" + g.opacity; }).join(",");
+                    return;
+                }
+            }
+        },
+        'removeLayer' : function(layerId) {
+            for ( var i = layers.length - 1; i >= 0; i-- ) {
+                if (layers[i].id === layerId) {    
+                    layers.splice ( i, 1 );
+                    break;
+                }
+            }
+            if (layers.length > 0) {
+                url.params.layers = layers.map(function(g) { return g.id + ":" + g.opacity; }).join(",");
+            } else {
+                delete url.params.layers;
+            }
+        }
+
+    };
+}
+
