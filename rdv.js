@@ -117,7 +117,7 @@ $(function(){
             iconPath: BUILD_BASE_PATH + 'img/',
             selectCallback: clickPoint,
             onCreate: function(mL) {
-                // deploy any graphs that should initally be open, based on permalink url params:
+                // deploy any graphs present in the url params:
                 if (pl.haveGraphs()) {
                     var stationVars = {};
                     pl.getGraphs().forEach(function(graph) {
@@ -133,6 +133,12 @@ $(function(){
                          SUPPORTED_STATION_VARS[key].selected = stationVars.hasOwnProperty( key );
                     });
                 }
+
+                // turn on any overlay layers present in the url params:
+                pl.getLayers().forEach(function(layer) {
+                    mL.setLayerVisibility(layer.id, true);
+                    mL.setLayerOpacity(layer.id, layer.opacity);
+                });
                 
                 // add to selector
                 deployStationDataOptionsSelector();
