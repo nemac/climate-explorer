@@ -81,7 +81,8 @@ $(function(){
                 updatePermalinkDisplay();
                 $permalink.permalink('dismiss');
             },
-            layers: [
+            layers: {
+                maplite: [
                 new MapliteDataSource(
                     'testdata/weighted_stations.json',
                     'GHCND Stations',
@@ -112,8 +113,8 @@ $(function(){
                         
                         return filtered;
                     }
-                )
-            ],
+                )]
+            },
             iconPath: BUILD_BASE_PATH + 'img/',
             selectCallback: clickPoint,
             onCreate: function(mL) {

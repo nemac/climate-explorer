@@ -1,21 +1,37 @@
 {
-    "baseLayers": [ {
-        "id": "",
+    "bases": [ {
+        "id": "base_street",
         "type": "arcgis",
         "name": "Street",
         "url": "http://server.arcgisonline.com/ArcGIS/rest/services/World_Street_Map/MapServer",
-        "toggle": false
-    }],
-    "wms": [ {
-        "id": "aaa",
-        "name": "Drought",
-        "url": "http://torka.unl.edu:8080/cgi-bin/mapserv.exe?map=/ms4w/apps/dm/service/usdm_current_wms.map",
-        "layers": "usdm_current"
+        "isDefault": true
     }, {
-        "id": "aab",
-        "name": "Sea Level Rise Inundation (1ft)",
-        "url": "http://csc.noaa.gov/arcgis/services/dc_slr/slr_1ft/MapServer/WMSServer",
-        "layers": "0",
-        "projection": "EPSG:3857"
-    }]
+        "id": "base_image",
+        "type": "arcgis",
+        "name": "Imagery",
+        "url": "http://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer"
+    } ],
+    "overlays": [ {
+            "id": "aab",
+            "name": "Sea Level Inundation (6ft)",
+            "url": "http://csc.noaa.gov/arcgis/services/dc_slr/slr_6ft/MapServer/WMSServer",
+            "projection": "EPSG:3857",
+            "layers": "0"
+        }, {
+            "id": "aaa",
+            "name": "Drought",
+            "url": "http://torka.unl.edu:8080/cgi-bin/mapserv.exe?map=/ms4w/apps/dm/service/usdm_current_wms.map",
+            "layers": "usdm_current"
+        }
+    ],
+    "groups": [ {
+        "id": "theme_a",
+        "name": "Sea Level Rise",
+        "isDefault": true,
+        "layers": [ "aab" ]
+    }, {
+        "id": "theme_b",
+        "name": "Drought",
+        "layers": [ "aaa", "aab" ]
+    } ]
 }
