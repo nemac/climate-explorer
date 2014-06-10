@@ -1,13 +1,13 @@
 var gulp        = require( 'gulp' );
 var gulpUtil    = require( 'gulp-util' );
 var concat      = require( 'gulp-concat' );
-var gulpBower   = require( 'gulp-bower' );
 var uglify      = require( 'gulp-uglify' );
 var streamqueue = require( 'streamqueue' );
 var filter      = require( 'gulp-filter' );
 var flatten     = require( 'gulp-flatten' );
 var minify      = require( 'gulp-minify-css' );
 var inject      = require( 'gulp-inject' );
+var browserify  = require( 'gulp-browserify' );
 
 var paths = {
     buildDest : './build',
@@ -55,11 +55,6 @@ function bundleTemplates() {
             }
     }));
 }
-
-gulp.task( 'bower', function() {
-    // get the latest
-    gulpBower();
-});
 
 gulp.task( 'bundle-templates', function() {
     return bundleTemplates()
@@ -127,6 +122,15 @@ gulp.task( 'html', ['default'], function() {
 //cp rdv.js html
 //cp detail.tpl.html html
 
+});
+
+gulp.task( 'browserify', function() {
+    gulp.src( 'rdv.js' )
+        .pipe( browserify( {
+            insertGlobals: true
+        }))
+        .pipe( concat( 'app.js' ) )
+        .pipe( gulp.dest( paths.buildDest ) );
 });
 
 gulp.task( 'package', function() {

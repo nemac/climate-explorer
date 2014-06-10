@@ -1,39 +1,70 @@
-//
-// constants
-//
-var BUILD_BASE_PATH = 'build/asset/';
-var ID_DELIMITER = '-';
-var TEMPLATE_LOCATION = 'detail.tpl.html';
-var STATION_DETAIL_TEMPLATE;
-var MAPLITE_CONFIG;
-var MAX_SELECTED_STATIONS = 6;
-var BASE_CSV_SOURCE_URL = 'https://s3.amazonaws.com/nemac-ghcnd/';
-var NORMALS_CSV_SOURCE_URL = 'https://s3.amazonaws.com/nemac-normals/NORMAL_';
-var APP_CONFIG_URL = 'config.json';
-var SUPPORTED_STATION_VARS = {
-    TEMP: {
-        label: 'Temperature',
-        selected: true
-    },
-    PRCP_YTD: {
-        label: 'YTD Precipitation',
-        selected: false
-    }
-};
+/*
+back to gulp include
+require( './bower_components/maplite/lib/openlayers/OpenLayers.js' );
+require( './bower_components/permalink/permalink.js' );
+require( './bower_components/multigraph/index.js );
 
-//
-// globals
-//
-var selectedStationCount = 0;
-var stationAndGraphLinkHash = [];
-var DATA_SUMMARY = {};
 
-var removeGraph; // gets populated below, but this needs to change
+
+require
+require( './bower_components/drawerpanel/drawerpanel.js' );
+require( './bower_components/maplite/maplite.js' );
+require( './bower_components/mustache/mustache.js' );
++ all utils
+*/
+
+
+
+window.OpenLayers = require( './bower_components/maplite/lib/openlayers/OpenLayers.js' ); //!
+console.log( window );
+window.Mustache = require( 'mustache' );
+require( './bower_components/maplite/maplite.js' );
+//require( './bower_components/mustache/mustache.js' ); //!
+require( './bower_components/drawerpanel/drawerpanel.js' );
+require( './bower_components/permalink/permalink.js');
+
+require( './utils/muglHelper.js' );
+require( './utils/stringUtil.js' );
+require( './utils/urlUtils.js' );
+
 
 //
 // Init
 //
 $(function(){
+    
+    ////
+    // constants
+    //
+    var BUILD_BASE_PATH = 'build/asset/';
+    var ID_DELIMITER = '-';
+    var TEMPLATE_LOCATION = 'detail.tpl.html';
+    var STATION_DETAIL_TEMPLATE;
+    var MAPLITE_CONFIG;
+    var MAX_SELECTED_STATIONS = 6;
+    var BASE_CSV_SOURCE_URL = 'https://s3.amazonaws.com/nemac-ghcnd/';
+    var NORMALS_CSV_SOURCE_URL = 'https://s3.amazonaws.com/nemac-normals/NORMAL_';
+    var APP_CONFIG_URL = 'config.json';
+    var SUPPORTED_STATION_VARS = {
+        TEMP: {
+            label: 'Temperature',
+            selected: true
+        },
+        PRCP_YTD: {
+            label: 'YTD Precipitation',
+            selected: false
+        }
+    };
+    
+    //
+    // globals
+    //
+    var selectedStationCount = 0;
+    var stationAndGraphLinkHash = [];
+    var DATA_SUMMARY = {};
+    
+    var removeGraph; // gets populated below, but this needs to change
+    
     var requests = [
         $.getJSON( BASE_CSV_SOURCE_URL + 'summary.json', function( data ) {
             DATA_SUMMARY = data;
