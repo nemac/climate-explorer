@@ -5,6 +5,7 @@ var BUILD_BASE_PATH = 'build/asset/';
 var ID_DELIMITER = '-';
 var TEMPLATE_LOCATION = 'detail.tpl.html';
 var STATION_DETAIL_TEMPLATE;
+var MAPLITE_CONFIG;
 var MAX_SELECTED_STATIONS = 6;
 var BASE_CSV_SOURCE_URL = 'https://s3.amazonaws.com/nemac-ghcnd/';
 var NORMALS_CSV_SOURCE_URL = 'https://s3.amazonaws.com/nemac-normals/NORMAL_';
@@ -39,6 +40,9 @@ $(function(){
         }),
         $.get( TEMPLATE_LOCATION, function( template ) {
             STATION_DETAIL_TEMPLATE = template;            
+        }),
+        $.getJSON( APP_CONFIG_URL, function( mapliteConfig ) {
+            MAPLITE_CONFIG = mapliteConfig;
         })
     ];
 
@@ -61,7 +65,7 @@ $(function(){
             mapOptions.center = pl.getCenter();
         }
         var $mapl = $( '#map' ).mapLite({
-            config: APP_CONFIG_URL,
+            config: MAPLITE_CONFIG,
             changeOpacityCallback: function( layerId, opacity ) {
                 pl.setLayerOpacity(layerId, opacity);
                 updatePermalinkDisplay();
@@ -83,11 +87,11 @@ $(function(){
             },
             layers: {
                 maplite: [
-                new MapliteDataSource(
+                new $.nemac.MapliteDataSource(
                     'testdata/weighted_stations.json',
                     'GHCND Stations',
                     'lyr_ghcnd',
-                    MARKER_COLORS.RED,
+                    $.nemac.MARKER_COLORS.RED,
                     'EPSG:4326',
                     null,
                     function( zoom, points ) {
