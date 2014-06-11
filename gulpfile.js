@@ -13,8 +13,8 @@ var paths = {
     buildDest : './build',
     scripts: {
         projectFiles: [
-//         'rdv.js',
-//         './utils/*.js'
+            'rdv.js',
+            './utils/*.js'
         ],
         vendorFiles: [
             './bower_components/maplite/lib/openlayers/OpenLayers.js',
@@ -130,16 +130,20 @@ gulp.task( 'package', function() {
     // copy scripts
     var stream = streamqueue( { objectMode: true } );
     stream.queue( gulp.src( paths.scripts.vendorFiles ) );
-    // stream.queue( gulp.src( paths.scripts.projectFiles ) ); // project files are handled with require now
     stream.queue( bundleTemplates() );
     stream.queue( browserifyRDV() );
 
     return stream.done()
         .pipe( concat( 'app.js' ) )
-        //.pipe( uglify() )
+        .pipe( uglify() )
         .pipe( gulp.dest( paths.buildDest ) ); 
 });
 
 gulp.task( 'default', ['bundle-assets', 'package'], function() {
     
+});
+
+gulp.task( 'watch', function() {
+    gulp.watch( paths.scripts.projectFiles, ['package']);
+    gulp.watch( paths.assets.templates, ['package']);
 });
