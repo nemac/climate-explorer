@@ -1,28 +1,3 @@
-/*
-back to gulp include
-require( './bower_components/maplite/lib/openlayers/OpenLayers.js' );
-require( './bower_components/permalink/permalink.js' );
-require( './bower_components/multigraph/index.js );
-
-
-
-require
-require( './bower_components/drawerpanel/drawerpanel.js' );
-require( './bower_components/maplite/maplite.js' );
-require( './bower_components/mustache/mustache.js' );
-+ all utils
-*/
-
-
-
-window.OpenLayers = require( './bower_components/maplite/lib/openlayers/OpenLayers.js' ); //!
-console.log( window );
-window.Mustache = require( 'mustache' );
-require( './bower_components/maplite/maplite.js' );
-//require( './bower_components/mustache/mustache.js' ); //!
-require( './bower_components/drawerpanel/drawerpanel.js' );
-require( './bower_components/permalink/permalink.js');
-
 require( './utils/muglHelper.js' );
 require( './utils/stringUtil.js' );
 require( './utils/urlUtils.js' );
