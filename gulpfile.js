@@ -14,7 +14,7 @@ var paths = {
     scripts: {
         projectFiles: [
 //         'rdv.js',
-           './utils/*.js'
+//         './utils/*.js'
         ],
         vendorFiles: [
             './bower_components/maplite/lib/openlayers/OpenLayers.js',
@@ -54,6 +54,13 @@ function bundleTemplates() {
                 return '"' + key + '": \'' + contents + (i + 1 < length ? '\',' : '\'');
             }
     }));
+}
+
+function browserifyRDV() {
+    return gulp.src( 'rdv.js' )
+        .pipe( browserify( {
+            insertGlobals: true
+        }));
 }
 
 gulp.task( 'bundle-templates', function() {
@@ -124,14 +131,14 @@ gulp.task( 'html', ['default'], function() {
 
 });
 
-gulp.task( 'browserify', function() {
-    gulp.src( 'rdv.js' )
-        .pipe( browserify( {
-            insertGlobals: true
-        }))
-        .pipe( concat( 'app.js' ) )
-        .pipe( gulp.dest( paths.buildDest ) );
-});
+//gulp.task( 'browserify', function() {
+//    gulp.src( 'rdv.js' )
+//        .pipe( browserify( {
+//            insertGlobals: true
+//        }))
+//        .pipe( concat( 'rdv-browser.js' ) )
+//        .pipe( gulp.dest( paths.buildDest ) );
+//});
 
 gulp.task( 'package', function() {
     // copy scripts
@@ -139,6 +146,7 @@ gulp.task( 'package', function() {
     stream.queue( gulp.src( paths.scripts.vendorFiles ) );
     stream.queue( gulp.src( paths.scripts.projectFiles ) );
     stream.queue( bundleTemplates() );
+    stream.queue( browserifyRDV() );
 
     return stream.done()
         .pipe( concat( 'app.js' ) )
