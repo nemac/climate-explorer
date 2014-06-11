@@ -124,33 +124,19 @@ gulp.task( 'html', ['default'], function() {
     gulp.src( './img/**' )
 	.pipe( gulp.dest( './html/img' ) );
 
-//cp -r build html
-//cp -r testdata html
-//cp rdv.js html
-//cp detail.tpl.html html
-
 });
-
-//gulp.task( 'browserify', function() {
-//    gulp.src( 'rdv.js' )
-//        .pipe( browserify( {
-//            insertGlobals: true
-//        }))
-//        .pipe( concat( 'rdv-browser.js' ) )
-//        .pipe( gulp.dest( paths.buildDest ) );
-//});
 
 gulp.task( 'package', function() {
     // copy scripts
     var stream = streamqueue( { objectMode: true } );
     stream.queue( gulp.src( paths.scripts.vendorFiles ) );
-    stream.queue( gulp.src( paths.scripts.projectFiles ) );
+    // stream.queue( gulp.src( paths.scripts.projectFiles ) ); // project files are handled with require now
     stream.queue( bundleTemplates() );
     stream.queue( browserifyRDV() );
 
     return stream.done()
         .pipe( concat( 'app.js' ) )
-        .pipe( uglify() )
+        //.pipe( uglify() )
         .pipe( gulp.dest( paths.buildDest ) ); 
 });
 

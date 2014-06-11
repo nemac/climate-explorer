@@ -103,3 +103,5 @@ Transformer.transformations = {
         return sprintf( '%.1f', c );
     }
 };
+
+module.exports = Transformer;

@@ -1,6 +1,3 @@
-//
-// Helpers
-//
 function sanitizeString( input ) {
     //return input.replace( /\W/g, ID_DELIMITER );
     return input.split( /\W/g )[1];
@@ -25,3 +22,5 @@ String.prototype.toCapitalCase = function( allCapsWordLength ) {
 
     return capitalCaseString;
 };
+
+module.exports = sanitizeString;

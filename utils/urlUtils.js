@@ -70,3 +70,5 @@ function URL(options) {
 
     return obj;
 }
+
+module.exports = URL;

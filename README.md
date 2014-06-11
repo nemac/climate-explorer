@@ -13,15 +13,8 @@ Building requires node, npm
 
 Initial setup (to get bower and gulp):
 ```javascript
-npm i -g bower
+npm install
 bower update
-npm i -g gulp
-npm i -D gulp
-```
-
-Required for rdv:
-```javascript
-npm i -D gulp-util gulp-concat gulp-bower gulp-uglify streamqueue gulp-filter gulp-flatten gulp-minify-css gulp-inject
 ```
 
 Once the environment is setup, installing is as simple as typing

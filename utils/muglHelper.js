@@ -1,4 +1,4 @@
-require( './transformer.js' );
+var Transformer = require( './transformer.js' );
 
 function MuglHelper() {
     //
@@ -53,11 +53,6 @@ MuglHelper.getDataRequests = function ( type, id ) {
 };
 
 MuglHelper.buildMugl = function( data, type, summary, templates ) {
-    /*
-    if (type === 'TEMP') {
-        var minMax = Transformer.findMinMax( ['TMIN', 'TMAX'], summary );
-    }
-    */
     var d = new Date();
     var max = $.datepicker.formatDate( 'yymmdd', d );
     d.setFullYear( d.getFullYear() -1 );
@@ -161,3 +156,5 @@ MuglHelper.buildDataSection = function( type, payload, templates ) {
 
     return section.join( '' );
 };
+
+module.exports = MuglHelper;
