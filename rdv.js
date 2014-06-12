@@ -553,7 +553,7 @@ $(function(){
             'getCenter'  : function() { return center; },
             'setCenter'  : function(c) {
                 center = c;
-                url.params.center = center[0] + "," + center[1];
+                url.params.center = sprintf("%.1f", center[0]) + "," + sprintf("%.1f", center[1]);
             },
             'haveZoom' : function() { return zoom !== null; },
             'getZoom'  : function() { return zoom; },
@@ -609,7 +609,9 @@ $(function(){
                     scales[bindingId].max = aR[bindingId].max;
                 }
                 url.params.scales = Object.keys(scales).map(function(bindingId) {
-                    return bindingId.replace("-binding", "") + ":" + scales[bindingId].min + ":" + scales[bindingId].max;
+                    return bindingId.replace("-binding", "") + ":" +
+                        sprintf("%.1f", Number(scales[bindingId].min)) + ":" +
+                        sprintf("%.1f", Number(scales[bindingId].max));
                 }).join(",");
             },
             'haveScales' : function() {
