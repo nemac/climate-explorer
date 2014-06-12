@@ -1,10 +1,10 @@
 var Transformer = require( './transformer.js' );
 
-function MuglHelper() {
-    //
+function MuglHelper( options ) {
+    this.options = options;
 }
 
-MuglHelper.getDataRequests = function ( type, id ) {
+MuglHelper.prototype.getDataRequests = function ( type, id ) {
     var payload = {
         requests: [],
         data: []
@@ -12,38 +12,38 @@ MuglHelper.getDataRequests = function ( type, id ) {
     
     if ( type === 'TEMP' ) {
         payload.requests.push(
-            $.get(BASE_CSV_SOURCE_URL + id + '/TMIN.csv.gz')
+            $.get(this.options.baseUrl + id + '/TMIN.csv.gz')
             .success( function( lines ){
                 payload.data['TMIN'] = lines; 
         }));
 
         payload.requests.push(
-            $.get(NORMALS_CSV_SOURCE_URL + 'TMIN/' + id + '.csv.gz')
+            $.get(this.options.normalsUrl + 'TMIN/' + id + '.csv.gz')
             .success( function( lines ){
                 payload.data['TMIN_NORMAL'] = lines; 
         }));
 
         payload.requests.push(
-            $.get(BASE_CSV_SOURCE_URL + id + '/TMAX.csv.gz')
+            $.get(this.options.baseUrl + id + '/TMAX.csv.gz')
             .success( function( lines ){
                 payload.data['TMAX'] = lines;
         }));
 
         payload.requests.push(
-            $.get(NORMALS_CSV_SOURCE_URL + 'TMAX/' + id + '.csv.gz')
+            $.get(this.options.normalsUrl + 'TMAX/' + id + '.csv.gz')
             .success( function( lines ){
                 payload.data['TMAX_NORMAL'] = lines; 
         }));
             
     } else { 
         payload.requests.push(
-            $.get(BASE_CSV_SOURCE_URL + id + '/' + type + '.csv.gz')
+            $.get(this.options.baseUrl + id + '/' + type + '.csv.gz')
             .success( function( lines ){
                 payload.data[type] = lines; 
         }));
 
         payload.requests.push(
-            $.get(NORMALS_CSV_SOURCE_URL + type + '/' + id + '.csv.gz')
+            $.get(this.options.normalsUrl + type + '/' + id + '.csv.gz')
             .success( function( lines ){
                 payload.data[type + '_NORMAL'] = lines; 
         }));
@@ -52,7 +52,7 @@ MuglHelper.getDataRequests = function ( type, id ) {
     return payload;
 };
 
-MuglHelper.buildMugl = function( data, type, summary, templates ) {
+MuglHelper.prototype.buildMugl = function( data, type, summary, templates ) {
     var d = new Date();
     var max = $.datepicker.formatDate( 'yymmdd', d );
     d.setFullYear( d.getFullYear() -1 );
@@ -62,13 +62,13 @@ MuglHelper.buildMugl = function( data, type, summary, templates ) {
         marginleft: 40,
         mindate: min,
         maxdate: max,
-        verticalaxes: MuglHelper.buildVerticalAxisSection( type, 0, templates ),
-        plots: MuglHelper.buildPlotSection( type, templates ),
-        datas: MuglHelper.buildDataSection( type, data, templates )
+        verticalaxes: this.buildVerticalAxisSection( type, 0, templates ),
+        plots: this.buildPlotSection( type, templates ),
+        datas: this.buildDataSection( type, data, templates )
     });
 };
 
-MuglHelper.buildVerticalAxisSection = function( type, position, templates ) {
+MuglHelper.prototype.buildVerticalAxisSection = function( type, position, templates ) {
     var template;
     switch ( type ) {
         case 'TEMP' :
@@ -85,7 +85,7 @@ MuglHelper.buildVerticalAxisSection = function( type, position, templates ) {
 
 };
 
-MuglHelper.buildPlotSection = function( type, templates ) {
+MuglHelper.prototype.buildPlotSection = function( type, templates ) {
     var plots = [];
     switch ( type ) {
         case 'TEMP' :
@@ -101,7 +101,7 @@ MuglHelper.buildPlotSection = function( type, templates ) {
     return plots.join( '' );
 };
 
-MuglHelper.buildDataSection = function( type, payload, templates ) {
+MuglHelper.prototype.buildDataSection = function( type, payload, templates ) {
     var normals = [];
     var normalTemplate;
     var data = [];
@@ -157,4 +157,8 @@ MuglHelper.buildDataSection = function( type, payload, templates ) {
     return section.join( '' );
 };
 
-module.exports = MuglHelper;
+// TODO: follow class with prototype
+
+module.exports = {
+    MuglHelper: MuglHelper
+}

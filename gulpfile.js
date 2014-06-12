@@ -143,7 +143,8 @@ gulp.task( 'default', ['bundle-assets', 'package'], function() {
     
 });
 
-gulp.task( 'watch', function() {
+// launch and watch
+gulp.task( 'watch', ['default'], function() {
     gulp.watch( paths.scripts.projectFiles, ['package']);
     gulp.watch( paths.assets.templates, ['package']);
 });

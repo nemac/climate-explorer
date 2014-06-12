@@ -2,8 +2,12 @@
 // Init
 //
 $(function(){
+    var BASE_CSV_SOURCE_URL = 'https://s3.amazonaws.com/nemac-ghcnd/';
+    var NORMALS_CSV_SOURCE_URL = 'https://s3.amazonaws.com/nemac-normals/NORMAL_';
+    var MH = require( './utils/muglHelper.js' );
 
-    var MuglHelper = require( './utils/muglHelper.js' );
+    var MuglHelper = new MH.MuglHelper({ baseUrl: BASE_CSV_SOURCE_URL, normalsUrl: NORMALS_CSV_SOURCE_URL });
+
     var sanitizeString = require( './utils/stringUtil.js' );
     var URL = require( './utils/urlUtils.js' );
     
@@ -16,8 +20,6 @@ $(function(){
     var STATION_DETAIL_TEMPLATE;
     var MAPLITE_CONFIG;
     var MAX_SELECTED_STATIONS = 6;
-    var BASE_CSV_SOURCE_URL = 'https://s3.amazonaws.com/nemac-ghcnd/';
-    var NORMALS_CSV_SOURCE_URL = 'https://s3.amazonaws.com/nemac-normals/NORMAL_';
     var APP_CONFIG_URL = 'config.json';
     var SUPPORTED_STATION_VARS = {
         TEMP: {
