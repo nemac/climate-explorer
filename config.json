@@ -53,6 +53,12 @@
             "projection": "EPSG:3857",
             "layers": "0"
         }, {
+            "id": "aal",
+            "name": "Land Cover (2006)",
+            "url": "http://imsref.cr.usgs.gov:80/wmsconnector/com.esri.wms.Esrimap/USGS_EDC_LandCover_NLCD2001",
+            "projection": "EPSG:102100",
+            "layers": "us_states"
+        }, {
             "id": "aah",
             "name": "Hospitals",
             "url": "http://hsip.geoplatform.gov/arcgis/services/HSIP_Public/PublicHealth/MapServer/WMSServer",

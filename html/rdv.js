@@ -1,44 +1,55 @@
 //
-// constants
-//
-var BUILD_BASE_PATH = 'build/asset/';
-var ID_DELIMITER = '-';
-var TEMPLATE_LOCATION = 'detail.tpl.html';
-var STATION_DETAIL_TEMPLATE;
-var MAX_SELECTED_STATIONS = 6;
-var BASE_CSV_SOURCE_URL = 'https://s3.amazonaws.com/nemac-ghcnd/';
-var NORMALS_CSV_SOURCE_URL = 'https://s3.amazonaws.com/nemac-normals/NORMAL_';
-var APP_CONFIG_URL = 'config.json';
-var SUPPORTED_STATION_VARS = {
-    TEMP: {
-        label: 'Temperature',
-        selected: true
-    },
-    PRCP_YTD: {
-        label: 'YTD Precipitation',
-        selected: false
-    }
-};
-
-//
-// globals
-//
-var selectedStationCount = 0;
-var stationAndGraphLinkHash = [];
-var DATA_SUMMARY = {};
-
-var removeGraph; // gets populated below, but this needs to change
-
-//
 // Init
 //
 $(function(){
+    var BASE_CSV_SOURCE_URL = 'https://s3.amazonaws.com/nemac-ghcnd/';
+    var NORMALS_CSV_SOURCE_URL = 'https://s3.amazonaws.com/nemac-normals/NORMAL_';
+    var MH = require( './utils/muglHelper.js' );
+
+    var MuglHelper = new MH.MuglHelper({ baseUrl: BASE_CSV_SOURCE_URL, normalsUrl: NORMALS_CSV_SOURCE_URL });
+
+    var sanitizeString = require( './utils/stringUtil.js' );
+    var URL = require( './utils/urlUtils.js' );
+    
+    ////
+    // constants
+    //
+    var BUILD_BASE_PATH = 'build/asset/';
+    var ID_DELIMITER = '-';
+    var TEMPLATE_LOCATION = 'detail.tpl.html';
+    var STATION_DETAIL_TEMPLATE;
+    var MAPLITE_CONFIG;
+    var MAX_SELECTED_STATIONS = 6;
+    var APP_CONFIG_URL = 'config.json';
+    var SUPPORTED_STATION_VARS = {
+        TEMP: {
+            label: 'Temperature',
+            selected: true
+        },
+        PRCP_YTD: {
+            label: 'YTD Precipitation',
+            selected: false
+        }
+    };
+    
+    //
+    // globals
+    //
+    var selectedStationCount = 0;
+    var stationAndGraphLinkHash = [];
+    var DATA_SUMMARY = {};
+    
+    var removeGraph; // gets populated below, but this needs to change
+    
     var requests = [
         $.getJSON( BASE_CSV_SOURCE_URL + 'summary.json', function( data ) {
             DATA_SUMMARY = data;
         }),
         $.get( TEMPLATE_LOCATION, function( template ) {
             STATION_DETAIL_TEMPLATE = template;            
+        }),
+        $.getJSON( APP_CONFIG_URL, function( mapliteConfig ) {
+            MAPLITE_CONFIG = mapliteConfig;
         })
     ];
 
@@ -61,7 +72,7 @@ $(function(){
             mapOptions.center = pl.getCenter();
         }
         var $mapl = $( '#map' ).mapLite({
-            config: APP_CONFIG_URL,
+            config: MAPLITE_CONFIG,
             changeOpacityCallback: function( layerId, opacity ) {
                 pl.setLayerOpacity(layerId, opacity);
                 updatePermalinkDisplay();
@@ -81,39 +92,40 @@ $(function(){
                 updatePermalinkDisplay();
                 $permalink.permalink('dismiss');
             },
-            layers: [
-                new MapliteDataSource(
-                    'testdata/weighted_stations.json',
-                    'GHCND Stations',
-                    'lyr_ghcnd',
-                    MARKER_COLORS.RED,
-                    'EPSG:4326',
-                    null,
-                    function( zoom, points ) {
-                        var filtered = [];
-                        
-                        var cutoff = 1;
-                        
-                        if ( 6 <= zoom && zoom < 8  ) {
-                            cutoff = 2;
-                        } else if ( 8 <= zoom && zoom < 10) {
-                            cutoff = 3;
-                        } else if ( 10 <= zoom && zoom < 12 ) {
-                            cutoff = 4; 
-                        } else if ( 12 <= zoom ) {
-                            cutoff = 5;
-                        }
-                        
-                        $.each(points, function( i, point ) {
-                            if ( point.weight <= cutoff ) {
-                                filtered.push( point );
+            layers: {
+                maplite: [
+                    new $.nemac.MapliteDataSource(
+                        'testdata/weighted_stations.json',
+                        'GHCND Stations',
+                        'lyr_ghcnd',
+                        $.nemac.MARKER_COLORS.RED,
+                        'EPSG:4326',
+                        null,
+                        function( zoom, points ) {
+                            var filtered = [];
+                            
+                            var cutoff = 1;
+                            
+                            if ( 6 <= zoom && zoom < 8  ) {
+                                cutoff = 2;
+                            } else if ( 8 <= zoom && zoom < 10) {
+                                cutoff = 3;
+                            } else if ( 10 <= zoom && zoom < 12 ) {
+                                cutoff = 4; 
+                            } else if ( 12 <= zoom ) {
+                                cutoff = 5;
                             }
-                        });
-                        
-                        return filtered;
-                    }
-                )
-            ],
+                            
+                            $.each(points, function( i, point ) {
+                                if ( point.weight <= cutoff ) {
+                                    filtered.push( point );
+                                }
+                            });
+                            
+                            return filtered;
+                        }
+                    )]
+            },
             iconPath: BUILD_BASE_PATH + 'img/',
             selectCallback: clickPoint,
             onCreate: function(mL) {
@@ -130,7 +142,7 @@ $(function(){
                     });
                     
                     $.each( SUPPORTED_STATION_VARS, function( key ){
-                         SUPPORTED_STATION_VARS[key].selected = stationVars.hasOwnProperty( key );
+                        SUPPORTED_STATION_VARS[key].selected = stationVars.hasOwnProperty( key );
                     });
                 }
 
@@ -321,7 +333,7 @@ $(function(){
     function deployAndRegisterStation( id ) {
         var index = ++selectedStationCount; // TODO: revise so that is not effectively a 1-indexed array
         var point = $( '#map' ).mapLite( 'getPoint', 'lyr_ghcnd', "GHCND:" + id);
-            
+        
         // put contents into panel
         var contents = Mustache.render(
             STATION_DETAIL_TEMPLATE, {
@@ -330,7 +342,7 @@ $(function(){
                 name: point.name.toCapitalCase(),
                 lat: point.lat,
                 lon: point.lon
-        });
+            });
         
         $( '#stationDetail' ).drawerPanel( 'appendContents', contents );
         
@@ -418,9 +430,9 @@ $(function(){
         
         $('#mlLayerList').append(
             '<div id="stationVarLabel" class="mlDataLbl">Station Data Types</div>' +
-            '<div id="stationVarSelector">' + 
-            contents +
-            '</div>');
+                '<div id="stationVarSelector">' + 
+                contents +
+                '</div>');
         
         $( 'input.station-var-chk' ).click( function() {
             var id = this.id;
@@ -441,8 +453,8 @@ $(function(){
         }
         
         var selectorTemplate = '<div class="mlLayerSelect"><input id="{{key}}-chk" type="checkbox" name="{{label}}" value="{{label}}" {{sel}} class="station-var-chk">' +
-            '<label class="labelSpan olButton" style="vertical-align: baseline;">{{label}}</label>' +
-            '</div>';
+                '<label class="labelSpan olButton" style="vertical-align: baseline;">{{label}}</label>' +
+                '</div>';
         return Mustache.render( selectorTemplate, {
             key: key,
             label: label,
@@ -487,162 +499,163 @@ $(function(){
             removeGraph( val );
         });
     }
-});
 
-//
-// RDV Permalink object
-//
-// This object provides a convenient API for translating between permalink URLs and
-// application state.
-// 
-// Usage:
-//    var pl = Permalink(URL(window.location.toString()));
-//
-function Permalink(url) {
+    //
+    // RDV Permalink object
+    //
+    // This object provides a convenient API for translating between permalink URLs and
+    // application state.
+    // 
+    // Usage:
+    //    var pl = Permalink(URL(window.location.toString()));
+    //
+    function Permalink(url) {
     var center = null, zoom = null, gp = null;
-    var graphs = [];
-    var layers = [];
-    var scales = {};
-    if ('zoom' in url.params) {
-        zoom = parseInt(url.params.zoom, 10);
-    }
-    if ('center' in url.params) {
-        center = url.params.center.split(',').map(function(s) { return parseFloat(s); });
-    }
-    if ('gp' in url.params) {
-        var fields = url.params.gp.split(':');
-        gp = {
-            'open'  : parseInt(fields[0],10) !== 0
+        var graphs = [];
+        var layers = [];
+        var scales = {};
+        if ('zoom' in url.params) {
+            zoom = parseInt(url.params.zoom, 10);
         }
-        if (fields.length > 1) {
-            gp.width = parseInt(fields[1],10);
+        if ('center' in url.params) {
+            center = url.params.center.split(',').map(function(s) { return parseFloat(s); });
         }
-    }
-    if ('graphs' in url.params) {
-        url.params.graphs.split(',').forEach(function(graphString) {
-            var fields = graphString.split(':');
-            graphs.push({id:fields[0], type:fields[1]});
-        });
-    }
-    if ('scales' in url.params) {
-        url.params.scales.split(',').forEach(function(scale) {
-            var fields = scale.split(':');
-            scales[fields[0]] = { min : fields[1], max : fields[2] };
-        });
-    }
-    if ('layers' in url.params) {
-        url.params.layers.split(',').forEach(function(layerString) {
-            var fields = layerString.split(':');
-            layers.push({id:fields[0], opacity:fields[1]});
-        });
-    }
-    return {
-        'toString' : function() { return url.toString(); },
-        'haveCenter' : function() { return center !== null; },
-        'getCenter'  : function() { return center; },
-        'setCenter'  : function(c) {
-            center = c;
-            url.params.center = center[0] + "," + center[1];
-        },
-        'haveZoom' : function() { return zoom !== null; },
-        'getZoom'  : function() { return zoom; },
-        'setZoom'  : function(z) {
-            zoom = z;
-            url.params.zoom = zoom.toString();
-        },
-        'haveGp'   : function() { return gp !== null; },
-        'getGp'    : function() { return gp; },
-        'setGp'    : function(g) {
-            gp = g;
-            url.params.gp = gp.open ? "1" : "0";
-            if ('width' in gp) {
-                url.params.gp = url.params.gp + ":" + gp.width;
+        if ('gp' in url.params) {
+            var fields = url.params.gp.split(':');
+            gp = {
+                'open'  : parseInt(fields[0],10) !== 0
             }
-        },
-        'haveGraphs' : function() { return graphs.length > 0; },
-        'getGraphs' : function() { return graphs; },
-        'addGraph' : function(graph) {
-            var i;
-            // don't add this graph if it's already in the list
-            for (i=0; i<graphs.length; ++i) {
-                if (graphs[i].id === graph.id && graphs[i].type == graph.type) {
-                    return;
+            if (fields.length > 1) {
+                gp.width = parseInt(fields[1],10);
+            }
+        }
+        if ('graphs' in url.params) {
+            url.params.graphs.split(',').forEach(function(graphString) {
+                var fields = graphString.split(':');
+                graphs.push({id:fields[0], type:fields[1]});
+            });
+        }
+        if ('scales' in url.params) {
+            url.params.scales.split(',').forEach(function(scale) {
+                var fields = scale.split(':');
+                scales[fields[0]] = { min : fields[1], max : fields[2] };
+            });
+        }
+        if ('layers' in url.params) {
+            url.params.layers.split(',').forEach(function(layerString) {
+                var fields = layerString.split(':');
+                layers.push({id:fields[0], opacity:fields[1]});
+            });
+        }
+        return {
+            'toString' : function() { return url.toString(); },
+            'haveCenter' : function() { return center !== null; },
+            'getCenter'  : function() { return center; },
+            'setCenter'  : function(c) {
+                center = c;
+                url.params.center = sprintf("%.1f", center[0]) + "," + sprintf("%.1f", center[1]);
+            },
+            'haveZoom' : function() { return zoom !== null; },
+            'getZoom'  : function() { return zoom; },
+            'setZoom'  : function(z) {
+                zoom = z;
+                url.params.zoom = zoom.toString();
+            },
+            'haveGp'   : function() { return gp !== null; },
+            'getGp'    : function() { return gp; },
+            'setGp'    : function(g) {
+                gp = g;
+                url.params.gp = gp.open ? "1" : "0";
+                if ('width' in gp) {
+                    url.params.gp = url.params.gp + ":" + gp.width;
                 }
-            }
-            graphs.push(graph);
-            url.params.graphs = graphs.map(function(g) { return g.id + ":" + g.type; }).join(",");
-        },
-        'removeGraph' : function(graph) {
-            for ( var i = graphs.length - 1; i >= 0; i-- ) {
-                for ( var j = 0; j < graph.types.length; j++ ) {
-                    if (graphs[i].type === graph.types[j] && graphs[i].id === graph.id) {    
-                        graphs.splice ( i, 1 );
+            },
+            'haveGraphs' : function() { return graphs.length > 0; },
+            'getGraphs' : function() { return graphs; },
+            'addGraph' : function(graph) {
+                var i;
+                // don't add this graph if it's already in the list
+                for (i=0; i<graphs.length; ++i) {
+                    if (graphs[i].id === graph.id && graphs[i].type == graph.type) {
+                        return;
+                    }
+                }
+                graphs.push(graph);
+                url.params.graphs = graphs.map(function(g) { return g.id + ":" + g.type; }).join(",");
+            },
+            'removeGraph' : function(graph) {
+                for ( var i = graphs.length - 1; i >= 0; i-- ) {
+                    for ( var j = 0; j < graph.types.length; j++ ) {
+                        if (graphs[i].type === graph.types[j] && graphs[i].id === graph.id) {    
+                            graphs.splice ( i, 1 );
+                            break;
+                        }
+                    }   
+                }
+
+                if (graphs.length > 0) {
+                    url.params.graphs = graphs.map(function(g) { return g.id + ":" + g.type; }).join(",");
+                } else {
+                    delete url.params.graphs;
+                }
+            },
+            'setScales' : function(aR) {
+                var bindingId;
+                for (bindingId in aR) {
+                    if (!(bindingId in scales)) {
+                        scales[bindingId] = {};
+                    }
+                    scales[bindingId].min = aR[bindingId].min;
+                    scales[bindingId].max = aR[bindingId].max;
+                }
+                url.params.scales = Object.keys(scales).map(function(bindingId) {
+                    return bindingId.replace("-binding", "") + ":" +
+                        sprintf("%.1f", Number(scales[bindingId].min)) + ":" +
+                        sprintf("%.1f", Number(scales[bindingId].max));
+                }).join(",");
+            },
+            'haveScales' : function() {
+                return Object.keys(scales).length > 0;
+            },
+            'getScales' : function() { return scales; },
+            'haveLayers' : function() { return layers.length > 0; },
+            'getLayers' : function() { return layers; },
+            'addLayer' : function(layerId) {
+                var i;
+                // don't add this layer if it's already in the list
+                for (i=0; i<layers.length; ++i) {
+                    if (layers[i].id === layerId) {
+                        return;
+                    }
+                }
+                layers.push({id : layerId, opacity : 1});
+                url.params.layers = layers.map(function(lyr) { return lyr.id + ":" + lyr.opacity; }).join(",");
+            },
+            'setLayerOpacity' : function(layerId, opacity) {
+                var i;
+                // don't add this layer if it's already in the list
+                for (i=0; i<layers.length; ++i) {
+                    if (layers[i].id === layerId) {
+                        layers[i].opacity = opacity;
+                        url.params.layers = layers.map(function(g) { return g.id + ":" + g.opacity; }).join(",");
+                        return;
+                    }
+                }
+            },
+            'removeLayer' : function(layerId) {
+                for ( var i = layers.length - 1; i >= 0; i-- ) {
+                    if (layers[i].id === layerId) {    
+                        layers.splice ( i, 1 );
                         break;
                     }
-                }   
-            }
-
-            if (graphs.length > 0) {
-                url.params.graphs = graphs.map(function(g) { return g.id + ":" + g.type; }).join(",");
-            } else {
-                delete url.params.graphs;
-            }
-        },
-        'setScales' : function(aR) {
-            var bindingId;
-            for (bindingId in aR) {
-                if (!(bindingId in scales)) {
-                    scales[bindingId] = {};
                 }
-                scales[bindingId].min = aR[bindingId].min;
-                scales[bindingId].max = aR[bindingId].max;
-            }
-            url.params.scales = Object.keys(scales).map(function(bindingId) {
-                return bindingId.replace("-binding", "") + ":" + scales[bindingId].min + ":" + scales[bindingId].max;
-            }).join(",");
-        },
-        'haveScales' : function() {
-            return Object.keys(scales).length > 0;
-        },
-        'getScales' : function() { return scales; },
-        'haveLayers' : function() { return layers.length > 0; },
-        'getLayers' : function() { return layers; },
-        'addLayer' : function(layerId) {
-            var i;
-            // don't add this layer if it's already in the list
-            for (i=0; i<layers.length; ++i) {
-                if (layers[i].id === layerId) {
-                    return;
-                }
-            }
-            layers.push({id : layerId, opacity : 1});
-            url.params.layers = layers.map(function(lyr) { return lyr.id + ":" + lyr.opacity; }).join(",");
-        },
-        'setLayerOpacity' : function(layerId, opacity) {
-            var i;
-            // don't add this layer if it's already in the list
-            for (i=0; i<layers.length; ++i) {
-                if (layers[i].id === layerId) {
-                    layers[i].opacity = opacity;
+                if (layers.length > 0) {
                     url.params.layers = layers.map(function(g) { return g.id + ":" + g.opacity; }).join(",");
-                    return;
+                } else {
+                    delete url.params.layers;
                 }
             }
-        },
-        'removeLayer' : function(layerId) {
-            for ( var i = layers.length - 1; i >= 0; i-- ) {
-                if (layers[i].id === layerId) {    
-                    layers.splice ( i, 1 );
-                    break;
-                }
-            }
-            if (layers.length > 0) {
-                url.params.layers = layers.map(function(g) { return g.id + ":" + g.opacity; }).join(",");
-            } else {
-                delete url.params.layers;
-            }
-        }
 
-    };
-}
-
+        };
+    }
+});

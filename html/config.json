@@ -1,21 +1,101 @@
 {
-    "baseLayers": [ {
-        "id": "",
+    "bases": [ {
+        "id": "b_a",
         "type": "arcgis",
         "name": "Street",
         "url": "http://server.arcgisonline.com/ArcGIS/rest/services/World_Street_Map/MapServer",
-        "toggle": false
-    }],
-    "wms": [ {
-        "id": "aaa",
-        "name": "Drought",
-        "url": "http://torka.unl.edu:8080/cgi-bin/mapserv.exe?map=/ms4w/apps/dm/service/usdm_current_wms.map",
-        "layers": "usdm_current"
+        "isDefault": true
     }, {
-        "id": "aab",
-        "name": "Sea Level Rise Inundation (1ft)",
-        "url": "http://csc.noaa.gov/arcgis/services/dc_slr/slr_1ft/MapServer/WMSServer",
-        "layers": "0",
-        "projection": "EPSG:3857"
-    }]
+        "id": "b_b",
+        "type": "arcgis",
+        "name": "Imagery",
+        "url": "http://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer"
+    } ],
+    "overlays": [ {
+            "id": "aaa",
+            "name": "Drought",
+            "url": "http://torka.unl.edu:8080/cgi-bin/mapserv.exe?map=/ms4w/apps/dm/service/usdm_current_wms.map",
+            "layers": "usdm_current"
+        }, {
+            "id": "aag",
+            "name": "Sea Level Inundation (1ft)",
+            "url": "http://csc.noaa.gov/arcgis/services/dc_slr/slr_1ft/MapServer/WMSServer",
+            "projection": "EPSG:3857",
+            "layers": "0"
+        }, {
+            "id": "aac",
+            "name": "Sea Level Inundation (2ft)",
+            "url": "http://csc.noaa.gov/arcgis/services/dc_slr/slr_2ft/MapServer/WMSServer",
+            "projection": "EPSG:3857",
+            "layers": "0"
+        }, {
+            "id": "aad",
+            "name": "Sea Level Inundation (3ft)",
+            "url": "http://csc.noaa.gov/arcgis/services/dc_slr/slr_3ft/MapServer/WMSServer",
+            "projection": "EPSG:3857",
+            "layers": "0"
+        }, {
+            "id": "aae",
+            "name": "Sea Level Inundation (4ft)",
+            "url": "http://csc.noaa.gov/arcgis/services/dc_slr/slr_4ft/MapServer/WMSServer",
+            "projection": "EPSG:3857",
+            "layers": "0"
+        }, {
+            "id": "aaf",
+            "name": "Sea Level Inundation (5ft)",
+            "url": "http://csc.noaa.gov/arcgis/services/dc_slr/slr_5ft/MapServer/WMSServer",
+            "projection": "EPSG:3857",
+            "layers": "0"
+        }, {
+            "id": "aab",
+            "name": "Sea Level Inundation (6ft)",
+            "url": "http://csc.noaa.gov/arcgis/services/dc_slr/slr_6ft/MapServer/WMSServer",
+            "projection": "EPSG:3857",
+            "layers": "0"
+        }, {
+            "id": "aal",
+            "name": "Land Cover (2006)",
+            "url": "http://imsref.cr.usgs.gov:80/wmsconnector/com.esri.wms.Esrimap/USGS_EDC_LandCover_NLCD2001",
+            "projection": "EPSG:102100",
+            "layers": "us_states"
+        }, {
+            "id": "aah",
+            "name": "Hospitals",
+            "url": "http://hsip.geoplatform.gov/arcgis/services/HSIP_Public/PublicHealth/MapServer/WMSServer",
+            "projection": "EPSG:3857",
+            "layers": "0"
+        }, {
+            "id": "aai",
+            "name": "Airports and Helipads",
+            "url": "http://hsip.geoplatform.gov/arcgis/services/HSIP_Public/TransportationAir/MapServer/WMSServer",
+            "projection": "EPSG:3857",
+            "layers": "0"
+        }, {
+            "id": "aaj",
+            "name": "Bridges and Tunnels",
+            "url": "http://hsip.geoplatform.gov/arcgis/services/HSIP_Public/TransportationGround/MapServer/WMSServer",
+            "projection": "EPSG:3857",
+            "layers": [ "0", "1" ]
+        }, {
+            "id": "aak",
+            "name": "Coastal Vulnerability to Sea Level Rise",
+            "url": "http://coastalmap.marine.usgs.gov/cmgp/National/coastal_vulnerability_index/MapServer/WMSServer",
+            "projection": "EPSG:3857",
+            "layers": "11"
+        }
+    ],
+    "groups": [ {
+        "id": "g_a",
+        "name": "Coastal Flood Risk",
+        "isDefault": true,
+        "layers": [ "aab", "aac", "aad", "aae", "aaf", "aag", "aah", "aai", "aaj", "aak" ]
+    }, {
+        "id": "g_b",
+        "name": "Food Security",
+        "layers": [  ]
+    }, {
+        "id": "TEMPORARY",
+        "name": "Temporary",
+        "layers": [ "aaa" ]
+    } ]
 }
