@@ -429,7 +429,7 @@ $(function(){
         });
         
         $('#mlLayerList').append(
-            '<div id="stationVarLabel" class="mlDataLbl">Station Data Types</div>' +
+            '<div id="stationVarLabel" class="mlDataLbl">Historical Weather Records</div>' +
                 '<div id="stationVarSelector">' + 
                 contents +
                 '</div>');
