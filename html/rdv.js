@@ -39,8 +39,6 @@ $(function(){
     var stationAndGraphLinkHash = [];
     var DATA_SUMMARY = {};
     
-    var removeGraph; // gets populated below, but this needs to change
-    
     var requests = [
         $.getJSON( BASE_CSV_SOURCE_URL + 'summary.json', function( data ) {
             DATA_SUMMARY = data;
@@ -393,6 +391,8 @@ $(function(){
         pl.removeGraph(stationAndGraphLinkHash[index]);
         updatePermalinkDisplay();
 
+        var instance = this;
+        
         // decrement any items greater than the removed
         for (var i = selectedStationCount; i > index ; i--) {
             var shift = stationAndGraphLinkHash[i];
@@ -400,7 +400,9 @@ $(function(){
             var newIndex = i -1;
             var shiftRef = 'div#' + shift.id + '-detail';
             $( 'span.point-index', shiftRef ).html( '(' + newIndex + ')' );
-            $( 'div.remove', shiftRef ).attr( 'onclick', "removeGraph('" + newIndex + "')" );
+            $( 'div.remove', shiftRef ).on( 'click', function() {
+                instance.removeGraph( newIndex );
+            });
             
             // TODO improve - the selected layer gets rebuilt each time
             $( '#map' ).mapLite('setLabel', shift.point.id, newIndex);
