@@ -17,9 +17,9 @@
             "url": "http://torka.unl.edu:8080/cgi-bin/mapserv.exe?map=/ms4w/apps/dm/service/usdm_current_wms.map",
             "layers": "usdm_current"
         }, {
-            "id": "aag",
-            "name": "Sea Level Inundation (1ft)",
-            "url": "http://csc.noaa.gov/arcgis/services/dc_slr/slr_1ft/MapServer/WMSServer",
+            "id": "aab",
+            "name": "Sea Level Inundation (6ft)",
+            "url": "http://csc.noaa.gov/arcgis/services/dc_slr/slr_6ft/MapServer/WMSServer",
             "projection": "EPSG:3857",
             "layers": "0"
         }, {
@@ -47,17 +47,11 @@
             "projection": "EPSG:3857",
             "layers": "0"
         }, {
-            "id": "aab",
-            "name": "Sea Level Inundation (6ft)",
-            "url": "http://csc.noaa.gov/arcgis/services/dc_slr/slr_6ft/MapServer/WMSServer",
+            "id": "aag",
+            "name": "Sea Level Inundation (1ft)",
+            "url": "http://csc.noaa.gov/arcgis/services/dc_slr/slr_1ft/MapServer/WMSServer",
             "projection": "EPSG:3857",
             "layers": "0"
-        }, {
-            "id": "aal",
-            "name": "Land Cover (2006)",
-            "url": "http://imsref.cr.usgs.gov:80/wmsconnector/com.esri.wms.Esrimap/USGS_EDC_LandCover_NLCD2001",
-            "projection": "EPSG:102100",
-            "layers": "us_states"
         }, {
             "id": "aah",
             "name": "Hospitals",
@@ -82,13 +76,25 @@
             "url": "http://coastalmap.marine.usgs.gov/cmgp/National/coastal_vulnerability_index/MapServer/WMSServer",
             "projection": "EPSG:3857",
             "layers": "11"
+        }, {
+            "id": "aal",
+            "name": "Land Cover (2006)",
+            "url": "http://rain.nemac.org/~derek/fswms/html/rlayers",
+            "layers": "nlcd-2006"
+        }, {
+            "id": "aam",
+            "name": "Social Vulnerability Index",
+            "url": "http://www.csc.noaa.gov/ArcGISPUB/rest/services/dc_slr/SocioEconimc/MapServer/export",
+            "projection": "EPSG:3857",
+            "layers": "7",
+            "type": "REST"
         }
     ],
     "groups": [ {
         "id": "g_a",
         "name": "Coastal Flood Risk",
         "isDefault": true,
-        "layers": [ "aab", "aac", "aad", "aae", "aaf", "aag", "aah", "aai", "aaj", "aak" ]
+        "layers": [ "aam", "aal", "aag", "aac", "aad", "aae", "aaf", "aab", "aak", "aah", "aai", "aaj" ]
     }, {
         "id": "g_b",
         "name": "Food Security",
