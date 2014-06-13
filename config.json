@@ -94,7 +94,15 @@
         "id": "g_a",
         "name": "Coastal Flood Risk",
         "isDefault": true,
-        "layers": [ "aam", "aal", "aag", "aac", "aad", "aae", "aaf", "aab", "aak", "aah", "aai", "aaj" ]
+        "subGroups": [ {
+            "id": "g_a_a",
+            "name": "Climate Stressors",
+            "layers": [ "aag", "aac", "aad", "aae", "aaf", "aab" ]
+        }, {
+            "id": "g_a_b",
+            "name": "Assets Impacted",
+            "layers": [ "aak", "aam", "aal", "aah", "aai", "aaj" ]
+        } ]
     }, {
         "id": "g_b",
         "name": "Food Security",
