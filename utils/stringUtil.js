@@ -1,3 +1,5 @@
+var ID_DELIMITER = '-';
+
 function sanitizeString( input ) {
     //return input.replace( /\W/g, ID_DELIMITER );
     return input.split( /\W/g )[1];

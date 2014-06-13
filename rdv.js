@@ -11,11 +11,10 @@ $(function(){
     var sanitizeString = require( './utils/stringUtil.js' );
     var URL = require( './utils/urlUtils.js' );
     
-    ////
+    //
     // constants
     //
     var BUILD_BASE_PATH = 'build/asset/';
-    var ID_DELIMITER = '-';
     var TEMPLATE_LOCATION = 'detail.tpl.html';
     var STATION_DETAIL_TEMPLATE;
     var MAPLITE_CONFIG;
@@ -93,7 +92,7 @@ $(function(){
             layers: {
                 maplite: [
                     new $.nemac.MapliteDataSource(
-                        'testdata/weighted_stations.json',
+                        'testdata/filtered_stations.json',
                         'GHCND Stations',
                         'lyr_ghcnd',
                         $.nemac.MARKER_COLORS.RED,
