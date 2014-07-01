@@ -1,5 +1,5 @@
 {
-    "bases": [ {
+    "bases": [{
         "id": "b_a",
         "type": "arcgis",
         "name": "Street",
@@ -10,10 +10,10 @@
         "type": "arcgis",
         "name": "Imagery",
         "url": "http://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer"
-    } ],
-    "overlays": [ {
+    }],
+    "overlays": [{
             "id": "aaa",
-            "name": "Drought",
+            "name": "Current Drought",
             "url": "http://torka.unl.edu:8080/cgi-bin/mapserv.exe?map=/ms4w/apps/dm/service/usdm_current_wms.map",
             "layers": "usdm_current"
         }, {
@@ -88,13 +88,24 @@
             "projection": "EPSG:3857",
             "layers": "7",
             "type": "REST"
+        }, {
+	    "id": "aan",
+	    "name": "Flood Hazard Zones",
+	    "url": "https://hazards.fema.gov/gis/nfhl/services/public/NFHLWMS/MapServer/WmsServer",
+            "projection": "EPSG:4326",
+	    "layers": "4"
+	}, {
+            "id": "aao",
+            "name": "Drought (9/24/2014)",
+            "url": "http://torka.unl.edu:8080/cgi-bin/mapserv.exe?map=/ms4w/apps/dm/service/usdm130924_wms.map",
+            "layers": "usdm130924"
         }
     ],
-    "groups": [ {
+    "groups": [{
         "id": "g_a",
         "name": "Coastal Flood Risk",
         "isDefault": true,
-        "subGroups": [ {
+        "subGroups": [{
             "id": "g_a_a",
             "name": "Climate Stressors",
             "layers": [ "aag", "aac", "aad", "aae", "aaf", "aab" ]
@@ -102,14 +113,42 @@
             "id": "g_a_b",
             "name": "Assets Impacted",
             "layers": [ "aak", "aam", "aal", "aah", "aai", "aaj" ]
-        } ]
+        }]
     }, {
         "id": "g_b",
-        "name": "Food Security",
-        "layers": [  ]
+        "name": "Food Resilience",
+        "subGroups": [{
+            "id": "g_b_a",
+            "name": "Climate Stressors",
+            "layers": [ "aaa" ]                
+        }, {
+            "id": "g_b_b",
+            "name": "Assets Impacted",
+            "layers": [ "aal" ]
+        }]
     }, {
-        "id": "TEMPORARY",
-        "name": "Temporary",
-        "layers": [ "aaa" ]
-    } ]
+        "id": "g_c",
+        "name": "Ecosystem Vulnerability",
+        "subGroups": [{
+            "id": "g_c_a",
+            "name": "Climate Stressors",
+            "layers": [ "aaa", "aao" ]             
+        }, {
+            "id": "g_c_b",
+            "name": "Assets Impacted",
+            "layers": [ "aal" ]
+        }]
+    }, {
+        "id": "g_d",
+        "name": "Transportation and Supply Chain",
+        "subGroups": [{
+            "id": "g_d_a",
+            "name": "Climate Stressors",
+            "layers": [ "aan" ]                
+        }, {
+            "id": "g_d_b",
+            "name": "Assets Impacted",
+            "layers": [ "aal", "aai", "aaj" ]
+        }]
+    }]
 }
