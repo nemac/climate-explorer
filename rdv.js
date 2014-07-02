@@ -2,6 +2,86 @@
 // Init
 //
 $(function(){
+
+
+    ceui.init({
+        tabSet : function(tab) {
+            console.log('switching to tab: ' + tab);
+        }
+    });
+
+    ceui.setTopics([
+        { id : "coastal",        name: "COASTAL FLOODING" },
+        { id : "ecosystem",      name: "ECOSYSTEM VULNERABILITY" },
+        { id : "food",           name: "FOOD RESILIENCE" },
+        { id : "human",          name: "HUMAN HEALTH" },
+        { id : "infrastructure", name: "INFRASTRUCTURE AND ENERGY SUPPLY" },
+        { id : "transportation", name: "TRANSPORTATION AND SUPPLY CHAIN" },
+        { id : "water",          name: "WATER RESOURCES" },
+        { id : "all",            name: "ALL TOPICS" }
+    ], {
+        topicSet : function(topicId) {
+            console.log('topic changed to: ' + topicId);
+        }
+    });		
+
+    ceui.setTopic("coastal");
+
+    ceui.setLayerGroups([
+        { id: "stress", name: "MY STRESSORS" },
+        { id: "asset",  name: "MY ASSETS" }
+    ], {});
+
+    function setLayerVisibility(id, visible) {
+        console.log('layer ' + id + ' visibility set to ' + visible);
+    }
+
+    function setLayerOpacity(id, opacity) {
+        console.log('layer ' + id + ' opacity set to ' + opacity);
+    }
+
+    ceui.setLayers("stress", [
+        { id : 0, name : "My Stressor Layer Title One" },
+        { id : 1, name : "My Stressor Layer Title Two" },
+        { id : 2, name : "My Stressor Layer Title Three" }/*,
+        { id : 3, name : "My Stressor Layer Title Four" },
+        { id : 4, name : "My Stressor Layer Title Five" },
+        { id : 5, name : "My Stressor Layer Title Six" },
+        { id : 6, name : "My Stressor Layer Title Seven" }*/
+    ], {
+        'setLayerVisibility' : setLayerVisibility,
+        'setLayerOpacity' : setLayerOpacity
+    });
+
+    ceui.setLayers("asset", [
+        { id : 0, name : "My Asset Layer Title One" },
+        { id : 1, name : "My Asset Layer Title Two" },
+        { id : 2, name : "My Asset Layer Title Three" },
+        { id : 3, name : "My Asset Layer Title Four" },
+        { id : 4, name : "My Asset Layer Title Five" }
+    ], {
+        'setLayerVisibility' : setLayerVisibility,
+        'setLayerOpacity' : setLayerOpacity
+    });
+
+    ceui.setVariables([
+        { id : "temp", name : "TEMPERATURE" },
+        { id : "precip", name : "PRECIPITATION" }
+    ], {
+        displayGraph : function(stationId, variableId, $domElement) {
+            if (variableId === "temp") {
+                $('<img src="ce-ui/media/multigraphImg/mgTempImgDummy1.png"></img>').appendTo($domElement);
+            } else {
+                $('<img src="ce-ui/media/multigraphImg/mgPrecipImgDummy1.png"></img>').appendTo($domElement);
+            }
+        }
+    });
+
+    //ceui.showStation({ id : "STA1", name : "TEST STATION 1", latlon : "xyzzy 0 0 9" });
+    //ceui.showStation({ id : "STA2", name : "TEST STATION 2", latlon : "xyzzy 1 1 9" });
+
+    //$('<img width="1000" height="1000" src="ce-ui/media/uiGraphics/dummyMap.png"></img>').appendTo(ceui.getMapElement());
+
     var BASE_CSV_SOURCE_URL = 'https://s3.amazonaws.com/nemac-ghcnd/';
     var NORMALS_CSV_SOURCE_URL = 'https://s3.amazonaws.com/nemac-normals/NORMAL_';
     var MH = require( './utils/muglHelper.js' );
@@ -68,7 +148,7 @@ $(function(){
         if (pl.haveCenter()) {
             mapOptions.center = pl.getCenter();
         }
-        var $mapl = $( '#map' ).mapLite({
+        var $mapl = ceui.getMapElement().mapLite({
             config: MAPLITE_CONFIG,
             changeOpacityCallback: function( layerId, opacity ) {
                 pl.setLayerOpacity(layerId, opacity);
@@ -124,6 +204,7 @@ $(function(){
                     )]
             },
             iconPath: BUILD_BASE_PATH + 'img/',
+            useLayerSelector : false,
             selectCallback: clickPoint,
             onCreate: function(mL) {
                 // deploy any graphs present in the url params:
@@ -150,7 +231,7 @@ $(function(){
                 });
                 
                 // add to selector
-                deployStationDataOptionsSelector();
+//                deployStationDataOptionsSelector();
                 
                 // TODO is this problematic to move this into the onCreate method, as opposed to outside as it was before?
                 // initialize the pl object from the initial map state:
@@ -162,6 +243,10 @@ $(function(){
             }
         });
     });
+
+///
+return;
+////////////////////////////////////////////////////////////////////////
 
     var initialPanelState = 'closed';
     var initialPanelWidth = 600;

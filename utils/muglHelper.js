@@ -69,6 +69,7 @@ MuglHelper.prototype.buildMugl = function( data, type, summary, templates ) {
 };
 
 MuglHelper.prototype.buildVerticalAxisSection = function( type, position, templates ) {
+console.log('building a vertical axis section!');
     var template;
     switch ( type ) {
         case 'TEMP' :

@@ -59,6 +59,7 @@ function bundleTemplates() {
 function browserifyRDV() {
     return gulp.src( 'rdv.js' )
         .pipe( browserify( {
+            //debug: true,
             insertGlobals: true
         }));
 }
@@ -135,7 +136,7 @@ gulp.task( 'package', function() {
 
     return stream.done()
         .pipe( concat( 'app.js' ) )
-        .pipe( uglify() )
+//        .pipe( uglify() )
         .pipe( gulp.dest( paths.buildDest ) ); 
 });
 
