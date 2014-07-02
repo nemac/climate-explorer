@@ -3,7 +3,45 @@
 //
 $(function(){
 
-
+    function displayGraph(id, type, $element) {
+console.log('displayGraph');
+        var payload = MuglHelper.getDataRequests( type, id );
+        $.when.apply( $, payload.requests ).done( function(){
+            var _jq  = window.multigraph.jQuery;
+            _jq ( $element ).multigraph( {
+                muglString: MuglHelper.buildMugl(
+                    payload.data,
+                    type,
+                    DATA_SUMMARY[id],
+                    MUGLTEMPLATES
+                )});
+            _jq ( $element ).multigraph( 'done', function(mg) {
+                var i, naxes = mg.graphs().at(0).axes().size();
+                for (i=0; i<naxes; ++i) {
+                    (function(axis) {
+                        if (pl.haveScales()) {
+                            var scales = pl.getScales();
+                            var bindingId = axis.binding().id().replace('-binding','');
+                            var parser;
+                            if (bindingId === "time") {
+                                parser = window.multigraph.core.DatetimeValue;
+                            } else {
+                                parser = window.multigraph.core.NumberValue;
+                            }
+                            if (bindingId in scales) {
+                                axis.setDataRange(parser.parse(scales[bindingId].min),
+                                                  parser.parse(scales[bindingId].max));
+                            }
+                        }
+                        axis.addListener('dataRangeSet', function(e) {
+                            //    updateAxisDebounce(axis.binding().id(), e.min, e.max);
+                        });
+                    }(mg.graphs().at(0).axes().at(i)));
+                }
+            });
+        });
+    }
+            
     ceui.init({
         tabSet : function(tab) {
             console.log('switching to tab: ' + tab);
@@ -65,15 +103,11 @@ $(function(){
     });
 
     ceui.setVariables([
-        { id : "temp", name : "TEMPERATURE" },
-        { id : "precip", name : "PRECIPITATION" }
+        { id : "TEMP",     name : "TEMPERATURE" },
+        { id : "PRCP_YTD", name : "PRECIPITATION" }
     ], {
-        displayGraph : function(stationId, variableId, $domElement) {
-            if (variableId === "temp") {
-                $('<img src="ce-ui/media/multigraphImg/mgTempImgDummy1.png"></img>').appendTo($domElement);
-            } else {
-                $('<img src="ce-ui/media/multigraphImg/mgPrecipImgDummy1.png"></img>').appendTo($domElement);
-            }
+        'displayGraph' : function(id, type, $element) {
+            displayGraph(id.replace("GHCND:", ""), type, $element);
         }
     });
 
@@ -440,6 +474,10 @@ return;
     // Interactions
     //
     function clickPoint( point ) {
+        ceui.showStation({ id : point.id, name : point.name, latlon : "latlon here" });
+console.log( 'yo, you selected a point' );
+console.log( point );
+return;
         if ( selectedStationCount >= MAX_SELECTED_STATIONS ) {
             return;
         }
