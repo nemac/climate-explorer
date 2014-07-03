@@ -4,7 +4,6 @@
 $(function(){
 
     function displayGraph(id, type, $element) {
-console.log('displayGraph');
         var payload = MuglHelper.getDataRequests( type, id );
         $.when.apply( $, payload.requests ).done( function(){
             var _jq  = window.multigraph.jQuery;
@@ -47,23 +46,6 @@ console.log('displayGraph');
             console.log('switching to tab: ' + tab);
         }
     });
-
-    ceui.setTopics([
-        { id : "coastal",        name: "COASTAL FLOODING" },
-        { id : "ecosystem",      name: "ECOSYSTEM VULNERABILITY" },
-        { id : "food",           name: "FOOD RESILIENCE" },
-        { id : "human",          name: "HUMAN HEALTH" },
-        { id : "infrastructure", name: "INFRASTRUCTURE AND ENERGY SUPPLY" },
-        { id : "transportation", name: "TRANSPORTATION AND SUPPLY CHAIN" },
-        { id : "water",          name: "WATER RESOURCES" },
-        { id : "all",            name: "ALL TOPICS" }
-    ], {
-        topicSet : function(topicId) {
-            console.log('topic changed to: ' + topicId);
-        }
-    });		
-
-    ceui.setTopic("coastal");
 
     ceui.setLayerGroups([
         { id: "stress", name: "MY STRESSORS" },
@@ -159,8 +141,15 @@ console.log('displayGraph');
         $.get( TEMPLATE_LOCATION, function( template ) {
             STATION_DETAIL_TEMPLATE = template;            
         }),
-        $.getJSON( APP_CONFIG_URL, function( mapliteConfig ) {
-            MAPLITE_CONFIG = mapliteConfig;
+        $.getJSON( APP_CONFIG_URL, function( config ) {
+            var groups = config.groups.map(function(group) { return { id : group.id, name : group.name }; });
+            ceui.setTopics(groups, {
+                topicSet : function(topicId) {
+                    console.log('topic changed to: ' + topicId);
+                }
+            });
+            ceui.setTopic(groups[0].id);
+            MAPLITE_CONFIG = config;
         })
     ];
 
