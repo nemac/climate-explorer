@@ -40,17 +40,15 @@ $(function(){
             });
         });
     }
+
+    var overlaysById = {};
+    var topicsById = {};
             
     ceui.init({
         tabSet : function(tab) {
             console.log('switching to tab: ' + tab);
         }
     });
-
-    ceui.setLayerGroups([
-        { id: "stress", name: "MY STRESSORS" },
-        { id: "asset",  name: "MY ASSETS" }
-    ], {});
 
     function setLayerVisibility(id, visible) {
         console.log('layer ' + id + ' visibility set to ' + visible);
@@ -60,29 +58,29 @@ $(function(){
         console.log('layer ' + id + ' opacity set to ' + opacity);
     }
 
-    ceui.setLayers("stress", [
-        { id : 0, name : "My Stressor Layer Title One" },
-        { id : 1, name : "My Stressor Layer Title Two" },
-        { id : 2, name : "My Stressor Layer Title Three" }/*,
-        { id : 3, name : "My Stressor Layer Title Four" },
-        { id : 4, name : "My Stressor Layer Title Five" },
-        { id : 5, name : "My Stressor Layer Title Six" },
-        { id : 6, name : "My Stressor Layer Title Seven" }*/
-    ], {
-        'setLayerVisibility' : setLayerVisibility,
-        'setLayerOpacity' : setLayerOpacity
-    });
-
-    ceui.setLayers("asset", [
-        { id : 0, name : "My Asset Layer Title One" },
-        { id : 1, name : "My Asset Layer Title Two" },
-        { id : 2, name : "My Asset Layer Title Three" },
-        { id : 3, name : "My Asset Layer Title Four" },
-        { id : 4, name : "My Asset Layer Title Five" }
-    ], {
-        'setLayerVisibility' : setLayerVisibility,
-        'setLayerOpacity' : setLayerOpacity
-    });
+//    ceui.setLayers("stress", [
+//        { id : 0, name : "My Stressor Layer Title One" },
+//        { id : 1, name : "My Stressor Layer Title Two" },
+//        { id : 2, name : "My Stressor Layer Title Three" }/*,
+//        { id : 3, name : "My Stressor Layer Title Four" },
+//        { id : 4, name : "My Stressor Layer Title Five" },
+//        { id : 5, name : "My Stressor Layer Title Six" },
+//        { id : 6, name : "My Stressor Layer Title Seven" }*/
+//    ], {
+//        'setLayerVisibility' : setLayerVisibility,
+//        'setLayerOpacity' : setLayerOpacity
+//    });
+//
+//    ceui.setLayers("asset", [
+//        { id : 0, name : "My Asset Layer Title One" },
+//        { id : 1, name : "My Asset Layer Title Two" },
+//        { id : 2, name : "My Asset Layer Title Three" },
+//        { id : 3, name : "My Asset Layer Title Four" },
+//        { id : 4, name : "My Asset Layer Title Five" }
+//    ], {
+//        'setLayerVisibility' : setLayerVisibility,
+//        'setLayerOpacity' : setLayerOpacity
+//    });
 
     ceui.setVariables([
         { id : "TEMP",     name : "TEMPERATURE" },
@@ -133,6 +131,20 @@ $(function(){
     var selectedStationCount = 0;
     var stationAndGraphLinkHash = [];
     var DATA_SUMMARY = {};
+
+    function setTopic(topicId) {
+        ceui.setLayerGroups(topicsById[topicId].subGroups.map(function(subgroup) {
+            return { id : subgroup.id, name : subgroup.name };
+        }), {});
+        topicsById[topicId].subGroups.forEach(function(subgroup) {
+            ceui.setLayers(subgroup.id,
+                           subgroup.layers.map(function(layerId) { return overlaysById[layerId]; }),
+                           {
+                               'setLayerVisibility' : setLayerVisibility,
+                               'setLayerOpacity' : setLayerOpacity
+                           })
+        });
+    }
     
     var requests = [
         $.getJSON( BASE_CSV_SOURCE_URL + 'summary.json', function( data ) {
@@ -142,13 +154,31 @@ $(function(){
             STATION_DETAIL_TEMPLATE = template;            
         }),
         $.getJSON( APP_CONFIG_URL, function( config ) {
+
+
+            // cache the topics by id (note that topics are called 'groups' in the config file)
+            config.groups.forEach(function(group) {
+                topicsById[ group.id ] = group;
+            });
+            // populate the list of topics in the UI
             var groups = config.groups.map(function(group) { return { id : group.id, name : group.name }; });
             ceui.setTopics(groups, {
                 topicSet : function(topicId) {
-                    console.log('topic changed to: ' + topicId);
+                    setTopic(topicId);
                 }
             });
+
+            //
+            // cache the overlay ("map layers") details:
+            //
+            config.overlays.forEach(function(overlay) {
+                overlaysById[ overlay.id ] = overlay;
+            });
+
+            // pre-select the first one
             ceui.setTopic(groups[0].id);
+            setTopic(groups[0].id);
+
             MAPLITE_CONFIG = config;
         })
     ];
@@ -464,9 +494,15 @@ return;
     //
     function clickPoint( point ) {
         ceui.showStation({ id : point.id, name : point.name, latlon : "latlon here" });
-console.log( 'yo, you selected a point' );
-console.log( point );
+/////////////
+/////////////
+/////////////
+/////////////
 return;
+/////////////
+/////////////
+/////////////
+/////////////
         if ( selectedStationCount >= MAX_SELECTED_STATIONS ) {
             return;
         }
