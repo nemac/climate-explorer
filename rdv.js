@@ -50,37 +50,32 @@ $(function(){
         }
     });
 
-    function setLayerVisibility(id, visible) {
+    var mL = null;
+    function rememberML(x) {
+        mL = x;
+    }
+
+    function layerVisibilitySet(id, visible) {
+        if (mL != null) {
+            mL.setLayerVisibility(id, visible);
+            if (visible) {
+                pl.addLayer(id);
+            } else {
+                pl.removeLayer(id);
+            }
+            updatePermalinkDisplay();
+        }
         console.log('layer ' + id + ' visibility set to ' + visible);
     }
 
-    function setLayerOpacity(id, opacity) {
+    function layerOpacitySet(id, opacity) {
+        if (mL != null) {
+            mL.setLayerOpacity(id, opacity);
+            pl.setLayerOpacity(id, opacity);
+            updatePermalinkDisplay();
+        }
         console.log('layer ' + id + ' opacity set to ' + opacity);
     }
-
-//    ceui.setLayers("stress", [
-//        { id : 0, name : "My Stressor Layer Title One" },
-//        { id : 1, name : "My Stressor Layer Title Two" },
-//        { id : 2, name : "My Stressor Layer Title Three" }/*,
-//        { id : 3, name : "My Stressor Layer Title Four" },
-//        { id : 4, name : "My Stressor Layer Title Five" },
-//        { id : 5, name : "My Stressor Layer Title Six" },
-//        { id : 6, name : "My Stressor Layer Title Seven" }*/
-//    ], {
-//        'setLayerVisibility' : setLayerVisibility,
-//        'setLayerOpacity' : setLayerOpacity
-//    });
-//
-//    ceui.setLayers("asset", [
-//        { id : 0, name : "My Asset Layer Title One" },
-//        { id : 1, name : "My Asset Layer Title Two" },
-//        { id : 2, name : "My Asset Layer Title Three" },
-//        { id : 3, name : "My Asset Layer Title Four" },
-//        { id : 4, name : "My Asset Layer Title Five" }
-//    ], {
-//        'setLayerVisibility' : setLayerVisibility,
-//        'setLayerOpacity' : setLayerOpacity
-//    });
 
     ceui.setVariables([
         { id : "TEMP",     name : "TEMPERATURE" },
@@ -90,11 +85,6 @@ $(function(){
             displayGraph(id.replace("GHCND:", ""), type, $element);
         }
     });
-
-    //ceui.showStation({ id : "STA1", name : "TEST STATION 1", latlon : "xyzzy 0 0 9" });
-    //ceui.showStation({ id : "STA2", name : "TEST STATION 2", latlon : "xyzzy 1 1 9" });
-
-    //$('<img width="1000" height="1000" src="ce-ui/media/uiGraphics/dummyMap.png"></img>').appendTo(ceui.getMapElement());
 
     var BASE_CSV_SOURCE_URL = 'https://s3.amazonaws.com/nemac-ghcnd/';
     var NORMALS_CSV_SOURCE_URL = 'https://s3.amazonaws.com/nemac-normals/NORMAL_';
@@ -140,9 +130,9 @@ $(function(){
             ceui.setLayers(subgroup.id,
                            subgroup.layers.map(function(layerId) { return overlaysById[layerId]; }),
                            {
-                               'setLayerVisibility' : setLayerVisibility,
-                               'setLayerOpacity' : setLayerOpacity
-                           })
+                               'layerVisibilitySet' : layerVisibilitySet,
+                               'layerOpacitySet' : layerOpacitySet
+                           });
         });
     }
     
@@ -260,6 +250,7 @@ $(function(){
             useLayerSelector : false,
             selectCallback: clickPoint,
             onCreate: function(mL) {
+                rememberML(mL);
                 // deploy any graphs present in the url params:
                 if (pl.haveGraphs()) {
                     var stationVars = {};
@@ -281,6 +272,8 @@ $(function(){
                 pl.getLayers().forEach(function(layer) {
                     mL.setLayerVisibility(layer.id, true);
                     mL.setLayerOpacity(layer.id, layer.opacity);
+                    ceui.setLayerVisibility(layer.id, true);
+                    ceui.setLayerOpacity(layer.id, layer.opacity);
                 });
                 
                 // add to selector
