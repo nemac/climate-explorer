@@ -1,0 +1,531 @@
+@font-face{
+	font-family: 'Lato', serif;
+}
+
+
+html{
+	min-width: 800px;
+	margin: 0 auto;
+	background-color:#404952;
+}
+
+#contentHolder{
+	margin-top:10px;
+	max-width: 100%;
+	min-width: 600px;
+	height:100%;
+/*border:solid thin #000;*/
+}
+
+#widgTitle{
+	font-family:Lato, serif;
+	font-size:28px;
+	color:#fff;
+	margin-left:10px;
+}
+
+#topHolder{
+	width:100%;
+	height:40px;
+	/*border:solid thin #2E87C8;*/
+	position:relative;
+}
+
+#topLeftHolder{
+	width:300px;
+	height:40px;
+	/*border:solid thin #2E87C8;*/
+	float:left;
+}
+
+#topRightHolder{
+	width:380px;
+	height:40px;
+	background-image:url('media/uiGraphics/tabGraphic.png');
+	background-repeat: no-repeat;
+	right:0px;
+	position:absolute;
+}
+
+#layerMultiGrphButtGrp{
+	float:right;
+	margin-right:18px;
+	margin-top:12px;
+}
+
+#layersButt,
+#multiGrphButt{
+	width:148px; 
+}
+
+#middleHolder{
+	height:800px;
+	/*border:solid thin #2EC26F;*/
+	position:relative;
+}
+
+#middleLeftHolder{
+	width:100%;
+	background-color:#fff;
+	height:800px;
+	/*border:solid thin #2E87C8;*/
+	float:left;
+}
+
+/*
+#mapDiv{
+	width:1300px;
+	height:780px;
+}
+*/
+
+#middleRightHolder{
+	width:430px;
+	height:800px;
+	/*border:solid thin #2E87C8;*/
+	background-color:#dadbdc;
+	right:0px;
+	position:absolute;
+/*	z-index:80;*/
+	z-index:1000;
+}
+
+#mapHolder{
+	height:780px;
+	margin:10px;
+	background-color:#ccc;
+}
+
+#layersHolder{
+	width:410px;
+	height:780px;
+	margin-left:0px;
+	margin-top:10px;
+	margin-right:10px;
+	margin-bottom:0px;
+	background-color:#aaaaaa;
+	float:left;
+}
+
+#slug{
+	width:10px;
+	height:800px;
+	background-color:#fff;
+	
+	float:left;
+	
+}
+
+#layerButtHolder{
+	width:410px;
+	height:171px;
+	/*border:solid thin #fff;*/
+	padding-top:1px;
+/*background-color:#AAABAB;*/
+}
+
+#layerButtCol_Left,
+#layerButtCol_Right{
+	width:202px;
+	height:170px;
+	float:left;
+	/*border:solid thin #D83A7C;*/
+	margin-left:1px;
+}
+
+.layerMenu{
+	width:200px;
+	height:40px;
+	/*border:solid thin #ddd;*/
+	margin:2px;
+	font-family:Lato, serif;;
+	font-size:10px;
+	font-weight:bold;
+	color:#fff;
+	background-color:#888888;
+}
+
+.layerMenu:hover{
+	background-color:#0079A4;
+	/*opacity: 0.4;*/
+	filter: alpha(opacity=40); /* For IE8 and earlier */
+/*color:#ccc;*/
+}
+
+.layerIconHold{
+	height:36px;
+	width:38px;
+	margin-left:10px;
+	margin-top:2px;
+	float:left;
+}
+
+.layerLabelHold{
+	height:36px;
+	margin-left:8px;
+	margin-top:4px;
+	float:left;
+}
+
+.holderForOneLayerGroup {
+	width:410px;
+	height:212px;
+	background-color:#aaaaaa;
+	/*overflow-y:auto;*/
+	/*overflow-x:hidden;*/
+	margin-bottom:0px;
+}
+
+.headerHolder{
+	width:410px;
+	height:33px;
+	background-color:#565656;
+/*background-image: url('css/images/ui-bg_glass_20_555555_1x400.png') repeat-x scroll 50% 50% #555;*/
+}
+
+
+.layerGroupLayersHolder {
+	margin-top:0px;
+}
+
+
+.layerSetStaDatHolder{
+	width:410px;
+	height:154px;
+	background-color:#0079A4;
+}
+
+.layer{
+	
+	height:40px;
+	border:solid thin #ccc;
+	margin-top:2px;
+	margin-right:5px;
+	background-color:#888888;
+}
+
+.layerTopContentHold{
+	width:100%;
+	height:32px;
+	
+}
+
+.layCheckHoldStyle{
+	width:300px;
+	height:19px;
+	margin-left:30px;
+	margin-top:10px;
+	float:left;
+}
+
+.layTitleHoldStyle{
+	font-family:Lato, serif;
+	font-size:14px;
+	font-weight:bold;
+	line-height:12px;
+	color:#fff;
+	float:left;
+	margin-left:8px;
+}
+
+.layOpacLabHoldStyle{
+	width:30px;
+	height:19px;
+	float:right;
+	margin-right:10px;
+	margin-top:10px;
+}
+
+.layOpacLabStyle{
+	font-family:Lato, serif;
+	font-size:11px;
+	font-weight:bold;
+	line-height:12px;
+	color:#fff;
+}
+
+.layOpacSlidHold{
+	
+	margin-right:5px;
+}
+
+.headerText{
+	font-family:Lato, serif;
+	font-size:16px;
+	font-weight:bold;
+	color:#fff;
+	margin-left:25px;
+	line-height:30px;
+}
+
+.statDatLayer{
+	width:406px;
+	height:30px;
+	border:solid thin #ddd;
+	margin-top:2px;
+	
+}
+
+.statDatLayCheckHoldStyle{
+	width:300px;
+	height:19px;
+	margin-left:20px;
+	margin-top:7px;
+	float:left;
+}
+
+.statDatLayerTopContentHold{
+	width:100%;
+	height:20px;
+}
+
+.statDatLayTitleHoldStyle{
+	font-family:Lato, serif;
+	font-size:14px;
+	font-weight:bold;
+	line-height:12px;
+	color:#fff;
+	float:left;
+	margin-left:8px;
+}
+
+#multiGrphHeaderHolder{
+	width:624px;
+	height:40px;
+	background-color:#565656;
+}
+
+#multiGrphHolder{
+	height:780px;
+	margin:10px;
+	background-color:#AAAAAA;
+}
+
+#multiGrphPanel{
+	margin-top:0;
+}
+
+#multiGrphButtHold{
+	float:right;
+	margin-right:20px;
+	margin-top:0px;
+}
+
+#precipButt,
+#tempButt{
+	padding:3px;
+	font-size:11px;
+	font-weight:bold;
+	border:solid thin #888888;
+	border-top-left-radius: 0px;
+	border-top-right-radius: 0px;
+	margin-right:0px;
+	
+}
+
+#mgButtBar{
+	width:625px;
+	height:32px;
+	background-color:#888888;
+}
+
+.stationPaneHeader{
+	width:604px;
+	height:36px;
+	background: url('ui/jqwidgets/styles/images/darkness/ui-bg_glass_20_555555_1x400.png') repeat-x scroll 50% 50% #666;
+	margin-left:0px;
+}
+
+.stationPaneContentHold{
+	height:10px;
+	padding:5px;
+}
+
+.mgPaneTopContentHold{
+	height:15px;
+	padding-left:16px;
+	font-family:Lato, serif;
+	font-size:14px;
+	font-weight:bold;
+	line-height:25px;
+	color:#fff;
+}
+
+
+
+.mgPaneStyle{
+	width:604px;
+	height:208px;
+	margin-left:0px;
+	margin-top:2px;
+	margin-bottom:1px;
+	background-color:#888888;
+}
+
+
+.mgNumStyle{
+	font-family:Lato, serif;
+	font-size:16px;
+	font-weight:bold;
+	line-height:20px;
+	color:#fff;
+	float:left;
+	margin-left:5px;
+}
+
+.mgTitleStyle{
+	font-family:Lato, serif;
+	font-size:16px;
+	font-weight:bold;
+	line-height:20px;
+	color:#fff;
+	float:left;
+	margin-left:5px;
+}
+
+.mgLatLongStyle{
+	font-family:Lato, serif;
+	font-size:12px;
+	font-weight:bold;
+	font-style:italic;
+	line-height:22px;
+	color:#fff;
+	float:right;
+	margin-right:4px;
+}
+
+.mgPaneBotContentHold{
+	width:580px;
+	height:172px;
+	/*border:solid thin #ddd;*/
+	margin-top:10px;
+	margin-left:6px;
+}
+
+
+#menuPanel{
+	margin-top:0px;
+	width:410px;
+	height:100%;
+	position:absolute;
+	
+}
+
+.topHeader{
+	width:100%;
+	height:45px;
+	background-color:#DADBDC;
+	position:relative;
+	z-index:20;
+}
+
+.topHeaderLabel{
+	font-family:Lato, serif;
+	font-size:24px;
+	font-weight:bold;
+	line-height:12px;
+	color:#565656;
+	float:left;
+	margin-left:8px;
+	margin-top:15px;
+}
+
+
+
+
+
+
+.menuBar{
+	width:409px;
+	height:45px;
+	background: url('ui/jqwidgets/styles/images/darkness/ui-bg_glass_20_555555_1x400.png') repeat-x scroll 50% 50% #555;
+	position:relative;
+	border-bottom: solid thin #ccc;
+	z-index:20;
+}
+
+.topBarContHold{
+	width:408px;
+	height:43px;
+}
+
+.topBarContLeft{
+	width:355px;;
+	height:30px;
+	margin-top:10px;
+	margin-left:10px;
+	float:left;
+}
+
+.topBarContRight{
+	width:40px;
+	height:45px;
+	float:right;
+}
+
+#openCloseiconHold{
+	margin-top:15px;
+	margin-left:16px;
+	
+}
+
+#topicsLabel{
+	font-family:Lato, serif;
+	font-size:18px;
+	font-weight:bold;
+	color:#fff;
+}
+
+.topOpenButtStyle{
+	width:40px;
+	height:45px;
+	cursor:pointer;
+}
+
+/*.topOpenButtStyle:hover{
+  background-color:#eee;
+  }*/
+
+.CE_MenuContHold{ 
+	border:1px solid #888;
+	width:407px;
+	height:27px;
+	background-color:#888888;
+	padding-left:0px;
+	padding-top:0px;
+	display:block;
+	border-bottom:thin solid #666;
+	cursor:pointer;
+}
+
+.CE_MenuTitleHoldStyle{
+	width:220px;
+	padding-left:25px;
+	font-family:Lato, serif;
+	font-size:14px;
+	font-weight:bold;
+	line-height:24px;
+	color:#fff;
+}  
+#menuContainer{
+	width:408px;
+	height:800px;
+	position:absolute;
+	top:0;
+	overflow:hidden;
+	
+}
+
+#menuItemHolder{
+	width:408px;
+	height:232px;
+	position:relative;	
+	top:-140px;
+}
+
+#holderForAllLayerGroups {
+	width:408px;
+	height:50px;
+	position:relative;	
+	top:-140px;
+}
