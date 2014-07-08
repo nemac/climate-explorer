@@ -78,9 +78,10 @@
             "layers": "11"
         }, {
             "id": "aal",
-            "name": "Land Cover (2006)",
-            "url": "http://rain.nemac.org/~derek/fswms/html/rlayers",
-            "layers": "nlcd-2006"
+            "name": "Land Cover (2011)",
+            "url": "http://raster.nationalmap.gov/arcgis/services/LandCover/USGS_EROS_LandCover_NLCD/MapServer/WMSServer?service=WMS",
+            "layers": "30",
+            "projection": "EPSG:3857"
         }, {
             "id": "aam",
             "name": "Social Vulnerability Index",
