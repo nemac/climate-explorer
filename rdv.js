@@ -39,6 +39,8 @@ $(function(){
                 }
             });
         });
+        pl.addGraph({type: type, id : id});
+        updatePermalinkDisplay();
     }
 
     var overlaysById = {};
@@ -46,7 +48,7 @@ $(function(){
             
     ceui.init({
         tabSet : function(tab) {
-            console.log('switching to tab: ' + tab);
+            //console.log('switching to tab: ' + tab);
         }
     });
 
@@ -65,7 +67,6 @@ $(function(){
             }
             updatePermalinkDisplay();
         }
-        console.log('layer ' + id + ' visibility set to ' + visible);
     }
 
     function layerOpacitySet(id, opacity) {
@@ -74,7 +75,6 @@ $(function(){
             pl.setLayerOpacity(id, opacity);
             updatePermalinkDisplay();
         }
-        console.log('layer ' + id + ' opacity set to ' + opacity);
     }
 
     ceui.setVariables([
@@ -83,6 +83,13 @@ $(function(){
     ], {
         'displayGraph' : function(id, type, $element) {
             displayGraph(id.replace("GHCND:", ""), type, $element);
+        },
+        'removeGraph' : function(id, type) {
+            pl.removeGraph({type: type, id : id.replace("GHCND:", "")});
+            updatePermalinkDisplay();
+        },
+        'variablesSet' : function(variables) {
+            //pl.addGraph({type: type, id : id});
         }
     });
 
@@ -122,14 +129,27 @@ $(function(){
     var stationAndGraphLinkHash = [];
     var DATA_SUMMARY = {};
 
+    var currentTopicLayerIds = [];
+
     function setTopic(topicId) {
+        // Reset all current layers to full opacity, undisplayed
+        currentTopicLayerIds.forEach(function(layerId) {
+            mL.setLayerOpacity(layerId, 1.0);
+            mL.setLayerVisibility(layerId, false);
+        });
+        // Clear out the list of current layers (gets repopulated a few lines below)
+        currentTopicLayerIds = [];
+        // Set the layer groups
         ceui.setLayerGroups(topicsById[topicId].subGroups.map(function(subgroup) {
             return { id : subgroup.id, name : subgroup.name };
         }), {});
+        // Set the layers for each group
         topicsById[topicId].subGroups.forEach(function(subgroup) {
             ceui.setLayers(subgroup.id,
-                           subgroup.layers.map(function(layerId) { return overlaysById[layerId]; }),
-                           {
+                           subgroup.layers.map(function(layerId) {
+                               currentTopicLayerIds.push(layerId);
+                               return overlaysById[layerId];
+                           }), {
                                'layerVisibilitySet' : layerVisibilitySet,
                                'layerOpacitySet' : layerOpacitySet
                            });
@@ -725,13 +745,27 @@ return;
                 graphs.push(graph);
                 url.params.graphs = graphs.map(function(g) { return g.id + ":" + g.type; }).join(",");
             },
+            //'removeGraph' : function(graph) {
+            //    for ( var i = graphs.length - 1; i >= 0; i-- ) {
+            //        for ( var j = 0; j < graph.types.length; j++ ) {
+            //            if (graphs[i].type === graph.types[j] && graphs[i].id === graph.id) {    
+            //                graphs.splice ( i, 1 );
+            //                break;
+            //            }
+            //        }   
+            //    }
+            //
+            //    if (graphs.length > 0) {
+            //        url.params.graphs = graphs.map(function(g) { return g.id + ":" + g.type; }).join(",");
+            //    } else {
+            //        delete url.params.graphs;
+            //    }
+            //},
             'removeGraph' : function(graph) {
                 for ( var i = graphs.length - 1; i >= 0; i-- ) {
-                    for ( var j = 0; j < graph.types.length; j++ ) {
-                        if (graphs[i].type === graph.types[j] && graphs[i].id === graph.id) {    
-                            graphs.splice ( i, 1 );
-                            break;
-                        }
+                    if (graphs[i].type === graph.type && graphs[i].id === graph.id) {    
+                        graphs.splice ( i, 1 );
+                        break;
                     }   
                 }
 
