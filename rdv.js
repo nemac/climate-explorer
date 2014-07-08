@@ -273,19 +273,35 @@ $(function(){
                 rememberML(mL);
                 // deploy any graphs present in the url params:
                 if (pl.haveGraphs()) {
-                    var stationVars = {};
+
+                    var stationIds = {};
+                    var varIds = {};
                     pl.getGraphs().forEach(function(graph) {
-                        if ( SUPPORTED_STATION_VARS[graph.type] ) {
-                            // mark type as selected
-                            stationVars[graph.type] = true;
-                            mL.selectPoint( 'lyr_ghcnd', "GHCND:" + graph.id );
-                            deployGraph( graph.id, graph.type );
-                        }
+                        stationIds[ graph.id ] = true;
+                        varIds[ graph.type ] = true;
                     });
-                    
-                    $.each( SUPPORTED_STATION_VARS, function( key ){
-                        SUPPORTED_STATION_VARS[key].selected = stationVars.hasOwnProperty( key );
+                    stationIds = Object.keys(stationIds);
+                    varIds = Object.keys(varIds);
+
+                    stationIds.forEach(function(stationId) {
+                        var point = mL.getPoint('lyr_ghcnd', "GHCND:" + stationId);
+                        ceui.showStation({ id : point.id, name : point.name, latlon : "latlon here" });
+                        mL.selectPoint( 'lyr_ghcnd', point.id );
                     });
+
+//                    var stationVars = {};
+//                    pl.getGraphs().forEach(function(graph) {
+//                        if ( SUPPORTED_STATION_VARS[graph.type] ) {
+//                            // mark type as selected
+//                            stationVars[graph.type] = true;
+//                            mL.selectPoint( 'lyr_ghcnd', "GHCND:" + graph.id );
+//                            deployGraph( graph.id, graph.type );
+//                        }
+//                    });
+//                    
+//                    $.each( SUPPORTED_STATION_VARS, function( key ){
+//                        SUPPORTED_STATION_VARS[key].selected = stationVars.hasOwnProperty( key );
+//                    });
                 }
 
                 // turn on any overlay layers present in the url params:
