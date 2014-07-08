@@ -77,22 +77,6 @@ $(function(){
         }
     }
 
-    ceui.setVariables([
-        { id : "TEMP",     name : "TEMPERATURE" },
-        { id : "PRCP_YTD", name : "PRECIPITATION" }
-    ], {
-        'displayGraph' : function(id, type, $element) {
-            displayGraph(id.replace("GHCND:", ""), type, $element);
-        },
-        'removeGraph' : function(id, type) {
-            pl.removeGraph({type: type, id : id.replace("GHCND:", "")});
-            updatePermalinkDisplay();
-        },
-        'variablesSet' : function(variables) {
-            //pl.addGraph({type: type, id : id});
-        }
-    });
-
     var BASE_CSV_SOURCE_URL = 'https://s3.amazonaws.com/nemac-ghcnd/';
     var NORMALS_CSV_SOURCE_URL = 'https://s3.amazonaws.com/nemac-normals/NORMAL_';
     var MH = require( './utils/muglHelper.js' );
@@ -281,8 +265,23 @@ $(function(){
                         varIds[ graph.type ] = true;
                     });
                     stationIds = Object.keys(stationIds);
-                    varIds = Object.keys(varIds);
 
+                    ceui.setVariables([
+                        { id : "TEMP",     name : "TEMPERATURE",   selected : varIds["TEMP"]     },
+                        { id : "PRCP_YTD", name : "PRECIPITATION", selected : varIds["PRCP_YTD"] }
+                    ], {
+                        'displayGraph' : function(id, type, $element) {
+                            displayGraph(id.replace("GHCND:", ""), type, $element);
+                        },
+                        'removeGraph' : function(id, type) {
+                            pl.removeGraph({type: type, id : id.replace("GHCND:", "")});
+                            updatePermalinkDisplay();
+                        },
+                        'variablesSet' : function(variables) {
+                            //pl.addGraph({type: type, id : id});
+                        }
+                    });
+                    
                     stationIds.forEach(function(stationId) {
                         var point = mL.getPoint('lyr_ghcnd', "GHCND:" + stationId);
                         ceui.showStation({ id : point.id, name : point.name, latlon : "latlon here" });
