@@ -1,4 +1,10 @@
 {
+    "stations" : {
+       "data" : "testdata/filtered_stations.json",
+       "name" : "GHCND Stations",
+       "id"   : "lyr_ghcnd",
+       "projection" : "EPSG:4326"
+    },
     "bases": [{
         "id": "b_a",
         "type": "arcgis",

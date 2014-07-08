@@ -48,6 +48,13 @@ $(function(){
             
     ceui.init({
         tabSet : function(tab) {
+            if (tab === ceui.LAYERS) {
+                console.log('displaying map layers now');
+                mL.setLayerVisibility("lyr_ghcnd", false);
+            } else {
+                console.log('displaying graphs now');
+                mL.setLayerVisibility("lyr_ghcnd", true);
+            }
             //console.log('switching to tab: ' + tab);
         }
     });
@@ -219,11 +226,11 @@ $(function(){
             layers: {
                 maplite: [
                     new $.nemac.MapliteDataSource(
-                        'testdata/filtered_stations.json',
-                        'GHCND Stations',
-                        'lyr_ghcnd',
+                        MAPLITE_CONFIG.stations.data,
+                        MAPLITE_CONFIG.stations.name,
+                        MAPLITE_CONFIG.stations.id,
                         $.nemac.MARKER_COLORS.RED,
-                        'EPSG:4326',
+                        MAPLITE_CONFIG.stations.projection,
                         null,
                         function( zoom, points ) {
                             var filtered = [];
