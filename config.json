@@ -97,9 +97,15 @@
 	    "layers": "4"
 	}, {
             "id": "aao",
-            "name": "Drought (9/24/2014)",
+            "name": "Drought (9/24/2013)",
             "url": "http://torka.unl.edu:8080/cgi-bin/mapserv.exe?map=/ms4w/apps/dm/service/usdm130924_wms.map",
             "layers": "usdm130924"
+        }, {
+            "id": "aap",
+            "name": "Cropland",
+            "url": "http://129.174.131.7/cgi/wms_cdlall.cgi",
+            "projection": "EPSG:4326",
+            "layers": "cdl_2013"
         }
     ],
     "groups": [{
@@ -125,7 +131,7 @@
         }, {
             "id": "g_b_b",
             "name": "Assets Impacted",
-            "layers": [ "aal" ]
+            "layers": [ "aal", "aap" ]
         }]
     }, {
         "id": "g_c",
