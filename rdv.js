@@ -144,6 +144,11 @@ $(function(){
             mL.setLayerOpacity(layerId, 1.0);
             mL.setLayerVisibility(layerId, false);
         });
+        // remove all layers from permalink
+        pl.getLayers().forEach(function(layer) {
+            pl.removeLayer(layer.id);
+        });
+        updatePermalinkDisplay();
         // Clear out the list of current layers (gets repopulated a few lines below)
         currentTopicLayerIds = [];
         // Set the layer groups
