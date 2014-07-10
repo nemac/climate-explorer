@@ -3,6 +3,26 @@
 //
 $(function(){
 
+    var scales = {};
+    var axisUpdateTimeout = null;
+    var axisUpdateDebounceThresholdMS = 500;
+    function updateAxisDebounce(bindingId, min, max) {
+        bindingId = bindingId.replace("-binding","");
+        if (axisUpdateTimeout !== null) {
+            clearTimeout(axisUpdateTimeout);
+        }
+        if (! (bindingId in scales)) {
+            scales[bindingId] = {};
+        }
+        scales[bindingId].min = min;
+        scales[bindingId].max = max;
+        axisUpdateTimeout = setTimeout(function() {
+            pl.setScales(scales);
+            updatePermalinkDisplay();
+            scales = {};
+        }, axisUpdateDebounceThresholdMS);
+    }
+
     function displayGraph(id, type, $element) {
         var payload = MuglHelper.getDataRequests( type, id );
         $.when.apply( $, payload.requests ).done( function(){
@@ -33,7 +53,7 @@ $(function(){
                             }
                         }
                         axis.addListener('dataRangeSet', function(e) {
-                            //    updateAxisDebounce(axis.binding().id(), e.min, e.max);
+                            updateAxisDebounce(axis.binding().id(), e.min, e.max);
                         });
                     }(mg.graphs().at(0).axes().at(i)));
                 }
@@ -410,26 +430,6 @@ return;
                 })(window);
             }
         });
-    }
-
-    var scales = {};
-    var axisUpdateTimeout = null;
-    var axisUpdateDebounceThresholdMS = 500;
-    function updateAxisDebounce(bindingId, min, max) {
-        bindingId = bindingId.replace("-binding","");
-        if (axisUpdateTimeout !== null) {
-            clearTimeout(axisUpdateTimeout);
-        }
-        if (! (bindingId in scales)) {
-            scales[bindingId] = {};
-        }
-        scales[bindingId].min = min;
-        scales[bindingId].max = max;
-        axisUpdateTimeout = setTimeout(function() {
-            pl.setScales(scales);
-            updatePermalinkDisplay();
-            scales = {};
-        }, axisUpdateDebounceThresholdMS);
     }
 
     //
