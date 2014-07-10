@@ -163,6 +163,8 @@ $(function(){
                                return overlaysById[layerId];
                            }));
         });
+        pl.setTp(topicId);
+        updatePermalinkDisplay();
     }
     
     var requests = [
@@ -190,9 +192,18 @@ $(function(){
                 overlaysById[ overlay.id ] = overlay;
             });
 
-            // pre-select the first one
-            ceui.setTopic(groups[0].id);
-            setTopic(groups[0].id);
+            // pre-select whichever group (topic) is present in the permalink URL, if any, otherwise pre-select the first one
+            var i = 0;
+            if (pl.haveTp()) {
+                for (var j=0; j<groups.length; ++j) {
+                    if (groups[j].id === pl.getTp()) {
+                        i = j;
+                        break;
+                    }
+                }
+            }
+            ceui.setTopic(groups[i].id);
+            setTopic(groups[i].id);
 
             MAPLITE_CONFIG = config;
         })
@@ -692,7 +703,7 @@ return;
     //    var pl = Permalink(URL(window.location.toString()));
     //
     function Permalink(url) {
-    var center = null, zoom = null, gp = null;
+    var center = null, zoom = null, gp = null, tp = null;
         var graphs = [];
         var layers = [];
         var scales = {};
@@ -710,6 +721,9 @@ return;
             if (fields.length > 1) {
                 gp.width = parseInt(fields[1],10);
             }
+        }
+        if ('tp' in url.params) {
+            tp = url.params.tp;
         }
         if ('graphs' in url.params) {
             url.params.graphs.split(',').forEach(function(graphString) {
@@ -742,6 +756,12 @@ return;
             'setZoom'  : function(z) {
                 zoom = z;
                 url.params.zoom = zoom.toString();
+            },
+            'haveTp'   : function() { return tp !== null; },
+            'getTp'    : function() { return tp; },
+            'setTp'    : function(t) {
+                tp = t;
+                url.params.tp = t;
             },
             'haveGp'   : function() { return gp !== null; },
             'getGp'    : function() { return gp; },
