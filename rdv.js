@@ -65,15 +65,23 @@ $(function(){
 
     var overlaysById = {};
     var topicsById = {};
+    
+    var selectLayersTab = function() {
+        //console.log('displaying map layers now');
+        mL.setLayerVisibility("lyr_ghcnd", false);
+    };
+    
+    var selectGraphsTab = function() {
+        //console.log('displaying graphs now');
+        mL.setLayerVisibility("lyr_ghcnd", true);
+    };
             
     ceui.init({
         tabSet : function(tab) {
             if (tab === ceui.LAYERS) {
-                console.log('displaying map layers now');
-                mL.setLayerVisibility("lyr_ghcnd", false);
+                selectLayersTab();
             } else {
-                console.log('displaying graphs now');
-                mL.setLayerVisibility("lyr_ghcnd", true);
+                selectGraphsTab();
             }
             //console.log('switching to tab: ' + tab);
         },
@@ -340,6 +348,21 @@ $(function(){
                         ceui.showStation({ id : point.id, name : point.name, latlon : "latlon here" });
                         mL.selectPoint( 'lyr_ghcnd', point.id );
                     });
+                }
+                
+                // check current perspective from permalink URL, set
+                // TODO check perspective from permalink
+                // TODO ZZZ
+                var todoChangeThisToPermalinkCheck = false;
+                if ( todoChangeThisToPermalinkCheck ) {
+                    var todoChangeThisToCheckWhichPerspectiveIsSelected = true;
+                    if ( todoChangeThisToCheckWhichPerspectiveIsSelected )  {
+                        selectLayersTab();
+                    } else {
+                        selectGraphsTab();
+                    }
+                } else {
+                    selectLayersTab();
                 }
 
                 // turn on any overlay layers present in the permalink URL:
