@@ -102,6 +102,7 @@ $(function(){
     var MAPLITE_CONFIG;
     var MAX_SELECTED_STATIONS = 6;
     var APP_CONFIG_URL = 'config.json';
+    var GRAPH_VARIDS = [ "TEMP", "PRCP_YTD" ];
     var SUPPORTED_STATION_VARS = {
         TEMP: {
             label: 'Temperature',
@@ -262,64 +263,59 @@ $(function(){
             selectCallback: clickPoint,
             onCreate: function(mL) {
                 rememberML(mL);
-                // deploy any graphs present in the url params:
-                if (pl.haveGraphs()) {
 
-                    var stationIds = {};
-                    var varIds = {};
+                // look at the permalink URL info to determine which graph variable buttons should
+                // be initially selected
+                var varIds = {};
+                if (pl.haveGraphs()) {
                     pl.getGraphs().forEach(function(graph) {
-                        stationIds[ graph.id ] = true;
                         varIds[ graph.type ] = true;
                     });
-                    stationIds = Object.keys(stationIds);
-
-                    ceui.setVariables([
-                        { id : "TEMP",     name : "TEMPERATURE",   selected : varIds["TEMP"]     },
-                        { id : "PRCP_YTD", name : "PRECIPITATION", selected : varIds["PRCP_YTD"] }
-                    ], {
-                        'displayGraph' : function(id, type, $element) {
-                            displayGraph(id.replace("GHCND:", ""), type, $element);
-                        },
-                        'removeGraph' : function(id, type) {
-                            pl.removeGraph({type: type, id : id.replace("GHCND:", "")});
-                            updatePermalinkDisplay();
-                        },
-                        'variablesSet' : function(variables) {
-                            //pl.addGraph({type: type, id : id});
-                        }
+                } else {
+                    // if no graphs were present in permalink URL, default to having all vars selected
+                    GRAPH_VARIDS.forEach(function(varId) {
+                        varIds[ varId ] = true;
                     });
-                    
+                }
+
+                // set the graph variables in the UI
+                ceui.setVariables([
+                    { id : "TEMP",     name : "TEMPERATURE",   selected : varIds["TEMP"]     },
+                    { id : "PRCP_YTD", name : "PRECIPITATION", selected : varIds["PRCP_YTD"] }
+                ], {
+                    'displayGraph' : function(id, type, $element) {
+                        displayGraph(id.replace("GHCND:", ""), type, $element);
+                    },
+                    'removeGraph' : function(id, type) {
+                        pl.removeGraph({type: type, id : id.replace("GHCND:", "")});
+                        updatePermalinkDisplay();
+                    },
+                    'variablesSet' : function(variables) {
+                        //pl.addGraph({type: type, id : id});
+                    }
+                });
+
+                // deploy any graphs present in the permalink URL:
+                var stationIds = {};
+                if (pl.haveGraphs()) {
+                    pl.getGraphs().forEach(function(graph) {
+                        stationIds[ graph.id ] = true;
+                    });
+                    stationIds = Object.keys(stationIds);
                     stationIds.forEach(function(stationId) {
                         var point = mL.getPoint('lyr_ghcnd', "GHCND:" + stationId);
                         ceui.showStation({ id : point.id, name : point.name, latlon : "latlon here" });
                         mL.selectPoint( 'lyr_ghcnd', point.id );
                     });
-
-//                    var stationVars = {};
-//                    pl.getGraphs().forEach(function(graph) {
-//                        if ( SUPPORTED_STATION_VARS[graph.type] ) {
-//                            // mark type as selected
-//                            stationVars[graph.type] = true;
-//                            mL.selectPoint( 'lyr_ghcnd', "GHCND:" + graph.id );
-//                            deployGraph( graph.id, graph.type );
-//                        }
-//                    });
-//                    
-//                    $.each( SUPPORTED_STATION_VARS, function( key ){
-//                        SUPPORTED_STATION_VARS[key].selected = stationVars.hasOwnProperty( key );
-//                    });
                 }
 
-                // turn on any overlay layers present in the url params:
+                // turn on any overlay layers present in the permalink URL:
                 pl.getLayers().forEach(function(layer) {
                     mL.setLayerVisibility(layer.id, true);
                     mL.setLayerOpacity(layer.id, layer.opacity);
                     ceui.setLayerVisibility(layer.id, true);
                     ceui.setLayerOpacity(layer.id, layer.opacity);
                 });
-                
-                // add to selector
-//                deployStationDataOptionsSelector();
                 
                 // TODO is this problematic to move this into the onCreate method, as opposed to outside as it was before?
                 // initialize the pl object from the initial map state:
