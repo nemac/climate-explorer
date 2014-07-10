@@ -56,6 +56,21 @@ $(function(){
                 mL.setLayerVisibility("lyr_ghcnd", true);
             }
             //console.log('switching to tab: ' + tab);
+        },
+        layerVisibilitySet : layerVisibilitySet,
+        layerOpacitySet : layerOpacitySet,
+        topicSet : function(topicId) {
+            setTopic(topicId);
+        },
+        displayGraph : function(id, type, $element) {
+            displayGraph(id.replace("GHCND:", ""), type, $element);
+        },
+        removeGraph : function(id, type) {
+            pl.removeGraph({type: type, id : id.replace("GHCND:", "")});
+            updatePermalinkDisplay();
+        },
+        variablesSet : function(variables) {
+            //pl.addGraph({type: type, id : id});
         }
     });
 
@@ -134,17 +149,14 @@ $(function(){
         // Set the layer groups
         ceui.setLayerGroups(topicsById[topicId].subGroups.map(function(subgroup) {
             return { id : subgroup.id, name : subgroup.name };
-        }), {});
+        }));
         // Set the layers for each group
         topicsById[topicId].subGroups.forEach(function(subgroup) {
             ceui.setLayers(subgroup.id,
                            subgroup.layers.map(function(layerId) {
                                currentTopicLayerIds.push(layerId);
                                return overlaysById[layerId];
-                           }), {
-                               'layerVisibilitySet' : layerVisibilitySet,
-                               'layerOpacitySet' : layerOpacitySet
-                           });
+                           }));
         });
     }
     
@@ -164,11 +176,7 @@ $(function(){
             });
             // populate the list of topics in the UI
             var groups = config.groups.map(function(group) { return { id : group.id, name : group.name }; });
-            ceui.setTopics(groups, {
-                topicSet : function(topicId) {
-                    setTopic(topicId);
-                }
-            });
+            ceui.setTopics(groups);
 
             //
             // cache the overlay ("map layers") details:
@@ -282,18 +290,7 @@ $(function(){
                 ceui.setVariables([
                     { id : "TEMP",     name : "TEMPERATURE",   selected : varIds["TEMP"]     },
                     { id : "PRCP_YTD", name : "PRECIPITATION", selected : varIds["PRCP_YTD"] }
-                ], {
-                    'displayGraph' : function(id, type, $element) {
-                        displayGraph(id.replace("GHCND:", ""), type, $element);
-                    },
-                    'removeGraph' : function(id, type) {
-                        pl.removeGraph({type: type, id : id.replace("GHCND:", "")});
-                        updatePermalinkDisplay();
-                    },
-                    'variablesSet' : function(variables) {
-                        //pl.addGraph({type: type, id : id});
-                    }
-                });
+                ]);
 
                 // deploy any graphs present in the permalink URL:
                 var stationIds = {};

@@ -32,8 +32,7 @@ ceui._variableById = function(id) {
 //   'variables' should be an array of objects of the form { id : VARIABLE_ID, name : VARIABLE_NAME }, as described
 //       in the comment for ceui._variables above.  Note that these objects do not contain a 'selected' property;
 //       by default, all variables are set to be selected initially (i.e. their 'selected' property is initialized to true)
-//   'options' is currently unused
-ceui.setVariables = function(variables, options) {
+ceui.setVariables = function(variables) {
     $("#multiGrphButtHold").empty();
     ceui._variables = [];
     variables.forEach(function(variable) {
@@ -52,8 +51,6 @@ ceui.setVariables = function(variables, options) {
         });
         ceui._variables.push({ id : variable.id, name : variable.name, selected : !!variable.selected });
     });
-    ceui._displayGraph = options.displayGraph;
-    ceui._removeGraph = options.removeGraph;
 };
 
 // ceui._stations is an array that keeps track of the stations for which graphs are currently shown
@@ -135,7 +132,7 @@ ceui.hideStation = function(id) {
 
 ceui._topicMenuItems = {};
 
-ceui.setTopics = function(topics, options) {
+ceui.setTopics = function(topics) {
     $("#menuItemHolder").empty();
     topics.forEach(function(topic) {
         var $menuItem = $(ceui.templates.topicsMenuItem).appendTo($("#menuItemHolder"));
@@ -169,7 +166,6 @@ ceui.setTopics = function(topics, options) {
                 ceui._topicSet( $(this).attr("data-id") );
             }
  		});
-    ceui._topicSet = options.topicSet;
 };
 
 ceui.setTopic = function(id) {
@@ -202,7 +198,7 @@ ceui.setLayerGroups = function(layerGroups) {
 
 ceui._layers = {};
 
-ceui.setLayers = function(groupId, layers, options) {
+ceui.setLayers = function(groupId, layers) {
     var $layerGroupLayersHolder = ceui._layerGroupLayersHolders[groupId]
     $layerGroupLayersHolder.jqxPanel('clearContent');
 
@@ -255,8 +251,6 @@ ceui.setLayers = function(groupId, layers, options) {
         
     });
 
-    ceui._layerVisibilitySet = options.layerVisibilitySet;
-    ceui._layerOpacitySet = options.layerOpacitySet;
 };
 
 ceui.setLayerVisibility = function(layerId, visible) {
@@ -278,6 +272,12 @@ ceui.setLayerOpacity = function(layerId, opacity) {
 ceui.init = function(options) {
 
     ceui._tabSet = options.tabSet;
+    ceui._displayGraph = options.displayGraph;
+    ceui._removeGraph = options.removeGraph;
+    ceui._topicSet = options.topicSet;
+    ceui._layerVisibilitySet = options.layerVisibilitySet;
+    ceui._layerOpacitySet = options.layerOpacitySet;
+
 
     ceui.templates = {};
 
