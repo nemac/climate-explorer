@@ -87,7 +87,7 @@ ceui._stationIndexById = function(id) {
         }
     }
     return -1;
-}
+};
 
 // This internal function adds a new component to an existing station pane, and calls the ceui._displayGraph()
 // callback to create a Multigraph in that new component.
@@ -97,19 +97,26 @@ ceui._showGraph = function(station, variableId) {
     $mgPane.find(".mgPaneBotContentHold").empty();
     station.mgPanes[""+variableId] = $mgPane;
     ceui._displayGraph(station.id, variableId, $mgPane.find(".mgPaneBotContentHold"));
-}
+};
 
 ceui._hideGraph = function(station, variableId) {
     var $mgPane = station.mgPanes[""+variableId];
     $mgPane.remove();
     delete station.mgPanes[""+variableId];
     ceui._removeGraph(station.id, variableId);
-}
+};
+
+// increment over stations, set the associated number to match the point label
+ceui._setStationNumbers = function() {
+    ceui._stations.forEach( function( station, i ) {
+        station.$pane.find( '.mgNumber' ).html( sprintf( '(%s)', i + 1 ) );
+    });
+};
 
 ceui.showStation = function(station) {
     var $stationPane = $(ceui.templates.stationPane);
     $("#multiGrphPanel").jqxPanel('append', $stationPane);
-    $stationPane.find(".mgNumber").html("1.");
+    
     $stationPane.find(".mgTitle").html(station.name);
     $stationPane.find(".mgLatLon").html(station.latlon);
     $stationPane.find(".mgPanesHolder").empty();
@@ -120,6 +127,7 @@ ceui.showStation = function(station) {
         }
     });
     ceui._stations.push(station);
+    ceui._setStationNumbers();
 };
 
 ceui.hideStation = function(id) {
@@ -128,7 +136,9 @@ ceui.hideStation = function(id) {
         ceui._stations[stationIndex].$pane.remove();
         ceui._stations.splice(i,1);
     }
-}
+    
+    ceui._setStationNumbers();
+};
 
 ceui._topicMenuItems = {};
 
