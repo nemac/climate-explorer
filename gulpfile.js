@@ -102,12 +102,15 @@ gulp.task( 'bundle-assets', function() {
 
 gulp.task( 'html', ['default'], function() {
 
-    gulp.src( './rdv.html' )
+    gulp.src( './ce.html' )
         .pipe( concat( 'index.html' ) )
         .pipe( gulp.dest( './html' ) );
 
     gulp.src( './build/**' )
         .pipe( gulp.dest( './html/build' ) );
+
+    gulp.src( './ceui/**' )
+        .pipe( gulp.dest( './html/ceui' ) );
 
     gulp.src( './testdata/**' )
         .pipe( gulp.dest( './html/testdata' ) );

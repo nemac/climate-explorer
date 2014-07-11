@@ -2,6 +2,131 @@
 // Init
 //
 $(function(){
+
+    var scales = {};
+    var axisUpdateTimeout = null;
+    var axisUpdateDebounceThresholdMS = 500;
+    function updateAxisDebounce(bindingId, min, max) {
+        bindingId = bindingId.replace("-binding","");
+        if (axisUpdateTimeout !== null) {
+            clearTimeout(axisUpdateTimeout);
+        }
+        if (! (bindingId in scales)) {
+            scales[bindingId] = {};
+        }
+        scales[bindingId].min = min;
+        scales[bindingId].max = max;
+        axisUpdateTimeout = setTimeout(function() {
+            pl.setScales(scales);
+            updatePermalinkDisplay();
+            scales = {};
+        }, axisUpdateDebounceThresholdMS);
+    }
+
+    function displayGraph(id, type, $element) {
+        var payload = MuglHelper.getDataRequests( type, id );
+        $.when.apply( $, payload.requests ).done( function(){
+            var _jq  = window.multigraph.jQuery;
+            _jq ( $element ).multigraph( {
+                muglString: MuglHelper.buildMugl(
+                    payload.data,
+                    type,
+                    DATA_SUMMARY[id],
+                    MUGLTEMPLATES
+                )});
+            _jq ( $element ).multigraph( 'done', function(mg) {
+                var i, naxes = mg.graphs().at(0).axes().size();
+                for (i=0; i<naxes; ++i) {
+                    (function(axis) {
+                        if (pl.haveScales()) {
+                            var scales = pl.getScales();
+                            var bindingId = axis.binding().id().replace('-binding','');
+                            var parser;
+                            if (bindingId === "time") {
+                                parser = window.multigraph.core.DatetimeValue;
+                            } else {
+                                parser = window.multigraph.core.NumberValue;
+                            }
+                            if (bindingId in scales) {
+                                axis.setDataRange(parser.parse(scales[bindingId].min),
+                                                  parser.parse(scales[bindingId].max));
+                            }
+                        }
+                        axis.addListener('dataRangeSet', function(e) {
+                            updateAxisDebounce(axis.binding().id(), e.min, e.max);
+                        });
+                    }(mg.graphs().at(0).axes().at(i)));
+                }
+            });
+        });
+        pl.addGraph({type: type, id : id});
+        updatePermalinkDisplay();
+    }
+
+    var overlaysById = {};
+    var topicsById = {};
+    
+    var selectLayersTab = function() {
+        //console.log('displaying map layers now');
+        mL.setLayerVisibility("lyr_ghcnd", false);
+    };
+    
+    var selectGraphsTab = function() {
+        //console.log('displaying graphs now');
+        mL.setLayerVisibility("lyr_ghcnd", true);
+    };
+            
+    ceui.init({
+        tabSet : function(tab) {
+            if (tab === ceui.LAYERS) {
+                selectLayersTab();
+            } else {
+                selectGraphsTab();
+            }
+            //console.log('switching to tab: ' + tab);
+        },
+        layerVisibilitySet : layerVisibilitySet,
+        layerOpacitySet : layerOpacitySet,
+        topicSet : function(topicId) {
+            setTopic(topicId);
+        },
+        displayGraph : function(id, type, $element) {
+            displayGraph(id.replace("GHCND:", ""), type, $element);
+        },
+        removeGraph : function(id, type) {
+            pl.removeGraph({type: type, id : id.replace("GHCND:", "")});
+            updatePermalinkDisplay();
+        },
+        variablesSet : function(variables) {
+            //pl.addGraph({type: type, id : id});
+        }
+    });
+
+    var mL = null;
+    function rememberML(x) {
+        mL = x;
+    }
+
+    function layerVisibilitySet(id, visible) {
+        if (mL != null) {
+            mL.setLayerVisibility(id, visible);
+            if (visible) {
+                pl.addLayer(id);
+            } else {
+                pl.removeLayer(id);
+            }
+            updatePermalinkDisplay();
+        }
+    }
+
+    function layerOpacitySet(id, opacity) {
+        if (mL != null) {
+            mL.setLayerOpacity(id, opacity);
+            pl.setLayerOpacity(id, opacity);
+            updatePermalinkDisplay();
+        }
+    }
+
     var BASE_CSV_SOURCE_URL = 'https://s3.amazonaws.com/nemac-ghcnd/';
     var NORMALS_CSV_SOURCE_URL = 'https://s3.amazonaws.com/nemac-normals/NORMAL_';
     var MH = require( './utils/muglHelper.js' );
@@ -20,6 +145,7 @@ $(function(){
     var MAPLITE_CONFIG;
     var MAX_SELECTED_STATIONS = 6;
     var APP_CONFIG_URL = 'config.json';
+    var GRAPH_VARIDS = [ "TEMP", "PRCP_YTD" ];
     var SUPPORTED_STATION_VARS = {
         TEMP: {
             label: 'Temperature',
@@ -37,6 +163,37 @@ $(function(){
     var selectedStationCount = 0;
     var stationAndGraphLinkHash = [];
     var DATA_SUMMARY = {};
+
+    var currentTopicLayerIds = [];
+
+    function setTopic(topicId) {
+        // Reset all current layers to full opacity, undisplayed
+        currentTopicLayerIds.forEach(function(layerId) {
+            mL.setLayerOpacity(layerId, 1.0);
+            mL.setLayerVisibility(layerId, false);
+        });
+        // remove all layers from permalink
+        pl.getLayers().forEach(function(layer) {
+            pl.removeLayer(layer.id);
+        });
+        updatePermalinkDisplay();
+        // Clear out the list of current layers (gets repopulated a few lines below)
+        currentTopicLayerIds = [];
+        // Set the layer groups
+        ceui.setLayerGroups(topicsById[topicId].subGroups.map(function(subgroup) {
+            return { id : subgroup.id, name : subgroup.name };
+        }));
+        // Set the layers for each group
+        topicsById[topicId].subGroups.forEach(function(subgroup) {
+            ceui.setLayers(subgroup.id,
+                           subgroup.layers.map(function(layerId) {
+                               currentTopicLayerIds.push(layerId);
+                               return overlaysById[layerId];
+                           }));
+        });
+        pl.setTp(topicId);
+        updatePermalinkDisplay();
+    }
     
     var requests = [
         $.getJSON( BASE_CSV_SOURCE_URL + 'summary.json', function( data ) {
@@ -45,8 +202,38 @@ $(function(){
         $.get( TEMPLATE_LOCATION, function( template ) {
             STATION_DETAIL_TEMPLATE = template;            
         }),
-        $.getJSON( APP_CONFIG_URL, function( mapliteConfig ) {
-            MAPLITE_CONFIG = mapliteConfig;
+        $.getJSON( APP_CONFIG_URL, function( config ) {
+
+
+            // cache the topics by id (note that topics are called 'groups' in the config file)
+            config.groups.forEach(function(group) {
+                topicsById[ group.id ] = group;
+            });
+            // populate the list of topics in the UI
+            var groups = config.groups.map(function(group) { return { id : group.id, name : group.name }; });
+            ceui.setTopics(groups);
+
+            //
+            // cache the overlay ("map layers") details:
+            //
+            config.overlays.forEach(function(overlay) {
+                overlaysById[ overlay.id ] = overlay;
+            });
+
+            // pre-select whichever group (topic) is present in the permalink URL, if any, otherwise pre-select the first one
+            var i = 0;
+            if (pl.haveTp()) {
+                for (var j=0; j<groups.length; ++j) {
+                    if (groups[j].id === pl.getTp()) {
+                        i = j;
+                        break;
+                    }
+                }
+            }
+            ceui.setTopic(groups[i].id);
+            setTopic(groups[i].id);
+
+            MAPLITE_CONFIG = config;
         })
     ];
 
@@ -68,7 +255,7 @@ $(function(){
         if (pl.haveCenter()) {
             mapOptions.center = pl.getCenter();
         }
-        var $mapl = $( '#map' ).mapLite({
+        var $mapl = ceui.getMapElement().mapLite({
             config: MAPLITE_CONFIG,
             changeOpacityCallback: function( layerId, opacity ) {
                 pl.setLayerOpacity(layerId, opacity);
@@ -92,11 +279,11 @@ $(function(){
             layers: {
                 maplite: [
                     new $.nemac.MapliteDataSource(
-                        'testdata/filtered_stations.json',
-                        'GHCND Stations',
-                        'lyr_ghcnd',
+                        MAPLITE_CONFIG.stations.data,
+                        MAPLITE_CONFIG.stations.name,
+                        MAPLITE_CONFIG.stations.id,
                         $.nemac.MARKER_COLORS.RED,
-                        'EPSG:4326',
+                        MAPLITE_CONFIG.stations.projection,
                         null,
                         function( zoom, points ) {
                             var filtered = [];
@@ -124,33 +311,67 @@ $(function(){
                     )]
             },
             iconPath: BUILD_BASE_PATH + 'img/',
+            useLayerSelector : false,
             selectCallback: clickPoint,
             onCreate: function(mL) {
-                // deploy any graphs present in the url params:
+                rememberML(mL);
+
+                // look at the permalink URL info to determine which graph variable buttons should
+                // be initially selected
+                var varIds = {};
                 if (pl.haveGraphs()) {
-                    var stationVars = {};
                     pl.getGraphs().forEach(function(graph) {
-                        if ( SUPPORTED_STATION_VARS[graph.type] ) {
-                            // mark type as selected
-                            stationVars[graph.type] = true;
-                            mL.selectPoint( 'lyr_ghcnd', "GHCND:" + graph.id );
-                            deployGraph( graph.id, graph.type );
-                        }
+                        varIds[ graph.type ] = true;
                     });
-                    
-                    $.each( SUPPORTED_STATION_VARS, function( key ){
-                        SUPPORTED_STATION_VARS[key].selected = stationVars.hasOwnProperty( key );
+                } else {
+                    // if no graphs were present in permalink URL, default to having all vars selected
+                    GRAPH_VARIDS.forEach(function(varId) {
+                        varIds[ varId ] = true;
                     });
                 }
 
-                // turn on any overlay layers present in the url params:
+                // set the graph variables in the UI
+                ceui.setVariables([
+                    { id : "TEMP",     name : "TEMPERATURE",   selected : varIds["TEMP"]     },
+                    { id : "PRCP_YTD", name : "PRECIPITATION", selected : varIds["PRCP_YTD"] }
+                ]);
+
+                // deploy any graphs present in the permalink URL:
+                var stationIds = {};
+                if (pl.haveGraphs()) {
+                    pl.getGraphs().forEach(function(graph) {
+                        stationIds[ graph.id ] = true;
+                    });
+                    stationIds = Object.keys(stationIds);
+                    stationIds.forEach(function(stationId) {
+                        var point = mL.getPoint('lyr_ghcnd', "GHCND:" + stationId);
+                        ceui.showStation({ id : point.id, name : point.name, latlon : "latlon here" });
+                        mL.selectPoint( 'lyr_ghcnd', point.id );
+                    });
+                }
+                
+                // check current perspective from permalink URL, set
+                // TODO check perspective from permalink
+                // TODO ZZZ
+                var todoChangeThisToPermalinkCheck = false;
+                if ( todoChangeThisToPermalinkCheck ) {
+                    var todoChangeThisToCheckWhichPerspectiveIsSelected = true;
+                    if ( todoChangeThisToCheckWhichPerspectiveIsSelected )  {
+                        selectLayersTab();
+                    } else {
+                        selectGraphsTab();
+                    }
+                } else {
+                    selectLayersTab();
+                }
+
+                // turn on any overlay layers present in the permalink URL:
                 pl.getLayers().forEach(function(layer) {
                     mL.setLayerVisibility(layer.id, true);
                     mL.setLayerOpacity(layer.id, layer.opacity);
+                    ceui.setLayerVisibility(layer.id, true);
+                    ceui.setLayerOpacity(layer.id, layer.opacity);
                 });
-                
-                // add to selector
-                deployStationDataOptionsSelector();
                 
                 // TODO is this problematic to move this into the onCreate method, as opposed to outside as it was before?
                 // initialize the pl object from the initial map state:
@@ -162,6 +383,10 @@ $(function(){
             }
         });
     });
+
+///
+return;
+////////////////////////////////////////////////////////////////////////
 
     var initialPanelState = 'closed';
     var initialPanelWidth = 600;
@@ -228,26 +453,6 @@ $(function(){
                 })(window);
             }
         });
-    }
-
-    var scales = {};
-    var axisUpdateTimeout = null;
-    var axisUpdateDebounceThresholdMS = 500;
-    function updateAxisDebounce(bindingId, min, max) {
-        bindingId = bindingId.replace("-binding","");
-        if (axisUpdateTimeout !== null) {
-            clearTimeout(axisUpdateTimeout);
-        }
-        if (! (bindingId in scales)) {
-            scales[bindingId] = {};
-        }
-        scales[bindingId].min = min;
-        scales[bindingId].max = max;
-        axisUpdateTimeout = setTimeout(function() {
-            pl.setScales(scales);
-            updatePermalinkDisplay();
-            scales = {};
-        }, axisUpdateDebounceThresholdMS);
     }
 
     //
@@ -355,6 +560,16 @@ $(function(){
     // Interactions
     //
     function clickPoint( point ) {
+        ceui.showStation({ id : point.id, name : point.name, latlon : "latlon here" });
+/////////////
+/////////////
+/////////////
+/////////////
+return;
+/////////////
+/////////////
+/////////////
+/////////////
         if ( selectedStationCount >= MAX_SELECTED_STATIONS ) {
             return;
         }
@@ -511,7 +726,7 @@ $(function(){
     //    var pl = Permalink(URL(window.location.toString()));
     //
     function Permalink(url) {
-    var center = null, zoom = null, gp = null;
+    var center = null, zoom = null, gp = null, tp = null;
         var graphs = [];
         var layers = [];
         var scales = {};
@@ -529,6 +744,9 @@ $(function(){
             if (fields.length > 1) {
                 gp.width = parseInt(fields[1],10);
             }
+        }
+        if ('tp' in url.params) {
+            tp = url.params.tp;
         }
         if ('graphs' in url.params) {
             url.params.graphs.split(',').forEach(function(graphString) {
@@ -562,6 +780,12 @@ $(function(){
                 zoom = z;
                 url.params.zoom = zoom.toString();
             },
+            'haveTp'   : function() { return tp !== null; },
+            'getTp'    : function() { return tp; },
+            'setTp'    : function(t) {
+                tp = t;
+                url.params.tp = t;
+            },
             'haveGp'   : function() { return gp !== null; },
             'getGp'    : function() { return gp; },
             'setGp'    : function(g) {
@@ -584,13 +808,27 @@ $(function(){
                 graphs.push(graph);
                 url.params.graphs = graphs.map(function(g) { return g.id + ":" + g.type; }).join(",");
             },
+            //'removeGraph' : function(graph) {
+            //    for ( var i = graphs.length - 1; i >= 0; i-- ) {
+            //        for ( var j = 0; j < graph.types.length; j++ ) {
+            //            if (graphs[i].type === graph.types[j] && graphs[i].id === graph.id) {    
+            //                graphs.splice ( i, 1 );
+            //                break;
+            //            }
+            //        }   
+            //    }
+            //
+            //    if (graphs.length > 0) {
+            //        url.params.graphs = graphs.map(function(g) { return g.id + ":" + g.type; }).join(",");
+            //    } else {
+            //        delete url.params.graphs;
+            //    }
+            //},
             'removeGraph' : function(graph) {
                 for ( var i = graphs.length - 1; i >= 0; i-- ) {
-                    for ( var j = 0; j < graph.types.length; j++ ) {
-                        if (graphs[i].type === graph.types[j] && graphs[i].id === graph.id) {    
-                            graphs.splice ( i, 1 );
-                            break;
-                        }
+                    if (graphs[i].type === graph.type && graphs[i].id === graph.id) {    
+                        graphs.splice ( i, 1 );
+                        break;
                     }   
                 }
 

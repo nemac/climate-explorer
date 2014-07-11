@@ -1,0 +1,492 @@
+#backgroundHolder{
+	width:946px;
+	margin-left:auto;
+	margin-right:auto;
+	margin-top:75px;
+	position:relative;
+}
+
+#contentHolder{
+	width:1060px;
+	height:587px;
+	/*border:solid thin #000;*/
+	/*position:absolute;*/
+	top:5px;
+	left:5px;
+}
+
+#topHolder{
+	width:1060px;
+	height:40px;
+	margin-left:7px;
+	margin-top:7px;
+	/*border:solid thin #2E87C8;*/
+}
+
+#topLeftHolder{
+	width:629px;
+	height:40px;
+	/*border:solid thin #2E87C8;*/
+	float:left;
+}
+
+#widgTitle{
+	font-family:widgeTitleFont;
+	font-size:28px;
+	color:#fff;
+	margin-left:10px;
+}
+
+
+#topRightHolder{
+	width:280px;
+	height:40px;
+	/*border:solid thin #2E87C8;*/
+	
+}
+
+#descMapButtGrp{
+	float:right;
+	margin-right:2px;
+	margin-top:10px;
+}
+
+#descriptButt,
+#mapButt{
+	width:102px; 
+	padding-bottom:6px;
+}
+
+#middleHolder{
+	width:914px;
+	height:471px;
+	margin-left:7px;
+	/*border:solid thin #2EC26F;*/
+}
+
+#middleLeftHolder{
+	width:633px;
+	height:471px;
+	/*border:solid thin #2EC26F;*/
+	float:left;
+	position:relative;
+}
+
+#mapHold{
+	margin-left:7px;
+	margin-top:7px;
+}
+
+#downloadPop{
+	width:319px;
+	height:219px;
+	background-color:#DADBDC;
+	border: thin solid #fff;
+	border-radius:7px;
+	box-shadow: 0px 5px 5px #888888;
+	position:absolute;
+	top:125px;
+	left:156px;
+}
+
+#downloadPopCont{
+	position:relative;
+	width:284px;
+	height:150px;
+	background-color:#DADBDC;
+	border: thin solid #444;
+	border-radius:4px;
+	margin-left:auto;
+	margin-right:auto;
+	margin-top:20px;
+	
+}
+
+
+#popLabel{
+	height:10px;
+	position:absolute;
+	top:0px;
+	left:30px;
+	font-family:Segoe UI, Arial, Helvetica, sans-serif;
+	font-size:14px;
+	font-weight:bold;
+	font-style:oblique;
+	color:#fff;
+	background-color:#DADBDC;
+	padding:10px;
+	color:#333
+
+
+}
+
+#labelOne,
+#labelTwo,
+#labelThree,
+#labelFour,
+#labelFive{
+
+	font-family:Segoe UI, Arial, Helvetica, sans-serif;
+	font-size:12px;
+	font-weight:600;
+	color:#000;
+	margin-bottom:8px;
+}
+
+#downloadButt,
+#cancelButt,
+#okButt,
+#descriptButt,
+#mapButt{
+	cursor:pointer;
+	font-family:Segoe UI, Arial, Helvetica, sans-serif;
+	font-weight:800;
+}
+
+
+#middleRightHolder{
+	width:280px;
+	height:471px;
+	/*border:solid thin #2EC26F;*/
+	float:left;
+	position:relative;
+}
+
+#maintextHolder{
+	width:260px;
+	height:340px;
+	margin-left:12px;
+}
+
+#descTitle{
+	width:260px;
+	margin-top:10px;;
+	font-family:Segoe UI, Arial, Helvetica, sans-serif;
+	font-size:18px;
+	font-weight:bold;
+	line-height:20px;
+	color:#1A1A1A;
+}
+
+#topText{
+	width:260px;
+	/*height:170px;*/
+	margin-top:15px;
+	font-family:Segoe UI, Arial, Helvetica, sans-serif;
+	font-size:12px;
+	padding-bottom:20px;
+	line-height:14px;
+	color:#1A1A1A;
+}
+
+#bottomText{
+	width:260px;
+	margin-top:15px;
+	font-family:Segoe UI, Arial, Helvetica, sans-serif;
+	font-size:12px;
+	line-height:14px;
+	color:#1A1A1A;
+}
+
+#botTextReadLab{
+	margin-top:-5px;
+	margin-right:0px;
+	font-family:Segoe UI, Arial, Helvetica, sans-serif;
+	font-size:12px;
+	font-weight:bold;
+	color:#1A1A1A;
+	float:right;
+
+}
+
+#aboutSnapPanelHolder{
+	width:283px;
+	height:219px;
+	position:absolute;
+	top:379px;
+	overflow:hidden;
+	z-index:20;
+}
+
+#aboutSnapbacker{
+	width:283px;
+	height:91px;
+	background-color:#aaa;
+	position:absolute;
+	top:0px;
+}
+
+#aboutSnapTitle{
+	width:260px;
+	height:15px;
+	margin-top:8px;
+	margin-left:12px;
+	font-family:Segoe UI, Arial, Helvetica, sans-serif;
+	font-size:12px;
+	font-weight:bold;
+	font-style:oblique;
+	color:#000;
+}
+
+#aboutSnapPar{
+	width:260px;
+	height:180px;
+	margin-top:3px;
+	margin-left:12px;
+	font-family:Segoe UI, Arial, Helvetica, sans-serif;
+	font-size:12px;
+	font-weight:normal;
+	color:#333;
+	line-height:14px;
+}
+
+
+
+
+
+#aboutDatePanelHolder{
+	width:283px;
+	height:219px;
+	position:absolute;
+	top:251px;
+	overflow:hidden;
+	z-index:20;
+}
+
+
+#topper{
+	width:283px;
+	height:60px;
+	background-color:#aaa;
+	position:absolute;
+	top:198px;
+}
+
+#bottomer{
+	width:283px;
+	height:210px;
+	background-color:#aaa;
+	position:absolute;
+	top:128px;
+}
+
+#aboutTitle{
+	width:260px;
+	height:15px;
+	margin-top:8px;
+	margin-left:12px;
+	font-family:Segoe UI, Arial, Helvetica, sans-serif;
+	font-size:12px;
+	font-weight:bold;
+	font-style:oblique;
+	color:#000;
+}
+
+#aboutPar{
+	width:260px;
+	height:180px;
+	margin-top:3px;
+	margin-left:12px;
+	font-family:Segoe UI, Arial, Helvetica, sans-serif;
+	font-size:12px;
+	font-weight:normal;
+	color:#333;
+	line-height:14px;
+}
+
+#moreAboutLab{
+	font-family:Segoe UI, Arial, Helvetica, sans-serif;
+	font-size:12px;
+	font-weight:bold;
+	color:#000;
+	position:absolute;
+	top:200px;
+	left:198px;
+	cursor:pointer;
+	z-index:40;
+}
+
+#mapMenHold{
+	width:283px;
+	position:absolute;
+	top:7px;
+	left:0px;
+}
+
+#mapMenuSpacer{
+	width:283px;
+	height:7px;
+	background-color:#777;
+	margin-bottom:2px;	
+
+}
+
+.DS_MenuContHold{ 
+		border:1px solid #888;
+		width:279px;
+		height:25px;
+		background-color:#888888;
+		padding-left:0px;
+		padding-top:0px;
+		display:block;
+		border-bottom:thin solid #666;
+		cursor:pointer;
+	}
+
+.DS_MenuTitleHoldStyle{
+		width:220px;
+		padding-left:30px;
+		font-family:Segoe UI,Arial,sans-serif;
+		font-size:12px;
+		font-weight:bold;
+		line-height:20px;
+		color:#fff;
+	}  
+
+.DS_extentIconHoldStyle{
+		
+		height:15px;
+		float: right;
+		margin-right:6px;
+		margin-top:3px;
+}
+
+#bottomHolder{
+	width:914px;
+	height:61px;
+	margin-left:7px;
+	/*border:solid thin #EED844;*/
+}
+
+#bottomLeftHolder{
+	width:629px;
+	height:61px;
+	/*border:solid thin #EED844;*/
+	float:left;
+}
+
+#slidLabHolder{
+	margin-left:15px;
+	margin-top:13px;
+	width:48px;
+	float:left;
+}
+
+#topSlidLab,
+#botSlidLab{
+	font-family:Segoe UI, Arial, Helvetica, sans-serif;
+	font-size:12px;
+	font-weight:bold;
+	color:#fff;
+	margin-top:3px;
+	float:right;
+}
+
+
+#slidLeftValLabHolder{
+	margin-left:15px;
+	margin-top:13px;
+	width:18px;
+	float:left;
+}
+
+#topLeftValSlidLab,
+#botLeftValSlidLab{
+	font-family:Segoe UI, Arial, Helvetica, sans-serif;
+	font-size:9px;
+	font-weight:bold;
+	color:#fff;
+	margin-top:5px;
+	float:right;
+
+
+
+}
+
+
+#sliderHolder{
+	width:385px;
+	height:50px;
+	margin-top:12px;
+	margin-left:12px;
+	float:left;
+	position:relative;
+}
+
+#monthSlider{
+	position:absolute;
+	top:0px;
+
+}
+
+.mTooltip{
+	position: absolute;
+	width: 30px;
+	height: 15px;
+	background: black;
+	font-family:Segoe UI, Arial, Helvetica, sans-serif;
+	font-weight:800;
+	font-size: 10px;
+	color: white;
+	line-height:12px;
+	text-align: center;
+	padding-top:2px 4px 4px 4px;
+	z-index: 20;
+   }
+
+
+#yearSlider{
+	position:absolute;
+	top:17px;
+
+}
+
+.yTooltip{
+	position: absolute;
+	width: 30px;
+	height: 15px;
+	background: black;
+	font-family:Segoe UI, Arial, Helvetica, sans-serif;
+	font-weight:800;
+	font-size: 10px;
+	color: white;
+	line-height:12px;
+	text-align: center;
+	padding-top:2px 4px 4px 4px;
+	z-index: 20;
+   }
+
+
+#slidRightValLabHolder{
+	margin-left:7px;
+	margin-top:13px;
+	width:30px;
+	float:left;
+}
+
+#topRightValSlidLab,
+#botRightValSlidLab{
+	font-family:Segoe UI, Arial, Helvetica, sans-serif;
+	font-size:9px;
+	font-weight:bold;
+	color:#fff;
+	margin-top:6px;
+}
+	
+
+#dlButtHolder{
+	margin-top:22px;
+	margin-left:5px;
+}
+
+
+
+#bottomRightHolder{
+	width:280px;
+	height:61px;
+	/*border:solid thin #EED844;*/
+	float:left;
+}
+
+
+
