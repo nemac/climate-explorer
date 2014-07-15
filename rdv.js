@@ -93,6 +93,7 @@ $(function(){
     };
             
     ceui.init({
+        enabled : false,
         tabSet : function(tab) {
             if (tab === ceui.LAYERS) {
                 selectLayersTab();
@@ -331,6 +332,8 @@ $(function(){
             selectCallback: clickPoint,
             onCreate: function(mL) {
                 rememberML(mL);
+
+                ceui.enabled(true);
 
                 // look at the permalink URL info to determine which graph variable buttons should
                 // be initially selected

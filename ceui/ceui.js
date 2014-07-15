@@ -2,6 +2,8 @@ var ceui = {};
 
 ceui._myTheme = "ui-darkness";
 
+ceui._enabled = false;
+
 ceui.LAYERS = "layersTab";
 ceui.MULTIGRAPH = "multigraphTab";
 
@@ -285,6 +287,10 @@ ceui.setLayerOpacity = function(layerId, opacity) {
 
 ceui.init = function(options) {
 
+    if ('enabled' in options) {
+        ceui._enabled = options.enabled;
+    }
+
     ceui._tabSet = options.tabSet;
     ceui._displayGraph = options.displayGraph;
     ceui._removeGraph = options.removeGraph;
@@ -302,8 +308,12 @@ ceui.init = function(options) {
     ceui.templates.stationPane = $("#multiGrphPanel .stationPaneHolder")[0].outerHTML;
     ceui.templates.mgPane = $("#multiGrphPanel .mgPanesHolder .mgPane")[0].outerHTML;
 
-	$("#layerMultiGrphButtGrp").jqxButtonGroup({ theme: ceui._myTheme, mode: 'radio' });
+	$("#layerMultiGrphButtGrp").jqxButtonGroup({ theme: ceui._myTheme, mode: 'radio'});
 	$("#layerMultiGrphButtGrp").jqxButtonGroup('setSelection', 0);
+    if (!ceui._enabled) {
+	    $("#layerMultiGrphButtGrp").jqxButtonGroup('disableAt', 0);
+	    $("#layerMultiGrphButtGrp").jqxButtonGroup('disableAt', 1);
+    }
 
     $("#mapHolder").empty();
 	
@@ -362,3 +372,16 @@ ceui.init = function(options) {
 	});
 	
 };
+
+ceui.enabled = function(enabled) {
+
+    if (enabled) {
+	    $("#layerMultiGrphButtGrp").jqxButtonGroup('enableAt', 0);
+	    $("#layerMultiGrphButtGrp").jqxButtonGroup('enableAt', 1);
+    } else {
+	    $("#layerMultiGrphButtGrp").jqxButtonGroup('disableAt', 0);
+	    $("#layerMultiGrphButtGrp").jqxButtonGroup('disableAt', 1);
+    }
+
+    ceui._enabled = enabled;
+}
