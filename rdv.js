@@ -3,8 +3,22 @@
 //
 $(function(){
 
+
+
+    // The function updateAxisDebounce() gets called whenever an axis scale changes in a multigraph
+    // (search for 'dataRangeSet' below to see where it is registered).  It handles updating the permalink
+    // URL to show the new axis scales, but only after a certain delay threshold (axisUpdateDebounceThresholdMS)
+    // has passed with no calls to updateAxisDebounce() happening.  In other words, updateAxisDebounce() can
+    // be called many times in rapid succession (and in general, it will be, when the user is changing the graph
+    // axis scales), but the permalink is only updated when a period of axisUpdateDebounceThresholdMS passes
+    // with no calls to updateAxisDebounce() occurring.
     var scales = {};
+    //    scales is a JS object storing the outstanding axis updates -- i.e. updates that need to be applied
+    //    when the timer expires; the keys are binding ids (minus the "-binding" suffix), and the values are
+    //    objects of the form
+    //        { "min" : STRING, "max" : STRING }
     var axisUpdateTimeout = null;
+    //    axisUpdateTimeout is the current timeout object, if any
     var axisUpdateDebounceThresholdMS = 500;
     function updateAxisDebounce(bindingId, min, max) {
         bindingId = bindingId.replace("-binding","");
@@ -53,7 +67,9 @@ $(function(){
                             }
                         }
                         axis.addListener('dataRangeSet', function(e) {
-                            updateAxisDebounce(axis.binding().id(), e.min, e.max);
+                            // note we have to convert e.min, e.max to strings here; they are multigraph
+                            // DatetimeValue or NumberValue objects!!!
+                            updateAxisDebounce(axis.binding().id(), e.min.toString(), e.max.toString());
                         });
                     }(mg.graphs().at(0).axes().at(i)));
                 }
