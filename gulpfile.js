@@ -109,6 +109,9 @@ gulp.task( 'html', ['default'], function() {
     gulp.src( './build/**' )
         .pipe( gulp.dest( './html/build' ) );
 
+    gulp.src( './lib/**' )
+        .pipe( gulp.dest( './html/lib' ) );
+
     gulp.src( './ceui/**' )
         .pipe( gulp.dest( './html/ceui' ) );
 

@@ -3,8 +3,22 @@
 //
 $(function(){
 
+
+
+    // The function updateAxisDebounce() gets called whenever an axis scale changes in a multigraph
+    // (search for 'dataRangeSet' below to see where it is registered).  It handles updating the permalink
+    // URL to show the new axis scales, but only after a certain delay threshold (axisUpdateDebounceThresholdMS)
+    // has passed with no calls to updateAxisDebounce() happening.  In other words, updateAxisDebounce() can
+    // be called many times in rapid succession (and in general, it will be, when the user is changing the graph
+    // axis scales), but the permalink is only updated when a period of axisUpdateDebounceThresholdMS passes
+    // with no calls to updateAxisDebounce() occurring.
     var scales = {};
+    //    scales is a JS object storing the outstanding axis updates -- i.e. updates that need to be applied
+    //    when the timer expires; the keys are binding ids (minus the "-binding" suffix), and the values are
+    //    objects of the form
+    //        { "min" : STRING, "max" : STRING }
     var axisUpdateTimeout = null;
+    //    axisUpdateTimeout is the current timeout object, if any
     var axisUpdateDebounceThresholdMS = 500;
     function updateAxisDebounce(bindingId, min, max) {
         bindingId = bindingId.replace("-binding","");
@@ -53,7 +67,9 @@ $(function(){
                             }
                         }
                         axis.addListener('dataRangeSet', function(e) {
-                            updateAxisDebounce(axis.binding().id(), e.min, e.max);
+                            // note we have to convert e.min, e.max to strings here; they are multigraph
+                            // DatetimeValue or NumberValue objects!!!
+                            updateAxisDebounce(axis.binding().id(), e.min.toString(), e.max.toString());
                         });
                     }(mg.graphs().at(0).axes().at(i)));
                 }
@@ -77,6 +93,7 @@ $(function(){
     };
             
     ceui.init({
+        enabled : false,
         tabSet : function(tab) {
             if (tab === ceui.LAYERS) {
                 selectLayersTab();
@@ -316,6 +333,8 @@ $(function(){
             onCreate: function(mL) {
                 rememberML(mL);
 
+                ceui.enabled(true);
+
                 // look at the permalink URL info to determine which graph variable buttons should
                 // be initially selected
                 var varIds = {};
@@ -388,173 +407,173 @@ $(function(){
 return;
 ////////////////////////////////////////////////////////////////////////
 
-    var initialPanelState = 'closed';
-    var initialPanelWidth = 600;
-    if (pl.haveGp()) {
-        var gp = pl.getGp();
-        if ('open' in gp && gp.open) {
-            initialPanelState = 'opened';
-        }
-        if ('width' in gp) {
-            initialPanelWidth = gp.width;
-        }
-    }
+//    var initialPanelState = 'closed';
+//    var initialPanelWidth = 600;
+//    if (pl.haveGp()) {
+//        var gp = pl.getGp();
+//        if ('open' in gp && gp.open) {
+//            initialPanelState = 'opened';
+//        }
+//        if ('width' in gp) {
+//            initialPanelWidth = gp.width;
+//        }
+//    }
+//    
+//    $( '#stationDetail' ).drawerPanel({
+//        state: initialPanelState,
+//        position: 'right',
+//        color: '#fee',
+//        title: 'Station Detail',
+//        resizable: true,
+//        width: initialPanelWidth,
+//        minWidth: 400,
+//        maxWidth: 800,
+//        onResizeStop: resizePanel,
+//        onClose: function() {
+//            pl.setGp({'open' : false});
+//            updatePermalinkDisplay();
+//        },
+//        onOpen: function() {
+//            pl.setGp({'open' : true, 'width' : $( '#stationDetail div.drawer' ).width()});
+//            updatePermalinkDisplay();
+//        },
+//        templateLocation: BUILD_BASE_PATH + 'tpl/panel.tpl.html'
+//    });
+//
+//    function resizePanel() {
+//        pl.setGp({ open : 1, width :  $( '#stationDetail div.drawer' ).width() });        
+//        updatePermalinkDisplay();
+//        
+//        resizeGraphs();
+//    }
+//    
+//    function resizeGraphs() {
+//        $.each(stationAndGraphLinkHash, function() {
+//            var id = this.id;
+//            if ( id ) {
+//                (function(window) {
+//                    var _jq = window.multigraph.jQuery;
+//                    var ref = '#' + id + '-detail';
+//
+//                    // resize if multigraph has been deployed
+//                    if ( _jq( 'div.graph',  ref ).children().length > 0 ) {
+//                        var width = _jq( 'div.graph',  ref ).parent().width();
+//                        var height = _jq( 'div.graph',  ref ).height();
+//                        try {
+//                            _jq( 'div.graph',  ref ).multigraph( 'done', function( m ) {
+//                                m.resizeSurface( width, height );
+//                                m.width( width ).height( height );
+//                                m.redraw();
+//                            });
+//                        } catch( e ) {
+//                            // TODO need better way to figure out if multigraph is initialized
+//                        }
+//                    }
+//                })(window);
+//            }
+//        });
+//    }
+//
+//    //
+//    // Multigraph builder
+//    //
+//    function deployGraph( id, type ) {
+//        if ( selectedStationCount >= MAX_SELECTED_STATIONS ) {
+//            return;
+//        }
+//        
+//        // not already a container for this station, deploy and register the station 
+//        if ( $('#' + id + '-detail', '#stationDetail').length === 0 ) {
+//            deployAndRegisterStation( id );
+//        }
+//        
+//        pl.addGraph({type: type, id : id});
+//        updatePermalinkDisplay();
+//        
+//        // add graph area to panel
+//        $('<div/>', {
+//            id: id + '-' + type + '-graph',
+//            class: 'graph'
+//        }).appendTo( '#' + id + '-detail' );
+//        
+//        // resize other graphs in case scrollbar appears
+//        resizeGraphs();
+//        
+//        // register type
+//        $.each( stationAndGraphLinkHash, function( i, obj ) {
+//            if (obj && obj.id === id) {
+//                obj.types.push( type );
+//                return false;
+//            }
+//        });
+//        
+//        var payload = MuglHelper.getDataRequests( type, id );
+//        $.when.apply( $, payload.requests ).done( function(){
+//            var graphRef = '#' + id + '-' + type + '-graph';
+//            $( graphRef ).empty();
+//            (function( window ) {
+//                var _jq  = window.multigraph.jQuery;
+//                _jq ( graphRef ).multigraph( {
+//                    muglString: MuglHelper.buildMugl(
+//                        payload.data,
+//                        type,
+//                        DATA_SUMMARY[id],
+//                        MUGLTEMPLATES
+//                    )});
+//
+//                _jq ( graphRef ).multigraph( 'done', function(mg) {
+//                    var i, naxes = mg.graphs().at(0).axes().size();
+//                    //var yearFormatter = new window.multigraph.core.DatetimeFormatter("%Y-%M-%D");
+//                    for (i=0; i<naxes; ++i) {
+//                        (function(axis) {
+//                            if (pl.haveScales()) {
+//                                var scales = pl.getScales();
+//                                var bindingId = axis.binding().id().replace('-binding','');
+//                                var parser;
+//                                if (bindingId === "time") {
+//                                    parser = window.multigraph.core.DatetimeValue;
+//                                } else {
+//                                    parser = window.multigraph.core.NumberValue;
+//                                }
+//                                if (bindingId in scales) {
+//                                    axis.setDataRange(parser.parse(scales[bindingId].min),
+//                                                      parser.parse(scales[bindingId].max));
+//                                }
+//                            }
+//                            axis.addListener('dataRangeSet', function(e) {
+//                                updateAxisDebounce(axis.binding().id(), e.min, e.max);
+//                            });
+//                        }(mg.graphs().at(0).axes().at(i)));
+//                    }
+//                });
+//                
+//            })( window );
+//        });
+//    }
     
-    $( '#stationDetail' ).drawerPanel({
-        state: initialPanelState,
-        position: 'right',
-        color: '#fee',
-        title: 'Station Detail',
-        resizable: true,
-        width: initialPanelWidth,
-        minWidth: 400,
-        maxWidth: 800,
-        onResizeStop: resizePanel,
-        onClose: function() {
-            pl.setGp({'open' : false});
-            updatePermalinkDisplay();
-        },
-        onOpen: function() {
-            pl.setGp({'open' : true, 'width' : $( '#stationDetail div.drawer' ).width()});
-            updatePermalinkDisplay();
-        },
-        templateLocation: BUILD_BASE_PATH + 'tpl/panel.tpl.html'
-    });
-
-    function resizePanel() {
-        pl.setGp({ open : 1, width :  $( '#stationDetail div.drawer' ).width() });        
-        updatePermalinkDisplay();
-        
-        resizeGraphs();
-    }
-    
-    function resizeGraphs() {
-        $.each(stationAndGraphLinkHash, function() {
-            var id = this.id;
-            if ( id ) {
-                (function(window) {
-                    var _jq = window.multigraph.jQuery;
-                    var ref = '#' + id + '-detail';
-
-                    // resize if multigraph has been deployed
-                    if ( _jq( 'div.graph',  ref ).children().length > 0 ) {
-                        var width = _jq( 'div.graph',  ref ).parent().width();
-                        var height = _jq( 'div.graph',  ref ).height();
-                        try {
-                            _jq( 'div.graph',  ref ).multigraph( 'done', function( m ) {
-                                m.resizeSurface( width, height );
-                                m.width( width ).height( height );
-                                m.redraw();
-                            });
-                        } catch( e ) {
-                            // TODO need better way to figure out if multigraph is initialized
-                        }
-                    }
-                })(window);
-            }
-        });
-    }
-
-    //
-    // Multigraph builder
-    //
-    function deployGraph( id, type ) {
-        if ( selectedStationCount >= MAX_SELECTED_STATIONS ) {
-            return;
-        }
-        
-        // not already a container for this station, deploy and register the station 
-        if ( $('#' + id + '-detail', '#stationDetail').length === 0 ) {
-            deployAndRegisterStation( id );
-        }
-        
-        pl.addGraph({type: type, id : id});
-        updatePermalinkDisplay();
-        
-        // add graph area to panel
-        $('<div/>', {
-            id: id + '-' + type + '-graph',
-            class: 'graph'
-        }).appendTo( '#' + id + '-detail' );
-        
-        // resize other graphs in case scrollbar appears
-        resizeGraphs();
-        
-        // register type
-        $.each( stationAndGraphLinkHash, function( i, obj ) {
-            if (obj && obj.id === id) {
-                obj.types.push( type );
-                return false;
-            }
-        });
-        
-        var payload = MuglHelper.getDataRequests( type, id );
-        $.when.apply( $, payload.requests ).done( function(){
-            var graphRef = '#' + id + '-' + type + '-graph';
-            $( graphRef ).empty();
-            (function( window ) {
-                var _jq  = window.multigraph.jQuery;
-                _jq ( graphRef ).multigraph( {
-                    muglString: MuglHelper.buildMugl(
-                        payload.data,
-                        type,
-                        DATA_SUMMARY[id],
-                        MUGLTEMPLATES
-                    )});
-
-                _jq ( graphRef ).multigraph( 'done', function(mg) {
-                    var i, naxes = mg.graphs().at(0).axes().size();
-                    //var yearFormatter = new window.multigraph.core.DatetimeFormatter("%Y-%M-%D");
-                    for (i=0; i<naxes; ++i) {
-                        (function(axis) {
-                            if (pl.haveScales()) {
-                                var scales = pl.getScales();
-                                var bindingId = axis.binding().id().replace('-binding','');
-                                var parser;
-                                if (bindingId === "time") {
-                                    parser = window.multigraph.core.DatetimeValue;
-                                } else {
-                                    parser = window.multigraph.core.NumberValue;
-                                }
-                                if (bindingId in scales) {
-                                    axis.setDataRange(parser.parse(scales[bindingId].min),
-                                                      parser.parse(scales[bindingId].max));
-                                }
-                            }
-                            axis.addListener('dataRangeSet', function(e) {
-                                updateAxisDebounce(axis.binding().id(), e.min, e.max);
-                            });
-                        }(mg.graphs().at(0).axes().at(i)));
-                    }
-                });
-                
-            })( window );
-        });
-    }
-    
-    function deployAndRegisterStation( id ) {
-        var index = ++selectedStationCount; // TODO: revise so that is not effectively a 1-indexed array
-        var point = $( '#map' ).mapLite( 'getPoint', 'lyr_ghcnd', "GHCND:" + id);
-        
-        // put contents into panel
-        var contents = Mustache.render(
-            STATION_DETAIL_TEMPLATE, {
-                id: id,
-                index: index,
-                name: point.name.toCapitalCase(),
-                lat: point.lat,
-                lon: point.lon
-            });
-        
-        $( '#stationDetail' ).drawerPanel( 'appendContents', contents );
-        
-        // register selected types
-        stationAndGraphLinkHash[index] = {
-            id: id,
-            types: [],
-            point: point
-        };
-    }
+//    function deployAndRegisterStation( id ) {
+//        var index = ++selectedStationCount; // TODO: revise so that is not effectively a 1-indexed array
+//        var point = $( '#map' ).mapLite( 'getPoint', 'lyr_ghcnd', "GHCND:" + id);
+//        
+//        // put contents into panel
+//        var contents = Mustache.render(
+//            STATION_DETAIL_TEMPLATE, {
+//                id: id,
+//                index: index,
+//                name: point.name.toCapitalCase(),
+//                lat: point.lat,
+//                lon: point.lon
+//            });
+//        
+//        $( '#stationDetail' ).drawerPanel( 'appendContents', contents );
+//        
+//        // register selected types
+//        stationAndGraphLinkHash[index] = {
+//            id: id,
+//            types: [],
+//            point: point
+//        };
+//    }
 
     //
     // Interactions
@@ -570,151 +589,151 @@ return;
 /////////////
 /////////////
 /////////////
-        if ( selectedStationCount >= MAX_SELECTED_STATIONS ) {
-            return;
-        }
-        
-        var types = [];
-        
-        // build list of types currently selected
-        $.each( SUPPORTED_STATION_VARS, function( type, obj ) {
-            if ( obj.selected ) {
-                types.push( type );
-            }
-        });
-
-        // disallow selection if no data are to be displayed
-        if ( types.length === 0 ) {
-            $( '#map' ).mapLite('unselectPoint', point.id );
-            return;
-        }
-        
-        $( '#stationDetail' ).drawerPanel( 'open' );
-        
-        var sanitizedId = sanitizeString( point.id );
-        
-        // deploy for each type
-        $.each( types, function( i, type ){
-            deployGraph( sanitizedId, type );
-        });
+        //if ( selectedStationCount >= MAX_SELECTED_STATIONS ) {
+        //    return;
+        //}
+        //
+        //var types = [];
+        //
+        //// build list of types currently selected
+        //$.each( SUPPORTED_STATION_VARS, function( type, obj ) {
+        //    if ( obj.selected ) {
+        //        types.push( type );
+        //    }
+        //});
+        //
+        //// disallow selection if no data are to be displayed
+        //if ( types.length === 0 ) {
+        //    $( '#map' ).mapLite('unselectPoint', point.id );
+        //    return;
+        //}
+        //
+        //$( '#stationDetail' ).drawerPanel( 'open' );
+        //
+        //var sanitizedId = sanitizeString( point.id );
+        //
+        //// deploy for each type
+        //$.each( types, function( i, type ){
+        //    deployGraph( sanitizedId, type );
+        //});
     }
 
-    removeGraph = function removeGraph( ind ) {
-        var index = parseInt( ind );
-        
-        pl.removeGraph(stationAndGraphLinkHash[index]);
-        updatePermalinkDisplay();
-
-        var instance = this;
-        
-        // decrement any items greater than the removed
-        for (var i = selectedStationCount; i > index ; i--) {
-            var shift = stationAndGraphLinkHash[i];
-            // update graph label
-            var newIndex = i -1;
-            var shiftRef = 'div#' + shift.id + '-detail';
-            $( 'span.point-index', shiftRef ).html( '(' + newIndex + ')' );
-            $( 'div.remove', shiftRef ).on( 'click', function() {
-                instance.removeGraph( newIndex );
-            });
-            
-            // TODO improve - the selected layer gets rebuilt each time
-            $( '#map' ).mapLite('setLabel', shift.point.id, newIndex);
-        }
-        
-        // remove the selected item
-        var point = stationAndGraphLinkHash[index].point;
-        $('div#' + stationAndGraphLinkHash[index].id + '-detail', '#stationDetail' ).remove();
-        
-        // TODO parameterize reference?
-        $( '#map' ).mapLite('unselectPoint', point.id);
-        stationAndGraphLinkHash.splice(index, 1);
-        selectedStationCount--;
-        
-        if ( selectedStationCount === 0 ) {
-            $( '#stationDetail' ).drawerPanel( 'close' );
-        }
-    };
+//    removeGraph = function removeGraph( ind ) {
+//        var index = parseInt( ind );
+//        
+//        pl.removeGraph(stationAndGraphLinkHash[index]);
+//        updatePermalinkDisplay();
+//
+//        var instance = this;
+//        
+//        // decrement any items greater than the removed
+//        for (var i = selectedStationCount; i > index ; i--) {
+//            var shift = stationAndGraphLinkHash[i];
+//            // update graph label
+//            var newIndex = i -1;
+//            var shiftRef = 'div#' + shift.id + '-detail';
+//            $( 'span.point-index', shiftRef ).html( '(' + newIndex + ')' );
+//            $( 'div.remove', shiftRef ).on( 'click', function() {
+//                instance.removeGraph( newIndex );
+//            });
+//            
+//            // TODO improve - the selected layer gets rebuilt each time
+//            $( '#map' ).mapLite('setLabel', shift.point.id, newIndex);
+//        }
+//        
+//        // remove the selected item
+//        var point = stationAndGraphLinkHash[index].point;
+//        $('div#' + stationAndGraphLinkHash[index].id + '-detail', '#stationDetail' ).remove();
+//        
+//        // TODO parameterize reference?
+//        $( '#map' ).mapLite('unselectPoint', point.id);
+//        stationAndGraphLinkHash.splice(index, 1);
+//        selectedStationCount--;
+//        
+//        if ( selectedStationCount === 0 ) {
+//            $( '#stationDetail' ).drawerPanel( 'close' );
+//        }
+//    };
+//    
+//    // station data selector helpers
+//    
+//    function deployStationDataOptionsSelector() {
+//        var contents = '';
+//        $.each(SUPPORTED_STATION_VARS, function( key, obj ) {
+//            contents += buildStationDataOptionSelector( key, obj.label, obj.selected );
+//        });
+//        
+//        $('#mlLayerList').append(
+//            '<div id="stationVarLabel" class="mlDataLbl">Historical Weather Records</div>' +
+//                '<div id="stationVarSelector">' + 
+//                contents +
+//                '</div>');
+//        
+//        $( 'input.station-var-chk' ).click( function() {
+//            var id = this.id;
+//            var type = id.replace( '-chk', '' );
+//            
+//            if ( this.checked ) {
+//                selectVar( type );
+//            } else {
+//                unselectVar( type );
+//            }
+//        });
+//    }
     
-    // station data selector helpers
+//    function buildStationDataOptionSelector( key, label, selected ) {
+//        var sel = '';
+//        if ( selected ) {
+//            sel = 'checked=""';
+//        }
+//        
+//        var selectorTemplate = '<div class="mlLayerSelect"><input id="{{key}}-chk" type="checkbox" name="{{label}}" value="{{label}}" {{sel}} class="station-var-chk">' +
+//                '<label class="labelSpan olButton" style="vertical-align: baseline;">{{label}}</label>' +
+//                '</div>';
+//        return Mustache.render( selectorTemplate, {
+//            key: key,
+//            label: label,
+//            sel: sel
+//        });
+//    }
     
-    function deployStationDataOptionsSelector() {
-        var contents = '';
-        $.each(SUPPORTED_STATION_VARS, function( key, obj ) {
-            contents += buildStationDataOptionSelector( key, obj.label, obj.selected );
-        });
-        
-        $('#mlLayerList').append(
-            '<div id="stationVarLabel" class="mlDataLbl">Historical Weather Records</div>' +
-                '<div id="stationVarSelector">' + 
-                contents +
-                '</div>');
-        
-        $( 'input.station-var-chk' ).click( function() {
-            var id = this.id;
-            var type = id.replace( '-chk', '' );
-            
-            if ( this.checked ) {
-                selectVar( type );
-            } else {
-                unselectVar( type );
-            }
-        });
-    }
-    
-    function buildStationDataOptionSelector( key, label, selected ) {
-        var sel = '';
-        if ( selected ) {
-            sel = 'checked=""';
-        }
-        
-        var selectorTemplate = '<div class="mlLayerSelect"><input id="{{key}}-chk" type="checkbox" name="{{label}}" value="{{label}}" {{sel}} class="station-var-chk">' +
-                '<label class="labelSpan olButton" style="vertical-align: baseline;">{{label}}</label>' +
-                '</div>';
-        return Mustache.render( selectorTemplate, {
-            key: key,
-            label: label,
-            sel: sel
-        });
-    }
-    
-    function selectVar( type ) {
-        SUPPORTED_STATION_VARS[type].selected = true;
-        
-        // register selected types
-        $.each( stationAndGraphLinkHash, function( i, obj ){
-            if ( obj ) { // have to skip idx 0, because it is a 1-indexed array
-                //obj.types.push( type );
-                deployGraph( obj.id, type );
-            }
-        });
-    }
-    
-    function unselectVar( type ) {
-        SUPPORTED_STATION_VARS[type].selected = false;
-        
-        var rem = [];
-        
-        $.each( stationAndGraphLinkHash, function( i, obj ){
-            if ( obj ) { // have to skip idx 0, because it is a 1-indexed array
-                // check if last graph for station, remove entirely if so
-                if ( obj.types.length <= 1 ) {
-                    rem.push( i );
-                } else {
-                    // remove url param
-                    pl.removeGraph( $.extend( {}, obj, { types: [ type ] }) );
-                    updatePermalinkDisplay();
-                    
-                    obj.types.splice( obj.types.indexOf( type ), 1 );
-                    $( '#' + obj.id + '-' + type + '-graph' ).remove();
-                }
-            }
-        });
-        
-        $.each( rem, function( i, val ) {
-            removeGraph( val );
-        });
-    }
+//    function selectVar( type ) {
+//        SUPPORTED_STATION_VARS[type].selected = true;
+//        
+//        // register selected types
+//        $.each( stationAndGraphLinkHash, function( i, obj ){
+//            if ( obj ) { // have to skip idx 0, because it is a 1-indexed array
+//                //obj.types.push( type );
+//                deployGraph( obj.id, type );
+//            }
+//        });
+//    }
+//    
+//    function unselectVar( type ) {
+//        SUPPORTED_STATION_VARS[type].selected = false;
+//        
+//        var rem = [];
+//        
+//        $.each( stationAndGraphLinkHash, function( i, obj ){
+//            if ( obj ) { // have to skip idx 0, because it is a 1-indexed array
+//                // check if last graph for station, remove entirely if so
+//                if ( obj.types.length <= 1 ) {
+//                    rem.push( i );
+//                } else {
+//                    // remove url param
+//                    pl.removeGraph( $.extend( {}, obj, { types: [ type ] }) );
+//                    updatePermalinkDisplay();
+//                    
+//                    obj.types.splice( obj.types.indexOf( type ), 1 );
+//                    $( '#' + obj.id + '-' + type + '-graph' ).remove();
+//                }
+//            }
+//        });
+//        
+//        $.each( rem, function( i, val ) {
+//            removeGraph( val );
+//        });
+//    }
 
     //
     // RDV Permalink object

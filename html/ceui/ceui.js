@@ -2,6 +2,8 @@ var ceui = {};
 
 ceui._myTheme = "ui-darkness";
 
+ceui._enabled = false;
+
 ceui.LAYERS = "layersTab";
 ceui.MULTIGRAPH = "multigraphTab";
 
@@ -29,27 +31,29 @@ ceui._variableById = function(id) {
 };
 
 // Set the list of variable types.
-//   'variables' should be an array of objects of the form { id : VARIABLE_ID, name : VARIABLE_NAME }, as described
-//       in the comment for ceui._variables above.  Note that these objects do not contain a 'selected' property;
-//       by default, all variables are set to be selected initially (i.e. their 'selected' property is initialized to true)
+//   'variables' should be an array of objects of the form
+//       { id : VARIABLE_ID, name : VARIABLE_NAME, selected : BOOLEAN }
+//   as described in the comment for ceui._variables above.
 ceui.setVariables = function(variables) {
     $("#multiGrphButtHold").empty();
     ceui._variables = [];
     variables.forEach(function(variable) {
+        var v = { id : variable.id, name : variable.name, selected : !!variable.selected };
+        ceui._variables.push(v);
         var $graphVariableButon = $(ceui.templates.graphVariableButton).appendTo($("#multiGrphButtHold"));
-        $graphVariableButon.attr("value", variable.name);
-        $graphVariableButon.jqxToggleButton({ theme: ceui._myTheme, width: '125', toggled: !!variable.selected});
+        $graphVariableButon.attr("value", v.name);
+        $graphVariableButon.jqxToggleButton({ theme: ceui._myTheme, width: '125', toggled: !!v.selected});
         $graphVariableButon.on('click', function () {
             var isOn = $graphVariableButon.jqxToggleButton('toggled');
+            v.selected = isOn;
             ceui._stations.forEach(function(station) {
                 if (isOn) {
-                    ceui._showGraph(station, variable.id);
+                    ceui._showGraph(station, v.id);
                 } else {
-                    ceui._hideGraph(station, variable.id);
+                    ceui._hideGraph(station, v.id);
                 }
             });
         });
-        ceui._variables.push({ id : variable.id, name : variable.name, selected : !!variable.selected });
     });
 };
 
@@ -114,6 +118,8 @@ ceui._setStationNumbers = function() {
 };
 
 ceui.showStation = function(station) {
+    // Create a component for displaying multigraphs for a new station, and call the _displayGraph callback
+    // to create and display graphs for all currently selected variables for that station.
     var $stationPane = $(ceui.templates.stationPane);
     $("#multiGrphPanel").jqxPanel('append', $stationPane);
     
@@ -281,6 +287,10 @@ ceui.setLayerOpacity = function(layerId, opacity) {
 
 ceui.init = function(options) {
 
+    if ('enabled' in options) {
+        ceui._enabled = options.enabled;
+    }
+
     ceui._tabSet = options.tabSet;
     ceui._displayGraph = options.displayGraph;
     ceui._removeGraph = options.removeGraph;
@@ -298,8 +308,12 @@ ceui.init = function(options) {
     ceui.templates.stationPane = $("#multiGrphPanel .stationPaneHolder")[0].outerHTML;
     ceui.templates.mgPane = $("#multiGrphPanel .mgPanesHolder .mgPane")[0].outerHTML;
 
-	$("#layerMultiGrphButtGrp").jqxButtonGroup({ theme: ceui._myTheme, mode: 'radio' });
+	$("#layerMultiGrphButtGrp").jqxButtonGroup({ theme: ceui._myTheme, mode: 'radio'});
 	$("#layerMultiGrphButtGrp").jqxButtonGroup('setSelection', 0);
+    if (!ceui._enabled) {
+	    $("#layerMultiGrphButtGrp").jqxButtonGroup('disableAt', 0);
+	    $("#layerMultiGrphButtGrp").jqxButtonGroup('disableAt', 1);
+    }
 
     $("#mapHolder").empty();
 	
@@ -358,3 +372,16 @@ ceui.init = function(options) {
 	});
 	
 };
+
+ceui.enabled = function(enabled) {
+
+    if (enabled) {
+	    $("#layerMultiGrphButtGrp").jqxButtonGroup('enableAt', 0);
+	    $("#layerMultiGrphButtGrp").jqxButtonGroup('enableAt', 1);
+    } else {
+	    $("#layerMultiGrphButtGrp").jqxButtonGroup('disableAt', 0);
+	    $("#layerMultiGrphButtGrp").jqxButtonGroup('disableAt', 1);
+    }
+
+    ceui._enabled = enabled;
+}
