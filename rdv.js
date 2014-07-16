@@ -324,7 +324,7 @@ $(function(){
                                 (axis.id() === "time")
                             ) {
                                 axis.addListener('dataRangeSet', function(e) {
-                                    updateAxisDebounce(axis.binding().id(), e.min, e.max);
+                                    updateAxisDebounce(axis.binding().id(), e.min.toString(), e.max.toString());
                                 });
                             }
                         }(mg.graphs().at(0).axes().at(i)));
