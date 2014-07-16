@@ -316,9 +316,17 @@ $(function(){
                                                       parser.parse(scales[bindingId].max));
                                 }
                             }
-                            axis.addListener('dataRangeSet', function(e) {
-                                updateAxisDebounce(axis.binding().id(), e.min, e.max);
-                            });
+                            if (
+                                (axis.id() === "ytd-prcpin")
+                                ||
+                                (axis.id() === "tempf")
+                                ||
+                                (axis.id() === "time")
+                            ) {
+                                axis.addListener('dataRangeSet', function(e) {
+                                    updateAxisDebounce(axis.binding().id(), e.min, e.max);
+                                });
+                            }
                         }(mg.graphs().at(0).axes().at(i)));
                     }
                 });
@@ -539,6 +547,16 @@ $(function(){
         if ('scales' in url.params) {
             url.params.scales.split(',').forEach(function(scale) {
                 var fields = scale.split(':');
+                /////////////////////////////////////////////////////////////////////////////
+                // temporary patch to provide backward compatibility with permalink URLs that
+                // used the old vertical axis binding names ("tempc", "ytd-prcpmm", etc):
+                if (fields[0] === "tempc") { fields[0] = "temp"; }
+                else if (fields[0] === "ytd-prcpmm") { fields[0] = "ytd-prcp"; }
+                else if (fields[0] === "prcpmm") { fields[0] = "prcp"; }
+                else if (fields[0] === "snowmm") { fields[0] = "snow"; }
+                // end of temporary patch; remove this patch once all links have been changed;
+                // see https://github.com/nemac/climate-explorer/issues/26
+                /////////////////////////////////////////////////////////////////////////////
                 scales[fields[0]] = { min : fields[1], max : fields[2] };
             });
         }
