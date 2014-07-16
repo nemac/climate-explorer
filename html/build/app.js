@@ -3666,17 +3666,22 @@ $(function(){
 
     var currentTopicLayerIds = [];
 
-    function setTopic(topicId) {
-        // Reset all current layers to full opacity, undisplayed
-        currentTopicLayerIds.forEach(function(layerId) {
-            mL.setLayerOpacity(layerId, 1.0);
-            mL.setLayerVisibility(layerId, false);
-        });
-        // remove all layers from permalink
-        pl.getLayers().forEach(function(layer) {
-            pl.removeLayer(layer.id);
-        });
-        updatePermalinkDisplay();
+    function setTopic(topicId, options) {
+
+        if (!options || !options.hasOwnProperty('clearLayers') || options.clearLayers) {
+            // Reset all current layers to full opacity, undisplayed
+            currentTopicLayerIds.forEach(function(layerId) {
+                mL.setLayerOpacity(layerId, 1.0);
+                mL.setLayerVisibility(layerId, false);
+            });
+            // remove all layers from permalink
+            pl.clearLayers();
+            //pl.getLayers().forEach(function(layer) {
+            //    pl.removeLayer(layer.id);
+            //});
+            updatePermalinkDisplay();
+        }
+
         // Clear out the list of current layers (gets repopulated a few lines below)
         currentTopicLayerIds = [];
         // Set the layer groups
@@ -3731,7 +3736,7 @@ $(function(){
                 }
             }
             ceui.setTopic(groups[i].id);
-            setTopic(groups[i].id);
+            setTopic(groups[i].id, { clearLayers : false });
 
             MAPLITE_CONFIG = config;
         })
@@ -3847,7 +3852,7 @@ $(function(){
                     stationIds = Object.keys(stationIds);
                     stationIds.forEach(function(stationId) {
                         var point = mL.getPoint('lyr_ghcnd', "GHCND:" + stationId);
-                        ceui.showStation({ id : point.id, name : point.name, latlon : "latlon here" });
+                        ceui.showStation({ id : point.id, name : point.name, latlon : "" });
                         mL.selectPoint( 'lyr_ghcnd', point.id );
                     });
                 }
@@ -4062,7 +4067,7 @@ return;
     // Interactions
     //
     function clickPoint( point ) {
-        ceui.showStation({ id : point.id, name : point.name, latlon : "latlon here" });
+        ceui.showStation({ id : point.id, name : point.name, latlon : "" });
 /////////////
 /////////////
 /////////////
@@ -4393,6 +4398,10 @@ return;
                     }
                 }
             },
+            'clearLayers' : function() {
+                layers = [];
+                delete url.params.layers;
+            },
             'removeLayer' : function(layerId) {
                 for ( var i = layers.length - 1; i >= 0; i-- ) {
                     if (layers[i].id === layerId) {    
@@ -4411,7 +4420,7 @@ return;
     }
 });
 
-}).call(this,require("IrXUsu"),typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {},require("buffer").Buffer,arguments[3],arguments[4],arguments[5],arguments[6],"/fake_c167e3de.js","/")
+}).call(this,require("IrXUsu"),typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {},require("buffer").Buffer,arguments[3],arguments[4],arguments[5],arguments[6],"/fake_3d7626fe.js","/")
 },{"./utils/muglHelper.js":6,"./utils/stringUtil.js":7,"./utils/urlUtils.js":9,"IrXUsu":5,"buffer":2}],2:[function(require,module,exports){
 (function (process,global,Buffer,__argument0,__argument1,__argument2,__argument3,__filename,__dirname){
 /*!

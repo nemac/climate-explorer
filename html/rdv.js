@@ -191,17 +191,22 @@ $(function(){
 
     var currentTopicLayerIds = [];
 
-    function setTopic(topicId) {
-        // Reset all current layers to full opacity, undisplayed
-        currentTopicLayerIds.forEach(function(layerId) {
-            mL.setLayerOpacity(layerId, 1.0);
-            mL.setLayerVisibility(layerId, false);
-        });
-        // remove all layers from permalink
-        pl.getLayers().forEach(function(layer) {
-            pl.removeLayer(layer.id);
-        });
-        updatePermalinkDisplay();
+    function setTopic(topicId, options) {
+
+        if (!options || !options.hasOwnProperty('clearLayers') || options.clearLayers) {
+            // Reset all current layers to full opacity, undisplayed
+            currentTopicLayerIds.forEach(function(layerId) {
+                mL.setLayerOpacity(layerId, 1.0);
+                mL.setLayerVisibility(layerId, false);
+            });
+            // remove all layers from permalink
+            pl.clearLayers();
+            //pl.getLayers().forEach(function(layer) {
+            //    pl.removeLayer(layer.id);
+            //});
+            updatePermalinkDisplay();
+        }
+
         // Clear out the list of current layers (gets repopulated a few lines below)
         currentTopicLayerIds = [];
         // Set the layer groups
@@ -256,7 +261,7 @@ $(function(){
                 }
             }
             ceui.setTopic(groups[i].id);
-            setTopic(groups[i].id);
+            setTopic(groups[i].id, { clearLayers : false });
 
             MAPLITE_CONFIG = config;
         })
@@ -372,7 +377,7 @@ $(function(){
                     stationIds = Object.keys(stationIds);
                     stationIds.forEach(function(stationId) {
                         var point = mL.getPoint('lyr_ghcnd', "GHCND:" + stationId);
-                        ceui.showStation({ id : point.id, name : point.name, latlon : "latlon here" });
+                        ceui.showStation({ id : point.id, name : point.name, latlon : "" });
                         mL.selectPoint( 'lyr_ghcnd', point.id );
                     });
                 }
@@ -587,7 +592,7 @@ return;
     // Interactions
     //
     function clickPoint( point ) {
-        ceui.showStation({ id : point.id, name : point.name, latlon : "latlon here" });
+        ceui.showStation({ id : point.id, name : point.name, latlon : "" });
 /////////////
 /////////////
 /////////////
@@ -917,6 +922,10 @@ return;
                         return;
                     }
                 }
+            },
+            'clearLayers' : function() {
+                layers = [];
+                delete url.params.layers;
             },
             'removeLayer' : function(layerId) {
                 for ( var i = layers.length - 1; i >= 0; i-- ) {
