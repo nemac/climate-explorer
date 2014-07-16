@@ -1,12 +1,12 @@
     <verticalaxis id="tempc" length="1" position="-1000,0">
       <labels format="%.1f" start="0" spacing="20 10 5 2 1 0.5 0.1" anchor="0,0" position="-15,0" angle="0" />
       <title angle="90" anchor="0,-1" position="-27,0">Degrees C</title>
-      <binding id="tempc-binding" min="0" max="100"/>
+      <binding id="temp-binding" min="0" max="100"/>
     </verticalaxis>
     <verticalaxis id="tempf" min="0" max="100" length="1" position="{{{position}}},0">
       <labels format="%1d" start="0" spacing="20 10 5 2 1 0.5 0.1" anchor="0,0" position="-15,0" angle="0" />
       <title angle="90" anchor="0,-1" position="-30,0">Degrees F</title>
       <zoom max="100" min="1"/>
       <pan min="-50" max="141"/>
-      <binding id="tempc-binding" min="32" max="212"/>
+      <binding id="temp-binding" min="32" max="212"/>
     </verticalaxis>

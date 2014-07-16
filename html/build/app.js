@@ -3463,13 +3463,13 @@ var MUGLTEMPLATES = {
 "plot-snow": '<plot><legend label="Snowfall"/><horizontalaxis ref="time"><variable ref="snow-time"/></horizontalaxis><verticalaxis ref="snowmm"><variable ref="snow-snow"/></verticalaxis><renderer type="bar"><option name="barwidth" value="20H"/><option name="baroffset" value="0.5"/><option name="fillcolor" value="0x00ffff"/></renderer></plot>',
 "plot-temp": '<plot><legend label="Daily Max/Min Temperature"/><horizontalaxis ref="time"><variable ref="temp-time"/></horizontalaxis><verticalaxis ref="tempc"><variable ref="temp-tmin"/><variable ref="temp-tmax"/></verticalaxis><renderer type="rangebar"><option name="fillcolor" value="0x0000cc"/><option name="barwidth" value="20H"/><option name="baroffset" value="0.5"/></renderer></plot>',
 "plot-ytd-prcp": '<plot><legend label="YTD Precipitation"/><horizontalaxis ref="time"><variable ref="ytd-prcp-time"/></horizontalaxis><verticalaxis ref="ytd-prcpmm"><variable ref="ytd-prcp-prcp"/></verticalaxis><renderer type="fill"><option name="fillcolor" value="0xcc3333"/><option name="fillopacity" value="0.5"/></renderer></plot>',
-"vertical-axis-30d-prcpmm": '<verticalaxis id="30d-prcpmm" min="0" max="200" length="1" position="{{{position}}},0"><labels format="%1d" start="0" spacing="1000 500 200 100 50 20 10 5 2 1" anchor="0,0" position="-15,0" angle="0" /><title angle="90" anchor="0,-1" position="-27,0">30-Day Precipitation (mm)</title><pan allowed="no"/><zoom anchor="0"/><binding id="30d-prcpmm-binding" min="0" max="1"/></verticalaxis>',
+"vertical-axis-30d-prcpmm": '<verticalaxis id="30d-prcpmm" min="0" max="200" length="1" position="{{{position}}},0"><labels format="%1d" start="0" spacing="1000 500 200 100 50 20 10 5 2 1" anchor="0,0" position="-15,0" angle="0" /><title angle="90" anchor="0,-1" position="-27,0">30-Day Precipitation (mm)</title><pan allowed="no"/><zoom anchor="0"/><binding id="30d-prcp-binding" min="0" max="1"/></verticalaxis>',
 "vertical-axis-ndvi": '<verticalaxis id="ndvi" min="0" max="100" type="number" length="1" position="{{{position}}},0"><title angle="90" anchor="0,-1" position="-30 0">NDVI</title><binding id="ndvi-binding" min="0" max="1"/></verticalaxis>',
 "vertical-axis-pdsi": '<verticalaxis id="pdsi" type="number" min="-7" max="7" length="1" position="{{{position}}},0"><title angle="90" anchor="0,-1" position="-30,0">Palmer Drought Serverity</title><binding id="pdsi-binding" min="0" max="1"/></verticalaxis>',
-"vertical-axis-prcpmm": '<verticalaxis id="prcpmm" min="0" max="50" length="1" position="{{{position}}},0"><labels format="%1d" start="0" spacing="100 50 20 10 5 2 1" anchor="0,0" position="-15,0" angle="0" /><title angle="90" anchor="0,-1" position="-27,0">Precipitation (mm)</title><pan allowed="no"/><zoom anchor="0"/><binding id="prcpmm-binding" min="0" max="1"/></verticalaxis>',
-"vertical-axis-snowmm": '<verticalaxis id="snowmm" min="0" max="10" length="1" position="{{{position}}},0"><labels format="%1d" start="0" spacing="100 50 20 10 5 2 1" anchor="0,0" position="-15,0" angle="0" /><title angle="90" anchor="0,-1" position="-27,0">Snow (mm)</title><pan allowed="no"/><zoom anchor="0"/><binding id="snowmm-binding" min="0" max="1"/></verticalaxis>',
-"vertical-axis-temp": '<verticalaxis id="tempc" length="1" position="-1000,0"><labels format="%.1f" start="0" spacing="20 10 5 2 1 0.5 0.1" anchor="0,0" position="-15,0" angle="0" /><title angle="90" anchor="0,-1" position="-27,0">Degrees C</title><binding id="tempc-binding" min="0" max="100"/></verticalaxis><verticalaxis id="tempf" min="0" max="100" length="1" position="{{{position}}},0"><labels format="%1d" start="0" spacing="20 10 5 2 1 0.5 0.1" anchor="0,0" position="-15,0" angle="0" /><title angle="90" anchor="0,-1" position="-30,0">Degrees F</title><zoom max="100" min="1"/><pan min="-50" max="141"/><binding id="tempc-binding" min="32" max="212"/></verticalaxis>',
-"vertical-axis-ytd-prcp": '<verticalaxis id="ytd-prcpmm" length="1" position="-1000,0"><labels format="%1d" start="0" spacing="1000 500 200 100 50 20 10 5 2 1" anchor="0,0" position="-15,0" angle="0" /><title angle="90" anchor="0,-1" position="-27,0">YTD Precipitation (mm)</title><binding id="ytd-prcpmm-binding" min="0" max="1000"/></verticalaxis><verticalaxis id="ytd-prcpin" min="0" max="60" length="1" position="{{{position}}},0"><labels format="%1d" start="0" spacing="1000 500 200 100 50 20 10 5 2 1" anchor="0,0" position="-15,0" angle="0" /><title angle="90" anchor="0,-1" position="-30,0">YTD Precipitation (in)</title><pan allowed="no"/><zoom anchor="0" max="250"/><binding id="ytd-prcpmm-binding" min="0" max="39.37"/></verticalaxis>'
+"vertical-axis-prcpmm": '<verticalaxis id="prcpmm" min="0" max="50" length="1" position="{{{position}}},0"><labels format="%1d" start="0" spacing="100 50 20 10 5 2 1" anchor="0,0" position="-15,0" angle="0" /><title angle="90" anchor="0,-1" position="-27,0">Precipitation (mm)</title><pan allowed="no"/><zoom anchor="0"/><binding id="prcp-binding" min="0" max="1"/></verticalaxis>',
+"vertical-axis-snowmm": '<verticalaxis id="snowmm" min="0" max="10" length="1" position="{{{position}}},0"><labels format="%1d" start="0" spacing="100 50 20 10 5 2 1" anchor="0,0" position="-15,0" angle="0" /><title angle="90" anchor="0,-1" position="-27,0">Snow (mm)</title><pan allowed="no"/><zoom anchor="0"/><binding id="snow-binding" min="0" max="1"/></verticalaxis>',
+"vertical-axis-temp": '<verticalaxis id="tempc" length="1" position="-1000,0"><labels format="%.1f" start="0" spacing="20 10 5 2 1 0.5 0.1" anchor="0,0" position="-15,0" angle="0" /><title angle="90" anchor="0,-1" position="-27,0">Degrees C</title><binding id="temp-binding" min="0" max="100"/></verticalaxis><verticalaxis id="tempf" min="0" max="100" length="1" position="{{{position}}},0"><labels format="%1d" start="0" spacing="20 10 5 2 1 0.5 0.1" anchor="0,0" position="-15,0" angle="0" /><title angle="90" anchor="0,-1" position="-30,0">Degrees F</title><zoom max="100" min="1"/><pan min="-50" max="141"/><binding id="temp-binding" min="32" max="212"/></verticalaxis>',
+"vertical-axis-ytd-prcp": '<verticalaxis id="ytd-prcpmm" length="1" position="-1000,0"><labels format="%1d" start="0" spacing="1000 500 200 100 50 20 10 5 2 1" anchor="0,0" position="-15,0" angle="0" /><title angle="90" anchor="0,-1" position="-27,0">YTD Precipitation (mm)</title><binding id="ytd-prcp-binding" min="0" max="1000"/></verticalaxis><verticalaxis id="ytd-prcpin" min="0" max="60" length="1" position="{{{position}}},0"><labels format="%1d" start="0" spacing="1000 500 200 100 50 20 10 5 2 1" anchor="0,0" position="-15,0" angle="0" /><title angle="90" anchor="0,-1" position="-30,0">YTD Precipitation (in)</title><pan allowed="no"/><zoom anchor="0" max="250"/><binding id="ytd-prcp-binding" min="0" max="39.37"/></verticalaxis>'
 };
 (function e(t,n,r){function s(o,u){if(!n[o]){if(!t[o]){var a=typeof require=="function"&&require;if(!u&&a)return a(o,!0);if(i)return i(o,!0);throw new Error("Cannot find module '"+o+"'")}var f=n[o]={exports:{}};t[o][0].call(f.exports,function(e){var n=t[o][1][e];return s(n?n:e)},f,f.exports,e,t,n,r)}return n[o].exports}var i=typeof require=="function"&&require;for(var o=0;o<r.length;o++)s(r[o]);return s})({1:[function(require,module,exports){
 (function (process,global,Buffer,__argument0,__argument1,__argument2,__argument3,__filename,__dirname){
@@ -3541,11 +3541,19 @@ $(function(){
                                                   parser.parse(scales[bindingId].max));
                             }
                         }
-                        axis.addListener('dataRangeSet', function(e) {
-                            // note we have to convert e.min, e.max to strings here; they are multigraph
-                            // DatetimeValue or NumberValue objects!!!
-                            updateAxisDebounce(axis.binding().id(), e.min.toString(), e.max.toString());
-                        });
+                        if (
+                            (axis.id() === "ytd-prcpin")
+                            ||
+                            (axis.id() === "tempf")
+                            ||
+                            (axis.id() === "time")
+                        ) {
+                            axis.addListener('dataRangeSet', function(e) {
+                                // note we have to convert e.min, e.max to strings here; they are multigraph
+                                // DatetimeValue or NumberValue objects!!!
+                                updateAxisDebounce(axis.binding().id(), e.min.toString(), e.max.toString());
+                            });
+                        }
                     }(mg.graphs().at(0).axes().at(i)));
                 }
             });
@@ -4251,6 +4259,16 @@ return;
         if ('scales' in url.params) {
             url.params.scales.split(',').forEach(function(scale) {
                 var fields = scale.split(':');
+                /////////////////////////////////////////////////////////////////////////////
+                // temporary patch to provide backward compatibility with permalink URLs that
+                // used the old vertical axis binding names ("tempc", "ytd-prcpmm", etc):
+                if (fields[0] === "tempc") { fields[0] = "temp"; }
+                else if (fields[0] === "ytd-prcpmm") { fields[0] = "ytd-prcp"; }
+                else if (fields[0] === "prcpmm") { fields[0] = "prcp"; }
+                else if (fields[0] === "snowmm") { fields[0] = "snow"; }
+                // end of temporary patch; remove this patch once all links have been changed;
+                // see https://github.com/nemac/climate-explorer/issues/26
+                /////////////////////////////////////////////////////////////////////////////
                 scales[fields[0]] = { min : fields[1], max : fields[2] };
             });
         }
@@ -4393,7 +4411,7 @@ return;
     }
 });
 
-}).call(this,require("IrXUsu"),typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {},require("buffer").Buffer,arguments[3],arguments[4],arguments[5],arguments[6],"/fake_3d943dec.js","/")
+}).call(this,require("IrXUsu"),typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {},require("buffer").Buffer,arguments[3],arguments[4],arguments[5],arguments[6],"/fake_c167e3de.js","/")
 },{"./utils/muglHelper.js":6,"./utils/stringUtil.js":7,"./utils/urlUtils.js":9,"IrXUsu":5,"buffer":2}],2:[function(require,module,exports){
 (function (process,global,Buffer,__argument0,__argument1,__argument2,__argument3,__filename,__dirname){
 /*!

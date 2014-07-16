@@ -3,5 +3,5 @@
       <title angle="90" anchor="0,-1" position="-27,0">30-Day Precipitation (mm)</title>
       <pan allowed="no"/>
       <zoom anchor="0"/>
-      <binding id="30d-prcpmm-binding" min="0" max="1"/>
+      <binding id="30d-prcp-binding" min="0" max="1"/>
     </verticalaxis>
