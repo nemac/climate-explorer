@@ -108,6 +108,9 @@ gulp.task( 'html', ['default'], function() {
     gulp.src( './build/**' )
         .pipe( gulp.dest( './html/build' ) );
 
+    gulp.src( './lib/**' )
+        .pipe( gulp.dest( './html/lib' ) );
+
     gulp.src( './testdata/**' )
         .pipe( gulp.dest( './html/testdata' ) );
 
