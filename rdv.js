@@ -377,7 +377,7 @@ $(function(){
                     stationIds = Object.keys(stationIds);
                     stationIds.forEach(function(stationId) {
                         var point = mL.getPoint('lyr_ghcnd', "GHCND:" + stationId);
-                        ceui.showStation({ id : point.id, name : point.name, latlon : "latlon here" });
+                        ceui.showStation({ id : point.id, name : point.name, latlon : "" });
                         mL.selectPoint( 'lyr_ghcnd', point.id );
                     });
                 }
@@ -592,7 +592,7 @@ return;
     // Interactions
     //
     function clickPoint( point ) {
-        ceui.showStation({ id : point.id, name : point.name, latlon : "latlon here" });
+        ceui.showStation({ id : point.id, name : point.name, latlon : "" });
 /////////////
 /////////////
 /////////////
