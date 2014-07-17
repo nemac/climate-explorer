@@ -22,6 +22,7 @@ be properties on this object.
 The function `ceui.init()` initializes the UI; the application will call it before calling any other UI functions.
 It takes a single argument which should be an object with properties that give various "callback" functions.
 
+```javascript
     ceui.init({
         perspectiveSet : function(perspective) {
             // "Perspective" is a term that we use to describe what is on display in the UI's right sidebar.
@@ -59,7 +60,8 @@ It takes a single argument which should be an object with properties that give v
             // data variables should be displayed).
         }
     })
-    
+```
+
 The UI will call the callback functions specified in the call to `ceui.init()`
 to notify the application when certain events take place, or when the it needs to instruct the
 application to perform some kind of action.  Note that in general, the UI only calls these callbacks
@@ -76,8 +78,10 @@ before it can be ready for the user to start interacting.  (In particular, creat
 to be delayed until responses to various ajax requests have been received.)  The UI provides the
 following function which the application can (and must) call to indicate that it is ready for interaction:
 
+```javascript
     ceui.enabled(BOOLEAN)
-    
+```
+
 The application should call `ceui.enabled(true)` to cause the UI to become enabled and to allow the user
 to begin interactions.
 
@@ -88,13 +92,15 @@ possible perspectives: "Map Layers", which includes a list of map layers and wid
 and "Historical Data", which includes interactive graphs (multigraphs) of historical station data.
 The UI defines the following two constants for dealing with these perspectives:
 
-    * ceui.LAYERS
-    * ceui.GRAPHS
+* `ceui.LAYERS`
+* `ceui.GRAPHS`
     
 The UI also provides the following function which the application can use to force a specific perspective
 to be displayed.  The `perspective` argument should be one of the above constants:
 
+```javascript
     ceui.setPerspective( perspective )
+```
 
 Whenever the user changes the perspective manually through the UI, the UI calls the `perspectiveSet()` callback
 function mentioned above.  Note that this callback is NOT triggered by a call to `ceui.setPerspective()`.
@@ -106,19 +112,23 @@ function mentioned above.  Note that this callback is NOT triggered by a call to
 The UI provides the following function which the application can use to set the list of topics which appear
 in the topics menu:
 
+```javascript
     ceui.setTopics([
        { id: ..., name: ... },
        { id: ..., name: ... },
        ...
     ])
-    
+```
+
 The argument to `ceui.setTopics()` should be an array of objects, each containing an `id` and a `name`
 property for a topic.  For each topic, the `id` value should be a (short) string which uniquely identifies
 the topic, and `name` is the (possibly) longer string to be displayed for that topic in the menu.  The application
 may also call
 
+```javascript
     ceui.setTopic( id )
-    
+```
+
 to set the current topic.  When the user changes the current topic manually, the UI calls the `topicSet()` callback
 mentioned above.  Note that this callback is NOT triggered by a call to `ceui.setTopic()`.
 
@@ -128,23 +138,27 @@ When the UI is displaying the map layers perspective, it shows a list of map lay
 At the current time the two groups are "Climate Stressors" and "Assets Impacted", but the names of these groups
 are not hardwired into the UI --- the application can set them by calling
 
+```javascript
     ceui.setLayerGroups([
       { id: ..., name: ... },
       { id: ..., name: ... },
       ...
     ])
-    
+```
+
 The argument to `ceui.setLayerGroups()` should be an array of objects, each containing an `id` and a `name` property
 for a group of layers.  For each group, the `id` value should be a (short) string which uniquely identifies
 the topic, and the `name` property is the (possibly) longer string to be displayed for that group.  Calling
 `ceui.setLayerGroups()` will cause the UI to remove all current layer widgets from display --- the new layer groups
 will initially contain no layers.  The application can then populate the new groups with layers by calling
   
+```javascript
     ceui.setLayers(groupId,
       [{ id: ..., name: ..., visible: ..., opacity: ... },
        { id: ..., name: ..., visible: ..., opacity: ... },
        ...
     ])
+```
 
 The argument to `ceui.setLayers()` should be an array of objects containing the properties `id`, `name` which
 give a short identifier, and a public displayed name, for each layer, as well as a `visible` property which has
@@ -154,9 +168,11 @@ gives its opacity, as a number between 0.0 (fully transparent) and 1.0 (fully op
 The UI provides the following functions which the application can use to programmatically change the visibility
 or opacity of a layer after it has been initialized:
 
+```javascript
     ceui.setLayerVisibility(layerId, BOOLEAN)
     ceui.setLayerOpacity(layerId, opacity)
-    
+```
+
 Whenever the user adjust the visibility or opacity of a layer through the user interface, the UI calls the
 `layerVisibilitySet()` or `layerOpacitySet()` callbacks mentioned above.  Note that these callbacks are NOT
 triggered by calls to `ceui.setLayerVisibility()` or `ceui.setLayerOpacity()`.
@@ -170,11 +186,13 @@ graphed.  Currently there are two of these, "temperature" and "precipitation", b
 for an arbitrary number of them.  The UI provides the following function which the application can use to set
 the list of these variables:
 
+```javascript
     ceui.setDataVariables([
         { id : ..., name : ..., selected : BOOLEAN },
         { id : ..., name : ..., selected : BOOLEAN },
         ...
     ])
+```
 
 The argument to `ceui.setDataVariables()` is an array with `id`, `name`, and `selected` properties.  The
 `id` is, of course, an short unique identifier for the variable; `name` is the name that the UI displayed for
@@ -185,7 +203,9 @@ the variable, and `selected` indicates whether that variable should be initially
 The UI provides the following functions which the application can use to control which data graphs are
 displayed:
                  
+```javascript
     ceui.showStation({ id: ..., name : ... })
+```
 
 `ceui.showStation()` takes a single argument which is an object giving the `id` and `name` of a station;
 it causes the UI to create a space in the graphs perspective for displaying data graphs for that station.
@@ -195,8 +215,9 @@ currently selected data variable.
 The following function, which takes a single station `id` argument, causes the UI to remove all data graphs
 (as well as the title) corresponding to the given station:
    
+```javascript
     ceui.hideStation(id)
-
+```
 
 ## The Map
 
@@ -204,4 +225,6 @@ The Climate Explorer's map is part of the application itself, not the UI.  The U
 a DOM element that the application can use for displaying the map.  The following function, which takes
 no arguments, returns a jQuery object corresponding to the DOM element where the map should be placed:
 
+```javascript
     ceui.getMapElement()
+```
