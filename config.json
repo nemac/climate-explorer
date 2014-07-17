@@ -114,6 +114,62 @@
             "url": "http://129.174.131.7/cgi/wms_cdlall.cgi",
             "projection": "EPSG:4326",
             "layers": "cdl_2013"
+        }, {
+            "id": "aaq",
+            "name": "HAZUS Critical Facilities",
+            "url": "http://maps.csc.noaa.gov/arcgis/rest/services/Roadmap/RoadmapPilotMaps_IndividualLayers/MapServer/export",
+            "projection": "EPSG:102100",
+            "layers": "7",
+            "type": "REST"
+        }, {
+            "id": "aar",
+            "name": "Critical Facility Density",
+            "url": "http://maps.csc.noaa.gov/arcgis/rest/services/Roadmap/RoadmapPilotMaps_IndividualLayers/MapServer/export",
+            "projection": "EPSG:102100",
+            "layers": "6",
+            "type": "REST"
+        }, {
+            "id": "aas",
+            "name": "Population Density",
+            "url": "http://maps.csc.noaa.gov/arcgis/rest/services/Roadmap/RoadmapPilotMaps_IndividualLayers/MapServer/export",
+            "projection": "EPSG:102100",
+            "layers": "1",
+            "type": "REST"
+        }, {
+            "id": "aat",
+            "name": "Businesses",
+            "url": "http://maps.csc.noaa.gov/arcgis/rest/services/Roadmap/RoadmapPilotMaps_IndividualLayers/MapServer/export",
+            "projection": "EPSG:102100",
+            "layers": "4",
+            "type": "REST"
+        }, {
+            "id": "aau",
+            "name": "Beaches & Dunes",
+            "url": "http://maps.csc.noaa.gov/arcgis/rest/services/Roadmap/RoadmapPilotMaps_IndividualLayers/MapServer/export",
+            "projection": "EPSG:102100",
+            "layers": "10",
+            "type": "REST"
+        }, {
+            "id": "aav",
+            "name": "Wetlands",
+            "url": "http://maps.csc.noaa.gov/arcgis/rest/services/Roadmap/RoadmapPilotMaps_IndividualLayers/MapServer/export",
+            "projection": "EPSG:102100",
+            "layers": "8",
+            "type": "REST"
+        }, {
+            "id": "aaw",
+            "name": "FEMA Flood Zones",
+            "url": "http://maps.csc.noaa.gov/arcgis/rest/services/Roadmap/RoadmapPilot_FEMAFlood/MapServer/export",
+            "projection": "EPSG:102100",
+            "layers": "0",
+            "type": "REST"
+        }, {
+            "id": "aax",
+            "name": "Coastal Flood Hazard Composite",
+            "url": "http://maps.csc.noaa.gov/arcgis/rest/services/Roadmap/RoadmapPilot_HazardComposite/MapServer/export",
+            "projection": "EPSG:102100",
+            "layers": "0",
+            "type": "REST"
         }
     ],
     "groups": [{
@@ -123,11 +179,11 @@
         "subGroups": [{
             "id": "g_a_a",
             "name": "Climate Stressors",
-            "layers": [ "aag", "aac", "aad", "aae", "aaf", "aab" ]
+            "layers": [ "aag", "aac", "aad", "aae", "aaf", "aab", "aax", "aaw" ]
         }, {
             "id": "g_a_b",
             "name": "Assets Impacted",
-            "layers": [ "aak", "aam", "aal", "aah", "aai", "aaj" ]
+            "layers": [ "aak", "aam", "aal", "aah", "aai", "aaj", "aaq", "aar", "aas", "aat", "aau", "aav" ]
         }]
     }, {
         "id": "g_b",
