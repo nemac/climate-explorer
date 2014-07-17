@@ -1,5 +1,4 @@
-Climate Explorer User Interface API
-***********************************
+# Climate Explorer User Interface API
 
 The Climate Explorer User Interface API is a collection of functions and conventions that specifies how the Climate Explorer
 application communicates with its user interface.  Adherence to these conventions allows for convenient separation of the
@@ -13,14 +12,12 @@ described below.
 The proper way to add some kind of interaction between the application and the user interface which is not supported by this
 API is to first modify this API (including this documentation file).
 
-`ceui` Object
-*************
+## ceui Object
 
 The user interface should expose only one global JavaScript object named `ceui`; all UI functions and variables should
 be properties on this object.
 
-CEUI Initialization, Application Callbacks
-==========================================
+## CEUI Initialization, Application Callbacks
 
 The function `ceui.init()` initializes the UI; the application will call it before calling any other UI functions.
 It takes a single argument which should be an object with properties that give various "callback" functions.
@@ -70,8 +67,7 @@ when the user performs some action in the (such as clicking a checkbox, or dragg
 are not typically called when the corresponding settings are changed programmatically; see the descriptions
 of the UI's API functions below for details.
 
-Enabling the UI
-===============
+## Enabling the UI
 
 When the user interface is initialized, it will be in a "disabled" state, meaning that its various
 buttons, sliders, etc are greyed out and will not respond to user interaction.  The reason for this
@@ -85,8 +81,7 @@ following function which the application can (and must) call to indicate that it
 The application should call `ceui.enabled(true)` to cause the UI to become enabled and to allow the user
 to begin interactions.
 
-Perspectives
-============
+## Perspectives
 
 We use the term "perspective" to describe what is visible in the UI's right sidebar.  There are two
 possible perspectives: "Map Layers", which includes a list of map layers and widgets for controlling them,
@@ -104,11 +99,9 @@ to be displayed.  The `perspective` argument should be one of the above constant
 Whenever the user changes the perspective manually through the UI, the UI calls the `perspectiveSet()` callback
 function mentioned above.  Note that this callback is NOT triggered by a call to `ceui.setPerspective()`.
 
-Map Layers Perspective
-======================
+## Map Layers Perspective
 
-Topics
-------
+### Topics
 
 The UI provides the following function which the application can use to set the list of topics which appear
 in the topics menu:
@@ -129,8 +122,7 @@ may also call
 to set the current topic.  When the user changes the current topic manually, the UI calls the `topicSet()` callback
 mentioned above.  Note that this callback is NOT triggered by a call to `ceui.setTopic()`.
 
-Map Layers
-----------
+### Map Layers
 
 When the UI is displaying the map layers perspective, it shows a list of map layers displayed in groups.
 At the current time the two groups are "Climate Stressors" and "Assets Impacted", but the names of these groups
@@ -169,11 +161,9 @@ Whenever the user adjust the visibility or opacity of a layer through the user i
 `layerVisibilitySet()` or `layerOpacitySet()` callbacks mentioned above.  Note that these callbacks are NOT
 triggered by calls to `ceui.setLayerVisibility()` or `ceui.setLayerOpacity()`.
 
-Graphs Perspective
-==================
+## Graphs Perspective
 
-Data Variables
---------------
+### Data Variables
 
 In the graphs perspective, the UI presents the user with a set of possible data variables that can be
 graphed.  Currently there are two of these, "temperature" and "precipitation", but the program design allows
@@ -190,8 +180,7 @@ The argument to `ceui.setDataVariables()` is an array with `id`, `name`, and `se
 `id` is, of course, an short unique identifier for the variable; `name` is the name that the UI displayed for
 the variable, and `selected` indicates whether that variable should be initially selected.
 
-Data Graphs
------------
+### Data Graphs
 
 The UI provides the following functions which the application can use to control which data graphs are
 displayed:
@@ -209,12 +198,10 @@ The following function, which takes a single station `id` argument, causes the U
     ceui.hideStation(id)
 
 
-The Map
-=======
+## The Map
 
 The Climate Explorer's map is part of the application itself, not the UI.  The UI simply needs to provide
 a DOM element that the application can use for displaying the map.  The following function, which takes
 no arguments, returns a jQuery object corresponding to the DOM element where the map should be placed:
 
     ceui.getMapElement()
-                 
