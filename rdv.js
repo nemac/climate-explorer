@@ -92,8 +92,8 @@ $(function(){
     
     ceui.init({
         enabled : false,
-        tabSet : function(tab) {
-            if (tab === ceui.LAYERS) {
+        perspectiveSet : function(tab) {
+            if (tab === ceui.LAYERS_PERSPECTIVE) {
                 mL.setLayerVisibility("lyr_ghcnd", false);
             } else {
                 mL.setLayerVisibility("lyr_ghcnd", true);
@@ -392,14 +392,14 @@ $(function(){
 
 
                 if (pl.havePerspective()) {
-                    ceui.setTab(pl.getPerspective());
+                    ceui.setPerspective(pl.getPerspective());
                 } else {
                     if (pl.haveGraphs()) {
-                        ceui.setTab(ceui.MULTIGRAPH);
-                        pl.setPerspective(ceui.MULTIGRAPH);
+                        ceui.setPerspective(ceui.GRAPHS_PERSPECTIVE);
+                        pl.setPerspective(ceui.GRAPHS_PERSPECTIVE);
                     } else {
-                        ceui.setTab(ceui.LAYERS);
-                        pl.setPerspective(ceui.LAYERS);
+                        ceui.setPerspective(ceui.LAYERS_PERSPECTIVE);
+                        pl.setPerspective(ceui.LAYERS_PERSPECTIVE);
                     }
                     updatePermalinkDisplay();
                 }
@@ -774,9 +774,9 @@ return;
         }
         if ('p' in url.params) {
             if (url.params.p === "L") {
-                p = ceui.LAYERS;
+                p = ceui.LAYERS_PERSPECTIVE;
             } else {
-                p = ceui.MULTIGRAPH;
+                p = ceui.GRAPHS_PERSPECTIVE;
             }
         }
         if ('graphs' in url.params) {
@@ -831,7 +831,7 @@ return;
             'getPerspective'    : function() { return p; },
             'setPerspective'    : function(q) {
                 p = q;
-                if (p === ceui.LAYERS) {
+                if (p === ceui.LAYERS_PERSPECTIVE) {
                     url.params.p = "L";
                 } else {
                     url.params.p = "G";
