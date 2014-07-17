@@ -287,6 +287,31 @@ ceui.setLayerOpacity = function(layerId, opacity) {
 	$layerOpacLab.html((Math.floor(opacity*100)).toString()+"%");
 };
 
+
+ceui.setTab = function(tab) {
+	if (tab === ceui.LAYERS) {
+        $("#layerMultiGrphButtGrp").jqxButtonGroup('setSelection', 0);
+		$("#multiGrphHolder").fadeOut(100, function(){
+			$("#middleRightHolder").animate({width:"430"}, 400, function(){
+				$("#layersHolder").fadeIn(100);
+			})
+		})
+        if (ceui._tabSet) {
+            ceui._tabSet(ceui.LAYERS);
+        }
+	} else {
+        $("#layerMultiGrphButtGrp").jqxButtonGroup('setSelection', 1);
+		$("#layersHolder").fadeOut(100, function(){
+			$("#middleRightHolder").animate({width:"644"}, 400, function(){
+				$("#multiGrphHolder").fadeIn(100);
+			})
+		})
+        if (ceui._tabSet) {
+            ceui._tabSet(ceui.MULTIGRAPH);
+        }
+	}
+}
+
 ceui.init = function(options) {
 
     if ('enabled' in options) {
@@ -325,27 +350,12 @@ ceui.init = function(options) {
 	// the MENU widget and About this Snapshot Panel OR the Description text and About this date slider widget.
 	$("#layerMultiGrphButtGrp").click(function(){
 		var whichSelect = $("#layerMultiGrphButtGrp").jqxButtonGroup('getSelection');
-		if(whichSelect == 0){
-			$("#multiGrphHolder").fadeOut(100, function(){
-				$("#middleRightHolder").animate({width:"430"}, 400, function(){
-					$("#layersHolder").fadeIn(100);
-				})
-			})
-            if (ceui._tabSet) {
-                ceui._tabSet(ceui.LAYERS);
-            }
-		}else if(whichSelect == 1){
-			$("#layersHolder").fadeOut(100, function(){
-				$("#middleRightHolder").animate({width:"644"}, 400, function(){
-					$("#multiGrphHolder").fadeIn(100);
-				})
-			})
-            if (ceui._tabSet) {
-                ceui._tabSet(ceui.MULTIGRAPH);
-            }
-		}
+		if (whichSelect == 0) {
+            ceui.setTab(ceui.LAYERS);
+        } else {
+            ceui.setTab(ceui.MULTIGRAPH);
+        }
 	});
-	
 
     $("#multiGrphPanel").empty();
 	$("#multiGrphPanel").jqxPanel({ 

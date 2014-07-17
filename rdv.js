@@ -90,24 +90,16 @@ $(function(){
     var overlaysById = {};
     var topicsById = {};
     
-    var selectLayersTab = function() {
-        //console.log('displaying map layers now');
-        mL.setLayerVisibility("lyr_ghcnd", false);
-    };
-    
-    var selectGraphsTab = function() {
-        //console.log('displaying graphs now');
-        mL.setLayerVisibility("lyr_ghcnd", true);
-    };
-            
     ceui.init({
         enabled : false,
         tabSet : function(tab) {
             if (tab === ceui.LAYERS) {
-                selectLayersTab();
+                mL.setLayerVisibility("lyr_ghcnd", false);
             } else {
-                selectGraphsTab();
+                mL.setLayerVisibility("lyr_ghcnd", true);
             }
+            pl.setPerspective(tab);
+            updatePermalinkDisplay();
             //console.log('switching to tab: ' + tab);
         },
         layerVisibilitySet : layerVisibilitySet,
@@ -382,21 +374,6 @@ $(function(){
                     });
                 }
                 
-                // check current perspective from permalink URL, set
-                // TODO check perspective from permalink
-                // TODO ZZZ
-                var todoChangeThisToPermalinkCheck = false;
-                if ( todoChangeThisToPermalinkCheck ) {
-                    var todoChangeThisToCheckWhichPerspectiveIsSelected = true;
-                    if ( todoChangeThisToCheckWhichPerspectiveIsSelected )  {
-                        selectLayersTab();
-                    } else {
-                        selectGraphsTab();
-                    }
-                } else {
-                    selectLayersTab();
-                }
-
                 // turn on any overlay layers present in the permalink URL:
                 pl.getLayers().forEach(function(layer) {
                     mL.setLayerVisibility(layer.id, true);
@@ -412,6 +389,21 @@ $(function(){
                     pl.setZoom(o.zoom);
                     updatePermalinkDisplay();
                 }($mapl.mapLite('getCenterAndZoom')));
+
+
+                if (pl.havePerspective()) {
+                    ceui.setTab(pl.getPerspective());
+                } else {
+                    if (pl.haveGraphs()) {
+                        ceui.setTab(ceui.MULTIGRAPH);
+                        pl.setPerspective(ceui.MULTIGRAPH);
+                    } else {
+                        ceui.setTab(ceui.LAYERS);
+                        pl.setPerspective(ceui.LAYERS);
+                    }
+                    updatePermalinkDisplay();
+                }
+
             }
         });
     });
@@ -758,7 +750,7 @@ return;
     //    var pl = Permalink(URL(window.location.toString()));
     //
     function Permalink(url) {
-    var center = null, zoom = null, gp = null, tp = null;
+        var center = null, zoom = null, gp = null, tp = null, p = null;
         var graphs = [];
         var layers = [];
         var scales = {};
@@ -772,13 +764,20 @@ return;
             var fields = url.params.gp.split(':');
             gp = {
                 'open'  : parseInt(fields[0],10) !== 0
-            }
+            };
             if (fields.length > 1) {
                 gp.width = parseInt(fields[1],10);
             }
         }
         if ('tp' in url.params) {
             tp = url.params.tp;
+        }
+        if ('p' in url.params) {
+            if (url.params.p === "L") {
+                p = ceui.LAYERS;
+            } else {
+                p = ceui.MULTIGRAPH;
+            }
         }
         if ('graphs' in url.params) {
             url.params.graphs.split(',').forEach(function(graphString) {
@@ -828,6 +827,16 @@ return;
                 tp = t;
                 url.params.tp = t;
             },
+            'havePerspective'   : function() { return p !== null; },
+            'getPerspective'    : function() { return p; },
+            'setPerspective'    : function(q) {
+                p = q;
+                if (p === ceui.LAYERS) {
+                    url.params.p = "L";
+                } else {
+                    url.params.p = "G";
+                }
+            },
             'haveGp'   : function() { return gp !== null; },
             'getGp'    : function() { return gp; },
             'setGp'    : function(g) {
@@ -850,22 +859,6 @@ return;
                 graphs.push(graph);
                 url.params.graphs = graphs.map(function(g) { return g.id + ":" + g.type; }).join(",");
             },
-            //'removeGraph' : function(graph) {
-            //    for ( var i = graphs.length - 1; i >= 0; i-- ) {
-            //        for ( var j = 0; j < graph.types.length; j++ ) {
-            //            if (graphs[i].type === graph.types[j] && graphs[i].id === graph.id) {    
-            //                graphs.splice ( i, 1 );
-            //                break;
-            //            }
-            //        }   
-            //    }
-            //
-            //    if (graphs.length > 0) {
-            //        url.params.graphs = graphs.map(function(g) { return g.id + ":" + g.type; }).join(",");
-            //    } else {
-            //        delete url.params.graphs;
-            //    }
-            //},
             'removeGraph' : function(graph) {
                 for ( var i = graphs.length - 1; i >= 0; i-- ) {
                     if (graphs[i].type === graph.type && graphs[i].id === graph.id) {    
