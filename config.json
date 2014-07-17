@@ -114,56 +114,56 @@
             "layers": "cdl_2013"
         }, {
             "id": "aaq",
-            "name": "HAZUS Critical Facilities",
+            "name": "HAZUS Critical Facilities (DEL-NJ-NY)",
             "url": "http://maps.csc.noaa.gov/arcgis/rest/services/Roadmap/RoadmapPilotMaps_IndividualLayers/MapServer/export",
             "projection": "EPSG:102100",
             "layers": "7",
             "type": "REST"
         }, {
             "id": "aar",
-            "name": "Critical Facility Density",
+            "name": "Critical Facility Density (DEL-NJ-NY)",
             "url": "http://maps.csc.noaa.gov/arcgis/rest/services/Roadmap/RoadmapPilotMaps_IndividualLayers/MapServer/export",
             "projection": "EPSG:102100",
             "layers": "6",
             "type": "REST"
         }, {
             "id": "aas",
-            "name": "Population Density",
+            "name": "Population Density (DEL-NJ-NY)",
             "url": "http://maps.csc.noaa.gov/arcgis/rest/services/Roadmap/RoadmapPilotMaps_IndividualLayers/MapServer/export",
             "projection": "EPSG:102100",
             "layers": "1",
             "type": "REST"
         }, {
             "id": "aat",
-            "name": "Businesses",
+            "name": "Businesses (DEL-NJ-NY)",
             "url": "http://maps.csc.noaa.gov/arcgis/rest/services/Roadmap/RoadmapPilotMaps_IndividualLayers/MapServer/export",
             "projection": "EPSG:102100",
             "layers": "4",
             "type": "REST"
         }, {
             "id": "aau",
-            "name": "Beaches & Dunes",
+            "name": "Beaches & Dunes (DEL-NJ-NY)",
             "url": "http://maps.csc.noaa.gov/arcgis/rest/services/Roadmap/RoadmapPilotMaps_IndividualLayers/MapServer/export",
             "projection": "EPSG:102100",
             "layers": "10",
             "type": "REST"
         }, {
             "id": "aav",
-            "name": "Wetlands",
+            "name": "Wetlands (DEL-NJ-NY)",
             "url": "http://maps.csc.noaa.gov/arcgis/rest/services/Roadmap/RoadmapPilotMaps_IndividualLayers/MapServer/export",
             "projection": "EPSG:102100",
             "layers": "8",
             "type": "REST"
         }, {
             "id": "aaw",
-            "name": "FEMA Flood Zones",
+            "name": "FEMA Flood Zones (DEL-NJ-NY)",
             "url": "http://maps.csc.noaa.gov/arcgis/rest/services/Roadmap/RoadmapPilot_FEMAFlood/MapServer/export",
             "projection": "EPSG:102100",
             "layers": "0",
             "type": "REST"
         }, {
             "id": "aax",
-            "name": "Coastal Flood Hazard Composite",
+            "name": "Coastal Flood Hazard Composite (DEL-NJ-NY)",
             "url": "http://maps.csc.noaa.gov/arcgis/rest/services/Roadmap/RoadmapPilot_HazardComposite/MapServer/export",
             "projection": "EPSG:102100",
             "layers": "0",
