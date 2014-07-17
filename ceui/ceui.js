@@ -231,17 +231,18 @@ ceui.setLayers = function(groupId, layers) {
 	    $layerCheck.on('change', function(event){
 		    var checked = event.args.checked;
 		    if(checked){
-                $layerOpacSlider.jqxSlider({ disabled:false });
+                $layerOpacSlider.jqxSlider({ disabled : false });
 			    $layerOpacLab.show(100);
 		    }else{
-                $layerOpacSlider.jqxSlider({ disabled:true });
+                $layerOpacSlider.jqxSlider({ disabled : true });
 			    $layerOpacLab.hide(100);
 		    }
             if (ceui._layerVisibilitySet) {
                 ceui._layerVisibilitySet(layer.id, checked);
             }
 	    });
-        $layerOpacSlider.jqxSlider({ 
+        $layerOpacSlider.jqxSlider({
+            disabled: true,
 		    theme:ceui._myTheme,
 		    min: 0, 
 		    max: 100, 
@@ -273,6 +274,7 @@ ceui.setLayerVisibility = function(layerId, visible) {
     var $layerCheck = ceui._layers[ layerId ].find(".layerCheck");
     if (visible) {
         $layerCheck.jqxCheckBox('check');
+        ceui._layers[ layerId ].find(".layerOpacSlider").jqxSlider({ disabled : !ceui._enabled });
     } else {
         $layerCheck.jqxCheckBox('uncheck');
     }
@@ -376,11 +378,32 @@ ceui.init = function(options) {
 ceui.enabled = function(enabled) {
 
     if (enabled) {
+        // enable the perspective ("Map Layers" vs "Historical Data") buttons:
 	    $("#layerMultiGrphButtGrp").jqxButtonGroup('enableAt', 0);
 	    $("#layerMultiGrphButtGrp").jqxButtonGroup('enableAt', 1);
+        // enabled the checkbox for each layer, and the slider for any layers
+        // whose checkbox is checked:
+        Object.keys(ceui._layers).forEach(function(layerId) {
+            var $layer = ceui._layers[ layerId ];
+            var $layerCheck = $layer.find(".layerCheck");
+            $layerCheck.jqxCheckBox({disabled: false});
+            if ($layerCheck.jqxCheckBox('checked')) {
+                var $layerOpacSlider = $layer.find(".layerOpacSlider");
+                $layerOpacSlider.jqxSlider({disabled : false});
+            }
+        });
     } else {
+        // disable the perspective ("Map Layers" vs "Historical Data") buttons:
 	    $("#layerMultiGrphButtGrp").jqxButtonGroup('disableAt', 0);
 	    $("#layerMultiGrphButtGrp").jqxButtonGroup('disableAt', 1);
+        // disable the checkbox and slider for each layer
+        Object.keys(ceui._layers).forEach(function(layerId) {
+            var $layer = ceui._layers[ layerId ];
+            var $layerCheck = $layer.find(".layerCheck");
+            $layerCheck.jqxCheckBox({disabled : true});
+            var $layerOpacSlider = $layer.find(".layerOpacSlider");
+            $layerOpacSlider.jqxSlider({disabled : true});
+        });
     }
 
     ceui._enabled = enabled;
