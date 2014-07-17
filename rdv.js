@@ -102,8 +102,24 @@ $(function(){
             updatePermalinkDisplay();
             //console.log('switching to tab: ' + tab);
         },
-        layerVisibilitySet : layerVisibilitySet,
-        layerOpacitySet : layerOpacitySet,
+        layerVisibilitySet : function(id, visible) {
+            if (mL != null) {
+                mL.setLayerVisibility(id, visible);
+                if (visible) {
+                    pl.addLayer(id);
+                } else {
+                    pl.removeLayer(id);
+                }
+                updatePermalinkDisplay();
+            }
+        },
+        layerOpacitySet : function(id, opacity) {
+            if (mL != null) {
+                mL.setLayerOpacity(id, opacity);
+                pl.setLayerOpacity(id, opacity);
+                updatePermalinkDisplay();
+            }
+        },
         topicSet : function(topicId) {
             setTopic(topicId);
         },
@@ -113,35 +129,12 @@ $(function(){
         removeGraph : function(id, type) {
             pl.removeGraph({type: type, id : id.replace("GHCND:", "")});
             updatePermalinkDisplay();
-        },
-        variablesSet : function(variables) {
-            //pl.addGraph({type: type, id : id});
         }
     });
 
     var mL = null;
     function rememberML(x) {
         mL = x;
-    }
-
-    function layerVisibilitySet(id, visible) {
-        if (mL != null) {
-            mL.setLayerVisibility(id, visible);
-            if (visible) {
-                pl.addLayer(id);
-            } else {
-                pl.removeLayer(id);
-            }
-            updatePermalinkDisplay();
-        }
-    }
-
-    function layerOpacitySet(id, opacity) {
-        if (mL != null) {
-            mL.setLayerOpacity(id, opacity);
-            pl.setLayerOpacity(id, opacity);
-            updatePermalinkDisplay();
-        }
     }
 
     var BASE_CSV_SOURCE_URL = 'https://s3.amazonaws.com/nemac-ghcnd/';
@@ -340,7 +333,7 @@ $(function(){
 
                 ceui.enabled(true);
 
-                // look at the permalink URL info to determine which graph variable buttons should
+                // look at the permalink URL info to determine which data variable buttons should
                 // be initially selected
                 var varIds = {};
                 if (pl.haveGraphs()) {
@@ -354,8 +347,8 @@ $(function(){
                     });
                 }
 
-                // set the graph variables in the UI
-                ceui.setVariables([
+                // set the data variables in the UI
+                ceui.setDataVariables([
                     { id : "TEMP",     name : "TEMPERATURE",   selected : varIds["TEMP"]     },
                     { id : "PRCP_YTD", name : "PRECIPITATION", selected : varIds["PRCP_YTD"] }
                 ]);

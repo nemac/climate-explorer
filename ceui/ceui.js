@@ -9,37 +9,37 @@ ceui.GRAPHS_PERSPECTIVE = "graphs";
 
 ceui.getMapElement = function() {
     return $("#mapHolder");
-}
+};
 
-// ceui._variables is an array that keeps track of the list of station variable types that can be displayed in Muligraphs
+// ceui._dataVariables is an array that keeps track of the list of data variables that can be displayed in Muligraphs
 // Each item in the array is an object of the form
 //     { id : VARIABLE_ID, name : VARIABLE_NAME, selected : BOOLEAN }
-//   'id' is a string which is the ID of the variable
+//   'id' is a string which is the ID of the data variable
 //   'name' is a string which is displayed as a button label in the UI
 //   'selected' is a boolean which indicates whether this variable is currently selected
-// This array is populated by the ceui.setVariables() function below.
-ceui._variables = [];
+// This array is populated by the ceui.setDataVariables() function below.
+ceui._dataVariables = [];
 
-// return the variable object, from the ceui._variables array above, corresponding to the variable with the given id
+// return the dataVariable object, from the ceui._dataVariables array above, corresponding to the variable with the given id
 ceui._variableById = function(id) {
     var i;
-    for (i=0; i<ceui._variables.length; ++i) {
-        if (ceui._variables[i].id === id) {
-            return ceui._variables[i];
+    for (i=0; i<ceui._dataVariables.length; ++i) {
+        if (ceui._dataVariables[i].id === id) {
+            return ceui._dataVariables[i];
         }
     }
 };
 
-// Set the list of variable types.
+// Set the list of dataVariables.
 //   'variables' should be an array of objects of the form
 //       { id : VARIABLE_ID, name : VARIABLE_NAME, selected : BOOLEAN }
-//   as described in the comment for ceui._variables above.
-ceui.setVariables = function(variables) {
+//   as described in the comment for ceui._dataVariables above.
+ceui.setDataVariables = function(variables) {
     $("#multiGrphButtHold").empty();
-    ceui._variables = [];
+    ceui._dataVariables = [];
     variables.forEach(function(variable) {
         var v = { id : variable.id, name : variable.name, selected : !!variable.selected };
-        ceui._variables.push(v);
+        ceui._dataVariables.push(v);
         var $graphVariableButon = $(ceui.templates.graphVariableButton).appendTo($("#multiGrphButtHold"));
         $graphVariableButon.attr("value", v.name);
         $graphVariableButon.jqxToggleButton({ theme: ceui._myTheme, width: '125', toggled: !!v.selected});
@@ -119,7 +119,7 @@ ceui._setStationNumbers = function() {
 
 ceui.showStation = function(station) {
     // Create a component for displaying multigraphs for a new station, and call the _displayGraph callback
-    // to create and display graphs for all currently selected variables for that station.
+    // to create and display graphs for all currently selected data variables for that station.
     var $stationPane = $(ceui.templates.stationPane);
     $("#multiGrphPanel").jqxPanel('append', $stationPane);
     
@@ -127,7 +127,7 @@ ceui.showStation = function(station) {
     $stationPane.find(".mgLatLon").html(station.latlon);
     $stationPane.find(".mgPanesHolder").empty();
     var station = { id : ""+station.id, name : station.name, latlon : station.latlon, $pane : $stationPane, mgPanes : {} };
-    ceui._variables.forEach(function(variable) {
+    ceui._dataVariables.forEach(function(variable) {
         if (variable.selected) {
             ceui._showGraph(station, variable.id);
         }
@@ -294,8 +294,8 @@ ceui.setPerspective = function(tab) {
 		$("#multiGrphHolder").fadeOut(100, function(){
 			$("#middleRightHolder").animate({width:"430"}, 400, function(){
 				$("#layersHolder").fadeIn(100);
-			})
-		})
+			});
+		});
         if (ceui._perspectiveSet) {
             ceui._perspectiveSet(ceui.LAYERS_PERSPECTIVE);
         }
