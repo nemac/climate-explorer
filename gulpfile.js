@@ -13,7 +13,7 @@ var paths = {
     buildDest : './build',
     scripts: {
         projectFiles: [
-            'rdv.js',
+            'ce.js',
             './utils/*.js'
         ],
         vendorFiles: [
@@ -26,9 +26,6 @@ var paths = {
         ]
     },
     assets: {
-        css: [
-            'rdv.css'
-        ],
         images: [
             'img/*.png'
         ],
@@ -57,7 +54,7 @@ function bundleTemplates() {
 }
 
 function browserifyRDV() {
-    return gulp.src( 'rdv.js' )
+    return gulp.src( 'ce.js' )
         .pipe( browserify( {
             //debug: true,
             insertGlobals: true
@@ -88,7 +85,6 @@ gulp.task( 'bundle-assets', function() {
         .pipe( gulp.dest( paths.buildDest + '/asset' ) );
 
     var cssStream = streamqueue( { objectMode: true } );
-    cssStream.queue( gulp.src( paths.assets.css ) );
     cssStream.queue( 
         gulp.src( './bower_components/**/*.css' )
         .pipe( filter( '!jquery-ui*/**') )
@@ -117,9 +113,6 @@ gulp.task( 'html', ['default'], function() {
 
     gulp.src( './testdata/**' )
         .pipe( gulp.dest( './html/testdata' ) );
-
-    gulp.src( './rdv.js' )
-        .pipe( gulp.dest( './html' ) );
 
     gulp.src( './detail.tpl.html' )
         .pipe( gulp.dest( './html' ) );

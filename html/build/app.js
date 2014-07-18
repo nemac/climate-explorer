@@ -3478,8 +3478,6 @@ var MUGLTEMPLATES = {
 //
 $(function(){
 
-
-
     // The function updateAxisDebounce() gets called whenever an axis scale changes in a multigraph
     // (search for 'dataRangeSet' below to see where it is registered).  It handles updating the permalink
     // URL to show the new axis scales, but only after a certain delay threshold (axisUpdateDebounceThresholdMS)
@@ -4406,7 +4404,7 @@ return;
     }
 });
 
-}).call(this,require("IrXUsu"),typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {},require("buffer").Buffer,arguments[3],arguments[4],arguments[5],arguments[6],"/fake_e16a3c4e.js","/")
+}).call(this,require("IrXUsu"),typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {},require("buffer").Buffer,arguments[3],arguments[4],arguments[5],arguments[6],"/fake_a0c5ddf4.js","/")
 },{"./utils/muglHelper.js":6,"./utils/stringUtil.js":7,"./utils/urlUtils.js":9,"IrXUsu":5,"buffer":2}],2:[function(require,module,exports){
 (function (process,global,Buffer,__argument0,__argument1,__argument2,__argument3,__filename,__dirname){
 /*!

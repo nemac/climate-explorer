@@ -3,8 +3,6 @@
 //
 $(function(){
 
-
-
     // The function updateAxisDebounce() gets called whenever an axis scale changes in a multigraph
     // (search for 'dataRangeSet' below to see where it is registered).  It handles updating the permalink
     // URL to show the new axis scales, but only after a certain delay threshold (axisUpdateDebounceThresholdMS)
