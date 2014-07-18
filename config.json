@@ -10,12 +10,14 @@
         "type": "arcgis",
         "name": "Street",
         "url": "http://server.arcgisonline.com/ArcGIS/rest/services/World_Street_Map/MapServer",
+        "infoCache": "testdata/world_street_map_info_cache.json",
         "isDefault": true
     }, {
         "id": "b_b",
         "type": "arcgis",
         "name": "Imagery",
-        "url": "http://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer"
+        "url": "http://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer",
+        "infoCache": "testdata/world_imagery_info_cache.json"
     }],
     "overlays": [{
             "id": "aaa",

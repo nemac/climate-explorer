@@ -59,6 +59,7 @@ function bundleTemplates() {
 function browserifyRDV() {
     return gulp.src( 'rdv.js' )
         .pipe( browserify( {
+            //debug: true,
             insertGlobals: true
         }));
 }
@@ -101,7 +102,7 @@ gulp.task( 'bundle-assets', function() {
 
 gulp.task( 'html', ['default'], function() {
 
-    gulp.src( './rdv.html' )
+    gulp.src( './ce.html' )
         .pipe( concat( 'index.html' ) )
         .pipe( gulp.dest( './html' ) );
 
@@ -110,6 +111,9 @@ gulp.task( 'html', ['default'], function() {
 
     gulp.src( './lib/**' )
         .pipe( gulp.dest( './html/lib' ) );
+
+    gulp.src( './ceui/**' )
+        .pipe( gulp.dest( './html/ceui' ) );
 
     gulp.src( './testdata/**' )
         .pipe( gulp.dest( './html/testdata' ) );
@@ -138,7 +142,7 @@ gulp.task( 'package', function() {
 
     return stream.done()
         .pipe( concat( 'app.js' ) )
-        .pipe( uglify() )
+//        .pipe( uglify() )
         .pipe( gulp.dest( paths.buildDest ) ); 
 });
 

@@ -1,0 +1,183 @@
+{
+ "currentVersion": 10.2,
+ "serviceDescription": "This worldwide street map presents highway-level data for the world. Street-level data includes the United States; much of Canada; Mexico; Europe; Japan; Australia and New Zealand; India; South America and Central America; Africa; and most of the Middle East. This comprehensive street map includes highways, major roads, minor roads, one-way arrow indicators, railways, water features, administrative boundaries, cities, parks, and landmarks, overlaid on shaded relief imagery for added context. The map also includes building footprints for selected areas. Coverage is provided down to ~1:4k with ~1:1k and ~1:2k data available in select urban areas. The street map was developed by Esri using Esri basemap data, DeLorme basemap layers, U.S. Geological Survey (USGS) elevation data, Intact Forest Landscape (IFL) data for the world; HERE data for Europe, Australia and New Zealand, North America, South America and Central America, Africa, and most of the Middle East; OpenStreetMap contributors for select countries in Africa; MapmyIndia data in India; and select data from the GIS user community. For more information on this map, including the terms of use, visit us <a href=\"http://goto.arcgisonline.com/maps/World_Street_Map \" target=\"_new\" >online<\/a>.",
+ "mapName": "Layers",
+ "description": "This worldwide street map presents highway-level data for the world. Street-level data includes the United States; much of Canada; Mexico; Europe; Japan; Australia and New Zealand; India; South America and Central America; Africa; and most of the Middle East. This comprehensive street map includes highways, major roads, minor roads, one-way arrow indicators, railways, water features, administrative boundaries, cities, parks, and landmarks, overlaid on shaded relief imagery for added context. The map also includes building footprints for selected areas. Coverage is provided down to ~1:4k with ~1:1k and ~1:2k data available in select urban areas. The street map was developed by Esri using Esri basemap data, DeLorme basemap layers, U.S. Geological Survey (USGS) elevation data, Intact Forest Landscape (IFL) data for the world; HERE data for Europe, Australia and New Zealand, North America, South America and Central America, Africa, and most of the Middle East; OpenStreetMap contributors for select countries in Africa; MapmyIndia data in India; and select data from the GIS user community. For more information on this map, including the terms of use, visit us online at http://goto.arcgisonline.com/maps/World_Street_Map",
+ "copyrightText": "Sources: Esri, HERE, DeLorme, USGS, Intermap, increment P Corp., NRCAN, Esri Japan, METI, Esri China (Hong Kong), Esri (Thailand), TomTom, MapmyIndia, © OpenStreetMap contributors, and the GIS User Community",
+ "supportsDynamicLayers": false,
+ "layers": [
+  {
+   "id": 0,
+   "name": "World Street Map",
+   "parentLayerId": -1,
+   "defaultVisibility": true,
+   "subLayerIds": null,
+   "minScale": 0,
+   "maxScale": 0
+  }
+ ],
+ "tables": [],
+ "spatialReference": {
+  "wkid": 102100,
+  "latestWkid": 3857
+ },
+ "singleFusedMapCache": true,
+ "tileInfo": {
+  "rows": 256,
+  "cols": 256,
+  "dpi": 96,
+  "format": "JPEG",
+  "compressionQuality": 90,
+  "origin": {
+   "x": -2.0037508342787E7,
+   "y": 2.0037508342787E7
+  },
+  "spatialReference": {
+   "wkid": 102100,
+   "latestWkid": 3857
+  },
+  "lods": [
+   {
+    "level": 0,
+    "resolution": 156543.03392800014,
+    "scale": 5.91657527591555E8
+   },
+   {
+    "level": 1,
+    "resolution": 78271.51696399994,
+    "scale": 2.95828763795777E8
+   },
+   {
+    "level": 2,
+    "resolution": 39135.75848200009,
+    "scale": 1.47914381897889E8
+   },
+   {
+    "level": 3,
+    "resolution": 19567.87924099992,
+    "scale": 7.3957190948944E7
+   },
+   {
+    "level": 4,
+    "resolution": 9783.93962049996,
+    "scale": 3.6978595474472E7
+   },
+   {
+    "level": 5,
+    "resolution": 4891.96981024998,
+    "scale": 1.8489297737236E7
+   },
+   {
+    "level": 6,
+    "resolution": 2445.98490512499,
+    "scale": 9244648.868618
+   },
+   {
+    "level": 7,
+    "resolution": 1222.992452562495,
+    "scale": 4622324.434309
+   },
+   {
+    "level": 8,
+    "resolution": 611.4962262813797,
+    "scale": 2311162.217155
+   },
+   {
+    "level": 9,
+    "resolution": 305.74811314055756,
+    "scale": 1155581.108577
+   },
+   {
+    "level": 10,
+    "resolution": 152.87405657041106,
+    "scale": 577790.554289
+   },
+   {
+    "level": 11,
+    "resolution": 76.43702828507324,
+    "scale": 288895.277144
+   },
+   {
+    "level": 12,
+    "resolution": 38.21851414253662,
+    "scale": 144447.638572
+   },
+   {
+    "level": 13,
+    "resolution": 19.10925707126831,
+    "scale": 72223.819286
+   },
+   {
+    "level": 14,
+    "resolution": 9.554628535634155,
+    "scale": 36111.909643
+   },
+   {
+    "level": 15,
+    "resolution": 4.77731426794937,
+    "scale": 18055.954822
+   },
+   {
+    "level": 16,
+    "resolution": 2.388657133974685,
+    "scale": 9027.977411
+   },
+   {
+    "level": 17,
+    "resolution": 1.1943285668550503,
+    "scale": 4513.988705
+   },
+   {
+    "level": 18,
+    "resolution": 0.5971642835598172,
+    "scale": 2256.994353
+   },
+   {
+    "level": 19,
+    "resolution": 0.29858214164761665,
+    "scale": 1128.497176
+   }
+  ]
+ },
+ "initialExtent": {
+  "xmin": -2.0037507067161843E7,
+  "ymin": -275474.05352292303,
+  "xmax": 2.0037507067161843E7,
+  "ymax": 1.702429650771373E7,
+  "spatialReference": {
+   "cs": "pcs",
+   "wkid": 102100
+  }
+ },
+ "fullExtent": {
+  "xmin": -2.0037507067161843E7,
+  "ymin": -1.9971868880408604E7,
+  "xmax": 2.0037507067161843E7,
+  "ymax": 1.99718688804085E7,
+  "spatialReference": {
+   "cs": "pcs",
+   "wkid": 102100
+  }
+ },
+ "minScale": 5.91657527591555E8,
+ "maxScale": 1128.497176,
+ "units": "esriMeters",
+ "supportedImageFormatTypes": "PNG32,PNG24,PNG,JPG,DIB,TIFF,EMF,PS,PDF,GIF,SVG,SVGZ,BMP",
+ "documentInfo": {
+  "Title": "World Street Map",
+  "Author": "Esri",
+  "Comments": "",
+  "Subject": "streets, highways, major roads, railways, water features, administrative boundaries, cities, parks, protected areas, landmarks ",
+  "Category": "transportation(Transportation Networks) ",
+  "AntialiasingMode": "None",
+  "TextAntialiasingMode": "Force",
+  "Keywords": "World,Global,Europe,Japan,Hong Kong,North America,United States,Canada,Mexico,Southern Africa,Asia,South America,Australia,New Zealand,India,Argentina,Brazil,Chile,Venezuela,Andorra,Austria,Belgium,Czech Republic,Denmark,France,Germany,Great Britain,Greece,Hungary,Ireland,Italy,Luxembourg,Netherlands,Norway,Poland,Portugal,San Marino,Slovakia,Spain,Sweden,Switzerland,Russia,Thailand,Turkey"
+ },
+ "capabilities": "Map",
+ "supportedQueryFormats": "JSON, AMF",
+ "exportTilesAllowed": false,
+ "maxRecordCount": 1000,
+ "maxImageHeight": 4096,
+ "maxImageWidth": 4096,
+ "supportedExtensions": "KmlServer"
+}

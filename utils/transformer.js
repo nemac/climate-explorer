@@ -57,7 +57,7 @@ Transformer.mergeCSV = function( csv1, csv2, transform ) {
     // back-check keys, merge and push common keys
     var merge = [];
     $.each( colA, function ( key, value ) {
-        if ( colB.hasOwnProperty( key ) ) {
+        if ( (key != "") && colB.hasOwnProperty( key ) ) {
             merge.push( sprintf( '%s,%s,%s', key, value, colB[key] ) );
         }
     });
