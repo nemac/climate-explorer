@@ -53,7 +53,7 @@ It takes a single argument which should be an object with properties that give v
             // showing data for the given station and data variable;  "$element" will be a jQuery
             // object corresponding to the DOM element where the graph should be displayed.
         },
-        removeGraph : function(stationId, dataVariableId) {
+        graphRemoved : function(stationId, dataVariableId) {
             // The UI calls this function to notify the application that a station data graph
             // has been removed from display (this happens, for example, when the user dismisses
             // the graph, or dismisses the entire station, or changes the selection of which
