@@ -321,7 +321,7 @@ ceui.init = function(options) {
     }
 
     if ('dir' in options) {
-        ceui._dir = dir;
+        ceui._dir = options.dir;
     }
 
     ceui._perspectiveSet = options.perspectiveSet;
