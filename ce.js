@@ -89,6 +89,7 @@ $(function(){
     var topicsById = {};
 
     ceui.init({
+        dir : 'ceui',
         enabled : false,
         perspectiveSet : function(tab) {
             if (tab === ceui.LAYERS_PERSPECTIVE) {

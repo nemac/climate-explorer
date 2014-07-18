@@ -4,6 +4,8 @@ ceui._myTheme = "ui-darkness";
 
 ceui._enabled = false;
 
+ceui._dir = '.';
+
 ceui.LAYERS_PERSPECTIVE = "layers";
 ceui.GRAPHS_PERSPECTIVE = "graphs";
 
@@ -113,7 +115,7 @@ ceui._hideGraph = function(station, variableId) {
 // increment over stations, set the associated number to match the point label
 ceui._setStationNumbers = function() {
     ceui._stations.forEach( function( station, i ) {
-        station.$pane.find( '.mgNumber' ).html( sprintf( '(%s)', i + 1 ) );
+        station.$pane.find( '.mgNumber' ).html( '(' + (i + 1) + ')');
     });
 };
 
@@ -177,7 +179,7 @@ ceui.setTopics = function(topics) {
 			$("#menuItemHolder" ).animate({top: "-=232"}, 500);
 			$("#holderForAllLayerGroups" ).animate({top: "-=232"}, 500);
 			$("#topOpenButt" ).removeClass("isDown");
-			$("#openCloseiconHold").attr('src', 'ceui/media/uiGraphics/dwnArrow.png');
+			$("#openCloseiconHold").attr('src', ceui._dir + '/media/uiGraphics/dwnArrow.png');
             if (ceui._topicSet) {
                 ceui._topicSet( $(this).attr("data-id") );
             }
@@ -318,6 +320,10 @@ ceui.init = function(options) {
         ceui._enabled = options.enabled;
     }
 
+    if ('dir' in options) {
+        ceui._dir = dir;
+    }
+
     ceui._perspectiveSet = options.perspectiveSet;
     ceui._displayGraph = options.displayGraph;
     ceui._graphRemoved = options.graphRemoved;
@@ -370,13 +376,13 @@ ceui.init = function(options) {
 			$( "#menuItemHolder" ).animate({top: "-=232"}, 500);
 			$( "#holderForAllLayerGroups" ).animate({top: "-=232"}, 500);
 			//$( "#bottomer" ).animate({top: "+=128"}, 500)
-			$("#openCloseiconHold").attr('src', 'ceui/media/uiGraphics/dwnArrow.png');
+			$("#openCloseiconHold").attr('src', ceui._dir + '/media/uiGraphics/dwnArrow.png');
 			$( "#topOpenButt" ).removeClass("isDown");
 		}else{
 			$( "#menuItemHolder" ).animate({top: "+=232"}, 500);
 			$( "#holderForAllLayerGroups" ).animate({top: "+=232"}, 500);
 			//$( "#bottomer" ).animate({top: "-=128"}, 500, function() { 
-			$("#openCloseiconHold").attr('src', 'ceui/media/uiGraphics/upArrow.png');
+			$("#openCloseiconHold").attr('src', ceui._dir + '/media/uiGraphics/upArrow.png');
 			//});
 			$( "#topOpenButt" ).addClass("isDown");
 		}
