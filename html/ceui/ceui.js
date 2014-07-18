@@ -107,7 +107,7 @@ ceui._hideGraph = function(station, variableId) {
     var $mgPane = station.mgPanes[""+variableId];
     $mgPane.remove();
     delete station.mgPanes[""+variableId];
-    ceui._removeGraph(station.id, variableId);
+    ceui._graphRemoved(station.id, variableId);
 };
 
 // increment over stations, set the associated number to match the point label
@@ -320,7 +320,7 @@ ceui.init = function(options) {
 
     ceui._perspectiveSet = options.perspectiveSet;
     ceui._displayGraph = options.displayGraph;
-    ceui._removeGraph = options.removeGraph;
+    ceui._graphRemoved = options.graphRemoved;
     ceui._topicSet = options.topicSet;
     ceui._layerVisibilitySet = options.layerVisibilitySet;
     ceui._layerOpacitySet = options.layerOpacitySet;

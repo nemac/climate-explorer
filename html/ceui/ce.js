@@ -1,8 +1,27 @@
 $(document).ready(function() {
 
     ceui.init({
-        tabSet : function(tab) {
-            console.log('switching to tab: ' + tab);
+        perspectiveSet : function(perspective) {
+            console.log('switching to perspective: ' + perspective);
+        },
+        layerVisibilitySet : function(id, visibile) {
+            console.log('layer ' + id + ' visibility set to: ' + visibile);
+        },
+        layerOpacitySet : function(id, opacity) {
+            console.log('layer ' + id + ' opacity set to: ' + opacity);
+        },
+        topicSet : function(topicId) {
+            console.log('topic set to: ' + topicId);
+        },
+        displayGraph : function(stationId, variableId, $domElement) {
+            if (variableId === "temp") {
+                $('<img src="media/multigraphImg/mgTempImgDummy1.png"></img>').appendTo($domElement);
+            } else {
+                $('<img src="media/multigraphImg/mgPrecipImgDummy1.png"></img>').appendTo($domElement);
+            }
+        },
+        graphRemoved : function(stationId, variableId) {
+            console.log('graph for station ' + stationId + ', variable ' + variableId + ' removed');
         }
     });
 
@@ -64,15 +83,6 @@ $(document).ready(function() {
         { id : "temp", name : "TEMPERATURE" },
         { id : "precip", name : "PRECIPITATION" }
     ], {
-        displayGraph : function(stationId, variableId, $domElement) {
-            if (variableId === "temp") {
-                $('<img src="media/multigraphImg/mgTempImgDummy1.png"></img>').appendTo($domElement);
-            } else {
-                $('<img src="media/multigraphImg/mgPrecipImgDummy1.png"></img>').appendTo($domElement);
-            }
-        },
-        removeGraph : function(stationId, variableId) {
-        }
     });
 
     ceui.showStation({ id : "STA1", name : "TEST STATION 1", latlon : "xyzzy 0 0 9" });

@@ -124,7 +124,7 @@ $(function(){
         displayGraph : function(id, type, $element) {
             displayGraph(id.replace("GHCND:", ""), type, $element);
         },
-        removeGraph : function(id, type) {
+        graphRemoved : function(id, type) {
             pl.removeGraph({type: type, id : id.replace("GHCND:", "")});
             updatePermalinkDisplay();
         }

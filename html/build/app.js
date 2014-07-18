@@ -3599,7 +3599,7 @@ $(function(){
         displayGraph : function(id, type, $element) {
             displayGraph(id.replace("GHCND:", ""), type, $element);
         },
-        removeGraph : function(id, type) {
+        graphRemoved : function(id, type) {
             pl.removeGraph({type: type, id : id.replace("GHCND:", "")});
             updatePermalinkDisplay();
         }
@@ -4407,7 +4407,7 @@ $(function(){
 //        });
 //    }
 
-}).call(this,require("IrXUsu"),typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {},require("buffer").Buffer,arguments[3],arguments[4],arguments[5],arguments[6],"/fake_83036a5a.js","/")
+}).call(this,require("IrXUsu"),typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {},require("buffer").Buffer,arguments[3],arguments[4],arguments[5],arguments[6],"/fake_29505e32.js","/")
 },{"./utils/muglHelper.js":6,"./utils/stringUtil.js":7,"./utils/urlUtils.js":9,"IrXUsu":5,"buffer":2}],2:[function(require,module,exports){
 (function (process,global,Buffer,__argument0,__argument1,__argument2,__argument3,__filename,__dirname){
 /*!
