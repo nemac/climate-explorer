@@ -1,6 +1,7 @@
 var ceui = {};
 
 ceui._myTheme = "ui-darkness";
+//ceui._myTheme2 = "ui-darkness2";
 
 ceui._enabled = false;
 
@@ -45,6 +46,7 @@ ceui.setDataVariables = function(variables) {
         var $graphVariableButon = $(ceui.templates.graphVariableButton).appendTo($("#multiGrphButtHold"));
         $graphVariableButon.attr("value", v.name);
         $graphVariableButon.jqxToggleButton({ theme: ceui._myTheme, width: '125', toggled: !!v.selected});
+		
         $graphVariableButon.on('click', function () {
             var isOn = $graphVariableButon.jqxToggleButton('toggled');
             v.selected = isOn;
@@ -124,7 +126,14 @@ ceui.showStation = function(station) {
     // to create and display graphs for all currently selected data variables for that station.
     var $stationPane = $(ceui.templates.stationPane);
     $("#multiGrphPanel").jqxPanel('append', $stationPane);
-    
+   
+    var $closeButt = $stationPane.find("#XButt")
+    $closeButt.jqxButton({ theme: ceui._myTheme, width:'15', height:'15'});	
+	
+    $closeButt.click(function(event){	
+		//alert(event.currentTarget);
+    });
+
     $stationPane.find(".mgTitle").html(station.name);
     $stationPane.find(".mgLatLon").html(station.latlon);
     $stationPane.find(".mgPanesHolder").empty();
@@ -204,10 +213,12 @@ ceui.setLayerGroups = function(layerGroups) {
         $layerGroup.find(".headerHolder .headerText").html(layerGroup.name);
         var $layerGroupLayersHolder = $layerGroup.find(".layerGroupLayersHolder")
         $layerGroupLayersHolder.jqxPanel({ 
-		    width: 406, 
-		    height: 177,
-		    sizeMode: 'fixed',
+		    width: 421, 
+		    height: 214,
+		    sizeMode: 'horizontalWrap',
 		    scrollBarSize:10,
+			autoUpdate:true
+			
 	    });
         ceui._layerGroupLayersHolders[layerGroup.id] = $layerGroupLayersHolder;
     });
@@ -215,12 +226,18 @@ ceui.setLayerGroups = function(layerGroups) {
 };
 
 ceui._layers = {};
+ceui._layerAttribution = {};
 
 ceui.setLayers = function(groupId, layers) {
     var $layerGroupLayersHolder = ceui._layerGroupLayersHolders[groupId]
     $layerGroupLayersHolder.jqxPanel('clearContent');
 
     layers.forEach(function(layer, i) {
+	// stash attribution
+	if (layer.hasOwnProperty('attribution')) {
+	    ceui._layerAttribution[ layer.id ] = layer.attribution;
+	}
+
         var $layer = $(ceui.templates.layer);
         $layerGroupLayersHolder.jqxPanel('append', $layer);
         ceui._layers[ layer.id ] = $layer;
@@ -229,31 +246,34 @@ ceui.setLayers = function(groupId, layers) {
         var $layerOpacSlider = $layer.find(".layerOpacSlider");
         var $layerOpacLab = $layer.find(".layerOpacLab");
         
-	    $layerCheck.jqxCheckBox({ width: 300, height: 25, checked: false});
-	    $layerCheck.on('change', function(event){
-		    var checked = event.args.checked;
-		    if(checked){
+	$layerOpacLab.hide();
+	    
+	$layerCheck.jqxCheckBox({ width: 320, height: 25, checked: false});
+	$layerCheck.on('change', function(event){
+	    var checked = event.args.checked;
+	    if(checked){
                 $layerOpacSlider.jqxSlider({ disabled : false });
-			    $layerOpacLab.show(100);
-		    }else{
+		$layerOpacLab.show(100);
+	    }else{
                 $layerOpacSlider.jqxSlider({ disabled : true });
-			    $layerOpacLab.hide(100);
-		    }
+		$layerOpacLab.hide(100);
+	    }
             if (ceui._layerVisibilitySet) {
                 ceui._layerVisibilitySet(layer.id, checked);
             }
-	    });
+	});
+
         $layerOpacSlider.jqxSlider({
             disabled: true,
 		    theme:ceui._myTheme,
 		    min: 0, 
 		    max: 100, 
 		    ticksFrequency: 1, 
-		    value: 100, 
+		    value: 50, 
 		    step: 1,
 		    showButtons: false,
 		    ticksPosition: 'NONE',
-		    width: '100%',
+		    width:345,
 		    showRange: true,
 		    tooltip: false
 	    });
@@ -267,6 +287,15 @@ ceui.setLayers = function(groupId, layers) {
 	    });
         
         $layerCheck.find(".layerTitle").html(layer.name);
+
+	// TODO register callback with layer info button, once it's added
+	var $changeThisToBeTheReferenceToTheButton = $layer.find('infoButton');
+	$changeThisToBeTheReferenceToTheButton.on('click', function(event) {
+	    ceui.selectLayerInfo(layer.id);
+	    if (ceui._layerInfoSelect) {
+                ceui._layerInfoSelect(layer.id);
+            }
+	});
         
     });
 
@@ -287,6 +316,19 @@ ceui.setLayerOpacity = function(layerId, opacity) {
     var $layerOpacLab = ceui._layers[ layerId ].find(".layerOpacLab");
     $layerOpacSlider.jqxSlider('setValue', opacity*100);
 	$layerOpacLab.html((Math.floor(opacity*100)).toString()+"%");
+};
+
+// TODO flesh out the info logic
+ceui.selectLayerInfo = function(layerId) {
+    // check if dialog is visible, make it visible if not
+    // clear contents of dialog
+    var attribution = ceui._layerAttribution[ layerId ];
+
+    var $layerInfo = $('#lyrInfo');
+    // $layerInfo.find('.lyrInfo-name'); TODO get the layer name and put it here
+    $layerInfo.find('.lyrInfo-src').prop('href', attribution.sourceUrl).text(attribution.sourceEntity);
+    //$layerInfo.find('.lyrInfo-legend'); TODO change out legend image
+    $layerInfo.find('.lyrInfo-desc').text(attribution.layerDescription);
 };
 
 
@@ -330,7 +372,7 @@ ceui.init = function(options) {
     ceui._topicSet = options.topicSet;
     ceui._layerVisibilitySet = options.layerVisibilitySet;
     ceui._layerOpacitySet = options.layerOpacitySet;
-
+    ceui._layerInfoSelect = options.layerInfoSelect;
 
     ceui.templates = {};
 
@@ -341,27 +383,27 @@ ceui.init = function(options) {
     ceui.templates.stationPane = $("#multiGrphPanel .stationPaneHolder")[0].outerHTML;
     ceui.templates.mgPane = $("#multiGrphPanel .mgPanesHolder .mgPane")[0].outerHTML;
 
-	$("#layerMultiGrphButtGrp").jqxButtonGroup({ theme: ceui._myTheme, mode: 'radio'});
-	$("#layerMultiGrphButtGrp").jqxButtonGroup('setSelection', 0);
+    $("#layerMultiGrphButtGrp").jqxButtonGroup({ theme: ceui._myTheme, mode: 'radio'});
+    $("#layerMultiGrphButtGrp").jqxButtonGroup('setSelection', 0);
     if (!ceui._enabled) {
-	    $("#layerMultiGrphButtGrp").jqxButtonGroup('disableAt', 0);
-	    $("#layerMultiGrphButtGrp").jqxButtonGroup('disableAt', 1);
+	$("#layerMultiGrphButtGrp").jqxButtonGroup('disableAt', 0);
+	$("#layerMultiGrphButtGrp").jqxButtonGroup('disableAt', 1);
     }
 
     $("#mapHolder").empty();
 	
-	$("#multiGrphHolder").hide();
+    $("#multiGrphHolder").hide();
 
-	// checks whether Maps or Description buttons have been selected, and hides or shows the either
-	// the MENU widget and About this Snapshot Panel OR the Description text and About this date slider widget.
-	$("#layerMultiGrphButtGrp").click(function(){
-		var whichSelect = $("#layerMultiGrphButtGrp").jqxButtonGroup('getSelection');
-		if (whichSelect == 0) {
+    // checks whether Maps or Description buttons have been selected, and hides or shows the either
+    // the MENU widget and About this Snapshot Panel OR the Description text and About this date slider widget.
+    $("#layerMultiGrphButtGrp").click(function(){
+	var whichSelect = $("#layerMultiGrphButtGrp").jqxButtonGroup('getSelection');
+	if (whichSelect == 0) {
             ceui.setPerspective(ceui.LAYERS_PERSPECTIVE);
         } else {
             ceui.setPerspective(ceui.GRAPHS_PERSPECTIVE);
         }
-	});
+    });
 
     $("#multiGrphPanel").empty();
 	$("#multiGrphPanel").jqxPanel({ 
@@ -388,11 +430,14 @@ ceui.init = function(options) {
 		}
 		return false;
 	});
-	
+
+    // layer info box modal dialog
+    $('#lyrInfo').dialog({
+	autoOpen: false
+    });
 };
 
 ceui.enabled = function(enabled) {
-
     if (enabled) {
         // enable the perspective ("Map Layers" vs "Historical Data") buttons:
 	    $("#layerMultiGrphButtGrp").jqxButtonGroup('enableAt', 0);
@@ -407,6 +452,7 @@ ceui.enabled = function(enabled) {
                 var $layerOpacSlider = $layer.find(".layerOpacSlider");
                 $layerOpacSlider.jqxSlider({disabled : false});
             }
+	    // TODO enable layer attribution button, once it's added
         });
     } else {
         // disable the perspective ("Map Layers" vs "Historical Data") buttons:
@@ -419,6 +465,7 @@ ceui.enabled = function(enabled) {
             $layerCheck.jqxCheckBox({disabled : true});
             var $layerOpacSlider = $layer.find(".layerOpacSlider");
             $layerOpacSlider.jqxSlider({disabled : true});
+	    // TODO disable layer attribution button, once it's added
         });
     }
 

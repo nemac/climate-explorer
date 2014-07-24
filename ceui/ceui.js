@@ -269,7 +269,7 @@ ceui.setLayers = function(groupId, layers) {
 		    min: 0, 
 		    max: 100, 
 		    ticksFrequency: 1, 
-		    value: 50, 
+		    value: 100, 
 		    step: 1,
 		    showButtons: false,
 		    ticksPosition: 'NONE',

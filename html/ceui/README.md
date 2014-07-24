@@ -44,6 +44,10 @@ It takes a single argument which should be an object with properties that give v
             // 'opacity' will be the new opacity value, in the range 0.0 (fully transparent)
             // to 1.0 (fully opaque).
         },
+	layerInfoSelect : function(id) {
+	    // The UI calls this function whenever the user selects the info button that
+	    // appears next to a layer. 'id' will be the id of the selected layer.
+	},
         topicSet : function(topicId) {
             // The UI calls this function whenever the user chooses a new topic in the
             // "Topics" menu; "topicId" is the id of the newly selected topic.
@@ -154,8 +158,8 @@ will initially contain no layers.  The application can then populate the new gro
   
 ```javascript
     ceui.setLayers(groupId,
-      [{ id: ..., name: ..., visible: ..., opacity: ... },
-       { id: ..., name: ..., visible: ..., opacity: ... },
+      [{ id: ..., name: ..., visible: ..., opacity: ..., attribution: ... },
+       { id: ..., name: ..., visible: ..., opacity: ..., attribution: ... },
        ...
     ])
 ```
@@ -163,7 +167,20 @@ will initially contain no layers.  The application can then populate the new gro
 The argument to `ceui.setLayers()` should be an array of objects containing the properties `id`, `name` which
 give a short identifier, and a public displayed name, for each layer, as well as a `visible` property which has
 a boolean value indicating whether the layer should initially be visible or not, and an `opacity` property which
-gives its opacity, as a number between 0.0 (fully transparent) and 1.0 (fully opaque).
+gives its opacity, as a number between 0.0 (fully transparent) and 1.0 (fully opaque). An additional property,
+'attribution' is an object that contains the attribution and legend elements that should be displayed when the
+'ceui.selectLayerInfo()' method is called. The attribution object should be formatted as follows:
+
+```javascript
+    {
+        legendUrl: ...,
+	sourceEntity: ...,
+	sourceUrl: ...,
+	layerDescription: ...
+    }
+```
+
+The data in the attribution object is used to render an layer info popup when the layer info button is selected.
 
 The UI provides the following functions which the application can use to programmatically change the visibility
 or opacity of a layer after it has been initialized:
@@ -176,6 +193,13 @@ or opacity of a layer after it has been initialized:
 Whenever the user adjust the visibility or opacity of a layer through the user interface, the UI calls the
 `layerVisibilitySet()` or `layerOpacitySet()` callbacks mentioned above.  Note that these callbacks are NOT
 triggered by calls to `ceui.setLayerVisibility()` or `ceui.setLayerOpacity()`.
+
+The UI provides a function that the application can use to programatically select a layer to be displayed
+in a layer info popup:
+
+```javascript
+    ceui.selectLayerInfo(layerId)
+```
 
 ## Graphs Perspective
 

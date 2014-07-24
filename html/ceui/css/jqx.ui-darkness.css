@@ -6,7 +6,7 @@
 .jqx-rc-b-ui-darkness{border-bottom-left-radius:6px; border-bottom-right-radius:6px; moz-border-radius-bottomleft:6px; moz-border-radius-bottomright:6px; webkit-border-bottom-left-radius:6px; webkit-border-bottom-right-radius:6px}
 .jqx-rc-r-ui-darkness{border-bottom-right-radius:6px; border-top-right-radius:6px; moz-border-radius-bottomright:6px; moz-border-radius-topright:6px; webkit-border-bottom-right-radius:6px; webkit-border-top-right-radius:6px}
 .jqx-rc-l-ui-darkness{border-bottom-left-radius:6px; border-top-left-radius:6px; moz-border-radius-bottomleft:6px; moz-border-radius-topleft:6px; webkit-border-bottom-left-radius:6px; webkit-border-top-left-radius:6px}
-.jqx-rc-all-ui-darkness{border-radius:6px; moz-border-radius:6px; webkit-border-radius:6px}
+.jqx-rc-all-ui-darkness{border-radius:0px; moz-border-radius:0px; webkit-border-radius:0px}
 .jqx-widget-ui-darkness {
     color: #fff;
 }
@@ -78,7 +78,7 @@
 
 
 
-.jqx-fill-state-normal-ui-darkness{border-color: #666666; background: #aaa;}
+.jqx-fill-state-normal-ui-darkness{border-color: #666666; background: #999999;}
 .jqx-fill-state-normal-ui-darkness a, .jqx-fill-state-normal-ui-darkness a:link, .jqx-fill-state-normal-ui-darkness a:visited{color:#eeeeee; text-decoration:none}
 .jqx-fill-state-hover-ui-darkness{border-color:#59b4d4; background: #0078a3 url(images/darkness/ui-bg_glass_40_0078a3_1x400.png) 50% 50% repeat-x; color: #ffffff;}
 .jqx-fill-state-hover-ui-darkness a, .jqx-fill-state-hover-ui-darkness a:hover{color:#fff; text-decoration:none}

@@ -8,11 +8,13 @@
 
     <link rel="stylesheet" href="css/jqx.base.css" type="text/css" />
     <link rel="stylesheet" href="css/jqx.ui-darkness.css" type="text/css" />
-    <link rel="stylesheet" href="css/custom-theme/jquery-ui-1.10.4.custom.min.css" type="text/css" media="all" />
+    
+	<link rel="stylesheet" href="css/custom-theme/jquery-ui-1.10.4.custom.min.css" type="text/css" media="all" />
     <!--<link rel="stylesheet" href="css/climExpStyles.css" type="text/css" media="all" />-->
 
     
     <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+    <script type="text/javascript" src="//ajax.googleapis.com/ajax/libs/jqueryui/1.11.0/jquery-ui.min.js"></script>
     
     <script type="text/javascript" src="ui/jqwidgets/jqxcore.js"></script>
     <script type="text/javascript" src="ui/jqwidgets/jqxbuttons.js"></script>
@@ -119,13 +121,13 @@
                                 <div class="layerTitle layTitleHoldStyle">Stressor Layer Title One</div>
                               </div>
                             </div>
-                            <div class="layOpacLabHoldStyle">
-                              <div class="layerOpacLab layOpacLabStyle">50%</div>
-                            </div>
+
                           </div>
                           <div class="layOpacSlidHold">
                             <div class="layerOpacSlider"></div>
-                          </div>
+							<div class="layerOpacLab layOpacLabStyle">50%</div>
+                         </div>
+
                         </div>
 
                         <div class="layer">
@@ -308,7 +310,9 @@
                 <div class="stationPaneContentHold">
                   <div class="mgNumber mgNumStyle">1.</div>
                   <div class="mgTitle mgTitleStyle">Station Location Name</div>
-                  <div class="mgLatLon mgLatLongStyle">(00.000, 00.000)</div>
+                  <div class="mgCloseButt mgCloseButtStyle">
+					<input class="XButon" id="XButt" type="button" value="X"  />
+				  </div>
                 </div>
               </div>
               <div class="mgPanesHolder">
@@ -364,6 +368,14 @@
     </div>
     
     <!-- Middle Holder End -->
+
+    <!-- Modal layer info attribution dialog box -->
+    <div id="lyrInfo">
+      <div class="lyrInfo-name">My Layer</div>
+      <div>Source: <a class="lyrInfo-src" href="#">Source Entity (USGS)</a></div>
+      <div class="lyrInfo-legend">Legend here []</div>
+      <div class="lyrInfo-desc">Layer description here</div>
+    </div>
     
   </body>
 </html>
