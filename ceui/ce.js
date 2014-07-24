@@ -44,13 +44,8 @@ $(document).ready(function() {
     ]);
 
     ceui.setLayers("stress", [
-        { id : "stress-0", name : "My Stressor Layer Title One" },
-        { id : "stress-1", name : "My Stressor Layer Title Two" },
-        { id : "stress-2", name : "My Stressor Layer Title Three" },
-        { id : "stress-3", name : "My Stressor Layer Title Four" },
-        { id : "stress-4", name : "My Stressor Layer Title Five" },
-        { id : "stress-5", name : "My Stressor Layer Title Six" },
-        { id : "stress-6", name : "My Stressor Layer Title Seven" }
+        { id : "stress-0", name : "Coastal Flood Hazard Composite (DEL-NJ-NY)" },
+        { id : "stress-1", name : "My Stressor Layer Title Two" }
     ]);
 
     ceui.setLayers("asset", [

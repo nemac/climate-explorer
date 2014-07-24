@@ -1,6 +1,7 @@
 var ceui = {};
 
 ceui._myTheme = "ui-darkness";
+//ceui._myTheme2 = "ui-darkness2";
 
 ceui._enabled = false;
 
@@ -45,6 +46,7 @@ ceui.setDataVariables = function(variables) {
         var $graphVariableButon = $(ceui.templates.graphVariableButton).appendTo($("#multiGrphButtHold"));
         $graphVariableButon.attr("value", v.name);
         $graphVariableButon.jqxToggleButton({ theme: ceui._myTheme, width: '125', toggled: !!v.selected});
+		
         $graphVariableButon.on('click', function () {
             var isOn = $graphVariableButon.jqxToggleButton('toggled');
             v.selected = isOn;
@@ -124,12 +126,26 @@ ceui.showStation = function(station) {
     // to create and display graphs for all currently selected data variables for that station.
     var $stationPane = $(ceui.templates.stationPane);
     $("#multiGrphPanel").jqxPanel('append', $stationPane);
-    
-    $stationPane.find(".mgTitle").html(station.name);
+   
+   
+	var $closeButt = $stationPane.find("#XButt")
+	$closeButt.jqxButton({ theme: ceui._myTheme, width:'15', height:'15'});
+	
+	
+	$closeButt.click(function(event){
+	
+		//alert(event.currentTarget);
+	
+	});
+	
+	
+	
+	$stationPane.find(".mgTitle").html(station.name);
     $stationPane.find(".mgLatLon").html(station.latlon);
     $stationPane.find(".mgPanesHolder").empty();
     var station = { id : ""+station.id, name : station.name, latlon : station.latlon, $pane : $stationPane, mgPanes : {} };
     ceui._dataVariables.forEach(function(variable) {
+	
         if (variable.selected) {
             ceui._showGraph(station, variable.id);
         }
@@ -137,6 +153,13 @@ ceui.showStation = function(station) {
     ceui._stations.push(station);
     ceui._setStationNumbers();
 };
+
+
+
+
+
+
+
 
 ceui.hideStation = function(id) {
     var stationIndex = ceui._stationIndexById(id);
@@ -204,10 +227,12 @@ ceui.setLayerGroups = function(layerGroups) {
         $layerGroup.find(".headerHolder .headerText").html(layerGroup.name);
         var $layerGroupLayersHolder = $layerGroup.find(".layerGroupLayersHolder")
         $layerGroupLayersHolder.jqxPanel({ 
-		    width: 406, 
-		    height: 177,
-		    sizeMode: 'fixed',
+		    width: 421, 
+		    height: 214,
+		    sizeMode: 'horizontalWrap',
 		    scrollBarSize:10,
+			autoUpdate:true
+			
 	    });
         ceui._layerGroupLayersHolders[layerGroup.id] = $layerGroupLayersHolder;
     });
@@ -229,7 +254,9 @@ ceui.setLayers = function(groupId, layers) {
         var $layerOpacSlider = $layer.find(".layerOpacSlider");
         var $layerOpacLab = $layer.find(".layerOpacLab");
         
-	    $layerCheck.jqxCheckBox({ width: 300, height: 25, checked: false});
+		$layerOpacLab.hide();
+	    
+		$layerCheck.jqxCheckBox({ width: 320, height: 25, checked: false});
 	    $layerCheck.on('change', function(event){
 		    var checked = event.args.checked;
 		    if(checked){
@@ -249,11 +276,11 @@ ceui.setLayers = function(groupId, layers) {
 		    min: 0, 
 		    max: 100, 
 		    ticksFrequency: 1, 
-		    value: 100, 
+		    value: 50, 
 		    step: 1,
 		    showButtons: false,
 		    ticksPosition: 'NONE',
-		    width: '100%',
+		    width:345,
 		    showRange: true,
 		    tooltip: false
 	    });

@@ -169,9 +169,10 @@ html{
 
 .holderForOneLayerGroup {
 	width:410px;
-	height:254px;
+	height:212px;
 	background-color:#aaaaaa;
-	
+	/*overflow-y:auto;*/
+	/*overflow-x:hidden;*/
 	margin-bottom:0px;
 }
 
@@ -185,7 +186,6 @@ html{
 
 .layerGroupLayersHolder {
 	margin-top:0px;
-	overflow-x:hidden;
 }
 
 
@@ -196,17 +196,17 @@ html{
 }
 
 .layer{
-	width:100%;
-	height:48px;
+	width: 100%;
+	height:25px;
 	border:solid thin #ccc;
 	margin-top:2px;
-	
+	margin-right:5px;
 	background-color:#888888;
 }
 
 .layerTopContentHold{
 	width:100%;
-	height:35px;
+	height:32px;
 	
 }
 
@@ -229,33 +229,28 @@ html{
 }
 
 .layOpacLabHoldStyle{
-	
-	height:15px;
-	float:left;
-	background-color:#dbdbdb;
-
+	width:30px;
+	height:19px;
+	float:right;
+	margin-right:10px;
+	margin-top:10px;
 }
 
 .layOpacLabStyle{
-	float:left; 
-	margin-left:15px;
 	font-family:Lato, serif;
-	font-size:10px;
+	font-size:11px;
 	font-weight:bold;
-	line-height:13px;
+	line-height:5px;
 	color:#fff;
+
 }
 
 .layOpacSlidHold{
-	width:100%; 
-	height:12px; 
-	background-color:#999999
+	background-color:#ffffff;
+	margin-right:0px;
+	width:380px;
+	/*margin-bottom:4px;*/
 }
-
-.layerOpacSlider{
-	float:left; 
-	margin-top:-2px;
-	}
 
 .headerText{
 	font-family:Lato, serif;
@@ -391,20 +386,15 @@ html{
 	margin-left:5px;
 }
 
-.mgCloseButtStyle{
-	padding:2px;
+.mgLatLongStyle{
+	font-family:Lato, serif;
+	font-size:12px;
+	font-weight:bold;
+	font-style:italic;
+	line-height:22px;
+	color:#fff;
 	float:right;
 	margin-right:4px;
-	margin-top:2px;
-}
-
-.XButon{
-	font-family:Lato, serif;
-	font-size:10px;
-	font-weight:bold;
-	line-height:4px;
-	color:#fff;
-	border-radius:4px;
 }
 
 .mgPaneBotContentHold{
@@ -412,7 +402,7 @@ html{
 	height:172px;
 	/*border:solid thin #ddd;*/
 	margin-top:10px;
-	margin-left:10px;
+	margin-left:6px;
 }
 
 
