@@ -229,16 +229,16 @@ ceui.setLayerGroups = function(layerGroups) {
 };
 
 ceui._layers = {};
-ceui._layerAttribution = {};
+ceui._layerInfo = {};
 
 ceui.setLayers = function(groupId, layers) {
     var $layerGroupLayersHolder = ceui._layerGroupLayersHolders[groupId]
     $layerGroupLayersHolder.jqxPanel('clearContent');
 
     layers.forEach(function(layer, i) {
-	// stash attribution
-	if (layer.hasOwnProperty('attribution')) {
-	    ceui._layerAttribution[ layer.id ] = layer.attribution;
+	// stash info
+	if (layer.hasOwnProperty('info')) {
+	    ceui._layerInfo[ layer.id ] = layer.info;
 	}
 
         var $layer = $(ceui.templates.layer);
@@ -291,14 +291,14 @@ ceui.setLayers = function(groupId, layers) {
         
         $layerCheck.find(".layerTitle").html(layer.name);
 
-	// TODO register callback with layer info button, once it's added
-	var $changeThisToBeTheReferenceToTheButton = $layer.find('infoButton');
-	$changeThisToBeTheReferenceToTheButton.on('click', function(event) {
-	    ceui.selectLayerInfo(layer.id);
-	    if (ceui._layerInfoSelect) {
+	    // TODO register callback with layer info button, once it's added
+	    var $changeThisToBeTheReferenceToTheButton = $layer.find('infoButton');
+	    $changeThisToBeTheReferenceToTheButton.on('click', function(event) {
+	        ceui.selectLayerInfo(layer.id);
+	        if (ceui._layerInfoSelect) {
                 ceui._layerInfoSelect(layer.id);
             }
-	});
+	    });
         
     });
 
@@ -325,13 +325,18 @@ ceui.setLayerOpacity = function(layerId, opacity) {
 ceui.selectLayerInfo = function(layerId) {
     // check if dialog is visible, make it visible if not
     // clear contents of dialog
-    var attribution = ceui._layerAttribution[ layerId ];
+    var info = ceui._layerInfo[ layerId ];
 
     var $layerInfo = $('#lyrInfo');
-    // $layerInfo.find('.lyrInfo-name'); TODO get the layer name and put it here
-    $layerInfo.find('.lyrInfo-src').prop('href', attribution.sourceUrl).text(attribution.sourceEntity);
-    //$layerInfo.find('.lyrInfo-legend'); TODO change out legend image
-    $layerInfo.find('.lyrInfo-desc').text(attribution.layerDescription);
+
+    if (info) {
+        // $layerInfo.find('.lyrInfo-name'); TODO get the layer name and put it here
+        $layerInfo.find('.lyrInfo-src').prop('href', info.sourceUrl).text(info.sourceEntity);
+        $layerInfo.find('.lyrInfo-desc').text(info.layerDescription);
+        $layerInfo.find('.lyrInfo-legend img').attr('src', info.legendImage);
+    }
+
+    $('#lyrInfo').dialog('open');
 };
 
 
@@ -437,7 +442,7 @@ ceui.init = function(options) {
 
     // layer info box modal dialog
     $('#lyrInfo').dialog({
-	autoOpen: false
+	    autoOpen: false
     });
 };
 
@@ -456,7 +461,7 @@ ceui.enabled = function(enabled) {
                 var $layerOpacSlider = $layer.find(".layerOpacSlider");
                 $layerOpacSlider.jqxSlider({disabled : false});
             }
-	    // TODO enable layer attribution button, once it's added
+	    // TODO enable layer info button, once it's added
         });
     } else {
         // disable the perspective ("Map Layers" vs "Historical Data") buttons:
@@ -469,7 +474,7 @@ ceui.enabled = function(enabled) {
             $layerCheck.jqxCheckBox({disabled : true});
             var $layerOpacSlider = $layer.find(".layerOpacSlider");
             $layerOpacSlider.jqxSlider({disabled : true});
-	    // TODO disable layer attribution button, once it's added
+	    // TODO disable layer info button, once it's added
         });
     }
 
