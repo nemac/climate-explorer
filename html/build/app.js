@@ -3603,6 +3603,13 @@ $(function(){
         graphRemoved : function(id, type) {
             pl.removeGraph({type: type, id : id.replace("GHCND:", "")});
             updatePermalinkDisplay();
+        },
+        stationRemoved : function(stationId) {
+            console.log('station removed: ' + stationId);
+            // TODO: put code here to unselect this station's marker in the map, and to renumber
+            // any remaining markers.  Also need to figure out how to renumber the graphs themselves
+            // in the UI.  NOTE: the stationId passed in here is the complete id, including the "GHCND:"
+            // prefix.  
         }
     });
 
@@ -4408,7 +4415,7 @@ $(function(){
 //        });
 //    }
 
-}).call(this,require("IrXUsu"),typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {},require("buffer").Buffer,arguments[3],arguments[4],arguments[5],arguments[6],"/fake_101fd90.js","/")
+}).call(this,require("IrXUsu"),typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {},require("buffer").Buffer,arguments[3],arguments[4],arguments[5],arguments[6],"/fake_9cc24f3c.js","/")
 },{"./utils/muglHelper.js":6,"./utils/stringUtil.js":7,"./utils/urlUtils.js":9,"IrXUsu":5,"buffer":2}],2:[function(require,module,exports){
 (function (process,global,Buffer,__argument0,__argument1,__argument2,__argument3,__filename,__dirname){
 /*!

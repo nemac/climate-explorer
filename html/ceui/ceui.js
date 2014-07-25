@@ -127,11 +127,14 @@ ceui.showStation = function(station) {
     var $stationPane = $(ceui.templates.stationPane);
     $("#multiGrphPanel").jqxPanel('append', $stationPane);
    
-    var $closeButt = $stationPane.find("#XButt")
+    var $closeButt = $stationPane.find(".stationCloseButton");
     $closeButt.jqxButton({ theme: ceui._myTheme, width:'15', height:'15'});	
 	
     $closeButt.click(function(event){	
-		//alert(event.currentTarget);
+        $stationPane.remove();
+        if (ceui._stationRemoved) {
+            ceui._stationRemoved(station.id);
+        }
     });
 
     $stationPane.find(".mgTitle").html(station.name);
@@ -373,6 +376,7 @@ ceui.init = function(options) {
     ceui._layerVisibilitySet = options.layerVisibilitySet;
     ceui._layerOpacitySet = options.layerOpacitySet;
     ceui._layerInfoSelect = options.layerInfoSelect;
+    ceui._stationRemoved = options.stationRemoved;
 
     ceui.templates = {};
 

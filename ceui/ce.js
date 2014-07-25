@@ -22,6 +22,9 @@ $(document).ready(function() {
         },
         graphRemoved : function(stationId, variableId) {
             console.log('graph for station ' + stationId + ', variable ' + variableId + ' removed');
+        },
+        stationRemoved : function(stationId) {
+            console.log('station removed: ' + stationId);
         }
     });
 
