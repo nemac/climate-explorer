@@ -47,8 +47,22 @@ $(document).ready(function() {
     ]);
 
     ceui.setLayers("stress", [
-        { id : "stress-0", name : "Coastal Flood Hazard Composite (DEL-NJ-NY)" },
-        { id : "stress-1", name : "My Stressor Layer Title Two" }
+        { id : "stress-0", name : "Coastal Flood Hazard Composite (DEL-NJ-NY)",
+          info : {
+              sourceUrl : "http://www.csc.noaa.gov",
+              sourceEntity : "NOAA Coastal Services Center",
+              layerDescription : "This layer shows flood hazard composite information for Delaware, New Jersey, and New York.  This description might contain more information, and might possibly consist of two or three sentences.",
+              legendImage : "media/sampleLegends/legend1.png"
+          }
+        },
+        { id : "stress-1", name : "My Stressor Layer Title Two",
+          info : {
+              sourceUrl : "http://www.ncdc.noaa.gov",
+              sourceEntity : "NOAA National Climatic Data Center",
+              layerDescription : "This layer shows some colors which indicate...",
+              legendImage : "media/sampleLegends/legend2.png"
+          }
+        }
     ]);
 
     ceui.setLayers("asset", [
@@ -63,6 +77,10 @@ $(document).ready(function() {
         { id : "temp",   name : "TEMPERATURE",   selected: true},
         { id : "precip", name : "PRECIPITATION", selected: true}
     ]);
+
+    ceui.setLayerVisibility("stress-0", true);
+
+    ceui.selectLayerInfo("stress-0");
 
     ceui.showStation({ id : "STA1", name : "TEST STATION 1" });
     ceui.showStation({ id : "STA2", name : "TEST STATION 2" });
