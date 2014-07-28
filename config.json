@@ -99,6 +99,572 @@
             "type": "REST"
         }, {
 	    "id": "aan",
+	        "name": "Flood Hazard Zones",
+		    "url": "https://hazards.fema.gov/gis/nfhl/services/public/NFHLWMS/MapServer/WmsServer",
+            "projection": "EPSG:4326",
+	        "layers": "4"
+		}, {
+            "id": "aao",
+            "name": "Drought (9/24/2014)",
+            "url": "http://torka.unl.edu:8080/cgi-bin/mapserv.exe?map=/ms4w/apps/dm/service/usdm130924_wms.map",
+            "layers": "usdm130924"
+        }, {
+            "id": "aap",
+            "name": "Cropland",
+            "url": "http://129.174.131.7/cgi/wms_cdlall.cgi",
+            "projection": "EPSG:4326",
+            "layers": "cdl_2013"
+        }, {
+            "id": "aaq",
+            "name": "HAZUS Critical Facilities (DEL-NJ-NY)",
+            "url": "http://maps.csc.noaa.gov/arcgis/rest/services/Roadmap/RoadmapPilotMaps_IndividualLayers/MapServer/export",
+            "projection": "EPSG:102100",
+            "layers": "7",
+            "type": "REST"
+        }, {
+            "id": "aar",
+            "name": "Critical Facility Density (DEL-NJ-NY)",
+            "url": "http://maps.csc.noaa.gov/arcgis/rest/services/Roadmap/RoadmapPilotMaps_IndividualLayers/MapServer/export",
+            "projection": "EPSG:102100",
+            "layers": "6",
+            "type": "REST"
+        }, {
+            "id": "aas",
+            "name": "Population Density (DEL-NJ-NY)",
+            "url": "http://maps.csc.noaa.gov/arcgis/rest/services/Roadmap/RoadmapPilotMaps_IndividualLayers/MapServer/export",
+            "projection": "EPSG:102100",
+            "layers": "1",
+            "type": "REST"
+        }, {
+            "id": "aat",
+            "name": "Businesses (DEL-NJ-NY)",
+            "url": "http://maps.csc.noaa.gov/arcgis/rest/services/Roadmap/RoadmapPilotMaps_IndividualLayers/MapServer/export",
+            "projection": "EPSG:102100",
+            "layers": "4",
+            "type": "REST"
+        }, {
+            "id": "aau",
+            "name": "Beaches & Dunes (DEL-NJ-NY)",
+            "url": "http://maps.csc.noaa.gov/arcgis/rest/services/Roadmap/RoadmapPilotMaps_IndividualLayers/MapServer/export",
+            "projection": "EPSG:102100",
+            "layers": "10",
+            "type": "REST"
+        }, {
+            "id": "aav",
+            "name": "Wetlands (DEL-NJ-NY)",
+            "url": "http://maps.csc.noaa.gov/arcgis/rest/services/Roadmap/RoadmapPilotMaps_IndividualLayers/MapServer/export",
+            "projection": "EPSG:102100",
+            "layers": "8",
+            "type": "REST"
+        }, {
+            "id": "aaw",
+            "name": "FEMA Flood Zones (DEL-NJ-NY)",
+            "url": "http://maps.csc.noaa.gov/arcgis/rest/services/Roadmap/RoadmapPilot_FEMAFlood/MapServer/export",
+            "projection": "EPSG:102100",
+            "layers": "0",
+            "type": "REST"
+        }, {
+            "id": "aax",
+            "name": "Coastal Flood Hazard Composite (DEL-NJ-NY)",
+            "url": "http://maps.csc.noaa.gov/arcgis/rest/services/Roadmap/RoadmapPilot_HazardComposite/MapServer/export",
+            "projection": "EPSG:102100",
+            "layers": "0",
+            "type": "REST"
+        }, {
+            "id": "aay",
+            "name": "Probability of High Shoreline Loss",
+            "url": "http://marine.usgs.gov/coastalchangehazardsportal/geoserver/proxied/wms",
+            "layers": "proxied:ProbSLC_conus",
+            "sld": "http://marine.usgs.gov/coastalchangehazardsportal/data/sld/CUtFZvT"
+        }, {
+            "id": "aaz",
+            "name": "Long-term shoreline change rates",
+            "url": "",
+            "layers": ""
+        }, {
+            "id": "aba",
+            "name": "Short-term shoreline change rates",
+            "url": "",
+            "layers": ""
+        }, {
+            "id": "abb",
+            "name": "Elevation of Dune Crest",
+            "url": "http://marine.usgs.gov/coastalchangehazardsportal/geoserver/proxied/wms",
+            "layers": "proxied:Erosion_Hazards_1394540727188",
+            "sld": "http://marine.usgs.gov/coastalchangehazardsportal/data/sld/CCENsQT"
+        }, {
+            "id": "abc",
+            "name": "Elevation of Dune Toe",
+            "url": "http://marine.usgs.gov/coastalchangehazardsportal/geoserver/proxied/wms",
+            "layers": "proxied:Erosion_Hazards_1394540940323",
+            "sld": "http://marine.usgs.gov/coastalchangehazardsportal/data/sld/CCER1Xg"
+        }, {
+            "id": "abd",
+            "name": "CAT3 Hurricane Prob. of Collision", 
+            "url": "http://marine.usgs.gov/coastalchangehazardsportal/geoserver/proxied/wms",
+            "layers": "proxied:Erosion_Hazards_1394633107610",
+            "sld": "http://marine.usgs.gov/coastalchangehazardsportal/data/sld/CCNXDS5"
+        }, {
+            "id": "abe",
+            "name": "CAT3 Hurricane Prob. of Overwash", 
+            "url": "http://marine.usgs.gov/coastalchangehazardsportal/geoserver/proxied/wms",
+            "layers": "proxied:Erosion_Hazards_1394814655647",
+            "sld": "http://marine.usgs.gov/coastalchangehazardsportal/data/sld/CD5ZUvX"
+        }, {
+            "id": "abf",
+            "name": "CAT3 Hurricane Prob. of Inundation", 
+            "url": "http://marine.usgs.gov/coastalchangehazardsportal/geoserver/proxied/wms",
+            "layers": "proxied:Erosion_Hazards_1394832182359",
+            "sld": "http://marine.usgs.gov/coastalchangehazardsportal/data/sld/CD7wRHj"
+        }, {
+            "id": "abg",
+            "name": "CAT3 Hurricane Mean Water Levels", 
+            "url": "http://marine.usgs.gov/coastalchangehazardsportal/geoserver/proxied/wms",
+            "layers": "proxied:Erosion_Hazards_1395148939358",
+            "sld": "http://marine.usgs.gov/coastalchangehazardsportal/data/sld/CDAzqt6"
+        }, {
+            "id": "abh",
+            "name": "CAT3 Hurricane Extreme Water Levels", 
+            "url": "http://marine.usgs.gov/coastalchangehazardsportal/geoserver/proxied/wms",
+            "layers": "proxied:Erosion_Hazards_1395151999519",
+            "sld": "http://marine.usgs.gov/coastalchangehazardsportal/data/sld/CDARuQk"
+        }
+    ],
+    "groups": [{
+        "id": "g_a",
+        "name": "Coastal Flood Risk",
+        "isDefault": true,
+        "subGroups": [{
+            "id": "g_a_a",
+            "name": "Climate Stressors",
+            "layers": [ "aag", "aac", "aad", "aae", "aaf", "aab", "aax", "aaw", "aay", "abd", "abe", "abf", "abg", "abh" ]
+        }, {
+            "id": "g_a_b",
+            "name": "Assets Impacted",
+            "layers": [ "aak", "aam", "aal", "aah", "aai", "aaj", "aaq", "aar", "aas", "aat", "aau", "aav", "abb", "abc" ]
+        }]
+    }, {
+        "id": "g_b",
+        "name": "Food Resilience",
+        "subGroups": [{
+            "id": "g_b_a",
+            "name": "Climate Stressors",
+            "layers": [ "aaa" ]                
+        }, {
+            "id": "g_b_b",
+            "name": "Assets Impacted",
+            "layers": [ "aal", "aap" ]
+        }]
+    }, {
+        "id": "g_c",
+        "name": "Ecosystem Vulnerability",
+        "subGroups": [{
+            "id": "g_c_a",
+            "name": "Climate Stressors",
+            "layers": [ "aaa", "aao" ]             
+        }, {
+            "id": "g_c_b",
+            "name": "Assets Impacted",
+            "layers": [ "aal" ]
+        }]
+    }, {
+        "id": "g_d",
+        "name": "Transportation and Supply Chain",
+        "subGroups": [{
+            "id": "g_d_a",
+            "name": "Climate Stressors",
+            "layers": [ "aan" ]                
+        }, {
+            "id": "g_d_b",
+            "name": "Assets Impacted",
+            "layers": [ "aal", "aai", "aaj" ]
+        }]
+    }]
+}
+
+    "stations" : {
+       "data" : "testdata/filtered_stations.json",
+       "name" : "GHCND Stations",
+       "id"   : "lyr_ghcnd",
+       "projection" : "EPSG:4326"
+    },
+    "bases": [{
+        "id": "b_a",
+        "type": "arcgis",
+        "name": "Street",
+        "url": "http://server.arcgisonline.com/ArcGIS/rest/services/World_Street_Map/MapServer",
+        "infoCache": "testdata/world_street_map_info_cache.json",
+        "isDefault": true
+    }, {
+        "id": "b_b",
+        "type": "arcgis",
+        "name": "Imagery",
+        "url": "http://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer",
+        "infoCache": "testdata/world_imagery_info_cache.json"
+    }],
+    "overlays": [{
+            "id": "aaa",
+            "name": "Current Drought",
+            "url": "http://torka.unl.edu:8080/cgi-bin/mapserv.exe?map=/ms4w/apps/dm/service/usdm_current_wms.map",
+            "layers": "usdm_current"
+        }, {
+            "id": "aab",
+            "name": "Sea Level Inundation (6ft)",
+            "url": "http://csc.noaa.gov/arcgis/services/dc_slr/slr_6ft/MapServer/WMSServer",
+            "projection": "EPSG:3857",
+            "layers": "0"
+        }, {
+            "id": "aac",
+            "name": "Sea Level Inundation (2ft)",
+            "url": "http://csc.noaa.gov/arcgis/services/dc_slr/slr_2ft/MapServer/WMSServer",
+            "projection": "EPSG:3857",
+            "layers": "0"
+        }, {
+            "id": "aad",
+            "name": "Sea Level Inundation (3ft)",
+            "url": "http://csc.noaa.gov/arcgis/services/dc_slr/slr_3ft/MapServer/WMSServer",
+            "projection": "EPSG:3857",
+            "layers": "0"
+        }, {
+            "id": "aae",
+            "name": "Sea Level Inundation (4ft)",
+            "url": "http://csc.noaa.gov/arcgis/services/dc_slr/slr_4ft/MapServer/WMSServer",
+            "projection": "EPSG:3857",
+            "layers": "0"
+        }, {
+            "id": "aaf",
+            "name": "Sea Level Inundation (5ft)",
+            "url": "http://csc.noaa.gov/arcgis/services/dc_slr/slr_5ft/MapServer/WMSServer",
+            "projection": "EPSG:3857",
+            "layers": "0"
+        }, {
+            "id": "aag",
+            "name": "Sea Level Inundation (1ft)",
+            "url": "http://csc.noaa.gov/arcgis/services/dc_slr/slr_1ft/MapServer/WMSServer",
+            "projection": "EPSG:3857",
+            "layers": "0"
+        }, {
+            "id": "aah",
+            "name": "Hospitals",
+            "url": "http://hsip.geoplatform.gov/arcgis/services/HSIP_Public/PublicHealth/MapServer/WMSServer",
+            "projection": "EPSG:3857",
+            "layers": "0"
+        }, {
+            "id": "aai",
+            "name": "Airports and Helipads",
+            "url": "http://hsip.geoplatform.gov/arcgis/services/HSIP_Public/TransportationAir/MapServer/WMSServer",
+            "projection": "EPSG:3857",
+            "layers": "0"
+        }, {
+            "id": "aaj",
+            "name": "Bridges and Tunnels",
+            "url": "http://hsip.geoplatform.gov/arcgis/services/HSIP_Public/TransportationGround/MapServer/WMSServer",
+            "projection": "EPSG:3857",
+            "layers": [ "0", "1" ]
+        }, {
+            "id": "aak",
+            "name": "Coastal Vulnerability to Sea Level Rise",
+            "url": "http://coastalmap.marine.usgs.gov/cmgp/services/National/coastal_vulnerability_index/MapServer/WMSServer",
+            "projection": "EPSG:3857",
+            "layers": ["3", "7", "11" ]
+        }, {
+            "id": "aal",
+            "name": "Land Cover (2011)",
+            "url": "http://raster.nationalmap.gov/arcgis/services/LandCover/USGS_EROS_LandCover_NLCD/MapServer/WMSServer?service=WMS",
+            "layers": "30",
+            "projection": "EPSG:3857"
+        }, {
+            "id": "aam",
+            "name": "Social Vulnerability Index",
+            "url": "http://www.csc.noaa.gov/ArcGISPUB/rest/services/dc_slr/SocioEconimc/MapServer/export",
+            "projection": "EPSG:3857",
+            "layers": "7",
+            "type": "REST"
+        }, {
+	    "id": "aan",
+	        "name": "Flood Hazard Zones",
+		    "url": "https://hazards.fema.gov/gis/nfhl/services/public/NFHLWMS/MapServer/WmsServer",
+            "projection": "EPSG:4326",
+	        "layers": "4"
+		}, {
+            "id": "aao",
+            "name": "Drought (9/24/2014)",
+            "url": "http://torka.unl.edu:8080/cgi-bin/mapserv.exe?map=/ms4w/apps/dm/service/usdm130924_wms.map",
+            "layers": "usdm130924"
+        }, {
+            "id": "aap",
+            "name": "Cropland",
+            "url": "http://129.174.131.7/cgi/wms_cdlall.cgi",
+            "projection": "EPSG:4326",
+            "layers": "cdl_2013"
+        }, {
+            "id": "aaq",
+            "name": "HAZUS Critical Facilities (DEL-NJ-NY)",
+            "url": "http://maps.csc.noaa.gov/arcgis/rest/services/Roadmap/RoadmapPilotMaps_IndividualLayers/MapServer/export",
+            "projection": "EPSG:102100",
+            "layers": "7",
+            "type": "REST"
+        }, {
+            "id": "aar",
+            "name": "Critical Facility Density (DEL-NJ-NY)",
+            "url": "http://maps.csc.noaa.gov/arcgis/rest/services/Roadmap/RoadmapPilotMaps_IndividualLayers/MapServer/export",
+            "projection": "EPSG:102100",
+            "layers": "6",
+            "type": "REST"
+        }, {
+            "id": "aas",
+            "name": "Population Density (DEL-NJ-NY)",
+            "url": "http://maps.csc.noaa.gov/arcgis/rest/services/Roadmap/RoadmapPilotMaps_IndividualLayers/MapServer/export",
+            "projection": "EPSG:102100",
+            "layers": "1",
+            "type": "REST"
+        }, {
+            "id": "aat",
+            "name": "Businesses (DEL-NJ-NY)",
+            "url": "http://maps.csc.noaa.gov/arcgis/rest/services/Roadmap/RoadmapPilotMaps_IndividualLayers/MapServer/export",
+            "projection": "EPSG:102100",
+            "layers": "4",
+            "type": "REST"
+        }, {
+            "id": "aau",
+            "name": "Beaches & Dunes (DEL-NJ-NY)",
+            "url": "http://maps.csc.noaa.gov/arcgis/rest/services/Roadmap/RoadmapPilotMaps_IndividualLayers/MapServer/export",
+            "projection": "EPSG:102100",
+            "layers": "10",
+            "type": "REST"
+        }, {
+            "id": "aav",
+            "name": "Wetlands (DEL-NJ-NY)",
+            "url": "http://maps.csc.noaa.gov/arcgis/rest/services/Roadmap/RoadmapPilotMaps_IndividualLayers/MapServer/export",
+            "projection": "EPSG:102100",
+            "layers": "8",
+            "type": "REST"
+        }, {
+            "id": "aaw",
+            "name": "FEMA Flood Zones (DEL-NJ-NY)",
+            "url": "http://maps.csc.noaa.gov/arcgis/rest/services/Roadmap/RoadmapPilot_FEMAFlood/MapServer/export",
+            "projection": "EPSG:102100",
+            "layers": "0",
+            "type": "REST"
+        }, {
+            "id": "aax",
+            "name": "Coastal Flood Hazard Composite (DEL-NJ-NY)",
+            "url": "http://maps.csc.noaa.gov/arcgis/rest/services/Roadmap/RoadmapPilot_HazardComposite/MapServer/export",
+            "projection": "EPSG:102100",
+            "layers": "0",
+            "type": "REST"
+        }, {
+            "id": "aay",
+            "name": "Probability of High Shoreline Loss",
+            "url": "http://marine.usgs.gov/coastalchangehazardsportal/geoserver/proxied/wms",
+            "layers": "proxied:ProbSLC_conus",
+            "sld": "http://marine.usgs.gov/coastalchangehazardsportal/data/sld/CUtFZvT"
+        }, {
+            "id": "aaz",
+            "name": "Long-term shoreline change rates",
+            "url": "",
+            "layers": ""
+        }, {
+            "id": "aba",
+            "name": "Short-term shoreline change rates",
+            "url": "",
+            "layers": ""
+        }, {
+            "id": "abb",
+            "name": "Elevation of Dune Crest",
+            "url": "http://marine.usgs.gov/coastalchangehazardsportal/geoserver/proxied/wms",
+            "layers": "proxied:Erosion_Hazards_1394540727188",
+            "sld": "http://marine.usgs.gov/coastalchangehazardsportal/data/sld/CCENsQT"
+        }, {
+            "id": "abc",
+            "name": "Elevation of Dune Toe",
+            "url": "http://marine.usgs.gov/coastalchangehazardsportal/geoserver/proxied/wms",
+            "layers": "proxied:Erosion_Hazards_1394540940323",
+            "sld": "http://marine.usgs.gov/coastalchangehazardsportal/data/sld/CCER1Xg"
+        }, {
+            "id": "abd",
+            "name": "CAT3 Hurricane Prob. of Collision", 
+            "url": "http://marine.usgs.gov/coastalchangehazardsportal/geoserver/proxied/wms",
+            "layers": "proxied:Erosion_Hazards_1394633107610",
+            "sld": "http://marine.usgs.gov/coastalchangehazardsportal/data/sld/CCNXDS5"
+        }, {
+            "id": "abe",
+            "name": "CAT3 Hurricane Prob. of Overwash", 
+            "url": "http://marine.usgs.gov/coastalchangehazardsportal/geoserver/proxied/wms",
+            "layers": "proxied:Erosion_Hazards_1394814655647",
+            "sld": "http://marine.usgs.gov/coastalchangehazardsportal/data/sld/CD5ZUvX"
+        }, {
+            "id": "abf",
+            "name": "CAT3 Hurricane Prob. of Inundation", 
+            "url": "http://marine.usgs.gov/coastalchangehazardsportal/geoserver/proxied/wms",
+            "layers": "proxied:Erosion_Hazards_1394832182359",
+            "sld": "http://marine.usgs.gov/coastalchangehazardsportal/data/sld/CD7wRHj"
+        }, {
+            "id": "abg",
+            "name": "CAT3 Hurricane Mean Water Levels", 
+            "url": "http://marine.usgs.gov/coastalchangehazardsportal/geoserver/proxied/wms",
+            "layers": "proxied:Erosion_Hazards_1395148939358",
+            "sld": "http://marine.usgs.gov/coastalchangehazardsportal/data/sld/CDAzqt6"
+        }, {
+            "id": "abh",
+            "name": "CAT3 Hurricane Extreme Water Levels", 
+            "url": "http://marine.usgs.gov/coastalchangehazardsportal/geoserver/proxied/wms",
+            "layers": "proxied:Erosion_Hazards_1395151999519",
+            "sld": "http://marine.usgs.gov/coastalchangehazardsportal/data/sld/CDARuQk"
+        }
+    ],
+    "groups": [{
+        "id": "g_a",
+        "name": "Coastal Flood Risk",
+        "isDefault": true,
+        "subGroups": [{
+            "id": "g_a_a",
+            "name": "Climate Stressors",
+            "layers": [ "aag", "aac", "aad", "aae", "aaf", "aab", "aax", "aaw", "aay", "abd", "abe", "abf", "abg", "abh" ]
+        }, {
+            "id": "g_a_b",
+            "name": "Assets Impacted",
+            "layers": [ "aak", "aam", "aal", "aah", "aai", "aaj", "aaq", "aar", "aas", "aat", "aau", "aav", "abb", "abc" ]
+        }]
+    }, {
+        "id": "g_b",
+        "name": "Food Resilience",
+        "subGroups": [{
+            "id": "g_b_a",
+            "name": "Climate Stressors",
+            "layers": [ "aaa" ]                
+        }, {
+            "id": "g_b_b",
+            "name": "Assets Impacted",
+            "layers": [ "aal", "aap" ]
+        }]
+    }, {
+        "id": "g_c",
+        "name": "Ecosystem Vulnerability",
+        "subGroups": [{
+            "id": "g_c_a",
+            "name": "Climate Stressors",
+            "layers": [ "aaa", "aao" ]             
+        }, {
+            "id": "g_c_b",
+            "name": "Assets Impacted",
+            "layers": [ "aal" ]
+        }]
+    }, {
+        "id": "g_d",
+        "name": "Transportation and Supply Chain",
+        "subGroups": [{
+            "id": "g_d_a",
+            "name": "Climate Stressors",
+            "layers": [ "aan" ]                
+        }, {
+            "id": "g_d_b",
+            "name": "Assets Impacted",
+            "layers": [ "aal", "aai", "aaj" ]
+        }]
+    }]
+}
+{
+    "stations" : {
+       "data" : "testdata/filtered_stations.json",
+       "name" : "GHCND Stations",
+       "id"   : "lyr_ghcnd",
+       "projection" : "EPSG:4326"
+    },
+    "bases": [{
+        "id": "b_a",
+        "type": "arcgis",
+        "name": "Street",
+        "url": "http://server.arcgisonline.com/ArcGIS/rest/services/World_Street_Map/MapServer",
+        "infoCache": "testdata/world_street_map_info_cache.json",
+        "isDefault": true
+    }, {
+        "id": "b_b",
+        "type": "arcgis",
+        "name": "Imagery",
+        "url": "http://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer",
+        "infoCache": "testdata/world_imagery_info_cache.json"
+    }],
+    "overlays": [{
+            "id": "aaa",
+            "name": "Current Drought",
+            "url": "http://torka.unl.edu:8080/cgi-bin/mapserv.exe?map=/ms4w/apps/dm/service/usdm_current_wms.map",
+            "layers": "usdm_current"
+        }, {
+            "id": "aab",
+            "name": "Sea Level Inundation (6ft)",
+            "url": "http://csc.noaa.gov/arcgis/services/dc_slr/slr_6ft/MapServer/WMSServer",
+            "projection": "EPSG:3857",
+            "layers": "0"
+        }, {
+            "id": "aac",
+            "name": "Sea Level Inundation (2ft)",
+            "url": "http://csc.noaa.gov/arcgis/services/dc_slr/slr_2ft/MapServer/WMSServer",
+            "projection": "EPSG:3857",
+            "layers": "0"
+        }, {
+            "id": "aad",
+            "name": "Sea Level Inundation (3ft)",
+            "url": "http://csc.noaa.gov/arcgis/services/dc_slr/slr_3ft/MapServer/WMSServer",
+            "projection": "EPSG:3857",
+            "layers": "0"
+        }, {
+            "id": "aae",
+            "name": "Sea Level Inundation (4ft)",
+            "url": "http://csc.noaa.gov/arcgis/services/dc_slr/slr_4ft/MapServer/WMSServer",
+            "projection": "EPSG:3857",
+            "layers": "0"
+        }, {
+            "id": "aaf",
+            "name": "Sea Level Inundation (5ft)",
+            "url": "http://csc.noaa.gov/arcgis/services/dc_slr/slr_5ft/MapServer/WMSServer",
+            "projection": "EPSG:3857",
+            "layers": "0"
+        }, {
+            "id": "aag",
+            "name": "Sea Level Inundation (1ft)",
+            "url": "http://csc.noaa.gov/arcgis/services/dc_slr/slr_1ft/MapServer/WMSServer",
+            "projection": "EPSG:3857",
+            "layers": "0"
+        }, {
+            "id": "aah",
+            "name": "Hospitals",
+            "url": "http://hsip.geoplatform.gov/arcgis/services/HSIP_Public/PublicHealth/MapServer/WMSServer",
+            "projection": "EPSG:3857",
+            "layers": "0"
+        }, {
+            "id": "aai",
+            "name": "Airports and Helipads",
+            "url": "http://hsip.geoplatform.gov/arcgis/services/HSIP_Public/TransportationAir/MapServer/WMSServer",
+            "projection": "EPSG:3857",
+            "layers": "0"
+        }, {
+            "id": "aaj",
+            "name": "Bridges and Tunnels",
+            "url": "http://hsip.geoplatform.gov/arcgis/services/HSIP_Public/TransportationGround/MapServer/WMSServer",
+            "projection": "EPSG:3857",
+            "layers": [ "0", "1" ]
+        }, {
+            "id": "aak",
+            "name": "Coastal Vulnerability to Sea Level Rise",
+            "url": "http://coastalmap.marine.usgs.gov/cmgp/services/National/coastal_vulnerability_index/MapServer/WMSServer",
+            "projection": "EPSG:3857",
+            "layers": ["3", "7", "11" ]
+        }, {
+            "id": "aal",
+            "name": "Land Cover (2011)",
+            "url": "http://raster.nationalmap.gov/arcgis/services/LandCover/USGS_EROS_LandCover_NLCD/MapServer/WMSServer?service=WMS",
+            "layers": "30",
+            "projection": "EPSG:3857"
+        }, {
+            "id": "aam",
+            "name": "Social Vulnerability Index",
+            "url": "http://www.csc.noaa.gov/ArcGISPUB/rest/services/dc_slr/SocioEconimc/MapServer/export",
+            "projection": "EPSG:3857",
+            "layers": "7",
+            "type": "REST"
+        }, {
+	    "id": "aan",
 	    "name": "Flood Hazard Zones",
 	    "url": "https://hazards.fema.gov/gis/nfhl/services/public/NFHLWMS/MapServer/WmsServer",
             "projection": "EPSG:4326",

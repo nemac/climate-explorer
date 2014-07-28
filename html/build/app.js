@@ -2429,9 +2429,13 @@ b){b.serviceMetadataUrl={};b.serviceMetadataUrl.href=a.getAttribute("xlink:href"
         
         var layer = new OpenLayers.Layer.WMS( wms.name, wms.url, wmsProps);
         
-        if ( wms.hasOwnProperty('projection')) {
+        if ( wms.hasOwnProperty( 'projection' )) {
             layer.projection = wms.projection;
         };
+        
+        if ( wms.hasOwnProperty( 'sld' )) {
+            layer.mergeNewParams( {SLD: wms.sld } );
+        }
         
         layer.id = wms.id;
         layer.isBaseLayer = false;
@@ -4415,7 +4419,7 @@ $(function(){
 //        });
 //    }
 
-}).call(this,require("IrXUsu"),typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {},require("buffer").Buffer,arguments[3],arguments[4],arguments[5],arguments[6],"/fake_9cc24f3c.js","/")
+}).call(this,require("IrXUsu"),typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {},require("buffer").Buffer,arguments[3],arguments[4],arguments[5],arguments[6],"/fake_b93f4a34.js","/")
 },{"./utils/muglHelper.js":6,"./utils/stringUtil.js":7,"./utils/urlUtils.js":9,"IrXUsu":5,"buffer":2}],2:[function(require,module,exports){
 (function (process,global,Buffer,__argument0,__argument1,__argument2,__argument3,__filename,__dirname){
 /*!
