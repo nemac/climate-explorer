@@ -130,6 +130,9 @@ $(function(){
             updatePermalinkDisplay();
         },
         stationRemoved : function(removedId, remainingStations) {
+	    pl.removeStation(removedId.replace("GHCND:", ""));
+	    updatePermalinkDisplay();
+
 	    if ( mL !== null ) {
 		mL.unselectPoint( removedId );
 		// update label for each remaining station
@@ -554,6 +557,19 @@ $(function(){
                     delete url.params.graphs;
                 }
             },
+	    'removeStation' : function(id) {
+                for ( var i = graphs.length - 1; i >= 0; i-- ) {
+                    if (graphs[i].id === id) {
+                        graphs.splice ( i, 1 );
+                    }
+                }
+
+                if (graphs.length > 0) {
+                    url.params.graphs = graphs.map(function(g) { return g.id + ":" + g.type; }).join(",");
+                } else {
+                    delete url.params.graphs;
+                }
+	    },
             'setScales' : function(aR) {
                 var bindingId;
                 for (bindingId in aR) {
