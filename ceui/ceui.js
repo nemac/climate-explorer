@@ -130,10 +130,11 @@ ceui.showStation = function(station) {
     var $closeButt = $stationPane.find(".stationCloseButton");
     $closeButt.jqxButton({ theme: ceui._myTheme, width:'15', height:'15'});	
 	
-    $closeButt.click(function(event){	
-        $stationPane.remove();
+    $closeButt.click(function(event){
+	ceui.hideStation(station.id);
         if (ceui._stationRemoved) {
-            ceui._stationRemoved(station.id);
+	    var remainingStations = $.extend(ceui._stations, {});
+            ceui._stationRemoved(station.id, remainingStations);
         }
     });
 
@@ -154,7 +155,7 @@ ceui.hideStation = function(id) {
     var stationIndex = ceui._stationIndexById(id);
     if (stationIndex >= 0) {
         ceui._stations[stationIndex].$pane.remove();
-        ceui._stations.splice(i,1);
+        ceui._stations.splice(stationIndex,1);
     }
     
     ceui._setStationNumbers();

@@ -129,12 +129,14 @@ $(function(){
             pl.removeGraph({type: type, id : id.replace("GHCND:", "")});
             updatePermalinkDisplay();
         },
-        stationRemoved : function(stationId) {
-            console.log('station removed: ' + stationId);
-            // TODO: put code here to unselect this station's marker in the map, and to renumber
-            // any remaining markers.  Also need to figure out how to renumber the graphs themselves
-            // in the UI.  NOTE: the stationId passed in here is the complete id, including the "GHCND:"
-            // prefix.  
+        stationRemoved : function(removedId, remainingStations) {
+	    if ( mL !== null ) {
+		mL.unselectPoint( removedId );
+		// update label for each remaining station
+		remainingStations.forEach( function( station, i ) {
+		    mL.setLabel( station.id, i + 1 );
+		});
+	    }
         }
     });
 
