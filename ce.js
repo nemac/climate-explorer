@@ -130,16 +130,22 @@ $(function(){
             updatePermalinkDisplay();
         },
         stationRemoved : function(removedId, remainingStations) {
-	    pl.removeStation(removedId.replace("GHCND:", ""));
-	    updatePermalinkDisplay();
-
-	    if ( mL !== null ) {
-		mL.unselectPoint( removedId );
-		// update label for each remaining station
-		remainingStations.forEach( function( station, i ) {
-		    mL.setLabel( station.id, i + 1 );
-		});
-	    }
+	        pl.removeStation(removedId.replace("GHCND:", ""));
+	        updatePermalinkDisplay();
+	        if ( mL !== null ) {
+		        mL.unselectPoint( removedId );
+		        // update label for each remaining station
+		        remainingStations.forEach( function( station, i ) {
+		            mL.setLabel( station.id, i + 1 );
+		        });
+	        }
+        },
+        baseLayerSet : function(baseLayer) {
+            if (baseLayer === ceui.IMAGERY_BASELAYER) {
+                mL.setBaseLayer("b_b");
+            } else if (baseLayer === ceui.STREET_BASELAYER) {
+                mL.setBaseLayer("b_a");
+            }
         }
     });
 
