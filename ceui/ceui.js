@@ -472,6 +472,7 @@ ceui.init = function(options) {
 		});
 
 
+/*
     // TODO insert permalink code here
 	$(".permLinkButtHold").click(function() {
 		console.log("permalink button selected");
@@ -488,7 +489,7 @@ ceui.init = function(options) {
 		console.log("zoom out button selected");
 	
 	});
-
+*/
 
 };
 

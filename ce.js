@@ -269,7 +269,7 @@ $(function(){
         })
                 ];
 
-    var $permalink = $( '#permalink' ).permalink();
+    var $permalink = $( 'div.permLinkButt' ).permalink({ icon : false});
 
     var pl = Permalink(URL({url: window.location.toString()}));
 
