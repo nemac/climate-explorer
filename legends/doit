@@ -1,0 +1,35 @@
+#! /usr/bin/python
+
+# http://torka.unl.edu:8080/cgi-bin/mapserv.exe?map=/ms4w/apps/dm/service/usdm_current_wms.map&service=WMS&request=GetLegendGraphic&layer=usdm_current&VERSION=1.1.1&FORMAT=image/png
+
+import json, re, os
+
+with open("../config.json", "r") as f:
+    j = json.load(f)
+
+
+def questionify(url):
+    if re.search(r'\?', url):
+        return url
+    else:
+        return url + "?"
+
+
+for overlay in j["overlays"]:
+    if overlay["url"] != "":
+        print
+        print overlay["id"]
+        os.system("identify %s.png" % overlay["id"])
+        #print "%-10s  %s" % (overlay["id"], overlay["name"])
+
+# for overlay in j["overlays"]:
+#     if overlay["url"] != "":
+#         url = (
+#             questionify(overlay["url"]) +
+#             "&".join([ "service=WMS",
+#                        "request=GetLegendGraphic",
+#                        "layer=%s" % overlay["layers"],
+#                        "VERSION=1.1.1",
+#                        "FORMAT=image/png" ])
+#         )
+#         os.system("curl '%s' > %s.png" % (url, overlay["id"]))
