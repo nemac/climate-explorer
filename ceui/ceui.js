@@ -238,14 +238,15 @@ ceui._layers = {};
 ceui._layerInfo = {};
 
 ceui.setLayers = function(groupId, layers) {
-    var $layerGroupLayersHolder = ceui._layerGroupLayersHolders[groupId]
+    var $layerGroupLayersHolder = ceui._layerGroupLayersHolders[groupId];
     $layerGroupLayersHolder.jqxPanel('clearContent');
 
     layers.forEach(function(layer, i) {
-	// stash info
-	if (layer.hasOwnProperty('info')) {
-	    ceui._layerInfo[ layer.id ] = layer.info;
-	}
+	    // stash info
+	    if (layer.hasOwnProperty('info')) {
+	        ceui._layerInfo[ layer.id ] = layer.info;
+            ceui._layerInfo[ layer.id ].name = layer.name;
+	    }
 
         var $layer = $(ceui.templates.layer);
         $layerGroupLayersHolder.jqxPanel('append', $layer);
@@ -254,23 +255,24 @@ ceui.setLayers = function(groupId, layers) {
         var $layerCheck = $layer.find(".layerCheck");
         var $layerOpacSlider = $layer.find(".layerOpacSlider");
         var $layerOpacLab = $layer.find(".layerOpacLab");
+        var $layerInfoButt = $layer.find(".layerInfoButtHold");
         
-	$layerOpacLab.hide();
+	    $layerOpacLab.hide();
 	    
-	$layerCheck.jqxCheckBox({ width: 320, height: 25, checked: false});
-	$layerCheck.on('change', function(event){
-	    var checked = event.args.checked;
-	    if(checked){
+	    $layerCheck.jqxCheckBox({ width: 320, height: 25, checked: false});
+	    $layerCheck.on('change', function(event){
+	        var checked = event.args.checked;
+	        if(checked){
                 $layerOpacSlider.jqxSlider({ disabled : false });
-		$layerOpacLab.fadeIn(100);
-	    }else{
+		        $layerOpacLab.fadeIn(100);
+	        }else{
                 $layerOpacSlider.jqxSlider({ disabled : true });
-		$layerOpacLab.fadeOut(100);
-	    }
+		        $layerOpacLab.fadeOut(100);
+	        }
             if (ceui._layerVisibilitySet) {
                 ceui._layerVisibilitySet(layer.id, checked);
             }
-	});
+	    });
 
         $layerOpacSlider.jqxSlider({
             disabled: true,
@@ -297,9 +299,7 @@ ceui.setLayers = function(groupId, layers) {
         
         $layerCheck.find(".layerTitle").html(layer.name);
 
-	    // TODO register callback with layer info button, once it's added
-	    var $changeThisToBeTheReferenceToTheButton = $layer.find('infoButton');
-	    $changeThisToBeTheReferenceToTheButton.on('click', function(event) {
+	    $layerInfoButt.on('click', function(event) {
 	        ceui.selectLayerInfo(layer.id);
 	        if (ceui._layerInfoSelect) {
                 ceui._layerInfoSelect(layer.id);
@@ -340,6 +340,7 @@ ceui.selectLayerInfo = function(layerId) {
         $layerInfo.find('.lyrInfo-src').prop('href', info.sourceUrl).text(info.sourceEntity);
         $layerInfo.find('.lyrInfo-desc').text(info.layerDescription);
         $layerInfo.find('.lyrInfo-legend img').attr('src', info.legendImage);
+        $layerInfo.find('.lyrInfo-name').html( info.name );
     }
 
     /*$('#lyrInfo').dialog('open');*/

@@ -240,6 +240,7 @@ html{
 }
 
 .layerInfoButtHold{
+    cursor: pointer;
 	height:21px;
 	width:21px;
 	margin-left:40px;
