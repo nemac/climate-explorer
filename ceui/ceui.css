@@ -140,7 +140,18 @@ html{
 .zoomOutButt:hover{
 	background-image:url('media/uiGraphics/zoomOutButt_Hov.png');
 }
-		
+
+/* Resytle the existing zoom buttons to match the images provided */
+div.olControlZoom .olButton {
+    background-color: #45879f !important;
+    width: 24px;
+}
+
+div.olControlZoom .olButton:hover {
+    background-color: #0079a4 !important;
+    opacity: 0.5;
+}
+
 .permLinkButtHold{
 	width:30px; 
 	height:30px; 
