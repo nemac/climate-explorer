@@ -25,7 +25,7 @@
             "url": "http://torka.unl.edu:8080/cgi-bin/mapserv.exe?map=/ms4w/apps/dm/service/usdm_current_wms.map",
             "layers": "usdm_current",
             "info" : {
-                "sourceUrl" : "http://torka.unl.edu",
+                "sourceUrl" : "http://droughtmonitor.unl.edu/",
                 "sourceEntity" : "US Drought Monitor",
                 "layerDescription" : "This layer shows the most recent US Drought Monitor zones.",
                 "legendImage" : "ceui/media/sampleLegends/legend1.png"

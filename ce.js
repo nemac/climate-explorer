@@ -342,7 +342,7 @@ $(function(){
                         }
                     )]
             },
-            iconPath: BUILD_BASE_PATH + 'img/',
+            iconPath: 'img/',
             useLayerSelector : false,
             selectCallback: clickPoint,
             onCreate: function(mL) {
