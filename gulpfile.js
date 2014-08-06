@@ -122,7 +122,10 @@ gulp.task( 'html', ['default'], function() {
 
     // temporary fix - need to override how OL references images
     gulp.src( './img/**' )
-.pipe( gulp.dest( './html/img' ) );
+        .pipe( gulp.dest( './html/img' ) );
+
+    gulp.src( './legends/**' )
+        .pipe( gulp.dest( './html/legends' ) );
 
 });
 

@@ -213,6 +213,8 @@ ceui._layerGroupLayersHolders = {};
 
 ceui.setLayerGroups = function(layerGroups) {
     var $holderForAllLayerGroups = $("#holderForAllLayerGroups");
+    // temporarily move the layer info outside of the area about to be clobbered
+    var $layerInfoHold = $(".layerInfoHold").hide().appendTo('body');
     $holderForAllLayerGroups.empty();
     layerGroups.forEach(function(layerGroup) {
         var $layerGroup = $(ceui.templates.layerGroup);
@@ -231,7 +233,8 @@ ceui.setLayerGroups = function(layerGroups) {
     });
     ceui._layers = {};
 	
-$(".layerInfoHold").appendTo($holderForAllLayerGroups);
+    $layerInfoHold.appendTo($holderForAllLayerGroups).show();
+    $('.layerInfoInfoHolder').hide();
 };
 
 ceui._layers = {};
@@ -329,13 +332,12 @@ ceui.setLayerOpacity = function(layerId, opacity) {
 
 // TODO flesh out the info logic
 ceui.selectLayerInfo = function(layerId) {
-    // check if dialog is visible, make it visible if not
-    // clear contents of dialog
     var info = ceui._layerInfo[ layerId ];
 
     var $layerInfo = $('#lyrInfo');
 
     if (info) {
+        $('.layerInfoInfoHolder').show();
         // $layerInfo.find('.lyrInfo-name'); TODO get the layer name and put it here
         $layerInfo.find('.lyrInfo-src').prop('href', info.sourceUrl).text(info.sourceEntity);
         $layerInfo.find('.lyrInfo-desc').text(info.layerDescription);
@@ -472,6 +474,17 @@ ceui.init = function(options) {
 		return false;
 		});
 
+
+        // make layer info pane scrollable panel, hide initially, 
+        // will become visible once something is selected
+        $('.layerInfoInfoHolder').jqxPanel({ 
+		    width: 423, 
+		    height: 280,
+		    sizeMode: 'horizontalWrap',
+		    scrollBarSize:10,
+			autoUpdate:true
+			
+	    }).hide();
 
 /*
     // TODO insert permalink code here
