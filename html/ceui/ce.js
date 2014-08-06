@@ -62,6 +62,30 @@ $(document).ready(function() {
               layerDescription : "This layer shows some colors which indicate...",
               legendImage : "media/sampleLegends/legend2.png"
           }
+        },
+		{ id : "stress-2", name : "My Stressor Layer Title Three",
+          info : {
+              sourceUrl : "http://www.ncdc.noaa.gov",
+              sourceEntity : "NOAA National Climatic Data Center",
+              layerDescription : "This layer shows some colors which indicate...",
+              legendImage : "media/sampleLegends/legend2.png"
+          }
+        },
+		{ id : "stress-3", name : "My Stressor Layer Title Four",
+          info : {
+              sourceUrl : "http://www.ncdc.noaa.gov",
+              sourceEntity : "NOAA National Climatic Data Center",
+              layerDescription : "This layer shows some colors which indicate...",
+              legendImage : "media/sampleLegends/legend2.png"
+          }
+        },
+		{ id : "stress-4", name : "My Stressor Layer Title Five",
+          info : {
+              sourceUrl : "http://www.ncdc.noaa.gov",
+              sourceEntity : "NOAA National Climatic Data Center",
+              layerDescription : "This layer shows some colors which indicate...",
+              legendImage : "media/sampleLegends/legend2.png"
+          }
         }
     ]);
 
@@ -69,8 +93,8 @@ $(document).ready(function() {
         { id : "asset-0", name : "My Asset Layer Title One" },
         { id : "asset-1", name : "My Asset Layer Title Two" },
         { id : "asset-2", name : "My Asset Layer Title Three" },
-        { id : "asset-3", name : "My Asset Layer Title Four" },
-        { id : "asset-4", name : "My Asset Layer Title Five" }
+        /*{ id : "asset-3", name : "My Asset Layer Title Four" },
+        { id : "asset-4", name : "My Asset Layer Title Five" }*/
     ]);
 
     ceui.setDataVariables([

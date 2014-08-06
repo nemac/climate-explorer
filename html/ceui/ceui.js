@@ -1,7 +1,7 @@
 var ceui = {};
 
 ceui._myTheme = "ui-darkness";
-//ceui._myTheme2 = "ui-darkness2";
+
 
 ceui._enabled = false;
 
@@ -9,6 +9,9 @@ ceui._dir = '.';
 
 ceui.LAYERS_PERSPECTIVE = "layers";
 ceui.GRAPHS_PERSPECTIVE = "graphs";
+
+ceui.IMAGERY_BASELAYER = "imagery";
+ceui.STREET_BASELAYER = "street";
 
 ceui.getMapElement = function() {
     return $("#mapHolder");
@@ -130,10 +133,11 @@ ceui.showStation = function(station) {
     var $closeButt = $stationPane.find(".stationCloseButton");
     $closeButt.jqxButton({ theme: ceui._myTheme, width:'15', height:'15'});	
 	
-    $closeButt.click(function(event){	
-        $stationPane.remove();
+    $closeButt.click(function(event){
+	ceui.hideStation(station.id);
         if (ceui._stationRemoved) {
-            ceui._stationRemoved(station.id);
+	    var remainingStations = $.extend(ceui._stations, {});
+            ceui._stationRemoved(station.id, remainingStations);
         }
     });
 
@@ -154,7 +158,7 @@ ceui.hideStation = function(id) {
     var stationIndex = ceui._stationIndexById(id);
     if (stationIndex >= 0) {
         ceui._stations[stationIndex].$pane.remove();
-        ceui._stations.splice(i,1);
+        ceui._stations.splice(stationIndex,1);
     }
     
     ceui._setStationNumbers();
@@ -209,6 +213,8 @@ ceui._layerGroupLayersHolders = {};
 
 ceui.setLayerGroups = function(layerGroups) {
     var $holderForAllLayerGroups = $("#holderForAllLayerGroups");
+    // temporarily move the layer info outside of the area about to be clobbered
+    var $layerInfoHold = $(".layerInfoHold").hide().appendTo('body');
     $holderForAllLayerGroups.empty();
     layerGroups.forEach(function(layerGroup) {
         var $layerGroup = $(ceui.templates.layerGroup);
@@ -217,7 +223,7 @@ ceui.setLayerGroups = function(layerGroups) {
         var $layerGroupLayersHolder = $layerGroup.find(".layerGroupLayersHolder")
         $layerGroupLayersHolder.jqxPanel({ 
 		    width: 421, 
-		    height: 214,
+		    height: 159,
 		    sizeMode: 'horizontalWrap',
 		    scrollBarSize:10,
 			autoUpdate:true
@@ -226,20 +232,24 @@ ceui.setLayerGroups = function(layerGroups) {
         ceui._layerGroupLayersHolders[layerGroup.id] = $layerGroupLayersHolder;
     });
     ceui._layers = {};
+	
+    $layerInfoHold.appendTo($holderForAllLayerGroups).show();
+    $('.layerInfoInfoHolder').hide();
 };
 
 ceui._layers = {};
 ceui._layerInfo = {};
 
 ceui.setLayers = function(groupId, layers) {
-    var $layerGroupLayersHolder = ceui._layerGroupLayersHolders[groupId]
+    var $layerGroupLayersHolder = ceui._layerGroupLayersHolders[groupId];
     $layerGroupLayersHolder.jqxPanel('clearContent');
 
     layers.forEach(function(layer, i) {
-	// stash info
-	if (layer.hasOwnProperty('info')) {
-	    ceui._layerInfo[ layer.id ] = layer.info;
-	}
+	    // stash info
+	    if (layer.hasOwnProperty('info')) {
+	        ceui._layerInfo[ layer.id ] = layer.info;
+            ceui._layerInfo[ layer.id ].name = layer.name;
+	    }
 
         var $layer = $(ceui.templates.layer);
         $layerGroupLayersHolder.jqxPanel('append', $layer);
@@ -248,23 +258,24 @@ ceui.setLayers = function(groupId, layers) {
         var $layerCheck = $layer.find(".layerCheck");
         var $layerOpacSlider = $layer.find(".layerOpacSlider");
         var $layerOpacLab = $layer.find(".layerOpacLab");
+        var $layerInfoButt = $layer.find(".layerInfoButtHold");
         
-	$layerOpacLab.hide();
+	    $layerOpacLab.hide();
 	    
-	$layerCheck.jqxCheckBox({ width: 320, height: 25, checked: false});
-	$layerCheck.on('change', function(event){
-	    var checked = event.args.checked;
-	    if(checked){
+	    $layerCheck.jqxCheckBox({ width: 320, height: 25, checked: false});
+	    $layerCheck.on('change', function(event){
+	        var checked = event.args.checked;
+	        if(checked){
                 $layerOpacSlider.jqxSlider({ disabled : false });
-		$layerOpacLab.show(100);
-	    }else{
+		        $layerOpacLab.fadeIn(100);
+	        }else{
                 $layerOpacSlider.jqxSlider({ disabled : true });
-		$layerOpacLab.hide(100);
-	    }
+		        $layerOpacLab.fadeOut(100);
+	        }
             if (ceui._layerVisibilitySet) {
                 ceui._layerVisibilitySet(layer.id, checked);
             }
-	});
+	    });
 
         $layerOpacSlider.jqxSlider({
             disabled: true,
@@ -291,9 +302,7 @@ ceui.setLayers = function(groupId, layers) {
         
         $layerCheck.find(".layerTitle").html(layer.name);
 
-	    // TODO register callback with layer info button, once it's added
-	    var $changeThisToBeTheReferenceToTheButton = $layer.find('infoButton');
-	    $changeThisToBeTheReferenceToTheButton.on('click', function(event) {
+	    $layerInfoButt.on('click', function(event) {
 	        ceui.selectLayerInfo(layer.id);
 	        if (ceui._layerInfoSelect) {
                 ceui._layerInfoSelect(layer.id);
@@ -323,20 +332,20 @@ ceui.setLayerOpacity = function(layerId, opacity) {
 
 // TODO flesh out the info logic
 ceui.selectLayerInfo = function(layerId) {
-    // check if dialog is visible, make it visible if not
-    // clear contents of dialog
     var info = ceui._layerInfo[ layerId ];
 
     var $layerInfo = $('#lyrInfo');
 
     if (info) {
+        $('.layerInfoInfoHolder').show();
         // $layerInfo.find('.lyrInfo-name'); TODO get the layer name and put it here
         $layerInfo.find('.lyrInfo-src').prop('href', info.sourceUrl).text(info.sourceEntity);
         $layerInfo.find('.lyrInfo-desc').text(info.layerDescription);
         $layerInfo.find('.lyrInfo-legend img').attr('src', info.legendImage);
+        $layerInfo.find('.lyrInfo-name').html( info.name );
     }
 
-    $('#lyrInfo').dialog('open');
+    /*$('#lyrInfo').dialog('open');*/
 };
 
 
@@ -364,6 +373,11 @@ ceui.setPerspective = function(tab) {
 	}
 }
 
+
+
+
+
+
 ceui.init = function(options) {
 
     if ('enabled' in options) {
@@ -382,6 +396,7 @@ ceui.init = function(options) {
     ceui._layerOpacitySet = options.layerOpacitySet;
     ceui._layerInfoSelect = options.layerInfoSelect;
     ceui._stationRemoved = options.stationRemoved;
+    ceui._baseLayerSet = options.baseLayerSet;
 
     ceui.templates = {};
 
@@ -432,19 +447,67 @@ ceui.init = function(options) {
 		}else{
 			$( "#menuItemHolder" ).animate({top: "+=232"}, 500);
 			$( "#holderForAllLayerGroups" ).animate({top: "+=232"}, 500);
-			//$( "#bottomer" ).animate({top: "-=128"}, 500, function() { 
 			$("#openCloseiconHold").attr('src', ceui._dir + '/media/uiGraphics/upArrow.png');
-			//});
 			$( "#topOpenButt" ).addClass("isDown");
 		}
 		return false;
 	});
+	
+	
+	
+	
+	// TODO swap basemap
+	$(".basemapTogButtHold").click(function() {
+		if($(".basemapTogButtHold").hasClass("isImagery")){
+			$(".basemapTogButt").css('backgroundImage', 'url('+ceui._dir+'/media/uiGraphics/baseMap_IMGY.png)')
+			$(".basemapTogButtHold").removeClass('isImagery');
+            if (ceui._baseLayerSet) {
+                ceui._baseLayerSet(ceui.STREET_BASELAYER);
+            }
+		}else{
+			$(".basemapTogButt").css('backgroundImage', 'url('+ceui._dir+'/media/uiGraphics/baseMap_ST.png)')
+			$(".basemapTogButtHold").addClass('isImagery');
+            if (ceui._baseLayerSet) {
+                ceui._baseLayerSet(ceui.IMAGERY_BASELAYER);
+            }
+		}
+		return false;
+		});
 
-    // layer info box modal dialog
-    $('#lyrInfo').dialog({
-	    autoOpen: false
-    });
+
+        // make layer info pane scrollable panel, hide initially, 
+        // will become visible once something is selected
+        $('.layerInfoInfoHolder').jqxPanel({ 
+		    width: 423, 
+		    height: 280,
+		    sizeMode: 'horizontalWrap',
+		    scrollBarSize:10,
+			autoUpdate:true
+			
+	    }).hide();
+
+/*
+    // TODO insert permalink code here
+	$(".permLinkButtHold").click(function() {
+		console.log("permalink button selected");
+	
+	});
+	
+	// TODO zoom map in
+	$(".zoomInButt").click(function() {
+		console.log("zoom in button selected");
+	
+	});
+	// TODO zoom map out
+	$(".zoomOutButt").click(function() {
+		console.log("zoom out button selected");
+	
+	});
+*/
+
 };
+
+
 
 ceui.enabled = function(enabled) {
     if (enabled) {

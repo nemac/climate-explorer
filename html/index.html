@@ -35,7 +35,7 @@
     <script src="build/app.js"></script>
     
   </head>       
-<body>
+  <body>
     <div id="contentHolder">
       
       <!-- Top Holder Start -->
@@ -45,7 +45,7 @@
         </div>
         <div id="topRightHolder">
           <div id='layerMultiGrphButtGrp'>
-            <button id="layersButt">MAP LAYERS</button>
+            <button id="layersButt">LAYERS</button>
             <button id="multiGrphButt">HISTORICAL DATA</button>
           </div>
         </div>
@@ -59,9 +59,22 @@
     <!-- Middle Holder Start -->
     <div id="middleHolder">
       <div id="middleLeftHolder">
+
         <div id="mapHolder">
-          <img id="mapDiv" src='ceui/media/uiGraphics/dummyMap.png'></img>
+          <img id="mapDiv" src=""></img>
         </div>
+		 <div class="basemapTogButtHold">
+			<div class="basemapTogButt"></div>
+		 </div>
+<!--
+		 <div class="zoomButtHold">
+			<div class="zoomInButt"></div>
+			<div class="zoomOutButt"></div>
+		 </div>
+-->
+		 <div class="permLinkButtHold">
+			<div class="permLinkButt"></div>
+		 </div>
       </div>
       <div id="middleRightHolder">
         <div id="slug"></div>
@@ -72,7 +85,6 @@
             <div class="topHeader">
               <div class="topHeaderLabel">TOPICS:</div>
             </div>
-            
             
             <div class="menuBar">
               <div class="topBarContHold">
@@ -86,6 +98,7 @@
                 </div>
               </div>
             </div>
+			
             <div id="menuContainer">
               <div id="menuItemHolder">
                 <div class="CE_MenuContHold"  title="TOPIC 1">
@@ -93,113 +106,35 @@
                     <span rel="internal" class="CE_MenuTitleHoldStyle">TOPIC 1</span>
                   </div>
                 </div>
-                <div class="CE_MenuContHold"  title="TOPIC 2">
-                  <div rel="internal" class="RBoxStyle">
-                    <span rel="internal" class="CE_MenuTitleHoldStyle">TOPIC 2</span>
-                  </div>
-                </div>
-                <div class="CE_MenuContHold"  title="TOPIC 3">
-                  <div rel="internal" class="RBoxStyle">
-                    <span rel="internal" class="CE_MenuTitleHoldStyle">TOPIC 3</span>
-                  </div>
-                </div>
               </div>
-              <div id="holderForAllLayerGroups">
+              
+			  
+			  
+			  <div id="holderForAllLayerGroups">
 
-                  <div class="holderForOneLayerGroup">
+                <div class="holderForOneLayerGroup">
                     <div class="headerHolder">
                       <div class="headerText">STRESSORS</div>
                     </div>
                     <div class="layerGroupLayersHolder">
-
                         <div class="layer">
-                          <div class="layerTopContentHold">
-                            <div class="layCheckHoldStyle">
-                              
-                              <div class="layerCheck">
-                                <div class="layerTitle layTitleHoldStyle">Stressor Layer Title One</div>
-                              </div>
-                            </div>
-
-                          </div>
-                          <div class="layOpacSlidHold">
-                            <div class="layerOpacSlider"></div>
-							<div class="layerOpacLab layOpacLabStyle">100%</div>
-                         </div>
-
+							<div class="layerTopContentHold">
+								<div class="layCheckHoldStyle">
+									<div class="layerCheck">
+										<div class="layerTitle layTitleHoldStyle">Stressor Layer Title One</div>
+									</div>
+								</div>
+								<div class="layerInfoButtHold"></div>
+							</div>
+							<div class="layOpacSlidHold">
+								<div class="layerOpacSlider"></div>
+								<div class="layerOpacLab layOpacLabStyle">100%</div>
+							</div>
                         </div>
-
-                        <div class="layer">
-                          <div class="layerTopContentHold">
-                            <div class="layCheckHoldStyle">
-                              
-                              <div class="layerCheck">
-                                <div class="layerTitle layTitleHoldStyle">Stressor Layer Title Two</div>
-                              </div>
-                            </div>
-                            <div class="layOpacLabHoldStyle">
-                              <div class="layerOpacLab layOpacLabStyle">100%</div>
-                            </div>
-                          </div>
-                          <div class="layOpacSlidHold">
-                            <div class="layerOpacSlider"></div>
-                          </div>
-                        </div>
-                        <div class="layer">
-                          <div class="layerTopContentHold">
-                            <div class="layCheckHoldStyle">
-                              
-                              <div class="layerCheck">
-                                <div class="layerTitle layTitleHoldStyle">Stressor Layer Title Three</div>
-                              </div>
-                            </div>
-                            <div class="layOpacLabHoldStyle">
-                              <div class="layerOpacLab layOpacLabStyle">100%</div>
-                            </div>
-                          </div>
-                          <div class="layOpacSlidHold">
-                            <div class="layerOpacSlider"></div>
-                          </div>
-                        </div>
-                        <div class="layer">
-                          <div class="layerTopContentHold">
-                            <div class="layCheckHoldStyle">
-                              
-                              <div class="layerCheck">
-                                <div class="layerTitle layTitleHoldStyle">Stressor Layer Title Four</div>
-                              </div>
-                            </div>
-                            <div class="layOpacLabHoldStyle">
-                              <div class="layerOpacLab layOpacLabStyle">100%</div>
-                            </div>
-                          </div>
-                          <div class="layOpacSlidHold">
-                            <div class="layerOpacSlider"></div>
-                          </div>
-                        </div>
-
-                        <div class="layer">
-                          <div class="layerTopContentHold">
-                            <div class="layCheckHoldStyle">
-                              
-                              <div class="layerCheck">
-                                <div class="layerTitle layTitleHoldStyle">Stressor Layer Title Five</div>
-                              </div>
-                            </div>
-                            <div class="layOpacLabHoldStyle">
-                              <div class="layerOpacLab layOpacLabStyle">100%</div>
-                            </div>
-                          </div>
-                          <div class="layOpacSlidHold">
-                            <div class="layerOpacSlider"></div>
-                          </div>
-                        </div>
-
                     </div>
-                    
-                  </div>
+                 </div>
                   
-                  <div class="holderForOneLayerGroup">
+                <div class="holderForOneLayerGroup">
                     <div class="headerHolder">
                       <div class="headerText">ASSETS</div>
                     </div>
@@ -207,87 +142,52 @@
                         <div class="layer">
                           <div class="layerTopContentHold">
                             <div class="layCheckHoldStyle">
-                              
                               <div class="layerCheck">
-                                <div class="layerTitle layTitleHoldStyle">Assets Layer Title One</div>
-                              </div>
-                            </div>
-                            <div class="layOpacLabHoldStyle">
-                              <div class="layerOpacLab layOpacLabStyle">100%</div>
-                            </div>
-                          </div>
-                          <div class="layOpacSlidHold">
-                            <div class="layerOpacSlider"></div>
-                          </div>
-                        </div>
-                        
-                        <div class="layer">
-                          <div class="layerTopContentHold">
-                            <div class="layCheckHoldStyle">
-                              
-                              <div class="layerCheck">
-                                <div class="layerTitle layTitleHoldStyle">Assets Layer Title Two</div>
-                              </div>
-                            </div>
-                            <div class="layOpacLabHoldStyle">
-                              <div class="layerOpacLab layOpacLabStyle">100%</div>
-                            </div>
-                          </div>
-                          <div class="layOpacSlidHold">
-                            <div class="layerOpacSlider"></div>
-                          </div>
-                        </div>
-                        <div class="layer">
-                          <div class="layerTopContentHold">
-                            <div class="layCheckHoldStyle">
-                              
-                              <div class="layerCheck">
-                                <div class="layerTitle layTitleHoldStyle">Assets Layer Title Three</div>
-                              </div>
-                            </div>
-                            <div class="layOpacLabHoldStyle">
-                              <div class="layerOpacLab layOpacLabStyle">100%</div>
-                            </div>
-                          </div>
-                          <div class="layOpacSlidHold">
-                            <div class="layerOpacSlider"></div>
-                          </div>
-                        </div>
-                        <div class="layer">
-                          <div class="layerTopContentHold">
-                            <div class="layCheckHoldStyle">
-                              
-                              <div class="layerCheck">
-                                <div class="layerTitle layTitleHoldStyle">Assets Layer Title Four</div>
-                              </div>
-                            </div>
-                            <div class="layOpacLabHoldStyle">
-                              <div class="layerOpacLab layOpacLabStyle">100%</div>
-                            </div>
-                          </div>
-                          <div class="layOpacSlidHold">
-                            <div class="layerOpacSlider"></div>
-                          </div>
-                        </div>
-                        <div class="layer">
-                          <div class="layerTopContentHold">
-                            <div class="layCheckHoldStyle">
-                              
-                              <div class="layerCheck">
-                                <div class="layerTitle layTitleHoldStyle">Assets Layer Title Five</div>
-                              </div>
-                            </div>
-                            <div class="layOpacLabHoldStyle">
-                              <div class="layerOpacLab layOpacLabStyle">100%</div>
-                            </div>
-                          </div>
-                          <div class="layOpacSlidHold">
-                            <div class="layerOpacSlider"></div>
-                          </div>
+										<div class="layerTitle layTitleHoldStyle">Asset Layer Title One</div>
+									</div>
+								</div>
+								<div class="layerInfoButtHold"></div>
+							</div>
+							<div class="layOpacSlidHold">
+								<div class="layerOpacSlider"></div>
+								<div class="layerOpacLab layOpacLabStyle">100%</div>
+							</div>
                         </div>
                     </div>
-                  </div>
-              </div>
+                 </div>
+				 
+				 
+				 
+				 
+				 
+				 
+				 
+				  
+              </div><!--END OF holderForAllLayerGroups-->
+			  
+			  
+			  <div class="layerInfoHold">
+		<div id="lyrInfo">
+			<div class="headerHolder">
+				<div class="lyrInfo-title headerText">LAYER INFORMATION</div>
+			</div>
+                    <div class="layerInfoInfoHolder">
+			<div class="lyrInfo-name">Coastal Flood Hazard Composite (DEL-NJ-NY)</div>
+			<div>
+				<div class="srcLab">Source:</div> <a class="lyrInfo-src" href="#"></a>
+			</div>
+			<div class="lyrInfo-desc">Layer description here</div>
+			 <div class="lyrInfo-legend"><img src=""></div>
+                    </div>
+		</div>
+	</div>
+			  
+			  
+			  
+			  
+			  
+			  
+			  
             </div>
           </div>
         </div>
@@ -367,6 +267,23 @@
     </div>
     
     <!-- Middle Holder End -->
+
+   
+	
+	<!--<div class="layerInfoHold">
+		<div id="lyrInfo">
+			<div class="headerHolder">
+				<div class="lyrInfo-title headerText">LAYER INFORMATION</div>
+			</div>
+			<div class="lyrInfo-name">Coastal Flood Hazard Composite (DEL-NJ-NY)</div>
+			<div>
+				<div class="srcLab">Source:</div> <a class="lyrInfo-src" href="#"></a>
+			</div>
+			<div class="lyrInfo-desc">Layer description here</div>
+			 <div class="lyrInfo-legend"><img src=""></div>
+		</div>
+	</div>-->
+			  
     
   </body>
 </html>

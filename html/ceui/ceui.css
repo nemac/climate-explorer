@@ -22,6 +22,7 @@ html{
 	font-size:28px;
 	color:#fff;
 	margin-left:10px;
+	float:left;
 }
 
 #topHolder{
@@ -32,7 +33,7 @@ html{
 }
 
 #topLeftHolder{
-	width:300px;
+	width:1079px;
 	height:40px;
 	/*border:solid thin #2E87C8;*/
 	float:left;
@@ -70,6 +71,7 @@ html{
 	height:800px;
 	/*border:solid thin #2E87C8;*/
 	float:left;
+	position:relative;
 }
 
 /*
@@ -79,14 +81,109 @@ html{
 }
 */
 
+.basemapTogButtHold{
+	width:69px; 
+	height:83px; 
+	position:absolute; 
+	left:30px; 
+	bottom:30px; 
+	background-color: rgba(255, 255, 255, 0.5);
+	z-index:2000;
+	border-radius: 6px;
+	cursor: pointer;
+	
+}
+
+.basemapTogButt{
+	width:60px;
+	height:74px;
+	background-image:url('media/uiGraphics/baseMap_IMGY.png');
+	margin:5px;
+}
+
+
+.zoomButtHold{
+	width:30px; 
+	height:53px; 
+	position:absolute; 
+	left:30px; 
+	top:30px; 
+	background-color: rgba(255, 255, 255, 0.5);
+	z-index:2000;
+	border-radius: 4px;
+}
+
+.zoomInButt{
+	width:24px;
+	height:22px;
+	background-image:url('media/uiGraphics/zoomInButt_Norm.png');
+	margin-top:3px;
+	margin-left:3px;
+	margin-right:3px;
+	margin-bottom:3px;
+}
+
+.zoomInButt:hover{
+	background-image:url('media/uiGraphics/zoomInButt_Hov.png');
+}
+
+.zoomOutButt{
+	width:24px;
+	height:22px;
+	background-image:url('media/uiGraphics/zoomOutButt_Norm.png');
+	margin-top:2px;
+	margin-left:3px;
+	margin-right:3px;
+	margin-bottom:3px;
+}
+
+.zoomOutButt:hover{
+	background-image:url('media/uiGraphics/zoomOutButt_Hov.png');
+}
+
+/* Resytle the existing zoom buttons to match the images provided */
+div.olControlZoom .olButton {
+    background-color: #45879f !important;
+    width: 24px;
+}
+
+div.olControlZoom .olButton:hover {
+    background-color: #0079a4 !important;
+    opacity: 0.5;
+}
+
+.permLinkButtHold{
+	width:30px; 
+	height:30px; 
+	position:absolute; 
+	left:38px; 
+	top:75px; 
+	background-color: rgba(255, 255, 255, 0.5);
+	z-index:2000;
+	border-radius: 4px;
+	cursor: pointer;
+}
+
+.permLinkButt{
+	width:24px;
+	height:24px;
+	background-image:url('media/uiGraphics/permaLinkButt_Norm.png');
+	margin:3px;
+}
+
+.permLinkButt:hover{
+	background-image:url('media/uiGraphics/permaLinkButt_Hov.png');
+}
+
+
+
+
 #middleRightHolder{
 	width:430px;
 	height:800px;
-	/*border:solid thin #2E87C8;*/
-	background-color:#dadbdc;
+	background-color:#DADBDC;
 	right:0px;
 	position:absolute;
-/*	z-index:80;*/
 	z-index:1000;
 }
 
@@ -94,6 +191,7 @@ html{
 	height:780px;
 	margin:10px;
 	background-color:#ccc;
+	position:relative;
 }
 
 #layersHolder{
@@ -138,7 +236,7 @@ html{
 	height:40px;
 	/*border:solid thin #ddd;*/
 	margin:2px;
-	font-family:Lato, serif;;
+	font-family:Lato, serif;
 	font-size:10px;
 	font-weight:bold;
 	color:#fff;
@@ -152,12 +250,14 @@ html{
 /*color:#ccc;*/
 }
 
-.layerIconHold{
-	height:36px;
-	width:38px;
-	margin-left:10px;
-	margin-top:2px;
+.layerInfoButtHold{
+    cursor: pointer;
+	height:21px;
+	width:21px;
+	margin-left:40px;
+	margin-top:6px;
 	float:left;
+	background-image:url('media/uiGraphics/infoButtOff.png')
 }
 
 .layerLabelHold{
@@ -169,7 +269,7 @@ html{
 
 .holderForOneLayerGroup {
 	width:410px;
-	height:254px;
+	height:194px;
 	background-color:#aaaaaa;
 	
 	margin-bottom:0px;
@@ -257,6 +357,80 @@ html{
 	margin-top:-2px;
 	}
 
+	
+
+.lyrInfoTitleHold{
+	width:100%;
+	height:30px;
+	background-color:#565656;
+	padding:5px;
+
+}
+
+/*.lyrInfo-title{
+	 font-family:Lato, serif;
+	font-size:16px;
+	font-weight:bold;
+	color:#fff;
+	margin-left:25px;
+	line-height:25px;
+}*/
+
+
+
+
+.lyrInfo-name{
+	 font-family:Lato, serif;
+	font-size:14px;
+	font-weight:bold;
+	color:#fff;
+	margin-left:25px;
+	margin-top:7px;
+	
+}
+
+.srcLab{
+	font-family:Lato, serif;
+	font-size:11px;
+	font-weight:bold;
+	color:#fff;
+	margin-left:25px;
+	line-height:11px;
+float:left;
+}
+      
+.lyrInfo-src{
+
+	font-family:Lato, serif;
+	font-size:11px;
+	font-weight:bold;
+	color:#fff;
+	margin-left:5px;
+	line-height:11px;
+}
+
+.legDescHold{
+	margin-top:15px;
+
+}
+.lyrInfo-desc{
+	font-family:Lato, serif;
+	font-size:12px;
+	font-weight:bold;
+	color:#fff;
+	margin-left:25px;
+	margin-top:10px;
+	margin-bottom:14px;
+	line-height:12px;
+	float:left;
+	width:360px;
+}
+
+.lyrInfo-legend{
+	margin-left:12px;
+
+}
+	
 .headerText{
 	font-family:Lato, serif;
 	font-size:16px;
@@ -522,11 +696,10 @@ html{
 }  
 #menuContainer{
 	width:408px;
-	height:800px;
+	height:780px;
 	position:absolute;
 	top:0;
 	overflow:hidden;
-	
 }
 
 #menuItemHolder{
@@ -538,7 +711,12 @@ html{
 
 #holderForAllLayerGroups {
 	width:408px;
-	height:50px;
 	position:relative;	
 	top:-140px;
+	
+}
+.layerInfoHold{
+background-color:#888888;
+width:408px;
+height:300px;
 }
