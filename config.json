@@ -52,7 +52,7 @@
                 "sourceUrl" : "http://csc.noaa.gov/digitalcoast/",
                 "sourceEntity" : "NOAA Coastal Services Center",
                 "layerDescription" : "This layer shows the 2 foot sea level innundation region.",
-                "legendImage" : "legends/legendimages/aac.png"
+                "legendImage" : "legends/legendimages/aab.png"
             }
         }, {
             "id": "aad",
@@ -64,7 +64,7 @@
                 "sourceUrl" : "http://csc.noaa.gov/digitalcoast/",
                 "sourceEntity" : "NOAA Coastal Services Center",
                 "layerDescription" : "This layer shows the 3 foot sea level innundation region.",
-                "legendImage" : "legends/legendimages/aad.png"
+                "legendImage" : "legends/legendimages/aab.png"
             }
         }, {
             "id": "aae",
@@ -76,7 +76,7 @@
                 "sourceUrl" : "http://csc.noaa.gov/digitalcoast/",
                 "sourceEntity" : "NOAA Coastal Services Center",
                 "layerDescription" : "This layer shows the 4 foot sea level innundation region.",
-                "legendImage" : "legends/legendimages/aae.png"
+                "legendImage" : "legends/legendimages/aab.png"
             }
         }, {
             "id": "aaf",
@@ -88,7 +88,7 @@
                 "sourceUrl" : "http://csc.noaa.gov/digitalcoast/",
                 "sourceEntity" : "NOAA Coastal Services Center",
                 "layerDescription" : "This layer shows the 5 foot sea level innundation region.",
-                "legendImage" : "legends/legendimages/aaf.png"
+                "legendImage" : "legends/legendimages/aab.png"
             }
         }, {
             "id": "aag",
@@ -100,7 +100,7 @@
                 "sourceUrl" : "http://csc.noaa.gov/digitalcoast/",
                 "sourceEntity" : "NOAA Coastal Services Center",
                 "layerDescription" : "This layer shows the 1 foot sea level innundation region.",
-                "legendImage" : "legends/legendimages/aag.png"
+                "legendImage" : "legends/legendimages/aab.png"
             }
         }, {
             "id": "aah",
