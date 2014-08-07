@@ -196,7 +196,7 @@
                 "sourceUrl" : "http://droughtmonitor.unl.edu",
                 "sourceEntity" : "US Drought Monitor",
                 "layerDescription" : "This layer shows Drought (9/24/2014).",
-                "legendImage" : "legends/legendimages/aao.png"
+                "legendImage" : "legends/legendimages/aaa.png"
             }
         }, {
             "id": "aap",

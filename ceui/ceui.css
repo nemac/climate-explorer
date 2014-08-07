@@ -257,8 +257,16 @@ div.olControlZoom .olButton:hover {
 	margin-left:40px;
 	margin-top:6px;
 	float:left;
-	background-image:url('media/uiGraphics/infoButtOff.png')
 }
+
+.layerInfoButtHoldUnselected {
+    background-image:url('media/uiGraphics/infoButtOff.png');
+}
+
+.layerInfoButtHoldSelected {
+    background-image:url('media/uiGraphics/infoButtOn.png');
+}
+
 
 .layerLabelHold{
 	height:36px;
