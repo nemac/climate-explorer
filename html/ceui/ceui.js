@@ -305,8 +305,10 @@ ceui.setLayers = function(groupId, layers) {
 	    $layerInfoButt.on('click', function(event) {
 	        ceui.selectLayerInfo(layer.id);
 	        if (ceui._layerInfoSelect) {
-                ceui._layerInfoSelect(layer.id);
-            }
+                    ceui._layerInfoSelect(layer.id);
+		}
+		// toggle this button to be selected state
+		$(this).removeClass('layerInfoButtHoldUnselected').addClass('layerInfoButtHoldSelected');
 	    });
         
     });
@@ -330,7 +332,6 @@ ceui.setLayerOpacity = function(layerId, opacity) {
 	$layerOpacLab.html((Math.floor(opacity*100)).toString()+"%");
 };
 
-// TODO flesh out the info logic
 ceui.selectLayerInfo = function(layerId) {
     var info = ceui._layerInfo[ layerId ];
 
@@ -338,14 +339,14 @@ ceui.selectLayerInfo = function(layerId) {
 
     if (info) {
         $('.layerInfoInfoHolder').show();
-        // $layerInfo.find('.lyrInfo-name'); TODO get the layer name and put it here
         $layerInfo.find('.lyrInfo-src').prop('href', info.sourceUrl).text(info.sourceEntity);
         $layerInfo.find('.lyrInfo-desc').text(info.layerDescription);
         $layerInfo.find('.lyrInfo-legend img').attr('src', info.legendImage);
         $layerInfo.find('.lyrInfo-name').html( info.name );
     }
-
-    /*$('#lyrInfo').dialog('open');*/
+    
+    // unselect selected buttons
+    $('.layerInfoButtHoldSelected').addClass('layerInfoButtHoldUnselected').removeClass('layerInfoButtHoldSelected');
 };
 
 
