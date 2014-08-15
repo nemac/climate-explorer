@@ -349,6 +349,18 @@ ceui.selectLayerInfo = function(layerId) {
     $('.layerInfoButtHoldSelected').addClass('layerInfoButtHoldUnselected').removeClass('layerInfoButtHoldSelected');
 };
 
+ceui.setBaseLayerSelector = function(baseLayer) {
+    
+    if (baseLayer === ceui.STREET_BASELAYER) {
+	$(".basemapTogButt").css('backgroundImage', 'url('+ceui._dir+'/media/uiGraphics/baseMap_ST.png)')
+	// since the selector is street, the current basemap must be imagery
+	$(".basemapTogButtHold").addClass('isImagery');
+    } else {
+	$(".basemapTogButt").css('backgroundImage', 'url('+ceui._dir+'/media/uiGraphics/baseMap_IMGY.png)')
+	// since the selector is imagery, the current basemap must be street
+	$(".basemapTogButtHold").removeClass('isImagery');
+    }
+};
 
 ceui.setPerspective = function(tab) {
 	if (tab === ceui.LAYERS_PERSPECTIVE) {
@@ -373,11 +385,6 @@ ceui.setPerspective = function(tab) {
         }
 	}
 }
-
-
-
-
-
 
 ceui.init = function(options) {
 
@@ -455,25 +462,22 @@ ceui.init = function(options) {
 	});
 	
 	
-	
-	
-	// TODO swap basemap
-	$(".basemapTogButtHold").click(function() {
-		if($(".basemapTogButtHold").hasClass("isImagery")){
-			$(".basemapTogButt").css('backgroundImage', 'url('+ceui._dir+'/media/uiGraphics/baseMap_IMGY.png)')
-			$(".basemapTogButtHold").removeClass('isImagery');
-            if (ceui._baseLayerSet) {
-                ceui._baseLayerSet(ceui.STREET_BASELAYER);
-            }
-		}else{
-			$(".basemapTogButt").css('backgroundImage', 'url('+ceui._dir+'/media/uiGraphics/baseMap_ST.png)')
-			$(".basemapTogButtHold").addClass('isImagery');
-            if (ceui._baseLayerSet) {
-                ceui._baseLayerSet(ceui.IMAGERY_BASELAYER);
-            }
+        $(".basemapTogButtHold").click(function() {
+	    if ($(".basemapTogButtHold").hasClass("isImagery")){
+		// set base layer selector to opposite of what will be displayed
+		ceui.setBaseLayerSelector(ceui.IMAGERY_BASELAYER);
+		if (ceui._baseLayerSet) {
+		    ceui._baseLayerSet(ceui.STREET_BASELAYER);
 		}
-		return false;
-		});
+	    } else {
+		// set base layer selector to opposite of what will be displayed
+		ceui.setBaseLayerSelector(ceui.STREET_BASELAYER);
+		if (ceui._baseLayerSet) {
+		    ceui._baseLayerSet(ceui.IMAGERY_BASELAYER);
+		}
+	    }
+	    return false;
+	});
 
 
         // make layer info pane scrollable panel, hide initially, 
