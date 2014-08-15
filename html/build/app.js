@@ -2429,9 +2429,13 @@ b){b.serviceMetadataUrl={};b.serviceMetadataUrl.href=a.getAttribute("xlink:href"
         
         var layer = new OpenLayers.Layer.WMS( wms.name, wms.url, wmsProps);
         
-        if ( wms.hasOwnProperty('projection')) {
+        if ( wms.hasOwnProperty( 'projection' )) {
             layer.projection = wms.projection;
         };
+        
+        if ( wms.hasOwnProperty( 'sld' )) {
+            layer.mergeNewParams( {SLD: wms.sld } );
+        }
         
         layer.id = wms.id;
         layer.isBaseLayer = false;
@@ -3616,11 +3620,15 @@ $(function(){
 	        }
         },
         baseLayerSet : function(baseLayer) {
+	    // TODO improve baselayer type translation
+	    var baseLayerCode = "b_a";
             if (baseLayer === ceui.IMAGERY_BASELAYER) {
-                mL.setBaseLayer("b_b");
-            } else if (baseLayer === ceui.STREET_BASELAYER) {
-                mL.setBaseLayer("b_a");
-            }
+	        baseLayerCode = "b_b";
+            } // else if (baseLayer === ceui.STREET_BASELAYER) // use street as default
+
+	    mL.setBaseLayer(baseLayerCode);
+	    pl.setBl(baseLayerCode);
+	    updatePermalinkDisplay();
         }
     });
 
@@ -3867,6 +3875,21 @@ $(function(){
                     ceui.setLayerOpacity(layer.id, layer.opacity);
                 });
 
+		// set base layer, if defined
+		if (pl.haveBl()) {
+		    var bl = pl.getBl();
+		    mL.setBaseLayer(bl);
+
+		    // TODO improve baselayer type translation
+		    // set the selector to the opposite of current base layer
+		    var baseLayer = ceui.STREET_BASELAYER;
+		    if (bl === "b_a" ) {
+			baseLayer = ceui.IMAGERY_BASELAYER;
+		    }
+
+		    ceui.setBaseLayerSelector(baseLayer);
+		}
+
                 // TODO is this problematic to move this into the onCreate method, as opposed to outside as it was before?
                 // initialize the pl object from the initial map state:
                 (function(o) {
@@ -3915,7 +3938,7 @@ $(function(){
     //    var pl = Permalink(URL(window.location.toString()));
     //
     function Permalink(url) {
-        var center = null, zoom = null, gp = null, tp = null, p = null;
+        var center = null, zoom = null, gp = null, tp = null, p = null, bl = null;
         var graphs = [];
         var layers = [];
         var scales = {};
@@ -3972,6 +3995,9 @@ $(function(){
                 layers.push({id:fields[0], opacity:fields[1]});
             });
         }
+	if ('bl' in url.params) {
+	    bl = url.params.bl;
+	}
         return {
             'toString' : function() { return url.toString(); },
             'haveCenter' : function() { return center !== null; },
@@ -4110,8 +4136,12 @@ $(function(){
                 } else {
                     delete url.params.layers;
                 }
-            }
-
+            },
+	    'setBl': function(bl) {
+		url.params.bl = bl;
+	    },
+	    'haveBl': function() { return bl !== null;  },
+	    'getBl': function() { return bl }
         };
     }
 });
@@ -4439,7 +4469,7 @@ $(function(){
 //        });
 //    }
 
-}).call(this,require("IrXUsu"),typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {},require("buffer").Buffer,arguments[3],arguments[4],arguments[5],arguments[6],"/fake_59595183.js","/")
+}).call(this,require("IrXUsu"),typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {},require("buffer").Buffer,arguments[3],arguments[4],arguments[5],arguments[6],"/fake_2918b7f4.js","/")
 },{"./utils/muglHelper.js":6,"./utils/stringUtil.js":7,"./utils/urlUtils.js":9,"IrXUsu":5,"buffer":2}],2:[function(require,module,exports){
 (function (process,global,Buffer,__argument0,__argument1,__argument2,__argument3,__filename,__dirname){
 /*!

@@ -189,7 +189,7 @@
             }
 		}, {
             "id": "aao",
-            "name": "Drought (9/24/2014)",
+            "name": "Drought (9/24/2013)",
             "url": "http://torka.unl.edu:8080/cgi-bin/mapserv.exe?map=/ms4w/apps/dm/service/usdm130924_wms.map",
             "layers": "usdm130924",
             "info" : {
