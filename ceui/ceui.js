@@ -222,7 +222,7 @@ ceui.setLayerGroups = function(layerGroups) {
         $layerGroup.find(".headerHolder .headerText").html(layerGroup.name);
         var $layerGroupLayersHolder = $layerGroup.find(".layerGroupLayersHolder")
         $layerGroupLayersHolder.jqxPanel({ 
-		    width: 421, 
+		    width: '100%', 
 		    height: 159,
 		    sizeMode: 'horizontalWrap',
 		    scrollBarSize:10,
