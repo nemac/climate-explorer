@@ -195,7 +195,7 @@
             "info" : {
                 "sourceUrl" : "http://droughtmonitor.unl.edu",
                 "sourceEntity" : "US Drought Monitor",
-                "layerDescription" : "This layer shows Drought (9/24/2014).",
+                "layerDescription" : "This layer shows Drought (9/24/2013).",
                 "legendImage" : "legends/legendimages/aaa.png"
             }
         }, {
@@ -410,6 +410,80 @@
                 "layerDescription" : "This layer shows CAT3 Hurricane Extreme Water Levels.",
                 "legendImage" : "legends/legendimages/abh.png"
             }
+        }, {
+            "id": "abi",
+            "name": "Weekly NDVI (9/24/2013)", 
+            "url": "http://129.174.131.6/cgi-bin/mapserv",
+            "layers": "Weekly_NDVI_39_2013.09.24_2013.09.30",
+            "projection": "EPSG:4326",
+	    "map": "/media/dssiv02/disk5/products/weekly/ndvi/2013/ndvi_39_2013.09.24_2013.09.30.map",
+            "info" : {
+                "sourceUrl" : "http://csiss.gmu.edu/",
+                "sourceEntity" : "GSISS, USDA NASS",
+                "layerDescription" : "This layer shows NDVI for September 24, 2013.",
+                "legendImage" : "legends/legendimages/abi.png"
+            }
+        }, {
+            "id": "abj",
+            "name": "Weekly VCI (9/24/2013)", 
+            "url": "http://129.174.131.6/cgi-bin/mapserv",
+            "layers": "Weekly_VCI_39_2013.09.24_2013.09.30",
+            "projection": "EPSG:4326",
+	    "map": "/media/dssiv02/disk5/products/weekly/vci/2013/vci_39_2013.09.24_2013.09.30.map",
+            "info" : {
+                "sourceUrl" : "http://csiss.gmu.edu/",
+                "sourceEntity" : "GSISS, USDA NASS",
+                "layerDescription" : "This layer shows VCI for September 24, 2013.",
+                "legendImage" : "legends/legendimages/abj.png"
+            }
+        }, {
+            "id": "abk",
+            "name": "Rivers", 
+            "url": "http://129.174.131.7/cgi/wms_conuswater.cgi",
+            "layers": "conus_major_rivers_national,conus_rivers_regional",
+            "projection": "EPSG:4326",
+            "info" : {
+                "sourceUrl" : "http://csiss.gmu.edu/",
+                "sourceEntity" : "GSISS, USDA NASS",
+                "layerDescription" : "This layer shows rivers.",
+                "legendImage" : "legends/legendimages/abk.png"
+            }
+        }, {
+            "id": "abl",
+            "name": "Lakes", 
+            "url": "http://129.174.131.7/cgi/wms_conuswater.cgi",
+            "layers": "conus_major_lakes_national,conus_waterareas_regional",
+            "projection": "EPSG:4326",
+            "info" : {
+                "sourceUrl" : "http://csiss.gmu.edu/",
+                "sourceEntity" : "GSISS, USDA NASS",
+                "layerDescription" : "This layer shows lakes.",
+                "legendImage" : "legends/legendimages/abl.png"
+            }
+        }, {
+            "id": "abm",
+            "name": "Freeway System (National)", 
+            "url": "http://129.174.131.7/cgi/wms_conushighway.cgi",
+            "layers": "conus_freeway_system_national,conus_freeway_system_national_label",
+            "projection": "EPSG:4326",
+            "info" : {
+                "sourceUrl" : "http://csiss.gmu.edu/",
+                "sourceEntity" : "GSISS, USDA NASS",
+                "layerDescription" : "This layer shows interstates.",
+                "legendImage" : "legends/legendimages/abm.png"
+            }
+        }, {
+            "id": "abn",
+            "name": "Major Highways (Regional)", 
+            "url": "http://129.174.131.7/cgi/wms_conushighway.cgi",
+            "layers": "conus_major_highways_regional,conus_major_highways_regional_label",
+            "projection": "EPSG:4326",
+            "info" : {
+                "sourceUrl" : "http://csiss.gmu.edu/",
+                "sourceEntity" : "GSISS, USDA NASS",
+                "layerDescription" : "This layer shows major highways.",
+                "legendImage" : "legends/legendimages/abn.png"
+            }
         }
     ],
     "groups": [{
@@ -423,7 +497,7 @@
         }, {
             "id": "g_a_b",
             "name": "People and Assets Impacted",
-            "layers": [ "aak", "aam", "aal", "aah", "aai", "aaj", "aaq", "aar", "aas", "aat", "aau", "aav", "abb", "abc" ]
+            "layers": [ "aak", "aam", "aal", "aah", "aai", "aaj", "aaq", "aar", "aas", "aat", "aau", "aav", "abb", "abc", "abm", "abn" ]
         }]
     }, {
         "id": "g_b",
@@ -431,11 +505,11 @@
         "subGroups": [{
             "id": "g_b_a",
             "name": "Climate Stressors",
-            "layers": [ "aaa" ]                
+            "layers": [ "aaa", "aao" ]
         }, {
             "id": "g_b_b",
             "name": "People and Assets Impacted",
-            "layers": [ "aal", "aap" ]
+            "layers": [ "aal", "aap", "abj", "abi", "abl", "abk" ]
         }]
     }, {
         "id": "g_c",
@@ -447,7 +521,7 @@
         }, {
             "id": "g_c_b",
             "name": "People and Assets Impacted",
-            "layers": [ "aal" ]
+            "layers": [ "aal", "abj", "abi", "abl", "abk" ]
         }]
     }, {
         "id": "g_d",
@@ -459,7 +533,7 @@
         }, {
             "id": "g_d_b",
             "name": "People and Assets Impacted",
-            "layers": [ "aal", "aai", "aaj" ]
+            "layers": [ "aal", "aai", "aaj", "abm", "abn" ]
         }]
     }]
 }
