@@ -523,17 +523,5 @@
             "name": "People and Assets Impacted",
             "layers": [ "aal", "abj", "abi", "abl", "abk" ]
         }]
-    }, {
-        "id": "g_d",
-        "name": "Transportation and Supply Chain",
-        "subGroups": [{
-            "id": "g_d_a",
-            "name": "Climate Stressors",
-            "layers": [ "aan" ]                
-        }, {
-            "id": "g_d_b",
-            "name": "People and Assets Impacted",
-            "layers": [ "aal", "aai", "aaj", "abm", "abn" ]
-        }]
     }]
 }
