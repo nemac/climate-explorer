@@ -36,6 +36,19 @@ var paths = {
         templates: './templates/*.xml',
         templateBaseDir: './templates/',
         aggregateTemplate: 'aggregate.js'
+    },
+    productionWhitelist: {
+        ceui: [
+	  './ceui/css/**',
+	  './ceui/ui/**',
+	  './ceui/ceui.css',
+	  './ceui/ceui.js'
+	],
+        testdata: [
+	  './testdata/world_imagery_info_cache.json',
+	  './testdata/world_street_map_info_cache.json',
+	  './testdata/filtered_stations.json'
+	]
     }
 };
 
@@ -108,12 +121,6 @@ gulp.task( 'html', ['default'], function() {
     gulp.src( './lib/**' )
         .pipe( gulp.dest( './html/lib' ) );
 
-    gulp.src( './ceui/**' )
-        .pipe( gulp.dest( './html/ceui' ) );
-
-    gulp.src( './testdata/**' )
-        .pipe( gulp.dest( './html/testdata' ) );
-
     gulp.src( './detail.tpl.html' )
         .pipe( gulp.dest( './html' ) );
 
@@ -124,8 +131,27 @@ gulp.task( 'html', ['default'], function() {
     gulp.src( './img/**' )
         .pipe( gulp.dest( './html/img' ) );
 
-    gulp.src( './legends/**' )
-        .pipe( gulp.dest( './html/legends' ) );
+    gulp.src( './legends/legendimages/**' )
+        .pipe( gulp.dest( './html/legends/legendimages' ) );
+
+    // whitelisted items
+    gulp.src( paths.productionWhitelist.testdata )
+        .pipe( gulp.dest( './html/testdata' ) );
+
+    gulp.src( './ceui/css/**' )
+        .pipe( gulp.dest( './html/ceui/css' ) );
+
+    gulp.src( './ceui/ui/**' )
+        .pipe( gulp.dest( './html/ceui/ui' ) );
+
+    gulp.src( './ceui/media/**' )
+        .pipe( gulp.dest( './html/ceui/media' ) );
+
+    gulp.src( './ceui/ceui.css' )
+        .pipe( gulp.dest( './html/ceui' ) );
+
+    gulp.src( './ceui/css.js' )
+        .pipe( gulp.dest( './html/ceui' ) );
 
 });
 

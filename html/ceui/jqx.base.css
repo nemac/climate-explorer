@@ -2654,7 +2654,7 @@ of the horizontal scrollbar.*/
 {
     cursor: pointer;
     width: 5px;
-    height: 8px;
+    height: 14px;
     z-index: 15;
     position: absolute;
     left: 0px;
@@ -2676,9 +2676,21 @@ of the horizontal scrollbar.*/
     background-image: url(images/slider_horizontal_classic.png);
     background-repeat: no-repeat;
     margin-top: -4px;
-    -moz-border-radius: 7px;
-    -webkit-border-radius: 7px;
-    border-radius: 7px;    
+    
+    -moz-border-top-right-radius: 3px;
+	-moz-border-top-left-radius: 3px;
+	-moz-border-bottom-right-radius: 0px;
+	-moz-border-bottom-left-radius: 0px; 
+    
+	-webkit-border-top-right-radius: 3px;
+	-webkit-border-top-left-radius: 3px;
+	-webkit-border-bottom-right-radius: 0px;
+	-webkit-border-bottom-left-radius: 0px;    
+	
+	border-top-right-radius: 3px;
+	border-top-left-radius: 3px;
+	border-bottom-right-radius: 0px;
+	border-bottom-left-radius: 0px;      
     border: 1px solid transparent;
 }
 /*applied to the slider's thumb when the slider is in vertical mode*/
@@ -2703,7 +2715,7 @@ of the horizontal scrollbar.*/
 /*used in horizontal slider*/
 .jqx-slider-track-horizontal
 {
-    height: 5px;
+    height: 12px;
     margin-top: 2px;
 }
 /*used in vertical slider*/

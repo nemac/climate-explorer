@@ -2436,6 +2436,10 @@ b){b.serviceMetadataUrl={};b.serviceMetadataUrl.href=a.getAttribute("xlink:href"
         if ( wms.hasOwnProperty( 'sld' )) {
             layer.mergeNewParams( {SLD: wms.sld } );
         }
+
+        if ( wms.hasOwnProperty( 'map' )) {
+            layer.mergeNewParams( {MAP: wms.map } );
+        }
         
         layer.id = wms.id;
         layer.isBaseLayer = false;
@@ -4469,7 +4473,7 @@ $(function(){
 //        });
 //    }
 
-}).call(this,require("IrXUsu"),typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {},require("buffer").Buffer,arguments[3],arguments[4],arguments[5],arguments[6],"/fake_ad03b931.js","/")
+}).call(this,require("IrXUsu"),typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {},require("buffer").Buffer,arguments[3],arguments[4],arguments[5],arguments[6],"/fake_c6dc087.js","/")
 },{"./utils/muglHelper.js":6,"./utils/stringUtil.js":7,"./utils/urlUtils.js":9,"IrXUsu":5,"buffer":2}],2:[function(require,module,exports){
 (function (process,global,Buffer,__argument0,__argument1,__argument2,__argument3,__filename,__dirname){
 /*!
