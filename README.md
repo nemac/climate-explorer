@@ -3,7 +3,14 @@
 Climate Explorer is an interactive map application built on top of mapLite 
 and displays real-time data from each station selected.
 
-## Dependencies
+
+## Hosting and Application Dependencies
+It can be assumed that at any major milestone, the latest source has been built and committed to the html directory. This is the code that needs to be hosted on a web server to be served to clients.
+
+As the application is all static HTML, JS, CSS, and configuration files and assets, the contents of the html directory need only to be placed in a publicly accessible manner on a web server for the application to work. Once users navigate to the index.html file, the scripts within take care of the rest of the application logic. The application runs entirely in the client's browser, but does depend on external web services for map data.
+
+## Building
+### Build Dependencies
 - jQuery
 - mapLite
 - drawerPanel
@@ -17,11 +24,10 @@ npm install
 bower update
 ```
 
-Once the environment is setup, installing is as simple as typing
+Once the environment is set up, build the application with:
 ```javascript
 gulp
 ```
-on the command line, and the source is built!
 
 If the library source needs to be updated, run
 ```javascript
@@ -29,15 +35,9 @@ bower update
 ```
 before build.
 
-## Todo
+To build out a hostable snapshot of the application use the build command:
+```javascript
+gulp html
+```
 
-### 0.1
-- Document
-- Add some visual effects to link the graph to the points
-  - Maybe mouseover graph and the corresponding marker gets larger?
-  - Maybe make the border around the graph get bigger when mouseover the point?
-- Further encapsulate additional OpenLayers-specific map functionality
-
-## Credits
-- Remove element icon is "Cross Icon" from FamFamFam Silk Icons
-
+This outputs a built copy of the application to the html directory. 
