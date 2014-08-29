@@ -138,6 +138,10 @@ gulp.task( 'html', ['default'], function() {
     gulp.src( paths.productionWhitelist.testdata )
         .pipe( gulp.dest( './html/testdata' ) );
 
+    gulp.src( './ceui/**' )
+        .pipe( gulp.dest( './html/ceui' ) );
+
+/*  Confirm these are sufficient
     gulp.src( './ceui/css/**' )
         .pipe( gulp.dest( './html/ceui/css' ) );
 
@@ -152,6 +156,8 @@ gulp.task( 'html', ['default'], function() {
 
     gulp.src( './ceui/css.js' )
         .pipe( gulp.dest( './html/ceui' ) );
+
+*/
 
 });
 
