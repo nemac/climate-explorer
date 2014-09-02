@@ -47,7 +47,7 @@ The stations JSON file is one large array of elements that appear as follows:
 }
 ```
 
-The weight attribute is used to limit the number of stations that appear at given zoom levels. The application is currently configered with the following weights:
+The weight attribute is used to limit the number of stations that appear at given zoom levels. The application is currently configured with the following weights:
 
 1. Appears at all zoom levels
 2. Appears at a zoom level of 6 or higher
