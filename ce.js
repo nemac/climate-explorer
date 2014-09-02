@@ -3,6 +3,17 @@
 //
 $(function(){
 
+  var oldIE = false;
+  if ($('html').is('.ie6, .ie7, .ie8, .ie9')) {
+      oldIE = true;
+  }
+
+  if (oldIE) {
+      $('body').empty();
+      alert("Climate Explorer does support the browser you are using.  You appear to be using an old version of Internet Explorer.  Climate Explorer works best in Mozilla Firefox, Google Chrome, or Internet Explorer 10 or higher.");
+      return;
+  }
+
   // The function updateAxisDebounce() gets called whenever an axis scale changes in a multigraph
   // (search for 'dataRangeSet' below to see where it is registered).  It handles updating the permalink
   // URL to show the new axis scales, but only after a certain delay threshold (axisUpdateDebounceThresholdMS)
