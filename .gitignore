@@ -6,3 +6,4 @@ build
 test
 !html/build
 *.DS_STORE
+simpleserver.js

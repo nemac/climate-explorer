@@ -3,668 +3,677 @@
 //
 $(function(){
 
-    // The function updateAxisDebounce() gets called whenever an axis scale changes in a multigraph
-    // (search for 'dataRangeSet' below to see where it is registered).  It handles updating the permalink
-    // URL to show the new axis scales, but only after a certain delay threshold (axisUpdateDebounceThresholdMS)
-    // has passed with no calls to updateAxisDebounce() happening.  In other words, updateAxisDebounce() can
-    // be called many times in rapid succession (and in general, it will be, when the user is changing the graph
-    // axis scales), but the permalink is only updated when a period of axisUpdateDebounceThresholdMS passes
-    // with no calls to updateAxisDebounce() occurring.
-    var scales = {};
-    //    scales is a JS object storing the outstanding axis updates -- i.e. updates that need to be applied
-    //    when the timer expires; the keys are binding ids (minus the "-binding" suffix), and the values are
-    //    objects of the form
-    //        { "min" : STRING, "max" : STRING }
-    var axisUpdateTimeout = null;
-    //    axisUpdateTimeout is the current timeout object, if any
-    var axisUpdateDebounceThresholdMS = 500;
-    function updateAxisDebounce(bindingId, min, max) {
-        bindingId = bindingId.replace("-binding","");
-        if (axisUpdateTimeout !== null) {
-            clearTimeout(axisUpdateTimeout);
-        }
-        if (! (bindingId in scales)) {
-            scales[bindingId] = {};
-        }
-        scales[bindingId].min = min;
-        scales[bindingId].max = max;
-        axisUpdateTimeout = setTimeout(function() {
-            pl.setScales(scales);
-            updatePermalinkDisplay();
-            scales = {};
-        }, axisUpdateDebounceThresholdMS);
+  // The function updateAxisDebounce() gets called whenever an axis scale changes in a multigraph
+  // (search for 'dataRangeSet' below to see where it is registered).  It handles updating the permalink
+  // URL to show the new axis scales, but only after a certain delay threshold (axisUpdateDebounceThresholdMS)
+  // has passed with no calls to updateAxisDebounce() happening.  In other words, updateAxisDebounce() can
+  // be called many times in rapid succession (and in general, it will be, when the user is changing the graph
+  // axis scales), but the permalink is only updated when a period of axisUpdateDebounceThresholdMS passes
+  // with no calls to updateAxisDebounce() occurring.
+  var scales = {};
+  //    scales is a JS object storing the outstanding axis updates -- i.e. updates that need to be applied
+  //    when the timer expires; the keys are binding ids (minus the "-binding" suffix), and the values are
+  //    objects of the form
+  //        { "min" : STRING, "max" : STRING }
+  var axisUpdateTimeout = null;
+  //    axisUpdateTimeout is the current timeout object, if any
+  var axisUpdateDebounceThresholdMS = 500;
+  function updateAxisDebounce(bindingId, min, max) {
+    bindingId = bindingId.replace("-binding","");
+    if (axisUpdateTimeout !== null) {
+      clearTimeout(axisUpdateTimeout);
     }
-
-    function displayGraph(id, type, $element) {
-        var payload = MuglHelper.getDataRequests( type, id );
-        $.when.apply( $, payload.requests ).done( function(){
-            var _jq  = window.multigraph.jQuery;
-            _jq ( $element ).multigraph( {
-                muglString: MuglHelper.buildMugl(
-                    payload.data,
-                    type,
-                    DATA_SUMMARY[id],
-                    MUGLTEMPLATES
-                )});
-            _jq ( $element ).multigraph( 'done', function(mg) {
-                var i, naxes = mg.graphs().at(0).axes().size();
-                for (i=0; i<naxes; ++i) {
-                    (function(axis) {
-                        if (pl.haveScales()) {
-                            var scales = pl.getScales();
-                            var bindingId = axis.binding().id().replace('-binding','');
-                            var parser;
-                            if (bindingId === "time") {
-                                parser = window.multigraph.core.DatetimeValue;
-                            } else {
-                                parser = window.multigraph.core.NumberValue;
-                            }
-                            if (bindingId in scales) {
-                                axis.setDataRange(parser.parse(scales[bindingId].min),
-                                                  parser.parse(scales[bindingId].max));
-                            }
-                        }
-                        if (
-                            (axis.id() === "ytd-prcpin")
-                                ||
-                                (axis.id() === "tempf")
-                                ||
-                                (axis.id() === "time")
-                        ) {
-                            axis.addListener('dataRangeSet', function(e) {
-                                // note we have to convert e.min, e.max to strings here; they are multigraph
-                                // DatetimeValue or NumberValue objects!!!
-                                updateAxisDebounce(axis.binding().id(), e.min.toString(), e.max.toString());
-                            });
-                        }
-                    }(mg.graphs().at(0).axes().at(i)));
-                }
-            });
-        });
-        pl.addGraph({type: type, id : id});
-        updatePermalinkDisplay();
+    if (! (bindingId in scales)) {
+      scales[bindingId] = {};
     }
+    scales[bindingId].min = min;
+    scales[bindingId].max = max;
+    axisUpdateTimeout = setTimeout(function() {
+      pl.setScales(scales);
+      updatePermalinkDisplay();
+      scales = {};
+    }, axisUpdateDebounceThresholdMS);
+  }
 
-    var overlaysById = {};
-    var topicsById = {};
-
-    ceui.init({
-        dir : 'ceui',
-        enabled : false,
-        perspectiveSet : function(tab) {
-            if (tab === ceui.LAYERS_PERSPECTIVE) {
-                mL.setLayerVisibility("lyr_ghcnd", false);
-            } else {
-                mL.setLayerVisibility("lyr_ghcnd", true);
+  function displayGraph(id, type, $element) {
+    var payload = MuglHelper.getDataRequests( type, id );
+    $.when.apply( $, payload.requests ).done( function(){
+      var _jq  = window.multigraph.jQuery;
+      _jq ( $element ).multigraph( {
+        muglString: MuglHelper.buildMugl(
+          payload.data,
+          type,
+          DATA_SUMMARY[id],
+          MUGLTEMPLATES
+        )});
+      _jq ( $element ).multigraph( 'done', function(mg) {
+        var i, naxes = mg.graphs().at(0).axes().size();
+        for (i=0; i<naxes; ++i) {
+          (function(axis) {
+            if (pl.haveScales()) {
+              var scales = pl.getScales();
+              var bindingId = axis.binding().id().replace('-binding','');
+              var parser;
+              if (bindingId === "time") {
+                parser = window.multigraph.core.DatetimeValue;
+              } else {
+                parser = window.multigraph.core.NumberValue;
+              }
+              if (bindingId in scales) {
+                axis.setDataRange(parser.parse(scales[bindingId].min),
+                                  parser.parse(scales[bindingId].max));
+              }
             }
-            pl.setPerspective(tab);
-            updatePermalinkDisplay();
-            //console.log('switching to tab: ' + tab);
-        },
-        layerVisibilitySet : function(id, visible) {
-            if (mL != null) {
-                mL.setLayerVisibility(id, visible);
-                if (visible) {
-                    pl.addLayer(id);
-                } else {
-                    pl.removeLayer(id);
-                }
-                updatePermalinkDisplay();
+            if (
+              (axis.id() === "ytd-prcpin")
+                ||
+                (axis.id() === "tempf")
+                ||
+                (axis.id() === "time")
+            ) {
+              axis.addListener('dataRangeSet', function(e) {
+                // note we have to convert e.min, e.max to strings here; they are multigraph
+                // DatetimeValue or NumberValue objects!!!
+                updateAxisDebounce(axis.binding().id(), e.min.toString(), e.max.toString());
+              });
             }
-        },
-        layerOpacitySet : function(id, opacity) {
-            if (mL != null) {
-                mL.setLayerOpacity(id, opacity);
-                pl.setLayerOpacity(id, opacity);
-                updatePermalinkDisplay();
-            }
-        },
-        topicSet : function(topicId) {
-            setTopic(topicId);
-        },
-        displayGraph : function(id, type, $element) {
-            displayGraph(id.replace("GHCND:", ""), type, $element);
-        },
-        graphRemoved : function(id, type) {
-            pl.removeGraph({type: type, id : id.replace("GHCND:", "")});
-            updatePermalinkDisplay();
-        },
-        stationRemoved : function(removedId, remainingStations) {
-	        pl.removeStation(removedId.replace("GHCND:", ""));
-	        updatePermalinkDisplay();
-	        if ( mL !== null ) {
-		        mL.unselectPoint( removedId );
-		        // update label for each remaining station
-		        remainingStations.forEach( function( station, i ) {
-		            mL.setLabel( station.id, i + 1 );
-		        });
-	        }
-        },
-        baseLayerSet : function(baseLayer) {
-	    // TODO improve baselayer type translation
-	    var baseLayerCode = "b_a";
-            if (baseLayer === ceui.IMAGERY_BASELAYER) {
-	        baseLayerCode = "b_b";
-            } // else if (baseLayer === ceui.STREET_BASELAYER) // use street as default
-
-	    mL.setBaseLayer(baseLayerCode);
-	    pl.setBl(baseLayerCode);
-	    updatePermalinkDisplay();
+          }(mg.graphs().at(0).axes().at(i)));
         }
+      });
     });
+    pl.addGraph({type: type, id : id});
+    updatePermalinkDisplay();
+  }
 
-    var mL = null;
-    function rememberML(x) {
-        mL = x;
-    }
+  var overlaysById = {};
+  var topicsById = {};
 
-    var BASE_CSV_SOURCE_URL = 'https://s3.amazonaws.com/nemac-ghcnd/';
-    var NORMALS_CSV_SOURCE_URL = 'https://s3.amazonaws.com/nemac-normals/NORMAL_';
-    var MH = require( './utils/muglHelper.js' );
-
-    var MuglHelper = new MH.MuglHelper({ baseUrl: BASE_CSV_SOURCE_URL, normalsUrl: NORMALS_CSV_SOURCE_URL });
-
-    var sanitizeString = require( './utils/stringUtil.js' );
-    var URL = require( './utils/urlUtils.js' );
-
-    //
-    // constants
-    //
-    var BUILD_BASE_PATH = 'build/asset/';
-    var TEMPLATE_LOCATION = 'detail.tpl.html';
-    var STATION_DETAIL_TEMPLATE;
-    var MAPLITE_CONFIG;
-    var MAX_SELECTED_STATIONS = 6;
-    var APP_CONFIG_URL = 'config.json';
-    var GRAPH_VARIDS = [ "TEMP", "PRCP_YTD" ];
-    var SUPPORTED_STATION_VARS = {
-        TEMP: {
-            label: 'Temperature',
-            selected: true
-        },
-        PRCP_YTD: {
-            label: 'YTD Precipitation',
-            selected: false
+  ceui.init({
+    dir : 'ceui',
+    enabled : false,
+    perspectiveSet : function(tab) {
+      if (tab === ceui.LAYERS_PERSPECTIVE) {
+        mL.setLayerVisibility("lyr_ghcnd", false);
+      } else {
+        mL.setLayerVisibility("lyr_ghcnd", true);
+      }
+      pl.setPerspective(tab);
+      updatePermalinkDisplay();
+      //console.log('switching to tab: ' + tab);
+    },
+    layerVisibilitySet : function(id, visible) {
+      if (mL != null) {
+        mL.setLayerVisibility(id, visible);
+        if (visible) {
+          pl.addLayer(id);
+        } else {
+          pl.removeLayer(id);
         }
-    };
-
-    //
-    // globals
-    //
-    var selectedStationCount = 0;
-    var stationAndGraphLinkHash = [];
-    var DATA_SUMMARY = {};
-
-    var currentTopicLayerIds = [];
-
-    function setTopic(topicId, options) {
-
-        if (!options || !options.hasOwnProperty('clearLayers') || options.clearLayers) {
-            // Reset all current layers to full opacity, undisplayed
-            currentTopicLayerIds.forEach(function(layerId) {
-                mL.setLayerOpacity(layerId, 1.0);
-                mL.setLayerVisibility(layerId, false);
-            });
-            // remove all layers from permalink
-            pl.clearLayers();
-            //pl.getLayers().forEach(function(layer) {
-            //    pl.removeLayer(layer.id);
-            //});
-            updatePermalinkDisplay();
-        }
-
-        // Clear out the list of current layers (gets repopulated a few lines below)
-        currentTopicLayerIds = [];
-        // Set the layer groups
-        ceui.setLayerGroups(topicsById[topicId].subGroups.map(function(subgroup) {
-            return { id : subgroup.id, name : subgroup.name };
-        }));
-        // Set the layers for each group
-        topicsById[topicId].subGroups.forEach(function(subgroup) {
-            ceui.setLayers(subgroup.id,
-                           subgroup.layers.map(function(layerId) {
-                               currentTopicLayerIds.push(layerId);
-                               return overlaysById[layerId];
-                           }));
-        });
-        pl.setTp(topicId);
         updatePermalinkDisplay();
+      }
+    },
+    layerOpacitySet : function(id, opacity) {
+      if (mL != null) {
+        mL.setLayerOpacity(id, opacity);
+        pl.setLayerOpacity(id, opacity);
+        updatePermalinkDisplay();
+      }
+    },
+    topicSet : function(topicId) {
+      setTopic(topicId);
+    },
+    displayGraph : function(id, type, $element) {
+      displayGraph(id.replace("GHCND:", ""), type, $element);
+    },
+    graphRemoved : function(id, type) {
+      pl.removeGraph({type: type, id : id.replace("GHCND:", "")});
+      updatePermalinkDisplay();
+    },
+    stationRemoved : function(removedId, remainingStations) {
+      pl.removeStation(removedId.replace("GHCND:", ""));
+      updatePermalinkDisplay();
+      if ( mL !== null ) {
+	mL.unselectPoint( removedId );
+	// update label for each remaining station
+	remainingStations.forEach( function( station, i ) {
+	  mL.setLabel( station.id, i + 1 );
+	});
+      }
+    },
+    baseLayerSet : function(baseLayer) {
+      // TODO improve baselayer type translation
+      var baseLayerCode = "b_a";
+      if (baseLayer === ceui.IMAGERY_BASELAYER) {
+	baseLayerCode = "b_b";
+      } // else if (baseLayer === ceui.STREET_BASELAYER) // use street as default
+
+      mL.setBaseLayer(baseLayerCode);
+      pl.setBl(baseLayerCode);
+      updatePermalinkDisplay();
+    }
+  });
+
+  var mL = null;
+  function rememberML(x) {
+    mL = x;
+  }
+
+  var MH = require( './utils/muglHelper.js' );
+  var MuglHelper;
+
+  var sanitizeString = require( './utils/stringUtil.js' );
+  var URL = require( './utils/urlUtils.js' );
+
+  //
+  // constants
+  //
+  var BUILD_BASE_PATH = 'build/asset/';
+  var TEMPLATE_LOCATION = 'detail.tpl.html';
+  var STATION_DETAIL_TEMPLATE;
+  var MAPLITE_CONFIG;
+  var MAX_SELECTED_STATIONS = 6;
+  var APP_CONFIG_URL = 'config.json';
+  var GRAPH_VARIDS = [ "TEMP", "PRCP_YTD" ];
+  var SUPPORTED_STATION_VARS = {
+    TEMP: {
+      label: 'Temperature',
+      selected: true
+    },
+    PRCP_YTD: {
+      label: 'YTD Precipitation',
+      selected: false
+    }
+  };
+
+  //
+  // globals
+  //
+  var selectedStationCount = 0;
+  var stationAndGraphLinkHash = [];
+  var DATA_SUMMARY = {};
+
+  var currentTopicLayerIds = [];
+
+  function setTopic(topicId, options) {
+
+    if (!options || !options.hasOwnProperty('clearLayers') || options.clearLayers) {
+      // Reset all current layers to full opacity, undisplayed
+      currentTopicLayerIds.forEach(function(layerId) {
+        mL.setLayerOpacity(layerId, 1.0);
+        mL.setLayerVisibility(layerId, false);
+      });
+      // remove all layers from permalink
+      pl.clearLayers();
+      //pl.getLayers().forEach(function(layer) {
+      //    pl.removeLayer(layer.id);
+      //});
+      updatePermalinkDisplay();
     }
 
-    var requests = [
-        $.getJSON( BASE_CSV_SOURCE_URL + 'summary.json', function( data ) {
-            DATA_SUMMARY = data;
-        }),
-        $.get( TEMPLATE_LOCATION, function( template ) {
-            STATION_DETAIL_TEMPLATE = template;
-        }),
-        $.getJSON( APP_CONFIG_URL, function( config ) {
-
-
-            // cache the topics by id (note that topics are called 'groups' in the config file)
-            config.groups.forEach(function(group) {
-                topicsById[ group.id ] = group;
-            });
-            // populate the list of topics in the UI
-            var groups = config.groups.map(function(group) { return { id : group.id, name : group.name }; });
-            ceui.setTopics(groups);
-
-            //
-            // cache the overlay ("map layers") details:
-            //
-            config.overlays.forEach(function(overlay) {
-                overlaysById[ overlay.id ] = overlay;
-            });
-
-            // pre-select whichever group (topic) is present in the permalink URL, if any, otherwise pre-select the first one
-            var i = 0;
-            if (pl.haveTp()) {
-                for (var j=0; j<groups.length; ++j) {
-                    if (groups[j].id === pl.getTp()) {
-                        i = j;
-                        break;
-                    }
-                }
-            }
-            ceui.setTopic(groups[i].id);
-            setTopic(groups[i].id, { clearLayers : false });
-
-            MAPLITE_CONFIG = config;
-        })
-                ];
-
-    var $permalink = $( 'div.permLinkButt' ).permalink({ icon : false});
-
-    var pl = Permalink(URL({url: window.location.toString()}));
-
-    function updatePermalinkDisplay() {
-        window.history.replaceState({}, "RDV", pl.toString());
-        $permalink.permalink('url', pl.toString());
-    }
-
-    $.when.apply( $, requests ).done( function(){
-        var mapOptions = {};
-        // deploy map now that the template is ready
-        if (pl.haveZoom()) {
-            mapOptions.zoom = pl.getZoom();
-        }
-        if (pl.haveCenter()) {
-            mapOptions.center = pl.getCenter();
-        }
-        var $mapl = ceui.getMapElement().mapLite({
-            config: MAPLITE_CONFIG,
-            changeOpacityCallback: function( layerId, opacity ) {
-                pl.setLayerOpacity(layerId, opacity);
-                updatePermalinkDisplay();
-            },
-            layerToggleCallback: function( layerId, isEnabled ) {
-                if (isEnabled) {
-                    pl.addLayer(layerId);
-                } else {
-                    pl.removeLayer(layerId);
-                }
-                updatePermalinkDisplay();
-            },
-            mapOptions: mapOptions,
-            moveCallback: function(o) {
-                pl.setCenter(o.center);
-                pl.setZoom(o.zoom);
-                updatePermalinkDisplay();
-                $permalink.permalink('dismiss');
-            },
-            layers: {
-                maplite: [
-                    new $.nemac.MapliteDataSource(
-                        MAPLITE_CONFIG.stations.data,
-                        MAPLITE_CONFIG.stations.name,
-                        MAPLITE_CONFIG.stations.id,
-                        $.nemac.MARKER_COLORS.RED,
-                        MAPLITE_CONFIG.stations.projection,
-                        null,
-                        function( zoom, points ) {
-                            var filtered = [];
-
-                            var cutoff = 1;
-
-                            if ( 6 <= zoom && zoom < 8  ) {
-                                cutoff = 2;
-                            } else if ( 8 <= zoom && zoom < 10) {
-                                cutoff = 3;
-                            } else if ( 10 <= zoom && zoom < 12 ) {
-                                cutoff = 4;
-                            } else if ( 12 <= zoom ) {
-                                cutoff = 5;
-                            }
-
-                            $.each(points, function( i, point ) {
-                                if ( point.weight <= cutoff ) {
-                                    filtered.push( point );
-                                }
-                            });
-
-                            return filtered;
-                        }
-                    )]
-            },
-            iconPath: 'img/',
-            useLayerSelector : false,
-            selectCallback: clickPoint,
-            onCreate: function(mL) {
-                rememberML(mL);
-
-                ceui.enabled(true);
-
-                // look at the permalink URL info to determine which data variable buttons should
-                // be initially selected
-                var varIds = {};
-                if (pl.haveGraphs()) {
-                    pl.getGraphs().forEach(function(graph) {
-                        varIds[ graph.type ] = true;
-                    });
-                } else {
-                    // if no graphs were present in permalink URL, default to having all vars selected
-                    GRAPH_VARIDS.forEach(function(varId) {
-                        varIds[ varId ] = true;
-                    });
-                }
-
-                // set the data variables in the UI
-                ceui.setDataVariables([
-                    { id : "TEMP",     name : "TEMPERATURE",   selected : varIds["TEMP"]     },
-                    { id : "PRCP_YTD", name : "PRECIPITATION", selected : varIds["PRCP_YTD"] }
-                ]);
-
-                // deploy any graphs present in the permalink URL:
-                var stationIds = {};
-                if (pl.haveGraphs()) {
-                    pl.getGraphs().forEach(function(graph) {
-                        stationIds[ graph.id ] = true;
-                    });
-                    stationIds = Object.keys(stationIds);
-                    stationIds.forEach(function(stationId) {
-                        var point = mL.getPoint('lyr_ghcnd', "GHCND:" + stationId);
-                        ceui.showStation({ id : point.id, name : point.name, latlon : "" });
-                        mL.selectPoint( 'lyr_ghcnd', point.id );
-                    });
-                }
-
-                // turn on any overlay layers present in the permalink URL:
-                pl.getLayers().forEach(function(layer) {
-                    mL.setLayerVisibility(layer.id, true);
-                    mL.setLayerOpacity(layer.id, layer.opacity);
-                    ceui.setLayerVisibility(layer.id, true);
-                    ceui.setLayerOpacity(layer.id, layer.opacity);
-                });
-
-		// set base layer, if defined
-		if (pl.haveBl()) {
-		    var bl = pl.getBl();
-		    mL.setBaseLayer(bl);
-
-		    // TODO improve baselayer type translation
-		    // set the selector to the opposite of current base layer
-		    var baseLayer = ceui.STREET_BASELAYER;
-		    if (bl === "b_a" ) {
-			baseLayer = ceui.IMAGERY_BASELAYER;
-		    }
-
-		    ceui.setBaseLayerSelector(baseLayer);
-		}
-
-                // TODO is this problematic to move this into the onCreate method, as opposed to outside as it was before?
-                // initialize the pl object from the initial map state:
-                (function(o) {
-                    pl.setCenter(o.center);
-                    pl.setZoom(o.zoom);
-                    updatePermalinkDisplay();
-                }($mapl.mapLite('getCenterAndZoom')));
-
-
-                if (pl.havePerspective()) {
-                    ceui.setPerspective(pl.getPerspective());
-                } else {
-                    if (pl.haveGraphs()) {
-                        ceui.setPerspective(ceui.GRAPHS_PERSPECTIVE);
-                        pl.setPerspective(ceui.GRAPHS_PERSPECTIVE);
-                    } else {
-                        ceui.setPerspective(ceui.LAYERS_PERSPECTIVE);
-                        pl.setPerspective(ceui.LAYERS_PERSPECTIVE);
-                    }
-                    updatePermalinkDisplay();
-                }
-
-            }
-        });
+    // Clear out the list of current layers (gets repopulated a few lines below)
+    currentTopicLayerIds = [];
+    // Set the layer groups
+    ceui.setLayerGroups(topicsById[topicId].subGroups.map(function(subgroup) {
+      return { id : subgroup.id, name : subgroup.name };
+    }));
+    // Set the layers for each group
+    topicsById[topicId].subGroups.forEach(function(subgroup) {
+      ceui.setLayers(subgroup.id,
+                     subgroup.layers.map(function(layerId) {
+                       currentTopicLayerIds.push(layerId);
+                       return overlaysById[layerId];
+                     }));
     });
+    pl.setTp(topicId);
+    updatePermalinkDisplay();
+  }
 
-    // removed code exhibit "A" was here
+  var baseCsvSourceUrl;
 
-    //
-    // Interactions
-    //
-    function clickPoint( point ) {
-        ceui.showStation({ id : point.id, name : point.name, latlon : "" });
-        // removed code exhibit "B" was here
+  var requests = [
+    $.get( TEMPLATE_LOCATION, function( template ) {
+      STATION_DETAIL_TEMPLATE = template;
+    }),
+    $.getJSON( APP_CONFIG_URL, function( config ) {
+      baseCsvSourceUrl = config.stationData.baseCsvSourceUrl;
+
+      // config muglhelper
+      MuglHelper = new MH.MuglHelper({
+	baseUrl: baseCsvSourceUrl,
+	normalsUrl: config.stationData.normalsCsvSourceUrl
+      });
+
+      // cache the topics by id (note that topics are called 'groups' in the config file)
+      config.groups.forEach(function(group) {
+        topicsById[ group.id ] = group;
+      });
+      // populate the list of topics in the UI
+      var groups = config.groups.map(function(group) { return { id : group.id, name : group.name }; });
+      ceui.setTopics(groups);
+
+      //
+      // cache the overlay ("map layers") details:
+      //
+      config.overlays.forEach(function(overlay) {
+        overlaysById[ overlay.id ] = overlay;
+      });
+
+      // pre-select whichever group (topic) is present in the permalink URL, if any, otherwise pre-select the first one
+      var i = 0;
+      if (pl.haveTp()) {
+        for (var j=0; j<groups.length; ++j) {
+          if (groups[j].id === pl.getTp()) {
+            i = j;
+            break;
+          }
+        }
+      }
+      ceui.setTopic(groups[i].id);
+      setTopic(groups[i].id, { clearLayers : false });
+
+      MAPLITE_CONFIG = config;
+    })
+  ];
+
+  var $permalink = $( 'div.permLinkButt' ).permalink({ icon : false});
+
+  var pl = Permalink(URL({url: window.location.toString()}));
+
+  function updatePermalinkDisplay() {
+    window.history.replaceState({}, "RDV", pl.toString());
+    $permalink.permalink('url', pl.toString());
+  }
+
+  $.when.apply( $, requests ).done( function(){
+    // get summary
+    $.getJSON( baseCsvSourceUrl + 'summary.json', function( data ) {
+      DATA_SUMMARY = data;
+      doInit();
+    });        
+  });
+
+  function doInit() {
+    var mapOptions = {};
+    // deploy map now that the template is ready
+    if (pl.haveZoom()) {
+      mapOptions.zoom = pl.getZoom();
     }
+    if (pl.haveCenter()) {
+      mapOptions.center = pl.getCenter();
+    }
+    var $mapl = ceui.getMapElement().mapLite({
+      config: MAPLITE_CONFIG,
+      changeOpacityCallback: function( layerId, opacity ) {
+        pl.setLayerOpacity(layerId, opacity);
+        updatePermalinkDisplay();
+      },
+      layerToggleCallback: function( layerId, isEnabled ) {
+        if (isEnabled) {
+          pl.addLayer(layerId);
+        } else {
+          pl.removeLayer(layerId);
+        }
+        updatePermalinkDisplay();
+      },
+      mapOptions: mapOptions,
+      moveCallback: function(o) {
+        pl.setCenter(o.center);
+        pl.setZoom(o.zoom);
+        updatePermalinkDisplay();
+        $permalink.permalink('dismiss');
+      },
+      layers: {
+        maplite: [
+          new $.nemac.MapliteDataSource(
+            MAPLITE_CONFIG.stations.data,
+            MAPLITE_CONFIG.stations.name,
+            MAPLITE_CONFIG.stations.id,
+            $.nemac.MARKER_COLORS.RED,
+            MAPLITE_CONFIG.stations.projection,
+            null,
+            function( zoom, points ) {
+              var filtered = [];
 
-    // removed code exhibit "C" was here
+              var cutoff = 1;
 
-    //
-    // RDV Permalink object
-    //
-    // This object provides a convenient API for translating between permalink URLs and
-    // application state.
-    //
-    // Usage:
-    //    var pl = Permalink(URL(window.location.toString()));
-    //
-    function Permalink(url) {
-        var center = null, zoom = null, gp = null, tp = null, p = null, bl = null;
-        var graphs = [];
-        var layers = [];
-        var scales = {};
-        if ('zoom' in url.params) {
-            zoom = parseInt(url.params.zoom, 10);
-        }
-        if ('center' in url.params) {
-            center = url.params.center.split(',').map(function(s) { return parseFloat(s); });
-        }
-        if ('gp' in url.params) {
-            var fields = url.params.gp.split(':');
-            gp = {
-                'open'  : parseInt(fields[0],10) !== 0
-            };
-            if (fields.length > 1) {
-                gp.width = parseInt(fields[1],10);
+              if ( 6 <= zoom && zoom < 8  ) {
+                cutoff = 2;
+              } else if ( 8 <= zoom && zoom < 10) {
+                cutoff = 3;
+              } else if ( 10 <= zoom && zoom < 12 ) {
+                cutoff = 4;
+              } else if ( 12 <= zoom ) {
+                cutoff = 5;
+              }
+
+              $.each(points, function( i, point ) {
+                if ( point.weight <= cutoff ) {
+                  filtered.push( point );
+                }
+              });
+
+              return filtered;
             }
+          )]
+      },
+      iconPath: 'img/',
+      useLayerSelector : false,
+      selectCallback: clickPoint,
+      onCreate: function(mL) {
+        rememberML(mL);
+
+        ceui.enabled(true);
+
+        // look at the permalink URL info to determine which data variable buttons should
+        // be initially selected
+        var varIds = {};
+        if (pl.haveGraphs()) {
+          pl.getGraphs().forEach(function(graph) {
+            varIds[ graph.type ] = true;
+          });
+        } else {
+          // if no graphs were present in permalink URL, default to having all vars selected
+          GRAPH_VARIDS.forEach(function(varId) {
+            varIds[ varId ] = true;
+          });
         }
-        if ('tp' in url.params) {
-            tp = url.params.tp;
+
+        // set the data variables in the UI
+        ceui.setDataVariables([
+          { id : "TEMP",     name : "TEMPERATURE",   selected : varIds["TEMP"]     },
+          { id : "PRCP_YTD", name : "PRECIPITATION", selected : varIds["PRCP_YTD"] }
+        ]);
+
+        // deploy any graphs present in the permalink URL:
+        var stationIds = {};
+        if (pl.haveGraphs()) {
+          pl.getGraphs().forEach(function(graph) {
+            stationIds[ graph.id ] = true;
+          });
+          stationIds = Object.keys(stationIds);
+          stationIds.forEach(function(stationId) {
+            var point = mL.getPoint('lyr_ghcnd', "GHCND:" + stationId);
+            ceui.showStation({ id : point.id, name : point.name, latlon : "" });
+            mL.selectPoint( 'lyr_ghcnd', point.id );
+          });
         }
-        if ('p' in url.params) {
-            if (url.params.p === "L") {
-                p = ceui.LAYERS_PERSPECTIVE;
-            } else {
-                p = ceui.GRAPHS_PERSPECTIVE;
-            }
-        }
-        if ('graphs' in url.params) {
-            url.params.graphs.split(',').forEach(function(graphString) {
-                var fields = graphString.split(':');
-                graphs.push({id:fields[0], type:fields[1]});
-            });
-        }
-        if ('scales' in url.params) {
-            url.params.scales.split(',').forEach(function(scale) {
-                var fields = scale.split(':');
-                /////////////////////////////////////////////////////////////////////////////
-                // temporary patch to provide backward compatibility with permalink URLs that
-                // used the old vertical axis binding names ("tempc", "ytd-prcpmm", etc):
-                if (fields[0] === "tempc") { fields[0] = "temp"; }
-                else if (fields[0] === "ytd-prcpmm") { fields[0] = "ytd-prcp"; }
-                else if (fields[0] === "prcpmm") { fields[0] = "prcp"; }
-                else if (fields[0] === "snowmm") { fields[0] = "snow"; }
-                // end of temporary patch; remove this patch once all links have been changed;
-                // see https://github.com/nemac/climate-explorer/issues/26
-                /////////////////////////////////////////////////////////////////////////////
-                scales[fields[0]] = { min : fields[1], max : fields[2] };
-            });
-        }
-        if ('layers' in url.params) {
-            url.params.layers.split(',').forEach(function(layerString) {
-                var fields = layerString.split(':');
-                layers.push({id:fields[0], opacity:fields[1]});
-            });
-        }
-	if ('bl' in url.params) {
-	    bl = url.params.bl;
+
+        // turn on any overlay layers present in the permalink URL:
+        pl.getLayers().forEach(function(layer) {
+          mL.setLayerVisibility(layer.id, true);
+          mL.setLayerOpacity(layer.id, layer.opacity);
+          ceui.setLayerVisibility(layer.id, true);
+          ceui.setLayerOpacity(layer.id, layer.opacity);
+        });
+
+	// set base layer, if defined
+	if (pl.haveBl()) {
+	  var bl = pl.getBl();
+	  mL.setBaseLayer(bl);
+
+	  // TODO improve baselayer type translation
+	  // set the selector to the opposite of current base layer
+	  var baseLayer = ceui.STREET_BASELAYER;
+	  if (bl === "b_a" ) {
+	    baseLayer = ceui.IMAGERY_BASELAYER;
+	  }
+
+	  ceui.setBaseLayerSelector(baseLayer);
 	}
-        return {
-            'toString' : function() { return url.toString(); },
-            'haveCenter' : function() { return center !== null; },
-            'getCenter'  : function() { return center; },
-            'setCenter'  : function(c) {
-                center = c;
-                url.params.center = sprintf("%.1f", center[0]) + "," + sprintf("%.1f", center[1]);
-            },
-            'haveZoom' : function() { return zoom !== null; },
-            'getZoom'  : function() { return zoom; },
-            'setZoom'  : function(z) {
-                zoom = z;
-                url.params.zoom = zoom.toString();
-            },
-            'haveTp'   : function() { return tp !== null; },
-            'getTp'    : function() { return tp; },
-            'setTp'    : function(t) {
-                tp = t;
-                url.params.tp = t;
-            },
-            'havePerspective'   : function() { return p !== null; },
-            'getPerspective'    : function() { return p; },
-            'setPerspective'    : function(q) {
-                p = q;
-                if (p === ceui.LAYERS_PERSPECTIVE) {
-                    url.params.p = "L";
-                } else {
-                    url.params.p = "G";
-                }
-            },
-            'haveGp'   : function() { return gp !== null; },
-            'getGp'    : function() { return gp; },
-            'setGp'    : function(g) {
-                gp = g;
-                url.params.gp = gp.open ? "1" : "0";
-                if ('width' in gp) {
-                    url.params.gp = url.params.gp + ":" + gp.width;
-                }
-            },
-            'haveGraphs' : function() { return graphs.length > 0; },
-            'getGraphs' : function() { return graphs; },
-            'addGraph' : function(graph) {
-                var i;
-                // don't add this graph if it's already in the list
-                for (i=0; i<graphs.length; ++i) {
-                    if (graphs[i].id === graph.id && graphs[i].type == graph.type) {
-                        return;
-                    }
-                }
-                graphs.push(graph);
-                url.params.graphs = graphs.map(function(g) { return g.id + ":" + g.type; }).join(",");
-            },
-            'removeGraph' : function(graph) {
-                for ( var i = graphs.length - 1; i >= 0; i-- ) {
-                    if (graphs[i].type === graph.type && graphs[i].id === graph.id) {
-                        graphs.splice ( i, 1 );
-                        break;
-                    }
-                }
 
-                if (graphs.length > 0) {
-                    url.params.graphs = graphs.map(function(g) { return g.id + ":" + g.type; }).join(",");
-                } else {
-                    delete url.params.graphs;
-                }
-            },
-	    'removeStation' : function(id) {
-                for ( var i = graphs.length - 1; i >= 0; i-- ) {
-                    if (graphs[i].id === id) {
-                        graphs.splice ( i, 1 );
-                    }
-                }
+        // initialize the pl object from the initial map state:
+        (function(o) {
+          pl.setCenter(o.center);
+          pl.setZoom(o.zoom);
+          updatePermalinkDisplay();
+        }($mapl.mapLite('getCenterAndZoom')));
 
-                if (graphs.length > 0) {
-                    url.params.graphs = graphs.map(function(g) { return g.id + ":" + g.type; }).join(",");
-                } else {
-                    delete url.params.graphs;
-                }
-	    },
-            'setScales' : function(aR) {
-                var bindingId;
-                for (bindingId in aR) {
-                    if (!(bindingId in scales)) {
-                        scales[bindingId] = {};
-                    }
-                    scales[bindingId].min = aR[bindingId].min;
-                    scales[bindingId].max = aR[bindingId].max;
-                }
-                url.params.scales = Object.keys(scales).map(function(bindingId) {
-                    return bindingId.replace("-binding", "") + ":" +
-                        sprintf("%.1f", Number(scales[bindingId].min)) + ":" +
-                        sprintf("%.1f", Number(scales[bindingId].max));
-                }).join(",");
-            },
-            'haveScales' : function() {
-                return Object.keys(scales).length > 0;
-            },
-            'getScales' : function() { return scales; },
-            'haveLayers' : function() { return layers.length > 0; },
-            'getLayers' : function() { return layers; },
-            'addLayer' : function(layerId) {
-                var i;
-                // don't add this layer if it's already in the list
-                for (i=0; i<layers.length; ++i) {
-                    if (layers[i].id === layerId) {
-                        return;
-                    }
-                }
-                layers.push({id : layerId, opacity : 1});
-                url.params.layers = layers.map(function(lyr) { return lyr.id + ":" + lyr.opacity; }).join(",");
-            },
-            'setLayerOpacity' : function(layerId, opacity) {
-                var i;
-                // don't add this layer if it's already in the list
-                for (i=0; i<layers.length; ++i) {
-                    if (layers[i].id === layerId) {
-                        layers[i].opacity = opacity;
-                        url.params.layers = layers.map(function(g) { return g.id + ":" + g.opacity; }).join(",");
-                        return;
-                    }
-                }
-            },
-            'clearLayers' : function() {
-                layers = [];
-                delete url.params.layers;
-            },
-            'removeLayer' : function(layerId) {
-                for ( var i = layers.length - 1; i >= 0; i-- ) {
-                    if (layers[i].id === layerId) {
-                        layers.splice ( i, 1 );
-                        break;
-                    }
-                }
-                if (layers.length > 0) {
-                    url.params.layers = layers.map(function(g) { return g.id + ":" + g.opacity; }).join(",");
-                } else {
-                    delete url.params.layers;
-                }
-            },
-	    'setBl': function(bl) {
-		url.params.bl = bl;
-	    },
-	    'haveBl': function() { return bl !== null;  },
-	    'getBl': function() { return bl }
-        };
+
+        if (pl.havePerspective()) {
+          ceui.setPerspective(pl.getPerspective());
+        } else {
+          if (pl.haveGraphs()) {
+            ceui.setPerspective(ceui.GRAPHS_PERSPECTIVE);
+            pl.setPerspective(ceui.GRAPHS_PERSPECTIVE);
+          } else {
+            ceui.setPerspective(ceui.LAYERS_PERSPECTIVE);
+            pl.setPerspective(ceui.LAYERS_PERSPECTIVE);
+          }
+          updatePermalinkDisplay();
+        }
+
+      }
+    });
+  }
+
+  // removed code exhibit "A" was here
+
+  //
+  // Interactions
+  //
+  function clickPoint( point ) {
+    ceui.showStation({ id : point.id, name : point.name, latlon : "" });
+    // removed code exhibit "B" was here
+  }
+
+  // removed code exhibit "C" was here
+
+  //
+  // RDV Permalink object
+  //
+  // This object provides a convenient API for translating between permalink URLs and
+  // application state.
+  //
+  // Usage:
+  //    var pl = Permalink(URL(window.location.toString()));
+  //
+  function Permalink(url) {
+    var center = null, zoom = null, gp = null, tp = null, p = null, bl = null;
+    var graphs = [];
+    var layers = [];
+    var scales = {};
+    if ('zoom' in url.params) {
+      zoom = parseInt(url.params.zoom, 10);
     }
+    if ('center' in url.params) {
+      center = url.params.center.split(',').map(function(s) { return parseFloat(s); });
+    }
+    if ('gp' in url.params) {
+      var fields = url.params.gp.split(':');
+      gp = {
+        'open'  : parseInt(fields[0],10) !== 0
+      };
+      if (fields.length > 1) {
+        gp.width = parseInt(fields[1],10);
+      }
+    }
+    if ('tp' in url.params) {
+      tp = url.params.tp;
+    }
+    if ('p' in url.params) {
+      if (url.params.p === "L") {
+        p = ceui.LAYERS_PERSPECTIVE;
+      } else {
+        p = ceui.GRAPHS_PERSPECTIVE;
+      }
+    }
+    if ('graphs' in url.params) {
+      url.params.graphs.split(',').forEach(function(graphString) {
+        var fields = graphString.split(':');
+        graphs.push({id:fields[0], type:fields[1]});
+      });
+    }
+    if ('scales' in url.params) {
+      url.params.scales.split(',').forEach(function(scale) {
+        var fields = scale.split(':');
+        /////////////////////////////////////////////////////////////////////////////
+        // temporary patch to provide backward compatibility with permalink URLs that
+        // used the old vertical axis binding names ("tempc", "ytd-prcpmm", etc):
+        if (fields[0] === "tempc") { fields[0] = "temp"; }
+        else if (fields[0] === "ytd-prcpmm") { fields[0] = "ytd-prcp"; }
+        else if (fields[0] === "prcpmm") { fields[0] = "prcp"; }
+        else if (fields[0] === "snowmm") { fields[0] = "snow"; }
+        // end of temporary patch; remove this patch once all links have been changed;
+        // see https://github.com/nemac/climate-explorer/issues/26
+        /////////////////////////////////////////////////////////////////////////////
+        scales[fields[0]] = { min : fields[1], max : fields[2] };
+      });
+    }
+    if ('layers' in url.params) {
+      url.params.layers.split(',').forEach(function(layerString) {
+        var fields = layerString.split(':');
+        layers.push({id:fields[0], opacity:fields[1]});
+      });
+    }
+    if ('bl' in url.params) {
+      bl = url.params.bl;
+    }
+    return {
+      'toString' : function() { return url.toString(); },
+      'haveCenter' : function() { return center !== null; },
+      'getCenter'  : function() { return center; },
+      'setCenter'  : function(c) {
+        center = c;
+        url.params.center = sprintf("%.1f", center[0]) + "," + sprintf("%.1f", center[1]);
+      },
+      'haveZoom' : function() { return zoom !== null; },
+      'getZoom'  : function() { return zoom; },
+      'setZoom'  : function(z) {
+        zoom = z;
+        url.params.zoom = zoom.toString();
+      },
+      'haveTp'   : function() { return tp !== null; },
+      'getTp'    : function() { return tp; },
+      'setTp'    : function(t) {
+        tp = t;
+        url.params.tp = t;
+      },
+      'havePerspective'   : function() { return p !== null; },
+      'getPerspective'    : function() { return p; },
+      'setPerspective'    : function(q) {
+        p = q;
+        if (p === ceui.LAYERS_PERSPECTIVE) {
+          url.params.p = "L";
+        } else {
+          url.params.p = "G";
+        }
+      },
+      'haveGp'   : function() { return gp !== null; },
+      'getGp'    : function() { return gp; },
+      'setGp'    : function(g) {
+        gp = g;
+        url.params.gp = gp.open ? "1" : "0";
+        if ('width' in gp) {
+          url.params.gp = url.params.gp + ":" + gp.width;
+        }
+      },
+      'haveGraphs' : function() { return graphs.length > 0; },
+      'getGraphs' : function() { return graphs; },
+      'addGraph' : function(graph) {
+        var i;
+        // don't add this graph if it's already in the list
+        for (i=0; i<graphs.length; ++i) {
+          if (graphs[i].id === graph.id && graphs[i].type == graph.type) {
+            return;
+          }
+        }
+        graphs.push(graph);
+        url.params.graphs = graphs.map(function(g) { return g.id + ":" + g.type; }).join(",");
+      },
+      'removeGraph' : function(graph) {
+        for ( var i = graphs.length - 1; i >= 0; i-- ) {
+          if (graphs[i].type === graph.type && graphs[i].id === graph.id) {
+            graphs.splice ( i, 1 );
+            break;
+          }
+        }
+
+        if (graphs.length > 0) {
+          url.params.graphs = graphs.map(function(g) { return g.id + ":" + g.type; }).join(",");
+        } else {
+          delete url.params.graphs;
+        }
+      },
+      'removeStation' : function(id) {
+        for ( var i = graphs.length - 1; i >= 0; i-- ) {
+          if (graphs[i].id === id) {
+            graphs.splice ( i, 1 );
+          }
+        }
+
+        if (graphs.length > 0) {
+          url.params.graphs = graphs.map(function(g) { return g.id + ":" + g.type; }).join(",");
+        } else {
+          delete url.params.graphs;
+        }
+      },
+      'setScales' : function(aR) {
+        var bindingId;
+        for (bindingId in aR) {
+          if (!(bindingId in scales)) {
+            scales[bindingId] = {};
+          }
+          scales[bindingId].min = aR[bindingId].min;
+          scales[bindingId].max = aR[bindingId].max;
+        }
+        url.params.scales = Object.keys(scales).map(function(bindingId) {
+          return bindingId.replace("-binding", "") + ":" +
+            sprintf("%.1f", Number(scales[bindingId].min)) + ":" +
+            sprintf("%.1f", Number(scales[bindingId].max));
+        }).join(",");
+      },
+      'haveScales' : function() {
+        return Object.keys(scales).length > 0;
+      },
+      'getScales' : function() { return scales; },
+      'haveLayers' : function() { return layers.length > 0; },
+      'getLayers' : function() { return layers; },
+      'addLayer' : function(layerId) {
+        var i;
+        // don't add this layer if it's already in the list
+        for (i=0; i<layers.length; ++i) {
+          if (layers[i].id === layerId) {
+            return;
+          }
+        }
+        layers.push({id : layerId, opacity : 1});
+        url.params.layers = layers.map(function(lyr) { return lyr.id + ":" + lyr.opacity; }).join(",");
+      },
+      'setLayerOpacity' : function(layerId, opacity) {
+        var i;
+        // don't add this layer if it's already in the list
+        for (i=0; i<layers.length; ++i) {
+          if (layers[i].id === layerId) {
+            layers[i].opacity = opacity;
+            url.params.layers = layers.map(function(g) { return g.id + ":" + g.opacity; }).join(",");
+            return;
+          }
+        }
+      },
+      'clearLayers' : function() {
+        layers = [];
+        delete url.params.layers;
+      },
+      'removeLayer' : function(layerId) {
+        for ( var i = layers.length - 1; i >= 0; i-- ) {
+          if (layers[i].id === layerId) {
+            layers.splice ( i, 1 );
+            break;
+          }
+        }
+        if (layers.length > 0) {
+          url.params.layers = layers.map(function(g) { return g.id + ":" + g.opacity; }).join(",");
+        } else {
+          delete url.params.layers;
+        }
+      },
+      'setBl': function(bl) {
+	url.params.bl = bl;
+      },
+      'haveBl': function() { return bl !== null;  },
+      'getBl': function() { return bl }
+    };
+  }
 });
 
 ////

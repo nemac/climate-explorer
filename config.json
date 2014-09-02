@@ -1,527 +1,544 @@
 {
-    "stations" : {
-       "data" : "testdata/filtered_stations.json",
-       "name" : "GHCND Stations",
-       "id"   : "lyr_ghcnd",
-       "projection" : "EPSG:4326"
-    },
-    "bases": [{
-        "id": "b_a",
-        "type": "arcgis",
-        "name": "Street",
-        "url": "http://server.arcgisonline.com/ArcGIS/rest/services/World_Street_Map/MapServer",
-        "infoCache": "testdata/world_street_map_info_cache.json",
-        "isDefault": true
+  "stationData": {
+    "baseCsvSourceUrl": "https://s3.amazonaws.com/nemac-ghcnd/",
+    "normalsCsvSourceUrl": "https://s3.amazonaws.com/nemac-normals/NORMAL_"
+  },
+  "stations": {
+    "data": "testdata/filtered_stations.json",
+    "name": "GHCND Stations",
+    "id": "lyr_ghcnd",
+    "projection": "EPSG:4326"
+  },
+  "bases": [{
+    "id": "b_a",
+    "type": "arcgis",
+    "name": "Street",
+    "url": "http://server.arcgisonline.com/ArcGIS/rest/services/World_Street_Map/MapServer",
+    "infoCache": "testdata/world_street_map_info_cache.json",
+    "isDefault": true
+  }, {
+    "id": "b_b",
+    "type": "arcgis",
+    "name": "Imagery",
+    "url": "http://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer",
+    "infoCache": "testdata/world_imagery_info_cache.json"
+  }],
+  "overlays": [{
+    "id": "aaa",
+    "name": "Current Drought",
+    "url": "http://torka.unl.edu:8080/cgi-bin/mapserv.exe?map=/ms4w/apps/dm/service/usdm_current_wms.map",
+    "layers": "usdm_current",
+    "info": {
+      "sourceUrl": "http://droughtmonitor.unl.edu",
+      "sourceEntity": "US Drought Monitor",
+      "layerDescription": "This layer shows the most recent US Drought Monitor zones.",
+      "legendImage": "legends/legendimages/aaa.png"
+    }
+  }, {
+    "id": "aab",
+    "name": "Sea Level Inundation (6ft)",
+    "url": "http://csc.noaa.gov/arcgis/services/dc_slr/slr_6ft/MapServer/WMSServer",
+    "projection": "EPSG:3857",
+    "layers": "0",
+    "info": {
+      "sourceUrl": "http://csc.noaa.gov/digitalcoast/",
+      "sourceEntity": "NOAA Coastal Services Center",
+      "layerDescription": "This layer shows the 6 foot sea level innundation region.",
+      "legendImage": "legends/legendimages/aab.png"
+    }
+  }, {
+    "id": "aac",
+    "name": "Sea Level Inundation (2ft)",
+    "url": "http://csc.noaa.gov/arcgis/services/dc_slr/slr_2ft/MapServer/WMSServer",
+    "projection": "EPSG:3857",
+    "layers": "0",
+    "info": {
+      "sourceUrl": "http://csc.noaa.gov/digitalcoast/",
+      "sourceEntity": "NOAA Coastal Services Center",
+      "layerDescription": "This layer shows the 2 foot sea level innundation region.",
+      "legendImage": "legends/legendimages/aab.png"
+    }
+  }, {
+    "id": "aad",
+    "name": "Sea Level Inundation (3ft)",
+    "url": "http://csc.noaa.gov/arcgis/services/dc_slr/slr_3ft/MapServer/WMSServer",
+    "projection": "EPSG:3857",
+    "layers": "0",
+    "info": {
+      "sourceUrl": "http://csc.noaa.gov/digitalcoast/",
+      "sourceEntity": "NOAA Coastal Services Center",
+      "layerDescription": "This layer shows the 3 foot sea level innundation region.",
+      "legendImage": "legends/legendimages/aab.png"
+    }
+  }, {
+    "id": "aae",
+    "name": "Sea Level Inundation (4ft)",
+    "url": "http://csc.noaa.gov/arcgis/services/dc_slr/slr_4ft/MapServer/WMSServer",
+    "projection": "EPSG:3857",
+    "layers": "0",
+    "info": {
+      "sourceUrl": "http://csc.noaa.gov/digitalcoast/",
+      "sourceEntity": "NOAA Coastal Services Center",
+      "layerDescription": "This layer shows the 4 foot sea level innundation region.",
+      "legendImage": "legends/legendimages/aab.png"
+    }
+  }, {
+    "id": "aaf",
+    "name": "Sea Level Inundation (5ft)",
+    "url": "http://csc.noaa.gov/arcgis/services/dc_slr/slr_5ft/MapServer/WMSServer",
+    "projection": "EPSG:3857",
+    "layers": "0",
+    "info": {
+      "sourceUrl": "http://csc.noaa.gov/digitalcoast/",
+      "sourceEntity": "NOAA Coastal Services Center",
+      "layerDescription": "This layer shows the 5 foot sea level innundation region.",
+      "legendImage": "legends/legendimages/aab.png"
+    }
+  }, {
+    "id": "aag",
+    "name": "Sea Level Inundation (1ft)",
+    "url": "http://csc.noaa.gov/arcgis/services/dc_slr/slr_1ft/MapServer/WMSServer",
+    "projection": "EPSG:3857",
+    "layers": "0",
+    "info": {
+      "sourceUrl": "http://csc.noaa.gov/digitalcoast/",
+      "sourceEntity": "NOAA Coastal Services Center",
+      "layerDescription": "This layer shows the 1 foot sea level innundation region.",
+      "legendImage": "legends/legendimages/aab.png"
+    }
+  }, {
+    "id": "aah",
+    "name": "Hospitals",
+    "url": "http://hsip.geoplatform.gov/arcgis/services/HSIP_Public/PublicHealth/MapServer/WMSServer",
+    "projection": "EPSG:3857",
+    "layers": "0",
+    "info": {
+      "sourceUrl": "http://www.geoplatform.gov/blog/homeland-security-infrastructure-program-hsip-public-domain-services-geospatial-platform",
+      "sourceEntity": "Homeland Security Infrastructure Program",
+      "layerDescription": "This layer shows the locations of hospitals.",
+      "legendImage": "legends/legendimages/aah.png"
+    }
+  }, {
+    "id": "aai",
+    "name": "Airports and Helipads",
+    "url": "http://hsip.geoplatform.gov/arcgis/services/HSIP_Public/TransportationAir/MapServer/WMSServer",
+    "projection": "EPSG:3857",
+    "layers": "0",
+    "info": {
+      "sourceUrl": "http://www.geoplatform.gov/blog/homeland-security-infrastructure-program-hsip-public-domain-services-geospatial-platform",
+      "sourceEntity": "Homeland Security Infrastructure Program",
+      "layerDescription": "This layer shows the locations of airports and helipads.",
+      "legendImage": "legends/legendimages/aai.png"
+    }
+  }, {
+    "id": "aaj",
+    "name": "Bridges and Tunnels",
+    "url": "http://hsip.geoplatform.gov/arcgis/services/HSIP_Public/TransportationGround/MapServer/WMSServer",
+    "projection": "EPSG:3857",
+    "layers": [ "0", "1" ],
+    "info": {
+      "sourceUrl": "http://www.geoplatform.gov/blog/homeland-security-infrastructure-program-hsip-public-domain-services-geospatial-platform",
+      "sourceEntity": "Homeland Security Infrastructure Program",
+      "layerDescription": "This layer shows the locations of bridges and tunnels.",
+      "legendImage": "legends/legendimages/aaj.png"
+    }
+  }, {
+    "id": "aak",
+    "name": "Coastal Vulnerability to Sea Level Rise",
+    "url": "http://coastalmap.marine.usgs.gov/cmgp/services/National/coastal_vulnerability_index/MapServer/WMSServer",
+    "projection": "EPSG:3857",
+    "layers": ["3", "7", "11" ],
+    "info": {
+      "sourceUrl": "http://marine.usgs.gov/coastalchangehazardsportal/ui/info/item/CDKmLpj",
+      "sourceEntity": "USGS CIDA CMGP",
+      "layerDescription": "This layer shows the relative susceptibility of the Nation's coast to sea-level rise through the use of a coastal vulnerability index",
+      "legendImage": "legends/legendimages/aak.png"
+    }
+  }, {
+    "id": "aal",
+    "name": "Land Cover (2011)",
+    "url": "http://raster.nationalmap.gov/arcgis/services/LandCover/USGS_EROS_LandCover_NLCD/MapServer/WMSServer?service=WMS",
+    "layers": "30",
+    "projection": "EPSG:3857",
+    "info": {
+      "sourceUrl": "http://www.mrlc.gov/nlcd2011.php",
+      "sourceEntity": "Multi-Resolution Land Characteristics Consortium",
+      "layerDescription": "This layer shows 2011 landcover classified into several usage types.",
+      "legendImage": "legends/legendimages/aal.png"
+    }
+  }, {
+    "id": "aam",
+    "name": "Social Vulnerability Index",
+    "url": "http://www.csc.noaa.gov/ArcGISPUB/rest/services/dc_slr/SocioEconimc/MapServer/export",
+    "projection": "EPSG:3857",
+    "layers": "7",
+    "type": "REST",
+    "info": {
+      "sourceUrl": "http://webra.cas.sc.edu/hvri/products/sovi.aspx",
+      "sourceEntity": "NOAA Coastal Services Center and USC Hazards and Vulnerability Research Institute",
+      "layerDescription": "The Social Vulnerability Index (SOVI) measures the social vulnerability of U.S. counties to environmental hazards.",
+      "legendImage": "legends/legendimages/aam.png"
+    }
+  }, {
+    "id": "aan",
+    "name": "Flood Hazard Zones",
+    "url": "https://hazards.fema.gov/gis/nfhl/services/public/NFHLWMS/MapServer/WmsServer",
+    "projection": "EPSG:4326",
+    "layers": "4",
+    "info": {
+      "sourceUrl": "https://hazards.fema.gov",
+      "sourceEntity": "FEMA",
+      "layerDescription": "The purpose of the online mapping tool is to provide coastal managers, planners, and stakeholders a preliminary look at exposures to coastal flooding hazards.",
+      "legendImage": "legends/legendimages/aan.png"
+    }
+  }, {
+    "id": "aao",
+    "name": "Drought (9/24/2013)",
+    "url": "http://torka.unl.edu:8080/cgi-bin/mapserv.exe?map=/ms4w/apps/dm/service/usdm130924_wms.map",
+    "layers": "usdm130924",
+    "info": {
+      "sourceUrl": "http://droughtmonitor.unl.edu",
+      "sourceEntity": "US Drought Monitor",
+      "layerDescription": "This layer shows Drought (9/24/2013).",
+      "legendImage": "legends/legendimages/aaa.png"
+    }
+  }, {
+    "id": "aap",
+    "name": "Cropland",
+    "url": "http://129.174.131.7/cgi/wms_cdlall.cgi",
+    "projection": "EPSG:4326",
+    "layers": "cdl_2013",
+    "info": {
+      "sourceUrl": "http://www.nass.usda.gov/research/Cropland/SARS1a.htm",
+      "sourceEntity": "USDA National Agricultural Statistics Service",
+      "layerDescription": "This layer shows Cropland.",
+      "legendImage": "legends/legendimages/aap.png"
+    }
+  }, {
+    "id": "aaq",
+    "name": "HAZUS Critical Facilities (DEL-NJ-NY)",
+    "url": "http://maps.csc.noaa.gov/arcgis/rest/services/Roadmap/RoadmapPilotMaps_IndividualLayers/MapServer/export",
+    "projection": "EPSG:102100",
+    "layers": "7",
+    "type": "REST",
+    "info": {
+      "sourceUrl": "http://www.csc.noaa.gov/floodexposure/#/configure",
+      "sourceEntity": "NOAA Coastal Services Center",
+      "layerDescription": "This layer shows HAZUS Critical Facilities in Delaware, New Jersey, and New York.",
+      "legendImage": "legends/legendimages/aaq.png"
+    }
+  }, {
+    "id": "aar",
+    "name": "Critical Facility Density (DEL-NJ-NY)",
+    "url": "http://maps.csc.noaa.gov/arcgis/rest/services/Roadmap/RoadmapPilotMaps_IndividualLayers/MapServer/export",
+    "projection": "EPSG:102100",
+    "layers": "6",
+    "type": "REST",
+    "info": {
+      "sourceUrl": "http://www.csc.noaa.gov/floodexposure/#/configure",
+      "sourceEntity": "NOAA Coastal Services Center",
+      "layerDescription": "This layer shows Critical Facility Density in Delaware, New Jersey, and New York.",
+      "legendImage": "legends/legendimages/aar.png"
+    }
+  }, {
+    "id": "aas",
+    "name": "Population Density (DEL-NJ-NY)",
+    "url": "http://maps.csc.noaa.gov/arcgis/rest/services/Roadmap/RoadmapPilotMaps_IndividualLayers/MapServer/export",
+    "projection": "EPSG:102100",
+    "layers": "1",
+    "type": "REST",
+    "info": {
+      "sourceUrl": "http://www.csc.noaa.gov/floodexposure/#/configure",
+      "sourceEntity": "NOAA Coastal Services Center",
+      "layerDescription": "This layer shows Population Density in Delaware, New Jersey, and New York.",
+      "legendImage": "legends/legendimages/aas.png"
+    }
+  }, {
+    "id": "aat",
+    "name": "Businesses (DEL-NJ-NY)",
+    "url": "http://maps.csc.noaa.gov/arcgis/rest/services/Roadmap/RoadmapPilotMaps_IndividualLayers/MapServer/export",
+    "projection": "EPSG:102100",
+    "layers": "4",
+    "type": "REST",
+    "info": {
+      "sourceUrl": "http://www.csc.noaa.gov/floodexposure/#/configure",
+      "sourceEntity": "NOAA Coastal Services Center",
+      "layerDescription": "This layer shows Businesses in Delaware, New Jersey, and New York.",
+      "legendImage": "legends/legendimages/aat.png"
+    }
+  }, {
+    "id": "aau",
+    "name": "Beaches & Dunes (DEL-NJ-NY)",
+    "url": "http://maps.csc.noaa.gov/arcgis/rest/services/Roadmap/RoadmapPilotMaps_IndividualLayers/MapServer/export",
+    "projection": "EPSG:102100",
+    "layers": "10",
+    "type": "REST",
+    "info": {
+      "sourceUrl": "http://www.csc.noaa.gov/floodexposure/#/configure",
+      "sourceEntity": "NOAA Coastal Services Center",
+      "layerDescription": "This layer shows Beaches & Dunes in Delaware, New Jersey, and New York.",
+      "legendImage": "legends/legendimages/aau.png"
+    }
+  }, {
+    "id": "aav",
+    "name": "Wetlands (DEL-NJ-NY)",
+    "url": "http://maps.csc.noaa.gov/arcgis/rest/services/Roadmap/RoadmapPilotMaps_IndividualLayers/MapServer/export",
+    "projection": "EPSG:102100",
+    "layers": "8",
+    "type": "REST",
+    "info": {
+      "sourceUrl": "http://www.csc.noaa.gov/floodexposure/#/configure",
+      "sourceEntity": "NOAA Coastal Services Center",
+      "layerDescription": "This layer shows Wetlands in Delaware, New Jersey, and New York.",
+      "legendImage": "legends/legendimages/aav.png"
+    }
+  }, {
+    "id": "aaw",
+    "name": "FEMA Flood Zones (DEL-NJ-NY)",
+    "url": "http://maps.csc.noaa.gov/arcgis/rest/services/Roadmap/RoadmapPilot_FEMAFlood/MapServer/export",
+    "projection": "EPSG:102100",
+    "layers": "0",
+    "type": "REST",
+    "info": {
+      "sourceUrl": "http://www.csc.noaa.gov/floodexposure/#/configure",
+      "sourceEntity": "NOAA Coastal Services Center",
+      "layerDescription": "This layer shows FEMA Flood Zones in Delaware, New Jersey, and New York.",
+      "legendImage": "legends/legendimages/aaw.png"
+    }
+  }, {
+    "id": "aax",
+    "name": "Coastal Flood Hazard Composite (DEL-NJ-NY)",
+    "url": "http://maps.csc.noaa.gov/arcgis/rest/services/Roadmap/RoadmapPilot_HazardComposite/MapServer/export",
+    "projection": "EPSG:102100",
+    "layers": "0",
+    "type": "REST",
+    "info": {
+      "sourceUrl": "http://www.csc.noaa.gov/floodexposure/#/configure",
+      "sourceEntity": "NOAA Coastal Services Center",
+      "layerDescription": "This layer shows Coastal Flood Hazard Composite in Delaware, New Jersey, and New York.",
+      "legendImage": "legends/legendimages/aax.png"
+    }
+  }, {
+    "id": "aay",
+    "name": "Probability of High Shoreline Loss",
+    "url": "http://marine.usgs.gov/coastalchangehazardsportal/geoserver/proxied/wms",
+    "layers": "proxied:ProbSLC_conus",
+    "sld": "http://marine.usgs.gov/coastalchangehazardsportal/data/sld/CUtFZvT",
+    "info": {
+      "sourceUrl": "http://marine.usgs.gov/coastalchangehazardsportal/ui/info/item/CARuFN3",
+      "sourceEntity": "USGS CIDA CMGP",
+      "layerDescription": "This layer shows Probability of High Shoreline Loss.",
+      "legendImage": "legends/legendimages/aay.png"
+    }
+  }, {
+    "id": "abb",
+    "name": "Elevation of Dune Crest",
+    "url": "http://marine.usgs.gov/coastalchangehazardsportal/geoserver/proxied/wms",
+    "layers": "proxied:Erosion_Hazards_1394540727188",
+    "sld": "http://marine.usgs.gov/coastalchangehazardsportal/data/sld/CCENsQT",
+    "info": {
+      "sourceUrl": "http://marine.usgs.gov/coastalchangehazardsportal/ui/info/item/CCNHBnK",
+      "sourceEntity": "USGS CIDA CMGP",
+      "layerDescription": "This layer shows Elevation of Dune Crest.",
+      "legendImage": "legends/legendimages/abb.png"
+    }
+  }, {
+    "id": "abc",
+    "name": "Elevation of Dune Toe",
+    "url": "http://marine.usgs.gov/coastalchangehazardsportal/geoserver/proxied/wms",
+    "layers": "proxied:Erosion_Hazards_1394540940323",
+    "sld": "http://marine.usgs.gov/coastalchangehazardsportal/data/sld/CCER1Xg",
+    "info": {
+      "sourceUrl": "http://marine.usgs.gov/coastalchangehazardsportal/ui/info/item/CCNKrhr",
+      "sourceEntity": "USGS CIDA CMGP",
+      "layerDescription": "This layer shows Elevation of Dune Toe.",
+      "legendImage": "legends/legendimages/abc.png"
+    }
+  }, {
+    "id": "abd",
+    "name": "CAT3 Hurricane Prob. of Collision", 
+    "url": "http://marine.usgs.gov/coastalchangehazardsportal/geoserver/proxied/wms",
+    "layers": "proxied:Erosion_Hazards_1394633107610",
+    "sld": "http://marine.usgs.gov/coastalchangehazardsportal/data/sld/CCNXDS5",
+    "info": {
+      "sourceUrl": "http://marine.usgs.gov/coastalchangehazardsportal/ui/info/item/CCHdMRt",
+      "sourceEntity": "USGS CIDA CMGP",
+      "layerDescription": "This layer shows CAT3 Hurricane Prob. of Collision.",
+      "legendImage": "legends/legendimages/abd.png"
+    }
+  }, {
+    "id": "abe",
+    "name": "CAT3 Hurricane Prob. of Overwash", 
+    "url": "http://marine.usgs.gov/coastalchangehazardsportal/geoserver/proxied/wms",
+    "layers": "proxied:Erosion_Hazards_1394814655647",
+    "sld": "http://marine.usgs.gov/coastalchangehazardsportal/data/sld/CD5ZUvX",
+    "info": {
+      "sourceUrl": "http://marine.usgs.gov/coastalchangehazardsportal/ui/info/item/CCHdMRt",
+      "sourceEntity": "USGS CIDA CMGP",
+      "layerDescription": "This layer shows CAT3 Hurricane Prob. of Overwash.",
+      "legendImage": "legends/legendimages/abe.png"
+    }
+  }, {
+    "id": "abf",
+    "name": "CAT3 Hurricane Prob. of Inundation", 
+    "url": "http://marine.usgs.gov/coastalchangehazardsportal/geoserver/proxied/wms",
+    "layers": "proxied:Erosion_Hazards_1394832182359",
+    "sld": "http://marine.usgs.gov/coastalchangehazardsportal/data/sld/CD7wRHj",
+    "info": {
+      "sourceUrl": "http://marine.usgs.gov/coastalchangehazardsportal/ui/info/item/CCHdMRt",
+      "sourceEntity": "USGS CIDA CMGP",
+      "layerDescription": "This layer shows CAT3 Hurricane Prob. of Inundation.",
+      "legendImage": "legends/legendimages/abf.png"
+    }
+  }, {
+    "id": "abg",
+    "name": "CAT3 Hurricane Mean Water Levels", 
+    "url": "http://marine.usgs.gov/coastalchangehazardsportal/geoserver/proxied/wms",
+    "layers": "proxied:Erosion_Hazards_1395148939358",
+    "sld": "http://marine.usgs.gov/coastalchangehazardsportal/data/sld/CDAzqt6",
+    "info": {
+      "sourceUrl": "http://marine.usgs.gov/coastalchangehazardsportal/ui/info/item/CDAzqt6",
+      "sourceEntity": "USGS CIDA CMGP",
+      "layerDescription": "This layer shows CAT3 Hurricane Mean Water Levels.",
+      "legendImage": "legends/legendimages/abg.png"
+    }
+  }, {
+    "id": "abh",
+    "name": "CAT3 Hurricane Extreme Water Levels", 
+    "url": "http://marine.usgs.gov/coastalchangehazardsportal/geoserver/proxied/wms",
+    "layers": "proxied:Erosion_Hazards_1395151999519",
+    "sld": "http://marine.usgs.gov/coastalchangehazardsportal/data/sld/CDARuQk",
+    "info": {
+      "sourceUrl": "http://marine.usgs.gov/coastalchangehazardsportal/ui/info/item/CDARuQk",
+      "sourceEntity": "USGS CIDA CMGP",
+      "layerDescription": "This layer shows CAT3 Hurricane Extreme Water Levels.",
+      "legendImage": "legends/legendimages/abh.png"
+    }
+  }, {
+    "id": "abi",
+    "name": "Weekly NDVI (9/24/2013)", 
+    "url": "http://129.174.131.6/cgi-bin/mapserv",
+    "layers": "Weekly_NDVI_39_2013.09.24_2013.09.30",
+    "projection": "EPSG:4326",
+    "map": "/media/dssiv02/disk5/products/weekly/ndvi/2013/ndvi_39_2013.09.24_2013.09.30.map",
+    "info": {
+      "sourceUrl": "http://csiss.gmu.edu/",
+      "sourceEntity": "CSISS, USDA NASS",
+      "layerDescription": "This layer shows NDVI for September 24, 2013.",
+      "legendImage": "legends/legendimages/abi.png"
+    }
+  }, {
+    "id": "abj",
+    "name": "Weekly VCI (9/24/2013)", 
+    "url": "http://129.174.131.6/cgi-bin/mapserv",
+    "layers": "Weekly_VCI_39_2013.09.24_2013.09.30",
+    "projection": "EPSG:4326",
+    "map": "/media/dssiv02/disk5/products/weekly/vci/2013/vci_39_2013.09.24_2013.09.30.map",
+    "info": {
+      "sourceUrl": "http://csiss.gmu.edu/",
+      "sourceEntity": "CSISS, USDA NASS",
+      "layerDescription": "This layer shows VCI for September 24, 2013.",
+      "legendImage": "legends/legendimages/abj.png"
+    }
+  }, {
+    "id": "abk",
+    "name": "Rivers", 
+    "url": "http://129.174.131.7/cgi/wms_conuswater.cgi",
+    "layers": "conus_major_rivers_national,conus_rivers_regional",
+    "projection": "EPSG:4326",
+    "info": {
+      "sourceUrl": "http://csiss.gmu.edu/",
+      "sourceEntity": "CSISS, USDA NASS",
+      "layerDescription": "This layer shows rivers.",
+      "legendImage": "legends/legendimages/abk.png"
+    }
+  }, {
+    "id": "abl",
+    "name": "Lakes", 
+    "url": "http://129.174.131.7/cgi/wms_conuswater.cgi",
+    "layers": "conus_major_lakes_national,conus_waterareas_regional",
+    "projection": "EPSG:4326",
+    "info": {
+      "sourceUrl": "http://csiss.gmu.edu/",
+      "sourceEntity": "CSISS, USDA NASS",
+      "layerDescription": "This layer shows lakes.",
+      "legendImage": "legends/legendimages/abl.png"
+    }
+  }, {
+    "id": "abm",
+    "name": "Freeway System (National)", 
+    "url": "http://129.174.131.7/cgi/wms_conushighway.cgi",
+    "layers": "conus_freeway_system_national,conus_freeway_system_national_label",
+    "projection": "EPSG:4326",
+    "info": {
+      "sourceUrl": "http://csiss.gmu.edu/",
+      "sourceEntity": "CSISS, USDA NASS",
+      "layerDescription": "This layer shows interstates.",
+      "legendImage": "legends/legendimages/abm.png"
+    }
+  }, {
+    "id": "abn",
+    "name": "Major Highways (Regional)", 
+    "url": "http://129.174.131.7/cgi/wms_conushighway.cgi",
+    "layers": "conus_major_highways_regional,conus_major_highways_regional_label",
+    "projection": "EPSG:4326",
+    "info": {
+      "sourceUrl": "http://csiss.gmu.edu/",
+      "sourceEntity": "CSISS, USDA NASS",
+      "layerDescription": "This layer shows major highways.",
+      "legendImage": "legends/legendimages/abn.png"
+    }
+  }, {
+    "id": "abo",
+    "name": "Forecast", 
+    "url": "http://gis.srh.noaa.gov/arcgis/rest/services/cpc_weather_hazards/MapServer/export",
+    "layers": "3",
+    "projection": "EPSG:4269",
+    "type": "REST",
+    "info": {
+      "sourceUrl": "todo",
+      "sourceEntity": "todo",
+      "layerDescription": "todo",
+      "legendImage": "todo"
+    }
+  }
+	      ],
+  "groups": [{
+    "id": "g_a",
+    "name": "Coastal Flood Risk",
+    "isDefault": true,
+    "subGroups": [{
+      "id": "g_a_a",
+      "name": "Climate Stressors",
+      "layers": [ "aag", "aac", "aad", "aae", "aaf", "aab", "aax", "aaw", "aay", "abd", "abe", "abf", "abg", "abh" ]
     }, {
-        "id": "b_b",
-        "type": "arcgis",
-        "name": "Imagery",
-        "url": "http://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer",
-        "infoCache": "testdata/world_imagery_info_cache.json"
-    }],
-    "overlays": [{
-            "id": "aaa",
-            "name": "Current Drought",
-            "url": "http://torka.unl.edu:8080/cgi-bin/mapserv.exe?map=/ms4w/apps/dm/service/usdm_current_wms.map",
-            "layers": "usdm_current",
-            "info" : {
-                "sourceUrl" : "http://droughtmonitor.unl.edu",
-                "sourceEntity" : "US Drought Monitor",
-                "layerDescription" : "This layer shows the most recent US Drought Monitor zones.",
-                "legendImage" : "legends/legendimages/aaa.png"
-            }
-        }, {
-            "id": "aab",
-            "name": "Sea Level Inundation (6ft)",
-            "url": "http://csc.noaa.gov/arcgis/services/dc_slr/slr_6ft/MapServer/WMSServer",
-            "projection": "EPSG:3857",
-            "layers": "0",
-            "info" : {
-                "sourceUrl" : "http://csc.noaa.gov/digitalcoast/",
-                "sourceEntity" : "NOAA Coastal Services Center",
-                "layerDescription" : "This layer shows the 6 foot sea level innundation region.",
-                "legendImage" : "legends/legendimages/aab.png"
-            }
-        }, {
-            "id": "aac",
-            "name": "Sea Level Inundation (2ft)",
-            "url": "http://csc.noaa.gov/arcgis/services/dc_slr/slr_2ft/MapServer/WMSServer",
-            "projection": "EPSG:3857",
-            "layers": "0",
-            "info" : {
-                "sourceUrl" : "http://csc.noaa.gov/digitalcoast/",
-                "sourceEntity" : "NOAA Coastal Services Center",
-                "layerDescription" : "This layer shows the 2 foot sea level innundation region.",
-                "legendImage" : "legends/legendimages/aab.png"
-            }
-        }, {
-            "id": "aad",
-            "name": "Sea Level Inundation (3ft)",
-            "url": "http://csc.noaa.gov/arcgis/services/dc_slr/slr_3ft/MapServer/WMSServer",
-            "projection": "EPSG:3857",
-            "layers": "0",
-            "info" : {
-                "sourceUrl" : "http://csc.noaa.gov/digitalcoast/",
-                "sourceEntity" : "NOAA Coastal Services Center",
-                "layerDescription" : "This layer shows the 3 foot sea level innundation region.",
-                "legendImage" : "legends/legendimages/aab.png"
-            }
-        }, {
-            "id": "aae",
-            "name": "Sea Level Inundation (4ft)",
-            "url": "http://csc.noaa.gov/arcgis/services/dc_slr/slr_4ft/MapServer/WMSServer",
-            "projection": "EPSG:3857",
-            "layers": "0",
-            "info" : {
-                "sourceUrl" : "http://csc.noaa.gov/digitalcoast/",
-                "sourceEntity" : "NOAA Coastal Services Center",
-                "layerDescription" : "This layer shows the 4 foot sea level innundation region.",
-                "legendImage" : "legends/legendimages/aab.png"
-            }
-        }, {
-            "id": "aaf",
-            "name": "Sea Level Inundation (5ft)",
-            "url": "http://csc.noaa.gov/arcgis/services/dc_slr/slr_5ft/MapServer/WMSServer",
-            "projection": "EPSG:3857",
-            "layers": "0",
-            "info" : {
-                "sourceUrl" : "http://csc.noaa.gov/digitalcoast/",
-                "sourceEntity" : "NOAA Coastal Services Center",
-                "layerDescription" : "This layer shows the 5 foot sea level innundation region.",
-                "legendImage" : "legends/legendimages/aab.png"
-            }
-        }, {
-            "id": "aag",
-            "name": "Sea Level Inundation (1ft)",
-            "url": "http://csc.noaa.gov/arcgis/services/dc_slr/slr_1ft/MapServer/WMSServer",
-            "projection": "EPSG:3857",
-            "layers": "0",
-            "info" : {
-                "sourceUrl" : "http://csc.noaa.gov/digitalcoast/",
-                "sourceEntity" : "NOAA Coastal Services Center",
-                "layerDescription" : "This layer shows the 1 foot sea level innundation region.",
-                "legendImage" : "legends/legendimages/aab.png"
-            }
-        }, {
-            "id": "aah",
-            "name": "Hospitals",
-            "url": "http://hsip.geoplatform.gov/arcgis/services/HSIP_Public/PublicHealth/MapServer/WMSServer",
-            "projection": "EPSG:3857",
-            "layers": "0",
-            "info" : {
-                "sourceUrl" : "http://www.geoplatform.gov/blog/homeland-security-infrastructure-program-hsip-public-domain-services-geospatial-platform",
-                "sourceEntity" : "Homeland Security Infrastructure Program",
-                "layerDescription" : "This layer shows the locations of hospitals.",
-                "legendImage" : "legends/legendimages/aah.png"
-            }
-        }, {
-            "id": "aai",
-            "name": "Airports and Helipads",
-            "url": "http://hsip.geoplatform.gov/arcgis/services/HSIP_Public/TransportationAir/MapServer/WMSServer",
-            "projection": "EPSG:3857",
-            "layers": "0",
-            "info" : {
-                "sourceUrl" : "http://www.geoplatform.gov/blog/homeland-security-infrastructure-program-hsip-public-domain-services-geospatial-platform",
-                "sourceEntity" : "Homeland Security Infrastructure Program",
-                "layerDescription" : "This layer shows the locations of airports and helipads.",
-                "legendImage" : "legends/legendimages/aai.png"
-            }
-        }, {
-            "id": "aaj",
-            "name": "Bridges and Tunnels",
-            "url": "http://hsip.geoplatform.gov/arcgis/services/HSIP_Public/TransportationGround/MapServer/WMSServer",
-            "projection": "EPSG:3857",
-            "layers": [ "0", "1" ],
-            "info" : {
-                "sourceUrl" : "http://www.geoplatform.gov/blog/homeland-security-infrastructure-program-hsip-public-domain-services-geospatial-platform",
-                "sourceEntity" : "Homeland Security Infrastructure Program",
-                "layerDescription" : "This layer shows the locations of bridges and tunnels.",
-                "legendImage" : "legends/legendimages/aaj.png"
-            }
-        }, {
-            "id": "aak",
-            "name": "Coastal Vulnerability to Sea Level Rise",
-            "url": "http://coastalmap.marine.usgs.gov/cmgp/services/National/coastal_vulnerability_index/MapServer/WMSServer",
-            "projection": "EPSG:3857",
-            "layers": ["3", "7", "11" ],
-            "info" : {
-                "sourceUrl" : "http://marine.usgs.gov/coastalchangehazardsportal/ui/info/item/CDKmLpj",
-                "sourceEntity" : "USGS CIDA CMGP",
-                "layerDescription" : "This layer shows the relative susceptibility of the Nation's coast to sea-level rise through the use of a coastal vulnerability index",
-                "legendImage" : "legends/legendimages/aak.png"
-            }
-        }, {
-            "id": "aal",
-            "name": "Land Cover (2011)",
-            "url": "http://raster.nationalmap.gov/arcgis/services/LandCover/USGS_EROS_LandCover_NLCD/MapServer/WMSServer?service=WMS",
-            "layers": "30",
-            "projection": "EPSG:3857",
-            "info" : {
-                "sourceUrl" : "http://www.mrlc.gov/nlcd2011.php",
-                "sourceEntity" : "Multi-Resolution Land Characteristics Consortium",
-                "layerDescription" : "This layer shows 2011 landcover classified into several usage types.",
-                "legendImage" : "legends/legendimages/aal.png"
-            }
-        }, {
-            "id": "aam",
-            "name": "Social Vulnerability Index",
-            "url": "http://www.csc.noaa.gov/ArcGISPUB/rest/services/dc_slr/SocioEconimc/MapServer/export",
-            "projection": "EPSG:3857",
-            "layers": "7",
-            "type": "REST",
-            "info" : {
-                "sourceUrl" : "http://webra.cas.sc.edu/hvri/products/sovi.aspx",
-                "sourceEntity" : "NOAA Coastal Services Center and USC Hazards and Vulnerability Research Institute",
-                "layerDescription" : "The Social Vulnerability Index (SOVI) measures the social vulnerability of U.S. counties to environmental hazards.",
-                "legendImage" : "legends/legendimages/aam.png"
-            }
-        }, {
-	    "id": "aan",
-	        "name": "Flood Hazard Zones",
-		    "url": "https://hazards.fema.gov/gis/nfhl/services/public/NFHLWMS/MapServer/WmsServer",
-            "projection": "EPSG:4326",
-	        "layers": "4",
-            "info" : {
-                "sourceUrl" : "https://hazards.fema.gov",
-                "sourceEntity" : "FEMA",
-                "layerDescription" : "The purpose of the online mapping tool is to provide coastal managers, planners, and stakeholders a preliminary look at exposures to coastal flooding hazards.",
-                "legendImage" : "legends/legendimages/aan.png"
-            }
-		}, {
-            "id": "aao",
-            "name": "Drought (9/24/2013)",
-            "url": "http://torka.unl.edu:8080/cgi-bin/mapserv.exe?map=/ms4w/apps/dm/service/usdm130924_wms.map",
-            "layers": "usdm130924",
-            "info" : {
-                "sourceUrl" : "http://droughtmonitor.unl.edu",
-                "sourceEntity" : "US Drought Monitor",
-                "layerDescription" : "This layer shows Drought (9/24/2013).",
-                "legendImage" : "legends/legendimages/aaa.png"
-            }
-        }, {
-            "id": "aap",
-            "name": "Cropland",
-            "url": "http://129.174.131.7/cgi/wms_cdlall.cgi",
-            "projection": "EPSG:4326",
-            "layers": "cdl_2013",
-            "info" : {
-                "sourceUrl" : "http://www.nass.usda.gov/research/Cropland/SARS1a.htm",
-                "sourceEntity" : "USDA National Agricultural Statistics Service",
-                "layerDescription" : "This layer shows Cropland.",
-                "legendImage" : "legends/legendimages/aap.png"
-            }
-        }, {
-            "id": "aaq",
-            "name": "HAZUS Critical Facilities (DEL-NJ-NY)",
-            "url": "http://maps.csc.noaa.gov/arcgis/rest/services/Roadmap/RoadmapPilotMaps_IndividualLayers/MapServer/export",
-            "projection": "EPSG:102100",
-            "layers": "7",
-            "type": "REST",
-            "info" : {
-                "sourceUrl" : "http://www.csc.noaa.gov/floodexposure/#/configure",
-                "sourceEntity" : "NOAA Coastal Services Center",
-                "layerDescription" : "This layer shows HAZUS Critical Facilities in Delaware, New Jersey, and New York.",
-                "legendImage" : "legends/legendimages/aaq.png"
-            }
-        }, {
-            "id": "aar",
-            "name": "Critical Facility Density (DEL-NJ-NY)",
-            "url": "http://maps.csc.noaa.gov/arcgis/rest/services/Roadmap/RoadmapPilotMaps_IndividualLayers/MapServer/export",
-            "projection": "EPSG:102100",
-            "layers": "6",
-            "type": "REST",
-            "info" : {
-                "sourceUrl" : "http://www.csc.noaa.gov/floodexposure/#/configure",
-                "sourceEntity" : "NOAA Coastal Services Center",
-                "layerDescription" : "This layer shows Critical Facility Density in Delaware, New Jersey, and New York.",
-                "legendImage" : "legends/legendimages/aar.png"
-            }
-        }, {
-            "id": "aas",
-            "name": "Population Density (DEL-NJ-NY)",
-            "url": "http://maps.csc.noaa.gov/arcgis/rest/services/Roadmap/RoadmapPilotMaps_IndividualLayers/MapServer/export",
-            "projection": "EPSG:102100",
-            "layers": "1",
-            "type": "REST",
-            "info" : {
-                "sourceUrl" : "http://www.csc.noaa.gov/floodexposure/#/configure",
-                "sourceEntity" : "NOAA Coastal Services Center",
-                "layerDescription" : "This layer shows Population Density in Delaware, New Jersey, and New York.",
-                "legendImage" : "legends/legendimages/aas.png"
-            }
-        }, {
-            "id": "aat",
-            "name": "Businesses (DEL-NJ-NY)",
-            "url": "http://maps.csc.noaa.gov/arcgis/rest/services/Roadmap/RoadmapPilotMaps_IndividualLayers/MapServer/export",
-            "projection": "EPSG:102100",
-            "layers": "4",
-            "type": "REST",
-            "info" : {
-                "sourceUrl" : "http://www.csc.noaa.gov/floodexposure/#/configure",
-                "sourceEntity" : "NOAA Coastal Services Center",
-                "layerDescription" : "This layer shows Businesses in Delaware, New Jersey, and New York.",
-                "legendImage" : "legends/legendimages/aat.png"
-            }
-        }, {
-            "id": "aau",
-            "name": "Beaches & Dunes (DEL-NJ-NY)",
-            "url": "http://maps.csc.noaa.gov/arcgis/rest/services/Roadmap/RoadmapPilotMaps_IndividualLayers/MapServer/export",
-            "projection": "EPSG:102100",
-            "layers": "10",
-            "type": "REST",
-            "info" : {
-                "sourceUrl" : "http://www.csc.noaa.gov/floodexposure/#/configure",
-                "sourceEntity" : "NOAA Coastal Services Center",
-                "layerDescription" : "This layer shows Beaches & Dunes in Delaware, New Jersey, and New York.",
-                "legendImage" : "legends/legendimages/aau.png"
-            }
-        }, {
-            "id": "aav",
-            "name": "Wetlands (DEL-NJ-NY)",
-            "url": "http://maps.csc.noaa.gov/arcgis/rest/services/Roadmap/RoadmapPilotMaps_IndividualLayers/MapServer/export",
-            "projection": "EPSG:102100",
-            "layers": "8",
-            "type": "REST",
-            "info" : {
-                "sourceUrl" : "http://www.csc.noaa.gov/floodexposure/#/configure",
-                "sourceEntity" : "NOAA Coastal Services Center",
-                "layerDescription" : "This layer shows Wetlands in Delaware, New Jersey, and New York.",
-                "legendImage" : "legends/legendimages/aav.png"
-            }
-        }, {
-            "id": "aaw",
-            "name": "FEMA Flood Zones (DEL-NJ-NY)",
-            "url": "http://maps.csc.noaa.gov/arcgis/rest/services/Roadmap/RoadmapPilot_FEMAFlood/MapServer/export",
-            "projection": "EPSG:102100",
-            "layers": "0",
-            "type": "REST",
-            "info" : {
-                "sourceUrl" : "http://www.csc.noaa.gov/floodexposure/#/configure",
-                "sourceEntity" : "NOAA Coastal Services Center",
-                "layerDescription" : "This layer shows FEMA Flood Zones in Delaware, New Jersey, and New York.",
-                "legendImage" : "legends/legendimages/aaw.png"
-            }
-        }, {
-            "id": "aax",
-            "name": "Coastal Flood Hazard Composite (DEL-NJ-NY)",
-            "url": "http://maps.csc.noaa.gov/arcgis/rest/services/Roadmap/RoadmapPilot_HazardComposite/MapServer/export",
-            "projection": "EPSG:102100",
-            "layers": "0",
-            "type": "REST",
-            "info" : {
-                "sourceUrl" : "http://www.csc.noaa.gov/floodexposure/#/configure",
-                "sourceEntity" : "NOAA Coastal Services Center",
-                "layerDescription" : "This layer shows Coastal Flood Hazard Composite in Delaware, New Jersey, and New York.",
-                "legendImage" : "legends/legendimages/aax.png"
-            }
-        }, {
-            "id": "aay",
-            "name": "Probability of High Shoreline Loss",
-            "url": "http://marine.usgs.gov/coastalchangehazardsportal/geoserver/proxied/wms",
-            "layers": "proxied:ProbSLC_conus",
-            "sld": "http://marine.usgs.gov/coastalchangehazardsportal/data/sld/CUtFZvT",
-            "info" : {
-                "sourceUrl" : "http://marine.usgs.gov/coastalchangehazardsportal/ui/info/item/CARuFN3",
-                "sourceEntity" : "USGS CIDA CMGP",
-                "layerDescription" : "This layer shows Probability of High Shoreline Loss.",
-                "legendImage" : "legends/legendimages/aay.png"
-            }
-        }, {
-            "id": "abb",
-            "name": "Elevation of Dune Crest",
-            "url": "http://marine.usgs.gov/coastalchangehazardsportal/geoserver/proxied/wms",
-            "layers": "proxied:Erosion_Hazards_1394540727188",
-            "sld": "http://marine.usgs.gov/coastalchangehazardsportal/data/sld/CCENsQT",
-            "info" : {
-                "sourceUrl" : "http://marine.usgs.gov/coastalchangehazardsportal/ui/info/item/CCNHBnK",
-                "sourceEntity" : "USGS CIDA CMGP",
-                "layerDescription" : "This layer shows Elevation of Dune Crest.",
-                "legendImage" : "legends/legendimages/abb.png"
-            }
-        }, {
-            "id": "abc",
-            "name": "Elevation of Dune Toe",
-            "url": "http://marine.usgs.gov/coastalchangehazardsportal/geoserver/proxied/wms",
-            "layers": "proxied:Erosion_Hazards_1394540940323",
-            "sld": "http://marine.usgs.gov/coastalchangehazardsportal/data/sld/CCER1Xg",
-            "info" : {
-                "sourceUrl" : "http://marine.usgs.gov/coastalchangehazardsportal/ui/info/item/CCNKrhr",
-                "sourceEntity" : "USGS CIDA CMGP",
-                "layerDescription" : "This layer shows Elevation of Dune Toe.",
-                "legendImage" : "legends/legendimages/abc.png"
-            }
-        }, {
-            "id": "abd",
-            "name": "CAT3 Hurricane Prob. of Collision", 
-            "url": "http://marine.usgs.gov/coastalchangehazardsportal/geoserver/proxied/wms",
-            "layers": "proxied:Erosion_Hazards_1394633107610",
-            "sld": "http://marine.usgs.gov/coastalchangehazardsportal/data/sld/CCNXDS5",
-            "info" : {
-                "sourceUrl" : "http://marine.usgs.gov/coastalchangehazardsportal/ui/info/item/CCHdMRt",
-                "sourceEntity" : "USGS CIDA CMGP",
-                "layerDescription" : "This layer shows CAT3 Hurricane Prob. of Collision.",
-                "legendImage" : "legends/legendimages/abd.png"
-            }
-        }, {
-            "id": "abe",
-            "name": "CAT3 Hurricane Prob. of Overwash", 
-            "url": "http://marine.usgs.gov/coastalchangehazardsportal/geoserver/proxied/wms",
-            "layers": "proxied:Erosion_Hazards_1394814655647",
-            "sld": "http://marine.usgs.gov/coastalchangehazardsportal/data/sld/CD5ZUvX",
-            "info" : {
-                "sourceUrl" : "http://marine.usgs.gov/coastalchangehazardsportal/ui/info/item/CCHdMRt",
-                "sourceEntity" : "USGS CIDA CMGP",
-                "layerDescription" : "This layer shows CAT3 Hurricane Prob. of Overwash.",
-                "legendImage" : "legends/legendimages/abe.png"
-            }
-        }, {
-            "id": "abf",
-            "name": "CAT3 Hurricane Prob. of Inundation", 
-            "url": "http://marine.usgs.gov/coastalchangehazardsportal/geoserver/proxied/wms",
-            "layers": "proxied:Erosion_Hazards_1394832182359",
-            "sld": "http://marine.usgs.gov/coastalchangehazardsportal/data/sld/CD7wRHj",
-            "info" : {
-                "sourceUrl" : "http://marine.usgs.gov/coastalchangehazardsportal/ui/info/item/CCHdMRt",
-                "sourceEntity" : "USGS CIDA CMGP",
-                "layerDescription" : "This layer shows CAT3 Hurricane Prob. of Inundation.",
-                "legendImage" : "legends/legendimages/abf.png"
-            }
-        }, {
-            "id": "abg",
-            "name": "CAT3 Hurricane Mean Water Levels", 
-            "url": "http://marine.usgs.gov/coastalchangehazardsportal/geoserver/proxied/wms",
-            "layers": "proxied:Erosion_Hazards_1395148939358",
-            "sld": "http://marine.usgs.gov/coastalchangehazardsportal/data/sld/CDAzqt6",
-            "info" : {
-                "sourceUrl" : "http://marine.usgs.gov/coastalchangehazardsportal/ui/info/item/CDAzqt6",
-                "sourceEntity" : "USGS CIDA CMGP",
-                "layerDescription" : "This layer shows CAT3 Hurricane Mean Water Levels.",
-                "legendImage" : "legends/legendimages/abg.png"
-            }
-        }, {
-            "id": "abh",
-            "name": "CAT3 Hurricane Extreme Water Levels", 
-            "url": "http://marine.usgs.gov/coastalchangehazardsportal/geoserver/proxied/wms",
-            "layers": "proxied:Erosion_Hazards_1395151999519",
-            "sld": "http://marine.usgs.gov/coastalchangehazardsportal/data/sld/CDARuQk",
-            "info" : {
-                "sourceUrl" : "http://marine.usgs.gov/coastalchangehazardsportal/ui/info/item/CDARuQk",
-                "sourceEntity" : "USGS CIDA CMGP",
-                "layerDescription" : "This layer shows CAT3 Hurricane Extreme Water Levels.",
-                "legendImage" : "legends/legendimages/abh.png"
-            }
-        }, {
-            "id": "abi",
-            "name": "Weekly NDVI (9/24/2013)", 
-            "url": "http://129.174.131.6/cgi-bin/mapserv",
-            "layers": "Weekly_NDVI_39_2013.09.24_2013.09.30",
-            "projection": "EPSG:4326",
-	    "map": "/media/dssiv02/disk5/products/weekly/ndvi/2013/ndvi_39_2013.09.24_2013.09.30.map",
-            "info" : {
-                "sourceUrl" : "http://csiss.gmu.edu/",
-                "sourceEntity" : "CSISS, USDA NASS",
-                "layerDescription" : "This layer shows NDVI for September 24, 2013.",
-                "legendImage" : "legends/legendimages/abi.png"
-            }
-        }, {
-            "id": "abj",
-            "name": "Weekly VCI (9/24/2013)", 
-            "url": "http://129.174.131.6/cgi-bin/mapserv",
-            "layers": "Weekly_VCI_39_2013.09.24_2013.09.30",
-            "projection": "EPSG:4326",
-	    "map": "/media/dssiv02/disk5/products/weekly/vci/2013/vci_39_2013.09.24_2013.09.30.map",
-            "info" : {
-                "sourceUrl" : "http://csiss.gmu.edu/",
-                "sourceEntity" : "CSISS, USDA NASS",
-                "layerDescription" : "This layer shows VCI for September 24, 2013.",
-                "legendImage" : "legends/legendimages/abj.png"
-            }
-        }, {
-            "id": "abk",
-            "name": "Rivers", 
-            "url": "http://129.174.131.7/cgi/wms_conuswater.cgi",
-            "layers": "conus_major_rivers_national,conus_rivers_regional",
-            "projection": "EPSG:4326",
-            "info" : {
-                "sourceUrl" : "http://csiss.gmu.edu/",
-                "sourceEntity" : "CSISS, USDA NASS",
-                "layerDescription" : "This layer shows rivers.",
-                "legendImage" : "legends/legendimages/abk.png"
-            }
-        }, {
-            "id": "abl",
-            "name": "Lakes", 
-            "url": "http://129.174.131.7/cgi/wms_conuswater.cgi",
-            "layers": "conus_major_lakes_national,conus_waterareas_regional",
-            "projection": "EPSG:4326",
-            "info" : {
-                "sourceUrl" : "http://csiss.gmu.edu/",
-                "sourceEntity" : "CSISS, USDA NASS",
-                "layerDescription" : "This layer shows lakes.",
-                "legendImage" : "legends/legendimages/abl.png"
-            }
-        }, {
-            "id": "abm",
-            "name": "Freeway System (National)", 
-            "url": "http://129.174.131.7/cgi/wms_conushighway.cgi",
-            "layers": "conus_freeway_system_national,conus_freeway_system_national_label",
-            "projection": "EPSG:4326",
-            "info" : {
-                "sourceUrl" : "http://csiss.gmu.edu/",
-                "sourceEntity" : "CSISS, USDA NASS",
-                "layerDescription" : "This layer shows interstates.",
-                "legendImage" : "legends/legendimages/abm.png"
-            }
-        }, {
-            "id": "abn",
-            "name": "Major Highways (Regional)", 
-            "url": "http://129.174.131.7/cgi/wms_conushighway.cgi",
-            "layers": "conus_major_highways_regional,conus_major_highways_regional_label",
-            "projection": "EPSG:4326",
-            "info" : {
-                "sourceUrl" : "http://csiss.gmu.edu/",
-                "sourceEntity" : "CSISS, USDA NASS",
-                "layerDescription" : "This layer shows major highways.",
-                "legendImage" : "legends/legendimages/abn.png"
-            }
-        }
-    ],
-    "groups": [{
-        "id": "g_a",
-        "name": "Coastal Flood Risk",
-        "isDefault": true,
-        "subGroups": [{
-            "id": "g_a_a",
-            "name": "Climate Stressors",
-            "layers": [ "aag", "aac", "aad", "aae", "aaf", "aab", "aax", "aaw", "aay", "abd", "abe", "abf", "abg", "abh" ]
-        }, {
-            "id": "g_a_b",
-            "name": "People and Assets Impacted",
-            "layers": [ "aak", "aam", "aal", "aah", "aai", "aaj", "aaq", "aar", "aas", "aat", "aau", "aav", "abb", "abc", "abm", "abn" ]
-        }]
-    }, {
-        "id": "g_b",
-        "name": "Food Resilience",
-        "subGroups": [{
-            "id": "g_b_a",
-            "name": "Climate Stressors",
-            "layers": [ "aaa", "aao" ]
-        }, {
-            "id": "g_b_b",
-            "name": "People and Assets Impacted",
-            "layers": [ "aal", "aap", "abj", "abi", "abl", "abk" ]
-        }]
-    }, {
-        "id": "g_c",
-        "name": "Ecosystem Vulnerability",
-        "subGroups": [{
-            "id": "g_c_a",
-            "name": "Climate Stressors",
-            "layers": [ "aaa", "aao" ]             
-        }, {
-            "id": "g_c_b",
-            "name": "People and Assets Impacted",
-            "layers": [ "aal", "abj", "abi", "abl", "abk" ]
-        }]
+      "id": "g_a_b",
+      "name": "People and Assets Impacted",
+      "layers": [ "aak", "aam", "aal", "aah", "aai", "aaj", "aaq", "aar", "aas", "aat", "aau", "aav", "abb", "abc", "abm", "abn" ]
     }]
+  }, {
+    "id": "g_b",
+    "name": "Food Resilience",
+    "subGroups": [{
+      "id": "g_b_a",
+      "name": "Climate Stressors",
+      "layers": [ "aaa", "aao" ]
+    }, {
+      "id": "g_b_b",
+      "name": "People and Assets Impacted",
+      "layers": [ "aal", "aap", "abj", "abi", "abl", "abk" ]
+    }]
+  }, {
+    "id": "g_c",
+    "name": "Ecosystem Vulnerability",
+    "subGroups": [{
+      "id": "g_c_a",
+      "name": "Climate Stressors",
+      "layers": [ "aaa", "aao" ]             
+    }, {
+      "id": "g_c_b",
+      "name": "People and Assets Impacted",
+      "layers": [ "aal", "abj", "abi", "abl", "abk" ]
+    }]
+  }]
 }
