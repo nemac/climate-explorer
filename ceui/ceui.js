@@ -220,7 +220,10 @@ ceui.setLayerGroups = function(layerGroups) {
         var $layerGroup = $(ceui.templates.layerGroup);
         $layerGroup.appendTo($holderForAllLayerGroups);
         $layerGroup.find(".headerHolder .headerText").html(layerGroup.name);
-        var $layerGroupLayersHolder = $layerGroup.find(".layerGroupLayersHolder")
+        var $layerGroupLayersHolder = $layerGroup.find(".layerGroupLayersHolder");
+        
+        // Handling scrollbars with CSS now to overcome issues with OSX Mavericks
+        /*
         $layerGroupLayersHolder.jqxPanel({ 
 		    width: '100%', 
 		    height: 159,
@@ -229,6 +232,8 @@ ceui.setLayerGroups = function(layerGroups) {
 			autoUpdate:true
 			
 	    });
+        */
+        
         ceui._layerGroupLayersHolders[layerGroup.id] = $layerGroupLayersHolder;
     });
     ceui._layers = {};
@@ -242,17 +247,20 @@ ceui._layerInfo = {};
 
 ceui.setLayers = function(groupId, layers) {
     var $layerGroupLayersHolder = ceui._layerGroupLayersHolders[groupId];
-    $layerGroupLayersHolder.jqxPanel('clearContent');
+
+    //$layerGroupLayersHolder.jqxPanel('clearContent');
+    $layerGroupLayersHolder.empty();
 
     layers.forEach(function(layer, i) {
-	    // stash info
-	    if (layer.hasOwnProperty('info')) {
-	        ceui._layerInfo[ layer.id ] = layer.info;
+        // stash info
+        if (layer.hasOwnProperty('info')) {
+            ceui._layerInfo[ layer.id ] = layer.info;
             ceui._layerInfo[ layer.id ].name = layer.name;
-	    }
+        }
 
         var $layer = $(ceui.templates.layer);
-        $layerGroupLayersHolder.jqxPanel('append', $layer);
+        //$layerGroupLayersHolder.jqxPanel('append', $layer);
+        $layerGroupLayersHolder.append($layer);
         ceui._layers[ layer.id ] = $layer;
 
         var $layerCheck = $layer.find(".layerCheck");
@@ -260,57 +268,57 @@ ceui.setLayers = function(groupId, layers) {
         var $layerOpacLab = $layer.find(".layerOpacLab");
         var $layerInfoButt = $layer.find(".layerInfoButtHold");
         
-	    $layerOpacLab.hide();
+        $layerOpacLab.hide();
 	    
-	    $layerCheck.jqxCheckBox({ width: 320, height: 25, checked: false});
-	    $layerCheck.on('change', function(event){
-	        var checked = event.args.checked;
-	        if(checked){
+        $layerCheck.jqxCheckBox({ width: 320, height: 25, checked: false});
+        $layerCheck.on('change', function(event){
+            var checked = event.args.checked;
+            if(checked){
                 $layerOpacSlider.jqxSlider({ disabled : false });
-		        $layerOpacLab.fadeIn(100);
-	        }else{
+                $layerOpacLab.fadeIn(100);
+            }else{
                 $layerOpacSlider.jqxSlider({ disabled : true });
-		        $layerOpacLab.fadeOut(100);
-	        }
+                $layerOpacLab.fadeOut(100);
+            }
             if (ceui._layerVisibilitySet) {
                 ceui._layerVisibilitySet(layer.id, checked);
             }
-	    });
+        });
 
         $layerOpacSlider.jqxSlider({
             disabled: true,
-		    theme:ceui._myTheme,
-		    min: 0, 
-		    max: 100, 
-		    ticksFrequency: 1, 
-		    value: 100, 
-		    step: 1,
-		    showButtons: false,
-		    ticksPosition: 'NONE',
-		    width:345,
-		    showRange: true,
-		    tooltip: false
-	    });
+            theme: ceui._myTheme,
+            min: 0,
+            max: 100,
+            ticksFrequency: 1,
+            value: 100,
+            step: 1,
+            showButtons: false,
+            ticksPosition: 'NONE',
+            width: 345,
+            showRange: true,
+            tooltip: false
+        });
         
-        $layerOpacSlider.on('change', function(event){
-		    var opacVal = Math.round(event.args.value);
-		    $layerOpacLab.html(opacVal.toString()+"%");
+        $layerOpacSlider.on('change', function(event) {
+            var opacVal = Math.round(event.args.value);
+            $layerOpacLab.html(opacVal.toString() + "%");
             if (ceui._layerOpacitySet) {
-                ceui._layerOpacitySet(layer.id, opacVal/100.0);
+                ceui._layerOpacitySet(layer.id, opacVal / 100.0);
             }
-	    });
-        
+        });
+
         $layerCheck.find(".layerTitle").html(layer.name);
 
-	    $layerInfoButt.on('click', function(event) {
-	        ceui.selectLayerInfo(layer.id);
-	        if (ceui._layerInfoSelect) {
-                    ceui._layerInfoSelect(layer.id);
-		}
-		// toggle this button to be selected state
-		$(this).removeClass('layerInfoButtHoldUnselected').addClass('layerInfoButtHoldSelected');
-	    });
-        
+        $layerInfoButt.on('click', function(event) {
+            ceui.selectLayerInfo(layer.id);
+            if (ceui._layerInfoSelect) {
+                ceui._layerInfoSelect(layer.id);
+            }
+            // toggle this button to be selected state
+            $(this).removeClass('layerInfoButtHoldUnselected').addClass('layerInfoButtHoldSelected');
+        });
+
     });
 
 };
@@ -482,6 +490,7 @@ ceui.init = function(options) {
 
         // make layer info pane scrollable panel, hide initially, 
         // will become visible once something is selected
+        
         $('.layerInfoInfoHolder').jqxPanel({ 
 		    width: 423, 
 		    height: 280,
@@ -490,6 +499,7 @@ ceui.init = function(options) {
 			autoUpdate:true
 			
 	    }).hide();
+    
 
 /*
     // TODO insert permalink code here

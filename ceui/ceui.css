@@ -275,6 +275,7 @@ div.olControlZoom .olButton:hover {
 	float:left;
 }
 
+/* Removed - overridden in new scrollbar fixes below
 .holderForOneLayerGroup {
 	width:410px;
 	height:194px;
@@ -282,6 +283,7 @@ div.olControlZoom .olButton:hover {
 	
 	margin-bottom:0px;
 }
+*/
 
 .headerHolder{
 	width:410px;
@@ -290,12 +292,12 @@ div.olControlZoom .olButton:hover {
 /*background-image: url('css/images/ui-bg_glass_20_555555_1x400.png') repeat-x scroll 50% 50% #555;*/
 }
 
-
+/* Removed - overridden in new scrollbar fixes below
 .layerGroupLayersHolder {
 	margin-top:0px;
 	overflow-x:hidden;
 }
-
+*/
 
 .layerSetStaDatHolder{
 	width:410px;
@@ -727,4 +729,47 @@ float:left;
 background-color:#888888;
 width:408px;
 height:300px;
+}
+
+
+/* New styles for CSS scrollbars fix in Mavericks */
+.holderForOneLayerGroup {
+    width:100%;
+    height:212px;
+    background-color:#aaa;
+    /*overflow-y:auto;*/
+    /*overflow-x:hidden;*/
+    margin-bottom:0px;
+}
+
+.layerGroupLayersHolder {
+    margin-top:0px;
+    width:100%;
+    height:177px;
+    overflow-y:auto;
+    overflow-x:hidden;
+}
+
+.layersHolderClass {
+    overflow-y: auto;
+    border: 1px solid black;
+    line-height: 1em;
+}
+
+.layersHolderClass::-webkit-scrollbar {
+    -webkit-appearance: none;
+}
+
+.layersHolderClass::-webkit-scrollbar:vertical {
+    width: 11px;
+}
+
+.layersHolderClass::-webkit-scrollbar:horizontal {
+    height: 11px;
+}
+
+.layersHolderClass::-webkit-scrollbar-thumb {
+    border-radius: 8px;
+    border: 2px solid white; /* should match background, can't be transparent */
+    background-color: rgba(0, 0, 0, .5);
 }
