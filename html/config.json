@@ -510,8 +510,8 @@
     "info": {
       "sourceUrl": "http://sedac.ciesin.columbia.edu/data/collection/grump-v1",
       "sourceEntity": "SEDAC",
-      "layerDescription": "This layer shows population density in the year 2000. The legend will be added soon.",
-      "legendImage": ""
+      "layerDescription": "This layer shows population density in the year 2000.",
+      "legendImage": "legends/legendimages/abp.png"
     }
   }
 	      ],
