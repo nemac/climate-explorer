@@ -104,7 +104,7 @@ gulp.task( 'bundle-assets', function() {
     );
     
     return cssStream.done()
-        .pipe( minify() )
+        //.pipe( minify() )
         .pipe( concat( 'app.css' ) )
         .pipe( gulp.dest( paths.buildDest + '/asset' ) );
 });
