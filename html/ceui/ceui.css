@@ -308,7 +308,7 @@ div.olControlZoom .olButton:hover {
 .layer{
 	width:100%;
 	height:48px;
-	border:solid thin #ccc;
+	//border:solid thin #ccc;
 	margin-top:2px;
 	
 	background-color:#888888;
@@ -386,7 +386,13 @@ div.olControlZoom .olButton:hover {
 	line-height:25px;
 }*/
 
-
+.layerInfoInfoHolder{
+	margin-top:0;
+	height:286px;
+	width:409px;
+	overflow-y:auto;
+    overflow-x:hidden;
+}
 
 
 .lyrInfo-name{
@@ -438,7 +444,7 @@ float:left;
 
 .lyrInfo-legend{
 	margin-left:12px;
-
+	margin-bottom:12px;
 }
 	
 .headerText{
@@ -495,6 +501,11 @@ float:left;
 
 #multiGrphPanel{
 	margin-top:0;
+	width:100%;
+	height:700px;
+	border:solid thin #888888;
+	//overflow-y:auto;
+    //overflow-x:hidden;
 }
 
 #multiGrphButtHold{
@@ -516,13 +527,13 @@ float:left;
 }
 
 #mgButtBar{
-	width:625px;
+	width:626px;
 	height:32px;
 	background-color:#888888;
 }
 
 .stationPaneHeader{
-	width:604px;
+	width:100%;
 	height:36px;
 	background: url('ui/jqwidgets/styles/images/darkness/ui-bg_glass_20_555555_1x400.png') repeat-x scroll 50% 50% #666;
 	margin-left:0px;
@@ -546,7 +557,7 @@ float:left;
 
 
 .mgPaneStyle{
-	width:604px;
+	width:100%;
 	height:208px;
 	margin-left:0px;
 	margin-top:2px;
@@ -579,7 +590,7 @@ float:left;
 	padding:2px;
 	float:right;
 	margin-right:4px;
-	margin-top:2px;
+	margin-top:0px;
 }
 
 .XButon{
@@ -623,7 +634,7 @@ float:left;
 	line-height:12px;
 	color:#565656;
 	float:left;
-	margin-left:8px;
+	margin-left:15px;
 	margin-top:15px;
 }
 
@@ -728,14 +739,14 @@ float:left;
 .layerInfoHold{
 background-color:#888888;
 width:408px;
-height:300px;
+height:319px;
 }
 
 
 /* New styles for CSS scrollbars fix in Mavericks */
 .holderForOneLayerGroup {
     width:100%;
-    height:212px;
+    height:184px;
     background-color:#aaa;
     /*overflow-y:auto;*/
     /*overflow-x:hidden;*/
@@ -745,14 +756,14 @@ height:300px;
 .layerGroupLayersHolder {
     margin-top:0px;
     width:100%;
-    height:177px;
+    height:150px;
     overflow-y:auto;
     overflow-x:hidden;
 }
 
 .layersHolderClass {
     overflow-y: auto;
-    border: 1px solid black;
+   // border: 1px solid black;
     line-height: 1em;
 }
 
@@ -770,6 +781,6 @@ height:300px;
 
 .layersHolderClass::-webkit-scrollbar-thumb {
     border-radius: 8px;
-    border: 2px solid white; /* should match background, can't be transparent */
+    border: 1px solid #aaa; /* should match background, can't be transparent */
     background-color: rgba(0, 0, 0, .5);
 }

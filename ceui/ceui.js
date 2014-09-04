@@ -128,7 +128,7 @@ ceui.showStation = function(station) {
     // Create a component for displaying multigraphs for a new station, and call the _displayGraph callback
     // to create and display graphs for all currently selected data variables for that station.
     var $stationPane = $(ceui.templates.stationPane);
-    $("#multiGrphPanel").jqxPanel('append', $stationPane);
+    $("#multiGrphPanel").append($stationPane);
    
     var $closeButt = $stationPane.find(".stationCloseButton");
     $closeButt.jqxButton({ theme: ceui._myTheme, width:'15', height:'15'});	
@@ -446,12 +446,14 @@ ceui.init = function(options) {
     });
 
     $("#multiGrphPanel").empty();
+    /*
 	$("#multiGrphPanel").jqxPanel({ 
 		width: 621, 
 		height: 700,
 		sizeMode: 'fixed',
 		scrollBarSize:10
 	});	
+    */
 	
 	$( "#topOpenButt" ).click(function() {
 		if($( "#topOpenButt" ).hasClass("isDown")){
@@ -487,7 +489,8 @@ ceui.init = function(options) {
 	    return false;
 	});
 
-
+// This panel is now handled with CSS
+/*
         // make layer info pane scrollable panel, hide initially, 
         // will become visible once something is selected
         
@@ -499,7 +502,7 @@ ceui.init = function(options) {
 			autoUpdate:true
 			
 	    }).hide();
-    
+*/  
 
 /*
     // TODO insert permalink code here
