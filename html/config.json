@@ -501,6 +501,18 @@
       "layerDescription": "todo",
       "legendImage": "todo"
     }
+  }, {   
+    "id": "abp",
+    "name": "Population Density (2000)",
+    "url": "http://sedac.ciesin.columbia.edu/geoserver/wms",
+    "layers": "grump-v1:grump-v1-population-density_2000",
+    "projection": "EPSG:4326",
+    "info": {
+      "sourceUrl": "http://sedac.ciesin.columbia.edu/data/collection/grump-v1",
+      "sourceEntity": "SEDAC",
+      "layerDescription": "This layer shows population density in the year 2000. The legend will be added soon.",
+      "legendImage": ""
+    }
   }
 	      ],
   "groups": [{
@@ -514,7 +526,7 @@
     }, {
       "id": "g_a_b",
       "name": "People and Assets Impacted",
-      "layers": [ "aak", "aam", "aal", "aah", "aai", "aaj", "aaq", "aar", "aas", "aat", "aau", "aav", "abb", "abc", "abm", "abn" ]
+      "layers": [ "abp", "aak", "aam", "aal", "aah", "aai", "aaj", "aaq", "aar", "aas", "aat", "aau", "aav", "abb", "abc", "abm", "abn" ]
     }]
   }, {
     "id": "g_b",
@@ -526,7 +538,7 @@
     }, {
       "id": "g_b_b",
       "name": "People and Assets Impacted",
-      "layers": [ "aal", "aap", "abj", "abi", "abl", "abk" ]
+      "layers": [ "abp", "aal", "aap", "abj", "abi", "abl", "abk" ]
     }]
   }, {
     "id": "g_c",
@@ -538,7 +550,7 @@
     }, {
       "id": "g_c_b",
       "name": "People and Assets Impacted",
-      "layers": [ "aal", "abj", "abi", "abl", "abk" ]
+      "layers": [ "abp", "aal", "abj", "abi", "abl", "abk" ]
     }]
   }]
 }
