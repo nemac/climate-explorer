@@ -443,26 +443,26 @@
     }
   }, {
     "id": "abk",
-    "name": "Rivers", 
+    "name": "Waterways", 
     "url": "http://services.nationalmap.gov/arcgis/services/nhd/MapServer/WMSServer",
     "layers": "4",
     "projection": "EPSG:4326",
     "info": {
       "sourceUrl": "http://catalog.data.gov/dataset/the-national-map",
       "sourceEntity": "USGS",
-      "layerDescription": "This layer shows rivers.",
+      "layerDescription": "This layer shows waterways.",
       "legendImage": "legends/legendimages/abk.png"
     }
   }, {
     "id": "abl",
-    "name": "Lakes", 
+    "name": "Waterbodies", 
     "url": "http://services.nationalmap.gov/arcgis/services/nhd/MapServer/WMSServer",
     "layers": "5",
     "projection": "EPSG:4326",
     "info": {
       "sourceUrl": "http://catalog.data.gov/dataset/the-national-map",
       "sourceEntity": "USGS",
-      "layerDescription": "This layer shows lakes.",
+      "layerDescription": "This layer shows waterbodies.",
       "legendImage": "legends/legendimages/abl.png"
     }
   }, {
