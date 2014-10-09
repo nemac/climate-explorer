@@ -158,11 +158,11 @@
   }, {
     "id": "aal",
     "name": "Land Cover (2011)",
-    "url": "http://catalog.data.gov/dataset/usgs-land-cover-nlcd-overlay-map-service-from-the-national-map",
+    "url": "http://raster.nationalmap.gov/arcgis/services/LandCover/USGS_EROS_LandCover_NLCD/MapServer/WMSServer?service=WMS",
     "layers": "30",
     "projection": "EPSG:3857",
     "info": {
-      "sourceUrl": "http://www.mrlc.gov/nlcd2011.php",
+      "sourceUrl": "http://catalog.data.gov/dataset/usgs-land-cover-nlcd-overlay-map-service-from-the-national-map",
       "sourceEntity": "Multi-Resolution Land Characteristics Consortium",
       "layerDescription": "This layer shows 2011 landcover classified into several usage types.",
       "legendImage": "legends/legendimages/aal.png"
