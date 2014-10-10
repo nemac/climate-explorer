@@ -44,7 +44,7 @@
       "sourceUrl": "http://catalog.data.gov/dataset/noaa-digital-coast-sea-level-rise-and-coastal-flooding-impacts-viewer",
       "sourceEntity": "NOAA Coastal Services Center",
       "layerDescription": "This layer shows the 6 foot sea level innundation region.",
-      "legendImage": "legends/legendimages/aab.png"
+      "legendImage": "legends/legendimages/aab6.png"
     }
   }, {
     "id": "aac",
@@ -56,7 +56,7 @@
       "sourceUrl": "http://catalog.data.gov/dataset/noaa-digital-coast-sea-level-rise-and-coastal-flooding-impacts-viewer",
       "sourceEntity": "NOAA Coastal Services Center",
       "layerDescription": "This layer shows the 2 foot sea level innundation region.",
-      "legendImage": "legends/legendimages/aab.png"
+      "legendImage": "legends/legendimages/aab2.png"
     }
   }, {
     "id": "aad",
@@ -68,7 +68,7 @@
       "sourceUrl": "http://catalog.data.gov/dataset/noaa-digital-coast-sea-level-rise-and-coastal-flooding-impacts-viewer",
       "sourceEntity": "NOAA Coastal Services Center",
       "layerDescription": "This layer shows the 3 foot sea level innundation region.",
-      "legendImage": "legends/legendimages/aab.png"
+      "legendImage": "legends/legendimages/aab3.png"
     }
   }, {
     "id": "aae",
@@ -80,7 +80,7 @@
       "sourceUrl": "http://catalog.data.gov/dataset/noaa-digital-coast-sea-level-rise-and-coastal-flooding-impacts-viewer",
       "sourceEntity": "NOAA Coastal Services Center",
       "layerDescription": "This layer shows the 4 foot sea level innundation region.",
-      "legendImage": "legends/legendimages/aab.png"
+      "legendImage": "legends/legendimages/aab4.png"
     }
   }, {
     "id": "aaf",
@@ -92,7 +92,7 @@
       "sourceUrl": "http://catalog.data.gov/dataset/noaa-digital-coast-sea-level-rise-and-coastal-flooding-impacts-viewer",
       "sourceEntity": "NOAA Coastal Services Center",
       "layerDescription": "This layer shows the 5 foot sea level innundation region.",
-      "legendImage": "legends/legendimages/aab.png"
+      "legendImage": "legends/legendimages/aab5.png"
     }
   }, {
     "id": "aag",
@@ -104,7 +104,7 @@
       "sourceUrl": "http://catalog.data.gov/dataset/noaa-digital-coast-sea-level-rise-and-coastal-flooding-impacts-viewer",
       "sourceEntity": "NOAA Coastal Services Center",
       "layerDescription": "This layer shows the 1 foot sea level innundation region.",
-      "legendImage": "legends/legendimages/aab.png"
+      "legendImage": "legends/legendimages/aab1.png"
     }
   }, {
     "id": "aah",
