@@ -31,7 +31,7 @@
     "info": {
       "sourceUrl": "http://catalog.data.gov/dataset/national-integrated-drought-information-system",
       "sourceEntity": "US Drought Monitor",
-      "layerDescription": "This layer shows the most recent US Drought Monitor zones.",
+      "layerDescription": "Regional-scale drought status (updated every Thursday).",
       "legendImage": "legends/legendimages/aaa.png"
     }
   }, {
@@ -43,7 +43,7 @@
     "info": {
       "sourceUrl": "http://catalog.data.gov/dataset/noaa-digital-coast-sea-level-rise-and-coastal-flooding-impacts-viewer",
       "sourceEntity": "NOAA Coastal Services Center",
-      "layerDescription": "This layer shows the 6 foot sea level innundation region.",
+      "layerDescription": "Extent and relative depth of inundation after 6 feet of sea level rise.",
       "legendImage": "legends/legendimages/aab6.png"
     }
   }, {
@@ -55,7 +55,7 @@
     "info": {
       "sourceUrl": "http://catalog.data.gov/dataset/noaa-digital-coast-sea-level-rise-and-coastal-flooding-impacts-viewer",
       "sourceEntity": "NOAA Coastal Services Center",
-      "layerDescription": "This layer shows the 2 foot sea level innundation region.",
+      "layerDescription": "Extent and relative depth of inundation after 2 feet of sea level rise.",
       "legendImage": "legends/legendimages/aab2.png"
     }
   }, {
@@ -67,7 +67,7 @@
     "info": {
       "sourceUrl": "http://catalog.data.gov/dataset/noaa-digital-coast-sea-level-rise-and-coastal-flooding-impacts-viewer",
       "sourceEntity": "NOAA Coastal Services Center",
-      "layerDescription": "This layer shows the 3 foot sea level innundation region.",
+      "layerDescription": "Extent and relative depth of inundation after 3 feet of sea level rise.",
       "legendImage": "legends/legendimages/aab3.png"
     }
   }, {
@@ -79,7 +79,7 @@
     "info": {
       "sourceUrl": "http://catalog.data.gov/dataset/noaa-digital-coast-sea-level-rise-and-coastal-flooding-impacts-viewer",
       "sourceEntity": "NOAA Coastal Services Center",
-      "layerDescription": "This layer shows the 4 foot sea level innundation region.",
+      "layerDescription": "Extent and relative depth of inundation after 4 feet of sea level rise.",
       "legendImage": "legends/legendimages/aab4.png"
     }
   }, {
@@ -91,7 +91,7 @@
     "info": {
       "sourceUrl": "http://catalog.data.gov/dataset/noaa-digital-coast-sea-level-rise-and-coastal-flooding-impacts-viewer",
       "sourceEntity": "NOAA Coastal Services Center",
-      "layerDescription": "This layer shows the 5 foot sea level innundation region.",
+      "layerDescription": "Extent and relative depth of inundation after 5 feet of sea level rise.",
       "legendImage": "legends/legendimages/aab5.png"
     }
   }, {
@@ -103,7 +103,7 @@
     "info": {
       "sourceUrl": "http://catalog.data.gov/dataset/noaa-digital-coast-sea-level-rise-and-coastal-flooding-impacts-viewer",
       "sourceEntity": "NOAA Coastal Services Center",
-      "layerDescription": "This layer shows the 1 foot sea level innundation region.",
+      "layerDescription": "Extent and relative depth of inundation after 1 foot of sea level rise.",
       "legendImage": "legends/legendimages/aab1.png"
     }
   }, {
@@ -128,7 +128,7 @@
     "info": {
       "sourceUrl": "http://catalog.data.gov/dataset/hsip-public-domain-transportation-air-public-use-airports",
       "sourceEntity": "Homeland Security Infrastructure Program",
-      "layerDescription": "This layer shows the locations of airports and helipads.",
+      "layerDescription": "Public use aircraft landing facilities.",
       "legendImage": "legends/legendimages/aai.png"
     }
   }, {
@@ -140,7 +140,7 @@
     "info": {
       "sourceUrl": "http://catalog.data.gov/dataset/hsip-public-domain-transportation-ground-national-bridge-inv",
       "sourceEntity": "Homeland Security Infrastructure Program",
-      "layerDescription": "This layer shows the locations of bridges and tunnels.",
+      "layerDescription": "Publically accessible bridges and roadway and railway tunnels.",
       "legendImage": "legends/legendimages/aaj.png"
     }
   }, {
@@ -152,7 +152,7 @@
     "info": {
       "sourceUrl": "http://catalog.data.gov/dataset/usgs-map-service-coastal-vulnerability-to-sea-level-rise",
       "sourceEntity": "USGS",
-      "layerDescription": "This layer shows the relative susceptibility of the Nation's coast to sea-level rise through the use of a coastal vulnerability index",
+      "layerDescription": "Relative susceptibility to sea-level rise based on topography, bathymetry, and tidal range.",
       "legendImage": "legends/legendimages/aak.png"
     }
   }, {
@@ -163,8 +163,8 @@
     "projection": "EPSG:3857",
     "info": {
       "sourceUrl": "http://catalog.data.gov/dataset/usgs-land-cover-nlcd-overlay-map-service-from-the-national-map",
-      "sourceEntity": "Multi-Resolution Land Characteristics Consortium",
-      "layerDescription": "This layer shows 2011 landcover classified into several usage types.",
+      "sourceEntity": "USGS",
+      "layerDescription": "Land Cover classifications based on Landsat satellite data and other ancillary data sources.",
       "legendImage": "legends/legendimages/aal.png"
     }
   }, {
@@ -177,7 +177,7 @@
     "info": {
       "sourceUrl": "http://catalog.data.gov/dataset/social-vulnerability-index-sovi-for-coastal-states-based-on-2000-census-block-groups",
       "sourceEntity": "NOAA Coastal Services Center",
-      "layerDescription": "The Social Vulnerability Index (SOVI) measures the social vulnerability of U.S. counties to environmental hazards.",
+      "layerDescription": "Social Vulnerability Index (SoVI) for Coastal States based on 2000 Census Block Groups.",
       "legendImage": "legends/legendimages/aam.png"
     }
   }, {
@@ -189,7 +189,7 @@
     "info": {
       "sourceUrl": "http://catalog.data.gov/dataset/nfhl-femas-national-flood-hazard-layer",
       "sourceEntity": "FEMA",
-      "layerDescription": "The purpose of the online mapping tool is to provide coastal managers, planners, and stakeholders a preliminary look at exposures to coastal flooding hazards.",
+      "layerDescription": "National Flood Hazard Layer showing flood risks and regulatory flood determination (displays only when zoomed in to neighborhood-scale views).",
       "legendImage": "legends/legendimages/aan.png"
     }
   }, {
@@ -200,7 +200,7 @@
     "info": {
       "sourceUrl": "http://catalog.data.gov/dataset/national-integrated-drought-information-system",
       "sourceEntity": "US Drought Monitor",
-      "layerDescription": "This layer shows Drought (9/24/2013).",
+      "layerDescription": "Drought for  September 24, 2013.",
       "legendImage": "legends/legendimages/aaa.png"
     }
   }, {
@@ -212,7 +212,7 @@
     "info": {
       "sourceUrl": "http://catalog.data.gov/dataset/cropscape-cropland-data-layer",
       "sourceEntity": "USDA National Agricultural Statistics Service",
-      "layerDescription": "This layer shows Cropland.",
+      "layerDescription": "USDA’s Cropland Data Layer shows crops in place during the main growing season for 2013.",
       "legendImage": "legends/legendimages/aap.png"
     }
   }, {
@@ -225,7 +225,7 @@
     "info": {
       "sourceUrl": "http://catalog.data.gov/dataset/fema-hazus-critical-facilities-for-coastal-geographies",
       "sourceEntity": "NOAA Coastal Services Center",
-      "layerDescription": "This layer shows HAZUS Critical Facilities in Delaware, New Jersey, and New York.",
+      "layerDescription": "Selected structures in Delaware, New Jersey, and New York that, if flooded, would present an immediate threat to life, public health, or safety.",
       "legendImage": "legends/legendimages/aaq.png"
     }
   }, {
@@ -256,7 +256,7 @@
     }
   }, {
     "id": "aat",
-    "name": "Businesses (DEL-NJ-NY)",
+    "name": "Businesses per Zip Code (DEL-NJ-NY)",
     "url": "http://maps.csc.noaa.gov/arcgis/rest/services/Roadmap/RoadmapPilotMaps_IndividualLayers/MapServer/export",
     "projection": "EPSG:102100",
     "layers": "4",
@@ -264,7 +264,7 @@
     "info": {
       "sourceUrl": "http://www.csc.noaa.gov/floodexposure/#/services",
       "sourceEntity": "NOAA Coastal Services Center",
-      "layerDescription": "This layer shows Businesses in Delaware, New Jersey, and New York.",
+      "layerDescription": "Number of non-government businesses per zip code in Delaware, New Jersey, and New York.",
       "legendImage": "legends/legendimages/aat.png"
     }
   }, {
@@ -316,7 +316,7 @@
     "info": {
       "sourceUrl": "http://catalog.data.gov/dataset/coastal-flood-hazard-composite-layer-for-the-mid-atlantic-u-s",
       "sourceEntity": "NOAA Coastal Services Center",
-      "layerDescription": "This layer shows Coastal Flood Hazard Composite in Delaware, New Jersey, and New York.",
+      "layerDescription": "Relative threat of coastal flooding as indicated by total number of flood hazard zone designations.",
       "legendImage": "legends/legendimages/aax.png"
     }
   }, {
@@ -364,7 +364,7 @@
     "info": {
       "sourceUrl": "http://marine.usgs.gov/coastalchangehazardsportal/ui/info/item/CCHdMRt",
       "sourceEntity": "USGS",
-      "layerDescription": "This layer shows CAT3 Hurricane Prob. of Collision.",
+      "layerDescription": "Probability that wave runup during a Category 3 hurricane will collide with dunes, causing net erosion.",
       "legendImage": "legends/legendimages/abd.png"
     }
   }, {
@@ -376,7 +376,7 @@
     "info": {
       "sourceUrl": "http://marine.usgs.gov/coastalchangehazardsportal/ui/info/item/CCHdMRt",
       "sourceEntity": "USGS",
-      "layerDescription": "This layer shows CAT3 Hurricane Prob. of Overwash.",
+      "layerDescription": "Probability that wave runup during a Category 3 hurricane will overtop dune or beach berm, transporting sand landward.",
       "legendImage": "legends/legendimages/abe.png"
     }
   }, {
@@ -388,7 +388,7 @@
     "info": {
       "sourceUrl": "http://marine.usgs.gov/coastalchangehazardsportal/ui/info/item/CCHdMRt",
       "sourceEntity": "USGS",
-      "layerDescription": "This layer shows CAT3 Hurricane Prob. of Inundation.",
+      "layerDescription": "Probability that storm surge during a Category 3 hurricane will completely inundate the beach system, transporting sand inland much farther than overwash.",
       "legendImage": "legends/legendimages/abf.png"
     }
   }, {
@@ -400,7 +400,7 @@
     "info": {
       "sourceUrl": "http://marine.usgs.gov/coastalchangehazardsportal/ui/info/item/CDAzqt6",
       "sourceEntity": "USGS",
-      "layerDescription": "This layer shows CAT3 Hurricane Mean Water Levels.",
+      "layerDescription": "Storm-induced increase in mean water levels expected during a Category 3 Hurricane.",
       "legendImage": "legends/legendimages/abg.png"
     }
   }, {
@@ -425,7 +425,7 @@
     "info": {
       "sourceUrl": "http://catalog.data.gov/dataset/vegscape-vegetative-condition-explorer",
       "sourceEntity": "USDA National Agricultural Statistics Service",
-      "layerDescription": "This layer shows NDVI for September 24, 2013.",
+      "layerDescription": "This layer shows the Normalized Difference Vegetation Index for September 24, 2013.",
       "legendImage": "legends/legendimages/abi.png"
     }
   }, {
@@ -521,9 +521,9 @@
     "layers": "1,2,4,5,7,8,9,10,12,14",
     "projection": "EPSG:4326",
     "info": {
-      "sourceUrl": "http://catalog.data.gov/dataset/the-national-map",
+      "sourceUrl": "http://catalog.data.gov/dataset/usgs-structures-from-the-national-map",
       "sourceEntity": "USGS",
-      "layerDescription": "This layer shows the locations of selected structures.",
+      "layerDescription": "Selected manmade facilities noted for disaster planning and emergency response.",
       "legendImage": "legends/legendimages/abq.png"
     }
   }
