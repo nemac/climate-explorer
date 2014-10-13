@@ -36,75 +36,75 @@
     }
   }, {
     "id": "aab",
-    "name": "Sea Level Inundation (6ft)",
+    "name": "Inundation from Sea Level Rise (6ft)",
     "url": "http://csc.noaa.gov/arcgis/services/dc_slr/slr_6ft/MapServer/WMSServer",
     "projection": "EPSG:3857",
     "layers": "0",
     "info": {
       "sourceUrl": "http://catalog.data.gov/dataset/noaa-digital-coast-sea-level-rise-and-coastal-flooding-impacts-viewer",
       "sourceEntity": "NOAA Coastal Services Center",
-      "layerDescription": "Extent and relative depth of inundation after 6 feet of sea level rise.",
-      "legendImage": "legends/legendimages/aab6.png"
+      "layerDescription": "Extent and relative depth of high-tide flooding after 6 feet of sea level rise.",
+      "legendImage": "legends/legendimages/aab.png"
     }
   }, {
     "id": "aac",
-    "name": "Sea Level Inundation (2ft)",
+    "name": "Inundation from Sea Level Rise (2ft)",
     "url": "http://csc.noaa.gov/arcgis/services/dc_slr/slr_2ft/MapServer/WMSServer",
     "projection": "EPSG:3857",
     "layers": "0",
     "info": {
       "sourceUrl": "http://catalog.data.gov/dataset/noaa-digital-coast-sea-level-rise-and-coastal-flooding-impacts-viewer",
       "sourceEntity": "NOAA Coastal Services Center",
-      "layerDescription": "Extent and relative depth of inundation after 2 feet of sea level rise.",
-      "legendImage": "legends/legendimages/aab2.png"
+      "layerDescription": "Extent and relative depth of high-tide flooding after 2 feet of sea level rise.",
+      "legendImage": "legends/legendimages/aab.png"
     }
   }, {
     "id": "aad",
-    "name": "Sea Level Inundation (3ft)",
+    "name": "Inundation from Sea Level Rise (3ft)",
     "url": "http://csc.noaa.gov/arcgis/services/dc_slr/slr_3ft/MapServer/WMSServer",
     "projection": "EPSG:3857",
     "layers": "0",
     "info": {
       "sourceUrl": "http://catalog.data.gov/dataset/noaa-digital-coast-sea-level-rise-and-coastal-flooding-impacts-viewer",
       "sourceEntity": "NOAA Coastal Services Center",
-      "layerDescription": "Extent and relative depth of inundation after 3 feet of sea level rise.",
-      "legendImage": "legends/legendimages/aab3.png"
+      "layerDescription": "Extent and relative depth of high-tide flooding after 3 feet of sea level rise.",
+      "legendImage": "legends/legendimages/aab.png"
     }
   }, {
     "id": "aae",
-    "name": "Sea Level Inundation (4ft)",
+    "name": "Inundation from Sea Level Rise (4ft)",
     "url": "http://csc.noaa.gov/arcgis/services/dc_slr/slr_4ft/MapServer/WMSServer",
     "projection": "EPSG:3857",
     "layers": "0",
     "info": {
       "sourceUrl": "http://catalog.data.gov/dataset/noaa-digital-coast-sea-level-rise-and-coastal-flooding-impacts-viewer",
       "sourceEntity": "NOAA Coastal Services Center",
-      "layerDescription": "Extent and relative depth of inundation after 4 feet of sea level rise.",
-      "legendImage": "legends/legendimages/aab4.png"
+      "layerDescription": "Extent and relative depth of high-tide flooding after 4 feet of sea level rise.",
+      "legendImage": "legends/legendimages/aab.png"
     }
   }, {
     "id": "aaf",
-    "name": "Sea Level Inundation (5ft)",
+    "name": "Inundation from Sea Level Rise (5ft)",
     "url": "http://csc.noaa.gov/arcgis/services/dc_slr/slr_5ft/MapServer/WMSServer",
     "projection": "EPSG:3857",
     "layers": "0",
     "info": {
       "sourceUrl": "http://catalog.data.gov/dataset/noaa-digital-coast-sea-level-rise-and-coastal-flooding-impacts-viewer",
       "sourceEntity": "NOAA Coastal Services Center",
-      "layerDescription": "Extent and relative depth of inundation after 5 feet of sea level rise.",
-      "legendImage": "legends/legendimages/aab5.png"
+      "layerDescription": "Extent and relative depth of high-tide flooding after 5 feet of sea level rise.",
+      "legendImage": "legends/legendimages/aab.png"
     }
   }, {
     "id": "aag",
-    "name": "Sea Level Inundation (1ft)",
+    "name": "Inundation from Sea Level Rise (1ft)",
     "url": "http://csc.noaa.gov/arcgis/services/dc_slr/slr_1ft/MapServer/WMSServer",
     "projection": "EPSG:3857",
     "layers": "0",
     "info": {
       "sourceUrl": "http://catalog.data.gov/dataset/noaa-digital-coast-sea-level-rise-and-coastal-flooding-impacts-viewer",
       "sourceEntity": "NOAA Coastal Services Center",
-      "layerDescription": "Extent and relative depth of inundation after 1 foot of sea level rise.",
-      "legendImage": "legends/legendimages/aab1.png"
+      "layerDescription": "Extent and relative depth of high-tide flooding after 1 foot of sea level rise.",
+      "legendImage": "legends/legendimages/aab.png"
     }
   }, {
     "id": "aah",
@@ -238,7 +238,7 @@
     "info": {
       "sourceUrl": "http://www.csc.noaa.gov/floodexposure/#/services",
       "sourceEntity": "NOAA Coastal Services Center",
-      "layerDescription": "This layer shows Critical Facility Density in Delaware, New Jersey, and New York.",
+      "layerDescription": "Critical facility density in Delaware, New Jersey, and New York.",
       "legendImage": "legends/legendimages/aar.png"
     }
   }, {
@@ -438,7 +438,7 @@
     "info": {
       "sourceUrl": "http://catalog.data.gov/dataset/vegscape-vegetative-condition-explorer",
       "sourceEntity": "USDA National Agricultural Statistics Service",
-      "layerDescription": "This layer shows VCI for September 24, 2013.",
+      "layerDescription": "Vegetation condition index for September 24, 2013.",
       "legendImage": "legends/legendimages/abj.png"
     }
   }, {
@@ -539,7 +539,7 @@
     }, {
       "id": "g_a_b",
       "name": "People and Assets Impacted",
-      "layers": [ "abp", "aak", "aam", "aal", "abq", "aai", "aaj", "aaq", "aar", "aas", "aat", "aau", "aav", "abb", "abc", "abm", "abn" ]
+      "layers": [ "abp", "aak", "aam", "aal", "abq", "aai", "aaj", "aaq", "aar", "aat", "aau", "aav", "abb", "abc", "abm", "abn" ]
     }]
   }, {
     "id": "g_b",
