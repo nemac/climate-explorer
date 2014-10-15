@@ -134,9 +134,10 @@
   }, {
     "id": "aaj",
     "name": "Bridges and Tunnels",
-    "url": "http://hsip.geoplatform.gov/arcgis/services/HSIP_Public/TransportationGround/MapServer/WMSServer",
+    "url": "http://hsip.geoplatform.gov/arcgis/rest/services/HSIP_Public/TransportationGround/MapServer/export",
     "projection": "EPSG:3857",
     "layers": [ "0", "1" ],
+    "type": "REST",
     "info": {
       "sourceUrl": "http://catalog.data.gov/dataset/hsip-public-domain-transportation-ground-national-bridge-inv",
       "sourceEntity": "Homeland Security Infrastructure Program",
@@ -539,7 +540,7 @@
     }, {
       "id": "g_a_b",
       "name": "People and Assets Impacted",
-      "layers": [ "abp", "aak", "aam", "aal", "abq", "aai", "aaj", "aaq", "aar", "aat", "aau", "aav", "abb", "abc", "abm", "abn" ]
+      "layers": [ "abp", "aak", "aam", "aal", "abq", "aai", "aaj", "aaq", "aat", "aau", "aav", "abb", "abc", "abm", "abn" ]
     }]
   }, {
     "id": "g_b",
