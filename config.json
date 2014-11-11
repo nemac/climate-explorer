@@ -37,7 +37,7 @@
   }, {
     "id": "aab",
     "name": "Inundation from Sea Level Rise (6ft)",
-    "url": "http://csc.noaa.gov/arcgis/services/dc_slr/slr_6ft/MapServer/WMSServer",
+    "url": "http://coast.noaa.gov/arcgis/services/dc_slr/slr_6ft/MapServer/WMSServer",
     "projection": "EPSG:3857",
     "layers": "0",
     "info": {
@@ -49,7 +49,7 @@
   }, {
     "id": "aac",
     "name": "Inundation from Sea Level Rise (2ft)",
-    "url": "http://csc.noaa.gov/arcgis/services/dc_slr/slr_2ft/MapServer/WMSServer",
+    "url": "http://coast.noaa.gov/arcgis/services/dc_slr/slr_2ft/MapServer/WMSServer",
     "projection": "EPSG:3857",
     "layers": "0",
     "info": {
@@ -61,7 +61,7 @@
   }, {
     "id": "aad",
     "name": "Inundation from Sea Level Rise (3ft)",
-    "url": "http://csc.noaa.gov/arcgis/services/dc_slr/slr_3ft/MapServer/WMSServer",
+    "url": "http://coast.noaa.gov/arcgis/services/dc_slr/slr_3ft/MapServer/WMSServer",
     "projection": "EPSG:3857",
     "layers": "0",
     "info": {
@@ -73,7 +73,7 @@
   }, {
     "id": "aae",
     "name": "Inundation from Sea Level Rise (4ft)",
-    "url": "http://csc.noaa.gov/arcgis/services/dc_slr/slr_4ft/MapServer/WMSServer",
+    "url": "http://coast.noaa.gov/arcgis/services/dc_slr/slr_4ft/MapServer/WMSServer",
     "projection": "EPSG:3857",
     "layers": "0",
     "info": {
@@ -85,7 +85,7 @@
   }, {
     "id": "aaf",
     "name": "Inundation from Sea Level Rise (5ft)",
-    "url": "http://csc.noaa.gov/arcgis/services/dc_slr/slr_5ft/MapServer/WMSServer",
+    "url": "http://coast.noaa.gov/arcgis/services/dc_slr/slr_5ft/MapServer/WMSServer",
     "projection": "EPSG:3857",
     "layers": "0",
     "info": {
@@ -97,7 +97,7 @@
   }, {
     "id": "aag",
     "name": "Inundation from Sea Level Rise (1ft)",
-    "url": "http://csc.noaa.gov/arcgis/services/dc_slr/slr_1ft/MapServer/WMSServer",
+    "url": "http://coast.noaa.gov/arcgis/services/dc_slr/slr_1ft/MapServer/WMSServer",
     "projection": "EPSG:3857",
     "layers": "0",
     "info": {
@@ -171,7 +171,7 @@
   }, {
     "id": "aam",
     "name": "Social Vulnerability Index",
-    "url": "http://www.csc.noaa.gov/ArcGISPUB/rest/services/dc_slr/SocioEconimc/MapServer/export",
+    "url": "http://www.coast.noaa.gov/arcgis/rest/services/dc_slr/SocioEconomic/MapServer/export",
     "projection": "EPSG:3857",
     "layers": "7",
     "type": "REST",
@@ -219,7 +219,7 @@
   }, {
     "id": "aaq",
     "name": "HAZUS Critical Facilities (DEL-NJ-NY)",
-    "url": "http://maps.csc.noaa.gov/arcgis/rest/services/Roadmap/RoadmapPilotMaps_IndividualLayers/MapServer/export",
+    "url": "http://coast.noaa.gov/arcgis/rest/services/Roadmap/RoadmapPilotMaps_IndividualLayers/MapServer/export",
     "projection": "EPSG:102100",
     "layers": "7",
     "type": "REST",
@@ -245,7 +245,7 @@
   }, {
     "id": "aas",
     "name": "Population Density (DEL-NJ-NY)",
-    "url": "http://maps.csc.noaa.gov/arcgis/rest/services/Roadmap/RoadmapPilotMaps_IndividualLayers/MapServer/export",
+    "url": "http://coast.noaa.gov/arcgis/rest/services/Roadmap/RoadmapPilotMaps_IndividualLayers/MapServer/export",
     "projection": "EPSG:102100",
     "layers": "1",
     "type": "REST",
@@ -258,7 +258,7 @@
   }, {
     "id": "aat",
     "name": "Businesses per Zip Code (DEL-NJ-NY)",
-    "url": "http://maps.csc.noaa.gov/arcgis/rest/services/Roadmap/RoadmapPilotMaps_IndividualLayers/MapServer/export",
+    "url": "http://coast.noaa.gov/arcgis/rest/services/Roadmap/RoadmapPilotMaps_IndividualLayers/MapServer/export",
     "projection": "EPSG:102100",
     "layers": "4",
     "type": "REST",
@@ -271,7 +271,7 @@
   }, {
     "id": "aau",
     "name": "Beaches & Dunes (DEL-NJ-NY)",
-    "url": "http://maps.csc.noaa.gov/arcgis/rest/services/Roadmap/RoadmapPilotMaps_IndividualLayers/MapServer/export",
+    "url": "http://coast.noaa.gov/arcgis/rest/services/Roadmap/RoadmapPilotMaps_IndividualLayers/MapServer/export",
     "projection": "EPSG:102100",
     "layers": "10",
     "type": "REST",
@@ -284,7 +284,7 @@
   }, {
     "id": "aav",
     "name": "Wetlands (DEL-NJ-NY)",
-    "url": "http://maps.csc.noaa.gov/arcgis/rest/services/Roadmap/RoadmapPilotMaps_IndividualLayers/MapServer/export",
+    "url": "http://coast.noaa.gov/arcgis/rest/services/Roadmap/RoadmapPilotMaps_IndividualLayers/MapServer/export",
     "projection": "EPSG:102100",
     "layers": "8",
     "type": "REST",
@@ -310,7 +310,7 @@
   }, {
     "id": "aax",
     "name": "Coastal Flood Hazard Composite (DEL-NJ-NY)",
-    "url": "http://maps.csc.noaa.gov/arcgis/rest/services/Roadmap/RoadmapPilot_HazardComposite/MapServer/export",
+    "url": "http://coast.noaa.gov/arcgis/rest/services/Roadmap/RoadmapPilot_HazardComposite/MapServer/export",
     "projection": "EPSG:102100",
     "layers": "0",
     "type": "REST",
