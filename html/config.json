@@ -522,7 +522,7 @@
     "layers": "1,2,4,5,7,8,9,10,12,14",
     "projection": "EPSG:4326",
     "info": {
-      "sourceUrl": "http://catalog.data.gov/dataset/usgs-structures-from-the-national-map",
+      "sourceUrl": "http://catalog.data.gov/dataset/usgs-structures-from-the-national-map-example-web-map",
       "sourceEntity": "USGS",
       "layerDescription": "Selected manmade facilities noted for disaster planning and emergency response.",
       "legendImage": "legends/legendimages/abq.png"
