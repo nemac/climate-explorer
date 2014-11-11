@@ -1,0 +1,1419 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1"/>
+	
+
+	<title>Climate Explorer</title>
+
+	<link rel="stylesheet" href="css/jqx.base.css" type="text/css" />
+	<link rel="stylesheet" href="css/jqx.ui-darkness.css" type="text/css" />
+	<link rel="stylesheet" href="css/custom-theme/jquery-ui-1.10.4.custom.min.css" type="text/css" media="all" />
+	<!--<link rel="stylesheet" href="css/climExpStyles.css" type="text/css" media="all" />-->
+
+	
+	<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+	
+    <script type="text/javascript" src="ui/jqwidgets/jqxcore.js"></script>
+    <script type="text/javascript" src="ui/jqwidgets/jqxbuttons.js"></script>
+    <script type="text/javascript" src="ui/jqwidgets/jqxcheckbox.js"></script>
+	<script type="text/javascript" src="ui/jqwidgets/jqxbuttongroup.js"></script>
+	<script type="text/javascript" src="ui/jqwidgets/jqxradiobutton.js"></script>
+	<script type="text/javascript" src="ui/jqwidgets/mods/sliderMod.js"></script>
+	<script type="text/javascript" src="ui/jqwidgets/jqxpanel.js"></script>
+	<script type="text/javascript" src="ui/jqwidgets/jqxscrollbar.js"></script>
+	<script type="text/javascript" src="ui/jqwidgets/jqxsplitter.js"></script>
+	
+	<!--<script type="text/javascript" src="js/climateExplorerFunctions.js"></script>-->
+
+	
+	<link rel="stylesheet" type="text/css" href="http://fonts.googleapis.com/css?family=Lato:bold"/>
+
+	<style type="text/css" >
+	
+	@font-face{
+			font-family: 'Lato', serif;
+		}
+		
+	
+	html{
+		min-width: 800px;
+		margin: 0 auto;
+		background-color:#404952;
+	}
+	
+	#contentHolder{
+		margin-top:10px;
+		max-width: 100%;
+		min-width: 600px;
+		height:100%;
+		/*border:solid thin #000;*/
+	}
+	
+	#widgTitle{
+		font-family:Lato, serif;
+		font-size:28px;
+		color:#fff;
+		margin-left:10px;
+	}
+	
+	#topHolder{
+		width:100%;
+		height:40px;
+		/*border:solid thin #2E87C8;*/
+		position:relative;
+	}
+	
+	#topLeftHolder{
+		width:300px;
+		height:40px;
+		/*border:solid thin #2E87C8;*/
+		float:left;
+	}
+	
+	#topRightHolder{
+		width:380px;
+		height:40px;
+		background-image:url('media/uiGraphics/tabGraphic.png');
+		background-repeat: no-repeat;
+		right:0px;
+		position:absolute;
+	}
+	
+	#layerMultiGrphButtGrp{
+		float:right;
+		margin-right:18px;
+		margin-top:12px;
+	}
+	
+	#layersButt,
+	#multiGrphButt{
+		width:148px; 
+	}
+	
+	#middleHolder{
+		height:800px;
+		/*border:solid thin #2EC26F;*/
+		position:relative;
+}
+	
+	#middleLeftHolder{
+		width:100%;
+		background-color:#fff;
+		height:800px;
+		/*border:solid thin #2E87C8;*/
+		float:left;
+	}
+	
+	#mapDiv{
+		width:1300px;
+		height:780px;
+	}
+	
+	#middleRightHolder{
+		width:430px;
+		height:800px;
+		/*border:solid thin #2E87C8;*/
+		background-color:#dadbdc;
+		right:0px;
+		position:absolute;
+		z-index:80;
+	}
+	
+	#mapHolder{
+		height:780px;
+		margin:10px;
+		background-color:#ccc;
+	}
+	
+	#layersHolder{
+		width:410px;
+		height:780px;
+		margin-left:0px;
+		margin-top:10px;
+		margin-right:10px;
+		margin-bottom:0px;
+		background-color:#aaaaaa;
+		float:left;
+	}
+	
+	#slug{
+		width:10px;
+		height:800px;
+		background-color:#fff;
+		
+		float:left;
+	
+	}
+
+	#layerButtHolder{
+		width:410px;
+		height:171px;
+		/*border:solid thin #fff;*/
+		padding-top:1px;
+		/*background-color:#AAABAB;*/
+	}
+	
+	#layerButtCol_Left,
+	#layerButtCol_Right{
+		width:202px;
+		height:170px;
+		float:left;
+		/*border:solid thin #D83A7C;*/
+		margin-left:1px;
+	}
+	
+	.layerMenu{
+		width:200px;
+		height:40px;
+		/*border:solid thin #ddd;*/
+		margin:2px;
+		font-family:Lato, serif;;
+		font-size:10px;
+		font-weight:bold;
+		color:#fff;
+		background-color:#888888;
+	}
+	
+	.layerMenu:hover{
+		background-color:#0079A4;
+		/*opacity: 0.4;*/
+		filter: alpha(opacity=40); /* For IE8 and earlier */
+		/*color:#ccc;*/
+	}
+	
+	.layerIconHold{
+		height:36px;
+		width:38px;
+		margin-left:10px;
+		margin-top:2px;
+		float:left;
+	}
+	
+	.layerLabelHold{
+		height:36px;
+		margin-left:8px;
+		margin-top:4px;
+		float:left;
+	}
+	
+	.layerSetHolder{
+		width:410px;
+		height:212px;
+		background-color:#aaaaaa;
+		/*overflow-y:auto;*/
+		/*overflow-x:hidden;*/
+		margin-bottom:0px;
+	}
+	
+	.headerHolder{
+		width:410px;
+		height:33px;
+		background-color:#565656;
+		/*background-image: url('css/images/ui-bg_glass_20_555555_1x400.png') repeat-x scroll 50% 50% #555;*/
+	}
+	
+	
+	#stressLayersHolder,
+	#assetsLayersHolder{
+		margin-top:0px;
+	}
+	
+	
+	
+	
+	
+	.layerSetStaDatHolder{
+		width:410px;
+		height:154px;
+		background-color:#0079A4;
+	}
+
+	.layer{
+		
+		height:40px;
+		border:solid thin #ccc;
+		margin-top:2px;
+		margin-right:5px;
+		background-color:#888888;
+	}
+
+	.layerTopContentHold{
+		width:100%;
+		height:32px;
+	}
+	
+	.layCheckHoldStyle{
+		width:300px;
+		height:19px;
+		margin-left:30px;
+		margin-top:10px;
+		float:left;
+	}
+					
+	.layTitleHoldStyle{
+		font-family:Lato, serif;
+		font-size:14px;
+		font-weight:bold;
+		line-height:12px;
+		color:#fff;
+		float:left;
+		margin-left:8px;
+	}
+	
+	.layOpacLabHoldStyle{
+		width:30px;
+		height:19px;
+		float:right;
+		margin-right:10px;
+		margin-top:10px;
+	}
+	
+	.layOpacLabStyle{
+		font-family:Lato, serif;
+		font-size:11px;
+		font-weight:bold;
+		line-height:12px;
+		color:#fff;
+	}
+	
+	.layOpacSlidHold{
+		margin-right:5px;
+	}
+	
+	.headerText{
+		font-family:Lato, serif;
+		font-size:16px;
+		font-weight:bold;
+		color:#fff;
+		margin-left:25px;
+		line-height:30px;
+	}
+	
+	.statDatLayer{
+		width:406px;
+		height:30px;
+		border:solid thin #ddd;
+		margin-top:2px;
+		
+	}
+	
+	.statDatLayCheckHoldStyle{
+		width:300px;
+		height:19px;
+		margin-left:20px;
+		margin-top:7px;
+		float:left;
+	}
+	
+	.statDatLayerTopContentHold{
+		width:100%;
+		height:20px;
+	}
+	
+	.statDatLayTitleHoldStyle{
+		font-family:Lato, serif;
+		font-size:14px;
+		font-weight:bold;
+		line-height:12px;
+		color:#fff;
+		float:left;
+		margin-left:8px;
+	}
+	
+	#multiGrphHeaderHolder{
+		width:624px;
+		height:40px;
+		background-color:#565656;
+	}
+	
+	#multiGrphHolder{
+		height:780px;
+		margin:10px;
+		background-color:#AAAAAA;
+	}
+	
+	#multiGrphPanel{
+		margin-top:0;
+	}
+	
+	#multiGrphButtHold{
+		float:right;
+		margin-right:20px;
+		margin-top:0px;
+	}
+	
+	#precipButt,
+	#tempButt{
+		padding:3px;
+		font-size:11px;
+		font-weight:bold;
+		border:solid thin #888888;
+		border-top-left-radius: 0px;
+		border-top-right-radius: 0px;
+		margin-right:0px;
+		
+	}
+	
+	#mgButtBar{
+		width:625px;
+		height:32px;
+		background-color:#888888;
+	}
+
+	.stationPaneHeader{
+		width:604px;
+		height:36px;
+		background: url('ui/jqwidgets/styles/images/darkness/ui-bg_glass_20_555555_1x400.png') repeat-x scroll 50% 50% #666;
+		margin-left:0px;
+	}
+	
+	.stationPaneContentHold{
+		height:10px;
+		padding:5px;
+	}
+	
+	.mgPaneTopContentHold{
+		height:15px;
+		padding-left:16px;
+		font-family:Lato, serif;
+		font-size:14px;
+		font-weight:bold;
+		line-height:25px;
+		color:#fff;
+	}
+	
+	
+	
+	.mgPaneStyle{
+		width:604px;
+		height:208px;
+		margin-left:0px;
+		margin-top:2px;
+		margin-bottom:1px;
+		background-color:#888888;
+	}
+	
+	
+	.mgNumStyle{
+		font-family:Lato, serif;
+		font-size:16px;
+		font-weight:bold;
+		line-height:20px;
+		color:#fff;
+		float:left;
+		margin-left:5px;
+	}
+	
+	.mgTitleStyle{
+		font-family:Lato, serif;
+		font-size:16px;
+		font-weight:bold;
+		line-height:20px;
+		color:#fff;
+		float:left;
+		margin-left:5px;
+	}
+	
+	.mgLatLongStyle{
+		font-family:Lato, serif;
+		font-size:12px;
+		font-weight:bold;
+		font-style:italic;
+		line-height:22px;
+		color:#fff;
+		float:right;
+		margin-right:4px;
+	}
+	
+	.mgPaneBotContentHold{
+		width:580px;
+		height:172px;
+		/*border:solid thin #ddd;*/
+		margin-top:10px;
+		margin-left:6px;
+	}
+	
+	
+		#menuPanel{
+			margin-top:0px;
+			width:410px;
+			height:100%;
+			position:absolute;
+			
+		}
+		
+		.topHeader{
+			width:100%;
+			height:45px;
+			background-color:#DADBDC;
+			position:relative;
+			z-index:20;
+		}
+		
+		.topHeaderLabel{
+			font-family:Lato, serif;
+			font-size:24px;
+			font-weight:bold;
+			line-height:12px;
+			color:#565656;
+			float:left;
+			margin-left:8px;
+			margin-top:15px;
+		}
+		
+		
+		
+		
+		
+		
+		.menuBar{
+			width:409px;
+			height:45px;
+			background: url('ui/jqwidgets/styles/images/darkness/ui-bg_glass_20_555555_1x400.png') repeat-x scroll 50% 50% #555;
+			position:relative;
+			border-bottom: solid thin #ccc;
+			z-index:20;
+		}
+		
+		.topBarContHold{
+			width:408px;
+			height:43px;
+		}
+		
+		.topBarContLeft{
+			width:355px;;
+			height:30px;
+			margin-top:10px;
+			margin-left:10px;
+			float:left;
+		}
+		
+		.topBarContRight{
+			width:40px;
+			height:45px;
+			float:right;
+		}
+		
+		#openCloseiconHold{
+			margin-top:15px;
+			margin-left:16px;
+			
+		}
+		
+		#topicsLabel{
+			font-family:Lato, serif;
+			font-size:18px;
+			font-weight:bold;
+			color:#fff;
+		}
+		
+		.topOpenButtStyle{
+			width:40px;
+			height:45px;
+			cursor:pointer;
+		}
+		
+		/*.topOpenButtStyle:hover{
+			background-color:#eee;
+		}*/
+		
+		.CE_MenuContHold{ 
+			border:1px solid #888;
+			width:407px;
+			height:27px;
+			background-color:#888888;
+			padding-left:0px;
+			padding-top:0px;
+			display:block;
+			border-bottom:thin solid #666;
+			cursor:pointer;
+		}
+
+		.CE_MenuTitleHoldStyle{
+			width:220px;
+			padding-left:25px;
+			font-family:Lato, serif;
+			font-size:14px;
+			font-weight:bold;
+			line-height:24px;
+			color:#fff;
+		}  
+		#menuContainer{
+			width:408px;
+			height:800px;
+			position:absolute;
+			top:0;
+			overflow:hidden;
+		}
+		
+		#menuItemHolder{
+			width:408px;
+			height:232px;
+			position:relative;	
+			top:-140px;
+		}
+		
+		#layerContentHold{
+			width:408px;
+			height:50px;
+			position:relative;	
+			top:-140px;
+		}
+	
+		
+	
+	
+	</style>
+	
+	<script type="text/javascript">
+	$(document).ready(function () {
+			var myTheme = "ui-darkness"
+			var myTheme2 = "ui-darkness2"
+			
+			$("#layerMultiGrphButtGrp").jqxButtonGroup({ theme: myTheme, mode: 'radio' });
+			$("#layerMultiGrphButtGrp").jqxButtonGroup('setSelection', 0);
+			
+			//$("#multiGrphButtGrp").jqxButtonGroup({ theme: myTheme, mode: 'checkbox', width:'250px'});
+			
+			$("#precipButt").jqxToggleButton({ theme: myTheme, width: '125', toggled: true});
+			$("#tempButt").jqxToggleButton({ theme: myTheme, width: '125', toggled: true});
+			
+			$("#multiGrphHolder").hide();
+			doTopicMenuBuild();
+			
+			$("#precipButt").on('click', function () {
+			
+                    var toggled = $("#precipButt").jqxToggleButton('toggled');
+                    if (toggled) {
+                        $("#mgPrecipPane0, #mgPrecipPane1").show();
+                    }else 
+						$("#mgPrecipPane0,#mgPrecipPane1").hide();
+                });
+				
+			$("#tempButt").on('click', function () {
+			
+                    var toggled = $("#tempButt").jqxToggleButton('toggled');
+                    if (toggled) {
+                        $("#mgTempPane0, #mgTempPane1").show();
+                    }else 
+						$("#mgTempPane0, #mgTempPane1").hide();
+                });
+			
+			
+			
+			
+			
+			// checks whether Maps or Description buttons have been selected, and hides or shows the either
+			// the MENU widget and About this Snapshot Panel OR the Description text and About this date slider widget.
+			$("#layerMultiGrphButtGrp").click(function(){
+				var whichSelect = $("#layerMultiGrphButtGrp").jqxButtonGroup('getSelection');
+				if(whichSelect == 0){
+					$("#multiGrphHolder").fadeOut(100, function(){
+						$("#middleRightHolder").animate({width:"430"}, 400, function(){
+							$("#layersHolder").fadeIn(100);
+						})
+					})
+				}else if(whichSelect == 1){
+				
+					$("#layersHolder").fadeOut(100, function(){
+						$("#middleRightHolder").animate({width:"644"}, 400, function(){
+							$("#multiGrphHolder").fadeIn(100);
+						})
+					})
+				}
+			});
+			
+			$("#stressLayersHolder, #assetsLayersHolder").jqxPanel({ 
+				width: 406, 
+				height: 177,
+				sizeMode: 'fixed',
+				scrollBarSize:10,
+	
+			});
+			
+			/*$("#statDatLayersHolder ").jqxPanel({ 
+				width: 409, 
+				height: 125,
+				sizeMode: 'fixed',
+				scrollBarSize:10
+			});*/
+			
+			 
+			$("#stressLayCheck0, #stressLayCheck1, #stressLayCheck2, #stressLayCheck3, #stressLayCheck4").jqxCheckBox({ width: 300, height: 25, checked: true});
+			$("#assetLayCheck0, #assetLayCheck1, #assetLayCheck2, #assetLayCheck3, #assetLayCheck4").jqxCheckBox({ width: 300, height: 25, checked: true});
+			//$("#statDatLayCheck0, #statDatLayCheck1").jqxCheckBox({ width: 300, height: 25});
+			
+			$("#stressLayCheck0").on('change', function(event){
+				var checked = event.args.checked;
+				if(checked){
+					$("#stressLayOpacSlider0").jqxSlider({ disabled:false });
+					$("#stressLayOpacLab0").show(100);
+				}else{
+					$("#stressLayOpacSlider0").jqxSlider({ disabled:true });
+					$("#stressLayOpacLab0").hide(100);
+				}
+			
+			});
+			
+			$("#stressLayCheck1").on('change', function(event){
+				var checked = event.args.checked;
+				if(checked){
+					$("#stressLayOpacSlider1").jqxSlider({ disabled:false });
+					$("#stressLayOpacLab1").show(100);
+				}else{
+					$("#stressLayOpacSlider1").jqxSlider({ disabled:true });
+					$("#stressLayOpacLab1").hide(100);
+				}
+			
+			});
+			
+			$("#stressLayCheck2").on('change', function(event){
+				var checked = event.args.checked;
+				if(checked){
+					$("#stressLayOpacSlider2").jqxSlider({ disabled:false });
+					$("#stressLayOpacLab2").show(100);
+				}else{
+					$("#stressLayOpacSlider2").jqxSlider({ disabled:true });
+					$("#stressLayOpacLab2").hide(100);
+				}
+			
+			});
+			
+			$("#stressLayCheck3").on('change', function(event){
+				var checked = event.args.checked;
+				if(checked){
+					$("#stressLayOpacSlider3").jqxSlider({ disabled:false });
+					$("#stressLayOpacLab3").show(100);
+				}else{
+					$("#stressLayOpacSlider3").jqxSlider({ disabled:true });
+					$("#stressLayOpacLab3").hide(100);
+				}
+			
+			});
+			
+			$("#stressLayCheck4").on('change', function(event){
+				var checked = event.args.checked;
+				if(checked){
+					$("#stressLayOpacSlider4").jqxSlider({ disabled:false });
+					$("#stressLayOpacLab4").show(100);
+				}else{
+					$("#stressLayOpacSlider4").jqxSlider({ disabled:true });
+					$("#stressLayOpacLab4").hide(100);
+				}
+			
+			});
+			
+			
+			$("#assetLayCheck0").on('change', function(event){
+				var checked = event.args.checked;
+				if(checked){
+					$("#assetLayOpacSlider0").jqxSlider({ disabled:false });
+					$("#assetLayOpacLab0").show(100);
+				}else{
+					$("#assetLayOpacSlider0").jqxSlider({ disabled:true });
+					$("#assetLayOpacLab0").hide(100);
+				}
+			
+			});
+			
+			$("#assetLayCheck1").on('change', function(event){
+				var checked = event.args.checked;
+				if(checked){
+					$("#assetLayOpacSlider1").jqxSlider({ disabled:false });
+					$("#assetLayOpacLab1").show(100);
+				}else{
+					$("#assetLayOpacSlider1").jqxSlider({ disabled:true });
+					$("#assetLayOpacLab1").hide(100);
+				}
+			
+			});
+			
+			$("#assetLayCheck2").on('change', function(event){
+				var checked = event.args.checked;
+				if(checked){
+					$("#assetLayOpacSlider2").jqxSlider({ disabled:false });
+					$("#assetLayOpacLab2").show(100);
+				}else{
+					$("#assetLayOpacSlider2").jqxSlider({ disabled:true });
+					$("#assetLayOpacLab2").hide(100);
+				}
+			
+			});
+			
+			$("#assetLayCheck3").on('change', function(event){
+				var checked = event.args.checked;
+				if(checked){
+					$("#assetLayOpacSlider3").jqxSlider({ disabled:false });
+					$("#assetLayOpacLab3").show(100);
+				}else{
+					$("#assetLayOpacSlider3").jqxSlider({ disabled:true });
+					$("#assetLayOpacLab3").hide(100);
+				}
+			
+			});
+			
+			$("#assetLayCheck4").on('change', function(event){
+				var checked = event.args.checked;
+				if(checked){
+					$("#assetLayOpacSlider4").jqxSlider({ disabled:false });
+					$("#assetLayOpacLab4").show(100);
+				}else{
+					$("#assetLayOpacSlider4").jqxSlider({ disabled:true });
+					$("#assetLayOpacLab4").hide(100);
+				}
+			
+			});
+			
+			
+			$('#stressLayOpacSlider0, #stressLayOpacSlider1, #stressLayOpacSlider2, #stressLayOpacSlider3, #stressLayOpacSlider4 ').jqxSlider({ 
+				theme:myTheme,
+				min: 0, 
+				max: 100, 
+				ticksFrequency: 1, 
+				value: 50, 
+				step: 1,
+				showButtons: false,
+				ticksPosition: 'NONE',
+				width: '100%',
+				showRange: true,
+				tooltip: false
+			});
+			
+			$('#assetLayOpacSlider0, #assetLayOpacSlider1, #assetLayOpacSlider2, #assetLayOpacSlider3, #assetLayOpacSlider4 ').jqxSlider({ 
+				theme:myTheme,
+				min: 0, 
+				max: 100, 
+				ticksFrequency: 1, 
+				value: 50, 
+				step: 1,
+				showButtons: false,
+				ticksPosition: 'NONE',
+				width: '100%',
+				showRange: true,
+				tooltip: false
+			});
+			
+			$('#stressLayOpacSlider0').on('change', function(event){
+				var opacVal = Math.round(event.args.value);
+				$('#stressLayOpacLab0').html(opacVal.toString()+"%");
+			});
+			
+			$('#stressLayOpacSlider1').on('change', function(event){
+				var opacVal = Math.round(event.args.value);
+				$('#stressLayOpacLab1').html(opacVal.toString()+"%");
+			});
+			
+			$('#stressLayOpacSlider2').on('change', function(event){
+				var opacVal = Math.round(event.args.value);
+				$('#stressLayOpacLab2').html(opacVal.toString()+"%");
+			});
+			
+			$('#stressLayOpacSlider3').on('change', function(event){
+				var opacVal = Math.round(event.args.value);
+				$('#stressLayOpacLab3').html(opacVal.toString()+"%");
+			});
+			
+			$('#stressLayOpacSlider4').on('change', function(event){
+				var opacVal = Math.round(event.args.value);
+				$('#stressLayOpacLab4').html(opacVal.toString()+"%");
+			});
+			
+			
+			$('#assetLayOpacSlider0').on('change', function(event){
+				var opacVal = Math.round(event.args.value);
+				$('#assetLayOpacLab0').html(opacVal.toString()+"%");
+			});
+			
+			$('#assetLayOpacSlider1').on('change', function(event){
+				var opacVal = Math.round(event.args.value);
+				$('#assetLayOpacLab1').html(opacVal.toString()+"%");
+			});
+			
+			$('#assetLayOpacSlider2').on('change', function(event){
+				var opacVal = Math.round(event.args.value);
+				$('#assetLayOpacLab2').html(opacVal.toString()+"%");
+			});
+			
+			$('#assetLayOpacSlider3').on('change', function(event){
+				var opacVal = Math.round(event.args.value);
+				$('#assetLayOpacLab3').html(opacVal.toString()+"%");
+			});
+			
+			$('#assetLayOpacSlider4').on('change', function(event){
+				var opacVal = Math.round(event.args.value);
+				$('#assetLayOpacLab4').html(opacVal.toString()+"%");
+			});
+			
+			$("#multiGrphPanel").jqxPanel({ 
+				width: 621, 
+				height: 700,
+				sizeMode: 'fixed',
+				scrollBarSize:10
+			});	
+			
+			
+		
+		
+		
+		
+		
+		$( "#topOpenButt" ).click(function() {
+			if($( "#topOpenButt" ).hasClass("isDown")){
+				$( "#menuItemHolder" ).animate({top: "-=232"}, 500);
+				$( "#layerContentHold" ).animate({top: "-=232"}, 500);
+				//$( "#bottomer" ).animate({top: "+=128"}, 500)
+				$("#openCloseiconHold").attr('src', 'media/uiGraphics/dwnArrow.png');
+				$( "#topOpenButt" ).removeClass("isDown");
+			}else{
+				$( "#menuItemHolder" ).animate({top: "+=232"}, 500);
+				$( "#layerContentHold" ).animate({top: "+=232"}, 500);
+				//$( "#bottomer" ).animate({top: "-=128"}, 500, function() { 
+				$("#openCloseiconHold").attr('src', 'media/uiGraphics/upArrow.png');
+				//});
+				$( "#topOpenButt" ).addClass("isDown");
+			}
+			return false;
+		});
+		
+		
+		
+		
+		
+		
+		
+		
+		function doTopicMenuBuild(){
+		
+			var arrTopicLabels = ["COASTAL FLOODING", "ECOSYSTEM VULNERABILITY", "FOOD RESILIENCE", "HUMAN HEALTH", "INFRASTRUCTURE AND ENERGY SUPPLY", "TRANSPORTATION AND SUPPLY CHAIN", "WATER RESOURCES", "ALL TOPICS"];
+			var arrTopicData = ["oneD", "twoD", "threeD", "fourD", "fiveD", "sixD", "sevenD", "eightD"];
+			
+				//$("#descTitle").html(arrFour[0][0]);
+				//$('.DS_MenuContHold').remove();
+				//$('#menuItemHolder').css('height', 135);
+			
+			$("#topicsLabel").html(arrTopicLabels[0]);
+			
+			for(i=0; i<arrTopicLabels.length; i++){
+	
+				$('<div/>', {"class": 'CE_MenuContHold', id: 'item'+i, title:arrTopicLabels[i], data:arrTopicData[i]}).appendTo('#menuItemHolder');
+				$('<div/>', {id: 'RBox'+i, rel: 'internal'}).appendTo('#item'+i);				
+				$('<span/>', {id: 'titleHolder'+i, rel: 'internal'}).appendTo('#RBox'+i);
+					
+				$('#RBox'+i).addClass('RBoxStyle');
+				$('#titleHolder'+i).addClass('CE_MenuTitleHoldStyle');
+				
+				$('#titleHolder'+i).text(arrTopicLabels[i]);
+				
+				//$('item'+i).data(arrFour[i][3]);
+   			}
+			
+			//arrTwo = [];
+			
+			
+			
+			$('#item0').addClass('selected').css('background-color', '#0079A4');
+			
+			$('.CE_MenuContHold').hover(function(){
+				if(!$(this).hasClass("selected")){
+					$(this).css('background-color', '#aaa')
+				}
+			},
+ 			function(){
+				if(!$(this).hasClass("selected")){
+					$(this).css('background-color', '#888')
+				}
+ 				
+				}).click(function(){
+
+					$('.CE_MenuContHold').removeClass('selected').css('background-color', '#888');
+					$(this).css('background-color', '#aaa');
+					$(this).addClass('selected').css('background-color', '#0079A4');
+					
+					$("#topicsLabel").html($(this).attr('title'));
+					$( "#menuItemHolder" ).animate({top: "-=232"}, 500);
+					$( "#layerContentHold" ).animate({top: "-=232"}, 500);
+					$( "#topOpenButt" ).removeClass("isDown");
+					$("#openCloseiconHold").attr('src', 'media/uiGraphics/dwnArrow.png');
+ 				});
+	}
+			
+			
+			
+			
+			
+			
+	});
+	</script>
+	
+</head>		
+<body>
+	<div id="contentHolder">
+	
+			<!-- Top Holder Start -->
+		<div id="topHolder">
+			<div id="topLeftHolder">
+				<div id="widgTitle">CLIMATE EXPLORER</div>
+			</div>
+			<div id="topRightHolder">
+				<div id='layerMultiGrphButtGrp'>
+            		<button id="layersButt">LAYERS</button>
+            		<button id="multiGrphButt">MULTIGRAPH</button>
+				</div>
+			</div>
+				
+			
+			
+			</div>
+		</div>
+		<!-- Top Holder End -->
+		
+		<!-- Middle Holder Start -->
+		<div id="middleHolder">
+			<div id="middleLeftHolder">
+				<div id="mapHolder">
+					<img id="mapDiv" src='media/uiGraphics/dummyMap.png'></img>
+				</div>
+			</div>
+			<div id="middleRightHolder">
+				<div id="slug"></div>
+				<div id="layersHolder">
+				
+				<div id="menuPanel">
+			
+				<div class="topHeader">
+					<div class="topHeaderLabel">TOPICS:</div>
+				</div>
+				
+				
+				<div class="menuBar">
+					<div class="topBarContHold">
+						<div class="topBarContLeft">
+							<div id="topicsLabel"></div>
+						</div>
+						<div class="topBarContRight">
+							<div id="topOpenButt" class="topOpenButtStyle">
+								<img id="openCloseiconHold" src="media/uiGraphics/dwnArrow.png"/>
+							</div>
+						</div>
+					</div>
+				</div>
+<!-- -->
+				<div id="menuContainer">
+<!--
+#menuContainer{
+	width:408px;
+	height:800px;
+	position:absolute;
+	top:0;
+	overflow:hidden;
+}
+-->
+					<div id="menuItemHolder"></div>
+<!--
+#menuItemHolder{
+	width:408px;
+	height:232px;
+	position:relative;	
+	top:-140px;
+}
+-->
+					<div id="layerContentHold">
+<!--
+#layerContentHold{
+	width:408px;
+	height:50px;
+	position:relative;	
+	top:-140px;
+}
+$( "#layerContentHold" ).animate({top: "-=232"}, 500);
+$( "#layerContentHold" ).animate({top: "+=232"}, 500);
+$( "#layerContentHold" ).animate({top: "-=232"}, 500);
+-->
+					<div class="layerSetHolder">
+<!--
+.layerSetHolder{
+	width:410px;
+	height:212px;
+	background-color:#aaaaaa;
+	/*overflow-y:auto;*/
+	/*overflow-x:hidden;*/
+	margin-bottom:0px;
+}
+-->
+						<div class="headerHolder">
+<!--
+.headerHolder{
+	width:410px;
+	height:33px;
+	background-color:#565656;
+	/*background-image: url('css/images/ui-bg_glass_20_555555_1x400.png') repeat-x scroll 50% 50% #555;*/
+}
+-->
+							<div class="headerText">STRESSORS</div>
+<!--
+.headerText{
+	font-family:Lato, serif;
+	font-size:16px;
+	font-weight:bold;
+	color:#fff;
+	margin-left:25px;
+	line-height:30px;
+}
+-->
+						</div>
+							<div id="stressLayersHolder">
+<!--
+#stressLayersHolder,
+#assetsLayersHolder{
+	margin-top:0px;
+}
+$("#stressLayersHolder, #assetsLayersHolder").jqxPanel({ 
+	width: 406, 
+	height: 177,
+	sizeMode: 'fixed',
+	scrollBarSize:10,
+
+});
+-->
+								<div class="layer">
+<!--
+.layer{
+	height:40px;
+	border:solid thin #ccc;
+	margin-top:2px;
+	margin-right:5px;
+	background-color:#888888;
+}
+-->
+								<div class="layerTopContentHold">
+<!--
+.layerTopContentHold{
+	width:100%;
+	height:32px;
+}
+-->
+									<div class="layCheckHoldStyle">
+<!--
+.layCheckHoldStyle{
+	width:300px;
+	height:19px;
+	margin-left:30px;
+	margin-top:10px;
+	float:left;
+}
+-->
+										<div id="stressLayCheck0">
+<!--
+$("#stressLayCheck0, #stressLayCheck1, #stressLayCheck2, #stressLayCheck3, #stressLayCheck4").jqxCheckBox({ width: 300, height: 25, checked: true});
+$("#stressLayCheck0").on('change', function(event){
+	var checked = event.args.checked;
+	if(checked){
+		$("#stressLayOpacSlider0").jqxSlider({ disabled:false });
+		$("#stressLayOpacLab0").show(100);
+	}else{
+		$("#stressLayOpacSlider0").jqxSlider({ disabled:true });
+		$("#stressLayOpacLab0").hide(100);
+	}
+
+});
+-->
+											<div id="stressLayTitle0" class="layTitleHoldStyle">Stressor Layer Title One</div>
+<!--
+.layTitleHoldStyle{
+	font-family:Lato, serif;
+	font-size:14px;
+	font-weight:bold;
+	line-height:12px;
+	color:#fff;
+	float:left;
+	margin-left:8px;
+}
+-->
+										</div>
+									</div>
+									<div class="layOpacLabHoldStyle">
+<!--
+.layOpacLabHoldStyle{
+	width:30px;
+	height:19px;
+	float:right;
+	margin-right:10px;
+	margin-top:10px;
+}
+-->
+										<div id="stressLayOpacLab0" class="layOpacLabStyle">50%</div>
+<!--
+$("#stressLayOpacLab0").show(100);
+$("#stressLayOpacLab0").hide(100);
+$('#stressLayOpacLab0').html(opacVal.toString()+"%");
+-->
+									</div>
+								</div>
+								<div class="layOpacSlidHold">
+<!--
+.layOpacSlidHold{
+	margin-right:5px;
+}
+-->
+									<div id="stressLayOpacSlider0"></div>
+<!--
+$("#stressLayOpacSlider0").jqxSlider({ disabled:true });
+$("#stressLayOpacSlider0").jqxSlider({ disabled:false });
+$('#stressLayOpacSlider0').on('change', function(event){
+	var opacVal = Math.round(event.args.value);
+	$('#stressLayOpacLab0').html(opacVal.toString()+"%");
+});
+$('#stressLayOpacSlider0, #stressLayOpacSlider1, #stressLayOpacSlider2, #stressLayOpacSlider3, #stressLayOpacSlider4 ').jqxSlider({ 
+	theme:myTheme,
+	min: 0, 
+	max: 100, 
+	ticksFrequency: 1, 
+	value: 50, 
+	step: 1,
+	showButtons: false,
+	ticksPosition: 'NONE',
+	width: '100%',
+	showRange: true,
+	tooltip: false
+});
+-->
+								</div>
+							</div>
+							
+							<div class="layer">
+								<div class="layerTopContentHold">
+									<div class="layCheckHoldStyle">
+									
+										<div id="stressLayCheck1">
+											<div id="stressLayTitle1" class="layTitleHoldStyle">Stressor Layer Title Two</div>
+										</div>
+									</div>
+									<div class="layOpacLabHoldStyle">
+										<div id="stressLayOpacLab1" class="layOpacLabStyle">50%</div>
+									</div>
+								</div>
+								<div class="layOpacSlidHold">
+									<div id="stressLayOpacSlider1"></div>
+								</div>
+							</div>
+							<div class="layer">
+								<div class="layerTopContentHold">
+									<div class="layCheckHoldStyle">
+									
+										<div id="stressLayCheck2">
+											<div id="stressLayTitle2" class="layTitleHoldStyle">Stressor Layer Title Three</div>
+										</div>
+									</div>
+									<div class="layOpacLabHoldStyle">
+										<div id="stressLayOpacLab2" class="layOpacLabStyle">50%</div>
+									</div>
+								</div>
+								<div class="layOpacSlidHold">
+									<div id="stressLayOpacSlider2"></div>
+								</div>
+							</div>
+							<div class="layer">
+								<div class="layerTopContentHold">
+									<div class="layCheckHoldStyle">
+									
+										<div id="stressLayCheck3">
+											<div id="stressLayTitle3" class="layTitleHoldStyle">Stressor Layer Title Four</div>
+										</div>
+									</div>
+									<div class="layOpacLabHoldStyle">
+										<div id="stressLayOpacLab3" class="layOpacLabStyle">50%</div>
+									</div>
+								</div>
+								<div class="layOpacSlidHold">
+									<div id="stressLayOpacSlider3"></div>
+								</div>
+							</div>
+							<div class="layer">
+								<div class="layerTopContentHold">
+									<div class="layCheckHoldStyle">
+									
+										<div id="stressLayCheck4">
+											<div id="stressLayTitle4" class="layTitleHoldStyle">Stressor Layer Title Five</div>
+										</div>
+									</div>
+									<div class="layOpacLabHoldStyle">
+										<div id="stressLayOpacLab4" class="layOpacLabStyle">50%</div>
+									</div>
+								</div>
+								<div class="layOpacSlidHold">
+									<div id="stressLayOpacSlider4"></div>
+								</div>
+							</div>
+						</div>
+						
+						</div>
+					
+					<div class="layerSetHolder">
+						<div class="headerHolder">
+							<div class="headerText">ASSETS</div>
+						</div>
+							<div id="assetsLayersHolder">
+								<div class="layer">
+								<div class="layerTopContentHold">
+									<div class="layCheckHoldStyle">
+									
+										<div id="assetLayCheck0">
+											<div id="assetLayTitle0" class="layTitleHoldStyle">Assets Layer Title One</div>
+										</div>
+									</div>
+									<div class="layOpacLabHoldStyle">
+										<div id="assetLayOpacLab0" class="layOpacLabStyle">50%</div>
+									</div>
+								</div>
+								<div class="layOpacSlidHold">
+									<div id="assetLayOpacSlider0"></div>
+								</div>
+							</div>
+							
+							<div class="layer">
+								<div class="layerTopContentHold">
+									<div class="layCheckHoldStyle">
+									
+										<div id="assetLayCheck1">
+											<div id="assetLayTitle1" class="layTitleHoldStyle">Assets Layer Title Two</div>
+										</div>
+									</div>
+									<div class="layOpacLabHoldStyle">
+										<div id="assetLayOpacLab1" class="layOpacLabStyle">50%</div>
+									</div>
+								</div>
+								<div class="layOpacSlidHold">
+									<div id="assetLayOpacSlider1"></div>
+								</div>
+							</div>
+							<div class="layer">
+								<div class="layerTopContentHold">
+									<div class="layCheckHoldStyle">
+									
+										<div id="assetLayCheck2">
+											<div id="assetLayTitle2" class="layTitleHoldStyle">Assets Layer Title Three</div>
+										</div>
+									</div>
+									<div class="layOpacLabHoldStyle">
+										<div id="assetLayOpacLab2" class="layOpacLabStyle">50%</div>
+									</div>
+								</div>
+								<div class="layOpacSlidHold">
+									<div id="assetLayOpacSlider2"></div>
+								</div>
+							</div>
+							<div class="layer">
+								<div class="layerTopContentHold">
+									<div class="layCheckHoldStyle">
+									
+										<div id="assetLayCheck3">
+											<div id="assetLayTitle3" class="layTitleHoldStyle">Assets Layer Title Four</div>
+										</div>
+									</div>
+									<div class="layOpacLabHoldStyle">
+										<div id="assetLayOpacLab3" class="layOpacLabStyle">50%</div>
+									</div>
+								</div>
+								<div class="layOpacSlidHold">
+									<div id="assetLayOpacSlider3"></div>
+								</div>
+							</div>
+							<div class="layer">
+								<div class="layerTopContentHold">
+									<div class="layCheckHoldStyle">
+									
+										<div id="assetLayCheck4">
+											<div id="assetLayTitle4" class="layTitleHoldStyle">Assets Layer Title Five</div>
+										</div>
+									</div>
+									<div class="layOpacLabHoldStyle">
+										<div id="assetLayOpacLab4" class="layOpacLabStyle">50%</div>
+									</div>
+								</div>
+								<div class="layOpacSlidHold">
+									<div id="assetLayOpacSlider4"></div>
+								</div>
+							</div>
+						</div>
+						</div>
+					</div>
+					</div>
+				</div>
+			</div>
+		
+				<div id="multiGrphHolder">
+				<div class="topHeader">
+					<div class="topHeaderLabel">STATION DETAIL:</div>
+					
+				</div>
+					<div id="mgButtBar">
+						<div id='multiGrphButtHold'>
+							<input id="tempButt"type="button" value="TEMPERATURE"/>
+							<input id="precipButt" type="button" value="PRECIPITATION"/>
+						</div>
+					</div>
+					<div id="multiGrphPanel">
+						<div class="stationPaneHolder">
+							<div class="stationPaneHeader">
+								<div class="stationPaneContentHold">
+									<div id="mgNum0" class="mgNumStyle">1.</div>
+									<div id="mgTitle0" class="mgTitleStyle">Station Location Name</div>
+									<div id="mgLatLong0" class="mgLatLongStyle">(00.000, 00.000)</div>
+								</div>
+								</div>
+							<div id="mgTempPane0" class="mgPaneStyle">
+								<div class="mgPaneTopContentHold">
+									<div class="statDatTypeLabel">Temperature</div>
+								</div>
+								<div class="mgPaneBotContentHold">
+									<img src="media/multigraphImg/mgTempImgDummy1.png"></img>
+								</div>
+							</div>
+							<div id="mgPrecipPane0" class="mgPaneStyle">
+								<div class="mgPaneTopContentHold">
+									<div class="statDatTypeLabel">Precipitation</div>
+								</div>
+								<div class="mgPaneBotContentHold">
+									<img src="media/multigraphImg/mgPrecipImgDummy1.png"></img>
+								</div>
+							</div>
+						</div>
+						
+						<div class="stationPaneHolder">
+							<div class="stationPaneHeader">
+								<div class="stationPaneContentHold">
+									<div id="mgNum1" class="mgNumStyle">2.</div>
+									<div id="mgTitle1" class="mgTitleStyle">Station Location Name</div>
+									<div id="mgLatLong1" class="mgLatLongStyle">(00.000, 00.000)</div>
+								</div>
+								</div>
+							<div id="mgTempPane1" class="mgPaneStyle">
+								<div class="mgPaneTopContentHold">
+									<div class="statDatTypeLabel">Temperature</div>
+								</div>
+								<div class="mgPaneBotContentHold">
+									<img src="media/multigraphImg/mgTempImgDummy1.png"></img>
+								</div>
+							</div>
+							<div id="mgPrecipPane1" class="mgPaneStyle">
+								<div class="mgPaneTopContentHold">
+									<div class="statDatTypeLabel">Precipitation</div>
+								</div>
+								<div class="mgPaneBotContentHold">
+									<img src="media/multigraphImg/mgPrecipImgDummy1.png"></img>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		
+<!-- Middle Holder End -->
+	
+
+	
+</body>
+</html>
+	
