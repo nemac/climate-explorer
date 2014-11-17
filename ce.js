@@ -10,7 +10,7 @@ $(function(){
 
   if (oldIE) {
       $('body').empty();
-      alert("Climate Explorer does support the browser you are using.  You appear to be using an old version of Internet Explorer.  Climate Explorer works best in Mozilla Firefox, Google Chrome, or Internet Explorer 10 or higher.");
+      alert("Climate Explorer does not support the browser you are using.  You appear to be using an old version of Internet Explorer.  Climate Explorer works best in Mozilla Firefox, Google Chrome, or Internet Explorer 10 or higher.");
       return;
   }
 
