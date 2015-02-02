@@ -159,8 +159,9 @@
   }, {
     "id": "aal",
     "name": "Land Cover (2011)",
-    "url": "http://raster.nationalmap.gov/arcgis/services/LandCover/USGS_EROS_LandCover_NLCD/MapServer/WMSServer?service=WMS",
-    "layers": "30",
+    "url": "http://raster.nationalmap.gov/arcgis/rest/services/LandCover/USGS_EROS_LandCover_NLCD/MapServer/export",
+    "layers": "4",
+    "type": "REST",
     "projection": "EPSG:3857",
     "info": {
       "sourceUrl": "http://catalog.data.gov/dataset/usgs-land-cover-nlcd-overlay-map-service-from-the-national-map",
