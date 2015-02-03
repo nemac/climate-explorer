@@ -337,7 +337,7 @@
     "id": "abb",
     "name": "Elevation of Dune Crest",
     "url": "http://marine.usgs.gov/coastalchangehazardsportal/geoserver/proxied/wms",
-    "layers": "proxied:Erosion_Hazards_1394540727188",
+    "layers": "proxied:Erosion_Hazards_1418411763041",
     "sld": "http://marine.usgs.gov/coastalchangehazardsportal/data/sld/CCENsQT",
     "info": {
       "sourceUrl": "http://marine.usgs.gov/coastalchangehazardsportal/ui/info/item/CCNHBnK",
@@ -349,7 +349,7 @@
     "id": "abc",
     "name": "Elevation of Dune Toe",
     "url": "http://marine.usgs.gov/coastalchangehazardsportal/geoserver/proxied/wms",
-    "layers": "proxied:Erosion_Hazards_1394540940323",
+    "layers": "proxied:Erosion_Hazards_1418412485765",
     "sld": "http://marine.usgs.gov/coastalchangehazardsportal/data/sld/CCER1Xg",
     "info": {
       "sourceUrl": "http://marine.usgs.gov/coastalchangehazardsportal/ui/info/item/CCNKrhr",
@@ -361,7 +361,7 @@
     "id": "abd",
     "name": "CAT3 Hurricane Prob. of Collision", 
     "url": "http://marine.usgs.gov/coastalchangehazardsportal/geoserver/proxied/wms",
-    "layers": "proxied:Erosion_Hazards_1394633107610",
+    "layers": "proxied:Erosion_Hazards_1418419535490",
     "sld": "http://marine.usgs.gov/coastalchangehazardsportal/data/sld/CCNXDS5",
     "info": {
       "sourceUrl": "http://marine.usgs.gov/coastalchangehazardsportal/ui/info/item/CCHdMRt",
@@ -373,7 +373,7 @@
     "id": "abe",
     "name": "CAT3 Hurricane Prob. of Overwash", 
     "url": "http://marine.usgs.gov/coastalchangehazardsportal/geoserver/proxied/wms",
-    "layers": "proxied:Erosion_Hazards_1394814655647",
+    "layers": "proxied:Erosion_Hazards_1418665660672",
     "sld": "http://marine.usgs.gov/coastalchangehazardsportal/data/sld/CD5ZUvX",
     "info": {
       "sourceUrl": "http://marine.usgs.gov/coastalchangehazardsportal/ui/info/item/CCHdMRt",
@@ -385,7 +385,7 @@
     "id": "abf",
     "name": "CAT3 Hurricane Prob. of Inundation", 
     "url": "http://marine.usgs.gov/coastalchangehazardsportal/geoserver/proxied/wms",
-    "layers": "proxied:Erosion_Hazards_1394832182359",
+    "layers": "proxied:Erosion_Hazards_1418661933827",
     "sld": "http://marine.usgs.gov/coastalchangehazardsportal/data/sld/CD7wRHj",
     "info": {
       "sourceUrl": "http://marine.usgs.gov/coastalchangehazardsportal/ui/info/item/CCHdMRt",
@@ -397,7 +397,7 @@
     "id": "abg",
     "name": "CAT3 Hurricane Mean Water Levels", 
     "url": "http://marine.usgs.gov/coastalchangehazardsportal/geoserver/proxied/wms",
-    "layers": "proxied:Erosion_Hazards_1395148939358",
+    "layers": "proxied:Erosion_Hazards_1418403296306",
     "sld": "http://marine.usgs.gov/coastalchangehazardsportal/data/sld/CDAzqt6",
     "info": {
       "sourceUrl": "http://marine.usgs.gov/coastalchangehazardsportal/ui/info/item/CDAzqt6",
@@ -409,7 +409,7 @@
     "id": "abh",
     "name": "CAT3 Hurricane Extreme Water Levels", 
     "url": "http://marine.usgs.gov/coastalchangehazardsportal/geoserver/proxied/wms",
-    "layers": "proxied:Erosion_Hazards_1395151999519",
+    "layers": "proxied:Erosion_Hazards_1418399313701",
     "sld": "http://marine.usgs.gov/coastalchangehazardsportal/data/sld/CDARuQk",
     "info": {
       "sourceUrl": "http://marine.usgs.gov/coastalchangehazardsportal/ui/info/item/CDARuQk",
