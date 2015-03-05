@@ -228,7 +228,7 @@
     "name": "HAZUS Critical Facilities",
     "url": "http://coast.noaa.gov/arcgis/rest/services/FloodExposureMapper/CFEM_CriticalFacilities/MapServer/export",
     "projection": "EPSG:102100",
-    "layers": "0,1,2",
+    "layers": "",
     "type": "REST",
     "info": {
       "sourceUrl": "http://catalog.data.gov/dataset/fema-hazus-critical-facilities-for-coastal-geographies",
