@@ -37,9 +37,10 @@
   }, {
     "id": "aab",
     "name": "Inundation from Sea Level Rise (6ft)",
-    "url": "http://coast.noaa.gov/arcgis/services/dc_slr/slr_6ft/MapServer/WMSServer",
+    "url": "http://coast.noaa.gov/arcgis/rest/services/dc_slr/slr_6ft/MapServer/export",
     "projection": "EPSG:3857",
     "layers": "0",
+    "type": "REST",
     "info": {
       "sourceUrl": "http://catalog.data.gov/dataset/noaa-digital-coast-sea-level-rise-and-coastal-flooding-impacts-viewer",
       "sourceEntity": "NOAA Coastal Services Center",
@@ -49,9 +50,10 @@
   }, {
     "id": "aac",
     "name": "Inundation from Sea Level Rise (2ft)",
-    "url": "http://coast.noaa.gov/arcgis/services/dc_slr/slr_2ft/MapServer/WMSServer",
+    "url": "http://coast.noaa.gov/arcgis/rest/services/dc_slr/slr_2ft/MapServer/export",
     "projection": "EPSG:3857",
     "layers": "0",
+    "type": "REST",
     "info": {
       "sourceUrl": "http://catalog.data.gov/dataset/noaa-digital-coast-sea-level-rise-and-coastal-flooding-impacts-viewer",
       "sourceEntity": "NOAA Coastal Services Center",
@@ -61,9 +63,10 @@
   }, {
     "id": "aad",
     "name": "Inundation from Sea Level Rise (3ft)",
-    "url": "http://coast.noaa.gov/arcgis/services/dc_slr/slr_3ft/MapServer/WMSServer",
+    "url": "http://coast.noaa.gov/arcgis/rest/services/dc_slr/slr_3ft/MapServer/export",
     "projection": "EPSG:3857",
     "layers": "0",
+    "type": "REST",
     "info": {
       "sourceUrl": "http://catalog.data.gov/dataset/noaa-digital-coast-sea-level-rise-and-coastal-flooding-impacts-viewer",
       "sourceEntity": "NOAA Coastal Services Center",
@@ -73,9 +76,10 @@
   }, {
     "id": "aae",
     "name": "Inundation from Sea Level Rise (4ft)",
-    "url": "http://coast.noaa.gov/arcgis/services/dc_slr/slr_4ft/MapServer/WMSServer",
+    "url": "http://coast.noaa.gov/arcgis/rest/services/dc_slr/slr_4ft/MapServer/export",
     "projection": "EPSG:3857",
     "layers": "0",
+    "type": "REST",
     "info": {
       "sourceUrl": "http://catalog.data.gov/dataset/noaa-digital-coast-sea-level-rise-and-coastal-flooding-impacts-viewer",
       "sourceEntity": "NOAA Coastal Services Center",
@@ -85,9 +89,10 @@
   }, {
     "id": "aaf",
     "name": "Inundation from Sea Level Rise (5ft)",
-    "url": "http://coast.noaa.gov/arcgis/services/dc_slr/slr_5ft/MapServer/WMSServer",
+    "url": "http://coast.noaa.gov/arcgis/rest/services/dc_slr/slr_5ft/MapServer/export",
     "projection": "EPSG:3857",
     "layers": "0",
+    "type": "REST",
     "info": {
       "sourceUrl": "http://catalog.data.gov/dataset/noaa-digital-coast-sea-level-rise-and-coastal-flooding-impacts-viewer",
       "sourceEntity": "NOAA Coastal Services Center",
@@ -97,9 +102,10 @@
   }, {
     "id": "aag",
     "name": "Inundation from Sea Level Rise (1ft)",
-    "url": "http://coast.noaa.gov/arcgis/services/dc_slr/slr_1ft/MapServer/WMSServer",
+    "url": "http://coast.noaa.gov/arcgis/rest/services/dc_slr/slr_1ft/MapServer/export",
     "projection": "EPSG:3857",
     "layers": "0",
+    "type": "REST",
     "info": {
       "sourceUrl": "http://catalog.data.gov/dataset/noaa-digital-coast-sea-level-rise-and-coastal-flooding-impacts-viewer",
       "sourceEntity": "NOAA Coastal Services Center",
@@ -172,14 +178,14 @@
   }, {
     "id": "aam",
     "name": "Social Vulnerability Index",
-    "url": "http://www.coast.noaa.gov/arcgis/rest/services/dc_slr/SocioEconomic/MapServer/export",
+    "url": "http://coast.noaa.gov/arcgis/rest/services/dc_slr/SOVI/MapServer/export",
     "projection": "EPSG:3857",
-    "layers": "7",
+    "layers": "",
     "type": "REST",
     "info": {
-      "sourceUrl": "http://catalog.data.gov/dataset/social-vulnerability-index-sovi-for-coastal-states-based-on-2000-census-block-groups",
+      "sourceUrl": "http://catalog.data.gov/dataset/social-vulnerability-index-sovi-for-the-u-s-coastal-states-based-on-the-2010-census-tracts",
       "sourceEntity": "NOAA Coastal Services Center",
-      "layerDescription": "Social Vulnerability Index (SoVI) for Coastal States based on 2000 Census Block Groups.",
+      "layerDescription": "Social Vulnerability Index (SoVI) for Coastal States based on 2010 Census Tracts.",
       "legendImage": "legends/legendimages/aam.png"
     }
   }, {
@@ -219,15 +225,15 @@
     }
   }, {
     "id": "aaq",
-    "name": "HAZUS Critical Facilities (DEL-NJ-NY)",
-    "url": "http://coast.noaa.gov/arcgis/rest/services/Roadmap/RoadmapPilotMaps_IndividualLayers/MapServer/export",
+    "name": "HAZUS Critical Facilities",
+    "url": "http://coast.noaa.gov/arcgis/rest/services/FloodExposureMapper/CFEM_CriticalFacilities/MapServer/export",
     "projection": "EPSG:102100",
-    "layers": "7",
+    "layers": "0,1,2",
     "type": "REST",
     "info": {
       "sourceUrl": "http://catalog.data.gov/dataset/fema-hazus-critical-facilities-for-coastal-geographies",
       "sourceEntity": "NOAA Coastal Services Center",
-      "layerDescription": "Selected structures in Delaware, New Jersey, and New York that, if flooded, would present an immediate threat to life, public health, or safety.",
+      "layerDescription": "Selected structures along the Atlantic and Gulf coasts that, if flooded, would present an immediate threat to life, public health, or safety.",
       "legendImage": "legends/legendimages/aaq.png"
     }
   }, {
@@ -271,28 +277,28 @@
     }
   }, {
     "id": "aau",
-    "name": "Beaches & Dunes (DEL-NJ-NY)",
-    "url": "http://coast.noaa.gov/arcgis/rest/services/Roadmap/RoadmapPilotMaps_IndividualLayers/MapServer/export",
-    "projection": "EPSG:102100",
-    "layers": "10",
-    "type": "REST",
-    "info": {
-      "sourceUrl": "http://www.csc.noaa.gov/floodexposure/#/services",
-      "sourceEntity": "NOAA Coastal Services Center",
-      "layerDescription": "This layer shows Beaches & Dunes in Delaware, New Jersey, and New York.",
-      "legendImage": "legends/legendimages/aau.png"
-    }
-  }, {
-    "id": "aav",
-    "name": "Wetlands (DEL-NJ-NY)",
-    "url": "http://coast.noaa.gov/arcgis/rest/services/Roadmap/RoadmapPilotMaps_IndividualLayers/MapServer/export",
+    "name": "Beaches & Dunes",
+    "url": "http://coast.noaa.gov/arcgis/rest/services/FloodExposureMapper/CFEM_LandCover_NaturalAreasOpenSpace/MapServer/export",
     "projection": "EPSG:102100",
     "layers": "8",
     "type": "REST",
     "info": {
       "sourceUrl": "http://www.csc.noaa.gov/floodexposure/#/services",
       "sourceEntity": "NOAA Coastal Services Center",
-      "layerDescription": "This layer shows Wetlands in Delaware, New Jersey, and New York.",
+      "layerDescription": "This layer shows Beaches & Dunes along the Atlantic and Gulf coasts.",
+      "legendImage": "legends/legendimages/aau.png"
+    }
+  }, {
+    "id": "aav",
+    "name": "Wetlands",
+    "url": "http://coast.noaa.gov/arcgis/rest/services/FloodExposureMapper/CFEM_LandCover_NaturalAreasOpenSpace/MapServer/export",
+    "projection": "EPSG:102100",
+    "layers": "0",
+    "type": "REST",
+    "info": {
+      "sourceUrl": "http://www.csc.noaa.gov/floodexposure/#/services",
+      "sourceEntity": "NOAA Coastal Services Center",
+      "layerDescription": "This layer shows Wetlands along the Atlantic and Gulf coasts.",
       "legendImage": "legends/legendimages/aav.png"
     }
   }, {
@@ -310,10 +316,10 @@
     }
   }, {
     "id": "aax",
-    "name": "Coastal Flood Hazard Composite (DEL-NJ-NY)",
-    "url": "http://coast.noaa.gov/arcgis/rest/services/Roadmap/RoadmapPilot_HazardComposite/MapServer/export",
+    "name": "Coastal Flood Hazard Composite",
+    "url": "http://coast.noaa.gov/arcgis/rest/services/FloodExposureMapper/CFEM_CoastalFloodHazardComposite/MapServer/export",
     "projection": "EPSG:102100",
-    "layers": "0",
+    "layers": "",
     "type": "REST",
     "info": {
       "sourceUrl": "http://catalog.data.gov/dataset/coastal-flood-hazard-composite-layer-for-the-mid-atlantic-u-s",
@@ -447,7 +453,7 @@
     "id": "abk",
     "name": "Waterways", 
     "url": "http://services.nationalmap.gov/arcgis/services/nhd/MapServer/WMSServer",
-    "layers": "4",
+    "layers": "3",
     "projection": "EPSG:4326",
     "info": {
       "sourceUrl": "http://catalog.data.gov/dataset/the-national-map",
@@ -459,7 +465,7 @@
     "id": "abl",
     "name": "Waterbodies", 
     "url": "http://services.nationalmap.gov/arcgis/services/nhd/MapServer/WMSServer",
-    "layers": "5",
+    "layers": "4",
     "projection": "EPSG:4326",
     "info": {
       "sourceUrl": "http://catalog.data.gov/dataset/the-national-map",
@@ -541,7 +547,7 @@
     }, {
       "id": "g_a_b",
       "name": "People and Assets Impacted",
-      "layers": [ "abp", "aak", "aam", "aal", "abq", "aai", "aaj", "aaq", "aat", "aau", "aav", "abb", "abc", "abm", "abn" ]
+      "layers": [ "abp", "aak", "aam", "aal", "abq", "aai", "aaj", "aaq", "aau", "aav", "abb", "abc", "abm", "abn" ]
     }]
   }, {
     "id": "g_b",
