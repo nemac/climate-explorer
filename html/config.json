@@ -573,5 +573,17 @@
       "name": "People and Assets Impacted",
       "layers": [ "abp", "aal", "abj", "abi", "abl", "abk" ]
     }]
+  }, {
+    "id": "g_d",
+    "name": "Health",
+    "subGroups": [{
+      "id": "g_d_a",
+      "name": "Climate Stressors",
+      "layers": [ "aag", "aac", "aad", "aae", "aaf", "aab", "aan", "aaa" ]             
+    }, {
+      "id": "g_d_b",
+      "name": "People and Assets Impacted",
+      "layers": [ "aal" ]
+    }]
   }]
 }
