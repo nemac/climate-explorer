@@ -591,11 +591,11 @@
     "subGroups": [{
       "id": "g_d_a",
       "name": "Climate Stressors",
-      "layers": [ "aag", "aac", "aad", "aae", "aaf", "aab", "aan", "aaa" ]             
+      "layers": [ "aac", "aan", "aaa" ]             
     }, {
       "id": "g_d_b",
       "name": "People and Assets Impacted",
-      "layers": [ "aal", "aah", "aam" ]
+      "layers": [ "aal", "aah", "aam", "abr" ]
     }]
   }]
 }
