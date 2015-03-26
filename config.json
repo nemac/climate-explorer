@@ -552,7 +552,7 @@
     "name": "Percent Poverty (2000)",
     "url": "http://sedac.ciesin.org/geoserver/ows",
     "layers": "usgrid:usgrid-summary-file3-2000_usa-pctpopbelowpovlevel-2000",
-    "projection": "EPSG:4326",
+    "projection": "EPSG:3857",
     "info": {
       "sourceUrl": "",
       "sourceEntity": "NASA",
@@ -564,7 +564,7 @@
     "name": "Percent Elderly (2000)",
     "url": "http://sedac.ciesin.org/geoserver/ows",
     "layers": "usgrid:usgrid-summary-file1-2000_usa-pctpop65to79-2000",
-    "projection": "EPSG:4326",
+    "projection": "EPSG:3857",
     "info": {
       "sourceUrl": "",
       "sourceEntity": "NASA",
