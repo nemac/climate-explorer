@@ -620,7 +620,7 @@
     }, {
       "id": "g_d_b",
       "name": "People and Assets Impacted",
-      "layers": [ "aah", "aam", "abr" ]
+      "layers": [ "aah", "aam", "abr", "abt", "abs" ]
     }]
   }]
 }
