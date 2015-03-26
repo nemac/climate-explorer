@@ -539,9 +539,10 @@
     "name": "Impervious Surfaces (2011)",
     "url": "http://raster.nationalmap.gov/arcgis/rest/services/LandCover/USGS_EROS_LandCover_NLCD/MapServer/export",
     "layers": "5",
+    "type": "REST",
     "projection": "EPSG:102100",
     "info": {
-      "sourceUrl": "http://catalog.data.gov",
+      "sourceUrl": "http://catalog.data.gov/dataset/usgs-land-cover-nlcd-overlay-map-service-from-the-national-map",
       "sourceEntity": "USGS",
       "layerDescription": "Impervious surfaces derived from the 2011 National Land Cover Database.",
       "legendImage": "legends/legendimages/abr.png"
