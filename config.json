@@ -547,8 +547,6 @@
       "legendImage": "legends/legendimages/abr.png"
     }
   }
-
-  http://raster.nationalmap.gov/arcgis/rest/services/LandCover/USGS_EROS_LandCover_NLCD/MapServer
 	      ],
   "groups": [{
     "id": "g_a",
