@@ -547,6 +547,30 @@
       "layerDescription": "Impervious surfaces derived from the 2011 National Land Cover Database.",
       "legendImage": "legends/legendimages/abr.png"
     }
+  }, {   
+    "id": "abs",
+    "name": "Percent Poverty (2000)",
+    "url": "http://sedac.ciesin.org/geoserver/ows",
+    "layers": "usgrid:usgrid-summary-file3-2000_usa-pctpopbelowpovlevel-2000",
+    "projection": "EPSG:4326",
+    "info": {
+      "sourceUrl": "",
+      "sourceEntity": "NASA",
+      "layerDescription": "Percent of population below poverty, based on 2000 census.",
+      "legendImage": "legends/legendimages/abs.png"
+    }
+  }, {   
+    "id": "abt",
+    "name": "Percent Elderly (2000)",
+    "url": "http://sedac.ciesin.org/geoserver/ows",
+    "layers": "usgrid:usgrid-summary-file1-2000_usa-pctpop65to79-2000",
+    "projection": "EPSG:4326",
+    "info": {
+      "sourceUrl": "",
+      "sourceEntity": "NASA",
+      "layerDescription": "Percent of population aged 65-79, based on 2000 census.",
+      "legendImage": "legends/legendimages/abt.png"
+    }
   }
 	      ],
   "groups": [{
@@ -596,7 +620,7 @@
     }, {
       "id": "g_d_b",
       "name": "People and Assets Impacted",
-      "layers": [ "aal", "aah", "aam", "abr" ]
+      "layers": [ "aah", "aam", "abr" ]
     }]
   }]
 }
