@@ -178,8 +178,8 @@
   }, {
     "id": "aam",
     "name": "Social Vulnerability Index",
-    "url": "http://coast.noaa.gov/arcgis/rest/services/dc_slr/SOVI/MapServer/export",
-    "projection": "EPSG:3857",
+    "url": "http://coast.noaa.gov/arcgis/rest/services/sovi/sovi_tracts2010/MapServer/export",
+    "projection": "EPSG:102100",
     "layers": "",
     "type": "REST",
     "info": {
