@@ -186,7 +186,7 @@
       "sourceUrl": "http://catalog.data.gov/dataset/social-vulnerability-index-sovi-for-the-u-s-coastal-states-based-on-the-2010-census-tracts",
       "sourceEntity": "NOAA Coastal Services Center",
       "layerDescription": "Social Vulnerability Index (SoVI) for Coastal States based on 2010 Census Tracts.",
-      "legendImage": "legends/legendimages/aam.png"
+      "legendImage": "legends/legendimages/placeholder.png"
     }
   }, {
     "id": "aan",
@@ -545,7 +545,7 @@
       "sourceUrl": "http://catalog.data.gov/dataset/usgs-land-cover-nlcd-overlay-map-service-from-the-national-map",
       "sourceEntity": "USGS",
       "layerDescription": "Impervious surfaces derived from the 2011 National Land Cover Database.",
-      "legendImage": "legends/legendimages/abr.png"
+      "legendImage": "legends/legendimages/placeholder.png"
     }
   }, {   
     "id": "abs",
@@ -557,7 +557,7 @@
       "sourceUrl": "",
       "sourceEntity": "NASA",
       "layerDescription": "Percent of population below the poverty level, based on the 2000 census.",
-      "legendImage": "legends/legendimages/abs.png"
+      "legendImage": "legends/legendimages/placeholder.png"
     }
   }, {   
     "id": "abt",
@@ -569,7 +569,7 @@
       "sourceUrl": "",
       "sourceEntity": "NASA",
       "layerDescription": "Percent of population aged 65-79, based on the 2000 census.",
-      "legendImage": "legends/legendimages/abt.png"
+      "legendImage": "legends/legendimages/placeholder.png"
     }
   }
 	      ],
