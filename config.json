@@ -178,8 +178,8 @@
   }, {
     "id": "aam",
     "name": "Social Vulnerability Index",
-    "url": "http://coast.noaa.gov/arcgis/rest/services/dc_slr/SOVI/MapServer/export",
-    "projection": "EPSG:3857",
+    "url": "http://ec2-50-17-205-92.compute-1.amazonaws.com:6080/arcgis/rest/services/CDC_SVI/CDC_SVI/MapServer/export",
+    "projection": "EPSG:102100",
     "layers": "",
     "type": "REST",
     "info": {
@@ -556,7 +556,7 @@
     "info": {
       "sourceUrl": "",
       "sourceEntity": "NASA",
-      "layerDescription": "Percent of population below poverty, based on 2000 census.",
+      "layerDescription": "Percent of population below the poverty level, based on the 2000 census.",
       "legendImage": "legends/legendimages/abs.png"
     }
   }, {   
@@ -568,7 +568,7 @@
     "info": {
       "sourceUrl": "",
       "sourceEntity": "NASA",
-      "layerDescription": "Percent of population aged 65-79, based on 2000 census.",
+      "layerDescription": "Percent of population aged 65-79, based on the 2000 census.",
       "legendImage": "legends/legendimages/abt.png"
     }
   }
