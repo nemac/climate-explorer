@@ -186,7 +186,7 @@
       "sourceUrl": "http://catalog.data.gov/dataset/social-vulnerability-index-sovi-for-the-u-s-coastal-states-based-on-the-2010-census-tracts",
       "sourceEntity": "NOAA Coastal Services Center",
       "layerDescription": "Social Vulnerability Index (SoVI) for Coastal States based on 2010 Census Tracts.",
-      "legendImage": "legends/legendimages/placeholder.png"
+      "legendImage": "legends/legendimages/aam.png"
     }
   }, {
     "id": "aan",
@@ -542,10 +542,10 @@
     "type": "REST",
     "projection": "EPSG:102100",
     "info": {
-      "sourceUrl": "http://catalog.data.gov/dataset/usgs-land-cover-nlcd-overlay-map-service-from-the-national-map",
+      "sourceUrl": "http://catalog.data.gov/dataset/usgs-national-land-cover-dataset-nlcd-downloadable-data-collection-national-geospatial-data-as",
       "sourceEntity": "USGS",
       "layerDescription": "Impervious surfaces derived from the 2011 National Land Cover Database.",
-      "legendImage": "legends/legendimages/placeholder.png"
+      "legendImage": "legends/legendimages/abr.png"
     }
   }, {   
     "id": "abs",
@@ -554,10 +554,10 @@
     "layers": "usgrid:usgrid-summary-file3-2000_usa-pctpopbelowpovlevel-2000",
     "projection": "EPSG:3857",
     "info": {
-      "sourceUrl": "",
+      "sourceUrl": "http://catalog.data.gov/dataset/u-s-census-grids-summary-file-3-2000",
       "sourceEntity": "NASA",
       "layerDescription": "Percent of population below the poverty level, based on the 2000 census.",
-      "legendImage": "legends/legendimages/placeholder.png"
+      "legendImage": "legends/legendimages/abs.png"
     }
   }, {   
     "id": "abt",
@@ -566,10 +566,10 @@
     "layers": "usgrid:usgrid-summary-file1-2000_usa-pctpop65to79-2000",
     "projection": "EPSG:3857",
     "info": {
-      "sourceUrl": "",
+      "sourceUrl": "http://catalog.data.gov/dataset/u-s-census-grids-summary-file-1-2000",
       "sourceEntity": "NASA",
       "layerDescription": "Percent of population aged 65-79, based on the 2000 census.",
-      "legendImage": "legends/legendimages/placeholder.png"
+      "legendImage": "legends/legendimages/abt.png"
     }
   }
 	      ],
