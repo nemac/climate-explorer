@@ -178,7 +178,7 @@
   }, {
     "id": "aam",
     "name": "Social Vulnerability Index",
-    "url": "http://ec2-50-17-205-92.compute-1.amazonaws.com:6080/arcgis/rest/services/CDC_SVI/CDC_SVI/MapServer/export",
+    "url": "http://wimsharedlb-418672833.us-east-1.elb.amazonaws.com/arcgis/rest/services/CDC_SVI/CDC_SVI/MapServer/export",
     "projection": "EPSG:102100",
     "layers": "",
     "type": "REST",
