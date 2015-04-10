@@ -635,5 +635,17 @@
       "name": "People and Assets Impacted",
       "layers": [ "aah", "abu", "abr", "abt", "abs" ]
     }]
+  }, {
+    "id": "g_e",
+    "name": "Water Resources",
+    "subGroups": [{
+      "id": "g_e_a",
+      "name": "Climate Stressors",
+      "layers": [ ]             
+    }, {
+      "id": "g_e_b",
+      "name": "People and Assets Impacted",
+      "layers": [ "aam", "aal", "abr", "abp", "abl", "abk" ]
+    }]
   }]
 }
