@@ -178,9 +178,9 @@
   }, {
     "id": "aam",
     "name": "Social Vulnerability Index",
-    "url": "http://coast.noaa.gov/arcgis/rest/services/sovi/sovi_tracts2010/MapServer/export",
+    "url": "http://coast.noaa.gov/arcgis/rest/services/dc_slr/SOVI/MapServer/export",
     "projection": "EPSG:3857",
-    "layers": "0",
+    "layers": "",
     "type": "REST",
     "info": {
       "sourceUrl": "http://catalog.data.gov/dataset/social-vulnerability-index-sovi-for-the-u-s-coastal-states-based-on-the-2010-census-tracts",
