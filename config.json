@@ -178,8 +178,8 @@
   }, {
     "id": "aam",
     "name": "Social Vulnerability Index",
-    "url": "http://wimsharedlb-418672833.us-east-1.elb.amazonaws.com/arcgis/rest/services/CDC_SVI/CDC_SVI/MapServer/export",
-    "projection": "EPSG:102100",
+    "url": "http://coast.noaa.gov/arcgis/rest/services/sovi/sovi_tracts2010/MapServer/export",
+    "projection": "EPSG:3857",
     "layers": "",
     "type": "REST",
     "info": {
@@ -365,7 +365,7 @@
     }
   }, {
     "id": "abd",
-    "name": "CAT3 Hurricane Prob. of Collision", 
+    "name": "CAT3 Hurricane Prob. of Collision",
     "url": "http://marine.usgs.gov/coastalchangehazardsportal/geoserver/proxied/wms",
     "layers": "proxied:Erosion_Hazards_1418419535490",
     "sld": "http://marine.usgs.gov/coastalchangehazardsportal/data/sld/CCNXDS5",
@@ -377,7 +377,7 @@
     }
   }, {
     "id": "abe",
-    "name": "CAT3 Hurricane Prob. of Overwash", 
+    "name": "CAT3 Hurricane Prob. of Overwash",
     "url": "http://marine.usgs.gov/coastalchangehazardsportal/geoserver/proxied/wms",
     "layers": "proxied:Erosion_Hazards_1418665660672",
     "sld": "http://marine.usgs.gov/coastalchangehazardsportal/data/sld/CD5ZUvX",
@@ -389,7 +389,7 @@
     }
   }, {
     "id": "abf",
-    "name": "CAT3 Hurricane Prob. of Inundation", 
+    "name": "CAT3 Hurricane Prob. of Inundation",
     "url": "http://marine.usgs.gov/coastalchangehazardsportal/geoserver/proxied/wms",
     "layers": "proxied:Erosion_Hazards_1418661933827",
     "sld": "http://marine.usgs.gov/coastalchangehazardsportal/data/sld/CD7wRHj",
@@ -401,7 +401,7 @@
     }
   }, {
     "id": "abg",
-    "name": "CAT3 Hurricane Mean Water Levels", 
+    "name": "CAT3 Hurricane Mean Water Levels",
     "url": "http://marine.usgs.gov/coastalchangehazardsportal/geoserver/proxied/wms",
     "layers": "proxied:Erosion_Hazards_1418403296306",
     "sld": "http://marine.usgs.gov/coastalchangehazardsportal/data/sld/CDAzqt6",
@@ -413,7 +413,7 @@
     }
   }, {
     "id": "abh",
-    "name": "CAT3 Hurricane Extreme Water Levels", 
+    "name": "CAT3 Hurricane Extreme Water Levels",
     "url": "http://marine.usgs.gov/coastalchangehazardsportal/geoserver/proxied/wms",
     "layers": "proxied:Erosion_Hazards_1418399313701",
     "sld": "http://marine.usgs.gov/coastalchangehazardsportal/data/sld/CDARuQk",
@@ -425,7 +425,7 @@
     }
   }, {
     "id": "abi",
-    "name": "Weekly NDVI (9/24/2013)", 
+    "name": "Weekly NDVI (9/24/2013)",
     "url": "http://129.174.131.6/cgi-bin/mapserv",
     "layers": "Weekly_NDVI_39_2013.09.24_2013.09.30",
     "projection": "EPSG:4326",
@@ -438,7 +438,7 @@
     }
   }, {
     "id": "abj",
-    "name": "Weekly VCI (9/24/2013)", 
+    "name": "Weekly VCI (9/24/2013)",
     "url": "http://129.174.131.6/cgi-bin/mapserv",
     "layers": "Weekly_VCI_39_2013.09.24_2013.09.30",
     "projection": "EPSG:4326",
@@ -451,7 +451,7 @@
     }
   }, {
     "id": "abk",
-    "name": "Waterways", 
+    "name": "Waterways",
     "url": "http://services.nationalmap.gov/arcgis/services/nhd/MapServer/WMSServer",
     "layers": "3",
     "projection": "EPSG:4326",
@@ -463,7 +463,7 @@
     }
   }, {
     "id": "abl",
-    "name": "Waterbodies", 
+    "name": "Waterbodies",
     "url": "http://services.nationalmap.gov/arcgis/services/nhd/MapServer/WMSServer",
     "layers": "4",
     "projection": "EPSG:4326",
@@ -475,7 +475,7 @@
     }
   }, {
     "id": "abm",
-    "name": "Freeway System (National)", 
+    "name": "Freeway System (National)",
     "url": "http://services.nationalmap.gov/arcgis/services/transportation/MapServer/WMSServer",
     "layers": "6,14",
     "projection": "EPSG:4326",
@@ -499,7 +499,7 @@
     }
   }, {
     "id": "abo",
-    "name": "Forecast", 
+    "name": "Forecast",
     "url": "http://gis.srh.noaa.gov/arcgis/rest/services/cpc_weather_hazards/MapServer/export",
     "layers": "3",
     "projection": "EPSG:4269",
@@ -510,7 +510,7 @@
       "layerDescription": "todo",
       "legendImage": "todo"
     }
-  }, {   
+  }, {
     "id": "abp",
     "name": "Population Density (2000)",
     "url": "http://sedac.ciesin.columbia.edu/geoserver/wms",
@@ -522,7 +522,7 @@
       "layerDescription": "This layer shows population density in the year 2000.",
       "legendImage": "legends/legendimages/abp.png"
     }
-  }, {   
+  }, {
     "id": "abq",
     "name": "Structures",
     "url": "http://services.nationalmap.gov/arcgis/services/structures/MapServer/WMSServer",
@@ -534,7 +534,7 @@
       "layerDescription": "Selected manmade facilities noted for disaster planning and emergency response.",
       "legendImage": "legends/legendimages/abq.png"
     }
-  }, {   
+  }, {
     "id": "abr",
     "name": "Impervious Surfaces (2011)",
     "url": "http://raster.nationalmap.gov/arcgis/rest/services/LandCover/USGS_EROS_LandCover_NLCD/MapServer/export",
@@ -547,7 +547,7 @@
       "layerDescription": "Impervious surfaces derived from the 2011 National Land Cover Database.",
       "legendImage": "legends/legendimages/abr.png"
     }
-  }, {   
+  }, {
     "id": "abs",
     "name": "Percent Poverty (2000)",
     "url": "http://sedac.ciesin.org/geoserver/ows",
@@ -559,7 +559,7 @@
       "layerDescription": "Percent of population below the poverty level, based on the 2000 census.",
       "legendImage": "legends/legendimages/abs.png"
     }
-  }, {   
+  }, {
     "id": "abt",
     "name": "Percent Elderly (2000)",
     "url": "http://sedac.ciesin.org/geoserver/ows",
@@ -570,6 +570,19 @@
       "sourceEntity": "NASA",
       "layerDescription": "Percent of population aged 65-79, based on the 2000 census.",
       "legendImage": "legends/legendimages/abt.png"
+    }
+  }, {
+    "id": "abu",
+    "name": "Social Vulnerability Index",
+    "url": "http://wimsharedlb-418672833.us-east-1.elb.amazonaws.com/arcgis/rest/services/CDC_SVI/CDC_SVI/MapServer/export",
+    "projection": "EPSG:102100",
+    "layers": "",
+    "type": "REST",
+    "info": {
+      "sourceUrl": "http://catalog.data.gov/dataset/cdcs-social-vulnerability-index-svi",
+      "sourceEntity": "CDC Health Data Initiative",
+      "layerDescription": "Social Vulnerability Index (SoVI).",
+      "legendImage": "legends/legendimages/abu.png"
     }
   }
 	      ],
@@ -604,7 +617,7 @@
     "subGroups": [{
       "id": "g_c_a",
       "name": "Climate Stressors",
-      "layers": [ "aaa", "aao" ]             
+      "layers": [ "aaa", "aao" ]
     }, {
       "id": "g_c_b",
       "name": "People and Assets Impacted",
@@ -616,11 +629,11 @@
     "subGroups": [{
       "id": "g_d_a",
       "name": "Climate Stressors",
-      "layers": [ "aac", "aan", "aaa" ]             
+      "layers": [ "aac", "aan", "aaa" ]
     }, {
       "id": "g_d_b",
       "name": "People and Assets Impacted",
-      "layers": [ "aah", "aam", "abr", "abt", "abs" ]
+      "layers": [ "aah", "abu", "abr", "abt", "abs" ]
     }]
   }]
 }
