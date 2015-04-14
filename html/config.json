@@ -185,7 +185,7 @@
     "info": {
       "sourceUrl": "http://catalog.data.gov/dataset/social-vulnerability-index-sovi-for-the-u-s-coastal-states-based-on-the-2010-census-tracts",
       "sourceEntity": "NOAA Coastal Services Center",
-      "layerDescription": "Social Vulnerability Index (SoVI) for Coastal States based on 2010 Census Tracts.",
+      "layerDescription": "Social Vulnerability Index (SoVI) for Coastal States based on 2010 census tracts.",
       "legendImage": "legends/legendimages/aam.png"
     }
   }, {
@@ -581,7 +581,7 @@
     "info": {
       "sourceUrl": "http://catalog.data.gov/dataset/cdcs-social-vulnerability-index-svi",
       "sourceEntity": "CDC Health Data Initiative",
-      "layerDescription": "Social Vulnerability Index (SoVI).",
+      "layerDescription": "Social Vulnerability Index (SoVI) based on 2010 census tracts.",
       "legendImage": "legends/legendimages/abu.png"
     }
   }
