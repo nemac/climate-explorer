@@ -43,7 +43,7 @@
     "type": "REST",
     "info": {
       "sourceUrl": "http://catalog.data.gov/dataset/noaa-digital-coast-sea-level-rise-and-coastal-flooding-impacts-viewer",
-      "sourceEntity": "NOAA Coastal Services Center",
+      "sourceEntity": "NOAA Office For Coastal Management",
       "layerDescription": "Extent and relative depth of high-tide flooding after 6 feet of sea level rise.",
       "legendImage": "legends/legendimages/aab.png"
     }
@@ -56,7 +56,7 @@
     "type": "REST",
     "info": {
       "sourceUrl": "http://catalog.data.gov/dataset/noaa-digital-coast-sea-level-rise-and-coastal-flooding-impacts-viewer",
-      "sourceEntity": "NOAA Coastal Services Center",
+      "sourceEntity": "NOAA Office For Coastal Management",
       "layerDescription": "Extent and relative depth of high-tide flooding after 2 feet of sea level rise.",
       "legendImage": "legends/legendimages/aab.png"
     }
@@ -69,7 +69,7 @@
     "type": "REST",
     "info": {
       "sourceUrl": "http://catalog.data.gov/dataset/noaa-digital-coast-sea-level-rise-and-coastal-flooding-impacts-viewer",
-      "sourceEntity": "NOAA Coastal Services Center",
+      "sourceEntity": "NOAA Office For Coastal Management",
       "layerDescription": "Extent and relative depth of high-tide flooding after 3 feet of sea level rise.",
       "legendImage": "legends/legendimages/aab.png"
     }
@@ -82,7 +82,7 @@
     "type": "REST",
     "info": {
       "sourceUrl": "http://catalog.data.gov/dataset/noaa-digital-coast-sea-level-rise-and-coastal-flooding-impacts-viewer",
-      "sourceEntity": "NOAA Coastal Services Center",
+      "sourceEntity": "NOAA Office For Coastal Management",
       "layerDescription": "Extent and relative depth of high-tide flooding after 4 feet of sea level rise.",
       "legendImage": "legends/legendimages/aab.png"
     }
@@ -95,7 +95,7 @@
     "type": "REST",
     "info": {
       "sourceUrl": "http://catalog.data.gov/dataset/noaa-digital-coast-sea-level-rise-and-coastal-flooding-impacts-viewer",
-      "sourceEntity": "NOAA Coastal Services Center",
+      "sourceEntity": "NOAA Office For Coastal Management",
       "layerDescription": "Extent and relative depth of high-tide flooding after 5 feet of sea level rise.",
       "legendImage": "legends/legendimages/aab.png"
     }
@@ -108,7 +108,7 @@
     "type": "REST",
     "info": {
       "sourceUrl": "http://catalog.data.gov/dataset/noaa-digital-coast-sea-level-rise-and-coastal-flooding-impacts-viewer",
-      "sourceEntity": "NOAA Coastal Services Center",
+      "sourceEntity": "NOAA Office For Coastal Management",
       "layerDescription": "Extent and relative depth of high-tide flooding after 1 foot of sea level rise.",
       "legendImage": "legends/legendimages/aab.png"
     }
@@ -184,7 +184,7 @@
     "type": "REST",
     "info": {
       "sourceUrl": "http://catalog.data.gov/dataset/social-vulnerability-index-sovi-for-the-u-s-coastal-states-based-on-the-2010-census-tracts",
-      "sourceEntity": "NOAA Coastal Services Center",
+      "sourceEntity": "NOAA Office For Coastal Management",
       "layerDescription": "Social Vulnerability Index (SoVI) for Coastal States based on 2010 census tracts.",
       "legendImage": "legends/legendimages/aam.png"
     }
@@ -232,7 +232,7 @@
     "type": "REST",
     "info": {
       "sourceUrl": "http://catalog.data.gov/dataset/fema-hazus-critical-facilities-for-coastal-geographies",
-      "sourceEntity": "NOAA Coastal Services Center",
+      "sourceEntity": "NOAA Office For Coastal Management",
       "layerDescription": "Selected structures along the Atlantic and Gulf coasts that, if flooded, would present an immediate threat to life, public health, or safety.",
       "legendImage": "legends/legendimages/aaq.png"
     }
@@ -245,7 +245,7 @@
     "type": "REST",
     "info": {
       "sourceUrl": "http://www.csc.noaa.gov/floodexposure/#/services",
-      "sourceEntity": "NOAA Coastal Services Center",
+      "sourceEntity": "NOAA Office For Coastal Management",
       "layerDescription": "Critical facility density in Delaware, New Jersey, and New York.",
       "legendImage": "legends/legendimages/aar.png"
     }
@@ -258,7 +258,7 @@
     "type": "REST",
     "info": {
       "sourceUrl": "http://www.csc.noaa.gov/floodexposure/#/services",
-      "sourceEntity": "NOAA Coastal Services Center",
+      "sourceEntity": "NOAA Office For Coastal Management",
       "layerDescription": "This layer shows Population Density in Delaware, New Jersey, and New York.",
       "legendImage": "legends/legendimages/aas.png"
     }
@@ -271,7 +271,7 @@
     "type": "REST",
     "info": {
       "sourceUrl": "http://www.csc.noaa.gov/floodexposure/#/services",
-      "sourceEntity": "NOAA Coastal Services Center",
+      "sourceEntity": "NOAA Office For Coastal Management",
       "layerDescription": "Number of non-government businesses per zip code in Delaware, New Jersey, and New York.",
       "legendImage": "legends/legendimages/aat.png"
     }
@@ -284,7 +284,7 @@
     "type": "REST",
     "info": {
       "sourceUrl": "http://www.csc.noaa.gov/floodexposure/#/services",
-      "sourceEntity": "NOAA Coastal Services Center",
+      "sourceEntity": "NOAA Office For Coastal Management",
       "layerDescription": "This layer shows Beaches & Dunes along the Atlantic and Gulf coasts.",
       "legendImage": "legends/legendimages/aau.png"
     }
@@ -297,7 +297,7 @@
     "type": "REST",
     "info": {
       "sourceUrl": "http://www.csc.noaa.gov/floodexposure/#/services",
-      "sourceEntity": "NOAA Coastal Services Center",
+      "sourceEntity": "NOAA Office For Coastal Management",
       "layerDescription": "This layer shows Wetlands along the Atlantic and Gulf coasts.",
       "legendImage": "legends/legendimages/aav.png"
     }
@@ -310,7 +310,7 @@
     "type": "REST",
     "info": {
       "sourceUrl": "http://www.csc.noaa.gov/floodexposure/#/configure",
-      "sourceEntity": "NOAA Coastal Services Center",
+      "sourceEntity": "NOAA Office For Coastal Management",
       "layerDescription": "This layer shows FEMA Flood Zones in Delaware, New Jersey, and New York.",
       "legendImage": "legends/legendimages/aaw.png"
     }
@@ -322,8 +322,8 @@
     "layers": "",
     "type": "REST",
     "info": {
-      "sourceUrl": "http://catalog.data.gov/dataset/coastal-flood-hazard-composite-layer-for-the-mid-atlantic-u-s",
-      "sourceEntity": "NOAA Coastal Services Center",
+      "sourceUrl": "http://catalog.data.gov/dataset/coastal-flood-hazard-composite-layer-for-the-mid-atlantic-u-s32863",
+      "sourceEntity": "NOAA Office For Coastal Management",
       "layerDescription": "Relative threat of coastal flooding as indicated by total number of flood hazard zone designations.",
       "legendImage": "legends/legendimages/aax.png"
     }
@@ -542,7 +542,7 @@
     "type": "REST",
     "projection": "EPSG:102100",
     "info": {
-      "sourceUrl": "http://catalog.data.gov/dataset/usgs-national-land-cover-dataset-nlcd-downloadable-data-collection-national-geospatial-data-as",
+      "sourceUrl": "http://catalog.data.gov/dataset/usgs-national-land-cover-dataset-nlcd-downloadable-data-collection",
       "sourceEntity": "USGS",
       "layerDescription": "Impervious surfaces derived from the 2011 National Land Cover Database.",
       "legendImage": "legends/legendimages/abr.png"
