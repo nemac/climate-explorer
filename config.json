@@ -234,7 +234,7 @@
       "sourceUrl": "http://catalog.data.gov/dataset/fema-hazus-critical-facilities-for-coastal-geographies",
       "sourceEntity": "NOAA Office For Coastal Management",
       "layerDescription": "Selected structures along the Atlantic and Gulf coasts that, if flooded, would present an immediate threat to life, public health, or safety.",
-      "legendImage": "legends/legendimages/aaq.png"
+      "legendImage": "legends/legendimages/aaq1.png"
     }
   }, {
     "id": "aar",
@@ -584,6 +584,19 @@
       "layerDescription": "Social Vulnerability Index (SoVI) based on 2010 census tracts.",
       "legendImage": "legends/legendimages/abu.png"
     }
+  }, {
+    "id": "abv",
+    "name": "Rivers and Streams",
+    "url": "http://basemap.nationalmap.gov/arcgis/services/USGSHydroNHD/MapServer/WMSServer?request=GetCapabilities&service=WMS",
+    "projection": "EPSG:102100",
+    "layers": "",
+    "type": "REST",
+    "info": {
+      "sourceUrl": "http://catalog.data.gov/dataset/usgs-hydro-nhd-base-map-service-from-the-national-map",
+      "sourceEntity": "USGS",
+      "layerDescription": "USGS National Hydrography Dataset",
+      "legendImage": "legends/legendimages/abv.png"
+    }
   }
 	      ],
   "groups": [{
@@ -641,11 +654,11 @@
     "subGroups": [{
       "id": "g_e_a",
       "name": "Climate Stressors",
-      "layers": [ ]
+      "layers": [ "aaa" ]
     }, {
       "id": "g_e_b",
       "name": "People and Assets Impacted",
-      "layers": [ "aam", "aal", "abr", "abp", "abl", "abk" ]
+      "layers": [ "abu", "abp", "aal", "abv" ]
     }]
   }]
 }
