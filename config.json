@@ -234,7 +234,7 @@
       "sourceUrl": "http://catalog.data.gov/dataset/fema-hazus-critical-facilities-for-coastal-geographies",
       "sourceEntity": "NOAA Office For Coastal Management",
       "layerDescription": "Selected structures along the Atlantic and Gulf coasts that, if flooded, would present an immediate threat to life, public health, or safety.",
-      "legendImage": "legends/legendimages/aaq1.png"
+      "legendImage": "legends/legendimages/aaq.png"
     }
   }, {
     "id": "aar",
@@ -587,10 +587,9 @@
   }, {
     "id": "abv",
     "name": "Rivers and Streams",
-    "url": "http://basemap.nationalmap.gov/arcgis/services/USGSHydroNHD/MapServer/WMSServer?request=GetCapabilities&service=WMS",
+    "url": "http://basemap.nationalmap.gov/arcgis/services/USGSHydroNHD/MapServer/WMSServer",
     "projection": "EPSG:102100",
-    "layers": "",
-    "type": "REST",
+    "layers": "0",
     "info": {
       "sourceUrl": "http://catalog.data.gov/dataset/usgs-hydro-nhd-base-map-service-from-the-national-map",
       "sourceEntity": "USGS",

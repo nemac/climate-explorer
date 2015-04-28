@@ -584,6 +584,18 @@
       "layerDescription": "Social Vulnerability Index (SoVI) based on 2010 census tracts.",
       "legendImage": "legends/legendimages/abu.png"
     }
+  }, {
+    "id": "abv",
+    "name": "Rivers and Streams",
+    "url": "http://basemap.nationalmap.gov/arcgis/services/USGSHydroNHD/MapServer/WMSServer",
+    "projection": "EPSG:102100",
+    "layers": "0",
+    "info": {
+      "sourceUrl": "http://catalog.data.gov/dataset/usgs-hydro-nhd-base-map-service-from-the-national-map",
+      "sourceEntity": "USGS",
+      "layerDescription": "USGS National Hydrography Dataset",
+      "legendImage": "legends/legendimages/abv.png"
+    }
   }
 	      ],
   "groups": [{
@@ -641,11 +653,11 @@
     "subGroups": [{
       "id": "g_e_a",
       "name": "Climate Stressors",
-      "layers": [ ]
+      "layers": [ "aaa" ]
     }, {
       "id": "g_e_b",
       "name": "People and Assets Impacted",
-      "layers": [ "aam", "aal", "abr", "abp", "abl", "abk" ]
+      "layers": [ "abu", "abp", "aal", "abv" ]
     }]
   }]
 }
