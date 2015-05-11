@@ -317,10 +317,8 @@
   }, {
     "id": "aax",
     "name": "Coastal Flood Hazard Composite",
-    "url": "http://coast.noaa.gov/arcgis/rest/services/FloodExposureMapper/CFEM_CoastalFloodHazardComposite/MapServer/export",
-    "projection": "EPSG:102100",
-    "layers": "",
-    "type": "REST",
+    "url": "http://coast.noaa.gov/arcgis/rest/services/FloodExposureMapper/CFEM_CoastalFloodHazardComposite/MapServer",
+    "type": "ARCTILECACHE",
     "info": {
       "sourceUrl": "http://catalog.data.gov/dataset/coastal-flood-hazard-composite-layer-for-the-mid-atlantic-u-s32863",
       "sourceEntity": "NOAA Office For Coastal Management",
