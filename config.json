@@ -170,7 +170,7 @@
     "type": "REST",
     "projection": "EPSG:3857",
     "info": {
-      "sourceUrl": "http://catalog.data.gov/dataset/usgs-land-cover-nlcd-overlay-map-service-from-the-national-map",
+      "sourceUrl": "http://catalog.data.gov/dataset/usgs-land-cover-nlcd-overlay-map-service-from-the-national-map-national-geospatial-data-asset-",
       "sourceEntity": "USGS",
       "layerDescription": "Land Cover classifications based on Landsat satellite data and other ancillary data sources.",
       "legendImage": "legends/legendimages/aal.png"
@@ -195,7 +195,7 @@
     "projection": "EPSG:4326",
     "layers": "4",
     "info": {
-      "sourceUrl": "http://catalog.data.gov/dataset/nfhl-femas-national-flood-hazard-layer",
+      "sourceUrl": "http://catalog.data.gov/dataset/national-flood-hazard-layer-nfhl",
       "sourceEntity": "FEMA",
       "layerDescription": "National Flood Hazard Layer showing flood risks and regulatory flood determination (displays only when zoomed in to neighborhood-scale views).",
       "legendImage": "legends/legendimages/aan.png"
@@ -454,7 +454,7 @@
     "layers": "3",
     "projection": "EPSG:4326",
     "info": {
-      "sourceUrl": "http://catalog.data.gov/dataset/the-national-map",
+      "sourceUrl": "http://catalog.data.gov/dataset/usgs-hydrography-nhd-overlay-map-service-from-the-national-map-national-geospatial-data-asset-",
       "sourceEntity": "USGS",
       "layerDescription": "This layer shows waterways.",
       "legendImage": "legends/legendimages/abk.png"
@@ -466,7 +466,7 @@
     "layers": "4",
     "projection": "EPSG:4326",
     "info": {
-      "sourceUrl": "http://catalog.data.gov/dataset/the-national-map",
+      "sourceUrl": "http://catalog.data.gov/dataset/usgs-hydrography-nhd-overlay-map-service-from-the-national-map-national-geospatial-data-asset-",
       "sourceEntity": "USGS",
       "layerDescription": "This layer shows waterbodies.",
       "legendImage": "legends/legendimages/abl.png"
@@ -478,7 +478,7 @@
     "layers": "6,14",
     "projection": "EPSG:4326",
     "info": {
-      "sourceUrl": "http://catalog.data.gov/dataset/the-national-map",
+      "sourceUrl": "http://catalog.data.gov/dataset/usgs-transportation-overlay-map-service-from-the-national-map",
       "sourceEntity": "USGS",
       "layerDescription": "This layer shows interstates.",
       "legendImage": "legends/legendimages/abm.png"
@@ -490,7 +490,7 @@
     "layers": "5,13",
     "projection": "EPSG:4326",
     "info": {
-      "sourceUrl": "http://catalog.data.gov/dataset/the-national-map",
+      "sourceUrl": "http://catalog.data.gov/dataset/usgs-transportation-overlay-map-service-from-the-national-map",
       "sourceEntity": "USGS",
       "layerDescription": "This layer shows major highways.",
       "legendImage": "legends/legendimages/abn.png"
@@ -527,7 +527,7 @@
     "layers": "1,2,4,5,7,8,9,10,12,14",
     "projection": "EPSG:4326",
     "info": {
-      "sourceUrl": "http://catalog.data.gov/dataset/usgs-structures-from-the-national-map-example-web-map",
+      "sourceUrl": "http://catalog.data.gov/dataset/usgs-structures-overlay-map-service-from-the-national-map-national-geospatial-data-asset-ngda-",
       "sourceEntity": "USGS",
       "layerDescription": "Selected manmade facilities noted for disaster planning and emergency response.",
       "legendImage": "legends/legendimages/abq.png"
