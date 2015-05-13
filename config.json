@@ -119,7 +119,7 @@
     "projection": "EPSG:3857",
     "layers": "0",
     "info": {
-      "sourceUrl": "http://catalog.data.gov/dataset/hsip-public-domain-public-health-hospitals",
+      "sourceUrl": "http://www.geoplatform.gov/climate-resources",
       "sourceEntity": "Homeland Security Infrastructure Program",
       "layerDescription": "This layer shows the locations of hospitals.",
       "legendImage": "legends/legendimages/aah.png"
@@ -132,7 +132,7 @@
     "layers": "0",
     "type": "REST",
     "info": {
-      "sourceUrl": "http://catalog.data.gov/dataset/hsip-public-domain-transportation-air-public-use-airports",
+      "sourceUrl": "http://www.geoplatform.gov/climate-resources",
       "sourceEntity": "Homeland Security Infrastructure Program",
       "layerDescription": "Public use aircraft landing facilities.",
       "legendImage": "legends/legendimages/aai.png"
@@ -145,7 +145,7 @@
     "layers": [ "0", "1" ],
     "type": "REST",
     "info": {
-      "sourceUrl": "http://catalog.data.gov/dataset/hsip-public-domain-transportation-ground-national-bridge-inv",
+      "sourceUrl": "http://www.geoplatform.gov/climate-resources",
       "sourceEntity": "Homeland Security Infrastructure Program",
       "layerDescription": "Publically accessible bridges and roadway and railway tunnels.",
       "legendImage": "legends/legendimages/aaj.png"
