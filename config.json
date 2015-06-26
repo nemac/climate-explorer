@@ -594,6 +594,19 @@
       "layerDescription": "USGS National Hydrography Dataset",
       "legendImage": "legends/legendimages/abv.png"
     }
+   }, {
+    "id": "abw",
+    "name": "BIA Indian Lands",
+    "url": "http://http://wimsharedlb-418672833.us-east-1.elb.amazonaws.com/arcgis/rest/services/AIR_NDGA/AIR_NDGA/MapServer/export",
+    "projection": "EPSG:102100",
+    "layers": "0",
+    "type": "REST",
+    "info": {
+      "sourceUrl": "http://http://catalog.data.gov/dataset/bia-indian-lands-dataset-indian-lands-of-the-united-states",
+      "sourceEntity": "FGDC",
+      "layerDescription": "Indian Lands of the United States",
+      "legendImage": "legends/legendimages/abw.png"
+    }  
   }
 	      ],
   "groups": [{
@@ -651,11 +664,48 @@
     "subGroups": [{
       "id": "g_e_a",
       "name": "Climate Stressors",
-      "layers": [ "aaa" ]
+      "layers": [ "aaa", "abr", "aan" ]
     }, {
       "id": "g_e_b",
       "name": "People and Assets Impacted",
-      "layers": [ "abu", "abp", "aal", "abv" ]
+      "layers": [ "abu", "abp", "aal", "abr", "abv", "abl" ]
     }]
-  }]
+  }, {
+    "id": "g_f",
+    "name": "Tribal Nations",
+    "subGroups": [{
+      "id": "g_f_a",
+      "name": "Climate Stressors",
+      "layers": [ "aaa", "aan", "aab", "aac", "aad", "aae", "aaf", "aag" ]
+    }, {
+      "id": "g_f_b",
+      "name": "People and Assets Impacted",
+      "layers": [ "abw" ]
+    }]
+  }, {
+    "id": "g_g",
+    "name": "Transportation",
+    "subGroups": [{
+      "id": "g_g_a",
+      "name": "Climate Stressors",
+      "layers": [ "aab", "aac", "aad", "aae", "aaf", "aag", "aan", "abf", "aak" ]
+    }, {
+      "id": "g_g_b",
+      "name": "People and Assets Impacted",
+      "layers": [ "aal", "abm", "abn", "abq", "aai", "aaj", "aaq" ]
+    }]
+  }, {
+    "id": "g_h",
+    "name": "Energy",
+    "subGroups": [{
+      "id": "g_h_a",
+      "name": "Climate Stressors",
+      "layers": [ "aab", "aac", "aad", "aae", "aaf", "aag", "aan" ]
+    }, {
+      "id": "g_h_b",
+      "name": "People and Assets Impacted",
+      "layers": [ "aal", "abm", "abn" ]
+    }]  
+  }
+]
 }
