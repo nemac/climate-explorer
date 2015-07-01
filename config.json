@@ -680,7 +680,7 @@
     }, {
       "id": "g_f_b",
       "name": "People and Assets Impacted",
-      "layers": [ "abw" ]
+      "layers": [ "abw", "abu", "abp", "aal", "aap", "abv" ]
     }]
   }, {
     "id": "g_g",
