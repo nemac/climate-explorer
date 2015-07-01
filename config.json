@@ -1,7 +1,7 @@
 {
   "stationData": {
-    "baseCsvSourceUrl": "https://s3.amazonaws.com/nemac-ghcnd/",
-    "normalsCsvSourceUrl": "https://s3.amazonaws.com/nemac-normals/NORMAL_"
+    "baseCsvSourceUrl": "http://toolkit.climate.gov/climate-explorer-data/ghcnd/",
+    "normalsCsvSourceUrl": "http://toolkit.climate.gov/climate-explorer-data/normals/NORMAL_"
   },
   "stations": {
     "data": "testdata/filtered_stations.json",
@@ -606,7 +606,7 @@
       "sourceEntity": "FGDC",
       "layerDescription": "Indian Lands of the United States",
       "legendImage": "legends/legendimages/abw.png"
-    }  
+    }
   }
 	      ],
   "groups": [{
@@ -648,7 +648,7 @@
     }]
   }, {
     "id": "g_d",
-    "name": "Health",
+    "name": "Human Health",
     "subGroups": [{
       "id": "g_d_a",
       "name": "Climate Stressors",
@@ -684,7 +684,7 @@
     }]
   }, {
     "id": "g_g",
-    "name": "Transportation",
+    "name": "Transportation and Supply Chain",
     "subGroups": [{
       "id": "g_g_a",
       "name": "Climate Stressors",
@@ -696,7 +696,7 @@
     }]
   }, {
     "id": "g_h",
-    "name": "Energy",
+    "name": "Energy Supply and Use",
     "subGroups": [{
       "id": "g_h_a",
       "name": "Climate Stressors",
@@ -705,7 +705,6 @@
       "id": "g_h_b",
       "name": "People and Assets Impacted",
       "layers": [ "aal", "abm", "abn" ]
-    }]  
-  }
-]
+    }]
+  }]
 }
