@@ -602,7 +602,7 @@
     "layers": "0",
     "type": "REST",
     "info": {
-      "sourceUrl": "http://http://catalog.data.gov/dataset/bia-indian-lands-dataset-indian-lands-of-the-united-states",
+      "sourceUrl": "http://catalog.data.gov/dataset/bia-indian-lands-dataset-indian-lands-of-the-united-states",
       "sourceEntity": "FGDC",
       "layerDescription": "Indian Lands of the United States",
       "legendImage": "legends/legendimages/abw.png"
