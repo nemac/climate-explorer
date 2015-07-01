@@ -676,7 +676,7 @@
     "subGroups": [{
       "id": "g_f_a",
       "name": "Climate Stressors",
-      "layers": [ "aaa", "aan", "aab", "aac", "aad", "aae", "aaf", "aag" ]
+      "layers": [ "aaa", "aan", "aag", "aac", "aad", "aae", "aaf", "aab" ]
     }, {
       "id": "g_f_b",
       "name": "People and Assets Impacted",
@@ -688,7 +688,7 @@
     "subGroups": [{
       "id": "g_g_a",
       "name": "Climate Stressors",
-      "layers": [ "aab", "aac", "aad", "aae", "aaf", "aag", "aan", "abf", "aak" ]
+      "layers": [ "aag", "aac", "aad", "aae", "aaf", "aab", "aan", "abf", "aak" ]
     }, {
       "id": "g_g_b",
       "name": "People and Assets Impacted",
@@ -700,7 +700,7 @@
     "subGroups": [{
       "id": "g_h_a",
       "name": "Climate Stressors",
-      "layers": [ "aab", "aac", "aad", "aae", "aaf", "aag", "aan" ]
+      "layers": [ "aag", "aac", "aad", "aae", "aaf", "aab", "aan" ]
     }, {
       "id": "g_h_b",
       "name": "People and Assets Impacted",
