@@ -611,7 +611,7 @@
     "id": "abx",
     "name": "BIA Indian Ceded Lands",
     "url": "http://commons.wim.usgs.gov/arcgis/services/AIR_NDGA/JudiciallyEstablished1978/MapServer/WMSServer/",
-    "projection": "EPSG:4326",
+    "projection": "EPSG:102100",
     "layers": "0",
     "info": {
       "sourceUrl": "http://catalog.data.gov/dataset/indian-land-areas-judically-established-1978",
