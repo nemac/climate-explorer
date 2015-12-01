@@ -283,7 +283,7 @@
     "layers": "8",
     "type": "REST",
     "info": {
-      "sourceUrl": "https://www.csc.noaa.gov/floodexposure/#/services",
+      "sourceUrl": "https://coast.noaa.gov/dataregistry/search/collection/info/ccapregional",
       "sourceEntity": "NOAA Office For Coastal Management",
       "layerDescription": "This layer shows Beaches & Dunes along the Atlantic and Gulf coasts.",
       "legendImage": "legends/legendimages/aau.png"
@@ -296,7 +296,7 @@
     "layers": "0",
     "type": "REST",
     "info": {
-      "sourceUrl": "https://www.csc.noaa.gov/floodexposure/#/services",
+      "sourceUrl": "https://coast.noaa.gov/dataregistry/search/collection/info/ccapregional",
       "sourceEntity": "NOAA Office For Coastal Management",
       "layerDescription": "This layer shows Wetlands along the Atlantic and Gulf coasts.",
       "legendImage": "legends/legendimages/aav.png"
@@ -320,7 +320,7 @@
     "url": "https://coast.noaa.gov/arcgis/rest/services/FloodExposureMapper/CFEM_CoastalFloodHazardComposite/MapServer",
     "type": "ARCTILECACHE",
     "info": {
-      "sourceUrl": "https://catalog.data.gov/dataset/coastal-flood-hazard-composite-layer-for-the-mid-atlantic-u-s32863",
+      "sourceUrl": "https://data.noaa.gov/dataset/coastal-flood-hazard-composite-layer-for-the-coastal-flood-exposure-mapper",
       "sourceEntity": "NOAA Office For Coastal Management",
       "layerDescription": "Relative threat of coastal flooding as indicated by total number of flood hazard zone designations.",
       "legendImage": "legends/legendimages/aax.png"
@@ -577,7 +577,7 @@
     "layers": "",
     "type": "REST",
     "info": {
-      "sourceUrl": "https://catalog.data.gov/dataset/cdcs-social-vulnerability-index-svi",
+      "sourceUrl": "http://catalog.data.gov/dataset/cdc039s-social-vulnerability-index-svi",
       "sourceEntity": "CDC Health Data Initiative",
       "layerDescription": "Social Vulnerability Index (SoVI) based on 2010 census tracts.",
       "legendImage": "legends/legendimages/abu.png"
@@ -607,6 +607,18 @@
       "layerDescription": "Indian Lands of the United States",
       "legendImage": "legends/legendimages/abw.png"
     }
+   }, {
+    "id": "abx",
+    "name": "BIA Indian Ceded Lands",
+    "url": "http://commons.wim.usgs.gov/arcgis/services/AIR_NDGA/JudiciallyEstablished1978/MapServer/WMSServer/",
+    "projection": "EPSG:4326",
+    "layers": "0",
+    "info": {
+      "sourceUrl": "http://catalog.data.gov/dataset/indian-land-areas-judically-established-1978",
+      "sourceEntity": "FGDC",
+      "layerDescription": "Indian Land Areas Judicially Established 1978",
+      "legendImage": "legends/legendimages/abx.png"
+    }
   }
 	      ],
   "groups": [{
@@ -628,11 +640,11 @@
     "subGroups": [{
       "id": "g_b_a",
       "name": "Climate Stressors",
-      "layers": [ "aaa", "aao" ]
+      "layers": [ "aaa" ]
     }, {
       "id": "g_b_b",
       "name": "People and Assets Impacted",
-      "layers": [ "abp", "aal", "aap", "abj", "abi", "abl", "abk" ]
+      "layers": [ "abp", "aal", "aap", "abl", "abk" ]
     }]
   }, {
     "id": "g_c",
@@ -640,11 +652,11 @@
     "subGroups": [{
       "id": "g_c_a",
       "name": "Climate Stressors",
-      "layers": [ "aaa", "aao" ]
+      "layers": [ "aaa" ]
     }, {
       "id": "g_c_b",
       "name": "People and Assets Impacted",
-      "layers": [ "abp", "aal", "abj", "abi", "abl", "abk" ]
+      "layers": [ "abp", "aal", "abl", "abk" ]
     }]
   }, {
     "id": "g_d",
@@ -680,7 +692,7 @@
     }, {
       "id": "g_f_b",
       "name": "People and Assets Impacted",
-      "layers": [ "abw", "abu", "abp", "aal", "aap", "abv" ]
+      "layers": [ "abw", "abx", "abu", "abp", "aal", "aap", "abv" ]
     }]
   }, {
     "id": "g_g",
