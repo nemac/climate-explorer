@@ -283,7 +283,7 @@
     "layers": "8",
     "type": "REST",
     "info": {
-      "sourceUrl": "https://coast.noaa.gov/dataregistry/search/collection/info/ccapregional",
+      "sourceUrl": "https://coast.noaa.gov/floodexposure/#/select",
       "sourceEntity": "NOAA Office For Coastal Management",
       "layerDescription": "This layer shows Beaches & Dunes along the Atlantic and Gulf coasts.",
       "legendImage": "legends/legendimages/aau.png"
@@ -296,7 +296,7 @@
     "layers": "0",
     "type": "REST",
     "info": {
-      "sourceUrl": "https://coast.noaa.gov/dataregistry/search/collection/info/ccapregional",
+      "sourceUrl": "https://coast.noaa.gov/floodexposure/#/select",
       "sourceEntity": "NOAA Office For Coastal Management",
       "layerDescription": "This layer shows Wetlands along the Atlantic and Gulf coasts.",
       "legendImage": "legends/legendimages/aav.png"
@@ -656,7 +656,7 @@
     }, {
       "id": "g_c_b",
       "name": "People and Assets Impacted",
-      "layers": [ "abp", "aal", "abl", "abk" ]
+      "layers": [ "abp", "aal", "abl", "abk", "abv", "aav" ]
     }]
   }, {
     "id": "g_d",
