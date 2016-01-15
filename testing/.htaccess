@@ -1,0 +1,2 @@
+RewriteEngine on
+RewriteRule drought?(.*) http://torka.unl.edu:8080/cgi-bin/mapserv.exe?map=/ms4w/apps/dm/service/usdm_current_wms.map&$1

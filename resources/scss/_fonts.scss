@@ -1,0 +1,126 @@
+@import url(https://fonts.googleapis.com/css?family=Roboto:300,400,600,700);
+
+@font-face {
+  font-family: 'CESans';
+  src: url('fonts/cesans-webfont.eot');
+  src: url('fonts/cesans-webfont.eot?#iefix') format('embedded-opentype'),
+       url('fonts/cesans-webfont.woff2') format('woff2'),
+       url('fonts/cesans-webfont.woff') format('woff'),
+       url('fonts/cesans-webfont.ttf') format('truetype'),
+       url('fonts/cesans-webfont.svg#cesansregular') format('svg');
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'CESans-Heavy';
+  src: url('fonts/cesansheavy-webfont.eot');
+  src: url('fonts/cesansheavy-webfont.eot?#iefix') format('embedded-opentype'),
+       url('fonts/cesansheavy-webfont.woff2') format('woff2'),
+       url('fonts/cesansheavy-webfont.woff') format('woff'),
+       url('fonts/cesansheavy-webfont.ttf') format('truetype'),
+       url('fonts/cesansheavy-webfont.svg#cesans_heavyheavy') format('svg');
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+	font-family: 'icomoon';
+	src:url('fonts/icomoon.eot?earrx6');
+	src:url('fonts/icomoon.eot?earrx6#iefix') format('embedded-opentype'),
+		url('fonts/icomoon.ttf?earrx6') format('truetype'),
+		url('fonts/icomoon.woff?earrx6') format('woff'),
+		url('fonts/icomoon.svg?earrx6#icomoon') format('svg');
+	font-weight: normal;
+	font-style: normal;
+}
+
+[class^="icon-"], [class*=" icon-"] {
+	font-family: 'icomoon';
+	speak: none;
+	font-style: normal;
+	font-weight: normal;
+	font-variant: normal;
+	text-transform: none;
+	line-height: 1;
+
+	/* Better Font Rendering =========== */
+	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
+}
+
+.icon-arrow-down:before {
+	content: "\e900";
+}
+.icon-arrow-left:before {
+	content: "\e901";
+}
+.icon-arrow-right:before {
+	content: "\e902";
+}
+.icon-arrow-up:before {
+	content: "\e903";
+}
+.icon-arrow-left-right:before {
+	content: "\e904";
+}
+.icon-average-mean:before {
+	content: "\e905";
+}
+.icon-bubble:before {
+	content: "\e906";
+}
+.icon-case-study:before {
+	content: "\e907";
+}
+.icon-district:before {
+	content: "\e908";
+}
+.icon-drought:before {
+	content: "\e909";
+}
+.icon-emission-scenario:before {
+	content: "\e90a";
+}
+.icon-facebook:before {
+	content: "\e90b";
+}
+.icon-link:before {
+	content: "\e90c";
+}
+.icon-linkedin:before {
+	content: "\e90d";
+}
+.icon-plus:before {
+	content: "\e90e";
+}
+.icon-precipitation:before {
+	content: "\e90f";
+}
+.icon-search:before {
+	content: "\e910";
+}
+.icon-season:before {
+	content: "\e911";
+}
+.icon-social:before {
+	content: "\e912";
+}
+.icon-temperature:before {
+	content: "\e913";
+}
+.icon-tour:before {
+	content: "\e914";
+}
+.icon-twitter:before {
+	content: "\e915";
+}
+.icon-variables:before {
+	content: "\e916";
+}
+.icon-download-image:before {
+	content: "\e917";
+}
+.icon-download-chart:before {
+	content: "\e918";
+}

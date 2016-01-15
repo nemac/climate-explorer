@@ -1,0 +1,29 @@
+.panel-group {
+    margin-bottom: 0;
+}
+div.modal_logo {
+    margin-bottom:-60px;
+    font-family: "Open Sans", Arial, sans-serif;
+    font-weight: 600;
+    text-transform: uppercase;
+    font-size: 29pt;
+    color: #838383;
+    width:370px;
+}
+div.modal_logo a:hover {
+    text-decoration: none;
+}
+
+div.portal_logo {
+    margin:15px;
+    position:absolute;
+    font-family: "Open Sans", Arial, sans-serif;
+    font-weight: 600;
+    text-transform: uppercase;
+    font-size: 29pt;
+    color: #838383;
+    width:370px;
+}
+div.portal_logo a:hover {
+    text-decoration: none;
+}
