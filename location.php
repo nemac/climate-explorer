@@ -29,11 +29,7 @@
     <div id="viewport">
       <div id="main-content-wrap" style="background-image: url(<?php echo $site_url; ?>/resources/img/bg_location-seattle.jpg);">
         
-        <?php
-          
-          include_once('tpl_share.php'); 
-            
-        ?>
+        <div id="tpl_share"></div>
         
         <section id="location-splash" class="page-splash">
           <div class="splash-text">
@@ -326,5 +322,11 @@
       include_once('tpl_footer.php'); 
         
     ?>
+
+    <script>
+      $(function(){
+        $("#tpl_share").load("tpl_share.html");
+      });
+    </script>
   </body>
 </html>

@@ -75,18 +75,19 @@
         </section>
       
       </div>
-      
-      <?php
-        
-        include_once('tpl_share.php'); 
-          
-      ?>
-    </div>
+
+      <div id="tpl_share"></div>
     
     <?php
       
       include_once('tpl_footer.php'); 
         
     ?>
+
+    <script>
+      $(function(){
+        $("#tpl_share").load("tpl_share.html");
+      });
+    </script>
   </body>
 </html>

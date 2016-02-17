@@ -137,12 +137,9 @@
           <div class="ui-slider-label zoom-label plus"></div>
           <div class="ui-slider-label zoom-label minus"></div>
         </div>
-        
-        <?php
-          
-          include_once('tpl_share.php'); 
-            
-        ?>
+
+        <div id="tpl_share"></div>
+
       </div>
     </div>
     
@@ -153,5 +150,11 @@
       include_once('tpl_footer.php'); 
         
     ?>
+
+    <script>
+      $(function(){
+        $("#tpl_share").load("tpl_share.html");
+      });
+    </script>
   </body>
 </html>
