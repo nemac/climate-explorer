@@ -1,0 +1,16 @@
+{
+  "name": "climate-widget-graph",
+  "version": "1.0.0",
+  "description": "This library defines functions that can create and manage interactive climate widget graphs.",
+  "main": "climate-widget-graph.js",
+  "scripts": {
+    "build" : "cat vendor/multigraph-nojq-min.js src/main.js > climate-widget-graph.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/nemac/climate-widget-graph.git"
+  },
+  "bugs": {
+    "url": "https://github.com/nemac/climate-widget-graph/issues"
+  }
+}
