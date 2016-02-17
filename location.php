@@ -74,12 +74,12 @@
 
             <div id="temperature-data" class="data-list">
               <ul class="data-options">
-                <li><a href="#" class="active accent-color accent-border">Average Mean</a></li>
-                <li><a href="#">Average Low</a></li>
-                <li><a href="#">Average High</a></li>
-                <li><a href="#">Hottest</a></li>
-                <li><a href="#">Coldest</a></li>
-                <li><a href="#">Days over 90º</a></li>
+                <li><a href="#" class="active accent-color accent-border">Average Mean<span class="icon icon-help"></span></a></li>
+                <li><a href="#">Average Low<span class="icon icon-help"></span></a></li>
+                <li><a href="#">Average High<span class="icon icon-help"></span></a></li>
+                <li><a href="#">Hottest<span class="icon icon-help"></span></a></li>
+                <li><a href="#">Coldest<span class="icon icon-help"></span></a></li>
+                <li><a href="#">Days over 90º<span class="icon icon-help"></span></a></li>
               </ul>
             </div>
             
@@ -87,11 +87,25 @@
               <div class="data-accordion">
 
                 <div id="temperature-chart" class="data-accordion-tab data-chart accent-background">
-                  <h4><span class="icon icon-emission-scenario"></span>Chart<span class="full-title">: Chart Title</span></h4>
+                  <header>
+                    <h4>
+                      <span class="icon icon-emission-scenario"></span>
+                      <span class="text">
+                        Chart<span class="full-title">: Chart Title</span>
+                        <span class="source">Source: <a href="#" target="_blank">NOAA, 2014</a></span>
+                      </span>
+                    </h4>
+                    
+                    <div class="chart-actions">
+                      <a href="#" class="chart-download-image"><span class="icon icon-download-image"></span>Image</a>
+                      <a href="#" class="chart-download-data"><span class="icon icon-download-chart"></span>Data</a>
+                    </div>
+                  </header>
                   
                   <div class="data-accordion-content chart">
                     <div class="chart-wrap">
-                      <canvas id="chart-123" class="chart-canvas" height="100" width="50"></canvas>
+                      <div class="chart-legend"></div>
+                      <canvas id="chart-123" class="chart-canvas" data-chart-ID="123" height="100" width="50"></canvas>
                     </div>
                     
                     <div class="range">
@@ -103,7 +117,15 @@
                 </div>
 
                 <div id="temperature-map" class="data-accordion-tab data-map accent-background">
-                  <h4 class="accent-color"><span class="icon icon-district"></span>Map<span class="full-title">: Map Title</span></h4>
+                  <header>
+                    <h4 class="accent-color">
+                      <span class="icon icon-district"></span>
+                      <span class="text">
+                        Map<span class="full-title">: Map Title</span>
+                        <span class="source">Source: <a href="#" target="_blank">NOAA, 2014</a></span>
+                      </span>
+                    </h4>
+                  </header>
                   
                   <div id="map-123" class="data-accordion-content map"></div>
                 </div>
@@ -146,11 +168,25 @@
               <div class="data-accordion">
 
                 <div id="precipitation-chart" class="data-accordion-tab data-chart accent-background">
-                  <h4><span class="icon icon-emission-scenario"></span>Chart<span class="full-title">: Chart Title</span></h4>
+                  <header>
+                    <h4>
+                      <span class="icon icon-emission-scenario"></span>
+                      <span class="text">
+                        Chart<span class="full-title">: Chart Title</span>
+                        <span class="source">Source: <a href="#" target="_blank">NOAA, 2014</a></span>
+                      </span>
+                    </h4>
+                    
+                    <div class="chart-actions">
+                      <a href="#" class="chart-download-image"><span class="icon icon-download-image"></span>Image</a>
+                      <a href="#" class="chart-download-data"><span class="icon icon-download-chart"></span>Data</a>
+                    </div>
+                  </header>
                   
                   <div class="data-accordion-content chart">
                     <div class="chart-wrap">
-                      <canvas id="chart-234" class="chart-canvas" height="100" width="50"></canvas>
+                      <div class="chart-legend"></div>
+                      <canvas id="chart-234" class="chart-canvas" data-chart-ID="234" height="100" width="50"></canvas>
                     </div>
                     
                     <div class="range">
@@ -162,7 +198,15 @@
                 </div>
 
                 <div id="precipitation-map" class="data-accordion-tab data-map accent-background">
-                  <h4 class="accent-color"><span class="icon icon-district"></span>Map<span class="full-title">: Map Title</span></h4>
+                  <header>
+                    <h4 class="accent-color">
+                      <span class="icon icon-district"></span>
+                      <span class="text">
+                        Map<span class="full-title">: Map Title</span>
+                        <span class="source">Source: <a href="#" target="_blank">NOAA, 2014</a></span>
+                      </span>
+                    </h4>
+                  </header>
                   
                   <div id="map-234" class="data-accordion-content map"></div>
                 </div>
@@ -204,11 +248,25 @@
               <div class="data-accordion">
 
                 <div id="drought-chart" class="data-accordion-tab data-chart accent-background">
-                  <h4><span class="icon icon-emission-scenario"></span>Chart<span class="full-title">: Chart Title</span></h4>
+                  <header>
+                    <h4>
+                      <span class="icon icon-emission-scenario"></span>
+                      <span class="text">
+                        Chart<span class="full-title">: Chart Title</span>
+                        <span class="source">Source: <a href="#" target="_blank">NOAA, 2014</a></span>
+                      </span>
+                    </h4>
+                    
+                    <div class="chart-actions">
+                      <a href="#" class="chart-download-image"><span class="icon icon-download-image"></span>Image</a>
+                      <a href="#" class="chart-download-data"><span class="icon icon-download-chart"></span>Data</a>
+                    </div>
+                  </header>
                   
                   <div class="data-accordion-content chart">
                     <div class="chart-wrap">
-                      <canvas id="chart-345" class="chart-canvas" height="400" width="300"></canvas>
+                      <div class="chart-legend"></div>
+                      <canvas id="chart-345" class="chart-canvas" data-chart-ID="345" height="400" width="300"></canvas>
                     </div>
                     
                     <div class="range">
@@ -220,7 +278,15 @@
                 </div>
 
                 <div id="drought-map" class="data-accordion-tab data-map accent-background">
-                  <h4 class="accent-color"><span class="icon icon-district"></span>Map<span class="full-title">: Map Title</span></h4>
+                  <header>
+                    <h4 class="accent-color">
+                      <span class="icon icon-district"></span>
+                      <span class="text">
+                        Map<span class="full-title">: Map Title</span>
+                        <span class="source">Source: <a href="#" target="_blank">NOAA, 2014</a></span>
+                      </span>
+                    </h4>
+                  </header>
                   
                   <div id="map-345" class="data-accordion-content map"></div>
                 </div>

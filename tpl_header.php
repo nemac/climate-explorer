@@ -7,7 +7,7 @@
   
   switch($current_template) {
     case 'location.php' :
-      $breadcrumb_text = '<span class="level-1">Location results</span>';
+      $breadcrumb_text = '<span class="level-2">Location results</span> <span class="level-1">Seattle, WA</span>';
       break;
     case 'variables.php' :
       $breadcrumb_text = '<span class="level-2">Variable</span> <span class="level-1">Average Mean Temperature</span>';
@@ -21,11 +21,11 @@
 
       <header id="main-header">
         <div id="main-nav">
-          <a href="<?php echo $site_url; ?>" id="header-logo" title="U.S. Climate Resilience Toolkit"><img src="<?php echo $site_url; ?>/resources/img/us-climate-resilience-toolkit.png" alt="U.S. Climate Resilience Toolkit"></a>
+          <a href="https://toolkit.climate.gov" id="header-logo" title="U.S. Climate Resilience Toolkit"><img src="<?php echo $site_url; ?>/resources/img/us-climate-resilience-toolkit.png" alt="U.S. Climate Resilience Toolkit"></a>
         
+          <a href="<?php echo $site_url; ?>" id="nav-home" class="nav-btn"><span class="icon icon-arrow-up"></span><span class="text">Index</span></a>
+          
           <a href="#" id="nav-trigger" class="nav-btn"><span class="hamburger"><span class="bar"></span></span><span class="text">Menu</span></a>
-        
-          <?php /*<a href="#" id="nav-home" class="nav-btn"><span class="icon icon-arrow-up"></span><span class="text">Home</span></a>*/ ?>
         
           <nav id="subnav">
             <ul>

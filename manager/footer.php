@@ -26,7 +26,10 @@
 
 <script src="template/assets/vendor/jquery/jquery.js"></script>
 <script src="template/assets/vendor/jquery-ui/js/jquery-ui-1.10.4.custom.min.js"></script>
-<script type="text/javascript" src="asmselect/jquery.asmselect.js"></script>
+
+<script type="text/javascript" src="multiselect/js/ui.multiselect.js"></script>
+<!-- <script type="text/javascript" src="asmselect/jquery.asmselect.js"></script> -->
+
 <script src="template/assets/vendor/jquery-browser-mobile/jquery.browser.mobile.js"></script>
 <script src="template/assets/vendor/bootstrap/js/bootstrap.js"></script>
 <script src="template/assets/vendor/nanoscroller/nanoscroller.js"></script>
@@ -42,6 +45,15 @@
 <script src="template/assets/vendor/jquery-autosize/jquery.autosize.js"></script>
 <!-- Specific Page Vendor -->
 <script src="template/assets/vendor/pnotify/pnotify.custom.js"></script>
+
+<script src="template/assets/vendor/codemirror/lib/codemirror.js"></script>
+<script src="template/assets/vendor/codemirror/addon/selection/active-line.js"></script>
+<script src="template/assets/vendor/codemirror/addon/edit/matchbrackets.js"></script>
+<script src="template/assets/vendor/codemirror/mode/javascript/javascript.js"></script>
+<script src="template/assets/vendor/codemirror/mode/xml/xml.js"></script>
+<script src="template/assets/vendor/codemirror/mode/htmlmixed/htmlmixed.js"></script>
+<script src="template/assets/vendor/codemirror/mode/css/css.js"></script>
+
 
 
 <!-- Theme Base, Components and Settings -->

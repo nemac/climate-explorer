@@ -167,11 +167,18 @@
       $(this).find('.data-accordion-tab').first().addClass('open'); //.find('h4').hide();
     });
     
-    $('.data-accordion-tab h4').click(function() {
-      var parent_accordion = $(this).parents('.data-accordion');
+    $('.data-accordion-tab header').click(function() {
+      var parent_tab = $(this).parents('.data-accordion-tab');
+      var parent_accordion = parent_tab.parents('.data-accordion');
       
-      parent_accordion.children('.data-accordion-tab').toggleClass('open');
-      //parent_accordion.children('.data-accordion-tab').find('h4').fadeToggle();
+      if (!parent_tab.hasClass('open')) {
+        parent_accordion.children('.data-accordion-tab').each(function() {
+          $(this).removeClass('open');
+        });
+        
+        parent_tab.addClass('open');
+      }
+      
     });
     
     function accordion_width() {
@@ -208,18 +215,25 @@
       return json_data;
     }
     
-  	function draw_charts(chart_div) {
-    	var chart_canvas = chart_div.find('.chart-canvas');
+    $.fn.draw_charts = function(options) {
+      
+      // defaults
+      var settings = $.extend({
+        download_png: false
+      }, options);
+      
+      var chart_canvas = this.find('.chart-canvas');
     	
-    	var start = chart_div.find('.chart-range').attr('data-start');
-    	var end = chart_div.find('.chart-range').attr('data-end');
+    	var start = this.find('.chart-range').attr('data-start');
+    	var end = this.find('.chart-range').attr('data-end');
     	
       chart_ID = chart_canvas.attr('id');
-      chart_data = get_chart_data(123, start, end);
+      chart_number = chart_canvas.attr('data-chart-id');
+      chart_data = get_chart_data(chart_number, start, end);
       
       var ctx = document.getElementById(chart_ID).getContext("2d");
-
-      window.myLine = new Chart(ctx).Line(chart_data, {
+      
+      var chart_options = {
         animation: false,
   			responsive: true,
   			scaleShowVerticalLines: false,
@@ -228,13 +242,36 @@
         pointDotRadius: 6,
         pointDotStrokeWidth: 3,
         pointHitDetectionRadius: 10,
-        legendTemplate: '<span></span>',
   			datasetFill: false,
   			showTooltips: false,
-  			scaleFontFamily: 'Roboto'
-  		});
-  	}
-  	
+  			scaleFontFamily: 'Roboto',
+  			legendTemplate : "<ul class=\"<%=name.toLowerCase()%>-legend\"><% for (var i=0; i<datasets.length; i++){%><li><span class=\"colour\" style=\"background-color:<%=datasets[i].strokeColor%>\"></span><span class=\"label\"><%if(datasets[i].label){%><%=datasets[i].label%><%}%></span></li><%}%></ul>"
+
+      };
+
+      // setting for download
+  		if (settings.download_png === true) {
+    		
+      // settings for display
+  		} else {
+    		
+  		}
+      
+      window.the_chart = new Chart(ctx).Line(chart_data, chart_options);
+      
+  		var legend = the_chart.generateLegend();
+  		chart_canvas.siblings('.chart-legend').html(legend);
+  		
+  		// go to the image URL
+  		if (settings.download_png === true) {
+    		var url = document.getElementById(chart_ID).toDataURL();
+    		
+    		//download(url, chart_ID + ".png", "image/png");
+    		
+    		window.location = url;
+  		}
+    }
+    
   	$('.chart-range').each(function() {
       var tooltip_min = $('<span class="tooltip">' + $(this).attr('data-start') + '</span>').hide();
       var tooltip_max = $('<span class="tooltip">' + $(this).attr('data-end') + '</span>').hide();
@@ -255,7 +292,7 @@
           tooltip_max.text(ui.values[1]);
           tooltip_max.fadeIn(200);
           
-          draw_charts($(this).parents('.chart'));
+          $(this).parents('.chart').draw_charts();
         }
       });
       
@@ -270,6 +307,15 @@
       }, function() {
         tooltip_min.fadeOut(100);
         tooltip_max.fadeOut(100);
+      });
+    });
+    
+    // download
+    
+    $('.chart-download-image').click(function(e) {
+      e.preventDefault();
+      $(this).parents('.data-chart').find('.chart').draw_charts({
+        download_png: true
       });
     });
   	    
@@ -367,7 +413,34 @@
       }
     });*/
     
-    // case
+    // split pane
+    
+    $('.split-pane').splitPane();
+    
+    // disable selection while dragging
+    
+    var mouse_down = false;
+    
+    $('.split-pane-divider').on('mousedown touchstart', function(e) {
+      e.preventDefault();
+      mouse_down = true;
+    });
+    
+    $('.split-pane-divider').on('mousemove touchmove', function(e) {
+      e.preventDefault();
+      if(mouse_down) {
+        console.log('mouse down');
+        $('body').disableSelection();
+      }
+    });
+    
+    $(document).on('mouseup touchend', function(e) {
+      mouse_down = false;
+      console.log('mouse up');
+      $('body').enableSelection();
+    });
+    
+    // CASE
     
     $('#case-menu .color').mouseenter(function() {
       $(this).siblings('.tooltip').fadeIn(200);
@@ -375,16 +448,80 @@
       $(this).siblings('.tooltip').fadeOut(100);
     });
     
-    // load functions
+    // layer info
+    
+    $.fn.close_layer_info = function() {
+      $('.menu').find('.legend').each(function() {
+        $(this).removeClass('info-on').find('.layer-info').fadeOut(250);
+      });
+    }
+    
+    $.fn.open_layer_info = function() {
+      $('body').close_layer_info();
+      this.addClass('info-on').find('.layer-info').fadeIn();
+    };
+    
+    // close btn
+    
+    $('.legend .layer-info-close').click(function(e) {
+      e.preventDefault();
+      $('body').close_layer_info();
+    });
+    
+    // next btn
+    
+    $('.legend .layer-info-next').click(function(e) {
+      e.preventDefault();
+      $(this).parents('.legend').next('.legend').open_layer_info();
+    });
+    
+    // help icon
+    
+    $('.legend .help').click(function(e) {
+      e.preventDefault();
+      
+      var current_legend = $(this).parents('.legend');
+      
+      if (current_legend.hasClass('info-on')) {
+        $('body').close_layer_info();
+      } else {
+        current_legend.open_layer_info();
+      }
+    });
+    
+    // sortable
+    
+    $('#case-menu').sortable({
+      axis: 'y',
+      placeholder: 'ui-state-highlight',
+      cancel: '.layer-info,.help',
+      containment: '#left-header',
+      cursor: 'move',
+      forcePlaceholderSize: true,
+      opacity: 0.75,
+      revert: 250,
+      activate: function(event, ui) {
+        $('body').close_layer_info();
+      },
+      deactivate: function(event, ui) {
+        console.log('sortable menu callback');
+      }
+    });
+    
+    $('#case-menu').disableSelection();
+    
+    // PAGE LOAD FUNCTIONS
     
     $(window).load(function() {
       equalize_charts();
       equalize_left_header();
       accordion_width();
       
+      $('#case-menu .legend').first().open_layer_info();
+      
       setTimeout(function() {
         $('.chart').each(function() {
-          draw_charts($(this));
+          $(this).draw_charts();
         });
       }, 1000);
     });

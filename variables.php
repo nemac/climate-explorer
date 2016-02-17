@@ -60,6 +60,23 @@
     
     <div id="viewport">
       <div id="main-content-wrap">
+        
+        <div class="split-pane vertical-percent">
+  				<div class="split-pane-component" id="pane-left">
+    				<div class="pane-content">
+
+    				</div>
+  				</div>
+  				
+  				<div class="split-pane-divider" id="pane-divider"></div>
+  				
+  				<div class="split-pane-component" id="pane-right">
+    				<div class="pane-content">
+
+    				</div>
+  				</div>
+  			</div>
+        
         <div class="year">
           <div class="year-label year-min">1950</div>
           <div class="year-slider" data-min="1950" data-max="2100" data-value="2015"></div>

@@ -142,7 +142,7 @@
     <script>
 
         <?
-            $jsonfile = file_get_contents('../../config.json', true);
+            $jsonfile = file_get_contents('../../testing/config.json', true);
         ?>
 
         var json = <?=$jsonfile?>;

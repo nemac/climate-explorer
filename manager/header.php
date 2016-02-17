@@ -33,11 +33,24 @@
     <!-- Head Libs -->
     <script src="template/assets/vendor/modernizr/modernizr.js"></script>
 
+    <!-- Specific Page Vendor CSS -->
+    <link rel="stylesheet" href="template/assets/vendor/codemirror/lib/codemirror.css"/>
+    <link rel="stylesheet" href="template/assets/vendor/codemirror/theme/monokai.css"/>
+
+
+
+    <link type="text/css" rel="stylesheet" href="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.10/themes/ui-lightness/jquery-ui.css" />
+
+
     <script language="javascript" type="text/javascript">
         function resizeIframe(obj) {
             obj.style.height = obj.contentWindow.document.body.scrollHeight + 'px';
         }
     </script>
+
+
+    <link rel="stylesheet" href="multiselect/css/ui.multiselect.css"/>
+
 </head>
 <body>
 <section class="body">

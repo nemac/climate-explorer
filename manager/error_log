@@ -877,3 +877,7 @@
 [15-Jan-2016 19:54:02 UTC] PHP Notice:  Undefined variable: session_email in /home/bigmappers/public_html/climate-explorer/manager/header.php on line 70
 [15-Jan-2016 19:54:06 UTC] PHP Notice:  Undefined variable: session_email in /home/bigmappers/public_html/climate-explorer/manager/header.php on line 70
 [15-Jan-2016 19:54:33 UTC] PHP Notice:  Undefined variable: session_email in /home/bigmappers/public_html/climate-explorer/manager/header.php on line 70
+[15-Jan-2016 15:31:44 America/Toronto] PHP Warning:  mysqli_connect(): (28000/1045): Access denied for user 'bigmappe_explore'@'localhost' (using password: YES) in /home/habitatsevendev/public_html/climateexplorer/site/manager/config.php on line 29
+[15-Jan-2016 15:31:44 America/Toronto] PHP Warning:  mysqli_connect(): (28000/1045): Access denied for user 'bigmappe_explore'@'localhost' (using password: YES) in /home/habitatsevendev/public_html/climateexplorer/site/manager/config.php on line 29
+[15-Jan-2016 15:33:58 America/Toronto] PHP Warning:  mysqli_connect(): (28000/1045): Access denied for user 'habitats_climate'@'localhost' (using password: YES) in /home/habitatsevendev/public_html/climateexplorer/site/manager/config.php on line 29
+[15-Jan-2016 15:34:19 America/Toronto] PHP Warning:  mysqli_connect(): (42000/1044): Access denied for user 'habitats_climate'@'localhost' to database 'habitats_climate_explorer' in /home/habitatsevendev/public_html/climateexplorer/site/manager/config.php on line 29

@@ -21,6 +21,8 @@
     <script type="text/javascript" src="<?php echo $site_url; ?>/resources/js/jquery.cycle2.min.js"></script>
     <script type="text/javascript" src="<?php echo $site_url; ?>/resources/js/jquery.waypoints.min.js"></script>
     <script type="text/javascript" src="<?php echo $site_url; ?>/resources/js/jquery.waypoints.sticky.min.js"></script>
+    <script type="text/javascript" src="<?php echo $site_url; ?>/resources/js/split-pane.min.js"></script>
+    <script type="text/javascript" src="<?php echo $site_url; ?>/resources/js/download.js"></script>
     
     <? // functions ?>
     <script type="text/javascript" src="<?php echo $site_url; ?>/resources/js/global_functions.js"></script>

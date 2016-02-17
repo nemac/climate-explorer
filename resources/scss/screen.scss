@@ -75,6 +75,10 @@ h2 {
   font: 2.875rem/1em $sans-heavy;
 }
 
+h3 {
+  font: 2.25rem/1em $sans-book;
+}
+
 h4 {
   font: 400 2rem/1em $roboto;
 }
@@ -841,7 +845,12 @@ h6 {
     }
     
     &.about-link {
-      font: 0.625em/1.2em $sans-heavy;
+      font: 0.875em/1.4em $sans-heavy;
+      
+      a {
+        padding: 6% 8%;
+        white-space: normal;
+      }
     }
     
     &.legend {
@@ -980,13 +989,12 @@ h6 {
   position: absolute;
   top: -55px;
   left: 50%;
-  width: 80px;
-  margin: 0 0 0 -40px;
-  padding: 12px 0;
+  padding: 12px;
   background: $white;
   text-align: center;
   font: 1.125rem/1em $roboto;
   color: $blue2;
+  @include transform(translateX(-50%));
   @include box-shadow(0 0 8px transparentize($blue1, 0.75));
   
   &:after {
@@ -1426,28 +1434,60 @@ h6 {
         z-index: 3;
         @include transition(0.25s);
       }
-    
-      h4 {
-        position: absolute;
-        top: 50%;
-        left: 10px;
-        width: 50px;
-        height: 50px;
-        margin: -25px 0 0 0;
-        color: $white!important;
-        text-align: center;
-        font: 0.75rem/1em $sans-heavy;
+      
+      header {
+        @include full-size;
         cursor: pointer;
         z-index: 2;
         
-        .icon {
-          display: block;
-          margin: 0 auto 10px auto;
-          font-size: 2rem;
+        h4 {
+          position: absolute;
+          top: 50%;
+          left: 10px;
+          width: 50px;
+          height: 50px;
+          margin: 0;
+          color: $white!important;
+          text-align: center;
+          font: 0.75rem/1em $sans-heavy;
+          @include transform(translateY(-50%));
+          
+          .icon {
+            display: block;
+            margin: 0 auto 10px auto;
+            font-size: 2rem;
+          }
+          
+          .full-title {
+            display: none;
+          }
+          
+          .source {
+            display: none;
+            font: 0.75rem/1.25em $sans-book;
+          }
         }
         
-        .full-title {
+        .chart-actions {
           display: none;
+          float: right;
+          
+          a {
+            display: inline-block;
+            padding: 10px;
+            color: $grey1;
+            @include transition(0.25s);
+            
+            .icon {
+              margin: 0 8px 0 0;
+              font-size: 1.25rem;
+              color: $orange1; 
+            }
+            
+            &:hover {
+              background: $blue3;
+            }
+          }
         }
       }
       
@@ -1455,11 +1495,7 @@ h6 {
         @include full-size;
         top: 50%;
         left: 50%;
-        -webkit-transform: translateX(-50%) translateY(-50%);
-        -moz-transform: translateX(-50%) translateY(-50%);
-        -ms-transform: translateX(-50%) translateY(-50%);
-        -o-transform: translateX(-50%) translateY(-50%);
-        transform: translateX(-50%) translateY(-50%);
+        @include transform(translateX(-50%) translateY(-50%));
         opacity: 0.25;
         mix-blend-mode: multiply;
         @include transition(0.25s);
@@ -1485,6 +1521,32 @@ h6 {
         .chart-canvas {
           width: 100%;
           height: 100%;
+        }
+        
+        .chart-legend {
+          text-align: right;
+          
+          ul {
+            li {
+              display: inline-block;
+              margin: 0 0 0 20px;
+            }
+          }
+          
+          span {
+            display: inline-block;
+            vertical-align: middle;
+          }
+          
+          .colour {
+            height: 5px;
+            width: 15px;
+            margin: 0 10px 0 0;
+          }
+          
+          .label {
+            font-size: 0.875rem;
+          }
         }
         
         .range {
@@ -1530,7 +1592,7 @@ h6 {
         @include box-shadow(inset 10px 0 20px -10px transparentize($black, 0.5));
           
         &:before {
-          left: 0;
+          left: -1px;
           border-color: transparent transparent transparent $white;
         }
         
@@ -1556,27 +1618,49 @@ h6 {
           margin-top: -9px;
         }
         
-        h4 {
-          top: 20px;
-          left: 20px;
-          width: auto;
-          min-width: 300px;
+        header {
+          top: 0;
+          left: 0;
+          width: 100%;
           height: auto;
-          margin: 0;
-          padding: 20px 15px 15px 15px;
+          padding: 15px;
           background: transparentize($white, 0.2);
-          font: 1.5rem/1em $sans-book;
-          color: inherit!important;
-          text-align: left;
-          z-index: 2;
+          cursor: default;
+          @include clearfix;
           
-          .icon {
-            display: inline-block;
-            margin: -4px 15px 0 0;
+          h4 {
+            position: static;
+            width: auto;
+            height: auto;
+            float: left;
+            font: 1.5rem/1em $sans-book;
+            color: inherit!important;
+            text-align: left;
+            z-index: 2;
+            @include transform(none);
+            
+            .icon {
+              display: inline-block;
+              margin: -4px 15px 0 0;
+            }
+            
+            .text {
+              display: inline-block;
+              vertical-align: middle;
+            }
+            
+            .full-title {
+              display: inline;
+            }
+          
+            .source {
+              display: block;
+              margin: 4px 0 0 0;
+            }
           }
           
-          .full-title {
-            display: inline;
+          .chart-actions {
+            display: block;
           }
         }
         
@@ -1829,8 +1913,31 @@ h6 {
   
   #main-content-wrap {
     @include full-size;
-    background: url(../img/bg_variables.jpg) $white no-repeat center;
-    background-size: cover;
+    
+    
+    .split-pane {
+      z-index: 1;
+    }
+    
+    #pane-left {
+      background: url(../img/bg_variables-low.jpg) $white no-repeat center;
+      background-attachment: fixed;
+      background-size: cover;
+    }
+    
+    #pane-right {
+      background: url(../img/bg_variables-high.jpg) $white no-repeat center;
+      background-attachment: fixed;
+      background-size: cover;
+    }
+    
+    .year {
+      z-index: 2;
+    }
+    
+    .zoom {
+      z-index: 3;
+    }
   }
   
   #district-trigger {
@@ -1922,7 +2029,23 @@ h6 {
 
 .page-type-case {
   #case-menu {
+    .ui-state-highlight {
+      background: $blue3;
+    }
+    
     .legend {
+      position: relative;
+      cursor: move;
+      @include transition(background 0.25s);
+      
+      .help {
+        padding: 0;
+        float: right;
+        background: none;
+      }
+      
+      // colours
+      
       li {
         position: relative;
         margin: 10px 0 0 0;
@@ -1938,9 +2061,102 @@ h6 {
       .tooltip {
         font-size: 0.875rem;
       }
+      
+      // info flyout
+      
+      &.info-on {
+        background: transparentize(darken($orange1, 3%), 0.2);
+      }
+      
+      .layer-info {
+        display: none;
+        position: absolute;
+        top: 0;
+        left: 100%;
+        width: 210%;
+        width: calc(200% + 40px);
+        height: auto;
+        padding: 10%;
+        background: transparentize($white, 0.1);
+        color: $grey1;
+        white-space: normal;
+        
+        &:before {
+          content: '';
+          display: block;
+          position: absolute;
+          left: -20px;
+          top: 22px;
+          width: 0;
+          height: 0;
+          border: 10px solid $white;
+          border-color: transparent $white transparent transparent;
+        }
+        
+        h3 {
+          margin: 0 0 10px 0;
+          font-size: 1.625rem;
+          color: $orange1;
+        }
+        
+        p {
+          margin: 0 0 12px 0;
+        }
+        
+        .actions {
+          text-align: right;
+          
+          a {
+            display: inline-block;
+            margin: 0 0 0 10px;
+            padding: 8px 12px;
+            background: $blue3;
+            color: $blue1;
+            
+            .icon {
+              margin-right: 10px;
+              
+            }
+          }
+        }
+      }
     }
   }
 }
+
+// PLUGINS
+
+// split pane
+
+@import "split-pane";
+
+.pretty-split-pane-frame .split-pane > .split-pane-divider.dragged.touch {
+	background: blue;
+	opacity: 0.25;
+}
+
+.split-pane-divider {
+	right: 50%;
+	width: 12px;
+	background: $white;
+	@include box-shadow(0 0 10px transparentize($blue2, 0.75));
+}
+
+.pane-content {
+  @include full-size;
+	overflow: auto;
+}
+
+#pane-left {
+	right: 50%;
+	margin-right: 12px;
+}
+
+#pane-right {
+	width: 50%;
+}
+
+// MEDIA QUERIES
 
 @media screen and (max-width: 1200px) {
   h1 {

@@ -8,7 +8,7 @@ $chart_end = 2100;
 if (isset($_REQUEST['start'])) $chart_start = $_REQUEST['start'];
 if (isset($_REQUEST['end'])) $chart_end = $_REQUEST['end'];
 
-if ($chart_ID == '123') {
+//if ($chart_ID == '123') {
   
   $alldata = array(
     array(
@@ -75,23 +75,18 @@ if ($chart_ID == '123') {
     $z++;
   }
   
-  //print_r($json);
-
-  
-  //$json['result']['labels'] = array('2010', '2015', '2020', '2025', '2030', '2035', '2040', '2045', '2050', '2055', '2060', '2065', '2070', '2075', '2080', '2085', '2090', '2095', '2100');
-  
-  $json['result']['datasets'][0]['label'] = 'Dataset 1';
+  $json['result']['datasets'][0]['label'] = 'High Emission Scenario';
   $json['result']['datasets'][0]['strokeColor'] = '#f5442d';
   $json['result']['datasets'][0]['pointColor'] = '#fff';
   $json['result']['datasets'][0]['pointStrokeColor'] = '#f5442d';
   $json['result']['datasets'][0]['pointHighlightFill'] = '#f5442d';
   
-  $json['result']['datasets'][1]['label'] = 'Dataset 2';
+  $json['result']['datasets'][1]['label'] = 'Low Emission Scenario';
   $json['result']['datasets'][1]['strokeColor'] = '#0058cf';
   $json['result']['datasets'][1]['pointColor'] = '#fff';
   $json['result']['datasets'][1]['pointStrokeColor'] = '#0058cf';
   $json['result']['datasets'][1]['pointHighlightFill'] = '#0058cf';
 
-}
+//}
 
 echo json_encode($json);

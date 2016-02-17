@@ -15,7 +15,7 @@
 
 		var options = {
 
-			listType: 'ul',						// Ordered list 'ol', or unordered list 'ul'
+			listType: 'ol',						// Ordered list 'ol', or unordered list 'ul'
 			sortable: false, 					// Should the list be sortable?
 			highlight: false,					// Use the highlight feature? 
 			animate: false,						// Animate the the adding/removing of items in the list?
