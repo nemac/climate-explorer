@@ -1,0 +1,304 @@
+<!doctype html>
+<html>
+<head>
+    <title>Climate Explorer</title>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="stylesheet" media="screen" href="resources/css/screen.css">
+
+
+    <script type="text/javascript" src="./resources/js/jquery.min.js"></script>
+    <script type="text/javascript" src="./resources/js/jquery-ui.min.js"></script>
+
+</head>
+
+<body id="page-fire-regimes" class="page-type-case">
+
+<header id="main-header">
+    <div id="main-nav">
+        <a href="https://toolkit.climate.gov" id="header-logo" title="U.S. Climate Resilience Toolkit"><img src="./resources/img/us-climate-resilience-toolkit.png" alt="U.S. Climate Resilience Toolkit"></a>
+
+        <a href="./" id="nav-home" class="nav-btn"><span class="icon icon-arrow-up"></span><span class="text">Index</span></a>
+
+        <a href="#" id="nav-trigger" class="nav-btn"><span class="hamburger"><span class="bar"></span></span><span class="text">Menu</span></a>
+
+        <nav id="subnav">
+            <ul>
+                <li><a href="#"><span class="icon"></span><span class="text">Help</span></a></li>
+                <li><a href="#"><span class="icon"></span><span class="text">About</span></a></li>
+                <li><a href="#"><span class="icon"></span><span class="text">Definitions</span></a></li>
+            </ul>
+        </nav>
+        <div id="breadcrumb"></div>
+    </div>
+</header>
+
+<nav id="nav-overlay">
+    <a href="#" id="nav-close" class="button close bg-white border-none blend-screen"></a>
+
+    <div id="nav-cycle" class="cycle-slideshow" data-cycle-timeout="0" data-cycle-fx="scrollHorz" data-cycle-slides="> .slide">
+        <div id="nav-search" class="slide">
+            <div class="slide-bg"></div>
+
+            <div class="nav-controls">
+                <a href="#" class="nav-left button border-white hover-bg-white arrow-left"><span class="icon icon-bubble"></span> Impacts</a>
+                <a href="#" class="nav-right button border-white hover-bg-white arrow-right"><span class="icon icon-variables"></span> Variables</a>
+            </div>
+
+            <div class="nav-content-wrap">
+                <h3><span class="icon icon-search"></span> Search locations</h3>
+
+                <div class="nav-content tabs">
+                    <nav>
+                        <a href="#nav-search" class="nav-search-tab" data-tabs-group="nav-search"><span>Results</span></a>
+                    </nav>
+
+                    <div id="nav-search" class="tab nav-content-tab">
+                        <ul class="col-2">
+                            <li><a href="location.html">Seattle</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div id="nav-variables" class="slide">
+            <div class="slide-bg"></div>
+
+            <div class="nav-controls">
+                <a href="#" class="nav-left button border-white hover-bg-white arrow-left"><span class="icon icon-search"></span> Search</a>
+                <a href="#" class="nav-right button border-white hover-bg-white arrow-right"><span class="icon icon-bubble"></span> Impacts</a>
+            </div>
+
+            <div class="nav-content-wrap">
+                <h3><span class="icon icon-variables"></span> Choose a variable</h3>
+
+                <a href="variables.php">Variables dummy page</a>
+
+                <div class="nav-content tabs">
+                    <nav>
+                        <a href="#nav-vars-projected" class="nav-vars-tab" data-tabs-group="nav-vars"><span>Projected</span></a>
+                        <a href="#nav-vars-historical" class="nav-vars-tab" data-tabs-group="nav-vars"><span>Historical</span></a>
+                    </nav>
+
+                    <div id="nav-vars-projected" class="tab nav-content-tab">
+                        <ol class="col-4">
+                            <li><a>Temperature</a>
+                                <ul>
+                                    <li><a>By Climate Division</a></li>
+                                    <li><a>Modelled Historical</a></li>
+                                    <li><a>Weather Station</a></li>
+                                </ul>
+                            </li>
+
+                            <li><a>Precipitation</a>
+                                <ul>
+                                    <li><a>By Climate Division</a></li>
+                                    <li><a>Modelled Historical</a></li>
+                                    <li><a>Weather Station</a></li>
+                                </ul>
+                            </li>
+
+                            <li><a>Drought</a></li>
+
+                            <li><a>Sea Level Rise</a></li>
+                        </ol>
+                    </div>
+
+                    <div id="nav-vars-historical" class="tab nav-content-tab">
+                        <ul class="col-4">
+                            <li>temperature</li>
+                            <li>precipitation</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div id="nav-impacts" class="slide">
+            <div class="slide-bg"></div>
+
+            <div class="nav-controls">
+                <a href="#" class="nav-left button border-white hover-bg-white arrow-left"><span class="icon icon-variables"></span> Variables</a>
+                <a href="#" class="nav-right button border-white hover-bg-white arrow-right"><span class="icon icon-search"></span> Search</a>
+            </div>
+
+            <div class="nav-content-wrap">
+                <h3><span class="icon icon-bubble"></span> Choose an impact</h3>
+
+                <div class="nav-content tabs">
+                    <nav>
+                        <a href="#nav-impacts" class="nav-impacts-tab" data-tabs-group="nav-impacts"><span>By Impact</span></a>
+                    </nav>
+
+                    <div id="nav-impacts" class="tab nav-content-tab">
+                        <ul class="col-2">
+                            <!--<li><a href="#">Coastal Flood Risk</a></li>-->
+                            <li><a href="impact_ecosystem-vulnerability.html">Ecosystem Vulnerability</a></li>
+                            <!--<li><a href="#">Energy Supply and Use</a></li>
+                            <li><a href="#">Food Resilience</a></li>
+                            <li><a href="#">Human Health</a></li>
+                            <li><a href="#">Transportation and Supply Chain</a></li>
+                            <li><a href="#">Tribal Nations</a></li>
+                            <li><a href="#">Water Resources</a></li>-->
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</nav>
+
+<header id="left-header">
+    <ul id="case-menu" class="menu orange-menu">
+        <li class="search-field border"><span class="icon icon-search"></span><input type="text" placeholder="Search by location"></li>
+        <li class="legend">
+            <div class="text">Current Drought <a href="#info-drought" class="help"><span class="icon icon-help"></span></a></div>
+
+            <ul>
+                <li><span class="color" style="background-color: #2a0023;"></span><span class="tooltip">&gt; 105</span></li>
+                <li><span class="color" style="background-color: #c3003c;"></span><span class="tooltip">90–104</span></li>
+                <li><span class="color" style="background-color: #f5442d;"></span><span class="tooltip">70–89</span></li>
+                <li><span class="color" style="background-color: #f0f567;"></span><span class="tooltip">50–69</span></li>
+                <li><span class="color" style="background-color: #48f7d0;"></span><span class="tooltip">30–49</span></li>
+                <li><span class="color" style="background-color: #0078d4;"></span><span class="tooltip">&lt; 30</span></li>
+            </ul>
+
+            <div id="info-drought" class="layer-info">
+                <h3>Current Drought</h3>
+                <p>Integer sodales commodo purus, ut laoreet erat blandit varius. Aliquam ultrices eleifend diam, vitae ullamcorper mauris cursus tincidunt. Mauris pharetra ex eu ante aliquet luctus.</p>
+
+                <div class="actions">
+                    <a href="#" class="layer-info-close"><span class="icon icon-close"></span>Close</a>
+                    <a href="#" class="layer-info-next"><span class="icon icon-arrow-right"></span>Next</a>
+                </div>
+            </div>
+        </li>
+        <li class="legend">
+            <div class="text">Commodo Consequat <a href="#info-commodo" class="help"><span class="icon icon-help"></span></a></div>
+
+            <ul>
+                <li><span class="color" style="background-color: #2a0023;"></span><span class="tooltip">&gt; 105</span></li>
+                <li><span class="color" style="background-color: #c3003c;"></span><span class="tooltip">90–104</span></li>
+                <li><span class="color" style="background-color: #f5442d;"></span><span class="tooltip">70–89</span></li>
+                <li><span class="color" style="background-color: #f0f567;"></span><span class="tooltip">50–69</span></li>
+                <li><span class="color" style="background-color: #48f7d0;"></span><span class="tooltip">30–49</span></li>
+                <li><span class="color" style="background-color: #0078d4;"></span><span class="tooltip">&lt; 30</span></li>
+            </ul>
+
+            <div id="info-commodo" class="layer-info">
+                <h3>Commodo Consequat</h3>
+                <p>Integer sodales commodo purus, ut laoreet erat blandit varius. Aliquam ultrices eleifend diam, vitae ullamcorper mauris cursus tincidunt. Mauris pharetra ex eu ante aliquet luctus.</p>
+
+                <div class="actions">
+                    <a href="#" class="layer-info-close"><span class="icon icon-close"></span>Close</a>
+                    <a href="#" class="layer-info-next"><span class="icon icon-arrow-right"></span>Next</a>
+                </div>
+            </div>
+        </li>
+        <li class="legend">
+            <div class="text">Voluptate Velit Esse <a href="#info-voluptate" class="help"><span class="icon icon-help"></span></a></div>
+
+            <ul>
+                <li><span class="color" style="background-color: #2a0023;"></span><span class="tooltip">&gt; 105</span></li>
+                <li><span class="color" style="background-color: #c3003c;"></span><span class="tooltip">90–104</span></li>
+                <li><span class="color" style="background-color: #f5442d;"></span><span class="tooltip">70–89</span></li>
+                <li><span class="color" style="background-color: #f0f567;"></span><span class="tooltip">50–69</span></li>
+                <li><span class="color" style="background-color: #48f7d0;"></span><span class="tooltip">30–49</span></li>
+                <li><span class="color" style="background-color: #0078d4;"></span><span class="tooltip">&lt; 30</span></li>
+            </ul>
+
+            <div id="info-voluptate" class="layer-info">
+                <h3>Voluptate Velit Esse</h3>
+                <p>Integer sodales commodo purus, ut laoreet erat blandit varius. Aliquam ultrices eleifend diam, vitae ullamcorper mauris cursus tincidunt. Mauris pharetra ex eu ante aliquet luctus.</p>
+
+                <div class="actions">
+                    <a href="#" class="layer-info-close"><span class="icon icon-close"></span>Close</a>
+                    <a href="#" class="layer-info-next"><span class="icon icon-arrow-right"></span>Next</a>
+                </div>
+            </div>
+        </li>
+        <li class="legend">
+            <div class="text">Excepteur Sint <a href="#info-excepteur" class="help"><span class="icon icon-help"></span></a></div>
+
+            <ul>
+                <li><span class="color" style="background-color: #2a0023;"></span><span class="tooltip">&gt; 105</span></li>
+                <li><span class="color" style="background-color: #c3003c;"></span><span class="tooltip">90–104</span></li>
+                <li><span class="color" style="background-color: #f5442d;"></span><span class="tooltip">70–89</span></li>
+                <li><span class="color" style="background-color: #f0f567;"></span><span class="tooltip">50–69</span></li>
+                <li><span class="color" style="background-color: #48f7d0;"></span><span class="tooltip">30–49</span></li>
+                <li><span class="color" style="background-color: #0078d4;"></span><span class="tooltip">&lt; 30</span></li>
+            </ul>
+
+            <div id="info-excepteur" class="layer-info">
+                <h3>Excepteur Sint</h3>
+                <p>Integer sodales commodo purus, ut laoreet erat blandit varius. Aliquam ultrices eleifend diam, vitae ullamcorper mauris cursus tincidunt. Mauris pharetra ex eu ante aliquet luctus.</p>
+
+                <div class="actions">
+                    <a href="#" class="layer-info-close"><span class="icon icon-close"></span>Close</a>
+                    <a href="#" class="layer-info-next"><span class="icon icon-arrow-right"></span>Next</a>
+                </div>
+            </div>
+        </li>
+    </ul>
+
+    <div id="vars-legend" class="legend-wrap left-filler">
+        <h6 class="source">Source: <a href="#" target="_blank">NOAA, 2014</a></h6>
+    </div>
+</header>
+
+<div id="viewport">
+    <div id="main-content-wrap">
+        <div class="year">
+            <div class="year-label year-min">1950</div>
+            <div class="year-slider" data-min="1950" data-max="2100" data-value="2015"></div>
+            <div class="year-label year-max">2100</div>
+        </div>
+
+        <div class="zoom">
+            <div class="zoom-slider" data-value="1"></div>
+            <div class="ui-slider-label zoom-label plus"></div>
+            <div class="ui-slider-label zoom-label minus"></div>
+        </div>
+
+        <div class="share-widget">
+            <a href="#" class="share-trigger"><span class="icon icon-social"></span>Share</a>
+            <ul>
+                <li><a href="#"><span class="icon icon-facebook"></span>Facebook</a></li>
+                <li><a href="#"><span class="icon icon-twitter"></span>Twitter</a></li>
+                <li><a href="#"><span class="icon icon-linkedin"></span>LinkedIn</a></li>
+            </ul>
+        </div>
+
+    </div>
+</div>
+
+<a href="#" id="district-trigger"><span class="text">Show District Overlay</span><span class="icon icon-district"></span></a>
+
+<!-- START:JS_LOADER -->
+<script type="text/javascript" src="./resources/js/chart/chart.core.js"></script>
+<script type="text/javascript" src="./resources/js/chart/chart.line.js"></script>
+
+<script type="text/javascript" src="./resources/js/formstone/core.js"></script>
+<script type="text/javascript" src="./resources/js/formstone/mediaquery.js"></script>
+<script type="text/javascript" src="./resources/js/formstone/touch.js"></script>
+<script type="text/javascript" src="./resources/js/formstone/scrollbar.js"></script>
+<script type="text/javascript" src="./resources/js/formstone/dropdown.js"></script>
+<script type="text/javascript" src="./resources/js/formstone/equalize.js"></script>
+<script type="text/javascript" src="./resources/js/formstone/swap.js"></script>
+<script type="text/javascript" src="./resources/js/formstone/tabs.js"></script>
+
+<script type="text/javascript" src="./resources/js/lc_switch.min.js"></script>
+<script type="text/javascript" src="./resources/js/jquery.cycle2.min.js"></script>
+<script type="text/javascript" src="./resources/js/jquery.waypoints.min.js"></script>
+<script type="text/javascript" src="./resources/js/jquery.waypoints.sticky.min.js"></script>
+<script type="text/javascript" src="./resources/js/split-pane.min.js"></script>
+<script type="text/javascript" src="./resources/js/download.js"></script>
+
+<script type="text/javascript" src="./resources/js/global_functions.js"></script>
+<!-- END:JS_LOADER -->
+</body>
+</html>

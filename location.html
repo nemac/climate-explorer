@@ -1,12 +1,3 @@
-<?php
-  
-  $site_url = 'http://' . $_SERVER["SERVER_NAME"] . (isset($_SERVER["SERVER_PORT"]) ? ":" . $_SERVER["SERVER_PORT"] : '');
-  
-  if ($_SERVER["SERVER_NAME"] == 'localhost') {
-    $site_url .= '/climateexplorer';
-  }
-  
-?>
 <!doctype html>
 <html>
   <head>
@@ -17,19 +8,161 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     
     <link rel="stylesheet" media="screen" href="resources/css/screen.css">
+
+
+    <script type="text/javascript" src="./resources/js/jquery.min.js"></script>
+    <script type="text/javascript" src="./resources/js/jquery-ui.min.js"></script>
+
   </head>
-  
+
   <body id="page-location-seattle" class="page-type-location">
-    <?php
-      
-      include_once('tpl_header.php'); 
-        
-    ?>
+
+  <header id="main-header">
+    <div id="main-nav">
+      <a href="https://toolkit.climate.gov" id="header-logo" title="U.S. Climate Resilience Toolkit"><img src="./resources/img/us-climate-resilience-toolkit.png" alt="U.S. Climate Resilience Toolkit"></a>
+
+      <a href="./" id="nav-home" class="nav-btn"><span class="icon icon-arrow-up"></span><span class="text">Index</span></a>
+
+      <a href="#" id="nav-trigger" class="nav-btn"><span class="hamburger"><span class="bar"></span></span><span class="text">Menu</span></a>
+
+      <nav id="subnav">
+        <ul>
+          <li><a href="#"><span class="icon"></span><span class="text">Help</span></a></li>
+          <li><a href="#"><span class="icon"></span><span class="text">About</span></a></li>
+          <li><a href="#"><span class="icon"></span><span class="text">Definitions</span></a></li>
+        </ul>
+      </nav>
+      <div id="breadcrumb"></div>
+    </div>
+  </header>
+
+  <nav id="nav-overlay">
+    <a href="#" id="nav-close" class="button close bg-white border-none blend-screen"></a>
+
+    <div id="nav-cycle" class="cycle-slideshow" data-cycle-timeout="0" data-cycle-fx="scrollHorz" data-cycle-slides="> .slide">
+      <div id="nav-search" class="slide">
+        <div class="slide-bg"></div>
+
+        <div class="nav-controls">
+          <a href="#" class="nav-left button border-white hover-bg-white arrow-left"><span class="icon icon-bubble"></span> Impacts</a>
+          <a href="#" class="nav-right button border-white hover-bg-white arrow-right"><span class="icon icon-variables"></span> Variables</a>
+        </div>
+
+        <div class="nav-content-wrap">
+          <h3><span class="icon icon-search"></span> Search locations</h3>
+
+          <div class="nav-content tabs">
+            <nav>
+              <a href="#nav-search" class="nav-search-tab" data-tabs-group="nav-search"><span>Results</span></a>
+            </nav>
+
+            <div id="nav-search" class="tab nav-content-tab">
+              <ul class="col-2">
+                <li><a href="location.html">Seattle</a></li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div id="nav-variables" class="slide">
+        <div class="slide-bg"></div>
+
+        <div class="nav-controls">
+          <a href="#" class="nav-left button border-white hover-bg-white arrow-left"><span class="icon icon-search"></span> Search</a>
+          <a href="#" class="nav-right button border-white hover-bg-white arrow-right"><span class="icon icon-bubble"></span> Impacts</a>
+        </div>
+
+        <div class="nav-content-wrap">
+          <h3><span class="icon icon-variables"></span> Choose a variable</h3>
+
+          <a href="variables.php">Variables dummy page</a>
+
+          <div class="nav-content tabs">
+            <nav>
+              <a href="#nav-vars-projected" class="nav-vars-tab" data-tabs-group="nav-vars"><span>Projected</span></a>
+              <a href="#nav-vars-historical" class="nav-vars-tab" data-tabs-group="nav-vars"><span>Historical</span></a>
+            </nav>
+
+            <div id="nav-vars-projected" class="tab nav-content-tab">
+              <ol class="col-4">
+                <li><a>Temperature</a>
+                  <ul>
+                    <li><a>By Climate Division</a></li>
+                    <li><a>Modelled Historical</a></li>
+                    <li><a>Weather Station</a></li>
+                  </ul>
+                </li>
+
+                <li><a>Precipitation</a>
+                  <ul>
+                    <li><a>By Climate Division</a></li>
+                    <li><a>Modelled Historical</a></li>
+                    <li><a>Weather Station</a></li>
+                  </ul>
+                </li>
+
+                <li><a>Drought</a></li>
+
+                <li><a>Sea Level Rise</a></li>
+              </ol>
+            </div>
+
+            <div id="nav-vars-historical" class="tab nav-content-tab">
+              <ul class="col-4">
+                <li>temperature</li>
+                <li>precipitation</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div id="nav-impacts" class="slide">
+        <div class="slide-bg"></div>
+
+        <div class="nav-controls">
+          <a href="#" class="nav-left button border-white hover-bg-white arrow-left"><span class="icon icon-variables"></span> Variables</a>
+          <a href="#" class="nav-right button border-white hover-bg-white arrow-right"><span class="icon icon-search"></span> Search</a>
+        </div>
+
+        <div class="nav-content-wrap">
+          <h3><span class="icon icon-bubble"></span> Choose an impact</h3>
+
+          <div class="nav-content tabs">
+            <nav>
+              <a href="#nav-impacts" class="nav-impacts-tab" data-tabs-group="nav-impacts"><span>By Impact</span></a>
+            </nav>
+
+            <div id="nav-impacts" class="tab nav-content-tab">
+              <ul class="col-2">
+                <!--<li><a href="#">Coastal Flood Risk</a></li>-->
+                <li><a href="impact_ecosystem-vulnerability.html">Ecosystem Vulnerability</a></li>
+                <!--<li><a href="#">Energy Supply and Use</a></li>
+                <li><a href="#">Food Resilience</a></li>
+                <li><a href="#">Human Health</a></li>
+                <li><a href="#">Transportation and Supply Chain</a></li>
+                <li><a href="#">Tribal Nations</a></li>
+                <li><a href="#">Water Resources</a></li>-->
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </nav>
     
     <div id="viewport">
-      <div id="main-content-wrap" style="background-image: url(<?php echo $site_url; ?>/resources/img/bg_location-seattle.jpg);">
-        
-        <div id="tpl_share"></div>
+      <div id="main-content-wrap" style="background-image: url(./resources/img/bg_location-seattle.jpg);">
+
+        <div class="share-widget">
+          <a href="#" class="share-trigger"><span class="icon icon-social"></span>Share</a>
+          <ul>
+            <li><a href="#"><span class="icon icon-facebook"></span>Facebook</a></li>
+            <li><a href="#"><span class="icon icon-twitter"></span>Twitter</a></li>
+            <li><a href="#"><span class="icon icon-linkedin"></span>LinkedIn</a></li>
+          </ul>
+        </div>
         
         <section id="location-splash" class="page-splash">
           <div class="splash-text">
@@ -294,17 +427,17 @@
         <section id="location-impacts" class="impacts-list">
           <h2>Relevant Impacts</h2>
           
-          <article id="impact-ecosystem-vulnerability" class="impact-banner" style="background-image: url(<?php echo $site_url; ?>/resources/img/bg_topic-ecosystem.jpg);">
+          <article id="impact-ecosystem-vulnerability" class="impact-banner" style="background-image: url(./resources/img/bg_topic-ecosystem.jpg);">
             <div class="impact-banner-text">
               <h4>Impacts</h4>
-              <h3><a href="<?php echo $site_url; ?>/impact_ecosystem-vulnerability.php">Ecosystem Vulnerability</a></h3>
+              <h3><a href="./impact_ecosystem-vulnerability.php">Ecosystem Vulnerability</a></h3>
               <p>From large-scale agriculture, to massive dams and reservoirs, to managed fire regimes dating back thousands of years, humans have transformed the planet by engineering Earth’s physical and biological systems to better serve our needs and desires.</p>
             </div>
             
-            <a href="<?php echo $site_url; ?>/impact_ecosystem-vulnerability.php" class="button bg-trans border-white hover-bg-white">View details</a>
+            <a href="./impact_ecosystem-vulnerability.php" class="button bg-trans border-white hover-bg-white">View details</a>
           </article>
           
-          <article id="impact-coastal-flood-risk" class="impact-banner" style="background-image: url(<?php echo $site_url; ?>/resources/img/bg_topic-coastalflood.jpg);">
+          <article id="impact-coastal-flood-risk" class="impact-banner" style="background-image: url(./resources/img/bg_topic-coastalflood.jpg);">
             <div class="impact-banner-text">
               <h4>Impacts</h4>
               <h3><a href="#">Coastal Flood Risk</a></h3>
@@ -316,17 +449,29 @@
         </section>
       </div>
     </div>
-    
-    <?php
-      
-      include_once('tpl_footer.php'); 
-        
-    ?>
 
-    <script>
-      $(function(){
-        $("#tpl_share").load("tpl_share.html");
-      });
-    </script>
+
+  <!-- START:JS_LOADER -->
+  <script type="text/javascript" src="./resources/js/chart/chart.core.js"></script>
+  <script type="text/javascript" src="./resources/js/chart/chart.line.js"></script>
+
+  <script type="text/javascript" src="./resources/js/formstone/core.js"></script>
+  <script type="text/javascript" src="./resources/js/formstone/mediaquery.js"></script>
+  <script type="text/javascript" src="./resources/js/formstone/touch.js"></script>
+  <script type="text/javascript" src="./resources/js/formstone/scrollbar.js"></script>
+  <script type="text/javascript" src="./resources/js/formstone/dropdown.js"></script>
+  <script type="text/javascript" src="./resources/js/formstone/equalize.js"></script>
+  <script type="text/javascript" src="./resources/js/formstone/swap.js"></script>
+  <script type="text/javascript" src="./resources/js/formstone/tabs.js"></script>
+
+  <script type="text/javascript" src="./resources/js/lc_switch.min.js"></script>
+  <script type="text/javascript" src="./resources/js/jquery.cycle2.min.js"></script>
+  <script type="text/javascript" src="./resources/js/jquery.waypoints.min.js"></script>
+  <script type="text/javascript" src="./resources/js/jquery.waypoints.sticky.min.js"></script>
+  <script type="text/javascript" src="./resources/js/split-pane.min.js"></script>
+  <script type="text/javascript" src="./resources/js/download.js"></script>
+
+  <script type="text/javascript" src="./resources/js/global_functions.js"></script>
+  <!-- END:JS_LOADER -->
   </body>
 </html>

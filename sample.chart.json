@@ -1,0 +1,83 @@
+{
+  "result": {
+    "labels": [
+      "2010",
+      "2015",
+      "2020",
+      "2025",
+      "2030",
+      "2035",
+      "2040",
+      "2045",
+      "2050",
+      "2055",
+      "2060",
+      "2065",
+      "2070",
+      "2075",
+      "2080",
+      "2085",
+      "2090",
+      "2095",
+      "2100"
+    ],
+    "datasets": [
+      {
+        "data": [
+          65,
+          59,
+          70,
+          80,
+          81,
+          56,
+          55,
+          40,
+          45,
+          47,
+          50,
+          57,
+          60,
+          67,
+          78,
+          89,
+          99,
+          103,
+          107
+        ],
+        "label": "High Emission Scenario",
+        "strokeColor": "#f5442d",
+        "pointColor": "#fff",
+        "pointStrokeColor": "#f5442d",
+        "pointHighlightFill": "#f5442d"
+      },
+      {
+        "data": [
+          28,
+          30,
+          34,
+          40,
+          48,
+          42,
+          60,
+          67,
+          74,
+          86,
+          88,
+          90,
+          91,
+          94,
+          99,
+          105,
+          107,
+          110,
+          111
+        ],
+        "label": "Low Emission Scenario",
+        "strokeColor": "#0058cf",
+        "pointColor": "#fff",
+        "pointStrokeColor": "#0058cf",
+        "pointHighlightFill": "#0058cf"
+      }
+    ]
+  }
+}
