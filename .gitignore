@@ -1,3 +1,5 @@
 
 *.scssc
 manager/
+.idea/
+*.xml
