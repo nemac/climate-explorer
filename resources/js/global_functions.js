@@ -162,14 +162,6 @@
 
         $('.dropdown').dropdown();
 
-        function equalize_charts() {
-            /*$('.data-accordion').each(function() {
-             var option_list = $(this).parents('.location-data-section').find('.data-options');
-             var list_height = option_list.height(); // - 20; // subtract borders
-             $(this).height(list_height);
-             });*/
-        }
-
         $('.location-data-section').each(function () {
             var accordion = $(this).find('.data-accordion');
 
@@ -206,120 +198,6 @@
                 }
             });
         }
-
-        // chart
-
-        function get_chart_data(chart_id, start, end) {
-            //var ajax_url = 'ajax_chart.php?id=' + chart_id + '&start=' + start + '&end=' + end;
-
-            var json_data = [];
-
-            $.ajax({
-                url: './sample.chart.json',
-                async: false,
-                dataType: 'json',
-                success: function (json) {
-                    json_data = json.result;
-                }
-            });
-
-            return json_data;
-        }
-
-        $.fn.draw_charts = function (options) {
-
-            // defaults
-            var settings = $.extend({
-                download_png: false
-            }, options);
-
-            var chart_canvas = this.find('.chart-canvas');
-
-            var start = this.find('.chart-range').attr('data-start');
-            var end = this.find('.chart-range').attr('data-end');
-
-            chart_ID = chart_canvas.attr('id');
-            chart_number = chart_canvas.attr('data-chart-id');
-            chart_data = get_chart_data(chart_number, start, end);
-
-            var ctx = document.getElementById(chart_ID).getContext("2d");
-
-            var chart_options = {
-                animation: false,
-                responsive: true,
-                scaleShowVerticalLines: false,
-                bezierCurve: false,
-                datasetStrokeWidth: 5,
-                pointDotRadius: 6,
-                pointDotStrokeWidth: 3,
-                pointHitDetectionRadius: 10,
-                datasetFill: false,
-                showTooltips: false,
-                scaleFontFamily: 'Roboto',
-                legendTemplate: "<ul class=\"<%=name.toLowerCase()%>-legend\"><% for (var i=0; i<datasets.length; i++){%><li><span class=\"colour\" style=\"background-color:<%=datasets[i].strokeColor%>\"></span><span class=\"label\"><%if(datasets[i].label){%><%=datasets[i].label%><%}%></span></li><%}%></ul>"
-
-            };
-
-            // setting for download
-            if (settings.download_png === true) {
-
-                // settings for display
-            } else {
-
-            }
-
-            window.the_chart = new Chart(ctx).Line(chart_data, chart_options);
-
-            var legend = the_chart.generateLegend();
-            chart_canvas.siblings('.chart-legend').html(legend);
-
-            // go to the image URL
-            if (settings.download_png === true) {
-                var url = document.getElementById(chart_ID).toDataURL();
-
-                //download(url, chart_ID + ".png", "image/png");
-
-                window.location = url;
-            }
-        }
-
-        $('.chart-range').each(function () {
-            var tooltip_min = $('<span class="tooltip">' + $(this).attr('data-start') + '</span>').hide();
-            var tooltip_max = $('<span class="tooltip">' + $(this).attr('data-end') + '</span>').hide();
-
-            $(this).slider({
-                range: true,
-                min: 2010,
-                max: 2100,
-                values: [2010, 2100],
-                step: 5,
-                slide: function (event, ui) {
-                    $(this).attr('data-start', ui.values[0]);
-                    $(this).attr('data-end', ui.values[1]);
-
-                    tooltip_min.text(ui.values[0]);
-                    tooltip_min.fadeIn(200);
-
-                    tooltip_max.text(ui.values[1]);
-                    tooltip_max.fadeIn(200);
-
-                    $(this).parents('.chart').draw_charts();
-                }
-            });
-
-            $(this).find(".ui-slider-range").addClass('accent-background').html('<span class="icon icon-arrow-left-right"></span>');
-
-            $(this).find('.ui-slider-handle').first().append(tooltip_min);
-            $(this).find('.ui-slider-handle').last().append(tooltip_max);
-
-            $(this).hover(function () {
-                tooltip_min.fadeIn(200);
-                tooltip_max.fadeIn(200);
-            }, function () {
-                tooltip_min.fadeOut(100);
-                tooltip_max.fadeOut(100);
-            });
-        });
 
         // download
 
@@ -524,15 +402,13 @@
         // PAGE LOAD FUNCTIONS
 
         $(window).load(function () {
-            equalize_charts();
             equalize_left_header();
             accordion_width();
-
             $('#case-menu .legend').first().open_layer_info();
 
             setTimeout(function () {
                 $('.chart').each(function () {
-                    $(this).draw_charts();
+                    cwg.resize();
                 });
             }, 1000);
         });
@@ -540,7 +416,6 @@
         // resize functions
 
         $(window).resize(function () {
-            equalize_charts();
             equalize_left_header();
             accordion_width();
         });

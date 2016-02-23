@@ -1,0 +1,2 @@
+[15-Jan-2016 16:37:41 America/Toronto] PHP Warning:  file_get_contents(../../config.json): failed to open stream: No such file or directory in /home/habitatsevendev/public_html/climateexplorer/manager/jsoneditor/index.php on line 145
+[15-Jan-2016 16:45:51 America/Toronto] PHP Warning:  file_get_contents(../../config.json): failed to open stream: No such file or directory in /home/habitatsevendev/public_html/climateexplorer/manager/jsoneditor/index.php on line 145

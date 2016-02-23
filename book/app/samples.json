@@ -1,0 +1,286 @@
+[
+    {
+        "title": "The map and the view",
+        "samples": [
+            {
+                "title": "A basic map",
+                "description": "Show the most basic way to create map",
+                "url": "chapter01_01_basic_map.html",
+                "thumbnail": "chapter01_01_basic_map.png"
+            },
+            {
+                "title": "Moving around",
+                "description": "Demonstrates how to programatically interact with the map",
+                "url": "chapter01_02_moving_around.html",
+                "thumbnail": "chapter01_02_moving_around.png"
+            },
+            {
+                "title": "Fit extent",
+                "description": "Focalize the view on a given extent",
+                "url": "chapter01_03_fit_extent.html",
+                "thumbnail": "chapter01_03_fit_extent.png"
+            },
+            {
+                "title": "Animating the view",
+                "description": "Adding nice effect to the view changes",
+                "url": "chapter01_04_animating_the_view.html",
+                "thumbnail": "chapter01_04_animating_the_view.png"
+            }            
+        ]
+    },
+    {
+        "title": "The layers",
+        "samples": [
+            {
+                "title": "Adding/Removing layers",
+                "description": "Adding and removing layers from the map programmatically",
+                "url": "chapter02_01_adding_removing_layers.html",
+                "thumbnail": "chapter02_01_adding_removing_layers.png"
+            },
+            {
+                "title": "The layer stack",
+                "description": "Raise and lower layers within the layer stack",
+                "url": "chapter02_02_layer_stack.html",
+                "thumbnail": "chapter02_02_layer_stack.png"
+            },
+            {
+                "title": "Layer groups",
+                "description": "Grouping layers for better control",
+                "url": "chapter02_03_layer_groups.html",
+                "thumbnail": "chapter02_03_layer_groups.png"
+            },
+            {
+                "title": "Image layer",
+                "description": "Adding static images",
+                "url": "chapter02_04_image_layer.html",
+                "thumbnail": "chapter02_04_image_layer.png"
+            },
+            {
+                "title": "Layers and resolutions",
+                "description": "Visualizing layers depending on resolution",
+                "url": "chapter02_05_layer_resolution.html",
+                "thumbnail": "chapter02_05_layer_resolution.png"
+            },
+            {
+                "title": "Heatmap Layers",
+                "description": "Create hetmap from vector data",
+                "url": "chapter02_06_heatmap_layer.html",
+                "thumbnail": "chapter02_06_heatmap_layer.png"
+            }
+        ]
+    },
+    {
+        "title": "Data source and formats",
+        "samples": [
+            {
+                "title": "Tile providers",
+                "description": "Some tile providers supported by OpenLayers3",
+                "url": "chapter03_01_tile_providers.html",
+                "thumbnail": "chapter03_01_tile_providers.png"
+            },
+            {
+                "title": "Reading WMS capabilities",
+                "description": "How to read WMS server capabilities",
+                "url": "chapter03_09_wmscapabilities.html"
+            },
+            {
+                "title": "Loading data from a WMS server ",
+                "description": "Accessing a WMS server",
+                "url": "chapter03_05_wmssource.html",
+                "thumbnail": "chapter03_05_wmssource.png"
+            },
+            {
+                "title": "WMTS source",
+                "description": "Requesting a WMTS server",
+                "url": "chapter03_02_wmts_source.html",
+                "thumbnail": "chapter03_02_wmts_source.png"
+            },
+            {
+                "title": "Vector source",
+                "description": "Initialize a vector source using different ways",
+                "url": "chapter03_03_vector_source.html",
+                "thumbnail": "chapter03_03_vector_source.png"
+            },
+            {
+                "title": "Working with ImageCanvas",
+                "description": "Rendering information on a HTML5 canvas element",
+                "url": "chapter03_04_imagecanvas.html",
+                "thumbnail": "chapter03_04_imagecanvas.png"
+            },
+            {
+                "title": "Rendering vector as raster",
+                "description": "Rendering vector information as raster to improve performance",
+                "url": "chapter03_06_vector_as_raster.html",
+                "thumbnail": "chapter03_06_vector_as_raster.png"
+            },
+            {
+                "title": "Requesting a WFS server",
+                "description": "How to access data on a WFS server",
+                "url": "chapter03_07_query_wfs.html",
+                "thumbnail": "chapter03_07_query_wfs.png"
+            },
+            {
+                "title": "Working with loading strategies",
+                "description": "How to access data on a WFS server",
+                "url": "chapter03_08_loading_strategies.html",
+                "thumbnail": "chapter03_08_loading_strategies.png"
+            },
+            {
+                "title": "Reading and writing features",
+                "description": "Show how to read and write features to a given data format",
+                "url": "chapter03_10_reading_writing_features.html",
+                "thumbnail": "chapter03_10_reading_writing_features.png"
+            }
+        ]
+    },
+    {
+        "title": "Vector layers",
+        "samples": [
+            {
+                "title": "Playing with geometries",
+                "description": "Demonstrate how we can create geometries programmatically",
+                "url": "chapter04_01_geometries.html"
+            },
+            {
+                "title": "Creating features programmatically",
+                "description": "This example shows how we can create features programmatically without the need of a source class",
+                "url": "chapter04_02_creating_features.html",
+                "thumbnail": "chapter04_02_creating_features.png"
+            },
+            {
+                "title": "Styling",
+                "description": "Basic styling of fill and stroke",
+                "url": "chapter04_03_styling.html",
+                "thumbnail": "chapter04_03_styling.png"
+            },
+            {
+                "title": "Icon styling",
+                "description": "Show the use of images to style features",
+                "url": "chapter04_05_icons.html",
+                "thumbnail": "chapter04_05_icons.png"
+            },
+            {
+                "title": "Text within styles",
+                "description": "Using text within features style",
+                "url": "chapter04_06_text_style.html",
+                "thumbnail": "chapter04_06_text_style.png"
+            },
+            {
+                "title": "Working with style functions",
+                "description": "Style features through style functions",
+                "url": "chapter04_07_style_functions.html",
+                "thumbnail": "chapter04_07_style_functions.png"
+            },
+            {
+                "title": "Managing features",
+                "description": "Describe how to handle features programmatically",
+                "url": "chapter04_04_managing_features.html",
+                "thumbnail": "chapter04_04_managing_features.png"
+            }
+        ]
+    },
+    {
+        "title": "Events, listeners and properties",
+        "samples": [
+            {
+                "title": "Events, listeners and properties",
+                "description": "See the basics of events, listeners and properties in action",
+                "url": "chapter05_01_events.html"
+            },
+            {
+                "title": "Synchronizing two map views",
+                "description": "See how we can synchronize two map view to show the same location and resolution",
+                "url": "chapter05_02_synchronize_maps.html",
+                "thumbnail": "chapter05_02_synchronize_maps.png"
+            },
+            {
+                "title": "Showing the mouse location",
+                "description": "Get and show the current mouse location",
+                "url": "chapter05_03_mouse_position.html",
+                "thumbnail": "chapter05_03_mouse_position.png"
+            },
+            {
+                "title": "Listening for changes on vector data",
+                "description": "Know when data source has read data",
+                "url": "chapter05_04_changes_vector_data.html",
+                "thumbnail": "chapter05_04_changes_vector_data.png"
+            },
+            {
+                "title": "Styling features under the pointer",
+                "description": "Detects pointer move events and retrieves current features.",
+                "url": "chapter05_05_features_under_pointer.html",
+                "thumbnail": "chapter05_05_features_under_pointer.png"
+            }
+        ]
+    },
+    {
+        "title": "Overlays",
+        "samples": [
+            {
+                "title": "A basic overlay",
+                "description": "Demonstrates how to create a basic overlay from a HTML element.",
+                "url": "chapter06_01_basic_overlay.html",
+                "thumbnail": "chapter06_01_basic_overlay.png"
+            },
+            {
+                "title": "Using overlays as markers",
+                "description": "Shows how we can use overlays to implement markers.",
+                "url": "chapter06_02_markers_overlays.html",
+                "thumbnail": "chapter06_02_markers_overlays.png"
+            }
+        ]
+    },
+    {
+        "title": "Controls and Interactions",
+        "samples": [
+            {
+                "title": "Static map",
+                "description": "A map whose view can not by modified.",
+                "url": "chapter07_02_static_map.html",
+                "thumbnail": "chapter07_02_static_map.png"
+            },
+            {
+                "title": "Playing with controls",
+                "description": "Shows how to use most of the controls offered by OpenLayers3.",
+                "url": "chapter07_03_playing_controls.html",
+                "thumbnail": "chapter07_03_playing_controls.png"
+            },
+            {
+                "title": "Custom control",
+                "description": "Demonstrates how we can create a custom control.",
+                "url": "chapter07_01_custom_control.html",
+                "thumbnail": "chapter07_01_custom_control.png"
+            },
+            {
+                "title": "Feature overlay",
+                "description": "Basic example on how to create a feature overlay",
+                "url": "chapter07_04_featureoverlay.html",
+                "thumbnail": "chapter07_04_featureoverlay.png"
+            },
+            {
+                "title": "Managing interactions",
+                "description": "Sample on how to add/remove and activate interactions",
+                "url": "chapter07_05_managing_interactions.html",
+                "thumbnail": "chapter07_05_managing_interactions.png"
+            },
+            {
+                "title": "Selecting features",
+                "description": "Demonstrates how to use and configure the select interaction",
+                "url": "chapter07_06_selecting_features.html",
+                "thumbnail": "chapter07_06_selecting_features.png"
+            },
+            {
+                "title": "Editing features",
+                "description": "Basic vector data editor",
+                "url": "chapter07_07_editing_features.html",
+                "thumbnail": "chapter07_07_editing_features.png"
+            },
+            {
+                "title": "Selecting features within a vector box",
+                "description": "How to select features that intersects with a vector box",
+                "url": "chapter07_08_selecting_features_box.html",
+                "thumbnail": "chapter07_08_selecting_features_box.png"
+            }
+        ]
+    }
+]

@@ -1,192 +1,1 @@
-<!DOCTYPE html>
-<html>
-<head>
-    <title>Layer group example</title>
-    <script src="https://code.jquery.com/jquery-1.11.2.min.js"></script>
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
-    <link rel="stylesheet" href="http://openlayers.org/en/v3.10.1/css/ol.css" type="text/css">
-    <script src="http://openlayers.org/en/v3.10.1/build/ol.js"></script>
-
-    <style>
-        #layertree li > span {
-            cursor: pointer;
-        }
-
-        #layertree li > span:hover {
-            color: red;
-        }
-    </style>
-</head>
-<body>
-<div class="container-fluid">
-
-    <div class="row-fluid">
-        <div class="col-lg-10">
-            <div id="map" class="map"></div>
-        </div>
-        <div id="layertree" class="col-lg-2">
-            <ul>
-                <li><span>Basemaps</span>
-                    <fieldset id="layer0">
-                        <label class="checkbox" for="visible0">
-                            <input id="visible0" class="visible" type="checkbox"/>visibility
-                        </label>
-                        <label>opacity</label>
-                        <input class="opacity" type="range" min="0" max="1" step="0.01"/>
-                    </fieldset>
-                    <ul>
-                        <li><span>Satellite Map</span>
-                            <fieldset id="layer00">
-                                <label class="checkbox" for="visible00">
-                                    <input id="visible00" class="visible" type="checkbox"/>visibility
-                                </label>
-                                <button id="btf00" class="btf" type="button"/>Bring to Front</button>
-                                <label>opacity</label>
-                                <input class="opacity" type="range" min="0" max="1" step="0.01"/>
-                            </fieldset>
-                        </li>
-                        <li><span>Stamen Map</span>
-                            <fieldset id="layer01">
-                                <label class="checkbox" for="visible01">
-                                    <input id="visible01" class="visible" type="checkbox"/>visibility
-                                </label>
-                                <label class="checkbox" for="btf01">
-                                    <input id="btf01" class="btf" type="button"/>Bring to Front
-                                </label>
-
-                                <label>opacity</label>
-                                <input class="opacity" type="range" min="0" max="1" step="0.01"/>
-                            </fieldset>
-                        </li>
-                    </ul>
-                </li>
-                <li><span>Layers</span>
-                    <fieldset id="layer1">
-                        <label class="checkbox" for="visible1">
-                            <input id="visible1" class="visible" type="checkbox"/>visibility
-                        </label>
-                        <label>opacity</label>
-                        <input class="opacity" type="range" min="0" max="1" step="0.01"/>
-                    </fieldset>
-                    <ul>
-                        <li><span>Food insecurity layer</span>
-                            <fieldset id="layer10">
-                                <label class="checkbox" for="visible10">
-                                    <input id="visible10" class="visible" type="checkbox"/>visibility
-                                </label>
-                                <label class="checkbox" for="btf10">
-                                    <input id="btf10" class="btf" type="button"/>Bring to Front
-                                </label>
-                                <label>opacity</label>
-                                <input class="opacity" type="range" min="0" max="1" step="0.01"/>
-                            </fieldset>
-                        </li>
-                        <li><span>World borders layer</span>
-                            <fieldset id="layer11">
-                                <label class="checkbox" for="visible11">
-                                    <input id="visible11" class="visible" type="checkbox"/>visibility
-                                </label>
-                                <label class="checkbox" for="btf11">
-                                    <input id="btf11" class="btf" type="button"/>Bring to Front
-                                </label>
-                                <label>opacity</label>
-                                <input class="opacity" type="range" min="0" max="1" step="0.01"/>
-                            </fieldset>
-                        </li>
-                    </ul>
-                </li>
-            </ul>
-        </div>
-    </div>
-
-</div>
-<script>
-    var map = new ol.Map({
-        layers: [
-            new ol.layer.Group({
-                layers: [
-                    new ol.layer.Tile({
-                        title: 'Satellite',
-                        type: 'base',
-                        visible: true,
-                        source: new ol.source.MapQuest({
-                            layer: 'sat'
-                        })
-                    }),
-                    new ol.layer.Tile({
-                        title: 'Stamen - Toner Lite',
-                        type: 'base',
-                        visible: false,
-                        source: new ol.source.Stamen({
-                            layer: 'toner-lite'
-                        })
-                    })
-                ]
-            }),
-            new ol.layer.Group({
-                layers: [
-                    new ol.layer.Tile({
-                        title: 'test title',
-                        source: new ol.source.TileJSON({
-                            url: 'http://api.tiles.mapbox.com/v3/' +
-                            'mapbox.20110804-hoa-foodinsecurity-3month.jsonp',
-                            crossOrigin: 'anonymous'
-                        })
-                    }),
-                    new ol.layer.Tile({
-                        title: 'test title 2',
-                        source: new ol.source.TileJSON({
-                            url: 'http://api.tiles.mapbox.com/v3/' +
-                            'mapbox.world-borders-light.jsonp',
-                            crossOrigin: 'anonymous'
-                        })
-                    })
-                ]
-            })
-        ],
-        target: 'map',
-        view: new ol.View({
-            center: ol.proj.fromLonLat([37.40570, 8.81566]),
-            zoom: 4
-        })
-    });
-
-    function bindInputs(layerid, layer) {
-        var visibilityInput = $(layerid + ' input.visible');
-        visibilityInput.on('change', function () {
-            layer.setVisible(this.checked);
-        });
-        visibilityInput.prop('checked', layer.getVisible());
-
-        var bringToFrontInput = $(layerid + ' input.btf');
-        bringToFrontInput.on('click', function () {
-            map.getLayers().insertAt(layer, 10);
-        });
-
-
-        var opacityInput = $(layerid + ' input.opacity');
-        opacityInput.on('input change', function () {
-            layer.setOpacity(parseFloat(this.value));
-        });
-        opacityInput.val(String(layer.getOpacity()));
-    }
-    map.getLayers().forEach(function (layer, i) {
-        bindInputs('#layer' + i, layer);
-        if (layer instanceof ol.layer.Group) {
-            layer.getLayers().forEach(function (sublayer, j) {
-                bindInputs('#layer' + i + j, sublayer);
-                //console.log('#layer' + i + j);
-            });
-        }
-    });
-
-    $('#layertree li > span').click(function () {
-        $(this).siblings('fieldset').toggle();
-    }).siblings('fieldset').hide();
-
-
-
-</script>
-</body>
-</html>
+<!DOCTYPE html><html><head>    <title>Layer group example</title>    <script src="https://code.jquery.com/jquery-1.11.2.min.js"></script>    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>    <link rel="stylesheet" href="http://openlayers.org/en/v3.10.1/css/ol.css" type="text/css">    <script src="http://openlayers.org/en/v3.4.0/build/ol.js"></script>    <style>        #layertree li > span {            cursor: pointer;        }        #layertree li > span:hover {            color: red;        }    </style></head><body><div class="container-fluid">    <div class="row-fluid">        <div class="col-lg-10">            <div id="map" class="map"></div>        </div>        <div id="layertree" class="col-lg-2">            <ul>                <li><span>Basemaps</span>                    <fieldset id="layer0">                        <label class="checkbox" for="visible0">                            <input id="visible0" class="visible" type="checkbox"/>visibility                        </label>                        <label>opacity</label>                        <input class="opacity" type="range" min="0" max="1" step="0.01"/>                    </fieldset>                    <ul>                        <li><span>Satellite Map</span>                            <fieldset id="layer00">                                <label class="checkbox" for="visible00">                                    <input id="visible00" class="visible" type="checkbox"/>visibility                                </label>                                <button id="btf00" class="btf" type="button"/>                                Bring to Front</button>                                <label>opacity</label>                                <input class="opacity" type="range" min="0" max="1" step="0.01"/>                            </fieldset>                        </li>                        <li><span>Stamen Map</span>                            <fieldset id="layer01">                                <label class="checkbox" for="visible01">                                    <input id="visible01" class="visible" type="checkbox"/>visibility                                </label>                                <label class="checkbox" for="btf01">                                    <input id="btf01" class="btf" type="button"/>Bring to Front                                </label>                                <label>opacity</label>                                <input class="opacity" type="range" min="0" max="1" step="0.01"/>                            </fieldset>                        </li>                    </ul>                </li>                <li><span>Layers</span>                    <fieldset id="layer1">                        <label class="checkbox" for="visible1">                            <input id="visible1" class="visible" type="checkbox"/>visibility                        </label>                        <label>opacity</label>                        <input class="opacity" type="range" min="0" max="1" step="0.01"/>                    </fieldset>                    <ul>                        <li><span>Food insecurity layer</span>                            <fieldset id="layer10">                                <label class="checkbox" for="visible10">                                    <input id="visible10" class="visible" type="checkbox"/>visibility                                </label>                                <label class="checkbox" for="btf10">                                    <input id="btf10" class="btf" type="button"/>Bring to Front                                </label>                                <label>opacity</label>                                <input class="opacity" type="range" min="0" max="1" step="0.01"/>                            </fieldset>                        </li>                        <li><span>World borders layer</span>                            <fieldset id="layer11">                                <label class="checkbox" for="visible11">                                    <input id="visible11" class="visible" type="checkbox"/>visibility                                </label>                                <label class="checkbox" for="btf11">                                    <input id="btf11" class="btf" type="button"/>Bring to Front                                </label>                                <label>opacity</label>                                <input class="opacity" type="range" min="0" max="1" step="0.01"/>                            </fieldset>                        </li>                    </ul>                </li>            </ul>        </div>    </div></div><script>    var map = new ol.Map({        layers: [            new ol.layer.Group({                layers: [                    new ol.layer.Tile({                        title: 'Satellite',                        type: 'base',                        visible: true,                        source: new ol.source.MapQuest({                            layer: 'sat'                        })                    }),                    new ol.layer.Tile({                        title: 'Stamen - Toner Lite',                        type: 'base',                        visible: false,                        source: new ol.source.Stamen({                            layer: 'toner-lite'                        })                    })                ]            }),            new ol.layer.Group({                layers: [                    new ol.layer.Tile({                        title: 'test title',                        source: new ol.source.TileJSON({                            url: 'http://api.tiles.mapbox.com/v3/' +                            'mapbox.20110804-hoa-foodinsecurity-3month.jsonp',                            crossOrigin: 'anonymous'                        })                    }),                    new ol.layer.Tile({                        title: 'test title 2',                        source: new ol.source.TileJSON({                            url: 'http://api.tiles.mapbox.com/v3/' +                            'mapbox.world-borders-light.jsonp',                            crossOrigin: 'anonymous'                        })                    })                ]            })        ],        target: 'map',        view: new ol.View({            center: ol.proj.fromLonLat([37.40570, 8.81566]),            zoom: 4        })    });    function bindInputs(layerid, layer) {        var visibilityInput = $(layerid + ' input.visible');        visibilityInput.on('change', function () {            layer.setVisible(this.checked);        });        visibilityInput.prop('checked', layer.getVisible());        var bringToFrontInput = $(layerid + ' input.btf');        bringToFrontInput.on('click', function () {            map.getLayers().insertAt(layer, 10);        });        var opacityInput = $(layerid + ' input.opacity');        opacityInput.on('input change', function () {            layer.setOpacity(parseFloat(this.value));        });        opacityInput.val(String(layer.getOpacity()));    }    map.getLayers().forEach(function (layer, i) {        bindInputs('#layer' + i, layer);        if (layer instanceof ol.layer.Group) {            layer.getLayers().forEach(function (sublayer, j) {                bindInputs('#layer' + i + j, sublayer);                //console.log('#layer' + i + j);            });        }    });    $('#layertree li > span').click(function () {        $(this).siblings('fieldset').toggle();    }).siblings('fieldset').hide();</script></body></html>
