@@ -1,0 +1,37 @@
+{
+  "cases": {
+    "fire_regimes": {
+      "layers":[
+        "drought",
+        "landcover"
+      ]
+    },
+    "water_resources": {
+      "layers":[
+      ]
+    }
+  },
+  "layers": {
+    "drought": {
+      "type": "WMS",
+      "id": "drought",
+      "title": "Current Drought",
+      "description": "Current Drought <br />Source:US Drought Monitor <br />Regional-scale drought status (updated every Thursday).",
+      "url": "http://some-url.com",
+      "options": {},
+      "defaults": {
+        "visible":true
+      }
+    },
+    "landcover": {
+      "type": "ArcGISRest",
+      "id": "landcover",
+      "title": "Land Cover",
+      "description": "This is a description for land cover.",
+      "url": "http://raster.nationalmap.gov/arcgis/rest/services/LandCover/USGS_EROS_LandCover_NLCD/MapServer",
+      "defaults": {
+        "visible":true
+      }
+    }
+  }
+}
