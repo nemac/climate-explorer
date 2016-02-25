@@ -91,7 +91,7 @@ App.prototype.createLegend = function() {
   var layerIds = this.data.cases[this.page].layers;
 
   $.each(layerIds, function(i, id) {
-    var tmpl = '<li class="legend">'+
+    var tmpl = '<li class="legend" id="legend-'+id+'">'+
       '<div class="text">'+self.data.layers[id].title+' <a href="#info-drought" class="help"><span class="icon icon-help"></span></a></div>'+
         '<ul>'+
           '<li><span class="color" style="background-color: #2a0023;"></span><span class="tooltip">&gt; 105</span></li>'+
@@ -114,7 +114,28 @@ App.prototype.createLegend = function() {
     $('#case-menu').append(tmpl);
   });
 
-}
+};
+
+
+
+
+
+
+App.prototype.reorderLayers = function() {
+  var self = this;
+  var layer;
+  var ids = $('.legend').map(function() { return this.id; }).get().slice(0);
+  $.each(ids.reverse(), function(i, id) {
+    id = id.replace('legend-', '');
+    self.map.getLayers().forEach(function(l) {
+      if (l.get('layer_id') == id) {
+        layer = l;
+        layer.setZIndex(i);
+      }
+    });
+  });
+};
+
 
 
 
@@ -155,11 +176,13 @@ App.prototype.addLayers = function() {
         source: new ol.source.TileArcGISRest({
           url: 'http://raster.nationalmap.gov/arcgis/rest/services/LandCover/USGS_EROS_LandCover_NLCD/MapServer',
         })
-      })
+      });
     }
+
+    layer.set('layer_id', id);
 
     self.map.addLayer(layer);
 
   });
 
-}
+};
