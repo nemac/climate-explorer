@@ -393,7 +393,8 @@
                 $('body').close_layer_info();
             },
             deactivate: function (event, ui) {
-                console.log('sortable menu callback');
+              console.log('sortable menu callback');
+              app.reorderLayers();  
             }
         });
 
