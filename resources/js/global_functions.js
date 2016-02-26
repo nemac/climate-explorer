@@ -226,17 +226,20 @@
 
         // zoom
 
+        $('.zoom-slider').attr('data-value', 4);
         $('.zoom-slider').slider({
             orientation: "vertical",
             range: false,
             min: 1,
             max: 15,
-            value: 1,
-            change: function (event, ui) {
-                $(this).attr('data-value', ui.value);
+            value: 4,
+            slide: function( event, ui ) {
+              $(this).attr('data-value', ui.value);
+              app.setZoom(ui.value);
             },
-            stop: function (event, ui) {
-                $(this).attr('data-value', ui.value);
+            change: function (event, ui) {
+              $(this).attr('data-value', ui.value);
+              app.setZoom(ui.value);
             }
         });
 
@@ -393,8 +396,7 @@
                 $('body').close_layer_info();
             },
             deactivate: function (event, ui) {
-              console.log('sortable menu callback');
-              app.reorderLayers();  
+              app.reorderLayers();
             }
         });
 

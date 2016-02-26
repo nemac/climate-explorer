@@ -6,17 +6,18 @@ var App = function(page) {
 
 
 
+
 /*
 * Creates map
 *
 *
 */
 App.prototype.createMap = function() {
-  var projection = new ol.proj.Projection({
-    //code: 'EPSG:900913',
-    code: 'EPSG:3587'
-    //units: 'm'
+  var view = new ol.View({
+    center: ol.proj.transform([-105.41, 32.82], 'EPSG:4326', 'EPSG:3857'),
+    zoom: 4
   });
+
   this.map = new ol.Map({
     target: 'fire-map',
     layers: [
@@ -24,14 +25,7 @@ App.prototype.createMap = function() {
         source: new ol.source.MapQuest({layer: 'osm'})
       })
     ],
-    view: new ol.View({
-      center: ol.proj.transform([-105.41, 32.82], 'EPSG:4326', 'EPSG:3857'),
-      zoom: 4
-      // /center: [-20037508.34,-20037508.34,20037508.34,20037508.34],
-      //center: [-10997148, 4569099],
-      //projection: projection,
-      //zoom: 4.5
-    })
+    view: view
   });
 
   this.getData();
@@ -77,7 +71,7 @@ App.prototype.wireEvents = function() {
       $(this).parents('.legend').next('.legend').open_layer_info();
   });
 
-}
+};
 
 
 
@@ -119,8 +113,23 @@ App.prototype.createLegend = function() {
 
 
 
+/*
+* Sets zoom on map
+* Triggered from custom zoom control in global_functions.js
+*
+*/
+App.prototype.setZoom = function(zoom) {
+  this.map.getView().setZoom(zoom);
+};
 
 
+
+
+/*
+* changes layer order
+* Triggered from drag and drop legend handler in global_functions.js
+*
+*/
 App.prototype.reorderLayers = function() {
   var self = this;
   var layer;
