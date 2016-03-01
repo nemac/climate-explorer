@@ -234,6 +234,14 @@
             });
         }
         
+        var locations = [
+          'Seattle'
+        ];
+        
+        $('#location-search input').autocomplete({
+          source: locations
+        });
+        
         // LOCATION DATA ACCORDIONS
 
         // set up each section
