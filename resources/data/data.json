@@ -3,7 +3,8 @@
     "fire_regimes": {
       "layers":[
         "drought",
-        "landcover"
+        "landcover",
+        "rivers_streams"
       ]
     },
     "water_resources": {
@@ -29,6 +30,16 @@
       "title": "Land Cover",
       "description": "This is a description for land cover.",
       "url": "http://raster.nationalmap.gov/arcgis/rest/services/LandCover/USGS_EROS_LandCover_NLCD/MapServer",
+      "defaults": {
+        "visible":true
+      }
+    },
+    "rivers_streams": {
+      "type": "WMS",
+      "id": "rivers_streams",
+      "title": "Rivers and Streams",
+      "description": "USGS National Hydrology Dataset",
+      "url": "http://basemap.nationalmap.gov/arcgis/services/USGSHydroNHD/MapServer/WMSServer",
       "defaults": {
         "visible":true
       }

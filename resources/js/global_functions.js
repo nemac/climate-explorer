@@ -371,6 +371,8 @@
             change: function (event, ui) {
               $(this).attr('data-value', ui.value);
               app.setZoom(ui.value);
+
+              
             }
         });
 
