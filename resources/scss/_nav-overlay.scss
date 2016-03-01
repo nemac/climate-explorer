@@ -61,7 +61,7 @@
     position: absolute;
     top: 5%;
     width: 100%;
-    z-index: 5;
+    z-index: 3;
     
     li {
       float: left;
@@ -239,7 +239,7 @@
     background: transparentize($blue1, 0.5);
     backdrop-filter: blur(10px);
     -webkit-backdrop-filter: blur(10px);
-    z-index: 3;
+    z-index: 4;
     
     .nav-detail-item {
       display: none;

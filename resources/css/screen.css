@@ -2806,7 +2806,7 @@ h6 {
   position: absolute;
   top: 5%;
   width: 100%;
-  z-index: 5;
+  z-index: 3;
 }
 #nav-overlay #nav-controls li {
   float: left;
@@ -2935,7 +2935,7 @@ h6 {
   background: rgba(0, 88, 207, 0.5);
   backdrop-filter: blur(10px);
   -webkit-backdrop-filter: blur(10px);
-  z-index: 3;
+  z-index: 4;
 }
 #nav-overlay .nav-detail .nav-detail-item {
   display: none;
@@ -4205,6 +4205,87 @@ h6 {
   text-align: right;
   line-height: 1.5rem;
   color: #aaa;
+}
+
+#location-temperature .accent-color {
+  color: #f5442d;
+}
+#location-temperature .accent-background {
+  background-color: #f5442d;
+}
+#location-temperature .accent-border {
+  border-color: #f5442d;
+}
+#location-temperature .data-options .accent-color {
+  color: #5f5f5f;
+}
+#location-temperature .data-options .accent-border {
+  border-left-color: #ebebeb;
+  border-bottom-color: #ebebeb;
+}
+#location-temperature .data-options .active.accent-border {
+  border-left-color: #f5442d;
+  border-bottom-color: #ebebeb;
+}
+#location-temperature .data-options .active .accent-color {
+  color: #f5442d;
+}
+#location-temperature button {
+  color: #f5442d;
+}
+
+#location-precipitation .accent-color {
+  color: #0058cf;
+}
+#location-precipitation .accent-background {
+  background-color: #0058cf;
+}
+#location-precipitation .accent-border {
+  border-color: #0058cf;
+}
+#location-precipitation .data-options .accent-color {
+  color: #5f5f5f;
+}
+#location-precipitation .data-options .accent-border {
+  border-left-color: #ebebeb;
+  border-bottom-color: #ebebeb;
+}
+#location-precipitation .data-options .active.accent-border {
+  border-left-color: #0058cf;
+  border-bottom-color: #ebebeb;
+}
+#location-precipitation .data-options .active .accent-color {
+  color: #0058cf;
+}
+#location-precipitation button {
+  color: #0058cf;
+}
+
+#location-drought .accent-color {
+  color: #904848;
+}
+#location-drought .accent-background {
+  background-color: #904848;
+}
+#location-drought .accent-border {
+  border-color: #904848;
+}
+#location-drought .data-options .accent-color {
+  color: #5f5f5f;
+}
+#location-drought .data-options .accent-border {
+  border-left-color: #ebebeb;
+  border-bottom-color: #ebebeb;
+}
+#location-drought .data-options .active.accent-border {
+  border-left-color: #904848;
+  border-bottom-color: #ebebeb;
+}
+#location-drought .data-options .active .accent-color {
+  color: #904848;
+}
+#location-drought button {
+  color: #904848;
 }
 
 .page-type-impact #main-content-wrap {

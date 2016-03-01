@@ -1263,6 +1263,126 @@ h6 {
   }
 }
 
+#location-temperature {
+  .accent-color {
+    color: $orange1;
+  }
+  
+  .accent-background {
+    background-color: $orange1;
+  }
+  
+  .accent-border {
+    border-color: $orange1;
+  }
+  
+  .data-options {
+    .accent-color {
+      color: $grey1;
+    }
+    
+    .accent-border {
+      border-left-color: $grey2;
+      border-bottom-color: $grey2;
+    }
+    
+    .active {
+      &.accent-border {
+        border-left-color: $orange1;
+        border-bottom-color: $grey2;
+      }
+      
+      .accent-color {
+        color: $orange1;
+      }
+    }
+  }
+  
+  button {
+    color: $orange1;
+  }
+}
+
+#location-precipitation {
+  .accent-color {
+    color: $blue1;
+  }
+  
+  .accent-background {
+    background-color: $blue1;
+  }
+  
+  .accent-border {
+    border-color: $blue1;
+  }
+  
+  .data-options {
+    .accent-color {
+      color: $grey1;
+    }
+    
+    .accent-border {
+      border-left-color: $grey2;
+      border-bottom-color: $grey2;
+    }
+    
+    .active {
+      &.accent-border {
+        border-left-color: $blue1;
+        border-bottom-color: $grey2;
+      }
+      
+      .accent-color {
+        color: $blue1;
+      }
+    }
+  }
+  
+  button {
+    color: $blue1;
+  }
+}
+
+#location-drought {
+  .accent-color {
+    color: $brown1;
+  }
+  
+  .accent-background {
+    background-color: $brown1;
+  }
+  
+  .accent-border {
+    border-color: $brown1;
+  }
+  
+  .data-options {
+    .accent-color {
+      color: $grey1;
+    }
+    
+    .accent-border {
+      border-left-color: $grey2;
+      border-bottom-color: $grey2;
+    }
+    
+    .active {
+      &.accent-border {
+        border-left-color: $brown1;
+        border-bottom-color: $grey2;
+      }
+      
+      .accent-color {
+        color: $brown1;
+      }
+    }
+  }
+  
+  button {
+    color: $brown1;
+  }
+}
+
 // IMPACTS
 
 .page-type-impact {

@@ -196,7 +196,7 @@
             });
         }
         
-        $('#nav-variables ol a, #vars-menu .about-link a').click(function(e) {
+        $('#nav-variables ol a, .nav-detail-link').click(function(e) {
           e.preventDefault();
           $(this).open_nav_detail();
         });
