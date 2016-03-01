@@ -1302,6 +1302,65 @@ h6 {
   }
 }
 
+#location-search {
+  position: absolute;
+  top: 20px;
+  right: 100px;
+  height: 60px;
+  padding: 15px;
+  background: transparentize($white, 0.2);
+  z-index: 1;
+  
+  input {
+    font: 1.25rem/1em $sans-book;
+    color: $blue1;
+    border: none;
+    background: transparent;
+    
+    &::-webkit-input-placeholder {
+      color: $blue2;
+      padding-top: 3px;
+      @include transition(0.25s);
+    }
+    
+    &:-moz-placeholder {
+      color: $blue2;
+      padding-top: 3px;
+      @include transition(0.25s);
+    }
+    
+    &::-moz-placeholder {
+      color: $blue2;
+      padding-top: 3px;
+      @include transition(0.25s);
+    }
+    
+    &:-ms-input-placeholder {
+      color: $blue2;
+      padding-top: 3px;
+      @include transition(0.25s);
+    }
+    
+    &:focus {
+      &::-webkit-input-placeholder {
+        color: transparentize($blue2, 0.5);
+      }
+      
+      &:-moz-placeholder {
+        color: transparentize($blue2, 0.5);
+      }
+      
+      &::-moz-placeholder {
+        color: transparentize($blue2, 0.5);
+      }
+      
+      &:-ms-input-placeholder {
+        color: transparentize($blue2, 0.5);
+      }
+    }
+  }
+}
+
 #page-nav {
   width: 65%;
   padding-top: 20px;
