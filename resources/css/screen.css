@@ -3525,6 +3525,25 @@ h6 {
   width: 60px;
   height: 60px;
 }
+#page-home #logos #h7 {
+  width: auto;
+  padding: 10px;
+  font-size: 0.75rem;
+  line-height: 1.25em;
+  text-align: left;
+  color: #233a70;
+}
+#page-home #logos #h7 span {
+  display: block;
+  float: left;
+}
+#page-home #logos #h7 .logo {
+  width: 30px;
+  height: 30px;
+  margin: 2px 8px 0 0;
+  background: url(../img/habitatseven.png) no-repeat center;
+  background-size: 100% auto;
+}
 
 .page-type-location #main-content-wrap {
   padding: 2%;

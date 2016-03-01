@@ -1256,6 +1256,32 @@ h6 {
       width: 60px;
       height: 60px;
     }
+    
+    #h7 {
+      width: auto;
+      padding: 10px;
+      font-size: 0.75rem;
+      line-height: 1.25em;
+      text-align: left;
+      color: $blue2;
+      
+      span {
+        display: block;
+        float: left;
+      }
+      
+      .logo {
+        width: 30px;
+        height: 30px;
+        margin: 2px 8px 0 0;
+        background: url(../img/habitatseven.png) no-repeat center;
+        background-size: 100% auto;
+      }
+      
+      .text {
+
+      }
+    }
   }
 }
 
