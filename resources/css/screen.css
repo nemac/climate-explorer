@@ -2508,6 +2508,7 @@ h6 {
 
 .button {
   position: relative;
+  display: inline-block;
   padding: 20px 40px;
   font: 1rem/1em "CESans-Heavy", Helvetica, "Helvetica Neue", Arial, sans-serif;
   border: 10px solid transparent;
@@ -2590,12 +2591,21 @@ h6 {
   -webkit-transform: rotate(45deg);
   transform: rotate(45deg);
 }
+.button.color-white {
+  color: #fff;
+}
+.button.color-white:before, .button.color-white:after {
+  background: #fff;
+}
 .button.border-white {
   border-color: #fff;
   color: #fff;
 }
 .button.border-white:before, .button.border-white:after {
   background: #fff;
+}
+.button.border-trans {
+  border-color: transparent;
 }
 .button.border-none {
   border: none;
@@ -2608,7 +2618,7 @@ h6 {
 }
 .button.hover-bg-white:hover {
   background: #fff;
-  color: #000;
+  color: #0058cf;
   mix-blend-mode: screen;
 }
 .button.hover-bg-white:hover:before, .button.hover-bg-white:hover:after {
@@ -2619,6 +2629,9 @@ h6 {
 }
 .button.blend-screen:before, .button.blend-screen:after {
   background: #000;
+}
+.button.blend-screen:hover {
+  color: #000;
 }
 
 .icon {
@@ -2709,8 +2722,37 @@ h6 {
   border: 20px solid #fff;
   color: #fff;
   z-index: 600;
-  backdrop-filter: blur(6px);
-  -webkit-backdrop-filter: blur(6px);
+  backdrop-filter: blur(3px);
+  -webkit-backdrop-filter: blur(3px);
+  /*
+  
+  .nav-controls {
+    position: static;
+    
+    a {
+      position: absolute;
+      top: 10%;
+      min-width: 15%;
+      padding-left: 20px;
+      padding-right: 50px;
+      z-index: 3;
+      
+      &:before,
+      &:after {
+        right: 20px;
+      }
+      
+      &.nav-left {
+        left: 0;
+        border-left: none;
+      }
+      
+      &.nav-right {
+        right: 0;
+        border-right: none;
+      }
+    }
+  }*/
 }
 #nav-overlay #nav-close {
   position: fixed;
@@ -2760,27 +2802,15 @@ h6 {
 #nav-overlay #nav-impacts .slide-bg {
   background-image: url(../img/bg_contours-orange.png);
 }
-#nav-overlay .nav-controls {
-  position: static;
-}
-#nav-overlay .nav-controls a {
+#nav-overlay #nav-controls {
   position: absolute;
-  top: 10%;
-  min-width: 15%;
-  padding-left: 20px;
-  padding-right: 50px;
-  z-index: 3;
+  top: 5%;
+  width: 100%;
+  z-index: 5;
 }
-#nav-overlay .nav-controls a:before, #nav-overlay .nav-controls a:after {
-  right: 20px;
-}
-#nav-overlay .nav-controls a.nav-left {
-  left: 0;
-  border-left: none;
-}
-#nav-overlay .nav-controls a.nav-right {
-  right: 0;
-  border-right: none;
+#nav-overlay #nav-controls li {
+  float: left;
+  width: 25%;
 }
 #nav-overlay .nav-content-wrap {
   position: absolute;
@@ -2894,6 +2924,37 @@ h6 {
   width: auto !important;
   margin: 0 0 10px 0;
   font: 300 1rem/1em Roboto, Helvetica, "Helvetica Neue", Arial, sans-serif;
+}
+#nav-overlay .nav-detail {
+  display: none;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 88, 207, 0.5);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  z-index: 3;
+}
+#nav-overlay .nav-detail .nav-detail-item {
+  display: none;
+  position: absolute;
+  top: 50%;
+  left: 20%;
+  width: 60%;
+  -moz-transform: translateY(-50%);
+  -ms-transform: translateY(-50%);
+  -webkit-transform: translateY(-50%);
+  transform: translateY(-50%);
+}
+#nav-overlay .nav-detail .nav-detail-item h3 {
+  font: 1.625rem/1em "CESans-Heavy", Helvetica, "Helvetica Neue", Arial, sans-serif;
+  margin: 0 0 40px 0;
+}
+#nav-overlay .nav-detail .nav-detail-item p {
+  margin: 0 0 20px 0;
+  line-height: 2em;
 }
 
 #viewport {
@@ -3552,6 +3613,16 @@ h6 {
   background-size: cover;
   background-attachment: fixed;
 }
+.page-type-location .page-splash {
+  color: #0058cf;
+}
+.page-type-location .page-splash .splash-text {
+  mix-blend-mode: normal;
+}
+.page-type-location .page-splash h3 {
+  margin: 0 0 3% 0;
+  color: #f5442d;
+}
 .page-type-location section {
   position: relative;
   margin: 0 0 3% 0;
@@ -3669,6 +3740,7 @@ h6 {
   margin-left: 4%;
   margin-left: calc(4% + 10px);
   border-top: 3px solid #0058cf;
+  color: #233a70;
   overflow: hidden;
   *zoom: 1;
   -moz-transition: 0.5s;
