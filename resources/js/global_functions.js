@@ -411,13 +411,13 @@
             opacity: 0.75,
             revert: 250,
             activate: function (event, ui) {
-                $('body').close_layer_info();
+              $('body').close_layer_info();
             },
             deactivate: function (event, ui) {
-                console.log('sortable menu callback');
+              app.reorderLayers();
             }
         });
-
+        
         $('#case-menu').disableSelection();
         
         // tooltip
@@ -473,22 +473,23 @@
 
         $('.split-pane').splitPane();
 
-<<<<<<< Updated upstream
         $('#case-menu').sortable({
-            axis: 'y',
-            placeholder: 'ui-state-highlight',
-            cancel: '.layer-info,.help',
-            containment: '#left-header',
-            cursor: 'move',
-            forcePlaceholderSize: true,
-            opacity: 0.75,
-            revert: 250,
-            activate: function (event, ui) {
-                $('body').close_layer_info();
-            },
-            deactivate: function (event, ui) {
-              app.reorderLayers();
-=======
+          axis: 'y',
+          placeholder: 'ui-state-highlight',
+          cancel: '.layer-info,.help',
+          containment: '#left-header',
+          cursor: 'move',
+          forcePlaceholderSize: true,
+          opacity: 0.75,
+          revert: 250,
+          activate: function (event, ui) {
+              $('body').close_layer_info();
+          },
+          deactivate: function (event, ui) {
+            app.reorderLayers();
+          }
+        });
+        
         // disable selection while dragging
 
         var mouse_down = false;
@@ -503,7 +504,6 @@
             if (mouse_down) {
                 //console.log('mouse down');
                 $('body').disableSelection();
->>>>>>> Stashed changes
             }
         });
         
