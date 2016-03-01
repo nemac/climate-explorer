@@ -808,7 +808,7 @@ h6 {
 }
 
 #page-nav {
-  width: 65%;
+  width: 60%;
   padding-top: 20px;
   margin-left: 4%;
   margin-left: calc(4% + 10px);
@@ -819,7 +819,7 @@ h6 {
   
   h4 {
     float: left;
-    width: 10%;
+    width: 15%;
     margin: 2px 0 0 0;
     font: 0.875rem/1.125rem $sans-heavy;
     text-transform: uppercase;
@@ -827,7 +827,7 @@ h6 {
   
   ul {
     float: left;
-    width: 90%;
+    width: 85%;
     
     li {
       float: left;
@@ -1214,90 +1214,52 @@ h6 {
   
   .data-options {
     li {
+      padding-left: 12%;
       background: $white;
+      border-left-width: 0;
+      border-left-style: solid;
+      border-left-color: transparent;
       border-bottom: 1px solid $grey2;
+      @include transition(0.25s);
+      @include clearfix;
       
       &:last-child {
         border-bottom: none;
+      }
+        
+      &:hover {
+        padding-left: calc(12% - 10px);
+        border-left-width: 10px;
+        border-left-color: $grey2;
+      }
+        
+      &.active {
+        font-weight: 400;
+        padding-left: calc(12% - 10px);
+        border-left-width: 10px;
+        border-bottom-color: $grey2!important;
       }
       
       a {
         display: block;
         padding: 2%;
-        padding-left: 12%;
         color: $grey1;
         @include transition(0.25s);
-        border-left-width: 0;
-        border-left-style: solid;
-        border-left-color: transparent;
         
-        &:hover {
-          padding-left: calc(12% - 10px);
-          border-left-width: 10px;
-          border-left-color: $grey2;
+        &.text {
+          width: 90%;
+          float: left;
         }
         
-        &.active {
-          font-weight: 400;
-          padding-left: calc(12% - 10px);
-          border-left-width: 10px;
+        &.icon {
+          width: 10%;
+          float: right;     
+          text-align: right;
+          line-height: 1.5rem;
+          color: #aaa;
         }
       }
     }
-  }
-}
-
-#location-temperature {
-  .accent-color {
-    color: $orange1;
-  }
-  
-  .accent-background {
-    background-color: $orange1;
-  }
-  
-  .accent-border {
-    border-color: $orange1;
-  }
-  
-  button {
-    color: $orange1;
-  }
-}
-
-#location-precipitation {
-  .accent-color {
-    color: $blue1;
-  }
-  
-  .accent-background {
-    background-color: $blue1;
-  }
-  
-  .accent-border {
-    border-color: $blue1;
-  }
-  
-  button {
-    color: $blue1;
-  }
-}
-
-#location-drought {
-  .accent-color {
-    color: $brown1;
-  }
-  
-  .accent-background {
-    background-color: $brown1;
-  }
-  
-  .accent-border {
-    border-color: $brown1;
-  }
-  
-  button {
-    color: $brown1;
   }
 }
 

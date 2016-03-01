@@ -3735,7 +3735,7 @@ h6 {
 }
 
 #page-nav {
-  width: 65%;
+  width: 60%;
   padding-top: 20px;
   margin-left: 4%;
   margin-left: calc(4% + 10px);
@@ -3750,14 +3750,14 @@ h6 {
 }
 #page-nav h4 {
   float: left;
-  width: 10%;
+  width: 15%;
   margin: 2px 0 0 0;
   font: 0.875rem/1.125rem "CESans-Heavy", Helvetica, "Helvetica Neue", Arial, sans-serif;
   text-transform: uppercase;
 }
 #page-nav ul {
   float: left;
-  width: 90%;
+  width: 85%;
 }
 #page-nav ul li {
   float: left;
@@ -4159,73 +4159,52 @@ h6 {
   margin: 0 1% 0 0;
 }
 .location-data-section .data-options li {
+  padding-left: 12%;
   background: #fff;
+  border-left-width: 0;
+  border-left-style: solid;
+  border-left-color: transparent;
   border-bottom: 1px solid #ebebeb;
+  -moz-transition: 0.25s;
+  -o-transition: 0.25s;
+  -webkit-transition: 0.25s;
+  transition: 0.25s;
+  overflow: hidden;
+  *zoom: 1;
 }
 .location-data-section .data-options li:last-child {
   border-bottom: none;
 }
+.location-data-section .data-options li:hover {
+  padding-left: calc(12% - 10px);
+  border-left-width: 10px;
+  border-left-color: #ebebeb;
+}
+.location-data-section .data-options li.active {
+  font-weight: 400;
+  padding-left: calc(12% - 10px);
+  border-left-width: 10px;
+  border-bottom-color: #ebebeb !important;
+}
 .location-data-section .data-options li a {
   display: block;
   padding: 2%;
-  padding-left: 12%;
   color: #5f5f5f;
   -moz-transition: 0.25s;
   -o-transition: 0.25s;
   -webkit-transition: 0.25s;
   transition: 0.25s;
-  border-left-width: 0;
-  border-left-style: solid;
-  border-left-color: transparent;
 }
-.location-data-section .data-options li a:hover {
-  padding-left: calc(12% - 10px);
-  border-left-width: 10px;
-  border-left-color: #ebebeb;
+.location-data-section .data-options li a.text {
+  width: 90%;
+  float: left;
 }
-.location-data-section .data-options li a.active {
-  font-weight: 400;
-  padding-left: calc(12% - 10px);
-  border-left-width: 10px;
-}
-
-#location-temperature .accent-color {
-  color: #f5442d;
-}
-#location-temperature .accent-background {
-  background-color: #f5442d;
-}
-#location-temperature .accent-border {
-  border-color: #f5442d;
-}
-#location-temperature button {
-  color: #f5442d;
-}
-
-#location-precipitation .accent-color {
-  color: #0058cf;
-}
-#location-precipitation .accent-background {
-  background-color: #0058cf;
-}
-#location-precipitation .accent-border {
-  border-color: #0058cf;
-}
-#location-precipitation button {
-  color: #0058cf;
-}
-
-#location-drought .accent-color {
-  color: #904848;
-}
-#location-drought .accent-background {
-  background-color: #904848;
-}
-#location-drought .accent-border {
-  border-color: #904848;
-}
-#location-drought button {
-  color: #904848;
+.location-data-section .data-options li a.icon {
+  width: 10%;
+  float: right;
+  text-align: right;
+  line-height: 1.5rem;
+  color: #aaa;
 }
 
 .page-type-impact #main-content-wrap {
