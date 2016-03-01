@@ -3562,15 +3562,22 @@ h6 {
   top: 20px;
   right: 100px;
   height: 60px;
-  padding: 15px;
   background: rgba(255, 255, 255, 0.8);
   z-index: 1;
 }
 #location-search input {
+  height: 60px;
+  margin: 0;
+  padding: 15px;
   font: 1.25rem/1em "CESans", Roboto, Helvetica, "Helvetica Neue", Arial, sans-serif;
-  color: #0058cf;
+  color: #233a70;
   border: none;
-  background: transparent;
+  outline: none;
+  background: #fff;
+  -moz-transition: 0.5s;
+  -o-transition: 0.5s;
+  -webkit-transition: 0.5s;
+  transition: 0.5s;
 }
 #location-search input::-webkit-input-placeholder {
   color: #233a70;
@@ -3604,17 +3611,56 @@ h6 {
   -webkit-transition: 0.25s;
   transition: 0.25s;
 }
+#location-search input:focus {
+  background: #0058cf;
+  color: #fff;
+}
 #location-search input:focus::-webkit-input-placeholder {
-  color: rgba(35, 58, 112, 0.5);
+  color: rgba(255, 255, 255, 0.5);
 }
 #location-search input:focus:-moz-placeholder {
-  color: rgba(35, 58, 112, 0.5);
+  color: rgba(255, 255, 255, 0.5);
 }
 #location-search input:focus::-moz-placeholder {
-  color: rgba(35, 58, 112, 0.5);
+  color: rgba(255, 255, 255, 0.5);
 }
 #location-search input:focus:-ms-input-placeholder {
-  color: rgba(35, 58, 112, 0.5);
+  color: rgba(255, 255, 255, 0.5);
+}
+
+.ui-autocomplete {
+  position: absolute;
+  top: 0;
+  left: 0;
+  cursor: default;
+}
+
+.ui-menu {
+  display: block;
+  padding: 10px;
+  margin: 0;
+  outline: none;
+  background: rgba(255, 255, 255, 0.9);
+  border: 3px solid #f5442d;
+  -moz-box-shadow: 0 0 12px rgba(35, 58, 112, 0.25);
+  -webkit-box-shadow: 0 0 12px rgba(35, 58, 112, 0.25);
+  box-shadow: 0 0 12px rgba(35, 58, 112, 0.25);
+}
+.ui-menu .ui-menu {
+  position: absolute;
+}
+.ui-menu .ui-menu-item {
+  position: relative;
+  margin: 0;
+  padding: 0;
+  cursor: pointer;
+}
+.ui-menu .ui-menu-divider {
+  margin: 5px 0;
+  height: 0;
+  font-size: 0;
+  line-height: 0;
+  border-width: 1px 0 0 0;
 }
 
 #page-nav {

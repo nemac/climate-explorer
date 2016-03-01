@@ -1307,15 +1307,19 @@ h6 {
   top: 20px;
   right: 100px;
   height: 60px;
-  padding: 15px;
   background: transparentize($white, 0.2);
   z-index: 1;
   
   input {
+    height: 60px;
+    margin: 0;
+    padding: 15px;
     font: 1.25rem/1em $sans-book;
-    color: $blue1;
+    color: $blue2;
     border: none;
-    background: transparent;
+    outline: none;
+    background: $white;
+    @include transition(0.5s);
     
     &::-webkit-input-placeholder {
       color: $blue2;
@@ -1342,23 +1346,65 @@ h6 {
     }
     
     &:focus {
+      background: $blue1;
+      color: $white;
+      
       &::-webkit-input-placeholder {
-        color: transparentize($blue2, 0.5);
+        color: transparentize($white, 0.5);
       }
       
       &:-moz-placeholder {
-        color: transparentize($blue2, 0.5);
+        color: transparentize($white, 0.5);
       }
       
       &::-moz-placeholder {
-        color: transparentize($blue2, 0.5);
+        color: transparentize($white, 0.5);
       }
       
       &:-ms-input-placeholder {
-        color: transparentize($blue2, 0.5);
+        color: transparentize($white, 0.5);
       }
     }
   }
+}
+
+// jquery UI
+
+.ui-autocomplete {
+	position: absolute;
+	top: 0;
+	left: 0;
+	cursor: default;
+}
+
+.ui-menu {
+	display: block;
+  padding: 10px;
+	margin: 0;
+	outline: none;
+	background: transparentize($white, 0.1);
+  border: 3px solid $orange1;
+  @include box-shadow(0 0 12px transparentize($blue2, 0.75));
+
+  .ui-menu {
+  	position: absolute;
+  }
+
+  .ui-menu-item {
+  	position: relative;
+  	margin: 0;
+  	padding: 0;
+  	cursor: pointer;
+  }
+  
+  .ui-menu-divider {
+  	margin: 5px 0;
+  	height: 0;
+  	font-size: 0;
+  	line-height: 0;
+  	border-width: 1px 0 0 0;
+  }
+  
 }
 
 #page-nav {
