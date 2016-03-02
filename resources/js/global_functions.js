@@ -252,7 +252,7 @@
           'Seattle'
         ];
         
-        $('#location-search input').autocomplete({
+        $('.autocomplete').autocomplete({
           source: locations
         });
         
