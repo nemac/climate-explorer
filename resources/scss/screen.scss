@@ -850,6 +850,11 @@ h6 {
     background: transparentize($white, 0.2);
     border-top: none;
     z-index: 5;
+    
+    h4 {
+      width: auto;
+      margin-right: 2%;
+    }
   }
 }
 
@@ -1343,7 +1348,7 @@ h6 {
   }
 }
 
-#location-drought {
+#location-derived {
   .accent-color {
     color: $brown1;
   }
