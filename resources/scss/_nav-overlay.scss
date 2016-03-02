@@ -237,18 +237,6 @@
             counter-reset: customlistcounter;
           }
         }
-        
-        &.col-2 {
-          li {
-            width: 50%;
-          }
-        }
-        
-        &.col-4 {
-          li {
-            width: 25%;
-          }
-        }
       
         ul {
           margin: 15px 0 0 0;
@@ -258,6 +246,37 @@
             width: auto!important;
             margin: 0 0 10px 0;
             font: 300 1rem/1em $roboto;
+          }
+        }
+      }
+      
+      ol,
+      ul {
+        
+        &.col-2 {
+          @include legacy-clearfix;
+          
+          li {
+            float: left;
+            width: 50%;
+          }
+        }
+        
+        &.col-3 {
+          @include legacy-clearfix;
+          
+          li {
+            float: left;
+            width: 33%;
+          }
+        }
+        
+        &.col-4 {
+          @include legacy-clearfix;
+          
+          li {
+            float: left;
+            width: 25%;
           }
         }
       }

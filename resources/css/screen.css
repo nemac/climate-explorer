@@ -2941,12 +2941,6 @@ h6 {
 #nav-overlay .nav-content .tab ol > li:first-child {
   counter-reset: customlistcounter;
 }
-#nav-overlay .nav-content .tab ol.col-2 li {
-  width: 50%;
-}
-#nav-overlay .nav-content .tab ol.col-4 li {
-  width: 25%;
-}
 #nav-overlay .nav-content .tab ol ul {
   margin: 15px 0 0 0;
 }
@@ -2955,6 +2949,51 @@ h6 {
   width: auto !important;
   margin: 0 0 10px 0;
   font: 300 1rem/1em Roboto, Helvetica, "Helvetica Neue", Arial, sans-serif;
+}
+#nav-overlay .nav-content .tab ol.col-2:before, #nav-overlay .nav-content .tab ol.col-2:after,
+#nav-overlay .nav-content .tab ul.col-2:before,
+#nav-overlay .nav-content .tab ul.col-2:after {
+  content: " ";
+  display: table;
+}
+#nav-overlay .nav-content .tab ol.col-2:after,
+#nav-overlay .nav-content .tab ul.col-2:after {
+  clear: both;
+}
+#nav-overlay .nav-content .tab ol.col-2 li,
+#nav-overlay .nav-content .tab ul.col-2 li {
+  float: left;
+  width: 50%;
+}
+#nav-overlay .nav-content .tab ol.col-3:before, #nav-overlay .nav-content .tab ol.col-3:after,
+#nav-overlay .nav-content .tab ul.col-3:before,
+#nav-overlay .nav-content .tab ul.col-3:after {
+  content: " ";
+  display: table;
+}
+#nav-overlay .nav-content .tab ol.col-3:after,
+#nav-overlay .nav-content .tab ul.col-3:after {
+  clear: both;
+}
+#nav-overlay .nav-content .tab ol.col-3 li,
+#nav-overlay .nav-content .tab ul.col-3 li {
+  float: left;
+  width: 33%;
+}
+#nav-overlay .nav-content .tab ol.col-4:before, #nav-overlay .nav-content .tab ol.col-4:after,
+#nav-overlay .nav-content .tab ul.col-4:before,
+#nav-overlay .nav-content .tab ul.col-4:after {
+  content: " ";
+  display: table;
+}
+#nav-overlay .nav-content .tab ol.col-4:after,
+#nav-overlay .nav-content .tab ul.col-4:after {
+  clear: both;
+}
+#nav-overlay .nav-content .tab ol.col-4 li,
+#nav-overlay .nav-content .tab ul.col-4 li {
+  float: left;
+  width: 25%;
 }
 #nav-overlay .nav-detail {
   display: none;
