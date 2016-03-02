@@ -65,31 +65,42 @@
     z-index: 3;
     text-align: center;
     
+    a {
+      display: block;
+      margin: 0 5% 0 0;
+      padding: 18px 0;
+      color: $white;
+      font: 1rem/1em $sans-heavy;
+      white-space: nowrap;
+      border: 5px solid transparent;
+      @include transition(0.25s);
+      
+      &:hover {
+        border-color: transparentize($white, 0.75);
+      }
+      
+      .icon {
+        margin: -4px 8px 0 0;
+        font-size: 1.375rem;
+      }
+    }
+    
     li {
       float: left;
       width: 33%;
-    
-      a {
-        display: block;
-        margin: 0 5% 0 0;
-        padding: 18px 0;
-        color: $white;
-        font: 1rem/1em $sans-heavy;
-        white-space: nowrap;
-        border: 5px solid transparent;
-        @include transition(0.25s);
-        
-        .icon {
-          margin: -4px 8px 0 0;
-          font-size: 1.375rem;
-        }
-      }
       
       &.cycle-pager-active {
         a {
           border-color: $white;
         }
       }
+    }
+    
+    #nav-overlay-home {
+      position: absolute;
+      left: -25%;
+      margin: 0;
+      padding: 18px;
     }
   }
   

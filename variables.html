@@ -40,11 +40,15 @@
 <nav id="nav-overlay">
     <a href="#" id="nav-close" class="button close bg-white border-none blend-screen"></a>
     
-    <ul id="nav-controls" class="nav-controls cycle-pager external">
-      <li><a href="#nav-search"><span class="icon icon-search"></span> Search by location</a></li>
-      <li><a href="#nav-variables"><span class="icon icon-variables"></span> View by variable</a></li>
-      <li><a href="#nav-impacts"><span class="icon icon-bubble"></span> View by impact</a></li>
-    </ul>
+    <div id="nav-controls" class="nav-controls cycle-pager external">
+      <a href="./" id="nav-overlay-home" class="button"><span class="icon icon-arrow-up"></span><span class="text">Home</span></a>
+      
+      <ul>
+        <li><a href="#nav-search"><span class="icon icon-search"></span> Search by location</a></li>
+        <li><a href="#nav-variables"><span class="icon icon-variables"></span> View by variable</a></li>
+        <li><a href="#nav-impacts"><span class="icon icon-bubble"></span> View by impact</a></li>
+      </ul>
+    </div>
 
     <div id="nav-cycle" class="cycle-slideshow" 
       data-cycle-timeout="0" 

@@ -2810,11 +2810,7 @@ h6 {
   z-index: 3;
   text-align: center;
 }
-#nav-overlay #nav-controls li {
-  float: left;
-  width: 33%;
-}
-#nav-overlay #nav-controls li a {
+#nav-overlay #nav-controls a {
   display: block;
   margin: 0 5% 0 0;
   padding: 18px 0;
@@ -2827,12 +2823,25 @@ h6 {
   -webkit-transition: 0.25s;
   transition: 0.25s;
 }
-#nav-overlay #nav-controls li a .icon {
+#nav-overlay #nav-controls a:hover {
+  border-color: rgba(255, 255, 255, 0.25);
+}
+#nav-overlay #nav-controls a .icon {
   margin: -4px 8px 0 0;
   font-size: 1.375rem;
 }
+#nav-overlay #nav-controls li {
+  float: left;
+  width: 33%;
+}
 #nav-overlay #nav-controls li.cycle-pager-active a {
   border-color: #fff;
+}
+#nav-overlay #nav-controls #nav-overlay-home {
+  position: absolute;
+  left: -25%;
+  margin: 0;
+  padding: 18px;
 }
 #nav-overlay .nav-content-wrap {
   position: absolute;
