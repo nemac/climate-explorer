@@ -83,6 +83,7 @@
           if (settings.action === 'close') {
             $('#nav-overlay').fadeOut(250);
             $('.nav-detail').fadeOut();
+            $('#nav-controls').fadeIn();
             $('body').removeClass('nav-open');
           } else {
             $('#nav-overlay').fadeIn(250, function() {
@@ -135,7 +136,7 @@
         
         // nav slide pagers
         
-        $('#nav-controls a').click(function(e) {
+        /*$('#nav-controls a').click(function(e) {
           e.preventDefault();
           
           var link_href = $(this).attr('href');
@@ -146,7 +147,7 @@
           $(document).do_nav({
             slide: slide_num
           });
-        });
+        });*/
 
         $('.nav-left').click(function (e) {
             $('#nav-cycle').cycle('prev');
@@ -186,14 +187,14 @@
         $.fn.open_nav_detail = function () {
           var link_href = $(this).attr('href');
           var parent_slide = $(link_href).parents('.slide');
-          
 
-            $(document).do_nav({
-              slide: 1
-            }, function() {
-              parent_slide.find('.nav-detail').fadeIn();
-              $(link_href).fadeIn();
-            });
+          $(document).do_nav({
+            slide: 1
+          }, function() {
+            parent_slide.find('.nav-detail').fadeIn();
+            $('#nav-controls').fadeOut();
+            $(link_href).fadeIn();
+          });
         }
         
         $('#nav-variables ol a, .nav-detail-link').click(function(e) {
@@ -204,6 +205,7 @@
         $('.nav-detail .close-detail').click(function(e) {
           e.preventDefault();
           $('.nav-detail, .nav-detail-item').fadeOut();
+          $('#nav-controls').fadeIn();
         });
 
         // -----

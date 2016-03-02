@@ -2805,26 +2805,48 @@ h6 {
 #nav-overlay #nav-controls {
   position: absolute;
   top: 5%;
-  width: 100%;
+  left: 20%;
+  width: 60%;
   z-index: 3;
+  text-align: center;
 }
 #nav-overlay #nav-controls li {
   float: left;
-  width: 25%;
+  width: 33%;
+}
+#nav-overlay #nav-controls li a {
+  display: block;
+  margin: 0 5% 0 0;
+  padding: 18px 0;
+  color: #fff;
+  font: 1rem/1em "CESans-Heavy", Helvetica, "Helvetica Neue", Arial, sans-serif;
+  white-space: nowrap;
+  border: 5px solid transparent;
+  -moz-transition: 0.25s;
+  -o-transition: 0.25s;
+  -webkit-transition: 0.25s;
+  transition: 0.25s;
+}
+#nav-overlay #nav-controls li a .icon {
+  margin: -4px 8px 0 0;
+  font-size: 1.375rem;
+}
+#nav-overlay #nav-controls li.cycle-pager-active a {
+  border-color: #fff;
 }
 #nav-overlay .nav-content-wrap {
   position: absolute;
-  top: 10%;
+  top: 20%;
   left: 20%;
   width: 60%;
-  height: 80%;
+  height: 70%;
   z-index: 2;
 }
 #nav-overlay .nav-content-wrap a {
   color: #fff;
 }
 #nav-overlay .nav-content-wrap h3 {
-  margin: 0 0 10% 0;
+  margin: 0 0 5% 0;
   color: #fff;
   font: 1.625rem/4.875rem "CESans-Heavy", Helvetica, "Helvetica Neue", Arial, sans-serif;
 }

@@ -51,13 +51,19 @@
 <nav id="nav-overlay">
     <a href="#" id="nav-close" class="button close bg-white border-none blend-screen"></a>
     
-    <ul id="nav-controls" class="nav-controls">
-      <li><a href="#nav-search" class=""><span class="icon icon-variables"></span> Search by location</a></li>
-      <li><a href="#nav-variables" class=""><span class="icon icon-variables"></span> View by variable</a></li>
-      <li><a href="#nav-impacts" class=""><span class="icon icon-bubble"></span> View by impact</a></li>
+    <ul id="nav-controls" class="nav-controls cycle-pager external">
+      <li><a href="#nav-search"><span class="icon icon-search"></span> Search by location</a></li>
+      <li><a href="#nav-variables"><span class="icon icon-variables"></span> View by variable</a></li>
+      <li><a href="#nav-impacts"><span class="icon icon-bubble"></span> View by impact</a></li>
     </ul>
 
-    <div id="nav-cycle" class="cycle-slideshow" data-cycle-timeout="0" data-cycle-fx="scrollHorz" data-cycle-slides="> .slide">
+    <div id="nav-cycle" class="cycle-slideshow" 
+      data-cycle-timeout="0" 
+      data-cycle-fx="scrollHorz" 
+      data-cycle-slides="> .slide" 
+      data-cycle-pager="#nav-controls" 
+      data-cycle-pager-template="">
+        
         <div id="nav-search" class="slide" data-slide-num="0">
             <div class="slide-bg"></div>
             
