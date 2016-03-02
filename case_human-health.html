@@ -45,7 +45,7 @@
     <div id="nav-controls" class="nav-controls cycle-pager external">
       <a href="./" id="nav-overlay-home" class="button"><span class="icon icon-arrow-up"></span><span class="text">Home</span></a>
 
-      <ul id="nav-cycle-pager">
+      <ul>
         <li><a href="#nav-search"><span class="icon icon-search"></span> Search by location</a></li>
         <li><a href="#nav-variables"><span class="icon icon-variables"></span> View by variable</a></li>
         <li><a href="#nav-impacts"><span class="icon icon-bubble"></span> View by impact</a></li>
@@ -56,7 +56,7 @@
       data-cycle-timeout="0"
       data-cycle-fx="scrollHorz"
       data-cycle-slides="> .slide"
-      data-cycle-pager="#nav-cycle-pager"
+      data-cycle-pager="#nav-controls"
       data-cycle-pager-template="">
 
         <div id="nav-search" class="slide" data-slide-num="0">
@@ -84,29 +84,26 @@
 
             <div class="nav-content-wrap">
                 <h3><span class="icon icon-variables"></span> Choose a variable</h3>
-
+                <a href="variables.html">Variables dummy page</a>
                 <div class="nav-content tabs">
                     <div id="nav-vars-projected" class="tab nav-content-tab">
-                        <ol class="col-3">
-                            <li><a href="#detail-temperature" class="nav-detail-link">Temperature</a>
+                        <ol class="col-4">
+                            <li><a href="#detail-temperature">Temperature</a>
                                 <ul>
-                                    <li><a>Mean Daily Max</a></li>
-                                    <li><a>Mean Daily Min</a></li>
-                                    <li><a>Days Over 95º F</a></li>
-                                    <li><a>Days Under 32º F</a></li>
+                                    <li><a>By Climate Division</a></li>
+                                    <li><a>Modelled Historical</a></li>
+                                    <li><a>Weather Station</a></li>
                                 </ul>
                             </li>
                             <li><a>Precipitation</a>
                                 <ul>
-                                    <li><a>Precipitation</a></li>
+                                    <li><a>By Climate Division</a></li>
+                                    <li><a>Modelled Historical</a></li>
+                                    <li><a>Weather Station</a></li>
                                 </ul>
                             </li>
-                            <li><a>Derived</a>
-                                <ul>
-                                    <li><a>Heating Degree Days</a></li>
-                                    <li><a>Cooling Degree Days</a></li>
-                                </ul>
-                            </li>
+                            <li><a>Drought</a></li>
+                            <li><a>Sea Level Rise</a></li>
                         </ol>
                     </div>
                 </div>
@@ -143,30 +140,18 @@
 
               <div id="nav-impacts" class="tab nav-content-tab">
                 <ul class="col-2">
-                  <li><a href="#">Coastal Flooding</a></li>
-                  <li><a href="#">Drought</a></li>
-                  <li><a href="#">Flooding</a></li>
-                  <li><a href="#">Tribal Nations: Flood Risk</a></li>
-                  <li><a href="#">Tribal Nations: Drought Risk</a></li>
-                  <li><a href="#detail-ecosystems" class="nav-detail-link">Ecosystems</a></li>
+                  <!--<li><a href="#">Coastal Flood Risk</a></li>-->
+                  <li><a href="impact_ecosystem-vulnerability.php">Ecosystem Vulnerability</a></li>
+                  <!--<li><a href="#">Energy Supply and Use</a></li>
+                  <li><a href="#">Food Resilience</a></li>
                   <li><a href="#">Human Health</a></li>
-                  <li><a href="#">Transportation</a></li>
+                  <li><a href="#">Transportation and Supply Chain</a></li>
+                  <li><a href="#">Tribal Nations</a></li>
+                  <li><a href="#">Water Resources</a></li>-->
                 </ul>
               </div>
             </div>
           </div>
-
-          <div id="impacts-details" class="nav-detail">
-              <div id="detail-ecosystems" class="nav-detail-item">
-                <h3>What does <u>Ecosystems</u> mean?</h3>
-
-                <p>Despite extensive human engineering of Earth’s resources, our economy and culture continue to depend on natural ecosystem services for food, timber, clean water, and more.</p>
-
-                <p>Data source: NOAA, 2015</p>
-
-                <p><a href="impact_ecosystem-vulnerability.html" class="button bg-trans border-white hover-bg-white">Get started</a><a href="#" class="close-detail button bg-trans border-trans color-white arrow-left">Back</a></p>
-              </div>
-            </div>
         </div>
     </div>
 </nav>
@@ -239,8 +224,7 @@
 
 <script>
   $(document).ready(function() {
-
-    app = new App("fire_regimes");
+    app = new App("human_health");
   });
 </script>
 

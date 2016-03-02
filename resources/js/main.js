@@ -19,7 +19,7 @@ App.prototype.createMap = function() {
   });
 
   this.map = new ol.Map({
-    target: 'fire-map',
+    target: 'map',
     layers: [
       new ol.layer.Tile({
         source: new ol.source.MapQuest({layer: 'osm'})
@@ -27,7 +27,7 @@ App.prototype.createMap = function() {
     ],
     view: view
   });
-
+  console.log('map created');
   this.getData();
 };
 
@@ -40,7 +40,7 @@ App.prototype.getData = function() {
   var self = this;
 
   $.getJSON('./resources/data/data.json', function(data) {
-
+    console.log('data', data);
     self.data = data;
     self.addLayers();
     self.createLegend();
@@ -156,7 +156,7 @@ App.prototype.reorderLayers = function() {
 App.prototype.addLayers = function() {
   var self = this;
 
-
+  console.log('add me', this.page);
   // console.log('map', this.map.getView().getProjection().getExtent());
   // console.log('map', this.map.getView().getProjection());
 
@@ -164,17 +164,33 @@ App.prototype.addLayers = function() {
   var clone = layerIds.slice(0);
 
   var layer;
+  console.log('layerIds', layerIds);
   $.each(clone.reverse(), function(i, id) {
 
     if ( self.data.layers[id].type === 'WMS' ) {
       layer = new ol.layer.Image({
         extent: [-13884991, 2870341, -7455066, 6338219],
         source: new ol.source.ImageWMS({
-          url: 'http://torka.unl.edu:8080/cgi-bin/mapserv.exe?map=/ms4w/apps/dm/service/usdm_current_wms.map&SRS=EPSG%3A900913',
+          url: self.data.layers[id].url,
           params: {
-            'LAYERS': 'usdm_current'
+            'LAYERS': self.data.layers[id].options.layer,
+            'VERSION': self.data.layers[id].options.version || '1.3.0'
           },
-          serverType: 'mapserv'
+          serverType: self.data.layers[id].options.type
+        })
+      });
+    }
+
+    if ( self.data.layers[id].type === 'tileWMS' ) {
+      layer = new ol.layer.Tile({
+        extent: [-13884991, 2870341, -7455066, 6338219],
+        source: new ol.source.TileWMS({
+          url: self.data.layers[id].url,
+          params: {
+            'LAYERS': self.data.layers[id].options.layer,
+            'VERSION': self.data.layers[id].options.version || '1.3.0'
+          },
+          serverType: self.data.layers[id].options.type
         })
       });
     }
@@ -183,13 +199,15 @@ App.prototype.addLayers = function() {
       layer = new ol.layer.Tile({
         extent: [-13884991, 2870341, -7455066, 6338219],
         source: new ol.source.TileArcGISRest({
-          url: 'http://raster.nationalmap.gov/arcgis/rest/services/LandCover/USGS_EROS_LandCover_NLCD/MapServer',
+          url: self.data.layers[id].url,
+          params: {
+            'LAYERS': self.data.layers[id].options.layer || ''
+          }
         })
       });
     }
 
     layer.set('layer_id', id);
-
     self.map.addLayer(layer);
 
   });
