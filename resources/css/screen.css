@@ -3026,6 +3026,12 @@ h6 {
   margin: 0 0 20px 0;
   line-height: 2em;
 }
+#nav-overlay .nav-detail#variable-details {
+  background: rgba(0, 88, 207, 0.5);
+}
+#nav-overlay .nav-detail#impacts-details {
+  background: rgba(245, 68, 45, 0.5);
+}
 
 #viewport {
   position: fixed;

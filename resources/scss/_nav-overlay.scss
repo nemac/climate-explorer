@@ -313,5 +313,13 @@
         line-height: 2em;
       }
     }
+    
+    &#variable-details {
+      background: transparentize($blue1, 0.5);
+    }
+    
+    &#impacts-details {
+      background: transparentize($orange1, 0.5);
+    }
   }
 }
