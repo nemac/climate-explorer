@@ -270,14 +270,13 @@
       }
     },
     "hospitals": {
-      "type": "WMS",
+      "type": "ArcGISRest",
       "id": "hospitals",
       "title": "Hospitals",
       "description": "View the location of hospitals: explore which are vulnerable to sea level rise or other flood hazards",
       "url": "http://hsip.geoplatform.gov/arcgis/services/HSIP_Public/PublicHealth/MapServer",
       "options": {
-        "layer": 0,
-        "type": "mapserv"
+        "layer": 0
       },
       "defaults": {
         "visible":true

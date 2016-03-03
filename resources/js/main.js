@@ -58,6 +58,7 @@ App.prototype.getData = function() {
 *
 */
 App.prototype.wireEvents = function() {
+  var self = this;
 
   //close btn
   $('.legend .layer-info-close').click(function (e) {
@@ -69,6 +70,29 @@ App.prototype.wireEvents = function() {
   $('.legend .layer-info-next').click(function (e) {
       e.preventDefault();
       $(this).parents('.legend').next('.legend').open_layer_info();
+  });
+
+  // help icon
+  $('.legend .help').click(function (e) {
+    e.preventDefault();
+    var current_legend = $(this).parents('.legend');
+    if (current_legend.hasClass('info-on')) {
+      $('body').close_layer_info();
+    } else {
+      current_legend.open_layer_info();
+    }
+  });
+
+
+  // help icon
+  $('.legend .visibility').click(function (e) {
+    var id = $(this).attr('id').replace('visibility-', '');
+    var visible = $(this).is(':checked');
+    self.map.getLayers().forEach(function(layer) {
+      if (layer.get('layer_id') == id) {
+        layer.setVisible(visible);
+      }
+    });
   });
 
 };
@@ -84,9 +108,11 @@ App.prototype.createLegend = function() {
   var self = this;
   var layerIds = this.data.cases[this.page].layers;
 
+  var checked;
   $.each(layerIds, function(i, id) {
+    checked = (i === 0) ? 'checked' : '';
     var tmpl = '<li class="legend" id="legend-'+id+'">'+
-      '<div class="text">'+self.data.layers[id].title+' <a href="#info-drought" class="help"><span class="icon icon-help"></span></a></div>'+
+      '<div class="text">'+self.data.layers[id].title+' <a href="#info-drought" class="help"><span class="icon icon-help"></span></a> <input class="visibility" id="visibility-'+id+'" type="checkbox" '+checked+'/></div>'+
         '<ul>'+
           '<li><span class="color" style="background-color: #2a0023;"></span><span class="tooltip">&gt; 105</span></li>'+
           '<li><span class="color" style="background-color: #c3003c;"></span><span class="tooltip">90–104</span></li>'+
@@ -166,6 +192,7 @@ App.prototype.addLayers = function() {
   var layer;
   console.log('layerIds', layerIds);
   $.each(clone.reverse(), function(i, id) {
+    layer = null;
 
     if ( self.data.layers[id].type === 'WMS' ) {
       layer = new ol.layer.Image({
@@ -205,6 +232,12 @@ App.prototype.addLayers = function() {
           }
         })
       });
+    }
+
+    if ( i === clone.length - 1 ) {
+      layer.setVisible(true);
+    } else {
+      layer.setVisible(false);
     }
 
     layer.set('layer_id', id);
