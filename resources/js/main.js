@@ -19,7 +19,7 @@ App.prototype.createMap = function() {
   });
 
   this.map = new ol.Map({
-    target: 'fire-map',
+    target: 'map',
     layers: [
       new ol.layer.Tile({
         source: new ol.source.MapQuest({layer: 'osm'})
@@ -27,7 +27,7 @@ App.prototype.createMap = function() {
     ],
     view: view
   });
-
+  console.log('map created');
   this.getData();
 };
 
@@ -40,7 +40,7 @@ App.prototype.getData = function() {
   var self = this;
 
   $.getJSON('./resources/data/data.json', function(data) {
-
+    console.log('data', data);
     self.data = data;
     self.addLayers();
     self.createLegend();
@@ -58,6 +58,7 @@ App.prototype.getData = function() {
 *
 */
 App.prototype.wireEvents = function() {
+  var self = this;
 
   //close btn
   $('.legend .layer-info-close').click(function (e) {
@@ -69,6 +70,29 @@ App.prototype.wireEvents = function() {
   $('.legend .layer-info-next').click(function (e) {
       e.preventDefault();
       $(this).parents('.legend').next('.legend').open_layer_info();
+  });
+
+  // help icon
+  $('.legend .help').click(function (e) {
+    e.preventDefault();
+    var current_legend = $(this).parents('.legend');
+    if (current_legend.hasClass('info-on')) {
+      $('body').close_layer_info();
+    } else {
+      current_legend.open_layer_info();
+    }
+  });
+
+
+  // help icon
+  $('.legend .visibility').click(function (e) {
+    var id = $(this).attr('id').replace('visibility-', '');
+    var visible = $(this).is(':checked');
+    self.map.getLayers().forEach(function(layer) {
+      if (layer.get('layer_id') == id) {
+        layer.setVisible(visible);
+      }
+    });
   });
 
 };
@@ -84,9 +108,11 @@ App.prototype.createLegend = function() {
   var self = this;
   var layerIds = this.data.cases[this.page].layers;
 
+  var checked;
   $.each(layerIds, function(i, id) {
+    checked = (i === 0) ? 'checked' : '';
     var tmpl = '<li class="legend" id="legend-'+id+'">'+
-      '<div class="text">'+self.data.layers[id].title+' <a href="#info-drought" class="help"><span class="icon icon-help"></span></a></div>'+
+      '<div class="text">'+self.data.layers[id].title+' <a href="#info-drought" class="help"><span class="icon icon-help"></span></a> <input class="visibility" id="visibility-'+id+'" type="checkbox" '+checked+'/></div>'+
         '<ul>'+
           '<li><span class="color" style="background-color: #2a0023;"></span><span class="tooltip">&gt; 105</span></li>'+
           '<li><span class="color" style="background-color: #c3003c;"></span><span class="tooltip">90–104</span></li>'+
@@ -156,7 +182,7 @@ App.prototype.reorderLayers = function() {
 App.prototype.addLayers = function() {
   var self = this;
 
-
+  console.log('add me', this.page);
   // console.log('map', this.map.getView().getProjection().getExtent());
   // console.log('map', this.map.getView().getProjection());
 
@@ -164,17 +190,34 @@ App.prototype.addLayers = function() {
   var clone = layerIds.slice(0);
 
   var layer;
+  console.log('layerIds', layerIds);
   $.each(clone.reverse(), function(i, id) {
+    layer = null;
 
     if ( self.data.layers[id].type === 'WMS' ) {
       layer = new ol.layer.Image({
         extent: [-13884991, 2870341, -7455066, 6338219],
         source: new ol.source.ImageWMS({
-          url: 'http://torka.unl.edu:8080/cgi-bin/mapserv.exe?map=/ms4w/apps/dm/service/usdm_current_wms.map&SRS=EPSG%3A900913',
+          url: self.data.layers[id].url,
           params: {
-            'LAYERS': 'usdm_current'
+            'LAYERS': self.data.layers[id].options.layer,
+            'VERSION': self.data.layers[id].options.version || '1.3.0'
           },
-          serverType: 'mapserv'
+          serverType: self.data.layers[id].options.type
+        })
+      });
+    }
+
+    if ( self.data.layers[id].type === 'tileWMS' ) {
+      layer = new ol.layer.Tile({
+        extent: [-13884991, 2870341, -7455066, 6338219],
+        source: new ol.source.TileWMS({
+          url: self.data.layers[id].url,
+          params: {
+            'LAYERS': self.data.layers[id].options.layer,
+            'VERSION': self.data.layers[id].options.version || '1.3.0'
+          },
+          serverType: self.data.layers[id].options.type
         })
       });
     }
@@ -183,13 +226,21 @@ App.prototype.addLayers = function() {
       layer = new ol.layer.Tile({
         extent: [-13884991, 2870341, -7455066, 6338219],
         source: new ol.source.TileArcGISRest({
-          url: 'http://raster.nationalmap.gov/arcgis/rest/services/LandCover/USGS_EROS_LandCover_NLCD/MapServer',
+          url: self.data.layers[id].url,
+          params: {
+            'LAYERS': self.data.layers[id].options.layer || ''
+          }
         })
       });
     }
 
-    layer.set('layer_id', id);
+    if ( i === clone.length - 1 ) {
+      layer.setVisible(true);
+    } else {
+      layer.setVisible(false);
+    }
 
+    layer.set('layer_id', id);
     self.map.addLayer(layer);
 
   });

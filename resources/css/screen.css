@@ -2725,10 +2725,10 @@ h6 {
   backdrop-filter: blur(3px);
   -webkit-backdrop-filter: blur(3px);
   /*
-  
+
   .nav-controls {
     position: static;
-    
+
     a {
       position: absolute;
       top: 10%;
@@ -2736,17 +2736,17 @@ h6 {
       padding-left: 20px;
       padding-right: 50px;
       z-index: 3;
-      
+
       &:before,
       &:after {
         right: 20px;
       }
-      
+
       &.nav-left {
         left: 0;
         border-left: none;
       }
-      
+
       &.nav-right {
         right: 0;
         border-right: none;
@@ -3183,23 +3183,23 @@ h6 {
   border-right: 10px solid #fff;
   z-index: 20;
   /*#main-header {
-  
+
     #header-logo {
       width: 50%;
       max-width: 71px;
     }
   }
-  
+
   #nav-trigger {
     float: right;
   }
-  
+
   #main-nav {
     padding: 20px 8%;
     background: $white;
     @include clearfix;
   }
-  
+
   #main-content-wrap {
     padding-left: 20%;
     padding-left: calc(20% + 10px);
@@ -4601,6 +4601,12 @@ h6 {
   -o-transition: background 0.25s;
   -webkit-transition: background 0.25s;
   transition: background 0.25s;
+}
+.page-type-case .legend .visibility {
+  float: right;
+  width: 24px;
+  height: 24px;
+  margin-top: 0px;
 }
 .page-type-case #case-menu .legend .help {
   padding: 0;
