@@ -255,7 +255,11 @@ App.prototype.addLayers = function() {
           })
         });
 
-        
+        if ( i === clone.length - 1 && e === 0 ) {
+          layer.setVisible(true);
+        } else {
+          layer.setVisible(false);
+        }
 
         layer.set('layer_id', sublayer.id);
         self.map.addLayer(layer);
