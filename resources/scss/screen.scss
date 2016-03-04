@@ -502,6 +502,24 @@ h6 {
   }
 }
 
+// sub-layer slider
+
+.sublayer-slider {
+  position: relative;
+  margin-top: 10px;
+
+  &.ui-slider {
+    .ui-slider-handle {
+      background: $grey2;
+    }
+  }
+}
+
+.sublayer-range-values {
+  font-size: 0.8em;
+  margin-top: 7px;
+}
+
 .page-splash {
   padding: 8% 0;
   color: $blue2;
