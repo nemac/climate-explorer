@@ -119,14 +119,74 @@
       }
     },
     "sea_level_rise": {
-      "type": "",
+      "type": "ArcGISRest",
       "id": "sea_level_rise",
-      "title": "Inundation from Sea Level Rise (For 1 to 6 feet) ",
+      "title": "Sea Level Rise (For 1 to 6 feet) ",
       "description": "View areas that will be covered by seawater during high tides after the indicated amount of local sea level rise. A few inches of water will cover the lightest blue areas; water will be deeper where the map is dark blue. Bright green areas will be below sea level, but are not connected to the ocean. Visualize changes over time by turning on progressively higher sea levels.",
-      "url": "",
-      "options": {},
+      "sublayers": [
+        {
+          "type": "ArcGISRest",
+          "id": "sea_level_rise_1ft",
+          "title": "Inundation from Sea Level Rise 1ft",
+          "url": "https://coast.noaa.gov/arcgis/rest/services/dc_slr/slr_1ft/MapServer",
+          "options": {},
+          "defaults": {
+            "visible":true
+          }
+        },
+        {
+          "type": "ArcGISRest",
+          "id": "sea_level_rise_2ft",
+          "title": "Inundation from Sea Level Rise 2ft",
+          "url": "https://coast.noaa.gov/arcgis/rest/services/dc_slr/slr_2ft/MapServer",
+          "options": {},
+          "defaults": {
+            "visible":true
+          }
+        },
+        {
+          "type": "ArcGISRest",
+          "id": "sea_level_rise_3ft",
+          "title": "Inundation from Sea Level Rise 3ft",
+          "url": "https://coast.noaa.gov/arcgis/rest/services/dc_slr/slr_3ft/MapServer",
+          "options": {},
+          "defaults": {
+            "visible":true
+          }
+        },
+        {
+          "type": "ArcGISRest",
+          "id": "sea_level_rise_4ft",
+          "title": "Inundation from Sea Level Rise 4ft",
+          "url": "https://coast.noaa.gov/arcgis/rest/services/dc_slr/slr_4ft/MapServer",
+          "options": {},
+          "defaults": {
+            "visible":true
+          }
+        },
+        {
+          "type": "ArcGISRest",
+          "id": "sea_level_rise_5ft",
+          "title": "Inundation from Sea Level Rise 5ft",
+          "url": "https://coast.noaa.gov/arcgis/rest/services/dc_slr/slr_5ft/MapServer",
+          "options": {},
+          "defaults": {
+            "visible":true
+          }
+        },
+        {
+          "type": "ArcGISRest",
+          "id": "sea_level_rise_6ft",
+          "title": "Inundation from Sea Level Rise 6ft",
+          "url": "https://coast.noaa.gov/arcgis/rest/services/dc_slr/slr_6ft/MapServer",
+          "options": {},
+          "defaults": {
+            "visible":true
+          }
+        }
+      ],
       "defaults": {
-        "visible":true
+        "units": "Feet"
       }
     },
     "flood_hazard_zones": {

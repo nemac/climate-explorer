@@ -3380,6 +3380,7 @@ h6 {
   background: rgba(95, 95, 95, 0.2);
   cursor: pointer;
 }
+
 .ui-slider .ui-slider-handle {
   left: 3px;
   width: 16px;
@@ -4826,6 +4827,20 @@ https://raw.github.com/shagstrom/split-pane/master/LICENSE
 
 #pane-right {
   width: 50%;
+}
+
+.sublayer-slider {
+  position:relative;
+  margin-top:10px;
+}
+
+.sublayer-slider.ui-slider .ui-slider-handle {
+  background:#EEE;
+}
+
+.sublayer-range-values {
+  font-size: 0.8em;
+  margin-top: 7px;
 }
 
 @media screen and (max-width: 1200px) {
