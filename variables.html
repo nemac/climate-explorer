@@ -173,7 +173,17 @@
     
     <header id="left-header">
       <ul id="vars-menu" class="menu blue-menu">
-        <li class="search-field border"><span class="icon icon-search"></span><input type="text" placeholder="Search by location"></li>
+        <li class="search-field"><span class="icon icon-search"></span><input type="text" placeholder="Search by location"></li>
+        
+        <li class="select border">
+          <select class="dropdown">
+            <option value="">Mean Daily Maximum</option>
+            <option value="">Mean Daily Minimum</option>
+            <option value="">Days over 95º F</option>
+            <option value="">Days over 32º F</option>
+          </select>
+        </li>
+        
         <li class="toggle"><label for="counties-overlay-toggle"><span class="text">Counties</span><input type="checkbox" name="counties-overlay-toggle" id="counties-overlay-toggle" value="1" autocomplete="off" checked="true"></label></li>
         <li class="toggle border"><label for="weather-overlay-toggle"><span class="text">Weather Stations</span><input type="checkbox" name="weather-overlay-toggle" id="weather-overlay-toggle" value="1" autocomplete="off"></label></li>
         <!--<li class="border"><a><span class="icon icon-variables"></span><span class="text">Projected Variables</span></a></li>

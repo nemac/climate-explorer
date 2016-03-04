@@ -353,8 +353,6 @@
          target: 'a'
          });*/
 
-        $('#vars-menu input[type=checkbox]').lc_switch();
-
         // zoom
 
         $('.zoom-slider').attr('data-value', 4);

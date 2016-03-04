@@ -203,6 +203,8 @@
   }
   
   li {
+    @include transition(0.25s);
+    
     &.border {
       border-bottom: 10px solid $white;
     }
@@ -269,8 +271,70 @@
       }
     }
     
+    &.select {
+      white-space: nowrap;
+      
+      .fs-dropdown {
+        margin: 0;
+        
+        * {
+          font: 300 1rem/1em $roboto;
+        }
+      
+        .fs-dropdown-selected {
+          height: auto;
+          padding: 8%;
+          background: transparentize($blue1, 0.2);
+          @include border-radius(0);
+          color: $white;
+          line-height: 1;
+          border: none;
+          @include transition(0.25s);
+          
+          &:hover {
+            background: transparentize($blue1, 0.1);
+          }
+        }
+        
+        .fs-dropdown-item {
+          border: none;
+          
+          &:hover {
+            background: transparentize($black, 0.95);
+          }
+          
+          &.fs-dropdown-item_selected {
+            background: transparentize($black, 0.92);
+            
+            &:hover {
+              background: transparentize($black, 0.90);
+            }
+          }
+        }
+        
+        &.fs-dropdown-open {
+          .fs-dropdown-selected {
+            background: transparentize($blue1, 0.1);
+          }
+        }
+      }
+    }
+    
     &.toggle {
       position: relative;
+      z-index: 1;
+      
+      label {
+        &:after {
+          content: '';
+          @include full-size;
+          z-index: 10;
+        }
+      }
+      
+      .lcs_wrap {
+        z-index: 1;
+      }
     }
     
     &.about-link {
@@ -328,20 +392,25 @@
   &.blue-menu {
     a,
     label {
+      //background: transparentize($blue1, 0.2);
+      
+    }
+    
+    li {
       background: transparentize($blue1, 0.2);
       
       &:hover {
         background: transparentize($blue1, 0.1);
       }
-    }
-    
-    li {
+      
       &.search-field {
-        background: transparentize($blue1, 0.2);
+        &:hover {
+          background: transparentize($blue1, 0.2);
+        }
       }
       
-      &.legend {
-        background: transparentize($blue1, 0.2);
+      &.select {
+        background: transparent;
       }
     }
   }
