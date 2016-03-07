@@ -26,156 +26,21 @@
 
 <body id="page-location-seattle" class="page-type-location">
 
-<header id="main-header">
-    <div id="main-nav">
-        <a href="https://toolkit.climate.gov" id="header-logo" title="U.S. Climate Resilience Toolkit"><img src="./resources/img/us-climate-resilience-toolkit.png" alt="U.S. Climate Resilience Toolkit"></a>
-
-        <a href="./" id="nav-home" class="nav-btn"><span class="icon icon-arrow-up"></span><span class="text">Home</span></a>
-
-        <a href="#" id="nav-trigger" class="nav-btn"><span class="hamburger"><span class="bar"></span></span><span class="text">Menu</span></a>
-
-        <nav id="subnav">
-            <ul>
-                <li><a href="#"><span class="icon"></span><span class="text">Help</span></a></li>
-                <li><a href="#"><span class="icon"></span><span class="text">About</span></a></li>
-                <li><a href="#"><span class="icon"></span><span class="text">Definitions</span></a></li>
-            </ul>
-        </nav>
-        <div id="breadcrumb"></div>
-    </div>
-</header>
-
-<nav id="nav-overlay">
-    <a href="#" id="nav-close" class="button close bg-white border-none blend-screen"></a>
-
-    <div id="nav-cycle" class="cycle-slideshow" data-cycle-timeout="0" data-cycle-fx="scrollHorz" data-cycle-slides="> .slide">
-        <div id="nav-search" class="slide">
-            <div class="slide-bg"></div>
-
-            <div class="nav-controls">
-                <a href="#" class="nav-left button border-white hover-bg-white arrow-left"><span class="icon icon-bubble"></span> Impacts</a>
-                <a href="#" class="nav-right button border-white hover-bg-white arrow-right"><span class="icon icon-variables"></span> Variables</a>
-            </div>
-
-            <div class="nav-content-wrap">
-                <h3><span class="icon icon-search"></span> Search locations</h3>
-
-                <div class="nav-content tabs">
-                    <nav>
-                        <a href="#nav-search" class="nav-search-tab" data-tabs-group="nav-search"><span>Results</span></a>
-                    </nav>
-
-                    <div id="nav-search" class="tab nav-content-tab">
-                        <ul class="col-2">
-                            <li><a href="location.html">Seattle</a></li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <div id="nav-variables" class="slide">
-            <div class="slide-bg"></div>
-
-            <div class="nav-controls">
-                <a href="#" class="nav-left button border-white hover-bg-white arrow-left"><span class="icon icon-search"></span> Search</a>
-                <a href="#" class="nav-right button border-white hover-bg-white arrow-right"><span class="icon icon-bubble"></span> Impacts</a>
-            </div>
-
-            <div class="nav-content-wrap">
-                <h3><span class="icon icon-variables"></span> Choose a variable</h3>
-
-                <a href="variables.html">Variables dummy page</a>
-
-                <div class="nav-content tabs">
-                    <nav>
-                        <a href="#nav-vars-projected" class="nav-vars-tab" data-tabs-group="nav-vars"><span>Projected</span></a>
-                        <a href="#nav-vars-historical" class="nav-vars-tab" data-tabs-group="nav-vars"><span>Historical</span></a>
-                    </nav>
-
-                    <div id="nav-vars-projected" class="tab nav-content-tab">
-                        <ol class="col-4">
-                            <li><a>Temperature</a>
-                                <ul>
-                                    <li><a>By Climate Division</a></li>
-                                    <li><a>Modelled Historical</a></li>
-                                    <li><a>Weather Station</a></li>
-                                </ul>
-                            </li>
-
-                            <li><a>Precipitation</a>
-                                <ul>
-                                    <li><a>By Climate Division</a></li>
-                                    <li><a>Modelled Historical</a></li>
-                                    <li><a>Weather Station</a></li>
-                                </ul>
-                            </li>
-
-                            <li><a>Drought</a></li>
-
-                            <li><a>Sea Level Rise</a></li>
-                        </ol>
-                    </div>
-
-                    <div id="nav-vars-historical" class="tab nav-content-tab">
-                        <ul class="col-4">
-                            <li>temperature</li>
-                            <li>precipitation</li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <div id="nav-impacts" class="slide">
-            <div class="slide-bg"></div>
-
-            <div class="nav-controls">
-                <a href="#" class="nav-left button border-white hover-bg-white arrow-left"><span class="icon icon-variables"></span> Variables</a>
-                <a href="#" class="nav-right button border-white hover-bg-white arrow-right"><span class="icon icon-search"></span> Search</a>
-            </div>
-
-            <div class="nav-content-wrap">
-                <h3><span class="icon icon-bubble"></span> Choose an impact</h3>
-
-                <div class="nav-content tabs">
-                    <nav>
-                        <a href="#nav-impacts" class="nav-impacts-tab" data-tabs-group="nav-impacts"><span>By Impact</span></a>
-                    </nav>
-
-                    <div id="nav-impacts" class="tab nav-content-tab">
-                        <ul class="col-2">
-                            <!--<li><a href="#">Coastal Flood Risk</a></li>-->
-                            <li><a href="impact_ecosystem-vulnerability.html">Ecosystem Vulnerability</a></li>
-                            <!--<li><a href="#">Energy Supply and Use</a></li>
-                            <li><a href="#">Food Resilience</a></li>
-                            <li><a href="#">Human Health</a></li>
-                            <li><a href="#">Transportation and Supply Chain</a></li>
-                            <li><a href="#">Tribal Nations</a></li>
-                            <li><a href="#">Water Resources</a></li>-->
-                        </ul>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-</nav>
+<?php include_once('tpl_header.php'); ?>
 
 <div id="viewport">
-    <div id="main-content-wrap" style="background-image: url(./resources/img/bg_location-seattle.jpg);">
+    <div id="main-content-wrap">
 
-        <div class="share-widget">
-            <a href="#" class="share-trigger"><span class="icon icon-social"></span>Share</a>
-            <ul>
-                <li><a href="#"><span class="icon icon-facebook"></span>Facebook</a></li>
-                <li><a href="#"><span class="icon icon-twitter"></span>Twitter</a></li>
-                <li><a href="#"><span class="icon icon-linkedin"></span>LinkedIn</a></li>
-            </ul>
+        <?php include_once('tpl_share.php'); ?>
+        
+        <div id="location-search">
+          <input type="text" class="autocomplete" placeholder="Search another location">
         </div>
 
         <section id="location-splash" class="page-splash">
             <div class="splash-text">
                 <h1>Seattle, WA</h1>
+                <h3>King County</h3>
                 <p>The following provides a summary of the data for the location you have chosen. Explore the summaries or click on the graph or map for more details.</p>
             </div>
 
@@ -185,6 +50,7 @@
                 <ul>
                     <li><a href="#location-temperature">Temperature</a></li>
                     <li><a href="#location-precipitation">Precipitation</a></li>
+                    <li><a href="#location-derived">Derived</a></li>
                     <li><a href="#location-impacts">Relevant Impacts</a></li>
                 </ul>
             </div>
@@ -212,14 +78,14 @@
 
                 <div id="temperature-data" class="data-list">
                     <ul class="data-options">
-                        <li><a href="#" class="active accent-color accent-border">Average Mean<span class="icon icon-help"></span></a></li>
-                        <li><a href="#">Average Low<span class="icon icon-help"></span></a></li>
-                        <li><a href="#">Average High<span class="icon icon-help"></span></a></li>
-                        <li><a href="#">Hottest<span class="icon icon-help"></span></a></li>
-                        <li><a href="#">Coldest<span class="icon icon-help"></span></a></li>
-                        <li><a href="#">Days over 90º<span class="icon icon-help"></span></a></li>
+                      <li class="active accent-border"><a href="#" class="text accent-color">Average Mean</a><a href="#detail-temperature" class="icon icon-help nav-detail-link"></a></li>
+                      <li class="accent-border"><a href="#" class="text accent-color">Average Low</a><a href="#" class="icon icon-help nav-detail-link"></a></li>
+                      <li class="accent-border"><a href="#" class="text accent-color">Average High</a><a href="#" class="icon icon-help nav-detail-link"></a></li>
+                      <li class="accent-border"><a href="#" class="text accent-color">Hottest</a><a href="#" class="icon icon-help nav-detail-link"></a></li>
+                      <li class="accent-border"><a href="#" class="text accent-color">Coldest</a><a href="#" class="icon icon-help nav-detail-link"></a></li>
+                      <li class="accent-border"><a href="#" class="text accent-color">Days over 90º</a><a href="#" class="icon icon-help nav-detail-link"></a></li>
                     </ul>
-
+                    
                     <form onsubmit="return false;">
                         <div class="row">
                             <label for="county">County</label>
@@ -375,13 +241,13 @@
                 </header>
 
                 <div id="precipitation-data" class="data-list">
-                    <ul class="data-options">
-                        <li><a href="#" class="active accent-color accent-border">Average Mean</a></li>
-                        <li><a href="#">Total Rainfall</a></li>
-                        <li><a href="#">Precipitation Anomaly</a></li>
-                        <li><a href="#">Number of Wet Days</a></li>
-                        <li><a href="#">Number of Extreme Wet Days</a></li>
-                    </ul>
+                  <ul class="data-options">
+                    <li class="active accent-border"><a href="#" class="text accent-color">Average Mean</a><a href="#" class="icon icon-help nav-detail-link"></a></li>
+                    <li class="accent-border"><a href="#" class="text accent-color">Total Rainfall</a><a href="#" class="icon icon-help nav-detail-link"></a></li>
+                    <li class="accent-border"><a href="#" class="text accent-color">Precipitation Anomaly</a><a href="#" class="icon icon-help nav-detail-link"></a></li>
+                    <li class="accent-border"><a href="#" class="text accent-color">Number of Wet Days</a><a href="#" class="icon icon-help nav-detail-link"></a></li>
+                    <li class="accent-border"><a href="#" class="text accent-color">Number of Extreme Wet Days</a><a href="#" class="icon icon-help nav-detail-link"></a></li>
+                  </ul>
                 </div>
 
                 <div id="precipitation-tabs" class="data-accordion-wrap">
@@ -435,10 +301,10 @@
             </div>
         </section>
 
-        <section id="location-drought" class="location-data-section-wrap">
+        <section id="location-derived" class="location-data-section-wrap">
             <div class="location-data-section">
                 <header>
-                    <h3 class="accent-color"><span class="icon icon-drought"></span>Drought</h3>
+                    <h3 class="accent-color"><span class="icon icon-drought"></span>Derived</h3>
 
                     <div class="data-vars">
                         <select id="data-type" class="dropdown">
@@ -455,19 +321,19 @@
                     </div>
                 </header>
 
-                <div id="drought-data" class="data-list">
-                    <ul class="data-options">
-                        <li><a href="#" class="active accent-color accent-border">Total Rainfall</a></li>
-                        <li><a href="#">Agricultural Impacts</a></li>
-                        <li><a href="#">Number of Dry Days</a></li>
-                        <li><a href="#">Number of Extreme Dry</a></li>
-                    </ul>
+                <div id="derived-data" class="data-list">
+                  <ul class="data-options">
+                    <li class="active accent-border"><a href="#" class="text accent-color">Total Rainfall</a><a href="#" class="icon icon-help nav-detail-link"></a></li>
+                    <li class="accent-border"><a href="#" class="text accent-color">Agricultural Impacts</a><a href="#" class="icon icon-help nav-detail-link"></a></li>
+                    <li class="accent-border"><a href="#" class="text accent-color">Number of Dry Days</a><a href="#" class="icon icon-help nav-detail-link"></a></li>
+                    <li class="accent-border"><a href="#" class="text accent-color">Number of Extreme Dry</a><a href="#" class="icon icon-help nav-detail-link"></a></li>
+                  </ul>
                 </div>
 
-                <div id="drought-tabs" class="data-accordion-wrap">
+                <div id="derived-tabs" class="data-accordion-wrap">
                     <div class="data-accordion">
 
-                        <div id="drought-chart" class="data-accordion-tab data-chart accent-background">
+                        <div id="derived-chart" class="data-accordion-tab data-chart accent-background">
                             <header>
                                 <h4>
                                     <span class="icon icon-emission-scenario"></span>
@@ -497,7 +363,7 @@
                             </div>
                         </div>
 
-                        <div id="drought-map" class="data-accordion-tab data-map accent-background">
+                        <div id="derived-map" class="data-accordion-tab data-map accent-background">
                             <header>
                                 <h4 class="accent-color">
                                     <span class="icon icon-district"></span>
@@ -542,30 +408,11 @@
 </div>
 
 
-<!-- START:JS_LOADER -->
+<?php include_once('tpl_footer.php'); ?>
 
-<script type="text/javascript" src="./resources/js/formstone/core.js"></script>
-<script type="text/javascript" src="./resources/js/formstone/mediaquery.js"></script>
-<script type="text/javascript" src="./resources/js/formstone/touch.js"></script>
-<script type="text/javascript" src="./resources/js/formstone/scrollbar.js"></script>
-<script type="text/javascript" src="./resources/js/formstone/dropdown.js"></script>
-<script type="text/javascript" src="./resources/js/formstone/equalize.js"></script>
-<script type="text/javascript" src="./resources/js/formstone/swap.js"></script>
-<script type="text/javascript" src="./resources/js/formstone/tabs.js"></script>
-
-<script type="text/javascript" src="./resources/js/lc_switch.min.js"></script>
-<script type="text/javascript" src="./resources/js/jquery.cycle2.min.js"></script>
-<script type="text/javascript" src="./resources/js/jquery.waypoints.min.js"></script>
-<script type="text/javascript" src="./resources/js/jquery.waypoints.sticky.min.js"></script>
-<script type="text/javascript" src="./resources/js/split-pane.min.js"></script>
-<script type="text/javascript" src="./resources/js/download.js"></script>
-
-
-<script type="text/javascript" src="./resources/js/global_functions.js"></script>
-
-<!-- END:JS_LOADER -->
 <script src="./resources/js/cwg/climate-widget-graph.js"></script>
 <script src="./resources/js/cwg/cwg.js"></script>
+
 
 
 

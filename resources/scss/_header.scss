@@ -1,0 +1,483 @@
+#main-header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  padding: 20px;
+  background: $white;
+  z-index: 20;
+  
+  nav {
+    
+  }
+  
+  #main-nav {
+    display: inline;
+    
+    a {
+      .icon {
+        font-size: 1.25rem;
+        vertical-align: middle;
+      }
+      
+      .text {
+        display: inline-block;
+        padding: 0 0 0 15px;
+        color: $grey1;
+      }
+    }
+  }
+  
+  #header-logo {
+    display: block;
+    float: left;
+    width: 200px;
+    margin: 0 2% 0 0;
+    
+    img {
+    }
+  }
+  
+  .nav-btn {
+    display: block;
+    position: relative;
+    float: left;
+    height: 70px;
+    padding: 23px 16px 0 16px;
+    @include transition(0.25s);
+    
+    &:hover {
+      background: $grey2;
+    }
+  }
+  
+  #nav-trigger {
+    .hamburger {
+      display: inline-block;
+      position: relative;
+      width: 24px;
+      height: 23px;
+      padding: 9px 0 0 0;
+      @include transition(0.25s);
+      vertical-align: top;
+      
+      .bar {
+        display: block;
+        width: 24px;
+        height: 5px;
+        background: $orange1;
+        opacity: 1;
+        @include transition(0.5s);
+    
+        &:before,
+        &:after {
+          content: '';
+          display: block;
+          position: absolute;
+          left: 0;
+          width: 24px;
+          height: 5px;
+          background: $orange1;
+          @include transition(0.5s);
+        }
+        
+        &:before {
+          top: 0;
+        }
+        
+        &:after {
+          bottom: 0;
+        }
+      }
+    }
+    
+    &.open {
+      background: transparentize($grey1, 0.9);
+      
+      span {
+        opacity: 0;
+      }
+      
+      &:before {
+        @include rotate(-45deg);
+        top: 28px;
+      }
+      
+      &:after {
+        @include rotate(45deg);
+        bottom: 28px;
+      }
+    }
+  }
+  
+  #breadcrumb {
+    width: 50%;
+    margin: 14px auto 0 auto;
+    text-align: center;
+    font: 1.25rem/1em $sans-book;
+    color: $blue1;
+    
+    span {
+      display: inline-block;
+      padding: 10px 17px 10px 20px;
+      border-left: 1px solid $orange1;
+      
+      &:first-child {
+        border-left: none;
+      }
+    }
+    
+    .level-1 {
+      
+    }
+    
+    .level-2 {
+    }
+  }
+  
+  #subnav {
+    float: right;
+    margin: 23px 0 0 0;
+    
+    li {
+      display: inline-block;
+      margin: 0 0 0 20px;
+    }
+  }
+}
+
+// left header
+
+#left-header {
+  position: fixed;
+  top: 110px;
+  left: 20px;
+  width: 20%;
+  width: calc(20% + 10px);
+  height: 100%;
+  border-right: 10px solid $white;
+  z-index: 20;
+  
+  .left-filler {
+    position: relative;
+    background: $white;
+    padding: 10px 0 0 0;
+  }
+  
+  /*#main-header {
+  
+    #header-logo {
+      width: 50%;
+      max-width: 71px;
+    }
+  }
+  
+  #nav-trigger {
+    float: right;
+  }
+  
+  #main-nav {
+    padding: 20px 8%;
+    background: $white;
+    @include clearfix;
+  }
+  
+  #main-content-wrap {
+    padding-left: 20%;
+    padding-left: calc(20% + 10px);
+  }*/
+}
+
+// menu
+
+.menu {
+  a,
+  label {
+    display: block;
+    padding: 8%;
+    color: $white;
+    text-decoration: none;
+    white-space: nowrap;
+    @include transition(0.25s);
+    cursor: pointer;
+  }
+  
+  li {
+    @include transition(0.25s);
+    
+    &.border {
+      border-bottom: 10px solid $white;
+    }
+    
+    &.search-field {
+      padding: 8%;
+      white-space: nowrap;
+      
+      input {
+        display: inline-block;
+        width: 80%;
+        background: transparent;
+        border: none;
+        font: 300 1rem/1em $roboto;
+        color: $white;
+        outline: none;
+        @include transition(0.25s);
+        
+        &::-webkit-input-placeholder {
+          color: $white;
+          padding-top: 3px;
+          @include transition(0.25s);
+        }
+        
+        &:-moz-placeholder {
+          color: $white;
+          padding-top: 3px;
+          @include transition(0.25s); 
+        }
+        
+        &::-moz-placeholder {
+          color: $white;
+          padding-top: 3px;
+          @include transition(0.25s);
+        }
+        
+        &:-ms-input-placeholder {
+          color: $white;
+          padding-top: 3px;
+          @include transition(0.25s);
+        }
+        
+        &:focus {
+          &::-webkit-input-placeholder {
+            color: transparentize($white, 0.75);
+          }
+          
+          &:-moz-placeholder {
+            color: transparentize($white, 0.75); 
+          }
+          
+          &::-moz-placeholder {
+            color: transparentize($white, 0.75);
+          }
+          
+          &:-ms-input-placeholder {
+            color: transparentize($white, 0.75);
+          }
+        }
+      }
+      
+      .icon {
+        color: $white;
+      }
+    }
+    
+    &.select {
+      white-space: nowrap;
+      
+      .fs-dropdown {
+        margin: 0;
+        
+        * {
+          font: 300 1rem/1em $roboto;
+        }
+      
+        .fs-dropdown-selected {
+          height: auto;
+          padding: 8%;
+          background: transparentize($blue1, 0.2);
+          @include border-radius(0);
+          color: $white;
+          line-height: 1;
+          border: none;
+          @include transition(0.25s);
+          
+          &:hover {
+            background: transparentize($blue1, 0.1);
+          }
+        }
+        
+        .fs-dropdown-item {
+          border: none;
+          
+          &:hover {
+            background: transparentize($black, 0.95);
+          }
+          
+          &.fs-dropdown-item_selected {
+            background: transparentize($black, 0.92);
+            
+            &:hover {
+              background: transparentize($black, 0.90);
+            }
+          }
+        }
+        
+        &.fs-dropdown-open {
+          .fs-dropdown-selected {
+            background: transparentize($blue1, 0.1);
+          }
+        }
+      }
+    }
+    
+    &.toggle {
+      position: relative;
+      z-index: 1;
+      
+      label {
+        &:after {
+          content: '';
+          @include full-size;
+          z-index: 10;
+        }
+      }
+      
+      .lcs_wrap {
+        z-index: 1;
+      }
+    }
+    
+    &.about-link {
+      font: 0.875em/1.4em $sans-heavy;
+      
+      a {
+        padding: 6% 8%;
+        white-space: normal;
+      }
+    }
+    
+    &.legend {
+      padding: 8%;
+      white-space: nowrap;
+      color: $white;
+      
+      ul {
+        @include legacy-clearfix;
+        
+        li {
+          float: left;
+          width: 16%;
+        }
+      }
+    }
+  }
+  
+  .icon {
+    margin: -4px 8% 0 0;
+    font-size: 1.25rem;
+    vertical-align: middle;
+  }
+  
+  &.orange-menu {
+    a,
+    label {
+      background: transparentize($orange1, 0.2);
+      
+      &:hover {
+        background: transparentize($orange1, 0.1);
+      }
+    }
+    
+    li {
+      &.search-field {
+        background: transparentize($orange1, 0.2);
+      }
+      
+      &.legend {
+        background: transparentize($orange1, 0.2);
+      }
+    }
+  }
+  
+  &.blue-menu {
+    a,
+    label {
+      //background: transparentize($blue1, 0.2);
+      
+    }
+    
+    li {
+      background: transparentize($blue1, 0.2);
+      
+      &:hover {
+        background: transparentize($blue1, 0.1);
+      }
+      
+      &.search-field {
+        &:hover {
+          background: transparentize($blue1, 0.2);
+        }
+      }
+      
+      &.select {
+        background: transparent;
+      }
+    }
+  }
+}
+
+// white menu
+
+.white-menu {
+  position: relative;
+  
+  h4 {
+    margin: 0 0 4% 0;
+    padding-left: 10px;
+    padding-left: calc(5% + 10px);
+    font: 400 1.5rem/1.25em $roboto;
+    color: $orange1;
+  }
+  
+  ul {
+    background: transparentize($white, 0.2);
+    padding: 3% 0;
+    border: 10px solid $white;
+    font: 400 1.125rem/1.25em $roboto;
+    
+    li {
+      padding: 2% 5%;
+    }
+    
+    a {
+      color: $blue1;
+    }
+  }
+}
+
+// orange menu
+
+// UI slider
+
+.ui-slider {
+  position: absolute;
+  height: 6px;
+  background: transparentize($grey1, 0.8);
+  cursor: pointer;
+
+  .ui-slider-handle {
+    left: 3px;
+    width: 16px;
+    height: 16px;
+    margin: 0 0 -8px -8px;
+    background: $orange1;
+    @include border-radius(50%);
+    outline: none;
+    cursor: pointer;
+  }
+  
+  .ui-slider-range {
+    font-size: 1.25rem;
+    background: $orange1;
+    color: transparentize($white, 1);
+    text-align: center;
+    @include transition(color 0.25s);
+    @include box-shadow(inset 0 5px 10px -5px transparentize($black, 0.5));
+  }
+  
+  &:hover {
+    .ui-slider-range {
+      color: $white;
+    }
+  }
+}

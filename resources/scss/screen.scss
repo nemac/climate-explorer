@@ -97,6 +97,7 @@ h6 {
 
 .button {
   position: relative;
+  display: inline-block;
   padding: 20px 40px;
   font: 1rem/1em $sans-heavy;
   border: 10px solid transparent;
@@ -185,6 +186,17 @@ h6 {
     }
   }
   
+  // colours
+  
+  &.color-white {
+    color: $white;
+    
+    &:before,
+    &:after {
+      background: $white;
+    }
+  }
+  
   // borders
     
   &.border-white {
@@ -195,6 +207,10 @@ h6 {
     &:after {
       background: $white;
     }
+  }
+  
+  &.border-trans {
+    border-color: transparent;
   }
   
   &.border-none {
@@ -218,7 +234,7 @@ h6 {
   &.hover-bg-white {
     &:hover {
       background: $white;
-      color: $black;
+      color: $blue1;
       mix-blend-mode: screen;
       
       &:before,
@@ -236,6 +252,10 @@ h6 {
     &:before,
     &:after {
       background: $black;
+    }
+    
+    &:hover {
+      color: $black;
     }
   }
 }
@@ -330,227 +350,7 @@ h6 {
 
 // NAV OVERLAY
 
-#nav-overlay {
-  display: none;
-  @include full-size;
-  position: fixed;
-  border: 20px solid $white;
-  color: $white;
-  z-index: 600;
-  backdrop-filter: blur(6px);
-  -webkit-backdrop-filter: blur(6px);
-  
-  #nav-close {
-    position: fixed;
-    top: 20px;
-    right: 20px;
-    width: 40px;
-    height: 40px;
-    padding: 0;
-    background: $white;
-    color: $black;
-    mix-blend-mode: screen;
-    z-index: 2;
-  }
-  
-  #nav-cycle {
-    @include full-size;
-    z-index: 1;
-    
-    .slide {
-      @include full-size;
-    }
-    
-    .slide-bg {
-      @include full-size;
-      background-repeat: no-repeat;
-      background-position: center;
-      background-size: cover;
-      opacity: 0.9;
-      z-index: 1;
-    }
-  }
-  
-  #nav-search {
-    .slide-bg {
-      background-image: url(../img/bg_contours-lightblue.png);
-    }
-  }
-  
-  #nav-variables {
-    .slide-bg {
-      background-image: url(../img/bg_contours-blue.png);
-    }
-  }
-  
-  #nav-impacts {
-    .slide-bg {
-      background-image: url(../img/bg_contours-orange.png);
-    }
-  }
-  
-  .nav-controls {
-    position: static;
-    
-    a {
-      position: absolute;
-      top: 10%;
-      min-width: 15%;
-      padding-left: 20px;
-      padding-right: 50px;
-      z-index: 3;
-      
-      &:before,
-      &:after {
-        right: 20px;
-      }
-      
-      &.nav-left {
-        left: 0;
-        border-left: none;
-      }
-      
-      &.nav-right {
-        right: 0;
-        border-right: none;
-      }
-    }
-  }
-  
-  .nav-content-wrap {
-    position: absolute;
-    top: 10%;
-    left: 20%;
-    width: 60%;
-    height: 80%;
-    z-index: 2;
-  
-    a {
-      color: $white;
-    }
-    
-    h3 {
-      margin: 0 0 10% 0;
-      color: $white;
-      font: 1.625rem/4.875rem $sans-heavy;
-      
-      .icon {
-        margin-right: 20px;
-      }
-    }
-  }
-  
-  .nav-content {
-    nav {
-      height: 40px;
-      padding: 0 4%;
-      
-      a {
-        position: relative;
-        display: block;
-        float: left;
-        width: 25%;
-        font: 300 1.125rem/1em $roboto;
-        text-transform: uppercase;
-        color: $white;
-        
-        span {
-          position: relative;
-          display: inline-block;
-          margin: 0 0 2px 0;
-          padding: 10px 20px 10px 0;
-          border-bottom: 2px solid $white;
-          @include transition(0.25s);
-          vertical-align: top;
-            
-          &:after {
-            content: '';
-            display: block;
-            position: absolute;
-            left: 50%;
-            bottom: -2px;
-            width: 0;
-            height: 0;
-            margin: 0;
-            border: 0 solid $white;
-            border-color: $white transparent transparent transparent;
-            @include transition(0.25s);
-          }
-        }
-        
-        &.fs-tabs-active {
-          span {
-            margin: 0;
-            border-bottom-width: 4px;
-            
-            &:after {
-              bottom: -16px;
-              margin: 0 0 0 -6px;
-              border-width: 6px;
-            }
-          }
-        }
-      }
-    }
-    
-    .tab {
-      margin: -6px 0 0 0;
-      padding: 6% 4%;
-      background: transparentize($white, 0.9);
-      
-      ol {
-        @include legacy-clearfix;
-        
-        & > li {
-          float: left;
-          font: 400 1.25rem/1em $roboto;
-          counter-increment: customlistcounter;
-          
-          &:before {
-            content: counter(customlistcounter) " ";
-            float: left;
-            width: 10%;
-            margin: -6px 0 0 -10%;
-            font-size: 60%;
-            font-weight: 600;
-            color: $orange1;
-          }
-          
-          &:first-child {
-            counter-reset: customlistcounter;
-          }
-        }
-        
-        &.col-2 {
-          li {
-            width: 50%;
-          }
-        }
-        
-        &.col-4 {
-          li {
-            width: 25%;
-          }
-        }
-      
-        ul {
-          margin: 15px 0 0 0;
-          
-          li {
-            float: none;
-            width: auto!important;
-            margin: 0 0 10px 0;
-            font: 300 1rem/1em $roboto;
-          }
-        }
-      }
-      
-      a {
-        //font: 300 1.25rem/1em $roboto;
-      }
-    }
-  }
-}
+@import "nav-overlay";
 
 // PAGE STRUCTURE
 
@@ -569,420 +369,7 @@ h6 {
 
 // HEADER
 
-#main-header {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  padding: 20px;
-  background: $white;
-  z-index: 20;
-  
-  nav {
-    
-  }
-  
-  #main-nav {
-    display: inline;
-    
-    a {
-      .icon {
-        font-size: 1.25rem;
-        vertical-align: middle;
-      }
-      
-      .text {
-        display: inline-block;
-        padding: 0 0 0 15px;
-        color: $grey1;
-      }
-    }
-  }
-  
-  #header-logo {
-    display: block;
-    float: left;
-    width: 200px;
-    margin: 0 2% 0 0;
-    
-    img {
-    }
-  }
-  
-  .nav-btn {
-    display: block;
-    position: relative;
-    float: left;
-    height: 70px;
-    padding: 23px 16px 0 16px;
-    @include transition(0.25s);
-    
-    &:hover {
-      background: $grey2;
-    }
-  }
-  
-  #nav-trigger {
-    .hamburger {
-      display: inline-block;
-      position: relative;
-      width: 24px;
-      height: 23px;
-      padding: 9px 0 0 0;
-      @include transition(0.25s);
-      vertical-align: top;
-      
-      .bar {
-        display: block;
-        width: 24px;
-        height: 5px;
-        background: $orange1;
-        opacity: 1;
-        @include transition(0.5s);
-    
-        &:before,
-        &:after {
-          content: '';
-          display: block;
-          position: absolute;
-          left: 0;
-          width: 24px;
-          height: 5px;
-          background: $orange1;
-          @include transition(0.5s);
-        }
-        
-        &:before {
-          top: 0;
-        }
-        
-        &:after {
-          bottom: 0;
-        }
-      }
-    }
-    
-    &.open {
-      background: transparentize($grey1, 0.9);
-      
-      span {
-        opacity: 0;
-      }
-      
-      &:before {
-        @include rotate(-45deg);
-        top: 28px;
-      }
-      
-      &:after {
-        @include rotate(45deg);
-        bottom: 28px;
-      }
-    }
-  }
-  
-  #breadcrumb {
-    width: 50%;
-    margin: 14px auto 0 auto;
-    text-align: center;
-    font: 1.25rem/1em $sans-book;
-    color: $blue1;
-    
-    span {
-      display: inline-block;
-      padding: 10px 17px 10px 20px;
-      border-left: 1px solid $orange1;
-      
-      &:first-child {
-        border-left: none;
-      }
-    }
-    
-    .level-1 {
-      
-    }
-    
-    .level-2 {
-    }
-  }
-  
-  #subnav {
-    float: right;
-    margin: 23px 0 0 0;
-    
-    li {
-      display: inline-block;
-      margin: 0 0 0 20px;
-    }
-  }
-}
-
-// left header
-
-#left-header {
-  position: fixed;
-  top: 110px;
-  left: 20px;
-  width: 20%;
-  width: calc(20% + 10px);
-  height: 100%;
-  border-right: 10px solid $white;
-  z-index: 20;
-  
-  .left-filler {
-    position: relative;
-    background: $white;
-    padding: 10px 0 0 0;
-  }
-  
-  /*#main-header {
-  
-    #header-logo {
-      width: 50%;
-      max-width: 71px;
-    }
-  }
-  
-  #nav-trigger {
-    float: right;
-  }
-  
-  #main-nav {
-    padding: 20px 8%;
-    background: $white;
-    @include clearfix;
-  }
-  
-  #main-content-wrap {
-    padding-left: 20%;
-    padding-left: calc(20% + 10px);
-  }*/
-}
-
-// menu
-
-.menu {
-  a,
-  label {
-    display: block;
-    padding: 8%;
-    color: $white;
-    text-decoration: none;
-    white-space: nowrap;
-    @include transition(0.25s);
-    cursor: pointer;
-  }
-  
-  li {
-    &.border {
-      border-bottom: 10px solid $white;
-    }
-    
-    &.search-field {
-      padding: 8%;
-      white-space: nowrap;
-      
-      input {
-        display: inline-block;
-        width: 80%;
-        background: transparent;
-        border: none;
-        font: 300 1rem/1em $roboto;
-        color: $white;
-        outline: none;
-        @include transition(0.25s);
-        
-        &::-webkit-input-placeholder {
-          color: $white;
-          padding-top: 3px;
-          @include transition(0.25s);
-        }
-        
-        &:-moz-placeholder {
-          color: $white;
-          padding-top: 3px;
-          @include transition(0.25s); 
-        }
-        
-        &::-moz-placeholder {
-          color: $white;
-          padding-top: 3px;
-          @include transition(0.25s);
-        }
-        
-        &:-ms-input-placeholder {
-          color: $white;
-          padding-top: 3px;
-          @include transition(0.25s);
-        }
-        
-        &:focus {
-          &::-webkit-input-placeholder {
-            color: transparentize($white, 0.75);
-          }
-          
-          &:-moz-placeholder {
-            color: transparentize($white, 0.75); 
-          }
-          
-          &::-moz-placeholder {
-            color: transparentize($white, 0.75);
-          }
-          
-          &:-ms-input-placeholder {
-            color: transparentize($white, 0.75);
-          }
-        }
-      }
-      
-      .icon {
-        color: $white;
-      }
-    }
-    
-    &.toggle {
-      position: relative;
-    }
-    
-    &.about-link {
-      font: 0.875em/1.4em $sans-heavy;
-      
-      a {
-        padding: 6% 8%;
-        white-space: normal;
-      }
-    }
-    
-    &.legend {
-      padding: 8%;
-      white-space: nowrap;
-      color: $white;
-      
-      ul {
-        @include legacy-clearfix;
-        
-        li {
-          float: left;
-          width: 16%;
-        }
-      }
-    }
-  }
-  
-  .icon {
-    margin: -4px 8% 0 0;
-    font-size: 1.25rem;
-    vertical-align: middle;
-  }
-  
-  &.orange-menu {
-    a,
-    label {
-      background: transparentize($orange1, 0.2);
-      
-      &:hover {
-        background: transparentize($orange1, 0.1);
-      }
-    }
-    
-    li {
-      &.search-field {
-        background: transparentize($orange1, 0.2);
-      }
-      
-      &.legend {
-        background: transparentize($orange1, 0.2);
-      }
-    }
-  }
-  
-  &.blue-menu {
-    a,
-    label {
-      background: transparentize($blue1, 0.2);
-      
-      &:hover {
-        background: transparentize($blue1, 0.1);
-      }
-    }
-    
-    li {
-      &.search-field {
-        background: transparentize($blue1, 0.2);
-      }
-      
-      &.legend {
-        background: transparentize($blue1, 0.2);
-      }
-    }
-  }
-}
-
-// white menu
-
-.white-menu {
-  position: relative;
-  
-  h4 {
-    margin: 0 0 4% 0;
-    padding-left: 10px;
-    padding-left: calc(5% + 10px);
-    font: 400 1.5rem/1.25em $roboto;
-    color: $orange1;
-  }
-  
-  ul {
-    background: transparentize($white, 0.2);
-    padding: 3% 0;
-    border: 10px solid $white;
-    font: 400 1.125rem/1.25em $roboto;
-    
-    li {
-      padding: 2% 5%;
-    }
-    
-    a {
-      color: $blue1;
-    }
-  }
-}
-
-// orange menu
-
-// UI slider
-
-.ui-slider {
-  position: absolute;
-  height: 6px;
-  background: transparentize($grey1, 0.8);
-  cursor: pointer;
-
-  .ui-slider-handle {
-    left: 3px;
-    width: 16px;
-    height: 16px;
-    margin: 0 0 -8px -8px;
-    background: $orange1;
-    @include border-radius(50%);
-    outline: none;
-    cursor: pointer;
-  }
-  
-  .ui-slider-range {
-    font-size: 1.25rem;
-    background: $orange1;
-    color: transparentize($white, 1);
-    text-align: center;
-    @include transition(color 0.25s);
-    @include box-shadow(inset 0 5px 10px -5px transparentize($black, 0.5));
-  }
-  
-  &:hover {
-    .ui-slider-range {
-      color: $white;
-    }
-  }
-}
+@import "header";
   
 .tooltip {
   display: none;
@@ -1113,6 +500,24 @@ h6 {
       top: 0;
     }
   }
+}
+
+// sub-layer slider
+
+.sublayer-slider {
+  position: relative;
+  margin-top: 10px;
+
+  &.ui-slider {
+    .ui-slider-handle {
+      background: $grey2;
+    }
+  }
+}
+
+.sublayer-range-values {
+  font-size: 0.8em;
+  margin-top: 7px;
 }
 
 .page-splash {
@@ -1256,6 +661,32 @@ h6 {
       width: 60px;
       height: 60px;
     }
+    
+    #h7 {
+      width: auto;
+      padding: 10px;
+      font-size: 0.75rem;
+      line-height: 1.25em;
+      text-align: left;
+      color: $blue2;
+      
+      span {
+        display: block;
+        float: left;
+      }
+      
+      .logo {
+        width: 30px;
+        height: 30px;
+        margin: 2px 8px 0 0;
+        background: url(../img/habitatseven.png) no-repeat center;
+        background-size: 100% auto;
+      }
+      
+      .text {
+
+      }
+    }
   }
 }
 
@@ -1270,24 +701,143 @@ h6 {
     background-attachment: fixed;
   }
   
+  .page-splash {
+    color: $blue1;
+    
+    .splash-text {
+      mix-blend-mode: normal;
+    }
+    
+    h3 {
+      margin: 0 0 3% 0;
+      color: $orange1;
+    }
+  }
+  
   section {
     position: relative;
     margin: 0 0 3% 0;
   }
 }
 
+#location-search {
+  position: absolute;
+  top: 20px;
+  right: 100px;
+  height: 60px;
+  background: transparentize($white, 0.2);
+  z-index: 1;
+  
+  input {
+    height: 60px;
+    margin: 0;
+    padding: 15px;
+    font: 1.25rem/1em $sans-book;
+    color: $blue2;
+    border: none;
+    outline: none;
+    background: $white;
+    @include transition(0.5s);
+    
+    &::-webkit-input-placeholder {
+      color: $blue2;
+      padding-top: 3px;
+      @include transition(0.25s);
+    }
+    
+    &:-moz-placeholder {
+      color: $blue2;
+      padding-top: 3px;
+      @include transition(0.25s);
+    }
+    
+    &::-moz-placeholder {
+      color: $blue2;
+      padding-top: 3px;
+      @include transition(0.25s);
+    }
+    
+    &:-ms-input-placeholder {
+      color: $blue2;
+      padding-top: 3px;
+      @include transition(0.25s);
+    }
+    
+    &:focus {
+      background: $blue1;
+      color: $white;
+      
+      &::-webkit-input-placeholder {
+        color: transparentize($white, 0.5);
+      }
+      
+      &:-moz-placeholder {
+        color: transparentize($white, 0.5);
+      }
+      
+      &::-moz-placeholder {
+        color: transparentize($white, 0.5);
+      }
+      
+      &:-ms-input-placeholder {
+        color: transparentize($white, 0.5);
+      }
+    }
+  }
+}
+
+// jquery UI
+
+.ui-autocomplete {
+	position: absolute;
+	top: 0;
+	left: 0;
+	cursor: default;
+}
+
+.ui-menu {
+	display: block;
+  padding: 10px;
+	margin: 0;
+	outline: none;
+	background: transparentize($white, 0.1);
+  border: 3px solid $orange1;
+  @include box-shadow(0 0 12px transparentize($blue2, 0.75));
+
+  .ui-menu {
+  	position: absolute;
+  }
+
+  .ui-menu-item {
+  	position: relative;
+  	margin: 0;
+  	padding: 0;
+  	cursor: pointer;
+  }
+  
+  .ui-menu-divider {
+  	margin: 5px 0;
+  	height: 0;
+  	font-size: 0;
+  	line-height: 0;
+  	border-width: 1px 0 0 0;
+  }
+  
+}
+
 #page-nav {
-  width: 65%;
+  width: 60%;
   padding-top: 20px;
   margin-left: 4%;
   margin-left: calc(4% + 10px);
   border-top: 3px solid $blue1;
+  color: $blue2;
   @include clearfix;
   @include transition(0.5s);
   
   h4 {
     float: left;
-    width: 10%;
+    width: 15%;
     margin: 2px 0 0 0;
     font: 0.875rem/1.125rem $sans-heavy;
     text-transform: uppercase;
@@ -1295,7 +845,7 @@ h6 {
   
   ul {
     float: left;
-    width: 90%;
+    width: 85%;
     
     li {
       float: left;
@@ -1318,6 +868,11 @@ h6 {
     background: transparentize($white, 0.2);
     border-top: none;
     z-index: 5;
+    
+    h4 {
+      width: auto;
+      margin-right: 2%;
+    }
   }
 }
 
@@ -1682,33 +1237,49 @@ h6 {
   
   .data-options {
     li {
+      padding-left: 12%;
       background: $white;
+      border-left-width: 0;
+      border-left-style: solid;
+      border-left-color: transparent;
       border-bottom: 1px solid $grey2;
+      @include transition(0.25s);
+      @include clearfix;
       
       &:last-child {
         border-bottom: none;
+      }
+        
+      &:hover {
+        padding-left: calc(12% - 10px);
+        border-left-width: 10px;
+        border-left-color: $grey2;
+      }
+        
+      &.active {
+        font-weight: 400;
+        padding-left: calc(12% - 10px);
+        border-left-width: 10px;
+        border-bottom-color: $grey2!important;
       }
       
       a {
         display: block;
         padding: 2%;
-        padding-left: 12%;
         color: $grey1;
         @include transition(0.25s);
-        border-left-width: 0;
-        border-left-style: solid;
-        border-left-color: transparent;
         
-        &:hover {
-          padding-left: calc(12% - 10px);
-          border-left-width: 10px;
-          border-left-color: $grey2;
+        &.text {
+          width: 90%;
+          float: left;
         }
         
-        &.active {
-          font-weight: 400;
-          padding-left: calc(12% - 10px);
-          border-left-width: 10px;
+        &.icon {
+          width: 10%;
+          float: right;     
+          text-align: right;
+          line-height: 1.5rem;
+          color: #aaa;
         }
       }
     }
@@ -1726,6 +1297,28 @@ h6 {
   
   .accent-border {
     border-color: $orange1;
+  }
+  
+  .data-options {
+    .accent-color {
+      color: $grey1;
+    }
+    
+    .accent-border {
+      border-left-color: $grey2;
+      border-bottom-color: $grey2;
+    }
+    
+    .active {
+      &.accent-border {
+        border-left-color: $orange1;
+        border-bottom-color: $grey2;
+      }
+      
+      .accent-color {
+        color: $orange1;
+      }
+    }
   }
   
   button {
@@ -1746,12 +1339,34 @@ h6 {
     border-color: $blue1;
   }
   
+  .data-options {
+    .accent-color {
+      color: $grey1;
+    }
+    
+    .accent-border {
+      border-left-color: $grey2;
+      border-bottom-color: $grey2;
+    }
+    
+    .active {
+      &.accent-border {
+        border-left-color: $blue1;
+        border-bottom-color: $grey2;
+      }
+      
+      .accent-color {
+        color: $blue1;
+      }
+    }
+  }
+  
   button {
     color: $blue1;
   }
 }
 
-#location-drought {
+#location-derived {
   .accent-color {
     color: $brown1;
   }
@@ -1762,6 +1377,28 @@ h6 {
   
   .accent-border {
     border-color: $brown1;
+  }
+  
+  .data-options {
+    .accent-color {
+      color: $grey1;
+    }
+    
+    .accent-border {
+      border-left-color: $grey2;
+      border-bottom-color: $grey2;
+    }
+    
+    .active {
+      &.accent-border {
+        border-left-color: $brown1;
+        border-bottom-color: $grey2;
+      }
+      
+      .accent-color {
+        color: $brown1;
+      }
+    }
   }
   
   button {
@@ -2042,6 +1679,13 @@ h6 {
         padding: 0;
         float: right;
         background: none;
+      }
+      
+      .visibility {
+        float: right;
+        width: 24px;
+        height: 24px;
+        margin-top: 0px;
       }
       
       // colours
