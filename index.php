@@ -15,7 +15,7 @@
 </head>
 <body id="page-home" class="">
 
-<?php include_once('tpl_header.php'); ?>
+<?php include_once('template/header.php'); ?>
 
 <div id="viewport">
     <div id="main-content-wrap">
@@ -65,10 +65,10 @@
 
     </div>
     
-    <?php include_once('tpl_share.php'); ?>
+    <?php include_once('template/share.php'); ?>
 </div>
 
-<?php include_once('tpl_footer.php'); ?>
+<?php include_once('template/footer.php'); ?>
 
 </body>
 </html>

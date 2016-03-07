@@ -85,7 +85,7 @@
     ),
     
     array(
-      'variable' => 'tribal_flood',
+      'variable' => 'tribal_flooding',
       'name' => 'Tribal Nations: Flood Risk',
       'detail' => "Tribal Nations: Flood Risk detail",
       'source' => 'NOAA, 2015'

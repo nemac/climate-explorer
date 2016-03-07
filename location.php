@@ -17,12 +17,12 @@
 
 <body id="page-location-seattle" class="page-type-location">
 
-<?php include_once('tpl_header.php'); ?>
+<?php include_once('template/header.php'); ?>
 
 <div id="viewport">
     <div id="main-content-wrap">
 
-        <?php include_once('tpl_share.php'); ?>
+        <?php include_once('template/share.php'); ?>
         
         <div id="location-search">
           <input type="text" class="autocomplete" placeholder="Search another location">
@@ -399,7 +399,7 @@
 </div>
 
 
-<?php include_once('tpl_footer.php'); ?>
+<?php include_once('template/footer.php'); ?>
 
 <script src="./resources/js/cwg/climate-widget-graph.js"></script>
 <script src="./resources/js/cwg/cwg.js"></script>

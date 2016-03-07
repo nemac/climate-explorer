@@ -21,7 +21,7 @@
 
 <body id="page-fire-regimes" class="page-type-case">
 
-<?php include_once('tpl_header.php'); ?>
+<?php include_once('template/header.php'); ?>
 
 <header id="left-header">
     <ul id="case-menu" class="menu orange-menu">
@@ -48,13 +48,13 @@
             <div class="ui-slider-label zoom-label minus"></div>
         </div>
 
-        <?php include_once('tpl_share.php'); ?>
+        <?php include_once('template/share.php'); ?>
     </div>
 </div>
 
 <a href="#" id="district-trigger"><span class="text">Show District Overlay</span><span class="icon icon-district"></span></a>
 
-<?php include_once('tpl_footer.php'); ?>
+<?php include_once('template/footer.php'); ?>
 
 </body>
 </html>
