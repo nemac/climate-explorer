@@ -3468,6 +3468,11 @@ h6 {
   color: #fff;
 }
 
+#slider-range {
+  width: 100%;
+  margin: auto;
+}
+
 .tooltip {
   display: none;
   position: absolute;

@@ -13,15 +13,6 @@
     <script type="text/javascript" src="./resources/js/jquery.min.js"></script>
     <script type="text/javascript" src="./resources/js/jquery-ui.min.js"></script>
 
-    <style>
-        #slider-range {
-            width: 100%;
-            margin: auto;
-        }
-
-    </style>
-
-
 </head>
 
 <body id="page-location-seattle" class="page-type-location">
