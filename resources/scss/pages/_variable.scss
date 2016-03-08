@@ -1,0 +1,151 @@
+.page-type-variables {
+  #vars-legend {
+    h5 {
+      margin: 0 0 6px 0;
+      font: 1rem/1em $sans-heavy;
+      color: $blue2;
+    }
+    
+    h6 {
+      margin: 0 0 10px 0;
+      font: 0.75rem/1.25em $sans-book;
+      color: $grey1;
+    }
+    
+    .legend {
+      width: 100%;
+      margin: 0 0 10px 0;
+      padding: 20px;
+      background: $blue3;
+      font: 0.75rem/1em Monaco, monospace;
+      color: $blue2;
+      
+      ul {
+        margin: 15px 0 0 0;
+      }
+      
+      li {
+        margin: 10px 0;
+      }
+      
+      .color {
+        width: 8%;
+        margin: 0 8% 0 0;
+        padding: 0 0 8% 0;
+      }
+    }
+  }
+  
+  #main-content-wrap {
+    @include full-size;
+    
+    
+    .split-pane {
+      z-index: 1;
+    }
+    
+    #pane-left {
+      background: url(../img/bg_variables-low.jpg) $white no-repeat center;
+      background-attachment: fixed;
+      background-size: cover;
+    }
+    
+    #pane-right {
+      background: url(../img/bg_variables-high.jpg) $white no-repeat center;
+      background-attachment: fixed;
+      background-size: cover;
+    }
+    
+    .year {
+      z-index: 2;
+    }
+    
+    .zoom {
+      z-index: 3;
+    }
+  }
+  
+  #district-trigger {
+    position: absolute;
+    top: 15%;
+    left: 20%;
+    left: calc(20% + 20px);
+    padding: 15px 15px 15px 0;
+    color: $blue1;
+    background: $white;
+    @include transition(padding 0.5s);
+    @include clearfix;
+    
+    span {
+      display: block;
+      float: left;
+      white-space: nowrap;
+      color: $blue1;
+    }
+    
+    .text {
+      margin-top: -2px;
+      text-indent: -300px;
+      @include transition(text-indent 0.5s);
+    }
+    
+    .icon {
+      padding-left: 10px;
+      font-size: 1.25rem;
+    }
+    
+    &:hover {
+      padding-left: 15px;
+      
+      .text {
+        text-indent: 0;
+      }
+    }
+  }
+}
+
+.year {
+  position: absolute;
+  bottom: 40px;
+  left: 35%;
+  width: 50%;
+  height: 22px;
+  
+  .year-slider {
+    top: 8px;
+    left: 10%;
+    width: 80%;
+    
+    .ui-slider-handle {
+      top: -14px;
+      width: 36px;
+      height: 36px;
+      margin: 0 0 -18px -18px;
+      background: $white;
+      border: 4px solid $orange1;
+      text-align: center;
+      font-size: 1.5rem;
+      line-height: 1.375rem;
+      color: $orange1;
+      @include box-shadow(0 0 4px transparentize($blue1, 0.75));
+      
+      &:hover {
+        @include box-shadow(0 0 7px transparentize($blue1, 0.6));
+      }
+    }
+  }
+  
+  .year-label {
+    position: absolute;
+    width: 10%;
+    text-align: center;
+    
+    &.year-min {
+      left: 0;
+    }
+    
+    &.year-max {
+      right: 0;
+    }
+  }
+}

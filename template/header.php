@@ -163,7 +163,8 @@
     data-cycle-fx="scrollHorz" 
     data-cycle-slides="> .slide" 
     data-cycle-pager="#nav-cycle-pager" 
-    data-cycle-pager-template="">
+    data-cycle-pager-template=""
+    data-cycle-log="false">
       
     <div id="nav-search" class="slide" data-slide-num="0">
       <div class="slide-bg"></div>
