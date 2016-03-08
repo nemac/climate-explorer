@@ -328,11 +328,11 @@
 
         // download
 
-        $('.chart-download-image').click(function (e) {
+        $('.download-image').click(function (e) {
             e.preventDefault();
-            $(this).parents('.data-chart').find('.chart').draw_charts({
+            /*$(this).parents('.data-chart').find('.chart').draw_charts({
                 download_png: true
-            });
+            });*/
         });
 
         // ---------
@@ -446,6 +446,7 @@
         
         $('#case-menu').sortable({
             axis: 'y',
+            handle: '.icon-arrow-up-down',
             placeholder: 'ui-state-highlight',
             cancel: '.layer-info,.help',
             containment: '#left-header',

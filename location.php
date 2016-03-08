@@ -168,9 +168,9 @@
                       </span>
                                 </h4>
 
-                                <div class="chart-actions">
-                                    <a href="#" class="chart-download-image"><span class="icon icon-download-image"></span>Image</a>
-                                    <a href="#" class="chart-download-data"><span class="icon icon-download-chart"></span>Data</a>
+                                <div class="data-accordion-actions">
+                                  <a href="#" class="download-image"><span class="icon icon-download-image"></span>Image</a>
+                                  <a href="#" class="download-data"><span class="icon icon-download-chart"></span>Data</a>
                                 </div>
                             </header>
 
@@ -202,6 +202,11 @@
                         <span class="source">Source: <a href="#" target="_blank">NOAA, 2014</a></span>
                       </span>
                                 </h4>
+                                
+                                <div class="data-accordion-actions">
+                                  <a href="#" class="download-image"><span class="icon icon-download-image"></span>Image</a>
+                                  <a href="#" class="download-data"><span class="icon icon-download-chart"></span>Data</a>
+                                </div>
                             </header>
 
                             <div id="map-123" class="data-accordion-content map"></div>
@@ -254,9 +259,9 @@
                       </span>
                                 </h4>
 
-                                <div class="chart-actions">
-                                    <a href="#" class="chart-download-image"><span class="icon icon-download-image"></span>Image</a>
-                                    <a href="#" class="chart-download-data"><span class="icon icon-download-chart"></span>Data</a>
+                                <div class="data-accordion-actions">
+                                    <a href="#" class="download-image"><span class="icon icon-download-image"></span>Image</a>
+                                    <a href="#" class="download-data"><span class="icon icon-download-chart"></span>Data</a>
                                 </div>
                             </header>
 
@@ -283,6 +288,11 @@
                         <span class="source">Source: <a href="#" target="_blank">NOAA, 2014</a></span>
                       </span>
                                 </h4>
+                                
+                                <div class="data-accordion-actions">
+                                  <a href="#" class="download-image"><span class="icon icon-download-image"></span>Image</a>
+                                  <a href="#" class="download-data"><span class="icon icon-download-chart"></span>Data</a>
+                                </div>
                             </header>
 
                             <div id="map-234" class="data-accordion-content map"></div>
@@ -333,10 +343,10 @@
                         <span class="source">Source: <a href="#" target="_blank">NOAA, 2014</a></span>
                       </span>
                                 </h4>
-
-                                <div class="chart-actions">
-                                    <a href="#" class="chart-download-image"><span class="icon icon-download-image"></span>Image</a>
-                                    <a href="#" class="chart-download-data"><span class="icon icon-download-chart"></span>Data</a>
+                                
+                                <div class="data-accordion-actions">
+                                  <a href="#" class="download-image"><span class="icon icon-download-image"></span>Image</a>
+                                  <a href="#" class="download-data"><span class="icon icon-download-chart"></span>Data</a>
                                 </div>
                             </header>
 
@@ -363,6 +373,11 @@
                         <span class="source">Source: <a href="#" target="_blank">NOAA, 2014</a></span>
                       </span>
                                 </h4>
+                                
+                                <div class="data-accordion-actions">
+                                  <a href="#" class="download-image"><span class="icon icon-download-image"></span>Image</a>
+                                  <a href="#" class="download-data"><span class="icon icon-download-chart"></span>Data</a>
+                                </div>
                             </header>
 
                             <div id="map-345" class="data-accordion-content map"></div>

@@ -1,0 +1,438 @@
+@media screen and (max-width: 1200px) {
+  h1 {
+    font-size: 6rem;
+  }
+  
+  .left-header {
+    #main-header {
+      #header-logo {
+        max-width: 100%;
+        
+        img {
+        }
+      }
+    }
+  }
+  
+  .page-splash {
+    .splash-text {
+      max-width: 75%;
+    }
+  }
+  
+  // LOCATION
+  
+  .location-data-section {
+    h3 {
+      font-size: 1.5rem;
+    }
+    
+    .fs-dropdown {
+      button {
+        padding-left: 10px;
+      }
+    }
+  }
+  
+  #impact-splash #cases-menu {
+    max-width: 25%;
+  }
+}
+
+@media screen and (max-width: 1000px) {
+  h1 {
+    font-size: 5rem;
+  }
+  
+  .left-header {
+    #main-header {
+      #nav-trigger {
+        width: 40px;
+        height: 40px;
+        margin-top: 5%;
+        padding: 18px 8px;
+        
+        span {
+          width: 24px;
+        }
+        
+        &:before,
+        &:after {
+          left: 8px;
+          width: 24px;
+        }
+        
+        &:before {
+          top: 8px;
+        }
+        
+        &:after {
+          bottom: 8px;
+        }
+      }
+    }
+  }
+  
+  .blue-menu {
+    font-size: 0.875rem;
+  }
+  
+  .page-splash {
+    .splash-text {
+      max-width: 75%;
+      
+      p {
+        font-size: 1rem;
+      }
+    }
+  }
+  
+  // LOCATION
+  
+  .location-data-section {
+    h3 {
+      font-size: 1.125rem;
+      
+      .icon {
+        margin-right: 5px;
+      }
+    }
+    
+    .fs-dropdown {
+      button {
+        font-size: 1rem;
+      }
+    }
+  }
+  
+  
+  .impacts-list {
+    .impact-banner-text {
+      width: 65%;
+    }
+  }
+}
+
+@media screen and (max-width: 800px) {
+  h1 {
+    font-size: 4rem;
+  }
+  
+  // CLASSES
+  
+  .share-widget {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+  }
+  
+  // HEADER
+  
+  .left-header {
+    #main-header {
+      //width: 30%;
+      //width: calc(30% + 10px);
+    }
+  }
+  
+  // NAV OVERLAY
+  
+  #nav-overlay {
+    .nav-controls {
+      a {
+        top: 5%;
+      }
+    }
+    
+    .nav-content-wrap {
+      top: 20%;
+      left: 10%;
+      width: 80%;
+    }
+  }
+  
+  .blue-menu {
+    a {
+      text-align: center;
+      padding: 4%;
+      
+      .text {
+        display: none;
+      }
+    }
+  }
+  
+  #page-home {
+    #main-content-wrap {
+      height: auto;
+    }
+  }
+  
+  #home-splash {
+    position: relative;
+    height: auto;
+  }
+  
+  #home-cycle {
+    .slide-text {
+      left: 6%;
+      left: calc(6% + 10px);
+      width: 60%;
+    }
+  }
+  
+  #home-text {
+    position: relative;
+    top: auto;
+    left: auto;
+    width: auto;
+    margin: 6%;
+    padding: 0;
+  }
+  
+  #home-menu {
+    position: relative;
+    top: auto;
+    right: auto;
+    width: 70%;
+    margin: 6%;
+    margin-bottom: 18%;
+  }
+  
+  // PAGE
+  
+  .page-splash {
+    .splash-text {
+      float: none;
+      max-width: 100%;
+      
+      p {
+        width: auto;
+        font-size: 1rem;
+      }
+    }
+  }
+  
+  // LOCATION
+  
+  .location-data-section {
+    padding-top: 20%;
+  }
+  
+  .location-data-section .data-list,
+  .location-data-section .data-chart {
+    width: 49%;
+    margin: 0 0.5%;
+  }
+  
+  .impacts-list {
+    article {
+      padding: 6% 4% 14% 4%;
+      background-size: 120% auto;
+      background-attachment: scroll;
+      overflow: hidden;
+      
+      h3 {
+        font-size: 3.5rem;
+      }
+    }
+    
+    .impact-banner-text {
+      width: auto;
+    }
+  }
+  
+  // IMPACTS
+  
+  #impact-splash {
+    padding: 6%;
+    padding-bottom: 12%;
+    
+    .splash-text {
+      float: none;
+      width: auto;
+      padding: 0;
+    }
+    
+    #cases-menu {
+      float: none;
+      max-width: 100%;
+    }
+  }
+}
+
+@media screen and (max-width: 600px) {
+  h1 {
+    font-size: 3rem;
+  }
+  
+  // CLASSES
+  
+  .share-widget {
+    bottom: 0;
+    right: 0;
+  }
+  
+  // HEADER
+  
+  .top-header {
+    #logos {
+      display: none;
+    }
+    
+    #main-header {
+      #nav-trigger {
+        float: right;
+      }
+    }
+  }
+  
+  .left-header {
+    #main-header {
+      left: 0;
+      
+      #header-logo {
+        width: auto;
+        max-width: 50px;
+        float: none;
+        margin: 0 auto;
+      }
+      
+      #nav-trigger {
+        float: none;
+        margin: 10px auto 0 auto;
+      }
+    }
+  }
+  
+  // NAV
+  
+  #nav-overlay {
+    .nav-controls {
+      a {
+        padding-left: 15px;
+        padding-right: 45px;
+      }
+    }
+    
+    .nav-content-wrap {
+      left: 5%;
+      width: 90%;
+      overflow: auto;
+    }
+    
+    .nav-content {
+      nav {
+        display: none;
+        padding: 0;
+        
+        a {
+          width: 50%;
+        }
+      }
+      
+      button {
+        position: relative;
+        width: 100%;
+        padding: 5%;
+        background: transparent;
+        font: 1.25rem/1em $roboto;
+        color: $white;
+        
+        &.fs-tabs-active {
+          border-bottom: 2px solid $white;
+              
+          &:after {
+            content: '';
+            display: block;
+            position: absolute;
+            left: 50%;
+            bottom: -14px;
+            width: 0;
+            height: 0;
+            margin: 0;
+            border: 6px solid $white;
+            border-color: $white transparent transparent transparent;
+            @include transition(0.25s);
+          }
+        }
+      }
+      
+      .tab {
+        ul {
+          li {
+            float: none;
+            width: auto!important;
+          }
+        }
+      }
+    }
+    
+  }
+  
+  // PAGE STRUCTURE
+  
+  #viewport {
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+  }
+  
+  .top-header {
+    #viewport {
+      height: calc(100% - 110px);
+    }
+  }
+  
+  // HOME
+  
+  #home-text {
+    h1 {
+      font-size: 3rem;
+    }
+    
+    p {
+      width: auto;
+    }
+  }
+  
+  // LOCATIONS
+  
+  // IMPACTS
+  
+  #impact-splash {
+    .splash-text {
+      float: none;
+      
+      h1 {
+        font-size: 2.5rem;
+      }
+    }
+  }
+  
+  .impacts-list {
+    h4 {
+      margin: 0 0 20px 0;
+      font-size: 1.375rem;
+    }
+    
+    article {
+      padding-bottom: 24%;
+      background-size: auto 100%;
+      
+      h3 {
+        font-size: 3rem;
+      }
+    }
+  }
+  
+  // VARIABLES
+  
+  .page-type-variables {
+    #district-trigger {
+      left: calc(20% + 10px);
+      z-index: 3;
+    }
+  }
+}

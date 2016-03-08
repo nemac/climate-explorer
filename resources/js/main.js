@@ -123,23 +123,27 @@ App.prototype.createLegend = function() {
     checked = (i === 0) ? 'checked' : '';
     sublayer = self.data.layers[id].sublayers;
 
-    var tmpl = '<li class="legend" id="legend-'+id+'">'+
-      '<div class="text">'+self.data.layers[id].title+' <a href="#info-drought" class="help"><span class="icon icon-help"></span></a> <input class="visibility" id="visibility-'+id+'" type="checkbox" '+checked+'/></div>';
+    var tmpl = '<li class="legend" id="legend-'+id+'">' +
+      '<span class="icon icon-arrow-up-down"></span>' +
+      '<a href="#info-'+id+'" class="help icon icon-help"></a>' +
+      //'<input class="visibility" id="visibility-'+id+'" type="checkbox" '+checked+'/>' +
+      '<div class="text">'+self.data.layers[id].title+'</div>';
         if ( sublayer ) {
           tmpl += '<div class="sublayer-slider"></div>'+
             '<div class="sublayer-range-values" id="range-'+id+'"></div>';
         } else  {
-          tmpl += '<ul>'+
+          /*tmpl += '<ul>'+
             '<li><span class="color" style="background-color: #2a0023;"></span><span class="tooltip">&gt; 105</span></li>'+
             '<li><span class="color" style="background-color: #c3003c;"></span><span class="tooltip">90–104</span></li>'+
             '<li><span class="color" style="background-color: #f5442d;"></span><span class="tooltip">70–89</span></li>'+
             '<li><span class="color" style="background-color: #f0f567;"></span><span class="tooltip">50–69</span></li>'+
             '<li><span class="color" style="background-color: #48f7d0;"></span><span class="tooltip">30–49</span></li>'+
             '<li><span class="color" style="background-color: #0078d4;"></span><span class="tooltip">&lt; 30</span></li>'+
-          '</ul>';
+          '</ul>';*/
         }
-      tmpl += '<div id="info-drought" class="layer-info">'+
+      tmpl += '<div id="info-'+id+'" class="layer-info">'+
         '<h3>'+self.data.layers[id].title+'</h3>'+
+        '<div class="opacity-slider-wrap"><h4>Layer opacity</h4><div class="opacity-slider"></div></div>' +
         '<p>'+self.data.layers[id].description+'</p>'+
         '<div class="actions">'+
           '<a href="#" class="layer-info-close"><span class="icon icon-close"></span>Close</a>'+
@@ -149,6 +153,18 @@ App.prototype.createLegend = function() {
     '</li>';
 
     $('#case-menu').append(tmpl);
+        
+    $('.opacity-slider').slider({
+      range: false,
+      min: 0,
+      max: 1,
+      step: 0.05,
+      slide: function (event, ui) {
+        console.log('opacity slider event');
+      }
+    });
+    
+    $('.opacity-slider').first().slider('value', 1);
 
     if ( sublayer ) {
       self.subLayers[id] = self.data.layers[id].sublayers;

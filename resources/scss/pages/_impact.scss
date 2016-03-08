@@ -1,0 +1,99 @@
+.page-type-impact {
+  #main-content-wrap {
+    padding: 2%;
+    background-repeat: no-repeat;
+    background-position: top center;
+    background-size: cover;
+    background-attachment: fixed;
+  }
+  
+  section {
+    position: relative;
+    margin: 0 0 3% 0;
+  }
+  
+  #cases-menu {
+    float: left;
+    max-width: 35%;
+  }
+}
+
+#impact-splash {
+  @include clearfix;
+  
+  .splash-text {
+    float: left;
+    
+    h1 {
+      font-size: 4.375rem;
+    }
+  }
+  
+  
+}
+
+.impacts-list {
+  margin-top: 6%!important;
+  
+  h2 {
+    margin: 0 0 40px 4%;
+    margin-left: calc(4% + 10px);
+    color: $blue1;
+  }
+  
+  h4 {
+    margin: 0 0 40px 0;
+  }
+  
+  article {
+    position: relative;
+    margin: 0 0 3% 0;
+    padding: 8% 4%;
+    background-color: $blue2;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-attachment: fixed;
+    color: $white;
+    border: 10px solid $white;
+    @include clearfix;
+    
+    h3 {
+      margin: 0 0 20px 0;
+      font: 4.375rem/0.9em $sans-heavy;
+      text-transform: uppercase;
+      mix-blend-mode: lighten;
+    }
+    
+    p {
+      font: 400 1.25rem/1.5em $roboto;
+    }
+    
+    .button {
+      position: absolute;
+      bottom: 0;
+      right: 0;
+      border-right: none;
+      border-bottom: none;
+    }
+  }
+  
+  .impact-banner-text {
+    float: left;
+    width: 50%;
+    margin: 0 5% 0 0;
+  }
+  
+  .impact-layers {
+    float: left;
+    width: 40%;
+    
+    h4 {
+      color: $white;
+      line-height: 2rem;
+    }
+    
+    li {
+      color: $grey1;
+    }
+  }
+}

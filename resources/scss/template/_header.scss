@@ -356,7 +356,7 @@
     
     &.legend {
       padding: 8%;
-      white-space: nowrap;
+      //white-space: nowrap;
       color: $white;
       
       ul {
@@ -379,20 +379,24 @@
   &.orange-menu {
     a,
     label {
-      background: transparentize($orange1, 0.2);
+      background: transparentize($orange1, 0.15);
       
       &:hover {
-        background: transparentize($orange1, 0.1);
+        background: transparentize($orange1, 0.08);
       }
     }
     
     li {
       &.search-field {
-        background: transparentize($orange1, 0.2);
+        background: transparentize($orange1, 0.15);
       }
       
       &.legend {
-        background: transparentize($orange1, 0.2);
+        background: transparentize($orange1, 0.15);
+      
+        &:hover {
+          background: transparentize($orange1, 0.08);
+        }
       }
     }
   }
