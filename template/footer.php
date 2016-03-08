@@ -22,12 +22,13 @@
 <script type="text/javascript" src="./resources/js/global_functions.js"></script>
 
 <script type="text/javascript" src="./resources/js/ol.js"></script>
+<script type="text/javascript" src="./resources/js/ol3-popup.js"></script>
 <script type="text/javascript" src="./resources/js/main.js"></script>
 
 <?php
-  
+
   if (isset($case) && $case != null) {
-    
+
 ?>
 
 <script>
@@ -37,9 +38,9 @@
 </script>
 
 <?php
-  
+
   }
-  
+
 ?>
 
 <script type="text/javascript" src="./resources/js/global_functions.js"></script>

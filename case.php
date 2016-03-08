@@ -1,22 +1,24 @@
 <?php
-  
+
   $case = $_REQUEST['id'];
-  
+
 ?>
 <!doctype html>
 <html>
   <head>
     <title>Climate Explorer</title>
-  
+
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  
+
+    <link rel="stylesheet" href="resources/css/ol3-popup.css">
+
     <link rel="stylesheet" media="screen" href="resources/css/screen.css">
-  
+
     <script type="text/javascript" src="./resources/js/jquery.min.js"></script>
     <script type="text/javascript" src="./resources/js/jquery-ui.min.js"></script>
-  
+
   </head>
 
 <body id="page-fire-regimes" class="page-type-case">
@@ -35,7 +37,7 @@
 
 <div id="viewport">
     <div id="main-content-wrap">
-        <div id="map" class="map"></div>
+        <div id="map" class="map"><div id="popup"></div></div>
         <div class="year" style="display:none">
             <div class="year-label year-min">1950</div>
             <div class="year-slider" data-min="1950" data-max="2100" data-value="2015"></div>
