@@ -1,7 +1,6 @@
 var App = function(page) {
 
   this.page = page;
-  console.log('this.page', this.page);
   this.subLayers = {};
   this.createMap();
 };
@@ -65,14 +64,14 @@ App.prototype.wireEvents = function() {
 
   //close btn
   $('.legend .layer-info-close').click(function (e) {
-      e.preventDefault();
-      $('body').close_layer_info();
+    e.preventDefault();
+    $('body').close_layer_info();
   });
 
   // next btn
   $('.legend .layer-info-next').click(function (e) {
-      e.preventDefault();
-      $(this).parents('.legend').next('.legend').open_layer_info();
+    e.preventDefault();
+    $(this).parents('.legend').next('.legend').open_layer_info();
   });
 
   // help icon
@@ -85,6 +84,27 @@ App.prototype.wireEvents = function() {
       current_legend.open_layer_info();
     }
   });
+
+
+  $('.opacity-slider').slider({
+    range: false,
+    min: 0,
+    max: 1,
+    step: 0.05,
+    slide: function (event, ui) {
+      var id = $(this).attr('id').replace('opacity-', '');
+      var visible = ( ui.value > 0 ) ? true : false;
+
+      self.map.getLayers().forEach(function(layer) {
+        if (layer.get('layer_id') == id) {
+          layer.setVisible(visible);
+          layer.setOpacity(ui.value);
+        }
+      });
+
+    }
+  });
+  $('.opacity-slider').first().slider('value', 1);
 
 
   // help icon
@@ -114,7 +134,7 @@ App.prototype.wireEvents = function() {
 
 /*
 *
-* Handles map events 
+* Handles map events
 *
 */
 App.prototype.wireMapEvents = function () {
@@ -163,19 +183,10 @@ App.prototype.createLegend = function() {
         if ( sublayer ) {
           tmpl += '<div class="sublayer-slider"></div>'+
             '<div class="sublayer-range-values" id="range-'+id+'"></div>';
-        } else  {
-          /*tmpl += '<ul>'+
-            '<li><span class="color" style="background-color: #2a0023;"></span><span class="tooltip">&gt; 105</span></li>'+
-            '<li><span class="color" style="background-color: #c3003c;"></span><span class="tooltip">90–104</span></li>'+
-            '<li><span class="color" style="background-color: #f5442d;"></span><span class="tooltip">70–89</span></li>'+
-            '<li><span class="color" style="background-color: #f0f567;"></span><span class="tooltip">50–69</span></li>'+
-            '<li><span class="color" style="background-color: #48f7d0;"></span><span class="tooltip">30–49</span></li>'+
-            '<li><span class="color" style="background-color: #0078d4;"></span><span class="tooltip">&lt; 30</span></li>'+
-          '</ul>';*/
         }
       tmpl += '<div id="info-'+id+'" class="layer-info">'+
         '<h3>'+self.data.layers[id].title+'</h3>'+
-        '<div class="opacity-slider-wrap"><h4>Layer opacity</h4><div class="opacity-slider"></div></div>' +
+        '<div class="opacity-slider-wrap"><h4>Layer opacity</h4><div class="opacity-slider" id="opacity-'+id+'"></div></div>' +
         '<p>'+self.data.layers[id].description+'</p>'+
         '<div class="actions">'+
           '<a href="#" class="layer-info-close"><span class="icon icon-close"></span>Close</a>'+
@@ -185,18 +196,6 @@ App.prototype.createLegend = function() {
     '</li>';
 
     $('#case-menu').append(tmpl);
-        
-    $('.opacity-slider').slider({
-      range: false,
-      min: 0,
-      max: 1,
-      step: 0.05,
-      slide: function (event, ui) {
-        console.log('opacity slider event');
-      }
-    });
-    
-    $('.opacity-slider').first().slider('value', 1);
 
     if ( sublayer ) {
       self.subLayers[id] = self.data.layers[id].sublayers;
@@ -247,7 +246,7 @@ App.prototype.subLayerSlider = function(id, show) {
 *
 */
 App.prototype.setZoom = function(zoom) {
-  //this.map.getView().setZoom(zoom);
+  this.map.getView().setZoom(zoom);
 };
 
 

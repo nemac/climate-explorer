@@ -29,12 +29,12 @@
 
         function smooth_scroll(id, offset, speed) {
           //console.log($(id).offset());
-          
+
             var viewport_scrolltop = $('#viewport').scrollTop();
             var element_position = $(id).offset().top;
 
             var destination = viewport_scrolltop + element_position;
-            
+
             //console.log(element_position);
             //console.log(destination);
 
@@ -74,17 +74,17 @@
         // NAV
         //
         // ---
-        
+
         // plugin
-        
+
         $.fn.do_nav = function(options, callback) {
           var settings = $.extend({
             action: 'open',
             slide: 0
           }, options);
-          
+
           $('#nav-cycle').cycle('goto', settings.slide);
-          
+
           if (settings.action === 'close') {
             $('#nav-overlay').fadeOut(250);
             $('.nav-detail').fadeOut();
@@ -93,14 +93,14 @@
           } else {
             $('#nav-overlay').fadeIn(250, function() {
               $('body').addClass('nav-open');
-              
+
               if (typeof callback == 'function') {
                 callback.call(this);
               }
             });
           }
         }
-        
+
         // home page menu
 
         $('.launch-nav').click(function (e) {
@@ -117,38 +117,38 @@
             $(document).do_nav();
           }
         });
-        
+
         // nav trigger
 
         $('#nav-trigger').click(function (e) {
             e.preventDefault();
-            
+
             $(document).do_nav({
               action: 'open',
               slide: 0
             });
         });
-        
+
         // close button
 
         $('#nav-close').click(function (e) {
             e.preventDefault();
-            
+
             $(document).do_nav({
               action: 'close'
             });
         });
-        
+
         // nav slide pagers
-        
+
         /*$('#nav-controls a').click(function(e) {
           e.preventDefault();
-          
+
           var link_href = $(this).attr('href');
           var slide_num = $(link_href).attr('data-slide-num');
-          
+
           console.log(slide_num);
-          
+
           $(document).do_nav({
             slide: slide_num
           });
@@ -163,22 +163,22 @@
         });
 
         // tabs
-        
+
         //$('.nav-vars-tab').tabs();
         $('.nav-topics-tab').tabs();
 
         // keyboard actions
-        
+
         $('body').on('keyup', function (e) {
           if ($('body').hasClass('nav-open')) {
             if (e.keyCode == 39) {
               $('.cycle-slideshow').cycle('next');
             }
-            
+
             if (e.keyCode == 37) {
               $('.cycle-slideshow').cycle('prev');
             }
-            
+
             if (e.keyCode == 27) {
               $(document).do_nav({
                 action: 'close'
@@ -186,21 +186,21 @@
             }
           }
         });
-        
+
         // VARIABLE DETAIL
-        
+
         $.fn.nav_detail = function(options, callback) {
           var settings = $.extend({
             action: 'open'
           }, options);
-          
-          
+
+
           if (settings.action === 'open') {
-            
+
             var link_href = this.attr('href');
             var parent_slide = $(link_href).parents('.slide');
             var slide_num = parent_slide.attr('data-slide-num');
-          
+
             $(document).do_nav({
               slide: slide_num
             }, function() {
@@ -208,30 +208,30 @@
               $('#nav-controls').fadeOut();
               $(link_href).fadeIn();
             });
-            
+
           } else if (settings.action === 'close') {
-            
+
             var detail_div = this.parents('.nav-detail');
             var detail_item = this.parents('.nav-detail-item');
-            
+
             detail_div.fadeOut();
             detail_item.fadeOut();
-            
+
             $('#nav-controls').fadeIn();
           }
-          
+
         }
-        
+
         $('#nav-variables ol a, .nav-detail-link').click(function(e) {
           e.preventDefault();
           $(this).nav_detail({
             options: 'open'
           });
         });
-        
+
         $('.nav-detail .close-detail').click(function(e) {
           e.preventDefault();
-          
+
           $(this).nav_detail({
             action: 'close'
           });
@@ -276,15 +276,15 @@
                 smooth_scroll(link_href, ($('#main-header').outerHeight() + $('#page-nav').outerHeight()), 500);
             });
         }
-        
+
         var locations = [
           'Seattle'
         ];
-        
+
         $('.autocomplete').autocomplete({
           source: locations
         });
-        
+
         // LOCATION DATA ACCORDIONS
 
         // set up each section
@@ -354,14 +354,13 @@
          });*/
 
         // zoom
-
         $('.zoom-slider').attr('data-value', 4);
         $('.zoom-slider').slider({
             orientation: "vertical",
             range: false,
             min: 1,
             max: 15,
-            value: 4,
+            value: 5,
             slide: function( event, ui ) {
               $(this).attr('data-value', ui.value);
               app.setZoom(ui.value);
@@ -369,8 +368,6 @@
             change: function (event, ui) {
               $(this).attr('data-value', ui.value);
               app.setZoom(ui.value);
-
-              
             }
         });
 
@@ -441,9 +438,9 @@
         // CASE MAP
         //
         // --------
-        
+
         // sortable
-        
+
         $('#case-menu').sortable({
             axis: 'y',
             handle: '.icon-arrow-up-down',
@@ -461,11 +458,11 @@
               app.reorderLayers();
             }
         });
-        
+
         $('#case-menu').disableSelection();
-        
+
         // tooltip
-        
+
         $('#case-menu .color').mouseenter(function () {
             $(this).siblings('.tooltip').fadeIn(200);
         }).mouseleave(function () {
@@ -481,8 +478,8 @@
         }
 
         $.fn.open_layer_info = function () {
-            $('body').close_layer_info();
-            this.addClass('info-on').find('.layer-info').fadeIn();
+          $('body').close_layer_info();
+          this.addClass('info-on').find('.layer-info').fadeIn();
         };
 
         // close btn
@@ -512,7 +509,7 @@
                 current_legend.open_layer_info();
             }
         });
-        
+
         // SPLIT PANE
 
         $('.split-pane').splitPane();
@@ -533,7 +530,7 @@
             app.reorderLayers();
           }
         });
-        
+
         // disable selection while dragging
 
         var mouse_down = false;
@@ -550,26 +547,26 @@
                 $('body').disableSelection();
             }
         });
-        
+
         $(document).on('mouseup touchend', function (e) {
             mouse_down = false;
             //console.log('mouse up');
             $('body').enableSelection();
         });
-        
+
         // ------------
         //
         // MISC PLUGINS
         //
         // ------------
-        
+
         // FORMSTONE
 
         $('.dropdown').dropdown();
-         
+
         // LAYER TOGGLE
 
-        $('#vars-menu input[type=checkbox]').lc_switch(); 
+        $('#vars-menu input[type=checkbox]').lc_switch();
 
         // -------------------
         //
@@ -592,7 +589,7 @@
         // ----------------
         //
         // RESIZE FUNCTIONS
-        // 
+        //
         // ----------------
 
         $(window).resize(function () {
