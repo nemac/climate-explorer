@@ -2662,10 +2662,10 @@ h6 {
   backdrop-filter: blur(3px);
   -webkit-backdrop-filter: blur(3px);
   /*
-  
+
   .nav-controls {
     position: static;
-    
+
     a {
       position: absolute;
       top: 10%;
@@ -2673,17 +2673,17 @@ h6 {
       padding-left: 20px;
       padding-right: 50px;
       z-index: 3;
-      
+
       &:before,
       &:after {
         right: 20px;
       }
-      
+
       &.nav-left {
         left: 0;
         border-left: none;
       }
-      
+
       &.nav-right {
         right: 0;
         border-right: none;
@@ -3120,23 +3120,23 @@ h6 {
   border-right: 10px solid #fff;
   z-index: 20;
   /*#main-header {
-  
+
     #header-logo {
       width: 50%;
       max-width: 71px;
     }
   }
-  
+
   #nav-trigger {
     float: right;
   }
-  
+
   #main-nav {
     padding: 20px 8%;
     background: $white;
     @include clearfix;
   }
-  
+
   #main-content-wrap {
     padding-left: 20%;
     padding-left: calc(20% + 10px);
@@ -4541,8 +4541,8 @@ h6 {
   -webkit-transition: background 0.25s;
   transition: background 0.25s;
   /*
-  
-  
+
+
   .visibility {
     float: right;
     width: 24px;
@@ -4676,6 +4676,12 @@ h6 {
 }
 .page-type-case #case-menu .legend .layer-info .actions a .icon {
   margin-right: 10px;
+}
+
+.page-type-case .ol-popup-content {
+  min-width: 170px;
+  max-height: 400px;
+  overflow-x: auto;
 }
 
 .lcs_wrap {
