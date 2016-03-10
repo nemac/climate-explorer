@@ -9,28 +9,32 @@
         "social_vulnerability_index_coastal_states"
       ]
     },
-    "fire_regimes": {
+    "drought": {
       "layers":[
         "drought",
         "landcover",
-        "rivers_streams"
+        "rivers_streams",
+        "weather_stations"
       ]
     },
     "flooding": {
       "layers":[
+        "sea_level_rise_3ft",
         "impervious_surfaces",
         "rivers_streams",
         "flood_hazard_zones",
-        "sea_level_rise_3ft",
-        "social_vulnerability_index"
+        "social_vulnerability_index",
+        "weather_stations"
       ]
     },
     "tribal_flooding": {
       "layers":[
         "bia_indian_lands",
         "landcover",
+        "sea_level_rise",
+        "flood_hazard_zones",
         "social_vulnerability_index",
-        "flood_hazard_zones"
+        "weather_stations"
       ]
     },
     "tribal_drought": {
@@ -38,12 +42,14 @@
         "bia_indian_lands",
         "landcover",
         "social_vulnerability_index",
-        "drought"
+        "drought",
+        "weather_stations"
       ]
     },
     "ecosystems": {
       "layers":[
         "landcover",
+        "sea_level_rise",
         "flood_hazard_zones",
         "drought",
         "wetlands"
@@ -64,17 +70,18 @@
         "major_highways",
         "airports",
         "bridges_tunnels",
+        "sea_level_rise",
         "flood_hazard_zones"
       ]
     }
   },
   "layers": {
     "weather_stations": {
-      "type": "",
+      "type": "JSON",
       "id": "weather_stations",
       "title": "Weather Stations",
-      "description": "",
-      "url": "",
+      "description": "Check how observed temperature and precipitation measurements compare to long-term averages at weather stations near your area of interest. Look for times when temperatures are above average and/or precipitation is below average for weeks at a time: these indicate times that drought conditions may develop.",
+      "url": "resources/data/wx_stations.json",
       "options": {},
       "defaults": {
         "visible":true
@@ -84,7 +91,7 @@
       "type": "WMS",
       "id": "drought",
       "title": "Current Drought",
-      "description": "Current Drought <br />Source:US Drought Monitor <br />Regional-scale drought status (updated every Thursday).",
+      "description": "Examine where the amount of water available in soils, streams, and lakes is lower than usual for this time of year. In this weekly map, the darker the color, the more severe the lack of moisture. Depending on how severe it is and how long it lasts, drought can devastate crops and forests, lead to food shortages for livestock and wildlife, increase risks for wildfires, and have a negative effect on local and regional economies.",
       "url": "http://torka.unl.edu:8080/cgi-bin/mapserv.exe?map=/ms4w/apps/dm/service/usdm_current_wms.map&SRS=EPSG%3A900913",
       "options": {
         "layer": "usdm_current",
@@ -98,7 +105,7 @@
       "type": "ArcGISRest",
       "id": "landcover",
       "title": "Land Cover",
-      "description": "This layer shows natural vegetation, broad categories of crops, and the intensity of human development across a region. Examine colors on the map, and then check the legend to see which type of landcover is present.",
+      "description": "This layer shows natural vegetation, broad categories of crops, and the intensity of human development across a region. Examine colors on the map, and then check the legend to see which category it represents.",
       "url": "http://raster.nationalmap.gov/arcgis/rest/services/LandCover/USGS_EROS_LandCover_NLCD/MapServer",
       "options": {},
       "defaults": {
