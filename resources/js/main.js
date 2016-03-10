@@ -152,7 +152,11 @@ App.prototype.wireMapEvents = function () {
 
     if (feature) {
       var props = feature.getProperties();
-      popup.show(evt.coordinate, '<div>'+props.name+'<br />'+props.station+'</div>');
+      var html = '<div>'+props.name+'<br />'+props.station+'</div>' +
+        '<div id="multi-chart" style="width:500px; height:300px"></div>';
+      popup.show(evt.coordinate, html);
+
+      self.chart = new ChartBuilder(props);
     } else {
       popup.hide();
     }

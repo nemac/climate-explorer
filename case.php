@@ -37,7 +37,7 @@
 
 <div id="viewport">
     <div id="main-content-wrap">
-        <div id="map" class="map"><div id="popup"></div></div>
+        <div id="map" class="map"></div>
         <div class="year" style="display:none">
             <div class="year-label year-min">1950</div>
             <div class="year-slider" data-min="1950" data-max="2100" data-value="2015"></div>
