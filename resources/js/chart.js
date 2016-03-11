@@ -137,12 +137,12 @@ ChartBuilder.prototype.getTemplate = function(type, values) {
       '<legend rows="1" border="0" opacity="0.0" base="0 1" anchor="0 1" position="0 25">'+
         '<icon border="0" width="30" height="30"/>'+
       '</legend>'+
-      '<horizontalaxis id="date" type="datetime" min="20120101" max="20130101">'+
+      '<horizontalaxis id="date" type="datetime" min="20150101" max="20160101">'+
         '<labels spacing="100Y 50Y 20Y 10Y 5Y 1Y 6M 3M 2M 1M 7D 1D" format="%n %d%L%Y"/>'+
         '<title/>'+
         '<grid/>'+
       '</horizontalaxis>'+
-      '<verticalaxis id="temp" min="0" max="100">'+
+      '<verticalaxis id="temp" min="-30" max="50">'+
         '<title anchor="0 -1" angle="90" position="-25 0">Degrees (C)</title>'+
         '<grid/>'+
         '<labels spacing="100 50 20 10 5 1 0.5 0.2 0.1" format="%f"/>'+
