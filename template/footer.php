@@ -19,8 +19,6 @@
 <script type="text/javascript" src="./resources/js/split-pane.min.js"></script>
 <script type="text/javascript" src="./resources/js/download.js"></script>
 
-<script type="text/javascript" src="./resources/js/global_functions.js"></script>
-
 <script type="text/javascript" src="./resources/js/ol.js"></script>
 <script type="text/javascript" src="./resources/js/main.js"></script>
 

@@ -2882,7 +2882,7 @@ h6 {
   margin: 15px 0 0 0;
 }
 #nav-overlay .nav-content .tab ol ul li {
-  float: none;
+  float: none !important;
   width: auto !important;
   margin: 0 0 10px 0;
   font: 300 1rem/1em Roboto, Helvetica, "Helvetica Neue", Arial, sans-serif;
