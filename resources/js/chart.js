@@ -18,27 +18,27 @@ ChartBuilder.prototype.getData = function (callback) {
   var id = this.props.station.split(':')[1];
   this.records = {
     'tmin': {
-      url: 'https://toolkit.climate.gov/climate-explorer-data/ghcnd/'+id+'/TMIN.csv.gz',
+      url: 'climateexplorer.habitatseven.work/resources/data/stations/daily/'+id+'/TMIN.csv.gz',
       type: 'tmin',
       data: ''
     },
     'normal_tmin': {
-      url: 'https://toolkit.climate.gov/climate-explorer-data/normals/NORMAL_TMIN/'+id+'.csv.gz',
+      url: 'climateexplorer.habitatseven.work/resources/data/stations/normals/NORMAL_TMIN/'+id+'.csv.gz',
       type: 'normal_tmin',
       data: ''
     },
     'tmax': {
-      url: 'https://toolkit.climate.gov/climate-explorer-data/ghcnd/'+id+'/TMAX.csv.gz',
+      url: 'climateexplorer.habitatseven.work/resources/data/stations/daily/'+id+'/TMAX.csv.gz',
       type: 'tmax',
       data: ''
     },
     'normal_tmax': {
-      url: 'https://toolkit.climate.gov/climate-explorer-data/normals/NORMAL_TMAX/'+id+'.csv.gz',
+      url: 'climateexplorer.habitatseven.work/resources/data/stations/normals/NORMAL_TMAX/'+id+'.csv.gz',
       type: 'normal_tmax',
       data: ''
     },
     'precip_ytd': {
-      url: 'https://toolkit.climate.gov/climate-explorer-data/ghcnd/'+id+'/PRCP_YTD.csv.gz',
+      url: 'climateexplorer.habitatseven.work/resources/data/stations/daily/'+id+'/PRCP_YTD.csv.gz',
       type: 'precip_ytd',
       data: ''
     },
