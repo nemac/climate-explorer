@@ -1,1 +1,1 @@
-test auto-deploy THREE
+test auto-deploy FOUR
