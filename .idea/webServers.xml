@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="WebServers">
+    <option name="servers">
+      <webServer id="c971c988-124c-422c-bb2d-ea9b759ed9c9" name="Climate_Explorer" url="http://climateexplorer.habitatseven.work">
+        <fileTransfer host="habitatseven.work" port="21" rootFolder="/public_html/climateexplorer" password="dfc9df9ddf9ddf9ddfd8dfcbdfdadfc6dfc5dfc1" username="habitatsevendev">
+          <advancedOptions>
+            <advancedOptions dataProtectionLevel="Private" />
+          </advancedOptions>
+        </fileTransfer>
+      </webServer>
+    </option>
+  </component>
+</project>
