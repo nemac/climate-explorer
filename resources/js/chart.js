@@ -43,7 +43,7 @@ ChartBuilder.prototype.getData = function (callback) {
       data: ''
     },
     'normal_precip_ytd': {
-      url: 'http://climateexplorer.habitatseven.work/resources/data/stations/normals/'+id+'-precip_ytd.csv.gz',
+      url: 'http://climateexplorer.habitatseven.work/resources/data/stations/normals/normal_precip_ytd/'+id+'.csv.gz',
       type: 'normal_precip_ytd',
       data: ''
     }
@@ -76,7 +76,6 @@ ChartBuilder.prototype.buildChart = function() {
 
 ChartBuilder.prototype.getTemperatureValues = function() {
   var line;
-  console.log('get temps');
   var max = {};
   $.each(this.records.tmax.data.replace( /(\r\n|\n|\r)/gm, ';' ).split( ';' ), function(i, a) {
     line = a.split(',');
@@ -122,7 +121,6 @@ ChartBuilder.prototype.getTemperatureValues = function() {
     }
   });
 
-  console.log('merge', merge);
   return merge.join( '\n' );
 };
 
