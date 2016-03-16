@@ -7,6 +7,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
+    <link rel="stylesheet" href="resources/css/ol3-popup.css">
     <link rel="stylesheet" media="screen" href="resources/css/screen.css">
 
     <script type="text/javascript" src="./resources/js/jquery.min.js"></script>
@@ -23,10 +24,10 @@
 
         <li class="select border">
           <select class="dropdown">
-            <option value="">Mean Daily Maximum</option>
-            <option value="">Mean Daily Minimum</option>
-            <option value="">Days over 95º F</option>
-            <option value="">Days over 32º F</option>
+            <option value="tasmax">Mean Daily Maximum</option>
+            <option value="tasmin">Mean Daily Minimum</option>
+            <option value="days_tmax_abv_35.0">Days over 95º F</option>
+            <option value="days_tmin_blw_0.0">Days min below 32º F</option>
           </select>
         </li>
 
