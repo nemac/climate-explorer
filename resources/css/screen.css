@@ -4486,6 +4486,12 @@ h6 {
   text-indent: 0;
 }
 
+.page-type-variables #variable-map .ol-popup-content {
+  min-width: 190px;
+  max-height: 400px;
+  overflow-x: auto;
+}
+
 .year {
   position: absolute;
   bottom: 40px;

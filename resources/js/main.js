@@ -139,7 +139,6 @@ App.prototype.wireEvents = function() {
 */
 App.prototype.wireMapEvents = function () {
   var self = this;
-  var element = document.getElementById('popup');
   var popup = new ol.Overlay.Popup();
   this.map.addOverlay(popup);
 
