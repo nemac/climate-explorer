@@ -18,32 +18,32 @@ ChartBuilder.prototype.getData = function (callback) {
   var id = this.props.station.split(':')[1];
   this.records = {
     'tmin': {
-      url: 'https://toolkit.climate.gov/climate-explorer-data/ghcnd/'+id+'/TMIN.csv.gz',
+      url: 'http://climateexplorer.habitatseven.work/resources/data/stations/daily/'+id+'-tmin.csv.gz',
       type: 'tmin',
       data: ''
     },
     'normal_tmin': {
-      url: 'https://toolkit.climate.gov/climate-explorer-data/normals/NORMAL_TMIN/'+id+'.csv.gz',
+      url: 'http://climateexplorer.habitatseven.work/resources/data/stations/normals/normal_tmin/'+id+'.csv.gz',
       type: 'normal_tmin',
       data: ''
     },
     'tmax': {
-      url: 'https://toolkit.climate.gov/climate-explorer-data/ghcnd/'+id+'/TMAX.csv.gz',
+      url: 'http://climateexplorer.habitatseven.work/resources/data/stations/daily/'+id+'-tmax.csv.gz',
       type: 'tmax',
       data: ''
     },
     'normal_tmax': {
-      url: 'https://toolkit.climate.gov/climate-explorer-data/normals/NORMAL_TMAX/'+id+'.csv.gz',
+      url: 'http://climateexplorer.habitatseven.work/resources/data/stations/normals/normal_tmax/'+id+'.csv.gz',
       type: 'normal_tmax',
       data: ''
     },
     'precip_ytd': {
-      url: 'https://toolkit.climate.gov/climate-explorer-data/ghcnd/'+id+'/PRCP_YTD.csv.gz',
+      url: 'http://climateexplorer.habitatseven.work/resources/data/stations/daily/'+id+'-precip_ytd.csv.gz',
       type: 'precip_ytd',
       data: ''
     },
     'normal_precip_ytd': {
-      url: 'https://toolkit.climate.gov/climate-explorer-data/normals/NORMAL_PRCP_YTD/'+id+'.csv.gz',
+      url: 'http://climateexplorer.habitatseven.work/resources/data/stations/normals/normal_precip_ytd/'+id+'.csv.gz',
       type: 'normal_precip_ytd',
       data: ''
     }
@@ -58,7 +58,6 @@ ChartBuilder.prototype.getData = function (callback) {
       i++;
       self.records[key].data = data;
       if ( i === 6 ) { callback(); }
-      //console.log('data', data);
     });
   });
 
@@ -77,7 +76,6 @@ ChartBuilder.prototype.buildChart = function() {
 
 ChartBuilder.prototype.getTemperatureValues = function() {
   var line;
-
   var max = {};
   $.each(this.records.tmax.data.replace( /(\r\n|\n|\r)/gm, ';' ).split( ';' ), function(i, a) {
     line = a.split(',');
