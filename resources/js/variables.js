@@ -90,7 +90,7 @@ Variables.prototype.addCounties = function() {
   this.vectorLayer = new ol.layer.Vector({
     title: 'added Layer',
     source: new ol.source.Vector({
-       url: 'resources/data/counties.json',
+       url: 'resources/data/counties-20m.json',
        format: new ol.format.GeoJSON()
     })
   });
