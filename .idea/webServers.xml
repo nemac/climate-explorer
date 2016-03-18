@@ -2,7 +2,7 @@
 <project version="4">
   <component name="WebServers">
     <option name="servers">
-      <webServer id="8378bd35-64a5-4657-b680-e9ef23aaed87" name="Climate Explorer" url="http://climateexplorer.habitatseven.work">
+      <webServer id="c971c988-124c-422c-bb2d-ea9b759ed9c9" name="Climate_Explorer" url="http://climateexplorer.habitatseven.work">
         <fileTransfer host="habitatseven.work" port="21" rootFolder="/public_html/climateexplorer" password="dfc9df9ddf9ddf9ddfd8dfcbdfdadfc6dfc5dfc1" username="habitatsevendev">
           <advancedOptions>
             <advancedOptions dataProtectionLevel="Private" />

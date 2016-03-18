@@ -1,0 +1,377 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>.formMapper()</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <link rel="stylesheet" type="text/css" href="css/bootstrap.css" />
+    <link rel="stylesheet" type="text/css" href="css/styles.css" />
+    <style type="text/css">
+      body {
+        padding-top: 60px;
+        padding-bottom: 40px;
+      }
+    </style>
+
+  </head>
+
+  <body>
+
+    <div class="navbar navbar-inverse navbar-fixed-top">
+      <div class="navbar-inner">
+        <div class="container-fluid">
+          <button type="button" class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a href="#" class="brand">.formMapper()</a>
+          <div class="nav-collapse collapse">
+            <ul class="nav">
+              <li><a href="index.html">Home</a></li>
+              <li><a href="geolocate.html">Auto-GeoLocate</a></li>
+              <li><a href="multiple.html">Multiple Results</a></li>
+              <li><a href="drag.html">Draggable</a></li>
+              <li><a href="poi.html">POI</a></li>
+              <li><a href="details.html">More Details</a></li>
+              <li><a href="bounds.html">Limit Area</a></li>
+              <li><a href="country.html">Limit Country</a></li>
+              <li><a href="api_call.html">Find</a></li>
+              <li class="active"><a href="demo.html">Demo Contact Form</a></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="container-fluid">
+
+     
+      <!-- Example row of columns -->
+      <div class="row-fluid">
+        <div class="span4">
+          <h3>Location Entry</h3>
+          
+          <div class="map_canvas"></div>
+          
+          <button onclick="findMyLocation('#formmapper')" class="btn btn-block btn-primary"><i class="icon-globe icon-white"></i> Try And Find Me</button>
+            <span style="margin-top:5px;" class="help-block"><small>Notice that the <strong>Try And Find Me</strong> button above <i class="icon-arrow-up"></i> and the form below <i class="icon-arrow-down"></i> both still work even though there are multiple .formMapper() maps on the page.</small></span>
+                     
+            <form>
+              <fieldset>
+              
+              <div class="input-append">
+              <input data-toggle="popover" data-placement="right" data-content="Continue typing until you see your location in the list. Click your location and the form will be filled in for you." data-original-title="Let's find your location!" id="formmapper" type="text" placeholder="Just start typing here..." />
+              <button id="find" class="btn btn-success" type="button"><i class="icon-map-marker icon-white"></i> Find!</button> </div> 
+               
+              <span class="help-block"><small>It could be just about anything: a full address, a city, just the zip/postal code, or even the name of a place.</small></span>
+              </fieldset>
+            </form>
+            
+      
+          
+           <div>
+            <form>
+            <fieldset class="details">
+                <h3>Address Details</h3>
+                <div class="input-prepend">
+                  <span class="add-on">Number</span>
+                  <input disabled="disabled" name="street_number" type="text" value="">
+                </div>
+                <div class="input-prepend">
+                  <span class="add-on">Street</span>
+                  <input disabled="disabled" name="route" type="text" value="">
+                </div>
+                <div class="input-prepend">
+                  <span class="add-on">City</span>
+                  <input disabled="disabled" name="locality" type="text" value="">
+                </div>
+                <div class="input-prepend">
+                  <span class="add-on">State</span>
+                  <input disabled="disabled" name="administrative_area_level_1" type="text" value="">
+                </div>
+                <div class="input-prepend">
+                  <span class="add-on">Postal Code</span>
+                  <input disabled="disabled" name="postal_code" type="text" value="">
+                </div>
+                <div class="input-prepend">
+                  <span class="add-on">Country</span>
+                  <input disabled="disabled" name="country" type="text" value="">
+                </div>
+                <div class="input-prepend">
+                  <span class="add-on">Latitude</span>
+                  <input disabled="disabled" name="lat" placeholder="" type="text" value="">
+                </div>
+                <div class="input-prepend">
+                   <span class="add-on">Longitude</span>
+                   <input disabled="disabled" name="lng" placeholder="" type="text" value="">
+                </div>
+              </fieldset>
+            </form>  
+            </div>
+        </div>
+        <div class="span8">
+        
+          <h3>A Demo Contact Form</h3>          
+          <p><i class="icon-envelope"></i> Below is a sample of the <strong>.formMapper()</strong> in a contact form. In this example the map is not attached to the form so it does not change when a location is added in the form, but it does use <strong>.formMapper()</strong> and its options to add the location to the map.</p>
+         
+         <hr/> 
+          
+        <!-- hidden element to attach .formMapper() to display map only -->
+        <input id="contactForm" type="hidden"/>
+        <h3>You can find us here.</h3>
+        <div class="map_contact"></div>
+        
+        <div class="row-fluid">
+        <div class="span3"> <!-- Left Column -->
+        <p>
+        <a href="#photo" role="button" class="btn-link" data-toggle="modal"><img src="img/toms.jpg" width="100%" alt="Tom's Restaurant" class="img-polaroid"/>
+        <small>Enlarge Image</small>
+        </a>
+        <h4>Tom's Restaurant</h4>
+        <strong>2880 Broadway<br>
+		New York, NY 10025</strong><br>
+		ph: 212-864-6137<br>
+		fax: 212-864-1372<br>
+		<a href="http://tomsrestaurant.net/" target="_blank">Our Website</a></p>
+        <p style="color: #666666;">Tom's is a family owned restaurant that has been around since the 1940's.  It has been graced with a song by Suzanne Vega and most recently it is the site of Monk's Diner from the hit sitcom Seinfeld.</p>
+        </div>
+        <div class="span6"> <!-- Center Column -->
+        <p>
+        <h3>Contact Us</h3>
+        
+        	<form class="form-horizontal" id="contactUs" name="contactUs">
+			<fieldset>
+            
+            <p><label>Your Name <span style="color:#990000">*</span></label>
+            <input class="input-block-level" type="text" id="name" placeholder="Who are you?" name="Name">
+            </p>
+            
+            <p><label>Your Email <span style="color:#990000">*</span></label>
+            <input class="input-block-level" type="text" id="email" placeholder="How can we reply to you?" name="Email">
+            </p>
+            
+            <p><label>Your Location <span style="color:#990000">*</span> <a class="btn btn-mini btn-success" onclick="findMyLocation('#contactLocation')"><i class="icon-search icon-white"></i> Find Me</a></label>
+            <input class="input-block-level" type="text" id="contactLocation" placeholder="Where in the world are you?" name="Location">
+            </p>
+            
+            <p><label>Your Message</label>
+            <textarea id="message" name="Message" placeholder="What would you like to tell us?" style="width: 95%;"></textarea>
+            </p>
+            
+            <!-- Hidden Fields -->
+            
+            <input name="street_number" type="hidden">
+            <input name="route" type="hidden">
+            <input name="locality" type="hidden">
+            <input name="administrative_area_level_1" type="hidden">
+            <input name="postal_code" type="hidden">
+            <input name="country" type="hidden">
+            <input name="lat" type="hidden">
+            <input name="lng" type="hidden">
+    
+            <!-- ============= -->
+            
+            <a  class="btn btn-success submit-btn" onclick="if (document.getElementById('name').value!='' && document.getElementById('email').value!='' && document.getElementById('contactLocation').value!=''){$('#email-modal').modal('toggle');}else{alert('Missing required information.');}">Send Message Now</a> <input class="btn btn-danger" type="reset" value="Start All Over" /> 
+            
+           </fieldset>
+           </form>
+        
+          <div class="alert alert-info"><strong>Please Note:</strong> This form <strong>does not send a message</strong> to Tom's Restaurant. A new window will appear with a demo email message that represents what could be sent.
+          </div>
+
+        </p>
+        
+       </div>
+        <div class="span3"> <!-- Right Column -->
+        <div id="myCarousel" class="carousel slide">
+          <ol class="carousel-indicators">
+            <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
+            <li data-target="#myCarousel" data-slide-to="1"></li>
+            <li data-target="#myCarousel" data-slide-to="2"></li>
+          </ol>
+          <!-- Carousel items -->
+          <div class="carousel-inner">
+            <div class="active item"><img src="img/food-1.png" alt="Food" /></div>
+            <div class="item"><img src="img/food-2.png" alt="Food" /></div>
+            <div class="item"><img src="img/food-3.png" alt="Food" /></div>
+          </div>
+          <!-- Carousel nav 
+          <a class="carousel-control left" href="#myCarousel" data-slide="prev">&lsaquo;</a>
+          <a class="carousel-control right" href="#myCarousel" data-slide="next">&rsaquo;</a>-->
+        </div>
+        </div>
+      </div>
+      </div>
+      </div>
+
+      <hr>
+
+
+
+    </div> <!-- /container -->  
+    
+    <!-- Modal -->
+    
+      <div id="email-modal" class="modal hide fade" role="dialog">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+        <h3>Sample Email</h3>
+      </div>
+      <div class="modal-body">
+        <p>
+        <div class="alert alert-success">
+        <strong>From:</strong> Your Website.<br/>
+        <strong>Date:</strong> <span id="current_date"></span><br/>
+        <strong>Subject:</strong> You have a new contact message.<br/>
+        </div>
+        
+        <div id="mapImage" style="margin-top:20px;margin-bottom:20px;"></div>
+        
+        <div id="emailDetails">        
+        Name: <span id="contact_name"></span><br/>
+        Email: <span id="contact_email"></span><br/>
+        <br/>
+        Address: <span id="contact_street_number"></span><span id="contact_route"></span><br/>
+		City: <span id="contact_locality"></span><br/>
+		State: <span id="contact_administrative_area_level_1"></span><br/>
+		Postal Code: <span id="contact_postal_code"></span><br/>
+		Country: <span id="contact_country"></span><br/>
+		Location: <span id="contact_lat"></span><span id="contact_lng"></span><br/>
+        <br/>
+        Message: <span id="contact_message"></span><br/>
+        </div>
+        </p>
+      </div>
+      <div class="modal-footer">
+        <button class="btn" data-dismiss="modal" aria-hidden="true">Close</button>
+      </div>
+    </div>
+    
+    <div id="photo" class="modal hide fade" role="dialog">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+        <h4>Tom's Restaurant</h4>
+      </div>
+      <div class="modal-body">
+        <p>
+        <img src="img/toms.jpg" width="100%" alt="Tom's Restaurant" />
+        </p>
+      </div>
+      <div class="modal-footer">
+        <button class="btn" data-dismiss="modal" aria-hidden="true">Close</button>
+      </div>
+    </div> 
+    
+
+    
+	<script src="http://maps.googleapis.com/maps/api/js?sensor=false&amp;libraries=places"></script>
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+
+    <script src="js/formmapper.js"></script>
+
+    <script src="js/bootstrap.js"></script>
+    
+	<script>
+	
+      $(function(){
+        $("#formmapper").formmapper({
+          map: ".map_canvas",
+          details: "form",
+          markerOptions: {
+            draggable: true
+          }
+        });		
+        
+        $("#formmapper").bind("geocode:dragged", function(event, latLng){
+		  $("#formmapper").formmapper("find",latLng.lat()+","+latLng.lng());
+        });
+        
+        $("#find").click(function(){
+          $("#formmapper").trigger("geocode");
+        }).click();
+		
+		
+		$("#contactForm").formmapper({map: ".map_contact", useViewport: false, maxZoom:17, location: "2880 Broadway, New York, NY 10036, USA"});
+		
+		$('#contactLocation').formmapper({details: "#contactUs", blur:true});
+
+		$('#email-modal').on('shown', function () {
+		  today = new Date();
+		  document.getElementById('current_date').innerHTML=today;
+		   
+		if (document.forms['contactUs'].name.value!="")
+			document.getElementById('contact_name').innerHTML=document.forms['contactUs'].name.value;
+		else
+			document.getElementById('contact_name').innerHTML="<span style='color:#aaa;'>This wasn't submitted.</span>";
+		
+		if (document.forms['contactUs'].email.value!="")
+			document.getElementById('contact_email').innerHTML=document.forms['contactUs'].email.value;
+		else
+			document.getElementById('contact_email').innerHTML="<span style='color:#aaa;'><span style='color:#aaa;'>This wasn't submitted.</span></span>";
+			
+		if (document.forms['contactUs'].street_number.value!="")
+			document.getElementById('contact_street_number').innerHTML=document.forms['contactUs'].street_number.value+", ";
+		else
+			document.getElementById('contact_street_number').innerHTML="";
+		
+			
+		if (document.forms['contactUs'].route.value!="")
+			document.getElementById('contact_route').innerHTML=document.forms['contactUs'].route.value;
+		else
+			document.getElementById('contact_route').innerHTML="<span style='color:#aaa;'>This wasn't submitted.</span>";
+			
+		if (document.forms['contactUs'].locality.value!="")
+			document.getElementById('contact_locality').innerHTML=document.forms['contactUs'].locality.value;
+		else
+			document.getElementById('contact_locality').innerHTML="<span style='color:#aaa;'>This wasn't submitted.</span>";
+			
+		if (document.forms['contactUs'].administrative_area_level_1.value!="")
+			document.getElementById('contact_administrative_area_level_1').innerHTML=document.forms['contactUs'].administrative_area_level_1.value;
+		else
+			document.getElementById('contact_administrative_area_level_1').innerHTML="<span style='color:#aaa;'>This wasn't submitted.</span>";
+			
+		if (document.forms['contactUs'].postal_code.value!="")
+			document.getElementById('contact_postal_code').innerHTML=document.forms['contactUs'].postal_code.value;
+		else
+			document.getElementById('contact_postal_code').innerHTML="<span style='color:#aaa;'>This wasn't submitted.</span>";
+			
+		if (document.forms['contactUs'].country.value!="")
+			document.getElementById('contact_country').innerHTML=document.forms['contactUs'].country.value;
+		else
+			document.getElementById('contact_country').innerHTML="<span style='color:#aaa;'>This wasn't submitted.</span>";
+			
+		if (document.forms['contactUs'].lat.value!="")
+			document.getElementById('contact_lat').innerHTML=document.forms['contactUs'].lat.value+", ";
+		else
+			document.getElementById('contact_lat').innerHTML="<span style='color:#aaa;'>This wasn't submitted.</span>";
+			
+		if (document.forms['contactUs'].lng.value!="")
+			document.getElementById('contact_lng').innerHTML=document.forms['contactUs'].lng.value;
+		else
+			document.getElementById('contact_lng').innerHTML="";
+			
+		if (document.forms['contactUs'].lng.value!="" && document.forms['contactUs'].lat.value!=""){	
+			imageSrc = "http://maps.googleapis.com/maps/api/staticmap?center="+document.forms['contactUs'].lat.value+","+document.forms['contactUs'].lng.value+"&zoom=14&size=530x100&sensor=false&markers=color:red%7C"+document.forms['contactUs'].lat.value+","+document.forms['contactUs'].lng.value+"";
+			document.getElementById('mapImage').innerHTML="<img src='"+imageSrc+"' alt='map'/>";
+		}
+			
+		if (document.forms['contactUs'].message.value!="")
+			document.getElementById('contact_message').innerHTML=document.forms['contactUs'].message.value;
+		else
+			document.getElementById('contact_message').innerHTML="<span style='color:#aaa;'>This wasn't submitted.</span>";
+
+		})			
+				
+		$('#formmapper').popover({'trigger': 'focus'});
+		
+		$('input:disabled').val('Add location above');
+
+      });
+    </script>
+
+  </body>
+</html>

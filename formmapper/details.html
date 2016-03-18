@@ -1,0 +1,360 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>.formMapper()</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <link rel="stylesheet" type="text/css" href="css/bootstrap.css" />
+    <link rel="stylesheet" type="text/css" href="css/styles.css" />
+    <style type="text/css">
+      body {
+        padding-top: 60px;
+        padding-bottom: 40px;
+      }
+    </style>
+
+  </head>
+
+  <body>
+
+    <div class="navbar navbar-inverse navbar-fixed-top">
+      <div class="navbar-inner">
+        <div class="container-fluid">
+          <button type="button" class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a href="#" class="brand">.formMapper()</a>
+          <div class="nav-collapse collapse">
+            <ul class="nav">
+              <li><a href="index.html">Home</a></li>
+              <li><a href="geolocate.html">Auto-GeoLocate</a></li>
+              <li><a href="multiple.html">Multiple Results</a></li>
+              <li><a href="drag.html">Draggable</a></li>
+              <li><a href="poi.html">POI</a></li>
+              <li class="active"><a href="details.html">More Details</a></li>
+              <li><a href="bounds.html">Limit Area</a></li>
+              <li><a href="country.html">Limit Country</a></li>
+              <li><a href="api_call.html">Find</a></li>
+              <li><a href="demo.html">Demo Contact Form</a></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="container-fluid">
+
+     
+      <!-- Example row of columns -->
+      <div class="row-fluid">
+        <div class="span4">
+          <h3>Location Entry</h3>
+                     
+            <form>
+              <fieldset>
+              
+              <div class="input-append">
+              <input data-toggle="popover" data-placement="right" data-content="Continue typing until you see your location in the list. Click your location and the form will be filled in for you." data-original-title="Let's find your location!" id="formmapper" type="text" placeholder="Just start typing here..." />
+              <button id="find" class="btn btn-success" type="button"><i class="icon-map-marker icon-white"></i> Find!</button> </div> 
+               
+              <span class="help-block"><small>It could be just about anything: a full address, a city, just the zip/postal code, or even the name of a place.</small></span>
+              </fieldset>
+            </form>
+          
+           <div>
+            <form>
+            <fieldset class="details">
+                <h3>Address Details</h3>
+                <div class="input-prepend">
+                  <span class="add-on">Number</span>
+                  <input disabled="disabled" name="street_number" type="text" value="">
+                </div>
+                <div class="input-prepend">
+                  <span class="add-on">Street</span>
+                  <input disabled="disabled" name="route" type="text" value="">
+                </div>
+                <div class="input-prepend">
+                  <span class="add-on">City</span>
+                  <input disabled="disabled" name="locality" type="text" value="">
+                </div>
+                <div class="input-prepend">
+                  <span class="add-on">State</span>
+                  <input disabled="disabled" name="administrative_area_level_1" type="text" value="">
+                </div>
+
+                <div class="input-prepend">
+                    <span class="add-on">County</span>
+                    <input disabled="disabled" name="administrative_area_level_2" type="text" value="">
+                </div>
+                <div class="input-prepend">
+                  <span class="add-on">Postal Code</span>
+                  <input disabled="disabled" name="postal_code" type="text" value="">
+                </div>
+                <div class="input-prepend">
+                  <span class="add-on">Country</span>
+                  <input disabled="disabled" name="country" type="text" value="">
+                </div>
+                <div class="input-prepend">
+                  <span class="add-on">Latitude</span>
+                  <input disabled="disabled" name="lat" placeholder="" type="text" value="">
+                </div>
+                <div class="input-prepend">
+                   <span class="add-on">Longitude</span>
+                   <input disabled="disabled" name="lng" placeholder="" type="text" value="">
+                </div>
+              </fieldset>
+            </form>  
+            </div>
+        </div>
+        <div class="span8">
+        
+          <h3>Google Map Display</h3>
+          <button onclick="findMyLocation('#formmapper')" style="margin-left:10px;" class="btn btn-large btn-primary pull-right"><i class="icon-globe icon-white"></i> Try And Find Me</button>          
+          <p><i class="icon-list"></i> The <strong>Address Details</strong> on the left shows only the most popular results found through a search. This demo also includes some additional results below that may be of use. <a href="#myModal" role="button" class="btn-link" data-toggle="modal">Full List &amp; Descriptions</a></p>
+          <div class="map_canvas"></div>
+          
+       </div>
+       </div>
+              
+       <div class="row-fluid">
+       
+       <div class="span12">
+       <hr/>
+        		<h3>Examples of Additional Results</h3>
+                <p><small>Availablity is based on results provided by the Google Map and Places API. <a href="#myModal" role="button" class="btn-link" data-toggle="modal">Full List &amp; Descriptions</a></small></p>
+                
+                <form>
+                <fieldset class="additional details">
+                
+                <div class="span4">
+                <div class="input-prepend">
+                  <span class="add-on">Name</span>
+                <input disabled="disabled" name="name" type="text" value="">        
+                </div>
+                <div class="input-prepend">
+                  <span class="add-on">POI</span>
+                <input disabled="disabled" name="point_of_interest" type="text" value="">        
+                </div>
+                <div class="input-prepend">
+                  <span class="add-on">Location</span>
+                <input disabled="disabled" name="location" type="text" value="">        
+                </div>
+                <div class="input-prepend">
+                  <span class="add-on">Type</span>
+                <input disabled="disabled" name="location_type" type="text" value="">        
+                </div>
+                <div class="input-prepend">
+                  <span class="add-on">Premise</span>
+                <input disabled="disabled" name="premise" type="text" value="">        
+                </div>
+                <div class="input-prepend">
+                  <span class="add-on">Formatted</span>
+                <input disabled="disabled" name="formatted_address" type="text" value="">        
+                </div>
+                </div>
+                <div class="span4">
+                <div class="input-prepend">
+                  <span class="add-on">Sublocality</span>
+                <input disabled="disabled" name="sublocality" type="text" value="">        
+                </div>
+                <div class="input-prepend">
+                  <span class="add-on">Country Short</span>
+                <input disabled="disabled" name="country_short" type="text" value="">        
+                </div>
+                <div class="input-prepend">
+                  <span class="add-on">ID</span>
+                <input disabled="disabled" name="id" type="text" value="">        
+                </div>
+                <div class="input-prepend">
+                  <span class="add-on">Phone</span>
+                <input disabled="disabled" name="formatted_phone_number" type="text" value="">
+                </div>
+                <div class="input-prepend">
+                  <span class="add-on">Icon</span>
+                <input disabled="disabled" name="icon" type="text" value="">
+                </div>
+                <div class="input-prepend">
+                  <span class="add-on">URL</span>
+                <input disabled="disabled" name="url" type="text" value="">        
+                </div>
+                </div>
+                <div class="span4">
+                <div class="input-prepend">
+                  <span class="add-on">Website</span>
+                <input disabled="disabled" name="website" type="text" value="">
+                </div>
+                <div class="input-prepend">
+                  <span class="add-on">Intersection</span>
+                <input disabled="disabled" name="intersection" type="text" value="">
+                </div>
+                <div class="input-prepend">
+                  <span class="add-on">Neighborhood</span>
+                <input disabled="disabled" name="neighborhood" type="text" value="">
+                </div>
+                <div class="input-prepend">
+                  <span class="add-on">Floor</span>
+                <input disabled="disabled" name="floor" type="text" value="">
+                </div>
+                <div class="input-prepend">
+                  <span class="add-on">Room</span>
+                <input disabled="disabled" name="room" type="text" value="">
+                </div>
+                <div class="input-prepend">
+                  <span class="add-on">Rating</span>
+                <input disabled="disabled" name="rating" type="text" value="">
+                </div>
+                </div>
+                </fieldset>
+                </form>
+	   </div>	
+       </div>
+       
+
+      <hr>
+
+
+    </div> <!-- /container -->
+    
+     <!-- Modal -->
+    <div id="myModal" class="modal hide fade" role="dialog">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+        <h4 id="myModalLabel">Address Component Types</h4>
+        <p>Provided by the Google Maps API Documentation.</p>
+      </div>
+      <div class="modal-body">
+        <p>
+        <dl>
+        <dt>street_address</dt>
+        <dd>indicates a precise street address.</dd>
+        <dt>route</dt>
+        <dd>indicates a named route (such as "US 101").</dd>
+        <dt>intersection</dt>
+        <dd>indicates a major intersection, usually of two major roads.</dd>
+        <dt>political</dt>
+        <dd>indicates a political entity. Usually, this type indicates a polygon of some civil administration.</dd>
+        <dt>country</dt>
+        <dd>indicates the national political entity, and is typically the highest order type returned by the Geocoder.</dd>
+        <dt>administrative_area_level_1</dt>
+        <dd>indicates a first-order civil entity below the country level. Within the United States, these administrative levels are states. Not all nations exhibit these administrative levels.</dd>
+        <dt>administrative_area_level_2</dt>
+        <dd>indicates a second-order civil entity below the country level. Within the United States, these administrative levels are counties. Not all nations exhibit these administrative levels.</dd>
+        <dt>administrative_area_level_3</dt>
+        <dd>indicates a third-order civil entity below the country level. This type indicates a minor civil division. Not all nations exhibit these administrative levels.</dd>
+        <dt>colloquial_area</dt>
+        <dd>indicates a commonly-used alternative name for the entity.</dd>
+        <dt>locality</dt>
+        <dd>indicates an incorporated city or town political entity.</dd>
+        <dt>sublocality</dt>
+        <dd>indicates a first-order civil entity below a locality. For some locations may receive one of the additional </dd>
+        <dt>neighborhood</dt>
+        <dd>indicates a named neighborhood</dd>
+        <dt>premise</dt>
+        <dd>indicates a named location, usually a building or collection of buildings with a common name</dd>
+        <dt>subpremise</dt>
+        <dd>indicates a first-order entity below a named location, usually a singular building within a collection of buildings with a common name</dd>
+        <dt>postal_code</dt>
+        <dd>indicates a postal code as used to address postal mail within the country.</dd>
+        <dt>natural_feature</dt>
+        <dd>indicates a prominent natural feature.</dd>
+        <dt>airport</dt>
+        <dd>indicates an airport.</dd>
+        <dt>park</dt>
+        <dd>indicates a named park.</dd>
+        <dt>point_of_interest</dt>
+        <dd>indicates a named point of interest. Typically, these "POI"s are prominent local entities that don't easily fit in another category such as "Empire State Building" or "Statue of Liberty."</dd>
+        <dt>post_box</dt>
+        <dd>indicates a specific postal box.</dd>
+        <dt>street_number</dt>
+        <dd>indicates the precise street number.</dd>
+        <dt>floor</dt>
+        <dd>indicates the floor of a building address.</dd>
+        <dt>room</dt>
+        <dd>indicates the room of a building address.</dd>
+        <dt>lat</dt>
+        <dd>the geocoded latitude value.</dd>
+        <dt>lng</dt>
+        <dd>the geocoded longitude value.</dd>
+        <dt>viewport</dt>
+        <dd>contains the recommended viewport for displaying the returned result, specified as two latitude,longitude values defining the southwest and northeast corner of the viewport bounding box. Generally the viewport is used to frame a result when displaying it to a user.</dd>
+        <dt>location</dt>
+        <dd>contains the geocoded latitude,longitude value. For normal address lookups, this field is typically the most important.</dd>
+        <dt>formatted_address</dt>
+        <dd>is a string containing the human-readable address of this location. Often this address is equivalent to the "postal address," which sometimes differs from country to country. (Note that some countries, such as the United Kingdom, do not allow distribution of true postal addresses due to licensing restrictions.) This address is generally composed of one or more address components. For example, the address "111 8th Avenue, New York, NY" contains separate address components for "111" (the street number, "8th Avenue" (the route), "New York" (the city) and "NY" (the US state).</dd>
+        <dt>location_type</dt>
+        <dd>stores additional data about the specified location. The following values are currently supported:
+            <ul>
+                <li>"ROOFTOP" indicates that the returned result is a precise geocode for which we have location information accurate down to street address precision.</li>
+                <li>"RANGE_INTERPOLATED" indicates that the returned result reflects an approximation (usually on a road) interpolated between two precise points (such as intersections). Interpolated results are generally returned when rooftop geocodes are unavailable for a street address.</li>
+                <li>"GEOMETRIC_CENTER" indicates that the returned result is the geometric center of a result such as a polyline (for example, a street) or polygon (region).</li>
+                <li>"APPROXIMATE" indicates that the returned result is approximate.</li>
+            </ul>
+        </dd>
+        <dt>bounds</dt>
+        <dd>(optionally returned) stores the bounding box which can fully contain the returned result. Note that these bounds may not match the recommended viewport. (For example, San Francisco includes the Farallon islands, which are technically part of the city, but probably should not be returned in the viewport.)</dd>
+        <dt>id</dt>
+        <dd>contains a unique identifier denoting this place. This identifier may not be used to retrieve information about this place, but can be used to consolidate data about this Place, and to verify the identity of a Place across separate searches. As ids can occasionally change, it's recommended that the stored id for a Place be compared with the id returned in later Details requests for the same Place, and updated if necessary.</dd>
+        <dt>url</dt>
+        <dd>URL of the associated Google Place Page.</dd>
+        <dt>website</dt>
+        <dd>lists the authoritative website for this Place, such as a business' homepage.</dd>
+        <dt>vicinity</dt>
+        <dd>A simplified address for the Place, including the street name, street number, and locality, but not the province/state, postal code, or country. For example, Google's Sydney, Australia office has a vicinity value of 5/48 Pirrama Road, Pyrmont.</dd>
+        <dt>reference</dt>
+        <dd>contains a token that can be used to query the Details service in future. This token may differ from the reference used in the request to the Details service. It is recommended that stored references for Places be regularly updated. Although this token uniquely identifies the Place, the converse is not true: a Place may have many valid reference tokens.</dd>
+        <dt>rating</dt>
+        <dd>The Place's rating, from 0.0 to 5.0, based on user reviews.</dd>
+        <dt>international_phone_number</dt>
+        <dd>contains the Place's phone number in international format. International format includes the country code, and is prefixed with the plus (+) sign. For example, the international_phone_number for Google's Sydney, Australia office is +61 2 9374 4000.</dd>
+        <dt>icon</dt>
+        <dd> URL to an image resource that can be used to represent this Place's type.</dd>
+        <dt>formatted_phone_number</dt>
+        <dd>The Place's phone number, formatted according to the number's regional convention.</dd>
+        </p>
+      </div>
+      <div class="modal-footer">
+        <button class="btn" data-dismiss="modal" aria-hidden="true">Close</button>
+      </div>
+    </div>
+    
+	<script src="http://maps.googleapis.com/maps/api/js?sensor=false&amp;libraries=places"></script>
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+
+    <script src="js/formmapper.js"></script>
+
+    <script src="js/bootstrap.js"></script>
+    
+	<script>
+	
+      $(function(){
+        $("#formmapper").formmapper({
+          map: ".map_canvas",
+          details: "form",
+          markerOptions: {
+            draggable: true
+          }
+        });
+        
+        $("#formmapper").bind("geocode:dragged", function(event, latLng){
+		  $("#formmapper").formmapper("find",latLng.lat()+","+latLng.lng());
+        });
+        
+        
+        $("#find").click(function(){
+          $("#formmapper").trigger("geocode");
+        }).click();
+		
+		$('#formmapper').popover({'trigger': 'focus'});
+		
+		$('input:disabled').val('Add location above');
+
+      });
+    </script>
+
+  </body>
+</html>

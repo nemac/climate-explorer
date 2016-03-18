@@ -1,11 +1,4 @@
-
-*.scssc
 manager/
-.idea/
-*.xml
-
-case_fire-regimes.html
-
-variables.html
-
-index.html
+resources/ol3/closure-library/closure/bin/build/
+*.pyc
+*.scss

@@ -19,27 +19,31 @@
 <script type="text/javascript" src="./resources/js/split-pane.min.js"></script>
 <script type="text/javascript" src="./resources/js/download.js"></script>
 
-<script type="text/javascript" src="./resources/js/ol.js"></script>
-<script type="text/javascript" src="./resources/js/main.js"></script>
+<script type="text/javascript" src="./resources/js/variables.js"></script>
+<script type="text/javascript" src="./resources/js/climate-widget-graph.js"></script>
 
-<?php
-  
-  if (isset($case) && $case != null) {
-    
-?>
+<script type="text/javascript" src="./resources/js/ol.js"></script>
+<script type="text/javascript" src="./resources/js/ol3-popup.js"></script>
+
+<!-- if CASE -->
+<?php if (isset($case) && $case != null) { ?>
+  <script type="text/javascript" src="./resources/js/multigraph-nojq.min.js"></script>
+  <script type="text/javascript" src="./resources/js/main.js"></script>
+  <script type="text/javascript" src="./resources/js/chart.js"></script>
+  <script>
+    $(document).ready(function() {
+      app = new App(<?php echo "'" . $case . "'"; ?>);
+    });
+  </script>
+
+<?php } ?>
+
+<script type="text/javascript" src="./resources/js/global_functions.js"></script>
 
 <script>
   $(document).ready(function() {
-    app = new App(<?php echo "'" . $case . "'"; ?>);
+    variables = new Variables();
   });
 </script>
-
-<?php
-  
-  }
-  
-?>
-
-<script type="text/javascript" src="./resources/js/global_functions.js"></script>
 
 <!-- END:JS_LOADER -->

@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>.formMapper()</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <link rel="stylesheet" type="text/css" href="css/bootstrap.css" />
+    <link rel="stylesheet" type="text/css" href="css/styles.css" />
+    <style type="text/css">
+      body {
+        padding-top: 60px;
+        padding-bottom: 40px;
+      }
+    </style>
+
+  </head>
+
+  <body>
+
+    <div class="navbar navbar-inverse navbar-fixed-top">
+      <div class="navbar-inner">
+        <div class="container-fluid">
+          <button type="button" class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a href="#" class="brand">.formMapper()</a>
+          <div class="nav-collapse collapse">
+            <ul class="nav">
+              <li><a href="index.html">Home</a></li>
+              <li class="active"><a href="geolocate.html">Auto-GeoLocate</a></li>
+              <li><a href="multiple.html">Multiple Results</a></li>
+              <li><a href="drag.html">Draggable</a></li>
+              <li><a href="poi.html">POI</a></li>
+              <li><a href="details.html">More Details</a></li>
+              <li><a href="bounds.html">Limit Area</a></li>
+              <li><a href="country.html">Limit Country</a></li>
+              <li><a href="api_call.html">Find</a></li>
+              <li><a href="demo.html">Demo Contact Form</a></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="container-fluid">
+
+     
+      <!-- Example row of columns -->
+      <div class="row-fluid">
+        <div class="span4">
+          <h3>Location Entry</h3>
+                     
+            <form>
+              <fieldset>
+              
+              <div class="input-append">
+              <input data-toggle="popover" data-placement="right" data-content="Continue typing until you see your location in the list. Click your location and the form will be filled in for you." data-original-title="Let's find your location!" id="formmapper" type="text" placeholder="Just start typing here..." />
+              <button id="find" class="btn btn-success" type="button"><i class="icon-map-marker icon-white"></i> Find!</button> </div> 
+               
+              <span class="help-block"><small>It could be just about anything: a full address, a city, just the zip/postal code, or even the name of a place.</small></span>
+              </fieldset>
+            </form>
+          
+           <div>
+            <form>
+            <fieldset class="details">
+                <h3>Address Details</h3>
+                <div class="input-prepend">
+                  <span class="add-on">Number</span>
+                  <input disabled="disabled" name="street_number" type="text" value="">
+                </div>
+                <div class="input-prepend">
+                  <span class="add-on">Street</span>
+                  <input disabled="disabled" name="route" type="text" value="">
+                </div>
+                <div class="input-prepend">
+                  <span class="add-on">City</span>
+                  <input disabled="disabled" name="locality" type="text" value="">
+                </div>
+                <div class="input-prepend">
+                  <span class="add-on">State</span>
+                  <input disabled="disabled" name="administrative_area_level_1" type="text" value="">
+                </div>
+                <div class="input-prepend">
+                  <span class="add-on">Postal Code</span>
+                  <input disabled="disabled" name="postal_code" type="text" value="">
+                </div>
+                <div class="input-prepend">
+                  <span class="add-on">Country</span>
+                  <input disabled="disabled" name="country" type="text" value="">
+                </div>
+                <div class="input-prepend">
+                  <span class="add-on">Latitude</span>
+                  <input disabled="disabled" name="lat" placeholder="" type="text" value="">
+                </div>
+                <div class="input-prepend">
+                   <span class="add-on">Longitude</span>
+                   <input disabled="disabled" name="lng" placeholder="" type="text" value="">
+                </div>
+              </fieldset>
+            </form>  
+            </div>
+        </div>
+        <div class="span8">
+        
+          <h3>Google Map Display</h3>          
+          <p><i class="icon-screenshot"></i> In this example you should have been asked for permission to locate you when the page loads. If you approve the request, or if you have already given this website permission, the page will automatically attempt to find and map your location.</p>
+          <div class="map_canvas"></div>
+       </div>
+      </div>
+
+      <hr>
+
+    </div> <!-- /container -->
+	<script src="http://maps.googleapis.com/maps/api/js?sensor=false&amp;libraries=places"></script>
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+
+    <script src="js/formmapper.js"></script>
+
+    <script src="js/bootstrap.js"></script>
+    
+	<script>
+	
+      $(function(){
+        $("#formmapper").formmapper({
+          map: ".map_canvas",
+		  findme: true,
+          details: "form",
+          markerOptions: {
+            draggable: true,
+			zoom: 5
+          }
+        });
+        
+        $("#formmapper").bind("geocode:dragged", function(event, latLng){
+		  $("#formmapper").formmapper("find",latLng.lat()+","+latLng.lng());
+        });
+        
+        
+        $("#find").click(function(){
+          $("#formmapper").trigger("geocode");
+        }).click();
+		
+		$('#formmapper').popover({'trigger': 'focus'});
+		
+		$('input:disabled').val('Add location above');
+
+      });
+    </script>
+
+  </body>
+</html>
