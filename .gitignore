@@ -1,4 +1,4 @@
 manager/
 resources/ol3/closure-library/closure/bin/build/
 *.pyc
-*.scss
+*.scssc

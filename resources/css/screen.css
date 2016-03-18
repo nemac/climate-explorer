@@ -2188,9 +2188,9 @@ article, aside, details, figcaption, figure, footer, header, hgroup, main, menu,
   cursor: default;
 }
 
-/*! jQuery UI - v1.11.4 - 2015-11-19
+/*! jQuery UI - v1.11.4 - 2016-03-18
 * http://jqueryui.com
-* Includes: core.css, slider.css
+* Includes: core.css, sortable.css, accordion.css, autocomplete.css, menu.css, slider.css, tooltip.css
 * Copyright jQuery Foundation and other contributors; Licensed MIT */
 /* Layout helpers
 ----------------------------------*/
@@ -2278,6 +2278,100 @@ article, aside, details, figcaption, figure, footer, header, hgroup, main, menu,
   height: 100%;
 }
 
+.ui-sortable-handle {
+  -ms-touch-action: none;
+  touch-action: none;
+}
+
+.ui-accordion .ui-accordion-header {
+  display: block;
+  cursor: pointer;
+  position: relative;
+  margin: 2px 0 0 0;
+  min-height: 0;
+  /* support: IE7 */
+  font-size: 100%;
+}
+
+.ui-accordion .ui-accordion-header .ui-accordion-header-icon {
+  position: absolute;
+  left: .5em;
+  top: 50%;
+  margin-top: -8px;
+}
+
+.ui-accordion .ui-accordion-content {
+  border-top: 0;
+  overflow: auto;
+}
+
+.ui-autocomplete {
+  position: absolute;
+  top: 0;
+  left: 0;
+  cursor: default;
+}
+
+.ui-menu {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: block;
+  outline: none;
+}
+
+.ui-menu .ui-menu {
+  position: absolute;
+}
+
+.ui-menu .ui-menu-item {
+  position: relative;
+  margin: 0;
+  padding: 3px 1em 3px .4em;
+  cursor: pointer;
+  min-height: 0;
+  /* support: IE7 */
+  /* support: IE10, see #8844 */
+  list-style-image: url("data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7");
+}
+
+.ui-menu .ui-menu-divider {
+  margin: 5px 0;
+  height: 0;
+  font-size: 0;
+  line-height: 0;
+  border-width: 1px 0 0 0;
+}
+
+.ui-menu .ui-state-focus,
+.ui-menu .ui-state-active {
+  margin: -1px;
+}
+
+/* icon support */
+.ui-menu-icons {
+  position: relative;
+}
+
+.ui-menu-icons .ui-menu-item {
+  padding-left: 2em;
+}
+
+/* left-aligned */
+.ui-menu .ui-icon {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: .2em;
+  margin: auto 0;
+}
+
+/* right-aligned */
+.ui-menu .ui-menu-icon {
+  left: auto;
+  right: 0;
+}
+
 .ui-slider {
   position: relative;
   text-align: left;
@@ -2352,6 +2446,19 @@ article, aside, details, figcaption, figure, footer, header, hgroup, main, menu,
 
 .ui-slider-vertical .ui-slider-range-max {
   top: 0;
+}
+
+.ui-tooltip {
+  padding: 8px;
+  position: absolute;
+  z-index: 9999;
+  max-width: 300px;
+  -webkit-box-shadow: 0 0 5px #aaa;
+  box-shadow: 0 0 5px #aaa;
+}
+
+body .ui-tooltip {
+  border-width: 2px;
 }
 
 * {
@@ -2662,10 +2769,10 @@ h6 {
   backdrop-filter: blur(3px);
   -webkit-backdrop-filter: blur(3px);
   /*
-
+  
   .nav-controls {
     position: static;
-
+    
     a {
       position: absolute;
       top: 10%;
@@ -2673,17 +2780,17 @@ h6 {
       padding-left: 20px;
       padding-right: 50px;
       z-index: 3;
-
+      
       &:before,
       &:after {
         right: 20px;
       }
-
+      
       &.nav-left {
         left: 0;
         border-left: none;
       }
-
+      
       &.nav-right {
         right: 0;
         border-right: none;
@@ -3120,23 +3227,23 @@ h6 {
   border-right: 10px solid #fff;
   z-index: 20;
   /*#main-header {
-
+  
     #header-logo {
       width: 50%;
       max-width: 71px;
     }
   }
-
+  
   #nav-trigger {
     float: right;
   }
-
+  
   #main-nav {
     padding: 20px 8%;
     background: $white;
     @include clearfix;
   }
-
+  
   #main-content-wrap {
     padding-left: 20%;
     padding-left: calc(20% + 10px);
@@ -3836,7 +3943,7 @@ h6 {
 }
 .location-data-section h3 {
   float: left;
-  width: 35%;
+  width: 30%;
   margin: 0 1% 0 0;
   padding: 20px 0 0 0;
   font: 2rem/1em Roboto, Helvetica, "Helvetica Neue", Arial, sans-serif;
@@ -3848,6 +3955,13 @@ h6 {
 }
 .location-data-section .data-vars {
   float: left;
+}
+.location-data-section .data-vars label {
+  display: block;
+  float: left;
+  padding: 20px;
+  border: 10px solid transparent;
+  font: 400 1.125rem/1em Roboto, Helvetica, "Helvetica Neue", Arial, sans-serif;
 }
 .location-data-section .fs-dropdown {
   float: left;
@@ -3893,7 +4007,7 @@ h6 {
 .location-data-section .data-accordion-wrap {
   position: relative;
   float: left;
-  width: 64%;
+  width: 69%;
   height: 0;
   padding: 0 0 50% 0;
   border: 10px solid #fff;
@@ -4174,8 +4288,12 @@ h6 {
 .location-data-section .data-list {
   position: relative;
   float: left;
-  width: 35%;
+  width: 30%;
   margin: 0 1% 0 0;
+}
+.location-data-section .data-list form {
+  position: absolute;
+  left: -9999px;
 }
 .location-data-section .data-options li {
   padding-left: 12%;
@@ -4205,6 +4323,12 @@ h6 {
   border-left-width: 10px;
   border-bottom-color: #ebebeb !important;
 }
+.location-data-section .data-options li h4 {
+  font-size: 1rem;
+  overflow: hidden;
+  *zoom: 1;
+  outline: none;
+}
 .location-data-section .data-options li a {
   display: block;
   padding: 2%;
@@ -4224,6 +4348,10 @@ h6 {
   text-align: right;
   line-height: 1.5rem;
   color: #aaa;
+}
+.location-data-section .data-options li ul li {
+  font-size: 0.875rem;
+  line-height: 1.5rem;
 }
 
 #location-temperature .accent-color {
@@ -4486,12 +4614,6 @@ h6 {
   text-indent: 0;
 }
 
-.page-type-variables #variable-map .ol-popup-content {
-  min-width: 190px;
-  max-height: 400px;
-  overflow-x: auto;
-}
-
 .year {
   position: absolute;
   bottom: 40px;
@@ -4547,8 +4669,8 @@ h6 {
   -webkit-transition: background 0.25s;
   transition: background 0.25s;
   /*
-
-
+  
+  
   .visibility {
     float: right;
     width: 24px;
@@ -4682,12 +4804,6 @@ h6 {
 }
 .page-type-case #case-menu .legend .layer-info .actions a .icon {
   margin-right: 10px;
-}
-
-.page-type-case .ol-popup-content {
-  min-width: 170px;
-  max-height: 400px;
-  overflow-x: auto;
 }
 
 .lcs_wrap {
