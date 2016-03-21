@@ -38,6 +38,9 @@
 
 <?php } ?>
 
+<script src="http://maps.googleapis.com/maps/api/js?sensor=false&amp;libraries=places"></script>
+<script src="./resources/js/formmapper.js"></script>
+
 <script type="text/javascript" src="./resources/js/chart.js"></script>
 <script type="text/javascript" src="./resources/js/global_functions.js"></script>
 

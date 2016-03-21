@@ -3,6 +3,7 @@ var Variables = function(page) {
   // this.subLayers = {};
   this.selectedVariable = 'tasmax';
   this.createMap();
+  this.wireSearch();
 };
 
 
@@ -37,6 +38,56 @@ Variables.prototype.createMap = function() {
   this.addStates();
   this.addStations();
   this.wire();
+};
+
+
+
+Variables.prototype.wireSearch = function() {
+  var self = this;
+
+  $("#formmapper").formmapper({
+      details: "form"
+  });
+
+  $("#formmapper").bind("geocode:result", function(event, result){
+    var lat = result.geometry.access_points[0].location.lat;
+    var lon = result.geometry.access_points[0].location.lng;
+
+    var conv = ol.proj.transform([lon, lat], 'EPSG:4326','EPSG:3857');
+    var xy = self.map.getPixelFromCoordinate(conv);
+
+    self.map.getView().setZoom(8);
+    self.map.getView().setCenter(conv);
+
+    setTimeout(function() {
+      var center = self.map.getView().getCenter();
+      xy = self.map.getPixelFromCoordinate(center);
+
+      var feature = self.map.forEachFeatureAtPixel(xy, function(feature, layer) {
+        var id = layer.get('layer_id');
+        if ( id === 'states' ) {
+          return null;
+        } else {
+          return feature;
+        }
+      });
+
+      var e = {};
+      e.mapBrowserEvent = {};
+      e.mapBrowserEvent.coordinate = center;
+      if (feature) {
+        self.selected_collection.clear();
+        self.selected_collection.push(feature);
+        var props = feature.getProperties();
+        if ( !props.station ) {
+          self.countySelected(feature, e);
+        }
+      } else {
+        self.popup.hide();
+      }
+    },200);
+
+  });
 };
 
 
@@ -89,8 +140,11 @@ Variables.prototype.wire = function() {
   });
 
   this.map.addInteraction(select);
+
+  this.selected_collection = select.getFeatures();
+
   select.on('select', function(e) {
-    
+
     var feature = self.map.forEachFeatureAtPixel(e.mapBrowserEvent.pixel, function(feature, layer) {
       var id = layer.get('layer_id');
       if ( id === 'states' ) {
