@@ -50,31 +50,80 @@
         <section id="location-temperature" class="location-data-section-wrap">
             <div class="location-data-section">
                 <header>
-                    <h3 class="accent-color"><span class="icon icon-temperature"></span>Temperature</h3>
+                  <h3 class="accent-color"><span class="icon icon-temperature"></span>Temperature</h3>
 
-                    <div class="data-vars">
-                        <select id="data-type" class="dropdown">
-                            <option value="projected">Projected</option>
-                            <option value="historical">Historical</option>
-                        </select>
+                  <div class="data-vars">
+                    <label for="temperature-presentation">Presentation</label>
+                    
+                    <select id="temperature-presentation" class="dropdown">
+                      <option value="absolute">Absolute</option>
+                      <option value="anomaly">Anomaly</option>
+                    </select>
+                    
+                    <label for="temperature-range">Range</label>
 
-                        <select id="data-season" class="dropdown">
-                            <option value="spring">Spring</option>
-                            <option value="summer">Summer</option>
-                            <option value="autumn">Autumn</option>
-                            <option value="winter">Winter</option>
-                        </select>
-                    </div>
+                    <select id="temperature-range" class="dropdown">
+                      <option value="minmax" selected="selected">Min-Max</option>
+                      <option value="p1090">10th-90th</option>
+                    </select>
+                  </div>
                 </header>
 
                 <div id="temperature-data" class="data-list">
                     <ul class="data-options">
-                      <li class="active accent-border"><a href="#" class="text accent-color">Average Mean</a><a href="#detail-temperature" class="icon icon-help nav-detail-link"></a></li>
-                      <li class="accent-border"><a href="#" class="text accent-color">Average Low</a><a href="#" class="icon icon-help nav-detail-link"></a></li>
-                      <li class="accent-border"><a href="#" class="text accent-color">Average High</a><a href="#" class="icon icon-help nav-detail-link"></a></li>
-                      <li class="accent-border"><a href="#" class="text accent-color">Hottest</a><a href="#" class="icon icon-help nav-detail-link"></a></li>
-                      <li class="accent-border"><a href="#" class="text accent-color">Coldest</a><a href="#" class="icon icon-help nav-detail-link"></a></li>
-                      <li class="accent-border"><a href="#" class="text accent-color">Days over 90º</a><a href="#" class="icon icon-help nav-detail-link"></a></li>
+                      <li class="active accent-border">
+                        <h4><a href="#" class="text accent-color">Average Mean</a><a href="#detail-temperature" class="icon icon-help nav-detail-link"></a></h4>
+                        <ul>
+                          <li><a>Annual</a></li>
+                          <li><a>Seasonal</a></li>
+                          <li><a>Monthly</a></li>
+                        </ul>
+                      </li>
+                      
+                      <li class="accent-border">
+                        <h4><a href="#" class="text accent-color">Average Low</a><a href="#" class="icon icon-help nav-detail-link"></a></h4>
+                        <ul>
+                          <li><a>Annual</a></li>
+                          <li><a>Seasonal</a></li>
+                          <li><a>Monthly</a></li>
+                        </ul>
+                      </li>
+                      
+                      <li class="accent-border">
+                        <h4><a href="#" class="text accent-color">Average High</a><a href="#" class="icon icon-help nav-detail-link"></a></h4>
+                        <ul>
+                          <li><a>Annual</a></li>
+                          <li><a>Seasonal</a></li>
+                          <li><a>Monthly</a></li>
+                        </ul>
+                      </li>
+                      
+                      <li class="accent-border">
+                        <h4><a href="#" class="text accent-color">Hottest</a><a href="#" class="icon icon-help nav-detail-link"></a></h4>
+                        <ul>
+                          <li><a>Annual</a></li>
+                          <li><a>Seasonal</a></li>
+                          <li><a>Monthly</a></li>
+                        </ul>
+                      </li>
+                      
+                      <li class="accent-border">
+                        <h4><a href="#" class="text accent-color">Coldest</a><a href="#" class="icon icon-help nav-detail-link"></a></h4>
+                        <ul>
+                          <li><a>Annual</a></li>
+                          <li><a>Seasonal</a></li>
+                          <li><a>Monthly</a></li>
+                        </ul>
+                      </li>
+                      
+                      <li class="accent-border">
+                        <h4><a href="#" class="text accent-color">Days over 90º</a><a href="#" class="icon icon-help nav-detail-link"></a></h4>
+                        <ul>
+                          <li><a>Annual</a></li>
+                          <li><a>Seasonal</a></li>
+                          <li><a>Monthly</a></li>
+                        </ul>
+                      </li>
                     </ul>
                     
                     <form onsubmit="return false;">
@@ -169,6 +218,7 @@
                                 </h4>
 
                                 <div class="data-accordion-actions">
+                                  <a href="#" class="how-to-read"><span class="icon icon-help"></span>How to read this</a>
                                   <a href="#" class="download-image"><span class="icon icon-download-image"></span>Image</a>
                                   <a href="#" class="download-data"><span class="icon icon-download-chart"></span>Data</a>
                                 </div>

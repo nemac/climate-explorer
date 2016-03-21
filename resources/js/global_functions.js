@@ -284,6 +284,13 @@
         $('.autocomplete').autocomplete({
           source: locations
         });
+        
+        // accordion
+        
+        $('.data-options ').accordion({
+          header: 'h4',
+          event: 'hoverintent'
+        });
 
         // LOCATION DATA ACCORDIONS
 
@@ -583,7 +590,7 @@
                 $('.chart').each(function () {
                     cwg.resize();
                 });
-            }, 1000);
+            }, 1500);
         });
 
         // ----------------

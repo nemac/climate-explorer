@@ -242,7 +242,7 @@
           margin: 15px 0 0 0;
           
           li {
-            float: none;
+            float: none!important;
             width: auto!important;
             margin: 0 0 10px 0;
             font: 300 1rem/1em $roboto;

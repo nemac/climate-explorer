@@ -18,6 +18,7 @@
 <script type="text/javascript" src="./resources/js/jquery.waypoints.sticky.min.js"></script>
 <script type="text/javascript" src="./resources/js/split-pane.min.js"></script>
 <script type="text/javascript" src="./resources/js/download.js"></script>
+<script type="text/javascript" src="./resources/js/jquery.hoverintent.min.js"></script>
 
 <script type="text/javascript" src="./resources/js/variables.js"></script>
 <script type="text/javascript" src="./resources/js/climate-widget-graph.js"></script>

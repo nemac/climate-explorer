@@ -168,7 +168,7 @@
   
   h3 {
     float: left;
-    width: 35%;
+    width: 30%;
     margin: 0 1% 0 0;
     padding: 20px 0 0 0;
     font: 2rem/1em $roboto;
@@ -182,6 +182,14 @@
   
   .data-vars {
     float: left;
+    
+    label {
+      display: block;
+      float: left;
+      padding: 20px;
+      border: 10px solid transparent;
+      font: 400 1.125rem/1em $roboto;
+    }
   }
   
   // dropdown
@@ -225,7 +233,7 @@
   .data-accordion-wrap {
     position: relative;
     float: left;
-    width: 64%;
+    width: 69%;
     height: 0;
     padding: 0 0 50% 0;
     border: 10px solid $white;
@@ -498,8 +506,13 @@
   .data-list {
     position: relative;
     float: left;
-    width: 35%;
+    width: 30%;
     margin: 0 1% 0 0;
+    
+    form {
+      position: absolute;
+      left: -9999px;
+    }
   }
   
   .data-options {
@@ -530,6 +543,12 @@
         border-bottom-color: $grey2!important;
       }
       
+      h4 {
+        font-size: 1rem;
+        @include clearfix;
+        outline: none;
+      }
+      
       a {
         display: block;
         padding: 2%;
@@ -547,6 +566,13 @@
           text-align: right;
           line-height: 1.5rem;
           color: #aaa;
+        }
+      }
+      
+      ul {
+        li {
+          font-size: 0.875rem;
+          line-height: 1.5rem;
         }
       }
     }
