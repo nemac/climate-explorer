@@ -284,9 +284,9 @@
         $('.autocomplete').autocomplete({
           source: locations
         });
-        
+
         // accordion
-        
+
         $('.data-options ').accordion({
           header: 'h4',
           event: 'hoverintent'

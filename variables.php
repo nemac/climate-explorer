@@ -8,6 +8,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <link rel="stylesheet" href="resources/css/ol3-popup.css">
+
     <link rel="stylesheet" media="screen" href="resources/css/screen.css">
 
     <script type="text/javascript" src="./resources/js/jquery.min.js"></script>
@@ -20,7 +21,7 @@
 
     <header id="left-header">
       <ul id="vars-menu" class="menu blue-menu">
-        <li class="search-field"><span class="icon icon-search"></span><input type="text" placeholder="Search by location"></li>
+        <li class="search-field"><span class="icon icon-search"></span><input type="text" id="formmapper" placeholder="Search by location"></li>
 
         <li class="select border">
           <select class="dropdown">
