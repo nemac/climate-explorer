@@ -30,7 +30,6 @@
 <?php if (isset($case) && $case != null) { ?>
   <script type="text/javascript" src="./resources/js/multigraph-nojq.min.js"></script>
   <script type="text/javascript" src="./resources/js/main.js"></script>
-  <script type="text/javascript" src="./resources/js/chart.js"></script>
   <script>
     $(document).ready(function() {
       app = new App(<?php echo "'" . $case . "'"; ?>);
@@ -39,6 +38,7 @@
 
 <?php } ?>
 
+<script type="text/javascript" src="./resources/js/chart.js"></script>
 <script type="text/javascript" src="./resources/js/global_functions.js"></script>
 
 <script>
