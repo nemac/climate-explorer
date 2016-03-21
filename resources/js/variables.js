@@ -34,6 +34,7 @@ Variables.prototype.createMap = function() {
 
   //add layers to map and wire events
   this.addCounties();
+  this.addStates();
   this.addStations();
   this.wire();
 };
@@ -77,14 +78,26 @@ Variables.prototype.wire = function() {
 
   //map click selector
   var select = new ol.interaction.Select({
+    layers: function(layer) {
+      if ( layer.get('layer_id') === 'states' ) {
+        return false;
+      } else {
+        return true;
+      }
+    },
     condition: ol.events.condition.click
   });
 
   this.map.addInteraction(select);
   select.on('select', function(e) {
-
+    
     var feature = self.map.forEachFeatureAtPixel(e.mapBrowserEvent.pixel, function(feature, layer) {
-      return feature;
+      var id = layer.get('layer_id');
+      if ( id === 'states' ) {
+        return null;
+      } else {
+        return feature;
+      }
     });
 
     if (feature) {
@@ -112,16 +125,69 @@ Variables.prototype.wire = function() {
 Variables.prototype.addCounties = function() {
 
   var self = this;
+  var style = function(feature, resolution) {
+
+    return [new ol.style.Style({
+      fill: new ol.style.Fill({
+        color: 'rgba(255, 255, 255, 0.4)'
+      }),
+      stroke: new ol.style.Stroke({
+        color: '#2980b9',
+        width: 0.5
+      })
+    })];
+
+  };
 
   this.vectorLayer = new ol.layer.Vector({
     title: 'added Layer',
     source: new ol.source.Vector({
        url: 'resources/data/counties-20m.json',
        format: new ol.format.GeoJSON()
-    })
+    }),
+    style: style
   });
 
   this.vectorLayer.set('layer_id', 'counties');
+  self.map.addLayer(this.vectorLayer);
+
+};
+
+
+
+/*
+*
+* get states geojson and add to map
+*
+*/
+Variables.prototype.addStates = function() {
+
+  var self = this;
+
+  var style = function(feature, resolution) {
+
+    return [new ol.style.Style({
+      fill: new ol.style.Fill({
+        color: 'rgba(0, 0, 0, 0)'
+      }),
+      stroke: new ol.style.Stroke({
+        color: '#2980b9',
+        width: 2
+      })
+    })];
+
+  };
+
+  this.vectorLayer = new ol.layer.Vector({
+    title: 'added Layer',
+    source: new ol.source.Vector({
+       url: 'resources/data/states.json',
+       format: new ol.format.GeoJSON()
+    }),
+    style: style
+  });
+
+  this.vectorLayer.set('layer_id', 'states');
   self.map.addLayer(this.vectorLayer);
 
 };
