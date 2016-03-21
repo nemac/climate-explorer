@@ -116,12 +116,12 @@ Variables.prototype.wire = function() {
 
   //layer show / hide handlers
   $('#counties-overlay-toggle').on('click', function() {
-    // var show = $(this).is(':checked');
-    // self.map.getLayers().forEach(function(layer) {
-    //   if (layer.get('layer_id') == 'counties') {
-    //     layer.setVisible(show);
-    //   }
-    // });
+    var show = $(this).is(':checked');
+    self.map.getLayers().forEach(function(layer) {
+      if (layer.get('layer_id') == 'counties') {
+        layer.setVisible(show);
+      }
+    });
   });
 
 
