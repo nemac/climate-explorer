@@ -101,14 +101,27 @@ Variables.prototype.wireSearch = function() {
 Variables.prototype.wire = function() {
   var self = this;
 
+  // help icon
+  $('#vars-menu .help').click(function (e) {
+    console.log('click me!');
+    e.preventDefault();
+    var current_legend = $(this).parents('.legend');
+    if (current_legend.hasClass('info-on')) {
+      $('body').close_layer_info();
+    } else {
+      current_legend.open_layer_info();
+    }
+  });
+
+
   //layer show / hide handlers
   $('#counties-overlay-toggle').on('click', function() {
-    var show = $(this).is(':checked');
-    self.map.getLayers().forEach(function(layer) {
-      if (layer.get('layer_id') == 'counties') {
-        layer.setVisible(show);
-      }
-    });
+    // var show = $(this).is(':checked');
+    // self.map.getLayers().forEach(function(layer) {
+    //   if (layer.get('layer_id') == 'counties') {
+    //     layer.setVisible(show);
+    //   }
+    // });
   });
 
 
