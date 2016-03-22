@@ -32,8 +32,34 @@
           </select>
         </li>
 
-        <li class="toggle"><label for="counties-overlay-toggle"><span class="text">Counties</span><input type="checkbox" name="counties-overlay-toggle" id="counties-overlay-toggle" value="1" autocomplete="off" checked="true"></label></li>
-        <li class="toggle border"><label for="weather-overlay-toggle"><span class="text">Weather Stations</span><input type="checkbox" name="weather-overlay-toggle" id="weather-overlay-toggle" value="1" autocomplete="off"></label></li>
+        <li class="toggle">
+          <a href="#info-counties" class="help icon icon-help"></a>
+          <label for="counties-overlay-toggle"><span class="text">Counties</span>
+            <input type="checkbox" name="counties-overlay-toggle" id="counties-overlay-toggle" value="1" autocomplete="off" checked="true">
+          </label>
+          <div id="info-counties" class="layer-info">
+            <h3>Counties</h3>
+            <p>Describe counties layer</p>
+            <div class="actions">
+              <a href="#" class="layer-info-close"><span class="icon icon-close"></span>Close</a>
+              <a href="#" class="layer-info-next"><span class="icon icon-arrow-right"></span>Next</a>
+            </div>
+          </div>
+        </li>
+        <li class="toggle border">
+          <a href="#info-stations" class="help icon icon-help"></a>
+          <label for="weather-overlay-toggle"><span class="text">Weather Stations</span>
+            <input type="checkbox" name="weather-overlay-toggle" id="weather-overlay-toggle" value="1" autocomplete="off">
+          </label>
+          <div id="info-stations" class="layer-info">
+            <h3>Weather Stations</h3>
+            <p>Describe stations layer</p>
+            <div class="actions">
+              <a href="#" class="layer-info-close"><span class="icon icon-close"></span>Close</a>
+              <a href="#" class="layer-info-next"><span class="icon icon-arrow-right"></span>Next</a>
+            </div>
+          </div>
+        </li>
         <!--<li class="border"><a><span class="icon icon-variables"></span><span class="text">Projected Variables</span></a></li>
         <li><a><span class="icon icon-temperature"></span><span class="text">Temperature</span></a></li>
         <li><a><span class="icon icon-average-mean"></span><span class="text">Average Mean</span></a></li>
