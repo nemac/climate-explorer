@@ -27,7 +27,7 @@
 
 <header id="left-header">
     <ul id="case-menu" class="menu orange-menu">
-      <li class="search-field border"><span class="icon icon-search"></span><input type="text" placeholder="Search by location"></li>
+      <li class="search-field"><span class="icon icon-search"></span><input type="text" id="formmapper" placeholder="Search by location"></li>
     </ul>
 
     <div id="vars-legend" class="legend-wrap left-filler">
