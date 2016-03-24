@@ -34,7 +34,7 @@
       background-repeat: no-repeat;
       background-position: center;
       background-size: cover;
-      opacity: 0.9;
+      opacity: 0.97;
       z-index: 1;
     }
   }
@@ -221,10 +221,10 @@
         & > li {
           float: left;
           font: 400 1.25rem/1em $roboto;
-          counter-increment: customlistcounter;
+          //counter-increment: customlistcounter;
           
           &:before {
-            content: counter(customlistcounter) " ";
+            //content: counter(customlistcounter) " ";
             float: left;
             width: 10%;
             margin: -6px 0 0 -10%;
@@ -234,7 +234,7 @@
           }
           
           &:first-child {
-            counter-reset: customlistcounter;
+            //counter-reset: customlistcounter;
           }
         }
       

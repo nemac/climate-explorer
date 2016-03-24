@@ -2769,10 +2769,10 @@ h6 {
   backdrop-filter: blur(3px);
   -webkit-backdrop-filter: blur(3px);
   /*
-
+  
   .nav-controls {
     position: static;
-
+    
     a {
       position: absolute;
       top: 10%;
@@ -2780,17 +2780,17 @@ h6 {
       padding-left: 20px;
       padding-right: 50px;
       z-index: 3;
-
+      
       &:before,
       &:after {
         right: 20px;
       }
-
+      
       &.nav-left {
         left: 0;
         border-left: none;
       }
-
+      
       &.nav-right {
         right: 0;
         border-right: none;
@@ -2834,7 +2834,7 @@ h6 {
   background-repeat: no-repeat;
   background-position: center;
   background-size: cover;
-  opacity: 0.9;
+  opacity: 0.97;
   z-index: 1;
 }
 #nav-overlay #nav-search .slide-bg {
@@ -2971,19 +2971,14 @@ h6 {
 #nav-overlay .nav-content .tab ol > li {
   float: left;
   font: 400 1.25rem/1em Roboto, Helvetica, "Helvetica Neue", Arial, sans-serif;
-  counter-increment: customlistcounter;
 }
 #nav-overlay .nav-content .tab ol > li:before {
-  content: counter(customlistcounter) " ";
   float: left;
   width: 10%;
   margin: -6px 0 0 -10%;
   font-size: 60%;
   font-weight: 600;
   color: #f5442d;
-}
-#nav-overlay .nav-content .tab ol > li:first-child {
-  counter-reset: customlistcounter;
 }
 #nav-overlay .nav-content .tab ol ul {
   margin: 15px 0 0 0;
@@ -3227,23 +3222,23 @@ h6 {
   border-right: 10px solid #fff;
   z-index: 20;
   /*#main-header {
-
+  
     #header-logo {
       width: 50%;
       max-width: 71px;
     }
   }
-
+  
   #nav-trigger {
     float: right;
   }
-
+  
   #main-nav {
     padding: 20px 8%;
     background: $white;
     @include clearfix;
   }
-
+  
   #main-content-wrap {
     padding-left: 20%;
     padding-left: calc(20% + 10px);
@@ -3666,9 +3661,10 @@ h6 {
 }
 #home-cycle .slide-text {
   position: absolute;
-  left: 50%;
+  left: 40%;
   bottom: 5%;
   width: 20%;
+  text-align: center;
 }
 #home-cycle .slide-text span {
   display: block;
@@ -3684,8 +3680,7 @@ h6 {
   font: 0.75rem/1em "CESans-Heavy", Helvetica, "Helvetica Neue", Arial, sans-serif;
 }
 #home-cycle .slide-text .location {
-  margin: 0 0 0 50px;
-  color: #0058cf;
+  color: #233a70;
   font: 0.75rem/1em "CESans-Heavy", Helvetica, "Helvetica Neue", Arial, sans-serif;
 }
 #home-cycle #splash-1 {
@@ -3743,22 +3738,28 @@ h6 {
   width: 60px;
   height: 60px;
 }
-#page-home #logos #h7 {
-  width: auto;
-  padding: 10px;
+#page-home #h7 {
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  padding: 10px 10px 0 0;
+  background: #fff;
   font-size: 0.75rem;
   line-height: 1.25em;
-  text-align: left;
+  z-index: 3;
+}
+#page-home #h7 a {
+  display: block;
   color: #233a70;
 }
-#page-home #logos #h7 span {
+#page-home #h7 span {
   display: block;
   float: left;
 }
-#page-home #logos #h7 .logo {
-  width: 30px;
-  height: 30px;
-  margin: 2px 8px 0 0;
+#page-home #h7 .logo {
+  width: 20px;
+  height: 20px;
+  margin: 0 8px 0 0;
   background: url(../img/habitatseven.png) no-repeat center;
   background-size: 100% auto;
 }
@@ -4548,50 +4549,6 @@ h6 {
   margin: 0 8% 0 0;
   padding: 0 0 8% 0;
 }
-
-.page-type-variables #vars-menu .layer-info {
-  display: none;
-  position: absolute;
-  top: 0;
-  left: 100%;
-  width: 210%;
-  width: calc(200% + 40px);
-  height: auto;
-  padding: 10%;
-  background: rgba(255, 255, 255, 0.9);
-  color: #5f5f5f;
-  white-space: normal;
-}
-.page-type-variables #vars-menu .layer-info:before {
-  content: '';
-  display: block;
-  position: absolute;
-  left: -20px;
-  top: 22px;
-  width: 0;
-  height: 0;
-  border: 10px solid #fff;
-  border-color: transparent #fff transparent transparent;
-}
-.page-type-variables #vars-menu .layer-info h3 {
-  margin: 0 0 10px 0;
-  font-size: 1.625rem;
-  color: #f5442d;
-}
-.page-type-variables #vars-menu .layer-info p {
-  margin: 0 0 12px 0;
-}
-
-.page-type-variables #vars-menu .help {
-  padding: 0;
-  float: left;
-  margin: 0;
-  background: none;
-  margin-top: 30px;
-  margin-left: 27px;
-  margin-right: 7px;
-}
-
 .page-type-variables #main-content-wrap {
   position: absolute;
   top: 0;
@@ -4657,11 +4614,7 @@ h6 {
 .page-type-variables #district-trigger:hover .text {
   text-indent: 0;
 }
-.page-type-variables .ol-popup-content {
-  min-width: 170px;
-  max-height: 400px;
-  overflow-x: auto;
-}
+
 .year {
   position: absolute;
   bottom: 40px;
@@ -4706,12 +4659,6 @@ h6 {
   right: 0;
 }
 
-.page-type-case .ol-popup-content {
-  min-width: 170px;
-  max-height: 400px;
-  overflow-x: auto;
-}
-
 .page-type-case #case-menu .ui-state-highlight {
   background: #d5e8f2;
 }
@@ -4723,8 +4670,8 @@ h6 {
   -webkit-transition: background 0.25s;
   transition: background 0.25s;
   /*
-
-
+  
+  
   .visibility {
     float: right;
     width: 24px;
