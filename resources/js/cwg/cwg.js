@@ -9,6 +9,7 @@ $(document).ready(function() {
             return ('<option value="' + v.id + '"' + '>'  + v.title + '</option>');
         }).join("")).appendTo($("select#variable"));
     }
+    populate_variables('annual');
 
     function update_frequency_ui() {
         var freq = $('#frequency').val();
@@ -36,17 +37,18 @@ $(document).ready(function() {
             $('#slider-range').hide();
             $('#x-axis-pan-note').show();
         }
-        populate_variables(freq);
+        //populate_variables(freq);
     }
 
     update_frequency_ui();
 
     $('#frequency').change(function() {
-        update_frequency_ui();
-        cwg.update({
-            frequency: $('#frequency').val(),
-            variable: $('#variable').val()
-        });
+      console.log('variable', $('#variable').val());
+      update_frequency_ui();
+      cwg.update({
+        frequency: $('#frequency').val(),
+        variable: $('#variable').val()
+      });
     });
 
     $('#timeperiod').change(function() {
@@ -60,9 +62,9 @@ $(document).ready(function() {
         });
     });
     $('#variable').change(function() {
-        cwg.update({
-            variable: $('#variable').val()
-        });
+      cwg.update({
+        variable: $('#variable').val()
+      });
     });
     $('#scenario').change(function() {
         cwg.update({
@@ -84,6 +86,20 @@ $(document).ready(function() {
             hrange: $('#range').val(),
             prange: $('#range').val()
         });
+    });
+
+    $('.location-resolution a').on('click', function(e) {
+      var val = $(this).html().toLowerCase();
+      $('#frequency').val(val).change();
+    });
+
+    $('.data-list h4').on('click', function() {
+      $('ul.data-options li').removeClass('active accent-border');
+      $(this).closest('li').addClass('active accent-border');
+
+      var id = $(this).attr('id').replace('var-', '');
+      $('#frequency').val('annual').change();
+      $('#variable').val(id).change();
     });
 
     $('#download-button').click(function() {
@@ -132,18 +148,19 @@ $(document).ready(function() {
 
 
 
-            cwg = climate_widget.graph({
-                'div'           :  "#chart-123",
-                'dataprefix'    : './resources/js/cwg/data',
-                'font'          : 'Roboto',
-                'frequency'     : $('#frequency').val(),
-                'timeperiod'    : $('#timeperiod').val(),
-                'fips'          : $('#county').val(),
-                'variable'      : $('#variable').val(),
-                'scenario'      : $('#scenario').val(),
-                'presentation'  : $('#presentation').val(),
-                'xrangefunc'    : xrangeset
-            });
+    cwg = climate_widget.graph({
+        'div'           :  "#chart-123",
+        'dataprefix'    : './resources/js/cwg/data',
+        'font'          : 'Roboto',
+        'frequency'     : $('#frequency').val(),
+        'timeperiod'    : $('#timeperiod').val(),
+        'fips'          : $('#county').val(),
+        'variable'      : $('#variable').val(),
+        'scenario'      : $('#scenario').val(),
+        'presentation'  : $('#presentation').val(),
+        'xrangefunc'    : xrangeset
+    });
+
     $(window).resize(function() {
         cwg.resize();
     });

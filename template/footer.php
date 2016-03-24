@@ -21,7 +21,7 @@
 <script type="text/javascript" src="./resources/js/jquery.hoverintent.min.js"></script>
 
 <script type="text/javascript" src="./resources/js/variables.js"></script>
-<script type="text/javascript" src="./resources/js/climate-widget-graph.js"></script>
+<script type="text/javascript" src="./resources/js/cwg/climate-widget-graph.js"></script>
 
 <script type="text/javascript" src="./resources/js/ol.js"></script>
 <script type="text/javascript" src="./resources/js/ol3-popup.js"></script>

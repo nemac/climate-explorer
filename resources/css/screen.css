@@ -4658,10 +4658,32 @@ h6 {
   text-indent: 0;
 }
 .page-type-variables .ol-popup-content {
-  min-width: 170px;
-  max-height: 400px;
+  min-width: 270px;
+  max-height: 620px;
   overflow-x: auto;
 }
+
+.page-type-variables .data-accordion-actions {
+  float: right;
+}
+.page-type-variables .data-accordion-actions a {
+  display: inline-block;
+  padding: 10px;
+  color: #5f5f5f;
+  -moz-transition: 0.25s;
+  -o-transition: 0.25s;
+  -webkit-transition: 0.25s;
+  transition: 0.25s;
+}
+.page-type-variables .data-accordion-actions a .icon {
+  margin: 0 8px 0 0;
+  font-size: 1.25rem;
+  color: #f5442d;
+}
+.page-type-variables .data-accordion-actions a:hover {
+  background: #d5e8f2;
+}
+
 .year {
   position: absolute;
   bottom: 40px;
