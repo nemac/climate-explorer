@@ -3,6 +3,7 @@ var Variables = function(page) {
   // this.subLayers = {};
   this.selectedVariable = 'tasmax';
   this.createMap();
+  this.wireSearch();
 };
 
 
@@ -34,8 +35,59 @@ Variables.prototype.createMap = function() {
 
   //add layers to map and wire events
   this.addCounties();
+  this.addStates();
   this.addStations();
   this.wire();
+};
+
+
+
+Variables.prototype.wireSearch = function() {
+  var self = this;
+
+  $("#formmapper").formmapper({
+      details: "form"
+  });
+
+  $("#formmapper").bind("geocode:result", function(event, result){
+    var lat = result.geometry.access_points[0].location.lat;
+    var lon = result.geometry.access_points[0].location.lng;
+
+    var conv = ol.proj.transform([lon, lat], 'EPSG:4326','EPSG:3857');
+    var xy = self.map.getPixelFromCoordinate(conv);
+
+    self.map.getView().setZoom(8);
+    self.map.getView().setCenter(conv);
+
+    setTimeout(function() {
+      var center = self.map.getView().getCenter();
+      xy = self.map.getPixelFromCoordinate(center);
+
+      var feature = self.map.forEachFeatureAtPixel(xy, function(feature, layer) {
+        var id = layer.get('layer_id');
+        if ( id === 'states' ) {
+          return null;
+        } else {
+          return feature;
+        }
+      });
+
+      var e = {};
+      e.mapBrowserEvent = {};
+      e.mapBrowserEvent.coordinate = center;
+      if (feature) {
+        self.selected_collection.clear();
+        self.selected_collection.push(feature);
+        var props = feature.getProperties();
+        if ( !props.station ) {
+          self.countySelected(feature, e);
+        }
+      } else {
+        self.popup.hide();
+      }
+    },200);
+
+  });
 };
 
 
@@ -48,6 +100,19 @@ Variables.prototype.createMap = function() {
 */
 Variables.prototype.wire = function() {
   var self = this;
+
+  // help icon
+  $('#vars-menu .help').click(function (e) {
+    console.log('click me!');
+    e.preventDefault();
+    var current_legend = $(this).parents('.legend');
+    if (current_legend.hasClass('info-on')) {
+      $('body').close_layer_info();
+    } else {
+      current_legend.open_layer_info();
+    }
+  });
+
 
   //layer show / hide handlers
   $('#counties-overlay-toggle').on('click', function() {
@@ -77,14 +142,29 @@ Variables.prototype.wire = function() {
 
   //map click selector
   var select = new ol.interaction.Select({
+    layers: function(layer) {
+      if ( layer.get('layer_id') === 'states' ) {
+        return false;
+      } else {
+        return true;
+      }
+    },
     condition: ol.events.condition.click
   });
 
   this.map.addInteraction(select);
+
+  this.selected_collection = select.getFeatures();
+
   select.on('select', function(e) {
 
     var feature = self.map.forEachFeatureAtPixel(e.mapBrowserEvent.pixel, function(feature, layer) {
-      return feature;
+      var id = layer.get('layer_id');
+      if ( id === 'states' ) {
+        return null;
+      } else {
+        return feature;
+      }
     });
 
     if (feature) {
@@ -112,16 +192,69 @@ Variables.prototype.wire = function() {
 Variables.prototype.addCounties = function() {
 
   var self = this;
+  var style = function(feature, resolution) {
+
+    return [new ol.style.Style({
+      fill: new ol.style.Fill({
+        color: 'rgba(255, 255, 255, 0.4)'
+      }),
+      stroke: new ol.style.Stroke({
+        color: '#2980b9',
+        width: 0.5
+      })
+    })];
+
+  };
 
   this.vectorLayer = new ol.layer.Vector({
     title: 'added Layer',
     source: new ol.source.Vector({
        url: 'resources/data/counties-20m.json',
        format: new ol.format.GeoJSON()
-    })
+    }),
+    style: style
   });
 
   this.vectorLayer.set('layer_id', 'counties');
+  self.map.addLayer(this.vectorLayer);
+
+};
+
+
+
+/*
+*
+* get states geojson and add to map
+*
+*/
+Variables.prototype.addStates = function() {
+
+  var self = this;
+
+  var style = function(feature, resolution) {
+
+    return [new ol.style.Style({
+      fill: new ol.style.Fill({
+        color: 'rgba(0, 0, 0, 0)'
+      }),
+      stroke: new ol.style.Stroke({
+        color: '#2980b9',
+        width: 2
+      })
+    })];
+
+  };
+
+  this.vectorLayer = new ol.layer.Vector({
+    title: 'added Layer',
+    source: new ol.source.Vector({
+       url: 'resources/data/states.json',
+       format: new ol.format.GeoJSON()
+    }),
+    style: style
+  });
+
+  this.vectorLayer.set('layer_id', 'states');
   self.map.addLayer(this.vectorLayer);
 
 };

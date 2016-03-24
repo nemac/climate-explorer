@@ -1,48 +1,22 @@
 {
   "cases": {
-    "coastal_flooding": {
+    "arctic": {
+      "layers":[
+        "bia_indian_lands",
+        "drought",
+        "landcover",
+        "social_vulnerability_index",
+        "population_density",
+        "weather_stations"
+      ]
+    },
+    "coasts": {
       "layers":[
         "sea_level_rise",
         "flood_hazard_zones",
         "coastal_flood_hazard_composite",
         "critical_coastal_facilities",
-        "social_vulnerability_index_coastal_states"
-      ]
-    },
-    "drought": {
-      "layers":[
-        "drought",
-        "landcover",
-        "rivers_streams",
-        "weather_stations"
-      ]
-    },
-    "flooding": {
-      "layers":[
-        "sea_level_rise_3ft",
-        "impervious_surfaces",
-        "rivers_streams",
-        "flood_hazard_zones",
-        "social_vulnerability_index",
-        "weather_stations"
-      ]
-    },
-    "tribal_flooding": {
-      "layers":[
-        "bia_indian_lands",
-        "landcover",
-        "sea_level_rise",
-        "flood_hazard_zones",
-        "social_vulnerability_index",
-        "weather_stations"
-      ]
-    },
-    "tribal_drought": {
-      "layers":[
-        "bia_indian_lands",
-        "landcover",
-        "social_vulnerability_index",
-        "drought",
+        "social_vulnerability_index_coastal_states",
         "weather_stations"
       ]
     },
@@ -52,17 +26,60 @@
         "sea_level_rise",
         "flood_hazard_zones",
         "drought",
-        "wetlands"
+        "wetlands",
+        "weather_stations"
       ]
     },
-    "human_health": {
+    "energy": {
+      "layers":[
+        "sea_level_rise",
+        "flood_hazard_zones",
+        "major_highways",
+        "weather_stations"
+      ]
+    },
+    "food": {
+      "layers":[
+        "landcover",
+        "drought",
+        "cropland",
+        "major_highways",
+        "social_vulnerability_index",
+        "weather_stations"
+      ]
+    },
+    "water": {
+      "layers":[
+        "sea_level_rise_3ft",
+        "drought",
+        "landcover",
+        "impervious_surfaces",
+        "rivers_streams",
+        "flood_hazard_zones",
+        "social_vulnerability_index",
+        "weather_stations"
+      ]
+    },
+    "tribal_nations": {
+      "layers":[
+        "bia_indian_lands",
+        "landcover",
+        "sea_level_rise",
+        "flood_hazard_zones",
+        "drought",
+        "social_vulnerability_index",
+        "weather_stations"
+      ]
+    },
+    "health": {
       "layers":[
         "percent_elderly",
         "percent_poverty",
         "social_vulnerability_index",
         "hospitals",
         "sea_level_rise_3ft",
-        "flood_hazard_zones"
+        "flood_hazard_zones",
+        "weather_stations"
       ]
     },
     "transportation": {
@@ -71,7 +88,8 @@
         "airports",
         "bridges_tunnels",
         "sea_level_rise",
-        "flood_hazard_zones"
+        "flood_hazard_zones",
+        "weather_stations"
       ]
     }
   },
@@ -331,6 +349,33 @@
       "options": {
         "type": "geoserver",
         "layer": "usgrid:usgrid-summary-file1-2000_usa-pctpop65to79-2000"
+      },
+      "defaults": {
+        "visible":true
+      }
+    },
+    "population_density": {
+      "type": "WMS",
+      "id": "population_density",
+      "title": "Populaton Density",
+      "description": "Find centers of population across the Arctic in this global map layer.",
+      "url": "https://sedac.ciesin.columbia.edu/geoserver/wms",
+      "options": {
+        "layer": "grump-v1:grump-v1-population-density_2000",
+        "type": "geoserver",
+        "version": "1.1.1"
+      },
+      "defaults": {
+        "visible":true
+      }
+    },
+    "cropland": {
+      "type": "WMS",
+      "id": "cropland",
+      "title": "Cropland",
+      "description": "View the types of crops in place during the previous main growing season.",
+      "url": "",
+      "options": {
       },
       "defaults": {
         "visible":true

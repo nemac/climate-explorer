@@ -1,5 +1,5 @@
 var App = function(page) {
-
+  console.log('iinit', page);
   this.page = page;
   this.subLayers = {};
   this.createMap();
@@ -43,14 +43,40 @@ App.prototype.getData = function() {
 
   $.getJSON('./resources/data/data.json', function(data) {
     self.data = data;
+
     //self.createJsonLayer('weather_stations');
     self.addLayers();
     self.createLegend();
     self.wireEvents();
+    self.wireSearch();
   });
 
 };
 
+
+
+
+App.prototype.wireSearch = function() {
+  var self = this;
+
+  $("#formmapper").formmapper({
+      details: "form"
+  });
+
+  $("#formmapper").bind("geocode:result", function(event, result){
+    var lat = result.geometry.access_points[0].location.lat;
+    var lon = result.geometry.access_points[0].location.lng;
+
+    var conv = ol.proj.transform([lon, lat], 'EPSG:4326','EPSG:3857');
+    var xy = self.map.getPixelFromCoordinate(conv);
+
+    self.map.getView().setZoom(8);
+    self.map.getView().setCenter(conv);
+
+    console.log('wire me!');
+
+  });
+};
 
 
 /*
