@@ -5476,3 +5476,50 @@ https://raw.github.com/shagstrom/split-pane/master/LICENSE
     z-index: 3;
   }
 }
+
+.chart-legend .legend-item {
+  float: right;
+  width: 140px;
+  font-size: 0.7em;
+  line-height: 1.5em;
+  text-align: left;
+  margin-left: 13px;
+  cursor: pointer;
+  padding:3px;
+  border:1px solid #FFF;
+}
+
+.chart-legend .legend-item:hover {
+  border:1px solid #EEE;
+}
+
+.chart-legend .legend-item.selected {
+  border:1px solid #CCC;
+}
+
+.chart-legend .legend-item-block {
+  height:30px;
+  width:100px;
+}
+
+.chart-legend .legend-item-line {
+  height:5px;
+  margin-top:25px;
+  width:100px;
+}
+
+.chart-legend .legend-item-block#rcp45-block {
+  background:#99BCEC;
+}
+
+.chart-legend .legend-item-block#rcp85-block {
+  background:#fbb4ab;
+}
+
+.chart-legend .legend-item-line#rcp45-line {
+  background:#0058CF;
+}
+
+.chart-legend .legend-item-line#rcp85-line {
+  background:#F5442D;
+}

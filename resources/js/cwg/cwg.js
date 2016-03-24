@@ -102,6 +102,44 @@ $(document).ready(function() {
       $('#variable').val(id).change();
     });
 
+    $('.legend-item-range').on('click', function() {
+      $(this).toggleClass('selected');
+      $(this).children('.legend-item-block, .legend-item-line').toggleClass('selected');
+      var scenario = null;
+      switch(true) {
+        case $('#rcp85-block').hasClass('selected') && $('#rcp45-block').hasClass('selected'):
+          scenario = 'both';
+          break;
+        case $('#rcp45-block').hasClass('selected'):
+          scenario = 'rcp45';
+          break;
+        case $('#rcp85-block').hasClass('selected'):
+          scenario = 'rcp85';
+          break;
+        default:
+          scenario = '';
+      }
+      $('#scenario').val(scenario).change();
+
+
+      var median = null;
+      switch(true) {
+        case $('#rcp85-line').hasClass('selected') && $('#rcp45-line').hasClass('selected'):
+          median = 'true';
+          break;
+        case $('#rcp45-line').hasClass('selected'):
+          median = 'true';
+          break;
+        case $('#rcp85-line').hasClass('selected'):
+          median = 'true';
+          break;
+        default:
+          median = 'false';
+      }
+      $('#median').val(median).change();
+
+    });
+
     $('#download-button').click(function() {
         if (cwg) {
             var $ul = $('#download-panel').find('ul');
