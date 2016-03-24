@@ -235,16 +235,27 @@
 
                             <div class="data-accordion-content chart">
                                 <div class="chart-wrap">
-                                    <div class="chart-legend"></div>
-                                    <div id="chart-123" class="chart-canvas" data-chart-ID="123"></div>
-                                    <!--<canvas id="" class="chart-canvas" data-chart-ID="123" height="100" width="50"></canvas> -->
-
-
+                                  <div id="chart-123" class="chart-canvas" data-chart-ID="123"></div>
+                                  <div class="chart-legend">
+                                    <div id="rcp45-range" class="legend-item legend-item-range">
+                                      <div class="legend-item-block" id="rcp45-block"></div>
+                                      Low Emissions (RCP 4.5) Range
+                                    </div>
+                                    <div id="rcp45-mean" class="legend-item legend-item-range">
+                                      <div class="legend-item-line" id="rcp45-line"></div>
+                                      Low Emissions (RCP 4.5) Mean
+                                    </div>
+                                    <div id="rcp85-range" class="legend-item legend-item-range selected">
+                                      <div class="legend-item-block selected" id="rcp85-block"></div>
+                                      High Emissions (RCP 8.5) Range
+                                    </div>
+                                    <div id="rcp85-mean" class="legend-item legend-item-range">
+                                      <div class="legend-item-line" id="rcp85-line"></div>
+                                      High Emissions (RCP 8.5) Mean
+                                    </div>
+                                  </div>
                                 </div>
-
-
                                 <div class="range">
-
                                     <div id="slider-range"></div>
                                     <div class="ui-slider-label range-label min">2010</div>
                                     <div class="ui-slider-label range-label max">2100</div>
