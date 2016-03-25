@@ -137,7 +137,7 @@
 
     <a href="./" id="nav-home" class="nav-btn"><span class="icon icon-arrow-up"></span><span class="text">Home</span></a>
 
-    <a href="#" id="nav-trigger" class="nav-btn"><span class="hamburger"><span class="bar"></span></span><span class="text">Menu</span></a>
+    <a href="#" id="nav-trigger" class="nav-btn launch-nav"><span class="hamburger"><span class="bar"></span></span><span class="text">Menu</span></a>
 
     <nav id="subnav">
       <ul>
@@ -152,8 +152,8 @@
   </div>
 </header>
 
-<nav id="nav-overlay">
-  <a href="#" id="nav-close" class="button close bg-white border-none blend-screen"></a>
+<nav id="nav-overlay" class="overlay">
+  <a href="#" class="button close bg-white border-none blend-screen"></a>
 
   <div id="nav-controls" class="nav-controls cycle-pager external">
     <a href="./" id="nav-overlay-home" class="button"><span class="icon icon-arrow-up"></span><span class="text">Home</span></a>
@@ -164,6 +164,12 @@
       <li><a href="#nav-impacts"><span class="icon icon-bubble"></span> View by impact</a></li>
     </ul>
   </div>
+  
+  <?php
+    
+    // NAV
+    
+  ?>
 
   <div id="nav-cycle" class="cycle-slideshow"
     data-cycle-timeout="0"
@@ -172,6 +178,12 @@
     data-cycle-pager="#nav-cycle-pager"
     data-cycle-pager-template=""
     data-cycle-log="false">
+      
+    <?php
+      
+      // SEARCH
+      
+    ?>
 
     <div id="nav-search" class="slide" data-slide-num="0">
       <div class="slide-bg"></div>
@@ -192,6 +204,12 @@
         </div>
       </div>
     </div>
+    
+    <?php
+      
+      // VARIABLES
+      
+    ?>
 
     <div id="nav-variables" class="slide" data-slide-num="1">
       <div class="slide-bg"></div>
@@ -251,117 +269,13 @@
           </div>
         </div>
       </div>
-
-      <div id="variable-details" class="nav-detail">
-        <div id="detail-temperature" class="nav-detail-item">
-          <h3>What does <u>Average Mean Temperature</u> mean?</h3>
-
-          <p>We evaluate climate over long periods of observation. For example, in 2014, the global temperature was 1.24°F (0.69°C) above the long-term average for the 20th century, according to NOAA's National Climatic Data Center. That number made 2014 the warmest year on record in the NOAA database, which goes back to 1880.</p>
-          <p>Annual average air temperatures have changed in different parts of the United States since the early 20th century (since 1901 for the contiguous 48 states and 1925 for Alaska). The data are shown for climate divisions, as defined by the National Oceanic and Atmospheric Administration.</p>
-          <p>Data source: NOAA, 2015 3</p>
-
-          <p><a href="variables.php" class="button bg-trans border-white hover-bg-white">Get started</a><a href="#" class="close-detail button bg-trans border-trans color-white arrow-left">Back</a></p>
-        </div>
-
-        <?php
-
-          foreach($temp_content as $item) {
-
-        ?>
-
-        <div id="detail-<?php echo $item['variable']; ?>" class="nav-detail-item">
-          <h3>What does <u><?php echo $item['name']; ?></u> mean?</h3>
-
-          <p><?php echo $item['detail']; ?></p>
-
-          <p>Data source: <?php echo $item['source']; ?></p>
-
-          <p><a href="variables.php?id=<?php echo $item['variable']; ?>" class="button bg-trans border-white hover-bg-white">Get started</a><a href="#" class="close-detail button bg-trans border-trans color-white arrow-left">Back</a></p>
-        </div>
-
-        <?php
-
-          }
-
-        ?>
-
-        <?php
-
-          // PRECIPITATION
-
-        ?>
-
-        <div id="detail-precipitation" class="nav-detail-item">
-          <h3>What does <u>Precipitation</u> mean?</h3>
-
-          <p>We evaluate climate over long periods of observation. For example, in 2014, the global temperature was 1.24°F (0.69°C) above the long-term average for the 20th century, according to NOAA's National Climatic Data Center. That number made 2014 the warmest year on record in the NOAA database, which goes back to 1880.</p>
-          <p>Data source: NOAA, 2015 3</p>
-
-          <p><a href="variables.php?id=precipitation" class="button bg-trans border-white hover-bg-white">Get started</a><a href="#" class="close-detail button bg-trans border-trans color-white arrow-left">Back</a></p>
-        </div>
-
-        <?php
-
-          foreach($precip_content as $item) {
-
-        ?>
-
-        <div id="detail-<?php echo $item['variable']; ?>" class="nav-detail-item">
-          <h3>What does <u><?php echo $item['name']; ?></u> mean?</h3>
-
-          <p><?php echo $item['detail']; ?></p>
-
-          <p>Data source: <?php echo $item['source']; ?></p>
-
-          <p><a href="variables.php?id=<?php echo $item['variable']; ?>" class="button bg-trans border-white hover-bg-white">Get started</a><a href="#" class="close-detail button bg-trans border-trans color-white arrow-left">Back</a></p>
-        </div>
-
-        <?php
-
-          }
-
-        ?>
-
-        <?php
-
-          // DERIVED
-
-        ?>
-
-        <div id="detail-derived" class="nav-detail-item">
-          <h3>What does <u>Derived</u> mean?</h3>
-
-          <p>Derived ...</p>
-
-          <p>Data source: NOAA, 2015 3</p>
-
-          <p><a href="variables.php?id=derived" class="button bg-trans border-white hover-bg-white">Get started</a><a href="#" class="close-detail button bg-trans border-trans color-white arrow-left">Back</a></p>
-        </div>
-
-        <?php
-
-          foreach($derived_content as $item) {
-
-        ?>
-
-        <div id="detail-<?php echo $item['variable']; ?>" class="nav-detail-item">
-          <h3>What does <u><?php echo $item['name']; ?></u> mean?</h3>
-
-          <p><?php echo $item['detail']; ?></p>
-
-          <p>Data source: <?php echo $item['source']; ?></p>
-
-          <p><a href="variables.php?id=<?php echo $item['variable']; ?>" class="button bg-trans border-white hover-bg-white">Get started</a><a href="#" class="close-detail button bg-trans border-trans color-white arrow-left">Back</a></p>
-        </div>
-
-        <?php
-
-          }
-
-        ?>
-
-      </div>
     </div>
+    
+    <?php
+      
+      // IMPACTS
+      
+    ?>
 
     <div id="nav-impacts" class="slide" data-slide-num="2">
       <div class="slide-bg"></div>
@@ -397,31 +311,173 @@
         </div>
       </div>
 
-      <div id="impacts-details" class="nav-detail">
-        <?php
-
-          foreach($impacts_content as $impact) {
-
-        ?>
-
-        <div id="detail-<?php echo $impact['variable']; ?>" class="nav-detail-item">
-          <h3>What does <u><?php echo $impact['name']; ?></u> mean?</h3>
-
-          <p><?php echo $impact['detail']; ?></p>
-
-          <p>Data source: <?php echo $impact['source']; ?></p>
-
-          <p><a href="case.php?id=<?php echo $impact['variable']; ?>" class="button bg-trans border-white hover-bg-white">Get started</a><a href="#" class="close-detail button bg-trans border-trans color-white arrow-left">Back</a></p>
-        </div>
-
-        <?php
-
-          }
-
-        ?>
-      </div>
+      
     </div>
   </div>
 </nav>
+
+<?php
+  
+  // DETAIL OVERLAY
+  
+?>
+
+<div id="detail-overlay" class="overlay">
+  <a href="#" class="button close bg-white border-none blend-screen"></a>
+  
+  <?php
+    
+    // VARIABLES
+    
+  ?>
+  
+  <div id="variable-details" class="nav-detail">
+    
+    <?php
+      
+      // temperature
+      
+    ?>
+    
+    <div id="detail-temperature" class="nav-detail-item">
+      <h3>What does <u>Average Mean Temperature</u> mean?</h3>
+
+      <p>We evaluate climate over long periods of observation. For example, in 2014, the global temperature was 1.24°F (0.69°C) above the long-term average for the 20th century, according to NOAA's National Climatic Data Center. That number made 2014 the warmest year on record in the NOAA database, which goes back to 1880.</p>
+      <p>Annual average air temperatures have changed in different parts of the United States since the early 20th century (since 1901 for the contiguous 48 states and 1925 for Alaska). The data are shown for climate divisions, as defined by the National Oceanic and Atmospheric Administration.</p>
+      <p>Data source: NOAA, 2015 3</p>
+
+      <p><a href="variables.php" class="button bg-trans border-white hover-bg-white">Get started</a><a href="#" class="close-detail button bg-trans border-trans color-white arrow-left">Back</a></p>
+    </div>
+
+    <?php
+
+      foreach($temp_content as $item) {
+
+    ?>
+
+    <div id="detail-<?php echo $item['variable']; ?>" class="nav-detail-item">
+      <h3>What does <u><?php echo $item['name']; ?></u> mean?</h3>
+
+      <p><?php echo $item['detail']; ?></p>
+
+      <p>Data source: <?php echo $item['source']; ?></p>
+
+      <p><a href="variables.php?id=<?php echo $item['variable']; ?>" class="button bg-trans border-white hover-bg-white">Get started</a><a href="#" class="close-detail button bg-trans border-trans color-white arrow-left">Back</a></p>
+    </div>
+
+    <?php
+
+      }
+
+    ?>
+
+    <?php
+
+      // precipitation
+
+    ?>
+
+    <div id="detail-precipitation" class="nav-detail-item">
+      <h3>What does <u>Precipitation</u> mean?</h3>
+
+      <p>We evaluate climate over long periods of observation. For example, in 2014, the global temperature was 1.24°F (0.69°C) above the long-term average for the 20th century, according to NOAA's National Climatic Data Center. That number made 2014 the warmest year on record in the NOAA database, which goes back to 1880.</p>
+      <p>Data source: NOAA, 2015 3</p>
+
+      <p><a href="variables.php?id=precipitation" class="button bg-trans border-white hover-bg-white">Get started</a><a href="#" class="close-detail button bg-trans border-trans color-white arrow-left">Back</a></p>
+    </div>
+
+    <?php
+
+      foreach($precip_content as $item) {
+
+    ?>
+
+    <div id="detail-<?php echo $item['variable']; ?>" class="nav-detail-item">
+      <h3>What does <u><?php echo $item['name']; ?></u> mean?</h3>
+
+      <p><?php echo $item['detail']; ?></p>
+
+      <p>Data source: <?php echo $item['source']; ?></p>
+
+      <p><a href="variables.php?id=<?php echo $item['variable']; ?>" class="button bg-trans border-white hover-bg-white">Get started</a><a href="#" class="close-detail button bg-trans border-trans color-white arrow-left">Back</a></p>
+    </div>
+
+    <?php
+
+      }
+
+    ?>
+
+    <?php
+
+      // derived
+
+    ?>
+
+    <div id="detail-derived" class="nav-detail-item">
+      <h3>What does <u>Derived</u> mean?</h3>
+
+      <p>Derived ...</p>
+
+      <p>Data source: NOAA, 2015 3</p>
+
+      <p><a href="variables.php?id=derived" class="button bg-trans border-white hover-bg-white">Get started</a><a href="#" class="close-detail button bg-trans border-trans color-white arrow-left">Back</a></p>
+    </div>
+
+    <?php
+
+      foreach($derived_content as $item) {
+
+    ?>
+
+    <div id="detail-<?php echo $item['variable']; ?>" class="nav-detail-item">
+      <h3>What does <u><?php echo $item['name']; ?></u> mean?</h3>
+
+      <p><?php echo $item['detail']; ?></p>
+
+      <p>Data source: <?php echo $item['source']; ?></p>
+
+      <p><a href="variables.php?id=<?php echo $item['variable']; ?>" class="button bg-trans border-white hover-bg-white">Get started</a><a href="#" class="close-detail button bg-trans border-trans color-white arrow-left">Back</a></p>
+    </div>
+
+    <?php
+
+      }
+
+    ?>
+
+  </div>
+  
+  <?php
+    
+    // IMPACTS
+    
+  ?>
+  
+  <div id="impacts-details" class="nav-detail">
+    <?php
+
+      foreach($impacts_content as $impact) {
+
+    ?>
+
+    <div id="detail-<?php echo $impact['variable']; ?>" class="nav-detail-item">
+      <h3>What does <u><?php echo $impact['name']; ?></u> mean?</h3>
+
+      <p><?php echo $impact['detail']; ?></p>
+
+      <p>Data source: <?php echo $impact['source']; ?></p>
+
+      <p><a href="case.php?id=<?php echo $impact['variable']; ?>" class="button bg-trans border-white hover-bg-white">Get started</a><a href="#" class="close-detail button bg-trans border-trans color-white arrow-left">Back</a></p>
+    </div>
+
+    <?php
+
+      }
+
+    ?>
+  </div>
+  
+</div>
 
 <!-- END HEADER TEMPLATE -->
