@@ -1,14 +1,13 @@
-#nav-overlay {
+.overlay {
   display: none;
   @include full-size;
   position: fixed;
   border: 20px solid $white;
   color: $white;
-  z-index: 600;
   backdrop-filter: blur(3px);
   -webkit-backdrop-filter: blur(3px);
   
-  #nav-close {
+  .close {
     position: fixed;
     top: 20px;
     right: 20px;
@@ -21,22 +20,31 @@
     z-index: 2;
   }
   
-  #nav-cycle {
+  .slide {
     @include full-size;
-    z-index: 1;
-    
-    .slide {
-      @include full-size;
-    }
     
     .slide-bg {
       @include full-size;
       background-repeat: no-repeat;
       background-position: center;
       background-size: cover;
-      opacity: 0.9;
+      opacity: 0.97;
       z-index: 1;
     }
+  }
+}
+
+// NAV
+
+#nav-overlay {
+  z-index: 600;
+  
+  #nav-close {
+  }
+  
+  #nav-cycle {
+    @include full-size;
+    z-index: 1;
   }
   
   #nav-search {
@@ -221,10 +229,10 @@
         & > li {
           float: left;
           font: 400 1.25rem/1em $roboto;
-          counter-increment: customlistcounter;
+          //counter-increment: customlistcounter;
           
           &:before {
-            content: counter(customlistcounter) " ";
+            //content: counter(customlistcounter) " ";
             float: left;
             width: 10%;
             margin: -6px 0 0 -10%;
@@ -234,7 +242,7 @@
           }
           
           &:first-child {
-            counter-reset: customlistcounter;
+            //counter-reset: customlistcounter;
           }
         }
       
@@ -286,14 +294,20 @@
       }
     }
   }
+}
+
+// DETAIL
+
+#detail-overlay {
+  z-index: 601;
   
   .nav-detail {
     display: none;
     @include full-size;
-    background: transparentize($blue1, 0.5);
+    background: transparentize($blue1, 0.1);
     backdrop-filter: blur(10px);
     -webkit-backdrop-filter: blur(10px);
-    z-index: 4;
+    z-index: 1;
     
     .nav-detail-item {
       display: none;
@@ -315,11 +329,27 @@
     }
     
     &#variable-details {
-      background: transparentize($blue1, 0.5);
+      background: transparentize($blue1, 0.1);
     }
     
     &#impacts-details {
-      background: transparentize($orange1, 0.5);
+      background: transparentize($orange1, 0.1);
+    }
+  }
+}
+
+#page-home {
+  #detail-overlay {
+    .nav-detail {
+      background: transparentize($blue1, 0.5);
+    
+      &#variable-details {
+        background: transparentize($blue1, 0.5);
+      }
+      
+      &#impacts-details {
+        background: transparentize($orange1, 0.5);
+      }
     }
   }
 }
