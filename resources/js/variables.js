@@ -16,7 +16,7 @@ var Variables = function(page) {
 */
 Variables.prototype.createMap = function() {
   var view = new ol.View({
-    center: ol.proj.transform([-105.41, 35.42], 'EPSG:4326', 'EPSG:3857'),
+    center: ol.proj.transform([-105.21, 37.42], 'EPSG:4326', 'EPSG:3857'),
     zoom: 5
   });
 
@@ -338,6 +338,7 @@ Variables.prototype.addStations = function() {
 *
 */
 Variables.prototype.countySelected = function(feature, event) {
+  var self = this;
 
   if (feature) {
     var props = feature.getProperties();
@@ -349,7 +350,35 @@ Variables.prototype.countySelected = function(feature, event) {
           '<a href="#" class="download-data"><span class="icon icon-download-chart"></span>Data</a>' +
         '</div>' +
       '</header>' +
-      '<div id="climate-chart" style="width:600px; height:420px"></div>';
+      '<div id="climate-chart" style="width:800px; height:420px"></div>'+
+      '<div class="chart-legend">'+
+        '<div id="rcp45-range" class="legend-item legend-item-range">'+
+          '<div class="legend-item-block" id="rcp45-block"></div>'+
+          'Low Emissions (RCP 4.5) Range'+
+        '</div>'+
+        '<div id="rcp85-range" class="legend-item legend-item-range selected">'+
+          '<div class="legend-item-block selected" id="rcp85-block"></div>'+
+          'High Emissions (RCP 8.5) Range'+
+        '</div>'+
+        '<div id="rcp45-mean" class="legend-item legend-item-range">'+
+          '<div class="legend-item-line" id="rcp85-line"></div>'+
+          'High Emissions Median'+
+          '<div class="legend-item-line" id="rcp45-line"></div>'+
+          'Low Emissions Median'+
+        '</div>'+
+        '<div id="historical-range" class="legend-item legend-item-range">'+
+          '<div class="legend-item-block" id="historical-block"></div>'+
+          'Historical (Modelled)'+
+        '</div>'+
+        '<div id="under-baseline-range" class="legend-item legend-item-range">'+
+          '<div class="legend-item-block" id="under-baseline-block"></div>'+
+          'Observed under baseline'+
+        '</div>'+
+        '<div id="over-baseline-range" class="legend-item legend-item-range">'+
+          '<div class="legend-item-block" id="over-baseline-block"></div>'+
+          'Observed over baseline'+
+        '</div>'+
+      '</div>';
     this.popup.show(event.mapBrowserEvent.coordinate, html);
 
     this.cwg = climate_widget.graph({
@@ -360,6 +389,47 @@ Variables.prototype.countySelected = function(feature, event) {
       fips       : fips,
       variable   : this.selectedVariable,
       scenario   : "rcp85"
+    });
+
+    $('.legend-item-range').on('click', function() {
+      $(this).toggleClass('selected');
+      $(this).children('.legend-item-block, .legend-item-line').toggleClass('selected');
+      var scenario = null;
+      switch(true) {
+        case $('#rcp85-block').hasClass('selected') && $('#rcp45-block').hasClass('selected'):
+          scenario = 'both';
+          break;
+        case $('#rcp45-block').hasClass('selected'):
+          scenario = 'rcp45';
+          break;
+        case $('#rcp85-block').hasClass('selected'):
+          scenario = 'rcp85';
+          break;
+        default:
+          scenario = '';
+      }
+
+      var median = null;
+      switch(true) {
+        case $('#rcp85-line').hasClass('selected') && $('#rcp45-line').hasClass('selected'):
+          median = 'true';
+          break;
+        case $('#rcp45-line').hasClass('selected'):
+          median = 'true';
+          break;
+        case $('#rcp85-line').hasClass('selected'):
+          median = 'true';
+          break;
+        default:
+          median = 'false';
+      }
+
+      console.log('update me!', median);
+      self.cwg.update({
+        pmedian: median,
+        scenario: scenario
+      });
+
     });
 
   } else {

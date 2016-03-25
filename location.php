@@ -241,17 +241,27 @@
                                       <div class="legend-item-block" id="rcp45-block"></div>
                                       Low Emissions (RCP 4.5) Range
                                     </div>
-                                    <div id="rcp45-mean" class="legend-item legend-item-range">
-                                      <div class="legend-item-line" id="rcp45-line"></div>
-                                      Low Emissions (RCP 4.5) Mean
-                                    </div>
                                     <div id="rcp85-range" class="legend-item legend-item-range selected">
                                       <div class="legend-item-block selected" id="rcp85-block"></div>
                                       High Emissions (RCP 8.5) Range
                                     </div>
-                                    <div id="rcp85-mean" class="legend-item legend-item-range">
+                                    <div id="rcp45-mean" class="legend-item legend-item-range">
                                       <div class="legend-item-line" id="rcp85-line"></div>
-                                      High Emissions (RCP 8.5) Mean
+                                      High Emissions Median
+                                      <div class="legend-item-line" id="rcp45-line"></div>
+                                      Low Emissions Median
+                                    </div>
+                                    <div id="historical-range" class="legend-item legend-item-range">
+                                      <div class="legend-item-block" id="historical-block"></div>
+                                      Historical (Modelled)
+                                    </div>
+                                    <div id="under-baseline-range" class="legend-item legend-item-range">
+                                      <div class="legend-item-block" id="under-baseline-block"></div>
+                                      Observed under baseline
+                                    </div>
+                                    <div id="over-baseline-range" class="legend-item legend-item-range">
+                                      <div class="legend-item-block" id="over-baseline-block"></div>
+                                      Observed over baseline
                                     </div>
                                   </div>
                                 </div>
