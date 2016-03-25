@@ -123,11 +123,15 @@
   padding: 0 0 8% 0;
 }
 
+.page-type-variables .chart-legend {
+  overflow: hidden;
+  margin-top: 20px;
+}
 
 .chart-legend .legend-item {
   float: right;
-  width: 140px;
-  font-size: 0.7em;
+  width: 120px;
+  font-size: 0.67em;
   line-height: 1.5em;
   text-align: left;
   margin-left: 13px;
@@ -146,12 +150,12 @@
 
 .chart-legend .legend-item-block {
   height:30px;
-  width:100px;
+  width:90px;
 }
 
 .chart-legend .legend-item-line {
   height:5px;
-  margin-top:25px;
+  margin-top:0px;
   width:100px;
 }
 
@@ -163,7 +167,20 @@
   background:#fbb4ab;
 }
 
+.chart-legend .legend-item-block#historical-block {
+  background:#D6D6D6;
+}
+
+.chart-legend .legend-item-block#over-baseline-block {
+  background:#CD6760;
+}
+
+.chart-legend .legend-item-block#under-baseline-block {
+  background:#6194C8;
+}
+
 .chart-legend .legend-item-line#rcp45-line {
+  margin-top:20px;
   background:#0058CF;
 }
 
