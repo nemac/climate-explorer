@@ -23,7 +23,7 @@
     <div id="main-content-wrap">
 
         <?php include_once('template/share.php'); ?>
-        
+
         <div id="location-search">
           <input type="text" class="autocomplete" placeholder="Search another location">
         </div>
@@ -54,12 +54,12 @@
 
                   <div class="data-vars">
                     <label for="temperature-presentation">Presentation</label>
-                    
+
                     <select id="temperature-presentation" class="dropdown">
                       <option value="absolute">Absolute</option>
                       <option value="anomaly">Anomaly</option>
                     </select>
-                    
+
                     <label for="temperature-range">Range</label>
 
                     <select id="temperature-range" class="dropdown">
@@ -72,60 +72,69 @@
                 <div id="temperature-data" class="data-list">
                     <ul class="data-options">
                       <li class="active accent-border">
-                        <h4><a href="#" class="text accent-color">Average Mean</a><a href="#detail-temperature" class="icon icon-help nav-detail-link"></a></h4>
-                        <ul>
+                        <h4 id="var-tasmax"><a href="#" class="text accent-color">Mean Daily Maximum</a><a href="#detail-temperature" class="icon icon-help nav-detail-link"></a></h4>
+                        <ul class="location-resolution">
                           <li><a>Annual</a></li>
                           <li><a>Seasonal</a></li>
                           <li><a>Monthly</a></li>
                         </ul>
                       </li>
-                      
+
                       <li class="accent-border">
-                        <h4><a href="#" class="text accent-color">Average Low</a><a href="#" class="icon icon-help nav-detail-link"></a></h4>
-                        <ul>
+                        <h4 id="var-tasmin"><a href="#" class="text accent-color">Mean Daily Minimum</a><a href="#" class="icon icon-help nav-detail-link"></a></h4>
+                        <ul class="location-resolution">
                           <li><a>Annual</a></li>
                           <li><a>Seasonal</a></li>
                           <li><a>Monthly</a></li>
                         </ul>
                       </li>
-                      
+
                       <li class="accent-border">
-                        <h4><a href="#" class="text accent-color">Average High</a><a href="#" class="icon icon-help nav-detail-link"></a></h4>
-                        <ul>
+                        <h4 id="var-days_tmax_abv_35.0"><a href="#" class="text accent-color">Days with Maximum Above 95&deg;</a><a href="#" class="icon icon-help nav-detail-link"></a></h4>
+                        <ul class="location-resolution">
                           <li><a>Annual</a></li>
-                          <li><a>Seasonal</a></li>
-                          <li><a>Monthly</a></li>
                         </ul>
                       </li>
-                      
+
                       <li class="accent-border">
-                        <h4><a href="#" class="text accent-color">Hottest</a><a href="#" class="icon icon-help nav-detail-link"></a></h4>
+                        <h4 id="var-days_tmin_blw_0.0"><a href="#" class="text accent-color">Days with Minimum Below 32º</a><a href="#" class="icon icon-help nav-detail-link"></a></h4>
                         <ul>
                           <li><a>Annual</a></li>
-                          <li><a>Seasonal</a></li>
-                          <li><a>Monthly</a></li>
                         </ul>
                       </li>
-                      
+
                       <li class="accent-border">
-                        <h4><a href="#" class="text accent-color">Coldest</a><a href="#" class="icon icon-help nav-detail-link"></a></h4>
+                        <h4 id="var-heating_degree_day_18.3"><a href="#" class="text accent-color">Heating Degree Days</a><a href="#" class="icon icon-help nav-detail-link"></a></h4>
                         <ul>
                           <li><a>Annual</a></li>
-                          <li><a>Seasonal</a></li>
-                          <li><a>Monthly</a></li>
                         </ul>
                       </li>
-                      
+
                       <li class="accent-border">
-                        <h4><a href="#" class="text accent-color">Days over 90º</a><a href="#" class="icon icon-help nav-detail-link"></a></h4>
+                        <h4 id="var-cooling_degree_day_18.3"><a href="#" class="text accent-color">Cooling Degree Days</a><a href="#" class="icon icon-help nav-detail-link"></a></h4>
                         <ul>
+                          <li><a>Annual</a></li>
+                        </ul>
+                      </li>
+
+                      <!-- <li class="accent-border">
+                        <h4 id="var-pr"><a href="#" class="text accent-color">Mean Daily Precipitation</a><a href="#" class="icon icon-help nav-detail-link"></a></h4>
+                        <ul class="location-resolution">
                           <li><a>Annual</a></li>
                           <li><a>Seasonal</a></li>
                           <li><a>Monthly</a></li>
                         </ul>
                       </li>
+
+                      <li class="accent-border">
+                        <h4 id="var-days_prcp_abv_25.3"><a href="#" class="text accent-color">Days of Precipitation Above 1in</a><a href="#" class="icon icon-help nav-detail-link"></a></h4>
+                        <ul class="location-resolution">
+                          <li><a>Annual</a></li>
+                        </ul>
+                      </li> -->
+
                     </ul>
-                    
+
                     <form onsubmit="return false;">
                         <div class="row">
                             <label for="county">County</label>
@@ -226,16 +235,27 @@
 
                             <div class="data-accordion-content chart">
                                 <div class="chart-wrap">
-                                    <div class="chart-legend"></div>
-                                    <div id="chart-123" class="chart-canvas" data-chart-ID="123"></div>
-                                    <!--<canvas id="" class="chart-canvas" data-chart-ID="123" height="100" width="50"></canvas> -->
-
-
+                                  <div id="chart-123" class="chart-canvas" data-chart-ID="123"></div>
+                                  <div class="chart-legend">
+                                    <div id="rcp45-range" class="legend-item legend-item-range">
+                                      <div class="legend-item-block" id="rcp45-block"></div>
+                                      Low Emissions (RCP 4.5) Range
+                                    </div>
+                                    <div id="rcp45-mean" class="legend-item legend-item-range">
+                                      <div class="legend-item-line" id="rcp45-line"></div>
+                                      Low Emissions (RCP 4.5) Mean
+                                    </div>
+                                    <div id="rcp85-range" class="legend-item legend-item-range selected">
+                                      <div class="legend-item-block selected" id="rcp85-block"></div>
+                                      High Emissions (RCP 8.5) Range
+                                    </div>
+                                    <div id="rcp85-mean" class="legend-item legend-item-range">
+                                      <div class="legend-item-line" id="rcp85-line"></div>
+                                      High Emissions (RCP 8.5) Mean
+                                    </div>
+                                  </div>
                                 </div>
-
-
                                 <div class="range">
-
                                     <div id="slider-range"></div>
                                     <div class="ui-slider-label range-label min">2010</div>
                                     <div class="ui-slider-label range-label max">2100</div>
@@ -252,7 +272,7 @@
                         <span class="source">Source: <a href="#" target="_blank">NOAA, 2014</a></span>
                       </span>
                                 </h4>
-                                
+
                                 <div class="data-accordion-actions">
                                   <a href="#" class="download-image"><span class="icon icon-download-image"></span>Image</a>
                                   <a href="#" class="download-data"><span class="icon icon-download-chart"></span>Data</a>
@@ -338,7 +358,7 @@
                         <span class="source">Source: <a href="#" target="_blank">NOAA, 2014</a></span>
                       </span>
                                 </h4>
-                                
+
                                 <div class="data-accordion-actions">
                                   <a href="#" class="download-image"><span class="icon icon-download-image"></span>Image</a>
                                   <a href="#" class="download-data"><span class="icon icon-download-chart"></span>Data</a>
@@ -393,7 +413,7 @@
                         <span class="source">Source: <a href="#" target="_blank">NOAA, 2014</a></span>
                       </span>
                                 </h4>
-                                
+
                                 <div class="data-accordion-actions">
                                   <a href="#" class="download-image"><span class="icon icon-download-image"></span>Image</a>
                                   <a href="#" class="download-data"><span class="icon icon-download-chart"></span>Data</a>
@@ -423,7 +443,7 @@
                         <span class="source">Source: <a href="#" target="_blank">NOAA, 2014</a></span>
                       </span>
                                 </h4>
-                                
+
                                 <div class="data-accordion-actions">
                                   <a href="#" class="download-image"><span class="icon icon-download-image"></span>Image</a>
                                   <a href="#" class="download-data"><span class="icon icon-download-chart"></span>Data</a>

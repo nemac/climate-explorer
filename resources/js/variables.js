@@ -103,7 +103,6 @@ Variables.prototype.wire = function() {
 
   // help icon
   $('#vars-menu .help').click(function (e) {
-    console.log('click me!');
     e.preventDefault();
     var current_legend = $(this).parents('.legend');
     if (current_legend.hasClass('info-on')) {
@@ -342,10 +341,15 @@ Variables.prototype.countySelected = function(feature, event) {
 
   if (feature) {
     var props = feature.getProperties();
-    console.log('props: ', props);
     var fips = props.STATE + props.COUNTY;
-    var html = '<div>'+props.NAME+' County</div>' +
-      '<div id="climate-chart" style="width:500px; height:300px"></div>';
+    var html = '<span>'+props.NAME+' County</span>' +
+        '<div class="data-accordion-actions">' +
+          '<a href="#" class="how-to-read"><span class="icon icon-help"></span>How to read this</a>' +
+          '<a href="#" class="download-image"><span class="icon icon-download-image"></span>Image</a>' +
+          '<a href="#" class="download-data"><span class="icon icon-download-chart"></span>Data</a>' +
+        '</div>' +
+      '</header>' +
+      '<div id="climate-chart" style="width:600px; height:420px"></div>';
     this.popup.show(event.mapBrowserEvent.coordinate, html);
 
     this.cwg = climate_widget.graph({
@@ -368,12 +372,10 @@ Variables.prototype.countySelected = function(feature, event) {
 
 
 Variables.prototype.stationSelected = function(feature, event) {
-  console.log('station selected!');
   var self = this;
 
   if (feature) {
     var props = feature.getProperties();
-    console.log('props', props);
     var html = '<div>Station: '+props.name+'<br /></div>' +
       '<div id="multi-chart" style="width:500px; height:300px"></div>';
     this.popup.show(event.mapBrowserEvent.coordinate, html);
