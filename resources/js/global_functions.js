@@ -1,8 +1,10 @@
 (function ($) {
 
   var filename = window.location.href.substr(window.location.href.lastIndexOf("/") + 1);
+  var name;
   if (filename.toLowerCase().indexOf("location") >= 0) {
-    $("#breadcrumb").html('<span class="level-2">Location results</span> <span class="level-1">Seattle, WA</span>');
+    name = getParameterByName('city');
+    $("#breadcrumb").html('<span class="level-2">Location results</span> <span class="level-1">'+name.split(',')[0]+', <span class="state-name caps">'+name.split(',')[1]+'</span></span>');
   }
   if (filename.toLowerCase().indexOf("variables") >= 0) {
     $("#breadcrumb").html('<span class="level-2">Variable</span> <span class="level-1">Average Mean Temperature</span>');
@@ -21,6 +23,17 @@
     fraction = typeof fraction !== 'undefined' ? fraction : 1;
     var window_height = jQuery(window).height() / fraction;
     return window_height;
+  }
+
+  function getParameterByName(name, url) {
+    if (!url) url = window.location.href;
+    url = url.toLowerCase(); // This is just to avoid case sensitiveness
+    name = name.replace(/[\[\]]/g, "\\$&").toLowerCase();// This is just to avoid case sensitiveness for query parameter name
+    var regex = new RegExp("[?&]" + name + "(=([^&#]*)|&|#|$)"),
+        results = regex.exec(url);
+    if (!results) return null;
+    if (!results[2]) return '';
+    return decodeURIComponent(results[2].replace(/\+/g, " "));
   }
 
   $(function () {
@@ -94,12 +107,12 @@
           if (typeof callback == 'function') {
             callback.call(this);
           }
-          
+
           $('#nav-cycle').cycle('goto', settings.slide);
         });
       }
     }
-    
+
     // VARIABLE DETAIL
 
     $.fn.do_detail = function(options, callback) {
@@ -108,15 +121,15 @@
       }, options);
 
       if (settings.action === 'open') {
-      
+
         var link_href = this.attr('href');
-        
+
         var detail_item = $('#detail-overlay').find(link_href);
         var detail_div = detail_item.parents('.nav-detail');
-        
+
         // hide all detail divs & items
         $('.nav-detail, .nav-detail-item').hide();
-        
+
         // show the selected div & item
         detail_div.show();
         detail_item.show();
@@ -224,19 +237,19 @@
         if (e.keyCode == 37) {
           $('.cycle-slideshow').cycle('prev');
         }
-        
+
         if (e.keyCode == 27) {
           $(document).do_nav({
             action: 'close'
           });
         }
       }
-      
+
     });
 
     $('.nav-detail-link').click(function(e) {
       e.preventDefault();
-      
+
       $(this).do_detail({
         options: 'open'
       });

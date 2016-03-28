@@ -1,3 +1,10 @@
+<?php
+
+  $city = $_REQUEST['city'];
+  $county = $_REQUEST['county'];
+  $fips = $_REQUEST['fips'];
+
+?>
 <!doctype html>
 <html>
 <head>
@@ -25,13 +32,13 @@
         <?php include_once('template/share.php'); ?>
 
         <div id="location-search">
-          <input type="text" class="autocomplete" placeholder="Search another location">
+          <input type="text" class="autocomplete location-mapper" placeholder="Search another location">
         </div>
 
         <section id="location-splash" class="page-splash">
             <div class="splash-text">
-                <h1>Seattle, WA</h1>
-                <h3>King County</h3>
+                <h1><?php echo $city ?></h1>
+                <h3><?php echo $county ?></h3>
                 <p>The following provides a summary of the data for the location you have chosen. Explore the summaries or click on the graph or map for more details.</p>
             </div>
 
@@ -139,12 +146,7 @@
                         <div class="row">
                             <label for="county">County</label>
                             <select id="county" class="u-full-width">
-                                <option value="37021" selected="selected">Buncombe County, NC</option>
-                                <option value="41003">Benton County, OR</option>
-                                <option value="04027">Yuma County, AZ</option>
-                                <option value="53009">Clallam County, WA</option>
-                                <option value="27077">Lake of the Woods County, MN</option>
-                                <option value="30009">Lewis and Clark County, MT</option>
+                                <option value="<?php echo $fips ?>" selected="selected"><?php echo $county ?></option>
                             </select>
                         </div>
                         <div class="row">

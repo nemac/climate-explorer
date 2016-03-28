@@ -164,11 +164,11 @@
       <li><a href="#nav-impacts"><span class="icon icon-bubble"></span> View by impact</a></li>
     </ul>
   </div>
-  
+
   <?php
-    
+
     // NAV
-    
+
   ?>
 
   <div id="nav-cycle" class="cycle-slideshow"
@@ -178,11 +178,11 @@
     data-cycle-pager="#nav-cycle-pager"
     data-cycle-pager-template=""
     data-cycle-log="false">
-      
+
     <?php
-      
+
       // SEARCH
-      
+
     ?>
 
     <div id="nav-search" class="slide" data-slide-num="0">
@@ -198,17 +198,17 @@
 
           <div id="nav-search" class="tab nav-content-tab">
             <ul class="col-2">
-              <li><a href="location.php">Seattle</a></li>
+              <li class="search-field"><span class="icon icon-search"></span><input type="text" class="location-mapper" placeholder="Search by location"></li>
             </ul>
           </div>
         </div>
       </div>
     </div>
-    
+
     <?php
-      
+
       // VARIABLES
-      
+
     ?>
 
     <div id="nav-variables" class="slide" data-slide-num="1">
@@ -270,11 +270,11 @@
         </div>
       </div>
     </div>
-    
+
     <?php
-      
+
       // IMPACTS
-      
+
     ?>
 
     <div id="nav-impacts" class="slide" data-slide-num="2">
@@ -311,34 +311,34 @@
         </div>
       </div>
 
-      
+
     </div>
   </div>
 </nav>
 
 <?php
-  
+
   // DETAIL OVERLAY
-  
+
 ?>
 
 <div id="detail-overlay" class="overlay">
   <a href="#" class="button close bg-white border-none blend-screen"></a>
-  
+
   <?php
-    
+
     // VARIABLES
-    
+
   ?>
-  
+
   <div id="variable-details" class="nav-detail">
-    
+
     <?php
-      
+
       // temperature
-      
+
     ?>
-    
+
     <div id="detail-temperature" class="nav-detail-item">
       <h3>What does <u>Average Mean Temperature</u> mean?</h3>
 
@@ -447,13 +447,13 @@
     ?>
 
   </div>
-  
+
   <?php
-    
+
     // IMPACTS
-    
+
   ?>
-  
+
   <div id="impacts-details" class="nav-detail">
     <?php
 
@@ -477,7 +477,7 @@
 
     ?>
   </div>
-  
+
 </div>
 
 <!-- END HEADER TEMPLATE -->

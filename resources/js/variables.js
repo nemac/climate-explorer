@@ -46,7 +46,7 @@ Variables.prototype.wireSearch = function() {
   var self = this;
 
   $("#formmapper").formmapper({
-      details: "form"
+    details: "form"
   });
 
   $("#formmapper").bind("geocode:result", function(event, result){
