@@ -1,3 +1,77 @@
+.level-1 {
+  text-transform: capitalize;
+}
+
+.caps {
+  text-transform: uppercase;
+}
+
+.state-name {
+  margin-left:0px;
+  padding-left:0px !important;
+}
+
+input.location-mapper {
+    display: inline-block;
+    width: 80%;
+    background: transparent;
+    border: none;
+    font: 300 1rem/1em Roboto, Helvetica, "Helvetica Neue", Arial, sans-serif;
+    color: #fff;
+    outline: none;
+    -moz-transition: 0.25s;
+    -o-transition: 0.25s;
+    -webkit-transition: 0.25s;
+    transition: 0.25s;
+}
+#nav-overlay .icon-search {
+  margin-right: 10px;
+}
+input.location-mapper::-webkit-input-placeholder {
+  color: #fff;
+  padding-top: 3px;
+  -moz-transition: 0.25s;
+  -o-transition: 0.25s;
+  -webkit-transition: 0.25s;
+  transition: 0.25s;
+}
+input.location-mapper:-moz-placeholder {
+  color: #fff;
+  padding-top: 3px;
+  -moz-transition: 0.25s;
+  -o-transition: 0.25s;
+  -webkit-transition: 0.25s;
+  transition: 0.25s;
+}
+input.location-mapper::-moz-placeholder {
+  color: #fff;
+  padding-top: 3px;
+  -moz-transition: 0.25s;
+  -o-transition: 0.25s;
+  -webkit-transition: 0.25s;
+  transition: 0.25s;
+}
+input.location-mapper:-ms-input-placeholder {
+  color: #fff;
+  padding-top: 3px;
+  -moz-transition: 0.25s;
+  -o-transition: 0.25s;
+  -webkit-transition: 0.25s;
+  transition: 0.25s;
+}
+input.location-mapper:focus::-webkit-input-placeholder {
+  color: rgba(255, 255, 255, 0.25);
+}
+input.location-mapper:focus:-moz-placeholder {
+  color: rgba(255, 255, 255, 0.25);
+}
+input.location-mapper:focus::-moz-placeholder {
+  color: rgba(255, 255, 255, 0.25);
+}
+input.location-mapper:focus:-ms-input-placeholder {
+  color: rgba(255, 255, 255, 0.25);
+}
+
 .page-type-variables #vars-menu .layer-info {
   display: none;
   position: absolute;

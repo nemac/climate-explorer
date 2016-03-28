@@ -193,7 +193,7 @@ $(document).ready(function() {
 
     cwg = climate_widget.graph({
         'div'           :  "#chart-123",
-        'dataprefix'    : './resources/js/cwg/data',
+        'dataprefix'    : 'http://climateexplorer.habitatseven.work/data',
         'font'          : 'Roboto',
         'frequency'     : $('#frequency').val(),
         'timeperiod'    : $('#timeperiod').val(),
