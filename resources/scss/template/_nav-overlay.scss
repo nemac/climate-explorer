@@ -360,7 +360,8 @@ body {
   &.nav-open,
   &.detail-open {
     #viewport,
-    #main-header {
+    #main-header,
+    #left-header {
       -webkit-filter: blur(3px);
       -moz-filter: blur(3px);
       -o-filter: blur(3px);

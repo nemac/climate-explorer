@@ -3090,8 +3090,10 @@ h6 {
 }
 
 body.nav-open #viewport,
-body.nav-open #main-header, body.detail-open #viewport,
-body.detail-open #main-header {
+body.nav-open #main-header,
+body.nav-open #left-header, body.detail-open #viewport,
+body.detail-open #main-header,
+body.detail-open #left-header {
   -webkit-filter: blur(3px);
   -moz-filter: blur(3px);
   -o-filter: blur(3px);
