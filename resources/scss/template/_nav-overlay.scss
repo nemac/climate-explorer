@@ -26,6 +26,8 @@
       background-repeat: no-repeat;
       background-position: center;
       background-size: cover;
+      backdrop-filter: blur(3px);
+      -webkit-backdrop-filter: blur(3px);
       opacity: 0.95;
       z-index: 1;
     }
@@ -355,7 +357,8 @@
 // blur
 
 body {
-  &.nav-open {
+  &.nav-open,
+  &.detail-open {
     #viewport,
     #main-header {
       -webkit-filter: blur(3px);
@@ -363,6 +366,16 @@ body {
       -o-filter: blur(3px);
       -ms-filter: blur(3px);
       filter: blur(3px);
+    }
+  }
+  
+  &.detail-open {
+    #nav-overlay {
+      -webkit-filter: blur(6px);
+      -moz-filter: blur(6px);
+      -o-filter: blur(6px);
+      -ms-filter: blur(6px);
+      filter: blur(6px);
     }
   }
 }

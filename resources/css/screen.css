@@ -2794,6 +2794,8 @@ h6 {
   background-repeat: no-repeat;
   background-position: center;
   background-size: cover;
+  backdrop-filter: blur(3px);
+  -webkit-backdrop-filter: blur(3px);
   opacity: 0.95;
   z-index: 1;
 }
@@ -3088,12 +3090,20 @@ h6 {
 }
 
 body.nav-open #viewport,
-body.nav-open #main-header {
+body.nav-open #main-header, body.detail-open #viewport,
+body.detail-open #main-header {
   -webkit-filter: blur(3px);
   -moz-filter: blur(3px);
   -o-filter: blur(3px);
   -ms-filter: blur(3px);
   filter: blur(3px);
+}
+body.detail-open #nav-overlay {
+  -webkit-filter: blur(6px);
+  -moz-filter: blur(6px);
+  -o-filter: blur(6px);
+  -ms-filter: blur(6px);
+  filter: blur(6px);
 }
 
 #viewport {
