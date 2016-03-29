@@ -27,6 +27,22 @@ input.location-mapper {
 #nav-overlay .icon-search {
   margin-right: 10px;
 }
+
+.chart-canvas, canvas {
+  width: 100%;
+  height: 100%;
+}
+
+#precip-slider-range {
+  width: 100%;
+  margin: auto;
+}
+
+#derived-slider-range {
+  width: 100%;
+  margin: auto;
+}
+
 input.location-mapper::-webkit-input-placeholder {
   color: #fff;
   padding-top: 3px;
@@ -233,11 +249,11 @@ input.location-mapper:focus:-ms-input-placeholder {
   width:100px;
 }
 
-.chart-legend .legend-item-block#rcp45-block {
+.chart-legend .legend-item-block#rcp45-block, .chart-legend .legend-item-block#preciprcp45-block, .chart-legend .legend-item-block#derivercp45-block {
   background:#99BCEC;
 }
 
-.chart-legend .legend-item-block#rcp85-block {
+.chart-legend .legend-item-block#rcp85-block, .chart-legend .legend-item-block#preciprcp85-block, .chart-legend .legend-item-block#derivercp85-block {
   background:#fbb4ab;
 }
 
@@ -253,12 +269,12 @@ input.location-mapper:focus:-ms-input-placeholder {
   background:#6194C8;
 }
 
-.chart-legend .legend-item-line#rcp45-line {
+.chart-legend .legend-item-line#rcp45-line, .chart-legend .legend-item-line#preciprcp45-line, .chart-legend .legend-item-line#derivercp45-line{
   margin-top:20px;
   background:#0058CF;
 }
 
-.chart-legend .legend-item-line#rcp85-line {
+.chart-legend .legend-item-line#rcp85-line, .chart-legend .legend-item-line#preciprcp85-line, .chart-legend .legend-item-line#derivercp85-line {
   background:#F5442D;
 }
 
