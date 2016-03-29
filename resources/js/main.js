@@ -42,6 +42,8 @@ App.prototype.locationSearch = function() {
         fips = c.fips;
       }
     });
+
+    if ( data.administrative_area_level_1_short === "DC" ) { fips = '11001'; }
     console.log('data', data);
 
     if ( fips ) {
