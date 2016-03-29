@@ -4,8 +4,6 @@
   position: fixed;
   border: 20px solid $white;
   color: $white;
-  backdrop-filter: blur(3px);
-  -webkit-backdrop-filter: blur(3px);
   
   .close {
     position: fixed;
@@ -28,7 +26,7 @@
       background-repeat: no-repeat;
       background-position: center;
       background-size: cover;
-      opacity: 0.97;
+      opacity: 0.95;
       z-index: 1;
     }
   }
@@ -350,6 +348,21 @@
       &#impacts-details {
         background: transparentize($orange1, 0.5);
       }
+    }
+  }
+}
+
+// blur
+
+body {
+  &.nav-open {
+    #viewport,
+    #main-header {
+      -webkit-filter: blur(3px);
+      -moz-filter: blur(3px);
+      -o-filter: blur(3px);
+      -ms-filter: blur(3px);
+      filter: blur(3px);
     }
   }
 }
