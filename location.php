@@ -1,3 +1,10 @@
+<?php
+
+  $city = $_REQUEST['city'];
+  $county = $_REQUEST['county'];
+  $fips = $_REQUEST['fips'];
+
+?>
 <!doctype html>
 <html>
 <head>
@@ -25,13 +32,13 @@
         <?php include_once('template/share.php'); ?>
 
         <div id="location-search">
-          <input type="text" class="autocomplete" placeholder="Search another location">
+          <input type="text" class="autocomplete location-mapper" placeholder="Search another location">
         </div>
 
         <section id="location-splash" class="page-splash">
             <div class="splash-text">
-                <h1>Seattle, WA</h1>
-                <h3>King County</h3>
+                <h1><?php echo $city ?></h1>
+                <h3><?php echo $county ?></h3>
                 <p>The following provides a summary of the data for the location you have chosen. Explore the summaries or click on the graph or map for more details.</p>
             </div>
 
@@ -139,12 +146,7 @@
                         <div class="row">
                             <label for="county">County</label>
                             <select id="county" class="u-full-width">
-                                <option value="37021" selected="selected">Buncombe County, NC</option>
-                                <option value="41003">Benton County, OR</option>
-                                <option value="04027">Yuma County, AZ</option>
-                                <option value="53009">Clallam County, WA</option>
-                                <option value="27077">Lake of the Woods County, MN</option>
-                                <option value="30009">Lewis and Clark County, MT</option>
+                                <option value="<?php echo $fips ?>" selected="selected"><?php echo $county ?></option>
                             </select>
                         </div>
                         <div class="row">
@@ -241,17 +243,27 @@
                                       <div class="legend-item-block" id="rcp45-block"></div>
                                       Low Emissions (RCP 4.5) Range
                                     </div>
-                                    <div id="rcp45-mean" class="legend-item legend-item-range">
-                                      <div class="legend-item-line" id="rcp45-line"></div>
-                                      Low Emissions (RCP 4.5) Mean
-                                    </div>
                                     <div id="rcp85-range" class="legend-item legend-item-range selected">
                                       <div class="legend-item-block selected" id="rcp85-block"></div>
                                       High Emissions (RCP 8.5) Range
                                     </div>
-                                    <div id="rcp85-mean" class="legend-item legend-item-range">
+                                    <div id="rcp45-mean" class="legend-item legend-item-range">
                                       <div class="legend-item-line" id="rcp85-line"></div>
-                                      High Emissions (RCP 8.5) Mean
+                                      High Emissions Median
+                                      <div class="legend-item-line" id="rcp45-line"></div>
+                                      Low Emissions Median
+                                    </div>
+                                    <div id="historical-range" class="legend-item legend-item-range">
+                                      <div class="legend-item-block" id="historical-block"></div>
+                                      Historical (Modelled)
+                                    </div>
+                                    <div id="under-baseline-range" class="legend-item legend-item-range">
+                                      <div class="legend-item-block" id="under-baseline-block"></div>
+                                      Observed under baseline
+                                    </div>
+                                    <div id="over-baseline-range" class="legend-item legend-item-range">
+                                      <div class="legend-item-block" id="over-baseline-block"></div>
+                                      Observed over baseline
                                     </div>
                                   </div>
                                 </div>

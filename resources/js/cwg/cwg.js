@@ -43,8 +43,13 @@ $(document).ready(function() {
     update_frequency_ui();
 
     $('#frequency').change(function() {
-      console.log('variable', $('#variable').val());
       update_frequency_ui();
+      var id = $('#frequency').val();
+      if ( id !== 'annual' ) {
+        $('#historical-range, #under-baseline-range, #over-baseline-range').hide();
+      } else {
+        $('#historical-range, #under-baseline-range, #over-baseline-range').show();
+      }
       cwg.update({
         frequency: $('#frequency').val(),
         variable: $('#variable').val()
@@ -188,7 +193,7 @@ $(document).ready(function() {
 
     cwg = climate_widget.graph({
         'div'           :  "#chart-123",
-        'dataprefix'    : './resources/js/cwg/data',
+        'dataprefix'    : 'http://climateexplorer.habitatseven.work/data',
         'font'          : 'Roboto',
         'frequency'     : $('#frequency').val(),
         'timeperiod'    : $('#timeperiod').val(),

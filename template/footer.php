@@ -25,14 +25,15 @@
 
 <script type="text/javascript" src="./resources/js/ol.js"></script>
 <script type="text/javascript" src="./resources/js/ol3-popup.js"></script>
+<script type="text/javascript" src="./resources/js/main.js"></script>
 
 <!-- if CASE -->
 <?php if (isset($case) && $case != null) { ?>
   <script type="text/javascript" src="./resources/js/multigraph-nojq.min.js"></script>
-  <script type="text/javascript" src="./resources/js/main.js"></script>
+  <script type="text/javascript" src="./resources/js/impacts.js"></script>
   <script>
     $(document).ready(function() {
-      app = new App(<?php echo "'" . $case . "'"; ?>);
+      impacts = new Impacts(<?php echo "'" . $case . "'"; ?>);
     });
   </script>
 
@@ -46,6 +47,7 @@
 
 <script>
   $(document).ready(function() {
+    app = new App();
     variables = new Variables();
   });
 </script>
