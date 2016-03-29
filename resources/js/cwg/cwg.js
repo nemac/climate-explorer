@@ -186,7 +186,7 @@ $(document).ready(function() {
       } else {
         pre = pre.replace('-chart', '');
       }
-      console.log('pre', pre);
+
       var scenario = null;
       switch(true) {
         case $('#'+pre+'rcp85-block').hasClass('selected') && $('#'+pre+'rcp45-block').hasClass('selected'):
