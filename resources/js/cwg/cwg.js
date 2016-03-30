@@ -1,4 +1,6 @@
-var cwg = undefined;
+var cwg = null;
+var precipChart = null;
+var derivedChart = null;
 
 $(document).ready(function() {
 
@@ -56,6 +58,20 @@ $(document).ready(function() {
       });
     });
 
+    $('#precip-frequency').change(function() {
+      update_frequency_ui();
+      var id = $('#precip-frequency').val();
+      if ( id !== 'annual' ) {
+        $('#historical-range, #under-baseline-range, #over-baseline-range').hide();
+      } else {
+        $('#historical-range, #under-baseline-range, #over-baseline-range').show();
+      }
+      precipChart.update({
+        frequency: $('#precip-frequency').val(),
+        variable: $('#precip-variable').val()
+      });
+    });
+
     $('#timeperiod').change(function() {
         cwg.update({
             timeperiod: $('#timeperiod').val()
@@ -71,10 +87,30 @@ $(document).ready(function() {
         variable: $('#variable').val()
       });
     });
+    $('#precip-variable').change(function() {
+      precipChart.update({
+        variable: $('#precip-variable').val()
+      });
+    });
+    $('#derived-variable').change(function() {
+      derivedChart.update({
+        variable: $('#derived-variable').val()
+      });
+    });
     $('#scenario').change(function() {
         cwg.update({
             scenario: $('#scenario').val()
         });
+    });
+    $('#precip-scenario').change(function() {
+      precipChart.update({
+        scenario: $('#precip-scenario').val()
+      });
+    });
+    $('#derived-scenario').change(function() {
+      derivedChart.update({
+        scenario: $('#derived-scenario').val()
+      });
     });
     $('#presentation').change(function() {
         cwg.update({
@@ -86,6 +122,16 @@ $(document).ready(function() {
             pmedian: $('#median').val()
         });
     });
+    $('#precip-median').change(function() {
+      precipChart.update({
+        pmedian: $('#precip-median').val()
+      });
+    });
+    $('#derived-median').change(function() {
+      derivedChart.update({
+        pmedian: $('#derived-median').val()
+      });
+    });
     $('#range').change(function() {
         cwg.update({
             hrange: $('#range').val(),
@@ -93,12 +139,17 @@ $(document).ready(function() {
         });
     });
 
-    $('.location-resolution a').on('click', function(e) {
+    $('#temperature-data .location-resolution a').on('click', function(e) {
       var val = $(this).html().toLowerCase();
       $('#frequency').val(val).change();
     });
 
-    $('.data-list h4').on('click', function() {
+    $('#precipitation-data .location-resolution a').on('click', function(e) {
+      var val = $(this).html().toLowerCase();
+      $('#precip-frequency').val(val).change();
+    });
+
+    $('#temperature-data h4').on('click', function() {
       $('ul.data-options li').removeClass('active accent-border');
       $(this).closest('li').addClass('active accent-border');
 
@@ -107,41 +158,80 @@ $(document).ready(function() {
       $('#variable').val(id).change();
     });
 
-    $('.legend-item-range').on('click', function() {
+    $('#precipitation-data h4').on('click', function() {
+      $('ul.data-options li').removeClass('active accent-border');
+      $(this).closest('li').addClass('active accent-border');
+
+      var id = $(this).attr('id').replace('var-', '');
+      $('#precip-frequency').val('annual').change();
+      $('#precip-variable').val(id).change();
+    });
+
+    $('#derived-data h4').on('click', function() {
+      $('ul.data-options li').removeClass('active accent-border');
+      $(this).closest('li').addClass('active accent-border');
+
+      var id = $(this).attr('id').replace('var-', '');
+      $('#derived-frequency').val('annual').change();
+      $('#derived-variable').val(id).change();
+    });
+
+    $('.legend-item-range').on('click', function(e) {
       $(this).toggleClass('selected');
       $(this).children('.legend-item-block, .legend-item-line').toggleClass('selected');
+
+      var pre = $(this).closest('.chart-legend').attr('id');
+      if (!pre) {
+        pre = '';
+      } else {
+        pre = pre.replace('-chart', '');
+      }
+
       var scenario = null;
       switch(true) {
-        case $('#rcp85-block').hasClass('selected') && $('#rcp45-block').hasClass('selected'):
+        case $('#'+pre+'rcp85-block').hasClass('selected') && $('#'+pre+'rcp45-block').hasClass('selected'):
           scenario = 'both';
           break;
-        case $('#rcp45-block').hasClass('selected'):
+        case $('#'+pre+'rcp45-block').hasClass('selected'):
           scenario = 'rcp45';
           break;
-        case $('#rcp85-block').hasClass('selected'):
+        case $('#'+pre+'rcp85-block').hasClass('selected'):
           scenario = 'rcp85';
           break;
         default:
           scenario = '';
       }
-      $('#scenario').val(scenario).change();
+      if ( pre === 'precip' ) {
+        $('#precip-scenario').val(scenario).change();
+      } else if ( pre === 'derive' ) {
+        $('#derived-scenario').val(scenario).change();
+      } else {
+        $('#scenario').val(scenario).change();
+      }
 
 
       var median = null;
       switch(true) {
-        case $('#rcp85-line').hasClass('selected') && $('#rcp45-line').hasClass('selected'):
+        case $('#'+pre+'rcp85-line').hasClass('selected') && $('#rcp45-line').hasClass('selected'):
           median = 'true';
           break;
-        case $('#rcp45-line').hasClass('selected'):
+        case $('#'+pre+'rcp45-line').hasClass('selected'):
           median = 'true';
           break;
-        case $('#rcp85-line').hasClass('selected'):
+        case $('#'+pre+'rcp85-line').hasClass('selected'):
           median = 'true';
           break;
         default:
           median = 'false';
       }
-      $('#median').val(median).change();
+
+      if ( pre === 'precip' ) {
+        $('#precip-median').val(median).change();
+      } else if ( pre === 'derive' ) {
+        $('#derived-median').val(median).change();
+      } else {
+        $('#median').val(median).change();
+      }
 
     });
 
@@ -183,10 +273,42 @@ $(document).ready(function() {
         }
     });
 
+    $("#precip-slider-range").slider({
+        range: true,
+        min: 1950,
+        max: 2099,
+        values: [ 1950, 2099 ],
+        slide: function( event, ui ) {
+            // return the return value returned by setXRange, to keep
+            // the slider thumb(s) from moving into a disallowed range
+            return precipChart.setXRange(ui.values[0], ui.values[1]);
+        }
+    });
+
+    $("#derived-slider-range").slider({
+        range: true,
+        min: 1950,
+        max: 2099,
+        values: [ 1950, 2099 ],
+        slide: function( event, ui ) {
+            // return the return value returned by setXRange, to keep
+            // the slider thumb(s) from moving into a disallowed range
+            return derivedChart.setXRange(ui.values[0], ui.values[1]);
+        }
+    });
+
     // This function will be called whenever the user changes the x-scale in the graph.
     function xrangeset(min,max) {
         // Force the slider thumbs to adjust to the appropriate place
         $("#slider-range").slider("option", "values", [min,max]);
+    }
+
+    function dxrangeset(min,max) {
+      $("#derived-slider-range").slider("option", "values", [min,max]);
+    }
+
+    function pxrangeset(min,max) {
+      $("#precip-slider-range").slider("option", "values", [min,max]);
     }
 
 
@@ -204,8 +326,41 @@ $(document).ready(function() {
         'xrangefunc'    : xrangeset
     });
 
+    precipChart = climate_widget.graph({
+        'div'           :  "#chart-234",
+        'dataprefix'    : 'http://climateexplorer.habitatseven.work/data',
+        'font'          : 'Roboto',
+        'frequency'     : $('#precip-frequency').val(),
+        'timeperiod'    : $('#precip-timeperiod').val(),
+        'fips'          : $('#precip-county').val(),
+        'variable'      : $('#precip-variable').val(),
+        'scenario'      : $('#precip-scenario').val(),
+        'presentation'  : $('#precip-presentation').val(),
+        'xrangefunc'    : pxrangeset
+    });
+
+    derivedChart = climate_widget.graph({
+        'div'           :  "#chart-345",
+        'dataprefix'    : 'http://climateexplorer.habitatseven.work/data',
+        'font'          : 'Roboto',
+        'frequency'     : $('#derived-frequency').val(),
+        'timeperiod'    : $('#derived-timeperiod').val(),
+        'fips'          : $('#derived-county').val(),
+        'variable'      : $('#derived-variable').val(),
+        'scenario'      : $('#derived-scenario').val(),
+        'presentation'  : $('#derived-presentation').val(),
+        'xrangefunc'    : dxrangeset
+    });
+
+    setTimeout(function() {
+      precipChart.resize();
+      derivedChart.resize();
+    },600);
+
     $(window).resize(function() {
-        cwg.resize();
+      cwg.resize();
+      precipChart.resize();
+      derivedChart.resize();
     });
 
 });
