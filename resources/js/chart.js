@@ -131,8 +131,14 @@ ChartBuilder.prototype.getTemperatureValues = function() {
 
 
 
+ChartBuilder.prototype.leapYear = function(year){
+  return ((year % 4 === 0) && (year % 100 !== 0)) || (year % 400 === 0);
+};
+
+
 
 ChartBuilder.prototype.getPrecipitationValues = function() {
+  var self = this;
   var line;
   var arr = [];
   var norm = [];
@@ -142,11 +148,16 @@ ChartBuilder.prototype.getPrecipitationValues = function() {
   });
 
   var int = 0;
+  var leap = false;
+  var max = 364;
   $.each(this.records.precip_ytd.data.replace( /(\r\n|\n|\r)/gm, ';' ).split( ';' ), function(i, a) {
-    if ( int > 364 ) { int = 0; }
+    leap = self.leapYear(line[0].slice(0,4));
+    max = ( leap ) ? 365 : 364;
+    if ( int > max ) { int = 0; }
     line = a.split(',');
     var val = parseFloat(line[1] / 10) * 0.039370;
-    arr.push(line[0] + ',' + val + ',' + norm[ int ]);
+    var n = ( leap ) ? 0 : norm[ int ];
+    arr.push(line[0] + ',' + val + ',' + n);
     int++;
   });
 
