@@ -1,6 +1,4 @@
 var App = function(page) {
-  console.log('init main app!');
-
   this.getCountyCodes();
 };
 
