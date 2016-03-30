@@ -388,11 +388,11 @@
         value: 5,
         slide: function( event, ui ) {
           $(this).attr('data-value', ui.value);
-          app.setZoom(ui.value);
+          impacts.setZoom(ui.value);
         },
         change: function (event, ui) {
           $(this).attr('data-value', ui.value);
-          app.setZoom(ui.value);
+          impacts.setZoom(ui.value);
         }
     });
 
@@ -480,7 +480,7 @@
           $('body').close_layer_info();
         },
         deactivate: function (event, ui) {
-          app.reorderLayers();
+          impacts.reorderLayers();
         }
     });
 
@@ -552,7 +552,7 @@
           $('body').close_layer_info();
       },
       deactivate: function (event, ui) {
-        app.reorderLayers();
+        impacts.reorderLayers();
       }
     });
 
