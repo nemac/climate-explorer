@@ -1,5 +1,4 @@
 var Impacts = function(page) {
-  console.log('iinit', page);
   this.page = page;
   this.subLayers = {};
   this.createMap();
@@ -80,8 +79,6 @@ Impacts.prototype.wireSearch = function() {
 
     self.map.getView().setZoom(8);
     self.map.getView().setCenter(conv);
-
-    console.log('wire me!');
 
   });
 };
@@ -302,9 +299,12 @@ Impacts.prototype.reorderLayers = function() {
   $.each(ids.reverse(), function(i, id) {
     id = id.replace('legend-', '');
     self.map.getLayers().forEach(function(l) {
-      if (l.get('layer_id') == id) {
-        layer = l;
-        layer.setZIndex(i);
+      if ( l.get('layer_id') ) {
+        if (l.get('layer_id') == id) {
+          l.setZIndex(i);
+        } else if ( l.get('layer_id').match(id) ) {
+          l.setZIndex(i);
+        }
       }
     });
   });
