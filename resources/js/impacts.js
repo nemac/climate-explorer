@@ -185,8 +185,9 @@ Impacts.prototype.wireMapEvents = function () {
 
     if (feature) {
       var props = feature.getProperties();
-      var html = '<div>'+props.name+'<br />'+props.station+'</div>' +
-        '<div id="multi-chart" style="width:500px; height:300px"></div>';
+      var html = '<div>'+props.name+'<br /></div>' +
+        '<div id="multi-chart" style="width:500px; height:300px"></div>'+
+        '<div id="multi-precip-chart" style="width:500px; height:300px"></div>';
       popup.show(evt.coordinate, html);
 
       self.chart = new ChartBuilder(props);
