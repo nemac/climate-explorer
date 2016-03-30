@@ -39,7 +39,7 @@
             <input type="checkbox" name="counties-overlay-toggle" id="counties-overlay-toggle" value="1" autocomplete="off" checked="true">
           </label>
           <div id="info-counties" class="layer-info">
-            
+
             <div class="actions">
               <a href="#" class="layer-info-close"><span class="icon icon-close"></span>Close</a>
               <a href="#" class="layer-info-next"><span class="icon icon-arrow-right"></span>Next</a>

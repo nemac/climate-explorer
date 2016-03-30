@@ -447,7 +447,8 @@ Variables.prototype.stationSelected = function(feature, event) {
   if (feature) {
     var props = feature.getProperties();
     var html = '<div>Station: '+props.name+'<br /></div>' +
-      '<div id="multi-chart" style="width:500px; height:300px"></div>';
+      '<div id="multi-chart" style="width:500px; height:300px"></div>'+
+      '<div id="multi-precip-chart" style="width:500px; height:300px"></div>';
     this.popup.show(event.mapBrowserEvent.coordinate, html);
 
     this.chart = new ChartBuilder(props);

@@ -280,6 +280,6 @@ input.location-mapper:focus:-ms-input-placeholder {
 
 .ol-popup-content {
   min-width: 170px;
-  max-height: 610px;
+  max-height: 710px;
   overflow-x: auto;
 }
