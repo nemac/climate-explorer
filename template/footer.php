@@ -45,11 +45,13 @@
 <script type="text/javascript" src="./resources/js/chart.js"></script>
 <script type="text/javascript" src="./resources/js/global_functions.js"></script>
 
-<script>
-  $(document).ready(function() {
-    app = new App();
-    variables = new Variables();
-  });
-</script>
+<?php if (isset($active_variable) && $active_variable != null) { ?>
+  <script>
+    $(document).ready(function() {
+      app = new App();
+      variables = new Variables(<?php echo "'" . $active_variable . "'"; ?>);
+    });
+  </script>
+<?php } ?>
 
 <!-- END:JS_LOADER -->

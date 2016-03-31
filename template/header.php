@@ -3,28 +3,28 @@
   $temp_content = array(
 
     array(
-      'variable' => 'mean_daily_max',
+      'variable' => 'tasmax',
       'name' => 'Mean Daily Max',
       'detail' => "Mean Daily Max detail",
       'source' => 'NOAA, 2015'
     ),
 
     array(
-      'variable' => 'mean_daily_min',
+      'variable' => 'tasmin',
       'name' => 'Mean Daily Min',
       'detail' => "Mean Daily Min detail",
       'source' => 'NOAA, 2015'
     ),
 
     array(
-      'variable' => 'days_over_95',
+      'variable' => 'days_tmax_abv_35',
       'name' => 'Days Over 95º F',
       'detail' => " detail",
       'source' => 'NOAA, 2015'
     ),
 
     array(
-      'variable' => 'days_under_32',
+      'variable' => 'days_tmin_blw_0',
       'name' => 'Days Under 32º F',
       'detail' => "Days Under 32º F detail",
       'source' => 'NOAA, 2015'
@@ -35,7 +35,7 @@
   $precip_content = array(
 
     array(
-      'variable' => 'precipitation',
+      'variable' => 'pr',
       'name' => 'Precipitation',
       'detail' => "Precipitation detail",
       'source' => 'NOAA, 2015'
@@ -46,14 +46,14 @@
   $derived_content = array(
 
     array(
-      'variable' => 'heating_degree_days',
+      'variable' => 'heating_degree_day_18',
       'name' => 'Heating Degree Days',
       'detail' => "Heating Degree Days detail",
       'source' => 'NOAA, 2015'
     ),
 
     array(
-      'variable' => 'cooling_degree_days',
+      'variable' => 'cooling_degree_day_18',
       'name' => 'Cooling Degree Days',
       'detail' => "Cooling Degree Days detail",
       'source' => 'NOAA, 2015'
@@ -383,7 +383,7 @@
       <p>We evaluate climate over long periods of observation. For example, in 2014, the global temperature was 1.24°F (0.69°C) above the long-term average for the 20th century, according to NOAA's National Climatic Data Center. That number made 2014 the warmest year on record in the NOAA database, which goes back to 1880.</p>
       <p>Data source: NOAA, 2015 3</p>
 
-      <p><a href="variables.php?id=precipitation" class="button bg-trans border-white hover-bg-white">Get started</a><a href="#" class="close-detail button bg-trans border-trans color-white arrow-left">Back</a></p>
+      <p><a href="variables.php?id=pr" class="button bg-trans border-white hover-bg-white">Get started</a><a href="#" class="close-detail button bg-trans border-trans color-white arrow-left">Back</a></p>
     </div>
 
     <?php
