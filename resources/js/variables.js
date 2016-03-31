@@ -1,7 +1,37 @@
-var Variables = function(page) {
+var Variables = function(id) {
   // this.page = page;
   // this.subLayers = {};
-  this.selectedVariable = 'tasmax';
+  switch(true) {
+    case (id === 'days_tmax_abv_35'):
+      id = 'days_tmax_abv_35.0';
+      break;
+    case (id === 'days_tmin_blw_0'):
+      id = 'days_tmin_blw_0.0';
+      break;
+    case (id === 'heating_degree_day_18'):
+      id = 'heating_degree_day_18.3';
+      break;
+    case (id === 'cooling_degree_day_18'):
+      id = 'cooling_degree_day_18.3';
+      break;
+  }
+
+  this.varMapping = {
+    'tasmax': 'Mean Daily Maximum',
+    'tasmin': 'Mean Daily Minimum',
+    'days_tmin_blw_0.0': 'Days below 32&deg; F',
+    'days_tmax_abv_35.0': 'Days over 95&deg; F',
+    'pr': 'Mean Daily Precipitation',
+    'cooling_degree_day_18.3': 'Cooling Degree Days',
+    'heating_degree_day_18.3': 'Heating Degree Days'
+  };
+
+  this.selectedVariable = id || 'tasmax';
+
+  $(".level-1").html(this.varMapping[ this.selectedVariable ]);
+
+  $('#variable-options').val(id).attr('selected', true).change();
+
   this.createMap();
   this.wireSearch();
 };
@@ -136,6 +166,8 @@ Variables.prototype.wire = function() {
   //var selector
   $('.fs-dropdown-item').on('click', function(e) {
     self.selectedVariable =  $(this).data().value;
+    $(".level-1").html(self.varMapping[ self.selectedVariable ]);
+    history.pushState(null, "", "?id="+self.selectedVariable);
     self.updateChart();
   });
 
