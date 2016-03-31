@@ -9,8 +9,9 @@
   if (filename.toLowerCase().indexOf("variables") >= 0) {
     $("#breadcrumb").html('<span class="level-2">Variable</span> <span class="level-1">Average Mean Temperature</span>');
   }
-  if (filename.toLowerCase().indexOf("case_fire-regimes") >= 0) {
-    $("#breadcrumb").html('<span class="level-3">Impacts</span> <span class="level-2">Case</span> <span class="level-1">Fire Regimes</span>');
+  if (filename.toLowerCase().indexOf("case") >= 0) {
+    name = getParameterByName('id');
+    $("#breadcrumb").html('<span class="level-2">Impact</span> <span class="level-1">'+name.split(',')[0]+'</span></span>');
   }
 
   function window_width(fraction) {
