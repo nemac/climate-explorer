@@ -113,9 +113,19 @@ $(document).ready(function() {
       });
     });
     $('#presentation').change(function() {
-        cwg.update({
-            presentation: $('#presentation').val()
-        });
+      cwg.update({
+        presentation: $('#presentation').val()
+      });
+    });
+    $('#precip-presentation').change(function() {
+      precipChart.update({
+        presentation: $('#precip-presentation').val()
+      });
+    });
+    $('#derived-presentation').change(function() {
+      derivedChart.update({
+        presentation: $('#derived-presentation').val()
+      });
     });
     $('#median').change(function() {
         cwg.update({
@@ -174,6 +184,21 @@ $(document).ready(function() {
       var id = $(this).attr('id').replace('var-', '');
       $('#derived-frequency').val('annual').change();
       $('#derived-variable').val(id).change();
+    });
+
+    $('#temperature-presentation').on('change', function() {
+      var val = $(this).val();
+      $('#presentation').val(val).change();
+    });
+
+    $('#precipitation-presentation').on('change', function() {
+      var val = $(this).val();
+      $('#precip-presentation').val(val).change();
+    });
+
+    $('#der-presentation').on('change', function() {
+      var val = $(this).val();
+      $('#derived-presentation').val(val).change();
     });
 
     $('.legend-item-range').on('click', function(e) {
