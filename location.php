@@ -39,7 +39,7 @@
             <div class="splash-text">
                 <h1><?php echo $city ?></h1>
                 <h3><?php echo $county ?></h3>
-                <p>The following provides a summary of the data for the location you have chosen. Explore the summaries or click on the graph or map for more details.</p>
+                <p>Graphs and maps below show observed and modeled data for the County of your selected location. Zoom and pan on the graphs and maps to focus on times or regions of interest.</p>
             </div>
 
             <div id="page-nav">
@@ -61,19 +61,13 @@
                   <h3 class="accent-color"><span class="icon icon-temperature"></span>Temperature</h3>
 
                   <div class="data-vars">
-                    <label for="temperature-presentation">Presentation</label>
+                    <label for="temperature-presentation">Display: </label>
 
                     <select id="temperature-presentation" class="dropdown">
-                      <option value="absolute">Absolute</option>
+                      <option value="absolute">Actual</option>
                       <option value="anomaly">Anomaly</option>
                     </select>
 
-                    <label for="temperature-range">Range</label>
-
-                    <select id="temperature-range" class="dropdown">
-                      <option value="minmax" selected="selected">Min-Max</option>
-                      <option value="p1090">10th-90th</option>
-                    </select>
                   </div>
                 </header>
 
@@ -151,7 +145,7 @@
                                 </select>
                             </div>
                             <div class="six columns">
-                                <label for="presentation">Presentation</label>
+                                <label for="presentation">Display: </label>
                                 <select id="presentation" class="u-full-width">
                                     <option value="absolute">Absolute</option>
                                     <option value="anomaly">Anomaly</option>
@@ -159,14 +153,6 @@
                             </div>
                         </div>
                         <div class="row">
-                            <div class="six columns">
-                                <label for="range">Range Band</label>
-                                <select id="range" class="u-full-width">
-                                    <option value="minmax" selected="selected">Min-Max</option>
-                                    <option value="p1090">10th-90th</option>
-                                    <!--<option value="both">Both</option>-->
-                                </select>
-                            </div>
                             <div class="six columns">
                                 <label for="median">Show Medians</label>
                                 <select id="median" class="u-full-width">
@@ -255,6 +241,7 @@
                             </h4>
 
                             <div class="data-accordion-actions">
+                              <a href="#" class="how-to-read"><span class="icon icon-help"></span>How to read this</a>
                               <a href="#" class="download-image"><span class="icon icon-download-image"></span>Image</a>
                               <a href="#" class="download-data"><span class="icon icon-download-chart"></span>Data</a>
                             </div>
@@ -273,16 +260,10 @@
                     <h3 class="accent-color"><span class="icon icon-precipitation"></span>Precipitation</h3>
 
                     <div class="data-vars">
-                        <select id="data-type" class="dropdown">
-                            <option value="projected">Projected</option>
-                            <option value="historical">Historical</option>
-                        </select>
-
-                        <select id="data-season" class="dropdown">
-                            <option value="spring">Spring</option>
-                            <option value="summer">Summer</option>
-                            <option value="autumn">Autumn</option>
-                            <option value="winter">Winter</option>
+                        <label for="precipitation-presentation">Display: </label>
+                        <select id="precipitation-presentation" class="dropdown">
+                          <option value="absolute">Actual</option>
+                          <option value="anomaly">Anomaly</option>
                         </select>
                     </div>
                 </header>
@@ -346,7 +327,7 @@
                               </select>
                           </div>
                           <div class="six columns">
-                              <label for="precip-presentation">Presentation</label>
+                              <label for="precip-presentation">Display: </label>
                               <select id="precip-presentation" class="u-full-width">
                                   <option value="absolute">Absolute</option>
                                   <option value="anomaly">Anomaly</option>
@@ -354,14 +335,6 @@
                           </div>
                       </div>
                       <div class="row">
-                          <div class="six columns">
-                              <label for="precip-range">Range Band</label>
-                              <select id="precip-range" class="u-full-width">
-                                  <option value="minmax" selected="selected">Min-Max</option>
-                                  <option value="p1090">10th-90th</option>
-                                  <!--<option value="both">Both</option>-->
-                              </select>
-                          </div>
                           <div class="six columns">
                               <label for="precip-median">Show Medians</label>
                               <select id="precip-median" class="u-full-width">
@@ -391,6 +364,7 @@
                               </span>
                             </h4>
                             <div class="data-accordion-actions">
+                              <a href="#" class="how-to-read"><span class="icon icon-help"></span>How to read this</a>
                               <a href="#" class="download-image"><span class="icon icon-download-image"></span>Image</a>
                               <a href="#" class="download-data"><span class="icon icon-download-chart"></span>Data</a>
                             </div>
@@ -466,16 +440,11 @@
                     <h3 class="accent-color"><span class="icon icon-drought"></span>Derived</h3>
 
                     <div class="data-vars">
-                        <select id="data-type" class="dropdown">
-                            <option value="projected">Projected</option>
-                            <option value="historical">Historical</option>
-                        </select>
 
-                        <select id="data-season" class="dropdown">
-                            <option value="spring">Spring</option>
-                            <option value="summer">Summer</option>
-                            <option value="autumn">Autumn</option>
-                            <option value="winter">Winter</option>
+                        <label for="der-presentation">Display: </label>
+                        <select id="der-presentation" class="dropdown">
+                          <option value="absolute">Actual</option>
+                          <option value="anomaly">Anomaly</option>
                         </select>
                     </div>
                 </header>
@@ -536,7 +505,7 @@
                               </select>
                           </div>
                           <div class="six columns">
-                              <label for="derived-presentation">Presentation</label>
+                              <label for="derived-presentation">Display: </label>
                               <select id="derived-presentation" class="u-full-width">
                                   <option value="absolute">Absolute</option>
                                   <option value="anomaly">Anomaly</option>
@@ -544,14 +513,6 @@
                           </div>
                       </div>
                       <div class="row">
-                          <div class="six columns">
-                              <label for="derived-range">Range Band</label>
-                              <select id="derived-range" class="u-full-width">
-                                  <option value="minmax" selected="selected">Min-Max</option>
-                                  <option value="p1090">10th-90th</option>
-                                  <!--<option value="both">Both</option>-->
-                              </select>
-                          </div>
                           <div class="six columns">
                               <label for="derived-median">Show Medians</label>
                               <select id="derived-median" class="u-full-width">
