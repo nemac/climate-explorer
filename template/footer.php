@@ -48,7 +48,6 @@
 <?php if (isset($active_variable) && $active_variable != null) { ?>
   <script>
     $(document).ready(function() {
-      app = new App();
       variables = new Variables(<?php echo "'" . $active_variable . "'"; ?>);
     });
   </script>
