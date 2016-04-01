@@ -54,4 +54,10 @@
   </script>
 <?php } ?>
 
+<script>
+  $(document).ready(function() {
+    app = new App();
+  });
+</script>
+
 <!-- END:JS_LOADER -->
