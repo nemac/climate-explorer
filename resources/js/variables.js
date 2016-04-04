@@ -295,7 +295,7 @@ Variables.prototype.addStates = function() {
 
 /*
 *
-* get counties geojson and add to map
+* get stations and add to map 
 *
 */
 Variables.prototype.addStations = function() {

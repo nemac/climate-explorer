@@ -1,8 +1,11 @@
 <?php
 
+  $location = true;
   $city = $_REQUEST['city'];
   $county = $_REQUEST['county'];
   $fips = $_REQUEST['fips'];
+  $lat = $_REQUEST['lat'];
+  $lon = $_REQUEST['lon'];
 
 ?>
 <!doctype html>
@@ -13,6 +16,8 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="stylesheet" href="resources/css/ol3-popup.css">
 
     <link rel="stylesheet" media="screen" href="resources/css/screen.css">
     <link rel="stylesheet" media="screen" href="resources/css/mods.css">
@@ -49,6 +54,7 @@
                     <li><a href="#location-temperature">Temperature</a></li>
                     <li><a href="#location-precipitation">Precipitation</a></li>
                     <li><a href="#location-derived">Derived</a></li>
+                    <li><a href="#location-stations">Weather Stations</a></li>
                     <li><a href="#location-impacts">Relevant Impacts</a></li>
                 </ul>
             </div>
@@ -605,6 +611,19 @@
                 </div>
             </div>
         </section>
+
+
+        <!-- begin precipitation chart and map -->
+        <section id="location-stations" class="location-data-section-wrap">
+          <div class="location-data-section">
+            <header>
+              <h3 class="accent-color"><span class="icon icon-temperature"></span>Weather Stations</h3>
+            </header>
+          </div>
+          <div id="location-station-map"></div>
+        </section>
+    <!-- end precip chart and map -->
+
 
         <section id="location-impacts" class="impacts-list">
             <h2>Relevant Impacts</h2>
