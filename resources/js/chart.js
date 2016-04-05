@@ -84,14 +84,14 @@ ChartBuilder.prototype.getTemperatureValues = function() {
   var max = {};
   $.each(this.records.tmax.data.replace( /(\r\n|\n|\r)/gm, ';' ).split( ';' ), function(i, a) {
     line = a.split(',');
-    max[ line[0] ] = parseInt(line[1]) / 10;
+    max[ line[0] ] = (parseInt(line[1]) / 10) * 9/5 + 32;
   });
 
   var min = {};
   $.each(this.records.tmin.data.replace( /(\r\n|\n|\r)/gm, ';' ).split( ';' ), function(i, a) {
     line = a.split( ',' );
     if ( max.hasOwnProperty( line[0] ) ) {
-      min[line[0]] = parseInt(line[1]) / 10;
+      min[line[0]] = (parseInt(line[1]) / 10) * 9/5 + 32;
     }
   });
 
@@ -99,8 +99,8 @@ ChartBuilder.prototype.getTemperatureValues = function() {
   $.each(this.records.normal_tmax.data.replace( /(\r\n|\n|\r)/gm, ';' ).split( ';' ), function(i, a) {
     line = a.split( ',' );
     if ( max.hasOwnProperty( line[0] ) ) {
-      var f = parseFloat( line[1] );
-      var c = ( f-32.0 ) *5.0 /9.0;
+      var c = parseFloat( line[1] );
+      //var c = ( f-32.0 ) *5.0 /9.0;
       normmax[line[0].slice(-4)] = c;
     }
   });
@@ -109,8 +109,8 @@ ChartBuilder.prototype.getTemperatureValues = function() {
   $.each(this.records.normal_tmin.data.replace( /(\r\n|\n|\r)/gm, ';' ).split( ';' ), function(i, a) {
     line = a.split( ',' );
     if ( max.hasOwnProperty( line[0] ) ) {
-      var f = parseFloat( line[1] );
-      var c = ( f-32.0 ) *5.0 /9.0;
+      var c = parseFloat( line[1] );
+      //var c = ( f-32.0 ) *5.0 /9.0;
       normmin[line[0].slice(-4)] = c;
     }
   });
@@ -182,8 +182,8 @@ ChartBuilder.prototype.getTemplate = function(type, values) {
         '<title/>'+
         '<grid/>'+
       '</horizontalaxis>'+
-      '<verticalaxis id="temp" min="-30" max="50">'+
-        '<title anchor="0 -1" angle="90" position="-25 0">Degrees (C)</title>'+
+      '<verticalaxis id="temp" min="-10" max="110">'+
+        '<title anchor="0 -1" angle="90" position="-25 0">Degrees (F)</title>'+
         '<grid/>'+
         '<labels spacing="100 50 20 10 5 1 0.5 0.2 0.1" format="%f"/>'+
       '</verticalaxis>'+
