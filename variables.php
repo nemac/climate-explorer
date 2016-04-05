@@ -25,6 +25,14 @@
 
     <?php include_once('template/header.php'); ?>
 
+    <div id="download-panel" class="hidden download-panel">
+      <div class="download-inner">
+        <p>Use the following links to download this graph's data:</p>
+        <ul></ul>
+        <div class="center"><button id="download-dismiss-button">Dismiss</button></div>
+      </div>
+    </div>
+
     <header id="left-header">
       <ul id="vars-menu" class="menu blue-menu">
         <li class="search-field"><span class="icon icon-search"></span><input type="text" id="formmapper" placeholder="Search by location"></li>
