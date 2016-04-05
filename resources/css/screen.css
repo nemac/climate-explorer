@@ -4330,7 +4330,7 @@ body.detail-open #nav-overlay {
 }
 .location-data-section .data-list form {
   position: absolute;
-  /*left: -9999px;*/
+  left: -9999px;
 }
 .location-data-section .data-options li {
   padding-left: 12%;
