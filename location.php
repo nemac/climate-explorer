@@ -171,7 +171,7 @@
                             <button id="download-button">Download Data</button>
                         </div>
                         <div class="center">
-                            <button><a id="download-image-link">Download Image</a></button>
+                          <button><a id="download-image-link-temp">Download Image</a></button>
                         </div>
                     </form>
                 </div>
@@ -191,7 +191,7 @@
 
                             <div class="data-accordion-actions">
                               <a href="#" class="how-to-read"><span class="icon icon-help"></span>How to read this</a>
-                              <a href="#" class="download-image"><span class="icon icon-download-image"></span>Image</a>
+                              <a href="#" id="temp-download-image" class="download-image"><span class="icon icon-download-image"></span>Image</a>
                               <a href="#" class="download-data"><span class="icon icon-download-chart"></span>Data</a>
                             </div>
                           </header>
@@ -353,7 +353,7 @@
                           <button id="download-button">Download Data</button>
                       </div>
                       <div class="center">
-                          <button><a id="download-image-link">Download Image</a></button>
+                          <button><a id="download-image-link-precip">Download Image</a></button>
                       </div>
                   </form>
                 </div>
@@ -371,7 +371,7 @@
                             </h4>
                             <div class="data-accordion-actions">
                               <a href="#" class="how-to-read"><span class="icon icon-help"></span>How to read this</a>
-                              <a href="#" class="download-image"><span class="icon icon-download-image"></span>Image</a>
+                              <a href="#" id="download-image-precip" class="download-image"><span class="icon icon-download-image"></span>Image</a>
                               <a href="#" class="download-data"><span class="icon icon-download-chart"></span>Data</a>
                             </div>
                           </header>
@@ -527,6 +527,12 @@
                               </select>
                           </div>
                       </div>
+                      <div class="center">
+                          <button id="download-button">Download Data</button>
+                      </div>
+                      <div class="center">
+                          <button><a id="download-image-link-derived">Download Image</a></button>
+                      </div>
                   </form>
                 </div>
 
@@ -544,7 +550,8 @@
                             </h4>
 
                             <div class="data-accordion-actions">
-                              <a href="#" class="download-image"><span class="icon icon-download-image"></span>Image</a>
+                              <a href="#" class="how-to-read"><span class="icon icon-help"></span>How to read this</a>
+                              <a href="#" id="download-image-derived" class="download-image"><span class="icon icon-download-image"></span>Image</a>
                               <a href="#" class="download-data"><span class="icon icon-download-chart"></span>Data</a>
                             </div>
                           </header>

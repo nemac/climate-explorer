@@ -295,7 +295,7 @@ Variables.prototype.addStates = function() {
 
 /*
 *
-* get stations and add to map 
+* get stations and add to map
 *
 */
 Variables.prototype.addStations = function() {
@@ -456,12 +456,15 @@ Variables.prototype.countySelected = function(feature, event) {
           median = 'false';
       }
 
-      console.log('update me!', median);
       self.cwg.update({
         pmedian: median,
         scenario: scenario
       });
 
+    });
+
+    $('.download-image').click(function() {
+      self.cwg.downloadImage(this, 'graph.png');
     });
 
   } else {

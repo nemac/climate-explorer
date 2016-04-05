@@ -260,6 +260,22 @@ $(document).ready(function() {
 
     });
 
+    $('#temp-download-image').on('click', function(e) {
+      $('#download-image-link-temp').get(0).click();
+      return false;
+    });
+
+    $('#download-image-precip').on('click', function(e) {
+      console.log('precip click!');
+      $('#download-image-link-precip').get(0).click();
+      return false;
+    });
+
+    $('#download-image-derived').on('click', function(e) {
+      $('#download-image-link-derived').get(0).click();
+      return false;
+    });
+
     $('#download-button').click(function() {
         if (cwg) {
             var $ul = $('#download-panel').find('ul');
@@ -282,8 +298,16 @@ $(document).ready(function() {
     });
 
     // download hook
-    $('#download-image-link').click(function() {
-        cwg.downloadImage(this, 'graph.png');
+    $('#download-image-link-temp').click(function() {
+      cwg.downloadImage(this, 'graph.png');
+    });
+
+    $('#download-image-link-precip').click(function() {
+      precipChart.downloadImage(this, 'graph.png');
+    });
+
+    $('#download-image-link-derived').click(function() {
+      derivedChart.downloadImage(this, 'graph.png');
     });
 
     $("#slider-range").slider({
