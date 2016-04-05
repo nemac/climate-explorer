@@ -34,6 +34,15 @@ App.prototype.locationSearch = function() {
     var county = data.administrative_area_level_2.replace(/ /g, '+');
     var city = data.locality + ', ' + data.administrative_area_level_1_short;
 
+    var lat, lon;
+    if ( result.geometry.access_points ) {
+      lat = result.geometry.access_points[0].location.lat;
+      lon = result.geometry.access_points[0].location.lng;
+    } else {
+      lat = result.geometry.location.lat();
+      lon = result.geometry.location.lng();
+    }
+
     var fips;
     $.each(self.fips_codes[data.administrative_area_level_1_short], function(i, c) {
       if (c.label === county.replace('+', ' ')) {
@@ -45,7 +54,7 @@ App.prototype.locationSearch = function() {
     console.log('data', data);
 
     if ( fips ) {
-      window.location.href = 'location.php?county='+county+'&city='+city+'&fips='+fips;
+      window.location.href = 'location.php?county='+county+'&city='+city+'&fips='+fips+'&lat='+lat+'&lon='+lon;
     }
 
   });

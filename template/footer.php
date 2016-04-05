@@ -21,6 +21,7 @@
 <script type="text/javascript" src="./resources/js/jquery.hoverintent.min.js"></script>
 
 <script type="text/javascript" src="./resources/js/variables.js"></script>
+<script type="text/javascript" src="./resources/js/location.js"></script>
 <script type="text/javascript" src="./resources/js/cwg/climate-widget-graph.js"></script>
 
 <script type="text/javascript" src="./resources/js/ol.js"></script>
@@ -49,6 +50,14 @@
   <script>
     $(document).ready(function() {
       variables = new Variables(<?php echo "'" . $active_variable . "'"; ?>);
+    });
+  </script>
+<?php } ?>
+
+<?php if (isset($location) && $location != null) { ?>
+  <script>
+    $(document).ready(function() {
+      variables = new Location(<?php echo "'" . $lat . "'"; ?>, <?php echo "'" . $lon . "'"; ?>);
     });
   </script>
 <?php } ?>
