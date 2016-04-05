@@ -51,10 +51,10 @@
             <ul id="home-menu" class="menu blue-menu">
                 <li><a href="location.html" class="launch-nav" data-nav-slide="0"><span class="icon icon-search"></span>Search by location</a></li>
                 <li><a href="#" class="launch-nav" data-nav-slide="1"><span class="icon icon-variables"></span>View by variable</a></li>
-                <li class="border"><a href="#" class="launch-nav" data-nav-slide="2"><span class="icon icon-bubble"></span>View by impact</a></li>
+                <li class="border"><a href="#" class="launch-nav" data-nav-slide="2"><span class="icon icon-bubble"></span>View by topic</a></li>
                 <li><a href="#"><span class="icon icon-tour"></span>New here? Take the tour</a></li>
             </ul>
-            
+
             <div id="h7">
               <a href="http://habitatseven.com" target="_blank"><span class="logo"></span><span class="text">Designed by Habitat Seven</span></a>
             </div>
@@ -68,7 +68,7 @@
         </section>
 
     </div>
-    
+
     <?php include_once('template/share.php'); ?>
 </div>
 
