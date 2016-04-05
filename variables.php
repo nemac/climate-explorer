@@ -43,7 +43,7 @@
 
         <li class="toggle">
           <a href="#info-counties" class="help icon icon-help"></a>
-          <label for="counties-overlay-toggle"><span class="text">Counties</span>
+          <label for="counties-overlay-toggle"><span class="text">Data by Counties</span>
             <input type="checkbox" name="counties-overlay-toggle" id="counties-overlay-toggle" value="1" autocomplete="off" checked="true">
           </label>
           <div id="info-counties" class="layer-info">
