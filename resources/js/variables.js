@@ -379,8 +379,13 @@ Variables.prototype.countySelected = function(feature, event) {
   if (feature) {
     var props = feature.getProperties();
     var fips = props.STATE + props.COUNTY;
+    var lonlat = ol.proj.transform(event.mapBrowserEvent.coordinate, 'EPSG:3857', 'EPSG:4326');
+    var lon = lonlat[0];
+    var lat = lonlat[1];
+    var state = this.stateFips[ props.STATE ];
+
     var html = '<span class="text">'+
-          'Chart<span class="full-title">: '+props.NAME+' County</span><br />'+
+          'Chart<span class="full-title">: <a href="location.php?county='+props.NAME+'+County&city='+props.NAME+', '+state+'&fips='+fips+'&lat='+lat+'&lon='+lon+'">'+props.NAME+' County</a></span><br />'+
           '<span class="source" id="chart-name">'+$('.fs-dropdown-selected').html()+'</span>'+
         '</span>' +
         '<div class="data-accordion-actions">' +
@@ -532,3 +537,63 @@ Variables.prototype.updateChart = function() {
   }
 
 };
+
+
+
+Variables.prototype.stateFips = {
+  "02": "AK",
+  "01": "AL",
+  "05": "AR",
+  "60": "AS",
+  "04": "AZ",
+  "06": "CA",
+  "08": "CO",
+  "09": "CT",
+  "11": "DC",
+  "10": "DE",
+  "12": "FL",
+  "13": "GA",
+  "66": "GU",
+  "15": "HI",
+  "19": "IA",
+  "16": "ID",
+  "17": "IL",
+  "18": "IN",
+  "20": "KS",
+  "21": "KY",
+  "22": "LA",
+  "25": "MA",
+  "24": "MD",
+  "23": "ME",
+  "26": "MI",
+  "27": "MN",
+  "29": "MO",
+  "28": "MS",
+  "30": "MT",
+  "37": "NC",
+  "38": "ND",
+  "31": "NE",
+  "33": "NH",
+  "34": "NJ",
+  "35": "NM",
+  "32": "NV",
+  "36": "NY",
+  "39": "OH",
+  "40": "OK",
+  "41": "OR",
+  "42": "PA",
+  "72": "PR",
+  "44": "RI",
+  "45": "SC",
+  "46": "SD",
+  "47": "TN",
+  "48": "TX",
+  "49": "UT",
+  "51": "VA",
+  "78": "VI",
+  "50": "VT",
+  "53": "WA",
+  "55": "WI",
+  "54": "WV",
+  "56": "WY"
+}
