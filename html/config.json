@@ -214,9 +214,9 @@
   }, {
     "id": "aap",
     "name": "Cropland",
-    "url": "https://129.174.131.7/cgi/wms_cdlall.cgi",
+    "url": "http://crop.csiss.gmu.edu/cgi-bin/wms_cdlall.cgi",
     "projection": "EPSG:4326",
-    "layers": "cdl_2013",
+    "layers": "cdl_2015",
     "info": {
       "sourceUrl": "https://catalog.data.gov/dataset/cropscape-cropland-data-layer",
       "sourceEntity": "USDA National Agricultural Statistics Service",
