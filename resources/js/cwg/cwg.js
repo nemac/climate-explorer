@@ -260,30 +260,56 @@ $(document).ready(function() {
 
     });
 
-    $('#download-button').click(function() {
-        if (cwg) {
-            var $ul = $('#download-panel').find('ul');
-            $ul.empty();
-            var dataurls = cwg.dataurls();
-            if (dataurls.hist_obs) {
-                $ul.append($("<li><a href='"+dataurls.hist_obs+"'>Observed Data</a></li>"));
-            }
-            if (dataurls.hist_mod) {
-                $ul.append($("<li><a href='"+dataurls.hist_mod+"'>Historical Modeled Data</a></li>"));
-            }
-            if (dataurls.proj_mod) {
-                $ul.append($("<li><a href='"+dataurls.proj_mod+"'>Projected Modeled Data</a></li>"));
-            }
-            $('#download-panel').removeClass("hidden");
-        }
+    $('#temp-download-image').on('click', function(e) {
+      $('#download-image-link-temp').get(0).click();
+      return false;
     });
+
+    $('#download-image-precip').on('click', function(e) {
+      $('#download-image-link-precip').get(0).click();
+      return false;
+    });
+
+    $('#download-image-derived').on('click', function(e) {
+      $('#download-image-link-derived').get(0).click();
+      return false;
+    });
+
+    $('.download-data').click(function(e) {
+      var id = $(e.target).attr('id');
+      var c = ( id === 'temp-download-data' ) ? cwg : precipChart;
+      if ( id === 'derived-download-data' ) { c = derivedChart; }
+      var $ul = $('#download-panel').find('ul');
+      $ul.empty();
+      var dataurls = c.dataurls();
+      if (dataurls.hist_obs) {
+          $ul.append($("<li><a href='"+dataurls.hist_obs+"'>Observed Data</a></li>"));
+      }
+      if (dataurls.hist_mod) {
+          $ul.append($("<li><a href='"+dataurls.hist_mod+"'>Historical Modeled Data</a></li>"));
+      }
+      if (dataurls.proj_mod) {
+          $ul.append($("<li><a href='"+dataurls.proj_mod+"'>Projected Modeled Data</a></li>"));
+      }
+      $('#download-panel').removeClass("hidden");
+
+    });
+
     $('#download-dismiss-button').click(function() {
         $('#download-panel').addClass("hidden");
     });
 
     // download hook
-    $('#download-image-link').click(function() {
-        cwg.downloadImage(this, 'graph.png');
+    $('#download-image-link-temp').click(function() {
+      cwg.downloadImage(this, 'graph.png');
+    });
+
+    $('#download-image-link-precip').click(function() {
+      precipChart.downloadImage(this, 'graph.png');
+    });
+
+    $('#download-image-link-derived').click(function() {
+      derivedChart.downloadImage(this, 'graph.png');
     });
 
     $("#slider-range").slider({

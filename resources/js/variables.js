@@ -295,7 +295,7 @@ Variables.prototype.addStates = function() {
 
 /*
 *
-* get stations and add to map 
+* get stations and add to map
 *
 */
 Variables.prototype.addStations = function() {
@@ -456,11 +456,31 @@ Variables.prototype.countySelected = function(feature, event) {
           median = 'false';
       }
 
-      console.log('update me!', median);
       self.cwg.update({
         pmedian: median,
         scenario: scenario
       });
+
+    });
+
+    $('.download-image').click(function() {
+      self.cwg.downloadImage(this, 'graph.png');
+    });
+
+    $('.download-data').click(function(e) {
+      var $ul = $('#download-panel').find('ul');
+      $ul.empty();
+      var dataurls = self.cwg.dataurls();
+      if (dataurls.hist_obs) {
+          $ul.append($("<li><a href='"+dataurls.hist_obs+"'>Observed Data</a></li>"));
+      }
+      if (dataurls.hist_mod) {
+          $ul.append($("<li><a href='"+dataurls.hist_mod+"'>Historical Modeled Data</a></li>"));
+      }
+      if (dataurls.proj_mod) {
+          $ul.append($("<li><a href='"+dataurls.proj_mod+"'>Projected Modeled Data</a></li>"));
+      }
+      $('#download-panel').removeClass("hidden");
 
     });
 

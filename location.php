@@ -61,6 +61,15 @@
         </section>
 
         <!-- begin temperature chart and map -->
+
+        <div id="download-panel" class="hidden download-panel">
+          <div class="download-inner">
+            <p>Use the following links to download this graph's data:</p>
+            <ul></ul>
+            <div class="center"><button id="download-dismiss-button">Dismiss</button></div>
+          </div>
+        </div>
+
         <section id="location-temperature" class="location-data-section-wrap">
             <div class="location-data-section">
                 <header>
@@ -171,7 +180,7 @@
                             <button id="download-button">Download Data</button>
                         </div>
                         <div class="center">
-                            <button><a id="download-image-link">Download Image</a></button>
+                          <button><a id="download-image-link-temp">Download Image</a></button>
                         </div>
                     </form>
                 </div>
@@ -191,8 +200,8 @@
 
                             <div class="data-accordion-actions">
                               <a href="#" class="how-to-read"><span class="icon icon-help"></span>How to read this</a>
-                              <a href="#" class="download-image"><span class="icon icon-download-image"></span>Image</a>
-                              <a href="#" class="download-data"><span class="icon icon-download-chart"></span>Data</a>
+                              <a href="#" id="temp-download-image" class="download-image"><span class="icon icon-download-image"></span>Image</a>
+                              <a href="#" id="temp-download-data" class="download-data"><span class="icon icon-download-chart"></span>Data</a>
                             </div>
                           </header>
 
@@ -353,7 +362,7 @@
                           <button id="download-button">Download Data</button>
                       </div>
                       <div class="center">
-                          <button><a id="download-image-link">Download Image</a></button>
+                          <button><a id="download-image-link-precip">Download Image</a></button>
                       </div>
                   </form>
                 </div>
@@ -371,8 +380,8 @@
                             </h4>
                             <div class="data-accordion-actions">
                               <a href="#" class="how-to-read"><span class="icon icon-help"></span>How to read this</a>
-                              <a href="#" class="download-image"><span class="icon icon-download-image"></span>Image</a>
-                              <a href="#" class="download-data"><span class="icon icon-download-chart"></span>Data</a>
+                              <a href="#" id="download-image-precip" class="download-image"><span class="icon icon-download-image"></span>Image</a>
+                              <a href="#" id="precip-download-data" class="download-data"><span class="icon icon-download-chart"></span>Data</a>
                             </div>
                           </header>
 
@@ -527,6 +536,12 @@
                               </select>
                           </div>
                       </div>
+                      <div class="center">
+                          <button id="download-button">Download Data</button>
+                      </div>
+                      <div class="center">
+                          <button><a id="download-image-link-derived">Download Image</a></button>
+                      </div>
                   </form>
                 </div>
 
@@ -544,8 +559,9 @@
                             </h4>
 
                             <div class="data-accordion-actions">
-                              <a href="#" class="download-image"><span class="icon icon-download-image"></span>Image</a>
-                              <a href="#" class="download-data"><span class="icon icon-download-chart"></span>Data</a>
+                              <a href="#" class="how-to-read"><span class="icon icon-help"></span>How to read this</a>
+                              <a href="#" id="download-image-derived" class="download-image"><span class="icon icon-download-image"></span>Image</a>
+                              <a href="#" id="derived-download-data" class="download-data"><span class="icon icon-download-chart"></span>Data</a>
                             </div>
                           </header>
 
