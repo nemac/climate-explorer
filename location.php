@@ -193,8 +193,8 @@
                             <h4>
                               <span class="icon icon-emission-scenario"></span>
                               <span class="text">
-                                Chart<span class="full-title">: Chart Title</span>
-                                <span class="source">Source: <a href="#" target="_blank">NOAA, 2014</a></span>
+                                Chart<span class="full-title">: <?php echo $county ?></span>
+                                <span class="source" id="temp-chart-name">Mean Daily Maximum</span>
                               </span>
                             </h4>
 
@@ -250,7 +250,7 @@
                             <h4 class="accent-color">
                               <span class="icon icon-district"></span>
                               <span class="text">
-                                Map<span class="full-title">: Map Title</span>
+                                Map<span class="full-title">: <?php echo $county ?></span>
                                 <span class="source">Source: <a href="#" target="_blank">NOAA, 2014</a></span>
                               </span>
                             </h4>
@@ -374,8 +374,8 @@
                             <h4>
                               <span class="icon icon-emission-scenario"></span>
                               <span class="text">
-                                Chart<span class="full-title">: Chart Title</span>
-                                <span class="source">Source: <a href="#" target="_blank">NOAA, 2014</a></span>
+                                Chart<span class="full-title">: <?php echo $county ?></span>
+                                <span class="source" id="precip-chart-name">Mean Daily Precipitation</span>
                               </span>
                             </h4>
                             <div class="data-accordion-actions">
@@ -430,8 +430,8 @@
                               <h4 class="accent-color">
                                 <span class="icon icon-district"></span>
                                 <span class="text">
-                                  Map<span class="full-title">: Map Title</span>
-                                  <span class="source">Source: <a href="#" target="_blank">NOAA, 2014</a></span>
+                                  Map<span class="full-title">: <?php echo $county ?></span>
+                                  <span class="source" id="precip-chart-name">Mean Daily Precipitation</span>
                                 </span>
                               </h4>
                               <div class="data-accordion-actions">
@@ -553,8 +553,8 @@
                             <h4>
                               <span class="icon icon-emission-scenario"></span>
                               <span class="text">
-                                Chart<span class="full-title">: Chart Title</span>
-                                <span class="source">Source: <a href="#" target="_blank">NOAA, 2014</a></span>
+                                Chart<span class="full-title">: <?php echo $county ?></span>
+                                <span class="source" id="derived-chart-name">Heating Degree Days</span>
                               </span>
                             </h4>
 
@@ -611,7 +611,7 @@
                             <h4 class="accent-color">
                               <span class="icon icon-district"></span>
                               <span class="text">
-                                Map<span class="full-title">: Map Title</span>
+                                Map<span class="full-title">: <?php echo $county ?></span>
                                 <span class="source">Source: <a href="#" target="_blank">NOAA, 2014</a></span>
                               </span>
                             </h4>
