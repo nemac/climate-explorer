@@ -161,7 +161,7 @@
     <ul id="nav-cycle-pager">
       <li><a href="#nav-search"><span class="icon icon-search"></span> Search by location</a></li>
       <li><a href="#nav-variables"><span class="icon icon-variables"></span> View by variable</a></li>
-      <li><a href="#nav-impacts"><span class="icon icon-bubble"></span> View by impact</a></li>
+      <li><a href="#nav-impacts"><span class="icon icon-bubble"></span> View by topic</a></li>
     </ul>
   </div>
 
