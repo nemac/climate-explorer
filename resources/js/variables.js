@@ -171,6 +171,10 @@ Variables.prototype.wire = function() {
     self.updateChart();
   });
 
+  $('#variable-options').on('change', function() {
+    $("#chart-name").html( $('.fs-dropdown-selected').html() );
+  });
+
   //map click selector
   var select = new ol.interaction.Select({
     layers: function(layer) {
@@ -375,7 +379,10 @@ Variables.prototype.countySelected = function(feature, event) {
   if (feature) {
     var props = feature.getProperties();
     var fips = props.STATE + props.COUNTY;
-    var html = '<span>'+props.NAME+' County</span>' +
+    var html = '<span class="text">'+
+          'Chart<span class="full-title">: '+props.NAME+' County</span><br />'+
+          '<span class="source" id="chart-name">'+$('.fs-dropdown-selected').html()+'</span>'+
+        '</span>' +
         '<div class="data-accordion-actions">' +
           '<a href="#" class="how-to-read"><span class="icon icon-help"></span>How to read this</a>' +
           '<a href="#" class="download-image"><span class="icon icon-download-image"></span>Image</a>' +

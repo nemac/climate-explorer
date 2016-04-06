@@ -163,6 +163,9 @@ $(document).ready(function() {
       $('ul.data-options li').removeClass('active accent-border');
       $(this).closest('li').addClass('active accent-border');
 
+      var val = $(this).children('a');
+      $('#temp-chart-name').html( val.context.innerText );
+
       var id = $(this).attr('id').replace('var-', '');
       $('#frequency').val('annual').change();
       $('#variable').val(id).change();
@@ -172,6 +175,9 @@ $(document).ready(function() {
       $('ul.data-options li').removeClass('active accent-border');
       $(this).closest('li').addClass('active accent-border');
 
+      var val = $(this).children('a');
+      $('#precip-chart-name').html( val.context.innerText );
+
       var id = $(this).attr('id').replace('var-', '');
       $('#precip-frequency').val('annual').change();
       $('#precip-variable').val(id).change();
@@ -180,6 +186,9 @@ $(document).ready(function() {
     $('#derived-data h4').on('click', function() {
       $('ul.data-options li').removeClass('active accent-border');
       $(this).closest('li').addClass('active accent-border');
+
+      var val = $(this).children('a');
+      $('#derived-chart-name').html( val.context.innerText );
 
       var id = $(this).attr('id').replace('var-', '');
       $('#derived-frequency').val('annual').change();

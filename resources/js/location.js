@@ -112,7 +112,7 @@ Location.prototype.addStations = function() {
     vectorLayer.set('layer_id', 'stations');
     self.map.addLayer(vectorLayer);
 
-    console.log('added', data);
+    //console.log('added', data);
   });
 
 };

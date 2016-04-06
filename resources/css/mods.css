@@ -88,6 +88,10 @@ input.location-mapper:focus:-ms-input-placeholder {
   color: rgba(255, 255, 255, 0.25);
 }
 
+.page-type-variables .data-accordion-actions {
+  margin-top:-15px;
+}
+
 .page-type-variables #vars-menu .layer-info {
   display: none;
   position: absolute;
