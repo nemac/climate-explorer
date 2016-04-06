@@ -220,7 +220,7 @@
         <div class="nav-content tabs">
           <div id="nav-vars-projected" class="tab nav-content-tab">
             <ol class="col-3">
-              <li><a href="#detail-temperature" class="nav-detail-link">Temperature</a>
+              <li>Temperature
                 <ul>
                   <?php
 
@@ -235,7 +235,7 @@
                   ?>
                 </ul>
               </li>
-              <li><a href="#detail-precipitation" class="nav-detail-link">Precipitation</a>
+              <li>Precipitation
                 <ul>
                   <?php
 
@@ -250,7 +250,7 @@
                   ?>
                 </ul>
               </li>
-              <li><a href="#detail-derived" class="nav-detail-link">Derived</a>
+              <li>Derived
                 <ul>
                   <?php
 
