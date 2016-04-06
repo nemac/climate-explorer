@@ -2,7 +2,7 @@
 
   var defaults = {
     bounds: true, //Whether to snap geocode search to map bounds. Default: true if null search globally.
-    country: null,
+    country: 'USA',
     map: false, //A selector, a jQuery object or a DOM element. Default: false which shows no map.
     details: false, //The container that should be populated with form data. Default: false which ignores the setting.
     detailsAttribute: "name", //The attribute's name to use as an indicator. Default: name
