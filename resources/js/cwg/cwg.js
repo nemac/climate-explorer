@@ -28,7 +28,7 @@ $(document).ready(function() {
             $('label[for=timeperiod]').css("opacity", 1.0);
             $('#presentation').attr("disabled", "true");
             $('label[for=presentation]').css("opacity", 0.5);
-            $('#slider-range').hide();
+            //$('#slider-range').hide();
             $('#x-axis-pan-note').show();
         }
         if (freq === "seasonal") {
@@ -36,7 +36,7 @@ $(document).ready(function() {
             $('label[for=timeperiod]').css("opacity", 1.0);
             $('#presentation').attr("disabled", "true");
             $('label[for=presentation]').css("opacity", 0.5);
-            $('#slider-range').hide();
+            //$('#slider-range').hide();
             $('#x-axis-pan-note').show();
         }
         //populate_variables(freq);
@@ -52,6 +52,35 @@ $(document).ready(function() {
       } else {
         $('#historical-range, #under-baseline-range, #over-baseline-range').show();
       }
+
+      if ( id !== 'annual' ) {
+        $("#slider-range").slider('destroy').slider({
+          range: false,
+          min: 0,
+          max: 2,
+          value: 0,
+          slide: function( event, ui ) {
+            val = ( ui.value === 0 ) ? '2025' : '2050';
+            if ( ui.value === 2 ) { val = '2075'; }
+            cwg.update({ timeperiod: val });
+          }
+        });
+        $('#temp-range-low').html('30 Years Centered in 2025');
+        $('#temp-range-high').html('30 Years Centered in 2075');
+      } else {
+        $("#slider-range").slider('destroy').slider({
+          range: true,
+          min: 1950,
+          max: 2099,
+          values: [ 1950, 2099 ],
+          slide: function( event, ui ) {
+            return cwg.setXRange(ui.values[0], ui.values[1]);
+          }
+        });
+        $('#temp-range-low').html('2010');
+        $('#temp-range-high').html('2100');
+      }
+
       cwg.update({
         frequency: $('#frequency').val(),
         variable: $('#variable').val()
@@ -66,6 +95,35 @@ $(document).ready(function() {
       } else {
         $('#historical-range, #under-baseline-range, #over-baseline-range').show();
       }
+
+      if ( id !== 'annual' ) {
+        $("#precip-slider-range").slider('destroy').slider({
+          range: false,
+          min: 0,
+          max: 2,
+          value: 0,
+          slide: function( event, ui ) {
+            val = ( ui.value === 0 ) ? '2025' : '2050';
+            if ( ui.value === 2 ) { val = '2075'; }
+            precipChart.update({ timeperiod: val });
+          }
+        });
+        $('#precip-range-low').html('30 Years Centered in 2025');
+        $('#precip-range-high').html('30 Years Centered in 2075');
+      } else {
+        $("#precip-slider-range").slider('destroy').slider({
+          range: true,
+          min: 1950,
+          max: 2099,
+          values: [ 1950, 2099 ],
+          slide: function( event, ui ) {
+            return precipChart.setXRange(ui.values[0], ui.values[1]);
+          }
+        });
+        $('#precip-range-low').html('2010');
+        $('#precip-range-high').html('2100');
+      }
+
       precipChart.update({
         frequency: $('#precip-frequency').val(),
         variable: $('#precip-variable').val()
