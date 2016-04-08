@@ -115,11 +115,11 @@
   }, {
     "id": "aah",
     "name": "Hospitals",
-    "url": "http://hsip.geoplatform.gov/arcgis/services/HSIP_Public/PublicHealth/MapServer/WMSServer",
+    "url": "http://hsip.geoplatform.gov/arcgis/rest/services/HSIP_Public/PublicHealth/MapServer/export",
     "projection": "EPSG:3857",
     "layers": "0",
     "info": {
-      "sourceUrl": "https://www.geoplatform.gov/climate-resources",
+      "sourceUrl": "http://geoplatform.maps.arcgis.com/home/item.html?id=8a6b9e293d2d4de0b64ecbbe91164515",
       "sourceEntity": "Homeland Security Infrastructure Program",
       "layerDescription": "This layer shows the locations of hospitals.",
       "legendImage": "legends/legendimages/aah.png"
@@ -132,7 +132,7 @@
     "layers": "0",
     "type": "REST",
     "info": {
-      "sourceUrl": "https://www.geoplatform.gov/climate-resources",
+      "sourceUrl": "http://geoplatform.maps.arcgis.com/home/item.html?id=73ad5cb3d6b74224bee9651416e3817d",
       "sourceEntity": "Homeland Security Infrastructure Program",
       "layerDescription": "Public use aircraft landing facilities.",
       "legendImage": "legends/legendimages/aai.png"
@@ -145,7 +145,7 @@
     "layers": [ "0", "1" ],
     "type": "REST",
     "info": {
-      "sourceUrl": "https://www.geoplatform.gov/climate-resources",
+      "sourceUrl": "http://geoplatform.maps.arcgis.com/home/item.html?id=a33a81e85f404d9a9c77fa000ec390d3",
       "sourceEntity": "Homeland Security Infrastructure Program",
       "layerDescription": "Publically accessible bridges and roadway and railway tunnels.",
       "legendImage": "legends/legendimages/aaj.png"
@@ -220,7 +220,7 @@
     "info": {
       "sourceUrl": "https://catalog.data.gov/dataset/cropscape-cropland-data-layer",
       "sourceEntity": "USDA National Agricultural Statistics Service",
-      "layerDescription": "USDA's Cropland Data Layer shows crops in place during the main growing season for 2013.",
+      "layerDescription": "USDA's Cropland Data Layer shows crops in place during the main growing season for 2015.",
       "legendImage": "legends/legendimages/aap.png"
     }
   }, {
@@ -450,8 +450,8 @@
   }, {
     "id": "abk",
     "name": "Waterways",
-    "url": "https://services.nationalmap.gov/arcgis/services/nhd/MapServer/WMSServer",
-    "layers": "3",
+    "url": "http://services.nationalmap.gov/arcgis/rest/services/nhd/MapServer/export",
+    "layers": "12",
     "projection": "EPSG:4326",
     "info": {
       "sourceUrl": "https://catalog.data.gov/dataset/usgs-hydrography-nhd-overlay-map-service-from-the-national-map-national-geospatial-data-asset-",
@@ -462,8 +462,8 @@
   }, {
     "id": "abl",
     "name": "Waterbodies",
-    "url": "https://services.nationalmap.gov/arcgis/services/nhd/MapServer/WMSServer",
-    "layers": "4",
+    "url": "http://services.nationalmap.gov/arcgis/rest/services/nhd/MapServer/export",
+    "layers": "11",
     "projection": "EPSG:4326",
     "info": {
       "sourceUrl": "https://catalog.data.gov/dataset/usgs-hydrography-nhd-overlay-map-service-from-the-national-map-national-geospatial-data-asset-",
@@ -474,8 +474,8 @@
   }, {
     "id": "abm",
     "name": "Freeway System (National)",
-    "url": "https://services.nationalmap.gov/arcgis/services/transportation/MapServer/WMSServer",
-    "layers": "6,14",
+    "url": "http://services.nationalmap.gov/arcgis/rest/services/transportation/MapServer/export",
+    "layers": "2,11",
     "projection": "EPSG:4326",
     "info": {
       "sourceUrl": "https://catalog.data.gov/dataset/usgs-transportation-overlay-map-service-from-the-national-map",
@@ -486,8 +486,8 @@
   }, {
     "id": "abn",
     "name": "Major Highways (Regional)",
-    "url": "https://services.nationalmap.gov/arcgis/services/transportation/MapServer/WMSServer",
-    "layers": "5,13",
+    "url": "http://services.nationalmap.gov/arcgis/rest/services/transportation/MapServer/export",
+    "layers": "3,4,12,13",
     "projection": "EPSG:4326",
     "info": {
       "sourceUrl": "https://catalog.data.gov/dataset/usgs-transportation-overlay-map-service-from-the-national-map",
@@ -523,8 +523,8 @@
   }, {
     "id": "abq",
     "name": "Structures",
-    "url": "https://services.nationalmap.gov/arcgis/services/structures/MapServer/WMSServer",
-    "layers": "1,2,4,5,7,8,9,10,12,14",
+    "url": "http://services.nationalmap.gov/arcgis/rest/services/structures/MapServer/export",
+    "layers": "0,2,4,9,13",
     "projection": "EPSG:4326",
     "info": {
       "sourceUrl": "https://catalog.data.gov/dataset/usgs-structures-overlay-map-service-from-the-national-map-national-geospatial-data-asset-ngda-",
@@ -540,7 +540,7 @@
     "type": "REST",
     "projection": "EPSG:102100",
     "info": {
-      "sourceUrl": "https://catalog.data.gov/dataset/usgs-national-land-cover-dataset-nlcd-downloadable-data-collection",
+      "sourceUrl": "https://catalog.data.gov/dataset/national-land-cover-database-nlcd-percent-developed-imperviousness-collection",
       "sourceEntity": "USGS",
       "layerDescription": "Impervious surfaces derived from the 2011 National Land Cover Database.",
       "legendImage": "legends/legendimages/abr.png"
@@ -628,7 +628,7 @@
     "subGroups": [{
       "id": "g_a_a",
       "name": "Climate Stressors",
-      "layers": [ "aag", "aac", "aad", "aae", "aaf", "aab", "aax", "aan", "aay", "abd", "abe", "abf", "abg", "abh" ]
+      "layers": [ "aag", "aac", "aad", "aae", "aaf", "aab", "aax", "aan", "abd", "abe", "abf", "abg", "abh" ]
     }, {
       "id": "g_a_b",
       "name": "People and Assets Impacted",
