@@ -26,7 +26,7 @@
   "overlays": [{
     "id": "aaa",
     "name": "Current Drought",
-    "url": "https://torka.unl.edu:8080/cgi-bin/mapserv.exe?map=/ms4w/apps/dm/service/usdm_current_wms.map",
+    "url": "http://torka.unl.edu:8080/cgi-bin/mapserv.exe?map=/ms4w/apps/dm/service/usdm_current_wms.map",
     "layers": "usdm_current",
     "info": {
       "sourceUrl": "https://catalog.data.gov/dataset/national-integrated-drought-information-system",
@@ -116,6 +116,7 @@
     "id": "aah",
     "name": "Hospitals",
     "url": "http://hsip.geoplatform.gov/arcgis/rest/services/HSIP_Public/PublicHealth/MapServer/export",
+    "type": "REST",
     "projection": "EPSG:3857",
     "layers": "0",
     "info": {
@@ -451,6 +452,7 @@
     "id": "abk",
     "name": "Waterways",
     "url": "http://services.nationalmap.gov/arcgis/rest/services/nhd/MapServer/export",
+    "type": "REST",
     "layers": "12",
     "projection": "EPSG:4326",
     "info": {
@@ -463,6 +465,7 @@
     "id": "abl",
     "name": "Waterbodies",
     "url": "http://services.nationalmap.gov/arcgis/rest/services/nhd/MapServer/export",
+    "type": "REST",
     "layers": "11",
     "projection": "EPSG:4326",
     "info": {
@@ -475,6 +478,7 @@
     "id": "abm",
     "name": "Freeway System (National)",
     "url": "http://services.nationalmap.gov/arcgis/rest/services/transportation/MapServer/export",
+    "type": "REST",
     "layers": "2,11",
     "projection": "EPSG:4326",
     "info": {
@@ -487,6 +491,7 @@
     "id": "abn",
     "name": "Major Highways (Regional)",
     "url": "http://services.nationalmap.gov/arcgis/rest/services/transportation/MapServer/export",
+    "type": "REST",
     "layers": "3,4,12,13",
     "projection": "EPSG:4326",
     "info": {
@@ -524,6 +529,7 @@
     "id": "abq",
     "name": "Structures",
     "url": "http://services.nationalmap.gov/arcgis/rest/services/structures/MapServer/export",
+    "type": "REST",
     "layers": "0,2,4,9,13",
     "projection": "EPSG:4326",
     "info": {
