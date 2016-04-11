@@ -35,7 +35,7 @@
 
     <header id="left-header">
       <ul id="vars-menu" class="menu blue-menu">
-        <li class="search-field"><span class="icon icon-search"></span><input type="text" id="formmapper" placeholder="Search by location"></li>
+        <li class="search-field border"><span class="icon icon-search"></span><input type="text" id="formmapper" placeholder="Search by location"></li>
 
         <li class="select border">
           <select class="dropdown" id="variable-options">

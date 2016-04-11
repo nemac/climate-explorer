@@ -422,6 +422,11 @@ Variables.prototype.countySelected = function(feature, event) {
           '<div class="legend-item-block" id="over-baseline-block"></div>'+
           'Observed over baseline'+
         '</div>'+
+      '</div>'+
+      '<div class="range" id="variable-slider">'+
+        '<div id="slider-range"></div>'+
+        '<div class="ui-slider-label range-label min" id="range-low">2010</div>'+
+        '<div class="ui-slider-label range-label max" id="range-high">2100</div>'+
       '</div>';
     this.popup.show(event.mapBrowserEvent.coordinate, html);
 
@@ -494,6 +499,20 @@ Variables.prototype.countySelected = function(feature, event) {
       }
       $('#download-panel').removeClass("hidden");
 
+    });
+
+    $('#download-dismiss-button').click(function() {
+      $('#download-panel').addClass("hidden");
+    });
+
+    $("#slider-range").slider({
+      range: true,
+      min: 1950,
+      max: 2099,
+      values: [ 1950, 2099 ],
+      slide: function( event, ui ) {
+        return self.cwg.setXRange(ui.values[0], ui.values[1]);
+      }
     });
 
   } else {

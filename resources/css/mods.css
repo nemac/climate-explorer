@@ -92,6 +92,14 @@ input.location-mapper:focus:-ms-input-placeholder {
   margin-top:-15px;
 }
 
+.page-type-variables #variable-slider {
+  width: 95%;
+  margin: auto;
+  margin-top: 23px;
+  margin-bottom: 50px;
+  position: relative;
+}
+
 .page-type-variables #vars-menu .layer-info {
   display: none;
   position: absolute;
@@ -284,7 +292,7 @@ input.location-mapper:focus:-ms-input-placeholder {
 
 .ol-popup-content {
   min-width: 170px;
-  max-height: 710px;
+  max-height: 910px;
   overflow-x: auto;
 }
 
