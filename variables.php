@@ -18,7 +18,8 @@
     <link rel="stylesheet" media="screen" href="resources/css/mods.css">
 
     <script type="text/javascript" src="./resources/js/jquery.min.js"></script>
-    <script type="text/javascript" src="./resources/js/jquery-ui.min.js"></script>
+    <!-- <script type="text/javascript" src="./resources/js/jquery-ui.min.js"></script> -->
+    <script src="//code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
   </head>
 
   <body id="page-variables" class="page-type-variables">
@@ -85,8 +86,22 @@
 
     <div id="viewport">
       <div id="main-content-wrap">
+        <!-- <input id="swipe" type="range" style="width: 100%"> -->
+
+        <div class="moveable" id="sliderDiv" style="top: 0px; left: 50%; position: absolute;">
+          <div id="swipeImg" style="position:absolute;width:85px;left:-35px;height:50px;top:45%;display:block; background-image: url(http://tmappsevents.esri.com/website/swipe-sandy-custom/resources/icons/swipe-arrows-stripe.png);">
+    				<div class="emissions-low">Low Emissions</div>
+    				<div class="emissions-high">High Emissions</div>
+    			</div>
+        </div>
 
         <div id="variable-map"></div>
+
+        <div class="year" id="year-slider-container">
+          <div class="year-label year-min">1950</div>
+          <div class="" id="variable-time-slider" data-min="1950" data-max="2090" data-value="2090"></div>
+          <div class="year-label year-max">2090</div>
+        </div>
 
         <div class="zoom">
           <div class="zoom-slider" data-value="1"></div>

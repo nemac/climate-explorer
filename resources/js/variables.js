@@ -26,7 +26,38 @@ var Variables = function(id) {
     'heating_degree_day_18.3': 'Heating Degree Days'
   };
 
+  this.tilesHistMapping = {
+    'tasmax': '_summer_hist_prism_tmax',
+    'tasmin': '_summer_hist_prism_tmin',
+    'days_tmin_blw_0.0': '_annual_hist_days-tmin-blw',
+    'days_tmax_abv_35.0': '_annual_hist_days-tmax-abv',
+    'pr': '_summer_hist_prism_pr',
+    'cooling_degree_day_18.3': '_annual_hist_cooling-degree-day',
+    'heating_degree_day_18.3': '_annual_hist_heating-degree-day'
+  };
+
+  this.tilesMapping = {
+    'tasmax': '_summer_rcp45_ea_tasmax',
+    'tasmin': '_summer_rcp45_ea_tasmin',
+    'days_tmin_blw_0.0': '_annual_rcp45_days-tmin-blw',
+    'days_tmax_abv_35.0': '_annual_rcp45_days-tmax-abv',
+    'pr': '_summer_rcp45_ea_pr',
+    'cooling_degree_day_18.3': '_annual_rcp45_cooling-degree-day',
+    'heating_degree_day_18.3': '_annual_rcp45_heating-degree-day'
+  };
+
+  this.tilesMapping85 = {
+    'tasmax': '_summer_rcp85_ea_tasmax',
+    'tasmin': '_summer_rcp85_ea_tasmin',
+    'days_tmin_blw_0.0': '_annual_rcp85_days-tmin-blw',
+    'days_tmax_abv_35.0': '_annual_rcp85_days-tmax-abv',
+    'pr': '_summer_rcp85_ea_pr',
+    'cooling_degree_day_18.3': '_annual_rcp85_cooling-degree-day',
+    'heating_degree_day_18.3': '_annual_rcp85_heating-degree-day'
+  };
+
   this.selectedVariable = id || 'tasmax';
+  this.activeYear = 2010;
 
   $(".level-1").html(this.varMapping[ this.selectedVariable ]);
 
@@ -54,7 +85,10 @@ Variables.prototype.createMap = function() {
     target: 'variable-map',
     layers: [
       new ol.layer.Tile({
-        source: new ol.source.MapQuest({layer: 'osm'})
+        source: new ol.source.XYZ({
+          url: 'http://{s}.basemaps.cartocdn.com/light_nolabels/{z}/{x}/{y}.png',
+          attributions: [new ol.Attribution({ html: ['&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors, &copy; <a href="http://cartodb.com/attributions">CartoDB</a>'] })]
+        })
       })
     ],
     view: view
@@ -64,6 +98,7 @@ Variables.prototype.createMap = function() {
   this.map.addOverlay(this.popup);
 
   //add layers to map and wire events
+  this.updateTiledLayer(true);
   this.addCounties();
   this.addStates();
   this.addStations();
@@ -168,6 +203,7 @@ Variables.prototype.wire = function() {
     self.selectedVariable =  $(this).data().value;
     $(".level-1").html(self.varMapping[ self.selectedVariable ]);
     history.pushState(null, "", "?id="+self.selectedVariable);
+    self.updateTiledLayer(false);
     self.updateChart();
   });
 
@@ -231,7 +267,7 @@ Variables.prototype.addCounties = function() {
 
     return [new ol.style.Style({
       fill: new ol.style.Fill({
-        color: 'rgba(255, 255, 255, 0.4)'
+        color: 'rgba(255, 255, 255, 0.1)'
       }),
       stroke: new ol.style.Stroke({
         color: '#2980b9',
@@ -280,7 +316,7 @@ Variables.prototype.addStates = function() {
 
   };
 
-  this.vectorLayer = new ol.layer.Vector({
+  this.statesLayer = new ol.layer.Vector({
     title: 'added Layer',
     source: new ol.source.Vector({
        url: 'resources/data/states.json',
@@ -289,8 +325,8 @@ Variables.prototype.addStates = function() {
     style: style
   });
 
-  this.vectorLayer.set('layer_id', 'states');
-  self.map.addLayer(this.vectorLayer);
+  this.statesLayer.set('layer_id', 'states');
+  this.map.addLayer(this.statesLayer);
 
 };
 
@@ -540,6 +576,189 @@ Variables.prototype.stationSelected = function(feature, event) {
   }
 
 };
+
+
+
+
+Variables.prototype.updateTiledLayer = function(replace) {
+  var self = this;
+  var histYears = [1950, 1960, 1970, 1980, 1990, 2000];
+  var extent = ol.proj.transformExtent([-135,11.3535322866,-56.25,49.5057345956],'EPSG:4326', 'EPSG:3857');
+
+  var hist = null;
+  console.log('histYears.indexOf(this.activeYear)', histYears.indexOf(this.activeYear));
+  var src, src85;
+  if ( histYears.indexOf(this.activeYear) !== -1 ) {
+    src = this.activeYear + this.tilesHistMapping[ this.selectedVariable ];
+    src85 = null;
+  } else {
+    src = this.activeYear + this.tilesMapping[ this.selectedVariable ];
+    src85 = this.activeYear + this.tilesMapping85[ this.selectedVariable ];
+  }
+
+  console.log('update tile layer!', this.activeYear, 'src85', src85);
+
+  if ( replace ) {
+    if ( this.tileLayer ) {
+      this.map.removeLayer(this.tileLayer);
+      this.tileLayer = null;
+    }
+    if ( this.tileLayer85 ) {
+      this.map.removeLayer(this.tileLayer85);
+      this.tileLayer85 = null;
+    }
+  }
+
+
+  //rcp45 OR historical
+  this.tileLayer = new ol.layer.Tile({
+    source: new ol.source.XYZ({
+      urls:[
+        'http://tiles.habitatseven.work/'+src+'/{z}/{x}/{y}.png'
+      ],
+      extent: extent,
+      minZoom: 0,
+      maxZoom: 5,
+      tilePixelRatio: 1
+    })
+  });
+
+  this.tileLayer.set('layer_id', 'tile_layer');
+  this.map.addLayer(this.tileLayer);
+
+  if ( src85 ) {
+    //rcp85
+    this.tileLayer85 = new ol.layer.Tile({
+      source: new ol.source.XYZ({
+        urls:[
+          'http://tiles.habitatseven.work/'+src85+'/{z}/{x}/{y}.png'
+        ],
+        extent: extent,
+        minZoom: 0,
+        maxZoom: 5,
+        tilePixelRatio: 1
+      })
+    });
+
+    this.tileLayer85.set('layer_id', 'tile_layer');
+    this.map.addLayer(this.tileLayer85);
+  }
+
+  this.nameLayer = new ol.layer.Tile({
+    source: new ol.source.XYZ({
+      url: 'http://{s}.basemaps.cartocdn.com/light_only_labels/{z}/{x}/{y}.png',
+      attributions: [new ol.Attribution({ html: ['&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors, &copy; <a href="http://cartodb.com/attributions">CartoDB</a>'] })]
+    })
+  });
+
+  this.nameLayer.set('layer_id', 'name_layer');
+  this.map.addLayer(this.nameLayer);
+
+  this.tileLayer.setZIndex(0);
+  if ( src85 ) { this.tileLayer85.setZIndex(0); }
+  if ( this.statesLayer) { this.statesLayer.setZIndex(4); }
+  if ( this.vectorLayer) { this.vectorLayer.setZIndex(5); }
+  this.nameLayer.setZIndex(6);
+
+  if ( src85 ) {
+    $( "#sliderDiv" ).show();
+    this.setSwipeMap();
+  } else {
+    $( "#sliderDiv" ).hide();
+  }
+
+  if ( replace ) {
+    this.setSlider();
+  }
+
+}
+
+
+
+Variables.prototype.setSwipeMap = function() {
+  var self = this;
+  var swipeVal = null, pos, wrapper;
+
+  $( "#sliderDiv" ).draggable({
+    axis: "x",
+    containment: "#variable-map",
+    scroll: false,
+    drag: function(event,ui) {
+      pos = ui.helper.offset();
+      swipeVal = (pos.left - 20);
+      self.tileLayer.dispatchEvent('change');
+      $(".emissions-low").fadeOut();
+			$(".emissions-high").fadeOut();
+      // self.map.render();
+    },
+    stop: function(event, ui) {
+      pos = ui.helper.offset();
+      swipeVal = (pos.left - 20);
+      self.tileLayer.dispatchEvent('change');
+      $(".emissions-low").fadeIn();
+			$(".emissions-high").fadeIn();
+    }
+  });
+
+  this.tileLayer85.on('precompose', function(event) {
+    var ctx = event.context;
+    var wrapper = $("#variable-map").width();
+    if(swipeVal === null) {
+      pos = $("#sliderDiv").offset(); //ui.helper.offset();
+      swipeVal = (pos.left - 20);
+    }
+    var screenPercent = swipeVal / wrapper;
+		var width = ctx.canvas.width * screenPercent;
+    ctx.save();
+		ctx.beginPath();
+		ctx.rect(width, 0, ctx.canvas.width - width, ctx.canvas.height);
+		ctx.clip();
+  });
+
+  this.tileLayer85.on('postcompose', function(event) {
+    var ctx = event.context;
+    ctx.restore();
+  });
+}
+
+
+
+Variables.prototype.setSlider = function() {
+    var self = this;
+    var year_slider = $('#variable-time-slider');
+
+    var tooltip = $('<span class="tooltip">' + year_slider.attr('data-value') + '</span>').hide();
+
+    var year_min = parseInt($('#year-slider-container').find('.year-min').text());
+    var year_max = parseInt($('#year-slider-container').find('.year-max').text());
+
+    year_slider.slider({
+        range: false,
+        min: year_min,
+        max: year_max,
+        step: 10,
+        value: 2010,
+        slide: function (event, ui) {
+          tooltip.text(ui.value);
+          tooltip.fadeIn(200);
+        },
+        change: function (event, ui) {
+          year_slider.attr('data-value', ui.value);
+        },
+        stop: function (event, ui) {
+          year_slider.attr('data-value', ui.value);
+          self.activeYear = ui.value;
+          self.updateTiledLayer(false);
+        }
+    }).find(".ui-slider-handle").html('<span class="icon icon-arrow-left-right"></span>').append(tooltip);
+
+    $(this).hover(function () {
+        tooltip.fadeIn(200);
+    }, function () {
+        tooltip.fadeOut(100);
+    });
+
+}
 
 
 
