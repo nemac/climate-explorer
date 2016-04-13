@@ -530,7 +530,7 @@
     "name": "Structures",
     "url": "http://services.nationalmap.gov/arcgis/rest/services/structures/MapServer/export",
     "type": "REST",
-    "layers": "0,2,4,9,13",
+    "layers": "",
     "projection": "EPSG:4326",
     "info": {
       "sourceUrl": "https://catalog.data.gov/dataset/usgs-structures-overlay-map-service-from-the-national-map-national-geospatial-data-asset-ngda-",
@@ -638,7 +638,7 @@
     }, {
       "id": "g_a_b",
       "name": "People and Assets Impacted",
-      "layers": [ "abp", "aak", "aam", "aal", "abq", "aai", "aaj", "aaq", "aau", "aav", "abb", "abc", "abm", "abn" ]
+      "layers": [ "abp", "aak", "aam", "aal", "aai", "aaj", "aaq", "aau", "aav", "abb", "abc" ]
     }]
   }, {
     "id": "g_b",
@@ -650,7 +650,7 @@
     }, {
       "id": "g_b_b",
       "name": "People and Assets Impacted",
-      "layers": [ "abp", "aal", "aap", "abl", "abk" ]
+      "layers": [ "abp", "aal", "aap" ]
     }]
   }, {
     "id": "g_c",
@@ -662,7 +662,7 @@
     }, {
       "id": "g_c_b",
       "name": "People and Assets Impacted",
-      "layers": [ "abp", "aal", "abl", "abk", "abv", "aav" ]
+      "layers": [ "abp", "aal", "abv", "aav" ]
     }]
   }, {
     "id": "g_d",
@@ -686,7 +686,7 @@
     }, {
       "id": "g_e_b",
       "name": "People and Assets Impacted",
-      "layers": [ "abu", "abp", "aal", "abr", "abv", "abl" ]
+      "layers": [ "abu", "abp", "aal", "abr", "abv" ]
     }]
   }, {
     "id": "g_f",
@@ -710,7 +710,7 @@
     }, {
       "id": "g_g_b",
       "name": "People and Assets Impacted",
-      "layers": [ "aal", "abm", "abn", "abq", "aai", "aaj", "aaq" ]
+      "layers": [ "aal", "aai", "aaj", "aaq" ]
     }]
   }, {
     "id": "g_h",
@@ -722,7 +722,7 @@
     }, {
       "id": "g_h_b",
       "name": "People and Assets Impacted",
-      "layers": [ "aal", "abm", "abn" ]
+      "layers": [ "aal" ]
     }]
   }]
 }
