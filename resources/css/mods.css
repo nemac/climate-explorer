@@ -294,6 +294,11 @@ input.location-mapper:focus:-ms-input-placeholder {
   z-index: 500;
 }
 
+#map-seasons-container .fs-dropdown-selected.disabled {
+  background:#EEE;
+  cursor:default;
+}
+
 .ol-popup-content {
   min-width: 170px;
   max-height: 910px;

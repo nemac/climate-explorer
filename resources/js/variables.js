@@ -27,41 +27,53 @@ var Variables = function(id) {
   };
 
   this.tilesHistMapping = {
-    'tasmax': '_summer_hist_prism_tmax',
-    'tasmin': '_summer_hist_prism_tmin',
+    'tasmax': '_hist_prism_tmax',
+    'tasmin': '_hist_prism_tmin',
     'days_tmin_blw_0.0': '_annual_hist_days-tmin-blw',
     'days_tmax_abv_35.0': '_annual_hist_days-tmax-abv',
-    'pr': '_summer_hist_prism_pr',
+    'pr': '_hist_prism_pr',
     'cooling_degree_day_18.3': '_annual_hist_cooling-degree-day',
     'heating_degree_day_18.3': '_annual_hist_heating-degree-day'
   };
 
   this.tilesMapping = {
-    'tasmax': '_summer_rcp45_ea_tasmax',
-    'tasmin': '_summer_rcp45_ea_tasmin',
+    'tasmax': '_rcp45_ea_tasmax',
+    'tasmin': '_rcp45_ea_tasmin',
     'days_tmin_blw_0.0': '_annual_rcp45_days-tmin-blw',
     'days_tmax_abv_35.0': '_annual_rcp45_days-tmax-abv',
-    'pr': '_summer_rcp45_ea_pr',
+    'pr': '_rcp45_ea_pr',
     'cooling_degree_day_18.3': '_annual_rcp45_cooling-degree-day',
     'heating_degree_day_18.3': '_annual_rcp45_heating-degree-day'
   };
 
   this.tilesMapping85 = {
-    'tasmax': '_summer_rcp85_ea_tasmax',
-    'tasmin': '_summer_rcp85_ea_tasmin',
+    'tasmax': '_rcp85_ea_tasmax',
+    'tasmin': '_rcp85_ea_tasmin',
     'days_tmin_blw_0.0': '_annual_rcp85_days-tmin-blw',
     'days_tmax_abv_35.0': '_annual_rcp85_days-tmax-abv',
-    'pr': '_summer_rcp85_ea_pr',
+    'pr': '_rcp85_ea_pr',
     'cooling_degree_day_18.3': '_annual_rcp85_cooling-degree-day',
     'heating_degree_day_18.3': '_annual_rcp85_heating-degree-day'
   };
 
   this.selectedVariable = id || 'tasmax';
   this.activeYear = 2010;
+  this.selectedSeason = 'summer';
 
   $(".level-1").html(this.varMapping[ this.selectedVariable ]);
 
   $('#variable-options').val(id).attr('selected', true).change();
+
+  var seasons = ['tasmax', 'tasmin', 'pr'];
+  var season = ( seasons.indexOf(this.selectedVariable) !== -1 ) ? true : null;
+
+  if ( !season ) {
+     $('#map-seasons-container .dropdown').prop('disabled', true);
+     $('#map-seasons-container .fs-dropdown-selected').addClass('disabled');
+  } else {
+    $('#map-seasons-container .dropdown').prop('disabled', false);
+    $('#map-seasons-container .fs-dropdown-selected').removeClass('disabled');
+  }
 
   this.createMap();
   this.wireSearch();
@@ -216,12 +228,35 @@ Variables.prototype.wire = function() {
   });
 
   //var selector
-  $('.fs-dropdown-item').on('click', function(e) {
+  $('#variable-options-container .fs-dropdown-item').on('click', function(e) {
     self.selectedVariable =  $(this).data().value;
     $(".level-1").html(self.varMapping[ self.selectedVariable ]);
     history.pushState(null, "", "?id="+self.selectedVariable);
-    self.updateTiledLayer(false);
+
+    var seasons = ['tasmax', 'tasmin', 'pr'];
+    var season = ( seasons.indexOf(self.selectedVariable) !== -1 ) ? true : null;
+
+    if ( !season ) {
+       $('#map-seasons-container .fs-dropdown-selected').addClass('disabled');
+    } else {
+      $('#map-seasons-container .fs-dropdown-selected').removeClass('disabled');
+    }
+
+    self.updateTiledLayer(true);
     self.updateChart();
+  });
+
+  $('#map-seasons-container .fs-dropdown-selected').on('click', function(e) {
+    if ( $(this).hasClass('disabled') ) {
+      $('#map-seasons-container .fs-dropdown').removeClass('fs-dropdown-open');
+      e.preventDefault();
+      e.stopPropagation();
+    }
+  });
+
+  $('#map-seasons-container .fs-dropdown-item').on('click', function(e) {
+    self.selectedSeason =  $(this).data().value;
+    self.updateTiledLayer(true);
   });
 
   $('#variable-options').on('change', function() {
@@ -610,23 +645,27 @@ Variables.prototype.stationSelected = function(feature, event) {
 Variables.prototype.updateTiledLayer = function(replace) {
   var self = this;
   var histYears = [1950, 1960, 1970, 1980, 1990, 2000];
+  var seasons = ['tasmax', 'tasmin', 'pr'];
+
   var extent = ol.proj.transformExtent([-135,11.3535322866,-56.25,49.5057345956],'EPSG:4326', 'EPSG:3857');
 
   var hist = null;
-  console.log('histYears.indexOf(this.activeYear)', histYears.indexOf(this.activeYear));
+  var season = ( seasons.indexOf(this.selectedVariable) !== -1 ) ? '_'+this.selectedSeason : '';
+
   var src, src85;
   if ( histYears.indexOf(this.activeYear) !== -1 ) {
-    src = this.activeYear + this.tilesHistMapping[ this.selectedVariable ];
+    src = this.activeYear + season + this.tilesHistMapping[ this.selectedVariable ];
     src85 = null;
   } else {
-    src = this.activeYear + this.tilesMapping[ this.selectedVariable ];
-    src85 = this.activeYear + this.tilesMapping85[ this.selectedVariable ];
+    src = this.activeYear +  season + this.tilesMapping[ this.selectedVariable ];
+    src85 = this.activeYear + season + this.tilesMapping85[ this.selectedVariable ];
   }
 
   console.log('update tile layer!', this.activeYear, 'src85', src85);
 
   if ( replace ) {
     if ( this.tileLayer ) {
+      console.log('remove me');
       this.map.removeLayer(this.tileLayer);
       this.tileLayer = null;
     }
