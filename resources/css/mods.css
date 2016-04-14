@@ -290,6 +290,10 @@ input.location-mapper:focus:-ms-input-placeholder {
   background:#F5442D;
 }
 
+#variable-map .ol-popup {
+  z-index: 500;
+}
+
 .ol-popup-content {
   min-width: 170px;
   max-height: 910px;
