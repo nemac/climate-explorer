@@ -380,8 +380,8 @@
      });*/
 
     // zoom
-    $('.zoom-slider').attr('data-value', 4);
-    $('.zoom-slider').slider({
+    $('.page-type-case .zoom-slider').attr('data-value', 4);
+    $('.page-type-case .zoom-slider').slider({
         orientation: "vertical",
         range: false,
         min: 1,

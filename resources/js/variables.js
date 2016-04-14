@@ -166,6 +166,23 @@ Variables.prototype.wireSearch = function() {
 Variables.prototype.wire = function() {
   var self = this;
 
+  $('.page-type-variables .zoom-slider').attr('data-value', 4);
+  $('.page-type-variables .zoom-slider').slider({
+      orientation: "vertical",
+      range: false,
+      min: 1,
+      max: 15,
+      value: 5,
+      slide: function( event, ui ) {
+        $(this).attr('data-value', ui.value);
+        self.setZoom(ui.value);
+      },
+      change: function (event, ui) {
+        $(this).attr('data-value', ui.value);
+        self.setZoom(ui.value);
+      }
+  });
+
   // help icon
   $('#vars-menu .help').click(function (e) {
     e.preventDefault();
@@ -252,6 +269,16 @@ Variables.prototype.wire = function() {
   });
 };
 
+
+
+/*
+* Sets zoom on map
+* Triggered from custom zoom control in global_functions.js
+*
+*/
+Variables.prototype.setZoom = function(zoom) {
+  this.map.getView().setZoom(zoom);
+};
 
 
 
