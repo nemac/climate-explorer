@@ -451,9 +451,8 @@
   }, {
     "id": "abk",
     "name": "Waterways",
-    "url": "http://services.nationalmap.gov/arcgis/rest/services/nhd/MapServer/export",
-    "type": "REST",
-    "layers": "12",
+    "url": "https://services.nationalmap.gov/arcgis/services/nhd/MapServer/WMSServer",
+    "layers": "3",
     "projection": "EPSG:4326",
     "info": {
       "sourceUrl": "https://catalog.data.gov/dataset/usgs-hydrography-nhd-overlay-map-service-from-the-national-map-national-geospatial-data-asset-",
@@ -464,9 +463,8 @@
   }, {
     "id": "abl",
     "name": "Waterbodies",
-    "url": "http://services.nationalmap.gov/arcgis/rest/services/nhd/MapServer/export",
-    "type": "REST",
-    "layers": "11",
+    "url": "https://services.nationalmap.gov/arcgis/services/nhd/MapServer/WMSServer",
+    "layers": "4",
     "projection": "EPSG:4326",
     "info": {
       "sourceUrl": "https://catalog.data.gov/dataset/usgs-hydrography-nhd-overlay-map-service-from-the-national-map-national-geospatial-data-asset-",
@@ -477,9 +475,8 @@
   }, {
     "id": "abm",
     "name": "Freeway System (National)",
-    "url": "http://services.nationalmap.gov/arcgis/rest/services/transportation/MapServer/export",
-    "type": "REST",
-    "layers": "2,11",
+    "url": "https://services.nationalmap.gov/arcgis/services/transportation/MapServer/WMSServer",
+    "layers": "6,14",
     "projection": "EPSG:4326",
     "info": {
       "sourceUrl": "https://catalog.data.gov/dataset/usgs-transportation-overlay-map-service-from-the-national-map",
@@ -490,9 +487,8 @@
   }, {
     "id": "abn",
     "name": "Major Highways (Regional)",
-    "url": "http://services.nationalmap.gov/arcgis/rest/services/transportation/MapServer/export",
-    "type": "REST",
-    "layers": "3,4,12,13",
+    "url": "https://services.nationalmap.gov/arcgis/services/transportation/MapServer/WMSServer",
+    "layers": "5,13",
     "projection": "EPSG:4326",
     "info": {
       "sourceUrl": "https://catalog.data.gov/dataset/usgs-transportation-overlay-map-service-from-the-national-map",
@@ -528,9 +524,8 @@
   }, {
     "id": "abq",
     "name": "Structures",
-    "url": "http://services.nationalmap.gov/arcgis/rest/services/structures/MapServer/export",
-    "type": "REST",
-    "layers": "",
+    "url": "https://services.nationalmap.gov/arcgis/services/structures/MapServer/WMSServer",
+    "layers": "1,2,4,5,7,8,9,10,12,14",
     "projection": "EPSG:4326",
     "info": {
       "sourceUrl": "https://catalog.data.gov/dataset/usgs-structures-overlay-map-service-from-the-national-map-national-geospatial-data-asset-ngda-",
@@ -638,7 +633,7 @@
     }, {
       "id": "g_a_b",
       "name": "People and Assets Impacted",
-      "layers": [ "abp", "aak", "aam", "aal", "aai", "aaj", "aaq", "aau", "aav", "abb", "abc" ]
+      "layers": [ "abp", "aak", "aam", "aal", "aai", "aaj", "aaq", "aau", "aav", "abb", "abc", "abq", "abm", "abn"]
     }]
   }, {
     "id": "g_b",
@@ -650,7 +645,7 @@
     }, {
       "id": "g_b_b",
       "name": "People and Assets Impacted",
-      "layers": [ "abp", "aal", "aap" ]
+      "layers": [ "abp", "aal", "aap", "abl", "abk" ]
     }]
   }, {
     "id": "g_c",
@@ -662,7 +657,7 @@
     }, {
       "id": "g_c_b",
       "name": "People and Assets Impacted",
-      "layers": [ "abp", "aal", "abv", "aav" ]
+      "layers": [ "abp", "aal", "abv", "aav", "abl", "abk" ]
     }]
   }, {
     "id": "g_d",
@@ -686,7 +681,7 @@
     }, {
       "id": "g_e_b",
       "name": "People and Assets Impacted",
-      "layers": [ "abu", "abp", "aal", "abr", "abv" ]
+      "layers": [ "abu", "abp", "aal", "abr", "abv", "abl" ]
     }]
   }, {
     "id": "g_f",
@@ -710,7 +705,7 @@
     }, {
       "id": "g_g_b",
       "name": "People and Assets Impacted",
-      "layers": [ "aal", "aai", "aaj", "aaq" ]
+      "layers": [ "aal", "aai", "aaj", "aaq", "abq", "abm", "abn" ]
     }]
   }, {
     "id": "g_h",
@@ -722,7 +717,7 @@
     }, {
       "id": "g_h_b",
       "name": "People and Assets Impacted",
-      "layers": [ "aal" ]
+      "layers": [ "aal", "abm", "abn" ]
     }]
   }]
 }
