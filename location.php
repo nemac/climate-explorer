@@ -245,7 +245,7 @@
                           </div>
                         </div>
 
-                        <div id="temperature-map" class="data-accordion-tab data-map accent-background">
+                        <div id="temperature-map-container" class="data-accordion-tab data-map accent-background">
                           <header>
                             <h4 class="accent-color">
                               <span class="icon icon-district"></span>
@@ -260,7 +260,7 @@
                               <a href="#" class="download-image"><span class="icon icon-download-image"></span>Image</a>
                               <a href="#" class="download-data"><span class="icon icon-download-chart"></span>Data</a>
                             </div>
-                          </header><div id="map-123" class="data-accordion-content map"></div>
+                          </header><div id="temperature-map" class="data-accordion-content map"></div>
                         </div>
                     </div>
                 </div>
@@ -425,7 +425,7 @@
                         </div>
                       </div>
 
-                        <div id="precipitation-map" class="data-accordion-tab data-map accent-background">
+                        <div id="precipitation-map-container" class="data-accordion-tab data-map accent-background">
                           <header>
                               <h4 class="accent-color">
                                 <span class="icon icon-district"></span>
@@ -439,7 +439,7 @@
                                 <a href="#" class="download-data"><span class="icon icon-download-chart"></span>Data</a>
                               </div>
                           </header>
-                          <div id="map-234" class="data-accordion-content map"></div>
+                          <div id="precipitation-map" class="data-accordion-content map"></div>
                         </div>
                     </div>
                 </div>
@@ -606,7 +606,7 @@
                           </div>
                         </div>
 
-                        <div id="derived-map" class="data-accordion-tab data-map accent-background">
+                        <div id="derived-map-container" class="data-accordion-tab data-map accent-background">
                           <header>
                             <h4 class="accent-color">
                               <span class="icon icon-district"></span>
@@ -621,7 +621,7 @@
                               <a href="#" class="download-data"><span class="icon icon-download-chart"></span>Data</a>
                             </div>
                           </header>
-                          <div id="map-345" class="data-accordion-content map"></div>
+                          <div id="derived-map" class="data-accordion-content map"></div>
                         </div>
                     </div>
                 </div>

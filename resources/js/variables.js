@@ -661,8 +661,6 @@ Variables.prototype.updateTiledLayer = function(replace) {
     src85 = this.activeYear + season + this.tilesMapping85[ this.selectedVariable ];
   }
 
-  console.log('update tile layer!', this.activeYear, 'src85', src85);
-
   if ( replace ) {
     if ( this.tileLayer ) {
       console.log('remove me');

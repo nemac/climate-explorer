@@ -57,7 +57,7 @@
 <?php if (isset($location) && $location != null) { ?>
   <script>
     $(document).ready(function() {
-      variables = new Location(<?php echo "'" . $lat . "'"; ?>, <?php echo "'" . $lon . "'"; ?>);
+      loc = new Location(<?php echo "'" . $lat . "'"; ?>, <?php echo "'" . $lon . "'"; ?>);
     });
   </script>
 <?php } ?>
