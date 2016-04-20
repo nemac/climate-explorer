@@ -50,15 +50,6 @@
           </select>
         </li>
 
-        <li class="select border" id="map-seasons-container">
-          <select class="dropdown" id="map-season">
-            <option value="summer">Summer</option>
-            <option value="fall">Fall</option>
-            <option value="winter">Winter</option>
-            <option value="spring">Spring</option>
-          </select>
-        </li>
-
         <li class="toggle">
           <a href="#info-counties" class="help icon icon-help"></a>
           <label for="counties-overlay-toggle"><span class="text">Data by Counties</span>
@@ -96,6 +87,15 @@
     <div id="viewport">
       <div id="main-content-wrap">
         <!-- <input id="swipe" type="range" style="width: 100%"> -->
+        <div class="select border" id="map-seasons-container">
+          <select class="dropdown" id="map-season">
+            <option value="summer">Summer</option>
+            <option value="fall">Fall</option>
+            <option value="winter">Winter</option>
+            <option value="spring">Spring</option>
+          </select>
+        </div>
+
 
         <div class="moveable" id="sliderDiv" style="top: 0px; left: 50%; position: absolute;">
           <div id="swipeImg" style="position:absolute;width:85px;left:-35px;height:50px;top:45%;display:block; background-image: url(http://tmappsevents.esri.com/website/swipe-sandy-custom/resources/icons/swipe-arrows-stripe.png);">
