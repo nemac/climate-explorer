@@ -93,6 +93,14 @@ input.location-mapper:focus:-ms-input-placeholder {
   background-size: cover;
 }
 
+.location-data-section .data-accordion .data-accordion-tab .data-accordion-content {
+  mix-blend-mode: inherit;
+}
+
+#temperature-map {
+  position:relative;
+}
+
 .page-type-variables .data-accordion-actions {
   margin-top:-15px;
 }
@@ -346,14 +354,24 @@ input.location-mapper:focus:-ms-input-placeholder {
    margin-left: 50px;
 }
 
-.year #variable-time-slider {
+.year #variable-time-slider, .year #precipitation-map-time-slider, .year #temperature-map-time-slider, .year #derived-map-time-slider {
   top: 8px;
   left: 10%;
   width: 80%;
 }
 
-.page-type-variables #main-content-wrap .year {
+.page-type-variables #main-content-wrap .year, .page-type-location .year {
   z-index: 100;
+}
+
+.page-type-location .year {
+  color:#333;
+  left: 25%;
+  font-weight: 600;
+}
+
+.page-type-location .year .icon.icon-arrow-left-right{
+  margin-top: -9px;
 }
 
 .year #variable-time-slider .ui-slider-handle {
@@ -394,13 +412,17 @@ input.location-mapper:focus:-ms-input-placeholder {
   height: 100%;
   padding: 0!important;
   margin: 0;
-  z-index: 100;
+  z-index: 200;
   top: 0;
   left: 0;
   cursor: col-resize;
 }
 
-#swipeImg {
+.page-type-location .moveable, .page-type-location .year {
+  display: none;
+}
+
+#swipeImg, #derived-swipeImg, #temperature-swipeImg, #precipitation-swipeImg {
   position: absolute!important;
   width: 70px!important;
   left: -34px!important;
@@ -430,4 +452,18 @@ input.location-mapper:focus:-ms-input-placeholder {
 
 .emissions-high {
   margin-left: 100px;
+}
+
+#map-seasons-container {
+  width:200px;
+  position:absolute;
+  left:calc(20% + 30px);
+}
+
+.page-type-location .map-seasons-container {
+  width: 200px;
+  position: absolute;
+  left: 18px;
+  z-index: 200;
+  top: 84px;
 }
