@@ -248,6 +248,7 @@ Location.prototype.wire = function() {
     if ( id.match('chart') ) {
       map = id.replace('-chart', '-map-container');
       var mapDiv = id.replace('-chart', '-map');
+      $('#'+id+' .chart').show();
       $('#'+mapDiv).hide();
       $('#'+map+' .moveable').hide();
       $('#'+map+' .map-seasons-container').hide();
@@ -267,15 +268,17 @@ Location.prototype.wire = function() {
       setTimeout(function() {
         $('#'+id+' .year').show().css({'z-index': 200});
 
-        map = id.replace('-chart', '-map-container');
-        $('#'+map+' .moveable').show();
-        $('#'+map+' .map-seasons-container').show();
-        $('#'+map+' .year').show();
+        //id = id.replace('-chart', '-map-container');
+        var c = id.replace('-map-container', '-chart');
+        $('#'+c+' .chart').hide();
+        $('#'+id+' .moveable').show();
+        $('#'+id+' .map-seasons-container').show();
+        $('#'+id+' .year').show();
 
         map = id.replace('-container', '');
         if ( self[ map ] ) self[ map ].updateSize();
 
-      },500);
+      },200);
     }
   });
 
