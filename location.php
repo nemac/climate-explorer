@@ -255,32 +255,33 @@
                               </span>
                             </h4>
 
+                            <div class="select map-seasons-container" id="temperature-map-season">
+                              <select class="dropdown">
+                                <option value="summer">Summer</option>
+                                <option value="fall">Fall</option>
+                                <option value="winter">Winter</option>
+                                <option value="spring">Spring</option>
+                              </select>
+                            </div>
+
                             <div class="data-accordion-actions">
                               <a href="#" class="how-to-read"><span class="icon icon-help"></span>How to read this</a>
                               <a href="#" class="download-image"><span class="icon icon-download-image"></span>Image</a>
                               <a href="#" class="download-data"><span class="icon icon-download-chart"></span>Data</a>
                             </div>
                           </header>
-                          <div class="select border map-seasons-container" id="temperature-map-season">
-                            <select class="dropdown">
-                              <option value="summer">Summer</option>
-                              <option value="fall">Fall</option>
-                              <option value="winter">Winter</option>
-                              <option value="spring">Spring</option>
-                            </select>
-                          </div>
-                          <div class="moveable" id="temperature-mapSliderDiv" style="top: 0px; left: 50%; position: absolute;">
+                          <div class="moveable" id="temperature-mapSliderDiv" style="top: 74px; left: 50%; position: absolute;">
                             <div id="temperature-swipeImg" style="position:absolute;width:85px;left:-35px;height:50px;top:45%;display:block; background-image: url(http://tmappsevents.esri.com/website/swipe-sandy-custom/resources/icons/swipe-arrows-stripe.png);">
                       				<div class="emissions-low">Low Emissions</div>
                       				<div class="emissions-high">High Emissions</div>
                       			</div>
                           </div>
+                          <div id="temperature-map" class=""></div>
                           <div class="year" id="temperature-map-slider-container">
                             <div class="year-label year-min">1950</div>
                             <div class="" id="temperature-map-time-slider" data-min="1950" data-max="2090" data-value="2090"></div>
                             <div class="year-label year-max">2090</div>
                           </div>
-                          <div id="temperature-map" class=""></div>
                         </div>
                     </div>
                 </div>
@@ -454,20 +455,22 @@
                                   <span class="source" id="precip-chart-name">Mean Daily Precipitation</span>
                                 </span>
                               </h4>
+
+                              <div class="select border map-seasons-container" id="precipitation-map-season">
+                                <select class="dropdown">
+                                  <option value="summer">Summer</option>
+                                  <option value="fall">Fall</option>
+                                  <option value="winter">Winter</option>
+                                  <option value="spring">Spring</option>
+                                </select>
+                              </div>
+                              
                               <div class="data-accordion-actions">
                                 <a href="#" class="download-image"><span class="icon icon-download-image"></span>Image</a>
                                 <a href="#" class="download-data"><span class="icon icon-download-chart"></span>Data</a>
                               </div>
                           </header>
-                          <div class="select border map-seasons-container" id="precipitation-map-season">
-                            <select class="dropdown">
-                              <option value="summer">Summer</option>
-                              <option value="fall">Fall</option>
-                              <option value="winter">Winter</option>
-                              <option value="spring">Spring</option>
-                            </select>
-                          </div>
-                          <div class="moveable" id="precipitation-mapSliderDiv" style="top: 0px; left: 50%; position: absolute;">
+                          <div class="moveable" id="precipitation-mapSliderDiv" style="top: 74px; left: 50%; position: absolute;">
                             <div id="precipitation-swipeImg" style="position:absolute;width:85px;left:-35px;height:50px;top:45%;display:block; background-image: url(http://tmappsevents.esri.com/website/swipe-sandy-custom/resources/icons/swipe-arrows-stripe.png);">
                       				<div class="emissions-low">Low Emissions</div>
                       				<div class="emissions-high">High Emissions</div>
@@ -660,7 +663,7 @@
                               <a href="#" class="download-data"><span class="icon icon-download-chart"></span>Data</a>
                             </div>
                           </header>
-                          <div class="moveable" id="derived-mapSliderDiv" style="top: 0px; left: 50%; position: absolute;">
+                          <div class="moveable" id="derived-mapSliderDiv" style="top: 74px; left: 50%; position: absolute;">
                             <div id="derived-swipeImg" style="position:absolute;width:85px;left:-35px;height:50px;top:45%;display:block; background-image: url(http://tmappsevents.esri.com/website/swipe-sandy-custom/resources/icons/swipe-arrows-stripe.png);">
                       				<div class="emissions-low">Low Emissions</div>
                       				<div class="emissions-high">High Emissions</div>
