@@ -247,6 +247,8 @@ Location.prototype.wire = function() {
 
     if ( id.match('chart') ) {
       map = id.replace('-chart', '-map-container');
+      var mapDiv = id.replace('-chart', '-map');
+      $('#'+mapDiv).hide();
       $('#'+map+' .moveable').hide();
       $('#'+map+' .map-seasons-container').hide();
       $('#'+map+' .year').hide();
@@ -254,6 +256,7 @@ Location.prototype.wire = function() {
     } else {
 
       map = id.replace('-container', '');
+      $('#'+map).show();
 
       var h = $('#'+map).parent().height();
       $('#'+map).css({'height': h - 74 - 90 + 'px'});
@@ -265,6 +268,7 @@ Location.prototype.wire = function() {
         $('#'+id+' .year').show().css({'z-index': 200});
 
         map = id.replace('-chart', '-map-container');
+        $('#'+map+' .moveable').show();
         $('#'+map+' .map-seasons-container').show();
         $('#'+map+' .year').show();
 
@@ -273,9 +277,6 @@ Location.prototype.wire = function() {
 
       },500);
     }
-
-    // if ( self["precipitation-map"] ) self["precipitation-map"].updateSize();
-    // if ( self["derived-map"] ) self["derived-map"].updateSize();
   });
 
 
@@ -310,6 +311,14 @@ Location.prototype.wire = function() {
 };
 
 
+
+
+/*
+*
+* Called when a station is selected!
+* Opens popover and populates CHART into that popover for historcal weather data
+*
+*/
 Location.prototype.stationSelected = function(feature, event) {
   var self = this;
 
@@ -328,6 +337,15 @@ Location.prototype.stationSelected = function(feature, event) {
 };
 
 
+
+
+/*
+*
+* Creates tiled layers, both 45 and 85
+* map id required
+* replace / time reset tells us what sort of update this is – new layer or otherwise
+*
+*/
 Location.prototype.updateTiledLayer = function(map, replace, timeReset) {
   var self = this;
   var histYears = [1950, 1960, 1970, 1980, 1990, 2000];
@@ -436,6 +454,13 @@ Location.prototype.updateTiledLayer = function(map, replace, timeReset) {
 };
 
 
+
+/*
+*
+* Map swiper logic!
+* Map ( id ) required, to assign swiper and eventing to correct map
+*
+*/
 Location.prototype.setSwipeMap = function(map) {
   var self = this;
   var swipeVal = null, pos, wrapper;
@@ -485,6 +510,14 @@ Location.prototype.setSwipeMap = function(map) {
 };
 
 
+
+
+/*
+*
+* Handles logic for the time sliders
+* Map ( id )  required to assign slider to correct map
+*
+*/
 Location.prototype.setSlider = function(map) {
     var self = this;
     var year_slider = $('#'+map+'-time-slider');
@@ -511,11 +544,5 @@ Location.prototype.setSlider = function(map) {
           tooltip.fadeOut(200);
         }
     }).find(".ui-slider-handle").html('<span class="icon icon-arrow-left-right"></span>').append(tooltip);
-
-    // $(year_slider).hover(function () {
-    //   tooltip.fadeIn(200);
-    // }, function () {
-    //   tooltip.fadeOut(100);
-    // });
 
 };
