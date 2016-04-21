@@ -275,12 +275,12 @@
                       				<div class="emissions-high">High Emissions</div>
                       			</div>
                           </div>
-                          <div id="temperature-map" class="data-accordion-content map"></div>
                           <div class="year" id="temperature-map-slider-container">
                             <div class="year-label year-min">1950</div>
                             <div class="" id="temperature-map-time-slider" data-min="1950" data-max="2090" data-value="2090"></div>
                             <div class="year-label year-max">2090</div>
                           </div>
+                          <div id="temperature-map" class=""></div>
                         </div>
                     </div>
                 </div>
@@ -473,12 +473,12 @@
                       				<div class="emissions-high">High Emissions</div>
                       			</div>
                           </div>
-                          <div id="precipitation-map" class="data-accordion-content map"></div>
                           <div class="year" id="precipitation-map-year-slider-container">
                             <div class="year-label year-min">1950</div>
                             <div class="" id="precipitation-map-time-slider" data-min="1950" data-max="2090" data-value="2090"></div>
                             <div class="year-label year-max">2090</div>
                           </div>
+                          <div id="precipitation-map" class=""></div>
                         </div>
                     </div>
                 </div>
@@ -666,14 +666,12 @@
                       				<div class="emissions-high">High Emissions</div>
                       			</div>
                           </div>
-                          <div id="derived-map" class="data-accordion-content map"></div>
-
                           <div class="year" id="derived-map-year-slider-container">
                             <div class="year-label year-min">1950</div>
                             <div class="" id="derived-map-time-slider" data-min="1950" data-max="2090" data-value="2090"></div>
                             <div class="year-label year-max">2090</div>
                           </div>
-
+                          <div id="derived-map" class=""></div>
                         </div>
                     </div>
                 </div>

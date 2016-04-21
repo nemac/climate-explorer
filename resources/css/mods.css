@@ -90,15 +90,19 @@ input.location-mapper:focus:-ms-input-placeholder {
 
 .location-data-section .data-accordion .data-accordion-tab.data-map .data-accordion-content {
   background: none;
-  background-size: cover;
+  background-size: inherit;
+}
+
+.location-data-section .data-accordion .data-accordion-tab.open .data-accordion-content {
+    -moz-box-shadow: none;
+    -webkit-box-shadow: none;
+    box-shadow: none;
+    opacity: 1;
+    mix-blend-mode: normal;
 }
 
 .location-data-section .data-accordion .data-accordion-tab .data-accordion-content {
-  mix-blend-mode: inherit;
-}
-
-#temperature-map {
-  position:relative;
+  mix-blend-mode: normal;
 }
 
 .page-type-variables .data-accordion-actions {
@@ -466,4 +470,8 @@ input.location-mapper:focus:-ms-input-placeholder {
   left: 18px;
   z-index: 200;
   top: 84px;
+}
+
+#temperature-map {
+  height:300px;
 }

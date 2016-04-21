@@ -64,17 +64,6 @@ var Variables = function(id) {
 
   $('#variable-options').val(id).attr('selected', true).change();
 
-  var seasons = ['tasmax', 'tasmin', 'pr'];
-  var season = ( seasons.indexOf(this.selectedVariable) !== -1 ) ? true : null;
-
-  if ( !season ) {
-     $('#map-seasons-container .dropdown').prop('disabled', true);
-     $('#map-seasons-container .fs-dropdown-selected').addClass('disabled');
-  } else {
-    $('#map-seasons-container .dropdown').prop('disabled', false);
-    $('#map-seasons-container .fs-dropdown-selected').removeClass('disabled');
-  }
-
   this.createMap();
   this.wireSearch();
 };
@@ -233,26 +222,10 @@ Variables.prototype.wire = function() {
     $(".level-1").html(self.varMapping[ self.selectedVariable ]);
     history.pushState(null, "", "?id="+self.selectedVariable);
 
-    var seasons = ['tasmax', 'tasmin', 'pr'];
-    var season = ( seasons.indexOf(self.selectedVariable) !== -1 ) ? true : null;
-
-    if ( !season ) {
-       $('#map-seasons-container .fs-dropdown-selected').addClass('disabled');
-    } else {
-      $('#map-seasons-container .fs-dropdown-selected').removeClass('disabled');
-    }
-
     self.updateTiledLayer(true);
     self.updateChart();
   });
 
-  $('#map-seasons-container .fs-dropdown-selected').on('click', function(e) {
-    if ( $(this).hasClass('disabled') ) {
-      $('#map-seasons-container .fs-dropdown').removeClass('fs-dropdown-open');
-      e.preventDefault();
-      e.stopPropagation();
-    }
-  });
 
   $('#map-seasons-container .fs-dropdown-item').on('click', function(e) {
     self.selectedSeason =  $(this).data().value;
@@ -651,6 +624,12 @@ Variables.prototype.updateTiledLayer = function(replace) {
 
   var hist = null;
   var season = ( seasons.indexOf(this.selectedVariable) !== -1 ) ? '_'+this.selectedSeason : '';
+
+  if ( season === '' ) {
+     $('#map-seasons-container .fs-dropdown-selected').hide();
+  } else {
+    $('#map-seasons-container .fs-dropdown-selected').show();
+  }
 
   var src, src85;
   if ( histYears.indexOf(this.activeYear) !== -1 ) {

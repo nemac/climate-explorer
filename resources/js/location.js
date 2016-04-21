@@ -1,5 +1,8 @@
 var Location = function(lat, lon) {
 
+  $('#temperature-map-season').hide();
+  $('#precipitation-map-season').hide();
+
   this.tilesHistMapping = {
     'temperature-map': {
       'tasmax': '_hist_prism_tmax',
@@ -59,7 +62,6 @@ var Location = function(lat, lon) {
 
   this.lat = parseFloat(lat) || 37.42;
   this.lon = parseFloat(lon) || -105.21;
-  this.createGraphMaps();
   this.createMap();
   this.wire();
 };
@@ -113,17 +115,18 @@ Location.prototype.createMap = function() {
 *
 *
 */
-Location.prototype.createGraphMaps = function() {
+Location.prototype.createGraphMaps = function(map) {
   var self = this;
 
-  var maps = ['temperature-map', 'precipitation-map', 'derived-map'];
+  //var maps = ['temperature-map', 'precipitation-map', 'derived-map'];
+  if ( self[ map ] ) return;
 
   var view = new ol.View({
     center: ol.proj.transform([this.lon, this.lat], 'EPSG:4326', 'EPSG:3857'),
     zoom: 6
   });
 
-  $.each(maps, function(i, map) {
+  //$.each(maps, function(i, map) {
     self[map] = new ol.Map({
       target: map,
       interactions: ol.interaction.defaults({mouseWheelZoom:false}),
@@ -139,7 +142,7 @@ Location.prototype.createGraphMaps = function() {
     });
     self.updateTiledLayer(map, true);
 
-  });
+  //});
 
 };
 
@@ -214,6 +217,22 @@ Location.prototype.addStations = function() {
 };
 
 
+
+Location.prototype.inView = function isScrolledIntoView(elem) {
+  var $elem = $(elem);
+  var $window = $(window);
+
+  var docViewTop = $window.scrollTop();
+  var docViewBottom = docViewTop + $window.height();
+
+  var elemTop = $elem.offset().top;
+  var elemBottom = elemTop + $elem.height();
+
+  return ((elemBottom <= docViewBottom) && (elemTop >= docViewTop));
+};
+
+
+
 Location.prototype.wire = function() {
   var self = this;
 
@@ -240,15 +259,35 @@ Location.prototype.wire = function() {
 
   $('.data-accordion-tab').on('click', function(e) {
     var id = e.currentTarget.id;
+    var map;
 
-    setTimeout(function() {
-      $('#'+id+' .year').show().css({'z-index': 200});
-    },700);
+    if ( id.match('chart') ) {
+      map = id.replace('-chart', '-map-container');
+      $('#'+map+' .moveable').hide();
+      $('#'+map+' .map-seasons-container').hide();
+      $('#'+map+' .year').hide();
+      return;
+    } else {
 
+      map = id.replace('-container', '');
+      self.createGraphMaps(map);
 
-    self["temperature-map"].updateSize();
-    self["precipitation-map"].updateSize();
-    self["derived-map"].updateSize();
+      setTimeout(function() {
+        $('#'+id+' .year').show().css({'z-index': 200});
+
+        map = id.replace('-chart', '-map-container');
+        $('#'+map+' .moveable').show();
+        $('#'+map+' .map-seasons-container').show();
+        $('#'+map+' .year').show();
+
+        map = id.replace('-container', '');
+        if ( self[ map ] ) self[ map ].updateSize();
+
+      },700);
+    }
+
+    // if ( self["precipitation-map"] ) self["precipitation-map"].updateSize();
+    // if ( self["derived-map"] ) self["derived-map"].updateSize();
   });
 
 
