@@ -1,5 +1,8 @@
 var Location = function(lat, lon) {
 
+  $('#temperature-map-season').hide();
+  $('#precipitation-map-season').hide();
+
   this.tilesHistMapping = {
     'temperature-map': {
       'tasmax': '_hist_prism_tmax',
@@ -54,12 +57,11 @@ var Location = function(lat, lon) {
     'derived-map': 'cooling_degree_day_18.3'
   };
 
-  this.activeYear = 2090;
+  this.activeYear = 2010;
   this.selectedSeason = 'summer';
 
   this.lat = parseFloat(lat) || 37.42;
   this.lon = parseFloat(lon) || -105.21;
-  this.createGraphMaps();
   this.createMap();
   this.wire();
 };
@@ -113,17 +115,18 @@ Location.prototype.createMap = function() {
 *
 *
 */
-Location.prototype.createGraphMaps = function() {
+Location.prototype.createGraphMaps = function(map) {
   var self = this;
 
-  var maps = ['temperature-map', 'precipitation-map', 'derived-map'];
+  //var maps = ['temperature-map', 'precipitation-map', 'derived-map'];
+  if ( self[ map ] ) return;
 
   var view = new ol.View({
     center: ol.proj.transform([this.lon, this.lat], 'EPSG:4326', 'EPSG:3857'),
     zoom: 6
   });
 
-  $.each(maps, function(i, map) {
+  //$.each(maps, function(i, map) {
     self[map] = new ol.Map({
       target: map,
       interactions: ol.interaction.defaults({mouseWheelZoom:false}),
@@ -137,9 +140,9 @@ Location.prototype.createGraphMaps = function() {
         })
       ]
     });
-    self.updateTiledLayer(map, true);
+    self.updateTiledLayer(map, true, true);
 
-  });
+  //});
 
 };
 
@@ -240,15 +243,39 @@ Location.prototype.wire = function() {
 
   $('.data-accordion-tab').on('click', function(e) {
     var id = e.currentTarget.id;
+    var map;
 
-    setTimeout(function() {
-      $('#'+id+' .year').show().css({'z-index': 200});
-    },700);
+    if ( id.match('chart') ) {
+      map = id.replace('-chart', '-map-container');
+      $('#'+map+' .moveable').hide();
+      $('#'+map+' .map-seasons-container').hide();
+      $('#'+map+' .year').hide();
+      return;
+    } else {
 
+      map = id.replace('-container', '');
 
-    self["temperature-map"].updateSize();
-    self["precipitation-map"].updateSize();
-    self["derived-map"].updateSize();
+      var h = $('#'+map).parent().height();
+      $('#'+map).css({'height': h - 74 - 90 + 'px'});
+      $('.moveable').css({'height': h - 74 - 90 + 40 + 'px'});
+
+      self.createGraphMaps(map);
+
+      setTimeout(function() {
+        $('#'+id+' .year').show().css({'z-index': 200});
+
+        map = id.replace('-chart', '-map-container');
+        $('#'+map+' .map-seasons-container').show();
+        $('#'+map+' .year').show();
+
+        map = id.replace('-container', '');
+        if ( self[ map ] ) self[ map ].updateSize();
+
+      },500);
+    }
+
+    // if ( self["precipitation-map"] ) self["precipitation-map"].updateSize();
+    // if ( self["derived-map"] ) self["derived-map"].updateSize();
   });
 
 
@@ -272,12 +299,12 @@ Location.prototype.wire = function() {
 
   $('#precipitation-map-season .fs-dropdown-item').on('click', function(e) {
     self.selectedSeason =  $(this).data().value;
-    self.updateTiledLayer('precipitation-map', true);
+    self.updateTiledLayer('precipitation-map', true, false);
   });
 
   $('#temperature-map-season .fs-dropdown-item').on('click', function(e) {
     self.selectedSeason =  $(this).data().value;
-    self.updateTiledLayer('temperature-map', true);
+    self.updateTiledLayer('temperature-map', true, false);
   });
 
 };
@@ -301,7 +328,7 @@ Location.prototype.stationSelected = function(feature, event) {
 };
 
 
-Location.prototype.updateTiledLayer = function(map, replace) {
+Location.prototype.updateTiledLayer = function(map, replace, timeReset) {
   var self = this;
   var histYears = [1950, 1960, 1970, 1980, 1990, 2000];
   var seasons = ['tasmax', 'tasmin', 'pr'];
@@ -333,11 +360,11 @@ Location.prototype.updateTiledLayer = function(map, replace) {
   }
 
   if ( replace ) {
-    if ( this.tileLayer ) {
+    if ( this[layer] ) {
       this[map].removeLayer(this.tileLayer);
       this.tileLayer = null;
     }
-    if ( this.tileLayer85 ) {
+    if ( this[layer85] ) {
       this[map].removeLayer(this.tileLayer85);
       this.tileLayer85 = null;
     }
@@ -402,7 +429,7 @@ Location.prototype.updateTiledLayer = function(map, replace) {
     $( "#"+map+"SliderDiv" ).hide();
   }
 
-  if ( replace ) {
+  if ( replace && timeReset ) {
     this.setSlider(map);
   }
 
@@ -480,14 +507,15 @@ Location.prototype.setSlider = function(map) {
         stop: function (event, ui) {
           year_slider.attr('data-value', ui.value);
           self.activeYear = ui.value;
-          self.updateTiledLayer(map, false);
+          self.updateTiledLayer(map, true, false);
+          tooltip.fadeOut(200);
         }
     }).find(".ui-slider-handle").html('<span class="icon icon-arrow-left-right"></span>').append(tooltip);
 
-    $(this).hover(function () {
-        tooltip.fadeIn(200);
-    }, function () {
-        tooltip.fadeOut(100);
-    });
+    // $(year_slider).hover(function () {
+    //   tooltip.fadeIn(200);
+    // }, function () {
+    //   tooltip.fadeOut(100);
+    // });
 
 };

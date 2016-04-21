@@ -324,17 +324,17 @@
     });
 
     $('.data-accordion-tab header').click(function () {
-        var parent_tab = $(this).parents('.data-accordion-tab');
-        var parent_accordion = parent_tab.parents('.data-accordion');
 
-        if (!parent_tab.hasClass('open')) {
-            parent_accordion.children('.data-accordion-tab').each(function () {
-                $(this).removeClass('open');
-            });
+      var parent_tab = $(this).parents('.data-accordion-tab');
+      var parent_accordion = parent_tab.parents('.data-accordion');
 
-            parent_tab.addClass('open');
-        }
+      if (!parent_tab.hasClass('open')) {
+        parent_accordion.children('.data-accordion-tab').each(function () {
+            $(this).removeClass('open');
+        });
 
+        parent_tab.addClass('open');
+      }
     });
 
     function accordion_width() {
