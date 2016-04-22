@@ -483,12 +483,24 @@ input.location-mapper:focus:-ms-input-placeholder {
   display: none;
 }
 
-#swipeImg, #derived-swipeImg, #temperature-swipeImg, #precipitation-swipeImg {
+.location-data-section #swipeImg, #derived-swipeImg, #temperature-swipeImg, #precipitation-swipeImg {
   position: absolute!important;
   width: 70px!important;
   left: -34px!important;
   height: 36px!important;
   top: 95%!important;
+  z-index: 90!important;
+  display: block!important;
+  border-radius: 20px!important;
+  background: url(../img/swipe-arrows-stripe.png) center center rgba(34,105,179,0.87)!important;
+}
+
+.page-type-variables #swipeImg {
+  position: absolute!important;
+  width: 70px!important;
+  left: -34px!important;
+  height: 36px!important;
+  top: 50%!important;
   z-index: 90!important;
   display: block!important;
   border-radius: 20px!important;
@@ -515,8 +527,10 @@ input.location-mapper:focus:-ms-input-placeholder {
   margin-left: 100px;
 }
 
-.page-type-location .map-seasons-container {
-
+.page-type-variables #map-seasons-container {
+  width:100px;
+  position: absolute;
+  left: calc(20% + 35px);
 }
 
 .location-data-section .fs-dropdown button {
