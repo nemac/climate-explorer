@@ -174,6 +174,16 @@
                                     <option value="false" selected="selected">Hide</option>
                                     <option value="true">Show</option>
                                 </select>
+                                <label for="hist-mod">Historical Modeled</label>
+                                <select id="hist-mod" class="u-full-width">
+                                    <option value="false" selected="selected">Hide</option>
+                                    <option value="true">Show</option>
+                                </select>
+                                <label for="hist-obs">Historical Obs</label>
+                                <select id="hist-obs" class="u-full-width">
+                                    <option value="false" selected="selected">Hide</option>
+                                    <option value="true">Show</option>
+                                </select>
                             </div>
                         </div>
                         <div class="center">
@@ -223,17 +233,15 @@
                                     <div class="legend-item-line" id="rcp45-line"></div>
                                     Low Emissions Median
                                   </div>
-                                  <div id="historical-range" class="legend-item legend-item-range">
-                                    <div class="legend-item-block" id="historical-block"></div>
+                                  <div id="historical-range" class="legend-item legend-item-range selected">
+                                    <div class="legend-item-block selected" id="historical-block"></div>
                                     Historical (Modelled)
                                   </div>
-                                  <div id="under-baseline-range" class="legend-item legend-item-range">
-                                    <div class="legend-item-block" id="under-baseline-block"></div>
-                                    Observed under baseline
-                                  </div>
-                                  <div id="over-baseline-range" class="legend-item legend-item-range">
-                                    <div class="legend-item-block" id="over-baseline-block"></div>
+                                  <div id="historical-obs" class="legend-item legend-item-range selected">
+                                    <div class="legend-item-line selected" id="over-baseline-block"></div>
                                     Observed over baseline
+                                    <div class="legend-item-line selected" id="under-baseline-block"></div>
+                                    Obs under baseline
                                   </div>
                                 </div>
                               </div>
@@ -377,6 +385,16 @@
                                   <option value="false" selected="selected">Hide</option>
                                   <option value="true">Show</option>
                               </select>
+                              <label for="precip-hist-mod">Historical Modeled</label>
+                              <select id="precip-hist-mod" class="u-full-width">
+                                  <option value="false" selected="selected">Hide</option>
+                                  <option value="true">Show</option>
+                              </select>
+                              <label for="precip-hist-obs">Historical Obs</label>
+                              <select id="precip-hist-obs" class="u-full-width">
+                                  <option value="false" selected="selected">Hide</option>
+                                  <option value="true">Show</option>
+                              </select>
                           </div>
                       </div>
                       <div class="center">
@@ -424,17 +442,15 @@
                                   <div class="legend-item-line" id="preciprcp45-line"></div>
                                   Low Emissions Median
                                 </div>
-                                <div id="historical-range" class="legend-item legend-item-range">
-                                  <div class="legend-item-block" id="historical-block"></div>
+                                <div id="historical-range" class="legend-item legend-item-range selected">
+                                  <div class="legend-item-block selected" id="preciphistorical-block"></div>
                                   Historical (Modelled)
                                 </div>
-                                <div id="under-baseline-range" class="legend-item legend-item-range">
-                                  <div class="legend-item-block" id="under-baseline-block"></div>
-                                  Observed under baseline
-                                </div>
-                                <div id="over-baseline-range" class="legend-item legend-item-range">
-                                  <div class="legend-item-block" id="over-baseline-block"></div>
+                                <div id="precip-historical-obs" class="legend-item legend-item-range selected">
+                                  <div class="legend-item-line selected" id="precipover-baseline-block"></div>
                                   Observed over baseline
+                                  <div class="legend-item-line selected" id="precipunder-baseline-block"></div>
+                                  Obs under baseline
                                 </div>
                               </div>
                             </div>
@@ -464,7 +480,7 @@
                                   <option value="spring">Spring</option>
                                 </select>
                               </div>
-                              
+
                               <div class="data-accordion-actions">
                                 <a href="#" class="download-image"><span class="icon icon-download-image"></span>Image</a>
                                 <a href="#" class="download-data"><span class="icon icon-download-chart"></span>Data</a>
@@ -576,6 +592,16 @@
                                   <option value="false" selected="selected">Hide</option>
                                   <option value="true">Show</option>
                               </select>
+                              <label for="derived-hist-mod">Historical Modeled</label>
+                              <select id="derived-hist-mod" class="u-full-width">
+                                  <option value="false" selected="selected">Hide</option>
+                                  <option value="true">Show</option>
+                              </select>
+                              <label for="derived-hist-obs">Historical Obs</label>
+                              <select id="derived-hist-obs" class="u-full-width">
+                                  <option value="false" selected="selected">Hide</option>
+                                  <option value="true">Show</option>
+                              </select>
                           </div>
                       </div>
                       <div class="center">
@@ -625,17 +651,15 @@
                                   <div class="legend-item-line" id="derivercp45-line"></div>
                                   Low Emissions Median
                                 </div>
-                                <div id="historical-range" class="legend-item legend-item-range">
-                                  <div class="legend-item-block" id="historical-block"></div>
+                                <div id="historical-range" class="legend-item legend-item-range selected">
+                                  <div class="legend-item-block selected" id="derivehistorical-block"></div>
                                   Historical (Modelled)
                                 </div>
-                                <div id="under-baseline-range" class="legend-item legend-item-range">
-                                  <div class="legend-item-block" id="under-baseline-block"></div>
-                                  Observed under baseline
-                                </div>
-                                <div id="over-baseline-range" class="legend-item legend-item-range">
-                                  <div class="legend-item-block" id="over-baseline-block"></div>
+                                <div id="derive-historical-obs" class="legend-item legend-item-range selected">
+                                  <div class="legend-item-line selected" id="deriveover-baseline-block"></div>
                                   Observed over baseline
+                                  <div class="legend-item-line selected" id="deriveunder-baseline-block"></div>
+                                  Obs under baseline
                                 </div>
                               </div>
                             </div>

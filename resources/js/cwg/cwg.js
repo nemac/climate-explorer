@@ -185,10 +185,11 @@ $(document).ready(function() {
         presentation: $('#derived-presentation').val()
       });
     });
+
     $('#median').change(function() {
-        cwg.update({
-            pmedian: $('#median').val()
-        });
+      cwg.update({
+        pmedian: $('#median').val()
+      });
     });
     $('#precip-median').change(function() {
       precipChart.update({
@@ -200,6 +201,42 @@ $(document).ready(function() {
         pmedian: $('#derived-median').val()
       });
     });
+
+
+    $('#hist-mod').change(function() {
+      cwg.update({
+        histmod: $('#hist-mod').val()
+      });
+    });
+    $('#precip-hist-mod').change(function() {
+      precipChart.update({
+        histmod: $('#precip-hist-mod').val()
+      });
+    });
+    $('#derived-hist-mod').change(function() {
+      derivedChart.update({
+        histmod: $('#derived-hist-mod').val()
+      });
+    });
+
+
+    $('#hist-obs').change(function() {
+      cwg.update({
+        histobs: $('#hist-obs').val()
+      });
+    });
+    $('#precip-hist-obs').change(function() {
+      precipChart.update({
+        histobs: $('#precip-hist-obs').val()
+      });
+    });
+    $('#derived-hist-obs').change(function() {
+      derivedChart.update({
+        histobs: $('#derived-hist-obs').val()
+      });
+    });
+
+
     $('#range').change(function() {
         cwg.update({
             hrange: $('#range').val(),
@@ -323,6 +360,52 @@ $(document).ready(function() {
         $('#derived-median').val(median).change();
       } else {
         $('#median').val(median).change();
+      }
+
+
+
+      var histmod = null;
+      switch(true) {
+        case $('#'+pre+'historical-block').hasClass('selected') && $('#historical-block').hasClass('selected'):
+          histmod = 'true';
+          break;
+        case $('#'+pre+'historical-block').hasClass('selected'):
+          histmod = 'true';
+          break;
+        default:
+          histmod = 'false';
+      }
+
+      if ( pre === 'precip' ) {
+        $('#precip-hist-mod').val(histmod).change();
+      } else if ( pre === 'derive' ) {
+        $('#derived-hist-mod').val(histmod).change();
+      } else {
+        $('#hist-mod').val(histmod).change();
+      }
+
+
+      var histobs = null;
+      switch(true) {
+        case $('#'+pre+'over-baseline-block').hasClass('selected') && $('#under-baseline-block').hasClass('selected'):
+          histobs = 'true';
+          break;
+        case $('#'+pre+'over-baseline-block').hasClass('selected'):
+          histobs = 'true';
+          break;
+        case $('#'+pre+'under-baseline-block').hasClass('selected'):
+          histobs = 'true';
+          break;
+        default:
+          histobs = 'false';
+      }
+
+      if ( pre === 'precip' ) {
+        $('#precip-hist-obs').val(histobs).change();
+      } else if ( pre === 'derive' ) {
+        $('#derived-hist-obs').val(histobs).change();
+      } else {
+        $('#hist-obs').val(histobs).change();
       }
 
     });
