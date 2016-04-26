@@ -224,7 +224,7 @@ Variables.prototype.wire = function() {
     $(".level-1").html(self.varMapping[ self.selectedVariable ]);
     history.pushState(null, "", "?id="+self.selectedVariable);
 
-    self.updateTiledLayer(true);
+    self.updateTiledLayer(true, true);
     self.updateChart();
   });
 
@@ -324,6 +324,7 @@ Variables.prototype.addCounties = function() {
   });
 
   this.vectorLayer.set('layer_id', 'counties');
+  this.vectorLayer.setVisible(false);
   self.map.addLayer(this.vectorLayer);
 
 };
@@ -617,7 +618,7 @@ Variables.prototype.stationSelected = function(feature, event) {
 
 
 
-Variables.prototype.updateTiledLayer = function(replace) {
+Variables.prototype.updateTiledLayer = function(replace, preserveTime) {
   var self = this;
   var histYears = [1950, 1960, 1970, 1980, 1990, 2000];
   var seasons = ['tasmax', 'tasmin', 'pr'];
@@ -644,7 +645,6 @@ Variables.prototype.updateTiledLayer = function(replace) {
 
   if ( replace ) {
     if ( this.tileLayer ) {
-      console.log('remove me');
       this.map.removeLayer(this.tileLayer);
       this.tileLayer = null;
     }
@@ -712,7 +712,7 @@ Variables.prototype.updateTiledLayer = function(replace) {
     $( "#sliderDiv" ).hide();
   }
 
-  if ( replace ) {
+  if ( replace && !preserveTime ) {
     this.setSlider();
   }
 
@@ -793,7 +793,7 @@ Variables.prototype.setSlider = function() {
         stop: function (event, ui) {
           year_slider.attr('data-value', ui.value);
           self.activeYear = ui.value;
-          self.updateTiledLayer(false);
+          self.updateTiledLayer(true, true);
         }
     }).find(".ui-slider-handle").html('<span class="icon icon-arrow-left-right"></span>').append(tooltip);
 
