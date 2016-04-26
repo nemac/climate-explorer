@@ -79,7 +79,9 @@ var Variables = function(id) {
 Variables.prototype.createMap = function() {
   var view = new ol.View({
     center: ol.proj.transform([-105.21, 37.42], 'EPSG:4326', 'EPSG:3857'),
-    zoom: 5
+    zoom: 5,
+    minZoom: 5,
+    maxZoom: 12
   });
 
   this.map = new ol.Map({
@@ -171,7 +173,7 @@ Variables.prototype.wire = function() {
   $('.page-type-variables .zoom-slider').slider({
       orientation: "vertical",
       range: false,
-      min: 1,
+      min: 5,
       max: 15,
       value: 5,
       slide: function( event, ui ) {
