@@ -286,15 +286,16 @@ input.location-mapper:focus:-ms-input-placeholder {
   background:#fbb4ab;
 }
 
-.chart-legend .legend-item-block#historical-block {
+.chart-legend .legend-item-block#historical-block, .chart-legend .legend-item-block#preciphistorical-block, .chart-legend .legend-item-block#derivehistorical-block {
   background:#D6D6D6;
 }
 
-.chart-legend .legend-item-block#over-baseline-block {
+.chart-legend .legend-item-line#over-baseline-block, .chart-legend .legend-item-line#precipover-baseline-block, .chart-legend .legend-item-line#deriveover-baseline-block {
   background:#CD6760;
 }
 
-.chart-legend .legend-item-block#under-baseline-block {
+.chart-legend .legend-item-line#under-baseline-block, .chart-legend .legend-item-line#precipunder-baseline-block, .chart-legend .legend-item-line#deriveunder-baseline-block {
+  margin-top:20px;
   background:#6194C8;
 }
 
@@ -368,6 +369,15 @@ input.location-mapper:focus:-ms-input-placeholder {
   z-index: 100;
 }
 
+.page-type-location #location-search {
+  width:300px;
+}
+
+.page-type-location #location-search input {
+  font-size:1.1em;
+  width:100%;
+}
+
 .page-type-location .year {
   color: #FFF;
   font-weight: 600;
@@ -401,6 +411,10 @@ input.location-mapper:focus:-ms-input-placeholder {
 
 .page-type-location .ol-overlaycontainer-stopevent {
   display: none;
+}
+
+.page-type-location #location-station-map .ol-overlaycontainer-stopevent {
+  display: block;
 }
 
 .location-data-section .data-accordion .data-accordion-tab.open header {
