@@ -369,6 +369,15 @@ input.location-mapper:focus:-ms-input-placeholder {
   z-index: 100;
 }
 
+.page-type-location #location-search {
+  width:300px;
+}
+
+.page-type-location #location-search input {
+  font-size:1.1em;
+  width:100%;
+}
+
 .page-type-location .year {
   color: #FFF;
   font-weight: 600;
@@ -402,6 +411,10 @@ input.location-mapper:focus:-ms-input-placeholder {
 
 .page-type-location .ol-overlaycontainer-stopevent {
   display: none;
+}
+
+.page-type-location #location-station-map .ol-overlaycontainer-stopevent {
+  display: block;
 }
 
 .location-data-section .data-accordion .data-accordion-tab.open header {
