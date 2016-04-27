@@ -416,17 +416,15 @@ Variables.prototype.countySelected = function(feature, event) {
           '<div class="legend-item-line" id="rcp45-line"></div>'+
           'Low Emissions Median'+
         '</div>'+
-        '<div id="historical-range" class="legend-item legend-item-range">'+
-          '<div class="legend-item-block" id="historical-block"></div>'+
+        '<div id="historical-range" class="legend-item legend-item-range selected">'+
+          '<div class="legend-item-block selected" id="historical-block"></div>'+
           'Historical (Modelled)'+
         '</div>'+
-        '<div id="under-baseline-range" class="legend-item legend-item-range">'+
-          '<div class="legend-item-block" id="under-baseline-block"></div>'+
-          'Observed under baseline'+
-        '</div>'+
-        '<div id="over-baseline-range" class="legend-item legend-item-range">'+
-          '<div class="legend-item-block" id="over-baseline-block"></div>'+
+        '<div id="historical-obs" class="legend-item legend-item-range selected">'+
+          '<div class="legend-item-line selected" id="over-baseline-block"></div>'+
           'Observed over baseline'+
+          '<div class="legend-item-line selected" id="under-baseline-block"></div>'+
+          'Obs under baseline'+
         '</div>'+
       '</div>'+
       '<div class="range" id="variable-slider">'+
@@ -479,9 +477,39 @@ Variables.prototype.countySelected = function(feature, event) {
           median = 'false';
       }
 
+      var histmod = null;
+      switch(true) {
+        case $('#historical-block').hasClass('selected') && $('#historical-block').hasClass('selected'):
+          histmod = 'true';
+          break;
+        case $('#historical-block').hasClass('selected'):
+          histmod = 'true';
+          break;
+        default:
+          histmod = 'false';
+      }
+
+
+      var histobs = null;
+      switch(true) {
+        case $('#over-baseline-block').hasClass('selected') && $('#under-baseline-block').hasClass('selected'):
+          histobs = 'true';
+          break;
+        case $('#over-baseline-block').hasClass('selected'):
+          histobs = 'true';
+          break;
+        case $('#under-baseline-block').hasClass('selected'):
+          histobs = 'true';
+          break;
+        default:
+          histobs = 'false';
+      }
+
       self.cwg.update({
         pmedian: median,
-        scenario: scenario
+        scenario: scenario,
+        histobs: histobs,
+        histmod: histmod
       });
 
     });
