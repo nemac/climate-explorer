@@ -148,7 +148,81 @@
     }
 
     // home page menu
-
+    
+    $.fn.nav_scroll = function(options, callback) {
+      var settings = $.extend({
+        action: 'open'
+      }, options);
+      
+      var nav_height = $('#main-header').outerHeight();
+      var default_margin = $('#viewport').css('margin-top');
+      
+      var last_y = $('#viewport').scrollTop();
+      
+      $('#viewport').scroll(function() {
+        
+        // scroll position
+        
+        var y = $('#viewport').scrollTop();
+        
+        if (y >= 0) {
+        
+          // scroll distance (up = negative, down = positive)
+          
+          var scroll_distance = y - last_y;
+          
+          // current nav top
+          
+          var nav_position = parseInt($('#main-header').css('top'));
+          var viewport_margin = parseInt($('#viewport').css('margin-top'));
+          
+          if (y < last_y) {
+            
+            // scrolling up
+            
+            if (nav_position >= 0) {
+              new_nav_position = 0;
+              new_viewport_margin = default_margin;
+            } else {
+              new_nav_position = nav_position - scroll_distance;
+              new_viewport_margin = viewport_margin - scroll_distance;
+            }
+            
+          } else {
+            
+            // scrolling down
+            
+            if (nav_position <= -nav_height) {
+              new_nav_position = -nav_height;
+              new_viewport_margin = 0;
+            } else {
+              new_nav_position = nav_position - scroll_distance;
+              new_viewport_margin = viewport_margin - scroll_distance;
+            }
+            
+          }
+          
+          $('#main-header').css('top', new_nav_position + 'px');
+          $('#viewport').css('margin-top', new_viewport_margin + 'px');
+          
+          if ($('#page-nav').hasClass('stuck')) {
+            var page_nav_top = new_viewport_margin + 20;
+            $('#page-nav').css('top', page_nav_top + 'px');
+          }
+          
+          last_y = y;
+        } else {
+          
+          $('#main-header').css('top', '0px');
+          $('#viewport').css('margin-top', '115px');
+          
+        }
+      });
+      
+    }
+    
+    $(document).nav_scroll();
+    
     $('.launch-nav').click(function (e) {
       e.preventDefault();
 

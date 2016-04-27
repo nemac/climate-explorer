@@ -1,4 +1,10 @@
 .page-type-location {
+  #viewport {
+    top: 20px;
+    height: calc(100% - 40px);
+    margin-top: 115px;
+  }
+  
   #main-content-wrap {
     padding: 2%;
     background-repeat: no-repeat;
@@ -104,7 +110,6 @@
   border-top: 3px solid $blue1;
   color: $blue2;
   @include clearfix;
-  @include transition(0.5s);
   
   h4 {
     float: left;
@@ -130,7 +135,7 @@
   }
   
   &.stuck {
-    top: 110px;
+    top: 20px;
     left: 20px;
     width: 100%;
     width: calc(100% - 40px);
@@ -150,7 +155,7 @@
 .location-data-section-wrap {
   padding: 1%;
   border: 10px solid $white;
-  
+  background: transparentize($white, 0.1);
 }
 
 .location-data-section {
@@ -171,9 +176,7 @@
   }
   
   h3 {
-    float: left;
-    width: 30%;
-    margin: 0 1% 0 0;
+    margin: 0 0 10% 0;
     padding: 20px 0 0 0;
     font: 2rem/1em $roboto;
     
