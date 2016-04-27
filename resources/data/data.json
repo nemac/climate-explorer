@@ -2,11 +2,11 @@
   "cases": {
     "arctic": {
       "layers":[
+        "social_vulnerability_index",
+        "population_density",
         "bia_indian_lands",
         "drought",
         "landcover",
-        "social_vulnerability_index",
-        "population_density",
         "weather_stations"
       ]
     },

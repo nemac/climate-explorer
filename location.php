@@ -1,8 +1,11 @@
 <?php
 
+  $location = true;
   $city = $_REQUEST['city'];
   $county = $_REQUEST['county'];
   $fips = $_REQUEST['fips'];
+  $lat = $_REQUEST['lat'];
+  $lon = $_REQUEST['lon'];
 
 ?>
 <!doctype html>
@@ -14,11 +17,13 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
+    <link rel="stylesheet" href="resources/css/ol3-popup.css">
+
     <link rel="stylesheet" media="screen" href="resources/css/screen.css">
     <link rel="stylesheet" media="screen" href="resources/css/mods.css">
 
     <script type="text/javascript" src="./resources/js/jquery.min.js"></script>
-    <script type="text/javascript" src="./resources/js/jquery-ui.min.js"></script>
+    <script src="//code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
 
 </head>
 
@@ -39,7 +44,7 @@
             <div class="splash-text">
                 <h1><?php echo $city ?></h1>
                 <h3><?php echo $county ?></h3>
-                <p>The following provides a summary of the data for the location you have chosen. Explore the summaries or click on the graph or map for more details.</p>
+                <p>Graphs and maps below show observed and modeled data for the County of your selected location. Zoom and pan on the graphs and maps to focus on times or regions of interest.</p>
             </div>
 
             <div id="page-nav">
@@ -49,31 +54,35 @@
                     <li><a href="#location-temperature">Temperature</a></li>
                     <li><a href="#location-precipitation">Precipitation</a></li>
                     <li><a href="#location-derived">Derived</a></li>
+                    <li><a href="#location-stations">Weather Stations</a></li>
                     <li><a href="#location-impacts">Relevant Impacts</a></li>
                 </ul>
             </div>
         </section>
 
         <!-- begin temperature chart and map -->
+
+        <div id="download-panel" class="hidden download-panel">
+          <div class="download-inner">
+            <p>Use the following links to download this graph's data:</p>
+            <ul></ul>
+            <div class="center"><button id="download-dismiss-button">Dismiss</button></div>
+          </div>
+        </div>
+
         <section id="location-temperature" class="location-data-section-wrap">
             <div class="location-data-section">
                 <header>
                   <h3 class="accent-color"><span class="icon icon-temperature"></span>Temperature</h3>
 
                   <div class="data-vars">
-                    <label for="temperature-presentation">Presentation</label>
+                    <label for="temperature-presentation">Display: </label>
 
                     <select id="temperature-presentation" class="dropdown">
-                      <option value="absolute">Absolute</option>
+                      <option value="absolute">Actual</option>
                       <option value="anomaly">Anomaly</option>
                     </select>
 
-                    <label for="temperature-range">Range</label>
-
-                    <select id="temperature-range" class="dropdown">
-                      <option value="minmax" selected="selected">Min-Max</option>
-                      <option value="p1090">10th-90th</option>
-                    </select>
                   </div>
                 </header>
 
@@ -151,7 +160,7 @@
                                 </select>
                             </div>
                             <div class="six columns">
-                                <label for="presentation">Presentation</label>
+                                <label for="presentation">Display: </label>
                                 <select id="presentation" class="u-full-width">
                                     <option value="absolute">Absolute</option>
                                     <option value="anomaly">Anomaly</option>
@@ -160,16 +169,18 @@
                         </div>
                         <div class="row">
                             <div class="six columns">
-                                <label for="range">Range Band</label>
-                                <select id="range" class="u-full-width">
-                                    <option value="minmax" selected="selected">Min-Max</option>
-                                    <option value="p1090">10th-90th</option>
-                                    <!--<option value="both">Both</option>-->
-                                </select>
-                            </div>
-                            <div class="six columns">
                                 <label for="median">Show Medians</label>
                                 <select id="median" class="u-full-width">
+                                    <option value="false" selected="selected">Hide</option>
+                                    <option value="true">Show</option>
+                                </select>
+                                <label for="hist-mod">Historical Modeled</label>
+                                <select id="hist-mod" class="u-full-width">
+                                    <option value="false" selected="selected">Hide</option>
+                                    <option value="true">Show</option>
+                                </select>
+                                <label for="hist-obs">Historical Obs</label>
+                                <select id="hist-obs" class="u-full-width">
                                     <option value="false" selected="selected">Hide</option>
                                     <option value="true">Show</option>
                                 </select>
@@ -179,7 +190,7 @@
                             <button id="download-button">Download Data</button>
                         </div>
                         <div class="center">
-                            <button><a id="download-image-link">Download Image</a></button>
+                          <button><a id="download-image-link-temp">Download Image</a></button>
                         </div>
                     </form>
                 </div>
@@ -192,15 +203,15 @@
                             <h4>
                               <span class="icon icon-emission-scenario"></span>
                               <span class="text">
-                                Chart<span class="full-title">: Chart Title</span>
-                                <span class="source">Source: <a href="#" target="_blank">NOAA, 2014</a></span>
+                                Chart<span class="full-title">: <?php echo $county ?></span>
+                                <span class="source" id="temp-chart-name">Mean Daily Maximum</span>
                               </span>
                             </h4>
 
                             <div class="data-accordion-actions">
                               <a href="#" class="how-to-read"><span class="icon icon-help"></span>How to read this</a>
-                              <a href="#" class="download-image"><span class="icon icon-download-image"></span>Image</a>
-                              <a href="#" class="download-data"><span class="icon icon-download-chart"></span>Data</a>
+                              <a href="#" id="temp-download-image" class="download-image"><span class="icon icon-download-image"></span>Image</a>
+                              <a href="#" id="temp-download-data" class="download-data"><span class="icon icon-download-chart"></span>Data</a>
                             </div>
                           </header>
 
@@ -222,43 +233,63 @@
                                     <div class="legend-item-line" id="rcp45-line"></div>
                                     Low Emissions Median
                                   </div>
-                                  <div id="historical-range" class="legend-item legend-item-range">
-                                    <div class="legend-item-block" id="historical-block"></div>
+                                  <div id="historical-range" class="legend-item legend-item-range selected">
+                                    <div class="legend-item-block selected" id="historical-block"></div>
                                     Historical (Modelled)
                                   </div>
-                                  <div id="under-baseline-range" class="legend-item legend-item-range">
-                                    <div class="legend-item-block" id="under-baseline-block"></div>
-                                    Observed under baseline
-                                  </div>
-                                  <div id="over-baseline-range" class="legend-item legend-item-range">
-                                    <div class="legend-item-block" id="over-baseline-block"></div>
+                                  <div id="historical-obs" class="legend-item legend-item-range selected">
+                                    <div class="legend-item-line selected" id="over-baseline-block"></div>
                                     Observed over baseline
+                                    <div class="legend-item-line selected" id="under-baseline-block"></div>
+                                    Obs under baseline
                                   </div>
                                 </div>
                               </div>
                               <div class="range">
                                   <div id="slider-range"></div>
-                                  <div class="ui-slider-label range-label min">2010</div>
-                                  <div class="ui-slider-label range-label max">2100</div>
+                                  <div class="ui-slider-label range-label min" id="temp-range-low">2010</div>
+                                  <div class="ui-slider-label range-label max" id="temp-range-high">2100</div>
                               </div>
                           </div>
                         </div>
 
-                        <div id="temperature-map" class="data-accordion-tab data-map accent-background">
+                        <div id="temperature-map-container" class="data-accordion-tab data-map accent-background">
                           <header>
                             <h4 class="accent-color">
                               <span class="icon icon-district"></span>
                               <span class="text">
-                                Map<span class="full-title">: Map Title</span>
+                                Map<span class="full-title">: <?php echo $county ?></span>
                                 <span class="source">Source: <a href="#" target="_blank">NOAA, 2014</a></span>
                               </span>
                             </h4>
 
+                            <div class="select map-seasons-container" id="temperature-map-season">
+                              <select class="dropdown">
+                                <option value="summer">Summer</option>
+                                <option value="fall">Fall</option>
+                                <option value="winter">Winter</option>
+                                <option value="spring">Spring</option>
+                              </select>
+                            </div>
+
                             <div class="data-accordion-actions">
+                              <a href="#" class="how-to-read"><span class="icon icon-help"></span>How to read this</a>
                               <a href="#" class="download-image"><span class="icon icon-download-image"></span>Image</a>
                               <a href="#" class="download-data"><span class="icon icon-download-chart"></span>Data</a>
                             </div>
-                          </header><div id="map-123" class="data-accordion-content map"></div>
+                          </header>
+                          <div class="moveable" id="temperature-mapSliderDiv" style="top: 74px; left: 50%; position: absolute;">
+                            <div id="temperature-swipeImg" style="position:absolute;width:85px;left:-35px;height:50px;top:45%;display:block; background-image: url(http://tmappsevents.esri.com/website/swipe-sandy-custom/resources/icons/swipe-arrows-stripe.png);">
+                      				<div class="emissions-low">Low Emissions</div>
+                      				<div class="emissions-high">High Emissions</div>
+                      			</div>
+                          </div>
+                          <div id="temperature-map" class=""></div>
+                          <div class="year" id="temperature-map-slider-container">
+                            <div class="year-label year-min">1950</div>
+                            <div class="" id="temperature-map-time-slider" data-min="1950" data-max="2090" data-value="2090"></div>
+                            <div class="year-label year-max">2090</div>
+                          </div>
                         </div>
                     </div>
                 </div>
@@ -273,16 +304,10 @@
                     <h3 class="accent-color"><span class="icon icon-precipitation"></span>Precipitation</h3>
 
                     <div class="data-vars">
-                        <select id="data-type" class="dropdown">
-                            <option value="projected">Projected</option>
-                            <option value="historical">Historical</option>
-                        </select>
-
-                        <select id="data-season" class="dropdown">
-                            <option value="spring">Spring</option>
-                            <option value="summer">Summer</option>
-                            <option value="autumn">Autumn</option>
-                            <option value="winter">Winter</option>
+                        <label for="precipitation-presentation">Display: </label>
+                        <select id="precipitation-presentation" class="dropdown">
+                          <option value="absolute">Actual</option>
+                          <option value="anomaly">Anomaly</option>
                         </select>
                     </div>
                 </header>
@@ -346,7 +371,7 @@
                               </select>
                           </div>
                           <div class="six columns">
-                              <label for="precip-presentation">Presentation</label>
+                              <label for="precip-presentation">Display: </label>
                               <select id="precip-presentation" class="u-full-width">
                                   <option value="absolute">Absolute</option>
                                   <option value="anomaly">Anomaly</option>
@@ -355,16 +380,18 @@
                       </div>
                       <div class="row">
                           <div class="six columns">
-                              <label for="precip-range">Range Band</label>
-                              <select id="precip-range" class="u-full-width">
-                                  <option value="minmax" selected="selected">Min-Max</option>
-                                  <option value="p1090">10th-90th</option>
-                                  <!--<option value="both">Both</option>-->
-                              </select>
-                          </div>
-                          <div class="six columns">
                               <label for="precip-median">Show Medians</label>
                               <select id="precip-median" class="u-full-width">
+                                  <option value="false" selected="selected">Hide</option>
+                                  <option value="true">Show</option>
+                              </select>
+                              <label for="precip-hist-mod">Historical Modeled</label>
+                              <select id="precip-hist-mod" class="u-full-width">
+                                  <option value="false" selected="selected">Hide</option>
+                                  <option value="true">Show</option>
+                              </select>
+                              <label for="precip-hist-obs">Historical Obs</label>
+                              <select id="precip-hist-obs" class="u-full-width">
                                   <option value="false" selected="selected">Hide</option>
                                   <option value="true">Show</option>
                               </select>
@@ -374,7 +401,7 @@
                           <button id="download-button">Download Data</button>
                       </div>
                       <div class="center">
-                          <button><a id="download-image-link">Download Image</a></button>
+                          <button><a id="download-image-link-precip">Download Image</a></button>
                       </div>
                   </form>
                 </div>
@@ -386,13 +413,14 @@
                             <h4>
                               <span class="icon icon-emission-scenario"></span>
                               <span class="text">
-                                Chart<span class="full-title">: Chart Title</span>
-                                <span class="source">Source: <a href="#" target="_blank">NOAA, 2014</a></span>
+                                Chart<span class="full-title">: <?php echo $county ?></span>
+                                <span class="source" id="precip-chart-name">Mean Daily Precipitation</span>
                               </span>
                             </h4>
                             <div class="data-accordion-actions">
-                              <a href="#" class="download-image"><span class="icon icon-download-image"></span>Image</a>
-                              <a href="#" class="download-data"><span class="icon icon-download-chart"></span>Data</a>
+                              <a href="#" class="how-to-read"><span class="icon icon-help"></span>How to read this</a>
+                              <a href="#" id="download-image-precip" class="download-image"><span class="icon icon-download-image"></span>Image</a>
+                              <a href="#" id="precip-download-data" class="download-data"><span class="icon icon-download-chart"></span>Data</a>
                             </div>
                           </header>
 
@@ -414,43 +442,62 @@
                                   <div class="legend-item-line" id="preciprcp45-line"></div>
                                   Low Emissions Median
                                 </div>
-                                <div id="historical-range" class="legend-item legend-item-range">
-                                  <div class="legend-item-block" id="historical-block"></div>
+                                <div id="historical-range" class="legend-item legend-item-range selected">
+                                  <div class="legend-item-block selected" id="preciphistorical-block"></div>
                                   Historical (Modelled)
                                 </div>
-                                <div id="under-baseline-range" class="legend-item legend-item-range">
-                                  <div class="legend-item-block" id="under-baseline-block"></div>
-                                  Observed under baseline
-                                </div>
-                                <div id="over-baseline-range" class="legend-item legend-item-range">
-                                  <div class="legend-item-block" id="over-baseline-block"></div>
+                                <div id="precip-historical-obs" class="legend-item legend-item-range selected">
+                                  <div class="legend-item-line selected" id="precipover-baseline-block"></div>
                                   Observed over baseline
+                                  <div class="legend-item-line selected" id="precipunder-baseline-block"></div>
+                                  Obs under baseline
                                 </div>
                               </div>
                             </div>
                             <div class="range">
                               <div id="precip-slider-range"></div>
-                              <div class="ui-slider-label range-label min">2010</div>
-                              <div class="ui-slider-label range-label max">2100</div>
+                              <div class="ui-slider-label range-label min" id="precip-range-low">2010</div>
+                              <div class="ui-slider-label range-label max" id="precip-range-high">2100</div>
                             </div>
                         </div>
                       </div>
 
-                        <div id="precipitation-map" class="data-accordion-tab data-map accent-background">
+                        <div id="precipitation-map-container" class="data-accordion-tab data-map accent-background">
                           <header>
                               <h4 class="accent-color">
                                 <span class="icon icon-district"></span>
                                 <span class="text">
-                                  Map<span class="full-title">: Map Title</span>
-                                  <span class="source">Source: <a href="#" target="_blank">NOAA, 2014</a></span>
+                                  Map<span class="full-title">: <?php echo $county ?></span>
+                                  <span class="source" id="precip-chart-name">Mean Daily Precipitation</span>
                                 </span>
                               </h4>
+
+                              <div class="select border map-seasons-container" id="precipitation-map-season">
+                                <select class="dropdown">
+                                  <option value="summer">Summer</option>
+                                  <option value="fall">Fall</option>
+                                  <option value="winter">Winter</option>
+                                  <option value="spring">Spring</option>
+                                </select>
+                              </div>
+
                               <div class="data-accordion-actions">
                                 <a href="#" class="download-image"><span class="icon icon-download-image"></span>Image</a>
                                 <a href="#" class="download-data"><span class="icon icon-download-chart"></span>Data</a>
                               </div>
                           </header>
-                          <div id="map-234" class="data-accordion-content map"></div>
+                          <div class="moveable" id="precipitation-mapSliderDiv" style="top: 74px; left: 50%; position: absolute;">
+                            <div id="precipitation-swipeImg" style="position:absolute;width:85px;left:-35px;height:50px;top:45%;display:block; background-image: url(http://tmappsevents.esri.com/website/swipe-sandy-custom/resources/icons/swipe-arrows-stripe.png);">
+                      				<div class="emissions-low">Low Emissions</div>
+                      				<div class="emissions-high">High Emissions</div>
+                      			</div>
+                          </div>
+                          <div class="year" id="precipitation-map-year-slider-container">
+                            <div class="year-label year-min">1950</div>
+                            <div class="" id="precipitation-map-time-slider" data-min="1950" data-max="2090" data-value="2090"></div>
+                            <div class="year-label year-max">2090</div>
+                          </div>
+                          <div id="precipitation-map" class=""></div>
                         </div>
                     </div>
                 </div>
@@ -466,16 +513,11 @@
                     <h3 class="accent-color"><span class="icon icon-drought"></span>Derived</h3>
 
                     <div class="data-vars">
-                        <select id="data-type" class="dropdown">
-                            <option value="projected">Projected</option>
-                            <option value="historical">Historical</option>
-                        </select>
 
-                        <select id="data-season" class="dropdown">
-                            <option value="spring">Spring</option>
-                            <option value="summer">Summer</option>
-                            <option value="autumn">Autumn</option>
-                            <option value="winter">Winter</option>
+                        <label for="der-presentation">Display: </label>
+                        <select id="der-presentation" class="dropdown">
+                          <option value="absolute">Actual</option>
+                          <option value="anomaly">Anomaly</option>
                         </select>
                     </div>
                 </header>
@@ -536,7 +578,7 @@
                               </select>
                           </div>
                           <div class="six columns">
-                              <label for="derived-presentation">Presentation</label>
+                              <label for="derived-presentation">Display: </label>
                               <select id="derived-presentation" class="u-full-width">
                                   <option value="absolute">Absolute</option>
                                   <option value="anomaly">Anomaly</option>
@@ -545,20 +587,28 @@
                       </div>
                       <div class="row">
                           <div class="six columns">
-                              <label for="derived-range">Range Band</label>
-                              <select id="derived-range" class="u-full-width">
-                                  <option value="minmax" selected="selected">Min-Max</option>
-                                  <option value="p1090">10th-90th</option>
-                                  <!--<option value="both">Both</option>-->
-                              </select>
-                          </div>
-                          <div class="six columns">
                               <label for="derived-median">Show Medians</label>
                               <select id="derived-median" class="u-full-width">
                                   <option value="false" selected="selected">Hide</option>
                                   <option value="true">Show</option>
                               </select>
+                              <label for="derived-hist-mod">Historical Modeled</label>
+                              <select id="derived-hist-mod" class="u-full-width">
+                                  <option value="false" selected="selected">Hide</option>
+                                  <option value="true">Show</option>
+                              </select>
+                              <label for="derived-hist-obs">Historical Obs</label>
+                              <select id="derived-hist-obs" class="u-full-width">
+                                  <option value="false" selected="selected">Hide</option>
+                                  <option value="true">Show</option>
+                              </select>
                           </div>
+                      </div>
+                      <div class="center">
+                          <button id="download-button">Download Data</button>
+                      </div>
+                      <div class="center">
+                          <button><a id="download-image-link-derived">Download Image</a></button>
                       </div>
                   </form>
                 </div>
@@ -571,14 +621,15 @@
                             <h4>
                               <span class="icon icon-emission-scenario"></span>
                               <span class="text">
-                                Chart<span class="full-title">: Chart Title</span>
-                                <span class="source">Source: <a href="#" target="_blank">NOAA, 2014</a></span>
+                                Chart<span class="full-title">: <?php echo $county ?></span>
+                                <span class="source" id="derived-chart-name">Heating Degree Days</span>
                               </span>
                             </h4>
 
                             <div class="data-accordion-actions">
-                              <a href="#" class="download-image"><span class="icon icon-download-image"></span>Image</a>
-                              <a href="#" class="download-data"><span class="icon icon-download-chart"></span>Data</a>
+                              <a href="#" class="how-to-read"><span class="icon icon-help"></span>How to read this</a>
+                              <a href="#" id="download-image-derived" class="download-image"><span class="icon icon-download-image"></span>Image</a>
+                              <a href="#" id="derived-download-data" class="download-data"><span class="icon icon-download-chart"></span>Data</a>
                             </div>
                           </header>
 
@@ -600,17 +651,15 @@
                                   <div class="legend-item-line" id="derivercp45-line"></div>
                                   Low Emissions Median
                                 </div>
-                                <div id="historical-range" class="legend-item legend-item-range">
-                                  <div class="legend-item-block" id="historical-block"></div>
+                                <div id="historical-range" class="legend-item legend-item-range selected">
+                                  <div class="legend-item-block selected" id="derivehistorical-block"></div>
                                   Historical (Modelled)
                                 </div>
-                                <div id="under-baseline-range" class="legend-item legend-item-range">
-                                  <div class="legend-item-block" id="under-baseline-block"></div>
-                                  Observed under baseline
-                                </div>
-                                <div id="over-baseline-range" class="legend-item legend-item-range">
-                                  <div class="legend-item-block" id="over-baseline-block"></div>
+                                <div id="derive-historical-obs" class="legend-item legend-item-range selected">
+                                  <div class="legend-item-line selected" id="deriveover-baseline-block"></div>
                                   Observed over baseline
+                                  <div class="legend-item-line selected" id="deriveunder-baseline-block"></div>
+                                  Obs under baseline
                                 </div>
                               </div>
                             </div>
@@ -623,12 +672,12 @@
                           </div>
                         </div>
 
-                        <div id="derived-map" class="data-accordion-tab data-map accent-background">
+                        <div id="derived-map-container" class="data-accordion-tab data-map accent-background">
                           <header>
                             <h4 class="accent-color">
                               <span class="icon icon-district"></span>
                               <span class="text">
-                                Map<span class="full-title">: Map Title</span>
+                                Map<span class="full-title">: <?php echo $county ?></span>
                                 <span class="source">Source: <a href="#" target="_blank">NOAA, 2014</a></span>
                               </span>
                             </h4>
@@ -638,12 +687,36 @@
                               <a href="#" class="download-data"><span class="icon icon-download-chart"></span>Data</a>
                             </div>
                           </header>
-                          <div id="map-345" class="data-accordion-content map"></div>
+                          <div class="moveable" id="derived-mapSliderDiv" style="top: 74px; left: 50%; position: absolute;">
+                            <div id="derived-swipeImg" style="position:absolute;width:85px;left:-35px;height:50px;top:45%;display:block; background-image: url(http://tmappsevents.esri.com/website/swipe-sandy-custom/resources/icons/swipe-arrows-stripe.png);">
+                      				<div class="emissions-low">Low Emissions</div>
+                      				<div class="emissions-high">High Emissions</div>
+                      			</div>
+                          </div>
+                          <div class="year" id="derived-map-year-slider-container">
+                            <div class="year-label year-min">1950</div>
+                            <div class="" id="derived-map-time-slider" data-min="1950" data-max="2090" data-value="2090"></div>
+                            <div class="year-label year-max">2090</div>
+                          </div>
+                          <div id="derived-map" class=""></div>
                         </div>
                     </div>
                 </div>
             </div>
         </section>
+
+
+        <!-- begin precipitation chart and map -->
+        <section id="location-stations" class="location-data-section-wrap">
+          <div class="location-data-section">
+            <header>
+              <h3 class="accent-color"><span class="icon icon-temperature"></span>Weather Stations</h3>
+            </header>
+          </div>
+          <div id="location-station-map"></div>
+        </section>
+    <!-- end precip chart and map -->
+
 
         <section id="location-impacts" class="impacts-list">
             <h2>Relevant Impacts</h2>

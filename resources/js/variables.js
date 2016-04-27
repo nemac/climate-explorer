@@ -1,7 +1,69 @@
-var Variables = function(page) {
+var Variables = function(id) {
   // this.page = page;
   // this.subLayers = {};
-  this.selectedVariable = 'tasmax';
+  switch(true) {
+    case (id === 'days_tmax_abv_35'):
+      id = 'days_tmax_abv_35.0';
+      break;
+    case (id === 'days_tmin_blw_0'):
+      id = 'days_tmin_blw_0.0';
+      break;
+    case (id === 'heating_degree_day_18'):
+      id = 'heating_degree_day_18.3';
+      break;
+    case (id === 'cooling_degree_day_18'):
+      id = 'cooling_degree_day_18.3';
+      break;
+  }
+
+  this.varMapping = {
+    'tasmax': 'Mean Daily Maximum',
+    'tasmin': 'Mean Daily Minimum',
+    'days_tmin_blw_0.0': 'Days below 32&deg; F',
+    'days_tmax_abv_35.0': 'Days over 95&deg; F',
+    'pr': 'Mean Daily Precipitation',
+    'cooling_degree_day_18.3': 'Cooling Degree Days',
+    'heating_degree_day_18.3': 'Heating Degree Days'
+  };
+
+  this.tilesHistMapping = {
+    'tasmax': '_hist_prism_tmax',
+    'tasmin': '_hist_prism_tmin',
+    'days_tmin_blw_0.0': '_annual_hist_days-tmin-blw',
+    'days_tmax_abv_35.0': '_annual_hist_days-tmax-abv',
+    'pr': '_hist_prism_pr',
+    'cooling_degree_day_18.3': '_annual_hist_cooling-degree-day',
+    'heating_degree_day_18.3': '_annual_hist_heating-degree-day'
+  };
+
+  this.tilesMapping = {
+    'tasmax': '_rcp45_ea_tasmax',
+    'tasmin': '_rcp45_ea_tasmin',
+    'days_tmin_blw_0.0': '_annual_rcp45_days-tmin-blw',
+    'days_tmax_abv_35.0': '_annual_rcp45_days-tmax-abv',
+    'pr': '_rcp45_ea_pr',
+    'cooling_degree_day_18.3': '_annual_rcp45_cooling-degree-day',
+    'heating_degree_day_18.3': '_annual_rcp45_heating-degree-day'
+  };
+
+  this.tilesMapping85 = {
+    'tasmax': '_rcp85_ea_tasmax',
+    'tasmin': '_rcp85_ea_tasmin',
+    'days_tmin_blw_0.0': '_annual_rcp85_days-tmin-blw',
+    'days_tmax_abv_35.0': '_annual_rcp85_days-tmax-abv',
+    'pr': '_rcp85_ea_pr',
+    'cooling_degree_day_18.3': '_annual_rcp85_cooling-degree-day',
+    'heating_degree_day_18.3': '_annual_rcp85_heating-degree-day'
+  };
+
+  this.selectedVariable = id || 'tasmax';
+  this.activeYear = 2010;
+  this.selectedSeason = 'summer';
+
+  $(".level-1").html(this.varMapping[ this.selectedVariable ]);
+
+  $('#variable-options').val(id).attr('selected', true).change();
+
   this.createMap();
   this.wireSearch();
 };
@@ -17,14 +79,19 @@ var Variables = function(page) {
 Variables.prototype.createMap = function() {
   var view = new ol.View({
     center: ol.proj.transform([-105.21, 37.42], 'EPSG:4326', 'EPSG:3857'),
-    zoom: 5
+    zoom: 5,
+    minZoom: 5,
+    maxZoom: 12
   });
 
   this.map = new ol.Map({
     target: 'variable-map',
     layers: [
       new ol.layer.Tile({
-        source: new ol.source.MapQuest({layer: 'osm'})
+        source: new ol.source.XYZ({
+          url: 'http://{s}.basemaps.cartocdn.com/light_nolabels/{z}/{x}/{y}.png',
+          attributions: [new ol.Attribution({ html: ['&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors, &copy; <a href="http://cartodb.com/attributions">CartoDB</a>'] })]
+        })
       })
     ],
     view: view
@@ -34,6 +101,7 @@ Variables.prototype.createMap = function() {
   this.map.addOverlay(this.popup);
 
   //add layers to map and wire events
+  this.updateTiledLayer(true);
   this.addCounties();
   this.addStates();
   this.addStations();
@@ -101,6 +169,23 @@ Variables.prototype.wireSearch = function() {
 Variables.prototype.wire = function() {
   var self = this;
 
+  $('.page-type-variables .zoom-slider').attr('data-value', 4);
+  $('.page-type-variables .zoom-slider').slider({
+      orientation: "vertical",
+      range: false,
+      min: 5,
+      max: 15,
+      value: 5,
+      slide: function( event, ui ) {
+        $(this).attr('data-value', ui.value);
+        self.setZoom(ui.value);
+      },
+      change: function (event, ui) {
+        $(this).attr('data-value', ui.value);
+        self.setZoom(ui.value);
+      }
+  });
+
   // help icon
   $('#vars-menu .help').click(function (e) {
     e.preventDefault();
@@ -134,9 +219,23 @@ Variables.prototype.wire = function() {
   });
 
   //var selector
-  $('.fs-dropdown-item').on('click', function(e) {
+  $('#variable-options-container .fs-dropdown-item').on('click', function(e) {
     self.selectedVariable =  $(this).data().value;
+    $(".level-1").html(self.varMapping[ self.selectedVariable ]);
+    history.pushState(null, "", "?id="+self.selectedVariable);
+
+    self.updateTiledLayer(true, true);
     self.updateChart();
+  });
+
+
+  $('#map-seasons-container .fs-dropdown-item').on('click', function(e) {
+    self.selectedSeason =  $(this).data().value;
+    self.updateTiledLayer(true);
+  });
+
+  $('#variable-options').on('change', function() {
+    $("#chart-name").html( $('.fs-dropdown-selected').html() );
   });
 
   //map click selector
@@ -182,6 +281,16 @@ Variables.prototype.wire = function() {
 
 
 
+/*
+* Sets zoom on map
+* Triggered from custom zoom control in global_functions.js
+*
+*/
+Variables.prototype.setZoom = function(zoom) {
+  this.map.getView().setZoom(zoom);
+};
+
+
 
 /*
 *
@@ -195,7 +304,7 @@ Variables.prototype.addCounties = function() {
 
     return [new ol.style.Style({
       fill: new ol.style.Fill({
-        color: 'rgba(255, 255, 255, 0.4)'
+        color: 'rgba(255, 255, 255, 0.1)'
       }),
       stroke: new ol.style.Stroke({
         color: '#2980b9',
@@ -215,6 +324,7 @@ Variables.prototype.addCounties = function() {
   });
 
   this.vectorLayer.set('layer_id', 'counties');
+  this.vectorLayer.setVisible(false);
   self.map.addLayer(this.vectorLayer);
 
 };
@@ -244,7 +354,7 @@ Variables.prototype.addStates = function() {
 
   };
 
-  this.vectorLayer = new ol.layer.Vector({
+  this.statesLayer = new ol.layer.Vector({
     title: 'added Layer',
     source: new ol.source.Vector({
        url: 'resources/data/states.json',
@@ -253,8 +363,8 @@ Variables.prototype.addStates = function() {
     style: style
   });
 
-  this.vectorLayer.set('layer_id', 'states');
-  self.map.addLayer(this.vectorLayer);
+  this.statesLayer.set('layer_id', 'states');
+  this.map.addLayer(this.statesLayer);
 
 };
 
@@ -263,7 +373,7 @@ Variables.prototype.addStates = function() {
 
 /*
 *
-* get counties geojson and add to map
+* get stations and add to map
 *
 */
 Variables.prototype.addStations = function() {
@@ -343,7 +453,15 @@ Variables.prototype.countySelected = function(feature, event) {
   if (feature) {
     var props = feature.getProperties();
     var fips = props.STATE + props.COUNTY;
-    var html = '<span>'+props.NAME+' County</span>' +
+    var lonlat = ol.proj.transform(event.mapBrowserEvent.coordinate, 'EPSG:3857', 'EPSG:4326');
+    var lon = lonlat[0];
+    var lat = lonlat[1];
+    var state = this.stateFips[ props.STATE ];
+
+    var html = '<span class="text">'+
+          'Chart<span class="full-title">: <a href="location.php?county='+props.NAME+'+County&city='+props.NAME+', '+state+'&fips='+fips+'&lat='+lat+'&lon='+lon+'">'+props.NAME+' County</a></span><br />'+
+          '<span class="source" id="chart-name">'+$('.fs-dropdown-selected').html()+'</span>'+
+        '</span>' +
         '<div class="data-accordion-actions">' +
           '<a href="#" class="how-to-read"><span class="icon icon-help"></span>How to read this</a>' +
           '<a href="#" class="download-image"><span class="icon icon-download-image"></span>Image</a>' +
@@ -378,6 +496,11 @@ Variables.prototype.countySelected = function(feature, event) {
           '<div class="legend-item-block" id="over-baseline-block"></div>'+
           'Observed over baseline'+
         '</div>'+
+      '</div>'+
+      '<div class="range" id="variable-slider">'+
+        '<div id="slider-range"></div>'+
+        '<div class="ui-slider-label range-label min" id="range-low">2010</div>'+
+        '<div class="ui-slider-label range-label max" id="range-high">2100</div>'+
       '</div>';
     this.popup.show(event.mapBrowserEvent.coordinate, html);
 
@@ -424,12 +547,46 @@ Variables.prototype.countySelected = function(feature, event) {
           median = 'false';
       }
 
-      console.log('update me!', median);
       self.cwg.update({
         pmedian: median,
         scenario: scenario
       });
 
+    });
+
+    $('.download-image').click(function() {
+      self.cwg.downloadImage(this, 'graph.png');
+    });
+
+    $('.download-data').click(function(e) {
+      var $ul = $('#download-panel').find('ul');
+      $ul.empty();
+      var dataurls = self.cwg.dataurls();
+      if (dataurls.hist_obs) {
+          $ul.append($("<li><a href='"+dataurls.hist_obs+"'>Observed Data</a></li>"));
+      }
+      if (dataurls.hist_mod) {
+          $ul.append($("<li><a href='"+dataurls.hist_mod+"'>Historical Modeled Data</a></li>"));
+      }
+      if (dataurls.proj_mod) {
+          $ul.append($("<li><a href='"+dataurls.proj_mod+"'>Projected Modeled Data</a></li>"));
+      }
+      $('#download-panel').removeClass("hidden");
+
+    });
+
+    $('#download-dismiss-button').click(function() {
+      $('#download-panel').addClass("hidden");
+    });
+
+    $("#slider-range").slider({
+      range: true,
+      min: 1950,
+      max: 2099,
+      values: [ 1950, 2099 ],
+      slide: function( event, ui ) {
+        return self.cwg.setXRange(ui.values[0], ui.values[1]);
+      }
     });
 
   } else {
@@ -447,7 +604,8 @@ Variables.prototype.stationSelected = function(feature, event) {
   if (feature) {
     var props = feature.getProperties();
     var html = '<div>Station: '+props.name+'<br /></div>' +
-      '<div id="multi-chart" style="width:500px; height:300px"></div>';
+      '<div id="multi-chart" style="width:500px; height:300px"></div>'+
+      '<div id="multi-precip-chart" style="width:500px; height:300px"></div>';
     this.popup.show(event.mapBrowserEvent.coordinate, html);
 
     this.chart = new ChartBuilder(props);
@@ -456,6 +614,196 @@ Variables.prototype.stationSelected = function(feature, event) {
   }
 
 };
+
+
+
+
+Variables.prototype.updateTiledLayer = function(replace, preserveTime) {
+  var self = this;
+  var histYears = [1950, 1960, 1970, 1980, 1990, 2000];
+  var seasons = ['tasmax', 'tasmin', 'pr'];
+
+  var extent = ol.proj.transformExtent([-135,11.3535322866,-56.25,49.5057345956],'EPSG:4326', 'EPSG:3857');
+
+  var hist = null;
+  var season = ( seasons.indexOf(this.selectedVariable) !== -1 ) ? '_'+this.selectedSeason : '';
+
+  if ( season === '' ) {
+     $('#map-seasons-container .fs-dropdown-selected').hide();
+  } else {
+    $('#map-seasons-container .fs-dropdown-selected').show();
+  }
+
+  var src, src85;
+  if ( histYears.indexOf(this.activeYear) !== -1 ) {
+    src = this.activeYear + season + this.tilesHistMapping[ this.selectedVariable ];
+    src85 = null;
+  } else {
+    src = this.activeYear +  season + this.tilesMapping[ this.selectedVariable ];
+    src85 = this.activeYear + season + this.tilesMapping85[ this.selectedVariable ];
+  }
+
+  if ( replace ) {
+    if ( this.tileLayer ) {
+      this.map.removeLayer(this.tileLayer);
+      this.tileLayer = null;
+    }
+    if ( this.tileLayer85 ) {
+      this.map.removeLayer(this.tileLayer85);
+      this.tileLayer85 = null;
+    }
+  }
+
+
+  //rcp45 OR historical
+  this.tileLayer = new ol.layer.Tile({
+    source: new ol.source.XYZ({
+      urls:[
+        'http://tiles.habitatseven.work/'+src+'/{z}/{x}/{y}.png'
+      ],
+      extent: extent,
+      minZoom: 0,
+      maxZoom: 5,
+      tilePixelRatio: 1
+    })
+  });
+
+  this.tileLayer.set('layer_id', 'tile_layer');
+  this.map.addLayer(this.tileLayer);
+
+  if ( src85 ) {
+    //rcp85
+    this.tileLayer85 = new ol.layer.Tile({
+      source: new ol.source.XYZ({
+        urls:[
+          'http://tiles.habitatseven.work/'+src85+'/{z}/{x}/{y}.png'
+        ],
+        extent: extent,
+        minZoom: 0,
+        maxZoom: 5,
+        tilePixelRatio: 1
+      })
+    });
+
+    this.tileLayer85.set('layer_id', 'tile_layer');
+    this.map.addLayer(this.tileLayer85);
+  }
+
+  this.nameLayer = new ol.layer.Tile({
+    source: new ol.source.XYZ({
+      url: 'http://{s}.basemaps.cartocdn.com/light_only_labels/{z}/{x}/{y}.png',
+      attributions: [new ol.Attribution({ html: ['&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors, &copy; <a href="http://cartodb.com/attributions">CartoDB</a>'] })]
+    })
+  });
+
+  this.nameLayer.set('layer_id', 'name_layer');
+  this.map.addLayer(this.nameLayer);
+
+  this.tileLayer.setZIndex(0);
+  if ( src85 ) { this.tileLayer85.setZIndex(0); }
+  if ( this.statesLayer) { this.statesLayer.setZIndex(4); }
+  if ( this.vectorLayer) { this.vectorLayer.setZIndex(5); }
+  this.nameLayer.setZIndex(6);
+
+  if ( src85 ) {
+    $( "#sliderDiv" ).show();
+    this.setSwipeMap();
+  } else {
+    $( "#sliderDiv" ).hide();
+  }
+
+  if ( replace && !preserveTime ) {
+    this.setSlider();
+  }
+
+}
+
+
+
+Variables.prototype.setSwipeMap = function() {
+  var self = this;
+  var swipeVal = null, pos, wrapper;
+
+  $( "#sliderDiv" ).draggable({
+    axis: "x",
+    containment: "#variable-map",
+    scroll: false,
+    drag: function(event,ui) {
+      pos = ui.helper.offset();
+      swipeVal = (pos.left - 20);
+      self.tileLayer.dispatchEvent('change');
+      $(".emissions-low").fadeOut();
+			$(".emissions-high").fadeOut();
+      // self.map.render();
+    },
+    stop: function(event, ui) {
+      pos = ui.helper.offset();
+      swipeVal = (pos.left - 20);
+      self.tileLayer.dispatchEvent('change');
+      $(".emissions-low").fadeIn();
+			$(".emissions-high").fadeIn();
+    }
+  });
+
+  this.tileLayer85.on('precompose', function(event) {
+    var ctx = event.context;
+    var wrapper = $("#variable-map").width();
+    if(swipeVal === null) {
+      pos = $("#sliderDiv").offset(); //ui.helper.offset();
+      swipeVal = (pos.left - 20);
+    }
+    var screenPercent = swipeVal / wrapper;
+		var width = ctx.canvas.width * screenPercent;
+    ctx.save();
+		ctx.beginPath();
+		ctx.rect(width, 0, ctx.canvas.width - width, ctx.canvas.height);
+		ctx.clip();
+  });
+
+  this.tileLayer85.on('postcompose', function(event) {
+    var ctx = event.context;
+    ctx.restore();
+  });
+}
+
+
+
+Variables.prototype.setSlider = function() {
+    var self = this;
+    var year_slider = $('#variable-time-slider');
+
+    var tooltip = $('<span class="tooltip">' + year_slider.attr('data-value') + '</span>').hide();
+
+    var year_min = parseInt($('#year-slider-container').find('.year-min').text());
+    var year_max = parseInt($('#year-slider-container').find('.year-max').text());
+
+    year_slider.slider({
+        range: false,
+        min: year_min,
+        max: year_max,
+        step: 10,
+        value: 2010,
+        slide: function (event, ui) {
+          tooltip.text(ui.value);
+          tooltip.fadeIn(200);
+        },
+        change: function (event, ui) {
+          year_slider.attr('data-value', ui.value);
+        },
+        stop: function (event, ui) {
+          year_slider.attr('data-value', ui.value);
+          self.activeYear = ui.value;
+          self.updateTiledLayer(true, true);
+        }
+    }).find(".ui-slider-handle").html('<span class="icon icon-arrow-left-right"></span>').append(tooltip);
+
+    $(this).hover(function () {
+        tooltip.fadeIn(200);
+    }, function () {
+        tooltip.fadeOut(100);
+    });
+
+}
 
 
 
@@ -472,3 +820,63 @@ Variables.prototype.updateChart = function() {
   }
 
 };
+
+
+
+Variables.prototype.stateFips = {
+  "02": "AK",
+  "01": "AL",
+  "05": "AR",
+  "60": "AS",
+  "04": "AZ",
+  "06": "CA",
+  "08": "CO",
+  "09": "CT",
+  "11": "DC",
+  "10": "DE",
+  "12": "FL",
+  "13": "GA",
+  "66": "GU",
+  "15": "HI",
+  "19": "IA",
+  "16": "ID",
+  "17": "IL",
+  "18": "IN",
+  "20": "KS",
+  "21": "KY",
+  "22": "LA",
+  "25": "MA",
+  "24": "MD",
+  "23": "ME",
+  "26": "MI",
+  "27": "MN",
+  "29": "MO",
+  "28": "MS",
+  "30": "MT",
+  "37": "NC",
+  "38": "ND",
+  "31": "NE",
+  "33": "NH",
+  "34": "NJ",
+  "35": "NM",
+  "32": "NV",
+  "36": "NY",
+  "39": "OH",
+  "40": "OK",
+  "41": "OR",
+  "42": "PA",
+  "72": "PR",
+  "44": "RI",
+  "45": "SC",
+  "46": "SD",
+  "47": "TN",
+  "48": "TX",
+  "49": "UT",
+  "51": "VA",
+  "78": "VI",
+  "50": "VT",
+  "53": "WA",
+  "55": "WI",
+  "54": "WV",
+  "56": "WY"
+}

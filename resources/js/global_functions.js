@@ -9,8 +9,9 @@
   if (filename.toLowerCase().indexOf("variables") >= 0) {
     $("#breadcrumb").html('<span class="level-2">Variable</span> <span class="level-1">Average Mean Temperature</span>');
   }
-  if (filename.toLowerCase().indexOf("case_fire-regimes") >= 0) {
-    $("#breadcrumb").html('<span class="level-3">Impacts</span> <span class="level-2">Case</span> <span class="level-1">Fire Regimes</span>');
+  if (filename.toLowerCase().indexOf("case") >= 0) {
+    name = getParameterByName('id');
+    $("#breadcrumb").html('<span class="level-2">Impact</span> <span class="level-1">'+name.split(',')[0]+'</span></span>');
   }
 
   function window_width(fraction) {
@@ -323,17 +324,17 @@
     });
 
     $('.data-accordion-tab header').click(function () {
-        var parent_tab = $(this).parents('.data-accordion-tab');
-        var parent_accordion = parent_tab.parents('.data-accordion');
 
-        if (!parent_tab.hasClass('open')) {
-            parent_accordion.children('.data-accordion-tab').each(function () {
-                $(this).removeClass('open');
-            });
+      var parent_tab = $(this).parents('.data-accordion-tab');
+      var parent_accordion = parent_tab.parents('.data-accordion');
 
-            parent_tab.addClass('open');
-        }
+      if (!parent_tab.hasClass('open')) {
+        parent_accordion.children('.data-accordion-tab').each(function () {
+            $(this).removeClass('open');
+        });
 
+        parent_tab.addClass('open');
+      }
     });
 
     function accordion_width() {
@@ -379,8 +380,8 @@
      });*/
 
     // zoom
-    $('.zoom-slider').attr('data-value', 4);
-    $('.zoom-slider').slider({
+    $('.page-type-case .zoom-slider').attr('data-value', 4);
+    $('.page-type-case .zoom-slider').slider({
         orientation: "vertical",
         range: false,
         min: 1,
@@ -388,11 +389,11 @@
         value: 5,
         slide: function( event, ui ) {
           $(this).attr('data-value', ui.value);
-          app.setZoom(ui.value);
+          impacts.setZoom(ui.value);
         },
         change: function (event, ui) {
           $(this).attr('data-value', ui.value);
-          app.setZoom(ui.value);
+          impacts.setZoom(ui.value);
         }
     });
 
@@ -480,7 +481,7 @@
           $('body').close_layer_info();
         },
         deactivate: function (event, ui) {
-          app.reorderLayers();
+          impacts.reorderLayers();
         }
     });
 
@@ -552,7 +553,7 @@
           $('body').close_layer_info();
       },
       deactivate: function (event, ui) {
-        app.reorderLayers();
+        impacts.reorderLayers();
       }
     });
 

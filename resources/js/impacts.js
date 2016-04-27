@@ -1,5 +1,4 @@
 var Impacts = function(page) {
-  console.log('iinit', page);
   this.page = page;
   this.subLayers = {};
   this.createMap();
@@ -15,16 +14,36 @@ var Impacts = function(page) {
 */
 Impacts.prototype.createMap = function() {
   var zoom = ( this.page === 'drought' ) ? 4 : 5;
-  var view = new ol.View({
-    center: ol.proj.transform([-105.41, 35.42], 'EPSG:4326', 'EPSG:3857'),
-    zoom: zoom
-  });
+  var view;
+  if ( this.page === 'arctic' ) {
+    view = new ol.View({
+      center: ol.proj.transform([-160.41, 60.75], 'EPSG:4326', 'EPSG:3857'),
+      zoom: 4.5
+    });
+  } else {
+    view = new ol.View({
+      center: ol.proj.transform([-105.41, 35.42], 'EPSG:4326', 'EPSG:3857'),
+      zoom: zoom
+    });
+  }
 
   this.map = new ol.Map({
     target: 'map',
     layers: [
+      // new ol.layer.Tile({
+      //   source: new ol.source.MapQuest({layer: 'osm'})
+      // })
       new ol.layer.Tile({
-        source: new ol.source.MapQuest({layer: 'osm'})
+        source: new ol.source.XYZ({
+          url: 'http://{s}.basemaps.cartocdn.com/light_nolabels/{z}/{x}/{y}.png',
+          attributions: [new ol.Attribution({ html: ['&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors, &copy; <a href="http://cartodb.com/attributions">CartoDB</a>'] })]
+        })
+      }),
+      new ol.layer.Tile({
+        source: new ol.source.XYZ({
+          url: 'http://{s}.basemaps.cartocdn.com/light_only_labels/{z}/{x}/{y}.png',
+          attributions: [new ol.Attribution({ html: ['&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors, &copy; <a href="http://cartodb.com/attributions">CartoDB</a>'] })]
+        })
       })
     ],
     view: view
@@ -72,8 +91,6 @@ Impacts.prototype.wireSearch = function() {
 
     self.map.getView().setZoom(8);
     self.map.getView().setCenter(conv);
-
-    console.log('wire me!');
 
   });
 };
@@ -177,8 +194,9 @@ Impacts.prototype.wireMapEvents = function () {
 
     if (feature) {
       var props = feature.getProperties();
-      var html = '<div>'+props.name+'<br />'+props.station+'</div>' +
-        '<div id="multi-chart" style="width:500px; height:300px"></div>';
+      var html = '<div>'+props.name+'<br /></div>' +
+        '<div id="multi-chart" style="width:500px; height:300px"></div>'+
+        '<div id="multi-precip-chart" style="width:500px; height:300px"></div>';
       popup.show(evt.coordinate, html);
 
       self.chart = new ChartBuilder(props);
@@ -293,9 +311,12 @@ Impacts.prototype.reorderLayers = function() {
   $.each(ids.reverse(), function(i, id) {
     id = id.replace('legend-', '');
     self.map.getLayers().forEach(function(l) {
-      if (l.get('layer_id') == id) {
-        layer = l;
-        layer.setZIndex(i);
+      if ( l.get('layer_id') ) {
+        if (l.get('layer_id') == id) {
+          l.setZIndex(i);
+        } else if ( l.get('layer_id').match(id) ) {
+          l.setZIndex(i);
+        }
       }
     });
   });
@@ -324,7 +345,7 @@ Impacts.prototype.addLayers = function() {
     if ( self.data.layers[id].sublayers ) {
       $.each(self.data.layers[id].sublayers, function(e, sublayer) {
         layer = new ol.layer.Tile({
-          extent: [-13884991, 2870341, -7455066, 6338219],
+          extent: [-32629438.63437604, -2729719.1541202106, 1966571.863721013, 14705261.249615353],
           source: new ol.source.TileArcGISRest({
             url: sublayer.url,
             params: {
@@ -346,7 +367,7 @@ Impacts.prototype.addLayers = function() {
     } else {
       if ( self.data.layers[id].type === 'WMS' ) {
         layer = new ol.layer.Image({
-          extent: [-13884991, 2870341, -7455066, 6338219],
+          extent: [-32629438.63437604, -2729719.1541202106, 1966571.863721013, 14705261.249615353],
           source: new ol.source.ImageWMS({
             url: self.data.layers[id].url,
             params: {
@@ -374,7 +395,7 @@ Impacts.prototype.addLayers = function() {
 
       if ( self.data.layers[id].type === 'ArcGISRest' ) {
         layer = new ol.layer.Tile({
-          extent: [-13884991, 2870341, -7455066, 6338219],
+          extent: [-32629438.63437604, -2729719.1541202106, 1966571.863721013, 14705261.249615353],
           source: new ol.source.TileArcGISRest({
             url: self.data.layers[id].url,
             params: {

@@ -28,7 +28,7 @@ $(document).ready(function() {
             $('label[for=timeperiod]').css("opacity", 1.0);
             $('#presentation').attr("disabled", "true");
             $('label[for=presentation]').css("opacity", 0.5);
-            $('#slider-range').hide();
+            //$('#slider-range').hide();
             $('#x-axis-pan-note').show();
         }
         if (freq === "seasonal") {
@@ -36,7 +36,7 @@ $(document).ready(function() {
             $('label[for=timeperiod]').css("opacity", 1.0);
             $('#presentation').attr("disabled", "true");
             $('label[for=presentation]').css("opacity", 0.5);
-            $('#slider-range').hide();
+            //$('#slider-range').hide();
             $('#x-axis-pan-note').show();
         }
         //populate_variables(freq);
@@ -52,6 +52,35 @@ $(document).ready(function() {
       } else {
         $('#historical-range, #under-baseline-range, #over-baseline-range').show();
       }
+
+      if ( id !== 'annual' ) {
+        $("#slider-range").slider('destroy').slider({
+          range: false,
+          min: 0,
+          max: 2,
+          value: 0,
+          slide: function( event, ui ) {
+            val = ( ui.value === 0 ) ? '2025' : '2050';
+            if ( ui.value === 2 ) { val = '2075'; }
+            cwg.update({ timeperiod: val });
+          }
+        });
+        $('#temp-range-low').html('30 Years Centered in 2025');
+        $('#temp-range-high').html('30 Years Centered in 2075');
+      } else {
+        $("#slider-range").slider('destroy').slider({
+          range: true,
+          min: 1950,
+          max: 2099,
+          values: [ 1950, 2099 ],
+          slide: function( event, ui ) {
+            return cwg.setXRange(ui.values[0], ui.values[1]);
+          }
+        });
+        $('#temp-range-low').html('2010');
+        $('#temp-range-high').html('2100');
+      }
+
       cwg.update({
         frequency: $('#frequency').val(),
         variable: $('#variable').val()
@@ -66,6 +95,35 @@ $(document).ready(function() {
       } else {
         $('#historical-range, #under-baseline-range, #over-baseline-range').show();
       }
+
+      if ( id !== 'annual' ) {
+        $("#precip-slider-range").slider('destroy').slider({
+          range: false,
+          min: 0,
+          max: 2,
+          value: 0,
+          slide: function( event, ui ) {
+            val = ( ui.value === 0 ) ? '2025' : '2050';
+            if ( ui.value === 2 ) { val = '2075'; }
+            precipChart.update({ timeperiod: val });
+          }
+        });
+        $('#precip-range-low').html('30 Years Centered in 2025');
+        $('#precip-range-high').html('30 Years Centered in 2075');
+      } else {
+        $("#precip-slider-range").slider('destroy').slider({
+          range: true,
+          min: 1950,
+          max: 2099,
+          values: [ 1950, 2099 ],
+          slide: function( event, ui ) {
+            return precipChart.setXRange(ui.values[0], ui.values[1]);
+          }
+        });
+        $('#precip-range-low').html('2010');
+        $('#precip-range-high').html('2100');
+      }
+
       precipChart.update({
         frequency: $('#precip-frequency').val(),
         variable: $('#precip-variable').val()
@@ -113,14 +171,25 @@ $(document).ready(function() {
       });
     });
     $('#presentation').change(function() {
-        cwg.update({
-            presentation: $('#presentation').val()
-        });
+      cwg.update({
+        presentation: $('#presentation').val()
+      });
     });
+    $('#precip-presentation').change(function() {
+      precipChart.update({
+        presentation: $('#precip-presentation').val()
+      });
+    });
+    $('#derived-presentation').change(function() {
+      derivedChart.update({
+        presentation: $('#derived-presentation').val()
+      });
+    });
+
     $('#median').change(function() {
-        cwg.update({
-            pmedian: $('#median').val()
-        });
+      cwg.update({
+        pmedian: $('#median').val()
+      });
     });
     $('#precip-median').change(function() {
       precipChart.update({
@@ -132,6 +201,42 @@ $(document).ready(function() {
         pmedian: $('#derived-median').val()
       });
     });
+
+
+    $('#hist-mod').change(function() {
+      cwg.update({
+        histmod: $('#hist-mod').val()
+      });
+    });
+    $('#precip-hist-mod').change(function() {
+      precipChart.update({
+        histmod: $('#precip-hist-mod').val()
+      });
+    });
+    $('#derived-hist-mod').change(function() {
+      derivedChart.update({
+        histmod: $('#derived-hist-mod').val()
+      });
+    });
+
+
+    $('#hist-obs').change(function() {
+      cwg.update({
+        histobs: $('#hist-obs').val()
+      });
+    });
+    $('#precip-hist-obs').change(function() {
+      precipChart.update({
+        histobs: $('#precip-hist-obs').val()
+      });
+    });
+    $('#derived-hist-obs').change(function() {
+      derivedChart.update({
+        histobs: $('#derived-hist-obs').val()
+      });
+    });
+
+
     $('#range').change(function() {
         cwg.update({
             hrange: $('#range').val(),
@@ -153,6 +258,9 @@ $(document).ready(function() {
       $('ul.data-options li').removeClass('active accent-border');
       $(this).closest('li').addClass('active accent-border');
 
+      var val = $(this).children('a');
+      $('#temp-chart-name').html( val.context.innerText );
+
       var id = $(this).attr('id').replace('var-', '');
       $('#frequency').val('annual').change();
       $('#variable').val(id).change();
@@ -161,6 +269,9 @@ $(document).ready(function() {
     $('#precipitation-data h4').on('click', function() {
       $('ul.data-options li').removeClass('active accent-border');
       $(this).closest('li').addClass('active accent-border');
+
+      var val = $(this).children('a');
+      $('#precip-chart-name').html( val.context.innerText );
 
       var id = $(this).attr('id').replace('var-', '');
       $('#precip-frequency').val('annual').change();
@@ -171,9 +282,27 @@ $(document).ready(function() {
       $('ul.data-options li').removeClass('active accent-border');
       $(this).closest('li').addClass('active accent-border');
 
+      var val = $(this).children('a');
+      $('#derived-chart-name').html( val.context.innerText );
+
       var id = $(this).attr('id').replace('var-', '');
       $('#derived-frequency').val('annual').change();
       $('#derived-variable').val(id).change();
+    });
+
+    $('#temperature-presentation').on('change', function() {
+      var val = $(this).val();
+      $('#presentation').val(val).change();
+    });
+
+    $('#precipitation-presentation').on('change', function() {
+      var val = $(this).val();
+      $('#precip-presentation').val(val).change();
+    });
+
+    $('#der-presentation').on('change', function() {
+      var val = $(this).val();
+      $('#derived-presentation').val(val).change();
     });
 
     $('.legend-item-range').on('click', function(e) {
@@ -233,32 +362,104 @@ $(document).ready(function() {
         $('#median').val(median).change();
       }
 
+
+
+      var histmod = null;
+      switch(true) {
+        case $('#'+pre+'historical-block').hasClass('selected') && $('#historical-block').hasClass('selected'):
+          histmod = 'true';
+          break;
+        case $('#'+pre+'historical-block').hasClass('selected'):
+          histmod = 'true';
+          break;
+        default:
+          histmod = 'false';
+      }
+
+      if ( pre === 'precip' ) {
+        $('#precip-hist-mod').val(histmod).change();
+      } else if ( pre === 'derive' ) {
+        $('#derived-hist-mod').val(histmod).change();
+      } else {
+        $('#hist-mod').val(histmod).change();
+      }
+
+
+      var histobs = null;
+      switch(true) {
+        case $('#'+pre+'over-baseline-block').hasClass('selected') && $('#under-baseline-block').hasClass('selected'):
+          histobs = 'true';
+          break;
+        case $('#'+pre+'over-baseline-block').hasClass('selected'):
+          histobs = 'true';
+          break;
+        case $('#'+pre+'under-baseline-block').hasClass('selected'):
+          histobs = 'true';
+          break;
+        default:
+          histobs = 'false';
+      }
+
+      if ( pre === 'precip' ) {
+        $('#precip-hist-obs').val(histobs).change();
+      } else if ( pre === 'derive' ) {
+        $('#derived-hist-obs').val(histobs).change();
+      } else {
+        $('#hist-obs').val(histobs).change();
+      }
+
     });
 
-    $('#download-button').click(function() {
-        if (cwg) {
-            var $ul = $('#download-panel').find('ul');
-            $ul.empty();
-            var dataurls = cwg.dataurls();
-            if (dataurls.hist_obs) {
-                $ul.append($("<li><a href='"+dataurls.hist_obs+"'>Observed Data</a></li>"));
-            }
-            if (dataurls.hist_mod) {
-                $ul.append($("<li><a href='"+dataurls.hist_mod+"'>Historical Modeled Data</a></li>"));
-            }
-            if (dataurls.proj_mod) {
-                $ul.append($("<li><a href='"+dataurls.proj_mod+"'>Projected Modeled Data</a></li>"));
-            }
-            $('#download-panel').removeClass("hidden");
-        }
+    $('#temp-download-image').on('click', function(e) {
+      $('#download-image-link-temp').get(0).click();
+      return false;
     });
+
+    $('#download-image-precip').on('click', function(e) {
+      $('#download-image-link-precip').get(0).click();
+      return false;
+    });
+
+    $('#download-image-derived').on('click', function(e) {
+      $('#download-image-link-derived').get(0).click();
+      return false;
+    });
+
+    $('.download-data').click(function(e) {
+      var id = $(e.target).attr('id');
+      var c = ( id === 'temp-download-data' ) ? cwg : precipChart;
+      if ( id === 'derived-download-data' ) { c = derivedChart; }
+      var $ul = $('#download-panel').find('ul');
+      $ul.empty();
+      var dataurls = c.dataurls();
+      if (dataurls.hist_obs) {
+          $ul.append($("<li><a href='"+dataurls.hist_obs+"'>Observed Data</a></li>"));
+      }
+      if (dataurls.hist_mod) {
+          $ul.append($("<li><a href='"+dataurls.hist_mod+"'>Historical Modeled Data</a></li>"));
+      }
+      if (dataurls.proj_mod) {
+          $ul.append($("<li><a href='"+dataurls.proj_mod+"'>Projected Modeled Data</a></li>"));
+      }
+      $('#download-panel').removeClass("hidden");
+
+    });
+
     $('#download-dismiss-button').click(function() {
         $('#download-panel').addClass("hidden");
     });
 
     // download hook
-    $('#download-image-link').click(function() {
-        cwg.downloadImage(this, 'graph.png');
+    $('#download-image-link-temp').click(function() {
+      cwg.downloadImage(this, 'graph.png');
+    });
+
+    $('#download-image-link-precip').click(function() {
+      precipChart.downloadImage(this, 'graph.png');
+    });
+
+    $('#download-image-link-derived').click(function() {
+      derivedChart.downloadImage(this, 'graph.png');
     });
 
     $("#slider-range").slider({

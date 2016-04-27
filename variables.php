@@ -1,3 +1,8 @@
+<?php
+
+  $active_variable = $_REQUEST['id'];
+
+?>
 <!doctype html>
 <html>
   <head>
@@ -13,59 +18,51 @@
     <link rel="stylesheet" media="screen" href="resources/css/mods.css">
 
     <script type="text/javascript" src="./resources/js/jquery.min.js"></script>
-    <script type="text/javascript" src="./resources/js/jquery-ui.min.js"></script>
+    <!-- <script type="text/javascript" src="./resources/js/jquery-ui.min.js"></script> -->
+    <script src="//code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
   </head>
 
   <body id="page-variables" class="page-type-variables">
 
     <?php include_once('template/header.php'); ?>
 
+    <div id="download-panel" class="hidden download-panel">
+      <div class="download-inner">
+        <p>Use the following links to download this graph's data:</p>
+        <ul></ul>
+        <div class="center"><button id="download-dismiss-button">Dismiss</button></div>
+      </div>
+    </div>
+
     <header id="left-header">
       <ul id="vars-menu" class="menu blue-menu">
-        <li class="search-field"><span class="icon icon-search"></span><input type="text" id="formmapper" placeholder="Search by location"></li>
+        <li class="search-field border"><span class="icon icon-search"></span><input type="text" id="formmapper" placeholder="Search by location"></li>
 
-        <li class="select border">
-          <select class="dropdown">
+        <li class="select border" id="variable-options-container">
+          <select class="dropdown" id="variable-options">
             <option value="tasmax">Mean Daily Maximum</option>
             <option value="tasmin">Mean Daily Minimum</option>
             <option value="days_tmax_abv_35.0">Days over 95º F</option>
             <option value="days_tmin_blw_0.0">Days min below 32º F</option>
+            <option value="pr">Mean Daily Precipitation</option>
+            <option value="heating_degree_day_18.3">Heating Degree Days</option>
+            <option value="cooling_degree_day_18.3">Cooling Degree Days</option>
           </select>
         </li>
 
         <li class="toggle">
           <a href="#info-counties" class="help icon icon-help"></a>
-          <label for="counties-overlay-toggle"><span class="text">Counties</span>
-            <input type="checkbox" name="counties-overlay-toggle" id="counties-overlay-toggle" value="1" autocomplete="off" checked="true">
+          <label for="counties-overlay-toggle"><span class="text">Data by Counties</span>
+            <input type="checkbox" name="counties-overlay-toggle" id="counties-overlay-toggle" value="1" autocomplete="off">
           </label>
           <div id="info-counties" class="layer-info">
-            
+
             <div class="actions">
               <a href="#" class="layer-info-close"><span class="icon icon-close"></span>Close</a>
               <a href="#" class="layer-info-next"><span class="icon icon-arrow-right"></span>Next</a>
             </div>
           </div>
         </li>
-        <li class="toggle border">
-          <a href="#info-stations" class="help icon icon-help"></a>
-          <label for="weather-overlay-toggle"><span class="text">Weather Stations</span>
-            <input type="checkbox" name="weather-overlay-toggle" id="weather-overlay-toggle" value="1" autocomplete="off">
-          </label>
-          <div id="info-stations" class="layer-info">
-            <h3>Weather Stations</h3>
-            <p>Describe stations layer</p>
-            <div class="actions">
-              <a href="#" class="layer-info-close"><span class="icon icon-close"></span>Close</a>
-              <a href="#" class="layer-info-next"><span class="icon icon-arrow-right"></span>Next</a>
-            </div>
-          </div>
-        </li>
-        <!--<li class="border"><a><span class="icon icon-variables"></span><span class="text">Projected Variables</span></a></li>
-        <li><a><span class="icon icon-temperature"></span><span class="text">Temperature</span></a></li>
-        <li><a><span class="icon icon-average-mean"></span><span class="text">Average Mean</span></a></li>
-        <li><a><span class="icon icon-emission-scenario"></span><span class="text">Emission Scenario</span></a></li>
-        <li class="border"><a><span class="icon icon-season"></span><span class="text">Season</span></a></li>-->
-        <li class="about-link"><a href="#detail-temperature" class="nav-detail-link">About Average Mean Temperature</a></li>
       </ul>
 
       <div id="vars-legend" class="legend-wrap left-filler">
@@ -89,8 +86,31 @@
 
     <div id="viewport">
       <div id="main-content-wrap">
+        <!-- <input id="swipe" type="range" style="width: 100%"> -->
+        <div class="select border" id="map-seasons-container">
+          <select class="dropdown" id="map-season">
+            <option value="summer">Summer</option>
+            <option value="fall">Fall</option>
+            <option value="winter">Winter</option>
+            <option value="spring">Spring</option>
+          </select>
+        </div>
+
+
+        <div class="moveable" id="sliderDiv" style="top: 0px; left: 50%; position: absolute;">
+          <div id="swipeImg" style="position:absolute;width:85px;left:-35px;height:50px;top:45%;display:block; background-image: url(http://tmappsevents.esri.com/website/swipe-sandy-custom/resources/icons/swipe-arrows-stripe.png);">
+    				<div class="emissions-low">Low Emissions</div>
+    				<div class="emissions-high">High Emissions</div>
+    			</div>
+        </div>
 
         <div id="variable-map"></div>
+
+        <div class="year" id="year-slider-container">
+          <div class="year-label year-min">1950</div>
+          <div class="" id="variable-time-slider" data-min="1950" data-max="2090" data-value="2090"></div>
+          <div class="year-label year-max">2090</div>
+        </div>
 
         <div class="zoom">
           <div class="zoom-slider" data-value="1"></div>
