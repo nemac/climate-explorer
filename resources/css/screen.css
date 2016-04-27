@@ -3994,7 +3994,15 @@ body.detail-open #nav-overlay {
   font-size: 2.5rem;
 }
 .location-data-section .data-vars {
-  float: left;
+  margin: 20px 0;
+  border-top: 2px solid #ebebeb;
+}
+.location-data-section .data-vars:before, .location-data-section .data-vars:after {
+  content: " ";
+  display: table;
+}
+.location-data-section .data-vars:after {
+  clear: both;
 }
 .location-data-section .data-vars label {
   display: block;

@@ -188,7 +188,9 @@
   }
   
   .data-vars {
-    float: left;
+    margin: 20px 0;
+    border-top: 2px solid $grey2;
+    @include legacy-clearfix;
     
     label {
       display: block;

@@ -547,7 +547,7 @@ input.location-mapper:focus:-ms-input-placeholder {
   left: calc(20% + 35px);
 }
 
-.location-data-section .fs-dropdown button {
+/*.location-data-section .fs-dropdown button {
   height: auto;
   padding: 5px;
   padding-right: 40px;
@@ -571,7 +571,7 @@ input.location-mapper:focus:-ms-input-placeholder {
 
 .location-data-section .fs-dropdown-item {
   margin-left:5px !important;
-}
+}*/
 
 #temperature-map, #precipitation-map, #derived-map {
   width:100%;
