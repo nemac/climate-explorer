@@ -396,14 +396,7 @@ Location.prototype.updateTiledLayer = function(map, replace, timeReset) {
   }
 
   if ( replace ) {
-    if ( this[layer] ) {
-      this[map].removeLayer(this.tileLayer);
-      this.tileLayer = null;
-    }
-    if ( this[layer85] ) {
-      this[map].removeLayer(this.tileLayer85);
-      this.tileLayer85 = null;
-    }
+    this.removeOldTiles(map);
   }
 
 
@@ -469,6 +462,33 @@ Location.prototype.updateTiledLayer = function(map, replace, timeReset) {
     this.setSlider(map);
   }
 
+};
+
+
+
+
+/*
+* Removes old climate tiles from map
+* Timeout means new tiles will load before we remove old, so there isn't a
+* flash of map with no tiles at all
+*
+*/
+Location.prototype.removeOldTiles = function(map) {
+  var self = this;
+
+  this.oldTile = this[map + 'TileLayer'];
+  this.oldTile85 = this[map + 'tileLayer85'];
+
+  setTimeout(function() {
+    if ( self.oldTile ) {
+      self.map.removeLayer(self.oldTile);
+      self.oldTile = null;
+    }
+    if ( self.oldTile85 ) {
+      self.map.removeLayer(self.oldTile85);
+      self.oldTile85 = null;
+    }
+  },900);
 };
 
 
