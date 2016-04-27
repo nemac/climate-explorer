@@ -72,12 +72,6 @@
 
         <section id="location-temperature" class="location-data-section-wrap">
             <div class="location-data-section">
-                <header>
-                  
-
-                  
-                </header>
-
                 <div id="temperature-data" class="data-list">
                   <h3 class="accent-color"><span class="icon icon-temperature"></span>Temperature</h3>
                   
@@ -304,19 +298,9 @@
         <!-- begin precipitation chart and map -->
         <section id="location-precipitation" class="location-data-section-wrap">
             <div class="location-data-section">
-                <header>
-                    <h3 class="accent-color"><span class="icon icon-precipitation"></span>Precipitation</h3>
-
-                    <div class="data-vars">
-                        <label for="precipitation-presentation">Display: </label>
-                        <select id="precipitation-presentation" class="dropdown">
-                          <option value="absolute">Actual</option>
-                          <option value="anomaly">Anomaly</option>
-                        </select>
-                    </div>
-                </header>
-
                 <div id="precipitation-data" class="data-list">
+                  <h3 class="accent-color"><span class="icon icon-precipitation"></span>Precipitation</h3>
+                  
                   <ul class="data-options">
                     <li class="active accent-border">
                       <h4 id="var-pr"><a href="#" class="text accent-color">Mean Daily Precipitation</a><a href="#" class="icon icon-help nav-detail-link"></a></h4>
@@ -408,6 +392,14 @@
                           <button><a id="download-image-link-precip">Download Image</a></button>
                       </div>
                   </form>
+                  
+                  <div class="data-vars">
+                    <label for="precipitation-presentation">Display: </label>
+                    <select id="precipitation-presentation" class="dropdown">
+                      <option value="absolute">Actual</option>
+                      <option value="anomaly">Anomaly</option>
+                    </select>
+                  </div>
                 </div>
 
                 <div id="precipitation-tabs" class="data-accordion-wrap">
@@ -513,20 +505,9 @@
     <!-- being derived chart and map -->
         <section id="location-derived" class="location-data-section-wrap">
             <div class="location-data-section">
-                <header>
-                    <h3 class="accent-color"><span class="icon icon-drought"></span>Derived</h3>
-
-                    <div class="data-vars">
-
-                        <label for="der-presentation">Display: </label>
-                        <select id="der-presentation" class="dropdown">
-                          <option value="absolute">Actual</option>
-                          <option value="anomaly">Anomaly</option>
-                        </select>
-                    </div>
-                </header>
-
                 <div id="derived-data" class="data-list">
+                  <h3 class="accent-color"><span class="icon icon-drought"></span>Derived</h3>
+                  
                   <ul class="data-options">
                     <li class="active accent-border">
                       <h4 id="var-heating_degree_day_18.3"><a href="#" class="text accent-color">Heating Degree Days</a><a href="#" class="icon icon-help nav-detail-link"></a></h4>
@@ -542,6 +523,7 @@
                       </ul>
                     </li>
                   </ul>
+                  
                   <form onsubmit="return false;">
                       <div class="row">
                           <label for="derived-county">County</label>
@@ -615,6 +597,14 @@
                           <button><a id="download-image-link-derived">Download Image</a></button>
                       </div>
                   </form>
+                  
+                  <div class="data-vars">
+                    <label for="der-presentation">Display: </label>
+                    <select id="der-presentation" class="dropdown">
+                      <option value="absolute">Actual</option>
+                      <option value="anomaly">Anomaly</option>
+                    </select>
+                  </div>
                 </div>
 
                 <div id="derived-tabs" class="data-accordion-wrap">

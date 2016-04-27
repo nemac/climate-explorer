@@ -3800,6 +3800,11 @@ body.detail-open #nav-overlay {
   background-size: 100% auto;
 }
 
+.page-type-location #viewport {
+  top: 20px;
+  height: calc(100% - 40px);
+  margin-top: 115px;
+}
 .page-type-location #main-content-wrap {
   padding: 2%;
   background-repeat: no-repeat;
@@ -3905,10 +3910,6 @@ body.detail-open #nav-overlay {
   color: #233a70;
   overflow: hidden;
   *zoom: 1;
-  -moz-transition: 0.5s;
-  -o-transition: 0.5s;
-  -webkit-transition: 0.5s;
-  transition: 0.5s;
 }
 #page-nav h4 {
   float: left;
@@ -3930,7 +3931,7 @@ body.detail-open #nav-overlay {
   display: block;
 }
 #page-nav.stuck {
-  top: 110px;
+  top: 20px;
   left: 20px;
   width: 100%;
   width: calc(100% - 40px);
@@ -3948,6 +3949,7 @@ body.detail-open #nav-overlay {
 .location-data-section-wrap {
   padding: 1%;
   border: 10px solid #fff;
+  background: rgba(255, 255, 255, 0.9);
 }
 
 .location-data-section {
@@ -3982,9 +3984,7 @@ body.detail-open #nav-overlay {
   clear: both;
 }
 .location-data-section h3 {
-  float: left;
-  width: 30%;
-  margin: 0 1% 0 0;
+  margin: 0 0 10% 0;
   padding: 20px 0 0 0;
   font: 2rem/1em Roboto, Helvetica, "Helvetica Neue", Arial, sans-serif;
 }
