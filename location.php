@@ -73,8 +73,121 @@
         <section id="location-temperature" class="location-data-section-wrap">
             <div class="location-data-section">
                 <header>
-                  <h3 class="accent-color"><span class="icon icon-temperature"></span>Temperature</h3>
+                  
 
+                  
+                </header>
+
+                <div id="temperature-data" class="data-list">
+                  <h3 class="accent-color"><span class="icon icon-temperature"></span>Temperature</h3>
+                  
+                  <ul class="data-options">
+                    <li class="active accent-border">
+                      <h4 id="var-tasmax"><a href="#" class="text accent-color">Mean Daily Maximum</a><a href="#detail-temperature" class="icon icon-help nav-detail-link"></a></h4>
+                      <ul class="location-resolution">
+                        <li><a>Annual</a></li>
+                        <li><a>Seasonal</a></li>
+                        <li><a>Monthly</a></li>
+                      </ul>
+                    </li>
+
+                    <li class="accent-border">
+                      <h4 id="var-tasmin"><a href="#" class="text accent-color">Mean Daily Minimum</a><a href="#" class="icon icon-help nav-detail-link"></a></h4>
+                      <ul class="location-resolution">
+                        <li><a>Annual</a></li>
+                        <li><a>Seasonal</a></li>
+                        <li><a>Monthly</a></li>
+                      </ul>
+                    </li>
+
+                    <li class="accent-border">
+                      <h4 id="var-days_tmax_abv_35.0"><a href="#" class="text accent-color">Days with Maximum Above 95&deg;</a><a href="#" class="icon icon-help nav-detail-link"></a></h4>
+                      <ul class="location-resolution">
+                        <li><a>Annual</a></li>
+                      </ul>
+                    </li>
+
+                    <li class="accent-border">
+                      <h4 id="var-days_tmin_blw_0.0"><a href="#" class="text accent-color">Days with Minimum Below 32º</a><a href="#" class="icon icon-help nav-detail-link"></a></h4>
+                      <ul>
+                        <li><a>Annual</a></li>
+                      </ul>
+                    </li>
+
+                  </ul>
+
+                  <form onsubmit="return false;">
+                      <div class="row">
+                          <label for="county">County</label>
+                          <select id="county" class="u-full-width">
+                              <option value="<?php echo $fips ?>" selected="selected"><?php echo $county ?></option>
+                          </select>
+                      </div>
+                      <div class="row">
+                          <label for="frequency">Frequency</label>
+                          <select id="frequency" class="u-full-width">
+                              <option value="annual" selected="selected">Annual</option>
+                              <option value="monthly">Monthly</option>
+                              <option value="seasonal">Seasonal</option>
+                          </select>
+                      </div>
+                      <div class="row">
+                          <label for="timeperiod">Time Period</label>
+                          <select id="timeperiod" class="u-full-width">
+                              <option value="2025" selected="selected">30 Years Centered on 2025</option>
+                              <option value="2050">30 Years Centered on 2050</option>
+                              <option value="2075">30 Years Centered on 2075</option>
+                          </select>
+                      </div>
+                      <div class="row">
+                          <label for="variable">Variable</label>
+                          <select id="variable" class="u-full-width">
+                          </select>
+                      </div>
+                      <div class="row">
+                          <div class="six columns">
+                              <label for="scenario">Scenario</label>
+                              <select id="scenario" class="u-full-width">
+                                  <option value="both">RCP 8.5 and 4.5</option>
+                                  <option value="rcp85" selected="selected">RCP 8.5</option>
+                                  <option value="rcp45">RCP 4.5</option>
+                              </select>
+                          </div>
+                          <div class="six columns">
+                              <label for="presentation">Display: </label>
+                              <select id="presentation" class="u-full-width">
+                                  <option value="absolute">Absolute</option>
+                                  <option value="anomaly">Anomaly</option>
+                              </select>
+                          </div>
+                      </div>
+                      <div class="row">
+                          <div class="six columns">
+                              <label for="median">Show Medians</label>
+                              <select id="median" class="u-full-width">
+                                  <option value="false" selected="selected">Hide</option>
+                                  <option value="true">Show</option>
+                              </select>
+                              <label for="hist-mod">Historical Modeled</label>
+                              <select id="hist-mod" class="u-full-width">
+                                  <option value="false" selected="selected">Hide</option>
+                                  <option value="true">Show</option>
+                              </select>
+                              <label for="hist-obs">Historical Obs</label>
+                              <select id="hist-obs" class="u-full-width">
+                                  <option value="false" selected="selected">Hide</option>
+                                  <option value="true">Show</option>
+                              </select>
+                          </div>
+                      </div>
+                      <div class="center">
+                          <button id="download-button">Download Data</button>
+                      </div>
+                      <div class="center">
+                        <button><a id="download-image-link-temp">Download Image</a></button>
+                      </div>
+                  </form>
+                  
                   <div class="data-vars">
                     <label for="temperature-presentation">Display: </label>
 
@@ -84,115 +197,6 @@
                     </select>
 
                   </div>
-                </header>
-
-                <div id="temperature-data" class="data-list">
-                    <ul class="data-options">
-                      <li class="active accent-border">
-                        <h4 id="var-tasmax"><a href="#" class="text accent-color">Mean Daily Maximum</a><a href="#detail-temperature" class="icon icon-help nav-detail-link"></a></h4>
-                        <ul class="location-resolution">
-                          <li><a>Annual</a></li>
-                          <li><a>Seasonal</a></li>
-                          <li><a>Monthly</a></li>
-                        </ul>
-                      </li>
-
-                      <li class="accent-border">
-                        <h4 id="var-tasmin"><a href="#" class="text accent-color">Mean Daily Minimum</a><a href="#" class="icon icon-help nav-detail-link"></a></h4>
-                        <ul class="location-resolution">
-                          <li><a>Annual</a></li>
-                          <li><a>Seasonal</a></li>
-                          <li><a>Monthly</a></li>
-                        </ul>
-                      </li>
-
-                      <li class="accent-border">
-                        <h4 id="var-days_tmax_abv_35.0"><a href="#" class="text accent-color">Days with Maximum Above 95&deg;</a><a href="#" class="icon icon-help nav-detail-link"></a></h4>
-                        <ul class="location-resolution">
-                          <li><a>Annual</a></li>
-                        </ul>
-                      </li>
-
-                      <li class="accent-border">
-                        <h4 id="var-days_tmin_blw_0.0"><a href="#" class="text accent-color">Days with Minimum Below 32º</a><a href="#" class="icon icon-help nav-detail-link"></a></h4>
-                        <ul>
-                          <li><a>Annual</a></li>
-                        </ul>
-                      </li>
-
-                    </ul>
-
-                    <form onsubmit="return false;">
-                        <div class="row">
-                            <label for="county">County</label>
-                            <select id="county" class="u-full-width">
-                                <option value="<?php echo $fips ?>" selected="selected"><?php echo $county ?></option>
-                            </select>
-                        </div>
-                        <div class="row">
-                            <label for="frequency">Frequency</label>
-                            <select id="frequency" class="u-full-width">
-                                <option value="annual" selected="selected">Annual</option>
-                                <option value="monthly">Monthly</option>
-                                <option value="seasonal">Seasonal</option>
-                            </select>
-                        </div>
-                        <div class="row">
-                            <label for="timeperiod">Time Period</label>
-                            <select id="timeperiod" class="u-full-width">
-                                <option value="2025" selected="selected">30 Years Centered on 2025</option>
-                                <option value="2050">30 Years Centered on 2050</option>
-                                <option value="2075">30 Years Centered on 2075</option>
-                            </select>
-                        </div>
-                        <div class="row">
-                            <label for="variable">Variable</label>
-                            <select id="variable" class="u-full-width">
-                            </select>
-                        </div>
-                        <div class="row">
-                            <div class="six columns">
-                                <label for="scenario">Scenario</label>
-                                <select id="scenario" class="u-full-width">
-                                    <option value="both">RCP 8.5 and 4.5</option>
-                                    <option value="rcp85" selected="selected">RCP 8.5</option>
-                                    <option value="rcp45">RCP 4.5</option>
-                                </select>
-                            </div>
-                            <div class="six columns">
-                                <label for="presentation">Display: </label>
-                                <select id="presentation" class="u-full-width">
-                                    <option value="absolute">Absolute</option>
-                                    <option value="anomaly">Anomaly</option>
-                                </select>
-                            </div>
-                        </div>
-                        <div class="row">
-                            <div class="six columns">
-                                <label for="median">Show Medians</label>
-                                <select id="median" class="u-full-width">
-                                    <option value="false" selected="selected">Hide</option>
-                                    <option value="true">Show</option>
-                                </select>
-                                <label for="hist-mod">Historical Modeled</label>
-                                <select id="hist-mod" class="u-full-width">
-                                    <option value="false" selected="selected">Hide</option>
-                                    <option value="true">Show</option>
-                                </select>
-                                <label for="hist-obs">Historical Obs</label>
-                                <select id="hist-obs" class="u-full-width">
-                                    <option value="false" selected="selected">Hide</option>
-                                    <option value="true">Show</option>
-                                </select>
-                            </div>
-                        </div>
-                        <div class="center">
-                            <button id="download-button">Download Data</button>
-                        </div>
-                        <div class="center">
-                          <button><a id="download-image-link-temp">Download Image</a></button>
-                        </div>
-                    </form>
                 </div>
 
                 <div id="temperature-tabs" class="data-accordion-wrap">
