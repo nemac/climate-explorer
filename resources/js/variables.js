@@ -16,6 +16,28 @@ var Variables = function(id) {
       break;
   }
 
+
+
+  this.mapVariables();
+  this.selectedVariable = id || 'tasmax';
+  this.activeYear = 2010;
+  this.selectedSeason = 'summer';
+
+  $(".level-1").html(this.varMapping[ this.selectedVariable ]);
+
+  $('#variable-options').val(id).attr('selected', true).change();
+
+  this.createMap();
+  this.wireSearch();
+};
+
+
+
+/*
+* Lots of inconsistencies in naming, so here I map all the variables to one another
+*
+*/
+Variables.prototype.mapVariables = function() {
   this.varMapping = {
     'tasmax': 'Mean Daily Maximum',
     'tasmin': 'Mean Daily Minimum',
@@ -55,24 +77,13 @@ var Variables = function(id) {
     'cooling_degree_day_18.3': '_annual_rcp85_cooling-degree-day',
     'heating_degree_day_18.3': '_annual_rcp85_heating-degree-day'
   };
-
-  this.selectedVariable = id || 'tasmax';
-  this.activeYear = 2010;
-  this.selectedSeason = 'summer';
-
-  $(".level-1").html(this.varMapping[ this.selectedVariable ]);
-
-  $('#variable-options').val(id).attr('selected', true).change();
-
-  this.createMap();
-  this.wireSearch();
 };
 
 
 
 
 /*
-* Create map
+* Creates MAIN map
 *
 *
 */
@@ -104,12 +115,17 @@ Variables.prototype.createMap = function() {
   this.updateTiledLayer(true);
   this.addCounties();
   this.addStates();
-  this.addStations();
   this.wire();
 };
 
 
 
+
+/*
+*
+* Wires up search so user can use sidebar search for location in map
+*
+*/
 Variables.prototype.wireSearch = function() {
   var self = this;
 
@@ -147,9 +163,7 @@ Variables.prototype.wireSearch = function() {
         self.selected_collection.clear();
         self.selected_collection.push(feature);
         var props = feature.getProperties();
-        if ( !props.station ) {
-          self.countySelected(feature, e);
-        }
+        self.countySelected(feature, e);
       } else {
         self.popup.hide();
       }
@@ -209,15 +223,6 @@ Variables.prototype.wire = function() {
   });
 
 
-  $('#weather-overlay-toggle').on('click', function() {
-    var show = $(this).is(':checked');
-    self.map.getLayers().forEach(function(layer) {
-      if (layer.get('layer_id') == 'stations') {
-        layer.setVisible(show);
-      }
-    });
-  });
-
   //var selector
   $('#variable-options-container .fs-dropdown-item').on('click', function(e) {
     self.selectedVariable =  $(this).data().value;
@@ -267,11 +272,7 @@ Variables.prototype.wire = function() {
 
     if (feature) {
       var props = feature.getProperties();
-      if ( props.station ) {
-        self.stationSelected(feature, e);
-      } else {
-        self.countySelected(feature, e);
-      }
+      self.countySelected(feature, e);
     } else {
       self.popup.hide();
     }
@@ -371,80 +372,11 @@ Variables.prototype.addStates = function() {
 
 
 
-/*
-*
-* get stations and add to map
-*
-*/
-Variables.prototype.addStations = function() {
-
-  var self = this;
-
-  var styles = {
-    'Point': new ol.style.Style({
-      image: new ol.style.Circle({
-        radius: 5,
-        fill: new ol.style.Fill({color: '#2980b9'}),
-        stroke: new ol.style.Stroke({color: '#FFF', width: 2})
-      })
-    })
-  };
-
-  var styleFunction = function(feature) {
-    return styles[feature.getGeometry().getType()];
-  };
-
-
-  $.getJSON('resources/data/wx_stations.json', function(data) {
-
-    var featureCollection = {
-      'type': 'FeatureCollection',
-      'features': []
-    };
-
-    var obj;
-    $.each(data, function(i, d) {
-      if ( d.weight < 2 ) {
-        obj = {
-          'type': 'Feature',
-          'properties': {
-            'station': d.id,
-            'name': d.name
-          },
-          'geometry': {
-            'type': 'Point',
-            'coordinates': [d.lon, d.lat]
-          }
-        };
-        featureCollection.features.push(obj);
-      }
-    });
-
-    var features = new ol.format.GeoJSON().readFeatures(featureCollection, {
-      featureProjection: 'EPSG:3857'
-    });
-    var vectorSource = new ol.source.Vector({
-      features: features
-    });
-    var vectorLayer = new ol.layer.Vector({
-      source: vectorSource,
-      style: styleFunction
-    });
-
-    vectorLayer.set('layer_id', 'stations');
-    vectorLayer.setVisible(false);
-    self.map.addLayer(vectorLayer);
-
-  });
-
-};
-
-
-
-
 
 /*
 * Highlight county feature
+* Also shows popup with the climate widget chart inside
+* Have to build chart UI dynamically
 *
 */
 Variables.prototype.countySelected = function(feature, event) {
@@ -598,26 +530,15 @@ Variables.prototype.countySelected = function(feature, event) {
 
 
 
-Variables.prototype.stationSelected = function(feature, event) {
-  var self = this;
-
-  if (feature) {
-    var props = feature.getProperties();
-    var html = '<div>Station: '+props.name+'<br /></div>' +
-      '<div id="multi-chart" style="width:500px; height:300px"></div>'+
-      '<div id="multi-precip-chart" style="width:500px; height:300px"></div>';
-    this.popup.show(event.mapBrowserEvent.coordinate, html);
-
-    this.chart = new ChartBuilder(props);
-  } else {
-    this.popup.hide();
-  }
-
-};
 
 
-
-
+/*
+*
+* Main tile layer for all the climate tiles
+* Replace indicates if we are updating existing tiles, or if we are starting new variable
+* Given a "replace" we re-create slider / swiper at end of function
+*
+*/
 Variables.prototype.updateTiledLayer = function(replace, preserveTime) {
   var self = this;
   var histYears = [1950, 1960, 1970, 1980, 1990, 2000];
@@ -643,19 +564,19 @@ Variables.prototype.updateTiledLayer = function(replace, preserveTime) {
     src85 = this.activeYear + season + this.tilesMapping85[ this.selectedVariable ];
   }
 
+
+  /*
+  * Replace! So we set existing tiles to "old", and wait a second to remove
+  * this means no flashing between layers – new one is drawn, old is removed a second later
+  */
   if ( replace ) {
-    if ( this.tileLayer ) {
-      this.map.removeLayer(this.tileLayer);
-      this.tileLayer = null;
-    }
-    if ( this.tileLayer85 ) {
-      this.map.removeLayer(this.tileLayer85);
-      this.tileLayer85 = null;
-    }
+    this.removeOldTiles();
   }
 
 
-  //rcp45 OR historical
+  /*
+  * Create the rcp45 tile layer
+  */
   this.tileLayer = new ol.layer.Tile({
     source: new ol.source.XYZ({
       urls:[
@@ -668,9 +589,14 @@ Variables.prototype.updateTiledLayer = function(replace, preserveTime) {
     })
   });
 
+  //add rcp45 tile layer to map
   this.tileLayer.set('layer_id', 'tile_layer');
   this.map.addLayer(this.tileLayer);
 
+
+  /*
+  * if after 2010, add the rcp85 tile layer to map as well!
+  */
   if ( src85 ) {
     //rcp85
     this.tileLayer85 = new ol.layer.Tile({
@@ -689,6 +615,11 @@ Variables.prototype.updateTiledLayer = function(replace, preserveTime) {
     this.map.addLayer(this.tileLayer85);
   }
 
+
+  /*
+  * We want map names to be on top of climate tiles, so add to map at end!
+  */
+  if ( this.nameLayer ) { this.map.removeLayer(this.nameLayer); } //don't add twice!
   this.nameLayer = new ol.layer.Tile({
     source: new ol.source.XYZ({
       url: 'http://{s}.basemaps.cartocdn.com/light_only_labels/{z}/{x}/{y}.png',
@@ -699,27 +630,64 @@ Variables.prototype.updateTiledLayer = function(replace, preserveTime) {
   this.nameLayer.set('layer_id', 'name_layer');
   this.map.addLayer(this.nameLayer);
 
+
+  //here we have to move some layers around so ordering remains right
   this.tileLayer.setZIndex(0);
   if ( src85 ) { this.tileLayer85.setZIndex(0); }
   if ( this.statesLayer) { this.statesLayer.setZIndex(4); }
   if ( this.vectorLayer) { this.vectorLayer.setZIndex(5); }
   this.nameLayer.setZIndex(6);
 
+  //IF after 2010, add the high/low swiper to map
   if ( src85 ) {
     $( "#sliderDiv" ).show();
     this.setSwipeMap();
   } else {
+    //else hide it
     $( "#sliderDiv" ).hide();
   }
 
+  //If new map tiles, reset time slider
   if ( replace && !preserveTime ) {
     this.setSlider();
   }
 
-}
+};
+
+
+/*
+* Removes old climate tiles from map
+* Timeout means new tiles will load before we remove old, so there isn't a
+* flash of map with no tiles at all
+*
+*/
+Variables.prototype.removeOldTiles = function() {
+  var self = this;
+
+  this.oldTile = this.tileLayer;
+  this.oldTile85 = this.tileLayer85;
+
+  setTimeout(function() {
+    if ( self.oldTile ) {
+      self.map.removeLayer(self.oldTile);
+      self.oldTile = null;
+    }
+    if ( self.oldTile85 ) {
+      self.map.removeLayer(self.oldTile85);
+      self.oldTile85 = null;
+    }
+  },900);
+};
 
 
 
+
+/*
+*
+* Logic for high/low emissions swiper
+*
+*
+*/
 Variables.prototype.setSwipeMap = function() {
   var self = this;
   var swipeVal = null, pos, wrapper;
@@ -734,7 +702,6 @@ Variables.prototype.setSwipeMap = function() {
       self.tileLayer.dispatchEvent('change');
       $(".emissions-low").fadeOut();
 			$(".emissions-high").fadeOut();
-      // self.map.render();
     },
     stop: function(event, ui) {
       pos = ui.helper.offset();
@@ -764,10 +731,16 @@ Variables.prototype.setSwipeMap = function() {
     var ctx = event.context;
     ctx.restore();
   });
-}
+};
 
 
 
+
+/*
+*
+* Creates time slider
+*
+*/
 Variables.prototype.setSlider = function() {
     var self = this;
     var year_slider = $('#variable-time-slider');
@@ -812,17 +785,20 @@ Variables.prototype.setSlider = function() {
 *
 */
 Variables.prototype.updateChart = function() {
-
   if ( this.cwg ) {
     this.cwg.update({
       variable : this.selectedVariable
     });
   }
-
 };
 
 
 
+
+/*
+* State fips for use in UI
+*
+*/
 Variables.prototype.stateFips = {
   "02": "AK",
   "01": "AL",
