@@ -62,11 +62,11 @@
 
         <!-- begin temperature chart and map -->
 
-        <div id="download-panel" class="hidden download-panel">
+        <div id="download-panel" class="hidden download-panel overlay">
           <div class="download-inner">
+            <a href="#" id="download-dismiss-button" class="icon icon-close"></a>
             <p>Use the following links to download this graph's data:</p>
             <ul></ul>
-            <div class="center"><button id="download-dismiss-button">Dismiss</button></div>
           </div>
         </div>
 
