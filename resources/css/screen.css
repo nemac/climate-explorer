@@ -174,7 +174,7 @@ article, aside, details, figcaption, figure, footer, header, hgroup, main, menu,
   content: "\e910";
 }
 
-.icon-season:before {
+.icon-season:before, .location-data-section .data-accordion .data-accordion-tab.data-map header .fs-dropdown button.fs-dropdown-selected:before {
   content: "\e911";
 }
 
@@ -4146,10 +4146,13 @@ body.detail-open #nav-overlay {
 .location-data-section .data-accordion .data-accordion-tab header .data-accordion-actions {
   display: none;
   float: right;
+  white-space: nowrap;
 }
 .location-data-section .data-accordion .data-accordion-tab header .data-accordion-actions a {
   display: inline-block;
-  padding: 10px;
+  padding: 8px;
+  font-size: 0.75rem;
+  line-height: 1.25em;
   color: #5f5f5f;
   -moz-transition: 0.25s;
   -o-transition: 0.25s;
@@ -4265,9 +4268,71 @@ body.detail-open #nav-overlay {
   left: -1px;
   border-color: transparent transparent transparent #fff;
 }
+.location-data-section .data-accordion .data-accordion-tab.data-map header .map-seasons-container {
+  float: left;
+}
+.location-data-section .data-accordion .data-accordion-tab.data-map header .fs-dropdown button {
+  height: auto;
+  padding: 8px 25px 8px 8px;
+  background: #fff;
+  border: none;
+  font-size: 0.75rem;
+  line-height: 1.25em;
+  color: #5f5f5f;
+}
+.location-data-section .data-accordion .data-accordion-tab.data-map header .fs-dropdown button.fs-dropdown-selected:before {
+  display: inline-block;
+  margin: 0 8px 0 0;
+  vertical-align: middle;
+  font-family: 'icomoon';
+  font-size: 1.25rem;
+  line-height: 1;
+  color: #f5442d;
+}
+.location-data-section .data-accordion .data-accordion-tab.data-map header .fs-dropdown button.fs-dropdown-selected:hover {
+  background: #d5e8f2;
+}
+.location-data-section .data-accordion .data-accordion-tab.data-map header .fs-dropdown button:after {
+  right: 5px;
+}
 .location-data-section .data-accordion .data-accordion-tab.data-map .data-accordion-content {
-  background: url(../img/bg_location-map.jpg) no-repeat center;
-  background-size: cover;
+  background: #ebebeb;
+}
+.location-data-section .data-accordion .data-accordion-tab.data-map .moveable {
+  position: absolute;
+  background: white;
+  width: 2px;
+  height: 100%;
+  padding: 0 !important;
+  margin: 0;
+  z-index: 200;
+  top: 0;
+  left: 50%;
+  cursor: col-resize;
+  display: none;
+  z-index: 2;
+}
+.location-data-section .data-accordion .data-accordion-tab.data-map .moveable .handle {
+  display: block;
+  position: absolute;
+  top: 45%;
+  left: -34px;
+  width: 70px;
+  height: 36px;
+  -moz-border-radius: 20px;
+  -webkit-border-radius: 20px;
+  border-radius: 20px;
+  background: url(../img/swipe-arrows-stripe.png) center center rgba(34, 105, 179, 0.87);
+}
+.location-data-section .data-accordion .data-accordion-tab.data-map .map-element {
+  display: block;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  text-align: center;
+  z-index: 1;
 }
 .location-data-section .data-accordion .data-accordion-tab.data-map.open .map {
   opacity: 1;
@@ -4291,8 +4356,13 @@ body.detail-open #nav-overlay {
   padding: 15px;
   background: rgba(255, 255, 255, 0.8);
   cursor: default;
-  overflow: hidden;
-  *zoom: 1;
+}
+.location-data-section .data-accordion .data-accordion-tab.open header:before, .location-data-section .data-accordion .data-accordion-tab.open header:after {
+  content: " ";
+  display: table;
+}
+.location-data-section .data-accordion .data-accordion-tab.open header:after {
+  clear: both;
 }
 .location-data-section .data-accordion .data-accordion-tab.open header h4 {
   position: static;
@@ -4425,7 +4495,7 @@ body.detail-open #nav-overlay {
 #location-temperature .data-options .active .accent-color {
   color: #f5442d;
 }
-#location-temperature button {
+#location-temperature .data-vars button {
   color: #f5442d;
 }
 
@@ -4452,7 +4522,7 @@ body.detail-open #nav-overlay {
 #location-precipitation .data-options .active .accent-color {
   color: #0058cf;
 }
-#location-precipitation button {
+#location-precipitation .data-vars button {
   color: #0058cf;
 }
 
@@ -4479,7 +4549,7 @@ body.detail-open #nav-overlay {
 #location-derived .data-options .active .accent-color {
   color: #904848;
 }
-#location-derived button {
+#location-derived .data-vars button {
   color: #904848;
 }
 

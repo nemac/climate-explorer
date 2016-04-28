@@ -260,8 +260,8 @@ Location.prototype.wire = function() {
       $('#'+map).show();
 
       var h = $('#'+map).parent().height();
-      $('#'+map).css({'height': h - 74 - 90 + 'px'});
-      $('.moveable').css({'height': h - 74 - 90 + 40 + 'px'});
+      //$('#'+map).css({'height': h - 74 - 90 + 'px'});
+      //$('.moveable').css({'height': h - 74 - 90 + 40 + 'px'});
 
       self.createGraphMaps(map);
 

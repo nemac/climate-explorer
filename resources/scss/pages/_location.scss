@@ -310,10 +310,13 @@
         .data-accordion-actions {
           display: none;
           float: right;
+          white-space: nowrap;
           
           a {
             display: inline-block;
-            padding: 10px;
+            padding: 8px;
+            font-size: 0.75rem;
+            line-height: 1.25em;
             color: $grey1;
             @include transition(0.25s);
             
@@ -429,15 +432,86 @@
       
       &.data-map {
         @include box-shadow(inset 10px 0 20px -10px transparentize($black, 0.5));
-          
+        
         &:before {
           left: -1px;
           border-color: transparent transparent transparent $white;
         }
         
+        header {
+          .map-seasons-container {
+            float: left;
+          }
+          
+          .fs-dropdown {
+            button {
+              height: auto;
+              padding: 8px 25px 8px 8px;
+              background: $white;
+              border: none;
+              font-size: 0.75rem;
+              line-height: 1.25em;
+              color: $grey1;
+              
+              &.fs-dropdown-selected {
+                &:before {
+                  display: inline-block;
+                  @extend .icon-season;
+                  margin: 0 8px 0 0;
+                  vertical-align: middle;
+                  font-family: 'icomoon';
+                  font-size: 1.25rem;
+                  line-height: 1;
+                  color: #f5442d;
+                }
+              
+                &:hover {
+                  background: $blue3;
+                }
+              }
+              
+              &:after {
+                right: 5px;
+              }
+            }
+          }
+        }
+        
         .data-accordion-content {
-          background: url(../img/bg_location-map.jpg) no-repeat center;
-          background-size: cover;
+          background: $grey2;
+        }
+        
+        .moveable {
+          position: absolute;
+          background: rgba(255,255,255,1);
+          width: 2px;
+          height: 100%;
+          padding: 0!important;
+          margin: 0;
+          z-index: 200;
+          top: 0;
+          left: 50%;
+          cursor: col-resize;
+          display: none;
+          z-index: 2;
+          
+          .handle {
+            display: block;
+            position: absolute;
+            top: 45%;
+            left: -34px;
+            width: 70px;
+            height: 36px;
+            @include border-radius(20px);
+            background: url(../img/swipe-arrows-stripe.png) center center rgba(34,105,179,0.87);
+          }
+        }
+        
+        .map-element {
+          display: block;
+          @include full-size;
+          text-align:center;
+          z-index: 1;
         }
         
         &.open {
@@ -465,7 +539,7 @@
           padding: 15px;
           background: transparentize($white, 0.2);
           cursor: default;
-          @include clearfix;
+          @include legacy-clearfix;
           
           h4 {
             position: static;
@@ -623,8 +697,10 @@
     }
   }
   
-  button {
-    color: $orange1;
+  .data-vars {
+    button {
+      color: $orange1;
+    }
   }
 }
 
@@ -663,8 +739,11 @@
     }
   }
   
-  button {
-    color: $blue1;
+  
+  .data-vars {
+    button {
+      color: $blue1;
+    }
   }
 }
 
@@ -703,7 +782,9 @@
     }
   }
   
-  button {
-    color: $brown1;
+  .data-vars {
+    button {
+      color: $brown1;
+    }
   }
 }
