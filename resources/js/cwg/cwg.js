@@ -433,20 +433,21 @@ $(document).ready(function() {
       $ul.empty();
       var dataurls = c.dataurls();
       if (dataurls.hist_obs) {
-          $ul.append($("<li><a href='"+dataurls.hist_obs+"'>Observed Data</a></li>"));
+          $ul.append($("<li><a href='"+dataurls.hist_obs+"' class='button display-block border-white hover-bg-white'><span class='icon icon-arrow-down'></span>Observed Data</a></li>"));
       }
       if (dataurls.hist_mod) {
-          $ul.append($("<li><a href='"+dataurls.hist_mod+"'>Historical Modeled Data</a></li>"));
+          $ul.append($("<li><a href='"+dataurls.hist_mod+"' class='button display-block border-white hover-bg-white'><span class='icon icon-arrow-down'></span>Historical Modeled Data</a></li>"));
       }
       if (dataurls.proj_mod) {
-          $ul.append($("<li><a href='"+dataurls.proj_mod+"'>Projected Modeled Data</a></li>"));
+          $ul.append($("<li><a href='"+dataurls.proj_mod+"' class='button display-block border-white hover-bg-white'><span class='icon icon-arrow-down'></span>Projected Modeled Data</a></li>"));
       }
-      $('#download-panel').removeClass("hidden");
+      
+      $('#download-panel').fadeIn(250);
 
     });
 
     $('#download-dismiss-button').click(function() {
-        $('#download-panel').addClass("hidden");
+      $('#download-panel').fadeOut(250);
     });
 
     // download hook
