@@ -77,7 +77,7 @@
                   
                   <ul class="data-options">
                     <li class="active accent-border">
-                      <h4 id="var-tasmax"><a href="#" class="text accent-color">Mean Daily Maximum</a><a href="#detail-temperature" class="icon icon-help nav-detail-link"></a></h4>
+                      <h4 id="var-tasmax"><a href="#" class="text accent-color">Mean Daily Maximum</a><a href="#detail-tasmax" class="icon icon-help nav-detail-link"></a></h4>
                       <ul class="location-resolution">
                         <li><a>Annual</a></li>
                         <li><a>Seasonal</a></li>
@@ -86,7 +86,7 @@
                     </li>
 
                     <li class="accent-border">
-                      <h4 id="var-tasmin"><a href="#" class="text accent-color">Mean Daily Minimum</a><a href="#" class="icon icon-help nav-detail-link"></a></h4>
+                      <h4 id="var-tasmin"><a href="#" class="text accent-color">Mean Daily Minimum</a><a href="#detail-tasmin" class="icon icon-help nav-detail-link"></a></h4>
                       <ul class="location-resolution">
                         <li><a>Annual</a></li>
                         <li><a>Seasonal</a></li>
@@ -95,19 +95,18 @@
                     </li>
 
                     <li class="accent-border">
-                      <h4 id="var-days_tmax_abv_35.0"><a href="#" class="text accent-color">Days with Maximum Above 95&deg;</a><a href="#" class="icon icon-help nav-detail-link"></a></h4>
+                      <h4 id="var-days_tmax_abv_35.0"><a href="#" class="text accent-color">Days with Maximum Above 95&deg;</a><a href="#detail-days_tmax_abv_35" class="icon icon-help nav-detail-link"></a></h4>
                       <ul class="location-resolution">
                         <li><a>Annual</a></li>
                       </ul>
                     </li>
 
                     <li class="accent-border">
-                      <h4 id="var-days_tmin_blw_0.0"><a href="#" class="text accent-color">Days with Minimum Below 32º</a><a href="#" class="icon icon-help nav-detail-link"></a></h4>
+                      <h4 id="var-days_tmin_blw_0.0"><a href="#" class="text accent-color">Days with Minimum Below 32º</a><a href="#detail-days_tmin_blw_0" class="icon icon-help nav-detail-link"></a></h4>
                       <ul>
                         <li><a>Annual</a></li>
                       </ul>
                     </li>
-
                   </ul>
 
                   <form onsubmit="return false;">
@@ -261,32 +260,39 @@
                               </span>
                             </h4>
 
-                            <div class="select map-seasons-container" id="temperature-map-season">
-                              <select class="dropdown">
-                                <option value="summer">Summer</option>
-                                <option value="fall">Fall</option>
-                                <option value="winter">Winter</option>
-                                <option value="spring">Spring</option>
-                              </select>
-                            </div>
-
                             <div class="data-accordion-actions">
+                              <div class="select map-seasons-container" id="temperature-map-season">
+                                <select class="dropdown">
+                                  <option value="summer">Summer</option>
+                                  <option value="fall">Fall</option>
+                                  <option value="winter">Winter</option>
+                                  <option value="spring">Spring</option>
+                                </select>
+                              </div>
+                              
                               <a href="#" class="how-to-read"><span class="icon icon-help"></span>How to read this</a>
                               <a href="#" class="download-image"><span class="icon icon-download-image"></span>Image</a>
                               <a href="#" class="download-data"><span class="icon icon-download-chart"></span>Data</a>
                             </div>
                           </header>
-                          <div class="moveable" id="temperature-mapSliderDiv" style="top: 74px; left: 50%; position: absolute;">
-                            <div id="temperature-swipeImg" style="position:absolute;width:85px;left:-35px;height:50px;top:45%;display:block; background-image: url(http://tmappsevents.esri.com/website/swipe-sandy-custom/resources/icons/swipe-arrows-stripe.png);">
-                      				<div class="emissions-low">Low Emissions</div>
-                      				<div class="emissions-high">High Emissions</div>
-                      			</div>
-                          </div>
-                          <div id="temperature-map" class=""></div>
-                          <div class="year" id="temperature-map-slider-container">
-                            <div class="year-label year-min">1950</div>
-                            <div class="" id="temperature-map-time-slider" data-min="1950" data-max="2090" data-value="2090"></div>
-                            <div class="year-label year-max">2090</div>
+                          
+                          <div class="data-accordion-content map">
+                            <div class="moveable" id="temperature-mapSliderDiv">
+                              <div id="temperature-swipeImg" class="handle">
+                        				<div class="emissions-low">Low Emissions</div>
+                        				<div class="emissions-high">High Emissions</div>
+                        			</div>
+                            </div>
+                            
+                            <div id="temperature-map" class="map-element"></div>
+
+                            <div class="year" id="temperature-map-slider-container">
+                              <div class="year-label year-min">1950</div>
+                              <div class="" id="temperature-map-time-slider" data-min="1950" data-max="2090" data-value="2090"></div>
+                              <div class="year-label year-max">2090</div>
+                            </div>
+                            
+                            <a href="variables.php" class="full-map-btn button bg-white color-orange arrow-right">View full map</a>
                           </div>
                         </div>
                     </div>
@@ -303,7 +309,7 @@
                   
                   <ul class="data-options">
                     <li class="active accent-border">
-                      <h4 id="var-pr"><a href="#" class="text accent-color">Mean Daily Precipitation</a><a href="#" class="icon icon-help nav-detail-link"></a></h4>
+                      <h4 id="var-pr"><a href="#" class="text accent-color">Mean Daily Precipitation</a><a href="#detail-pr" class="icon icon-help nav-detail-link"></a></h4>
                       <ul class="location-resolution">
                         <li><a>Annual</a></li>
                         <li><a>Seasonal</a></li>
@@ -312,7 +318,7 @@
                     </li>
 
                     <li class="accent-border">
-                      <h4 id="var-days_prcp_abv_25.3"><a href="#" class="text accent-color">Days of Precipitation Above 1in</a><a href="#" class="icon icon-help nav-detail-link"></a></h4>
+                      <h4 id="var-days_prcp_abv_25.3"><a href="#" class="text accent-color">Days of Precipitation Above 1in</a><a href="#detail-pr" class="icon icon-help nav-detail-link"></a></h4>
                       <ul class="location-resolution">
                         <li><a>Annual</a></li>
                       </ul>
@@ -457,44 +463,52 @@
                             </div>
                         </div>
                       </div>
+                      
+                      <div id="precipitation-map-container" class="data-accordion-tab data-map accent-background">
+                        <header>
+                          <h4 class="accent-color">
+                            <span class="icon icon-district"></span>
+                            <span class="text">
+                              Map<span class="full-title">: Mean Daily Precipitation</span>
+                              <span class="source">Source: <a href="#" target="_blank">NOAA, 2014</a></span>
+                            </span>
+                          </h4>
 
-                        <div id="precipitation-map-container" class="data-accordion-tab data-map accent-background">
-                          <header>
-                              <h4 class="accent-color">
-                                <span class="icon icon-district"></span>
-                                <span class="text">
-                                  Map<span class="full-title">: <?php echo $county ?></span>
-                                  <span class="source" id="precip-chart-name">Mean Daily Precipitation</span>
-                                </span>
-                              </h4>
-
-                              <div class="select border map-seasons-container" id="precipitation-map-season">
-                                <select class="dropdown">
-                                  <option value="summer">Summer</option>
-                                  <option value="fall">Fall</option>
-                                  <option value="winter">Winter</option>
-                                  <option value="spring">Spring</option>
-                                </select>
-                              </div>
-
-                              <div class="data-accordion-actions">
-                                <a href="#" class="download-image"><span class="icon icon-download-image"></span>Image</a>
-                                <a href="#" class="download-data"><span class="icon icon-download-chart"></span>Data</a>
-                              </div>
-                          </header>
-                          <div class="moveable" id="precipitation-mapSliderDiv" style="top: 74px; left: 50%; position: absolute;">
-                            <div id="precipitation-swipeImg" style="position:absolute;width:85px;left:-35px;height:50px;top:45%;display:block; background-image: url(http://tmappsevents.esri.com/website/swipe-sandy-custom/resources/icons/swipe-arrows-stripe.png);">
+                          <div class="data-accordion-actions">
+                            <div class="select map-seasons-container" id="precipitation-map-season">
+                              <select class="dropdown">
+                                <option value="summer">Summer</option>
+                                <option value="fall">Fall</option>
+                                <option value="winter">Winter</option>
+                                <option value="spring">Spring</option>
+                              </select>
+                            </div>
+                            
+                            <a href="#" class="how-to-read"><span class="icon icon-help"></span>How to read this</a>
+                            <a href="#" class="download-image"><span class="icon icon-download-image"></span>Image</a>
+                            <a href="#" class="download-data"><span class="icon icon-download-chart"></span>Data</a>
+                          </div>
+                        </header>
+                        
+                        <div class="data-accordion-content map">
+                          <div class="moveable" id="precipitation-mapSliderDiv">
+                            <div id="precipitation-swipeImg" class="handle">
                       				<div class="emissions-low">Low Emissions</div>
                       				<div class="emissions-high">High Emissions</div>
                       			</div>
                           </div>
-                          <div class="year" id="precipitation-map-year-slider-container">
+                          
+                          <div id="precipitation-map" class="map-element"></div>
+
+                          <div class="year" id="precipitation-map-slider-container">
                             <div class="year-label year-min">1950</div>
                             <div class="" id="precipitation-map-time-slider" data-min="1950" data-max="2090" data-value="2090"></div>
                             <div class="year-label year-max">2090</div>
                           </div>
-                          <div id="precipitation-map" class=""></div>
+                            
+                          <a href="variables.php" class="full-map-btn button bg-white color-orange arrow-right">View full map</a>
                         </div>
+                      </div>
                     </div>
                 </div>
             </div>
@@ -510,14 +524,14 @@
                   
                   <ul class="data-options">
                     <li class="active accent-border">
-                      <h4 id="var-heating_degree_day_18.3"><a href="#" class="text accent-color">Heating Degree Days</a><a href="#" class="icon icon-help nav-detail-link"></a></h4>
+                      <h4 id="var-heating_degree_day_18.3"><a href="#" class="text accent-color">Heating Degree Days</a><a href="#detail-heating_degree_day_18" class="icon icon-help nav-detail-link"></a></h4>
                       <ul>
                         <li><a>Annual</a></li>
                       </ul>
                     </li>
 
                     <li class="accent-border">
-                      <h4 id="var-cooling_degree_day_18.3"><a href="#" class="text accent-color">Cooling Degree Days</a><a href="#" class="icon icon-help nav-detail-link"></a></h4>
+                      <h4 id="var-cooling_degree_day_18.3"><a href="#" class="text accent-color">Cooling Degree Days</a><a href="#detail-cooling_degree_day_18" class="icon icon-help nav-detail-link"></a></h4>
                       <ul>
                         <li><a>Annual</a></li>
                       </ul>
@@ -665,7 +679,7 @@
                             </div>
                           </div>
                         </div>
-
+                        
                         <div id="derived-map-container" class="data-accordion-tab data-map accent-background">
                           <header>
                             <h4 class="accent-color">
@@ -675,25 +689,43 @@
                                 <span class="source">Source: <a href="#" target="_blank">NOAA, 2014</a></span>
                               </span>
                             </h4>
-
+  
                             <div class="data-accordion-actions">
+                              <div class="select map-seasons-container" id="derived-map-season">
+                                <select class="dropdown">
+                                  <option value="summer">Summer</option>
+                                  <option value="fall">Fall</option>
+                                  <option value="winter">Winter</option>
+                                  <option value="spring">Spring</option>
+                                </select>
+                              </div>
+                              
+                              <a href="#" class="how-to-read"><span class="icon icon-help"></span>How to read this</a>
                               <a href="#" class="download-image"><span class="icon icon-download-image"></span>Image</a>
                               <a href="#" class="download-data"><span class="icon icon-download-chart"></span>Data</a>
                             </div>
                           </header>
-                          <div class="moveable" id="derived-mapSliderDiv" style="top: 74px; left: 50%; position: absolute;">
-                            <div id="derived-swipeImg" style="position:absolute;width:85px;left:-35px;height:50px;top:45%;display:block; background-image: url(http://tmappsevents.esri.com/website/swipe-sandy-custom/resources/icons/swipe-arrows-stripe.png);">
-                      				<div class="emissions-low">Low Emissions</div>
-                      				<div class="emissions-high">High Emissions</div>
-                      			</div>
+                          
+                          <div class="data-accordion-content map">
+                            <div class="moveable" id="derived-mapSliderDiv">
+                              <div id="derived-swipeImg" class="handle">
+                        				<div class="emissions-low">Low Emissions</div>
+                        				<div class="emissions-high">High Emissions</div>
+                        			</div>
+                            </div>
+                            
+                            <div id="derived-map" class="map-element"></div>
+  
+                            <div class="year" id="derived-map-slider-container">
+                              <div class="year-label year-min">1950</div>
+                              <div class="" id="derived-map-time-slider" data-min="1950" data-max="2090" data-value="2090"></div>
+                              <div class="year-label year-max">2090</div>
+                            </div>
+                            
+                            <a href="variables.php" class="full-map-btn button bg-white color-orange arrow-right">View full map</a>
                           </div>
-                          <div class="year" id="derived-map-year-slider-container">
-                            <div class="year-label year-min">1950</div>
-                            <div class="" id="derived-map-time-slider" data-min="1950" data-max="2090" data-value="2090"></div>
-                            <div class="year-label year-max">2090</div>
-                          </div>
-                          <div id="derived-map" class=""></div>
                         </div>
+
                     </div>
                 </div>
             </div>

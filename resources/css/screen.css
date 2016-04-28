@@ -174,7 +174,7 @@ article, aside, details, figcaption, figure, footer, header, hgroup, main, menu,
   content: "\e910";
 }
 
-.icon-season:before {
+.icon-season:before, .location-data-section .data-accordion .data-accordion-tab.data-map header .fs-dropdown button.fs-dropdown-selected:before {
   content: "\e911";
 }
 
@@ -2612,6 +2612,12 @@ h6 {
 .button.color-white:before, .button.color-white:after {
   background: #fff;
 }
+.button.color-orange {
+  color: #f5442d;
+}
+.button.color-orange:before, .button.color-orange:after {
+  background: #f5442d;
+}
 .button.border-white {
   border-color: #fff;
   color: #fff;
@@ -2686,6 +2692,31 @@ h6 {
   margin-left: -5px;
   border: 5px solid #fff;
   border-color: #fff transparent transparent transparent;
+}
+
+.moveable {
+  position: absolute;
+  top: 0;
+  left: 50%;
+  width: 5px;
+  height: 100%;
+  margin: 0;
+  padding: 0 !important;
+  background: #fff;
+  z-index: 200;
+  cursor: col-resize;
+}
+.moveable .handle {
+  display: block;
+  position: absolute;
+  top: 45%;
+  left: -34px;
+  width: 70px;
+  height: 36px;
+  -moz-border-radius: 20px;
+  -webkit-border-radius: 20px;
+  border-radius: 20px;
+  background: url(../img/swipe-arrows-stripe.png) center center rgba(34, 105, 179, 0.87);
 }
 
 .share-widget {
@@ -3803,7 +3834,7 @@ body.detail-open #nav-overlay {
 .page-type-location #viewport {
   top: 20px;
   height: calc(100% - 40px);
-  margin-top: 115px;
+  margin-top: 95px;
 }
 .page-type-location #main-content-wrap {
   padding: 2%;
@@ -4146,10 +4177,13 @@ body.detail-open #nav-overlay {
 .location-data-section .data-accordion .data-accordion-tab header .data-accordion-actions {
   display: none;
   float: right;
+  white-space: nowrap;
 }
 .location-data-section .data-accordion .data-accordion-tab header .data-accordion-actions a {
   display: inline-block;
-  padding: 10px;
+  padding: 8px;
+  font-size: 0.75rem;
+  line-height: 1.25em;
   color: #5f5f5f;
   -moz-transition: 0.25s;
   -o-transition: 0.25s;
@@ -4195,7 +4229,7 @@ body.detail-open #nav-overlay {
 }
 .location-data-section .data-accordion .data-accordion-tab.data-chart .chart-wrap {
   position: absolute;
-  top: 17%;
+  top: 12%;
   left: 5%;
   width: 90%;
   height: 60%;
@@ -4265,9 +4299,58 @@ body.detail-open #nav-overlay {
   left: -1px;
   border-color: transparent transparent transparent #fff;
 }
+.location-data-section .data-accordion .data-accordion-tab.data-map header .map-seasons-container {
+  float: left;
+}
+.location-data-section .data-accordion .data-accordion-tab.data-map header .fs-dropdown button {
+  height: auto;
+  padding: 8px 25px 8px 8px;
+  background: #fff;
+  border: none;
+  font-size: 0.75rem;
+  line-height: 1.25em;
+  color: #5f5f5f;
+}
+.location-data-section .data-accordion .data-accordion-tab.data-map header .fs-dropdown button.fs-dropdown-selected:before {
+  display: inline-block;
+  margin: 0 8px 0 0;
+  vertical-align: middle;
+  font-family: 'icomoon';
+  font-size: 1.25rem;
+  line-height: 1;
+  color: #f5442d;
+}
+.location-data-section .data-accordion .data-accordion-tab.data-map header .fs-dropdown button.fs-dropdown-selected:hover {
+  background: #d5e8f2;
+}
+.location-data-section .data-accordion .data-accordion-tab.data-map header .fs-dropdown button:after {
+  right: 5px;
+}
 .location-data-section .data-accordion .data-accordion-tab.data-map .data-accordion-content {
-  background: url(../img/bg_location-map.jpg) no-repeat center;
-  background-size: cover;
+  background: #ebebeb;
+}
+.location-data-section .data-accordion .data-accordion-tab.data-map .moveable {
+  width: 2px;
+  display: none;
+  z-index: 2;
+}
+.location-data-section .data-accordion .data-accordion-tab.data-map .map-element {
+  display: block;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  text-align: center;
+  z-index: 1;
+}
+.location-data-section .data-accordion .data-accordion-tab.data-map .full-map-btn {
+  display: block;
+  position: absolute;
+  right: 20px;
+  bottom: 60px;
+  padding: 8px 30px 8px 8px;
+  z-index: 2;
 }
 .location-data-section .data-accordion .data-accordion-tab.data-map.open .map {
   opacity: 1;
@@ -4291,8 +4374,13 @@ body.detail-open #nav-overlay {
   padding: 15px;
   background: rgba(255, 255, 255, 0.8);
   cursor: default;
-  overflow: hidden;
-  *zoom: 1;
+}
+.location-data-section .data-accordion .data-accordion-tab.open header:before, .location-data-section .data-accordion .data-accordion-tab.open header:after {
+  content: " ";
+  display: table;
+}
+.location-data-section .data-accordion .data-accordion-tab.open header:after {
+  clear: both;
 }
 .location-data-section .data-accordion .data-accordion-tab.open header h4 {
   position: static;
@@ -4425,7 +4513,7 @@ body.detail-open #nav-overlay {
 #location-temperature .data-options .active .accent-color {
   color: #f5442d;
 }
-#location-temperature button {
+#location-temperature .data-vars button {
   color: #f5442d;
 }
 
@@ -4452,7 +4540,7 @@ body.detail-open #nav-overlay {
 #location-precipitation .data-options .active .accent-color {
   color: #0058cf;
 }
-#location-precipitation button {
+#location-precipitation .data-vars button {
   color: #0058cf;
 }
 
@@ -4479,7 +4567,7 @@ body.detail-open #nav-overlay {
 #location-derived .data-options .active .accent-color {
   color: #904848;
 }
-#location-derived button {
+#location-derived .data-vars button {
   color: #904848;
 }
 
