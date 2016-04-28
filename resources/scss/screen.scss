@@ -335,6 +335,90 @@ h6 {
   }
 }
 
+// chart legend
+
+.chart-legend {
+  @include legacy-clearfix;
+  
+  .legend-item {
+    float: left;
+    width: 18%;
+    margin: 0 1%;
+    font-size: 0.67em;
+    line-height: 1.5em;
+    text-align: left;
+    cursor: pointer;
+    padding: 6px;
+    border: 1px solid #FFF;
+    @include transition(0.25s);
+
+    &:hover {
+      border:1px solid #EEE;
+    }
+    
+    &.selected {
+      background: $blue3;
+      @include box-shadow(inset 0 2px 6px transparentize($black, 0.75));
+    }
+  }
+  
+  .legend-item-block {
+    height: 20px;
+  }
+  
+  .legend-item-line {
+    height: 5px;
+  }
+  
+  .legend-item-block {
+    &#rcp45-block, 
+    &#preciprcp45-block, &
+    #derivercp45-block {
+      background:#99BCEC;
+    }
+    
+    &#rcp85-block,
+    &#preciprcp85-block,
+    &#derivercp85-block {
+      background:#fbb4ab;
+    }
+  
+    &#historical-block, 
+    &#preciphistorical-block, 
+    &#derivehistorical-block {
+      background:#D6D6D6;
+    }
+  }
+  
+  .legend-item-line {
+    &#over-baseline-block,
+    &#precipover-baseline-block, 
+    &#deriveover-baseline-block {
+      background:#CD6760;
+    }
+   
+    &#under-baseline-block, 
+    &#precipunder-baseline-block, 
+    &#deriveunder-baseline-block {
+      margin-top:20px;
+      background:#6194C8;
+    }
+    
+    &#rcp45-line, 
+    &#preciprcp45-line,  
+    &#derivercp45-line {
+      margin-top:20px;
+      background:#0058CF;
+    }
+    
+    &#rcp85-line, 
+    &#preciprcp85-line, 
+    &#derivercp85-line {
+      background:#F5442D;
+    }
+  }
+}
+
 // SOCIAL
 
 .share-widget {

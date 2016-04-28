@@ -2719,6 +2719,68 @@ h6 {
   background: url(../img/swipe-arrows-stripe.png) center center rgba(34, 105, 179, 0.87);
 }
 
+.chart-legend:before, .chart-legend:after {
+  content: " ";
+  display: table;
+}
+.chart-legend:after {
+  clear: both;
+}
+.chart-legend .legend-item {
+  float: left;
+  width: 18%;
+  margin: 0 1%;
+  font-size: 0.67em;
+  line-height: 1.5em;
+  text-align: left;
+  cursor: pointer;
+  padding: 6px;
+  border: 1px solid #FFF;
+  -moz-transition: 0.25s;
+  -o-transition: 0.25s;
+  -webkit-transition: 0.25s;
+  transition: 0.25s;
+}
+.chart-legend .legend-item:hover {
+  border: 1px solid #EEE;
+}
+.chart-legend .legend-item.selected {
+  background: #d5e8f2;
+  -moz-box-shadow: inset 0 2px 6px rgba(0, 0, 0, 0.25);
+  -webkit-box-shadow: inset 0 2px 6px rgba(0, 0, 0, 0.25);
+  box-shadow: inset 0 2px 6px rgba(0, 0, 0, 0.25);
+}
+.chart-legend .legend-item-block {
+  height: 20px;
+}
+.chart-legend .legend-item-line {
+  height: 5px;
+}
+.chart-legend .legend-item-block#rcp45-block, .chart-legend .legend-item-block#preciprcp45-block, .chart-legend .legend-item-block
+#derivercp45-block {
+  background: #99BCEC;
+}
+.chart-legend .legend-item-block#rcp85-block, .chart-legend .legend-item-block#preciprcp85-block, .chart-legend .legend-item-block#derivercp85-block {
+  background: #fbb4ab;
+}
+.chart-legend .legend-item-block#historical-block, .chart-legend .legend-item-block#preciphistorical-block, .chart-legend .legend-item-block#derivehistorical-block {
+  background: #D6D6D6;
+}
+.chart-legend .legend-item-line#over-baseline-block, .chart-legend .legend-item-line#precipover-baseline-block, .chart-legend .legend-item-line#deriveover-baseline-block {
+  background: #CD6760;
+}
+.chart-legend .legend-item-line#under-baseline-block, .chart-legend .legend-item-line#precipunder-baseline-block, .chart-legend .legend-item-line#deriveunder-baseline-block {
+  margin-top: 20px;
+  background: #6194C8;
+}
+.chart-legend .legend-item-line#rcp45-line, .chart-legend .legend-item-line#preciprcp45-line, .chart-legend .legend-item-line#derivercp45-line {
+  margin-top: 20px;
+  background: #0058CF;
+}
+.chart-legend .legend-item-line#rcp85-line, .chart-legend .legend-item-line#preciprcp85-line, .chart-legend .legend-item-line#derivercp85-line {
+  background: #F5442D;
+}
+
 .share-widget {
   position: absolute;
   top: 20px;
@@ -4232,14 +4294,14 @@ body.detail-open #nav-overlay {
   top: 12%;
   left: 5%;
   width: 90%;
-  height: 60%;
+  height: 75%;
 }
 .location-data-section .data-accordion .data-accordion-tab.data-chart .chart-canvas {
   width: 100%;
-  height: 100%;
+  height: 80%;
 }
 .location-data-section .data-accordion .data-accordion-tab.data-chart .chart-legend {
-  text-align: right;
+  height: 20%;
 }
 .location-data-section .data-accordion .data-accordion-tab.data-chart .chart-legend ul li {
   display: inline-block;
@@ -4259,10 +4321,10 @@ body.detail-open #nav-overlay {
 }
 .location-data-section .data-accordion .data-accordion-tab.data-chart .range {
   position: absolute;
-  bottom: 5%;
+  bottom: 0%;
   left: 5%;
   width: 90%;
-  height: 60px;
+  height: 10%;
 }
 .location-data-section .data-accordion .data-accordion-tab.data-chart .chart-range {
   position: absolute;
