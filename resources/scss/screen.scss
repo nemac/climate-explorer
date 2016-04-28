@@ -196,6 +196,15 @@ h6 {
     }
   }
   
+  &.color-orange {
+    color: $orange1;
+    
+    &:before,
+    &:after {
+      background: $orange1;
+    }
+  }
+  
   // borders
     
   &.border-white {
@@ -297,6 +306,32 @@ h6 {
     margin-left: -5px;
     border: 5px solid $white;
     border-color: $white transparent transparent transparent;
+  }
+}
+
+// swipe
+
+.moveable {
+  position: absolute;
+  top: 0;
+  left: 50%;
+  width: 5px;
+  height: 100%;
+  margin: 0;
+  padding: 0!important;
+  background: $white;
+  z-index: 200;
+  cursor: col-resize;
+    
+  .handle {
+    display: block;
+    position: absolute;
+    top: 45%;
+    left: -34px;
+    width: 70px;
+    height: 36px;
+    @include border-radius(20px);
+    background: url(../img/swipe-arrows-stripe.png) center center rgba(34,105,179,0.87);
   }
 }
 

@@ -2612,6 +2612,12 @@ h6 {
 .button.color-white:before, .button.color-white:after {
   background: #fff;
 }
+.button.color-orange {
+  color: #f5442d;
+}
+.button.color-orange:before, .button.color-orange:after {
+  background: #f5442d;
+}
 .button.border-white {
   border-color: #fff;
   color: #fff;
@@ -2686,6 +2692,31 @@ h6 {
   margin-left: -5px;
   border: 5px solid #fff;
   border-color: #fff transparent transparent transparent;
+}
+
+.moveable {
+  position: absolute;
+  top: 0;
+  left: 50%;
+  width: 5px;
+  height: 100%;
+  margin: 0;
+  padding: 0 !important;
+  background: #fff;
+  z-index: 200;
+  cursor: col-resize;
+}
+.moveable .handle {
+  display: block;
+  position: absolute;
+  top: 45%;
+  left: -34px;
+  width: 70px;
+  height: 36px;
+  -moz-border-radius: 20px;
+  -webkit-border-radius: 20px;
+  border-radius: 20px;
+  background: url(../img/swipe-arrows-stripe.png) center center rgba(34, 105, 179, 0.87);
 }
 
 .share-widget {
@@ -3803,7 +3834,7 @@ body.detail-open #nav-overlay {
 .page-type-location #viewport {
   top: 20px;
   height: calc(100% - 40px);
-  margin-top: 115px;
+  margin-top: 95px;
 }
 .page-type-location #main-content-wrap {
   padding: 2%;
@@ -4198,7 +4229,7 @@ body.detail-open #nav-overlay {
 }
 .location-data-section .data-accordion .data-accordion-tab.data-chart .chart-wrap {
   position: absolute;
-  top: 17%;
+  top: 12%;
   left: 5%;
   width: 90%;
   height: 60%;
@@ -4299,30 +4330,9 @@ body.detail-open #nav-overlay {
   background: #ebebeb;
 }
 .location-data-section .data-accordion .data-accordion-tab.data-map .moveable {
-  position: absolute;
-  background: white;
   width: 2px;
-  height: 100%;
-  padding: 0 !important;
-  margin: 0;
-  z-index: 200;
-  top: 0;
-  left: 50%;
-  cursor: col-resize;
   display: none;
   z-index: 2;
-}
-.location-data-section .data-accordion .data-accordion-tab.data-map .moveable .handle {
-  display: block;
-  position: absolute;
-  top: 45%;
-  left: -34px;
-  width: 70px;
-  height: 36px;
-  -moz-border-radius: 20px;
-  -webkit-border-radius: 20px;
-  border-radius: 20px;
-  background: url(../img/swipe-arrows-stripe.png) center center rgba(34, 105, 179, 0.87);
 }
 .location-data-section .data-accordion .data-accordion-tab.data-map .map-element {
   display: block;
@@ -4333,6 +4343,14 @@ body.detail-open #nav-overlay {
   height: 100%;
   text-align: center;
   z-index: 1;
+}
+.location-data-section .data-accordion .data-accordion-tab.data-map .full-map-btn {
+  display: block;
+  position: absolute;
+  right: 20px;
+  bottom: 60px;
+  padding: 8px 30px 8px 8px;
+  z-index: 2;
 }
 .location-data-section .data-accordion .data-accordion-tab.data-map.open .map {
   opacity: 1;

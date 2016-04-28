@@ -50,7 +50,7 @@
           </select>
         </li>
 
-        <li class="toggle">
+        <li class="toggle border">
           <a href="#info-counties" class="help icon icon-help"></a>
           <label for="counties-overlay-toggle"><span class="text">Data by Counties</span>
             <input type="checkbox" name="counties-overlay-toggle" id="counties-overlay-toggle" value="1" autocomplete="off">
@@ -63,6 +63,8 @@
             </div>
           </div>
         </li>
+        
+        <li class="about-link"><a href="#detail-temperature" class="nav-detail-link">About Average Mean Temperature</a></li>
       </ul>
 
       <div id="vars-legend" class="legend-wrap left-filler">
@@ -97,8 +99,8 @@
         </div>
 
 
-        <div class="moveable" id="sliderDiv" style="top: 0px; left: 50%; position: absolute;">
-          <div id="swipeImg" style="position:absolute;width:85px;left:-35px;height:50px;top:45%;display:block; background-image: url(http://tmappsevents.esri.com/website/swipe-sandy-custom/resources/icons/swipe-arrows-stripe.png);">
+        <div class="moveable" id="sliderDiv">
+          <div id="swipeImg" class="handle">
     				<div class="emissions-low">Low Emissions</div>
     				<div class="emissions-high">High Emissions</div>
     			</div>

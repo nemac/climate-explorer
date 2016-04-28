@@ -77,7 +77,7 @@
                   
                   <ul class="data-options">
                     <li class="active accent-border">
-                      <h4 id="var-tasmax"><a href="#" class="text accent-color">Mean Daily Maximum</a><a href="#detail-temperature" class="icon icon-help nav-detail-link"></a></h4>
+                      <h4 id="var-tasmax"><a href="#" class="text accent-color">Mean Daily Maximum</a><a href="#detail-tasmax" class="icon icon-help nav-detail-link"></a></h4>
                       <ul class="location-resolution">
                         <li><a>Annual</a></li>
                         <li><a>Seasonal</a></li>
@@ -86,7 +86,7 @@
                     </li>
 
                     <li class="accent-border">
-                      <h4 id="var-tasmin"><a href="#" class="text accent-color">Mean Daily Minimum</a><a href="#" class="icon icon-help nav-detail-link"></a></h4>
+                      <h4 id="var-tasmin"><a href="#" class="text accent-color">Mean Daily Minimum</a><a href="#detail-tasmin" class="icon icon-help nav-detail-link"></a></h4>
                       <ul class="location-resolution">
                         <li><a>Annual</a></li>
                         <li><a>Seasonal</a></li>
@@ -95,19 +95,18 @@
                     </li>
 
                     <li class="accent-border">
-                      <h4 id="var-days_tmax_abv_35.0"><a href="#" class="text accent-color">Days with Maximum Above 95&deg;</a><a href="#" class="icon icon-help nav-detail-link"></a></h4>
+                      <h4 id="var-days_tmax_abv_35.0"><a href="#" class="text accent-color">Days with Maximum Above 95&deg;</a><a href="#detail-days_tmax_abv_35" class="icon icon-help nav-detail-link"></a></h4>
                       <ul class="location-resolution">
                         <li><a>Annual</a></li>
                       </ul>
                     </li>
 
                     <li class="accent-border">
-                      <h4 id="var-days_tmin_blw_0.0"><a href="#" class="text accent-color">Days with Minimum Below 32º</a><a href="#" class="icon icon-help nav-detail-link"></a></h4>
+                      <h4 id="var-days_tmin_blw_0.0"><a href="#" class="text accent-color">Days with Minimum Below 32º</a><a href="#detail-days_tmin_blw_0" class="icon icon-help nav-detail-link"></a></h4>
                       <ul>
                         <li><a>Annual</a></li>
                       </ul>
                     </li>
-
                   </ul>
 
                   <form onsubmit="return false;">
@@ -292,6 +291,8 @@
                               <div class="" id="temperature-map-time-slider" data-min="1950" data-max="2090" data-value="2090"></div>
                               <div class="year-label year-max">2090</div>
                             </div>
+                            
+                            <a href="variables.php" class="full-map-btn button bg-white color-orange arrow-right">View full map</a>
                           </div>
                         </div>
                     </div>
@@ -308,7 +309,7 @@
                   
                   <ul class="data-options">
                     <li class="active accent-border">
-                      <h4 id="var-pr"><a href="#" class="text accent-color">Mean Daily Precipitation</a><a href="#" class="icon icon-help nav-detail-link"></a></h4>
+                      <h4 id="var-pr"><a href="#" class="text accent-color">Mean Daily Precipitation</a><a href="#detail-pr" class="icon icon-help nav-detail-link"></a></h4>
                       <ul class="location-resolution">
                         <li><a>Annual</a></li>
                         <li><a>Seasonal</a></li>
@@ -317,7 +318,7 @@
                     </li>
 
                     <li class="accent-border">
-                      <h4 id="var-days_prcp_abv_25.3"><a href="#" class="text accent-color">Days of Precipitation Above 1in</a><a href="#" class="icon icon-help nav-detail-link"></a></h4>
+                      <h4 id="var-days_prcp_abv_25.3"><a href="#" class="text accent-color">Days of Precipitation Above 1in</a><a href="#detail-pr" class="icon icon-help nav-detail-link"></a></h4>
                       <ul class="location-resolution">
                         <li><a>Annual</a></li>
                       </ul>
@@ -504,6 +505,8 @@
                             <div class="" id="precipitation-map-time-slider" data-min="1950" data-max="2090" data-value="2090"></div>
                             <div class="year-label year-max">2090</div>
                           </div>
+                            
+                          <a href="variables.php" class="full-map-btn button bg-white color-orange arrow-right">View full map</a>
                         </div>
                       </div>
                     </div>
@@ -521,14 +524,14 @@
                   
                   <ul class="data-options">
                     <li class="active accent-border">
-                      <h4 id="var-heating_degree_day_18.3"><a href="#" class="text accent-color">Heating Degree Days</a><a href="#" class="icon icon-help nav-detail-link"></a></h4>
+                      <h4 id="var-heating_degree_day_18.3"><a href="#" class="text accent-color">Heating Degree Days</a><a href="#detail-heating_degree_day_18" class="icon icon-help nav-detail-link"></a></h4>
                       <ul>
                         <li><a>Annual</a></li>
                       </ul>
                     </li>
 
                     <li class="accent-border">
-                      <h4 id="var-cooling_degree_day_18.3"><a href="#" class="text accent-color">Cooling Degree Days</a><a href="#" class="icon icon-help nav-detail-link"></a></h4>
+                      <h4 id="var-cooling_degree_day_18.3"><a href="#" class="text accent-color">Cooling Degree Days</a><a href="#detail-cooling_degree_day_18" class="icon icon-help nav-detail-link"></a></h4>
                       <ul>
                         <li><a>Annual</a></li>
                       </ul>
@@ -718,6 +721,8 @@
                               <div class="" id="derived-map-time-slider" data-min="1950" data-max="2090" data-value="2090"></div>
                               <div class="year-label year-max">2090</div>
                             </div>
+                            
+                            <a href="variables.php" class="full-map-btn button bg-white color-orange arrow-right">View full map</a>
                           </div>
                         </div>
 

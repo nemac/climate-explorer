@@ -2,7 +2,7 @@
   #viewport {
     top: 20px;
     height: calc(100% - 40px);
-    margin-top: 115px;
+    margin-top: 95px;
   }
   
   #main-content-wrap {
@@ -354,7 +354,7 @@
         
         .chart-wrap {
           position: absolute;
-          top: 17%;
+          top: 12%;
           left: 5%;
           width: 90%;
           height: 60%;
@@ -482,28 +482,11 @@
         }
         
         .moveable {
-          position: absolute;
-          background: rgba(255,255,255,1);
           width: 2px;
-          height: 100%;
-          padding: 0!important;
-          margin: 0;
-          z-index: 200;
-          top: 0;
-          left: 50%;
-          cursor: col-resize;
           display: none;
           z-index: 2;
           
           .handle {
-            display: block;
-            position: absolute;
-            top: 45%;
-            left: -34px;
-            width: 70px;
-            height: 36px;
-            @include border-radius(20px);
-            background: url(../img/swipe-arrows-stripe.png) center center rgba(34,105,179,0.87);
           }
         }
         
@@ -512,6 +495,15 @@
           @include full-size;
           text-align:center;
           z-index: 1;
+        }
+        
+        .full-map-btn {
+          display: block;
+          position: absolute;
+          right: 20px;
+          bottom: 60px;
+          padding: 8px 30px 8px 8px;
+          z-index: 2;
         }
         
         &.open {
