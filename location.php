@@ -74,7 +74,7 @@
             <div class="location-data-section">
                 <div id="temperature-data" class="data-list">
                   <h3 class="accent-color"><span class="icon icon-temperature"></span>Temperature</h3>
-                  
+
                   <ul class="data-options">
                     <li class="active accent-border">
                       <h4 id="var-tasmax"><a href="#" class="text accent-color">Mean Daily Maximum</a><a href="#detail-tasmax" class="icon icon-help nav-detail-link"></a></h4>
@@ -180,7 +180,7 @@
                         <button><a id="download-image-link-temp">Download Image</a></button>
                       </div>
                   </form>
-                  
+
                   <div class="data-vars">
                     <label for="temperature-presentation">Display: </label>
 
@@ -269,13 +269,13 @@
                                   <option value="spring">Spring</option>
                                 </select>
                               </div>
-                              
+
                               <a href="#" class="how-to-read"><span class="icon icon-help"></span>How to read this</a>
                               <a href="#" class="download-image"><span class="icon icon-download-image"></span>Image</a>
                               <a href="#" class="download-data"><span class="icon icon-download-chart"></span>Data</a>
                             </div>
                           </header>
-                          
+
                           <div class="data-accordion-content map">
                             <div class="moveable" id="temperature-mapSliderDiv">
                               <div id="temperature-swipeImg" class="handle">
@@ -283,7 +283,7 @@
                         				<div class="emissions-high">High Emissions</div>
                         			</div>
                             </div>
-                            
+
                             <div id="temperature-map" class="map-element"></div>
 
                             <div class="year" id="temperature-map-slider-container">
@@ -291,8 +291,8 @@
                               <div class="" id="temperature-map-time-slider" data-min="1950" data-max="2090" data-value="2090"></div>
                               <div class="year-label year-max">2090</div>
                             </div>
-                            
-                            <a href="variables.php" class="full-map-btn button bg-white color-orange arrow-right">View full map</a>
+
+                            <a href="variables.php?id=tasmax" class="full-map-btn button bg-white color-orange arrow-right">View full map</a>
                           </div>
                         </div>
                     </div>
@@ -306,7 +306,7 @@
             <div class="location-data-section">
                 <div id="precipitation-data" class="data-list">
                   <h3 class="accent-color"><span class="icon icon-precipitation"></span>Precipitation</h3>
-                  
+
                   <ul class="data-options">
                     <li class="active accent-border">
                       <h4 id="var-pr"><a href="#" class="text accent-color">Mean Daily Precipitation</a><a href="#detail-pr" class="icon icon-help nav-detail-link"></a></h4>
@@ -398,7 +398,7 @@
                           <button><a id="download-image-link-precip">Download Image</a></button>
                       </div>
                   </form>
-                  
+
                   <div class="data-vars">
                     <label for="precipitation-presentation">Display: </label>
                     <select id="precipitation-presentation" class="dropdown">
@@ -463,7 +463,7 @@
                             </div>
                         </div>
                       </div>
-                      
+
                       <div id="precipitation-map-container" class="data-accordion-tab data-map accent-background">
                         <header>
                           <h4 class="accent-color">
@@ -483,13 +483,13 @@
                                 <option value="spring">Spring</option>
                               </select>
                             </div>
-                            
+
                             <a href="#" class="how-to-read"><span class="icon icon-help"></span>How to read this</a>
                             <a href="#" class="download-image"><span class="icon icon-download-image"></span>Image</a>
                             <a href="#" class="download-data"><span class="icon icon-download-chart"></span>Data</a>
                           </div>
                         </header>
-                        
+
                         <div class="data-accordion-content map">
                           <div class="moveable" id="precipitation-mapSliderDiv">
                             <div id="precipitation-swipeImg" class="handle">
@@ -497,7 +497,7 @@
                       				<div class="emissions-high">High Emissions</div>
                       			</div>
                           </div>
-                          
+
                           <div id="precipitation-map" class="map-element"></div>
 
                           <div class="year" id="precipitation-map-slider-container">
@@ -505,8 +505,8 @@
                             <div class="" id="precipitation-map-time-slider" data-min="1950" data-max="2090" data-value="2090"></div>
                             <div class="year-label year-max">2090</div>
                           </div>
-                            
-                          <a href="variables.php" class="full-map-btn button bg-white color-orange arrow-right">View full map</a>
+
+                          <a href="variables.php?id=pr" class="full-map-btn button bg-white color-orange arrow-right">View full map</a>
                         </div>
                       </div>
                     </div>
@@ -521,7 +521,7 @@
             <div class="location-data-section">
                 <div id="derived-data" class="data-list">
                   <h3 class="accent-color"><span class="icon icon-drought"></span>Derived</h3>
-                  
+
                   <ul class="data-options">
                     <li class="active accent-border">
                       <h4 id="var-heating_degree_day_18.3"><a href="#" class="text accent-color">Heating Degree Days</a><a href="#detail-heating_degree_day_18" class="icon icon-help nav-detail-link"></a></h4>
@@ -537,7 +537,7 @@
                       </ul>
                     </li>
                   </ul>
-                  
+
                   <form onsubmit="return false;">
                       <div class="row">
                           <label for="derived-county">County</label>
@@ -611,7 +611,7 @@
                           <button><a id="download-image-link-derived">Download Image</a></button>
                       </div>
                   </form>
-                  
+
                   <div class="data-vars">
                     <label for="der-presentation">Display: </label>
                     <select id="der-presentation" class="dropdown">
@@ -679,7 +679,7 @@
                             </div>
                           </div>
                         </div>
-                        
+
                         <div id="derived-map-container" class="data-accordion-tab data-map accent-background">
                           <header>
                             <h4 class="accent-color">
@@ -689,7 +689,7 @@
                                 <span class="source">Source: <a href="#" target="_blank">NOAA, 2014</a></span>
                               </span>
                             </h4>
-  
+
                             <div class="data-accordion-actions">
                               <div class="select map-seasons-container" id="derived-map-season">
                                 <select class="dropdown">
@@ -699,13 +699,13 @@
                                   <option value="spring">Spring</option>
                                 </select>
                               </div>
-                              
+
                               <a href="#" class="how-to-read"><span class="icon icon-help"></span>How to read this</a>
                               <a href="#" class="download-image"><span class="icon icon-download-image"></span>Image</a>
                               <a href="#" class="download-data"><span class="icon icon-download-chart"></span>Data</a>
                             </div>
                           </header>
-                          
+
                           <div class="data-accordion-content map">
                             <div class="moveable" id="derived-mapSliderDiv">
                               <div id="derived-swipeImg" class="handle">
@@ -713,16 +713,16 @@
                         				<div class="emissions-high">High Emissions</div>
                         			</div>
                             </div>
-                            
+
                             <div id="derived-map" class="map-element"></div>
-  
+
                             <div class="year" id="derived-map-slider-container">
                               <div class="year-label year-min">1950</div>
                               <div class="" id="derived-map-time-slider" data-min="1950" data-max="2090" data-value="2090"></div>
                               <div class="year-label year-max">2090</div>
                             </div>
-                            
-                            <a href="variables.php" class="full-map-btn button bg-white color-orange arrow-right">View full map</a>
+
+                            <a href="variables.php?id=heating_degree_day_18.3" class="full-map-btn button bg-white color-orange arrow-right">View full map</a>
                           </div>
                         </div>
 
