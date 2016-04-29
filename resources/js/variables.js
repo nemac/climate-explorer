@@ -137,8 +137,14 @@ Variables.prototype.wireSearch = function() {
   });
 
   $("#formmapper").bind("geocode:result", function(event, result){
-    var lat = result.geometry.access_points[0].location.lat;
-    var lon = result.geometry.access_points[0].location.lng;
+    var lat, lon;
+    if ( result.geometry.access_points ) {
+      lat = result.geometry.access_points[0].location.lat;
+      lon = result.geometry.access_points[0].location.lng;
+    } else {
+      lat = result.geometry.location.lat();
+      lon = result.geometry.location.lng();
+    }
 
     var conv = ol.proj.transform([lon, lat], 'EPSG:4326','EPSG:3857');
     var xy = self.map.getPixelFromCoordinate(conv);
