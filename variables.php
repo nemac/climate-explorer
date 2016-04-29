@@ -63,8 +63,8 @@
             </div>
           </div>
         </li>
-        
-        <li class="about-link"><a href="#detail-temperature" class="nav-detail-link">About Average Mean Temperature</a></li>
+
+        <li class="about-link"><a href="#detail-tasmax" class="nav-detail-link" id="about-variable-link">About Mean Daily Maximum</a></li>
       </ul>
 
       <div id="vars-legend" class="legend-wrap left-filler">

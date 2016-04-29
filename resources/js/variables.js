@@ -25,6 +25,9 @@ var Variables = function(id) {
 
   $(".level-1").html(this.varMapping[ this.selectedVariable ]);
 
+  $('#about-variable-link').html('About ' + this.varMapping[ this.selectedVariable ]);
+  $('#about-variable-link').prop('href', '#detail-'+this.selectedVariable.split('.')[0]);
+
   $('#variable-options').val(id).attr('selected', true).change();
 
   this.createMap();
@@ -226,6 +229,9 @@ Variables.prototype.wire = function() {
   //var selector
   $('#variable-options-container .fs-dropdown-item').on('click', function(e) {
     self.selectedVariable =  $(this).data().value;
+    $('#about-variable-link').html('About ' + self.varMapping[ self.selectedVariable ]);
+    $('#about-variable-link').prop('href', '#detail-'+self.selectedVariable.split('.')[0]);
+
     $(".level-1").html(self.varMapping[ self.selectedVariable ]);
     history.pushState(null, "", "?id="+self.selectedVariable);
 

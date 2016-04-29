@@ -1,5 +1,5 @@
 <?php
-  
+
   // new content here
 
   $temp_content = array(
@@ -341,15 +341,79 @@
 
     ?>
 
-    <div id="detail-temperature" class="nav-detail-item">
-      <h3>What does <u>Average Mean Temperature</u> mean?</h3>
+    <div id="detail-tasmax" class="nav-detail-item">
+      <h3>What does <u>Mean Daily Maximum</u> temperature mean?</h3>
 
       <p>We evaluate climate over long periods of observation. For example, in 2014, the global temperature was 1.24°F (0.69°C) above the long-term average for the 20th century, according to NOAA's National Climatic Data Center. That number made 2014 the warmest year on record in the NOAA database, which goes back to 1880.</p>
       <p>Annual average air temperatures have changed in different parts of the United States since the early 20th century (since 1901 for the contiguous 48 states and 1925 for Alaska). The data are shown for climate divisions, as defined by the National Oceanic and Atmospheric Administration.</p>
       <p>Data source: NOAA, 2015 3</p>
 
-      <p><a href="variables.php" class="button bg-trans border-white hover-bg-white">Get started</a><a href="#" class="close-detail button bg-trans border-trans color-white arrow-left">Back</a></p>
+      <p><a href="variables.php?id=tasmax" class="button bg-trans border-white hover-bg-white">Get started</a><a href="#" class="close-detail button bg-trans border-trans color-white arrow-left">Back</a></p>
     </div>
+
+
+    <div id="detail-tasmin" class="nav-detail-item">
+      <h3>What does <u>Mean Daily Minimum </u> temperature mean?</h3>
+
+      <p>We evaluate climate over long periods of observation. For example, in 2014, the global temperature was 1.24°F (0.69°C) above the long-term average for the 20th century, according to NOAA's National Climatic Data Center. That number made 2014 the warmest year on record in the NOAA database, which goes back to 1880.</p>
+      <p>Annual average air temperatures have changed in different parts of the United States since the early 20th century (since 1901 for the contiguous 48 states and 1925 for Alaska). The data are shown for climate divisions, as defined by the National Oceanic and Atmospheric Administration.</p>
+      <p>Data source: NOAA, 2015 3</p>
+
+      <p><a href="variables.php?id=tasmax" class="button bg-trans border-white hover-bg-white">Get started</a><a href="#" class="close-detail button bg-trans border-trans color-white arrow-left">Back</a></p>
+    </div>
+
+
+    <div id="detail-pr" class="nav-detail-item">
+      <h3>What does <u>Mean Daily Precipitation</u> mean?</h3>
+
+      <p>We evaluate climate over long periods of observation. For example, in 2014, the global temperature was 1.24°F (0.69°C) above the long-term average for the 20th century, according to NOAA's National Climatic Data Center. That number made 2014 the warmest year on record in the NOAA database, which goes back to 1880.</p>
+      <p>Annual average air temperatures have changed in different parts of the United States since the early 20th century (since 1901 for the contiguous 48 states and 1925 for Alaska). The data are shown for climate divisions, as defined by the National Oceanic and Atmospheric Administration.</p>
+      <p>Data source: NOAA, 2015 3</p>
+
+      <p><a href="variables.php?id=tasmax" class="button bg-trans border-white hover-bg-white">Get started</a><a href="#" class="close-detail button bg-trans border-trans color-white arrow-left">Back</a></p>
+    </div>
+
+    <div id="detail-heating_degree_day_18" class="nav-detail-item">
+      <h3>What do <u>Heating Degree Days</u> mean?</h3>
+
+      <p>We evaluate climate over long periods of observation. For example, in 2014, the global temperature was 1.24°F (0.69°C) above the long-term average for the 20th century, according to NOAA's National Climatic Data Center. That number made 2014 the warmest year on record in the NOAA database, which goes back to 1880.</p>
+      <p>Annual average air temperatures have changed in different parts of the United States since the early 20th century (since 1901 for the contiguous 48 states and 1925 for Alaska). The data are shown for climate divisions, as defined by the National Oceanic and Atmospheric Administration.</p>
+      <p>Data source: NOAA, 2015 3</p>
+
+      <p><a href="variables.php?id=heating_degree_day_18.3" class="button bg-trans border-white hover-bg-white">Get started</a><a href="#" class="close-detail button bg-trans border-trans color-white arrow-left">Back</a></p>
+    </div>
+
+    <div id="detail-cooling_degree_day_18" class="nav-detail-item">
+      <h3>What do <u>Cooling Degree Days</u> mean?</h3>
+
+      <p>We evaluate climate over long periods of observation. For example, in 2014, the global temperature was 1.24°F (0.69°C) above the long-term average for the 20th century, according to NOAA's National Climatic Data Center. That number made 2014 the warmest year on record in the NOAA database, which goes back to 1880.</p>
+      <p>Annual average air temperatures have changed in different parts of the United States since the early 20th century (since 1901 for the contiguous 48 states and 1925 for Alaska). The data are shown for climate divisions, as defined by the National Oceanic and Atmospheric Administration.</p>
+      <p>Data source: NOAA, 2015 3</p>
+
+      <p><a href="variables.php?id=cooling_degree_day_18.3" class="button bg-trans border-white hover-bg-white">Get started</a><a href="#" class="close-detail button bg-trans border-trans color-white arrow-left">Back</a></p>
+    </div>
+
+
+    <div id="detail-days_tmin_blw_0" class="nav-detail-item">
+      <h3>What do <u>Days Below 32&deg; F</u> mean?</h3>
+
+      <p>We evaluate climate over long periods of observation. For example, in 2014, the global temperature was 1.24°F (0.69°C) above the long-term average for the 20th century, according to NOAA's National Climatic Data Center. That number made 2014 the warmest year on record in the NOAA database, which goes back to 1880.</p>
+      <p>Annual average air temperatures have changed in different parts of the United States since the early 20th century (since 1901 for the contiguous 48 states and 1925 for Alaska). The data are shown for climate divisions, as defined by the National Oceanic and Atmospheric Administration.</p>
+      <p>Data source: NOAA, 2015 3</p>
+
+      <p><a href="variables.php?id=days_tmin_blw_0" class="button bg-trans border-white hover-bg-white">Get started</a><a href="#" class="close-detail button bg-trans border-trans color-white arrow-left">Back</a></p>
+    </div>
+
+    <div id="#detail-days_tmax_abv_35" class="nav-detail-item">
+      <h3>What do <u>Days Over 95&deg; F</u> mean?</h3>
+
+      <p>We evaluate climate over long periods of observation. For example, in 2014, the global temperature was 1.24°F (0.69°C) above the long-term average for the 20th century, according to NOAA's National Climatic Data Center. That number made 2014 the warmest year on record in the NOAA database, which goes back to 1880.</p>
+      <p>Annual average air temperatures have changed in different parts of the United States since the early 20th century (since 1901 for the contiguous 48 states and 1925 for Alaska). The data are shown for climate divisions, as defined by the National Oceanic and Atmospheric Administration.</p>
+      <p>Data source: NOAA, 2015 3</p>
+
+      <p><a href="variables.php?id=days_tmax_abv_35" class="button bg-trans border-white hover-bg-white">Get started</a><a href="#" class="close-detail button bg-trans border-trans color-white arrow-left">Back</a></p>
+    </div>
+
 
     <?php
 
