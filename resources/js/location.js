@@ -327,19 +327,28 @@ Location.prototype.wire = function() {
   $('#temperature-data h4').on('click', function() {
     var id = $(this).attr('id').replace('var-', '');
     self.selectedVariable['temperature-map'] = id;
-    self.updateTiledLayer('temperature-map', false);
+    if ( self['temperature-map'] ) {
+      self.updateTiledLayer('temperature-map', false);
+    }
+    $('#temperature-map-container .full-map-btn').prop({'href': 'variables.php?id='+id});
   });
 
   $('#precipitation-data h4').on('click', function() {
     var id = $(this).attr('id').replace('var-', '');
     self.selectedVariable['precipitation-map'] = id;
-    self.updateTiledLayer('precipitation-map', false);
+    if ( self['precipitation-map'] ) {
+      self.updateTiledLayer('precipitation-map', false);
+    }
+    $('#precipitation-map-container .full-map-btn').prop({'href': 'variables.php?id='+id});
   });
 
   $('#derived-data h4').on('click', function() {
     var id = $(this).attr('id').replace('var-', '');
     self.selectedVariable['derived-map'] = id;
-    self.updateTiledLayer('derived-map', false);
+    if ( self['derived-map'] ) {
+      self.updateTiledLayer('derived-map', false);
+    }
+    $('#derived-map-container .full-map-btn').prop({'href': 'variables.php?id='+id});
   });
 
   $('#precipitation-map-season .fs-dropdown-item').on('click', function(e) {
