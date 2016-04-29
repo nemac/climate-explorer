@@ -38,18 +38,6 @@
       <ul id="vars-menu" class="menu blue-menu">
         <li class="search-field border"><span class="icon icon-search"></span><input type="text" id="formmapper" placeholder="Search by location"></li>
 
-        <li class="select border" id="variable-options-container">
-          <select class="dropdown" id="variable-options">
-            <option value="tasmax">Mean Daily Maximum</option>
-            <option value="tasmin">Mean Daily Minimum</option>
-            <option value="days_tmax_abv_35.0">Days over 95º F</option>
-            <option value="days_tmin_blw_0.0">Days min below 32º F</option>
-            <option value="pr">Mean Daily Precipitation</option>
-            <option value="heating_degree_day_18.3">Heating Degree Days</option>
-            <option value="cooling_degree_day_18.3">Cooling Degree Days</option>
-          </select>
-        </li>
-
         <li class="toggle border">
           <a href="#info-counties" class="help icon icon-help"></a>
           <label for="counties-overlay-toggle"><span class="text">Data by Counties</span>
@@ -62,6 +50,18 @@
               <a href="#" class="layer-info-next"><span class="icon icon-arrow-right"></span>Next</a>
             </div>
           </div>
+        </li>
+        
+        <li class="select border" id="variable-options-container">
+          <select class="dropdown" id="variable-options">
+            <option value="tasmax">Mean Daily Maximum</option>
+            <option value="tasmin">Mean Daily Minimum</option>
+            <option value="days_tmax_abv_35.0">Days over 95º F</option>
+            <option value="days_tmin_blw_0.0">Days min below 32º F</option>
+            <option value="pr">Mean Daily Precipitation</option>
+            <option value="heating_degree_day_18.3">Heating Degree Days</option>
+            <option value="cooling_degree_day_18.3">Cooling Degree Days</option>
+          </select>
         </li>
 
         <li class="about-link"><a href="#detail-tasmax" class="nav-detail-link" id="about-variable-link">About Mean Daily Maximum</a></li>
