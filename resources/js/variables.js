@@ -137,7 +137,6 @@ Variables.prototype.wireSearch = function() {
   });
 
   $("#formmapper").bind("geocode:result", function(event, result){
-    console.log('result.geometry.access_points', result.geometry);
     var lat, lon;
     if ( result.geometry.access_points ) {
       lat = result.geometry.access_points[0].location.lat;
