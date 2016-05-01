@@ -230,10 +230,11 @@ input.location-mapper:focus:-ms-input-placeholder {
 }
 
 .chart-legend .legend-item-block {
-  height: 20px;
+  height: 28px;
   float: left;
   width: 25px;
   margin-right: 5px;
+  overflow: hidden;
 }
 
 .chart-legend .legend-item-line-container {
@@ -241,22 +242,40 @@ input.location-mapper:focus:-ms-input-placeholder {
   float: left;
   width: 25px;
   margin-right: 5px;
+  padding-top: 8px;
+}
+
+.chart-legend .legend-item-line-label {
+  padding-top:8px;
 }
 
 .chart-legend .legend-item-line#under-baseline-block, .chart-legend .legend-item-line#precipunder-baseline-block, .chart-legend .legend-item-line#deriveunder-baseline-block {
-  margin-top: 7px;
+  margin-top: 0px;
 }
 
 .chart-legend .legend-item-line#rcp45-line, .chart-legend .legend-item-line#preciprcp45-line, .chart-legend .legend-item-line#derivercp45-line {
   margin-top: 7px;
 }
 
+.chart-legend .legend-item-block#rcp45-block, .chart-legend .legend-item-block#preciprcp45-block, .chart-legend .legend-item-block#derivercp45-block {
+  background: #99BCEC;
+}
+
 .legend-item-range {
-  height: 38px;
+  height: 43px;
 }
 
 .chart-legend .legend-item-line {
   width: 100%;
+}
+
+.chart-legend .observed {
+  background-color: transparent !important;
+  background-image: url(../img/observed.png) !important;
+  height: 33px;
+  width: 26px;
+  background-size: 100% !important;
+  margin-top:-8px !important;
 }
 
 #variable-map .ol-popup {

@@ -308,6 +308,7 @@ $(document).ready(function() {
     $('.legend-item-range').on('click', function(e) {
       $(this).toggleClass('selected');
       $(this).children('.legend-item-block, .legend-item-line').toggleClass('selected');
+      $(this).children('.legend-item-line-container').children('.legend-item-line').toggleClass('selected');
 
       var pre = $(this).closest('.chart-legend').attr('id');
       if (!pre) {
@@ -441,7 +442,7 @@ $(document).ready(function() {
       if (dataurls.proj_mod) {
           $ul.append($("<li><a href='"+dataurls.proj_mod+"' class='button display-block border-white hover-bg-white'><span class='icon icon-arrow-down'></span>Projected Modeled Data</a></li>"));
       }
-      
+
       $('#download-panel').fadeIn(250);
 
     });
