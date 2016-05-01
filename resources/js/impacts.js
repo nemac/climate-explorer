@@ -13,16 +13,23 @@ var Impacts = function(page) {
 *
 */
 Impacts.prototype.createMap = function() {
+  var qtrs = location.search;
+  var qs = this.parseQueryString(qtrs);
+
   var zoom = ( this.page === 'drought' ) ? 4 : 5;
+  zoom = ( qs.zoom ) ? qs.zoom : zoom;
+
   var view;
-  if ( this.page === 'arctic' ) {
+
+  var center = ( qs.center ) ? qs.center.split(',') : null;
+  if ( this.page === 'arctic' && !center ) {
     view = new ol.View({
       center: ol.proj.transform([-160.41, 60.75], 'EPSG:4326', 'EPSG:3857'),
       zoom: 4.5
     });
   } else {
     view = new ol.View({
-      center: ol.proj.transform([-105.41, 35.42], 'EPSG:4326', 'EPSG:3857'),
+      center: center || ol.proj.transform([-105.41, 35.42], 'EPSG:4326', 'EPSG:3857'),
       zoom: zoom
     });
   }
@@ -217,6 +224,10 @@ Impacts.prototype.wireMapEvents = function () {
       popup.hide();
     }
   });
+
+  this.map.on('moveend', function() {
+    self.updateUrl();
+  });
 };
 
 
@@ -298,6 +309,30 @@ Impacts.prototype.subLayerSlider = function(id, show) {
 };
 
 
+Impacts.prototype.parseQueryString = function(qstr) {
+  var query = {};
+  var a = qstr.substr(1).split('&');
+  for (var i = 0; i < a.length; i++) {
+    var b = a[i].split('=');
+    query[decodeURIComponent(b[0])] = decodeURIComponent(b[1] || '');
+  }
+  return query;
+};
+
+
+
+Impacts.prototype.updateUrl = function() {
+  var qtrs = location.search;
+  var qs = this.parseQueryString(qtrs);
+
+  qs.zoom = this.map.getView().getZoom();
+  qs.center = this.map.getView().getCenter().toString();
+
+  var str = $.param( qs );
+
+  history.pushState(null, "", 'case.php?'+str);
+};
+
 
 
 /*
@@ -307,6 +342,7 @@ Impacts.prototype.subLayerSlider = function(id, show) {
 */
 Impacts.prototype.setZoom = function(zoom) {
   this.map.getView().setZoom(zoom);
+  this.updateUrl();
 };
 
 
