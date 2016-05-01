@@ -192,6 +192,11 @@ Variables.prototype.wireSearch = function() {
 Variables.prototype.wire = function() {
   var self = this;
 
+  this.map.getView().on('change:resolution', function(){
+    var zoom = self.map.getView().getZoom();
+    $('.page-type-variables .zoom-slider').slider('value', zoom);
+  });
+
   $('.page-type-variables .zoom-slider').attr('data-value', 4);
   $('.page-type-variables .zoom-slider').slider({
       orientation: "vertical",
@@ -414,29 +419,31 @@ Variables.prototype.countySelected = function(feature, event) {
       '</header>' +
       '<div id="climate-chart" style="width:800px; height:420px"></div>'+
       '<div class="chart-legend">'+
-        '<div id="rcp45-range" class="legend-item legend-item-range">'+
-          '<div class="legend-item-block" id="rcp45-block"></div>'+
-          'Low Emissions (RCP 4.5) Range'+
-        '</div>'+
-        '<div id="rcp85-range" class="legend-item legend-item-range selected">'+
-          '<div class="legend-item-block selected" id="rcp85-block"></div>'+
-          'High Emissions (RCP 8.5) Range'+
-        '</div>'+
-        '<div id="rcp45-mean" class="legend-item legend-item-range">'+
-          '<div class="legend-item-line" id="rcp85-line"></div>'+
-          'High Emissions Median'+
-          '<div class="legend-item-line" id="rcp45-line"></div>'+
-          'Low Emissions Median'+
+        '<div id="historical-obs" class="legend-item legend-item-range selected">'+
+          '<div class="legend-item-line-container">'+
+            '<div class="legend-item-line selected" id="over-baseline-block"></div>'+
+            '<div class="legend-item-line selected" id="under-baseline-block"></div>'+
+          '</div>'+
+          'Observations'+
         '</div>'+
         '<div id="historical-range" class="legend-item legend-item-range selected">'+
           '<div class="legend-item-block selected" id="historical-block"></div>'+
           'Historical (Modelled)'+
         '</div>'+
-        '<div id="historical-obs" class="legend-item legend-item-range selected">'+
-          '<div class="legend-item-line selected" id="over-baseline-block"></div>'+
-          'Observed over baseline'+
-          '<div class="legend-item-line selected" id="under-baseline-block"></div>'+
-          'Obs under baseline'+
+        '<div id="rcp45-range" class="legend-item legend-item-range">'+
+          '<div class="legend-item-block" id="rcp45-block"></div>'+
+          'Stabalized Emissions'+
+        '</div>'+
+        '<div id="rcp85-range" class="legend-item legend-item-range selected">'+
+          '<div class="legend-item-block selected" id="rcp85-block"></div>'+
+          'Increasing Emissions'+
+        '</div>'+
+        '<div id="rcp45-mean" class="legend-item legend-item-range">'+
+          '<div class="legend-item-line-container">'+
+            '<div class="legend-item-line" id="rcp85-line"></div>'+
+            '<div class="legend-item-line" id="rcp45-line"></div>'+
+          '</div>'+
+          'Medians'+
         '</div>'+
       '</div>'+
       '<div class="range" id="variable-slider">'+
