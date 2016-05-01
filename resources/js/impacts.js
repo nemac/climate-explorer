@@ -111,6 +111,13 @@ Impacts.prototype.wireSearch = function() {
 Impacts.prototype.wireEvents = function() {
   var self = this;
 
+
+  this.map.getView().on('change:resolution', function(){
+    var zoom = self.map.getView().getZoom();
+    $('.page-type-case .zoom-slider').slider('value', zoom);
+  });
+
+
   //close btn
   $('.legend .layer-info-close').click(function (e) {
     e.preventDefault();

@@ -216,29 +216,31 @@
                               <div class="chart-wrap">
                                 <div id="chart-123" class="chart-canvas" data-chart-ID="123"></div>
                                 <div class="chart-legend">
-                                  <div id="rcp45-range" class="legend-item legend-item-range">
-                                    <div class="legend-item-block" id="rcp45-block"></div>
-                                    Low Emissions (RCP 4.5) Range
-                                  </div>
-                                  <div id="rcp85-range" class="legend-item legend-item-range selected">
-                                    <div class="legend-item-block selected" id="rcp85-block"></div>
-                                    High Emissions (RCP 8.5) Range
-                                  </div>
-                                  <div id="rcp45-mean" class="legend-item legend-item-range">
-                                    <div class="legend-item-line" id="rcp85-line"></div>
-                                    High Emissions Median
-                                    <div class="legend-item-line" id="rcp45-line"></div>
-                                    Low Emissions Median
+                                  <div id="historical-obs" class="legend-item legend-item-range selected">
+                                    <div class="legend-item-line-container">
+                                      <div class="legend-item-line selected" id="over-baseline-block"></div>
+                                      <div class="legend-item-line selected" id="under-baseline-block"></div>
+                                    </div>
+                                    Observations
                                   </div>
                                   <div id="historical-range" class="legend-item legend-item-range selected">
                                     <div class="legend-item-block selected" id="historical-block"></div>
                                     Historical (Modelled)
                                   </div>
-                                  <div id="historical-obs" class="legend-item legend-item-range selected">
-                                    <div class="legend-item-line selected" id="over-baseline-block"></div>
-                                    Observed over baseline
-                                    <div class="legend-item-line selected" id="under-baseline-block"></div>
-                                    Obs under baseline
+                                  <div id="rcp45-range" class="legend-item legend-item-range">
+                                    <div class="legend-item-block" id="rcp45-block"></div>
+                                    Stabalized Emissions
+                                  </div>
+                                  <div id="rcp85-range" class="legend-item legend-item-range selected">
+                                    <div class="legend-item-block selected" id="rcp85-block"></div>
+                                    Increasing Emissions
+                                  </div>
+                                  <div id="rcp45-mean" class="legend-item legend-item-range">
+                                    <div class="legend-item-line-container">
+                                      <div class="legend-item-line" id="rcp85-line"></div>
+                                      <div class="legend-item-line" id="rcp45-line"></div>
+                                    </div>
+                                    Medians
                                   </div>
                                 </div>
                               </div>
@@ -430,29 +432,31 @@
                             <div class="chart-wrap">
                               <div id="chart-234" class="chart-canvas" data-chart-ID="234" style="width:100%"></div>
                               <div class="chart-legend" id="precip-chart">
-                                <div id="rcp45-range" class="legend-item legend-item-range">
-                                  <div class="legend-item-block" id="preciprcp45-block"></div>
-                                  Low Emissions (RCP 4.5) Range
-                                </div>
-                                <div id="rcp85-range" class="legend-item legend-item-range selected">
-                                  <div class="legend-item-block selected" id="preciprcp85-block"></div>
-                                  High Emissions (RCP 8.5) Range
-                                </div>
-                                <div id="rcp45-mean" class="legend-item legend-item-range">
-                                  <div class="legend-item-line" id="preciprcp85-line"></div>
-                                  High Emissions Median
-                                  <div class="legend-item-line" id="preciprcp45-line"></div>
-                                  Low Emissions Median
+                                <div id="precip-historical-obs" class="legend-item legend-item-range selected">
+                                  <div class="legend-item-line-container">
+                                    <div class="legend-item-line selected" id="precipover-baseline-block"></div>
+                                    <div class="legend-item-line selected" id="precipunder-baseline-block"></div>
+                                  </div>
+                                  Observations
                                 </div>
                                 <div id="historical-range" class="legend-item legend-item-range selected">
                                   <div class="legend-item-block selected" id="preciphistorical-block"></div>
                                   Historical (Modelled)
                                 </div>
-                                <div id="precip-historical-obs" class="legend-item legend-item-range selected">
-                                  <div class="legend-item-line selected" id="precipover-baseline-block"></div>
-                                  Observed over baseline
-                                  <div class="legend-item-line selected" id="precipunder-baseline-block"></div>
-                                  Obs under baseline
+                                <div id="rcp45-range" class="legend-item legend-item-range">
+                                  <div class="legend-item-block" id="preciprcp45-block"></div>
+                                  Stabalized Emissions
+                                </div>
+                                <div id="rcp85-range" class="legend-item legend-item-range selected">
+                                  <div class="legend-item-block selected" id="preciprcp85-block"></div>
+                                  Increasing Emissions
+                                </div>
+                                <div id="rcp45-mean" class="legend-item legend-item-range">
+                                  <div class="legend-item-line-container">
+                                    <div class="legend-item-line" id="preciprcp85-line"></div>
+                                    <div class="legend-item-line" id="preciprcp45-line"></div>
+                                  </div>
+                                  Medians
                                 </div>
                               </div>
                             </div>
@@ -645,29 +649,31 @@
                             <div class="chart-wrap">
                               <div id="chart-345" class="chart-canvas" data-chart-ID="345" style="width:100%"></div>
                               <div class="chart-legend" id="derive-chart">
-                                <div id="rcp45-range" class="legend-item legend-item-range">
-                                  <div class="legend-item-block" id="derivercp45-block"></div>
-                                  Low Emissions (RCP 4.5) Range
-                                </div>
-                                <div id="rcp85-range" class="legend-item legend-item-range selected">
-                                  <div class="legend-item-block selected" id="derivercp85-block"></div>
-                                  High Emissions (RCP 8.5) Range
-                                </div>
-                                <div id="rcp45-mean" class="legend-item legend-item-range">
-                                  <div class="legend-item-line" id="derivercp85-line"></div>
-                                  High Emissions Median
-                                  <div class="legend-item-line" id="derivercp45-line"></div>
-                                  Low Emissions Median
+                                <div id="derive-historical-obs" class="legend-item legend-item-range selected">
+                                  <div class="legend-item-line-container">
+                                    <div class="legend-item-line selected" id="deriveover-baseline-block"></div>
+                                    <div class="legend-item-line selected" id="deriveunder-baseline-block"></div>
+                                  </div>
+                                  Observations
                                 </div>
                                 <div id="historical-range" class="legend-item legend-item-range selected">
                                   <div class="legend-item-block selected" id="derivehistorical-block"></div>
                                   Historical (Modelled)
                                 </div>
-                                <div id="derive-historical-obs" class="legend-item legend-item-range selected">
-                                  <div class="legend-item-line selected" id="deriveover-baseline-block"></div>
-                                  Observed over baseline
-                                  <div class="legend-item-line selected" id="deriveunder-baseline-block"></div>
-                                  Obs under baseline
+                                <div id="rcp45-range" class="legend-item legend-item-range">
+                                  <div class="legend-item-block" id="derivercp45-block"></div>
+                                  Stabalized Emissions
+                                </div>
+                                <div id="rcp85-range" class="legend-item legend-item-range selected">
+                                  <div class="legend-item-block selected" id="derivercp85-block"></div>
+                                  Increasing Emissions
+                                </div>
+                                <div id="rcp45-mean" class="legend-item legend-item-range">
+                                  <div class="legend-item-line-container">
+                                    <div class="legend-item-line" id="derivercp85-line"></div>
+                                    <div class="legend-item-line" id="derivercp45-line"></div>
+                                  </div>
+                                  Medians
                                 </div>
                               </div>
                             </div>
