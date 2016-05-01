@@ -421,10 +421,9 @@ Variables.prototype.countySelected = function(feature, event) {
       '<div class="chart-legend">'+
         '<div id="historical-obs" class="legend-item legend-item-range selected">'+
           '<div class="legend-item-line-container">'+
-            '<div class="legend-item-line selected" id="over-baseline-block"></div>'+
-            '<div class="legend-item-line selected" id="under-baseline-block"></div>'+
+            '<div class="legend-item-line selected observed" id="over-baseline-block"></div>'+
           '</div>'+
-          'Observations'+
+          '<span class="legend-item-line-label">Observations</span>'+
         '</div>'+
         '<div id="historical-range" class="legend-item legend-item-range selected">'+
           '<div class="legend-item-block selected" id="historical-block"></div>'+
@@ -443,7 +442,7 @@ Variables.prototype.countySelected = function(feature, event) {
             '<div class="legend-item-line" id="rcp85-line"></div>'+
             '<div class="legend-item-line" id="rcp45-line"></div>'+
           '</div>'+
-          'Medians'+
+          '<span class="legend-item-line-label">Medians</span>'+
         '</div>'+
       '</div>'+
       '<div class="range" id="variable-slider">'+
@@ -466,6 +465,8 @@ Variables.prototype.countySelected = function(feature, event) {
     $('.legend-item-range').on('click', function() {
       $(this).toggleClass('selected');
       $(this).children('.legend-item-block, .legend-item-line').toggleClass('selected');
+      $(this).children('.legend-item-line-container').children('.legend-item-line').toggleClass('selected');
+      
       var scenario = null;
       switch(true) {
         case $('#rcp85-block').hasClass('selected') && $('#rcp45-block').hasClass('selected'):

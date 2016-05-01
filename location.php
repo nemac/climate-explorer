@@ -218,10 +218,9 @@
                                 <div class="chart-legend">
                                   <div id="historical-obs" class="legend-item legend-item-range selected">
                                     <div class="legend-item-line-container">
-                                      <div class="legend-item-line selected" id="over-baseline-block"></div>
-                                      <div class="legend-item-line selected" id="under-baseline-block"></div>
+                                      <div class="legend-item-line selected observed" id="over-baseline-block"></div>
                                     </div>
-                                    Observations
+                                    <span class="legend-item-line-label">Observations</span>
                                   </div>
                                   <div id="historical-range" class="legend-item legend-item-range selected">
                                     <div class="legend-item-block selected" id="historical-block"></div>
@@ -240,7 +239,7 @@
                                       <div class="legend-item-line" id="rcp85-line"></div>
                                       <div class="legend-item-line" id="rcp45-line"></div>
                                     </div>
-                                    Medians
+                                    <span class="legend-item-line-label">Medians</span>
                                   </div>
                                 </div>
                               </div>
@@ -434,10 +433,9 @@
                               <div class="chart-legend" id="precip-chart">
                                 <div id="precip-historical-obs" class="legend-item legend-item-range selected">
                                   <div class="legend-item-line-container">
-                                    <div class="legend-item-line selected" id="precipover-baseline-block"></div>
-                                    <div class="legend-item-line selected" id="precipunder-baseline-block"></div>
+                                    <div class="legend-item-line selected observed" id="precipover-baseline-block"></div>
                                   </div>
-                                  Observations
+                                  <span class="legend-item-line-label">Observations</span>
                                 </div>
                                 <div id="historical-range" class="legend-item legend-item-range selected">
                                   <div class="legend-item-block selected" id="preciphistorical-block"></div>
@@ -456,7 +454,7 @@
                                     <div class="legend-item-line" id="preciprcp85-line"></div>
                                     <div class="legend-item-line" id="preciprcp45-line"></div>
                                   </div>
-                                  Medians
+                                  <span class="legend-item-line-label">Medians</span>
                                 </div>
                               </div>
                             </div>
@@ -651,10 +649,9 @@
                               <div class="chart-legend" id="derive-chart">
                                 <div id="derive-historical-obs" class="legend-item legend-item-range selected">
                                   <div class="legend-item-line-container">
-                                    <div class="legend-item-line selected" id="deriveover-baseline-block"></div>
-                                    <div class="legend-item-line selected" id="deriveunder-baseline-block"></div>
+                                    <div class="legend-item-line selected observed" id="deriveunder-baseline-block"></div>
                                   </div>
-                                  Observations
+                                  <span class="legend-item-line-label">Observations</span>
                                 </div>
                                 <div id="historical-range" class="legend-item legend-item-range selected">
                                   <div class="legend-item-block selected" id="derivehistorical-block"></div>
@@ -673,7 +670,7 @@
                                     <div class="legend-item-line" id="derivercp85-line"></div>
                                     <div class="legend-item-line" id="derivercp45-line"></div>
                                   </div>
-                                  Medians
+                                  <span class="legend-item-line-label">Medians</span>
                                 </div>
                               </div>
                             </div>
