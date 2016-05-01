@@ -257,7 +257,7 @@
                               <span class="icon icon-district"></span>
                               <span class="text">
                                 Map<span class="full-title">: <?php echo $county ?></span>
-                                <span class="source">Source: <a href="#" target="_blank">NOAA, 2014</a></span>
+                                <span class="source" id="temp-map-name">Mean Daily Maximum</span>
                               </span>
                             </h4>
 
@@ -471,8 +471,8 @@
                           <h4 class="accent-color">
                             <span class="icon icon-district"></span>
                             <span class="text">
-                              Map<span class="full-title">: Mean Daily Precipitation</span>
-                              <span class="source">Source: <a href="#" target="_blank">NOAA, 2014</a></span>
+                              Map<span class="full-title">: <?php echo $county ?></span>
+                              <span class="source" id="precip-map-name">Mean Daily Precipitation</span>
                             </span>
                           </h4>
 
@@ -689,7 +689,7 @@
                               <span class="icon icon-district"></span>
                               <span class="text">
                                 Map<span class="full-title">: <?php echo $county ?></span>
-                                <span class="source">Source: <a href="#" target="_blank">NOAA, 2014</a></span>
+                                <span class="source" id="derived-map-name">Heating Degree Days</span>
                               </span>
                             </h4>
 
