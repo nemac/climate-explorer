@@ -91,9 +91,13 @@ Variables.prototype.mapVariables = function() {
 *
 */
 Variables.prototype.createMap = function() {
+  var qtrs = location.search;
+  var qs = this.parseQueryString(qtrs);
+
+  var center = ( qs.center ) ? qs.center.split(',') : null;
   var view = new ol.View({
-    center: ol.proj.transform([-105.21, 37.42], 'EPSG:4326', 'EPSG:3857'),
-    zoom: 5,
+    center: center || ol.proj.transform([-105.21, 37.42], 'EPSG:4326', 'EPSG:3857'),
+    zoom: qs.zoom || 5,
     minZoom: 5,
     maxZoom: 12
   });
@@ -197,6 +201,10 @@ Variables.prototype.wire = function() {
     $('.page-type-variables .zoom-slider').slider('value', zoom);
   });
 
+  this.map.on('moveend', function() {
+    self.updateUrl();
+  });
+
   $('.page-type-variables .zoom-slider').attr('data-value', 4);
   $('.page-type-variables .zoom-slider').slider({
       orientation: "vertical",
@@ -244,8 +252,8 @@ Variables.prototype.wire = function() {
     $('#about-variable-link').prop('href', '#detail-'+self.selectedVariable.split('.')[0]);
 
     $(".level-1").html(self.varMapping[ self.selectedVariable ]);
-    history.pushState(null, "", "?id="+self.selectedVariable);
 
+    self.updateUrl();
     self.updateTiledLayer(true, true);
     self.updateChart();
   });
@@ -299,6 +307,36 @@ Variables.prototype.wire = function() {
 
 
 
+
+Variables.prototype.parseQueryString = function(qstr) {
+  var query = {};
+  var a = qstr.substr(1).split('&');
+  for (var i = 0; i < a.length; i++) {
+    var b = a[i].split('=');
+    query[decodeURIComponent(b[0])] = decodeURIComponent(b[1] || '');
+  }
+  return query;
+};
+
+
+
+Variables.prototype.updateUrl = function() {
+  var qtrs = location.search;
+  var qs = this.parseQueryString(qtrs);
+
+  //history.pushState(null, "", "?id="+self.selectedVariable);
+  qs.id = this.selectedVariable;
+  qs.zoom = this.map.getView().getZoom();
+  qs.center = this.map.getView().getCenter().toString();
+
+  var str = $.param( qs );
+
+  history.pushState(null, "", 'variables.php?'+str);
+};
+
+
+
+
 /*
 * Sets zoom on map
 * Triggered from custom zoom control in global_functions.js
@@ -306,6 +344,7 @@ Variables.prototype.wire = function() {
 */
 Variables.prototype.setZoom = function(zoom) {
   this.map.getView().setZoom(zoom);
+  this.updateUrl();
 };
 
 
@@ -466,7 +505,7 @@ Variables.prototype.countySelected = function(feature, event) {
       $(this).toggleClass('selected');
       $(this).children('.legend-item-block, .legend-item-line').toggleClass('selected');
       $(this).children('.legend-item-line-container').children('.legend-item-line').toggleClass('selected');
-      
+
       var scenario = null;
       switch(true) {
         case $('#rcp85-block').hasClass('selected') && $('#rcp45-block').hasClass('selected'):
