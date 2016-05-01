@@ -278,6 +278,15 @@ input.location-mapper:focus:-ms-input-placeholder {
   margin-top:-8px !important;
 }
 
+.chart-legend .observed.seasonal {
+  background-color: transparent !important;
+  background-image: url(../img/observed-seasonal.png) !important;
+  height: 33px;
+  width: 26px;
+  background-size: 100% !important;
+  margin-top:-8px !important;
+}
+
 #variable-map .ol-popup {
   z-index: 500;
 }
