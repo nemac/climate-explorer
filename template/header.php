@@ -344,9 +344,8 @@
     <div id="detail-tasmax" class="nav-detail-item">
       <h3>What does <u>Mean Daily Maximum</u> temperature mean?</h3>
 
-      <p>We evaluate climate over long periods of observation. For example, in 2014, the global temperature was 1.24°F (0.69°C) above the long-term average for the 20th century, according to NOAA's National Climatic Data Center. That number made 2014 the warmest year on record in the NOAA database, which goes back to 1880.</p>
-      <p>Annual average air temperatures have changed in different parts of the United States since the early 20th century (since 1901 for the contiguous 48 states and 1925 for Alaska). The data are shown for climate divisions, as defined by the National Oceanic and Atmospheric Administration.</p>
-      <p>Data source: NOAA, 2015 3</p>
+      <p>A day’s highest (maximum) temperature usually occurs in the afternoon. Averaging the daily high temperatures for any period results in a mean maximum temperature for that period.</p>
+      <p>Maximum temperatures are one indicator of comfort and safety for outdoor workers and urban populations. Additionally, transportation and energy infrastructure may be stressed when maximum temperature exceeds particular thresholds.</p>
 
       <p><a href="variables.php?id=tasmax" class="button bg-trans border-white hover-bg-white">Get started</a><a href="#" class="close-detail button bg-trans border-trans color-white arrow-left">Back</a></p>
     </div>
@@ -355,9 +354,8 @@
     <div id="detail-tasmin" class="nav-detail-item">
       <h3>What does <u>Mean Daily Minimum </u> temperature mean?</h3>
 
-      <p>We evaluate climate over long periods of observation. For example, in 2014, the global temperature was 1.24°F (0.69°C) above the long-term average for the 20th century, according to NOAA's National Climatic Data Center. That number made 2014 the warmest year on record in the NOAA database, which goes back to 1880.</p>
-      <p>Annual average air temperatures have changed in different parts of the United States since the early 20th century (since 1901 for the contiguous 48 states and 1925 for Alaska). The data are shown for climate divisions, as defined by the National Oceanic and Atmospheric Administration.</p>
-      <p>Data source: NOAA, 2015 3</p>
+      <p>A day’s lowest (minimum) temperature usually occurs in the early morning. Averaging the daily low temperatures for any period results in a mean minimum temperature for that period.</p>
+      <p>Periods of low temperature give plants, animals, and people a chance to recover from daytime heat and stress. When overnight lows aren’t sufficiently cool, tree-damaging insects such as bark beetles can thrive, potentially triggering major changes to ecosystems.</p>
 
       <p><a href="variables.php?id=tasmax" class="button bg-trans border-white hover-bg-white">Get started</a><a href="#" class="close-detail button bg-trans border-trans color-white arrow-left">Back</a></p>
     </div>
@@ -366,9 +364,8 @@
     <div id="detail-pr" class="nav-detail-item">
       <h3>What does <u>Mean Daily Precipitation</u> mean?</h3>
 
-      <p>We evaluate climate over long periods of observation. For example, in 2014, the global temperature was 1.24°F (0.69°C) above the long-term average for the 20th century, according to NOAA's National Climatic Data Center. That number made 2014 the warmest year on record in the NOAA database, which goes back to 1880.</p>
-      <p>Annual average air temperatures have changed in different parts of the United States since the early 20th century (since 1901 for the contiguous 48 states and 1925 for Alaska). The data are shown for climate divisions, as defined by the National Oceanic and Atmospheric Administration.</p>
-      <p>Data source: NOAA, 2015 3</p>
+      <p>Daily precipitation is total precipitation that fell on a given day. Averaging the daily precipitation results in a mean daily precipitation for that period. Though daily totals of rain and snow vary from zero to several inches, it’s useful to consider the average amount of water added to the environment per day over a month, season, or year. </p>
+      <p>The value for mean daily precipitation is one indicator of how wet or dry a place may be at different times of the year. Comparing values for mean daily precipitation over time can indicate a trend toward wetter or drier conditions.</p>
 
       <p><a href="variables.php?id=tasmax" class="button bg-trans border-white hover-bg-white">Get started</a><a href="#" class="close-detail button bg-trans border-trans color-white arrow-left">Back</a></p>
     </div>
@@ -376,9 +373,8 @@
     <div id="detail-heating_degree_day_18" class="nav-detail-item">
       <h3>What do <u>Heating Degree Days</u> mean?</h3>
 
-      <p>We evaluate climate over long periods of observation. For example, in 2014, the global temperature was 1.24°F (0.69°C) above the long-term average for the 20th century, according to NOAA's National Climatic Data Center. That number made 2014 the warmest year on record in the NOAA database, which goes back to 1880.</p>
-      <p>Annual average air temperatures have changed in different parts of the United States since the early 20th century (since 1901 for the contiguous 48 states and 1925 for Alaska). The data are shown for climate divisions, as defined by the National Oceanic and Atmospheric Administration.</p>
-      <p>Data source: NOAA, 2015 3</p>
+      <p>The number of heating degree days at any location reflects the amount of energy people use to heat a building during the cool season. </p>
+      <p>For example, many people like to keep indoor temperatures around 65°F. On a day when the average outdoor temperature is 55°F, raising the indoor temperature by 10 degrees over 1 day requires 10 degrees of heating multiplied by 1 day, or 10 heating degree days. Examining heating degree days for different locations or over time can help people and utility companies estimate the amount of energy needed for heating.</p>
 
       <p><a href="variables.php?id=heating_degree_day_18.3" class="button bg-trans border-white hover-bg-white">Get started</a><a href="#" class="close-detail button bg-trans border-trans color-white arrow-left">Back</a></p>
     </div>
@@ -386,9 +382,8 @@
     <div id="detail-cooling_degree_day_18" class="nav-detail-item">
       <h3>What do <u>Cooling Degree Days</u> mean?</h3>
 
-      <p>We evaluate climate over long periods of observation. For example, in 2014, the global temperature was 1.24°F (0.69°C) above the long-term average for the 20th century, according to NOAA's National Climatic Data Center. That number made 2014 the warmest year on record in the NOAA database, which goes back to 1880.</p>
-      <p>Annual average air temperatures have changed in different parts of the United States since the early 20th century (since 1901 for the contiguous 48 states and 1925 for Alaska). The data are shown for climate divisions, as defined by the National Oceanic and Atmospheric Administration.</p>
-      <p>Data source: NOAA, 2015 3</p>
+      <p>The number of cooling degree days at any location reflects the amount of energy people use to cool a building during the warm season. </p>
+      <p>For example, many people like to keep indoor temperatures around 65°F. On a day when the average outdoor temperature is 85°F, reducing the indoor temperature by 20 degrees over 1 day requires 20 degrees of cooling multiplied by 1 day, or 20 cooling degree days. Examining cooling degree days for different locations or over time can help people and utility companies estimate the amount of energy needed for cooling.</p>
 
       <p><a href="variables.php?id=cooling_degree_day_18.3" class="button bg-trans border-white hover-bg-white">Get started</a><a href="#" class="close-detail button bg-trans border-trans color-white arrow-left">Back</a></p>
     </div>
@@ -397,9 +392,8 @@
     <div id="detail-days_tmin_blw_0" class="nav-detail-item">
       <h3>What do <u>Days Below 32&deg; F</u> mean?</h3>
 
-      <p>We evaluate climate over long periods of observation. For example, in 2014, the global temperature was 1.24°F (0.69°C) above the long-term average for the 20th century, according to NOAA's National Climatic Data Center. That number made 2014 the warmest year on record in the NOAA database, which goes back to 1880.</p>
-      <p>Annual average air temperatures have changed in different parts of the United States since the early 20th century (since 1901 for the contiguous 48 states and 1925 for Alaska). The data are shown for climate divisions, as defined by the National Oceanic and Atmospheric Administration.</p>
-      <p>Data source: NOAA, 2015 3</p>
+      <p>The total number of days per year that have their lowest temperature below 32°F (0°C) is an indicator of how often cold days occur; comparing values over time indicates any trend in the occurrence of cold weather. </p>
+      <p>Below-freezing temperatures can cause driving hazards, aircraft icing, and damage to infrastructure. However, ski resorts and other winter recreation businesses depend on days with below-freezing temperatures to maintain snowpack. Additionally, some plants require a period of days below freezing before they can begin budding or blooming.</p>
 
       <p><a href="variables.php?id=days_tmin_blw_0" class="button bg-trans border-white hover-bg-white">Get started</a><a href="#" class="close-detail button bg-trans border-trans color-white arrow-left">Back</a></p>
     </div>
@@ -407,9 +401,8 @@
     <div id="#detail-days_tmax_abv_35" class="nav-detail-item">
       <h3>What do <u>Days Over 95&deg; F</u> mean?</h3>
 
-      <p>We evaluate climate over long periods of observation. For example, in 2014, the global temperature was 1.24°F (0.69°C) above the long-term average for the 20th century, according to NOAA's National Climatic Data Center. That number made 2014 the warmest year on record in the NOAA database, which goes back to 1880.</p>
-      <p>Annual average air temperatures have changed in different parts of the United States since the early 20th century (since 1901 for the contiguous 48 states and 1925 for Alaska). The data are shown for climate divisions, as defined by the National Oceanic and Atmospheric Administration.</p>
-      <p>Data source: NOAA, 2015 3</p>
+      <p>The total number of days per year that have their highest temperature above 95°F (35°C) is an indicator of how often very hot conditions occur. Depending upon humidity, wind, and access to air-conditioning, humans may feel very uncomfortable or experience heat stress on very hot days. </p>
+      <p>If several hot days occur in a row (a separate variable, not indicated here), and people and the environment don’t have a chance to cool down before another very hot day begins, heat stress accumulates, and can become a public health concern.</p>
 
       <p><a href="variables.php?id=days_tmax_abv_35" class="button bg-trans border-white hover-bg-white">Get started</a><a href="#" class="close-detail button bg-trans border-trans color-white arrow-left">Back</a></p>
     </div>
