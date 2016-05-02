@@ -16,6 +16,8 @@ Impacts.prototype.createMap = function() {
   var qtrs = location.search;
   var qs = this.parseQueryString(qtrs);
 
+  this.visibleLayers = ( qs.layers ) ? qs.layers.split(',') : null;
+
   var zoom = ( this.page === 'drought' ) ? 4 : 5;
   zoom = ( qs.zoom ) ? qs.zoom : zoom;
 
@@ -162,6 +164,7 @@ Impacts.prototype.wireEvents = function() {
         if (layer.get('layer_id') == id) {
           layer.setVisible(visible);
           layer.setOpacity(ui.value);
+          self.updateUrl();
         }
       });
 
@@ -328,6 +331,15 @@ Impacts.prototype.updateUrl = function() {
   qs.zoom = this.map.getView().getZoom();
   qs.center = this.map.getView().getCenter().toString();
 
+  var layers = [];
+  this.map.getLayers().forEach(function(l) {
+    if ( l.getVisible() && l.get('layer_id') !== undefined ) { layers.push(l.get('layer_id')); }
+  });
+
+  if ( !layers.length ) { layers = this.visibleLayers; }
+
+  qs.layers = layers.toString();
+
   var str = $.param( qs );
 
   history.pushState(null, "", 'case.php?'+str);
@@ -403,10 +415,19 @@ Impacts.prototype.addLayers = function() {
           })
         });
 
-        if ( i === clone.length - 1 && e === 0 ) {
-          layer.setVisible(true);
+
+        if ( !self.visibleLayers ) {
+          if ( i === clone.length - 1 && e === 0 ) {
+            layer.setVisible(true);
+          } else {
+            layer.setVisible(false);
+          }
         } else {
-          layer.setVisible(false);
+          if ( self.visibleLayers.indexOf(sublayer.id) !== -1 ) {
+            layer.setVisible(true);
+          } else {
+            layer.setVisible(false);
+          }
         }
 
         layer.set('layer_id', sublayer.id);
@@ -455,10 +476,19 @@ Impacts.prototype.addLayers = function() {
       }
 
       if ( layer ) {
-        if ( i === clone.length - 1 ) {
-          layer.setVisible(true);
+
+        if ( !self.visibleLayers ) {
+          if ( i === clone.length - 1 ) {
+            layer.setVisible(true);
+          } else {
+            layer.setVisible(false);
+          }
         } else {
-          layer.setVisible(false);
+          if ( self.visibleLayers.indexOf(id) !== -1 ) {
+            layer.setVisible(true);
+          } else {
+            layer.setVisible(false);
+          }
         }
 
         layer.set('layer_id', id);
@@ -468,10 +498,18 @@ Impacts.prototype.addLayers = function() {
 
     if ( self.data.layers[id].type === 'JSON' ) {
       self.createJsonLayer(id, function(featureCollection) {
-        if ( i === clone.length - 1 ) {
-          featureCollection.setVisible(true);
+        if ( !self.visibleLayers ) {
+          if ( i === clone.length - 1 ) {
+            featureCollection.setVisible(true);
+          } else {
+            featureCollection.setVisible(false);
+          }
         } else {
-          featureCollection.setVisible(false);
+          if ( self.visibleLayers.indexOf(id) !== -1 ) {
+            featureCollection.setVisible(true);
+          } else {
+            featureCollection.setVisible(false);
+          }
         }
 
         featureCollection.set('layer_id', id);

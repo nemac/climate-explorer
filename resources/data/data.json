@@ -102,7 +102,7 @@
       "url": "resources/data/wx_stations.json",
       "options": {},
       "defaults": {
-        "visible":true
+        "visible":false
       }
     },
     "drought": {
@@ -116,7 +116,7 @@
         "type": "mapserv"
       },
       "defaults": {
-        "visible":true
+        "visible":false
       }
     },
     "landcover": {
@@ -127,7 +127,7 @@
       "url": "http://raster.nationalmap.gov/arcgis/rest/services/LandCover/USGS_EROS_LandCover_NLCD/MapServer",
       "options": {},
       "defaults": {
-        "visible":true
+        "visible":false
       }
     },
     "rivers_streams": {
@@ -140,7 +140,7 @@
         "layer": "0"
       },
       "defaults": {
-        "visible":true
+        "visible":false
       }
     },
     "sea_level_rise": {
@@ -156,7 +156,7 @@
           "url": "https://coast.noaa.gov/arcgis/rest/services/dc_slr/slr_1ft/MapServer",
           "options": {},
           "defaults": {
-            "visible":true
+            "visible":false
           }
         },
         {
@@ -166,7 +166,7 @@
           "url": "https://coast.noaa.gov/arcgis/rest/services/dc_slr/slr_2ft/MapServer",
           "options": {},
           "defaults": {
-            "visible":true
+            "visible":false
           }
         },
         {
@@ -176,7 +176,7 @@
           "url": "https://coast.noaa.gov/arcgis/rest/services/dc_slr/slr_3ft/MapServer",
           "options": {},
           "defaults": {
-            "visible":true
+            "visible":false
           }
         },
         {
@@ -186,7 +186,7 @@
           "url": "https://coast.noaa.gov/arcgis/rest/services/dc_slr/slr_4ft/MapServer",
           "options": {},
           "defaults": {
-            "visible":true
+            "visible":false
           }
         },
         {
@@ -196,7 +196,7 @@
           "url": "https://coast.noaa.gov/arcgis/rest/services/dc_slr/slr_5ft/MapServer",
           "options": {},
           "defaults": {
-            "visible":true
+            "visible":false
           }
         },
         {
@@ -206,7 +206,7 @@
           "url": "https://coast.noaa.gov/arcgis/rest/services/dc_slr/slr_6ft/MapServer",
           "options": {},
           "defaults": {
-            "visible":true
+            "visible":false
           }
         }
       ],
@@ -222,7 +222,7 @@
       "url": "https://hazards.fema.gov/gis/nfhl/services/public/NFHLWMS/MapServer/WmsServer",
       "options": {},
       "defaults": {
-        "visible":true
+        "visible":false
       }
     },
     "coastal_flood_hazard_composite": {
@@ -233,7 +233,7 @@
       "url": "https://coast.noaa.gov/arcgis/rest/services/FloodExposureMapper/CFEM_CoastalFloodHazardComposite/MapServer",
       "options": {},
       "defaults": {
-        "visible":true
+        "visible":false
       }
     },
     "critical_coastal_facilities": {
@@ -244,7 +244,7 @@
       "url": "https://coast.noaa.gov/arcgis/rest/services/FloodExposureMapper/CFEM_CriticalFacilities/MapServer",
       "options": {},
       "defaults": {
-        "visible":true
+        "visible":false
       }
     },
     "social_vulnerability_index_coastal_states": {
@@ -255,7 +255,7 @@
       "url": "https://coast.noaa.gov/arcgis/rest/services/dc_slr/SOVI/MapServer",
       "options": {},
       "defaults": {
-        "visible":true
+        "visible":false
       }
     },
     "impervious_surfaces": {
@@ -268,7 +268,7 @@
         "layer": "show:7"
       },
       "defaults": {
-        "visible":true
+        "visible":false
       }
     },
     "sea_level_rise_3ft": {
@@ -279,7 +279,7 @@
       "url": "https://coast.noaa.gov/arcgis/rest/services/dc_slr/slr_3ft/MapServer/export",
       "options": {},
       "defaults": {
-        "visible":true
+        "visible":false
       }
     },
     "social_vulnerability_index": {
@@ -290,7 +290,7 @@
       "url": "https://commons.wim.usgs.gov/arcgis/rest/services/CDC_SVI/CDC_SVI/MapServer",
       "options": {},
       "defaults": {
-        "visible":true
+        "visible":false
       }
     },
     "bia_indian_lands": {
@@ -301,7 +301,7 @@
       "url": "http://commons.wim.usgs.gov/arcgis/rest/services/AIR_NDGA/AIR_NDGA/MapServer/export",
       "options": {},
       "defaults": {
-        "visible":true
+        "visible":false
       }
     },
     "bia_ceded_lands": {
@@ -312,7 +312,7 @@
       "url": "",
       "options": {},
       "defaults": {
-        "visible":true
+        "visible":false
       }
     },
     "wetlands": {
@@ -323,7 +323,7 @@
       "url": "https://coast.noaa.gov/arcgis/rest/services/FloodExposureMapper/CFEM_LandCover_NaturalAreasOpenSpace/MapServer",
       "options": {},
       "defaults": {
-        "visible":true
+        "visible":false
       }
     },
     "percent_poverty": {
@@ -337,7 +337,7 @@
         "type": "geoserver"
       },
       "defaults": {
-        "visible":true
+        "visible":false
       }
     },
     "percent_elderly": {
@@ -351,7 +351,7 @@
         "layer": "usgrid:usgrid-summary-file1-2000_usa-pctpop65to79-2000"
       },
       "defaults": {
-        "visible":true
+        "visible":false
       }
     },
     "population_density": {
@@ -366,7 +366,7 @@
         "version": "1.1.1"
       },
       "defaults": {
-        "visible":true
+        "visible":false
       }
     },
     "cropland": {
@@ -378,7 +378,7 @@
       "options": {
       },
       "defaults": {
-        "visible":true
+        "visible":false
       }
     },
     "hospitals": {
@@ -391,7 +391,7 @@
         "layer": 0
       },
       "defaults": {
-        "visible":true
+        "visible":false
       }
     },
     "major_highways": {
@@ -406,7 +406,7 @@
         "version":"1.1.1"
       },
       "defaults": {
-        "visible":true
+        "visible":false
       }
     },
     "bridges_tunnels": {
@@ -417,7 +417,7 @@
       "url": "http://hsip.geoplatform.gov/arcgis/rest/services/HSIP_Public/TransportationGround/MapServer",
       "options": {},
       "defaults": {
-        "visible":true
+        "visible":false
       }
     },
     "airports": {
@@ -428,7 +428,7 @@
       "url": "http://hsip.geoplatform.gov/arcgis/rest/services/HSIP_Public/TransportationAir/MapServer",
       "options": {},
       "defaults": {
-        "visible":true
+        "visible":false
       }
     }
   }
