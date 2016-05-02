@@ -228,7 +228,7 @@
                                   </div>
                                   <div id="rcp45-range" class="legend-item legend-item-range">
                                     <div class="legend-item-block" id="rcp45-block"></div>
-                                    Stabalized Emissions
+                                    Stabilized Emissions
                                   </div>
                                   <div id="rcp85-range" class="legend-item legend-item-range selected">
                                     <div class="legend-item-block selected" id="rcp85-block"></div>
@@ -443,7 +443,7 @@
                                 </div>
                                 <div id="rcp45-range" class="legend-item legend-item-range">
                                   <div class="legend-item-block" id="preciprcp45-block"></div>
-                                  Stabalized Emissions
+                                  Stabilized Emissions
                                 </div>
                                 <div id="rcp85-range" class="legend-item legend-item-range selected">
                                   <div class="legend-item-block selected" id="preciprcp85-block"></div>
@@ -659,7 +659,7 @@
                                 </div>
                                 <div id="rcp45-range" class="legend-item legend-item-range">
                                   <div class="legend-item-block" id="derivercp45-block"></div>
-                                  Stabalized Emissions
+                                  Stabilized Emissions
                                 </div>
                                 <div id="rcp85-range" class="legend-item legend-item-range selected">
                                   <div class="legend-item-block selected" id="derivercp85-block"></div>
