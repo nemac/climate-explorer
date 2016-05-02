@@ -7,6 +7,8 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
+    <link rel="stylesheet" media="screen" href="resources/css/shepherd-theme-arrows.css">
+
     <link rel="stylesheet" media="screen" href="resources/css/screen.css">
     <link rel="stylesheet" media="screen" href="resources/css/mods.css">
 
@@ -49,10 +51,10 @@
             </div>
 
             <ul id="home-menu" class="menu blue-menu">
-                <li><a href="location.html" class="launch-nav" data-nav-slide="0"><span class="icon icon-search"></span>Search by location</a></li>
-                <li><a href="#" class="launch-nav" data-nav-slide="1"><span class="icon icon-variables"></span>View by variable</a></li>
-                <li class="border"><a href="#" class="launch-nav" data-nav-slide="2"><span class="icon icon-bubble"></span>View by topic</a></li>
-                <li><a href="#"><span class="icon icon-tour"></span>New here? Take the tour</a></li>
+                <li><a href="location.html" class="launch-nav" data-nav-slide="0" id="home-search-by-location"><span class="icon icon-search"></span>Search by location</a></li>
+                <li><a href="#" class="launch-nav" data-nav-slide="1" id="home-search-by-variable"><span class="icon icon-variables"></span>View by variable</a></li>
+                <li class="border"><a href="#" class="launch-nav" data-nav-slide="2" id="home-search-by-topic"><span class="icon icon-bubble"></span>View by topic</a></li>
+                <li><a href="#" class="start-home-tour"><span class="icon icon-tour"></span>New here? Take the tour</a></li>
             </ul>
 
             <div id="h7">

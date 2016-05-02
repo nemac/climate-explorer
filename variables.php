@@ -13,6 +13,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <link rel="stylesheet" href="resources/css/ol3-popup.css">
+    <link rel="stylesheet" media="screen" href="resources/css/shepherd-theme-arrows.css">
 
     <link rel="stylesheet" media="screen" href="resources/css/screen.css">
     <link rel="stylesheet" media="screen" href="resources/css/mods.css">
@@ -36,9 +37,9 @@
 
     <header id="left-header">
       <ul id="vars-menu" class="menu blue-menu">
-        <li class="search-field border"><span class="icon icon-search"></span><input type="text" id="formmapper" placeholder="Search by location"></li>
+        <li class="search-field border" id="variable-search-by-location"><span class="icon icon-search"></span><input type="text" id="formmapper" placeholder="Search by location"></li>
 
-        <li class="toggle border">
+        <li class="toggle border" id="variable-counties-toggle">
           <a href="#info-counties" class="help icon icon-help"></a>
           <label for="counties-overlay-toggle"><span class="text">Data by Counties</span>
             <input type="checkbox" name="counties-overlay-toggle" id="counties-overlay-toggle" value="1" autocomplete="off">
@@ -51,7 +52,7 @@
             </div>
           </div>
         </li>
-        
+
         <li class="select border" id="variable-options-container">
           <select class="dropdown" id="variable-options">
             <option value="tasmax">Mean Daily Maximum</option>
