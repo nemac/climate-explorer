@@ -143,7 +143,7 @@
 
     <nav id="subnav">
       <ul>
-        <li><a href="#"><span class="icon"></span><span class="text">Help</span></a></li>
+        <li><a href="#"><span class="icon"></span><span class="text">Tour This Page</span></a></li>
         <li><a href="#"><span class="icon"></span><span class="text">About</span></a></li>
         <li><a href="#"><span class="icon"></span><span class="text">Definitions</span></a></li>
         <li><a href="#"><span class="icon"></span><span class="text">Credits</span></a></li>
