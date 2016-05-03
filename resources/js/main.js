@@ -102,13 +102,13 @@ App.prototype.takeHomeTour = function() {
   } else {
     this.homeTour = new Shepherd.Tour({
       defaults: {
-        classes: 'shepherd-theme-arrows',
-        scrollTo: true
+        classes: 'shepherd-element shepherd-open shepherd-theme-arrows',
+        showCancelLink: true
       }
     });
   }
 
-  this.homeTour.addStep('search-by-location', {
+  var step1 = this.homeTour.addStep('search-by-location', {
     text: 'Search climate graphs and maps for any location in the United States.',
     attachTo: '#home-search-by-location left',
     buttons: [
@@ -124,7 +124,7 @@ App.prototype.takeHomeTour = function() {
     ]
   });
 
-  this.homeTour.addStep('search-by-variable', {
+  var step2 = this.homeTour.addStep('search-by-variable', {
     text: 'Explore climate variables across the United States.',
     attachTo: '#home-search-by-variable left',
     buttons: [
@@ -156,7 +156,35 @@ App.prototype.takeHomeTour = function() {
     ]
   });
 
+  this.homeTour.on('show', function() {
+    var current = self.homeTour.getCurrentStep();
+    var selected = 1;
+    self.homeTour.steps.forEach(function(step, i) {
+      if ( current ) {
+        if ( current.id === step.id ) {
+          selected = i + 2;
+        }
+      } else {
+        selected = 1;
+      }
+    });
+    var steps = self.homeTour.steps.length;
+
+    setTimeout(function() {
+      $('.shepherd-buttons .shep-steps').remove();
+      var steps = self.homeTour.steps.length;
+      var html = '<span class="shep-steps">Step '+selected+' of '+steps+'</span>';
+      $('.shepherd-buttons').append(html);
+    },200);
+
+    $('.cd-cover-layer').addClass('is-visible');
+    setTimeout(function() {
+      $('.cd-cover-layer').removeClass('is-visible');
+    },1200);
+  });
+
   this.homeTour.start();
+
 };
 
 
@@ -267,6 +295,33 @@ App.prototype.takeVariablesTour = function() {
     ]
   });
 
+  this.variablesTour.on('show', function() {
+    var current = self.variablesTour.getCurrentStep();
+    var selected = 1;
+    self.variablesTour.steps.forEach(function(step, i) {
+      if ( current ) {
+        if ( current.id === step.id ) {
+          selected = i + 2;
+        }
+      } else {
+        selected = 1;
+      }
+    });
+    var steps = self.variablesTour.steps.length;
+
+    setTimeout(function() {
+      $('.shepherd-buttons .shep-steps').remove();
+      var steps = self.variablesTour.steps.length;
+      var html = '<span class="shep-steps">Step '+selected+' of '+steps+'</span>';
+      $('.shepherd-buttons').append(html);
+    },200);
+
+    $('.cd-cover-layer').addClass('is-visible');
+    setTimeout(function() {
+      $('.cd-cover-layer').removeClass('is-visible');
+    },1200);
+  });
+
   this.variablesTour.start();
 };
 
@@ -331,6 +386,33 @@ App.prototype.takeLocationTour = function() {
   });
 
 
+  this.locationTour.on('show', function() {
+    var current = self.locationTour.getCurrentStep();
+    var selected = 1;
+    self.locationTour.steps.forEach(function(step, i) {
+      if ( current ) {
+        if ( current.id === step.id ) {
+          selected = i + 2;
+        }
+      } else {
+        selected = 1;
+      }
+    });
+    var steps = self.locationTour.steps.length;
+
+    setTimeout(function() {
+      $('.shepherd-buttons .shep-steps').remove();
+      var steps = self.locationTour.steps.length;
+      var html = '<span class="shep-steps">Step '+selected+' of '+steps+'</span>';
+      $('.shepherd-buttons').append(html);
+    },200);
+
+    $('.cd-cover-layer').addClass('is-visible');
+    setTimeout(function() {
+      $('.cd-cover-layer').removeClass('is-visible');
+    },1200);
+  });
+
   this.locationTour.start();
 };
 
@@ -378,6 +460,32 @@ App.prototype.takeCaseTour = function() {
     ]
   });
 
+  this.caseTour.on('show', function() {
+    var current = self.caseTour.getCurrentStep();
+    var selected = 1;
+    self.caseTour.steps.forEach(function(step, i) {
+      if ( current ) {
+        if ( current.id === step.id ) {
+          selected = i + 2;
+        }
+      } else {
+        selected = 1;
+      }
+    });
+    var steps = self.caseTour.steps.length;
+
+    setTimeout(function() {
+      $('.shepherd-buttons .shep-steps').remove();
+      var steps = self.caseTour.steps.length;
+      var html = '<span class="shep-steps">Step '+selected+' of '+steps+'</span>';
+      $('.shepherd-buttons').append(html);
+    },200);
+
+    $('.cd-cover-layer').addClass('is-visible');
+    setTimeout(function() {
+      $('.cd-cover-layer').removeClass('is-visible');
+    },1200);
+  });
 
   this.caseTour.start();
 };

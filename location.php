@@ -19,7 +19,7 @@
 
     <link rel="stylesheet" href="resources/css/ol3-popup.css">
     <link rel="stylesheet" media="screen" href="resources/css/shepherd-theme-arrows.css">
-    
+
     <link rel="stylesheet" media="screen" href="resources/css/screen.css">
     <link rel="stylesheet" media="screen" href="resources/css/mods.css">
 
@@ -29,7 +29,7 @@
 </head>
 
 <body id="page-location-seattle" class="page-type-location">
-
+<div class="cd-cover-layer"></div>
 <?php include_once('template/header.php'); ?>
 
 <div id="viewport">

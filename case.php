@@ -24,7 +24,7 @@
   </head>
 
 <body id="page-fire-regimes" class="page-type-case">
-
+<div class="cd-cover-layer"></div>
 <?php include_once('template/header.php'); ?>
 
 <header id="left-header">
