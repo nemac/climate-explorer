@@ -171,6 +171,7 @@ App.prototype.takeHomeTour = function() {
     var steps = self.homeTour.steps.length;
 
     setTimeout(function() {
+      $('.shepherd-buttons .shep-steps').remove();
       var steps = self.homeTour.steps.length;
       var html = '<span class="shep-steps">Step '+selected+' of '+steps+'</span>';
       $('.shepherd-buttons').append(html);
@@ -309,6 +310,7 @@ App.prototype.takeVariablesTour = function() {
     var steps = self.variablesTour.steps.length;
 
     setTimeout(function() {
+      $('.shepherd-buttons .shep-steps').remove();
       var steps = self.variablesTour.steps.length;
       var html = '<span class="shep-steps">Step '+selected+' of '+steps+'</span>';
       $('.shepherd-buttons').append(html);
@@ -399,6 +401,7 @@ App.prototype.takeLocationTour = function() {
     var steps = self.locationTour.steps.length;
 
     setTimeout(function() {
+      $('.shepherd-buttons .shep-steps').remove();
       var steps = self.locationTour.steps.length;
       var html = '<span class="shep-steps">Step '+selected+' of '+steps+'</span>';
       $('.shepherd-buttons').append(html);
@@ -472,6 +475,7 @@ App.prototype.takeCaseTour = function() {
     var steps = self.caseTour.steps.length;
 
     setTimeout(function() {
+      $('.shepherd-buttons .shep-steps').remove();
       var steps = self.caseTour.steps.length;
       var html = '<span class="shep-steps">Step '+selected+' of '+steps+'</span>';
       $('.shepherd-buttons').append(html);
