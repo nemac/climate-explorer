@@ -447,3 +447,73 @@ input.location-mapper:focus:-ms-input-placeholder {
   position: absolute;
   left: calc(20% + 35px);
 }
+
+
+
+.shep-steps {
+  font-size: 0.7em !important;
+  float: left;
+  margin-top: 0px;
+}
+
+.shepherd-button {
+  font-size:0.6em !important;
+}
+
+
+.cd-cover-layer {
+  /* background cover layer - visible when tour is activated */
+  position: fixed;
+  z-index: 100;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  background-color: rgba(0, 0, 0, 0.6);
+  visibility: hidden;
+  opacity: 0;
+  -webkit-transition: opacity 0.4s 0s, visibility 0s 0.4s;
+  -moz-transition: opacity 0.4s 0s, visibility 0s 0.4s;
+  transition: opacity 0.4s 0s, visibility 0s 0.4s;
+}
+.cd-cover-layer.is-visible {
+  opacity: 1;
+  visibility: visible;
+  -webkit-transition: opacity 0.4s 0s, visibility 0s 0s;
+  -moz-transition: opacity 0.4s 0s, visibility 0s 0s;
+  transition: opacity 0.4s 0s, visibility 0s 0s;
+}
+@media only screen and (min-width: 1100px) {
+  .cd-cover-layer.is-visible {
+    opacity: 0;
+    -webkit-animation: cd-fade-in 2.1s;
+    -moz-animation: cd-fade-in 2.1s;
+    animation: cd-fade-in 2.1s;
+  }
+}
+
+
+@-webkit-keyframes cd-fade-in {
+  0%, 100% {
+    opacity: 0;
+  }
+  14%, 40% {
+    opacity: 1;
+  }
+}
+@-moz-keyframes cd-fade-in {
+  0%, 100% {
+    opacity: 0;
+  }
+  14%, 40% {
+    opacity: 1;
+  }
+}
+@keyframes cd-fade-in {
+  0%, 100% {
+    opacity: 0;
+  }
+  14%, 40% {
+    opacity: 1;
+  }
+}

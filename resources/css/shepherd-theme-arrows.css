@@ -22,6 +22,11 @@
   max-width: 100%;
 }
 
+.shepherd-content header {
+  background: none;
+  height: 0px;
+}
+
 .shepherd-element.shepherd-theme-arrows .shepherd-content {
   border-radius: 5px;
   position: relative;
@@ -219,15 +224,14 @@
 .shepherd-element.shepherd-theme-arrows .shepherd-content header a.shepherd-cancel-link {
   float: right;
   text-decoration: none;
-  font-size: 1.25em;
-  line-height: .8em;
+  font-size: 1em;
+  line-height: 1em;
   font-weight: normal;
   color: rgba(0, 0, 0, 0.5);
   opacity: 0.25;
   position: relative;
-  top: .1em;
-  padding: .8em;
-  margin-bottom: -.8em;
+  top: 0em;
+  padding: 0.5em;
 }
 
 .shepherd-element.shepherd-theme-arrows .shepherd-content header a.shepherd-cancel-link:hover {

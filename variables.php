@@ -24,7 +24,7 @@
   </head>
 
   <body id="page-variables" class="page-type-variables">
-
+    <div class="cd-cover-layer"></div>
     <?php include_once('template/header.php'); ?>
 
     <div id="download-panel" class="hidden download-panel">
