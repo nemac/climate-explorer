@@ -302,16 +302,7 @@ input.location-mapper:focus:-ms-input-placeholder {
   overflow-x: auto;
 }
 
-#location-station-map .ol-attribution, #location-station-map .ol-rotate {
-  display: none;
-}
 
-#location-station-map .ol-zoom {
-  position: absolute;
-  z-index: 1;
-  top: 10px;
-  left: 10px;
-}
 
 
 

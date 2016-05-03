@@ -736,17 +736,22 @@
         </section>
 
 
-        <!-- begin precipitation chart and map -->
+        <!-- begin weather stations map -->
+
         <section id="location-stations" class="location-data-section-wrap">
           <div class="location-data-section">
-            <header>
-              <h3 class="accent-color"><span class="icon icon-temperature"></span>Weather Stations</h3>
-            </header>
-          </div>
-          <div id="location-station-map"></div>
-        </section>
-    <!-- end precip chart and map -->
+            <div id="stations-data" class="data-list">
+              <h3 class="accent-color"><span class="icon icon-district"></span>Weather Stations</h3>
+              <p>This map shows the location of weather stations near the selected county. Click on a weather station to view its data.</p>
+            </div>
 
+            <div id="stations-tabs" class="data-accordion-wrap">
+              <div id="location-station-map"></div>
+            </div>
+          </div>
+        </section>
+        
+        <!-- end weather stations chart and map -->
 
         <section id="location-impacts" class="impacts-list">
             <h2>Relevant Impacts</h2>
