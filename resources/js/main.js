@@ -90,6 +90,15 @@ App.prototype.tour = function() {
     self.takeCaseTour();
   });
 
+  $('.how-to-read').on('click', function() {
+    var pre = '';
+    var closest = $(this).closest('.data-chart').attr('id');
+    if ( closest === 'precipitation-chart' ) { pre = 'precip-'; }
+    if ( closest === 'derived-chart' ) { pre = 'derive-'; }
+    console.log('pre', pre, 'closest', closest);
+    self.takeGraphTour(pre);
+  });
+
 };
 
 
@@ -103,7 +112,7 @@ App.prototype.takeHomeTour = function() {
     this.homeTour = new Shepherd.Tour({
       defaults: {
         classes: 'shepherd-element shepherd-open shepherd-theme-arrows',
-        showCancelLink: true
+        showCancelLink: false
       }
     });
   }
@@ -113,7 +122,7 @@ App.prototype.takeHomeTour = function() {
     attachTo: '#home-search-by-location left',
     buttons: [
       {
-        text: 'Exit',
+        text: 'Close',
         classes: 'shepherd-button-secondary',
         action: this.homeTour.cancel
       },
@@ -129,7 +138,7 @@ App.prototype.takeHomeTour = function() {
     attachTo: '#home-search-by-variable left',
     buttons: [
       {
-        text: 'Exit',
+        text: 'Close',
         classes: 'shepherd-button-secondary',
         action: this.homeTour.cancel
       },
@@ -145,7 +154,7 @@ App.prototype.takeHomeTour = function() {
     attachTo: '#home-search-by-topic left',
     buttons: [
       {
-        text: 'Exit',
+        text: 'Close',
         classes: 'shepherd-button-secondary',
         action: this.homeTour.cancel
       },
@@ -157,30 +166,11 @@ App.prototype.takeHomeTour = function() {
   });
 
   this.homeTour.on('show', function() {
-    var current = self.homeTour.getCurrentStep();
-    var selected = 1;
-    self.homeTour.steps.forEach(function(step, i) {
-      if ( current ) {
-        if ( current.id === step.id ) {
-          selected = i + 2;
-        }
-      } else {
-        selected = 1;
-      }
-    });
-    var steps = self.homeTour.steps.length;
-
-    setTimeout(function() {
-      $('.shepherd-buttons .shep-steps').remove();
-      var steps = self.homeTour.steps.length;
-      var html = '<span class="shep-steps">Step '+selected+' of '+steps+'</span>';
-      $('.shepherd-buttons').append(html);
-    },200);
-
+    console.log('show!');
     $('.cd-cover-layer').addClass('is-visible');
     setTimeout(function() {
       $('.cd-cover-layer').removeClass('is-visible');
-    },1200);
+    },4000);
   });
 
   this.homeTour.start();
@@ -208,7 +198,7 @@ App.prototype.takeVariablesTour = function() {
     attachTo: '#variable-search-by-location right',
     buttons: [
       {
-        text: 'Exit',
+        text: 'Close',
         classes: 'shepherd-button-secondary',
         action: this.variablesTour.cancel
       },
@@ -224,7 +214,7 @@ App.prototype.takeVariablesTour = function() {
     attachTo: '#variable-counties-toggle right',
     buttons: [
       {
-        text: 'Exit',
+        text: 'Close',
         classes: 'shepherd-button-secondary',
         action: this.variablesTour.cancel
       },
@@ -240,7 +230,7 @@ App.prototype.takeVariablesTour = function() {
     attachTo: '#variable-options-container right',
     buttons: [
       {
-        text: 'Exit',
+        text: 'Close',
         classes: 'shepherd-button-secondary',
         action: this.variablesTour.cancel
       },
@@ -256,7 +246,7 @@ App.prototype.takeVariablesTour = function() {
     attachTo: '#map-seasons-container bottom',
     buttons: [
       {
-        text: 'Exit',
+        text: 'Close',
         classes: 'shepherd-button-secondary',
         action: this.variablesTour.cancel
       },
@@ -272,7 +262,7 @@ App.prototype.takeVariablesTour = function() {
     attachTo: '#sliderDiv right',
     buttons: [
       {
-        text: 'Exit',
+        text: 'Close',
         classes: 'shepherd-button-secondary',
         action: this.variablesTour.cancel
       },
@@ -288,7 +278,7 @@ App.prototype.takeVariablesTour = function() {
     attachTo: '#year-slider-container top',
     buttons: [
       {
-        text: 'Exit',
+        text: 'Close',
         classes: 'shepherd-button-secondary',
         action: this.variablesTour.cancel
       }
@@ -296,30 +286,11 @@ App.prototype.takeVariablesTour = function() {
   });
 
   this.variablesTour.on('show', function() {
-    var current = self.variablesTour.getCurrentStep();
-    var selected = 1;
-    self.variablesTour.steps.forEach(function(step, i) {
-      if ( current ) {
-        if ( current.id === step.id ) {
-          selected = i + 2;
-        }
-      } else {
-        selected = 1;
-      }
-    });
-    var steps = self.variablesTour.steps.length;
-
-    setTimeout(function() {
-      $('.shepherd-buttons .shep-steps').remove();
-      var steps = self.variablesTour.steps.length;
-      var html = '<span class="shep-steps">Step '+selected+' of '+steps+'</span>';
-      $('.shepherd-buttons').append(html);
-    },200);
-
+    $('.cd-cover-layer').removeClass('is-visible');
     $('.cd-cover-layer').addClass('is-visible');
     setTimeout(function() {
       $('.cd-cover-layer').removeClass('is-visible');
-    },1200);
+    },4000);
   });
 
   this.variablesTour.start();
@@ -346,7 +317,7 @@ App.prototype.takeLocationTour = function() {
     attachTo: '#location-search bottom',
     buttons: [
       {
-        text: 'Exit',
+        text: 'Close',
         classes: 'shepherd-button-secondary',
         action: this.locationTour.cancel
       },
@@ -362,7 +333,7 @@ App.prototype.takeLocationTour = function() {
     attachTo: '#page-nav bottom',
     buttons: [
       {
-        text: 'Exit',
+        text: 'Close',
         classes: 'shepherd-button-secondary',
         action: this.locationTour.cancel
       },
@@ -378,7 +349,7 @@ App.prototype.takeLocationTour = function() {
     attachTo: '#temperature-data top',
     buttons: [
       {
-        text: 'Exit',
+        text: 'Close',
         classes: 'shepherd-button-secondary',
         action: this.locationTour.cancel
       }
@@ -387,30 +358,11 @@ App.prototype.takeLocationTour = function() {
 
 
   this.locationTour.on('show', function() {
-    var current = self.locationTour.getCurrentStep();
-    var selected = 1;
-    self.locationTour.steps.forEach(function(step, i) {
-      if ( current ) {
-        if ( current.id === step.id ) {
-          selected = i + 2;
-        }
-      } else {
-        selected = 1;
-      }
-    });
-    var steps = self.locationTour.steps.length;
-
-    setTimeout(function() {
-      $('.shepherd-buttons .shep-steps').remove();
-      var steps = self.locationTour.steps.length;
-      var html = '<span class="shep-steps">Step '+selected+' of '+steps+'</span>';
-      $('.shepherd-buttons').append(html);
-    },200);
-
+    $('.cd-cover-layer').removeClass('is-visible');
     $('.cd-cover-layer').addClass('is-visible');
     setTimeout(function() {
       $('.cd-cover-layer').removeClass('is-visible');
-    },1200);
+    },4000);
   });
 
   this.locationTour.start();
@@ -437,7 +389,7 @@ App.prototype.takeCaseTour = function() {
     attachTo: '#search-by-location right',
     buttons: [
       {
-        text: 'Exit',
+        text: 'Close',
         classes: 'shepherd-button-secondary',
         action: this.caseTour.cancel
       },
@@ -453,7 +405,7 @@ App.prototype.takeCaseTour = function() {
     attachTo: '#case-menu right',
     buttons: [
       {
-        text: 'Exit',
+        text: 'Close',
         classes: 'shepherd-button-secondary',
         action: this.caseTour.cancel
       }
@@ -461,31 +413,128 @@ App.prototype.takeCaseTour = function() {
   });
 
   this.caseTour.on('show', function() {
-    var current = self.caseTour.getCurrentStep();
-    var selected = 1;
-    self.caseTour.steps.forEach(function(step, i) {
-      if ( current ) {
-        if ( current.id === step.id ) {
-          selected = i + 2;
-        }
-      } else {
-        selected = 1;
-      }
-    });
-    var steps = self.caseTour.steps.length;
-
-    setTimeout(function() {
-      $('.shepherd-buttons .shep-steps').remove();
-      var steps = self.caseTour.steps.length;
-      var html = '<span class="shep-steps">Step '+selected+' of '+steps+'</span>';
-      $('.shepherd-buttons').append(html);
-    },200);
-
+    $('.cd-cover-layer').removeClass('is-visible');
     $('.cd-cover-layer').addClass('is-visible');
     setTimeout(function() {
       $('.cd-cover-layer').removeClass('is-visible');
-    },1200);
+    },4000);
   });
 
   this.caseTour.start();
+};
+
+
+
+
+App.prototype.takeGraphTour = function(pre) {
+  var self = this;
+
+  if ( this.graphTour ) {
+    this.graphTour.cancel();
+    this.graphTour = null;
+    this.graphTour = new Shepherd.Tour({
+      defaults: {
+        classes: 'shepherd-theme-arrows',
+        scrollTo: false
+      }
+    });
+  } else {
+    this.graphTour = new Shepherd.Tour({
+      defaults: {
+        classes: 'shepherd-theme-arrows',
+        scrollTo: false
+      }
+    });
+  }
+
+  this.graphTour.addStep('historical-obs', {
+    text: 'Use this to turn on and off historical observed data',
+    attachTo: '#'+pre+'historical-obs top',
+    buttons: [
+      {
+        text: 'Close',
+        classes: 'shepherd-button-secondary',
+        action: this.graphTour.cancel
+      },
+      {
+        text: 'Next',
+        action: this.graphTour.next
+      }
+    ]
+  });
+
+
+  this.graphTour.addStep('historical-range', {
+    text: 'Historical range.',
+    attachTo: '#'+pre+'historical-range top',
+    buttons: [
+      {
+        text: 'Close',
+        classes: 'shepherd-button-secondary',
+        action: this.graphTour.cancel
+      },
+      {
+        text: 'Next',
+        action: this.graphTour.next
+      }
+    ]
+  });
+
+
+
+  this.graphTour.addStep('rcp45-range', {
+    text: 'rcp45 Range',
+    attachTo: '#'+pre+'rcp45-range top',
+    buttons: [
+      {
+        text: 'Close',
+        classes: 'shepherd-button-secondary',
+        action: this.graphTour.cancel
+      },
+      {
+        text: 'Next',
+        action: this.graphTour.next
+      }
+    ]
+  });
+
+
+  this.graphTour.addStep('rcp85-range', {
+    text: 'rcp85 Range',
+    attachTo: '#'+pre+'rcp85-range top',
+    buttons: [
+      {
+        text: 'Close',
+        classes: 'shepherd-button-secondary',
+        action: this.graphTour.cancel
+      },
+      {
+        text: 'Next',
+        action: this.graphTour.next
+      }
+    ]
+  });
+
+  this.graphTour.addStep('rcp45-mean', {
+    text: 'medians of rcp45 and 85',
+    attachTo: '#'+pre+'rcp45-mean top',
+    buttons: [
+      {
+        text: 'Close',
+        classes: 'shepherd-button-secondary',
+        action: this.graphTour.cancel
+      }
+    ]
+  });
+
+
+  this.graphTour.on('start', function() {
+    $('.cd-cover-layer').removeClass('is-visible');
+    $('.cd-cover-layer').addClass('is-visible');
+    setTimeout(function() {
+      $('.cd-cover-layer').removeClass('is-visible');
+    },4000);
+  });
+
+  this.graphTour.start();
 };

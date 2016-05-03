@@ -438,19 +438,19 @@
                                   </div>
                                   <span class="legend-item-line-label">Observations</span>
                                 </div>
-                                <div id="historical-range" class="legend-item legend-item-range selected">
+                                <div id="precip-historical-range" class="legend-item legend-item-range selected">
                                   <div class="legend-item-block selected" id="preciphistorical-block"></div>
                                   Historical (Modelled)
                                 </div>
-                                <div id="rcp45-range" class="legend-item legend-item-range">
+                                <div id="precip-rcp45-range" class="legend-item legend-item-range">
                                   <div class="legend-item-block" id="preciprcp45-block"></div>
                                   Stabilized Emissions
                                 </div>
-                                <div id="rcp85-range" class="legend-item legend-item-range selected">
+                                <div id="precip-rcp85-range" class="legend-item legend-item-range selected">
                                   <div class="legend-item-block selected" id="preciprcp85-block"></div>
                                   Increasing Emissions
                                 </div>
-                                <div id="rcp45-mean" class="legend-item legend-item-range">
+                                <div id="precip-rcp45-mean" class="legend-item legend-item-range">
                                   <div class="legend-item-line-container">
                                     <div class="legend-item-line" id="preciprcp85-line"></div>
                                     <div class="legend-item-line" id="preciprcp45-line"></div>
@@ -654,19 +654,19 @@
                                   </div>
                                   <span class="legend-item-line-label">Observations</span>
                                 </div>
-                                <div id="historical-range" class="legend-item legend-item-range selected">
+                                <div id="derive-historical-range" class="legend-item legend-item-range selected">
                                   <div class="legend-item-block selected" id="derivehistorical-block"></div>
                                   Historical (Modelled)
                                 </div>
-                                <div id="rcp45-range" class="legend-item legend-item-range">
+                                <div id="derive-rcp45-range" class="legend-item legend-item-range">
                                   <div class="legend-item-block" id="derivercp45-block"></div>
                                   Stabilized Emissions
                                 </div>
-                                <div id="rcp85-range" class="legend-item legend-item-range selected">
+                                <div id="derive-rcp85-range" class="legend-item legend-item-range selected">
                                   <div class="legend-item-block selected" id="derivercp85-block"></div>
                                   Increasing Emissions
                                 </div>
-                                <div id="rcp45-mean" class="legend-item legend-item-range">
+                                <div id="derive-rcp45-mean" class="legend-item legend-item-range">
                                   <div class="legend-item-line-container">
                                     <div class="legend-item-line" id="derivercp85-line"></div>
                                     <div class="legend-item-line" id="derivercp45-line"></div>
