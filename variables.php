@@ -13,6 +13,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <link rel="stylesheet" href="resources/css/ol3-popup.css">
+    <link rel="stylesheet" media="screen" href="resources/css/shepherd-theme-arrows.css">
 
     <link rel="stylesheet" media="screen" href="resources/css/screen.css">
     <link rel="stylesheet" media="screen" href="resources/css/mods.css">
@@ -23,7 +24,7 @@
   </head>
 
   <body id="page-variables" class="page-type-variables">
-
+    <div class="cd-cover-layer"></div>
     <?php include_once('template/header.php'); ?>
 
     <div id="download-panel" class="hidden download-panel">
@@ -36,7 +37,21 @@
 
     <header id="left-header">
       <ul id="vars-menu" class="menu blue-menu">
-        <li class="search-field border"><span class="icon icon-search"></span><input type="text" id="formmapper" placeholder="Search by location"></li>
+        <li class="search-field border" id="variable-search-by-location"><span class="icon icon-search"></span><input type="text" id="formmapper" placeholder="Search by location"></li>
+
+        <li class="toggle border" id="variable-counties-toggle">
+          <a href="#info-counties" class="help icon icon-help"></a>
+          <label for="counties-overlay-toggle"><span class="text">Data by Counties</span>
+            <input type="checkbox" name="counties-overlay-toggle" id="counties-overlay-toggle" value="1" autocomplete="off">
+          </label>
+          <div id="info-counties" class="layer-info">
+
+            <div class="actions">
+              <a href="#" class="layer-info-close"><span class="icon icon-close"></span>Close</a>
+              <a href="#" class="layer-info-next"><span class="icon icon-arrow-right"></span>Next</a>
+            </div>
+          </div>
+        </li>
 
         <li class="select border" id="variable-options-container">
           <select class="dropdown" id="variable-options">
@@ -50,21 +65,7 @@
           </select>
         </li>
 
-        <li class="toggle border">
-          <a href="#info-counties" class="help icon icon-help"></a>
-          <label for="counties-overlay-toggle"><span class="text">Data by Counties</span>
-            <input type="checkbox" name="counties-overlay-toggle" id="counties-overlay-toggle" value="1" autocomplete="off">
-          </label>
-          <div id="info-counties" class="layer-info">
-
-            <div class="actions">
-              <a href="#" class="layer-info-close"><span class="icon icon-close"></span>Close</a>
-              <a href="#" class="layer-info-next"><span class="icon icon-arrow-right"></span>Next</a>
-            </div>
-          </div>
-        </li>
-        
-        <li class="about-link"><a href="#detail-temperature" class="nav-detail-link">About Average Mean Temperature</a></li>
+        <li class="about-link"><a href="#detail-tasmax" class="nav-detail-link" id="about-variable-link">About Mean Daily Maximum</a></li>
       </ul>
 
       <div id="vars-legend" class="legend-wrap left-filler">

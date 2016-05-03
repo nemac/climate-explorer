@@ -49,8 +49,10 @@ $(document).ready(function() {
       var id = $('#frequency').val();
       if ( id !== 'annual' ) {
         $('#historical-range, #under-baseline-range, #over-baseline-range').hide();
+        $('.legend-item-line.observed').addClass('seasonal');
       } else {
         $('#historical-range, #under-baseline-range, #over-baseline-range').show();
+        $('.legend-item-line.observed').removeClass('seasonal');
       }
 
       if ( id !== 'annual' ) {
@@ -260,6 +262,7 @@ $(document).ready(function() {
 
       var val = $(this).children('a');
       $('#temp-chart-name').html( val.context.innerText );
+      $('#temp-map-name').html( val.context.innerText );
 
       var id = $(this).attr('id').replace('var-', '');
       $('#frequency').val('annual').change();
@@ -272,6 +275,7 @@ $(document).ready(function() {
 
       var val = $(this).children('a');
       $('#precip-chart-name').html( val.context.innerText );
+      $('#precip-map-name').html( val.context.innerText );
 
       var id = $(this).attr('id').replace('var-', '');
       $('#precip-frequency').val('annual').change();
@@ -284,6 +288,7 @@ $(document).ready(function() {
 
       var val = $(this).children('a');
       $('#derived-chart-name').html( val.context.innerText );
+      $('#derived-map-name').html( val.context.innerText );
 
       var id = $(this).attr('id').replace('var-', '');
       $('#derived-frequency').val('annual').change();
@@ -308,6 +313,7 @@ $(document).ready(function() {
     $('.legend-item-range').on('click', function(e) {
       $(this).toggleClass('selected');
       $(this).children('.legend-item-block, .legend-item-line').toggleClass('selected');
+      $(this).children('.legend-item-line-container').children('.legend-item-line').toggleClass('selected');
 
       var pre = $(this).closest('.chart-legend').attr('id');
       if (!pre) {
@@ -441,7 +447,7 @@ $(document).ready(function() {
       if (dataurls.proj_mod) {
           $ul.append($("<li><a href='"+dataurls.proj_mod+"' class='button display-block border-white hover-bg-white'><span class='icon icon-arrow-down'></span>Projected Modeled Data</a></li>"));
       }
-      
+
       $('#download-panel').fadeIn(250);
 
     });

@@ -18,6 +18,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <link rel="stylesheet" href="resources/css/ol3-popup.css">
+    <link rel="stylesheet" media="screen" href="resources/css/shepherd-theme-arrows.css">
 
     <link rel="stylesheet" media="screen" href="resources/css/screen.css">
     <link rel="stylesheet" media="screen" href="resources/css/mods.css">
@@ -28,7 +29,7 @@
 </head>
 
 <body id="page-location-seattle" class="page-type-location">
-
+<div class="cd-cover-layer"></div>
 <?php include_once('template/header.php'); ?>
 
 <div id="viewport">
@@ -74,7 +75,7 @@
             <div class="location-data-section">
                 <div id="temperature-data" class="data-list">
                   <h3 class="accent-color"><span class="icon icon-temperature"></span>Temperature</h3>
-                  
+
                   <ul class="data-options">
                     <li class="active accent-border">
                       <h4 id="var-tasmax"><a href="#" class="text accent-color">Mean Daily Maximum</a><a href="#detail-tasmax" class="icon icon-help nav-detail-link"></a></h4>
@@ -180,7 +181,7 @@
                         <button><a id="download-image-link-temp">Download Image</a></button>
                       </div>
                   </form>
-                  
+
                   <div class="data-vars">
                     <label for="temperature-presentation">Display: </label>
 
@@ -216,29 +217,30 @@
                               <div class="chart-wrap">
                                 <div id="chart-123" class="chart-canvas" data-chart-ID="123"></div>
                                 <div class="chart-legend">
-                                  <div id="rcp45-range" class="legend-item legend-item-range">
-                                    <div class="legend-item-block" id="rcp45-block"></div>
-                                    Low Emissions (RCP 4.5) Range
-                                  </div>
-                                  <div id="rcp85-range" class="legend-item legend-item-range selected">
-                                    <div class="legend-item-block selected" id="rcp85-block"></div>
-                                    High Emissions (RCP 8.5) Range
-                                  </div>
-                                  <div id="rcp45-mean" class="legend-item legend-item-range">
-                                    <div class="legend-item-line" id="rcp85-line"></div>
-                                    High Emissions Median
-                                    <div class="legend-item-line" id="rcp45-line"></div>
-                                    Low Emissions Median
+                                  <div id="historical-obs" class="legend-item legend-item-range selected">
+                                    <div class="legend-item-line-container">
+                                      <div class="legend-item-line selected observed" id="over-baseline-block"></div>
+                                    </div>
+                                    <span class="legend-item-line-label">Observations</span>
                                   </div>
                                   <div id="historical-range" class="legend-item legend-item-range selected">
                                     <div class="legend-item-block selected" id="historical-block"></div>
                                     Historical (Modelled)
                                   </div>
-                                  <div id="historical-obs" class="legend-item legend-item-range selected">
-                                    <div class="legend-item-line selected" id="over-baseline-block"></div>
-                                    Observed over baseline
-                                    <div class="legend-item-line selected" id="under-baseline-block"></div>
-                                    Obs under baseline
+                                  <div id="rcp45-range" class="legend-item legend-item-range">
+                                    <div class="legend-item-block" id="rcp45-block"></div>
+                                    Stabilized Emissions
+                                  </div>
+                                  <div id="rcp85-range" class="legend-item legend-item-range selected">
+                                    <div class="legend-item-block selected" id="rcp85-block"></div>
+                                    Increasing Emissions
+                                  </div>
+                                  <div id="rcp45-mean" class="legend-item legend-item-range">
+                                    <div class="legend-item-line-container">
+                                      <div class="legend-item-line" id="rcp85-line"></div>
+                                      <div class="legend-item-line" id="rcp45-line"></div>
+                                    </div>
+                                    <span class="legend-item-line-label">Medians</span>
                                   </div>
                                 </div>
                               </div>
@@ -256,7 +258,7 @@
                               <span class="icon icon-district"></span>
                               <span class="text">
                                 Map<span class="full-title">: <?php echo $county ?></span>
-                                <span class="source">Source: <a href="#" target="_blank">NOAA, 2014</a></span>
+                                <span class="source" id="temp-map-name">Mean Daily Maximum</span>
                               </span>
                             </h4>
 
@@ -269,13 +271,13 @@
                                   <option value="spring">Spring</option>
                                 </select>
                               </div>
-                              
+
                               <a href="#" class="how-to-read"><span class="icon icon-help"></span>How to read this</a>
                               <a href="#" class="download-image"><span class="icon icon-download-image"></span>Image</a>
                               <a href="#" class="download-data"><span class="icon icon-download-chart"></span>Data</a>
                             </div>
                           </header>
-                          
+
                           <div class="data-accordion-content map">
                             <div class="moveable" id="temperature-mapSliderDiv">
                               <div id="temperature-swipeImg" class="handle">
@@ -283,7 +285,7 @@
                         				<div class="emissions-high">High Emissions</div>
                         			</div>
                             </div>
-                            
+
                             <div id="temperature-map" class="map-element"></div>
 
                             <div class="year" id="temperature-map-slider-container">
@@ -291,8 +293,8 @@
                               <div class="" id="temperature-map-time-slider" data-min="1950" data-max="2090" data-value="2090"></div>
                               <div class="year-label year-max">2090</div>
                             </div>
-                            
-                            <a href="variables.php" class="full-map-btn button bg-white color-orange arrow-right">View full map</a>
+
+                            <a href="variables.php?id=tasmax" class="full-map-btn button bg-white color-orange arrow-right">View full map</a>
                           </div>
                         </div>
                     </div>
@@ -306,7 +308,7 @@
             <div class="location-data-section">
                 <div id="precipitation-data" class="data-list">
                   <h3 class="accent-color"><span class="icon icon-precipitation"></span>Precipitation</h3>
-                  
+
                   <ul class="data-options">
                     <li class="active accent-border">
                       <h4 id="var-pr"><a href="#" class="text accent-color">Mean Daily Precipitation</a><a href="#detail-pr" class="icon icon-help nav-detail-link"></a></h4>
@@ -398,7 +400,7 @@
                           <button><a id="download-image-link-precip">Download Image</a></button>
                       </div>
                   </form>
-                  
+
                   <div class="data-vars">
                     <label for="precipitation-presentation">Display: </label>
                     <select id="precipitation-presentation" class="dropdown">
@@ -430,29 +432,30 @@
                             <div class="chart-wrap">
                               <div id="chart-234" class="chart-canvas" data-chart-ID="234" style="width:100%"></div>
                               <div class="chart-legend" id="precip-chart">
-                                <div id="rcp45-range" class="legend-item legend-item-range">
-                                  <div class="legend-item-block" id="preciprcp45-block"></div>
-                                  Low Emissions (RCP 4.5) Range
-                                </div>
-                                <div id="rcp85-range" class="legend-item legend-item-range selected">
-                                  <div class="legend-item-block selected" id="preciprcp85-block"></div>
-                                  High Emissions (RCP 8.5) Range
-                                </div>
-                                <div id="rcp45-mean" class="legend-item legend-item-range">
-                                  <div class="legend-item-line" id="preciprcp85-line"></div>
-                                  High Emissions Median
-                                  <div class="legend-item-line" id="preciprcp45-line"></div>
-                                  Low Emissions Median
+                                <div id="precip-historical-obs" class="legend-item legend-item-range selected">
+                                  <div class="legend-item-line-container">
+                                    <div class="legend-item-line selected observed" id="precipover-baseline-block"></div>
+                                  </div>
+                                  <span class="legend-item-line-label">Observations</span>
                                 </div>
                                 <div id="historical-range" class="legend-item legend-item-range selected">
                                   <div class="legend-item-block selected" id="preciphistorical-block"></div>
                                   Historical (Modelled)
                                 </div>
-                                <div id="precip-historical-obs" class="legend-item legend-item-range selected">
-                                  <div class="legend-item-line selected" id="precipover-baseline-block"></div>
-                                  Observed over baseline
-                                  <div class="legend-item-line selected" id="precipunder-baseline-block"></div>
-                                  Obs under baseline
+                                <div id="rcp45-range" class="legend-item legend-item-range">
+                                  <div class="legend-item-block" id="preciprcp45-block"></div>
+                                  Stabilized Emissions
+                                </div>
+                                <div id="rcp85-range" class="legend-item legend-item-range selected">
+                                  <div class="legend-item-block selected" id="preciprcp85-block"></div>
+                                  Increasing Emissions
+                                </div>
+                                <div id="rcp45-mean" class="legend-item legend-item-range">
+                                  <div class="legend-item-line-container">
+                                    <div class="legend-item-line" id="preciprcp85-line"></div>
+                                    <div class="legend-item-line" id="preciprcp45-line"></div>
+                                  </div>
+                                  <span class="legend-item-line-label">Medians</span>
                                 </div>
                               </div>
                             </div>
@@ -463,14 +466,14 @@
                             </div>
                         </div>
                       </div>
-                      
+
                       <div id="precipitation-map-container" class="data-accordion-tab data-map accent-background">
                         <header>
                           <h4 class="accent-color">
                             <span class="icon icon-district"></span>
                             <span class="text">
-                              Map<span class="full-title">: Mean Daily Precipitation</span>
-                              <span class="source">Source: <a href="#" target="_blank">NOAA, 2014</a></span>
+                              Map<span class="full-title">: <?php echo $county ?></span>
+                              <span class="source" id="precip-map-name">Mean Daily Precipitation</span>
                             </span>
                           </h4>
 
@@ -483,13 +486,13 @@
                                 <option value="spring">Spring</option>
                               </select>
                             </div>
-                            
+
                             <a href="#" class="how-to-read"><span class="icon icon-help"></span>How to read this</a>
                             <a href="#" class="download-image"><span class="icon icon-download-image"></span>Image</a>
                             <a href="#" class="download-data"><span class="icon icon-download-chart"></span>Data</a>
                           </div>
                         </header>
-                        
+
                         <div class="data-accordion-content map">
                           <div class="moveable" id="precipitation-mapSliderDiv">
                             <div id="precipitation-swipeImg" class="handle">
@@ -497,7 +500,7 @@
                       				<div class="emissions-high">High Emissions</div>
                       			</div>
                           </div>
-                          
+
                           <div id="precipitation-map" class="map-element"></div>
 
                           <div class="year" id="precipitation-map-slider-container">
@@ -505,8 +508,8 @@
                             <div class="" id="precipitation-map-time-slider" data-min="1950" data-max="2090" data-value="2090"></div>
                             <div class="year-label year-max">2090</div>
                           </div>
-                            
-                          <a href="variables.php" class="full-map-btn button bg-white color-orange arrow-right">View full map</a>
+
+                          <a href="variables.php?id=pr" class="full-map-btn button bg-white color-orange arrow-right">View full map</a>
                         </div>
                       </div>
                     </div>
@@ -521,7 +524,7 @@
             <div class="location-data-section">
                 <div id="derived-data" class="data-list">
                   <h3 class="accent-color"><span class="icon icon-drought"></span>Derived</h3>
-                  
+
                   <ul class="data-options">
                     <li class="active accent-border">
                       <h4 id="var-heating_degree_day_18.3"><a href="#" class="text accent-color">Heating Degree Days</a><a href="#detail-heating_degree_day_18" class="icon icon-help nav-detail-link"></a></h4>
@@ -537,7 +540,7 @@
                       </ul>
                     </li>
                   </ul>
-                  
+
                   <form onsubmit="return false;">
                       <div class="row">
                           <label for="derived-county">County</label>
@@ -611,7 +614,7 @@
                           <button><a id="download-image-link-derived">Download Image</a></button>
                       </div>
                   </form>
-                  
+
                   <div class="data-vars">
                     <label for="der-presentation">Display: </label>
                     <select id="der-presentation" class="dropdown">
@@ -645,29 +648,30 @@
                             <div class="chart-wrap">
                               <div id="chart-345" class="chart-canvas" data-chart-ID="345" style="width:100%"></div>
                               <div class="chart-legend" id="derive-chart">
-                                <div id="rcp45-range" class="legend-item legend-item-range">
-                                  <div class="legend-item-block" id="derivercp45-block"></div>
-                                  Low Emissions (RCP 4.5) Range
-                                </div>
-                                <div id="rcp85-range" class="legend-item legend-item-range selected">
-                                  <div class="legend-item-block selected" id="derivercp85-block"></div>
-                                  High Emissions (RCP 8.5) Range
-                                </div>
-                                <div id="rcp45-mean" class="legend-item legend-item-range">
-                                  <div class="legend-item-line" id="derivercp85-line"></div>
-                                  High Emissions Median
-                                  <div class="legend-item-line" id="derivercp45-line"></div>
-                                  Low Emissions Median
+                                <div id="derive-historical-obs" class="legend-item legend-item-range selected">
+                                  <div class="legend-item-line-container">
+                                    <div class="legend-item-line selected observed" id="deriveunder-baseline-block"></div>
+                                  </div>
+                                  <span class="legend-item-line-label">Observations</span>
                                 </div>
                                 <div id="historical-range" class="legend-item legend-item-range selected">
                                   <div class="legend-item-block selected" id="derivehistorical-block"></div>
                                   Historical (Modelled)
                                 </div>
-                                <div id="derive-historical-obs" class="legend-item legend-item-range selected">
-                                  <div class="legend-item-line selected" id="deriveover-baseline-block"></div>
-                                  Observed over baseline
-                                  <div class="legend-item-line selected" id="deriveunder-baseline-block"></div>
-                                  Obs under baseline
+                                <div id="rcp45-range" class="legend-item legend-item-range">
+                                  <div class="legend-item-block" id="derivercp45-block"></div>
+                                  Stabilized Emissions
+                                </div>
+                                <div id="rcp85-range" class="legend-item legend-item-range selected">
+                                  <div class="legend-item-block selected" id="derivercp85-block"></div>
+                                  Increasing Emissions
+                                </div>
+                                <div id="rcp45-mean" class="legend-item legend-item-range">
+                                  <div class="legend-item-line-container">
+                                    <div class="legend-item-line" id="derivercp85-line"></div>
+                                    <div class="legend-item-line" id="derivercp45-line"></div>
+                                  </div>
+                                  <span class="legend-item-line-label">Medians</span>
                                 </div>
                               </div>
                             </div>
@@ -679,17 +683,17 @@
                             </div>
                           </div>
                         </div>
-                        
+
                         <div id="derived-map-container" class="data-accordion-tab data-map accent-background">
                           <header>
                             <h4 class="accent-color">
                               <span class="icon icon-district"></span>
                               <span class="text">
                                 Map<span class="full-title">: <?php echo $county ?></span>
-                                <span class="source">Source: <a href="#" target="_blank">NOAA, 2014</a></span>
+                                <span class="source" id="derived-map-name">Heating Degree Days</span>
                               </span>
                             </h4>
-  
+
                             <div class="data-accordion-actions">
                               <div class="select map-seasons-container" id="derived-map-season">
                                 <select class="dropdown">
@@ -699,13 +703,13 @@
                                   <option value="spring">Spring</option>
                                 </select>
                               </div>
-                              
+
                               <a href="#" class="how-to-read"><span class="icon icon-help"></span>How to read this</a>
                               <a href="#" class="download-image"><span class="icon icon-download-image"></span>Image</a>
                               <a href="#" class="download-data"><span class="icon icon-download-chart"></span>Data</a>
                             </div>
                           </header>
-                          
+
                           <div class="data-accordion-content map">
                             <div class="moveable" id="derived-mapSliderDiv">
                               <div id="derived-swipeImg" class="handle">
@@ -713,16 +717,16 @@
                         				<div class="emissions-high">High Emissions</div>
                         			</div>
                             </div>
-                            
+
                             <div id="derived-map" class="map-element"></div>
-  
+
                             <div class="year" id="derived-map-slider-container">
                               <div class="year-label year-min">1950</div>
                               <div class="" id="derived-map-time-slider" data-min="1950" data-max="2090" data-value="2090"></div>
                               <div class="year-label year-max">2090</div>
                             </div>
-                            
-                            <a href="variables.php" class="full-map-btn button bg-white color-orange arrow-right">View full map</a>
+
+                            <a href="variables.php?id=heating_degree_day_18.3" class="full-map-btn button bg-white color-orange arrow-right">View full map</a>
                           </div>
                         </div>
 

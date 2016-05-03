@@ -16,6 +16,31 @@ var Variables = function(id) {
       break;
   }
 
+
+
+  this.mapVariables();
+  this.selectedVariable = id || 'tasmax';
+  this.activeYear = 2010;
+  this.selectedSeason = 'summer';
+
+  $(".level-1").html(this.varMapping[ this.selectedVariable ]);
+
+  $('#about-variable-link').html('About ' + this.varMapping[ this.selectedVariable ]);
+  $('#about-variable-link').prop('href', '#detail-'+this.selectedVariable.split('.')[0]);
+
+  $('#variable-options').val(id).attr('selected', true).change();
+
+  this.createMap();
+  this.wireSearch();
+};
+
+
+
+/*
+* Lots of inconsistencies in naming, so here I map all the variables to one another
+*
+*/
+Variables.prototype.mapVariables = function() {
   this.varMapping = {
     'tasmax': 'Mean Daily Maximum',
     'tasmin': 'Mean Daily Minimum',
@@ -55,31 +80,24 @@ var Variables = function(id) {
     'cooling_degree_day_18.3': '_annual_rcp85_cooling-degree-day',
     'heating_degree_day_18.3': '_annual_rcp85_heating-degree-day'
   };
-
-  this.selectedVariable = id || 'tasmax';
-  this.activeYear = 2010;
-  this.selectedSeason = 'summer';
-
-  $(".level-1").html(this.varMapping[ this.selectedVariable ]);
-
-  $('#variable-options').val(id).attr('selected', true).change();
-
-  this.createMap();
-  this.wireSearch();
 };
 
 
 
 
 /*
-* Create map
+* Creates MAIN map
 *
 *
 */
 Variables.prototype.createMap = function() {
+  var qtrs = location.search;
+  var qs = this.parseQueryString(qtrs);
+
+  var center = ( qs.center ) ? qs.center.split(',') : null;
   var view = new ol.View({
-    center: ol.proj.transform([-105.21, 37.42], 'EPSG:4326', 'EPSG:3857'),
-    zoom: 5,
+    center: center || ol.proj.transform([-105.21, 37.42], 'EPSG:4326', 'EPSG:3857'),
+    zoom: qs.zoom || 5,
     minZoom: 5,
     maxZoom: 12
   });
@@ -89,7 +107,7 @@ Variables.prototype.createMap = function() {
     layers: [
       new ol.layer.Tile({
         source: new ol.source.XYZ({
-          url: 'http://{s}.basemaps.cartocdn.com/light_nolabels/{z}/{x}/{y}.png',
+          url: 'http://habitatseven.basemaps.cartocdn.com/light_all/{z}/{x}/{y}.png',
           attributions: [new ol.Attribution({ html: ['&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors, &copy; <a href="http://cartodb.com/attributions">CartoDB</a>'] })]
         })
       })
@@ -104,12 +122,17 @@ Variables.prototype.createMap = function() {
   this.updateTiledLayer(true);
   this.addCounties();
   this.addStates();
-  this.addStations();
   this.wire();
 };
 
 
 
+
+/*
+*
+* Wires up search so user can use sidebar search for location in map
+*
+*/
 Variables.prototype.wireSearch = function() {
   var self = this;
 
@@ -118,8 +141,14 @@ Variables.prototype.wireSearch = function() {
   });
 
   $("#formmapper").bind("geocode:result", function(event, result){
-    var lat = result.geometry.access_points[0].location.lat;
-    var lon = result.geometry.access_points[0].location.lng;
+    var lat, lon;
+    if ( result.geometry.access_points ) {
+      lat = result.geometry.access_points[0].location.lat;
+      lon = result.geometry.access_points[0].location.lng;
+    } else {
+      lat = result.geometry.location.lat();
+      lon = result.geometry.location.lng();
+    }
 
     var conv = ol.proj.transform([lon, lat], 'EPSG:4326','EPSG:3857');
     var xy = self.map.getPixelFromCoordinate(conv);
@@ -147,9 +176,7 @@ Variables.prototype.wireSearch = function() {
         self.selected_collection.clear();
         self.selected_collection.push(feature);
         var props = feature.getProperties();
-        if ( !props.station ) {
-          self.countySelected(feature, e);
-        }
+        self.countySelected(feature, e);
       } else {
         self.popup.hide();
       }
@@ -168,6 +195,15 @@ Variables.prototype.wireSearch = function() {
 */
 Variables.prototype.wire = function() {
   var self = this;
+
+  this.map.getView().on('change:resolution', function(){
+    var zoom = self.map.getView().getZoom();
+    $('.page-type-variables .zoom-slider').slider('value', zoom);
+  });
+
+  this.map.on('moveend', function() {
+    self.updateUrl();
+  });
 
   $('.page-type-variables .zoom-slider').attr('data-value', 4);
   $('.page-type-variables .zoom-slider').slider({
@@ -209,21 +245,15 @@ Variables.prototype.wire = function() {
   });
 
 
-  $('#weather-overlay-toggle').on('click', function() {
-    var show = $(this).is(':checked');
-    self.map.getLayers().forEach(function(layer) {
-      if (layer.get('layer_id') == 'stations') {
-        layer.setVisible(show);
-      }
-    });
-  });
-
   //var selector
   $('#variable-options-container .fs-dropdown-item').on('click', function(e) {
     self.selectedVariable =  $(this).data().value;
-    $(".level-1").html(self.varMapping[ self.selectedVariable ]);
-    history.pushState(null, "", "?id="+self.selectedVariable);
+    $('#about-variable-link').html('About ' + self.varMapping[ self.selectedVariable ]);
+    $('#about-variable-link').prop('href', '#detail-'+self.selectedVariable.split('.')[0]);
 
+    $(".level-1").html(self.varMapping[ self.selectedVariable ]);
+
+    self.updateUrl();
     self.updateTiledLayer(true, true);
     self.updateChart();
   });
@@ -267,17 +297,43 @@ Variables.prototype.wire = function() {
 
     if (feature) {
       var props = feature.getProperties();
-      if ( props.station ) {
-        self.stationSelected(feature, e);
-      } else {
-        self.countySelected(feature, e);
-      }
+      self.countySelected(feature, e);
     } else {
       self.popup.hide();
     }
 
   });
 };
+
+
+
+
+Variables.prototype.parseQueryString = function(qstr) {
+  var query = {};
+  var a = qstr.substr(1).split('&');
+  for (var i = 0; i < a.length; i++) {
+    var b = a[i].split('=');
+    query[decodeURIComponent(b[0])] = decodeURIComponent(b[1] || '');
+  }
+  return query;
+};
+
+
+
+Variables.prototype.updateUrl = function() {
+  var qtrs = location.search;
+  var qs = this.parseQueryString(qtrs);
+
+  //history.pushState(null, "", "?id="+self.selectedVariable);
+  qs.id = this.selectedVariable;
+  qs.zoom = this.map.getView().getZoom();
+  qs.center = this.map.getView().getCenter().toString();
+
+  var str = $.param( qs );
+
+  history.pushState(null, "", 'variables.php?'+str);
+};
+
 
 
 
@@ -288,6 +344,7 @@ Variables.prototype.wire = function() {
 */
 Variables.prototype.setZoom = function(zoom) {
   this.map.getView().setZoom(zoom);
+  this.updateUrl();
 };
 
 
@@ -371,80 +428,11 @@ Variables.prototype.addStates = function() {
 
 
 
-/*
-*
-* get stations and add to map
-*
-*/
-Variables.prototype.addStations = function() {
-
-  var self = this;
-
-  var styles = {
-    'Point': new ol.style.Style({
-      image: new ol.style.Circle({
-        radius: 5,
-        fill: new ol.style.Fill({color: '#2980b9'}),
-        stroke: new ol.style.Stroke({color: '#FFF', width: 2})
-      })
-    })
-  };
-
-  var styleFunction = function(feature) {
-    return styles[feature.getGeometry().getType()];
-  };
-
-
-  $.getJSON('resources/data/wx_stations.json', function(data) {
-
-    var featureCollection = {
-      'type': 'FeatureCollection',
-      'features': []
-    };
-
-    var obj;
-    $.each(data, function(i, d) {
-      if ( d.weight < 2 ) {
-        obj = {
-          'type': 'Feature',
-          'properties': {
-            'station': d.id,
-            'name': d.name
-          },
-          'geometry': {
-            'type': 'Point',
-            'coordinates': [d.lon, d.lat]
-          }
-        };
-        featureCollection.features.push(obj);
-      }
-    });
-
-    var features = new ol.format.GeoJSON().readFeatures(featureCollection, {
-      featureProjection: 'EPSG:3857'
-    });
-    var vectorSource = new ol.source.Vector({
-      features: features
-    });
-    var vectorLayer = new ol.layer.Vector({
-      source: vectorSource,
-      style: styleFunction
-    });
-
-    vectorLayer.set('layer_id', 'stations');
-    vectorLayer.setVisible(false);
-    self.map.addLayer(vectorLayer);
-
-  });
-
-};
-
-
-
-
 
 /*
 * Highlight county feature
+* Also shows popup with the climate widget chart inside
+* Have to build chart UI dynamically
 *
 */
 Variables.prototype.countySelected = function(feature, event) {
@@ -470,31 +458,30 @@ Variables.prototype.countySelected = function(feature, event) {
       '</header>' +
       '<div id="climate-chart" style="width:800px; height:420px"></div>'+
       '<div class="chart-legend">'+
+        '<div id="historical-obs" class="legend-item legend-item-range selected">'+
+          '<div class="legend-item-line-container">'+
+            '<div class="legend-item-line selected observed" id="over-baseline-block"></div>'+
+          '</div>'+
+          '<span class="legend-item-line-label">Observations</span>'+
+        '</div>'+
+        '<div id="historical-range" class="legend-item legend-item-range selected">'+
+          '<div class="legend-item-block selected" id="historical-block"></div>'+
+          'Historical (Modelled)'+
+        '</div>'+
         '<div id="rcp45-range" class="legend-item legend-item-range">'+
           '<div class="legend-item-block" id="rcp45-block"></div>'+
-          'Low Emissions (RCP 4.5) Range'+
+          'Stabilized Emissions'+
         '</div>'+
         '<div id="rcp85-range" class="legend-item legend-item-range selected">'+
           '<div class="legend-item-block selected" id="rcp85-block"></div>'+
-          'High Emissions (RCP 8.5) Range'+
+          'Increasing Emissions'+
         '</div>'+
         '<div id="rcp45-mean" class="legend-item legend-item-range">'+
-          '<div class="legend-item-line" id="rcp85-line"></div>'+
-          'High Emissions Median'+
-          '<div class="legend-item-line" id="rcp45-line"></div>'+
-          'Low Emissions Median'+
-        '</div>'+
-        '<div id="historical-range" class="legend-item legend-item-range">'+
-          '<div class="legend-item-block" id="historical-block"></div>'+
-          'Historical (Modelled)'+
-        '</div>'+
-        '<div id="under-baseline-range" class="legend-item legend-item-range">'+
-          '<div class="legend-item-block" id="under-baseline-block"></div>'+
-          'Observed under baseline'+
-        '</div>'+
-        '<div id="over-baseline-range" class="legend-item legend-item-range">'+
-          '<div class="legend-item-block" id="over-baseline-block"></div>'+
-          'Observed over baseline'+
+          '<div class="legend-item-line-container">'+
+            '<div class="legend-item-line" id="rcp85-line"></div>'+
+            '<div class="legend-item-line" id="rcp45-line"></div>'+
+          '</div>'+
+          '<span class="legend-item-line-label">Medians</span>'+
         '</div>'+
       '</div>'+
       '<div class="range" id="variable-slider">'+
@@ -517,6 +504,8 @@ Variables.prototype.countySelected = function(feature, event) {
     $('.legend-item-range').on('click', function() {
       $(this).toggleClass('selected');
       $(this).children('.legend-item-block, .legend-item-line').toggleClass('selected');
+      $(this).children('.legend-item-line-container').children('.legend-item-line').toggleClass('selected');
+
       var scenario = null;
       switch(true) {
         case $('#rcp85-block').hasClass('selected') && $('#rcp45-block').hasClass('selected'):
@@ -547,9 +536,39 @@ Variables.prototype.countySelected = function(feature, event) {
           median = 'false';
       }
 
+      var histmod = null;
+      switch(true) {
+        case $('#historical-block').hasClass('selected') && $('#historical-block').hasClass('selected'):
+          histmod = 'true';
+          break;
+        case $('#historical-block').hasClass('selected'):
+          histmod = 'true';
+          break;
+        default:
+          histmod = 'false';
+      }
+
+
+      var histobs = null;
+      switch(true) {
+        case $('#over-baseline-block').hasClass('selected') && $('#under-baseline-block').hasClass('selected'):
+          histobs = 'true';
+          break;
+        case $('#over-baseline-block').hasClass('selected'):
+          histobs = 'true';
+          break;
+        case $('#under-baseline-block').hasClass('selected'):
+          histobs = 'true';
+          break;
+        default:
+          histobs = 'false';
+      }
+
       self.cwg.update({
         pmedian: median,
-        scenario: scenario
+        scenario: scenario,
+        histobs: histobs,
+        histmod: histmod
       });
 
     });
@@ -598,26 +617,15 @@ Variables.prototype.countySelected = function(feature, event) {
 
 
 
-Variables.prototype.stationSelected = function(feature, event) {
-  var self = this;
-
-  if (feature) {
-    var props = feature.getProperties();
-    var html = '<div>Station: '+props.name+'<br /></div>' +
-      '<div id="multi-chart" style="width:500px; height:300px"></div>'+
-      '<div id="multi-precip-chart" style="width:500px; height:300px"></div>';
-    this.popup.show(event.mapBrowserEvent.coordinate, html);
-
-    this.chart = new ChartBuilder(props);
-  } else {
-    this.popup.hide();
-  }
-
-};
 
 
-
-
+/*
+*
+* Main tile layer for all the climate tiles
+* Replace indicates if we are updating existing tiles, or if we are starting new variable
+* Given a "replace" we re-create slider / swiper at end of function
+*
+*/
 Variables.prototype.updateTiledLayer = function(replace, preserveTime) {
   var self = this;
   var histYears = [1950, 1960, 1970, 1980, 1990, 2000];
@@ -643,19 +651,19 @@ Variables.prototype.updateTiledLayer = function(replace, preserveTime) {
     src85 = this.activeYear + season + this.tilesMapping85[ this.selectedVariable ];
   }
 
+
+  /*
+  * Replace! So we set existing tiles to "old", and wait a second to remove
+  * this means no flashing between layers – new one is drawn, old is removed a second later
+  */
   if ( replace ) {
-    if ( this.tileLayer ) {
-      this.map.removeLayer(this.tileLayer);
-      this.tileLayer = null;
-    }
-    if ( this.tileLayer85 ) {
-      this.map.removeLayer(this.tileLayer85);
-      this.tileLayer85 = null;
-    }
+    this.removeOldTiles();
   }
 
 
-  //rcp45 OR historical
+  /*
+  * Create the rcp45 tile layer
+  */
   this.tileLayer = new ol.layer.Tile({
     source: new ol.source.XYZ({
       urls:[
@@ -668,9 +676,14 @@ Variables.prototype.updateTiledLayer = function(replace, preserveTime) {
     })
   });
 
+  //add rcp45 tile layer to map
   this.tileLayer.set('layer_id', 'tile_layer');
   this.map.addLayer(this.tileLayer);
 
+
+  /*
+  * if after 2010, add the rcp85 tile layer to map as well!
+  */
   if ( src85 ) {
     //rcp85
     this.tileLayer85 = new ol.layer.Tile({
@@ -689,9 +702,14 @@ Variables.prototype.updateTiledLayer = function(replace, preserveTime) {
     this.map.addLayer(this.tileLayer85);
   }
 
+
+  /*
+  * We want map names to be on top of climate tiles, so add to map at end!
+  */
+  if ( this.nameLayer ) { this.map.removeLayer(this.nameLayer); } //don't add twice!
   this.nameLayer = new ol.layer.Tile({
     source: new ol.source.XYZ({
-      url: 'http://{s}.basemaps.cartocdn.com/light_only_labels/{z}/{x}/{y}.png',
+      url: 'http://habitatseven.basemaps.cartocdn.com/light_only_labels/{z}/{x}/{y}.png',
       attributions: [new ol.Attribution({ html: ['&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors, &copy; <a href="http://cartodb.com/attributions">CartoDB</a>'] })]
     })
   });
@@ -699,27 +717,64 @@ Variables.prototype.updateTiledLayer = function(replace, preserveTime) {
   this.nameLayer.set('layer_id', 'name_layer');
   this.map.addLayer(this.nameLayer);
 
+
+  //here we have to move some layers around so ordering remains right
   this.tileLayer.setZIndex(0);
   if ( src85 ) { this.tileLayer85.setZIndex(0); }
   if ( this.statesLayer) { this.statesLayer.setZIndex(4); }
   if ( this.vectorLayer) { this.vectorLayer.setZIndex(5); }
   this.nameLayer.setZIndex(6);
 
+  //IF after 2010, add the high/low swiper to map
   if ( src85 ) {
     $( "#sliderDiv" ).show();
     this.setSwipeMap();
   } else {
+    //else hide it
     $( "#sliderDiv" ).hide();
   }
 
+  //If new map tiles, reset time slider
   if ( replace && !preserveTime ) {
     this.setSlider();
   }
 
-}
+};
+
+
+/*
+* Removes old climate tiles from map
+* Timeout means new tiles will load before we remove old, so there isn't a
+* flash of map with no tiles at all
+*
+*/
+Variables.prototype.removeOldTiles = function() {
+  var self = this;
+
+  this.oldTile = this.tileLayer;
+  this.oldTile85 = this.tileLayer85;
+
+  setTimeout(function() {
+    if ( self.oldTile ) {
+      self.map.removeLayer(self.oldTile);
+      self.oldTile = null;
+    }
+    if ( self.oldTile85 ) {
+      self.map.removeLayer(self.oldTile85);
+      self.oldTile85 = null;
+    }
+  },900);
+};
 
 
 
+
+/*
+*
+* Logic for high/low emissions swiper
+*
+*
+*/
 Variables.prototype.setSwipeMap = function() {
   var self = this;
   var swipeVal = null, pos, wrapper;
@@ -734,7 +789,6 @@ Variables.prototype.setSwipeMap = function() {
       self.tileLayer.dispatchEvent('change');
       $(".emissions-low").fadeOut();
 			$(".emissions-high").fadeOut();
-      // self.map.render();
     },
     stop: function(event, ui) {
       pos = ui.helper.offset();
@@ -764,10 +818,16 @@ Variables.prototype.setSwipeMap = function() {
     var ctx = event.context;
     ctx.restore();
   });
-}
+};
 
 
 
+
+/*
+*
+* Creates time slider
+*
+*/
 Variables.prototype.setSlider = function() {
     var self = this;
     var year_slider = $('#variable-time-slider');
@@ -812,17 +872,20 @@ Variables.prototype.setSlider = function() {
 *
 */
 Variables.prototype.updateChart = function() {
-
   if ( this.cwg ) {
     this.cwg.update({
       variable : this.selectedVariable
     });
   }
-
 };
 
 
 
+
+/*
+* State fips for use in UI
+*
+*/
 Variables.prototype.stateFips = {
   "02": "AK",
   "01": "AL",

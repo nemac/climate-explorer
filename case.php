@@ -13,6 +13,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <link rel="stylesheet" href="resources/css/ol3-popup.css">
+    <link rel="stylesheet" media="screen" href="resources/css/shepherd-theme-arrows.css">
 
     <link rel="stylesheet" media="screen" href="resources/css/screen.css">
     <link rel="stylesheet" media="screen" href="resources/css/mods.css">
@@ -23,12 +24,12 @@
   </head>
 
 <body id="page-fire-regimes" class="page-type-case">
-
+<div class="cd-cover-layer"></div>
 <?php include_once('template/header.php'); ?>
 
 <header id="left-header">
     <ul id="case-menu" class="menu orange-menu">
-      <li class="search-field"><span class="icon icon-search"></span><input type="text" id="formmapper" placeholder="Search by location"></li>
+      <li class="search-field" id="search-by-location"><span class="icon icon-search"></span><input type="text" id="formmapper" placeholder="Search by location"></li>
     </ul>
 
     <div id="vars-legend" class="legend-wrap left-filler">

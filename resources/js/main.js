@@ -1,5 +1,6 @@
 var App = function(page) {
   this.getCountyCodes();
+  this.tour();
 };
 
 
@@ -60,4 +61,431 @@ App.prototype.locationSearch = function() {
 
   });
 
+};
+
+
+
+
+App.prototype.tour = function() {
+  var tour;
+  var self = this;
+
+  $('.start-home-tour').on('click', function() {
+    self.takeHomeTour();
+  });
+
+  $('#page-home #tour-this-page').on('click', function() {
+    self.takeHomeTour();
+  });
+
+  $('#page-variables #tour-this-page').on('click', function() {
+    self.takeVariablesTour();
+  });
+
+  $('.page-type-location #tour-this-page').on('click', function() {
+    self.takeLocationTour();
+  });
+
+  $('.page-type-case #tour-this-page').on('click', function() {
+    self.takeCaseTour();
+  });
+
+};
+
+
+
+App.prototype.takeHomeTour = function() {
+  var self = this;
+
+  if ( this.homeTour ) {
+    this.homeTour.cancel();
+  } else {
+    this.homeTour = new Shepherd.Tour({
+      defaults: {
+        classes: 'shepherd-element shepherd-open shepherd-theme-arrows',
+        showCancelLink: true
+      }
+    });
+  }
+
+  var step1 = this.homeTour.addStep('search-by-location', {
+    text: 'Search climate graphs and maps for any location in the United States.',
+    attachTo: '#home-search-by-location left',
+    buttons: [
+      {
+        text: 'Exit',
+        classes: 'shepherd-button-secondary',
+        action: this.homeTour.cancel
+      },
+      {
+        text: 'Next',
+        action: this.homeTour.next
+      }
+    ]
+  });
+
+  var step2 = this.homeTour.addStep('search-by-variable', {
+    text: 'Explore climate variables across the United States.',
+    attachTo: '#home-search-by-variable left',
+    buttons: [
+      {
+        text: 'Exit',
+        classes: 'shepherd-button-secondary',
+        action: this.homeTour.cancel
+      },
+      {
+        text: 'Next',
+        action: this.homeTour.next
+      }
+    ]
+  });
+
+  this.homeTour.addStep('search-by-topic', {
+    text: 'View climate maps by specfic topics.',
+    attachTo: '#home-search-by-topic left',
+    buttons: [
+      {
+        text: 'Exit',
+        classes: 'shepherd-button-secondary',
+        action: this.homeTour.cancel
+      },
+      {
+        text: 'Next',
+        action: this.homeTour.next
+      }
+    ]
+  });
+
+  this.homeTour.on('show', function() {
+    var current = self.homeTour.getCurrentStep();
+    var selected = 1;
+    self.homeTour.steps.forEach(function(step, i) {
+      if ( current ) {
+        if ( current.id === step.id ) {
+          selected = i + 2;
+        }
+      } else {
+        selected = 1;
+      }
+    });
+    var steps = self.homeTour.steps.length;
+
+    setTimeout(function() {
+      $('.shepherd-buttons .shep-steps').remove();
+      var steps = self.homeTour.steps.length;
+      var html = '<span class="shep-steps">Step '+selected+' of '+steps+'</span>';
+      $('.shepherd-buttons').append(html);
+    },200);
+
+    $('.cd-cover-layer').addClass('is-visible');
+    setTimeout(function() {
+      $('.cd-cover-layer').removeClass('is-visible');
+    },1200);
+  });
+
+  this.homeTour.start();
+
+};
+
+
+
+App.prototype.takeVariablesTour = function() {
+  var self = this;
+
+  if ( this.variablesTour ) {
+    this.variablesTour.cancel();
+  } else {
+    this.variablesTour = new Shepherd.Tour({
+      defaults: {
+        classes: 'shepherd-theme-arrows',
+        scrollTo: false
+      }
+    });
+  }
+
+  this.variablesTour.addStep('search-by-location', {
+    text: 'Search by location in the United States to zoom to that region and explore the selected variable.',
+    attachTo: '#variable-search-by-location right',
+    buttons: [
+      {
+        text: 'Exit',
+        classes: 'shepherd-button-secondary',
+        action: this.variablesTour.cancel
+      },
+      {
+        text: 'Next',
+        action: this.variablesTour.next
+      }
+    ]
+  });
+
+  this.variablesTour.addStep('variable-counties-toggle', {
+    text: 'Toggle on and off the counties layer to explore the selected variable for a specific U.S. county.',
+    attachTo: '#variable-counties-toggle right',
+    buttons: [
+      {
+        text: 'Exit',
+        classes: 'shepherd-button-secondary',
+        action: this.variablesTour.cancel
+      },
+      {
+        text: 'Next',
+        action: this.variablesTour.next
+      }
+    ]
+  });
+
+  this.variablesTour.addStep('variable-options-container', {
+    text: 'Select a different climate variable to explore, from mean daily maximum temperatures to mean daily precipitation for the United States',
+    attachTo: '#variable-options-container right',
+    buttons: [
+      {
+        text: 'Exit',
+        classes: 'shepherd-button-secondary',
+        action: this.variablesTour.cancel
+      },
+      {
+        text: 'Next',
+        action: this.variablesTour.next
+      }
+    ]
+  });
+
+  this.variablesTour.addStep('map-seasons-container', {
+    text: 'For some variables, you can explore them by season, i.e. what is the forecast for mean daily maximum temperatures in the summer of 2090?',
+    attachTo: '#map-seasons-container bottom',
+    buttons: [
+      {
+        text: 'Exit',
+        classes: 'shepherd-button-secondary',
+        action: this.variablesTour.cancel
+      },
+      {
+        text: 'Next',
+        action: this.variablesTour.next
+      }
+    ]
+  });
+
+  this.variablesTour.addStep('sliderDiv', {
+    text: 'Slide this bar left and right to compare the forecast for how high and low emissions would effect the selected variable over the years.',
+    attachTo: '#sliderDiv right',
+    buttons: [
+      {
+        text: 'Exit',
+        classes: 'shepherd-button-secondary',
+        action: this.variablesTour.cancel
+      },
+      {
+        text: 'Next',
+        action: this.variablesTour.next
+      }
+    ]
+  });
+
+  this.variablesTour.addStep('year-slider-container', {
+    text: 'Use this slider to change the selected year you wish to view the current variable for.',
+    attachTo: '#year-slider-container top',
+    buttons: [
+      {
+        text: 'Exit',
+        classes: 'shepherd-button-secondary',
+        action: this.variablesTour.cancel
+      }
+    ]
+  });
+
+  this.variablesTour.on('show', function() {
+    var current = self.variablesTour.getCurrentStep();
+    var selected = 1;
+    self.variablesTour.steps.forEach(function(step, i) {
+      if ( current ) {
+        if ( current.id === step.id ) {
+          selected = i + 2;
+        }
+      } else {
+        selected = 1;
+      }
+    });
+    var steps = self.variablesTour.steps.length;
+
+    setTimeout(function() {
+      $('.shepherd-buttons .shep-steps').remove();
+      var steps = self.variablesTour.steps.length;
+      var html = '<span class="shep-steps">Step '+selected+' of '+steps+'</span>';
+      $('.shepherd-buttons').append(html);
+    },200);
+
+    $('.cd-cover-layer').addClass('is-visible');
+    setTimeout(function() {
+      $('.cd-cover-layer').removeClass('is-visible');
+    },1200);
+  });
+
+  this.variablesTour.start();
+};
+
+
+
+App.prototype.takeLocationTour = function() {
+  var self = this;
+
+  if ( this.locationTour ) {
+    this.locationTour.cancel();
+  } else {
+    this.locationTour = new Shepherd.Tour({
+      defaults: {
+        classes: 'shepherd-theme-arrows',
+        scrollTo: false
+      }
+    });
+  }
+
+  this.locationTour.addStep('location-search', {
+    text: 'Here you can change what location in the United States you wish to explore.',
+    attachTo: '#location-search bottom',
+    buttons: [
+      {
+        text: 'Exit',
+        classes: 'shepherd-button-secondary',
+        action: this.locationTour.cancel
+      },
+      {
+        text: 'Next',
+        action: this.locationTour.next
+      }
+    ]
+  });
+
+  this.locationTour.addStep('page-nav', {
+    text: 'For each location these are all the available sections one can explore. Clicking a topic will scroll you to the chart and map for this location and topic.',
+    attachTo: '#page-nav bottom',
+    buttons: [
+      {
+        text: 'Exit',
+        classes: 'shepherd-button-secondary',
+        action: this.locationTour.cancel
+      },
+      {
+        text: 'Next',
+        action: this.locationTour.next
+      }
+    ]
+  });
+
+  this.locationTour.addStep('temperature-data', {
+    text: 'There are five sections to explore for each location, the first is temperature. Here you can change the variable to update the chart and map associated with temperatures. Scroll down to see more.',
+    attachTo: '#temperature-data top',
+    buttons: [
+      {
+        text: 'Exit',
+        classes: 'shepherd-button-secondary',
+        action: this.locationTour.cancel
+      }
+    ]
+  });
+
+
+  this.locationTour.on('show', function() {
+    var current = self.locationTour.getCurrentStep();
+    var selected = 1;
+    self.locationTour.steps.forEach(function(step, i) {
+      if ( current ) {
+        if ( current.id === step.id ) {
+          selected = i + 2;
+        }
+      } else {
+        selected = 1;
+      }
+    });
+    var steps = self.locationTour.steps.length;
+
+    setTimeout(function() {
+      $('.shepherd-buttons .shep-steps').remove();
+      var steps = self.locationTour.steps.length;
+      var html = '<span class="shep-steps">Step '+selected+' of '+steps+'</span>';
+      $('.shepherd-buttons').append(html);
+    },200);
+
+    $('.cd-cover-layer').addClass('is-visible');
+    setTimeout(function() {
+      $('.cd-cover-layer').removeClass('is-visible');
+    },1200);
+  });
+
+  this.locationTour.start();
+};
+
+
+
+App.prototype.takeCaseTour = function() {
+  var self = this;
+
+  if ( this.caseTour ) {
+    this.caseTour.cancel();
+  } else {
+    this.caseTour = new Shepherd.Tour({
+      defaults: {
+        classes: 'shepherd-theme-arrows',
+        scrollTo: false
+      }
+    });
+  }
+
+  this.caseTour.addStep('search-field', {
+    text: 'Here you can change what location in the United States you wish to explore within the topic map.',
+    attachTo: '#search-by-location right',
+    buttons: [
+      {
+        text: 'Exit',
+        classes: 'shepherd-button-secondary',
+        action: this.caseTour.cancel
+      },
+      {
+        text: 'Next',
+        action: this.caseTour.next
+      }
+    ]
+  });
+
+  this.caseTour.addStep('case-menu', {
+    text: 'Here is the list of all available layers to show in the map. Select the "?" to view more information about each layer, as well as to toggle on and of their visibility. Lastly, click and drag to reorder the layers.',
+    attachTo: '#case-menu right',
+    buttons: [
+      {
+        text: 'Exit',
+        classes: 'shepherd-button-secondary',
+        action: this.caseTour.cancel
+      }
+    ]
+  });
+
+  this.caseTour.on('show', function() {
+    var current = self.caseTour.getCurrentStep();
+    var selected = 1;
+    self.caseTour.steps.forEach(function(step, i) {
+      if ( current ) {
+        if ( current.id === step.id ) {
+          selected = i + 2;
+        }
+      } else {
+        selected = 1;
+      }
+    });
+    var steps = self.caseTour.steps.length;
+
+    setTimeout(function() {
+      $('.shepherd-buttons .shep-steps').remove();
+      var steps = self.caseTour.steps.length;
+      var html = '<span class="shep-steps">Step '+selected+' of '+steps+'</span>';
+      $('.shepherd-buttons').append(html);
+    },200);
+
+    $('.cd-cover-layer').addClass('is-visible');
+    setTimeout(function() {
+      $('.cd-cover-layer').removeClass('is-visible');
+    },1200);
+  });
+
+  this.caseTour.start();
 };

@@ -13,16 +13,25 @@ var Impacts = function(page) {
 *
 */
 Impacts.prototype.createMap = function() {
+  var qtrs = location.search;
+  var qs = this.parseQueryString(qtrs);
+
+  this.visibleLayers = ( qs.layers ) ? qs.layers.split(',') : null;
+
   var zoom = ( this.page === 'drought' ) ? 4 : 5;
+  zoom = ( qs.zoom ) ? qs.zoom : zoom;
+
   var view;
-  if ( this.page === 'arctic' ) {
+
+  var center = ( qs.center ) ? qs.center.split(',') : null;
+  if ( this.page === 'arctic' && !center ) {
     view = new ol.View({
       center: ol.proj.transform([-160.41, 60.75], 'EPSG:4326', 'EPSG:3857'),
       zoom: 4.5
     });
   } else {
     view = new ol.View({
-      center: ol.proj.transform([-105.41, 35.42], 'EPSG:4326', 'EPSG:3857'),
+      center: center || ol.proj.transform([-105.41, 35.42], 'EPSG:4326', 'EPSG:3857'),
       zoom: zoom
     });
   }
@@ -35,13 +44,13 @@ Impacts.prototype.createMap = function() {
       // })
       new ol.layer.Tile({
         source: new ol.source.XYZ({
-          url: 'http://{s}.basemaps.cartocdn.com/light_nolabels/{z}/{x}/{y}.png',
+          url: 'http://habitatseven.basemaps.cartocdn.com/light_nolabels/{z}/{x}/{y}.png',
           attributions: [new ol.Attribution({ html: ['&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors, &copy; <a href="http://cartodb.com/attributions">CartoDB</a>'] })]
         })
       }),
       new ol.layer.Tile({
         source: new ol.source.XYZ({
-          url: 'http://{s}.basemaps.cartocdn.com/light_only_labels/{z}/{x}/{y}.png',
+          url: 'http://habitatseven.basemaps.cartocdn.com/light_only_labels/{z}/{x}/{y}.png',
           attributions: [new ol.Attribution({ html: ['&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors, &copy; <a href="http://cartodb.com/attributions">CartoDB</a>'] })]
         })
       })
@@ -83,8 +92,14 @@ Impacts.prototype.wireSearch = function() {
   });
 
   $("#formmapper").bind("geocode:result", function(event, result){
-    var lat = result.geometry.access_points[0].location.lat;
-    var lon = result.geometry.access_points[0].location.lng;
+    var lat, lon;
+    if ( result.geometry.access_points ) {
+      lat = result.geometry.access_points[0].location.lat;
+      lon = result.geometry.access_points[0].location.lng;
+    } else {
+      lat = result.geometry.location.lat();
+      lon = result.geometry.location.lng();
+    }
 
     var conv = ol.proj.transform([lon, lat], 'EPSG:4326','EPSG:3857');
     var xy = self.map.getPixelFromCoordinate(conv);
@@ -104,6 +119,13 @@ Impacts.prototype.wireSearch = function() {
 */
 Impacts.prototype.wireEvents = function() {
   var self = this;
+
+
+  this.map.getView().on('change:resolution', function(){
+    var zoom = self.map.getView().getZoom();
+    $('.page-type-case .zoom-slider').slider('value', zoom);
+  });
+
 
   //close btn
   $('.legend .layer-info-close').click(function (e) {
@@ -142,6 +164,7 @@ Impacts.prototype.wireEvents = function() {
         if (layer.get('layer_id') == id) {
           layer.setVisible(visible);
           layer.setOpacity(ui.value);
+          self.updateUrl();
         }
       });
 
@@ -203,6 +226,10 @@ Impacts.prototype.wireMapEvents = function () {
     } else {
       popup.hide();
     }
+  });
+
+  this.map.on('moveend', function() {
+    self.updateUrl();
   });
 };
 
@@ -285,6 +312,39 @@ Impacts.prototype.subLayerSlider = function(id, show) {
 };
 
 
+Impacts.prototype.parseQueryString = function(qstr) {
+  var query = {};
+  var a = qstr.substr(1).split('&');
+  for (var i = 0; i < a.length; i++) {
+    var b = a[i].split('=');
+    query[decodeURIComponent(b[0])] = decodeURIComponent(b[1] || '');
+  }
+  return query;
+};
+
+
+
+Impacts.prototype.updateUrl = function() {
+  var qtrs = location.search;
+  var qs = this.parseQueryString(qtrs);
+
+  qs.zoom = this.map.getView().getZoom();
+  qs.center = this.map.getView().getCenter().toString();
+
+  var layers = [];
+  this.map.getLayers().forEach(function(l) {
+    if ( l.getVisible() && l.get('layer_id') !== undefined ) { layers.push(l.get('layer_id')); }
+  });
+
+  if ( !layers.length ) { layers = this.visibleLayers; }
+
+  qs.layers = layers.toString();
+
+  var str = $.param( qs );
+
+  history.pushState(null, "", 'case.php?'+str);
+};
+
 
 
 /*
@@ -294,6 +354,7 @@ Impacts.prototype.subLayerSlider = function(id, show) {
 */
 Impacts.prototype.setZoom = function(zoom) {
   this.map.getView().setZoom(zoom);
+  this.updateUrl();
 };
 
 
@@ -354,10 +415,19 @@ Impacts.prototype.addLayers = function() {
           })
         });
 
-        if ( i === clone.length - 1 && e === 0 ) {
-          layer.setVisible(true);
+
+        if ( !self.visibleLayers ) {
+          if ( i === clone.length - 1 && e === 0 ) {
+            layer.setVisible(true);
+          } else {
+            layer.setVisible(false);
+          }
         } else {
-          layer.setVisible(false);
+          if ( self.visibleLayers.indexOf(sublayer.id) !== -1 ) {
+            layer.setVisible(true);
+          } else {
+            layer.setVisible(false);
+          }
         }
 
         layer.set('layer_id', sublayer.id);
@@ -406,10 +476,19 @@ Impacts.prototype.addLayers = function() {
       }
 
       if ( layer ) {
-        if ( i === clone.length - 1 ) {
-          layer.setVisible(true);
+
+        if ( !self.visibleLayers ) {
+          if ( i === clone.length - 1 ) {
+            layer.setVisible(true);
+          } else {
+            layer.setVisible(false);
+          }
         } else {
-          layer.setVisible(false);
+          if ( self.visibleLayers.indexOf(id) !== -1 ) {
+            layer.setVisible(true);
+          } else {
+            layer.setVisible(false);
+          }
         }
 
         layer.set('layer_id', id);
@@ -419,10 +498,18 @@ Impacts.prototype.addLayers = function() {
 
     if ( self.data.layers[id].type === 'JSON' ) {
       self.createJsonLayer(id, function(featureCollection) {
-        if ( i === clone.length - 1 ) {
-          featureCollection.setVisible(true);
+        if ( !self.visibleLayers ) {
+          if ( i === clone.length - 1 ) {
+            featureCollection.setVisible(true);
+          } else {
+            featureCollection.setVisible(false);
+          }
         } else {
-          featureCollection.setVisible(false);
+          if ( self.visibleLayers.indexOf(id) !== -1 ) {
+            featureCollection.setVisible(true);
+          } else {
+            featureCollection.setVisible(false);
+          }
         }
 
         featureCollection.set('layer_id', id);

@@ -3,6 +3,30 @@ var Location = function(lat, lon) {
   $('#temperature-map-season').hide();
   $('#precipitation-map-season').hide();
 
+  this.mapVariables();
+
+  this.selectedVariable = {
+    'temperature-map': 'tasmax',
+    'precipitation-map': 'pr',
+    'derived-map': 'cooling_degree_day_18.3'
+  };
+
+  this.activeYear = 2010;
+  this.selectedSeason = 'summer';
+
+  this.lat = parseFloat(lat) || 37.42;
+  this.lon = parseFloat(lon) || -105.21;
+  this.createMap();
+  this.wire();
+};
+
+
+
+/*
+* Lots of inconsistencies in naming, so here I map all the variables to one another
+*
+*/
+Location.prototype.mapVariables = function() {
   this.tilesHistMapping = {
     'temperature-map': {
       'tasmax': '_hist_prism_tmax',
@@ -50,27 +74,13 @@ var Location = function(lat, lon) {
       'heating_degree_day_18.3': '_annual_rcp85_heating-degree-day'
     }
   };
-
-  this.selectedVariable = {
-    'temperature-map': 'tasmax',
-    'precipitation-map': 'pr',
-    'derived-map': 'cooling_degree_day_18.3'
-  };
-
-  this.activeYear = 2010;
-  this.selectedSeason = 'summer';
-
-  this.lat = parseFloat(lat) || 37.42;
-  this.lon = parseFloat(lon) || -105.21;
-  this.createMap();
-  this.wire();
 };
 
 
 
 
 /*
-* Create map
+* Create WEATHER stations map
 *
 *
 */
@@ -88,13 +98,13 @@ Location.prototype.createMap = function() {
     layers: [
       new ol.layer.Tile({
         source: new ol.source.XYZ({
-          url: 'http://{s}.basemaps.cartocdn.com/light_nolabels/{z}/{x}/{y}.png',
+          url: 'http://habitatseven.basemaps.cartocdn.com/light_nolabels/{z}/{x}/{y}.png',
           attributions: [new ol.Attribution({ html: ['&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors, &copy; <a href="http://cartodb.com/attributions">CartoDB</a>'] })]
         })
       }),
       new ol.layer.Tile({
         source: new ol.source.XYZ({
-          url: 'http://{s}.basemaps.cartocdn.com/light_only_labels/{z}/{x}/{y}.png',
+          url: 'http://habitatseven.basemaps.cartocdn.com/light_only_labels/{z}/{x}/{y}.png',
           attributions: [new ol.Attribution({ html: ['&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors, &copy; <a href="http://cartodb.com/attributions">CartoDB</a>'] })]
         })
       })
@@ -107,45 +117,6 @@ Location.prototype.createMap = function() {
 
   self.addStations();
 };
-
-
-
-/*
-* Create CHART MAPS
-*
-*
-*/
-Location.prototype.createGraphMaps = function(map) {
-  var self = this;
-
-  //var maps = ['temperature-map', 'precipitation-map', 'derived-map'];
-  if ( self[ map ] ) return;
-
-  var view = new ol.View({
-    center: ol.proj.transform([this.lon, this.lat], 'EPSG:4326', 'EPSG:3857'),
-    zoom: 6
-  });
-
-  //$.each(maps, function(i, map) {
-    self[map] = new ol.Map({
-      target: map,
-      interactions: ol.interaction.defaults({mouseWheelZoom:false}),
-      view: view,
-      layers: [
-        new ol.layer.Tile({
-          source: new ol.source.XYZ({
-            url: 'http://{s}.basemaps.cartocdn.com/light_nolabels/{z}/{x}/{y}.png',
-            attributions: [new ol.Attribution({ html: ['&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors, &copy; <a href="http://cartodb.com/attributions">CartoDB</a>'] })]
-          })
-        })
-      ]
-    });
-    self.updateTiledLayer(map, true, true);
-
-  //});
-
-};
-
 
 
 
@@ -217,6 +188,76 @@ Location.prototype.addStations = function() {
 };
 
 
+
+
+
+/*
+*
+* Called when a station is selected!
+* Opens popover and populates CHART into that popover for historcal weather data
+*
+*/
+Location.prototype.stationSelected = function(feature, event) {
+  var self = this;
+
+  if (feature) {
+    var props = feature.getProperties();
+    var html = '<div>Station: '+props.name+'<br /></div>' +
+      '<div id="multi-chart" style="width:500px; height:300px"></div>'+
+      '<div id="multi-precip-chart" style="width:500px; height:300px"></div>';
+    this.popup.show(event.mapBrowserEvent.coordinate, html);
+
+    this.chart = new ChartBuilder(props);
+  } else {
+    this.popup.hide();
+  }
+
+};
+
+
+
+
+
+/*
+* Creates maps used for each variable that is highlighted
+* "map" is id of container
+*
+*/
+Location.prototype.createGraphMaps = function(map) {
+  var self = this;
+
+  //var maps = ['temperature-map', 'precipitation-map', 'derived-map'];
+  if ( self[ map ] ) return;
+
+  var view = new ol.View({
+    center: ol.proj.transform([this.lon, this.lat], 'EPSG:4326', 'EPSG:3857'),
+    zoom: 6
+  });
+
+  self[map] = new ol.Map({
+    target: map,
+    interactions: ol.interaction.defaults({mouseWheelZoom:false}),
+    view: view,
+    layers: [
+      new ol.layer.Tile({
+        source: new ol.source.XYZ({
+          url: 'http://habitatseven.basemaps.cartocdn.com/light_nolabels/{z}/{x}/{y}.png',
+          attributions: [new ol.Attribution({ html: ['&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors, &copy; <a href="http://cartodb.com/attributions">CartoDB</a>'] })]
+        })
+      })
+    ]
+  });
+  self.updateTiledLayer(map, true, true);
+
+};
+
+
+
+/*
+*
+* Wires up all the crazy interactions and UI sliders on this page
+*
+*/
 Location.prototype.wire = function() {
   var self = this;
 
@@ -286,19 +327,28 @@ Location.prototype.wire = function() {
   $('#temperature-data h4').on('click', function() {
     var id = $(this).attr('id').replace('var-', '');
     self.selectedVariable['temperature-map'] = id;
-    self.updateTiledLayer('temperature-map', false);
+    if ( self['temperature-map'] ) {
+      self.updateTiledLayer('temperature-map', false);
+    }
+    $('#temperature-map-container .full-map-btn').prop({'href': 'variables.php?id='+id});
   });
 
   $('#precipitation-data h4').on('click', function() {
     var id = $(this).attr('id').replace('var-', '');
     self.selectedVariable['precipitation-map'] = id;
-    self.updateTiledLayer('precipitation-map', false);
+    if ( self['precipitation-map'] ) {
+      self.updateTiledLayer('precipitation-map', false);
+    }
+    $('#precipitation-map-container .full-map-btn').prop({'href': 'variables.php?id='+id});
   });
 
   $('#derived-data h4').on('click', function() {
     var id = $(this).attr('id').replace('var-', '');
     self.selectedVariable['derived-map'] = id;
-    self.updateTiledLayer('derived-map', false);
+    if ( self['derived-map'] ) {
+      self.updateTiledLayer('derived-map', false);
+    }
+    $('#derived-map-container .full-map-btn').prop({'href': 'variables.php?id='+id});
   });
 
   $('#precipitation-map-season .fs-dropdown-item').on('click', function(e) {
@@ -310,32 +360,6 @@ Location.prototype.wire = function() {
     self.selectedSeason =  $(this).data().value;
     self.updateTiledLayer('temperature-map', true, false);
   });
-
-};
-
-
-
-
-/*
-*
-* Called when a station is selected!
-* Opens popover and populates CHART into that popover for historcal weather data
-*
-*/
-Location.prototype.stationSelected = function(feature, event) {
-  var self = this;
-
-  if (feature) {
-    var props = feature.getProperties();
-    var html = '<div>Station: '+props.name+'<br /></div>' +
-      '<div id="multi-chart" style="width:500px; height:300px"></div>'+
-      '<div id="multi-precip-chart" style="width:500px; height:300px"></div>';
-    this.popup.show(event.mapBrowserEvent.coordinate, html);
-
-    this.chart = new ChartBuilder(props);
-  } else {
-    this.popup.hide();
-  }
 
 };
 
@@ -381,14 +405,7 @@ Location.prototype.updateTiledLayer = function(map, replace, timeReset) {
   }
 
   if ( replace ) {
-    if ( this[layer] ) {
-      this[map].removeLayer(this.tileLayer);
-      this.tileLayer = null;
-    }
-    if ( this[layer85] ) {
-      this[map].removeLayer(this.tileLayer85);
-      this.tileLayer85 = null;
-    }
+    this.removeOldTiles(map);
   }
 
 
@@ -431,7 +448,7 @@ Location.prototype.updateTiledLayer = function(map, replace, timeReset) {
 
   this.nameLayer = new ol.layer.Tile({
     source: new ol.source.XYZ({
-      url: 'http://{s}.basemaps.cartocdn.com/light_only_labels/{z}/{x}/{y}.png',
+      url: 'http://habitatseven.basemaps.cartocdn.com/light_only_labels/{z}/{x}/{y}.png',
       attributions: [new ol.Attribution({ html: ['&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors, &copy; <a href="http://cartodb.com/attributions">CartoDB</a>'] })]
     })
   });
@@ -454,6 +471,33 @@ Location.prototype.updateTiledLayer = function(map, replace, timeReset) {
     this.setSlider(map);
   }
 
+};
+
+
+
+
+/*
+* Removes old climate tiles from map
+* Timeout means new tiles will load before we remove old, so there isn't a
+* flash of map with no tiles at all
+*
+*/
+Location.prototype.removeOldTiles = function(map) {
+  var self = this;
+
+  this.oldTile = this[map + 'TileLayer'];
+  this.oldTile85 = this[map + 'tileLayer85'];
+
+  setTimeout(function() {
+    if ( self.oldTile ) {
+      self.map.removeLayer(self.oldTile);
+      self.oldTile = null;
+    }
+    if ( self.oldTile85 ) {
+      self.map.removeLayer(self.oldTile85);
+      self.oldTile85 = null;
+    }
+  },900);
 };
 
 
@@ -522,30 +566,30 @@ Location.prototype.setSwipeMap = function(map) {
 *
 */
 Location.prototype.setSlider = function(map) {
-    var self = this;
-    var year_slider = $('#'+map+'-time-slider');
+  var self = this;
+  var year_slider = $('#'+map+'-time-slider');
 
-    var tooltip = $('<span class="tooltip">' + year_slider.attr('data-value') + '</span>').hide();
+  var tooltip = $('<span class="tooltip">' + year_slider.attr('data-value') + '</span>').hide();
 
-    year_slider.slider({
-        range: false,
-        min: 1950,
-        max: 2090,
-        step: 10,
-        value: 2010,
-        slide: function (event, ui) {
-          tooltip.text(ui.value);
-          tooltip.fadeIn(200);
-        },
-        change: function (event, ui) {
-          year_slider.attr('data-value', ui.value);
-        },
-        stop: function (event, ui) {
-          year_slider.attr('data-value', ui.value);
-          self.activeYear = ui.value;
-          self.updateTiledLayer(map, true, false);
-          tooltip.fadeOut(200);
-        }
-    }).find(".ui-slider-handle").html('<span class="icon icon-arrow-left-right"></span>').append(tooltip);
+  year_slider.slider({
+    range: false,
+    min: 1950,
+    max: 2090,
+    step: 10,
+    value: 2010,
+    slide: function (event, ui) {
+      tooltip.text(ui.value);
+      tooltip.fadeIn(200);
+    },
+    change: function (event, ui) {
+      year_slider.attr('data-value', ui.value);
+    },
+    stop: function (event, ui) {
+      year_slider.attr('data-value', ui.value);
+      self.activeYear = ui.value;
+      self.updateTiledLayer(map, true, false);
+      tooltip.fadeOut(200);
+    }
+  }).find(".ui-slider-handle").html('<span class="icon icon-arrow-left-right"></span>').append(tooltip);
 
 };

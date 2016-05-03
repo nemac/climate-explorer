@@ -2759,8 +2759,7 @@ h6 {
 .chart-legend .legend-item-line {
   height: 5px;
 }
-.chart-legend .legend-item-block#rcp45-block, .chart-legend .legend-item-block#preciprcp45-block, .chart-legend .legend-item-block
-#derivercp45-block {
+.chart-legend .legend-item-block#rcp45-block, .chart-legend .legend-item-block#preciprcp45-block, .chart-legend .legend-item-block#derivercp45-block {
   background: #99BCEC;
 }
 .chart-legend .legend-item-block#rcp85-block, .chart-legend .legend-item-block#preciprcp85-block, .chart-legend .legend-item-block#derivercp85-block {
@@ -2943,10 +2942,10 @@ h6 {
 #nav-overlay {
   z-index: 600;
   /*
-  
+
   .nav-controls {
     position: static;
-    
+
     a {
       position: absolute;
       top: 10%;
@@ -2954,17 +2953,17 @@ h6 {
       padding-left: 20px;
       padding-right: 50px;
       z-index: 3;
-      
+
       &:before,
       &:after {
         right: 20px;
       }
-      
+
       &.nav-left {
         left: 0;
         border-left: none;
       }
-      
+
       &.nav-right {
         right: 0;
         border-right: none;
@@ -3398,23 +3397,23 @@ body.detail-open #nav-overlay {
   border-right: 10px solid #fff;
   z-index: 20;
   /*#main-header {
-  
+
     #header-logo {
       width: 50%;
       max-width: 71px;
     }
   }
-  
+
   #nav-trigger {
     float: right;
   }
-  
+
   #main-nav {
     padding: 20px 8%;
     background: $white;
     @include clearfix;
   }
-  
+
   #main-content-wrap {
     padding-left: 20%;
     padding-left: calc(20% + 10px);
@@ -4921,8 +4920,8 @@ body.detail-open #nav-overlay {
   -webkit-transition: background 0.25s;
   transition: background 0.25s;
   /*
-  
-  
+
+
   .visibility {
     float: right;
     width: 24px;
