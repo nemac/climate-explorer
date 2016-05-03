@@ -1,17 +1,13 @@
 #home-splash {
   @include full-size;
   overflow: hidden;
-}
-
-#home-cycle {
-  @include full-size;
-  z-index: 1;
   
-  .slide {
+  .splash-bg {
     @include full-size;
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
+    z-index: 1;
   }
   
   .slide-text {
@@ -50,6 +46,26 @@
   
   #splash-2 {
     background-image: url(../img/bg_splash-carboncounty.jpg);
+  }
+  
+  #splash-3 {
+    background-image: url(../img/bg_splash-boston.jpg);
+  }
+  
+  #splash-4 {
+    background-image: url(../img/bg_splash-anchorage.jpg);
+  }
+  
+  #splash-5 {
+    background-image: url(../img/bg_splash-oakland.jpg);
+  }
+  
+  #splash-6 {
+    background-image: url(../img/bg_splash-pinal.jpg);
+  }
+  
+  #splash-7 {
+    background-image: url(../img/bg_splash-camptonville.jpg);
   }
 }
 

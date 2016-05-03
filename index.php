@@ -23,26 +23,25 @@
 <div id="viewport">
     <div id="main-content-wrap">
         <section id="home-splash">
-            <div id="home-cycle" class="cycle-slideshow" data-cycle-timeout="8000" data-cycle-slides="> .slide">
-                <div id="splash-1" class="slide">
-                    <div class="slide-text">
-                        <a href="#">
-                            <?php /*<span class="icon icon-bubble"></span>
-                            <span class="title">Resilience strategies to save marsh species</span>*/ ?>
-                            <span class="location">Seven Mile, Florida</span>
-                        </a>
-                    </div>
-                </div>
-
-                <div id="splash-2" class="slide">
-                    <div class="slide-text">
-                        <a href="#">
-                            <?php /*<span class="icon icon-bubble"></span>
-                            <span class="title">Resilience strategies to save marsh species</span>*/ ?>
-                            <span class="location">Carbon County, Utah</span>
-                        </a>
-                    </div>
-                </div>
+            <?php
+              
+              $locations = array(
+                '', // [0]
+                'Seven Mile, Florida',
+                'Carbon County, Utah',
+                'Boston, Massachusetts',
+                'Anchorage, Alaska',
+                'Oakland, California',
+                'Pinal County, Arizona',
+                'Camptonville, California'
+              );
+              
+              $splash_id = rand(1, 7);
+              
+            ?>
+          
+            <div id="splash-<?php echo $splash_id; ?>" class="splash-bg">
+              <div class="slide-text"><span class="location"><?php echo $locations[$splash_id]; ?></span></div>
             </div>
 
             <div id="home-text" class="splash-text">

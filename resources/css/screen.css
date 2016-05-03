@@ -3815,16 +3815,7 @@ body.detail-open #nav-overlay {
   height: 100%;
   overflow: hidden;
 }
-
-#home-cycle {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  z-index: 1;
-}
-#home-cycle .slide {
+#home-splash .splash-bg {
   position: absolute;
   top: 0;
   left: 0;
@@ -3833,36 +3824,52 @@ body.detail-open #nav-overlay {
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
+  z-index: 1;
 }
-#home-cycle .slide-text {
+#home-splash .slide-text {
   position: absolute;
   left: 40%;
   bottom: 5%;
   width: 20%;
   text-align: center;
 }
-#home-cycle .slide-text span {
+#home-splash .slide-text span {
   display: block;
 }
-#home-cycle .slide-text .icon {
+#home-splash .slide-text .icon {
   float: left;
   font-size: 2rem;
   color: #f5442d;
 }
-#home-cycle .slide-text .title {
+#home-splash .slide-text .title {
   margin: 0 0 8px 50px;
   color: #f5442d;
   font: 0.75rem/1em "CESans-Heavy", Helvetica, "Helvetica Neue", Arial, sans-serif;
 }
-#home-cycle .slide-text .location {
+#home-splash .slide-text .location {
   color: #233a70;
   font: 0.75rem/1em "CESans-Heavy", Helvetica, "Helvetica Neue", Arial, sans-serif;
 }
-#home-cycle #splash-1 {
+#home-splash #splash-1 {
   background-image: url(../img/bg_splash-sevenmile.jpg);
 }
-#home-cycle #splash-2 {
+#home-splash #splash-2 {
   background-image: url(../img/bg_splash-carboncounty.jpg);
+}
+#home-splash #splash-3 {
+  background-image: url(../img/bg_splash-boston.jpg);
+}
+#home-splash #splash-4 {
+  background-image: url(../img/bg_splash-anchorage.jpg);
+}
+#home-splash #splash-5 {
+  background-image: url(../img/bg_splash-oakland.jpg);
+}
+#home-splash #splash-6 {
+  background-image: url(../img/bg_splash-pinal.jpg);
+}
+#home-splash #splash-7 {
+  background-image: url(../img/bg_splash-camptonville.jpg);
 }
 
 #home-text {
