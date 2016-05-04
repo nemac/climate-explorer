@@ -141,18 +141,13 @@
     width: calc(100% - 40px);
     margin: 0;
     padding: 15px;
-    background: transparentize($blue1, 0.2);
+    background: transparentize($white, 0.2);
     border-top: none;
     z-index: 5;
     
     h4 {
       width: auto;
       margin-right: 2%;
-      color: $white;
-    }
-    
-    a {
-      color: $white;
     }
   }
 }
