@@ -447,10 +447,26 @@ input.location-mapper:focus:-ms-input-placeholder {
   margin-top: 0px;
 }
 
-.shepherd-button {
-  font-size:0.6em !important;
+.shepherd-element.shepherd-theme-arrows.shepherd-element-attached-top.shepherd-element-attached-center .shepherd-content:before {
+  background: rgba(255, 255, 255) !important;
 }
 
+.shepherd-element.shepherd-theme-arrows .shepherd-content {
+  font-family: Roboto, Helvetica, 'Helvetica Neue', Arial, sans-serif !important;
+  border-radius: 0px;
+  height: auto;
+  padding: 3%;
+  background: rgba(255, 255, 255, 1);
+  color: #5f5f5f;
+  white-space: normal;
+}
+
+.shepherd-button, .shepherd-button.shepherd-button-secondary {
+  display: inline-block;
+  padding: 8px 12px !important;
+  background: #d5e8f2 !important;
+  color: #0058cf !important;
+}
 
 .cd-cover-layer {
   /* background cover layer - visible when tour is activated */
@@ -477,9 +493,9 @@ input.location-mapper:focus:-ms-input-placeholder {
 @media only screen and (min-width: 1100px) {
   .cd-cover-layer.is-visible {
     opacity: 0;
-    -webkit-animation: cd-fade-in 2.1s;
-    -moz-animation: cd-fade-in 2.1s;
-    animation: cd-fade-in 2.1s;
+    -webkit-animation: cd-fade-in 4.1s;
+    -moz-animation: cd-fade-in 4.1s;
+    animation: cd-fade-in 4.1s;
   }
 }
 

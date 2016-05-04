@@ -685,11 +685,11 @@
         accordion_width();
         $('#case-menu .legend').first().open_layer_info();
 
-        setTimeout(function () {
-          cwg.resize();
-          precipChart.resize();
-          derivedChart.resize();
-        }, 1500);
+        // setTimeout(function () {
+        //   cwg.resize();
+        //   precipChart.resize();
+        //   derivedChart.resize();
+        // }, 1500);
     });
 
     // ----------------

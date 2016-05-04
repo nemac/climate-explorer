@@ -561,9 +561,10 @@ $(document).ready(function() {
     });
 
     setTimeout(function() {
+      cwg.resize();
       precipChart.resize();
       derivedChart.resize();
-    },600);
+    },700);
 
     $(window).resize(function() {
       cwg.resize();
