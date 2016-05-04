@@ -246,8 +246,9 @@
                               </div>
                               <div class="range">
                                   <div id="slider-range"></div>
-                                  <div class="ui-slider-label range-label min" id="temp-range-low">2010</div>
-                                  <div class="ui-slider-label range-label max" id="temp-range-high">2100</div>
+                                  <div class="ui-slider-label range-label min" id="temp-range-low">30 Years Centered in 2025</div>
+                                  <div class="ui-slider-label range-label mid" id="temp-range-mid">30 Years Centered in 2050</div>
+                                  <div class="ui-slider-label range-label max" id="temp-range-high">30 Years Centered in 2075</div>
                               </div>
                           </div>
                         </div>
@@ -461,8 +462,9 @@
                             </div>
                             <div class="range">
                               <div id="precip-slider-range"></div>
-                              <div class="ui-slider-label range-label min" id="precip-range-low">2010</div>
-                              <div class="ui-slider-label range-label max" id="precip-range-high">2100</div>
+                              <div class="ui-slider-label range-label min" id="temp-range-low">30 Years Centered in 2025</div>
+                              <div class="ui-slider-label range-label mid" id="temp-range-mid">30 Years Centered in 2050</div>
+                              <div class="ui-slider-label range-label max" id="temp-range-high">30 Years Centered in 2075</div>
                             </div>
                         </div>
                       </div>
@@ -678,8 +680,9 @@
 
                             <div class="range">
                               <div id="derived-slider-range"></div>
-                              <div class="ui-slider-label range-label min">2010</div>
-                              <div class="ui-slider-label range-label max">2100</div>
+                              <div class="ui-slider-label range-label min" id="temp-range-low">30 Years Centered in 2025</div>
+                              <div class="ui-slider-label range-label mid" id="temp-range-mid">30 Years Centered in 2050</div>
+                              <div class="ui-slider-label range-label max" id="temp-range-high">30 Years Centered in 2075</div>
                             </div>
                           </div>
                         </div>
@@ -736,17 +739,22 @@
         </section>
 
 
-        <!-- begin precipitation chart and map -->
+        <!-- begin weather stations map -->
+
         <section id="location-stations" class="location-data-section-wrap">
           <div class="location-data-section">
-            <header>
-              <h3 class="accent-color"><span class="icon icon-temperature"></span>Weather Stations</h3>
-            </header>
-          </div>
-          <div id="location-station-map"></div>
-        </section>
-    <!-- end precip chart and map -->
+            <div id="stations-data" class="data-list">
+              <h3 class="accent-color"><span class="icon icon-district"></span>Weather Stations</h3>
+              <p>This map shows the location of weather stations near the selected county. Click on a weather station to view its data.</p>
+            </div>
 
+            <div id="stations-tabs" class="data-accordion-wrap">
+              <div id="location-station-map"></div>
+            </div>
+          </div>
+        </section>
+        
+        <!-- end weather stations chart and map -->
 
         <section id="location-impacts" class="impacts-list">
             <h2>Relevant Impacts</h2>
