@@ -3741,6 +3741,13 @@ body.detail-open #nav-overlay {
 .ui-slider-label.range-label.min {
   left: 0;
 }
+.ui-slider-label.range-label.mid {
+  left: 50%;
+  -moz-transform: translateX(-50%);
+  -ms-transform: translateX(-50%);
+  -webkit-transform: translateX(-50%);
+  transform: translateX(-50%);
+}
 .ui-slider-label.range-label.max {
   right: 0;
 }

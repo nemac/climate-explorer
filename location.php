@@ -246,8 +246,9 @@
                               </div>
                               <div class="range">
                                   <div id="slider-range"></div>
-                                  <div class="ui-slider-label range-label min" id="temp-range-low">2010</div>
-                                  <div class="ui-slider-label range-label max" id="temp-range-high">2100</div>
+                                  <div class="ui-slider-label range-label min" id="temp-range-low">30 Years Centered in 2025</div>
+                                  <div class="ui-slider-label range-label mid" id="temp-range-mid">30 Years Centered in 2050</div>
+                                  <div class="ui-slider-label range-label max" id="temp-range-high">30 Years Centered in 2075</div>
                               </div>
                           </div>
                         </div>
@@ -461,8 +462,9 @@
                             </div>
                             <div class="range">
                               <div id="precip-slider-range"></div>
-                              <div class="ui-slider-label range-label min" id="precip-range-low">2010</div>
-                              <div class="ui-slider-label range-label max" id="precip-range-high">2100</div>
+                              <div class="ui-slider-label range-label min" id="temp-range-low">30 Years Centered in 2025</div>
+                              <div class="ui-slider-label range-label mid" id="temp-range-mid">30 Years Centered in 2050</div>
+                              <div class="ui-slider-label range-label max" id="temp-range-high">30 Years Centered in 2075</div>
                             </div>
                         </div>
                       </div>
@@ -678,8 +680,9 @@
 
                             <div class="range">
                               <div id="derived-slider-range"></div>
-                              <div class="ui-slider-label range-label min">2010</div>
-                              <div class="ui-slider-label range-label max">2100</div>
+                              <div class="ui-slider-label range-label min" id="temp-range-low">30 Years Centered in 2025</div>
+                              <div class="ui-slider-label range-label mid" id="temp-range-mid">30 Years Centered in 2050</div>
+                              <div class="ui-slider-label range-label max" id="temp-range-high">30 Years Centered in 2075</div>
                             </div>
                           </div>
                         </div>

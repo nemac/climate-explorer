@@ -626,6 +626,11 @@ h6 {
       left: 0;
     }
     
+    &.mid {
+      left: 50%;
+      @include transform(translateX(-50%));
+    }
+    
     &.max {
       right: 0;
     }
