@@ -191,7 +191,7 @@
       <div class="slide-bg"></div>
 
       <div class="nav-content-wrap">
-        <h3><span class="icon icon-search"></span> <input type="text" class="location-mapper" placeholder="Enter county, city, or zip code"></h3>
+        <h3 class="search-field"><span class="icon icon-search"></span> <input type="text" class="location-mapper" placeholder="Enter county, city, or zip code"></h3>
       </div>
     </div>
 
