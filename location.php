@@ -35,7 +35,13 @@
 <div id="viewport">
     <div id="main-content-wrap">
 
-        <?php include_once('template/share.php'); ?>
+        <?php 
+          
+          $share_title = 'Location data for ' . $city;
+          
+          include_once('template/share.php');
+          
+        ?>
 
         <div id="location-search">
           <input type="text" class="autocomplete location-mapper" placeholder="Search another location">
