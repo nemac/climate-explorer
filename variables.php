@@ -82,8 +82,6 @@
       <div id="vars-legend" class="legend-wrap left-filler">
         <div class="legend">
           <h5>Legend</h5>
-          <h6>Degrees Fahrenheit</h6>
-
           <div id="legend-container"></div>
         </div>
 

@@ -6,9 +6,9 @@
   $fips = $_REQUEST['fips'];
   $lat = $_REQUEST['lat'];
   $lon = $_REQUEST['lon'];
-  
+
   include_once('functions.php');
-  
+
 ?>
 <!doctype html>
 <html>
@@ -27,14 +27,14 @@
 
     <script type="text/javascript" src="./resources/js/jquery.min.js"></script>
     <script src="//code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
-    
+
     <?php
-      
+
       $share_data['url'] = current_URL();
       $share_data['title'] = 'Location data for ' . $city;
-      
+
       echo opengraph_output($share_data);
-      
+
     ?>
 
 </head>
@@ -306,6 +306,13 @@
                               <div class="year-label year-max">2090</div>
                             </div>
 
+                            <div class="location-map-legend-container">
+                              <h5>Legend</h5>
+                              <div class="location-map-legend">
+                                <img class="legend-image" src="resources/img/tasmax.png"></img>
+                              </div>
+                            </div>
+
                             <a href="variables.php?id=tasmax" class="full-map-btn button bg-white color-orange arrow-right">View full map</a>
                           </div>
                         </div>
@@ -520,6 +527,13 @@
                             <div class="year-label year-min">1950</div>
                             <div class="" id="precipitation-map-time-slider" data-min="1950" data-max="2090" data-value="2090"></div>
                             <div class="year-label year-max">2090</div>
+                          </div>
+
+                          <div class="location-map-legend-container" style="display:none">
+                            <h5>Legend</h5>
+                            <div class="location-map-legend">
+                              <img class="legend-image" src="resources/img/pr.png"></img>
+                            </div>
                           </div>
 
                           <a href="variables.php?id=pr" class="full-map-btn button bg-white color-orange arrow-right">View full map</a>
@@ -740,6 +754,13 @@
                               <div class="year-label year-max">2090</div>
                             </div>
 
+                            <div class="location-map-legend-container">
+                              <h5>Legend</h5>
+                              <div class="location-map-legend">
+                                <img class="legend-image" src="resources/img/heating_degree_day_18.3"></img>
+                              </div>
+                            </div>
+
                             <a href="variables.php?id=heating_degree_day_18.3" class="full-map-btn button bg-white color-orange arrow-right">View full map</a>
                           </div>
                         </div>
@@ -764,7 +785,7 @@
             </div>
           </div>
         </section>
-        
+
         <!-- end weather stations chart and map -->
 
         <?php /*
