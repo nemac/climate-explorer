@@ -598,6 +598,16 @@ Variables.prototype.countySelected = function(feature, event) {
       $('#download-panel').addClass("hidden");
     });
 
+    $('.how-to-read').on('click', function() {
+      var pre = '';
+      var closest = $(this).closest('.data-chart').attr('id');
+      if ( closest === 'precipitation-chart' ) { pre = 'precip-'; }
+      if ( closest === 'derived-chart' ) { pre = 'derive-'; }
+      if ( app ) {
+        app.takeGraphTour(pre);
+      }
+    });
+
     $("#slider-range").slider({
       range: true,
       min: 1950,
