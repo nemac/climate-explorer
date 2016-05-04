@@ -312,10 +312,6 @@ input.location-mapper:focus:-ms-input-placeholder {
   width: 80%;
 }
 
-.page-type-variables #main-content-wrap .year, .page-type-location .year {
-  z-index: 100;
-}
-
 .page-type-location #location-search {
   width:300px;
 }
@@ -431,12 +427,6 @@ input.location-mapper:focus:-ms-input-placeholder {
 
 .emissions-high {
   margin-left: 100px;
-}
-
-.page-type-variables #map-seasons-container {
-  width:100px;
-  position: absolute;
-  left: calc(20% + 35px);
 }
 
 
