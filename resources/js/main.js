@@ -41,6 +41,8 @@ App.prototype.locationSearch = function() {
     var county = (data.administrative_area_level_2) ? data.administrative_area_level_2.replace(/ /g, '+') : data.locality + '+County';
     var city = data.locality + ', ' + data.administrative_area_level_1_short;
 
+    if ( !data.locality ) { city = county + ', '+data.administrative_area_level_1_short; }
+
     var lat, lon;
     if ( result.geometry.access_points ) {
       lat = result.geometry.access_points[0].location.lat;
