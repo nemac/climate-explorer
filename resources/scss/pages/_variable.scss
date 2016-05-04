@@ -39,6 +39,52 @@
   #main-content-wrap {
     @include full-size;
     
+    #map-seasons-container {
+      position: absolute;
+      top: 20px;
+      left: calc(20% + 35px);
+    }
+    
+    .fs-dropdown {
+      margin: 0;
+      @include transition(0.25s);
+      
+      button {
+        height: auto;
+        padding: 12px;
+        padding-right: 40px;
+        background: transparentize($white, 0.4);
+        border: 5px solid $white;
+        color: $blue1;
+        @include border-radius(0);
+        font: 400 1.125rem/1em $roboto;
+        @include transition(0.25s);
+      }
+    }
+    
+    .fs-dropdown-open,
+    .fs-dropdown-focus {
+      .fs-dropdown-selected {
+        @include box-shadow(none);
+        background: $white;
+      }
+    }
+    
+    .fs-dropdown-options {
+      background: transparentize($white, 0.2);
+      border: none;
+      border-radius: 0;
+      @include box-shadow(none);
+      
+      button {
+        padding: 10px;
+        font-size: 1rem;
+        
+        &:hover {
+          background: $grey2;
+        }
+      }
+    }
     
     .split-pane {
       z-index: 1;
@@ -57,11 +103,11 @@
     }
     
     .year {
-      z-index: 2;
+      z-index: 3;
     }
     
     .zoom {
-      z-index: 3;
+      z-index: 4;
     }
   }
   

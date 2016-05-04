@@ -3193,7 +3193,7 @@ h6 {
   margin: 0;
   padding: 0 !important;
   background: #fff;
-  z-index: 200;
+  z-index: 2;
   cursor: col-resize;
 }
 /* line 332, ../scss/screen.scss */
@@ -3968,29 +3968,30 @@ body.detail-open #nav-overlay {
   text-align: center;
   font: 1.25rem/1em "CESans", Roboto, Helvetica, "Helvetica Neue", Arial, sans-serif;
   color: #0058cf;
+  white-space: nowrap;
 }
-/* line 120, ../scss/template/_header.scss */
+/* line 121, ../scss/template/_header.scss */
 #main-header #breadcrumb span {
   display: inline-block;
   padding: 10px 17px 10px 20px;
   border-left: 1px solid #f5442d;
 }
-/* line 125, ../scss/template/_header.scss */
+/* line 126, ../scss/template/_header.scss */
 #main-header #breadcrumb span:first-child {
   border-left: none;
 }
-/* line 138, ../scss/template/_header.scss */
+/* line 139, ../scss/template/_header.scss */
 #main-header #subnav {
   float: right;
   margin: 23px 0 0 0;
 }
-/* line 142, ../scss/template/_header.scss */
+/* line 143, ../scss/template/_header.scss */
 #main-header #subnav li {
   display: inline-block;
   margin: 0 0 0 20px;
 }
 
-/* line 151, ../scss/template/_header.scss */
+/* line 152, ../scss/template/_header.scss */
 #left-header {
   position: fixed;
   top: 110px;
@@ -4023,14 +4024,14 @@ body.detail-open #nav-overlay {
     padding-left: calc(20% + 10px);
   }*/
 }
-/* line 161, ../scss/template/_header.scss */
+/* line 162, ../scss/template/_header.scss */
 #left-header .left-filler {
   position: relative;
   background: #fff;
   padding: 10px 0 0 0;
 }
 
-/* line 194, ../scss/template/_header.scss */
+/* line 195, ../scss/template/_header.scss */
 .menu a,
 .menu label {
   display: block;
@@ -4044,23 +4045,23 @@ body.detail-open #nav-overlay {
   transition: 0.25s;
   cursor: pointer;
 }
-/* line 205, ../scss/template/_header.scss */
+/* line 206, ../scss/template/_header.scss */
 .menu li {
   -moz-transition: 0.25s;
   -o-transition: 0.25s;
   -webkit-transition: 0.25s;
   transition: 0.25s;
 }
-/* line 208, ../scss/template/_header.scss */
+/* line 209, ../scss/template/_header.scss */
 .menu li.border {
   border-bottom: 10px solid #fff;
 }
-/* line 212, ../scss/template/_header.scss */
+/* line 213, ../scss/template/_header.scss */
 .menu li.search-field {
   padding: 8%;
   white-space: nowrap;
 }
-/* line 216, ../scss/template/_header.scss */
+/* line 217, ../scss/template/_header.scss */
 .menu li.search-field input {
   display: inline-block;
   width: 80%;
@@ -4074,7 +4075,7 @@ body.detail-open #nav-overlay {
   -webkit-transition: 0.25s;
   transition: 0.25s;
 }
-/* line 226, ../scss/template/_header.scss */
+/* line 227, ../scss/template/_header.scss */
 .menu li.search-field input::-webkit-input-placeholder {
   color: #fff;
   padding-top: 3px;
@@ -4083,7 +4084,7 @@ body.detail-open #nav-overlay {
   -webkit-transition: 0.25s;
   transition: 0.25s;
 }
-/* line 232, ../scss/template/_header.scss */
+/* line 233, ../scss/template/_header.scss */
 .menu li.search-field input:-moz-placeholder {
   color: #fff;
   padding-top: 3px;
@@ -4092,7 +4093,7 @@ body.detail-open #nav-overlay {
   -webkit-transition: 0.25s;
   transition: 0.25s;
 }
-/* line 238, ../scss/template/_header.scss */
+/* line 239, ../scss/template/_header.scss */
 .menu li.search-field input::-moz-placeholder {
   color: #fff;
   padding-top: 3px;
@@ -4101,7 +4102,7 @@ body.detail-open #nav-overlay {
   -webkit-transition: 0.25s;
   transition: 0.25s;
 }
-/* line 244, ../scss/template/_header.scss */
+/* line 245, ../scss/template/_header.scss */
 .menu li.search-field input:-ms-input-placeholder {
   color: #fff;
   padding-top: 3px;
@@ -4110,39 +4111,39 @@ body.detail-open #nav-overlay {
   -webkit-transition: 0.25s;
   transition: 0.25s;
 }
-/* line 251, ../scss/template/_header.scss */
+/* line 252, ../scss/template/_header.scss */
 .menu li.search-field input:focus::-webkit-input-placeholder {
   color: rgba(255, 255, 255, 0.25);
 }
-/* line 255, ../scss/template/_header.scss */
+/* line 256, ../scss/template/_header.scss */
 .menu li.search-field input:focus:-moz-placeholder {
   color: rgba(255, 255, 255, 0.25);
 }
-/* line 259, ../scss/template/_header.scss */
+/* line 260, ../scss/template/_header.scss */
 .menu li.search-field input:focus::-moz-placeholder {
   color: rgba(255, 255, 255, 0.25);
 }
-/* line 263, ../scss/template/_header.scss */
+/* line 264, ../scss/template/_header.scss */
 .menu li.search-field input:focus:-ms-input-placeholder {
   color: rgba(255, 255, 255, 0.25);
 }
-/* line 269, ../scss/template/_header.scss */
+/* line 270, ../scss/template/_header.scss */
 .menu li.search-field .icon {
   color: #fff;
 }
-/* line 276, ../scss/template/_header.scss */
+/* line 277, ../scss/template/_header.scss */
 .menu li.select {
   white-space: nowrap;
 }
-/* line 279, ../scss/template/_header.scss */
+/* line 280, ../scss/template/_header.scss */
 .menu li.select .fs-dropdown {
   margin: 0;
 }
-/* line 282, ../scss/template/_header.scss */
+/* line 283, ../scss/template/_header.scss */
 .menu li.select .fs-dropdown * {
   font: 300 1rem/1em Roboto, Helvetica, "Helvetica Neue", Arial, sans-serif;
 }
-/* line 286, ../scss/template/_header.scss */
+/* line 287, ../scss/template/_header.scss */
 .menu li.select .fs-dropdown .fs-dropdown-selected {
   height: auto;
   padding: 8%;
@@ -4158,36 +4159,36 @@ body.detail-open #nav-overlay {
   -webkit-transition: 0.25s;
   transition: 0.25s;
 }
-/* line 296, ../scss/template/_header.scss */
+/* line 297, ../scss/template/_header.scss */
 .menu li.select .fs-dropdown .fs-dropdown-selected:hover {
   background: rgba(0, 88, 207, 0.9);
 }
-/* line 301, ../scss/template/_header.scss */
+/* line 302, ../scss/template/_header.scss */
 .menu li.select .fs-dropdown .fs-dropdown-item {
   border: none;
 }
-/* line 304, ../scss/template/_header.scss */
+/* line 305, ../scss/template/_header.scss */
 .menu li.select .fs-dropdown .fs-dropdown-item:hover {
   background: rgba(0, 0, 0, 0.05);
 }
-/* line 308, ../scss/template/_header.scss */
+/* line 309, ../scss/template/_header.scss */
 .menu li.select .fs-dropdown .fs-dropdown-item.fs-dropdown-item_selected {
   background: rgba(0, 0, 0, 0.08);
 }
-/* line 311, ../scss/template/_header.scss */
+/* line 312, ../scss/template/_header.scss */
 .menu li.select .fs-dropdown .fs-dropdown-item.fs-dropdown-item_selected:hover {
   background: rgba(0, 0, 0, 0.1);
 }
-/* line 318, ../scss/template/_header.scss */
+/* line 319, ../scss/template/_header.scss */
 .menu li.select .fs-dropdown.fs-dropdown-open .fs-dropdown-selected {
   background: rgba(0, 88, 207, 0.9);
 }
-/* line 327, ../scss/template/_header.scss */
+/* line 328, ../scss/template/_header.scss */
 .menu li.toggle {
   position: relative;
   z-index: 1;
 }
-/* line 332, ../scss/template/_header.scss */
+/* line 333, ../scss/template/_header.scss */
 .menu li.toggle label:after {
   content: '';
   position: absolute;
@@ -4197,20 +4198,20 @@ body.detail-open #nav-overlay {
   height: 100%;
   z-index: 10;
 }
-/* line 339, ../scss/template/_header.scss */
+/* line 340, ../scss/template/_header.scss */
 .menu li.toggle .lcs_wrap {
   z-index: 1;
 }
-/* line 346, ../scss/template/_header.scss */
+/* line 347, ../scss/template/_header.scss */
 .menu li.about-link {
   font: 0.875em/1.4em "CESans-Heavy", Helvetica, "Helvetica Neue", Arial, sans-serif;
 }
-/* line 349, ../scss/template/_header.scss */
+/* line 350, ../scss/template/_header.scss */
 .menu li.about-link a {
   padding: 6% 8%;
   white-space: normal;
 }
-/* line 357, ../scss/template/_header.scss */
+/* line 358, ../scss/template/_header.scss */
 .menu li.legend {
   padding: 8%;
   color: #fff;
@@ -4224,61 +4225,61 @@ body.detail-open #nav-overlay {
 .menu li.legend ul:after {
   clear: both;
 }
-/* line 365, ../scss/template/_header.scss */
+/* line 366, ../scss/template/_header.scss */
 .menu li.legend ul li {
   float: left;
   width: 16%;
 }
-/* line 373, ../scss/template/_header.scss */
+/* line 374, ../scss/template/_header.scss */
 .menu .icon {
   margin: -4px 8% 0 0;
   font-size: 1.25rem;
   vertical-align: middle;
 }
-/* line 380, ../scss/template/_header.scss */
+/* line 381, ../scss/template/_header.scss */
 .menu.orange-menu a,
 .menu.orange-menu label {
   background: rgba(245, 68, 45, 0.85);
 }
-/* line 384, ../scss/template/_header.scss */
+/* line 385, ../scss/template/_header.scss */
 .menu.orange-menu a:hover,
 .menu.orange-menu label:hover {
   background: rgba(245, 68, 45, 0.92);
 }
-/* line 390, ../scss/template/_header.scss */
+/* line 391, ../scss/template/_header.scss */
 .menu.orange-menu li.search-field {
   background: rgba(245, 68, 45, 0.85);
 }
-/* line 394, ../scss/template/_header.scss */
+/* line 395, ../scss/template/_header.scss */
 .menu.orange-menu li.legend {
   background: rgba(245, 68, 45, 0.85);
 }
-/* line 397, ../scss/template/_header.scss */
+/* line 398, ../scss/template/_header.scss */
 .menu.orange-menu li.legend:hover {
   background: rgba(245, 68, 45, 0.92);
 }
-/* line 411, ../scss/template/_header.scss */
+/* line 412, ../scss/template/_header.scss */
 .menu.blue-menu li {
   background: rgba(0, 88, 207, 0.8);
 }
-/* line 414, ../scss/template/_header.scss */
+/* line 415, ../scss/template/_header.scss */
 .menu.blue-menu li:hover {
   background: rgba(0, 88, 207, 0.9);
 }
-/* line 419, ../scss/template/_header.scss */
+/* line 420, ../scss/template/_header.scss */
 .menu.blue-menu li.search-field:hover {
   background: rgba(0, 88, 207, 0.8);
 }
-/* line 424, ../scss/template/_header.scss */
+/* line 425, ../scss/template/_header.scss */
 .menu.blue-menu li.select {
   background: transparent;
 }
 
-/* line 433, ../scss/template/_header.scss */
+/* line 434, ../scss/template/_header.scss */
 .white-menu {
   position: relative;
 }
-/* line 436, ../scss/template/_header.scss */
+/* line 437, ../scss/template/_header.scss */
 .white-menu h4 {
   margin: 0 0 4% 0;
   padding-left: 10px;
@@ -4286,30 +4287,30 @@ body.detail-open #nav-overlay {
   font: 400 1.5rem/1.25em Roboto, Helvetica, "Helvetica Neue", Arial, sans-serif;
   color: #f5442d;
 }
-/* line 444, ../scss/template/_header.scss */
+/* line 445, ../scss/template/_header.scss */
 .white-menu ul {
   background: rgba(255, 255, 255, 0.8);
   padding: 3% 0;
   border: 10px solid #fff;
   font: 400 1.125rem/1.25em Roboto, Helvetica, "Helvetica Neue", Arial, sans-serif;
 }
-/* line 450, ../scss/template/_header.scss */
+/* line 451, ../scss/template/_header.scss */
 .white-menu ul li {
   padding: 2% 5%;
 }
-/* line 454, ../scss/template/_header.scss */
+/* line 455, ../scss/template/_header.scss */
 .white-menu ul a {
   color: #0058cf;
 }
 
-/* line 464, ../scss/template/_header.scss */
+/* line 465, ../scss/template/_header.scss */
 .ui-slider {
   position: absolute;
   height: 6px;
   background: rgba(95, 95, 95, 0.2);
   cursor: pointer;
 }
-/* line 470, ../scss/template/_header.scss */
+/* line 471, ../scss/template/_header.scss */
 .ui-slider .ui-slider-handle {
   left: 3px;
   width: 16px;
@@ -4322,7 +4323,7 @@ body.detail-open #nav-overlay {
   outline: none;
   cursor: pointer;
 }
-/* line 481, ../scss/template/_header.scss */
+/* line 482, ../scss/template/_header.scss */
 .ui-slider .ui-slider-range {
   font-size: 1.25rem;
   background: #f5442d;
@@ -4336,12 +4337,12 @@ body.detail-open #nav-overlay {
   -webkit-box-shadow: inset 0 5px 10px -5px rgba(0, 0, 0, 0.5);
   box-shadow: inset 0 5px 10px -5px rgba(0, 0, 0, 0.5);
 }
-/* line 491, ../scss/template/_header.scss */
+/* line 492, ../scss/template/_header.scss */
 .ui-slider:hover .ui-slider-range {
   color: #fff;
 }
 
-/* line 497, ../scss/template/_header.scss */
+/* line 498, ../scss/template/_header.scss */
 #slider-range {
   width: 100%;
   margin: auto;
@@ -5725,31 +5726,88 @@ body.detail-open #nav-overlay {
   width: 100%;
   height: 100%;
 }
-/* line 43, ../scss/pages/_variable.scss */
+/* line 42, ../scss/pages/_variable.scss */
+.page-type-variables #main-content-wrap #map-seasons-container {
+  position: absolute;
+  top: 20px;
+  left: calc(20% + 35px);
+}
+/* line 48, ../scss/pages/_variable.scss */
+.page-type-variables #main-content-wrap .fs-dropdown {
+  margin: 0;
+  -moz-transition: 0.25s;
+  -o-transition: 0.25s;
+  -webkit-transition: 0.25s;
+  transition: 0.25s;
+}
+/* line 52, ../scss/pages/_variable.scss */
+.page-type-variables #main-content-wrap .fs-dropdown button {
+  height: auto;
+  padding: 12px;
+  padding-right: 40px;
+  background: rgba(255, 255, 255, 0.6);
+  border: 5px solid #fff;
+  color: #0058cf;
+  -moz-border-radius: 0;
+  -webkit-border-radius: 0;
+  border-radius: 0;
+  font: 400 1.125rem/1em Roboto, Helvetica, "Helvetica Neue", Arial, sans-serif;
+  -moz-transition: 0.25s;
+  -o-transition: 0.25s;
+  -webkit-transition: 0.25s;
+  transition: 0.25s;
+}
+/* line 67, ../scss/pages/_variable.scss */
+.page-type-variables #main-content-wrap .fs-dropdown-open .fs-dropdown-selected,
+.page-type-variables #main-content-wrap .fs-dropdown-focus .fs-dropdown-selected {
+  -moz-box-shadow: none;
+  -webkit-box-shadow: none;
+  box-shadow: none;
+  background: #fff;
+}
+/* line 73, ../scss/pages/_variable.scss */
+.page-type-variables #main-content-wrap .fs-dropdown-options {
+  background: rgba(255, 255, 255, 0.8);
+  border: none;
+  border-radius: 0;
+  -moz-box-shadow: none;
+  -webkit-box-shadow: none;
+  box-shadow: none;
+}
+/* line 79, ../scss/pages/_variable.scss */
+.page-type-variables #main-content-wrap .fs-dropdown-options button {
+  padding: 10px;
+  font-size: 1rem;
+}
+/* line 83, ../scss/pages/_variable.scss */
+.page-type-variables #main-content-wrap .fs-dropdown-options button:hover {
+  background: #ebebeb;
+}
+/* line 89, ../scss/pages/_variable.scss */
 .page-type-variables #main-content-wrap .split-pane {
   z-index: 1;
 }
-/* line 47, ../scss/pages/_variable.scss */
+/* line 93, ../scss/pages/_variable.scss */
 .page-type-variables #main-content-wrap #pane-left {
   background: url(../img/bg_variables-low.jpg) #fff no-repeat center;
   background-attachment: fixed;
   background-size: cover;
 }
-/* line 53, ../scss/pages/_variable.scss */
+/* line 99, ../scss/pages/_variable.scss */
 .page-type-variables #main-content-wrap #pane-right {
   background: url(../img/bg_variables-high.jpg) #fff no-repeat center;
   background-attachment: fixed;
   background-size: cover;
 }
-/* line 59, ../scss/pages/_variable.scss */
+/* line 105, ../scss/pages/_variable.scss */
 .page-type-variables #main-content-wrap .year {
-  z-index: 2;
-}
-/* line 63, ../scss/pages/_variable.scss */
-.page-type-variables #main-content-wrap .zoom {
   z-index: 3;
 }
-/* line 68, ../scss/pages/_variable.scss */
+/* line 109, ../scss/pages/_variable.scss */
+.page-type-variables #main-content-wrap .zoom {
+  z-index: 4;
+}
+/* line 114, ../scss/pages/_variable.scss */
 .page-type-variables #district-trigger {
   position: absolute;
   top: 15%;
@@ -5765,14 +5823,14 @@ body.detail-open #nav-overlay {
   overflow: hidden;
   *zoom: 1;
 }
-/* line 79, ../scss/pages/_variable.scss */
+/* line 125, ../scss/pages/_variable.scss */
 .page-type-variables #district-trigger span {
   display: block;
   float: left;
   white-space: nowrap;
   color: #0058cf;
 }
-/* line 86, ../scss/pages/_variable.scss */
+/* line 132, ../scss/pages/_variable.scss */
 .page-type-variables #district-trigger .text {
   margin-top: -2px;
   text-indent: -300px;
@@ -5781,21 +5839,21 @@ body.detail-open #nav-overlay {
   -webkit-transition: text-indent 0.5s;
   transition: text-indent 0.5s;
 }
-/* line 92, ../scss/pages/_variable.scss */
+/* line 138, ../scss/pages/_variable.scss */
 .page-type-variables #district-trigger .icon {
   padding-left: 10px;
   font-size: 1.25rem;
 }
-/* line 97, ../scss/pages/_variable.scss */
+/* line 143, ../scss/pages/_variable.scss */
 .page-type-variables #district-trigger:hover {
   padding-left: 15px;
 }
-/* line 100, ../scss/pages/_variable.scss */
+/* line 146, ../scss/pages/_variable.scss */
 .page-type-variables #district-trigger:hover .text {
   text-indent: 0;
 }
 
-/* line 107, ../scss/pages/_variable.scss */
+/* line 153, ../scss/pages/_variable.scss */
 .year {
   position: absolute;
   bottom: 40px;
@@ -5803,13 +5861,13 @@ body.detail-open #nav-overlay {
   width: 50%;
   height: 22px;
 }
-/* line 114, ../scss/pages/_variable.scss */
+/* line 160, ../scss/pages/_variable.scss */
 .year .year-slider {
   top: 8px;
   left: 10%;
   width: 80%;
 }
-/* line 119, ../scss/pages/_variable.scss */
+/* line 165, ../scss/pages/_variable.scss */
 .year .year-slider .ui-slider-handle {
   top: -14px;
   width: 36px;
@@ -5825,23 +5883,23 @@ body.detail-open #nav-overlay {
   -webkit-box-shadow: 0 0 4px rgba(0, 88, 207, 0.25);
   box-shadow: 0 0 4px rgba(0, 88, 207, 0.25);
 }
-/* line 132, ../scss/pages/_variable.scss */
+/* line 178, ../scss/pages/_variable.scss */
 .year .year-slider .ui-slider-handle:hover {
   -moz-box-shadow: 0 0 7px rgba(0, 88, 207, 0.4);
   -webkit-box-shadow: 0 0 7px rgba(0, 88, 207, 0.4);
   box-shadow: 0 0 7px rgba(0, 88, 207, 0.4);
 }
-/* line 138, ../scss/pages/_variable.scss */
+/* line 184, ../scss/pages/_variable.scss */
 .year .year-label {
   position: absolute;
   width: 10%;
   text-align: center;
 }
-/* line 143, ../scss/pages/_variable.scss */
+/* line 189, ../scss/pages/_variable.scss */
 .year .year-label.year-min {
   left: 0;
 }
-/* line 147, ../scss/pages/_variable.scss */
+/* line 193, ../scss/pages/_variable.scss */
 .year .year-label.year-max {
   right: 0;
 }
