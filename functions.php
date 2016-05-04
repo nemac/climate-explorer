@@ -17,6 +17,8 @@
   
   function opengraph_output($data) {
     
+    $site_url = 'http://climateexplorer.habitatseven.work';
+    
     // url
     
     if (isset($data['url'])) {
@@ -54,7 +56,7 @@
     if (isset($data['image'])) {
       $output_data['image'] = $data['image'];
     } else {
-      $output_data['image'] = '/resources/img/og.jpg';
+      $output_data['image'] = $site_url . '/resources/img/og.jpg';
     }
     
     $output = '';
