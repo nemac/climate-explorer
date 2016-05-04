@@ -27,7 +27,7 @@
     <?php
       
       $share_data['url'] = current_URL();
-      $share_data['title'] = 'Variables'
+      $share_data['title'] = 'Variables';
       
       echo opengraph_output($share_data);
       
