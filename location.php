@@ -56,7 +56,7 @@
                     <li><a href="#location-precipitation">Precipitation</a></li>
                     <li><a href="#location-derived">Derived</a></li>
                     <li><a href="#location-stations">Weather Stations</a></li>
-                    <li><a href="#location-impacts">Relevant Impacts</a></li>
+                    <!--<li><a href="#location-impacts">Relevant Impacts</a></li>-->
                 </ul>
             </div>
         </section>
@@ -756,6 +756,7 @@
         
         <!-- end weather stations chart and map -->
 
+        <?php /*
         <section id="location-impacts" class="impacts-list">
             <h2>Relevant Impacts</h2>
 
@@ -778,7 +779,7 @@
 
                 <a href="#" class="button bg-trans border-white hover-bg-white">View details</a>
             </article>
-        </section>
+        </section>*/ ?>
     </div>
 </div>
 
