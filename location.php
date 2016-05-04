@@ -757,7 +757,7 @@
                             <div class="location-map-legend-container">
                               <h5>Legend</h5>
                               <div class="location-map-legend">
-                                <img class="legend-image" src="resources/img/heating_degree_day_18.3"></img>
+                                <img class="legend-image" src="resources/img/heating_degree_day_18.3.png"></img>
                               </div>
                             </div>
 
