@@ -49,10 +49,10 @@ $(document).ready(function() {
       var id = $('#frequency').val();
       if ( id !== 'annual' ) {
         $('#historical-range, #under-baseline-range, #over-baseline-range').hide();
-        $('.legend-item-line.observed').addClass('seasonal');
+        $('#temperature-chart .legend-item-line.observed').addClass('seasonal');
       } else {
         $('#historical-range, #under-baseline-range, #over-baseline-range').show();
-        $('.legend-item-line.observed').removeClass('seasonal');
+        $('#temperature-chart .legend-item-line.observed').removeClass('seasonal');
       }
 
       if ( id !== 'annual' ) {
@@ -93,9 +93,11 @@ $(document).ready(function() {
       update_frequency_ui();
       var id = $('#precip-frequency').val();
       if ( id !== 'annual' ) {
-        $('#historical-range, #under-baseline-range, #over-baseline-range').hide();
+        $('#precip-historical-range, #under-baseline-range, #over-baseline-range').hide();
+        $('#precipitation-chart .legend-item-line.observed').addClass('seasonal');
       } else {
-        $('#historical-range, #under-baseline-range, #over-baseline-range').show();
+        $('#precip-historical-range, #under-baseline-range, #over-baseline-range').show();
+        $('#precipitation-chart .legend-item-line.observed').removeClass('seasonal');
       }
 
       if ( id !== 'annual' ) {
