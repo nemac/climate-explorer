@@ -40,7 +40,7 @@
         <li class="search-field border" id="variable-search-by-location"><span class="icon icon-search"></span><input type="text" id="formmapper" placeholder="Search by location"></li>
 
         <li class="toggle border" id="variable-counties-toggle">
-          <a href="#info-counties" class="help icon icon-help"></a>
+          <!--<a href="#info-counties" class="help icon icon-help"></a>-->
           <label for="counties-overlay-toggle"><span class="text">Data by Counties</span>
             <input type="checkbox" name="counties-overlay-toggle" id="counties-overlay-toggle" value="1" autocomplete="off">
           </label>
