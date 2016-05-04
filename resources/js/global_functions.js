@@ -341,6 +341,22 @@
     // SHARE
     //
     // -----
+    
+    window.fbAsyncInit = function() {
+      FB.init({
+        appId      : '187816851587993',
+        xfbml      : true,
+        version    : 'v2.6'
+      });
+    };
+  
+    (function(d, s, id){
+       var js, fjs = d.getElementsByTagName(s)[0];
+       if (d.getElementById(id)) {return;}
+       js = d.createElement(s); js.id = id;
+       js.src = "//connect.facebook.net/en_US/sdk.js";
+       fjs.parentNode.insertBefore(js, fjs);
+     }(document, 'script', 'facebook-jssdk'));
 
     $('.share-trigger').click(function (e) {
         e.preventDefault();
@@ -355,6 +371,34 @@
             }, 500);
         }
     });
+    
+    $('.share-link').click(function(e) {
+  	  e.preventDefault();
+  	  
+  	  if ($(this).hasClass('share-facebook')) {
+    	  var share_URL = $(this).attr('data-href');
+    	  
+        FB.ui({
+          method: 'share',
+          href: share_URL,
+        }, function(response){
+          // nothing
+        });
+  	  } else {
+    	  var width  = 575,
+            height = 320,
+            left   = ($(window).width()  - width)  / 2,
+            top    = ($(window).height() - height) / 2,
+            url    = this.href,
+            opts   = 'status=0' +
+                     ',width='  + width  +
+                     ',height=' + height +
+                     ',top='    + top    +
+                     ',left='   + left;
+        
+        window.open(url, 'sharepopup', opts);
+  	  }
+	  });
 
     // --------
     //
