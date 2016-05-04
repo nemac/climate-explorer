@@ -1,11 +1,6 @@
 <?php
-
-  $location = true;
-  $city = $_REQUEST['city'];
-  $county = $_REQUEST['county'];
-  $fips = $_REQUEST['fips'];
-  $lat = $_REQUEST['lat'];
-  $lon = $_REQUEST['lon'];
+  
+  include_once('functions.php');
 
 ?>
 <!doctype html>
@@ -25,6 +20,15 @@
 
     <script type="text/javascript" src="./resources/js/jquery.min.js"></script>
     <script src="//code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
+    
+    <?php
+      
+      $share_data['url'] = current_URL();
+      $share_data['title'] = 'Definitions';
+      
+      echo opengraph_output($share_data);
+      
+    ?>
 
 </head>
 
