@@ -51,6 +51,15 @@
     .slide-bg {
       background-image: url(../img/bg_contours-lightblue.png);
     }
+    
+    h3 {
+      padding: 0 3%;
+      background: transparentize($white, 0.9);
+      
+      input {
+        font: 1.625rem/4.875rem $sans-heavy;
+      }
+    }
   }
   
   #nav-variables {

@@ -685,11 +685,15 @@
         accordion_width();
         $('#case-menu .legend').first().open_layer_info();
 
-        // setTimeout(function () {
-        //   cwg.resize();
-        //   precipChart.resize();
-        //   derivedChart.resize();
-        // }, 1500);
+        if ($('body').hasClass('page-type-location')) {
+          $('.ui-slider-range').addClass('accent-background').html('<span class="icon icon-arrow-left-right"></span>');
+          
+          setTimeout(function () {
+            cwg.resize();
+            precipChart.resize();
+            derivedChart.resize();
+          }, 1500);
+        }
     });
 
     // ----------------
