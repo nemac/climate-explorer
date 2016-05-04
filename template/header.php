@@ -191,19 +191,7 @@
       <div class="slide-bg"></div>
 
       <div class="nav-content-wrap">
-        <h3><span class="icon icon-search"></span> Search locations</h3>
-
-        <div class="nav-content tabs">
-          <nav>
-              <a href="#nav-search" class="nav-search-tab" data-tabs-group="nav-search"><span>Results</span></a>
-          </nav>
-
-          <div id="nav-search" class="tab nav-content-tab">
-            <ul class="col-2">
-              <li class="search-field"><span class="icon icon-search"></span><input type="text" class="location-mapper" placeholder="Search by location"></li>
-            </ul>
-          </div>
-        </div>
+        <h3><span class="icon icon-search"></span> <input type="text" class="location-mapper" placeholder="Enter county, city, or zip code"></h3>
       </div>
     </div>
 
