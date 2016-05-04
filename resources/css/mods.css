@@ -105,6 +105,11 @@ input.location-mapper:focus:-ms-input-placeholder {
   /*mix-blend-mode: normal;*/
 }
 
+.page-type-variables .legend-image {
+  height:350px;
+  margin-left:-10px;
+}
+
 .page-type-variables .data-accordion-actions {
   margin-top:-15px;
 }
