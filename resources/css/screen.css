@@ -4819,7 +4819,7 @@ body.detail-open #nav-overlay {
   width: calc(100% - 40px);
   margin: 0;
   padding: 15px;
-  background: rgba(0, 88, 207, 0.8);
+  background: rgba(255, 255, 255, 0.8);
   border-top: none;
   z-index: 5;
 }
@@ -4827,21 +4827,16 @@ body.detail-open #nav-overlay {
 #page-nav.stuck h4 {
   width: auto;
   margin-right: 2%;
-  color: #fff;
-}
-/* line 154, ../scss/pages/_location.scss */
-#page-nav.stuck a {
-  color: #fff;
 }
 
-/* line 160, ../scss/pages/_location.scss */
+/* line 155, ../scss/pages/_location.scss */
 .location-data-section-wrap {
   padding: 1%;
   border: 10px solid #fff;
   background: rgba(255, 255, 255, 0.9);
 }
 
-/* line 166, ../scss/pages/_location.scss */
+/* line 161, ../scss/pages/_location.scss */
 .location-data-section {
   position: relative;
 }
@@ -4854,7 +4849,7 @@ body.detail-open #nav-overlay {
 .location-data-section:after {
   clear: both;
 }
-/* line 170, ../scss/pages/_location.scss */
+/* line 165, ../scss/pages/_location.scss */
 .location-data-section .map {
   position: absolute;
   top: 0;
@@ -4865,7 +4860,7 @@ body.detail-open #nav-overlay {
   background-size: cover;
   z-index: 1;
 }
-/* line 177, ../scss/pages/_location.scss */
+/* line 172, ../scss/pages/_location.scss */
 .location-data-section header {
   position: relative;
   padding: 0 0 10px 0;
@@ -4879,19 +4874,19 @@ body.detail-open #nav-overlay {
 .location-data-section header:after {
   clear: both;
 }
-/* line 183, ../scss/pages/_location.scss */
+/* line 178, ../scss/pages/_location.scss */
 .location-data-section h3 {
   margin: 0 0 10% 0;
   padding: 20px 0 0 0;
   font: 2rem/1em Roboto, Helvetica, "Helvetica Neue", Arial, sans-serif;
 }
-/* line 188, ../scss/pages/_location.scss */
+/* line 183, ../scss/pages/_location.scss */
 .location-data-section h3 .icon {
   display: inline;
   margin: 0 20px 0 0;
   font-size: 2.5rem;
 }
-/* line 195, ../scss/pages/_location.scss */
+/* line 190, ../scss/pages/_location.scss */
 .location-data-section .data-vars {
   margin: 20px 0;
   border-top: 2px solid #ebebeb;
@@ -4905,7 +4900,7 @@ body.detail-open #nav-overlay {
 .location-data-section .data-vars:after {
   clear: both;
 }
-/* line 200, ../scss/pages/_location.scss */
+/* line 195, ../scss/pages/_location.scss */
 .location-data-section .data-vars label {
   display: block;
   float: left;
@@ -4913,7 +4908,7 @@ body.detail-open #nav-overlay {
   border: 10px solid transparent;
   font: 400 1.125rem/1em Roboto, Helvetica, "Helvetica Neue", Arial, sans-serif;
 }
-/* line 211, ../scss/pages/_location.scss */
+/* line 206, ../scss/pages/_location.scss */
 .location-data-section .fs-dropdown {
   float: left;
   margin: 0 10px 0 0;
@@ -4922,7 +4917,7 @@ body.detail-open #nav-overlay {
   -webkit-transition: 0.25s;
   transition: 0.25s;
 }
-/* line 216, ../scss/pages/_location.scss */
+/* line 211, ../scss/pages/_location.scss */
 .location-data-section .fs-dropdown button {
   height: auto;
   padding: 20px;
@@ -4938,7 +4933,7 @@ body.detail-open #nav-overlay {
   -webkit-transition: 0.25s;
   transition: 0.25s;
 }
-/* line 230, ../scss/pages/_location.scss */
+/* line 225, ../scss/pages/_location.scss */
 .location-data-section .fs-dropdown-open .fs-dropdown-selected,
 .location-data-section .fs-dropdown-focus .fs-dropdown-selected {
   -moz-box-shadow: none;
@@ -4946,7 +4941,7 @@ body.detail-open #nav-overlay {
   box-shadow: none;
   background: #fff;
 }
-/* line 236, ../scss/pages/_location.scss */
+/* line 231, ../scss/pages/_location.scss */
 .location-data-section .fs-dropdown-options {
   border: none;
   border-radius: 0;
@@ -4954,12 +4949,12 @@ body.detail-open #nav-overlay {
   -webkit-box-shadow: none;
   box-shadow: none;
 }
-/* line 241, ../scss/pages/_location.scss */
+/* line 236, ../scss/pages/_location.scss */
 .location-data-section .fs-dropdown-options button {
   padding: 10px;
   font-size: 1rem;
 }
-/* line 247, ../scss/pages/_location.scss */
+/* line 242, ../scss/pages/_location.scss */
 .location-data-section .data-accordion-wrap {
   position: relative;
   float: left;
@@ -4977,7 +4972,7 @@ body.detail-open #nav-overlay {
 .location-data-section .data-accordion-wrap:after {
   clear: both;
 }
-/* line 257, ../scss/pages/_location.scss */
+/* line 252, ../scss/pages/_location.scss */
 .location-data-section .data-accordion {
   position: absolute;
   top: 0;
@@ -4994,7 +4989,7 @@ body.detail-open #nav-overlay {
 .location-data-section .data-accordion:after {
   clear: both;
 }
-/* line 261, ../scss/pages/_location.scss */
+/* line 256, ../scss/pages/_location.scss */
 .location-data-section .data-accordion .data-accordion-tab {
   position: relative;
   float: left;
@@ -5006,7 +5001,7 @@ body.detail-open #nav-overlay {
   -webkit-transition: 0.5s;
   transition: 0.5s;
 }
-/* line 269, ../scss/pages/_location.scss */
+/* line 264, ../scss/pages/_location.scss */
 .location-data-section .data-accordion .data-accordion-tab:before {
   content: '';
   display: block;
@@ -5022,7 +5017,7 @@ body.detail-open #nav-overlay {
   -webkit-transition: 0.25s;
   transition: 0.25s;
 }
-/* line 282, ../scss/pages/_location.scss */
+/* line 277, ../scss/pages/_location.scss */
 .location-data-section .data-accordion .data-accordion-tab header {
   position: absolute;
   top: 0;
@@ -5032,7 +5027,7 @@ body.detail-open #nav-overlay {
   cursor: pointer;
   z-index: 2;
 }
-/* line 287, ../scss/pages/_location.scss */
+/* line 282, ../scss/pages/_location.scss */
 .location-data-section .data-accordion .data-accordion-tab header h4 {
   position: absolute;
   top: 50%;
@@ -5048,28 +5043,28 @@ body.detail-open #nav-overlay {
   -webkit-transform: translateY(-50%);
   transform: translateY(-50%);
 }
-/* line 299, ../scss/pages/_location.scss */
+/* line 294, ../scss/pages/_location.scss */
 .location-data-section .data-accordion .data-accordion-tab header h4 .icon {
   display: block;
   margin: 0 auto 10px auto;
   font-size: 2rem;
 }
-/* line 305, ../scss/pages/_location.scss */
+/* line 300, ../scss/pages/_location.scss */
 .location-data-section .data-accordion .data-accordion-tab header h4 .full-title {
   display: none;
 }
-/* line 309, ../scss/pages/_location.scss */
+/* line 304, ../scss/pages/_location.scss */
 .location-data-section .data-accordion .data-accordion-tab header h4 .source {
   display: none;
   font: 0.75rem/1.25em "CESans", Roboto, Helvetica, "Helvetica Neue", Arial, sans-serif;
 }
-/* line 315, ../scss/pages/_location.scss */
+/* line 310, ../scss/pages/_location.scss */
 .location-data-section .data-accordion .data-accordion-tab header .data-accordion-actions {
   display: none;
   float: right;
   white-space: nowrap;
 }
-/* line 320, ../scss/pages/_location.scss */
+/* line 315, ../scss/pages/_location.scss */
 .location-data-section .data-accordion .data-accordion-tab header .data-accordion-actions a {
   display: inline-block;
   padding: 8px;
@@ -5081,17 +5076,17 @@ body.detail-open #nav-overlay {
   -webkit-transition: 0.25s;
   transition: 0.25s;
 }
-/* line 328, ../scss/pages/_location.scss */
+/* line 323, ../scss/pages/_location.scss */
 .location-data-section .data-accordion .data-accordion-tab header .data-accordion-actions a .icon {
   margin: 0 8px 0 0;
   font-size: 1.25rem;
   color: #f5442d;
 }
-/* line 334, ../scss/pages/_location.scss */
+/* line 329, ../scss/pages/_location.scss */
 .location-data-section .data-accordion .data-accordion-tab header .data-accordion-actions a:hover {
   background: #d5e8f2;
 }
-/* line 341, ../scss/pages/_location.scss */
+/* line 336, ../scss/pages/_location.scss */
 .location-data-section .data-accordion .data-accordion-tab .data-accordion-content {
   position: absolute;
   top: 0;
@@ -5112,18 +5107,18 @@ body.detail-open #nav-overlay {
   transition: 0.25s;
   z-index: 1;
 }
-/* line 352, ../scss/pages/_location.scss */
+/* line 347, ../scss/pages/_location.scss */
 .location-data-section .data-accordion .data-accordion-tab.data-chart {
   -moz-box-shadow: inset -10px 0 20px -10px rgba(0, 0, 0, 0.5);
   -webkit-box-shadow: inset -10px 0 20px -10px rgba(0, 0, 0, 0.5);
   box-shadow: inset -10px 0 20px -10px rgba(0, 0, 0, 0.5);
 }
-/* line 355, ../scss/pages/_location.scss */
+/* line 350, ../scss/pages/_location.scss */
 .location-data-section .data-accordion .data-accordion-tab.data-chart:before {
   right: 0;
   border-color: transparent #fff transparent transparent;
 }
-/* line 360, ../scss/pages/_location.scss */
+/* line 355, ../scss/pages/_location.scss */
 .location-data-section .data-accordion .data-accordion-tab.data-chart .chart-wrap {
   position: absolute;
   top: 12%;
@@ -5131,36 +5126,36 @@ body.detail-open #nav-overlay {
   width: 90%;
   height: 75%;
 }
-/* line 368, ../scss/pages/_location.scss */
+/* line 363, ../scss/pages/_location.scss */
 .location-data-section .data-accordion .data-accordion-tab.data-chart .chart-canvas {
   width: 100%;
   height: 80%;
 }
-/* line 373, ../scss/pages/_location.scss */
+/* line 368, ../scss/pages/_location.scss */
 .location-data-section .data-accordion .data-accordion-tab.data-chart .chart-legend {
   height: 20%;
 }
-/* line 377, ../scss/pages/_location.scss */
+/* line 372, ../scss/pages/_location.scss */
 .location-data-section .data-accordion .data-accordion-tab.data-chart .chart-legend ul li {
   display: inline-block;
   margin: 0 0 0 20px;
 }
-/* line 383, ../scss/pages/_location.scss */
+/* line 378, ../scss/pages/_location.scss */
 .location-data-section .data-accordion .data-accordion-tab.data-chart .chart-legend span {
   display: inline-block;
   vertical-align: middle;
 }
-/* line 388, ../scss/pages/_location.scss */
+/* line 383, ../scss/pages/_location.scss */
 .location-data-section .data-accordion .data-accordion-tab.data-chart .chart-legend .colour {
   height: 5px;
   width: 15px;
   margin: 0 10px 0 0;
 }
-/* line 394, ../scss/pages/_location.scss */
+/* line 389, ../scss/pages/_location.scss */
 .location-data-section .data-accordion .data-accordion-tab.data-chart .chart-legend .label {
   font-size: 0.875rem;
 }
-/* line 399, ../scss/pages/_location.scss */
+/* line 394, ../scss/pages/_location.scss */
 .location-data-section .data-accordion .data-accordion-tab.data-chart .range {
   position: absolute;
   bottom: 0%;
@@ -5168,7 +5163,7 @@ body.detail-open #nav-overlay {
   width: 90%;
   height: 12%;
 }
-/* line 407, ../scss/pages/_location.scss */
+/* line 402, ../scss/pages/_location.scss */
 .location-data-section .data-accordion .data-accordion-tab.data-chart .chart-range {
   position: absolute;
   left: 0;
@@ -5179,7 +5174,7 @@ body.detail-open #nav-overlay {
   -webkit-box-shadow: inset 0 5px 10px -5px rgba(0, 0, 0, 0.5);
   box-shadow: inset 0 5px 10px -5px rgba(0, 0, 0, 0.5);
 }
-/* line 415, ../scss/pages/_location.scss */
+/* line 410, ../scss/pages/_location.scss */
 .location-data-section .data-accordion .data-accordion-tab.data-chart .chart-range .ui-slider-handle {
   top: 0;
   width: 0;
@@ -5189,31 +5184,31 @@ body.detail-open #nav-overlay {
   -webkit-border-radius: none;
   border-radius: none;
 }
-/* line 428, ../scss/pages/_location.scss */
+/* line 423, ../scss/pages/_location.scss */
 .location-data-section .data-accordion .data-accordion-tab.data-chart.open {
   background: rgba(255, 255, 255, 0.8) !important;
 }
-/* line 431, ../scss/pages/_location.scss */
+/* line 426, ../scss/pages/_location.scss */
 .location-data-section .data-accordion .data-accordion-tab.data-chart.open .chart {
   opacity: 1;
   border-right: 5px solid #fff;
 }
-/* line 438, ../scss/pages/_location.scss */
+/* line 433, ../scss/pages/_location.scss */
 .location-data-section .data-accordion .data-accordion-tab.data-map {
   -moz-box-shadow: inset 10px 0 20px -10px rgba(0, 0, 0, 0.5);
   -webkit-box-shadow: inset 10px 0 20px -10px rgba(0, 0, 0, 0.5);
   box-shadow: inset 10px 0 20px -10px rgba(0, 0, 0, 0.5);
 }
-/* line 441, ../scss/pages/_location.scss */
+/* line 436, ../scss/pages/_location.scss */
 .location-data-section .data-accordion .data-accordion-tab.data-map:before {
   left: -1px;
   border-color: transparent transparent transparent #fff;
 }
-/* line 447, ../scss/pages/_location.scss */
+/* line 442, ../scss/pages/_location.scss */
 .location-data-section .data-accordion .data-accordion-tab.data-map header .map-seasons-container {
   float: left;
 }
-/* line 452, ../scss/pages/_location.scss */
+/* line 447, ../scss/pages/_location.scss */
 .location-data-section .data-accordion .data-accordion-tab.data-map header .fs-dropdown button {
   height: auto;
   padding: 8px 25px 8px 8px;
@@ -5223,7 +5218,7 @@ body.detail-open #nav-overlay {
   line-height: 1.25em;
   color: #5f5f5f;
 }
-/* line 462, ../scss/pages/_location.scss */
+/* line 457, ../scss/pages/_location.scss */
 .location-data-section .data-accordion .data-accordion-tab.data-map header .fs-dropdown button.fs-dropdown-selected:before {
   display: inline-block;
   margin: 0 8px 0 0;
@@ -5233,25 +5228,25 @@ body.detail-open #nav-overlay {
   line-height: 1;
   color: #f5442d;
 }
-/* line 473, ../scss/pages/_location.scss */
+/* line 468, ../scss/pages/_location.scss */
 .location-data-section .data-accordion .data-accordion-tab.data-map header .fs-dropdown button.fs-dropdown-selected:hover {
   background: #d5e8f2;
 }
-/* line 478, ../scss/pages/_location.scss */
+/* line 473, ../scss/pages/_location.scss */
 .location-data-section .data-accordion .data-accordion-tab.data-map header .fs-dropdown button:after {
   right: 5px;
 }
-/* line 485, ../scss/pages/_location.scss */
+/* line 480, ../scss/pages/_location.scss */
 .location-data-section .data-accordion .data-accordion-tab.data-map .data-accordion-content {
   background: #ebebeb;
 }
-/* line 489, ../scss/pages/_location.scss */
+/* line 484, ../scss/pages/_location.scss */
 .location-data-section .data-accordion .data-accordion-tab.data-map .moveable {
   width: 2px;
   display: none;
   z-index: 2;
 }
-/* line 498, ../scss/pages/_location.scss */
+/* line 493, ../scss/pages/_location.scss */
 .location-data-section .data-accordion .data-accordion-tab.data-map .map-element {
   display: block;
   position: absolute;
@@ -5262,7 +5257,7 @@ body.detail-open #nav-overlay {
   text-align: center;
   z-index: 1;
 }
-/* line 505, ../scss/pages/_location.scss */
+/* line 500, ../scss/pages/_location.scss */
 .location-data-section .data-accordion .data-accordion-tab.data-map .full-map-btn {
   display: block;
   position: absolute;
@@ -5271,24 +5266,24 @@ body.detail-open #nav-overlay {
   padding: 8px 30px 8px 8px;
   z-index: 2;
 }
-/* line 515, ../scss/pages/_location.scss */
+/* line 510, ../scss/pages/_location.scss */
 .location-data-section .data-accordion .data-accordion-tab.data-map.open .map {
   opacity: 1;
   border-left: 5px solid #fff;
 }
-/* line 522, ../scss/pages/_location.scss */
+/* line 517, ../scss/pages/_location.scss */
 .location-data-section .data-accordion .data-accordion-tab.open {
   width: 90%;
   -moz-box-shadow: none;
   -webkit-box-shadow: none;
   box-shadow: none;
 }
-/* line 526, ../scss/pages/_location.scss */
+/* line 521, ../scss/pages/_location.scss */
 .location-data-section .data-accordion .data-accordion-tab.open:before {
   border-width: 0;
   margin-top: -9px;
 }
-/* line 531, ../scss/pages/_location.scss */
+/* line 526, ../scss/pages/_location.scss */
 .location-data-section .data-accordion .data-accordion-tab.open header {
   top: 0;
   left: 0;
@@ -5307,7 +5302,7 @@ body.detail-open #nav-overlay {
 .location-data-section .data-accordion .data-accordion-tab.open header:after {
   clear: both;
 }
-/* line 541, ../scss/pages/_location.scss */
+/* line 536, ../scss/pages/_location.scss */
 .location-data-section .data-accordion .data-accordion-tab.open header h4 {
   position: static;
   width: auto;
@@ -5322,30 +5317,30 @@ body.detail-open #nav-overlay {
   -webkit-transform: none;
   transform: none;
 }
-/* line 552, ../scss/pages/_location.scss */
+/* line 547, ../scss/pages/_location.scss */
 .location-data-section .data-accordion .data-accordion-tab.open header h4 .icon {
   display: inline-block;
   margin: -4px 15px 0 0;
 }
-/* line 557, ../scss/pages/_location.scss */
+/* line 552, ../scss/pages/_location.scss */
 .location-data-section .data-accordion .data-accordion-tab.open header h4 .text {
   display: inline-block;
   vertical-align: middle;
 }
-/* line 562, ../scss/pages/_location.scss */
+/* line 557, ../scss/pages/_location.scss */
 .location-data-section .data-accordion .data-accordion-tab.open header h4 .full-title {
   display: inline;
 }
-/* line 566, ../scss/pages/_location.scss */
+/* line 561, ../scss/pages/_location.scss */
 .location-data-section .data-accordion .data-accordion-tab.open header h4 .source {
   display: block;
   margin: 4px 0 0 0;
 }
-/* line 572, ../scss/pages/_location.scss */
+/* line 567, ../scss/pages/_location.scss */
 .location-data-section .data-accordion .data-accordion-tab.open header .data-accordion-actions {
   display: block;
 }
-/* line 577, ../scss/pages/_location.scss */
+/* line 572, ../scss/pages/_location.scss */
 .location-data-section .data-accordion .data-accordion-tab.open .data-accordion-content {
   -moz-box-shadow: none;
   -webkit-box-shadow: none;
@@ -5353,19 +5348,19 @@ body.detail-open #nav-overlay {
   opacity: 1;
   mix-blend-mode: initial;
 }
-/* line 586, ../scss/pages/_location.scss */
+/* line 581, ../scss/pages/_location.scss */
 .location-data-section .data-list {
   position: relative;
   float: left;
   width: 30%;
   margin: 0 1% 0 0;
 }
-/* line 592, ../scss/pages/_location.scss */
+/* line 587, ../scss/pages/_location.scss */
 .location-data-section .data-list form {
   position: absolute;
   left: -9999px;
 }
-/* line 599, ../scss/pages/_location.scss */
+/* line 594, ../scss/pages/_location.scss */
 .location-data-section .data-options li {
   padding-left: 12%;
   background: #fff;
@@ -5380,31 +5375,31 @@ body.detail-open #nav-overlay {
   overflow: hidden;
   *zoom: 1;
 }
-/* line 609, ../scss/pages/_location.scss */
+/* line 604, ../scss/pages/_location.scss */
 .location-data-section .data-options li:last-child {
   border-bottom: none;
 }
-/* line 613, ../scss/pages/_location.scss */
+/* line 608, ../scss/pages/_location.scss */
 .location-data-section .data-options li:hover {
   padding-left: calc(12% - 10px);
   border-left-width: 10px;
   border-left-color: #ebebeb;
 }
-/* line 619, ../scss/pages/_location.scss */
+/* line 614, ../scss/pages/_location.scss */
 .location-data-section .data-options li.active {
   font-weight: 400;
   padding-left: calc(12% - 10px);
   border-left-width: 10px;
   border-bottom-color: #ebebeb !important;
 }
-/* line 626, ../scss/pages/_location.scss */
+/* line 621, ../scss/pages/_location.scss */
 .location-data-section .data-options li h4 {
   font-size: 1rem;
   overflow: hidden;
   *zoom: 1;
   outline: none;
 }
-/* line 632, ../scss/pages/_location.scss */
+/* line 627, ../scss/pages/_location.scss */
 .location-data-section .data-options li a {
   display: block;
   padding: 2%;
@@ -5414,12 +5409,12 @@ body.detail-open #nav-overlay {
   -webkit-transition: 0.25s;
   transition: 0.25s;
 }
-/* line 638, ../scss/pages/_location.scss */
+/* line 633, ../scss/pages/_location.scss */
 .location-data-section .data-options li a.text {
   width: 90%;
   float: left;
 }
-/* line 643, ../scss/pages/_location.scss */
+/* line 638, ../scss/pages/_location.scss */
 .location-data-section .data-options li a.icon {
   width: 10%;
   float: right;
@@ -5427,122 +5422,122 @@ body.detail-open #nav-overlay {
   line-height: 1.5rem;
   color: #aaa;
 }
-/* line 653, ../scss/pages/_location.scss */
+/* line 648, ../scss/pages/_location.scss */
 .location-data-section .data-options li ul li {
   font-size: 0.875rem;
   line-height: 1.5rem;
 }
 
-/* line 663, ../scss/pages/_location.scss */
+/* line 658, ../scss/pages/_location.scss */
 #location-temperature .accent-color {
   color: #f5442d;
 }
-/* line 667, ../scss/pages/_location.scss */
+/* line 662, ../scss/pages/_location.scss */
 #location-temperature .accent-background {
   background-color: #f5442d;
 }
-/* line 671, ../scss/pages/_location.scss */
+/* line 666, ../scss/pages/_location.scss */
 #location-temperature .accent-border {
   border-color: #f5442d;
 }
-/* line 676, ../scss/pages/_location.scss */
+/* line 671, ../scss/pages/_location.scss */
 #location-temperature .data-options .accent-color {
   color: #5f5f5f;
 }
-/* line 680, ../scss/pages/_location.scss */
+/* line 675, ../scss/pages/_location.scss */
 #location-temperature .data-options .accent-border {
   border-left-color: #ebebeb;
   border-bottom-color: #ebebeb;
 }
-/* line 686, ../scss/pages/_location.scss */
+/* line 681, ../scss/pages/_location.scss */
 #location-temperature .data-options .active.accent-border {
   border-left-color: #f5442d;
   border-bottom-color: #ebebeb;
 }
-/* line 691, ../scss/pages/_location.scss */
+/* line 686, ../scss/pages/_location.scss */
 #location-temperature .data-options .active .accent-color {
   color: #f5442d;
 }
-/* line 698, ../scss/pages/_location.scss */
+/* line 693, ../scss/pages/_location.scss */
 #location-temperature .data-vars button {
   color: #f5442d;
 }
 
-/* line 705, ../scss/pages/_location.scss */
+/* line 700, ../scss/pages/_location.scss */
 #location-precipitation .accent-color {
   color: #0058cf;
 }
-/* line 709, ../scss/pages/_location.scss */
+/* line 704, ../scss/pages/_location.scss */
 #location-precipitation .accent-background {
   background-color: #0058cf;
 }
-/* line 713, ../scss/pages/_location.scss */
+/* line 708, ../scss/pages/_location.scss */
 #location-precipitation .accent-border {
   border-color: #0058cf;
 }
-/* line 718, ../scss/pages/_location.scss */
+/* line 713, ../scss/pages/_location.scss */
 #location-precipitation .data-options .accent-color {
   color: #5f5f5f;
 }
-/* line 722, ../scss/pages/_location.scss */
+/* line 717, ../scss/pages/_location.scss */
 #location-precipitation .data-options .accent-border {
   border-left-color: #ebebeb;
   border-bottom-color: #ebebeb;
 }
-/* line 728, ../scss/pages/_location.scss */
+/* line 723, ../scss/pages/_location.scss */
 #location-precipitation .data-options .active.accent-border {
   border-left-color: #0058cf;
   border-bottom-color: #ebebeb;
 }
-/* line 733, ../scss/pages/_location.scss */
+/* line 728, ../scss/pages/_location.scss */
 #location-precipitation .data-options .active .accent-color {
   color: #0058cf;
 }
-/* line 741, ../scss/pages/_location.scss */
+/* line 736, ../scss/pages/_location.scss */
 #location-precipitation .data-vars button {
   color: #0058cf;
 }
 
-/* line 748, ../scss/pages/_location.scss */
+/* line 743, ../scss/pages/_location.scss */
 #location-derived .accent-color {
   color: #904848;
 }
-/* line 752, ../scss/pages/_location.scss */
+/* line 747, ../scss/pages/_location.scss */
 #location-derived .accent-background {
   background-color: #904848;
 }
-/* line 756, ../scss/pages/_location.scss */
+/* line 751, ../scss/pages/_location.scss */
 #location-derived .accent-border {
   border-color: #904848;
 }
-/* line 761, ../scss/pages/_location.scss */
+/* line 756, ../scss/pages/_location.scss */
 #location-derived .data-options .accent-color {
   color: #5f5f5f;
 }
-/* line 765, ../scss/pages/_location.scss */
+/* line 760, ../scss/pages/_location.scss */
 #location-derived .data-options .accent-border {
   border-left-color: #ebebeb;
   border-bottom-color: #ebebeb;
 }
-/* line 771, ../scss/pages/_location.scss */
+/* line 766, ../scss/pages/_location.scss */
 #location-derived .data-options .active.accent-border {
   border-left-color: #904848;
   border-bottom-color: #ebebeb;
 }
-/* line 776, ../scss/pages/_location.scss */
+/* line 771, ../scss/pages/_location.scss */
 #location-derived .data-options .active .accent-color {
   color: #904848;
 }
-/* line 783, ../scss/pages/_location.scss */
+/* line 778, ../scss/pages/_location.scss */
 #location-derived .data-vars button {
   color: #904848;
 }
 
-/* line 791, ../scss/pages/_location.scss */
+/* line 786, ../scss/pages/_location.scss */
 #location-stations header h3 {
   margin: 0 0 2% 0;
 }
-/* line 796, ../scss/pages/_location.scss */
+/* line 791, ../scss/pages/_location.scss */
 #location-stations #location-station-map {
   position: absolute;
   top: 0;
@@ -5550,11 +5545,11 @@ body.detail-open #nav-overlay {
   width: 100%;
   height: 100%;
 }
-/* line 799, ../scss/pages/_location.scss */
+/* line 794, ../scss/pages/_location.scss */
 #location-stations #location-station-map .ol-attribution, #location-stations #location-station-map .ol-rotate {
   display: none;
 }
-/* line 803, ../scss/pages/_location.scss */
+/* line 798, ../scss/pages/_location.scss */
 #location-stations #location-station-map .ol-zoom {
   position: absolute;
   z-index: 1;
@@ -5565,7 +5560,7 @@ body.detail-open #nav-overlay {
   -webkit-transform: translateY(-50%);
   transform: translateY(-50%);
 }
-/* line 810, ../scss/pages/_location.scss */
+/* line 805, ../scss/pages/_location.scss */
 #location-stations #location-station-map .ol-zoom button {
   display: block;
   width: 30px;
