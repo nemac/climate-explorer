@@ -6,7 +6,9 @@
   $fips = $_REQUEST['fips'];
   $lat = $_REQUEST['lat'];
   $lon = $_REQUEST['lon'];
-
+  
+  include_once('functions.php');
+  
 ?>
 <!doctype html>
 <html>
@@ -25,6 +27,15 @@
 
     <script type="text/javascript" src="./resources/js/jquery.min.js"></script>
     <script src="//code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
+    
+    <?php
+      
+      $share_data['url'] = current_URL();
+      $share_data['title'] = 'Location data for ' . $city;
+      
+      echo opengraph_output($share_data);
+      
+    ?>
 
 </head>
 
@@ -35,13 +46,7 @@
 <div id="viewport">
     <div id="main-content-wrap">
 
-        <?php 
-          
-          $share_title = 'Location data for ' . $city;
-          
-          include_once('template/share.php');
-          
-        ?>
+        <?php include_once('template/share.php'); ?>
 
         <div id="location-search">
           <input type="text" class="autocomplete location-mapper" placeholder="Search another location">
