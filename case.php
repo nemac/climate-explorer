@@ -1,4 +1,6 @@
 <?php
+  
+  include_once('functions.php');
 
   $case = $_REQUEST['id'];
 
@@ -20,6 +22,15 @@
 
     <script type="text/javascript" src="./resources/js/jquery.min.js"></script>
     <script type="text/javascript" src="./resources/js/jquery-ui.min.js"></script>
+    
+    <?php
+      
+      $share_data['url'] = current_URL();
+      $share_data['title'] = 'Case';
+      
+      echo opengraph_output($share_data);
+      
+    ?>
 
   </head>
 
