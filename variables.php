@@ -1,5 +1,5 @@
 <?php
-  
+
   include_once('functions.php');
 
   $active_variable = $_REQUEST['id'];
@@ -23,14 +23,14 @@
     <script type="text/javascript" src="./resources/js/jquery.min.js"></script>
     <!-- <script type="text/javascript" src="./resources/js/jquery-ui.min.js"></script> -->
     <script src="//code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
-    
+
     <?php
-      
+
       $share_data['url'] = current_URL();
       $share_data['title'] = 'Variables';
-      
+
       echo opengraph_output($share_data);
-      
+
     ?>
   </head>
 
@@ -82,16 +82,7 @@
       <div id="vars-legend" class="legend-wrap left-filler">
         <div class="legend">
           <h5>Legend</h5>
-          <h6>Degrees Fahrenheit</h6>
-
-          <ul>
-            <li><span class="color" style="background-color: #2a0023;"></span>&gt; 105</li>
-            <li><span class="color" style="background-color: #c3003c;"></span>90–104</li>
-            <li><span class="color" style="background-color: #f5442d;"></span>70–89</li>
-            <li><span class="color" style="background-color: #f0f567;"></span>50–69</li>
-            <li><span class="color" style="background-color: #48f7d0;"></span>30–49</li>
-            <li><span class="color" style="background-color: #0078d4;"></span>&lt; 30</li>
-          </ul>
+          <div id="legend-container"></div>
         </div>
 
         <h6 class="source">Source: <a href="#" target="_blank">NOAA, 2014</a></h6>

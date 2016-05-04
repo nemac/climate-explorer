@@ -331,6 +331,7 @@ Location.prototype.wire = function() {
       self.updateTiledLayer('temperature-map', false);
     }
     $('#temperature-map-container .full-map-btn').prop({'href': 'variables.php?id='+id});
+    $('#temperature-map-container .location-map-legend').html('<img class="legend-image" src="resources/img/'+ id +'.png"></img>');
   });
 
   $('#precipitation-data h4').on('click', function() {

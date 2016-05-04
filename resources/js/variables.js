@@ -30,6 +30,8 @@ var Variables = function(id) {
 
   $('#variable-options').val(id).attr('selected', true).change();
 
+  $('#vars-legend .legend #legend-container').html('<img class="legend-image" src="resources/img/'+ this.selectedVariable +'.png"></img>');
+
   this.createMap();
   this.wireSearch();
 };
@@ -248,6 +250,8 @@ Variables.prototype.wire = function() {
   //var selector
   $('#variable-options-container .fs-dropdown-item').on('click', function(e) {
     self.selectedVariable =  $(this).data().value;
+    $('#vars-legend .legend #legend-container').html('<img class="legend-image" src="resources/img/'+ self.selectedVariable +'.png"></img>');
+
     $('#about-variable-link').html('About ' + self.varMapping[ self.selectedVariable ]);
     $('#about-variable-link').prop('href', '#detail-'+self.selectedVariable.split('.')[0]);
 
