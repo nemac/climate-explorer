@@ -61,6 +61,7 @@
     
     $output = '';
     
+    $output .= "\n\t" . '<meta property="og:app_id" content="187816851587993" />';
     $output .= "\n\t" . '<meta property="og:url" content="' . $output_data['url'] . '" />';
     $output .= "\n\t" . '<meta property="og:type" content="' . $output_data['type'] . '" />';
     $output .= "\n\t" . '<meta property="og:title" content="' . $output_data['title'] . '" />';
