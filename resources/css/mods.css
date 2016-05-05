@@ -105,6 +105,11 @@ input.location-mapper:focus:-ms-input-placeholder {
   /*mix-blend-mode: normal;*/
 }
 
+.page-type-variables .legend-image {
+  height:350px;
+  margin-left:-13px;
+}
+
 .page-type-variables .data-accordion-actions {
   margin-top:-15px;
 }
@@ -319,6 +324,22 @@ input.location-mapper:focus:-ms-input-placeholder {
 .page-type-location #location-search input {
   font-size:1.1em;
   width:100%;
+}
+
+.page-type-location .location-map-legend-container {
+  display: block;
+  position: absolute;
+  left: 20px;
+  bottom: 60px;
+  padding: 8px 5px 8px 8px;
+  z-index: 2;
+  background:#FFF;
+  color: #f5442d;
+}
+
+.page-type-location .location-map-legend-container .legend-image {
+  height: 275px;
+  margin-left: -9px;
 }
 
 .page-type-location .year {

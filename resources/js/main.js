@@ -1,4 +1,9 @@
 var App = function(page) {
+  this.frequency = {
+    'temperature-chart': 'annual',
+    'precipitation-chart': 'annual',
+    'derived-chart': 'annual'
+  };
   this.getCountyCodes();
   this.tour();
 };
@@ -35,6 +40,8 @@ App.prototype.locationSearch = function() {
     //console.log('data', data);
     var county = (data.administrative_area_level_2) ? data.administrative_area_level_2.replace(/ /g, '+') : data.locality + '+County';
     var city = data.locality + ', ' + data.administrative_area_level_1_short;
+
+    if ( !data.locality ) { city = county + ', '+data.administrative_area_level_1_short; }
 
     var lat, lon;
     if ( result.geometry.access_points ) {
@@ -90,13 +97,28 @@ App.prototype.tour = function() {
     self.takeCaseTour();
   });
 
+  $('#temperature-data .location-resolution a').on('click', function(e) {
+    var val = $(this).html().toLowerCase();
+    self.frequency['temperature-chart'] = val;
+  });
+
+  $('#precipitation-data .location-resolution a').on('click', function(e) {
+    var val = $(this).html().toLowerCase();
+    self.frequency['precipitation-chart'] = val;
+  });
+
+
   $('.how-to-read').on('click', function() {
     var pre = '';
     var closest = $(this).closest('.data-chart').attr('id');
     if ( closest === 'precipitation-chart' ) { pre = 'precip-'; }
     if ( closest === 'derived-chart' ) { pre = 'derive-'; }
-    console.log('pre', pre, 'closest', closest);
-    self.takeGraphTour(pre);
+
+    if ( self.frequency[closest] === 'annual' ) {
+      self.takeGraphTour(pre);
+    } else {
+      self.takeSeasonalGraphTour(pre);
+    }
   });
 
 };
@@ -448,7 +470,7 @@ App.prototype.takeGraphTour = function(pre) {
   }
 
   this.graphTour.addStep('historical-obs', {
-    text: 'Use this to turn on and off historical observed data',
+    text: 'Red and blue bars show observed values for each year, displayed as the difference from the average from 1960 to 1989. The horizontal line from which bars extend is the 1960-1989 average. Red bars show years when observed measurements were above the long-term average; blue bars show years when observed measurements were below the long-term average.',
     attachTo: '#'+pre+'historical-obs top',
     buttons: [
       {
@@ -465,7 +487,7 @@ App.prototype.takeGraphTour = function(pre) {
 
 
   this.graphTour.addStep('historical-range', {
-    text: 'Historical range.',
+    text: 'The grey band shows the range of model results at each time step from 1950 to 2010. Note that observed year-to-year variability (indicated by the red and blue bars) is generally within the range of model results.',
     attachTo: '#'+pre+'historical-range top',
     buttons: [
       {
@@ -483,7 +505,7 @@ App.prototype.takeGraphTour = function(pre) {
 
 
   this.graphTour.addStep('rcp45-range', {
-    text: 'rcp45 Range',
+    text: 'Model results for a scenario in which emissions from burning fossil fuels stabilize around 2100 and radiative forcing reaches 4.5 Watts per meter squared. This scenario is known as RCP 4.5, where RCP stands for Representative Concentration Pathway.',
     attachTo: '#'+pre+'rcp45-range top',
     buttons: [
       {
@@ -500,7 +522,7 @@ App.prototype.takeGraphTour = function(pre) {
 
 
   this.graphTour.addStep('rcp85-range', {
-    text: 'rcp85 Range',
+    text: 'Model results for a possible future in which emissions from burning fossil fuels continue to increase. The atmosphere’s ability to trap heat, a measure called radiative forcing, reaches 8.5 Watts per meter squared in the year 2100. This scenario is known as RCP 8.5, where RCP stands for Representative Concentration Pathway.',
     attachTo: '#'+pre+'rcp85-range top',
     buttons: [
       {
@@ -516,7 +538,7 @@ App.prototype.takeGraphTour = function(pre) {
   });
 
   this.graphTour.addStep('rcp45-mean', {
-    text: 'medians of rcp45 and 85',
+    text: 'For future projections, median lines highlight the middle result from all models at each time step. Though the median is no more or less likely to predict actual values than any of the other models, it can highlight the trend over time.',
     attachTo: '#'+pre+'rcp45-mean top',
     buttons: [
       {
@@ -537,4 +559,103 @@ App.prototype.takeGraphTour = function(pre) {
   });
 
   this.graphTour.start();
+};
+
+
+
+
+App.prototype.takeSeasonalGraphTour = function(pre) {
+  var self = this;
+
+  if ( this.seasonalTour ) {
+    this.seasonalTour.cancel();
+    this.seasonalTour = null;
+    this.seasonalTour = new Shepherd.Tour({
+      defaults: {
+        classes: 'shepherd-theme-arrows',
+        scrollTo: false
+      }
+    });
+  } else {
+    this.seasonalTour = new Shepherd.Tour({
+      defaults: {
+        classes: 'shepherd-theme-arrows',
+        scrollTo: false
+      }
+    });
+  }
+
+  this.seasonalTour.addStep('historical-obs', {
+    text: 'Black lines represent the mean daily temperature observed during each season from 1960-1989.',
+    attachTo: '#'+pre+'historical-obs top',
+    buttons: [
+      {
+        text: 'Close',
+        classes: 'shepherd-button-secondary',
+        action: this.seasonalTour.cancel
+      },
+      {
+        text: 'Next',
+        action: this.seasonalTour.next
+      }
+    ]
+  });
+
+
+
+  this.seasonalTour.addStep('rcp45-range', {
+    text: 'Blue bands show the range of projections for a stabilized emissions scenario (RCP 4.5).',
+    attachTo: '#'+pre+'rcp45-range top',
+    buttons: [
+      {
+        text: 'Close',
+        classes: 'shepherd-button-secondary',
+        action: this.seasonalTour.cancel
+      },
+      {
+        text: 'Next',
+        action: this.seasonalTour.next
+      }
+    ]
+  });
+
+
+  this.seasonalTour.addStep('rcp85-range', {
+    text: 'Red bands show the range projections for an increasing emissions scenario (RCP 8.5).',
+    attachTo: '#'+pre+'rcp85-range top',
+    buttons: [
+      {
+        text: 'Close',
+        classes: 'shepherd-button-secondary',
+        action: this.seasonalTour.cancel
+      },
+      {
+        text: 'Next',
+        action: this.seasonalTour.next
+      }
+    ]
+  });
+
+  this.seasonalTour.addStep('rcp45-mean', {
+    text: 'Red and blue lines show the median projection for each scenario.',
+    attachTo: '#'+pre+'rcp45-mean top',
+    buttons: [
+      {
+        text: 'Close',
+        classes: 'shepherd-button-secondary',
+        action: this.seasonalTour.cancel
+      }
+    ]
+  });
+
+
+  this.seasonalTour.on('start', function() {
+    $('.cd-cover-layer').removeClass('is-visible');
+    $('.cd-cover-layer').addClass('is-visible');
+    setTimeout(function() {
+      $('.cd-cover-layer').removeClass('is-visible');
+    },4000);
+  });
+
+  this.seasonalTour.start();
 };

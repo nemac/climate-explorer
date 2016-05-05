@@ -22,7 +22,6 @@
 
 <script type="text/javascript" src="./resources/js/tether.js"></script>
 <script type="text/javascript" src="./resources/js/shepherd.min.js"></script>
-<script type="text/javascript" src="./resources/js/tour.js"></script>
 
 <script type="text/javascript" src="./resources/js/variables.js"></script>
 <script type="text/javascript" src="./resources/js/location.js"></script>
