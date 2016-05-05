@@ -257,9 +257,9 @@
                               </div>
                               <div class="range">
                                   <div class="chart-range" id="slider-range" data-start="2010" data-end="2100"></div>
-                                  <div class="ui-slider-label range-label min" id="temp-range-low">30 Years Centered in 2025</div>
-                                  <div class="ui-slider-label range-label mid" id="temp-range-mid">30 Years Centered in 2050</div>
-                                  <div class="ui-slider-label range-label max" id="temp-range-high">30 Years Centered in 2075</div>
+                                  <div class="ui-slider-label range-label min" id="temp-range-low">1950</div>
+                                  <div class="ui-slider-label range-label mid" id="temp-range-mid" style="display:none">30 Years Centered in 2050</div>
+                                  <div class="ui-slider-label range-label max" id="temp-range-high">2100</div>
                               </div>
                           </div>
                         </div>
@@ -480,9 +480,9 @@
                             </div>
                             <div class="range">
                               <div class="chart-range" id="precip-slider-range" data-start="2010" data-end="2100"></div>
-                              <div class="ui-slider-label range-label min" id="temp-range-low">30 Years Centered in 2025</div>
-                              <div class="ui-slider-label range-label mid" id="temp-range-mid">30 Years Centered in 2050</div>
-                              <div class="ui-slider-label range-label max" id="temp-range-high">30 Years Centered in 2075</div>
+                              <div class="ui-slider-label range-label min" id="precip-range-low">1950</div>
+                              <div class="ui-slider-label range-label mid" id="precip-range-mid" style="display:none">30 Years Centered in 2050</div>
+                              <div class="ui-slider-label range-label max" id="precip-range-high">2100</div>
                             </div>
                         </div>
                       </div>
@@ -705,9 +705,8 @@
 
                             <div class="range">
                               <div class="chart-range" id="derived-slider-range" data-start="2010" data-end="2100"></div>
-                              <div class="ui-slider-label range-label min" id="temp-range-low">30 Years Centered in 2025</div>
-                              <div class="ui-slider-label range-label mid" id="temp-range-mid">30 Years Centered in 2050</div>
-                              <div class="ui-slider-label range-label max" id="temp-range-high">30 Years Centered in 2075</div>
+                              <div class="ui-slider-label range-label min" id="derived-temp-range-low">1950</div>
+                              <div class="ui-slider-label range-label max" id="derived-temp-range-high">2100</div>
                             </div>
                           </div>
                         </div>

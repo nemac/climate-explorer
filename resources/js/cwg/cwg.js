@@ -56,7 +56,7 @@ $(document).ready(function() {
       }
 
       if ( id !== 'annual' ) {
-        $("#slider-range").slider('destroy').slider({
+        $("#slider-range").addClass('not-annual').slider('destroy').slider({
           range: false,
           min: 0,
           max: 2,
@@ -68,9 +68,10 @@ $(document).ready(function() {
           }
         });
         $('#temp-range-low').html('30 Years Centered in 2025');
+        $('#temp-range-mid').show().html('30 Years Centered in 2050');
         $('#temp-range-high').html('30 Years Centered in 2075');
       } else {
-        $("#slider-range").slider('destroy').slider({
+        $("#slider-range").removeClass('not-annual').slider('destroy').slider({
           range: true,
           min: 1950,
           max: 2099,
@@ -80,6 +81,7 @@ $(document).ready(function() {
           }
         });
         $('#temp-range-low').html('2010');
+        $('#temp-range-mid').hide();
         $('#temp-range-high').html('2100');
       }
 
@@ -101,7 +103,7 @@ $(document).ready(function() {
       }
 
       if ( id !== 'annual' ) {
-        $("#precip-slider-range").slider('destroy').slider({
+        $("#precip-slider-range").addClass('not-annual').slider('destroy').slider({
           range: false,
           min: 0,
           max: 2,
@@ -113,9 +115,10 @@ $(document).ready(function() {
           }
         });
         $('#precip-range-low').html('30 Years Centered in 2025');
+        $('#precip-range-mid').show().html('30 Years Centered in 2050');
         $('#precip-range-high').html('30 Years Centered in 2075');
       } else {
-        $("#precip-slider-range").slider('destroy').slider({
+        $("#precip-slider-range").removeClass('not-annual').slider('destroy').slider({
           range: true,
           min: 1950,
           max: 2099,
@@ -125,6 +128,7 @@ $(document).ready(function() {
           }
         });
         $('#precip-range-low').html('2010');
+        $('#precip-range-mid').hide();
         $('#precip-range-high').html('2100');
       }
 
