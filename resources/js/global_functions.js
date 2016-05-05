@@ -365,6 +365,9 @@
             $(this).removeClass('open').siblings('ul').animate({
                 height: '0'
             }, 500);
+            
+            $('#share-permalink').removeClass('open');
+            $('#share-permalink-input').fadeOut(250);
         } else {
             $(this).addClass('open').siblings('ul').animate({
                 height: '180px'
@@ -376,6 +379,7 @@
   	  e.preventDefault();
   	  
   	  if ($(this).hasClass('share-facebook')) {
+    	  
     	  var share_URL = $(this).attr('data-href');
     	  
         FB.ui({
@@ -384,7 +388,27 @@
         }, function(response){
           // nothing
         });
-  	  } else {
+        
+  	  } else if ($(this).hasClass('share-permalink')) {
+    	  
+    	  if ($('#share-permalink').hasClass('open')) {
+      	  
+      	  $('#share-permalink').removeClass('open');
+      	  $('#share-permalink-input').fadeOut(250);
+      	  
+    	  } else {
+      	  
+      	  $('#share-permalink').addClass('open');
+      	  
+      	  $('#share-permalink-input').show().position({
+            my: 'right',
+            at: 'left-15',
+            of: $('#share-permalink')
+          });
+    	  }
+    	  
+      } else {
+        
     	  var width  = 575,
             height = 320,
             left   = ($(window).width()  - width)  / 2,
@@ -397,6 +421,7 @@
                      ',left='   + left;
         
         window.open(url, 'sharepopup', opts);
+
   	  }
 	  });
 

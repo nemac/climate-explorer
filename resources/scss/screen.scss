@@ -475,77 +475,7 @@ h6 {
 
 // SOCIAL
 
-.share-widget {
-  position: absolute;
-  top: 20px;
-  right: 20px;
-  width: 60px;
-  height: 60px;
-  z-index: 10;
-  
-  a {
-    display: block;
-    padding: 10px;
-    width: 60px;
-    height: 60px;
-    text-align: center;
-    @include transition(0.25s);
-  }
-  
-  .icon {
-    display: block;
-    margin: 0 auto 4px auto;
-    font-size: 1.875rem;
-    line-height: 1.875rem;
-    text-indent: 0;
-  }
-  
-  .share-trigger {
-    position: absolute;
-    bottom: 0;
-    background: $orange1;
-    text-align: center;
-    font: 0.625rem/1em $sans-heavy;
-    text-transform: uppercase;
-    color: $white;
-    z-index: 2;
-    
-    &.open {
-      background: lighten($orange1, 3%);
-    }
-  }
-  
-  ul {
-    position: absolute;
-    top: 60px;
-    width: 60px;
-    height: 0;
-    overflow: hidden;
-    z-index: 1;
-    
-    li {
-      
-    }
-    
-    a {
-      padding: 12px;
-      background: transparentize($white, 0.1);
-      color: $blue1;
-      @include no-text;
-      
-      &:hover {
-        background: $blue3;
-      }
-    }
-    
-    .icon {
-      @include undo-no-text;
-      font-size: 1.25rem;
-      line-height: 40px;
-      margin: 0 auto;
-    }
-  }
-}
+@import "template/share";
 
 // NAV OVERLAY
 
