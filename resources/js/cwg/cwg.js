@@ -79,7 +79,7 @@ $(document).ready(function() {
           slide: function( event, ui ) {
             return cwg.setXRange(ui.values[0], ui.values[1]);
           }
-        });
+        }).find(".ui-slider-handle").html('<span class="icon icon-arrow-left-right"></span>');
         $('#temp-range-low').html('2010');
         $('#temp-range-mid').hide();
         $('#temp-range-high').html('2100');
@@ -126,7 +126,7 @@ $(document).ready(function() {
           slide: function( event, ui ) {
             return precipChart.setXRange(ui.values[0], ui.values[1]);
           }
-        });
+        }).find(".ui-slider-handle").html('<span class="icon icon-arrow-left-right"></span>');
         $('#precip-range-low').html('2010');
         $('#precip-range-mid').hide();
         $('#precip-range-high').html('2100');

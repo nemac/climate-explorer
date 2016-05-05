@@ -418,6 +418,16 @@
               //left: -24px;
             }
           }
+          
+          &.not-annual {
+            height: 6px;
+            
+            .ui-slider-handle {
+              width: 16px;
+              height: 16px;
+              margin: -5px 0 0 -5px;
+            }
+          }
         }
         
         &.open {
