@@ -16,11 +16,12 @@ var Variables = function(id) {
       break;
   }
 
-
+  var qtrs = location.search;
+  var qs = this.parseQueryString(qtrs);
 
   this.mapVariables();
   this.selectedVariable = id || 'tasmax';
-  this.activeYear = 2010;
+  this.activeYear = qs.year || 2010;
   this.selectedSeason = 'summer';
 
   $(".level-1").html(this.varMapping[ this.selectedVariable ]);
@@ -332,6 +333,7 @@ Variables.prototype.updateUrl = function() {
   qs.id = this.selectedVariable;
   qs.zoom = this.map.getView().getZoom();
   qs.center = this.map.getView().getCenter().toString();
+  qs.year = this.activeYear;
 
   var str = $.param( qs );
 
@@ -856,7 +858,7 @@ Variables.prototype.setSlider = function() {
         min: year_min,
         max: year_max,
         step: 10,
-        value: 2010,
+        value: self.activeYear,
         slide: function (event, ui) {
           tooltip.text(ui.value);
           tooltip.fadeIn(200);
@@ -868,6 +870,7 @@ Variables.prototype.setSlider = function() {
           year_slider.attr('data-value', ui.value);
           self.activeYear = ui.value;
           self.updateTiledLayer(true, true);
+          self.updateUrl();
         }
     }).find(".ui-slider-handle").html('<span class="icon icon-arrow-left-right"></span>').append(tooltip);
 
