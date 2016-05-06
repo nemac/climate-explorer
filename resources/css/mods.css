@@ -326,6 +326,40 @@ input.location-mapper:focus:-ms-input-placeholder {
   width:100%;
 }
 
+.location-data-section .data-accordion .data-accordion-tab.data-chart .chart-range {
+  position: absolute;
+  left: 0;
+  width: 100%;
+  height: 9px;
+  background: #d5e8f2;
+  -moz-box-shadow: inset 0 5px 10px -5px rgba(0, 0, 0, 0.5);
+  -webkit-box-shadow: inset 0 5px 10px -5px rgba(0, 0, 0, 0.5);
+  box-shadow: inset 0 5px 10px -5px rgba(0, 0, 0, 0.5);
+}
+
+.location-data-section .data-accordion .data-accordion-tab.data-chart .chart-range .ui-slider-handle {
+  top: 0;
+  width: 16px;
+  height: 16px;
+  margin: -3px 0px -8px -8px;
+}
+
+#location-precipitation .ui-slider-handle {
+  background-color: #0058cf;
+}
+
+#derived-slider-range .ui-slider-handle {
+  background-color: #904848;
+}
+
+.location-data-section .data-accordion .data-accordion-tab.data-chart .range {
+  position: absolute;
+  bottom: 8%;
+  left: 5%;
+  width: 90%;
+  height: 7%;
+}
+
 .page-type-location .location-map-legend-container {
   display: block;
   position: absolute;
