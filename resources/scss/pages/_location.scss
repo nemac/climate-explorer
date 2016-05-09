@@ -526,6 +526,7 @@
       
       &.open {
         width: 90%;
+        background: $white!important;
         @include box-shadow(none);
         
         &:before {
