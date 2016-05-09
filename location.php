@@ -283,10 +283,6 @@
                                   <option value="spring">Spring</option>
                                 </select>
                               </div>
-
-                              <a href="#" class="how-to-read"><span class="icon icon-help"></span>How to read this</a>
-                              <a href="#" class="download-image"><span class="icon icon-download-image"></span>Image</a>
-                              <a href="#" class="download-data"><span class="icon icon-download-chart"></span>Data</a>
                             </div>
                           </header>
 
@@ -506,10 +502,6 @@
                                 <option value="spring">Spring</option>
                               </select>
                             </div>
-
-                            <a href="#" class="how-to-read"><span class="icon icon-help"></span>How to read this</a>
-                            <a href="#" class="download-image"><span class="icon icon-download-image"></span>Image</a>
-                            <a href="#" class="download-data"><span class="icon icon-download-chart"></span>Data</a>
                           </div>
                         </header>
 
@@ -730,10 +722,6 @@
                                   <option value="spring">Spring</option>
                                 </select>
                               </div>
-
-                              <a href="#" class="how-to-read"><span class="icon icon-help"></span>How to read this</a>
-                              <a href="#" class="download-image"><span class="icon icon-download-image"></span>Image</a>
-                              <a href="#" class="download-data"><span class="icon icon-download-chart"></span>Data</a>
                             </div>
                           </header>
 

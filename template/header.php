@@ -345,7 +345,7 @@
       <p>A day’s lowest (minimum) temperature usually occurs in the early morning. Averaging the daily low temperatures for any period results in a mean minimum temperature for that period.</p>
       <p>Periods of low temperature give plants, animals, and people a chance to recover from daytime heat and stress. When overnight lows aren’t sufficiently cool, tree-damaging insects such as bark beetles can thrive, potentially triggering major changes to ecosystems.</p>
 
-      <p><a href="variables.php?id=tasmax" class="button bg-trans border-white hover-bg-white">Get started</a><a href="#" class="close-detail button bg-trans border-trans color-white arrow-left">Back</a></p>
+      <p><a href="variables.php?id=tasmin" class="button bg-trans border-white hover-bg-white">Get started</a><a href="#" class="close-detail button bg-trans border-trans color-white arrow-left">Back</a></p>
     </div>
 
 
@@ -355,7 +355,7 @@
       <p>Daily precipitation is total precipitation that fell on a given day. Averaging the daily precipitation results in a mean daily precipitation for that period. Though daily totals of rain and snow vary from zero to several inches, it’s useful to consider the average amount of water added to the environment per day over a month, season, or year. </p>
       <p>The value for mean daily precipitation is one indicator of how wet or dry a place may be at different times of the year. Comparing values for mean daily precipitation over time can indicate a trend toward wetter or drier conditions.</p>
 
-      <p><a href="variables.php?id=tasmax" class="button bg-trans border-white hover-bg-white">Get started</a><a href="#" class="close-detail button bg-trans border-trans color-white arrow-left">Back</a></p>
+      <p><a href="variables.php?id=pr" class="button bg-trans border-white hover-bg-white">Get started</a><a href="#" class="close-detail button bg-trans border-trans color-white arrow-left">Back</a></p>
     </div>
 
     <div id="detail-heating_degree_day_18" class="nav-detail-item">
