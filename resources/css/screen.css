@@ -5622,54 +5622,60 @@ body.detail-open #nav-overlay {
   border-radius: 50%;
 }
 
-/* line 2, ../scss/pages/_impact.scss */
-.page-type-impact #main-content-wrap {
+/* line 2, ../scss/pages/_topic.scss */
+.page-type-topic #viewport {
+  top: 20px;
+  height: calc(100% - 40px);
+  margin-top: 95px;
+}
+/* line 8, ../scss/pages/_topic.scss */
+.page-type-topic #main-content-wrap {
   padding: 2%;
   background-repeat: no-repeat;
   background-position: top center;
   background-size: cover;
   background-attachment: fixed;
 }
-/* line 10, ../scss/pages/_impact.scss */
-.page-type-impact section {
+/* line 16, ../scss/pages/_topic.scss */
+.page-type-topic section {
   position: relative;
   margin: 0 0 3% 0;
 }
-/* line 15, ../scss/pages/_impact.scss */
-.page-type-impact #cases-menu {
+/* line 21, ../scss/pages/_topic.scss */
+.page-type-topic #cases-menu {
   float: left;
   max-width: 35%;
 }
 
-/* line 21, ../scss/pages/_impact.scss */
+/* line 27, ../scss/pages/_topic.scss */
 #impact-splash {
   overflow: hidden;
   *zoom: 1;
 }
-/* line 24, ../scss/pages/_impact.scss */
+/* line 30, ../scss/pages/_topic.scss */
 #impact-splash .splash-text {
   float: left;
 }
-/* line 27, ../scss/pages/_impact.scss */
+/* line 33, ../scss/pages/_topic.scss */
 #impact-splash .splash-text h1 {
   font-size: 4.375rem;
 }
 
-/* line 35, ../scss/pages/_impact.scss */
+/* line 41, ../scss/pages/_topic.scss */
 .impacts-list {
   margin-top: 6% !important;
 }
-/* line 38, ../scss/pages/_impact.scss */
+/* line 44, ../scss/pages/_topic.scss */
 .impacts-list h2 {
   margin: 0 0 40px 4%;
   margin-left: calc(4% + 10px);
   color: #0058cf;
 }
-/* line 44, ../scss/pages/_impact.scss */
+/* line 50, ../scss/pages/_topic.scss */
 .impacts-list h4 {
   margin: 0 0 40px 0;
 }
-/* line 48, ../scss/pages/_impact.scss */
+/* line 54, ../scss/pages/_topic.scss */
 .impacts-list article {
   position: relative;
   margin: 0 0 3% 0;
@@ -5683,18 +5689,18 @@ body.detail-open #nav-overlay {
   overflow: hidden;
   *zoom: 1;
 }
-/* line 60, ../scss/pages/_impact.scss */
+/* line 66, ../scss/pages/_topic.scss */
 .impacts-list article h3 {
   margin: 0 0 20px 0;
   font: 4.375rem/0.9em "CESans-Heavy", Helvetica, "Helvetica Neue", Arial, sans-serif;
   text-transform: uppercase;
   mix-blend-mode: lighten;
 }
-/* line 67, ../scss/pages/_impact.scss */
+/* line 73, ../scss/pages/_topic.scss */
 .impacts-list article p {
   font: 400 1.25rem/1.5em Roboto, Helvetica, "Helvetica Neue", Arial, sans-serif;
 }
-/* line 71, ../scss/pages/_impact.scss */
+/* line 77, ../scss/pages/_topic.scss */
 .impacts-list article .button {
   position: absolute;
   bottom: 0;
@@ -5702,23 +5708,23 @@ body.detail-open #nav-overlay {
   border-right: none;
   border-bottom: none;
 }
-/* line 80, ../scss/pages/_impact.scss */
+/* line 86, ../scss/pages/_topic.scss */
 .impacts-list .impact-banner-text {
   float: left;
   width: 50%;
   margin: 0 5% 0 0;
 }
-/* line 86, ../scss/pages/_impact.scss */
+/* line 92, ../scss/pages/_topic.scss */
 .impacts-list .impact-layers {
   float: left;
   width: 40%;
 }
-/* line 90, ../scss/pages/_impact.scss */
+/* line 96, ../scss/pages/_topic.scss */
 .impacts-list .impact-layers h4 {
   color: #fff;
   line-height: 2rem;
 }
-/* line 95, ../scss/pages/_impact.scss */
+/* line 101, ../scss/pages/_topic.scss */
 .impacts-list .impact-layers li {
   color: #5f5f5f;
 }
