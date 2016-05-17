@@ -290,7 +290,7 @@
                 foreach($impacts_content as $impact) {
 
               ?>
-              <li><a href="#detail-<?php echo $impact['variable']; ?>" class="nav-detail-link"><?php echo $impact['name']; ?></a></li>
+              <li><a href="topic.php?param=<?php echo $impact['variable']; ?>"><?php echo $impact['name']; ?></a></li>
               <?php
 
                 }

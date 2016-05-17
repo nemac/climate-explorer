@@ -1,4 +1,10 @@
-.page-type-impact {
+.page-type-topic {
+  #viewport {
+    top: 20px;
+    height: calc(100% - 40px);
+    margin-top: 95px;
+  }
+  
   #main-content-wrap {
     padding: 2%;
     background-repeat: no-repeat;

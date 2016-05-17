@@ -5318,16 +5318,17 @@ body.detail-open #nav-overlay {
 /* line 527, ../scss/pages/_location.scss */
 .location-data-section .data-accordion .data-accordion-tab.open {
   width: 90%;
+  background: #fff !important;
   -moz-box-shadow: none;
   -webkit-box-shadow: none;
   box-shadow: none;
 }
-/* line 531, ../scss/pages/_location.scss */
+/* line 532, ../scss/pages/_location.scss */
 .location-data-section .data-accordion .data-accordion-tab.open:before {
   border-width: 0;
   margin-top: -9px;
 }
-/* line 536, ../scss/pages/_location.scss */
+/* line 537, ../scss/pages/_location.scss */
 .location-data-section .data-accordion .data-accordion-tab.open header {
   top: 0;
   left: 0;
@@ -5346,7 +5347,7 @@ body.detail-open #nav-overlay {
 .location-data-section .data-accordion .data-accordion-tab.open header:after {
   clear: both;
 }
-/* line 546, ../scss/pages/_location.scss */
+/* line 547, ../scss/pages/_location.scss */
 .location-data-section .data-accordion .data-accordion-tab.open header h4 {
   position: static;
   width: auto;
@@ -5361,30 +5362,30 @@ body.detail-open #nav-overlay {
   -webkit-transform: none;
   transform: none;
 }
-/* line 557, ../scss/pages/_location.scss */
+/* line 558, ../scss/pages/_location.scss */
 .location-data-section .data-accordion .data-accordion-tab.open header h4 .icon {
   display: inline-block;
   margin: -4px 15px 0 0;
 }
-/* line 562, ../scss/pages/_location.scss */
+/* line 563, ../scss/pages/_location.scss */
 .location-data-section .data-accordion .data-accordion-tab.open header h4 .text {
   display: inline-block;
   vertical-align: middle;
 }
-/* line 567, ../scss/pages/_location.scss */
+/* line 568, ../scss/pages/_location.scss */
 .location-data-section .data-accordion .data-accordion-tab.open header h4 .full-title {
   display: inline;
 }
-/* line 571, ../scss/pages/_location.scss */
+/* line 572, ../scss/pages/_location.scss */
 .location-data-section .data-accordion .data-accordion-tab.open header h4 .source {
   display: block;
   margin: 4px 0 0 0;
 }
-/* line 577, ../scss/pages/_location.scss */
+/* line 578, ../scss/pages/_location.scss */
 .location-data-section .data-accordion .data-accordion-tab.open header .data-accordion-actions {
   display: block;
 }
-/* line 582, ../scss/pages/_location.scss */
+/* line 583, ../scss/pages/_location.scss */
 .location-data-section .data-accordion .data-accordion-tab.open .data-accordion-content {
   -moz-box-shadow: none;
   -webkit-box-shadow: none;
@@ -5392,19 +5393,19 @@ body.detail-open #nav-overlay {
   opacity: 1;
   mix-blend-mode: initial;
 }
-/* line 591, ../scss/pages/_location.scss */
+/* line 592, ../scss/pages/_location.scss */
 .location-data-section .data-list {
   position: relative;
   float: left;
   width: 30%;
   margin: 0 1% 0 0;
 }
-/* line 597, ../scss/pages/_location.scss */
+/* line 598, ../scss/pages/_location.scss */
 .location-data-section .data-list form {
   position: absolute;
   left: -9999px;
 }
-/* line 604, ../scss/pages/_location.scss */
+/* line 605, ../scss/pages/_location.scss */
 .location-data-section .data-options li {
   padding-left: 12%;
   background: #fff;
@@ -5419,31 +5420,31 @@ body.detail-open #nav-overlay {
   overflow: hidden;
   *zoom: 1;
 }
-/* line 614, ../scss/pages/_location.scss */
+/* line 615, ../scss/pages/_location.scss */
 .location-data-section .data-options li:last-child {
   border-bottom: none;
 }
-/* line 618, ../scss/pages/_location.scss */
+/* line 619, ../scss/pages/_location.scss */
 .location-data-section .data-options li:hover {
   padding-left: calc(12% - 10px);
   border-left-width: 10px;
   border-left-color: #ebebeb;
 }
-/* line 624, ../scss/pages/_location.scss */
+/* line 625, ../scss/pages/_location.scss */
 .location-data-section .data-options li.active {
   font-weight: 400;
   padding-left: calc(12% - 10px);
   border-left-width: 10px;
   border-bottom-color: #ebebeb !important;
 }
-/* line 631, ../scss/pages/_location.scss */
+/* line 632, ../scss/pages/_location.scss */
 .location-data-section .data-options li h4 {
   font-size: 1rem;
   overflow: hidden;
   *zoom: 1;
   outline: none;
 }
-/* line 637, ../scss/pages/_location.scss */
+/* line 638, ../scss/pages/_location.scss */
 .location-data-section .data-options li a {
   display: block;
   padding: 2%;
@@ -5453,12 +5454,12 @@ body.detail-open #nav-overlay {
   -webkit-transition: 0.25s;
   transition: 0.25s;
 }
-/* line 643, ../scss/pages/_location.scss */
+/* line 644, ../scss/pages/_location.scss */
 .location-data-section .data-options li a.text {
   width: 90%;
   float: left;
 }
-/* line 648, ../scss/pages/_location.scss */
+/* line 649, ../scss/pages/_location.scss */
 .location-data-section .data-options li a.icon {
   width: 10%;
   float: right;
@@ -5466,122 +5467,122 @@ body.detail-open #nav-overlay {
   line-height: 1.5rem;
   color: #aaa;
 }
-/* line 658, ../scss/pages/_location.scss */
+/* line 659, ../scss/pages/_location.scss */
 .location-data-section .data-options li ul li {
   font-size: 0.875rem;
   line-height: 1.5rem;
 }
 
-/* line 668, ../scss/pages/_location.scss */
+/* line 669, ../scss/pages/_location.scss */
 #location-temperature .accent-color {
   color: #f5442d;
 }
-/* line 672, ../scss/pages/_location.scss */
+/* line 673, ../scss/pages/_location.scss */
 #location-temperature .accent-background {
   background-color: #f5442d;
 }
-/* line 676, ../scss/pages/_location.scss */
+/* line 677, ../scss/pages/_location.scss */
 #location-temperature .accent-border {
   border-color: #f5442d;
 }
-/* line 681, ../scss/pages/_location.scss */
+/* line 682, ../scss/pages/_location.scss */
 #location-temperature .data-options .accent-color {
   color: #5f5f5f;
 }
-/* line 685, ../scss/pages/_location.scss */
+/* line 686, ../scss/pages/_location.scss */
 #location-temperature .data-options .accent-border {
   border-left-color: #ebebeb;
   border-bottom-color: #ebebeb;
 }
-/* line 691, ../scss/pages/_location.scss */
+/* line 692, ../scss/pages/_location.scss */
 #location-temperature .data-options .active.accent-border {
   border-left-color: #f5442d;
   border-bottom-color: #ebebeb;
 }
-/* line 696, ../scss/pages/_location.scss */
+/* line 697, ../scss/pages/_location.scss */
 #location-temperature .data-options .active .accent-color {
   color: #f5442d;
 }
-/* line 703, ../scss/pages/_location.scss */
+/* line 704, ../scss/pages/_location.scss */
 #location-temperature .data-vars button {
   color: #f5442d;
 }
 
-/* line 710, ../scss/pages/_location.scss */
+/* line 711, ../scss/pages/_location.scss */
 #location-precipitation .accent-color {
   color: #0058cf;
 }
-/* line 714, ../scss/pages/_location.scss */
+/* line 715, ../scss/pages/_location.scss */
 #location-precipitation .accent-background {
   background-color: #0058cf;
 }
-/* line 718, ../scss/pages/_location.scss */
+/* line 719, ../scss/pages/_location.scss */
 #location-precipitation .accent-border {
   border-color: #0058cf;
 }
-/* line 723, ../scss/pages/_location.scss */
+/* line 724, ../scss/pages/_location.scss */
 #location-precipitation .data-options .accent-color {
   color: #5f5f5f;
 }
-/* line 727, ../scss/pages/_location.scss */
+/* line 728, ../scss/pages/_location.scss */
 #location-precipitation .data-options .accent-border {
   border-left-color: #ebebeb;
   border-bottom-color: #ebebeb;
 }
-/* line 733, ../scss/pages/_location.scss */
+/* line 734, ../scss/pages/_location.scss */
 #location-precipitation .data-options .active.accent-border {
   border-left-color: #0058cf;
   border-bottom-color: #ebebeb;
 }
-/* line 738, ../scss/pages/_location.scss */
+/* line 739, ../scss/pages/_location.scss */
 #location-precipitation .data-options .active .accent-color {
   color: #0058cf;
 }
-/* line 746, ../scss/pages/_location.scss */
+/* line 747, ../scss/pages/_location.scss */
 #location-precipitation .data-vars button {
   color: #0058cf;
 }
 
-/* line 753, ../scss/pages/_location.scss */
+/* line 754, ../scss/pages/_location.scss */
 #location-derived .accent-color {
   color: #904848;
 }
-/* line 757, ../scss/pages/_location.scss */
+/* line 758, ../scss/pages/_location.scss */
 #location-derived .accent-background {
   background-color: #904848;
 }
-/* line 761, ../scss/pages/_location.scss */
+/* line 762, ../scss/pages/_location.scss */
 #location-derived .accent-border {
   border-color: #904848;
 }
-/* line 766, ../scss/pages/_location.scss */
+/* line 767, ../scss/pages/_location.scss */
 #location-derived .data-options .accent-color {
   color: #5f5f5f;
 }
-/* line 770, ../scss/pages/_location.scss */
+/* line 771, ../scss/pages/_location.scss */
 #location-derived .data-options .accent-border {
   border-left-color: #ebebeb;
   border-bottom-color: #ebebeb;
 }
-/* line 776, ../scss/pages/_location.scss */
+/* line 777, ../scss/pages/_location.scss */
 #location-derived .data-options .active.accent-border {
   border-left-color: #904848;
   border-bottom-color: #ebebeb;
 }
-/* line 781, ../scss/pages/_location.scss */
+/* line 782, ../scss/pages/_location.scss */
 #location-derived .data-options .active .accent-color {
   color: #904848;
 }
-/* line 788, ../scss/pages/_location.scss */
+/* line 789, ../scss/pages/_location.scss */
 #location-derived .data-vars button {
   color: #904848;
 }
 
-/* line 796, ../scss/pages/_location.scss */
+/* line 797, ../scss/pages/_location.scss */
 #location-stations header h3 {
   margin: 0 0 2% 0;
 }
-/* line 801, ../scss/pages/_location.scss */
+/* line 802, ../scss/pages/_location.scss */
 #location-stations #location-station-map {
   position: absolute;
   top: 0;
@@ -5589,11 +5590,11 @@ body.detail-open #nav-overlay {
   width: 100%;
   height: 100%;
 }
-/* line 804, ../scss/pages/_location.scss */
+/* line 805, ../scss/pages/_location.scss */
 #location-stations #location-station-map .ol-attribution, #location-stations #location-station-map .ol-rotate {
   display: none;
 }
-/* line 808, ../scss/pages/_location.scss */
+/* line 809, ../scss/pages/_location.scss */
 #location-stations #location-station-map .ol-zoom {
   position: absolute;
   z-index: 1;
@@ -5604,7 +5605,7 @@ body.detail-open #nav-overlay {
   -webkit-transform: translateY(-50%);
   transform: translateY(-50%);
 }
-/* line 815, ../scss/pages/_location.scss */
+/* line 816, ../scss/pages/_location.scss */
 #location-stations #location-station-map .ol-zoom button {
   display: block;
   width: 30px;
@@ -5621,54 +5622,60 @@ body.detail-open #nav-overlay {
   border-radius: 50%;
 }
 
-/* line 2, ../scss/pages/_impact.scss */
-.page-type-impact #main-content-wrap {
+/* line 2, ../scss/pages/_topic.scss */
+.page-type-topic #viewport {
+  top: 20px;
+  height: calc(100% - 40px);
+  margin-top: 95px;
+}
+/* line 8, ../scss/pages/_topic.scss */
+.page-type-topic #main-content-wrap {
   padding: 2%;
   background-repeat: no-repeat;
   background-position: top center;
   background-size: cover;
   background-attachment: fixed;
 }
-/* line 10, ../scss/pages/_impact.scss */
-.page-type-impact section {
+/* line 16, ../scss/pages/_topic.scss */
+.page-type-topic section {
   position: relative;
   margin: 0 0 3% 0;
 }
-/* line 15, ../scss/pages/_impact.scss */
-.page-type-impact #cases-menu {
+/* line 21, ../scss/pages/_topic.scss */
+.page-type-topic #cases-menu {
   float: left;
   max-width: 35%;
 }
 
-/* line 21, ../scss/pages/_impact.scss */
+/* line 27, ../scss/pages/_topic.scss */
 #impact-splash {
   overflow: hidden;
   *zoom: 1;
 }
-/* line 24, ../scss/pages/_impact.scss */
+/* line 30, ../scss/pages/_topic.scss */
 #impact-splash .splash-text {
   float: left;
 }
-/* line 27, ../scss/pages/_impact.scss */
+/* line 33, ../scss/pages/_topic.scss */
 #impact-splash .splash-text h1 {
   font-size: 4.375rem;
 }
 
-/* line 35, ../scss/pages/_impact.scss */
+/* line 41, ../scss/pages/_topic.scss */
 .impacts-list {
   margin-top: 6% !important;
 }
-/* line 38, ../scss/pages/_impact.scss */
+/* line 44, ../scss/pages/_topic.scss */
 .impacts-list h2 {
   margin: 0 0 40px 4%;
   margin-left: calc(4% + 10px);
   color: #0058cf;
 }
-/* line 44, ../scss/pages/_impact.scss */
+/* line 50, ../scss/pages/_topic.scss */
 .impacts-list h4 {
   margin: 0 0 40px 0;
 }
-/* line 48, ../scss/pages/_impact.scss */
+/* line 54, ../scss/pages/_topic.scss */
 .impacts-list article {
   position: relative;
   margin: 0 0 3% 0;
@@ -5682,18 +5689,18 @@ body.detail-open #nav-overlay {
   overflow: hidden;
   *zoom: 1;
 }
-/* line 60, ../scss/pages/_impact.scss */
+/* line 66, ../scss/pages/_topic.scss */
 .impacts-list article h3 {
   margin: 0 0 20px 0;
   font: 4.375rem/0.9em "CESans-Heavy", Helvetica, "Helvetica Neue", Arial, sans-serif;
   text-transform: uppercase;
   mix-blend-mode: lighten;
 }
-/* line 67, ../scss/pages/_impact.scss */
+/* line 73, ../scss/pages/_topic.scss */
 .impacts-list article p {
   font: 400 1.25rem/1.5em Roboto, Helvetica, "Helvetica Neue", Arial, sans-serif;
 }
-/* line 71, ../scss/pages/_impact.scss */
+/* line 77, ../scss/pages/_topic.scss */
 .impacts-list article .button {
   position: absolute;
   bottom: 0;
@@ -5701,23 +5708,23 @@ body.detail-open #nav-overlay {
   border-right: none;
   border-bottom: none;
 }
-/* line 80, ../scss/pages/_impact.scss */
+/* line 86, ../scss/pages/_topic.scss */
 .impacts-list .impact-banner-text {
   float: left;
   width: 50%;
   margin: 0 5% 0 0;
 }
-/* line 86, ../scss/pages/_impact.scss */
+/* line 92, ../scss/pages/_topic.scss */
 .impacts-list .impact-layers {
   float: left;
   width: 40%;
 }
-/* line 90, ../scss/pages/_impact.scss */
+/* line 96, ../scss/pages/_topic.scss */
 .impacts-list .impact-layers h4 {
   color: #fff;
   line-height: 2rem;
 }
-/* line 95, ../scss/pages/_impact.scss */
+/* line 101, ../scss/pages/_topic.scss */
 .impacts-list .impact-layers li {
   color: #5f5f5f;
 }
