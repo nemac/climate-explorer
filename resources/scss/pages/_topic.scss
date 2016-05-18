@@ -18,13 +18,25 @@
     margin: 0 0 3% 0;
   }
   
-  #cases-menu {
+  #subtopics-menu {
     float: left;
+    width: auto;
     max-width: 35%;
+    
+    ul {
+      display: block;
+      white-space: nowrap;
+    }
+  }
+  
+  #subtopics-view-all {
+    display: block;
+    padding-left: calc(5% + 10px);
+    font-size: 1.25rem;
   }
 }
 
-#impact-splash {
+#topic-splash {
   @include clearfix;
   
   .splash-text {
@@ -38,7 +50,7 @@
   
 }
 
-.impacts-list {
+.topics-list {
   margin-top: 6%!important;
   
   h2 {
@@ -83,13 +95,13 @@
     }
   }
   
-  .impact-banner-text {
+  .topic-banner-text {
     float: left;
     width: 50%;
     margin: 0 5% 0 0;
   }
   
-  .impact-layers {
+  .topic-layers {
     float: left;
     width: 40%;
     

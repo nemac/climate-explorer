@@ -203,11 +203,21 @@ h6 {
   }
   
   &.color-orange {
-    color: $orange1;
+    color: $orange1!important;
     
     &:before,
     &:after {
-      background: $orange1;
+      background: $orange1!important;
+    }
+    
+    &.arrow-right {
+      &:before {
+        background: $orange1!important;
+      }
+      
+      &:after {
+        background: $orange1!important;
+      }
     }
   }
   

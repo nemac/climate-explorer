@@ -46,168 +46,57 @@
           </ul>
         </div>
 
-        <section id="impact-splash" class="page-splash">
+        <section id="topic-splash" class="page-splash">
             <div class="splash-text">
-                <h4>Impact</h4>
+                <h4>Topic</h4>
                 <h1>Ecosystem Vulnerability</h1>
                 <p>Despite extensive human engineering of Earth’s resources, our economy and culture continue to depend on natural ecosystem services for food, timber, clean water, and more.</p>
             </div>
 
-            <div id="cases-menu" class="white-menu">
-                <h4>Cases</h4>
-                <ul>
-                  <li><a href="#case-water-resources" class="smooth-scroll">Coastal Flooding</a></li>
-                  <li><a href="#case-fire-regimes" class="smooth-scroll">Drought</a></li>
-                  <li><a href="#" class="smooth-scroll">Flooding</a></li>
-                  <li><a href="#" class="smooth-scroll">Tribal Nations: Flood Risk</a></li>
-                  <li><a href="#" class="smooth-scroll">Tribal Nations: Drought Risk</a></li>
-                  <li><a href="#" class="smooth-scroll">Ecosystems</a></li>
-                  <li><a href="#" class="smooth-scroll">Human Health</a></li>
-                  <li><a href="#" class="smooth-scroll">Transportation</a></li>
-                </ul>
+            <div id="subtopics-menu" class="white-menu">
+              <h4>Sub-topics</h4>
+              <ul>
+                <li><a href="#subtopic-coastal-flooding" class="smooth-scroll">Coastal Flooding</a></li>
+                <li><a href="#subtopic-fire-regimes" class="smooth-scroll">Drought</a></li>
+              </ul>
+              <a href="case.php?case=" id="subtopics-view-all" class="button display-block border-white color-orange arrow-right">View all</a>
             </div>
         </section>
 
-        <section id="cases" class="impacts-list">
-          <article id="case-coastal-flooding" class="impact-banner">
-            <div class="impact-banner-text">
-                <h4>Case</h4>
-                <h3><a href="case_coastal-flooding.html">Coastal Flooding</a></h3>
+        <section id="subtopics" class="topics-list">
+          
+          <?php
+            
+            // BEGIN LOOP
+            
+            $subtopic = 'coastal-flooding';
+            
+            $subtopic_ID = 'subtopic-' . $subtopic;
+            
+          ?>
+          
+          <article id="<?php echo $subtopic_ID; ?>" class="topic-banner">
+            <div class="topic-banner-text">
+                <h4>Sub-topic</h4>
+                <h3><a href="case.php?case=coastal-flooding">Coastal Flooding</a></h3>
                 <p>Municipalities and property owners can check their vulnerability to coastal flooding. Map layers show areas of current flood hazards as well as visualizations of flooding from future sea level rise.</p>
             </div>
 
-            <div class="impact-layers white-menu">
+            <div class="topic-layers white-menu">
                 <h4>Data layers include:</h4>
 
                 <ul id="coastal-flooding-layer-list">
                 </ul>
             </div>
 
-            <a href="case_coastal-flooding.html" class="button bg-trans border-white hover-bg-white plus">View details</a>
+            <a href="case.php?case=coastal-flooding" class="button bg-trans border-white hover-bg-white plus">View details</a>
           </article>
-
-          <article id="case-fire-regimes" class="impact-banner" style="background-image: url(./resources/img/bg_topic-fireregimes.jpg);">
-            <div class="impact-banner-text">
-                <h4>Case</h4>
-                <h3><a href="case_fire-regimes.html">Drought</a></h3>
-                <p>Explore which regions are currently abnormally dry or experiencing drought; check the land cover to see what types of vegetation, crops, and development may be impacted. View graphs of cumulative precipitation to assess the lack of moisture.</p>
-            </div>
-
-            <div class="impact-layers white-menu">
-                <h4>Data layers include:</h4>
-
-                <ul id="drought-layer-list">
-                </ul>
-            </div>
-
-            <a href="case_fire-regimes.html" class="button bg-trans border-white hover-bg-white plus">View details</a>
-          </article>
-
-          <article id="case-flooding" class="impact-banner">
-            <div class="impact-banner-text">
-                <h4>Case</h4>
-                <h3><a href="case_flooding.html">Flooding</a></h3>
-                <p></p>
-            </div>
-
-            <div class="impact-layers white-menu">
-                <h4>Data layers include:</h4>
-
-                <ul id="flooding-layer-list">
-                </ul>
-            </div>
-
-            <a href="case_flooding.html" class="button bg-trans border-white hover-bg-white plus">View details</a>
-          </article>
-
-          <article id="case-tribal-flood" class="impact-banner">
-            <div class="impact-banner-text">
-                <h4>Case</h4>
-                <h3><a href="case_tribal-flood.html">Tribal Nations: Flood Risk</a></h3>
-                <p>Survey the extent of American Indian land, and lands where an Indian tribe proved original tribal occupancy. Explore landcover and social vulnerability categories at these locations, and check for climate stressors such as sea level rise, flood hazards, and drought.</p>
-            </div>
-
-            <div class="impact-layers white-menu">
-                <h4>Data layers include:</h4>
-
-                <ul id="tribal-flooding-layer-list">
-                </ul>
-            </div>
-
-            <a href="case_tribal-flood.html" class="button bg-trans border-white hover-bg-white plus">View details</a>
-          </article>
-
-
-          <article id="case-tribal-flood" class="impact-banner">
-            <div class="impact-banner-text">
-                <h4>Case</h4>
-                <h3><a href="case_tribal-drought.html">Tribal Nations: Drought Risk</a></h3>
-                <p>Survey the extent of American Indian land, and lands where an Indian tribe proved original tribal occupancy. Explore landcover and social vulnerability categories at these locations, and check for climate stressors such as sea level rise, flood hazards, and drought.</p>
-            </div>
-
-            <div class="impact-layers white-menu">
-                <h4>Data layers include:</h4>
-
-                <ul id="tribal-drought-layer-list">
-                </ul>
-            </div>
-
-            <a href="case_tribal-drought.html" class="button bg-trans border-white hover-bg-white plus">View details</a>
-          </article>
-
-
-          <article id="case-tribal-flood" class="impact-banner">
-            <div class="impact-banner-text">
-                <h4>Case</h4>
-                <h3><a href="case_ecosystems.html">Ecosystems</a></h3>
-                <p>View landcover, wetlands, and rivers & streams to visualize the location and extent of land-based ecosystems. Compare their locations to climate stressors such as sea level rise and drought. </p>
-            </div>
-
-            <div class="impact-layers white-menu">
-                <h4>Data layers include:</h4>
-
-                <ul id="ecosystems-layer-list">
-                </ul>
-            </div>
-
-            <a href="case_ecosystems.html" class="button bg-trans border-white hover-bg-white plus">View details</a>
-          </article>
-
-
-          <article id="case-tribal-flood" class="impact-banner">
-            <div class="impact-banner-text">
-                <h4>Case</h4>
-                <h3><a href="case_human-health.html">Human Health</a></h3>
-                <p>Explore areas where high percentages of residents are elderly and/or poor, and where other factors increase social vulnerability. People in these areas may require assistance during events such as heat waves, storms, or flooding. </p>
-            </div>
-
-            <div class="impact-layers white-menu">
-                <h4>Data layers include:</h4>
-
-                <ul id="human-health-layer-list">
-                </ul>
-            </div>
-
-            <a href="case_human-health.html" class="button bg-trans border-white hover-bg-white plus">View details</a>
-          </article>
-
-
-          <article id="case-tribal-flood" class="impact-banner">
-            <div class="impact-banner-text">
-                <h4>Case</h4>
-                <h3><a href="case_transportation.html">Transportation</a></h3>
-                <p>View the location of transportation assets such as highways, bridges, and airports, and compare them with climate stressors such as innundation from sea level rise and flooding hazards.</p>
-            </div>
-
-            <div class="impact-layers white-menu">
-                <h4>Data layers include:</h4>
-
-                <ul id="transportation-layer-list">
-                </ul>
-            </div>
-
-            <a href="case_transportation.html" class="button bg-trans border-white hover-bg-white plus">View details</a>
-          </article>
+          
+          <?php
+            
+            // END LOOP
+            
+          ?>
 
         </section>
     </div>

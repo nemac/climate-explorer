@@ -298,7 +298,7 @@
     // tabs
 
     //$('.nav-vars-tab').tabs();
-    $('.nav-topics-tab').tabs();
+    //$('.nav-topics-tab').tabs();
 
     // keyboard actions
 
