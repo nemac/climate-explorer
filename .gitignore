@@ -11,3 +11,5 @@ resources/ol3/closure-library/closure/bin/build/
 *.scssc
 
 *.scssc
+
+*.scssc

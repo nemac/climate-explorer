@@ -68,7 +68,7 @@
     }
   }
   
-  #nav-impacts {
+  #nav-topics {
     .slide-bg {
       background-image: url(../img/bg_contours-orange.png);
     }
@@ -341,7 +341,7 @@
       background: transparentize($blue1, 0.1);
     }
     
-    &#impacts-details {
+    &#topics-details {
       background: transparentize($orange1, 0.1);
     }
   }
@@ -356,7 +356,7 @@
         background: transparentize($blue1, 0.5);
       }
       
-      &#impacts-details {
+      &#topics-details {
         background: transparentize($orange1, 0.5);
       }
     }

@@ -34,7 +34,7 @@
     }
   }
   
-  #impact-splash #cases-menu {
+  #topic-splash #subtopics-menu {
     max-width: 25%;
   }
 }
@@ -106,8 +106,8 @@
   }
   
   
-  .impacts-list {
-    .impact-banner-text {
+  .topics-list {
+    .topic-banner-text {
       width: 65%;
     }
   }
@@ -225,7 +225,7 @@
     margin: 0 0.5%;
   }
   
-  .impacts-list {
+  .topics-list {
     article {
       padding: 6% 4% 14% 4%;
       background-size: 120% auto;
@@ -237,14 +237,14 @@
       }
     }
     
-    .impact-banner-text {
+    .topic-banner-text {
       width: auto;
     }
   }
   
-  // IMPACTS
+  // TOPICS
   
-  #impact-splash {
+  #topic-splash {
     padding: 6%;
     padding-bottom: 12%;
     
@@ -254,7 +254,7 @@
       padding: 0;
     }
     
-    #cases-menu {
+    #subtopics-menu {
       float: none;
       max-width: 100%;
     }
@@ -399,9 +399,9 @@
   
   // LOCATIONS
   
-  // IMPACTS
+  // TOPICS
   
-  #impact-splash {
+  #topic-splash {
     .splash-text {
       float: none;
       
@@ -411,7 +411,7 @@
     }
   }
   
-  .impacts-list {
+  .topics-list {
     h4 {
       margin: 0 0 20px 0;
       font-size: 1.375rem;

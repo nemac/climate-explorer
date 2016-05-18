@@ -63,7 +63,7 @@
 
   );
 
-  $impacts_content = array(
+  $topics_content = array(
 
     array(
       'variable' => 'arctic',
@@ -163,7 +163,7 @@
     <ul id="nav-cycle-pager">
       <li><a href="#nav-search"><span class="icon icon-search"></span> Search by location</a></li>
       <li><a href="#nav-variables"><span class="icon icon-variables"></span> View by variable</a></li>
-      <li><a href="#nav-impacts"><span class="icon icon-bubble"></span> View by topic</a></li>
+      <li><a href="#nav-topics"><span class="icon icon-bubble"></span> View by topic</a></li>
     </ul>
   </div>
 
@@ -263,11 +263,11 @@
 
     <?php
 
-      // IMPACTS
+      // TOPICS
 
     ?>
 
-    <div id="nav-impacts" class="slide" data-slide-num="2">
+    <div id="nav-topics" class="slide" data-slide-num="2">
       <div class="slide-bg"></div>
 
       <div class="nav-controls">
@@ -276,21 +276,17 @@
       </div>
 
       <div class="nav-content-wrap">
-        <h3><span class="icon icon-bubble"></span> Choose an impact</h3>
+        <h3><span class="icon icon-bubble"></span> Choose a topic</h3>
 
         <div class="nav-content tabs">
-          <nav>
-            <a href="#nav-impacts" class="nav-impacts-tab" data-tabs-group="nav-impacts"><span>By Impact</span></a>
-          </nav>
-
-          <div id="nav-impacts" class="tab nav-content-tab">
+          <div id="nav-topics" class="tab nav-content-tab">
             <ul class="col-2">
               <?php
 
-                foreach($impacts_content as $impact) {
+                foreach($topics_content as $topic) {
 
               ?>
-              <li><a href="topic.php?param=<?php echo $impact['variable']; ?>"><?php echo $impact['name']; ?></a></li>
+              <li><a href="topic.php?param=<?php echo $topic['variable']; ?>"><?php echo $topic['name']; ?></a></li>
               <?php
 
                 }
@@ -497,25 +493,25 @@
 
   <?php
 
-    // IMPACTS
+    // TOPICS
 
   ?>
 
-  <div id="impacts-details" class="nav-detail">
+  <div id="topics-details" class="nav-detail">
     <?php
 
-      foreach($impacts_content as $impact) {
+      foreach($topics_content as $topic) {
 
     ?>
 
-    <div id="detail-<?php echo $impact['variable']; ?>" class="nav-detail-item">
-      <h3>What does <u><?php echo $impact['name']; ?></u> mean?</h3>
+    <div id="detail-<?php echo $topic['variable']; ?>" class="nav-detail-item">
+      <h3>What does <u><?php echo $topic['name']; ?></u> mean?</h3>
 
-      <?php echo $impact['detail']; ?>
+      <?php echo $topic['detail']; ?>
 
-      <p>Data source: <?php echo $impact['source']; ?></p>
+      <p>Data source: <?php echo $topic['source']; ?></p>
 
-      <p><a href="case.php?id=<?php echo $impact['variable']; ?>" class="button bg-trans border-white hover-bg-white">Get started</a><a href="#" class="close-detail button bg-trans border-trans color-white arrow-left">Back</a></p>
+      <p><a href="case.php?id=<?php echo $topic['variable']; ?>" class="button bg-trans border-white hover-bg-white">Get started</a><a href="#" class="close-detail button bg-trans border-trans color-white arrow-left">Back</a></p>
     </div>
 
     <?php
