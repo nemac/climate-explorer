@@ -6,7 +6,7 @@
     
     .legend {
       position: relative;
-      padding-left: 12%;
+      padding: 6%;
       @include transition(background 0.25s);
       @include legacy-clearfix;
       
@@ -14,22 +14,26 @@
         
       }
       
-      .icon-arrow-up-down {
-        display: block;
-        position: absolute;
-        left: 2%;
-        top: 50%;
-        margin: 0;
-        @include transform(translateY(-50%));
-        opacity: 0;
-        cursor: move;
-        @include transition(0.25s);
+      .icons {
+        .icon {
+          padding: 0;
+          margin: 0 10px 0 0;
+          opacity: 0.5;
+          @include transition(0.25s);
+          cursor: pointer;
+          
+          &:hover {
+            opacity: 0.75;
+          }
+          
+          &.layer-order {
+            cursor: move;
+          }
+        }
       }
       
       .help {
-        padding: 0;
-        float: right;
-        margin: 0;
+        display: inline-block;
         background: none;
       }
       
@@ -52,9 +56,11 @@
         margin-top: 7px;
       }
       
-      &:hover {
-        .icon-arrow-up-down {
-          opacity: 1;
+      &.ui-sortable-helper {
+        .icon {
+          .layer-order {
+            opacity: 1;
+          }
         }
       }
       
@@ -90,6 +96,10 @@
       
       &.info-on {
         background: transparentize($orange1, 0.08);
+        
+        .help {
+          opacity: 1;
+        }
       }
       
       .layer-info {

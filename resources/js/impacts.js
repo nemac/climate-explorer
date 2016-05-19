@@ -248,12 +248,19 @@ Impacts.prototype.createLegend = function() {
   $.each(layerIds, function(i, id) {
     checked = (i === 0) ? 'checked' : '';
     sublayer = self.data.layers[id].sublayers;
+    
+    icon_class = (i === 0) ? 'icon-view-on' : 'icon-view-off';
 
     var tmpl = '<li class="legend" id="legend-'+id+'">' +
-      '<span class="icon icon-arrow-up-down"></span>' +
+      '<div class="text">'+self.data.layers[id].title+'</div>' +
+      '<div class="icons">' +
+      '<span class="icon layer-order icon-arrow-up-down"></span>' +
+      '<span class="icon layer-toggle ' + icon_class + '"></span>' +
       '<a href="#info-'+id+'" class="help icon icon-help"></a>' +
+      '</div>';
+      
       //'<input class="visibility" id="visibility-'+id+'" type="checkbox" '+checked+'/>' +
-      '<div class="text">'+self.data.layers[id].title+'</div>';
+      
         if ( sublayer ) {
           tmpl += '<div class="sublayer-slider"></div>'+
             '<div class="sublayer-range-values" id="range-'+id+'"></div>';
