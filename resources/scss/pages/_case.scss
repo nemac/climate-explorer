@@ -110,7 +110,10 @@
         width: 210%;
         width: calc(200% + 40px);
         height: auto;
+        max-height: 600px;
         padding: 10%;
+        overflow-x: visible;
+        overflow-y: auto;
         background: transparentize($white, 0.1);
         color: $grey1;
         white-space: normal;
@@ -155,6 +158,18 @@
           }
         }
         
+        .info-accordion {
+          h4 {
+            padding: 10px 0;
+            outline: none;
+            @include transition(0.25s);
+            
+            &.ui-accordion-header-active {
+              color: $orange1;
+            }
+          }
+        }
+        
         .actions {
           text-align: right;
           
@@ -169,6 +184,21 @@
               margin-right: 10px;
               
             }
+          }
+        }
+      }
+    }
+    
+    li {
+      &:last-child,
+      &:nth-last-child(2) {
+        .layer-info {
+          top: auto;
+          bottom: 0;
+          
+          &:before {
+            top: auto;
+            bottom: 22px;
           }
         }
       }

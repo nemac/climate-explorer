@@ -268,7 +268,19 @@ Impacts.prototype.createLegend = function() {
       tmpl += '<div id="info-'+id+'" class="layer-info">'+
         '<h3>'+self.data.layers[id].title+'</h3>'+
         '<div class="opacity-slider-wrap"><h4>Layer opacity</h4><div class="opacity-slider" id="opacity-'+id+'"></div></div>' +
-        '<p>'+self.data.layers[id].description+'</p>'+
+        
+        '<div class="info-accordion">'+
+          '<h4>Layer description</h4>'+
+          '<div>'+
+            '<p>'+self.data.layers[id].description+'</p>'+
+          '</div>'+
+        
+          '<h4>Legend</h4>'+
+          '<div>'+
+            '<img src="resources/img/legend_dummy.png">'+
+          '</div>'+
+        '</div>'+
+        
         '<div class="actions">'+
           '<a href="#" class="layer-info-close"><span class="icon icon-close"></span>Close</a>'+
           '<a href="#" class="layer-info-next"><span class="icon icon-arrow-right"></span>Next</a>'+
@@ -277,6 +289,15 @@ Impacts.prototype.createLegend = function() {
     '</li>';
 
     $('#case-menu').append(tmpl);
+    
+    $('#case-menu').find('.layer-info').find('.info-accordion').accordion({
+      header: 'h4',
+      heightStyle: 'content',
+      icons: {
+        "header": "icon-arrow-right",
+        "activeHeader": "icon-arrow-down"
+      }
+    })
 
     if ( sublayer ) {
       self.subLayers[id] = self.data.layers[id].sublayers;
