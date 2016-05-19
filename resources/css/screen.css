@@ -6087,12 +6087,15 @@ body.detail-open #nav-overlay {
   width: 210%;
   width: calc(200% + 40px);
   height: auto;
+  max-height: 600px;
   padding: 10%;
+  overflow-x: visible;
+  overflow-y: auto;
   background: rgba(255, 255, 255, 0.9);
   color: #5f5f5f;
   white-space: normal;
 }
-/* line 118, ../scss/pages/_case.scss */
+/* line 121, ../scss/pages/_case.scss */
 .page-type-case #case-menu .legend .layer-info:before {
   content: '';
   display: block;
@@ -6104,17 +6107,17 @@ body.detail-open #nav-overlay {
   border: 10px solid #fff;
   border-color: transparent #fff transparent transparent;
 }
-/* line 130, ../scss/pages/_case.scss */
+/* line 133, ../scss/pages/_case.scss */
 .page-type-case #case-menu .legend .layer-info h3 {
   margin: 0 0 10px 0;
   font-size: 1.625rem;
   color: #f5442d;
 }
-/* line 136, ../scss/pages/_case.scss */
+/* line 139, ../scss/pages/_case.scss */
 .page-type-case #case-menu .legend .layer-info p {
   margin: 0 0 12px 0;
 }
-/* line 140, ../scss/pages/_case.scss */
+/* line 143, ../scss/pages/_case.scss */
 .page-type-case #case-menu .legend .layer-info .opacity-slider-wrap {
   margin: 5% 0;
 }
@@ -6127,24 +6130,37 @@ body.detail-open #nav-overlay {
 .page-type-case #case-menu .legend .layer-info .opacity-slider-wrap:after {
   clear: both;
 }
-/* line 144, ../scss/pages/_case.scss */
+/* line 147, ../scss/pages/_case.scss */
 .page-type-case #case-menu .legend .layer-info .opacity-slider-wrap h4 {
   float: left;
   width: 25%;
   font: 0.875rem/1em Roboto, Helvetica, "Helvetica Neue", Arial, sans-serif;
 }
-/* line 150, ../scss/pages/_case.scss */
+/* line 153, ../scss/pages/_case.scss */
 .page-type-case #case-menu .legend .layer-info .opacity-slider-wrap .opacity-slider {
   position: relative;
   float: left;
   width: 75%;
   margin-top: 3px;
 }
-/* line 158, ../scss/pages/_case.scss */
+/* line 162, ../scss/pages/_case.scss */
+.page-type-case #case-menu .legend .layer-info .info-accordion h4 {
+  padding: 10px 0;
+  outline: none;
+  -moz-transition: 0.25s;
+  -o-transition: 0.25s;
+  -webkit-transition: 0.25s;
+  transition: 0.25s;
+}
+/* line 167, ../scss/pages/_case.scss */
+.page-type-case #case-menu .legend .layer-info .info-accordion h4.ui-accordion-header-active {
+  color: #f5442d;
+}
+/* line 173, ../scss/pages/_case.scss */
 .page-type-case #case-menu .legend .layer-info .actions {
   text-align: right;
 }
-/* line 161, ../scss/pages/_case.scss */
+/* line 176, ../scss/pages/_case.scss */
 .page-type-case #case-menu .legend .layer-info .actions a {
   display: inline-block;
   margin: 0 0 0 10px;
@@ -6152,9 +6168,19 @@ body.detail-open #nav-overlay {
   background: #d5e8f2;
   color: #0058cf;
 }
-/* line 168, ../scss/pages/_case.scss */
+/* line 183, ../scss/pages/_case.scss */
 .page-type-case #case-menu .legend .layer-info .actions a .icon {
   margin-right: 10px;
+}
+/* line 195, ../scss/pages/_case.scss */
+.page-type-case #case-menu li:last-child .layer-info, .page-type-case #case-menu li:nth-last-child(2) .layer-info {
+  top: auto;
+  bottom: 0;
+}
+/* line 199, ../scss/pages/_case.scss */
+.page-type-case #case-menu li:last-child .layer-info:before, .page-type-case #case-menu li:nth-last-child(2) .layer-info:before {
+  top: auto;
+  bottom: 22px;
 }
 
 /* line 1, ../scss/plugins/_toggles.scss */
@@ -6315,6 +6341,15 @@ body.detail-open #nav-overlay {
   border-width: 1px 0 0 0;
 }
 
+/* line 726, ../scss/screen.scss */
+.ui-accordion .ui-accordion-header .ui-accordion-header-icon {
+  display: inline-block;
+  position: static;
+  margin: 0 10px 0 0;
+  text-indent: 0;
+  overflow: visible;
+}
+
 /*!
 
 Split Pane v0.8.0
@@ -6448,13 +6483,13 @@ https://raw.github.com/shagstrom/split-pane/master/LICENSE
   cursor: row-resize;
 }
 
-/* line 728, ../scss/screen.scss */
+/* line 740, ../scss/screen.scss */
 .pretty-split-pane-frame .split-pane > .split-pane-divider.dragged.touch {
   background: blue;
   opacity: 0.25;
 }
 
-/* line 733, ../scss/screen.scss */
+/* line 745, ../scss/screen.scss */
 .split-pane-divider {
   right: 50%;
   width: 12px;
@@ -6464,7 +6499,7 @@ https://raw.github.com/shagstrom/split-pane/master/LICENSE
   box-shadow: 0 0 10px rgba(35, 58, 112, 0.25);
 }
 
-/* line 740, ../scss/screen.scss */
+/* line 752, ../scss/screen.scss */
 .pane-content {
   position: absolute;
   top: 0;
@@ -6474,13 +6509,13 @@ https://raw.github.com/shagstrom/split-pane/master/LICENSE
   overflow: auto;
 }
 
-/* line 745, ../scss/screen.scss */
+/* line 757, ../scss/screen.scss */
 #pane-left {
   right: 50%;
   margin-right: 12px;
 }
 
-/* line 750, ../scss/screen.scss */
+/* line 762, ../scss/screen.scss */
 #pane-right {
   width: 50%;
 }
