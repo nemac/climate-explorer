@@ -59,7 +59,7 @@
                 <li><a href="#subtopic-coastal-flooding" class="smooth-scroll">Coastal Flooding</a></li>
                 <li><a href="#subtopic-fire-regimes" class="smooth-scroll">Drought</a></li>
               </ul>
-              <a href="case.php?case=" id="subtopics-view-all" class="button display-block border-white color-orange arrow-right">View all</a>
+              <a href="case.php?id=" id="subtopics-view-all" class="button display-block border-white color-orange arrow-right">View all</a>
             </div>
         </section>
 
@@ -78,7 +78,7 @@
           <article id="<?php echo $subtopic_ID; ?>" class="topic-banner">
             <div class="topic-banner-text">
                 <h4>Sub-topic</h4>
-                <h3><a href="case.php?case=coastal-flooding">Coastal Flooding</a></h3>
+                <h3><a href="case.php?id=coastal-flooding">Coastal Flooding</a></h3>
                 <p>Municipalities and property owners can check their vulnerability to coastal flooding. Map layers show areas of current flood hazards as well as visualizations of flooding from future sea level rise.</p>
             </div>
 
@@ -89,7 +89,7 @@
                 </ul>
             </div>
 
-            <a href="case.php?case=coastal-flooding" class="button bg-trans border-white hover-bg-white plus">View details</a>
+            <a href="case.php?id=coastal-flooding" class="button bg-trans border-white hover-bg-white plus">View details</a>
           </article>
           
           <?php

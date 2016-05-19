@@ -245,6 +245,16 @@ article, aside, details, figcaption, figure, footer, header, hgroup, main, menu,
   content: "\e918";
 }
 
+/* line 139, ../scss/_fonts.scss */
+.icon-view-on:before {
+  content: "\e91d";
+}
+
+/* line 142, ../scss/_fonts.scss */
+.icon-view-off:before {
+  content: "\e91e";
+}
+
 /*! formstone v0.8.26 [grid.css] 2015-11-01 | MIT License | formstone.it */
 /**
  * @grid
@@ -5977,7 +5987,7 @@ body.detail-open #nav-overlay {
 /* line 7, ../scss/pages/_case.scss */
 .page-type-case #case-menu .legend {
   position: relative;
-  padding-left: 12%;
+  padding: 6%;
   -moz-transition: background 0.25s;
   -o-transition: background 0.25s;
   -webkit-transition: background 0.25s;
@@ -6001,71 +6011,74 @@ body.detail-open #nav-overlay {
 .page-type-case #case-menu .legend:after {
   clear: both;
 }
-/* line 17, ../scss/pages/_case.scss */
-.page-type-case #case-menu .legend .icon-arrow-up-down {
-  display: block;
-  position: absolute;
-  left: 2%;
-  top: 50%;
-  margin: 0;
-  -moz-transform: translateY(-50%);
-  -ms-transform: translateY(-50%);
-  -webkit-transform: translateY(-50%);
-  transform: translateY(-50%);
-  opacity: 0;
-  cursor: move;
+/* line 18, ../scss/pages/_case.scss */
+.page-type-case #case-menu .legend .icons .icon {
+  padding: 0;
+  margin: 0 10px 0 0;
+  opacity: 0.5;
   -moz-transition: 0.25s;
   -o-transition: 0.25s;
   -webkit-transition: 0.25s;
   transition: 0.25s;
+  cursor: pointer;
+}
+/* line 25, ../scss/pages/_case.scss */
+.page-type-case #case-menu .legend .icons .icon:hover {
+  opacity: 0.75;
 }
 /* line 29, ../scss/pages/_case.scss */
+.page-type-case #case-menu .legend .icons .icon.layer-order {
+  cursor: move;
+}
+/* line 35, ../scss/pages/_case.scss */
 .page-type-case #case-menu .legend .help {
-  padding: 0;
-  float: right;
-  margin: 0;
+  display: inline-block;
   background: none;
 }
-/* line 38, ../scss/pages/_case.scss */
+/* line 42, ../scss/pages/_case.scss */
 .page-type-case #case-menu .legend .sublayer-slider {
   position: relative;
   clear: both;
   margin-top: 10px;
 }
-/* line 44, ../scss/pages/_case.scss */
+/* line 48, ../scss/pages/_case.scss */
 .page-type-case #case-menu .legend .sublayer-slider.ui-slider .ui-slider-handle {
   background: #ebebeb;
 }
-/* line 50, ../scss/pages/_case.scss */
+/* line 54, ../scss/pages/_case.scss */
 .page-type-case #case-menu .legend .sublayer-range-values {
   font-size: 0.8em;
   margin-top: 7px;
 }
-/* line 56, ../scss/pages/_case.scss */
-.page-type-case #case-menu .legend:hover .icon-arrow-up-down {
+/* line 61, ../scss/pages/_case.scss */
+.page-type-case #case-menu .legend.ui-sortable-helper .icon .layer-order {
   opacity: 1;
 }
-/* line 73, ../scss/pages/_case.scss */
+/* line 79, ../scss/pages/_case.scss */
 .page-type-case #case-menu .legend li {
   position: relative;
   margin: 10px 0 0 0;
 }
-/* line 78, ../scss/pages/_case.scss */
+/* line 84, ../scss/pages/_case.scss */
 .page-type-case #case-menu .legend .color {
   display: block;
   width: 100%;
   height: 0;
   padding: 0 0 30% 0;
 }
-/* line 85, ../scss/pages/_case.scss */
+/* line 91, ../scss/pages/_case.scss */
 .page-type-case #case-menu .legend .tooltip {
   font-size: 0.875rem;
 }
-/* line 91, ../scss/pages/_case.scss */
+/* line 97, ../scss/pages/_case.scss */
 .page-type-case #case-menu .legend.info-on {
   background: rgba(245, 68, 45, 0.92);
 }
-/* line 95, ../scss/pages/_case.scss */
+/* line 100, ../scss/pages/_case.scss */
+.page-type-case #case-menu .legend.info-on .help {
+  opacity: 1;
+}
+/* line 105, ../scss/pages/_case.scss */
 .page-type-case #case-menu .legend .layer-info {
   display: none;
   position: absolute;
@@ -6079,7 +6092,7 @@ body.detail-open #nav-overlay {
   color: #5f5f5f;
   white-space: normal;
 }
-/* line 108, ../scss/pages/_case.scss */
+/* line 118, ../scss/pages/_case.scss */
 .page-type-case #case-menu .legend .layer-info:before {
   content: '';
   display: block;
@@ -6091,17 +6104,17 @@ body.detail-open #nav-overlay {
   border: 10px solid #fff;
   border-color: transparent #fff transparent transparent;
 }
-/* line 120, ../scss/pages/_case.scss */
+/* line 130, ../scss/pages/_case.scss */
 .page-type-case #case-menu .legend .layer-info h3 {
   margin: 0 0 10px 0;
   font-size: 1.625rem;
   color: #f5442d;
 }
-/* line 126, ../scss/pages/_case.scss */
+/* line 136, ../scss/pages/_case.scss */
 .page-type-case #case-menu .legend .layer-info p {
   margin: 0 0 12px 0;
 }
-/* line 130, ../scss/pages/_case.scss */
+/* line 140, ../scss/pages/_case.scss */
 .page-type-case #case-menu .legend .layer-info .opacity-slider-wrap {
   margin: 5% 0;
 }
@@ -6114,24 +6127,24 @@ body.detail-open #nav-overlay {
 .page-type-case #case-menu .legend .layer-info .opacity-slider-wrap:after {
   clear: both;
 }
-/* line 134, ../scss/pages/_case.scss */
+/* line 144, ../scss/pages/_case.scss */
 .page-type-case #case-menu .legend .layer-info .opacity-slider-wrap h4 {
   float: left;
   width: 25%;
   font: 0.875rem/1em Roboto, Helvetica, "Helvetica Neue", Arial, sans-serif;
 }
-/* line 140, ../scss/pages/_case.scss */
+/* line 150, ../scss/pages/_case.scss */
 .page-type-case #case-menu .legend .layer-info .opacity-slider-wrap .opacity-slider {
   position: relative;
   float: left;
   width: 75%;
   margin-top: 3px;
 }
-/* line 148, ../scss/pages/_case.scss */
+/* line 158, ../scss/pages/_case.scss */
 .page-type-case #case-menu .legend .layer-info .actions {
   text-align: right;
 }
-/* line 151, ../scss/pages/_case.scss */
+/* line 161, ../scss/pages/_case.scss */
 .page-type-case #case-menu .legend .layer-info .actions a {
   display: inline-block;
   margin: 0 0 0 10px;
@@ -6139,7 +6152,7 @@ body.detail-open #nav-overlay {
   background: #d5e8f2;
   color: #0058cf;
 }
-/* line 158, ../scss/pages/_case.scss */
+/* line 168, ../scss/pages/_case.scss */
 .page-type-case #case-menu .legend .layer-info .actions a .icon {
   margin-right: 10px;
 }
