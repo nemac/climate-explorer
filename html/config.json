@@ -620,7 +620,85 @@
       "layerDescription": "Indian Land Areas Judicially Established 1978",
       "legendImage": "legends/legendimages/abx.png"
     }
-  }
+   }, {
+    "id": "aby",
+    "name": "Temperature Outlook (3-7 Day)",
+    "url": "http://idpgis.ncep.noaa.gov/arcgis/rest/services/NWS_Climate_Outlooks/cpc_weather_hazards/MapServer/export",
+    "projection": "EPSG:4326",
+    "layers": "1",
+    "type": "REST",
+    "info": {
+      "sourceUrl": "https://catalog.data.gov/dataset/climate-prediction-center-cpc-u-s-hazards-outlook",
+      "sourceEntity": "NWS Climate Prediction Center",
+      "layerDescription": "Weather Hazards: 3-7 Day Temperature Outlook",
+      "legendImage": "legends/legendimages/aby.png"
+    }
+   }, {
+    "id": "abz",
+    "name": "Temperature Outlook (8-14 Day)",
+    "url": "http://idpgis.ncep.noaa.gov/arcgis/rest/services/NWS_Climate_Outlooks/cpc_weather_hazards/MapServer/export",
+    "projection": "EPSG:4326",
+    "layers": "2",
+    "type": "REST",
+    "info": {
+      "sourceUrl": "https://catalog.data.gov/dataset/climate-prediction-center-cpc-u-s-hazards-outlook",
+      "sourceEntity": "NWS Climate Prediction Center",
+      "layerDescription": "Weather Hazards: 8-14 Day Temperature Outlook",
+      "legendImage": "legends/legendimages/abz.png"
+    }
+   }, {
+    "id": "aca",
+    "name": "Precipitation Outlook (3-7 Day)",
+    "url": "http://idpgis.ncep.noaa.gov/arcgis/rest/services/NWS_Climate_Outlooks/cpc_weather_hazards/MapServer/export",
+    "projection": "EPSG:4326",
+    "layers": "4",
+    "type": "REST",
+    "info": {
+      "sourceUrl": "https://catalog.data.gov/dataset/climate-prediction-center-cpc-u-s-hazards-outlook",
+      "sourceEntity": "NWS Climate Prediction Center",
+      "layerDescription": "Weather Hazards: 3-7 Day Precipitation Outlook",
+      "legendImage": "legends/legendimages/aca.png"
+    }
+   }, {
+    "id": "acb",
+    "name": "Precipitation Outlook (8-14 Day)",
+    "url": "http://idpgis.ncep.noaa.gov/arcgis/rest/services/NWS_Climate_Outlooks/cpc_weather_hazards/MapServer/export",
+    "projection": "EPSG:4326",
+    "layers": "5",
+    "type": "REST",
+    "info": {
+      "sourceUrl": "https://catalog.data.gov/dataset/climate-prediction-center-cpc-u-s-hazards-outlook",
+      "sourceEntity": "NWS Climate Prediction Center",
+      "layerDescription": "Weather Hazards: 8-14 Day Precipitation Outlook",
+      "legendImage": "legends/legendimages/acb.png"
+    }
+   }, {
+    "id": "acc",
+    "name": "Wildfire and Drought Outlook (3-7 Day)",
+    "url": "http://idpgis.ncep.noaa.gov/arcgis/rest/services/NWS_Climate_Outlooks/cpc_weather_hazards/MapServer/export",
+    "projection": "EPSG:4326",
+    "layers": "7",
+    "type": "REST",
+    "info": {
+      "sourceUrl": "https://catalog.data.gov/dataset/climate-prediction-center-cpc-u-s-hazards-outlook",
+      "sourceEntity": "NWS Climate Prediction Center",
+      "layerDescription": "Weather Hazards: 3-7 Day Wildfire/Drought Outlook",
+      "legendImage": "legends/legendimages/acc.png"
+    }
+   }, {
+    "id": "acd",
+    "name": "Wildfire and Drought Outlook (8-14 Day)",
+    "url": "http://idpgis.ncep.noaa.gov/arcgis/rest/services/NWS_Climate_Outlooks/cpc_weather_hazards/MapServer/export",
+    "projection": "EPSG:4326",
+    "layers": "8",
+    "type": "REST",
+    "info": {
+      "sourceUrl": "https://catalog.data.gov/dataset/climate-prediction-center-cpc-u-s-hazards-outlook",
+      "sourceEntity": "NWS Climate Prediction Center",
+      "layerDescription": "Weather Hazards: 8-14 Day Wildfire/Drought Outlook",
+      "legendImage": "legends/legendimages/acd.png"
+    }     
+  }  
 	      ],
   "groups": [{
     "id": "g_a",
@@ -665,7 +743,7 @@
     "subGroups": [{
       "id": "g_d_a",
       "name": "Climate Stressors",
-      "layers": [ "aac", "aan", "aaa" ]
+      "layers": [ "aac", "aan", "aaa", "aby", "abz", "aca", "acb", "acc", "acd" ]
     }, {
       "id": "g_d_b",
       "name": "People and Assets Impacted",
@@ -677,7 +755,7 @@
     "subGroups": [{
       "id": "g_e_a",
       "name": "Climate Stressors",
-      "layers": [ "aaa", "aan" ]
+      "layers": [ "aaa", "aan", "aby", "abz", "aca", "acb", "acc", "acd" ]
     }, {
       "id": "g_e_b",
       "name": "People and Assets Impacted",
