@@ -649,7 +649,7 @@
    }, {
     "id": "aca",
     "name": "Precipitation Outlook (3-7 Day)",
-    "url": "http://idpgis.ncep.noaa.gov/arcgis/rest/services/NWS_Climate_Outlooks/cpc_weather_hazards/MapServer/WMSServer",
+    "url": "http://idpgis.ncep.noaa.gov/arcgis/services/NWS_Climate_Outlooks/cpc_weather_hazards/MapServer/WMSServer",
     "projection": "EPSG:4326",
     "layers": "4",
     "info": {
