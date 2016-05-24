@@ -649,10 +649,9 @@
    }, {
     "id": "aca",
     "name": "Precipitation Outlook (3-7 Day)",
-    "url": "http://idpgis.ncep.noaa.gov/arcgis/rest/services/NWS_Climate_Outlooks/cpc_weather_hazards/MapServer/export",
+    "url": "http://idpgis.ncep.noaa.gov/arcgis/rest/services/NWS_Climate_Outlooks/cpc_weather_hazards/MapServer/WMSServer",
     "projection": "EPSG:4326",
     "layers": "4",
-    "type": "REST",
     "info": {
       "sourceUrl": "https://catalog.data.gov/dataset/climate-prediction-center-cpc-u-s-hazards-outlook",
       "sourceEntity": "NWS Climate Prediction Center",
