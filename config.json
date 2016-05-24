@@ -625,7 +625,7 @@
     "name": "Temperature Outlook (3-7 Day)",
     "url": "http://idpgis.ncep.noaa.gov/arcgis/services/NWS_Climate_Outlooks/cpc_weather_hazards/MapServer/WMSServer",
     "projection": "EPSG:4326",
-    "layers": "1",
+    "layers": "8",
     "info": {
       "sourceUrl": "https://catalog.data.gov/dataset/climate-prediction-center-cpc-u-s-hazards-outlook",
       "sourceEntity": "NWS Climate Prediction Center",
@@ -637,7 +637,7 @@
     "name": "Temperature Outlook (8-14 Day)",
     "url": "http://idpgis.ncep.noaa.gov/arcgis/services/NWS_Climate_Outlooks/cpc_weather_hazards/MapServer/WMSServer",
     "projection": "EPSG:4326",
-    "layers": "2",
+    "layers": "7",
     "info": {
       "sourceUrl": "https://catalog.data.gov/dataset/climate-prediction-center-cpc-u-s-hazards-outlook",
       "sourceEntity": "NWS Climate Prediction Center",
@@ -649,7 +649,7 @@
     "name": "Precipitation Outlook (3-7 Day)",
     "url": "http://idpgis.ncep.noaa.gov/arcgis/services/NWS_Climate_Outlooks/cpc_weather_hazards/MapServer/WMSServer",
     "projection": "EPSG:4326",
-    "layers": "4",
+    "layers": "5",
     "info": {
       "sourceUrl": "https://catalog.data.gov/dataset/climate-prediction-center-cpc-u-s-hazards-outlook",
       "sourceEntity": "NWS Climate Prediction Center",
@@ -661,7 +661,7 @@
     "name": "Precipitation Outlook (8-14 Day)",
     "url": "http://idpgis.ncep.noaa.gov/arcgis/services/NWS_Climate_Outlooks/cpc_weather_hazards/MapServer/WMSServer",
     "projection": "EPSG:4326",
-    "layers": "5",
+    "layers": "4",
     "info": {
       "sourceUrl": "https://catalog.data.gov/dataset/climate-prediction-center-cpc-u-s-hazards-outlook",
       "sourceEntity": "NWS Climate Prediction Center",
@@ -673,7 +673,7 @@
     "name": "Wildfire and Drought Outlook (3-7 Day)",
     "url": "http://idpgis.ncep.noaa.gov/arcgis/services/NWS_Climate_Outlooks/cpc_weather_hazards/MapServer/WMSServer",
     "projection": "EPSG:4326",
-    "layers": "7",
+    "layers": "2",
     "info": {
       "sourceUrl": "https://catalog.data.gov/dataset/climate-prediction-center-cpc-u-s-hazards-outlook",
       "sourceEntity": "NWS Climate Prediction Center",
@@ -685,7 +685,7 @@
     "name": "Wildfire and Drought Outlook (8-14 Day)",
     "url": "http://idpgis.ncep.noaa.gov/arcgis/services/NWS_Climate_Outlooks/cpc_weather_hazards/MapServer/WMSServer",
     "projection": "EPSG:4326",
-    "layers": "8",
+    "layers": "1",
     "info": {
       "sourceUrl": "https://catalog.data.gov/dataset/climate-prediction-center-cpc-u-s-hazards-outlook",
       "sourceEntity": "NWS Climate Prediction Center",
