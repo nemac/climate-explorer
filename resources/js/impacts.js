@@ -293,6 +293,7 @@ Impacts.prototype.createLegend = function() {
     $('#case-menu').find('.layer-info').find('.info-accordion').accordion({
       header: 'h4',
       heightStyle: 'content',
+      collapsible: true,
       icons: {
         "header": "icon-arrow-right",
         "activeHeader": "icon-arrow-down"
