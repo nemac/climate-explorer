@@ -1,0 +1,82 @@
+{
+  "topics": {
+    "arctic": {
+      "description": "This is the main topic desciption. Should include overview of all groups on the page. It goes on the main headline on the topics page",
+      "groups": {
+        "group1": {
+          "title": "BIA Lands and Arctic Sea Ice",
+          "description": "Explore the environmental changes Alaska Native Villages have seen as the extent of September Arctic sea ice has decreased over time.",
+          "layers": [
+            "bia_indian_lands",
+            "september_arctic_sea_ice"
+          ]
+        },
+        "group2": {
+          "title": "Energy Infrastructure and Permafrost",
+          "description": "Explore where energy infrastructure sits atop permafrost that is increasingly susceptible to melting.",
+          "layers": [
+            "energy_infrastructure",
+            "permafrost"
+          ]
+        }
+      }
+    }
+  },
+  "layers": {
+    "weather_stations": {
+      "type": "JSON",
+      "id": "weather_stations",
+      "title": "Weather Stations",
+      "description": "Check how observed temperature and precipitation measurements compare to long-term averages at weather stations near your area of interest. Look for times when temperatures are above average and/or precipitation is below average for weeks at a time: these indicate times that drought conditions may develop.",
+      "url": "resources/data/wx_stations.json",
+      "options": {},
+      "defaults": {
+        "visible":false
+      }
+    },
+    "bia_indian_lands": {
+      "type": "ArcGISRest",
+      "id": "bia_indian_lands",
+      "title": "BIA Indian Lands",
+      "description": "View the locations of American Indian Reservations, Federally Recognized Tribal Entities, and Alaska Native Villages.",
+      "url": "http://commons.wim.usgs.gov/arcgis/rest/services/AIR_NDGA/AIR_NDGA/MapServer/export",
+      "options": {},
+      "defaults": {
+        "visible":false
+      }
+    },
+    "september_arctic_sea_ice": {
+      "type": "ArcGISRest",
+      "id": "september_arctic_sea_ice",
+      "title": "View how Arctic sea ice—shown in September of each year from 2000-2015 has changed over time. Reduced sea ice restricts the range of subsistence hunters, and exposes the coast to erosion.",
+      "description": "",
+      "url": "",
+      "options": {},
+      "defaults": {
+        "visible":false
+      }
+    },
+    "energy_infrastructure": {
+      "type": "ArcGISRest",
+      "id": "energy_infrastructure",
+      "title": "Energy Infrastructure",
+      "description": "Check the locations of power plants and oil and gas refineries. View the paths of pipelines that transport energy materials and transmission wires that distribute electricity.",
+      "url": "https://eia-ms.esri.com/arcgis/rest/services/20160309StateEnergyProfilesMap/MapServer",
+      "options": {},
+      "defaults": {
+        "visible":false
+      }
+    },
+    "energy_infrastructure": {
+      "type": "ArcGISRest",
+      "id": "permafrost",
+      "title": "Permafrost",
+      "description": "Check where the ground is currently considered to be “permanently” frozen. Thawing permafrost can result in damage to infrastructure when the ground surface becomes uneven or unstable. Permafrost is categorized as continuous, discontinuous, sporadic, or isolated, based on its areal extent.",
+      "url": "https://eia-ms.esri.com/arcgis/rest/services/20160309StateEnergyProfilesMap/MapServer",
+      "options": {},
+      "defaults": {
+        "visible":false
+      }
+    }
+  }
+}
