@@ -360,6 +360,11 @@ input.location-mapper:focus:-ms-input-placeholder {
   height: 7%;
 }
 
+.page-type-case #case-menu li:last-child .layer-info, .page-type-case #case-menu li:nth-last-child(2) .layer-info {
+  top: 0;
+  bottom:auto;
+}
+
 .page-type-location .location-map-legend-container {
   display: block;
   position: absolute;

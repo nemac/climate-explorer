@@ -88,13 +88,19 @@
         '</div>'+
         '<div class="topic-layers white-menu">'+
             '<h4>Data layers include:</h4>'+
-            '<ul id="coastal-flooding-layer-list">'+
+            '<ul id="'+i+'-layer-list">'+
             '</ul>'+
         '</div>'+
-        '<a href="case.php?id=coastal-flooding" class="button bg-trans border-white hover-bg-white plus">View details</a>'+
+        '<a href="case.php?id=<?php echo $param ?>&group='+i+'" class="button bg-trans border-white hover-bg-white plus">View details</a>'+
       '</article>';
 
       $('#subtopics').append(html);
+
+      $.each(group.layers, function(f, layer) {
+        console.log('layer', layer, 'data.layers', data.layers);
+        var li = '<li>'+data.layers[layer].title+'</li>';
+        $('#'+i+'-layer-list').append(li);
+      });
     });
   });
 
