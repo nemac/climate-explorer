@@ -17,7 +17,6 @@ Impacts.prototype.createMap = function() {
   var qs = this.parseQueryString(qtrs);
 
   this.visibleLayers = ( qs.layers ) ? qs.layers.split(',') : null;
-  this.group = ( qs.group ) ? qs.group : '';
 
   var zoom = ( this.page === 'drought' ) ? 4 : 5;
   zoom = ( qs.zoom ) ? qs.zoom : zoom;
@@ -28,7 +27,7 @@ Impacts.prototype.createMap = function() {
   if ( this.page === 'arctic' && !center ) {
     view = new ol.View({
       center: ol.proj.transform([-160.41, 60.75], 'EPSG:4326', 'EPSG:3857'),
-      zoom: 4
+      zoom: 4.5
     });
   } else {
     view = new ol.View({
@@ -70,7 +69,7 @@ Impacts.prototype.createMap = function() {
 Impacts.prototype.getData = function() {
   var self = this;
 
-  $.getJSON('./resources/data/data-grouped.json', function(data) {
+  $.getJSON('./resources/data/data.json', function(data) {
     self.data = data;
 
     //self.createJsonLayer('weather_stations');
@@ -243,13 +242,13 @@ Impacts.prototype.wireMapEvents = function () {
 */
 Impacts.prototype.createLegend = function() {
   var self = this;
-  var layerIds = this.data.topics[this.page].groups[this.group].layers;
+  var layerIds = this.data.cases[this.page].layers;
 
   var checked, sublayer, display;
   $.each(layerIds, function(i, id) {
     checked = (i === 0) ? 'checked' : '';
     sublayer = self.data.layers[id].sublayers;
-
+    
     icon_class = (i === 0) ? 'icon-view-on' : 'icon-view-off';
 
     var tmpl = '<li class="legend" id="legend-'+id+'">' +
@@ -259,9 +258,9 @@ Impacts.prototype.createLegend = function() {
       '<span class="icon layer-toggle ' + icon_class + '"></span>' +
       '<a href="#info-'+id+'" class="help icon icon-help"></a>' +
       '</div>';
-
+      
       //'<input class="visibility" id="visibility-'+id+'" type="checkbox" '+checked+'/>' +
-
+      
         if ( sublayer ) {
           tmpl += '<div class="sublayer-slider"></div>'+
             '<div class="sublayer-range-values" id="range-'+id+'"></div>';
@@ -269,19 +268,19 @@ Impacts.prototype.createLegend = function() {
       tmpl += '<div id="info-'+id+'" class="layer-info">'+
         '<h3>'+self.data.layers[id].title+'</h3>'+
         '<div class="opacity-slider-wrap"><h4>Layer opacity</h4><div class="opacity-slider" id="opacity-'+id+'"></div></div>' +
-
+        
         '<div class="info-accordion">'+
           '<h4>Layer description</h4>'+
           '<div>'+
             '<p>'+self.data.layers[id].description+'</p>'+
           '</div>'+
-
+        
           '<h4>Legend</h4>'+
           '<div>'+
             '<img src="resources/img/legend_dummy.png">'+
           '</div>'+
         '</div>'+
-
+        
         '<div class="actions">'+
           '<a href="#" class="layer-info-close"><span class="icon icon-close"></span>Close</a>'+
           '<a href="#" class="layer-info-next"><span class="icon icon-arrow-right"></span>Next</a>'+
@@ -290,7 +289,7 @@ Impacts.prototype.createLegend = function() {
     '</li>';
 
     $('#case-menu').append(tmpl);
-
+    
     $('#case-menu').find('.layer-info').find('.info-accordion').accordion({
       header: 'h4',
       heightStyle: 'content',
@@ -299,7 +298,7 @@ Impacts.prototype.createLegend = function() {
         "header": "icon-arrow-right",
         "activeHeader": "icon-arrow-down"
       }
-    });
+    })
 
     if ( sublayer ) {
       self.subLayers[id] = self.data.layers[id].sublayers;
@@ -424,7 +423,7 @@ Impacts.prototype.reorderLayers = function() {
 Impacts.prototype.addLayers = function() {
   var self = this;
 
-  var layerIds = this.data.topics[this.page].groups[this.group].layers;
+  var layerIds = this.data.cases[this.page].layers;
   var clone = layerIds.slice(0);
 
   var layer;
@@ -446,21 +445,20 @@ Impacts.prototype.addLayers = function() {
         });
 
 
-        // if ( !self.visibleLayers ) {
-        //   if ( i === clone.length - 1 && e === 0 ) {
-        //     layer.setVisible(true);
-        //   } else {
-        //     layer.setVisible(false);
-        //   }
-        // } else {
-        //   if ( self.visibleLayers.indexOf(sublayer.id) !== -1 ) {
-        //     layer.setVisible(true);
-        //   } else {
-        //     layer.setVisible(false);
-        //   }
-        // }
+        if ( !self.visibleLayers ) {
+          if ( i === clone.length - 1 && e === 0 ) {
+            layer.setVisible(true);
+          } else {
+            layer.setVisible(false);
+          }
+        } else {
+          if ( self.visibleLayers.indexOf(sublayer.id) !== -1 ) {
+            layer.setVisible(true);
+          } else {
+            layer.setVisible(false);
+          }
+        }
 
-        layer.setVisible(true);
         layer.set('layer_id', sublayer.id);
         self.map.addLayer(layer);
 

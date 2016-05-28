@@ -1,0 +1,380 @@
+{
+  "topics": {
+    "arctic": {
+      "description": "Dramatic reductions in Arctic sea ice threaten ecosystems and fisheries, disrupt traditional lifestyles, and erode coastlines. Increasing development activities may boost the region’s economy, but they also increase risks to ecosystems and the environment. Explore landcover, current drought, and historical observations in this rapidly changing region.",
+      "groups": {
+        "group1": {
+          "title": "BIA Lands and Arctic Sea Ice",
+          "description": "Explore the environmental changes Alaska Native Villages have seen as the extent of September Arctic sea ice has decreased over time.",
+          "layers": [
+            "bia_indian_lands",
+            "september_arctic_sea_ice"
+          ]
+        },
+        "group2": {
+          "title": "Energy Infrastructure and Permafrost",
+          "description": "Explore where energy infrastructure sits atop permafrost that is increasingly susceptible to melting.",
+          "layers": [
+            "energy_infrastructure",
+            "permafrost"
+          ]
+        }
+      }
+    },
+    "coastal": {
+      "description": "As sea level rises, so do instances of flooding along the coast. Rising waters increasingly threaten buildings and infrastructure through storm surge, strong waves, heavy precipitation, and high-tide \"nuisance\" flooding. Property owners and municipalities can check their vulnerability to coastal flooding from current flood hazards as well as future sea level rise.",
+      "groups": {
+        "group1": {
+          "title": "Critical Facilities and Sea Level Rise",
+          "description": "Explore which critical coastal facilities are threatened by sea level rise.",
+          "layers": [
+            "critical_coastal_facilities",
+            "sea_level_rise"
+          ]
+        },
+        "group2": {
+          "title": "Development and Coastal Flooding",
+          "description": "Explore how developed coastal areas are threatened by shallow coastal floods.",
+          "layers": [
+            "development_density",
+            "shallow_coastal_flooding"
+          ]
+        },
+        "group3": {
+          "title": "Public Attractions and Coastal Vulnerability",
+          "description": "Explore which landmark buildings are located in areas susceptible to sea-level rise.",
+          "layers": [
+            "public_attractions",
+            "coastal_vulnerability_index"
+          ]
+        },
+        "group4": {
+          "title": "Hurricane Evacuation and Storm Surge",
+          "description": "Explore where hurricane evacuation routes may be threatened by storm surge. ",
+          "layers": [
+            "hurricane_evacuation",
+            "storm_surge"
+          ]
+        }
+      }
+    },
+    "ecosystems": {
+      "description": "Ecosystems that serve as natural sources of food, timber, and clean water are increasingly threatened by changing conditions. View landcover, wetlands, and rivers & streams to visualize the location and extent of land-based ecosystems. Compare these locations to climate stressors such as sea level rise and drought.",
+      "groups": {
+        "group1": {
+        }
+      }
+    },
+    "energy": {
+      "description": "As temperatures warm, demand for energy is expected to increase. Exposed energy infrastructure—particularly along our coasts—may lead to disruptions in energy supply. Managers of energy assets can check current flood hazards as well as visualizations of flooding from future sea level rise.",
+      "groups": {
+        "group1": {
+        }
+      }
+    },
+    "food": {
+      "description": "Increasing heat waves, drought, and very heavy precipitation have the potential to reduce agricultural productivity in future decades. Changes in crop yields and livestock production can increase food prices and reduce food security.",
+      "groups": {
+        "group1": {
+        }
+      }
+    },
+    "health": {
+      "description": "Increases in extreme weather events, poor air quality, and transmittable illnesses threaten human health. Explore areas where high percentages of residents are elderly and/or poor, and where other factors increase social vulnerability. People in these areas may require assistance during events such as heat waves, storms, or flooding.",
+      "groups": {
+        "group1": {
+        }
+      }
+    },
+    "marine": {
+      "description": "This is the main topic desciption. Should include overview of all groups on the page. It goes on the main headline on the topics page",
+      "groups": {
+        "group1": {
+        }
+      }
+    },
+    "transportation": {
+      "description": "Extreme events increasingly threaten land-, water-, and air-based transportation systems and supply chains. View the location of transportation assets such as highways, bridges, and airports, and check to see where they coincide with flooding hazards and the risk of inundation from sea level rise.",
+      "groups": {
+        "group1": {
+        }
+      }
+    },
+    "tribal_nations": {
+      "description": "Climate change increasingly impacts land, foods, and lifestyles of American Indians. Survey the extent of Indian land and explore landcover and social vulnerability in these locations. Check the land's vulnerability to climate stressors such as sea level rise, flood hazards, and drought.",
+      "groups": {
+        "group1": {
+        }
+      }
+    },
+    "water": {
+      "description": "Changing conditions are increasing threats of both flooding and drought. Flood zone maps can help you identify areas that are at risk of flooding and the current drought layer shows which regions are abnormally dry or experiencing drought. View the land cover layer to get a sense of what may be impacted by flooding or drought.",
+      "groups": {
+        "group1": {
+        }
+      }
+    }
+  },
+  "layers": {
+    "weather_stations": {
+      "type": "JSON",
+      "id": "weather_stations",
+      "title": "Weather Stations",
+      "description": "Check how observed temperature and precipitation measurements compare to long-term averages at weather stations near your area of interest. Look for times when temperatures are above average and/or precipitation is below average for weeks at a time: these indicate times that drought conditions may develop.",
+      "url": "resources/data/wx_stations.json",
+      "options": {},
+      "defaults": {
+        "visible":false
+      }
+    },
+    "bia_indian_lands": {
+      "type": "ArcGISRest",
+      "id": "bia_indian_lands",
+      "title": "BIA Indian Lands",
+      "description": "This layer shows  American Indian Reservations, Federally Recognized Tribal Entities, and Alaska Native Villages in the contiguous U.S. and Alaska.",
+      "url": "http://commons.wim.usgs.gov/arcgis/rest/services/AIR_NDGA/AIR_NDGA/MapServer",
+      "options": {},
+      "defaults": {
+        "visible":false
+      }
+    },
+    "september_arctic_sea_ice": {
+      "type": "ArcGISRest",
+      "id": "september_arctic_sea_ice",
+      "title": "September Arctic Sea Ice",
+      "description": "View how Arctic sea ice—shown in September of each year from 2000-2015 has changed over time. Reduced sea ice restricts the range of subsistence hunters, and exposes the coast to erosion.",
+      "url": "",
+      "options": {},
+      "defaults": {
+        "visible":false
+      }
+    },
+    "energy_infrastructure": {
+      "type": "ArcGISRest",
+      "id": "energy_infrastructure",
+      "title": "Energy Infrastructure",
+      "description": "Check the locations of power plants and oil and gas refineries. View the paths of pipelines that transport energy materials and transmission wires that distribute electricity.",
+      "url": "https://eia-ms.esri.com/arcgis/rest/services/20160309StateEnergyProfilesMap/MapServer",
+      "options": {},
+      "defaults": {
+        "visible":false
+      }
+    },
+    "permafrost": {
+      "type": "ArcGISRest",
+      "id": "permafrost",
+      "title": "Permafrost",
+      "description": "Check where the ground is currently considered to be “permanently” frozen. Thawing permafrost can result in damage to infrastructure when the ground surface becomes uneven or unstable. Permafrost is categorized as continuous, discontinuous, sporadic, or isolated, based on its areal extent.",
+      "url": "https://eia-ms.esri.com/arcgis/rest/services/20160309StateEnergyProfilesMap/MapServer",
+      "options": {},
+      "defaults": {
+        "visible":false
+      }
+    },
+    "critical_coastal_facilities": {
+      "type": "ArcGISRest",
+      "id": "critical_coastal_facilities",
+      "title": "Critical Coastal Facilities",
+      "description": "View locations of hospitals, schools, and fire and police stations along the Atlantic and Gulf Coasts. If flooded, these structures present an immediate threat to life, public health, and safety.",
+      "url": "http://services.nationalmap.gov/arcgis/rest/services/structures/MapServer",
+      "options": {
+        "layer": "4"
+      },
+      "defaults": {
+        "visible":false
+      }
+    },
+    "sea_level_rise": {
+      "type": "ArcGISRest",
+      "id": "sea_level_rise",
+      "title": "Sea Level Rise (For 1 to 6 feet) ",
+      "description": "View areas that will be covered by seawater during high tides after the indicated amount of local sea level rise. A few inches of water will cover the lightest blue areas; water will be deeper where the map is dark blue. Bright green areas will be below sea level, but are not connected to the ocean. Visualize changes over time by turning on progressively higher sea levels.",
+      "sublayers": [
+        {
+          "type": "ArcGISRest",
+          "id": "sea_level_rise_1ft",
+          "title": "Inundation from Sea Level Rise 1ft",
+          "url": "https://coast.noaa.gov/arcgis/rest/services/dc_slr/slr_1ft/MapServer",
+          "options": {},
+          "defaults": {
+            "visible":false
+          }
+        },
+        {
+          "type": "ArcGISRest",
+          "id": "sea_level_rise_2ft",
+          "title": "Inundation from Sea Level Rise 2ft",
+          "url": "https://coast.noaa.gov/arcgis/rest/services/dc_slr/slr_2ft/MapServer",
+          "options": {},
+          "defaults": {
+            "visible":false
+          }
+        },
+        {
+          "type": "ArcGISRest",
+          "id": "sea_level_rise_3ft",
+          "title": "Inundation from Sea Level Rise 3ft",
+          "url": "https://coast.noaa.gov/arcgis/rest/services/dc_slr/slr_3ft/MapServer",
+          "options": {},
+          "defaults": {
+            "visible":false
+          }
+        },
+        {
+          "type": "ArcGISRest",
+          "id": "sea_level_rise_4ft",
+          "title": "Inundation from Sea Level Rise 4ft",
+          "url": "https://coast.noaa.gov/arcgis/rest/services/dc_slr/slr_4ft/MapServer",
+          "options": {},
+          "defaults": {
+            "visible":false
+          }
+        },
+        {
+          "type": "ArcGISRest",
+          "id": "sea_level_rise_5ft",
+          "title": "Inundation from Sea Level Rise 5ft",
+          "url": "https://coast.noaa.gov/arcgis/rest/services/dc_slr/slr_5ft/MapServer",
+          "options": {},
+          "defaults": {
+            "visible":false
+          }
+        },
+        {
+          "type": "ArcGISRest",
+          "id": "sea_level_rise_6ft",
+          "title": "Inundation from Sea Level Rise 6ft",
+          "url": "https://coast.noaa.gov/arcgis/rest/services/dc_slr/slr_6ft/MapServer",
+          "options": {},
+          "defaults": {
+            "visible":false
+          }
+        }
+      ],
+      "defaults": {
+        "units": "Feet"
+      }
+    },
+    "development_density": {
+      "type": "ArcGISRest",
+      "id": "development_density",
+      "title": "Development Density",
+      "description": "View the intensity of development across land based on the percentage of constructed versus natural materials at each location. Areas that are essentially covered by buildings are classified as high intensity development. Parks and other areas with less than 20 percent constructed materials are considered as open space.",
+      "url": "https://coast.noaa.gov/arcgis/rest/services/FloodExposureMapper/CFEM_LandCover_Developed/MapServer",
+      "options": {
+      },
+      "defaults": {
+        "visible":false
+      }
+    },
+    "shallow_coastal_flooding": {
+      "type": "ArcGISRest",
+      "id": "shallow_coastal_flooding",
+      "title": "Shallow Coastal Flooding",
+      "description": "View coastal areas susceptible to flooding during high tide. These “nuisance” floods can occur during very high tides, or when distant winds push seawater onto land.",
+      "url": "https://coast.noaa.gov/arcgis/rest/services/FloodExposureMapper/CFEM_ShallowCoastalFlooding/MapServer",
+      "options": {
+        "layer": "show:34"
+      },
+      "defaults": {
+        "visible":false
+      }
+    },
+    "public_attractions": {
+      "type": "ArcGISRest",
+      "id": "public_attractions",
+      "title": "Public Attractions",
+      "description": "View non-emergency structures catalogued in the National Map.",
+      "url": "http://services.nationalmap.gov/arcgis/rest/services/structures/MapServer",
+      "options": {},
+      "defaults": {
+        "visible":false
+      }
+    },
+    "coastal_vulnerability_index": {
+      "type": "ArcGISRest",
+      "id": "coastal_vulnerability_index",
+      "title": "Coastal Vulnerability Index",
+      "description": "Check which coastal areas are most susceptible to change as a result of sea-level rise. Index values are based on physical parameters such as the shape of the coast, tidal range, and average wave heights.",
+      "url": "http://coastalmap.marine.usgs.gov/cmgp/rest/services/National/coastal_vulnerability_index/MapServer",
+      "options": {
+      },
+      "defaults": {
+        "visible":false
+      }
+    },
+    "hurricane_evacuation": {
+      "type": "ArcGISRest",
+      "id": "hurricane_evacuation",
+      "title": "Hurricane Evactuation Routes",
+      "description": "View major roads designated as hurricane evacuation routes. ",
+      "url": "http://gis.fema.gov/REST/services/FEMA/EvacRoutes/MapServer",
+      "options": {
+      },
+      "defaults": {
+        "visible":false
+      }
+    },
+    "storm_surge": {
+      "type": "ArcGISRest",
+      "id": "storm_surge",
+      "title": "Storm Surge (Categories 1-5)",
+      "description": "View potential inundation due to storm-surge flooding from landfalling hurricanes of categories 1-5.",
+      "sublayers": [
+        {
+          "type": "ArcGISRest",
+          "id": "storm_surge_1",
+          "title": "Storm surge category 1 hurricane",
+          "url": "http://tiles.arcgis.com/tiles/C8EMgrsFcRFL6LrL/arcgis/rest/services/NHC_SeamlessSLOSH_Category1/MapServer",
+          "options": {},
+          "defaults": {
+            "visible":false
+          }
+        },
+        {
+          "type": "ArcGISRest",
+          "id": "storm_surge_2",
+          "title": "Storm surge category 2 hurricane",
+          "url": "http://tiles.arcgis.com/tiles/C8EMgrsFcRFL6LrL/arcgis/rest/services/NHC_SeamlessSLOSH_Category2/MapServer",
+          "options": {},
+          "defaults": {
+            "visible":false
+          }
+        },
+        {
+          "type": "ArcGISRest",
+          "id": "storm_surge_3",
+          "title": "Storm surge category 3 hurricane",
+          "url": "http://tiles.arcgis.com/tiles/C8EMgrsFcRFL6LrL/arcgis/rest/services/NHC_SeamlessSLOSH_Category3/MapServer",
+          "options": {},
+          "defaults": {
+            "visible":false
+          }
+        },
+        {
+          "type": "ArcGISRest",
+          "id": "storm_surge_4",
+          "title": "Storm surge category 4 hurricane",
+          "url": "http://tiles.arcgis.com/tiles/C8EMgrsFcRFL6LrL/arcgis/rest/services/NHC_SeamlessSLOSH_Category4/MapServer",
+          "options": {},
+          "defaults": {
+            "visible":false
+          }
+        },
+        {
+          "type": "ArcGISRest",
+          "id": "storm_surge_5",
+          "title": "Storm surge category 5 hurricane",
+          "url": "http://tiles.arcgis.com/tiles/C8EMgrsFcRFL6LrL/arcgis/rest/services/NHC_SeamlessSLOSH_Category5/MapServer",
+          "options": {},
+          "defaults": {
+            "visible":false
+          }
+        }
+      ],
+      "defaults": {
+        "units": "Hurricane Categories"
+      }
+    }
+  }
+}

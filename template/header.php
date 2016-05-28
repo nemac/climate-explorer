@@ -73,8 +73,8 @@
     ),
 
     array(
-      'variable' => 'coasts',
-      'name' => 'Coasts',
+      'variable' => 'coastal',
+      'name' => 'Coastal',
       'detail' => "<p>As sea level rises, so do instances of flooding along the coast. Rising waters increasingly threaten buildings and infrastructure through storm surge, strong waves, heavy precipitation, and high-tide \"nuisance\" flooding. Property owners and municipalities can check their vulnerability to coastal flooding from current flood hazards as well as future sea level rise.</p>",
       'source' => 'NOAA, 2015'
     ),
@@ -125,6 +125,13 @@
       'variable' => 'transportation',
       'name' => 'Transportation',
       'detail' => "<p>Extreme events increasingly threaten land-, water-, and air-based transportation systems and supply chains. View the location of transportation assets such as highways, bridges, and airports, and check to see where they coincide with flooding hazards and the risk of inundation from sea level rise.</p>",
+      'source' => 'NOAA, 2015'
+    ),
+
+    array(
+      'variable' => 'marine',
+      'name' => 'Marine',
+      'detail' => "<p>.</p>",
       'source' => 'NOAA, 2015'
     )
 

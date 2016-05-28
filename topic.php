@@ -1,7 +1,7 @@
 <?php
-  
+
   include_once('functions.php');
-  
+
 ?>
 <!doctype html>
 <html>
@@ -19,13 +19,14 @@
 
     <script type="text/javascript" src="./resources/js/jquery.min.js"></script>
     <script type="text/javascript" src="./resources/js/jquery-ui.min.js"></script>
-    
+
     <?php
-      
+
       $share_data['url'] = current_URL();
-      
+
       echo opengraph_output($share_data);
-      
+
+      $param = $_REQUEST['param'];
     ?>
 
 </head>
@@ -49,103 +50,57 @@
         <section id="topic-splash" class="page-splash">
             <div class="splash-text">
                 <h4>Topic</h4>
-                <h1>Ecosystem Vulnerability</h1>
-                <p>Despite extensive human engineering of Earth’s resources, our economy and culture continue to depend on natural ecosystem services for food, timber, clean water, and more.</p>
+                <h1><?php echo $param ?></h1>
+                <p id="topic-description"></p>
             </div>
 
             <div id="subtopics-menu" class="white-menu">
               <h4>Sub-topics</h4>
-              <ul>
-                <li><a href="#subtopic-coastal-flooding" class="smooth-scroll">Coastal Flooding</a></li>
-                <li><a href="#subtopic-fire-regimes" class="smooth-scroll">Drought</a></li>
+              <ul id="subtopics-list">
+
               </ul>
               <a href="case.php?id=" id="subtopics-view-all" class="button display-block border-white color-orange arrow-right">View all</a>
             </div>
         </section>
 
-        <section id="subtopics" class="topics-list">
-          
-          <?php
-            
-            // BEGIN LOOP
-            
-            $subtopic = 'coastal-flooding';
-            
-            $subtopic_ID = 'subtopic-' . $subtopic;
-            
-          ?>
-          
-          <article id="<?php echo $subtopic_ID; ?>" class="topic-banner">
-            <div class="topic-banner-text">
-                <h4>Sub-topic</h4>
-                <h3><a href="case.php?id=coastal-flooding">Coastal Flooding</a></h3>
-                <p>Municipalities and property owners can check their vulnerability to coastal flooding. Map layers show areas of current flood hazards as well as visualizations of flooding from future sea level rise.</p>
-            </div>
+        <section id="subtopics" class="topics-list"></section>
 
-            <div class="topic-layers white-menu">
-                <h4>Data layers include:</h4>
-
-                <ul id="coastal-flooding-layer-list">
-                </ul>
-            </div>
-
-            <a href="case.php?id=coastal-flooding" class="button bg-trans border-white hover-bg-white plus">View details</a>
-          </article>
-          
-          <?php
-            
-            // END LOOP
-            
-          ?>
-
-        </section>
     </div>
 </div>
 
 <?php include_once('template/footer.php'); ?>
 
 <script>
-
-  $.getJSON('./resources/data/data.json', function(data) {
+  $.getJSON('./resources/data/data-grouped.json', function(data) {
     var li;
-    $.each(data.cases.drought.layers, function(i, layer) {
-      li = '<li>'+data.layers[layer].title+'</li>';
-      $('#drought-layer-list').append(li);
-    });
+    var desc = data.topics['<?php echo $param ?>'].description;
+    $('#topic-description').html(desc);
 
-    $.each(data.cases.coastal_flooding.layers, function(i, layer) {
-      li = '<li>'+data.layers[layer].title+'</li>';
-      $('#coastal-flooding-layer-list').append(li);
-    });
+    $.each(data.topics['<?php echo $param; ?>'].groups, function(i, group) {
+      li = '<li>'+group.title+'</li>';
+      $('#subtopics-list').append(li);
 
-    $.each(data.cases.flooding.layers, function(i, layer) {
-      li = '<li>'+data.layers[layer].title+'</li>';
-      $('#flooding-layer-list').append(li);
-    });
+      var html = '<article id="<?php echo $param ?>" class="topic-banner">'+
+        '<div class="topic-banner-text">'+
+            '<h4>Sub-topic</h4>'+
+            '<h3><a href="case.php?id=coastal-flooding">'+group.title+'</a></h3>'+
+            '<p>'+group.description+'</p>'+
+        '</div>'+
+        '<div class="topic-layers white-menu">'+
+            '<h4>Data layers include:</h4>'+
+            '<ul id="'+i+'-layer-list">'+
+            '</ul>'+
+        '</div>'+
+        '<a href="case.php?id=<?php echo $param ?>&group='+i+'" class="button bg-trans border-white hover-bg-white plus">View details</a>'+
+      '</article>';
 
-    $.each(data.cases.tribal_flooding.layers, function(i, layer) {
-      li = '<li>'+data.layers[layer].title+'</li>';
-      $('#tribal-flooding-layer-list').append(li);
-    });
+      $('#subtopics').append(html);
 
-    $.each(data.cases.tribal_drought.layers, function(i, layer) {
-      li = '<li>'+data.layers[layer].title+'</li>';
-      $('#tribal-drought-layer-list').append(li);
-    });
-
-    $.each(data.cases.ecosystems.layers, function(i, layer) {
-      li = '<li>'+data.layers[layer].title+'</li>';
-      $('#ecosystems-layer-list').append(li);
-    });
-
-    $.each(data.cases.human_health.layers, function(i, layer) {
-      li = '<li>'+data.layers[layer].title+'</li>';
-      $('#human-health-layer-list').append(li);
-    });
-
-    $.each(data.cases.transportation.layers, function(i, layer) {
-      li = '<li>'+data.layers[layer].title+'</li>';
-      $('#transportation-layer-list').append(li);
+      $.each(group.layers, function(f, layer) {
+        console.log('layer', layer, 'data.layers', data.layers);
+        var li = '<li>'+data.layers[layer].title+'</li>';
+        $('#'+i+'-layer-list').append(li);
+      });
     });
   });
 
