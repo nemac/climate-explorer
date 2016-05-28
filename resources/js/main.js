@@ -53,15 +53,19 @@ App.prototype.locationSearch = function() {
     }
 
     var fips;
+    // console.log('data.administrative_area_level_1_short', data.administrative_area_level_1_short);
+    // console.log('COUNTY', county);
     $.each(self.fips_codes[data.administrative_area_level_1_short], function(i, c) {
-      if (c.label === county.replace('+', ' ')) {
+      if ( c.label === county.replace(/\+/g, ' ') || c.label === county.replace(/\+County/g, ' city')) {
         fips = c.fips;
+        if ( c.label.match('city') ) {
+          county = county.replace('+County', '+City');
+        }
       }
     });
 
     if ( data.administrative_area_level_1_short === "DC" ) { fips = '11001'; }
     //console.log('data', data, 'fips', fips);
-
     if ( fips ) {
       window.location.href = 'location.php?county='+county+'&city='+city+'&fips='+fips+'&lat='+lat+'&lon='+lon;
     }
@@ -188,7 +192,6 @@ App.prototype.takeHomeTour = function() {
   });
 
   this.homeTour.on('show', function() {
-    console.log('show!');
     $('.cd-cover-layer').addClass('is-visible');
     setTimeout(function() {
       $('.cd-cover-layer').removeClass('is-visible');
