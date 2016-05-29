@@ -55,6 +55,14 @@
             "hurricane_evacuation",
             "storm_surge"
           ]
+        },
+        "group5": {
+          "title": "Coastal Power and Storm Surge",
+          "description": "Explore which coastal power plants may be vulnerable to storm surge.",
+          "layers": [
+            "coastal_power_plants",
+            "storm_surge"
+          ]
         }
       }
     },
@@ -62,6 +70,36 @@
       "description": "Ecosystems that serve as natural sources of food, timber, and clean water are increasingly threatened by changing conditions. View landcover, wetlands, and rivers & streams to visualize the location and extent of land-based ecosystems. Compare these locations to climate stressors such as sea level rise and drought.",
       "groups": {
         "group1": {
+          "title": "Coastal wetlands and sea level rise",
+          "description": "Explore how wetlands, natural areas, and open spaces along coasts are threatened by sea level rise.",
+          "layers": [
+            "coastal_wetlands",
+            "sea_level_rise"
+          ]
+        },
+        "group2": {
+          "title": "Polution sources and flood hazards",
+          "description": "Explore which ecosystems within flood hazard zones could be contaminated by potential pollution sources.",
+          "layers": [
+            "polution_sources",
+            "flood_hazard_zones"
+          ]
+        },
+        "group3": {
+          "title": "Critial Habitat and Temperatures",
+          "description": "Explore areas of critical habitat for threatened and endangered species. Check how future maximum temperatures are projected to change in these locations in the coming decades. ",
+          "layers": [
+            "critical_habitat",
+            "mean_daily_max"
+          ]
+        },
+        "group4": {
+          "title": "Forests and Days Below Freezing",
+          "description": "Explore National Forests and check where reductions in days below 32° may enable insects such as bark beetles to survive and thrive during winter.",
+          "layers": [
+            "national_forests",
+            "days_tmin_blw_0"
+          ]
         }
       }
     },
@@ -374,6 +412,103 @@
       ],
       "defaults": {
         "units": "Hurricane Categories"
+      }
+    },
+    "coastal_power_plants": {
+      "type": "ArcGISRest",
+      "id": "coastal_power_plants",
+      "title": "Coastal Power Plants",
+      "description": "View locations and types of power plants along the U.S. coast and Great Lakes.",
+      "url": "https://coast.noaa.gov/arcgis/rest/services/MarineCadastre/OceanEnergy/MapServer",
+      "options": {
+        "layer": "show:0"
+      },
+      "defaults": {
+        "visible":false
+      }
+    },
+    "coastal_wetlands": {
+      "type": "ArcGISRest",
+      "id": "coastal_wetlands",
+      "title": "Coastal Wetlands",
+      "description": "View wetlands and other natural areas along the coast.",
+      "url": "https://coast.noaa.gov/arcgis/rest/services/FloodExposureMapper/CFEM_NaturalAreasOpenSpace/MapServer",
+      "options": {
+        "layer": "show:9"
+      },
+      "defaults": {
+        "visible":false
+      }
+    },
+    "flood_hazard_zones": {
+      "type": "tileWMS",
+      "id": "flood_hazard_zones",
+      "title": "Flood Hazard Zones",
+      "description": "Check which local areas have been designated by FEMA to be at risk of flooding. Aqua areas show land judged to have a 1% chance of flooding each year; this area is also known as the base flood zone or 100-year flood zone. Colors and patterns also indicate floodways and other hazard areas.",
+      "url": "https://hazards.fema.gov/gis/nfhl/services/public/NFHLWMS/MapServer/WmsServer",
+      "options": {},
+      "defaults": {
+        "visible":false
+      }
+    },
+    "polution_sources": {
+      "type": "ArcGISRest",
+      "id": "polution_sources",
+      "title": "Potential Polution Sources",
+      "description": "View facilities, sites, or places subject to environmental regulation or of environmental interest such as Brownfield properties, hazardous waste sites, Superfund sites, and toxic chemicals.",
+      "url": "https://coast.noaa.gov/arcgis/rest/services/FloodExposureMapper/CFEM_EPA_FRSPoints/MapServer",
+      "options": {
+      },
+      "defaults": {
+        "visible":false
+      }
+    },
+    "critical_habitat": {
+      "type": "ArcGISRest",
+      "id": "critical_habitat",
+      "title": "Critical Habitit",
+      "description": "View the location of habitat designated as critical in order to preserve the ecosystems where threatened and endangered species live.",
+      "url": "http://maps1.arcgisonline.com/ArcGIS/rest/services/USFWS_Critical_Habitat/MapServer",
+      "options": {
+      },
+      "defaults": {
+        "visible":false
+      }
+    },
+    "mean_daily_max": {
+      "type": "Tile",
+      "id": "mean_daily_max",
+      "title": "Mean Daily Max Temperature Forecast (2090)",
+      "description": "Maximum temperatures are one indicator of conditions that can interfere with ecosystem functions. View how temperatures are projected to change during future decades.",
+      "url": "http://tiles.habitatseven.work/2090_summer_rcp85_ea_tasmax/{z}/{x}/{y}.png",
+      "options": {
+      },
+      "defaults": {
+        "visible":false
+      }
+    },
+    "national_forests": {
+      "type": "ArcGISRest",
+      "id": "national_forests",
+      "title": "National Forests",
+      "description": "View the location and extent of lands designated as National Forests.",
+      "url": "",
+      "options": {
+      },
+      "defaults": {
+        "visible":false
+      }
+    },
+    "days_tmin_blw_0": {
+      "type": "Tile",
+      "id": "days_tmin_blw_0",
+      "title": "Days below 32 degrees 2090",
+      "description": "View how the number of days per year with below-freezing temperatures decreases over time.",
+      "url": "http://tiles.habitatseven.work/2090_annual_rcp45_days-tmin-blw/{z}/{x}/{y}.png",
+      "options": {
+      },
+      "defaults": {
+        "visible":false
       }
     }
   }
