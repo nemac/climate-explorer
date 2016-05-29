@@ -83,7 +83,7 @@
       var html = '<article id="<?php echo $param ?>" class="topic-banner">'+
         '<div class="topic-banner-text">'+
             '<h4>Sub-topic</h4>'+
-            '<h3><a href="case.php?id=coastal-flooding">'+group.title+'</a></h3>'+
+            '<h3><a href="case.php?id=<?php echo $param ?>&group='+i+'">'+group.title+'</a></h3>'+
             '<p>'+group.description+'</p>'+
         '</div>'+
         '<div class="topic-layers white-menu">'+
