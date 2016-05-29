@@ -446,21 +446,20 @@ Impacts.prototype.addLayers = function() {
         });
 
 
-        // if ( !self.visibleLayers ) {
-        //   if ( i === clone.length - 1 && e === 0 ) {
-        //     layer.setVisible(true);
-        //   } else {
-        //     layer.setVisible(false);
-        //   }
-        // } else {
-        //   if ( self.visibleLayers.indexOf(sublayer.id) !== -1 ) {
-        //     layer.setVisible(true);
-        //   } else {
-        //     layer.setVisible(false);
-        //   }
-        // }
+        if ( !self.visibleLayers ) {
+          if ( i === clone.length - 1 && e === 0 ) {
+            layer.setVisible(true);
+          } else {
+            layer.setVisible(false);
+          }
+        } else {
+          if ( self.visibleLayers.indexOf(sublayer.id) !== -1 ) {
+            layer.setVisible(true);
+          } else {
+            layer.setVisible(false);
+          }
+        }
 
-        layer.setVisible(true);
         layer.set('layer_id', sublayer.id);
         self.map.addLayer(layer);
 
@@ -502,6 +501,20 @@ Impacts.prototype.addLayers = function() {
             params: {
               'LAYERS': self.data.layers[id].options.layer || ''
             }
+          })
+        });
+      }
+
+      if ( self.data.layers[id].type === 'Tile' ) {
+        layer = new ol.layer.Tile({
+          source: new ol.source.XYZ({
+            urls:[
+              self.data.layers[id].url
+            ],
+            extent: [-32629438.63437604, -2729719.1541202106, 1966571.863721013, 14705261.249615353],
+            minZoom: 0,
+            maxZoom: 5,
+            tilePixelRatio: 1
           })
         });
       }
