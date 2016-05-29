@@ -107,6 +107,28 @@
       "description": "As temperatures warm, demand for energy is expected to increase. Exposed energy infrastructure—particularly along our coasts—may lead to disruptions in energy supply. Managers of energy assets can check current flood hazards as well as visualizations of flooding from future sea level rise.",
       "groups": {
         "group1": {
+          "title": "Power plants and sea level rise",
+          "description": "Explore where power plants are threatened by sea level rise.",
+          "layers": [
+            "power_plants",
+            "sea_level_rise"
+          ]
+        },
+        "group2": {
+          "title": "Power plants and heating degree days",
+          "description": "Explore areas where power plants may see reduced demand for electricity during winters as annual numbers of heating degree days decrease.",
+          "layers": [
+            "power_plants",
+            "heating_degree_day_18"
+          ]
+        },
+        "group3": {
+          "title": "Energy infrastructure and flood hazards",
+          "description": "Explore where energy infrastructure lies within or near flood hazard zones.",
+          "layers": [
+            "power_plants",
+            "flood_hazard_zones"
+          ]
         }
       }
     },
@@ -114,6 +136,28 @@
       "description": "Increasing heat waves, drought, and very heavy precipitation have the potential to reduce agricultural productivity in future decades. Changes in crop yields and livestock production can increase food prices and reduce food security.",
       "groups": {
         "group1": {
+          "title": "Cropland and drought",
+          "description": "Explore which crops are currently threatened by drought.",
+          "layers": [
+            "drought",
+            "cropland"
+          ]
+        },
+        "group2": {
+          "title": "Chickens and Mean Daily Temperature",
+          "description": "Explore locations where farms raise chickens for meat. Consider how chickens in these locations will fare in future decades by viewing projections for maximum temperatures.",
+          "layers": [
+            "chickens",
+            "mean_daily_max"
+          ]
+        },
+        "group3": {
+          "title": "Mooring facilities and floood hazards",
+          "description": "Explore where mooring facilities—where barges take on loads of grain from elevators along inland rivers—are within or near flood hazard zones.",
+          "layers": [
+            "mooring",
+            "flood_hazard_zones"
+          ]
         }
       }
     },
@@ -121,6 +165,36 @@
       "description": "Increases in extreme weather events, poor air quality, and transmittable illnesses threaten human health. Explore areas where high percentages of residents are elderly and/or poor, and where other factors increase social vulnerability. People in these areas may require assistance during events such as heat waves, storms, or flooding.",
       "groups": {
         "group1": {
+          "title": "Hospitals and Severe Weather",
+          "description": "Explore areas where hospitals have a heightened risk of severe weather in the next 3-7 days.",
+          "layers": [
+            "hospitals",
+            "severe_weather"
+          ]
+        },
+        "group2": {
+          "title": "Explore where hospitals are threatened by rising seas.",
+          "description": "Explore areas where hospitals have a heightened risk of severe weather in the next 3-7 days.",
+          "layers": [
+            "hospitals",
+            "sea_level_rise"
+          ]
+        },
+        "group3": {
+          "title": "Poverty and cooling degree days",
+          "description": "Explore how areas with relatively high percentages of people who live below the poverty line (many of whom lack access to air conditioning) intersect with projected increases in cooling degree days.",
+          "layers": [
+            "percent_poverty",
+            "cooling_degree_day_18"
+          ]
+        },
+        "group4": {
+          "title": "Percent elderly and days over 95",
+          "description": "Explore where areas with relatively high numbers of elderly residents coincide with days over 95°F. ",
+          "layers": [
+            "percent_elderly",
+            "days_tmax_abv_35"
+          ]
         }
       }
     },
@@ -128,6 +202,20 @@
       "description": "This is the main topic desciption. Should include overview of all groups on the page. It goes on the main headline on the topics page",
       "groups": {
         "group1": {
+          "title": "Fishing and wind potential",
+          "description": "Explore how locations of economic value for fishing overlap areas with relatively high potential for offshore wind energy.",
+          "layers": [
+            "atlantic_fishing",
+            "offshore_wind"
+          ]
+        },
+        "group2": {
+          "title": "Critical habitat and development",
+          "description": "Explore where areas of critical habitat are located offshore from recently developed land areas. Changes in sedimentation rates or introduction of pollution from land-based changes can stress habitat, increasing its vulnerability to climate-related threats.",
+          "layers": [
+            "critical_habitat",
+            "development"
+          ]
         }
       }
     },
@@ -135,6 +223,20 @@
       "description": "Extreme events increasingly threaten land-, water-, and air-based transportation systems and supply chains. View the location of transportation assets such as highways, bridges, and airports, and check to see where they coincide with flooding hazards and the risk of inundation from sea level rise.",
       "groups": {
         "group1": {
+          "title": "Transportation and sea level rise",
+          "description": "Explore which elements of our transportation system are threatened by rising seas.",
+          "layers": [
+            "transportation_system",
+            "sea_level_rise"
+          ]
+        },
+        "group2": {
+          "title": "Transportation and days over 95 F",
+          "description": "Explore where projections show transportation assets will face an increasing number of days with maximum temperatures over 95°F.",
+          "layers": [
+            "transportation_system",
+            "days_tmax_abv_35"
+          ]
         }
       }
     },
@@ -142,6 +244,20 @@
       "description": "Climate change increasingly impacts land, foods, and lifestyles of American Indians. Survey the extent of Indian land and explore landcover and social vulnerability in these locations. Check the land's vulnerability to climate stressors such as sea level rise, flood hazards, and drought.",
       "groups": {
         "group1": {
+          "title": "Tribal nations and sea level rise",
+          "description": "Explore BIA Indian lands in the Pacific Northwest that are threatened by sea level rise.",
+          "layers": [
+            "bia_indian_lands",
+            "sea_level_rise"
+          ]
+        },
+        "group2": {
+          "title": "Tribal nations and drought",
+          "description": "Explore which BIA Indian Lands have an increased risk of drought or wildfire over the next 8-14 days.",
+          "layers": [
+            "bia_indian_lands",
+            "drought"
+          ]
         }
       }
     },
@@ -149,6 +265,28 @@
       "description": "Changing conditions are increasing threats of both flooding and drought. Flood zone maps can help you identify areas that are at risk of flooding and the current drought layer shows which regions are abnormally dry or experiencing drought. View the land cover layer to get a sense of what may be impacted by flooding or drought.",
       "groups": {
         "group1": {
+          "title": "Watersheds and drought",
+          "description": "Explore which watersheds are currently threatened by drought.",
+          "layers": [
+            "watersheds",
+            "drought"
+          ]
+        },
+        "group2": {
+          "title": "Population density and river flooding",
+          "description": "Explore where densely populated areas in the United States have an elevated risk for significant flooding in the next 5 days.",
+          "layers": [
+            "population_density",
+            "river_flooding"
+          ]
+        },
+        "group3": {
+          "title": "Wildland/urban interface",
+          "description": "Explore areas where homes and structures near the wildland / urban interface are threatened by drought, and may be susceptible to fire.",
+          "layers": [
+            "wildland_urban",
+            "drought"
+          ]
         }
       }
     }
@@ -505,6 +643,259 @@
       "title": "Days below 32 degrees 2090",
       "description": "View how the number of days per year with below-freezing temperatures decreases over time.",
       "url": "http://tiles.habitatseven.work/2090_annual_rcp45_days-tmin-blw/{z}/{x}/{y}.png",
+      "options": {
+      },
+      "defaults": {
+        "visible":false
+      }
+    },
+    "power_plants": {
+      "type": "ArcGISRest",
+      "id": "power_plants",
+      "title": "Power Plants",
+      "description": "View the locations and types of power plants.",
+      "url": "https://eia-ms.esri.com/arcgis/rest/services/20160309StateEnergyProfilesMap/MapServer",
+      "options": {
+      },
+      "defaults": {
+        "visible":false
+      }
+    },
+    "heating_degree_day_18": {
+      "type": "Tile",
+      "id": "heating_degree_day_18",
+      "title": "Heating degree days in 2090",
+      "description": "View how demand for energy to heat homes and businesses during cool seasons decreases in future decades.",
+      "url": "http://tiles.habitatseven.work/2090_annual_rcp45_heating-degree-day/{z}/{x}/{y}.png",
+      "options": {
+      },
+      "defaults": {
+        "visible":false
+      }
+    },
+    "cropland": {
+      "type": "WMS",
+      "id": "cropland",
+      "title": "Cropland",
+      "description": "View the types of crops in place during the previous main growing season.",
+      "url": "",
+      "options": {
+      },
+      "defaults": {
+        "visible":false
+      }
+    },
+    "drought": {
+      "type": "WMS",
+      "id": "drought",
+      "title": "Drought",
+      "description": "Check where the amount of water available in soils, streams, and lakes is lower than usual for this time of year. The darker the color on the map, the more severe the lack of moisture in the region. This weekly map layer is updated every Thursday.",
+      "url": "http://torka.unl.edu:8080/cgi-bin/mapserv.exe?map=/ms4w/apps/dm/service/usdm_current_wms.map&SRS=EPSG%3A900913",
+      "options": {
+        "layer": "usdm_current"
+      },
+      "defaults": {
+        "visible":false
+      }
+    },
+    "chickens": {
+      "type": "ArcGISRest",
+      "id": "chickens",
+      "title": "Chickens per 100 acres farmland",
+      "description": "Explore areas where relatively large numbers of chickens are raised for meat.",
+      "url": "http://gis.ers.usda.gov/arcgis/rest/services/NASS/livestockanimals/MapServer",
+      "options": {
+        "layer": "show:23"
+      },
+      "defaults": {
+        "visible":false
+      }
+    },
+    "mooring": {
+      "type": "ArcGISRest",
+      "id": "mooring",
+      "title": "Mooring Facilities",
+      "description": "View locations along inland rivers where barges can anchor to take on goods such as grains from elevators.",
+      "url": "https://services2.arcgis.com/1cdV1mIckpAyI7Wo/ArcGIS/rest/services/Mooring_Facility_Locations_%28USACE_IENC%29/FeatureServer",
+      "options": {
+        "layer": "show:23"
+      },
+      "defaults": {
+        "visible":false
+      }
+    },
+    "hospitals": {
+      "type": "ArcGISRest",
+      "id": "hospitals",
+      "title": "Hospitals",
+      "description": "View the location of hospitals: explore which are vulnerable to sea level rise or other flood hazards",
+      "url": "http://hsip.geoplatform.gov/arcgis/services/HSIP_Public/PublicHealth/MapServer",
+      "options": {
+        "layer": 0
+      },
+      "defaults": {
+        "visible":false
+      }
+    },
+    "severe_weather": {
+      "type": "ArcGISRest",
+      "id": "severe_weather",
+      "title": "Severe Weather",
+      "description": "Explore locations that have the potential for heavy precipitation, flooding, or severe weather over the next 3-7 days.",
+      "url": "http://idpgis.ncep.noaa.gov/arcgis/rest/services/NWS_Climate_Outlooks/cpc_weather_hazards/MapServer",
+      "options": {
+        "layer": "show:4"
+      },
+      "defaults": {
+        "visible":false
+      }
+    },
+    "percent_poverty": {
+      "type": "WMS",
+      "id": "percent_poverty",
+      "title": "Percent Poverty",
+      "description": "Colors show the ercent of population below the poverty threshold in 2000. The darker the color, the higher the percentage of people in poverty. Communities with high percentages of poor residents may need support in preparing for hazards, or recovering from disaster.",
+      "url": "http://sedac.ciesin.org/geoserver/ows",
+      "options": {
+        "layer": "usgrid:usgrid-summary-file3-2000_usa-pctpopbelowpovlevel-2000",
+        "type": "geoserver"
+      },
+      "defaults": {
+        "visible":false
+      }
+    },
+    "cooling_degree_day_18": {
+      "type": "Tile",
+      "id": "cooling_degree_day_18",
+      "title": "Cooling degree days in 2090",
+      "description": "View how demand for energy to cool homes and businesses during the warm season increases in the future. Consider how people who don’t have access to air conditioning will fare.",
+      "url": "http://tiles.habitatseven.work/2090_annual_rcp45_cooling-degree-day/{z}/{x}/{y}.png",
+      "options": {
+      },
+      "defaults": {
+        "visible":false
+      }
+    },
+    "percent_elderly": {
+      "type": "WMS",
+      "id": "percent_elderly",
+      "title": "Percent Elderly",
+      "description": "View the percent of population aged 65-79 in 2000. The darker the color, the higher the percentage of elderly people in the population. Communities with elevated social vulnerability (as measured by the U.S. Census) may need support in preparing for hazards, or recovering from disaster.",
+      "url": "http://sedac.ciesin.org/geoserver/ows",
+      "options": {
+        "type": "geoserver",
+        "layer": "usgrid:usgrid-summary-file1-2000_usa-pctpop65to79-2000"
+      },
+      "defaults": {
+        "visible":false
+      }
+    },
+    "days_tmax_abv_35": {
+      "type": "Tile",
+      "id": "days_tmax_abv_35",
+      "title": "Days above 95 degrees F 2090",
+      "description": "View how the number of days per year with temperatures over 95°F increases during future decades.",
+      "url": "http://tiles.habitatseven.work/2090_annual_rcp85_days-tmax-abv/{z}/{x}/{y}.png",
+      "options": {
+      },
+      "defaults": {
+        "visible":false
+      }
+    },
+    "atlantic_fishing": {
+      "type": "ArcGISRest",
+      "id": "atlantic_fishing",
+      "title": "Atlantic Fishing Revenue Intensity",
+      "description": "View the mean annual economic revenue from all fishing activities for areas in the Atlantic Ocean (measured from 2007 to 2012).",
+      "url": "https://coast.noaa.gov/arcgis/rest/services/MarineCadastre/BOEM_Layers/MapServer",
+      "options": {
+        "layer": "show:7"
+      },
+      "defaults": {
+        "visible":false
+      }
+    },
+    "offshore_wind": {
+      "type": "ArcGISRest",
+      "id": "offshore_wind",
+      "title": "Offshore wind potential",
+      "description": "View average annual wind speed off the coast of the United States.",
+      "url": "https://coast.noaa.gov/arcgis/rest/services/MarineCadastre/OffshoreWindResourcePotential/MapServer",
+      "options": {
+      },
+      "defaults": {
+        "visible":false
+      }
+    },
+    "development": {
+      "type": "ArcGISRest",
+      "id": "development",
+      "title": "Areas converted to development",
+      "description": "View areas converted to development between 1996 and 2011.",
+      "url": "https://coast.noaa.gov/arcgis/rest/services/FloodExposureMapper/CFEM_LandCover_19962010Change/MapServer",
+      "options": {
+      },
+      "defaults": {
+        "visible":false
+      }
+    },
+    "transportation_system": {
+      "type": "ArcGISRest",
+      "id": "transportation_system",
+      "title": "Transportation System",
+      "description": "View the locations of elements of the transportation system.",
+      "url": "http://services.nationalmap.gov/arcgis/rest/services/transportation/MapServer",
+      "options": {
+      },
+      "defaults": {
+        "visible":false
+      }
+    },
+    "watersheds": {
+      "type": "WMS",
+      "id": "watershed",
+      "title": "Watersheds",
+      "description": "View watershed boundaries and the streams and rivers that drain them.",
+      "url": "http://basemap.nationalmap.gov/arcgis/services/USGSHydroNHD/MapServer/WMSServer?request=GetCapabilities&service=WMS",
+      "options": {
+      },
+      "defaults": {
+        "visible":false
+      }
+    },
+    "river_flooding": {
+      "type": "ArcGISRest",
+      "id": "river_flooding",
+      "title": "Outlook for significant river flooding",
+      "description": "Check the general outlook for significant river flooding. Note that this layer does not depict all areas of minor flooding or small-scale events such as localized flooding and/or flash flooding.",
+      "url": "http://idpgis.ncep.noaa.gov/arcgis/rest/services/NWS_Forecasts_Guidance_Warnings/sig_riv_fld_outlk/MapServer",
+      "options": {
+      },
+      "defaults": {
+        "visible":false
+      }
+    },
+    "population_density": {
+      "type": "WMS",
+      "id": "population_density",
+      "title": "Populaton Density",
+      "description": "Find centers of population across the Arctic in this global map layer.",
+      "url": "https://sedac.ciesin.columbia.edu/geoserver/wms",
+      "options": {
+        "layer": "grump-v1:grump-v1-population-density_2000",
+        "type": "geoserver",
+        "version": "1.1.1"
+      },
+      "defaults": {
+        "visible":false
+      }
+    },
+    "wildland_urban": {
+      "type": "ArcGISRest",
+      "id": "wildland_urban",
+      "title": "Wildland/Urban Interface",
+      "description": "View areas where housing extends through forested land, resulting in increased risk of fire for both. The maps shows area of land where a minimum spatial density of housing intersects with a map of wildfire hazards.",
+      "url": "http://maps1.arcgisonline.com/ArcGIS/rest/services/FHTET_Wildland_Urban_Interface/MapServer",
       "options": {
       },
       "defaults": {
