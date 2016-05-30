@@ -78,15 +78,15 @@
           ]
         },
         "group2": {
-          "title": "Polution sources and flood hazards",
+          "title": "Pollution sources and flood hazards",
           "description": "Explore which ecosystems within flood hazard zones could be contaminated by potential pollution sources.",
           "layers": [
-            "polution_sources",
+            "pollution_sources",
             "flood_hazard_zones"
           ]
         },
         "group3": {
-          "title": "Critial Habitat and Temperatures",
+          "title": "Critical Habitat and Temperatures",
           "description": "Explore areas of critical habitat for threatened and endangered species. Check how future maximum temperatures are projected to change in these locations in the coming decades. ",
           "layers": [
             "critical_habitat",
@@ -331,18 +331,22 @@
       "title": "Energy Infrastructure",
       "description": "Check the locations of power plants and oil and gas refineries. View the paths of pipelines that transport energy materials and transmission wires that distribute electricity.",
       "url": "https://eia-ms.esri.com/arcgis/rest/services/20160309StateEnergyProfilesMap/MapServer",
-      "options": {},
+      "options": {
+        "layer":"6"
+      },
       "defaults": {
         "visible":false
       }
     },
     "permafrost": {
-      "type": "ArcGISRest",
+      "type": "WMS",
       "id": "permafrost",
       "title": "Permafrost",
       "description": "Check where the ground is currently considered to be “permanently” frozen. Thawing permafrost can result in damage to infrastructure when the ground surface becomes uneven or unstable. Permafrost is categorized as continuous, discontinuous, sporadic, or isolated, based on its areal extent.",
-      "url": "https://eia-ms.esri.com/arcgis/rest/services/20160309StateEnergyProfilesMap/MapServer",
-      "options": {},
+      "url": "https://nsidc.org/cgi-bin/atlas_north?service=WMS&request=GetCapabilities",
+      "options": {
+        "version": "1.1.1"
+      },
       "defaults": {
         "visible":false
       }
@@ -502,7 +506,9 @@
           "id": "storm_surge_1",
           "title": "Storm surge category 1 hurricane",
           "url": "http://tiles.arcgis.com/tiles/C8EMgrsFcRFL6LrL/arcgis/rest/services/NHC_SeamlessSLOSH_Category1/MapServer",
-          "options": {},
+          "options": {
+            "layer": "show:0"
+          },
           "defaults": {
             "visible":false
           }
@@ -559,7 +565,7 @@
       "description": "View locations and types of power plants along the U.S. coast and Great Lakes.",
       "url": "https://coast.noaa.gov/arcgis/rest/services/MarineCadastre/OceanEnergy/MapServer",
       "options": {
-        "layer": "show:0"
+        "layer":"6"
       },
       "defaults": {
         "visible":false
@@ -584,15 +590,16 @@
       "title": "Flood Hazard Zones",
       "description": "Check which local areas have been designated by FEMA to be at risk of flooding. Aqua areas show land judged to have a 1% chance of flooding each year; this area is also known as the base flood zone or 100-year flood zone. Colors and patterns also indicate floodways and other hazard areas.",
       "url": "https://hazards.fema.gov/gis/nfhl/services/public/NFHLWMS/MapServer/WmsServer",
-      "options": {},
+      "options": {
+      },
       "defaults": {
         "visible":false
       }
     },
-    "polution_sources": {
+    "pollution_sources": {
       "type": "ArcGISRest",
-      "id": "polution_sources",
-      "title": "Potential Polution Sources",
+      "id": "pollution_sources",
+      "title": "Potential Pollution Sources",
       "description": "View facilities, sites, or places subject to environmental regulation or of environmental interest such as Brownfield properties, hazardous waste sites, Superfund sites, and toxic chemicals.",
       "url": "https://coast.noaa.gov/arcgis/rest/services/FloodExposureMapper/CFEM_EPA_FRSPoints/MapServer",
       "options": {
@@ -604,7 +611,7 @@
     "critical_habitat": {
       "type": "ArcGISRest",
       "id": "critical_habitat",
-      "title": "Critical Habitit",
+      "title": "Critical Habitat",
       "description": "View the location of habitat designated as critical in order to preserve the ecosystems where threatened and endangered species live.",
       "url": "http://maps1.arcgisonline.com/ArcGIS/rest/services/USFWS_Critical_Habitat/MapServer",
       "options": {
@@ -730,9 +737,9 @@
       "id": "hospitals",
       "title": "Hospitals",
       "description": "View the location of hospitals: explore which are vulnerable to sea level rise or other flood hazards",
-      "url": "http://hsip.geoplatform.gov/arcgis/services/HSIP_Public/PublicHealth/MapServer",
+      "url": "http://services.nationalmap.gov/arcgis/rest/services/structures/MapServer/",
       "options": {
-        "layer": 0
+        "layer": "show:3"
       },
       "defaults": {
         "visible":false
@@ -853,11 +860,11 @@
       }
     },
     "watersheds": {
-      "type": "WMS",
+      "type": "ArcGISRest",
       "id": "watershed",
       "title": "Watersheds",
       "description": "View watershed boundaries and the streams and rivers that drain them.",
-      "url": "http://basemap.nationalmap.gov/arcgis/services/USGSHydroNHD/MapServer/WMSServer?request=GetCapabilities&service=WMS",
+      "url": "http://basemap.nationalmap.gov/arcgis/rest/services/USGSHydroNHD/MapServer",
       "options": {
       },
       "defaults": {
