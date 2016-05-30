@@ -16,7 +16,7 @@ It contains five main categories of configuration:
 ### Path to data and normals CSV files (output from Geogaddi)
 There are two paths to configure to tell Climate Explorer where to find the CSV files that drive the Multigraphs that appear when a station pin is selected.
 
-```json
+```js
   "stationData": {
     "baseCsvSourceUrl": "path to data CSV files (YTD precip, min temp, etc)",
     "normalsCsvSourceUrl": "path normals to CSV files"
@@ -26,10 +26,10 @@ There are two paths to configure to tell Climate Explorer where to find the CSV 
 ### Station point data
 This parameter describes the station JSON file.
 
-```json
+```js
   "stations": {
     "data": "path to station JSON file",
-    "name": "human-readable name for the stations data"
+    "name": "human-readable name for the stations data",
     "id": "internal unique ID for the stations data",
     "projection": "EPSG projection for the coordinates defined by the station data"
   }
@@ -37,7 +37,7 @@ This parameter describes the station JSON file.
 
 The stations JSON file is one large array of elements that appear as follows:
 
-```json
+```js
 {
   "id": "Station ID that is the link to the CSVs output by Geogaddi",
   "lat": 45.3167,
@@ -58,7 +58,7 @@ The weight attribute is used to limit the number of stations that appear at give
 ### Base layers for the map
 The base layers are the base maps that appear under all overlays. The "bases" property is an array of elements formatted as follows:
 
-```json
+```js
 {
   "id": "base layer ID",
   "type": "arcgis: for ESRI-formatted tile cache; or don't provide this property for an OpenStreetMap XYZ formatted base layer",
@@ -71,12 +71,12 @@ The base layers are the base maps that appear under all overlays. The "bases" pr
 ### Overlays for the map
 The overlays appear on top of the base maps. The "overlays" property is an array of elements formatted as follows:
 
-```json
+```js
 {
   "id": "overlay ID",
   "name": "human-readable name for the overlay, appears in layer picker",
   "url": "path to the overlay service",
-  "layers": "comma-separated list of layers to be included from the service"
+  "layers": "comma-separated list of layers to be included from the service",
   "projection": "EPSG for the service, if differs from that of the basemap which is defined by the stations projection above",
   "type": "REST: for ESRI-formatted REST endpoint; or don't provide this property for WMS",
   "info": {
@@ -91,7 +91,7 @@ The overlays appear on top of the base maps. The "overlays" property is an array
 ### Grouping for overlays into topics and subtopics
 The overlays described above do not appear on the map by default. A reference to the layer ID must be provided in a group for it to be selectable in the layer selector. This has the added benefit of allowing overlays to be defined once but used in many groups. The "groups" property is an array of elements formatted as follows:
 
-```json
+```js
 {
   "id": "group ID",
   "name": "human-readable name for the group, appears as a topic name",
@@ -116,24 +116,24 @@ The overlays described above do not appear on the map by default. A reference to
 Building requires node, npm
 
 Initial setup (to get bower and gulp):
-```javascript
+```
 npm install
 bower update
 ```
 
 Once the environment is set up, build the application with:
-```javascript
+```
 gulp
 ```
 
 If the library source needs to be updated, run
-```javascript
+```
 bower update
 ```
 before build.
 
 To build out a hostable snapshot of the application use the build command:
-```javascript
+```
 gulp html
 ```
 
