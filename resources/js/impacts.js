@@ -281,7 +281,7 @@ Impacts.prototype.createLegend = function() {
         icon_class = "icon-view-off";
       }
     } else {
-      icon_class = (i === 0) ? 'icon-view-on' : 'icon-view-off';
+      icon_class = 'icon-view-on';
     }
 
     var tmpl = '<li class="legend" id="legend-'+id+'">' +
@@ -482,13 +482,7 @@ Impacts.prototype.addLayers = function() {
         });
 
 
-        if ( !self.visibleLayers ) {
-          if ( i === clone.length - 1 && e === 0 ) {
-            layer.setVisible(true);
-          } else {
-            layer.setVisible(false);
-          }
-        } else {
+        if ( self.visibleLayers ) {
           if ( self.visibleLayers.indexOf(sublayer.id) !== -1 ) {
             layer.setVisible(true);
           } else {
@@ -557,13 +551,7 @@ Impacts.prototype.addLayers = function() {
 
       if ( layer ) {
 
-        if ( !self.visibleLayers ) {
-          if ( i === clone.length - 1 ) {
-            layer.setVisible(true);
-          } else {
-            layer.setVisible(false);
-          }
-        } else {
+        if ( self.visibleLayers ) {
           if ( self.visibleLayers.indexOf(id) !== -1 ) {
             layer.setVisible(true);
           } else {

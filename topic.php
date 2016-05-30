@@ -50,7 +50,7 @@
         <section id="topic-splash" class="page-splash">
             <div class="splash-text">
                 <h4>Topic</h4>
-                <h1><?php echo $param ?></h1>
+                <h1><?php echo str_replace("_", " ", $param) ?></h1>
                 <p id="topic-description"></p>
             </div>
 
