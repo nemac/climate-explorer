@@ -121,6 +121,27 @@ Impacts.prototype.wireSearch = function() {
 Impacts.prototype.wireEvents = function() {
   var self = this;
 
+  $('.layer-toggle').on('click', function() {
+    self.visibleLayers = [];
+
+    var visible;
+    if ( $(this).hasClass('icon-view-on') ) {
+      visible = false;
+      $(this).removeClass('icon-view-on').addClass('icon-view-off');
+    } else {
+      visible = true;
+      $(this).removeClass('icon-view-off').addClass('icon-view-on');
+    }
+
+    var id = $(this).closest('.legend').attr('id').replace('legend-', '');
+    self.map.getLayers().forEach(function(layer) {
+      if (layer.get('layer_id') == id) {
+        layer.setVisible(visible);
+        self.updateUrl();
+      }
+    });
+
+  });
 
   this.map.getView().on('change:resolution', function(){
     var zoom = self.map.getView().getZoom();
@@ -157,6 +178,7 @@ Impacts.prototype.wireEvents = function() {
     min: 0,
     max: 1,
     step: 0.05,
+    value: 1,
     slide: function (event, ui) {
       var id = $(this).attr('id').replace('opacity-', '');
       var visible = ( ui.value > 0 ) ? true : false;
@@ -171,7 +193,7 @@ Impacts.prototype.wireEvents = function() {
 
     }
   });
-  $('.opacity-slider').first().slider('value', 1);
+  //$('.opacity-slider').first().slider('value', 1);
 
 
   // help icon
@@ -246,11 +268,21 @@ Impacts.prototype.createLegend = function() {
   var layerIds = this.data.topics[this.page].groups[this.group].layers;
 
   var checked, sublayer, display;
+
   $.each(layerIds, function(i, id) {
     checked = (i === 0) ? 'checked' : '';
     sublayer = self.data.layers[id].sublayers;
 
-    icon_class = (i === 0) ? 'icon-view-on' : 'icon-view-off';
+    var icon_class;
+    if ( self.visibleLayers ) {
+      if ( self.visibleLayers.indexOf(id) !== -1 ) {
+        icon_class = "icon-view-on";
+      } else {
+        icon_class = "icon-view-off";
+      }
+    } else {
+      icon_class = (i === 0) ? 'icon-view-on' : 'icon-view-off';
+    }
 
     var tmpl = '<li class="legend" id="legend-'+id+'">' +
       '<div class="text">'+self.data.layers[id].title+'</div>' +
@@ -368,7 +400,11 @@ Impacts.prototype.updateUrl = function() {
 
   if ( !layers.length ) { layers = this.visibleLayers; }
 
-  qs.layers = layers.toString();
+  if ( layers ) {
+    qs.layers = layers.toString();
+  } else {
+    qs.layers = '';
+  }
 
   var str = $.param( qs );
 

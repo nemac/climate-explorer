@@ -308,7 +308,7 @@
       "id": "bia_indian_lands",
       "title": "BIA Indian Lands",
       "description": "This layer shows  American Indian Reservations, Federally Recognized Tribal Entities, and Alaska Native Villages in the contiguous U.S. and Alaska.",
-      "url": "http://commons.wim.usgs.gov/arcgis/rest/services/AIR_NDGA/AIR_NDGA/MapServer",
+      "url": "http://gis.wim.usgs.gov/arcgis/rest/services/AIR_NDGA/AIR_NDGA/MapServer",
       "options": {},
       "defaults": {
         "visible":false
@@ -688,11 +688,12 @@
     "drought": {
       "type": "WMS",
       "id": "drought",
-      "title": "Drought",
-      "description": "Check where the amount of water available in soils, streams, and lakes is lower than usual for this time of year. The darker the color on the map, the more severe the lack of moisture in the region. This weekly map layer is updated every Thursday.",
+      "title": "Current Drought",
+      "description": "Examine where the amount of water available in soils, streams, and lakes is lower than usual for this time of year. In this weekly map, the darker the color, the more severe the lack of moisture. Depending on how severe it is and how long it lasts, drought can devastate crops and forests, lead to food shortages for livestock and wildlife, increase risks for wildfires, and have a negative effect on local and regional economies.",
       "url": "http://torka.unl.edu:8080/cgi-bin/mapserv.exe?map=/ms4w/apps/dm/service/usdm_current_wms.map&SRS=EPSG%3A900913",
       "options": {
-        "layer": "usdm_current"
+        "layer": "usdm_current",
+        "type": "mapserv"
       },
       "defaults": {
         "visible":false
