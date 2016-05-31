@@ -152,7 +152,7 @@ Location.prototype.addStations = function() {
 
     var obj;
     $.each(data, function(i, d) {
-      if ( d.weight < 2 ) {
+//      if ( d.weight < 2 ) {
         obj = {
           'type': 'Feature',
           'properties': {
@@ -165,7 +165,7 @@ Location.prototype.addStations = function() {
           }
         };
         featureCollection.features.push(obj);
-      }
+  //    }
     });
 
     var features = new ol.format.GeoJSON().readFeatures(featureCollection, {
