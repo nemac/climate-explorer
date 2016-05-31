@@ -496,58 +496,56 @@
       }
     },
     "storm_surge": {
-      "type": "ArcGISRest",
+      "type": "StormSurge",
       "id": "storm_surge",
       "title": "Storm Surge (Categories 1-5)",
       "description": "View potential inundation due to storm-surge flooding from landfalling hurricanes of categories 1-5.",
       "sublayers": [
         {
-          "type": "ArcGISRest",
+          "type": "StormSurge",
           "id": "storm_surge_1",
           "title": "Storm surge category 1 hurricane",
-          "url": "http://tiles.arcgis.com/tiles/C8EMgrsFcRFL6LrL/arcgis/rest/services/NHC_SeamlessSLOSH_Category1/MapServer",
-          "options": {
-            "layer": "show:0"
-          },
+          "url": "http://tiles3.arcgis.com/tiles/C8EMgrsFcRFL6LrL/arcgis/rest/services/NHC_SeamlessSLOSH_Category1/MapServer/tile/{z}/{y}/{x}",
+          "options": {},
           "defaults": {
             "visible":false
           }
         },
         {
-          "type": "ArcGISRest",
+          "type": "StormSurge",
           "id": "storm_surge_2",
           "title": "Storm surge category 2 hurricane",
-          "url": "http://tiles.arcgis.com/tiles/C8EMgrsFcRFL6LrL/arcgis/rest/services/NHC_SeamlessSLOSH_Category2/MapServer",
+          "url": "http://tiles3.arcgis.com/tiles/C8EMgrsFcRFL6LrL/arcgis/rest/services/NHC_SeamlessSLOSH_Category2/MapServer/tile/{z}/{y}/{x}",
           "options": {},
           "defaults": {
             "visible":false
           }
         },
         {
-          "type": "ArcGISRest",
+          "type": "StormSurge",
           "id": "storm_surge_3",
           "title": "Storm surge category 3 hurricane",
-          "url": "http://tiles.arcgis.com/tiles/C8EMgrsFcRFL6LrL/arcgis/rest/services/NHC_SeamlessSLOSH_Category3/MapServer",
+          "url": "http://tiles3.arcgis.com/tiles/C8EMgrsFcRFL6LrL/arcgis/rest/services/NHC_SeamlessSLOSH_Category3/MapServer/tile/{z}/{y}/{x}",
           "options": {},
           "defaults": {
             "visible":false
           }
         },
         {
-          "type": "ArcGISRest",
+          "type": "StormSurge",
           "id": "storm_surge_4",
           "title": "Storm surge category 4 hurricane",
-          "url": "http://tiles.arcgis.com/tiles/C8EMgrsFcRFL6LrL/arcgis/rest/services/NHC_SeamlessSLOSH_Category4/MapServer",
+          "url": "http://tiles3.arcgis.com/tiles/C8EMgrsFcRFL6LrL/arcgis/rest/services/NHC_SeamlessSLOSH_Category4/MapServer/tile/{z}/{y}/{x}",
           "options": {},
           "defaults": {
             "visible":false
           }
         },
         {
-          "type": "ArcGISRest",
+          "type": "StormSurge",
           "id": "storm_surge_5",
           "title": "Storm surge category 5 hurricane",
-          "url": "http://tiles.arcgis.com/tiles/C8EMgrsFcRFL6LrL/arcgis/rest/services/NHC_SeamlessSLOSH_Category5/MapServer",
+          "url": "http://tiles3.arcgis.com/tiles/C8EMgrsFcRFL6LrL/arcgis/rest/services/NHC_SeamlessSLOSH_Category5/MapServer/tile/{z}/{y}/{x}",
           "options": {},
           "defaults": {
             "visible":false
@@ -697,10 +695,11 @@
       "id": "drought",
       "title": "Current Drought",
       "description": "Examine where the amount of water available in soils, streams, and lakes is lower than usual for this time of year. In this weekly map, the darker the color, the more severe the lack of moisture. Depending on how severe it is and how long it lasts, drought can devastate crops and forests, lead to food shortages for livestock and wildlife, increase risks for wildfires, and have a negative effect on local and regional economies.",
-      "url": "http://torka.unl.edu:8080/cgi-bin/mapserv.exe?map=/ms4w/apps/dm/service/usdm_current_wms.map&SRS=EPSG%3A900913",
+      "url": "http://torka.unl.edu:8080/cgi-bin/mapserv.exe?map=/ms4w/apps/dm/service/usdm_current_wms.map&SRS=EPSG:4326",
       "options": {
         "layer": "usdm_current",
-        "type": "mapserv"
+        "type": "mapserv",
+        "version": "1.1.1"
       },
       "defaults": {
         "visible":false

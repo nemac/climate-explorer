@@ -471,15 +471,33 @@ Impacts.prototype.addLayers = function() {
     //i.e. sea level rise layers 1ft - 6ft
     if ( self.data.layers[id].sublayers ) {
       $.each(self.data.layers[id].sublayers, function(e, sublayer) {
-        layer = new ol.layer.Tile({
-          extent: [-32629438.63437604, -2729719.1541202106, 1966571.863721013, 14705261.249615353],
-          source: new ol.source.TileArcGISRest({
-            url: sublayer.url,
-            params: {
-              'LAYERS': sublayer.options.layer || ''
-            }
+
+        if ( self.data.layers[id].type === 'StormSurge' ) {
+          var resolutions = [19567.87924099992, 9783.93962049996, 4891.96981024998, 2445.98490512499, 1222.992452562495, 611.4962262813797, 305.74811314055756, 152.87405657041106, 76.43702828507324, 38.21851414253662];
+
+          var tilegrid = new ol.tilegrid.TileGrid({
+              resolutions: resolutions,
+              origin: [-2.0037508342787E7, 2.0037508342787E7]
           })
-        });
+          layer = new ol.layer.Tile({
+            extent: [-32629438.63437604, -2729719.1541202106, 1966571.863721013, 14705261.249615353],
+            source: new ol.source.XYZ({
+                url: sublayer.url,
+                projection: 'EPSG:102100',
+                tileGrid: tilegrid
+            })
+          });
+        } else {
+          layer = new ol.layer.Tile({
+            extent: [-32629438.63437604, -2729719.1541202106, 1966571.863721013, 14705261.249615353],
+            source: new ol.source.TileArcGISRest({
+              url: sublayer.url,
+              params: {
+                'LAYERS': sublayer.options.layer || ''
+              }
+            })
+          });
+        }
 
 
         if ( self.visibleLayers ) {
@@ -488,6 +506,10 @@ Impacts.prototype.addLayers = function() {
           } else {
             layer.setVisible(false);
           }
+        } else if (e === 0){
+          layer.setVisible(true);
+        } else {
+          layer.setVisible(false);
         }
 
         layer.set('layer_id', sublayer.id);
@@ -531,6 +553,22 @@ Impacts.prototype.addLayers = function() {
             params: {
               'LAYERS': self.data.layers[id].options.layer || ''
             }
+          })
+        });
+      }
+
+      if ( self.data.layers[id].type === 'StormSurge' ) {
+        var resolutions = [19567.87924099992, 9783.93962049996, 4891.96981024998, 2445.98490512499, 1222.992452562495, 611.4962262813797, 305.74811314055756, 152.87405657041106, 76.43702828507324, 38.21851414253662];
+
+        var tilegrid = new ol.tilegrid.TileGrid({
+            resolutions: resolutions,
+            origin: [-2.0037508342787E7, 2.0037508342787E7]
+        })
+        layer = new ol.layer.Tile({
+          source: new ol.source.XYZ({
+              url: self.data.layers[id].url,
+              projection: 'EPSG:102100',
+              tileGrid: tilegrid
           })
         });
       }
