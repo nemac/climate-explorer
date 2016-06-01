@@ -476,11 +476,11 @@ Variables.prototype.countySelected = function(feature, event) {
         '</div>'+
         '<div id="rcp45-range" class="legend-item legend-item-range">'+
           '<div class="legend-item-block" id="rcp45-block"></div>'+
-          'Stabilized Emissions'+
+          'Lower Emissions'+
         '</div>'+
         '<div id="rcp85-range" class="legend-item legend-item-range selected">'+
           '<div class="legend-item-block selected" id="rcp85-block"></div>'+
-          'Increasing Emissions'+
+          'Higher Emissions'+
         '</div>'+
         '<div id="rcp45-mean" class="legend-item legend-item-range">'+
           '<div class="legend-item-line-container">'+

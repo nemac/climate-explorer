@@ -104,8 +104,8 @@
 
         <div class="moveable" id="sliderDiv">
           <div id="swipeImg" class="handle">
-    				<div class="emissions-low">Low Emissions</div>
-    				<div class="emissions-high">High Emissions</div>
+    				<div class="emissions-low">Lower Emissions</div>
+    				<div class="emissions-high">Higher Emissions</div>
     			</div>
         </div>
 
