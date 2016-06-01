@@ -131,8 +131,8 @@ Location.prototype.addStations = function() {
   var styles = {
     'Point': new ol.style.Style({
       image: new ol.style.Circle({
-        radius: 5,
-        fill: new ol.style.Fill({color: '#2980b9'}),
+        radius: 8,
+        fill: new ol.style.Fill({color: '#f5442d'}),
         stroke: new ol.style.Stroke({color: '#FFF', width: 2})
       })
     })
