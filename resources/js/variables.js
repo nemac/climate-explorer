@@ -848,7 +848,7 @@ Variables.prototype.setSlider = function() {
     var self = this;
     var year_slider = $('#variable-time-slider');
 
-    var tooltip = $('<span class="tooltip">' + year_slider.attr('data-value') + '</span>').hide();
+    var tooltip = $('<span class="tooltip">' + self.activeYear + '</span>').hide();
 
     var year_min = parseInt($('#year-slider-container').find('.year-min').text());
     var year_max = parseInt($('#year-slider-container').find('.year-max').text());
@@ -871,6 +871,7 @@ Variables.prototype.setSlider = function() {
           self.activeYear = ui.value;
           self.updateTiledLayer(true, true);
           self.updateUrl();
+          tooltip.fadeOut(200);
         }
     }).find(".ui-slider-handle").html('<span class="icon icon-arrow-left-right"></span>').append(tooltip);
 
@@ -879,6 +880,8 @@ Variables.prototype.setSlider = function() {
     }, function () {
         tooltip.fadeOut(100);
     });
+
+    tooltip.fadeIn(200);
 
 }
 
