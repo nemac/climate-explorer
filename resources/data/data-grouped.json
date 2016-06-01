@@ -92,14 +92,6 @@
             "critical_habitat",
             "mean_daily_max"
           ]
-        },
-        "group4": {
-          "title": "Forests and Days Below Freezing",
-          "description": "Explore National Forests and check where reductions in days below 32° may enable insects such as bark beetles to survive and thrive during winter.",
-          "layers": [
-            "national_forests",
-            "days_tmin_blw_0"
-          ]
         }
       }
     },
@@ -149,14 +141,6 @@
           "layers": [
             "chickens",
             "mean_daily_max"
-          ]
-        },
-        "group3": {
-          "title": "Mooring facilities and floood hazards",
-          "description": "Explore where mooring facilities—where barges take on loads of grain from elevators along inland rivers—are within or near flood hazard zones.",
-          "layers": [
-            "mooring",
-            "flood_hazard_zones"
           ]
         }
       }
