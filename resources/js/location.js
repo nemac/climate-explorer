@@ -593,4 +593,5 @@ Location.prototype.setSlider = function(map) {
     }
   }).find(".ui-slider-handle").html('<span class="icon icon-arrow-left-right"></span>').append(tooltip);
 
+  tooltip.fadeIn(200);
 };
