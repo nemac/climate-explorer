@@ -265,7 +265,7 @@ Impacts.prototype.wireMapEvents = function () {
 */
 Impacts.prototype.createLegend = function() {
   var self = this;
-  var layerIds = this.data.topics[this.page].groups[this.group].layers;
+  var layerIds = ( this.group === 'all' ) ? this.getLayerIds() : this.data.topics[this.page].groups[this.group].layers;
 
   var checked, sublayer, display;
 
@@ -451,6 +451,23 @@ Impacts.prototype.reorderLayers = function() {
 
 
 
+Impacts.prototype.getLayerIds = function() {
+  var layerIds = [];
+
+  $.each(this.data.topics[this.page].groups, function(i, group) {
+    layerIds = layerIds.concat(group.layers);
+  });
+
+  layerIds = _.remove(layerIds, function(n) {
+    if ( n !== 'cooling_degree_day_18' && n !== 'heating_degree_day_18' && n !== 'mean_daily_max' && n !== 'days_tmin_blw_0' && n !== 'days_tmax_abv_35') {
+      return n;
+    }
+  });
+
+  return _.uniq(layerIds);
+}
+
+
 
 
 /*
@@ -460,7 +477,7 @@ Impacts.prototype.reorderLayers = function() {
 Impacts.prototype.addLayers = function() {
   var self = this;
 
-  var layerIds = this.data.topics[this.page].groups[this.group].layers;
+  var layerIds = ( this.group === 'all' ) ? this.getLayerIds() : this.data.topics[this.page].groups[this.group].layers;
   var clone = layerIds.slice(0);
 
   var layer;
@@ -591,6 +608,13 @@ Impacts.prototype.addLayers = function() {
 
         if ( self.visibleLayers ) {
           if ( self.visibleLayers.indexOf(id) !== -1 ) {
+            layer.setVisible(true);
+          } else {
+            layer.setVisible(false);
+          }
+        } else if ( self.group === 'all' ) {
+          if ( i === clone.length - 1 ) {
+            self.visibleLayers = [id];
             layer.setVisible(true);
           } else {
             layer.setVisible(false);
