@@ -110,6 +110,17 @@ input.location-mapper:focus:-ms-input-placeholder {
   margin-left:-13px;
 }
 
+.page-type-variables .ol-scale-line {
+  background: rgba(0,60,136,.3);
+  border-radius: 4px;
+  bottom: 133px;
+  left: 345px;
+}
+
+.page-type-variables .ol-zoom {
+  display: none;
+}
+
 .page-type-variables .data-accordion-actions {
   margin-top:-15px;
 }

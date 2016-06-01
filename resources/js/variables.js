@@ -105,7 +105,16 @@ Variables.prototype.createMap = function() {
     maxZoom: 12
   });
 
+  var scaleLineControl = new ol.control.ScaleLine();
+
   this.map = new ol.Map({
+    controls: ol.control.defaults({
+      attributionOptions: /** @type {olx.control.AttributionOptions} */ ({
+        collapsible: false
+      })
+    }).extend([
+      scaleLineControl
+    ]),
     target: 'variable-map',
     layers: [
       new ol.layer.Tile({
@@ -373,8 +382,9 @@ Variables.prototype.addCounties = function() {
         color: 'rgba(255, 255, 255, 0.1)'
       }),
       stroke: new ol.style.Stroke({
-        color: '#2980b9',
-        width: 0.5
+        //color: '#2980b9',
+        color: '#444',
+        width: 0.2
       })
     })];
 
@@ -394,6 +404,9 @@ Variables.prototype.addCounties = function() {
   this.vectorLayer.setOpacity(0);
   self.map.addLayer(this.vectorLayer);
 
+  setTimeout(function() {
+    self.vectorLayer.setVisible(false);
+  },500)
 };
 
 
@@ -414,8 +427,8 @@ Variables.prototype.addStates = function() {
         color: 'rgba(0, 0, 0, 0)'
       }),
       stroke: new ol.style.Stroke({
-        color: '#2980b9',
-        width: 2
+        color: '#444',
+        width: 0.8
       })
     })];
 
