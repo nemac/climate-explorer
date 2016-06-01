@@ -1,7 +1,7 @@
 <?php
-  
+
   include_once('functions.php');
-  
+
 ?>
 <!doctype html>
 <html>
@@ -19,13 +19,13 @@
 
     <script type="text/javascript" src="./resources/js/jquery.min.js"></script>
     <script type="text/javascript" src="./resources/js/jquery-ui.min.js"></script>
-    
+
     <?php
-      
+
       $share_data['url'] = current_URL();
-      
+
       echo opengraph_output($share_data);
-      
+
     ?>
 
 </head>
@@ -37,22 +37,21 @@
     <div id="main-content-wrap">
         <section id="home-splash">
             <?php
-              
+
               $locations = array(
                 '', // [0]
                 'Seven Mile, Florida',
                 'Carbon County, Utah',
                 'Boston, Massachusetts',
-                'Anchorage, Alaska',
                 'Oakland, California',
                 'Pinal County, Arizona',
                 'Camptonville, California'
               );
-              
+
               $splash_id = rand(1, 7);
-              
+
             ?>
-          
+
             <div id="splash-<?php echo $splash_id; ?>" class="splash-bg">
               <div class="slide-text"><span class="location"><?php echo $locations[$splash_id]; ?></span></div>
             </div>
