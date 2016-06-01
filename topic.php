@@ -59,7 +59,7 @@
               <ul id="subtopics-list">
 
               </ul>
-              <a href="case.php?id=" id="subtopics-view-all" class="button display-block border-white color-orange arrow-right">View all</a>
+              <a href="case.php?id=<?php echo $param ?>&group=all" id="subtopics-view-all" class="button display-block border-white color-orange arrow-right">View all</a>
             </div>
         </section>
 
