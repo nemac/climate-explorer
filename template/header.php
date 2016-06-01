@@ -65,12 +65,12 @@
 
   $topics_content = array(
 
-    array(
-      'variable' => 'arctic',
-      'name' => 'Arctic',
-      'detail' => "<p>Dramatic reductions in Arctic sea ice threaten ecosystems and fisheries, disrupt traditional lifestyles, and erode coastlines. Increasing development activities may boost the region’s economy, but they also increase risks to ecosystems and the environment. Explore landcover, current drought, and historical observations in this rapidly changing region.</p>",
-      'source' => 'NOAA, 2016'
-    ),
+    // array(
+    //   'variable' => 'arctic',
+    //   'name' => 'Arctic',
+    //   'detail' => "<p>Dramatic reductions in Arctic sea ice threaten ecosystems and fisheries, disrupt traditional lifestyles, and erode coastlines. Increasing development activities may boost the region’s economy, but they also increase risks to ecosystems and the environment. Explore landcover, current drought, and historical observations in this rapidly changing region.</p>",
+    //   'source' => 'NOAA, 2016'
+    // ),
 
     array(
       'variable' => 'coastal',
