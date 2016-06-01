@@ -377,8 +377,8 @@ input.location-mapper:focus:-ms-input-placeholder {
 }
 
 .page-type-location .location-map-legend-container .legend-image {
-  height: 275px;
-  margin-left: -9px;
+  height: 400px;
+  margin-left: -11px;
 }
 
 .page-type-location .year {
