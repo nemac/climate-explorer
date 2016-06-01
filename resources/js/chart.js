@@ -166,8 +166,6 @@ ChartBuilder.prototype.getPrecipitationValues = function() {
   //return merge.join( '\n' );
 };
 
-getPrecipitationValues
-
 
 ChartBuilder.prototype.getTemplate = function(type, values) {
   //console.log('values', values);
