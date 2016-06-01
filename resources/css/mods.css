@@ -380,7 +380,7 @@ input.location-mapper:focus:-ms-input-placeholder {
   display: block;
   position: absolute;
   left: 20px;
-  bottom: 60px;
+  top: 25%;
   padding: 8px 5px 8px 8px;
   z-index: 2;
   background:#FFF;
