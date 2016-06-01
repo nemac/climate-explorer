@@ -298,7 +298,7 @@
 
                             <div class="year" id="temperature-map-slider-container">
                               <div class="year-label year-min">1950</div>
-                              <div class="" id="temperature-map-time-slider" data-min="1950" data-max="2090" data-value="2090"></div>
+                              <div class="" id="temperature-map-time-slider" data-min="1950" data-max="2090" data-value="2010"></div>
                               <div class="year-label year-max">2090</div>
                             </div>
 
@@ -517,7 +517,7 @@
 
                           <div class="year" id="precipitation-map-slider-container">
                             <div class="year-label year-min">1950</div>
-                            <div class="" id="precipitation-map-time-slider" data-min="1950" data-max="2090" data-value="2090"></div>
+                            <div class="" id="precipitation-map-time-slider" data-min="1950" data-max="2090" data-value="2010"></div>
                             <div class="year-label year-max">2090</div>
                           </div>
 
@@ -737,7 +737,7 @@
 
                             <div class="year" id="derived-map-slider-container">
                               <div class="year-label year-min">1950</div>
-                              <div class="" id="derived-map-time-slider" data-min="1950" data-max="2090" data-value="2090"></div>
+                              <div class="" id="derived-map-time-slider" data-min="1950" data-max="2090" data-value="2010"></div>
                               <div class="year-label year-max">2090</div>
                             </div>
 
