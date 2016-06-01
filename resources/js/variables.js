@@ -242,6 +242,9 @@ Variables.prototype.wire = function() {
     var show = $(this).is(':checked');
     self.map.getLayers().forEach(function(layer) {
       if (layer.get('layer_id') == 'counties') {
+        if ( show ) {
+          layer.setOpacity(1);
+        }
         layer.setVisible(show);
       }
     });
@@ -387,7 +390,8 @@ Variables.prototype.addCounties = function() {
   });
 
   this.vectorLayer.set('layer_id', 'counties');
-  this.vectorLayer.setVisible(false);
+  //this.vectorLayer.setVisible(false);
+  this.vectorLayer.setOpacity(0);
   self.map.addLayer(this.vectorLayer);
 
 };
