@@ -240,11 +240,11 @@
                                   </div>
                                   <div id="rcp45-range" class="legend-item legend-item-range">
                                     <div class="legend-item-block" id="rcp45-block"></div>
-                                    Stabilized Emissions
+                                    Lower Emissionss
                                   </div>
                                   <div id="rcp85-range" class="legend-item legend-item-range selected">
                                     <div class="legend-item-block selected" id="rcp85-block"></div>
-                                    Increasing Emissions
+                                    Higher Emissions
                                   </div>
                                   <div id="rcp45-mean" class="legend-item legend-item-range">
                                     <div class="legend-item-line-container">
@@ -289,8 +289,8 @@
                           <div class="data-accordion-content map">
                             <div class="moveable" id="temperature-mapSliderDiv">
                               <div id="temperature-swipeImg" class="handle">
-                        				<div class="emissions-low">Low Emissions</div>
-                        				<div class="emissions-high">High Emissions</div>
+                        				<div class="emissions-low">Lower Emissions</div>
+                        				<div class="emissions-high">Higher Emissions</div>
                         			</div>
                             </div>
 
@@ -459,11 +459,11 @@
                                 </div>
                                 <div id="precip-rcp45-range" class="legend-item legend-item-range">
                                   <div class="legend-item-block" id="preciprcp45-block"></div>
-                                  Stabilized Emissions
+                                  Lower Emissions
                                 </div>
                                 <div id="precip-rcp85-range" class="legend-item legend-item-range selected">
                                   <div class="legend-item-block selected" id="preciprcp85-block"></div>
-                                  Increasing Emissions
+                                  Higher Emissions
                                 </div>
                                 <div id="precip-rcp45-mean" class="legend-item legend-item-range">
                                   <div class="legend-item-line-container">
@@ -508,8 +508,8 @@
                         <div class="data-accordion-content map">
                           <div class="moveable" id="precipitation-mapSliderDiv">
                             <div id="precipitation-swipeImg" class="handle">
-                      				<div class="emissions-low">Low Emissions</div>
-                      				<div class="emissions-high">High Emissions</div>
+                      				<div class="emissions-low">Lower Emissions</div>
+                      				<div class="emissions-high">Higher Emissions</div>
                       			</div>
                           </div>
 
@@ -679,11 +679,11 @@
                                 </div>
                                 <div id="derive-rcp45-range" class="legend-item legend-item-range">
                                   <div class="legend-item-block" id="derivercp45-block"></div>
-                                  Stabilized Emissions
+                                  Lower Emissions
                                 </div>
                                 <div id="derive-rcp85-range" class="legend-item legend-item-range selected">
                                   <div class="legend-item-block selected" id="derivercp85-block"></div>
-                                  Increasing Emissions
+                                  Higher Emissions
                                 </div>
                                 <div id="derive-rcp45-mean" class="legend-item legend-item-range">
                                   <div class="legend-item-line-container">
@@ -728,8 +728,8 @@
                           <div class="data-accordion-content map">
                             <div class="moveable" id="derived-mapSliderDiv">
                               <div id="derived-swipeImg" class="handle">
-                        				<div class="emissions-low">Low Emissions</div>
-                        				<div class="emissions-high">High Emissions</div>
+                        				<div class="emissions-low">Lower Emissions</div>
+                        				<div class="emissions-high">Higher Emissions</div>
                         			</div>
                             </div>
 
