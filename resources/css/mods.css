@@ -376,6 +376,10 @@ input.location-mapper:focus:-ms-input-placeholder {
   bottom:auto;
 }
 
+#vars-legend .source {
+  display: none;
+}
+
 .page-type-location .location-map-legend-container {
   display: block;
   position: absolute;
