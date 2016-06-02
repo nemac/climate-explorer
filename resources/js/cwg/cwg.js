@@ -50,6 +50,12 @@ $(document).ready(function() {
       if ( id !== 'annual' ) {
         $('#historical-range, #under-baseline-range, #over-baseline-range').hide();
         $('#temperature-chart .legend-item-line.observed').addClass('seasonal');
+        if (!$('#historical-obs').hasClass('selected')) {
+          $('#historical-obs').trigger('click');
+        }
+        if (!$('#precip-historical-obs').hasClass('selected')) {
+          $('#precip-historical-obs').trigger('click');
+        }
       } else {
         $('#historical-range, #under-baseline-range, #over-baseline-range').show();
         $('#temperature-chart .legend-item-line.observed').removeClass('seasonal');
@@ -537,6 +543,8 @@ $(document).ready(function() {
         'variable'      : $('#variable').val(),
         'scenario'      : $('#scenario').val(),
         'presentation'  : $('#presentation').val(),
+        'pmedian'       : $('#median').val(),
+        'histobs'       : $('#hist-obs').val(),
         'xrangefunc'    : xrangeset
     });
 
@@ -550,6 +558,8 @@ $(document).ready(function() {
         'variable'      : $('#precip-variable').val(),
         'scenario'      : $('#precip-scenario').val(),
         'presentation'  : $('#precip-presentation').val(),
+        'pmedian'       : $('#precip-median').val(),
+        'histobs'       : $('#precip-hist-obs').val(),
         'xrangefunc'    : pxrangeset
     });
 
@@ -563,6 +573,8 @@ $(document).ready(function() {
         'variable'      : $('#derived-variable').val(),
         'scenario'      : $('#derived-scenario').val(),
         'presentation'  : $('#derived-presentation').val(),
+        'pmedian'       : $('#derived-median').val(),
+        'histobs'       : $('#derived-hist-obs').val(),
         'xrangefunc'    : dxrangeset
     });
 

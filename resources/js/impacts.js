@@ -549,8 +549,9 @@ Impacts.prototype.addLayers = function() {
       }
 
       if ( self.data.layers[id].type === 'tileWMS' ) {
+        //var pr = proj4('EPSG:4326', [-13884991, 2870341, -7455066, 6338219]);
         layer = new ol.layer.Tile({
-          extent: [-13884991, 2870341, -7455066, 6338219],
+          extent: pr,
           source: new ol.source.TileWMS({
             url: self.data.layers[id].url,
             params: {
