@@ -1,7 +1,60 @@
 var Impacts = function(page) {
+  var qtrs = location.search;
+  var qs = this.parseQueryString(qtrs);
+
+  this.activeYear = qs.active_year || 2010;
   this.page = page;
   this.subLayers = {};
+  this.mapVariables();
   this.createMap();
+};
+
+
+
+/*
+* Lots of inconsistencies in naming, so here I map all the variables to one another
+*
+*/
+Impacts.prototype.mapVariables = function() {
+  this.varMapping = {
+    'tasmax': 'Mean Daily Maximum',
+    'tasmin': 'Mean Daily Minimum',
+    'days_tmin_blw_0.0': 'Days below 32&deg; F',
+    'days_tmax_abv_35.0': 'Days over 95&deg; F',
+    'pr': 'Mean Daily Precipitation',
+    'cooling_degree_day_18.3': 'Cooling Degree Days',
+    'heating_degree_day_18.3': 'Heating Degree Days'
+  };
+
+  this.tilesHistMapping = {
+    'tasmax': '_hist_prism_tmax',
+    'tasmin': '_hist_prism_tmin',
+    'days_tmin_blw_0.0': '_annual_hist_days-tmin-blw',
+    'days_tmax_abv_35.0': '_annual_hist_days-tmax-abv',
+    'pr': '_hist_prism_pr',
+    'cooling_degree_day_18.3': '_annual_hist_cooling-degree-day',
+    'heating_degree_day_18.3': '_annual_hist_heating-degree-day'
+  };
+
+  this.tilesMapping = {
+    'tasmax': '_rcp45_ea_tasmax',
+    'tasmin': '_rcp45_ea_tasmin',
+    'days_tmin_blw_0.0': '_annual_rcp45_days-tmin-blw',
+    'days_tmax_abv_35.0': '_annual_rcp45_days-tmax-abv',
+    'pr': '_rcp45_ea_pr',
+    'cooling_degree_day_18.3': '_annual_rcp45_cooling-degree-day',
+    'heating_degree_day_18.3': '_annual_rcp45_heating-degree-day'
+  };
+
+  this.tilesMapping85 = {
+    'tasmax': '_rcp85_ea_tasmax',
+    'tasmin': '_rcp85_ea_tasmin',
+    'days_tmin_blw_0.0': '_annual_rcp85_days-tmin-blw',
+    'days_tmax_abv_35.0': '_annual_rcp85_days-tmax-abv',
+    'pr': '_rcp85_ea_pr',
+    'cooling_degree_day_18.3': '_annual_rcp85_cooling-degree-day',
+    'heating_degree_day_18.3': '_annual_rcp85_heating-degree-day'
+  };
 };
 
 
@@ -48,13 +101,13 @@ Impacts.prototype.createMap = function() {
           url: 'http://habitatseven.basemaps.cartocdn.com/light_nolabels/{z}/{x}/{y}.png',
           attributions: [new ol.Attribution({ html: ['&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors, &copy; <a href="http://cartodb.com/attributions">CartoDB</a>'] })]
         })
-      }),
-      new ol.layer.Tile({
-        source: new ol.source.XYZ({
-          url: 'http://habitatseven.basemaps.cartocdn.com/light_only_labels/{z}/{x}/{y}.png',
-          attributions: [new ol.Attribution({ html: ['&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors, &copy; <a href="http://cartodb.com/attributions">CartoDB</a>'] })]
-        })
       })
+      // new ol.layer.Tile({
+      //   source: new ol.source.XYZ({
+      //     url: 'http://habitatseven.basemaps.cartocdn.com/light_only_labels/{z}/{x}/{y}.png',
+      //     attributions: [new ol.Attribution({ html: ['&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors, &copy; <a href="http://cartodb.com/attributions">CartoDB</a>'] })]
+      //   })
+      // })
     ],
     view: view
   });
@@ -137,6 +190,11 @@ Impacts.prototype.wireEvents = function() {
     self.map.getLayers().forEach(function(layer) {
       if (layer.get('layer_id') == id) {
         layer.setVisible(visible);
+        self.updateUrl();
+      } else if ( id === 'cooling_degree_day_18' || id === 'heating_degree_day_18' || id === 'mean_daily_max' || id === 'days_tmin_blw_0' || id === 'days_tmax_abv_35') {
+        if ( self.tileLayer ) {
+          self.tileLayer.setVisible(visible); }
+        if ( self.tileLayer85 ) { self.tileLayer85.setVisible(visible); }
         self.updateUrl();
       }
     });
@@ -406,6 +464,10 @@ Impacts.prototype.updateUrl = function() {
     qs.layers = '';
   }
 
+  if ( this.activeYear ) {
+    qs.active_year = this.activeYear;
+  }
+
   var str = $.param( qs );
 
   history.pushState(null, "", 'case.php?'+str);
@@ -484,10 +546,98 @@ Impacts.prototype.addLayers = function() {
   $.each(clone.reverse(), function(i, id) {
     layer = null;
 
-    //add layer with sublayers
-    //i.e. sea level rise layers 1ft - 6ft
-    if ( self.data.layers[id].sublayers ) {
-      $.each(self.data.layers[id].sublayers, function(e, sublayer) {
+    var n = self.data.layers[id].id;
+    if ( n !== 'cooling_degree_day_18.3' && n !== 'heating_degree_day_18.3' && n !== 'mean_daily_max' && n !== 'days_tmin_blw_0.0' && n !== 'days_tmax_abv_35.0') {
+      //add layer with sublayers
+      //i.e. sea level rise layers 1ft - 6ft
+      if ( self.data.layers[id].sublayers ) {
+        $.each(self.data.layers[id].sublayers, function(e, sublayer) {
+
+          if ( self.data.layers[id].type === 'StormSurge' ) {
+            var resolutions = [19567.87924099992, 9783.93962049996, 4891.96981024998, 2445.98490512499, 1222.992452562495, 611.4962262813797, 305.74811314055756, 152.87405657041106, 76.43702828507324, 38.21851414253662];
+
+            var tilegrid = new ol.tilegrid.TileGrid({
+                resolutions: resolutions,
+                origin: [-2.0037508342787E7, 2.0037508342787E7]
+            })
+            layer = new ol.layer.Tile({
+              extent: [-32629438.63437604, -2729719.1541202106, 1966571.863721013, 14705261.249615353],
+              source: new ol.source.XYZ({
+                  url: sublayer.url,
+                  projection: 'EPSG:102100',
+                  tileGrid: tilegrid
+              })
+            });
+          } else {
+            layer = new ol.layer.Tile({
+              extent: [-32629438.63437604, -2729719.1541202106, 1966571.863721013, 14705261.249615353],
+              source: new ol.source.TileArcGISRest({
+                url: sublayer.url,
+                params: {
+                  'LAYERS': sublayer.options.layer || ''
+                }
+              })
+            });
+          }
+
+
+          if ( self.visibleLayers ) {
+            if ( self.visibleLayers.indexOf(sublayer.id) !== -1 ) {
+              layer.setVisible(true);
+            } else {
+              layer.setVisible(false);
+            }
+          } else if (e === 0){
+            layer.setVisible(true);
+          } else {
+            layer.setVisible(false);
+          }
+
+          layer.set('layer_id', sublayer.id);
+          self.map.addLayer(layer);
+
+        });
+      } else {
+        if ( self.data.layers[id].type === 'WMS' ) {
+          layer = new ol.layer.Image({
+            extent: [-32629438.63437604, -2729719.1541202106, 1966571.863721013, 14705261.249615353],
+            source: new ol.source.ImageWMS({
+              url: self.data.layers[id].url,
+              params: {
+                'LAYERS': self.data.layers[id].options.layer,
+                'VERSION': self.data.layers[id].options.version || '1.3.0'
+              },
+              serverType: self.data.layers[id].options.type
+            })
+          });
+        }
+
+        if ( self.data.layers[id].type === 'tileWMS' ) {
+          //var pr = proj4('EPSG:4326', [-13884991, 2870341, -7455066, 6338219]);
+          layer = new ol.layer.Tile({
+            extent: [-13884991, 2870341, -7455066, 6338219],
+            source: new ol.source.TileWMS({
+              url: self.data.layers[id].url,
+              params: {
+                'LAYERS': self.data.layers[id].options.layer,
+                'VERSION': self.data.layers[id].options.version || '1.3.0'
+              },
+              serverType: self.data.layers[id].options.type
+            })
+          });
+        }
+
+        if ( self.data.layers[id].type === 'ArcGISRest' ) {
+          layer = new ol.layer.Tile({
+            extent: [-32629438.63437604, -2729719.1541202106, 1966571.863721013, 14705261.249615353],
+            source: new ol.source.TileArcGISRest({
+              url: self.data.layers[id].url,
+              params: {
+                'LAYERS': self.data.layers[id].options.layer || ''
+              }
+            })
+          });
+        }
 
         if ( self.data.layers[id].type === 'StormSurge' ) {
           var resolutions = [19567.87924099992, 9783.93962049996, 4891.96981024998, 2445.98490512499, 1222.992452562495, 611.4962262813797, 305.74811314055756, 152.87405657041106, 76.43702828507324, 38.21851414253662];
@@ -497,134 +647,51 @@ Impacts.prototype.addLayers = function() {
               origin: [-2.0037508342787E7, 2.0037508342787E7]
           })
           layer = new ol.layer.Tile({
-            extent: [-32629438.63437604, -2729719.1541202106, 1966571.863721013, 14705261.249615353],
             source: new ol.source.XYZ({
-                url: sublayer.url,
+                url: self.data.layers[id].url,
                 projection: 'EPSG:102100',
                 tileGrid: tilegrid
             })
           });
-        } else {
+        }
+
+        if ( self.data.layers[id].type === 'Tile' ) {
           layer = new ol.layer.Tile({
-            extent: [-32629438.63437604, -2729719.1541202106, 1966571.863721013, 14705261.249615353],
-            source: new ol.source.TileArcGISRest({
-              url: sublayer.url,
-              params: {
-                'LAYERS': sublayer.options.layer || ''
-              }
+            source: new ol.source.XYZ({
+              urls:[
+                self.data.layers[id].url
+              ],
+              extent: [-32629438.63437604, -2729719.1541202106, 1966571.863721013, 14705261.249615353],
+              minZoom: 0,
+              maxZoom: 5,
+              tilePixelRatio: 1
             })
           });
         }
 
+        if ( layer ) {
 
-        if ( self.visibleLayers ) {
-          if ( self.visibleLayers.indexOf(sublayer.id) !== -1 ) {
-            layer.setVisible(true);
-          } else {
-            layer.setVisible(false);
-          }
-        } else if (e === 0){
-          layer.setVisible(true);
-        } else {
-          layer.setVisible(false);
-        }
-
-        layer.set('layer_id', sublayer.id);
-        self.map.addLayer(layer);
-
-      });
-    } else {
-      if ( self.data.layers[id].type === 'WMS' ) {
-        layer = new ol.layer.Image({
-          extent: [-32629438.63437604, -2729719.1541202106, 1966571.863721013, 14705261.249615353],
-          source: new ol.source.ImageWMS({
-            url: self.data.layers[id].url,
-            params: {
-              'LAYERS': self.data.layers[id].options.layer,
-              'VERSION': self.data.layers[id].options.version || '1.3.0'
-            },
-            serverType: self.data.layers[id].options.type
-          })
-        });
-      }
-
-      if ( self.data.layers[id].type === 'tileWMS' ) {
-        //var pr = proj4('EPSG:4326', [-13884991, 2870341, -7455066, 6338219]);
-        layer = new ol.layer.Tile({
-          extent: [-13884991, 2870341, -7455066, 6338219],
-          source: new ol.source.TileWMS({
-            url: self.data.layers[id].url,
-            params: {
-              'LAYERS': self.data.layers[id].options.layer,
-              'VERSION': self.data.layers[id].options.version || '1.3.0'
-            },
-            serverType: self.data.layers[id].options.type
-          })
-        });
-      }
-
-      if ( self.data.layers[id].type === 'ArcGISRest' ) {
-        layer = new ol.layer.Tile({
-          extent: [-32629438.63437604, -2729719.1541202106, 1966571.863721013, 14705261.249615353],
-          source: new ol.source.TileArcGISRest({
-            url: self.data.layers[id].url,
-            params: {
-              'LAYERS': self.data.layers[id].options.layer || ''
+          if ( self.visibleLayers ) {
+            if ( self.visibleLayers.indexOf(id) !== -1 ) {
+              layer.setVisible(true);
+            } else {
+              layer.setVisible(false);
             }
-          })
-        });
-      }
-
-      if ( self.data.layers[id].type === 'StormSurge' ) {
-        var resolutions = [19567.87924099992, 9783.93962049996, 4891.96981024998, 2445.98490512499, 1222.992452562495, 611.4962262813797, 305.74811314055756, 152.87405657041106, 76.43702828507324, 38.21851414253662];
-
-        var tilegrid = new ol.tilegrid.TileGrid({
-            resolutions: resolutions,
-            origin: [-2.0037508342787E7, 2.0037508342787E7]
-        })
-        layer = new ol.layer.Tile({
-          source: new ol.source.XYZ({
-              url: self.data.layers[id].url,
-              projection: 'EPSG:102100',
-              tileGrid: tilegrid
-          })
-        });
-      }
-
-      if ( self.data.layers[id].type === 'Tile' ) {
-        layer = new ol.layer.Tile({
-          source: new ol.source.XYZ({
-            urls:[
-              self.data.layers[id].url
-            ],
-            extent: [-32629438.63437604, -2729719.1541202106, 1966571.863721013, 14705261.249615353],
-            minZoom: 0,
-            maxZoom: 5,
-            tilePixelRatio: 1
-          })
-        });
-      }
-
-      if ( layer ) {
-
-        if ( self.visibleLayers ) {
-          if ( self.visibleLayers.indexOf(id) !== -1 ) {
-            layer.setVisible(true);
-          } else {
-            layer.setVisible(false);
+          } else if ( self.group === 'all' ) {
+            if ( i === clone.length - 1 ) {
+              self.visibleLayers = [id];
+              layer.setVisible(true);
+            } else {
+              layer.setVisible(false);
+            }
           }
-        } else if ( self.group === 'all' ) {
-          if ( i === clone.length - 1 ) {
-            self.visibleLayers = [id];
-            layer.setVisible(true);
-          } else {
-            layer.setVisible(false);
-          }
+
+          layer.set('layer_id', id);
+          self.map.addLayer(layer);
         }
-
-        layer.set('layer_id', id);
-        self.map.addLayer(layer);
       }
+    } else {
+      self.addClimateLayer(true, self.data.layers[id]);
     }
 
     if ( self.data.layers[id].type === 'JSON' ) {
@@ -651,6 +718,247 @@ Impacts.prototype.addLayers = function() {
   });
 
 };
+
+
+
+
+Impacts.prototype.addClimateLayer = function(replace, layer, preserveTime) {
+  var self = this;
+
+  this.selectedVariable = layer.id;
+
+  var histYears = [1950, 1960, 1970, 1980, 1990, 2000];
+  var seasons = ['tasmax', 'tasmin', 'pr'];
+
+  var extent = ol.proj.transformExtent([-135,11.3535322866,-56.25,49.5057345956],'EPSG:4326', 'EPSG:3857');
+
+  var hist = null;
+  //var season = '_summer';
+  var season = ( seasons.indexOf(this.selectedVariable) !== -1 ) ? '_'+this.selectedSeason : '';
+
+  var src, src85;
+  if ( histYears.indexOf(this.activeYear) !== -1 ) {
+    src = this.activeYear + season + this.tilesHistMapping[ this.selectedVariable ];
+    src85 = null;
+  } else {
+    src = this.activeYear +  season + this.tilesMapping[ this.selectedVariable ];
+    src85 = this.activeYear + season + this.tilesMapping85[ this.selectedVariable ];
+  }
+
+  /*
+  * Replace! So we set existing tiles to "old", and wait a second to remove
+  * this means no flashing between layers – new one is drawn, old is removed a second later
+  */
+  if ( replace ) {
+    this.removeOldTiles();
+  }
+
+
+  /*
+  * Create the rcp45 tile layer
+  */
+  this.tileLayer = new ol.layer.Tile({
+    source: new ol.source.XYZ({
+      urls:[
+        'http://tiles.habitatseven.work/'+src+'/{z}/{x}/{y}.png'
+      ],
+      extent: extent,
+      minZoom: 0,
+      maxZoom: 5,
+      tilePixelRatio: 1
+    })
+  });
+
+  //add rcp45 tile layer to map
+  this.tileLayer.set('layer_id', 'tile_layer');
+  this.map.addLayer(this.tileLayer);
+
+  /*
+  * if after 2010, add the rcp85 tile layer to map as well!
+  */
+  if ( src85 ) {
+    //rcp85
+    this.tileLayer85 = new ol.layer.Tile({
+      source: new ol.source.XYZ({
+        urls:[
+          'http://tiles.habitatseven.work/'+src85+'/{z}/{x}/{y}.png'
+        ],
+        extent: extent,
+        minZoom: 0,
+        maxZoom: 5,
+        tilePixelRatio: 1
+      })
+    });
+
+    this.tileLayer85.set('layer_id', 'tile_layer');
+    this.map.addLayer(this.tileLayer85);
+  }
+
+
+  /*
+  * We want map names to be on top of climate tiles, so add to map at end!
+  */
+  if ( this.nameLayer ) { this.map.removeLayer(this.nameLayer); } //don't add twice!
+  this.nameLayer = new ol.layer.Tile({
+    source: new ol.source.XYZ({
+      url: 'http://habitatseven.basemaps.cartocdn.com/light_only_labels/{z}/{x}/{y}.png',
+      attributions: [new ol.Attribution({ html: ['&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors, &copy; <a href="http://cartodb.com/attributions">CartoDB</a>'] })]
+    })
+  });
+
+  this.nameLayer.set('layer_id', 'name_layer');
+  this.map.addLayer(this.nameLayer);
+
+
+  //here we have to move some layers around so ordering remains right
+  this.tileLayer.setZIndex(0);
+  if ( src85 ) { this.tileLayer85.setZIndex(0); }
+  this.nameLayer.setZIndex(6);
+
+  //IF after 2010, add the high/low swiper to map
+  if ( src85 ) {
+    $( "#sliderDiv" ).show();
+    this.setSwipeMap();
+  } else {
+    //else hide it
+    $( "#sliderDiv" ).hide();
+  }
+
+  //If new map tiles, reset time slider
+  if ( replace && !preserveTime ) {
+    this.setSlider(layer);
+  }
+}
+
+
+
+/*
+* Removes old climate tiles from map
+* Timeout means new tiles will load before we remove old, so there isn't a
+* flash of map with no tiles at all
+*
+*/
+Impacts.prototype.removeOldTiles = function() {
+  var self = this;
+
+  this.oldTile = this.tileLayer;
+  this.oldTile85 = this.tileLayer85;
+
+  setTimeout(function() {
+    if ( self.oldTile ) {
+      self.map.removeLayer(self.oldTile);
+      self.oldTile = null;
+    }
+    if ( self.oldTile85 ) {
+      self.map.removeLayer(self.oldTile85);
+      self.oldTile85 = null;
+    }
+  },900);
+};
+
+
+
+
+/*
+*
+* Logic for high/low emissions swiper
+*
+*
+*/
+Impacts.prototype.setSwipeMap = function() {
+  var self = this;
+  var swipeVal = null, pos, wrapper;
+
+  $('#sliderDiv').show();
+  $( "#sliderDiv" ).draggable({
+    axis: "x",
+    containment: "#map",
+    scroll: false,
+    drag: function(event,ui) {
+      pos = ui.helper.offset();
+      swipeVal = (pos.left - 20);
+      self.tileLayer.dispatchEvent('change');
+      $(".emissions-low").fadeOut();
+			$(".emissions-high").fadeOut();
+    },
+    stop: function(event, ui) {
+      pos = ui.helper.offset();
+      swipeVal = (pos.left - 20);
+      self.tileLayer.dispatchEvent('change');
+      $(".emissions-low").fadeIn();
+			$(".emissions-high").fadeIn();
+    }
+  });
+
+  this.tileLayer85.on('precompose', function(event) {
+    var ctx = event.context;
+    var wrapper = $("#map").width();
+    if(swipeVal === null) {
+      pos = $("#sliderDiv").offset(); //ui.helper.offset();
+      swipeVal = (pos.left - 20);
+    }
+    var screenPercent = swipeVal / wrapper;
+		var width = ctx.canvas.width * screenPercent;
+    ctx.save();
+		ctx.beginPath();
+		ctx.rect(width, 0, ctx.canvas.width - width, ctx.canvas.height);
+		ctx.clip();
+  });
+
+  this.tileLayer85.on('postcompose', function(event) {
+    var ctx = event.context;
+    ctx.restore();
+  });
+};
+
+
+
+
+/*
+*
+* Creates time slider
+*
+*/
+Impacts.prototype.setSlider = function(layer) {
+    var self = this;
+    var year_slider = $('#variable-time-slider');
+
+    var tooltip = $('<span class="tooltip">' + self.activeYear + '</span>').hide();
+
+    var year_min = parseInt($('#year-slider-container').find('.year-min').text());
+    var year_max = parseInt($('#year-slider-container').find('.year-max').text());
+
+    year_slider.slider({
+        range: false,
+        min: year_min,
+        max: year_max,
+        step: 10,
+        value: self.activeYear,
+        slide: function (event, ui) {
+          tooltip.text(ui.value);
+          tooltip.fadeIn(200);
+        },
+        change: function (event, ui) {
+          year_slider.attr('data-value', ui.value);
+        },
+        stop: function (event, ui) {
+          year_slider.attr('data-value', ui.value);
+          self.activeYear = ui.value;
+          self.addClimateLayer(true, layer, true);
+          self.updateUrl();
+          tooltip.fadeOut(200);
+        }
+    }).find(".ui-slider-handle").html('<span class="icon icon-arrow-left-right"></span>').append(tooltip);
+
+    $(this).hover(function () {
+        tooltip.fadeIn(200);
+    }, function () {
+        tooltip.fadeOut(100);
+    });
+
+    tooltip.fadeIn(200);
+
+}
 
 
 
