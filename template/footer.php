@@ -1,6 +1,7 @@
 <!-- START:JS_LOADER -->
 
 <script type="text/javascript" src="./resources/js/lodash.js"></script>
+<script type="text/javascript" src="./resources/js/proj4.js"></script>
 
 <script type="text/javascript" src="./resources/js/chart/chart.core.js"></script>
 <script type="text/javascript" src="./resources/js/chart/chart.line.js"></script>
