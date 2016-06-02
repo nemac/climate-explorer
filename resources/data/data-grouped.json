@@ -628,7 +628,7 @@
     },
     "days_tmin_blw_0": {
       "type": "Tile",
-      "id": "days_tmin_blw_0",
+      "id": "days_tmin_blw_0.0",
       "title": "Days below 32 degrees 2090",
       "description": "View how the number of days per year with below-freezing temperatures decreases over time.",
       "url": "http://tiles.habitatseven.work/2090_annual_rcp45_days-tmin-blw/{z}/{x}/{y}.png",
@@ -652,7 +652,7 @@
     },
     "heating_degree_day_18": {
       "type": "Tile",
-      "id": "heating_degree_day_18",
+      "id": "heating_degree_day_18.3",
       "title": "Heating degree days in 2090",
       "description": "View how demand for energy to heat homes and businesses during cool seasons decreases in future decades.",
       "url": "http://tiles.habitatseven.work/2090_annual_rcp45_heating-degree-day/{z}/{x}/{y}.png",
@@ -758,7 +758,7 @@
     },
     "cooling_degree_day_18": {
       "type": "Tile",
-      "id": "cooling_degree_day_18",
+      "id": "cooling_degree_day_18.3",
       "title": "Cooling degree days in 2090",
       "description": "View how demand for energy to cool homes and businesses during the warm season increases in the future. Consider how people who don’t have access to air conditioning will fare.",
       "url": "http://tiles.habitatseven.work/2090_annual_rcp45_cooling-degree-day/{z}/{x}/{y}.png",
@@ -784,7 +784,7 @@
     },
     "days_tmax_abv_35": {
       "type": "Tile",
-      "id": "days_tmax_abv_35",
+      "id": "days_tmax_abv_35.0",
       "title": "Days above 95 degrees F 2090",
       "description": "View how the number of days per year with temperatures over 95°F increases during future decades.",
       "url": "http://tiles.habitatseven.work/2090_annual_rcp85_days-tmax-abv/{z}/{x}/{y}.png",

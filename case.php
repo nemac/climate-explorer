@@ -1,5 +1,5 @@
 <?php
-  
+
   include_once('functions.php');
 
   $case = $_REQUEST['id'];
@@ -21,15 +21,16 @@
     <link rel="stylesheet" media="screen" href="resources/css/mods.css">
 
     <script type="text/javascript" src="./resources/js/jquery.min.js"></script>
-    <script type="text/javascript" src="./resources/js/jquery-ui.min.js"></script>
-    
+    <!-- <script type="text/javascript" src="./resources/js/jquery-ui.min.js"></script> -->
+    <script src="//code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
+
     <?php
-      
+
       $share_data['url'] = current_URL();
       $share_data['title'] = 'Case';
-      
+
       echo opengraph_output($share_data);
-      
+
     ?>
 
   </head>
@@ -50,12 +51,20 @@
 
 <div id="viewport">
     <div id="main-content-wrap">
-        <div id="map" class="map"></div>
-        <div class="year" style="display:none">
-            <div class="year-label year-min">1950</div>
-            <div class="year-slider" data-min="1950" data-max="2100" data-value="2015"></div>
-            <div class="year-label year-max">2100</div>
+      <div class="moveable" id="sliderDiv" style="display:none">
+        <div id="swipeImg" class="handle">
+          <div class="emissions-low">Lower Emissions</div>
+          <div class="emissions-high">Higher Emissions</div>
         </div>
+      </div>
+
+      <div id="map" class="map"></div>
+
+      <div class="year" id="year-slider-container">
+        <div class="year-label year-min">1950</div>
+        <div class="" id="variable-time-slider" data-min="1950" data-max="2090" data-value="2010"></div>
+        <div class="year-label year-max">2090</div>
+      </div>
 
         <div class="zoom">
             <div class="zoom-slider" data-value="1"></div>
