@@ -21,8 +21,7 @@
     <link rel="stylesheet" media="screen" href="resources/css/mods.css">
 
     <script type="text/javascript" src="./resources/js/jquery.min.js"></script>
-    <!-- <script type="text/javascript" src="./resources/js/jquery-ui.min.js"></script> -->
-    <script src="//code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
+      <script type="text/javascript" src="./resources/js/jquery-ui.min.js"></script>
 
     <?php
 
