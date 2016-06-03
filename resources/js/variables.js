@@ -481,9 +481,9 @@ Variables.prototype.countySelected = function(feature, event) {
       '</header>' +
       '<div id="climate-chart" style="width:800px; height:420px"></div>'+
       '<div class="chart-legend">'+
-        '<div id="historical-obs" class="legend-item legend-item-range selected">'+
+        '<div id="historical-obs" class="legend-item legend-item-range">'+
           '<div class="legend-item-line-container">'+
-            '<div class="legend-item-line selected observed" id="over-baseline-block"></div>'+
+            '<div class="legend-item-line observed" id="over-baseline-block"></div>'+
           '</div>'+
           '<span class="legend-item-line-label">Observations</span>'+
         '</div>'+
@@ -491,18 +491,18 @@ Variables.prototype.countySelected = function(feature, event) {
           '<div class="legend-item-block selected" id="historical-block"></div>'+
           'Historical (Modelled)'+
         '</div>'+
-        '<div id="rcp45-range" class="legend-item legend-item-range">'+
-          '<div class="legend-item-block" id="rcp45-block"></div>'+
+        '<div id="rcp45-range" class="legend-item legend-item-range selected">'+
+          '<div class="legend-item-block selected" id="rcp45-block"></div>'+
           'Lower Emissions'+
         '</div>'+
         '<div id="rcp85-range" class="legend-item legend-item-range selected">'+
           '<div class="legend-item-block selected" id="rcp85-block"></div>'+
           'Higher Emissions'+
         '</div>'+
-        '<div id="rcp45-mean" class="legend-item legend-item-range">'+
+        '<div id="rcp45-mean" class="legend-item legend-item-range selected">'+
           '<div class="legend-item-line-container">'+
-            '<div class="legend-item-line" id="rcp85-line"></div>'+
-            '<div class="legend-item-line" id="rcp45-line"></div>'+
+            '<div class="legend-item-line selected" id="rcp85-line"></div>'+
+            '<div class="legend-item-line selected" id="rcp45-line"></div>'+
           '</div>'+
           '<span class="legend-item-line-label">Medians</span>'+
         '</div>'+
@@ -521,7 +521,9 @@ Variables.prototype.countySelected = function(feature, event) {
       frequency  : "annual",
       fips       : fips,
       variable   : this.selectedVariable,
-      scenario   : "rcp85"
+      scenario   : "both",
+      pmedian    : "true",
+      histobs    : "false"
     });
 
     $('.legend-item-range').on('click', function() {
