@@ -1,15 +1,5 @@
 manager/
 resources/ol3/closure-library/closure/bin/build/
 *.pyc
-*.scssc
-*.scssc
-
-*.scssc
-
-*.scssc
-
-*.scssc
-
-*.scssc
-
-*.scssc
+deploy/
+.sass-cache/

@@ -4,13 +4,32 @@
     <option name="SCOPE_TYPE" value="3" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="834b6b80-6ff0-478d-9964-d91e121deaf1" name="Default" comment="enabled cors in /resources/data via htaccess">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/maptest.html" />
+    <list default="true" id="834b6b80-6ff0-478d-9964-d91e121deaf1" name="Default" comment="">
+      <change type="DELETED" beforePath="$PROJECT_DIR$/formmapper/api_call.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/formmapper/bounds.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/formmapper/counties.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/formmapper/country.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/formmapper/css/bootstrap.css" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/formmapper/css/styles.css" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/formmapper/demo.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/formmapper/details.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/formmapper/drag.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/formmapper/geolocate.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/formmapper/img/CodeCanyonLogoSmall.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/formmapper/img/food-1.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/formmapper/img/food-2.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/formmapper/img/food-3.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/formmapper/img/glyphicons-halflings-white.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/formmapper/img/glyphicons-halflings.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/formmapper/img/splash-screen.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/formmapper/img/toms.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/formmapper/index.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/formmapper/js/bootstrap.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/formmapper/js/formmapper.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/formmapper/multiple.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/formmapper/poi.html" afterPath="" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.gitignore" afterPath="$PROJECT_DIR$/.gitignore" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/js/chart.js" afterPath="$PROJECT_DIR$/resources/js/chart.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/js/impacts.js" afterPath="$PROJECT_DIR$/resources/js/impacts.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/js/ol.js" afterPath="$PROJECT_DIR$/resources/js/ol.js" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/resources/js/ol.js" afterPath="$PROJECT_DIR$/resources/js/ol-3.14..js" />
     </list>
     <ignored path="Climate Explorer.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -53,22 +72,71 @@
       <file leaf-file-name="chart.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/resources/js/chart.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="2173">
+            <state relative-caret-position="3587">
               <caret line="211" column="27" selection-start-line="211" selection-start-column="26" selection-end-line="211" selection-end-column="27" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="impacts.js" pinned="false" current-in-tab="true">
+      <file leaf-file-name="impacts.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/resources/js/impacts.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="798">
-              <caret line="659" column="20" selection-start-line="659" selection-start-column="20" selection-end-line="659" selection-end-column="20" />
+            <state relative-caret-position="11203">
+              <caret line="992" column="20" selection-start-line="992" selection-start-column="20" selection-end-line="992" selection-end-column="20" />
               <folding>
-                <marker date="1464813551810" expanded="true" signature="6078:6103" ph="..." />
-                <marker date="1464813551810" expanded="true" signature="6159:6184" ph="..." />
+                <marker date="1464965162118" expanded="true" signature="29:33" ph="{...}" />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="index.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/index.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="765">
+              <caret line="45" column="38" selection-start-line="45" selection-start-column="38" selection-end-line="45" selection-end-column="38" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="formmapper.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/resources/js/formmapper.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="0">
+              <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="deploy.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/deploy/deploy.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="408">
+              <caret line="30" column="69" selection-start-line="30" selection-start-column="69" selection-end-line="30" selection-end-column="69" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name=".gitignore" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/.gitignore">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="168">
+              <caret line="4" column="12" selection-start-line="4" selection-start-column="12" selection-end-line="4" selection-end-column="12" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name=".htaccess" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/data/.htaccess">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="0">
+              <caret line="0" column="42" selection-start-line="0" selection-start-column="42" selection-end-line="0" selection-end-column="42" />
+              <folding />
             </state>
           </provider>
         </entry>
@@ -166,7 +234,6 @@
         <option value="$PROJECT_DIR$/deploy/deploy.php" />
         <option value="$PROJECT_DIR$/deploy/deploy.txt" />
         <option value="&lt;8378bd35-64a5-4657-b680-e9ef23aaed87&gt;/deploy/log.txt" />
-        <option value="$PROJECT_DIR$/.gitignore" />
         <option value="$PROJECT_DIR$/gittest.txt" />
         <option value="$PROJECT_DIR$/formmapper/details.html" />
         <option value="$PROJECT_DIR$/formmapper/counties.html" />
@@ -177,6 +244,7 @@
         <option value="$PROJECT_DIR$/resources/js/location.js" />
         <option value="$PROJECT_DIR$/resources/js/chart.js" />
         <option value="$PROJECT_DIR$/resources/js/impacts.js" />
+        <option value="$PROJECT_DIR$/.gitignore" />
       </list>
     </option>
   </component>
@@ -221,7 +289,6 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -250,20 +317,6 @@
               <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="sandbox" />
-              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Climate Explorer" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Climate_Explorer" />
-              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
               <option name="myItemId" value="resources" />
               <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
             </PATH_ELEMENT>
@@ -282,7 +335,7 @@
               <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="js" />
+              <option name="myItemId" value="ol3" />
               <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
             </PATH_ELEMENT>
           </PATH>
@@ -293,10 +346,6 @@
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="Climate_Explorer" />
-              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="resources" />
               <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
@@ -307,6 +356,7 @@
         </subPane>
       </pane>
       <pane id="Scratches" />
+      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -333,6 +383,129 @@
       <recent name="X:\Dropbox\_PROJX\Climate Explorer\newtest" />
       <recent name="$PROJECT_DIR$/newtest" />
     </key>
+  </component>
+  <component name="RestoreUpdateTree" date="Moments ago" ActionInfo="_Update">
+    <UpdatedFiles>
+      <FILE-GROUP>
+        <option name="myUpdateName" value="Updated from server" />
+        <option name="myStatusName" value="Changed on server" />
+        <option name="mySupportsDeletion" value="false" />
+        <option name="myCanBeAbsent" value="false" />
+        <option name="myId" value="CHANGED_ON_SERVER" />
+        <FILE-GROUP>
+          <option name="myUpdateName" value="Updated" />
+          <option name="myStatusName" value="Changed" />
+          <option name="mySupportsDeletion" value="false" />
+          <option name="myCanBeAbsent" value="false" />
+          <option name="myId" value="UPDATED" />
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/case.php</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/location.php</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/resources/css/mods.css</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/resources/data/data-grouped.json</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/resources/img/observed.png</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/resources/js/cwg/climate-widget-graph.js</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/resources/js/cwg/cwg.js</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/resources/js/global_functions.js</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/resources/js/impacts.js</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/template/footer.php</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/template/header.php</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/topic.php</PATH>
+        </FILE-GROUP>
+        <FILE-GROUP>
+          <option name="myUpdateName" value="Created" />
+          <option name="myStatusName" value="Created" />
+          <option name="mySupportsDeletion" value="false" />
+          <option name="myCanBeAbsent" value="false" />
+          <option name="myId" value="CREATED" />
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/resources/js/lodash.js</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/resources/js/proj4.js</PATH>
+        </FILE-GROUP>
+        <FILE-GROUP>
+          <option name="myUpdateName" value="Deleted" />
+          <option name="myStatusName" value="Deleted" />
+          <option name="mySupportsDeletion" value="false" />
+          <option name="myCanBeAbsent" value="true" />
+          <option name="myId" value="REMOVED_FROM_REPOSITORY" />
+        </FILE-GROUP>
+        <FILE-GROUP>
+          <option name="myUpdateName" value="Restored" />
+          <option name="myStatusName" value="Will be restored" />
+          <option name="mySupportsDeletion" value="false" />
+          <option name="myCanBeAbsent" value="false" />
+          <option name="myId" value="RESTORED" />
+        </FILE-GROUP>
+      </FILE-GROUP>
+      <FILE-GROUP>
+        <option name="myUpdateName" value="Modified" />
+        <option name="myStatusName" value="Modified" />
+        <option name="mySupportsDeletion" value="false" />
+        <option name="myCanBeAbsent" value="false" />
+        <option name="myId" value="MODIFIED" />
+      </FILE-GROUP>
+      <FILE-GROUP>
+        <option name="myUpdateName" value="Skipped" />
+        <option name="myStatusName" value="Skipped" />
+        <option name="mySupportsDeletion" value="false" />
+        <option name="myCanBeAbsent" value="false" />
+        <option name="myId" value="SKIPPED" />
+      </FILE-GROUP>
+      <FILE-GROUP>
+        <option name="myUpdateName" value="Merged with conflicts" />
+        <option name="myStatusName" value="Will be merged with conflicts" />
+        <option name="mySupportsDeletion" value="false" />
+        <option name="myCanBeAbsent" value="false" />
+        <option name="myId" value="MERGED_WITH_CONFLICTS" />
+      </FILE-GROUP>
+      <FILE-GROUP>
+        <option name="myUpdateName" value="Merged with tree conflicts" />
+        <option name="myStatusName" value="Merged with tree conflicts" />
+        <option name="mySupportsDeletion" value="false" />
+        <option name="myCanBeAbsent" value="false" />
+        <option name="myId" value="MERGED_WITH_TREE_CONFLICT" />
+      </FILE-GROUP>
+      <FILE-GROUP>
+        <option name="myUpdateName" value="Merged with property conflicts" />
+        <option name="myStatusName" value="Will be merged with property conflicts" />
+        <option name="mySupportsDeletion" value="false" />
+        <option name="myCanBeAbsent" value="false" />
+        <option name="myId" value="MERGED_WITH_PROPERTY_CONFLICT" />
+      </FILE-GROUP>
+      <FILE-GROUP>
+        <option name="myUpdateName" value="Merged" />
+        <option name="myStatusName" value="Will be merged" />
+        <option name="mySupportsDeletion" value="false" />
+        <option name="myCanBeAbsent" value="false" />
+        <option name="myId" value="MERGED" />
+      </FILE-GROUP>
+      <FILE-GROUP>
+        <option name="myUpdateName" value="Not in repository" />
+        <option name="myStatusName" value="Not in repository" />
+        <option name="mySupportsDeletion" value="true" />
+        <option name="myCanBeAbsent" value="false" />
+        <option name="myId" value="UNKNOWN" />
+      </FILE-GROUP>
+      <FILE-GROUP>
+        <option name="myUpdateName" value="Locally added" />
+        <option name="myStatusName" value="Locally added" />
+        <option name="mySupportsDeletion" value="false" />
+        <option name="myCanBeAbsent" value="false" />
+        <option name="myId" value="LOCALLY_ADDED" />
+      </FILE-GROUP>
+      <FILE-GROUP>
+        <option name="myUpdateName" value="Locally removed" />
+        <option name="myStatusName" value="Locally removed" />
+        <option name="mySupportsDeletion" value="false" />
+        <option name="myCanBeAbsent" value="false" />
+        <option name="myId" value="LOCALLY_REMOVED" />
+      </FILE-GROUP>
+      <FILE-GROUP>
+        <option name="myUpdateName" value="Switched" />
+        <option name="myStatusName" value="Switched" />
+        <option name="mySupportsDeletion" value="false" />
+        <option name="myCanBeAbsent" value="false" />
+        <option name="myId" value="SWITCHED" />
+      </FILE-GROUP>
+    </UpdatedFiles>
   </component>
   <component name="RunManager">
     <configuration default="true" type="JavascriptDebugType" factoryName="JavaScript Debug">
@@ -385,7 +558,8 @@
       <workItem from="1464365716356" duration="1686000" />
       <workItem from="1464372187063" duration="2297000" />
       <workItem from="1464714739382" duration="4961000" />
-      <workItem from="1464813329517" duration="223000" />
+      <workItem from="1464813329517" duration="1340000" />
+      <workItem from="1464965154203" duration="251000" />
     </task>
     <task id="LOCAL-00001" summary="test">
       <created>1452891884032</created>
@@ -492,11 +666,18 @@
       <option name="project" value="LOCAL" />
       <updated>1458078489763</updated>
     </task>
-    <option name="localTasksCounter" value="16" />
+    <task id="LOCAL-00016" summary="weather stationg graphs are now bound">
+      <created>1464813564554</created>
+      <option name="number" value="00016" />
+      <option name="presentableId" value="LOCAL-00016" />
+      <option name="project" value="LOCAL" />
+      <updated>1464813564554</updated>
+    </task>
+    <option name="localTasksCounter" value="17" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="10833000" />
+    <option name="totallyTimeSpent" value="12201000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -512,13 +693,13 @@
     <editor active="true" />
     <layout>
       <window_info id="Remote Host" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.11696523" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.20179136" sideWeight="0.50520056" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.2028451" sideWeight="0.50520056" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32834226" sideWeight="0.4978701" order="6" side_tool="false" content_ui="tabs" />
-      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.15518962" sideWeight="0.5200211" order="10" side_tool="true" content_ui="tabs" />
+      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.1552671" sideWeight="0.52107483" order="10" side_tool="true" content_ui="tabs" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.1121421" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32959184" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="File Transfer" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.15518962" sideWeight="0.47997892" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33233532" sideWeight="0.48656482" order="11" side_tool="false" content_ui="tabs" />
+      <window_info id="File Transfer" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.1552671" sideWeight="0.4789252" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33200198" sideWeight="0.48551106" order="11" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32806122" sideWeight="0.4978701" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.2497332" sideWeight="0.4947994" order="2" side_tool="true" content_ui="tabs" />
@@ -589,27 +770,14 @@
     <MESSAGE value="testing auto-deploy" />
     <MESSAGE value="testing geolocator" />
     <MESSAGE value="enabled cors in /resources/data via htaccess" />
-    <option name="LAST_COMMIT_MESSAGE" value="enabled cors in /resources/data via htaccess" />
+    <MESSAGE value="weather stationg graphs are now bound" />
+    <option name="LAST_COMMIT_MESSAGE" value="weather stationg graphs are now bound" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager />
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/resources/js/cwg/demo.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="39" column="4" selection-start-line="39" selection-start-column="4" selection-end-line="39" selection-end-column="4" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/resources/js/download.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/sandbox/dls.txt">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
@@ -786,13 +954,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/deploy/deploy.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="21" column="51" selection-start-line="21" selection-start-column="51" selection-end-line="21" selection-end-column="51" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/deploy/deploy.txt">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
@@ -811,13 +972,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="16" column="63" selection-start-line="16" selection-start-column="63" selection-end-line="16" selection-end-column="63" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/.gitignore">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="3" column="0" selection-start-line="3" selection-start-column="0" selection-end-line="3" selection-end-column="0" />
         </state>
       </provider>
     </entry>
@@ -853,13 +1007,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="42" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/data/.htaccess">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="42" selection-start-line="0" selection-start-column="42" selection-end-line="0" selection-end-column="42" />
         </state>
       </provider>
     </entry>
@@ -939,7 +1086,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/resources/js/chart.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="2173">
+        <state relative-caret-position="3587">
           <caret line="211" column="27" selection-start-line="211" selection-start-column="26" selection-end-line="211" selection-end-column="27" />
           <folding />
         </state>
@@ -947,12 +1094,51 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/resources/js/impacts.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="798">
-          <caret line="659" column="20" selection-start-line="659" selection-start-column="20" selection-end-line="659" selection-end-column="20" />
+        <state relative-caret-position="11203">
+          <caret line="992" column="20" selection-start-line="992" selection-start-column="20" selection-end-line="992" selection-end-column="20" />
           <folding>
-            <marker date="1464813551810" expanded="true" signature="6078:6103" ph="..." />
-            <marker date="1464813551810" expanded="true" signature="6159:6184" ph="..." />
+            <marker date="1464965162118" expanded="true" signature="29:33" ph="{...}" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/index.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="765">
+          <caret line="45" column="38" selection-start-line="45" selection-start-column="38" selection-end-line="45" selection-end-column="38" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/resources/js/formmapper.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/deploy/deploy.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="408">
+          <caret line="30" column="69" selection-start-line="30" selection-start-column="69" selection-end-line="30" selection-end-column="69" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/data/.htaccess">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="42" selection-start-line="0" selection-start-column="42" selection-end-line="0" selection-end-column="42" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/.gitignore">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="168">
+          <caret line="4" column="12" selection-start-line="4" selection-start-column="12" selection-end-line="4" selection-end-column="12" />
+          <folding />
         </state>
       </provider>
     </entry>
