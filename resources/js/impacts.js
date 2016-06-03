@@ -358,7 +358,6 @@ Impacts.prototype.createLegend = function() {
         }
       tmpl += '<div id="info-'+id+'" class="layer-info">'+
         '<h3>'+self.data.layers[id].title+'</h3>'+
-        '<div class="opacity-slider-wrap"><h4>Layer opacity</h4><div class="opacity-slider" id="opacity-'+id+'"></div></div>' +
 
         '<div class="info-accordion">'+
           '<h4>Layer description</h4>'+
@@ -371,7 +370,8 @@ Impacts.prototype.createLegend = function() {
             '<img src="resources/img/legend_dummy.png">'+
           '</div>'+
         '</div>'+
-
+        '<div class="opacity-slider-wrap"><h4>Layer opacity</h4><div class="opacity-slider" id="opacity-'+id+'"></div></div>' +
+        
         '<div class="actions">'+
           '<a href="#" class="layer-info-close"><span class="icon icon-close"></span>Close</a>'+
           '<a href="#" class="layer-info-next"><span class="icon icon-arrow-right"></span>Next</a>'+

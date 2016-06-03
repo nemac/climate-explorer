@@ -248,7 +248,7 @@ Impacts.prototype.createLegend = function() {
   $.each(layerIds, function(i, id) {
     checked = (i === 0) ? 'checked' : '';
     sublayer = self.data.layers[id].sublayers;
-    
+
     icon_class = (i === 0) ? 'icon-view-on' : 'icon-view-off';
 
     var tmpl = '<li class="legend" id="legend-'+id+'">' +
@@ -258,9 +258,9 @@ Impacts.prototype.createLegend = function() {
       '<span class="icon layer-toggle ' + icon_class + '"></span>' +
       '<a href="#info-'+id+'" class="help icon icon-help"></a>' +
       '</div>';
-      
+
       //'<input class="visibility" id="visibility-'+id+'" type="checkbox" '+checked+'/>' +
-      
+
         if ( sublayer ) {
           tmpl += '<div class="sublayer-slider"></div>'+
             '<div class="sublayer-range-values" id="range-'+id+'"></div>';
@@ -268,19 +268,19 @@ Impacts.prototype.createLegend = function() {
       tmpl += '<div id="info-'+id+'" class="layer-info">'+
         '<h3>'+self.data.layers[id].title+'</h3>'+
         '<div class="opacity-slider-wrap"><h4>Layer opacity</h4><div class="opacity-slider" id="opacity-'+id+'"></div></div>' +
-        
+
         '<div class="info-accordion">'+
           '<h4>Layer description</h4>'+
           '<div>'+
             '<p>'+self.data.layers[id].description+'</p>'+
           '</div>'+
-        
+
           '<h4>Legend</h4>'+
           '<div>'+
             '<img src="resources/img/legend_dummy.png">'+
           '</div>'+
         '</div>'+
-        
+
         '<div class="actions">'+
           '<a href="#" class="layer-info-close"><span class="icon icon-close"></span>Close</a>'+
           '<a href="#" class="layer-info-next"><span class="icon icon-arrow-right"></span>Next</a>'+
@@ -289,7 +289,7 @@ Impacts.prototype.createLegend = function() {
     '</li>';
 
     $('#case-menu').append(tmpl);
-    
+
     $('#case-menu').find('.layer-info').find('.info-accordion').accordion({
       header: 'h4',
       heightStyle: 'content',
