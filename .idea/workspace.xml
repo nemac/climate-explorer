@@ -5,31 +5,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="834b6b80-6ff0-478d-9964-d91e121deaf1" name="Default" comment="">
-      <change type="DELETED" beforePath="$PROJECT_DIR$/formmapper/api_call.html" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/formmapper/bounds.html" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/formmapper/counties.html" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/formmapper/country.html" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/formmapper/css/bootstrap.css" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/formmapper/css/styles.css" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/formmapper/demo.html" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/formmapper/details.html" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/formmapper/drag.html" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/formmapper/geolocate.html" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/formmapper/img/CodeCanyonLogoSmall.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/formmapper/img/food-1.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/formmapper/img/food-2.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/formmapper/img/food-3.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/formmapper/img/glyphicons-halflings-white.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/formmapper/img/glyphicons-halflings.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/formmapper/img/splash-screen.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/formmapper/img/toms.jpg" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/formmapper/index.html" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/formmapper/js/bootstrap.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/formmapper/js/formmapper.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/formmapper/multiple.html" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/formmapper/poi.html" afterPath="" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.gitignore" afterPath="$PROJECT_DIR$/.gitignore" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="Climate Explorer.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -125,7 +101,7 @@
         <entry file="file://$PROJECT_DIR$/.gitignore">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="168">
-              <caret line="4" column="12" selection-start-line="4" selection-start-column="12" selection-end-line="4" selection-end-column="12" />
+              <caret line="4" column="13" selection-start-line="4" selection-start-column="13" selection-end-line="4" selection-end-column="13" />
               <folding />
             </state>
           </provider>
@@ -559,7 +535,7 @@
       <workItem from="1464372187063" duration="2297000" />
       <workItem from="1464714739382" duration="4961000" />
       <workItem from="1464813329517" duration="1340000" />
-      <workItem from="1464965154203" duration="251000" />
+      <workItem from="1464965154203" duration="270000" />
     </task>
     <task id="LOCAL-00001" summary="test">
       <created>1452891884032</created>
@@ -673,11 +649,18 @@
       <option name="project" value="LOCAL" />
       <updated>1464813564554</updated>
     </task>
-    <option name="localTasksCounter" value="17" />
+    <task id="LOCAL-00017" summary="weather stationg graphs are now bound">
+      <created>1464965417392</created>
+      <option name="number" value="00017" />
+      <option name="presentableId" value="LOCAL-00017" />
+      <option name="project" value="LOCAL" />
+      <updated>1464965417392</updated>
+    </task>
+    <option name="localTasksCounter" value="18" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="12201000" />
+    <option name="totallyTimeSpent" value="12220000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -1137,7 +1120,7 @@
     <entry file="file://$PROJECT_DIR$/.gitignore">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="168">
-          <caret line="4" column="12" selection-start-line="4" selection-start-column="12" selection-end-line="4" selection-end-column="12" />
+          <caret line="4" column="13" selection-start-line="4" selection-start-column="13" selection-end-line="4" selection-end-column="13" />
           <folding />
         </state>
       </provider>
