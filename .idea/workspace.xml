@@ -4,8 +4,7 @@
     <option name="SCOPE_TYPE" value="3" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="834b6b80-6ff0-478d-9964-d91e121deaf1" name="Default" comment="removed formapper library">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.gitignore" afterPath="$PROJECT_DIR$/.gitignore" />
+    <list default="true" id="834b6b80-6ff0-478d-9964-d91e121deaf1" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="Climate Explorer.iws" />
@@ -564,7 +563,7 @@
       <workItem from="1464372187063" duration="2297000" />
       <workItem from="1464714739382" duration="4961000" />
       <workItem from="1464813329517" duration="1340000" />
-      <workItem from="1464965154203" duration="312000" />
+      <workItem from="1464965154203" duration="322000" />
     </task>
     <task id="LOCAL-00001" summary="test">
       <created>1452891884032</created>
@@ -692,11 +691,18 @@
       <option name="project" value="LOCAL" />
       <updated>1464965435373</updated>
     </task>
-    <option name="localTasksCounter" value="19" />
+    <task id="LOCAL-00019" summary="removed formapper library">
+      <created>1464965468651</created>
+      <option name="number" value="00019" />
+      <option name="presentableId" value="LOCAL-00019" />
+      <option name="project" value="LOCAL" />
+      <updated>1464965468651</updated>
+    </task>
+    <option name="localTasksCounter" value="20" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="12262000" />
+    <option name="totallyTimeSpent" value="12272000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
