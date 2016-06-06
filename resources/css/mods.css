@@ -110,6 +110,17 @@ input.location-mapper:focus:-ms-input-placeholder {
   margin-left:-13px;
 }
 
+.page-type-variables .ol-scale-line {
+  background: rgba(0,60,136,.3);
+  border-radius: 4px;
+  bottom: 133px;
+  left: 345px;
+}
+
+.page-type-variables .ol-zoom {
+  display: none;
+}
+
 .page-type-variables .data-accordion-actions {
   margin-top:-15px;
 }
@@ -360,11 +371,20 @@ input.location-mapper:focus:-ms-input-placeholder {
   height: 7%;
 }
 
+.page-type-case #case-menu li:last-child .layer-info, .page-type-case #case-menu li:nth-last-child(2) .layer-info {
+  top: 0;
+  bottom:auto;
+}
+
+#vars-legend .source {
+  display: none;
+}
+
 .page-type-location .location-map-legend-container {
   display: block;
   position: absolute;
   left: 20px;
-  bottom: 60px;
+  top: 25%;
   padding: 8px 5px 8px 8px;
   z-index: 2;
   background:#FFF;
@@ -372,8 +392,8 @@ input.location-mapper:focus:-ms-input-placeholder {
 }
 
 .page-type-location .location-map-legend-container .legend-image {
-  height: 275px;
-  margin-left: -9px;
+  height: 400px;
+  margin-left: -11px;
 }
 
 .page-type-location .year {
@@ -395,16 +415,19 @@ input.location-mapper:focus:-ms-input-placeholder {
 }
 
 .page-type-location .year .ui-slider .ui-slider-handle {
-  left: 3px;
-  width: 17px;
-  height: 17px;
-  margin: 0 0 -8px -8px;
-  background: #382F2D;
-  -moz-border-radius: 50%;
-  -webkit-border-radius: 50%;
-  border-radius: 50%;
-  outline: none;
-  cursor: pointer;
+  top: -14px;
+  width: 36px;
+  height: 36px;
+  margin: -3px 0 -18px -18px;
+  background: #fff;
+  border: 4px solid #f5442d;
+  text-align: center;
+  font-size: 1.5rem;
+  line-height: 1.375rem;
+  color: #f5442d;
+  -moz-box-shadow: 0 0 4px rgba(0, 88, 207, 0.25);
+  -webkit-box-shadow: 0 0 4px rgba(0, 88, 207, 0.25);
+  box-shadow: 0 0 4px rgba(0, 88, 207, 0.25);
 }
 
 .page-type-location .ol-overlaycontainer-stopevent {
@@ -417,7 +440,7 @@ input.location-mapper:focus:-ms-input-placeholder {
 
 
 .page-type-location .year .icon.icon-arrow-left-right{
-  margin-top: -9px;
+  margin-top: 2px;
 }
 
 #location-temperature .accent-background {

@@ -26,7 +26,7 @@
     <link rel="stylesheet" media="screen" href="resources/css/mods.css">
 
     <script type="text/javascript" src="./resources/js/jquery.min.js"></script>
-    <script src="//code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
+    <script type="text/javascript" src="./resources/js/jquery-ui.min.js"></script>
 
     <?php
 
@@ -153,8 +153,8 @@
                           <div class="six columns">
                               <label for="scenario">Scenario</label>
                               <select id="scenario" class="u-full-width">
-                                  <option value="both">RCP 8.5 and 4.5</option>
-                                  <option value="rcp85" selected="selected">RCP 8.5</option>
+                                  <option value="both" selected="selected">RCP 8.5 and 4.5</option>
+                                  <option value="rcp85">RCP 8.5</option>
                                   <option value="rcp45">RCP 4.5</option>
                               </select>
                           </div>
@@ -170,8 +170,8 @@
                           <div class="six columns">
                               <label for="median">Show Medians</label>
                               <select id="median" class="u-full-width">
-                                  <option value="false" selected="selected">Hide</option>
-                                  <option value="true">Show</option>
+                                <option value="true" selected="selected">Show</option>
+                                <option value="false">Hide</option>
                               </select>
                               <label for="hist-mod">Historical Modeled</label>
                               <select id="hist-mod" class="u-full-width">
@@ -180,8 +180,8 @@
                               </select>
                               <label for="hist-obs">Historical Obs</label>
                               <select id="hist-obs" class="u-full-width">
-                                  <option value="false" selected="selected">Hide</option>
-                                  <option value="true">Show</option>
+                                <option value="true">Hide</option>
+                                <option value="false" selected="selected">Show</option>
                               </select>
                           </div>
                       </div>
@@ -228,9 +228,9 @@
                               <div class="chart-wrap">
                                 <div id="chart-123" class="chart-canvas" data-chart-ID="123"></div>
                                 <div class="chart-legend">
-                                  <div id="historical-obs" class="legend-item legend-item-range selected">
+                                  <div id="historical-obs" class="legend-item legend-item-range">
                                     <div class="legend-item-line-container">
-                                      <div class="legend-item-line selected observed" id="over-baseline-block"></div>
+                                      <div class="legend-item-line observed" id="over-baseline-block"></div>
                                     </div>
                                     <span class="legend-item-line-label">Observations</span>
                                   </div>
@@ -238,18 +238,18 @@
                                     <div class="legend-item-block selected" id="historical-block"></div>
                                     Historical (Modelled)
                                   </div>
-                                  <div id="rcp45-range" class="legend-item legend-item-range">
-                                    <div class="legend-item-block" id="rcp45-block"></div>
-                                    Stabilized Emissions
+                                  <div id="rcp45-range" class="legend-item legend-item-range selected">
+                                    <div class="legend-item-block selected" id="rcp45-block"></div>
+                                    Lower Emissionss
                                   </div>
                                   <div id="rcp85-range" class="legend-item legend-item-range selected">
                                     <div class="legend-item-block selected" id="rcp85-block"></div>
-                                    Increasing Emissions
+                                    Higher Emissions
                                   </div>
-                                  <div id="rcp45-mean" class="legend-item legend-item-range">
+                                  <div id="rcp45-mean" class="legend-item legend-item-range selected">
                                     <div class="legend-item-line-container">
-                                      <div class="legend-item-line" id="rcp85-line"></div>
-                                      <div class="legend-item-line" id="rcp45-line"></div>
+                                      <div class="legend-item-line selected" id="rcp85-line"></div>
+                                      <div class="legend-item-line selected" id="rcp45-line"></div>
                                     </div>
                                     <span class="legend-item-line-label">Medians</span>
                                   </div>
@@ -289,8 +289,8 @@
                           <div class="data-accordion-content map">
                             <div class="moveable" id="temperature-mapSliderDiv">
                               <div id="temperature-swipeImg" class="handle">
-                        				<div class="emissions-low">Low Emissions</div>
-                        				<div class="emissions-high">High Emissions</div>
+                        				<div class="emissions-low">Lower Emissions</div>
+                        				<div class="emissions-high">Higher Emissions</div>
                         			</div>
                             </div>
 
@@ -298,7 +298,7 @@
 
                             <div class="year" id="temperature-map-slider-container">
                               <div class="year-label year-min">1950</div>
-                              <div class="" id="temperature-map-time-slider" data-min="1950" data-max="2090" data-value="2090"></div>
+                              <div class="" id="temperature-map-time-slider" data-min="1950" data-max="2090" data-value="2010"></div>
                               <div class="year-label year-max">2090</div>
                             </div>
 
@@ -376,8 +376,8 @@
                           <div class="six columns">
                               <label for="precip-scenario">Scenario</label>
                               <select id="precip-scenario" class="u-full-width">
-                                  <option value="both">RCP 8.5 and 4.5</option>
-                                  <option value="rcp85" selected="selected">RCP 8.5</option>
+                                  <option value="both" selected="selected">RCP 8.5 and 4.5</option>
+                                  <option value="rcp85">RCP 8.5</option>
                                   <option value="rcp45">RCP 4.5</option>
                               </select>
                           </div>
@@ -393,8 +393,8 @@
                           <div class="six columns">
                               <label for="precip-median">Show Medians</label>
                               <select id="precip-median" class="u-full-width">
-                                  <option value="false" selected="selected">Hide</option>
-                                  <option value="true">Show</option>
+                                <option value="true" selected="selected">Show</option>
+                                <option value="false">Hide</option>
                               </select>
                               <label for="precip-hist-mod">Historical Modeled</label>
                               <select id="precip-hist-mod" class="u-full-width">
@@ -403,8 +403,8 @@
                               </select>
                               <label for="precip-hist-obs">Historical Obs</label>
                               <select id="precip-hist-obs" class="u-full-width">
-                                  <option value="false" selected="selected">Hide</option>
-                                  <option value="true">Show</option>
+                                  <option value="true">Hide</option>
+                                  <option value="false" selected="selected">Show</option>
                               </select>
                           </div>
                       </div>
@@ -447,9 +447,9 @@
                             <div class="chart-wrap">
                               <div id="chart-234" class="chart-canvas" data-chart-ID="234" style="width:100%"></div>
                               <div class="chart-legend" id="precip-chart">
-                                <div id="precip-historical-obs" class="legend-item legend-item-range selected">
+                                <div id="precip-historical-obs" class="legend-item legend-item-range">
                                   <div class="legend-item-line-container">
-                                    <div class="legend-item-line selected observed" id="precipover-baseline-block"></div>
+                                    <div class="legend-item-line observed" id="precipover-baseline-block"></div>
                                   </div>
                                   <span class="legend-item-line-label">Observations</span>
                                 </div>
@@ -457,18 +457,18 @@
                                   <div class="legend-item-block selected" id="preciphistorical-block"></div>
                                   Historical (Modelled)
                                 </div>
-                                <div id="precip-rcp45-range" class="legend-item legend-item-range">
-                                  <div class="legend-item-block" id="preciprcp45-block"></div>
-                                  Stabilized Emissions
+                                <div id="precip-rcp45-range" class="legend-item legend-item-range selected">
+                                  <div class="legend-item-block selected" id="preciprcp45-block"></div>
+                                  Lower Emissions
                                 </div>
                                 <div id="precip-rcp85-range" class="legend-item legend-item-range selected">
                                   <div class="legend-item-block selected" id="preciprcp85-block"></div>
-                                  Increasing Emissions
+                                  Higher Emissions
                                 </div>
-                                <div id="precip-rcp45-mean" class="legend-item legend-item-range">
+                                <div id="precip-rcp45-mean" class="legend-item legend-item-range selected">
                                   <div class="legend-item-line-container">
-                                    <div class="legend-item-line" id="preciprcp85-line"></div>
-                                    <div class="legend-item-line" id="preciprcp45-line"></div>
+                                    <div class="legend-item-line selected" id="preciprcp85-line"></div>
+                                    <div class="legend-item-line selected" id="preciprcp45-line"></div>
                                   </div>
                                   <span class="legend-item-line-label">Medians</span>
                                 </div>
@@ -508,8 +508,8 @@
                         <div class="data-accordion-content map">
                           <div class="moveable" id="precipitation-mapSliderDiv">
                             <div id="precipitation-swipeImg" class="handle">
-                      				<div class="emissions-low">Low Emissions</div>
-                      				<div class="emissions-high">High Emissions</div>
+                      				<div class="emissions-low">Lower Emissions</div>
+                      				<div class="emissions-high">Higher Emissions</div>
                       			</div>
                           </div>
 
@@ -517,7 +517,7 @@
 
                           <div class="year" id="precipitation-map-slider-container">
                             <div class="year-label year-min">1950</div>
-                            <div class="" id="precipitation-map-time-slider" data-min="1950" data-max="2090" data-value="2090"></div>
+                            <div class="" id="precipitation-map-time-slider" data-min="1950" data-max="2090" data-value="2010"></div>
                             <div class="year-label year-max">2090</div>
                           </div>
 
@@ -594,8 +594,8 @@
                           <div class="six columns">
                               <label for="derived-scenario">Scenario</label>
                               <select id="derived-scenario" class="u-full-width">
-                                  <option value="both">RCP 8.5 and 4.5</option>
-                                  <option value="rcp85" selected="selected">RCP 8.5</option>
+                                  <option value="both" selected="selected">RCP 8.5 and 4.5</option>
+                                  <option value="rcp85">RCP 8.5</option>
                                   <option value="rcp45">RCP 4.5</option>
                               </select>
                           </div>
@@ -611,8 +611,8 @@
                           <div class="six columns">
                               <label for="derived-median">Show Medians</label>
                               <select id="derived-median" class="u-full-width">
-                                  <option value="false" selected="selected">Hide</option>
-                                  <option value="true">Show</option>
+                                <option value="true" selected="selected">Show</option>
+                                <option value="false">Hide</option>
                               </select>
                               <label for="derived-hist-mod">Historical Modeled</label>
                               <select id="derived-hist-mod" class="u-full-width">
@@ -621,8 +621,8 @@
                               </select>
                               <label for="derived-hist-obs">Historical Obs</label>
                               <select id="derived-hist-obs" class="u-full-width">
-                                  <option value="false" selected="selected">Hide</option>
-                                  <option value="true">Show</option>
+                                <option value="true">Hide</option>
+                                <option value="false" selected="selected">Show</option>
                               </select>
                           </div>
                       </div>
@@ -667,9 +667,9 @@
                             <div class="chart-wrap">
                               <div id="chart-345" class="chart-canvas" data-chart-ID="345" style="width:100%"></div>
                               <div class="chart-legend" id="derive-chart">
-                                <div id="derive-historical-obs" class="legend-item legend-item-range selected">
+                                <div id="derive-historical-obs" class="legend-item legend-item-range">
                                   <div class="legend-item-line-container">
-                                    <div class="legend-item-line selected observed" id="deriveunder-baseline-block"></div>
+                                    <div class="legend-item-line observed" id="deriveunder-baseline-block"></div>
                                   </div>
                                   <span class="legend-item-line-label">Observations</span>
                                 </div>
@@ -677,18 +677,18 @@
                                   <div class="legend-item-block selected" id="derivehistorical-block"></div>
                                   Historical (Modelled)
                                 </div>
-                                <div id="derive-rcp45-range" class="legend-item legend-item-range">
-                                  <div class="legend-item-block" id="derivercp45-block"></div>
-                                  Stabilized Emissions
+                                <div id="derive-rcp45-range" class="legend-item legend-item-range selected">
+                                  <div class="legend-item-block selected" id="derivercp45-block"></div>
+                                  Lower Emissions
                                 </div>
                                 <div id="derive-rcp85-range" class="legend-item legend-item-range selected">
                                   <div class="legend-item-block selected" id="derivercp85-block"></div>
-                                  Increasing Emissions
+                                  Higher Emissions
                                 </div>
-                                <div id="derive-rcp45-mean" class="legend-item legend-item-range">
+                                <div id="derive-rcp45-mean" class="legend-item legend-item-range selected">
                                   <div class="legend-item-line-container">
-                                    <div class="legend-item-line" id="derivercp85-line"></div>
-                                    <div class="legend-item-line" id="derivercp45-line"></div>
+                                    <div class="legend-item-line selected" id="derivercp85-line"></div>
+                                    <div class="legend-item-line selected" id="derivercp45-line"></div>
                                   </div>
                                   <span class="legend-item-line-label">Medians</span>
                                 </div>
@@ -728,8 +728,8 @@
                           <div class="data-accordion-content map">
                             <div class="moveable" id="derived-mapSliderDiv">
                               <div id="derived-swipeImg" class="handle">
-                        				<div class="emissions-low">Low Emissions</div>
-                        				<div class="emissions-high">High Emissions</div>
+                        				<div class="emissions-low">Lower Emissions</div>
+                        				<div class="emissions-high">Higher Emissions</div>
                         			</div>
                             </div>
 
@@ -737,7 +737,7 @@
 
                             <div class="year" id="derived-map-slider-container">
                               <div class="year-label year-min">1950</div>
-                              <div class="" id="derived-map-time-slider" data-min="1950" data-max="2090" data-value="2090"></div>
+                              <div class="" id="derived-map-time-slider" data-min="1950" data-max="2090" data-value="2010"></div>
                               <div class="year-label year-max">2090</div>
                             </div>
 

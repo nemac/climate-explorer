@@ -131,8 +131,8 @@ Location.prototype.addStations = function() {
   var styles = {
     'Point': new ol.style.Style({
       image: new ol.style.Circle({
-        radius: 5,
-        fill: new ol.style.Fill({color: '#2980b9'}),
+        radius: 8,
+        fill: new ol.style.Fill({color: '#f5442d'}),
         stroke: new ol.style.Stroke({color: '#FFF', width: 2})
       })
     })
@@ -152,7 +152,7 @@ Location.prototype.addStations = function() {
 
     var obj;
     $.each(data, function(i, d) {
-      if ( d.weight < 2 ) {
+//      if ( d.weight < 2 ) {
         obj = {
           'type': 'Feature',
           'properties': {
@@ -165,7 +165,7 @@ Location.prototype.addStations = function() {
           }
         };
         featureCollection.features.push(obj);
-      }
+  //    }
     });
 
     var features = new ol.format.GeoJSON().readFeatures(featureCollection, {
@@ -593,4 +593,5 @@ Location.prototype.setSlider = function(map) {
     }
   }).find(".ui-slider-handle").html('<span class="icon icon-arrow-left-right"></span>').append(tooltip);
 
+  tooltip.fadeIn(200);
 };

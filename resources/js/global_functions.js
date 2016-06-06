@@ -11,7 +11,7 @@
   }
   if (filename.toLowerCase().indexOf("case") >= 0) {
     name = getParameterByName('id');
-    $("#breadcrumb").html('<span class="level-2">Impact</span> <span class="level-1">'+name.split(',')[0]+'</span></span>');
+    $("#breadcrumb").html('<span class="level-2">Topic</span> <span class="level-1">'+name.split(',')[0]+'</span></span>');
   }
 
   function window_width(fraction) {
@@ -341,7 +341,7 @@
     // SHARE
     //
     // -----
-    
+
     window.fbAsyncInit = function() {
       FB.init({
         appId      : '187816851587993',
@@ -349,7 +349,7 @@
         version    : 'v2.6'
       });
     };
-  
+
     (function(d, s, id){
        var js, fjs = d.getElementsByTagName(s)[0];
        if (d.getElementById(id)) {return;}
@@ -365,7 +365,7 @@
             $(this).removeClass('open').siblings('ul').animate({
                 height: '0'
             }, 500);
-            
+
             $('#share-permalink').removeClass('open');
             $('#share-permalink-input').fadeOut(250);
         } else {
@@ -374,41 +374,41 @@
             }, 500);
         }
     });
-    
+
     $('.share-link').click(function(e) {
   	  e.preventDefault();
-  	  
+
   	  if ($(this).hasClass('share-facebook')) {
-    	  
+
     	  var share_URL = $(this).attr('data-href');
-    	  
+
         FB.ui({
           method: 'share',
           href: share_URL,
         }, function(response){
           // nothing
         });
-        
+
   	  } else if ($(this).hasClass('share-permalink')) {
-    	  
+
     	  if ($('#share-permalink').hasClass('open')) {
-      	  
+
       	  $('#share-permalink').removeClass('open');
       	  $('#share-permalink-input').fadeOut(250);
-      	  
+
     	  } else {
-      	  
+
       	  $('#share-permalink').addClass('open');
-      	  
+
       	  $('#share-permalink-input').show().position({
             my: 'right',
             at: 'left-15',
             of: $('#share-permalink')
           });
     	  }
-    	  
+
       } else {
-        
+
     	  var width  = 575,
             height = 320,
             left   = ($(window).width()  - width)  / 2,
@@ -419,7 +419,7 @@
                      ',height=' + height +
                      ',top='    + top    +
                      ',left='   + left;
-        
+
         window.open(url, 'sharepopup', opts);
 
   	  }
@@ -756,7 +756,7 @@
 
         if ($('body').hasClass('page-type-location')) {
           $('.ui-slider-range').addClass('accent-background').html('<span class="icon icon-arrow-left-right"></span>');
-          
+
           setTimeout(function () {
             cwg.resize();
             precipChart.resize();

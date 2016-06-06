@@ -105,7 +105,16 @@ Variables.prototype.createMap = function() {
     maxZoom: 12
   });
 
+  var scaleLineControl = new ol.control.ScaleLine();
+
   this.map = new ol.Map({
+    controls: ol.control.defaults({
+      attributionOptions: /** @type {olx.control.AttributionOptions} */ ({
+        collapsible: false
+      })
+    }).extend([
+      scaleLineControl
+    ]),
     target: 'variable-map',
     layers: [
       new ol.layer.Tile({
@@ -242,6 +251,9 @@ Variables.prototype.wire = function() {
     var show = $(this).is(':checked');
     self.map.getLayers().forEach(function(layer) {
       if (layer.get('layer_id') == 'counties') {
+        if ( show ) {
+          layer.setOpacity(1);
+        }
         layer.setVisible(show);
       }
     });
@@ -337,7 +349,7 @@ Variables.prototype.updateUrl = function() {
 
   var str = $.param( qs );
 
-  history.pushState(null, "", 'variables.php?'+str);
+  history.replaceState(null, "", 'variables.php?'+str);
 };
 
 
@@ -370,8 +382,9 @@ Variables.prototype.addCounties = function() {
         color: 'rgba(255, 255, 255, 0.1)'
       }),
       stroke: new ol.style.Stroke({
-        color: '#2980b9',
-        width: 0.5
+        //color: '#2980b9',
+        color: '#444',
+        width: 0.2
       })
     })];
 
@@ -387,9 +400,13 @@ Variables.prototype.addCounties = function() {
   });
 
   this.vectorLayer.set('layer_id', 'counties');
-  this.vectorLayer.setVisible(false);
+  //this.vectorLayer.setVisible(false);
+  this.vectorLayer.setOpacity(0);
   self.map.addLayer(this.vectorLayer);
 
+  setTimeout(function() {
+    self.vectorLayer.setVisible(false);
+  },500)
 };
 
 
@@ -410,8 +427,8 @@ Variables.prototype.addStates = function() {
         color: 'rgba(0, 0, 0, 0)'
       }),
       stroke: new ol.style.Stroke({
-        color: '#2980b9',
-        width: 2
+        color: '#444',
+        width: 0.8
       })
     })];
 
@@ -464,9 +481,9 @@ Variables.prototype.countySelected = function(feature, event) {
       '</header>' +
       '<div id="climate-chart" style="width:800px; height:420px"></div>'+
       '<div class="chart-legend">'+
-        '<div id="historical-obs" class="legend-item legend-item-range selected">'+
+        '<div id="historical-obs" class="legend-item legend-item-range">'+
           '<div class="legend-item-line-container">'+
-            '<div class="legend-item-line selected observed" id="over-baseline-block"></div>'+
+            '<div class="legend-item-line observed" id="over-baseline-block"></div>'+
           '</div>'+
           '<span class="legend-item-line-label">Observations</span>'+
         '</div>'+
@@ -474,18 +491,18 @@ Variables.prototype.countySelected = function(feature, event) {
           '<div class="legend-item-block selected" id="historical-block"></div>'+
           'Historical (Modelled)'+
         '</div>'+
-        '<div id="rcp45-range" class="legend-item legend-item-range">'+
-          '<div class="legend-item-block" id="rcp45-block"></div>'+
-          'Stabilized Emissions'+
+        '<div id="rcp45-range" class="legend-item legend-item-range selected">'+
+          '<div class="legend-item-block selected" id="rcp45-block"></div>'+
+          'Lower Emissions'+
         '</div>'+
         '<div id="rcp85-range" class="legend-item legend-item-range selected">'+
           '<div class="legend-item-block selected" id="rcp85-block"></div>'+
-          'Increasing Emissions'+
+          'Higher Emissions'+
         '</div>'+
-        '<div id="rcp45-mean" class="legend-item legend-item-range">'+
+        '<div id="rcp45-mean" class="legend-item legend-item-range selected">'+
           '<div class="legend-item-line-container">'+
-            '<div class="legend-item-line" id="rcp85-line"></div>'+
-            '<div class="legend-item-line" id="rcp45-line"></div>'+
+            '<div class="legend-item-line selected" id="rcp85-line"></div>'+
+            '<div class="legend-item-line selected" id="rcp45-line"></div>'+
           '</div>'+
           '<span class="legend-item-line-label">Medians</span>'+
         '</div>'+
@@ -504,7 +521,9 @@ Variables.prototype.countySelected = function(feature, event) {
       frequency  : "annual",
       fips       : fips,
       variable   : this.selectedVariable,
-      scenario   : "rcp85"
+      scenario   : "both",
+      pmedian    : "true",
+      histobs    : "false"
     });
 
     $('.legend-item-range').on('click', function() {
@@ -848,7 +867,7 @@ Variables.prototype.setSlider = function() {
     var self = this;
     var year_slider = $('#variable-time-slider');
 
-    var tooltip = $('<span class="tooltip">' + year_slider.attr('data-value') + '</span>').hide();
+    var tooltip = $('<span class="tooltip">' + self.activeYear + '</span>').hide();
 
     var year_min = parseInt($('#year-slider-container').find('.year-min').text());
     var year_max = parseInt($('#year-slider-container').find('.year-max').text());
@@ -871,6 +890,7 @@ Variables.prototype.setSlider = function() {
           self.activeYear = ui.value;
           self.updateTiledLayer(true, true);
           self.updateUrl();
+          tooltip.fadeOut(200);
         }
     }).find(".ui-slider-handle").html('<span class="icon icon-arrow-left-right"></span>').append(tooltip);
 
@@ -879,6 +899,8 @@ Variables.prototype.setSlider = function() {
     }, function () {
         tooltip.fadeOut(100);
     });
+
+    tooltip.fadeIn(200);
 
 }
 

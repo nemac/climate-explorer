@@ -65,16 +65,16 @@
 
   $topics_content = array(
 
-    array(
-      'variable' => 'arctic',
-      'name' => 'Arctic',
-      'detail' => "<p>Dramatic reductions in Arctic sea ice threaten ecosystems and fisheries, disrupt traditional lifestyles, and erode coastlines. Increasing development activities may boost the region’s economy, but they also increase risks to ecosystems and the environment. Explore landcover, current drought, and historical observations in this rapidly changing region.</p>",
-      'source' => 'NOAA, 2016'
-    ),
+    // array(
+    //   'variable' => 'arctic',
+    //   'name' => 'Arctic',
+    //   'detail' => "<p>Dramatic reductions in Arctic sea ice threaten ecosystems and fisheries, disrupt traditional lifestyles, and erode coastlines. Increasing development activities may boost the region’s economy, but they also increase risks to ecosystems and the environment. Explore landcover, current drought, and historical observations in this rapidly changing region.</p>",
+    //   'source' => 'NOAA, 2016'
+    // ),
 
     array(
-      'variable' => 'coasts',
-      'name' => 'Coasts',
+      'variable' => 'coastal',
+      'name' => 'Coastal',
       'detail' => "<p>As sea level rises, so do instances of flooding along the coast. Rising waters increasingly threaten buildings and infrastructure through storm surge, strong waves, heavy precipitation, and high-tide \"nuisance\" flooding. Property owners and municipalities can check their vulnerability to coastal flooding from current flood hazards as well as future sea level rise.</p>",
       'source' => 'NOAA, 2015'
     ),
@@ -125,6 +125,13 @@
       'variable' => 'transportation',
       'name' => 'Transportation',
       'detail' => "<p>Extreme events increasingly threaten land-, water-, and air-based transportation systems and supply chains. View the location of transportation assets such as highways, bridges, and airports, and check to see where they coincide with flooding hazards and the risk of inundation from sea level rise.</p>",
+      'source' => 'NOAA, 2015'
+    ),
+
+    array(
+      'variable' => 'marine',
+      'name' => 'Marine',
+      'detail' => "<p>.</p>",
       'source' => 'NOAA, 2015'
     )
 
@@ -402,8 +409,6 @@
       <h3>What does <u><?php echo $item['name']; ?></u> mean?</h3>
 
       <?php echo $item['detail']; ?>
-
-      <p>Data source: <?php echo $item['source']; ?></p>
 
       <p><a href="variables.php?id=<?php echo $item['variable']; ?>" class="button bg-trans border-white hover-bg-white">Get started</a><a href="#" class="close-detail button bg-trans border-trans color-white arrow-left">Back</a></p>
     </div>

@@ -14,6 +14,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
+    <link rel="stylesheet" href="resources/css/ol.css">
     <link rel="stylesheet" href="resources/css/ol3-popup.css">
     <link rel="stylesheet" media="screen" href="resources/css/shepherd-theme-arrows.css">
 
@@ -22,7 +23,7 @@
 
     <script type="text/javascript" src="./resources/js/jquery.min.js"></script>
     <!-- <script type="text/javascript" src="./resources/js/jquery-ui.min.js"></script> -->
-    <script src="//code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
+    <script type="text/javascript" src="./resources/js/jquery-ui.min.js"></script>
 
     <?php
 
@@ -104,8 +105,8 @@
 
         <div class="moveable" id="sliderDiv">
           <div id="swipeImg" class="handle">
-    				<div class="emissions-low">Low Emissions</div>
-    				<div class="emissions-high">High Emissions</div>
+    				<div class="emissions-low">Lower Emissions</div>
+    				<div class="emissions-high">Higher Emissions</div>
     			</div>
         </div>
 
@@ -113,7 +114,7 @@
 
         <div class="year" id="year-slider-container">
           <div class="year-label year-min">1950</div>
-          <div class="" id="variable-time-slider" data-min="1950" data-max="2090" data-value="2090"></div>
+          <div class="" id="variable-time-slider" data-min="1950" data-max="2090" data-value="2010"></div>
           <div class="year-label year-max">2090</div>
         </div>
 

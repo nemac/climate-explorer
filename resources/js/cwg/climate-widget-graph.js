@@ -587,8 +587,8 @@ require("./plot.js")($);require("./renderer.js")($);require("./axis_title.js");r
             style: "bar",
             options: {
                 barbase: ref,
-                fillcolor: [ {"value": "0xCD6760", "min": ref},
-                             {"value": "0x6194C8", "max": ref} ],
+                fillcolor: [ {"value": "0x888", "min": ref},
+                             {"value": "0x888", "max": ref} ],
                 barwidth: 1,
                 baroffset: 0.5,
                 linecolor: "#000000",
