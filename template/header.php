@@ -410,8 +410,6 @@
 
       <?php echo $item['detail']; ?>
 
-      <p>Data source: <?php echo $item['source']; ?></p>
-
       <p><a href="variables.php?id=<?php echo $item['variable']; ?>" class="button bg-trans border-white hover-bg-white">Get started</a><a href="#" class="close-detail button bg-trans border-trans color-white arrow-left">Back</a></p>
     </div>
 
