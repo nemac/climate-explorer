@@ -16611,7 +16611,4 @@ var tooltip = $.widget( "ui.tooltip", {
 		this.liveRegion.remove();
 	}
 });
-
-
-
 }));
