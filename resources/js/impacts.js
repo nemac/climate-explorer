@@ -371,7 +371,7 @@ Impacts.prototype.createLegend = function() {
           '</div>'+
         '</div>'+
         '<div class="opacity-slider-wrap"><h4>Layer opacity</h4><div class="opacity-slider" id="opacity-'+id+'"></div></div>' +
-        
+
         '<div class="actions">'+
           '<a href="#" class="layer-info-close"><span class="icon icon-close"></span>Close</a>'+
           '<a href="#" class="layer-info-next"><span class="icon icon-arrow-right"></span>Next</a>'+
@@ -470,7 +470,7 @@ Impacts.prototype.updateUrl = function() {
 
   var str = $.param( qs );
 
-  history.pushState(null, "", 'case.php?'+str);
+  history.replaceState(null, "", 'case.php?'+str);
 };
 
 
