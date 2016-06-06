@@ -349,7 +349,7 @@ Variables.prototype.updateUrl = function() {
 
   var str = $.param( qs );
 
-  history.pushState(null, "", 'variables.php?'+str);
+  history.replaceState(null, "", 'variables.php?'+str);
 };
 
 
