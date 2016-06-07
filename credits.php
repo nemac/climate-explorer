@@ -13,7 +13,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <link rel="stylesheet" href="resources/css/ol3-popup.css">
-    <link rel="stylesheet" media="screen" href="resources/css/shepherd-theme-arrows.css">
 
     <link rel="stylesheet" media="screen" href="resources/css/screen.css">
     <link rel="stylesheet" media="screen" href="resources/css/mods.css">

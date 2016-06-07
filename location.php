@@ -20,7 +20,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <link rel="stylesheet" href="resources/css/ol3-popup.css">
-    <link rel="stylesheet" media="screen" href="resources/css/shepherd-theme-arrows.css">
 
     <link rel="stylesheet" media="screen" href="resources/css/screen.css">
     <link rel="stylesheet" media="screen" href="resources/css/mods.css">
@@ -92,29 +91,29 @@
                       <h4 id="var-tasmax"><a href="#" class="text accent-color">Mean Daily Maximum</a><a href="#detail-tasmax" class="icon icon-help nav-detail-link"></a></h4>
                       <ul class="location-resolution">
                         <li><a>Annual</a></li>
-                        <li><a>Seasonal</a></li>
                         <li><a>Monthly</a></li>
+                        <li><a>Seasonal</a></li>
                       </ul>
                     </li>
 
-                    <li class="accent-border">
-                      <h4 id="var-tasmin"><a href="#" class="text accent-color">Mean Daily Minimum</a><a href="#detail-tasmin" class="icon icon-help nav-detail-link"></a></h4>
+                    <li class="">
+                      <h4 id="var-tasmin"><a href="#" class="text">Mean Daily Minimum</a><a href="#detail-tasmin" class="icon icon-help nav-detail-link"></a></h4>
                       <ul class="location-resolution">
                         <li><a>Annual</a></li>
-                        <li><a>Seasonal</a></li>
                         <li><a>Monthly</a></li>
+                        <li><a>Seasonal</a></li>
                       </ul>
                     </li>
 
-                    <li class="accent-border">
-                      <h4 id="var-days_tmax_abv_35.0"><a href="#" class="text accent-color">Days with Maximum Above 95&deg;</a><a href="#detail-days_tmax_abv_35" class="icon icon-help nav-detail-link"></a></h4>
+                    <li class="">
+                      <h4 id="var-days_tmax_abv_35.0"><a href="#" class="text">Days with Maximum Above 95&deg;</a><a href="#detail-days_tmax_abv_35" class="icon icon-help nav-detail-link"></a></h4>
                       <ul class="location-resolution">
                         <li><a>Annual</a></li>
                       </ul>
                     </li>
 
-                    <li class="accent-border">
-                      <h4 id="var-days_tmin_blw_0.0"><a href="#" class="text accent-color">Days with Minimum Below 32º</a><a href="#detail-days_tmin_blw_0" class="icon icon-help nav-detail-link"></a></h4>
+                    <li class="">
+                      <h4 id="var-days_tmin_blw_0.0"><a href="#" class="text">Days with Minimum Below 32º</a><a href="#detail-days_tmin_blw_0" class="icon icon-help nav-detail-link"></a></h4>
                       <ul>
                         <li><a>Annual</a></li>
                       </ul>
@@ -329,13 +328,13 @@
                       <h4 id="var-pr"><a href="#" class="text accent-color">Mean Daily Precipitation</a><a href="#detail-pr" class="icon icon-help nav-detail-link"></a></h4>
                       <ul class="location-resolution">
                         <li><a>Annual</a></li>
-                        <li><a>Seasonal</a></li>
                         <li><a>Monthly</a></li>
+                        <li><a>Seasonal</a></li>
                       </ul>
                     </li>
 
-                    <li class="accent-border">
-                      <h4 id="var-days_prcp_abv_25.3"><a href="#" class="text accent-color">Days of Precipitation Above 1in</a><a href="#detail-pr" class="icon icon-help nav-detail-link"></a></h4>
+                    <li class="">
+                      <h4 id="var-days_prcp_abv_25.3"><a href="#" class="text">Days of Precipitation Above 1in</a><a href="#detail-pr" class="icon icon-help nav-detail-link"></a></h4>
                       <ul class="location-resolution">
                         <li><a>Annual</a></li>
                       </ul>
@@ -552,8 +551,8 @@
                       </ul>
                     </li>
 
-                    <li class="accent-border">
-                      <h4 id="var-cooling_degree_day_18.3"><a href="#" class="text accent-color">Cooling Degree Days</a><a href="#detail-cooling_degree_day_18" class="icon icon-help nav-detail-link"></a></h4>
+                    <li class="">
+                      <h4 id="var-cooling_degree_day_18.3"><a href="#" class="text">Cooling Degree Days</a><a href="#detail-cooling_degree_day_18" class="icon icon-help nav-detail-link"></a></h4>
                       <ul>
                         <li><a>Annual</a></li>
                       </ul>

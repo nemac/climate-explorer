@@ -633,6 +633,10 @@
         font-size: 1rem;
         @include clearfix;
         outline: none;
+        
+        .ui-accordion-header-icon {
+          display: none;
+        }
       }
       
       a {
@@ -680,7 +684,7 @@
   
   .data-options {
     .accent-color {
-      color: $grey1;
+      //color: $grey1;
     }
     
     .accent-border {
@@ -696,6 +700,14 @@
       
       .accent-color {
         color: $orange1;
+      }
+    }
+    
+    ul {
+      li {
+        &.active {
+          border-left: 10px solid $orange1;
+        }
       }
     }
   }
@@ -722,7 +734,7 @@
   
   .data-options {
     .accent-color {
-      color: $grey1;
+      //color: $grey1;
     }
     
     .accent-border {
@@ -738,6 +750,14 @@
       
       .accent-color {
         color: $blue1;
+      }
+    }
+    
+    ul {
+      li {
+        &.active {
+          border-left: 10px solid $blue1;
+        }
       }
     }
   }
@@ -765,7 +785,7 @@
   
   .data-options {
     .accent-color {
-      color: $grey1;
+      //color: $grey1;
     }
     
     .accent-border {
@@ -781,6 +801,14 @@
       
       .accent-color {
         color: $brown1;
+      }
+    }
+    
+    ul {
+      li {
+        &.active {
+          border-left: 10px solid $brown1;
+        }
       }
     }
   }
