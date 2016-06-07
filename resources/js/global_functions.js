@@ -456,8 +456,7 @@
     // accordion
 
     $('.data-options ').accordion({
-      header: 'h4',
-      event: 'hoverintent'
+      header: 'h4'
     });
 
     // LOCATION DATA ACCORDIONS

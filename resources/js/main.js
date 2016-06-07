@@ -118,11 +118,23 @@ App.prototype.tour = function() {
   });
 
   $('#temperature-data .location-resolution a').on('click', function(e) {
+    $(this).parents('ul').find('a').removeClass('accent-color');
+    $(this).parents('.data-options').find('li').removeClass('active').removeClass('accent-border');
+    
+    $(this).addClass('accent-color');
+    $(this).parents('li').addClass('active').addClass('accent-border');
+    
     var val = $(this).html().toLowerCase();
     self.frequency['temperature-chart'] = val;
   });
 
   $('#precipitation-data .location-resolution a').on('click', function(e) {
+    $(this).parents('ul').find('a').removeClass('accent-color');
+    $(this).parents('.data-options').find('li').removeClass('active').removeClass('accent-border');
+    
+    $(this).addClass('accent-color');
+    $(this).parents('li').addClass('active').addClass('accent-border');
+    
     var val = $(this).html().toLowerCase();
     self.frequency['precipitation-chart'] = val;
   });

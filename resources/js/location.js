@@ -325,6 +325,12 @@ Location.prototype.wire = function() {
 
 
   $('#temperature-data h4').on('click', function() {
+    $('#temperature-data .data-options').find('.text').removeClass('accent-color');
+    $('#temperature-data .data-options').find('li').removeClass('accent-border');
+    
+    $(this).find('.text').addClass('accent-color');
+    $(this).parents('li').addClass('accent-border');
+    
     var id = $(this).attr('id').replace('var-', '');
     self.selectedVariable['temperature-map'] = id;
     if ( self['temperature-map'] ) {
@@ -335,6 +341,12 @@ Location.prototype.wire = function() {
   });
 
   $('#precipitation-data h4').on('click', function() {
+    $('#precipitation-data .data-options').find('.text').removeClass('accent-color');
+    $('#precipitation-data .data-options').find('li').removeClass('accent-border');
+    
+    $(this).find('.text').addClass('accent-color');
+    $(this).parents('li').addClass('accent-border');
+    
     var id = $(this).attr('id').replace('var-', '');
     self.selectedVariable['precipitation-map'] = id;
     if ( self['precipitation-map'] ) {
@@ -344,6 +356,12 @@ Location.prototype.wire = function() {
   });
 
   $('#derived-data h4').on('click', function() {
+    $('#derived-data .data-options').find('.text').removeClass('accent-color');
+    $('#derived-data .data-options').find('li').removeClass('accent-border');
+    
+    $(this).find('.text').addClass('accent-color');
+    $(this).parents('li').addClass('accent-border');
+    
     var id = $(this).attr('id').replace('var-', '');
     self.selectedVariable['derived-map'] = id;
     if ( self['derived-map'] ) {

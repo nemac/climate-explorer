@@ -16,7 +16,6 @@
 
     <link rel="stylesheet" href="resources/css/ol.css">
     <link rel="stylesheet" href="resources/css/ol3-popup.css">
-    <link rel="stylesheet" media="screen" href="resources/css/shepherd-theme-arrows.css">
 
     <link rel="stylesheet" media="screen" href="resources/css/screen.css">
     <link rel="stylesheet" media="screen" href="resources/css/mods.css">
