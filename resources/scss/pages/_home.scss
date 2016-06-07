@@ -67,25 +67,32 @@
   #splash-7 {
     background-image: url(../img/bg_splash-camptonville.jpg);
   }
+  
+  h1 {
+    position: absolute;
+    top: 0%;
+    left: 6%;
+    width: 64%;
+    padding-top: 10%;
+    mix-blend-mode: hard-light;
+    color: $blue2;
+    z-index: 3;
+  }
 }
 
 #home-text {
   position: absolute;
-  top: 0%;
+  bottom: 20%;
   left: 6%;
   width: 64%;
-  padding-top: 10%;
-  z-index: 2;
-  mix-blend-mode: hard-light;
+  z-index: 4;
   color: $blue2;
   
-  h1 {
-    margin: 0 0 20px 0;
-  }
-  
   p {
-    font: 1.375rem/1.5em $roboto;
     width: 75%;
+    background: transparentize($white, 0.2);
+    padding: 2%;
+    font: 1.375rem/1.5em $roboto;
   }
 }
 

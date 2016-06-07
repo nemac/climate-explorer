@@ -12,8 +12,6 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <link rel="stylesheet" media="screen" href="resources/css/shepherd-theme-arrows.css">
-
     <link rel="stylesheet" media="screen" href="resources/css/screen.css">
     <link rel="stylesheet" media="screen" href="resources/css/mods.css">
 
@@ -55,9 +53,10 @@
             <div id="splash-<?php echo $splash_id; ?>" class="splash-bg">
               <div class="slide-text"><span class="location"><?php echo $locations[$splash_id]; ?></span></div>
             </div>
+            
+            <h1>The Climate Explorer</h1>
 
             <div id="home-text" class="splash-text">
-                <h1>The Climate Explorer</h1>
                 <p>Explore maps and graphs of historical and projected climate trends in your local area. View data by topics to see how climate change will impact things you care about.</p>
             </div>
 
