@@ -92,8 +92,8 @@
                       <h4 id="var-tasmax"><a href="#" class="text accent-color">Mean Daily Maximum</a><a href="#detail-tasmax" class="icon icon-help nav-detail-link"></a></h4>
                       <ul class="location-resolution">
                         <li><a>Annual</a></li>
-                        <li><a>Seasonal</a></li>
                         <li><a>Monthly</a></li>
+                        <li><a>Seasonal</a></li>
                       </ul>
                     </li>
 
@@ -101,8 +101,8 @@
                       <h4 id="var-tasmin"><a href="#" class="text accent-color">Mean Daily Minimum</a><a href="#detail-tasmin" class="icon icon-help nav-detail-link"></a></h4>
                       <ul class="location-resolution">
                         <li><a>Annual</a></li>
-                        <li><a>Seasonal</a></li>
                         <li><a>Monthly</a></li>
+                        <li><a>Seasonal</a></li>
                       </ul>
                     </li>
 
@@ -329,8 +329,8 @@
                       <h4 id="var-pr"><a href="#" class="text accent-color">Mean Daily Precipitation</a><a href="#detail-pr" class="icon icon-help nav-detail-link"></a></h4>
                       <ul class="location-resolution">
                         <li><a>Annual</a></li>
-                        <li><a>Seasonal</a></li>
                         <li><a>Monthly</a></li>
+                        <li><a>Seasonal</a></li>
                       </ul>
                     </li>
 
