@@ -57,6 +57,14 @@
           ]
         },
         "group5": {
+          "title": "Coastal Wetlands and Sea-Level Rise",
+          "description": "Explore coastal wetlands and sea-level rise.",
+          "layers": [
+            "coastal_wetlands",
+            "sea_level_rise"
+          ]
+        },
+        "group6": {
           "title": "Pollution Sources and Sea-Level Rise",
           "description": "Explore greatest pollution sources and sea-level rise.",
           "layers": [
@@ -64,7 +72,7 @@
             "sea_level_rise"
           ]
         },
-        "group6": {
+        "group7": {
           "title": "Transportation and Sea-Level Rise",
           "description": "Explore Transportation and sea-level rise.",
           "layers": [
