@@ -93,12 +93,12 @@
       'source' => 'NOAA, 2015'
     ),
 
-    array(
-      'variable' => 'food',
-      'name' => 'Food',
-      'detail' => "<p>Increasing heat waves, drought, and very heavy precipitation have the potential to reduce agricultural productivity in future decades. Changes in crop yields and livestock production can increase food prices and reduce food security.</p>",
-      'source' => 'NOAA, 2015'
-    ),
+    // array(
+    //   'variable' => 'food',
+    //   'name' => 'Food',
+    //   'detail' => "<p>Increasing heat waves, drought, and very heavy precipitation have the potential to reduce agricultural productivity in future decades. Changes in crop yields and livestock production can increase food prices and reduce food security.</p>",
+    //   'source' => 'NOAA, 2015'
+    // ),
 
     array(
       'variable' => 'health',
@@ -128,12 +128,12 @@
       'source' => 'NOAA, 2015'
     ),
 
-    array(
-      'variable' => 'marine',
-      'name' => 'Marine',
-      'detail' => "<p>.</p>",
-      'source' => 'NOAA, 2015'
-    )
+    // array(
+    //   'variable' => 'marine',
+    //   'name' => 'Marine',
+    //   'detail' => "<p>.</p>",
+    //   'source' => 'NOAA, 2015'
+    // )
 
   );
 
