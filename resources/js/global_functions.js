@@ -44,19 +44,19 @@
     function smooth_scroll(id, offset, speed) {
       //console.log($(id).offset());
 
-        var viewport_scrolltop = $('#viewport').scrollTop();
-        var element_position = $(id).offset().top;
+      var viewport_scrolltop = $('#viewport').scrollTop();
+      var element_position = $(id).offset().top;
 
-        var destination = viewport_scrolltop + element_position;
+      var destination = viewport_scrolltop + element_position;
 
-        //console.log(element_position);
-        //console.log(destination);
+      //console.log(element_position);
+      //console.log(destination);
 
-        $("#viewport").animate({
-            scrollTop: destination - offset
-        }, speed);
+      $('#viewport').animate({
+        scrollTop: destination - offset
+      }, speed);
 
-        return false;
+      return false;
     }
 
     $('.smooth-scroll').click(function(e) {

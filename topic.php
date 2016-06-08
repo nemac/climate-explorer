@@ -71,10 +71,10 @@
     $('#topic-description').html(desc);
 
     $.each(data.topics['<?php echo $param; ?>'].groups, function(i, group) {
-      li = '<li>'+group.title+'</li>';
+      li = '<li><a href="#<?php echo $param; ?>-' + i + '">' + group.title + '</a></li>';
       $('#subtopics-list').append(li);
 
-      var html = '<article id="<?php echo $param ?>" class="topic-banner">'+
+      var html = '<article id="<?php echo $param ?>-' + i + '" class="topic-banner">'+
         '<div class="topic-banner-text">'+
             '<h4>Sub-topic</h4>'+
             '<h3><a href="case.php?id=<?php echo $param ?>&group='+i+'">'+group.title+'</a></h3>'+
@@ -97,6 +97,27 @@
       });
     });
   });
+
+  (function ($) {
+    $(function () {
+      
+      $('body').on('click', '#subtopics-list a', function(e) {
+        e.preventDefault();
+        
+        var link_href = $(this).attr('href');
+        var viewport_scrolltop = $('#viewport').scrollTop();
+        var element_position = $(link_href).offset().top;
+        var destination = viewport_scrolltop + element_position;
+  
+        $('#viewport').animate({
+          scrollTop: destination - $('#main-header').outerHeight()
+        }, 1000);
+          
+      });
+      
+    });
+  }(jQuery));
+
 
 </script>
 
