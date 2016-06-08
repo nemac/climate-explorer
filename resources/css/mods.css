@@ -363,14 +363,6 @@ input.location-mapper:focus:-ms-input-placeholder {
   background-color: #904848;
 }
 
-.location-data-section .data-accordion .data-accordion-tab.data-chart .range {
-  position: absolute;
-  bottom: 8%;
-  left: 5%;
-  width: 90%;
-  height: 7%;
-}
-
 .page-type-case #case-menu li:last-child .layer-info, .page-type-case #case-menu li:nth-last-child(2) .layer-info {
   top: 0;
   bottom:auto;
