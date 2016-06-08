@@ -11,7 +11,7 @@
   }
   if (filename.toLowerCase().indexOf("case") >= 0) {
     name = getParameterByName('id');
-    $("#breadcrumb").html('<span class="level-2">Topic</span> <span class="level-1">'+name.split(',')[0]+'</span></span>');
+    $("#breadcrumb").html('<span class="level-2">Topic</span> <span class="level-1">'+name.split(',')[0].replace(/_/g, ' ')+'</span></span>');
   }
 
   function window_width(fraction) {
