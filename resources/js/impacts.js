@@ -17,8 +17,8 @@ var Impacts = function(page) {
 */
 Impacts.prototype.mapVariables = function() {
   this.varMapping = {
-    'tasmax': 'Mean Daily Maximum',
-    'tasmin': 'Mean Daily Minimum',
+    'mean_daily_max': 'Mean Daily Maximum',
+    'mean_daily_min': 'Mean Daily Minimum',
     'days_tmin_blw_0.0': 'Days below 32&deg; F',
     'days_tmax_abv_35.0': 'Days over 95&deg; F',
     'pr': 'Mean Daily Precipitation',
@@ -27,8 +27,8 @@ Impacts.prototype.mapVariables = function() {
   };
 
   this.tilesHistMapping = {
-    'tasmax': '_hist_prism_tmax',
-    'tasmin': '_hist_prism_tmin',
+    'mean_daily_max': '_hist_prism_tmax',
+    'mean_daily_min': '_hist_prism_tmin',
     'days_tmin_blw_0.0': '_annual_hist_days-tmin-blw',
     'days_tmax_abv_35.0': '_annual_hist_days-tmax-abv',
     'pr': '_hist_prism_pr',
@@ -37,8 +37,8 @@ Impacts.prototype.mapVariables = function() {
   };
 
   this.tilesMapping = {
-    'tasmax': '_rcp45_ea_tasmax',
-    'tasmin': '_rcp45_ea_tasmin',
+    'mean_daily_max': '_summer_rcp45_ea_tasmax',
+    'mean_daily_min': '_summer_rcp45_ea_tasmin',
     'days_tmin_blw_0.0': '_annual_rcp45_days-tmin-blw',
     'days_tmax_abv_35.0': '_annual_rcp45_days-tmax-abv',
     'pr': '_rcp45_ea_pr',
@@ -47,8 +47,8 @@ Impacts.prototype.mapVariables = function() {
   };
 
   this.tilesMapping85 = {
-    'tasmax': '_rcp85_ea_tasmax',
-    'tasmin': '_rcp85_ea_tasmin',
+    'mean_daily_max': '_summer_rcp85_ea_tasmax',
+    'mean_daily_min': '_summer_rcp85_ea_tasmin',
     'days_tmin_blw_0.0': '_annual_rcp85_days-tmin-blw',
     'days_tmax_abv_35.0': '_annual_rcp85_days-tmax-abv',
     'pr': '_rcp85_ea_pr',
@@ -191,7 +191,7 @@ Impacts.prototype.wireEvents = function() {
       if (layer.get('layer_id') == id) {
         layer.setVisible(visible);
         self.updateUrl();
-      } else if ( id === 'cooling_degree_day_18' || id === 'heating_degree_day_18' || id === 'mean_daily_max' || id === 'days_tmin_blw_0' || id === 'days_tmax_abv_35') {
+      } else if ( id === 'cooling_degree_day_18' || id === 'heating_degree_day_18' || id === 'mean_daily_min' || id === 'mean_daily_max' || id === 'days_tmin_blw_0' || id === 'days_tmax_abv_35') {
         if ( self.tileLayer ) {
           self.tileLayer.setVisible(visible); }
         if ( self.tileLayer85 ) { self.tileLayer85.setVisible(visible); }
@@ -521,7 +521,7 @@ Impacts.prototype.getLayerIds = function() {
   });
 
   layerIds = _.remove(layerIds, function(n) {
-    if ( n !== 'cooling_degree_day_18' && n !== 'heating_degree_day_18' && n !== 'mean_daily_max' && n !== 'days_tmin_blw_0' && n !== 'days_tmax_abv_35') {
+    if ( n !== 'cooling_degree_day_18' && n !== 'heating_degree_day_18' && n !== 'mean_daily_min' && n !== 'mean_daily_max' && n !== 'days_tmin_blw_0' && n !== 'days_tmax_abv_35') {
       return n;
     }
   });
@@ -547,7 +547,7 @@ Impacts.prototype.addLayers = function() {
     layer = null;
 
     var n = self.data.layers[id].id;
-    if ( n !== 'cooling_degree_day_18.3' && n !== 'heating_degree_day_18.3' && n !== 'mean_daily_max' && n !== 'days_tmin_blw_0.0' && n !== 'days_tmax_abv_35.0') {
+    if ( n !== 'cooling_degree_day_18.3' && n !== 'heating_degree_day_18.3' && n !== 'mean_daily_min' && n !== 'mean_daily_max' && n !== 'days_tmin_blw_0.0' && n !== 'days_tmax_abv_35.0') {
       //add layer with sublayers
       //i.e. sea level rise layers 1ft - 6ft
       if ( self.data.layers[id].sublayers ) {
@@ -828,6 +828,8 @@ Impacts.prototype.addClimateLayer = function(replace, layer, preserveTime) {
   if ( replace && !preserveTime ) {
     this.setSlider(layer);
   }
+
+  this.reorderLayers();
 }
 
 
