@@ -269,8 +269,9 @@ $(document).ready(function() {
     });
 
     $('#temperature-data h4').on('click', function() {
-      $('ul.data-options li').removeClass('active accent-border');
-      $(this).closest('li').addClass('active accent-border');
+      // removed - duplicate click functions in location.js
+      //$('ul.data-options li').removeClass('active accent-border');
+      //$(this).closest('li').addClass('active accent-border');
 
       var val = $(this).children('a');
       $('#temp-chart-name').html( val.context.innerText );
@@ -282,8 +283,9 @@ $(document).ready(function() {
     });
 
     $('#precipitation-data h4').on('click', function() {
-      $('ul.data-options li').removeClass('active accent-border');
-      $(this).closest('li').addClass('active accent-border');
+      // removed - duplicate click functions in location.js
+      //$('ul.data-options li').removeClass('active accent-border');
+      //$(this).closest('li').addClass('active accent-border');
 
       var val = $(this).children('a');
       $('#precip-chart-name').html( val.context.innerText );
@@ -295,8 +297,9 @@ $(document).ready(function() {
     });
 
     $('#derived-data h4').on('click', function() {
-      $('ul.data-options li').removeClass('active accent-border');
-      $(this).closest('li').addClass('active accent-border');
+      // removed - duplicate click functions in location.js
+      //$('ul.data-options li').removeClass('active accent-border');
+      //$(this).closest('li').addClass('active accent-border');
 
       var val = $(this).children('a');
       $('#derived-chart-name').html( val.context.innerText );

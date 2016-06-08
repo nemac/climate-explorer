@@ -322,30 +322,42 @@ Location.prototype.wire = function() {
       },200);
     }
   });
-
-
-  $('#temperature-data h4').on('click', function() {
-    $('#temperature-data .data-options').find('.text').removeClass('accent-color');
-    $('#temperature-data .data-options').find('li').removeClass('accent-border');
+  
+  $.fn.swap_classes = function(clicked) {
+    // remove all active, accent border and accent color classes
+    this.find('.active').removeClass('active');
+    this.find('.accent-border').removeClass('accent-border');
+    this.find('.accent-color').removeClass('accent-color');
     
-    $(this).find('.text').addClass('accent-color');
-    $(this).parents('li').addClass('accent-border');
+    // set the parent li to active
+    clicked.parents('li').addClass('active').addClass('accent-border');
+    
+    // set the first link under the h4 to active
+    var first_li = clicked.siblings('ul').find('li').first();
+    
+    first_li.addClass('active').addClass('accent-border');
+    first_li.find('a').addClass('accent-color');
+  }
+  
+  $('#temperature-data h4').on('click', function(e) {
+    e.preventDefault();
+    
+    $('#temperature-data .data-options').swap_classes($(this));
     
     var id = $(this).attr('id').replace('var-', '');
     self.selectedVariable['temperature-map'] = id;
     if ( self['temperature-map'] ) {
       self.updateTiledLayer('temperature-map', false);
     }
+    
     $('#temperature-map-container .full-map-btn').prop({'href': 'variables.php?id='+id});
     $('#temperature-map-container .location-map-legend').html('<img class="legend-image" src="resources/img/'+ id +'.png"></img>');
   });
 
-  $('#precipitation-data h4').on('click', function() {
-    $('#precipitation-data .data-options').find('.text').removeClass('accent-color');
-    $('#precipitation-data .data-options').find('li').removeClass('accent-border');
+  $('#precipitation-data h4').on('click', function(e) {
+    e.preventDefault();
     
-    $(this).find('.text').addClass('accent-color');
-    $(this).parents('li').addClass('accent-border');
+    $('#precipitation-data .data-options').swap_classes($(this));
     
     var id = $(this).attr('id').replace('var-', '');
     self.selectedVariable['precipitation-map'] = id;
@@ -355,12 +367,10 @@ Location.prototype.wire = function() {
     $('#precipitation-map-container .full-map-btn').prop({'href': 'variables.php?id='+id});
   });
 
-  $('#derived-data h4').on('click', function() {
-    $('#derived-data .data-options').find('.text').removeClass('accent-color');
-    $('#derived-data .data-options').find('li').removeClass('accent-border');
+  $('#derived-data h4').on('click', function(e) {
+    e.preventDefault();
     
-    $(this).find('.text').addClass('accent-color');
-    $(this).parents('li').addClass('accent-border');
+    $('#derived-data .data-options').swap_classes($(this));
     
     var id = $(this).attr('id').replace('var-', '');
     self.selectedVariable['derived-map'] = id;

@@ -5601,47 +5601,51 @@ body.detail-open #nav-overlay {
 #location-precipitation .data-vars button {
   color: #0058cf;
 }
-
 /* line 774, ../scss/pages/_location.scss */
+#location-precipitation .range .ui-slider .ui-slider-range {
+  background: #0058cf;
+}
+
+/* line 782, ../scss/pages/_location.scss */
 #location-derived .accent-color {
   color: #904848;
 }
-/* line 778, ../scss/pages/_location.scss */
+/* line 786, ../scss/pages/_location.scss */
 #location-derived .accent-background {
   background-color: #904848;
 }
-/* line 782, ../scss/pages/_location.scss */
+/* line 790, ../scss/pages/_location.scss */
 #location-derived .accent-border {
   border-color: #904848;
 }
-/* line 791, ../scss/pages/_location.scss */
+/* line 799, ../scss/pages/_location.scss */
 #location-derived .data-options .accent-border {
   border-left-color: #ebebeb;
   border-bottom-color: #ebebeb;
 }
-/* line 797, ../scss/pages/_location.scss */
+/* line 805, ../scss/pages/_location.scss */
 #location-derived .data-options .active.accent-border {
   border-left-color: #904848;
   border-bottom-color: #ebebeb;
 }
-/* line 802, ../scss/pages/_location.scss */
+/* line 810, ../scss/pages/_location.scss */
 #location-derived .data-options .active .accent-color {
   color: #904848;
 }
-/* line 809, ../scss/pages/_location.scss */
+/* line 817, ../scss/pages/_location.scss */
 #location-derived .data-options ul li.active {
   border-left: 10px solid #904848;
 }
-/* line 817, ../scss/pages/_location.scss */
+/* line 825, ../scss/pages/_location.scss */
 #location-derived .data-vars button {
   color: #904848;
 }
 
-/* line 825, ../scss/pages/_location.scss */
+/* line 833, ../scss/pages/_location.scss */
 #location-stations header h3 {
   margin: 0 0 2% 0;
 }
-/* line 830, ../scss/pages/_location.scss */
+/* line 838, ../scss/pages/_location.scss */
 #location-stations #location-station-map {
   position: absolute;
   top: 0;
@@ -5649,11 +5653,11 @@ body.detail-open #nav-overlay {
   width: 100%;
   height: 100%;
 }
-/* line 833, ../scss/pages/_location.scss */
+/* line 841, ../scss/pages/_location.scss */
 #location-stations #location-station-map .ol-attribution, #location-stations #location-station-map .ol-rotate {
   display: none;
 }
-/* line 837, ../scss/pages/_location.scss */
+/* line 845, ../scss/pages/_location.scss */
 #location-stations #location-station-map .ol-zoom {
   position: absolute;
   z-index: 1;
@@ -5664,7 +5668,7 @@ body.detail-open #nav-overlay {
   -webkit-transform: translateY(-50%);
   transform: translateY(-50%);
 }
-/* line 844, ../scss/pages/_location.scss */
+/* line 852, ../scss/pages/_location.scss */
 #location-stations #location-station-map .ol-zoom button {
   display: block;
   width: 30px;

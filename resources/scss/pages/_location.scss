@@ -768,6 +768,14 @@
       color: $blue1;
     }
   }
+  
+  .range {
+    .ui-slider {
+      .ui-slider-range {
+        background: $blue1;
+      }
+    }
+  }
 }
 
 #location-derived {

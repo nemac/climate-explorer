@@ -88,9 +88,9 @@
 
                   <ul class="data-options">
                     <li class="active accent-border">
-                      <h4 id="var-tasmax"><a href="#" class="text accent-color">Mean Daily Maximum</a><a href="#detail-tasmax" class="icon icon-help nav-detail-link"></a></h4>
+                      <h4 id="var-tasmax"><a href="#" class="text">Mean Daily Maximum</a><a href="#detail-tasmax" class="icon icon-help nav-detail-link"></a></h4>
                       <ul class="location-resolution">
-                        <li><a>Annual</a></li>
+                        <li class="active accent-border"><a class="accent-color">Annual</a></li>
                         <li><a>Monthly</a></li>
                         <li><a>Seasonal</a></li>
                       </ul>
@@ -325,9 +325,9 @@
 
                   <ul class="data-options">
                     <li class="active accent-border">
-                      <h4 id="var-pr"><a href="#" class="text accent-color">Mean Daily Precipitation</a><a href="#detail-pr" class="icon icon-help nav-detail-link"></a></h4>
+                      <h4 id="var-pr"><a href="#" class="text">Mean Daily Precipitation</a><a href="#detail-pr" class="icon icon-help nav-detail-link"></a></h4>
                       <ul class="location-resolution">
-                        <li><a>Annual</a></li>
+                        <li class="active accent-border"><a class="accent-color">Annual</a></li>
                         <li><a>Monthly</a></li>
                         <li><a>Seasonal</a></li>
                       </ul>
@@ -545,9 +545,9 @@
 
                   <ul class="data-options">
                     <li class="active accent-border">
-                      <h4 id="var-heating_degree_day_18.3"><a href="#" class="text accent-color">Heating Degree Days</a><a href="#detail-heating_degree_day_18" class="icon icon-help nav-detail-link"></a></h4>
+                      <h4 id="var-heating_degree_day_18.3"><a href="#" class="text">Heating Degree Days</a><a href="#detail-heating_degree_day_18" class="icon icon-help nav-detail-link"></a></h4>
                       <ul>
-                        <li><a>Annual</a></li>
+                        <li class="active accent-border"><a class="accent-color">Annual</a></li>
                       </ul>
                     </li>
 
