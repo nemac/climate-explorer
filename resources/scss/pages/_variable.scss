@@ -152,13 +152,19 @@
 
 .year {
   position: absolute;
-  bottom: 40px;
+  bottom: 20px;
   left: 35%;
   width: 50%;
-  height: 22px;
+  height: 50px;
+  background: transparentize($white, 0.5);
+  @include transition(0.25s);
   
-  .year-slider {
-    top: 8px;
+  &:hover {
+    background: transparentize($white, 0.1);
+  }
+  
+  .ui-slider {
+    top: 20px;
     left: 10%;
     width: 80%;
     
@@ -183,6 +189,7 @@
   
   .year-label {
     position: absolute;
+    top: 13px;
     width: 10%;
     text-align: center;
     
