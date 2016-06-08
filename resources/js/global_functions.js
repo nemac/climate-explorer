@@ -455,7 +455,7 @@
 
     // accordion
 
-    $('.data-options ').accordion({
+    $('.data-options').accordion({
       header: 'h4'
     });
 
