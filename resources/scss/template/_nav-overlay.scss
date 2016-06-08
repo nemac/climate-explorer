@@ -313,9 +313,9 @@
   .nav-detail {
     display: none;
     @include full-size;
-    background: transparentize($blue1, 0.1);
-    backdrop-filter: blur(10px);
-    -webkit-backdrop-filter: blur(10px);
+    background: $blue1;
+    //backdrop-filter: blur(10px);
+    //-webkit-backdrop-filter: blur(10px);
     z-index: 1;
     
     .nav-detail-item {
@@ -338,11 +338,11 @@
     }
     
     &#variable-details {
-      background: transparentize($blue1, 0.1);
+      background: $blue1;
     }
     
     &#topics-details {
-      background: transparentize($orange1, 0.1);
+      background: $orange1;
     }
   }
 }
@@ -350,14 +350,14 @@
 #page-home {
   #detail-overlay {
     .nav-detail {
-      background: transparentize($blue1, 0.5);
+      background: $blue1;
     
       &#variable-details {
-        background: transparentize($blue1, 0.5);
+        background: $blue1;
       }
       
       &#topics-details {
-        background: transparentize($orange1, 0.5);
+        background: $orange1;
       }
     }
   }
