@@ -618,14 +618,21 @@ h6 {
 .zoom {
   position: absolute;
   top: 30%;
-  right: 50px;
+  right: 20px;
+  width: 40px;
   height: 40%;
+  background: transparentize($white, 0.5);
+  @include transition(0.25s);
+  
+  &:hover {
+    background: transparentize($white, 0.1);
+  }
 
   .zoom-slider {
     left: calc(50% - 3px);
-    top: 15%;
+    top: 17%;
     width: 6px;
-    height: 70%;
+    height: 66%;
   }
   
   .ui-slider-handle {
@@ -637,11 +644,11 @@ h6 {
     margin-left: -10px;
     
     &.minus {
-      bottom: 0;
+      bottom: 10px;
     }
     
     &.plus {
-      top: 0;
+      top: 10px;
     }
   }
 }

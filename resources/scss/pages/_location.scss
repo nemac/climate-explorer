@@ -519,10 +519,39 @@
         .full-map-btn {
           display: block;
           position: absolute;
-          right: 20px;
+          right: 10px;
           bottom: 60px;
           padding: 8px 30px 8px 8px;
           z-index: 2;
+        }
+        
+        .location-map-legend-container {
+          display: block;
+          position: absolute;
+          left: 10px;
+          top: 50%;
+          width: 100px;
+          padding: 8px;
+          background: $white;
+          z-index: 2;
+          @include transform(translateY(-50%));
+          color: $orange1;
+          
+          img {
+            display: block;
+            width: 100%;
+            height: auto;
+          }
+        }
+        
+        .year {
+          bottom: 0;
+          left: 0;
+          width: 100%;
+          
+          .ui-slider-handle {
+            background: $white!important;
+          }
         }
         
         &.open {

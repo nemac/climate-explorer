@@ -320,14 +320,6 @@ input.location-mapper:focus:-ms-input-placeholder {
 
 
 
-
-
-.year #variable-time-slider, .year #precipitation-map-time-slider, .year #temperature-map-time-slider, .year #derived-map-time-slider {
-  top: 8px;
-  left: 10%;
-  width: 80%;
-}
-
 .page-type-location #location-search {
   width:300px;
 }
@@ -372,55 +364,7 @@ input.location-mapper:focus:-ms-input-placeholder {
   display: none;
 }
 
-.page-type-location .location-map-legend-container {
-  display: block;
-  position: absolute;
-  left: 20px;
-  top: 25%;
-  padding: 8px 5px 8px 8px;
-  z-index: 2;
-  background:#FFF;
-  color: #f5442d;
-}
 
-.page-type-location .location-map-legend-container .legend-image {
-  height: 400px;
-  margin-left: -11px;
-}
-
-.page-type-location .year {
-  color: #FFF;
-  font-weight: 600;
-  position:absolute;
-  bottom:0px;
-  width:100%;
-  height: 30px;
-  left:0px;
-  margint-top:90px;
-}
-
-.page-type-location .year .ui-slider {
-  position: absolute;
-  height: 6px;
-  background: rgba(200, 200, 200, 0.4);
-  cursor: pointer;
-}
-
-.page-type-location .year .ui-slider .ui-slider-handle {
-  top: -14px;
-  width: 36px;
-  height: 36px;
-  margin: -3px 0 -18px -18px;
-  background: #fff;
-  border: 4px solid #f5442d;
-  text-align: center;
-  font-size: 1.5rem;
-  line-height: 1.375rem;
-  color: #f5442d;
-  -moz-box-shadow: 0 0 4px rgba(0, 88, 207, 0.25);
-  -webkit-box-shadow: 0 0 4px rgba(0, 88, 207, 0.25);
-  box-shadow: 0 0 4px rgba(0, 88, 207, 0.25);
-}
 
 .page-type-location .ol-overlaycontainer-stopevent {
   display: none;
@@ -443,37 +387,7 @@ input.location-mapper:focus:-ms-input-placeholder {
     height: 100%;
 }
 
-.year #variable-time-slider .ui-slider-handle {
-  top: -14px;
-  width: 36px;
-  height: 36px;
-  margin: 0 0 -18px -18px;
-  background: #fff;
-  border: 4px solid #f5442d;
-  text-align: center;
-  font-size: 1.5rem;
-  line-height: 1.375rem;
-  color: #f5442d;
-  -moz-box-shadow: 0 0 4px rgba(0, 88, 207, 0.25);
-  -webkit-box-shadow: 0 0 4px rgba(0, 88, 207, 0.25);
-  box-shadow: 0 0 4px rgba(0, 88, 207, 0.25);
-}
-.year #variable-time-slider .ui-slider-handle:hover {
-  -moz-box-shadow: 0 0 7px rgba(0, 88, 207, 0.4);
-  -webkit-box-shadow: 0 0 7px rgba(0, 88, 207, 0.4);
-  box-shadow: 0 0 7px rgba(0, 88, 207, 0.4);
-}
-.year .year-label {
-  position: absolute;
-  width: 10%;
-  text-align: center;
-}
-.year .year-label.year-min {
-  left: 0;
-}
-.year .year-label.year-max {
-  right: 0;
-}
+
 
 .page-type-location .moveable, .page-type-location .year {
   display: none;
