@@ -25,12 +25,12 @@
 
 </head>
 
-<body id="page-topic-ecosystem-vulnerability" class="page-type-topic">
+<body id="page-topic-<?php echo $param; ?>" class="page-type-topic">
 
 <?php include_once('template/header.php'); ?>
 
 <div id="viewport">
-    <div id="main-content-wrap" style="background-image: url(./resources/img/bg_location-seattle.jpg);">
+    <div id="main-content-wrap">
 
         <div class="share-widget">
           <a href="#" class="share-trigger"><span class="icon icon-social"></span>Share</a>
