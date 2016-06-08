@@ -828,7 +828,6 @@ Impacts.prototype.addClimateLayer = function(replace, layer, preserveTime) {
   if ( replace && !preserveTime ) {
     this.setSlider(layer);
   }
-
   this.reorderLayers();
 }
 
