@@ -4652,28 +4652,25 @@ body.detail-open #nav-overlay {
 #home-splash #splash-7 {
   background-image: url(../img/bg_splash-camptonville.jpg);
 }
-/* line 71, ../scss/pages/_home.scss */
-#home-splash h1 {
-  position: absolute;
-  top: 0%;
-  left: 6%;
-  width: 64%;
-  padding-top: 10%;
-  mix-blend-mode: hard-light;
-  color: #233a70;
-  z-index: 3;
-}
 
-/* line 83, ../scss/pages/_home.scss */
+/* line 72, ../scss/pages/_home.scss */
 #home-text {
   position: absolute;
-  bottom: 20%;
+  top: 50%;
   left: 6%;
+  -moz-transform: translateY(-50%);
+  -ms-transform: translateY(-50%);
+  -webkit-transform: translateY(-50%);
+  transform: translateY(-50%);
   width: 64%;
   z-index: 4;
   color: #233a70;
 }
-/* line 91, ../scss/pages/_home.scss */
+/* line 81, ../scss/pages/_home.scss */
+#home-text h1 {
+  margin: 0 0 20px 0;
+}
+/* line 85, ../scss/pages/_home.scss */
 #home-text p {
   width: 75%;
   background: rgba(255, 255, 255, 0.8);
@@ -4681,24 +4678,28 @@ body.detail-open #nav-overlay {
   font: 1.375rem/1.5em Roboto, Helvetica, "Helvetica Neue", Arial, sans-serif;
 }
 
-/* line 99, ../scss/pages/_home.scss */
+/* line 93, ../scss/pages/_home.scss */
 #home-menu {
   position: absolute;
-  top: 25%;
+  top: 50%;
   right: 6%;
   min-width: 25%;
   border: 10px solid #fff;
   font: 1.125rem/1em "CESans-Heavy", Helvetica, "Helvetica Neue", Arial, sans-serif;
+  -moz-transform: translateY(-50%);
+  -ms-transform: translateY(-50%);
+  -webkit-transform: translateY(-50%);
+  transform: translateY(-50%);
   z-index: 4;
 }
 
-/* line 110, ../scss/pages/_home.scss */
+/* line 105, ../scss/pages/_home.scss */
 #page-home #main-content-wrap {
   position: relative;
   height: 100%;
   margin: 0;
 }
-/* line 116, ../scss/pages/_home.scss */
+/* line 111, ../scss/pages/_home.scss */
 #page-home #logos {
   position: absolute;
   bottom: 0;
@@ -4708,14 +4709,14 @@ body.detail-open #nav-overlay {
   text-align: right;
   z-index: 3;
 }
-/* line 125, ../scss/pages/_home.scss */
+/* line 120, ../scss/pages/_home.scss */
 #page-home #logos a {
   display: block;
   float: right;
   width: 60px;
   height: 60px;
 }
-/* line 133, ../scss/pages/_home.scss */
+/* line 128, ../scss/pages/_home.scss */
 #page-home #h7 {
   position: absolute;
   left: 0;
@@ -4726,17 +4727,17 @@ body.detail-open #nav-overlay {
   line-height: 1.25em;
   z-index: 3;
 }
-/* line 143, ../scss/pages/_home.scss */
+/* line 138, ../scss/pages/_home.scss */
 #page-home #h7 a {
   display: block;
   color: #233a70;
 }
-/* line 148, ../scss/pages/_home.scss */
+/* line 143, ../scss/pages/_home.scss */
 #page-home #h7 span {
   display: block;
   float: left;
 }
-/* line 153, ../scss/pages/_home.scss */
+/* line 148, ../scss/pages/_home.scss */
 #page-home #h7 .logo {
   width: 20px;
   height: 20px;

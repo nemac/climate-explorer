@@ -54,10 +54,9 @@
               <div class="slide-text"><span class="location"><?php echo $locations[$splash_id]; ?></span></div>
             </div>
             
-            <h1>The Climate Explorer</h1>
-
             <div id="home-text" class="splash-text">
-                <p>Explore maps and graphs of historical and projected climate trends in your local area. View data by topics to see how climate change will impact things you care about.</p>
+              <h1>The Climate Explorer</h1>
+              <p>Explore maps and graphs of historical and projected climate trends in your local area. View data by topics to see how climate change will impact things you care about.</p>
             </div>
 
             <ul id="home-menu" class="menu blue-menu">
