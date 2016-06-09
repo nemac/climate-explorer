@@ -1,11 +1,22 @@
 .page-type-case {
   #case-menu {
+    width: 100%;
+    height: auto;
+    max-height: 100%;
+    overflow-x: hidden;
+    overflow-y: auto;
+    z-index: 1;
+    
+    li {
+      position: static;
+    }
+    
     .ui-state-highlight {
       background: $blue3;
     }
     
     .legend {
-      position: relative;
+      position: static;
       padding: 6%;
       @include transition(background 0.25s);
       @include legacy-clearfix;
@@ -105,18 +116,18 @@
       .layer-info {
         display: none;
         position: absolute;
-        top: 0;
+        top: 50%;
         left: 100%;
         width: 210%;
         width: calc(200% + 40px);
         height: auto;
         max-height: 600px;
         padding: 10%;
-        overflow-x: visible;
-        overflow-y: auto;
+        overflow: auto;
         background: transparentize($white, 0.1);
         color: $grey1;
         white-space: normal;
+        @include transform(translateY(-50%));
         
         &:before {
           content: '';
@@ -189,7 +200,7 @@
       }
     }
     
-    li {
+    /*li {
       &:last-child,
       &:nth-last-child(2) {
         .layer-info {
@@ -202,6 +213,6 @@
           }
         }
       }
-    }
+    }*/
   }
 }
