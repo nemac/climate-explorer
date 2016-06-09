@@ -520,7 +520,7 @@
                             <div class="year-label year-max">2090</div>
                           </div>
 
-                          <div class="location-map-legend-container" style="display:none">
+                          <div class="location-map-legend-container">
                             <h5>Legend</h5>
                             <div class="location-map-legend">
                               <img class="legend-image" src="resources/img/pr.png"></img>
