@@ -461,10 +461,12 @@ Impacts.prototype.subLayerSlider = function(id, show) {
       $.each(subs, function(i, sub) {
         visible = ( i + 1 <= max ) ? true : false;
         self.map.getLayers().forEach(function(layer) {
-          if (layer.get('layer_id') == sub.id) {
-            layer.setVisible(visible);
+          if ( $('#legend-'+id+' .layer-toggle').hasClass('icon-view-on') ) {
+            if (layer.get('layer_id') == sub.id) {
+              layer.setVisible(visible);
+            }
+            self.updateUrl();
           }
-          self.updateUrl();
         });
       });
     }
