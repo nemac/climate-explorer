@@ -1576,14 +1576,14 @@ App.prototype.takeSeasonalGraphTour = function (pre) {
     });
 
 
-    this.graphTour.addStep('timeline', {
+    this.seasonalTour.addStep('timeline', {
         text: 'Click the left, center, or right of the time slider to display projections for the early-, mid-, or late 21st century for two emissions scenarios. You can also click and drag the Y axis.',
         attachTo: '#' + pre + 'slider-range top',
         buttons: [
             {
                 text: 'Close',
                 classes: 'shepherd-button-secondary',
-                action: this.graphTour.cancel
+                action: this.seasonalTour.cancel
             }
         ]
     });
@@ -1630,11 +1630,11 @@ App.prototype.takeMonthlyGraphTour = function (pre) {
             {
                 text: 'Close',
                 classes: 'shepherd-button-secondary',
-                action: this.graphTour.cancel
+                action: this.monthlyTour.cancel
             },
             {
                 text: 'Next',
-                action: this.graphTour.next
+                action: this.monthlyTour.next
             }
         ]
     });

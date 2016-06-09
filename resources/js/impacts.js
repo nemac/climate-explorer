@@ -17,11 +17,12 @@ var Impacts = function(page) {
 */
 Impacts.prototype.mapVariables = function() {
   this.varMapping = {
-    'mean_daily_max': 'Mean Daily Maximum',
-    'mean_daily_min': 'Mean Daily Minimum',
-    'days_tmin_blw_0.0': 'Days below 32&deg; F',
-    'days_tmax_abv_35.0': 'Days over 95&deg; F',
+    'mean_daily_max': 'Mean Daily Maximum Temperature',
+    'mean_daily_min': 'Mean Daily Minimum Temperature',
+    'days_tmin_blw_0.0': 'Days With Minimum Below 32F&deg; F',
+    'days_tmax_abv_35.0': 'Days With Minimum Below 95&deg; F',
     'pr': 'Mean Daily Precipitation',
+    'pr_above': 'Days of Precipitation Above 1 Inch',
     'cooling_degree_day_18.3': 'Cooling Degree Days',
     'heating_degree_day_18.3': 'Heating Degree Days'
   };

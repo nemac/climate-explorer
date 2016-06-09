@@ -64,7 +64,7 @@
                 <ul>
                     <li><a href="#location-temperature">Temperature</a></li>
                     <li><a href="#location-precipitation">Precipitation</a></li>
-                    <li><a href="#location-derived">Derived</a></li>
+                    <li><a href="#location-derived">Other</a></li>
                     <li><a href="#location-stations">Weather Stations</a></li>
                     <!--<li><a href="#location-impacts">Relevant Impacts</a></li>-->
                 </ul>
@@ -88,7 +88,7 @@
 
                   <ul class="data-options">
                     <li class="active accent-border">
-                      <h4 id="var-tasmax"><a href="#" class="text">Mean Daily Maximum</a><a href="#detail-tasmax" class="icon icon-help nav-detail-link"></a></h4>
+                      <h4 id="var-tasmax"><a href="#" class="text">Mean Daily Maximum Temperature</a><a href="#detail-tasmax" class="icon icon-help nav-detail-link"></a></h4>
                       <ul class="location-resolution">
                         <li class="active accent-border"><a class="accent-color">Annual</a></li>
                         <li><a>Monthly</a></li>
@@ -97,7 +97,7 @@
                     </li>
 
                     <li class="">
-                      <h4 id="var-tasmin"><a href="#" class="text">Mean Daily Minimum</a><a href="#detail-tasmin" class="icon icon-help nav-detail-link"></a></h4>
+                      <h4 id="var-tasmin"><a href="#" class="text">Mean Daily Minimum Temperature</a><a href="#detail-tasmin" class="icon icon-help nav-detail-link"></a></h4>
                       <ul class="location-resolution">
                         <li><a>Annual</a></li>
                         <li><a>Monthly</a></li>
@@ -106,14 +106,14 @@
                     </li>
 
                     <li class="">
-                      <h4 id="var-days_tmax_abv_35.0"><a href="#" class="text">Days with Maximum Above 95&deg;</a><a href="#detail-days_tmax_abv_35" class="icon icon-help nav-detail-link"></a></h4>
+                      <h4 id="var-days_tmax_abv_35.0"><a href="#" class="text">Days with Maximum Above 95&deg;F</a><a href="#detail-days_tmax_abv_35" class="icon icon-help nav-detail-link"></a></h4>
                       <ul class="location-resolution">
                         <li><a>Annual</a></li>
                       </ul>
                     </li>
 
                     <li class="">
-                      <h4 id="var-days_tmin_blw_0.0"><a href="#" class="text">Days with Minimum Below 32º</a><a href="#detail-days_tmin_blw_0" class="icon icon-help nav-detail-link"></a></h4>
+                      <h4 id="var-days_tmin_blw_0.0"><a href="#" class="text">Days with Minimum Below 32&deg;F</a><a href="#detail-days_tmin_blw_0" class="icon icon-help nav-detail-link"></a></h4>
                       <ul>
                         <li><a>Annual</a></li>
                       </ul>
@@ -212,7 +212,7 @@
                               <span class="icon icon-emission-scenario"></span>
                               <span class="text">
                                 Chart<span class="full-title">: <?php echo $county ?></span>
-                                <span class="source" id="temp-chart-name">Mean Daily Maximum</span>
+                                <span class="source" id="temp-chart-name">Mean Daily Maximum Temperature</span>
                               </span>
                             </h4>
 
@@ -269,17 +269,17 @@
                               <span class="icon icon-district"></span>
                               <span class="text">
                                 Map<span class="full-title">: <?php echo $county ?></span>
-                                <span class="source" id="temp-map-name">Mean Daily Maximum</span>
+                                <span class="source" id="temp-map-name">Mean Daily Maximum Temperature</span>
                               </span>
                             </h4>
 
                             <div class="data-accordion-actions">
                               <div class="select map-seasons-container" id="temperature-map-season">
                                 <select class="dropdown">
-                                  <option value="summer">Summer</option>
-                                  <option value="fall">Fall</option>
-                                  <option value="winter">Winter</option>
-                                  <option value="spring">Spring</option>
+                                    <option value="summer">July</option>
+                                    <option value="fall">October</option>
+                                    <option value="winter">January</option>
+                                    <option value="spring">April</option>
                                 </select>
                               </div>
 
@@ -337,7 +337,7 @@
                     </li>
 
                     <li class="">
-                      <h4 id="var-days_prcp_abv_25.3"><a href="#" class="text">Days of Precipitation Above 1in</a><a href="#detail-pr-above" class="icon icon-help nav-detail-link"></a></h4>
+                      <h4 id="var-days_prcp_abv_25.3"><a href="#" class="text">Days of Precipitation Above 1 Inch</a><a href="#detail-pr-above" class="icon icon-help nav-detail-link"></a></h4>
                       <ul class="location-resolution">
                         <li><a>Annual</a></li>
                       </ul>
@@ -371,7 +371,7 @@
                           <label for="precip-variable">Variable</label>
                           <select id="precip-variable" class="u-full-width">
                             <option value="pr" selected="selected">Mean Daily Precipitation</option>
-                            <option value="days_prcp_abv_25.3">Days of Precipitation Above 1in</option>
+                            <option value="days_prcp_abv_25.3">Days of Precipitation Above 1 Inch</option>
                           </select>
                       </div>
                       <div class="row">
@@ -498,12 +498,14 @@
                           <div class="data-accordion-actions">
                             <div class="select map-seasons-container" id="precipitation-map-season">
                               <select class="dropdown">
-                                <option value="summer">Summer</option>
-                                <option value="fall">Fall</option>
-                                <option value="winter">Winter</option>
-                                <option value="spring">Spring</option>
+                                <option value="summer">July</option>
+                                <option value="fall">October</option>
+                                <option value="winter">January</option>
+                                <option value="spring">April</option>
                               </select>
                             </div>
+
+                       
 
 
                               <a href="#" class="how-to-read"><span class="icon icon-help"></span>How to read this</a>
@@ -549,7 +551,7 @@
         <section id="location-derived" class="location-data-section-wrap">
             <div class="location-data-section">
                 <div id="derived-data" class="data-list">
-                  <h3 class="accent-color"><span class="icon icon-drought"></span>Derived</h3>
+                  <h3 class="accent-color"><span class="icon icon-drought"></span>Other</h3>
 
                   <ul class="data-options">
                     <li class="active accent-border">
@@ -723,10 +725,10 @@
                             <div class="data-accordion-actions">
                               <div class="select map-seasons-container" id="derived-map-season">
                                 <select class="dropdown">
-                                  <option value="summer">Summer</option>
-                                  <option value="fall">Fall</option>
-                                  <option value="winter">Winter</option>
-                                  <option value="spring">Spring</option>
+                                    <option value="summer">July</option>
+                                    <option value="fall">October</option>
+                                    <option value="winter">January</option>
+                                    <option value="spring">April</option>
                                 </select>
                               </div>
 
