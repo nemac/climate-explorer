@@ -111,6 +111,146 @@
     }
   }
   
+  
+  .data-accordion-actions {
+    float: right;
+    margin-top: -15px;
+    
+    a {
+      display: inline-block;
+      padding: 10px;
+      color: #5f5f5f;
+      -moz-transition: 0.25s;
+      -o-transition: 0.25s;
+      -webkit-transition: 0.25s;
+      transition: 0.25s;
+    
+      .icon {
+        margin: 0 8px 0 0;
+        font-size: 1.25rem;
+        color: #f5442d;
+      }
+      
+      &:hover {
+        background: #d5e8f2;
+      }
+    }
+  }
+  
+  #variable-slider {
+    width: 95%;
+    margin: auto;
+    margin-top: 23px;
+    margin-bottom: 50px;
+    position: relative;
+  }
+  
+  #vars-menu {
+    .layer-info {
+      display: none;
+      position: absolute;
+      top: 0;
+      left: 100%;
+      width: 210%;
+      width: calc(200% + 40px);
+      height: auto;
+      padding: 10%;
+      background: rgba(255, 255, 255, 0.9);
+      color: #5f5f5f;
+      white-space: normal;
+      
+      &:before {
+        content: '';
+        display: block;
+        position: absolute;
+        left: -20px;
+        top: 22px;
+        width: 0;
+        height: 0;
+        border: 10px solid #fff;
+        border-color: transparent #fff transparent transparent;
+      }
+      
+      h3 {
+        margin: 0 0 10px 0;
+        font-size: 1.625rem;
+        color: #f5442d;
+      }
+      
+      p {
+        margin: 0 0 12px 0;
+      }
+    }
+    
+    .help {
+      padding: 0;
+      float: left;
+      margin: 0;
+      background: none;
+      margin-top: 30px;
+      margin-left: 27px;
+      margin-right: 7px;
+    }
+  }
+  
+  #vars-legend {
+    h5 {
+      margin: 0 0 6px 0;
+      font: 1rem/1em "CESans-Heavy", Helvetica, "Helvetica Neue", Arial, sans-serif;
+      color: #233a70;
+    }
+    
+    h6 {
+      margin: 0 0 10px 0;
+      font: 0.75rem/1.25em "CESans", Roboto, Helvetica, "Helvetica Neue", Arial, sans-serif;
+      color: #5f5f5f;
+    }
+    
+    .legend {
+      width: 100%;
+      margin: 0 0 10px 0;
+      padding: 20px;
+      background: #d5e8f2;
+      font: 0.75rem/1em Monaco, monospace;
+      color: #233a70;
+    
+      ul {
+        margin: 15px 0 0 0;
+      }
+      
+      li {
+        margin: 10px 0;
+      }
+      
+      .color {
+        width: 8%;
+        margin: 0 8% 0 0;
+        padding: 0 0 8% 0;
+      }
+    }
+  }
+  
+  .chart-legend {
+    overflow: hidden;
+    padding-top: 20px;
+  }
+  
+  .ol-zoom {
+    display: none;
+  }
+  
+  .legend-image {
+    height:350px;
+    margin-left:-13px;
+  }
+  
+  .ol-scale-line {
+    background: rgba(0,60,136,.3);
+    border-radius: 4px;
+    bottom: 133px;
+    left: 345px;
+  }
+  
   #district-trigger {
     position: absolute;
     top: 15%;
