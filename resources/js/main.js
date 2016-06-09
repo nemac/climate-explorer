@@ -970,6 +970,10 @@ App.prototype.tour = function () {
     $('.how-to-read').on('click', function () {
         var pre = '';
         var closest = $(this).closest('.data-chart').attr('id');
+        var mapclosest = $(this).closest('.data-map').attr('id');
+
+        console.log(this);
+
         if (closest === 'precipitation-chart') {
             pre = 'precip-';
         }
@@ -977,17 +981,33 @@ App.prototype.tour = function () {
             pre = 'derive-';
         }
 
+        if (mapclosest === 'temperature-map-container'){
+            pre = 'temperature-';
+        }
+
+        if (mapclosest === 'precipitation-map-container'){
+            pre = 'precipitation-';
+        }
+
+        if (mapclosest === 'derived-map-container'){
+            pre = 'derived-';
+        }
+
         console.log("WHICH ONE");
-        console.log(self.frequency[closest]);
+        console.log(mapclosest);
 
         if (self.frequency[closest] === 'annual') {
             self.takeGraphTour(pre);
         } else if (self.frequency[closest] === 'monthly') {
             self.takeMonthlyGraphTour(pre);
-        } else {
+        } else if (self.frequency[closest] === 'seasonal') {
             self.takeSeasonalGraphTour(pre);
+        } else {
+            self.takeMapTour(pre);
         }
     });
+
+
 
 };
 
@@ -1708,4 +1728,100 @@ App.prototype.takeMonthlyGraphTour = function (pre) {
     });
 
     this.monthlyTour.start();
+};
+
+
+
+App.prototype.takeMapTour = function (pre) {
+    var self = this;
+
+    if (this.mapTour) {
+        this.mapTour.cancel();
+        this.mapTour = null;
+        this.mapTour = new Shepherd.Tour({
+            defaults: {
+                classes: 'shepherd-theme-arrows',
+                scrollTo: false
+            }
+        });
+    } else {
+        this.mapTour = new Shepherd.Tour({
+            defaults: {
+                classes: 'shepherd-theme-arrows',
+                scrollTo: false
+            }
+        });
+    }
+
+    this.mapTour.addStep('whole-map', {
+        text: 'Colors on the map display projected values for the variable you selected. Specifically, projections for the season shown in the upper right during the decade indicated by the time slider below.',
+        buttons: [
+            {
+                text: 'Close',
+                classes: 'shepherd-button-secondary',
+                action: this.mapTour.cancel
+            },
+            {
+                text: 'Next',
+                action: this.mapTour.next
+            }
+        ]
+    });
+
+    this.mapTour.addStep('scenario-slider', {
+        text: 'Slide to compare projections for the selected variable in two possible futures. Projected values on the left—the lower emissions scenario—are based on the possibility that global emissions of heat-trapping gases will decrease and stabilize (RCP 4.5). Projections for the higher emissions scenario are based on the possibility that emissions will continue increasing (RCP 8.5).',
+        attachTo: '#' + pre + 'swipeImg top',
+        buttons: [
+            {
+                text: 'Close',
+                classes: 'shepherd-button-secondary',
+                action: this.mapTour.cancel
+            },
+            {
+                text: 'Next',
+                action: this.mapTour.next
+            }
+        ]
+    });
+
+    this.mapTour.addStep('season-selector', {
+        text: 'Select the season for the map display. Seasonal maps represent projected values for the middle month of each season:<br><Br>Winter = January;<Br>Spring = April;<Br>Summer = July;<Br>Fall = October.',
+        attachTo: '#' + pre + 'map-season top',
+        buttons: [
+            {
+                text: 'Close',
+                classes: 'shepherd-button-secondary',
+                action: this.mapTour.cancel
+            },
+            {
+                text: 'Next',
+                action: this.mapTour.next
+            }
+        ]
+    });
+
+
+
+    this.mapTour.addStep('time-slider', {
+        text: 'Move the time slider to display projected values for any decade from 1950 to 2090.',
+        attachTo: '#' + pre + 'map-slider-container top',
+        buttons: [
+            {
+                text: 'Close',
+                classes: 'shepherd-button-secondary',
+                action: this.mapTour.cancel
+            }
+        ]
+    });
+
+
+    this.mapTour.on('start', function () {
+        //$('.cd-cover-layer').removeClass('is-visible');
+        //$('.cd-cover-layer').addClass('is-visible');
+        setTimeout(function () {
+            //$('.cd-cover-layer').removeClass('is-visible');
+        }, 4000);
+    });
+
+    this.mapTour.start();
 };

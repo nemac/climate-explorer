@@ -5,8 +5,10 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="834b6b80-6ff0-478d-9964-d91e121deaf1" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/location.php" afterPath="$PROJECT_DIR$/location.php" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/js/main.js" afterPath="$PROJECT_DIR$/resources/js/main.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/template/header.php" afterPath="$PROJECT_DIR$/template/header.php" />
     </list>
     <ignored path="Climate Explorer.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -46,21 +48,21 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="main.js" pinned="false" current-in-tab="true">
+      <file leaf-file-name="main.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/resources/js/main.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="275">
-              <caret line="1661" column="30" selection-start-line="1661" selection-start-column="30" selection-end-line="1661" selection-end-column="30" />
+            <state relative-caret-position="573">
+              <caret line="1793" column="43" selection-start-line="1793" selection-start-column="43" selection-end-line="1793" selection-end-column="43" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="location.php" pinned="false" current-in-tab="false">
+      <file leaf-file-name="location.php" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/location.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="598">
-              <caret line="231" column="61" selection-start-line="231" selection-start-column="61" selection-end-line="231" selection-end-column="61" />
+            <state relative-caret-position="357">
+              <caret line="788" column="16" selection-start-line="788" selection-start-column="16" selection-end-line="788" selection-end-column="16" />
               <folding />
             </state>
           </provider>
@@ -79,8 +81,8 @@
       <file leaf-file-name="header.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/template/header.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="193">
-              <caret line="169" column="29" selection-start-line="169" selection-start-column="29" selection-end-line="169" selection-end-column="29" />
+            <state relative-caret-position="197">
+              <caret line="448" column="24" selection-start-line="448" selection-start-column="21" selection-end-line="448" selection-end-column="24" />
               <folding />
             </state>
           </provider>
@@ -90,7 +92,7 @@
         <entry file="file://$PROJECT_DIR$/case.php">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="200">
-              <caret line="41" column="147" selection-start-line="41" selection-start-column="147" selection-end-line="41" selection-end-column="147" />
+              <caret line="42" column="9" selection-start-line="42" selection-start-column="9" selection-end-line="42" selection-end-column="9" />
               <folding />
             </state>
           </provider>
@@ -158,7 +160,6 @@
         <option value="$PROJECT_DIR$/resources/js/chart.js" />
         <option value="$PROJECT_DIR$/resources/js/impacts.js" />
         <option value="$PROJECT_DIR$/.gitignore" />
-        <option value="$PROJECT_DIR$/location.php" />
         <option value="$PROJECT_DIR$/about.php" />
         <option value="$PROJECT_DIR$/credits.php" />
         <option value="$PROJECT_DIR$/definitions.php" />
@@ -167,9 +168,10 @@
         <option value="$PROJECT_DIR$/deploy/deploy.php" />
         <option value="$PROJECT_DIR$/test.txt" />
         <option value="$PROJECT_DIR$/index.php" />
-        <option value="$PROJECT_DIR$/template/header.php" />
         <option value="$PROJECT_DIR$/case.php" />
         <option value="$PROJECT_DIR$/resources/js/main.js" />
+        <option value="$PROJECT_DIR$/template/header.php" />
+        <option value="$PROJECT_DIR$/location.php" />
       </list>
     </option>
   </component>
@@ -497,7 +499,7 @@
       <workItem from="1465325461303" duration="112000" />
       <workItem from="1465325581407" duration="2112000" />
       <workItem from="1465333753454" duration="2000" />
-      <workItem from="1465482922471" duration="5577000" />
+      <workItem from="1465482922471" duration="11576000" />
     </task>
     <task id="LOCAL-00001" summary="test">
       <created>1452891884032</created>
@@ -667,11 +669,25 @@
       <option name="project" value="LOCAL" />
       <updated>1465224658267</updated>
     </task>
-    <option name="localTasksCounter" value="25" />
+    <task id="LOCAL-00025" summary="half way through text changes and adding new monthly tours">
+      <created>1465488513522</created>
+      <option name="number" value="00025" />
+      <option name="presentableId" value="LOCAL-00025" />
+      <option name="project" value="LOCAL" />
+      <updated>1465488513522</updated>
+    </task>
+    <task id="LOCAL-00026" summary="graph tours done">
+      <created>1465488813200</created>
+      <option name="number" value="00026" />
+      <option name="presentableId" value="LOCAL-00026" />
+      <option name="project" value="LOCAL" />
+      <updated>1465488813200</updated>
+    </task>
+    <option name="localTasksCounter" value="27" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="22769000" />
+    <option name="totallyTimeSpent" value="28768000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -686,14 +702,14 @@
     <frame x="65" y="-4" width="1855" height="1084" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info id="Remote Host" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.18629077" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
+      <window_info id="Remote Host" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.3416252" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.12658927" sideWeight="0.50520056" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32834226" sideWeight="0.4978701" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.49426934" sideWeight="0.46195653" order="10" side_tool="true" content_ui="tabs" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.1121421" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.32939914" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32939914" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="File Transfer" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.29613733" sideWeight="0.5380435" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.23712446" sideWeight="0.47826087" order="11" side_tool="false" content_ui="tabs" />
+      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.2414163" sideWeight="0.47826087" order="11" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32806122" sideWeight="0.4978701" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.2497332" sideWeight="0.4947994" order="2" side_tool="true" content_ui="tabs" />
@@ -769,7 +785,9 @@
     <MESSAGE value="updated gitignore" />
     <MESSAGE value="updated jquery-ui to use local copy instead of CDN" />
     <MESSAGE value="fixing deploy" />
-    <option name="LAST_COMMIT_MESSAGE" value="fixing deploy" />
+    <MESSAGE value="half way through text changes and adding new monthly tours" />
+    <MESSAGE value="graph tours done" />
+    <option name="LAST_COMMIT_MESSAGE" value="graph tours done" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager />
@@ -1019,13 +1037,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/variables.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="375">
-          <caret line="25" column="0" selection-start-line="25" selection-start-column="0" selection-end-line="25" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/deploy/deploy.txt" />
     <entry file="file://$PROJECT_DIR$/deploy/deploy.php" />
     <entry file="file://$PROJECT_DIR$/deploy/log.txt" />
@@ -1050,18 +1061,18 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/case.php">
+    <entry file="file://$PROJECT_DIR$/variables.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="200">
-          <caret line="41" column="147" selection-start-line="41" selection-start-column="147" selection-end-line="41" selection-end-column="147" />
+        <state relative-caret-position="60">
+          <caret line="4" column="9" selection-start-line="4" selection-start-column="3" selection-end-line="4" selection-end-column="9" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/template/header.php">
+    <entry file="file://$PROJECT_DIR$/case.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="193">
-          <caret line="169" column="29" selection-start-line="169" selection-start-column="29" selection-end-line="169" selection-end-column="29" />
+        <state relative-caret-position="200">
+          <caret line="42" column="9" selection-start-line="42" selection-start-column="9" selection-end-line="42" selection-end-column="9" />
           <folding />
         </state>
       </provider>
@@ -1074,18 +1085,26 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/location.php">
+    <entry file="file://$PROJECT_DIR$/resources/js/main.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="598">
-          <caret line="231" column="61" selection-start-line="231" selection-start-column="61" selection-end-line="231" selection-end-column="61" />
+        <state relative-caret-position="573">
+          <caret line="1793" column="43" selection-start-line="1793" selection-start-column="43" selection-end-line="1793" selection-end-column="43" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/resources/js/main.js">
+    <entry file="file://$PROJECT_DIR$/template/header.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="275">
-          <caret line="1661" column="30" selection-start-line="1661" selection-start-column="30" selection-end-line="1661" selection-end-column="30" />
+        <state relative-caret-position="197">
+          <caret line="448" column="24" selection-start-line="448" selection-start-column="21" selection-end-line="448" selection-end-column="24" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/location.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="357">
+          <caret line="788" column="16" selection-start-line="788" selection-start-column="16" selection-end-line="788" selection-end-column="16" />
           <folding />
         </state>
       </provider>

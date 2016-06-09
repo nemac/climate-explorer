@@ -282,6 +282,9 @@
                                   <option value="spring">Spring</option>
                                 </select>
                               </div>
+
+                                <a href="#" class="how-to-read"><span class="icon icon-help"></span>How to read this</a>
+                                
                             </div>
                           </header>
 
@@ -334,7 +337,7 @@
                     </li>
 
                     <li class="">
-                      <h4 id="var-days_prcp_abv_25.3"><a href="#" class="text">Days of Precipitation Above 1in</a><a href="#detail-pr" class="icon icon-help nav-detail-link"></a></h4>
+                      <h4 id="var-days_prcp_abv_25.3"><a href="#" class="text">Days of Precipitation Above 1in</a><a href="#detail-pr-above" class="icon icon-help nav-detail-link"></a></h4>
                       <ul class="location-resolution">
                         <li><a>Annual</a></li>
                       </ul>
@@ -501,6 +504,11 @@
                                 <option value="spring">Spring</option>
                               </select>
                             </div>
+
+
+                              <a href="#" class="how-to-read"><span class="icon icon-help"></span>How to read this</a>
+                              
+                              
                           </div>
                         </header>
 
@@ -721,6 +729,11 @@
                                   <option value="spring">Spring</option>
                                 </select>
                               </div>
+
+
+                                <a href="#" class="how-to-read"><span class="icon icon-help"></span>How to read this</a>
+                                
+                                
                             </div>
                           </header>
 
@@ -763,7 +776,11 @@
           <div class="location-data-section">
             <div id="stations-data" class="data-list">
               <h3 class="accent-color"><span class="icon icon-district"></span>Weather Stations</h3>
-              <p>This map shows the location of weather stations near the selected county. Click on a weather station to view its data.</p>
+                <p>Dots on the map show weather stations in the Global Historical Climatology Network-Daily (GHCN-D) database.</p>
+                <br>
+                <p>Click any dot to view zoomable graphs of observed daily temperature and precipitation compared to 1981-2010 Climate Normals.</p>
+                <br>
+                <p>Scroll or click and drag to adjust the graph display.</p>
             </div>
 
             <div id="stations-tabs" class="data-accordion-wrap">
