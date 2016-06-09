@@ -126,8 +126,8 @@
           "title": "Power Plants and Storm-Surge",
           "description": "Explore power plants that may be threated by storm-surge.",
           "layers": [
-            "power_plants",
-            "storm_surge"
+            "storm_surge",
+            "power_plants"
           ]
         }
       }
