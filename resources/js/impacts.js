@@ -17,11 +17,12 @@ var Impacts = function(page) {
 */
 Impacts.prototype.mapVariables = function() {
   this.varMapping = {
-    'mean_daily_max': 'Mean Daily Maximum',
-    'mean_daily_min': 'Mean Daily Minimum',
-    'days_tmin_blw_0.0': 'Days below 32&deg; F',
-    'days_tmax_abv_35.0': 'Days over 95&deg; F',
+    'mean_daily_max': 'Mean Daily Maximum Temperature',
+    'mean_daily_min': 'Mean Daily Minimum Temperature',
+    'days_tmin_blw_0.0': 'Days With Minimum Below 32F&deg; F',
+    'days_tmax_abv_35.0': 'Days With Minimum Below 95&deg; F',
     'pr': 'Mean Daily Precipitation',
+    'pr_above': 'Days of Precipitation Above 1 Inch',
     'cooling_degree_day_18.3': 'Cooling Degree Days',
     'heating_degree_day_18.3': 'Heating Degree Days'
   };
@@ -188,6 +189,8 @@ Impacts.prototype.wireEvents = function() {
 
     var id = $(this).closest('.legend').attr('id').replace('legend-', '');
     self.map.getLayers().forEach(function(layer) {
+      var layer_id = layer.get('layer_id');
+      var id_val, val;
       if (layer.get('layer_id') == id) {
         layer.setVisible(visible);
         self.updateUrl();
@@ -196,6 +199,20 @@ Impacts.prototype.wireEvents = function() {
           self.tileLayer.setVisible(visible); }
         if ( self.tileLayer85 ) { self.tileLayer85.setVisible(visible); }
         self.updateUrl();
+      } else if ( id === 'sea_level_rise' && layer_id && layer_id.match('sea_level_rise')) {
+        id_val = parseInt(layer_id.split('_')[3]);
+        val = $('.sublayer-slider').slider('value');
+        if ( id_val <= val ) {
+          layer.setVisible(visible);
+          self.updateUrl();
+        }
+      } else if ( id === 'storm_surge' && layer_id && layer_id.match('storm_surge')) {
+        id_val = parseInt(layer_id.split('_')[2]);
+        val = $('.sublayer-slider').slider('value');
+        if ( id_val <= val ) {
+          layer.setVisible(visible);
+          self.updateUrl();
+        }
       }
     });
 
@@ -233,19 +250,24 @@ Impacts.prototype.wireEvents = function() {
 
   $('.opacity-slider').slider({
     range: false,
-    min: 0,
+    min: 0.1,
     max: 1,
     step: 0.05,
     value: 1,
     slide: function (event, ui) {
       var id = $(this).attr('id').replace('opacity-', '');
-      var visible = ( ui.value > 0 ) ? true : false;
+      //var visible = ( ui.value > 0 ) ? true : false;
 
       self.map.getLayers().forEach(function(layer) {
+        var layer_id = layer.get('layer_id');
         if (layer.get('layer_id') == id) {
-          layer.setVisible(visible);
+          //layer.setVisible(visible);
           layer.setOpacity(ui.value);
-          self.updateUrl();
+          //self.updateUrl();
+        } else if ( id === 'sea_level_rise' && layer_id && layer_id.match('sea_level_rise')) {
+          layer.setOpacity(ui.value);
+        } else if ( id === 'storm_surge' && layer_id && layer_id.match('storm_surge')) {
+          layer.setOpacity(ui.value);
         }
       });
 
@@ -338,6 +360,15 @@ Impacts.prototype.createLegend = function() {
       } else {
         icon_class = "icon-view-off";
       }
+      if ( id === 'sea_level_rise' || id === 'storm_surge' ) {
+        $.each(self.visibleLayers, function(e, vis) {
+          if ( id === 'sea_level_rise' && vis.match('sea_level_rise')) {
+            icon_class = "icon-view-on";
+          } else if ( id === 'storm_surge' && vis.match('storm_surge')) {
+            icon_class = "icon-view-on";
+          }
+        });
+      }
     } else {
       icon_class = 'icon-view-on';
     }
@@ -353,7 +384,7 @@ Impacts.prototype.createLegend = function() {
       //'<input class="visibility" id="visibility-'+id+'" type="checkbox" '+checked+'/>' +
 
         if ( sublayer ) {
-          tmpl += '<div class="sublayer-slider"></div>'+
+          tmpl += '<div class="sublayer-slider" id="slider-'+id+'"></div>'+
             '<div class="sublayer-range-values" id="range-'+id+'"></div>';
         }
       tmpl += '<div id="info-'+id+'" class="layer-info">'+
@@ -403,16 +434,25 @@ Impacts.prototype.createLegend = function() {
 
 Impacts.prototype.subLayerSlider = function(id, show) {
   var self = this;
+  var val = 0;
+  if ( this.visibleLayers ) {
+    $.each(this.visibleLayers, function(i, layer) {
+      if ( layer.match(id) ) {
+        val++;
+      }
+    });
+  }
+  if ( val < 1 ) val = 1;
 
-  $('#range-'+id).html('Showing from 1 to 1 '+self.data.layers[id].defaults.units);
+  $('#range-'+id).html('Showing from 1 to '+ val + ' ' +self.data.layers[id].defaults.units);
 
-  $('.sublayer-slider').attr('id', id).slider({
+  $('.sublayer-slider#slider-'+id).attr('id', id).slider({
     id: id,
     orientation: "horizontal",
     range: false,
     min: 1,
     max: self.subLayers[id].length,
-    value: 1,
+    value: val,
     slide: function( event, ui ) {
       var subs = self.subLayers[event.target.id];
       var max = ui.value;
@@ -421,8 +461,11 @@ Impacts.prototype.subLayerSlider = function(id, show) {
       $.each(subs, function(i, sub) {
         visible = ( i + 1 <= max ) ? true : false;
         self.map.getLayers().forEach(function(layer) {
-          if (layer.get('layer_id') == sub.id) {
-            layer.setVisible(visible);
+          if ( $('#legend-'+id+' .layer-toggle').hasClass('icon-view-on') ) {
+            if (layer.get('layer_id') == sub.id) {
+              layer.setVisible(visible);
+            }
+            self.updateUrl();
           }
         });
       });
@@ -825,7 +868,7 @@ Impacts.prototype.addClimateLayer = function(replace, layer, preserveTime) {
   }
 
   $('#year-slider-container').show();
-  
+
   //If new map tiles, reset time slider
   if ( replace && !preserveTime ) {
     this.setSlider(layer);

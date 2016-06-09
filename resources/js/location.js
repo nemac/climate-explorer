@@ -36,6 +36,7 @@ Location.prototype.mapVariables = function() {
     },
     'precipitation-map': {
       'pr': '_hist_prism_pr',
+      'pr_above': '_hist_prism_pr'
     },
     'derived-map': {
       'cooling_degree_day_18.3': '_annual_hist_cooling-degree-day',
@@ -52,6 +53,7 @@ Location.prototype.mapVariables = function() {
     },
     'precipitation-map': {
       'pr': '_rcp45_ea_pr',
+      'pr_above': '_rcp45_ea_pr'
     },
     'derived-map': {
       'cooling_degree_day_18.3': '_annual_rcp45_cooling-degree-day',
@@ -68,6 +70,7 @@ Location.prototype.mapVariables = function() {
     },
     'precipitation-map': {
       'pr': '_rcp85_ea_pr',
+      'pr_above': '_rcp85_ea_pr'
     },
     'derived-map': {
       'cooling_degree_day_18.3': '_annual_rcp85_cooling-degree-day',
@@ -360,6 +363,12 @@ Location.prototype.wire = function() {
     $('#precipitation-data .data-options').swap_classes($(this));
     
     var id = $(this).attr('id').replace('var-', '');
+    console.log(id);
+
+    // use the same tiles as PR for days with above one inch
+    if (id === 'days_prcp_abv_25.3'){
+      id = 'pr';
+    }
     self.selectedVariable['precipitation-map'] = id;
     if ( self['precipitation-map'] ) {
       self.updateTiledLayer('precipitation-map', false);
@@ -417,6 +426,8 @@ Location.prototype.updateTiledLayer = function(map, replace, timeReset) {
   } else if ( map === 'temperature-map' ){
     $('#temperature-map-season').hide();
   }
+
+  console.log(this.selectedVariable[map]);
 
   if ( this.selectedVariable[map] === 'pr' && map === 'precipitation-map' ) {
     $('#precipitation-map-season').show();

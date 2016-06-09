@@ -66,17 +66,18 @@
 
         <li class="select border" id="variable-options-container">
           <select class="dropdown" id="variable-options">
-            <option value="tasmax">Mean Daily Maximum</option>
-            <option value="tasmin">Mean Daily Minimum</option>
-            <option value="days_tmax_abv_35.0">Days over 95º F</option>
-            <option value="days_tmin_blw_0.0">Days min below 32º F</option>
+            <option value="tasmax">Mean Daily Maximum Temperature</option>
+            <option value="tasmin">Mean Daily Minimum Temperature</option>
+            <option value="days_tmax_abv_35.0">Days With Maximum Above 95°F</option>
+            <option value="days_tmin_blw_0.0">Days With Minimum Below 32°F</option>
             <option value="pr">Mean Daily Precipitation</option>
+            <option value="pr_above">Days of Precipitation Above 1 Inch</option>
             <option value="heating_degree_day_18.3">Heating Degree Days</option>
             <option value="cooling_degree_day_18.3">Cooling Degree Days</option>
           </select>
         </li>
 
-        <li class="about-link"><a href="#detail-tasmax" class="nav-detail-link" id="about-variable-link">About Mean Daily Maximum</a></li>
+        <li class="about-link"><a href="#detail-tasmax" class="nav-detail-link" id="about-variable-link">About Mean Daily Maximum Temperature</a></li>
       </ul>
 
       <div id="vars-legend" class="legend-wrap left-filler">
@@ -94,10 +95,10 @@
         <!-- <input id="swipe" type="range" style="width: 100%"> -->
         <div class="select border" id="map-seasons-container">
           <select class="dropdown" id="map-season">
-            <option value="summer">Summer</option>
-            <option value="fall">Fall</option>
-            <option value="winter">Winter</option>
-            <option value="spring">Spring</option>
+            <option value="summer">July</option>
+            <option value="fall">October</option>
+            <option value="winter">January</option>
+            <option value="spring">April</option>
           </select>
         </div>
 
