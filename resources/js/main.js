@@ -1474,8 +1474,23 @@ App.prototype.takeSeasonalGraphTour = function (pre) {
         });
     }
 
+    this.seasonalTour.addStep('graph', {
+        text: 'For the county and variable you selected, this chart shows observed averages for each season from 1950-2004. It also shows the range of projections for each season during the early-, mid-, or late 21st century for two emissions scenarios. The slight horizontal offset of observations and projections for each season are for visual clarity.',
+        buttons: [
+            {
+                text: 'Close',
+                classes: 'shepherd-button-secondary',
+                action: this.seasonalTour.cancel
+            },
+            {
+                text: 'Next',
+                action: this.seasonalTour.next
+            }
+        ]
+    });
+
     this.seasonalTour.addStep('historical-obs', {
-        text: 'Black lines represent the mean daily temperature observed during each season from 1960-1989.',
+        text: 'Black lines show observed three-month averages during each season of the selected county from 1950-2004.<br><br>Spring = March-May,<br>Summer = June-August,<br>Fall = September-November,<br>Winter = December-February',
         attachTo: '#' + pre + 'historical-obs top',
         buttons: [
             {
@@ -1492,7 +1507,7 @@ App.prototype.takeSeasonalGraphTour = function (pre) {
 
 
     this.seasonalTour.addStep('rcp45-range', {
-        text: 'Blue bands show the range of projections for a stabilized emissions scenario (RCP 4.5).',
+        text: 'Blue bars show the range of projections for each season for a scenario in which global emissions of heat-trapping gases stop increasing and become stable. This scenario is known as RCP 4.5. <a href="http://asr.science.energy.gov/publications/program-docs/RCP4.5-Pathway.pdf" target="_BLANK">Learn more »</a>',
         attachTo: '#' + pre + 'rcp45-range top',
         buttons: [
             {
@@ -1509,7 +1524,7 @@ App.prototype.takeSeasonalGraphTour = function (pre) {
 
 
     this.seasonalTour.addStep('rcp85-range', {
-        text: 'Red bands show the range projections for an increasing emissions scenario (RCP 8.5).',
+        text: 'Red bars show the range of projections for each season for a scenario in which global emissions of heat-trapping gases continue increasing. This scenario, known as RCP 8.5, is sometimes called business-as-usual. For planning purposes, people who have a low tolerance for risk often focus on this scenario. <a href="http://link.springer.com/article/10.1007%2Fs10584-011-0148-z" target="_BLANK">Learn more »</a>',
         attachTo: '#' + pre + 'rcp85-range top',
         buttons: [
             {
@@ -1525,13 +1540,30 @@ App.prototype.takeSeasonalGraphTour = function (pre) {
     });
 
     this.seasonalTour.addStep('rcp45-mean', {
-        text: 'Red and blue lines show the median projection for each scenario.',
+        text: 'Median lines highlight the middle value of all projections at each time step. Though the median isn’t more likely to predict an actual future value than other projections in the range, the line can help highlight any trend. ',
         attachTo: '#' + pre + 'rcp45-mean top',
         buttons: [
             {
                 text: 'Close',
                 classes: 'shepherd-button-secondary',
                 action: this.seasonalTour.cancel
+            },
+            {
+                text: 'Next',
+                action: this.seasonalTour.next
+            }
+        ]
+    });
+
+
+    this.graphTour.addStep('timeline', {
+        text: 'Click the left, center, or right of the time slider to display projections for the early-, mid-, or late 21st century for two emissions scenarios. You can also click and drag the Y axis.',
+        attachTo: '#' + pre + 'slider-range top',
+        buttons: [
+            {
+                text: 'Close',
+                classes: 'shepherd-button-secondary',
+                action: this.graphTour.cancel
             }
         ]
     });
