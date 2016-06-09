@@ -824,6 +824,8 @@ Impacts.prototype.addClimateLayer = function(replace, layer, preserveTime) {
     $( "#sliderDiv" ).hide();
   }
 
+  $('#year-slider-container').show();
+  
   //If new map tiles, reset time slider
   if ( replace && !preserveTime ) {
     this.setSlider(layer);
