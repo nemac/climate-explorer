@@ -383,7 +383,7 @@ Impacts.prototype.createLegend = function() {
       //'<input class="visibility" id="visibility-'+id+'" type="checkbox" '+checked+'/>' +
 
         if ( sublayer ) {
-          tmpl += '<div class="sublayer-slider"></div>'+
+          tmpl += '<div class="sublayer-slider" id="slider-'+id+'"></div>'+
             '<div class="sublayer-range-values" id="range-'+id+'"></div>';
         }
       tmpl += '<div id="info-'+id+'" class="layer-info">'+
@@ -445,7 +445,7 @@ Impacts.prototype.subLayerSlider = function(id, show) {
 
   $('#range-'+id).html('Showing from 1 to '+ val + ' ' +self.data.layers[id].defaults.units);
 
-  $('.sublayer-slider').attr('id', id).slider({
+  $('.sublayer-slider#slider-'+id).attr('id', id).slider({
     id: id,
     orientation: "horizontal",
     range: false,
