@@ -4,15 +4,14 @@
     <option name="SCOPE_TYPE" value="3" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="834b6b80-6ff0-478d-9964-d91e121deaf1" name="Default" comment="">
+    <list default="true" id="834b6b80-6ff0-478d-9964-d91e121deaf1" name="Default" comment="fixing deploy">
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.htaccess" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/sandbox/mb-util.txt" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/sandbox/s3cmd.txt" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.gitignore" afterPath="$PROJECT_DIR$/.gitignore" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/location.php" afterPath="$PROJECT_DIR$/location.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/js/impacts.js" afterPath="$PROJECT_DIR$/resources/js/impacts.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/js/location.js" afterPath="$PROJECT_DIR$/resources/js/location.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/js/main.js" afterPath="$PROJECT_DIR$/resources/js/main.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/js/variables.js" afterPath="$PROJECT_DIR$/resources/js/variables.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/template/header.php" afterPath="$PROJECT_DIR$/template/header.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/variables.php" afterPath="$PROJECT_DIR$/variables.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/topic.php" afterPath="$PROJECT_DIR$/topic.php" />
     </list>
     <ignored path="Climate Explorer.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -51,12 +50,32 @@
     <favorites_list name="Climate Explorer" />
   </component>
   <component name="FileEditorManager">
-    <leaf>
-      <file leaf-file-name="main.js" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/resources/js/main.js">
+    <leaf SIDE_TABS_SIZE_LIMIT_KEY="450">
+      <file leaf-file-name="log.txt" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/deploy/log.txt">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="188">
-              <caret line="928" column="14" selection-start-line="928" selection-start-column="13" selection-end-line="928" selection-end-column="14" />
+            <state relative-caret-position="306">
+              <caret line="18" column="0" selection-start-line="18" selection-start-column="0" selection-end-line="18" selection-end-column="0" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="mb-util.txt" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/sandbox/mb-util.txt">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="4080">
+              <caret line="240" column="90" selection-start-line="240" selection-start-column="90" selection-end-line="240" selection-end-column="90" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="case.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/case.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="374">
+              <caret line="22" column="79" selection-start-line="22" selection-start-column="79" selection-end-line="22" selection-end-column="79" />
               <folding />
             </state>
           </provider>
@@ -65,8 +84,28 @@
       <file leaf-file-name="data-grouped.json" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/resources/data/data-grouped.json">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="180">
-              <caret line="625" column="34" selection-start-line="625" selection-start-column="21" selection-end-line="625" selection-end-column="34" />
+            <state relative-caret-position="748">
+              <caret line="46" column="35" selection-start-line="46" selection-start-column="35" selection-end-line="46" selection-end-column="35" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="topic.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/topic.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="973">
+              <caret line="81" column="0" selection-start-line="81" selection-start-column="0" selection-end-line="81" selection-end-column="0" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name=".htaccess" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/.htaccess">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="690">
+              <caret line="23" column="52" selection-start-line="23" selection-start-column="52" selection-end-line="23" selection-end-column="52" />
               <folding />
             </state>
           </provider>
@@ -75,86 +114,31 @@
       <file leaf-file-name="location.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/location.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="195">
-              <caret line="554" column="0" selection-start-line="554" selection-start-column="0" selection-end-line="554" selection-end-column="0" />
+            <state relative-caret-position="-8081">
+              <caret line="265" column="45" selection-start-line="265" selection-start-column="45" selection-end-line="265" selection-end-column="45" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="location.js" pinned="false" current-in-tab="false">
+      <file leaf-file-name="location.js" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/resources/js/location.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-592">
-              <caret line="440" column="17" selection-start-line="440" selection-start-column="17" selection-end-line="440" selection-end-column="17" />
+            <state relative-caret-position="264">
+              <caret line="322" column="0" selection-start-line="322" selection-start-column="0" selection-end-line="322" selection-end-column="0" />
               <folding>
-                <marker date="1465503784983" expanded="true" signature="5235:5260" ph="..." />
-                <marker date="1465503784983" expanded="true" signature="5314:5339" ph="..." />
+                <marker date="1465593004223" expanded="true" signature="5235:5260" ph="..." />
+                <marker date="1465593004223" expanded="true" signature="5314:5339" ph="..." />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="index.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/index.php">
+      <file leaf-file-name="s3cmd.txt" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/sandbox/s3cmd.txt">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="207">
-              <caret line="65" column="91" selection-start-line="65" selection-start-column="90" selection-end-line="65" selection-end-column="91" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="header.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/template/header.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="240">
-              <caret line="488" column="0" selection-start-line="488" selection-start-column="0" selection-end-line="488" selection-end-column="0" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="variables.js" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/resources/js/variables.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="450">
-              <caret line="276" column="38" selection-start-line="276" selection-start-column="38" selection-end-line="276" selection-end-column="38" />
-              <folding>
-                <marker date="1465509895961" expanded="true" signature="14728:14753" ph="..." />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="variables.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/variables.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="165">
-              <caret line="96" column="39" selection-start-line="96" selection-start-column="39" selection-end-line="96" selection-end-column="39" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="impacts.js" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/resources/js/impacts.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="225">
-              <caret line="24" column="25" selection-start-line="24" selection-start-column="25" selection-end-line="24" selection-end-column="25" />
-              <folding>
-                <marker date="1465502321347" expanded="true" signature="8408:8433" ph="..." />
-                <marker date="1465502321347" expanded="true" signature="8489:8514" ph="..." />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="case.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/case.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="200">
-              <caret line="42" column="9" selection-start-line="42" selection-start-column="9" selection-end-line="42" selection-end-column="9" />
+            <state relative-caret-position="4896">
+              <caret line="288" column="22" selection-start-line="288" selection-start-column="22" selection-end-line="288" selection-end-column="22" />
               <folding />
             </state>
           </provider>
@@ -183,13 +167,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="B:/output/openlayers.html" />
-        <option value="B:/output/index.html" />
-        <option value="$PROJECT_DIR$/case_fire-regimes.php" />
-        <option value="$PROJECT_DIR$/tpl_footer.php" />
-        <option value="$PROJECT_DIR$/impact_ecosystem-vulnerability.php" />
-        <option value="$PROJECT_DIR$/tpl_footer.html" />
-        <option value="$PROJECT_DIR$/sample.chart.json" />
         <option value="$PROJECT_DIR$/variables.html" />
         <option value="$PROJECT_DIR$/tpl_header.html" />
         <option value="$PROJECT_DIR$/impact_ecosystem-vulnerability.html" />
@@ -207,6 +184,7 @@
         <option value="$PROJECT_DIR$/case_fire-regimes.html" />
         <option value="$PROJECT_DIR$/resources/js/global_functions.js" />
         <option value="$PROJECT_DIR$/template/footer.php" />
+        <option value="$PROJECT_DIR$/template/header.php" />
         <option value="&lt;8378bd35-64a5-4657-b680-e9ef23aaed87&gt;/git-deploy/deploy.ini" />
         <option value="$PROJECT_DIR$/deploy/deploy.txt" />
         <option value="&lt;8378bd35-64a5-4657-b680-e9ef23aaed87&gt;/deploy/log.txt" />
@@ -218,22 +196,28 @@
         <option value="$PROJECT_DIR$/resources/data/data.json" />
         <option value="$PROJECT_DIR$/resources/data/wx_stations.json" />
         <option value="$PROJECT_DIR$/resources/js/chart.js" />
-        <option value="$PROJECT_DIR$/.gitignore" />
+        <option value="$PROJECT_DIR$/resources/js/impacts.js" />
+        <option value="$PROJECT_DIR$/location.php" />
+        <option value="$PROJECT_DIR$/case.php" />
         <option value="$PROJECT_DIR$/about.php" />
         <option value="$PROJECT_DIR$/credits.php" />
         <option value="$PROJECT_DIR$/definitions.php" />
-        <option value="$PROJECT_DIR$/topic.php" />
+        <option value="$PROJECT_DIR$/variables.php" />
         <option value="$PROJECT_DIR$/deploy/deploy.php" />
         <option value="$PROJECT_DIR$/test.txt" />
-        <option value="$PROJECT_DIR$/index.php" />
-        <option value="$PROJECT_DIR$/case.php" />
-        <option value="$PROJECT_DIR$/resources/js/main.js" />
-        <option value="$PROJECT_DIR$/resources/js/impacts.js" />
+        <option value="$PROJECT_DIR$/deploy/log.txt" />
+        <option value="&lt;906f1244-702e-4ca7-a888-1fcb76d3c654&gt;/deploy/log.txt" />
+        <option value="$APPLICATION_CONFIG_DIR$/scratches/scratch_1.php" />
+        <option value="&lt;906f1244-702e-4ca7-a888-1fcb76d3c654&gt;/deploy/deploy.php" />
+        <option value="$PROJECT_DIR$/sandbox/s3cmd.txt" />
+        <option value="$PROJECT_DIR$/sandbox/mb-util.txt" />
+        <option value="$PROJECT_DIR$/.gitignore" />
+        <option value="$APPLICATION_CONFIG_DIR$/scratches/scratch_2.php" />
+        <option value="$PROJECT_DIR$/resources/data/data-grouped.json" />
+        <option value="&lt;906f1244-702e-4ca7-a888-1fcb76d3c654&gt;/topic.php" />
+        <option value="$PROJECT_DIR$/topic.php" />
+        <option value="$PROJECT_DIR$/.htaccess" />
         <option value="$PROJECT_DIR$/resources/js/location.js" />
-        <option value="$PROJECT_DIR$/variables.php" />
-        <option value="$PROJECT_DIR$/template/header.php" />
-        <option value="$PROJECT_DIR$/location.php" />
-        <option value="$PROJECT_DIR$/resources/js/variables.js" />
       </list>
     </option>
   </component>
@@ -248,10 +232,10 @@
   </component>
   <component name="PhpWorkspaceProjectConfiguration" backward_compatibility_performed="true" />
   <component name="ProjectFrameBounds">
-    <option name="x" value="65" />
-    <option name="y" value="-4" />
-    <option name="width" value="1855" />
-    <option name="height" value="1084" />
+    <option name="x" value="-3848" />
+    <option name="y" value="-8" />
+    <option name="width" value="3856" />
+    <option name="height" value="2136" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="true">
     <OptionsSetting value="true" id="Add" />
@@ -278,6 +262,7 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="Scratches" />
       <pane id="Scope">
         <subPane subId="Problems" />
         <subPane subId="Project Files">
@@ -293,7 +278,6 @@
           </PATH>
         </subPane>
       </pane>
-      <pane id="Scratches" />
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -309,6 +293,34 @@
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="Climate_Explorer" />
+              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Climate_Explorer" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Climate_Explorer" />
+              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="template" />
+              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Climate_Explorer" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Climate_Explorer" />
+              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="sandbox" />
               <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
             </PATH_ELEMENT>
           </PATH>
@@ -344,6 +356,38 @@
               <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
             </PATH_ELEMENT>
           </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Climate_Explorer" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Climate_Explorer" />
+              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="resources" />
+              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="data" />
+              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Climate_Explorer" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Climate_Explorer" />
+              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="deploy" />
+              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
+            </PATH_ELEMENT>
+          </PATH>
         </subPane>
       </pane>
     </panes>
@@ -362,6 +406,7 @@
     <property name="com.intellij.ide.scratch.LRUPopupBuilder$2/Languages" value="HTML&#10;JavaScript 1.8" />
     <property name="list.type.of.created.stylesheet" value="CSS" />
     <property name="js-jscs-nodeInterpreter" value="/usr/bin/node" />
+    <property name="com.intellij.ide.scratch.LRUPopupBuilder$3/Languages" value="PHP" />
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
@@ -387,28 +432,8 @@
           <option name="mySupportsDeletion" value="false" />
           <option name="myCanBeAbsent" value="false" />
           <option name="myId" value="UPDATED" />
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/.sass-cache/2b235987cfa8bdb7b409594b9abf5e9730c949ca/_home.scssc</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/.sass-cache/2b235987cfa8bdb7b409594b9abf5e9730c949ca/_location.scssc</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/.sass-cache/2b235987cfa8bdb7b409594b9abf5e9730c949ca/_variable.scssc</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/.sass-cache/3d21425fdbc45078f6a3cf0502bf16aa8bdb519f/screen.scssc</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/.sass-cache/61337c9d6bfdc3b861546002a6e74657ce98f962/_nav-overlay.scssc</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/index.php</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/location.php</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/resources/css/mods.css</PATH>
           <PATH vcs="Git" revision="">$PROJECT_DIR$/resources/css/screen.css</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/resources/data/data-grouped.json</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/resources/js/cwg/cwg.js</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/resources/js/global_functions.js</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/resources/js/impacts.js</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/resources/js/location.js</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/resources/scss/pages/_home.scss</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/resources/scss/pages/_location.scss</PATH>
           <PATH vcs="Git" revision="">$PROJECT_DIR$/resources/scss/pages/_topic.scss</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/resources/scss/pages/_variable.scss</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/resources/scss/screen.scss</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/resources/scss/template/_nav-overlay.scss</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/template/header.php</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/topic.php</PATH>
         </FILE-GROUP>
         <FILE-GROUP>
           <option name="myUpdateName" value="Created" />
@@ -416,36 +441,6 @@
           <option name="mySupportsDeletion" value="false" />
           <option name="myCanBeAbsent" value="false" />
           <option name="myId" value="CREATED" />
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/resources/img/topics/coastal/1.jpg</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/resources/img/topics/coastal/2.jpg</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/resources/img/topics/coastal/3.jpg</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/resources/img/topics/coastal/4.jpg</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/resources/img/topics/coastal/5.jpg</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/resources/img/topics/coastal/6.jpg</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/resources/img/topics/coastal/7.jpg</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/resources/img/topics/coastal/bg.jpg</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/resources/img/topics/ecosystems/1.jpg</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/resources/img/topics/ecosystems/2.jpg</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/resources/img/topics/ecosystems/3.jpg</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/resources/img/topics/ecosystems/bg.jpg</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/resources/img/topics/energy/1.jpg</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/resources/img/topics/energy/2.jpg</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/resources/img/topics/energy/bg.jpg</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/resources/img/topics/health/1.jpg</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/resources/img/topics/health/2.jpg</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/resources/img/topics/health/bg.jpg</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/resources/img/topics/transportation/1.jpg</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/resources/img/topics/transportation/2.jpg</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/resources/img/topics/transportation/bg.jpg</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/resources/img/topics/tribal_nations/1.jpg</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/resources/img/topics/tribal_nations/2.jpg</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/resources/img/topics/tribal_nations/3.jpg</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/resources/img/topics/tribal_nations/4.jpg</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/resources/img/topics/tribal_nations/5.jpg</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/resources/img/topics/tribal_nations/bg.jpg</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/resources/img/topics/water/1.jpg</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/resources/img/topics/water/2.jpg</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/resources/img/topics/water/bg.jpg</PATH>
         </FILE-GROUP>
         <FILE-GROUP>
           <option name="myUpdateName" value="Deleted" />
@@ -589,11 +584,9 @@
       <workItem from="1464965154203" duration="971000" />
       <workItem from="1464966154440" duration="76000" />
       <workItem from="1464966245307" duration="1583000" />
-      <workItem from="1465224406442" duration="386000" />
-      <workItem from="1465325461303" duration="112000" />
-      <workItem from="1465325581407" duration="2112000" />
-      <workItem from="1465333753454" duration="2000" />
-      <workItem from="1465482922471" duration="23278000" />
+      <workItem from="1465224406442" duration="1725000" />
+      <workItem from="1465401205946" duration="4987000" />
+      <workItem from="1465575048751" duration="8796000" />
     </task>
     <task id="LOCAL-00001" summary="test">
       <created>1452891884032</created>
@@ -763,32 +756,18 @@
       <option name="project" value="LOCAL" />
       <updated>1465224658267</updated>
     </task>
-    <task id="LOCAL-00025" summary="half way through text changes and adding new monthly tours">
-      <created>1465488513522</created>
+    <task id="LOCAL-00025" summary="fixing deploy">
+      <created>1465224795360</created>
       <option name="number" value="00025" />
       <option name="presentableId" value="LOCAL-00025" />
       <option name="project" value="LOCAL" />
-      <updated>1465488513522</updated>
+      <updated>1465224795360</updated>
     </task>
-    <task id="LOCAL-00026" summary="graph tours done">
-      <created>1465488813200</created>
-      <option name="number" value="00026" />
-      <option name="presentableId" value="LOCAL-00026" />
-      <option name="project" value="LOCAL" />
-      <updated>1465488813200</updated>
-    </task>
-    <task id="LOCAL-00027" summary="all text updates done&#10;new help screen for precip above 1 inch (links to pr variable, this doesn't seem right)&#10;new tour steps&#10;tour steps added for maps on location pages.">
-      <created>1465497416800</created>
-      <option name="number" value="00027" />
-      <option name="presentableId" value="LOCAL-00027" />
-      <option name="project" value="LOCAL" />
-      <updated>1465497416800</updated>
-    </task>
-    <option name="localTasksCounter" value="28" />
+    <option name="localTasksCounter" value="26" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="40470000" />
+    <option name="totallyTimeSpent" value="30088000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -800,17 +779,17 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="65" y="-4" width="1855" height="1084" extended-state="6" />
+    <frame x="-3848" y="-8" width="3856" height="2136" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info id="Remote Host" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3416252" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.12658927" sideWeight="0.50520056" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="Remote Host" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.11696523" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.2081138" sideWeight="0.50520056" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32834226" sideWeight="0.4978701" order="6" side_tool="false" content_ui="tabs" />
-      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.49426934" sideWeight="0.46195653" order="10" side_tool="true" content_ui="tabs" />
+      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33149448" sideWeight="0.5176595" order="10" side_tool="true" content_ui="tabs" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.1121421" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.32939914" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="File Transfer" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.29613733" sideWeight="0.5380435" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.2414163" sideWeight="0.47826087" order="11" side_tool="false" content_ui="tabs" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32959184" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="File Transfer" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.15476784" sideWeight="0.4757512" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.3310035" sideWeight="0.48234054" order="11" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32806122" sideWeight="0.4978701" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.2497332" sideWeight="0.4947994" order="2" side_tool="true" content_ui="tabs" />
@@ -886,51 +865,13 @@
     <MESSAGE value="updated gitignore" />
     <MESSAGE value="updated jquery-ui to use local copy instead of CDN" />
     <MESSAGE value="fixing deploy" />
-    <MESSAGE value="half way through text changes and adding new monthly tours" />
-    <MESSAGE value="graph tours done" />
-    <MESSAGE value="all text updates done&#10;new help screen for precip above 1 inch (links to pr variable, this doesn't seem right)&#10;new tour steps&#10;tour steps added for maps on location pages." />
-    <option name="LAST_COMMIT_MESSAGE" value="all text updates done&#10;new help screen for precip above 1 inch (links to pr variable, this doesn't seem right)&#10;new tour steps&#10;tour steps added for maps on location pages." />
+    <option name="LAST_COMMIT_MESSAGE" value="fixing deploy" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager />
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/sandbox/slider.css">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="137" column="1" selection-start-line="137" selection-start-column="1" selection-end-line="137" selection-end-column="1" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/sandbox/bs-slider.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="387" column="19" selection-start-line="387" selection-start-column="19" selection-end-line="387" selection-end-column="19" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/sandbox/group.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="278" column="0" selection-start-line="278" selection-start-column="0" selection-end-line="278" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/sandbox/testing/ls.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/sandbox/testing/ls.css">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/sandbox/testing/test.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
@@ -971,6 +912,13 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="43" column="0" selection-start-line="43" selection-start-column="0" selection-end-line="43" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/template/header.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="163" column="33" selection-start-line="163" selection-start-column="33" selection-end-line="163" selection-end-column="33" />
         </state>
       </provider>
     </entry>
@@ -1040,6 +988,13 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/resources/js/variables.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="7425">
+          <caret line="495" column="13" selection-start-line="495" selection-start-column="13" selection-end-line="495" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/resources/data/wx_stations.json">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
@@ -1082,7 +1037,20 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/manager/monitor/index.php" />
+    <entry file="file://$PROJECT_DIR$/manager/monitor/index.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="187">
+          <caret line="11" column="1" selection-start-line="11" selection-start-column="1" selection-end-line="11" selection-end-column="1" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/index.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="765">
+          <caret line="45" column="38" selection-start-line="45" selection-start-column="38" selection-end-line="45" selection-end-column="38" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/resources/js/jquery-ui.min.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
@@ -1106,14 +1074,32 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/credits.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="315">
-          <caret line="21" column="4" selection-start-line="21" selection-start-column="4" selection-end-line="21" selection-end-column="4" />
+        <state relative-caret-position="340">
+          <caret line="20" column="82" selection-start-line="20" selection-start-column="82" selection-end-line="20" selection-end-column="82" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/deploy/deploy.txt" />
-    <entry file="file://$PROJECT_DIR$/deploy/deploy.php" />
-    <entry file="file://$PROJECT_DIR$/deploy/log.txt" />
+    <entry file="file://$PROJECT_DIR$/variables.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="408">
+          <caret line="24" column="82" selection-start-line="24" selection-start-column="82" selection-end-line="24" selection-end-column="82" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/deploy/deploy.txt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="136">
+          <caret line="8" column="72" selection-start-line="8" selection-start-column="57" selection-end-line="8" selection-end-column="72" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/deploy/deploy.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="289">
+          <caret line="23" column="88" selection-start-line="23" selection-start-column="88" selection-end-line="23" selection-end-column="88" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/test.txt">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
@@ -1121,104 +1107,120 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/topic.php">
+    <entry file="file://$PROJECT_DIR$/deploy/log.txt">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="383">
-          <caret line="44" column="0" selection-start-line="44" selection-start-column="0" selection-end-line="44" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/.gitignore">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="90">
-          <caret line="6" column="0" selection-start-line="6" selection-start-column="0" selection-end-line="6" selection-end-column="0" />
+        <state relative-caret-position="306">
+          <caret line="18" column="0" selection-start-line="18" selection-start-column="0" selection-end-line="18" selection-end-column="0" />
+          <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/case.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="200">
-          <caret line="42" column="9" selection-start-line="42" selection-start-column="9" selection-end-line="42" selection-end-column="9" />
+        <state relative-caret-position="374">
+          <caret line="22" column="79" selection-start-line="22" selection-start-column="79" selection-end-line="22" selection-end-column="79" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/resources/js/impacts.js">
+    <entry file="file://$PROJECT_DIR$/sandbox/s3cmd.txt">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="225">
-          <caret line="24" column="25" selection-start-line="24" selection-start-column="25" selection-end-line="24" selection-end-column="25" />
-          <folding>
-            <marker date="1465502321347" expanded="true" signature="8408:8433" ph="..." />
-            <marker date="1465502321347" expanded="true" signature="8489:8514" ph="..." />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/index.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="207">
-          <caret line="65" column="91" selection-start-line="65" selection-start-column="90" selection-end-line="65" selection-end-column="91" />
+        <state relative-caret-position="4896">
+          <caret line="288" column="22" selection-start-line="288" selection-start-column="22" selection-end-line="288" selection-end-column="22" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/resources/js/main.js">
+    <entry file="file://$APPLICATION_CONFIG_DIR$/scratches/scratch_1.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="188">
-          <caret line="928" column="14" selection-start-line="928" selection-start-column="13" selection-end-line="928" selection-end-column="14" />
+        <state relative-caret-position="4913">
+          <caret line="289" column="79" selection-start-line="0" selection-start-column="0" selection-end-line="292" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/sandbox/mb-util.txt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="4080">
+          <caret line="240" column="90" selection-start-line="240" selection-start-column="90" selection-end-line="240" selection-end-column="90" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/.gitignore">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="136">
+          <caret line="8" column="0" selection-start-line="8" selection-start-column="0" selection-end-line="8" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$APPLICATION_CONFIG_DIR$/scratches/scratch_2.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="935">
+          <caret line="55" column="102" selection-start-line="55" selection-start-column="102" selection-end-line="55" selection-end-column="102" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/resources/data/data-grouped.json">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="180">
-          <caret line="625" column="34" selection-start-line="625" selection-start-column="21" selection-end-line="625" selection-end-column="34" />
+        <state relative-caret-position="748">
+          <caret line="46" column="35" selection-start-line="46" selection-start-column="35" selection-end-line="46" selection-end-column="35" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/resources/js/location.js">
+    <entry file="file://$PROJECT_DIR$/topic.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-592">
-          <caret line="440" column="17" selection-start-line="440" selection-start-column="17" selection-end-line="440" selection-end-column="17" />
-          <folding>
-            <marker date="1465503784983" expanded="true" signature="5235:5260" ph="..." />
-            <marker date="1465503784983" expanded="true" signature="5314:5339" ph="..." />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/variables.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="165">
-          <caret line="96" column="39" selection-start-line="96" selection-start-column="39" selection-end-line="96" selection-end-column="39" />
+        <state relative-caret-position="973">
+          <caret line="81" column="0" selection-start-line="81" selection-start-column="0" selection-end-line="81" selection-end-column="0" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/template/header.php">
+    <entry file="file://$USER_HOME$/AppData/Local/Temp/Rar$DIa0.681/style.css">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="240">
-          <caret line="488" column="0" selection-start-line="488" selection-start-column="0" selection-end-line="488" selection-end-column="0" />
+        <state relative-caret-position="0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/.htaccess">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="690">
+          <caret line="23" column="52" selection-start-line="23" selection-start-column="52" selection-end-line="23" selection-end-column="52" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/location.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="195">
-          <caret line="554" column="0" selection-start-line="554" selection-start-column="0" selection-end-line="554" selection-end-column="0" />
+        <state relative-caret-position="-8081">
+          <caret line="265" column="45" selection-start-line="265" selection-start-column="45" selection-end-line="265" selection-end-column="45" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/resources/js/variables.js">
+    <entry file="file://$PROJECT_DIR$/resources/js/impacts.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="450">
-          <caret line="276" column="38" selection-start-line="276" selection-start-column="38" selection-end-line="276" selection-end-column="38" />
+        <state relative-caret-position="437">
+          <caret line="189" column="0" selection-start-line="189" selection-start-column="0" selection-end-line="189" selection-end-column="74" />
           <folding>
-            <marker date="1465509895961" expanded="true" signature="14728:14753" ph="..." />
+            <marker date="1465577250332" expanded="true" signature="9389:9414" ph="..." />
+            <marker date="1465577250332" expanded="true" signature="9470:9495" ph="..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/resources/js/location.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="264">
+          <caret line="322" column="0" selection-start-line="322" selection-start-column="0" selection-end-line="322" selection-end-column="0" />
+          <folding>
+            <marker date="1465593004223" expanded="true" signature="5235:5260" ph="..." />
+            <marker date="1465593004223" expanded="true" signature="5314:5339" ph="..." />
           </folding>
         </state>
       </provider>

@@ -289,6 +289,7 @@ Location.prototype.wire = function() {
     var id = e.currentTarget.id;
     var map;
 
+
     if ( id.match('chart') ) {
       map = id.replace('-chart', '-map-container');
       var mapDiv = id.replace('-chart', '-map');
@@ -303,7 +304,12 @@ Location.prototype.wire = function() {
       map = id.replace('-container', '');
       $('#'+map).show();
 
+
+
+
       var h = $('#'+map).parent().height();
+
+
       //$('#'+map).css({'height': h - 74 - 90 + 'px'});
       //$('.moveable').css({'height': h - 74 - 90 + 40 + 'px'});
 
@@ -314,10 +320,24 @@ Location.prototype.wire = function() {
 
         //id = id.replace('-chart', '-map-container');
         var c = id.replace('-map-container', '-chart');
+
+
         $('#'+c+' .chart').hide();
         $('#'+id+' .moveable').show();
         $('#'+id+' .map-seasons-container').show();
         $('#'+id+' .year').show();
+
+        //whichSection = id.replace('-container', '-map');
+
+
+        if (map == 'temperature-map'){
+// TODO: FIX THIS
+//          $('#var-tasmax').trigger( "click" );
+//          $('#var-tasmin').trigger( "click" );
+//          $('#var-days_tmax_abv_35.0').trigger( "click" );
+//          $('#var-days_tmin_blw_0.0').trigger( "click" );
+        }
+
 
         map = id.replace('-container', '');
         if ( self[ map ] ) self[ map ].updateSize();
@@ -325,13 +345,16 @@ Location.prototype.wire = function() {
       },200);
     }
   });
-  
+
+
+
   $.fn.swap_classes = function(clicked) {
     // remove all active, accent border and accent color classes
     this.find('.active').removeClass('active');
     this.find('.accent-border').removeClass('accent-border');
     this.find('.accent-color').removeClass('accent-color');
-    
+
+
     // set the parent li to active
     clicked.parents('li').addClass('active').addClass('accent-border');
     
@@ -352,7 +375,7 @@ Location.prototype.wire = function() {
     if ( self['temperature-map'] ) {
       self.updateTiledLayer('temperature-map', false);
     }
-    
+
     $('#temperature-map-container .full-map-btn').prop({'href': 'variables.php?id='+id});
     $('#temperature-map-container .location-map-legend').html('<img class="legend-image" src="resources/img/'+ id +'.png"></img>');
   });
@@ -426,8 +449,6 @@ Location.prototype.updateTiledLayer = function(map, replace, timeReset) {
   } else if ( map === 'temperature-map' ){
     $('#temperature-map-season').hide();
   }
-
-  console.log(this.selectedVariable[map]);
 
   if ( this.selectedVariable[map] === 'pr' && map === 'precipitation-map' ) {
     $('#precipitation-map-season').show();

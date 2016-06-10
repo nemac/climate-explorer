@@ -23,6 +23,12 @@
       $param = $_REQUEST['param'];
     ?>
 
+    <style>
+
+
+
+    </style>
+
 </head>
 
 <body id="page-topic-<?php echo $param; ?>" class="page-type-topic">
@@ -91,7 +97,7 @@
       $('#subtopics').append(html);
 
       $.each(group.layers, function(f, layer) {
-        console.log('layer', layer, 'data.layers', data.layers);
+        //console.log('layer', layer, 'data.layers', data.layers);
         var li = '<li>'+data.layers[layer].title+'</li>';
         $('#'+i+'-layer-list').append(li);
       });
