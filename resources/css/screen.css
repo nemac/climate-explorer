@@ -6012,6 +6012,23 @@ body.detail-open #nav-overlay {
   background-image: url(../img/topics/water/3.jpg);
 }
 
+@media only screen and (-webkit-min-device-pixel-ratio: 1.3), only screen and (-o-min-device-pixel-ratio: 13 / 10), only screen and (min-resolution: 120dpi) {
+  /* line 279, ../scss/pages/_topic.scss */
+  .page-type-topic #viewport {
+    background-attachment: scroll;
+    background-size: 100% auto;
+  }
+  /* line 284, ../scss/pages/_topic.scss */
+  .page-type-topic #main-content-wrap {
+    background-size: 100% auto;
+    background-attachment: scroll;
+  }
+  /* line 290, ../scss/pages/_topic.scss */
+  .page-type-topic .topics-list article {
+    background-attachment: scroll;
+    background-size: 100% auto;
+  }
+}
 /* line 3, ../scss/pages/_variable.scss */
 .page-type-variables #vars-legend h5 {
   margin: 0 0 6px 0;
