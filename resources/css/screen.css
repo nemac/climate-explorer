@@ -5808,22 +5808,23 @@ body.detail-open #nav-overlay {
   background-repeat: no-repeat;
   background-position: center;
   background-attachment: fixed;
+  background-size: cover;
   color: #fff;
   border: 10px solid #fff;
   overflow: hidden;
   *zoom: 1;
 }
-/* line 77, ../scss/pages/_topic.scss */
+/* line 78, ../scss/pages/_topic.scss */
 .topics-list article h3 {
   margin: 0 0 20px 0;
   font: 4.375rem/0.9em "CESans-Heavy", Helvetica, "Helvetica Neue", Arial, sans-serif;
   text-transform: uppercase;
 }
-/* line 84, ../scss/pages/_topic.scss */
+/* line 85, ../scss/pages/_topic.scss */
 .topics-list article p {
   font: 400 1.25rem/1.5em Roboto, Helvetica, "Helvetica Neue", Arial, sans-serif;
 }
-/* line 88, ../scss/pages/_topic.scss */
+/* line 89, ../scss/pages/_topic.scss */
 .topics-list article .button {
   position: absolute;
   bottom: 0;
@@ -5831,178 +5832,178 @@ body.detail-open #nav-overlay {
   border-right: none;
   border-bottom: none;
 }
-/* line 97, ../scss/pages/_topic.scss */
+/* line 98, ../scss/pages/_topic.scss */
 .topics-list .topic-banner-text {
   float: left;
   width: 50%;
   margin: 0 5% 0 0;
 }
-/* line 103, ../scss/pages/_topic.scss */
+/* line 104, ../scss/pages/_topic.scss */
 .topics-list .topic-layers {
   float: left;
   width: 40%;
 }
-/* line 107, ../scss/pages/_topic.scss */
+/* line 108, ../scss/pages/_topic.scss */
 .topics-list .topic-layers h4 {
   color: #fff;
   line-height: 2rem;
 }
-/* line 112, ../scss/pages/_topic.scss */
+/* line 113, ../scss/pages/_topic.scss */
 .topics-list .topic-layers li {
   color: #5f5f5f;
 }
 
-/* line 123, ../scss/pages/_topic.scss */
+/* line 124, ../scss/pages/_topic.scss */
 #page-topic-coastal #main-content-wrap {
   background-image: url(../img/topics/coastal/bg.jpg);
 }
 
-/* line 128, ../scss/pages/_topic.scss */
+/* line 129, ../scss/pages/_topic.scss */
 #coastal-group1 {
   background-image: url(../img/topics/coastal/1.jpg);
 }
 
-/* line 132, ../scss/pages/_topic.scss */
+/* line 133, ../scss/pages/_topic.scss */
 #coastal-group2 {
   background-image: url(../img/topics/coastal/2.jpg);
 }
 
-/* line 136, ../scss/pages/_topic.scss */
+/* line 137, ../scss/pages/_topic.scss */
 #coastal-group3 {
   background-image: url(../img/topics/coastal/3.jpg);
 }
 
-/* line 140, ../scss/pages/_topic.scss */
+/* line 141, ../scss/pages/_topic.scss */
 #coastal-group4 {
   background-image: url(../img/topics/coastal/4.jpg);
 }
 
-/* line 144, ../scss/pages/_topic.scss */
+/* line 145, ../scss/pages/_topic.scss */
 #coastal-group5 {
   background-image: url(../img/topics/coastal/5.jpg);
 }
 
-/* line 148, ../scss/pages/_topic.scss */
+/* line 149, ../scss/pages/_topic.scss */
 #coastal-group6 {
   background-image: url(../img/topics/coastal/6.jpg);
 }
 
-/* line 152, ../scss/pages/_topic.scss */
+/* line 153, ../scss/pages/_topic.scss */
 #coastal-group7 {
   background-image: url(../img/topics/coastal/7.jpg);
 }
 
-/* line 159, ../scss/pages/_topic.scss */
+/* line 160, ../scss/pages/_topic.scss */
 #page-topic-ecosystems #main-content-wrap {
   background-image: url(../img/topics/ecosystems/bg.jpg);
 }
 
-/* line 164, ../scss/pages/_topic.scss */
+/* line 165, ../scss/pages/_topic.scss */
 #ecosystems-group1 {
   background-image: url(../img/topics/ecosystems/1.jpg);
 }
 
-/* line 168, ../scss/pages/_topic.scss */
+/* line 169, ../scss/pages/_topic.scss */
 #ecosystems-group2 {
   background-image: url(../img/topics/ecosystems/2.jpg);
 }
 
-/* line 172, ../scss/pages/_topic.scss */
+/* line 173, ../scss/pages/_topic.scss */
 #ecosystems-group3 {
   background-image: url(../img/topics/ecosystems/3.jpg);
 }
 
-/* line 179, ../scss/pages/_topic.scss */
+/* line 180, ../scss/pages/_topic.scss */
 #page-topic-energy #main-content-wrap {
   background-image: url(../img/topics/energy/bg.jpg);
 }
 
-/* line 184, ../scss/pages/_topic.scss */
+/* line 185, ../scss/pages/_topic.scss */
 #energy-group1 {
   background-image: url(../img/topics/energy/1.jpg);
 }
 
-/* line 188, ../scss/pages/_topic.scss */
+/* line 189, ../scss/pages/_topic.scss */
 #energy-group2 {
   background-image: url(../img/topics/energy/2.jpg);
 }
 
-/* line 195, ../scss/pages/_topic.scss */
+/* line 196, ../scss/pages/_topic.scss */
 #page-topic-health #main-content-wrap {
   background-image: url(../img/topics/health/bg.jpg);
 }
 
-/* line 200, ../scss/pages/_topic.scss */
+/* line 201, ../scss/pages/_topic.scss */
 #health-group1 {
   background-image: url(../img/topics/health/1.jpg);
 }
 
-/* line 204, ../scss/pages/_topic.scss */
+/* line 205, ../scss/pages/_topic.scss */
 #health-group2 {
   background-image: url(../img/topics/health/2.jpg);
 }
 
-/* line 211, ../scss/pages/_topic.scss */
+/* line 212, ../scss/pages/_topic.scss */
 #page-topic-transportation #main-content-wrap {
   background-image: url(../img/topics/transportation/bg.jpg);
 }
 
-/* line 216, ../scss/pages/_topic.scss */
+/* line 217, ../scss/pages/_topic.scss */
 #transportation-group1 {
   background-image: url(../img/topics/transportation/1.jpg);
 }
 
-/* line 220, ../scss/pages/_topic.scss */
+/* line 221, ../scss/pages/_topic.scss */
 #transportation-group2 {
   background-image: url(../img/topics/transportation/2.jpg);
 }
 
-/* line 227, ../scss/pages/_topic.scss */
+/* line 228, ../scss/pages/_topic.scss */
 #page-topic-tribal_nations #main-content-wrap {
   background-image: url(../img/topics/tribal_nations/bg.jpg);
 }
 
-/* line 232, ../scss/pages/_topic.scss */
+/* line 233, ../scss/pages/_topic.scss */
 #tribal_nations-group1 {
   background-image: url(../img/topics/tribal_nations/1.jpg);
 }
 
-/* line 236, ../scss/pages/_topic.scss */
+/* line 237, ../scss/pages/_topic.scss */
 #tribal_nations-group2 {
   background-image: url(../img/topics/tribal_nations/2.jpg);
 }
 
-/* line 240, ../scss/pages/_topic.scss */
+/* line 241, ../scss/pages/_topic.scss */
 #tribal_nations-group3 {
   background-image: url(../img/topics/tribal_nations/3.jpg);
 }
 
-/* line 244, ../scss/pages/_topic.scss */
+/* line 245, ../scss/pages/_topic.scss */
 #tribal_nations-group4 {
   background-image: url(../img/topics/tribal_nations/4.jpg);
 }
 
-/* line 248, ../scss/pages/_topic.scss */
+/* line 249, ../scss/pages/_topic.scss */
 #tribal_nations-group5 {
   background-image: url(../img/topics/tribal_nations/5.jpg);
 }
 
-/* line 255, ../scss/pages/_topic.scss */
+/* line 256, ../scss/pages/_topic.scss */
 #page-topic-water #main-content-wrap {
   background-image: url(../img/topics/water/bg.jpg);
 }
 
-/* line 260, ../scss/pages/_topic.scss */
+/* line 261, ../scss/pages/_topic.scss */
 #water-group1 {
   background-image: url(../img/topics/water/1.jpg);
 }
 
-/* line 264, ../scss/pages/_topic.scss */
+/* line 265, ../scss/pages/_topic.scss */
 #water-group2 {
   background-image: url(../img/topics/water/2.jpg);
 }
 
-/* line 268, ../scss/pages/_topic.scss */
+/* line 269, ../scss/pages/_topic.scss */
 #water-group3 {
   background-image: url(../img/topics/water/3.jpg);
 }
