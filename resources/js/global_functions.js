@@ -237,7 +237,7 @@
     $(document).nav_scroll();
     
     $(window).resize(function() {
-      if ($('body').attr('id') != 'page-home') {
+      if ($('body').hasClass('page-type-topic') || $('body').hasClass('page-type-location')) {
         new_viewport_height = $(window).height() - 40 - parseInt($('#viewport').css('margin-top'));
         $('#viewport').css('height', new_viewport_height + 'px');
       }
