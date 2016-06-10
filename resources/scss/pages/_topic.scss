@@ -269,3 +269,30 @@
 #water-group3 {
   background-image: url(../img/topics/water/3.jpg);
 }
+
+@media	only screen and (-webkit-min-device-pixel-ratio: 1.3),
+	only screen and (-o-min-device-pixel-ratio: 13/10),
+	only screen and (min-resolution: 120dpi)
+	{
+		
+		.page-type-topic {
+      #viewport {
+        background-attachment: scroll;
+        background-size: 100% auto;
+      }
+      
+      #main-content-wrap {
+        background-size: 100% auto;
+        background-attachment: scroll;
+      }
+      
+      .topics-list {
+        article {
+          background-attachment: scroll;
+          background-size: 100% auto;
+        }
+      }
+      
+    }
+    
+	}
