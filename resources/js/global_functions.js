@@ -237,8 +237,10 @@
     $(document).nav_scroll();
     
     $(window).resize(function() {
-      new_viewport_height = $(window).height() - 40 - parseInt($('#viewport').css('margin-top'));
-      $('#viewport').css('height', new_viewport_height + 'px');
+      if ($('body').attr('id') != 'page-home') {
+        new_viewport_height = $(window).height() - 40 - parseInt($('#viewport').css('margin-top'));
+        $('#viewport').css('height', new_viewport_height + 'px');
+      }
     });
 
     $('.launch-nav').click(function (e) {
