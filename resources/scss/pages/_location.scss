@@ -195,9 +195,9 @@
     label {
       display: block;
       float: left;
-      padding: 20px;
+      padding: 20px 0;
       border: 10px solid transparent;
-      font: 400 1.125rem/1em $roboto;
+      font: 400 1rem/1em $roboto;
     }
   }
   
@@ -215,8 +215,12 @@
       background: transparentize($white, 0.4);
       border: 10px solid $white;
       @include border-radius(0);
-      font: 400 1.125rem/1em $roboto;
+      font: 400 1rem/1em $roboto;
       @include transition(0.25s);
+    }
+  
+    .fs-dropdown-selected {
+      background: $blue3;
     }
   }
   
@@ -224,7 +228,7 @@
   .fs-dropdown-focus {
     .fs-dropdown-selected {
       @include box-shadow(none);
-      background: $white;
+      background: $blue3;
     }
   }
   
