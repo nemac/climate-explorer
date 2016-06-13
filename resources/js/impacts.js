@@ -771,21 +771,21 @@ Impacts.prototype.addClimateLayer = function(replace, layer, preserveTime) {
   this.selectedVariable = layer.id;
 
   var histYears = [1950, 1960, 1970, 1980, 1990, 2000];
-  var seasons = ['tasmax', 'tasmin', 'pr'];
+  var seasons = ['mean_daily_min', 'mean_daily_max', 'pr'];
 
   var extent = ol.proj.transformExtent([-135,11.3535322866,-56.25,49.5057345956],'EPSG:4326', 'EPSG:3857');
 
   var hist = null;
   //var season = '_summer';
-  var season = ( seasons.indexOf(this.selectedVariable) !== -1 ) ? '_'+this.selectedSeason : '';
+  var season = ( seasons.indexOf(this.selectedVariable) !== -1 ) ? '_summer' : '';
 
   var src, src85;
-  if ( histYears.indexOf(this.activeYear) !== -1 ) {
+  if ( histYears.indexOf(parseFloat(this.activeYear)) !== -1 ) {
     src = this.activeYear + season + this.tilesHistMapping[ this.selectedVariable ];
     src85 = null;
   } else {
-    src = this.activeYear +  season + this.tilesMapping[ this.selectedVariable ];
-    src85 = this.activeYear + season + this.tilesMapping85[ this.selectedVariable ];
+    src = this.activeYear + this.tilesMapping[ this.selectedVariable ];
+    src85 = this.activeYear + this.tilesMapping85[ this.selectedVariable ];
   }
 
   /*
