@@ -4,11 +4,4 @@ resources/ol3/closure-library/closure/bin/build/
 deploy/
 .sass-cache/
 /sandbox/
-
-# User-specific stuff:
-.idea/workspace.xml
-.idea/tasks.xml
-.idea/dictionaries
-.idea/vcs.xml
-.idea/jsLibraryMappings.xml
-
+.idea/
