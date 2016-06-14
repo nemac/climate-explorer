@@ -244,6 +244,15 @@ input.location-mapper:focus:-ms-input-placeholder {
     height: 100%;
 }
 
+.page-type-location .seasonal-monthly.disabled a {
+  color: #EEE;
+}
+
+/* line 661, ../scss/pages/_location.scss */
+.page-type-location .seasonal-monthly.disabled:hover {
+  border-left-color: #FFF;
+}
+
 
 
 .page-type-location .moveable, .page-type-location .year {
@@ -269,4 +278,3 @@ input.location-mapper:focus:-ms-input-placeholder {
 .emissions-high {
   margin-left: 100px;
 }
-

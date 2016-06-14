@@ -91,8 +91,8 @@
                       <h4 id="var-tasmax"><a href="#" class="text">Mean Daily Maximum Temperature</a><a href="#detail-tasmax" class="icon icon-help nav-detail-link"></a></h4>
                       <ul class="location-resolution">
                         <li class="active accent-border"><a class="accent-color">Annual</a></li>
-                        <li><a>Monthly</a></li>
-                        <li><a>Seasonal</a></li>
+                        <li class="seasonal-monthly"><a>Monthly</a></li>
+                        <li class="seasonal-monthly"><a>Seasonal</a></li>
                       </ul>
                     </li>
 
@@ -100,8 +100,8 @@
                       <h4 id="var-tasmin"><a href="#" class="text">Mean Daily Minimum Temperature</a><a href="#detail-tasmin" class="icon icon-help nav-detail-link"></a></h4>
                       <ul class="location-resolution">
                         <li><a>Annual</a></li>
-                        <li><a>Monthly</a></li>
-                        <li><a>Seasonal</a></li>
+                        <li class="seasonal-monthly"><a>Monthly</a></li>
+                        <li class="seasonal-monthly"><a>Seasonal</a></li>
                       </ul>
                     </li>
 
@@ -284,7 +284,7 @@
                               </div>
 
                                 <a href="#" class="how-to-read"><span class="icon icon-help"></span>How to read this</a>
-                                
+
                             </div>
                           </header>
 
@@ -331,8 +331,8 @@
                       <h4 id="var-pr"><a href="#" class="text">Mean Daily Precipitation</a><a href="#detail-pr" class="icon icon-help nav-detail-link"></a></h4>
                       <ul class="location-resolution">
                         <li class="active accent-border"><a class="accent-color">Annual</a></li>
-                        <li><a>Monthly</a></li>
-                        <li><a>Seasonal</a></li>
+                        <li class="seasonal-monthly"><a>Monthly</a></li>
+                        <li class="seasonal-monthly"><a>Seasonal</a></li>
                       </ul>
                     </li>
 
@@ -505,12 +505,12 @@
                               </select>
                             </div>
 
-                       
+
 
 
                               <a href="#" class="how-to-read"><span class="icon icon-help"></span>How to read this</a>
-                              
-                              
+
+
                           </div>
                         </header>
 
@@ -734,8 +734,8 @@
 
 
                                 <a href="#" class="how-to-read"><span class="icon icon-help"></span>How to read this</a>
-                                
-                                
+
+
                             </div>
                           </header>
 
