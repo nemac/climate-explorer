@@ -945,6 +945,10 @@ App.prototype.tour = function () {
     });
 
     $('#temperature-data .location-resolution a').on('click', function (e) {
+        if ( $(this).parent().hasClass('disabled') ) {
+          return;
+        }
+
         $(this).parents('ul').find('a').removeClass('accent-color');
         $(this).parents('.data-options').find('li').removeClass('active').removeClass('accent-border');
 
@@ -956,6 +960,10 @@ App.prototype.tour = function () {
     });
 
     $('#precipitation-data .location-resolution a').on('click', function (e) {
+        if ( $(this).parent().hasClass('disabled') ) {
+          return;
+        }
+
         $(this).parents('ul').find('a').removeClass('accent-color');
         $(this).parents('.data-options').find('li').removeClass('active').removeClass('accent-border');
 
@@ -971,8 +979,6 @@ App.prototype.tour = function () {
         var pre = '';
         var closest = $(this).closest('.data-chart').attr('id');
         var mapclosest = $(this).closest('.data-map').attr('id');
-
-        console.log(this);
 
         if (closest === 'precipitation-chart') {
             pre = 'precip-';
@@ -993,8 +999,8 @@ App.prototype.tour = function () {
             pre = 'derived-';
         }
 
-        console.log("WHICH ONE");
-        console.log(mapclosest);
+        // console.log("WHICH ONE");
+        // console.log(mapclosest);
 
         if (self.frequency[closest] === 'annual') {
             self.takeGraphTour(pre);
