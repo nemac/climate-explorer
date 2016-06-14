@@ -1,9 +1,6 @@
 <?php
-
-  include_once('functions.php');
-
-  $case = $_REQUEST['id'];
-
+include_once('functions.php');
+$case = $_REQUEST['id'];
 ?>
 <!doctype html>
 <html>
