@@ -2,7 +2,13 @@ manager/
 resources/ol3/closure-library/closure/bin/build/
 *.pyc
 deploy/
-.idea/
 .sass-cache/
-/sandbox/mb-util.txt
-/sandbox/s3cmd.txt
+/sandbox/
+
+# User-specific stuff:
+.idea/workspace.xml
+.idea/tasks.xml
+.idea/dictionaries
+.idea/vcs.xml
+.idea/jsLibraryMappings.xml
+

@@ -615,7 +615,7 @@ Location.prototype.setSwipeMap = function(map) {
   });
 };
 
-
+ 
 
 
 /*
