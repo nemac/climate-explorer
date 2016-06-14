@@ -289,7 +289,6 @@ Location.prototype.wire = function() {
     var id = e.currentTarget.id;
     var map;
 
-
     if ( id.match('chart') ) {
       map = id.replace('-chart', '-map-container');
       var mapDiv = id.replace('-chart', '-map');
@@ -298,18 +297,21 @@ Location.prototype.wire = function() {
       $('#'+map+' .moveable').hide();
       $('#'+map+' .map-seasons-container').hide();
       $('#'+map+' .year').hide();
+
+      self.updateSidebar(false, id);
+
       return;
     } else {
+
+      $($('#precipitation-data .location-resolution a')[0]).trigger('click');
+      $($('#temperature-data .location-resolution a')[0]).trigger('click');
+
+      self.updateSidebar(true, id);
 
       map = id.replace('-container', '');
       $('#'+map).show();
 
-
-
-
       var h = $('#'+map).parent().height();
-
-
       //$('#'+map).css({'height': h - 74 - 90 + 'px'});
       //$('.moveable').css({'height': h - 74 - 90 + 40 + 'px'});
 
@@ -320,24 +322,10 @@ Location.prototype.wire = function() {
 
         //id = id.replace('-chart', '-map-container');
         var c = id.replace('-map-container', '-chart');
-
-
         $('#'+c+' .chart').hide();
         $('#'+id+' .moveable').show();
         $('#'+id+' .map-seasons-container').show();
         $('#'+id+' .year').show();
-
-        //whichSection = id.replace('-container', '-map');
-
-
-        if (map == 'temperature-map'){
-// TODO: FIX THIS
-//          $('#var-tasmax').trigger( "click" );
-//          $('#var-tasmin').trigger( "click" );
-//          $('#var-days_tmax_abv_35.0').trigger( "click" );
-//          $('#var-days_tmin_blw_0.0').trigger( "click" );
-        }
-
 
         map = id.replace('-container', '');
         if ( self[ map ] ) self[ map ].updateSize();
@@ -346,30 +334,28 @@ Location.prototype.wire = function() {
     }
   });
 
-
-
   $.fn.swap_classes = function(clicked) {
+
     // remove all active, accent border and accent color classes
     this.find('.active').removeClass('active');
     this.find('.accent-border').removeClass('accent-border');
     this.find('.accent-color').removeClass('accent-color');
 
-
     // set the parent li to active
     clicked.parents('li').addClass('active').addClass('accent-border');
-    
+
     // set the first link under the h4 to active
     var first_li = clicked.siblings('ul').find('li').first();
-    
+
     first_li.addClass('active').addClass('accent-border');
     first_li.find('a').addClass('accent-color');
-  }
-  
+  };
+
   $('#temperature-data h4').on('click', function(e) {
     e.preventDefault();
-    
+
     $('#temperature-data .data-options').swap_classes($(this));
-    
+
     var id = $(this).attr('id').replace('var-', '');
     self.selectedVariable['temperature-map'] = id;
     if ( self['temperature-map'] ) {
@@ -382,11 +368,10 @@ Location.prototype.wire = function() {
 
   $('#precipitation-data h4').on('click', function(e) {
     e.preventDefault();
-    
+
     $('#precipitation-data .data-options').swap_classes($(this));
-    
+
     var id = $(this).attr('id').replace('var-', '');
-    console.log(id);
 
     // use the same tiles as PR for days with above one inch
     if (id === 'days_prcp_abv_25.3'){
@@ -401,9 +386,9 @@ Location.prototype.wire = function() {
 
   $('#derived-data h4').on('click', function(e) {
     e.preventDefault();
-    
+
     $('#derived-data .data-options').swap_classes($(this));
-    
+
     var id = $(this).attr('id').replace('var-', '');
     self.selectedVariable['derived-map'] = id;
     if ( self['derived-map'] ) {
@@ -427,6 +412,18 @@ Location.prototype.wire = function() {
 
 
 
+Location.prototype.updateSidebar = function(disable, id) {
+  id = id.split('-')[0] + '-data';
+  //console.log('id', id);
+  if ( disable ) {
+    $('#'+ id +' .seasonal-monthly').addClass('disabled');
+  } else {
+    $('#'+ id +' .seasonal-monthly').removeClass('disabled');
+  }
+};
+
+
+
 /*
 *
 * Creates tiled layers, both 45 and 85
@@ -435,6 +432,7 @@ Location.prototype.wire = function() {
 *
 */
 Location.prototype.updateTiledLayer = function(map, replace, timeReset) {
+
   var self = this;
   var histYears = [1950, 1960, 1970, 1980, 1990, 2000];
   var seasons = ['tasmax', 'tasmin', 'pr'];
