@@ -298,7 +298,7 @@ Location.prototype.wire = function() {
       $('#'+map+' .map-seasons-container').hide();
       $('#'+map+' .year').hide();
 
-      self.updateSidebar(false);
+      self.updateSidebar(false, id);
 
       return;
     } else {
@@ -306,7 +306,7 @@ Location.prototype.wire = function() {
       $($('#precipitation-data .location-resolution a')[0]).trigger('click');
       $($('#temperature-data .location-resolution a')[0]).trigger('click');
 
-      self.updateSidebar(true);
+      self.updateSidebar(true, id);
 
       map = id.replace('-container', '');
       $('#'+map).show();
@@ -412,11 +412,13 @@ Location.prototype.wire = function() {
 
 
 
-Location.prototype.updateSidebar = function(disable) {
+Location.prototype.updateSidebar = function(disable, id) {
+  id = id.split('-')[0] + '-data';
+  //console.log('id', id);
   if ( disable ) {
-    $('.seasonal-monthly').addClass('disabled');
+    $('#'+ id +' .seasonal-monthly').addClass('disabled');
   } else {
-    $('.seasonal-monthly').removeClass('disabled');
+    $('#'+ id +' .seasonal-monthly').removeClass('disabled');
   }
 };
 
