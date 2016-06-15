@@ -94,11 +94,30 @@ Variables.prototype.mapVariables = function () {
  *
  *
  */
+
+function isNumeric(num) {
+    return (num > 0 || num === 0 || num === '0' || num < 0) && num !== true && isFinite(num);
+}
+
+
 Variables.prototype.createMap = function () {
     var qtrs = location.search;
     var qs = this.parseQueryString(qtrs);
 
     var center = ( qs.center ) ? qs.center.split(',') : null;
+
+    console.log(center);
+
+    if (center){
+
+    if ((isNumeric(center[0]))&&(isNumeric(center[1]))){
+        //alert("Good Center");
+    } else {
+        throw new Error("MALFORMED CENTER");
+    }
+    }
+
+
     var view = new ol.View({
         center: center || ol.proj.transform([-105.21, 37.42], 'EPSG:4326', 'EPSG:3857'),
         zoom: qs.zoom || 5,
@@ -889,6 +908,8 @@ Variables.prototype.setSwipeMap = function () {
 Variables.prototype.setSlider = function () {
     var self = this;
     var year_slider = $('#variable-time-slider');
+
+    console.log(year_slider);
 
     var tooltip = $('<span class="tooltip">' + self.activeYear + '</span>').hide();
 

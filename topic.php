@@ -21,6 +21,11 @@
       echo opengraph_output($share_data);
 
       $param = $_REQUEST['param'];
+
+
+    $param = xss_clean($param);
+    $param =  filter_var($param, FILTER_SANITIZE_STRING);
+
     ?>
 
     <style>
