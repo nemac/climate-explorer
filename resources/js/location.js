@@ -284,6 +284,12 @@ Location.prototype.wire = function() {
     }
 
   });
+  
+  $('.data-options-trigger').click(function(e) {
+    e.preventDefault();
+    
+    $(this).siblings('.data-options').slideDown();
+  });
 
   $('.data-accordion-tab').on('click', function(e) {
     var id = e.currentTarget.id;

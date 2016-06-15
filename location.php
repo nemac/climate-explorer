@@ -38,7 +38,7 @@
 
 </head>
 
-<body id="page-location-seattle" class="page-type-location">
+<body id="page-location-<?php echo $fips; ?>" class="page-type-location">
 <div class="cd-cover-layer"></div>
 <?php include_once('template/header.php'); ?>
 
@@ -84,6 +84,8 @@
         <section id="location-temperature" class="location-data-section-wrap">
             <div class="location-data-section">
                 <div id="temperature-data" class="data-list">
+                  <span class="trigger data-options-trigger"><span class="hamburger"><span class="bar"></span></span><span class="text">View</span></span>
+                  
                   <h3 class="accent-color"><span class="icon icon-temperature"></span>Temperature</h3>
 
                   <ul class="data-options">
@@ -324,6 +326,8 @@
         <section id="location-precipitation" class="location-data-section-wrap">
             <div class="location-data-section">
                 <div id="precipitation-data" class="data-list">
+                  <span class="trigger data-options-trigger"><span class="hamburger"><span class="bar"></span></span><span class="text">View</span></span>
+                  
                   <h3 class="accent-color"><span class="icon icon-precipitation"></span>Precipitation</h3>
 
                   <ul class="data-options">
@@ -551,6 +555,8 @@
         <section id="location-derived" class="location-data-section-wrap">
             <div class="location-data-section">
                 <div id="derived-data" class="data-list">
+                  <span class="trigger data-options-trigger"><span class="hamburger"><span class="bar"></span></span><span class="text">View</span></span>
+                  
                   <h3 class="accent-color"><span class="icon icon-drought"></span>Other</h3>
 
                   <ul class="data-options">
@@ -779,9 +785,7 @@
             <div id="stations-data" class="data-list">
               <h3 class="accent-color"><span class="icon icon-district"></span>Weather Stations</h3>
                 <p>Dots on the map show weather stations in the Global Historical Climatology Network-Daily (GHCN-D) database.</p>
-                <br>
                 <p>Click any dot to view zoomable graphs of observed daily temperature and precipitation compared to 1981-2010 Climate Normals.</p>
-                <br>
                 <p>Scroll or click and drag to adjust the graph display.</p>
             </div>
 

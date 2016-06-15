@@ -52,45 +52,6 @@
   }
   
   #nav-trigger {
-    .hamburger {
-      display: inline-block;
-      position: relative;
-      width: 24px;
-      height: 23px;
-      padding: 9px 0 0 0;
-      @include transition(0.25s);
-      vertical-align: top;
-      
-      .bar {
-        display: block;
-        width: 24px;
-        height: 5px;
-        background: $orange1;
-        opacity: 1;
-        @include transition(0.5s);
-    
-        &:before,
-        &:after {
-          content: '';
-          display: block;
-          position: absolute;
-          left: 0;
-          width: 24px;
-          height: 5px;
-          background: $orange1;
-          @include transition(0.5s);
-        }
-        
-        &:before {
-          top: 0;
-        }
-        
-        &:after {
-          bottom: 0;
-        }
-      }
-    }
-    
     &.open {
       background: transparentize($grey1, 0.9);
       
@@ -136,6 +97,11 @@
     }
   }
   
+  #subnav-trigger {
+    display: none;
+    cursor: pointer;
+  }
+  
   #subnav {
     float: right;
     margin: 23px 0 0 0;
@@ -147,7 +113,54 @@
   }
 }
 
+.hamburger {
+  display: inline-block;
+  position: relative;
+  width: 24px;
+  height: 23px;
+  padding: 9px 0 0 0;
+  @include transition(0.25s);
+  vertical-align: top;
+  
+  .bar {
+    display: block;
+    width: 24px;
+    height: 5px;
+    background: $orange1;
+    opacity: 1;
+    @include transition(0.5s);
+
+    &:before,
+    &:after {
+      content: '';
+      display: block;
+      position: absolute;
+      left: 0;
+      width: 24px;
+      height: 5px;
+      background: $orange1;
+      @include transition(0.5s);
+    }
+    
+    &:before {
+      top: 0;
+    }
+    
+    &:after {
+      bottom: 0;
+    }
+  }
+}
+
+.trigger {
+  cursor: pointer;
+}
+
 // left header
+
+#left-header-trigger {
+  display: none;
+}
 
 #left-header {
   position: fixed;
