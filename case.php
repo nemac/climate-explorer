@@ -1,8 +1,11 @@
 <?php
+include_once('functions.php');
+$case = $_REQUEST['id'];
 
-  include_once('functions.php');
 
-  $case = $_REQUEST['id'];
+$case = xss_clean($case);
+$case =  filter_var($case, FILTER_SANITIZE_STRING);
+
 
 ?>
 <!doctype html>

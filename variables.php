@@ -4,6 +4,11 @@
 
   $active_variable = $_REQUEST['id'];
 
+$active_variable = xss_clean($active_variable);
+$active_variable =  filter_var($active_variable, FILTER_SANITIZE_STRING);
+
+
+
 ?>
 <!doctype html>
 <html>

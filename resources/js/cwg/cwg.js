@@ -259,11 +259,17 @@ $(document).ready(function() {
     });
 
     $('#temperature-data .location-resolution a').on('click', function(e) {
+      if ( $(this).parent().hasClass('disabled') ) {
+        return;
+      }
       var val = $(this).html().toLowerCase();
       $('#frequency').val(val).change();
     });
 
     $('#precipitation-data .location-resolution a').on('click', function(e) {
+      if ( $(this).parent().hasClass('disabled') ) {
+        return;
+      }
       var val = $(this).html().toLowerCase();
       $('#precip-frequency').val(val).change();
     });

@@ -21,7 +21,18 @@
       echo opengraph_output($share_data);
 
       $param = $_REQUEST['param'];
+
+
+    $param = xss_clean($param);
+    $param =  filter_var($param, FILTER_SANITIZE_STRING);
+
     ?>
+
+    <style>
+
+
+
+    </style>
 
 </head>
 
@@ -91,7 +102,7 @@
       $('#subtopics').append(html);
 
       $.each(group.layers, function(f, layer) {
-        console.log('layer', layer, 'data.layers', data.layers);
+        //console.log('layer', layer, 'data.layers', data.layers);
         var li = '<li>'+data.layers[layer].title+'</li>';
         $('#'+i+'-layer-list').append(li);
       });
