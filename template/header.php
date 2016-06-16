@@ -154,6 +154,8 @@
     <a href="#" id="nav-trigger" class="nav-btn launch-nav"><span class="hamburger"><span class="bar"></span></span><span class="text">Menu</span></a>
 
     <nav id="subnav">
+      <span id="subnav-trigger">More…</span>
+      
       <ul>
         <li><a href="#" id="tour-this-page"><span class="icon"></span><span class="text">Tour This Page</span></a></li>
         <li><a href="about.php"><span class="icon"></span><span class="text">About</span></a></li>

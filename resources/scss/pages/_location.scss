@@ -643,6 +643,10 @@
     }
   }
   
+  .data-options-trigger {
+    display: none;
+  }
+  
   .data-options {
     li {
       padding-left: 12%;
@@ -708,6 +712,12 @@
         }
       }
     }
+  }
+}
+
+#stations-data {
+  p {
+    margin: 0 0 20px 0;
   }
 }
 
