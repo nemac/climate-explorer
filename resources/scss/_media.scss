@@ -114,6 +114,12 @@
 }
 
 @media screen and (max-width: 800px) {
+  body {
+    width: auto;
+    height: auto;
+    padding: 0 0 20px 0;
+  }
+  
   h1 {
     font-size: 4rem;
   }
@@ -121,31 +127,140 @@
   // CLASSES
   
   .share-widget {
-    position: fixed;
-    bottom: 20px;
-    right: 20px;
   }
   
   // HEADER
   
-  .left-header {
-    #main-header {
-      //width: 30%;
-      //width: calc(30% + 10px);
+  #main-header {
+    position: relative;
+    top: auto;
+    left: auto;
+    @include legacy-clearfix;
+    
+    #main-nav {
+      a {
+        text-align: center;
+        
+        .icon {
+          display: block;
+          height: 23px;
+          margin: 1px auto 0 auto;
+        }
+        
+        .text {
+          display: block;
+          padding: 0;
+          font-size: 0.875rem;
+        }
+      }
+      
+      .nav-btn {
+        padding: 15px 10px 0 10px;
+      }
+    }
+    
+    #subnav-trigger {
+      display: block;
+    }
+    
+    #subnav {
+      ul {
+        display: none;
+        position: absolute;
+        top: 100%;
+        right: 0;
+        width: 160px;
+        padding: 0 10px 10px 10px;
+        background: $white;
+      }
+      
+      li {
+        display: block;
+        margin: 0;
+        
+        a {
+          display: block;
+          padding: 10px;
+          text-align: left;
+          
+          &:hover {
+            background: $grey2;
+          }
+        
+          .text {
+            padding: 0;
+          }
+          
+          .icon {
+            display: none;
+          }
+        }
+      }
+    }
+    
+    #breadcrumb {
+      float: left;
+      width: auto;
+      margin: 5px 0 0 10px;
+      font-size: 0.875rem;
+      
+      span {
+        padding: 10px;
+      }
+    }
+  }
+  
+  #left-header-trigger {
+    display: block;
+    position: absolute;
+    top: 0px;
+    right: -50px;
+    width: 40px;
+    height: 40px;
+    padding: 10px;
+    background: $white;
+    color: $blue1;
+    font-size: 20px;
+  }
+  
+  #left-header {
+    width: calc(40% + 10px);
+    @include transition(0.5s);
+  }
+  
+  body.left-header-closed {
+    #left-header {
+      left: calc(-40% - 10px);
     }
   }
   
   // NAV OVERLAY
   
   #nav-overlay {
-    .nav-controls {
-      a {
-        top: 5%;
+    #nav-controls {
+      position: relative;
+      top: auto;
+      left: auto;
+      width: 80%;
+      margin: 0 auto 20px auto;
+      @include legacy-clearfix;
+      
+      #nav-overlay-home {
+        position: relative;
+        left: auto;
+        margin: 20px 0;
       }
+      
+      li {
+        float: left;
+        width: 33.333%;
+        margin: 0 0 10px 0;
+      }
+      
     }
     
     .nav-content-wrap {
-      top: 20%;
+      top: 30%;
       left: 10%;
       width: 80%;
     }
@@ -162,15 +277,51 @@
     }
   }
   
+  .white-menu {
+    h4 {
+      padding-left: 0;
+    }
+    
+    ul {
+      padding: 10px 0;
+      
+      li {
+        padding: 10px 20px;
+      }
+    }
+  }
+  
+  // PAGES
+  
+  #page-home,
+  .page-type-location,
+  .page-type-topic {
+    #viewport {
+      position: relative;
+      top: auto!important;
+      left: auto;
+      width: auto;
+      height: auto;
+      margin: 0 20px!important;
+      overflow: visible;
+    }
+  }
+  
+  // home
+  
   #page-home {
     #main-content-wrap {
+      position: static;
       height: auto;
     }
   }
   
   #home-splash {
-    position: relative;
-    height: auto;
+    position: static;
+    
+    .splash-bg {
+      background-size: auto 100%;
+    }
   }
   
   #home-cycle {
@@ -188,6 +339,7 @@
     width: auto;
     margin: 6%;
     padding: 0;
+    @include transform(none);
   }
   
   #home-menu {
@@ -197,14 +349,20 @@
     width: 70%;
     margin: 6%;
     margin-bottom: 18%;
+    @include transform(none);
   }
   
   // PAGE
   
   .page-splash {
+    margin-top: 60px;
+    
     .splash-text {
       float: none;
-      max-width: 100%;
+      width: 80%;
+      max-width: 80%;
+      margin: 0 auto 20px auto;
+      padding-left: 0;
       
       p {
         width: auto;
@@ -215,31 +373,90 @@
   
   // LOCATION
   
+  #page-nav {
+    width: 80%;
+    margin: 0 auto;
+    padding-left: 0;
+  }
+  
+  .page-type-location {
+    .page-splash {
+      margin-top: 60px;
+    }
+  }
+  
   .location-data-section {
-    padding-top: 20%;
-  }
-  
-  .location-data-section .data-list,
-  .location-data-section .data-chart {
-    width: 49%;
-    margin: 0 0.5%;
-  }
-  
-  .topics-list {
-    article {
-      padding: 6% 4% 14% 4%;
-      background-size: 120% auto;
-      background-attachment: scroll;
-      overflow: hidden;
+    h3 {
+      margin: 0 0 30px 0;
+    }
+    
+    .data-options-trigger {
+      display: block;
+      float: right;
+      margin: 25px 0 0 0;
+      cursor: pointer;
       
-      h3 {
-        font-size: 3.5rem;
+      .hamburger {
+        margin: 0 10px 0 0;
       }
     }
     
-    .topic-banner-text {
+    .data-options {
+      display: none;
+    }
+    
+    .data-vars {
+      clear: both;
+    }
+    
+    .data-list,
+    .data-chart {
+      float: none;
       width: auto;
     }
+    
+    .data-accordion-wrap {
+      float: none;
+      width: auto;
+      padding: 0 0 100% 0;
+    }
+    
+    .data-accordion {
+      .data-accordion-tab {
+        &.data-chart {
+          .chart-canvas {
+            height: 70%;
+          }
+          
+          .chart-legend {
+            height: 30%;
+          }
+        }
+      }
+    }
+  }
+  
+  .chart-legend {
+    text-align: center;
+    
+    .legend-item {
+      display: inline-block;
+      float: none;
+      width: 30%;
+      margin: 2% 1%;
+    }
+  }
+  
+  #location-stations {
+    .data-accordion-wrap {
+      padding: 0 0 50% 0;
+    }
+  }
+  
+  // VARIABLE
+  
+  #variable-map {
+    @include full-size;
   }
   
   // TOPICS
@@ -256,7 +473,58 @@
     
     #subtopics-menu {
       float: none;
-      max-width: 100%;
+      width: 80%;
+      max-width: 80%;
+      margin: 0 auto;
+    }
+  }
+  
+  .topics-list {
+    h4 {
+      margin: 0 0 20px 0;
+      font-size: 1.25rem;
+    }
+    
+    article {
+      padding: 6% 4% 14% 4%;
+      background-size: auto 100%;
+      background-attachment: scroll;
+      overflow: hidden;
+      
+      h3 {
+        font-size: 3.5rem;
+      }
+    }
+    
+    .topic-banner-text {
+      float: none;
+      width: auto;
+      margin: 0 0 40px 0;
+    }
+    
+    .topic-layers {
+      float: none;
+      width: auto;
+    }
+  }
+  
+  // CASE
+  
+  .page-type-case {
+    #main-content-wrap {
+      @include full-size;
+    }
+    
+    #case-menu {
+      .legend {
+        .layer-info {
+          width: 100%;
+        }
+      }
+    }
+    
+    #map {
+      @include full-size;
     }
   }
 }

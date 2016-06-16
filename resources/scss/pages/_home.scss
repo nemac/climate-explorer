@@ -1,3 +1,9 @@
+#page-home {
+  #viewport {
+    margin-top: 0!important;
+  }
+}
+
 #home-splash {
   @include full-size;
   overflow: hidden;

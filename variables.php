@@ -52,6 +52,8 @@ $active_variable =  filter_var($active_variable, FILTER_SANITIZE_STRING);
     </div>
 
     <header id="left-header">
+      <span class="trigger icon icon-close" id="left-header-trigger"></span>
+    
       <ul id="vars-menu" class="menu blue-menu">
         <li class="search-field border" id="variable-search-by-location"><span class="icon icon-search"></span><input type="text" id="formmapper" placeholder="Search by location"></li>
 
