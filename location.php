@@ -18,7 +18,7 @@ $lon = xss_clean($lon);
 
 $county =  filter_var($county, FILTER_SANITIZE_STRING);
 $city =  filter_var($city, FILTER_SANITIZE_STRING);
-if (filter_var($fips, FILTER_VALIDATE_INT) === false) {
+if (!is_numeric($fips)) {
     die("Invalid FIPS Code");
 }
 
