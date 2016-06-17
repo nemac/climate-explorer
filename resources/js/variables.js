@@ -104,17 +104,40 @@ Variables.prototype.createMap = function () {
     var qtrs = location.search;
     var qs = this.parseQueryString(qtrs);
 
+
     var center = ( qs.center ) ? qs.center.split(',') : null;
 
-    console.log(center);
-
-    if (center){
-
-    if ((isNumeric(center[0]))&&(isNumeric(center[1]))){
-        //alert("Good Center");
-    } else {
-        throw new Error("MALFORMED CENTER");
+    // make sure variable in query is valid
+    if (!qs.id.match(/^(tasmax|tasmin|days_tmin_blw_0.0|days_tmax_abv_35.0|pr|pr_above|cooling_degree_day_18.3|heating_degree_day_18.3)$/)) {
+        throw new Error("MALFORMED VARIABLE");
     }
+
+
+    // make sure center is valid (when it exists)
+    if (center){
+        if ((isNumeric(center[0]))&&(isNumeric(center[1])))
+        {
+            //alert("Good Center");
+        } else {
+            throw new Error("MALFORMED CENTER");
+        }
+    }
+
+    // make sure zoom is valid (when it exists)
+    if (qs.zoom){
+        if (!isNumeric(qs.zoom))
+        {
+            throw new Error("MALFORMED ZOOM");
+        }
+    }
+
+
+    // make sure year is valid (when it exists)
+    if (qs.year){
+        if (!isNumeric(qs.year))
+        {
+            throw new Error("MALFORMED YEAR");
+        }
     }
 
 
