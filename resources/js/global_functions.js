@@ -2,7 +2,7 @@
 
   var filename = window.location.href.substr(window.location.href.lastIndexOf("/") + 1);
   var name;
-  if (filename.toLowerCase().indexOf("location") >= 0) {
+  /*if (filename.toLowerCase().indexOf("location") >= 0) {
     name = getParameterByName('city');
     $("#breadcrumb").html('<span class="level-2">Location results</span> <span class="level-1">'+name.split(',')[0]+', <span class="state-name caps">'+name.split(',')[1]+'</span></span>');
   }
@@ -12,7 +12,7 @@
   if (filename.toLowerCase().indexOf("case") >= 0) {
     name = getParameterByName('id');
     $("#breadcrumb").html('<span class="level-2">Topic</span> <span class="level-1">'+name.split(',')[0].replace(/_/g, ' ')+'</span></span>');
-  }
+  }*/
 
   function window_width(fraction) {
     fraction = typeof fraction !== 'undefined' ? fraction : 1;

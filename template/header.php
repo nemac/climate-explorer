@@ -157,14 +157,63 @@
       <span id="subnav-trigger">More…</span>
       
       <ul>
-        <li><a href="#" id="tour-this-page"><span class="icon"></span><span class="text">Tour This Page</span></a></li>
-        <li><a href="about.php"><span class="icon"></span><span class="text">About</span></a></li>
-        <li><a href="definitions.php"><span class="icon"></span><span class="text">Definitions</span></a></li>
-        <li><a href="credits.php"><span class="icon"></span><span class="text">Credits</span></a></li>
+        <li><a href="#" id="tour-this-page"><span class="text">Tour This Page</span></a></li>
+        <li><a href="about.php"><span class="text">About</span></a></li>
+        <li><a href="definitions.php"><span class="text">Definitions</span></a></li>
+        <li><a href="credits.php"><span class="text">Credits</span></a></li>
       </ul>
     </nav>
 
-    <div id="breadcrumb"></div>
+    <?php
+      
+      if (strpos(current_URL(), 'location.php') !== false) {
+        
+        $breadcrumb = '<a href="#nav-search" class="parent"><span class="icon icon-district"></span>Location</a><span class="current">' . $_REQUEST['city'] . '</span>';
+        
+      } elseif (strpos(current_URL(), 'case.php') !== false) {
+        
+        $breadcrumb = '<a href="#nav-topics" class="parent"><span class="icon icon-bubble"></span>Topic</a><span class="current">' . ucfirst($_REQUEST['id']) . '</span>';
+        
+      } elseif (strpos(current_URL(), 'variables.php') !== false) {
+        
+        echo $current;
+        
+        switch ($_REQUEST['id']) {
+          case 'tasmax' :
+            $current = 'Mean Daily Maximum Temperature';
+            break;
+          case 'tasmin' : 
+            $current = 'Mean Daily Minimum Temperature';
+            break;
+          case 'days_tmax_abv_35' : 
+            $current = 'Days With Maximum Above 95°F';
+            break;
+          case 'days_tmin_blw_0' : 
+            $current = 'Days With Minimum Below 32°F';
+            break;
+          case 'pr' : 
+            $current = 'Mean Daily Precipitation';
+            break;
+          case 'pr_above' : 
+            $current = 'Days of Precipitation Above 1 Inch';
+            break;
+          case 'heating_degree_day_18' : 
+            $current = 'Heating Degree Days';
+            break;
+          case 'cooling_degree_day_18' : 
+            $current = 'Cooling Degree Days';
+            break;
+        }
+        
+        $breadcrumb = '<a href="#nav-variables" class="parent"><span class="icon icon-bubble"></span>Variable</a><span class="current">' . $current . '</span>';
+        
+      }
+      
+    ?>
+    
+    <div id="breadcrumb">
+      <?php echo $breadcrumb; ?>
+    </div>
   </div>
 </header>
 
