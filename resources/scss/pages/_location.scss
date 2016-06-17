@@ -220,7 +220,6 @@
     }
   
     .fs-dropdown-selected {
-      background: $blue3;
     }
   }
   
@@ -228,11 +227,11 @@
   .fs-dropdown-focus {
     .fs-dropdown-selected {
       @include box-shadow(none);
-      background: $blue3;
     }
   }
   
   .fs-dropdown-options {
+    background: $blue3;
     border: none;
     border-radius: 0;
     @include box-shadow(none);
@@ -240,6 +239,8 @@
     button {
       padding: 10px;
       font-size: 1rem;
+      border-color: $blue3;
+      background: $blue3;
     }
   }
   
