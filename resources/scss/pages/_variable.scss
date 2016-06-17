@@ -43,6 +43,10 @@
   #main-content-wrap {
     @include full-size;
     
+    #variable-map {
+      @include full-size;
+    }
+    
     #map-seasons-container {
       position: absolute;
       top: 20px;
