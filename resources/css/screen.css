@@ -6105,12 +6105,20 @@ body.detail-open #nav-overlay {
   height: 100%;
 }
 /* line 46, ../scss/pages/_variable.scss */
+.page-type-variables #main-content-wrap #variable-map {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+/* line 50, ../scss/pages/_variable.scss */
 .page-type-variables #main-content-wrap #map-seasons-container {
   position: absolute;
   top: 20px;
   left: calc(20% + 35px);
 }
-/* line 52, ../scss/pages/_variable.scss */
+/* line 56, ../scss/pages/_variable.scss */
 .page-type-variables #main-content-wrap .fs-dropdown {
   margin: 0;
   -moz-transition: 0.25s;
@@ -6118,7 +6126,7 @@ body.detail-open #nav-overlay {
   -webkit-transition: 0.25s;
   transition: 0.25s;
 }
-/* line 56, ../scss/pages/_variable.scss */
+/* line 60, ../scss/pages/_variable.scss */
 .page-type-variables #main-content-wrap .fs-dropdown button {
   height: auto;
   padding: 12px;
@@ -6135,7 +6143,7 @@ body.detail-open #nav-overlay {
   -webkit-transition: 0.25s;
   transition: 0.25s;
 }
-/* line 71, ../scss/pages/_variable.scss */
+/* line 75, ../scss/pages/_variable.scss */
 .page-type-variables #main-content-wrap .fs-dropdown-open .fs-dropdown-selected,
 .page-type-variables #main-content-wrap .fs-dropdown-focus .fs-dropdown-selected {
   -moz-box-shadow: none;
@@ -6143,7 +6151,7 @@ body.detail-open #nav-overlay {
   box-shadow: none;
   background: #fff;
 }
-/* line 77, ../scss/pages/_variable.scss */
+/* line 81, ../scss/pages/_variable.scss */
 .page-type-variables #main-content-wrap .fs-dropdown-options {
   background: rgba(255, 255, 255, 0.8);
   border: none;
@@ -6152,45 +6160,45 @@ body.detail-open #nav-overlay {
   -webkit-box-shadow: none;
   box-shadow: none;
 }
-/* line 83, ../scss/pages/_variable.scss */
+/* line 87, ../scss/pages/_variable.scss */
 .page-type-variables #main-content-wrap .fs-dropdown-options button {
   padding: 10px;
   font-size: 1rem;
 }
-/* line 87, ../scss/pages/_variable.scss */
+/* line 91, ../scss/pages/_variable.scss */
 .page-type-variables #main-content-wrap .fs-dropdown-options button:hover {
   background: #ebebeb;
 }
-/* line 93, ../scss/pages/_variable.scss */
+/* line 97, ../scss/pages/_variable.scss */
 .page-type-variables #main-content-wrap .split-pane {
   z-index: 1;
 }
-/* line 97, ../scss/pages/_variable.scss */
+/* line 101, ../scss/pages/_variable.scss */
 .page-type-variables #main-content-wrap #pane-left {
   background: url(../img/bg_variables-low.jpg) #fff no-repeat center;
   background-attachment: fixed;
   background-size: cover;
 }
-/* line 103, ../scss/pages/_variable.scss */
+/* line 107, ../scss/pages/_variable.scss */
 .page-type-variables #main-content-wrap #pane-right {
   background: url(../img/bg_variables-high.jpg) #fff no-repeat center;
   background-attachment: fixed;
   background-size: cover;
 }
-/* line 109, ../scss/pages/_variable.scss */
+/* line 113, ../scss/pages/_variable.scss */
 .page-type-variables #main-content-wrap .year {
   z-index: 3;
 }
-/* line 113, ../scss/pages/_variable.scss */
+/* line 117, ../scss/pages/_variable.scss */
 .page-type-variables #main-content-wrap .zoom {
   z-index: 4;
 }
-/* line 119, ../scss/pages/_variable.scss */
+/* line 123, ../scss/pages/_variable.scss */
 .page-type-variables .data-accordion-actions {
   float: right;
   margin-top: -15px;
 }
-/* line 123, ../scss/pages/_variable.scss */
+/* line 127, ../scss/pages/_variable.scss */
 .page-type-variables .data-accordion-actions a {
   display: inline-block;
   padding: 10px;
@@ -6200,17 +6208,17 @@ body.detail-open #nav-overlay {
   -webkit-transition: 0.25s;
   transition: 0.25s;
 }
-/* line 132, ../scss/pages/_variable.scss */
+/* line 136, ../scss/pages/_variable.scss */
 .page-type-variables .data-accordion-actions a .icon {
   margin: 0 8px 0 0;
   font-size: 1.25rem;
   color: #f5442d;
 }
-/* line 138, ../scss/pages/_variable.scss */
+/* line 142, ../scss/pages/_variable.scss */
 .page-type-variables .data-accordion-actions a:hover {
   background: #d5e8f2;
 }
-/* line 144, ../scss/pages/_variable.scss */
+/* line 148, ../scss/pages/_variable.scss */
 .page-type-variables #variable-slider {
   width: 95%;
   margin: auto;
@@ -6218,7 +6226,7 @@ body.detail-open #nav-overlay {
   margin-bottom: 50px;
   position: relative;
 }
-/* line 153, ../scss/pages/_variable.scss */
+/* line 157, ../scss/pages/_variable.scss */
 .page-type-variables #vars-menu .layer-info {
   display: none;
   position: absolute;
@@ -6232,7 +6240,7 @@ body.detail-open #nav-overlay {
   color: #5f5f5f;
   white-space: normal;
 }
-/* line 166, ../scss/pages/_variable.scss */
+/* line 170, ../scss/pages/_variable.scss */
 .page-type-variables #vars-menu .layer-info:before {
   content: '';
   display: block;
@@ -6244,17 +6252,17 @@ body.detail-open #nav-overlay {
   border: 10px solid #fff;
   border-color: transparent #fff transparent transparent;
 }
-/* line 178, ../scss/pages/_variable.scss */
+/* line 182, ../scss/pages/_variable.scss */
 .page-type-variables #vars-menu .layer-info h3 {
   margin: 0 0 10px 0;
   font-size: 1.625rem;
   color: #f5442d;
 }
-/* line 184, ../scss/pages/_variable.scss */
+/* line 188, ../scss/pages/_variable.scss */
 .page-type-variables #vars-menu .layer-info p {
   margin: 0 0 12px 0;
 }
-/* line 189, ../scss/pages/_variable.scss */
+/* line 193, ../scss/pages/_variable.scss */
 .page-type-variables #vars-menu .help {
   padding: 0;
   float: left;
@@ -6264,19 +6272,19 @@ body.detail-open #nav-overlay {
   margin-left: 27px;
   margin-right: 7px;
 }
-/* line 201, ../scss/pages/_variable.scss */
+/* line 205, ../scss/pages/_variable.scss */
 .page-type-variables #vars-legend h5 {
   margin: 0 0 6px 0;
   font: 1rem/1em "CESans-Heavy", Helvetica, "Helvetica Neue", Arial, sans-serif;
   color: #233a70;
 }
-/* line 207, ../scss/pages/_variable.scss */
+/* line 211, ../scss/pages/_variable.scss */
 .page-type-variables #vars-legend h6 {
   margin: 0 0 10px 0;
   font: 0.75rem/1.25em "CESans", Roboto, Helvetica, "Helvetica Neue", Arial, sans-serif;
   color: #5f5f5f;
 }
-/* line 213, ../scss/pages/_variable.scss */
+/* line 217, ../scss/pages/_variable.scss */
 .page-type-variables #vars-legend .legend {
   width: 100%;
   margin: 0 0 10px 0;
@@ -6285,42 +6293,42 @@ body.detail-open #nav-overlay {
   font: 0.75rem/1em Monaco, monospace;
   color: #233a70;
 }
-/* line 221, ../scss/pages/_variable.scss */
+/* line 225, ../scss/pages/_variable.scss */
 .page-type-variables #vars-legend .legend ul {
   margin: 15px 0 0 0;
 }
-/* line 225, ../scss/pages/_variable.scss */
+/* line 229, ../scss/pages/_variable.scss */
 .page-type-variables #vars-legend .legend li {
   margin: 10px 0;
 }
-/* line 229, ../scss/pages/_variable.scss */
+/* line 233, ../scss/pages/_variable.scss */
 .page-type-variables #vars-legend .legend .color {
   width: 8%;
   margin: 0 8% 0 0;
   padding: 0 0 8% 0;
 }
-/* line 237, ../scss/pages/_variable.scss */
+/* line 241, ../scss/pages/_variable.scss */
 .page-type-variables .chart-legend {
   overflow: hidden;
   padding-top: 20px;
 }
-/* line 242, ../scss/pages/_variable.scss */
+/* line 246, ../scss/pages/_variable.scss */
 .page-type-variables .ol-zoom {
   display: none;
 }
-/* line 246, ../scss/pages/_variable.scss */
+/* line 250, ../scss/pages/_variable.scss */
 .page-type-variables .legend-image {
   height: 350px;
   margin-left: -13px;
 }
-/* line 251, ../scss/pages/_variable.scss */
+/* line 255, ../scss/pages/_variable.scss */
 .page-type-variables .ol-scale-line {
   background: rgba(0, 60, 136, 0.3);
   border-radius: 4px;
   bottom: 133px;
   left: 345px;
 }
-/* line 258, ../scss/pages/_variable.scss */
+/* line 262, ../scss/pages/_variable.scss */
 .page-type-variables #district-trigger {
   position: absolute;
   top: 15%;
@@ -6336,14 +6344,14 @@ body.detail-open #nav-overlay {
   overflow: hidden;
   *zoom: 1;
 }
-/* line 269, ../scss/pages/_variable.scss */
+/* line 273, ../scss/pages/_variable.scss */
 .page-type-variables #district-trigger span {
   display: block;
   float: left;
   white-space: nowrap;
   color: #0058cf;
 }
-/* line 276, ../scss/pages/_variable.scss */
+/* line 280, ../scss/pages/_variable.scss */
 .page-type-variables #district-trigger .text {
   margin-top: -2px;
   text-indent: -300px;
@@ -6352,21 +6360,21 @@ body.detail-open #nav-overlay {
   -webkit-transition: text-indent 0.5s;
   transition: text-indent 0.5s;
 }
-/* line 282, ../scss/pages/_variable.scss */
+/* line 286, ../scss/pages/_variable.scss */
 .page-type-variables #district-trigger .icon {
   padding-left: 10px;
   font-size: 1.25rem;
 }
-/* line 287, ../scss/pages/_variable.scss */
+/* line 291, ../scss/pages/_variable.scss */
 .page-type-variables #district-trigger:hover {
   padding-left: 15px;
 }
-/* line 290, ../scss/pages/_variable.scss */
+/* line 294, ../scss/pages/_variable.scss */
 .page-type-variables #district-trigger:hover .text {
   text-indent: 0;
 }
 
-/* line 297, ../scss/pages/_variable.scss */
+/* line 301, ../scss/pages/_variable.scss */
 .year {
   position: absolute;
   bottom: 20px;
@@ -6379,17 +6387,17 @@ body.detail-open #nav-overlay {
   -webkit-transition: 0.25s;
   transition: 0.25s;
 }
-/* line 306, ../scss/pages/_variable.scss */
+/* line 310, ../scss/pages/_variable.scss */
 .year:hover {
   background: rgba(255, 255, 255, 0.9);
 }
-/* line 310, ../scss/pages/_variable.scss */
+/* line 314, ../scss/pages/_variable.scss */
 .year .ui-slider {
   top: 20px;
   left: 10%;
   width: 80%;
 }
-/* line 315, ../scss/pages/_variable.scss */
+/* line 319, ../scss/pages/_variable.scss */
 .year .ui-slider .ui-slider-handle {
   top: -14px;
   width: 36px;
@@ -6405,24 +6413,24 @@ body.detail-open #nav-overlay {
   -webkit-box-shadow: 0 0 4px rgba(0, 88, 207, 0.25);
   box-shadow: 0 0 4px rgba(0, 88, 207, 0.25);
 }
-/* line 328, ../scss/pages/_variable.scss */
+/* line 332, ../scss/pages/_variable.scss */
 .year .ui-slider .ui-slider-handle:hover {
   -moz-box-shadow: 0 0 7px rgba(0, 88, 207, 0.4);
   -webkit-box-shadow: 0 0 7px rgba(0, 88, 207, 0.4);
   box-shadow: 0 0 7px rgba(0, 88, 207, 0.4);
 }
-/* line 334, ../scss/pages/_variable.scss */
+/* line 338, ../scss/pages/_variable.scss */
 .year .year-label {
   position: absolute;
   top: 13px;
   width: 10%;
   text-align: center;
 }
-/* line 340, ../scss/pages/_variable.scss */
+/* line 344, ../scss/pages/_variable.scss */
 .year .year-label.year-min {
   left: 0;
 }
-/* line 344, ../scss/pages/_variable.scss */
+/* line 348, ../scss/pages/_variable.scss */
 .year .year-label.year-max {
   right: 0;
 }
