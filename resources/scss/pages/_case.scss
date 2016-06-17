@@ -1,16 +1,17 @@
 .page-type-case {
   #viewport {
     overflow: hidden;
+    
+    #main-content-wrap {
+      @include full-size;
+    }
+    
+    #map {
+      @include full-size;
+    }
   }
   
   #case-menu {
-    width: 100%;
-    height: auto;
-    max-height: 100%;
-    overflow-x: hidden;
-    overflow-y: auto;
-    z-index: 1;
-    
     li {
       position: static;
     }
@@ -20,7 +21,7 @@
     }
     
     .legend {
-      position: static;
+      position: relative;
       padding: 6%;
       @include transition(background 0.25s);
       @include legacy-clearfix;
@@ -120,18 +121,16 @@
       .layer-info {
         display: none;
         position: absolute;
-        top: 50%;
+        top: 0;
         left: 100%;
         width: 210%;
         width: calc(200% + 40px);
         height: auto;
         max-height: 600px;
         padding: 10%;
-        overflow: auto;
         background: transparentize($white, 0.1);
         color: $grey1;
         white-space: normal;
-        @include transform(translateY(-50%));
         
         &:before {
           content: '';
@@ -197,14 +196,13 @@
             
             .icon {
               margin-right: 10px;
-              
             }
           }
         }
       }
     }
     
-    /*li {
+    li {
       &:last-child,
       &:nth-last-child(2) {
         .layer-info {
@@ -217,6 +215,6 @@
           }
         }
       }
-    }*/
+    }
   }
 }
