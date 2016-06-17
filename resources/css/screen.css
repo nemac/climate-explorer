@@ -5050,32 +5050,30 @@ body.detail-open #nav-overlay {
   -webkit-transition: 0.25s;
   transition: 0.25s;
 }
-/* line 222, ../scss/pages/_location.scss */
-.location-data-section .fs-dropdown .fs-dropdown-selected {
-  background: #d5e8f2;
-}
-/* line 229, ../scss/pages/_location.scss */
+/* line 228, ../scss/pages/_location.scss */
 .location-data-section .fs-dropdown-open .fs-dropdown-selected,
 .location-data-section .fs-dropdown-focus .fs-dropdown-selected {
   -moz-box-shadow: none;
   -webkit-box-shadow: none;
   box-shadow: none;
-  background: #d5e8f2;
 }
-/* line 235, ../scss/pages/_location.scss */
+/* line 233, ../scss/pages/_location.scss */
 .location-data-section .fs-dropdown-options {
+  background: #d5e8f2;
   border: none;
   border-radius: 0;
   -moz-box-shadow: none;
   -webkit-box-shadow: none;
   box-shadow: none;
 }
-/* line 240, ../scss/pages/_location.scss */
+/* line 239, ../scss/pages/_location.scss */
 .location-data-section .fs-dropdown-options button {
   padding: 10px;
   font-size: 1rem;
+  border-color: #d5e8f2;
+  background: #d5e8f2;
 }
-/* line 246, ../scss/pages/_location.scss */
+/* line 247, ../scss/pages/_location.scss */
 .location-data-section .data-accordion-wrap {
   position: relative;
   float: left;
@@ -5093,7 +5091,7 @@ body.detail-open #nav-overlay {
 .location-data-section .data-accordion-wrap:after {
   clear: both;
 }
-/* line 256, ../scss/pages/_location.scss */
+/* line 257, ../scss/pages/_location.scss */
 .location-data-section .data-accordion {
   position: absolute;
   top: 0;
@@ -5110,7 +5108,7 @@ body.detail-open #nav-overlay {
 .location-data-section .data-accordion:after {
   clear: both;
 }
-/* line 260, ../scss/pages/_location.scss */
+/* line 261, ../scss/pages/_location.scss */
 .location-data-section .data-accordion .data-accordion-tab {
   position: relative;
   float: left;
@@ -5122,7 +5120,7 @@ body.detail-open #nav-overlay {
   -webkit-transition: 0.5s;
   transition: 0.5s;
 }
-/* line 268, ../scss/pages/_location.scss */
+/* line 269, ../scss/pages/_location.scss */
 .location-data-section .data-accordion .data-accordion-tab:before {
   content: '';
   display: block;
@@ -5138,7 +5136,7 @@ body.detail-open #nav-overlay {
   -webkit-transition: 0.25s;
   transition: 0.25s;
 }
-/* line 281, ../scss/pages/_location.scss */
+/* line 282, ../scss/pages/_location.scss */
 .location-data-section .data-accordion .data-accordion-tab header {
   position: absolute;
   top: 0;
@@ -5148,7 +5146,7 @@ body.detail-open #nav-overlay {
   cursor: pointer;
   z-index: 2;
 }
-/* line 286, ../scss/pages/_location.scss */
+/* line 287, ../scss/pages/_location.scss */
 .location-data-section .data-accordion .data-accordion-tab header h4 {
   position: absolute;
   top: 50%;
@@ -5164,28 +5162,28 @@ body.detail-open #nav-overlay {
   -webkit-transform: translateY(-50%);
   transform: translateY(-50%);
 }
-/* line 298, ../scss/pages/_location.scss */
+/* line 299, ../scss/pages/_location.scss */
 .location-data-section .data-accordion .data-accordion-tab header h4 .icon {
   display: block;
   margin: 0 auto 10px auto;
   font-size: 2rem;
 }
-/* line 304, ../scss/pages/_location.scss */
+/* line 305, ../scss/pages/_location.scss */
 .location-data-section .data-accordion .data-accordion-tab header h4 .full-title {
   display: none;
 }
-/* line 308, ../scss/pages/_location.scss */
+/* line 309, ../scss/pages/_location.scss */
 .location-data-section .data-accordion .data-accordion-tab header h4 .source {
   display: none;
   font: 0.75rem/1.25em "CESans", Roboto, Helvetica, "Helvetica Neue", Arial, sans-serif;
 }
-/* line 314, ../scss/pages/_location.scss */
+/* line 315, ../scss/pages/_location.scss */
 .location-data-section .data-accordion .data-accordion-tab header .data-accordion-actions {
   display: none;
   float: right;
   white-space: nowrap;
 }
-/* line 319, ../scss/pages/_location.scss */
+/* line 320, ../scss/pages/_location.scss */
 .location-data-section .data-accordion .data-accordion-tab header .data-accordion-actions a {
   display: inline-block;
   padding: 8px;
@@ -5197,17 +5195,17 @@ body.detail-open #nav-overlay {
   -webkit-transition: 0.25s;
   transition: 0.25s;
 }
-/* line 327, ../scss/pages/_location.scss */
+/* line 328, ../scss/pages/_location.scss */
 .location-data-section .data-accordion .data-accordion-tab header .data-accordion-actions a .icon {
   margin: 0 8px 0 0;
   font-size: 1.25rem;
   color: #f5442d;
 }
-/* line 333, ../scss/pages/_location.scss */
+/* line 334, ../scss/pages/_location.scss */
 .location-data-section .data-accordion .data-accordion-tab header .data-accordion-actions a:hover {
   background: #d5e8f2;
 }
-/* line 340, ../scss/pages/_location.scss */
+/* line 341, ../scss/pages/_location.scss */
 .location-data-section .data-accordion .data-accordion-tab .data-accordion-content {
   position: absolute;
   top: 0;
@@ -5228,18 +5226,18 @@ body.detail-open #nav-overlay {
   transition: 0.25s;
   z-index: 1;
 }
-/* line 351, ../scss/pages/_location.scss */
+/* line 352, ../scss/pages/_location.scss */
 .location-data-section .data-accordion .data-accordion-tab.data-chart {
   -moz-box-shadow: inset -10px 0 20px -10px rgba(0, 0, 0, 0.5);
   -webkit-box-shadow: inset -10px 0 20px -10px rgba(0, 0, 0, 0.5);
   box-shadow: inset -10px 0 20px -10px rgba(0, 0, 0, 0.5);
 }
-/* line 354, ../scss/pages/_location.scss */
+/* line 355, ../scss/pages/_location.scss */
 .location-data-section .data-accordion .data-accordion-tab.data-chart:before {
   right: 0;
   border-color: transparent #fff transparent transparent;
 }
-/* line 359, ../scss/pages/_location.scss */
+/* line 360, ../scss/pages/_location.scss */
 .location-data-section .data-accordion .data-accordion-tab.data-chart .chart-wrap {
   position: absolute;
   top: 12%;
@@ -5248,7 +5246,7 @@ body.detail-open #nav-overlay {
   height: 75%;
   z-index: 1;
 }
-/* line 368, ../scss/pages/_location.scss */
+/* line 369, ../scss/pages/_location.scss */
 .location-data-section .data-accordion .data-accordion-tab.data-chart .chart-canvas {
   position: absolute;
   top: 0;
@@ -5256,7 +5254,7 @@ body.detail-open #nav-overlay {
   height: 80%;
   z-index: 1;
 }
-/* line 376, ../scss/pages/_location.scss */
+/* line 377, ../scss/pages/_location.scss */
 .location-data-section .data-accordion .data-accordion-tab.data-chart .chart-legend {
   position: absolute;
   bottom: 0;
@@ -5264,27 +5262,27 @@ body.detail-open #nav-overlay {
   height: 15%;
   z-index: 2;
 }
-/* line 384, ../scss/pages/_location.scss */
+/* line 385, ../scss/pages/_location.scss */
 .location-data-section .data-accordion .data-accordion-tab.data-chart .chart-legend ul li {
   display: inline-block;
   margin: 0 0 0 20px;
 }
-/* line 390, ../scss/pages/_location.scss */
+/* line 391, ../scss/pages/_location.scss */
 .location-data-section .data-accordion .data-accordion-tab.data-chart .chart-legend span {
   display: inline-block;
   vertical-align: middle;
 }
-/* line 395, ../scss/pages/_location.scss */
+/* line 396, ../scss/pages/_location.scss */
 .location-data-section .data-accordion .data-accordion-tab.data-chart .chart-legend .colour {
   height: 5px;
   width: 15px;
   margin: 0 10px 0 0;
 }
-/* line 401, ../scss/pages/_location.scss */
+/* line 402, ../scss/pages/_location.scss */
 .location-data-section .data-accordion .data-accordion-tab.data-chart .chart-legend .label {
   font-size: 0.875rem;
 }
-/* line 406, ../scss/pages/_location.scss */
+/* line 407, ../scss/pages/_location.scss */
 .location-data-section .data-accordion .data-accordion-tab.data-chart .range {
   position: absolute;
   bottom: 2%;
@@ -5293,7 +5291,7 @@ body.detail-open #nav-overlay {
   height: 8%;
   z-index: 2;
 }
-/* line 415, ../scss/pages/_location.scss */
+/* line 416, ../scss/pages/_location.scss */
 .location-data-section .data-accordion .data-accordion-tab.data-chart .chart-range {
   position: absolute;
   left: 0;
@@ -5304,7 +5302,7 @@ body.detail-open #nav-overlay {
   -webkit-box-shadow: inset 0 5px 10px -5px rgba(0, 0, 0, 0.5);
   box-shadow: inset 0 5px 10px -5px rgba(0, 0, 0, 0.5);
 }
-/* line 423, ../scss/pages/_location.scss */
+/* line 424, ../scss/pages/_location.scss */
 .location-data-section .data-accordion .data-accordion-tab.data-chart .chart-range .ui-slider-handle {
   top: 0;
   width: 0;
@@ -5314,41 +5312,41 @@ body.detail-open #nav-overlay {
   -webkit-border-radius: none;
   border-radius: none;
 }
-/* line 435, ../scss/pages/_location.scss */
+/* line 436, ../scss/pages/_location.scss */
 .location-data-section .data-accordion .data-accordion-tab.data-chart .chart-range.not-annual {
   height: 6px;
 }
-/* line 438, ../scss/pages/_location.scss */
+/* line 439, ../scss/pages/_location.scss */
 .location-data-section .data-accordion .data-accordion-tab.data-chart .chart-range.not-annual .ui-slider-handle {
   width: 16px;
   height: 16px;
   margin: -5px 0 0 -5px;
 }
-/* line 446, ../scss/pages/_location.scss */
+/* line 447, ../scss/pages/_location.scss */
 .location-data-section .data-accordion .data-accordion-tab.data-chart.open {
   background: rgba(255, 255, 255, 0.8) !important;
 }
-/* line 449, ../scss/pages/_location.scss */
+/* line 450, ../scss/pages/_location.scss */
 .location-data-section .data-accordion .data-accordion-tab.data-chart.open .chart {
   opacity: 1;
   border-right: 5px solid #fff;
 }
-/* line 456, ../scss/pages/_location.scss */
+/* line 457, ../scss/pages/_location.scss */
 .location-data-section .data-accordion .data-accordion-tab.data-map {
   -moz-box-shadow: inset 10px 0 20px -10px rgba(0, 0, 0, 0.5);
   -webkit-box-shadow: inset 10px 0 20px -10px rgba(0, 0, 0, 0.5);
   box-shadow: inset 10px 0 20px -10px rgba(0, 0, 0, 0.5);
 }
-/* line 459, ../scss/pages/_location.scss */
+/* line 460, ../scss/pages/_location.scss */
 .location-data-section .data-accordion .data-accordion-tab.data-map:before {
   left: -1px;
   border-color: transparent transparent transparent #fff;
 }
-/* line 465, ../scss/pages/_location.scss */
+/* line 466, ../scss/pages/_location.scss */
 .location-data-section .data-accordion .data-accordion-tab.data-map header .map-seasons-container {
   float: left;
 }
-/* line 470, ../scss/pages/_location.scss */
+/* line 471, ../scss/pages/_location.scss */
 .location-data-section .data-accordion .data-accordion-tab.data-map header .fs-dropdown button {
   height: auto;
   padding: 8px 25px 8px 8px;
@@ -5358,7 +5356,7 @@ body.detail-open #nav-overlay {
   line-height: 1.25em;
   color: #5f5f5f;
 }
-/* line 480, ../scss/pages/_location.scss */
+/* line 481, ../scss/pages/_location.scss */
 .location-data-section .data-accordion .data-accordion-tab.data-map header .fs-dropdown button.fs-dropdown-selected:before {
   display: inline-block;
   margin: 0 8px 0 0;
@@ -5368,25 +5366,25 @@ body.detail-open #nav-overlay {
   line-height: 1;
   color: #f5442d;
 }
-/* line 491, ../scss/pages/_location.scss */
+/* line 492, ../scss/pages/_location.scss */
 .location-data-section .data-accordion .data-accordion-tab.data-map header .fs-dropdown button.fs-dropdown-selected:hover {
   background: #d5e8f2;
 }
-/* line 496, ../scss/pages/_location.scss */
+/* line 497, ../scss/pages/_location.scss */
 .location-data-section .data-accordion .data-accordion-tab.data-map header .fs-dropdown button:after {
   right: 5px;
 }
-/* line 503, ../scss/pages/_location.scss */
+/* line 504, ../scss/pages/_location.scss */
 .location-data-section .data-accordion .data-accordion-tab.data-map .data-accordion-content {
   background: #ebebeb;
 }
-/* line 507, ../scss/pages/_location.scss */
+/* line 508, ../scss/pages/_location.scss */
 .location-data-section .data-accordion .data-accordion-tab.data-map .moveable {
   width: 2px;
   display: none;
   z-index: 2;
 }
-/* line 516, ../scss/pages/_location.scss */
+/* line 517, ../scss/pages/_location.scss */
 .location-data-section .data-accordion .data-accordion-tab.data-map .map-element {
   display: block;
   position: absolute;
@@ -5397,7 +5395,7 @@ body.detail-open #nav-overlay {
   text-align: center;
   z-index: 1;
 }
-/* line 523, ../scss/pages/_location.scss */
+/* line 524, ../scss/pages/_location.scss */
 .location-data-section .data-accordion .data-accordion-tab.data-map .full-map-btn {
   display: block;
   position: absolute;
@@ -5406,7 +5404,7 @@ body.detail-open #nav-overlay {
   padding: 8px 30px 8px 8px;
   z-index: 2;
 }
-/* line 532, ../scss/pages/_location.scss */
+/* line 533, ../scss/pages/_location.scss */
 .location-data-section .data-accordion .data-accordion-tab.data-map .location-map-legend-container {
   display: block;
   position: absolute;
@@ -5422,28 +5420,28 @@ body.detail-open #nav-overlay {
   transform: translateY(-50%);
   color: #f5442d;
 }
-/* line 544, ../scss/pages/_location.scss */
+/* line 545, ../scss/pages/_location.scss */
 .location-data-section .data-accordion .data-accordion-tab.data-map .location-map-legend-container img {
   display: block;
   width: 100%;
   height: auto;
 }
-/* line 551, ../scss/pages/_location.scss */
+/* line 552, ../scss/pages/_location.scss */
 .location-data-section .data-accordion .data-accordion-tab.data-map .year {
   bottom: 0;
   left: 0;
   width: 100%;
 }
-/* line 556, ../scss/pages/_location.scss */
+/* line 557, ../scss/pages/_location.scss */
 .location-data-section .data-accordion .data-accordion-tab.data-map .year .ui-slider-handle {
   background: #fff !important;
 }
-/* line 562, ../scss/pages/_location.scss */
+/* line 563, ../scss/pages/_location.scss */
 .location-data-section .data-accordion .data-accordion-tab.data-map.open .map {
   opacity: 1;
   border-left: 5px solid #fff;
 }
-/* line 569, ../scss/pages/_location.scss */
+/* line 570, ../scss/pages/_location.scss */
 .location-data-section .data-accordion .data-accordion-tab.open {
   width: 90%;
   background: #fff !important;
@@ -5451,12 +5449,12 @@ body.detail-open #nav-overlay {
   -webkit-box-shadow: none;
   box-shadow: none;
 }
-/* line 574, ../scss/pages/_location.scss */
+/* line 575, ../scss/pages/_location.scss */
 .location-data-section .data-accordion .data-accordion-tab.open:before {
   border-width: 0;
   margin-top: -9px;
 }
-/* line 579, ../scss/pages/_location.scss */
+/* line 580, ../scss/pages/_location.scss */
 .location-data-section .data-accordion .data-accordion-tab.open header {
   top: 0;
   left: 0;
@@ -5475,7 +5473,7 @@ body.detail-open #nav-overlay {
 .location-data-section .data-accordion .data-accordion-tab.open header:after {
   clear: both;
 }
-/* line 589, ../scss/pages/_location.scss */
+/* line 590, ../scss/pages/_location.scss */
 .location-data-section .data-accordion .data-accordion-tab.open header h4 {
   position: static;
   width: auto;
@@ -5490,30 +5488,30 @@ body.detail-open #nav-overlay {
   -webkit-transform: none;
   transform: none;
 }
-/* line 600, ../scss/pages/_location.scss */
+/* line 601, ../scss/pages/_location.scss */
 .location-data-section .data-accordion .data-accordion-tab.open header h4 .icon {
   display: inline-block;
   margin: -4px 15px 0 0;
 }
-/* line 605, ../scss/pages/_location.scss */
+/* line 606, ../scss/pages/_location.scss */
 .location-data-section .data-accordion .data-accordion-tab.open header h4 .text {
   display: inline-block;
   vertical-align: middle;
 }
-/* line 610, ../scss/pages/_location.scss */
+/* line 611, ../scss/pages/_location.scss */
 .location-data-section .data-accordion .data-accordion-tab.open header h4 .full-title {
   display: inline;
 }
-/* line 614, ../scss/pages/_location.scss */
+/* line 615, ../scss/pages/_location.scss */
 .location-data-section .data-accordion .data-accordion-tab.open header h4 .source {
   display: block;
   margin: 4px 0 0 0;
 }
-/* line 620, ../scss/pages/_location.scss */
+/* line 621, ../scss/pages/_location.scss */
 .location-data-section .data-accordion .data-accordion-tab.open header .data-accordion-actions {
   display: block;
 }
-/* line 625, ../scss/pages/_location.scss */
+/* line 626, ../scss/pages/_location.scss */
 .location-data-section .data-accordion .data-accordion-tab.open .data-accordion-content {
   -moz-box-shadow: none;
   -webkit-box-shadow: none;
@@ -5521,23 +5519,23 @@ body.detail-open #nav-overlay {
   opacity: 1;
   mix-blend-mode: initial;
 }
-/* line 634, ../scss/pages/_location.scss */
+/* line 635, ../scss/pages/_location.scss */
 .location-data-section .data-list {
   position: relative;
   float: left;
   width: 30%;
   margin: 0 1% 0 0;
 }
-/* line 640, ../scss/pages/_location.scss */
+/* line 641, ../scss/pages/_location.scss */
 .location-data-section .data-list form {
   position: absolute;
   left: -9999px;
 }
-/* line 646, ../scss/pages/_location.scss */
+/* line 647, ../scss/pages/_location.scss */
 .location-data-section .data-options-trigger {
   display: none;
 }
-/* line 651, ../scss/pages/_location.scss */
+/* line 652, ../scss/pages/_location.scss */
 .location-data-section .data-options li {
   padding-left: 12%;
   background: #fff;
@@ -5552,35 +5550,35 @@ body.detail-open #nav-overlay {
   overflow: hidden;
   *zoom: 1;
 }
-/* line 661, ../scss/pages/_location.scss */
+/* line 662, ../scss/pages/_location.scss */
 .location-data-section .data-options li:last-child {
   border-bottom: none;
 }
-/* line 665, ../scss/pages/_location.scss */
+/* line 666, ../scss/pages/_location.scss */
 .location-data-section .data-options li:hover {
   padding-left: calc(12% - 10px);
   border-left-width: 10px;
   border-left-color: #ebebeb;
 }
-/* line 671, ../scss/pages/_location.scss */
+/* line 672, ../scss/pages/_location.scss */
 .location-data-section .data-options li.active {
   font-weight: 400;
   padding-left: calc(12% - 10px);
   border-left-width: 10px;
   border-bottom-color: #ebebeb !important;
 }
-/* line 678, ../scss/pages/_location.scss */
+/* line 679, ../scss/pages/_location.scss */
 .location-data-section .data-options li h4 {
   font-size: 1rem;
   overflow: hidden;
   *zoom: 1;
   outline: none;
 }
-/* line 683, ../scss/pages/_location.scss */
+/* line 684, ../scss/pages/_location.scss */
 .location-data-section .data-options li h4 .ui-accordion-header-icon {
   display: none;
 }
-/* line 688, ../scss/pages/_location.scss */
+/* line 689, ../scss/pages/_location.scss */
 .location-data-section .data-options li a {
   display: block;
   padding: 2%;
@@ -5590,12 +5588,12 @@ body.detail-open #nav-overlay {
   -webkit-transition: 0.25s;
   transition: 0.25s;
 }
-/* line 694, ../scss/pages/_location.scss */
+/* line 695, ../scss/pages/_location.scss */
 .location-data-section .data-options li a.text {
   width: 90%;
   float: left;
 }
-/* line 699, ../scss/pages/_location.scss */
+/* line 700, ../scss/pages/_location.scss */
 .location-data-section .data-options li a.icon {
   width: 10%;
   float: right;
@@ -5603,131 +5601,131 @@ body.detail-open #nav-overlay {
   line-height: 1.5rem;
   color: #aaa;
 }
-/* line 709, ../scss/pages/_location.scss */
+/* line 710, ../scss/pages/_location.scss */
 .location-data-section .data-options li ul li {
   font-size: 0.875rem;
   line-height: 1.5rem;
 }
 
-/* line 719, ../scss/pages/_location.scss */
+/* line 720, ../scss/pages/_location.scss */
 #stations-data p {
   margin: 0 0 20px 0;
 }
 
-/* line 725, ../scss/pages/_location.scss */
+/* line 726, ../scss/pages/_location.scss */
 #location-temperature .accent-color {
   color: #f5442d;
 }
-/* line 729, ../scss/pages/_location.scss */
+/* line 730, ../scss/pages/_location.scss */
 #location-temperature .accent-background {
   background-color: #f5442d;
 }
-/* line 733, ../scss/pages/_location.scss */
+/* line 734, ../scss/pages/_location.scss */
 #location-temperature .accent-border {
   border-color: #f5442d;
 }
-/* line 742, ../scss/pages/_location.scss */
+/* line 743, ../scss/pages/_location.scss */
 #location-temperature .data-options .accent-border {
   border-left-color: #ebebeb;
   border-bottom-color: #ebebeb;
 }
-/* line 748, ../scss/pages/_location.scss */
+/* line 749, ../scss/pages/_location.scss */
 #location-temperature .data-options .active.accent-border {
   border-left-color: #f5442d;
   border-bottom-color: #ebebeb;
 }
-/* line 753, ../scss/pages/_location.scss */
+/* line 754, ../scss/pages/_location.scss */
 #location-temperature .data-options .active .accent-color {
   color: #f5442d;
 }
-/* line 760, ../scss/pages/_location.scss */
+/* line 761, ../scss/pages/_location.scss */
 #location-temperature .data-options ul li.active {
   border-left: 10px solid #f5442d;
 }
-/* line 768, ../scss/pages/_location.scss */
+/* line 769, ../scss/pages/_location.scss */
 #location-temperature .data-vars button {
   color: #f5442d;
 }
 
-/* line 775, ../scss/pages/_location.scss */
+/* line 776, ../scss/pages/_location.scss */
 #location-precipitation .accent-color {
   color: #0058cf;
 }
-/* line 779, ../scss/pages/_location.scss */
+/* line 780, ../scss/pages/_location.scss */
 #location-precipitation .accent-background {
   background-color: #0058cf;
 }
-/* line 783, ../scss/pages/_location.scss */
+/* line 784, ../scss/pages/_location.scss */
 #location-precipitation .accent-border {
   border-color: #0058cf;
 }
-/* line 792, ../scss/pages/_location.scss */
+/* line 793, ../scss/pages/_location.scss */
 #location-precipitation .data-options .accent-border {
   border-left-color: #ebebeb;
   border-bottom-color: #ebebeb;
 }
-/* line 798, ../scss/pages/_location.scss */
+/* line 799, ../scss/pages/_location.scss */
 #location-precipitation .data-options .active.accent-border {
   border-left-color: #0058cf;
   border-bottom-color: #ebebeb;
 }
-/* line 803, ../scss/pages/_location.scss */
+/* line 804, ../scss/pages/_location.scss */
 #location-precipitation .data-options .active .accent-color {
   color: #0058cf;
 }
-/* line 810, ../scss/pages/_location.scss */
+/* line 811, ../scss/pages/_location.scss */
 #location-precipitation .data-options ul li.active {
   border-left: 10px solid #0058cf;
 }
-/* line 819, ../scss/pages/_location.scss */
+/* line 820, ../scss/pages/_location.scss */
 #location-precipitation .data-vars button {
   color: #0058cf;
 }
-/* line 826, ../scss/pages/_location.scss */
+/* line 827, ../scss/pages/_location.scss */
 #location-precipitation .range .ui-slider .ui-slider-range {
   background: #0058cf;
 }
 
-/* line 834, ../scss/pages/_location.scss */
+/* line 835, ../scss/pages/_location.scss */
 #location-derived .accent-color {
   color: #904848;
 }
-/* line 838, ../scss/pages/_location.scss */
+/* line 839, ../scss/pages/_location.scss */
 #location-derived .accent-background {
   background-color: #904848;
 }
-/* line 842, ../scss/pages/_location.scss */
+/* line 843, ../scss/pages/_location.scss */
 #location-derived .accent-border {
   border-color: #904848;
 }
-/* line 851, ../scss/pages/_location.scss */
+/* line 852, ../scss/pages/_location.scss */
 #location-derived .data-options .accent-border {
   border-left-color: #ebebeb;
   border-bottom-color: #ebebeb;
 }
-/* line 857, ../scss/pages/_location.scss */
+/* line 858, ../scss/pages/_location.scss */
 #location-derived .data-options .active.accent-border {
   border-left-color: #904848;
   border-bottom-color: #ebebeb;
 }
-/* line 862, ../scss/pages/_location.scss */
+/* line 863, ../scss/pages/_location.scss */
 #location-derived .data-options .active .accent-color {
   color: #904848;
 }
-/* line 869, ../scss/pages/_location.scss */
+/* line 870, ../scss/pages/_location.scss */
 #location-derived .data-options ul li.active {
   border-left: 10px solid #904848;
 }
-/* line 877, ../scss/pages/_location.scss */
+/* line 878, ../scss/pages/_location.scss */
 #location-derived .data-vars button {
   color: #904848;
 }
 
-/* line 885, ../scss/pages/_location.scss */
+/* line 886, ../scss/pages/_location.scss */
 #location-stations header h3 {
   margin: 0 0 2% 0;
 }
-/* line 890, ../scss/pages/_location.scss */
+/* line 891, ../scss/pages/_location.scss */
 #location-stations #location-station-map {
   position: absolute;
   top: 0;
@@ -5735,11 +5733,11 @@ body.detail-open #nav-overlay {
   width: 100%;
   height: 100%;
 }
-/* line 893, ../scss/pages/_location.scss */
+/* line 894, ../scss/pages/_location.scss */
 #location-stations #location-station-map .ol-attribution, #location-stations #location-station-map .ol-rotate {
   display: none;
 }
-/* line 897, ../scss/pages/_location.scss */
+/* line 898, ../scss/pages/_location.scss */
 #location-stations #location-station-map .ol-zoom {
   position: absolute;
   z-index: 1;
@@ -5750,7 +5748,7 @@ body.detail-open #nav-overlay {
   -webkit-transform: translateY(-50%);
   transform: translateY(-50%);
 }
-/* line 904, ../scss/pages/_location.scss */
+/* line 905, ../scss/pages/_location.scss */
 #location-stations #location-station-map .ol-zoom button {
   display: block;
   width: 30px;
