@@ -72,28 +72,34 @@
   }
   
   #breadcrumb {
-    width: 50%;
-    margin: 14px auto 0 auto;
+    //margin-left: 10px;
+    //padding-left: 10px;
     text-align: center;
-    font: 1.25rem/1em $sans-book;
-    color: $blue1;
+    //border-left: 1px solid $orange1;
     white-space: nowrap;
     
-    span {
+    a {
       display: inline-block;
-      padding: 10px 17px 10px 20px;
-      border-left: 1px solid $orange1;
-      
-      &:first-child {
-        border-left: none;
+      height: 70px;
+      padding: 23px 16px 0 16px;
+      color: $blue1;
+      @include transition(0.25s);
+    
+      .icon {
+        margin: 2px 15px 0 0;
+        font-size: 1.25rem;
+        vertical-align: top;
+      }
+    
+      &:hover {
+        background: $grey2;
       }
     }
     
-    .level-1 {
-      
-    }
-    
-    .level-2 {
+    .current {
+      display: inline-block;
+      height: 70px;
+      padding: 23px 16px 0 16px;
     }
   }
   
@@ -108,7 +114,13 @@
     
     li {
       display: inline-block;
-      margin: 0 0 0 20px;
+      margin: 0 0 0 15px;
+    }
+    
+    a {
+      .text {
+        padding: 0;
+      }
     }
   }
 }
@@ -171,7 +183,6 @@
   height: 100%;
   height: calc(100% - 130px);
   border-right: 10px solid $white;
-  overflow: hidden;
   z-index: 20;
   
   .left-filler {
