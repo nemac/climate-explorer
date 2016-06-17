@@ -242,13 +242,13 @@
       top: auto;
       left: auto;
       width: 80%;
-      margin: 0 auto 20px auto;
+      margin: 20px auto;
       @include legacy-clearfix;
       
       #nav-overlay-home {
         position: relative;
         left: auto;
-        margin: 20px 0;
+        margin: 0 0 20px 0;
       }
       
       li {
@@ -444,6 +444,7 @@
       float: none;
       width: 30%;
       margin: 2% 1%;
+      vertical-align: top;
     }
   }
   
@@ -530,6 +531,13 @@
 }
 
 @media screen and (max-width: 600px) {
+  
+  // TAGS
+  
+  body {
+    padding: 0;
+  }
+  
   h1 {
     font-size: 3rem;
   }
@@ -537,8 +545,7 @@
   // CLASSES
   
   .share-widget {
-    bottom: 0;
-    right: 0;
+    right: 20px;
   }
   
   // HEADER
@@ -576,17 +583,51 @@
   // NAV
   
   #nav-overlay {
-    .nav-controls {
+    #nav-controls {
+      width: calc(100% - 40px);
+      margin: 0;
+      padding: 0;
+      @include legacy-clearfix;
+      
+      li {
+        margin: 0;
+      }
+      
       a {
-        padding-left: 15px;
-        padding-right: 45px;
+        margin: 0;
+        padding: 15px 0;
+        border: none;
+        white-space: normal;
+        font-size: 0.75rem;
+        line-height: 1.25em;
+        
+        .icon {
+          display: block;
+          margin: 0 auto 10px auto;
+        }
+      }
+      
+      #nav-overlay-home {
+        float: left;
+        width: 25%;
+        margin: 0;
+        padding: 15px 0;
+      }
+      
+      #nav-cycle-pager {
+        float: left;
+        width: 75%;
       }
     }
     
     .nav-content-wrap {
-      left: 5%;
-      width: 90%;
+      top: 90px;
+      height: calc(100% - 100px);
       overflow: auto;
+      
+      h3 {
+        display: none;
+      }
     }
     
     .nav-content {
@@ -627,29 +668,59 @@
       }
       
       .tab {
-        ul {
+        ul,
+        ol {
           li {
-            float: none;
+            float: none!important;
             width: auto!important;
+            margin: 0 0 20px 0;
+            
+            ul {
+              margin-left: 20px;
+            }
           }
         }
       }
     }
     
+    #nav-search {
+      background-image: url(../img/bg_contours-lightblue.png);
+      
+      h3 {
+        display: block;
+      }
+    }
+  
+    #nav-variables {
+      background-image: url(../img/bg_contours-blue.png);
+    }
+  
+    #nav-topics {
+      background-image: url(../img/bg_contours-orange.png);
+    }
+    
+  }
+  
+  .overlay {
+    .slide {
+      background-repeat: no-repeat;
+      background-position: center;
+      background-size: 100% auto;
+      z-index: 1;
+
+      .slide-bg {
+        display: none;
+      }
+    }
   }
   
   // PAGE STRUCTURE
   
-  #viewport {
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-  }
-  
-  .top-header {
+  #page-home,
+  .page-type-location,
+  .page-type-topic {
     #viewport {
-      height: calc(100% - 110px);
+      margin: 0!important;
     }
   }
   
@@ -662,6 +733,25 @@
     
     p {
       width: auto;
+    }
+  }
+  
+  #home-menu {
+    margin: 0 auto 120px auto;
+  }
+  
+  #home-splash {
+    .slide-text {
+      left: 20px;
+      bottom: 60px;
+      width: 50%;
+      text-align: left;
+    }
+  }
+  
+  #page-home {
+    #h7 {
+      padding: 8px;
     }
   }
   
