@@ -284,16 +284,11 @@
     <div id="nav-topics" class="slide" data-slide-num="2">
       <div class="slide-bg"></div>
 
-      <div class="nav-controls">
-        <a href="#" class="nav-left button border-white hover-bg-white arrow-left"><span class="icon icon-variables"></span> Variables</a>
-        <a href="#" class="nav-right button border-white hover-bg-white arrow-right"><span class="icon icon-search"></span> Search</a>
-      </div>
-
       <div class="nav-content-wrap">
         <h3><span class="icon icon-bubble"></span> Choose a topic</h3>
 
         <div class="nav-content tabs">
-          <div id="nav-topics" class="tab nav-content-tab">
+          <div id="nav-topics-list" class="tab nav-content-tab">
             <ul class="col-2">
               <?php
 
