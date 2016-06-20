@@ -108,19 +108,19 @@ Variables.prototype.createMap = function () {
     var center = ( qs.center ) ? qs.center.split(',') : null;
 
     // make sure variable in query is valid
-    if (!qs.id.match(/^(tasmax|tasmin|days_tmin_blw_0.0|days_tmax_abv_35.0|pr|pr_above|cooling_degree_day_18.3|heating_degree_day_18.3)$/)) {
-        throw new Error("MALFORMED VARIABLE");
+    if (!qs.id.match(/^(tasmax|tasmin|days_tmin_blw_0|days_tmin_blw_0.0|days_tmax_abv_35|days_tmax_abv_35.0|pr|pr_above|cooling_degree_day_18|cooling_degree_day_18.3|heating_degree_day_18|heating_degree_day_18.3)$/)) {
+      throw new Error("MALFORMED VARIABLE");
     }
 
 
     // make sure center is valid (when it exists)
     if (center){
-        if ((isNumeric(center[0]))&&(isNumeric(center[1])))
-        {
-            //alert("Good Center");
-        } else {
-            throw new Error("MALFORMED CENTER");
-        }
+      if ((isNumeric(center[0]))&&(isNumeric(center[1])))
+      {
+          //alert("Good Center");
+      } else {
+          throw new Error("MALFORMED CENTER");
+      }
     }
 
     // make sure zoom is valid (when it exists)
@@ -729,6 +729,10 @@ Variables.prototype.updateTiledLayer = function (replace, preserveTime) {
     var histYears = [1950, 1960, 1970, 1980, 1990, 2000];
     var seasons = ['tasmax', 'tasmin', 'pr'];
 
+    if ( self.selectedVariable !== 'tasmax' && self.selectedVariable !== 'tasmin' && self.selectedVariable !== 'pr' && this.activeYear === 2000 ) {
+      this.activeYear = 2010;
+    }
+
     var extent = ol.proj.transformExtent([-135, 11.3535322866, -56.25, 49.5057345956], 'EPSG:4326', 'EPSG:3857');
 
     var hist = null;
@@ -949,8 +953,13 @@ Variables.prototype.setSlider = function () {
         step: 10,
         value: self.activeYear,
         slide: function (event, ui) {
-            tooltip.text(ui.value);
-            tooltip.fadeIn(200);
+          if ( self.selectedVariable !== 'tasmax' && self.selectedVariable !== 'tasmin' && self.selectedVariable !== 'pr') {
+            if ( ui.value === 2000 ) {
+              return false;
+            }
+          }
+          tooltip.text(ui.value);
+          tooltip.fadeIn(200);
         },
         change: function (event, ui) {
             year_slider.attr('data-value', ui.value);

@@ -32,7 +32,7 @@ Location.prototype.mapVariables = function() {
       'tasmax': '-hist-tasmax',
       'tasmin': '-hist-tasmin',
       'days_tmin_blw_0.0': '-annual-hist-days-tmin-blw',
-      'days_tmax_abv_35.0': '-annual-hist-days-tmin-abv',
+      'days_tmax_abv_35.0': '-annual-hist-days-tmax-abv',
     },
     'precipitation-map': {
       'pr': '-hist-precip',
@@ -44,7 +44,7 @@ Location.prototype.mapVariables = function() {
     }
   };
 
-  this.tilesMapping = {  
+  this.tilesMapping = {
     'temperature-map': {
       'tasmax': '-rcp45-tasmax',
       'tasmin': '-rcp45-tasmin',
@@ -647,6 +647,11 @@ Location.prototype.setSlider = function(map) {
     step: 10,
     value: 2010,
     slide: function (event, ui) {
+      if ( self.selectedVariable[map] !== 'tasmax' && self.selectedVariable[map] !== 'tasmin' && self.selectedVariable[map] !== 'pr') {
+        if ( ui.value === 2000 ) {
+          return false;
+        }
+      }
       tooltip.text(ui.value);
       tooltip.fadeIn(200);
     },

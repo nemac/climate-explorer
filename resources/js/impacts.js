@@ -772,15 +772,15 @@ Impacts.prototype.addClimateLayer = function(replace, layer, preserveTime) {
 
   var hist = null;
   //var season = '_summer';
-  var season = ( seasons.indexOf(this.selectedVariable) !== -1 ) ? '_summer' : '';
+  var season = ( seasons.indexOf(this.selectedVariable) !== -1 ) ? '-summer' : '';
 
   var src, src85;
   if ( histYears.indexOf(parseFloat(this.activeYear)) !== -1 ) {
     src = this.activeYear + season + this.tilesHistMapping[ this.selectedVariable ];
     src85 = null;
   } else {
-    src = this.activeYear + this.tilesMapping[ this.selectedVariable ];
-    src85 = this.activeYear + this.tilesMapping85[ this.selectedVariable ];
+    src = this.activeYear + season + this.tilesMapping[ this.selectedVariable ];
+    src85 = this.activeYear + season + this.tilesMapping85[ this.selectedVariable ];
   }
 
   /*
@@ -977,6 +977,11 @@ Impacts.prototype.setSlider = function(layer) {
         step: 10,
         value: self.activeYear,
         slide: function (event, ui) {
+          if ( self.selectedVariable !== 'mean_daily_max' && self.selectedVariable !== 'mean_daily_min' && self.selectedVariable !== 'pr') {
+            if ( ui.value === 2000 ) {
+              return false;
+            }
+          }
           tooltip.text(ui.value);
           tooltip.fadeIn(200);
         },
