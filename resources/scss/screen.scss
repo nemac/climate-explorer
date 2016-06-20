@@ -472,8 +472,8 @@ h6 {
   z-index: 500;
   background: url(../img/bg_contours-blue.png) no-repeat center;
   background-size: cover;
-  backdrop-filter: blur(3px);
-  -webkit-backdrop-filter: blur(3px);
+  //backdrop-filter: blur(3px);
+  //-webkit-backdrop-filter: blur(3px);
   text-align: center;
   opacity: 0.95;
 
