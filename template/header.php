@@ -149,8 +149,6 @@
   <div id="main-nav">
     <a href="https://toolkit.climate.gov" id="header-logo" title="U.S. Climate Resilience Toolkit"><img src="./resources/img/us-climate-resilience-toolkit.png" alt="U.S. Climate Resilience Toolkit"></a>
 
-    <a href="./" id="nav-home" class="nav-btn"><span class="icon icon-arrow-up"></span><span class="text">Home</span></a>
-
     <a href="#" id="nav-trigger" class="nav-btn launch-nav"><span class="hamburger"><span class="bar"></span></span><span class="text">Menu</span></a>
 
     <nav id="subnav">
@@ -168,11 +166,23 @@
       
       if (strpos(current_URL(), 'location.php') !== false) {
         
-        $breadcrumb = '<a href="#nav-search" class="parent"><span class="icon icon-district"></span>Location</a><span class="current">' . $_REQUEST['city'] . '</span>';
+        $breadcrumb = '<a href="#nav-search" class="parent launch-nav" data-nav-slide="0"><span class="icon icon-district"></span>Location</a><span class="current">' . $_REQUEST['city'] . '</span>';
+        
+      }  elseif (strpos(current_URL(), 'topic.php') !== false) {
+        
+        $current = $_REQUEST['param'];
+        $current = str_replace("_", " ", $current);
+        $current = ucwords($current);
+        
+        $breadcrumb = '<a href="#nav-topics" class="parent launch-nav" data-nav-slide="2"><span class="icon icon-bubble"></span>Topic</a><span class="current">' . $current . '</span>';
         
       } elseif (strpos(current_URL(), 'case.php') !== false) {
         
-        $breadcrumb = '<a href="#nav-topics" class="parent"><span class="icon icon-bubble"></span>Topic</a><span class="current">' . ucfirst($_REQUEST['id']) . '</span>';
+        $current = $_REQUEST['id'];
+        $current = str_replace("_", " ", $current);
+        $current = ucwords($current);
+        
+        $breadcrumb = '<a href="#nav-topics" class="parent launch-nav" data-nav-slide="2"><span class="icon icon-bubble"></span>Topic</a><a href="./topic.php?param=' . $_REQUEST['id'] . '">' . $current . '</a><span class="current">Data</span>';
         
       } elseif (strpos(current_URL(), 'variables.php') !== false) {
         
@@ -205,14 +215,14 @@
             break;
         }
         
-        $breadcrumb = '<a href="#nav-variables" class="parent"><span class="icon icon-bubble"></span>Variable</a><span class="current">' . $current . '</span>';
+        $breadcrumb = '<a href="#nav-variables" class="parent launch-nav" data-nav-slide="1"><span class="icon icon-bubble"></span>Variable</a><span class="current">' . $current . '</span>';
         
       }
       
     ?>
     
     <div id="breadcrumb">
-      <?php echo $breadcrumb; ?>
+      <a href="./"><span class="icon icon-arrow-up"></span>Home</a><?php echo $breadcrumb; ?>
     </div>
   </div>
 </header>

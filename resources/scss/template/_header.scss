@@ -83,6 +83,7 @@
       height: 70px;
       padding: 23px 16px 0 16px;
       color: $blue1;
+      border-right: 1px solid $orange1;
       @include transition(0.25s);
     
       .icon {
