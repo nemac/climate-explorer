@@ -4620,8 +4620,12 @@ body.detail-open #nav-overlay {
 #page-home #viewport {
   margin-top: 0 !important;
 }
+/* line 6, ../scss/pages/_home.scss */
+#page-home #breadcrumb {
+  display: none;
+}
 
-/* line 7, ../scss/pages/_home.scss */
+/* line 11, ../scss/pages/_home.scss */
 #home-splash {
   position: absolute;
   top: 0;
@@ -4630,7 +4634,7 @@ body.detail-open #nav-overlay {
   height: 100%;
   overflow: hidden;
 }
-/* line 11, ../scss/pages/_home.scss */
+/* line 15, ../scss/pages/_home.scss */
 #home-splash .splash-bg {
   position: absolute;
   top: 0;
@@ -4642,7 +4646,7 @@ body.detail-open #nav-overlay {
   background-size: cover;
   z-index: 1;
 }
-/* line 19, ../scss/pages/_home.scss */
+/* line 23, ../scss/pages/_home.scss */
 #home-splash .slide-text {
   position: absolute;
   left: 40%;
@@ -4650,57 +4654,57 @@ body.detail-open #nav-overlay {
   width: 20%;
   text-align: center;
 }
-/* line 26, ../scss/pages/_home.scss */
+/* line 30, ../scss/pages/_home.scss */
 #home-splash .slide-text span {
   display: block;
 }
-/* line 30, ../scss/pages/_home.scss */
+/* line 34, ../scss/pages/_home.scss */
 #home-splash .slide-text .icon {
   float: left;
   font-size: 2rem;
   color: #f5442d;
 }
-/* line 36, ../scss/pages/_home.scss */
+/* line 40, ../scss/pages/_home.scss */
 #home-splash .slide-text .title {
   margin: 0 0 8px 50px;
   color: #f5442d;
   font: 0.75rem/1em "CESans-Heavy", Helvetica, "Helvetica Neue", Arial, sans-serif;
 }
-/* line 42, ../scss/pages/_home.scss */
+/* line 46, ../scss/pages/_home.scss */
 #home-splash .slide-text .location {
   color: #233a70;
   font: 0.75rem/1em "CESans-Heavy", Helvetica, "Helvetica Neue", Arial, sans-serif;
 }
-/* line 49, ../scss/pages/_home.scss */
+/* line 53, ../scss/pages/_home.scss */
 #home-splash #splash-1 {
   background-image: url(../img/bg_splash-sevenmile.jpg);
 }
-/* line 53, ../scss/pages/_home.scss */
+/* line 57, ../scss/pages/_home.scss */
 #home-splash #splash-2 {
   background-image: url(../img/bg_splash-carboncounty.jpg);
 }
-/* line 57, ../scss/pages/_home.scss */
+/* line 61, ../scss/pages/_home.scss */
 #home-splash #splash-3 {
   background-image: url(../img/bg_splash-boston.jpg);
 }
-/* line 61, ../scss/pages/_home.scss */
+/* line 65, ../scss/pages/_home.scss */
 #home-splash #splash-4 {
   background-image: url(../img/bg_splash-anchorage.jpg);
 }
-/* line 65, ../scss/pages/_home.scss */
+/* line 69, ../scss/pages/_home.scss */
 #home-splash #splash-5 {
   background-image: url(../img/bg_splash-oakland.jpg);
 }
-/* line 69, ../scss/pages/_home.scss */
+/* line 73, ../scss/pages/_home.scss */
 #home-splash #splash-6 {
   background-image: url(../img/bg_splash-pinal.jpg);
 }
-/* line 73, ../scss/pages/_home.scss */
+/* line 77, ../scss/pages/_home.scss */
 #home-splash #splash-7 {
   background-image: url(../img/bg_splash-camptonville.jpg);
 }
 
-/* line 78, ../scss/pages/_home.scss */
+/* line 82, ../scss/pages/_home.scss */
 #home-text {
   position: absolute;
   top: 50%;
@@ -4713,11 +4717,11 @@ body.detail-open #nav-overlay {
   z-index: 4;
   color: #233a70;
 }
-/* line 87, ../scss/pages/_home.scss */
+/* line 91, ../scss/pages/_home.scss */
 #home-text h1 {
   margin: 0 0 20px 0;
 }
-/* line 91, ../scss/pages/_home.scss */
+/* line 95, ../scss/pages/_home.scss */
 #home-text p {
   width: 75%;
   background: rgba(255, 255, 255, 0.8);
@@ -4725,7 +4729,7 @@ body.detail-open #nav-overlay {
   font: 1.375rem/1.5em Roboto, Helvetica, "Helvetica Neue", Arial, sans-serif;
 }
 
-/* line 99, ../scss/pages/_home.scss */
+/* line 103, ../scss/pages/_home.scss */
 #home-menu {
   position: absolute;
   top: 50%;
@@ -4740,13 +4744,13 @@ body.detail-open #nav-overlay {
   z-index: 4;
 }
 
-/* line 111, ../scss/pages/_home.scss */
+/* line 115, ../scss/pages/_home.scss */
 #page-home #main-content-wrap {
   position: relative;
   height: 100%;
   margin: 0;
 }
-/* line 117, ../scss/pages/_home.scss */
+/* line 121, ../scss/pages/_home.scss */
 #page-home #logos {
   position: absolute;
   bottom: 0;
@@ -4756,14 +4760,14 @@ body.detail-open #nav-overlay {
   text-align: right;
   z-index: 3;
 }
-/* line 126, ../scss/pages/_home.scss */
+/* line 130, ../scss/pages/_home.scss */
 #page-home #logos a {
   display: block;
   float: right;
   width: 60px;
   height: 60px;
 }
-/* line 134, ../scss/pages/_home.scss */
+/* line 138, ../scss/pages/_home.scss */
 #page-home #h7 {
   position: absolute;
   left: 0;
@@ -4774,17 +4778,17 @@ body.detail-open #nav-overlay {
   line-height: 1.25em;
   z-index: 3;
 }
-/* line 144, ../scss/pages/_home.scss */
+/* line 148, ../scss/pages/_home.scss */
 #page-home #h7 a {
   display: block;
   color: #233a70;
 }
-/* line 149, ../scss/pages/_home.scss */
+/* line 153, ../scss/pages/_home.scss */
 #page-home #h7 span {
   display: block;
   float: left;
 }
-/* line 154, ../scss/pages/_home.scss */
+/* line 158, ../scss/pages/_home.scss */
 #page-home #h7 .logo {
   width: 20px;
   height: 20px;
