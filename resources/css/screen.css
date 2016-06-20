@@ -3346,8 +3346,6 @@ h6 {
   z-index: 500;
   background: url(../img/bg_contours-blue.png) no-repeat center;
   background-size: cover;
-  backdrop-filter: blur(3px);
-  -webkit-backdrop-filter: blur(3px);
   text-align: center;
   opacity: 0.95;
 }
@@ -3594,7 +3592,7 @@ h6 {
 }
 /* line 59, ../scss/template/_nav-overlay.scss */
 #nav-overlay #nav-search h3 input {
-  font: 1.625rem/4.875rem "CESans-Heavy", Helvetica, "Helvetica Neue", Arial, sans-serif;
+  font: 1.625rem/1em "CESans-Heavy", Helvetica, "Helvetica Neue", Arial, sans-serif;
 }
 /* line 66, ../scss/template/_nav-overlay.scss */
 #nav-overlay #nav-variables .slide-bg {
