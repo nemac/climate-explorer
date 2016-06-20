@@ -28,33 +28,33 @@ Impacts.prototype.mapVariables = function() {
   };
 
   this.tilesHistMapping = {
-    'mean_daily_max': '_hist_prism_tmax',
-    'mean_daily_min': '_hist_prism_tmin',
-    'days_tmin_blw_0.0': '_annual_hist_days-tmin-blw',
-    'days_tmax_abv_35.0': '_annual_hist_days-tmax-abv',
-    'pr': '_hist_prism_pr',
-    'cooling_degree_day_18.3': '_annual_hist_cooling-degree-day',
-    'heating_degree_day_18.3': '_annual_hist_heating-degree-day'
+    'mean_daily_max': '-hist-tasmax',
+    'mean_daily_min': '-hist-tasmin',
+    'days_tmin_blw_0.0': '-annual-hist-days-tmin-blw',
+    'days_tmax_abv_35.0': '-annual-hist-days-tmax-abv',
+    'pr': '-hist-precip',
+    'cooling_degree_day_18.3': '-annual-hist-cooling-degree-day',
+    'heating_degree_day_18.3': '-annual-hist-heating-degree-day',
   };
 
   this.tilesMapping = {
-    'mean_daily_max': '_summer_rcp45_ea_tasmax',
-    'mean_daily_min': '_summer_rcp45_ea_tasmin',
-    'days_tmin_blw_0.0': '_annual_rcp45_days-tmin-blw',
-    'days_tmax_abv_35.0': '_annual_rcp45_days-tmax-abv',
-    'pr': '_rcp45_ea_pr',
-    'cooling_degree_day_18.3': '_annual_rcp45_cooling-degree-day',
-    'heating_degree_day_18.3': '_annual_rcp45_heating-degree-day'
+    'mean_daily_max': '-rcp45-tasmax',
+    'mean_daily_min': '-rcp45-tasmin',
+    'days_tmin_blw_0.0':  '-annual-rcp45-days-tmin-blw',
+    'days_tmax_abv_35.0':  '-annual-rcp45-days-tmax-abv',
+    'pr': '-rcp45-precip',
+    'cooling_degree_day_18.3': '-annual-rcp45-cooling-degree-day',
+    'heating_degree_day_18.3': '-annual-rcp45-heating-degree-day',
   };
 
   this.tilesMapping85 = {
-    'mean_daily_max': '_summer_rcp85_ea_tasmax',
-    'mean_daily_min': '_summer_rcp85_ea_tasmin',
-    'days_tmin_blw_0.0': '_annual_rcp85_days-tmin-blw',
-    'days_tmax_abv_35.0': '_annual_rcp85_days-tmax-abv',
-    'pr': '_rcp85_ea_pr',
-    'cooling_degree_day_18.3': '_annual_rcp85_cooling-degree-day',
-    'heating_degree_day_18.3': '_annual_rcp85_heating-degree-day'
+    'mean_daily_max': '-rcp85-tasmax',
+    'mean_daily_min': '-rcp85-tasmin',
+    'days_tmin_blw_0.0':  '-annual-rcp85-days-tmin-blw',
+    'days_tmax_abv_35.0':  '-annual-rcp85-days-tmax-abv',
+    'pr': '-rcp85-precip',
+    'cooling_degree_day_18.3': '-annual-rcp85-cooling-degree-day',
+    'heating_degree_day_18.3': '-annual-rcp85-heating-degree-day',
   };
 };
 
@@ -803,7 +803,7 @@ Impacts.prototype.addClimateLayer = function(replace, layer, preserveTime) {
   this.tileLayer = new ol.layer.Tile({
     source: new ol.source.XYZ({
       urls:[
-        'http://tiles.habitatseven.work/'+src+'/{z}/{x}/{y}.png'
+        'https://s3.amazonaws.com/climate-explorer-bucket/tilesets/'+src+'/{z}/{x}/{y}.png'
       ],
       extent: extent,
       minZoom: 0,
@@ -824,7 +824,7 @@ Impacts.prototype.addClimateLayer = function(replace, layer, preserveTime) {
     this.tileLayer85 = new ol.layer.Tile({
       source: new ol.source.XYZ({
         urls:[
-          'http://tiles.habitatseven.work/'+src85+'/{z}/{x}/{y}.png'
+          'https://s3.amazonaws.com/climate-explorer-bucket/tilesets/'+src85+'/{z}/{x}/{y}.png'
         ],
         extent: extent,
         minZoom: 0,
@@ -874,7 +874,7 @@ Impacts.prototype.addClimateLayer = function(replace, layer, preserveTime) {
     this.setSlider(layer);
   }
   this.reorderLayers();
-}
+};
 
 
 

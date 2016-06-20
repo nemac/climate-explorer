@@ -29,52 +29,52 @@ var Location = function(lat, lon) {
 Location.prototype.mapVariables = function() {
   this.tilesHistMapping = {
     'temperature-map': {
-      'tasmax': '_hist_prism_tmax',
-      'tasmin': '_hist_prism_tmin',
-      'days_tmin_blw_0.0': '_annual_hist_days-tmin-blw',
-      'days_tmax_abv_35.0': '_annual_hist_days-tmax-abv',
+      'tasmax': '-hist-tasmax',
+      'tasmin': '-hist-tasmin',
+      'days_tmin_blw_0.0': '-annual-hist-days-tmin-blw',
+      'days_tmax_abv_35.0': '-annual-hist-days-tmin-abv',
     },
     'precipitation-map': {
-      'pr': '_hist_prism_pr',
-      'pr_above': '_hist_prism_pr'
+      'pr': '-hist-precip',
+      'pr_above': '-annual-hist-days-prcp-abv'
     },
     'derived-map': {
-      'cooling_degree_day_18.3': '_annual_hist_cooling-degree-day',
-      'heating_degree_day_18.3': '_annual_hist_heating-degree-day'
+      'cooling_degree_day_18.3': '-annual-hist-cooling-degree-day',
+      'heating_degree_day_18.3': '-annual-hist-heating-degree-day'
     }
   };
 
   this.tilesMapping = {
     'temperature-map': {
-      'tasmax': '_rcp45_ea_tasmax',
-      'tasmin': '_rcp45_ea_tasmin',
-      'days_tmin_blw_0.0': '_annual_rcp45_days-tmin-blw',
-      'days_tmax_abv_35.0': '_annual_rcp45_days-tmax-abv',
+      'tasmax': '-rcp45-tasmax',
+      'tasmin': '-rcp45-tasmin',
+      'days_tmin_blw_0.0': '-annual-rcp45-days-tmin-blw',
+      'days_tmax_abv_35.0': '-annual-rcp45-days-tmax-abv',
     },
     'precipitation-map': {
-      'pr': '_rcp45_ea_pr',
-      'pr_above': '_rcp45_ea_pr'
+      'pr': '-rcp45-precip',
+      'pr_above': '-annual-rcp45-days-prcp-abv'
     },
     'derived-map': {
-      'cooling_degree_day_18.3': '_annual_rcp45_cooling-degree-day',
-      'heating_degree_day_18.3': '_annual_rcp45_heating-degree-day'
+      'cooling_degree_day_18.3': '-annual-rcp45-cooling-degree-day',
+      'heating_degree_day_18.3': '-annual-rcp45-heating-degree-day'
     }
   };
 
   this.tilesMapping85 = {
     'temperature-map': {
-      'tasmax': '_rcp85_ea_tasmax',
-      'tasmin': '_rcp85_ea_tasmin',
-      'days_tmin_blw_0.0': '_annual_rcp85_days-tmin-blw',
-      'days_tmax_abv_35.0': '_annual_rcp85_days-tmax-abv',
+      'tasmax': '-rcp85-tasmax',
+      'tasmin': '-rcp85-tasmin',
+      'days_tmin_blw_0.0': '-annual-rcp85-days-tmin-blw',
+      'days_tmax_abv_35.0': '-annual-rcp85-days-tmax-abv',
     },
     'precipitation-map': {
-      'pr': '_rcp85_ea_pr',
-      'pr_above': '_rcp85_ea_pr'
+      'pr': '-rcp85-precip',
+      'pr_above': '-annual-rcp85-days-prcp-abv'
     },
     'derived-map': {
-      'cooling_degree_day_18.3': '_annual_rcp85_cooling-degree-day',
-      'heating_degree_day_18.3': '_annual_rcp85_heating-degree-day'
+      'cooling_degree_day_18.3': '-annual-rcp85-cooling-degree-day',
+      'heating_degree_day_18.3': '-annual-rcp85-heating-degree-day'
     }
   };
 };
@@ -284,10 +284,10 @@ Location.prototype.wire = function() {
     }
 
   });
-  
+
   $('.data-options-trigger').click(function(e) {
     e.preventDefault();
-    
+
     $(this).siblings('.data-options').slideDown();
   });
 
@@ -446,7 +446,7 @@ Location.prototype.updateTiledLayer = function(map, replace, timeReset) {
   var extent = ol.proj.transformExtent([-135,11.3535322866,-56.25,49.5057345956],'EPSG:4326', 'EPSG:3857');
 
   var hist = null;
-  var season = ( seasons.indexOf(this.selectedVariable[map]) !== -1 ) ? '_'+this.selectedSeason : '';
+  var season = ( seasons.indexOf(this.selectedVariable[map]) !== -1 ) ? '-'+this.selectedSeason : '';
 
   if ( ( this.selectedVariable[map] === 'tasmax' || this.selectedVariable[map] === 'tasmin') && map === 'temperature-map' ) {
     $('#temperature-map-season').show();
@@ -479,7 +479,7 @@ Location.prototype.updateTiledLayer = function(map, replace, timeReset) {
   this[layer] = new ol.layer.Tile({
     source: new ol.source.XYZ({
       urls:[
-        'http://tiles.habitatseven.work/'+src+'/{z}/{x}/{y}.png'
+        'https://s3.amazonaws.com/climate-explorer-bucket/tilesets/'+src+'/{z}/{x}/{y}.png'
       ],
       extent: extent,
       minZoom: 0,
@@ -498,7 +498,7 @@ Location.prototype.updateTiledLayer = function(map, replace, timeReset) {
     this[layer85] = new ol.layer.Tile({
       source: new ol.source.XYZ({
         urls:[
-          'http://tiles.habitatseven.work/'+src85+'/{z}/{x}/{y}.png'
+          'https://s3.amazonaws.com/climate-explorer-bucket/tilesets/'+src85+'/{z}/{x}/{y}.png'
         ],
         extent: extent,
         minZoom: 0,
@@ -621,7 +621,7 @@ Location.prototype.setSwipeMap = function(map) {
   });
 };
 
- 
+
 
 
 /*
