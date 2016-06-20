@@ -19,7 +19,7 @@ function current_URL()
 function opengraph_output($data)
 {
 
-    $site_url = 'http://climateexplorer.habitatseven.work';
+    $site_url = '/';
 
     // url
 
