@@ -17,32 +17,32 @@ ChartBuilder.prototype.getData = function (callback) {
     var id = this.props.station.split(':')[1];
     this.records = {
         'tmin': {
-            url: 'http://climateexplorer.habitatseven.work/resources/data/stations/daily/' + id + '-tmin.csv.gz',
+            url: '/resources/data/stations/daily/' + id + '-tmin.csv.gz',
             type: 'tmin',
             data: ''
         },
         'normal_tmin': {
-            url: 'http://climateexplorer.habitatseven.work/resources/data/stations/normals/normal_tmin/' + id + '.csv.gz',
+            url: '/resources/data/stations/normals/normal_tmin/' + id + '.csv.gz',
             type: 'normal_tmin',
             data: ''
         },
         'tmax': {
-            url: 'http://climateexplorer.habitatseven.work/resources/data/stations/daily/' + id + '-tmax.csv.gz',
+            url: '/resources/data/stations/daily/' + id + '-tmax.csv.gz',
             type: 'tmax',
             data: ''
         },
         'normal_tmax': {
-            url: 'http://climateexplorer.habitatseven.work/resources/data/stations/normals/normal_tmax/' + id + '.csv.gz',
+            url: '/data/stations/normals/normal_tmax/' + id + '.csv.gz',
             type: 'normal_tmax',
             data: ''
         },
         'precip_ytd': {
-            url: 'http://climateexplorer.habitatseven.work/resources/data/stations/daily/' + id + '-precip_ytd.csv.gz',
+            url: '/resources/data/stations/daily/' + id + '-precip_ytd.csv.gz',
             type: 'precip_ytd',
             data: ''
         },
         'normal_precip_ytd': {
-            url: 'http://climateexplorer.habitatseven.work/resources/data/stations/normals/normal_precip_ytd/' + id + '.csv.gz',
+            url: '/resources/data/stations/normals/normal_precip_ytd/' + id + '.csv.gz',
             type: 'normal_precip_ytd',
             data: ''
         }

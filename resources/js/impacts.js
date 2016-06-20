@@ -28,33 +28,33 @@ Impacts.prototype.mapVariables = function() {
   };
 
   this.tilesHistMapping = {
-    'mean_daily_max': '_hist_prism_tmax',
-    'mean_daily_min': '_hist_prism_tmin',
-    'days_tmin_blw_0.0': '_annual_hist_days-tmin-blw',
-    'days_tmax_abv_35.0': '_annual_hist_days-tmax-abv',
-    'pr': '_hist_prism_pr',
-    'cooling_degree_day_18.3': '_annual_hist_cooling-degree-day',
-    'heating_degree_day_18.3': '_annual_hist_heating-degree-day'
+    'mean_daily_max': '-hist-tasmax',
+    'mean_daily_min': '-hist-tasmin',
+    'days_tmin_blw_0.0': '-annual-hist-days-tmin-blw',
+    'days_tmax_abv_35.0': '-annual-hist-days-tmax-abv',
+    'pr': '-hist-precip',
+    'cooling_degree_day_18.3': '-annual-hist-cooling-degree-day',
+    'heating_degree_day_18.3': '-annual-hist-heating-degree-day',
   };
 
   this.tilesMapping = {
-    'mean_daily_max': '_summer_rcp45_ea_tasmax',
-    'mean_daily_min': '_summer_rcp45_ea_tasmin',
-    'days_tmin_blw_0.0': '_annual_rcp45_days-tmin-blw',
-    'days_tmax_abv_35.0': '_annual_rcp45_days-tmax-abv',
-    'pr': '_rcp45_ea_pr',
-    'cooling_degree_day_18.3': '_annual_rcp45_cooling-degree-day',
-    'heating_degree_day_18.3': '_annual_rcp45_heating-degree-day'
+    'mean_daily_max': '-rcp45-tasmax',
+    'mean_daily_min': '-rcp45-tasmin',
+    'days_tmin_blw_0.0':  '-annual-rcp45-days-tmin-blw',
+    'days_tmax_abv_35.0':  '-annual-rcp45-days-tmax-abv',
+    'pr': '-rcp45-precip',
+    'cooling_degree_day_18.3': '-annual-rcp45-cooling-degree-day',
+    'heating_degree_day_18.3': '-annual-rcp45-heating-degree-day',
   };
 
   this.tilesMapping85 = {
-    'mean_daily_max': '_summer_rcp85_ea_tasmax',
-    'mean_daily_min': '_summer_rcp85_ea_tasmin',
-    'days_tmin_blw_0.0': '_annual_rcp85_days-tmin-blw',
-    'days_tmax_abv_35.0': '_annual_rcp85_days-tmax-abv',
-    'pr': '_rcp85_ea_pr',
-    'cooling_degree_day_18.3': '_annual_rcp85_cooling-degree-day',
-    'heating_degree_day_18.3': '_annual_rcp85_heating-degree-day'
+    'mean_daily_max': '-rcp85-tasmax',
+    'mean_daily_min': '-rcp85-tasmin',
+    'days_tmin_blw_0.0':  '-annual-rcp85-days-tmin-blw',
+    'days_tmax_abv_35.0':  '-annual-rcp85-days-tmax-abv',
+    'pr': '-rcp85-precip',
+    'cooling_degree_day_18.3': '-annual-rcp85-cooling-degree-day',
+    'heating_degree_day_18.3': '-annual-rcp85-heating-degree-day',
   };
 };
 
@@ -99,16 +99,11 @@ Impacts.prototype.createMap = function() {
       // })
       new ol.layer.Tile({
         source: new ol.source.XYZ({
-          url: 'http://habitatseven.basemaps.cartocdn.com/light_nolabels/{z}/{x}/{y}.png',
+          url: 'http://{s}.basemaps.cartocdn.com/light_nolabels/{z}/{x}/{y}.png',
+          subdomains: 'abcd',
           attributions: [new ol.Attribution({ html: ['&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors, &copy; <a href="http://cartodb.com/attributions">CartoDB</a>'] })]
         })
       })
-      // new ol.layer.Tile({
-      //   source: new ol.source.XYZ({
-      //     url: 'http://habitatseven.basemaps.cartocdn.com/light_only_labels/{z}/{x}/{y}.png',
-      //     attributions: [new ol.Attribution({ html: ['&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors, &copy; <a href="http://cartodb.com/attributions">CartoDB</a>'] })]
-      //   })
-      // })
     ],
     view: view
   });
@@ -777,15 +772,15 @@ Impacts.prototype.addClimateLayer = function(replace, layer, preserveTime) {
 
   var hist = null;
   //var season = '_summer';
-  var season = ( seasons.indexOf(this.selectedVariable) !== -1 ) ? '_summer' : '';
+  var season = ( seasons.indexOf(this.selectedVariable) !== -1 ) ? '-summer' : '';
 
   var src, src85;
   if ( histYears.indexOf(parseFloat(this.activeYear)) !== -1 ) {
     src = this.activeYear + season + this.tilesHistMapping[ this.selectedVariable ];
     src85 = null;
   } else {
-    src = this.activeYear + this.tilesMapping[ this.selectedVariable ];
-    src85 = this.activeYear + this.tilesMapping85[ this.selectedVariable ];
+    src = this.activeYear + season + this.tilesMapping[ this.selectedVariable ];
+    src85 = this.activeYear + season + this.tilesMapping85[ this.selectedVariable ];
   }
 
   /*
@@ -803,7 +798,7 @@ Impacts.prototype.addClimateLayer = function(replace, layer, preserveTime) {
   this.tileLayer = new ol.layer.Tile({
     source: new ol.source.XYZ({
       urls:[
-        'http://tiles.habitatseven.work/'+src+'/{z}/{x}/{y}.png'
+        'https://s3.amazonaws.com/climate-explorer-bucket/tilesets/'+src+'/{z}/{x}/{y}.png'
       ],
       extent: extent,
       minZoom: 0,
@@ -824,7 +819,7 @@ Impacts.prototype.addClimateLayer = function(replace, layer, preserveTime) {
     this.tileLayer85 = new ol.layer.Tile({
       source: new ol.source.XYZ({
         urls:[
-          'http://tiles.habitatseven.work/'+src85+'/{z}/{x}/{y}.png'
+          'https://s3.amazonaws.com/climate-explorer-bucket/tilesets/'+src85+'/{z}/{x}/{y}.png'
         ],
         extent: extent,
         minZoom: 0,
@@ -844,7 +839,8 @@ Impacts.prototype.addClimateLayer = function(replace, layer, preserveTime) {
   if ( this.nameLayer ) { this.map.removeLayer(this.nameLayer); } //don't add twice!
   this.nameLayer = new ol.layer.Tile({
     source: new ol.source.XYZ({
-      url: 'http://habitatseven.basemaps.cartocdn.com/light_only_labels/{z}/{x}/{y}.png',
+      url: 'http://{s}.basemaps.cartocdn.com/light_only_labels/{z}/{x}/{y}.png',
+      subdomains: 'abcd',
       attributions: [new ol.Attribution({ html: ['&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors, &copy; <a href="http://cartodb.com/attributions">CartoDB</a>'] })]
     })
   });
@@ -874,7 +870,7 @@ Impacts.prototype.addClimateLayer = function(replace, layer, preserveTime) {
     this.setSlider(layer);
   }
   this.reorderLayers();
-}
+};
 
 
 
@@ -981,6 +977,11 @@ Impacts.prototype.setSlider = function(layer) {
         step: 10,
         value: self.activeYear,
         slide: function (event, ui) {
+          if ( self.selectedVariable !== 'mean_daily_max' && self.selectedVariable !== 'mean_daily_min' && self.selectedVariable !== 'pr') {
+            if ( ui.value === 2000 ) {
+              return false;
+            }
+          }
           tooltip.text(ui.value);
           tooltip.fadeIn(200);
         },

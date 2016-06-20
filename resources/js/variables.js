@@ -55,36 +55,36 @@ Variables.prototype.mapVariables = function () {
     };
 
     this.tilesHistMapping = {
-        'tasmax': '_hist_prism_tmax',
-        'tasmin': '_hist_prism_tmin',
-        'days_tmin_blw_0.0': '_annual_hist_days-tmin-blw',
-        'days_tmax_abv_35.0': '_annual_hist_days-tmax-abv',
-        'pr': '_hist_prism_pr',
-        'pr_above': '_hist_prism_pr',
-        'cooling_degree_day_18.3': '_annual_hist_cooling-degree-day',
-        'heating_degree_day_18.3': '_annual_hist_heating-degree-day'
+        'tasmax': '-hist-tasmax',
+        'tasmin': '-hist-tasmin',
+        'days_tmin_blw_0.0': '-annual-hist-days-tmin-blw',
+        'days_tmax_abv_35.0': '-annual-hist-days-tmax-abv',
+        'pr': '-hist-precip',
+        'pr_above': '-annual-hist-days-prcp-abv',
+        'cooling_degree_day_18.3': '-annual-hist-cooling-degree-day',
+        'heating_degree_day_18.3': '-annual-hist-heating-degree-day'
     };
 
     this.tilesMapping = {
-        'tasmax': '_rcp45_ea_tasmax',
-        'tasmin': '_rcp45_ea_tasmin',
-        'days_tmin_blw_0.0': '_annual_rcp45_days-tmin-blw',
-        'days_tmax_abv_35.0': '_annual_rcp45_days-tmax-abv',
-        'pr': '_rcp45_ea_pr',
-        'pr_above': '_rcp45_ea_pr',
-        'cooling_degree_day_18.3': '_annual_rcp45_cooling-degree-day',
-        'heating_degree_day_18.3': '_annual_rcp45_heating-degree-day'
+        'tasmax': '-rcp45-tasmax',
+        'tasmin': '-rcp45-tasmin',
+        'days_tmin_blw_0.0': '-annual-rcp45-days-tmin-blw',
+        'days_tmax_abv_35.0': '-annual-rcp45-days-tmax-abv',
+        'pr': '-rcp45-precip',
+        'pr_above': '-annual-rcp45-days-prcp-abv',
+        'cooling_degree_day_18.3': '-annual-rcp45-cooling-degree-day',
+        'heating_degree_day_18.3': '-annual-rcp45-heating-degree-day'
     };
 
     this.tilesMapping85 = {
-        'tasmax': '_rcp85_ea_tasmax',
-        'tasmin': '_rcp85_ea_tasmin',
-        'days_tmin_blw_0.0': '_annual_rcp85_days-tmin-blw',
-        'days_tmax_abv_35.0': '_annual_rcp85_days-tmax-abv',
-        'pr': '_rcp85_ea_pr',
-        'pr_above': '_rcp85_ea_pr',
-        'cooling_degree_day_18.3': '_annual_rcp85_cooling-degree-day',
-        'heating_degree_day_18.3': '_annual_rcp85_heating-degree-day'
+        'tasmax': '-rcp85-tasmax',
+        'tasmin': '-rcp85-tasmin',
+        'days_tmin_blw_0.0': '-annual-rcp85-days-tmin-blw',
+        'days_tmax_abv_35.0': '-annual-rcp85-days-tmax-abv',
+        'pr': '-rcp85-precip',
+        'pr_above': '-annual-rcp85-days-prcp-abv',
+        'cooling_degree_day_18.3': '-annual-rcp85-cooling-degree-day',
+        'heating_degree_day_18.3': '-annual-rcp85-heating-degree-day'
     };
 };
 
@@ -108,19 +108,19 @@ Variables.prototype.createMap = function () {
     var center = ( qs.center ) ? qs.center.split(',') : null;
 
     // make sure variable in query is valid
-    if (!qs.id.match(/^(tasmax|tasmin|days_tmin_blw_0.0|days_tmax_abv_35.0|pr|pr_above|cooling_degree_day_18.3|heating_degree_day_18.3)$/)) {
-        throw new Error("MALFORMED VARIABLE");
+    if (!qs.id.match(/^(tasmax|tasmin|days_tmin_blw_0|days_tmin_blw_0.0|days_tmax_abv_35|days_tmax_abv_35.0|pr|pr_above|cooling_degree_day_18|cooling_degree_day_18.3|heating_degree_day_18|heating_degree_day_18.3)$/)) {
+      throw new Error("MALFORMED VARIABLE");
     }
 
 
     // make sure center is valid (when it exists)
     if (center){
-        if ((isNumeric(center[0]))&&(isNumeric(center[1])))
-        {
-            //alert("Good Center");
-        } else {
-            throw new Error("MALFORMED CENTER");
-        }
+      if ((isNumeric(center[0]))&&(isNumeric(center[1])))
+      {
+          //alert("Good Center");
+      } else {
+          throw new Error("MALFORMED CENTER");
+      }
     }
 
     // make sure zoom is valid (when it exists)
@@ -162,10 +162,12 @@ Variables.prototype.createMap = function () {
         layers: [
             new ol.layer.Tile({
                 source: new ol.source.XYZ({
-                    url: 'http://habitatseven.basemaps.cartocdn.com/light_all/{z}/{x}/{y}.png',
-                    attributions: [new ol.Attribution({html: ['&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors, &copy; <a href="http://cartodb.com/attributions">CartoDB</a>']})]
+                    url: 'http://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}.png',
+                    attributions: [new ol.Attribution({html: ['&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors, &copy; <a href="http://cartodb.com/attributions">CartoDB</a>']})],
+                    maxZoom: 19
                 })
             })
+
         ],
         view: view
     });
@@ -577,7 +579,7 @@ Variables.prototype.countySelected = function (feature, event) {
 
         this.cwg = climate_widget.graph({
             div: "div#climate-chart",
-            dataprefix: "http://climateexplorer.habitatseven.work/data",
+            dataprefix: "/data",
             font: "Roboto",
             frequency: "annual",
             fips: fips,
@@ -727,10 +729,14 @@ Variables.prototype.updateTiledLayer = function (replace, preserveTime) {
     var histYears = [1950, 1960, 1970, 1980, 1990, 2000];
     var seasons = ['tasmax', 'tasmin', 'pr'];
 
+    if ( self.selectedVariable !== 'tasmax' && self.selectedVariable !== 'tasmin' && self.selectedVariable !== 'pr' && this.activeYear === 2000 ) {
+      this.activeYear = 2010;
+    }
+
     var extent = ol.proj.transformExtent([-135, 11.3535322866, -56.25, 49.5057345956], 'EPSG:4326', 'EPSG:3857');
 
     var hist = null;
-    var season = ( seasons.indexOf(this.selectedVariable) !== -1 ) ? '_' + this.selectedSeason : '';
+    var season = ( seasons.indexOf(this.selectedVariable) !== -1 ) ? '-' + this.selectedSeason : '';
 
     if (season === '') {
         $('#map-seasons-container .fs-dropdown-selected').hide();
@@ -763,7 +769,7 @@ Variables.prototype.updateTiledLayer = function (replace, preserveTime) {
     this.tileLayer = new ol.layer.Tile({
         source: new ol.source.XYZ({
             urls: [
-                'http://tiles.habitatseven.work/' + src + '/{z}/{x}/{y}.png'
+                'https://s3.amazonaws.com/climate-explorer-bucket/tilesets/' + src + '/{z}/{x}/{y}.png'
             ],
             extent: extent,
             minZoom: 0,
@@ -785,7 +791,7 @@ Variables.prototype.updateTiledLayer = function (replace, preserveTime) {
         this.tileLayer85 = new ol.layer.Tile({
             source: new ol.source.XYZ({
                 urls: [
-                    'http://tiles.habitatseven.work/' + src85 + '/{z}/{x}/{y}.png'
+                    'https://s3.amazonaws.com/climate-explorer-bucket/tilesets/' + src85 + '/{z}/{x}/{y}.png'
                 ],
                 extent: extent,
                 minZoom: 0,
@@ -807,7 +813,8 @@ Variables.prototype.updateTiledLayer = function (replace, preserveTime) {
     } //don't add twice!
     this.nameLayer = new ol.layer.Tile({
         source: new ol.source.XYZ({
-            url: 'http://habitatseven.basemaps.cartocdn.com/light_only_labels/{z}/{x}/{y}.png',
+            url: 'http://{s}.basemaps.cartocdn.com/light_only_labels/{z}/{x}/{y}.png',
+            subdomains: 'abcd',
             attributions: [new ol.Attribution({html: ['&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors, &copy; <a href="http://cartodb.com/attributions">CartoDB</a>']})]
         })
     });
@@ -946,8 +953,13 @@ Variables.prototype.setSlider = function () {
         step: 10,
         value: self.activeYear,
         slide: function (event, ui) {
-            tooltip.text(ui.value);
-            tooltip.fadeIn(200);
+          if ( self.selectedVariable !== 'tasmax' && self.selectedVariable !== 'tasmin' && self.selectedVariable !== 'pr') {
+            if ( ui.value === 2000 ) {
+              return false;
+            }
+          }
+          tooltip.text(ui.value);
+          tooltip.fadeIn(200);
         },
         change: function (event, ui) {
             year_slider.attr('data-value', ui.value);
