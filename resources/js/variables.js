@@ -162,10 +162,12 @@ Variables.prototype.createMap = function () {
         layers: [
             new ol.layer.Tile({
                 source: new ol.source.XYZ({
-                    url: 'http://habitatseven.basemaps.cartocdn.com/light_all/{z}/{x}/{y}.png',
-                    attributions: [new ol.Attribution({html: ['&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors, &copy; <a href="http://cartodb.com/attributions">CartoDB</a>']})]
+                    url: 'http://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}.png',
+                    attributions: [new ol.Attribution({html: ['&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors, &copy; <a href="http://cartodb.com/attributions">CartoDB</a>']})],
+                    maxZoom: 19
                 })
             })
+
         ],
         view: view
     });
@@ -577,7 +579,7 @@ Variables.prototype.countySelected = function (feature, event) {
 
         this.cwg = climate_widget.graph({
             div: "div#climate-chart",
-            dataprefix: "http://climateexplorer.habitatseven.work/data",
+            dataprefix: "/data",
             font: "Roboto",
             frequency: "annual",
             fips: fips,
@@ -807,7 +809,8 @@ Variables.prototype.updateTiledLayer = function (replace, preserveTime) {
     } //don't add twice!
     this.nameLayer = new ol.layer.Tile({
         source: new ol.source.XYZ({
-            url: 'http://habitatseven.basemaps.cartocdn.com/light_only_labels/{z}/{x}/{y}.png',
+            url: 'http://{s}.basemaps.cartocdn.com/light_only_labels/{z}/{x}/{y}.png',
+            subdomains: 'abcd',
             attributions: [new ol.Attribution({html: ['&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors, &copy; <a href="http://cartodb.com/attributions">CartoDB</a>']})]
         })
     });

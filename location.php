@@ -20,7 +20,7 @@ $county =  filter_var($county, FILTER_SANITIZE_STRING);
 $city =  filter_var($city, FILTER_SANITIZE_STRING);
 if (!is_numeric($fips)) {
     die("Invalid FIPS Code");
-}
+} 
 
 if (!isValidLatitude($lat)) {
     die("Invalid Latitude");
