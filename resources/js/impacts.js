@@ -386,7 +386,7 @@ Impacts.prototype.createLegend = function() {
           '<h4>Layer description</h4>'+
           '<div>'+
             '<p>'+self.data.layers[id].description+
-            '<a href="'+self.data.layers[id].source+'" class="source-link">Source</a>'+
+            ' <a href="'+self.data.layers[id].source+'" class="source-link">Source</a>'+
             '</p>'+
           '</div>'+
 

@@ -6644,7 +6644,7 @@ body.detail-open #nav-overlay {
 .page-type-case #case-menu .legend .layer-info .source-link {
   padding: 0;
   background: transparent;
-  color: blue;
+  color: #0058cf;
   display: inline;
 }
 /* line 164, ../scss/pages/_case.scss */
