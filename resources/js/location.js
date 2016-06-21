@@ -101,16 +101,9 @@ Location.prototype.createMap = function() {
     layers: [
       new ol.layer.Tile({
         source: new ol.source.XYZ({
-          url: 'http://{s}.basemaps.cartocdn.com/light_nolabels/{z}/{x}/{y}.png',
-          subdomains: 'abcd',
-          attributions: [new ol.Attribution({ html: ['&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors, &copy; <a href="http://cartodb.com/attributions">CartoDB</a>'] })]
-        })
-      }),
-      new ol.layer.Tile({
-        source: new ol.source.XYZ({
-          url: 'http://{s}.basemaps.cartocdn.com/light_only_labels/{z}/{x}/{y}.png',
-          subdomains: 'abcd',
-          attributions: [new ol.Attribution({ html: ['&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors, &copy; <a href="http://cartodb.com/attributions">CartoDB</a>'] })]
+          url: 'http://services.arcgisonline.com/arcgis/rest/services/Canvas/World_Light_Gray_Base/MapServer/tile/{z}/{y}/{x}',
+          attributions: [new ol.Attribution({html: ['&copy; Esri, HERE, DeLorme, MapmyIndia, © OpenStreetMap contributors, and the GIS user community ']})],
+          maxZoom: 19
         })
       })
     ],
@@ -246,9 +239,9 @@ Location.prototype.createGraphMaps = function(map) {
     layers: [
       new ol.layer.Tile({
         source: new ol.source.XYZ({
-          url: 'http://{s}.basemaps.cartocdn.com/light_nolabels/{z}/{x}/{y}.png',
-          subdomains: 'abcd',
-          attributions: [new ol.Attribution({ html: ['&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors, &copy; <a href="http://cartodb.com/attributions">CartoDB</a>'] })]
+          url: 'http://services.arcgisonline.com/arcgis/rest/services/Canvas/World_Light_Gray_Base/MapServer/tile/{z}/{y}/{x}',
+          attributions: [new ol.Attribution({html: ['&copy; Esri, HERE, DeLorme, MapmyIndia, © OpenStreetMap contributors, and the GIS user community ']})],
+          maxZoom: 19
         })
       })
     ]
@@ -516,9 +509,9 @@ Location.prototype.updateTiledLayer = function(map, replace, timeReset) {
 
   this.nameLayer = new ol.layer.Tile({
     source: new ol.source.XYZ({
-      url: 'http://{s}.basemaps.cartocdn.com/light_only_labels/{z}/{x}/{y}.png',
-      subdomains: 'abcd',
-      attributions: [new ol.Attribution({ html: ['&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors, &copy; <a href="http://cartodb.com/attributions">CartoDB</a>'] })]
+      url: 'http://services.arcgisonline.com/ArcGIS/rest/services/Canvas/World_Light_Gray_Reference/MapServer/tile/{z}/{y}/{x}',
+      attributions: [new ol.Attribution({html: ['']})],
+      maxZoom: 19
     })
   });
 
