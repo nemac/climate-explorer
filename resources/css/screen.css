@@ -6348,10 +6348,12 @@ body.detail-open #nav-overlay {
 .page-type-variables .ol-scale-line {
   background: rgba(0, 60, 136, 0.3);
   border-radius: 4px;
-  bottom: 133px;
-  left: 345px;
+  top: 20px;
+  bottom: auto;
+  left: auto;
+  right: 100px;
 }
-/* line 262, ../scss/pages/_variable.scss */
+/* line 264, ../scss/pages/_variable.scss */
 .page-type-variables #district-trigger {
   position: absolute;
   top: 15%;
@@ -6367,14 +6369,14 @@ body.detail-open #nav-overlay {
   overflow: hidden;
   *zoom: 1;
 }
-/* line 273, ../scss/pages/_variable.scss */
+/* line 275, ../scss/pages/_variable.scss */
 .page-type-variables #district-trigger span {
   display: block;
   float: left;
   white-space: nowrap;
   color: #0058cf;
 }
-/* line 280, ../scss/pages/_variable.scss */
+/* line 282, ../scss/pages/_variable.scss */
 .page-type-variables #district-trigger .text {
   margin-top: -2px;
   text-indent: -300px;
@@ -6383,21 +6385,21 @@ body.detail-open #nav-overlay {
   -webkit-transition: text-indent 0.5s;
   transition: text-indent 0.5s;
 }
-/* line 286, ../scss/pages/_variable.scss */
+/* line 288, ../scss/pages/_variable.scss */
 .page-type-variables #district-trigger .icon {
   padding-left: 10px;
   font-size: 1.25rem;
 }
-/* line 291, ../scss/pages/_variable.scss */
+/* line 293, ../scss/pages/_variable.scss */
 .page-type-variables #district-trigger:hover {
   padding-left: 15px;
 }
-/* line 294, ../scss/pages/_variable.scss */
+/* line 296, ../scss/pages/_variable.scss */
 .page-type-variables #district-trigger:hover .text {
   text-indent: 0;
 }
 
-/* line 301, ../scss/pages/_variable.scss */
+/* line 303, ../scss/pages/_variable.scss */
 .year {
   position: absolute;
   bottom: 20px;
@@ -6410,17 +6412,17 @@ body.detail-open #nav-overlay {
   -webkit-transition: 0.25s;
   transition: 0.25s;
 }
-/* line 310, ../scss/pages/_variable.scss */
+/* line 312, ../scss/pages/_variable.scss */
 .year:hover {
   background: rgba(255, 255, 255, 0.9);
 }
-/* line 314, ../scss/pages/_variable.scss */
+/* line 316, ../scss/pages/_variable.scss */
 .year .ui-slider {
   top: 20px;
   left: 10%;
   width: 80%;
 }
-/* line 319, ../scss/pages/_variable.scss */
+/* line 321, ../scss/pages/_variable.scss */
 .year .ui-slider .ui-slider-handle {
   top: -14px;
   width: 36px;
@@ -6436,24 +6438,24 @@ body.detail-open #nav-overlay {
   -webkit-box-shadow: 0 0 4px rgba(0, 88, 207, 0.25);
   box-shadow: 0 0 4px rgba(0, 88, 207, 0.25);
 }
-/* line 332, ../scss/pages/_variable.scss */
+/* line 334, ../scss/pages/_variable.scss */
 .year .ui-slider .ui-slider-handle:hover {
   -moz-box-shadow: 0 0 7px rgba(0, 88, 207, 0.4);
   -webkit-box-shadow: 0 0 7px rgba(0, 88, 207, 0.4);
   box-shadow: 0 0 7px rgba(0, 88, 207, 0.4);
 }
-/* line 338, ../scss/pages/_variable.scss */
+/* line 340, ../scss/pages/_variable.scss */
 .year .year-label {
   position: absolute;
   top: 13px;
   width: 10%;
   text-align: center;
 }
-/* line 344, ../scss/pages/_variable.scss */
+/* line 346, ../scss/pages/_variable.scss */
 .year .year-label.year-min {
   left: 0;
 }
-/* line 348, ../scss/pages/_variable.scss */
+/* line 350, ../scss/pages/_variable.scss */
 .year .year-label.year-max {
   right: 0;
 }

@@ -255,8 +255,10 @@
   .ol-scale-line {
     background: rgba(0,60,136,.3);
     border-radius: 4px;
-    bottom: 133px;
-    left: 345px;
+    top: 20px;
+    bottom: auto;
+    left: auto;
+    right: 100px;
   }
   
   #district-trigger {
