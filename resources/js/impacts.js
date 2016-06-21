@@ -422,7 +422,7 @@ Impacts.prototype.createLegend = function() {
 
   if ( layerIds.length < 3 ) {
     $.each(layerIds, function(i, id) {
-      var html = '<img src="'+self.data.layers[id].legend+'.png">';
+      var html = '<div class="topic-legend-item"><img src="'+self.data.layers[id].legend+'.png"></div>';
       $('#topic-legends').append(html);
     });
   }
