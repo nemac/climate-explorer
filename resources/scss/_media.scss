@@ -794,3 +794,27 @@
     }
   }
 }
+
+@media screen and (max-width: 800px) {
+  
+  body {
+    overflow: hidden;
+  }
+  
+  #desktop-warning {
+    display: block;
+    @include full-size;
+    position: fixed;
+    z-index: 999;
+    background: transparentize($white, 0.02);
+    
+    p {
+      position: absolute;
+      top: 50%;
+      width: 100%;
+      @include transform(translateY(-50%));
+      text-align: center;
+    }
+  }
+  
+}
