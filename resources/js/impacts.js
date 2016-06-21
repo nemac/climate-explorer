@@ -390,7 +390,7 @@ Impacts.prototype.createLegend = function() {
 
           '<h4>Legend</h4>'+
           '<div>'+
-            '<img src="'+self.data.layers[id].legend+'_WIDE.png">'+
+            '<img height="150px" src="'+self.data.layers[id].legend+'_WIDE.png">'+
           '</div>'+
         '</div>'+
         '<div class="opacity-slider-wrap"><h4>Layer opacity</h4><div class="opacity-slider" id="opacity-'+id+'"></div></div>' +
