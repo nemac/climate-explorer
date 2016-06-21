@@ -715,6 +715,9 @@ h6 {
   #viewport {
     background-image: none;
     background-color: transparentize($blue3, 0.5);
+    top: 20px;
+    height: calc(100% - 40px);
+    margin-top: 95px;
   }
 }
 
