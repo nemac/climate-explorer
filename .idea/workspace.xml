@@ -81,21 +81,21 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="functions.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/functions.php">
+      <file leaf-file-name="data-grouped.json" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/resources/data/data-grouped.json">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1275">
-              <caret line="85" column="0" selection-start-line="85" selection-start-column="0" selection-end-line="85" selection-end-column="0" />
+            <state relative-caret-position="379">
+              <caret line="739" column="18" selection-start-line="739" selection-start-column="18" selection-end-line="739" selection-end-column="18" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="data-grouped.json" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/resources/data/data-grouped.json">
+      <file leaf-file-name="impacts.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/resources/js/impacts.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="272">
-              <caret line="84" column="19" selection-start-line="84" selection-start-column="19" selection-end-line="84" selection-end-column="19" />
+            <state relative-caret-position="274">
+              <caret line="392" column="37" selection-start-line="392" selection-start-column="37" selection-end-line="392" selection-end-column="37" />
               <folding />
             </state>
           </provider>
@@ -578,7 +578,7 @@
       <workItem from="1466430162812" duration="19000" />
       <workItem from="1466430201596" duration="36000" />
       <workItem from="1466430248728" duration="3162000" />
-      <workItem from="1466515746387" duration="6653000" />
+      <workItem from="1466515746387" duration="9852000" />
     </task>
     <task id="LOCAL-00001" summary="test">
       <created>1452891884032</created>
@@ -713,11 +713,18 @@
       <option name="project" value="LOCAL" />
       <updated>1466522475628</updated>
     </task>
-    <option name="localTasksCounter" value="20" />
+    <task id="LOCAL-00020" summary="changed sea-level to sea level">
+      <created>1466523325898</created>
+      <option name="number" value="00020" />
+      <option name="presentableId" value="LOCAL-00020" />
+      <option name="project" value="LOCAL" />
+      <updated>1466523325898</updated>
+    </task>
+    <option name="localTasksCounter" value="21" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="32440000" />
+    <option name="totallyTimeSpent" value="35639000" />
   </component>
   <component name="TodoView" selected-index="1">
     <todo-panel id="selected-file">
@@ -814,7 +821,8 @@
     <MESSAGE value="spelling errors fixed&#10;punctuation fixed&#10;tiles.habitatseven.work references updated in data-grouped.json" />
     <MESSAGE value="http://take.ms/mBWck&#10;&#10;all references to habatatseven.com and tiles.habitatseven.work are now gone" />
     <MESSAGE value="text updates, bg array updates" />
-    <option name="LAST_COMMIT_MESSAGE" value="text updates, bg array updates" />
+    <MESSAGE value="changed sea-level to sea level" />
+    <option name="LAST_COMMIT_MESSAGE" value="changed sea-level to sea level" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager />
@@ -1021,10 +1029,18 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/resources/js/impacts.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="274">
+          <caret line="392" column="37" selection-start-line="392" selection-start-column="37" selection-end-line="392" selection-end-column="37" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/resources/data/data-grouped.json">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="272">
-          <caret line="84" column="19" selection-start-line="84" selection-start-column="19" selection-end-line="84" selection-end-column="19" />
+        <state relative-caret-position="379">
+          <caret line="739" column="18" selection-start-line="739" selection-start-column="18" selection-end-line="739" selection-end-column="18" />
           <folding />
         </state>
       </provider>

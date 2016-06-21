@@ -307,7 +307,7 @@
       "type": "ArcGISRest",
       "id": "bia_indian_lands",
       "title": "BIA Indian Lands",
-      "description": "This layer shows  American Indian Reservations, Federally Recognized Tribal Entities, and Alaska Native Villages in the contiguous U.S. and Alaska.",
+      "description": "This layer shows  American Indian Reservations, Federally Recognized Tribal Entities, and Alaska Native Villages in the contiguous U.S. and Alaska.https://catalog.data.gov/dataset/bia-indian-lands-dataset-indian-lands-of-the-united-states",
       "url": "http://gis.wim.usgs.gov/arcgis/rest/services/AIR_NDGA/AIR_NDGA/MapServer",
       "options": {},
       "defaults": {
@@ -368,7 +368,7 @@
       "type": "ArcGISRest",
       "id": "sea_level_rise",
       "title": "Sea Level Rise (For 1 to 6 Feet) ",
-      "description": "View areas that will be covered by seawater during high tides after the indicated amount of local sea level rise. A few inches of water will cover the lightest blue areas; water will be deeper where the map is dark blue. Bright green areas will be below sea level, but are not connected to the ocean. Visualize changes over time by turning on progressively higher sea levels.",
+      "description": "View areas that will be covered by seawater during high tides after the indicated amount of local sea level rise. A few inches of water will cover the lightest blue areas; water will be deeper where the map is dark blue. Bright green areas will be below sea level, but are not connected to the ocean. Visualize changes over time by turning on progressively higher sea levels.https://catalog.data.gov/dataset/noaa-digital-coast-sea-level-rise-and-coastal-flooding-impacts-viewer",
       "sublayers": [
         {
           "type": "ArcGISRest",
@@ -439,7 +439,7 @@
       "type": "ArcGISRest",
       "id": "development_density",
       "title": "Development Density",
-      "description": "View the intensity of development across land based on the percentage of constructed versus natural materials at each location. Areas that are essentially covered by buildings are classified as high intensity development. Parks and other areas with less than 20 percent constructed materials are considered as open space.",
+      "description": "View the intensity of development across land based on the percentage of constructed versus natural materials at each location. Areas that are essentially covered by buildings are classified as high intensity development. Parks and other areas with less than 20 percent constructed materials are considered as open space.<span class='layerSource'>https://coast.noaa.gov/floodexposure/#/services#infrastructure-exposure</span>",
       "url": "https://coast.noaa.gov/arcgis/rest/services/FloodExposureMapper/CFEM_LandCover_Developed/MapServer",
       "options": {
       },
@@ -487,7 +487,7 @@
       "type": "ArcGISRest",
       "id": "hurricane_evacuation",
       "title": "Hurricane Evacuation Routes",
-      "description": "View major roads designated as hurricane evacuation routes. ",
+      "description": "View major roads designated as hurricane evacuation routes. https://catalog.data.gov/dataset/hurricane-evacuation-routes-ac5c5",
       "url": "http://gis.fema.gov/REST/services/FEMA/EvacRoutes/MapServer",
       "options": {
       },
@@ -499,7 +499,7 @@
       "type": "StormSurge",
       "id": "storm_surge",
       "title": "Storm Surge (Categories 1-5)",
-      "description": "View potential inundation due to storm-surge flooding from landfalling hurricanes of categories 1-5.",
+      "description": "View potential inundation due to storm-surge flooding from landfalling hurricanes of categories 1-5.https://coast.noaa.gov/floodexposure/#/services#flood-hazards",
       "sublayers": [
         {
           "type": "StormSurge",
@@ -560,7 +560,7 @@
       "type": "ArcGISRest",
       "id": "coastal_power_plants",
       "title": "Coastal Power Plants",
-      "description": "View locations and types of power plants along the U.S. coast and Great Lakes.",
+      "description": "View locations and types of power plants along the U.S. coast and Great Lakes.https://catalog.data.gov/dataset/coastal-energy-facilities",
       "url": "https://coast.noaa.gov/arcgis/rest/services/MarineCadastre/OceanEnergy/MapServer",
       "options": {
         "layer": "6"
@@ -573,7 +573,7 @@
       "type": "ArcGISRest",
       "id": "coastal_wetlands",
       "title": "Coastal Wetlands",
-      "description": "View wetlands and other natural areas along the coast.",
+      "description": "View wetlands and other natural areas along the coast.https://coast.noaa.gov/floodexposure/#/services#flood-hazards",
       "url": "https://coast.noaa.gov/arcgis/rest/services/FloodExposureMapper/CFEM_NaturalAreasOpenSpace/MapServer",
       "options": {
         "layer": "show:9"
@@ -598,7 +598,7 @@
       "type": "ArcGISRest",
       "id": "pollution_sources",
       "title": "Potential Pollution Sources",
-      "description": "View facilities, sites, or places subject to environmental regulation or of environmental interest such as Brownfield properties, hazardous waste sites, Superfund sites, and toxic chemicals.",
+      "description": "View facilities, sites, or places subject to environmental regulation or of environmental interest such as Brownfield properties, hazardous waste sites, Superfund sites, and toxic chemicals.https://coast.noaa.gov/floodexposure/#/services#infrastructure-exposure",
       "url": "https://coast.noaa.gov/arcgis/rest/services/FloodExposureMapper/CFEM_EPA_FRSPoints/MapServer",
       "options": {
       },
@@ -622,7 +622,7 @@
       "type": "Tile",
       "id": "mean_daily_max",
       "title": "Mean Daily Max Temperature",
-      "description": "Maximum temperatures are one indicator of conditions that can interfere with ecosystem functions. View how temperatures are projected to change during future decades.",
+      "description": "Maximum temperatures are one indicator of conditions that can interfere with ecosystem functions. View how temperatures are projected to change during future decades.http://catalog.data.gov/dataset/bias-corrected-constructed-analogs-v2-daily-climate-projections",
       "url": "https://s3.amazonaws.com/climate-explorer-bucket/tilesets/2090-summer-rcp85-tasmax/{z}/{x}/{y}.png",
       "options": {
       },
@@ -634,7 +634,7 @@
       "type": "Tile",
       "id": "mean_daily_min",
       "title": "Mean Daily Min Temperature",
-      "description": "Minimum temperatures are one indicator of conditions that can interfere with ecosystem functions. View how temperatures are projected to change during future decades.",
+      "description": "Minimum temperatures are one indicator of conditions that can interfere with ecosystem functions. View how temperatures are projected to change during future decades.http://catalog.data.gov/dataset/bias-corrected-constructed-analogs-v2-daily-climate-projections",
       "url": "https://s3.amazonaws.com/climate-explorer-bucket/tilesets/2090-summer-rcp85-tasmin/{z}/{x}/{y}.png",
       "options": {
       },
@@ -670,7 +670,7 @@
       "type": "ArcGISRest",
       "id": "power_plants",
       "title": "Power Plants",
-      "description": "View the locations and types of power plants.",
+      "description": "View the locations and types of power plants.http://www.eia.gov/state/",
       "url": "https://eia-ms.esri.com/arcgis/rest/services/20160309StateEnergyProfilesMap/MapServer",
       "options": {
       },
@@ -774,7 +774,7 @@
       "type": "WMS",
       "id": "percent_poverty",
       "title": "Percent Poverty",
-      "description": "Colors show the ercent of population below the poverty threshold in 2000. The darker the color, the higher the percentage of people in poverty. Communities with high percentages of poor residents may need support in preparing for hazards, or recovering from disaster.",
+      "description": "Colors show the ercent of population below the poverty threshold in 2000. The darker the color, the higher the percentage of people in poverty. Communities with high percentages of poor residents may need support in preparing for hazards, or recovering from disaster.https://coast.noaa.gov/floodexposure/#/services#flood-hazards",
       "url": "http://sedac.ciesin.org/geoserver/ows",
       "options": {
         "layer": "usgrid:usgrid-summary-file3-2000_usa-pctpopbelowpovlevel-2000",
@@ -788,7 +788,7 @@
       "type": "Tile",
       "id": "cooling_degree_day_18.3",
       "title": "Cooling Degree Days",
-      "description": "View how demand for energy to cool homes and businesses during the warm season increases in the future. Consider how people who don’t have access to air conditioning will fare.",
+      "description": "View how demand for energy to cool homes and businesses during the warm season increases in the future. Consider how people who don’t have access to air conditioning will fare.http://catalog.data.gov/dataset/bias-corrected-constructed-analogs-v2-daily-climate-projections",
       "url": "https://s3.amazonaws.com/climate-explorer-bucket/tilesets/2090-annual-rcp45-cooling-degree-day/{z}/{x}/{y}.png",
       "options": {
       },
@@ -800,7 +800,7 @@
       "type": "WMS",
       "id": "percent_elderly",
       "title": "Percent Elderly",
-      "description": "View the percent of population aged 65-79 in 2000. The darker the color, the higher the percentage of elderly people in the population. Communities with elevated social vulnerability (as measured by the U.S. Census) may need support in preparing for hazards, or recovering from disaster.",
+      "description": "View the percent of population aged 65-79 in 2000. The darker the color, the higher the percentage of elderly people in the population. Communities with elevated social vulnerability (as measured by the U.S. Census) may need support in preparing for hazards, or recovering from disaster.https://coast.noaa.gov/floodexposure/#/services#flood-hazards",
       "url": "http://sedac.ciesin.org/geoserver/ows",
       "options": {
         "type": "geoserver",
@@ -814,7 +814,7 @@
       "type": "Tile",
       "id": "days_tmax_abv_35.0",
       "title": "Days Above 95 Degrees F",
-      "description": "View how the number of days per year with temperatures over 95°F increases during future decades.",
+      "description": "View how the number of days per year with temperatures over 95°F increases during future decades.http://catalog.data.gov/dataset/bias-corrected-constructed-analogs-v2-daily-climate-projections",
       "url": "https://s3.amazonaws.com/climate-explorer-bucket/tilesets/2090-annual-rcp85-days-tmax-abv/{z}/{x}/{y}.png",
       "options": {
       },
@@ -863,7 +863,7 @@
       "type": "ArcGISRest",
       "id": "transportation_system",
       "title": "Transportation System",
-      "description": "View the locations of elements of the transportation system.",
+      "description": "View the locations of elements of the transportation system.https://catalog.data.gov/dataset/the-national-map-viewer-and-download-platform",
       "url": "http://services.nationalmap.gov/arcgis/rest/services/transportation/MapServer",
       "options": {
       },
@@ -887,7 +887,7 @@
       "type": "ArcGISRest",
       "id": "river_flooding",
       "title": "Outlook for Significant River Flooding",
-      "description": "Check the general outlook for significant rizver flooding. Note that this layer does not depict all areas of minor flooding or small-scale events such as localized flooding and/or flash flooding.",
+      "description": "Check the general outlook for significant rizver flooding. Note that this layer does not depict all areas of minor flooding or small-scale events such as localized flooding and/or flash flooding.http://www.wpc.ncep.noaa.gov/nationalfloodoutlook/",
       "url": "http://idpgis.ncep.noaa.gov/arcgis/rest/services/NWS_Forecasts_Guidance_Warnings/sig_riv_fld_outlk/MapServer",
       "options": {
       },
@@ -899,7 +899,7 @@
       "type": "WMS",
       "id": "population_density",
       "title": "Populaton Density",
-      "description": "Find centers of population across the Arctic in this global map layer.",
+      "description": "Find centers of population across the Arctic in this global map layer.https://catalog.data.gov/dataset/global-rural-urban-mapping-project-grump-alpha-version",
       "url": "https://sedac.ciesin.columbia.edu/geoserver/wms",
       "options": {
         "layer": "grump-v1:grump-v1-population-density_2000",
