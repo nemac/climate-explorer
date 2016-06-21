@@ -182,7 +182,7 @@
         $current = str_replace("_", " ", $current);
         $current = ucwords($current);
         
-        $breadcrumb = '<a href="#nav-topics" class="parent launch-nav" data-nav-slide="2"><span class="icon icon-bubble"></span>Topic</a><a href="./topic.php?param=' . $_REQUEST['id'] . '">' . $current . '</a><span class="current">Data</span>';
+        $breadcrumb = '<a href="#nav-topics" class="parent launch-nav" data-nav-slide="2"><span class="icon icon-bubble"></span>Topic</a><a href="./topic.php?param=' . $_REQUEST['id'] . '">' . $current . '</a><span class="current">Impact</span>';
         
       } elseif (strpos(current_URL(), 'variables.php') !== false) {
         

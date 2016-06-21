@@ -5,13 +5,11 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="834b6b80-6ff0-478d-9964-d91e121deaf1" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/tileurls.txt" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/functions.php" afterPath="$PROJECT_DIR$/functions.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/index.php" afterPath="$PROJECT_DIR$/index.php" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/data/data-grouped.json" afterPath="$PROJECT_DIR$/resources/data/data-grouped.json" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/js/location.js" afterPath="$PROJECT_DIR$/resources/js/location.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/js/variables.js" afterPath="$PROJECT_DIR$/resources/js/variables.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/template/header.php" afterPath="$PROJECT_DIR$/template/header.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/topic.php" afterPath="$PROJECT_DIR$/topic.php" />
     </list>
     <ignored path="Climate Explorer.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -99,8 +97,48 @@
       <file leaf-file-name="data-grouped.json" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/resources/data/data-grouped.json">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="212">
-              <caret line="200" column="19" selection-start-line="200" selection-start-column="19" selection-end-line="200" selection-end-column="19" />
+            <state relative-caret-position="197">
+              <caret line="97" column="29" selection-start-line="97" selection-start-column="29" selection-end-line="97" selection-end-column="29" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="index.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/index.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="135">
+              <caret line="37" column="0" selection-start-line="37" selection-start-column="0" selection-end-line="48" selection-end-column="38" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="topic.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/topic.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="347">
+              <caret line="100" column="0" selection-start-line="100" selection-start-column="0" selection-end-line="100" selection-end-column="0" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="case.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/case.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="227">
+              <caret line="70" column="2" selection-start-line="70" selection-start-column="2" selection-end-line="70" selection-end-column="2" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="header.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/template/header.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="197">
+              <caret line="185" column="8" selection-start-line="185" selection-start-column="8" selection-end-line="185" selection-end-column="8" />
               <folding />
             </state>
           </provider>
@@ -139,7 +177,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/manager/header.php" />
         <option value="$PROJECT_DIR$/newtest/test.js" />
         <option value="$PROJECT_DIR$/resources/ol3/build/ol.js" />
         <option value="$PROJECT_DIR$/testing/index.html" />
@@ -152,7 +189,6 @@
         <option value="$PROJECT_DIR$/location.php" />
         <option value="$PROJECT_DIR$/variables.php" />
         <option value="$PROJECT_DIR$/tpl_footer.php" />
-        <option value="$PROJECT_DIR$/index.php" />
         <option value="$PROJECT_DIR$/impact_ecosystem-vulnerability.php" />
         <option value="$PROJECT_DIR$/tpl_footer.html" />
         <option value="$PROJECT_DIR$/sample.chart.json" />
@@ -187,8 +223,10 @@
         <option value="$PROJECT_DIR$/functions.php" />
         <option value="$PROJECT_DIR$/resources/js/location.js" />
         <option value="$PROJECT_DIR$/test.txt" />
-        <option value="$PROJECT_DIR$/template/header.php" />
         <option value="$PROJECT_DIR$/resources/js/variables.js" />
+        <option value="$PROJECT_DIR$/topic.php" />
+        <option value="$PROJECT_DIR$/template/header.php" />
+        <option value="$PROJECT_DIR$/index.php" />
         <option value="$PROJECT_DIR$/resources/data/data-grouped.json" />
       </list>
     </option>
@@ -298,6 +336,38 @@
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="data" />
+              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Climate_Explorer" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Climate_Explorer" />
+              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="manager" />
+              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Climate_Explorer" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Climate_Explorer" />
+              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="manager" />
+              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="jsoneditor" />
               <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
             </PATH_ELEMENT>
           </PATH>
@@ -511,7 +581,7 @@
       <workItem from="1466430162812" duration="19000" />
       <workItem from="1466430201596" duration="36000" />
       <workItem from="1466430248728" duration="3162000" />
-      <workItem from="1466515746387" duration="3309000" />
+      <workItem from="1466515746387" duration="5987000" />
     </task>
     <task id="LOCAL-00001" summary="test">
       <created>1452891884032</created>
@@ -625,11 +695,25 @@
       <option name="project" value="LOCAL" />
       <updated>1458151548401</updated>
     </task>
-    <option name="localTasksCounter" value="17" />
+    <task id="LOCAL-00017" summary="spelling errors fixed&#10;punctuation fixed&#10;tiles.habitatseven.work references updated in data-grouped.json">
+      <created>1466519822899</created>
+      <option name="number" value="00017" />
+      <option name="presentableId" value="LOCAL-00017" />
+      <option name="project" value="LOCAL" />
+      <updated>1466519822899</updated>
+    </task>
+    <task id="LOCAL-00018" summary="http://take.ms/mBWck&#10;&#10;all references to habatatseven.com and tiles.habitatseven.work are now gone">
+      <created>1466519933144</created>
+      <option name="number" value="00018" />
+      <option name="presentableId" value="LOCAL-00018" />
+      <option name="project" value="LOCAL" />
+      <updated>1466519933144</updated>
+    </task>
+    <option name="localTasksCounter" value="19" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="29096000" />
+    <option name="totallyTimeSpent" value="31774000" />
   </component>
   <component name="TodoView" selected-index="1">
     <todo-panel id="selected-file">
@@ -723,7 +807,9 @@
     <MESSAGE value="testing geolocator" />
     <MESSAGE value="enabled cors in /resources/data via htaccess" />
     <MESSAGE value="enabled cors in /data via htaccess" />
-    <option name="LAST_COMMIT_MESSAGE" value="enabled cors in /data via htaccess" />
+    <MESSAGE value="spelling errors fixed&#10;punctuation fixed&#10;tiles.habitatseven.work references updated in data-grouped.json" />
+    <MESSAGE value="http://take.ms/mBWck&#10;&#10;all references to habatatseven.com and tiles.habitatseven.work are now gone" />
+    <option name="LAST_COMMIT_MESSAGE" value="http://take.ms/mBWck&#10;&#10;all references to habatatseven.com and tiles.habitatseven.work are now gone" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager />
@@ -804,7 +890,7 @@
         <state relative-caret-position="120">
           <caret line="10" column="24" selection-start-line="10" selection-start-column="24" selection-end-line="10" selection-end-column="24" />
           <folding>
-            <element signature="n#!!doc" expanded="true" />
+            <element signature="n#!!doc" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -846,7 +932,7 @@
         <state relative-caret-position="120">
           <caret line="10" column="24" selection-start-line="10" selection-start-column="24" selection-end-line="10" selection-end-column="24" />
           <folding>
-            <element signature="n#!!doc" expanded="true" />
+            <element signature="n#!!doc" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -866,14 +952,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="6" selection-start-line="0" selection-start-column="6" selection-end-line="0" selection-end-column="6" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/template/header.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="196">
-          <caret line="504" column="10" selection-start-line="504" selection-start-column="10" selection-end-line="504" selection-end-column="10" />
           <folding />
         </state>
       </provider>
@@ -906,10 +984,42 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/topic.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="347">
+          <caret line="100" column="0" selection-start-line="100" selection-start-column="0" selection-end-line="100" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/case.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="227">
+          <caret line="70" column="2" selection-start-line="70" selection-start-column="2" selection-end-line="70" selection-end-column="2" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/template/header.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="197">
+          <caret line="185" column="8" selection-start-line="185" selection-start-column="8" selection-end-line="185" selection-end-column="8" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/index.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="135">
+          <caret line="37" column="0" selection-start-line="37" selection-start-column="0" selection-end-line="48" selection-end-column="38" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/resources/data/data-grouped.json">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="212">
-          <caret line="200" column="19" selection-start-line="200" selection-start-column="19" selection-end-line="200" selection-end-column="19" />
+        <state relative-caret-position="197">
+          <caret line="97" column="29" selection-start-line="97" selection-start-column="29" selection-end-line="97" selection-end-column="29" />
           <folding />
         </state>
       </provider>

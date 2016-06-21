@@ -66,7 +66,7 @@
         },
         "group6": {
           "title": "Pollution Sources and Sea-Level Rise",
-          "description": "Explore greatest pollution sources and sea-level rise.",
+          "description": "Explore where sources of pollution may contaminate ecosystems if affected by sea level rise.",
           "layers": [
             "pollution_sources",
             "sea_level_rise"
@@ -95,7 +95,7 @@
         },
         "group2": {
           "title": "Pollution Sources and Sea-Level Rise",
-          "description": "Explore greatest pollution sources and sea-level rise.",
+          "description": "Explore where sources of pollution may contaminate ecosystems if affected by sea level rise.",
           "layers": [
             "pollution_sources",
             "sea_level_rise"

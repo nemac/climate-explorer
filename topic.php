@@ -60,7 +60,7 @@
             </div>
 
             <div id="subtopics-menu" class="white-menu">
-              <h4>Sub-topics</h4>
+              <h4>Impacts</h4>
               <ul id="subtopics-list">
 
               </ul>
@@ -87,7 +87,7 @@
 
       var html = '<article id="<?php echo $param ?>-' + i + '" class="topic-banner">'+
         '<div class="topic-banner-text">'+
-            '<h4>Sub-topic</h4>'+
+            '<h4>Impact</h4>'+
             '<h3><a href="case.php?id=<?php echo $param ?>&group='+i+'">'+group.title+'</a></h3>'+
             '<p>'+group.description+'</p>'+
         '</div>'+
