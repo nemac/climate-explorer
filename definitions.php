@@ -31,7 +31,7 @@
 
 </head>
 
-<body id="page-location-seattle" class="page-type-location">
+<body id="page-definitions" class="page-type-text">
 <div class="cd-cover-layer"></div>
 <?php include_once('template/header.php'); ?>
 

@@ -168,7 +168,19 @@
 
         $breadcrumb = '<a href="#nav-search" class="parent launch-nav" data-nav-slide="0"><span class="icon icon-district"></span>Location</a><span class="current">' . $_REQUEST['city'] . '</span>';
 
-      }  elseif (strpos(current_URL(), 'topic.php') !== false) {
+      } elseif (strpos(current_URL(), 'about.php') !== false) {
+
+        $breadcrumb = '<span class="current">About</span>';
+
+      } elseif (strpos(current_URL(), 'definitions.php') !== false) {
+
+        $breadcrumb = '<span class="current">Definitions</span>';
+
+      } elseif (strpos(current_URL(), 'credits.php') !== false) {
+
+        $breadcrumb = '<span class="current">Credits</span>';
+
+      } elseif (strpos(current_URL(), 'topic.php') !== false) {
 
         $current = $_REQUEST['param'];
         $current = str_replace("_", " ", $current);
