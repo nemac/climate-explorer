@@ -4770,7 +4770,11 @@ body.detail-open #nav-overlay {
   width: 60px;
   height: 60px;
 }
-/* line 138, ../scss/pages/_home.scss */
+/* line 137, ../scss/pages/_home.scss */
+#page-home #logos #global-change {
+  width: 120px;
+}
+/* line 142, ../scss/pages/_home.scss */
 #page-home #h7 {
   position: absolute;
   left: 0;
@@ -4781,17 +4785,17 @@ body.detail-open #nav-overlay {
   line-height: 1.25em;
   z-index: 3;
 }
-/* line 148, ../scss/pages/_home.scss */
+/* line 152, ../scss/pages/_home.scss */
 #page-home #h7 a {
   display: block;
   color: #233a70;
 }
-/* line 153, ../scss/pages/_home.scss */
+/* line 157, ../scss/pages/_home.scss */
 #page-home #h7 span {
   display: block;
   float: left;
 }
-/* line 158, ../scss/pages/_home.scss */
+/* line 162, ../scss/pages/_home.scss */
 #page-home #h7 .logo {
   width: 20px;
   height: 20px;
