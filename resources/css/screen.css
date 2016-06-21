@@ -6685,6 +6685,92 @@ body.detail-open #nav-overlay {
   margin-right: 10px;
 }
 
+/* line 710, ../scss/screen.scss */
+#standard-splash {
+  padding-bottom: 40px;
+}
+
+/* line 714, ../scss/screen.scss */
+#standard-body {
+  max-width: 75%;
+  padding-left: 4%;
+  padding-left: calc(4% + 10px);
+}
+/* line 719, ../scss/screen.scss */
+#standard-body a {
+  text-decoration: underline;
+}
+/* line 723, ../scss/screen.scss */
+#standard-body p {
+  line-height: 1.75em;
+  margin: 0 0 20px 0;
+}
+/* line 728, ../scss/screen.scss */
+#standard-body strong {
+  font-weight: 600;
+}
+/* line 732, ../scss/screen.scss */
+#standard-body h2 {
+  margin: 30px 0;
+  font-size: 2rem;
+  color: #0058cf;
+}
+/* line 738, ../scss/screen.scss */
+#standard-body h3 {
+  margin: 20px 0;
+  font-size: 1.75rem;
+  color: #f5442d;
+}
+/* line 744, ../scss/screen.scss */
+#standard-body h4 {
+  margin: 0 0 15px 0;
+  font-size: 1.25rem;
+  line-height: 1.375em;
+}
+/* line 750, ../scss/screen.scss */
+#standard-body ul, #standard-body ol {
+  margin: 0 20px 30px 20px;
+  padding: 0 0 0 30px;
+  font: 300 1rem/1.5em Roboto, Helvetica, "Helvetica Neue", Arial, sans-serif;
+}
+/* line 755, ../scss/screen.scss */
+#standard-body ul li, #standard-body ol li {
+  margin: 0 0 10px 0;
+}
+/* line 760, ../scss/screen.scss */
+#standard-body ol {
+  list-style-type: decimal;
+}
+/* line 764, ../scss/screen.scss */
+#standard-body li {
+  list-style-type: disc;
+}
+/* line 768, ../scss/screen.scss */
+#standard-body dl {
+  margin: 0 0 30px 0;
+  font: 300 1rem/1.5em Roboto, Helvetica, "Helvetica Neue", Arial, sans-serif;
+}
+/* line 772, ../scss/screen.scss */
+#standard-body dl dt {
+  margin: 0 0 15px 0;
+  padding-bottom: 10px;
+  border-bottom: 1px solid #ddd;
+  color: #444;
+  font-weight: 400;
+}
+/* line 780, ../scss/screen.scss */
+#standard-body dl dd {
+  margin: 0 0 25px 0;
+}
+/* line 785, ../scss/screen.scss */
+#standard-body hr {
+  display: block;
+  height: 3px;
+  margin: 60px 0;
+  border: none;
+  background: #f5442d;
+}
+
 /* line 1, ../scss/plugins/_shepherd-theme-arrows.scss */
 .shepherd-element, .shepherd-element:after, .shepherd-element:before, .shepherd-element *, .shepherd-element *:after, .shepherd-element *:before {
   box-sizing: border-box;
@@ -7254,12 +7340,12 @@ body.detail-open #nav-overlay {
   cursor: default;
 }
 
-/* line 721, ../scss/screen.scss */
+/* line 807, ../scss/screen.scss */
 .ui-slider-horizontal {
   height: 6px;
 }
 
-/* line 725, ../scss/screen.scss */
+/* line 811, ../scss/screen.scss */
 .ui-autocomplete {
   position: absolute;
   top: 0;
@@ -7267,7 +7353,7 @@ body.detail-open #nav-overlay {
   cursor: default;
 }
 
-/* line 732, ../scss/screen.scss */
+/* line 818, ../scss/screen.scss */
 .ui-menu {
   display: block;
   padding: 10px;
@@ -7279,18 +7365,18 @@ body.detail-open #nav-overlay {
   -webkit-box-shadow: 0 0 12px rgba(35, 58, 112, 0.25);
   box-shadow: 0 0 12px rgba(35, 58, 112, 0.25);
 }
-/* line 741, ../scss/screen.scss */
+/* line 827, ../scss/screen.scss */
 .ui-menu .ui-menu {
   position: absolute;
 }
-/* line 745, ../scss/screen.scss */
+/* line 831, ../scss/screen.scss */
 .ui-menu .ui-menu-item {
   position: relative;
   margin: 0;
   padding: 0;
   cursor: pointer;
 }
-/* line 752, ../scss/screen.scss */
+/* line 838, ../scss/screen.scss */
 .ui-menu .ui-menu-divider {
   margin: 5px 0;
   height: 0;
@@ -7299,7 +7385,7 @@ body.detail-open #nav-overlay {
   border-width: 1px 0 0 0;
 }
 
-/* line 763, ../scss/screen.scss */
+/* line 849, ../scss/screen.scss */
 .ui-accordion .ui-accordion-header .ui-accordion-header-icon {
   display: inline-block;
   position: static;
@@ -7441,13 +7527,13 @@ https://raw.github.com/shagstrom/split-pane/master/LICENSE
   cursor: row-resize;
 }
 
-/* line 777, ../scss/screen.scss */
+/* line 863, ../scss/screen.scss */
 .pretty-split-pane-frame .split-pane > .split-pane-divider.dragged.touch {
   background: blue;
   opacity: 0.25;
 }
 
-/* line 782, ../scss/screen.scss */
+/* line 868, ../scss/screen.scss */
 .split-pane-divider {
   right: 50%;
   width: 12px;
@@ -7457,7 +7543,7 @@ https://raw.github.com/shagstrom/split-pane/master/LICENSE
   box-shadow: 0 0 10px rgba(35, 58, 112, 0.25);
 }
 
-/* line 789, ../scss/screen.scss */
+/* line 875, ../scss/screen.scss */
 .pane-content {
   position: absolute;
   top: 0;
@@ -7467,13 +7553,13 @@ https://raw.github.com/shagstrom/split-pane/master/LICENSE
   overflow: auto;
 }
 
-/* line 794, ../scss/screen.scss */
+/* line 880, ../scss/screen.scss */
 #pane-left {
   right: 50%;
   margin-right: 12px;
 }
 
-/* line 799, ../scss/screen.scss */
+/* line 885, ../scss/screen.scss */
 #pane-right {
   width: 50%;
 }
