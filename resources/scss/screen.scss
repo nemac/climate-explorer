@@ -711,6 +711,13 @@ h6 {
 
 // STANDARD PAGE
 
+.page-type-text {
+  #viewport {
+    background-image: none;
+    background-color: transparentize($blue3, 0.5);
+  }
+}
+
 #standard-splash {
   padding-bottom: 40px;
 }
