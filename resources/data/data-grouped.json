@@ -100,14 +100,6 @@
             "pollution_sources",
             "sea_level_rise"
           ]
-        },
-        "group3": {
-          "title": "Critical Habitat and Temperatures",
-          "description": "Explore areas of critical habitat for threatened and endangered species. Check how future maximum temperatures are projected to change in these locations in the coming decades. ",
-          "layers": [
-            "critical_habitat",
-            "mean_daily_max"
-          ]
         }
       }
     },
@@ -183,14 +175,6 @@
           "layers": [
             "atlantic_fishing",
             "offshore_wind"
-          ]
-        },
-        "group2": {
-          "title": "Critical Habitat and Development",
-          "description": "Explore where areas of critical habitat are located offshore from recently developed land areas. Changes in sedimentation rates or introduction of pollution from land-based changes can stress habitat, increasing its vulnerability to climate-related threats.",
-          "layers": [
-            "critical_habitat",
-            "development"
           ]
         }
       }

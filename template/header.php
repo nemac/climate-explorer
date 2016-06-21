@@ -91,12 +91,12 @@
       'source' => 'NOAA, 2015'
     ),
 
-    array(
-      'variable' => 'energy',
-      'name' => 'Energy',
-      'detail' => "<p>As temperatures warm, demand for energy is expected to increase. Exposed energy infrastructure—particularly along our coasts—may lead to disruptions in energy supply. Managers of energy assets can check current flood hazards as well as visualizations of flooding from future sea level rise.</p>",
-      'source' => 'NOAA, 2015'
-    ),
+    // array(
+    //   'variable' => 'energy',
+    //   'name' => 'Energy',
+    //   'detail' => "<p>As temperatures warm, demand for energy is expected to increase. Exposed energy infrastructure—particularly along our coasts—may lead to disruptions in energy supply. Managers of energy assets can check current flood hazards as well as visualizations of flooding from future sea level rise.</p>",
+    //   'source' => 'NOAA, 2015'
+    // ),
 
     // array(
     //   'variable' => 'food',
@@ -153,7 +153,7 @@
 
     <nav id="subnav">
       <span id="subnav-trigger">More…</span>
-      
+
       <ul>
         <li><a href="#" id="tour-this-page"><span class="text">Tour This Page</span></a></li>
         <li><a href="about.php"><span class="text">About</span></a></li>
@@ -163,64 +163,64 @@
     </nav>
 
     <?php
-      
+
       if (strpos(current_URL(), 'location.php') !== false) {
-        
+
         $breadcrumb = '<a href="#nav-search" class="parent launch-nav" data-nav-slide="0"><span class="icon icon-district"></span>Location</a><span class="current">' . $_REQUEST['city'] . '</span>';
-        
+
       }  elseif (strpos(current_URL(), 'topic.php') !== false) {
-        
+
         $current = $_REQUEST['param'];
         $current = str_replace("_", " ", $current);
         $current = ucwords($current);
-        
+
         $breadcrumb = '<a href="#nav-topics" class="parent launch-nav" data-nav-slide="2"><span class="icon icon-bubble"></span>Topic</a><span class="current">' . $current . '</span>';
-        
+
       } elseif (strpos(current_URL(), 'case.php') !== false) {
-        
+
         $current = $_REQUEST['id'];
         $current = str_replace("_", " ", $current);
         $current = ucwords($current);
-        
+
         $breadcrumb = '<a href="#nav-topics" class="parent launch-nav" data-nav-slide="2"><span class="icon icon-bubble"></span>Topic</a><a href="./topic.php?param=' . $_REQUEST['id'] . '">' . $current . '</a><span class="current">Impact</span>';
-        
+
       } elseif (strpos(current_URL(), 'variables.php') !== false) {
-        
+
         echo $current;
-        
+
         switch ($_REQUEST['id']) {
           case 'tasmax' :
             $current = 'Mean Daily Maximum Temperature';
             break;
-          case 'tasmin' : 
+          case 'tasmin' :
             $current = 'Mean Daily Minimum Temperature';
             break;
-          case 'days_tmax_abv_35' : 
+          case 'days_tmax_abv_35' :
             $current = 'Days With Maximum Above 95°F';
             break;
-          case 'days_tmin_blw_0' : 
+          case 'days_tmin_blw_0' :
             $current = 'Days With Minimum Below 32°F';
             break;
-          case 'pr' : 
+          case 'pr' :
             $current = 'Mean Daily Precipitation';
             break;
-          case 'pr_above' : 
+          case 'pr_above' :
             $current = 'Days of Precipitation Above 1 Inch';
             break;
-          case 'heating_degree_day_18' : 
+          case 'heating_degree_day_18' :
             $current = 'Heating Degree Days';
             break;
-          case 'cooling_degree_day_18' : 
+          case 'cooling_degree_day_18' :
             $current = 'Cooling Degree Days';
             break;
         }
-        
+
         $breadcrumb = '<a href="#nav-variables" class="parent launch-nav" data-nav-slide="1"><span class="icon icon-bubble"></span>Variable</a><span class="current">' . $current . '</span>';
-        
+
       }
-      
+
     ?>
-    
+
     <div id="breadcrumb">
       <a href="./"><span class="icon icon-arrow-up"></span>Home</a><?php echo $breadcrumb; ?>
     </div>
