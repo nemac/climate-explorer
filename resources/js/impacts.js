@@ -385,7 +385,9 @@ Impacts.prototype.createLegend = function() {
         '<div class="info-accordion">'+
           '<h4>Layer description</h4>'+
           '<div>'+
-            '<p>'+self.data.layers[id].description+'</p>'+
+            '<p>'+self.data.layers[id].description+
+            '<a href="'+self.data.layers[id].source+'" class="source-link">Source</a>'+
+            '</p>'+
           '</div>'+
 
           '<h4>Legend</h4>'+

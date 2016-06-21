@@ -6641,6 +6641,13 @@ body.detail-open #nav-overlay {
   margin: 0 0 12px 0;
 }
 /* line 157, ../scss/pages/_case.scss */
+.page-type-case #case-menu .legend .layer-info .source-link {
+  padding: 0;
+  background: transparent;
+  color: blue;
+  display: inline;
+}
+/* line 164, ../scss/pages/_case.scss */
 .page-type-case #case-menu .legend .layer-info .opacity-slider-wrap {
   margin: 5% 0;
 }
@@ -6653,20 +6660,20 @@ body.detail-open #nav-overlay {
 .page-type-case #case-menu .legend .layer-info .opacity-slider-wrap:after {
   clear: both;
 }
-/* line 161, ../scss/pages/_case.scss */
+/* line 168, ../scss/pages/_case.scss */
 .page-type-case #case-menu .legend .layer-info .opacity-slider-wrap h4 {
   float: left;
   width: 25%;
   font: 0.875rem/1em Roboto, Helvetica, "Helvetica Neue", Arial, sans-serif;
 }
-/* line 167, ../scss/pages/_case.scss */
+/* line 174, ../scss/pages/_case.scss */
 .page-type-case #case-menu .legend .layer-info .opacity-slider-wrap .opacity-slider {
   position: relative;
   float: left;
   width: 75%;
   margin-top: 3px;
 }
-/* line 176, ../scss/pages/_case.scss */
+/* line 183, ../scss/pages/_case.scss */
 .page-type-case #case-menu .legend .layer-info .info-accordion h4 {
   padding: 10px 0;
   outline: none;
@@ -6675,15 +6682,15 @@ body.detail-open #nav-overlay {
   -webkit-transition: 0.25s;
   transition: 0.25s;
 }
-/* line 181, ../scss/pages/_case.scss */
+/* line 188, ../scss/pages/_case.scss */
 .page-type-case #case-menu .legend .layer-info .info-accordion h4.ui-accordion-header-active {
   color: #f5442d;
 }
-/* line 187, ../scss/pages/_case.scss */
+/* line 194, ../scss/pages/_case.scss */
 .page-type-case #case-menu .legend .layer-info .actions {
   text-align: right;
 }
-/* line 190, ../scss/pages/_case.scss */
+/* line 197, ../scss/pages/_case.scss */
 .page-type-case #case-menu .legend .layer-info .actions a {
   display: inline-block;
   margin: 0 0 0 10px;
@@ -6691,7 +6698,7 @@ body.detail-open #nav-overlay {
   background: #d5e8f2;
   color: #0058cf;
 }
-/* line 197, ../scss/pages/_case.scss */
+/* line 204, ../scss/pages/_case.scss */
 .page-type-case #case-menu .legend .layer-info .actions a .icon {
   margin-right: 10px;
 }

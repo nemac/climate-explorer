@@ -154,6 +154,13 @@
           margin: 0 0 12px 0;
         }
         
+        .source-link {
+        padding: 0;
+          background: transparent;
+          color: blue;
+          display: inline;
+        }
+        
         .opacity-slider-wrap {
           margin: 5% 0;
           @include legacy-clearfix;
