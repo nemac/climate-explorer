@@ -253,7 +253,9 @@ input.location-mapper:focus:-ms-input-placeholder {
   border-left-color: #FFF;
 }
 
-
+#topic-legends img {
+  float:left;
+}
 
 .page-type-location .moveable, .page-type-location .year {
   display: none;
