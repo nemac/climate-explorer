@@ -1,3 +1,7 @@
+<div id="desktop-warning">
+  <p>The Climate Explorer is optimized for desktop use. Please visit the site on a desktop computer.</p>
+</div>
+
 <!-- START:JS_LOADER -->
 
 <script type="text/javascript" src="./resources/js/lodash.js"></script>
