@@ -39,19 +39,20 @@ $case =  filter_var($case, FILTER_SANITIZE_STRING);
   <body id="page-fire-regimes" class="page-type-case">
     <div class="cd-cover-layer"></div>
     <?php include_once('template/header.php'); ?>
-    
+
     <header id="left-header">
       <span class="trigger icon icon-close" id="left-header-trigger"></span>
-        
+
       <ul id="case-menu" class="menu orange-menu">
         <li class="search-field border" id="search-by-location"><span class="icon icon-search"></span><input type="text" id="formmapper" placeholder="Search by location"></li>
       </ul>
-  
+
       <div id="vars-legend" class="legend-wrap left-filler">
-        <h6 class="source">Source: <a href="#" target="_blank">NOAA, 2014</a></h6>
+
+        <div id="topic-legends"></div>
       </div>
     </header>
-    
+
     <div id="viewport">
       <div id="main-content-wrap">
         <div class="moveable" id="sliderDiv" style="display:none">
@@ -60,15 +61,15 @@ $case =  filter_var($case, FILTER_SANITIZE_STRING);
             <div class="emissions-high">Higher Emissions</div>
           </div>
         </div>
-  
+
         <div id="map" class="map"></div>
-  
+
         <div class="year" id="year-slider-container" style="display:none">
           <div class="year-label year-min">1950</div>
           <div class="" id="variable-time-slider" data-min="1950" data-max="2090" data-value="2010"></div>
           <div class="year-label year-max">2090</div>
         </div>
-  
+
         <div class="zoom">
           <div class="zoom-slider" data-value="1"></div>
           <div class="ui-slider-label zoom-label plus"></div>
@@ -78,10 +79,10 @@ $case =  filter_var($case, FILTER_SANITIZE_STRING);
         <?php include_once('template/share.php'); ?>
       </div>
     </div>
-    
+
     <!-- <a href="#" id="district-trigger"><span class="text">Show District Overlay</span><span class="icon icon-district"></span></a> -->
-    
+
     <?php include_once('template/footer.php'); ?>
-  
+
   </body>
 </html>

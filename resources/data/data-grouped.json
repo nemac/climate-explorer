@@ -282,7 +282,7 @@
       "title": "Weather Stations",
       "description": "Check how observed temperature and precipitation measurements compare to long-term averages at weather stations near your area of interest. Look for times when temperatures are above average and/or precipitation is below average for weeks at a time: these indicate times that drought conditions may develop.",
       "source": "",
-      "legend": "",
+      "legend": "resources/img/weather_stations",
       "url": "resources/data/wx_stations.json",
       "options": {},
       "defaults": {
@@ -295,7 +295,7 @@
       "title": "BIA Indian Lands",
       "description": "This layer shows  American Indian Reservations, Federally Recognized Tribal Entities, and Alaska Native Villages in the contiguous U.S. and Alaska.",
       "source": "https://catalog.data.gov/dataset/bia-indian-lands-dataset-indian-lands-of-the-united-states",
-      "legend": "",
+      "legend": "resources/img/bia_indian_lands",
       "url": "http://gis.wim.usgs.gov/arcgis/rest/services/AIR_NDGA/AIR_NDGA/MapServer",
       "options": {},
       "defaults": {
@@ -308,7 +308,7 @@
       "title": "September Arctic Sea Ice",
       "description": "View how Arctic sea ice—shown in September of each year from 2000-2015 has changed over time. Reduced sea ice restricts the range of subsistence hunters, and exposes the coast to erosion.",
       "source": "",
-      "legend": "",
+      "legend": "resources/img/september_arctic_sea_ice",
       "url": "",
       "options": {},
       "defaults": {
@@ -321,7 +321,7 @@
       "title": "Energy Infrastructure",
       "description": "Check the locations of power plants and oil and gas refineries. View the paths of pipelines that transport energy materials and transmission wires that distribute electricity.",
       "source": "",
-      "legend": "",
+      "legend": "resources/img/energy_infrastructure",
       "url": "https://eia-ms.esri.com/arcgis/rest/services/20160309StateEnergyProfilesMap/MapServer",
       "options": {
         "layer": "6"
@@ -336,7 +336,7 @@
       "title": "Permafrost",
       "description": "Check where the ground is currently considered to be “permanently” frozen. Thawing permafrost can result in damage to infrastructure when the ground surface becomes uneven or unstable. Permafrost is categorized as continuous, discontinuous, sporadic, or isolated, based on its areal extent.",
       "source": "",
-      "legend": "",
+      "legend": "resources/img/permafrost",
       "url": "https://nsidc.org/cgi-bin/atlas_north?service=WMS&request=GetCapabilities",
       "options": {
         "version": "1.1.1"
@@ -351,7 +351,7 @@
       "title": "Critical Coastal Facilities",
       "description": "View locations of hospitals, schools, and fire and police stations along the Atlantic and Gulf Coasts. If flooded, these structures present an immediate threat to life, public health, and safety.",
       "source": "",
-      "legend": "",
+      "legend": "resources/img/critical_coastal_facilities",
       "url": "http://services.nationalmap.gov/arcgis/rest/services/structures/MapServer",
       "options": {
         "layer": "4"
@@ -366,7 +366,7 @@
       "title": "Sea Level Rise (For 1 to 6 Feet) ",
       "description": "View areas that will be covered by seawater during high tides after the indicated amount of local sea level rise. A few inches of water will cover the lightest blue areas; water will be deeper where the map is dark blue. Bright green areas will be below sea level, but are not connected to the ocean. Visualize changes over time by turning on progressively higher sea levels.",
       "source": "https://catalog.data.gov/dataset/noaa-digital-coast-sea-level-rise-and-coastal-flooding-impacts-viewer",
-      "legend": "",
+      "legend": "resources/img/sea_level_rise",
       "sublayers": [
         {
           "type": "ArcGISRest",
@@ -439,7 +439,7 @@
       "title": "Development Density",
       "description": "View the intensity of development across land based on the percentage of constructed versus natural materials at each location. Areas that are essentially covered by buildings are classified as high intensity development. Parks and other areas with less than 20 percent constructed materials are considered as open space.",
       "source": "https://coast.noaa.gov/floodexposure/#/services#infrastructure-exposure",
-      "legend": "",
+      "legend": "resources/img/development_density",
       "url": "https://coast.noaa.gov/arcgis/rest/services/FloodExposureMapper/CFEM_LandCover_Developed/MapServer",
       "options": {
       },
@@ -453,7 +453,7 @@
       "title": "Shallow Coastal Flooding",
       "description": "View coastal areas susceptible to flooding during high tide. These “nuisance” floods can occur during very high tides, or when distant winds push seawater onto land.",
       "source": "",
-      "legend": "",
+      "legend": "resources/img/shallow_coastal_flooding",
       "url": "https://coast.noaa.gov/arcgis/rest/services/FloodExposureMapper/CFEM_ShallowCoastalFlooding/MapServer",
       "options": {
         "layer": "show:34"
@@ -468,7 +468,7 @@
       "title": "Public Attractions",
       "description": "View non-emergency structures catalogued in the National Map.",
       "source": "",
-      "legend": "",
+      "legend": "resources/img/public_attractions",
       "url": "http://services.nationalmap.gov/arcgis/rest/services/structures/MapServer",
       "options": {},
       "defaults": {
@@ -481,7 +481,7 @@
       "title": "Coastal Vulnerability Index",
       "description": "Check which coastal areas are most susceptible to change as a result of sea level rise. Index values are based on physical parameters such as the shape of the coast, tidal range, and average wave heights.",
       "source": "",
-      "legend": "",
+      "legend": "resources/img/coastal_vulnerability_index",
       "url": "http://coastalmap.marine.usgs.gov/cmgp/rest/services/National/coastal_vulnerability_index/MapServer",
       "options": {
       },
@@ -495,7 +495,7 @@
       "title": "Hurricane Evacuation Routes",
       "description": "View major roads designated as hurricane evacuation routes.",
       "source": "https://catalog.data.gov/dataset/hurricane-evacuation-routes-ac5c5",
-      "legend": "",
+      "legend": "resources/img/hurricane_evacuation",
       "url": "http://gis.fema.gov/REST/services/FEMA/EvacRoutes/MapServer",
       "options": {
       },
@@ -509,7 +509,7 @@
       "title": "Storm Surge (Categories 1-5)",
       "description": "View potential inundation due to storm-surge flooding from landfalling hurricanes of categories 1-5.",
       "source": "https://coast.noaa.gov/floodexposure/#/services#flood-hazards",
-      "legend": "",
+      "legend": "resources/img/storm_surge",
       "sublayers": [
         {
           "type": "StormSurge",
@@ -572,7 +572,7 @@
       "title": "Coastal Power Plants",
       "description": "View locations and types of power plants along the U.S. coast and Great Lakes.",
       "source": "https://catalog.data.gov/dataset/coastal-energy-facilities",
-      "legend": "",
+      "legend": "resources/img/coastal_power_plants",
       "url": "https://coast.noaa.gov/arcgis/rest/services/MarineCadastre/OceanEnergy/MapServer",
       "options": {
         "layer": "6"
@@ -587,7 +587,7 @@
       "title": "Coastal Wetlands",
       "description": "View wetlands and other natural areas along the coast.",
       "source": "https://coast.noaa.gov/floodexposure/#/services#flood-hazards",
-      "legend": "",
+      "legend": "resources/img/coastal_wetlands",
       "url": "https://coast.noaa.gov/arcgis/rest/services/FloodExposureMapper/CFEM_NaturalAreasOpenSpace/MapServer",
       "options": {
         "layer": "show:9"
@@ -602,7 +602,7 @@
       "title": "Flood Hazard Zones",
       "description": "Check which local areas have been designated by FEMA to be at risk of flooding. Aqua areas show land judged to have a 1% chance of flooding each year; this area is also known as the base flood zone or 100-year flood zone. Colors and patterns also indicate floodways and other hazard areas.",
       "source": "",
-      "legend": "",
+      "legend": "resources/img/flood_hazard_zones",
       "url": "https://hazards.fema.gov/gis/nfhl/services/public/NFHLWMS/MapServer/WmsServer",
       "options": {
       },
@@ -616,7 +616,7 @@
       "title": "Potential Pollution Sources",
       "description": "View facilities, sites, or places subject to environmental regulation or of environmental interest such as Brownfield properties, hazardous waste sites, Superfund sites, and toxic chemicals.",
       "source": "https://coast.noaa.gov/floodexposure/#/services#infrastructure-exposure",
-      "legend": "",
+      "legend": "resources/img/pollution_sources",
       "url": "https://coast.noaa.gov/arcgis/rest/services/FloodExposureMapper/CFEM_EPA_FRSPoints/MapServer",
       "options": {
       },
@@ -630,7 +630,7 @@
       "title": "Critical Habitat",
       "description": "View the location of habitat designated as critical in order to preserve the ecosystems where threatened and endangered species live.",
       "source": "",
-      "legend": "",
+      "legend": "resources/img/critical_habitat",
       "url": "http://maps1.arcgisonline.com/ArcGIS/rest/services/USFWS_Critical_Habitat/MapServer",
       "options": {
       },
@@ -644,7 +644,7 @@
       "title": "Mean Daily Max Temperature",
       "description": "Maximum temperatures are one indicator of conditions that can interfere with ecosystem functions. View how temperatures are projected to change during future decades.",
       "source": "http://catalog.data.gov/dataset/bias-corrected-constructed-analogs-v2-daily-climate-projections",
-      "legend": "",
+      "legend": "resources/img/mean_daily_max",
       "url": "https://s3.amazonaws.com/climate-explorer-bucket/tilesets/2090-summer-rcp85-tasmax/{z}/{x}/{y}.png",
       "options": {
       },
@@ -658,7 +658,7 @@
       "title": "Mean Daily Min Temperature",
       "description": "Minimum temperatures are one indicator of conditions that can interfere with ecosystem functions. View how temperatures are projected to change during future decades.",
       "source": "http://catalog.data.gov/dataset/bias-corrected-constructed-analogs-v2-daily-climate-projections",
-      "legend": "",
+      "legend": "resources/img/mean_daily_min",
       "url": "https://s3.amazonaws.com/climate-explorer-bucket/tilesets/2090-summer-rcp85-tasmin/{z}/{x}/{y}.png",
       "options": {
       },
@@ -672,7 +672,7 @@
       "title": "National Forests",
       "description": "View the location and extent of lands designated as National Forests.",
       "source": "",
-      "legend": "",
+      "legend": "resources/img/national_forests",
       "url": "",
       "options": {
       },
@@ -686,7 +686,7 @@
       "title": "Days below 32 degrees",
       "description": "View how the number of days per year with below-freezing temperatures decreases over time.",
       "source": "",
-      "legend": "",
+      "legend": "resources/img/days_tmin_blw_0",
       "url": "https://s3.amazonaws.com/climate-explorer-bucket/tilesets/2090-annual-rcp45-days-tmin-blw/{z}/{x}/{y}.png",
       "options": {
       },
@@ -700,7 +700,7 @@
       "title": "Power Plants",
       "description": "View the locations and types of power plants.",
       "source": "http://www.eia.gov/state/",
-      "legend": "",
+      "legend": "resources/img/power_plants",
       "url": "https://eia-ms.esri.com/arcgis/rest/services/20160309StateEnergyProfilesMap/MapServer",
       "options": {
       },
@@ -714,7 +714,7 @@
       "title": "Heating Degree Days",
       "description": "View how demand for energy to heat homes and businesses during cool seasons decreases in future decades.",
       "source": "",
-      "legend": "",
+      "legend": "resources/img/heating_degree_day_18",
       "url": "https://s3.amazonaws.com/climate-explorer-bucket/tilesets/2090-annual-rcp45-heating-degree-day/{z}/{x}/{y}.png",
       "options": {
       },
@@ -728,7 +728,7 @@
       "title": "Cropland",
       "description": "View the types of crops in place during the previous main growing season.",
       "source": "",
-      "legend": "",
+      "legend": "resources/img/cropland",
       "url": "http://crop.csiss.gmu.edu/cgi-bin/wms_cdlall.cgi",
       "options": {
         "layer": "cdl_2015",
@@ -744,7 +744,7 @@
       "title": "Current Drought",
       "description": "Examine where the amount of water available in soils, streams, and lakes is lower than usual for this time of year. In this weekly map, the darker the color, the more severe the lack of moisture. Depending on how severe it is and how long it lasts, drought can devastate crops and forests, lead to food shortages for livestock and wildlife, increase risks for wildfires, and have a negative effect on local and regional economies.",
       "source": "",
-      "legend": "",
+      "legend": "resources/img/drought",
       "url": "http://torka.unl.edu:8080/cgi-bin/mapserv.exe?map=/ms4w/apps/dm/service/usdm_current_wms.map",
       "options": {
         "layer": "usdm_current",
@@ -760,7 +760,7 @@
       "title": "Chickens per 100 Acres Farmland",
       "description": "Explore areas where relatively large numbers of chickens are raised for meat.",
       "source": "",
-      "legend": "",
+      "legend": "resources/img/chickens",
       "url": "http://gis.ers.usda.gov/arcgis/rest/services/NASS/livestockanimals/MapServer",
       "options": {
         "layer": "show:23"
@@ -775,7 +775,7 @@
       "title": "Mooring Facilities",
       "description": "View locations along inland rivers where barges can anchor to take on goods such as grains from elevators.",
       "source": "",
-      "legend": "",
+      "legend": "resources/img/mooring",
       "url": "https://services2.arcgis.com/1cdV1mIckpAyI7Wo/ArcGIS/rest/services/Mooring_Facility_Locations_%28USACE_IENC%29/FeatureServer",
       "options": {
         "layer": "show:23"
@@ -790,7 +790,7 @@
       "title": "Hospitals",
       "description": "View the location of hospitals: explore which are vulnerable to sea level rise or other flood hazards",
       "source": "",
-      "legend": "",
+      "legend": "resources/img/hospitals",
       "url": "http://services.nationalmap.gov/arcgis/rest/services/structures/MapServer/",
       "options": {
         "layer": "show:3"
@@ -805,7 +805,7 @@
       "title": "Severe Weather",
       "description": "Explore locations that have the potential for heavy precipitation, flooding, or severe weather over the next 3-7 days.",
       "source": "",
-      "legend": "",
+      "legend": "resources/img/severe_weather",
       "url": "http://idpgis.ncep.noaa.gov/arcgis/rest/services/NWS_Climate_Outlooks/cpc_weather_hazards/MapServer",
       "options": {
         "layer": "show:4"
@@ -820,7 +820,7 @@
       "title": "Percent Poverty",
       "description": "Colors show the ercent of population below the poverty threshold in 2000. The darker the color, the higher the percentage of people in poverty. Communities with high percentages of poor residents may need support in preparing for hazards, or recovering from disaster.",
       "source": "https://coast.noaa.gov/floodexposure/#/services#flood-hazards",
-      "legend": "",
+      "legend": "resources/img/percent_poverty",
       "url": "http://sedac.ciesin.org/geoserver/ows",
       "options": {
         "layer": "usgrid:usgrid-summary-file3-2000_usa-pctpopbelowpovlevel-2000",
@@ -836,7 +836,7 @@
       "title": "Cooling Degree Days",
       "description": "View how demand for energy to cool homes and businesses during the warm season increases in the future. Consider how people who don’t have access to air conditioning will fare.",
       "source": "http://catalog.data.gov/dataset/bias-corrected-constructed-analogs-v2-daily-climate-projections",
-      "legend": "",
+      "legend": "resources/img/cooling_degree_day_18",
       "url": "https://s3.amazonaws.com/climate-explorer-bucket/tilesets/2090-annual-rcp45-cooling-degree-day/{z}/{x}/{y}.png",
       "options": {
       },
@@ -850,6 +850,7 @@
       "title": "Percent Elderly",
       "description": "View the percent of population aged 65-79 in 2000. The darker the color, the higher the percentage of elderly people in the population. Communities with elevated social vulnerability (as measured by the U.S. Census) may need support in preparing for hazards, or recovering from disaster.",
       "source": "https://coast.noaa.gov/floodexposure/#/services#flood-hazards",
+      "legend": "resources/img/percent_elderly",
       "url": "http://sedac.ciesin.org/geoserver/ows",
       "options": {
         "type": "geoserver",
@@ -865,7 +866,7 @@
       "title": "Days Above 95 Degrees F",
       "description": "View how the number of days per year with temperatures over 95°F increases during future decades.",
       "source": "http://catalog.data.gov/dataset/bias-corrected-constructed-analogs-v2-daily-climate-projections",
-      "legend": "",
+      "legend": "resources/img/days_tmax_abv_35",
       "url": "https://s3.amazonaws.com/climate-explorer-bucket/tilesets/2090-annual-rcp85-days-tmax-abv/{z}/{x}/{y}.png",
       "options": {
       },
@@ -879,7 +880,7 @@
       "title": "Atlantic Fishing Revenue Intensity",
       "description": "View the mean annual economic revenue from all fishing activities for areas in the Atlantic Ocean (measured from 2007 to 2012).",
       "source": "",
-      "legend": "",
+      "legend": "resources/img/atlantic_fishing",
       "url": "https://coast.noaa.gov/arcgis/rest/services/MarineCadastre/BOEM_Layers/MapServer",
       "options": {
         "layer": "show:7"
@@ -894,7 +895,7 @@
       "title": "Offshore Wind Potential",
       "description": "View average annual wind speed off the coast of the United States.",
       "source": "",
-      "legend": "",
+      "legend": "resources/img/offshore_wind",
       "url": "https://coast.noaa.gov/arcgis/rest/services/MarineCadastre/OffshoreWindResourcePotential/MapServer",
       "options": {
       },
@@ -908,7 +909,7 @@
       "title": "Areas Converted to Development",
       "description": "View areas converted to development between 1996 and 2011.",
       "source": "",
-      "legend": "",
+      "legend": "resources/img/development",
       "url": "https://coast.noaa.gov/arcgis/rest/services/FloodExposureMapper/CFEM_LandCover_19962010Change/MapServer",
       "options": {
       },
@@ -922,7 +923,7 @@
       "title": "Transportation System",
       "description": "View the locations of elements of the transportation system.",
       "source": "https://catalog.data.gov/dataset/the-national-map-viewer-and-download-platform",
-      "legend": "",
+      "legend": "resources/img/transportation_system",
       "url": "http://services.nationalmap.gov/arcgis/rest/services/transportation/MapServer",
       "options": {
       },
@@ -936,7 +937,7 @@
       "title": "Watersheds",
       "description": "View watershed boundaries and the streams and rivers that drain them.",
       "source": "",
-      "legend": "",
+      "legend": "resources/img/watersheds",
       "url": "http://basemap.nationalmap.gov/arcgis/rest/services/USGSHydroNHD/MapServer",
       "options": {
       },
@@ -950,7 +951,7 @@
       "title": "Outlook for Significant River Flooding",
       "description": "Check the general outlook for significant rizver flooding. Note that this layer does not depict all areas of minor flooding or small-scale events such as localized flooding and/or flash flooding.",
       "source": "http://www.wpc.ncep.noaa.gov/nationalfloodoutlook/",
-      "legend": "",
+      "legend": "resources/img/river_flooding",
       "url": "http://idpgis.ncep.noaa.gov/arcgis/rest/services/NWS_Forecasts_Guidance_Warnings/sig_riv_fld_outlk/MapServer",
       "options": {
       },
@@ -964,7 +965,7 @@
       "title": "Populaton Density",
       "description": "Find centers of population across the Arctic in this global map layer.",
       "source": "https://catalog.data.gov/dataset/global-rural-urban-mapping-project-grump-alpha-version",
-      "legend": "",
+      "legend": "resources/img/population_density",
       "url": "https://sedac.ciesin.columbia.edu/geoserver/wms",
       "options": {
         "layer": "grump-v1:grump-v1-population-density_2000",
@@ -981,7 +982,7 @@
       "title": "Wildland/Urban Interface",
       "description": "View areas where housing extends through forested land, resulting in increased risk of fire for both. The maps shows area of land where a minimum spatial density of housing intersects with a map of wildfire hazards.",
       "source": "",
-      "legend": "",
+      "legend": "resources/img/wildland_urban",
       "url": "http://maps1.arcgisonline.com/ArcGIS/rest/services/FHTET_Wildland_Urban_Interface/MapServer",
       "options": {
       },
