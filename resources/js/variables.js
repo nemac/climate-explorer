@@ -160,14 +160,13 @@ Variables.prototype.createMap = function () {
         ]),
         target: 'variable-map',
         layers: [
-            new ol.layer.Tile({
-                source: new ol.source.XYZ({
-                    url: 'http://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}.png',
-                    attributions: [new ol.Attribution({html: ['&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors, &copy; <a href="http://cartodb.com/attributions">CartoDB</a>']})],
-                    maxZoom: 19
-                })
+          new ol.layer.Tile({
+            source: new ol.source.XYZ({
+              url: 'http://services.arcgisonline.com/arcgis/rest/services/Canvas/World_Light_Gray_Base/MapServer/tile/{z}/{y}/{x}',
+              attributions: [new ol.Attribution({html: ['&copy; Esri, HERE, DeLorme, MapmyIndia, © OpenStreetMap contributors, and the GIS user community ']})],
+              maxZoom: 19
             })
-
+          })
         ],
         view: view
     });
@@ -813,10 +812,15 @@ Variables.prototype.updateTiledLayer = function (replace, preserveTime) {
     } //don't add twice!
     this.nameLayer = new ol.layer.Tile({
         source: new ol.source.XYZ({
-            url: 'http://{s}.basemaps.cartocdn.com/light_only_labels/{z}/{x}/{y}.png',
-            subdomains: 'abcd',
-            attributions: [new ol.Attribution({html: ['&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors, &copy; <a href="http://cartodb.com/attributions">CartoDB</a>']})]
+            url: 'http://services.arcgisonline.com/ArcGIS/rest/services/Canvas/World_Light_Gray_Reference/MapServer/tile/{z}/{y}/{x}',
+            attributions: [new ol.Attribution({html: ['']})],
+            maxZoom: 19
         })
+        // source: new ol.source.XYZ({
+        //     url: 'http://{s}.basemaps.cartocdn.com/light_only_labels/{z}/{x}/{y}.png',
+        //     subdomains: 'abcd',
+        //     attributions: [new ol.Attribution({html: ['&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors, &copy; <a href="http://cartodb.com/attributions">CartoDB</a>']})]
+        // })
     });
 
     this.nameLayer.set('layer_id', 'name_layer');
