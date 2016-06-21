@@ -25,8 +25,8 @@
       "description": "As sea level rises, so do instances of flooding along the coast. Rising waters increasingly threaten buildings and infrastructure through storm surge, strong waves, heavy precipitation, and high-tide \"nuisance\" flooding. Property owners and municipalities can check their vulnerability to coastal flooding from current flood hazards as well as future sea level rise.",
       "groups": {
         "group1": {
-          "title": "Development and Sea-Level Rise",
-          "description": "Explore what development is threatened by sea-level rise.",
+          "title": "Development and Sea Level Rise",
+          "description": "Explore what development is threatened by sea level rise.",
           "layers": [
             "sea_level_rise",
             "development_density"
@@ -49,23 +49,23 @@
           ]
         },
         "group4": {
-          "title": "Coastal Power and Sea-Level Rise",
-          "description": "Explore which coastal power plants are threatened by sea-level rise.",
+          "title": "Coastal Power and Sea Level Rise",
+          "description": "Explore which coastal power plants are threatened by sea level rise.",
           "layers": [
             "coastal_power_plants",
             "sea_level_rise"
           ]
         },
         "group5": {
-          "title": "Coastal Wetlands and Sea-Level Rise",
-          "description": "Explore coastal wetlands and sea-level rise.",
+          "title": "Coastal Wetlands and Sea Level Rise",
+          "description": "Explore coastal wetlands and sea level rise.",
           "layers": [
             "coastal_wetlands",
             "sea_level_rise"
           ]
         },
         "group6": {
-          "title": "Pollution Sources and Sea-Level Rise",
+          "title": "Pollution Sources and Sea Level Rise",
           "description": "Explore where sources of pollution may contaminate ecosystems if affected by sea level rise.",
           "layers": [
             "pollution_sources",
@@ -73,8 +73,8 @@
           ]
         },
         "group7": {
-          "title": "Transportation and Sea-Level Rise",
-          "description": "Explore Transportation and sea-level rise.",
+          "title": "Transportation and Sea Level Rise",
+          "description": "Explore Transportation and sea level rise.",
           "layers": [
             "transportation_system",
             "sea_level_rise"
@@ -86,15 +86,15 @@
       "description": "Ecosystems that serve as natural sources of food, timber, and clean water are increasingly threatened by changing conditions. View landcover, wetlands, and rivers & streams to visualize the location and extent of land-based ecosystems. Compare these locations to climate stressors such as sea level rise and drought.",
       "groups": {
         "group1": {
-          "title": "Coastal Wetlands and Sea-Level Rise",
-          "description": "Explore how wetlands, natural areas, and open spaces along coasts are threatened by sea-level rise.",
+          "title": "Coastal Wetlands and Sea Level Rise",
+          "description": "Explore how wetlands, natural areas, and open spaces along coasts are threatened by sea level rise.",
           "layers": [
             "coastal_wetlands",
             "sea_level_rise"
           ]
         },
         "group2": {
-          "title": "Pollution Sources and Sea-Level Rise",
+          "title": "Pollution Sources and Sea Level Rise",
           "description": "Explore where sources of pollution may contaminate ecosystems if affected by sea level rise.",
           "layers": [
             "pollution_sources",
@@ -115,8 +115,8 @@
       "description": "As temperatures warm, demand for energy is expected to increase. Exposed energy infrastructure—particularly along our coasts—may lead to disruptions in energy supply. Managers of energy assets can check current flood hazards as well as visualizations of flooding from future sea level rise.",
       "groups": {
         "group1": {
-          "title": "Power Plants and Sea-Level Rise",
-          "description": "Explore where power plants are threatened by sea-level rise.",
+          "title": "Power Plants and Sea Level Rise",
+          "description": "Explore where power plants are threatened by sea level rise.",
           "layers": [
             "sea_level_rise",
             "power_plants"
@@ -228,8 +228,8 @@
       "description": "Climate change increasingly impacts land, foods, and lifestyles of American Indians. Survey the extent of Indian land and explore landcover and social vulnerability in these locations. Check the land's vulnerability to climate stressors such as sea level rise, flood hazards, and drought.",
       "groups": {
         "group1": {
-          "title": "Tribal Nations and Sea-Level Rise",
-          "description": "Explore BIA Indian lands in the Pacific Northwest that are threatened by sea-level rise.",
+          "title": "Tribal Nations and Sea Level Rise",
+          "description": "Explore BIA Indian lands in the Pacific Northwest that are threatened by sea level rise.",
           "layers": [
             "bia_indian_lands",
             "sea_level_rise"
@@ -475,7 +475,7 @@
       "type": "ArcGISRest",
       "id": "coastal_vulnerability_index",
       "title": "Coastal Vulnerability Index",
-      "description": "Check which coastal areas are most susceptible to change as a result of sea-level rise. Index values are based on physical parameters such as the shape of the coast, tidal range, and average wave heights.",
+      "description": "Check which coastal areas are most susceptible to change as a result of sea level rise. Index values are based on physical parameters such as the shape of the coast, tidal range, and average wave heights.",
       "url": "http://coastalmap.marine.usgs.gov/cmgp/rest/services/National/coastal_vulnerability_index/MapServer",
       "options": {
       },
