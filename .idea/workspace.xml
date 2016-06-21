@@ -84,8 +84,8 @@
       <file leaf-file-name="data-grouped.json" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/resources/data/data-grouped.json">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="379">
-              <caret line="739" column="18" selection-start-line="739" selection-start-column="18" selection-end-line="739" selection-end-column="18" />
+            <state relative-caret-position="16">
+              <caret line="971" column="24" selection-start-line="971" selection-start-column="24" selection-end-line="971" selection-end-column="24" />
               <folding />
             </state>
           </provider>
@@ -368,6 +368,20 @@
               <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
             </PATH_ELEMENT>
           </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Climate_Explorer" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Climate_Explorer" />
+              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="data" />
+              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
+            </PATH_ELEMENT>
+          </PATH>
         </subPane>
       </pane>
       <pane id="Scratches" />
@@ -578,7 +592,7 @@
       <workItem from="1466430162812" duration="19000" />
       <workItem from="1466430201596" duration="36000" />
       <workItem from="1466430248728" duration="3162000" />
-      <workItem from="1466515746387" duration="9852000" />
+      <workItem from="1466515746387" duration="11000000" />
     </task>
     <task id="LOCAL-00001" summary="test">
       <created>1452891884032</created>
@@ -720,11 +734,18 @@
       <option name="project" value="LOCAL" />
       <updated>1466523325898</updated>
     </task>
-    <option name="localTasksCounter" value="21" />
+    <task id="LOCAL-00021" summary="added sources to description strings">
+      <created>1466526938695</created>
+      <option name="number" value="00021" />
+      <option name="presentableId" value="LOCAL-00021" />
+      <option name="project" value="LOCAL" />
+      <updated>1466526938695</updated>
+    </task>
+    <option name="localTasksCounter" value="22" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="35639000" />
+    <option name="totallyTimeSpent" value="36787000" />
   </component>
   <component name="TodoView" selected-index="1">
     <todo-panel id="selected-file">
@@ -739,7 +760,7 @@
     <frame x="0" y="23" width="1440" height="873" extended-state="0" />
     <editor active="true" />
     <layout>
-      <window_info id="Remote Host" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.15379113" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
+      <window_info id="Remote Host" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.28826895" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.1695279" sideWeight="0.50520056" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3271523" sideWeight="0.49499285" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.15364239" sideWeight="0.5307582" order="10" side_tool="true" content_ui="tabs" />
@@ -822,7 +843,8 @@
     <MESSAGE value="http://take.ms/mBWck&#10;&#10;all references to habatatseven.com and tiles.habitatseven.work are now gone" />
     <MESSAGE value="text updates, bg array updates" />
     <MESSAGE value="changed sea-level to sea level" />
-    <option name="LAST_COMMIT_MESSAGE" value="changed sea-level to sea level" />
+    <MESSAGE value="added sources to description strings" />
+    <option name="LAST_COMMIT_MESSAGE" value="added sources to description strings" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager />
@@ -1039,8 +1061,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/resources/data/data-grouped.json">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="379">
-          <caret line="739" column="18" selection-start-line="739" selection-start-column="18" selection-end-line="739" selection-end-column="18" />
+        <state relative-caret-position="16">
+          <caret line="971" column="24" selection-start-line="971" selection-start-column="24" selection-end-line="971" selection-end-column="24" />
           <folding />
         </state>
       </provider>
