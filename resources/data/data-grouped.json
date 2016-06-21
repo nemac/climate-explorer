@@ -199,7 +199,7 @@
       "description": "Extreme events increasingly threaten land-, water-, and air-based transportation systems and supply chains. View the location of transportation assets such as highways, bridges, and airports, and check to see where they coincide with flooding hazards and the risk of inundation from sea level rise.",
       "groups": {
         "group1": {
-          "title": "Transportation and sea level rise",
+          "title": "Transportation and Sea Level Rise",
           "description": "Explore which elements of our transportation system are threatened by rising seas.",
           "layers": [
             "transportation_system",
@@ -273,7 +273,7 @@
       "description": "Changing conditions are increasing threats of both flooding and drought. Flood zone maps can help you identify areas that are at risk of flooding and the current drought layer shows which regions are abnormally dry or experiencing drought. View the land cover layer to get a sense of what may be impacted by flooding or drought.",
       "groups": {
         "group1": {
-          "title": "Population density and river flooding",
+          "title": "Population Density and River Flooding",
           "description": "Explore where densely populated areas in the United States have an elevated risk for significant flooding in the next 5 days.",
           "layers": [
             "river_flooding",
@@ -300,7 +300,7 @@
       "url": "resources/data/wx_stations.json",
       "options": {},
       "defaults": {
-        "visible":false
+        "visible": false
       }
     },
     "bia_indian_lands": {
@@ -311,7 +311,7 @@
       "url": "http://gis.wim.usgs.gov/arcgis/rest/services/AIR_NDGA/AIR_NDGA/MapServer",
       "options": {},
       "defaults": {
-        "visible":false
+        "visible": false
       }
     },
     "september_arctic_sea_ice": {
@@ -322,7 +322,7 @@
       "url": "",
       "options": {},
       "defaults": {
-        "visible":false
+        "visible": false
       }
     },
     "energy_infrastructure": {
@@ -332,10 +332,10 @@
       "description": "Check the locations of power plants and oil and gas refineries. View the paths of pipelines that transport energy materials and transmission wires that distribute electricity.",
       "url": "https://eia-ms.esri.com/arcgis/rest/services/20160309StateEnergyProfilesMap/MapServer",
       "options": {
-        "layer":"6"
+        "layer": "6"
       },
       "defaults": {
-        "visible":false
+        "visible": false
       }
     },
     "permafrost": {
@@ -348,7 +348,7 @@
         "version": "1.1.1"
       },
       "defaults": {
-        "visible":false
+        "visible": false
       }
     },
     "critical_coastal_facilities": {
@@ -361,13 +361,13 @@
         "layer": "4"
       },
       "defaults": {
-        "visible":false
+        "visible": false
       }
     },
     "sea_level_rise": {
       "type": "ArcGISRest",
       "id": "sea_level_rise",
-      "title": "Sea Level Rise (For 1 to 6 feet) ",
+      "title": "Sea Level Rise (For 1 to 6 Feet) ",
       "description": "View areas that will be covered by seawater during high tides after the indicated amount of local sea level rise. A few inches of water will cover the lightest blue areas; water will be deeper where the map is dark blue. Bright green areas will be below sea level, but are not connected to the ocean. Visualize changes over time by turning on progressively higher sea levels.",
       "sublayers": [
         {
@@ -377,7 +377,7 @@
           "url": "https://coast.noaa.gov/arcgis/rest/services/dc_slr/slr_1ft/MapServer",
           "options": {},
           "defaults": {
-            "visible":false
+            "visible": false
           }
         },
         {
@@ -387,7 +387,7 @@
           "url": "https://coast.noaa.gov/arcgis/rest/services/dc_slr/slr_2ft/MapServer",
           "options": {},
           "defaults": {
-            "visible":false
+            "visible": false
           }
         },
         {
@@ -397,7 +397,7 @@
           "url": "https://coast.noaa.gov/arcgis/rest/services/dc_slr/slr_3ft/MapServer",
           "options": {},
           "defaults": {
-            "visible":false
+            "visible": false
           }
         },
         {
@@ -407,7 +407,7 @@
           "url": "https://coast.noaa.gov/arcgis/rest/services/dc_slr/slr_4ft/MapServer",
           "options": {},
           "defaults": {
-            "visible":false
+            "visible": false
           }
         },
         {
@@ -417,7 +417,7 @@
           "url": "https://coast.noaa.gov/arcgis/rest/services/dc_slr/slr_5ft/MapServer",
           "options": {},
           "defaults": {
-            "visible":false
+            "visible": false
           }
         },
         {
@@ -427,7 +427,7 @@
           "url": "https://coast.noaa.gov/arcgis/rest/services/dc_slr/slr_6ft/MapServer",
           "options": {},
           "defaults": {
-            "visible":false
+            "visible": false
           }
         }
       ],
@@ -444,7 +444,7 @@
       "options": {
       },
       "defaults": {
-        "visible":false
+        "visible": false
       }
     },
     "shallow_coastal_flooding": {
@@ -457,7 +457,7 @@
         "layer": "show:34"
       },
       "defaults": {
-        "visible":false
+        "visible": false
       }
     },
     "public_attractions": {
@@ -468,7 +468,7 @@
       "url": "http://services.nationalmap.gov/arcgis/rest/services/structures/MapServer",
       "options": {},
       "defaults": {
-        "visible":false
+        "visible": false
       }
     },
     "coastal_vulnerability_index": {
@@ -480,19 +480,19 @@
       "options": {
       },
       "defaults": {
-        "visible":false
+        "visible": false
       }
     },
     "hurricane_evacuation": {
       "type": "ArcGISRest",
       "id": "hurricane_evacuation",
-      "title": "Hurricane Evactuation Routes",
+      "title": "Hurricane Evacuation Routes",
       "description": "View major roads designated as hurricane evacuation routes. ",
       "url": "http://gis.fema.gov/REST/services/FEMA/EvacRoutes/MapServer",
       "options": {
       },
       "defaults": {
-        "visible":false
+        "visible": false
       }
     },
     "storm_surge": {
@@ -504,51 +504,51 @@
         {
           "type": "StormSurge",
           "id": "storm_surge_1",
-          "title": "Storm surge category 1 hurricane",
+          "title": "Storm Surge Category 1 Hurricane",
           "url": "http://tiles3.arcgis.com/tiles/C8EMgrsFcRFL6LrL/arcgis/rest/services/NHC_SeamlessSLOSH_Category1/MapServer/tile/{z}/{y}/{x}",
           "options": {},
           "defaults": {
-            "visible":false
+            "visible": false
           }
         },
         {
           "type": "StormSurge",
           "id": "storm_surge_2",
-          "title": "Storm surge category 2 hurricane",
+          "title": "Storm Surge Category 2 Hurricane",
           "url": "http://tiles3.arcgis.com/tiles/C8EMgrsFcRFL6LrL/arcgis/rest/services/NHC_SeamlessSLOSH_Category2/MapServer/tile/{z}/{y}/{x}",
           "options": {},
           "defaults": {
-            "visible":false
+            "visible": false
           }
         },
         {
           "type": "StormSurge",
           "id": "storm_surge_3",
-          "title": "Storm surge category 3 hurricane",
+          "title": "Storm Surge category 3 Hurricane",
           "url": "http://tiles3.arcgis.com/tiles/C8EMgrsFcRFL6LrL/arcgis/rest/services/NHC_SeamlessSLOSH_Category3/MapServer/tile/{z}/{y}/{x}",
           "options": {},
           "defaults": {
-            "visible":false
+            "visible": false
           }
         },
         {
           "type": "StormSurge",
           "id": "storm_surge_4",
-          "title": "Storm surge category 4 hurricane",
+          "title": "Storm Surge Category 4 hurricane",
           "url": "http://tiles3.arcgis.com/tiles/C8EMgrsFcRFL6LrL/arcgis/rest/services/NHC_SeamlessSLOSH_Category4/MapServer/tile/{z}/{y}/{x}",
           "options": {},
           "defaults": {
-            "visible":false
+            "visible": false
           }
         },
         {
           "type": "StormSurge",
           "id": "storm_surge_5",
-          "title": "Storm surge category 5 hurricane",
+          "title": "Storm Surge Category 5 Hurricane",
           "url": "http://tiles3.arcgis.com/tiles/C8EMgrsFcRFL6LrL/arcgis/rest/services/NHC_SeamlessSLOSH_Category5/MapServer/tile/{z}/{y}/{x}",
           "options": {},
           "defaults": {
-            "visible":false
+            "visible": false
           }
         }
       ],
@@ -563,10 +563,10 @@
       "description": "View locations and types of power plants along the U.S. coast and Great Lakes.",
       "url": "https://coast.noaa.gov/arcgis/rest/services/MarineCadastre/OceanEnergy/MapServer",
       "options": {
-        "layer":"6"
+        "layer": "6"
       },
       "defaults": {
-        "visible":false
+        "visible": false
       }
     },
     "coastal_wetlands": {
@@ -579,7 +579,7 @@
         "layer": "show:9"
       },
       "defaults": {
-        "visible":false
+        "visible": false
       }
     },
     "flood_hazard_zones": {
@@ -591,7 +591,7 @@
       "options": {
       },
       "defaults": {
-        "visible":false
+        "visible": false
       }
     },
     "pollution_sources": {
@@ -603,7 +603,7 @@
       "options": {
       },
       "defaults": {
-        "visible":false
+        "visible": false
       }
     },
     "critical_habitat": {
@@ -615,7 +615,7 @@
       "options": {
       },
       "defaults": {
-        "visible":false
+        "visible": false
       }
     },
     "mean_daily_max": {
@@ -623,11 +623,11 @@
       "id": "mean_daily_max",
       "title": "Mean Daily Max Temperature",
       "description": "Maximum temperatures are one indicator of conditions that can interfere with ecosystem functions. View how temperatures are projected to change during future decades.",
-      "url": "http://tiles.habitatseven.work/2090_summer_rcp85_ea_tasmax/{z}/{x}/{y}.png",
+      "url": "https://s3.amazonaws.com/climate-explorer-bucket/tilesets/2090-summer-rcp85-tasmax/{z}/{x}/{y}.png",
       "options": {
       },
       "defaults": {
-        "visible":false
+        "visible": false
       }
     },
     "mean_daily_min": {
@@ -635,11 +635,11 @@
       "id": "mean_daily_min",
       "title": "Mean Daily Min Temperature",
       "description": "Minimum temperatures are one indicator of conditions that can interfere with ecosystem functions. View how temperatures are projected to change during future decades.",
-      "url": "http://tiles.habitatseven.work/2090_summer_rcp85_ea_tasmin/{z}/{x}/{y}.png",
+      "url": "https://s3.amazonaws.com/climate-explorer-bucket/tilesets/2090-summer-rcp85-tasmin/{z}/{x}/{y}.png",
       "options": {
       },
       "defaults": {
-        "visible":false
+        "visible": false
       }
     },
     "national_forests": {
@@ -651,7 +651,7 @@
       "options": {
       },
       "defaults": {
-        "visible":false
+        "visible": false
       }
     },
     "days_tmin_blw_0": {
@@ -659,11 +659,11 @@
       "id": "days_tmin_blw_0.0",
       "title": "Days below 32 degrees",
       "description": "View how the number of days per year with below-freezing temperatures decreases over time.",
-      "url": "http://tiles.habitatseven.work/2090_annual_rcp45_days-tmin-blw/{z}/{x}/{y}.png",
+      "url": "https://s3.amazonaws.com/climate-explorer-bucket/tilesets/2090-annual-rcp45-days-tmin-blw/{z}/{x}/{y}.png",
       "options": {
       },
       "defaults": {
-        "visible":false
+        "visible": false
       }
     },
     "power_plants": {
@@ -675,19 +675,19 @@
       "options": {
       },
       "defaults": {
-        "visible":false
+        "visible": false
       }
     },
     "heating_degree_day_18": {
       "type": "Tile",
       "id": "heating_degree_day_18.3",
-      "title": "Heating degree days",
+      "title": "Heating Degree Days",
       "description": "View how demand for energy to heat homes and businesses during cool seasons decreases in future decades.",
-      "url": "http://tiles.habitatseven.work/2090_annual_rcp45_heating-degree-day/{z}/{x}/{y}.png",
+      "url": "https://s3.amazonaws.com/climate-explorer-bucket/tilesets/2090-annual-rcp45-heating-degree-day/{z}/{x}/{y}.png",
       "options": {
       },
       "defaults": {
-        "visible":false
+        "visible": false
       }
     },
     "cropland": {
@@ -701,7 +701,7 @@
         "version": "1.1.1"
       },
       "defaults": {
-        "visible":false
+        "visible": false
       }
     },
     "drought": {
@@ -715,20 +715,20 @@
         "version": "1.1.1"
       },
       "defaults": {
-        "visible":false
+        "visible": false
       }
     },
     "chickens": {
       "type": "ArcGISRest",
       "id": "chickens",
-      "title": "Chickens per 100 acres farmland",
+      "title": "Chickens per 100 Acres Farmland",
       "description": "Explore areas where relatively large numbers of chickens are raised for meat.",
       "url": "http://gis.ers.usda.gov/arcgis/rest/services/NASS/livestockanimals/MapServer",
       "options": {
         "layer": "show:23"
       },
       "defaults": {
-        "visible":false
+        "visible": false
       }
     },
     "mooring": {
@@ -741,7 +741,7 @@
         "layer": "show:23"
       },
       "defaults": {
-        "visible":false
+        "visible": false
       }
     },
     "hospitals": {
@@ -754,7 +754,7 @@
         "layer": "show:3"
       },
       "defaults": {
-        "visible":false
+        "visible": false
       }
     },
     "severe_weather": {
@@ -767,7 +767,7 @@
         "layer": "show:4"
       },
       "defaults": {
-        "visible":false
+        "visible": false
       }
     },
     "percent_poverty": {
@@ -781,19 +781,19 @@
         "type": "geoserver"
       },
       "defaults": {
-        "visible":false
+        "visible": false
       }
     },
     "cooling_degree_day_18": {
       "type": "Tile",
       "id": "cooling_degree_day_18.3",
-      "title": "Cooling degree days",
+      "title": "Cooling Degree Days",
       "description": "View how demand for energy to cool homes and businesses during the warm season increases in the future. Consider how people who don’t have access to air conditioning will fare.",
-      "url": "http://tiles.habitatseven.work/2090_annual_rcp45_cooling-degree-day/{z}/{x}/{y}.png",
+      "url": "https://s3.amazonaws.com/climate-explorer-bucket/tilesets/2090-annual-rcp45-cooling-degree-day/{z}/{x}/{y}.png",
       "options": {
       },
       "defaults": {
-        "visible":false
+        "visible": false
       }
     },
     "percent_elderly": {
@@ -807,19 +807,19 @@
         "layer": "usgrid:usgrid-summary-file1-2000_usa-pctpop65to79-2000"
       },
       "defaults": {
-        "visible":false
+        "visible": false
       }
     },
     "days_tmax_abv_35": {
       "type": "Tile",
       "id": "days_tmax_abv_35.0",
-      "title": "Days above 95 degrees F",
+      "title": "Days Above 95 Degrees F",
       "description": "View how the number of days per year with temperatures over 95°F increases during future decades.",
-      "url": "http://tiles.habitatseven.work/2090_annual_rcp85_days-tmax-abv/{z}/{x}/{y}.png",
+      "url": "https://s3.amazonaws.com/climate-explorer-bucket/tilesets/2090-annual-rcp85-days-tmax-abv/{z}/{x}/{y}.png",
       "options": {
       },
       "defaults": {
-        "visible":false
+        "visible": false
       }
     },
     "atlantic_fishing": {
@@ -832,31 +832,31 @@
         "layer": "show:7"
       },
       "defaults": {
-        "visible":false
+        "visible": false
       }
     },
     "offshore_wind": {
       "type": "ArcGISRest",
       "id": "offshore_wind",
-      "title": "Offshore wind potential",
+      "title": "Offshore Wind Potential",
       "description": "View average annual wind speed off the coast of the United States.",
       "url": "https://coast.noaa.gov/arcgis/rest/services/MarineCadastre/OffshoreWindResourcePotential/MapServer",
       "options": {
       },
       "defaults": {
-        "visible":false
+        "visible": false
       }
     },
     "development": {
       "type": "ArcGISRest",
       "id": "development",
-      "title": "Areas converted to development",
+      "title": "Areas Converted to Development",
       "description": "View areas converted to development between 1996 and 2011.",
       "url": "https://coast.noaa.gov/arcgis/rest/services/FloodExposureMapper/CFEM_LandCover_19962010Change/MapServer",
       "options": {
       },
       "defaults": {
-        "visible":false
+        "visible": false
       }
     },
     "transportation_system": {
@@ -868,7 +868,7 @@
       "options": {
       },
       "defaults": {
-        "visible":false
+        "visible": false
       }
     },
     "watersheds": {
@@ -880,19 +880,19 @@
       "options": {
       },
       "defaults": {
-        "visible":false
+        "visible": false
       }
     },
     "river_flooding": {
       "type": "ArcGISRest",
       "id": "river_flooding",
-      "title": "Outlook for significant river flooding",
-      "description": "Check the general outlook for significant river flooding. Note that this layer does not depict all areas of minor flooding or small-scale events such as localized flooding and/or flash flooding.",
+      "title": "Outlook for Significant River Flooding",
+      "description": "Check the general outlook for significant rizver flooding. Note that this layer does not depict all areas of minor flooding or small-scale events such as localized flooding and/or flash flooding.",
       "url": "http://idpgis.ncep.noaa.gov/arcgis/rest/services/NWS_Forecasts_Guidance_Warnings/sig_riv_fld_outlk/MapServer",
       "options": {
       },
       "defaults": {
-        "visible":false
+        "visible": false
       }
     },
     "population_density": {
@@ -907,7 +907,7 @@
         "version": "1.1.1"
       },
       "defaults": {
-        "visible":false
+        "visible": false
       }
     },
     "wildland_urban": {
@@ -919,7 +919,7 @@
       "options": {
       },
       "defaults": {
-        "visible":false
+        "visible": false
       }
     }
   }

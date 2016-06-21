@@ -109,7 +109,7 @@ function xss_clean($data)
 
 function isValidLongitude($longitude)
 {
-    if (preg_match("/^-?([1]?[1-7][1-9]|[1]?[1-8][0]|[1-9]?[0-9])\.{1}\d{1,14}$/",
+    if (preg_match("/^[-]?((((1[0-7][0-9])|([0-9]?[0-9]))\.(\d+))|180(\.0+)?)$/",
         $longitude)) {
         return true;
     } else {
@@ -119,7 +119,7 @@ function isValidLongitude($longitude)
 
 function isValidLatitude($latitude)
 {
-    if (preg_match("/^-?([1-8]?[1-9]|[1-9]0)\.{1}\d{1,14}$/", $latitude)) {
+    if (preg_match("/^[-]?(([0-8]?[0-9])\.(\d+))|(90(\.0+)?)$/", $latitude)) {
         return true;
     } else {
         return false;

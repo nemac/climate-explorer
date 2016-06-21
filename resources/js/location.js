@@ -21,7 +21,7 @@ var Location = function(lat, lon) {
 };
 
 
-
+ 
 /*
 * Lots of inconsistencies in naming, so here I map all the variables to one another
 *
@@ -44,7 +44,7 @@ Location.prototype.mapVariables = function() {
     }
   };
 
-  this.tilesMapping = {
+  this.tilesMapping = {  
     'temperature-map': {
       'tasmax': '-rcp45-tasmax',
       'tasmin': '-rcp45-tasmin',
@@ -658,6 +658,5 @@ Location.prototype.setSlider = function(map) {
       tooltip.fadeOut(200);
     }
   }).find(".ui-slider-handle").html('<span class="icon icon-arrow-left-right"></span>').append(tooltip);
-
   tooltip.fadeIn(200);
 };

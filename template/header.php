@@ -288,8 +288,19 @@
                   <?php
 
                     foreach ($temp_content as $item) {
-
-                  ?>
+                      if ($item['name'] == 'Mean Daily Maximum Temperature'){
+                        $item['name'] = "Mean Daily Max Temperature";
+                      }
+                      if ($item['name'] == 'Mean Daily Minimum Temperature'){
+                        $item['name'] = "Mean Daily Min Temperature";
+                      }
+                      if ($item['name'] == 'Days With Maximum Above 95°F'){
+                        $item['name'] = "Days With Max Above 95°F";
+                      }
+                      if ($item['name'] == 'Days With Minimum Below 32°F'){
+                        $item['name'] = "Days With Min Below 32°F";
+                      }
+                      ?>
                   <li><a href="#detail-<?php echo $item['variable']; ?>" class="nav-detail-link"><?php echo $item['name']; ?></a></li>
                   <?php
 
@@ -318,6 +329,8 @@
                   <?php
 
                     foreach ($derived_content as $item) {
+
+
 
                   ?>
                   <li><a href="#detail-<?php echo $item['variable']; ?>" class="nav-detail-link"><?php echo $item['name']; ?></a></li>
@@ -394,7 +407,7 @@
     ?>
 
     <div id="detail-tasmax" class="nav-detail-item">
-      <h3>What does <u>Mean Daily Maximum temperature</u> tell us?</h3>
+      <h3>What does <u>Mean Daily Maximum Temperature</u> tell us?</h3>
 
       <p>A day’s highest (maximum) temperature usually occurs in the afternoon. Averaging the daily high temperatures over any period results in a mean maximum temperature for that period.</p>
       <p>Maximum temperature serves as one measure of comfort and safety for people and for the health of plants and animals. When maximum temperature exceeds particular thresholds, people can become ill and transportation and energy infrastructure may be stressed.</p>
@@ -404,7 +417,7 @@
 
 
     <div id="detail-tasmin" class="nav-detail-item">
-      <h3>What does <u>Mean Daily Minimum temperature</u> tell us?</h3>
+      <h3>What does <u>Mean Daily Minimum Temperature</u> tell us?</h3>
 
       <p>A day’s lowest (minimum) temperature usually occurs in the early morning, just before sunrise. Averaging the daily low temperatures for any period results in a mean minimum temperature for that period.</p>
       <p>Periods of low temperature give plants, animals, and people a chance to recover from daytime heat. When minimum temperatures aren’t sufficiently cool, plant and animal responses can trigger ecosystem changes and increased demand for energy can stress energy infrastructure.</p>
@@ -458,7 +471,7 @@
 
     <div id="detail-days_tmin_blw_0" class="nav-detail-item">
 
-      <h3>What does <u>Days With Minimum Below 32°F</u> tell us?</h3>
+      <h3>What does <u>Days With Minimum Temperature Below 32°F</u> tell us?</h3>
 
       <p>The total number of days per year with minimum temperature below 32°F (0°C) is an indicator of how often cold days occur.</p>
       <p>Below-freezing temperatures can cause driving hazards, aircraft icing, and damage to infrastructure. However, ski resorts and other winter recreation businesses depend on days with below-freezing temperatures to maintain snowpack. Additionally, some plants require a period of days below freezing before they can begin budding or blooming.</p>
@@ -468,7 +481,7 @@
 
     <div id="#detail-days_tmax_abv_35" class="nav-detail-item">
 
-      <h3>What does <u>Days With Maximum Above 95°F</u> tell us?</h3>
+      <h3>What does <u>Days With Maximum Temperature Above 95°F</u> tell us?</h3>
 
       <p>The total number of days per year with maximum temperature above 95°F (35°C) is an indicator of how often very hot conditions occur. Depending upon humidity, wind, access to air-conditioning, humans may feel very uncomfortable or experience heat stress or illness on very hot days.</p>
       <p>Hot days also stress plants and animals as well as infrastructure. Increased demand for cooling can stress energy infrastructure.</p>
