@@ -32,7 +32,7 @@ ChartBuilder.prototype.getData = function (callback) {
             data: ''
         },
         'normal_tmax': {
-            url: '/data/stations/normals/normal_tmax/' + id + '.csv.gz',
+            url: '/resources/data/stations/normals/normal_tmax/' + id + '.csv.gz',
             type: 'normal_tmax',
             data: ''
         },
