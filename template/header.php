@@ -91,12 +91,12 @@
       'source' => 'NOAA, 2015'
     ),
 
-    array(
-      'variable' => 'energy',
-      'name' => 'Energy',
-      'detail' => "<p>As temperatures warm, demand for energy is expected to increase. Exposed energy infrastructure—particularly along our coasts—may lead to disruptions in energy supply. Managers of energy assets can check current flood hazards as well as visualizations of flooding from future sea level rise.</p>",
-      'source' => 'NOAA, 2015'
-    ),
+    // array(
+    //   'variable' => 'energy',
+    //   'name' => 'Energy',
+    //   'detail' => "<p>As temperatures warm, demand for energy is expected to increase. Exposed energy infrastructure—particularly along our coasts—may lead to disruptions in energy supply. Managers of energy assets can check current flood hazards as well as visualizations of flooding from future sea level rise.</p>",
+    //   'source' => 'NOAA, 2015'
+    // ),
 
     // array(
     //   'variable' => 'food',
@@ -153,7 +153,7 @@
 
     <nav id="subnav">
       <span id="subnav-trigger">More…</span>
-      
+
       <ul>
         <li><a href="#" id="tour-this-page"><span class="text">Tour This Page</span></a></li>
         <li><a href="about.php"><span class="text">About</span></a></li>
@@ -163,64 +163,64 @@
     </nav>
 
     <?php
-      
+
       if (strpos(current_URL(), 'location.php') !== false) {
-        
+
         $breadcrumb = '<a href="#nav-search" class="parent launch-nav" data-nav-slide="0"><span class="icon icon-district"></span>Location</a><span class="current">' . $_REQUEST['city'] . '</span>';
-        
+
       }  elseif (strpos(current_URL(), 'topic.php') !== false) {
-        
+
         $current = $_REQUEST['param'];
         $current = str_replace("_", " ", $current);
         $current = ucwords($current);
-        
+
         $breadcrumb = '<a href="#nav-topics" class="parent launch-nav" data-nav-slide="2"><span class="icon icon-bubble"></span>Topic</a><span class="current">' . $current . '</span>';
-        
+
       } elseif (strpos(current_URL(), 'case.php') !== false) {
-        
+
         $current = $_REQUEST['id'];
         $current = str_replace("_", " ", $current);
         $current = ucwords($current);
-        
-        $breadcrumb = '<a href="#nav-topics" class="parent launch-nav" data-nav-slide="2"><span class="icon icon-bubble"></span>Topic</a><a href="./topic.php?param=' . $_REQUEST['id'] . '">' . $current . '</a><span class="current">Data</span>';
-        
+
+        $breadcrumb = '<a href="#nav-topics" class="parent launch-nav" data-nav-slide="2"><span class="icon icon-bubble"></span>Topic</a><a href="./topic.php?param=' . $_REQUEST['id'] . '">' . $current . '</a><span class="current">Impact</span>';
+
       } elseif (strpos(current_URL(), 'variables.php') !== false) {
-        
+
         echo $current;
-        
+
         switch ($_REQUEST['id']) {
           case 'tasmax' :
             $current = 'Mean Daily Maximum Temperature';
             break;
-          case 'tasmin' : 
+          case 'tasmin' :
             $current = 'Mean Daily Minimum Temperature';
             break;
-          case 'days_tmax_abv_35' : 
+          case 'days_tmax_abv_35' :
             $current = 'Days With Maximum Above 95°F';
             break;
-          case 'days_tmin_blw_0' : 
+          case 'days_tmin_blw_0' :
             $current = 'Days With Minimum Below 32°F';
             break;
-          case 'pr' : 
+          case 'pr' :
             $current = 'Mean Daily Precipitation';
             break;
-          case 'pr_above' : 
+          case 'pr_above' :
             $current = 'Days of Precipitation Above 1 Inch';
             break;
-          case 'heating_degree_day_18' : 
+          case 'heating_degree_day_18' :
             $current = 'Heating Degree Days';
             break;
-          case 'cooling_degree_day_18' : 
+          case 'cooling_degree_day_18' :
             $current = 'Cooling Degree Days';
             break;
         }
-        
+
         $breadcrumb = '<a href="#nav-variables" class="parent launch-nav" data-nav-slide="1"><span class="icon icon-bubble"></span>Variable</a><span class="current">' . $current . '</span>';
-        
+
       }
-      
+
     ?>
-    
+
     <div id="breadcrumb">
       <a href="./"><span class="icon icon-arrow-up"></span>Home</a><?php echo $breadcrumb; ?>
     </div>
@@ -288,8 +288,19 @@
                   <?php
 
                     foreach ($temp_content as $item) {
-
-                  ?>
+                      if ($item['name'] == 'Mean Daily Maximum Temperature'){
+                        $item['name'] = "Mean Daily Max Temperature";
+                      }
+                      if ($item['name'] == 'Mean Daily Minimum Temperature'){
+                        $item['name'] = "Mean Daily Min Temperature";
+                      }
+                      if ($item['name'] == 'Days With Maximum Above 95°F'){
+                        $item['name'] = "Days With Max Above 95°F";
+                      }
+                      if ($item['name'] == 'Days With Minimum Below 32°F'){
+                        $item['name'] = "Days With Min Below 32°F";
+                      }
+                      ?>
                   <li><a href="#detail-<?php echo $item['variable']; ?>" class="nav-detail-link"><?php echo $item['name']; ?></a></li>
                   <?php
 
@@ -318,6 +329,8 @@
                   <?php
 
                     foreach ($derived_content as $item) {
+
+
 
                   ?>
                   <li><a href="#detail-<?php echo $item['variable']; ?>" class="nav-detail-link"><?php echo $item['name']; ?></a></li>
@@ -394,7 +407,7 @@
     ?>
 
     <div id="detail-tasmax" class="nav-detail-item">
-      <h3>What does <u>Mean Daily Maximum temperature</u> tell us?</h3>
+      <h3>What does <u>Mean Daily Maximum Temperature</u> tell us?</h3>
 
       <p>A day’s highest (maximum) temperature usually occurs in the afternoon. Averaging the daily high temperatures over any period results in a mean maximum temperature for that period.</p>
       <p>Maximum temperature serves as one measure of comfort and safety for people and for the health of plants and animals. When maximum temperature exceeds particular thresholds, people can become ill and transportation and energy infrastructure may be stressed.</p>
@@ -404,7 +417,7 @@
 
 
     <div id="detail-tasmin" class="nav-detail-item">
-      <h3>What does <u>Mean Daily Minimum temperature</u> tell us?</h3>
+      <h3>What does <u>Mean Daily Minimum Temperature</u> tell us?</h3>
 
       <p>A day’s lowest (minimum) temperature usually occurs in the early morning, just before sunrise. Averaging the daily low temperatures for any period results in a mean minimum temperature for that period.</p>
       <p>Periods of low temperature give plants, animals, and people a chance to recover from daytime heat. When minimum temperatures aren’t sufficiently cool, plant and animal responses can trigger ecosystem changes and increased demand for energy can stress energy infrastructure.</p>
@@ -458,7 +471,7 @@
 
     <div id="detail-days_tmin_blw_0" class="nav-detail-item">
 
-      <h3>What does <u>Days With Minimum Below 32°F</u> tell us?</h3>
+      <h3>What does <u>Days With Minimum Temperature Below 32°F</u> tell us?</h3>
 
       <p>The total number of days per year with minimum temperature below 32°F (0°C) is an indicator of how often cold days occur.</p>
       <p>Below-freezing temperatures can cause driving hazards, aircraft icing, and damage to infrastructure. However, ski resorts and other winter recreation businesses depend on days with below-freezing temperatures to maintain snowpack. Additionally, some plants require a period of days below freezing before they can begin budding or blooming.</p>
@@ -468,7 +481,7 @@
 
     <div id="#detail-days_tmax_abv_35" class="nav-detail-item">
 
-      <h3>What does <u>Days With Maximum Above 95°F</u> tell us?</h3>
+      <h3>What does <u>Days With Maximum Temperature Above 95°F</u> tell us?</h3>
 
       <p>The total number of days per year with maximum temperature above 95°F (35°C) is an indicator of how often very hot conditions occur. Depending upon humidity, wind, access to air-conditioning, humans may feel very uncomfortable or experience heat stress or illness on very hot days.</p>
       <p>Hot days also stress plants and animals as well as infrastructure. Increased demand for cooling can stress energy infrastructure.</p>

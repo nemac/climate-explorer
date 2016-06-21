@@ -390,7 +390,7 @@ Impacts.prototype.createLegend = function() {
 
           '<h4>Legend</h4>'+
           '<div>'+
-            '<img src="resources/img/legend_dummy.png">'+
+            '<img src="'+self.data.layers[id].legend+'_WIDE.png">'+
           '</div>'+
         '</div>'+
         '<div class="opacity-slider-wrap"><h4>Layer opacity</h4><div class="opacity-slider" id="opacity-'+id+'"></div></div>' +
@@ -420,6 +420,12 @@ Impacts.prototype.createLegend = function() {
     }
   });
 
+  if ( layerIds.length < 3 ) {
+    $.each(layerIds, function(i, id) {
+      var html = '<img src="'+self.data.layers[id].legend+'.png">';
+      $('#topic-legends').append(html);
+    });
+  }
 };
 
 

@@ -47,7 +47,7 @@ Variables.prototype.mapVariables = function () {
         'tasmax': 'Mean Daily Maximum Temperature',
         'tasmin': 'Mean Daily Minimum Temperature',
         'days_tmin_blw_0.0': 'Days With Minimum Below 32F&deg; F',
-        'days_tmax_abv_35.0': 'Days With Minimum Below 95&deg; F',
+        'days_tmax_abv_35.0': 'Days With Maximum Above 95&deg; F',
         'pr': 'Mean Daily Precipitation',
         'pr_above': 'Days of Precipitation Above 1 Inch',
         'cooling_degree_day_18.3': 'Cooling Degree Days',
