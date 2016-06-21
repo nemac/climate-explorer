@@ -6707,74 +6707,77 @@ body.detail-open #nav-overlay {
 .page-type-text #viewport {
   background-image: none;
   background-color: rgba(213, 232, 242, 0.5);
+  top: 20px;
+  height: calc(100% - 40px);
+  margin-top: 95px;
 }
 
-/* line 721, ../scss/screen.scss */
+/* line 724, ../scss/screen.scss */
 #standard-splash {
   padding-bottom: 40px;
 }
 
-/* line 725, ../scss/screen.scss */
+/* line 728, ../scss/screen.scss */
 #standard-body {
   max-width: 75%;
   padding-left: 4%;
   padding-left: calc(4% + 10px);
 }
-/* line 730, ../scss/screen.scss */
+/* line 733, ../scss/screen.scss */
 #standard-body a {
   text-decoration: underline;
 }
-/* line 734, ../scss/screen.scss */
+/* line 737, ../scss/screen.scss */
 #standard-body p {
   line-height: 1.75em;
   margin: 0 0 20px 0;
 }
-/* line 739, ../scss/screen.scss */
+/* line 742, ../scss/screen.scss */
 #standard-body strong {
   font-weight: 600;
 }
-/* line 743, ../scss/screen.scss */
+/* line 746, ../scss/screen.scss */
 #standard-body h2 {
   margin: 30px 0;
   font-size: 2rem;
   color: #0058cf;
 }
-/* line 749, ../scss/screen.scss */
+/* line 752, ../scss/screen.scss */
 #standard-body h3 {
   margin: 20px 0;
   font-size: 1.75rem;
   color: #f5442d;
 }
-/* line 755, ../scss/screen.scss */
+/* line 758, ../scss/screen.scss */
 #standard-body h4 {
   margin: 0 0 15px 0;
   font-size: 1.25rem;
   line-height: 1.375em;
 }
-/* line 761, ../scss/screen.scss */
+/* line 764, ../scss/screen.scss */
 #standard-body ul, #standard-body ol {
   margin: 0 20px 30px 20px;
   padding: 0 0 0 30px;
   font: 300 1rem/1.5em Roboto, Helvetica, "Helvetica Neue", Arial, sans-serif;
 }
-/* line 766, ../scss/screen.scss */
+/* line 769, ../scss/screen.scss */
 #standard-body ul li, #standard-body ol li {
   margin: 0 0 10px 0;
 }
-/* line 771, ../scss/screen.scss */
+/* line 774, ../scss/screen.scss */
 #standard-body ol {
   list-style-type: decimal;
 }
-/* line 775, ../scss/screen.scss */
+/* line 778, ../scss/screen.scss */
 #standard-body li {
   list-style-type: disc;
 }
-/* line 779, ../scss/screen.scss */
+/* line 782, ../scss/screen.scss */
 #standard-body dl {
   margin: 0 0 30px 0;
   font: 300 1rem/1.5em Roboto, Helvetica, "Helvetica Neue", Arial, sans-serif;
 }
-/* line 783, ../scss/screen.scss */
+/* line 786, ../scss/screen.scss */
 #standard-body dl dt {
   margin: 0 0 15px 0;
   padding-bottom: 10px;
@@ -6782,11 +6785,11 @@ body.detail-open #nav-overlay {
   color: #444;
   font-weight: 400;
 }
-/* line 791, ../scss/screen.scss */
+/* line 794, ../scss/screen.scss */
 #standard-body dl dd {
   margin: 0 0 25px 0;
 }
-/* line 796, ../scss/screen.scss */
+/* line 799, ../scss/screen.scss */
 #standard-body hr {
   display: block;
   height: 3px;
@@ -7364,12 +7367,12 @@ body.detail-open #nav-overlay {
   cursor: default;
 }
 
-/* line 818, ../scss/screen.scss */
+/* line 821, ../scss/screen.scss */
 .ui-slider-horizontal {
   height: 6px;
 }
 
-/* line 822, ../scss/screen.scss */
+/* line 825, ../scss/screen.scss */
 .ui-autocomplete {
   position: absolute;
   top: 0;
@@ -7377,7 +7380,7 @@ body.detail-open #nav-overlay {
   cursor: default;
 }
 
-/* line 829, ../scss/screen.scss */
+/* line 832, ../scss/screen.scss */
 .ui-menu {
   display: block;
   padding: 10px;
@@ -7389,18 +7392,18 @@ body.detail-open #nav-overlay {
   -webkit-box-shadow: 0 0 12px rgba(35, 58, 112, 0.25);
   box-shadow: 0 0 12px rgba(35, 58, 112, 0.25);
 }
-/* line 838, ../scss/screen.scss */
+/* line 841, ../scss/screen.scss */
 .ui-menu .ui-menu {
   position: absolute;
 }
-/* line 842, ../scss/screen.scss */
+/* line 845, ../scss/screen.scss */
 .ui-menu .ui-menu-item {
   position: relative;
   margin: 0;
   padding: 0;
   cursor: pointer;
 }
-/* line 849, ../scss/screen.scss */
+/* line 852, ../scss/screen.scss */
 .ui-menu .ui-menu-divider {
   margin: 5px 0;
   height: 0;
@@ -7409,7 +7412,7 @@ body.detail-open #nav-overlay {
   border-width: 1px 0 0 0;
 }
 
-/* line 860, ../scss/screen.scss */
+/* line 863, ../scss/screen.scss */
 .ui-accordion .ui-accordion-header .ui-accordion-header-icon {
   display: inline-block;
   position: static;
@@ -7551,13 +7554,13 @@ https://raw.github.com/shagstrom/split-pane/master/LICENSE
   cursor: row-resize;
 }
 
-/* line 874, ../scss/screen.scss */
+/* line 877, ../scss/screen.scss */
 .pretty-split-pane-frame .split-pane > .split-pane-divider.dragged.touch {
   background: blue;
   opacity: 0.25;
 }
 
-/* line 879, ../scss/screen.scss */
+/* line 882, ../scss/screen.scss */
 .split-pane-divider {
   right: 50%;
   width: 12px;
@@ -7567,7 +7570,7 @@ https://raw.github.com/shagstrom/split-pane/master/LICENSE
   box-shadow: 0 0 10px rgba(35, 58, 112, 0.25);
 }
 
-/* line 886, ../scss/screen.scss */
+/* line 889, ../scss/screen.scss */
 .pane-content {
   position: absolute;
   top: 0;
@@ -7577,13 +7580,13 @@ https://raw.github.com/shagstrom/split-pane/master/LICENSE
   overflow: auto;
 }
 
-/* line 891, ../scss/screen.scss */
+/* line 894, ../scss/screen.scss */
 #pane-left {
   right: 50%;
   margin-right: 12px;
 }
 
-/* line 896, ../scss/screen.scss */
+/* line 899, ../scss/screen.scss */
 #pane-right {
   width: 50%;
 }
