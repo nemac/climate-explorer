@@ -35,3 +35,5 @@ Header set X-Frame-Options SAMEORIGIN
 
 # prevent mime based attacks
 Header set X-Content-Type-Options "nosniff"
+
+ErrorDocument 404     /404.php
