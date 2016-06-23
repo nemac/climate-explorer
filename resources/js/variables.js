@@ -346,7 +346,8 @@ Variables.prototype.wire = function () {
         self.updateUrl();
         self.updateTiledLayer(true, true);
         self.updateChart();
-        console.log("CLICKED");
+
+        $('#breadcrumb .current').html(self.varMapping[self.selectedVariable]);
 
     });
 
@@ -948,8 +949,6 @@ Variables.prototype.setSwipeMap = function () {
 Variables.prototype.setSlider = function () {
     var self = this;
     var year_slider = $('#variable-time-slider');
-
-    console.log(year_slider);
 
     var tooltip = $('<span class="tooltip">' + self.activeYear + '</span>').hide();
 

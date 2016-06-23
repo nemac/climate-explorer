@@ -217,6 +217,12 @@ $topics_content = array(
                 case 'days_tmin_blw_0' :
                     $current = 'Days With Minimum Below 32°F';
                     break;
+                case 'days_tmax_abv_35.0' :
+                    $current = 'Days With Maximum Above 95°F';
+                    break;
+                case 'days_tmin_blw_0.0' :
+                    $current = 'Days With Minimum Below 32°F';
+                    break;
                 case 'pr' :
                     $current = 'Mean Daily Precipitation';
                     break;
@@ -227,6 +233,12 @@ $topics_content = array(
                     $current = 'Heating Degree Days';
                     break;
                 case 'cooling_degree_day_18' :
+                    $current = 'Cooling Degree Days';
+                    break;
+                case 'heating_degree_day_18.3' :
+                    $current = 'Heating Degree Days';
+                    break;
+                case 'cooling_degree_day_18.3' :
                     $current = 'Cooling Degree Days';
                     break;
             }
