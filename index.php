@@ -62,7 +62,7 @@
             </div>
 
             <ul id="home-menu" class="menu blue-menu">
-                <li><a href="location.html" class="launch-nav" data-nav-slide="0" id="home-search-by-location"><span class="icon icon-search"></span>Search by location</a></li>
+                <li><a href="#" class="launch-nav" data-nav-slide="0" id="home-search-by-location"><span class="icon icon-search"></span>Search by location</a></li>
                 <li><a href="#" class="launch-nav" data-nav-slide="1" id="home-search-by-variable"><span class="icon icon-variables"></span>View by variable</a></li>
                 <li class="border"><a href="#" class="launch-nav" data-nav-slide="2" id="home-search-by-topic"><span class="icon icon-bubble"></span>View by topic</a></li>
                 <li><a href="#" id="cd-tour-trigger" class="start-home-tour"><span class="icon icon-tour"></span>New here? Take the tour</a></li>
