@@ -46,7 +46,7 @@ $precip_content = array(
         'source' => 'NOAA, 2016'
     ),
     array(
-        'variable' => 'pr_above',
+        'variable' => 'days_prcp_abv_25',
         'name' => 'Days of Precipitation Above 1 Inch',
         'detail' => "<p>The number of days per year when locations receive more than 1 inch (2.5 cm) of precipitation is an indicator of how often heavy precipitation events occur. This measurement may also be used as an indicator of flood risk.</p><p>Comparing values at a single location over time can indicate a trend of increasing or decreasing flood risk. Comparing values from one location to another may not reflect relative risks for flooding, as factors that control runoff vary from site to site.</p>",
         'source' => 'NOAA, 2016'
@@ -226,7 +226,7 @@ $topics_content = array(
                 case 'pr' :
                     $current = 'Mean Daily Precipitation';
                     break;
-                case 'pr_above' :
+                case 'days_prcp_abv_25.3' :
                     $current = 'Days of Precipitation Above 1 Inch';
                     break;
                 case 'heating_degree_day_18' :

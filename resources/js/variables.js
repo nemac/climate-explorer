@@ -5,6 +5,9 @@ var Variables = function (id) {
         case (id === 'days_tmax_abv_35'):
             id = 'days_tmax_abv_35.0';
             break;
+        case (id === 'days_prcp_abv_25'):
+            id = 'days_prcp_abv_25.3';
+            break;
         case (id === 'days_tmin_blw_0'):
             id = 'days_tmin_blw_0.0';
             break;
@@ -60,7 +63,7 @@ Variables.prototype.mapVariables = function () {
         'days_tmin_blw_0.0': '-annual-hist-days-tmin-blw',
         'days_tmax_abv_35.0': '-annual-hist-days-tmax-abv',
         'pr': '-hist-precip',
-        'pr_above': '-annual-hist-days-prcp-abv',
+        'days_prcp_abv_25.3': '-annual-hist-days-prcp-abv',
         'cooling_degree_day_18.3': '-annual-hist-cooling-degree-day',
         'heating_degree_day_18.3': '-annual-hist-heating-degree-day'
     };
@@ -71,7 +74,7 @@ Variables.prototype.mapVariables = function () {
         'days_tmin_blw_0.0': '-annual-rcp45-days-tmin-blw',
         'days_tmax_abv_35.0': '-annual-rcp45-days-tmax-abv',
         'pr': '-rcp45-precip',
-        'pr_above': '-annual-rcp45-days-prcp-abv',
+        'days_prcp_abv_25.3': '-annual-rcp45-days-prcp-abv',
         'cooling_degree_day_18.3': '-annual-rcp45-cooling-degree-day',
         'heating_degree_day_18.3': '-annual-rcp45-heating-degree-day'
     };
@@ -82,7 +85,7 @@ Variables.prototype.mapVariables = function () {
         'days_tmin_blw_0.0': '-annual-rcp85-days-tmin-blw',
         'days_tmax_abv_35.0': '-annual-rcp85-days-tmax-abv',
         'pr': '-rcp85-precip',
-        'pr_above': '-annual-rcp85-days-prcp-abv',
+        'days_prcp_abv_25.3': '-annual-rcp85-days-prcp-abv',
         'cooling_degree_day_18.3': '-annual-rcp85-cooling-degree-day',
         'heating_degree_day_18.3': '-annual-rcp85-heating-degree-day'
     };
@@ -108,7 +111,7 @@ Variables.prototype.createMap = function () {
     var center = ( qs.center ) ? qs.center.split(',') : null;
 
     // make sure variable in query is valid
-    if (!qs.id.match(/^(tasmax|tasmin|days_tmin_blw_0|days_tmin_blw_0.0|days_tmax_abv_35|days_tmax_abv_35.0|pr|pr_above|cooling_degree_day_18|cooling_degree_day_18.3|heating_degree_day_18|heating_degree_day_18.3)$/)) {
+    if (!qs.id.match(/^(tasmax|tasmin|days_tmin_blw_0|days_tmin_blw_0.0|days_tmax_abv_35|days_tmax_abv_35.0|pr|days_prcp_abv_25.3|days_prcp_abv_25|cooling_degree_day_18|cooling_degree_day_18.3|heating_degree_day_18|heating_degree_day_18.3)$/)) {
 
       window.location = "error.php";
       throw new Error("MALFORMED VARIABLE");
