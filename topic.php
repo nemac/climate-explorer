@@ -1,4 +1,17 @@
-<?php  include_once('functions.php'); ?>
+<?php
+include_once('functions.php');
+$share_data['url'] = current_URL();
+
+$param = isset($_GET['param']) ? $_GET['param'] : '';
+
+if ($param != 'coastal' && $param != 'health' && $param != 'water' && $param != 'ecosystems' && $param != 'tribal_nations' && $param != 'transportation') {
+    header("Location:error.php");
+}
+
+$param = xss_clean($param);
+// unnecessary but doesn't hurt.
+$param =  filter_var($param, FILTER_SANITIZE_STRING);
+?>
 <!doctype html>
 <html>
 <head>
@@ -15,20 +28,7 @@
     <script type="text/javascript" src="./resources/js/jquery-ui.min.js"></script>
 
     <?php
-
-      $share_data['url'] = current_URL();
-
-      echo opengraph_output($share_data);
-
-      $param = isset($_GET['param']) ? $_GET['param'] : '';
-
-    if ($param != 'coastal' && $param != 'health' && $param != 'water' && $param != 'ecosystems' && $param != 'tribal_nations' && $param != 'transportation') {
-        die ("INVALID CASE");
-    }
-
-    $param = xss_clean($param);
-    $param =  filter_var($param, FILTER_SANITIZE_STRING);
-
+    echo opengraph_output($share_data);
     ?>
 
     <style>
