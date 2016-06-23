@@ -54,15 +54,15 @@ $city =  filter_var($city, FILTER_SANITIZE_STRING);
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <link rel="stylesheet" href="resources/css/ol3-popup.css">
+    <link rel="stylesheet" href="<?php $current_domain ?>resources/css/ol3-popup.css">
 
-    <link rel="stylesheet" href="resources/css/sweetalert.css">
+    <link rel="stylesheet" href="<?php $current_domain ?>resources/css/sweetalert.css">
 
-    <link rel="stylesheet" media="screen" href="resources/css/screen.css">
-    <link rel="stylesheet" media="screen" href="resources/css/mods.css">
+    <link rel="stylesheet" media="screen" href="<?php $current_domain ?>resources/css/screen.css">
+    <link rel="stylesheet" media="screen" href="<?php $current_domain ?>resources/css/mods.css">
 
-    <script type="text/javascript" src="./resources/js/jquery.min.js"></script>
-    <script type="text/javascript" src="./resources/js/jquery-ui.min.js"></script>
+    <script type="text/javascript" src="<?php $current_domain ?>resources/js/jquery.min.js"></script>
+    <script type="text/javascript" src="<?php $current_domain ?>resources/js/jquery-ui.min.js"></script>
 
     <?php
 
@@ -99,10 +99,10 @@ $city =  filter_var($city, FILTER_SANITIZE_STRING);
                 <h4>Jump to:</h4>
 
                 <ul>
-                    <li><a href="#location-temperature">Temperature</a></li>
-                    <li><a href="#location-precipitation">Precipitation</a></li>
-                    <li><a href="#location-derived">Other</a></li>
-                    <li><a href="#location-stations">Weather Stations</a></li>
+                    <li><a href="<?php $current_domain ?>#location-temperature">Temperature</a></li>
+                    <li><a href="<?php $current_domain ?>#location-precipitation">Precipitation</a></li>
+                    <li><a href="<?php $current_domain ?>#location-derived">Other</a></li>
+                    <li><a href="<?php $current_domain ?>#location-stations">Weather Stations</a></li>
                     <!--<li><a href="#location-impacts">Relevant Impacts</a></li>-->
                 </ul>
             </div>
@@ -112,7 +112,7 @@ $city =  filter_var($city, FILTER_SANITIZE_STRING);
 
         <div id="download-panel" class="hidden download-panel overlay">
             <div class="download-inner">
-                <a href="#" id="download-dismiss-button" class="icon icon-close"></a>
+                <a href="<?php $current_domain ?>#" id="download-dismiss-button" class="icon icon-close"></a>
                 <p>Use the following links to download this graph's data:</p>
                 <ul></ul>
             </div>
@@ -128,7 +128,7 @@ $city =  filter_var($city, FILTER_SANITIZE_STRING);
 
                     <ul class="data-options">
                         <li class="active accent-border">
-                            <h4 id="var-tasmax"><a href="#" class="text">Mean Daily Maximum Temperature</a><a href="#detail-tasmax" class="icon icon-help nav-detail-link"></a></h4>
+                            <h4 id="var-tasmax"><a href="<?php $current_domain ?>#" class="text">Mean Daily Maximum Temperature</a><a href="<?php $current_domain ?>#detail-tasmax" class="icon icon-help nav-detail-link"></a></h4>
                             <ul class="location-resolution">
                                 <li class="active accent-border"><a class="accent-color">Annual</a></li>
                                 <li class="seasonal-monthly"><a>Monthly</a></li>
@@ -137,7 +137,7 @@ $city =  filter_var($city, FILTER_SANITIZE_STRING);
                         </li>
 
                         <li class="">
-                            <h4 id="var-tasmin"><a href="#" class="text">Mean Daily Minimum Temperature</a><a href="#detail-tasmin" class="icon icon-help nav-detail-link"></a></h4>
+                            <h4 id="var-tasmin"><a href="<?php $current_domain ?>#" class="text">Mean Daily Minimum Temperature</a><a href="<?php $current_domain ?>#detail-tasmin" class="icon icon-help nav-detail-link"></a></h4>
                             <ul class="location-resolution">
                                 <li><a>Annual</a></li>
                                 <li class="seasonal-monthly"><a>Monthly</a></li>
@@ -146,14 +146,14 @@ $city =  filter_var($city, FILTER_SANITIZE_STRING);
                         </li>
 
                         <li class="">
-                            <h4 id="var-days_tmax_abv_35.0"><a href="#" class="text">Days with Maximum Above 95&deg;F</a><a href="#detail-days_tmax_abv_35" class="icon icon-help nav-detail-link"></a></h4>
+                            <h4 id="var-days_tmax_abv_35.0"><a href="<?php $current_domain ?>#" class="text">Days with Maximum Above 95&deg;F</a><a href="<?php $current_domain ?>#detail-days_tmax_abv_35" class="icon icon-help nav-detail-link"></a></h4>
                             <ul class="location-resolution">
                                 <li><a>Annual</a></li>
                             </ul>
                         </li>
 
                         <li class="">
-                            <h4 id="var-days_tmin_blw_0.0"><a href="#" class="text">Days with Minimum Below 32&deg;F</a><a href="#detail-days_tmin_blw_0" class="icon icon-help nav-detail-link"></a></h4>
+                            <h4 id="var-days_tmin_blw_0.0"><a href="<?php $current_domain ?>#" class="text">Days with Minimum Below 32&deg;F</a><a href="<?php $current_domain ?>#detail-days_tmin_blw_0" class="icon icon-help nav-detail-link"></a></h4>
                             <ul>
                                 <li><a>Annual</a></li>
                             </ul>
@@ -370,7 +370,7 @@ $city =  filter_var($city, FILTER_SANITIZE_STRING);
 
                     <ul class="data-options">
                         <li class="active accent-border">
-                            <h4 id="var-pr"><a href="#" class="text">Mean Daily Precipitation</a><a href="#detail-pr" class="icon icon-help nav-detail-link"></a></h4>
+                            <h4 id="var-pr"><a href="<?php $current_domain ?>#" class="text">Mean Daily Precipitation</a><a href="<?php $current_domain ?>#detail-pr" class="icon icon-help nav-detail-link"></a></h4>
                             <ul class="location-resolution">
                                 <li class="active accent-border"><a class="accent-color">Annual</a></li>
                                 <li class="seasonal-monthly"><a>Monthly</a></li>
@@ -379,7 +379,7 @@ $city =  filter_var($city, FILTER_SANITIZE_STRING);
                         </li>
 
                         <li class="">
-                            <h4 id="var-days_prcp_abv_25.3"><a href="#" class="text">Days of Precipitation Above 1 Inch</a><a href="#detail-pr-above" class="icon icon-help nav-detail-link"></a></h4>
+                            <h4 id="var-days_prcp_abv_25.3"><a href="<?php $current_domain ?>#" class="text">Days of Precipitation Above 1 Inch</a><a href="<?php $current_domain ?>#detail-pr-above" class="icon icon-help nav-detail-link"></a></h4>
                             <ul class="location-resolution">
                                 <li><a>Annual</a></li>
                             </ul>
@@ -598,14 +598,14 @@ $city =  filter_var($city, FILTER_SANITIZE_STRING);
 
                     <ul class="data-options">
                         <li class="active accent-border">
-                            <h4 id="var-heating_degree_day_18.3"><a href="#" class="text">Heating Degree Days</a><a href="#detail-heating_degree_day_18" class="icon icon-help nav-detail-link"></a></h4>
+                            <h4 id="var-heating_degree_day_18.3"><a href="<?php $current_domain ?>#" class="text">Heating Degree Days</a><a href="<?php $current_domain ?>#detail-heating_degree_day_18" class="icon icon-help nav-detail-link"></a></h4>
                             <ul>
                                 <li class="active accent-border"><a class="accent-color">Annual</a></li>
                             </ul>
                         </li>
 
                         <li class="">
-                            <h4 id="var-cooling_degree_day_18.3"><a href="#" class="text">Cooling Degree Days</a><a href="#detail-cooling_degree_day_18" class="icon icon-help nav-detail-link"></a></h4>
+                            <h4 id="var-cooling_degree_day_18.3"><a href="<?php $current_domain ?>#" class="text">Cooling Degree Days</a><a href="<?php $current_domain ?>#detail-cooling_degree_day_18" class="icon icon-help nav-detail-link"></a></h4>
                             <ul>
                                 <li><a>Annual</a></li>
                             </ul>
