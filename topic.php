@@ -20,7 +20,7 @@
 
       echo opengraph_output($share_data);
 
-      $param = $_REQUEST['param'];
+      $param = isset($_GET['param']) ? $_GET['param'] : '';
 
     if ($param != 'coastal' && $param != 'health' && $param != 'water' && $param != 'ecosystems' && $param != 'tribal_nations' && $param != 'transportation') {
         die ("INVALID CASE");
@@ -114,21 +114,21 @@
 
   (function ($) {
     $(function () {
-      
+
       $('body').on('click', '#subtopics-list a', function(e) {
         e.preventDefault();
-        
+
         var link_href = $(this).attr('href');
         var viewport_scrolltop = $('#viewport').scrollTop();
         var element_position = $(link_href).offset().top;
         var destination = viewport_scrolltop + element_position;
-  
+
         $('#viewport').animate({
           scrollTop: destination - $('#main-header').outerHeight()
         }, 1000);
-          
+
       });
-      
+
     });
   }(jQuery));
 

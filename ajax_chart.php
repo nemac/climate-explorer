@@ -1,6 +1,6 @@
 <?php
-  
-$chart_ID = $_REQUEST['id'];
+
+$chart_ID = isset($_GET['id']) ? $_GET['id'] : '';
 
 $chart_start = 2010;
 $chart_end = 2100;
@@ -9,7 +9,7 @@ if (isset($_REQUEST['start'])) $chart_start = $_REQUEST['start'];
 if (isset($_REQUEST['end'])) $chart_end = $_REQUEST['end'];
 
 //if ($chart_ID == '123') {
-  
+
   $alldata = array(
     array(
       array( 'label' => 2010, 'value' => 65 ),
@@ -32,7 +32,7 @@ if (isset($_REQUEST['end'])) $chart_end = $_REQUEST['end'];
       array( 'label' => 2095, 'value' => 103 ),
       array( 'label' => 2100, 'value' => 107 )
     ),
-    
+
     array(
       array( 'label' => 2010, 'value' => 28 ),
       array( 'label' => 2015, 'value' => 30 ),
@@ -55,32 +55,32 @@ if (isset($_REQUEST['end'])) $chart_end = $_REQUEST['end'];
       array( 'label' => 2100, 'value' => 111 )
     )
   );
-  
+
   $z = 0;
-  
+
   foreach($alldata as $dataset) {
-    
+
     $i = 0;
-    
+
     foreach ($dataset as $item) {
-      
+
       if ($item['label'] >= $chart_start && $item['label'] <= $chart_end) {
         $json['result']['labels'][$i] = strval($item['label']);
         $json['result']['datasets'][$z]['data'][] = $item['value'];
-        
+
         $i++;
       }
     }
-    
+
     $z++;
   }
-  
+
   $json['result']['datasets'][0]['label'] = 'High Emission Scenario';
   $json['result']['datasets'][0]['strokeColor'] = '#f5442d';
   $json['result']['datasets'][0]['pointColor'] = '#fff';
   $json['result']['datasets'][0]['pointStrokeColor'] = '#f5442d';
   $json['result']['datasets'][0]['pointHighlightFill'] = '#f5442d';
-  
+
   $json['result']['datasets'][1]['label'] = 'Low Emission Scenario';
   $json['result']['datasets'][1]['strokeColor'] = '#0058cf';
   $json['result']['datasets'][1]['pointColor'] = '#fff';
