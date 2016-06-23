@@ -1,5 +1,5 @@
 <?php
-
+include_once('functions.php');
 // DEFINE VARS
 $case = isset($_GET['id']) ? $_GET['id'] : '';
 $group = isset($_GET['group']) ? $_GET['group'] : '';
@@ -8,16 +8,17 @@ $zoom = isset($_GET['zoom']) ? $_GET['zoom'] : '';
 $center = isset($_GET['center']) ? $_GET['center'] : '';
 $layers = isset($_GET['layers']) ? $_GET['layers'] : '';
 
-
+// we know what a case should be, verify here
 if ($case != 'coastal' && $case != 'health' && $case != 'water' && $case != 'ecosystems' && $case != 'tribal_nations' && $case != 'transportation') {
   header("Location:error.php");
 }
-include_once('functions.php');
 
-$case =  filter_var($case, FILTER_SANITIZE_STRING);
 $case = xss_clean($case);
 
+// unnecessary but doesn't hurt
+$case =  filter_var($case, FILTER_SANITIZE_STRING);
 
+// we know what the group names should be, verify here
 if ($group != 'all' && $group != 'group1' && $group != 'group2' && $group != 'group3' && $group != 'group4' && $group != 'group5' && $group != 'group6' && $group != 'group7') {
   header("Location:error.php");
 }

@@ -31,7 +31,7 @@
 Header set X-XSS-Protection "1; mode=block"
 
 # Don't allow any pages to be framed - Defends against CSRF
-Header set X-Frame-Options DENY
+Header set X-Frame-Options SAMEORIGIN
 
 # prevent mime based attacks
 Header set X-Content-Type-Options "nosniff"
