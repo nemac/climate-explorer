@@ -1,6 +1,8 @@
 <?php
-
+  $lockdown = 1;
   include_once('functions.php');
+
+
 
 ?>
 <!doctype html>

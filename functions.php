@@ -33,7 +33,7 @@ $current_url = current_URL();
 $current_domain = current_DOMAIN();
 
 
-if($current_url != strip_tags(rawurldecode($current_url))) {
+if(($current_url != strip_tags(rawurldecode($current_url)))&&($lockdown == 1)) {
     if ($current_url != $current_domain."/error.php")
     {
         header("Location:" . $current_domain . "/error.php");

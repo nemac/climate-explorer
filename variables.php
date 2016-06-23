@@ -1,5 +1,5 @@
 <?php
-
+$lockdown = 1;
 include_once('functions.php');
 
 $active_variable = isset($_GET['id']) ? $_GET['id'] : '';

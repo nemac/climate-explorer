@@ -1,4 +1,5 @@
 <?php
+$lockdown = 1;
 include_once('functions.php');
 $share_data['url'] = current_URL();
 
