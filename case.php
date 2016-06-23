@@ -8,7 +8,7 @@ $zoom = isset($_GET['zoom']) ? $_GET['zoom'] : '';
 $center = isset($_GET['center']) ? $_GET['center'] : '';
 $layers = isset($_GET['layers']) ? $_GET['layers'] : '';
 
-// we know what a case should be, verify here
+// we know what a case should be, verify here, don't need this validation in header.php because it's here.
 if ($case != 'coastal' && $case != 'health' && $case != 'water' && $case != 'ecosystems' && $case != 'tribal_nations' && $case != 'transportation') {
   header("Location:error.php");
 }
