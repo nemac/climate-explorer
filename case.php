@@ -1,10 +1,26 @@
 <?php
 include_once('functions.php');
-$case = $_REQUEST['id'];
+
+// DEFINE VARS
+$case = isset($_GET['id']) ? $_GET['id'] : '';
+$group = isset($_GET['group']) ? $_GET['group'] : '';
+$active_year = isset($_GET['active_year']) ? $_GET['active_year'] : '';
+$zoom = isset($_GET['zoom']) ? $_GET['zoom'] : '';
+$center = isset($_GET['center']) ? $_GET['center'] : '';
+$layers = isset($_GET['layers']) ? $_GET['layers'] : '';
 
 
-$case = xss_clean($case);
+if ($case != 'coastal' && $case != 'health' && $case != 'water' && $case != 'ecosystems' && $case != 'tribal_nations' && $case != 'transportation') {
+  header("Location:error.php");
+}
+
 $case =  filter_var($case, FILTER_SANITIZE_STRING);
+$case = xss_clean($case);
+
+
+if ($group != 'all' && $group != 'group1' && $group != 'group2' && $group != 'group3' && $group != 'group4' && $group != 'group5' && $group != 'group6' && $group != 'group7') {
+  die ("INVALID GROUP");
+}
 
 
 ?>

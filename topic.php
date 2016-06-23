@@ -22,6 +22,9 @@
 
       $param = $_REQUEST['param'];
 
+    if ($param != 'coastal' && $param != 'health' && $param != 'water' && $param != 'ecosystems' && $param != 'tribal_nations' && $param != 'transportation') {
+        die ("INVALID CASE");
+    }
 
     $param = xss_clean($param);
     $param =  filter_var($param, FILTER_SANITIZE_STRING);
