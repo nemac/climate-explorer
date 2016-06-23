@@ -30,16 +30,16 @@ if ($active_year) {
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <link rel="stylesheet" href="resources/css/ol.css">
-    <link rel="stylesheet" href="resources/css/ol3-popup.css">
+    <link rel="stylesheet" href="<?php $current_domain ?>resources/css/ol.css">
+    <link rel="stylesheet" href="<?php $current_domain ?>resources/css/ol3-popup.css">
 
-    <link rel="stylesheet" href="resources/css/sweetalert.css">
+    <link rel="stylesheet" href="<?php $current_domain ?>resources/css/sweetalert.css">
 
-    <link rel="stylesheet" media="screen" href="resources/css/screen.css">
-    <link rel="stylesheet" media="screen" href="resources/css/mods.css">
+    <link rel="stylesheet" media="screen" href="<?php $current_domain ?>resources/css/screen.css">
+    <link rel="stylesheet" media="screen" href="<?php $current_domain ?>resources/css/mods.css">
 
-    <script type="text/javascript" src="./resources/js/jquery.min.js"></script>
-    <script type="text/javascript" src="./resources/js/jquery-ui.min.js"></script>
+    <script type="text/javascript" src="<?php $current_domain ?>resources/js/jquery.min.js"></script>
+    <script type="text/javascript" src="<?php $current_domain ?>resources/js/jquery-ui.min.js"></script>
 
     <?php
 
@@ -72,7 +72,6 @@ if ($active_year) {
         <li class="search-field border" id="variable-search-by-location"><span class="icon icon-search"></span><input type="text" id="formmapper" placeholder="Search by location"></li>
 
         <li class="toggle border" id="variable-counties-toggle">
-            <!--<a href="#info-counties" class="help icon icon-help"></a>-->
             <label for="counties-overlay-toggle"><span class="text">Data by Counties</span>
                 <input type="checkbox" name="counties-overlay-toggle" id="counties-overlay-toggle" value="1" autocomplete="off">
             </label>
@@ -98,7 +97,7 @@ if ($active_year) {
             </select>
         </li>
 
-        <li class="about-link"><a href="#detail-tasmax" class="nav-detail-link" id="about-variable-link">About Mean Daily Maximum Temperature</a></li>
+        <li class="about-link"><a href="<?php $current_domain ?>#detail-tasmax" class="nav-detail-link" id="about-variable-link">About Mean Daily Maximum Temperature</a></li>
     </ul>
 
     <div id="vars-legend" class="legend-wrap left-filler">
@@ -106,8 +105,6 @@ if ($active_year) {
             <h5>Legend</h5>
             <div id="legend-container"></div>
         </div>
-
-        <h6 class="source">Source: <a href="#" target="_blank">NOAA, 2014</a></h6>
     </div>
 </header>
 
@@ -149,7 +146,7 @@ if ($active_year) {
     </div>
 </div>
 
-<a href="#" id="district-trigger"><span class="text">Show District Overlay</span><span class="icon icon-district"></span></a>
+<a href="<?php $current_domain ?>#" id="district-trigger"><span class="text">Show District Overlay</span><span class="icon icon-district"></span></a>
 
 <?php include_once('template/footer.php'); ?>
 </body>

@@ -22,13 +22,13 @@ $param =  filter_var($param, FILTER_SANITIZE_STRING);
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <link rel="stylesheet" href="resources/css/sweetalert.css">
-    
-    <link rel="stylesheet" media="screen" href="resources/css/screen.css">
-    <link rel="stylesheet" media="screen" href="resources/css/mods.css">
+    <link rel="stylesheet" href="<?php $current_domain ?>resources/css/sweetalert.css">
 
-    <script type="text/javascript" src="./resources/js/jquery.min.js"></script>
-    <script type="text/javascript" src="./resources/js/jquery-ui.min.js"></script>
+    <link rel="stylesheet" media="screen" href="<?php $current_domain ?>resources/css/screen.css">
+    <link rel="stylesheet" media="screen" href="<?php $current_domain ?>resources/css/mods.css">
+
+    <script type="text/javascript" src="<?php $current_domain ?>resources/js/jquery.min.js"></script>
+    <script type="text/javascript" src="<?php $current_domain ?>resources/js/jquery-ui.min.js"></script>
 
     <?php
     echo opengraph_output($share_data);
@@ -50,11 +50,11 @@ $param =  filter_var($param, FILTER_SANITIZE_STRING);
     <div id="main-content-wrap">
 
         <div class="share-widget">
-          <a href="#" class="share-trigger"><span class="icon icon-social"></span>Share</a>
+          <a href="<?php $current_domain ?>#" class="share-trigger"><span class="icon icon-social"></span>Share</a>
           <ul>
-            <li><a href="#" class="share-link share-facebook"><span class="icon icon-facebook"></span>Facebook</a></li>
-            <li><a href="#" class="share-link share-twitter"><span class="icon icon-twitter"></span>Twitter</a></li>
-            <li><a href="#" class="share-link share-linkedin"><span class="icon icon-linkedin"></span>LinkedIn</a></li>
+            <li><a href="<?php $current_domain ?>#" class="share-link share-facebook"><span class="icon icon-facebook"></span>Facebook</a></li>
+            <li><a href="<?php $current_domain ?>#" class="share-link share-twitter"><span class="icon icon-twitter"></span>Twitter</a></li>
+            <li><a href="<?php $current_domain ?>#" class="share-link share-linkedin"><span class="icon icon-linkedin"></span>LinkedIn</a></li>
           </ul>
         </div>
 
@@ -70,7 +70,7 @@ $param =  filter_var($param, FILTER_SANITIZE_STRING);
               <ul id="subtopics-list">
 
               </ul>
-              <a href="case.php?id=<?php echo $param ?>&group=all" id="subtopics-view-all" class="button display-block border-white color-orange arrow-right">View all layers for topic</a>
+              <a href="<?php $current_domain ?>case.php?id=<?php echo $param ?>&group=all" id="subtopics-view-all" class="button display-block border-white color-orange arrow-right">View all layers for topic</a>
             </div>
         </section>
 
@@ -88,13 +88,13 @@ $param =  filter_var($param, FILTER_SANITIZE_STRING);
     $('#topic-description').html(desc);
 
     $.each(data.topics['<?php echo $param; ?>'].groups, function(i, group) {
-      li = '<li><a href="#<?php echo $param; ?>-' + i + '">' + group.title + '</a></li>';
+      li = '<li><a href="<?php $current_domain ?>#<?php echo $param; ?>-' + i + '">' + group.title + '</a></li>';
       $('#subtopics-list').append(li);
 
       var html = '<article id="<?php echo $param ?>-' + i + '" class="topic-banner">'+
         '<div class="topic-banner-text">'+
             '<h4>Impact</h4>'+
-            '<h3><a href="case.php?id=<?php echo $param ?>&group='+i+'">'+group.title+'</a></h3>'+
+            '<h3><a href="<?php $current_domain ?>case.php?id=<?php echo $param ?>&group='+i+'">'+group.title+'</a></h3>'+
             '<p>'+group.description+'</p>'+
         '</div>'+
         '<div class="topic-layers white-menu">'+
@@ -102,7 +102,7 @@ $param =  filter_var($param, FILTER_SANITIZE_STRING);
             '<ul id="'+i+'-layer-list">'+
             '</ul>'+
         '</div>'+
-        '<a href="case.php?id=<?php echo $param ?>&group='+i+'" class="button bg-trans border-white hover-bg-white plus">View details</a>'+
+        '<a href="<?php $current_domain ?>case.php?id=<?php echo $param ?>&group='+i+'" class="button bg-trans border-white hover-bg-white plus">View details</a>'+
       '</article>';
 
       $('#subtopics').append(html);
