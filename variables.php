@@ -108,7 +108,7 @@ if ($active_year) {
                 <option value="days_tmax_abv_35.0">Days With Maximum Above 95°F</option>
                 <option value="days_tmin_blw_0.0">Days With Minimum Below 32°F</option>
                 <option value="pr">Mean Daily Precipitation</option>
-                <option value="pr_above">Days of Precipitation Above 1 Inch</option>
+                <option value="days_prcp_abv_25.3">Days of Precipitation Above 1 Inch</option>
                 <option value="heating_degree_day_18.3">Heating Degree Days</option>
                 <option value="cooling_degree_day_18.3">Cooling Degree Days</option>
             </select>
