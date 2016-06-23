@@ -51,7 +51,6 @@ if (!isValidLongitude($lon)) {
 
     <?php
 
-    $share_data = {};
     $share_data['url'] = current_URL();
     $share_data['title'] = 'Location data for ' . $city;
 
