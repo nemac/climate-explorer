@@ -26,3 +26,12 @@
   BrowserMatch ^Mozilla/4\.0[678] no-gzip
   BrowserMatch \bMSIE !no-gzip !gzip-only-text/html
 </IfModule>
+
+# Turn on IE8-IE9 XSS prevention tools
+Header set X-XSS-Protection "1; mode=block"
+
+# Don't allow any pages to be framed - Defends against CSRF
+Header set X-Frame-Options DENY
+
+# prevent mime based attacks
+Header set X-Content-Type-Options "nosniff"

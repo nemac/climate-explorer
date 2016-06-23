@@ -1,5 +1,8 @@
 <?php
 
+//  recommended by OWASP; added in htaccess but here just in case.
+header("X-XSS-Protection: 1");
+
 // current page URL
 
 function current_URL()
