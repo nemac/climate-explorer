@@ -109,6 +109,8 @@ Variables.prototype.createMap = function () {
 
     // make sure variable in query is valid
     if (!qs.id.match(/^(tasmax|tasmin|days_tmin_blw_0|days_tmin_blw_0.0|days_tmax_abv_35|days_tmax_abv_35.0|pr|pr_above|cooling_degree_day_18|cooling_degree_day_18.3|heating_degree_day_18|heating_degree_day_18.3)$/)) {
+
+      window.location = "error.php";
       throw new Error("MALFORMED VARIABLE");
     }
 
@@ -119,6 +121,8 @@ Variables.prototype.createMap = function () {
       {
           //alert("Good Center");
       } else {
+
+          window.location = "error.php";
           throw new Error("MALFORMED CENTER");
       }
     }
@@ -127,6 +131,7 @@ Variables.prototype.createMap = function () {
     if (qs.zoom){
         if (!isNumeric(qs.zoom))
         {
+            window.location = "error.php";
             throw new Error("MALFORMED ZOOM");
         }
     }
@@ -136,6 +141,7 @@ Variables.prototype.createMap = function () {
     if (qs.year){
         if (!isNumeric(qs.year))
         {
+            window.location = "error.php";
             throw new Error("MALFORMED YEAR");
         }
     }

@@ -15,6 +15,32 @@ function current_URL()
     return $pageURL;
 }
 
+// current domain app is living on
+
+function current_DOMAIN()
+{
+    $pageURL = 'http';
+    $pageURL .= "://";
+    if ($_SERVER["SERVER_PORT"] != "80") {
+        $pageURL .= $_SERVER["SERVER_NAME"] . ":" . $_SERVER["SERVER_PORT"];
+    } else {
+        $pageURL .= $_SERVER["SERVER_NAME"];
+    }
+    return $pageURL;
+}
+
+$current_url = current_URL();
+$current_domain = current_DOMAIN();
+
+
+if($current_url != strip_tags(rawurldecode($current_url))) {
+    if ($current_url != $current_domain."/error.php")
+    {
+        header("Location:" . $current_domain . "/error.php");
+    }
+}
+
+
 // output open graph tags
 
 function opengraph_output($data)
