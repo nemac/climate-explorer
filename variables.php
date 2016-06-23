@@ -14,6 +14,22 @@ $active_year = filter_var($active_year, FILTER_SANITIZE_NUMBER_INT);
 if (!is_numeric($active_year)) {
     header("Location:error.php");
 }
+
+
+if ($active_variable){
+    if (!validate_alphanumeric_underscore($active_variable)){
+        header("Location:error.php");
+    }
+} else {
+    if($current_url != strip_tags(rawurldecode($current_url))) {
+        if ($current_url != $current_domain."/error.php")
+        {
+            header("Location:" . $current_domain . "/error.php");
+        }
+    }
+}
+
+
 if ($active_year) {
     if ($active_year < 1950 || $active_year > 2090) {
         header("Location:error.php");

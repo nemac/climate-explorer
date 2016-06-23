@@ -41,6 +41,13 @@ if(($current_url != strip_tags(rawurldecode($current_url)))&&($lockdown == 1)) {
 }
 
 
+
+function validate_alphanumeric_underscore($str)
+{
+    return preg_match('/^[a-zA-Z0-9_]+$/',$str);
+}
+
+
 // output open graph tags
 
 function opengraph_output($data)
