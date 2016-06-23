@@ -35,6 +35,8 @@ if ($group != 'all' && $group != 'group1' && $group != 'group2' && $group != 'gr
 
     <link rel="stylesheet" href="resources/css/ol3-popup.css">
 
+    <link rel="stylesheet" href="resources/css/sweetalert.css">
+
     <link rel="stylesheet" media="screen" href="resources/css/screen.css">
     <link rel="stylesheet" media="screen" href="resources/css/mods.css">
 

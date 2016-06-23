@@ -34,6 +34,8 @@
 <script type="text/javascript" src="./resources/js/location.js"></script>
 <script type="text/javascript" src="./resources/js/cwg/climate-widget-graph.js"></script>
 
+<script type="text/javascript" src="./resources/js/sweetalert.min.js"></script>
+
 <script type="text/javascript" src="./resources/js/ol.js"></script>
 <script type="text/javascript" src="./resources/js/ol3-popup.js"></script>
 <script type="text/javascript" src="./resources/js/main.js"></script>

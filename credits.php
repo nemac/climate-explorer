@@ -1,5 +1,5 @@
 <?php
-  
+
   include_once('functions.php');
 
 ?>
@@ -14,19 +14,21 @@
 
     <link rel="stylesheet" href="resources/css/ol3-popup.css">
 
+    <link rel="stylesheet" href="resources/css/sweetalert.css">
+    
     <link rel="stylesheet" media="screen" href="resources/css/screen.css">
     <link rel="stylesheet" media="screen" href="resources/css/mods.css">
 
     <script type="text/javascript" src="./resources/js/jquery.min.js"></script>
     <script type="text/javascript" src="./resources/js/jquery-ui.min.js"></script>
-    
+
     <?php
-      
+
       $share_data['url'] = current_URL();
       $share_data['title'] = 'Credits';
-      
+
       echo opengraph_output($share_data);
-      
+
     ?>
 
 </head>
@@ -45,19 +47,19 @@
                 <h1>Credits & Acknowledgments</h1>
             </div>
         </section>
-        
+
         <section id="standard-body" class="page-text">
-          
+
           <p>The U.S. Climate Resilience Toolkit and Climate Explorer are managed by NOAA’s Climate Program Office, and hosted by NOAA’s National Centers for Environmental Information (NCEI-Asheville).</p>
-          
+
           <p>Development of the Climate Explorer was directed and overseen by an interagency team of federal climate modeling experts, chaired by the U.S. Global Change Research Program (see details below).</p>
-          
+
           <p>Design and programming were completed by HabitatSeven, in partnership with the National Environmental Modeling and Analysis Center (NEMAC), at UNC-Asheville. </p>
- 
+
           <p>Production and processing of the Bias Corrected Constructed Analog (BCCA) downscaled climate projection data was provided by the U.S. Geological Survey (USGS), in partnership with NASA and NOAA. NASA Earth Exchange Downscaled Climate Projection (NEX DCP30) data were provided by NASA Ames Research Center, and PRISM historical observed data were provided by Oregon State University. </p>
-          
+
           <h3>Interagency Climate Projection Team Members</h3>
-          
+
           <ul>
             <li>Fred Lipschultz, Chair, contractor to U.S. Global Change Research Program</li>
             <li>Jay Alder, U.S. Geological Survey</li>
@@ -67,18 +69,18 @@
             <li>Phil Morefield, U.S. Environmental Protection Agency
 Andrea Ray, NOAA</li>
           </ul>
-          
+
           <h3>U.S. Climate Resilience Toolkit Program Management</h3>
-          
+
           <ul>
             <li>David Herring, program manager, NOAA</li>
             <li>LuAnn Dahlman, managing editor, contractor to NOAA</li>
             <li>Ned Gardiner, public engagement manager, contractor to NOAA</li>
             <li>Larry Belcher, programmer, contractor to NOAA</li>
           </ul>
-          
+
           <h3>Design, Programming & Development</h3>
-          
+
           <ul>
             <li>Jamie Herring, president & lead designer, HabitatSeven</li>
             <li>Jordan Harding, chief technology officer, HabitatSeven</li>
@@ -90,15 +92,15 @@ Andrea Ray, NOAA</li>
             <li>Ian Johnson, geospatial technician, NEMAC</li>
             <li>Mark Phillips, software engineering, data analysis, NEMAC</li>
           </ul>
-          
+
           <h3>Thanks also to reviewers:</h3>
-          
+
           <ul>
             <li>Katharine Hayhoe, climate modeler, Texas Tech University</li>
             <li>Keith Dixon, climate modeler, NOAA Geophysical Fluid Dynamics Laboratory</li>
             <li>Ken Kunkel, climate modeler, NOAA National Center for Environmental Information</li>
           </ul>
-                    
+
         </section>
     </div>
 </div>

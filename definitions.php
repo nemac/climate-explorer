@@ -1,5 +1,5 @@
 <?php
-  
+
   include_once('functions.php');
 
 ?>
@@ -14,19 +14,21 @@
 
     <link rel="stylesheet" href="resources/css/ol3-popup.css">
 
+    <link rel="stylesheet" href="resources/css/sweetalert.css">
+
     <link rel="stylesheet" media="screen" href="resources/css/screen.css">
     <link rel="stylesheet" media="screen" href="resources/css/mods.css">
 
     <script type="text/javascript" src="./resources/js/jquery.min.js"></script>
     <script type="text/javascript" src="./resources/js/jquery-ui.min.js"></script>
-    
+
     <?php
-      
+
       $share_data['url'] = current_URL();
       $share_data['title'] = 'Definitions';
-      
+
       echo opengraph_output($share_data);
-      
+
     ?>
 
 </head>
@@ -45,111 +47,111 @@
                 <h1>Definitions & FAQ</h1>
             </div>
         </section>
-        
+
         <section id="standard-body" class="page-text">
-        
+
           <dl>
             <dt>Actual</dt>
             <dd>Variable expressed in common units such as degrees Celsius or Fahrenheit, or inches or centimeters of precipitation. Compare with Anomaly.</dd>
-            
+
             <dt>Anomaly	</dt>
             <dd>Variable  expressed as the difference from the average observed during a base period. In the case of Climate Explorer data, the base period is 1960 to 1989. Compare with Actual.</dd>
-          
+
             <dt>BCCA (Bias-Correction Constructed Analog)	</dt>
             <dd>BCCA is a method used to downscale global climate projections to higher spatial resolution for <strong>daily</strong> data. This statistical downscaling method was used to generate <strong>graph</strong>-based visualizations shown in the Climate Explorer.</dd>
-          
+
             <dt>BCSD (Bias-Correction Spatial Disaggregation)	</dt>
             <dd>BCSD is a method used to downscale global climate projections to higher spatial resolution at a <strong>monthly</strong> time scale. This statistical downscaling method was used to generate some of the <strong>map</strong>-based visualizations shown in the Climate Explorer.</dd>
-          
+
             <dt>Cooling Degree Days</dt>
             <dd>A measure reflecting the amount of energy it takes to cool buildings when daily average temperature exceeds 65°F, the designated standard for indoor air temperature. Calculated by subtracting 65°F from the mean daily temperature and adding those values over the period of interest. The higher the value for this variable, the larger the amount of energy required for cooling inside buildings.</dd>
-          
+
             <dt>Days of Precipitation Over 1 inch	</dt>
             <dd>Total number of days per year when a location receives more than 1 inch (2.5 cm) of precipitation.</dd>
-          
+
             <dt>Days Over 95º F	</dt>
             <dd>Total number of days per year when a location has maximum temperatures over 95°F (35°C).</dd>
-          
+
             <dt>Days Under 32º F	</dt>
             <dd>Total number of days per year when a location has  minimum temperatures below 32°F (0°C).</dd>
-          
+
             <dt>Downscaled Climate Projections	</dt>
             <dd>Climate model projections at local to regional scale derived from larger-scale models or analysis. Downscaled data shown in the Climate Explorer are based on statistical relationships between large-scale atmospheric variables and local/regional variables. The quality of the downscaled product depends on the quality of the original global climate simulation and the accuracy of the gridded historical observations for each location. </dd>
-          
+
             <dt>Emissions	</dt>
             <dd>Exhaust from burning coal, oil, and/or natural gas and other process that release heat-trapping gases into the atmosphere.</dd>
-          
+
             <dt>Greenhouse gases	</dt>
             <dd>See Heat-trapping gases.</dd>
-          
+
             <dt>Heat-trapping gases	</dt>
             <dd>Gases such as carbon dioxide, methane, and water vapor that absorb and emit heat energy. Burning fuels such as coal, oil, and natural gas for energy is a major source of heat-trapping gases. Also called greenhouse gases.</dd>
-          
+
             <dt>Heating Degree Days	</dt>
             <dd>A measure reflecting the amount of energy it takes to heat buildings when daily average temperature is below 65°F, the designated standard for indoor air temperature. Calculated by subtracting the mean daily temperature from 65°F and adding those values over the period of interest. The lower the value for this variable, the smaller the amount of energy required for heating inside buildings.</dd>
-          
+
             <dt>Hindcast	</dt>
             <dd>Use of a model to produce a simulation over a historical period. Models are initialized with known or estimated conditions from the past and then run in “forecast” mode over the historic period. Modelers then check to see how well the output matches the observations of the actual conditions over the historic period. For the ensemble of climate models used in the  Climate Explorer, the historic period for the simulations spans 1950 to 2005.</dd>
-            
+
             <dt>Historical (Modeled)</dt>
             <dd>Model output simulated for the historical period (similar to projections, but calculated for the past). These values give users a way to compare the models’ abilities to match observed data. See also Hindcast.</dd>
-          
+
             <dt>Higher Emissions scenario	</dt>
             <dd>A possible future in which global emissions of heat-trapping gases continue to increase. In this scenario, the atmosphere’s ability to trap heat, a measure called radiative forcing, reaches 8.5 Watts per square meter in the year 2100. This scenario is known as RCP 8.5, where RCP stands for Representative Concentration Pathway. <a href="http://link.springer.com/article/10.1007%2Fs10584-011-0148-z" target="_blank">Learn more about scenarios</a></dd>
-          
+
             <dt>Lower Emissions scenario	</dt>
             <dd>A possible future in which global emissions of heat-trapping gases peak around the year 2040 and then decrease. The atmosphere’s ability to trap heat, a measure called radiative forcing, stabilizes at 4.5 Watts per meter squared in the year 2100. This scenario is known as Representative Concentration Pathway (RCP) 4.5. <a href="http://link.springer.com/article/10.1007%2Fs10584-011-0148-z" target="_blank">Learn more about scenarios</a></dd>
-          
+
             <dt>Mean Daily Maximum Temperature	</dt>
             <dd>Mean (average) of a location’s daily maximum temperatures observed during a specified period.</dd>
-          
+
             <dt>Mean Daily Minimum Temperature	</dt>
             <dd>Mean (average) of a location’s daily minimum temperatures observed during a specified period.</dd>
-          
+
             <dt>Mean Daily Precipitation	</dt>
             <dd>Total precipitation that fell over a given period divided by the number of days in the period. For % Change in precipitation, maps show precipitation compared with average precipitation to the period 1960-1989 from average monthly precipitation. Data is currently shown for January, April, July, and October; remaining months will be added soon. </dd>
-          
+
             <dt>NEX-DCP30	</dt>
             <dd>NASA Earth Exchange Downscaled Climate Projections at a spatial resolution of 30 arc seconds. <a href="https://cds.nccs.nasa.gov/nex/" target="_blank">Learn more</a></dd>
-          
+
             <dt>Scenario Medians	</dt>
             <dd>Scenario medians highlight the median (middle) value of all projections at each time step. Though the median is no more or less likely to predict actual values in the future than any of the other models, the line can help define any trend over time.</dd>
-          
+
             <dt>Observations	</dt>
             <dd>Readings from instruments at weather / climate recording stations. In county graphs, observations from individual stations are averaged across areas and over varying periods.</dd>
-          
+
             <dt>Projections	</dt>
             <dd>Values for future climate variables derived from global climate models.</dd>
-          
+
             <dt>Radiative forcing	</dt>
             <dd>A measure describing the atmosphere’s ability to trap heat. Radiative forcing is directly related to the abundance of heat-trapping gases (also known as greenhouse gases) in the atmosphere: the higher the value for radiative forcing, the higher the amount of heat energy the atmosphere will trap. </dd>
-          
+
             <dt>Range of projections	</dt>
             <dd>Climate Explorer graphs show the full range of projections modeled for each scenario as bands of values highlighted in gray, red, and blue. The top edge of each band represents the maximum value of all projections at each time step; the bottom edge represents the minimum value projected by all models. Projections for lower emissions of heat-trapping (greenhouse) gases represent results from 19 global climate models. Higher emissions and Historical (modeled) projections represent results from 20 global climate models.  </dd>
-          
+
             <dt>Scenarios	</dt>
             <dd>Descriptions of plausible futures in which the atmosphere contains varying amounts of heat-trapping gases. Climate scientists use a defined set of scenarios as consistent inputs for calculating future climate projections. The scenarios, known as Representative Concentration Pathways, or RCPs, specify the amount of radiative forcing in 2100 relative to 1750. See also Higher- and Lower Emissions scenario.</dd>
-          
+
             <dt>Simulations	</dt>
             <dd>Values for historical climate variables derived from global climate models.</dd>
           </dl>
-            
+
           <hr>
-          
+
           <h2>Frequently Asked Questions</h2>
-          
+
           <h4>How can I submit questions or comments, or report a bug or broken link?  When can I expect a reply? </h4>
           <p>We’d love to hear from you.  Please send questions, comments, or suggestions about the Climate Explorer to <a href="mailto:noaa.toolkit@noaa.gov">noaa.toolkit@noaa.gov</a>. Expect a reply within one week.</p>
-          
+
           <h4>Which web browser should I use to interact with the Climate Explorer?</h4>
           <p>The tool is designed to be widely accessible and compatible with most popular, current web browsers, including Safari, Chrome, Firefox, and Internet Explorer 10.  Currently, the Climate Explorer tool is best viewed on a desktop or laptop computer web browser (Windows, Mac OS X, or Linux).  The Climate Explorer is not yet optimized for viewing on mobile devices. </p>
-          
+
           <h4>What is the recommended citation for the information in the Climate Explorer?</h4>
           <p>U.S. Federal Government, 2016: U.S. Climate Resilience Toolkit Climate Explorer. [Online] http://toolkit.climate.gov/climate-explorer/  Accessed {DATE}.</p>
 
           <h4>May I have permission to use images of the graphs, maps, and text in the Climate Explorer?  </h4>
           <p>Yes. The graphs, maps, and text available in the Climate Explorer are considered public information and may be reproduced and distributed freely.  If you use images and text from the tool, please cite the U.S. Climate Resilience Toolkit Climate Explorer as the source.</p>
-          
+
           <h4>How may I contribute maps and data to the Climate Explorer, or assist in its development?</h4>
           <p>If you have maps or data that you would like to offer as candidates for inclusion in the Climate Explorer, let us know by emailing <a href="mailto:noaa.toolkit@noaa.gov">noaa.toolkit@noaa.gov</a>. Expect a reply within one week (often much sooner). </p>
 
@@ -166,9 +168,9 @@
 
           <h4>Why can I only get county-scale climate projections?  Where can I get climate projections at higher spatial and temporal resolution?</h4>
           <p>When deliberating on the appropriate scale at which to offer climate projections in Climate Explorer, we wanted to strike a good balance between providing information at a scale that is relevant to local adaptation decision making while recognizing important constraints, such as of the coarse spatial resolution of gridded historical observations as well as uncertainties inherent in projecting future climate conditions.  Our team of climate model experts agreed that averaging the BCCA data for every county in the contiguous United States resolution provided the best balance between these two considerations. (Learn more about our team of climate model experts <a href="credits.php" target="_blank">here</a>.)</p>
-          
+
           <p>The Climate Explorer uses the Bias-Corrected Constructed Analogs (BCCA) downscaled climate and hydrology projections, which are available at 12-km spatial resolution and daily temporal resolution for the period from 1950 to 2099.  (Learn more about the BCCA dataset <a href="http://gdo-dcp.ucllnl.org/downscaled_cmip_projections/" target="_blank">here</a>.) </p>
-          
+
           <p>[NOTE: Downscaled climate projection information is available at other spatial resolutions for some locations. For example, climate modelers have produced downscaled climate projections at city-scale resolution for particular cities; other modelers have produced downscaled climate projections for particular watersheds, national park lands, and other locations. Groups such as USDA’s Climate Hubs, NOAA’s Regional Integrated Sciences and Assessments (RISA) groups, and Landscape Conservation Cooperatives may have, or be able to point you toward, expertise in developing or interpreting downscaled climate projections at an appropriate spatial scale. You may be able to find climate model expertise near your location on our “<a href="http://toolkit.climate.gov/help/partners" target="_blank">Find Experts</a>” map.]</p>
 
           <h4>In the “Days of Precipitation Above 1 Inch” charts, why are historical observed values so different from historical modeled values for some counties and not for others?</h4>
@@ -176,33 +178,33 @@
 
           <h4>What errors, uncertainties, and assumptions are inherent in the climate projection data available in the Climate Explorer?</h4>
           <p>The shaded bands represent the full range of all model outputs for the ensemble of 20 different models, for the historical period (gray band) and two future scenarios (red and blue bands). While there is substantial and increasing skill at predicting and projecting future climate conditions, no climate model will ever simulate the climate system perfectly.  There are noteworthy sources of uncertainty  in all climate projections, including those offered in the Climate Explorer.</p>
-          
+
           <ol>
             <li>Because scientists do not have real-world measurements for every point on Earth’s surface or throughout all levels of the atmosphere and ocean, they must make some assumptions about conditions at locations between measurements. These assumptions are used to develop gridded observational data, and again to set initial conditions for climate models. This also introduces a level of uncertainty in the observed data used in downscaling approaches.</li>
-          
+
             <li>Natural variability of the weather and climate system—ultimately due to chaos—introduces an inherent degree of unpredictability in climate projections. The goal of climate projections is to help people understand significant changes and trends in climate conditions over time. They are not intended to serve as forecasts of weather conditions in a specific year in the future.</li>
-            
-            <li>Beyond natural interannual variability, two elements of the modeling process introduce margins of uncertainty in climate projections: 
-            
+
+            <li>Beyond natural interannual variability, two elements of the modeling process introduce margins of uncertainty in climate projections:
+
               <ol>
                 <li>Each global climate model uses a slightly different set of equations to represent Earth’s physical processes. Therefore, results from different models show a range of projections at each time step for each scenario. This is the reason Climate Explorer graphs show a band of projected values for each scenario rather than a single line.</li>
-          
+
                 <li>The Representative Concentration Pathways (RCPs) are not year-by-year forecasts of emissions. Rather, they reflect the sum of societal choices over the next several decades that result in specific levels of radiative forcing in the year 2100. Uncertainty in what the actual abundance of various heat-trapping gases (which determines radiative forcing) will be during each year of the 21st century also introduces uncertainty.</li>
               </ol>
             </li>
-            
+
             <li>The statistical downscaling method assumes that the future climate will behave similarly to the historical climate in terms of atmospheric and oceanic circulation patterns, which may not be true at every location.</li>
-            
+
             <li>Calculating a single average value for each county inevitably introduces error, in that the average cannot accurately represent every location in the county. The error for any location depends on differences in the environment such as elevation and proximity to lakes, a coast, or mountains.</li>
-            
+
             <li>The Climate Explorer’s presentation of projections as a band of values gives output from each of the 20 models equal weight. Some studies are underway to assess which models perform best in particular places or for particular times, but climate modelers have not yet identified methods to identify which models perform the best at a national scale.</li>
           </ol>
 
           <h4>What are the scenarios represented by the gray, red, and blue bands in the charts?</h4>
           <p>The light gray band shows the range of model data (hindcast) for the historical period. Models were initialized with conditions present in 1950, and then run through 2005. To get a sense of the climate models’ predictive ability for a chosen variable in a particular county, compare the year-to-year variability of observations (dark gray bars) with the range of modeled projections.</p>
-          
+
           <p>The red band shows the range of projections for a scenario in which global emissions of heat-trapping gases continue increasing. Sometimes called “business-as-usual,” the Climate Explorer’s Higher Emissions scenario is known as Representative Concentration Pathway or RCP 8.5. In this possible future, the increasing concentration of heat-trapping gases in the atmosphere follows a path that results in radiative forcing of at least 8.5 Watts per square meter over pre-industrial values by the year 2100. For planning purposes, people who have a low tolerance for risk often focus on this higher emissions scenario.</p>
-          
+
           <p>The blue band shows the range of projections for a scenario in which global emissions of heat-trapping gases stop increasing and become stable. The Climate Explorer’s Lower Emissions scenario is known as RCP 4.5. This scenario represents a path in which the current rate of global emissions of heat-trapping gases peaks around 2040, and stabilizes; the atmosphere’s radiative is 4.5 Watts per square meter over pre-industrial values in 2100. </p>
 
           <h4>What are Representative Concentration Pathways (RCPs)?</h4>
@@ -210,18 +212,18 @@
 
           <h4>Which RCP should I use?  Which is most likely to occur?</h4>
           <p>According to the Intergovernmental Panel on Climate Change, the representative concentration pathways (RCP) scenarios should not be considered policy-prescriptive because they were developed to support scientific research on various possible climate change futures, without making any judgment as to their desirability or probability. </p>
-          
+
           <p>These scenarios reflect choices individuals and society will make over coming decades, so there is uncertainty regarding the actual year-to-year change in greenhouse gases. RCPs are not considered to be forecasts, nor do they represent absolute bounds on the realm of possibility.  While they all represent plausible scenarios for the future, none of the RCPs are intended to serve as predictions, best guesses, most likely, or more plausible pathways than the others.</p>
-          
+
           <p>That said, the projected global temperature values based on the RCPs can serve as a useful point of reference when considering possible futures with respect to human populations, ecosystems, natural resources, and valued assets within the built environment. Key questions to consider when planning for the future include:</p>
-          
+
           <ol>
             <li>What’s my tolerance for risk?</li>
             <li>How much confidence do I have that humanity will take action to limit and/or reduce concentrations of heat-trapping gases in the atmosphere this century?</li>
           </ol>
-          
+
           <p>Individuals and groups who have a low tolerance for risk and/or low confidence that humans will act to significantly reduce greenhouse gas emissions may choose to plan for impacts under RCP 8.5.  People with some tolerance for risk and/or some confidence that humans will take moderate action in the very near future to reduce emissions may choose to plan for RCP 4.5.  </p>
-          
+
           <p>In 2015, at the United Nations Framework on Climate Change (UNFCCC) 21st Annual Conference of the Parties (COP21) in Paris, nations agreed to pursue efforts to limit global average temperature increase to 1.5°C above pre-industrial levels. Climate modelers suggest this is only possible if we strive to reach RCP 2.6, a pathway that calls for immediate action to achieve drastic reductions in greenhouse gas emissions. </p>
 
           <h4>Why do maps for precipitation projections show such large variations for % difference?</h4>
@@ -232,7 +234,7 @@
 
           <h4>What important considerations should users keep in mind when exploring projections in the Climate Explorer?</h4>
           <p>Climate projections can provide useful information when considering important decisions about the future, but should not be the sole basis for decision-making.  It’s important to understand the limitations of climate models when interpreting or using their results:</p>
-          
+
           <ul>
             <li>Climate projections are not predictions. Projections are based on assumptions about future human emissions of greenhouse gases and other policy choices.</li>
             <li>Climate modelers attempt to incorporate our best scientific understanding of the climate system into their models, yet known weaknesses and some gaps in scientific understanding remain. Modelers also seek to represent their evolving understanding of newly discovered processes within their models. Despite these limitations, global climate models represent our best tool for exploring the future evolution of our planet’s climate. </li>
@@ -240,13 +242,13 @@
             <li>Projections vary from model to model; the current state of understanding is that the full range of projections represents an estimate for the range of plausible climate futures. Considering the full range of projections for one or more future scenarios may help you gain a more complete picture of the range of potential future risks.</li>
             <li>Increased resolution does not necessarily equate to greater fidelity (i.e. less uncertainty) or reliability.</li>
           </ul>
-          
+
           <p>For decisions involving the use of climate model projections, you may want to consider seeking <a href="http://toolkit.climate.gov/help/partners" target="_blank">expertise</a>.</p>
-          
+
           <hr>
-          
+
           <h2>Contact</h2>
-          
+
           <p>If you have questions or comments on the Climate Explorer, please direct them to <a href="mailto:noaa.toolkit@noaa.gov">noaa.toolkit@noaa.gov</a>.</p>
         </section>
     </div>

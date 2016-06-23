@@ -55,6 +55,8 @@ $city =  filter_var($city, FILTER_SANITIZE_STRING);
 
     <link rel="stylesheet" href="resources/css/ol3-popup.css">
 
+    <link rel="stylesheet" href="resources/css/sweetalert.css">
+
     <link rel="stylesheet" media="screen" href="resources/css/screen.css">
     <link rel="stylesheet" media="screen" href="resources/css/mods.css">
 
