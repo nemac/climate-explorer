@@ -1,4 +1,5 @@
 <?php
+$lockdown = 0;
 include_once('functions.php');
 
 $location = true;
