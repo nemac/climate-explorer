@@ -9,6 +9,28 @@ $fips = isset($_GET['fips']) ? $_GET['fips'] : '';
 $lat = isset($_GET['lat']) ? $_GET['lat'] : '';
 $lon = isset($_GET['lon']) ? $_GET['lon'] : '';
 
+if(preg_match('/[^a-z, ._\-0-9]/i', $city))
+{
+    header("Location:error.php");
+}
+
+if(preg_match('/[^a-z, ._\-0-9]/i', $county))
+{
+    header("Location:error.php");
+}
+
+if (!is_numeric($fips)) {
+    header("Location:error.php");
+}
+
+if (!isValidLatitude($lat)) {
+    header("Location:error.php");
+}
+
+if (!isValidLongitude($lon)) {
+    header("Location:error.php");
+}
+
 
 $city = xss_clean($city);
 $county = xss_clean($county);
@@ -16,20 +38,10 @@ $fips = xss_clean($fips);
 $lat = xss_clean($lat);
 $lon = xss_clean($lon);
 
+// unnecessary but doesn't hurt.
+
 $county =  filter_var($county, FILTER_SANITIZE_STRING);
 $city =  filter_var($city, FILTER_SANITIZE_STRING);
-if (!is_numeric($fips)) {
-    die("Invalid FIPS Code");
-}
-
-if (!isValidLatitude($lat)) {
-    die("Invalid Latitude");
-}
-
-if (!isValidLongitude($lon)) {
-    die("Invalid Longitude");
-}
-
 
 ?>
 <!doctype html>
