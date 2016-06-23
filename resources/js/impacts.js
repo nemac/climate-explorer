@@ -386,7 +386,7 @@ Impacts.prototype.createLegend = function() {
           '<h4>Layer description</h4>'+
           '<div>'+
             '<p>'+self.data.layers[id].description+
-            ' <a href="'+self.data.layers[id].source+'" class="source-link" target="_blank">Source</a>'+
+            ' <a href="'+self.data.layers[id].source+'" class="source-link external" target="_blank">Source</a>'+
             '</p>'+
           '</div>'+
 
@@ -420,6 +420,29 @@ Impacts.prototype.createLegend = function() {
       self.subLayers[id] = self.data.layers[id].sublayers;
       self.subLayerSlider(id, checked);
     }
+  });
+
+  $('.source-link').on('click', function(e) {
+    var loc = $(this).attr('href');
+
+    if ( !$(this).hasClass('local')) {
+      e.preventDefault();
+      e.stopPropagation();
+
+      swal({
+        title: "You are exiting an NCEI website.",
+        text: "Thank you for visiting our site. We have provided a link because it has information that may interest you. NCEI does not endorse the views expressed, the information presented, or any commercial products that may be advertised or available on that site.",
+        type: "info",
+        showCancelButton: true,
+        confirmButtonColor: "#2470D2",
+        confirmButtonText: "Continue",
+        closeOnConfirm: true
+      },
+        function(){
+          window.location = loc;
+        });
+    }
+
   });
 
   if ( layerIds.length < 3 ) {
