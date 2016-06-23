@@ -1,5 +1,5 @@
 <?php
-$lockdown = 1;
+$lockdown = 0;
 include_once('functions.php');
 // DEFINE VARS
 $case = isset($_GET['id']) ? $_GET['id'] : '';
