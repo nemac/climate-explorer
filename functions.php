@@ -3,6 +3,8 @@
 //  recommended by OWASP; added in htaccess but here just in case.
 // current page URL
 
+$page_slug = basename(__FILE__, '.php');
+
 function current_URL()
 {
     $pageURL = 'http';

@@ -1,6 +1,7 @@
 <?php
 $lockdown = 0;
 include_once('functions.php');
+$page_slug = basename(__FILE__, '.php');
 // DEFINE VARS
 $case = isset($_GET['id']) ? $_GET['id'] : '';
 $group = isset($_GET['group']) ? $_GET['group'] : '';

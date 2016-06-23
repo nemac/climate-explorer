@@ -1,6 +1,7 @@
 <?php
 $lockdown = 0;
 include_once('functions.php');
+$page_slug = basename(__FILE__, '.php');
 
 $active_variable = isset($_GET['id']) ? $_GET['id'] : '';
 $active_variable = xss_clean($active_variable);

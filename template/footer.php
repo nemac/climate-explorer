@@ -41,7 +41,7 @@
 <script type="text/javascript" src="<?php $current_domain ?>resources/js/main.js"></script>
 
 <!-- if CASE -->
-<?php if (isset($case) && $case != null) { ?>
+<?php if (isset($case) && !is_null($case) && $page_slug == 'case') { ?>
   <script type="text/javascript" src="<?php $current_domain ?>resources/js/multigraph-nojq.min.js"></script>
   <script type="text/javascript" src="<?php $current_domain ?>resources/js/impacts.js"></script>
   <script>

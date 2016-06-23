@@ -1,6 +1,7 @@
 <?php
 $lockdown = 0;
 include_once('functions.php');
+$page_slug = basename(__FILE__, '.php');
 $share_data['url'] = current_URL();
 
 $param = isset($_GET['param']) ? $_GET['param'] : '';
@@ -80,6 +81,8 @@ $param =  filter_var($param, FILTER_SANITIZE_STRING);
 </div>
 
 <?php include_once('template/footer.php'); ?>
+
+
 
 <script>
   $.getJSON('./resources/data/data-grouped.json', function(data) {
