@@ -2,12 +2,9 @@
 
   include_once('functions.php');
 
-  $active_variable = $_REQUEST['id'];
-
-$active_variable = xss_clean($active_variable);
-$active_variable =  filter_var($active_variable, FILTER_SANITIZE_STRING);
-
-
+  $active_variable = isset($_GET['id']) ? $_GET['id'] : '';
+  $active_variable = xss_clean($active_variable);
+  $active_variable =  filter_var($active_variable, FILTER_SANITIZE_STRING);
 
 ?>
 <!doctype html>
@@ -26,7 +23,6 @@ $active_variable =  filter_var($active_variable, FILTER_SANITIZE_STRING);
     <link rel="stylesheet" media="screen" href="resources/css/mods.css">
 
     <script type="text/javascript" src="./resources/js/jquery.min.js"></script>
-    <!-- <script type="text/javascript" src="./resources/js/jquery-ui.min.js"></script> -->
     <script type="text/javascript" src="./resources/js/jquery-ui.min.js"></script>
 
     <?php
@@ -53,7 +49,7 @@ $active_variable =  filter_var($active_variable, FILTER_SANITIZE_STRING);
 
     <header id="left-header">
       <span class="trigger icon icon-close" id="left-header-trigger"></span>
-    
+
       <ul id="vars-menu" class="menu blue-menu">
         <li class="search-field border" id="variable-search-by-location"><span class="icon icon-search"></span><input type="text" id="formmapper" placeholder="Search by location"></li>
 

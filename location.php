@@ -3,11 +3,11 @@ include_once('functions.php');
 
 $location = true;
 
-$city = $_REQUEST['city'];
-$county = $_REQUEST['county'];
-$fips = $_REQUEST['fips'];
-$lat = $_REQUEST['lat'];
-$lon = $_REQUEST['lon'];
+$city = isset($_GET['city']) ? $_GET['city'] : '';
+$county = isset($_GET['county']) ? $_GET['county'] : '';
+$fips = isset($_GET['fips']) ? $_GET['fips'] : '';
+$lat = isset($_GET['lat']) ? $_GET['lat'] : '';
+$lon = isset($_GET['lon']) ? $_GET['lon'] : '';
 
 
 $city = xss_clean($city);
@@ -20,7 +20,7 @@ $county =  filter_var($county, FILTER_SANITIZE_STRING);
 $city =  filter_var($city, FILTER_SANITIZE_STRING);
 if (!is_numeric($fips)) {
     die("Invalid FIPS Code");
-} 
+}
 
 if (!isValidLatitude($lat)) {
     die("Invalid Latitude");
@@ -51,6 +51,7 @@ if (!isValidLongitude($lon)) {
 
     <?php
 
+    $share_data = {};
     $share_data['url'] = current_URL();
     $share_data['title'] = 'Location data for ' . $city;
 
@@ -106,9 +107,9 @@ if (!isValidLongitude($lon)) {
         <section id="location-temperature" class="location-data-section-wrap">
             <div class="location-data-section">
                 <div id="temperature-data" class="data-list">
-                  
+
                   <span class="trigger data-options-trigger"><span class="hamburger"><span class="bar"></span></span><span class="text">View</span></span>
-                  
+
                     <h3 class="accent-color"><span class="icon icon-temperature"></span>Temperature</h3>
 
                     <ul class="data-options">
@@ -350,7 +351,7 @@ if (!isValidLongitude($lon)) {
             <div class="location-data-section">
                 <div id="precipitation-data" class="data-list">
                   <span class="trigger data-options-trigger"><span class="hamburger"><span class="bar"></span></span><span class="text">View</span></span>
-                  
+
                   <h3 class="accent-color"><span class="icon icon-precipitation"></span>Precipitation</h3>
 
                     <ul class="data-options">
@@ -576,9 +577,9 @@ if (!isValidLongitude($lon)) {
         <section id="location-derived" class="location-data-section-wrap">
             <div class="location-data-section">
                 <div id="derived-data" class="data-list">
-                  
+
                   <span class="trigger data-options-trigger"><span class="hamburger"><span class="bar"></span></span><span class="text">View</span></span>
-                  
+
                     <h3 class="accent-color"><span class="icon icon-drought"></span>Other</h3>
 
                     <ul class="data-options">
