@@ -40,12 +40,12 @@ $lockdown = 1;
 
       $locations = array(
                 '', // [0]
-                '<a href="<?php $current_domain ?>location.php?county=Monroe+County&city=Marathon,%20FL&fips=12087&lat=24.726026&lon=-81.04462619999998">Explore: Marathon, Florida</a>',
-                '<a href="<?php $current_domain ?>location.php?county=Carbon+County&city=Carbon+County,%20UT&fips=49007&lat=39.6479807&lon=-110.61689209999997">Explore: Carbon County, Utah</a>',
-                '<a href="<?php $current_domain ?>location.php?county=Suffolk+County&city=Boston,%20MA&fips=25025&lat=42.3600825&lon=-71.05888010000001">Explore: Boston, Massachusetts</a>',
-                '<a href="<?php $current_domain ?>location.php?county=Alameda+County&city=Oakland,%20CA&fips=06001&lat=37.8043637&lon=-122.2711137">Explore: Oakland, California</a>',
-                '<a href="<?php $current_domain ?>location.php?county=Pinal+County&city=Pinal+County,%20AZ&fips=04021&lat=32.8162061&lon=-111.28450250000003">Explore: Pinal County, Arizona</a>',
-                '<a href="<?php $current_domain ?>location.php?county=Yuba+County&city=Camptonville,%20CA&fips=06115&lat=39.45213229999999&lon=-121.04859799999997">Explore: Camptonville, California</a>'
+                '<a href="'.$current_domain.'/location.php?county=Monroe+County&city=Marathon,%20FL&fips=12087&lat=24.726026&lon=-81.04462619999998">Explore: Marathon, Florida</a>',
+                '<a href="'.$current_domain.'/location.php?county=Carbon+County&city=Carbon+County,%20UT&fips=49007&lat=39.6479807&lon=-110.61689209999997">Explore: Carbon County, Utah</a>',
+                '<a href="'.$current_domain.'/location.php?county=Suffolk+County&city=Boston,%20MA&fips=25025&lat=42.3600825&lon=-71.05888010000001">Explore: Boston, Massachusetts</a>',
+                '<a href="'.$current_domain.'/location.php?county=Alameda+County&city=Oakland,%20CA&fips=06001&lat=37.8043637&lon=-122.2711137">Explore: Oakland, California</a>',
+                '<a href="'.$current_domain.'/location.php?county=Pinal+County&city=Pinal+County,%20AZ&fips=04021&lat=32.8162061&lon=-111.28450250000003">Explore: Pinal County, Arizona</a>',
+                '<a href="'.$current_domain.'/location.php?county=Yuba+County&city=Camptonville,%20CA&fips=06115&lat=39.45213229999999&lon=-121.04859799999997">Explore: Camptonville, California</a>'
               );
 
               $splash_id = rand(1, 6);
