@@ -21,14 +21,6 @@ $page_slug = basename(__FILE__, '.php');
     <script type="text/javascript" src="<?php $current_domain ?>resources/js/jquery.min.js"></script>
     <script type="text/javascript" src="<?php $current_domain ?>resources/js/jquery-ui.min.js"></script>
 
-    <?php
-
-    $share_data['url'] = current_URL();
-    $share_data['title'] = 'ERROR';
-
-
-    ?>
-
 </head>
 
 <body id="page-about" class="page-type-text">

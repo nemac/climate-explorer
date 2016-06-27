@@ -141,13 +141,13 @@ Variables.prototype.createMap = function () {
 
 
     // make sure year is valid (when it exists)
-    if (qs.year){
+    /*if (qs.year){
         if (!isNumeric(qs.year))
         {
             window.location = "error.php";
             throw new Error("MALFORMED YEAR");
         }
-    }
+    }*/
 
 
     var view = new ol.View({

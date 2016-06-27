@@ -13,19 +13,19 @@ $lat = isset($_GET['lat']) ? $purifier->purify($_GET['lat']) : '';
 $lon = isset($_GET['lon']) ? $purifier->purify($_GET['lon']) : '';
 
 if (preg_match('/[^a-z, ._\-0-9]/i', $city)) {
-    header("Location:error.php");
+    header("Location:error.php?1");
 }
 if (preg_match('/[^a-z, ._\-0-9]/i', $county)) {
-    header("Location:error.php");
+    header("Location:error.php?2");
 }
 if (!is_numeric($fips)) {
-    header("Location:error.php");
+    header("Location:error.php?3");
 }
 if (!isValidLatitude($lat)) {
-    header("Location:error.php");
+    header("Location:error.php?4");
 }
 if (!isValidLongitude($lon)) {
-    header("Location:error.php");
+    header("Location:error.php?5");
 }
 
 ?>
