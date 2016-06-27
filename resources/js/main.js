@@ -1,12 +1,18 @@
 var App = function (page) {
-    this.frequency = {
-        'temperature-chart': 'annual',
-        'precipitation-chart': 'annual',
-        'derived-chart': 'annual'
-    };
-    this.handleOutboundLinks();
-    this.getCountyCodes();
-    this.tour();
+
+  //frame buster!
+  if(top.location!=self.locaton) {
+    parent.location = self.location;
+  }
+
+  this.frequency = {
+      'temperature-chart': 'annual',
+      'precipitation-chart': 'annual',
+      'derived-chart': 'annual'
+  };
+  this.handleOutboundLinks();
+  this.getCountyCodes();
+  this.tour();
 };
 
 
