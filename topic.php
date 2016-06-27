@@ -4,15 +4,14 @@ include_once('functions.php');
 $page_slug = basename(__FILE__, '.php');
 $share_data['url'] = current_URL();
 
-$param = isset($_GET['param']) ? $_GET['param'] : '';
+$param = isset($_GET['param']) ? $purifier->purify($_GET['param']) : '';
 
+
+
+$param =  filter_var($param, FILTER_SANITIZE_STRING);
 if ($param != 'coastal' && $param != 'health' && $param != 'water' && $param != 'ecosystems' && $param != 'tribal_nations' && $param != 'transportation') {
     header("Location:error.php");
 }
-
-$param = xss_clean($param);
-// unnecessary but doesn't hurt.
-$param =  filter_var($param, FILTER_SANITIZE_STRING);
 ?>
 <!doctype html>
 <html>
@@ -24,7 +23,6 @@ $param =  filter_var($param, FILTER_SANITIZE_STRING);
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <link rel="stylesheet" href="<?php $current_domain ?>resources/css/sweetalert.css">
-
     <link rel="stylesheet" media="screen" href="<?php $current_domain ?>resources/css/screen.css">
     <link rel="stylesheet" media="screen" href="<?php $current_domain ?>resources/css/mods.css">
 

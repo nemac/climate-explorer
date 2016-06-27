@@ -1,9 +1,9 @@
 <?php
 
 //DEFINING vars that were using _REQUEST
-$case = isset($_GET['id']) ? $_GET['id'] : '';
-$city = isset($_GET['city']) ? $_GET['city'] : '';
-$param = isset($_GET['param']) ? $_GET['param'] : '';
+$case = isset($_GET['id']) ? $purifier->purify($_GET['id']) : '';
+$city = isset($_GET['city']) ? $purifier->purify($_GET['city']) : '';
+$param = isset($_GET['param']) ? $purifier->purify($_GET['param']) : '';
 
 $temp_content = array(
 

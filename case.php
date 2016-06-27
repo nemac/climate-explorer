@@ -2,25 +2,33 @@
 $lockdown = 0;
 include_once('functions.php');
 $page_slug = basename(__FILE__, '.php');
-// DEFINE VARS
-$case = isset($_GET['id']) ? $_GET['id'] : '';
-$group = isset($_GET['group']) ? $_GET['group'] : '';
-$active_year = isset($_GET['active_year']) ? $_GET['active_year'] : '';
-$zoom = isset($_GET['zoom']) ? $_GET['zoom'] : '';
-$center = isset($_GET['center']) ? $_GET['center'] : '';
-$layers = isset($_GET['layers']) ? $_GET['layers'] : '';
 
-// we know what a case should be, verify here, don't need this validation in header.php because it's here.
+// DEFINE VARS
+$case = isset($_GET['id']) ? $purifier->purify($_GET['id']) : '';
+$group = isset($_GET['group']) ? $purifier->purify($_GET['group']) : '';
+$active_year = isset($_GET['active_year']) ? $purifier->purify($_GET['active_year']) : '';
+$zoom = isset($_GET['zoom']) ? $purifier->purify($_GET['zoom']) : '';
+$center = isset($_GET['center']) ? $purifier->purify($_GET['center']) : '';
+$layers = isset($_GET['layers']) ? $purifier->purify($_GET['layers']) : '';
+settype($active_year, "integer");
+
+if(trim($current_url) != trim($purifier->purify($current_url))) {
+  header("Location:" . $current_domain . "/error.php");
+}
+
+if ((!is_numeric($active_year) && (isset($active_year)))) {
+  header("Location:error.php?msg=1");
+}
+
+
+$active_year = filter_var($active_year, FILTER_SANITIZE_NUMBER_INT);
+
+
+
 if ($case != 'coastal' && $case != 'health' && $case != 'water' && $case != 'ecosystems' && $case != 'tribal_nations' && $case != 'transportation') {
   header("Location:error.php");
 }
 
-$case = xss_clean($case);
-
-// unnecessary but doesn't hurt
-$case =  filter_var($case, FILTER_SANITIZE_STRING);
-
-// we know what the group names should be, verify here
 if ($group != 'all' && $group != 'group1' && $group != 'group2' && $group != 'group3' && $group != 'group4' && $group != 'group5' && $group != 'group6' && $group != 'group7') {
   header("Location:error.php");
 }

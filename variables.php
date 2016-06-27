@@ -3,13 +3,11 @@ $lockdown = 0;
 include_once('functions.php');
 $page_slug = basename(__FILE__, '.php');
 
-$active_variable = isset($_GET['id']) ? $_GET['id'] : '';
-$active_variable = xss_clean($active_variable);
-$active_variable = filter_var($active_variable, FILTER_SANITIZE_STRING);
+$active_variable = isset($_GET['id']) ? $purifier->purify($_GET['id']) : '';
+$active_year = isset($_GET['year']) ? $purifier->purify($_GET['year']) : '';
 
-$active_year = isset($_GET['year']) ? $_GET['year'] : '';
+
 settype($active_year, "integer");
-$active_year = xss_clean($active_year);
 $active_year = filter_var($active_year, FILTER_SANITIZE_NUMBER_INT);
 
 if (!is_numeric($active_year)) {
