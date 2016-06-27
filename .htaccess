@@ -27,13 +27,10 @@
   BrowserMatch \bMSIE !no-gzip !gzip-only-text/html
 </IfModule>
 
-# Turn on IE8-IE9 XSS prevention tools
+<ifModule mod_headers.c>
 Header set X-XSS-Protection "1; mode=block"
-
-# Don't allow any pages to be framed - Defends against CSRF
-Header set X-Frame-Options SAMEORIGIN
-
-# prevent mime based attacks
-Header set X-Content-Type-Options "nosniff"
+Header always append X-Frame-Options SAMEORIGIN
+Header set X-Content-Type-Options: "nosniff”
+</ifModule>
 
 ErrorDocument 404     /404.php
