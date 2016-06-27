@@ -109,12 +109,12 @@ $topics_content = array(
     //   'source' => 'NOAA, 2015'
     // ),
 
-    array(
-        'variable' => 'health',
-        'name' => 'Health',
-        'detail' => "<p>Increases in extreme weather events, poor air quality, and transmittable illnesses threaten human health. Explore areas where high percentages of residents are elderly and/or poor, and where other factors increase social vulnerability. People in these areas may require assistance during events such as heat waves, storms, or flooding.</p>",
-        'source' => 'NOAA, 2015'
-    ),
+    // array(
+    //     'variable' => 'health',
+    //     'name' => 'Health',
+    //     'detail' => "<p>Increases in extreme weather events, poor air quality, and transmittable illnesses threaten human health. Explore areas where high percentages of residents are elderly and/or poor, and where other factors increase social vulnerability. People in these areas may require assistance during events such as heat waves, storms, or flooding.</p>",
+    //     'source' => 'NOAA, 2015'
+    // ),
 
     array(
         'variable' => 'tribal_nations',
