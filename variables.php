@@ -8,6 +8,7 @@ $active_year = isset($_GET['year']) ? $purifier->purify($_GET['year']) : '';
 
 
 settype($active_year, "integer");
+
 $active_year = filter_var($active_year, FILTER_SANITIZE_NUMBER_INT);
 
 if (!is_numeric($active_year)) {

@@ -6,9 +6,8 @@ $share_data['url'] = current_URL();
 
 $param = isset($_GET['param']) ? $purifier->purify($_GET['param']) : '';
 
-
-
 $param =  filter_var($param, FILTER_SANITIZE_STRING);
+
 if ($param != 'coastal' && $param != 'health' && $param != 'water' && $param != 'ecosystems' && $param != 'tribal_nations' && $param != 'transportation') {
     header("Location:error.php");
 }

@@ -10,14 +10,31 @@ $active_year = isset($_GET['active_year']) ? $purifier->purify($_GET['active_yea
 $zoom = isset($_GET['zoom']) ? $purifier->purify($_GET['zoom']) : '';
 $center = isset($_GET['center']) ? $purifier->purify($_GET['center']) : '';
 $layers = isset($_GET['layers']) ? $purifier->purify($_GET['layers']) : '';
+
+// maintain year as string for strpos
+$pos_year = $active_year;
+
+// make sure actual year is an int.
 settype($active_year, "integer");
 
-if(trim($current_url) != trim($purifier->purify($current_url))) {
-  header("Location:" . $current_domain . "/error.php");
+// just in case
+$active_year = filter_var($active_year, FILTER_SANITIZE_NUMBER_INT);
+
+// destroy anything that comes after the final argument
+$cut_url = trim(substr($current_url, 0, strpos($current_url, $pos_year))).$active_year;
+
+// check current url vs cut url
+if($cut_url == $current_url) {
+  // do nothing because it wasn't modified
+} else {
+  #echo $cut_url."\n".$current_url;
+  if (isset($cut_url)){
+    header("Location:" . $current_domain . "/error.php?msg=2");
+  }
 }
 
 if ((!is_numeric($active_year) && (isset($active_year)))) {
-  header("Location:error.php?msg=1");
+  header("Location:error.php");
 }
 
 
