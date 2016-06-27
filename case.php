@@ -6,35 +6,65 @@ $page_slug = basename(__FILE__, '.php');
 // DEFINE VARS
 $case = isset($_GET['id']) ? $purifier->purify($_GET['id']) : '';
 $group = isset($_GET['group']) ? $purifier->purify($_GET['group']) : '';
-$active_year = isset($_GET['active_year']) ? $purifier->purify($_GET['active_year']) : '';
+$active_year = isset($_GET['active_year']) ? $purifier->purify($_GET['active_year']) : 2010;
 $zoom = isset($_GET['zoom']) ? $purifier->purify($_GET['zoom']) : '';
 $center = isset($_GET['center']) ? $purifier->purify($_GET['center']) : '';
 $layers = isset($_GET['layers']) ? $purifier->purify($_GET['layers']) : '';
 
+// ensure center exists first
+if ($center){
+  // separate both parts
+  $validCenter = explode(',',$center);
+  // ensure it's a number, error if not
+  if (!is_numeric($validCenter[0])) {
+    header("Location:error.php?1");
+  }
+  // ensure it's a number, error if not
+  if (!is_numeric($validCenter[1])) {
+    header("Location:error.php?2");
+  }
+}
+
+if ($zoom) {
+// ensure it's a number, error if not
+  if (!is_numeric($zoom)) {
+    header("Location:error.php?3");
+  }
+}
+if ($layers){
+
+if (preg_match('/[^a-z, ._\-0-9]/i', $layers)) {
+  header("Location:error.php?4");
+}
+}
+
 // maintain year as string for strpos
 $pos_year = $active_year;
-
 // make sure actual year is an int.
 settype($active_year, "integer");
-
 // just in case
 $active_year = filter_var($active_year, FILTER_SANITIZE_NUMBER_INT);
-
 // destroy anything that comes after the final argument
-$cut_url = trim(substr($current_url, 0, strpos($current_url, $pos_year))).$active_year;
-
+$cut_url = trim(substr($current_url, 0, strpos($current_url, $pos_year))).$pos_year;
+#echo $cut_url;
+// in case year doesn't exist yet
+if (!$zoom){
+  $cut_url = trim(substr($current_url, 0, strpos($current_url, $group))).$group;
+}
 // check current url vs cut url
 if($cut_url == $current_url) {
   // do nothing because it wasn't modified
+
+  #echo $cut_url."\n".$current_url;
 } else {
   #echo $cut_url."\n".$current_url;
   if (isset($cut_url)){
-    header("Location:" . $current_domain . "/error.php?msg=2");
+    header("Location:" . $current_domain . "/error.php?5");
   }
 }
 
 if ((!is_numeric($active_year) && (isset($active_year)))) {
-  header("Location:error.php");
+  header("Location:error.php?6");
 }
 
 
@@ -43,11 +73,11 @@ $active_year = filter_var($active_year, FILTER_SANITIZE_NUMBER_INT);
 
 
 if ($case != 'coastal' && $case != 'health' && $case != 'water' && $case != 'ecosystems' && $case != 'tribal_nations' && $case != 'transportation') {
-  header("Location:error.php");
+  header("Location:error.php?7");
 }
 
 if ($group != 'all' && $group != 'group1' && $group != 'group2' && $group != 'group3' && $group != 'group4' && $group != 'group5' && $group != 'group6' && $group != 'group7') {
-  header("Location:error.php");
+  header("Location:error.php?8");
 }
 
 

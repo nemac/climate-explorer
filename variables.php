@@ -4,27 +4,50 @@ include_once('functions.php');
 $page_slug = basename(__FILE__, '.php');
 
 $active_variable = isset($_GET['id']) ? $purifier->purify($_GET['id']) : '';
-$active_year = isset($_GET['year']) ? $purifier->purify($_GET['year']) : '';
+$active_year = isset($_GET['year']) ? $purifier->purify($_GET['year']) : 2010;
+$zoom = isset($_GET['zoom']) ? $purifier->purify($_GET['zoom']) : '';
 
+$center = isset($_GET['center']) ? $purifier->purify($_GET['center']) : '';
 
+// ensure center exists first
+if ($center){
+    // separate both parts
+    $validCenter = explode(',',$center);
+    // ensure it's a number, error if not
+    if (!is_numeric($validCenter[0])) {
+        header("Location:error.php?1");
+    }
+    // ensure it's a number, error if not
+    if (!is_numeric($validCenter[1])) {
+        header("Location:error.php?2");
+    }
+}
+$pos_year = $active_year;
 settype($active_year, "integer");
 
 $active_year = filter_var($active_year, FILTER_SANITIZE_NUMBER_INT);
 
 if (!is_numeric($active_year)) {
-    header("Location:error.php");
+    header("Location:error.php?10");
+}
+
+if ($zoom) {
+// ensure it's a number, error if not
+    if (!is_numeric($zoom)) {
+        header("Location:error.php?3");
+    }
 }
 
 
 if ($active_variable){
     if (!validate_alphanumeric_underscore($active_variable)){
-        header("Location:error.php");
+        header("Location:error.php?123");
     }
 } else {
     if($current_url != strip_tags(rawurldecode($current_url))) {
-        if ($current_url != $current_domain."/error.php")
+        if ($current_url != $current_domain."/error.php?12")
         {
-            header("Location:" . $current_domain . "/error.php");
+            header("Location:" . $current_domain . "/error.php?11");
         }
     }
 }
@@ -32,7 +55,32 @@ if ($active_variable){
 
 if ($active_year) {
     if ($active_year < 1950 || $active_year > 2090) {
-        header("Location:error.php");
+        header("Location:error.php?13");
+    }
+}
+
+// maintain year as string for strpos
+
+// make sure actual year is an int.
+settype($active_year, "integer");
+// just in case
+$active_year = filter_var($active_year, FILTER_SANITIZE_NUMBER_INT);
+// destroy anything that comes after the final argument
+$cut_url = trim(substr($current_url, 0, strpos($current_url, $pos_year))).$pos_year;
+// in case year doesn't exist yet
+
+if (!$zoom){
+    $cut_url = trim(substr($current_url, 0, strpos($current_url, $active_variable))).$active_variable;
+}
+// check current url vs cut url
+if($cut_url == $current_url) {
+    // do nothing because it wasn't modified
+
+    #echo $cut_url."\n".$current_url;
+} else {
+    #echo $cut_url."\n".$current_url;
+    if (isset($cut_url)){
+        header("Location:" . $current_domain . "/error.php?5");
     }
 }
 
