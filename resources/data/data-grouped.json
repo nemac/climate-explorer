@@ -32,14 +32,6 @@
             "development_density"
           ]
         },
-        "group2": {
-          "title": "Hurricane Evacuation and Storm-Surge",
-          "description": "Explore where hurricane evacuation routes may be threatened by storm-surge.",
-          "layers": [
-            "hurricane_evacuation",
-            "storm_surge"
-          ]
-        },
         "group3": {
           "title": "Coastal Power and Storm-Surge",
           "description": "Explore which coastal power plants may be vulnerable to storm-surge.",
@@ -296,7 +288,7 @@
       "description": "This layer shows  American Indian Reservations, Federally Recognized Tribal Entities, and Alaska Native Villages in the contiguous U.S. and Alaska.",
       "source": "https://catalog.data.gov/dataset/bia-indian-lands-dataset-indian-lands-of-the-united-states",
       "legend": "resources/img/bia_indian_lands",
-      "url": "http://gis.wim.usgs.gov/arcgis/rest/services/AIR_NDGA/AIR_NDGA/MapServer",
+      "url": "https://gis.wim.usgs.gov/arcgis/rest/services/AIR_NDGA/AIR_NDGA/MapServer",
       "options": {},
       "defaults": {
         "visible": false
@@ -515,7 +507,7 @@
           "type": "StormSurge",
           "id": "storm_surge_1",
           "title": "Storm Surge Category 1 Hurricane",
-          "url": "http://tiles3.arcgis.com/tiles/C8EMgrsFcRFL6LrL/arcgis/rest/services/NHC_SeamlessSLOSH_Category1/MapServer/tile/{z}/{y}/{x}",
+          "url": "https://tiles3.arcgis.com/tiles/C8EMgrsFcRFL6LrL/arcgis/rest/services/NHC_SeamlessSLOSH_Category1/MapServer/tile/{z}/{y}/{x}",
           "options": {},
           "defaults": {
             "visible": false
@@ -525,7 +517,7 @@
           "type": "StormSurge",
           "id": "storm_surge_2",
           "title": "Storm Surge Category 2 Hurricane",
-          "url": "http://tiles3.arcgis.com/tiles/C8EMgrsFcRFL6LrL/arcgis/rest/services/NHC_SeamlessSLOSH_Category2/MapServer/tile/{z}/{y}/{x}",
+          "url": "https://tiles3.arcgis.com/tiles/C8EMgrsFcRFL6LrL/arcgis/rest/services/NHC_SeamlessSLOSH_Category2/MapServer/tile/{z}/{y}/{x}",
           "options": {},
           "defaults": {
             "visible": false
@@ -535,7 +527,7 @@
           "type": "StormSurge",
           "id": "storm_surge_3",
           "title": "Storm Surge category 3 Hurricane",
-          "url": "http://tiles3.arcgis.com/tiles/C8EMgrsFcRFL6LrL/arcgis/rest/services/NHC_SeamlessSLOSH_Category3/MapServer/tile/{z}/{y}/{x}",
+          "url": "https://tiles3.arcgis.com/tiles/C8EMgrsFcRFL6LrL/arcgis/rest/services/NHC_SeamlessSLOSH_Category3/MapServer/tile/{z}/{y}/{x}",
           "options": {},
           "defaults": {
             "visible": false
@@ -545,7 +537,7 @@
           "type": "StormSurge",
           "id": "storm_surge_4",
           "title": "Storm Surge Category 4 hurricane",
-          "url": "http://tiles3.arcgis.com/tiles/C8EMgrsFcRFL6LrL/arcgis/rest/services/NHC_SeamlessSLOSH_Category4/MapServer/tile/{z}/{y}/{x}",
+          "url": "https://tiles3.arcgis.com/tiles/C8EMgrsFcRFL6LrL/arcgis/rest/services/NHC_SeamlessSLOSH_Category4/MapServer/tile/{z}/{y}/{x}",
           "options": {},
           "defaults": {
             "visible": false
@@ -555,7 +547,7 @@
           "type": "StormSurge",
           "id": "storm_surge_5",
           "title": "Storm Surge Category 5 Hurricane",
-          "url": "http://tiles3.arcgis.com/tiles/C8EMgrsFcRFL6LrL/arcgis/rest/services/NHC_SeamlessSLOSH_Category5/MapServer/tile/{z}/{y}/{x}",
+          "url": "https://tiles3.arcgis.com/tiles/C8EMgrsFcRFL6LrL/arcgis/rest/services/NHC_SeamlessSLOSH_Category5/MapServer/tile/{z}/{y}/{x}",
           "options": {},
           "defaults": {
             "visible": false
@@ -924,8 +916,9 @@
       "description": "View the locations of elements of the transportation system.",
       "source": "https://catalog.data.gov/dataset/the-national-map-viewer-and-download-platform",
       "legend": "resources/img/transportation_system",
-      "url": "http://services.nationalmap.gov/arcgis/rest/services/transportation/MapServer",
+      "url": "https://services.nationalmap.gov/arcgis/rest/services/transportation/MapServer",
       "options": {
+        "layer": "8"
       },
       "defaults": {
         "visible": false
@@ -952,7 +945,7 @@
       "description": "Check the general outlook for significant rizver flooding. Note that this layer does not depict all areas of minor flooding or small-scale events such as localized flooding and/or flash flooding.",
       "source": "http://www.wpc.ncep.noaa.gov/nationalfloodoutlook/",
       "legend": "resources/img/river_flooding",
-      "url": "http://idpgis.ncep.noaa.gov/arcgis/rest/services/NWS_Forecasts_Guidance_Warnings/sig_riv_fld_outlk/MapServer",
+      "url": "https://idpgis.ncep.noaa.gov/arcgis/rest/services/NWS_Forecasts_Guidance_Warnings/sig_riv_fld_outlk/MapServer",
       "options": {
       },
       "defaults": {
