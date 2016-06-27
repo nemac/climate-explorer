@@ -1,8 +1,6 @@
 var App = function (page) {
-
-  //frame buster!
-  if(top.location!=self.locaton) {
-    parent.location = self.location;
+  if(top != self) {
+    window.open(location.href, '_top');
   }
 
   this.frequency = {
