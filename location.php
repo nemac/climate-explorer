@@ -12,10 +12,10 @@ $fips = isset($_GET['fips']) ? $purifier->purify($_GET['fips']) : '';
 $lat = isset($_GET['lat']) ? $purifier->purify($_GET['lat']) : '';
 $lon = isset($_GET['lon']) ? $purifier->purify($_GET['lon']) : '';
 
-if (preg_match('/[^a-z, ._\-0-9]/i', $city)) {
+if (preg_match('/[^a-z, .\'_\-0-9]/i', $city)) {
     header("Location:error.php?1");
 }
-if (preg_match('/[^a-z, ._\-0-9]/i', $county)) {
+if (preg_match('/[^a-z, .\'_\-0-9]/i', $county)) {
     header("Location:error.php?2");
 }
 if (!is_numeric($fips)) {
@@ -26,8 +26,7 @@ if (!isValidLatitude($lat)) {
 }
 if (!isValidLongitude($lon)) {
     header("Location:error.php?5");
-}
-
+} 
 ?>
 <!doctype html>
 <html>
