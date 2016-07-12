@@ -285,3 +285,35 @@ input.location-mapper:focus:-ms-input-placeholder {
 .emissions-high {
   margin-left: 100px;
 }
+
+
+#nav-overlay #nav-controls a {
+  white-space:normal!important;
+}
+
+@media screen and (max-width: 1375px) {
+  /* line 27, ../scss/formstone/_grid.scss */
+  #main-header #subnav {
+    margin:0 !important;
+  }
+  #main-header #subnav li {
+    display: block;
+    margin: -5% 0 0 15px;
+  }
+  .page-type-topic #subtopics-menu ul {
+    display: block;
+    white-space: normal;
+  }
+
+  .topic-banner {
+    background-size: cover !important;
+  }
+}
+@media screen and (max-width: 1030px) {
+#page-variables  #main-header #subnav {
+  display:none!important;
+}}
+
+.topics-list .topic-layers {
+     margin-top: 40px;
+   }

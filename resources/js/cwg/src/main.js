@@ -230,7 +230,7 @@
         },
 
         {
-            id:       "days_prcp_abv_25.3",
+            id: "days_prcp_abv_25.3",
             title: {
                 english: "Days of Precipitation Above 1 in",
                 metric: "Days of Precipitation Above 25.3 mm"
