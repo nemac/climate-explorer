@@ -317,3 +317,27 @@ input.location-mapper:focus:-ms-input-placeholder {
 .topics-list .topic-layers {
      margin-top: 40px;
    }
+
+@media screen and (max-height: 600px) {
+  #detail-overlay .nav-detail .nav-detail-item {
+    top: 300px;
+  }
+
+  #detail-overlay .nav-detail {
+    overflow-y: scroll;
+    overflow-x: hidden;
+  }
+
+  .overlay .close {
+    position: fixed;
+    top: 20px;
+    left: 20px;
+    width: 40px;
+    height: 40px;
+    padding: 0;
+    background: #fff;
+    color: #000;
+    mix-blend-mode: screen;
+    z-index: 2;
+  }
+}

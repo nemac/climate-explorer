@@ -4,6 +4,7 @@
 $case = isset($_GET['id']) ? $purifier->purify($_GET['id']) : '';
 $city = isset($_GET['city']) ? $purifier->purify($_GET['city']) : '';
 $param = isset($_GET['param']) ? $purifier->purify($_GET['param']) : '';
+$current = isset($current) ? $purifier->purify($current) : '';
 
 $temp_content = array(
 
