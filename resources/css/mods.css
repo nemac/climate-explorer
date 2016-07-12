@@ -341,3 +341,17 @@ input.location-mapper:focus:-ms-input-placeholder {
     z-index: 2;
   }
 }
+
+#left-header .left-filler {
+  overflow: auto;
+}
+
+.page-type-location #location-search {
+  width: 400px;
+}
+
+.ol-popup-content {
+  min-width: 170px;
+  max-height: 910px;
+  overflow: inherit;
+}

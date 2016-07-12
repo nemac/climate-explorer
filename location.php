@@ -68,7 +68,7 @@ if (!isValidLongitude($lon)) {
         <?php include_once('template/share.php'); ?>
 
         <div id="location-search">
-            <input type="text" class="autocomplete location-mapper" placeholder="Search another location">
+            <input type="text" class="autocomplete location-mapper" placeholder="Search another City, County or Zip code">
         </div>
 
         <section id="location-splash" class="page-splash">

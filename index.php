@@ -73,13 +73,13 @@ $lockdown = 1;
             </div>
 
             <div id="logos">
-              <a href="#"><img src="<?php $current_domain ?>resources/img/logo_noaa.png"></a>
-              <a href="#"><img src="<?php $current_domain ?>resources/img/logo_nasa.png"></a>
-              <a href="#"><img src="<?php $current_domain ?>resources/img/logo_usgs.png"></a>
-              <a href="#"><img src="<?php $current_domain ?>resources/img/logo_epa.png"></a>
-              <a href="#"><img src="<?php $current_domain ?>resources/img/logo_usdi.png"></a>
-              <a href="#"><img src="<?php $current_domain ?>resources/img/logo_nemac.png"></a>
-              <a href="#" id="global-change"><img src="<?php $current_domain ?>resources/img/logo_global-change.png"></a>
+              <a><img src="<?php $current_domain ?>resources/img/logo_noaa.png"></a>
+              <a><img src="<?php $current_domain ?>resources/img/logo_nasa.png"></a>
+              <a><img src="<?php $current_domain ?>resources/img/logo_usgs.png"></a>
+              <a><img src="<?php $current_domain ?>resources/img/logo_epa.png"></a>
+              <a><img src="<?php $current_domain ?>resources/img/logo_usdi.png"></a>
+              <a><img src="<?php $current_domain ?>resources/img/logo_nemac.png"></a>
+              <a id="global-change"><img src="<?php $current_domain ?>resources/img/logo_global-change.png"></a>
             </div>
         </section>
 
