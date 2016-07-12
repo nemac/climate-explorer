@@ -21,7 +21,7 @@ var Location = function(lat, lon) {
 };
 
 
- 
+
 /*
 * Lots of inconsistencies in naming, so here I map all the variables to one another
 *
@@ -44,7 +44,7 @@ Location.prototype.mapVariables = function() {
     }
   };
 
-  this.tilesMapping = {  
+  this.tilesMapping = {
     'temperature-map': {
       'tasmax': '-rcp45-tasmax',
       'tasmin': '-rcp45-tasmin',
@@ -199,11 +199,14 @@ Location.prototype.stationSelected = function(feature, event) {
   var self = this;
 
   if (feature) {
+    $('#station-data-container').empty();
+
     var props = feature.getProperties();
     var html = '<div>Station: '+props.name+'<br /></div>' +
-      '<div id="multi-chart" style="width:500px; height:300px"></div>'+
-      '<div id="multi-precip-chart" style="width:500px; height:300px"></div>';
-    this.popup.show(event.mapBrowserEvent.coordinate, html);
+      '<div id="multi-chart" style="width:100%; height:300px"></div>'+
+      '<div id="multi-precip-chart" style="width:100%; height:300px"></div>';
+    //this.popup.show(event.mapBrowserEvent.coordinate, html);
+    $('#station-data-container').append(html);
 
     this.chart = new ChartBuilder(props);
   } else {
