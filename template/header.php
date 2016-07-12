@@ -226,6 +226,9 @@ $topics_content = array(
                 case 'pr' :
                     $current = 'Mean Daily Precipitation';
                     break;
+                case 'days_prcp_abv_25' :
+                    $current = 'Days of Precipitation Above 1 Inch';
+                    break;
                 case 'days_prcp_abv_25.3' :
                     $current = 'Days of Precipitation Above 1 Inch';
                     break;
