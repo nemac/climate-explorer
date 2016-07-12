@@ -28,6 +28,19 @@ input.location-mapper {
   margin-right: 10px;
 }
 
+#close-wx-station {
+  position: absolute;
+  right: 4px;
+  top: 27px;
+  font-weight: 500;
+  font-size: 28px;
+}
+
+#close-wx-station:hover {
+  cursor: pointer;
+  color:#000;
+}
+
 .chart-canvas, canvas {
   width: 100%;
   height: 100%;

@@ -803,10 +803,12 @@ if (!isValidLongitude($lon)) {
         <section id="location-stations" class="location-data-section-wrap">
             <div class="location-data-section">
                 <div id="stations-data" class="data-list">
-                    <h3 class="accent-color"><span class="icon icon-district"></span>Weather Stations</h3>
-                    <p>Dots on the map show weather stations in the Global Historical Climatology Network-Daily (GHCN-D) database.</p>
-                    <p>Click any dot to view zoomable graphs of observed daily temperature and precipitation compared to 1981-2010 Climate Normals.</p>
-                    <p>Scroll or click and drag to adjust the graph display.</p>
+                    <div id="station-data-about">
+                      <h3 class="accent-color"><span class="icon icon-district"></span>Weather Stations</h3>
+                      <p>Dots on the map show weather stations in the Global Historical Climatology Network-Daily (GHCN-D) database.</p>
+                      <p>Click any dot to view zoomable graphs of observed daily temperature and precipitation compared to 1981-2010 Climate Normals.</p>
+                      <p>Scroll or click and drag to adjust the graph display.</p>
+                    </div>
                     <div id="station-data-container"></div>
                 </div>
 

@@ -199,10 +199,12 @@ Location.prototype.stationSelected = function(feature, event) {
   var self = this;
 
   if (feature) {
+    $('#station-data-about').hide();
     $('#station-data-container').empty();
 
     var props = feature.getProperties();
-    var html = '<div>Station: '+props.name+'<br /></div>' +
+    var html = '<h3 class="accent-color" style="margin-bottom: 20px;"><span class="icon icon-district"></span>Weather Station</h3><div id="close-wx-station">x</div>'+
+      '<div>Station: '+props.name+'<br /></div>' +
       '<div id="multi-chart" style="width:100%; height:300px"></div>'+
       '<div id="multi-precip-chart" style="width:100%; height:300px"></div>';
     //this.popup.show(event.mapBrowserEvent.coordinate, html);
@@ -210,9 +212,15 @@ Location.prototype.stationSelected = function(feature, event) {
 
     this.chart = new ChartBuilder(props);
   } else {
+    $('#station-data-about').show();
+    $('#station-data-container').empty();
     this.popup.hide();
   }
 
+  $('#close-wx-station').on('click', function() {
+    $('#station-data-about').show();
+    $('#station-data-container').empty();
+  });
 };
 
 
@@ -279,6 +287,8 @@ Location.prototype.wire = function() {
       var props = feature.getProperties();
       self.stationSelected(feature, e);
     } else {
+      $('#station-data-about').show();
+      $('#station-data-container').empty();
       self.popup.hide();
     }
 
