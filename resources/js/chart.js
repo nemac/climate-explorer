@@ -154,7 +154,7 @@ ChartBuilder.prototype.getPrecipitationValues = function () {
         }
         line = a.split(',');
         var val = parseFloat(line[1] / 10) * 0.039370;
-        var n = ( leap ) ? 0 : norm[int];
+        var n = ( leap && int === 365 ) ? 0 : norm[int];
         arr.push(line[0] + ',' + val + ',' + n);
         int++;
     });
