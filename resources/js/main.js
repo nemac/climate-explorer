@@ -29,6 +29,8 @@ App.prototype.handleOutboundLinks = function() {
     nodes[i].className += " "+ classAdd;
   }
 
+  $('#header-logo').removeClass('external').addClass('local');
+
   $('a').on('click', function(e) {
     var loc = $(this).attr('href');
 
