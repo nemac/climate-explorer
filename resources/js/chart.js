@@ -178,7 +178,7 @@ ChartBuilder.prototype.getTemplate = function (type, values) {
         '<legend rows="1" border="0" opacity="0.0" base="0 1" anchor="0 1" position="0 25">' +
         '<icon border="0" width="30" height="30"/>' +
         '</legend>' +
-        '<horizontalaxis id="date" type="datetime" min="20150101" max="20160101">' +
+        '<horizontalaxis id="date" type="datetime" min="20150101" max="20160716">' +
         '<labels spacing="100Y 50Y 20Y 10Y 5Y 1Y 6M 3M 2M 1M 7D 1D" format="%n %d%L%Y"/>' +
         '<title/>' +
         '<grid/>' +
@@ -238,7 +238,7 @@ ChartBuilder.prototype.getTemplate = function (type, values) {
         '<legend rows="1" border="0" opacity="0.0" base="0 1" anchor="0 1" position="0 25">' +
         '<icon border="0" width="30" height="30"/>' +
         '</legend>' +
-        '<horizontalaxis id="datetime" type="datetime" min="20100101" max="20160101">' +
+        '<horizontalaxis id="datetime" type="datetime" min="20100101" max="20160716">' +
         '<labels spacing="100Y 50Y 20Y 10Y 5Y 1Y 6M 3M 2M 1M 7D 1D" format="%n %d%L%Y"/>' +
         '<title/>' +
         '<grid/>' +
