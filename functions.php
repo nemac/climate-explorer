@@ -7,6 +7,9 @@ $purifier = new HTMLPurifier();
 
 $page_slug = basename(__FILE__, '.php');
 
+$stations_base_url = 'https://toolkit.climate.gov/climate-explorer-data/';
+$data_base_url = './resources/data/';
+
 function current_URL()
 {
     $purifier = new HTMLPurifier();

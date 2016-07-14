@@ -1,4 +1,7 @@
-var Impacts = function(page) {
+var Impacts = function(page, data_base_url) {
+
+  this.data_base_url = data_base_url;
+
   var qtrs = location.search;
   var qs = this.parseQueryString(qtrs);
 
@@ -116,7 +119,7 @@ Impacts.prototype.createMap = function() {
 Impacts.prototype.getData = function() {
   var self = this;
 
-  $.getJSON('./resources/data/data-grouped.json', function(data) {
+  $.getJSON(this.data_base_url + 'data-grouped.json', function(data) {
     self.data = data;
 
     //self.createJsonLayer('weather_stations');
@@ -1061,7 +1064,7 @@ Impacts.prototype.createJsonLayer = function(id, callback) {
   };
 
 
-  $.getJSON('resources/data/wx_stations.json', function(data) {
+  $.getJSON(this.data_base_url + 'wx_stations.json', function(data) {
 
     var featureCollection = {
       'type': 'FeatureCollection',

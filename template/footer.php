@@ -46,7 +46,7 @@
   <script type="text/javascript" src="<?php $current_domain ?>resources/js/impacts.js"></script>
   <script>
     $(document).ready(function() {
-      impacts = new Impacts(<?php echo "'" . $case . "'"; ?>);
+      impacts = new Impacts(<?php echo "'" . $case . "'"; ?>, <?php echo "'" . $data_base_url . "'"; ?>);
     });
   </script>
 
@@ -61,7 +61,7 @@
 <?php if (isset($active_variable) && $active_variable != null) { ?>
   <script>
     $(document).ready(function() {
-      variables = new Variables(<?php echo "'" . $active_variable . "'"; ?>);
+      variables = new Variables(<?php echo "'" . $active_variable . "'"; ?>, <?php echo "'" . $data_base_url . "'"; ?>);
     });
   </script>
 <?php } ?>
@@ -69,14 +69,14 @@
 <?php if (isset($location) && $location != null) { ?>
   <script>
     $(document).ready(function() {
-      loc = new Location(<?php echo "'" . $lat . "'"; ?>, <?php echo "'" . $lon . "'"; ?>);
+      loc = new Location(<?php echo "'" . $lat . "'"; ?>, <?php echo "'" . $lon . "'"; ?>, <?php echo "'" . $stations_base_url . "'"; ?>, <?php echo "'" . $data_base_url . "'"; ?>);
     });
   </script>
 <?php } ?>
 
 <script>
   $(document).ready(function() {
-    app = new App();
+    app = new App(<?php echo "'" . $data_base_url . "'"; ?>);
   });
 </script>
 

@@ -1,4 +1,6 @@
-var App = function (page) {
+var App = function (data_base_url) {
+  this.data_base_url = data_base_url;
+
   if(top != self) {
     window.open(location.href, '_top');
   }
@@ -59,7 +61,7 @@ App.prototype.handleOutboundLinks = function() {
 App.prototype.getCountyCodes = function () {
     var self = this;
     this.fips_codes = null;
-    $.getJSON('resources/data/fips_codes.json', function (data) {
+    $.getJSON(this.data_base_url + 'fips_codes.json', function (data) {
         self.fips_codes = data;
         self.locationSearch();
     });

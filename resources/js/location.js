@@ -1,4 +1,7 @@
-var Location = function(lat, lon) {
+var Location = function(lat, lon, stations_base_url, data_base_url) {
+
+  this.stations_base_url = stations_base_url;
+  this.data_base_url = data_base_url;
 
   $('#temperature-map-season').hide();
   $('#precipitation-map-season').hide();
@@ -141,7 +144,7 @@ Location.prototype.addStations = function() {
   };
 
 
-  $.getJSON('resources/data/wx_stations.json', function(data) {
+  $.getJSON(this.data_base_url + 'wx_stations.json', function(data) {
 
     var featureCollection = {
       'type': 'FeatureCollection',
@@ -210,7 +213,7 @@ Location.prototype.stationSelected = function(feature, event) {
     //this.popup.show(event.mapBrowserEvent.coordinate, html);
     $('#station-data-container').append(html);
 
-    this.chart = new ChartBuilder(props);
+    this.chart = new ChartBuilder(props, this.stations_base_url);
   } else {
     $('#station-data-about').show();
     $('#station-data-container').empty();
