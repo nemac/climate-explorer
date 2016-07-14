@@ -69,7 +69,7 @@
 <?php if (isset($location) && $location != null) { ?>
   <script>
     $(document).ready(function() {
-      loc = new Location(<?php echo "'" . $lat . "'"; ?>, <?php echo "'" . $lon . "'"; ?>);
+      loc = new Location(<?php echo "'" . $lat . "'"; ?>, <?php echo "'" . $lon . "'"; ?>, <?php echo "'" . $stations_base_url . "'"; ?>);
     });
   </script>
 <?php } ?>
