@@ -29,6 +29,8 @@ App.prototype.handleOutboundLinks = function() {
     nodes[i].className += " "+ classAdd;
   }
 
+  $('#header-logo').removeClass('external').addClass('local');
+
   $('a').on('click', function(e) {
     var loc = $(this).attr('href');
 
@@ -1759,7 +1761,7 @@ App.prototype.takeMonthlyGraphTour = function (pre) {
 
     this.monthlyTour.addStep('rcp45-mean', {
         text: 'Click the left, center, or right of the time slider to display projections for the early-, mid-, or late 21st century for two emissions scenarios. You can also click and drag the Y axis.',
-        attachTo: '#' + pre + 'rcp45-mean top',
+        attachTo: '#slider-range top',
         buttons: [
             {
                 text: 'Close',
