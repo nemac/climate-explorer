@@ -17,32 +17,38 @@ ChartBuilder.prototype.getData = function (callback) {
     var id = this.props.station.split(':')[1];
     this.records = {
         'tmin': {
-            url: '/resources/data/stations/daily/' + id + '-tmin.csv.gz',
+            //url: '/resources/data/stations/daily/' + id + '-tmin.csv.gz',
+            url: 'https://toolkit.climate.gov/climate-explorer-data/ghcnd/' + id + '/TMIN.csv.gz',
             type: 'tmin',
             data: ''
         },
         'normal_tmin': {
-            url: '/resources/data/stations/normals/normal_tmin/' + id + '.csv.gz',
+            //url: '/resources/data/stations/normals/normal_tmin/' + id + '.csv.gz',
+            url: 'https://toolkit.climate.gov/climate-explorer-data/normals/NORMAL_TMIN/' + id + '.csv.gz',
             type: 'normal_tmin',
             data: ''
         },
         'tmax': {
-            url: '/resources/data/stations/daily/' + id + '-tmax.csv.gz',
+            //url: '/resources/data/stations/daily/' + id + '-tmax.csv.gz',
+            url: 'https://toolkit.climate.gov/climate-explorer-data/ghcnd/' + id + '/TMAX.csv.gz',
             type: 'tmax',
             data: ''
         },
         'normal_tmax': {
-            url: '/resources/data/stations/normals/normal_tmax/' + id + '.csv.gz',
+            //url: '/resources/data/stations/normals/normal_tmax/' + id + '.csv.gz',
+            url: 'https://toolkit.climate.gov/climate-explorer-data/normals/NORMAL_TMAX/' + id + '.csv.gz',
             type: 'normal_tmax',
             data: ''
         },
         'precip_ytd': {
-            url: '/resources/data/stations/daily/' + id + '-precip_ytd.csv.gz',
+            //url: '/resources/data/stations/daily/' + id + '-precip_ytd.csv.gz',
+            url: 'https://toolkit.climate.gov/climate-explorer-data/ghcnd/' + id + '/PRCP_YTD.csv.gz',
             type: 'precip_ytd',
             data: ''
         },
         'normal_precip_ytd': {
-            url: '/resources/data/stations/normals/normal_precip_ytd/' + id + '.csv.gz',
+            //url: '/resources/data/stations/normals/normal_precip_ytd/' + id + '.csv.gz',
+            url: 'https://toolkit.climate.gov/climate-explorer-data/normals/NORMAL_PRCP_YTD/' + id + '.csv.gz',
             type: 'normal_precip_ytd',
             data: ''
         }
