@@ -1152,7 +1152,7 @@ App.prototype.takeVariablesTour = function () {
     }
 
     this.variablesTour.addStep('search-by-location', {
-        text: 'Search by location in the United States to zoom to that region and explore the selected variable.',
+        text: 'Enter a location in the contiguous United States to zoom to that region.',
         attachTo: '#variable-search-by-location right',
         buttons: [
             {
@@ -1168,7 +1168,7 @@ App.prototype.takeVariablesTour = function () {
     });
 
     this.variablesTour.addStep('variable-counties-toggle', {
-        text: 'Toggle on and off the counties layer to explore the selected variable for a specific U.S. county.',
+        text: 'Toggle county boundaries on and off. While on, click any county to display its graph.',
         attachTo: '#variable-counties-toggle right',
         buttons: [
             {
@@ -1184,7 +1184,7 @@ App.prototype.takeVariablesTour = function () {
     });
 
     this.variablesTour.addStep('variable-options-container', {
-        text: 'Select a different climate variable to explore, from mean daily maximum temperatures to mean daily precipitation for the United States',
+        text: 'Select another climate variable. Click the About... button directly below for information on each variable.',
         attachTo: '#variable-options-container right',
         buttons: [
             {
@@ -1200,7 +1200,7 @@ App.prototype.takeVariablesTour = function () {
     });
 
     this.variablesTour.addStep('map-seasons-container', {
-        text: 'For some variables, you can explore them by season, i.e. what is the forecast for mean daily maximum temperatures in the summer of 2090?',
+        text: 'For some variables, you can select different months to explore how projections for that variable differ across seasons.',
         attachTo: '#map-seasons-container bottom',
         buttons: [
             {
@@ -1216,7 +1216,7 @@ App.prototype.takeVariablesTour = function () {
     });
 
     this.variablesTour.addStep('sliderDiv', {
-        text: 'Slide this bar left and right to compare the forecast for how high and low emissions would effect the selected variable over the years.',
+        text: 'Slide this bar left and right to compare projections for the variable in the future under two different emissions scenarios.',
         attachTo: '#sliderDiv right',
         buttons: [
             {

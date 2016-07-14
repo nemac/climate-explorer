@@ -75,7 +75,7 @@ if (!isValidLongitude($lon)) {
             <div class="splash-text">
                 <h1><?php echo $city ?></h1>
                 <h3><?php echo $county ?></h3>
-                <p>Graphs and maps below show observed and modeled data for the County of your selected location. Zoom and pan on the graphs and maps to focus on times or regions of interest.</p>
+                <p>Graphs and maps below show observed and modeled data for the county of your selected location. Adjust the displays to focus on times or regions of interest.</p>
             </div>
 
             <div id="page-nav">

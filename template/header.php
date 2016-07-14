@@ -524,7 +524,7 @@ $topics_content = array(
             ?>
 
             <div id="detail-<?php echo $item['variable']; ?>" class="nav-detail-item">
-                <h3>What does <u><?php echo $item['name']; ?></u> mean?</h3>
+                <h3>What does <u><?php echo $item['name']; ?></u> tell us?</h3>
 
                 <?php echo $item['detail']; ?>
 
@@ -544,7 +544,7 @@ $topics_content = array(
         ?>
 
         <div id="detail-precipitation" class="nav-detail-item">
-            <h3>What does <u>Precipitation</u> mean?</h3>
+            <h3>What does <u>Precipitation</u> tell us?</h3>
 
             <p>We evaluate climate over long periods of observation. For example, in 2014, the global temperature was 1.24°F (0.69°C) above the long-term average for the 20th century, according to NOAA's National Climatic Data Center. That number made 2014 the warmest year on record in the NOAA database, which goes back to 1880.</p>
             <p>Data source: NOAA, 2015 3</p>
@@ -559,7 +559,7 @@ $topics_content = array(
             ?>
 
             <div id="detail-<?php echo $item['variable']; ?>" class="nav-detail-item">
-                <h3>What does <u><?php echo $item['name']; ?></u> mean?</h3>
+                <h3>What does <u><?php echo $item['name']; ?></u> tell us?</h3>
 
                 <?php echo $item['detail']; ?>
 
@@ -581,7 +581,7 @@ $topics_content = array(
         ?>
 
         <div id="detail-derived" class="nav-detail-item">
-            <h3>What does <u>Derived</u> mean?</h3>
+            <h3>What does <u>Derived</u> tell us?</h3>
 
             <p>Derived ...</p>
 
@@ -597,7 +597,7 @@ $topics_content = array(
             ?>
 
             <div id="detail-<?php echo $item['variable']; ?>" class="nav-detail-item">
-                <h3>What does <u><?php echo $item['name']; ?></u> mean?</h3>
+                <h3>What does <u><?php echo $item['name']; ?></u> tell us?</h3>
 
                 <?php echo $item['detail']; ?>
 
@@ -628,7 +628,7 @@ $topics_content = array(
             ?>
 
             <div id="detail-<?php echo $topic['variable']; ?>" class="nav-detail-item">
-                <h3>What does <u><?php echo $topic['name']; ?></u> mean?</h3>
+                <h3>What does <u><?php echo $topic['name']; ?></u> tell us?</h3>
 
                 <?php echo $topic['detail']; ?>
 
