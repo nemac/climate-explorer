@@ -244,7 +244,7 @@ ChartBuilder.prototype.getTemplate = function (type, values) {
         '<grid/>' +
         '<binding id="time-binding" min="19000101" max="20000101"/>' +
         '</horizontalaxis>' +
-        '<verticalaxis id="precip" min="0" max="50">' +
+        '<verticalaxis id="precip" min="0" max="60">' +
         '<title anchor="0 -1" angle="90" position="-25 0">Inches</title>' +
         '<grid/>' +
         '<labels spacing="100 50 20 10 5 1 0.5 0.2 0.1" format="%f"/>' +
