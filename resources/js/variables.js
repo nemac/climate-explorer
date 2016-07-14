@@ -1,6 +1,7 @@
-var Variables = function (id) {
-    // this.page = page;
-    // this.subLayers = {};
+var Variables = function (id, data_base_url) {
+
+    this.data_base_url = data_base_url;
+
     switch (true) {
         case (id === 'days_tmax_abv_35'):
             id = 'days_tmax_abv_35.0';
@@ -469,7 +470,7 @@ Variables.prototype.addCounties = function () {
     this.vectorLayer = new ol.layer.Vector({
         title: 'added Layer',
         source: new ol.source.Vector({
-            url: 'resources/data/counties-20m.json',
+            url: this.data_base_url + 'counties-20m.json',
             format: new ol.format.GeoJSON()
         }),
         style: style
@@ -512,7 +513,7 @@ Variables.prototype.addStates = function () {
     this.statesLayer = new ol.layer.Vector({
         title: 'added Layer',
         source: new ol.source.Vector({
-            url: 'resources/data/states.json',
+            url: this.data_base_url + 'states.json',
             format: new ol.format.GeoJSON()
         }),
         style: style

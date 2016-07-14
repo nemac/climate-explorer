@@ -82,7 +82,7 @@ if ($param != 'coastal' && $param != 'health' && $param != 'water' && $param != 
 
 
 <script>
-  $.getJSON('./resources/data/data-grouped.json', function(data) {
+  $.getJSON(<?php echo "'" . $data_base_url . "'"; ?>+'data-grouped.json', function(data) {
     var li;
     var desc = data.topics['<?php echo $param ?>'].description;
     $('#topic-description').html(desc);

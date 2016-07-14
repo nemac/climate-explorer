@@ -1,6 +1,7 @@
-var Location = function(lat, lon, stations_base_url) {
+var Location = function(lat, lon, stations_base_url, data_base_url) {
 
   this.stations_base_url = stations_base_url;
+  this.data_base_url = data_base_url;
 
   $('#temperature-map-season').hide();
   $('#precipitation-map-season').hide();
@@ -143,7 +144,7 @@ Location.prototype.addStations = function() {
   };
 
 
-  $.getJSON('resources/data/wx_stations.json', function(data) {
+  $.getJSON(this.data_base_url + 'wx_stations.json', function(data) {
 
     var featureCollection = {
       'type': 'FeatureCollection',
