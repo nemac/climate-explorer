@@ -325,7 +325,17 @@ input.location-mapper:focus:-ms-input-placeholder {
 @media screen and (max-width: 1030px) {
 #page-variables  #main-header #subnav {
   display:none!important;
-}}
+}
+
+  .location-data-section .data-list {
+    width: 100%;
+  }
+
+  .location-data-section .data-accordion-wrap {
+    width: 100%;
+  }
+
+}
 
 .topics-list .topic-layers {
      margin-top: 40px;
