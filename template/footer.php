@@ -52,7 +52,7 @@
 
 <?php } ?>
 
-<script src="http://maps.googleapis.com/maps/api/js?api=AIzaSyC_t4ami5LPG2dyUZNG71U27daTqXD0vUc&libraries=places"></script>
+<script src="http://maps.googleapis.com/maps/api/js?key=AIzaSyC_t4ami5LPG2dyUZNG71U27daTqXD0vUc&libraries=places"></script>
 
 <script src="<?php $current_domain ?>resources/js/formmapper.js"></script>
 
