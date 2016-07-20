@@ -52,7 +52,8 @@
 
 <?php } ?>
 
-<script src="http://maps.googleapis.com/maps/api/js?sensor=false&amp;libraries=places"></script>
+<script src="http://maps.googleapis.com/maps/api/js?api=AIzaSyC_t4ami5LPG2dyUZNG71U27daTqXD0vUc&libraries=places"></script>
+
 <script src="<?php $current_domain ?>resources/js/formmapper.js"></script>
 
 <script type="text/javascript" src="<?php $current_domain ?>resources/js/chart.js"></script>
