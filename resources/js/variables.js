@@ -189,6 +189,7 @@ Variables.prototype.createMap = function () {
     this.addCounties();
     this.addStates();
     this.wire();
+
 };
 
 
@@ -743,7 +744,13 @@ Variables.prototype.updateTiledLayer = function (replace, preserveTime) {
       this.activeYear = 2010;
     }
 
-    var extent = ol.proj.transformExtent([-135, 11.3535322866, -56.25, 49.5057345956], 'EPSG:4326', 'EPSG:3857');
+
+    var minLon = -124.8926;
+    var minLat = 24.4171;
+    var maxLon = -66.8188;
+    var maxLat = 49.4895;
+
+    var extent = ol.proj.transformExtent([maxLon, maxLat, minLon, minLat],"EPSG:4326", "EPSG:3857");
 
     var hist = null;
     var season = ( seasons.indexOf(this.selectedVariable) !== -1 ) ? '-' + this.selectedSeason : '';
@@ -777,15 +784,15 @@ Variables.prototype.updateTiledLayer = function (replace, preserveTime) {
      * Create the rcp45 tile layer
      */
     this.tileLayer = new ol.layer.Tile({
-        source: new ol.source.XYZ({
-            urls: [
-                'https://s3.amazonaws.com/climate-explorer-bucket/tilesets/' + src + '/{z}/{x}/{y}.png'
-            ],
-            extent: extent,
-            minZoom: 0,
-            maxZoom: 5,
-            tilePixelRatio: 1
-        })
+      extent: extent,
+      source: new ol.source.XYZ({
+        urls: [
+            'https://s3.amazonaws.com/climate-explorer-bucket/tilesets/' + src + '/{z}/{x}/{y}.png'
+        ],
+        minZoom: 0,
+        maxZoom: 5,
+        tilePixelRatio: 1
+      })
     });
 
     //add rcp45 tile layer to map
@@ -799,15 +806,16 @@ Variables.prototype.updateTiledLayer = function (replace, preserveTime) {
     if (src85) {
         //rcp85
         this.tileLayer85 = new ol.layer.Tile({
-            source: new ol.source.XYZ({
-                urls: [
-                    'https://s3.amazonaws.com/climate-explorer-bucket/tilesets/' + src85 + '/{z}/{x}/{y}.png'
-                ],
-                extent: extent,
-                minZoom: 0,
-                maxZoom: 5,
-                tilePixelRatio: 1
-            })
+          extent: extent,
+          source: new ol.source.XYZ({
+            urls: [
+                'https://s3.amazonaws.com/climate-explorer-bucket/tilesets/' + src85 + '/{z}/{x}/{y}.png'
+            ],
+            extent: extent,
+            minZoom: 0,
+            maxZoom: 5,
+            tilePixelRatio: 1
+          })
         });
 
         this.tileLayer85.set('layer_id', 'tile_layer');

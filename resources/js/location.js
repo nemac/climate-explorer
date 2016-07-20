@@ -455,7 +455,12 @@ Location.prototype.updateTiledLayer = function(map, replace, timeReset) {
   var histYears = [1950, 1960, 1970, 1980, 1990, 2000];
   var seasons = ['tasmax', 'tasmin', 'pr'];
 
-  var extent = ol.proj.transformExtent([-135,11.3535322866,-56.25,49.5057345956],'EPSG:4326', 'EPSG:3857');
+  var minLon = -124.8926;
+  var minLat = 24.4171;
+  var maxLon = -66.8188;
+  var maxLat = 49.4895;
+
+  var extent = ol.proj.transformExtent([maxLon, maxLat, minLon, minLat],"EPSG:4326", "EPSG:3857");
 
   var hist = null;
   var season = ( seasons.indexOf(this.selectedVariable[map]) !== -1 ) ? '-'+this.selectedSeason : '';
@@ -489,11 +494,11 @@ Location.prototype.updateTiledLayer = function(map, replace, timeReset) {
   //rcp45 OR historical
   var layer = map + 'TileLayer';
   this[layer] = new ol.layer.Tile({
+    extent: extent,
     source: new ol.source.XYZ({
       urls:[
         'https://s3.amazonaws.com/climate-explorer-bucket/tilesets/'+src+'/{z}/{x}/{y}.png'
       ],
-      extent: extent,
       minZoom: 0,
       maxZoom: 5,
       tilePixelRatio: 1
@@ -508,11 +513,11 @@ Location.prototype.updateTiledLayer = function(map, replace, timeReset) {
     //rcp85
     layer85 = map + 'TileLayer85';
     this[layer85] = new ol.layer.Tile({
+      extent: extent,
       source: new ol.source.XYZ({
         urls:[
           'https://s3.amazonaws.com/climate-explorer-bucket/tilesets/'+src85+'/{z}/{x}/{y}.png'
         ],
-        extent: extent,
         minZoom: 0,
         maxZoom: 5,
         tilePixelRatio: 1
