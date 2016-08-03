@@ -11,7 +11,7 @@ var Location = function(lat, lon, stations_base_url, data_base_url) {
   this.selectedVariable = {
     'temperature-map': 'tasmax',
     'precipitation-map': 'pr',
-    'derived-map': 'cooling_degree_day_18.3'
+    'derived-map': 'heating_degree_day_18.3'
   };
 
   this.activeYear = 2010;
@@ -413,6 +413,7 @@ Location.prototype.wire = function() {
       self.updateTiledLayer('derived-map', false);
     }
     $('#derived-map-container .full-map-btn').prop({'href': 'variables.php?id='+id});
+    $('#derived-map-container .location-map-legend').html('<img class="legend-image" src="resources/img/'+ id +'.png"></img>');
   });
 
   $('#precipitation-map-season .fs-dropdown-item').on('click', function(e) {
