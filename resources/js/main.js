@@ -954,6 +954,12 @@ App.prototype.locationSearch = function () {
         if (data.administrative_area_level_1_short === "DC") {
             fips = '11001';
         }
+
+        if (data.postal_code === "32309") {
+            fips = '12073';
+            county = 'Leon+County';
+        }
+
         //console.log('data', data, 'fips', fips);
         if (fips) {
             window.location.href = 'location.php?county=' + county + '&city=' + city + '&fips=' + fips + '&lat=' + lat + '&lon=' + lon;
