@@ -1,7 +1,7 @@
 {
   "stationData": {
-    "baseCsvSourceUrl": "https://toolkit.climate.gov/climate-explorer-data/ghcnd/",
-    "normalsCsvSourceUrl": "https://toolkit.climate.gov/climate-explorer-data/normals/NORMAL_"
+    "baseCsvSourceUrl": "https://s3.amazonaws.com/nemac-ghcnd/",
+    "normalsCsvSourceUrl": "https://s3.amazonaws.com/nemac-normals/NORMAL_"
   },
   "stations": {
     "data": "testdata/filtered_stations.json",
@@ -691,8 +691,8 @@
       "sourceEntity": "NWS Climate Prediction Center",
       "layerDescription": "Weather Hazards: 8-14 Day Wildfire/Drought Outlook",
       "legendImage": "legends/legendimages/acd.png"
-    }     
-  }  
+    }
+  }
 	      ],
   "groups": [{
     "id": "g_a",
