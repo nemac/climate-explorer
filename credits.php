@@ -56,7 +56,7 @@ $lockdown = 1;
 
           <p>Design and programming were completed by HabitatSeven, in partnership with the National Environmental Modeling and Analysis Center (NEMAC), at UNC-Asheville. </p>
 
-          <p>Production and processing of the Bias Corrected Constructed Analog (BCCA) downscaled climate projection data was provided by the U.S. Geological Survey (USGS), in partnership with NASA and NOAA. NASA Earth Exchange Downscaled Climate Projection (NEX DCP30) data were provided by NASA Ames Research Center, and PRISM historical observed data were provided by Oregon State University. </p>
+	  <p>Production and processing of the Updated Bias Corrected Constructed Analog (BCCAv2) downscaled climate projection data was accomplished through a collaborative effort supported by a range of agencies. Collaborators include the Bureau of Reclamation, Climate Analytics Group, Climate Central, Lawrence Livermore National Laboratory, Santa Clara University, Scripps Institution of Oceanography, U.S. Army Corps of Engineers, and U.S. Geological Survey. NASA Earth Exchange Downscaled Climate Projection (NEX DCP30) data were provided by NASA Ames Research Center, and PRISM historical observed data were provided by Oregon State University.</p>
 
           <h3>Interagency Climate Projection Team Members</h3>
 
@@ -66,8 +66,8 @@ $lockdown = 1;
             <li>Dave Blodgett, U.S. Geological Survey</li>
             <li>Subhrendu Gangopadhyay, U.S. Bureau of Reclamation</li>
             <li>Forrest Melton, NASA Ames Research Center Cooperative for Research in Earth Science and Technology / California State University Monterey Bay</li>
-            <li>Phil Morefield, U.S. Environmental Protection Agency
-Andrea Ray, NOAA</li>
+            <li>Phil Morefield, U.S. Environmental Protection Agency</li>
+			<li>Andrea Ray, NOAA</li>
           </ul>
 
           <h3>U.S. Climate Resilience Toolkit Program Management</h3>

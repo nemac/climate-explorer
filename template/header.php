@@ -254,7 +254,7 @@ $topics_content = array(
         ?>
 
         <div id="breadcrumb">
-            <a href="./"><span class="icon icon-arrow-up"></span>Home</a><?php echo $breadcrumb; ?>
+            <a href="./"><span class="icon icon-arrow-up"></span>Home</a><?php echo isset($breadcrumb) ? $breadcrumb:'';?>
         </div>
     </div>
 </header>

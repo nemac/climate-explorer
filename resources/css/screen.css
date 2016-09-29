@@ -3804,6 +3804,7 @@ h6 {
 #nav-overlay .nav-content .tab ul.col-3 li {
   float: left;
   width: 33%;
+  padding-right: 10px;
 }
 /* line 52, ../scss/_mixins.scss */
 #nav-overlay .nav-content .tab ol.col-4:before, #nav-overlay .nav-content .tab ol.col-4:after,

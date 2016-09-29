@@ -47,15 +47,6 @@ if ($param != 'coastal' && $param != 'health' && $param != 'water' && $param != 
 <div id="viewport">
     <div id="main-content-wrap">
 
-        <div class="share-widget">
-          <a href="<?php $current_domain ?>#" class="share-trigger"><span class="icon icon-social"></span>Share</a>
-          <ul>
-            <li><a href="<?php $current_domain ?>#" class="share-link share-facebook"><span class="icon icon-facebook"></span>Facebook</a></li>
-            <li><a href="<?php $current_domain ?>#" class="share-link share-twitter"><span class="icon icon-twitter"></span>Twitter</a></li>
-            <li><a href="<?php $current_domain ?>#" class="share-link share-linkedin"><span class="icon icon-linkedin"></span>LinkedIn</a></li>
-          </ul>
-        </div>
-
         <section id="topic-splash" class="page-splash">
             <div class="splash-text">
                 <h4>Topic</h4>
@@ -73,6 +64,8 @@ if ($param != 'coastal' && $param != 'health' && $param != 'water' && $param != 
         </section>
 
         <section id="subtopics" class="topics-list"></section>
+        
+        <?php include_once('template/share.php'); ?>
 
     </div>
 </div>

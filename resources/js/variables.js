@@ -172,7 +172,7 @@ Variables.prototype.createMap = function () {
         layers: [
           new ol.layer.Tile({
             source: new ol.source.XYZ({
-              url: 'http://services.arcgisonline.com/arcgis/rest/services/Canvas/World_Light_Gray_Base/MapServer/tile/{z}/{y}/{x}',
+              url: 'https://services.arcgisonline.com/arcgis/rest/services/Canvas/World_Light_Gray_Base/MapServer/tile/{z}/{y}/{x}',
               attributions: [new ol.Attribution({html: ['&copy; Esri, HERE, DeLorme, MapmyIndia, © OpenStreetMap contributors, and the GIS user community ']})],
               maxZoom: 19
             })
@@ -189,7 +189,6 @@ Variables.prototype.createMap = function () {
     this.addCounties();
     this.addStates();
     this.wire();
-
 };
 
 
@@ -590,7 +589,7 @@ Variables.prototype.countySelected = function (feature, event) {
 
         this.cwg = climate_widget.graph({
             div: "div#climate-chart",
-            dataprefix: "/data",
+            dataprefix: "/climate-explorer2-data/data",
             font: "Roboto",
             frequency: "annual",
             fips: fips,
@@ -744,13 +743,7 @@ Variables.prototype.updateTiledLayer = function (replace, preserveTime) {
       this.activeYear = 2010;
     }
 
-
-    var minLon = -124.8926;
-    var minLat = 24.4171;
-    var maxLon = -66.8188;
-    var maxLat = 49.4895;
-
-    var extent = ol.proj.transformExtent([maxLon, maxLat, minLon, minLat],"EPSG:4326", "EPSG:3857");
+    var extent = ol.proj.transformExtent([-135, 11.3535322866, -56.25, 49.5057345956], 'EPSG:4326', 'EPSG:3857');
 
     var hist = null;
     var season = ( seasons.indexOf(this.selectedVariable) !== -1 ) ? '-' + this.selectedSeason : '';
@@ -784,15 +777,15 @@ Variables.prototype.updateTiledLayer = function (replace, preserveTime) {
      * Create the rcp45 tile layer
      */
     this.tileLayer = new ol.layer.Tile({
-      extent: extent,
-      source: new ol.source.XYZ({
-        urls: [
-            'https://s3.amazonaws.com/climate-explorer-bucket/tilesets/' + src + '/{z}/{x}/{y}.png'
-        ],
-        minZoom: 0,
-        maxZoom: 5,
-        tilePixelRatio: 1
-      })
+        source: new ol.source.XYZ({
+            urls: [
+                'https://s3.amazonaws.com/climate-explorer-bucket/tilesets/' + src + '/{z}/{x}/{y}.png'
+            ],
+            extent: extent,
+            minZoom: 0,
+            maxZoom: 5,
+            tilePixelRatio: 1
+        })
     });
 
     //add rcp45 tile layer to map
@@ -806,16 +799,15 @@ Variables.prototype.updateTiledLayer = function (replace, preserveTime) {
     if (src85) {
         //rcp85
         this.tileLayer85 = new ol.layer.Tile({
-          extent: extent,
-          source: new ol.source.XYZ({
-            urls: [
-                'https://s3.amazonaws.com/climate-explorer-bucket/tilesets/' + src85 + '/{z}/{x}/{y}.png'
-            ],
-            extent: extent,
-            minZoom: 0,
-            maxZoom: 5,
-            tilePixelRatio: 1
-          })
+            source: new ol.source.XYZ({
+                urls: [
+                    'https://s3.amazonaws.com/climate-explorer-bucket/tilesets/' + src85 + '/{z}/{x}/{y}.png'
+                ],
+                extent: extent,
+                minZoom: 0,
+                maxZoom: 5,
+                tilePixelRatio: 1
+            })
         });
 
         this.tileLayer85.set('layer_id', 'tile_layer');
@@ -831,7 +823,7 @@ Variables.prototype.updateTiledLayer = function (replace, preserveTime) {
     } //don't add twice!
     this.nameLayer = new ol.layer.Tile({
         source: new ol.source.XYZ({
-            url: 'http://services.arcgisonline.com/ArcGIS/rest/services/Canvas/World_Light_Gray_Reference/MapServer/tile/{z}/{y}/{x}',
+            url: 'https://services.arcgisonline.com/ArcGIS/rest/services/Canvas/World_Light_Gray_Reference/MapServer/tile/{z}/{y}/{x}',
             attributions: [new ol.Attribution({html: ['']})],
             maxZoom: 19
         })

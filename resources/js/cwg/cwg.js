@@ -544,7 +544,7 @@ $(document).ready(function() {
 
     cwg = climate_widget.graph({
         'div'           :  "#chart-123",
-        'dataprefix'    : '/data',
+        'dataprefix'    : '/climate-explorer2-data/data',
         'font'          : 'Roboto',
         'frequency'     : $('#frequency').val(),
         'timeperiod'    : $('#timeperiod').val(),
@@ -559,7 +559,7 @@ $(document).ready(function() {
 
     precipChart = climate_widget.graph({
         'div'           :  "#chart-234",
-        'dataprefix'    : '/data',
+        'dataprefix'    : '/climate-explorer2-data/data',
         'font'          : 'Roboto',
         'frequency'     : $('#precip-frequency').val(),
         'timeperiod'    : $('#precip-timeperiod').val(),
@@ -574,7 +574,7 @@ $(document).ready(function() {
 
     derivedChart = climate_widget.graph({
         'div'           :  "#chart-345",
-        'dataprefix'    : '/data',
+        'dataprefix'    : '/climate-explorer2-data/data',
         'font'          : 'Roboto',
         'frequency'     : $('#derived-frequency').val(),
         'timeperiod'    : $('#derived-timeperiod').val(),

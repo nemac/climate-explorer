@@ -52,8 +52,7 @@
 
 <?php } ?>
 
-<script src="http://maps.googleapis.com/maps/api/js?key=AIzaSyC_t4ami5LPG2dyUZNG71U27daTqXD0vUc&libraries=places"></script>
-
+<script src="https://maps.googleapis.com/maps/api/js?sensor=false&amp;libraries=places&client=gme-noaa&channel=OAR.CLIMATE_GOV_CLIMATE_EXPLORER2"></script>
 <script src="<?php $current_domain ?>resources/js/formmapper.js"></script>
 
 <script type="text/javascript" src="<?php $current_domain ?>resources/js/chart.js"></script>
