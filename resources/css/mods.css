@@ -118,9 +118,7 @@ input.location-mapper:focus:-ms-input-placeholder {
   /*mix-blend-mode: normal;*/
 }
 
-#temp-download-data .icon-download-chart, #precip-download-data .icon-download-chart, #derived-download-data .icon-download-chart {
-  pointer-events: none;
-}
+
 
 .chart-legend .legend-item-block {
   height: 28px;

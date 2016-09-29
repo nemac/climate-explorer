@@ -99,7 +99,7 @@ Impacts.prototype.createMap = function() {
     layers: [
       new ol.layer.Tile({
         source: new ol.source.XYZ({
-          url: 'http://services.arcgisonline.com/arcgis/rest/services/Canvas/World_Light_Gray_Base/MapServer/tile/{z}/{y}/{x}',
+          url: 'https://services.arcgisonline.com/arcgis/rest/services/Canvas/World_Light_Gray_Base/MapServer/tile/{z}/{y}/{x}',
           attributions: [new ol.Attribution({html: ['&copy; Esri, HERE, DeLorme, MapmyIndia, © OpenStreetMap contributors, and the GIS user community ']})],
           maxZoom: 19
         })
@@ -870,7 +870,7 @@ Impacts.prototype.addClimateLayer = function(replace, layer, preserveTime) {
   if ( this.nameLayer ) { this.map.removeLayer(this.nameLayer); } //don't add twice!
   this.nameLayer = new ol.layer.Tile({
     source: new ol.source.XYZ({
-      url: 'http://services.arcgisonline.com/ArcGIS/rest/services/Canvas/World_Light_Gray_Reference/MapServer/tile/{z}/{y}/{x}',
+      url: 'https://services.arcgisonline.com/ArcGIS/rest/services/Canvas/World_Light_Gray_Reference/MapServer/tile/{z}/{y}/{x}',
       attributions: [new ol.Attribution({html: ['']})],
       maxZoom: 19
     })

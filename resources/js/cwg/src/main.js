@@ -1056,9 +1056,9 @@
                 presentation: "absolute",
                 hrange: "minmax",
                 prange: "minmax",
-                pmedian: false
+                pmedian: false,
                 //font: no default for this one; defaults to canvas's default font
-                //dataprefix:  no default for this one; it's required
+                dataprefix:  'climate-explorer2-data'//no default for this one; it's required
                 //fips:  no default for this one; it's required
             },
             $div: $(orig_options.div)

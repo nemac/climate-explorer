@@ -1,7 +1,14 @@
 <?php
 // load HTMLPurifier
 require_once 'htmlpurifier/HTMLPurifier.standalone.php';
-$purifier = new HTMLPurifier();
+
+$config = HTMLPurifier_Config::createDefault();
+//$config->set('HTML.DefinitionID', 'enduser-customize.html tutorial');
+//$config->set('HTML.DefinitionRev', 1);
+$config->set('Cache.DefinitionImpl', null);
+//$def = $config->getHTMLDefinition(true);
+
+$purifier = new HTMLPurifier($config);
 //    $clean_html = $purifier->purify($dirty_html);
 
 

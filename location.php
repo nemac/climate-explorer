@@ -258,11 +258,11 @@ if (!isValidLongitude($lon)) {
                                         </div>
                                         <div id="historical-range" class="legend-item legend-item-range selected">
                                             <div class="legend-item-block selected" id="historical-block"></div>
-                                            Historical (Modelled)
+                                            Historical (Modeled)
                                         </div>
                                         <div id="rcp45-range" class="legend-item legend-item-range selected">
                                             <div class="legend-item-block selected" id="rcp45-block"></div>
-                                            Lower Emissionss
+                                            Lower Emissions
                                         </div>
                                         <div id="rcp85-range" class="legend-item legend-item-range selected">
                                             <div class="legend-item-block selected" id="rcp85-block"></div>
@@ -482,7 +482,7 @@ if (!isValidLongitude($lon)) {
                                         </div>
                                         <div id="precip-historical-range" class="legend-item legend-item-range selected">
                                             <div class="legend-item-block selected" id="preciphistorical-block"></div>
-                                            Historical (Modelled)
+                                            Historical (Modeled)
                                         </div>
                                         <div id="precip-rcp45-range" class="legend-item legend-item-range selected">
                                             <div class="legend-item-block selected" id="preciprcp45-block"></div>
@@ -710,7 +710,7 @@ if (!isValidLongitude($lon)) {
                                         </div>
                                         <div id="derive-historical-range" class="legend-item legend-item-range selected">
                                             <div class="legend-item-block selected" id="derivehistorical-block"></div>
-                                            Historical (Modelled)
+                                            Historical (Modeled)
                                         </div>
                                         <div id="derive-rcp45-range" class="legend-item legend-item-range selected">
                                             <div class="legend-item-block selected" id="derivercp45-block"></div>

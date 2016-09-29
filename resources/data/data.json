@@ -110,7 +110,7 @@
       "id": "drought",
       "title": "Current Drought",
       "description": "Examine where the amount of water available in soils, streams, and lakes is lower than usual for this time of year. In this weekly map, the darker the color, the more severe the lack of moisture. Depending on how severe it is and how long it lasts, drought can devastate crops and forests, lead to food shortages for livestock and wildlife, increase risks for wildfires, and have a negative effect on local and regional economies.",
-      "url": "http://torka.unl.edu:8080/cgi-bin/mapserv.exe?map=/ms4w/apps/dm/service/usdm_current_wms.map&SRS=EPSG%3A900913",
+      "url": "https://gis.ncdc.noaa.gov/maps/proxy?wms=http://torka.unl.edu:8080/cgi-bin/mapserv.exe?map=/ms4w/apps/dm/service/usdm_current_wms.map&SRS=EPSG%3A900913",
       "options": {
         "layer": "usdm_current",
         "type": "mapserv"
@@ -124,7 +124,7 @@
       "id": "landcover",
       "title": "Land Cover",
       "description": "This layer shows natural vegetation, broad categories of crops, and the intensity of human development across a region. Examine colors on the map, and then check the legend to see which category it represents.",
-      "url": "http://raster.nationalmap.gov/arcgis/rest/services/LandCover/USGS_EROS_LandCover_NLCD/MapServer",
+      "url": "https://raster.nationalmap.gov/arcgis/rest/services/LandCover/USGS_EROS_LandCover_NLCD/MapServer",
       "options": {},
       "defaults": {
         "visible": false
@@ -298,7 +298,7 @@
       "id": "bia_indian_lands",
       "title": "BIA Indian Lands",
       "description": "This layer shows  American Indian Reservations, Federally Recognized Tribal Entities, and Alaska Native Villages in the contiguous U.S. and Alaska.",
-      "url": "http://commons.wim.usgs.gov/arcgis/rest/services/AIR_NDGA/AIR_NDGA/MapServer/export",
+      "url": "https://commons.wim.usgs.gov/arcgis/rest/services/AIR_NDGA/AIR_NDGA/MapServer/export",
       "options": {},
       "defaults": {
         "visible": false
@@ -331,7 +331,7 @@
       "id": "percent_poverty",
       "title": "Percent Poverty",
       "description": "Colors show the ercent of population below the poverty threshold in 2000. The darker the color, the higher the percentage of people in poverty. Communities with high percentages of poor residents may need support in preparing for hazards, or recovering from disaster.",
-      "url": "http://sedac.ciesin.org/geoserver/ows",
+      "url": "https://gis.ncdc.noaa.gov/maps/proxy?wms=http://sedac.ciesin.org/geoserver/ows",
       "options": {
         "layer": "usgrid:usgrid-summary-file3-2000_usa-pctpopbelowpovlevel-2000",
         "type": "geoserver"
@@ -345,7 +345,7 @@
       "id": "percent_elderly",
       "title": "Percent Elderly",
       "description": "View the percent of population aged 65-79 in 2000. The darker the color, the higher the percentage of elderly people in the population. Communities with elevated social vulnerability (as measured by the U.S. Census) may need support in preparing for hazards, or recovering from disaster.",
-      "url": "http://sedac.ciesin.org/geoserver/ows",
+      "url": "https://gis.ncdc.noaa.gov/maps/proxy?wms=http://sedac.ciesin.org/geoserver/ows",
       "options": {
         "type": "geoserver",
         "layer": "usgrid:usgrid-summary-file1-2000_usa-pctpop65to79-2000"
@@ -359,7 +359,7 @@
       "id": "population_density",
       "title": "Populaton Density",
       "description": "Find centers of population across the Arctic in this global map layer.",
-      "url": "https://sedac.ciesin.columbia.edu/geoserver/wms",
+      "url": "https://gis.ncdc.noaa.gov/maps/proxy?wms=http://sedac.ciesin.org/geoserver/ows",
       "options": {
         "layer": "grump-v1:grump-v1-population-density_2000",
         "type": "geoserver",
@@ -386,7 +386,7 @@
       "id": "hospitals",
       "title": "Hospitals",
       "description": "View the location of hospitals: explore which are vulnerable to sea level rise or other flood hazards",
-      "url": "http://hsip.geoplatform.gov/arcgis/services/HSIP_Public/PublicHealth/MapServer",
+      "url": "https://hsip.geoplatform.gov/arcgis/services/HSIP_Public/PublicHealth/MapServer",
       "options": {
         "layer": 0
       },

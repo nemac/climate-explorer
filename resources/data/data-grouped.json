@@ -344,7 +344,7 @@
       "description": "View locations of hospitals, schools, and fire and police stations along the Atlantic and Gulf Coasts. If flooded, these structures present an immediate threat to life, public health, and safety.",
       "source": "",
       "legend": "resources/img/critical_coastal_facilities",
-      "url": "http://services.nationalmap.gov/arcgis/rest/services/structures/MapServer",
+      "url": "https://services.nationalmap.gov/arcgis/rest/services/structures/MapServer",
       "options": {
         "layer": "4"
       },
@@ -461,7 +461,7 @@
       "description": "View non-emergency structures catalogued in the National Map.",
       "source": "",
       "legend": "resources/img/public_attractions",
-      "url": "http://services.nationalmap.gov/arcgis/rest/services/structures/MapServer",
+      "url": "https://services.nationalmap.gov/arcgis/rest/services/structures/MapServer",
       "options": {},
       "defaults": {
         "visible": false
@@ -474,7 +474,7 @@
       "description": "Check which coastal areas are most susceptible to change as a result of sea level rise. Index values are based on physical parameters such as the shape of the coast, tidal range, and average wave heights.",
       "source": "",
       "legend": "resources/img/coastal_vulnerability_index",
-      "url": "http://coastalmap.marine.usgs.gov/cmgp/rest/services/National/coastal_vulnerability_index/MapServer",
+      "url": "https://coastalmap.marine.usgs.gov/cmgp/rest/services/National/coastal_vulnerability_index/MapServer",
       "options": {
       },
       "defaults": {
@@ -488,7 +488,7 @@
       "description": "View major roads designated as hurricane evacuation routes.",
       "source": "https://catalog.data.gov/dataset/hurricane-evacuation-routes-ac5c5",
       "legend": "resources/img/hurricane_evacuation",
-      "url": "http://gis.fema.gov/REST/services/FEMA/EvacRoutes/MapServer",
+      "url": "https://gis.fema.gov/REST/services/FEMA/EvacRoutes/MapServer",
       "options": {
       },
       "defaults": {
@@ -623,7 +623,7 @@
       "description": "View the location of habitat designated as critical in order to preserve the ecosystems where threatened and endangered species live.",
       "source": "",
       "legend": "resources/img/critical_habitat",
-      "url": "http://maps1.arcgisonline.com/ArcGIS/rest/services/USFWS_Critical_Habitat/MapServer",
+      "url": "https://maps1.arcgisonline.com/ArcGIS/rest/services/USFWS_Critical_Habitat/MapServer",
       "options": {
       },
       "defaults": {
@@ -635,7 +635,7 @@
       "id": "mean_daily_max",
       "title": "Mean Daily Max Temperature",
       "description": "Maximum temperatures are one indicator of conditions that can interfere with ecosystem functions. View how temperatures are projected to change during future decades.",
-      "source": "http://catalog.data.gov/dataset/bias-corrected-constructed-analogs-v2-daily-climate-projections",
+      "source": "https://catalog.data.gov/dataset/bias-corrected-constructed-analogs-v2-daily-climate-projections",
       "legend": "resources/img/mean_daily_max",
       "url": "https://s3.amazonaws.com/climate-explorer-bucket/tilesets/2090-summer-rcp85-tasmax/{z}/{x}/{y}.png",
       "options": {
@@ -649,7 +649,7 @@
       "id": "mean_daily_min",
       "title": "Mean Daily Min Temperature",
       "description": "Minimum temperatures are one indicator of conditions that can interfere with ecosystem functions. View how temperatures are projected to change during future decades.",
-      "source": "http://catalog.data.gov/dataset/bias-corrected-constructed-analogs-v2-daily-climate-projections",
+      "source": "https://catalog.data.gov/dataset/bias-corrected-constructed-analogs-v2-daily-climate-projections",
       "legend": "resources/img/mean_daily_min",
       "url": "https://s3.amazonaws.com/climate-explorer-bucket/tilesets/2090-summer-rcp85-tasmin/{z}/{x}/{y}.png",
       "options": {
@@ -691,7 +691,7 @@
       "id": "power_plants",
       "title": "Power Plants",
       "description": "View the locations and types of power plants.",
-      "source": "http://www.eia.gov/state/",
+      "source": "https://www.eia.gov/state/",
       "legend": "resources/img/power_plants",
       "url": "https://eia-ms.esri.com/arcgis/rest/services/20160309StateEnergyProfilesMap/MapServer",
       "options": {
@@ -721,7 +721,7 @@
       "description": "View the types of crops in place during the previous main growing season.",
       "source": "",
       "legend": "resources/img/cropland",
-      "url": "http://crop.csiss.gmu.edu/cgi-bin/wms_cdlall.cgi",
+      "url": "https://crop.csiss.gmu.edu/cgi-bin/wms_cdlall.cgi",
       "options": {
         "layer": "cdl_2015",
         "version": "1.1.1"
@@ -737,7 +737,7 @@
       "description": "Examine where the amount of water available in soils, streams, and lakes is lower than usual for this time of year. In this weekly map, the darker the color, the more severe the lack of moisture. Depending on how severe it is and how long it lasts, drought can devastate crops and forests, lead to food shortages for livestock and wildlife, increase risks for wildfires, and have a negative effect on local and regional economies.",
       "source": "",
       "legend": "resources/img/drought",
-      "url": "http://torka.unl.edu:8080/cgi-bin/mapserv.exe?map=/ms4w/apps/dm/service/usdm_current_wms.map",
+      "url": "https://torka.unl.edu:8080/cgi-bin/mapserv.exe?map=/ms4w/apps/dm/service/usdm_current_wms.map",
       "options": {
         "layer": "usdm_current",
         "version": "1.1.1"
@@ -753,7 +753,7 @@
       "description": "Explore areas where relatively large numbers of chickens are raised for meat.",
       "source": "",
       "legend": "resources/img/chickens",
-      "url": "http://gis.ers.usda.gov/arcgis/rest/services/NASS/livestockanimals/MapServer",
+      "url": "https://gis.ers.usda.gov/arcgis/rest/services/NASS/livestockanimals/MapServer",
       "options": {
         "layer": "show:23"
       },
@@ -783,7 +783,7 @@
       "description": "View the location of hospitals: explore which are vulnerable to sea level rise or other flood hazards",
       "source": "",
       "legend": "resources/img/hospitals",
-      "url": "http://services.nationalmap.gov/arcgis/rest/services/structures/MapServer/",
+      "url": "https://services.nationalmap.gov/arcgis/rest/services/structures/MapServer/",
       "options": {
         "layer": "show:3"
       },
@@ -798,7 +798,7 @@
       "description": "Explore locations that have the potential for heavy precipitation, flooding, or severe weather over the next 3-7 days.",
       "source": "",
       "legend": "resources/img/severe_weather",
-      "url": "http://idpgis.ncep.noaa.gov/arcgis/rest/services/NWS_Climate_Outlooks/cpc_weather_hazards/MapServer",
+      "url": "https://idpgis.ncep.noaa.gov/arcgis/rest/services/NWS_Climate_Outlooks/cpc_weather_hazards/MapServer",
       "options": {
         "layer": "show:4"
       },
@@ -813,7 +813,7 @@
       "description": "Colors show the ercent of population below the poverty threshold in 2000. The darker the color, the higher the percentage of people in poverty. Communities with high percentages of poor residents may need support in preparing for hazards, or recovering from disaster.",
       "source": "https://coast.noaa.gov/floodexposure/#/services#flood-hazards",
       "legend": "resources/img/percent_poverty",
-      "url": "http://sedac.ciesin.org/geoserver/ows",
+      "url": "https://sedac.ciesin.org/geoserver/ows",
       "options": {
         "layer": "usgrid:usgrid-summary-file3-2000_usa-pctpopbelowpovlevel-2000",
         "type": "geoserver"
@@ -827,7 +827,7 @@
       "id": "cooling_degree_day_18.3",
       "title": "Cooling Degree Days",
       "description": "View how demand for energy to cool homes and businesses during the warm season increases in the future. Consider how people who don’t have access to air conditioning will fare.",
-      "source": "http://catalog.data.gov/dataset/bias-corrected-constructed-analogs-v2-daily-climate-projections",
+      "source": "https://catalog.data.gov/dataset/bias-corrected-constructed-analogs-v2-daily-climate-projections",
       "legend": "resources/img/cooling_degree_day_18",
       "url": "https://s3.amazonaws.com/climate-explorer-bucket/tilesets/2090-annual-rcp45-cooling-degree-day/{z}/{x}/{y}.png",
       "options": {
@@ -843,7 +843,7 @@
       "description": "View the percent of population aged 65-79 in 2000. The darker the color, the higher the percentage of elderly people in the population. Communities with elevated social vulnerability (as measured by the U.S. Census) may need support in preparing for hazards, or recovering from disaster.",
       "source": "https://coast.noaa.gov/floodexposure/#/services#flood-hazards",
       "legend": "resources/img/percent_elderly",
-      "url": "http://sedac.ciesin.org/geoserver/ows",
+      "url": "https://sedac.ciesin.org/geoserver/ows",
       "options": {
         "type": "geoserver",
         "layer": "usgrid:usgrid-summary-file1-2000_usa-pctpop65to79-2000"
@@ -857,7 +857,7 @@
       "id": "days_tmax_abv_35.0",
       "title": "Days Above 95 Degrees F",
       "description": "View how the number of days per year with temperatures over 95°F increases during future decades.",
-      "source": "http://catalog.data.gov/dataset/bias-corrected-constructed-analogs-v2-daily-climate-projections",
+      "source": "https://catalog.data.gov/dataset/bias-corrected-constructed-analogs-v2-daily-climate-projections",
       "legend": "resources/img/days_tmax_abv_35",
       "url": "https://s3.amazonaws.com/climate-explorer-bucket/tilesets/2090-annual-rcp85-days-tmax-abv/{z}/{x}/{y}.png",
       "options": {
@@ -931,7 +931,7 @@
       "description": "View watershed boundaries and the streams and rivers that drain them.",
       "source": "",
       "legend": "resources/img/watersheds",
-      "url": "http://basemap.nationalmap.gov/arcgis/rest/services/USGSHydroNHD/MapServer",
+      "url": "https://basemap.nationalmap.gov/arcgis/rest/services/USGSHydroNHD/MapServer",
       "options": {
       },
       "defaults": {
@@ -942,7 +942,7 @@
       "type": "ArcGISRest",
       "id": "river_flooding",
       "title": "Outlook for Significant River Flooding",
-      "description": "Check the general outlook for significant rizver flooding. Note that this layer does not depict all areas of minor flooding or small-scale events such as localized flooding and/or flash flooding.",
+      "description": "Check the general outlook for significant river flooding. Note that this layer does not depict all areas of minor flooding or small-scale events such as localized flooding and/or flash flooding.",
       "source": "http://www.wpc.ncep.noaa.gov/nationalfloodoutlook/",
       "legend": "resources/img/river_flooding",
       "url": "https://idpgis.ncep.noaa.gov/arcgis/rest/services/NWS_Forecasts_Guidance_Warnings/sig_riv_fld_outlk/MapServer",
@@ -976,7 +976,7 @@
       "description": "View areas where housing extends through forested land, resulting in increased risk of fire for both. The maps shows area of land where a minimum spatial density of housing intersects with a map of wildfire hazards.",
       "source": "",
       "legend": "resources/img/wildland_urban",
-      "url": "http://maps1.arcgisonline.com/ArcGIS/rest/services/FHTET_Wildland_Urban_Interface/MapServer",
+      "url": "https://maps1.arcgisonline.com/ArcGIS/rest/services/FHTET_Wildland_Urban_Interface/MapServer",
       "options": {
       },
       "defaults": {
