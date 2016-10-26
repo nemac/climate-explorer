@@ -676,24 +676,26 @@ Variables.prototype.countySelected = function (feature, event) {
         });
 
         $('.download-data').click(function (e) {
-            var $ul = $('#download-panel').find('ul');
-            $ul.empty();
-            var dataurls = self.cwg.dataurls();
-            if (dataurls.hist_obs) {
-                $ul.append($("<li><a href='" + dataurls.hist_obs + "'>Observed Data</a></li>"));
-            }
-            if (dataurls.hist_mod) {
-                $ul.append($("<li><a href='" + dataurls.hist_mod + "'>Historical Modeled Data</a></li>"));
-            }
-            if (dataurls.proj_mod) {
-                $ul.append($("<li><a href='" + dataurls.proj_mod + "'>Projected Modeled Data</a></li>"));
-            }
-            $('#download-panel').removeClass("hidden");
+          var $ul = $('#download-panel').find('ul');
+          $ul.empty();
+          var dataurls = self.cwg.dataurls();
+          if (dataurls.hist_obs) {
+              $ul.append($("<li><a href='" + dataurls.hist_obs + "'>Observed Data</a></li>"));
+          }
+          if (dataurls.hist_mod) {
+              $ul.append($("<li><a href='" + dataurls.hist_mod + "'>Historical Modeled Data</a></li>"));
+          }
+          if (dataurls.proj_mod) {
+              $ul.append($("<li><a href='" + dataurls.proj_mod + "'>Projected Modeled Data</a></li>"));
+          }
+          $('#download-panel').removeClass("hidden");
+          $('#download-panel').show();
 
         });
 
         $('#download-dismiss-button').click(function () {
             $('#download-panel').addClass("hidden");
+            $('#download-panel').hide();
         });
 
         $('.how-to-read').on('click', function () {
