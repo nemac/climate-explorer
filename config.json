@@ -1,7 +1,7 @@
 {
   "stationData": {
-    "baseCsvSourceUrl": "https://s3.amazonaws.com/nemac-ghcnd/",
-    "normalsCsvSourceUrl": "https://s3.amazonaws.com/nemac-normals/NORMAL_"
+    "baseCsvSourceUrl": "https://toolkit.climate.gov/climate-explorer-data/ghcnd/",
+    "normalsCsvSourceUrl": "https://toolkit.climate.gov/climate-explorer-data/normals/NORMAL_"
   },
   "stations": {
     "data": "testdata/filtered_stations.json",
