@@ -11,30 +11,49 @@ MuglHelper.prototype.getDataRequests = function ( type, id ) {
     };
     
     if ( type === 'TEMP' ) {
+        //observed
         payload.requests.push(
-            $.get(this.options.baseUrl + id + '/TMIN.csv.gz')
-            .success( function( lines ){
-                payload.data['TMIN'] = lines; 
-        }));
+            $.get(this.options.ACISStnDataUrl,
+                {"sid": id, "sdate": "por", "edate": "por", "elems": "mint,maxt"}
+                , function ( r ) {
+                    payload.data['TEMP'] = '';
+                    $.each(r.data, function ( i, ln ) {
+                        //dump missing values
+                        if (ln.indexOf('M') !== -1) {
+                            return;
+                        }
+                        //remove dashes from dates
+                        ln[0] = ln[0].replace(/-/g, '');
 
+                        payload.data['TEMP'] += ln.join(',') + '\n';
+                    });
+                }, 'json'));
+        //normals
         payload.requests.push(
-            $.get(this.options.normalsUrl + 'TMIN/' + id + '.csv.gz')
-            .success( function( lines ){
-                payload.data['TMIN_NORMAL'] = lines; 
-        }));
+            $.get(this.options.ACISStnDataUrl,
+                {
+                    "sid": "usc00200779",
+                    "sdate": "2015-1-1",
+                    "edate": "2015-12-31",
+                    "elems": [{"name": "mint", "normal": 1}]
+                }
+                , function ( r ) {
+                    payload.data['TEMP_NORMAL'] = '';
+                    lnLast = [];
+                    $.each(r.data, function ( i, ln ) {
+                        //remove dashes from dates
+                        ln[0] = ln[0].replace(/-/g, '');
 
-        payload.requests.push(
-            $.get(this.options.baseUrl + id + '/TMAX.csv.gz')
-            .success( function( lines ){
-                payload.data['TMAX'] = lines;
-        }));
+                        //if missing values, repeat previous day's values.
+                        if (ln.indexOf('M') !== -1) {
+                            ln[1] = lnLast[1];
+                            ln[2] = lnLast[2];
+                        }
 
-        payload.requests.push(
-            $.get(this.options.normalsUrl + 'TMAX/' + id + '.csv.gz')
-            .success( function( lines ){
-                payload.data['TMAX_NORMAL'] = lines; 
-        }));
-            
+                        lnLast = ln.join(',') + '\n';
+                        payload.data['TEMP_NORMAL'] += lnLast;
+                    });
+                }, 'json'));         
     } else { 
         payload.requests.push(
             $.get(this.options.baseUrl + id + '/' + type + '.csv.gz')
@@ -109,17 +128,15 @@ MuglHelper.prototype.buildDataSection = function( type, payload, templates ) {
     
     if ( type === 'TEMP' ) {
         // normals        
-        normals = Transformer.mergeCSV( 
-                payload['TMIN_NORMAL'], 
-                payload['TMAX_NORMAL'], 
+        normals = Transformer.transformCSV(
+                payload['TEMP_NORMAL'],
                 Transformer.transformations[type + '_NORMAL'] );
         
         normalTemplate = templates['data-normal-temp'];
                 
         // data
-        data = Transformer.mergeCSV( 
-                payload['TMIN'], 
-                payload['TMAX'], 
+        data = Transformer.transformCSV(
+                payload['TEMP'],
                 Transformer.transformations[type] );
                 
         dataTemplate = templates['data-temp'];

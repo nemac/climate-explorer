@@ -65,21 +65,27 @@ Transformer.mergeCSV = function( csv1, csv2, transform ) {
     return merge.join( '\n' );
 };
 
+
 /**
- * Transforms the data column of a two-column CSV string using a provided transform function
+ * Transforms the data column of a two or three column CSV string using a provided transform function
  * 
- * @param {type} csv1        : the two-column CSV string
+ * @param {type} csv1        : the CSV string
  * @param function transform : transformation that should be applied to each data column
  * @returns array            : a transformed CSV
  */
-Transformer.transformCSV = function( csv, transform ) {
+Transformer.transformCSV = function ( csv, transform ) {
     var xform = [];
-    $.each( csv.replace( /(\r\n|\n|\r)/gm, ';' ).split( ';' ), function() {
-        var ln = this.split( ',' );
-        xform.push( sprintf( '%s,%s', ln[0], transform( ln[1] ) ) );
+    $.each(csv.replace(/(\r\n|\n|\r)/gm, ';').split(';'), function () {
+        var ln = this.split(',');
+        if (ln.length == 2) {
+            xform.push([ln[0], transform(ln[1])].join(','));
+        }
+        else if (ln.length == 3) {
+            xform.push([ln[0], transform(ln[1]), transform(ln[2])].join(','));
+        }
     });
-    
-    return xform.join( '\n' );
+
+    return xform.join('\n');
 };
 
 Transformer.transformations = {

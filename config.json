@@ -1,7 +1,8 @@
 {
   "stationData": {
     "baseCsvSourceUrl": "https://toolkit.climate.gov/climate-explorer-data/ghcnd/",
-    "normalsCsvSourceUrl": "https://toolkit.climate.gov/climate-explorer-data/normals/NORMAL_"
+    "normalsCsvSourceUrl": "https://toolkit.climate.gov/climate-explorer-data/normals/NORMAL_",
+    "ACISStnDataUrl": "http://data.rcc-acis.org/StnData"
   },
   "stations": {
     "data": "testdata/filtered_stations.json",
