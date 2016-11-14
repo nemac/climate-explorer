@@ -252,7 +252,7 @@ $(function(){
       MuglHelper = new MH.MuglHelper({
         baseUrl: baseCsvSourceUrl,
         normalsUrl: config.stationData.normalsCsvSourceUrl,
-        ACISStnDataUrl: config.stationdata.ACISStnDataUrl
+        ACISStnDataUrl: config.stationData.ACISStnDataUrl
       });
 
       // cache the topics by id (note that topics are called 'groups' in the config file)
