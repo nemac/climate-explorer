@@ -39,22 +39,17 @@ MuglHelper.prototype.getDataRequests = function ( type, id ) {
                 }
                 , function ( r ) {
                     payload.data['TEMP_NORMAL'] = '';
-                    lnLast = [];
+
                     $.each(r.data, function ( i, ln ) {
+                        //dump missing values
+                        if (ln.indexOf('M') !== -1) {
+                            return;
+                        }
                         //remove dashes from dates
                         ln[0] = ln[0].replace(/-/g, '');
-
-                        //if missing values, repeat previous day's values.
-                        if (ln.indexOf('M') !== -1) {
-                            ln[1] = lnLast[1];
-                            ln[2] = lnLast[2];
-                        }
-
-                        lnLast = ln.join(',') + '\n';
-                        payload.data['TEMP_NORMAL'] += lnLast;
+                        payload.data['TEMP_NORMAL'] += ln.join(',') + '\n';
                     });
-                }, 'json'));         
-    } else { 
+                }, 'json'));
         payload.requests.push(
             $.get(this.options.baseUrl + id + '/' + type + '.csv.gz')
             .success( function( lines ){
