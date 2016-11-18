@@ -99,9 +99,9 @@ Transformer.transformations = {
         return sprintf("%.1f", 25.4*v/10.0);
     },
     'TEMP': function( x ) {
-        var v = parseFloat(x);
-        v = v / 10.0;
-        return sprintf( '%.1f', v );
+        var f = parseFloat(x);
+        var c = ( f-32.0 ) *5.0 /9.0;
+        return sprintf( '%.1f', c );
     },
     'TEMP_NORMAL': function ( x ) {
         var f = parseFloat( x );
