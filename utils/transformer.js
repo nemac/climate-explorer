@@ -91,20 +91,24 @@ Transformer.transformCSV = function ( csv, transform ) {
 Transformer.transformations = {
     'PRCP_YTD': function( x ) {
         var v = parseFloat(x);
-        v = v / 10.0;
+        v = v * 25.4;
         return sprintf("%.1f", v);
     },
     'PRCP_YTD_NORMAL': function( x ) {
         var v = parseFloat(x);
-        return sprintf("%.1f", 25.4*v/10.0);
+        //return sprintf("%.1f", 25.4*v/10.0);
+        v = v * 25.4;
+        return sprintf("%.1f", v);
     },
     'TEMP': function( x ) {
         var f = parseFloat(x);
+        //convert to fahrenheit
         var c = ( f-32.0 ) *5.0 /9.0;
         return sprintf( '%.1f', c );
     },
     'TEMP_NORMAL': function ( x ) {
         var f = parseFloat( x );
+        //convert to fahrenheit
         var c = ( f-32.0 ) *5.0 /9.0;
         return sprintf( '%.1f', c );
     }

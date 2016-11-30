@@ -27,7 +27,7 @@ MuglHelper.prototype.getDataRequests = function ( type, id ) {
         data: []
     };
 
-    if (type === 'TEMP') {
+    if ( type === 'TEMP' ) {
         //observed
         payload.requests.push(
             this.postJson(this.options.ACISStnDataUrl,
@@ -67,6 +67,50 @@ MuglHelper.prototype.getDataRequests = function ( type, id ) {
                     //remove dashes from dates
                     ln[0] = ln[0].replace(/-/g, '');
                     payload.data['TEMP_NORMAL'] += ln.join(',') + '\n';
+                });
+            }));
+    }
+    else if (type === 'PRCP_YTD') {
+        //observed
+        payload.requests.push(
+            this.postJson(this.options.ACISStnDataUrl,
+                {
+                    sid: id,
+                    sdate: "por",
+                    edate: "por",
+                    elems: [{name: "pcpn", prec: 2, interval:'dly', duration:"ytd",reduce:"sum"}]
+                }, function ( r ) {
+                    payload.data['PRCP_YTD'] = '';
+                    var yr = '';
+                    var pcpn_ytd = 0.0;
+                    $.each(r.data, function ( i, ln ) {
+                        //dump missing values
+                        if (ln.indexOf('M') !== -1) {
+                            return;
+                        }
+                        //remove dashes from dates
+                        ln[0] = ln[0].replace(/-/g, '');
+                        payload.data['PRCP_YTD'] += ln.join(',') + '\n';
+                    });
+                }));
+        //normals
+        payload.requests.push(this.postJson(this.options.ACISStnDataUrl,
+            {
+                sid: id,
+                sdate: "2015-1-1",
+                edate: "2015-12-31",
+                elems: [{name: "pcpn", normal: "1", prec: 2, interval:'dly', duration:"ytd",reduce:"sum"}]
+            },
+            function ( r ) {
+                payload.data['PRCP_YTD_NORMAL'] = '';
+                $.each(r.data, function ( i, ln ) {
+                    //dump missing values
+                    if (ln.indexOf('M') !== -1) {
+                        return;
+                    }
+                    //remove dashes from dates
+                    ln[0] = ln[0].replace(/-/g, '');
+                    payload.data['PRCP_YTD_NORMAL'] += ln.join(',') + '\n';
                 });
             }));
     }
