@@ -4,23 +4,6 @@ function MuglHelper( options ) {
     this.options = options;
 }
 
-MuglHelper.prototype.postJson = function (url, data, callback){
-        //stringify objects
-        if ((typeof data === 'function') || (typeof data === 'object')){
-            data = JSON.stringify(data);
-        }
-
-        return $.ajax({
-            url: url,
-            type: "POST",
-            contentType:"application/json; charset=utf-8",
-            dataType: "json",
-            data: data,
-            success: callback
-        });
-    };
-
-
 MuglHelper.prototype.getDataRequests = function ( type, id ) {
     var payload = {
         requests: [],
@@ -28,94 +11,123 @@ MuglHelper.prototype.getDataRequests = function ( type, id ) {
     };
 
     if ( type === 'TEMP' ) {
-        //observed
-        payload.requests.push(
-            this.postJson(this.options.ACISStnDataUrl,
-                {
-                    sid: id,
-                    sdate: "por",
-                    edate: "por",
-                    elems: [{name: "mint", prec: 1}, {name: "maxt", prec: 1}]
-                }, function ( r ) {
-                    payload.data['TEMP'] = '';
-                    $.each(r.data, function ( i, ln ) {
-                        //dump missing values
-                        if (ln.indexOf('M') !== -1) {
-                            return;
-                        }
-                        //remove dashes from dates
-                        ln[0] = ln[0].replace(/-/g, '');
-
-                        payload.data['TEMP'] += ln.join(',') + '\n';
-                    });
-                }));
-        //normals
-        payload.requests.push(this.postJson(this.options.ACISStnDataUrl,
-            {
-                sid: id,
-                sdate: "2015-1-1",
-                edate: "2015-12-31",
-                elems: [{name: "mint", normal: "1", prec: 1}, {name: "maxt", normal: "1", prec: 1}]
-            },
-            function ( r ) {
-                payload.data['TEMP_NORMAL'] = '';
-                $.each(r.data, function ( i, ln ) {
-                    //dump missing values
-                    if (ln.indexOf('M') !== -1) {
-                        return;
-                    }
-                    //remove dashes from dates
-                    ln[0] = ln[0].replace(/-/g, '');
-                    payload.data['TEMP_NORMAL'] += ln.join(',') + '\n';
-                });
-            }));
+        payload.requests.push(this.requestTemp(id));
+        payload.requests.push(this.requestTempNormals(id));
     }
     else if (type === 'PRCP_YTD') {
         //observed
-        payload.requests.push(
-            this.postJson(this.options.ACISStnDataUrl,
-                {
-                    sid: id,
-                    sdate: "por",
-                    edate: "por",
-                    elems: [{name: "pcpn", prec: 2, interval:'dly', duration:"ytd",reduce:"sum"}]
-                }, function ( r ) {
-                    payload.data['PRCP_YTD'] = '';
-                    var yr = '';
-                    var pcpn_ytd = 0.0;
-                    $.each(r.data, function ( i, ln ) {
-                        //dump missing values
-                        if (ln.indexOf('M') !== -1) {
-                            return;
-                        }
-                        //remove dashes from dates
-                        ln[0] = ln[0].replace(/-/g, '');
-                        payload.data['PRCP_YTD'] += ln.join(',') + '\n';
-                    });
-                }));
+        payload.requests.push(this.requestPrecipitation(id));
         //normals
-        payload.requests.push(this.postJson(this.options.ACISStnDataUrl,
+        payload.requests.push(this.requestPrecipitationNormals(id));
+    }
+
+    return payload;
+};
+
+MuglHelper.prototype.requestTemp = function (id) {
+    payload.requests.push(
+        this.postJson(this.options.ACISStnDataUrl,
             {
                 sid: id,
-                sdate: "2015-1-1",
-                edate: "2015-12-31",
-                elems: [{name: "pcpn", normal: "1", prec: 2, interval:'dly', duration:"ytd",reduce:"sum"}]
-            },
-            function ( r ) {
-                payload.data['PRCP_YTD_NORMAL'] = '';
+                sdate: "por",
+                edate: "por",
+                elems: [{name: "mint", prec: 1}, {name: "maxt", prec: 1}]
+            }, function ( r ) {
+                payload.data['TEMP'] = '';
                 $.each(r.data, function ( i, ln ) {
-                    //dump missing values
+                    //dump rows with missing values
                     if (ln.indexOf('M') !== -1) {
                         return;
                     }
                     //remove dashes from dates
                     ln[0] = ln[0].replace(/-/g, '');
-                    payload.data['PRCP_YTD_NORMAL'] += ln.join(',') + '\n';
+
+                    payload.data['TEMP'] += ln.join(',') + '\n';
                 });
             }));
+};
+
+MuglHelper.prototype.postJson = function (url, data, callback){
+    //stringify objects
+    if ((typeof data === 'function') || (typeof data === 'object')){
+        data = JSON.stringify(data);
     }
 
-    return payload;
+    return $.ajax({
+        url: url,
+        type: "POST",
+        contentType:"application/json; charset=utf-8",
+        dataType: "json",
+        data: data,
+        success: callback
+    });
+};
+
+MuglHelper.prototype.requestTempNormals = function(id){
+    return this.postJson(this.options.ACISStnDataUrl,
+        {
+            sid: id,
+            sdate: "2015-1-1",
+            edate: "2015-12-31",
+            elems: [{name: "mint", normal: "1", prec: 1}, {name: "maxt", normal: "1", prec: 1}]
+        },
+        function ( r ) {
+            payload.data['TEMP_NORMAL'] = '';
+            $.each(r.data, function ( i, ln ) {
+                //dump rows with missing values
+                if (ln.indexOf('M') !== -1) {
+                    return;
+                }
+                //remove dashes from dates
+                ln[0] = ln[0].replace(/-/g, '');
+                payload.data['TEMP_NORMAL'] += ln.join(',') + '\n';
+            });
+        });
+};
+
+MuglHelper.prototype.requestPrecipitation = function(id){
+    return this.postJson(this.options.ACISStnDataUrl,
+        {
+            sid: id,
+            sdate: "por",
+            edate: "por",
+            elems: [{name: "pcpn", prec: 2, interval:'dly', duration:"ytd",reduce:"sum"}]
+        }, function ( r ) {
+            payload.data['PRCP_YTD'] = '';
+            var yr = '';
+            var pcpn_ytd = 0.0;
+            $.each(r.data, function ( i, ln ) {
+                //dump rows with missing values
+                if (ln.indexOf('M') !== -1) {
+                    return;
+                }
+                //remove dashes from dates
+                ln[0] = ln[0].replace(/-/g, '');
+                payload.data['PRCP_YTD'] += ln.join(',') + '\n';
+            });
+        });
+};
+
+MuglHelper.prototype.requestPrecipitationNormals = function(id){
+    return this.postJson(this.options.ACISStnDataUrl,
+        {
+            sid: id,
+            sdate: "2015-1-1",
+            edate: "2015-12-31",
+            elems: [{name: "pcpn", normal: "1", prec: 2, interval:'dly', duration:"ytd",reduce:"sum"}]
+        },
+        function ( r ) {
+            payload.data['PRCP_YTD_NORMAL'] = '';
+            $.each(r.data, function ( i, ln ) {
+                //dump rows with missing values
+                if (ln.indexOf('M') !== -1) {
+                    return;
+                }
+                //remove dashes from dates
+                ln[0] = ln[0].replace(/-/g, '');
+                payload.data['PRCP_YTD_NORMAL'] += ln.join(',') + '\n';
+            });
+        })
 };
 
 MuglHelper.prototype.buildMugl = function( data, type, summary, templates ) {

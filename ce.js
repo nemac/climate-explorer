@@ -250,8 +250,6 @@ $(function(){
 
       // config muglhelper
       MuglHelper = new MH.MuglHelper({
-        baseUrl: baseCsvSourceUrl,
-        normalsUrl: config.stationData.normalsCsvSourceUrl,
         ACISStnDataUrl: config.stationData.ACISStnDataUrl
       });
 
