@@ -54,7 +54,6 @@ $(function(){
         muglString: MuglHelper.buildMugl(
           payload.data,
           type,
-          DATA_SUMMARY[id],
           MUGLTEMPLATES
         )});
       _jq ( $element ).multigraph( 'done', function(mg) {
@@ -201,7 +200,6 @@ $(function(){
   //
   var selectedStationCount = 0;
   var stationAndGraphLinkHash = [];
-  var DATA_SUMMARY = {};
 
   var currentTopicLayerIds = [];
 
@@ -239,20 +237,16 @@ $(function(){
     updatePermalinkDisplay();
   }
 
-  var baseCsvSourceUrl;
-
   var requests = [
     $.get( TEMPLATE_LOCATION, function( template ) {
       STATION_DETAIL_TEMPLATE = template;
     }),
     $.getJSON( APP_CONFIG_URL, function( config ) {
-      baseCsvSourceUrl = config.stationData.baseCsvSourceUrl;
 
       // config muglhelper
       MuglHelper = new MH.MuglHelper({
         ACISStnDataUrl: config.stationData.ACISStnDataUrl
       });
-
       // cache the topics by id (note that topics are called 'groups' in the config file)
       config.groups.forEach(function(group) {
         topicsById[ group.id ] = group;
@@ -295,11 +289,7 @@ $(function(){
   }
 
   $.when.apply( $, requests ).done( function(){
-    // get summary
-    $.getJSON( baseCsvSourceUrl + 'summary.json', function( data ) {
-      DATA_SUMMARY = data;
-      doInit();
-    });        
+    doInit();
   });
 
   function doInit() {

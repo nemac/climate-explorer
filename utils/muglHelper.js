@@ -9,24 +9,35 @@ MuglHelper.prototype.getDataRequests = function ( type, id ) {
         requests: [],
         data: []
     };
-
     if ( type === 'TEMP' ) {
-        payload.requests.push(this.requestTemp(id));
-        payload.requests.push(this.requestTempNormals(id));
+        this.requestTemp(id, payload);
+        this.requestTempNormals(id, payload);
     }
     else if (type === 'PRCP_YTD') {
-        //observed
-        payload.requests.push(this.requestPrecipitation(id));
-        //normals
-        payload.requests.push(this.requestPrecipitationNormals(id));
+        this.requestPrecipitation(id, payload);
+        this.requestPrecipitationNormals(id, payload);
     }
-
     return payload;
 };
 
-MuglHelper.prototype.requestTemp = function (id) {
-    payload.requests.push(
-        this.postJson(this.options.ACISStnDataUrl,
+MuglHelper.prototype.postJson = function (data, callback){
+    //stringify objects
+    if ((typeof data === 'function') || (typeof data === 'object')){
+        data = JSON.stringify(data);
+    }
+
+    return $.ajax({
+        url: this.options.ACISStnDataUrl,
+        type: "POST",
+        contentType:"application/json; charset=utf-8",
+        dataType: "json",
+        data: data,
+        success: callback
+    });
+};
+
+MuglHelper.prototype.requestTemp = function (id, payload) {
+    payload.requests.push(this.postJson(
             {
                 sid: id,
                 sdate: "por",
@@ -47,24 +58,8 @@ MuglHelper.prototype.requestTemp = function (id) {
             }));
 };
 
-MuglHelper.prototype.postJson = function (url, data, callback){
-    //stringify objects
-    if ((typeof data === 'function') || (typeof data === 'object')){
-        data = JSON.stringify(data);
-    }
-
-    return $.ajax({
-        url: url,
-        type: "POST",
-        contentType:"application/json; charset=utf-8",
-        dataType: "json",
-        data: data,
-        success: callback
-    });
-};
-
-MuglHelper.prototype.requestTempNormals = function(id){
-    return this.postJson(this.options.ACISStnDataUrl,
+MuglHelper.prototype.requestTempNormals = function(id, payload){
+    payload.requests.push(this.postJson(
         {
             sid: id,
             sdate: "2015-1-1",
@@ -82,11 +77,11 @@ MuglHelper.prototype.requestTempNormals = function(id){
                 ln[0] = ln[0].replace(/-/g, '');
                 payload.data['TEMP_NORMAL'] += ln.join(',') + '\n';
             });
-        });
+        }));
 };
 
-MuglHelper.prototype.requestPrecipitation = function(id){
-    return this.postJson(this.options.ACISStnDataUrl,
+MuglHelper.prototype.requestPrecipitation = function(id, payload){
+   payload.requests.push(this.postJson(
         {
             sid: id,
             sdate: "por",
@@ -94,8 +89,6 @@ MuglHelper.prototype.requestPrecipitation = function(id){
             elems: [{name: "pcpn", prec: 2, interval:'dly', duration:"ytd",reduce:"sum"}]
         }, function ( r ) {
             payload.data['PRCP_YTD'] = '';
-            var yr = '';
-            var pcpn_ytd = 0.0;
             $.each(r.data, function ( i, ln ) {
                 //dump rows with missing values
                 if (ln.indexOf('M') !== -1) {
@@ -105,11 +98,11 @@ MuglHelper.prototype.requestPrecipitation = function(id){
                 ln[0] = ln[0].replace(/-/g, '');
                 payload.data['PRCP_YTD'] += ln.join(',') + '\n';
             });
-        });
+        }));
 };
 
-MuglHelper.prototype.requestPrecipitationNormals = function(id){
-    return this.postJson(this.options.ACISStnDataUrl,
+MuglHelper.prototype.requestPrecipitationNormals = function(id, payload){
+    payload.requests.push(this.postJson(
         {
             sid: id,
             sdate: "2015-1-1",
@@ -127,10 +120,10 @@ MuglHelper.prototype.requestPrecipitationNormals = function(id){
                 ln[0] = ln[0].replace(/-/g, '');
                 payload.data['PRCP_YTD_NORMAL'] += ln.join(',') + '\n';
             });
-        })
+        }));
 };
 
-MuglHelper.prototype.buildMugl = function( data, type, summary, templates ) {
+MuglHelper.prototype.buildMugl = function( data, type, templates ) {
     var d = new Date();
     var max = $.datepicker.formatDate( 'yymmdd', d );
     d.setFullYear( d.getFullYear() -1 );
