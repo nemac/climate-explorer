@@ -9,50 +9,121 @@ MuglHelper.prototype.getDataRequests = function ( type, id ) {
         requests: [],
         data: []
     };
-    
     if ( type === 'TEMP' ) {
-        payload.requests.push(
-            $.get(this.options.baseUrl + id + '/TMIN.csv.gz')
-            .success( function( lines ){
-                payload.data['TMIN'] = lines; 
-        }));
-
-        payload.requests.push(
-            $.get(this.options.normalsUrl + 'TMIN/' + id + '.csv.gz')
-            .success( function( lines ){
-                payload.data['TMIN_NORMAL'] = lines; 
-        }));
-
-        payload.requests.push(
-            $.get(this.options.baseUrl + id + '/TMAX.csv.gz')
-            .success( function( lines ){
-                payload.data['TMAX'] = lines;
-        }));
-
-        payload.requests.push(
-            $.get(this.options.normalsUrl + 'TMAX/' + id + '.csv.gz')
-            .success( function( lines ){
-                payload.data['TMAX_NORMAL'] = lines; 
-        }));
-            
-    } else { 
-        payload.requests.push(
-            $.get(this.options.baseUrl + id + '/' + type + '.csv.gz')
-            .success( function( lines ){
-                payload.data[type] = lines; 
-        }));
-
-        payload.requests.push(
-            $.get(this.options.normalsUrl + type + '/' + id + '.csv.gz')
-            .success( function( lines ){
-                payload.data[type + '_NORMAL'] = lines; 
-        }));
+        this.requestTemp(id, payload);
+        this.requestTempNormals(id, payload);
     }
-    
+    else if (type === 'PRCP_YTD') {
+        this.requestPrecipitation(id, payload);
+        this.requestPrecipitationNormals(id, payload);
+    }
     return payload;
 };
 
-MuglHelper.prototype.buildMugl = function( data, type, summary, templates ) {
+MuglHelper.prototype.postJson = function (data, callback){
+    //stringify objects
+    if ((typeof data === 'function') || (typeof data === 'object')){
+        data = JSON.stringify(data);
+    }
+
+    return $.ajax({
+        url: this.options.ACISStnDataUrl,
+        type: "POST",
+        contentType:"application/json; charset=utf-8",
+        dataType: "json",
+        data: data,
+        success: callback
+    });
+};
+
+MuglHelper.prototype.requestTemp = function (id, payload) {
+    payload.requests.push(this.postJson(
+            {
+                sid: id,
+                sdate: "por",
+                edate: "por",
+                elems: [{name: "mint", prec: 1}, {name: "maxt", prec: 1}]
+            }, function ( r ) {
+                payload.data['TEMP'] = '';
+                $.each(r.data, function ( i, ln ) {
+                    //dump rows with missing values
+                    if (ln.indexOf('M') !== -1) {
+                        return;
+                    }
+                    //remove dashes from dates
+                    ln[0] = ln[0].replace(/-/g, '');
+
+                    payload.data['TEMP'] += ln.join(',') + '\n';
+                });
+            }));
+};
+
+MuglHelper.prototype.requestTempNormals = function(id, payload){
+    payload.requests.push(this.postJson(
+        {
+            sid: id,
+            sdate: "2015-1-1",
+            edate: "2015-12-31",
+            elems: [{name: "mint", normal: "1", prec: 1}, {name: "maxt", normal: "1", prec: 1}]
+        },
+        function ( r ) {
+            payload.data['TEMP_NORMAL'] = '';
+            $.each(r.data, function ( i, ln ) {
+                //dump rows with missing values
+                if (ln.indexOf('M') !== -1) {
+                    return;
+                }
+                //remove dashes from dates
+                ln[0] = ln[0].replace(/-/g, '');
+                payload.data['TEMP_NORMAL'] += ln.join(',') + '\n';
+            });
+        }));
+};
+
+MuglHelper.prototype.requestPrecipitation = function(id, payload){
+   payload.requests.push(this.postJson(
+        {
+            sid: id,
+            sdate: "por",
+            edate: "por",
+            elems: [{name: "pcpn", prec: 2, interval:'dly', duration:"ytd",reduce:"sum"}]
+        }, function ( r ) {
+            payload.data['PRCP_YTD'] = '';
+            $.each(r.data, function ( i, ln ) {
+                //dump rows with missing values
+                if (ln.indexOf('M') !== -1) {
+                    return;
+                }
+                //remove dashes from dates
+                ln[0] = ln[0].replace(/-/g, '');
+                payload.data['PRCP_YTD'] += ln.join(',') + '\n';
+            });
+        }));
+};
+
+MuglHelper.prototype.requestPrecipitationNormals = function(id, payload){
+    payload.requests.push(this.postJson(
+        {
+            sid: id,
+            sdate: "2015-1-1",
+            edate: "2015-12-31",
+            elems: [{name: "pcpn", normal: "1", prec: 2, interval:'dly', duration:"ytd",reduce:"sum"}]
+        },
+        function ( r ) {
+            payload.data['PRCP_YTD_NORMAL'] = '';
+            $.each(r.data, function ( i, ln ) {
+                //dump rows with missing values
+                if (ln.indexOf('M') !== -1) {
+                    return;
+                }
+                //remove dashes from dates
+                ln[0] = ln[0].replace(/-/g, '');
+                payload.data['PRCP_YTD_NORMAL'] += ln.join(',') + '\n';
+            });
+        }));
+};
+
+MuglHelper.prototype.buildMugl = function( data, type, templates ) {
     var d = new Date();
     var max = $.datepicker.formatDate( 'yymmdd', d );
     d.setFullYear( d.getFullYear() -1 );
@@ -78,9 +149,9 @@ MuglHelper.prototype.buildVerticalAxisSection = function( type, position, templa
             template = templates['vertical-axis-ytd-prcp'];
             break;
     }
-    
+
     return Mustache.render( template, {
-        position: position 
+        position: position
     });
 
 };
@@ -97,7 +168,7 @@ MuglHelper.prototype.buildPlotSection = function( type, templates ) {
             plots.push( Mustache.render( templates['plot-ytd-prcp'] ) );
             break;
     }
-    
+
     return plots.join( '' );
 };
 
@@ -106,22 +177,20 @@ MuglHelper.prototype.buildDataSection = function( type, payload, templates ) {
     var normalTemplate;
     var data = [];
     var dataTemplate;
-    
+
     if ( type === 'TEMP' ) {
         // normals        
-        normals = Transformer.mergeCSV( 
-                payload['TMIN_NORMAL'], 
-                payload['TMAX_NORMAL'], 
+        normals = Transformer.transformCSV(
+                payload['TEMP_NORMAL'],
                 Transformer.transformations[type + '_NORMAL'] );
-        
+
         normalTemplate = templates['data-normal-temp'];
-                
+
         // data
-        data = Transformer.mergeCSV( 
-                payload['TMIN'], 
-                payload['TMAX'], 
+        data = Transformer.transformCSV(
+                payload['TEMP'],
                 Transformer.transformations[type] );
-                
+
         dataTemplate = templates['data-temp'];
 
     } else {
@@ -133,7 +202,7 @@ MuglHelper.prototype.buildDataSection = function( type, payload, templates ) {
         data = Transformer.transformCSV(
                 payload[type],
                 Transformer.transformations[type] );
-                
+
         switch ( type ) {
             case 'PRCP_YTD' :
                 normalTemplate = templates['data-normal-ytd-prcp'];
@@ -141,15 +210,15 @@ MuglHelper.prototype.buildDataSection = function( type, payload, templates ) {
                 break
         }
     }
-    
+
     var section = [];
-    
+
     if ( normals.length !== 0 ) {
         section.push(Mustache.render( normalTemplate, {
             values: normals
         }));
     }
-    
+
     section.push(Mustache.render( dataTemplate, {
         values: data
     }));

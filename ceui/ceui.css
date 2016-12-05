@@ -3,7 +3,7 @@
 }
 
 
-html{
+html, body {
 	min-width: 800px;
 	margin: 0 auto;
 	background-color:#404952;
