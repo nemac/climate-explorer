@@ -18,46 +18,74 @@ ChartBuilder.prototype.getData = function (callback) {
     //console.log('this.props', this.props);
     var id = this.props.station.split(':')[1];
     this.records = {
-        'tmin': {
-            url: this.stations_base_url+ 'ghcnd/' + id + '/TMIN.csv.gz',
-            type: 'tmin',
-            data: ''
+        'temp': {
+            url: this.stations_base_url,
+            type: 'temp',
+            params: {
+                "sid": id,
+                "sdate": "por",
+                "edate": "por",
+                "elems": [
+                    {"name": "maxt", "prec": 1},
+                    {"name": "mint", "prec": 1}
+                ]
+            },
+            data: []
         },
-        'normal_tmin': {
-            url: this.stations_base_url + 'normals/NORMAL_TMIN/' + id + '.csv.gz',
-            type: 'normal_tmin',
-            data: ''
-        },
-        'tmax': {
-            url: this.stations_base_url+ 'ghcnd/' + id + '/TMAX.csv.gz',
-            type: 'tmax',
-            data: ''
-        },
-        'normal_tmax': {
-            url: this.stations_base_url+ 'normals/NORMAL_TMAX/' + id + '.csv.gz',
-            type: 'normal_tmax',
-            data: ''
+        'temp_normal': {
+            url: this.stations_base_url,
+            type: 'temp_normal',
+            params: {
+                "sid": id,
+                "sdate": "2015-1-1",
+                "edate": "2015-12-31",
+                "elems": [
+                    {"name": "maxt", "normal": "1", "prec": 1},
+                    {"name": "mint", "normal": "1", "prec": 1}
+                ]
+            },
+            data: []
         },
         'precip_ytd': {
-            url: this.stations_base_url+ 'ghcnd/' + id + '/PRCP_YTD.csv.gz',
+            url: this.stations_base_url,
             type: 'precip_ytd',
-            data: ''
+            params: {
+                "sid": id,
+                "sdate": "por",
+                "edate": "por",
+                "elems": [
+                    {"name": "pcpn", "prec": 2, "interval": "dly", "duration": "ytd", "reduce": "sum"}
+                ]
+            },
+            data: []
         },
-        'normal_precip_ytd': {
-            url: this.stations_base_url+ 'normals/NORMAL_PRCP_YTD/' + id + '.csv.gz',
-            type: 'normal_precip_ytd',
-            data: ''
+        'precip_ytd_normal': {
+            url: this.stations_base_url,
+            type: 'precip_ytd_normal',
+            params: {
+                "sid": id,
+                "sdate": "2015-1-1",
+                "edate": "2015-12-31",
+                "elems": [
+                    {"name": "pcpn", "normal": "1", "prec": 2, "interval": "dly", "duration": "ytd", "reduce": "sum"}
+                ]
+            },
+            data: []
         }
     };
 
     var i = 0;
     $.each(this.records, function (key, record) {
         $.ajax({
-            url: record.url
+            url: record.url,
+            type: "POST",
+            contentType: "application/json; charset=utf-8",
+            dataType: "json",
+            data: JSON.stringify(record.params)
         }).done(function (data) {
             i++;
-            self.records[key].data = data;
-            if (i === 6) {
+            self.records[key].data = data.data;
+            if (i === 4) {
                 callback();
             }
         });
@@ -80,90 +108,69 @@ ChartBuilder.prototype.buildChart = function () {
 
 
 ChartBuilder.prototype.getTemperatureValues = function () {
-    var line;
-    var max = {};
-    $.each(this.records.tmax.data.replace(/(\r\n|\n|\r)/gm, ';').split(';'), function (i, a) {
-        line = a.split(',');
-        max[line[0]] = (parseInt(line[1]) / 10) * 9 / 5 + 32;
-    });
 
+    var max = {};
     var min = {};
-    $.each(this.records.tmin.data.replace(/(\r\n|\n|\r)/gm, ';').split(';'), function (i, a) {
-        line = a.split(',');
-        if (max.hasOwnProperty(line[0])) {
-            min[line[0]] = (parseInt(line[1]) / 10) * 9 / 5 + 32;
+    $.each(this.records.temp.data, function (i, a) {
+        //discard missing values
+        if (a.indexOf('M') !== -1) {
+            return;
         }
+        max[a[0].replace(/-/g, '')] = a[1];
+        min[a[0].replace(/-/g, '')] = a[2];
     });
 
     var normmax = {};
-    $.each(this.records.normal_tmax.data.replace(/(\r\n|\n|\r)/gm, ';').split(';'), function (i, a) {
-        line = a.split(',');
-        if (max.hasOwnProperty(line[0])) {
-            var c = parseFloat(line[1]);
-            //var c = ( f-32.0 ) *5.0 /9.0;
-            normmax[line[0].slice(-4)] = c;
-        }
-    });
-
     var normmin = {};
-    $.each(this.records.normal_tmin.data.replace(/(\r\n|\n|\r)/gm, ';').split(';'), function (i, a) {
-        line = a.split(',');
-        if (max.hasOwnProperty(line[0])) {
-            var c = parseFloat(line[1]);
-            //var c = ( f-32.0 ) *5.0 /9.0;
-            normmin[line[0].slice(-4)] = c;
+    $.each(this.records.temp_normal.data, function (i, a) {
+        //discard missing values
+        if (a.indexOf('M') !== -1) {
+            return;
         }
+        normmax[a[0].replace(/-/g, '').slice(-4)] = a[1];
+        normmin[a[0].replace(/-/g, '').slice(-4)] = a[2];
     });
 
     var merge = [];
     $.each(max, function (key, value) {
-        if ((key !== "") && min.hasOwnProperty(key)) {
-            if ((key !== "") && normmax.hasOwnProperty(key.slice(-4))) {
-                if ((key !== "") && normmin.hasOwnProperty(key.slice(-4))) {
-                    merge.push(key + ',' + value + ',' + min[key] + ',' + normmax[key.slice(-4)] + ',' + normmin[key.slice(-4)]);
-                }
-            }
+        if ((key !== "")
+            && min.hasOwnProperty(key)
+            && normmax.hasOwnProperty(key.slice(-4))
+            && normmin.hasOwnProperty(key.slice(-4))) {
+            merge.push(key + ',' + value + ',' + min[key] + ',' + normmax[key.slice(-4)] + ',' + normmin[key.slice(-4)]);
         }
     });
 
     return merge.join('\n');
 };
 
-
-ChartBuilder.prototype.leapYear = function (year) {
-    return ((year % 4 === 0) && (year % 100 !== 0)) || (year % 400 === 0);
-};
-
-
 ChartBuilder.prototype.getPrecipitationValues = function () {
-    var self = this;
-    var line;
-    var arr = [];
-    var norm = [];
-    $.each(this.records.normal_precip_ytd.data.replace(/(\r\n|\n|\r)/gm, ';').split(';'), function (i, a) {
-        line = a.split(',');
-        norm.push((25.4 * parseInt(line[1]) / 10.0) * 0.039370);
-    });
-
-    var int = 0;
-    var leap = false;
-    var max = 364;
-    $.each(this.records.precip_ytd.data.replace(/(\r\n|\n|\r)/gm, ';').split(';'), function (i, a) {
-        leap = self.leapYear(line[0].slice(0, 4));
-        max = ( leap ) ? 365 : 364;
-        if (int > max) {
-            int = 0;
+    var precip = {};
+    $.each(this.records.precip_ytd.data, function (i, a) {
+        //discard missing values
+        if (a.indexOf('M') !== -1) {
+            return;
         }
-        line = a.split(',');
-        var val = parseFloat(line[1] / 10) * 0.039370;
-        var n = ( leap && int === 365 ) ? 0 : norm[int];
-        arr.push(line[0] + ',' + val + ',' + n);
-        int++;
+        precip[a[0].replace(/-/g, '')] = a[1];
+    });
+    var normprecip = {};
+    $.each(this.records.precip_ytd_normal.data, function (i, a) {
+        //discard missing values
+        if (a.indexOf('M') !== -1) {
+            return;
+        }
+        normprecip[a[0].replace(/-/g, '').slice(-4)] = a[1];
     });
 
-    arr.pop();
-    return arr.join('\n');
-    //return merge.join( '\n' );
+    var merge = [];
+    $.each(precip, function (key, value) {
+        if ((key !== "")
+            && normprecip.hasOwnProperty(key.slice(-4))) {
+            merge.push(key + ',' + value + ',' + normprecip[key.slice(-4)]);
+        }
+    });
+
+    return merge.join('\n');
 };
 
 ChartBuilder.prototype.getTemplate = function (type, values) {
