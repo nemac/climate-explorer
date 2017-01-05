@@ -22,7 +22,7 @@ var paths = {
             './bower_components/mustache/mustache.js',
             './bower_components/drawerpanel/drawerpanel.js',
             './bower_components/permalink/permalink.js',
-            './bower_components/multigraph/index.js'
+            './bower_components/multigraph/build/multigraph-min.js'
         ]
     },
     assets: {

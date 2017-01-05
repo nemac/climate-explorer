@@ -66,39 +66,49 @@ Transformer.mergeCSV = function( csv1, csv2, transform ) {
 };
 
 /**
- * Transforms the data column of a two-column CSV string using a provided transform function
+ * Transforms the data column of a two or three column CSV string using a provided transform function
  * 
- * @param {type} csv1        : the two-column CSV string
+ * @param {type} csv1        : the CSV string
  * @param function transform : transformation that should be applied to each data column
  * @returns array            : a transformed CSV
  */
-Transformer.transformCSV = function( csv, transform ) {
+Transformer.transformCSV = function ( csv, transform ) {
     var xform = [];
-    $.each( csv.replace( /(\r\n|\n|\r)/gm, ';' ).split( ';' ), function() {
-        var ln = this.split( ',' );
-        xform.push( sprintf( '%s,%s', ln[0], transform( ln[1] ) ) );
+    $.each(csv.replace(/(\r\n|\n|\r)/gm, ';').split(';'), function () {
+        var ln = this.split(',');
+        if (ln.length == 2) {
+            xform.push([ln[0], transform(ln[1])].join(','));
+        }
+        else if (ln.length == 3) {
+            xform.push([ln[0], transform(ln[1]), transform(ln[2])].join(','));
+        }
     });
-    
-    return xform.join( '\n' );
+
+    return xform.join('\n');
 };
 
 Transformer.transformations = {
     'PRCP_YTD': function( x ) {
         var v = parseFloat(x);
-        v = v / 10.0;
+        //convert in to mm
+        v = v * 25.4;
         return sprintf("%.1f", v);
     },
     'PRCP_YTD_NORMAL': function( x ) {
         var v = parseFloat(x);
-        return sprintf("%.1f", 25.4*v/10.0);
+        //convert in to mm
+        v = v * 25.4;
+        return sprintf("%.1f", v);
     },
     'TEMP': function( x ) {
-        var v = parseFloat(x);
-        v = v / 10.0;
-        return sprintf( '%.1f', v );
+        var f = parseFloat(x);
+        //convert f to c
+        var c = ( f-32.0 ) *5.0 /9.0;
+        return sprintf( '%.1f', c );
     },
     'TEMP_NORMAL': function ( x ) {
         var f = parseFloat( x );
+        //convert f to c
         var c = ( f-32.0 ) *5.0 /9.0;
         return sprintf( '%.1f', c );
     }

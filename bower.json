@@ -6,7 +6,7 @@
     "maplite": "git://github.com/cmy2k/maplite.git",
     "permalink": "git://github.com/embeepea/permalink.git",
     "drawerpanel": "~1.0.9",
-    "multigraph": "http://multigraph.github.io/download/multigraph-min.js"
+    "multigraph": "https://github.com/multigraph/js-multigraph.git#8df99a3a772c55df57f3a2d15e75322ab57c7803"
   },
   "overrides": {
     "mustache": {
