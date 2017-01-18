@@ -3,7 +3,7 @@
         <variable column="0" id="normal-ytd-prcp-time" type="datetime"/>
         <variable column="1" id="normal-ytd-prcp-prcp" missingvalue="-9000" missingop="le"/>
       </variables>
-      <repeat period="1Y"/>
+      <repeat period="4Y"/>
       <values>
 {{{values}}}
       </values>
