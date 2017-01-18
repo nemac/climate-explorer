@@ -17,6 +17,7 @@ ChartBuilder.prototype.getData = function (callback) {
 
     //console.log('this.props', this.props);
     var id = this.props.station.split(':')[1];
+    var year = new Date().getFullYear();
     this.records = {
         'temp': {
             url: this.stations_base_url,
@@ -37,8 +38,8 @@ ChartBuilder.prototype.getData = function (callback) {
             type: 'temp_normal',
             params: {
                 "sid": id,
-                "sdate": "2015-1-1",
-                "edate": "2015-12-31",
+                "sdate": year + "-1-1",
+                "edate": year + "-12-31",
                 "elems": [
                     {"name": "maxt", "normal": "1", "prec": 1},
                     {"name": "mint", "normal": "1", "prec": 1}
@@ -64,8 +65,8 @@ ChartBuilder.prototype.getData = function (callback) {
             type: 'precip_ytd_normal',
             params: {
                 "sid": id,
-                "sdate": "2015-1-1",
-                "edate": "2015-12-31",
+                "sdate": (year - 3) + "-1-1",
+                "edate": year + "-12-31",
                 "elems": [
                     {"name": "pcpn", "normal": "1", "prec": 2, "interval": "dly", "duration": "ytd", "reduce": "sum"}
                 ]
@@ -147,17 +148,27 @@ ChartBuilder.prototype.getTemperatureValues = function () {
 ChartBuilder.prototype.getPrecipitationValues = function () {
     var precip = {};
     $.each(this.records.precip_ytd.data, function (i, a) {
-        //discard missing values
+        //discard missing values, zero Jan 1 if missing.
         if (a.indexOf('M') !== -1) {
-            return;
+            if (a[0].slice(-5) == '01-01') {
+                a[1] = '0'
+            }
+            else {
+                return;
+            }
         }
         precip[a[0].replace(/-/g, '')] = a[1];
     });
     var normprecip = {};
     $.each(this.records.precip_ytd_normal.data, function (i, a) {
-        //discard missing values
+        //discard missing values, zero Jan 1 if missing.
         if (a.indexOf('M') !== -1) {
-            return;
+            if (a[0].slice(-5) == '01-01') {
+                a[1] = '0'
+            }
+            else {
+                return;
+            }
         }
         normprecip[a[0].replace(/-/g, '').slice(-4)] = a[1];
     });
@@ -174,6 +185,7 @@ ChartBuilder.prototype.getPrecipitationValues = function () {
 };
 
 ChartBuilder.prototype.getTemplate = function (type, values) {
+    var today = new Date().toISOString().slice(0, 10).replace(/-/g, '');
     //console.log('values', values);
     var templates = {
         'temperature': '<mugl>' +
@@ -181,7 +193,7 @@ ChartBuilder.prototype.getTemplate = function (type, values) {
         '<legend rows="1" border="0" opacity="0.0" base="0 1" anchor="0 1" position="0 25">' +
         '<icon border="0" width="30" height="30"/>' +
         '</legend>' +
-        '<horizontalaxis id="date" type="datetime" min="20150101" max="20160716">' +
+        '<horizontalaxis id="date" type="datetime" min="' + (new Date().getFullYear() - 2) + '0501" max="' + today + '">' +
         '<labels spacing="100Y 50Y 20Y 10Y 5Y 1Y 6M 3M 2M 1M 7D 1D" format="%n %d%L%Y"/>' +
         '<title/>' +
         '<grid/>' +
@@ -241,7 +253,7 @@ ChartBuilder.prototype.getTemplate = function (type, values) {
         '<legend rows="1" border="0" opacity="0.0" base="0 1" anchor="0 1" position="0 25">' +
         '<icon border="0" width="30" height="30"/>' +
         '</legend>' +
-        '<horizontalaxis id="datetime" type="datetime" min="20100101" max="20160716">' +
+        '<horizontalaxis id="datetime" type="datetime" min="20100101" max="' + today + '">' +
         '<labels spacing="100Y 50Y 20Y 10Y 5Y 1Y 6M 3M 2M 1M 7D 1D" format="%n %d%L%Y"/>' +
         '<title/>' +
         '<grid/>' +
@@ -251,6 +263,7 @@ ChartBuilder.prototype.getTemplate = function (type, values) {
         '<title anchor="0 -1" angle="90" position="-25 0">Inches</title>' +
         '<grid/>' +
         '<labels spacing="100 50 20 10 5 1 0.5 0.2 0.1" format="%f"/>' +
+        '<pan min="0"/>' +
         '</verticalaxis>' +
         '<plot>' +
         '<legend label="YTD Precipitation"/>' +
