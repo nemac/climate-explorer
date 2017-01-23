@@ -59,11 +59,12 @@ MuglHelper.prototype.requestTemp = function (id, payload) {
 };
 
 MuglHelper.prototype.requestTempNormals = function(id, payload){
+    var year = new Date().getFullYear();
     payload.requests.push(this.postJson(
         {
             sid: id,
-            sdate: "2015-1-1",
-            edate: "2015-12-31",
+            sdate: year + "-1-1",
+            edate: year + "-12-31",
             elems: [{name: "mint", normal: "1", prec: 1}, {name: "maxt", normal: "1", prec: 1}]
         },
         function ( r ) {
@@ -90,9 +91,14 @@ MuglHelper.prototype.requestPrecipitation = function(id, payload){
         }, function ( r ) {
             payload.data['PRCP_YTD'] = '';
             $.each(r.data, function ( i, ln ) {
-                //dump rows with missing values
+                //dump rows with missing values, zero Jan 1 if missing.
                 if (ln.indexOf('M') !== -1) {
-                    return;
+                    if (ln[0].slice(-5)=='01-01'){
+                        ln[1] = '0'
+                    }
+                    else{
+                        return;
+                    }
                 }
                 //remove dashes from dates
                 ln[0] = ln[0].replace(/-/g, '');
@@ -102,19 +108,25 @@ MuglHelper.prototype.requestPrecipitation = function(id, payload){
 };
 
 MuglHelper.prototype.requestPrecipitationNormals = function(id, payload){
+    var year = new Date().getFullYear();
     payload.requests.push(this.postJson(
         {
             sid: id,
-            sdate: "2015-1-1",
-            edate: "2015-12-31",
+            sdate: (year - 3) + "-1-1",
+            edate: year + "-12-31",
             elems: [{name: "pcpn", normal: "1", prec: 2, interval:'dly', duration:"ytd",reduce:"sum"}]
         },
         function ( r ) {
             payload.data['PRCP_YTD_NORMAL'] = '';
             $.each(r.data, function ( i, ln ) {
-                //dump rows with missing values
+                //dump rows with missing values, zero Jan 1 if missing.
                 if (ln.indexOf('M') !== -1) {
-                    return;
+                    if (ln[0].slice(-5)=='01-01'){
+                        ln[1] = '0'
+                    }
+                    else{
+                        return;
+                    }
                 }
                 //remove dashes from dates
                 ln[0] = ln[0].replace(/-/g, '');
