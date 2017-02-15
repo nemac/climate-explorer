@@ -507,7 +507,7 @@
           "type": "StormSurge",
           "id": "storm_surge_1",
           "title": "Storm Surge Category 1 Hurricane",
-          "url": "https://tiles3.arcgis.com/tiles/C8EMgrsFcRFL6LrL/arcgis/rest/services/NHC_SeamlessSLOSH_Category1/MapServer/tile/{z}/{y}/{x}",
+          "url": "http://tiles.arcgis.com/tiles/C8EMgrsFcRFL6LrL/arcgis/rest/services/NHC_NationalMOM_Category1_CONUS/MapServer/tile/{z}/{y}/{x}",
           "options": {},
           "defaults": {
             "visible": false
@@ -517,7 +517,7 @@
           "type": "StormSurge",
           "id": "storm_surge_2",
           "title": "Storm Surge Category 2 Hurricane",
-          "url": "https://tiles3.arcgis.com/tiles/C8EMgrsFcRFL6LrL/arcgis/rest/services/NHC_SeamlessSLOSH_Category2/MapServer/tile/{z}/{y}/{x}",
+          "url": "http://tiles.arcgis.com/tiles/C8EMgrsFcRFL6LrL/arcgis/rest/services/NHC_NationalMOM_Category2_CONUS/MapServer/tile/{z}/{y}/{x}",
           "options": {},
           "defaults": {
             "visible": false
@@ -527,7 +527,7 @@
           "type": "StormSurge",
           "id": "storm_surge_3",
           "title": "Storm Surge category 3 Hurricane",
-          "url": "https://tiles3.arcgis.com/tiles/C8EMgrsFcRFL6LrL/arcgis/rest/services/NHC_SeamlessSLOSH_Category3/MapServer/tile/{z}/{y}/{x}",
+          "url": "http://tiles.arcgis.com/tiles/C8EMgrsFcRFL6LrL/arcgis/rest/services/NHC_NationalMOM_Category3_CONUS/MapServer/tile/{z}/{y}/{x}",
           "options": {},
           "defaults": {
             "visible": false
@@ -537,7 +537,7 @@
           "type": "StormSurge",
           "id": "storm_surge_4",
           "title": "Storm Surge Category 4 hurricane",
-          "url": "https://tiles3.arcgis.com/tiles/C8EMgrsFcRFL6LrL/arcgis/rest/services/NHC_SeamlessSLOSH_Category4/MapServer/tile/{z}/{y}/{x}",
+          "url": "http://tiles.arcgis.com/tiles/C8EMgrsFcRFL6LrL/arcgis/rest/services/NHC_NationalMOM_Category4_CONUS/MapServer/tile/{z}/{y}/{x}",
           "options": {},
           "defaults": {
             "visible": false
@@ -547,7 +547,7 @@
           "type": "StormSurge",
           "id": "storm_surge_5",
           "title": "Storm Surge Category 5 Hurricane",
-          "url": "https://tiles3.arcgis.com/tiles/C8EMgrsFcRFL6LrL/arcgis/rest/services/NHC_SeamlessSLOSH_Category5/MapServer/tile/{z}/{y}/{x}",
+          "url": "http://tiles.arcgis.com/tiles/C8EMgrsFcRFL6LrL/arcgis/rest/services/NHC_NationalMOM_Category5_CONUS/MapServer/tile/{z}/{y}/{x}",
           "options": {},
           "defaults": {
             "visible": false

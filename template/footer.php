@@ -52,7 +52,17 @@
 
 <?php } ?>
 
-<script src="https://maps.googleapis.com/maps/api/js?sensor=false&amp;libraries=places&client=gme-noaa&channel=OAR.CLIMATE_GOV_CLIMATE_EXPLORER2"></script>
+<!-- AIzaSyA- -->
+
+<?php if ($current_domain == 'http://climateexplorer.habitatseven.work') { ?>
+    <script type="text/javascript"
+            src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBSjujKAutsVyR0GcsfXJvGA-J-54zWT2U&libraries=places">
+    </script>
+<?php } else { ?>
+    <script src="https://maps.googleapis.com/maps/api/js?sensor=false&amp;libraries=places&client=gme-noaa&channel=OAR.CLIMATE_GOV_CLIMATE_EXPLORER2"></script>
+<?php } ?>
+
+
 <script src="<?php $current_domain ?>resources/js/formmapper.js"></script>
 
 <script type="text/javascript" src="<?php $current_domain ?>resources/js/chart.js"></script>
