@@ -3,7 +3,7 @@
 }
 
 
-html{
+html, body {
 	min-width: 800px;
 	margin: 0 auto;
 	background-color:#404952;
@@ -507,6 +507,14 @@ float:left;
 	//overflow-y:auto;
     //overflow-x:hidden;
 }
+
+ #acis-link {
+	 color: white;
+	 font-weight: 700;
+	 float: left;
+	 padding-top: 7px;
+	 padding-left: 10px;
+ }
 
 #multiGrphButtHold{
 	float:right;
