@@ -508,6 +508,14 @@ float:left;
     //overflow-x:hidden;
 }
 
+ #acis-link {
+	 color: white;
+	 font-weight: 700;
+	 float: left;
+	 padding-top: 7px;
+	 padding-left: 10px;
+ }
+
 #multiGrphButtHold{
 	float:right;
 	margin-right:20px;
