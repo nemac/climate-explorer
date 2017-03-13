@@ -200,7 +200,7 @@
       "layerDescription": "National Flood Hazard Layer showing flood risks and regulatory flood determination (displays only when zoomed in to neighborhood-scale views).",
       "legendImage": "legends/legendimages/aan.png"
     }
-  },
+  }, {
     "id": "aao",
     "name": "Drought (9/24/2013)",
     "url": "https://gis.ncdc.noaa.gov/maps/proxy?wms=http://ndmc-001.unl.edu:8080/cgi-bin/mapserv.exe?map=/ms4w/apps/usdm/service/usdm130924_wms.map",

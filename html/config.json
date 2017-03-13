@@ -597,7 +597,7 @@
    }, {
     "id": "abw",
     "name": "BIA Indian Lands",
-    "url": "https://commons.wim.usgs.gov/arcgis/rest/services/AIR_NDGA/AIR_NDGA/MapServer/export",
+    "url": "http://gis.wim.usgs.gov/arcgis/rest/services/AIR_NDGA/AIR_NDGA/MapServer/export",
     "projection": "EPSG:102100",
     "layers": "0",
     "type": "REST",
@@ -610,9 +610,10 @@
    }, {
     "id": "abx",
     "name": "BIA Indian Ceded Lands",
-    "url": "http://commons.wim.usgs.gov/arcgis/services/AIR_NDGA/JudiciallyEstablished1978/MapServer/WMSServer/",
+    "url": "http://gis.wim.usgs.gov/arcgis/rest/services/AIR_NDGA/JudiciallyEstablished1978/MapServer/export",
     "projection": "EPSG:102100",
     "layers": "0",
+    "type": "REST",
     "info": {
       "sourceUrl": "http://catalog.data.gov/dataset/indian-land-areas-judically-established-1978",
       "sourceEntity": "FGDC",
