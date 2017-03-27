@@ -374,9 +374,10 @@ ceui.setPerspective = function(tab) {
 	if (tab === ceui.LAYERS_PERSPECTIVE) {
         $("#layerMultiGrphButtGrp").jqxButtonGroup('setSelection', 0);
 		$("#multiGrphHolder").fadeOut(100, function(){
-			$("#middleRightHolder").animate({width:"430"}, 400, function(){
+      $("#middleLeftHolder").animate({width: $('#middleHolder').width() - 420}, { duration: 400, queue: false } );
+			$("#middleRightHolder").animate({width:"430"}, { duration: 400, queue: false, complete: function(){
 				$("#layersHolder").fadeIn(100);
-			});
+			}});
 		});
         if (ceui._perspectiveSet) {
             ceui._perspectiveSet(ceui.LAYERS_PERSPECTIVE);
@@ -384,9 +385,10 @@ ceui.setPerspective = function(tab) {
 	} else {
         $("#layerMultiGrphButtGrp").jqxButtonGroup('setSelection', 1);
 		$("#layersHolder").fadeOut(100, function(){
-			$("#middleRightHolder").animate({width:"644"}, 400, function(){
+      $("#middleLeftHolder").animate({width: $('#middleHolder').width() - 634}, { duration: 400, queue: false } );
+			$("#middleRightHolder").animate({width:"644"}, { duration: 400, queue: false, complete: function(){
 				$("#multiGrphHolder").fadeIn(100);
-			})
+			}})
 		})
         if (ceui._perspectiveSet) {
             ceui._perspectiveSet(ceui.GRAPHS_PERSPECTIVE);
@@ -489,6 +491,7 @@ ceui.init = function(options) {
 	    return false;
 	});
 
+    $(window).on('resize',function(){$('#middleLeftHolder').width($('#middleHolder').width() - $('#middleRightHolder').width() + 10);});
 // This panel is now handled with CSS
 /*
         // make layer info pane scrollable panel, hide initially, 

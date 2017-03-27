@@ -4,6 +4,7 @@
 
 
 html, body {
+	overflow: hidden;
 	min-width: 800px;
 	margin: 0 auto;
 	background-color:#404952;
@@ -67,6 +68,7 @@ html, body {
 
 #middleLeftHolder{
 	width:100%;
+	width: calc(100% - 420px);
 	background-color:#fff;
 	height:800px;
 	/*border:solid thin #2E87C8;*/
@@ -74,6 +76,18 @@ html, body {
 	position:relative;
 }
 
+.nemac-logo {
+	position: absolute;
+	left: 34px;
+	bottom: 34px;
+	z-index:9999;
+	height: 63px
+}
+.nemac-logo > img {
+	height:63px;
+	-webkit-filter:  drop-shadow(-1px 2px 7px #f1f1f1);
+	filter:         drop-shadow(-1px 2px 7px #f1f1f1);
+}
 /*
 #mapDiv{
 	width:1300px;
@@ -85,7 +99,7 @@ html, body {
 	width:69px; 
 	height:83px; 
 	position:absolute; 
-	left:30px; 
+	right:30px;
 	bottom:30px; 
 	background-color: rgba(255, 255, 255, 0.5);
 	z-index:2000;
