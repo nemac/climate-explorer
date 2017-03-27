@@ -81,12 +81,13 @@ html, body {
 	left: 34px;
 	bottom: 34px;
 	z-index:9999;
-	height: 63px
+	height: 55px;
+	background: rgba(255, 255, 255, 0.5);
+	border-radius: 5px;
+	padding: 10px;
 }
 .nemac-logo > img {
-	height:63px;
-	-webkit-filter:  drop-shadow(-1px 2px 7px #f1f1f1);
-	filter:         drop-shadow(-1px 2px 7px #f1f1f1);
+	height:55px;
 }
 /*
 #mapDiv{
