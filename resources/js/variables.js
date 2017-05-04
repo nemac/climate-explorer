@@ -547,7 +547,7 @@ Variables.prototype.countySelected = function (feature, event) {
             '<span class="source" id="chart-name">' + $('.fs-dropdown-selected').html() + '</span>' +
             '</span>' +
             '<div class="data-accordion-actions">' +
-            '<a href="#" class="how-to-read"><span class="icon icon-help"></span>How to read this</a>' +
+            '<a href="#" class="how-to-read-county"><span class="icon icon-help"></span>How to read this</a>' +
             '<a href="#" class="download-image"><span class="icon icon-download-image"></span>Image</a>' +
             '<a href="#" class="download-data"><span class="icon icon-download-chart"></span>Data</a>' +
             '</div>' +
@@ -582,7 +582,7 @@ Variables.prototype.countySelected = function (feature, event) {
             '</div>' +
             '<div class="range" id="variable-slider">' +
             '<div id="slider-range"></div>' +
-            '<div class="ui-slider-label range-label min" id="range-low">2010</div>' +
+            '<div class="ui-slider-label range-label min" id="range-low">1950</div>' +
             '<div class="ui-slider-label range-label max" id="range-high">2100</div>' +
             '</div>';
         this.popup.show(event.mapBrowserEvent.coordinate, html);
@@ -688,7 +688,9 @@ Variables.prototype.countySelected = function (feature, event) {
           if (dataurls.proj_mod) {
               $ul.append($("<li><a href='" + dataurls.proj_mod + "'>Projected Modeled Data</a></li>"));
           }
-          $('#download-panel').removeClass("hidden");
+            $ul.append($("<li><a href='./downloads/Key-to-Climate-Explorer-Download-Filenames-and-Column-Headings.xlsx'>Information for Interpreting Data</a></li>"));
+
+            $('#download-panel').removeClass("hidden");
           $('#download-panel').show();
 
         });

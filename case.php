@@ -100,6 +100,7 @@ if ($group != 'all' && $group != 'group1' && $group != 'group2' && $group != 'gr
 
     <script type="text/javascript" src="<?php $current_domain ?>resources/js/jquery.min.js"></script>
       <script type="text/javascript" src="<?php $current_domain ?>resources/js/jquery-ui.min.js"></script>
+      <script type="text/javascript" src="<?php $current_domain ?>resources/js/touchpunch.js"></script>
 
     <?php
 

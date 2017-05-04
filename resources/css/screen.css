@@ -8342,7 +8342,7 @@ https://raw.github.com/shagstrom/split-pane/master/LICENSE
     z-index: 3;
   }
 }
-@media screen and (max-width: 800px) {
+@media screen and (max-width: 767px) {
   /* line 800, ../scss/_media.scss */
   body {
     overflow: hidden;

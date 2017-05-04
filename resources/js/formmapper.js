@@ -26,7 +26,7 @@
     },
 
     maxZoom: 16, //The maximum zoom level to zoom in to after a geocoding response. Default: 16
-    types: ['geocode'],  //An array containing one or more of the supported types for the places request. Default: geocode
+    types: ['(regions)'],  //An array containing one or more of the supported types for the places request. Default: geocode
 	//See the full list of options at http://code.google.com/apis/maps/documentation/javascript/places.html#place_search_requests
     blur: false, //triggers on blur event. Default: false
 	dragged: false //default state of marker to determine if map should zoom in steps

@@ -468,8 +468,10 @@ $(document).ready(function() {
       if (dataurls.proj_mod) {
           $ul.append($("<li><a href='"+dataurls.proj_mod+"' class='button display-block border-white hover-bg-white'><span class='icon icon-arrow-down'></span>Projected Modeled Data</a></li>"));
       }
+        $ul.append($("<li><a href='./downloads/Key-to-Climate-Explorer-Download-Filenames-and-Column-Headings.xlsx' class='button display-block border-white hover-bg-white'><span class='icon icon-arrow-down'></span>Information for Interpreting Data</a></li>"));
 
-      $('#download-panel').fadeIn(250);
+
+        $('#download-panel').fadeIn(250);
 
     });
 

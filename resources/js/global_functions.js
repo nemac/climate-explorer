@@ -65,13 +65,13 @@
         var link_href = $(this).attr('href');
         smooth_scroll(link_href, $('#main-header').outerHeight(), 500);
     });
-    
+
     // WINDOW SIZE CLASSES
-    
+
     // on load
-    
+
     $(window).load(function() {
-      
+
       if (window_width() <= 600) {
         $('body').addClass('size-600');
       } else if (window_width() <= 800) {
@@ -83,13 +83,13 @@
       } else {
         $('body').addClass('size-max');
       }
-      
+
     });
-    
+
     // resize
-    
+
     $(window).resize(function() {
-      
+
       if (window_width() <= 600) {
         $('body').removeClass('size-max').removeClass('size-800').removeClass('size-1000').removeClass('size-1200');
         $('body').addClass('size-600');
@@ -106,7 +106,7 @@
         $('body').removeClass('size-600').removeClass('size-800').removeClass('size-1000').removeClass('size-1200');
         $('body').addClass('size-max');
       }
-      
+
     });
 
     // AJAX
@@ -199,9 +199,9 @@
 
       var nav_height = $('#main-header').outerHeight();
       var init_viewport_height = $('#viewport').outerHeight();
-      
+
       //console.log(init_viewport_height);
-      
+
       var default_margin = parseInt($('#viewport').css('margin-top'));
       var new_viewport_margin, new_viewport_height;
 
@@ -223,7 +223,7 @@
 
           var nav_position = parseInt($('#main-header').css('top'));
           var viewport_margin = parseInt($('#viewport').css('margin-top'));
-          
+
           if (y < last_y) {
 
             // scrolling up
@@ -254,23 +254,23 @@
             }
 
           }
-          
+
           new_viewport_height = $(window).height() - 40 - new_viewport_margin;
-          
+
           if (window_width() >= 1000) {
 
             $('#main-header').css('top', new_nav_position + 'px');
             $('#viewport').css('margin-top', new_viewport_margin + 'px');
-            
+
             $('#viewport').css('height', new_viewport_height + 'px');
-  
+
             if ($('#page-nav').hasClass('stuck')) {
               var page_nav_top = new_viewport_margin + 20;
               $('#page-nav').css('top', page_nav_top + 'px');
             }
-  
+
             last_y = y;
-            
+
           }
         } else {
           if (window_width() >= 1000) {
@@ -282,7 +282,7 @@
     }
 
     $(document).nav_scroll();
-    
+
     $(window).resize(function() {
       if ($('body').hasClass('page-type-topic') || $('body').hasClass('page-type-location') || $('body').hasClass('page-type-text')) {
         new_viewport_height = $(window).height() - 40 - parseInt($('#viewport').css('margin-top'));
@@ -396,12 +396,12 @@
         options: 'open'
       });
     });
-    
-    // subnav trigger 
-    
+
+    // subnav trigger
+
     $('#subnav-trigger').click(function(e) {
       e.preventDefault();
-      
+
       if($('body').hasClass('subnav-open')) {
         $('body').removeClass('subnav-open');
         $(this).siblings('ul').fadeOut();
@@ -409,14 +409,14 @@
         $('body').addClass('subnav-open');
         $(this).siblings('ul').fadeIn();
       }
-      
+
     });
-    
+
     // left header trigger
-    
+
     $('#left-header-trigger').click(function(e) {
       e.preventDefault();
-      
+
       if ($('body').hasClass('left-header-closed')) {
         $('body').removeClass('left-header-closed');
         $('#left-header-trigger').removeClass('icon-variables').addClass('icon-close');
@@ -521,7 +521,9 @@
     //
     // --------
 
-    if ($('#page-nav').length) {
+
+      // removed sticky nav
+    /*if ($('#page-nav').length) {
         var sticky = new Waypoint.Sticky({
             element: $('#page-nav')[0],
             context: $("#viewport")
@@ -533,7 +535,7 @@
             var link_href = $(this).attr('href');
             smooth_scroll(link_href, ($('#main-header').outerHeight() + $('#page-nav').outerHeight()), 500);
         });
-    }
+    }*/
 
     var locations = [
       'Seattle'
@@ -579,15 +581,15 @@
         $('.data-accordion-content').each(function () {
             var content_div = $(this);
             var accordion = content_div.parents('.data-accordion');
-            
+
             var width_percent = 0.9;
-            
+
 /*
             if (window_width() <= 800) {
               width_percent = 0.5;
             }
 */
-            
+
             var accordion_width = accordion.width() * width_percent;
 
             content_div.css('width', accordion_width);
@@ -873,6 +875,9 @@
         equalize_left_header();
         accordion_width();
     });
+
+
+    $('.ui-slider-handle').draggable();
 
   });
 }(jQuery));

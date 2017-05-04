@@ -1,9 +1,9 @@
 var App = function (data_base_url) {
   this.data_base_url = data_base_url;
 
-  if(top != self) {
-    window.open(location.href, '_top');
-  }
+  //if(top != self) {
+  //  window.open(location.href, '_top');
+  // }
 
   this.frequency = {
       'temperature-chart': 'annual',

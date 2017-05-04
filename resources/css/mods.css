@@ -378,3 +378,88 @@ input.location-mapper:focus:-ms-input-placeholder {
   max-height: 910px;
   overflow: inherit;
 }
+
+
+
+.download-image {
+  font-size:1.5em;
+}
+
+.download-data {
+  font-size:1.5em;
+}
+
+
+.download-image {
+  font-size:1.5em !important;
+}
+
+.download-data {
+  font-size:1.5em !important;
+}
+
+
+.how-to-read {
+  float: left;
+  position: absolute;
+  left: 102px;
+  display: block;
+  z-index: 10;
+  top: 102px;
+}
+
+.how-to-read-county {
+  float: left;
+  position: absolute;
+  left: 71px;
+  display: block;
+  z-index: 10;
+  top: 79px;
+}
+
+/* iPad Air LandScape */
+@media only screen and (device-width: 768px) {
+
+  .location-data-section .data-accordion .data-accordion-tab.data-map .location-map-legend-container {
+    width: 80px;
+  }
+
+  html {
+    font-size: 60%;
+  }
+  #variable-counties-toggle > label > span {
+    font-size: 60%;f
+  }
+  #variable-time-slider > span > span.icon.icon-arrow-left-right::before {
+    font-size: 2em;
+  }
+  #temperature-map-time-slider > span > span.icon.icon-arrow-left-right {
+    font-size: 1.8em;
+  }
+  .how-to-read {
+    float: right !important;
+    position: absolute !important;
+    top: 25px !important;
+    left: auto !important;
+    right: 230px !important;
+    display: block !important;
+    z-index: 10 !important;
+  }
+
+  .ui-slider-handle {
+    left: 3px;
+    width: 16px;
+    height: 16px;
+    margin: 0 0 -8px -8px;
+    background: #f5442d;
+    -moz-border-radius: 50%;
+    -webkit-border-radius: 50%;
+    border-radius: 50%;
+    outline: none;
+    z-index: 10000000 !important;
+    cursor: pointer;
+  }
+
+}
+
+
