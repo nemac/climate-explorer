@@ -14,7 +14,7 @@ var Location = function(lat, lon, stations_base_url, data_base_url) {
     'derived-map': 'heating_degree_day_18.3'
   };
 
-  this.activeYear = 2010;
+  this.activeYear = 1950;
   this.selectedSeason = 'summer';
 
   this.lat = parseFloat(lat) || 37.42;

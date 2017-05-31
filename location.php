@@ -95,7 +95,7 @@ if (!isValidLongitude($lon)) {
 
         <div id="download-panel" class="hidden download-panel overlay">
             <div class="download-inner">
-                <a href="<?php $current_domain ?>#" id="download-dismiss-button" class="icon icon-close"></a>
+                <a href="javascript:void(0);" id="download-dismiss-button" class="icon icon-close"></a>
                 <p>Use the following links to download this graph's data:</p>
                 <ul></ul>
             </div>
@@ -240,9 +240,9 @@ if (!isValidLongitude($lon)) {
                                 </h4>
 
                                 <div class="data-accordion-actions">
-                                    <a href="#" class="how-to-read"><span class="icon icon-help"></span>How to read this</a>
-                                    <a href="#" id="temp-download-image" class="download-image"><span class="icon icon-download-image"></span>Image</a>
-                                    <a href="#" id="temp-download-data" class="download-data"><span class="icon icon-download-chart"></span>Data</a>
+                                    <a href="javascript:void(0);" class="how-to-read"><span class="icon icon-help"></span>How to read this</a>
+                                    <a href="javascript:void(0);" id="temp-download-image" class="download-image"><span class="icon icon-download-image"></span>Image</a>
+                                    <a href="javascript:void(0);" id="temp-download-data" class="download-data"><span class="icon icon-download-chart"></span>Data</a>
                                 </div>
                             </header>
 
@@ -464,9 +464,9 @@ if (!isValidLongitude($lon)) {
                               </span>
                                 </h4>
                                 <div class="data-accordion-actions">
-                                    <a href="#" class="how-to-read"><span class="icon icon-help"></span>How to read this</a>
-                                    <a href="#" id="download-image-precip" class="download-image"><span class="icon icon-download-image"></span>Image</a>
-                                    <a href="#" id="precip-download-data" class="download-data"><span class="icon icon-download-chart"></span>Data</a>
+                                    <a href="javascript:void(0);" class="how-to-read"><span class="icon icon-help"></span>How to read this</a>
+                                    <a href="javascript:void(0);" id="download-image-precip" class="download-image"><span class="icon icon-download-image"></span>Image</a>
+                                    <a href="javascript:void(0);" id="precip-download-data" class="download-data"><span class="icon icon-download-chart"></span>Data</a>
                                 </div>
                             </header>
 
@@ -692,9 +692,9 @@ if (!isValidLongitude($lon)) {
                                 </h4>
 
                                 <div class="data-accordion-actions">
-                                    <a href="#" class="how-to-read"><span class="icon icon-help"></span>How to read this</a>
-                                    <a href="#" id="download-image-derived" class="download-image"><span class="icon icon-download-image"></span>Image</a>
-                                    <a href="#" id="derived-download-data" class="download-data"><span class="icon icon-download-chart"></span>Data</a>
+                                    <a href="javascript:void(0);" class="how-to-read"><span class="icon icon-help"></span>How to read this</a>
+                                    <a href="javascript:void(0);" id="download-image-derived" class="download-image"><span class="icon icon-download-image"></span>Image</a>
+                                    <a href="javascript:void(0);" id="derived-download-data" class="download-data"><span class="icon icon-download-chart"></span>Data</a>
                                 </div>
                             </header>
 
