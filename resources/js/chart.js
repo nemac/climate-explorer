@@ -144,10 +144,11 @@ ChartBuilder.prototype.getTemperatureValues = function () {
   });
 
   //append ~8 years of normals
-  for (var i = 0; i < 8; i += 4) {
+  var lastnormal=parseInt(merge[merge.length - 1].slice(0,8));
+  for (var i = 3; i < 8; i += 4) {
     $.each(normmin, function (key, value) {
-      var normdate = parseInt(key.slice(0, 4)) + i + key.slice(-4);
-      if (!min.hasOwnProperty(normdate) && normmax.hasOwnProperty(key)) {
+      var normdate = String(parseInt(key.slice(0, 4)) + i) + key.slice(-4);
+      if (parseInt(normdate) > lastnormal && !min.hasOwnProperty(normdate) && normmax.hasOwnProperty(key)) {
         merge.push(normdate + ',,,' + normmax[key] + ',' + value);
       }
     });
@@ -196,11 +197,12 @@ ChartBuilder.prototype.getPrecipitationValues = function () {
   });
 
   //append ~8 years of normals
-  for (var i = 0; i < 8; i += 4) {
+  var lastvalue=parseInt(merge[merge.length - 1].slice(0,8));
+  for (var i = 3; i < 8; i += 4) {
     $.each(normprecip, function (key, value) {
-      key = parseInt(key.slice(0, 4)) + i + key.slice(-4);
-      if (!precip.hasOwnProperty(key)) {
-        merge.push(key + ',' + ',' + value);
+      var normdate = String(parseInt(key.slice(0, 4)) + i) + key.slice(-4);
+      if (parseInt(normdate) > lastvalue && !precip.hasOwnProperty(normdate)) {
+        merge.push(normdate + ',' + ',' + value);
       }
     });
   }
