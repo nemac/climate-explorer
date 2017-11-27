@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <title>High Tide Flooding</title>
+
+    <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+    <script src="https://code.jquery.com/ui/1.12.0/jquery-ui.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.1/Chart.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
+
+    <script src="tidalstationswidget.js"></script>
+
+    <style>
+      .navbar.navbar-default {
+        padding: 0;
+        margin: 0;
+        height: 120px;
+      }
+
+      .navbar.navbar-default .navbar-brand img {
+        height: 100px;
+        width: 300px;
+        padding: 0;
+        margin: 0;
+        left: 0;
+      }
+
+      .navbar.selector {
+        margin-top: 35px;
+
+      }
+
+      .row {
+        margin-left: 0;
+        margin-right: 0;
+      }
+    </style>
+  </head>
+  <body>
+    <nav class="navbar navbar-default">
+      <div class="container-fluid">
+        <div class="navbar-header">
+          <span class="navbar-text">
+            <h1>High Tide Flooding</h1>
+          </span>
+          <ul class="nav navbar-nav navbar-right">
+            <ul>
+              <div class="row">
+                <div class="navbar selector">
+                  <form class="navbar-form pull-right">
+                    <select name="" id="station" class="form-control" style="width: 200px;">
+                      <option value="" disabled selected hidden>Station</option>
+                      <option value="Boston, MA">Boston, MA</option>
+                      <option value="Providence, RI">Providence, RI</option>
+                      <option value="New London">New London, CT</option>
+                      <option value="Montauk, NY">Montauk, NY</option>
+                      <option value="Kings Point, NY">Kings Point, NY</option>
+                      <option value="Battery, NY">Battery, NY</option>
+                      <option value="Sandy Hook, NJ">Sandy Hook, NJ</option>
+                      <option value="Atlantic City, NJ">Atlantic City, NJ</option>
+                      <option value="Philadelphia, PA">Philadelphia, PA</option>
+                      <option value="Lewes, DE">Lewes, DE</option>
+                      <option value="Baltimore, MD">Baltimore, MD</option>
+                      <option value="Annapolis, MD">Annapolis, MD</option>
+                      <option value="Washington D.C.">Washington D.C.</option>
+                      <option value="Sewell Point, VA">Sewell Point, VA</option>
+                      <option value="Wilmington, NC">Wilmington, NC</option>
+                      <option value="Charleston, SC">Charleston, SC</option>
+                      <option value="Fort Pulaski, GA">Fort Pulaski, GA</option>
+                      <option value="Fernandina Beach, FL">Fernandina Beach, FL</option>
+                      <option value="Mayport, FL">Mayport, FL</option>
+                      <option value="Key West, FL">Key West, FL</option>
+                      <option value="St Petersburg, FL">St Petersburg, FL</option>
+                      <option value="Galveston_Bay, TX">Galveston Bay, TX</option>
+                      <option value="Port Isabel, TX">Port Isabel, TX</option>
+                      <option value="La Jolla, CA">La Jolla, CA</option>
+                      <option value="San Francisco, CA">San Francisco, CA</option>
+                      <option value="Seattle, WA">Seattle, WA</option>
+                      <option value="Honolulu, HI">Honolulu, HI</option>
+                    </select>
+                  </form>
+                </div>
+              </div>
+            </ul>
+          </ul>
+        </div>
+      </div>
+    </nav>
+
+    <div class="container-responsive">
+      <div class="row">
+        <div class="col-xs-12">
+          <canvas id="chart-canvas" width="400" height="150" style="responsive: false"></canvas>
+        </div>
+      </div>
+    </div>
+
+    <script>
+      $(document).ready(function () {
+        $( "#chart-canvas" ).tidalstationwidget();
+      });
+
+      $('#station').change(function () {
+        $( "#chart-canvas" ).tidalstationwidget("update", {station: $('#station').val()})
+      });
+
+    </script>
+  </body>
+</html>
