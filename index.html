@@ -92,18 +92,18 @@
     <div class="container-responsive">
       <div class="row">
         <div class="col-xs-12">
-          <canvas id="chart-canvas" width="400" height="150" style="responsive: false"></canvas>
+          <div id="chart" width="400" height="150" style="responsive: false"></div>
         </div>
       </div>
     </div>
 
     <script>
       $(document).ready(function () {
-        $( "#chart-canvas" ).tidalstationwidget();
+        $( "#chart" ).tidalstationwidget();
       });
 
       $('#station').change(function () {
-        $( "#chart-canvas" ).tidalstationwidget("update", {station: $('#station').val()})
+        $( "#chart" ).tidalstationwidget("update", {station: $('#station').val()})
       });
 
     </script>
