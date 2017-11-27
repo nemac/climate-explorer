@@ -24,11 +24,11 @@ This widget displays a timeline of high-tide flooding with historical observatio
 
 3. Initialize the plugin:
 
-	```javascript
+```javascript
   $("#chart").tidalstationwidget({
     data_url: 'tidal_data.json' // defaults to tidal_data.json
   });
-	```
+```
 
 4. Hook ui change events to pass updates to the widget:
 ```javascript
