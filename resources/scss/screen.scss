@@ -875,17 +875,21 @@ h6 {
 .accordion-plain {  
   .ui-accordion-header {
     padding: 8px 0;
-    color: $blue1;
-    line-height: 1.75em;
+    color: $blue2;
+    line-height: 28px;
     
     .ui-accordion-header-icon {
-      font-size: 14px;
+      display: block;
+      float: left;
       width: 30px;
+      height: 30px;
+      font-size: 14px;
+      line-height: 28px;
     }
   }
   
   .accordion-text {
-    padding: 20px 0;
+    padding: 20px 40px;
   }
 }
 
