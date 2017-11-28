@@ -811,6 +811,7 @@ if (!isValidLongitude($lon)) {
                           <li><a href="#stations-charts-about">About</a></li>
                           <li><a href="#stations-charts-temp">Temperature</a></li>
                           <li><a href="#stations-charts-precip">Precipitation</a></li>
+                          <li><a href="#stations-charts-tidal">Tidal Waves</a></li>
                         </ul>
                         
                         <div id="stations-charts-about" class="tabs-plain-tab">
@@ -825,6 +826,10 @@ if (!isValidLongitude($lon)) {
                         
                         <div id="stations-charts-precip" class="tabs-plain-tab">
                           Precipitation charts
+                        </div>
+                        
+                        <div id="stations-charts-tidal" class="tabs-plain-tab">
+                          Tidal wave charts
                         </div>
                       </div>
                     </div>
