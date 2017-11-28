@@ -888,7 +888,12 @@
     // accordion
 
     $('.accordion-plain').accordion({
-      header: 'h4'
+      header: 'h4',
+      icons: {
+        'header': 'icon-arrow-right',
+        'activeHeader': 'icon-arrow-down'
+      },
+      heightStyle: 'content'
     });
 
   });
