@@ -878,6 +878,18 @@
 
 
     $('.ui-slider-handle').draggable();
+    
+    // ----------------
+    //
+    // MISC
+    //
+    // ----------------
+    
+    // accordion
+
+    $('.accordion').accordion({
+      header: 'h4'
+    });
 
   });
 }(jQuery));

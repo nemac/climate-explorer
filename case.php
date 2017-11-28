@@ -121,7 +121,7 @@ if ($group != 'all' && $group != 'group1' && $group != 'group2' && $group != 'gr
       <span class="trigger icon icon-close" id="left-header-trigger"></span>
 
       <ul id="case-menu" class="menu orange-menu">
-        <li class="search-field border" id="search-by-location"><span class="icon icon-search"></span><input type="text" id="formmapper" placeholder="Search by location"></li>
+        <li class="search-field border" id="search-by-location"><span class="icon icon-search"></span><input type="text" id="formmapper" placeholder="Select a location"></li>
       </ul>
 
       <div id="vars-legend" class="legend-wrap left-filler">

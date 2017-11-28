@@ -266,7 +266,7 @@ $topics_content = array(
         <a href="./" id="nav-overlay-home" class="button"><span class="icon icon-arrow-up"></span><span class="text">Home</span></a>
 
         <ul id="nav-cycle-pager">
-            <li><a href="#nav-search"><span class="icon icon-search"></span> Search by location</a></li>
+            <li><a href="#nav-search"><span class="icon icon-search"></span> Select a location</a></li>
             <li><a href="#nav-variables"><span class="icon icon-variables"></span> View by variable</a></li>
             <li><a href="#nav-topics"><span class="icon icon-bubble"></span> View by topic</a></li>
         </ul>
