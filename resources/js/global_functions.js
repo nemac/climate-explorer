@@ -887,7 +887,7 @@
     
     // accordion
 
-    $('.accordion').accordion({
+    $('.accordion-plain').accordion({
       header: 'h4'
     });
 

@@ -860,6 +860,8 @@ h6 {
 
 .ui-accordion {
   .ui-accordion-header {
+    outline: none;
+    
     .ui-accordion-header-icon {
       display: inline-block;
       position: static;
@@ -868,6 +870,10 @@ h6 {
       overflow: visible;
     }
   }
+}
+
+.accordion-text {
+  padding: 20px 0;
 }
 
 // split pane
