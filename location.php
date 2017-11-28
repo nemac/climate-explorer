@@ -806,24 +806,26 @@ if (!isValidLongitude($lon)) {
                     <div id="station-data-about">
                       <h3 class="accent-color"><span class="icon icon-district"></span>Weather Stations</h3>
                       
-                      <ul id="stations-chart-tabs" class="tabs-plain-list">
-                        <li><a href="#stations-charts-about">About</a></li>
-                        <li><a href="#stations-charts-temp">Temperature</a></li>
-                        <li><a href="#stations-charts-precip">Precipitation</a></li>
-                      </ul>
-                      
-                      <div id="stations-charts-about" class="tabs-plain-tab">
-                        <p>Dots on the map show weather stations in the Global Historical Climatology Network-Daily (GHCN-D) database.</p>
-                        <p>Click any dot to view zoomable graphs of observed daily temperature and precipitation compared to 1981-2010 Climate Normals.</p>
-                        <p>Scroll or click and drag to adjust the graph display.</p>
-                      </div>
-                      
-                      <div id="stations-charts-temp" class="tabs-plain-tab">
-                        Temperature charts
-                      </div>
-                      
-                      <div id="stations-charts-precip" class="tabs-plain-tab">
-                        Precipitation charts
+                      <div id="station-charts-tabs" class="tabs-plain">
+                        <ul id="stations-charts-list" class="tabs-plain-list">
+                          <li><a href="#stations-charts-about">About</a></li>
+                          <li><a href="#stations-charts-temp">Temperature</a></li>
+                          <li><a href="#stations-charts-precip">Precipitation</a></li>
+                        </ul>
+                        
+                        <div id="stations-charts-about" class="tabs-plain-tab">
+                          <p>Dots on the map show weather stations in the Global Historical Climatology Network-Daily (GHCN-D) database.</p>
+                          <p>Click any dot to view zoomable graphs of observed daily temperature and precipitation compared to 1981-2010 Climate Normals.</p>
+                          <p>Scroll or click and drag to adjust the graph display.</p>
+                        </div>
+                        
+                        <div id="stations-charts-temp" class="tabs-plain-tab">
+                          Temperature charts
+                        </div>
+                        
+                        <div id="stations-charts-precip" class="tabs-plain-tab">
+                          Precipitation charts
+                        </div>
                       </div>
                     </div>
                     

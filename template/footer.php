@@ -18,7 +18,7 @@
 <script type="text/javascript" src="<?php $current_domain ?>resources/js/formstone/dropdown.js"></script>
 <script type="text/javascript" src="<?php $current_domain ?>resources/js/formstone/equalize.js"></script>
 <script type="text/javascript" src="<?php $current_domain ?>resources/js/formstone/swap.js"></script>
-<script type="text/javascript" src="<?php $current_domain ?>resources/js/formstone/tabs.js"></script>
+<!-- <script type="text/javascript" src="<?php $current_domain ?>resources/js/formstone/tabs.js"></script> -->
 
 <script type="text/javascript" src="<?php $current_domain ?>resources/js/lc_switch.min.js"></script>
 <script type="text/javascript" src="<?php $current_domain ?>resources/js/jquery.cycle2.min.js"></script>

@@ -885,7 +885,7 @@
     //
     // ----------------
     
-    // accordion
+    // UI accordion
 
     $('.accordion-plain').accordion({
       collapsible: true,
@@ -897,7 +897,9 @@
       heightStyle: 'content'
     });
     
-    $('.tabs-plain-list').tabs({
+    // UI tabs
+    
+    $('.tabs-plain').tabs({
       
     });
 

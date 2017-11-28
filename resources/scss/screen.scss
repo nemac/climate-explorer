@@ -893,6 +893,19 @@ h6 {
   }
 }
 
+.tabs-plain {
+  .tabs-plain-list {
+    li {
+      display: inline-block;
+      
+      a {
+        display: block;
+        padding: 8px 10px;
+      }
+    }
+  }
+}
+
 // split pane
 
 @import "plugins/split-pane";
