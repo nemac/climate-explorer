@@ -44,7 +44,7 @@ $lockdown = 1;
 
         <section id="standard-splash" class="page-splash">
             <div class="splash-text">
-                <h1>Definitions & FAQ</h1>
+                <h1>Definitions</h1>
             </div>
         </section>
 
