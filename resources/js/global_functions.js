@@ -896,6 +896,10 @@
       },
       heightStyle: 'content'
     });
+    
+    $('.tabs-plain-list').tabs({
+      
+    });
 
   });
 }(jQuery));
