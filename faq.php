@@ -164,6 +164,8 @@ $lockdown = 1;
           </div>
           
           <h4>Which RCP should I use?  Which is most likely to occur?</h4>
+          
+          <div class="accordion-text">
             <p>According to the Intergovernmental Panel on Climate Change, the representative concentration pathways (RCP) scenarios should not be considered policy-prescriptive because they were developed to support scientific research on various possible climate change futures, without making any judgment as to their desirability or probability. </p>
   
             <p>These scenarios reflect choices individuals and society will make over coming decades, so there is uncertainty regarding the actual year-to-year change in greenhouse gases. RCPs are not considered to be forecasts, nor do they represent absolute bounds on the realm of possibility.  While they all represent plausible scenarios for the future, none of the RCPs are intended to serve as predictions, best guesses, most likely, or more plausible pathways than the others.</p>
