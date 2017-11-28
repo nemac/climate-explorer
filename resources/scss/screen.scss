@@ -872,9 +872,7 @@ h6 {
   }
 }
 
-.accordion-text {
-  padding: 20px 0;
-  
+.accordion-plain {  
   .ui-accordion-header {
     padding: 8px 0;
     color: $blue1;
@@ -884,6 +882,10 @@ h6 {
       font-size: 14px;
       width: 30px;
     }
+  }
+  
+  .accordion-text {
+    padding: 20px 0;
   }
 }
 

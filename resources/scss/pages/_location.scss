@@ -888,6 +888,14 @@
     }
   }
   
+  .data-list {
+    width: 69%;
+  }
+  
+  .data-accordion-wrap {
+    width: 30%;
+  }
+  
   #location-station-map {
     @include full-size;
     

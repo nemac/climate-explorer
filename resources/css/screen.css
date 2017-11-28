@@ -5755,6 +5755,14 @@ body.detail-open #nav-overlay {
   margin: 0 0 2% 0;
 }
 /* line 891, ../scss/pages/_location.scss */
+#location-stations .data-list {
+  width: 69%;
+}
+/* line 895, ../scss/pages/_location.scss */
+#location-stations .data-accordion-wrap {
+  width: 30%;
+}
+/* line 899, ../scss/pages/_location.scss */
 #location-stations #location-station-map {
   position: absolute;
   top: 0;
@@ -5762,11 +5770,11 @@ body.detail-open #nav-overlay {
   width: 100%;
   height: 100%;
 }
-/* line 894, ../scss/pages/_location.scss */
+/* line 902, ../scss/pages/_location.scss */
 #location-stations #location-station-map .ol-attribution, #location-stations #location-station-map .ol-rotate {
   display: none;
 }
-/* line 898, ../scss/pages/_location.scss */
+/* line 906, ../scss/pages/_location.scss */
 #location-stations #location-station-map .ol-zoom {
   position: absolute;
   z-index: 1;
@@ -5777,7 +5785,7 @@ body.detail-open #nav-overlay {
   -webkit-transform: translateY(-50%);
   transform: translateY(-50%);
 }
-/* line 905, ../scss/pages/_location.scss */
+/* line 913, ../scss/pages/_location.scss */
 #location-stations #location-station-map .ol-zoom button {
   display: block;
   width: 30px;
@@ -7425,20 +7433,20 @@ body.detail-open #nav-overlay {
   overflow: visible;
 }
 
-/* line 875, ../scss/screen.scss */
-.accordion-text {
-  padding: 20px 0;
-}
-/* line 878, ../scss/screen.scss */
-.accordion-text .ui-accordion-header {
+/* line 876, ../scss/screen.scss */
+.accordion-plain .ui-accordion-header {
   padding: 8px 0;
   color: #0058cf;
   line-height: 1.75em;
 }
-/* line 883, ../scss/screen.scss */
-.accordion-text .ui-accordion-header .ui-accordion-header-icon {
+/* line 881, ../scss/screen.scss */
+.accordion-plain .ui-accordion-header .ui-accordion-header-icon {
   font-size: 14px;
   width: 30px;
+}
+/* line 887, ../scss/screen.scss */
+.accordion-plain .accordion-text {
+  padding: 20px 0;
 }
 
 /*!
@@ -7574,13 +7582,13 @@ https://raw.github.com/shagstrom/split-pane/master/LICENSE
   cursor: row-resize;
 }
 
-/* line 894, ../scss/screen.scss */
+/* line 896, ../scss/screen.scss */
 .pretty-split-pane-frame .split-pane > .split-pane-divider.dragged.touch {
   background: blue;
   opacity: 0.25;
 }
 
-/* line 899, ../scss/screen.scss */
+/* line 901, ../scss/screen.scss */
 .split-pane-divider {
   right: 50%;
   width: 12px;
@@ -7590,7 +7598,7 @@ https://raw.github.com/shagstrom/split-pane/master/LICENSE
   box-shadow: 0 0 10px rgba(35, 58, 112, 0.25);
 }
 
-/* line 906, ../scss/screen.scss */
+/* line 908, ../scss/screen.scss */
 .pane-content {
   position: absolute;
   top: 0;
@@ -7600,13 +7608,13 @@ https://raw.github.com/shagstrom/split-pane/master/LICENSE
   overflow: auto;
 }
 
-/* line 911, ../scss/screen.scss */
+/* line 913, ../scss/screen.scss */
 #pane-left {
   right: 50%;
   margin-right: 12px;
 }
 
-/* line 916, ../scss/screen.scss */
+/* line 918, ../scss/screen.scss */
 #pane-right {
   width: 50%;
 }
