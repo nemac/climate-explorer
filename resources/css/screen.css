@@ -7429,6 +7429,17 @@ body.detail-open #nav-overlay {
 .accordion-text {
   padding: 20px 0;
 }
+/* line 878, ../scss/screen.scss */
+.accordion-text .ui-accordion-header {
+  padding: 8px 0;
+  color: #0058cf;
+  line-height: 1.75em;
+}
+/* line 883, ../scss/screen.scss */
+.accordion-text .ui-accordion-header .ui-accordion-header-icon {
+  font-size: 14px;
+  width: 30px;
+}
 
 /*!
 
@@ -7563,13 +7574,13 @@ https://raw.github.com/shagstrom/split-pane/master/LICENSE
   cursor: row-resize;
 }
 
-/* line 883, ../scss/screen.scss */
+/* line 894, ../scss/screen.scss */
 .pretty-split-pane-frame .split-pane > .split-pane-divider.dragged.touch {
   background: blue;
   opacity: 0.25;
 }
 
-/* line 888, ../scss/screen.scss */
+/* line 899, ../scss/screen.scss */
 .split-pane-divider {
   right: 50%;
   width: 12px;
@@ -7579,7 +7590,7 @@ https://raw.github.com/shagstrom/split-pane/master/LICENSE
   box-shadow: 0 0 10px rgba(35, 58, 112, 0.25);
 }
 
-/* line 895, ../scss/screen.scss */
+/* line 906, ../scss/screen.scss */
 .pane-content {
   position: absolute;
   top: 0;
@@ -7589,13 +7600,13 @@ https://raw.github.com/shagstrom/split-pane/master/LICENSE
   overflow: auto;
 }
 
-/* line 900, ../scss/screen.scss */
+/* line 911, ../scss/screen.scss */
 #pane-left {
   right: 50%;
   margin-right: 12px;
 }
 
-/* line 905, ../scss/screen.scss */
+/* line 916, ../scss/screen.scss */
 #pane-right {
   width: 50%;
 }

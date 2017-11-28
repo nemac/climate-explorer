@@ -874,6 +874,17 @@ h6 {
 
 .accordion-text {
   padding: 20px 0;
+  
+  .ui-accordion-header {
+    padding: 8px 0;
+    color: $blue1;
+    line-height: 1.75em;
+    
+    .ui-accordion-header-icon {
+      font-size: 14px;
+      width: 30px;
+    }
+  }
 }
 
 // split pane

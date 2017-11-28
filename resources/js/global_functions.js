@@ -888,6 +888,7 @@
     // accordion
 
     $('.accordion-plain').accordion({
+      collapsible: true,
       header: 'h4',
       icons: {
         'header': 'icon-arrow-right',
