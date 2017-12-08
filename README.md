@@ -14,21 +14,22 @@ This widget displays a timeline of high-tide flooding with historical observatio
 <script src="tidalstationswidget.js"></script>
 ```
 
-2. Define a div for the chart to deploy into:
+2. Define a chart element for the widget to deploy into:
 
 ```html
-<div id="chart"></div>
+<canvas id="chart"></chart>
 ```
 
 3. Initialize the plugin:
 
 ```javascript
 $("#chart").tidalstationwidget({
+  station: '8665530',
   data_url: 'tidal_data.json' // defaults to tidal_data.json
 });
 ```
 
 4. Hook ui change events to pass updates to the widget:
 ```javascript
-$( "#chart" ).tidalstationwidget("update", {station: station}) // presumably from a map interface, using the "station" key on the stations file
+$( "#chart" ).tidalstationwidget("update", {station: 'station'}) // presumably from a map interface, using the `id` value from `tidal_stations.json`
 ```

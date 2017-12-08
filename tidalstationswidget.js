@@ -5,14 +5,12 @@
         throw new Error("jQuery Widget not found.");
 
     }
-    if (document.getElementById("myChart") === 'null'){
-        throw new Error("Charting element not found.");
-    }
 
     else{
     $.widget("nemac.tidalstationwidget", {
         options: {
-            station:''
+            station:'',
+          data_url: ''
         },
         data: {},
         _create: function (options) {
@@ -63,7 +61,7 @@
 
             // compose chart
             var ctx = this.element[0].getContext('2d');
-            var myChart = new Chart(ctx, {
+            this.chart = new Chart(ctx, {
                 type: 'bar',
                 data: {
                     labels: labels,
