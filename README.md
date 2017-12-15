@@ -25,7 +25,8 @@ This widget displays a timeline of high-tide flooding with historical observatio
 ```javascript
 $("#chart").tidalstationwidget({
   station: '8665530',
-  data_url: 'tidal_data.json' // defaults to tidal_data.json
+  data_url: 'tidal_data.json', // defaults to tidal_data.json
+  responsive: true // set to false to disable ChartJS responsive sizing.
 });
 ```
 
