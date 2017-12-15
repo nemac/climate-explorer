@@ -17,7 +17,7 @@ This widget displays a timeline of high-tide flooding with historical observatio
 2. Define a chart element for the widget to deploy into:
 
 ```html
-<canvas id="chart"></chart>
+<canvas id="chart"></canvas>
 ```
 
 3. Initialize the plugin:
