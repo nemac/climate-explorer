@@ -1254,7 +1254,7 @@
             obj.m.render();
         };
 
-        obj.downloadImage = function(link, filename) {
+        obj.download_image = function(link, filename) {
           link.href = obj.$graphdiv.find('canvas')[0].toDataURL('image/png');
           link.download = filename;
         }

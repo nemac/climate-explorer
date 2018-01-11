@@ -160,6 +160,8 @@ $(document).ready(function() {
       });
     });
     $('#precip-variable').change(function() {
+        console.log("PRECIP CHANGE");
+        console.log($('#precip-variable').val());
       precipChart.update({
         variable: $('#precip-variable').val()
       });
@@ -280,8 +282,13 @@ $(document).ready(function() {
       //$(this).closest('li').addClass('active accent-border');
 
       var val = $(this).children('a');
-      $('#temp-chart-name').html( val.context.innerText );
-      $('#temp-map-name').html( val.context.innerText );
+
+
+        console.log('val');
+        console.log(val);
+
+      $('#temp-chart-name').html('asdf');
+      $('#temp-map-name').html('asdf');
 
       var id = $(this).attr('id').replace('var-', '');
       $('#frequency').val('annual').change();
@@ -294,8 +301,8 @@ $(document).ready(function() {
       //$(this).closest('li').addClass('active accent-border');
 
       var val = $(this).children('a');
-      $('#precip-chart-name').html( val.context.innerText );
-      $('#precip-map-name').html( val.context.innerText );
+      $('#precip-chart-name').html('asdf');
+      $('#precip-map-name').html('asdf');
 
       var id = $(this).attr('id').replace('var-', '');
       $('#precip-frequency').val('annual').change();
@@ -308,8 +315,8 @@ $(document).ready(function() {
       //$(this).closest('li').addClass('active accent-border');
 
       var val = $(this).children('a');
-      $('#derived-chart-name').html( val.context.innerText );
-      $('#derived-map-name').html( val.context.innerText );
+      $('#derived-chart-name').html('asdf');
+      $('#derived-map-name').html('asdf');
 
       var id = $(this).attr('id').replace('var-', '');
       $('#derived-frequency').val('annual').change();
@@ -453,25 +460,30 @@ $(document).ready(function() {
     });
 
     $('.download-data').click(function(e) {
+
+
+        $('#download-panel').removeClass("hidden");
+
+        $('#download-panel').fadeIn(250);
+
       var id = $(e.target).attr('id');
       var c = ( id === 'temp-download-data' ) ? cwg : precipChart;
       if ( id === 'derived-download-data' ) { c = derivedChart; }
-      var $ul = $('#download-panel').find('ul');
-      $ul.empty();
-      var dataurls = c.dataurls();
-      if (dataurls.hist_obs) {
-          $ul.append($("<li><a href='"+dataurls.hist_obs+"' class='button display-block border-white hover-bg-white'><span class='icon icon-arrow-down'></span>Observed Data</a></li>"));
-      }
-      if (dataurls.hist_mod) {
-          $ul.append($("<li><a href='"+dataurls.hist_mod+"' class='button display-block border-white hover-bg-white'><span class='icon icon-arrow-down'></span>Historical Modeled Data</a></li>"));
-      }
-      if (dataurls.proj_mod) {
-          $ul.append($("<li><a href='"+dataurls.proj_mod+"' class='button display-block border-white hover-bg-white'><span class='icon icon-arrow-down'></span>Projected Modeled Data</a></li>"));
-      }
-        $ul.append($("<li><a href='./downloads/Key-to-Climate-Explorer-Download-Filenames-and-Column-Headings.xlsx' class='button display-block border-white hover-bg-white'><span class='icon icon-arrow-down'></span>Information for Interpreting Data</a></li>"));
+      //var $ul = $('#download-panel').find('ul');
+      //$ul.empty();
+//      var dataurls = cwg.dataurls();
+//      if (dataurls.hist_obs) {
+//          $ul.append($("<li><a href='"+dataurls.hist_obs+"' class='button display-block border-white hover-bg-white'><span class='icon icon-arrow-down'></span>Observed Data</a></li>"));
+//      }
+//      if (dataurls.hist_mod) {
+//          $ul.append($("<li><a href='"+dataurls.hist_mod+"' class='button display-block border-white hover-bg-white'><span class='icon icon-arrow-down'></span>Historical Modeled Data</a></li>"));
+//      }
+//      if (dataurls.proj_mod) {
+//          $ul.append($("<li><a href='"+dataurls.proj_mod+"' class='button display-block border-white hover-bg-white'><span class='icon icon-arrow-down'></span>Projected Modeled Data</a></li>"));
+//      }
+//        $ul.append($("<li><a href='./downloads/Key-to-Climate-Explorer-Download-Filenames-and-Column-Headings.xlsx' class='button display-block border-white hover-bg-white'><span class='icon icon-arrow-down'></span>Information for Interpreting Data</a></li>"));
 
 
-        $('#download-panel').fadeIn(250);
 
     });
 
@@ -481,15 +493,15 @@ $(document).ready(function() {
 
     // download hook
     $('#download-image-link-temp').click(function() {
-      cwg.downloadImage(this, 'graph.png');
+      cwg.download_image(this, 'graph.png');
     });
 
     $('#download-image-link-precip').click(function() {
-      precipChart.downloadImage(this, 'graph.png');
+      precipChart.download_image(this, 'graph.png');
     });
 
     $('#download-image-link-derived').click(function() {
-      derivedChart.downloadImage(this, 'graph.png');
+      derivedChart.download_image(this, 'graph.png');
     });
 
     $("#slider-range").slider({
@@ -528,6 +540,23 @@ $(document).ready(function() {
         }
     });
 
+
+    $('#download_hist_obs_data').click(function () {
+        if (cwg) {
+            cwg.download_hist_obs_data(this)
+        }
+    });
+    $('#download_hist_mod_data').click(function () {
+        if (cwg) {
+            cwg.download_hist_mod_data(this)
+        }
+    });
+    $('#download_proj_mod_data').click(function () {
+        if (cwg) {
+            cwg.download_proj_mod_data(this)
+        }
+    });
+
     // This function will be called whenever the user changes the x-scale in the graph.
     function xrangeset(min,max) {
         // Force the slider thumbs to adjust to the appropriate place
@@ -545,12 +574,12 @@ $(document).ready(function() {
 
 
     cwg = climate_widget.graph({
-        'div'           :  "#chart-123",
+        'div'           :  "div#chart-123",
         'dataprefix'    : '/climate-explorer2-data/data',
         'font'          : 'Roboto',
         'frequency'     : $('#frequency').val(),
         'timeperiod'    : $('#timeperiod').val(),
-        'fips'          : $('#county').val(),
+        'county'          : $('#county').val(),
         'variable'      : $('#variable').val(),
         'scenario'      : $('#scenario').val(),
         'presentation'  : $('#presentation').val(),
@@ -565,7 +594,7 @@ $(document).ready(function() {
         'font'          : 'Roboto',
         'frequency'     : $('#precip-frequency').val(),
         'timeperiod'    : $('#precip-timeperiod').val(),
-        'fips'          : $('#precip-county').val(),
+        'county'          : $('#precip-county').val(),
         'variable'      : $('#precip-variable').val(),
         'scenario'      : $('#precip-scenario').val(),
         'presentation'  : $('#precip-presentation').val(),
@@ -580,7 +609,7 @@ $(document).ready(function() {
         'font'          : 'Roboto',
         'frequency'     : $('#derived-frequency').val(),
         'timeperiod'    : $('#derived-timeperiod').val(),
-        'fips'          : $('#derived-county').val(),
+        'county'          : $('#derived-county').val(),
         'variable'      : $('#derived-variable').val(),
         'scenario'      : $('#derived-scenario').val(),
         'presentation'  : $('#derived-presentation').val(),

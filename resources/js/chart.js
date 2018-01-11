@@ -16,7 +16,8 @@ ChartBuilder.prototype.getData = function (callback) {
     var self = this;
 
     //console.log('this.props', this.props);
-    var id = this.props.station.split(':')[1];
+    //var id = this.props.station.split(':')[1];
+    var id = this.props.station;
     var year = new Date().getFullYear();
     this.records = {
         'temp': {
@@ -77,6 +78,8 @@ ChartBuilder.prototype.getData = function (callback) {
 
     var i = 0;
     $.each(this.records, function (key, record) {
+        console.log(record.url);
+
         $.ajax({
             url: record.url,
             type: "POST",
@@ -98,12 +101,20 @@ ChartBuilder.prototype.getData = function (callback) {
 ChartBuilder.prototype.buildChart = function () {
     var temps = this.getTemperatureValues();
     var tmpl = this.getTemplate('temperature', temps);
+
+    $('#multi-chart').remove();
+    $('#multi-chart-container').append('<div id="multi-chart" style="width:100%; height:300px"></div>');
     $('#multi-chart').multigraph({'muglString': tmpl});
+
 
 
     var precip = this.getPrecipitationValues();
     //console.log('precip', precip);
     var precipTmpl = this.getTemplate('precipitation', precip);
+
+    $('#multi-precip-chart').remove();
+    $('#multi-precip-chart-container').append('<div id="multi-precip-chart" style="width:100%; height:300px"></div>');
+
     $('#multi-precip-chart').multigraph({'muglString': precipTmpl});
 };
 
@@ -132,80 +143,80 @@ ChartBuilder.prototype.getTemperatureValues = function () {
         normmin[a[0].replace(/-/g, '')] = a[2];
     });
 
-  var year = new Date().getFullYear();
-  var merge = [];
-  $.each(max, function (key, value) {
-    if (key !== "" && min.hasOwnProperty(key)) {
-      var normdate = String(year - ((year - parseInt(key.slice(0, 4))) % 4)) + key.slice(-4);
-      if (normmax.hasOwnProperty(normdate) && normmin.hasOwnProperty(normdate)) {
-        merge.push(key + ',' + value + ',' + min[key] + ',' + normmax[normdate] + ',' + normmin[normdate]);
-      }
-    }
-  });
-
-  //append ~8 years of normals
-  var lastnormal=parseInt(merge[merge.length - 1].slice(0,8));
-  for (var i = 3; i < 8; i += 4) {
-    $.each(normmin, function (key, value) {
-      var normdate = String(parseInt(key.slice(0, 4)) + i) + key.slice(-4);
-      if (parseInt(normdate) > lastnormal && !min.hasOwnProperty(normdate) && normmax.hasOwnProperty(key)) {
-        merge.push(normdate + ',,,' + normmax[key] + ',' + value);
-      }
+    var year = new Date().getFullYear();
+    var merge = [];
+    $.each(max, function (key, value) {
+        if (key !== "" && min.hasOwnProperty(key)) {
+            var normdate = String(year - ((year - parseInt(key.slice(0, 4))) % 4)) + key.slice(-4);
+            if (normmax.hasOwnProperty(normdate) && normmin.hasOwnProperty(normdate)) {
+                merge.push(key + ',' + value + ',' + min[key] + ',' + normmax[normdate] + ',' + normmin[normdate]);
+            }
+        }
     });
-  }
+
+    //append ~8 years of normals
+    var lastnormal=parseInt(merge[merge.length - 1].slice(0,8));
+    for (var i = 3; i < 8; i += 4) {
+        $.each(normmin, function (key, value) {
+            var normdate = String(parseInt(key.slice(0, 4)) + i) + key.slice(-4);
+            if (parseInt(normdate) > lastnormal && !min.hasOwnProperty(normdate) && normmax.hasOwnProperty(key)) {
+                merge.push(normdate + ',,,' + normmax[key] + ',' + value);
+            }
+        });
+    }
 
     return merge.join('\n');
 };
 
 ChartBuilder.prototype.getPrecipitationValues = function () {
-  var precip = {};
-  $.each(this.records.precip_ytd.data, function (i, a) {
-    //discard missing values, zero Jan 1 if missing.
-    if (a.indexOf('M') !== -1) {
-      if (String(a[0].slice(-5)) === '01-01') {
-        a[1] = '0'
-      }
-      else {
-        return;
-      }
-    }
-    precip[a[0].replace(/-/g, '')] = a[1];
-  });
-  var normprecip = {};
-  $.each(this.records.precip_ytd_normal.data, function (i, a) {
-    //discard missing values, zero Jan 1 if missing.
-    if (a.indexOf('M') !== -1 || a.indexOf('T') !== -1) {
-      if (String(a[0].slice(-5)) === '01-01') {
-        a[1] = '0'
-      }
-      else {
-        return;
-      }
-    }
-    normprecip[a[0].replace(/-/g, '')] = a[1];
-  });
-  var year = new Date().getFullYear();
-  var merge = [];
-  $.each(precip, function (key, value) {
-    if (key !== "") {
-      //Get the normal for this date from the 4Y normals cycle.
-      var normdate = (year - ((year - parseInt(key.slice(0, 4))) % 4)) + key.slice(-4);
-      if (normprecip.hasOwnProperty(normdate)) {
-        merge.push(key + ',' + value + ',' + normprecip[normdate]);
-      }
-    }
-  });
-
-  //append ~8 years of normals
-  var lastvalue=parseInt(merge[merge.length - 1].slice(0,8));
-  for (var i = 3; i < 8; i += 4) {
-    $.each(normprecip, function (key, value) {
-      var normdate = String(parseInt(key.slice(0, 4)) + i) + key.slice(-4);
-      if (parseInt(normdate) > lastvalue && !precip.hasOwnProperty(normdate)) {
-        merge.push(normdate + ',' + ',' + value);
-      }
+    var precip = {};
+    $.each(this.records.precip_ytd.data, function (i, a) {
+        //discard missing values, zero Jan 1 if missing.
+        if (a.indexOf('M') !== -1) {
+            if (String(a[0].slice(-5)) === '01-01') {
+                a[1] = '0'
+            }
+            else {
+                return;
+            }
+        }
+        precip[a[0].replace(/-/g, '')] = a[1];
     });
-  }
+    var normprecip = {};
+    $.each(this.records.precip_ytd_normal.data, function (i, a) {
+        //discard missing values, zero Jan 1 if missing.
+        if (a.indexOf('M') !== -1 || a.indexOf('T') !== -1) {
+            if (String(a[0].slice(-5)) === '01-01') {
+                a[1] = '0'
+            }
+            else {
+                return;
+            }
+        }
+        normprecip[a[0].replace(/-/g, '')] = a[1];
+    });
+    var year = new Date().getFullYear();
+    var merge = [];
+    $.each(precip, function (key, value) {
+        if (key !== "") {
+            //Get the normal for this date from the 4Y normals cycle.
+            var normdate = (year - ((year - parseInt(key.slice(0, 4))) % 4)) + key.slice(-4);
+            if (normprecip.hasOwnProperty(normdate)) {
+                merge.push(key + ',' + value + ',' + normprecip[normdate]);
+            }
+        }
+    });
+
+    //append ~8 years of normals
+    var lastvalue=parseInt(merge[merge.length - 1].slice(0,8));
+    for (var i = 3; i < 8; i += 4) {
+        $.each(normprecip, function (key, value) {
+            var normdate = String(parseInt(key.slice(0, 4)) + i) + key.slice(-4);
+            if (parseInt(normdate) > lastvalue && !precip.hasOwnProperty(normdate)) {
+                merge.push(normdate + ',' + ',' + value);
+            }
+        });
+    }
 
     return merge.join('\n');
 };

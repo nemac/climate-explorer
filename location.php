@@ -56,6 +56,13 @@ if (!isValidLongitude($lon)) {
 
     ?>
 
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js" integrity="sha256-KM512VNnjElC30ehFwehXjx1YCHPiQkOPmqnrWtpccM=" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.1/Chart.bundle.min.js" integrity="sha256-N4u5BjTLNwmGul6RgLoESPNqDFVUibVuOYhP4gJgrew=" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/lodash.js/4.17.4/lodash.min.js" integrity="sha256-8E6QUcFg1KTnpEU8TFGhpTGHw5fJqB9vCms3OhAYLqw=" crossorigin="anonymous"></script>
+
+    <script src="resources/item/jquery.fl-item.min.js"></script>
+    <link rel="stylesheet" href="resources/item/fl-item.css" />
 </head>
 
 <body id="page-location-<?php echo $fips; ?>" class="page-type-location">
@@ -93,11 +100,16 @@ if (!isValidLongitude($lon)) {
 
         <!-- begin temperature chart and map -->
 
-        <div id="download-panel" class="hidden download-panel overlay">
+        <div id="download-panel" class="hidden download-panel overlay" style="position:absolute">
             <div class="download-inner">
                 <a href="javascript:void(0);" id="download-dismiss-button" class="icon icon-close"></a>
                 <p>Use the following links to download this graph's data:</p>
-                <ul></ul>
+                <ul>
+                    <li><a href="javascript:void(0);" id="download_hist_obs_data" class='button display-block border-white hover-bg-white'><span class='icon icon-arrow-down'></span>Observed Data</a></li>
+                    <li id="download_hist_mod_data_li"><a href="javascript:void(0);" id="download_hist_mod_data" class='button display-block border-white hover-bg-white'><span class='icon icon-arrow-down'></span>Historical Modeled Data</a></li>
+                    <li><a href="javascript:void(0);" id="download_proj_mod_data" class='button display-block border-white hover-bg-white'><span class='icon icon-arrow-down'></span>Projected Modeled Data</a></li>
+                </ul>
+
             </div>
         </div>
 
@@ -111,7 +123,7 @@ if (!isValidLongitude($lon)) {
 
                     <ul class="data-options">
                         <li class="active accent-border">
-                            <h4 id="var-tasmax"><a href="<?php $current_domain ?>#" class="text">Mean Daily Maximum Temperature</a><a href="<?php $current_domain ?>#detail-tasmax" class="icon icon-help nav-detail-link"></a></h4>
+                            <h4 id="var-tmax"><a href="<?php $current_domain ?>#" class="text">Mean Daily Maximum Temperature</a><a href="<?php $current_domain ?>#detail-tasmax" class="icon icon-help nav-detail-link"></a></h4>
                             <ul class="location-resolution">
                                 <li class="active accent-border"><a class="accent-color">Annual</a></li>
                                 <li class="seasonal-monthly"><a>Monthly</a></li>
@@ -120,7 +132,7 @@ if (!isValidLongitude($lon)) {
                         </li>
 
                         <li class="">
-                            <h4 id="var-tasmin"><a href="<?php $current_domain ?>#" class="text">Mean Daily Minimum Temperature</a><a href="<?php $current_domain ?>#detail-tasmin" class="icon icon-help nav-detail-link"></a></h4>
+                            <h4 id="var-tmin"><a href="<?php $current_domain ?>#" class="text">Mean Daily Minimum Temperature</a><a href="<?php $current_domain ?>#detail-tasmin" class="icon icon-help nav-detail-link"></a></h4>
                             <ul class="location-resolution">
                                 <li><a>Annual</a></li>
                                 <li class="seasonal-monthly"><a>Monthly</a></li>
@@ -128,16 +140,65 @@ if (!isValidLongitude($lon)) {
                             </ul>
                         </li>
 
+
+
                         <li class="">
-                            <h4 id="var-days_tmax_abv_35.0"><a href="<?php $current_domain ?>#" class="text">Days with Maximum Above 95&deg;F</a><a href="<?php $current_domain ?>#detail-days_tmax_abv_35" class="icon icon-help nav-detail-link"></a></h4>
+                            <h4 id="var-days_tmax_gt_90f"><a href="<?php $current_domain ?>#" class="text">Count of Days with Maximum Temperature Over 90&deg;F (days)</a><a href="<?php $current_domain ?>#detail-days_tmax_gt_90f" class="icon icon-help nav-detail-link"></a></h4>
+                            <ul class="location-resolution">
+                                <li><a>Annual</a></li>
+                            </ul>
+                        </li>
+
+
+
+                        <li class="">
+                            <h4 id="var-days_tmax_gt_95f"><a href="<?php $current_domain ?>#" class="text">Count of Days with Maximum Temperature Over 95&deg;F (days)</a><a href="<?php $current_domain ?>#detail-days_tmax_gt_95f" class="icon icon-help nav-detail-link"></a></h4>
                             <ul class="location-resolution">
                                 <li><a>Annual</a></li>
                             </ul>
                         </li>
 
                         <li class="">
-                            <h4 id="var-days_tmin_blw_0.0"><a href="<?php $current_domain ?>#" class="text">Days with Minimum Below 32&deg;F</a><a href="<?php $current_domain ?>#detail-days_tmin_blw_0" class="icon icon-help nav-detail-link"></a></h4>
+                            <h4 id="var-days_tmax_gt_100f"><a href="<?php $current_domain ?>#" class="text">Count of Days with Maximum Temperature Over 100&deg;F (days)</a><a href="<?php $current_domain ?>#detail-days_tmax_gt_100f" class="icon icon-help nav-detail-link"></a></h4>
+                            <ul class="location-resolution">
+                                <li><a>Annual</a></li>
+                            </ul>
+                        </li>
+
+                        <li class="">
+                            <h4 id="var-days_tmax_gt_105f"><a href="<?php $current_domain ?>#" class="text">Count of Days with Maximum Temperature Over 105&deg;F (days)</a><a href="<?php $current_domain ?>#detail-days_tmax_gt_105f" class="icon icon-help nav-detail-link"></a></h4>
+                            <ul class="location-resolution">
+                                <li><a>Annual</a></li>
+                            </ul>
+                        </li>
+
+
+
+                        <li class="">
+                            <h4 id="var-days_tmax_lt_32f"><a href="<?php $current_domain ?>#" class="text">Count of Days with Maximum Temperature Below 32&deg;F (days)</a><a href="<?php $current_domain ?>#detail-days_tmax_lt_32f" class="icon icon-help nav-detail-link"></a></h4>
+                            <ul class="location-resolution">
+                                <li><a>Annual</a></li>
+                            </ul>
+                        </li>
+
+                        <li class="">
+                            <h4 id="var-days_tmin_lt_32f"><a href="<?php $current_domain ?>#" class="text">Days with Minimum Below 32&deg;F</a><a href="<?php $current_domain ?>#detail-days_tmin_blw_0" class="icon icon-help nav-detail-link"></a></h4>
                             <ul>
+                                <li><a>Annual</a></li>
+                            </ul>
+                        </li>
+
+
+                        <li class="">
+                            <h4 id="var-days_tmin_gt_80f"><a href="<?php $current_domain ?>#" class="text">Count of Days with Minimum Temperature Above 80&deg;F (days)</a><a href="<?php $current_domain ?>#detail-days_tmin_gt_80f" class="icon icon-help nav-detail-link"></a></h4>
+                            <ul class="location-resolution">
+                                <li><a>Annual</a></li>
+                            </ul>
+                        </li>
+
+                        <li class="">
+                            <h4 id="var-days_tmin_gt_90f"><a href="<?php $current_domain ?>#" class="text">Count of Days with Minimum Temperature Above 90&deg;F (days)</a><a href="<?php $current_domain ?>#detail-days_tmin_gt_90f" class="icon icon-help nav-detail-link"></a></h4>
+                            <ul class="location-resolution">
                                 <li><a>Annual</a></li>
                             </ul>
                         </li>
@@ -330,7 +391,7 @@ if (!isValidLongitude($lon)) {
                                 <div class="location-map-legend-container">
                                     <h5>Legend</h5>
                                     <div class="location-map-legend">
-                                        <img class="legend-image" src="resources/img/tasmax.png"></img>
+                                        <img class="legend-image" src="resources/img/tmax.png"></img>
                                     </div>
                                 </div>
 
@@ -353,7 +414,7 @@ if (!isValidLongitude($lon)) {
 
                     <ul class="data-options">
                         <li class="active accent-border">
-                            <h4 id="var-pr"><a href="<?php $current_domain ?>#" class="text">Mean Daily Precipitation</a><a href="<?php $current_domain ?>#detail-pr" class="icon icon-help nav-detail-link"></a></h4>
+                            <h4 id="var-pcpn"><a href="<?php $current_domain ?>#" class="text">Mean Daily Precipitation</a><a href="<?php $current_domain ?>#detail-pr" class="icon icon-help nav-detail-link"></a></h4>
                             <ul class="location-resolution">
                                 <li class="active accent-border"><a class="accent-color">Annual</a></li>
                                 <li class="seasonal-monthly"><a>Monthly</a></li>
@@ -362,11 +423,42 @@ if (!isValidLongitude($lon)) {
                         </li>
 
                         <li class="">
-                            <h4 id="var-days_prcp_abv_25.3"><a href="<?php $current_domain ?>#" class="text">Days of Precipitation Above 1 Inch</a><a href="<?php $current_domain ?>#detail-pr-above" class="icon icon-help nav-detail-link"></a></h4>
+                            <h4 id="var-days_pcpn_gt_1in"><a href="<?php $current_domain ?>#" class="text">days with more than 1 inch of precipitation (days)</a><a href="<?php $current_domain ?>#detail-days_pcpn_gt_1in" class="icon icon-help nav-detail-link"></a></h4>
                             <ul class="location-resolution">
                                 <li><a>Annual</a></li>
                             </ul>
                         </li>
+
+
+                        <li class="">
+                            <h4 id="var-days_pcpn_gt_2in"><a href="<?php $current_domain ?>#" class="text">days with more than 2 inch of precipitation (days)</a><a href="<?php $current_domain ?>#detail-days_pcpn_gt_2in" class="icon icon-help nav-detail-link"></a></h4>
+                            <ul class="location-resolution">
+                                <li><a>Annual</a></li>
+                            </ul>
+                        </li>
+
+                        <li class="">
+                            <h4 id="var-days_pcpn_gt_3in"><a href="<?php $current_domain ?>#" class="text">days with more than 3 inch of precipitation (days)</a><a href="<?php $current_domain ?>#detail-days_pcpn_gt_3in" class="icon icon-help nav-detail-link"></a></h4>
+                            <ul class="location-resolution">
+                                <li><a>Annual</a></li>
+                            </ul>
+                        </li>
+
+                        <li class="">
+                            <h4 id="var-days_pcpn_gt_4in"><a href="<?php $current_domain ?>#" class="text">days with more than 4 inch of precipitation (days)</a><a href="<?php $current_domain ?>#detail-days_pcpn_gt_4in" class="icon icon-help nav-detail-link"></a></h4>
+                            <ul class="location-resolution">
+                                <li><a>Annual</a></li>
+                            </ul>
+                        </li>
+
+
+                        <li class="">
+                            <h4 id="var-days_pcpn_lt_0.01in"><a href="<?php $current_domain ?>#" class="text">dry days (days)</a><a href="<?php $current_domain ?>#detail-days_pcpn_lt_0.01in" class="icon icon-help nav-detail-link"></a></h4>
+                            <ul class="location-resolution">
+                                <li><a>Annual</a></li>
+                            </ul>
+                        </li>
+
                     </ul>
 
                     <form onsubmit="return false;">
@@ -395,8 +487,12 @@ if (!isValidLongitude($lon)) {
                         <div class="row">
                             <label for="precip-variable">Variable</label>
                             <select id="precip-variable" class="u-full-width">
-                                <option value="pr" selected="selected">Mean Daily Precipitation</option>
-                                <option value="days_prcp_abv_25.3">Days of Precipitation Above 1 Inch</option>
+                                <option value="pcpn" selected="selected">Mean Daily Precipitation</option>
+                                <option value="days_pcpn_gt_1in">Days of Precipitation Above 1 Inch</option>
+                                <option value="days_pcpn_gt_2in">Days of Precipitation Above 1 Inch</option>
+                                <option value="days_pcpn_gt_3in">Days of Precipitation Above 1 Inch</option>
+                                <option value="days_pcpn_gt_4in">Days of Precipitation Above 1 Inch</option>
+                                <option value="days_pcpn_lt_0.01in">dry days (days)</option>
                             </select>
                         </div>
                         <div class="row">
@@ -581,14 +677,30 @@ if (!isValidLongitude($lon)) {
 
                     <ul class="data-options">
                         <li class="active accent-border">
-                            <h4 id="var-heating_degree_day_18.3"><a href="<?php $current_domain ?>#" class="text">Heating Degree Days</a><a href="<?php $current_domain ?>#detail-heating_degree_day_18" class="icon icon-help nav-detail-link"></a></h4>
+                            <h4 id="var-hdd_65f"><a href="<?php $current_domain ?>#" class="text">Heating Degree Days</a><a href="<?php $current_domain ?>#detail-heating_degree_day_18" class="icon icon-help nav-detail-link"></a></h4>
                             <ul>
                                 <li class="active accent-border"><a class="accent-color">Annual</a></li>
                             </ul>
                         </li>
 
                         <li class="">
-                            <h4 id="var-cooling_degree_day_18.3"><a href="<?php $current_domain ?>#" class="text">Cooling Degree Days</a><a href="<?php $current_domain ?>#detail-cooling_degree_day_18" class="icon icon-help nav-detail-link"></a></h4>
+                            <h4 id="var-cdd_65f"><a href="<?php $current_domain ?>#" class="text">Cooling Degree Days</a><a href="<?php $current_domain ?>#detail-cooling_degree_day_18" class="icon icon-help nav-detail-link"></a></h4>
+                            <ul>
+                                <li><a>Annual</a></li>
+                            </ul>
+                        </li>
+
+
+                        <li class="">
+                            <h4 id="var-gdd"><a href="<?php $current_domain ?>#" class="text">growing degree days (°F-days)</a><a href="<?php $current_domain ?>#detail-gdd" class="icon icon-help nav-detail-link"></a></h4>
+                            <ul>
+                                <li><a>Annual</a></li>
+                            </ul>
+                        </li>
+
+
+                        <li class="">
+                            <h4 id="var-gddmod"><a href="<?php $current_domain ?>#" class="text">modified growing degree days (°F-days)</a><a href="<?php $current_domain ?>#detail-gddmod" class="icon icon-help nav-detail-link"></a></h4>
                             <ul>
                                 <li><a>Annual</a></li>
                             </ul>
@@ -621,8 +733,10 @@ if (!isValidLongitude($lon)) {
                         <div class="row">
                             <label for="derived-variable">Variable</label>
                             <select id="derived-variable" class="u-full-width">
-                                <option value="heating_degree_day_18.3" selected="selected">Heating Degree Days</option>
-                                <option value="cooling_degree_day_18.3">Cooling Degree Days</option>
+                                <option value="hdd_65f" selected="selected">Heating Degree Days</option>
+                                <option value="cdd_65f">Cooling Degree Days</option>
+                                <option value="gdd">Growing Degree Days (°F-days)</option>
+                                <option value="gddmod">Modified Growing Degree Days (°F-days)</option>
                             </select>
                         </div>
                         <div class="row">
@@ -799,43 +913,107 @@ if (!isValidLongitude($lon)) {
 
 
         <!-- begin weather stations map -->
-
         <section id="location-stations" class="location-data-section-wrap">
             <div class="location-data-section">
                 <div id="stations-data" class="data-list">
                     <div id="station-data-about">
                       <h3 class="accent-color"><span class="icon icon-district"></span>Weather Stations</h3>
-                      
+
+
+                        <div id="stations-charts-about" class="tabs-plain-tab">
+                            <p>Dots on the map show weather stations in the Global Historical Climatology Network-Daily (GHCN-D) database.</p>
+                            <p>Click any dot to view zoomable graphs of observed daily temperature and precipitation compared to 1981-2010 Climate Normals.</p>
+                            <p>Scroll or click and drag to adjust the graph display.</p>
+                        </div>
+
                       <div id="station-charts-tabs" class="tabs-plain">
                         <ul id="stations-charts-list" class="tabs-plain-list">
-                          <li><a href="#stations-charts-about">About</a></li>
                           <li><a href="#stations-charts-temp">Temperature</a></li>
                           <li><a href="#stations-charts-precip">Precipitation</a></li>
-                          <li><a href="#stations-charts-tidal">Tidal Waves</a></li>
                         </ul>
-                        
-                        <div id="stations-charts-about" class="tabs-plain-tab">
-                          <p>Dots on the map show weather stations in the Global Historical Climatology Network-Daily (GHCN-D) database.</p>
-                          <p>Click any dot to view zoomable graphs of observed daily temperature and precipitation compared to 1981-2010 Climate Normals.</p>
-                          <p>Scroll or click and drag to adjust the graph display.</p>
-                        </div>
-                        
+
+
                         <div id="stations-charts-temp" class="tabs-plain-tab">
-                          Temperature charts
+
+                            <div id="multi-chart-container">
+                                <div id="multi-chart" style="width:100%; height:300px"></div>
+                            </div>
+
                         </div>
-                        
+
                         <div id="stations-charts-precip" class="tabs-plain-tab">
-                          Precipitation charts
+
+
+                            <div id="multi-precip-chart-container">
+                                <div id="multi-precip-chart" style="width:100%; height:300px"></div>
+                            </div>
+
                         </div>
-                        
-                        <div id="stations-charts-tidal" class="tabs-plain-tab">
-                          Tidal wave charts
-                        </div>
+
                       </div>
                     </div>
-                    
-                    <div id="station-data-container"></div>
+
+
+                    <div id="station-data-container">
+
+
+                        <div id="tidal-chart-container">
+                            <select name="" id="station" class="form-control" style="width: 200px;">
+                                <option value="" disabled selected hidden>Station</option>
+                                <option value="8443970">Boston, MA</option>
+                                <option value="8454000">Providence, RI</option>
+                                <option value="8461490">New London, CT</option>
+                                <option value="8510560">Montauk, NY</option>
+                                <option value="8516945">Kings Point, NY</option>
+                                <option value="8518750">Battery, NY</option>
+                                <option value="8531680">Sandy Hook, NJ</option>
+                                <option value="8534720">Atlantic City, NJ</option>
+                                <option value="8545240">Philadelphia, PA</option>
+                                <option value="8557380">Lewes, DE</option>
+                                <option value="8574680">Baltimore, MD</option>
+                                <option value="8575512">Annapolis, MD</option>
+                                <option value="8594900">Washington D.C.</option>
+                                <option value="8638610">Sewells Point, VA</option>
+                                <option value="8658120">Wilmington, NC</option>
+                                <option value="8665530">Charleston, SC</option>
+                                <option value="8670870">Fort Pulaski, GA</option>
+                                <option value="8720030">Fernandina Beach, FL</option>
+                                <option value="8720218">Mayport, FL</option>
+                                <option value="8724580">Key West, FL</option>
+                                <option value="8726430">St Petersburg, FL</option>
+                                <option value="8771341">Galveston Bay, TX</option>
+                                <option value="8779770">Port Isabel, TX</option>
+                                <option value="9410230">La Jolla, CA</option>
+                                <option value="9414290">San Francisco, CA</option>
+                                <option value="9447130">Seattle, WA</option>
+                                <option value="1612340">Honolulu, HI</option>
+                            </select>
+                            <canvas id="tidal-chart" style="width:100%; height:300px"></canvas>
+                        </div>
+
+                        <div class="col-md-4">
+                            <div class="form-group"><label for="station">Station Id:</label>
+                                <input name="station" id="station" value="USC00094429" class="form-control">
+                                Variable:
+                                <select name="itemvariable" id="itemvariable" class="form-control">
+                                    <option value="precipitation">Precipitation</option>
+                                    <option value="tmax">TMax</option>
+                                    <option value="tmin">TMin</option>
+                                    <option value="tavg">TAvg</option>
+                                </select>Window:<input type="number" id="window" name="window" value="1" style="width:40px">
+                                    days Threshold: <input type="number" name="threshold" id="threshold" value="1" step="0.1" style="width:40px">
+                                    inches
+
+                            </div>
+
+                        </div>
+
+                        <div id="item-chart-container"></div>
+
+                    </div>
                 </div>
+
+
 
                 <div id="stations-tabs" class="data-accordion-wrap">
                     <div id="location-station-map"></div>
@@ -875,6 +1053,82 @@ if (!isValidLongitude($lon)) {
 
 <?php include_once('template/footer.php'); ?>
 
+<script>
+
+    $("#item-chart-container").item({
+        station: 'USC00094429',//$('#station').val(), // GHCN-D Station id (required)
+        variable: 'precipitation', // Valid values: 'precipitation', 'tmax', 'tmin', 'tavg'
+        threshold: 1.0,
+        thresholdOperator: '>', // Valid values: '==', '>=', '>', '<=', '<'
+        thresholdFilter: '', // Transformations/Filters to support additional units. Valid Values: 'KtoC','CtoK','FtoC','CtoF','InchToCM','CMtoInch'
+        thresholdFunction: undefined, //Pass in a custom function: function(this, values){ return _.sum(values) > v2; }
+        window: 1, // Rolling window size in days.
+        dailyValueValidator: undefined, // Pass in a custom validator predicate function(value, date){return date.slice(0, 4) > 1960 && value > 5 }
+        yearValidator: undefined, // Similar to dailyValueValidator
+        dataAPIEndpoint: "https://data.rcc-acis.org/",
+        barColor: '#307bda' // Color for bars.
+    });
+
+    $('#threshold').change(function () {
+        $("#item-chart-container").item({threshold: parseFloat($('#threshold').val())}).item('update');
+    });
+
+    // when #variable changes, update ui units and apply sensible defaults.
+    $('#itemvariable').change(function (e) {
+        var queryElements = void 0,
+            missingValueTreatment = void 0,
+            windowFunction = void 0;
+        switch ($('#itemvariable').val()) {
+            case 'precipitation':
+                $('#thresholdUnits').text('in');
+                $('#threshold').val(1.0);
+                break;
+            case 'tmax':
+                $('#thresholdUnits').text('F');
+                $('#threshold').val(95);
+                break;
+            case 'tmin':
+                $('#thresholdUnits').text('F');
+                $('#threshold').val(32);
+                break;
+            case 'tavg':
+                $('#thresholdUnits').text('F');
+                $('#threshold').val(70);
+                break;
+        }
+        $("#item-chart-container").item({ threshold: parseFloat($('#threshold').val()), variable: $('#itemvariable').val() }).item('update');
+    });
+
+    $('#percentileThreshold').change(function () {
+
+        var value = $('#percentileThreshold').val();
+        if (value === '') {
+            return;
+        }
+
+        if (value <= 0 || value >= 100) {
+            $('#percentileThreshold').addClass('form-control-danger');
+            return;
+        }
+
+        $('#threshold').val($("#item-chart-container").item('getPercentileValue', value)).trigger('change');
+
+    });
+
+    $('#window').change(function () {
+        $("#item-chart-container").item({ window: parseInt($('#window').val()) });
+        $("#item-chart-container").item('update');
+    });
+
+
+</script>
+<script src="/resources/tidal/tidalstationswidget.js"></script>
+<script>
+    $("#tidal-chart").tidalstationwidget({
+        station: '8665530',
+        data_url: '/resources/tidal/tidal_data.json' // defaults to tidal_data.json
+    });
+</script>
 <script src="./resources/js/cwg/climate-widget-graph.js"></script>
 <script src="./resources/js/cwg/cwg.js"></script>
 

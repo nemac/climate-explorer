@@ -66,8 +66,17 @@
 
 <script src="<?php $current_domain ?>resources/js/formmapper.js"></script>
 
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.1/Chart.bundle.min.js" integrity="sha256-N4u5BjTLNwmGul6RgLoESPNqDFVUibVuOYhP4gJgrew=" crossorigin="anonymous"></script>
+
+
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/lodash.js/4.17.4/lodash.min.js" integrity="sha256-8E6QUcFg1KTnpEU8TFGhpTGHw5fJqB9vCms3OhAYLqw=" crossorigin="anonymous"></script>
+
+
 <script type="text/javascript" src="<?php $current_domain ?>resources/js/chart.js"></script>
 <script type="text/javascript" src="<?php $current_domain ?>resources/js/global_functions.js"></script>
+<script src="/resources/tidal/tidalstationswidget.js"></script>
+
 
 <?php if (isset($active_variable) && $active_variable != null) { ?>
   <script>

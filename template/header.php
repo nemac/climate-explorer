@@ -9,31 +9,61 @@ $current = isset($current) ? $purifier->purify($current) : '';
 $temp_content = array(
 
     array(
-        'variable' => 'tasmax',
+        'variable' => 'tmax',
         'name' => 'Mean Daily Maximum Temperature',
         'detail' => "<p>A day’s highest (maximum) temperature usually occurs in the afternoon. Averaging the daily high temperatures over any period results in a mean maximum temperature for that period.</p><p>Maximum temperature serves as one measure of comfort and safety for people and for the health of plants and animals. When maximum temperature exceeds particular thresholds, people can become ill and transportation and energy infrastructure may be stressed.</p>",
         'source' => 'NOAA, 2016'
     ),
 
     array(
-        'variable' => 'tasmin',
+        'variable' => 'tmin',
         'name' => 'Mean Daily Minimum Temperature',
         'detail' => "<p>A day’s lowest (minimum) temperature usually occurs in the early morning, just before sunrise. Averaging the daily low temperatures for any period results in a mean minimum temperature for that period.</p><p>Periods of low temperature give plants, animals, and people a chance to recover from daytime heat. When minimum temperatures aren’t sufficiently cool, plant and animal responses can trigger ecosystem changes and increased demand for energy can stress energy infrastructure.</p>",
         'source' => 'NOAA, 2016'
     ),
 
     array(
-        'variable' => 'days_tmax_abv_35',
+        'variable' => 'days_tmax_gt_90f',
+        'name' => 'Days With Maximum Above 90°F',
+        'detail' => "<p>Content Pending</p>",
+        'source' => 'Source Pending'
+    ),
+    array(
+        'variable' => 'days_tmax_gt_95f',
         'name' => 'Days With Maximum Above 95°F',
         'detail' => "<p>The total number of days per year with maximum temperature above 95°F (35°C) is an indicator of how often very hot conditions occur. Depending upon humidity, wind, access to air-conditioning, humans may feel very uncomfortable or experience heat stress or illness on very hot days.</p><p>Hot days also stress plants and animals as well as infrastructure. Increased demand for cooling can stress energy infrastructure.</p>",
         'source' => 'NOAA, 2016'
     ),
 
     array(
-        'variable' => 'days_tmin_blw_0',
+        'variable' => 'days_tmax_gt_100f',
+        'name' => 'Days With Maximum Above 100°F',
+        'detail' => "<p>Content Pending</p>",
+        'source' => 'Source Pending'
+    ),
+    array(
+        'variable' => 'days_tmax_gt_105f',
+        'name' => 'Days With Maximum Above 105°F',
+        'detail' => "<p>Content Pending</p>",
+        'source' => 'Source Pending'
+    ),
+    array(
+        'variable' => 'days_tmin_lt_32f',
         'name' => 'Days With Minimum Below 32°F',
         'detail' => "<p>The total number of days per year with minimum temperature below 32°F (0°C) is an indicator of how often cold days occur.</p><p>Below-freezing temperatures can cause driving hazards, aircraft icing, and damage to infrastructure. However, ski resorts and other winter recreation businesses depend on days with below-freezing temperatures to maintain snowpack. Additionally, some plants require a period of days below freezing before they can begin budding or blooming.</p>",
         'source' => 'NOAA, 2016'
+    ),
+    array(
+        'variable' => 'days_tmin_gt_80f',
+        'name' => 'Count of days with minimum temperature above 80°F (days)',
+        'detail' => "<p>Content Pending</p>",
+        'source' => 'Source Pending'
+    ),
+    array(
+        'variable' => 'days_tmin_gt_90f',
+        'name' => 'Count of days with minimum temperature above 90°F (days)',
+        'detail' => "<p>Content Pending</p>",
+        'source' => 'Source Pending'
     )
 
 );
@@ -41,16 +71,40 @@ $temp_content = array(
 $precip_content = array(
 
     array(
-        'variable' => 'pr',
+        'variable' => 'pcpn',
         'name' => 'Mean Daily Precipitation',
         'detail' => "<p>Daily totals of rain and snow vary from zero to several inches; averaging these totals over a period gives an average daily value. Mean daily precipitation indicates the average amount of water added to the environment each day.</p><p>Mean daily precipitation is one indicator of how wet or dry a place may be at different times of the year. Comparing values for mean daily precipitation over time can indicate a trend toward wetter or drier conditions.</p>",
         'source' => 'NOAA, 2016'
     ),
     array(
-        'variable' => 'days_prcp_abv_25',
-        'name' => 'Days of Precipitation Above 1 Inch',
+        'variable' => 'days_pcpn_gt_1in',
+        'name' => 'Days with More than 1 inch of Precipitation (days)',
         'detail' => "<p>The number of days per year when locations receive more than 1 inch (2.5 cm) of precipitation is an indicator of how often heavy precipitation events occur. This measurement may also be used as an indicator of flood risk.</p><p>Comparing values at a single location over time can indicate a trend of increasing or decreasing flood risk. Comparing values from one location to another may not reflect relative risks for flooding, as factors that control runoff vary from site to site.</p>",
         'source' => 'NOAA, 2016'
+    ),
+    array(
+        'variable' => 'days_pcpn_gt_2in',
+        'name' => 'Days with More than 2 inch of Precipitation (days)',
+        'detail' => "<p>Content Pending</p>",
+        'source' => 'Source Pending'
+    ),
+    array(
+        'variable' => 'days_pcpn_gt_3in',
+        'name' => 'Days with More than 3 inch of Precipitation (days)',
+        'detail' => "<p>Content Pending</p>",
+        'source' => 'Source Pending'
+    ),
+    array(
+        'variable' => 'days_pcpn_gt_4in',
+        'name' => 'Days with More than 4 inch of Precipitation (days)',
+        'detail' => "<p>Content Pending</p>",
+        'source' => 'Source Pending'
+    ),
+    array(
+        'variable' => 'days_pcpn_lt_0.01in',
+        'name' => 'Dry Days (days)',
+        'detail' => "<p>Content Pending</p>",
+        'source' => 'Source Pending'
     )
 
 );
@@ -58,17 +112,30 @@ $precip_content = array(
 $derived_content = array(
 
     array(
-        'variable' => 'heating_degree_day_18',
-        'name' => 'Heating Degree Days',
+        'variable' => 'hdd_65f',
+        'name' => 'days * degrees below 65°F (°F-days)',
         'detail' => "<p>The number of heating degree days per year reflects the amount of energy people use to heat buildings during the cool season.</p><p>For example, many people like to keep indoor temperatures at 65°F. On a day when the average outdoor temperature is 55°F, raising the indoor temperature by 10 degrees over 1 day requires 10 degrees of heating multiplied by 1 day, or 10 heating degree days. Utility companies use heating degree days to estimate the annual amount of energy people will use to heat buildings.</p>",
         'source' => 'NOAA, 2016'
     ),
 
     array(
-        'variable' => 'cooling_degree_day_18',
-        'name' => 'Cooling Degree Days',
+        'variable' => 'cdd_65f',
+        'name' => 'days * degrees above 65°F (°F-days)',
         'detail' => "<p>The number of cooling degree days per year reflects the amount of energy people use to cool buildings during the warm season.</p><p>For example, many people like to keep indoor temperatures at 65°F. On a day when the average outdoor temperature is 85°F, reducing the indoor temperature by 20 degrees over 1 day requires 20 degrees of cooling multiplied by 1 day, or 20 cooling degree days. Utility companies use cooling degree days to estimate the annual amount of energy people will use to cool buildings.</p>",
         'source' => 'NOAA, 2016'
+    ),
+
+    array(
+        'variable' => 'gdd',
+        'name' => 'Growing Degree Days (°F-days)',
+        'detail' => "<p>Content Pending</p>",
+        'source' => 'Source Pending'
+    ),
+    array(
+        'variable' => 'gddmod',
+        'name' => 'Modified Growing Degree Days (°F-days)',
+        'detail' => "<p>Content Pending</p>",
+        'source' => 'Source Pending'
     )
 
 );
@@ -438,17 +505,17 @@ $topics_content = array(
 
         ?>
 
-        <div id="detail-tasmax" class="nav-detail-item">
+        <div id="detail-tmax" class="nav-detail-item">
             <h3>What does <u>Mean Daily Maximum Temperature</u> tell us?</h3>
 
             <p>A day’s highest (maximum) temperature usually occurs in the afternoon. Averaging the daily high temperatures over any period results in a mean maximum temperature for that period.</p>
             <p>Maximum temperature serves as one measure of comfort and safety for people and for the health of plants and animals. When maximum temperature exceeds particular thresholds, people can become ill and transportation and energy infrastructure may be stressed.</p>
 
-            <p><a href="variables.php?id=tasmax" class="button bg-trans border-white hover-bg-white">Get started</a><a href="#" class="close-detail button bg-trans border-trans color-white arrow-left">Back</a></p>
+            <p><a href="variables.php?id=tmax" class="button bg-trans border-white hover-bg-white">Get started</a><a href="#" class="close-detail button bg-trans border-trans color-white arrow-left">Back</a></p>
         </div>
 
 
-        <div id="detail-tasmin" class="nav-detail-item">
+        <div id="detail-tmin" class="nav-detail-item">
             <h3>What does <u>Mean Daily Minimum Temperature</u> tell us?</h3>
 
             <p>A day’s lowest (minimum) temperature usually occurs in the early morning, just before sunrise. Averaging the daily low temperatures for any period results in a mean minimum temperature for that period.</p>

@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Interactive Timeline Exceedance Module Demo</title>
+
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js" integrity="sha256-KM512VNnjElC30ehFwehXjx1YCHPiQkOPmqnrWtpccM=" crossorigin="anonymous"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.1/Chart.bundle.min.js" integrity="sha256-N4u5BjTLNwmGul6RgLoESPNqDFVUibVuOYhP4gJgrew=" crossorigin="anonymous"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/lodash.js/4.17.4/lodash.min.js" integrity="sha256-8E6QUcFg1KTnpEU8TFGhpTGHw5fJqB9vCms3OhAYLqw=" crossorigin="anonymous"></script>
+
+
+    <script src="demo.js"></script>
+    <script>$(document).ready(function(){Demo.default()});</script>
+		<link rel="stylesheet" href="fl-item.css">
+
+
+
+
+	<!--Demo styling. Not required for use of widget.-->
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css"
+				integrity="sha384-rwoIResjU2yc3z8GV/NPeZWAv56rSmLldC3R/AZzGRnGxQQKnKkoFVhFQhNUwEyJ" crossorigin="anonymous">
+	<link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet"
+				integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
+	<style>
+		@media (min-width: 1200px) {
+			.container {
+				width: 1300px;
+				max-width: 100%;
+			}
+		}
+	</style>
+</head>
+<body>
+<div class="container">
+	<h1>Interactive Timeline Exceedance Module Demo</h1>
+	<div class="row">
+		<div class="col-md-4">
+			<div class="form-group"><label for="station">Station Id:</label>
+				<input name="station" id="station" value="USC00094429" class="form-control"></div>
+			<div class="form-group"><label for="variable">Variable:</label>
+				<select name="variable" id="variable" class="form-control">
+					<option value="precipitation">Precipitation</option>
+					<option value="tmax">TMax</option>
+					<option value="tmin">TMin</option>
+					<option value="tavg">TAvg</option>
+				</select></div>
+			<div class="form-group"><label for="window">Window: </label>
+				<div class="input-group"><input type="number" id="window"
+																				name="window" value="1" class="form-control">
+					<div class="input-group-addon">days</div>
+				</div>
+			</div>
+
+			<div class="form-group"><label for="threshold">Threshold: </label>
+				<div class="input-group"><input type="number" name="threshold" id="threshold" value="1" step="0.1"
+																				class="form-control">
+					<div class="input-group-addon" id="thresholdUnits">inches</div>
+				</div>
+				<div class="form-group " title="Sets threshold to a specific percentile">
+					<div class="input-group input-group-sm pull-right m-2 col-8"><input type="number" id="percentileThreshold"
+																																							name="percentileThreshold" value=""
+																																							class="col-4 form-control" step="1" min="0" max="100">
+						<div class="input-group-btn">
+							<button type="button" class="btn btn-secondary dropdown-toggle" data-toggle="dropdown"
+											aria-haspopup="true" aria-expanded="false"></button>
+							<div class="dropdown-menu dropdown-menu-right">
+								<a class="dropdown-item" href="#" id="80ththreshold">80th</a>
+								<a class="dropdown-item" href="#" id="90ththreshold">90th</a>
+								<a class="dropdown-item" href="#" id="95ththreshold">95th</a>
+							</div>
+						</div>
+						<div class="input-group-addon">percentile</div>
+					</div>
+				</div>
+			</div>
+
+		</div>
+		<div class="col-md-8" style="min-height: 60vh;">
+			<div id="output"></div>
+		</div>
+	</div>
+</div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.4.0/js/tether.min.js" integrity="sha256-gL1ibrbVcRIHKlCO5OXOPC/lZz/gpdApgQAzskqqXp8=" crossorigin="anonymous"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/js/bootstrap.min.js" integrity="sha384-vBWWzlZJ8ea9aCX4pEW3rVHjgjt7zpkNpZk+02D9phzyeVkE+jo0ieGizqPLForn" crossorigin="anonymous"></script>
+</body>
+</html>

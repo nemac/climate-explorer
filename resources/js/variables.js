@@ -24,7 +24,7 @@ var Variables = function (id, data_base_url) {
     var qs = this.parseQueryString(qtrs);
 
     this.mapVariables();
-    this.selectedVariable = id || 'tasmax';
+    this.selectedVariable = id || 'tmax';
     this.activeYear = qs.year || 2010;
     this.selectedSeason = 'summer';
 
@@ -48,47 +48,47 @@ var Variables = function (id, data_base_url) {
  */
 Variables.prototype.mapVariables = function () {
     this.varMapping = {
-        'tasmax': 'Mean Daily Maximum Temperature',
-        'tasmin': 'Mean Daily Minimum Temperature',
-        'days_tmin_blw_0.0': 'Days With Minimum Below 32F&deg; F',
-        'days_tmax_abv_35.0': 'Days With Maximum Above 95&deg; F',
-        'pr': 'Mean Daily Precipitation',
-        'days_prcp_abv_25.3': 'Days of Precipitation Above 1 Inch',
-        'cooling_degree_day_18.3': 'Cooling Degree Days',
-        'heating_degree_day_18.3': 'Heating Degree Days'
+        'tmax': 'Mean Daily Maximum Temperature',
+        'tmin': 'Mean Daily Minimum Temperature',
+        'days_tmin_lt_32f': 'Days With Minimum Below 32F&deg; F',
+        'days_tmax_gt_95f': 'Days With Maximum Above 95&deg; F',
+        'pcpn': 'Mean Daily Precipitation',
+        'days_pcpn_gt_1in': 'Days of Precipitation Above 1 Inch',
+        'cdd_65f': 'Cooling Degree Days',
+        'hdd_65f': 'Heating Degree Days'
     };
 
     this.tilesHistMapping = {
-        'tasmax': '-hist-tasmax',
-        'tasmin': '-hist-tasmin',
-        'days_tmin_blw_0.0': '-annual-hist-days-tmin-blw',
-        'days_tmax_abv_35.0': '-annual-hist-days-tmax-abv',
-        'pr': '-hist-precip',
-        'days_prcp_abv_25.3': '-annual-hist-days-prcp-abv',
-        'cooling_degree_day_18.3': '-annual-hist-cooling-degree-day',
-        'heating_degree_day_18.3': '-annual-hist-heating-degree-day'
+        'tmax': '-hist-tasmax',
+        'tmin': '-hist-tasmin',
+        'days_tmin_lt_32f': '-annual-hist-days-tmin-blw',
+        'days_tmax_gt_95f': '-annual-hist-days-tmax-abv',
+        'pcpn': '-hist-precip',
+        'days_pcpn_gt_1in': '-annual-hist-days-prcp-abv',
+        'cdd_65f': '-annual-hist-cooling-degree-day',
+        'hdd_65f': '-annual-hist-heating-degree-day'
     };
 
     this.tilesMapping = {
-        'tasmax': '-rcp45-tasmax',
-        'tasmin': '-rcp45-tasmin',
-        'days_tmin_blw_0.0': '-annual-rcp45-days-tmin-blw',
-        'days_tmax_abv_35.0': '-annual-rcp45-days-tmax-abv',
-        'pr': '-rcp45-precip',
-        'days_prcp_abv_25.3': '-annual-rcp45-days-prcp-abv',
-        'cooling_degree_day_18.3': '-annual-rcp45-cooling-degree-day',
-        'heating_degree_day_18.3': '-annual-rcp45-heating-degree-day'
+        'tmax': '-rcp45-tasmax',
+        'tmin': '-rcp45-tasmin',
+        'days_tmin_lt_32f': '-annual-rcp45-days-tmin-blw',
+        'days_tmax_gt_95f': '-annual-rcp45-days-tmax-abv',
+        'pcpn': '-rcp45-precip',
+        'days_pcpn_gt_1in': '-annual-rcp45-days-prcp-abv',
+        'cdd_65f': '-annual-rcp45-cooling-degree-day',
+        'hdd_65f': '-annual-rcp45-heating-degree-day'
     };
 
     this.tilesMapping85 = {
-        'tasmax': '-rcp85-tasmax',
+        'tmax': '-rcp85-tasmax',
         'tasmin': '-rcp85-tasmin',
-        'days_tmin_blw_0.0': '-annual-rcp85-days-tmin-blw',
-        'days_tmax_abv_35.0': '-annual-rcp85-days-tmax-abv',
-        'pr': '-rcp85-precip',
-        'days_prcp_abv_25.3': '-annual-rcp85-days-prcp-abv',
-        'cooling_degree_day_18.3': '-annual-rcp85-cooling-degree-day',
-        'heating_degree_day_18.3': '-annual-rcp85-heating-degree-day'
+        'days_tmin_lt_32f': '-annual-rcp85-days-tmin-blw',
+        'days_tmax_gt_95f': '-annual-rcp85-days-tmax-abv',
+        'pcpn': '-rcp85-precip',
+        'days_pcpn_gt_1in': '-annual-rcp85-days-prcp-abv',
+        'cdd_65f': '-annual-rcp85-cooling-degree-day',
+        'hdd_65f': '-annual-rcp85-heating-degree-day'
     };
 };
 
@@ -112,8 +112,7 @@ Variables.prototype.createMap = function () {
     var center = ( qs.center ) ? qs.center.split(',') : null;
 
     // make sure variable in query is valid
-    if (!qs.id.match(/^(tasmax|tasmin|days_tmin_blw_0|days_tmin_blw_0.0|days_tmax_abv_35|days_tmax_abv_35.0|pr|days_prcp_abv_25.3|days_prcp_abv_25|cooling_degree_day_18|cooling_degree_day_18.3|heating_degree_day_18|heating_degree_day_18.3)$/)) {
-
+    if (!qs.id.match(/^(tmax|tmin|days_tmax_gt_90f|days_tmax_gt_95f|days_tmax_gt_100f| days_tmax_gt_105f|days_tmax_lt_32f|days_tmin_lt_32f|days_tmin_gt_80f|days_tmin_gt_90f|pcpn|days_pcpn_gt_1in|days_pcpn_gt_2in|days_pcpn_gt_3in|days_pcpn_gt_4in|days_pcpn_lt_0.01in|hdd_65f|cdd_65f|gdd|gddmod)$/)) {
       window.location = "error.php";
       throw new Error("MALFORMED VARIABLE");
     }
@@ -592,7 +591,7 @@ Variables.prototype.countySelected = function (feature, event) {
             dataprefix: "/climate-explorer2-data/data",
             font: "Roboto",
             frequency: "annual",
-            fips: fips,
+            county: fips,
             variable: this.selectedVariable,
             scenario: "both",
             pmedian: "true",
@@ -672,7 +671,7 @@ Variables.prototype.countySelected = function (feature, event) {
         });
 
         $('.download-image').click(function () {
-            self.cwg.downloadImage(this, 'graph.png');
+            self.cwg.download_image(this, 'graph.png');
         });
 
         $('.download-data').click(function (e) {
@@ -741,9 +740,9 @@ Variables.prototype.countySelected = function (feature, event) {
 Variables.prototype.updateTiledLayer = function (replace, preserveTime) {
     var self = this;
     var histYears = [1950, 1960, 1970, 1980, 1990, 2000];
-    var seasons = ['tasmax', 'tasmin', 'pr'];
+    var seasons = ['tmax', 'tmin', 'pcpn'];
 
-    if ( self.selectedVariable !== 'tasmax' && self.selectedVariable !== 'tasmin' && self.selectedVariable !== 'pr' && this.activeYear === 2000 ) {
+    if ( self.selectedVariable !== 'tmax' && self.selectedVariable !== 'tmin' && self.selectedVariable !== 'pcpn' && this.activeYear === 2000 ) {
       this.activeYear = 2010;
     }
 
@@ -970,7 +969,7 @@ Variables.prototype.setSlider = function () {
         step: 10,
         value: self.activeYear,
         slide: function (event, ui) {
-          if ( self.selectedVariable !== 'tasmax' && self.selectedVariable !== 'tasmin' && self.selectedVariable !== 'pr') {
+          if ( self.selectedVariable !== 'tmax' && self.selectedVariable !== 'tmin' && self.selectedVariable !== 'pcpn') {
             if ( ui.value === 2000 ) {
               return false;
             }

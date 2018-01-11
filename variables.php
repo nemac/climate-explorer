@@ -157,18 +157,32 @@ if ($cut_url == $current_url) {
 
         <li class="select border" id="variable-options-container">
             <select class="dropdown" id="variable-options">
-                <option value="tasmax">Mean Daily Maximum Temperature</option>
-                <option value="tasmin">Mean Daily Minimum Temperature</option>
-                <option value="days_tmax_abv_35.0">Days With Maximum Above 95°F</option>
-                <option value="days_tmin_blw_0.0">Days With Minimum Below 32°F</option>
-                <option value="pr">Mean Daily Precipitation</option>
-                <option value="days_prcp_abv_25.3">Days of Precipitation Above 1 Inch</option>
-                <option value="heating_degree_day_18.3">Heating Degree Days</option>
-                <option value="cooling_degree_day_18.3">Cooling Degree Days</option>
+                <option value="tmax">Mean Daily Maximum Temperature (°F)</option>
+                <option value="tmin">Mean Daily Minimum Temperature (°F)</option>
+                <option value="days_tmax_gt_90f">Count of Days with Maximum temperature over 90°F (days)</option>
+                <option value="days_tmax_gt_95f">Count of days with Maximum temperature over 95°F (days)</option>
+                <option value="days_tmax_gt_100f">Count of days with Maximum Temperature over 100°F (days)</option>
+                <option value="days_tmax_gt_105f">Count of Days with Maximum Temperature over 105°F (days)</option>
+                <option value="days_tmax_lt_32f">Count of Days with Maximum Temperature below 32°F (days)</option>
+                <option value="days_tmin_lt_32f">Days with Minimum Temps Below 32°F (days)</option>
+                <option value="days_tmin_gt_80f">Count of days with minimum temperature above 80°F (days)</option>
+                <option value="days_tmin_gt_90f">Count of days with minimum temperature above 90°F (days)</option>
+                <option value="pcpn">Total Precipitation (inches)</option>
+                <option value="days_pcpn_gt_1in">Days with More than 1 inch of Precipitation (days)</option>
+                <option value="days_pcpn_gt_2in">Days with More than 2 inch of Precipitation (days)</option>
+                <option value="days_pcpn_gt_3in">Days with More than 3 inch of Precipitation (days)</option>
+                <option value="days_pcpn_gt_4in">Days with More than 4 inch of Precipitation (days)</option>
+                <option value="days_pcpn_lt_0.01in">Dry Days (days)</option>
+                <option value="hdd_65f">days * degrees below 65°F (°F-days)</option>
+                <option value="cdd_65f">days * degrees above 65°F (°F-days)</option>
+                <option value="gdd">Growing Degree Days (°F-days)</option>
+                <option value="gddmod">Modified Growing Degree Days (°F-days)</option>
+
+
             </select>
         </li>
 
-        <li class="about-link"><a href="<?php $current_domain ?>#detail-tasmax" class="nav-detail-link" id="about-variable-link">About Mean Daily Maximum Temperature</a></li>
+        <li class="about-link"><a href="<?php $current_domain ?>#detail-tmax" class="nav-detail-link" id="about-variable-link">About Mean Daily Maximum Temperature</a></li>
     </ul>
 
     <div id="vars-legend" class="legend-wrap left-filler">

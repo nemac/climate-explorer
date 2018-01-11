@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <title>High Tide Flooding</title>
+
+    <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+    <script src="https://code.jquery.com/ui/1.12.0/jquery-ui.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.1/Chart.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
+
+    <script src="tidalstationswidget.js"></script>
+
+    <style>
+      .navbar.navbar-default {
+        padding: 0;
+        margin: 0;
+        height: 120px;
+      }
+
+      .navbar.navbar-default .navbar-brand img {
+        height: 100px;
+        width: 300px;
+        padding: 0;
+        margin: 0;
+        left: 0;
+      }
+
+      .navbar.selector {
+        margin-top: 35px;
+
+      }
+
+      .row {
+        margin-left: 0;
+        margin-right: 0;
+      }
+    </style>
+  </head>
+  <body>
+    <nav class="navbar navbar-default">
+      <div class="container-fluid">
+        <div class="navbar-header">
+          <span class="navbar-text">
+            <h1>High Tide Flooding</h1>
+          </span>
+          <ul class="nav navbar-nav navbar-right">
+            <ul>
+              <div class="row">
+                <div class="navbar selector">
+                  <form class="navbar-form pull-right">
+                    <select name="" id="station" class="form-control" style="width: 200px;">
+                      <option value="" disabled selected hidden>Station</option>
+                      <option value="8443970">Boston, MA</option>
+                      <option value="8454000">Providence, RI</option>
+                      <option value="8461490">New London, CT</option>
+                      <option value="8510560">Montauk, NY</option>
+                      <option value="8516945">Kings Point, NY</option>
+                      <option value="8518750">Battery, NY</option>
+                      <option value="8531680">Sandy Hook, NJ</option>
+                      <option value="8534720">Atlantic City, NJ</option>
+                      <option value="8545240">Philadelphia, PA</option>
+                      <option value="8557380">Lewes, DE</option>
+                      <option value="8574680">Baltimore, MD</option>
+                      <option value="8575512">Annapolis, MD</option>
+                      <option value="8594900">Washington D.C.</option>
+                      <option value="8638610">Sewells Point, VA</option>
+                      <option value="8658120">Wilmington, NC</option>
+                      <option value="8665530">Charleston, SC</option>
+                      <option value="8670870">Fort Pulaski, GA</option>
+                      <option value="8720030">Fernandina Beach, FL</option>
+                      <option value="8720218">Mayport, FL</option>
+                      <option value="8724580">Key West, FL</option>
+                      <option value="8726430">St Petersburg, FL</option>
+                      <option value="8771341">Galveston Bay, TX</option>
+                      <option value="8779770">Port Isabel, TX</option>
+                      <option value="9410230">La Jolla, CA</option>
+                      <option value="9414290">San Francisco, CA</option>
+                      <option value="9447130">Seattle, WA</option>
+                      <option value="1612340">Honolulu, HI</option>
+                    </select>
+                  </form>
+                </div>
+              </div>
+            </ul>
+          </ul>
+        </div>
+      </div>
+    </nav>
+
+    <div class="container-responsive">
+      <div class="row">
+        <div class="col-xs-12">
+          <canvas id="chart" width="400" height="150"></canvas>
+        </div>
+      </div>
+    </div>
+
+    <script>
+      $(document).ready(function () {
+        $( "#chart" ).tidalstationwidget();
+      });
+
+      $('#station').change(function () {
+        $( "#chart" ).tidalstationwidget("update", {station: $('#station').val()})
+      });
+
+    </script>
+  </body>
+</html>

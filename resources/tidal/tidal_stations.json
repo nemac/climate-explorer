@@ -1,0 +1,164 @@
+[
+  {
+    "id": "8443970",
+    "label": "Boston, MA",
+    "lon": -71.05,
+    "lat": 42.36
+  },
+  {
+    "id": "8454000",
+    "label": "Providence, RI",
+    "lon": -71.40,
+    "lat": 41.81
+  },
+  {
+    "id": "8461490",
+    "label": "New London, CT",
+    "lon": -72.09,
+    "lat": 41.36
+  },
+  {
+    "id": "8510560",
+    "label": "Montauk, NY",
+    "lon": -71.96,
+    "lat": 41.05
+  },
+  {
+    "id": "8516945",
+    "label": "Kings Point, NY",
+    "lon": -73.77,
+    "lat": 40.81
+  },
+  {
+    "id": "8518750",
+    "label": "Battery, NY",
+    "lon": -74.02,
+    "lat": 40.70
+  },
+  {
+    "id": "8531680",
+    "label": "Sandy Hook, NJ",
+    "lon": -74.01,
+    "lat": 40.47
+  },
+  {
+    "id": "8534720",
+    "label": "Atlantic City, NJ",
+    "lon": -74.42,
+    "lat": 39.36
+  },
+  {
+    "id": "8545240",
+    "label": "Philadelphia, PA",
+    "lon": -75.14,
+    "lat": 39.93
+  },
+  {
+    "id": "8557380",
+    "label": "Lewes, DE",
+    "lon": -75.12,
+    "lat": 38.78
+  },
+  {
+    "id": "8574680",
+    "label": "Baltimore, MD",
+    "lon": -76.58,
+    "lat": 39.27
+  },
+  {
+    "id": "8575512",
+    "label": "Annapolis, MD",
+    "lon": -76.48,
+    "lat": 38.98
+  },
+  {
+    "id": "8594900",
+    "label": "Washington D.C.",
+    "lon": -77.02,
+    "lat": 38.87
+  },
+  {
+    "id": "8638610",
+    "label": "Sewell Point, VA",
+    "lon": -76.33,
+    "lat": 36.95
+  },
+  {
+    "id": "8658120",
+    "label": "Wilmington, NC",
+    "lon": -77.95,
+    "lat": 34.23
+  },
+  {
+    "id": "8665530",
+    "label": "Charleston, SC",
+    "lon": -79.93,
+    "lat": 32.78
+  },
+  {
+    "id": "8670870",
+    "label": "Fort Pulaski, GA",
+    "lon": -80.90,
+    "lat": 32.04
+  },
+  {
+    "id": "8720030",
+    "label": "Fernandina Beach, FL",
+    "lon": -81.47,
+    "lat": 30.67
+  },
+  {
+    "id": "8720218",
+    "label": "Mayport, FL",
+    "lon": -81.43,
+    "lat": 30.40
+  },
+  {
+    "id": "8724580",
+    "label": "Key West, FL",
+    "lon": -81.81,
+    "lat": 24.55
+  },
+  {
+    "id": "8726430",
+    "label": "St Petersburg, FL",
+    "lon": -82.63,
+    "lat": 27.76
+  },
+  {
+    "id": "8771341",
+    "label": "Galveston_Bay, TX",
+    "lon": -94.79,
+    "lat": 29.31
+  },
+  {
+    "id": "8779770",
+    "label": "Port Isabel, TX",
+    "lon": -97.22,
+    "lat": 26.06
+  },
+  {
+    "id": "9410230",
+    "label": "La Jolla, CA",
+    "lon": -117.26,
+    "lat": 32.87
+  },
+  {
+    "id": "9414290",
+    "label": "San Francisco, CA",
+    "lon": -122.47,
+    "lat": 37.81
+  },
+  {
+    "id": "9447130",
+    "label": "Seattle, WA",
+    "lon": -122.34,
+    "lat": 47.60
+  },
+  {
+    "id": "1612340",
+    "label": "Honolulu, HI",
+    "lon": -157.87,
+    "lat": 21.31
+  }
+]
