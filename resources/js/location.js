@@ -12,6 +12,12 @@ $('#station-charts-tabs .chart-tab-list a').click(function(e) {
     $(this).parents('li').addClass('selected');
     $(tab_id).addClass('selected');
     
+    if (tab_id == '#stations-charts-temp') {
+      $('body').find('#itemvariable').val('tavg').change();
+    } else {
+      $('body').find('#itemvariable').val('precipitation').change();
+    }
+    
   }
   
 });
@@ -405,7 +411,6 @@ Location.prototype.stationSelected = function (feature, event, type) {
     
     $('#station-overlay-close').click(function() {
       $('#location-stations').removeClass('overlay-on').removeClass('type-tidal');
-      $('body').find('#station').val('').change();
     });
     
 
