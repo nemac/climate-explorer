@@ -414,7 +414,7 @@ if (!isValidLongitude($lon)) {
 
                     <ul class="data-options">
                         <li class="active accent-border">
-                            <h4 id="var-pcpn"><a href="<?php $current_domain ?>#" class="text">Mean Daily Precipitation</a><a href="<?php $current_domain ?>#detail-pr" class="icon icon-help nav-detail-link"></a></h4>
+                            <h4 id="var-pcpn"><a href="<?php $current_domain ?>#" class="text">Total precipitation</a><a href="<?php $current_domain ?>#detail-pr" class="icon icon-help nav-detail-link"></a></h4>
                             <ul class="location-resolution">
                                 <li class="active accent-border"><a class="accent-color">Annual</a></li>
                                 <li class="seasonal-monthly"><a>Monthly</a></li>
@@ -487,7 +487,7 @@ if (!isValidLongitude($lon)) {
                         <div class="row">
                             <label for="precip-variable">Variable</label>
                             <select id="precip-variable" class="u-full-width">
-                                <option value="pcpn" selected="selected">Mean Daily Precipitation</option>
+                                <option value="pcpn" selected="selected">Total precipitation</option>
                                 <option value="days_pcpn_gt_1in">Days of Precipitation Above 1 Inch</option>
                                 <option value="days_pcpn_gt_2in">Days of Precipitation Above 1 Inch</option>
                                 <option value="days_pcpn_gt_3in">Days of Precipitation Above 1 Inch</option>
@@ -556,7 +556,7 @@ if (!isValidLongitude($lon)) {
                                     <span class="icon icon-emission-scenario"></span>
                               <span class="text">
                                 Chart<span class="full-title">: <?php echo $county ?></span>
-                                <span class="source" id="precip-chart-name">Mean Daily Precipitation</span>
+                                <span class="source" id="precip-chart-name">Total precipitation</span>
                               </span>
                                 </h4>
                                 <div class="data-accordion-actions">
@@ -612,7 +612,7 @@ if (!isValidLongitude($lon)) {
                                     <span class="icon icon-district"></span>
                             <span class="text">
                               Map<span class="full-title">: <?php echo $county ?></span>
-                              <span class="source" id="precip-map-name">Mean Daily Precipitation</span>
+                              <span class="source" id="precip-map-name">Total precipitation</span>
                             </span>
                                 </h4>
 

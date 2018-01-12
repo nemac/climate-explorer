@@ -52,7 +52,7 @@ Variables.prototype.mapVariables = function () {
         'tmin': 'Mean Daily Minimum Temperature',
         'days_tmin_lt_32f': 'Days With Minimum Below 32F&deg; F',
         'days_tmax_gt_95f': 'Days With Maximum Above 95&deg; F',
-        'pcpn': 'Mean Daily Precipitation',
+        'pcpn': 'Total precipitation',
         'days_pcpn_gt_1in': 'Days of Precipitation Above 1 Inch',
         'cdd_65f': 'Cooling Degree Days',
         'hdd_65f': 'Heating Degree Days'

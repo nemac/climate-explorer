@@ -108,7 +108,7 @@ $lockdown = 1;
             <dt>Mean Daily Minimum Temperature	</dt>
             <dd>Mean (average) of a location’s daily minimum temperatures observed during a specified period.</dd>
 
-            <dt>Mean Daily Precipitation	</dt>
+            <dt>Total precipitation	</dt>
             <dd>Total precipitation that fell over a given period divided by the number of days in the period. For % Change in precipitation, maps show precipitation compared with average precipitation to the period 1960-1989 from average monthly precipitation. Data is currently shown for January, April, July, and October; remaining months will be added soon. </dd>
 
             <dt>NEX-DCP30	</dt>

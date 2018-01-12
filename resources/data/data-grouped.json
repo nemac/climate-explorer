@@ -633,7 +633,7 @@
     "mean_daily_max": {
       "type": "Tile",
       "id": "mean_daily_max",
-      "title": "Mean Daily Max Temperature",
+      "title": "Average Daily Max Temp (°F)",
       "description": "Maximum temperatures are one indicator of conditions that can interfere with ecosystem functions. View how temperatures are projected to change during future decades.",
       "source": "https://catalog.data.gov/dataset/bias-corrected-constructed-analogs-v2-daily-climate-projections",
       "legend": "resources/img/mean_daily_max",

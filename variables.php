@@ -157,24 +157,23 @@ if ($cut_url == $current_url) {
 
         <li class="select border" id="variable-options-container">
             <select class="dropdown" id="variable-options">
-                <option value="tmax">Mean Daily Maximum Temperature (°F)</option>
-                <option value="tmin">Mean Daily Minimum Temperature (°F)</option>
-                <option value="days_tmax_gt_90f">Count of Days with Maximum temperature over 90°F (days)</option>
-                <option value="days_tmax_gt_95f">Count of days with Maximum temperature over 95°F (days)</option>
-                <option value="days_tmax_gt_100f">Count of days with Maximum Temperature over 100°F (days)</option>
-                <option value="days_tmax_gt_105f">Count of Days with Maximum Temperature over 105°F (days)</option>
-                <option value="days_tmax_lt_32f">Count of Days with Maximum Temperature below 32°F (days)</option>
-                <option value="days_tmin_lt_32f">Days with Minimum Temps Below 32°F (days)</option>
-                <option value="days_tmin_gt_80f">Count of days with minimum temperature above 80°F (days)</option>
-                <option value="days_tmin_gt_90f">Count of days with minimum temperature above 90°F (days)</option>
+                <option value="tmax">Average Daily Max Temp (°F)</option>
+                <option value="tmin">Average Daily Min Temp (°F)</option>
+                <option value="days_tmax_gt_90f">Days per year with max above 90°F</option>
+                <option value="days_tmax_gt_95f">Days per year with max above 95°F</option>
+                <option value="days_tmax_gt_100f">Days per year with max above 100°F</option>
+                <option value="days_tmax_gt_105f">Days per year with max above 105°F</option>
+                <option value="days_tmax_lt_32f">Days per year with max below 32°F (Icing days)</option>
+                <option value="days_tmin_lt_32f">Days per year with min below 32°F (frost days)</option>
+                <option value="days_tmin_gt_80f">Days per year with min above 80°F</option>
+                <option value="days_tmin_gt_90f">Days per year with min above 90°F</option>
                 <option value="pcpn">Total Precipitation (inches)</option>
-                <option value="days_pcpn_gt_1in">Days with More than 1 inch of Precipitation (days)</option>
-                <option value="days_pcpn_gt_2in">Days with More than 2 inch of Precipitation (days)</option>
-                <option value="days_pcpn_gt_3in">Days with More than 3 inch of Precipitation (days)</option>
-                <option value="days_pcpn_gt_4in">Days with More than 4 inch of Precipitation (days)</option>
-                <option value="days_pcpn_lt_0.01in">Dry Days (days)</option>
-                <option value="hdd_65f">days * degrees below 65°F (°F-days)</option>
-                <option value="cdd_65f">days * degrees above 65°F (°F-days)</option>
+                <option value="days_pcpn_gt_1in">Days per year with more than 1 inch precip</option>
+                <option value="days_pcpn_gt_2in">Days per year with more than 2 inches precip</option>
+                <option value="days_pcpn_gt_3in">Days per year with more than 3 inches precip</option>
+                <option value="days_pcpn_lt_0.01in">Dry Days (days/period)</option>
+                <option value="hdd_65f">Heating Degree Days (°F-days)</option>
+                <option value="cdd_65f">Cooling Degree Days (°F-days)</option>
                 <option value="gdd">Growing Degree Days (°F-days)</option>
                 <option value="gddmod">Modified Growing Degree Days (°F-days)</option>
 

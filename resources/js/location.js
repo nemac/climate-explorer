@@ -341,19 +341,34 @@ Location.prototype.stationSelected = function (feature, event, type) {
 
         if (props.type === 'ITEM') {
             console.log("CLICKED ON ITEM");
-            $('#multi-chart-container').show();
-            $('#multi-chart-header').remove();
-
-            $('#multi-precip-chart-container').show();
-            $('#tidal-chart-container').hide();
-
-            html = '<div id="multi-chart-header"><h3 class="accent-color" style="margin-bottom: 20px;"><span class="icon icon-district"></span>Weather Station</h3><div id="close-wx-station">x</div>' +
-                '<div>Station: ' + props.name + '<br /></div>' +
-                '<div>Station ID: <div id="station_id">' + props.station + '</div><br /></div></div>' +
-                '' +
-                '';
-
-            $('#multi-chart-container').prepend(html);
+            
+            $('#stations-spinner').fadeIn(150, function() {
+              
+                
+              
+              $('#multi-chart-container').show();
+              $('#multi-chart-header').remove();
+  
+              $('#multi-precip-chart-container').show();
+              $('#tidal-chart-container').hide();
+  
+              html = '<div id="multi-chart-header"><h3 class="accent-color" style="margin-bottom: 20px;"><span class="icon icon-district"></span>Weather Station</h3><div id="close-wx-station">x</div>' +
+                  '<div>Station: ' + props.name + '<br /></div>' +
+                  '<div>Station ID: <div id="station_id">' + props.station + '</div><br /></div></div>' +
+                  '' +
+                  '';
+  
+              $('#multi-chart-container').prepend(html);
+              
+              $('#stations-spinner').fadeOut(250);
+              
+            });
+            
+/*
+            $('.tabs-plain').tabs({
+              active: 0
+            });
+*/
 
             this.chart = new ChartBuilder(props, this.stations_base_url);
         }
