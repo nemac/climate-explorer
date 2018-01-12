@@ -5750,19 +5750,43 @@ body.detail-open #nav-overlay {
   color: #904848;
 }
 
-/* line 885, ../scss/pages/_location.scss */
+/* line 884, ../scss/pages/_location.scss */
+#location-stations {
+  padding: 0;
+  height: calc(100vh - 160px);
+}
+/* line 888, ../scss/pages/_location.scss */
+#location-stations .location-data-section {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+/* line 892, ../scss/pages/_location.scss */
 #location-stations h3 {
   margin: 0 0 2% 0;
 }
-/* line 889, ../scss/pages/_location.scss */
-#location-stations .data-list {
-  width: 69%;
+/* line 898, ../scss/pages/_location.scss */
+#location-stations #location-stations-about {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 50%;
+  background: rgba(255, 255, 255, 0.85);
+  padding: 10px;
+  z-index: 5;
 }
-/* line 893, ../scss/pages/_location.scss */
-#location-stations .data-accordion-wrap {
-  width: 30%;
+/* line 910, ../scss/pages/_location.scss */
+#location-stations #location-stations-map-wrap {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 1;
 }
-/* line 897, ../scss/pages/_location.scss */
+/* line 915, ../scss/pages/_location.scss */
 #location-stations #location-station-map {
   position: absolute;
   top: 0;
@@ -5770,11 +5794,11 @@ body.detail-open #nav-overlay {
   width: 100%;
   height: 100%;
 }
-/* line 900, ../scss/pages/_location.scss */
+/* line 918, ../scss/pages/_location.scss */
 #location-stations #location-station-map .ol-attribution, #location-stations #location-station-map .ol-rotate {
   display: none;
 }
-/* line 904, ../scss/pages/_location.scss */
+/* line 922, ../scss/pages/_location.scss */
 #location-stations #location-station-map .ol-zoom {
   position: absolute;
   z-index: 1;
@@ -5785,7 +5809,7 @@ body.detail-open #nav-overlay {
   -webkit-transform: translateY(-50%);
   transform: translateY(-50%);
 }
-/* line 911, ../scss/pages/_location.scss */
+/* line 929, ../scss/pages/_location.scss */
 #location-stations #location-station-map .ol-zoom button {
   display: block;
   width: 30px;
@@ -5800,6 +5824,221 @@ body.detail-open #nav-overlay {
   -moz-border-radius: 50%;
   -webkit-border-radius: 50%;
   border-radius: 50%;
+}
+/* line 947, ../scss/pages/_location.scss */
+#location-stations #location-stations-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  left: -9999px;
+  opacity: 0;
+  transition: left 0s ease 0.25s, opacity 0.25s ease 0s;
+  z-index: 10;
+  overflow: hidden;
+  *zoom: 1;
+}
+/* line 957, ../scss/pages/_location.scss */
+#location-stations.overlay-on #location-stations-overlay {
+  left: 0;
+  opacity: 1;
+  transition: left 0s ease 0s, opacity 0.25s ease 0s;
+  background: rgba(245, 68, 45, 0.9);
+}
+/* line 964, ../scss/pages/_location.scss */
+#location-stations.overlay-on .station-overlay-content {
+  transition: left 0s ease 0s, opacity 0.25s ease 0s;
+}
+/* line 969, ../scss/pages/_location.scss */
+#location-stations.overlay-on:not(.type-tidal) #station-detail {
+  left: 0;
+  opacity: 1;
+}
+/* line 976, ../scss/pages/_location.scss */
+#location-stations.overlay-on.type-tidal #location-stations-overlay {
+  background: rgba(0, 88, 207, 0.9);
+}
+/* line 980, ../scss/pages/_location.scss */
+#location-stations.overlay-on.type-tidal #station-detail-tidal {
+  left: 0;
+  opacity: 1;
+}
+/* line 989, ../scss/pages/_location.scss */
+#location-stations #station-overlay-header {
+  height: 120px;
+  color: #fff;
+  padding: 20px 20px 0 20px;
+  overflow: hidden;
+  *zoom: 1;
+}
+/* line 995, ../scss/pages/_location.scss */
+#location-stations #station-overlay-header h3 {
+  padding: 0;
+}
+/* line 999, ../scss/pages/_location.scss */
+#location-stations #station-overlay-header h5 {
+  float: left;
+  width: 50%;
+  font-size: 1.125rem;
+  font-family: "CESans", Roboto, Helvetica, "Helvetica Neue", Arial, sans-serif;
+}
+/* line 1009, ../scss/pages/_location.scss */
+#location-stations .station-overlay-content {
+  position: absolute;
+  bottom: 0;
+  left: -9999px;
+  width: 100%;
+  height: calc(100% - 120px);
+  opacity: 0;
+  transition: left 0s ease 0.25s, opacity 0.25s ease 0s;
+  padding: 20px;
+  z-index: 1;
+}
+/* line 1021, ../scss/pages/_location.scss */
+#location-stations .station-overlay-column {
+  position: relative;
+  float: left;
+  width: 50%;
+  height: 100%;
+}
+/* line 1027, ../scss/pages/_location.scss */
+#location-stations .station-overlay-column.left {
+  padding-right: 40px;
+}
+/* line 1030, ../scss/pages/_location.scss */
+#location-stations .station-overlay-column.left:after {
+  content: '';
+  display: block;
+  position: absolute;
+  top: 50%;
+  right: 0;
+  width: 0;
+  height: 0;
+  border: 20px solid transparent;
+  border-left-color: #fff;
+}
+/* line 1046, ../scss/pages/_location.scss */
+#location-stations #station-detail-data {
+  background: #fff;
+  padding: 20px;
+}
+/* line 1051, ../scss/pages/_location.scss */
+#location-stations .form-group {
+  overflow: hidden;
+  *zoom: 1;
+  font-size: 0.75rem;
+}
+/* line 1055, ../scss/pages/_location.scss */
+#location-stations .form-group label {
+  display: block;
+}
+/* line 1059, ../scss/pages/_location.scss */
+#location-stations .form-group select {
+  font-family: Roboto, Helvetica, "Helvetica Neue", Arial, sans-serif;
+  font-size: 0.75rem;
+}
+/* line 1064, ../scss/pages/_location.scss */
+#location-stations .form-group input {
+  display: inline-block;
+  width: calc(100% - 10px);
+  font-family: Roboto, Helvetica, "Helvetica Neue", Arial, sans-serif;
+  font-size: 0.75rem;
+  line-height: 1.2;
+  padding: 4px 8px;
+}
+/* line 1073, ../scss/pages/_location.scss */
+#location-stations .form-group .field-pair {
+  float: left;
+  width: 25%;
+}
+/* line 1078, ../scss/pages/_location.scss */
+#location-stations .form-group .field-pair.append input {
+  width: 50%;
+}
+/* line 1082, ../scss/pages/_location.scss */
+#location-stations .form-group .field-pair.append .append {
+  display: inline-block;
+  padding-left: 4px;
+  vertical-align: middle;
+}
+/* line 1098, ../scss/pages/_location.scss */
+#location-stations #tidal-chart {
+  background-color: #fff;
+}
+/* line 1106, ../scss/pages/_location.scss */
+#location-stations #station-overlay-close {
+  display: block;
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  font-size: 3rem;
+  color: #fff;
+  cursor: pointer;
+  z-index: 2;
+}
+/* line 1119, ../scss/pages/_location.scss */
+#location-stations #stations-spinner {
+  display: none;
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  width: 50px;
+  height: 50px;
+  padding: 10px 14px;
+  background: rgba(255, 255, 255, 0.75);
+  transform: translate(-50%, -50%);
+  z-index: 15;
+}
+/* line 1138, ../scss/pages/_location.scss */
+#location-stations .data-accordion-wrap {
+  width: 30%;
+}
+/* line 1145, ../scss/pages/_location.scss */
+#location-stations #station-charts-tabs {
+  height: 100%;
+  padding: 20px;
+  background: #fff;
+}
+/* line 1150, ../scss/pages/_location.scss */
+#location-stations #station-charts-tabs .chart-tab-list {
+  margin: 0 0 10px 0;
+}
+/* line 1153, ../scss/pages/_location.scss */
+#location-stations #station-charts-tabs .chart-tab-list li {
+  display: inline-block;
+}
+/* line 1156, ../scss/pages/_location.scss */
+#location-stations #station-charts-tabs .chart-tab-list li a {
+  display: block;
+  padding: 8px 10px;
+  color: #233a70;
+}
+/* line 1162, ../scss/pages/_location.scss */
+#location-stations #station-charts-tabs .chart-tab-list li.selected {
+  background-color: #d5e8f2;
+}
+/* line 1168, ../scss/pages/_location.scss */
+#location-stations #station-charts-tabs .chart-tabs-wrap {
+  position: relative;
+  height: 300px;
+}
+/* line 1173, ../scss/pages/_location.scss */
+#location-stations #station-charts-tabs .chart-tab {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  left: -9999px;
+  opacity: 0;
+  transition: left 0s ease 0.25s, opacity 0.25s ease 0s;
+}
+/* line 1179, ../scss/pages/_location.scss */
+#location-stations #station-charts-tabs .chart-tab.selected {
+  left: 0;
+  opacity: 1;
+  transition: left 0s ease 0s, opacity 0.25s ease 0s;
 }
 
 /* line 2, ../scss/pages/_topic.scss */
@@ -7596,13 +7835,13 @@ https://raw.github.com/shagstrom/split-pane/master/LICENSE
   cursor: row-resize;
 }
 
-/* line 913, ../scss/screen.scss */
+/* line 917, ../scss/screen.scss */
 .pretty-split-pane-frame .split-pane > .split-pane-divider.dragged.touch {
   background: blue;
   opacity: 0.25;
 }
 
-/* line 918, ../scss/screen.scss */
+/* line 922, ../scss/screen.scss */
 .split-pane-divider {
   right: 50%;
   width: 12px;
@@ -7612,7 +7851,7 @@ https://raw.github.com/shagstrom/split-pane/master/LICENSE
   box-shadow: 0 0 10px rgba(35, 58, 112, 0.25);
 }
 
-/* line 925, ../scss/screen.scss */
+/* line 929, ../scss/screen.scss */
 .pane-content {
   position: absolute;
   top: 0;
@@ -7622,13 +7861,13 @@ https://raw.github.com/shagstrom/split-pane/master/LICENSE
   overflow: auto;
 }
 
-/* line 930, ../scss/screen.scss */
+/* line 934, ../scss/screen.scss */
 #pane-left {
   right: 50%;
   margin-right: 12px;
 }
 
-/* line 935, ../scss/screen.scss */
+/* line 939, ../scss/screen.scss */
 #pane-right {
   width: 50%;
 }

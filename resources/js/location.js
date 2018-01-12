@@ -1,5 +1,22 @@
+$('#station-charts-tabs .chart-tab-list a').click(function(e) {
+  
+  e.preventDefault();
+  
+  var tab_id = $(this).attr('href');
+  
+  if (!$(this).parents('li').hasClass('selected')) {
+    
+    $('#station-charts-tabs .chart-tab-list li').removeClass('selected');
+    $('#station-charts-tabs .chart-tab').removeClass('selected');
+    
+    $(this).parents('li').addClass('selected');
+    $(tab_id).addClass('selected');
+    
+  }
+  
+});
 
-$('#tidal-chart-container').hide();
+//$('#tidal-chart-container').hide();
 
 var Location = function (lat, lon, stations_base_url, data_base_url) {
 
@@ -332,82 +349,65 @@ Location.prototype.addTIDALStations = function () {
 Location.prototype.stationSelected = function (feature, event, type) {
     var self = this;
 
-
     if (feature) {
-
-
-        var props = feature.getProperties();
-
-
-        if (props.type === 'ITEM') {
-            console.log("CLICKED ON ITEM");
-            
-            $('#stations-spinner').fadeIn(150, function() {
+      
+        var station_tabs;
+        
+        $('#stations-spinner').fadeIn(150, function() {
+          $('#location-stations').addClass('overlay-on');
+          
+          var props = feature.getProperties();
+          
+          // populate header
+          
+          $('#station-overlay-header .station-name').html(props.name);
+          $('#station-overlay-header .station-id').html(props.station);
+  
+          if (props.type === 'ITEM') {
+              console.log("CLICKED ON ITEM");
+  
+              $('#station-overlay-header h3').html('Weather Station');
               
-                
-              
-              $('#multi-chart-container').show();
-              $('#multi-chart-header').remove();
-  
-              $('#multi-precip-chart-container').show();
-              $('#tidal-chart-container').hide();
-  
-              html = '<div id="multi-chart-header"><h3 class="accent-color" style="margin-bottom: 20px;"><span class="icon icon-district"></span>Weather Station</h3><div id="close-wx-station">x</div>' +
-                  '<div>Station: ' + props.name + '<br /></div>' +
-                  '<div>Station ID: <div id="station_id">' + props.station + '</div><br /></div></div>' +
-                  '' +
-                  '';
-  
-              $('#multi-chart-container').prepend(html);
+              self.chart = new ChartBuilder(props, self.stations_base_url);
               
               $('#stations-spinner').fadeOut(250);
-              
-            });
+          }
+          
+          if (props.type === 'tidal') {
             
-/*
-            $('.tabs-plain').tabs({
-              active: 0
-            });
-*/
-
-            this.chart = new ChartBuilder(props, this.stations_base_url);
-        }
-        if (props.type === 'tidal') {
-
-            $('#tidal-chart-header').remove();
-            $('#tidal-chart-container').show();
-
-            $('#multi-chart-container').hide();
-            $('#multi-precip-chart-container').hide();
-
-            var html = '<div id="tidal-chart-header"><h3 class="accent-color" style="margin-bottom: 20px;"><span class="icon icon-district"></span>Tidal Station</h3><div id="close-wx-station">x</div>' +
-                '<div>Station: ' + props.name + '<br /></div>' +
-                '<div>Station ID: ' + props.station + '<br /></div></div>'
-
-            //this.popup.show(event.mapBrowserEvent.coordinate, html);
-            $('#tidal-chart-container').prepend(html);
-
-            //$(html).appendTo('#station-data-container').find('#tidal-chart').tidalstationwidget({
-            //    station: props.station,
-            //    data_url: '/resources/tidal/tidal_data.json' // defaults to tidal_data.json
-            //});
-
-
-            $('#station').change(function () {
-                $("#tidal-chart").tidalstationwidget("update", {station: $('#station').val()})
-            });
-
-            $("#station").val(props.station).change();
-
-
-        }
-
+              $('#station-overlay-header h3').html('Tidal Station');
+            
+              $('#location-stations').addClass('type-tidal');
+  
+              $('#stations-spinner').fadeOut(250);
+              
+              $('body').on('change', '#station', function() {
+                  $("#tidal-chart").tidalstationwidget("update", {station: $(this).val()})
+                  
+                  if ($(this).find('option:selected').length) {
+                    $('#station-overlay-header .station-name').html($(this).find('option:selected').text());
+                  }
+          
+                  $('#station-overlay-header .station-id').html($(this).val());
+              });
+  
+              $("#station").val(props.station).change();
+  
+          }
+          
+        });
 
     } else {
         $('#station-data-about').show();
         //$('#station-data-container').empty();
         //this.popup.hide();
     }
+    
+    $('#station-overlay-close').click(function() {
+      $('#location-stations').removeClass('overlay-on').removeClass('type-tidal');
+      $('body').find('#station').val('').change();
+    });
+    
 
     $('#close-wx-station').on('click', function () {
         $('#station-data-about').show();

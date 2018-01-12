@@ -913,6 +913,198 @@ if (!isValidLongitude($lon)) {
 
 
         <!-- begin weather stations map -->
+        
+        <section id="location-stations" class="location-data-section-wrap">
+          <div class="location-data-section">
+            
+            <?php
+              
+              // intro box
+              
+            ?>
+            <div id="location-stations-about">
+              <h3 class="accent-color"><span class="icon icon-district"></span>Weather Stations</h3>
+              
+              <p>Dots on the map show weather stations in the Global Historical Climatology Network-Daily (GHCN-D) database.</p>
+              <p>Click any dot to view zoomable graphs of observed daily temperature and precipitation compared to 1981-2010 Climate Normals.</p>
+              <p>Scroll or click and drag to adjust the graph display.</p>
+            </div>
+            
+            <?php
+              
+              // map
+              
+            ?>
+            
+            <div id="location-stations-map-wrap">
+              <div id="location-station-map"></div>
+            </div>
+            
+            <?php
+              
+              // data overlay
+              
+            ?>
+            
+            <div id="stations-spinner">Loading…</div>
+            
+            <div id="location-stations-overlay">
+              
+              <span id="station-overlay-close">×</span>
+                
+              <div id="station-overlay-header">
+                <h3>Weather Station</h3>
+                <h5>Name: <span class="station-name"></span></h5>
+                <h5>Station ID: <span class="station-id"></span></h5>
+              </div>
+              
+              <?php
+                
+                // standard station
+                // tabs (left column)
+                // chart w/ vars (right column)
+              
+              ?>
+              
+              <div id="station-detail" class="station-overlay-content">
+              
+                <div id="station-detail-tabs" class="station-overlay-column left">
+                  <div id="station-charts-tabs">
+                    <ul id="stations-charts-list" class="chart-tab-list">
+                      <li class="selected"><a href="#stations-charts-temp">Temperature</a></li>
+                      <li><a href="#stations-charts-precip">Precipitation</a></li>
+                    </ul>
+                    
+                    <div class="chart-tabs-wrap">
+  
+                      <div id="stations-charts-temp" class="chart-tab selected">
+                        <div id="multi-chart-container">
+                          <div id="multi-chart" style="width:100%; height:300px"></div>
+                        </div>
+                      </div>
+    
+                      <div id="stations-charts-precip" class="chart-tab">
+                        <div id="multi-precip-chart-container">
+                          <div id="multi-precip-chart" style="width:100%; height:300px"></div>
+                        </div>
+                      </div>
+                      
+                    </div>
+  
+                  </div>
+                </div>
+              
+                <div id="station-detail-data" class="station-overlay-column right">
+                  
+                  <div id="station-data-container">
+  
+                    <div class="form-group">
+                      <div class="field-pair field-id">
+                        <label for="station">Station Id:</label>
+                        
+                        <div class="field">
+                          <input type="text" name="station" id="station" value="USC00094429">
+                        </div>
+                      </div>
+                      
+                      <div class="field-pair field-var">
+                        <label for="itemvariable">Variable:</label>
+                        
+                        <div class="field">
+                          <select name="itemvariable" id="itemvariable">
+                            <option value="precipitation">Precipitation</option>
+                            <option value="tmax">TMax</option>
+                            <option value="tmin">TMin</option>
+                            <option value="tavg">TAvg</option>
+                          </select>
+                        </div>
+                      </div>
+                      
+                      <div class="field-pair field-window append">
+                        <label for="window">Window:</label>
+                        
+                        <div class="field">
+                          <input type="number" id="window" name="window" value="1">
+                          <span class="append">days</span>
+                        </div>
+                      </div>
+                      
+                      <div class="field-pair field-threshold append">
+                        <label for="threshold">Threshold:</label>
+                        
+                        <div class="field">
+                          <input type="number" name="threshold" id="threshold" value="1" step="0.1">
+                          <span class="append">inches</span>
+                        </div>
+                      </div>
+                    </div>
+  
+                    <div id="item-chart-container"></div>
+
+                  </div>
+                  
+                </div>
+                
+              </div>
+              
+              <?php
+                
+                // tidal station
+                
+              ?>
+              
+              <div id="station-detail-tidal" class="station-overlay-content">
+                <div id="tidal-chart-container">
+                  <select name="" id="station" class="form-control" style="width: 200px;">
+                    <option value="" disabled selected hidden>Station</option>
+                    <option value="8443970">Boston, MA</option>
+                    <option value="8454000">Providence, RI</option>
+                    <option value="8461490">New London, CT</option>
+                    <option value="8510560">Montauk, NY</option>
+                    <option value="8516945">Kings Point, NY</option>
+                    <option value="8518750">Battery, NY</option>
+                    <option value="8531680">Sandy Hook, NJ</option>
+                    <option value="8534720">Atlantic City, NJ</option>
+                    <option value="8545240">Philadelphia, PA</option>
+                    <option value="8557380">Lewes, DE</option>
+                    <option value="8574680">Baltimore, MD</option>
+                    <option value="8575512">Annapolis, MD</option>
+                    <option value="8594900">Washington D.C.</option>
+                    <option value="8638610">Sewells Point, VA</option>
+                    <option value="8658120">Wilmington, NC</option>
+                    <option value="8665530">Charleston, SC</option>
+                    <option value="8670870">Fort Pulaski, GA</option>
+                    <option value="8720030">Fernandina Beach, FL</option>
+                    <option value="8720218">Mayport, FL</option>
+                    <option value="8724580">Key West, FL</option>
+                    <option value="8726430">St Petersburg, FL</option>
+                    <option value="8771341">Galveston Bay, TX</option>
+                    <option value="8779770">Port Isabel, TX</option>
+                    <option value="9410230">La Jolla, CA</option>
+                    <option value="9414290">San Francisco, CA</option>
+                    <option value="9447130">Seattle, WA</option>
+                    <option value="1612340">Honolulu, HI</option>
+                  </select>
+                  
+                  <canvas id="tidal-chart" style="width:100%; height:300px"></canvas>
+                </div>
+              </div>
+                
+            </div>
+            
+          </div>
+        </section>
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+<!--
         <section id="location-stations" class="location-data-section-wrap">
             <div class="location-data-section">
                 <div id="stations-data" class="data-list">
@@ -1020,6 +1212,7 @@ if (!isValidLongitude($lon)) {
                 </div>
             </div>
         </section>
+-->
 
         <!-- end weather stations chart and map -->
 

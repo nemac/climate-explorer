@@ -901,6 +901,10 @@ h6 {
       a {
         display: block;
         padding: 8px 10px;
+        
+        &.ui-state-active {
+          
+        }
       }
     }
   }

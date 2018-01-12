@@ -70,7 +70,9 @@
 
     // on load
 
-    $(window).load(function() {
+    //update with following forced by jquery upgrade
+    //$(window).load(function() {
+    $(window).on('load', function(){
 
       if (window_width() <= 600) {
         $('body').addClass('size-600');
@@ -849,7 +851,9 @@
     //
     // -------------------
 
-    $(window).load(function () {
+//    $(window).load(function () {
+
+   $(window).on('load', function(){
       equalize_left_header();
       accordion_width();
       $('#case-menu .legend').first().open_layer_info();
@@ -900,7 +904,7 @@
     // UI tabs
     
     $('.tabs-plain').tabs({
-      
+      active: 0
     });
 
   });
