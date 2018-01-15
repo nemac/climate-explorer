@@ -899,10 +899,15 @@
     position: absolute;
     top: 0;
     left: 0;
-    width: 50%;
+    width: 30%;
     background: transparentize($white, 0.15);
-    padding: 10px;
+    padding: 20px 20px 10px 20px;
     z-index: 5;
+    
+    p {
+      font-size: 0.875rem;
+      margin: 20px 0;
+    }
   }
   
   // MAP
@@ -1101,7 +1106,7 @@
   
   // BUTTONS
   
-  // spinner
+  // close
   
   #station-overlay-close {
     display: block;
@@ -1114,22 +1119,19 @@
     z-index: 2;
   }
   
-  // close
+  // spinner
   
   #stations-spinner {
     display: none;
     position: absolute;
     left: 50%;
     top: 50%;
-    width: 50px;
     height: 50px;
     padding: 10px 14px;
     background: transparentize($white, 0.25);
     transform: translate(-50%, -50%);
     z-index: 15;
   }
-  
-  
   
   .data-list {
     //width: 69%;
