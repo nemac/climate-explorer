@@ -92,7 +92,7 @@ if (!isValidLongitude($lon)) {
                     <li><a href="<?php $current_domain ?>#location-temperature">Temperature</a></li>
                     <li><a href="<?php $current_domain ?>#location-precipitation">Precipitation</a></li>
                     <li><a href="<?php $current_domain ?>#location-derived">Other</a></li>
-                    <li><a href="<?php $current_domain ?>#location-stations">Weather Stations</a></li>
+                    <li><a href="<?php $current_domain ?>#location-stations">Stations</a></li>
                     <!--<li><a href="#location-impacts">Relevant Impacts</a></li>-->
                 </ul>
             </div>
@@ -100,7 +100,7 @@ if (!isValidLongitude($lon)) {
 
         <!-- begin temperature chart and map -->
 
-        <div id="download-panel" class="hidden download-panel overlay" style="position:absolute">
+        <div id="download-panel" class="download-panel overlay">
             <div class="download-inner">
                 <a href="javascript:void(0);" id="download-dismiss-button" class="icon icon-close"></a>
                 <p>Use the following links to download this graph's data:</p>
@@ -123,7 +123,7 @@ if (!isValidLongitude($lon)) {
 
                     <ul class="data-options">
                         <li class="active accent-border">
-                            <h4 id="var-tmax"><a href="<?php $current_domain ?>#" class="text">Mean Daily Maximum Temperature</a><a href="<?php $current_domain ?>#detail-tasmax" class="icon icon-help nav-detail-link"></a></h4>
+                            <h4 id="var-tmax"><a href="<?php $current_domain ?>#" class="text">Average Daily Max Temp (°F)</a><a href="<?php $current_domain ?>#detail-tmax" class="icon icon-help nav-detail-link"></a></h4>
                             <ul class="location-resolution">
                                 <li class="active accent-border"><a class="accent-color">Annual</a></li>
                                 <li class="seasonal-monthly"><a>Monthly</a></li>
@@ -132,7 +132,7 @@ if (!isValidLongitude($lon)) {
                         </li>
 
                         <li class="">
-                            <h4 id="var-tmin"><a href="<?php $current_domain ?>#" class="text">Mean Daily Minimum Temperature</a><a href="<?php $current_domain ?>#detail-tasmin" class="icon icon-help nav-detail-link"></a></h4>
+                            <h4 id="var-tmin"><a href="<?php $current_domain ?>#" class="text">Average Daily Min Temp (°F)</a><a href="<?php $current_domain ?>#detail-tasmin" class="icon icon-help nav-detail-link"></a></h4>
                             <ul class="location-resolution">
                                 <li><a>Annual</a></li>
                                 <li class="seasonal-monthly"><a>Monthly</a></li>
@@ -143,7 +143,7 @@ if (!isValidLongitude($lon)) {
 
 
                         <li class="">
-                            <h4 id="var-days_tmax_gt_90f"><a href="<?php $current_domain ?>#" class="text">Count of Days with Maximum Temperature Over 90&deg;F (days)</a><a href="<?php $current_domain ?>#detail-days_tmax_gt_90f" class="icon icon-help nav-detail-link"></a></h4>
+                            <h4 id="var-days_tmax_gt_90f"><a href="<?php $current_domain ?>#" class="text">Days per year with max above 90°F</a><a href="<?php $current_domain ?>#detail-days_tmax_gt_90f" class="icon icon-help nav-detail-link"></a></h4>
                             <ul class="location-resolution">
                                 <li><a>Annual</a></li>
                             </ul>
@@ -152,21 +152,21 @@ if (!isValidLongitude($lon)) {
 
 
                         <li class="">
-                            <h4 id="var-days_tmax_gt_95f"><a href="<?php $current_domain ?>#" class="text">Count of Days with Maximum Temperature Over 95&deg;F (days)</a><a href="<?php $current_domain ?>#detail-days_tmax_gt_95f" class="icon icon-help nav-detail-link"></a></h4>
+                            <h4 id="var-days_tmax_gt_95f"><a href="<?php $current_domain ?>#" class="text">Days per year with max above 95°F</a><a href="<?php $current_domain ?>#detail-days_tmax_gt_95f" class="icon icon-help nav-detail-link"></a></h4>
                             <ul class="location-resolution">
                                 <li><a>Annual</a></li>
                             </ul>
                         </li>
 
                         <li class="">
-                            <h4 id="var-days_tmax_gt_100f"><a href="<?php $current_domain ?>#" class="text">Count of Days with Maximum Temperature Over 100&deg;F (days)</a><a href="<?php $current_domain ?>#detail-days_tmax_gt_100f" class="icon icon-help nav-detail-link"></a></h4>
+                            <h4 id="var-days_tmax_gt_100f"><a href="<?php $current_domain ?>#" class="text">Days per year with max above 100°F</a><a href="<?php $current_domain ?>#detail-days_tmax_gt_100f" class="icon icon-help nav-detail-link"></a></h4>
                             <ul class="location-resolution">
                                 <li><a>Annual</a></li>
                             </ul>
                         </li>
 
                         <li class="">
-                            <h4 id="var-days_tmax_gt_105f"><a href="<?php $current_domain ?>#" class="text">Count of Days with Maximum Temperature Over 105&deg;F (days)</a><a href="<?php $current_domain ?>#detail-days_tmax_gt_105f" class="icon icon-help nav-detail-link"></a></h4>
+                            <h4 id="var-days_tmax_gt_105f"><a href="<?php $current_domain ?>#" class="text">Days per year with max above 105°F</a><a href="<?php $current_domain ?>#detail-days_tmax_gt_105f" class="icon icon-help nav-detail-link"></a></h4>
                             <ul class="location-resolution">
                                 <li><a>Annual</a></li>
                             </ul>
@@ -175,14 +175,14 @@ if (!isValidLongitude($lon)) {
 
 
                         <li class="">
-                            <h4 id="var-days_tmax_lt_32f"><a href="<?php $current_domain ?>#" class="text">Count of Days with Maximum Temperature Below 32&deg;F (days)</a><a href="<?php $current_domain ?>#detail-days_tmax_lt_32f" class="icon icon-help nav-detail-link"></a></h4>
+                            <h4 id="var-days_tmax_lt_32f"><a href="<?php $current_domain ?>#" class="text">Days per year with max below 32°F (Icing days)</a><a href="<?php $current_domain ?>#detail-days_tmax_lt_32f" class="icon icon-help nav-detail-link"></a></h4>
                             <ul class="location-resolution">
                                 <li><a>Annual</a></li>
                             </ul>
                         </li>
 
                         <li class="">
-                            <h4 id="var-days_tmin_lt_32f"><a href="<?php $current_domain ?>#" class="text">Days with Minimum Below 32&deg;F</a><a href="<?php $current_domain ?>#detail-days_tmin_blw_0" class="icon icon-help nav-detail-link"></a></h4>
+                            <h4 id="var-days_tmin_lt_32f"><a href="<?php $current_domain ?>#" class="text">Days per year with min below 32°F (frost days)</a><a href="<?php $current_domain ?>#detail-days_tmin_blw_0" class="icon icon-help nav-detail-link"></a></h4>
                             <ul>
                                 <li><a>Annual</a></li>
                             </ul>
@@ -190,14 +190,14 @@ if (!isValidLongitude($lon)) {
 
 
                         <li class="">
-                            <h4 id="var-days_tmin_gt_80f"><a href="<?php $current_domain ?>#" class="text">Count of Days with Minimum Temperature Above 80&deg;F (days)</a><a href="<?php $current_domain ?>#detail-days_tmin_gt_80f" class="icon icon-help nav-detail-link"></a></h4>
+                            <h4 id="var-days_tmin_gt_80f"><a href="<?php $current_domain ?>#" class="text">Days per year with min above 80°F</a><a href="<?php $current_domain ?>#detail-days_tmin_gt_80f" class="icon icon-help nav-detail-link"></a></h4>
                             <ul class="location-resolution">
                                 <li><a>Annual</a></li>
                             </ul>
                         </li>
 
                         <li class="">
-                            <h4 id="var-days_tmin_gt_90f"><a href="<?php $current_domain ?>#" class="text">Count of Days with Minimum Temperature Above 90&deg;F (days)</a><a href="<?php $current_domain ?>#detail-days_tmin_gt_90f" class="icon icon-help nav-detail-link"></a></h4>
+                            <h4 id="var-days_tmin_gt_90f"><a href="<?php $current_domain ?>#" class="text">Days per year with min above 90°F</a><a href="<?php $current_domain ?>#detail-days_tmin_gt_90f" class="icon icon-help nav-detail-link"></a></h4>
                             <ul class="location-resolution">
                                 <li><a>Annual</a></li>
                             </ul>
@@ -296,7 +296,7 @@ if (!isValidLongitude($lon)) {
                                     <span class="icon icon-emission-scenario"></span>
                               <span class="text">
                                 Chart<span class="full-title">: <?php echo $county ?></span>
-                                <span class="source" id="temp-chart-name">Mean Daily Maximum Temperature</span>
+                                <span class="source" id="temp-chart-name">Average Daily Max Temp (°F)</span>
                               </span>
                                 </h4>
 
@@ -353,7 +353,7 @@ if (!isValidLongitude($lon)) {
                                     <span class="icon icon-district"></span>
                                       <span class="text">
                                         Map<span class="full-title">: <?php echo $county ?></span>
-                                        <span class="source" id="temp-map-name">Mean Daily Maximum Temperature</span>
+                                        <span class="source" id="temp-map-name">Average Daily Max Temp</span>
                                       </span>
                                 </h4>
 
@@ -391,7 +391,7 @@ if (!isValidLongitude($lon)) {
                                 <div class="location-map-legend-container">
                                     <h5>Legend</h5>
                                     <div class="location-map-legend">
-                                        <img class="legend-image" src="resources/img/tmax.png"></img>
+                                        <img class="legend-image" src="resources/img/legends/summer_tmax.png"></img>
                                     </div>
                                 </div>
 
@@ -423,7 +423,7 @@ if (!isValidLongitude($lon)) {
                         </li>
 
                         <li class="">
-                            <h4 id="var-days_pcpn_gt_1in"><a href="<?php $current_domain ?>#" class="text">days with more than 1 inch of precipitation (days)</a><a href="<?php $current_domain ?>#detail-days_pcpn_gt_1in" class="icon icon-help nav-detail-link"></a></h4>
+                            <h4 id="var-days_pcpn_gt_1in"><a href="<?php $current_domain ?>#" class="text">Days per year with more than 1 inch precip</a><a href="<?php $current_domain ?>#detail-days_pcpn_gt_1in" class="icon icon-help nav-detail-link"></a></h4>
                             <ul class="location-resolution">
                                 <li><a>Annual</a></li>
                             </ul>
@@ -431,29 +431,21 @@ if (!isValidLongitude($lon)) {
 
 
                         <li class="">
-                            <h4 id="var-days_pcpn_gt_2in"><a href="<?php $current_domain ?>#" class="text">days with more than 2 inch of precipitation (days)</a><a href="<?php $current_domain ?>#detail-days_pcpn_gt_2in" class="icon icon-help nav-detail-link"></a></h4>
+                            <h4 id="var-days_pcpn_gt_2in"><a href="<?php $current_domain ?>#" class="text">Days per year with more than 2 inches precip</a><a href="<?php $current_domain ?>#detail-days_pcpn_gt_2in" class="icon icon-help nav-detail-link"></a></h4>
                             <ul class="location-resolution">
                                 <li><a>Annual</a></li>
                             </ul>
                         </li>
 
                         <li class="">
-                            <h4 id="var-days_pcpn_gt_3in"><a href="<?php $current_domain ?>#" class="text">days with more than 3 inch of precipitation (days)</a><a href="<?php $current_domain ?>#detail-days_pcpn_gt_3in" class="icon icon-help nav-detail-link"></a></h4>
+                            <h4 id="var-days_pcpn_gt_3in"><a href="<?php $current_domain ?>#" class="text">Days per year with more than 3 inches precip</a><a href="<?php $current_domain ?>#detail-days_pcpn_gt_3in" class="icon icon-help nav-detail-link"></a></h4>
                             <ul class="location-resolution">
                                 <li><a>Annual</a></li>
                             </ul>
                         </li>
 
                         <li class="">
-                            <h4 id="var-days_pcpn_gt_4in"><a href="<?php $current_domain ?>#" class="text">days with more than 4 inch of precipitation (days)</a><a href="<?php $current_domain ?>#detail-days_pcpn_gt_4in" class="icon icon-help nav-detail-link"></a></h4>
-                            <ul class="location-resolution">
-                                <li><a>Annual</a></li>
-                            </ul>
-                        </li>
-
-
-                        <li class="">
-                            <h4 id="var-days_pcpn_lt_0.01in"><a href="<?php $current_domain ?>#" class="text">dry days (days)</a><a href="<?php $current_domain ?>#detail-days_pcpn_lt_0.01in" class="icon icon-help nav-detail-link"></a></h4>
+                            <h4 id="var-days_pcpn_lt_0.01in"><a href="<?php $current_domain ?>#" class="text">Dry Days (days/period)</a><a href="<?php $current_domain ?>#detail-days_pcpn_lt_0.01in" class="icon icon-help nav-detail-link"></a></h4>
                             <ul class="location-resolution">
                                 <li><a>Annual</a></li>
                             </ul>
@@ -652,7 +644,7 @@ if (!isValidLongitude($lon)) {
                                 <div class="location-map-legend-container">
                                     <h5>Legend</h5>
                                     <div class="location-map-legend">
-                                        <img class="legend-image" src="resources/img/pr.png"></img>
+                                        <img class="legend-image" src="resources/img/legends/pcpn.png"></img>
                                     </div>
                                 </div>
 
@@ -677,14 +669,14 @@ if (!isValidLongitude($lon)) {
 
                     <ul class="data-options">
                         <li class="active accent-border">
-                            <h4 id="var-hdd_65f"><a href="<?php $current_domain ?>#" class="text">Heating Degree Days</a><a href="<?php $current_domain ?>#detail-heating_degree_day_18" class="icon icon-help nav-detail-link"></a></h4>
+                            <h4 id="var-hdd_65f"><a href="<?php $current_domain ?>#" class="text">Heating Degree Days (°F-days)</a><a href="<?php $current_domain ?>#detail-heating_degree_day_18" class="icon icon-help nav-detail-link"></a></h4>
                             <ul>
                                 <li class="active accent-border"><a class="accent-color">Annual</a></li>
                             </ul>
                         </li>
 
                         <li class="">
-                            <h4 id="var-cdd_65f"><a href="<?php $current_domain ?>#" class="text">Cooling Degree Days</a><a href="<?php $current_domain ?>#detail-cooling_degree_day_18" class="icon icon-help nav-detail-link"></a></h4>
+                            <h4 id="var-cdd_65f"><a href="<?php $current_domain ?>#" class="text">Cooling Degree Days (°F-days)</a><a href="<?php $current_domain ?>#detail-cooling_degree_day_18" class="icon icon-help nav-detail-link"></a></h4>
                             <ul>
                                 <li><a>Annual</a></li>
                             </ul>
@@ -692,7 +684,7 @@ if (!isValidLongitude($lon)) {
 
 
                         <li class="">
-                            <h4 id="var-gdd"><a href="<?php $current_domain ?>#" class="text">growing degree days (°F-days)</a><a href="<?php $current_domain ?>#detail-gdd" class="icon icon-help nav-detail-link"></a></h4>
+                            <h4 id="var-gdd"><a href="<?php $current_domain ?>#" class="text">Growing Degree Days (°F-days)</a><a href="<?php $current_domain ?>#detail-gdd" class="icon icon-help nav-detail-link"></a></h4>
                             <ul>
                                 <li><a>Annual</a></li>
                             </ul>
@@ -700,7 +692,7 @@ if (!isValidLongitude($lon)) {
 
 
                         <li class="">
-                            <h4 id="var-gddmod"><a href="<?php $current_domain ?>#" class="text">modified growing degree days (°F-days)</a><a href="<?php $current_domain ?>#detail-gddmod" class="icon icon-help nav-detail-link"></a></h4>
+                            <h4 id="var-gddmod"><a href="<?php $current_domain ?>#" class="text">Modified Growing Degree Days  (°F-days)</a><a href="<?php $current_domain ?>#detail-gddmod" class="icon icon-help nav-detail-link"></a></h4>
                             <ul>
                                 <li><a>Annual</a></li>
                             </ul>
@@ -898,11 +890,11 @@ if (!isValidLongitude($lon)) {
                                 <div class="location-map-legend-container">
                                     <h5>Legend</h5>
                                     <div class="location-map-legend">
-                                        <img class="legend-image" src="resources/img/heating_degree_day_18.3.png"></img>
+                                        <img class="legend-image" src="resources/img/legends/hdd_65f.png"></img>
                                     </div>
                                 </div>
 
-                                <a href="variables.php?id=heating_degree_day_18.3" class="full-map-btn button bg-white color-orange arrow-right">View full map</a>
+                                <a href="variables.php?id=hdd_65f" class="full-map-btn button bg-white color-orange arrow-right">View full map</a>
                             </div>
                         </div>
 
@@ -923,7 +915,7 @@ if (!isValidLongitude($lon)) {
               
             ?>
             <div id="location-stations-about">
-              <h3 class="accent-color"><span class="icon icon-district"></span>Weather Stations</h3>
+              <h3 class="accent-color"><span class="icon icon-district"></span>Stations</h3>
               
               <p>Dots on the map show weather stations in the Global Historical Climatology Network-Daily (GHCN-D) database.</p>
               <p>Click any dot to view zoomable graphs of observed daily temperature and precipitation compared to 1981-2010 Climate Normals.</p>

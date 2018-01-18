@@ -4812,36 +4812,38 @@ body.detail-open #nav-overlay {
 }
 /* line 8, ../scss/pages/_location.scss */
 .page-type-location #main-content-wrap {
+  position: relative;
   padding: 2%;
   background-repeat: no-repeat;
   background-position: top center;
   background-size: cover;
   background-attachment: fixed;
+  z-index: 1;
 }
-/* line 16, ../scss/pages/_location.scss */
+/* line 18, ../scss/pages/_location.scss */
 .page-type-location .page-splash {
   color: #0058cf;
 }
-/* line 19, ../scss/pages/_location.scss */
+/* line 21, ../scss/pages/_location.scss */
 .page-type-location .page-splash .splash-text {
   mix-blend-mode: normal;
 }
-/* line 23, ../scss/pages/_location.scss */
+/* line 25, ../scss/pages/_location.scss */
 .page-type-location .page-splash h1 {
   font-size: 5rem;
 }
-/* line 27, ../scss/pages/_location.scss */
+/* line 29, ../scss/pages/_location.scss */
 .page-type-location .page-splash h3 {
   margin: 0 0 3% 0;
   color: #f5442d;
 }
-/* line 33, ../scss/pages/_location.scss */
+/* line 35, ../scss/pages/_location.scss */
 .page-type-location section {
   position: relative;
   margin: 0 0 3% 0;
 }
 
-/* line 39, ../scss/pages/_location.scss */
+/* line 41, ../scss/pages/_location.scss */
 #location-search {
   position: absolute;
   top: 20px;
@@ -4850,7 +4852,7 @@ body.detail-open #nav-overlay {
   background: rgba(255, 255, 255, 0.8);
   z-index: 1;
 }
-/* line 47, ../scss/pages/_location.scss */
+/* line 49, ../scss/pages/_location.scss */
 #location-search input {
   height: 60px;
   margin: 0;
@@ -4865,7 +4867,7 @@ body.detail-open #nav-overlay {
   -webkit-transition: 0.5s;
   transition: 0.5s;
 }
-/* line 58, ../scss/pages/_location.scss */
+/* line 60, ../scss/pages/_location.scss */
 #location-search input::-webkit-input-placeholder {
   color: #233a70;
   padding-top: 3px;
@@ -4874,7 +4876,7 @@ body.detail-open #nav-overlay {
   -webkit-transition: 0.25s;
   transition: 0.25s;
 }
-/* line 64, ../scss/pages/_location.scss */
+/* line 66, ../scss/pages/_location.scss */
 #location-search input:-moz-placeholder {
   color: #233a70;
   padding-top: 3px;
@@ -4883,7 +4885,7 @@ body.detail-open #nav-overlay {
   -webkit-transition: 0.25s;
   transition: 0.25s;
 }
-/* line 70, ../scss/pages/_location.scss */
+/* line 72, ../scss/pages/_location.scss */
 #location-search input::-moz-placeholder {
   color: #233a70;
   padding-top: 3px;
@@ -4892,7 +4894,7 @@ body.detail-open #nav-overlay {
   -webkit-transition: 0.25s;
   transition: 0.25s;
 }
-/* line 76, ../scss/pages/_location.scss */
+/* line 78, ../scss/pages/_location.scss */
 #location-search input:-ms-input-placeholder {
   color: #233a70;
   padding-top: 3px;
@@ -4901,29 +4903,29 @@ body.detail-open #nav-overlay {
   -webkit-transition: 0.25s;
   transition: 0.25s;
 }
-/* line 82, ../scss/pages/_location.scss */
+/* line 84, ../scss/pages/_location.scss */
 #location-search input:focus {
   background: #0058cf;
   color: #fff;
 }
-/* line 86, ../scss/pages/_location.scss */
+/* line 88, ../scss/pages/_location.scss */
 #location-search input:focus::-webkit-input-placeholder {
   color: rgba(255, 255, 255, 0.5);
 }
-/* line 90, ../scss/pages/_location.scss */
+/* line 92, ../scss/pages/_location.scss */
 #location-search input:focus:-moz-placeholder {
   color: rgba(255, 255, 255, 0.5);
 }
-/* line 94, ../scss/pages/_location.scss */
+/* line 96, ../scss/pages/_location.scss */
 #location-search input:focus::-moz-placeholder {
   color: rgba(255, 255, 255, 0.5);
 }
-/* line 98, ../scss/pages/_location.scss */
+/* line 100, ../scss/pages/_location.scss */
 #location-search input:focus:-ms-input-placeholder {
   color: rgba(255, 255, 255, 0.5);
 }
 
-/* line 105, ../scss/pages/_location.scss */
+/* line 107, ../scss/pages/_location.scss */
 #page-nav {
   width: 60%;
   padding-top: 20px;
@@ -4934,7 +4936,7 @@ body.detail-open #nav-overlay {
   overflow: hidden;
   *zoom: 1;
 }
-/* line 114, ../scss/pages/_location.scss */
+/* line 116, ../scss/pages/_location.scss */
 #page-nav h4 {
   float: left;
   width: 15%;
@@ -4942,22 +4944,22 @@ body.detail-open #nav-overlay {
   font: 0.875rem/1.125rem "CESans-Heavy", Helvetica, "Helvetica Neue", Arial, sans-serif;
   text-transform: uppercase;
 }
-/* line 122, ../scss/pages/_location.scss */
+/* line 124, ../scss/pages/_location.scss */
 #page-nav ul {
   float: left;
   width: 85%;
 }
-/* line 126, ../scss/pages/_location.scss */
+/* line 128, ../scss/pages/_location.scss */
 #page-nav ul li {
   float: left;
   margin: 0 2%;
   font: 1.125rem/1.125rem "CESans", Roboto, Helvetica, "Helvetica Neue", Arial, sans-serif;
 }
-/* line 131, ../scss/pages/_location.scss */
+/* line 133, ../scss/pages/_location.scss */
 #page-nav ul li a {
   display: block;
 }
-/* line 137, ../scss/pages/_location.scss */
+/* line 139, ../scss/pages/_location.scss */
 #page-nav.stuck {
   top: 20px;
   left: 20px;
@@ -4969,20 +4971,20 @@ body.detail-open #nav-overlay {
   border-top: none;
   z-index: 5;
 }
-/* line 148, ../scss/pages/_location.scss */
+/* line 150, ../scss/pages/_location.scss */
 #page-nav.stuck h4 {
   width: auto;
   margin-right: 2%;
 }
 
-/* line 155, ../scss/pages/_location.scss */
+/* line 157, ../scss/pages/_location.scss */
 .location-data-section-wrap {
   padding: 1%;
   border: 10px solid #fff;
   background: rgba(255, 255, 255, 0.9);
 }
 
-/* line 161, ../scss/pages/_location.scss */
+/* line 163, ../scss/pages/_location.scss */
 .location-data-section {
   position: relative;
 }
@@ -4995,7 +4997,7 @@ body.detail-open #nav-overlay {
 .location-data-section:after {
   clear: both;
 }
-/* line 165, ../scss/pages/_location.scss */
+/* line 167, ../scss/pages/_location.scss */
 .location-data-section .map {
   position: absolute;
   top: 0;
@@ -5006,7 +5008,7 @@ body.detail-open #nav-overlay {
   background-size: cover;
   z-index: 1;
 }
-/* line 172, ../scss/pages/_location.scss */
+/* line 174, ../scss/pages/_location.scss */
 .location-data-section header {
   position: relative;
   padding: 0 0 10px 0;
@@ -5020,19 +5022,19 @@ body.detail-open #nav-overlay {
 .location-data-section header:after {
   clear: both;
 }
-/* line 178, ../scss/pages/_location.scss */
+/* line 180, ../scss/pages/_location.scss */
 .location-data-section h3 {
   margin: 0 0 10% 0;
   padding: 20px 0 0 0;
   font: 2rem/1em Roboto, Helvetica, "Helvetica Neue", Arial, sans-serif;
 }
-/* line 183, ../scss/pages/_location.scss */
+/* line 185, ../scss/pages/_location.scss */
 .location-data-section h3 .icon {
   display: inline;
   margin: 0 20px 0 0;
   font-size: 2.5rem;
 }
-/* line 190, ../scss/pages/_location.scss */
+/* line 192, ../scss/pages/_location.scss */
 .location-data-section .data-vars {
   margin: 20px 0;
   border-top: 2px solid #ebebeb;
@@ -5046,7 +5048,7 @@ body.detail-open #nav-overlay {
 .location-data-section .data-vars:after {
   clear: both;
 }
-/* line 195, ../scss/pages/_location.scss */
+/* line 197, ../scss/pages/_location.scss */
 .location-data-section .data-vars label {
   display: block;
   float: left;
@@ -5054,7 +5056,7 @@ body.detail-open #nav-overlay {
   border: 10px solid transparent;
   font: 400 1rem/1em Roboto, Helvetica, "Helvetica Neue", Arial, sans-serif;
 }
-/* line 206, ../scss/pages/_location.scss */
+/* line 208, ../scss/pages/_location.scss */
 .location-data-section .fs-dropdown {
   float: left;
   margin: 0 10px 0 0;
@@ -5063,7 +5065,7 @@ body.detail-open #nav-overlay {
   -webkit-transition: 0.25s;
   transition: 0.25s;
 }
-/* line 211, ../scss/pages/_location.scss */
+/* line 213, ../scss/pages/_location.scss */
 .location-data-section .fs-dropdown button {
   height: auto;
   padding: 20px;
@@ -5079,14 +5081,14 @@ body.detail-open #nav-overlay {
   -webkit-transition: 0.25s;
   transition: 0.25s;
 }
-/* line 228, ../scss/pages/_location.scss */
+/* line 230, ../scss/pages/_location.scss */
 .location-data-section .fs-dropdown-open .fs-dropdown-selected,
 .location-data-section .fs-dropdown-focus .fs-dropdown-selected {
   -moz-box-shadow: none;
   -webkit-box-shadow: none;
   box-shadow: none;
 }
-/* line 233, ../scss/pages/_location.scss */
+/* line 235, ../scss/pages/_location.scss */
 .location-data-section .fs-dropdown-options {
   background: #d5e8f2;
   border: none;
@@ -5095,14 +5097,14 @@ body.detail-open #nav-overlay {
   -webkit-box-shadow: none;
   box-shadow: none;
 }
-/* line 239, ../scss/pages/_location.scss */
+/* line 241, ../scss/pages/_location.scss */
 .location-data-section .fs-dropdown-options button {
   padding: 10px;
   font-size: 1rem;
   border-color: #d5e8f2;
   background: #d5e8f2;
 }
-/* line 247, ../scss/pages/_location.scss */
+/* line 249, ../scss/pages/_location.scss */
 .location-data-section .data-accordion-wrap {
   position: relative;
   float: left;
@@ -5120,7 +5122,7 @@ body.detail-open #nav-overlay {
 .location-data-section .data-accordion-wrap:after {
   clear: both;
 }
-/* line 257, ../scss/pages/_location.scss */
+/* line 259, ../scss/pages/_location.scss */
 .location-data-section .data-accordion {
   position: absolute;
   top: 0;
@@ -5137,7 +5139,7 @@ body.detail-open #nav-overlay {
 .location-data-section .data-accordion:after {
   clear: both;
 }
-/* line 261, ../scss/pages/_location.scss */
+/* line 263, ../scss/pages/_location.scss */
 .location-data-section .data-accordion .data-accordion-tab {
   position: relative;
   float: left;
@@ -5149,7 +5151,7 @@ body.detail-open #nav-overlay {
   -webkit-transition: 0.5s;
   transition: 0.5s;
 }
-/* line 269, ../scss/pages/_location.scss */
+/* line 271, ../scss/pages/_location.scss */
 .location-data-section .data-accordion .data-accordion-tab:before {
   content: '';
   display: block;
@@ -5165,7 +5167,7 @@ body.detail-open #nav-overlay {
   -webkit-transition: 0.25s;
   transition: 0.25s;
 }
-/* line 282, ../scss/pages/_location.scss */
+/* line 284, ../scss/pages/_location.scss */
 .location-data-section .data-accordion .data-accordion-tab header {
   position: absolute;
   top: 0;
@@ -5175,7 +5177,7 @@ body.detail-open #nav-overlay {
   cursor: pointer;
   z-index: 2;
 }
-/* line 287, ../scss/pages/_location.scss */
+/* line 289, ../scss/pages/_location.scss */
 .location-data-section .data-accordion .data-accordion-tab header h4 {
   position: absolute;
   top: 50%;
@@ -5191,28 +5193,28 @@ body.detail-open #nav-overlay {
   -webkit-transform: translateY(-50%);
   transform: translateY(-50%);
 }
-/* line 299, ../scss/pages/_location.scss */
+/* line 301, ../scss/pages/_location.scss */
 .location-data-section .data-accordion .data-accordion-tab header h4 .icon {
   display: block;
   margin: 0 auto 10px auto;
   font-size: 2rem;
 }
-/* line 305, ../scss/pages/_location.scss */
+/* line 307, ../scss/pages/_location.scss */
 .location-data-section .data-accordion .data-accordion-tab header h4 .full-title {
   display: none;
 }
-/* line 309, ../scss/pages/_location.scss */
+/* line 311, ../scss/pages/_location.scss */
 .location-data-section .data-accordion .data-accordion-tab header h4 .source {
   display: none;
   font: 0.75rem/1.25em "CESans", Roboto, Helvetica, "Helvetica Neue", Arial, sans-serif;
 }
-/* line 315, ../scss/pages/_location.scss */
+/* line 317, ../scss/pages/_location.scss */
 .location-data-section .data-accordion .data-accordion-tab header .data-accordion-actions {
   display: none;
   float: right;
   white-space: nowrap;
 }
-/* line 320, ../scss/pages/_location.scss */
+/* line 322, ../scss/pages/_location.scss */
 .location-data-section .data-accordion .data-accordion-tab header .data-accordion-actions a {
   display: inline-block;
   padding: 8px;
@@ -5224,17 +5226,17 @@ body.detail-open #nav-overlay {
   -webkit-transition: 0.25s;
   transition: 0.25s;
 }
-/* line 328, ../scss/pages/_location.scss */
+/* line 330, ../scss/pages/_location.scss */
 .location-data-section .data-accordion .data-accordion-tab header .data-accordion-actions a .icon {
   margin: 0 8px 0 0;
   font-size: 1.25rem;
   color: #f5442d;
 }
-/* line 334, ../scss/pages/_location.scss */
+/* line 336, ../scss/pages/_location.scss */
 .location-data-section .data-accordion .data-accordion-tab header .data-accordion-actions a:hover {
   background: #d5e8f2;
 }
-/* line 341, ../scss/pages/_location.scss */
+/* line 343, ../scss/pages/_location.scss */
 .location-data-section .data-accordion .data-accordion-tab .data-accordion-content {
   position: absolute;
   top: 0;
@@ -5255,18 +5257,18 @@ body.detail-open #nav-overlay {
   transition: 0.25s;
   z-index: 1;
 }
-/* line 352, ../scss/pages/_location.scss */
+/* line 354, ../scss/pages/_location.scss */
 .location-data-section .data-accordion .data-accordion-tab.data-chart {
   -moz-box-shadow: inset -10px 0 20px -10px rgba(0, 0, 0, 0.5);
   -webkit-box-shadow: inset -10px 0 20px -10px rgba(0, 0, 0, 0.5);
   box-shadow: inset -10px 0 20px -10px rgba(0, 0, 0, 0.5);
 }
-/* line 355, ../scss/pages/_location.scss */
+/* line 357, ../scss/pages/_location.scss */
 .location-data-section .data-accordion .data-accordion-tab.data-chart:before {
   right: 0;
   border-color: transparent #fff transparent transparent;
 }
-/* line 360, ../scss/pages/_location.scss */
+/* line 362, ../scss/pages/_location.scss */
 .location-data-section .data-accordion .data-accordion-tab.data-chart .chart-wrap {
   position: absolute;
   top: 12%;
@@ -5275,7 +5277,7 @@ body.detail-open #nav-overlay {
   height: 75%;
   z-index: 1;
 }
-/* line 369, ../scss/pages/_location.scss */
+/* line 371, ../scss/pages/_location.scss */
 .location-data-section .data-accordion .data-accordion-tab.data-chart .chart-canvas {
   position: absolute;
   top: 0;
@@ -5283,7 +5285,7 @@ body.detail-open #nav-overlay {
   height: 80%;
   z-index: 1;
 }
-/* line 377, ../scss/pages/_location.scss */
+/* line 379, ../scss/pages/_location.scss */
 .location-data-section .data-accordion .data-accordion-tab.data-chart .chart-legend {
   position: absolute;
   bottom: 0;
@@ -5291,27 +5293,27 @@ body.detail-open #nav-overlay {
   height: 15%;
   z-index: 2;
 }
-/* line 385, ../scss/pages/_location.scss */
+/* line 387, ../scss/pages/_location.scss */
 .location-data-section .data-accordion .data-accordion-tab.data-chart .chart-legend ul li {
   display: inline-block;
   margin: 0 0 0 20px;
 }
-/* line 391, ../scss/pages/_location.scss */
+/* line 393, ../scss/pages/_location.scss */
 .location-data-section .data-accordion .data-accordion-tab.data-chart .chart-legend span {
   display: inline-block;
   vertical-align: middle;
 }
-/* line 396, ../scss/pages/_location.scss */
+/* line 398, ../scss/pages/_location.scss */
 .location-data-section .data-accordion .data-accordion-tab.data-chart .chart-legend .colour {
   height: 5px;
   width: 15px;
   margin: 0 10px 0 0;
 }
-/* line 402, ../scss/pages/_location.scss */
+/* line 404, ../scss/pages/_location.scss */
 .location-data-section .data-accordion .data-accordion-tab.data-chart .chart-legend .label {
   font-size: 0.875rem;
 }
-/* line 407, ../scss/pages/_location.scss */
+/* line 409, ../scss/pages/_location.scss */
 .location-data-section .data-accordion .data-accordion-tab.data-chart .range {
   position: absolute;
   bottom: 2%;
@@ -5320,7 +5322,7 @@ body.detail-open #nav-overlay {
   height: 8%;
   z-index: 2;
 }
-/* line 416, ../scss/pages/_location.scss */
+/* line 418, ../scss/pages/_location.scss */
 .location-data-section .data-accordion .data-accordion-tab.data-chart .chart-range {
   position: absolute;
   left: 0;
@@ -5331,7 +5333,7 @@ body.detail-open #nav-overlay {
   -webkit-box-shadow: inset 0 5px 10px -5px rgba(0, 0, 0, 0.5);
   box-shadow: inset 0 5px 10px -5px rgba(0, 0, 0, 0.5);
 }
-/* line 424, ../scss/pages/_location.scss */
+/* line 426, ../scss/pages/_location.scss */
 .location-data-section .data-accordion .data-accordion-tab.data-chart .chart-range .ui-slider-handle {
   top: 0;
   width: 0;
@@ -5341,41 +5343,41 @@ body.detail-open #nav-overlay {
   -webkit-border-radius: none;
   border-radius: none;
 }
-/* line 436, ../scss/pages/_location.scss */
+/* line 438, ../scss/pages/_location.scss */
 .location-data-section .data-accordion .data-accordion-tab.data-chart .chart-range.not-annual {
   height: 6px;
 }
-/* line 439, ../scss/pages/_location.scss */
+/* line 441, ../scss/pages/_location.scss */
 .location-data-section .data-accordion .data-accordion-tab.data-chart .chart-range.not-annual .ui-slider-handle {
   width: 16px;
   height: 16px;
   margin: -5px 0 0 -5px;
 }
-/* line 447, ../scss/pages/_location.scss */
+/* line 449, ../scss/pages/_location.scss */
 .location-data-section .data-accordion .data-accordion-tab.data-chart.open {
   background: rgba(255, 255, 255, 0.8) !important;
 }
-/* line 450, ../scss/pages/_location.scss */
+/* line 452, ../scss/pages/_location.scss */
 .location-data-section .data-accordion .data-accordion-tab.data-chart.open .chart {
   opacity: 1;
   border-right: 5px solid #fff;
 }
-/* line 457, ../scss/pages/_location.scss */
+/* line 459, ../scss/pages/_location.scss */
 .location-data-section .data-accordion .data-accordion-tab.data-map {
   -moz-box-shadow: inset 10px 0 20px -10px rgba(0, 0, 0, 0.5);
   -webkit-box-shadow: inset 10px 0 20px -10px rgba(0, 0, 0, 0.5);
   box-shadow: inset 10px 0 20px -10px rgba(0, 0, 0, 0.5);
 }
-/* line 460, ../scss/pages/_location.scss */
+/* line 462, ../scss/pages/_location.scss */
 .location-data-section .data-accordion .data-accordion-tab.data-map:before {
   left: -1px;
   border-color: transparent transparent transparent #fff;
 }
-/* line 466, ../scss/pages/_location.scss */
+/* line 468, ../scss/pages/_location.scss */
 .location-data-section .data-accordion .data-accordion-tab.data-map header .map-seasons-container {
   float: left;
 }
-/* line 471, ../scss/pages/_location.scss */
+/* line 473, ../scss/pages/_location.scss */
 .location-data-section .data-accordion .data-accordion-tab.data-map header .fs-dropdown button {
   height: auto;
   padding: 8px 25px 8px 8px;
@@ -5385,7 +5387,7 @@ body.detail-open #nav-overlay {
   line-height: 1.25em;
   color: #5f5f5f;
 }
-/* line 481, ../scss/pages/_location.scss */
+/* line 483, ../scss/pages/_location.scss */
 .location-data-section .data-accordion .data-accordion-tab.data-map header .fs-dropdown button.fs-dropdown-selected:before {
   display: inline-block;
   margin: 0 8px 0 0;
@@ -5395,25 +5397,25 @@ body.detail-open #nav-overlay {
   line-height: 1;
   color: #f5442d;
 }
-/* line 492, ../scss/pages/_location.scss */
+/* line 494, ../scss/pages/_location.scss */
 .location-data-section .data-accordion .data-accordion-tab.data-map header .fs-dropdown button.fs-dropdown-selected:hover {
   background: #d5e8f2;
 }
-/* line 497, ../scss/pages/_location.scss */
+/* line 499, ../scss/pages/_location.scss */
 .location-data-section .data-accordion .data-accordion-tab.data-map header .fs-dropdown button:after {
   right: 5px;
 }
-/* line 504, ../scss/pages/_location.scss */
+/* line 506, ../scss/pages/_location.scss */
 .location-data-section .data-accordion .data-accordion-tab.data-map .data-accordion-content {
   background: #ebebeb;
 }
-/* line 508, ../scss/pages/_location.scss */
+/* line 510, ../scss/pages/_location.scss */
 .location-data-section .data-accordion .data-accordion-tab.data-map .moveable {
   width: 2px;
   display: none;
   z-index: 2;
 }
-/* line 517, ../scss/pages/_location.scss */
+/* line 519, ../scss/pages/_location.scss */
 .location-data-section .data-accordion .data-accordion-tab.data-map .map-element {
   display: block;
   position: absolute;
@@ -5424,7 +5426,7 @@ body.detail-open #nav-overlay {
   text-align: center;
   z-index: 1;
 }
-/* line 524, ../scss/pages/_location.scss */
+/* line 526, ../scss/pages/_location.scss */
 .location-data-section .data-accordion .data-accordion-tab.data-map .full-map-btn {
   display: block;
   position: absolute;
@@ -5433,7 +5435,7 @@ body.detail-open #nav-overlay {
   padding: 8px 30px 8px 8px;
   z-index: 2;
 }
-/* line 533, ../scss/pages/_location.scss */
+/* line 535, ../scss/pages/_location.scss */
 .location-data-section .data-accordion .data-accordion-tab.data-map .location-map-legend-container {
   display: block;
   position: absolute;
@@ -5449,28 +5451,28 @@ body.detail-open #nav-overlay {
   transform: translateY(-50%);
   color: #f5442d;
 }
-/* line 545, ../scss/pages/_location.scss */
+/* line 547, ../scss/pages/_location.scss */
 .location-data-section .data-accordion .data-accordion-tab.data-map .location-map-legend-container img {
   display: block;
   width: 100%;
   height: auto;
 }
-/* line 552, ../scss/pages/_location.scss */
+/* line 554, ../scss/pages/_location.scss */
 .location-data-section .data-accordion .data-accordion-tab.data-map .year {
   bottom: 0;
   left: 0;
   width: 100%;
 }
-/* line 557, ../scss/pages/_location.scss */
+/* line 559, ../scss/pages/_location.scss */
 .location-data-section .data-accordion .data-accordion-tab.data-map .year .ui-slider-handle {
   background: #fff !important;
 }
-/* line 563, ../scss/pages/_location.scss */
+/* line 565, ../scss/pages/_location.scss */
 .location-data-section .data-accordion .data-accordion-tab.data-map.open .map {
   opacity: 1;
   border-left: 5px solid #fff;
 }
-/* line 570, ../scss/pages/_location.scss */
+/* line 572, ../scss/pages/_location.scss */
 .location-data-section .data-accordion .data-accordion-tab.open {
   width: 90%;
   background: #fff !important;
@@ -5478,12 +5480,12 @@ body.detail-open #nav-overlay {
   -webkit-box-shadow: none;
   box-shadow: none;
 }
-/* line 575, ../scss/pages/_location.scss */
+/* line 577, ../scss/pages/_location.scss */
 .location-data-section .data-accordion .data-accordion-tab.open:before {
   border-width: 0;
   margin-top: -9px;
 }
-/* line 580, ../scss/pages/_location.scss */
+/* line 582, ../scss/pages/_location.scss */
 .location-data-section .data-accordion .data-accordion-tab.open header {
   top: 0;
   left: 0;
@@ -5502,7 +5504,7 @@ body.detail-open #nav-overlay {
 .location-data-section .data-accordion .data-accordion-tab.open header:after {
   clear: both;
 }
-/* line 590, ../scss/pages/_location.scss */
+/* line 592, ../scss/pages/_location.scss */
 .location-data-section .data-accordion .data-accordion-tab.open header h4 {
   position: static;
   width: auto;
@@ -5517,30 +5519,30 @@ body.detail-open #nav-overlay {
   -webkit-transform: none;
   transform: none;
 }
-/* line 601, ../scss/pages/_location.scss */
+/* line 603, ../scss/pages/_location.scss */
 .location-data-section .data-accordion .data-accordion-tab.open header h4 .icon {
   display: inline-block;
   margin: -4px 15px 0 0;
 }
-/* line 606, ../scss/pages/_location.scss */
+/* line 608, ../scss/pages/_location.scss */
 .location-data-section .data-accordion .data-accordion-tab.open header h4 .text {
   display: inline-block;
   vertical-align: middle;
 }
-/* line 611, ../scss/pages/_location.scss */
+/* line 613, ../scss/pages/_location.scss */
 .location-data-section .data-accordion .data-accordion-tab.open header h4 .full-title {
   display: inline;
 }
-/* line 615, ../scss/pages/_location.scss */
+/* line 617, ../scss/pages/_location.scss */
 .location-data-section .data-accordion .data-accordion-tab.open header h4 .source {
   display: block;
   margin: 4px 0 0 0;
 }
-/* line 621, ../scss/pages/_location.scss */
+/* line 623, ../scss/pages/_location.scss */
 .location-data-section .data-accordion .data-accordion-tab.open header .data-accordion-actions {
   display: block;
 }
-/* line 626, ../scss/pages/_location.scss */
+/* line 628, ../scss/pages/_location.scss */
 .location-data-section .data-accordion .data-accordion-tab.open .data-accordion-content {
   -moz-box-shadow: none;
   -webkit-box-shadow: none;
@@ -5548,23 +5550,23 @@ body.detail-open #nav-overlay {
   opacity: 1;
   mix-blend-mode: initial;
 }
-/* line 635, ../scss/pages/_location.scss */
+/* line 637, ../scss/pages/_location.scss */
 .location-data-section .data-list {
   position: relative;
   float: left;
   width: 30%;
   margin: 0 1% 0 0;
 }
-/* line 641, ../scss/pages/_location.scss */
+/* line 643, ../scss/pages/_location.scss */
 .location-data-section .data-list form {
   position: absolute;
   left: -9999px;
 }
-/* line 647, ../scss/pages/_location.scss */
+/* line 649, ../scss/pages/_location.scss */
 .location-data-section .data-options-trigger {
   display: none;
 }
-/* line 652, ../scss/pages/_location.scss */
+/* line 654, ../scss/pages/_location.scss */
 .location-data-section .data-options li {
   padding-left: 12%;
   background: #fff;
@@ -5579,35 +5581,35 @@ body.detail-open #nav-overlay {
   overflow: hidden;
   *zoom: 1;
 }
-/* line 662, ../scss/pages/_location.scss */
+/* line 664, ../scss/pages/_location.scss */
 .location-data-section .data-options li:last-child {
   border-bottom: none;
 }
-/* line 666, ../scss/pages/_location.scss */
+/* line 668, ../scss/pages/_location.scss */
 .location-data-section .data-options li:hover {
   padding-left: calc(12% - 10px);
   border-left-width: 10px;
   border-left-color: #ebebeb;
 }
-/* line 672, ../scss/pages/_location.scss */
+/* line 674, ../scss/pages/_location.scss */
 .location-data-section .data-options li.active {
   font-weight: 400;
   padding-left: calc(12% - 10px);
   border-left-width: 10px;
   border-bottom-color: #ebebeb !important;
 }
-/* line 679, ../scss/pages/_location.scss */
+/* line 681, ../scss/pages/_location.scss */
 .location-data-section .data-options li h4 {
   font-size: 1rem;
   overflow: hidden;
   *zoom: 1;
   outline: none;
 }
-/* line 684, ../scss/pages/_location.scss */
+/* line 686, ../scss/pages/_location.scss */
 .location-data-section .data-options li h4 .ui-accordion-header-icon {
   display: none;
 }
-/* line 689, ../scss/pages/_location.scss */
+/* line 691, ../scss/pages/_location.scss */
 .location-data-section .data-options li a {
   display: block;
   padding: 2%;
@@ -5617,12 +5619,12 @@ body.detail-open #nav-overlay {
   -webkit-transition: 0.25s;
   transition: 0.25s;
 }
-/* line 695, ../scss/pages/_location.scss */
+/* line 697, ../scss/pages/_location.scss */
 .location-data-section .data-options li a.text {
   width: 90%;
   float: left;
 }
-/* line 700, ../scss/pages/_location.scss */
+/* line 702, ../scss/pages/_location.scss */
 .location-data-section .data-options li a.icon {
   width: 10%;
   float: right;
@@ -5630,132 +5632,132 @@ body.detail-open #nav-overlay {
   line-height: 1.5rem;
   color: #aaa;
 }
-/* line 710, ../scss/pages/_location.scss */
+/* line 712, ../scss/pages/_location.scss */
 .location-data-section .data-options li ul li {
   font-size: 0.875rem;
   line-height: 1.5rem;
 }
 
-/* line 720, ../scss/pages/_location.scss */
+/* line 722, ../scss/pages/_location.scss */
 #stations-data p {
   margin: 0 0 20px 0;
 }
 
-/* line 726, ../scss/pages/_location.scss */
+/* line 728, ../scss/pages/_location.scss */
 #location-temperature .accent-color {
   color: #f5442d;
 }
-/* line 730, ../scss/pages/_location.scss */
+/* line 732, ../scss/pages/_location.scss */
 #location-temperature .accent-background {
   background-color: #f5442d;
 }
-/* line 734, ../scss/pages/_location.scss */
+/* line 736, ../scss/pages/_location.scss */
 #location-temperature .accent-border {
   border-color: #f5442d;
 }
-/* line 743, ../scss/pages/_location.scss */
+/* line 745, ../scss/pages/_location.scss */
 #location-temperature .data-options .accent-border {
   border-left-color: #ebebeb;
   border-bottom-color: #ebebeb;
 }
-/* line 749, ../scss/pages/_location.scss */
+/* line 751, ../scss/pages/_location.scss */
 #location-temperature .data-options .active.accent-border {
   border-left-color: #f5442d;
   border-bottom-color: #ebebeb;
 }
-/* line 754, ../scss/pages/_location.scss */
+/* line 756, ../scss/pages/_location.scss */
 #location-temperature .data-options .active .accent-color {
   color: #f5442d;
 }
-/* line 761, ../scss/pages/_location.scss */
+/* line 763, ../scss/pages/_location.scss */
 #location-temperature .data-options ul li.active {
   border-left: 10px solid #f5442d;
 }
-/* line 769, ../scss/pages/_location.scss */
+/* line 771, ../scss/pages/_location.scss */
 #location-temperature .data-vars button {
   color: #f5442d;
 }
 
-/* line 776, ../scss/pages/_location.scss */
+/* line 778, ../scss/pages/_location.scss */
 #location-precipitation .accent-color {
   color: #0058cf;
 }
-/* line 780, ../scss/pages/_location.scss */
+/* line 782, ../scss/pages/_location.scss */
 #location-precipitation .accent-background {
   background-color: #0058cf;
 }
-/* line 784, ../scss/pages/_location.scss */
+/* line 786, ../scss/pages/_location.scss */
 #location-precipitation .accent-border {
   border-color: #0058cf;
 }
-/* line 793, ../scss/pages/_location.scss */
+/* line 795, ../scss/pages/_location.scss */
 #location-precipitation .data-options .accent-border {
   border-left-color: #ebebeb;
   border-bottom-color: #ebebeb;
 }
-/* line 799, ../scss/pages/_location.scss */
+/* line 801, ../scss/pages/_location.scss */
 #location-precipitation .data-options .active.accent-border {
   border-left-color: #0058cf;
   border-bottom-color: #ebebeb;
 }
-/* line 804, ../scss/pages/_location.scss */
+/* line 806, ../scss/pages/_location.scss */
 #location-precipitation .data-options .active .accent-color {
   color: #0058cf;
 }
-/* line 811, ../scss/pages/_location.scss */
+/* line 813, ../scss/pages/_location.scss */
 #location-precipitation .data-options ul li.active {
   border-left: 10px solid #0058cf;
 }
-/* line 820, ../scss/pages/_location.scss */
+/* line 822, ../scss/pages/_location.scss */
 #location-precipitation .data-vars button {
   color: #0058cf;
 }
-/* line 827, ../scss/pages/_location.scss */
+/* line 829, ../scss/pages/_location.scss */
 #location-precipitation .range .ui-slider .ui-slider-range {
   background: #0058cf;
 }
 
-/* line 835, ../scss/pages/_location.scss */
+/* line 837, ../scss/pages/_location.scss */
 #location-derived .accent-color {
   color: #904848;
 }
-/* line 839, ../scss/pages/_location.scss */
+/* line 841, ../scss/pages/_location.scss */
 #location-derived .accent-background {
   background-color: #904848;
 }
-/* line 843, ../scss/pages/_location.scss */
+/* line 845, ../scss/pages/_location.scss */
 #location-derived .accent-border {
   border-color: #904848;
 }
-/* line 852, ../scss/pages/_location.scss */
+/* line 854, ../scss/pages/_location.scss */
 #location-derived .data-options .accent-border {
   border-left-color: #ebebeb;
   border-bottom-color: #ebebeb;
 }
-/* line 858, ../scss/pages/_location.scss */
+/* line 860, ../scss/pages/_location.scss */
 #location-derived .data-options .active.accent-border {
   border-left-color: #904848;
   border-bottom-color: #ebebeb;
 }
-/* line 863, ../scss/pages/_location.scss */
+/* line 865, ../scss/pages/_location.scss */
 #location-derived .data-options .active .accent-color {
   color: #904848;
 }
-/* line 870, ../scss/pages/_location.scss */
+/* line 872, ../scss/pages/_location.scss */
 #location-derived .data-options ul li.active {
   border-left: 10px solid #904848;
 }
-/* line 878, ../scss/pages/_location.scss */
+/* line 880, ../scss/pages/_location.scss */
 #location-derived .data-vars button {
   color: #904848;
 }
 
-/* line 884, ../scss/pages/_location.scss */
+/* line 886, ../scss/pages/_location.scss */
 #location-stations {
   padding: 0;
   height: calc(100vh - 160px);
 }
-/* line 888, ../scss/pages/_location.scss */
+/* line 890, ../scss/pages/_location.scss */
 #location-stations .location-data-section {
   position: absolute;
   top: 0;
@@ -5763,11 +5765,11 @@ body.detail-open #nav-overlay {
   width: 100%;
   height: 100%;
 }
-/* line 892, ../scss/pages/_location.scss */
+/* line 894, ../scss/pages/_location.scss */
 #location-stations h3 {
   margin: 0 0 2% 0;
 }
-/* line 898, ../scss/pages/_location.scss */
+/* line 900, ../scss/pages/_location.scss */
 #location-stations #location-stations-about {
   position: absolute;
   top: 0;
@@ -5777,12 +5779,12 @@ body.detail-open #nav-overlay {
   padding: 20px 20px 10px 20px;
   z-index: 5;
 }
-/* line 907, ../scss/pages/_location.scss */
+/* line 909, ../scss/pages/_location.scss */
 #location-stations #location-stations-about p {
   font-size: 0.875rem;
   margin: 20px 0;
 }
-/* line 915, ../scss/pages/_location.scss */
+/* line 917, ../scss/pages/_location.scss */
 #location-stations #location-stations-map-wrap {
   position: absolute;
   top: 0;
@@ -5791,7 +5793,7 @@ body.detail-open #nav-overlay {
   height: 100%;
   z-index: 1;
 }
-/* line 920, ../scss/pages/_location.scss */
+/* line 922, ../scss/pages/_location.scss */
 #location-stations #location-station-map {
   position: absolute;
   top: 0;
@@ -5799,11 +5801,11 @@ body.detail-open #nav-overlay {
   width: 100%;
   height: 100%;
 }
-/* line 923, ../scss/pages/_location.scss */
+/* line 925, ../scss/pages/_location.scss */
 #location-stations #location-station-map .ol-attribution, #location-stations #location-station-map .ol-rotate {
   display: none;
 }
-/* line 927, ../scss/pages/_location.scss */
+/* line 929, ../scss/pages/_location.scss */
 #location-stations #location-station-map .ol-zoom {
   position: absolute;
   z-index: 1;
@@ -5814,7 +5816,7 @@ body.detail-open #nav-overlay {
   -webkit-transform: translateY(-50%);
   transform: translateY(-50%);
 }
-/* line 934, ../scss/pages/_location.scss */
+/* line 936, ../scss/pages/_location.scss */
 #location-stations #location-station-map .ol-zoom button {
   display: block;
   width: 30px;
@@ -5830,7 +5832,7 @@ body.detail-open #nav-overlay {
   -webkit-border-radius: 50%;
   border-radius: 50%;
 }
-/* line 952, ../scss/pages/_location.scss */
+/* line 954, ../scss/pages/_location.scss */
 #location-stations #location-stations-overlay {
   position: absolute;
   top: 0;
@@ -5844,32 +5846,32 @@ body.detail-open #nav-overlay {
   overflow: hidden;
   *zoom: 1;
 }
-/* line 962, ../scss/pages/_location.scss */
+/* line 964, ../scss/pages/_location.scss */
 #location-stations.overlay-on #location-stations-overlay {
   left: 0;
   opacity: 1;
   transition: left 0s ease 0s, opacity 0.25s ease 0s;
   background: rgba(245, 68, 45, 0.9);
 }
-/* line 969, ../scss/pages/_location.scss */
+/* line 971, ../scss/pages/_location.scss */
 #location-stations.overlay-on .station-overlay-content {
   transition: left 0s ease 0s, opacity 0.25s ease 0s;
 }
-/* line 974, ../scss/pages/_location.scss */
+/* line 976, ../scss/pages/_location.scss */
 #location-stations.overlay-on:not(.type-tidal) #station-detail {
   left: 0;
   opacity: 1;
 }
-/* line 981, ../scss/pages/_location.scss */
+/* line 983, ../scss/pages/_location.scss */
 #location-stations.overlay-on.type-tidal #location-stations-overlay {
   background: rgba(0, 88, 207, 0.9);
 }
-/* line 985, ../scss/pages/_location.scss */
+/* line 987, ../scss/pages/_location.scss */
 #location-stations.overlay-on.type-tidal #station-detail-tidal {
   left: 0;
   opacity: 1;
 }
-/* line 994, ../scss/pages/_location.scss */
+/* line 996, ../scss/pages/_location.scss */
 #location-stations #station-overlay-header {
   height: 120px;
   color: #fff;
@@ -5877,18 +5879,18 @@ body.detail-open #nav-overlay {
   overflow: hidden;
   *zoom: 1;
 }
-/* line 1000, ../scss/pages/_location.scss */
+/* line 1002, ../scss/pages/_location.scss */
 #location-stations #station-overlay-header h3 {
   padding: 0;
 }
-/* line 1004, ../scss/pages/_location.scss */
+/* line 1006, ../scss/pages/_location.scss */
 #location-stations #station-overlay-header h5 {
   float: left;
   width: 50%;
   font-size: 1.125rem;
   font-family: "CESans", Roboto, Helvetica, "Helvetica Neue", Arial, sans-serif;
 }
-/* line 1014, ../scss/pages/_location.scss */
+/* line 1016, ../scss/pages/_location.scss */
 #location-stations .station-overlay-content {
   position: absolute;
   bottom: 0;
@@ -5900,18 +5902,18 @@ body.detail-open #nav-overlay {
   padding: 20px;
   z-index: 1;
 }
-/* line 1026, ../scss/pages/_location.scss */
+/* line 1028, ../scss/pages/_location.scss */
 #location-stations .station-overlay-column {
   position: relative;
   float: left;
   width: 50%;
   height: 100%;
 }
-/* line 1032, ../scss/pages/_location.scss */
+/* line 1034, ../scss/pages/_location.scss */
 #location-stations .station-overlay-column.left {
   padding-right: 40px;
 }
-/* line 1035, ../scss/pages/_location.scss */
+/* line 1037, ../scss/pages/_location.scss */
 #location-stations .station-overlay-column.left:after {
   content: '';
   display: block;
@@ -5923,27 +5925,27 @@ body.detail-open #nav-overlay {
   border: 20px solid transparent;
   border-left-color: #fff;
 }
-/* line 1051, ../scss/pages/_location.scss */
+/* line 1053, ../scss/pages/_location.scss */
 #location-stations #station-detail-data {
   background: #fff;
   padding: 20px;
 }
-/* line 1056, ../scss/pages/_location.scss */
+/* line 1058, ../scss/pages/_location.scss */
 #location-stations .form-group {
   overflow: hidden;
   *zoom: 1;
   font-size: 0.75rem;
 }
-/* line 1060, ../scss/pages/_location.scss */
+/* line 1062, ../scss/pages/_location.scss */
 #location-stations .form-group label {
   display: block;
 }
-/* line 1064, ../scss/pages/_location.scss */
+/* line 1066, ../scss/pages/_location.scss */
 #location-stations .form-group select {
   font-family: Roboto, Helvetica, "Helvetica Neue", Arial, sans-serif;
   font-size: 0.75rem;
 }
-/* line 1069, ../scss/pages/_location.scss */
+/* line 1071, ../scss/pages/_location.scss */
 #location-stations .form-group input {
   display: inline-block;
   width: calc(100% - 10px);
@@ -5952,26 +5954,26 @@ body.detail-open #nav-overlay {
   line-height: 1.2;
   padding: 4px 8px;
 }
-/* line 1078, ../scss/pages/_location.scss */
+/* line 1080, ../scss/pages/_location.scss */
 #location-stations .form-group .field-pair {
   float: left;
   width: 25%;
 }
-/* line 1083, ../scss/pages/_location.scss */
+/* line 1085, ../scss/pages/_location.scss */
 #location-stations .form-group .field-pair.append input {
   width: 50%;
 }
-/* line 1087, ../scss/pages/_location.scss */
+/* line 1089, ../scss/pages/_location.scss */
 #location-stations .form-group .field-pair.append .append {
   display: inline-block;
   padding-left: 4px;
   vertical-align: middle;
 }
-/* line 1103, ../scss/pages/_location.scss */
+/* line 1105, ../scss/pages/_location.scss */
 #location-stations #tidal-chart {
   background-color: #fff;
 }
-/* line 1111, ../scss/pages/_location.scss */
+/* line 1113, ../scss/pages/_location.scss */
 #location-stations #station-overlay-close {
   display: block;
   position: absolute;
@@ -5982,7 +5984,7 @@ body.detail-open #nav-overlay {
   cursor: pointer;
   z-index: 2;
 }
-/* line 1124, ../scss/pages/_location.scss */
+/* line 1126, ../scss/pages/_location.scss */
 #location-stations #stations-spinner {
   display: none;
   position: absolute;
@@ -5994,40 +5996,40 @@ body.detail-open #nav-overlay {
   transform: translate(-50%, -50%);
   z-index: 15;
 }
-/* line 1140, ../scss/pages/_location.scss */
+/* line 1142, ../scss/pages/_location.scss */
 #location-stations .data-accordion-wrap {
   width: 30%;
 }
-/* line 1147, ../scss/pages/_location.scss */
+/* line 1149, ../scss/pages/_location.scss */
 #location-stations #station-charts-tabs {
   height: 100%;
   padding: 20px;
   background: #fff;
 }
-/* line 1152, ../scss/pages/_location.scss */
+/* line 1154, ../scss/pages/_location.scss */
 #location-stations #station-charts-tabs .chart-tab-list {
   margin: 0 0 10px 0;
 }
-/* line 1155, ../scss/pages/_location.scss */
+/* line 1157, ../scss/pages/_location.scss */
 #location-stations #station-charts-tabs .chart-tab-list li {
   display: inline-block;
 }
-/* line 1158, ../scss/pages/_location.scss */
+/* line 1160, ../scss/pages/_location.scss */
 #location-stations #station-charts-tabs .chart-tab-list li a {
   display: block;
   padding: 8px 10px;
   color: #233a70;
 }
-/* line 1164, ../scss/pages/_location.scss */
+/* line 1166, ../scss/pages/_location.scss */
 #location-stations #station-charts-tabs .chart-tab-list li.selected {
   background-color: #d5e8f2;
 }
-/* line 1170, ../scss/pages/_location.scss */
+/* line 1172, ../scss/pages/_location.scss */
 #location-stations #station-charts-tabs .chart-tabs-wrap {
   position: relative;
   height: 300px;
 }
-/* line 1175, ../scss/pages/_location.scss */
+/* line 1177, ../scss/pages/_location.scss */
 #location-stations #station-charts-tabs .chart-tab {
   position: absolute;
   top: 0;
@@ -6038,7 +6040,7 @@ body.detail-open #nav-overlay {
   opacity: 0;
   transition: left 0s ease 0.25s, opacity 0.25s ease 0s;
 }
-/* line 1181, ../scss/pages/_location.scss */
+/* line 1183, ../scss/pages/_location.scss */
 #location-stations #station-charts-tabs .chart-tab.selected {
   left: 0;
   opacity: 1;

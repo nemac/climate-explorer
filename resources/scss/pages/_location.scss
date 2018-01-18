@@ -6,11 +6,13 @@
   }
   
   #main-content-wrap {
+    position: relative;
     padding: 2%;
     background-repeat: no-repeat;
     background-position: top center;
     background-size: cover;
     background-attachment: fixed;
+    z-index: 1;
   }
   
   .page-splash {
