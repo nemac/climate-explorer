@@ -463,3 +463,36 @@ input.location-mapper:focus:-ms-input-placeholder {
 }
 
 
+#swipeImg .fs-dropdown button {
+  padding: 2px !important;
+  padding-right: 40px;
+  padding-left: 5px !important;
+  height: 39px !important;
+  background: rgba(255, 255, 255, 0.6);
+  border: 5px solid #fff;
+  color: #0058cf;
+  -moz-border-radius: 0;
+  -webkit-border-radius: 0;
+  border-radius: 0;
+  font: 400 .7rem/1em Roboto, Helvetica, "Helvetica Neue", Arial, sans-serif !important;
+  -moz-transition: 0.25s;
+  -o-transition: 0.25s;
+  -webkit-transition: 0.25s;
+  transition: 0.25s;
+}
+
+#location-stations #station-no-data {
+    background: #F45440;
+    color: white;
+    padding-top: 305px;
+    font-weight: bold;
+    font-size: 1.2em;
+    text-align: center;
+}
+
+#nav-overlay .nav-content .tab ol ul li {
+    float: none !important;
+    width: auto !important;
+    margin: 0 10px 10px 0;
+    font: 300 1rem/1.2em Roboto, Helvetica, "Helvetica Neue", Arial, sans-serif;
+}

@@ -285,10 +285,10 @@ $(document).ready(function() {
 
 
         console.log('val');
-        console.log(val);
+        console.log(val[0].text);
 
-      $('#temp-chart-name').html('asdf');
-      $('#temp-map-name').html('asdf');
+      $('#temp-chart-name').html(val[0].text);
+      $('#temp-map-name').html(val[0].text);
 
       var id = $(this).attr('id').replace('var-', '');
       $('#frequency').val('annual').change();

@@ -102,10 +102,10 @@ $lockdown = 1;
             <dt>Lower Emissions scenario	</dt>
             <dd>A possible future in which global emissions of heat-trapping gases peak around the year 2040 and then decrease. The atmosphere’s ability to trap heat, a measure called radiative forcing, stabilizes at 4.5 Watts per meter squared in the year 2100. This scenario is known as Representative Concentration Pathway (RCP) 4.5. <a href="http://link.springer.com/article/10.1007%2Fs10584-011-0148-z" target="_blank">Learn more about scenarios</a></dd>
 
-            <dt>Mean Daily Maximum Temperature	</dt>
+            <dt>Average Daily Max Temp	</dt>
             <dd>Mean (average) of a location’s daily maximum temperatures observed during a specified period.</dd>
 
-            <dt>Mean Daily Minimum Temperature	</dt>
+            <dt>Average Daily Min Temp	</dt>
             <dd>Mean (average) of a location’s daily minimum temperatures observed during a specified period.</dd>
 
             <dt>Total precipitation	</dt>

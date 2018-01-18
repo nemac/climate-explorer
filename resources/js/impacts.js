@@ -19,44 +19,44 @@ var Impacts = function (page, data_base_url) {
  */
 Impacts.prototype.mapVariables = function () {
     this.varMapping = {
-        'mean_daily_max': 'Mean Daily Maximum Temperature',
-        'mean_daily_min': 'Mean Daily Minimum Temperature',
-        'days_tmin_blw_0.0': 'Days With Minimum Below 32F&deg; F',
-        'days_tmax_abv_35.0': 'Days With Minimum Below 95&deg; F',
-        'pr': 'Total precipitation',
+        'mean_daily_max': 'Average Daily Max Temp',
+        'mean_daily_min': 'Average Daily Min Temp',
+        'days_tmin_lt_32f': 'Days With Minimum Below 32F&deg; F',
+        'days_tmax_gt_95f': 'Days With Minimum Below 95&deg; F',
+        'pcpn': 'Total precipitation',
         'pr_above': 'Days of Precipitation Above 1 Inch',
-        'cooling_degree_day_18.3': 'Cooling Degree Days',
-        'heating_degree_day_18.3': 'Heating Degree Days'
+        'cdd_65f': 'Cooling Degree Days',
+        'hdd_65f': 'Heating Degree Days'
     };
 
     this.tilesHistMapping = {
         'mean_daily_max': '-hist-tasmax',
         'mean_daily_min': '-hist-tasmin',
-        'days_tmin_blw_0.0': '-annual-hist-days-tmin-blw',
-        'days_tmax_abv_35.0': '-annual-hist-days-tmax-abv',
-        'pr': '-hist-precip',
-        'cooling_degree_day_18.3': '-annual-hist-cooling-degree-day',
-        'heating_degree_day_18.3': '-annual-hist-heating-degree-day',
+        'days_tmin_lt_32f': '-annual-hist-days-tmin-blw',
+        'days_tmax_gt_95f': '-annual-hist-days-tmax-abv',
+        'pcpn': '-hist-precip',
+        'cdd_65f': '-annual-hist-cooling-degree-day',
+        'hdd_65f': '-annual-hist-heating-degree-day',
     };
 
     this.tilesMapping = {
         'mean_daily_max': '-rcp45-tasmax',
         'mean_daily_min': '-rcp45-tasmin',
-        'days_tmin_blw_0.0': '-annual-rcp45-days-tmin-blw',
-        'days_tmax_abv_35.0': '-annual-rcp45-days-tmax-abv',
-        'pr': '-rcp45-precip',
-        'cooling_degree_day_18.3': '-annual-rcp45-cooling-degree-day',
-        'heating_degree_day_18.3': '-annual-rcp45-heating-degree-day',
+        'days_tmin_lt_32f': '-annual-rcp45-days-tmin-blw',
+        'days_tmax_gt_95f': '-annual-rcp45-days-tmax-abv',
+        'pcpn': '-rcp45-precip',
+        'cdd_65f': '-annual-rcp45-cooling-degree-day',
+        'hdd_65f': '-annual-rcp45-heating-degree-day',
     };
 
     this.tilesMapping85 = {
         'mean_daily_max': '-rcp85-tasmax',
         'mean_daily_min': '-rcp85-tasmin',
-        'days_tmin_blw_0.0': '-annual-rcp85-days-tmin-blw',
-        'days_tmax_abv_35.0': '-annual-rcp85-days-tmax-abv',
-        'pr': '-rcp85-precip',
-        'cooling_degree_day_18.3': '-annual-rcp85-cooling-degree-day',
-        'heating_degree_day_18.3': '-annual-rcp85-heating-degree-day',
+        'days_tmin_lt_32f': '-annual-rcp85-days-tmin-blw',
+        'days_tmax_gt_95f': '-annual-rcp85-days-tmax-abv',
+        'pcpn': '-rcp85-precip',
+        'cdd_65f': '-annual-rcp85-cooling-degree-day',
+        'hdd_65f': '-annual-rcp85-heating-degree-day',
     };
 };
 
@@ -610,7 +610,7 @@ Impacts.prototype.addLayers = function () {
         layer = null;
 
         var n = self.data.layers[id].id;
-        if (n !== 'cooling_degree_day_18.3' && n !== 'heating_degree_day_18.3' && n !== 'mean_daily_min' && n !== 'mean_daily_max' && n !== 'days_tmin_blw_0.0' && n !== 'days_tmax_abv_35.0') {
+        if (n !== 'cdd_65f' && n !== 'hdd_65f' && n !== 'mean_daily_min' && n !== 'mean_daily_max' && n !== 'days_tmin_lt_32f' && n !== 'days_tmax_gt_95f') {
             //add layer with sublayers
             //i.e. sea level rise layers 1ft - 6ft
             if (self.data.layers[id].sublayers) {
@@ -820,7 +820,7 @@ Impacts.prototype.addClimateLayer = function (replace, layer, preserveTime) {
     this.tileLayer = new ol.layer.Tile({
         source: new ol.source.XYZ({
             urls: [
-                'https://s3.amazonaws.com/climate-explorer-bucket/tilesets/' + src + '/{z}/{x}/{y}.png'
+                'https://s3.amazonaws.com/climate-explorer-bucket/tiles/' + src + '/{z}/{x}/{y}.png'
             ],
             extent: extent,
             minZoom: 0,
@@ -841,7 +841,7 @@ Impacts.prototype.addClimateLayer = function (replace, layer, preserveTime) {
         this.tileLayer85 = new ol.layer.Tile({
             source: new ol.source.XYZ({
                 urls: [
-                    'https://s3.amazonaws.com/climate-explorer-bucket/tilesets/' + src85 + '/{z}/{x}/{y}.png'
+                    'https://s3.amazonaws.com/climate-explorer-bucket/tiles/' + src85 + '/{z}/{x}/{y}.png'
                 ],
                 extent: extent,
                 minZoom: 0,
@@ -998,7 +998,7 @@ Impacts.prototype.setSlider = function (layer) {
         step: 10,
         value: self.activeYear,
         slide: function (event, ui) {
-            if (self.selectedVariable !== 'mean_daily_max' && self.selectedVariable !== 'mean_daily_min' && self.selectedVariable !== 'pr') {
+            if (self.selectedVariable !== 'mean_daily_max' && self.selectedVariable !== 'mean_daily_min' && self.selectedVariable !== 'pcpn') {
                 if (ui.value === 2000) {
                     return false;
                 }

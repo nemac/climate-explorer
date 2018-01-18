@@ -48,8 +48,8 @@ require("./plot.js")($);require("./renderer.js")($);require("./axis_title.js");r
         {
             id:       "tasmax",
             title: {
-                english: "Mean Daily Maximum Temperature",
-                metric: "Mean Daily Maximum Temperature"
+                english: "Average Daily Max Temp",
+                metric: "Average Daily Max Temp"
             },
             dataconverters: {
                 metric: identity,
@@ -58,21 +58,21 @@ require("./plot.js")($);require("./renderer.js")($);require("./axis_title.js");r
             ytitles: {
                 annual: {
                     absolute: {
-                        english: "Mean Daily Maximum Temperature (°F)",
-                        metric:  "Mean Daily Maximum Temperature (°C)"
+                        english: "Average Daily Max Temp (°F)",
+                        metric:  "Average Daily Max Temp (°C)"
                     },
                     anomaly:  {
-                        english: "Mean Daily Maximum Temperature Departure (°F)",
-                        metric:  "Mean Daily Maximum Temperature Departure (°C)"
+                        english: "Average Daily Max Temp Departure (°F)",
+                        metric:  "Average Daily Max Temp Departure (°C)"
                     }
                 },
                 monthly:  {
-                    english: "Mean Daily Maximum Temperature (°F)",
-                    metric:  "Mean Daily Maximum Temperature (°C)"
+                    english: "Average Daily Max Temp (°F)",
+                    metric:  "Average Daily Max Temp (°C)"
                 },
                 seasonal: {
-                    english: "Mean Daily Maximum Temperature (°F)",
-                    metric:  "Mean Daily Maximum Temperature (°C)"
+                    english: "Average Daily Max Temp (°F)",
+                    metric:  "Average Daily Max Temp (°C)"
                 }
             }
         },
@@ -80,8 +80,8 @@ require("./plot.js")($);require("./renderer.js")($);require("./axis_title.js");r
         {
             id:       "tasmin",
             title: {
-                english: "Mean Daily Minimum Temperature",
-                metric: "Mean Daily Minimum Temperature"
+                english: "Average Daily Min Temp",
+                metric: "Average Daily Min Temp"
             },
             dataconverters: {
                 metric: identity,
@@ -90,21 +90,21 @@ require("./plot.js")($);require("./renderer.js")($);require("./axis_title.js");r
             ytitles: {
                 annual: {
                     absolute: {
-                        english: "Mean Daily Minimum Temperature (°F)",
-                        metric:  "Mean Daily Minimum Temperature (°C)"
+                        english: "Average Daily Min Temp (°F)",
+                        metric:  "Average Daily Min Temp (°C)"
                     },
                     anomaly:  {
-                        english: "Mean Daily Minimum Temperature Departure (°F)",
-                        metric:  "Mean Daily Minimum Temperature Departure (°C)"
+                        english: "Average Daily Min Temp Departure (°F)",
+                        metric:  "Average Daily Min Temp Departure (°C)"
                     }
                 },
                 monthly:  {
-                    english: "Mean Daily Minimum Temperature (°F)",
-                    metric:  "Mean Daily Minimum Temperature (°C)"
+                    english: "Average Daily Min Temp (°F)",
+                    metric:  "Average Daily Min Temp (°C)"
                 },
                 seasonal: {
-                    english: "Mean Daily Minimum Temperature (°F)",
-                    metric:  "Mean Daily Minimum Temperature (°C)"
+                    english: "Average Daily Min Temp (°F)",
+                    metric:  "Average Daily Min Temp (°C)"
                 }
             }
         },
@@ -144,7 +144,7 @@ require("./plot.js")($);require("./renderer.js")($);require("./axis_title.js");r
 
 
         {
-            id:       "days_tmax_abv_35.0",
+            id:       "days_tmax_gt_95f",
             title: {
                 english: "Days with Maximum Temperature Above 95 °F",
                 metric: "Days with Maximum Temperature Above 35 °C"
@@ -168,7 +168,7 @@ require("./plot.js")($);require("./renderer.js")($);require("./axis_title.js");r
         },
 
         {
-            id:       "days_tmin_blw_0.0",
+            id:       "days_tmin_lt_32f",
             title: {
                 english: "Days with Minimum Temperature Below 32 °F",
                 metric: "Days with Minimum Temperature Below 0 °C"
@@ -192,7 +192,7 @@ require("./plot.js")($);require("./renderer.js")($);require("./axis_title.js");r
         },
 
         {
-            id:       "heating_degree_day_18.3",
+            id:       "hdd_65f",
             title: {
                 english: "Heating Degree Days",
                 metric: "Heating Degree Days"
@@ -216,7 +216,7 @@ require("./plot.js")($);require("./renderer.js")($);require("./axis_title.js");r
         },
 
         {
-            id:       "cooling_degree_day_18.3",
+            id:       "cdd_65f",
             title: {
                 english: "Cooling Degree Days",
                 metric: "Cooling Degree Days"
@@ -240,7 +240,7 @@ require("./plot.js")($);require("./renderer.js")($);require("./axis_title.js");r
         },
 
         {
-            id:       "days_prcp_abv_25.3",
+            id:       "days_pcpn_gt_1in",
             title: {
                 english: "Days of Precipitation Above 1 in",
                 metric: "Days of Precipitation Above 25.3 mm"

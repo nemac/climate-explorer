@@ -181,7 +181,7 @@ if ($cut_url == $current_url) {
             </select>
         </li>
 
-        <li class="about-link"><a href="<?php $current_domain ?>#detail-tmax" class="nav-detail-link" id="about-variable-link">About Mean Daily Maximum Temperature</a></li>
+        <li class="about-link"><a href="<?php $current_domain ?>#detail-tmax" class="nav-detail-link" id="about-variable-link">About Average Daily Max Temp</a></li>
     </ul>
 
     <div id="vars-legend" class="legend-wrap left-filler">
@@ -207,8 +207,28 @@ if ($cut_url == $current_url) {
 
         <div class="moveable" id="sliderDiv">
             <div id="swipeImg" class="handle">
-                <div class="emissions-low">Lower Emissions</div>
-                <div class="emissions-high">Higher Emissions</div>
+                <div class="emissions-low">
+
+                    <select class="dropdown" id="le-options" style="width:125px">
+
+                            <option value="lower">LOWER EMISSIONS</option>
+                            <option value="lower_historical">HISTORICAL</option>
+
+
+                    </select>
+
+                </div>
+                <div class="emissions-high">
+
+                    <select class="dropdown swipe-dropdown" id="he-options" style="width:125px">
+
+                        <option value="higher">HIGHER EMISSIONS</option>
+                        <option value="higher_historical">HISTORICAL</option>
+
+
+                    </select>
+
+                </div>
             </div>
         </div>
 

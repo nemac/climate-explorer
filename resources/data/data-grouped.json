@@ -637,7 +637,7 @@
       "description": "Maximum temperatures are one indicator of conditions that can interfere with ecosystem functions. View how temperatures are projected to change during future decades.",
       "source": "https://catalog.data.gov/dataset/bias-corrected-constructed-analogs-v2-daily-climate-projections",
       "legend": "resources/img/mean_daily_max",
-      "url": "https://s3.amazonaws.com/climate-explorer-bucket/tilesets/2090-summer-rcp85-tasmax/{z}/{x}/{y}.png",
+      "url": "https://s3.amazonaws.com/climate-explorer-bucket/tiles/2090-summer-rcp85-tasmax/{z}/{x}/{y}.png",
       "options": {
       },
       "defaults": {
@@ -651,7 +651,7 @@
       "description": "Minimum temperatures are one indicator of conditions that can interfere with ecosystem functions. View how temperatures are projected to change during future decades.",
       "source": "https://catalog.data.gov/dataset/bias-corrected-constructed-analogs-v2-daily-climate-projections",
       "legend": "resources/img/mean_daily_min",
-      "url": "https://s3.amazonaws.com/climate-explorer-bucket/tilesets/2090-summer-rcp85-tasmin/{z}/{x}/{y}.png",
+      "url": "https://s3.amazonaws.com/climate-explorer-bucket/tiles/2090-summer-rcp85-tasmin/{z}/{x}/{y}.png",
       "options": {
       },
       "defaults": {
@@ -674,12 +674,12 @@
     },
     "days_tmin_blw_0": {
       "type": "Tile",
-      "id": "days_tmin_blw_0.0",
+      "id": "days_tmin_lt_32f",
       "title": "Days below 32 degrees",
       "description": "View how the number of days per year with below-freezing temperatures decreases over time.",
       "source": "",
       "legend": "resources/img/days_tmin_blw_0",
-      "url": "https://s3.amazonaws.com/climate-explorer-bucket/tilesets/2090-annual-rcp45-days-tmin-blw/{z}/{x}/{y}.png",
+      "url": "https://s3.amazonaws.com/climate-explorer-bucket/tiles/2090-annual-rcp45-days-tmin-blw/{z}/{x}/{y}.png",
       "options": {
       },
       "defaults": {
@@ -702,12 +702,12 @@
     },
     "heating_degree_day_18": {
       "type": "Tile",
-      "id": "heating_degree_day_18.3",
+      "id": "hdd_65f",
       "title": "Heating Degree Days",
       "description": "View how demand for energy to heat homes and businesses during cool seasons decreases in future decades.",
       "source": "",
       "legend": "resources/img/heating_degree_day_18",
-      "url": "https://s3.amazonaws.com/climate-explorer-bucket/tilesets/2090-annual-rcp45-heating-degree-day/{z}/{x}/{y}.png",
+      "url": "https://s3.amazonaws.com/climate-explorer-bucket/tiles/2090-annual-rcp45-heating-degree-day/{z}/{x}/{y}.png",
       "options": {
       },
       "defaults": {
@@ -824,12 +824,12 @@
     },
     "cooling_degree_day_18": {
       "type": "Tile",
-      "id": "cooling_degree_day_18.3",
+      "id": "cdd_65f",
       "title": "Cooling Degree Days",
       "description": "View how demand for energy to cool homes and businesses during the warm season increases in the future. Consider how people who don’t have access to air conditioning will fare.",
       "source": "https://catalog.data.gov/dataset/bias-corrected-constructed-analogs-v2-daily-climate-projections",
       "legend": "resources/img/cooling_degree_day_18",
-      "url": "https://s3.amazonaws.com/climate-explorer-bucket/tilesets/2090-annual-rcp45-cooling-degree-day/{z}/{x}/{y}.png",
+      "url": "https://s3.amazonaws.com/climate-explorer-bucket/tiles/2090-annual-rcp45-cooling-degree-day/{z}/{x}/{y}.png",
       "options": {
       },
       "defaults": {
@@ -854,12 +854,12 @@
     },
     "days_tmax_abv_35": {
       "type": "Tile",
-      "id": "days_tmax_abv_35.0",
+      "id": "days_tmax_gt_95f",
       "title": "Days Above 95 Degrees F",
       "description": "View how the number of days per year with temperatures over 95°F increases during future decades.",
       "source": "https://catalog.data.gov/dataset/bias-corrected-constructed-analogs-v2-daily-climate-projections",
       "legend": "resources/img/days_tmax_abv_35",
-      "url": "https://s3.amazonaws.com/climate-explorer-bucket/tilesets/2090-annual-rcp85-days-tmax-abv/{z}/{x}/{y}.png",
+      "url": "https://s3.amazonaws.com/climate-explorer-bucket/tiles/2090-annual-rcp85-days-tmax-abv/{z}/{x}/{y}.png",
       "options": {
       },
       "defaults": {

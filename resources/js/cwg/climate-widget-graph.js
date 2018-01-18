@@ -81,8 +81,8 @@
         {
             id: "tmax",
             title: {
-                english: "Mean Daily Maximum Temperature",
-                metric: "Mean Daily Maximum Temperature"
+                english: "Average Daily Max Temp",
+                metric: "Average Daily Max Temp"
             },
             acis_elements: {
                 annual: {
@@ -108,29 +108,29 @@
             ytitles: {
                 annual: {
                     absolute: {
-                        english: "Mean Daily Maximum Temperature (°F)",
-                        metric: "Mean Daily Maximum Temperature (°C)"
+                        english: "Average Daily Max Temp (°F)",
+                        metric: "Average Daily Max Temp (°C)"
                     },
                     anomaly: {
-                        english: "Mean Daily Maximum Temperature Departure (°F)",
-                        metric: "Mean Daily Maximum Temperature Departure (°C)"
+                        english: "Average Daily Max Temp Departure (°F)",
+                        metric: "Average Daily Max Temp Departure (°C)"
                     }
                 },
                 monthly: {
-                    english: "Mean Daily Maximum Temperature (°F)",
-                    metric: "Mean Daily Maximum Temperature (°C)"
+                    english: "Average Daily Max Temp (°F)",
+                    metric: "Average Daily Max Temp (°C)"
                 },
                 seasonal: {
-                    english: "Mean Daily Maximum Temperature (°F)",
-                    metric: "Mean Daily Maximum Temperature (°C)"
+                    english: "Average Daily Max Temp (°F)",
+                    metric: "Average Daily Max Temp (°C)"
                 }
             }
         },
         {
             id: "tmin",
             title: {
-                english: "Mean Daily Minimum Temperature",
-                metric: "Mean Daily Minimum Temperature"
+                english: "Average Daily Min Temp",
+                metric: "Average Daily Min Temp"
             },
             acis_elements: {
                 annual: {
@@ -156,21 +156,21 @@
             ytitles: {
                 annual: {
                     absolute: {
-                        english: "Mean Daily Minimum Temperature (°F)",
-                        metric: "Mean Daily Minimum Temperature (°C)"
+                        english: "Average Daily Min Temp (°F)",
+                        metric: "Average Daily Min Temp (°C)"
                     },
                     anomaly: {
-                        english: "Mean Daily Minimum Temperature Departure (°F)",
-                        metric: "Mean Daily Minimum Temperature Departure (°C)"
+                        english: "Average Daily Min Temp Departure (°F)",
+                        metric: "Average Daily Min Temp Departure (°C)"
                     }
                 },
                 monthly: {
-                    english: "Mean Daily Minimum Temperature (°F)",
-                    metric: "Mean Daily Minimum Temperature (°C)"
+                    english: "Average Daily Min Temp (°F)",
+                    metric: "Average Daily Min Temp (°C)"
                 },
                 seasonal: {
-                    english: "Mean Daily Minimum Temperature (°F)",
-                    metric: "Mean Daily Minimum Temperature (°C)"
+                    english: "Average Daily Min Temp (°F)",
+                    metric: "Average Daily Min Temp (°C)"
                 }
             }
         },

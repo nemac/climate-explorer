@@ -1,26 +1,3 @@
-$('#station-charts-tabs .chart-tab-list a').click(function(e) {
-  
-  e.preventDefault();
-  
-  var tab_id = $(this).attr('href');
-  
-  if (!$(this).parents('li').hasClass('selected')) {
-    
-    $('#station-charts-tabs .chart-tab-list li').removeClass('selected');
-    $('#station-charts-tabs .chart-tab').removeClass('selected');
-    
-    $(this).parents('li').addClass('selected');
-    $(tab_id).addClass('selected');
-    
-    if (tab_id == '#stations-charts-temp') {
-      $('body').find('#itemvariable').val('tavg').change();
-    } else {
-      $('body').find('#itemvariable').val('precipitation').change();
-    }
-    
-  }
-  
-});
 
 //$('#tidal-chart-container').hide();
 
@@ -40,7 +17,7 @@ var Location = function (lat, lon, stations_base_url, data_base_url) {
         'derived-map': 'hdd_65f'
     };
 
-    this.activeYear = 1950;
+    this.activeYear = 2010;
     this.selectedSeason = 'summer';
 
     this.lat = parseFloat(lat) || 37.42;
@@ -55,54 +32,97 @@ var Location = function (lat, lon, stations_base_url, data_base_url) {
 *
 */
 Location.prototype.mapVariables = function () {
+    // HISTORICAL
     this.tilesHistMapping = {
         'temperature-map': {
-            'tmax': '-hist-tasmax',
-            'tmin': '-hist-tasmin',
-            'days_tmin_blw_0.0': '-annual-hist-days-tmin-blw',
-            'days_tmax_abv_35.0': '-annual-hist-days-tmax-abv',
+            'tmax': '-hist-tmax',
+            'tmin': '-hist-tmin',
+            'days_tmin_lt_32f': '-annual-hist-days_tmin_lt_32f',
+            'days_tmax_gt_95f': '-annual-hist-days_tmax_gt_95f',
+            'days_tmax_gt_90f':    '-annual-hist-days_tmax_gt_90f',
+            'days_tmax_gt_100f':   '-annual-hist-days_tmax_gt_100f',
+            'days_tmax_gt_105f':   '-annual-hist-days_tmax_gt_105f',
+            'days_tmax_lt_32f':    '-annual-hist-days_tmax_lt_32f',
+            'days_tmin_gt_80f':    '-annual-hist-days_tmin_gt_80f',
+            'days_tmin_gt_90f':    '-annual-hist-days_tmin_gt_90f'
         },
         'precipitation-map': {
-            'pcpn': '-hist-precip',
-            'days_pcpn_gt_1in': '-annual-hist-days-prcp-abv'
+            'pcpn': '-hist-pcpn',
+            'days_pcpn_gt_1in': '-annual-hist-days_pcpn_gt_1in',
+            'days_pcpn_gt_2in':    '-annual-hist-days_pcpn_gt_2in',
+            'days_pcpn_gt_3in':    '-annual-hist-days_pcpn_gt_3in',
+            'days_pcpn_lt_0.01in': '-annual-hist-dry_days'
         },
         'derived-map': {
-            'cdd_65f': '-annual-hist-cooling-degree-day',
-            'hdd_65f': '-annual-hist-heating-degree-day'
+            'cdd_65f': '-annual-hist-cdd_65f',
+            'hdd_65f': '-annual-hist-hdd_65f',
+            'gdd':     '-annual-hist-gdd',
+            'gddmod':  '-annual-hist-gddmod'
         }
-    };
 
+
+
+
+
+
+
+    };
+    // RCP 4.5
     this.tilesMapping = {
+
         'temperature-map': {
-            'tmax': '-rcp45-tasmax',
-            'tmin': '-rcp45-tasmin',
-            'days_tmin_blw_0.0': '-annual-rcp45-days-tmin-blw',
-            'days_tmax_abv_35.0': '-annual-rcp45-days-tmax-abv',
+            'tmax': '-rcp45-tmax',
+            'tmin': '-rcp45-tmin',
+            'days_tmin_lt_32f': '-annual-rcp45-days_tmin_lt_32f',
+            'days_tmax_gt_95f': '-annual-rcp45-days_tmax_gt_95f',
+            'days_tmax_gt_90f':    '-annual-rcp45-days_tmax_gt_90f',
+            'days_tmax_gt_100f':   '-annual-rcp45-days_tmax_gt_100f',
+            'days_tmax_gt_105f':   '-annual-rcp45-days_tmax_gt_105f',
+            'days_tmax_lt_32f':    '-annual-rcp45-days_tmax_lt_32f',
+            'days_tmin_gt_80f':    '-annual-rcp45-days_tmin_gt_80f',
+            'days_tmin_gt_90f':    '-annual-rcp45-days_tmin_gt_90f'
         },
         'precipitation-map': {
-            'pcpn': '-rcp45-precip',
-            'days_pcpn_gt_1in': '-annual-rcp45-days-prcp-abv'
+            'pcpn': '-rcp45-pcpn',
+            'days_pcpn_gt_1in': '-annual-rcp45-days_pcpn_gt_1in',
+            'days_pcpn_gt_2in':    '-annual-rcp45-days_pcpn_gt_2in',
+            'days_pcpn_gt_3in':    '-annual-rcp45-days_pcpn_gt_3in',
+            'days_pcpn_lt_0.01in': '-annual-rcp45-dry_days'
         },
         'derived-map': {
-            'cdd_65f': '-annual-rcp45-cooling-degree-day',
-            'hdd_65f': '-annual-rcp45-heating-degree-day'
+            'cdd_65f': '-annual-rcp45-cdd_65f',
+            'hdd_65f': '-annual-rcp45-hdd_65f',
+            'gdd':     '-annual-rcp45-gdd',
+            'gddmod':  '-annual-rcp45-gddmod'
         }
     };
-
+    // RCP 8.5
     this.tilesMapping85 = {
+
         'temperature-map': {
-            'tmax': '-rcp85-tasmax',
-            'tmin': '-rcp85-tasmin',
-            'days_tmin_blw_0.0': '-annual-rcp85-days-tmin-blw',
-            'days_tmax_abv_35.0': '-annual-rcp85-days-tmax-abv',
+            'tmax': '-rcp85-tmax',
+            'tmin': '-rcp85-tmin',
+            'days_tmin_lt_32f': '-annual-rcp85-days_tmin_lt_32f',
+            'days_tmax_gt_95f': '-annual-rcp85-days_tmax_gt_95f',
+            'days_tmax_gt_90f':    '-annual-rcp85-days_tmax_gt_90f',
+            'days_tmax_gt_100f':   '-annual-rcp85-days_tmax_gt_100f',
+            'days_tmax_gt_105f':   '-annual-rcp85-days_tmax_gt_105f',
+            'days_tmax_lt_32f':    '-annual-rcp85-days_tmax_lt_32f',
+            'days_tmin_gt_80f':    '-annual-rcp85-days_tmin_gt_80f',
+            'days_tmin_gt_90f':    '-annual-rcp85-days_tmin_gt_90f'
         },
         'precipitation-map': {
-            'pcpn': '-rcp85-precip',
-            'days_pcpn_gt_1in': '-annual-rcp85-days-prcp-abv'
+            'pcpn': '-rcp85-pcpn',
+            'days_pcpn_gt_1in': '-annual-rcp85-days_pcpn_gt_1in',
+            'days_pcpn_gt_2in':    '-annual-rcp85-days_pcpn_gt_2in',
+            'days_pcpn_gt_3in':    '-annual-rcp85-days_pcpn_gt_3in',
+            'days_pcpn_lt_0.01in': '-annual-rcp85-dry_days'
         },
         'derived-map': {
-            'cdd_65f': '-annual-rcp85-cooling-degree-day',
-            'hdd_65f': '-annual-rcp85-heating-degree-day'
+            'cdd_65f': '-annual-rcp85-cdd_65f',
+            'hdd_65f': '-annual-rcp85-hdd_65f',
+            'gdd':     '-annual-rcp85-gdd',
+            'gddmod':  '-annual-rcp85-gddmod'
         }
     };
 };
@@ -211,7 +231,6 @@ Location.prototype.addStations = function () {
         vectorLayer.set('layer_id', 'stations');
         self.map.addLayer(vectorLayer);
 
-        //console.log('added', data);
     });
 
 
@@ -231,8 +250,22 @@ Location.prototype.addITEMStations = function () {
         })
     };
 
+    var blackStyles = {
+        'Point': new ol.style.Style({
+            image: new ol.style.Circle({
+                radius: 8,
+                fill: new ol.style.Fill({color: '#f5442d'}),
+                stroke: new ol.style.Stroke({color: '#000', width: 2})
+            })
+        })
+    };
+
     var styleFunction = function (feature) {
-        return styles[feature.getGeometry().getType()];
+        if (feature.U.show_on_precip === 0 && feature.U.show_on_temp === 0){
+            return styles[feature.getGeometry().getType()];
+        } else {
+            return blackStyles[feature.getGeometry().getType()];
+        }
     };
 
 
@@ -251,6 +284,8 @@ Location.prototype.addITEMStations = function () {
                 'properties': {
                     'station': d.id,
                     'name': d.name,
+                    'show_on_precip': d.precip,
+                    'show_on_temp': d.temp,
                     'type': 'ITEM'
                 },
                 'geometry': {
@@ -274,8 +309,6 @@ Location.prototype.addITEMStations = function () {
 
         vectorLayer.set('layer_id', 'stations2');
         self.map.addLayer(vectorLayer);
-
-        //console.log('added', data);
     });
 
 
@@ -338,8 +371,6 @@ Location.prototype.addTIDALStations = function () {
 
         vectorLayer.set('layer_id', 'stations2');
         self.map.addLayer(vectorLayer);
-
-        //console.log('added', data);
     });
 
 
@@ -356,10 +387,79 @@ Location.prototype.stationSelected = function (feature, event, type) {
     var self = this;
 
     if (feature) {
-      
+
+
+
+        if ($('#stations-charts-list > li.selected > a').text() === 'Temperature') {
+
+            if (feature.U.show_on_temp === 0){
+                $('#station-detail-data').hide();
+                $('#station-no-data').show();
+            } else {
+                $('#station-detail-data').show();
+                $('#station-no-data').hide();
+            }
+        }
+
+        if ($('#stations-charts-list > li.selected > a').text() === 'Precipitation') {
+
+            if (feature.U.show_on_precip === 0){
+                $('#station-detail-data').hide();
+                $('#station-no-data').show();
+            } else {
+                $('#station-detail-data').show();
+                $('#station-no-data').hide();
+            }
+        }
+
+        $('#station-charts-tabs .chart-tab-list a').click(function(e) {
+
+            e.preventDefault();
+
+            var tab_id = $(this).attr('href');
+
+
+            if (!$(this).parents('li').hasClass('selected')) {
+
+                $('#station-charts-tabs .chart-tab-list li').removeClass('selected');
+                $('#station-charts-tabs .chart-tab').removeClass('selected');
+
+                $(this).parents('li').addClass('selected');
+                $(tab_id).addClass('selected');
+
+                if (tab_id === '#stations-charts-temp') {
+                    $('body').find('#itemvariable').val('tavg').change();
+
+                    if (feature.U.show_on_temp === 0){
+                        $('#station-detail-data').hide();
+                        $('#station-no-data').show();
+                    } else {
+                        $('#station-detail-data').show();
+                        $('#station-no-data').hide();
+                    }
+
+                } else {
+                    $('body').find('#itemvariable').val('precipitation').change();
+
+
+                    if (feature.U.show_on_precip === 0){
+                        $('#station-detail-data').hide();
+                        $('#station-no-data').show();
+                    } else {
+                        $('#station-detail-data').show();
+                        $('#station-no-data').hide();
+                    }
+
+                }
+
+            }
+
+        });
+
+
         var station_tabs;
         
-        $('#stations-spinner').fadeIn(150, function() {
+        $('#stations-spinner').fadeIn(50, function() {
           $('#location-stations').addClass('overlay-on');
           
           var props = feature.getProperties();
@@ -367,15 +467,19 @@ Location.prototype.stationSelected = function (feature, event, type) {
           // populate header
           
           $('#station-overlay-header .station-name').html(props.name);
+
           $('#station-overlay-header .station-id').html(props.station);
-  
+
+          $('#station').val(props.station).change();
+
           if (props.type === 'ITEM') {
-              console.log("CLICKED ON ITEM");
-  
+
+
+
               $('#station-overlay-header h3').html('Weather Station');
               
               self.chart = new ChartBuilder(props, self.stations_base_url);
-              
+
               $('#stations-spinner').fadeOut(250);
           }
           
@@ -387,7 +491,7 @@ Location.prototype.stationSelected = function (feature, event, type) {
   
               $('#stations-spinner').fadeOut(250);
               
-              $('body').on('change', '#station', function() {
+              $('body').on('change', '#tidal_station', function() {
                   $("#tidal-chart").tidalstationwidget("update", {station: $(this).val()})
                   
                   if ($(this).find('option:selected').length) {
@@ -397,7 +501,7 @@ Location.prototype.stationSelected = function (feature, event, type) {
                   $('#station-overlay-header .station-id').html($(this).val());
               });
   
-              $("#station").val(props.station).change();
+              $("#tidal_station").val(props.station).change();
   
           }
           
@@ -439,7 +543,7 @@ Location.prototype.createGraphMaps = function (map) {
 
     var view = new ol.View({
         center: ol.proj.transform([this.lon, this.lat], 'EPSG:4326', 'EPSG:3857'),
-        zoom: 6
+        zoom: 5
     });
 
     self[map] = new ol.Map({
@@ -457,6 +561,7 @@ Location.prototype.createGraphMaps = function (map) {
         ]
     });
     self.updateTiledLayer(map, true, true);
+
 
 };
 
@@ -575,8 +680,22 @@ Location.prototype.wire = function () {
             self.updateTiledLayer('temperature-map', false);
         }
 
+
+        var legendFilename;
+
+        if (self.selectedVariable['temperature-map'] === 'tmax' ) {
+            legendFilename = 'summer_tmax';
+        } else if (self.selectedVariable['temperature-map'] === 'tmin' ) {
+            legendFilename = 'summer_tmin';
+        } else {
+            legendFilename = self.selectedVariable['temperature-map'];
+        }
+
         $('#temperature-map-container .full-map-btn').prop({'href': 'variables.php?id=' + id});
-        $('#temperature-map-container .location-map-legend').html('<img class="legend-image" src="resources/img/' + id + '.png"></img>');
+
+        $('#temperature-map-container .location-map-legend').html('<img class="legend-image" src="resources/img/legends/' + legendFilename + '.png"></img>');
+
+
     });
 
     $('#precipitation-data h4').on('click', function (e) {
@@ -587,14 +706,21 @@ Location.prototype.wire = function () {
         var id = $(this).attr('id').replace('var-', '');
 
         // use the same tiles as PR for days with above one inch
-        if (id === 'days_prcp_abv_25.3') {
-            id = 'pr';
-        }
+        //if (id === 'days_pcpn_gt_1in') {
+        //    id = 'pcpn';
+        //}
         self.selectedVariable['precipitation-map'] = id;
         if (self['precipitation-map']) {
             self.updateTiledLayer('precipitation-map', false);
         }
+
+        var legendFilename;
+        legendFilename = self.selectedVariable['precipitation-map'];
+
+
         $('#precipitation-map-container .full-map-btn').prop({'href': 'variables.php?id=' + id});
+
+        $('#precipitation-map-container .location-map-legend').html('<img class="legend-image" src="resources/img/legends/' + legendFilename + '.png">');
     });
 
     $('#derived-data h4').on('click', function (e) {
@@ -607,8 +733,12 @@ Location.prototype.wire = function () {
         if (self['derived-map']) {
             self.updateTiledLayer('derived-map', false);
         }
+
+        var legendFilename;
+        legendFilename = self.selectedVariable['derived-map'];
+
         $('#derived-map-container .full-map-btn').prop({'href': 'variables.php?id=' + id});
-        $('#derived-map-container .location-map-legend').html('<img class="legend-image" src="resources/img/' + id + '.png"></img>');
+        $('#derived-map-container .location-map-legend').html('<img class="legend-image" src="resources/img/legends/' + legendFilename + '.png">');
     });
 
     $('#precipitation-map-season .fs-dropdown-item').on('click', function (e) {
@@ -618,6 +748,12 @@ Location.prototype.wire = function () {
 
     $('#temperature-map-season .fs-dropdown-item').on('click', function (e) {
         self.selectedSeason = $(this).data().value;
+        if (self.selectedVariable['temperature-map'] === 'tmax' || self.selectedVariable['temperature-map'] === 'tmin'){
+            var legendFilename;
+            legendFilename = self.selectedSeason + '_' + self.selectedVariable['temperature-map'];
+            $('.location-map-legend').html('<img class="legend-image" src="resources/img/legends/' + legendFilename + '.png">');
+        }
+
         self.updateTiledLayer('temperature-map', true, false);
     });
 
@@ -626,7 +762,6 @@ Location.prototype.wire = function () {
 
 Location.prototype.updateSidebar = function (disable, id) {
     id = id.split('-')[0] + '-data';
-    //console.log('id', id);
     if (disable) {
         $('#' + id + ' .seasonal-monthly').addClass('disabled');
     } else {
@@ -644,6 +779,13 @@ Location.prototype.updateSidebar = function (disable, id) {
 */
 Location.prototype.updateTiledLayer = function (map, replace, timeReset) {
 
+
+
+
+    if (replace && timeReset) {
+        this.setSlider(map);
+    }
+
     var self = this;
     var histYears = [1950, 1960, 1970, 1980, 1990, 2000];
     var seasons = ['tmax', 'tmin', 'pcpn'];
@@ -659,7 +801,7 @@ Location.prototype.updateTiledLayer = function (map, replace, timeReset) {
         $('#temperature-map-season').hide();
     }
 
-    if (this.selectedVariable[map] === 'pr' && map === 'precipitation-map') {
+    if (this.selectedVariable[map] === 'pcpn' && map === 'precipitation-map') {
         $('#precipitation-map-season').show();
     } else if (map === 'precipitation-map') {
         $('#precipitation-map-season').hide();
@@ -683,7 +825,7 @@ Location.prototype.updateTiledLayer = function (map, replace, timeReset) {
     this[layer] = new ol.layer.Tile({
         source: new ol.source.XYZ({
             urls: [
-                'https://s3.amazonaws.com/climate-explorer-bucket/tilesets/' + src + '/{z}/{x}/{y}.png'
+                'https://s3.amazonaws.com/climate-explorer-bucket/tiles/' + src + '/{z}/{x}/{-y}.png'
             ],
             extent: extent,
             minZoom: 0,
@@ -702,7 +844,7 @@ Location.prototype.updateTiledLayer = function (map, replace, timeReset) {
         this[layer85] = new ol.layer.Tile({
             source: new ol.source.XYZ({
                 urls: [
-                    'https://s3.amazonaws.com/climate-explorer-bucket/tilesets/' + src85 + '/{z}/{x}/{y}.png'
+                    'https://s3.amazonaws.com/climate-explorer-bucket/tiles/' + src85 + '/{z}/{x}/{-y}.png'
                 ],
                 extent: extent,
                 minZoom: 0,
@@ -732,17 +874,13 @@ Location.prototype.updateTiledLayer = function (map, replace, timeReset) {
     }
     this.nameLayer.setZIndex(6);
 
+
     if (src85) {
         $("#" + map + "SliderDiv").show();
         this.setSwipeMap(map);
     } else {
         $("#" + map + "SliderDiv").hide();
     }
-
-    if (replace && timeReset) {
-        this.setSlider(map);
-    }
-
 };
 
 
@@ -777,7 +915,45 @@ Location.prototype.removeOldTiles = function (map) {
 * Map ( id ) required, to assign swiper and eventing to correct map
 *
 */
+
+
+Location.prototype.setSlider = function (map) {
+    var self = this;
+    var year_slider = $('#' + map + '-time-slider');
+
+    var tooltip = $('<span class="tooltip">' + year_slider.attr('data-value') + '</span>').hide();
+
+    year_slider.slider({
+        range: false,
+        min: 1950,
+        max: 2090,
+        step: 10,
+        value: 2010,
+        slide: function (event, ui) {
+            if (self.selectedVariable[map] !== 'tmax' && self.selectedVariable[map] !== 'tmin' && self.selectedVariable[map] !== 'pcpn') {
+                if (ui.value === 2000) {
+                    return false;
+                }
+            }
+            tooltip.text(ui.value);
+            tooltip.fadeIn(200);
+        },
+        change: function (event, ui) {
+            year_slider.attr('data-value', ui.value);
+        },
+        stop: function (event, ui) {
+            year_slider.attr('data-value', ui.value);
+            self.activeYear = ui.value;
+            self.updateTiledLayer(map, true, false);
+            tooltip.fadeOut(200);
+        }
+    }).find(".ui-slider-handle").html('<span class="icon icon-arrow-left-right"></span>').append(tooltip);
+    tooltip.fadeIn(200);
+};
+
 Location.prototype.setSwipeMap = function (map) {
+
+
     var self = this;
     var swipeVal = null, pos, wrapper;
     var layer = map + 'TileLayer';
@@ -832,36 +1008,3 @@ Location.prototype.setSwipeMap = function (map) {
 * Map ( id )  required to assign slider to correct map
 *
 */
-Location.prototype.setSlider = function (map) {
-    var self = this;
-    var year_slider = $('#' + map + '-time-slider');
-
-    var tooltip = $('<span class="tooltip">' + year_slider.attr('data-value') + '</span>').hide();
-
-    year_slider.slider({
-        range: false,
-        min: 1950,
-        max: 2090,
-        step: 10,
-        value: 2010,
-        slide: function (event, ui) {
-            if (self.selectedVariable[map] !== 'tasmax' && self.selectedVariable[map] !== 'tasmin' && self.selectedVariable[map] !== 'pr') {
-                if (ui.value === 2000) {
-                    return false;
-                }
-            }
-            tooltip.text(ui.value);
-            tooltip.fadeIn(200);
-        },
-        change: function (event, ui) {
-            year_slider.attr('data-value', ui.value);
-        },
-        stop: function (event, ui) {
-            year_slider.attr('data-value', ui.value);
-            self.activeYear = ui.value;
-            self.updateTiledLayer(map, true, false);
-            tooltip.fadeOut(200);
-        }
-    }).find(".ui-slider-handle").html('<span class="icon icon-arrow-left-right"></span>').append(tooltip);
-    tooltip.fadeIn(200);
-};

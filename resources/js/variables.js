@@ -4,19 +4,19 @@ var Variables = function (id, data_base_url) {
 
     switch (true) {
         case (id === 'days_tmax_abv_35'):
-            id = 'days_tmax_abv_35.0';
+            id = 'days_tmax_gt_95f';
             break;
         case (id === 'days_prcp_abv_25'):
-            id = 'days_prcp_abv_25.3';
+            id = 'days_pcpn_gt_1in';
             break;
         case (id === 'days_tmin_blw_0'):
-            id = 'days_tmin_blw_0.0';
+            id = 'days_tmin_lt_32f';
             break;
         case (id === 'heating_degree_day_18'):
-            id = 'heating_degree_day_18.3';
+            id = 'hdd_65f';
             break;
         case (id === 'cooling_degree_day_18'):
-            id = 'cooling_degree_day_18.3';
+            id = 'cdd_65f';
             break;
     }
 
@@ -35,7 +35,18 @@ var Variables = function (id, data_base_url) {
 
     $('#variable-options').val(id).attr('selected', true).change();
 
-    $('#vars-legend .legend #legend-container').html('<img class="legend-image" src="resources/img/' + this.selectedVariable + '.png"></img>');
+    var legendFilename;
+
+    if (this.selectedVariable === 'tmax' ) {
+        legendFilename = 'summer_tmax';
+    } else if (this.selectedVariable === 'tmin' ) {
+        legendFilename = 'summer_tmin';
+    } else {
+        legendFilename = this.selectedVariable;
+    }
+
+
+    $('#vars-legend .legend #legend-container').html('<img class="legend-image" src="resources/img/legends/' + legendFilename + '.png">');
 
     this.createMap();
     this.wireSearch();
@@ -48,47 +59,99 @@ var Variables = function (id, data_base_url) {
  */
 Variables.prototype.mapVariables = function () {
     this.varMapping = {
-        'tmax': 'Mean Daily Maximum Temperature',
-        'tmin': 'Mean Daily Minimum Temperature',
+        'tmax': 'Average Daily Max Temp',
+        'tmin': 'Average Daily Min Temp',
         'days_tmin_lt_32f': 'Days With Minimum Below 32F&deg; F',
+        'days_tmax_gt_90f': 'Days per year with max above 90°F',
         'days_tmax_gt_95f': 'Days With Maximum Above 95&deg; F',
         'pcpn': 'Total precipitation',
         'days_pcpn_gt_1in': 'Days of Precipitation Above 1 Inch',
         'cdd_65f': 'Cooling Degree Days',
-        'hdd_65f': 'Heating Degree Days'
+        'hdd_65f': 'Heating Degree Days',
+
+        'days_tmax_gt_100f':   'Days per year with max above 100°F',
+        'days_tmax_gt_105f':   'Days per year with max above 105°F',
+        'days_tmax_lt_32f':    'Days per year with max below 32°F (Icing days)',
+        'days_tmin_gt_80f':    'Days per year with min above 80°F',
+        'days_tmin_gt_90f':    'Days per year with min above 90°F',
+        'days_pcpn_gt_2in':    'Days per year with more than 2 inches precip',
+        'days_pcpn_gt_3in':    'Days per year with more than 3 inches precip',
+        'days_pcpn_lt_0.01in': 'Dry Days (days/period)',
+        'gdd':                 'Growing Degree Days (°F-days)',
+        'gddmod':              'Modified Growing Degree Days (°F-days)'
+
     };
 
     this.tilesHistMapping = {
-        'tmax': '-hist-tasmax',
-        'tmin': '-hist-tasmin',
-        'days_tmin_lt_32f': '-annual-hist-days-tmin-blw',
-        'days_tmax_gt_95f': '-annual-hist-days-tmax-abv',
-        'pcpn': '-hist-precip',
-        'days_pcpn_gt_1in': '-annual-hist-days-prcp-abv',
-        'cdd_65f': '-annual-hist-cooling-degree-day',
-        'hdd_65f': '-annual-hist-heating-degree-day'
+        'tmax': '-hist-tmax',
+        'tmin': '-hist-tmin',
+        'days_tmin_lt_32f': '-annual-hist-days_tmin_lt_32f',
+        'days_tmax_gt_95f': '-annual-hist-days_tmax_gt_95f',
+
+        'days_tmax_gt_90f':    '-annual-hist-days_tmax_gt_90f',
+        'days_tmax_gt_100f':   '-annual-hist-days_tmax_gt_100f',
+        'days_tmax_gt_105f':   '-annual-hist-days_tmax_gt_105f',
+        'days_tmax_lt_32f':    '-annual-hist-days_tmax_lt_32f',
+        'days_tmin_gt_80f':    '-annual-hist-days_tmin_gt_80f',
+        'days_tmin_gt_90f':    '-annual-hist-days_tmin_gt_90f',
+        'days_pcpn_gt_2in':    '-annual-hist-days_pcpn_gt_2in',
+        'days_pcpn_gt_3in':    '-annual-hist-days_pcpn_gt_3in',
+        'days_pcpn_lt_0.01in': '-annual-hist-dry_days',
+        'gdd':                 '-annual-hist-gdd',
+        'gddmod':              '-annual-hist-gddmod',
+
+        'pcpn': '-hist-pcpn',
+        'days_pcpn_gt_1in': '-annual-hist-days_pcpn_gt_1in',
+        'cdd_65f': '-annual-hist-cdd_65f',
+        'hdd_65f': '-annual-hist-hdd_65f'
     };
 
     this.tilesMapping = {
-        'tmax': '-rcp45-tasmax',
-        'tmin': '-rcp45-tasmin',
-        'days_tmin_lt_32f': '-annual-rcp45-days-tmin-blw',
-        'days_tmax_gt_95f': '-annual-rcp45-days-tmax-abv',
-        'pcpn': '-rcp45-precip',
-        'days_pcpn_gt_1in': '-annual-rcp45-days-prcp-abv',
-        'cdd_65f': '-annual-rcp45-cooling-degree-day',
-        'hdd_65f': '-annual-rcp45-heating-degree-day'
+        'tmax': '-rcp45-tmax',
+        'tmin': '-rcp45-tmin',
+        'days_tmin_lt_32f': '-annual-rcp45-days_tmin_lt_32f',
+        'days_tmax_gt_95f': '-annual-rcp45-days_tmax_gt_95f',
+
+        'days_tmax_gt_90f':    '-annual-rcp45-days_tmax_gt_90f',
+        'days_tmax_gt_100f':   '-annual-rcp45-days_tmax_gt_100f',
+        'days_tmax_gt_105f':   '-annual-rcp45-days_tmax_gt_105f',
+        'days_tmax_lt_32f':    '-annual-rcp45-days_tmax_lt_32f',
+        'days_tmin_gt_80f':    '-annual-rcp45-days_tmin_gt_80f',
+        'days_tmin_gt_90f':    '-annual-rcp45-days_tmin_gt_90f',
+        'days_pcpn_gt_2in':    '-annual-rcp45-days_pcpn_gt_2in',
+        'days_pcpn_gt_3in':    '-annual-rcp45-days_pcpn_gt_3in',
+        'days_pcpn_lt_0.01in': '-annual-rcp45-dry_days',
+        'gdd':                 '-annual-rcp45-gdd',
+        'gddmod':              '-annual-rcp45-gddmod',
+
+        'pcpn': '-rcp45-pcpn',
+        'days_pcpn_gt_1in': '-annual-rcp45-days_pcpn_gt_1in',
+        'cdd_65f': '-annual-rcp45-cdd_65f',
+        'hdd_65f': '-annual-rcp45-hdd_65f'
     };
 
     this.tilesMapping85 = {
-        'tmax': '-rcp85-tasmax',
-        'tasmin': '-rcp85-tasmin',
-        'days_tmin_lt_32f': '-annual-rcp85-days-tmin-blw',
-        'days_tmax_gt_95f': '-annual-rcp85-days-tmax-abv',
-        'pcpn': '-rcp85-precip',
-        'days_pcpn_gt_1in': '-annual-rcp85-days-prcp-abv',
-        'cdd_65f': '-annual-rcp85-cooling-degree-day',
-        'hdd_65f': '-annual-rcp85-heating-degree-day'
+        'tmax': '-rcp85-tmax',
+        'tmin': '-rcp85-tmin',
+        'days_tmin_lt_32f': '-annual-rcp85-days_tmin_lt_32f',
+        'days_tmax_gt_95f': '-annual-rcp85-days_tmax_gt_95f',
+
+        'days_tmax_gt_90f':    '-annual-rcp85-days_tmax_gt_90f',
+        'days_tmax_gt_100f':   '-annual-rcp85-days_tmax_gt_100f',
+        'days_tmax_gt_105f':   '-annual-rcp85-days_tmax_gt_105f',
+        'days_tmax_lt_32f':    '-annual-rcp85-days_tmax_lt_32f',
+        'days_tmin_gt_80f':    '-annual-rcp85-days_tmin_gt_80f',
+        'days_tmin_gt_90f':    '-annual-rcp85-days_tmin_gt_90f',
+        'days_pcpn_gt_2in':    '-annual-rcp85-days_pcpn_gt_2in',
+        'days_pcpn_gt_3in':    '-annual-rcp85-days_pcpn_gt_3in',
+        'days_pcpn_lt_0.01in': '-annual-rcp85-dry_days',
+        'gdd':                 '-annual-rcp85-gdd',
+        'gddmod':              '-annual-rcp85-gddmod',
+
+        'pcpn': '-rcp85-pcpn',
+        'days_pcpn_gt_1in': '-annual-rcp85-days_pcpn_gt_1in',
+        'cdd_65f': '-annual-rcp85-cdd_65f',
+        'hdd_65f': '-annual-rcp85-hdd_65f'
     };
 };
 
@@ -154,7 +217,7 @@ Variables.prototype.createMap = function () {
         center: center || ol.proj.transform([-105.21, 37.42], 'EPSG:4326', 'EPSG:3857'),
         zoom: qs.zoom || 5,
         minZoom: 5,
-        maxZoom: 12
+        maxZoom: 10
     });
 
     var scaleLineControl = new ol.control.ScaleLine();
@@ -173,7 +236,7 @@ Variables.prototype.createMap = function () {
             source: new ol.source.XYZ({
               url: 'https://services.arcgisonline.com/arcgis/rest/services/Canvas/World_Light_Gray_Base/MapServer/tile/{z}/{y}/{x}',
               attributions: [new ol.Attribution({html: ['&copy; Esri, HERE, DeLorme, MapmyIndia, © OpenStreetMap contributors, and the GIS user community ']})],
-              maxZoom: 19
+              maxZoom: 10
             })
           })
         ],
@@ -271,8 +334,8 @@ Variables.prototype.wire = function () {
         orientation: "vertical",
         range: false,
         min: 5,
-        max: 15,
-        value: 5,
+        max: 10,
+        value: 0,
         slide: function (event, ui) {
             $(this).attr('data-value', ui.value);
             self.setZoom(ui.value);
@@ -312,7 +375,7 @@ Variables.prototype.wire = function () {
         var show = $(this).is(':checked');
 
         self.map.getLayers().forEach(function (layer) {
-            if (layer.get('layer_id') == 'counties') {
+            if (layer.get('layer_id') === 'counties') {
 
                 var source = layer.getSource();
                 var features = source.getFeatures();
@@ -339,7 +402,19 @@ Variables.prototype.wire = function () {
     //var selector
     $('#variable-options-container .fs-dropdown-item').on('click', function (e) {
         self.selectedVariable = $(this).data().value;
-        $('#vars-legend .legend #legend-container').html('<img class="legend-image" src="resources/img/' + self.selectedVariable + '.png"></img>');
+
+        var legendFilename;
+
+        if (self.selectedVariable === 'tmax' ) {
+            legendFilename = 'summer_tmax';
+        } else if (self.selectedVariable === 'tmin' ) {
+            legendFilename = 'summer_tmin';
+        } else {
+            legendFilename = self.selectedVariable;
+        }
+
+        $('#vars-legend .legend #legend-container').html('<img class="legend-image" src="resources/img/legends/' + legendFilename + '.png">');
+
 
         $('#about-variable-link').html('About ' + self.varMapping[self.selectedVariable]);
         $('#about-variable-link').prop('href', '#detail-' + self.selectedVariable.split('.')[0]);
@@ -355,9 +430,30 @@ Variables.prototype.wire = function () {
     });
 
 
+    $('.emissions-low .fs-dropdown-item').on('click', function (e) {
+        thisone = $(this).data().value;
+        otherone = $(".emissions-high .fs-dropdown-selected").text();
+        self.updateTiledLayer(true,false,thisone,otherone);
+    });
+    $('.emissions-high .fs-dropdown-item').on('click', function (e) {
+        thisone = $(this).data().value;
+        otherone = $(".emissions-low .fs-dropdown-selected").text();
+        self.updateTiledLayer(true,false,otherone,thisone);
+    });
+
     $('#map-seasons-container .fs-dropdown-item').on('click', function (e) {
         self.selectedSeason = $(this).data().value;
         self.updateTiledLayer(true);
+
+        var legendFilename;
+
+        legendFilename = self.selectedSeason + '_' + self.selectedVariable;
+
+        console.log("legend filename");
+        console.log(legendFilename);
+
+        $('#vars-legend .legend #legend-container').html('<img class="legend-image" src="resources/img/legends/' + legendFilename + '.png">');
+
     });
 
     $('#variable-options').on('change', function () {
@@ -737,10 +833,17 @@ Variables.prototype.countySelected = function (feature, event) {
  * Given a "replace" we re-create slider / swiper at end of function
  *
  */
-Variables.prototype.updateTiledLayer = function (replace, preserveTime) {
+Variables.prototype.updateTiledLayer = function (replace, preserveTime,le_option_selected,he_option_selected) {
     var self = this;
     var histYears = [1950, 1960, 1970, 1980, 1990, 2000];
     var seasons = ['tmax', 'tmin', 'pcpn'];
+
+
+
+
+
+    console.log('self.selectedVariable');
+    console.log(self.selectedVariable);
 
     if ( self.selectedVariable !== 'tmax' && self.selectedVariable !== 'tmin' && self.selectedVariable !== 'pcpn' && this.activeYear === 2000 ) {
       this.activeYear = 2010;
@@ -758,12 +861,28 @@ Variables.prototype.updateTiledLayer = function (replace, preserveTime) {
     }
 
     var src, src85;
+
+    console.log('self.selectedVariable');
+    console.log(self.selectedVariable);
     if (histYears.indexOf(this.activeYear) !== -1) {
+
         src = this.activeYear + season + this.tilesHistMapping[this.selectedVariable];
         src85 = null;
     } else {
-        src = this.activeYear + season + this.tilesMapping[this.selectedVariable];
-        src85 = this.activeYear + season + this.tilesMapping85[this.selectedVariable];
+
+        if (le_option_selected === 'lower_historical' || le_option_selected === 'HISTORICAL') {
+            src = '1980' + season + this.tilesHistMapping[this.selectedVariable];
+        } else {
+            src = this.activeYear + season + this.tilesMapping[this.selectedVariable];
+        }
+
+
+        if (he_option_selected === 'higher_historical' || he_option_selected === 'HISTORICAL') {
+            src85 = '1980' + season + this.tilesHistMapping[this.selectedVariable];
+        } else {
+            src85 = this.activeYear + season + this.tilesMapping85[this.selectedVariable];
+        }
+
     }
 
 
@@ -779,17 +898,27 @@ Variables.prototype.updateTiledLayer = function (replace, preserveTime) {
     /*
      * Create the rcp45 tile layer
      */
+
+        console.log('selected what drop');
+        //le_option_selected = $('.emissions-low .fs-dropdown-selected').text();
+        //he_option_selected = $('.emissions-high .fs-dropdown-selected').text();
+        console.log(le_option_selected);
+        console.log(he_option_selected);
+
     this.tileLayer = new ol.layer.Tile({
         source: new ol.source.XYZ({
             urls: [
-                'https://s3.amazonaws.com/climate-explorer-bucket/tilesets/' + src + '/{z}/{x}/{y}.png'
+                'https://s3.amazonaws.com/climate-explorer-bucket/tiles/' + src + '/{z}/{x}/{-y}.png'
             ],
             extent: extent,
-            minZoom: 0,
-            maxZoom: 5,
+            minZoom: 5,
+            maxZoom: 10,
             tilePixelRatio: 1
         })
     });
+
+    console.log('45 TILE LAYER');
+    console.log(this.tileLayer);
 
     //add rcp45 tile layer to map
     this.tileLayer.set('layer_id', 'tile_layer');
@@ -804,17 +933,20 @@ Variables.prototype.updateTiledLayer = function (replace, preserveTime) {
         this.tileLayer85 = new ol.layer.Tile({
             source: new ol.source.XYZ({
                 urls: [
-                    'https://s3.amazonaws.com/climate-explorer-bucket/tilesets/' + src85 + '/{z}/{x}/{y}.png'
+                    'https://s3.amazonaws.com/climate-explorer-bucket/tiles/' + src85 + '/{z}/{x}/{-y}.png'
                 ],
                 extent: extent,
-                minZoom: 0,
-                maxZoom: 5,
+                minZoom: 5,
+                maxZoom: 10,
                 tilePixelRatio: 1
             })
         });
 
         this.tileLayer85.set('layer_id', 'tile_layer');
         this.map.addLayer(this.tileLayer85);
+
+
+
     }
 
 
@@ -828,7 +960,7 @@ Variables.prototype.updateTiledLayer = function (replace, preserveTime) {
         source: new ol.source.XYZ({
             url: 'https://services.arcgisonline.com/ArcGIS/rest/services/Canvas/World_Light_Gray_Reference/MapServer/tile/{z}/{y}/{x}',
             attributions: [new ol.Attribution({html: ['']})],
-            maxZoom: 19
+            maxZoom: 10
         })
         // source: new ol.source.XYZ({
         //     url: 'http://{s}.basemaps.cartocdn.com/light_only_labels/{z}/{x}/{y}.png',
@@ -983,8 +1115,11 @@ Variables.prototype.setSlider = function () {
         stop: function (event, ui) {
             year_slider.attr('data-value', ui.value);
             self.activeYear = ui.value;
-            self.updateTiledLayer(true, true);
-            self.updateUrl();
+
+            le_option_selected = $(".emissions-low .fs-dropdown-selected").text();
+            he_option_selected = $(".emissions-high .fs-dropdown-selected").text();
+
+            self.updateTiledLayer(true, true,le_option_selected,he_option_selected);
             tooltip.fadeOut(200);
         }
     }).find(".ui-slider-handle").html('<span class="icon icon-arrow-left-right"></span>').append(tooltip);
