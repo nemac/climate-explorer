@@ -27,6 +27,11 @@
           self.data = json;
         });
       },
+      _destroy: function () {
+        if (this.chart !== undefined) {
+          this.chart.destroy()
+        }
+      },
       update: function (options) {
         this.options = Object.assign(this.options, options);
 
@@ -63,6 +68,9 @@
 
         // compose chart
         var ctx = this.element[0].getContext('2d');
+        if (this.chart !== undefined) {
+          this.chart.destroy()
+        }
         this.chart = new Chart(ctx, {
           type: 'bar',
           responsive: this.options.responsive,
@@ -78,13 +86,13 @@
               },
               {
                 data: data_rcp45,
-                label: "RCP 4.5",
+                label: "Lower Emissions",
                 backgroundColor: "#0058cf",
                 borderColor: "#0058cf",
                 fill: false
               }, {
                 data: data_rcp85,
-                label: "RCP 8.5",
+                label: "Higher Emissions",
                 backgroundColor: "#f5442d",
                 borderColor: "#f5442d",
                 fill: false
@@ -93,8 +101,16 @@
           },
           options: {
             responsive: this.options.responsive,
-            events: [],
-            tooltipTemplate: "<%=datasetLabel%> : <%= value %>",
+            // events: [],
+            tooltips: {
+              mode: 'index',
+              callbacks: {
+                label: function (tooltipItem, data) {
+                  var value = data.datasets[tooltipItem.datasetIndex].data[tooltipItem.index];
+                  return data.datasets[tooltipItem.datasetIndex].label + ': ' + value + ' days';
+                }
+              }
+            },
             legend: {
               display: true,
               labels: {
@@ -103,11 +119,23 @@
             },
             scales: {
               yAxes: [{
+                scaleLabel: {
+                  fontSize: 13,
+                  labelString: 'Annual Days with High Tide Flooding',
+                  display: true
+                },
                 ticks: {
                   beginAtZero: true,
                   max: 365,
                   stepSize: 100,
                   maxTicksLimit: 20
+                }
+              }],
+              xAxes: [{
+                scaleLabel: {
+                  fontSize: 13,
+                  labelString: 'Year',
+                  display: true
                 }
               }]
             }
