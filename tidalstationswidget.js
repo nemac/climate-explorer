@@ -107,7 +107,7 @@
               callbacks: {
                 label: function (tooltipItem, data) {
                   var value = data.datasets[tooltipItem.datasetIndex].data[tooltipItem.index];
-                  return data.datasets[tooltipItem.datasetIndex].label + ': ' + value + ' days';
+                  return data.datasets[tooltipItem.datasetIndex].label + ': ' + (Math.round(value * 10) / 10) + ' days';
                 }
               }
             },
