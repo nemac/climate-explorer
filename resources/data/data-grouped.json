@@ -132,7 +132,7 @@
           "description": "Explore locations where farms raise chickens for meat. Consider how chickens in these locations will fare in future decades by viewing projections for maximum temperatures.",
           "layers": [
             "chickens",
-            "mean_daily_max"
+            "tmax"
           ]
         }
       }
@@ -145,7 +145,7 @@
           "description": "Explore how areas with relatively high percentages of people who live below the poverty line (many of whom lack access to air conditioning) intersect with projected increases in cooling degree days.",
           "layers": [
             "percent_poverty",
-            "cooling_degree_day_18"
+            "cdd_65f"
           ]
         },
         "group2": {
@@ -153,7 +153,7 @@
           "description": "Explore where areas with relatively high numbers of elderly residents coincide with days over 95°F. ",
           "layers": [
             "percent_elderly",
-            "days_tmax_abv_35"
+            "days_tmax_gt_95f"
           ]
         }
       }
@@ -190,7 +190,7 @@
             "storm_surge"
           ]
         },
-        "group2": {
+        "group3": {
           "title": "Transportation and River Flooding",
           "description": "Explore where projections show river flooding impacting transportation systems.",
           "layers": [
@@ -224,7 +224,7 @@
           "description": "Explore which BIA Indian Lands will see greatest mean daily temperature increases over the next 100 years.",
           "layers": [
             "bia_indian_lands",
-            "mean_daily_max"
+            "tmax"
           ]
         },
         "group4": {
@@ -232,7 +232,7 @@
           "description": "Explore which BIA Indian Lands will see greatest mean daily min temperature increases over the next 100 years.",
           "layers": [
             "bia_indian_lands",
-            "mean_daily_min"
+            "tmin"
           ]
         },
         "group5": {
@@ -630,28 +630,28 @@
         "visible": false
       }
     },
-    "mean_daily_max": {
+    "tmax": {
       "type": "Tile",
-      "id": "mean_daily_max",
+      "id": "tmax",
       "title": "Average Daily Max Temp (°F)",
       "description": "Maximum temperatures are one indicator of conditions that can interfere with ecosystem functions. View how temperatures are projected to change during future decades.",
       "source": "https://catalog.data.gov/dataset/bias-corrected-constructed-analogs-v2-daily-climate-projections",
-      "legend": "resources/img/mean_daily_max",
-      "url": "https://s3.amazonaws.com/climate-explorer-bucket/tiles/2090-summer-rcp85-tasmax/{z}/{x}/{y}.png",
+      "legend": "resources/img/legends/summer_tmax",
+      "url": "https://s3.amazonaws.com/climate-explorer-bucket/tiles/2090-summer-rcp85-tmax/{z}/{x}/{-y}.png",
       "options": {
       },
       "defaults": {
         "visible": false
       }
     },
-    "mean_daily_min": {
+    "tmin": {
       "type": "Tile",
-      "id": "mean_daily_min",
+      "id": "tmin",
       "title": "Mean Daily Min Temperature",
       "description": "Minimum temperatures are one indicator of conditions that can interfere with ecosystem functions. View how temperatures are projected to change during future decades.",
       "source": "https://catalog.data.gov/dataset/bias-corrected-constructed-analogs-v2-daily-climate-projections",
-      "legend": "resources/img/mean_daily_min",
-      "url": "https://s3.amazonaws.com/climate-explorer-bucket/tiles/2090-summer-rcp85-tasmin/{z}/{x}/{y}.png",
+      "legend": "resources/img/legends/summer_tmin",
+      "url": "https://s3.amazonaws.com/climate-explorer-bucket/tiles/2090-summer-rcp85-tmin/{z}/{x}/{-y}.png",
       "options": {
       },
       "defaults": {
@@ -672,14 +672,14 @@
         "visible": false
       }
     },
-    "days_tmin_blw_0": {
+    "days_tmin_lt_32f": {
       "type": "Tile",
       "id": "days_tmin_lt_32f",
       "title": "Days below 32 degrees",
       "description": "View how the number of days per year with below-freezing temperatures decreases over time.",
       "source": "",
-      "legend": "resources/img/days_tmin_blw_0",
-      "url": "https://s3.amazonaws.com/climate-explorer-bucket/tiles/2090-annual-rcp45-days-tmin-blw/{z}/{x}/{y}.png",
+      "legend": "resources/img/legends/days_tmin_lt_32f",
+      "url": "https://s3.amazonaws.com/climate-explorer-bucket/tiles/2090-annual-rcp45-days_tmin_lt_32f/{z}/{x}/{-y}.png",
       "options": {
       },
       "defaults": {
@@ -700,14 +700,14 @@
         "visible": false
       }
     },
-    "heating_degree_day_18": {
+    "hdd_65f": {
       "type": "Tile",
       "id": "hdd_65f",
       "title": "Heating Degree Days",
       "description": "View how demand for energy to heat homes and businesses during cool seasons decreases in future decades.",
       "source": "",
-      "legend": "resources/img/heating_degree_day_18",
-      "url": "https://s3.amazonaws.com/climate-explorer-bucket/tiles/2090-annual-rcp45-heating-degree-day/{z}/{x}/{y}.png",
+      "legend": "resources/img/legends/hdd_65f",
+      "url": "https://s3.amazonaws.com/climate-explorer-bucket/tiles/2090-annual-rcp45-hdd_65f/{z}/{x}/{-y}.png",
       "options": {
       },
       "defaults": {
@@ -822,14 +822,14 @@
         "visible": false
       }
     },
-    "cooling_degree_day_18": {
+    "cdd_65f": {
       "type": "Tile",
       "id": "cdd_65f",
       "title": "Cooling Degree Days",
       "description": "View how demand for energy to cool homes and businesses during the warm season increases in the future. Consider how people who don’t have access to air conditioning will fare.",
       "source": "https://catalog.data.gov/dataset/bias-corrected-constructed-analogs-v2-daily-climate-projections",
-      "legend": "resources/img/cooling_degree_day_18",
-      "url": "https://s3.amazonaws.com/climate-explorer-bucket/tiles/2090-annual-rcp45-cooling-degree-day/{z}/{x}/{y}.png",
+      "legend": "resources/img/legends/cdd_65f",
+      "url": "https://s3.amazonaws.com/climate-explorer-bucket/tiles/2090-annual-rcp45-cdd_65f/{z}/{x}/{-y}.png",
       "options": {
       },
       "defaults": {
@@ -852,14 +852,14 @@
         "visible": false
       }
     },
-    "days_tmax_abv_35": {
+    "days_tmax_gt_95f": {
       "type": "Tile",
       "id": "days_tmax_gt_95f",
       "title": "Days Above 95 Degrees F",
       "description": "View how the number of days per year with temperatures over 95°F increases during future decades.",
       "source": "https://catalog.data.gov/dataset/bias-corrected-constructed-analogs-v2-daily-climate-projections",
-      "legend": "resources/img/days_tmax_abv_35",
-      "url": "https://s3.amazonaws.com/climate-explorer-bucket/tiles/2090-annual-rcp85-days-tmax-abv/{z}/{x}/{y}.png",
+      "legend": "resources/img/legends/days_tmax_gt_95f",
+      "url": "https://s3.amazonaws.com/climate-explorer-bucket/tiles/2090-annual-rcp85-days_tmax_gt_95f/{z}/{x}/{-y}.png",
       "options": {
       },
       "defaults": {

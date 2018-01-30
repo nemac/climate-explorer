@@ -17,48 +17,107 @@ var Impacts = function (page, data_base_url) {
  * Lots of inconsistencies in naming, so here I map all the variables to one another
  *
  */
+
 Impacts.prototype.mapVariables = function () {
     this.varMapping = {
-        'mean_daily_max': 'Average Daily Max Temp',
-        'mean_daily_min': 'Average Daily Min Temp',
+        'tmax': 'Average Daily Max Temp',
+        'tmin': 'Average Daily Min Temp',
         'days_tmin_lt_32f': 'Days With Minimum Below 32F&deg; F',
-        'days_tmax_gt_95f': 'Days With Minimum Below 95&deg; F',
+        'days_tmax_gt_90f': 'Days per year with max above 90°F',
+        'days_tmax_gt_95f': 'Days With Maximum Above 95&deg; F',
         'pcpn': 'Total precipitation',
-        'pr_above': 'Days of Precipitation Above 1 Inch',
+        'days_pcpn_gt_1in': 'Days of Precipitation Above 1 Inch',
         'cdd_65f': 'Cooling Degree Days',
-        'hdd_65f': 'Heating Degree Days'
+        'hdd_65f': 'Heating Degree Days',
+
+        'days_tmax_gt_100f':   'Days per year with max above 100°F',
+        'days_tmax_gt_105f':   'Days per year with max above 105°F',
+        'days_tmax_lt_32f':    'Days per year with max below 32°F (Icing days)',
+        'days_tmin_gt_80f':    'Days per year with min above 80°F',
+        'days_tmin_gt_90f':    'Days per year with min above 90°F',
+        'days_pcpn_gt_2in':    'Days per year with more than 2 inches precip',
+        'days_pcpn_gt_3in':    'Days per year with more than 3 inches precip',
+        'days_pcpn_lt_0.01in': 'Dry Days (days/period)',
+        'gdd':                 'Growing Degree Days (°F-days)',
+        'gddmod':              'Modified Growing Degree Days (°F-days)'
+
     };
 
     this.tilesHistMapping = {
-        'mean_daily_max': '-hist-tasmax',
-        'mean_daily_min': '-hist-tasmin',
-        'days_tmin_lt_32f': '-annual-hist-days-tmin-blw',
-        'days_tmax_gt_95f': '-annual-hist-days-tmax-abv',
-        'pcpn': '-hist-precip',
-        'cdd_65f': '-annual-hist-cooling-degree-day',
-        'hdd_65f': '-annual-hist-heating-degree-day',
+        'tmax': '-hist-tmax',
+        'tmin': '-hist-tmin',
+        'days_tmin_lt_32f': '-annual-hist-days_tmin_lt_32f',
+        'days_tmax_gt_95f': '-annual-hist-days_tmax_gt_95f',
+
+        'days_tmax_gt_90f':    '-annual-hist-days_tmax_gt_90f',
+        'days_tmax_gt_100f':   '-annual-hist-days_tmax_gt_100f',
+        'days_tmax_gt_105f':   '-annual-hist-days_tmax_gt_105f',
+        'days_tmax_lt_32f':    '-annual-hist-days_tmax_lt_32f',
+        'days_tmin_gt_80f':    '-annual-hist-days_tmin_gt_80f',
+        'days_tmin_gt_90f':    '-annual-hist-days_tmin_gt_90f',
+        'days_pcpn_gt_2in':    '-annual-hist-days_pcpn_gt_2in',
+        'days_pcpn_gt_3in':    '-annual-hist-days_pcpn_gt_3in',
+        'days_pcpn_lt_0.01in': '-annual-hist-dry_days',
+        'gdd':                 '-annual-hist-gdd',
+        'gddmod':              '-annual-hist-gddmod',
+
+        'pcpn': '-hist-pcpn',
+        'days_pcpn_gt_1in': '-annual-hist-days_pcpn_gt_1in',
+        'cdd_65f': '-annual-hist-cdd_65f',
+        'hdd_65f': '-annual-hist-hdd_65f'
     };
 
     this.tilesMapping = {
-        'mean_daily_max': '-rcp45-tasmax',
-        'mean_daily_min': '-rcp45-tasmin',
-        'days_tmin_lt_32f': '-annual-rcp45-days-tmin-blw',
-        'days_tmax_gt_95f': '-annual-rcp45-days-tmax-abv',
-        'pcpn': '-rcp45-precip',
-        'cdd_65f': '-annual-rcp45-cooling-degree-day',
-        'hdd_65f': '-annual-rcp45-heating-degree-day',
+        'tmax': '-rcp45-tmax',
+        'tmin': '-rcp45-tmin',
+        'days_tmin_lt_32f': '-annual-rcp45-days_tmin_lt_32f',
+        'days_tmax_gt_95f': '-annual-rcp45-days_tmax_gt_95f',
+
+        'days_tmax_gt_90f':    '-annual-rcp45-days_tmax_gt_90f',
+        'days_tmax_gt_100f':   '-annual-rcp45-days_tmax_gt_100f',
+        'days_tmax_gt_105f':   '-annual-rcp45-days_tmax_gt_105f',
+        'days_tmax_lt_32f':    '-annual-rcp45-days_tmax_lt_32f',
+        'days_tmin_gt_80f':    '-annual-rcp45-days_tmin_gt_80f',
+        'days_tmin_gt_90f':    '-annual-rcp45-days_tmin_gt_90f',
+        'days_pcpn_gt_2in':    '-annual-rcp45-days_pcpn_gt_2in',
+        'days_pcpn_gt_3in':    '-annual-rcp45-days_pcpn_gt_3in',
+        'days_pcpn_lt_0.01in': '-annual-rcp45-dry_days',
+        'gdd':                 '-annual-rcp45-gdd',
+        'gddmod':              '-annual-rcp45-gddmod',
+
+        'pcpn': '-rcp45-pcpn',
+        'days_pcpn_gt_1in': '-annual-rcp45-days_pcpn_gt_1in',
+        'cdd_65f': '-annual-rcp45-cdd_65f',
+        'hdd_65f': '-annual-rcp45-hdd_65f'
     };
 
     this.tilesMapping85 = {
-        'mean_daily_max': '-rcp85-tasmax',
-        'mean_daily_min': '-rcp85-tasmin',
-        'days_tmin_lt_32f': '-annual-rcp85-days-tmin-blw',
-        'days_tmax_gt_95f': '-annual-rcp85-days-tmax-abv',
-        'pcpn': '-rcp85-precip',
-        'cdd_65f': '-annual-rcp85-cooling-degree-day',
-        'hdd_65f': '-annual-rcp85-heating-degree-day',
+        'tmax': '-rcp85-tmax',
+        'tmin': '-rcp85-tmin',
+        'days_tmin_lt_32f': '-annual-rcp85-days_tmin_lt_32f',
+        'days_tmax_gt_95f': '-annual-rcp85-days_tmax_gt_95f',
+
+        'days_tmax_gt_90f':    '-annual-rcp85-days_tmax_gt_90f',
+        'days_tmax_gt_100f':   '-annual-rcp85-days_tmax_gt_100f',
+        'days_tmax_gt_105f':   '-annual-rcp85-days_tmax_gt_105f',
+        'days_tmax_lt_32f':    '-annual-rcp85-days_tmax_lt_32f',
+        'days_tmin_gt_80f':    '-annual-rcp85-days_tmin_gt_80f',
+        'days_tmin_gt_90f':    '-annual-rcp85-days_tmin_gt_90f',
+        'days_pcpn_gt_2in':    '-annual-rcp85-days_pcpn_gt_2in',
+        'days_pcpn_gt_3in':    '-annual-rcp85-days_pcpn_gt_3in',
+        'days_pcpn_lt_0.01in': '-annual-rcp85-dry_days',
+        'gdd':                 '-annual-rcp85-gdd',
+        'gddmod':              '-annual-rcp85-gddmod',
+
+        'pcpn': '-rcp85-pcpn',
+        'days_pcpn_gt_1in': '-annual-rcp85-days_pcpn_gt_1in',
+        'cdd_65f': '-annual-rcp85-cdd_65f',
+        'hdd_65f': '-annual-rcp85-hdd_65f'
     };
 };
+
+
+
 
 
 /*
@@ -181,10 +240,10 @@ Impacts.prototype.wireEvents = function () {
         self.map.getLayers().forEach(function (layer) {
             var layer_id = layer.get('layer_id');
             var id_val, val;
-            if (layer.get('layer_id') == id) {
+            if (layer.get('layer_id') === id) {
                 layer.setVisible(visible);
                 self.updateUrl();
-            } else if (id === 'cooling_degree_day_18' || id === 'heating_degree_day_18' || id === 'mean_daily_min' || id === 'mean_daily_max' || id === 'days_tmin_blw_0' || id === 'days_tmax_abv_35') {
+            } else if (id === 'cdd_65f' || id === 'hdd_65f' || id === 'tmin' || id === 'tmax' || id === 'days_tmin_lt_32f' || id === 'days_tmax_gt_95f') {
                 if (self.tileLayer) {
                     self.tileLayer.setVisible(visible);
                 }
@@ -391,7 +450,8 @@ Impacts.prototype.createLegend = function () {
 
             '<h4>Legend</h4>' +
             '<div>' +
-            '<img src="' + self.data.layers[id].legend + '_WIDE.png">' +
+            '<img src="' + self.data.layers[id].legend + '.png" style="height:200px">' +
+            //'<img src="' + self.data.layers[id].legend + '_WIDE.png">' +
             '</div>' +
             '</div>' +
             '<div class="opacity-slider-wrap"><h4>Layer opacity</h4><div class="opacity-slider" id="opacity-' + id + '"></div></div>' +
@@ -586,7 +646,7 @@ Impacts.prototype.getLayerIds = function () {
     });
 
     layerIds = _.remove(layerIds, function (n) {
-        if (n !== 'cooling_degree_day_18' && n !== 'heating_degree_day_18' && n !== 'mean_daily_min' && n !== 'mean_daily_max' && n !== 'days_tmin_blw_0' && n !== 'days_tmax_abv_35') {
+        if (n !== 'cdd_65f' && n !== 'hdd_65f' && n !== 'tmin' && n !== 'tmax' && n !== 'days_tmin_lt_32f' && n !== 'days_tmax_gt_95f') {
             return n;
         }
     });
@@ -610,7 +670,7 @@ Impacts.prototype.addLayers = function () {
         layer = null;
 
         var n = self.data.layers[id].id;
-        if (n !== 'cdd_65f' && n !== 'hdd_65f' && n !== 'mean_daily_min' && n !== 'mean_daily_max' && n !== 'days_tmin_lt_32f' && n !== 'days_tmax_gt_95f') {
+        if (n !== 'cdd_65f' && n !== 'hdd_65f' && n !== 'tmin' && n !== 'tmax' && n !== 'days_tmin_lt_32f' && n !== 'days_tmax_gt_95f') {
             //add layer with sublayers
             //i.e. sea level rise layers 1ft - 6ft
             if (self.data.layers[id].sublayers) {
@@ -725,7 +785,7 @@ Impacts.prototype.addLayers = function () {
                             ],
                             extent: [-32629438.63437604, -2729719.1541202106, 1966571.863721013, 14705261.249615353],
                             minZoom: 0,
-                            maxZoom: 5,
+                            maxZoom: 10,
                             tilePixelRatio: 1
                         })
                     });
@@ -787,8 +847,11 @@ Impacts.prototype.addClimateLayer = function (replace, layer, preserveTime) {
 
     this.selectedVariable = layer.id;
 
+    console.log('this.selectedVariable');
+    console.log(this.selectedVariable);
+
     var histYears = [1950, 1960, 1970, 1980, 1990, 2000];
-    var seasons = ['mean_daily_min', 'mean_daily_max', 'pr'];
+    var seasons = ['tmin', 'tmax', 'pcpn'];
 
     var extent = ol.proj.transformExtent([-135, 11.3535322866, -56.25, 49.5057345956], 'EPSG:4326', 'EPSG:3857');
 
@@ -820,7 +883,7 @@ Impacts.prototype.addClimateLayer = function (replace, layer, preserveTime) {
     this.tileLayer = new ol.layer.Tile({
         source: new ol.source.XYZ({
             urls: [
-                'https://s3.amazonaws.com/climate-explorer-bucket/tiles/' + src + '/{z}/{x}/{y}.png'
+                'https://s3.amazonaws.com/climate-explorer-bucket/tiles/' + src + '/{z}/{x}/{-y}.png'
             ],
             extent: extent,
             minZoom: 0,
@@ -841,7 +904,7 @@ Impacts.prototype.addClimateLayer = function (replace, layer, preserveTime) {
         this.tileLayer85 = new ol.layer.Tile({
             source: new ol.source.XYZ({
                 urls: [
-                    'https://s3.amazonaws.com/climate-explorer-bucket/tiles/' + src85 + '/{z}/{x}/{y}.png'
+                    'https://s3.amazonaws.com/climate-explorer-bucket/tiles/' + src85 + '/{z}/{x}/{-y}.png'
                 ],
                 extent: extent,
                 minZoom: 0,
@@ -998,7 +1061,7 @@ Impacts.prototype.setSlider = function (layer) {
         step: 10,
         value: self.activeYear,
         slide: function (event, ui) {
-            if (self.selectedVariable !== 'mean_daily_max' && self.selectedVariable !== 'mean_daily_min' && self.selectedVariable !== 'pcpn') {
+            if (self.selectedVariable !== 'tmax' && self.selectedVariable !== 'tmin' && self.selectedVariable !== 'pcpn') {
                 if (ui.value === 2000) {
                     return false;
                 }

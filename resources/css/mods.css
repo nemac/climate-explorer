@@ -496,3 +496,8 @@ input.location-mapper:focus:-ms-input-placeholder {
     margin: 0 10px 10px 0;
     font: 300 1rem/1.2em Roboto, Helvetica, "Helvetica Neue", Arial, sans-serif;
 }
+
+.page-type-variables .legend-image {
+    height: 350px;
+    margin-left: 0px;
+}
