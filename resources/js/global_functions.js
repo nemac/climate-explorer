@@ -259,10 +259,12 @@
 
           new_viewport_height = $(window).height() - 40 - new_viewport_margin;
 
-          if (window_width() >= 1000) {
+          /* removed to prevent click scroll jump
+           if (window_width() >= 1000) {
 
             $('#main-header').css('top', new_nav_position + 'px');
             $('#viewport').css('margin-top', new_viewport_margin + 'px');
+            //$('#viewport').css('margin-top', new_viewport_margin + 'px');
 
             $('#viewport').css('height', new_viewport_height + 'px');
 
@@ -273,7 +275,7 @@
 
             last_y = y;
 
-          }
+          }*/
         } else {
           if (window_width() >= 1000) {
             $('#main-header').css('top', '0px');

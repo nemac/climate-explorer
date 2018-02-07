@@ -97,7 +97,7 @@ if (!isValidLongitude($lon)) {
                 <ul>
                     <li><a href="<?php $current_domain ?>#location-temperature">Temperature</a></li>
                     <li><a href="<?php $current_domain ?>#location-precipitation">Precipitation</a></li>
-                    <li><a href="<?php $current_domain ?>#location-derived">Other</a></li>
+                    <li><a href="<?php $current_domain ?>#location-derived">Other Variables</a></li>
                     <li><a href="<?php $current_domain ?>#location-stations">Stations</a></li>
                     <!--<li><a href="#location-impacts">Relevant Impacts</a></li>-->
                 </ul>

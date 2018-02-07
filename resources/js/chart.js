@@ -16,8 +16,7 @@ ChartBuilder.prototype.getData = function (callback) {
     var self = this;
 
     //console.log('this.props', this.props);
-    //var id = this.props.station.split(':')[1];
-    var id = this.props.station;
+    var id = this.props.station.split(':')[1];
     var year = new Date().getFullYear();
     this.records = {
         'temp': {
@@ -78,8 +77,6 @@ ChartBuilder.prototype.getData = function (callback) {
 
     var i = 0;
     $.each(this.records, function (key, record) {
-        console.log(record.url);
-
         $.ajax({
             url: record.url,
             type: "POST",
@@ -101,20 +98,12 @@ ChartBuilder.prototype.getData = function (callback) {
 ChartBuilder.prototype.buildChart = function () {
     var temps = this.getTemperatureValues();
     var tmpl = this.getTemplate('temperature', temps);
-
-    $('#multi-chart').remove();
-    $('#multi-chart-container').append('<div id="multi-chart" style="width:100%; height:300px"></div>');
     $('#multi-chart').multigraph({'muglString': tmpl});
-
 
 
     var precip = this.getPrecipitationValues();
     //console.log('precip', precip);
     var precipTmpl = this.getTemplate('precipitation', precip);
-
-    $('#multi-precip-chart').remove();
-    $('#multi-precip-chart-container').append('<div id="multi-precip-chart" style="width:100%; height:300px"></div>');
-
     $('#multi-precip-chart').multigraph({'muglString': precipTmpl});
 };
 

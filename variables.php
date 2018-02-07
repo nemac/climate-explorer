@@ -140,7 +140,7 @@ if ($cut_url == $current_url) {
     <span class="trigger icon icon-close" id="left-header-trigger"></span>
 
     <ul id="vars-menu" class="menu blue-menu">
-        <li class="search-field border" id="variable-search-by-location"><span class="icon icon-search"></span><input type="text" id="formmapper" placeholder="Select a location"></li>
+        <li class="search-field border" id="variable-search-by-location"><span class="icon icon-search"></span><input type="text" id="formmapper" placeholder="Zoom to location"></li>
 
         <li class="toggle border" id="variable-counties-toggle">
             <label for="counties-overlay-toggle"><span class="text">Data by Counties</span>
