@@ -58,13 +58,13 @@ $lockdown = 1;
 
             <div id="home-text" class="splash-text">
               <h1>The Climate Explorer</h1>
-              <p>Explore maps and graphs of historical and projected climate trends in your local area. View data by topics to see how climate change will impact things you care about.</p>
+              <p>Explore graphs and maps of historical and projected climate trends in your local area. Check for past events to help you anticipate future conditions.</p>
             </div>
 
             <ul id="home-menu" class="menu blue-menu">
                 <li><a href="<?php $current_domain ?>#" class="launch-nav" data-nav-slide="0" id="home-search-by-location"><span class="icon icon-search"></span>Select a location</a></li>
                 <li><a href="<?php $current_domain ?>#" class="launch-nav" data-nav-slide="1" id="home-search-by-variable"><span class="icon icon-variables"></span>View by variable</a></li>
-                <li class="border"><a href="<?php $current_domain ?>#" class="launch-nav" data-nav-slide="2" id="home-search-by-topic"><span class="icon icon-bubble"></span>View by topic</a></li>
+                <li class="border"><a href="<?php $current_domain ?>#" class="launch-nav" data-nav-slide="2" id="home-search-by-station"><span class="icon icon-bubble"></span>Explore Station Data</a></li>
                 <li><a href="<?php $current_domain ?>#" id="cd-tour-trigger" class="start-home-tour"><span class="icon icon-tour"></span>New here? Take the tour</a></li>
             </ul>
 

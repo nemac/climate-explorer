@@ -51,72 +51,165 @@
         </section>
 
         <section id="standard-body" class="page-text">
-          <p>Individuals, businesses, and communities of all sizes can use the Climate Explorer to understand how climate conditions in their location may change over the next several decades. This information—derived from global climate models—can help them make decisions and build resilience to extreme events.</p>
 
-          <p>Built to accompany the U.S. Climate Resilience Toolkit, the Climate Explorer offers customizable graphs and maps of observed and projected temperature, precipitation, and related climate variables for every county in the contiguous United States. </p>
 
-          <p>Based on global climate models developed for the United Nations Intergovernmental Panel on Climate Change, Climate Explorer’s graphs and maps show projected conditions for two possible futures: one in which humans make a moderate attempt to reduce global emissions of heat-trapping gases, and one in which we go on conducting business as usual. Decision makers can compare climate projections based on these two scenarios and plan according to their tolerance for risk and the timeframe of their decisions. </p>
 
-          <p>The tool also displays climate observations for temperature, precipitation, and related variables for 1950 to the early 2000s. These are averages calculated from quality-checked ground-based weather stations across the country. Users can compare graphs of observed conditions to climate model simulations for the same period: in this case, climate models were initialized to reflect conditions in 1950, and then run through 2005. Comparing the range of observations against the simulations for this period can provide insights on the models’ collective ability to capture the range of observed variability for each climate variable. In some cases, the simulations and observations show a good match. In other cases, these comparisons may reveal consistent biases or limitations of the models.</p>
+            <p>
+                Individuals, businesses, and communities of all sizes can use the Climate Explorer to understand how climate conditions in their location may change over coming decades. This information—derived from global climate models—can help them make decisions and build resilience to extreme events.
+            </p>
+            <p>
+                Built to accompany the U.S. Climate Resilience Toolkit, the Climate Explorer offers customizable graphs and maps of observed and projected temperature, precipitation, and related climate variables for every county in the contiguous United States.
+            </p>
+            <p>
+                Based on global climate models developed for the United Nations Intergovernmental Panel on Climate Change, Climate Explorer's graphs and maps show projected conditions for two possible futures: one in which humans reduce and stabilize global emissions of heat-trapping gases (labeled Lower emissions), and one in which we continue increasing emissions through the 21st century (labeled Higher emissions). Decision makers can compare climate projections based on these two plausible futures, and plan according to their tolerance for risk and the timeframe of their decisions.
+            </p>
+            <p>
+                The tool also displays observations of temperature, precipitation, and related variables from 1950 to 2013. These are averages calculated from quality-checked ground-based weather stations across the country. Users can compare graphs of observed conditions to climate model simulations (hindcasts, or 'projections' generated for the past) for the same period. Comparing the range of observations to the simulations can provide insights on the models' collective ability to predict the future. For temperature variables, simulations and observations generally show a good match. For other variables—especially precipitation-related variables—comparisons reveal consistent biases or limitations of the models.
+            </p>
+            <p>
 
-          <p>For some of the topics addressed in the U.S. Climate Resilience Toolkit, including Coastal, Energy, Ecosystems, and others, users can also view maps of assets—people, places, and infrastructure of value—and compare them with climate threats such as sea level rise and rising temperatures. Map layer comparisons available under the View by Topic menu let users explore where people and assets may be vulnerable to various climate hazards. This section of the Climate Explorer depends on external map services; as such, some map layers may occasionally be unavailable. Current map pairings represent early work that we hope to refine and expand in future releases of the tool.</p>
+            <hr>
+            </p>
+            <h2>About the tool</h2>
 
-          <hr>
 
-          <h2>About the tool</h2>
+            <p>
+                The Climate Explorer is a web application offering interactive maps and graphs to assist users in decision-making and resilience-building contexts. Built to support the <a href="https://toolkit.climate.gov/">U.S. Climate Resilience Toolkit</a>, the Climate Explorer helps people explore the exposure of human populations and valued assets to climate-related hazards that may put those assets at risk.
+            </p>
+            <p>
+                The Climate Explorer was programmed in <a href="http://openlayers.org/">OpenLayers 3</a> by <a href="http://habitatseven.com/">HabitatSeven</a>, based on the original Climate Explorer and <a href="http://multigraph.org/">MultiGraph</a> tools, which were developed by <a href="https://nemac.unca.edu/">NEMAC</a> at UNC-Asheville. Please direct comments to <a href="mailto:noaa.toolkit@noaa.gov">noaa.toolkit@noaa.gov</a>.
+            </p>
+            <p>
 
-          <p>The Climate Explorer is a web application offering interactive maps and graphs to assist users in decision-making and resilience-building contexts. Built to support the <a href="https://toolkit.climate.gov/" target="_blank">U.S. Climate Resilience Toolkit</a>, the Climate Explorer helps people explore the exposure of human populations and valued assets to climate hazards that may put those assets at risk.  </p>
+            <hr>
+            </p>
+            <h2>About the data</h2>
 
-          <p>The Climate Explorer was programmed in <a href="http://openlayers.org/" target="_blank">OpenLayers 3</a> by <a href="http://habitatseven.com" target="_blank">HabitatSeven</a>, based on the original Climate Explorer and <a href="http://multigraph.org/" target="_blank">MultiGraph</a> tools, which were developed by <a href="https://nemac.unca.edu/" target="_blank">NEMAC</a> at UNC-Asheville.  Please direct comments to <a href="mailto:noaa.toolkit@noaa.gov">noaa.toolkit@noaa.gov</a>.</p>
 
-          <hr>
+            <h3>Observations</h3>
 
-          <h2>About the data</h2>
 
-          <h3>Observations</h3>
+            <p>
+                Graphs and maps for 1950 through 2013 show averages of observations recorded at individual climate / weather stations. Station data for temperature and precipitation have been interpolated and stored as a gridded observational dataset prepared by Livneh et al. (2013, 2015). This dataset is also used to calculate observed differences from averages for the period 1961-1990. Data are <a href="https://catalog.data.gov/dataset/a-spatially-comprehensive-hydrologic-model-based-data-set-for-mexico-the-u-s-and-sout-1950-2013">available via Data.gov</a>.
+            </p>
+            <h3>Modeled (Historical) and Projected Data</h3>
 
-          <p>Graphs of historical data in the Climate Explorer show averages of observations recorded at individual climate / weather stations across the country. Station data have been interpolated and stored as a gridded observational dataset prepared by Maurer et al. (2002); this dataset was used to calculate observed differences from averages for the period 1960-1989. Data are available from the <a href="https://nccwsc.usgs.gov/" target="_blank">USGS National Climate Change and Wildlife Climate Science Center</a>’s <a href="http://cida.usgs.gov/gdp/" target="_blank">Geo Data Portal</a>.</p>
 
-          <p>Map layers that show mean maximum and minimum temperature and precipitation data from 1950-2010 are based on Parameter-elevation Regressions on Independent Slopes Model (PRISM) methods (Daly et al. 2008). Data are available from <a href="http://prism.oregonstate.edu/" target="_blank">the PRISM website</a>. Maps for all other indices are based on Maurer et al. (2002). </p>
+            <p>
+                Graphs in Climate Explorer show results generated by global climate models for the Coupled Model Intercomparison Project Phase 5 (CMIP5). The climate model data were statistically downscaled using the Localized Constructed Analogs method (<a href="http://loca.ucsd.edu/">LOCA</a>; Pierce et al. 2014).
+            </p>
+            <p>
+                For the historical period, graphs show observed values from a gridded dataset (Livneh et al. 2013, 2015). For projected climate conditions, we present summaries for two potential futures derived from LOCA statistically downscaled data, obtained through the <a href="http://www.rcc-acis.org/docs_webservices.html">ACIS webservice</a>. The two potential futures are labeled Lower emissions and Higher emissions; they represent scenarios RCP 4.5 and RCP 8.5, respectively. Learn more about Representative Concentration Pathways (RCPs) »
+            </p>
+            <p>
+                To produce maps of Mean Daily Maximum and Mean Daily Minimum Temperature for 1950 to 2010, we calculated decadal averages for each month of the year using the Livneh observational dataset. For the 2020s to the 2090s, we used weighted averages of all 32 models to calculate average projected values.
+            </p>
+            <p>
+                To produce maps of Percent Change in Precipitation, we first calculated monthly averages of Total Precipitation for the period 1961-1990 (we refer to these values as the 30-year climatology). For January, April, July, and October—the middle month of each season—we calculated 10-year averages of Total Precipitation for the 1950s through the 2000s, and subtracted the appropriate monthly climatology from them. We divided the difference by the climatology, and then multiplied the result by 100. For future decades, we used the weighted mean of the 32 models in the LOCA dataset to calculate decadal averages for each of the four representative months, and followed the procedure above to calculate percent change relative to the 30-year climatology.
+            </p>
+            <p>
+                For graphs and maps of Days over 90, 95, 100, and 105ºF,  Days with minimums or maximums under 32ºF, Days with minimums over 80 and 90°F, Heating Degree Days, Cooling Degree Days, Growing Degree Days, Modified Growing Degree Days, all data are presented as average annual values across a decade with the starting year indicated in the time slider.
+            </p>
+            <p>
+                Days with High Tide Flooding were compiled from tide-gauge data based on locally identified thresholds related to impacts such as flooding of low-lying roads.
+            </p>
+            <h3>Stations</h3>
 
-          <h3>Modeled and Projected Data</h3>
 
-          <p>Graphs in Climate Explorer show projections generated by global climate models for the Coupled Model Intercomparison Project Phase 5 (CMIP5): projection data were statistically downscaled using the Bias-corrected Constructed Analogs method (BCCA). The bias correction step for daily observations was developed and described by Maurer et al. (2010). Constructed analogs follow Hidalgo et al. (2008). </p>
+            <p>
+                Temperature and precipitation observations and Climate Normals displayed in graphs for individual stations are from the <a href="http://www.ncdc.noaa.gov/oa/climate/ghcn-daily/index.php">Global Historical Climatology Network-Daily (GHCN-D)</a> database.  These data are accessed via the NOAA Regional Climate Centers' Applied Climate Information System (ACIS).
+            </p>
+            <p>
+                Historical observations and future projections of coastal high tide flooding was provided by William Sweet, NOAA National Ocean Service.
+            </p>
+            <h3>Credits & Acknowledgments</h3>
 
-          <p>For the maps available in the Climate Explorer, we utilized monthly data from PRISM for the historical period from 1950-2010, and high resolution climate projections from the NASA Earth Exchange Downscaled Climate Projections at 30 arc-seconds (NEX-DCP30). These datasets are both produced at a monthly timestep and at a spatial resolution of 30 arc-seconds (800m or ~0.5 miles per pixel). Both datasets capture topographic effects on temperature and precipitation, complementing the Climate Explorer graphs with spatially rich information on future climate conditions. The NEX-DCP30 dataset was produced using the Bias-Correction Spatial Disaggregation (BCSD) statistical downscaling approach described by Thrasher et al. (2013). The NEX-DCP30 dataset is available for download from the <a href="https://cds.nccs.nasa.gov/nex/" target="_blank">NASA Center for Climate Simulation</a>.</p>
 
-          <p>To produce the Climate Explorer maps for Average Daily Max Temp and Average Daily Min Temp, we calculated decadal averages for each month of the year using PRISM observed data for the period 1950-2009, and the NASA NEX-DCP30 statistically downscaled climate projections dataset (Thrasher et al., 2013) for the period 2010-2099. For the historical period, we averaged the monthly values across the decades 1950-1959, 1960-1969, …, 2000-2009 using the PRISM dataset (Daly et al. (2008). For future decades, 2010-2019, 2020-2029, …, 2090-2099, we averaged monthly values for each decade from NASA NEX-DCP30 ensemble median values calculated from all 33 models included in the NEX-DCP30 dataset. Two scenarios were analyzed: RCP4.5 and RCP8.5. The Climate Explorer currently shows a representative month for each season.</p>
+            <p>
+                The U.S. Climate Resilience Toolkit and Climate Explorer are managed by NOAA's Climate Program Office, and hosted by NOAA's National Centers for Environmental Information (NCEI-Asheville).
+            </p>
+            <p>
+                Development of this version of the Climate Explorer was directed and overseen by an interagency team of federal climate model experts, chaired by the U.S. Global Change Research Program.  Federal agencies that partnered in this effort are the Environmental Protection Agency (EPA), NASA, NOAA, and the U.S. Geological Survey (team members identified below).
+            </p>
+            <p>
+                Design and programming of the Climate Explorer were completed by HabitatSeven, FernLeaf Interactive, and the National Environmental Modeling and Analysis Center (NEMAC), at UNC-Asheville.
+            </p>
+            <p>
+                Production and processing of the LOCA climate projection data was done through a collaborative effort supported by NCEI-Asheville, NEMAC, and the Northeast Regional Climate Center, at Cornell University. Jay Alder (USGS) designed the color palettes and plotted data ranges for the interactive maps, and created future minus present difference maps for the 'precipitation' and 'number of dry days' variables.
+            </p>
+            <p>
+                Interagency Climate Projection Team Members
+            </p><ul>
 
-          <p>For Percent Change in Precipitation relative to 1960-1989, we calculated averages for the period 1960-1989 from PRISM average monthly precipitation data. For every decade from 1950 to 2009, a 10-year average was calculated for each month from PRISM monthly values. That decadal average was divided by the PRISM 30-year climatology from 1960-1989 and multiplied by 100 to calculate the percent of normal precipitation for each decade. For future decades, we calculated decadal averages for each month using the ensemble median of the 33 models included in the NASA NEX-DCP30 dataset  for each decade from 2010-2099. For each month and each decade, we calculated the percent of normal relative to the 30-year average for each month from 1960-1989 calculated from the PRISM data. The Climate Explorer currently shows a representative month for each season.</p>
+                <li>Fred Lipschultz, Chair, contractor to U.S. Global Change Research Program
+                <li>Jay Alder, U.S. Geological Survey
+                <li>Forrest Melton, NASA Ames Research Center Cooperative for Research in Earth Science and Technology / California State University Monterey Bay
+                <li>Phil Morefield, U.S. Environmental Protection Agency
+                <li>Andrea Ray, NOAA Earth System Research Laboratory
+                <li>Liqiang Sun, NOAA National Centers for Environmental Information
+                <li>William Sweet, NOAA National Ocean Service</li></ul>
 
-          <p>For Days over 95º F, Days under 32º F, Heating Degree Days, and Cooling Degree Days, all data are presented as average annual values across a decade with the starting year indicated in the time slider. For the historical period, we show values based on gridded observations (Mauer et al. 2002). For potential future climate conditions, we present statistical summaries from the <a href="https://nccwsc.usgs.gov/" target="_blank">USGS National Climate Change and Wildlife Climate Science Center</a>’s <a href="http://cida.usgs.gov/gdp/" target="_blank">Geo Data Portal</a> derived from the BCCA statistically downscaled data (Hidalgo et al. 2008; Maurer et al. 2010) under RCP 4.5 and RCP 8.5. These variables require a daily timestep and thus cannot be calculated from the monthly PRISM and NEX-DCP30 datasets.</p>
+            <h3>U.S. Climate Resilience Toolkit Program Management</h3>
 
-          <h3>Weather Stations</h3>
+            <ul>
 
-          <p>Temperature and precipitation observations and Climate Normals displayed in graphs for individual weather stations are from the <a href="http://www.ncdc.noaa.gov/oa/climate/ghcn-daily/index.php" target="_blank">Global Historical Climatology Network-Daily (GHCN-D)</a> database. </p>
+                <li>David Herring, program manager, NOAA Climate Program Office
+                <li>LuAnn Dahlman, managing editor, contractor to NOAA Climate Program Office
+                <li>Ned Gardiner, public engagement manager, contractor to NOAA Climate Program Office
+                <li>Larry Belcher, programmer, contractor to NOAA Climate Program Office</li></ul>
 
-          <hr>
+            <h3>Design, Programming & Development</h3>
 
-          <h2>References</h2>
+            <ul>
 
-          <ol>
-            <li>Daly, C., Halbleib, M., Smith, J.I., Gibson, W.P., Doggett, M.K., Taylor, G.H., Curtis, J., and Pasteris, P.A. 2008. <a href="http://prism.oregonstate.edu/documents/pubs/2008intjclim_physiographicMapping_daly.pdf" target="_blank">Physiographically-sensitive mapping</a> of temperature and precipitation across the conterminous United States. International Journal of Climatology, 28: 2031-2064.</li>
+                <li>Jamie Herring, president & lead designer, HabitatSeven
+                <li>Jordan Harding, chief technology officer, HabitatSeven
+                <li>Brendan Heberton, application architect, HabitatSeven
+                <li>Wesley Bowman, data developer, HabitatSeven
+                <li>Aires Almeida, chief creative officer, HabitatSeven
+                <li>Phil Evans, senior designer, HabitatSeven
+                <li>James Fox, director & product manager, NEMAC
+                <li>Ian Johnson, geospatial technician, NEMAC
+                <li>Jeff Hicks, director & programmer, Fernleaf Interactive
+                <li>Josh Wilson, programmer, Fernleaf Interactive</li></ul>
 
-            <li>Hidalgo HG, Dettinger MD, Cayan DR, 2008, California Energy Commission technical report CEC-500-2007-123</li>
+            <h3>Thanks also to reviewers:</h3>
 
-            <li>Maurer EP, Hidalgo HG, Das T, Dettinger MD, Cayan DR, 2010, Hydrol Earth Syst Sci 14:1125-1138.</li>
+            <ul>
 
-            <li>Maurer EP, Wood AW, Adam JC, Lettenmaier DP, Nijssen B, 2002, J Climate 15(22):3237-3251,
-provided via <a href="http://www.engr.scu.edu/~emaurer/gridded_obs/index_gridded_obs.html" target="_blank">http://www.engr.scu.edu/~emaurer/gridded_obs/index_gridded_obs.html</a></li>
+                <li>Daniel Cayan, climate modeler, Scripps Institution of Oceanography
+                <li>Keith Dixon, climate modeler, NOAA Geophysical Fluid Dynamics Laboratory
+                <li>Katherine Hayhoe, climate modeler, Texas Tech University
+                <li>Ken Kunkel, climate modeler, NOAA National Centers for Environmental Information</li></ul>
 
-<li>Thrasher, B., Xiong, J., Wang, W., Melton, F., Michaelis, A. and Nemani, R., 2013. Downscaled climate projections suitable for resource management. Eos, Transactions American Geophysical Union, 94(37), pp.321-323.</li>
-          </ol>
+            <p>
 
-          <hr>
+            <hr>
+            </p>
+            <h2>References</h2>
 
-          <h2>Contact</h2>
+            <ul>
 
-          <p>If you have questions or comments on the Climate Explorer, please direct them to <a href="mailto:noaa.toolkit@noaa.gov">noaa.toolkit@noaa.gov</a>.</p>
+                <li>Livneh, B., E. A. Rosenberg, C. Lin, B. Nijssen, V. Mishra, K. M. Andreadis, E. P. Maurer, and D. P. Lettenmaier (2013), A long-term hydrologically based dataset of land surface fluxes and states for the conterminous United States: Update and extensions, <em>J. Clim.</em>, 26(23), 9384–9392, doi <a href="http://dx.doi.org/10.1175/JCLI-D-12-00508.1">10.1175/JCLI-D-12-00508.1</a>.
+                <li>Livneh, B., Bohn, T.J., Pierce, D.W., Munoz-Arriola, F., Nijssen, B., Vose, R., Brekke, L. 2015. A spatially comprehensive, hydrometeorological data set for Mexico, the U.S., and Southern Canada 1950–2013. <em>Scientific Data</em> 2:150042. doi: <a href="http://dx.doi.org/10.1038/sdata.2015.42">10.1038/sdata.2015.42</a>.
+                <li>Pierce, D. W., D. R. Cayan, and B. L. Thrasher, 2014:<strong> </strong>Statistical Downscaling Using Localized Constructed Analogs (LOCA). <em>Journal of Hydrometeorology</em>, volume 15, 2558-2585. doi: <a href="https://doi.org/10.1175/JHM-D-14-0082.1">10.1175/JHM-D-14-0082.1</a>.
+                <li>Sanderson, B.M. and M.F. Wehner, 2017: Model weighting strategy. In: Climate Science Special Report: Fourth National Climate Assessment, Volume I [Wuebbles, D.J., D.W. Fahey, K.A. Hibbard, D.J. Dokken, B.C. Stewart, and T.K. Maycock (eds.)]. U.S. Global Change Research Program, Washington, DC, USA, pp. 436-442, doi: <a href="http://dx.doi.org/10.7930/J06T0JS3">10.7930/J06T0JS3</a>.
+                <li>Taylor, K.E., R.J. Stouffer, and G.A. Meehl, 2012: An Overview of CMIP5 and the Experiment Design<a href="http://journals.ametsoc.org/doi/abs/10.1175/BAMS-D-11-00094.1">.</a> <em>Bull. Amer. Meteor. Soc.,</em> 93, 485–498, doi: <a href="https://doi.org/10.1175/BAMS-D-11-00094.1">10.1175/BAMS-D-11-00094.1</a><span style="text-decoration:underline;">. </span>
+                <li>Sweet, W.V., J. J. Marra and G. Dusek (2017): 2016 State of U.S. High Tide Flooding and a 2017 Outlook. Supplement to State of the Climate: National Overview for May 2017, published online June 2017, retrieved on 9/15/17 from <a href="https://www.ncdc.noaa.gov/monitoring-content/sotc/national/2017/may/2016_StateofHighTideFlooding.pdf">https://www.ncdc.noaa.gov/monitoring-content/sotc/national/2017/may/2016_StateofHighTideFlooding.pdf</a>.
+                <li>Sweet, W.V. and J. Park (2014): From the extreme and the mean: Acceleration and tipping point of coastal inundation from sea level rise. Earth Futures, 2 579-600. doi: <a href="https://doi.org/10.1002/2014EF000272">10.1002/2014EF000272</a>
+            </ul>
+
+            <p>
+
+            <hr>
+            </p>
+            <h2>Contact</h2>
+
+
+            <p>
+                If you have questions or comments on the Climate Explorer, please direct them to noaa.toolkit@noaa.gov.
+            </p>
+
 
         </section>
 

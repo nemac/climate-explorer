@@ -126,15 +126,22 @@ if ($cut_url == $current_url) {
 <div class="cd-cover-layer"></div>
 <?php include_once('template/header.php'); ?>
 
-<div id="download-panel" class="hidden download-panel">
+<!-- begin temperature chart and map -->
+
+<div id="download-panel" class="download-panel overlay">
     <div class="download-inner">
+        <a href="javascript:void(0);" id="download-dismiss-button" class="icon icon-close"></a>
         <p>Use the following links to download this graph's data:</p>
-        <ul></ul>
-        <div class="center">
-            <button id="download-dismiss-button">Dismiss</button>
-        </div>
+        <ul>
+            <li><a href="javascript:void(0);" id="download_hist_obs_data" class='button display-block border-white hover-bg-white'><span class='icon icon-arrow-down'></span>Observed Data</a></li>
+            <li><a href="javascript:void(0);" id="download_hist_mod_data" class='button display-block border-white hover-bg-white'><span class='icon icon-arrow-down'></span>Historical Modeled Data</a></li>
+            <li><a href="javascript:void(0);" id="download_proj_mod_data" class='button display-block border-white hover-bg-white'><span class='icon icon-arrow-down'></span>Projected Modeled Data</a></li>
+        </ul>
+
     </div>
 </div>
+
+
 
 <header id="left-header">
     <span class="trigger icon icon-close" id="left-header-trigger"></span>
@@ -157,31 +164,31 @@ if ($cut_url == $current_url) {
 
         <li class="select border" id="variable-options-container">
             <select class="dropdown" id="variable-options">
-                <option value="tmax">Average Daily Max Temp (°F)</option>
-                <option value="tmin">Average Daily Min Temp (°F)</option>
-                <option value="days_tmax_gt_90f">Days per year with max above 90°F</option>
-                <option value="days_tmax_gt_95f">Days per year with max above 95°F</option>
-                <option value="days_tmax_gt_100f">Days per year with max above 100°F</option>
-                <option value="days_tmax_gt_105f">Days per year with max above 105°F</option>
-                <option value="days_tmax_lt_32f">Days per year with max below 32°F (Icing days)</option>
-                <option value="days_tmin_lt_32f">Days per year with min below 32°F (frost days)</option>
-                <option value="days_tmin_gt_80f">Days per year with min above 80°F</option>
-                <option value="days_tmin_gt_90f">Days per year with min above 90°F</option>
-                <option value="pcpn">Total Precipitation (inches)</option>
-                <option value="days_pcpn_gt_1in">Days per year with more than 1 inch precip</option>
-                <option value="days_pcpn_gt_2in">Days per year with more than 2 inches precip</option>
-                <option value="days_pcpn_gt_3in">Days per year with more than 3 inches precip</option>
-                <option value="days_pcpn_lt_0.01in">Dry Days (days/period)</option>
-                <option value="hdd_65f">Heating Degree Days (°F-days)</option>
-                <option value="cdd_65f">Cooling Degree Days (°F-days)</option>
-                <option value="gdd">Growing Degree Days (°F-days)</option>
-                <option value="gddmod">Modified Growing Degree Days (°F-days)</option>
+                <option value="tmax">Ave Daily Max Temp (°F)</option>
+                <option value="tmin">Ave Daily Min Temp (°F)</option>
+                <option value="days_tmax_gt_90f">Days w/ max &gt; 90°F</option>
+                <option value="days_tmax_gt_95f">Days w/ max &gt; 95°F</option>
+                <option value="days_tmax_gt_100f">Days w/ max &gt; 100°F</option>
+                <option value="days_tmax_gt_105f">Days w/ max &gt; 105°F</option>
+                <option value="days_tmax_lt_32f">Days w/ max &lt; 32°F</option>
+                <option value="days_tmin_lt_32f">Days w/ min &lt; 32°F</option>
+                <option value="days_tmin_gt_80f">Days w/ min &gt; 80°F</option>
+                <option value="days_tmin_gt_90f">Days w/ min &gt; 90°F</option>
+                <option value="pcpn">Total precip</option>
+                <option value="days_pcpn_gt_1in">Days w/ &gt; 1 in</option>
+                <option value="days_pcpn_gt_2in">Days w/ &gt; 2 in</option>
+                <option value="days_pcpn_gt_3in">Days w/ &gt; 3 in</option>
+                <option value="days_dry_days">Dry Days</option>
+                <option value="hdd_65f">Heating Degree Days</option>
+                <option value="cdd_65f">Cooling Degree Days</option>
+                <option value="gdd">Growing Degree Days</option>
+                <option value="gddmod">Mod. Growing Degree Days</option>
 
 
             </select>
         </li>
 
-        <li class="about-link"><a href="<?php $current_domain ?>#detail-tmax" class="nav-detail-link" id="about-variable-link">About Average Daily Max Temp</a></li>
+        <li class="about-link"><a href="<?php $current_domain ?>#detail-tmax" class="nav-detail-link" id="about-variable-link">About Ave Daily Max Temp (°F)</a></li>
     </ul>
 
     <div id="vars-legend" class="legend-wrap left-filler">
@@ -253,5 +260,8 @@ if ($cut_url == $current_url) {
 <a href="<?php $current_domain ?>#" id="district-trigger"><span class="text">Show District Overlay</span><span class="icon icon-district"></span></a>
 
 <?php include_once('template/footer.php'); ?>
+
+
+
 </body>
 </html>

@@ -126,7 +126,7 @@ if ($group != 'all' && $group != 'group1' && $group != 'group2' && $group != 'gr
 
       <div id="vars-legend" class="legend-wrap left-filler">
 
-        <div id="topic-legends"></div>
+        <div id="station-legends"></div>
       </div>
     </header>
 

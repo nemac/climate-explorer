@@ -948,9 +948,9 @@
       }
     }
   }
-  
+
   // OVERLAYS
-  
+
   #location-stations-overlay {
     @include full-size;
     left: -9999px;
@@ -959,7 +959,7 @@
     z-index: 10;
     @include clearfix;
   }
-  
+
   &.overlay-on {
     #location-stations-overlay {
       left: 0;
@@ -967,42 +967,42 @@
       transition: left 0s ease 0s, opacity 0.25s ease 0s;
       background: transparentize($orange1, 0.1);
     }
-    
+
     .station-overlay-content {
       transition: left 0s ease 0s, opacity 0.25s ease 0s;
     }
-    
-    &:not(.type-tidal) {        
+
+    &:not(.type-tidal) {
       #station-detail {
         left: 0;
         opacity: 1;
       }
     }
-    
+
     &.type-tidal {
       #location-stations-overlay {
         background: transparentize($blue1, 0.1);
       }
-      
+
       #station-detail-tidal {
         left: 0;
         opacity: 1;
       }
     }
   }
-  
+
   // header
-  
+
   #station-overlay-header {
     height: 120px;
     color: $white;
     padding: 20px 20px 0 20px;
     @include clearfix;
-    
+
     h3 {
       padding: 0;
     }
-    
+
     h5 {
       float: left;
       width: 50%;
@@ -1010,9 +1010,9 @@
       font-family: $sans-book;
     }
   }
-  
+
   // content
-  
+
   .station-overlay-content {
     position: absolute;
     bottom: 0;
@@ -1024,16 +1024,16 @@
     padding: 20px;
     z-index: 1;
   }
-  
+
   .station-overlay-column {
     position: relative;
     float: left;
     width: 50%;
     height: 100%;
-    
+
     &.left {
       padding-right: 40px;
-      
+
       &:after {
         content: '';
         display: block;
@@ -1047,7 +1047,7 @@
       }
     }
   }
-  
+
   // standard
   
   #station-detail-data {

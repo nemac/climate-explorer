@@ -1082,7 +1082,7 @@ App.prototype.takeHomeTour = function () {
     }
 
     var step1 = this.homeTour.addStep('search-by-location', {
-        text: 'Enter a city, zip code, or county name to select any county in the contiguous United States.',
+        text: 'Enter a city, state, zip code, or county to select a region in the contiguous United States.',
         attachTo: '#home-search-by-location left',
         buttons: [
             {
@@ -1113,9 +1113,9 @@ App.prototype.takeHomeTour = function () {
         ]
     });
 
-    this.homeTour.addStep('search-by-topic', {
-        text: 'Access maps related to climate impacts for topics addressed in the U.S. Climate Resilience Toolkit.',
-        attachTo: '#home-search-by-topic left',
+    this.homeTour.addStep('search-by-station', {
+        text: 'Access maps related to climate impacts for stations addressed in the U.S. Climate Resilience Toolkit.',
+        attachTo: '#home-search-by-station left',
         buttons: [
             {
                 text: 'Close',
@@ -1274,7 +1274,7 @@ App.prototype.takeLocationTour = function () {
     }
 
     this.locationTour.addStep('location-search', {
-        text: 'Switch to another county by entering a city, zip code, or county name.',
+        text: 'Switch to another region by entering a city, state, zip code, or county name.',
         attachTo: '#location-search bottom',
         buttons: [
             {
@@ -1290,7 +1290,7 @@ App.prototype.takeLocationTour = function () {
     });
 
     this.locationTour.addStep('page-nav', {
-        text: 'Click any link to jump down the page to its graph or map.',
+        text: 'Click any link to jump down the page.',
         attachTo: '#page-nav bottom',
         buttons: [
             {
@@ -1306,7 +1306,7 @@ App.prototype.takeLocationTour = function () {
     });
 
     this.locationTour.addStep('temperature-data', {
-        text: 'This is the first of four sections for this county—scroll down to see more. In each section, you can switch variables or averaging periods, display actual values or anomalies, move the endpoints of the time slider, or view maps.',
+        text: 'Scroll down to see more. You can choose different variables, switch between actual values and anomalies, move the endpoints of the time slider, or view maps.',
         attachTo: '#temperature-data top',
         buttons: [
             {
@@ -1345,7 +1345,7 @@ App.prototype.takeCaseTour = function () {
     }
 
     this.caseTour.addStep('search-field', {
-        text: 'Here you can change what location in the United States you wish to explore within the topic map.',
+        text: 'Here you can change what location in the United States you wish to explore within the station map.',
         attachTo: '#search-by-location right',
         buttons: [
             {
@@ -1406,7 +1406,7 @@ App.prototype.takeGraphTour = function (pre) {
     }
 
     this.graphTour.addStep('graph', {
-        text: 'For the county and variable you selected, this chart shows observed averages from 1950-2004, the range of projections for the historical period, and the range of projections for two possible futures.',
+        text: 'For the region and variable you selected, this chart offers observed annual averages from 1950-2013, climate model simulations  (hindcasts) from 1950-2005, and climate model projections for two possible futures out to 2100 ',
         buttons: [
             {
                 text: 'Close',
@@ -1421,7 +1421,7 @@ App.prototype.takeGraphTour = function (pre) {
     });
 
     this.graphTour.addStep('historical-obs', {
-        text: 'Dark gray bars indicate observed values for each year. The horizontal line from which bars extend shows the county average from 1960-1989. Bars that extend above the line show years that were above average. Bars that extend below the line were below average.',
+        text: 'Dark gray bars show observed annual averages from 1950-2013. The horizontal line from which bars extend represents the overall average from 1961-1990. Bars that extend above the line show years that were above average. Bars that extend below the line were below average.',
         attachTo: '#' + pre + 'historical-obs top',
         buttons: [
             {
@@ -1438,7 +1438,7 @@ App.prototype.takeGraphTour = function (pre) {
 
 
     this.graphTour.addStep('historical-range', {
-        text: 'The light gray band shows the range of model data (hindcast) for the historical period. To get a sense of climate models’ predictive ability for this variable in this county, compare the year-to-year variability of observations (dark gray bars) with the range of modeled projections.',
+        text: 'The light gray band shows the range of climate model simulations (hindcasts) generated for 1950 to 2005. To get a sense of how well climate models predict this variable in this region, compare the year-to-year variability of observations (dark gray bars) with the range of values in the climate model hindcasts.',
         attachTo: '#' + pre + 'historical-range top',
         buttons: [
             {
@@ -1455,7 +1455,7 @@ App.prototype.takeGraphTour = function (pre) {
 
 
     this.graphTour.addStep('rcp45-range', {
-        text: 'The blue band shows the range of projections for a scenario in which global emissions of heat-trapping gases stop increasing and become stable. This scenario is known as RCP 4.5. <a href="http://asr.science.energy.gov/publications/program-docs/RCP4.5-Pathway.pdf" target="_BLANK">Learn more »</a>',
+        text: 'The blue band shows the range of projections for a possible future in which global emissions of heat-trapping gases peak around 2040 and then decline. This scenario is called RCP 4.5. <a href="http://asr.science.energy.gov/publications/program-docs/RCP4.5-Pathway.pdf" target="_BLANK">Learn more »</a>',
         attachTo: '#' + pre + 'rcp45-range top',
         buttons: [
             {

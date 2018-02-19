@@ -40,30 +40,30 @@ if ($param != 'coastal' && $param != 'health' && $param != 'water' && $param != 
 
 </head>
 
-<body id="page-topic-<?php echo $param; ?>" class="page-type-topic">
+<body id="page-station-<?php echo $param; ?>" class="page-type-stations">
 
 <?php include_once('template/header.php'); ?>
 
 <div id="viewport">
     <div id="main-content-wrap">
 
-        <section id="topic-splash" class="page-splash">
+        <section id="station-splash" class="page-splash">
             <div class="splash-text">
-                <h4>Topic</h4>
+                <h4>station</h4>
                 <h1><?php echo str_replace("_", " ", $param) ?></h1>
-                <p id="topic-description"></p>
+                <p id="station-description"></p>
             </div>
 
-            <div id="subtopics-menu" class="white-menu">
+            <div id="substations-menu" class="white-menu">
               <h4>Impacts</h4>
-              <ul id="subtopics-list">
+              <ul id="substations-list">
 
               </ul>
-              <a href="<?php $current_domain ?>case.php?id=<?php echo $param ?>&group=all" id="subtopics-view-all" class="button display-block border-white color-orange arrow-right">View all layers for topic</a>
+              <a href="<?php $current_domain ?>case.php?id=<?php echo $param ?>&group=all" id="substations-view-all" class="button display-block border-white color-orange arrow-right">View all layers for station</a>
             </div>
         </section>
 
-        <section id="subtopics" class="topics-list"></section>
+        <section id="substations" class="stations-list"></section>
         
         <?php include_once('template/share.php'); ?>
 
@@ -77,20 +77,20 @@ if ($param != 'coastal' && $param != 'health' && $param != 'water' && $param != 
 <script>
   $.getJSON(<?php echo "'" . $data_base_url . "'"; ?>+'data-grouped.json', function(data) {
     var li;
-    var desc = data.topics['<?php echo $param ?>'].description;
-    $('#topic-description').html(desc);
+    var desc = data.stations['<?php echo $param ?>'].description;
+    $('#station-description').html(desc);
 
-    $.each(data.topics['<?php echo $param; ?>'].groups, function(i, group) {
+    $.each(data.stations['<?php echo $param; ?>'].groups, function(i, group) {
       li = '<li><a href="<?php $current_domain ?>#<?php echo $param; ?>-' + i + '">' + group.title + '</a></li>';
-      $('#subtopics-list').append(li);
+      $('#substations-list').append(li);
 
-      var html = '<article id="<?php echo $param ?>-' + i + '" class="topic-banner">'+
-        '<div class="topic-banner-text">'+
+      var html = '<article id="<?php echo $param ?>-' + i + '" class="station-banner">'+
+        '<div class="station-banner-text">'+
             '<h4>Impact</h4>'+
             '<h3><a href="<?php $current_domain ?>case.php?id=<?php echo $param ?>&group='+i+'">'+group.title+'</a></h3>'+
             '<p>'+group.description+'</p>'+
         '</div>'+
-        '<div class="topic-layers white-menu">'+
+        '<div class="station-layers white-menu">'+
             '<h4>Data layers include:</h4>'+
             '<ul id="'+i+'-layer-list">'+
             '</ul>'+
@@ -98,7 +98,7 @@ if ($param != 'coastal' && $param != 'health' && $param != 'water' && $param != 
         '<a href="<?php $current_domain ?>case.php?id=<?php echo $param ?>&group='+i+'" class="button bg-trans border-white hover-bg-white plus">View details</a>'+
       '</article>';
 
-      $('#subtopics').append(html);
+      $('#substations').append(html);
 
       $.each(group.layers, function(f, layer) {
         //console.log('layer', layer, 'data.layers', data.layers);
@@ -111,7 +111,7 @@ if ($param != 'coastal' && $param != 'health' && $param != 'water' && $param != 
   (function ($) {
     $(function () {
 
-      $('body').on('click', '#subtopics-list a', function(e) {
+      $('body').on('click', '#substations-list a', function(e) {
         e.preventDefault();
 
         var link_href = $(this).attr('href');

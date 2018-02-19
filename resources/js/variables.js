@@ -59,26 +59,26 @@ var Variables = function (id, data_base_url) {
  */
 Variables.prototype.mapVariables = function () {
     this.varMapping = {
-        'tmax': 'Average Daily Max Temp',
-        'tmin': 'Average Daily Min Temp',
+        'tmax': 'Ave Daily Max Temp (°F)',
+        'tmin': 'Ave Daily Min Temp (°F)',
         'days_tmin_lt_32f': 'Days With Minimum Below 32F&deg; F',
-        'days_tmax_gt_90f': 'Days per year with max above 90°F',
+        'days_tmax_gt_90f': 'Days w/ max > 90°F',
         'days_tmax_gt_95f': 'Days With Maximum Above 95&deg; F',
-        'pcpn': 'Total precipitation',
+        'pcpn': 'Total precip',
         'days_pcpn_gt_1in': 'Days of Precipitation Above 1 Inch',
         'cdd_65f': 'Cooling Degree Days',
         'hdd_65f': 'Heating Degree Days',
 
-        'days_tmax_gt_100f':   'Days per year with max above 100°F',
-        'days_tmax_gt_105f':   'Days per year with max above 105°F',
-        'days_tmax_lt_32f':    'Days per year with max below 32°F (Icing days)',
-        'days_tmin_gt_80f':    'Days per year with min above 80°F',
-        'days_tmin_gt_90f':    'Days per year with min above 90°F',
-        'days_pcpn_gt_2in':    'Days per year with more than 2 inches precip',
-        'days_pcpn_gt_3in':    'Days per year with more than 3 inches precip',
-        'days_pcpn_lt_0.01in': 'Dry Days (days/period)',
-        'gdd':                 'Growing Degree Days (°F-days)',
-        'gddmod':              'Modified Growing Degree Days (°F-days)'
+        'days_tmax_gt_100f':   'Days w/ max > 100°F',
+        'days_tmax_gt_105f':   'Days w/ max > 105°F',
+        'days_tmax_lt_32f':    'Days w/ max < 32°F',
+        'days_tmin_gt_80f':    'Days w/ min > 80°F',
+        'days_tmin_gt_90f':    'Days w/ min > 90°F',
+        'days_pcpn_gt_2in':    'Days w/ > 2 in',
+        'days_pcpn_gt_3in':    'Days w/ > 3 in',
+        'days_dry_days': 'Dry Days',
+        'gdd':                 'Growing Degree Days',
+        'gddmod':              'Mod. Growing Degree Days'
 
     };
 
@@ -96,7 +96,7 @@ Variables.prototype.mapVariables = function () {
         'days_tmin_gt_90f':    '-annual-hist-days_tmin_gt_90f',
         'days_pcpn_gt_2in':    '-annual-hist-days_pcpn_gt_2in',
         'days_pcpn_gt_3in':    '-annual-hist-days_pcpn_gt_3in',
-        'days_pcpn_lt_0.01in': '-annual-hist-dry_days',
+        'days_dry_days': '-annual-hist-dry_days',
         'gdd':                 '-annual-hist-gdd',
         'gddmod':              '-annual-hist-gddmod',
 
@@ -120,7 +120,7 @@ Variables.prototype.mapVariables = function () {
         'days_tmin_gt_90f':    '-annual-rcp45-days_tmin_gt_90f',
         'days_pcpn_gt_2in':    '-annual-rcp45-days_pcpn_gt_2in',
         'days_pcpn_gt_3in':    '-annual-rcp45-days_pcpn_gt_3in',
-        'days_pcpn_lt_0.01in': '-annual-rcp45-dry_days',
+        'days_dry_days': '-annual-rcp45-dry_days',
         'gdd':                 '-annual-rcp45-gdd',
         'gddmod':              '-annual-rcp45-gddmod',
 
@@ -144,7 +144,7 @@ Variables.prototype.mapVariables = function () {
         'days_tmin_gt_90f':    '-annual-rcp85-days_tmin_gt_90f',
         'days_pcpn_gt_2in':    '-annual-rcp85-days_pcpn_gt_2in',
         'days_pcpn_gt_3in':    '-annual-rcp85-days_pcpn_gt_3in',
-        'days_pcpn_lt_0.01in': '-annual-rcp85-dry_days',
+        'days_dry_days': '-annual-rcp85-dry_days',
         'gdd':                 '-annual-rcp85-gdd',
         'gddmod':              '-annual-rcp85-gddmod',
 
@@ -175,22 +175,22 @@ Variables.prototype.createMap = function () {
     var center = ( qs.center ) ? qs.center.split(',') : null;
 
     // make sure variable in query is valid
-    if (!qs.id.match(/^(tmax|tmin|days_tmax_gt_90f|days_tmax_gt_95f|days_tmax_gt_100f| days_tmax_gt_105f|days_tmax_lt_32f|days_tmin_lt_32f|days_tmin_gt_80f|days_tmin_gt_90f|pcpn|days_pcpn_gt_1in|days_pcpn_gt_2in|days_pcpn_gt_3in|days_pcpn_gt_4in|days_pcpn_lt_0.01in|hdd_65f|cdd_65f|gdd|gddmod)$/)) {
-      window.location = "error.php";
-      throw new Error("MALFORMED VARIABLE");
+    if (!qs.id.match(/^(tmax|tmin|days_tmax_gt_90f|days_tmax_gt_95f|days_tmax_gt_100f| days_tmax_gt_105f|days_tmax_lt_32f|days_tmin_lt_32f|days_tmin_gt_80f|days_tmin_gt_90f|pcpn|days_pcpn_gt_1in|days_pcpn_gt_2in|days_pcpn_gt_3in|days_pcpn_gt_4in|days_dry_days|hdd_65f|cdd_65f|gdd|gddmod)$/)) {
+        window.location = "error.php";
+        throw new Error("MALFORMED VARIABLE");
     }
 
 
     // make sure center is valid (when it exists)
     if (center){
-      if ((isNumeric(center[0]))&&(isNumeric(center[1])))
-      {
-          //alert("Good Center");
-      } else {
+        if ((isNumeric(center[0]))&&(isNumeric(center[1])))
+        {
+            //alert("Good Center");
+        } else {
 
-          window.location = "error.php";
-          throw new Error("MALFORMED CENTER");
-      }
+            window.location = "error.php";
+            throw new Error("MALFORMED CENTER");
+        }
     }
 
     // make sure zoom is valid (when it exists)
@@ -232,13 +232,13 @@ Variables.prototype.createMap = function () {
         ]),
         target: 'variable-map',
         layers: [
-          new ol.layer.Tile({
-            source: new ol.source.XYZ({
-              url: 'https://services.arcgisonline.com/arcgis/rest/services/Canvas/World_Light_Gray_Base/MapServer/tile/{z}/{y}/{x}',
-              attributions: [new ol.Attribution({html: ['&copy; Esri, HERE, DeLorme, MapmyIndia, © OpenStreetMap contributors, and the GIS user community ']})],
-              maxZoom: 10
+            new ol.layer.Tile({
+                source: new ol.source.XYZ({
+                    url: 'https://services.arcgisonline.com/arcgis/rest/services/Canvas/World_Light_Gray_Base/MapServer/tile/{z}/{y}/{x}',
+                    attributions: [new ol.Attribution({html: ['&copy; Esri, HERE, DeLorme, MapmyIndia, © OpenStreetMap contributors, and the GIS user community ']})],
+                    maxZoom: 10
+                })
             })
-          })
         ],
         view: view
     });
@@ -523,8 +523,24 @@ Variables.prototype.updateUrl = function () {
     qs.year = this.activeYear;
 
     var str = $.param(qs);
-
     history.replaceState(null, "", 'variables.php?' + str);
+    setTimeout(function () {
+        selectedVariableOption = $('#variable-options option:selected').text();
+        actualurl      = window.location.href;     // Returns full URL
+        actualurlEncoded = encodeURIComponent(actualurl);
+        twitterurl      = "https://twitter.com/intent/tweet?text=" + selectedVariableOption + "+via+%40NOAA+Climate+Explorer%3A+" + actualurlEncoded;     // Returns full URL
+        facebookurl      = "https://www.facebook.com/sharer/sharer.php?u=" + actualurlEncoded;     // Returns full URL
+
+        console.log('actualurl');
+        console.log(actualurl);
+
+        $('#share_facebook').attr("href",facebookurl);
+        $('#share_facebook').attr("data-href",actualurl);
+        $('#share_twitter').attr("href",twitterurl);
+        $('#share_link').val(actualurl);
+
+    }, 500)
+
 };
 
 
@@ -682,7 +698,7 @@ Variables.prototype.countySelected = function (feature, event) {
             '</div>';
         this.popup.show(event.mapBrowserEvent.coordinate, html);
 
-        this.cwg = climate_widget.graph({
+        cwg = climate_widget.graph({
             div: "div#climate-chart",
             dataprefix: "/climate-explorer2-data/data",
             font: "Roboto",
@@ -771,28 +787,50 @@ Variables.prototype.countySelected = function (feature, event) {
         });
 
         $('.download-data').click(function (e) {
-          var $ul = $('#download-panel').find('ul');
-          $ul.empty();
-          var dataurls = self.cwg.dataurls();
-          if (dataurls.hist_obs) {
-              $ul.append($("<li><a href='" + dataurls.hist_obs + "'>Observed Data</a></li>"));
-          }
-          if (dataurls.hist_mod) {
-              $ul.append($("<li><a href='" + dataurls.hist_mod + "'>Historical Modeled Data</a></li>"));
-          }
-          if (dataurls.proj_mod) {
-              $ul.append($("<li><a href='" + dataurls.proj_mod + "'>Projected Modeled Data</a></li>"));
-          }
-            $ul.append($("<li><a href='./downloads/Key-to-Climate-Explorer-Download-Filenames-and-Column-Headings.xlsx'>Information for Interpreting Data</a></li>"));
 
+            console.log('.download-data clicked');
             $('#download-panel').removeClass("hidden");
-          $('#download-panel').show();
+
+            $('#download-panel').show();
+            $('#download-panel').fadeIn(250);
 
         });
+
+        $('#download_hist_obs_data').click(function () {
+            if (cwg) {
+                cwg.download_hist_obs_data(this)
+            }
+        });
+        $('#download_hist_mod_data').click(function () {
+            if (cwg) {
+                cwg.download_hist_mod_data(this)
+            }
+        });
+        $('#download_proj_mod_data').click(function () {
+            if (cwg) {
+                cwg.download_proj_mod_data(this)
+            }
+        });
+
+
 
         $('#download-dismiss-button').click(function () {
             $('#download-panel').addClass("hidden");
             $('#download-panel').hide();
+        });
+
+
+
+        $('#download-precip-dismiss-button').click(function () {
+            $('#download-precip-panel').addClass("hidden");
+            $('#download-precip-panel').hide();
+        });
+
+
+
+        $('#download-derived-dismiss-button').click(function () {
+            $('#download-derived-panel').addClass("hidden");
+            $('#download-derived-panel').hide();
         });
 
         $('.how-to-read').on('click', function () {
@@ -815,6 +853,7 @@ Variables.prototype.countySelected = function (feature, event) {
             max: 2099,
             values: [1950, 2099],
             slide: function (event, ui) {
+                this.updateUrl();
                 return self.cwg.setXRange(ui.values[0], ui.values[1]);
             }
         });
@@ -846,7 +885,7 @@ Variables.prototype.updateTiledLayer = function (replace, preserveTime,le_option
     console.log(self.selectedVariable);
 
     if ( self.selectedVariable !== 'tmax' && self.selectedVariable !== 'tmin' && self.selectedVariable !== 'pcpn' && this.activeYear === 2000 ) {
-      this.activeYear = 2010;
+        this.activeYear = 2010;
     }
 
     var extent = ol.proj.transformExtent([-135, 11.3535322866, -56.25, 49.5057345956], 'EPSG:4326', 'EPSG:3857');
@@ -871,14 +910,14 @@ Variables.prototype.updateTiledLayer = function (replace, preserveTime,le_option
     } else {
 
         if (le_option_selected === 'lower_historical' || le_option_selected === 'HISTORICAL') {
-            src = '1980' + season + this.tilesHistMapping[this.selectedVariable];
+            src = 'avg' + season + this.tilesHistMapping[this.selectedVariable];
         } else {
             src = this.activeYear + season + this.tilesMapping[this.selectedVariable];
         }
 
 
         if (he_option_selected === 'higher_historical' || he_option_selected === 'HISTORICAL') {
-            src85 = '1980' + season + this.tilesHistMapping[this.selectedVariable];
+            src85 = 'avg' + season + this.tilesHistMapping[this.selectedVariable];
         } else {
             src85 = this.activeYear + season + this.tilesMapping85[this.selectedVariable];
         }
@@ -899,11 +938,11 @@ Variables.prototype.updateTiledLayer = function (replace, preserveTime,le_option
      * Create the rcp45 tile layer
      */
 
-        console.log('selected what drop');
-        //le_option_selected = $('.emissions-low .fs-dropdown-selected').text();
-        //he_option_selected = $('.emissions-high .fs-dropdown-selected').text();
-        console.log(le_option_selected);
-        console.log(he_option_selected);
+    console.log('selected what drop');
+    //le_option_selected = $('.emissions-low .fs-dropdown-selected').text();
+    //he_option_selected = $('.emissions-high .fs-dropdown-selected').text();
+    console.log(le_option_selected);
+    console.log(he_option_selected);
 
     this.tileLayer = new ol.layer.Tile({
         source: new ol.source.XYZ({
@@ -1101,13 +1140,13 @@ Variables.prototype.setSlider = function () {
         step: 10,
         value: self.activeYear,
         slide: function (event, ui) {
-          if ( self.selectedVariable !== 'tmax' && self.selectedVariable !== 'tmin' && self.selectedVariable !== 'pcpn') {
-            if ( ui.value === 2000 ) {
-              return false;
+            if ( self.selectedVariable !== 'tmax' && self.selectedVariable !== 'tmin' && self.selectedVariable !== 'pcpn') {
+                if ( ui.value === 2000 ) {
+                    return false;
+                }
             }
-          }
-          tooltip.text(ui.value);
-          tooltip.fadeIn(200);
+            tooltip.text(ui.value);
+            tooltip.fadeIn(200);
         },
         change: function (event, ui) {
             year_slider.attr('data-value', ui.value);
@@ -1120,6 +1159,8 @@ Variables.prototype.setSlider = function () {
             he_option_selected = $(".emissions-high .fs-dropdown-selected").text();
 
             self.updateTiledLayer(true, true,le_option_selected,he_option_selected);
+
+            self.updateUrl();
             tooltip.fadeOut(200);
         }
     }).find(".ui-slider-handle").html('<span class="icon icon-arrow-left-right"></span>').append(tooltip);

@@ -1,5 +1,5 @@
 {
-  "topics": {
+  "stations": {
     "arctic": {
       "description": "Dramatic reductions in Arctic sea ice threaten ecosystems and fisheries, disrupt traditional lifestyles, and erode coastlines. Increasing development activities may boost the region’s economy, but they also increase risks to ecosystems and the environment. Explore landcover, current drought, and historical observations in this rapidly changing region.",
       "groups": {
@@ -159,7 +159,7 @@
       }
     },
     "marine": {
-      "description": "This is the main topic desciption. Should include overview of all groups on the page. It goes on the main headline on the topics page",
+      "description": "This is the main station desciption. Should include overview of all groups on the page. It goes on the main headline on the stations page",
       "groups": {
         "group1": {
           "title": "Fishing and wind potential",
@@ -633,7 +633,7 @@
     "tmax": {
       "type": "Tile",
       "id": "tmax",
-      "title": "Average Daily Max Temp (°F)",
+      "title": "Ave Daily Max Temp (°F)",
       "description": "Maximum temperatures are one indicator of conditions that can interfere with ecosystem functions. View how temperatures are projected to change during future decades.",
       "source": "https://catalog.data.gov/dataset/bias-corrected-constructed-analogs-v2-daily-climate-projections",
       "legend": "resources/img/legends/summer_tmax",

@@ -4034,7 +4034,7 @@ class HTMLPurifier_Encoder
     /**
      * Translates a Unicode codepoint into its corresponding UTF-8 character.
      * @note Based on Feyd's function at
-     *       <http://forums.devnetwork.net/viewtopic.php?p=191404#191404>,
+     *       <http://forums.devnetwork.net/viewstation.php?p=191404#191404>,
      *       which is in public domain.
      * @note While we're going to do code point parsing anyway, a good
      *       optimization would be to refuse to translate code points that

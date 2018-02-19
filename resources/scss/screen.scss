@@ -19,7 +19,6 @@ $sans-book: 'CESans', Roboto, Helvetica, 'Helvetica Neue', Arial, sans-serif;
 $sans-heavy: 'CESans-Heavy', Helvetica, 'Helvetica Neue', Arial, sans-serif;
 
 // IMPORTS
-
 @import "compass/reset";
 @import "compass/css3";
 @import "compass/utilities/general/clearfix";
@@ -46,7 +45,7 @@ html {
   height: 100%;
 }
 
-body {
+body  {
   width: 100%;
   height: 100%;
   background: $white;
@@ -101,7 +100,7 @@ h6 {
   font: 1rem/1em $sans-heavy;
   border: 10px solid transparent;
   @include transition(0.25s);
-  
+
   &:before,
   &:after {
     content: '';
@@ -110,69 +109,69 @@ h6 {
     right: 6%;
     top: 50%;
   }
-  
+
   // display
   
-  &.display-block {
+  &.display-blocks {
     display: block;
   }
-  
+
   // icons
-  
+
   .icon {
     margin: -2px 10px 0 0;
   }
-  
+
   &.plus {
     &:before {
       width: 14px;
       height: 4px;
       margin-top: -2px;
     }
-    
+
     &:after {
       width: 4px;
       height: 14px;
       margin: -7px 5px 0 0;
     }
   }
-  
+
   &.arrow-left {
     &:before,
     &:after {
       width: 10px;
       height: 4px;
     }
-    
+
     &:before {
       @include rotate(-45deg);
       margin-top: -4px;
     }
-    
+
     &:after {
       @include rotate(45deg);
       margin-top: 1px;
     }
   }
-  
+
   &.arrow-right {
     &:before,
     &:after {
       width: 10px;
       height: 4px;
     }
-    
+
     &:before {
       @include rotate(-45deg);
       margin-top: 1px;
     }
-    
+
     &:after {
       @include rotate(45deg);
       margin-top: -4px;
     }
   }
-  
+
   &.close {
     &:before,
     &:after {
@@ -181,78 +180,78 @@ h6 {
       height: 6px;
       margin-top: -4px;
     }
-    
+
     &:before {
       @include rotate(-45deg);
     }
-    
+
     &:after {
       @include rotate(45deg);
     }
   }
-  
+
   // colours
   
   &.color-white {
     color: $white;
-    
+
     &:before,
     &:after {
       background: $white;
     }
   }
-  
+
   &.color-orange {
     color: $orange1!important;
-    
+
     &:before,
     &:after {
       background: $orange1!important;
     }
-    
+
     &.arrow-right {
       &:before {
         background: $orange1!important;
       }
-      
+
       &:after {
         background: $orange1!important;
       }
     }
   }
-  
+
   // borders
     
   &.border-white {
     border-color: $white;
     color: $white;
-    
+
     &:before,
     &:after {
       background: $white;
     }
   }
-  
+
   &.border-trans {
     border-color: transparent;
   }
-  
+
   &.border-none {
     border: none;
   }
-  
+
   // backgrounds
   
   &.bg-trans {
     background: transparent;
   }
-  
+
   &.bg-white {
     background: white;
   }
-  
+
   // HOVER
-  
+
   // backgrounds
   
   &.hover-bg-white {
@@ -260,24 +259,24 @@ h6 {
       background: $white;
       color: $blue1;
       mix-blend-mode: screen;
-      
+
       &:before,
       &:after {
         background: $black;
       }
     }
   }
-  
+
   // BLEND
   
   &.blend-screen {
     mix-blend-mode: screen;
-    
+
     &:before,
     &:after {
       background: $black;
     }
-    
+
     &:hover {
       color: $black;
     }
@@ -299,7 +298,7 @@ h6 {
 }
 
 // tooltip
-  
+
 .tooltip {
   display: none;
   position: absolute;
@@ -312,7 +311,7 @@ h6 {
   color: $blue2;
   @include transform(translateX(-50%));
   @include box-shadow(0 0 8px transparentize($blue1, 0.75));
-  
+
   &:after {
     content: '';
     display: block;
@@ -338,7 +337,7 @@ h6 {
   background: $white;
   z-index: 2;
   cursor: col-resize;
-    
+
   .handle {
     display: block;
     position: absolute;
@@ -355,7 +354,7 @@ h6 {
 
 .chart-legend {
   @include legacy-clearfix;
-  
+
   .legend-item {
     position: relative;
     float: left;
@@ -372,7 +371,7 @@ h6 {
     &:hover {
       border:1px solid #EEE;
     }
-      
+
     &:after {
       content: "\e91f";
       display: block;
@@ -391,69 +390,69 @@ h6 {
       opacity: 0;
       @include transition(0.25s);
     }
-    
+
     &.selected {
       //background: $blue3;
       //@include box-shadow(inset 0 2px 6px transparentize($black, 0.75));
       border: 1px solid #bbb;
-      
+
       &:after {
         opacity: 1;
       }
     }
   }
-  
+
   .legend-item-block {
     height: 20px;
   }
-  
+
   .legend-item-line {
     height: 5px;
   }
-  
+
   .legend-item-block {
-    &#rcp45-block, 
+    &#rcp45-block,
     &#preciprcp45-block, &
     #derivercp45-block {
       background:#99BCEC;
     }
-    
+
     &#rcp85-block,
     &#preciprcp85-block,
     &#derivercp85-block {
       background:#fbb4ab;
     }
-  
-    &#historical-block, 
-    &#preciphistorical-block, 
+
+    &#historical-block,
+    &#preciphistorical-block,
     &#derivehistorical-block {
       background:#D6D6D6;
     }
   }
-  
+
   .legend-item-line {
     &#over-baseline-block,
-    &#precipover-baseline-block, 
+    &#precipover-baseline-block,
     &#deriveover-baseline-block {
       background:#CD6760;
     }
-   
-    &#under-baseline-block, 
-    &#precipunder-baseline-block, 
+
+    &#under-baseline-block,
+    &#precipunder-baseline-block,
     &#deriveunder-baseline-block {
       margin-top:20px;
       background:#6194C8;
     }
-    
-    &#rcp45-line, 
-    &#preciprcp45-line,  
+
+    &#rcp45-line,
+    &#preciprcp45-line,
     &#derivercp45-line {
       margin-top:20px;
       background:#0058CF;
     }
-    
-    &#rcp85-line, 
-    &#preciprcp85-line, 
+
+    &#rcp85-line,
+    &#preciprcp85-line,
     &#derivercp85-line {
       background:#F5442D;
     }
@@ -486,20 +485,20 @@ h6 {
     background: transparentize($white, 0.9);
     color: $white;
     padding: 30px;
-    
+
     p {
       margin: 0 0 20px 0;
     }
-    
+
     li {
       margin: 0 0 10px 0;
     }
-    
+
     a {
       color: $white;
     }
   }
-  
+
   #download-dismiss-button {
     display: block;
     position: absolute;
@@ -551,7 +550,7 @@ h6 {
   @include border-radius(50%);
   @include no-text;
   cursor: pointer;
-  
+
   &:before,
   &:after {
     content: '';
@@ -567,7 +566,7 @@ h6 {
 
   &.minus {
   }
-  
+
   &.plus {
     &:after {
       top: 4px;
@@ -576,7 +575,7 @@ h6 {
       height: 9px;
     }
   }
-  
+
   &.range-label {
     bottom: 0;
     width: auto;
@@ -585,21 +584,21 @@ h6 {
     color: $grey1;
     border: none;
     @include border-radius(none);
-    
+
     &:before,
     &:after {
       display: none;
     }
-    
+
     &.min {
       left: 0;
     }
-    
+
     &.mid {
       left: 50%;
       @include transform(translateX(-50%));
     }
-    
+
     &.max {
       right: 0;
     }
@@ -608,14 +607,14 @@ h6 {
 
 .legend-wrap {
   .legend {
-    
+
     .color {
       display: inline-block;
       height: 0;
       background: red;
       vertical-align: middle;
     }
-    
+
   }
 }
 
@@ -627,7 +626,7 @@ h6 {
   height: 40%;
   background: transparentize($white, 0.5);
   @include transition(0.25s);
-  
+
   &:hover {
     background: transparentize($white, 0.1);
   }
@@ -638,19 +637,19 @@ h6 {
     width: 6px;
     height: 66%;
   }
-  
+
   .ui-slider-handle {
     @include transition(0.15s);
   }
-  
+
   .zoom-label {
     left: 50%;
     margin-left: -10px;
-    
+
     &.minus {
       bottom: 10px;
     }
-    
+
     &.plus {
       top: 10px;
     }
@@ -660,29 +659,28 @@ h6 {
 .page-splash {
   padding: 8% 0;
   color: $blue2;
-  
+
   .splash-text {
     max-width: 65%;
-    padding-left: 4%;
     padding-left: calc(4% + 10px);
     //mix-blend-mode: hard-light;
-    
+
     h1 {
       margin: 0 0 20px 0;
     }
-    
+
     h4 {
       margin: 0 0 40px 0;
       color: $orange1;
     }
-    
+
     p {
       width: 75%;
       margin: 0 0 20px 0;
       font: 400 1.375rem/1.5em $roboto;
     }
   }
-  
+
   .share-widget {
     top: 0;
     right: 0;
@@ -697,13 +695,13 @@ h6 {
 
 @import "pages/location";
 
-// TOPICS
-
-@import "pages/topic";
-
 // VARIABLES
 
 @import "pages/variable";
+
+// Stations
+
+@import "pages/stations";
 
 // CASE
 
@@ -713,7 +711,6 @@ h6 {
 
 .page-type-text {
   #viewport {
-    background-image: none;
     background-color: transparentize($blue3, 0.5);
     top: 20px;
     height: calc(100% - 40px);
@@ -727,62 +724,61 @@ h6 {
 
 #standard-body {
   max-width: 75%;
-  padding-left: 4%;
   padding-left: calc(4% + 10px);
-  
+
   a {
     text-decoration: underline;
   }
-  
+
   p {
     line-height: 1.75em;
     margin: 0 0 20px 0;
   }
-  
+
   strong {
     font-weight: 600;
   }
-  
+
   h2 {
     margin: 30px 0;
     font-size: 2rem;
     color: $blue1;
   }
-  
+
   h3 {
     margin: 20px 0;
     font-size: 1.75rem;
     color: $orange1;
   }
-  
+
   h4 {
     margin: 0 0 15px 0;
     font-size: 1.25rem;
     line-height: 1.375em;
   }
-  
+
   ul, ol {
     margin: 0 20px 30px 20px;
     padding: 0 0 0 30px;
     font: 300 1rem/1.5em $roboto;
-    
+
     li {
       margin: 0 0 10px 0;
     }
   }
-  
+
   ol {
     list-style-type: decimal;
   }
-  
+
   li {
     list-style-type: disc;
   }
-  
+
   dl {
     margin: 0 0 30px 0;
     font: 300 1rem/1.5em $roboto;
-    
+
     dt {
       margin: 0 0 15px 0;
       padding-bottom: 10px;
@@ -790,12 +786,12 @@ h6 {
       color: #444;
       font-weight: 400;
     }
-    
+
     dd {
       margin: 0 0 25px 0;
     }
   }
-  
+
   hr {
     display: block;
     height: 3px;
@@ -848,7 +844,7 @@ h6 {
   	padding: 0;
   	cursor: pointer;
   }
-  
+
   .ui-menu-divider {
   	margin: 5px 0;
   	height: 0;
@@ -861,7 +857,7 @@ h6 {
 .ui-accordion {
   .ui-accordion-header {
     outline: none;
-    
+
     .ui-accordion-header-icon {
       display: inline-block;
       position: static;
@@ -872,12 +868,12 @@ h6 {
   }
 }
 
-.accordion-plain {  
+.accordion-plain {
   .ui-accordion-header {
     padding: 8px 0;
     color: $blue2;
     line-height: 28px;
-    
+
     .ui-accordion-header-icon {
       display: block;
       float: left;
@@ -887,7 +883,7 @@ h6 {
       line-height: 28px;
     }
   }
-  
+
   .accordion-text {
     padding: 20px 40px;
   }
@@ -897,13 +893,13 @@ h6 {
   .tabs-plain-list {
     li {
       display: inline-block;
-      
+
       a {
         display: block;
         padding: 8px 10px;
-        
+
         &.ui-state-active {
-          
+
         }
       }
     }

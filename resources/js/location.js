@@ -1,4 +1,3 @@
-
 //$('#tidal-chart-container').hide();
 
 var Location = function (lat, lon, stations_base_url, data_base_url) {
@@ -23,13 +22,9 @@ var Location = function (lat, lon, stations_base_url, data_base_url) {
     this.lat = parseFloat(lat) || 37.42;
     this.lon = parseFloat(lon) || -105.21;
     this.createMap();
-    this.wire();
 };
-
-
 /*
 * Lots of inconsistencies in naming, so here I map all the variables to one another
-*
 */
 Location.prototype.mapVariables = function () {
     // HISTORICAL
@@ -39,31 +34,26 @@ Location.prototype.mapVariables = function () {
             'tmin': '-hist-tmin',
             'days_tmin_lt_32f': '-annual-hist-days_tmin_lt_32f',
             'days_tmax_gt_95f': '-annual-hist-days_tmax_gt_95f',
-            'days_tmax_gt_90f':    '-annual-hist-days_tmax_gt_90f',
-            'days_tmax_gt_100f':   '-annual-hist-days_tmax_gt_100f',
-            'days_tmax_gt_105f':   '-annual-hist-days_tmax_gt_105f',
-            'days_tmax_lt_32f':    '-annual-hist-days_tmax_lt_32f',
-            'days_tmin_gt_80f':    '-annual-hist-days_tmin_gt_80f',
-            'days_tmin_gt_90f':    '-annual-hist-days_tmin_gt_90f'
+            'days_tmax_gt_90f': '-annual-hist-days_tmax_gt_90f',
+            'days_tmax_gt_100f': '-annual-hist-days_tmax_gt_100f',
+            'days_tmax_gt_105f': '-annual-hist-days_tmax_gt_105f',
+            'days_tmax_lt_32f': '-annual-hist-days_tmax_lt_32f',
+            'days_tmin_gt_80f': '-annual-hist-days_tmin_gt_80f',
+            'days_tmin_gt_90f': '-annual-hist-days_tmin_gt_90f'
         },
         'precipitation-map': {
             'pcpn': '-hist-pcpn',
             'days_pcpn_gt_1in': '-annual-hist-days_pcpn_gt_1in',
-            'days_pcpn_gt_2in':    '-annual-hist-days_pcpn_gt_2in',
-            'days_pcpn_gt_3in':    '-annual-hist-days_pcpn_gt_3in',
-            'days_pcpn_lt_0.01in': '-annual-hist-dry_days'
+            'days_pcpn_gt_2in': '-annual-hist-days_pcpn_gt_2in',
+            'days_pcpn_gt_3in': '-annual-hist-days_pcpn_gt_3in',
+            'days_dry_days': '-annual-hist-dry_days'
         },
         'derived-map': {
             'cdd_65f': '-annual-hist-cdd_65f',
             'hdd_65f': '-annual-hist-hdd_65f',
-            'gdd':     '-annual-hist-gdd',
-            'gddmod':  '-annual-hist-gddmod'
+            'gdd': '-annual-hist-gdd',
+            'gddmod': '-annual-hist-gddmod'
         }
-
-
-
-
-
 
 
     };
@@ -75,25 +65,25 @@ Location.prototype.mapVariables = function () {
             'tmin': '-rcp45-tmin',
             'days_tmin_lt_32f': '-annual-rcp45-days_tmin_lt_32f',
             'days_tmax_gt_95f': '-annual-rcp45-days_tmax_gt_95f',
-            'days_tmax_gt_90f':    '-annual-rcp45-days_tmax_gt_90f',
-            'days_tmax_gt_100f':   '-annual-rcp45-days_tmax_gt_100f',
-            'days_tmax_gt_105f':   '-annual-rcp45-days_tmax_gt_105f',
-            'days_tmax_lt_32f':    '-annual-rcp45-days_tmax_lt_32f',
-            'days_tmin_gt_80f':    '-annual-rcp45-days_tmin_gt_80f',
-            'days_tmin_gt_90f':    '-annual-rcp45-days_tmin_gt_90f'
+            'days_tmax_gt_90f': '-annual-rcp45-days_tmax_gt_90f',
+            'days_tmax_gt_100f': '-annual-rcp45-days_tmax_gt_100f',
+            'days_tmax_gt_105f': '-annual-rcp45-days_tmax_gt_105f',
+            'days_tmax_lt_32f': '-annual-rcp45-days_tmax_lt_32f',
+            'days_tmin_gt_80f': '-annual-rcp45-days_tmin_gt_80f',
+            'days_tmin_gt_90f': '-annual-rcp45-days_tmin_gt_90f'
         },
         'precipitation-map': {
             'pcpn': '-rcp45-pcpn',
             'days_pcpn_gt_1in': '-annual-rcp45-days_pcpn_gt_1in',
-            'days_pcpn_gt_2in':    '-annual-rcp45-days_pcpn_gt_2in',
-            'days_pcpn_gt_3in':    '-annual-rcp45-days_pcpn_gt_3in',
-            'days_pcpn_lt_0.01in': '-annual-rcp45-dry_days'
+            'days_pcpn_gt_2in': '-annual-rcp45-days_pcpn_gt_2in',
+            'days_pcpn_gt_3in': '-annual-rcp45-days_pcpn_gt_3in',
+            'days_dry_days': '-annual-rcp45-dry_days'
         },
         'derived-map': {
             'cdd_65f': '-annual-rcp45-cdd_65f',
             'hdd_65f': '-annual-rcp45-hdd_65f',
-            'gdd':     '-annual-rcp45-gdd',
-            'gddmod':  '-annual-rcp45-gddmod'
+            'gdd': '-annual-rcp45-gdd',
+            'gddmod': '-annual-rcp45-gddmod'
         }
     };
     // RCP 8.5
@@ -104,34 +94,30 @@ Location.prototype.mapVariables = function () {
             'tmin': '-rcp85-tmin',
             'days_tmin_lt_32f': '-annual-rcp85-days_tmin_lt_32f',
             'days_tmax_gt_95f': '-annual-rcp85-days_tmax_gt_95f',
-            'days_tmax_gt_90f':    '-annual-rcp85-days_tmax_gt_90f',
-            'days_tmax_gt_100f':   '-annual-rcp85-days_tmax_gt_100f',
-            'days_tmax_gt_105f':   '-annual-rcp85-days_tmax_gt_105f',
-            'days_tmax_lt_32f':    '-annual-rcp85-days_tmax_lt_32f',
-            'days_tmin_gt_80f':    '-annual-rcp85-days_tmin_gt_80f',
-            'days_tmin_gt_90f':    '-annual-rcp85-days_tmin_gt_90f'
+            'days_tmax_gt_90f': '-annual-rcp85-days_tmax_gt_90f',
+            'days_tmax_gt_100f': '-annual-rcp85-days_tmax_gt_100f',
+            'days_tmax_gt_105f': '-annual-rcp85-days_tmax_gt_105f',
+            'days_tmax_lt_32f': '-annual-rcp85-days_tmax_lt_32f',
+            'days_tmin_gt_80f': '-annual-rcp85-days_tmin_gt_80f',
+            'days_tmin_gt_90f': '-annual-rcp85-days_tmin_gt_90f'
         },
         'precipitation-map': {
             'pcpn': '-rcp85-pcpn',
             'days_pcpn_gt_1in': '-annual-rcp85-days_pcpn_gt_1in',
-            'days_pcpn_gt_2in':    '-annual-rcp85-days_pcpn_gt_2in',
-            'days_pcpn_gt_3in':    '-annual-rcp85-days_pcpn_gt_3in',
-            'days_pcpn_lt_0.01in': '-annual-rcp85-dry_days'
+            'days_pcpn_gt_2in': '-annual-rcp85-days_pcpn_gt_2in',
+            'days_pcpn_gt_3in': '-annual-rcp85-days_pcpn_gt_3in',
+            'days_dry_days': '-annual-rcp85-dry_days'
         },
         'derived-map': {
             'cdd_65f': '-annual-rcp85-cdd_65f',
             'hdd_65f': '-annual-rcp85-hdd_65f',
-            'gdd':     '-annual-rcp85-gdd',
-            'gddmod':  '-annual-rcp85-gddmod'
+            'gdd': '-annual-rcp85-gdd',
+            'gddmod': '-annual-rcp85-gddmod'
         }
     };
 };
-
-
 /*
 * Create WEATHER stations map
-*
-*
 */
 Location.prototype.createMap = function () {
     var self = this;
@@ -164,14 +150,11 @@ Location.prototype.createMap = function () {
     self.addITEMStations();
     self.addTIDALStations();
 
+    this.wire(this.map);
 
 };
-
-
 /*
-*
 * get stations and add to map
-*
 */
 Location.prototype.addStations = function () {
     var self = this;
@@ -235,8 +218,6 @@ Location.prototype.addStations = function () {
 
 
 };
-
-
 Location.prototype.addITEMStations = function () {
     var self = this;
 
@@ -261,7 +242,7 @@ Location.prototype.addITEMStations = function () {
     };
 
     var styleFunction = function (feature) {
-        if (feature.U.show_on_precip === 0 && feature.U.show_on_temp === 0){
+        if (feature.U.show_on_precip === 0 && feature.U.show_on_temp === 0) {
             return styles[feature.getGeometry().getType()];
         } else {
             return blackStyles[feature.getGeometry().getType()];
@@ -313,8 +294,6 @@ Location.prototype.addITEMStations = function () {
 
 
 };
-
-
 Location.prototype.addTIDALStations = function () {
     var self = this;
 
@@ -389,10 +368,9 @@ Location.prototype.stationSelected = function (feature, event, type) {
     if (feature) {
 
 
-
         if ($('#stations-charts-list > li.selected > a').text() === 'Temperature') {
 
-            if (feature.U.show_on_temp === 0){
+            if (feature.U.show_on_temp === 0) {
                 $('#station-detail-data').hide();
                 $('#station-no-data').show();
             } else {
@@ -403,7 +381,7 @@ Location.prototype.stationSelected = function (feature, event, type) {
 
         if ($('#stations-charts-list > li.selected > a').text() === 'Precipitation') {
 
-            if (feature.U.show_on_precip === 0){
+            if (feature.U.show_on_precip === 0) {
                 $('#station-detail-data').hide();
                 $('#station-no-data').show();
             } else {
@@ -412,7 +390,7 @@ Location.prototype.stationSelected = function (feature, event, type) {
             }
         }
 
-        $('#station-charts-tabs .chart-tab-list a').click(function(e) {
+        $('#station-charts-tabs .chart-tab-list a').click(function (e) {
 
             e.preventDefault();
 
@@ -430,7 +408,7 @@ Location.prototype.stationSelected = function (feature, event, type) {
                 if (tab_id === '#stations-charts-temp') {
                     $('body').find('#itemvariable').val('tavg').change();
 
-                    if (feature.U.show_on_temp === 0){
+                    if (feature.U.show_on_temp === 0) {
                         $('#station-detail-data').hide();
                         $('#station-no-data').show();
                     } else {
@@ -442,7 +420,7 @@ Location.prototype.stationSelected = function (feature, event, type) {
                     $('body').find('#itemvariable').val('precipitation').change();
 
 
-                    if (feature.U.show_on_precip === 0){
+                    if (feature.U.show_on_precip === 0) {
                         $('#station-detail-data').hide();
                         $('#station-no-data').show();
                     } else {
@@ -458,53 +436,52 @@ Location.prototype.stationSelected = function (feature, event, type) {
 
 
         var station_tabs;
-        
-        $('#stations-spinner').fadeIn(50, function() {
-          $('#location-stations').addClass('overlay-on');
-          
-          var props = feature.getProperties();
-          
-          // populate header
-          
-          $('#station-overlay-header .station-name').html(props.name);
 
-          $('#station-overlay-header .station-id').html(props.station);
+        $('#stations-spinner').fadeIn(50, function () {
+            $('#location-stations').addClass('overlay-on');
 
-          $('#station').val(props.station).change();
+            var props = feature.getProperties();
 
-          if (props.type === 'ITEM') {
+            // populate header
+
+            $('#station-overlay-header .station-name').html(props.name);
+
+            $('#station-overlay-header .station-id').html(props.station);
+
+            $('#station').val(props.station).change();
+
+            if (props.type === 'ITEM') {
 
 
+                $('#station-overlay-header h3').html('Weather Station');
 
-              $('#station-overlay-header h3').html('Weather Station');
-              
-              self.chart = new ChartBuilder(props, self.stations_base_url);
+                self.chart = new ChartBuilder(props, self.stations_base_url);
 
-              $('#stations-spinner').fadeOut(250);
-          }
-          
-          if (props.type === 'tidal') {
-            
-              $('#station-overlay-header h3').html('Tidal Station');
-            
-              $('#location-stations').addClass('type-tidal');
-  
-              $('#stations-spinner').fadeOut(250);
-              
-              $('body').on('change', '#tidal_station', function() {
-                  $("#tidal-chart").tidalstationwidget("update", {station: $(this).val()})
-                  
-                  if ($(this).find('option:selected').length) {
-                    $('#station-overlay-header .station-name').html($(this).find('option:selected').text());
-                  }
-          
-                  $('#station-overlay-header .station-id').html($(this).val());
-              });
-  
-              $("#tidal_station").val(props.station).change();
-  
-          }
-          
+                $('#stations-spinner').fadeOut(250);
+            }
+
+            if (props.type === 'tidal') {
+
+                $('#station-overlay-header h3').html('Tidal Station');
+
+                $('#location-stations').addClass('type-tidal');
+
+                $('#stations-spinner').fadeOut(250);
+
+                $('body').on('change', '#tidal_station', function () {
+                    $("#tidal-chart").tidalstationwidget("update", {station: $(this).val()})
+
+                    if ($(this).find('option:selected').length) {
+                        $('#station-overlay-header .station-name').html($(this).find('option:selected').text());
+                    }
+
+                    $('#station-overlay-header .station-id').html($(this).val());
+                });
+
+                $("#tidal_station").val(props.station).change();
+
+            }
+
         });
 
     } else {
@@ -512,11 +489,11 @@ Location.prototype.stationSelected = function (feature, event, type) {
         //$('#station-data-container').empty();
         //this.popup.hide();
     }
-    
-    $('#station-overlay-close').click(function() {
-      $('#location-stations').removeClass('overlay-on').removeClass('type-tidal');
+
+    $('#station-overlay-close').click(function () {
+        $('#location-stations').removeClass('overlay-on').removeClass('type-tidal');
     });
-    
+
 
     $('#close-wx-station').on('click', function () {
         $('#station-data-about').show();
@@ -563,6 +540,7 @@ Location.prototype.createGraphMaps = function (map) {
     self.updateTiledLayer(map, true, true);
 
 
+
 };
 
 
@@ -571,7 +549,7 @@ Location.prototype.createGraphMaps = function (map) {
 * Wires up all the crazy interactions and UI sliders on this page
 *
 */
-Location.prototype.wire = function () {
+Location.prototype.wire = function (map) {
     var self = this;
 
     var select = new ol.interaction.Select({
@@ -677,15 +655,15 @@ Location.prototype.wire = function () {
         var id = $(this).attr('id').replace('var-', '');
         self.selectedVariable['temperature-map'] = id;
         if (self['temperature-map']) {
-            self.updateTiledLayer('temperature-map', false);
+            self.updateTiledLayer('temperature-map', false, false);
         }
 
 
         var legendFilename;
 
-        if (self.selectedVariable['temperature-map'] === 'tmax' ) {
+        if (self.selectedVariable['temperature-map'] === 'tmax') {
             legendFilename = 'summer_tmax';
-        } else if (self.selectedVariable['temperature-map'] === 'tmin' ) {
+        } else if (self.selectedVariable['temperature-map'] === 'tmin') {
             legendFilename = 'summer_tmin';
         } else {
             legendFilename = self.selectedVariable['temperature-map'];
@@ -711,7 +689,7 @@ Location.prototype.wire = function () {
         //}
         self.selectedVariable['precipitation-map'] = id;
         if (self['precipitation-map']) {
-            self.updateTiledLayer('precipitation-map', false);
+            self.updateTiledLayer('precipitation-map', false, false);
         }
 
         var legendFilename;
@@ -726,12 +704,14 @@ Location.prototype.wire = function () {
     $('#derived-data h4').on('click', function (e) {
         e.preventDefault();
 
+        console.log("clicked derived data");
+
         $('#derived-data .data-options').swap_classes($(this));
 
         var id = $(this).attr('id').replace('var-', '');
         self.selectedVariable['derived-map'] = id;
         if (self['derived-map']) {
-            self.updateTiledLayer('derived-map', false);
+            self.updateTiledLayer('derived-map', false, false);
         }
 
         var legendFilename;
@@ -743,19 +723,61 @@ Location.prototype.wire = function () {
 
     $('#precipitation-map-season .fs-dropdown-item').on('click', function (e) {
         self.selectedSeason = $(this).data().value;
-        self.updateTiledLayer('precipitation-map', true, false);
+
+
+        left_option_selected = $("#temperature-swipeImg .emissions-low .fs-dropdown-selected").text();
+        right_option_selected = $("#temperature-swipeImg .emissions-high .fs-dropdown-selected").text();
+
+        self.updateTiledLayer('precipitation-map', true, false, left_option_selected, right_option_selected);
     });
 
     $('#temperature-map-season .fs-dropdown-item').on('click', function (e) {
         self.selectedSeason = $(this).data().value;
-        if (self.selectedVariable['temperature-map'] === 'tmax' || self.selectedVariable['temperature-map'] === 'tmin'){
+        if (self.selectedVariable['temperature-map'] === 'tmax' || self.selectedVariable['temperature-map'] === 'tmin') {
             var legendFilename;
             legendFilename = self.selectedSeason + '_' + self.selectedVariable['temperature-map'];
             $('.location-map-legend').html('<img class="legend-image" src="resources/img/legends/' + legendFilename + '.png">');
         }
-
-        self.updateTiledLayer('temperature-map', true, false);
+        left_option_selected = $("#temperature-swipeImg .emissions-low .fs-dropdown-selected").text();
+        right_option_selected = $("#temperature-swipeImg .emissions-high .fs-dropdown-selected").text();
+        self.updateTiledLayer('temperature-map', true, false, left_option_selected, right_option_selected);
     });
+
+    $('#temperature-swipeImg .emissions-low .fs-dropdown-item').on('click', function (e) {
+        left_option_selected = this.innerHTML;
+        right_option_selected = $("#temperature-swipeImg .emissions-high .fs-dropdown-selected").text();
+        self.updateTiledLayer('temperature-map', true, false, left_option_selected, right_option_selected);
+    });
+    $('#temperature-swipeImg .emissions-high .fs-dropdown-item').on('click', function (e) {
+        left_option_selected = $("#temperature-swipeImg .emissions-low .fs-dropdown-selected").text();
+        right_option_selected = this.innerHTML;
+        self.updateTiledLayer('temperature-map', true, false, left_option_selected, right_option_selected);
+    });
+
+
+    $('#precipitation-swipeImg .emissions-low .fs-dropdown-item').on('click', function (e) {
+        left_option_selected = this.innerHTML;
+        right_option_selected = $("#precipitation-swipeImg .emissions-high .fs-dropdown-selected").text();
+        self.updateTiledLayer('precipitation-map', true, false, left_option_selected, right_option_selected);
+    });
+    $('#precipitation-swipeImg .emissions-high .fs-dropdown-item').on('click', function (e) {
+        left_option_selected = $("#precipitation-swipeImg .emissions-low .fs-dropdown-selected").text();
+        right_option_selected = this.innerHTML;
+        self.updateTiledLayer('precipitation-map', true, false, left_option_selected, right_option_selected);
+    });
+
+
+    $('#derived-swipeImg .emissions-low .fs-dropdown-item').on('click', function (e) {
+        left_option_selected = this.innerHTML;
+        right_option_selected = $("#derived-swipeImg .emissions-high .fs-dropdown-selected").text();
+        self.updateTiledLayer('derived-map', true, false, left_option_selected, right_option_selected);
+    });
+    $('#derived-swipeImg .emissions-high .fs-dropdown-item').on('click', function (e) {
+        left_option_selected = $("#derived-swipeImg .emissions-low .fs-dropdown-selected").text();
+        right_option_selected = this.innerHTML;
+        self.updateTiledLayer('derived-map', true, false, left_option_selected, right_option_selected);
+    });
+
 
 };
 
@@ -777,10 +799,41 @@ Location.prototype.updateSidebar = function (disable, id) {
 * replace / time reset tells us what sort of update this is – new layer or otherwise
 *
 */
-Location.prototype.updateTiledLayer = function (map, replace, timeReset) {
+Location.prototype.updateTiledLayer = function (map, replace, timeReset,left_option_selected,right_option_selected) {
 
+    if (map === 'temperature-map') {
+        if (!left_option_selected){
+            left_option_selected = $("#temperature-swipeImg .emissions-low .fs-dropdown-selected").text();
+        }
+        if (!right_option_selected){
+            right_option_selected = $("#temperature-swipeImg .emissions-high .fs-dropdown-selected").text();
+        }
+    }
 
+    if (map === 'precipitation-map') {
+        if (!left_option_selected){
+            left_option_selected = $("#precipitation-swipeImg .emissions-low .fs-dropdown-selected").text();
+        }
+        if (!right_option_selected){
+            right_option_selected = $("#precipitation-swipeImg .emissions-high .fs-dropdown-selected").text();
+        }
+    }
 
+    if (map === 'derived-map') {
+        if (!left_option_selected){
+            left_option_selected = $("#derived-swipeImg .emissions-low .fs-dropdown-selected").text();
+        }
+        if (!right_option_selected){
+            right_option_selected = $("#derived-swipeImg .emissions-high .fs-dropdown-selected").text();
+        }
+    }
+    //
+    // console.log(map);
+    // console.log(replace);
+    // console.log('left_option_selected');
+    // console.log(left_option_selected);
+    // console.log('right_option_selected');
+    // console.log(right_option_selected);
 
     if (replace && timeReset) {
         this.setSlider(map);
@@ -807,14 +860,36 @@ Location.prototype.updateTiledLayer = function (map, replace, timeReset) {
         $('#precipitation-map-season').hide();
     }
 
-    var src, src85;
-    if (histYears.indexOf(this.activeYear) !== -1) {
-        src = this.activeYear + season + this.tilesHistMapping[map][this.selectedVariable[map]];
-        src85 = null;
-    } else {
-        src = this.activeYear + season + this.tilesMapping[map][this.selectedVariable[map]];
-        src85 = this.activeYear + season + this.tilesMapping85[map][this.selectedVariable[map]];
-    }
+    var layer_left, layer_right;
+    //
+    // if (histYears.indexOf(this.activeYear) !== -1) {
+    //
+    //     layer_left = this.activeYear + season + this.tilesHistMapping[map][this.selectedVariable[map]];
+    //     layer_right = null;
+    // } else {
+
+        if (left_option_selected === 'lower_historical' || left_option_selected === 'HISTORICAL') {
+            layer_left = 'avg' + season + this.tilesHistMapping[map][this.selectedVariable[map]];
+        } else {
+            layer_left = this.activeYear + season + this.tilesMapping[map][this.selectedVariable[map]];
+        }
+
+
+        if (right_option_selected === 'higher_historical' || right_option_selected === 'HISTORICAL') {
+            layer_right = 'avg' + season + this.tilesHistMapping[map][this.selectedVariable[map]];
+        } else {
+            layer_right = this.activeYear + season + this.tilesMapping85[map][this.selectedVariable[map]];
+        }
+
+    // }
+    //
+    // console.log('layer_left');
+    // console.log(layer_left);
+    // console.log('layer_right');
+    // console.log(layer_right);
+    // console.log('selectedVar');
+    // console.log(this.tilesMapping[map][this.selectedVariable[map]]);
+    // console.log();
 
     if (replace) {
         this.removeOldTiles(map);
@@ -825,7 +900,7 @@ Location.prototype.updateTiledLayer = function (map, replace, timeReset) {
     this[layer] = new ol.layer.Tile({
         source: new ol.source.XYZ({
             urls: [
-                'https://s3.amazonaws.com/climate-explorer-bucket/tiles/' + src + '/{z}/{x}/{-y}.png'
+                'https://s3.amazonaws.com/climate-explorer-bucket/tiles/' + layer_left + '/{z}/{x}/{-y}.png'
             ],
             extent: extent,
             minZoom: 0,
@@ -838,13 +913,13 @@ Location.prototype.updateTiledLayer = function (map, replace, timeReset) {
     this[map].addLayer(this[layer]);
 
     var layer85;
-    if (src85) {
+    if (layer_right) {
         //rcp85
         layer85 = map + 'TileLayer85';
         this[layer85] = new ol.layer.Tile({
             source: new ol.source.XYZ({
                 urls: [
-                    'https://s3.amazonaws.com/climate-explorer-bucket/tiles/' + src85 + '/{z}/{x}/{-y}.png'
+                    'https://s3.amazonaws.com/climate-explorer-bucket/tiles/' + layer_right + '/{z}/{x}/{-y}.png'
                 ],
                 extent: extent,
                 minZoom: 0,
@@ -868,19 +943,69 @@ Location.prototype.updateTiledLayer = function (map, replace, timeReset) {
     this.nameLayer.set('layer_id', 'name_layer');
     this[map].addLayer(this.nameLayer);
 
-    this[layer].setZIndex(0);
-    if (src85) {
-        this[layer85].setZIndex(0);
+     this[layer].setZIndex(1);
+     if (layer_right) {
+         this[layer85].setZIndex(1);
+     }
+    this.nameLayer.setZIndex(10);
+
+
+
+    if (replace && timeReset) {
+
+
+        $("#" + map + "SliderDiv").draggable({
+            axis: "x",
+            containment: "#" + map + "-container",
+            scroll: false,
+
+            drag: function (event, ui) {
+                var pos,swipeVal;
+                pos = ui.helper.offset();
+                swipeVal = (pos.left - $("#" + map + "-container").offset().left);
+                self[layer].dispatchEvent('change');
+                $(".emissions-low").fadeOut();
+                $(".emissions-high").fadeOut();
+                // self.map.render();
+            },
+            stop: function (event, ui) {
+                pos = ui.helper.offset();
+                swipeVal = (pos.left - $("#" + map + "-container").offset().left);
+                self[layer].dispatchEvent('change');
+                $(".emissions-low").fadeIn();
+                $(".emissions-high").fadeIn();
+            }
+        });
+
+        this[layer85].on('precompose', function (event) {
+            var ctx = event.context;
+            var wrapper = $("#" + map + "-container").width();
+            var pos = $("#" + map + "SliderDiv").offset(); //ui.helper.offset();
+            var swipeVal = (pos.left - $("#" + map + "-container").offset().left);
+            var screenPercent = swipeVal / wrapper;
+            var width = ctx.canvas.width * screenPercent;
+            ctx.save();
+            ctx.beginPath();
+            ctx.rect(width, 0, ctx.canvas.width - width, ctx.canvas.height);
+            ctx.clip();
+        });
+
+
+        this[layer85].on('postcompose', function (event) {
+            var ctx = event.context;
+            ctx.restore();
+        });
+
     }
-    this.nameLayer.setZIndex(6);
 
-
-    if (src85) {
-        $("#" + map + "SliderDiv").show();
+    // if (layer_right) {
+    //     $("#" + map + "SliderDiv").show();
         this.setSwipeMap(map);
-    } else {
-        $("#" + map + "SliderDiv").hide();
-    }
+    // } else {
+    //     $("#" + map + "SliderDiv").hide();
+    // }
+
+
 };
 
 
@@ -915,6 +1040,7 @@ Location.prototype.removeOldTiles = function (map) {
 * Map ( id ) required, to assign swiper and eventing to correct map
 *
 */
+
 
 
 Location.prototype.setSlider = function (map) {
@@ -959,11 +1085,20 @@ Location.prototype.setSwipeMap = function (map) {
     var layer = map + 'TileLayer';
     var layer85 = map + 'TileLayer85';
 
+    // console.log('layer');
+    // console.log(layer);
+    // console.log('layer85');
+    // console.log(layer85);
+
+
+
     $("#" + map + "SliderDiv").draggable({
         axis: "x",
         containment: "#" + map + "-container",
         scroll: false,
+
         drag: function (event, ui) {
+            var pos,swipeVal;
             pos = ui.helper.offset();
             swipeVal = (pos.left - $("#" + map + "-container").offset().left);
             self[layer].dispatchEvent('change');
@@ -983,10 +1118,8 @@ Location.prototype.setSwipeMap = function (map) {
     self[layer85].on('precompose', function (event) {
         var ctx = event.context;
         var wrapper = $("#" + map + "-container").width();
-        if (swipeVal === null) {
-            pos = $("#" + map + "SliderDiv").offset(); //ui.helper.offset();
-            swipeVal = (pos.left - $("#" + map + "-container").offset().left);
-        }
+        var pos = $("#" + map + "SliderDiv").offset(); //ui.helper.offset();
+        var swipeVal = (pos.left - $("#" + map + "-container").offset().left);
         var screenPercent = swipeVal / wrapper;
         var width = ctx.canvas.width * screenPercent;
         ctx.save();
@@ -999,6 +1132,8 @@ Location.prototype.setSwipeMap = function (map) {
         var ctx = event.context;
         ctx.restore();
     });
+
+
 };
 
 

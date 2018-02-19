@@ -56,14 +56,10 @@ if (!isValidLongitude($lon)) {
 
     ?>
 
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"
-            integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"
-            integrity="sha256-KM512VNnjElC30ehFwehXjx1YCHPiQkOPmqnrWtpccM=" crossorigin="anonymous"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.1/Chart.bundle.min.js"
-            integrity="sha256-N4u5BjTLNwmGul6RgLoESPNqDFVUibVuOYhP4gJgrew=" crossorigin="anonymous"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/lodash.js/4.17.4/lodash.min.js"
-            integrity="sha256-8E6QUcFg1KTnpEU8TFGhpTGHw5fJqB9vCms3OhAYLqw=" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js" integrity="sha256-KM512VNnjElC30ehFwehXjx1YCHPiQkOPmqnrWtpccM=" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.1/Chart.bundle.min.js" integrity="sha256-N4u5BjTLNwmGul6RgLoESPNqDFVUibVuOYhP4gJgrew=" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/lodash.js/4.17.4/lodash.min.js" integrity="sha256-8E6QUcFg1KTnpEU8TFGhpTGHw5fJqB9vCms3OhAYLqw=" crossorigin="anonymous"></script>
 
     <script src="resources/item/jquery.fl-item.min.js"></script>
     <link rel="stylesheet" href="resources/item/fl-item.css"/>
@@ -79,16 +75,14 @@ if (!isValidLongitude($lon)) {
         <?php include_once('template/share.php'); ?>
 
         <div id="location-search">
-            <input type="text" class="autocomplete location-mapper"
-                   placeholder="Search another City, County or Zip code">
+            <input type="text" class="autocomplete location-mapper" placeholder="Search another City, County or Zip code">
         </div>
 
         <section id="location-splash" class="page-splash">
             <div class="splash-text">
                 <h1><?php echo $city ?></h1>
                 <h3><?php echo $county ?></h3>
-                <p>Graphs and maps below show observed and modeled data for the county of your selected location. Adjust
-                    the displays to focus on times or regions of interest.</p>
+                <p>Graphs and maps below show observed and modeled data for the county of your selected location. Adjust the displays to focus on times or regions of interest.</p>
             </div>
 
             <div id="page-nav">
@@ -111,15 +105,38 @@ if (!isValidLongitude($lon)) {
                 <a href="javascript:void(0);" id="download-dismiss-button" class="icon icon-close"></a>
                 <p>Use the following links to download this graph's data:</p>
                 <ul>
-                    <li><a href="javascript:void(0);" id="download_hist_obs_data"
-                           class='button display-block border-white hover-bg-white'><span
-                                    class='icon icon-arrow-down'></span>Observed Data</a></li>
-                    <li id="download_hist_mod_data_li"><a href="javascript:void(0);" id="download_hist_mod_data"
-                                                          class='button display-block border-white hover-bg-white'><span
-                                    class='icon icon-arrow-down'></span>Historical Modeled Data</a></li>
-                    <li><a href="javascript:void(0);" id="download_proj_mod_data"
-                           class='button display-block border-white hover-bg-white'><span
-                                    class='icon icon-arrow-down'></span>Projected Modeled Data</a></li>
+                    <li><a href="javascript:void(0);" id="download_hist_obs_data" class='button display-block border-white hover-bg-white'><span class='icon icon-arrow-down'></span>Observed Data</a></li>
+                    <li><a href="javascript:void(0);" id="download_hist_mod_data" class='button display-block border-white hover-bg-white'><span class='icon icon-arrow-down'></span>Historical Modeled Data</a></li>
+                    <li><a href="javascript:void(0);" id="download_proj_mod_data" class='button display-block border-white hover-bg-white'><span class='icon icon-arrow-down'></span>Projected Modeled Data</a></li>
+                </ul>
+
+            </div>
+        </div>
+
+
+        <div id="download-precip-panel" class="download-panel overlay">
+            <div class="download-inner">
+                <a href="javascript:void(0);" id="download-precip-dismiss-button" class="icon icon-close"></a>
+                <p>Use the following links to download this graph's data:</p>
+                <ul>
+                    <li><a href="javascript:void(0);" id="download_precip_hist_obs_data" class='button display-block border-white hover-bg-white'><span class='icon icon-arrow-down'></span>Observed Data</a></li>
+                    <li><a href="javascript:void(0);" id="download_precip_hist_mod_data" class='button display-block border-white hover-bg-white'><span class='icon icon-arrow-down'></span>Historical Modeled Data</a></li>
+                    <li><a href="javascript:void(0);" id="download_precip_proj_mod_data" class='button display-block border-white hover-bg-white'><span class='icon icon-arrow-down'></span>Projected Modeled Data</a></li>
+                </ul>
+
+            </div>
+        </div>
+
+
+
+        <div id="download-derived-panel" class="download-panel overlay">
+            <div class="download-inner">
+                <a href="javascript:void(0);" id="download-derived-dismiss-button" class="icon icon-close"></a>
+                <p>Use the following links to download this graph's data:</p>
+                <ul>
+                    <li><a href="javascript:void(0);" id="download_derived_hist_obs_data" class='button display-block border-white hover-bg-white'><span class='icon icon-arrow-down'></span>Observed Data</a></li>
+                    <li><a href="javascript:void(0);" id="download_derived_hist_mod_data" class='button display-block border-white hover-bg-white'><span class='icon icon-arrow-down'></span>Historical Modeled Data</a></li>
+                    <li><a href="javascript:void(0);" id="download_derived_proj_mod_data" class='button display-block border-white hover-bg-white'><span class='icon icon-arrow-down'></span>Projected Modeled Data</a></li>
                 </ul>
 
             </div>
@@ -129,16 +146,13 @@ if (!isValidLongitude($lon)) {
             <div class="location-data-section">
                 <div id="temperature-data" class="data-list">
 
-                    <span class="trigger data-options-trigger"><span class="hamburger"><span
-                                    class="bar"></span></span><span class="text">View</span></span>
+                    <span class="trigger data-options-trigger"><span class="hamburger"><span class="bar"></span></span><span class="text">View</span></span>
 
                     <h3 class="accent-color"><span class="icon icon-temperature"></span>Temperature</h3>
 
                     <ul class="data-options">
                         <li class="active accent-border">
-                            <h4 id="var-tmax"><a href="<?php $current_domain ?>#" class="text">Average Daily Max Temp
-                                    (°F)</a><a href="<?php $current_domain ?>#detail-tmax"
-                                               class="icon icon-help nav-detail-link"></a></h4>
+                            <h4 id="var-tmax"><a href="<?php $current_domain ?>#" class="text">Ave Daily Max Temp (°F)</a><a href="<?php $current_domain ?>#detail-tmax" class="icon icon-help nav-detail-link"></a></h4>
                             <ul class="location-resolution">
                                 <li class="active accent-border"><a class="accent-color">Annual</a></li>
                                 <li class="seasonal-monthly"><a>Monthly</a></li>
@@ -147,9 +161,7 @@ if (!isValidLongitude($lon)) {
                         </li>
 
                         <li class="">
-                            <h4 id="var-tmin"><a href="<?php $current_domain ?>#" class="text">Average Daily Min Temp
-                                    (°F)</a><a href="<?php $current_domain ?>#detail-tasmin"
-                                               class="icon icon-help nav-detail-link"></a></h4>
+                            <h4 id="var-tmin"><a href="<?php $current_domain ?>#" class="text">Ave Daily Min Temp (°F)</a><a href="<?php $current_domain ?>#detail-tasmin" class="icon icon-help nav-detail-link"></a></h4>
                             <ul class="location-resolution">
                                 <li><a>Annual</a></li>
                                 <li class="seasonal-monthly"><a>Monthly</a></li>
@@ -157,81 +169,57 @@ if (!isValidLongitude($lon)) {
                             </ul>
                         </li>
 
-
                         <li class="">
-                            <h4 id="var-days_tmax_gt_90f"><a href="<?php $current_domain ?>#" class="text">Days per year
-                                    with max above 90°F</a><a href="<?php $current_domain ?>#detail-days_tmax_gt_90f"
-                                                              class="icon icon-help nav-detail-link"></a></h4>
-                            <ul class="location-resolution">
-                                <li><a>Annual</a></li>
-                            </ul>
-                        </li>
-
-
-                        <li class="">
-                            <h4 id="var-days_tmax_gt_95f"><a href="<?php $current_domain ?>#" class="text">Days per year
-                                    with max above 95°F</a><a href="<?php $current_domain ?>#detail-days_tmax_gt_95f"
-                                                              class="icon icon-help nav-detail-link"></a></h4>
+                            <h4 id="var-days_tmax_gt_90f"><a href="<?php $current_domain ?>#" class="text">Days w/ max > 90°F</a><a href="<?php $current_domain ?>#detail-days_tmax_gt_90f" class="icon icon-help nav-detail-link"></a></h4>
                             <ul class="location-resolution">
                                 <li><a>Annual</a></li>
                             </ul>
                         </li>
 
                         <li class="">
-                            <h4 id="var-days_tmax_gt_100f"><a href="<?php $current_domain ?>#" class="text">Days per
-                                    year with max above 100°F</a><a
-                                        href="<?php $current_domain ?>#detail-days_tmax_gt_100f"
-                                        class="icon icon-help nav-detail-link"></a></h4>
+                            <h4 id="var-days_tmax_gt_95f"><a href="<?php $current_domain ?>#" class="text">Days w/ max > 95°F</a><a href="<?php $current_domain ?>#detail-days_tmax_gt_95f" class="icon icon-help nav-detail-link"></a></h4>
                             <ul class="location-resolution">
                                 <li><a>Annual</a></li>
                             </ul>
                         </li>
 
                         <li class="">
-                            <h4 id="var-days_tmax_gt_105f"><a href="<?php $current_domain ?>#" class="text">Days per
-                                    year with max above 105°F</a><a
-                                        href="<?php $current_domain ?>#detail-days_tmax_gt_105f"
-                                        class="icon icon-help nav-detail-link"></a></h4>
-                            <ul class="location-resolution">
-                                <li><a>Annual</a></li>
-                            </ul>
-                        </li>
-
-
-                        <li class="">
-                            <h4 id="var-days_tmax_lt_32f"><a href="<?php $current_domain ?>#" class="text">Days per year
-                                    with max below 32°F (Icing days)</a><a
-                                        href="<?php $current_domain ?>#detail-days_tmax_lt_32f"
-                                        class="icon icon-help nav-detail-link"></a></h4>
+                            <h4 id="var-days_tmax_gt_100f"><a href="<?php $current_domain ?>#" class="text">Days w/ max > 100°F</a><a href="<?php $current_domain ?>#detail-days_tmax_gt_100f" class="icon icon-help nav-detail-link"></a></h4>
                             <ul class="location-resolution">
                                 <li><a>Annual</a></li>
                             </ul>
                         </li>
 
                         <li class="">
-                            <h4 id="var-days_tmin_lt_32f"><a href="<?php $current_domain ?>#" class="text">Days per year
-                                    with min below 32°F (frost days)</a><a
-                                        href="<?php $current_domain ?>#detail-days_tmin_blw_0"
-                                        class="icon icon-help nav-detail-link"></a></h4>
+                            <h4 id="var-days_tmax_gt_105f"><a href="<?php $current_domain ?>#" class="text">Days w/ max > 105°F</a><a href="<?php $current_domain ?>#detail-days_tmax_gt_105f" class="icon icon-help nav-detail-link"></a></h4>
+                            <ul class="location-resolution">
+                                <li><a>Annual</a></li>
+                            </ul>
+                        </li>
+
+                        <li class="">
+                            <h4 id="var-days_tmax_lt_32f"><a href="<?php $current_domain ?>#" class="text">Days w/ max < 32°F</a><a href="<?php $current_domain ?>#detail-days_tmax_lt_32f" class="icon icon-help nav-detail-link"></a></h4>
+                            <ul class="location-resolution">
+                                <li><a>Annual</a></li>
+                            </ul>
+                        </li>
+
+                        <li class="">
+                            <h4 id="var-days_tmin_lt_32f"><a href="<?php $current_domain ?>#" class="text">Days w/ min < 32°F</a><a href="<?php $current_domain ?>#detail-days_tmin_blw_0" class="icon icon-help nav-detail-link"></a></h4>
                             <ul>
                                 <li><a>Annual</a></li>
                             </ul>
                         </li>
 
-
                         <li class="">
-                            <h4 id="var-days_tmin_gt_80f"><a href="<?php $current_domain ?>#" class="text">Days per year
-                                    with min above 80°F</a><a href="<?php $current_domain ?>#detail-days_tmin_gt_80f"
-                                                              class="icon icon-help nav-detail-link"></a></h4>
+                            <h4 id="var-days_tmin_gt_80f"><a href="<?php $current_domain ?>#" class="text">Days w/ min > 32°F</a><a href="<?php $current_domain ?>#detail-days_tmin_gt_80f" class="icon icon-help nav-detail-link"></a></h4>
                             <ul class="location-resolution">
                                 <li><a>Annual</a></li>
                             </ul>
                         </li>
 
                         <li class="">
-                            <h4 id="var-days_tmin_gt_90f"><a href="<?php $current_domain ?>#" class="text">Days per year
-                                    with min above 90°F</a><a href="<?php $current_domain ?>#detail-days_tmin_gt_90f"
-                                                              class="icon icon-help nav-detail-link"></a></h4>
+                            <h4 id="var-days_tmin_gt_90f"><a href="<?php $current_domain ?>#" class="text">Days w/ min > 90°F</a><a href="<?php $current_domain ?>#detail-days_tmin_gt_90f" class="icon icon-help nav-detail-link"></a></h4>
                             <ul class="location-resolution">
                                 <li><a>Annual</a></li>
                             </ul>
@@ -263,8 +251,7 @@ if (!isValidLongitude($lon)) {
                         </div>
                         <div class="row">
                             <label for="variable">Variable</label>
-                            <select id="variable" class="u-full-width">
-                            </select>
+                            <select id="variable" class="u-full-width"></select>
                         </div>
                         <div class="row">
                             <div class="six columns">
@@ -327,20 +314,14 @@ if (!isValidLongitude($lon)) {
                         <div id="temperature-chart" class="data-accordion-tab data-chart accent-background">
                             <header>
                                 <h4>
-                                    <span class="icon icon-emission-scenario"></span>
-                                    <span class="text">
+                                    <span class="icon icon-emission-scenario"></span> <span class="text">
                                 Chart<span class="full-title">: <?php echo $county ?></span>
-                                <span class="source" id="temp-chart-name">Average Daily Max Temp (°F)</span>
+                                <span class="source" id="temp-chart-name">Ave Daily Max Temp (°F)</span>
                               </span>
                                 </h4>
 
                                 <div class="data-accordion-actions">
-                                    <a href="javascript:void(0);" class="how-to-read"><span
-                                                class="icon icon-help"></span>How to read this</a>
-                                    <a href="javascript:void(0);" id="temp-download-image" class="download-image"><span
-                                                class="icon icon-download-image"></span>Image</a>
-                                    <a href="javascript:void(0);" id="temp-download-data" class="download-data"><span
-                                                class="icon icon-download-chart"></span>Data</a>
+                                    <a href="javascript:void(0);" class="how-to-read"><span class="icon icon-help"></span>How to read this</a> <a href="javascript:void(0);" id="temp-download-image" class="download-image"><span class="icon icon-download-image"></span>Image</a> <a href="javascript:void(0);" id="temp-download-data" class="download-data"><span class="icon icon-download-chart"></span>Data</a>
                                 </div>
                             </header>
 
@@ -378,8 +359,7 @@ if (!isValidLongitude($lon)) {
                                 <div class="range">
                                     <div class="chart-range" id="slider-range" data-start="2010" data-end="2100"></div>
                                     <div class="ui-slider-label range-label min" id="temp-range-low">1950</div>
-                                    <div class="ui-slider-label range-label mid" id="temp-range-mid"
-                                         style="display:none">30 Years Centered in 2050
+                                    <div class="ui-slider-label range-label mid" id="temp-range-mid" style="display:none">30 Years Centered in 2050
                                     </div>
                                     <div class="ui-slider-label range-label max" id="temp-range-high">2100</div>
                                 </div>
@@ -389,10 +369,9 @@ if (!isValidLongitude($lon)) {
                         <div id="temperature-map-container" class="data-accordion-tab data-map accent-background">
                             <header>
                                 <h4 class="accent-color">
-                                    <span class="icon icon-district"></span>
-                                    <span class="text">
+                                    <span class="icon icon-district"></span> <span class="text">
                                         Map<span class="full-title">: <?php echo $county ?></span>
-                                        <span class="source" id="temp-map-name">Average Daily Max Temp</span>
+                                        <span class="source" id="temp-map-name">Ave Daily Max Temp (°F)</span>
                                       </span>
                                 </h4>
 
@@ -414,17 +393,40 @@ if (!isValidLongitude($lon)) {
                             <div class="data-accordion-content map">
                                 <div class="moveable" id="temperature-mapSliderDiv">
                                     <div id="temperature-swipeImg" class="handle">
-                                        <div class="emissions-low">Lower Emissions</div>
-                                        <div class="emissions-high">Higher Emissions</div>
+                                        <div class="emissions-low">
+
+                                            <select class="dropdown" id="le-options" style="width:125px">
+                                                <option value="lower_historical">HISTORICAL</option>
+
+                                                <option value="lower">LOWER EMISSIONS</option>
+
+
+                                            </select>
+
+                                        </div>
+                                        <div class="emissions-high">
+
+                                            <select class="dropdown swipe-dropdown" id="he-options" style="width:125px">
+
+                                                <option value="higher">HIGHER EMISSIONS</option>
+                                                <option value="higher_historical">HISTORICAL</option>
+
+                                            </select>
+
+                                        </div>
+
+<!--                                        <div class="emissions-low">Lower Emissions</div>-->
+<!--                                        <div class="emissions-high">Higher Emissions</div>-->
                                     </div>
+
+
                                 </div>
 
                                 <div id="temperature-map" class="map-element"></div>
 
                                 <div class="year" id="temperature-map-slider-container">
                                     <div class="year-label year-min">1950</div>
-                                    <div class="" id="temperature-map-time-slider" data-min="1950" data-max="2090"
-                                         data-value="2010"></div>
+                                    <div class="" id="temperature-map-time-slider" data-min="1950" data-max="2090" data-value="2010"></div>
                                     <div class="year-label year-max">2090</div>
                                 </div>
 
@@ -435,8 +437,7 @@ if (!isValidLongitude($lon)) {
                                     </div>
                                 </div>
 
-                                <a href="variables.php?id=tasmax"
-                                   class="full-map-btn button bg-white color-orange arrow-right">View full map</a>
+                                <a href="variables.php?id=tmax" class="full-map-btn button bg-white color-orange arrow-right">View full map</a>
                             </div>
                         </div>
                     </div>
@@ -449,16 +450,13 @@ if (!isValidLongitude($lon)) {
         <section id="location-precipitation" class="location-data-section-wrap">
             <div class="location-data-section">
                 <div id="precipitation-data" class="data-list">
-                    <span class="trigger data-options-trigger"><span class="hamburger"><span
-                                    class="bar"></span></span><span class="text">View</span></span>
+                    <span class="trigger data-options-trigger"><span class="hamburger"><span class="bar"></span></span><span class="text">View</span></span>
 
                     <h3 class="accent-color"><span class="icon icon-precipitation"></span>Precipitation</h3>
 
                     <ul class="data-options">
                         <li class="active accent-border">
-                            <h4 id="var-pcpn"><a href="<?php $current_domain ?>#" class="text">Total precipitation</a><a
-                                        href="<?php $current_domain ?>#detail-pr"
-                                        class="icon icon-help nav-detail-link"></a></h4>
+                            <h4 id="var-pcpn"><a href="<?php $current_domain ?>#" class="text">Total precip</a><a href="<?php $current_domain ?>#detail-pr" class="icon icon-help nav-detail-link"></a></h4>
                             <ul class="location-resolution">
                                 <li class="active accent-border"><a class="accent-color">Annual</a></li>
                                 <li class="seasonal-monthly"><a>Monthly</a></li>
@@ -467,40 +465,29 @@ if (!isValidLongitude($lon)) {
                         </li>
 
                         <li class="">
-                            <h4 id="var-days_pcpn_gt_1in"><a href="<?php $current_domain ?>#" class="text">Days per year
-                                    with more than 1 inch precip</a><a
-                                        href="<?php $current_domain ?>#detail-days_pcpn_gt_1in"
-                                        class="icon icon-help nav-detail-link"></a></h4>
-                            <ul class="location-resolution">
-                                <li><a>Annual</a></li>
-                            </ul>
-                        </li>
-
-
-                        <li class="">
-                            <h4 id="var-days_pcpn_gt_2in"><a href="<?php $current_domain ?>#" class="text">Days per year
-                                    with more than 2 inches precip</a><a
-                                        href="<?php $current_domain ?>#detail-days_pcpn_gt_2in"
-                                        class="icon icon-help nav-detail-link"></a></h4>
+                            <h4 id="var-days_pcpn_gt_1in"><a href="<?php $current_domain ?>#" class="text">Days w/ > 1 in</a><a href="<?php $current_domain ?>#detail-days_pcpn_gt_1in" class="icon icon-help nav-detail-link"></a></h4>
                             <ul class="location-resolution">
                                 <li><a>Annual</a></li>
                             </ul>
                         </li>
 
                         <li class="">
-                            <h4 id="var-days_pcpn_gt_3in"><a href="<?php $current_domain ?>#" class="text">Days per year
-                                    with more than 3 inches precip</a><a
-                                        href="<?php $current_domain ?>#detail-days_pcpn_gt_3in"
-                                        class="icon icon-help nav-detail-link"></a></h4>
+                            <h4 id="var-days_pcpn_gt_2in"><a href="<?php $current_domain ?>#" class="text">Days w/ > 2 in</a><a href="<?php $current_domain ?>#detail-days_pcpn_gt_2in" class="icon icon-help nav-detail-link"></a></h4>
                             <ul class="location-resolution">
                                 <li><a>Annual</a></li>
                             </ul>
                         </li>
 
                         <li class="">
-                            <h4 id="var-days_pcpn_lt_0.01in"><a href="<?php $current_domain ?>#" class="text">Dry Days
-                                    (days/period)</a><a href="<?php $current_domain ?>#detail-days_pcpn_lt_0.01in"
-                                                        class="icon icon-help nav-detail-link"></a></h4>
+                            <h4 id="var-days_pcpn_gt_3in"><a href="<?php $current_domain ?>#" class="text">Days w/ > 3 in</a><a href="<?php $current_domain ?>#detail-days_pcpn_gt_3in" class="icon icon-help nav-detail-link"></a></h4>
+                            <ul class="location-resolution">
+                                <li><a>Annual</a></li>
+                            </ul>
+                        </li>
+
+                        <li class="">
+                            <h4 id="var-days_dry_days"><a href="<?php $current_domain ?>#" class="text">Dry Days</a><a href="<?php $current_domain ?>#detail-days_dry_days" class="icon
+                            icon-help nav-detail-link"></a></h4>
                             <ul class="location-resolution">
                                 <li><a>Annual</a></li>
                             </ul>
@@ -534,12 +521,12 @@ if (!isValidLongitude($lon)) {
                         <div class="row">
                             <label for="precip-variable">Variable</label>
                             <select id="precip-variable" class="u-full-width">
-                                <option value="pcpn" selected="selected">Total precipitation</option>
+                                <option value="pcpn" selected="selected">Total precip</option>
                                 <option value="days_pcpn_gt_1in">Days of Precipitation Above 1 Inch</option>
                                 <option value="days_pcpn_gt_2in">Days of Precipitation Above 1 Inch</option>
                                 <option value="days_pcpn_gt_3in">Days of Precipitation Above 1 Inch</option>
                                 <option value="days_pcpn_gt_4in">Days of Precipitation Above 1 Inch</option>
-                                <option value="days_pcpn_lt_0.01in">dry days (days)</option>
+                                <option value="days_dry_days">dry days (days)</option>
                             </select>
                         </div>
                         <div class="row">
@@ -600,36 +587,27 @@ if (!isValidLongitude($lon)) {
                         <div id="precipitation-chart" class="data-accordion-tab data-chart accent-background">
                             <header>
                                 <h4>
-                                    <span class="icon icon-emission-scenario"></span>
-                                    <span class="text">
+                                    <span class="icon icon-emission-scenario"></span> <span class="text">
                                 Chart<span class="full-title">: <?php echo $county ?></span>
-                                <span class="source" id="precip-chart-name">Total precipitation</span>
+                                <span class="source" id="precip-chart-name">Total precip</span>
                               </span>
                                 </h4>
                                 <div class="data-accordion-actions">
-                                    <a href="javascript:void(0);" class="how-to-read"><span
-                                                class="icon icon-help"></span>How to read this</a>
-                                    <a href="javascript:void(0);" id="download-image-precip"
-                                       class="download-image"><span class="icon icon-download-image"></span>Image</a>
-                                    <a href="javascript:void(0);" id="precip-download-data" class="download-data"><span
-                                                class="icon icon-download-chart"></span>Data</a>
+                                    <a href="javascript:void(0);" class="how-to-read"><span class="icon icon-help"></span>How to read this</a> <a href="javascript:void(0);" id="download-image-precip" class="download-image"><span class="icon icon-download-image"></span>Image</a> <a href="javascript:void(0);" id="precip-download-data" class="download-data"><span class="icon icon-download-chart"></span>Data</a>
                                 </div>
                             </header>
 
                             <div class="data-accordion-content chart">
                                 <div class="chart-wrap">
-                                    <div id="chart-234" class="chart-canvas" data-chart-ID="234"
-                                         style="width:100%"></div>
+                                    <div id="chart-234" class="chart-canvas" data-chart-ID="234" style="width:100%"></div>
                                     <div class="chart-legend" id="precip-chart">
                                         <div id="precip-historical-obs" class="legend-item legend-item-range">
                                             <div class="legend-item-line-container">
-                                                <div class="legend-item-line observed"
-                                                     id="precipover-baseline-block"></div>
+                                                <div class="legend-item-line observed" id="precipover-baseline-block"></div>
                                             </div>
                                             <span class="legend-item-line-label">Observations</span>
                                         </div>
-                                        <div id="precip-historical-range"
-                                             class="legend-item legend-item-range selected">
+                                        <div id="precip-historical-range" class="legend-item legend-item-range selected">
                                             <div class="legend-item-block selected" id="preciphistorical-block"></div>
                                             Historical (Modeled)
                                         </div>
@@ -651,11 +629,9 @@ if (!isValidLongitude($lon)) {
                                     </div>
                                 </div>
                                 <div class="range">
-                                    <div class="chart-range" id="precip-slider-range" data-start="2010"
-                                         data-end="2100"></div>
+                                    <div class="chart-range" id="precip-slider-range" data-start="2010" data-end="2100"></div>
                                     <div class="ui-slider-label range-label min" id="precip-range-low">1950</div>
-                                    <div class="ui-slider-label range-label mid" id="precip-range-mid"
-                                         style="display:none">30 Years Centered in 2050
+                                    <div class="ui-slider-label range-label mid" id="precip-range-mid" style="display:none">30 Years Centered in 2050
                                     </div>
                                     <div class="ui-slider-label range-label max" id="precip-range-high">2100</div>
                                 </div>
@@ -665,10 +641,9 @@ if (!isValidLongitude($lon)) {
                         <div id="precipitation-map-container" class="data-accordion-tab data-map accent-background">
                             <header>
                                 <h4 class="accent-color">
-                                    <span class="icon icon-district"></span>
-                                    <span class="text">
+                                    <span class="icon icon-district"></span> <span class="text">
                               Map<span class="full-title">: <?php echo $county ?></span>
-                              <span class="source" id="precip-map-name">Total precipitation</span>
+                              <span class="source" id="precip-map-name">Total precip</span>
                             </span>
                                 </h4>
 
@@ -682,9 +657,7 @@ if (!isValidLongitude($lon)) {
                                         </select>
                                     </div>
 
-
                                     <a href="#" class="how-to-read"><span class="icon icon-help"></span>How to read this</a>
-
 
                                 </div>
                             </header>
@@ -692,17 +665,38 @@ if (!isValidLongitude($lon)) {
                             <div class="data-accordion-content map">
                                 <div class="moveable" id="precipitation-mapSliderDiv">
                                     <div id="precipitation-swipeImg" class="handle">
-                                        <div class="emissions-low">Lower Emissions</div>
-                                        <div class="emissions-high">Higher Emissions</div>
+                                        <div class="emissions-low">
+
+                                            <select class="dropdown" id="le-options" style="width:125px">
+                                                <option value="lower_historical">HISTORICAL</option>
+
+                                                <option value="lower">LOWER EMISSIONS</option>
+
+
+                                            </select>
+
+                                        </div>
+                                        <div class="emissions-high">
+
+                                            <select class="dropdown swipe-dropdown" id="he-options" style="width:125px">
+
+                                                <option value="higher">HIGHER EMISSIONS</option>
+                                                <option value="higher_historical">HISTORICAL</option>
+
+                                            </select>
+
+                                        </div>
+
                                     </div>
+
+
                                 </div>
 
                                 <div id="precipitation-map" class="map-element"></div>
 
                                 <div class="year" id="precipitation-map-slider-container">
                                     <div class="year-label year-min">1950</div>
-                                    <div class="" id="precipitation-map-time-slider" data-min="1950" data-max="2090"
-                                         data-value="2010"></div>
+                                    <div class="" id="precipitation-map-time-slider" data-min="1950" data-max="2090" data-value="2010"></div>
                                     <div class="year-label year-max">2090</div>
                                 </div>
 
@@ -713,8 +707,7 @@ if (!isValidLongitude($lon)) {
                                     </div>
                                 </div>
 
-                                <a href="variables.php?id=pr"
-                                   class="full-map-btn button bg-white color-orange arrow-right">View full map</a>
+                                <a href="variables.php?id=pr" class="full-map-btn button bg-white color-orange arrow-right">View full map</a>
                             </div>
                         </div>
                     </div>
@@ -723,51 +716,39 @@ if (!isValidLongitude($lon)) {
         </section>
         <!-- end precip chart and map -->
 
-
         <!-- being derived chart and map -->
         <section id="location-derived" class="location-data-section-wrap">
             <div class="location-data-section">
                 <div id="derived-data" class="data-list">
 
-                    <span class="trigger data-options-trigger"><span class="hamburger"><span
-                                    class="bar"></span></span><span class="text">View</span></span>
+                    <span class="trigger data-options-trigger"><span class="hamburger"><span class="bar"></span></span><span class="text">View</span></span>
 
                     <h3 class="accent-color"><span class="icon icon-drought"></span>Other</h3>
 
                     <ul class="data-options">
                         <li class="active accent-border">
-                            <h4 id="var-hdd_65f"><a href="<?php $current_domain ?>#" class="text">Heating Degree Days
-                                    (°F-days)</a><a href="<?php $current_domain ?>#detail-heating_degree_day_18"
-                                                    class="icon icon-help nav-detail-link"></a></h4>
+                            <h4 id="var-hdd_65f"><a href="<?php $current_domain ?>#" class="text">Heating Degree Days (°F-days)</a><a href="<?php $current_domain ?>#detail-heating_degree_day_18" class="icon icon-help nav-detail-link"></a></h4>
                             <ul>
                                 <li class="active accent-border"><a class="accent-color">Annual</a></li>
                             </ul>
                         </li>
 
                         <li class="">
-                            <h4 id="var-cdd_65f"><a href="<?php $current_domain ?>#" class="text">Cooling Degree Days
-                                    (°F-days)</a><a href="<?php $current_domain ?>#detail-cooling_degree_day_18"
-                                                    class="icon icon-help nav-detail-link"></a></h4>
+                            <h4 id="var-cdd_65f"><a href="<?php $current_domain ?>#" class="text">Cooling Degree Days (°F-days)</a><a href="<?php $current_domain ?>#detail-cooling_degree_day_18" class="icon icon-help nav-detail-link"></a></h4>
                             <ul>
                                 <li><a>Annual</a></li>
                             </ul>
                         </li>
 
-
                         <li class="">
-                            <h4 id="var-gdd"><a href="<?php $current_domain ?>#" class="text">Growing Degree Days
-                                    (°F-days)</a><a href="<?php $current_domain ?>#detail-gdd"
-                                                    class="icon icon-help nav-detail-link"></a></h4>
+                            <h4 id="var-gdd"><a href="<?php $current_domain ?>#" class="text">Growing Degree Days (°F-days)</a><a href="<?php $current_domain ?>#detail-gdd" class="icon icon-help nav-detail-link"></a></h4>
                             <ul>
                                 <li><a>Annual</a></li>
                             </ul>
                         </li>
 
-
                         <li class="">
-                            <h4 id="var-gddmod"><a href="<?php $current_domain ?>#" class="text">Modified Growing Degree
-                                    Days (°F-days)</a><a href="<?php $current_domain ?>#detail-gddmod"
-                                                         class="icon icon-help nav-detail-link"></a></h4>
+                            <h4 id="var-gddmod"><a href="<?php $current_domain ?>#" class="text">Modified Growing Degree Days (°F-days)</a><a href="<?php $current_domain ?>#detail-gddmod" class="icon icon-help nav-detail-link"></a></h4>
                             <ul>
                                 <li><a>Annual</a></li>
                             </ul>
@@ -802,8 +783,8 @@ if (!isValidLongitude($lon)) {
                             <select id="derived-variable" class="u-full-width">
                                 <option value="hdd_65f" selected="selected">Heating Degree Days</option>
                                 <option value="cdd_65f">Cooling Degree Days</option>
-                                <option value="gdd">Growing Degree Days (°F-days)</option>
-                                <option value="gddmod">Modified Growing Degree Days (°F-days)</option>
+                                <option value="gdd">Growing Degree Days</option>
+                                <option value="gddmod">Mod. Growing Degree Days</option>
                             </select>
                         </div>
                         <div class="row">
@@ -865,37 +846,28 @@ if (!isValidLongitude($lon)) {
                         <div id="derived-chart" class="data-accordion-tab data-chart accent-background">
                             <header>
                                 <h4>
-                                    <span class="icon icon-emission-scenario"></span>
-                                    <span class="text">
+                                    <span class="icon icon-emission-scenario"></span> <span class="text">
                                 Chart<span class="full-title">: <?php echo $county ?></span>
                                 <span class="source" id="derived-chart-name">Heating Degree Days</span>
                               </span>
                                 </h4>
 
                                 <div class="data-accordion-actions">
-                                    <a href="javascript:void(0);" class="how-to-read"><span
-                                                class="icon icon-help"></span>How to read this</a>
-                                    <a href="javascript:void(0);" id="download-image-derived"
-                                       class="download-image"><span class="icon icon-download-image"></span>Image</a>
-                                    <a href="javascript:void(0);" id="derived-download-data" class="download-data"><span
-                                                class="icon icon-download-chart"></span>Data</a>
+                                    <a href="javascript:void(0);" class="how-to-read"><span class="icon icon-help"></span>How to read this</a> <a href="javascript:void(0);" id="download-image-derived" class="download-image"><span class="icon icon-download-image"></span>Image</a> <a href="javascript:void(0);" id="derived-download-data" class="download-data"><span class="icon icon-download-chart"></span>Data</a>
                                 </div>
                             </header>
 
                             <div class="data-accordion-content chart">
                                 <div class="chart-wrap">
-                                    <div id="chart-345" class="chart-canvas" data-chart-ID="345"
-                                         style="width:100%"></div>
+                                    <div id="chart-345" class="chart-canvas" data-chart-ID="345" style="width:100%"></div>
                                     <div class="chart-legend" id="derive-chart">
                                         <div id="derive-historical-obs" class="legend-item legend-item-range">
                                             <div class="legend-item-line-container">
-                                                <div class="legend-item-line observed"
-                                                     id="deriveunder-baseline-block"></div>
+                                                <div class="legend-item-line observed" id="deriveunder-baseline-block"></div>
                                             </div>
                                             <span class="legend-item-line-label">Observations</span>
                                         </div>
-                                        <div id="derive-historical-range"
-                                             class="legend-item legend-item-range selected">
+                                        <div id="derive-historical-range" class="legend-item legend-item-range selected">
                                             <div class="legend-item-block selected" id="derivehistorical-block"></div>
                                             Historical (Modeled)
                                         </div>
@@ -918,8 +890,7 @@ if (!isValidLongitude($lon)) {
                                 </div>
 
                                 <div class="range">
-                                    <div class="chart-range" id="derived-slider-range" data-start="2010"
-                                         data-end="2100"></div>
+                                    <div class="chart-range" id="derived-slider-range" data-start="2010" data-end="2100"></div>
                                     <div class="ui-slider-label range-label min" id="derived-temp-range-low">1950</div>
                                     <div class="ui-slider-label range-label max" id="derived-temp-range-high">2100</div>
                                 </div>
@@ -929,8 +900,7 @@ if (!isValidLongitude($lon)) {
                         <div id="derived-map-container" class="data-accordion-tab data-map accent-background">
                             <header>
                                 <h4 class="accent-color">
-                                    <span class="icon icon-district"></span>
-                                    <span class="text">
+                                    <span class="icon icon-district"></span> <span class="text">
                                 Map<span class="full-title">: <?php echo $county ?></span>
                                 <span class="source" id="derived-map-name">Heating Degree Days</span>
                               </span>
@@ -946,9 +916,7 @@ if (!isValidLongitude($lon)) {
                                         </select>
                                     </div>
 
-
                                     <a href="#" class="how-to-read"><span class="icon icon-help"></span>How to read this</a>
-
 
                                 </div>
                             </header>
@@ -956,8 +924,22 @@ if (!isValidLongitude($lon)) {
                             <div class="data-accordion-content map">
                                 <div class="moveable" id="derived-mapSliderDiv">
                                     <div id="derived-swipeImg" class="handle">
-                                        <div class="emissions-low">Lower Emissions</div>
-                                        <div class="emissions-high">Higher Emissions</div>
+                                        <div class="emissions-low">
+
+                                            <select class="dropdown" id="le-options" style="width:125px">
+                                                <option value="lower_historical">HISTORICAL</option>
+                                                <option value="lower">LOWER EMISSIONS</option>
+                                            </select>
+
+                                        </div>
+                                        <div class="emissions-high">
+
+                                            <select class="dropdown swipe-dropdown" id="he-options" style="width:125px">
+                                                <option value="higher">HIGHER EMISSIONS</option>
+                                                <option value="higher_historical">HISTORICAL</option>
+                                            </select>
+
+                                        </div>
                                     </div>
                                 </div>
 
@@ -965,8 +947,7 @@ if (!isValidLongitude($lon)) {
 
                                 <div class="year" id="derived-map-slider-container">
                                     <div class="year-label year-min">1950</div>
-                                    <div class="" id="derived-map-time-slider" data-min="1950" data-max="2090"
-                                         data-value="2010"></div>
+                                    <div class="" id="derived-map-time-slider" data-min="1950" data-max="2090" data-value="2010"></div>
                                     <div class="year-label year-max">2090</div>
                                 </div>
 
@@ -977,8 +958,7 @@ if (!isValidLongitude($lon)) {
                                     </div>
                                 </div>
 
-                                <a href="variables.php?id=hdd_65f"
-                                   class="full-map-btn button bg-white color-orange arrow-right">View full map</a>
+                                <a href="variables.php?id=hdd_65f" class="full-map-btn button bg-white color-orange arrow-right">View full map</a>
                             </div>
                         </div>
 
@@ -986,7 +966,6 @@ if (!isValidLongitude($lon)) {
                 </div>
             </div>
         </section>
-
 
         <!-- begin weather stations map -->
 
@@ -1001,10 +980,8 @@ if (!isValidLongitude($lon)) {
                 <div id="location-stations-about">
                     <h3 class="accent-color"><span class="icon icon-district"></span>Stations</h3>
 
-                    <p>Dots on the map show weather stations in the Global Historical Climatology Network-Daily (GHCN-D)
-                        database.</p>
-                    <p>Click any dot to view zoomable graphs of observed daily temperature and precipitation compared to
-                        1981-2010 Climate Normals.</p>
+                    <p>Dots on the map show weather stations in the Global Historical Climatology Network-Daily (GHCN-D) database.</p>
+                    <p>Click any dot to view zoomable graphs of observed daily temperature and precipitation compared to 1981-2010 Climate Normals.</p>
                     <p>Scroll or click and drag to adjust the graph display.</p>
                 </div>
 
@@ -1072,7 +1049,8 @@ if (!isValidLongitude($lon)) {
                             </div>
                         </div>
 
-                        <div id="station-no-data" class="station-overlay-column right">This station does not have thresholds available.</div>
+                        <div id="station-no-data" class="station-overlay-column right">This station does not have thresholds available.
+                        </div>
 
                         <div id="station-detail-data" class="station-overlay-column right">
 
@@ -1104,8 +1082,7 @@ if (!isValidLongitude($lon)) {
                                         <label for="window">Window:</label>
 
                                         <div class="field">
-                                            <input type="number" id="window" name="window" value="1">
-                                            <span class="append">days</span>
+                                            <input type="number" id="window" name="window" value="1"> <span class="append">days</span>
                                         </div>
                                     </div>
 
@@ -1113,8 +1090,7 @@ if (!isValidLongitude($lon)) {
                                         <label for="threshold">Threshold:</label>
 
                                         <div class="field">
-                                            <input type="number" name="threshold" id="threshold" value="1" step="0.1">
-                                            <span class="append" id="item_inches_or_f">°F</span>
+                                            <input type="number" name="threshold" id="threshold" value="1" step="0.1"> <span class="append" id="item_inches_or_f">°F</span>
                                         </div>
                                     </div>
                                 </div>
@@ -1175,10 +1151,8 @@ if (!isValidLongitude($lon)) {
             </div>
         </section>
 
-
     </div>
 </div>
-
 
 <?php include_once('template/footer.php'); ?>
 
@@ -1261,7 +1235,6 @@ if (!isValidLongitude($lon)) {
         $("#item-chart-container").item('update');
     });
 
-
 </script>
 <script src="/resources/tidal/tidalstationswidget.js"></script>
 <script>
@@ -1270,9 +1243,6 @@ if (!isValidLongitude($lon)) {
         data_url: '/resources/tidal/tidal_data.json' // defaults to tidal_data.json
     });
 </script>
-<script src="./resources/js/cwg/climate-widget-graph.js"></script>
-<script src="./resources/js/cwg/cwg.js"></script>
-
 
 </body>
 </html>

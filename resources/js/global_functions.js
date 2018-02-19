@@ -11,7 +11,7 @@
   }
   if (filename.toLowerCase().indexOf("case") >= 0) {
     name = getParameterByName('id');
-    $("#breadcrumb").html('<span class="level-2">Topic</span> <span class="level-1">'+name.split(',')[0].replace(/_/g, ' ')+'</span></span>');
+    $("#breadcrumb").html('<span class="level-2">station</span> <span class="level-1">'+name.split(',')[0].replace(/_/g, ' ')+'</span></span>');
   }*/
 
   function window_width(fraction) {
@@ -288,7 +288,7 @@
     $(document).nav_scroll();
 
     $(window).resize(function() {
-      if ($('body').hasClass('page-type-topic') || $('body').hasClass('page-type-location') || $('body').hasClass('page-type-text')) {
+      if ($('body').hasClass('page-type-location') || $('body').hasClass('page-type-text')) {
         new_viewport_height = $(window).height() - 40 - parseInt($('#viewport').css('margin-top'));
         $('#viewport').css('height', new_viewport_height + 'px');
       }
@@ -363,7 +363,7 @@
     // tabs
 
     //$('.nav-vars-tab').tabs();
-    //$('.nav-topics-tab').tabs();
+    //$('.nav-stations-tab').tabs();
 
     // keyboard actions
 
@@ -438,7 +438,8 @@
 
     window.fbAsyncInit = function() {
       FB.init({
-        appId      : '304370549903730',
+        appId      : '1515755258521649', // dev
+        // appId      : '304370549903730', // prod
         xfbml      : true,
         version    : 'v2.6'
       });
@@ -881,9 +882,11 @@
         equalize_left_header();
         accordion_width();
     });
-
-
-    $('.ui-slider-handle').draggable();
+    //
+    // removed - not necessary
+    // $('.ui-slider-handle').draggable({
+    //     axis: "x"
+    // });
     
     // ----------------
     //

@@ -10,30 +10,30 @@ $temp_content = array(
 
     array(
         'variable' => 'tmax',
-        'name' => 'Average Daily Max Temp (°F)',
-        'overlayname' => 'Average Daily Maximum Temperature',
+        'name' => 'Ave Daily Max Temp (°F)',
+        'overlayname' => 'Ave Daily Max Temp (°F)',
         'detail' => "<p>A day’s highest (maximum) temperature usually occurs in the afternoon. Averaging the daily high temperatures over any period results in a mean maximum temperature for that period.</p><p>Maximum temperature serves as one measure of comfort and safety for people and for the health of plants and animals. When maximum temperature exceeds particular thresholds, people can become ill and transportation and energy infrastructure may be stressed.</p>",
         'source' => 'Data Source: NOAA, 2016'
     ),
 
     array(
         'variable' => 'tmin',
-        'name' => 'Average Daily Min Temp (°F)',
-        'overlayname' => 'Average Daily Minimum Temperature',
+        'name' => 'Ave Daily Min Temp (°F)',
+        'overlayname' => 'Ave Daily Min Temp (°F)',
         'detail' => "<p>A day’s lowest (minimum) temperature usually occurs in the early morning, just before sunrise. Averaging the daily low temperatures for any period results in a mean minimum temperature for that period.</p><p>Periods of low temperature give plants, animals, and people a chance to recover from daytime heat. When minimum temperatures aren’t sufficiently cool, plant and animal responses can trigger ecosystem changes and increased demand for energy can stress energy infrastructure.</p>",
         'source' => 'Data Source: NOAA, 2016'
     ),
 
     array(
         'variable' => 'days_tmax_gt_90f',
-        'name' => 'Days per year with max above 90°F',
+        'name' => 'Days w/ max > 90°F',
         'overlayname' => 'Days per year with Maximum Temperature Above 90, 95, 100, or 105°F',
         'detail' => "<p>The total number of days per year with maximum temperature above various thresholds is an indicator of how often very hot conditions occur. Depending upon humidity, wind, and physical workload, people who work outdoors or don’t have access to air conditioning may feel very uncomfortable or experience heat stress or illness on very hot days.</p><p>Hot days also stress plants, animals, and human infrastructure such as roads, railroads, and electric lines. Increased demand for electricity to cool homes and buildings can place additional stress on energy.</p>",
         'source' => ''
     ),
     array(
         'variable' => 'days_tmax_gt_95f',
-        'name' => 'Days per year with max above 95°F',
+        'name' => 'Days w/ max > 95°F',
         'overlayname' => 'Days per year with Maximum Temperature Above 90, 95, 100, or 105°F',
         'detail' => "<p>The total number of days per year with maximum temperature above various thresholds is an indicator of how often very hot conditions occur. Depending upon humidity, wind, and physical workload, people who work outdoors or don’t have access to air conditioning may feel very uncomfortable or experience heat stress or illness on very hot days.</p><p>Hot days also stress plants, animals, and human infrastructure such as roads, railroads, and electric lines. Increased demand for electricity to cool homes and buildings can place additional stress on energy infrastructure.</p>",
         'source' => 'Data Source: NOAA, 2016'
@@ -41,42 +41,42 @@ $temp_content = array(
 
     array(
         'variable' => 'days_tmax_gt_100f',
-        'name' => 'Days per year with max above 100°F',
+        'name' => 'Days w/ max > 100°F',
         'overlayname' => 'Days per year with Maximum Temperature Above 90, 95, 100, or 105°F',
         'detail' => "<p>The total number of days per year with maximum temperature above various thresholds is an indicator of how often very hot conditions occur. Depending upon humidity, wind, and physical workload, people who work outdoors or don’t have access to air conditioning may feel very uncomfortable or experience heat stress or illness on very hot days.</p><p>Hot days also stress plants, animals, and human infrastructure such as roads, railroads, and electric lines. Increased demand for electricity to cool homes and buildings can place additional stress on energy infrastructure.</p>",
         'source' => ''
     ),
     array(
         'variable' => 'days_tmax_gt_105f',
-        'name' => 'Days per year with max above 105°F',
+        'name' => 'Days w/ max > 105°F',
         'overlayname' => 'Days per year with Maximum Temperature Above 90, 95, 100, or 105°F',
         'detail' => "<p>The total number of days per year with maximum temperature above various thresholds is an indicator of how often very hot conditions occur. Depending upon humidity, wind, and physical workload, people who work outdoors or don’t have access to air conditioning may feel very uncomfortable or experience heat stress or illness on very hot days.</p><p>Hot days also stress plants, animals, and human infrastructure such as roads, railroads, and electric lines. Increased demand for electricity to cool homes and buildings can place additional stress on energy infrastructure.</p>",
         'source' => ''
     ),
     array(
         'variable' => 'days_tmax_lt_32f',
-        'name' => 'Days per year with max below 32°F (icing days)',
+        'name' => 'Days w/ max < 32°F',
         'overlayname' => 'Days per year with Maximum Temperature below 32°F',
         'detail' => "<p>The total number of days per year when the highest temperature is less than 32°F (0°C) is an indicator of how often very cold days occur.</p><p>Days when the highest temperature doesn’t rise above the freezing point of water are called “icing days.” The annual number of icing days tells us how much rest plants get from growing; with too few icing days, some plants do not perceive a “reset” signal to begin budding or blooming in the spring. The annual number of icing days can also help predict if populations of insects, such as tree-killing bark beetles, will survive the winter or not.</p>",
         'source' => 'Data Source: NOAA, 2016'
     ),
     array(
         'variable' => 'days_tmin_lt_32f',
-        'name' => 'Days per year with min below 32°F (frost days)',
+        'name' => 'Days w/ min < 32°F',
         'overlayname' => 'Days per year with Minimum Temperature below 32°F',
         'detail' => "<p>The total number of days per year when the temperature dips below 32°F (0°C) is an indicator of how often cold days occur.</p><p>A decrease in the number of days temperature drops below freezing promotes earlier spring snowmelt and runoff, with important consequences for managing water resources. Below-freezing temperatures can cause driving hazards, aircraft icing, and damage to infrastructure, yet ski resorts and other winter recreation businesses depend on sufficiently cold days to maintain snowpack. Some plants require a cumulative number of days below freezing before they can begin budding or blooming in the spring.</p>",
         'source' => 'Data Source: NOAA, 2016'
     ),
     array(
         'variable' => 'days_tmin_gt_80f',
-        'name' => 'Days per year with min above 80°F',
+        'name' => 'Days w/ min > 80°F',
         'overlayname' => 'Days With Minimum Temperature above 80 or 90°F',
         'detail' => "<p>The total number of days per year when the lowest temperature doesn’t drop below a given threshold is an indicator of how often very warm nights occur.</p><p>When the lowest temperature of a 24-hour period doesn’t dip below 80 or 90°F, plants, animals, and people don’t have a chance to cool down. They can become stressed and susceptible to other negative health impacts. As the number of very warm nights increases, sensitive plants may not produce flowers or viable seeds.</p>",
         'source' => ''
     ),
     array(
         'variable' => 'days_tmin_gt_90f',
-        'name' => 'Days per year with min above 90°F',
+        'name' => 'Days w/ min > 90°F',
         'overlayname' => 'Days With Minimum Temperature above 80 or 90°F',
         'detail' => "<p>The total number of days per year when the lowest temperature doesn’t drop below a given threshold is an indicator of how often very warm nights occur.</p><p>When the lowest temperature of a 24-hour period doesn’t dip below 80 or 90°F, plants, animals, and people don’t have a chance to cool down. They can become stressed and susceptible to other negative health impacts. As the number of very warm nights increases, sensitive plants may not produce flowers or viable seeds.</p>",
         'source' => ''
@@ -88,35 +88,35 @@ $precip_content = array(
 
     array(
         'variable' => 'pcpn',
-        'name' => 'Total precipitation',
-        'overlayname' => 'Total Precipitation',
-        'detail' => "<p>Total precipitation over a year, season, or month indicates the average amount of water added to the environment over the indicated period.</p><p>Total precipitation is one indicator of how wet or dry a place may be at different times of the year. Comparing projected values for total precipitation over decades can indicate if climate models detect an overall trend toward wetter or drier conditions.</p>",
+        'name' => 'Total precip',
+        'overlayname' => 'Total precip',
+        'detail' => "<p>Total precip over a year, season, or month indicates the average amount of water added to the environment over the indicated period.</p><p>Total precip is one indicator of how wet or dry a place may be at different times of the year. Comparing projected values for Total precip over decades can indicate if climate models detect an overall trend toward wetter or drier conditions.</p>",
         'source' => 'Data Source: NOAA, 2016'
     ),
     array(
         'variable' => 'days_pcpn_gt_1in',
-        'name' => 'Days per year with more than 1 inch precip',
+        'name' => 'Days w/ > 1 in',
         'overlayname' => 'Days with Precipitation Above 1, 2, or 3 inches',
         'detail' => "<p>The number of days per year when locations receive more than 1, 2, or 3 inches of precipitation is an indicator of how often very heavy precipitation events occur. This measurement may also be used as an indicator of flood risk.</p><p>Comparing the number of days with heavy precipitation at a single location over time can reveal a trend of increasing or decreasing flood risk.</p>",
         'source' => 'Data Source: NOAA, 2016'
     ),
     array(
         'variable' => 'days_pcpn_gt_2in',
-        'name' => 'Days per year with more than 2 inches precip',
-        'overlayname' => 'Days with Precipitation Above 1, 2, or 3 inchesv',
-        'detail' => "<p>The number of days per year when locations receive more than 1, 2, or 3 inches of precipitation is an indicator of how often very heavy precipitation events occur. This measurement may also be used as an indicator of flood risk.</p><p>Comparing the number of days with heavy precipitation at a single location over time can reveal a trend of increasing or decreasing flood risk.</p>",
-        'source' => ''
-    ),
-    array(
-        'variable' => 'days_pcpn_gt_3in',
-        'name' => 'Days per year with more than 3 inches precip',
+        'name' => 'Days w/ > 2 in',
         'overlayname' => 'Days with Precipitation Above 1, 2, or 3 inches',
         'detail' => "<p>The number of days per year when locations receive more than 1, 2, or 3 inches of precipitation is an indicator of how often very heavy precipitation events occur. This measurement may also be used as an indicator of flood risk.</p><p>Comparing the number of days with heavy precipitation at a single location over time can reveal a trend of increasing or decreasing flood risk.</p>",
         'source' => ''
     ),
     array(
-        'variable' => 'days_pcpn_lt_0.01in',
-        'name' => 'Dry Days (days/period)',
+        'variable' => 'days_pcpn_gt_3in',
+        'name' => 'Days w/ > 3 in',
+        'overlayname' => 'Days with Precipitation Above 1, 2, or 3 inches',
+        'detail' => "<p>The number of days per year when locations receive more than 1, 2, or 3 inches of precipitation is an indicator of how often very heavy precipitation events occur. This measurement may also be used as an indicator of flood risk.</p><p>Comparing the number of days with heavy precipitation at a single location over time can reveal a trend of increasing or decreasing flood risk.</p>",
+        'source' => ''
+    ),
+    array(
+        'variable' => 'days_dry_days',
+        'name' => 'Dry Days',
         'overlayname' => 'Dry Days',
         'detail' => "<p>The number of dry days per year (days when precipitation is less than 0.01 inches) gives a sense of the portion of the year when no moisture is being added to the environment.</p><p>Long-term average precipitation totals show that most locations experience one or more relatively dry months or seasons through the year. Any increase in the number of days with no precipitation may indicate a tendency toward drier conditions in one or more seasons. </p>",
         'source' => ''
@@ -128,7 +128,7 @@ $derived_content = array(
 
     array(
         'variable' => 'hdd_65f',
-        'name' => 'Heating Degree Days (°F-days)',
+        'name' => 'Heating Degree Days',
         'overlayname' => 'Heating Degree Days',
         'detail' => "<p>The number of heating degree days at any location reflects the amount of energy people use to heat a building when it is cool outside. Lower numbers of heating degree days indicate lower demand for energy.</p><p>Heating degree days measure how much (in degrees), and for how long (in days), outside air temperature is below 65°F.</p><p>For example, on a day when the average outdoor temperature is 35°F, raising the indoor temperature to 65°F would require 30 degrees of heating multiplied by 1 day, or 30 heating degree days. Engineers and utility companies use a location’s annual number of heating degree days as one input when estimating demand for energy in the cold season.</p>",
         'source' => 'Data Source: NOAA, 2016'
@@ -136,7 +136,7 @@ $derived_content = array(
 
     array(
         'variable' => 'cdd_65f',
-        'name' => 'Cooling Degree Days (°F-days)',
+        'name' => 'Cooling Degree Days',
         'overlayname' => 'Cooling Degree Days',
         'detail' => "<p>The number of cooling degree days at any location reflects the amount of energy people use to cool a building when it is warm outside. Higher numbers of cooling degree days indicate higher demand for energy.</p><p>Cooling degree days measure how much (in degrees), and for how long (in days), outside air temperature is higher than 65°F.</p><p>For example, on a day when the average outdoor temperature is 85°F, reducing the indoor temperature to 65°F would require 20 degrees of cooling multiplied by 1 day, or 20 cooling degree days. Engineers and utility companies use a location’s annual number of cooling degree days as one input when estimating demand for energy in the warm season.</p>",
         'source' => 'Data Source: NOAA, 2016'
@@ -144,97 +144,48 @@ $derived_content = array(
 
     array(
         'variable' => 'gdd',
-        'name' => 'Growing Degree Days (°F-days)',
+        'name' => 'Growing Degree Days',
         'overlayname' => 'Growing Degree Days',
         'detail' => "<p>The number of growing degree days per year is used to estimate the growth and development of plants (or insects) during the growing season. Higher numbers of growing-degree days indicate longer and warmer growing conditions.</p><p>As growth occurs only when temperature exceeds a species’ base temperature (for example, 50°F), the number of days times the number of degrees above the base indicates the duration and magnitude of growing conditions.</p>",
         'source' => ''
     ),
     array(
         'variable' => 'gddmod',
-        'name' => 'Modified Growing Degree Days (°F-days)',
-        'overlayname' => 'Modified Growing Degree Days',
-        'detail' => "<p>Corn growers use the number of modified growing degree days to monitor the development of corn crops.</p><p>As corn development occurs only when temperature is above 50°F but below 86°F, the standard calculation for growing-degree days is modified to omit conditions outside this range. In future decades, regions where temperatures regularly exceed 86°F may be less successful in growing corn.</p>",
+        'name' => 'Mod. Growing Degree Days',
+        'overlayname' => 'Mod. Growing Degree Days',
+        'detail' => "<p>Corn growers use the number of Mod. Growing Degree Days to monitor the development of corn crops.</p><p>As corn development occurs only when temperature is above 50°F but below 86°F, the standard calculation for growing-degree days is modified to omit conditions outside this range. In future decades, regions where temperatures regularly exceed 86°F may be less successful in growing corn.</p>",
+        'source' => ''
+    ),
+    array(
+        'variable' => 'dry_days',
+        'name' => 'Dry Days',
+        'overlayname' => 'Dry Days',
+        'detail' => "<p>The number of dry days per year (days when precipitation is less than 0.01 inches) gives a sense of the portion of the year when no moisture is being added to the environment. </p><p>Long-term average precipitation totals show that most locations experience one or more relatively dry months or seasons through the year. Any increase in the number of days with no precipitation may indicate a tendency toward drier conditions in one or more seasons. </p>",
         'source' => ''
     )
 
 );
 
-$topics_content = array(
-
-    // array(
-    //   'variable' => 'arctic',
-    //   'name' => 'Arctic',
-    //   'detail' => "<p>Dramatic reductions in Arctic sea ice threaten ecosystems and fisheries, disrupt traditional lifestyles, and erode coastlines. Increasing development activities may boost the region’s economy, but they also increase risks to ecosystems and the environment. Explore landcover, current drought, and historical observations in this rapidly changing region.</p>",
-    //   'source' => 'NOAA, 2016'
-    // ),
+$stations_content = array(
 
     array(
-        'variable' => 'coastal',
-        'name' => 'Coastal',
-        'overlayname' => 'Coastal',
-        'detail' => "<p>As sea level rises, so do instances of flooding along the coast. Rising waters increasingly threaten buildings and infrastructure through storm surge, strong waves, heavy precipitation, and high-tide \"nuisance\" flooding. Property owners and municipalities can check their vulnerability to coastal flooding from current flood hazards as well as future sea level rise.</p>",
-        'source' => 'Data Source: NOAA, 2015'
+        'variable' => 'daily_vs_climate',
+        'name' => 'Daily vs. Climate',
+        'overlayname' => 'Daily vs. Climate',
+        'detail' => 'These graphs compare daily temperature ranges and precipitation totals at observing stations to long-term averages. Users can identify when and by how much daily conditions at each station differed from long-term averages (Climate Normals) calculated from the previous three decades.'
     ),
-
     array(
-        'variable' => 'ecosystems',
-        'name' => 'Ecosystems',
-        'overlayname' => 'Ecosystems',
-        'detail' => "<p>Ecosystems that serve as natural sources of food, timber, and clean water are increasingly threatened by changing conditions. View landcover, wetlands, and rivers & streams to visualize the location and extent of land-based ecosystems. Compare these locations to climate stressors such as sea level rise and drought.</p>",
-        'source' => 'Data Source: NOAA, 2015'
+        'variable' => 'thresholds',
+        'name' => 'Thresholds',
+        'overlayname' => 'Thresholds',
+        'detail' => 'The phrases “too hot” and “too much rain” mean different things to different people. This interface lets users select a station and set their own threshold value for temperature or precipitation: results show how often that value has been exceeded per year.</p><p>For example, it may be “too hot” for herds of cattle when temperatures exceed 95°F. A city could have “too much rain”  if flooding occurs whenever they receive more than 3 inches of rain over two days.</p><p>Knowing how often thresholds have been reached or exceeded in the past can help users estimate how frequently the same thresholds may be crossed in the future.'
     ),
-
-    // array(
-    //   'variable' => 'energy',
-    //   'name' => 'Energy',
-    //   'detail' => "<p>As temperatures warm, demand for energy is expected to increase. Exposed energy infrastructure—particularly along our coasts—may lead to disruptions in energy supply. Managers of energy assets can check current flood hazards as well as visualizations of flooding from future sea level rise.</p>",
-    //   'source' => 'NOAA, 2015'
-    // ),
-
-    // array(
-    //   'variable' => 'food',
-    //   'name' => 'Food',
-    //   'detail' => "<p>Increasing heat waves, drought, and very heavy precipitation have the potential to reduce agricultural productivity in future decades. Changes in crop yields and livestock production can increase food prices and reduce food security.</p>",
-    //   'source' => 'NOAA, 2015'
-    // ),
-
-    // array(
-    //     'variable' => 'health',
-    //     'name' => 'Health',
-    //     'detail' => "<p>Increases in extreme weather events, poor air quality, and transmittable illnesses threaten human health. Explore areas where high percentages of residents are elderly and/or poor, and where other factors increase social vulnerability. People in these areas may require assistance during events such as heat waves, storms, or flooding.</p>",
-    //     'source' => 'NOAA, 2015'
-    // ),
-
     array(
-        'variable' => 'tribal_nations',
-        'name' => 'Tribal Nations',
-        'overlayname' => 'Tribal Nations',
-        'detail' => "<p>Climate change increasingly impacts land, foods, and lifestyles of American Indians. Survey the extent of Indian land and explore landcover and social vulnerability in these locations. Check the land's vulnerability to climate stressors such as sea level rise, flood hazards, and drought.</p>",
-        'source' => 'Data Source: NOAA, 2015'
-    ),
-
-    array(
-        'variable' => 'water',
-        'name' => 'Water',
-        'overlayname' => 'Water',
-        'detail' => "<p>Changing conditions are increasing threats of both flooding and drought. Flood zone maps can help you identify areas that are at risk of flooding and the current drought layer shows which regions are abnormally dry or experiencing drought. View the land cover layer to get a sense of what may be impacted by flooding or drought.</p>",
-        'source' => 'Data Source: NOAA, 2015'
-    ),
-
-    array(
-        'variable' => 'transportation',
-        'name' => 'Transportation',
-        'overlayname' => 'Transportation',
-        'detail' => "<p>Extreme events increasingly threaten land-, water-, and air-based transportation systems and supply chains. View the location of transportation assets such as highways, bridges, and airports, and check to see where they coincide with flooding hazards and the risk of inundation from sea level rise.</p>",
-        'source' => 'Data Source: NOAA, 2015'
-    ),
-
-    // array(
-    //   'variable' => 'marine',
-    //   'name' => 'Marine',
-    //   'detail' => "<p>.</p>",
-    //   'source' => 'NOAA, 2015'
-    // )
+        'variable' => 'high_tide_flooding',
+        'name' => 'High-tide Flooding',
+        'overlayname' => 'High-tide Flooding',
+        'detail' => 'The number of days per year when local sea level reaches or exceeds identified thresholds for flooding (in the absence of storm surge or riverine flooding) is affected by local land motion and global sea level. Projections for increasing numbers of high-tide floods are related to climate-related increases in global sea level.</p><p>At each of the tidal gauge stations on the map, local emergency managers have identified flooding thresholds related to impacts such as inundation of low-lying roads or seawater infiltration into stormwater systems. High-tide floods are generally very localized; in general, they do not represent city-wide inundation.'
+    )
 
 );
 
@@ -277,32 +228,24 @@ $topics_content = array(
 
             $breadcrumb = '<span class="current">Credits</span>';
 
-        } elseif (strpos(current_URL(), 'topic.php') !== false) {
+        } elseif (strpos(current_URL(), 'stations.php') !== false) {
 
             $current = $param;
             $current = str_replace("_", " ", $current);
             $current = ucwords($current);
 
-            $breadcrumb = '<a href="#nav-topics" class="parent launch-nav" data-nav-slide="2"><span class="icon icon-bubble"></span>Topic</a><span class="current">' . $current . '</span>';
+            $breadcrumb = '<a href="#nav-stations" class="parent launch-nav" data-nav-slide="2"><span class="icon icon-bubble"></span>Stations</a><span class="current">' . $current . '</span>';
 
-        } elseif (strpos(current_URL(), 'case.php') !== false) {
-
-            $current = $case;
-            $current = str_replace("_", " ", $current);
-            $current = ucwords($current);
-
-            $breadcrumb = '<a href="#nav-topics" class="parent launch-nav" data-nav-slide="2"><span class="icon icon-bubble"></span>Topic</a><a href="./topic.php?param=' . $case . '">' . $current . '</a><span class="current">Impact</span>';
-
-        } elseif (strpos(current_URL(), 'variables.php') !== false) {
+        }  elseif (strpos(current_URL(), 'variables.php') !== false) {
 
             echo $current;
 
             switch ($case) {
                 case 'tmax' :
-                    $current = 'Average Daily Max Temp';
+                    $current = 'Ave Daily Max Temp (°F)';
                     break;
                 case 'tmin' :
-                    $current = 'Average Daily Min Temp';
+                    $current = 'Ave Daily Min Temp (°F)';
                     break;
                 case 'days_tmax_abv_35' :
                     $current = 'Days With Maximum Above 95°F';
@@ -314,13 +257,13 @@ $topics_content = array(
                     $current = 'Days With Maximum Above 95°F';
                     break;
                 case 'days_tmax_gt_90f' :
-                    $current = 'Days per year with max above 90°F';
+                    $current = 'Days w/ max > 90°F';
                     break;
                 case 'days_tmin_lt_32f' :
                     $current = 'Days With Minimum Below 32°F';
                     break;
                 case 'pcpn' :
-                    $current = 'Total precipitation';
+                    $current = 'Total precip';
                     break;
                 case 'days_pcpn_gt_1in' :
                     $current = 'Days of Precipitation Above 1 Inch';
@@ -354,7 +297,7 @@ $topics_content = array(
         <ul id="nav-cycle-pager">
             <li><a href="#nav-search"><span class="icon icon-search"></span> Select a location</a></li>
             <li><a href="#nav-variables"><span class="icon icon-variables"></span> View by variable</a></li>
-            <li><a href="#nav-topics"><span class="icon icon-bubble"></span> View by topic</a></li>
+            <li><a href="#nav-stations"><span class="icon icon-bubble"></span> Explore Station Data</a></li>
         </ul>
     </div>
 
@@ -406,18 +349,18 @@ $topics_content = array(
                                     <?php
 
                                     foreach ($temp_content as $item) {
-                                        if ($item['name'] == 'Average Daily Max Temp') {
-                                            $item['name'] = "Mean Daily Max Temperature";
-                                        }
-                                        if ($item['name'] == 'Average Daily Min Temp') {
-                                            $item['name'] = "Mean Daily Min Temperature";
-                                        }
-                                        if ($item['name'] == 'Days With Maximum Above 95°F') {
-                                            $item['name'] = "Days With Max Above 95°F";
-                                        }
-                                        if ($item['name'] == 'Days With Minimum Below 32°F') {
-                                            $item['name'] = "Days With Min Below 32°F";
-                                        }
+//                                        if ($item['name'] == 'Ave Daily Max Temp (°F)') {
+//                                            $item['name'] = "Mean Daily Max Temperature";
+//                                        }
+//                                        if ($item['name'] == 'Ave Daily Min Temp (°F)') {
+//                                            $item['name'] = "Mean Daily Min Temperature";
+//                                        }
+//                                        if ($item['name'] == 'Days With Maximum Above 95°F') {
+//                                            $item['name'] = "Days With Max Above 95°F";
+//                                        }
+//                                        if ($item['name'] == 'Days With Minimum Below 32°F') {
+//                                            $item['name'] = "Days With Min Below 32°F";
+//                                        }
                                         ?>
                                         <li><a href="#detail-<?php echo $item['variable']; ?>" class="nav-detail-link"><?php echo $item['name']; ?></a></li>
                                         <?php
@@ -466,25 +409,27 @@ $topics_content = array(
 
         <?php
 
-        // TOPICS
+        // stationS
 
         ?>
 
-        <div id="nav-topics" class="slide" data-slide-num="2">
+        <div id="nav-stations" class="slide" data-slide-num="2">
             <div class="slide-bg"></div>
 
             <div class="nav-content-wrap">
-                <h3><span class="icon icon-bubble"></span> Choose a topic</h3>
+                <h3><span class="icon icon-bubble"></span> Choose analysis type</h3>
 
                 <div class="nav-content tabs">
-                    <div id="nav-topics-list" class="tab nav-content-tab">
+                    <div id="nav-stations-list" class="tab nav-content-tab">
                         <ul class="col-2">
                             <?php
 
-                            foreach ($topics_content as $topic) {
+                            foreach ($stations_content as $station) {
 
                                 ?>
-                                <li><a href="topic.php?param=<?php echo $topic['variable']; ?>"><?php echo $topic['name']; ?></a></li>
+                                <li><a href="#detail-<?php echo $station['variable']; ?>" class="nav-detail-link"><?php echo $station['name']; ?></a></li>
+
+<!--                                <li><a href="stations.php?param=--><?php //echo $station['variable']; ?><!--">--><?php //echo $station['name']; ?><!--</a></li>-->
                                 <?php
 
                             }
@@ -554,10 +499,10 @@ $topics_content = array(
 
 
         <div id="detail-pr" class="nav-detail-item">
-            <h3>What does <u>Total precipitation</u> tell us?</h3>
+            <h3>What does <u>Total precip</u> tell us?</h3>
 
-            <p>Daily totals of rain and snow vary from zero to several inches; averaging these totals over a period gives an average daily value. Total precipitation indicates the average amount of water added to the environment each day.</p>
-            <p>Total precipitation is one indicator of how wet or dry a place may be at different times of the year. Comparing values for Total precipitation over time can indicate a trend toward wetter or drier conditions.</p>
+            <p>Daily totals of rain and snow vary from zero to several inches; averaging these totals over a period gives an average daily value. Total precip indicates the average amount of water added to the environment each day.</p>
+            <p>Total precip is one indicator of how wet or dry a place may be at different times of the year. Comparing values for Total precip over time can indicate a trend toward wetter or drier conditions.</p>
 
             <p><a href="variables.php?id=pr" class="button bg-trans border-white hover-bg-white">Get started</a><a href="#" class="close-detail button bg-trans border-trans color-white arrow-left">Back</a></p>
         </div>
@@ -704,25 +649,23 @@ $topics_content = array(
 
     <?php
 
-    // TOPICS
+    // stationS
 
     ?>
 
-    <div id="topics-details" class="nav-detail">
+    <div id="stations-details" class="nav-detail">
         <?php
 
-        foreach ($topics_content as $topic) {
+        foreach ($stations_content as $station) {
 
             ?>
 
-            <div id="detail-<?php echo $topic['variable']; ?>" class="nav-detail-item">
-                <h3>What does <u><?php echo $topic['name']; ?></u> tell us?</h3>
+            <div id="detail-<?php echo $station['variable']; ?>" class="nav-detail-item">
+                <h3>What can we learn from <u><?php echo $station['name']; ?></u> graphs?</h3>
 
-                <?php echo $topic['detail']; ?>
+                <p><?php echo $station['detail']; ?></p>
 
-                <p><?php echo $topic['source']; ?></p>
-
-                <p><a href="case.php?id=<?php echo $topic['variable']; ?>" class="button bg-trans border-white hover-bg-white">Get started</a><a href="#" class="close-detail button bg-trans border-trans color-white arrow-left">Back</a></p>
+                <p><a href="stations.php?id=<?php echo $station['variable']; ?>" class="button bg-trans border-white hover-bg-white">Get started</a><a href="#" class="close-detail button bg-trans border-trans color-white arrow-left">Back</a></p>
             </div>
 
             <?php

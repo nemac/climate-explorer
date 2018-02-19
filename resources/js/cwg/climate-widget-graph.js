@@ -624,7 +624,7 @@
             }
         },
         {
-            id: "days_pcpn_lt_0.01in",
+            id: "days_dry_days",
             title: {
                 english: "Dry Days",
                 metric: "Dry Days"
@@ -1458,8 +1458,8 @@
             style: "bar",
             options: {
                 barbase: ref,
-                fillcolor: [{"value": "0xCD6760", "min": ref},
-                    {"value": "0x6194C8", "max": ref}],
+                fillcolor: [{"value": "0x777777", "min": ref},
+                    {"value": "0x777777", "max": ref}],
                 barwidth: 1,
                 baroffset: 0.5,
                 linecolor: "#000000",

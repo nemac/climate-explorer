@@ -266,12 +266,12 @@ input.location-mapper:focus:-ms-input-placeholder {
   border-left-color: #FFF;
 }
 
-#topic-legends .topic-legend-item {
+#station-legends .station-legend-item {
   float:left;
   width:50%;
 }
 
-#topic-legends img {
+#station-legends img {
   width:65%;
 }
 
@@ -313,12 +313,12 @@ input.location-mapper:focus:-ms-input-placeholder {
     display: block;
     margin: -5% 0 0 15px;
   }
-  .page-type-topic #subtopics-menu ul {
+  .page-type-stations #substations-menu ul {
     display: block;
     white-space: normal;
   }
 
-  .topic-banner {
+  .station-banner {
     background-size: cover !important;
   }
 }
@@ -337,7 +337,7 @@ input.location-mapper:focus:-ms-input-placeholder {
 
 }
 
-.topics-list .topic-layers {
+.stations-list .station-layers {
      margin-top: 40px;
    }
 
@@ -378,17 +378,6 @@ input.location-mapper:focus:-ms-input-placeholder {
   max-height: 910px;
   overflow: inherit;
 }
-
-
-
-.download-image {
-  font-size:1.5em;
-}
-
-.download-data {
-  font-size:1.5em;
-}
-
 
 .download-image {
   font-size:1.5em !important;
@@ -481,6 +470,27 @@ input.location-mapper:focus:-ms-input-placeholder {
   transition: 0.25s;
 }
 
+
+ .handle .fs-dropdown button {
+  padding: 2px !important;
+  padding-right: 40px;
+  padding-left: 5px !important;
+  height: 39px !important;
+  width: 150px;
+  background: rgba(255, 255, 255, 0.6);
+  border: 5px solid #fff;
+  color: #0058cf;
+  -moz-border-radius: 0;
+  -webkit-border-radius: 0;
+  border-radius: 0;
+  font: 400 .7rem/1em Roboto, Helvetica, "Helvetica Neue", Arial, sans-serif !important;
+  -moz-transition: 0.25s;
+  -o-transition: 0.25s;
+  -webkit-transition: 0.25s;
+  transition: 0.25s;
+}
+
+
 #location-stations #station-no-data {
     background: #F45440;
     color: white;
@@ -499,5 +509,39 @@ input.location-mapper:focus:-ms-input-placeholder {
 
 .page-type-variables .legend-image {
     height: 350px;
-    margin-left: 0px;
+    margin-left: 0;
+}
+
+.download-panel #download-precip-dismiss-button {
+  display: block;
+  position: absolute;
+  top: -30px;
+  right: 0;
+}
+
+.download-panel #download-derived-dismiss-button {
+  display: block;
+  position: absolute;
+  top: -30px;
+  right: 0;
+}
+
+
+/* line 46, ../scss/pages/_variable.scss */
+.page-type-variables #main-content-wrap #stations-map {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+
+
+/* line 459, ../scss/_media.scss */
+#stations-map {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
 }

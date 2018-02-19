@@ -20,26 +20,26 @@ var Impacts = function (page, data_base_url) {
 
 Impacts.prototype.mapVariables = function () {
     this.varMapping = {
-        'tmax': 'Average Daily Max Temp',
-        'tmin': 'Average Daily Min Temp',
+        'tmax': 'Ave Daily Max Temp (°F)',
+        'tmin': 'Ave Daily Min Temp (°F)',
         'days_tmin_lt_32f': 'Days With Minimum Below 32F&deg; F',
-        'days_tmax_gt_90f': 'Days per year with max above 90°F',
+        'days_tmax_gt_90f': 'Days w/ max > 90°F',
         'days_tmax_gt_95f': 'Days With Maximum Above 95&deg; F',
-        'pcpn': 'Total precipitation',
+        'pcpn': 'Total precip',
         'days_pcpn_gt_1in': 'Days of Precipitation Above 1 Inch',
         'cdd_65f': 'Cooling Degree Days',
         'hdd_65f': 'Heating Degree Days',
 
-        'days_tmax_gt_100f':   'Days per year with max above 100°F',
-        'days_tmax_gt_105f':   'Days per year with max above 105°F',
-        'days_tmax_lt_32f':    'Days per year with max below 32°F (Icing days)',
-        'days_tmin_gt_80f':    'Days per year with min above 80°F',
-        'days_tmin_gt_90f':    'Days per year with min above 90°F',
-        'days_pcpn_gt_2in':    'Days per year with more than 2 inches precip',
-        'days_pcpn_gt_3in':    'Days per year with more than 3 inches precip',
-        'days_pcpn_lt_0.01in': 'Dry Days (days/period)',
-        'gdd':                 'Growing Degree Days (°F-days)',
-        'gddmod':              'Modified Growing Degree Days (°F-days)'
+        'days_tmax_gt_100f':   'Days w/ max > 100°F',
+        'days_tmax_gt_105f':   'Days w/ max > 105°F',
+        'days_tmax_lt_32f':    'Days w/ max < 32°F',
+        'days_tmin_gt_80f':    'Days w/ min > 80°F',
+        'days_tmin_gt_90f':    'Days w/ min > 90°F',
+        'days_pcpn_gt_2in':    'Days w/ > 2 in',
+        'days_pcpn_gt_3in':    'Days w/ > 3 in',
+        'days_dry_days': 'Dry Days',
+        'gdd':                 'Growing Degree Days',
+        'gddmod':              'Mod. Growing Degree Days'
 
     };
 
@@ -57,7 +57,7 @@ Impacts.prototype.mapVariables = function () {
         'days_tmin_gt_90f':    '-annual-hist-days_tmin_gt_90f',
         'days_pcpn_gt_2in':    '-annual-hist-days_pcpn_gt_2in',
         'days_pcpn_gt_3in':    '-annual-hist-days_pcpn_gt_3in',
-        'days_pcpn_lt_0.01in': '-annual-hist-dry_days',
+        'days_dry_days': '-annual-hist-dry_days',
         'gdd':                 '-annual-hist-gdd',
         'gddmod':              '-annual-hist-gddmod',
 
@@ -81,7 +81,7 @@ Impacts.prototype.mapVariables = function () {
         'days_tmin_gt_90f':    '-annual-rcp45-days_tmin_gt_90f',
         'days_pcpn_gt_2in':    '-annual-rcp45-days_pcpn_gt_2in',
         'days_pcpn_gt_3in':    '-annual-rcp45-days_pcpn_gt_3in',
-        'days_pcpn_lt_0.01in': '-annual-rcp45-dry_days',
+        'days_dry_days': '-annual-rcp45-dry_days',
         'gdd':                 '-annual-rcp45-gdd',
         'gddmod':              '-annual-rcp45-gddmod',
 
@@ -105,7 +105,7 @@ Impacts.prototype.mapVariables = function () {
         'days_tmin_gt_90f':    '-annual-rcp85-days_tmin_gt_90f',
         'days_pcpn_gt_2in':    '-annual-rcp85-days_pcpn_gt_2in',
         'days_pcpn_gt_3in':    '-annual-rcp85-days_pcpn_gt_3in',
-        'days_pcpn_lt_0.01in': '-annual-rcp85-dry_days',
+        'days_dry_days': '-annual-rcp85-dry_days',
         'gdd':                 '-annual-rcp85-gdd',
         'gddmod':              '-annual-rcp85-gddmod',
 
@@ -395,7 +395,7 @@ Impacts.prototype.wireMapEvents = function () {
  */
 Impacts.prototype.createLegend = function () {
     var self = this;
-    var layerIds = ( this.group === 'all' ) ? this.getLayerIds() : this.data.topics[this.page].groups[this.group].layers;
+    var layerIds = ( this.group === 'all' ) ? this.getLayerIds() : this.data.stations[this.page].groups[this.group].layers;
 
     var checked, sublayer, display;
 
@@ -506,8 +506,8 @@ Impacts.prototype.createLegend = function () {
 
     if (layerIds.length < 3) {
         $.each(layerIds, function (i, id) {
-            var html = '<div class="topic-legend-item"><img src="' + self.data.layers[id].legend + '.png"></div>';
-            $('#topic-legends').append(html);
+            var html = '<div class="station-legend-item"><img src="' + self.data.layers[id].legend + '.png"></div>';
+            $('#station-legends').append(html);
         });
     }
 };
@@ -641,7 +641,7 @@ Impacts.prototype.reorderLayers = function () {
 Impacts.prototype.getLayerIds = function () {
     var layerIds = [];
 
-    $.each(this.data.topics[this.page].groups, function (i, group) {
+    $.each(this.data.stations[this.page].groups, function (i, group) {
         layerIds = layerIds.concat(group.layers);
     });
 
@@ -662,7 +662,7 @@ Impacts.prototype.getLayerIds = function () {
 Impacts.prototype.addLayers = function () {
     var self = this;
 
-    var layerIds = ( this.group === 'all' ) ? this.getLayerIds() : this.data.topics[this.page].groups[this.group].layers;
+    var layerIds = ( this.group === 'all' ) ? this.getLayerIds() : this.data.stations[this.page].groups[this.group].layers;
     var clone = layerIds.slice(0);
 
     var layer;

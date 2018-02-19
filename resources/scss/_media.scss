@@ -15,7 +15,7 @@
   }
   
   .page-splash {
-    .splash-text {
+    .splash-text  {
       max-width: 75%;
     }
   }
@@ -34,7 +34,7 @@
     }
   }
   
-  #topic-splash #subtopics-menu {
+  #station-splash #substations-menu {
     max-width: 25%;
   }
 }
@@ -106,8 +106,8 @@
   }
   
   
-  .topics-list {
-    .topic-banner-text {
+  .stations-list {
+    .station-banner-text {
       width: 65%;
     }
   }
@@ -295,7 +295,7 @@
   
   #page-home,
   .page-type-location,
-  .page-type-topic {
+  .page-type-stations {
     #viewport {
       position: relative;
       top: auto!important;
@@ -380,7 +380,7 @@
   }
   
   .page-type-location {
-    .page-splash {
+    .page-splashed {
       margin-top: 60px;
     }
   }
@@ -460,9 +460,9 @@
     @include full-size;
   }
   
-  // TOPICS
+  // stationS
   
-  #topic-splash {
+  #station-splash {
     padding: 6%;
     padding-bottom: 12%;
     
@@ -472,7 +472,7 @@
       padding: 0;
     }
     
-    #subtopics-menu {
+    #substations-menu {
       float: none;
       width: 80%;
       max-width: 80%;
@@ -480,7 +480,7 @@
     }
   }
   
-  .topics-list {
+  .stations-list {
     h4 {
       margin: 0 0 20px 0;
       font-size: 1.25rem;
@@ -497,13 +497,13 @@
       }
     }
     
-    .topic-banner-text {
+    .station-banner-text {
       float: none;
       width: auto;
       margin: 0 0 40px 0;
     }
     
-    .topic-layers {
+    .station-layers {
       float: none;
       width: auto;
     }
@@ -695,7 +695,7 @@
       background-image: url(../img/bg_contours-blue.png);
     }
   
-    #nav-topics {
+    #nav-stations {
       background-image: url(../img/bg_contours-orange.png);
     }
     
@@ -718,7 +718,7 @@
   
   #page-home,
   .page-type-location,
-  .page-type-topic {
+  .page-type-stations {
     #viewport {
       margin: 0!important;
     }
@@ -757,9 +757,9 @@
   
   // LOCATIONS
   
-  // TOPICS
+  // stationS
   
-  #topic-splash {
+  #station-splash {
     .splash-text {
       float: none;
       
@@ -769,7 +769,7 @@
     }
   }
   
-  .topics-list {
+  .stations-list {
     h4 {
       margin: 0 0 20px 0;
       font-size: 1.375rem;
