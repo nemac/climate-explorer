@@ -294,24 +294,6 @@ ChartBuilder.prototype.getTemplate = function (type, values) {
         '<zoom min="0" />' +
         '</verticalaxis>' +
         '<plot>' +
-        '<legend label="YTD Precipitation"/>' +
-        '<horizontalaxis ref="datetime">' +
-        '<variable ref="datetime"/>' +
-        '</horizontalaxis>' +
-        '<verticalaxis ref="precip">' +
-        '<variable ref="precip"/>' +
-        '</verticalaxis>' +
-        '<legend visible="false"/>' +
-        '<renderer type="fill">' +
-        '<option name="fillcolor" value="#1abc9c"/>' +
-        '<option name="fillopacity" value="0.35"/>' +
-        '</renderer>' +
-        '<datatips format="{0}: {1}">' +
-        '<variable format="%n %y"/>' +
-        '<variable format="%1d"/>' +
-        '</datatips>' +
-        '</plot>' +
-        '<plot>' +
         '<legend label="Normal YTD Precipitation"/>' +
         '<horizontalaxis ref="datetime">' +
         '<variable ref="datetime"/>' +
@@ -324,6 +306,24 @@ ChartBuilder.prototype.getTemplate = function (type, values) {
         '<option name="linecolor" value="#2c3e50"/>' +
         '<option name="linewidth" value="1.5"/>' +
         '</renderer>' +
+        '</plot>' +
+        '<plot>' +
+        '<legend label="YTD Precipitation"/>' +
+        '<horizontalaxis ref="datetime">' +
+        '<variable ref="datetime"/>' +
+        '</horizontalaxis>' +
+        '<verticalaxis ref="precip">' +
+        '<variable ref="precip"/>' +
+        '</verticalaxis>' +
+        '<legend visible="false"/>' +
+        '<renderer type="fill">' +
+        '<option name="fillcolor" value="0x3288bd"/>' +
+        '<option name="fillopacity" value="0.5"/>' +
+        '</renderer>' +
+        '<datatips format="{0}: {1}">' +
+        '<variable format="%n %y"/>' +
+        '<variable format="%1d"/>' +
+        '</datatips>' +
         '</plot>' +
         '<data>' +
         '<variables missingvalue="-9000" missingop="le">' +
