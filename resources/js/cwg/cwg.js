@@ -652,13 +652,17 @@ derivedChart = climate_widget.graph({
 });
 
 setTimeout(function () {
-    cwg.resize();
-    precipChart.resize();
-    derivedChart.resize();
+  cwg.resize();
+  precipChart.resize();
+  derivedChart.resize();
 }, 700);
 
 $(window).resize(function () {
-    cwg.resize();
-    precipChart.resize();
-    derivedChart.resize();
+  cwg.resize();
+});
+$(window).resize(function () {
+  precipChart.resize();
+});
+$(window).resize(function () {
+  derivedChart.resize();
 });
