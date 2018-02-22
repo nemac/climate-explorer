@@ -650,9 +650,13 @@ Location.prototype.wire = function (map) {
         var id = $(this).attr('id').replace('var-', '');
         self.selectedVariable['temperature-map'] = id;
         if (self['temperature-map']) {
-            self.updateTiledLayer('temperature-map', false, false);
-        }
 
+            le_option_selected = $("#temperature-swipeImg .emissions-low .fs-dropdown-selected").text();
+            he_option_selected = $("#temperature-swipeImg .emissions-high .fs-dropdown-selected").text();
+
+            self.updateTiledLayer('temperature-map', false, false,le_option_selected,he_option_selected);
+
+        }
 
         var legendFilename;
 
@@ -684,7 +688,12 @@ Location.prototype.wire = function (map) {
         //}
         self.selectedVariable['precipitation-map'] = id;
         if (self['precipitation-map']) {
-            self.updateTiledLayer('precipitation-map', false, false);
+
+            le_option_selected = $("#precipitation-swipeImg .emissions-low .fs-dropdown-selected").text();
+            he_option_selected = $("#precipitation-swipeImg .emissions-high .fs-dropdown-selected").text();
+
+            self.updateTiledLayer('precipitation-map', false, false,le_option_selected,he_option_selected);
+
         }
 
         var legendFilename;
@@ -706,7 +715,12 @@ Location.prototype.wire = function (map) {
         var id = $(this).attr('id').replace('var-', '');
         self.selectedVariable['derived-map'] = id;
         if (self['derived-map']) {
-            self.updateTiledLayer('derived-map', false, false);
+
+            le_option_selected = $("#derived-swipeImg .emissions-low .fs-dropdown-selected").text();
+            he_option_selected = $("#derived-swipeImg .emissions-high .fs-dropdown-selected").text();
+
+            self.updateTiledLayer('derived-map', false, false,le_option_selected,he_option_selected);
+
         }
 
         var legendFilename;
@@ -720,8 +734,8 @@ Location.prototype.wire = function (map) {
         self.selectedSeason = $(this).data().value;
 
 
-        left_option_selected = $("#temperature-swipeImg .emissions-low .fs-dropdown-selected").text();
-        right_option_selected = $("#temperature-swipeImg .emissions-high .fs-dropdown-selected").text();
+        left_option_selected = $("#precipitation-swipeImg .emissions-low .fs-dropdown-selected").text();
+        right_option_selected = $("#precipitation-swipeImg .emissions-high .fs-dropdown-selected").text();
 
         self.updateTiledLayer('precipitation-map', true, false, left_option_selected, right_option_selected);
     });

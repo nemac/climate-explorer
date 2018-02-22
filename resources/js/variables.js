@@ -385,7 +385,6 @@ Variables.prototype.wire = function () {
                 }
                 layer.setVisible(show);
 
-                //console.log(features);
                 if (show === false){
                     // clear the selections/features
                     select.getFeatures().clear();
@@ -422,7 +421,12 @@ Variables.prototype.wire = function () {
         $(".level-1").html(self.varMapping[self.selectedVariable]);
 
         self.updateUrl();
-        self.updateTiledLayer(true, true);
+
+        le_option_selected = $(".emissions-low .fs-dropdown-selected").text();
+        he_option_selected = $(".emissions-high .fs-dropdown-selected").text();
+
+        self.updateTiledLayer(true, true,le_option_selected,he_option_selected);
+
         self.updateChart();
 
         $('#breadcrumb .current').html(self.varMapping[self.selectedVariable]);
@@ -449,8 +453,6 @@ Variables.prototype.wire = function () {
 
         legendFilename = self.selectedSeason + '_' + self.selectedVariable;
 
-        console.log("legend filename");
-        console.log(legendFilename);
 
         $('#vars-legend .legend #legend-container').html('<img class="legend-image" src="resources/img/legends/' + legendFilename + '.png">');
 
@@ -478,8 +480,6 @@ Variables.prototype.wire = function () {
             }
         });
 
-
-
         if (feature) {
             var props = feature.getProperties();
             self.countySelected(feature, e);
@@ -493,10 +493,7 @@ Variables.prototype.wire = function () {
             features.remove(feature);
             e.preventDefault();
         });
-
     });
-
-
 };
 
 
@@ -531,8 +528,6 @@ Variables.prototype.updateUrl = function () {
         twitterurl      = "https://twitter.com/intent/tweet?text=" + selectedVariableOption + "+via+%40NOAA+Climate+Explorer%3A+" + actualurlEncoded;     // Returns full URL
         facebookurl      = "https://www.facebook.com/sharer/sharer.php?u=" + actualurlEncoded;     // Returns full URL
 
-        console.log('actualurl');
-        console.log(actualurl);
 
         $('#share_facebook').attr("href",facebookurl);
         $('#share_facebook').attr("data-href",actualurl);
@@ -788,7 +783,6 @@ Variables.prototype.countySelected = function (feature, event) {
 
         $('.download-data').click(function (e) {
 
-            console.log('.download-data clicked');
             $('#download-panel').removeClass("hidden");
 
             $('#download-panel').show();
@@ -877,13 +871,6 @@ Variables.prototype.updateTiledLayer = function (replace, preserveTime,le_option
     var histYears = [1950, 1960, 1970, 1980, 1990, 2000];
     var seasons = ['tmax', 'tmin', 'pcpn'];
 
-
-
-
-
-    console.log('self.selectedVariable');
-    console.log(self.selectedVariable);
-
     if ( self.selectedVariable !== 'tmax' && self.selectedVariable !== 'tmin' && self.selectedVariable !== 'pcpn' && this.activeYear === 2000 ) {
         this.activeYear = 2010;
     }
@@ -901,8 +888,6 @@ Variables.prototype.updateTiledLayer = function (replace, preserveTime,le_option
 
     var src, src85;
 
-    console.log('self.selectedVariable');
-    console.log(self.selectedVariable);
     if (histYears.indexOf(this.activeYear) !== -1) {
 
         src = this.activeYear + season + this.tilesHistMapping[this.selectedVariable];
@@ -938,11 +923,9 @@ Variables.prototype.updateTiledLayer = function (replace, preserveTime,le_option
      * Create the rcp45 tile layer
      */
 
-    console.log('selected what drop');
     //le_option_selected = $('.emissions-low .fs-dropdown-selected').text();
     //he_option_selected = $('.emissions-high .fs-dropdown-selected').text();
-    console.log(le_option_selected);
-    console.log(he_option_selected);
+
 
     this.tileLayer = new ol.layer.Tile({
         source: new ol.source.XYZ({
@@ -956,8 +939,6 @@ Variables.prototype.updateTiledLayer = function (replace, preserveTime,le_option
         })
     });
 
-    console.log('45 TILE LAYER');
-    console.log(this.tileLayer);
 
     //add rcp45 tile layer to map
     this.tileLayer.set('layer_id', 'tile_layer');
