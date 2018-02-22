@@ -70,7 +70,6 @@ if ($cut_url == $current_url) {
 <div class="cd-cover-layer"></div>
 <?php include_once('template/header.php'); ?>
 
-
 <header id="left-header">
     <span class="trigger icon icon-close" id="left-header-trigger"></span>
 
@@ -112,142 +111,9 @@ if ($cut_url == $current_url) {
 
         <!-- begin weather stations map -->
 
+        <div id="stations-spinner"></div>
 
-            <div id="stations-spinner"></div>
-
-            <div id="station-overlay-container">
-
-            <div id="station-overlay">
-                <div id="station-overlay-close">×</div>
-
-
-                <div id="station-overlay-header">
-                    <h3>Weather Station</h3>
-                    <h5>Name: <span class="station-name"></span></h5>
-                    <h5>Station ID: <span class="station-id"></span></h5>
-                </div>
-
-                <?php
-
-                // standard station
-                // tabs (left column)
-                // chart w/ vars (right column)
-
-                ?>
-
-                <div id="station-detail" class="station-overlay-content">
-
-                    <div id="stations-charts-temp" class="chart-tab selected">
-                        <div id="multi-chart-container">
-                            <div id="multi-chart" style="width:100%; height:300px"></div>
-                        </div>
-                    </div>
-
-                    <div id="stations-charts-precip" class="chart-tab">
-                        <div id="multi-precip-chart-container">
-                            <div id="multi-precip-chart" style="width:100%; height:300px"></div>
-                        </div>
-                    </div>
-
-                    <div id="station-no-data" class="station-overlay-column right">This station does not have thresholds available.</div>
-
-                    <div id="station-detail-data" class="station-overlay-column right">
-
-                        <div id="station-data-container">
-
-                            <div class="form-group">
-                                <div class="field-pair field-id">
-                                    <label for="station">Station Id:</label>
-
-                                    <div class="field">
-                                        <input type="text" name="station" id="station" value="">
-                                    </div>
-                                </div>
-
-                                <div class="field-pair field-var">
-                                    <label for="itemvariable">Variable:</label>
-
-                                    <div class="field">
-                                        <select name="itemvariable" id="itemvariable">
-                                            <option value="tavg">TAvg</option>
-                                            <option value="tmax">TMax</option>
-                                            <option value="tmin">TMin</option>
-                                            <option value="precipitation">Precipitation</option>
-                                        </select>
-                                    </div>
-                                </div>
-
-                                <div class="field-pair field-window append">
-                                    <label for="window">Window:</label>
-
-                                    <div class="field">
-                                        <input type="number" id="window" name="window" value="1"> <span class="append">days</span>
-                                    </div>
-                                </div>
-
-                                <div class="field-pair field-threshold append">
-                                    <label for="threshold">Threshold:</label>
-
-                                    <div class="field">
-                                        <input type="number" name="threshold" id="threshold" value="1" step="0.1"> <span class="append" id="item_inches_or_f">°F</span>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <div id="item-chart-container"></div>
-
-                        </div>
-
-                    </div>
-
-                </div>
-
-                <?php
-
-                // tidal station
-
-                ?>
-
-                <div id="station-detail-tidal" class="station-overlay-content">
-                    <div id="tidal-chart-container">
-                        <select name="" id="tidal_station" class="form-control" style="width: 200px;">
-                            <option value="" disabled selected hidden>Station</option>
-                            <option value="8443970">Boston, MA</option>
-                            <option value="8454000">Providence, RI</option>
-                            <option value="8461490">New London, CT</option>
-                            <option value="8510560">Montauk, NY</option>
-                            <option value="8516945">Kings Point, NY</option>
-                            <option value="8518750">Battery, NY</option>
-                            <option value="8531680">Sandy Hook, NJ</option>
-                            <option value="8534720">Atlantic City, NJ</option>
-                            <option value="8545240">Philadelphia, PA</option>
-                            <option value="8557380">Lewes, DE</option>
-                            <option value="8574680">Baltimore, MD</option>
-                            <option value="8575512">Annapolis, MD</option>
-                            <option value="8594900">Washington D.C.</option>
-                            <option value="8638610">Sewells Point, VA</option>
-                            <option value="8658120">Wilmington, NC</option>
-                            <option value="8665530">Charleston, SC</option>
-                            <option value="8670870">Fort Pulaski, GA</option>
-                            <option value="8720030">Fernandina Beach, FL</option>
-                            <option value="8720218">Mayport, FL</option>
-                            <option value="8724580">Key West, FL</option>
-                            <option value="8726430">St Petersburg, FL</option>
-                            <option value="8771341">Galveston Bay, TX</option>
-                            <option value="8779770">Port Isabel, TX</option>
-                            <option value="9410230">La Jolla, CA</option>
-                            <option value="9414290">San Francisco, CA</option>
-                            <option value="9447130">Seattle, WA</option>
-                            <option value="1612340">Honolulu, HI</option>
-                        </select>
-
-                        <canvas id="tidal-chart" style="width:100%; height:300px"></canvas>
-                    </div>
-                </div>
-
-            </div>
-            </div>
-
+        <div id="station-overlay-container"></div>
 
     </div>
 </div>
@@ -262,7 +128,8 @@ if ($cut_url == $current_url) {
 <script type="text/javascript" src="resources/js/jquery.min.js"></script>
 <script type="text/javascript" src="resources/js/jquery-ui.min.js"></script>
 
-<script type="text/javascript" src="resources/js/stations.js"></script>
+
+<script src="resources/item/jquery.fl-item.min.js"></script>
 
 <script type="text/javascript" src="resources/js/lodash.js"></script>
 <script type="text/javascript" src="resources/js/proj4.js"></script>
@@ -324,9 +191,8 @@ if ($cut_url == $current_url) {
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/lodash.js/4.17.4/lodash.min.js" integrity="sha256-8E6QUcFg1KTnpEU8TFGhpTGHw5fJqB9vCms3OhAYLqw=" crossorigin="anonymous"></script>
 
-<script type="text/javascript" src="resources/js/chart.js"></script>
+<script type="text/javascript" src="resources/js/station-charts.js"></script>
 <script type="text/javascript" src="resources/js/global_functions.js"></script>
-<script src="/resources/tidal/tidalstationswidget.js"></script>
 
 <?php if (isset($active_station) && $active_station != null) { ?>
     <script>
@@ -343,6 +209,82 @@ if ($cut_url == $current_url) {
 </script>
 
 <!-- END:JS_LOADER -->
+
+
+<script>
+
+
+    $('#threshold').change(function () {
+        $("#item-chart-container").item({threshold: parseFloat($('#threshold').val())}).item('update');
+    });
+
+    $('#station').change(function () {
+        $("#item-chart-container").item('option', 'station', $('#station').val()).item('update');
+    });
+
+
+    // when #variable changes, update ui units and apply sensible defaults.
+    $('#itemvariable').change(function (e) {
+        var queryElements = void 0,
+            missingValueTreatment = void 0,
+            windowFunction = void 0;
+        switch ($('#itemvariable').val()) {
+            case 'precipitation':
+                $('#thresholdUnits').text('in');
+                $('#threshold').val(1.0);
+                $('#item_inches_or_f').text('inches');
+                break;
+            case 'tmax':
+                $('#thresholdUnits').text('F');
+                $('#threshold').val(95);
+                $('#item_inches_or_f').text('°F');
+                break;
+            case 'tmin':
+                $('#thresholdUnits').text('F');
+                $('#threshold').val(32);
+                $('#item_inches_or_f').html('°F');
+                break;
+            case 'tavg':
+                $('#thresholdUnits').text('F');
+                $('#threshold').val(70);
+                $('#item_inches_or_f').text('°F');
+                break;
+        }
+        $("#item-chart-container").item({
+            threshold: parseFloat($('#threshold').val()),
+            variable: $('#itemvariable option:selected').val()
+        }).item('update');
+    });
+
+    $('#percentileThreshold').change(function () {
+
+        var value = $('#percentileThreshold').val();
+        if (value === '') {
+            return;
+        }
+
+        if (value <= 0 || value >= 100) {
+            $('#percentileThreshold').addClass('form-control-danger');
+            return;
+        }
+
+        $('#threshold').val($("#item-chart-container").item('getPercentileValue', value)).trigger('change');
+
+    });
+
+    $('#window').change(function () {
+        $("#item-chart-container").item({window: parseInt($('#window').val())});
+        $("#item-chart-container").item('update');
+    });
+
+</script>
+
+
+<script type="text/javascript" src="resources/js/stations.js"></script>
+<script src="/resources/tidal/tidalstationswidget.js"></script>
+
+
+
 
 </body>
 </html>

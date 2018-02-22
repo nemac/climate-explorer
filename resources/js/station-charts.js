@@ -1,5 +1,8 @@
-var ChartBuilder = function (props, stations_base_url) {
+ChartBuilder = function (props, stations_base_url) {
     var self = this;
+
+    console.log('self');
+    console.log(self);
 
     this.stations_base_url = stations_base_url;
 

@@ -6802,10 +6802,22 @@ body.detail-open #nav-overlay {
 }
 
 /* line 306, ../scss/pages/_stations.scss */
+#stations-spinner {
+  display: none;
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  height: 50px;
+  padding: 10px 14px;
+  background: rgba(255, 255, 255, 0.75);
+  transform: translate(-50%, -50%);
+  z-index: 15;
+}
+
+/* line 318, ../scss/pages/_stations.scss */
 #station-overlay-container {
   position: absolute;
   top: 0;
-  left: 0;
   width: 100%;
   height: 100%;
   opacity: 1;
@@ -6813,7 +6825,7 @@ body.detail-open #nav-overlay {
   visibility: hidden;
   transition: left 0s ease 0.25s, opacity 0.25s ease 0s;
   background: rgba(245, 68, 45, 0.95);
-  z-index: 1000;
+  z-index: 10;
 }
 /* line 52, ../scss/_mixins.scss */
 #station-overlay-container:before, #station-overlay-container:after {
@@ -6825,7 +6837,42 @@ body.detail-open #nav-overlay {
   clear: both;
 }
 
-/* line 318, ../scss/pages/_stations.scss */
+/* line 332, ../scss/pages/_stations.scss */
+#thresholds-container {
+  position: relative;
+  max-width: calc(40% - 10px) !important;
+  background-color: white;
+}
+
+/* line 338, ../scss/pages/_stations.scss */
+#tidal-chart {
+  background-color: white;
+}
+
+/* line 342, ../scss/pages/_stations.scss */
+#tidal-chart-container {
+  margin: 25px;
+  width: 50%;
+}
+
+/* line 346, ../scss/pages/_stations.scss */
+.left_chart {
+  position: relative;
+  width: calc(40% - 10px);
+  float: left;
+  height: 300px;
+  background-color: white;
+}
+
+/* line 354, ../scss/pages/_stations.scss */
+.right_chart {
+  width: calc(40% - 10px);
+  float: left;
+  height: 300px;
+  background-color: white;
+}
+
+/* line 361, ../scss/pages/_stations.scss */
 #station-overlay-close {
   position: absolute;
   top: 10px;
@@ -6835,7 +6882,7 @@ body.detail-open #nav-overlay {
   cursor: pointer;
 }
 
-/* line 330, ../scss/pages/_stations.scss */
+/* line 373, ../scss/pages/_stations.scss */
 #station-overlay-header {
   height: 120px;
   color: #fff;
@@ -6850,11 +6897,11 @@ body.detail-open #nav-overlay {
 #station-overlay-header:after {
   clear: both;
 }
-/* line 336, ../scss/pages/_stations.scss */
+/* line 379, ../scss/pages/_stations.scss */
 #station-overlay-header h3 {
   padding: 0;
 }
-/* line 340, ../scss/pages/_stations.scss */
+/* line 383, ../scss/pages/_stations.scss */
 #station-overlay-header h5 {
   float: left;
   width: 50%;
@@ -6862,31 +6909,30 @@ body.detail-open #nav-overlay {
   font-family: "CESans", Roboto, Helvetica, "Helvetica Neue", Arial, sans-serif;
 }
 
-/* line 350, ../scss/pages/_stations.scss */
+/* line 393, ../scss/pages/_stations.scss */
 .station-overlay-content {
   position: absolute;
   bottom: 0;
-  left: -9999px;
   width: 100%;
   height: calc(100% - 120px);
-  opacity: 0;
+  opacity: 1;
   transition: left 0s ease 0.25s, opacity 0.25s ease 0s;
   padding: 20px;
-  z-index: 1;
+  z-index: 20;
 }
 
-/* line 362, ../scss/pages/_stations.scss */
+/* line 404, ../scss/pages/_stations.scss */
 .station-overlay-column {
   position: relative;
   float: left;
   width: 50%;
   height: 100%;
 }
-/* line 368, ../scss/pages/_stations.scss */
+/* line 410, ../scss/pages/_stations.scss */
 .station-overlay-column.left {
   padding-right: 40px;
 }
-/* line 371, ../scss/pages/_stations.scss */
+/* line 413, ../scss/pages/_stations.scss */
 .station-overlay-column.left:after {
   content: '';
   display: block;
@@ -6899,7 +6945,7 @@ body.detail-open #nav-overlay {
   border-left-color: #fff;
 }
 
-/* line 385, ../scss/pages/_stations.scss */
+/* line 429, ../scss/pages/_stations.scss */
 .year {
   position: absolute;
   bottom: 20px;
@@ -6912,17 +6958,17 @@ body.detail-open #nav-overlay {
   -webkit-transition: 0.25s;
   transition: 0.25s;
 }
-/* line 394, ../scss/pages/_stations.scss */
+/* line 438, ../scss/pages/_stations.scss */
 .year:hover {
   background: rgba(255, 255, 255, 0.9);
 }
-/* line 398, ../scss/pages/_stations.scss */
+/* line 442, ../scss/pages/_stations.scss */
 .year .ui-slider {
   top: 20px;
   left: 10%;
   width: 80%;
 }
-/* line 403, ../scss/pages/_stations.scss */
+/* line 447, ../scss/pages/_stations.scss */
 .year .ui-slider .ui-slider-handle {
   top: -14px;
   width: 36px;
@@ -6938,24 +6984,24 @@ body.detail-open #nav-overlay {
   -webkit-box-shadow: 0 0 4px rgba(0, 88, 207, 0.25);
   box-shadow: 0 0 4px rgba(0, 88, 207, 0.25);
 }
-/* line 416, ../scss/pages/_stations.scss */
+/* line 460, ../scss/pages/_stations.scss */
 .year .ui-slider .ui-slider-handle:hover {
   -moz-box-shadow: 0 0 7px rgba(0, 88, 207, 0.4);
   -webkit-box-shadow: 0 0 7px rgba(0, 88, 207, 0.4);
   box-shadow: 0 0 7px rgba(0, 88, 207, 0.4);
 }
-/* line 422, ../scss/pages/_stations.scss */
+/* line 466, ../scss/pages/_stations.scss */
 .year .year-label {
   position: absolute;
   top: 13px;
   width: 10%;
   text-align: center;
 }
-/* line 428, ../scss/pages/_stations.scss */
+/* line 472, ../scss/pages/_stations.scss */
 .year .year-label.year-min {
   left: 0;
 }
-/* line 432, ../scss/pages/_stations.scss */
+/* line 476, ../scss/pages/_stations.scss */
 .year .year-label.year-max {
   right: 0;
 }

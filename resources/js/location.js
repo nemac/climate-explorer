@@ -494,11 +494,6 @@ Location.prototype.stationSelected = function (feature, event, type) {
         $('#location-stations').removeClass('overlay-on').removeClass('type-tidal');
     });
 
-
-    $('#close-wx-station').on('click', function () {
-        $('#station-data-about').show();
-        //$('#station-data-container').empty();
-    });
 };
 
 function isInDoc(sel) {
