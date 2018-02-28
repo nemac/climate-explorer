@@ -706,7 +706,7 @@ Variables.prototype.countySelected = function (feature, event) {
             '</div>';
         this.popup.show(event.mapBrowserEvent.coordinate, html);
 
-        cwg = climate_widget.graph({
+        self.cwg = climate_widget.graph({
             div: "div#climate-chart",
             dataprefix: "/climate-explorer2-data/data",
             font: "Roboto",

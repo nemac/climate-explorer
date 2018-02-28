@@ -112,8 +112,8 @@
                         metric: "Average Daily Max Temp (°C)"
                     },
                     anomaly: {
-                        english: "Average Daily Max Temp Departure (°F)",
-                        metric: "Average Daily Max Temp Departure (°C)"
+                        english: "Average Daily Max Temp departure (°F)",
+                        metric: "Average Daily Max Temp departure (°C)"
                     }
                 },
                 monthly: {
@@ -160,8 +160,8 @@
                         metric: "Average Daily Min Temp (°C)"
                     },
                     anomaly: {
-                        english: "Average Daily Min Temp Departure (°F)",
-                        metric: "Average Daily Min Temp Departure (°C)"
+                        english: "Average Daily Min Temp departure (°F)",
+                        metric: "Average Daily Min Temp departure (°C)"
                     }
                 },
                 monthly: {
@@ -177,8 +177,8 @@
         {
             id: "days_tmax_gt_90f",
             title: {
-                english: " Days with Maximum Temperature Above 90°F",
-                metric: " Days with Maximum Temperature Above 90°F"
+                english: " Days per year with max above 90°F",
+                metric: " Days per year with max above 90°F"
             },
             acis_elements: {
                 annual: {
@@ -196,22 +196,21 @@
             ytitles: {
                 annual: {
                     absolute: {
-                        english: " Days with Maximum Temperature Above 90°F",
-                        metric: " Days with Maximum Temperature Above 90°F"
+                        english: " Days per year with max above 90°F",
+                        metric: " Days per year with max above 90°F"
                     },
                     anomaly: {
-                        english: " Days with Maximum Temperature Above 90°F",
-                        metric: " Days with Maximum Temperature Above 90°F"
+                        english: " Days per year with max above 90°F",
+                        metric: " Days per year with max above 90°F"
                     }
                 }
-
             }
         },
         {
             id: "days_tmax_gt_95f",
             title: {
-                english: "Days with Maximum Temperature Above 95 °F",
-                metric: "Days with Maximum Temperature Above 35 °C"
+                english: "Days per year with max above 95°F",
+                metric: "Days per year with max above 35°C"
             },
             acis_elements: {
                 annual: {
@@ -229,12 +228,12 @@
             ytitles: {
                 annual: {
                     absolute: {
-                        english: "Days with Maximum Temperature Above 95 °F (d)",
-                        metric: "Days with Maximum Temperature Above 95 °C (d)"
+                        english: "Days per year with max above 95°F",
+                        metric: "Days per year with max above 95°C"
                     },
                     anomaly: {
-                        english: "Days with Maximum Temperature Above 95 °F Departure (d)",
-                        metric: "Days with Maximum Temperature Above 95 °C Departure (d)"
+                        english: "Days per year with max above 95°F departure",
+                        metric: "Days per year with max above 95°C departure"
                     }
                 }
             }
@@ -242,8 +241,8 @@
         {
             id: "days_tmax_gt_100f",
             title: {
-                english: "Days with Maximum Temperature Above 100°F",
-                metric: "Days with Maximum Temperature Above 100°F"
+                english: "Days per year with max above 100°F",
+                metric: "Days per year with max above 100°F"
             },
             acis_elements: {
                 annual: {
@@ -261,12 +260,12 @@
             ytitles: {
                 annual: {
                     absolute: {
-                        english: "Days with Maximum Temperature Above 100°F",
-                        metric: "Days with Maximum Temperature Above 100°F"
+                        english: "Days per year with max above 100°F",
+                        metric: "Days per year with max above 100°F"
                     },
                     anomaly: {
-                        english: " Days with Maximum Temperature Above 100°F",
-                        metric: " Days with Maximum Temperature Above 100°F"
+                        english: " Days per year with max above 100°F",
+                        metric: " Days per year with max above 100°F"
                     }
                 }
             }
@@ -274,8 +273,8 @@
         {
             id: "days_tmax_gt_105f",
             title: {
-                english: "Days with Maximum Temperature Above 105°F",
-                metric: "Days with Maximum Temperature Above 105°F"
+                english: "Days per year with max above 105°F",
+                metric: "Days per year with max above 105°F"
             },
             acis_elements: {
                 annual: {
@@ -293,12 +292,12 @@
             ytitles: {
                 annual: {
                     absolute: {
-                        english: "Days with Maximum Temperature Above 105°F",
-                        metric: "Days with Maximum Temperature Above 105°F"
+                        english: "Days per year with max above 105°F",
+                        metric: "Days per year with max above 105°F"
                     },
                     anomaly: {
-                        english: "Departure Days with Maximum Temperature Above 105°F",
-                        metric: "Departure Days with Maximum Temperature Above 105°F"
+                        english: "Days per year with max above 105°F departure",
+                        metric: "Days per year with max above 105°F departure"
                     }
                 }
             }
@@ -306,8 +305,8 @@
         {
             id: "days_tmax_lt_32f",
             title: {
-                english: "Days with Maximum Temperature Below 32°F",
-                metric: "Days with Maximum Temperature Below 32°F"
+                english: "Days per year with max below 32°F (Icing days)",
+                metric: "Days per year with max below 0°C (Icing days)"
             },
             acis_elements: {
                 annual: {
@@ -325,12 +324,12 @@
             ytitles: {
                 annual: {
                     absolute: {
-                        english: "Days with Maximum Temperature Below 32°F",
-                        metric: "Days with Maximum Temperature Below 32°F"
+                        english: "Days per year with max below 32°F (Icing days)",
+                        metric: "Days per year with max below 0°C (Icing days)"
                     },
                     anomaly: {
-                        english: "Days with Maximum Temperature Below 32°F",
-                        metric: "Days with Maximum Temperature Below 32°F"
+                        english: "Days per year with max below 32°F departure",
+                        metric: "Days per year with max below 0°C departure"
                     }
                 }
             }
@@ -338,8 +337,8 @@
         {
             id: "days_tmin_lt_32f",
             title: {
-                english: "Days with Minimum Temperature Below 32 °F",
-                metric: "Days with Minimum Temperature Below 0 °C"
+                english: "Days per year with min below 32°F (frost days)",
+                metric: "Days per year with min below 0°C (frost days)"
             },
             acis_elements: {
                 annual: {
@@ -357,12 +356,12 @@
             ytitles: {
                 annual: {
                     absolute: {
-                        english: "Days with Minimum Temperature Below 32 °F (d)",
-                        metric: "Days with Minimum Temperature Below 0 °C (d)"
+                        english: "Days per year with min below 32°F (frost days)",
+                        metric: "Days per year with min below 0°C (frost days)"
                     },
                     anomaly: {
-                        english: "Days with Minimum Temperature Below 32 °F (d)",
-                        metric: "Days with Minimum Temperature Below 0 °C (d)"
+                        english: "Days per year with min below 32°F (frost days)",
+                        metric: "Days per year with min below 0°C (frost days)"
                     }
                 }
             }
@@ -370,8 +369,8 @@
         {
             id: "days_tmin_gt_80f",
             title: {
-                english: "Days with Minimum Temperature Above 80°F",
-                metric: "Days with Minimum Temperature Above 80°F"
+                english: "Days per year with min above 80°F",
+                metric: "Days per year with min above 80°F"
             },
             acis_elements: {
                 annual: {
@@ -396,12 +395,12 @@
             ytitles: {
                 annual: {
                     absolute: {
-                        english: "Days with Minimum Temperature Above 80°F",
-                        metric: "Days with Minimum Temperature Above 80°F"
+                        english: "Days per year with min above 80°F",
+                        metric: "Days per year with min above 80°F"
                     },
                     anomaly: {
-                        english: "Departure Days with Minimum Temperature Above 80°F",
-                        metric: "Departure Days with Minimum Temperature Above 80°F"
+                        english: "Days per year with min above 80°F departure",
+                        metric: "Days per year with min above 80°F departure"
                     }
                 }
             }
@@ -409,8 +408,8 @@
         {
             id: "days_tmin_gt_90f",
             title: {
-                english: "Days with Minimum Temperature Above 90°F",
-                metric: "Days with Minimum Temperature Above 90°F"
+                english: "Days per year with min above 90°F",
+                metric: "Days per year with min above 90°F"
             },
             acis_elements: {
                 annual: {
@@ -435,12 +434,12 @@
             ytitles: {
                 annual: {
                     absolute: {
-                        english: "Days with Minimum Temperature Above 90°F",
-                        metric: "Days with Minimum Temperature Above 90°F"
+                        english: "Days per year with min above 90°F",
+                        metric: "Days per year with min above 90°F"
                     },
                     anomaly: {
-                        english: "Departure Days with Minimum Temperature Above 90°F",
-                        metric: "Departure Days with Minimum Temperature Above 90°F"
+                        english: "Days per year with min above 90°F departure",
+                        metric: "Days per year with min above 90°F departure"
                     }
                 }
             }
@@ -467,12 +466,12 @@
             ytitles: {
                 annual: {
                     absolute: {
-                        english: "Heating Degree Days (HDD F)",
-                        metric: "Heating Degree Days (HDD C)"
+                        english: "Heating Degree Days (°F-days)",
+                        metric: "Heating Degree Days (°C-days)"
                     },
                     anomaly: {
-                        english: "Heating Degree Days Departure (HDD F)",
-                        metric: "Heating Degree Days Departure (HDD C)"
+                        english: "Heating Degree Days departure (°F-days)",
+                        metric: "Heating Degree Days departure (°C-days)"
                     }
                 }
             }
@@ -499,12 +498,12 @@
             ytitles: {
                 annual: {
                     absolute: {
-                        english: "Cooling Degree Days (CDD F)",
-                        metric: "Cooling Degree Days (CDD C)"
+                        english: "Cooling Degree Days (°F-days)",
+                        metric: "Cooling Degree Days (°C-days)"
                     },
                     anomaly: {
-                        english: "Cooling Degree Days Departure (CDD F)",
-                        metric: "Cooling Degree Days Departure (CDD C)"
+                        english: "Cooling Degree Days departure (°F-days)",
+                        metric: "Cooling Degree Days departure (°C-days)"
                     }
                 }
             }
@@ -530,12 +529,12 @@
             ytitles: {
                 annual: {
                     absolute: {
-                        english: "Growing Degree Days (d)",
-                        metric: "Growing Degree Days (d)"
+                        english: "Growing Degree Days (°F-days)",
+                        metric: "Growing Degree Days (°C-days)"
                     },
                     anomaly: {
-                        english: "Departure Growing Degree Days (d)",
-                        metric: "Departure Growing Degree Days (d)"
+                        english: "Growing Degree Days departure (°F-days)",
+                        metric: "Growing Degree Days departure (°C-days)"
                     }
                 }
             }
@@ -553,8 +552,7 @@
                     "limit": [86, 50],
                     "interval": "yly",
                     "reduce": "sum"
-                },
-
+                }
             },
             dataconverters: {
                 metric: no_conversion,
@@ -563,15 +561,14 @@
             ytitles: {
                 annual: {
                     absolute: {
-                        english: "Modified Growing Degree Days",
-                        metric: "Modified Growing Degree Days"
+                        english: "Modified Growing Degree Days (°F-days)",
+                        metric: "Modified Growing Degree Days (°C-days)"
                     },
                     anomaly: {
-                        english: "Departure Modified Growing Degree Days",
-                        metric: "Departure Modified Growing Degree Days"
+                        english: "Modified Growing Degree Days departure (°F-days)",
+                        metric: "Modified Growing Degree Days departure (°C-days)"
                     }
-                },
-
+                }
             }
         },
         {
@@ -605,26 +602,26 @@
             ytitles: {
                 annual: {
                     absolute: {
-                        english: "Total Precipitation (in/y)",
-                        metric: "Total Precipitation (mm/y)"
+                        english: "Total Precipitation",
+                        metric: "Total Precipitation"
                     },
                     anomaly: {
-                        english: "Total Precipitation Departure (%)",
-                        metric: "Total Precipitation Departure (%)"
+                        english: "Total Precipitation departure (%)",
+                        metric: "Total Precipitation departure (%)"
                     }
                 },
                 monthly: {
-                    english: "Total Precipitation (in/y)",
-                    metric: "Total Precipitation (mm/y)"
+                    english: "Total Precipitation",
+                    metric: "Total Precipitation"
                 },
                 seasonal: {
-                    english: "Total Precipitation (in/season)",
-                    metric: "Total Precipitation (mm/season)"
+                    english: "Total Precipitation",
+                    metric: "Total Precipitation"
                 }
             }
         },
         {
-            id: "days_dry_days",
+            id: "days_pcpn_lt_0.01in",
             title: {
                 english: "Dry Days",
                 metric: "Dry Days"
@@ -653,25 +650,25 @@
             ytitles: {
                 annual: {
                     absolute: {
-                        english: "Dry Days",
-                        metric: "Dry Days"
+                        english: "Dry Days (days/period)",
+                        metric: "Dry Days (days/period)"
                     },
                     anomaly: {
-                        english: "Dry Days",
-                        metric: "Dry Days"
+                        english: "Dry Days (days/period)",
+                        metric: "Dry Days (days/period)"
                     }
                 },
                 seasonal: {
-                    english: "Dry Days",
-                    metric: "Dry Days"
+                    english: "Dry Days (days/period)",
+                    metric: "Dry Days (days/period)"
                 }
             }
         },
         {
             id: "days_pcpn_gt_1in",
             title: {
-                english: "Days of Precipitation Above 1 in",
-                metric: "Days of Precipitation Above 25.3 mm"
+                english: "Days per year with more than 1in precip",
+                metric: "Days per year with more than 25.3mm precip"
             },
             acis_elements: {
                 annual: {
@@ -689,12 +686,12 @@
             ytitles: {
                 annual: {
                     absolute: {
-                        english: "Days of Precipitation Above 1 in (d)",
-                        metric: "Days of Precipitation Above 25.3 mm (d)"
+                        english: "Days per year with more than 1in precip",
+                        metric: "Days per year with more than 25.3mm precip"
                     },
                     anomaly: {
-                        english: "Days of Precipitation Above 1 in Departure (d)",
-                        metric: "Days of Precipitation Above 25.3 mm Departure (d)"
+                        english: "Days per year with more than 1in precip departure",
+                        metric: "Days per year with more than 25.3mm precip departure"
                     }
                 }
 
@@ -703,8 +700,8 @@
         {
             id: "days_pcpn_gt_2in",
             title: {
-                english: "Days of Precipitation Above 2 in",
-                metric: "Days of Precipitation Above 50.8 mm"
+                english: "Days per year with more than 2in precip",
+                metric: "Days per year with more than 50.8mm precip"
             },
             acis_elements: {
                 annual: {
@@ -723,12 +720,12 @@
             ytitles: {
                 annual: {
                     absolute: {
-                        english: "Days of Precipitation Above 2 in (d)",
-                        metric: "Days of Precipitation Above 50.8mm (d)"
+                        english: "Days per year with more than 2in precip",
+                        metric: "Days of Precipitation Above 50.8mm"
                     },
                     anomaly: {
-                        english: "Days of Precipitation Above 2 in Departure (d)",
-                        metric: "Days of Precipitation Above 50.8mm Departure (d)"
+                        english: "Days per year with more than 2in precip departure",
+                        metric: "Days of Precipitation Above 50.8mm departure"
                     }
                 }
 
@@ -737,8 +734,8 @@
         {
             id: "days_pcpn_gt_3in",
             title: {
-                english: "Days of Precipitation Above 3 in",
-                metric: "Days of Precipitation Above 76.2 mm"
+                english: "Days per year with more than 3in precip",
+                metric: "Days per year with more than 76.2mm precip"
             },
             acis_elements: {
                 annual: {
@@ -756,12 +753,12 @@
             ytitles: {
                 annual: {
                     absolute: {
-                        english: "Days of Precipitation Above 3 in (d)",
-                        metric: "Days of Precipitation Above 76.2 mm (d)"
+                        english: "Days per year with more than 3in precip",
+                        metric: "Days per year with more than 76.2mm precip"
                     },
                     anomaly: {
-                        english: "Days of Precipitation Above 3 in Departure (d)",
-                        metric: "Days of Precipitation Above 76.2 mm Departure (d)"
+                        english: "Days per year with more than 3in precip departure",
+                        metric: "Days per year with more than 76.2mm precip departure"
                     }
                 },
 
@@ -770,8 +767,8 @@
         {
             id: "days_pcpn_gt_4in",
             title: {
-                english: "Days of Precipitation Above 4 in",
-                metric: "Days of Precipitation Above 101.6 mm"
+                english: "Days per year with more than 4in precip",
+                metric: "Days per year with more than 101.6mm precip"
             },
             acis_elements: {
                 annual: {
@@ -789,12 +786,12 @@
             ytitles: {
                 annual: {
                     absolute: {
-                        english: "Days of Precipitation Above 4 in (d)",
-                        metric: "Days of Precipitation Above 101.6 mm (d)"
+                        english: "Days per year with more than 4in precip",
+                        metric: "Days per year with more than 101.6mm precip"
                     },
                     anomaly: {
-                        english: "Days of Precipitation Above 4 in Departure (d)",
-                        metric: "Days of Precipitation Above 101.6 mm Departure (d)"
+                        english: "Days per year with more than 4in precip departure",
+                        metric: "Days per year with more than 101.6mm precip departure"
                     }
                 }
             }
@@ -1055,7 +1052,9 @@
             }, get_region_parameters(obj)))
         })
             .then(function (response) {
+
                 var data;
+
                 if (obj.options.frequency === 'annual') {
                     data = [];
                     response.data.forEach(function (record) {
@@ -1414,6 +1413,10 @@
             var arow = [row[0]];
             var i;
             for (i = 1; i < row.length; ++i) {
+                if (row[i] === null){
+                    arow[i] = row[i];
+                    continue;
+                }
                 arow[i] = row[i] - ref;
             }
             return arow;
@@ -1425,6 +1428,10 @@
             var arow = [row[0]];
             var i;
             for (i = 1; i < row.length; ++i) {
+                if (row[i] === null){
+                    arow[i] = row[i];
+                    continue;
+                }
                 arow[i] = 100 * row[i] / ref;
             }
             return arow;
@@ -1560,7 +1567,8 @@
           }
         }, */
         plotarea: {
-            marginleft: 55
+            marginleft: 55,
+            marginright: 0
         },
         horizontalaxis: [{
             id: "x_annual",
@@ -1977,7 +1985,7 @@
                 frequency: "annual",
                 scenario: "both",
                 timeperiod: "2025",
-                presentation: "absolute", // deprecated
+                presentation: "absolute",
                 hrange: "minmax", // deprecated
                 prange: "minmax", // deprecated
                 pmedian: false,
