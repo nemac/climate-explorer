@@ -666,3 +666,5 @@ $(window).resize(function () {
 $(window).resize(function () {
   derivedChart.resize();
 });
+
+

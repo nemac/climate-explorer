@@ -331,7 +331,10 @@
 
 #thresholds-container {
   position:relative;
-  max-width: calc(40% - 10px) !important;
+  padding:25px;
+  margin-left:20vw !important;
+  max-width: 40vw !important;
+  max-height: 40vh !important;
   background-color:white;
 }
 
@@ -341,20 +344,24 @@
 
 #tidal-chart-container{
   margin:25px;
-  width:50%;
+  max-height: 50vh !important;
+  width: calc(80% - 50px);
 }
 .left_chart {
   position:relative;
-  width: calc(40% - 10px);
+  width: calc(40% - 40px);
+  margin:0 20px;
   float: left;
-  height: 300px;
+  height: 60vh;
   background-color: white;
 }
 
 .right_chart {
-  width: calc(40% - 10px);
+  position:relative;
+  width: calc(40% - 40px);
+  margin:0 20px 0 20px;
   float: left;
-  height: 300px;
+  height: 60vh;
   background-color: white;
 }
 
@@ -387,6 +394,61 @@
     font-family: $sans-book;
   }
 }
+
+.form-group {
+  @include clearfix;
+  font-size: 0.75rem;
+
+  label {
+    color: $white;
+    display: block;
+  }
+
+  select {
+    font-family: $roboto;
+    font-size: 0.75rem;
+    border: 0 !important;
+    padding: 3px;
+  }
+
+  input {
+    display: inline-block;
+    width: calc(100%);
+    background-color: #FFF;
+    border: 0;
+    font-family: $roboto;
+    font-size: 0.75rem;
+    line-height: 1.2;
+    padding: 4px 8px;
+  }
+
+  .field-pair {
+    float: left;
+
+    &.append {
+      input {
+        width: 100%;
+      }
+
+      .append {
+        color: $white;
+        display: inline-block;
+        padding-left: 4px;
+        vertical-align: middle;
+      }
+    }
+  }
+
+}
+
+.station_overlay_text p {
+    margin: 20px 40px;
+    width: calc(80% - 80px);
+    color: $white !important;
+    font-size: 1.125rem;
+    font-family: $roboto;
+}
+
 
 // content
 

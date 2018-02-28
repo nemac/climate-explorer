@@ -109,6 +109,12 @@ ChartBuilder.prototype.buildChart = function () {
     //console.log('precip', precip);
     var precipTmpl = this.getTemplate('precipitation', precip);
     $('#multi-precip-chart').multigraph({'muglString': precipTmpl});
+
+
+    $(window).resize(function() {
+        $('#multi-precip-chart').resize();
+        $('#multi-chart').resize();
+    });
 };
 
 
@@ -343,3 +349,5 @@ ChartBuilder.prototype.getTemplate = function (type, values) {
 
     return templates[type];
 };
+
+

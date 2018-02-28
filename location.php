@@ -89,10 +89,9 @@ if (!isValidLongitude($lon)) {
                 <h4>Jump to:</h4>
 
                 <ul>
-                    <li><a href="<?php $current_domain ?>#location-temperature">Temperature</a></li>
-                    <li><a href="<?php $current_domain ?>#location-precipitation">Precipitation</a></li>
-                    <li><a href="<?php $current_domain ?>#location-derived">Other Variables</a></li>
-                    <li><a href="<?php $current_domain ?>#location-stations">Stations</a></li>
+                    <li><a href="<?php $current_domain ?>#location-temperature" class="smooth-scroll">Temperature</a></li>
+                    <li><a href="<?php $current_domain ?>#location-precipitation" class="smooth-scroll">Precipitation</a></li>
+                    <li><a href="<?php $current_domain ?>#location-derived" class="smooth-scroll">Other Variables</a></li>
                     <!--<li><a href="#location-impacts">Relevant Impacts</a></li>-->
                 </ul>
             </div>
@@ -723,7 +722,7 @@ if (!isValidLongitude($lon)) {
 
                     <span class="trigger data-options-trigger"><span class="hamburger"><span class="bar"></span></span><span class="text">View</span></span>
 
-                    <h3 class="accent-color"><span class="icon icon-drought"></span>Other</h3>
+                    <h3 class="accent-color"><span class="icon icon-drought"></span>Other Variables</h3>
 
                     <ul class="data-options">
                         <li class="active accent-border">

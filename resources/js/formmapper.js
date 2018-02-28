@@ -42,8 +42,7 @@
     "formatted_address location_type bounds").split(" ");
 
   // See: Places Details Responses at https://developers.google.com/maps/documentation/javascript/places#place_details_responses on Google Developers.
-  var placesDetails = ("id url website vicinity reference name rating " +
-    "international_phone_number icon formatted_phone_number").split(" ");
+  var placesDetails = ("postal_code").split(" ");
 
   // The actual plugin constructor.
   function formmapper(input, options) {

@@ -398,6 +398,7 @@ Variables.prototype.wire = function () {
     });
 
 
+    this.map.addInteraction(select);
     //var selector
     $('#variable-options-container .fs-dropdown-item').on('click', function (e) {
         self.selectedVariable = $(this).data().value;
@@ -411,6 +412,7 @@ Variables.prototype.wire = function () {
         } else {
             legendFilename = self.selectedVariable;
         }
+
 
         $('#vars-legend .legend #legend-container').html('<img class="legend-image" src="resources/img/legends/' + legendFilename + '.png">');
 
@@ -447,7 +449,13 @@ Variables.prototype.wire = function () {
 
     $('#map-seasons-container .fs-dropdown-item').on('click', function (e) {
         self.selectedSeason = $(this).data().value;
-        self.updateTiledLayer(true);
+
+
+        le_option_selected = $(".emissions-low .fs-dropdown-selected").text();
+        he_option_selected = $(".emissions-high .fs-dropdown-selected").text();
+
+
+        self.updateTiledLayer(true, true,le_option_selected,he_option_selected);
 
         var legendFilename;
 
@@ -464,11 +472,16 @@ Variables.prototype.wire = function () {
 
 
 
-    this.map.addInteraction(select);
 
     this.selected_collection = select.getFeatures();
 
     select.on('select', function (e) {
+
+        $('#variable-options-container .fs-dropdown-item').on('click', function (e) {
+            self.popup.hide();
+            var features = select.getFeatures();
+            features.remove(feature);
+        });
 
         var features = select.getFeatures();
         var feature = self.map.forEachFeatureAtPixel(e.mapBrowserEvent.pixel, function (feature, layer) {
@@ -879,6 +892,9 @@ Variables.prototype.updateTiledLayer = function (replace, preserveTime,le_option
 
     var hist = null;
     var season = ( seasons.indexOf(this.selectedVariable) !== -1 ) ? '-' + this.selectedSeason : '';
+
+    console.log('season');
+    console.log(season);
 
     if (season === '') {
         $('#map-seasons-container .fs-dropdown-selected').hide();

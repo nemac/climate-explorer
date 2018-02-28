@@ -421,7 +421,7 @@ $stations_content = array(
 
                 <div class="nav-content tabs">
                     <div id="nav-stations-list" class="tab nav-content-tab">
-                        <ul class="col-2">
+                        <ul class="col-3">
                             <?php
 
                             foreach ($stations_content as $station) {

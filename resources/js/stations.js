@@ -266,11 +266,13 @@ Stations.prototype.stationSelected = function (feature, event, type) {
                 '   </div>' +
                 '   <div id="multi-chart" class="left_chart"></div>' +
                 '   <div id="multi-precip-chart" class="right_chart"></div>' +
-                '   <div style="clear:both">' +
-                '   <h5>Scroll, click-and-drag, or hold down your SHIFT key to scroll on either graph or axis to view more years or adjust the display.</h5>' +
-                '   <h5>Blue bars on temperature graphs indicate the full range of observed temperatures for each day; the green band shows the average temperature range from 1981-2010. Comparing the two makes it easy to spot periods of above- and below-normal temperature.</h5>' +
-                '   <h5>Green areas on precipitation graphs track year-to-date cumulative precipitation. Comparing observed precipitation to normal year-to-date totals (the black line) shows whether each season received above-, below-, or near-normal amounts of precipitation. Vertical portions of the year-to-date precipitation line show days when precipitation occurred.</h5>' +
-                '   <h5>Data are from stations in the Global Historical Climatology Network-Daily dataset, compiled by the National Centers for Environmental Information and served by ACIS.</h5>' +
+                '   <div style="clear:both"></div>' +
+                '   <div class="station_overlay_text">' +
+                '       <p style="font-weight:bold">Scroll, click-and-drag, or hold down your SHIFT key to scroll on either graph or axis to view more years or adjust the display.</p>' +
+                '       <p>Blue bars on temperature graphs indicate the full range of observed temperatures for each day; the green band shows the average temperature range from 1981-2010. Comparing the two makes it easy to spot periods of above- and below-normal temperature.</p>' +
+                '       <p>Green areas on precipitation graphs track year-to-date cumulative precipitation. Comparing observed precipitation to normal year-to-date totals (the black line) shows whether each season received above-, below-, or near-normal amounts of precipitation. Vertical portions of the year-to-date precipitation line show days when precipitation occurred.</p>' +
+                '       <p>Data are from stations in the Global Historical Climatology Network-Daily dataset, compiled by the National Centers for Environmental Information and served by ACIS.</p>' +
+                '   </div>' +
                 '</div>';
 
 
@@ -291,7 +293,7 @@ Stations.prototype.stationSelected = function (feature, event, type) {
                 '       <h5>Name: ' + props.name + '</h5>' +
                 '       <h5>Station ID: ' + props.station + '</h5>' +
                 '   </div>' +
-                '   <div style="margin:25px">' +
+                '   <div style="margin:25px" class="form-group">' +
                 '       <div class="field-pair field-id">' +
                 '           <label for="station">Station Id:</label>' +
                 '           <div class="field">' +
@@ -323,7 +325,12 @@ Stations.prototype.stationSelected = function (feature, event, type) {
                 '       </div>' +
                 '   </div>' +
                 '<div style="margin:25px" id="thresholds-container"></div>' +
+                '   <div class="station_overlay_text" style="text-align:center">' +
+                '       <p>To limit the tool to show to years with solid data records, we excluded years that are missing more than five daily temperature reports in a single month, or more than one precipitation report in a single month. Data are from stations in the Global Historical Climatology Network-Daily dataset, compiled by the National Centers for Environmental Information, and served by ACIS.</p>' +
+                '   </div>' +
                 '</div>';
+
+
 
             $('#station-overlay-container').append(html);
 
@@ -450,7 +457,10 @@ Stations.prototype.stationSelected = function (feature, event, type) {
                 '<option value="9447130">Seattle, WA</option>' +
                 '<option value="1612340">Honolulu, HI</option>' +
                 '</select>' +
-                '<canvas id="tidal-chart" style="width:100%; height:300px"></canvas>' +
+                '<canvas id="tidal-chart" style="width:100vw !important; height:60vh !important;"></canvas>' +
+                '   <div class="station_overlay_text" style="text-align:center">' +
+                '       <p>Gray bars show the number of days per year when the localtion experienced high-tide flooding in the past. Red and blue bars show projections for the average number of days.</p>' +
+                '   </div>' +
                 '</div>';
 
 

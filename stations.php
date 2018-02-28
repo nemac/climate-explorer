@@ -88,12 +88,7 @@ if ($cut_url == $current_url) {
         <li class="about-link"><a href="#detail-daily_vs_climate" class="nav-detail-link" id="about-stations-link">About Daily vs. Climate</a></li>
     </ul>
 
-    <div id="vars-legend" class="legend-wrap left-filler">
-        <div class="legend">
-            <h5>Legend</h5>
-            <div id="legend-container"></div>
-        </div>
-    </div>
+    <div id="vars-legend" class="legend-wrap left-filler"></div>
 </header>
 
 <div id="viewport">
