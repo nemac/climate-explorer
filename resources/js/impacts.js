@@ -5,7 +5,7 @@ var Impacts = function (page, data_base_url) {
     var qtrs = location.search;
     var qs = this.parseQueryString(qtrs);
 
-    this.activeYear = qs.active_year || 2010;
+    this.activeYear = qs.active_year || 2020;
     this.page = page;
     this.subLayers = {};
     this.mapVariables();
@@ -20,11 +20,11 @@ var Impacts = function (page, data_base_url) {
 
 Impacts.prototype.mapVariables = function () {
     this.varMapping = {
-        'tmax': 'Ave Daily Max Temp (°F)',
-        'tmin': 'Ave Daily Min Temp (°F)',
-        'days_tmin_lt_32f': 'Days With Minimum Below 32F&deg; F',
-        'days_tmax_gt_90f': 'Days w/ max > 90°F',
-        'days_tmax_gt_95f': 'Days With Maximum Above 95&deg; F',
+        'tmax': 'Avg Daily Max Temp (°F)',
+        'tmin': 'Avg Daily Min Temp (°F)',
+        'days_tmin_lt_32f': 'Days With Minimum Below 32 &deg;F',
+        'days_tmax_gt_90f': 'Days w/ max > 90 &deg;F',
+        'days_tmax_gt_95f': 'Days With Maximum Above 95 &deg;F',
         'pcpn': 'Total precip',
         'days_pcpn_gt_1in': 'Days of Precipitation Above 1 Inch',
         'cdd_65f': 'Cooling Degree Days',

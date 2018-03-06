@@ -58,7 +58,7 @@ $lockdown = 1;
 
             <div id="home-text" class="splash-text">
               <h1>The Climate Explorer</h1>
-              <p>Explore graphs and maps of historical and projected climate trends in your local area. Check for past events to help you anticipate future conditions.</p>
+              <p>Explore graphs and maps of historical and projected climate trends for any county in the contiguous United States.</p>
             </div>
 
             <ul id="home-menu" class="menu blue-menu">

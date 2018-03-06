@@ -332,10 +332,48 @@
 #thresholds-container {
   position:relative;
   padding:25px;
-  margin-left:20vw !important;
-  max-width: 40vw !important;
-  max-height: 40vh !important;
+  margin-left:20%;
+  max-width: 75% !important;
   background-color:white;
+}
+
+/* line 332, ../scss/pages/_stations.scss */
+#thresholds-container {
+  position: relative;
+  padding: 25px;
+  margin-left: 460px;
+  min-height:500px;
+  margin-right:calc(20% + 50px);
+  max-width: 75% !important;
+  background-color: white;
+}
+
+#threshold_inputs {
+  display: block;
+  position: absolute;
+  margin-left: 35px;
+  color: white;
+  font-size: 1.6em;
+  input {
+    background-color: #F44C36;
+    padding: 10px;
+    margin-top: 13px;
+    margin-bottom: 13px;
+    border: 5px solid white;
+    color: white;
+
+    width:120px;
+    font-size: 1.3em;
+  }
+  select {
+    background-color: #F44C36;
+    padding: 10px;
+    margin-top: 13px;
+    margin-bottom: 13px;
+    border: 5px solid white;
+    color: white;
+    font-size: 1.3em;
+  }
 }
 
 #tidal-chart {
@@ -352,7 +390,7 @@
   width: calc(40% - 40px);
   margin:0 20px;
   float: left;
-  height: 60vh;
+  height: 40vh;
   background-color: white;
 }
 
@@ -361,7 +399,7 @@
   width: calc(40% - 40px);
   margin:0 20px 0 20px;
   float: left;
-  height: 60vh;
+  height: 40vh;
   background-color: white;
 }
 
@@ -441,6 +479,8 @@
 
 }
 
+
+
 .station_overlay_text p {
     margin: 20px 40px;
     width: calc(80% - 80px);
@@ -450,6 +490,10 @@
 }
 
 
+.station_overlay_text {
+  overflow: auto;
+  max-height: 100vh;
+}
 // content
 
 .station-overlay-content {

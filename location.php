@@ -151,7 +151,7 @@ if (!isValidLongitude($lon)) {
 
                     <ul class="data-options">
                         <li class="active accent-border">
-                            <h4 id="var-tmax"><a href="<?php $current_domain ?>#" class="text">Ave Daily Max Temp (°F)</a><a href="<?php $current_domain ?>#detail-tmax" class="icon icon-help nav-detail-link"></a></h4>
+                            <h4 id="var-tmax"><a href="<?php $current_domain ?>#" class="text">Avg Daily Max Temp (°F)</a><a href="<?php $current_domain ?>#detail-tmax" class="icon icon-help nav-detail-link"></a></h4>
                             <ul class="location-resolution">
                                 <li class="active accent-border"><a class="accent-color">Annual</a></li>
                                 <li class="seasonal-monthly"><a>Monthly</a></li>
@@ -160,7 +160,7 @@ if (!isValidLongitude($lon)) {
                         </li>
 
                         <li class="">
-                            <h4 id="var-tmin"><a href="<?php $current_domain ?>#" class="text">Ave Daily Min Temp (°F)</a><a href="<?php $current_domain ?>#detail-tasmin" class="icon icon-help nav-detail-link"></a></h4>
+                            <h4 id="var-tmin"><a href="<?php $current_domain ?>#" class="text">Avg Daily Min Temp (°F)</a><a href="<?php $current_domain ?>#detail-tasmin" class="icon icon-help nav-detail-link"></a></h4>
                             <ul class="location-resolution">
                                 <li><a>Annual</a></li>
                                 <li class="seasonal-monthly"><a>Monthly</a></li>
@@ -204,7 +204,7 @@ if (!isValidLongitude($lon)) {
                         </li>
 
                         <li class="">
-                            <h4 id="var-days_tmin_lt_32f"><a href="<?php $current_domain ?>#" class="text">Days w/ min < 32°F</a><a href="<?php $current_domain ?>#detail-days_tmin_blw_0" class="icon icon-help nav-detail-link"></a></h4>
+                            <h4 id="var-days_tmin_lt_32f"><a href="<?php $current_domain ?>#" class="text">Days w/ min < 32°F</a><a href="<?php $current_domain ?>#detail-days_tmin_lt_32f" class="icon icon-help nav-detail-link"></a></h4>
                             <ul>
                                 <li><a>Annual</a></li>
                             </ul>
@@ -271,7 +271,7 @@ if (!isValidLongitude($lon)) {
                         </div>
                         <div class="row">
                             <div class="six columns">
-                                <label for="median">Show Medians</label>
+                                <label for="median">Show Averages</label>
                                 <select id="median" class="u-full-width">
                                     <option value="true" selected="selected">Show</option>
                                     <option value="false">Hide</option>
@@ -310,12 +310,12 @@ if (!isValidLongitude($lon)) {
                 <div id="temperature-tabs" class="data-accordion-wrap">
                     <div class="data-accordion">
 
-                        <div id="temperature-chart" class="data-accordion-tab data-chart accent-background">
+                        <div id="temperature-chart" class="data-accordion-tab data-chart accent-background open">
                             <header>
                                 <h4>
                                     <span class="icon icon-emission-scenario"></span> <span class="text">
                                 Chart<span class="full-title">: <?php echo $county ?></span>
-                                <span class="source" id="temp-chart-name">Ave Daily Max Temp (°F)</span>
+                                <span class="source" id="temp-chart-name">Avg Daily Max Temp (°F)</span>
                               </span>
                                 </h4>
 
@@ -351,12 +351,12 @@ if (!isValidLongitude($lon)) {
                                                 <div class="legend-item-line selected" id="rcp85-line"></div>
                                                 <div class="legend-item-line selected" id="rcp45-line"></div>
                                             </div>
-                                            <span class="legend-item-line-label">Medians</span>
+                                            <span class="legend-item-line-label">Averages</span>
                                         </div>
                                     </div>
                                 </div>
                                 <div class="range">
-                                    <div class="chart-range" id="slider-range" data-start="2010" data-end="2100"></div>
+                                    <div class="chart-range" id="slider-range" data-start="2020" data-end="2100"></div>
                                     <div class="ui-slider-label range-label min" id="temp-range-low">1950</div>
                                     <div class="ui-slider-label range-label mid" id="temp-range-mid" style="display:none">30 Years Centered in 2050
                                     </div>
@@ -370,7 +370,7 @@ if (!isValidLongitude($lon)) {
                                 <h4 class="accent-color">
                                     <span class="icon icon-district"></span> <span class="text">
                                         Map<span class="full-title">: <?php echo $county ?></span>
-                                        <span class="source" id="temp-map-name">Ave Daily Max Temp (°F)</span>
+                                        <span class="source" id="temp-map-name">Avg Daily Max Temp (°F)</span>
                                       </span>
                                 </h4>
 
@@ -394,7 +394,7 @@ if (!isValidLongitude($lon)) {
                                     <div id="temperature-swipeImg" class="handle">
                                         <div class="emissions-low">
 
-                                            <select class="dropdown" id="le-options" style="width:125px">
+                                            <select class="dropdown swipe-dropdown" id="temperature-le-options" style="width:125px">
                                                 <option value="lower_historical">HISTORICAL</option>
 
                                                 <option value="lower">LOWER EMISSIONS</option>
@@ -405,7 +405,7 @@ if (!isValidLongitude($lon)) {
                                         </div>
                                         <div class="emissions-high">
 
-                                            <select class="dropdown swipe-dropdown" id="he-options" style="width:125px">
+                                            <select class="dropdown swipe-dropdown" id="temperature-he-options" style="width:125px">
 
                                                 <option value="higher">HIGHER EMISSIONS</option>
                                                 <option value="higher_historical">HISTORICAL</option>
@@ -425,7 +425,7 @@ if (!isValidLongitude($lon)) {
 
                                 <div class="year" id="temperature-map-slider-container">
                                     <div class="year-label year-min">1950</div>
-                                    <div class="" id="temperature-map-time-slider" data-min="1950" data-max="2090" data-value="2010"></div>
+                                    <div class="" id="temperature-map-time-slider" data-min="1950" data-max="2090" data-value="2020"></div>
                                     <div class="year-label year-max">2090</div>
                                 </div>
 
@@ -547,7 +547,7 @@ if (!isValidLongitude($lon)) {
                         </div>
                         <div class="row">
                             <div class="six columns">
-                                <label for="precip-median">Show Medians</label>
+                                <label for="precip-median">Show Averages</label>
                                 <select id="precip-median" class="u-full-width">
                                     <option value="true" selected="selected">Show</option>
                                     <option value="false">Hide</option>
@@ -583,7 +583,7 @@ if (!isValidLongitude($lon)) {
 
                 <div id="precipitation-tabs" class="data-accordion-wrap">
                     <div class="data-accordion">
-                        <div id="precipitation-chart" class="data-accordion-tab data-chart accent-background">
+                        <div id="precipitation-chart" class="data-accordion-tab data-chart accent-background open">
                             <header>
                                 <h4>
                                     <span class="icon icon-emission-scenario"></span> <span class="text">
@@ -623,12 +623,12 @@ if (!isValidLongitude($lon)) {
                                                 <div class="legend-item-line selected" id="preciprcp85-line"></div>
                                                 <div class="legend-item-line selected" id="preciprcp45-line"></div>
                                             </div>
-                                            <span class="legend-item-line-label">Medians</span>
+                                            <span class="legend-item-line-label">Averages</span>
                                         </div>
                                     </div>
                                 </div>
                                 <div class="range">
-                                    <div class="chart-range" id="precip-slider-range" data-start="2010" data-end="2100"></div>
+                                    <div class="chart-range" id="precip-slider-range" data-start="2020" data-end="2100"></div>
                                     <div class="ui-slider-label range-label min" id="precip-range-low">1950</div>
                                     <div class="ui-slider-label range-label mid" id="precip-range-mid" style="display:none">30 Years Centered in 2050
                                     </div>
@@ -666,7 +666,7 @@ if (!isValidLongitude($lon)) {
                                     <div id="precipitation-swipeImg" class="handle">
                                         <div class="emissions-low">
 
-                                            <select class="dropdown" id="le-options" style="width:125px">
+                                            <select class="dropdown swipe-dropdown" id="precipitation-le-options" style="width:125px">
                                                 <option value="lower_historical">HISTORICAL</option>
 
                                                 <option value="lower">LOWER EMISSIONS</option>
@@ -677,7 +677,7 @@ if (!isValidLongitude($lon)) {
                                         </div>
                                         <div class="emissions-high">
 
-                                            <select class="dropdown swipe-dropdown" id="he-options" style="width:125px">
+                                            <select class="dropdown swipe-dropdown" id="precipitation-he-options" style="width:125px">
 
                                                 <option value="higher">HIGHER EMISSIONS</option>
                                                 <option value="higher_historical">HISTORICAL</option>
@@ -695,7 +695,7 @@ if (!isValidLongitude($lon)) {
 
                                 <div class="year" id="precipitation-map-slider-container">
                                     <div class="year-label year-min">1950</div>
-                                    <div class="" id="precipitation-map-time-slider" data-min="1950" data-max="2090" data-value="2010"></div>
+                                    <div class="" id="precipitation-map-time-slider" data-min="1950" data-max="2090" data-value="2020"></div>
                                     <div class="year-label year-max">2090</div>
                                 </div>
 
@@ -805,7 +805,7 @@ if (!isValidLongitude($lon)) {
                         </div>
                         <div class="row">
                             <div class="six columns">
-                                <label for="derived-median">Show Medians</label>
+                                <label for="derived-median">Show Averages</label>
                                 <select id="derived-median" class="u-full-width">
                                     <option value="true" selected="selected">Show</option>
                                     <option value="false">Hide</option>
@@ -842,7 +842,7 @@ if (!isValidLongitude($lon)) {
                 <div id="derived-tabs" class="data-accordion-wrap">
                     <div class="data-accordion">
 
-                        <div id="derived-chart" class="data-accordion-tab data-chart accent-background">
+                        <div id="derived-chart" class="data-accordion-tab data-chart accent-background open">
                             <header>
                                 <h4>
                                     <span class="icon icon-emission-scenario"></span> <span class="text">
@@ -858,7 +858,7 @@ if (!isValidLongitude($lon)) {
 
                             <div class="data-accordion-content chart">
                                 <div class="chart-wrap">
-                                    <div id="chart-345" class="chart-canvas" data-chart-ID="345" style="width:100%"></div>
+                                    <div id="chart-345" class="chart-canvas" data-chart-ID="345"></div>
                                     <div class="chart-legend" id="derive-chart">
                                         <div id="derive-historical-obs" class="legend-item legend-item-range">
                                             <div class="legend-item-line-container">
@@ -883,13 +883,13 @@ if (!isValidLongitude($lon)) {
                                                 <div class="legend-item-line selected" id="derivercp85-line"></div>
                                                 <div class="legend-item-line selected" id="derivercp45-line"></div>
                                             </div>
-                                            <span class="legend-item-line-label">Medians</span>
+                                            <span class="legend-item-line-label">Averages</span>
                                         </div>
                                     </div>
                                 </div>
 
                                 <div class="range">
-                                    <div class="chart-range" id="derived-slider-range" data-start="2010" data-end="2100"></div>
+                                    <div class="chart-range" id="derived-slider-range" data-start="2020" data-end="2100"></div>
                                     <div class="ui-slider-label range-label min" id="derived-temp-range-low">1950</div>
                                     <div class="ui-slider-label range-label max" id="derived-temp-range-high">2100</div>
                                 </div>
@@ -925,7 +925,7 @@ if (!isValidLongitude($lon)) {
                                     <div id="derived-swipeImg" class="handle">
                                         <div class="emissions-low">
 
-                                            <select class="dropdown" id="le-options" style="width:125px">
+                                            <select class="dropdown" id="derived-le-options" style="width:125px">
                                                 <option value="lower_historical">HISTORICAL</option>
                                                 <option value="lower">LOWER EMISSIONS</option>
                                             </select>
@@ -933,7 +933,7 @@ if (!isValidLongitude($lon)) {
                                         </div>
                                         <div class="emissions-high">
 
-                                            <select class="dropdown swipe-dropdown" id="he-options" style="width:125px">
+                                            <select class="dropdown swipe-dropdown" id="derived-he-options" style="width:125px">
                                                 <option value="higher">HIGHER EMISSIONS</option>
                                                 <option value="higher_historical">HISTORICAL</option>
                                             </select>
@@ -946,7 +946,7 @@ if (!isValidLongitude($lon)) {
 
                                 <div class="year" id="derived-map-slider-container">
                                     <div class="year-label year-min">1950</div>
-                                    <div class="" id="derived-map-time-slider" data-min="1950" data-max="2090" data-value="2010"></div>
+                                    <div class="" id="derived-map-time-slider" data-min="1950" data-max="2090" data-value="2020"></div>
                                     <div class="year-label year-max">2090</div>
                                 </div>
 

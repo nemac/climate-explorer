@@ -293,21 +293,21 @@ Stations.prototype.stationSelected = function (feature, event, type) {
                 '       <h5>Name: ' + props.name + '</h5>' +
                 '       <h5>Station ID: ' + props.station + '</h5>' +
                 '   </div>' +
-                '   <div style="margin:25px" class="form-group">' +
-                '       <div class="field-pair field-id">' +
-                '           <label for="station">Station Id:</label>' +
-                '           <div class="field">' +
-                '               <input type="text" name="station" id="station" value="' + props.station + '">' +
-                '           </div>' +
-                '       </div>' +
+                '   <div id="threshold_inputs">' +
+                // '       <div class="field-pair field-id">' +
+                // '           <label for="station">Station Id:</label>' +
+                // '           <div class="field">' +
+                // '               <input type="text" name="station" id="station" value="' + props.station + '">' +
+                // '           </div>' +
+                // '       </div>' +
                 '       <div class="field-pair field-var">' +
                 '           <label for="itemvariable">Variable:</label>' +
                 '           <div class="field">' +
                 '               <select name="itemvariable" id="itemvariable">' +
-                '                   <option value="tavg">TAvg</option>' +
-                '                   <option value="tmax">TMax</option>' +
-                '                   <option value="tmin">TMin</option>' +
                 '                   <option value="precipitation">Precipitation</option>' +
+                '                   <option value="tavg">Average Temperature</option>' +
+                '                   <option value="tmax">Maximum Temperature</option>' +
+                '                   <option value="tmin">Minimum Temperature</option>' +
                 '               </select>' +
                 '           </div>' +
                 '       </div>' +
@@ -324,10 +324,11 @@ Stations.prototype.stationSelected = function (feature, event, type) {
                 '           </div>' +
                 '       </div>' +
                 '   </div>' +
-                '<div style="margin:25px" id="thresholds-container"></div>' +
-                '   <div class="station_overlay_text" style="text-align:center">' +
-                '       <p>To limit the tool to show to years with solid data records, we excluded years that are missing more than five daily temperature reports in a single month, or more than one precipitation report in a single month. Data are from stations in the Global Historical Climatology Network-Daily dataset, compiled by the National Centers for Environmental Information, and served by ACIS.</p>' +
-                '   </div>' +
+                    '<div id="thresholds-container"></div>' +
+                    '   <div class="station_overlay_text" style="text-align:center">' +
+                    '       <p>To limit the tool to show to years with solid data records, we excluded years that are missing more than five daily temperature reports in a single month, or more than one precipitation report in a single month. Data are from stations in the Global Historical Climatology Network-Daily dataset, compiled by the National Centers for Environmental Information, and served by ACIS.</p>' +
+                    '   </div>' +
+                    '</div>' +
                 '</div>';
 
 
@@ -337,8 +338,9 @@ Stations.prototype.stationSelected = function (feature, event, type) {
 
             $("#thresholds-container").item({
                 station: props.station, // GHCN-D Station id (required)
-                variable: 'tavg', // Valid values: 'precipitation', 'tmax', 'tmin', 'tavg'
+                variable: 'precipitation', // Valid values: 'precipitation', 'tmax', 'tmin', 'tavg'
                 threshold: 1.0,
+                responsive: true,
                 thresholdOperator: '>', // Valid values: '==', '>=', '>', '<=', '<'
                 thresholdFilter: '', // Transformations/Filters to support additional units. Valid Values: 'KtoC','CtoK','FtoC','CtoF','InchToCM','CMtoInch'
                 thresholdFunction: undefined, //Pass in a custom function: function(this, values){ return _.sum(values) > v2; }
@@ -427,7 +429,7 @@ Stations.prototype.stationSelected = function (feature, event, type) {
                 '       <h5>Station ID: <span class="station_id">' + props.station + '</span></h5>' +
                 '   </div>' +
                 '<div id="tidal-chart-container">' +
-                '<select name="" id="tidal_station" class="form-control" style="width: 200px;">' +
+                '<select name="" id="tidal_station" class="form-control" style="width: 200px;display:none">' +
                 '<option value="" disabled selected hidden>Station</option>' +
                 '<option value="8443970">Boston, MA</option>' +
                 '<option value="8454000">Providence, RI</option>' +
@@ -457,9 +459,9 @@ Stations.prototype.stationSelected = function (feature, event, type) {
                 '<option value="9447130">Seattle, WA</option>' +
                 '<option value="1612340">Honolulu, HI</option>' +
                 '</select>' +
-                '<canvas id="tidal-chart" style="width:100vw !important; height:60vh !important;"></canvas>' +
+                '<canvas id="tidal-chart"></canvas>' +
                 '   <div class="station_overlay_text" style="text-align:center">' +
-                '       <p>Gray bars show the number of days per year when the localtion experienced high-tide flooding in the past. Red and blue bars show projections for the average number of days.</p>' +
+                '       <p>Gray bars show annual counts of high-tide flooding in the past. Red and blue bars show projections of the average number of high-tide flooding events in future years.</p>' +
                 '   </div>' +
                 '</div>';
 
@@ -470,7 +472,7 @@ Stations.prototype.stationSelected = function (feature, event, type) {
                 $("#tidal-chart").tidalstationwidget({
                     station: '8665530',
                     data_url: '/resources/tidal/tidal_data.json', // defaults to tidal_data.json
-                    responsive: false // set to false to disable ChartJS responsive sizing.
+                    responsive: true // set to false to disable ChartJS responsive sizing.
                 });
 
                 $('#station-overlay-header h3').html('Tidal Station');
@@ -738,3 +740,8 @@ Stations.prototype.updateChart = function () {
         });
     }
 };
+
+
+$(window).resize(function () {
+    cwg.resize();
+});

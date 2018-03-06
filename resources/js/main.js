@@ -1052,7 +1052,7 @@ App.prototype.tour = function () {
         // console.log(mapclosest);
 
         if (self.frequency[closest] === 'annual') {
-            self.takeGraphTour(pre);
+            self.takeAnnualGraphTour(pre);
         } else if (self.frequency[closest] === 'monthly') {
             self.takeMonthlyGraphTour(pre);
         } else if (self.frequency[closest] === 'seasonal') {
@@ -1082,7 +1082,7 @@ App.prototype.takeHomeTour = function () {
     }
 
     var step1 = this.homeTour.addStep('search-by-location', {
-        text: 'Enter a city, state, zip code, or county to select a region in the contiguous United States.',
+        text: 'Enter a city, zip code, or county name to select any county in the contiguous United States.',
         attachTo: '#home-search-by-location left',
         buttons: [
             {
@@ -1114,7 +1114,7 @@ App.prototype.takeHomeTour = function () {
     });
 
     this.homeTour.addStep('search-by-station', {
-        text: 'Access maps related to climate impacts for stations addressed in the U.S. Climate Resilience Toolkit.',
+        text: 'View data from weather stations and tidal gauges.',
         attachTo: '#home-search-by-station left',
         buttons: [
             {
@@ -1274,7 +1274,7 @@ App.prototype.takeLocationTour = function () {
     }
 
     this.locationTour.addStep('location-search', {
-        text: 'Switch to another region by entering a city, state, zip code, or county name.',
+        text: 'Switch to another county by entering a city, zip code, or county name.',
         attachTo: '#location-search bottom',
         buttons: [
             {
@@ -1308,6 +1308,22 @@ App.prototype.takeLocationTour = function () {
     this.locationTour.addStep('temperature-data', {
         text: 'Scroll down to see more. You can choose different variables, switch between actual values and anomalies, move the endpoints of the time slider, or view maps.',
         attachTo: '#temperature-data top',
+        buttons: [
+            {
+                text: 'Close',
+                classes: 'shepherd-button-secondary',
+                action: this.locationTour.cancel
+            },
+            {
+                text: 'Next',
+                action: this.locationTour.next
+            }
+        ]
+    });
+
+    this.locationTour.addStep('moreinfo', {
+        text: 'For more information about climate projections and data in Climate Explorer, check the Definitions, FAQs, and About pages.',
+        attachTo: '#subnav bottom',
         buttons: [
             {
                 text: 'Close',
@@ -1384,7 +1400,7 @@ App.prototype.takeCaseTour = function () {
 };
 
 
-App.prototype.takeGraphTour = function (pre) {
+App.prototype.takeAnnualGraphTour = function (pre) {
     var self = this;
 
     if (this.graphTour) {
@@ -1406,7 +1422,7 @@ App.prototype.takeGraphTour = function (pre) {
     }
 
     this.graphTour.addStep('graph', {
-        text: 'For the region and variable you selected, this chart offers observed annual averages from 1950-2013, climate model simulations  (hindcasts) from 1950-2005, and climate model projections for two possible futures out to 2100 ',
+        text: 'For the county and variable you selected, this chart offers observed annual averages from 1950-2013; climate model simulations  (hindcasts) from 1950-2005; and climate model projections for two possible futures out to 2100.',
         buttons: [
             {
                 text: 'Close',
@@ -1421,7 +1437,7 @@ App.prototype.takeGraphTour = function (pre) {
     });
 
     this.graphTour.addStep('historical-obs', {
-        text: 'Dark gray bars show observed annual averages from 1950-2013. The horizontal line from which bars extend represents the overall average from 1961-1990. Bars that extend above the line show years that were above average. Bars that extend below the line were below average.',
+        text: 'When activated, dark gray bars show observed annual averages from 1950-2013. The horizontal line from which bars extend represents the overall average from 1961-1990. Bars that extend above the line show years that were above average. Bars that extend below the line were below average.',
         attachTo: '#' + pre + 'historical-obs top',
         buttons: [
             {
@@ -1455,7 +1471,7 @@ App.prototype.takeGraphTour = function (pre) {
 
 
     this.graphTour.addStep('rcp45-range', {
-        text: 'The blue band shows the range of projections for a possible future in which global emissions of heat-trapping gases peak around 2040 and then decline. This scenario is called RCP 4.5. <a href="http://asr.science.energy.gov/publications/program-docs/RCP4.5-Pathway.pdf" target="_BLANK">Learn more »</a>',
+        text: 'The blue band shows the range of projections for a possible future in which global emissions of heat-trapping gases peak around 2040 and then decline. This scenario is called RCP 4.5.<a href="http://asr.science.energy.gov/publications/program-docs/RCP4.5-Pathway.pdf" target="_BLANK">Learn more »</a>',
         attachTo: '#' + pre + 'rcp45-range top',
         buttons: [
             {
@@ -1472,7 +1488,7 @@ App.prototype.takeGraphTour = function (pre) {
 
 
     this.graphTour.addStep('rcp85-range', {
-        text: 'The red band shows the range of projections for a scenario in which global emissions of heat-trapping gases continue increasing. This scenario, known as RCP 8.5, is sometimes called business-as-usual. For planning purposes, people who have a low tolerance for risk often focus on this scenario. <a href="http://link.springer.com/article/10.1007%2Fs10584-011-0148-z" target="_BLANK">Learn more »</a>',
+        text: 'The red band shows the range of projections for a possible future in which global emissions of heat-trapping gases continue to increase through the 21st century. This scenario is called RCP 8.5. For planning purposes, people who have a low tolerance for risk often focus on this scenario. <a href="http://link.springer.com/article/10.1007%2Fs10584-011-0148-z" target="_BLANK">Learn more »</a>',
         attachTo: '#' + pre + 'rcp85-range top',
         buttons: [
             {
@@ -1488,7 +1504,7 @@ App.prototype.takeGraphTour = function (pre) {
     });
 
     this.graphTour.addStep('rcp45-mean', {
-        text: 'Median lines highlight the middle value of all projections at each time step. Though the median is no more likely to predict an actual future value than other projections in the range for each scenario, the line can help highlight any trend.',
+        text: 'Average lines show the weighted mean of all projections at each time step (projections are weighted based on model independence and skill). The lines aren’t predictions of actual values; they merely highlight trends in the projections.',
         attachTo: '#' + pre + 'rcp45-mean top',
         buttons: [
             {
@@ -1504,8 +1520,25 @@ App.prototype.takeGraphTour = function (pre) {
     });
 
     this.graphTour.addStep('timeline', {
-        text: 'Move the endpoints of the time slider to control which years show in the graph. You can also click and drag the Y axis.',
+        text: 'Drag the endpoints of the time slider to zoom to specific periods. You can also click and drag the Y axis to adjust the graph display.',
         attachTo: '#' + pre + 'slider-range top',
+        buttons: [
+            {
+                text: 'Close',
+                classes: 'shepherd-button-secondary',
+                action: this.graphTour.cancel
+            },
+            {
+                text: 'Next',
+                action: this.graphTour.next
+            }
+        ]
+    });
+
+
+    this.graphTour.addStep('moreinfo', {
+        text: 'For more information about climate projections and data in Climate Explorer, check the Definitions, FAQs, and About pages.',
+        attachTo: '#subnav bottom',
         buttons: [
             {
                 text: 'Close',
@@ -1550,7 +1583,7 @@ App.prototype.takeSeasonalGraphTour = function (pre) {
     }
 
     this.seasonalTour.addStep('graph', {
-        text: 'For the county and variable you selected, this chart shows observed averages for each season from 1950-2004. It also shows the range of projections for each season during the early-, mid-, or late 21st century for two emissions scenarios. The slight horizontal offset of observations and projections for each season are for visual clarity.',
+        text: 'For the county and variable you selected, this chart shows observed seasonal averages from 1961-1990. It also shows the range of projections for each season during the early-, mid-, or late 21st century for two possible futures.The slight horizontal offset of observations and projections for each season is for visual clarity.',
         buttons: [
             {
                 text: 'Close',
@@ -1565,7 +1598,7 @@ App.prototype.takeSeasonalGraphTour = function (pre) {
     });
 
     this.seasonalTour.addStep('historical-obs', {
-        text: 'Black lines show observed three-month averages during each season of the selected county from 1950-2004.<br><br>Spring = March-May,<br>Summer = June-August,<br>Fall = September-November,<br>Winter = December-February',
+        text: 'Black lines show observed three-month averages from 1961-1990. Winter = December-February; Spring = March-May; Summer = June-August; Fall = September-November',
         attachTo: '#' + pre + 'historical-obs top',
         buttons: [
             {
@@ -1582,7 +1615,7 @@ App.prototype.takeSeasonalGraphTour = function (pre) {
 
 
     this.seasonalTour.addStep('rcp45-range', {
-        text: 'Blue bars show the range of projections for each season for a scenario in which global emissions of heat-trapping gases stop increasing and become stable. This scenario is known as RCP 4.5. <a href="http://asr.science.energy.gov/publications/program-docs/RCP4.5-Pathway.pdf" target="_BLANK">Learn more »</a>',
+        text: 'The blue bars show the range of projections for each season in a possible future in which global emissions of heat-trapping gases peak around 2040 and then decline. This scenario is called RCP 4.5. <a href="http://asr.science.energy.gov/publications/program-docs/RCP4.5-Pathway.pdf" target="_BLANK">Learn more »</a>',
         attachTo: '#' + pre + 'rcp45-range top',
         buttons: [
             {
@@ -1599,7 +1632,7 @@ App.prototype.takeSeasonalGraphTour = function (pre) {
 
 
     this.seasonalTour.addStep('rcp85-range', {
-        text: 'Red bars show the range of projections for each season for a scenario in which global emissions of heat-trapping gases continue increasing. This scenario, known as RCP 8.5, is sometimes called business-as-usual. For planning purposes, people who have a low tolerance for risk often focus on this scenario. <a href="http://link.springer.com/article/10.1007%2Fs10584-011-0148-z" target="_BLANK">Learn more »</a>',
+        text: 'Red bars shows the range of projections for each season in a possible future in which global emissions of heat-trapping gases continue to increase through the 21st century. This scenario is called RCP 8.5. For planning purposes, people who have a low tolerance for risk often focus on this scenario. <a href="http://link.springer.com/article/10.1007%2Fs10584-011-0148-z" target="_BLANK">Learn more »</a>',
         attachTo: '#' + pre + 'rcp85-range top',
         buttons: [
             {
@@ -1615,7 +1648,7 @@ App.prototype.takeSeasonalGraphTour = function (pre) {
     });
 
     this.seasonalTour.addStep('rcp45-mean', {
-        text: 'Median lines highlight the middle value of all projections at each time step. Though the median isn’t more likely to predict an actual future value than other projections in the range, the line can help highlight any trend. ',
+        text: 'Average lines show the weighted mean of all projections at each time step (projections are weighted based on model independence and skill). Viewing the lines can help highlight trends in the projections.',
         attachTo: '#' + pre + 'rcp45-mean top',
         buttons: [
             {
@@ -1632,7 +1665,7 @@ App.prototype.takeSeasonalGraphTour = function (pre) {
 
 
     this.seasonalTour.addStep('timeline', {
-        text: 'Click the left, center, or right of the time slider to display projections for the early-, mid-, or late 21st century for two emissions scenarios. You can also click and drag the Y axis.',
+        text: 'Drag the endpoints of the time slider to zoom to specific periods. You can also click and drag the Y axis to adjust the graph display.',
         attachTo: '#' + pre + 'slider-range top',
         buttons: [
             {
@@ -1680,7 +1713,7 @@ App.prototype.takeMonthlyGraphTour = function (pre) {
 
 
     this.monthlyTour.addStep('graph', {
-        text: 'For the county and variable you selected, this chart shows observed averages for each month from 1950-2004. It also shows the range of projections for each month during the early-, mid-, or late 21st century for two emissions scenarios',
+        text: 'For the county and variable you selected, this chart shows observed averages for each month and monthly projections for two possible futures. The timeline gives you the option to view projections for the early-, mid-, or late 21st century.',
         buttons: [
             {
                 text: 'Close',
@@ -1695,7 +1728,7 @@ App.prototype.takeMonthlyGraphTour = function (pre) {
     });
 
     this.monthlyTour.addStep('historical-obs', {
-        text: 'The black line connects observed averages in the selected county for each month from 1950-2004.',
+        text: 'The black line connects observed averages in the selected region for each month from 1961-1990.',
         attachTo: '#' + pre + 'historical-obs top',
         buttons: [
             {
@@ -1712,7 +1745,7 @@ App.prototype.takeMonthlyGraphTour = function (pre) {
 
 
     this.monthlyTour.addStep('rcp45-range', {
-        text: 'The blue band shows the range of projections for each month for a scenario in which global emissions of heat-trapping gases stop increasing and become stable. This scenario is known as RCP 4.5. <a href="http://asr.science.energy.gov/publications/program-docs/RCP4.5-Pathway.pdf" target="_BLANK">Learn more »</a>',
+        text: 'The blue band shows the range of projections for a possible future in which global emissions of heat-trapping gases peak around 2040 and then decline. This scenario is called RCP 4.5. <a href="http://asr.science.energy.gov/publications/program-docs/RCP4.5-Pathway.pdf" target="_BLANK">Learn more »</a>',
         attachTo: '#' + pre + 'rcp45-range top',
         buttons: [
             {
@@ -1729,7 +1762,7 @@ App.prototype.takeMonthlyGraphTour = function (pre) {
 
 
     this.monthlyTour.addStep('rcp85-range', {
-        text: 'The red band shows the range of projections for each month for a scenario in which global emissions of heat-trapping gases continue increasing. This scenario, known as RCP 8.5, is sometimes called business-as-usual. For planning purposes, people who have a low tolerance for risk often focus on this scenario. <a href="http://link.springer.com/article/10.1007%2Fs10584-011-0148-z" target="_BLANK">Learn more »</a>',
+        text: 'The red band shows the range of projections for a possible future in which global emissions of heat-trapping gases continue to increase through the 21st century. This scenario is called RCP 8.5. For planning purposes, people who have a low tolerance for risk often focus on this scenario. <a href="http://link.springer.com/article/10.1007%2Fs10584-011-0148-z" target="_BLANK">Learn more »</a>',
         attachTo: '#' + pre + 'rcp85-range top',
         buttons: [
             {
@@ -1745,7 +1778,7 @@ App.prototype.takeMonthlyGraphTour = function (pre) {
     });
 
     this.monthlyTour.addStep('rcp45-mean', {
-        text: 'Median lines highlight the middle value of all projections at each time step. Though the median isn’t more likely to predict an actual future value than other projections in the range, the line can help highlight any trend.',
+        text: 'Average lines show the weighted mean of all projections at each time step (projections are weighted based on model independence and skill). The lines aren’t predictions of actual values; they merely highlight trends in the projections.',
         attachTo: '#' + pre + 'rcp45-mean top',
         buttons: [
             {
@@ -1762,7 +1795,7 @@ App.prototype.takeMonthlyGraphTour = function (pre) {
 
 
     this.monthlyTour.addStep('rcp45-mean', {
-        text: 'Click the left, center, or right of the time slider to display projections for the early-, mid-, or late 21st century for two emissions scenarios. You can also click and drag the Y axis.',
+        text: 'Drag the endpoints of the time slider to zoom to specific periods. You can also click and drag the Y axis to adjust the graph display.',
         attachTo: '#slider-range top',
         buttons: [
             {
@@ -1809,7 +1842,7 @@ App.prototype.takeMapTour = function (pre) {
     }
 
     this.mapTour.addStep('whole-map', {
-        text: 'Colors on the map display projected values for the variable you selected. Specifically, projections for the season shown in the upper right during the decade indicated by the time slider below.',
+        text: 'Colors on the map show projected average values for the selected variable for the season shown in the upper right during the decade indicated by the time slider below.',
         buttons: [
             {
                 text: 'Close',
@@ -1824,7 +1857,7 @@ App.prototype.takeMapTour = function (pre) {
     });
 
     this.mapTour.addStep('scenario-slider', {
-        text: 'Slide to compare projections for the selected variable in two possible futures. Projected values on the left—the lower emissions scenario—are based on the possibility that global emissions of heat-trapping gases will decrease and stabilize (RCP 4.5). Projections for the higher emissions scenario are based on the possibility that emissions will continue increasing (RCP 8.5).',
+        text: 'Select historical observations or a future scenario for each side of the map, and then swipe left and right to compare conditions for the selected variable.',
         attachTo: '#' + pre + 'swipeImg top',
         buttons: [
             {
@@ -1840,7 +1873,7 @@ App.prototype.takeMapTour = function (pre) {
     });
 
     this.mapTour.addStep('season-selector', {
-        text: 'Select the season for the map display. Seasonal maps represent projected values for the middle month of each season:<br><Br>Winter = January;<Br>Spring = April;<Br>Summer = July;<Br>Fall = October.',
+        text: 'Select the season for the map display. Monthly projections for January, April, July, or October represent their respective seasons.',
         attachTo: '#' + pre + 'map-season top',
         buttons: [
             {
@@ -1858,7 +1891,7 @@ App.prototype.takeMapTour = function (pre) {
 
 
     this.mapTour.addStep('time-slider', {
-        text: 'Move the time slider to display projected values for any decade from 1950 to 2090.',
+        text: 'Move the time slider to display projected conditions for any decade from 1950 to 2090.',
         attachTo: '#' + pre + 'map-slider-container top',
         buttons: [
             {

@@ -6,7 +6,7 @@ $page_slug = basename(__FILE__, '.php');
 // DEFINE VARS
 $case = isset($_GET['id']) ? $purifier->purify($_GET['id']) : '';
 $group = isset($_GET['group']) ? $purifier->purify($_GET['group']) : '';
-$active_year = isset($_GET['active_year']) ? $purifier->purify($_GET['active_year']) : 2010;
+$active_year = isset($_GET['active_year']) ? $purifier->purify($_GET['active_year']) : 2020;
 $zoom = isset($_GET['zoom']) ? $purifier->purify($_GET['zoom']) : '';
 $center = isset($_GET['center']) ? $purifier->purify($_GET['center']) : '';
 $layers = isset($_GET['layers']) ? $purifier->purify($_GET['layers']) : '';
@@ -143,7 +143,7 @@ if ($group != 'all' && $group != 'group1' && $group != 'group2' && $group != 'gr
 
         <div class="year" id="year-slider-container" style="display:none">
           <div class="year-label year-min">1950</div>
-          <div class="" id="variable-time-slider" data-min="1950" data-max="2090" data-value="2010"></div>
+          <div class="" id="variable-time-slider" data-min="1950" data-max="2090" data-value="2020"></div>
           <div class="year-label year-max">2090</div>
         </div>
 

@@ -621,7 +621,7 @@
             }
         },
         {
-            id: "days_pcpn_lt_0.01in",
+            id: "days_dry_days",
             title: {
                 english: "Dry Days",
                 metric: "Dry Days"

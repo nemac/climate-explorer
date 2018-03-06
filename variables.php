@@ -4,7 +4,7 @@ include_once('functions.php');
 $page_slug = basename(__FILE__, '.php');
 
 $active_variable = isset($_GET['id']) ? $purifier->purify($_GET['id']) : '';
-$active_year = isset($_GET['year']) ? $purifier->purify($_GET['year']) : 2010;
+$active_year = isset($_GET['year']) ? $purifier->purify($_GET['year']) : 2020;
 $zoom = isset($_GET['zoom']) ? $purifier->purify($_GET['zoom']) : '';
 
 $center = isset($_GET['center']) ? $purifier->purify($_GET['center']) : '';
@@ -164,8 +164,8 @@ if ($cut_url == $current_url) {
 
         <li class="select border" id="variable-options-container">
             <select class="dropdown" id="variable-options">
-                <option value="tmax">Ave Daily Max Temp (°F)</option>
-                <option value="tmin">Ave Daily Min Temp (°F)</option>
+                <option value="tmax">Avg Daily Max Temp (°F)</option>
+                <option value="tmin">Avg Daily Min Temp (°F)</option>
                 <option value="days_tmax_gt_90f">Days w/ max &gt; 90°F</option>
                 <option value="days_tmax_gt_95f">Days w/ max &gt; 95°F</option>
                 <option value="days_tmax_gt_100f">Days w/ max &gt; 100°F</option>
@@ -188,7 +188,7 @@ if ($cut_url == $current_url) {
             </select>
         </li>
 
-        <li class="about-link"><a href="<?php $current_domain ?>#detail-tmax" class="nav-detail-link" id="about-variable-link">About Ave Daily Max Temp (°F)</a></li>
+        <li class="about-link"><a href="<?php $current_domain ?>#detail-tmax" class="nav-detail-link" id="about-variable-link">About Avg Daily Max Temp (°F)</a></li>
     </ul>
 
     <div id="vars-legend" class="legend-wrap left-filler">
@@ -218,8 +218,8 @@ if ($cut_url == $current_url) {
 
                     <select class="dropdown" id="le-options" style="width:125px">
 
-                            <option value="lower">LOWER EMISSIONS</option>
-                            <option value="lower_historical">HISTORICAL</option>
+                        <option value="lower_historical">HISTORICAL</option>
+                        <option value="lower">LOWER EMISSIONS</option>
 
 
                     </select>
@@ -243,7 +243,7 @@ if ($cut_url == $current_url) {
 
         <div class="year" id="year-slider-container">
             <div class="year-label year-min">1950</div>
-            <div class="" id="variable-time-slider" data-min="1950" data-max="2090" data-value="2010"></div>
+            <div class="" id="variable-time-slider" data-min="1950" data-max="2090" data-value="2020"></div>
             <div class="year-label year-max">2090</div>
         </div>
 
@@ -257,7 +257,7 @@ if ($cut_url == $current_url) {
     </div>
 </div>
 
-<a href="<?php $current_domain ?>#" id="district-trigger"><span class="text">Show District Overlay</span><span class="icon icon-district"></span></a>
+<!--<a href="--><?php //$current_domain ?><!--#" id="district-trigger"><span class="text">Show District Overlay</span><span class="icon icon-district"></span></a>-->
 
 <?php include_once('template/footer.php'); ?>
 

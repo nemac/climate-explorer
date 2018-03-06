@@ -25,7 +25,7 @@ var Variables = function (id, data_base_url) {
 
     this.mapVariables();
     this.selectedVariable = id || 'tmax';
-    this.activeYear = qs.year || 2010;
+    this.activeYear = qs.year || 2020;
     this.selectedSeason = 'summer';
 
     $(".level-1").html(this.varMapping[this.selectedVariable]);
@@ -59,8 +59,8 @@ var Variables = function (id, data_base_url) {
  */
 Variables.prototype.mapVariables = function () {
     this.varMapping = {
-        'tmax': 'Ave Daily Max Temp (°F)',
-        'tmin': 'Ave Daily Min Temp (°F)',
+        'tmax': 'Avg Daily Max Temp (°F)',
+        'tmin': 'Avg Daily Min Temp (°F)',
         'days_tmin_lt_32f': 'Days With Minimum Below 32F&deg; F',
         'days_tmax_gt_90f': 'Days w/ max > 90°F',
         'days_tmax_gt_95f': 'Days With Maximum Above 95&deg; F',
@@ -245,12 +245,34 @@ Variables.prototype.createMap = function () {
 
     this.popup = new ol.Overlay.Popup();
     this.map.addOverlay(this.popup);
-
+    this.wire();
     //add layers to map and wire events
-    this.updateTiledLayer(true);
     this.addCounties();
     this.addStates();
-    this.wire();
+
+    le_option_selected = $(".emissions-low .fs-dropdown-selected").text();
+    he_option_selected = $(".emissions-high .fs-dropdown-selected").text();
+
+
+    if (this.selectedVariable === 'pcpn' || this.selectedVariable === 'days_dry_days') {
+        le_option_selected = 'LOWER EMISSIONS';
+        he_option_selected = 'HIGHER EMISSIONS';
+        $(".emissions-low .fs-dropdown-selected").text(le_option_selected);
+        $(".emissions-low button[data-value=lower_historical]").hide();
+        $(".emissions-low button[data-value=higher_historical]").hide();
+        $(".emissions-high .fs-dropdown-selected").text(he_option_selected);
+        $(".emissions-high button[data-value=lower_historical]").hide();
+        $(".emissions-high button[data-value=higher_historical]").hide();
+
+    } else {
+        $(".emissions-low button[data-value=lower_historical]").show();
+        $(".emissions-low button[data-value=higher_historical]").show();
+        $(".emissions-high button[data-value=lower_historical]").show();
+        $(".emissions-high button[data-value=higher_historical]").show();
+
+    }
+    this.updateTiledLayer(true, false,le_option_selected,he_option_selected);
+
 };
 
 
@@ -427,6 +449,34 @@ Variables.prototype.wire = function () {
         le_option_selected = $(".emissions-low .fs-dropdown-selected").text();
         he_option_selected = $(".emissions-high .fs-dropdown-selected").text();
 
+        if (self.selectedVariable === 'pcpn' || self.selectedVariable === 'days_dry_days') {
+            le_option_selected = 'LOWER EMISSIONS';
+            he_option_selected = 'HIGHER EMISSIONS';
+            $(".emissions-low .fs-dropdown-selected").text(le_option_selected);
+            $(".emissions-low button[data-value=lower_historical]").hide();
+            $(".emissions-low button[data-value=higher_historical]").hide();
+            $(".emissions-high .fs-dropdown-selected").text(he_option_selected);
+            $(".emissions-high button[data-value=lower_historical]").hide();
+            $(".emissions-high button[data-value=higher_historical]").hide();
+
+        } else {
+
+
+            $(".emissions-low button[data-value=lower_historical]").show();
+            $(".emissions-low button[data-value=higher_historical]").show();
+            $(".emissions-high button[data-value=lower_historical]").show();
+            $(".emissions-high button[data-value=higher_historical]").show();
+
+            if (le_option_selected === 'lower'){
+                $(".emissions-low .fs-dropdown-selected").text('LOWER EMISSIONS');
+            } else {
+                $(".emissions-low .fs-dropdown-selected").text('HISTORICAL');
+                le_option_selected = 'HISTORICAL';
+            }
+
+
+        }
+
         self.updateTiledLayer(true, true,le_option_selected,he_option_selected);
 
         self.updateChart();
@@ -438,32 +488,34 @@ Variables.prototype.wire = function () {
 
     $('.emissions-low .fs-dropdown-item').on('click', function (e) {
         thisone = $(this).data().value;
+        if (thisone === 'lower'){
+            $(".emissions-low .fs-dropdown-selected").text('LOWER EMISSIONS');
+        } else {
+            $(".emissions-low .fs-dropdown-selected").text('HISTORICAL');
+        }
         otherone = $(".emissions-high .fs-dropdown-selected").text();
         self.updateTiledLayer(true,false,thisone,otherone);
     });
+
     $('.emissions-high .fs-dropdown-item').on('click', function (e) {
         thisone = $(this).data().value;
-        otherone = $(".emissions-low .fs-dropdown-selected").text();
+        if (thisone === 'higher'){
+            $(".emissions-high .fs-dropdown-selected").text('HIGHER EMISSIONS');
+        } else {
+            $(".emissions-high .fs-dropdown-selected").text('HISTORICAL');
+        }
+        otherone = $(".emissions-high .fs-dropdown-selected").text();
         self.updateTiledLayer(true,false,otherone,thisone);
     });
 
     $('#map-seasons-container .fs-dropdown-item').on('click', function (e) {
         self.selectedSeason = $(this).data().value;
-
-
         le_option_selected = $(".emissions-low .fs-dropdown-selected").text();
         he_option_selected = $(".emissions-high .fs-dropdown-selected").text();
-
-
         self.updateTiledLayer(true, true,le_option_selected,he_option_selected);
-
         var legendFilename;
-
         legendFilename = self.selectedSeason + '_' + self.selectedVariable;
-
-
         $('#vars-legend .legend #legend-container').html('<img class="legend-image" src="resources/img/legends/' + legendFilename + '.png">');
-
     });
 
     $('#variable-options').on('change', function () {
@@ -696,7 +748,7 @@ Variables.prototype.countySelected = function (feature, event) {
             '<div class="legend-item-line selected" id="rcp85-line"></div>' +
             '<div class="legend-item-line selected" id="rcp45-line"></div>' +
             '</div>' +
-            '<span class="legend-item-line-label">Medians</span>' +
+            '<span class="legend-item-line-label">Averages</span>' +
             '</div>' +
             '</div>' +
             '<div class="range" id="variable-slider">' +
@@ -860,7 +912,7 @@ Variables.prototype.countySelected = function (feature, event) {
             max: 2099,
             values: [1950, 2099],
             slide: function (event, ui) {
-                this.updateUrl();
+                self.updateUrl();
                 return self.cwg.setXRange(ui.values[0], ui.values[1]);
             }
         });
@@ -884,8 +936,19 @@ Variables.prototype.updateTiledLayer = function (replace, preserveTime,le_option
     var histYears = [1950, 1960, 1970, 1980, 1990, 2000];
     var seasons = ['tmax', 'tmin', 'pcpn'];
 
+
+    if (!le_option_selected){
+        le_option_selected = $('.emissions-low .fs-dropdown-selected').text();
+    }
+    if (!he_option_selected) {
+        he_option_selected = $('.emissions-high .fs-dropdown-selected').text();
+    }
+
+    console.log("updateTiledLayer");
+    console.log(replace, preserveTime,le_option_selected,he_option_selected);
+
     if ( self.selectedVariable !== 'tmax' && self.selectedVariable !== 'tmin' && self.selectedVariable !== 'pcpn' && this.activeYear === 2000 ) {
-        this.activeYear = 2010;
+        this.activeYear = 2020;
     }
 
     var extent = ol.proj.transformExtent([-135, 11.3535322866, -56.25, 49.5057345956], 'EPSG:4326', 'EPSG:3857');
@@ -939,8 +1002,6 @@ Variables.prototype.updateTiledLayer = function (replace, preserveTime,le_option
      * Create the rcp45 tile layer
      */
 
-    //le_option_selected = $('.emissions-low .fs-dropdown-selected').text();
-    //he_option_selected = $('.emissions-high .fs-dropdown-selected').text();
 
 
     this.tileLayer = new ol.layer.Tile({

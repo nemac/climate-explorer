@@ -633,7 +633,7 @@
     "tmax": {
       "type": "Tile",
       "id": "tmax",
-      "title": "Ave Daily Max Temp (°F)",
+      "title": "Avg Daily Max Temp (°F)",
       "description": "Maximum temperatures are one indicator of conditions that can interfere with ecosystem functions. View how temperatures are projected to change during future decades.",
       "source": "https://catalog.data.gov/dataset/bias-corrected-constructed-analogs-v2-daily-climate-projections",
       "legend": "resources/img/legends/summer_tmax",
