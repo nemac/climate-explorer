@@ -13,7 +13,7 @@ $temp_content = array(
         'name' => 'Avg Daily Max Temp (°F)',
         'overlayname' => 'Average Daily Maximum Temperature (°F)',
         'detail' => "<p>A day’s highest (maximum) temperature usually occurs in the afternoon. Averaging the daily high temperatures over any period results in a mean maximum temperature for that period.</p><p>Maximum temperature serves as one measure of comfort and safety for people and for the health of plants and animals. When maximum temperature exceeds particular thresholds, people can become ill and transportation and energy infrastructure may be stressed.</p>",
-        'source' => 'Data Source: NOAA, 2016'
+        'source' => ''
     ),
 
     array(
@@ -21,7 +21,7 @@ $temp_content = array(
         'name' => 'Avg Daily Min Temp (°F)',
         'overlayname' => 'Average Daily Minimum Temperature (°F)',
         'detail' => "<p>A day’s lowest (minimum) temperature usually occurs in the early morning, just before sunrise. Averaging the daily low temperatures for any period results in a mean minimum temperature for that period.</p><p>Periods of low temperature give plants, animals, and people a chance to recover from daytime heat. When minimum temperatures aren’t sufficiently cool, plant and animal responses can trigger ecosystem changes and increased demand for energy can stress energy infrastructure.</p>",
-        'source' => 'Data Source: NOAA, 2016'
+        'source' => ''
     ),
 
     array(
@@ -36,7 +36,7 @@ $temp_content = array(
         'name' => 'Days w/ max > 95°F',
         'overlayname' => 'Days per year with Maximum Temperature Above 90, 95, 100, or 105°F',
         'detail' => "<p>The total number of days per year with maximum temperature above various thresholds is an indicator of how often very hot conditions occur. Depending upon humidity, wind, and physical workload, people who work outdoors or don’t have access to air conditioning may feel very uncomfortable or experience heat stress or illness on very hot days.</p><p>Hot days also stress plants, animals, and human infrastructure such as roads, railroads, and electric lines. Increased demand for electricity to cool homes and buildings can place additional stress on energy infrastructure.</p>",
-        'source' => 'Data Source: NOAA, 2016'
+        'source' => ''
     ),
 
     array(
@@ -58,14 +58,14 @@ $temp_content = array(
         'name' => 'Days w/ max < 32°F',
         'overlayname' => 'Days per year with Maximum Temperature below 32°F',
         'detail' => "<p>The total number of days per year when the highest temperature is less than 32°F (0°C) is an indicator of how often very cold days occur.</p><p>Days when the highest temperature doesn’t rise above the freezing point of water are called “icing days.” The annual number of icing days tells us how much rest plants get from growing; with too few icing days, some plants do not perceive a “reset” signal to begin budding or blooming in the spring. The annual number of icing days can also help predict if populations of insects, such as tree-killing bark beetles, will survive the winter or not.</p>",
-        'source' => 'Data Source: NOAA, 2016'
+        'source' => ''
     ),
     array(
         'variable' => 'days_tmin_lt_32f',
         'name' => 'Days w/ min < 32°F',
         'overlayname' => 'Days per year with Minimum Temperature below 32°F',
         'detail' => "<p>The total number of days per year when the temperature dips below 32°F (0°C) is an indicator of how often cold days occur.</p><p>A decrease in the number of days temperature drops below freezing promotes earlier spring snowmelt and runoff, with important consequences for managing water resources. Below-freezing temperatures can cause driving hazards, aircraft icing, and damage to infrastructure, yet ski resorts and other winter recreation businesses depend on sufficiently cold days to maintain snowpack. Some plants require a cumulative number of days below freezing before they can begin budding or blooming in the spring.</p>",
-        'source' => 'Data Source: NOAA, 2016'
+        'source' => ''
     ),
     array(
         'variable' => 'days_tmin_gt_80f',
@@ -98,7 +98,7 @@ $precip_content = array(
         'name' => 'Days w/ > 1 in',
         'overlayname' => 'Days with Precipitation Above 1, 2, or 3 inches',
         'detail' => "<p>The number of days per year when locations receive more than 1, 2, or 3 inches of precipitation is an indicator of how often very heavy precipitation events occur. This measurement may also be used as an indicator of flood risk.</p><p>Comparing the number of days with heavy precipitation at a single location over time can reveal a trend of increasing or decreasing flood risk.</p>",
-        'source' => 'Data Source: NOAA, 2016'
+        'source' => ''
     ),
     array(
         'variable' => 'days_pcpn_gt_2in',
@@ -131,7 +131,7 @@ $derived_content = array(
         'name' => 'Heating Degree Days',
         'overlayname' => 'Heating Degree Days',
         'detail' => "<p>The number of heating degree days at any location reflects the amount of energy people use to heat a building when it is cool outside. Lower numbers of heating degree days indicate lower demand for energy.</p><p>Heating degree days measure how much (in degrees), and for how long (in days), outside air temperature is below 65°F. For example, on a day when the average outdoor temperature is 35°F, raising the indoor temperature to 65°F would require 30 degrees of heating multiplied by 1 day, or 30 heating degree days. Engineers and utility companies use a location’s annual number of heating degree days as one input when estimating demand for energy in the cold season.</p>",
-        'source' => 'Data Source: NOAA, 2016'
+        'source' => ''
     ),
 
     array(
@@ -139,7 +139,7 @@ $derived_content = array(
         'name' => 'Cooling Degree Days',
         'overlayname' => 'Cooling Degree Days',
         'detail' => "<p>The number of cooling degree days at any location reflects the amount of energy people use to cool a building when it is warm outside. Higher numbers of cooling degree days indicate higher demand for energy.</p><p>Cooling degree days measure how much (in degrees), and for how long (in days), outside air temperature is higher than 65°F. For example, on a day when the average outdoor temperature is 85°F, reducing the indoor temperature to 65°F would require 20 degrees of cooling multiplied by 1 day, or 20 cooling degree days. Engineers and utility companies use a location’s annual number of cooling degree days as one input when estimating demand for energy in the warm season.</p>",
-        'source' => 'Data Source: NOAA, 2016'
+        'source' => ''
     ),
 
     array(

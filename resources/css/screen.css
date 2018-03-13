@@ -6841,63 +6841,61 @@ body.detail-open #nav-overlay {
 #thresholds-container {
   position: relative;
   padding: 25px;
-  margin-left: 20%;
-  max-width: 75% !important;
+  min-height: 300px;
+  margin-left: 200px;
+  margin-right: calc(20% + -25px);
+  max-width: 80% !important;
   background-color: white;
 }
 
-/* line 332, ../scss/pages/_stations.scss */
-/* line 341, ../scss/pages/_stations.scss */
-#thresholds-container {
-  position: relative;
-  padding: 25px;
-  margin-left: 460px;
-  min-height: 500px;
-  margin-right: calc(20% + 50px);
-  max-width: 75% !important;
-  background-color: white;
-}
-
-/* line 351, ../scss/pages/_stations.scss */
+/* line 343, ../scss/pages/_stations.scss */
 #threshold_inputs {
   display: block;
   position: absolute;
   margin-left: 35px;
   color: white;
-  font-size: 1.6em;
+  font-size: 0.9em;
 }
-/* line 357, ../scss/pages/_stations.scss */
+/* line 349, ../scss/pages/_stations.scss */
 #threshold_inputs input {
   background-color: #F44C36;
-  padding: 10px;
-  margin-top: 13px;
+  padding: 5px;
+  margin-top: 0;
   margin-bottom: 13px;
-  border: 5px solid white;
+  border: 1px solid white;
   color: white;
   width: 120px;
-  font-size: 1.3em;
+  font-size: 0.9em;
 }
-/* line 368, ../scss/pages/_stations.scss */
+/* line 360, ../scss/pages/_stations.scss */
 #threshold_inputs select {
   background-color: #F44C36;
-  padding: 10px;
-  margin-top: 13px;
+  padding: 5px;
+  margin-top: 0px;
   margin-bottom: 13px;
-  border: 5px solid white;
+  border: 1px solid white;
   color: white;
-  font-size: 1.3em;
+  font-size: 0.9em;
 }
 
-/* line 379, ../scss/pages/_stations.scss */
+/* line 371, ../scss/pages/_stations.scss */
 #tidal-chart {
   background-color: white;
+  max-height: 900px;
 }
 
-/* line 383, ../scss/pages/_stations.scss */
-#tidal-chart-container {
+/* line 376, ../scss/pages/_stations.scss */
+#overlay-chart-container {
   margin: 25px;
   max-height: 50vh !important;
   width: calc(80% - 50px);
+}
+
+/* line 383, ../scss/pages/_stations.scss */
+#overlay-thresholds-container {
+  padding: 25px;
+  max-height: 70vh !important;
+  width: calc(100% - 50px);
 }
 
 /* line 388, ../scss/pages/_stations.scss */
@@ -6924,8 +6922,8 @@ body.detail-open #nav-overlay {
 #station-overlay-close {
   position: absolute;
   top: 10px;
-  right: calc(20% + 20px);
-  font-size: 5rem;
+  right: calc(20% + 25px);
+  font-size: 2rem;
   color: #fff;
   cursor: pointer;
 }
@@ -7011,20 +7009,22 @@ body.detail-open #nav-overlay {
 
 /* line 484, ../scss/pages/_stations.scss */
 .station_overlay_text p {
-  margin: 20px 40px;
-  width: calc(80% - 80px);
+  width: 100%;
+  padding: 10px 0;
+  overflow: hidden;
   color: #fff !important;
   font-size: 1.125rem;
   font-family: Roboto, Helvetica, "Helvetica Neue", Arial, sans-serif;
 }
 
-/* line 493, ../scss/pages/_stations.scss */
+/* line 494, ../scss/pages/_stations.scss */
 .station_overlay_text {
-  overflow: auto;
-  max-height: 100vh;
+  width: 100%;
+  min-height: 100px;
+  overflow-y: auto;
 }
 
-/* line 499, ../scss/pages/_stations.scss */
+/* line 501, ../scss/pages/_stations.scss */
 .station-overlay-content {
   position: absolute;
   bottom: 0;
@@ -7036,18 +7036,18 @@ body.detail-open #nav-overlay {
   z-index: 20;
 }
 
-/* line 510, ../scss/pages/_stations.scss */
+/* line 512, ../scss/pages/_stations.scss */
 .station-overlay-column {
   position: relative;
   float: left;
   width: 50%;
   height: 100%;
 }
-/* line 516, ../scss/pages/_stations.scss */
+/* line 518, ../scss/pages/_stations.scss */
 .station-overlay-column.left {
   padding-right: 40px;
 }
-/* line 519, ../scss/pages/_stations.scss */
+/* line 521, ../scss/pages/_stations.scss */
 .station-overlay-column.left:after {
   content: '';
   display: block;
@@ -7060,7 +7060,7 @@ body.detail-open #nav-overlay {
   border-left-color: #fff;
 }
 
-/* line 535, ../scss/pages/_stations.scss */
+/* line 537, ../scss/pages/_stations.scss */
 .year {
   position: absolute;
   bottom: 20px;
@@ -7073,17 +7073,17 @@ body.detail-open #nav-overlay {
   -webkit-transition: 0.25s;
   transition: 0.25s;
 }
-/* line 544, ../scss/pages/_stations.scss */
+/* line 546, ../scss/pages/_stations.scss */
 .year:hover {
   background: rgba(255, 255, 255, 0.9);
 }
-/* line 548, ../scss/pages/_stations.scss */
+/* line 550, ../scss/pages/_stations.scss */
 .year .ui-slider {
   top: 20px;
   left: 10%;
   width: 80%;
 }
-/* line 553, ../scss/pages/_stations.scss */
+/* line 555, ../scss/pages/_stations.scss */
 .year .ui-slider .ui-slider-handle {
   top: -14px;
   width: 36px;
@@ -7099,24 +7099,24 @@ body.detail-open #nav-overlay {
   -webkit-box-shadow: 0 0 4px rgba(0, 88, 207, 0.25);
   box-shadow: 0 0 4px rgba(0, 88, 207, 0.25);
 }
-/* line 566, ../scss/pages/_stations.scss */
+/* line 568, ../scss/pages/_stations.scss */
 .year .ui-slider .ui-slider-handle:hover {
   -moz-box-shadow: 0 0 7px rgba(0, 88, 207, 0.4);
   -webkit-box-shadow: 0 0 7px rgba(0, 88, 207, 0.4);
   box-shadow: 0 0 7px rgba(0, 88, 207, 0.4);
 }
-/* line 572, ../scss/pages/_stations.scss */
+/* line 574, ../scss/pages/_stations.scss */
 .year .year-label {
   position: absolute;
   top: 13px;
   width: 10%;
   text-align: center;
 }
-/* line 578, ../scss/pages/_stations.scss */
+/* line 580, ../scss/pages/_stations.scss */
 .year .year-label.year-min {
   left: 0;
 }
-/* line 582, ../scss/pages/_stations.scss */
+/* line 584, ../scss/pages/_stations.scss */
 .year .year-label.year-max {
   right: 0;
 }
@@ -7374,65 +7374,72 @@ body.detail-open #nav-overlay {
 }
 
 /* line 725, ../scss/screen.scss */
+#subnav ul {
+  position: absolute;
+  right: 20px;
+  top: 43px;
+}
+
+/* line 731, ../scss/screen.scss */
 #standard-body {
   max-width: 75%;
   padding-left: calc(4% + 10px);
 }
-/* line 729, ../scss/screen.scss */
+/* line 735, ../scss/screen.scss */
 #standard-body a {
   text-decoration: underline;
 }
-/* line 733, ../scss/screen.scss */
+/* line 739, ../scss/screen.scss */
 #standard-body p {
   line-height: 1.75em;
   margin: 0 0 20px 0;
 }
-/* line 738, ../scss/screen.scss */
+/* line 744, ../scss/screen.scss */
 #standard-body strong {
   font-weight: 600;
 }
-/* line 742, ../scss/screen.scss */
+/* line 748, ../scss/screen.scss */
 #standard-body h2 {
   margin: 30px 0;
   font-size: 2rem;
   color: #0058cf;
 }
-/* line 748, ../scss/screen.scss */
+/* line 754, ../scss/screen.scss */
 #standard-body h3 {
   margin: 20px 0;
   font-size: 1.75rem;
   color: #f5442d;
 }
-/* line 754, ../scss/screen.scss */
+/* line 760, ../scss/screen.scss */
 #standard-body h4 {
   margin: 0 0 15px 0;
   font-size: 1.25rem;
   line-height: 1.375em;
 }
-/* line 760, ../scss/screen.scss */
+/* line 766, ../scss/screen.scss */
 #standard-body ul, #standard-body ol {
   margin: 0 20px 30px 20px;
   padding: 0 0 0 30px;
   font: 300 1rem/1.5em Roboto, Helvetica, "Helvetica Neue", Arial, sans-serif;
 }
-/* line 765, ../scss/screen.scss */
+/* line 771, ../scss/screen.scss */
 #standard-body ul li, #standard-body ol li {
   margin: 0 0 10px 0;
 }
-/* line 770, ../scss/screen.scss */
+/* line 776, ../scss/screen.scss */
 #standard-body ol {
   list-style-type: decimal;
 }
-/* line 774, ../scss/screen.scss */
+/* line 780, ../scss/screen.scss */
 #standard-body li {
   list-style-type: disc;
 }
-/* line 778, ../scss/screen.scss */
+/* line 784, ../scss/screen.scss */
 #standard-body dl {
   margin: 0 0 30px 0;
   font: 300 1rem/1.5em Roboto, Helvetica, "Helvetica Neue", Arial, sans-serif;
 }
-/* line 782, ../scss/screen.scss */
+/* line 788, ../scss/screen.scss */
 #standard-body dl dt {
   margin: 0 0 15px 0;
   padding-bottom: 10px;
@@ -7440,11 +7447,11 @@ body.detail-open #nav-overlay {
   color: #444;
   font-weight: 400;
 }
-/* line 790, ../scss/screen.scss */
+/* line 796, ../scss/screen.scss */
 #standard-body dl dd {
   margin: 0 0 25px 0;
 }
-/* line 795, ../scss/screen.scss */
+/* line 801, ../scss/screen.scss */
 #standard-body hr {
   display: block;
   height: 3px;
@@ -8022,12 +8029,12 @@ body.detail-open #nav-overlay {
   cursor: default;
 }
 
-/* line 817, ../scss/screen.scss */
+/* line 823, ../scss/screen.scss */
 .ui-slider-horizontal {
   height: 6px;
 }
 
-/* line 821, ../scss/screen.scss */
+/* line 827, ../scss/screen.scss */
 .ui-autocomplete {
   position: absolute;
   top: 0;
@@ -8035,7 +8042,7 @@ body.detail-open #nav-overlay {
   cursor: default;
 }
 
-/* line 828, ../scss/screen.scss */
+/* line 834, ../scss/screen.scss */
 .ui-menu {
   display: block;
   padding: 10px;
@@ -8047,18 +8054,18 @@ body.detail-open #nav-overlay {
   -webkit-box-shadow: 0 0 12px rgba(35, 58, 112, 0.25);
   box-shadow: 0 0 12px rgba(35, 58, 112, 0.25);
 }
-/* line 837, ../scss/screen.scss */
+/* line 843, ../scss/screen.scss */
 .ui-menu .ui-menu {
   position: absolute;
 }
-/* line 841, ../scss/screen.scss */
+/* line 847, ../scss/screen.scss */
 .ui-menu .ui-menu-item {
   position: relative;
   margin: 0;
   padding: 0;
   cursor: pointer;
 }
-/* line 848, ../scss/screen.scss */
+/* line 854, ../scss/screen.scss */
 .ui-menu .ui-menu-divider {
   margin: 5px 0;
   height: 0;
@@ -8067,11 +8074,11 @@ body.detail-open #nav-overlay {
   border-width: 1px 0 0 0;
 }
 
-/* line 858, ../scss/screen.scss */
+/* line 864, ../scss/screen.scss */
 .ui-accordion .ui-accordion-header {
   outline: none;
 }
-/* line 861, ../scss/screen.scss */
+/* line 867, ../scss/screen.scss */
 .ui-accordion .ui-accordion-header .ui-accordion-header-icon {
   display: inline-block;
   position: static;
@@ -8080,13 +8087,13 @@ body.detail-open #nav-overlay {
   overflow: visible;
 }
 
-/* line 872, ../scss/screen.scss */
+/* line 878, ../scss/screen.scss */
 .accordion-plain .ui-accordion-header {
   padding: 8px 0;
   color: #233a70;
   line-height: 28px;
 }
-/* line 877, ../scss/screen.scss */
+/* line 883, ../scss/screen.scss */
 .accordion-plain .ui-accordion-header .ui-accordion-header-icon {
   display: block;
   float: left;
@@ -8095,16 +8102,16 @@ body.detail-open #nav-overlay {
   font-size: 14px;
   line-height: 28px;
 }
-/* line 887, ../scss/screen.scss */
+/* line 893, ../scss/screen.scss */
 .accordion-plain .accordion-text {
   padding: 20px 40px;
 }
 
-/* line 894, ../scss/screen.scss */
+/* line 900, ../scss/screen.scss */
 .tabs-plain .tabs-plain-list li {
   display: inline-block;
 }
-/* line 897, ../scss/screen.scss */
+/* line 903, ../scss/screen.scss */
 .tabs-plain .tabs-plain-list li a {
   display: block;
   padding: 8px 10px;
@@ -8243,13 +8250,13 @@ https://raw.github.com/shagstrom/split-pane/master/LICENSE
   cursor: row-resize;
 }
 
-/* line 913, ../scss/screen.scss */
+/* line 919, ../scss/screen.scss */
 .pretty-split-pane-frame .split-pane > .split-pane-divider.dragged.touch {
   background: blue;
   opacity: 0.25;
 }
 
-/* line 918, ../scss/screen.scss */
+/* line 924, ../scss/screen.scss */
 .split-pane-divider {
   right: 50%;
   width: 12px;
@@ -8259,7 +8266,7 @@ https://raw.github.com/shagstrom/split-pane/master/LICENSE
   box-shadow: 0 0 10px rgba(35, 58, 112, 0.25);
 }
 
-/* line 925, ../scss/screen.scss */
+/* line 931, ../scss/screen.scss */
 .pane-content {
   position: absolute;
   top: 0;
@@ -8269,13 +8276,13 @@ https://raw.github.com/shagstrom/split-pane/master/LICENSE
   overflow: auto;
 }
 
-/* line 930, ../scss/screen.scss */
+/* line 936, ../scss/screen.scss */
 #pane-left {
   right: 50%;
   margin-right: 12px;
 }
 
-/* line 935, ../scss/screen.scss */
+/* line 941, ../scss/screen.scss */
 #pane-right {
   width: 50%;
 }

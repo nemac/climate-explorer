@@ -330,60 +330,60 @@
 }
 
 #thresholds-container {
-  position:relative;
-  padding:25px;
-  margin-left:20%;
-  max-width: 75% !important;
-  background-color:white;
-}
-
-/* line 332, ../scss/pages/_stations.scss */
-#thresholds-container {
   position: relative;
   padding: 25px;
-  margin-left: 460px;
-  min-height:500px;
-  margin-right:calc(20% + 50px);
-  max-width: 75% !important;
+  min-height: 300px;
+  margin-left: 200px;
+  margin-right: calc(20% + -25px);
+  max-width: 80% !important;
   background-color: white;
 }
+
 
 #threshold_inputs {
   display: block;
   position: absolute;
   margin-left: 35px;
   color: white;
-  font-size: 1.6em;
+  font-size: 0.9em;
   input {
     background-color: #F44C36;
-    padding: 10px;
-    margin-top: 13px;
+    padding: 5px;
+    margin-top: 0;
     margin-bottom: 13px;
-    border: 5px solid white;
+    border: 1px solid white;
     color: white;
 
     width:120px;
-    font-size: 1.3em;
+    font-size: 0.9em;
   }
   select {
     background-color: #F44C36;
-    padding: 10px;
-    margin-top: 13px;
+    padding: 5px;
+    margin-top: 0px;
     margin-bottom: 13px;
-    border: 5px solid white;
+    border: 1px solid white;
     color: white;
-    font-size: 1.3em;
+    font-size: 0.9em;
   }
 }
 
 #tidal-chart {
   background-color:white;
+  max-height:900px;
 }
 
-#tidal-chart-container{
+#overlay-chart-container{
   margin:25px;
   max-height: 50vh !important;
   width: calc(80% - 50px);
+}
+
+
+#overlay-thresholds-container{
+  padding:25px;
+  max-height: 70vh !important;
+  width: calc(100% - 50px);
 }
 .left_chart {
   position:relative;
@@ -406,8 +406,8 @@
 #station-overlay-close {
   position: absolute;
   top: 10px;
-  right:calc(20% + 20px);
-  font-size: 5rem;
+  right:calc(20% + 25px);
+  font-size: 2rem;
   color: $white;
   cursor: pointer;
 }
@@ -482,8 +482,9 @@
 
 
 .station_overlay_text p {
-    margin: 20px 40px;
-    width: calc(80% - 80px);
+    width: 100%;
+    padding:10px 0;
+    overflow:hidden;
     color: $white !important;
     font-size: 1.125rem;
     font-family: $roboto;
@@ -491,8 +492,9 @@
 
 
 .station_overlay_text {
-  overflow: auto;
-  max-height: 100vh;
+  width:100%;
+  min-height: 100px;
+  overflow-y: auto;
 }
 // content
 

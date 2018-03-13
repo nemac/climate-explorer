@@ -1,4 +1,4 @@
-//$('#tidal-chart-container').hide();
+//$('#overlay-chart-container').hide();
 
 var Location = function (lat, lon, stations_base_url, data_base_url) {
 
@@ -735,8 +735,6 @@ Location.prototype.wire = function (map) {
     $('#derived-data h4').on('click', function (e) {
         e.preventDefault();
 
-        console.log("clicked derived data");
-
         $('#derived-data .data-options').swap_classes($(this));
 
         var id = $(this).attr('id').replace('var-', '');
@@ -790,7 +788,6 @@ Location.prototype.wire = function (map) {
 
 
         $('#precipitation-swipeImg .emissions-low .fs-dropdown-item').on('click', function (e) {
-            console.log("left precip dropdown clicked");
             left_option_selected = this.innerHTML;
             $("#precipitation-swipeImg .emissions-low .fs-dropdown-selected").text(left_option_selected);
             right_option_selected = $("#precipitation-swipeImg .emissions-high .fs-dropdown-selected").text();
@@ -841,7 +838,6 @@ Location.prototype.updateSidebar = function (disable, id) {
 
 Location.prototype.updateTiledLayer = function (map, replace, timeReset, left_option_selected, right_option_selected) {
 
-    console.log(map, replace, timeReset, left_option_selected, right_option_selected);
 
     if (map === 'temperature-map') {
         if (!left_option_selected) {
@@ -853,15 +849,6 @@ Location.prototype.updateTiledLayer = function (map, replace, timeReset, left_op
     }
 
     if (map === 'precipitation-map') {
-
-
-        //$('#le-options').dropdown("update");
-        //$('#precipitation-swipeImg .emissions-low .fs-dropdown-item[data-value=lower]').trigger("click");
-
-
-        //$('#le-options').val('lower').trigger("change");
-        //$('.dropdown').dropdown("update");
-
         if (!left_option_selected) {
             left_option_selected = $("#precipitation-swipeImg .emissions-low .fs-dropdown-selected").text();
         }
@@ -878,13 +865,8 @@ Location.prototype.updateTiledLayer = function (map, replace, timeReset, left_op
             right_option_selected = $("#derived-swipeImg .emissions-high .fs-dropdown-selected").text();
         }
     }
-    //
-    // console.log(map);
-    // console.log(replace);
-    // console.log('left_option_selected');
-    // console.log(left_option_selected);
-    // console.log('right_option_selected');
-    // console.log(right_option_selected);
+
+    console.log(map, replace, timeReset, left_option_selected, right_option_selected);
 
     if (replace && timeReset) {
         this.setSlider(map);
@@ -933,15 +915,10 @@ Location.prototype.updateTiledLayer = function (map, replace, timeReset, left_op
         layer_right = this.activeYear + season + this.tilesMapping85[map][this.selectedVariable[map]];
     }
 
-    // }
-    //
-    // console.log('layer_left');
-    // console.log(layer_left);
-    // console.log('layer_right');
-    // console.log(layer_right);
-    // console.log('selectedVar');
-    // console.log(this.tilesMapping[map][this.selectedVariable[map]]);
-    // console.log();
+    console.log('LAYER LEFT');
+    console.log(layer_left);
+    console.log('LAYER RIGHT');
+    console.log(layer_right);
 
     if (replace) {
         this.removeOldTiles(map);
@@ -1120,6 +1097,7 @@ Location.prototype.setSlider = function (map) {
         stop: function (event, ui) {
             year_slider.attr('data-value', ui.value);
             self.activeYear = ui.value;
+
             self.updateTiledLayer(map, true, false);
             tooltip.fadeOut(200);
         }
@@ -1134,12 +1112,6 @@ Location.prototype.setSwipeMap = function (map) {
     var swipeVal = null, pos, wrapper;
     var layer = map + 'TileLayer';
     var layer85 = map + 'TileLayer85';
-
-    // console.log('layer');
-    // console.log(layer);
-    // console.log('layer85');
-    // console.log(layer85);
-
 
     $("#" + map + "SliderDiv").draggable({
         axis: "x",

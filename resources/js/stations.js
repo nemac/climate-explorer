@@ -267,11 +267,13 @@ Stations.prototype.stationSelected = function (feature, event, type) {
                 '   <div id="multi-chart" class="left_chart"></div>' +
                 '   <div id="multi-precip-chart" class="right_chart"></div>' +
                 '   <div style="clear:both"></div>' +
+                '   <div id="overlay-chart-container">' +
                 '   <div class="station_overlay_text">' +
                 '       <p style="font-weight:bold">Scroll, click-and-drag, or hold down your SHIFT key to scroll on either graph or axis to view more years or adjust the display.</p>' +
-                '       <p>Blue bars on temperature graphs indicate the full range of observed temperatures for each day; the green band shows the average temperature range from 1981-2010. Comparing the two makes it easy to spot periods of above- and below-normal temperature.</p>' +
-                '       <p>Green areas on precipitation graphs track year-to-date cumulative precipitation. Comparing observed precipitation to normal year-to-date totals (the black line) shows whether each season received above-, below-, or near-normal amounts of precipitation. Vertical portions of the year-to-date precipitation line show days when precipitation occurred.</p>' +
-                '       <p>Data are from stations in the Global Historical Climatology Network-Daily dataset, compiled by the National Centers for Environmental Information and served by ACIS.</p>' +
+                '       <p>Blue bars on temperature graphs indicate the full range of observed temperatures for each day; the green band shows the average temperature range from 1981-2010. Comparing the two makes it easy to spot periods of above- and below-normal temperature.' +
+                '       Green areas on precipitation graphs track year-to-date cumulative precipitation. Comparing observed precipitation to normal year-to-date totals (the black line) shows whether each season received above-, below-, or near-normal amounts of precipitation. Vertical portions of the year-to-date precipitation line show days when precipitation occurred.' +
+                '       Data are from stations in the Global Historical Climatology Network-Daily dataset, compiled by the National Centers for Environmental Information and served by ACIS.</p>' +
+                '   </div>' +
                 '   </div>' +
                 '</div>';
 
@@ -324,10 +326,13 @@ Stations.prototype.stationSelected = function (feature, event, type) {
                 '           </div>' +
                 '       </div>' +
                 '   </div>' +
+
+                '   <div id="overlay-thresholds-container">' +
                     '<div id="thresholds-container"></div>' +
-                    '   <div class="station_overlay_text" style="text-align:center">' +
-                    '       <p>To limit the tool to show to years with solid data records, we excluded years that are missing more than five daily temperature reports in a single month, or more than one precipitation report in a single month. Data are from stations in the Global Historical Climatology Network-Daily dataset, compiled by the National Centers for Environmental Information, and served by ACIS.</p>' +
+                    '   <div class="station_overlay_text">' +
+                    '       <p style="width:65%!important;margin-left:200px;">To limit the tool to show to years with solid data records, we excluded years that are missing more than five daily temperature reports in a single month, or more than one precipitation report in a single month. Data are from stations in the Global Historical Climatology Network-Daily dataset, compiled by the National Centers for Environmental Information, and served by ACIS.</p>' +
                     '   </div>' +
+                    '</div>' +
                     '</div>' +
                 '</div>';
 
@@ -428,40 +433,41 @@ Stations.prototype.stationSelected = function (feature, event, type) {
                 '       <h5>Name: <span class="station_name">' + props.name + '</span></h5>' +
                 '       <h5>Station ID: <span class="station_id">' + props.station + '</span></h5>' +
                 '   </div>' +
-                '<div id="tidal-chart-container">' +
-                '<select name="" id="tidal_station" class="form-control" style="width: 200px;display:none">' +
-                '<option value="" disabled selected hidden>Station</option>' +
-                '<option value="8443970">Boston, MA</option>' +
-                '<option value="8454000">Providence, RI</option>' +
-                '<option value="8461490">New London, CT</option>' +
-                '<option value="8510560">Montauk, NY</option>' +
-                '<option value="8516945">Kings Point, NY</option>' +
-                '<option value="8518750">Battery, NY</option>' +
-                '<option value="8531680">Sandy Hook, NJ</option>' +
-                '<option value="8534720">Atlantic City, NJ</option>' +
-                '<option value="8545240">Philadelphia, PA</option>' +
-                '<option value="8557380">Lewes, DE</option>' +
-                '<option value="8574680">Baltimore, MD</option>' +
-                '<option value="8575512">Annapolis, MD</option>' +
-                '<option value="8594900">Washington D.C.</option>' +
-                '<option value="8638610">Sewells Point, VA</option>' +
-                '<option value="8658120">Wilmington, NC</option>' +
-                '<option value="8665530">Charleston, SC</option>' +
-                '<option value="8670870">Fort Pulaski, GA</option>' +
-                '<option value="8720030">Fernandina Beach, FL</option>' +
-                '<option value="8720218">Mayport, FL</option>' +
-                '<option value="8724580">Key West, FL</option>' +
-                '<option value="8726430">St Petersburg, FL</option>' +
-                '<option value="8771341">Galveston Bay, TX</option>' +
-                '<option value="8779770">Port Isabel, TX</option>' +
-                '<option value="9410230">La Jolla, CA</option>' +
-                '<option value="9414290">San Francisco, CA</option>' +
-                '<option value="9447130">Seattle, WA</option>' +
-                '<option value="1612340">Honolulu, HI</option>' +
-                '</select>' +
-                '<canvas id="tidal-chart"></canvas>' +
-                '   <div class="station_overlay_text" style="text-align:center">' +
-                '       <p>Gray bars show annual counts of high-tide flooding in the past. Red and blue bars show projections of the average number of high-tide flooding events in future years.</p>' +
+                '   <select name="" id="tidal_station" class="form-control" style="width: 200px;display:none">' +
+                '       <option value="" disabled selected hidden>Station</option>' +
+                '       <option value="8443970">Boston, MA</option>' +
+                '       <option value="8454000">Providence, RI</option>' +
+                '       <option value="8461490">New London, CT</option>' +
+                '       <option value="8510560">Montauk, NY</option>' +
+                '       <option value="8516945">Kings Point, NY</option>' +
+                '       <option value="8518750">Battery, NY</option>' +
+                '       <option value="8531680">Sandy Hook, NJ</option>' +
+                '       <option value="8534720">Atlantic City, NJ</option>' +
+                '       <option value="8545240">Philadelphia, PA</option>' +
+                '       <option value="8557380">Lewes, DE</option>' +
+                '       <option value="8574680">Baltimore, MD</option>' +
+                '       <option value="8575512">Annapolis, MD</option>' +
+                '       <option value="8594900">Washington D.C.</option>' +
+                '       <option value="8638610">Sewells Point, VA</option>' +
+                '       <option value="8658120">Wilmington, NC</option>' +
+                '       <option value="8665530">Charleston, SC</option>' +
+                '       <option value="8670870">Fort Pulaski, GA</option>' +
+                '       <option value="8720030">Fernandina Beach, FL</option>' +
+                '       <option value="8720218">Mayport, FL</option>' +
+                '       <option value="8724580">Key West, FL</option>' +
+                '       <option value="8726430">St Petersburg, FL</option>' +
+                '       <option value="8771341">Galveston Bay, TX</option>' +
+                '       <option value="8779770">Port Isabel, TX</option>' +
+                '       <option value="9410230">La Jolla, CA</option>' +
+                '       <option value="9414290">San Francisco, CA</option>' +
+                '       <option value="9447130">Seattle, WA</option>' +
+                '       <option value="1612340">Honolulu, HI</option>' +
+                '   </select>' +
+                '   <div id="overlay-chart-container">' +
+                '      <canvas id="tidal-chart"></canvas>' +
+                '       <div class="station_overlay_text">' +
+                '          <p>Gray bars show annual counts of high-tide flooding in the past. Red and blue bars show projections of the average number of high-tide flooding events in future years.</p>' +
+                '       </div>' +
                 '   </div>' +
                 '</div>';
 

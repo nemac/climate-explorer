@@ -485,27 +485,39 @@ Variables.prototype.wire = function () {
 
     });
 
-
     $('.emissions-low .fs-dropdown-item').on('click', function (e) {
-        thisone = $(this).data().value;
-        if (thisone === 'lower'){
-            $(".emissions-low .fs-dropdown-selected").text('LOWER EMISSIONS');
-        } else {
-            $(".emissions-low .fs-dropdown-selected").text('HISTORICAL');
-        }
-        otherone = $(".emissions-high .fs-dropdown-selected").text();
-        self.updateTiledLayer(true,false,thisone,otherone);
+        left_option_selected = this.innerHTML;
+        right_option_selected = $(".emissions-high .fs-dropdown-selected").text();
+        self.updateTiledLayer(true, false, left_option_selected, right_option_selected);
     });
+    //
+    // $('.emissions-low .fs-dropdown-item').on('click', function (e) {
+    //     thisone = $(this).data().value;
+    //     if (thisone === 'lower'){
+    //         $(".emissions-low .fs-dropdown-selected").text('LOWER EMISSIONS');
+    //     } else {
+    //         $(".emissions-low .fs-dropdown-selected").text('HISTORICAL');
+    //     }
+    //     otherone = $(".emissions-high .fs-dropdown-selected").text();
+    //     self.updateTiledLayer(true,false,thisone,otherone);
+    // });
+
+    // $('.emissions-high .fs-dropdown-item').on('click', function (e) {
+    //     thisone = $(this).data().value;
+    //     if (thisone === 'higher'){
+    //         $(".emissions-high .fs-dropdown-selected").text('HIGHER EMISSIONS');
+    //     } else {
+    //         $(".emissions-high .fs-dropdown-selected").text('HISTORICAL');
+    //     }
+    //     otherone = $(".emissions-high .fs-dropdown-selected").text();
+    //     self.updateTiledLayer(true,false,otherone,thisone);
+    // });
+
 
     $('.emissions-high .fs-dropdown-item').on('click', function (e) {
-        thisone = $(this).data().value;
-        if (thisone === 'higher'){
-            $(".emissions-high .fs-dropdown-selected").text('HIGHER EMISSIONS');
-        } else {
-            $(".emissions-high .fs-dropdown-selected").text('HISTORICAL');
-        }
-        otherone = $(".emissions-high .fs-dropdown-selected").text();
-        self.updateTiledLayer(true,false,otherone,thisone);
+        left_option_selected = $(".emissions-low .fs-dropdown-selected").text();
+        right_option_selected = this.innerHTML;
+        self.updateTiledLayer(true, false, left_option_selected, right_option_selected);
     });
 
     $('#map-seasons-container .fs-dropdown-item').on('click', function (e) {
@@ -944,20 +956,20 @@ Variables.prototype.updateTiledLayer = function (replace, preserveTime,le_option
         he_option_selected = $('.emissions-high .fs-dropdown-selected').text();
     }
 
-    console.log("updateTiledLayer");
-    console.log(replace, preserveTime,le_option_selected,he_option_selected);
+    console.log("     TILING: " + replace, preserveTime,le_option_selected,he_option_selected);
 
     if ( self.selectedVariable !== 'tmax' && self.selectedVariable !== 'tmin' && self.selectedVariable !== 'pcpn' && this.activeYear === 2000 ) {
         this.activeYear = 2020;
     }
 
-    var extent = ol.proj.transformExtent([-135, 11.3535322866, -56.25, 49.5057345956], 'EPSG:4326', 'EPSG:3857');
+    //var extent = ol.proj.transformExtent([-135, 11.3535322866, -56.25, 49.5057345956], 'EPSG:4326', 'EPSG:3857');
 
     var hist = null;
     var season = ( seasons.indexOf(this.selectedVariable) !== -1 ) ? '-' + this.selectedSeason : '';
 
-    console.log('season');
-    console.log(season);
+    console.log('     SEASON: ' + season);
+    console.log('   LEFT VAL: ' + le_option_selected);
+    console.log('  RIGHT VAL: ' + he_option_selected);
 
     if (season === '') {
         $('#map-seasons-container .fs-dropdown-selected').hide();
@@ -965,25 +977,35 @@ Variables.prototype.updateTiledLayer = function (replace, preserveTime,le_option
         $('#map-seasons-container .fs-dropdown-selected').show();
     }
 
-    var src, src85;
+    var layer_left, layer_right;
 
     if (histYears.indexOf(this.activeYear) !== -1) {
 
-        src = this.activeYear + season + this.tilesHistMapping[this.selectedVariable];
-        src85 = null;
-    } else {
-
-        if (le_option_selected === 'lower_historical' || le_option_selected === 'HISTORICAL') {
-            src = 'avg' + season + this.tilesHistMapping[this.selectedVariable];
+        if (le_option_selected === 'HISTORICAL') {
+            layer_left = 'avg' + season + this.tilesHistMapping[this.selectedVariable];
         } else {
-            src = this.activeYear + season + this.tilesMapping[this.selectedVariable];
+            layer_left = this.activeYear + season + this.tilesHistMapping[this.selectedVariable];
+        }
+
+        if (he_option_selected === 'HISTORICAL') {
+            layer_right = 'avg' + season + this.tilesHistMapping[this.selectedVariable];
+        } else {
+            layer_right = this.activeYear + season + this.tilesHistMapping[this.selectedVariable];
         }
 
 
-        if (he_option_selected === 'higher_historical' || he_option_selected === 'HISTORICAL') {
-            src85 = 'avg' + season + this.tilesHistMapping[this.selectedVariable];
+    } else {
+
+        if (le_option_selected === 'HISTORICAL') {
+            layer_left = 'avg' + season + this.tilesHistMapping[this.selectedVariable];
         } else {
-            src85 = this.activeYear + season + this.tilesMapping85[this.selectedVariable];
+            layer_left = this.activeYear + season + this.tilesMapping[this.selectedVariable];
+        }
+
+        if (he_option_selected === 'HISTORICAL') {
+            layer_right = 'avg' + season + this.tilesHistMapping[this.selectedVariable];
+        } else {
+            layer_right = this.activeYear + season + this.tilesMapping85[this.selectedVariable];
         }
 
     }
@@ -1007,9 +1029,9 @@ Variables.prototype.updateTiledLayer = function (replace, preserveTime,le_option
     this.tileLayer = new ol.layer.Tile({
         source: new ol.source.XYZ({
             urls: [
-                'https://s3.amazonaws.com/climate-explorer-bucket/tiles/' + src + '/{z}/{x}/{-y}.png'
+                'https://s3.amazonaws.com/climate-explorer-bucket/tiles/' + layer_left + '/{z}/{x}/{-y}.png'
             ],
-            extent: extent,
+            //extent: extent,
             minZoom: 5,
             maxZoom: 10,
             tilePixelRatio: 1
@@ -1025,14 +1047,14 @@ Variables.prototype.updateTiledLayer = function (replace, preserveTime,le_option
     /*
      * if after 2010, add the rcp85 tile layer to map as well!
      */
-    if (src85) {
+    if (layer_right) {
         //rcp85
         this.tileLayer85 = new ol.layer.Tile({
             source: new ol.source.XYZ({
                 urls: [
-                    'https://s3.amazonaws.com/climate-explorer-bucket/tiles/' + src85 + '/{z}/{x}/{-y}.png'
+                    'https://s3.amazonaws.com/climate-explorer-bucket/tiles/' + layer_right + '/{z}/{x}/{-y}.png'
                 ],
-                extent: extent,
+                //extent: extent,
                 minZoom: 5,
                 maxZoom: 10,
                 tilePixelRatio: 1
@@ -1046,6 +1068,9 @@ Variables.prototype.updateTiledLayer = function (replace, preserveTime,le_option
 
     }
 
+    console.log(' LAYER LEFT: ' + layer_left);
+    console.log('LAYER RIGHT: ' + layer_right);
+    console.log("==============================================================================================");
 
     /*
      * We want map names to be on top of climate tiles, so add to map at end!
@@ -1072,7 +1097,7 @@ Variables.prototype.updateTiledLayer = function (replace, preserveTime,le_option
 
     //here we have to move some layers around so ordering remains right
     this.tileLayer.setZIndex(0);
-    if (src85) {
+    if (layer_right) {
         this.tileLayer85.setZIndex(0);
     }
     if (this.statesLayer) {
@@ -1083,8 +1108,11 @@ Variables.prototype.updateTiledLayer = function (replace, preserveTime,le_option
     }
     this.nameLayer.setZIndex(6);
 
+
+
+
     //IF after 2010, add the high/low swiper to map
-    if (src85) {
+    if (layer_right) {
         $("#sliderDiv").show();
         this.setSwipeMap();
     } else {
@@ -1216,7 +1244,7 @@ Variables.prototype.setSlider = function () {
             le_option_selected = $(".emissions-low .fs-dropdown-selected").text();
             he_option_selected = $(".emissions-high .fs-dropdown-selected").text();
 
-            self.updateTiledLayer(true, true,le_option_selected,he_option_selected);
+            self.updateTiledLayer(true, true);
 
             self.updateUrl();
             tooltip.fadeOut(200);

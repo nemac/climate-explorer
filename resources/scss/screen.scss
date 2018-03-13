@@ -45,7 +45,7 @@ html {
   height: 100%;
 }
 
-body  {
+body {
   width: 100%;
   height: 100%;
   background: $white;
@@ -111,7 +111,7 @@ h6 {
   }
 
   // display
-  
+
   &.display-blocks {
     display: block;
   }
@@ -191,7 +191,7 @@ h6 {
   }
 
   // colours
-  
+
   &.color-white {
     color: $white;
 
@@ -202,26 +202,26 @@ h6 {
   }
 
   &.color-orange {
-    color: $orange1!important;
+    color: $orange1 !important;
 
     &:before,
     &:after {
-      background: $orange1!important;
+      background: $orange1 !important;
     }
 
     &.arrow-right {
       &:before {
-        background: $orange1!important;
+        background: $orange1 !important;
       }
 
       &:after {
-        background: $orange1!important;
+        background: $orange1 !important;
       }
     }
   }
 
   // borders
-    
+
   &.border-white {
     border-color: $white;
     color: $white;
@@ -241,7 +241,7 @@ h6 {
   }
 
   // backgrounds
-  
+
   &.bg-trans {
     background: transparent;
   }
@@ -253,7 +253,7 @@ h6 {
   // HOVER
 
   // backgrounds
-  
+
   &.hover-bg-white {
     &:hover {
       background: $white;
@@ -268,7 +268,7 @@ h6 {
   }
 
   // BLEND
-  
+
   &.blend-screen {
     mix-blend-mode: screen;
 
@@ -333,7 +333,7 @@ h6 {
   width: 5px;
   height: 100%;
   margin: 0;
-  padding: 0!important;
+  padding: 0 !important;
   background: $white;
   z-index: 2;
   cursor: col-resize;
@@ -346,7 +346,7 @@ h6 {
     width: 70px;
     height: 36px;
     @include border-radius(20px);
-    background: url(../img/swipe-arrows-stripe.png) center center rgba(34,105,179,0.87);
+    background: url(../img/swipe-arrows-stripe.png) center center rgba(34, 105, 179, 0.87);
   }
 }
 
@@ -369,7 +369,7 @@ h6 {
     @include transition(0.25s);
 
     &:hover {
-      border:1px solid #EEE;
+      border: 1px solid #EEE;
     }
 
     &:after {
@@ -414,19 +414,19 @@ h6 {
     &#rcp45-block,
     &#preciprcp45-block, &
     #derivercp45-block {
-      background:#99BCEC;
+      background: #99BCEC;
     }
 
     &#rcp85-block,
     &#preciprcp85-block,
     &#derivercp85-block {
-      background:#fbb4ab;
+      background: #fbb4ab;
     }
 
     &#historical-block,
     &#preciphistorical-block,
     &#derivehistorical-block {
-      background:#D6D6D6;
+      background: #D6D6D6;
     }
   }
 
@@ -434,27 +434,27 @@ h6 {
     &#over-baseline-block,
     &#precipover-baseline-block,
     &#deriveover-baseline-block {
-      background:#CD6760;
+      background: #CD6760;
     }
 
     &#under-baseline-block,
     &#precipunder-baseline-block,
     &#deriveunder-baseline-block {
-      margin-top:20px;
-      background:#6194C8;
+      margin-top: 20px;
+      background: #6194C8;
     }
 
     &#rcp45-line,
     &#preciprcp45-line,
     &#derivercp45-line {
-      margin-top:20px;
-      background:#0058CF;
+      margin-top: 20px;
+      background: #0058CF;
     }
 
     &#rcp85-line,
     &#preciprcp85-line,
     &#derivercp85-line {
-      background:#F5442D;
+      background: #F5442D;
     }
   }
 }
@@ -722,6 +722,12 @@ h6 {
   padding-bottom: 40px;
 }
 
+#subnav ul {
+  position: absolute;
+  right: 20px;
+  top: 43px;
+}
+
 #standard-body {
   max-width: 75%;
   padding-left: calc(4% + 10px);
@@ -819,38 +825,38 @@ h6 {
 }
 
 .ui-autocomplete {
-	position: absolute;
-	top: 0;
-	left: 0;
-	cursor: default;
+  position: absolute;
+  top: 0;
+  left: 0;
+  cursor: default;
 }
 
 .ui-menu {
-	display: block;
+  display: block;
   padding: 10px;
-	margin: 0;
-	outline: none;
-	background: transparentize($white, 0.1);
+  margin: 0;
+  outline: none;
+  background: transparentize($white, 0.1);
   border: 3px solid $orange1;
   @include box-shadow(0 0 12px transparentize($blue2, 0.75));
 
   .ui-menu {
-  	position: absolute;
+    position: absolute;
   }
 
   .ui-menu-item {
-  	position: relative;
-  	margin: 0;
-  	padding: 0;
-  	cursor: pointer;
+    position: relative;
+    margin: 0;
+    padding: 0;
+    cursor: pointer;
   }
 
   .ui-menu-divider {
-  	margin: 5px 0;
-  	height: 0;
-  	font-size: 0;
-  	line-height: 0;
-  	border-width: 1px 0 0 0;
+    margin: 5px 0;
+    height: 0;
+    font-size: 0;
+    line-height: 0;
+    border-width: 1px 0 0 0;
   }
 }
 
@@ -911,29 +917,29 @@ h6 {
 @import "plugins/split-pane";
 
 .pretty-split-pane-frame .split-pane > .split-pane-divider.dragged.touch {
-	background: blue;
-	opacity: 0.25;
+  background: blue;
+  opacity: 0.25;
 }
 
 .split-pane-divider {
-	right: 50%;
-	width: 12px;
-	background: $white;
-	@include box-shadow(0 0 10px transparentize($blue2, 0.75));
+  right: 50%;
+  width: 12px;
+  background: $white;
+  @include box-shadow(0 0 10px transparentize($blue2, 0.75));
 }
 
 .pane-content {
   @include full-size;
-	overflow: auto;
+  overflow: auto;
 }
 
 #pane-left {
-	right: 50%;
-	margin-right: 12px;
+  right: 50%;
+  margin-right: 12px;
 }
 
 #pane-right {
-	width: 50%;
+  width: 50%;
 }
 
 // MEDIA QUERIES

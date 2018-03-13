@@ -160,7 +160,7 @@ if (!isValidLongitude($lon)) {
                         </li>
 
                         <li class="">
-                            <h4 id="var-tmin"><a href="<?php $current_domain ?>#" class="text">Avg Daily Min Temp (°F)</a><a href="<?php $current_domain ?>#detail-tasmin" class="icon icon-help nav-detail-link"></a></h4>
+                            <h4 id="var-tmin"><a href="<?php $current_domain ?>#" class="text">Avg Daily Min Temp (°F)</a><a href="<?php $current_domain ?>#detail-tmin" class="icon icon-help nav-detail-link"></a></h4>
                             <ul class="location-resolution">
                                 <li><a>Annual</a></li>
                                 <li class="seasonal-monthly"><a>Monthly</a></li>
@@ -455,7 +455,7 @@ if (!isValidLongitude($lon)) {
 
                     <ul class="data-options">
                         <li class="active accent-border">
-                            <h4 id="var-pcpn"><a href="<?php $current_domain ?>#" class="text">Total precip</a><a href="<?php $current_domain ?>#detail-pr" class="icon icon-help nav-detail-link"></a></h4>
+                            <h4 id="var-pcpn"><a href="<?php $current_domain ?>#" class="text">Total precip</a><a href="<?php $current_domain ?>#detail-pcpn" class="icon icon-help nav-detail-link"></a></h4>
                             <ul class="location-resolution">
                                 <li class="active accent-border"><a class="accent-color">Annual</a></li>
                                 <li class="seasonal-monthly"><a>Monthly</a></li>
@@ -726,14 +726,14 @@ if (!isValidLongitude($lon)) {
 
                     <ul class="data-options">
                         <li class="active accent-border">
-                            <h4 id="var-hdd_65f"><a href="<?php $current_domain ?>#" class="text">Heating Degree Days (°F-days)</a><a href="<?php $current_domain ?>#detail-heating_degree_day_18" class="icon icon-help nav-detail-link"></a></h4>
+                            <h4 id="var-hdd_65f"><a href="<?php $current_domain ?>#" class="text">Heating Degree Days (°F-days)</a><a href="<?php $current_domain ?>#detail-hdd_65f" class="icon icon-help nav-detail-link"></a></h4>
                             <ul>
                                 <li class="active accent-border"><a class="accent-color">Annual</a></li>
                             </ul>
                         </li>
 
                         <li class="">
-                            <h4 id="var-cdd_65f"><a href="<?php $current_domain ?>#" class="text">Cooling Degree Days (°F-days)</a><a href="<?php $current_domain ?>#detail-cooling_degree_day_18" class="icon icon-help nav-detail-link"></a></h4>
+                            <h4 id="var-cdd_65f"><a href="<?php $current_domain ?>#" class="text">Cooling Degree Days (°F-days)</a><a href="<?php $current_domain ?>#detail-cdd_65f" class="icon icon-help nav-detail-link"></a></h4>
                             <ul>
                                 <li><a>Annual</a></li>
                             </ul>

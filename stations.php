@@ -113,7 +113,6 @@ if ($cut_url == $current_url) {
     </div>
 </div>
 
-<a href="#" id="district-trigger"><span class="text">Show District Overlay</span><span class="icon icon-district"></span></a>
 <div id="desktop-warning">
     <p>The Climate Explorer is optimized for desktop use. Please visit the site on a desktop computer.</p>
 </div>

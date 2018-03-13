@@ -153,8 +153,8 @@ include_once('functions.php');
             <h4>Where do the sea level projections come from?</h4>
 
             <div class="accordion-text">
-                <p>Researchers used the latest peer-reviewed estimates of global sea level rise along with information on local conditions of land subsidence or uplift to estimate the frequency of high-tide flooding during each future decade out to 2100. The graphs show the number of days per year that locations are projected to experience inundation that exceeds a locally defined level: high-tide flooding events should not be envisioned as city-wide floods.</p>
-                <p>For further information, see Sea Level Rise and Nuisance Flood Frequency Changes around the United States.</p>
+                <p>William Sweet and other researchers at NOAA's National Ocean Service used the latest peer-reviewed estimates of global sea level rise to produce these estimates. Combined with information on local land subsidence or uplift, they estimated the frequency of high-tide flooding during each future decade out to 2100. The graphs show observed annual flood days through 2016 and projections for the number of days per year when inundation will exceed a locally defined level: high-tide flooding events should not be envisioned as city-wide floods.</p>
+                <p>For further information, see <a href="https://tidesandcurrents.noaa.gov/publications/NOAA_Technical_Report_NOS_COOPS_073.pdf" target="_blank">https://tidesandcurrents.noaa.gov/publications/NOAA_Technical_Report_NOS_COOPS_073.pdf</a></p>
             </div>
 
             <h4>What are the scenarios represented by the blue, red, and gray bands in the tool’s charts?</h4>
