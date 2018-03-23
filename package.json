@@ -1,0 +1,20 @@
+{
+  "name": "climate-explorer",
+  "version": "2.1.0",
+  "description": "",
+  "main": "index.html",
+  "scripts": {
+    "build": "bundlebars -d config.json --partials templates/ -c index.hbs > dist/index.html",
+    "deploy-production": "aws s3 sync --delete --no-follow-symlinks ../dist/ s3://climate-explorer.fernleafinteractive.com/"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@bitbucket.org/jwilson-waystone/climate-explorer.git"
+  },
+  "author": "",
+  "license": "UNLICENSED",
+  "homepage": "https://bitbucket.org/jwilson-waystone/climate-explorer#readme",
+  "devDependencies": {
+    "bundlebars": "^1.2.0"
+  }
+}
