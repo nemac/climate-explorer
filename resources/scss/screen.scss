@@ -19,6 +19,7 @@ $sans-book: 'CESans', Roboto, Helvetica, 'Helvetica Neue', Arial, sans-serif;
 $sans-heavy: 'CESans-Heavy', Helvetica, 'Helvetica Neue', Arial, sans-serif;
 
 // IMPORTS
+@import "compass/functions";
 @import "compass/reset";
 @import "compass/css3";
 @import "compass/utilities/general/clearfix";

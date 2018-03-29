@@ -677,7 +677,7 @@ Location.prototype.wire = function (map) {
 
         $('#temperature-map-container .full-map-btn').prop({'href': 'variables.php?id=' + id});
 
-        $('#temperature-map-container .location-map-legend').html('<img class="legend-image" src="resources/img/legends/' + legendFilename + '.png"></img>');
+        $('#temperature-map-container .location-map-legend').html('<img class="legend-image" src="/resources/img/legends/' + legendFilename + '.png"></img>');
 
 
     });
@@ -729,7 +729,7 @@ Location.prototype.wire = function (map) {
 
         $('#precipitation-map-container .full-map-btn').prop({'href': 'variables.php?id=' + id});
 
-        $('#precipitation-map-container .location-map-legend').html('<img class="legend-image" src="resources/img/legends/' + legendFilename + '.png">');
+        $('#precipitation-map-container .location-map-legend').html('<img class="legend-image" src="/resources/img/legends/' + legendFilename + '.png">');
     });
 
     $('#derived-data h4').on('click', function (e) {
@@ -752,7 +752,7 @@ Location.prototype.wire = function (map) {
         legendFilename = self.selectedVariable['derived-map'];
 
         $('#derived-map-container .full-map-btn').prop({'href': 'variables.php?id=' + id});
-        $('#derived-map-container .location-map-legend').html('<img class="legend-image" src="resources/img/legends/' + legendFilename + '.png">');
+        $('#derived-map-container .location-map-legend').html('<img class="legend-image" src="/resources/img/legends/' + legendFilename + '.png">');
     });
 
     $('#precipitation-map-season .fs-dropdown-item').on('click', function (e) {
@@ -768,7 +768,7 @@ Location.prototype.wire = function (map) {
         if (self.selectedVariable['temperature-map'] === 'tmax' || self.selectedVariable['temperature-map'] === 'tmin') {
             var legendFilename;
             legendFilename = self.selectedSeason + '_' + self.selectedVariable['temperature-map'];
-            $('.location-map-legend').html('<img class="legend-image" src="resources/img/legends/' + legendFilename + '.png">');
+            $('.location-map-legend').html('<img class="legend-image" src="/resources/img/legends/' + legendFilename + '.png">');
         }
         left_option_selected = $("#temperature-swipeImg .emissions-low .fs-dropdown-selected").text();
         right_option_selected = $("#temperature-swipeImg .emissions-high .fs-dropdown-selected").text();

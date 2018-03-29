@@ -37,15 +37,15 @@ if (!isValidLongitude($lon)) {
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <link rel="stylesheet" href="<?php $current_domain ?>resources/css/ol3-popup.css">
+    <link rel="stylesheet" href="/resources/css/ol3-popup.css">
 
-    <link rel="stylesheet" href="<?php $current_domain ?>resources/css/sweetalert.css">
+    <link rel="stylesheet" href="/resources/css/sweetalert.css">
 
-    <link rel="stylesheet" media="screen" href="<?php $current_domain ?>resources/css/screen.css">
-    <link rel="stylesheet" media="screen" href="<?php $current_domain ?>resources/css/mods.css">
+    <link rel="stylesheet" media="screen" href="/resources/css/screen.css">
+    <link rel="stylesheet" media="screen" href="/resources/css/mods.css">
 
-    <script type="text/javascript" src="<?php $current_domain ?>resources/js/jquery.min.js"></script>
-    <script type="text/javascript" src="<?php $current_domain ?>resources/js/jquery-ui.min.js"></script>
+    <script type="text/javascript" src="/resources/js/jquery.min.js"></script>
+    <script type="text/javascript" src="/resources/js/jquery-ui.min.js"></script>
 
     <?php
 
@@ -61,8 +61,8 @@ if (!isValidLongitude($lon)) {
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.1/Chart.bundle.min.js" integrity="sha256-N4u5BjTLNwmGul6RgLoESPNqDFVUibVuOYhP4gJgrew=" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/lodash.js/4.17.4/lodash.min.js" integrity="sha256-8E6QUcFg1KTnpEU8TFGhpTGHw5fJqB9vCms3OhAYLqw=" crossorigin="anonymous"></script>
 
-    <script src="resources/item/jquery.fl-item.min.js"></script>
-    <link rel="stylesheet" href="resources/item/fl-item.css"/>
+    <script src="/resources/item/jquery.fl-item.min.js"></script>
+    <link rel="stylesheet" href="/resources/item/fl-item.css"/>
 </head>
 
 <body id="page-location-<?php echo $fips; ?>" class="page-type-location">
@@ -432,7 +432,7 @@ if (!isValidLongitude($lon)) {
                                 <div class="location-map-legend-container">
                                     <h5>Legend</h5>
                                     <div class="location-map-legend">
-                                        <img class="legend-image" src="resources/img/legends/summer_tmax.png"></img>
+                                        <img class="legend-image" src="/resources/img/legends/summer_tmax.png"></img>
                                     </div>
                                 </div>
 
@@ -702,7 +702,7 @@ if (!isValidLongitude($lon)) {
                                 <div class="location-map-legend-container">
                                     <h5>Legend</h5>
                                     <div class="location-map-legend">
-                                        <img class="legend-image" src="resources/img/legends/pcpn.png"></img>
+                                        <img class="legend-image" src="/resources/img/legends/pcpn.png"></img>
                                     </div>
                                 </div>
 
@@ -953,7 +953,7 @@ if (!isValidLongitude($lon)) {
                                 <div class="location-map-legend-container">
                                     <h5>Legend</h5>
                                     <div class="location-map-legend">
-                                        <img class="legend-image" src="resources/img/legends/hdd_65f.png"></img>
+                                        <img class="legend-image" src="/resources/img/legends/hdd_65f.png"></img>
                                     </div>
                                 </div>
 

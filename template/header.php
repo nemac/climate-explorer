@@ -194,7 +194,7 @@ $stations_content = array(
 
 <header id="main-header">
     <div id="main-nav">
-        <a href="https://toolkit.climate.gov" id="header-logo" title="U.S. Climate Resilience Toolkit"><img src="./resources/img/us-climate-resilience-toolkit.png" alt="U.S. Climate Resilience Toolkit"></a>
+        <a href="https://toolkit.climate.gov" id="header-logo" title="U.S. Climate Resilience Toolkit"><img src="/resources/img/us-climate-resilience-toolkit.png" alt="U.S. Climate Resilience Toolkit"></a>
 
         <a href="#" id="nav-trigger" class="nav-btn launch-nav"><span class="hamburger"><span class="bar"></span></span><span class="text">Menu</span></a>
 
@@ -307,7 +307,7 @@ $stations_content = array(
         ?>
 
         <div id="breadcrumb">
-            <a href="./"><span class="icon icon-arrow-up"></span>Home</a><?php echo isset($breadcrumb) ? $breadcrumb:'';?>
+            <a href="/"><span class="icon icon-arrow-up"></span>Home</a><?php echo isset($breadcrumb) ? $breadcrumb:'';?>
         </div>
     </div>
 </header>
@@ -316,7 +316,7 @@ $stations_content = array(
     <a href="#" class="button close bg-white border-none blend-screen"></a>
 
     <div id="nav-controls" class="nav-controls cycle-pager external">
-        <a href="./" id="nav-overlay-home" class="button"><span class="icon icon-arrow-up"></span><span class="text">Home</span></a>
+        <a href="/" id="nav-overlay-home" class="button"><span class="icon icon-arrow-up"></span><span class="text">Home</span></a>
 
         <ul id="nav-cycle-pager">
             <li><a href="#nav-search"><span class="icon icon-search"></span> Select a location</a></li>

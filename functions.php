@@ -15,34 +15,38 @@ $purifier = new HTMLPurifier($config);
 $page_slug = basename(__FILE__, '.php');
 
 $stations_base_url = 'https://data.rcc-acis.org/StnData';
-$data_base_url = './resources/data/';
+$data_base_url = '/resources/data/';
 
 function current_URL()
 {
-    $purifier = new HTMLPurifier();
-    $pageURL = 'http';
-    $pageURL .= "://";
-    if ($purifier->purify($_SERVER["SERVER_PORT"]) != "80") {
-        $pageURL .= $purifier->purify($_SERVER["SERVER_NAME"] . ":" . $_SERVER["SERVER_PORT"] . $_SERVER["REQUEST_URI"]);
-    } else {
-        $pageURL .= $purifier->purify($_SERVER["SERVER_NAME"] . $_SERVER["REQUEST_URI"]);
-    }
-    return $pageURL;
+// todo cleanup
+//    $purifier = new HTMLPurifier();
+//    $pageURL = 'http';
+//    $pageURL .= "://";
+//    if ($purifier->purify($_SERVER["SERVER_PORT"]) != "80") {
+//        $pageURL .= $purifier->purify($_SERVER["SERVER_NAME"] . ":" . $_SERVER["SERVER_PORT"] . $_SERVER["REQUEST_URI"]);
+//    } else {
+//        $pageURL .= $purifier->purify($_SERVER["SERVER_NAME"] . $_SERVER["REQUEST_URI"]);
+//    }
+//    return $pageURL;
+  return '';
 }
 
 // current domain app is living on
 
 function current_DOMAIN()
 {
-    $purifier = new HTMLPurifier();
-    $pageURL = 'http';
-    $pageURL .= "://";
-    if ($_SERVER["SERVER_PORT"] != "80") {
-        $pageURL .= $purifier->purify($_SERVER["SERVER_NAME"] . ":" . $_SERVER["SERVER_PORT"]);
-    } else {
-        $pageURL .= $purifier->purify($_SERVER["SERVER_NAME"]);
-    }
-    return $pageURL;
+//   todo cleanup
+//    $purifier = new HTMLPurifier();
+//    $pageURL = 'http';
+//    $pageURL .= "://";
+//    if ($_SERVER["SERVER_PORT"] != "80") {
+//        $pageURL .= $purifier->purify($_SERVER["SERVER_NAME"] . ":" . $_SERVER["SERVER_PORT"]);
+//    } else {
+//        $pageURL .= $purifier->purify($_SERVER["SERVER_NAME"]);
+//    }
+//    return $pageURL;
+  return '/';
 }
 
 $current_url = current_URL();

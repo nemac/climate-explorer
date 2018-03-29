@@ -46,7 +46,7 @@ var Variables = function (id, data_base_url) {
     }
 
 
-    $('#vars-legend .legend #legend-container').html('<img class="legend-image" src="resources/img/legends/' + legendFilename + '.png">');
+    $('#vars-legend .legend #legend-container').html('<img class="legend-image" src="/resources/img/legends/' + legendFilename + '.png">');
 
     this.createMap();
     this.wireSearch();
@@ -436,7 +436,7 @@ Variables.prototype.wire = function () {
         }
 
 
-        $('#vars-legend .legend #legend-container').html('<img class="legend-image" src="resources/img/legends/' + legendFilename + '.png">');
+        $('#vars-legend .legend #legend-container').html('<img class="legend-image" src="/resources/img/legends/' + legendFilename + '.png">');
 
 
         $('#about-variable-link').html('About ' + self.varMapping[self.selectedVariable]);
@@ -527,7 +527,7 @@ Variables.prototype.wire = function () {
         self.updateTiledLayer(true, true,le_option_selected,he_option_selected);
         var legendFilename;
         legendFilename = self.selectedSeason + '_' + self.selectedVariable;
-        $('#vars-legend .legend #legend-container').html('<img class="legend-image" src="resources/img/legends/' + legendFilename + '.png">');
+        $('#vars-legend .legend #legend-container').html('<img class="legend-image" src="/resources/img/legends/' + legendFilename + '.png">');
     });
 
     $('#variable-options').on('change', function () {

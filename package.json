@@ -4,8 +4,13 @@
   "description": "",
   "main": "index.html",
   "scripts": {
-    "build": "bundlebars -d config.json --partials templates/ -c index.hbs > dist/index.html",
-    "deploy-production": "aws s3 sync --delete --no-follow-symlinks ../dist/ s3://climate-explorer.fernleafinteractive.com/"
+    "build": "npm run html:build && npm run js:build && npm run data:build && npm run css:build",
+    "data:build": "cp -rf resources/data resources/img dist/resources/",
+    "js:build": "cp -rf resources/js resources/item resources/tidal dist/resources/ && sed -i 's/.php/\\//g' dist/resources/js/*.js dist/resources/js/**/*.js",
+    "html:build": "for f in *.php; do echo $f && php-cgi -q $f > dist/${f%.php}.html && mkdir -p dist/${f%.php} && cp -f --dereference dist/${f%.php}.html dist/${f%.php}/index.html; done; sed -i 's/.php/\\//g' dist/*.html",
+    "css:build": "node-sass -o resources/css/ resources/scss/screen.scss --include-path node_modules/compass-mixins/lib/ --output-style expanded --source-comments && cp -rf resources/css dist/resources/",
+    "css:watch": "node-sass -o resources/css/ resources/scss/screen.scss --include-path node_modules/compass-mixins/lib/ --output-style expanded --source-comments -wr",
+    "deploy:production": "aws s3 sync --delete --no-follow-symlinks ../dist/ s3://climate-explorer.fernleafinteractive.com/"
   },
   "repository": {
     "type": "git",
@@ -15,6 +20,10 @@
   "license": "UNLICENSED",
   "homepage": "https://bitbucket.org/jwilson-waystone/climate-explorer#readme",
   "devDependencies": {
-    "bundlebars": "^1.2.0"
-  }
+    "compass-mixins": "github:Igosuki/compass-mixins",
+    "es6-promise": "^4.2.4",
+    "node-sass": "^4.7.2",
+    "php2html": "^1.0.0"
+  },
+  "dependencies": {}
 }
