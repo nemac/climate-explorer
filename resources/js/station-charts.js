@@ -16,8 +16,6 @@ var ChartBuilder = function (props, stations_base_url) {
 ChartBuilder.prototype.getData = function (callback) {
   var self = this;
 
-  //console.log('this.props', this.props);
-  //var id = this.props.station.split(':')[1];
   var id = this.props.station;
   var year = new Date().getFullYear();
   this.records = {

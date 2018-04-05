@@ -81,8 +81,21 @@
     options: {
 
       stationId: null,
+      stationName: null,
+      mode: 'daily', // 'daily_vs_climate','thresholds','high-tide'
+      //extent provides the initial view area of the map.
+      extent: {xmin: -115, xmax: -73, ymin: 20, ymax: 53},
+      //zoom and center are ignored if extent is provided.
       zoom: 5,
-      center: [-105.21, 37.42],
+      center: [-98.21, 37.42],
+      // Additional elements
+      stationOverlayContainerId: "station-overlay-container",
+      // Map layers
+      dailyStationsLayerURL: "/resources/item/stations.csv",
+      thresholdStationsLayerURL: "/resources/item/stations.csv",
+      tidalStationsLayerURL: "/resources/item/stations.csv", // todo tidal
+      dailyStationsDataURL: "https://data.rcc-acis.org/StnData",
+      thresholdStationsDataURL: "https://data.rcc-acis.org/StnData",
       // Controls debug output
       // 0:off, 1:errors only, 2:errors and warnings, 3:everything
       debug: 0,
@@ -95,6 +108,7 @@
       // likewise for show
       // http://api.jqueryui.com/jQuery.widget/#option-show
       show: null
+
     },
 
     // All DOM nodes used by the widget
@@ -114,7 +128,8 @@
       'esri/widgets/BasemapGallery',
       'esri/widgets/ScaleBar',
       'esri/geometry/SpatialReference',
-      'esri/layers/CSVLayer'
+      'esri/layers/CSVLayer',
+      'esri/geometry/Extent'
     ],
 
     _dojoLoaded: function () {
@@ -142,9 +157,23 @@
      * @private
      */
     _whenDojoLoaded: function () {
-      return this._dojoLoaded() ? Promise.resolve() : new Promise(function (resolve, reject) {
+      if (undefined !== this._dojoLoadedPromise) {
+        return this._dojoLoadedPromise
+      }
+      if (this._dojoLoaded()) {
+        return Promise.resolve()
+      }
+
+      this._dojoLoadedPromise = new Promise(function (resolve, reject) {
         if (window.require === undefined) {
-          window.dojoConfig = {has: {"esri-promise-compatibility": 1, "esri-promise-compatibility-deprecation-warnings": 0, async: 1, deps: this.dojoDeps}};
+          window.dojoConfig = {
+            has: {
+              "esri-promise-compatibility": 1,
+              "esri-promise-compatibility-deprecation-warnings": 0,
+              async: 1,
+              deps: this.dojoDeps
+            }
+          };
           var s = document.createElement("script");
           s.type = "text/javascript";
           s.src = "https://js.arcgis.com/4.6/";
@@ -156,28 +185,42 @@
           this._registerDojoMods(resolve);
         }
       }.bind(this));
+      return this._dojoLoadedPromise
     },
     /**
      *
      * @private
      */
     _registerDojoMods: function (resolve) {
-      require(this.dojoDeps, function (resolve) {
+      require(this.dojoDeps, (function (resolve) {
         //get the list of modules
         var mods = Array.prototype.slice.call(arguments, 1);
         this.dojoMods = {};
         // preserve the modules on this.dojoMods for later reference.
-        for (i = 0; i < mods.length; i++) {this.dojoMods[this.dojoDeps[i].split('/').pop()] = mods[i];}
+        for (i = 0; i < mods.length; i++) {
+          this.dojoMods[this.dojoDeps[i].split('/').pop()] = mods[i];
+        }
         resolve()
-      }.bind(this, resolve));
+      }).bind(this, resolve));
     },
     // Called once on instantiation.
     _create: function () {
       this.nodes.mapContainer = this.element[0];
+      this.nodes.stationOverlayContainer = $('#' + this.options.stationOverlayContainerId)[0];
 
-      this._whenDojoLoaded()
-        .then(this._initMap.bind(this))
-        .then(this.addStations.bind(this))
+
+      this._MapInitPromise = this._whenDojoLoaded().then(this._initMap.bind(this));
+      switch (this.options.mode) {
+        case 'daily':
+          this._whenDojoLoaded().then(this._initDailyStationsLayer.bind(this));
+          break;
+        case 'threshold':
+          this._whenDojoLoaded().then(this._initThresholdStationsLayer.bind(this));
+          break;
+        case 'tidal':
+          this._whenDojoLoaded().then(this._initTidalStationsLayer.bind(this));
+          break;
+      }
     },
 
     _initMap: function () {
@@ -190,8 +233,9 @@
       this.view = new this.dojoMods.MapView({
         container: this.nodes.mapContainer,
         map: this.map,
-        zoom: this.options.zoom,
-        center: this.options.center,
+        zoom: this.options.extent ? null : this.options.zoom,
+        center: this.options.extent ? null : this.options.center,
+        extent: this.options.extent ? new this.dojoMods.Extent(this.options.extent) : null,
         constraints: {
           rotationEnabled: false,
           minZoom: 4,
@@ -222,14 +266,14 @@
       });
     },
 
-    addStations: function () {
-      this.stationsLayer = new this.dojoMods.CSVLayer({
-        url: "/resources/item/stations.csv",
+    _initDailyStationsLayer: function () {
+      this.dailyStationsLayer = new this.dojoMods.CSVLayer({
+        url: this.options.dailyStationsLayerURL,
         latitudeField: 'lat',
         longitudeField: 'lon',
         // popupTemplate: template,
         elevationInfo: {mode: "on-the-ground"},
-        renderer:{
+        renderer: {
           type: "simple",  // autocasts as new SimpleRenderer()
           symbol: {
             type: "simple-marker",  // autocasts as new SimpleMarkerSymbol()
@@ -242,9 +286,65 @@
           }
         }
       });
-      this.map.add(this.stationsLayer);
+      this._MapInitPromise.then(function () {
+        this.map.add(this.dailyStationsLayer);
+        this.view.on("click", function (event) {
+          this.view.hitTest(event)
+            .then(function (response) {
+              var station = response.results.filter(function (result) {
+                return result.graphic.layer === this.dailyStationsLayer;
+              }.bind(this))[0].graphic;
+              this._setOption('stationName', station.attributes.name);
+              this._setOption('stationId', station.attributes.id);
+            }.bind(this));
+        }.bind(this));
+      }.bind(this));
     },
 
+    _initThresholdStationsLayer: function () {
+      // if same data, only load one.
+      if (this.options.thresholdStationsLayerURL === this.options.dailyStationsLayerURL) {
+        if (undefined !== this.dailyStationsLayer) {
+          this.thresholdStationsLayer = this.dailyStationsLayer;
+          this.thresholdStationsLayer.visible = true;
+          return;
+        } else {
+          this._initDailyStationsLayer();
+        }
+      }
+      this.thresholdStationsLayer = new this.dojoMods.CSVLayer({
+        url: this.options.thresholdStationsLayerURL,
+        latitudeField: 'lat',
+        longitudeField: 'lon',
+        // popupTemplate: template,
+        elevationInfo: {mode: "on-the-ground"},
+        renderer: {
+          type: "simple",  // autocasts as new SimpleRenderer()
+          symbol: {
+            type: "simple-marker",  // autocasts as new SimpleMarkerSymbol()
+            size: 7,
+            color: "#df3e2e",
+            outline: {
+              color: '#ffffff',
+              width: 1
+            }
+          }
+        }
+      });
+      this._MapInitPromise.then(function () {
+        this.map.add(this.thresholdStationsLayer);
+        this.view.on("click", function (event) {
+          this.view.hitTest(event)
+            .then(function (response) {
+              var station = response.results.filter(function (result) {
+                return result.graphic.layer === this.thresholdStationsLayer;
+              }.bind(this))[0].graphic;
+              this._setOption('stationName', station.attributes.name);
+              this._setOption('stationId', station.attributes.id);
+            }.bind(this));
+        }.bind(this));
+      }.bind(this));
+    },
     // Optional -Return value will be sent as the `create` event's data.
     // _getCreateEventData: function() {
 
@@ -273,12 +373,248 @@
         case "state":
           this._init();
           break;
+        case "stationId":
+          $(this.nodes.stationOverlayContainer).css('visibility', 'visible');
+          switch (this.options.mode) {
+            case 'daily':
+              $(this.nodes.stationOverlayContainer).append(
+                '<div id="station-overlay">' +
+                '   <div id="station-overlay-close">x</div>' +
+                '   <div id="station-overlay-header">' +
+                '       <h3 class="accent-color" style="margin-bottom: 20px;"><span class="icon icon-district"></span>Weather Station</h3>' +
+                '       <h5>Name: ' + this.options.stationName + '</h5>' +
+                '       <h5>Station ID: ' + value + '</h5>' +
+                '   </div>' +
+                '   <div id="multi-chart" class="left_chart"></div>' +
+                '   <div id="multi-precip-chart" class="right_chart"></div>' +
+                '   <div style="clear:both"></div>' +
+                '   <div id="overlay-chart-container">' +
+                '   <div class="station_overlay_text">' +
+                '       <p style="font-weight:bold">Scroll, click-and-drag, or hold down your SHIFT key to scroll on either graph or axis to view more years or adjust the display.</p>' +
+                '       <p>Blue bars on temperature graphs indicate the full range of observed temperatures for each day; the green band shows the average temperature range from 1981-2010. Comparing the two makes it easy to spot periods of above- and below-normal temperature.' +
+                '       Green areas on precipitation graphs track year-to-date cumulative precipitation. Comparing observed precipitation to normal year-to-date totals (the black line) shows whether each season received above-, below-, or near-normal amounts of precipitation. Vertical portions of the year-to-date precipitation line show days when precipitation occurred.' +
+                '       Data are from stations in the Global Historical Climatology Network-Daily dataset, compiled by the National Centers for Environmental Information and served by ACIS.</p>' +
+                '   </div>' +
+                '   </div>' +
+                '</div>'
+              );
+
+              this.chart = new ChartBuilder({station: value}, this.options.dailyStationsDataURL);
+
+              break;
+            case 'threshold':
+              $(this.nodes.stationOverlayContainer).append(
+                '<div id="station-overlay">' +
+                '   <div id="station-overlay-close">x</div>' +
+                '   <div id="station-overlay-header">' +
+                '       <h3 class="accent-color" style="margin-bottom: 20px;"><span class="icon icon-district"></span>Weather Station</h3>' +
+                '       <h5>Name: ' + this.options.stationName + '</h5>' +
+                '       <h5>Station ID: ' + value + '</h5>' +
+                '   </div>' +
+                '   <div id="threshold_inputs">' +
+                '       <div class="field-pair field-var">' +
+                '           <label for="itemvariable">Variable:</label>' +
+                '           <div class="field">' +
+                '               <select name="itemvariable" id="itemvariable">' +
+                '                   <option value="precipitation">Precipitation</option>' +
+                '                   <option value="tavg">Average Temperature</option>' +
+                '                   <option value="tmax">Maximum Temperature</option>' +
+                '                   <option value="tmin">Minimum Temperature</option>' +
+                '               </select>' +
+                '           </div>' +
+                '       </div>' +
+                '       <div class="field-pair field-window append">' +
+                '           <label for="window">Window:</label>' +
+                '           <div class="field">' +
+                '               <input type="number" id="window" name="window" value="1"> <span class="append">days</span>' +
+                '           </div>' +
+                '       </div>' +
+                '       <div class="field-pair field-threshold append">' +
+                '           <label for="threshold">Threshold:</label>' +
+                '           <div class="field">' +
+                '               <input type="number" name="threshold" id="threshold" value="1" step="0.1"> <span class="append" id="item_inches_or_f">°F</span>' +
+                '           </div>' +
+                '       </div>' +
+                '   </div>' +
+                '   <div id="overlay-thresholds-container">' +
+                '<div id="thresholds-container"></div>' +
+                '   <div class="station_overlay_text">' +
+                '       <p style="width:65%!important;margin-left:200px;">To limit the tool to show to years with solid data records, we excluded years that are missing more than five daily temperature reports in a single month, or more than one precipitation report in a single month. Data are from stations in the Global Historical Climatology Network-Daily dataset, compiled by the National Centers for Environmental Information, and served by ACIS.</p>' +
+                '   </div>' +
+                '</div>' +
+                '</div>' +
+                '</div>'
+              );
+
+              $("#thresholds-container").item({
+                station: value, // GHCN-D Station id (required)
+                variable: 'precipitation', // Valid values: 'precipitation', 'tmax', 'tmin', 'tavg'
+                threshold: 1.0,
+                responsive: true,
+                thresholdOperator: '>', // Valid values: '==', '>=', '>', '<=', '<'
+                thresholdFilter: '', // Transformations/Filters to support additional units. Valid Values: 'KtoC','CtoK','FtoC','CtoF','InchToCM','CMtoInch'
+                thresholdFunction: undefined, //Pass in a custom function: function(this, values){ return _.sum(values) > v2; }
+                window: 1, // Rolling window size in days.
+                dailyValueValidator: undefined, // Pass in a custom validator predicate function(value, date){return date.slice(0, 4) > 1960 && value > 5 }
+                yearValidator: undefined, // Similar to dailyValueValidator
+                dataAPIEndpoint: this.options.thresholdStationsDataURL,
+                barColor: '#307bda' // Color for bars.
+              });
+
+              $('#threshold').change(function () {
+                $("#thresholds-container").item({threshold: parseFloat($('#threshold').val())}).item('update');
+              });
+
+              $('#station').change(function () {
+                $("#thresholds-container").item('option', 'station', $('#station').val()).item('update');
+              });
+
+
+              // when #variable changes, update ui units and apply sensible defaults.
+              $('#itemvariable').change(function (e) {
+                var queryElements = void 0,
+                  missingValueTreatment = void 0,
+                  windowFunction = void 0;
+                switch ($('#itemvariable').val()) {
+                  case 'precipitation':
+                    $('#thresholdUnits').text('in');
+                    $('#threshold').val(1.0);
+                    $('#item_inches_or_f').text('inches');
+                    break;
+                  case 'tmax':
+                    $('#thresholdUnits').text('F');
+                    $('#threshold').val(95);
+                    $('#item_inches_or_f').text('°F');
+                    break;
+                  case 'tmin':
+                    $('#thresholdUnits').text('F');
+                    $('#threshold').val(32);
+                    $('#item_inches_or_f').html('°F');
+                    break;
+                  case 'tavg':
+                    $('#thresholdUnits').text('F');
+                    $('#threshold').val(70);
+                    $('#item_inches_or_f').text('°F');
+                    break;
+                }
+                $("#thresholds-container").item({
+                  threshold: parseFloat($('#threshold').val()),
+                  variable: $('#itemvariable option:selected').val()
+                }).item('update');
+              });
+
+              $('#percentileThreshold').change(function () {
+
+                var value = $('#percentileThreshold').val();
+                if (value === '') {
+                  return;
+                }
+
+                if (value <= 0 || value >= 100) {
+                  $('#percentileThreshold').addClass('form-control-danger');
+                  return;
+                }
+
+                $('#threshold').val($("#thresholds-container").item('getPercentileValue', value)).trigger('change');
+
+              });
+
+              $('#window').change(function () {
+                $("#thresholds-container").item({window: parseInt($('#window').val())});
+                $("#thresholds-container").item('update');
+              });
+              this.chart = new ChartBuilder({station:value}, this.options.thresholdStationsDataURL);
+              break;
+            case 'tidal':
+              $(this.nodes.stationOverlayContainer).append(
+                  '<div id="station-overlay">' +
+                  '   <div id="station-overlay-close">x</div>' +
+                  '   <div id="station-overlay-header">' +
+                  '       <h3 class="accent-color" style="margin-bottom: 20px;"><span class="icon icon-district"></span>High Tide Flooding</h3>' +
+                  '       <h5>Name: <span class="station_name">' + this.options.stationName + '</span></h5>' +
+                  '       <h5>Station ID: <span class="station_id">' + value + '</span></h5>' +
+                  '   </div>' +
+                  '   <select name="" id="tidal_station" class="form-control" style="width: 200px;display:none">' +
+                  '       <option value="" disabled selected hidden>Station</option>' +
+                  '       <option value="8443970">Boston, MA</option>' +
+                  '       <option value="8454000">Providence, RI</option>' +
+                  '       <option value="8461490">New London, CT</option>' +
+                  '       <option value="8510560">Montauk, NY</option>' +
+                  '       <option value="8516945">Kings Point, NY</option>' +
+                  '       <option value="8518750">Battery, NY</option>' +
+                  '       <option value="8531680">Sandy Hook, NJ</option>' +
+                  '       <option value="8534720">Atlantic City, NJ</option>' +
+                  '       <option value="8545240">Philadelphia, PA</option>' +
+                  '       <option value="8557380">Lewes, DE</option>' +
+                  '       <option value="8574680">Baltimore, MD</option>' +
+                  '       <option value="8575512">Annapolis, MD</option>' +
+                  '       <option value="8594900">Washington D.C.</option>' +
+                  '       <option value="8638610">Sewells Point, VA</option>' +
+                  '       <option value="8658120">Wilmington, NC</option>' +
+                  '       <option value="8665530">Charleston, SC</option>' +
+                  '       <option value="8670870">Fort Pulaski, GA</option>' +
+                  '       <option value="8720030">Fernandina Beach, FL</option>' +
+                  '       <option value="8720218">Mayport, FL</option>' +
+                  '       <option value="8724580">Key West, FL</option>' +
+                  '       <option value="8726430">St Petersburg, FL</option>' +
+                  '       <option value="8771341">Galveston Bay, TX</option>' +
+                  '       <option value="8779770">Port Isabel, TX</option>' +
+                  '       <option value="9410230">La Jolla, CA</option>' +
+                  '       <option value="9414290">San Francisco, CA</option>' +
+                  '       <option value="9447130">Seattle, WA</option>' +
+                  '       <option value="1612340">Honolulu, HI</option>' +
+                  '   </select>' +
+                  '   <div id="overlay-chart-container">' +
+                  '      <canvas id="tidal-chart"></canvas>' +
+                  '       <div class="station_overlay_text">' +
+                  '          <p>Gray bars show annual counts of high-tide flooding in the past. Red and blue bars show projections of the average number of high-tide flooding events in future years.</p>' +
+                  '       </div>' +
+                  '   </div>' +
+                  '</div>'
+                );
+
+
+                $("#tidal-chart").tidalstationwidget({
+                  station: '8665530',
+                  data_url: '/resources/tidal/tidal_data.json', // defaults to tidal_data.json
+                  responsive: true // set to false to disable ChartJS responsive sizing.
+                });
+
+                $('#station-overlay-header h3').html('Tidal Station');
+
+                $('#location-stations').addClass('type-tidal');
+
+                $('#stations-spinner').fadeOut(250);
+
+                $('#tidal_station').change(function () {
+                  $("#tidal-chart").tidalstationwidget("update", {station: $(this).val()});
+
+                  if ($(this).find('option:selected').length) {
+                    $('#station-overlay-header .station-name').html($(this).find('option:selected').text());
+                  }
+
+                  $('#station-overlay-header .station-id').html($(this).val());
+                });
+
+                setTimeout(function () {
+                  $("#tidal_station").val(value).trigger('change');
+                }, 250);
+
+              break;
+          }
+
+          $('#station-overlay-close').click(function () {
+            $(this.nodes.stationOverlayContainer).css('visibility', 'hidden');
+            $(this.nodes.stationOverlayContainer).empty();
+          }.bind(this));
       }
     },
 
     _destroy: function () {
       // remove CSS classes, destroy nodes, etc
-      Object.values(this.nodes).forEach(function (node) {node.remove()});
+      Object.values(this.nodes).forEach(function (node) {
+        node.remove()
+      });
       this.map.destroy();
     },
 
@@ -311,7 +647,6 @@
       // Do any custom logic for enabling here, then
       this._super();
     },
-
     whenDojoMods: function (callback) {
 
       if (this.dojoMods !== undefined) {
@@ -607,222 +942,9 @@ Stations.prototype.stationSelected = function (feature, event, type) {
 
     }
     if (selectedStationType === 'thresholds') {
-      var html =
-
-        '<div id="station-overlay">' +
-        '   <div id="station-overlay-close">x</div>' +
-        '   <div id="station-overlay-header">' +
-        '       <h3 class="accent-color" style="margin-bottom: 20px;"><span class="icon icon-district"></span>Weather Station</h3>' +
-        '       <h5>Name: ' + props.name + '</h5>' +
-        '       <h5>Station ID: ' + props.station + '</h5>' +
-        '   </div>' +
-        '   <div id="threshold_inputs">' +
-        // '       <div class="field-pair field-id">' +
-        // '           <label for="station">Station Id:</label>' +
-        // '           <div class="field">' +
-        // '               <input type="text" name="station" id="station" value="' + props.station + '">' +
-        // '           </div>' +
-        // '       </div>' +
-        '       <div class="field-pair field-var">' +
-        '           <label for="itemvariable">Variable:</label>' +
-        '           <div class="field">' +
-        '               <select name="itemvariable" id="itemvariable">' +
-        '                   <option value="precipitation">Precipitation</option>' +
-        '                   <option value="tavg">Average Temperature</option>' +
-        '                   <option value="tmax">Maximum Temperature</option>' +
-        '                   <option value="tmin">Minimum Temperature</option>' +
-        '               </select>' +
-        '           </div>' +
-        '       </div>' +
-        '       <div class="field-pair field-window append">' +
-        '           <label for="window">Window:</label>' +
-        '           <div class="field">' +
-        '               <input type="number" id="window" name="window" value="1"> <span class="append">days</span>' +
-        '           </div>' +
-        '       </div>' +
-        '       <div class="field-pair field-threshold append">' +
-        '           <label for="threshold">Threshold:</label>' +
-        '           <div class="field">' +
-        '               <input type="number" name="threshold" id="threshold" value="1" step="0.1"> <span class="append" id="item_inches_or_f">°F</span>' +
-        '           </div>' +
-        '       </div>' +
-        '   </div>' +
-
-        '   <div id="overlay-thresholds-container">' +
-        '<div id="thresholds-container"></div>' +
-        '   <div class="station_overlay_text">' +
-        '       <p style="width:65%!important;margin-left:200px;">To limit the tool to show to years with solid data records, we excluded years that are missing more than five daily temperature reports in a single month, or more than one precipitation report in a single month. Data are from stations in the Global Historical Climatology Network-Daily dataset, compiled by the National Centers for Environmental Information, and served by ACIS.</p>' +
-        '   </div>' +
-        '</div>' +
-        '</div>' +
-        '</div>';
-
-
-      $('#station-overlay-container').append(html);
-
-
-      $("#thresholds-container").item({
-        station: props.station, // GHCN-D Station id (required)
-        variable: 'precipitation', // Valid values: 'precipitation', 'tmax', 'tmin', 'tavg'
-        threshold: 1.0,
-        responsive: true,
-        thresholdOperator: '>', // Valid values: '==', '>=', '>', '<=', '<'
-        thresholdFilter: '', // Transformations/Filters to support additional units. Valid Values: 'KtoC','CtoK','FtoC','CtoF','InchToCM','CMtoInch'
-        thresholdFunction: undefined, //Pass in a custom function: function(this, values){ return _.sum(values) > v2; }
-        window: 1, // Rolling window size in days.
-        dailyValueValidator: undefined, // Pass in a custom validator predicate function(value, date){return date.slice(0, 4) > 1960 && value > 5 }
-        yearValidator: undefined, // Similar to dailyValueValidator
-        dataAPIEndpoint: "https://data.rcc-acis.org/",
-        barColor: '#307bda' // Color for bars.
-      });
-
-      $('#threshold').change(function () {
-        $("#thresholds-container").item({threshold: parseFloat($('#threshold').val())}).item('update');
-      });
-
-      $('#station').change(function () {
-        $("#thresholds-container").item('option', 'station', $('#station').val()).item('update');
-      });
-
-
-      // when #variable changes, update ui units and apply sensible defaults.
-      $('#itemvariable').change(function (e) {
-        var queryElements = void 0,
-          missingValueTreatment = void 0,
-          windowFunction = void 0;
-        switch ($('#itemvariable').val()) {
-          case 'precipitation':
-            $('#thresholdUnits').text('in');
-            $('#threshold').val(1.0);
-            $('#item_inches_or_f').text('inches');
-            break;
-          case 'tmax':
-            $('#thresholdUnits').text('F');
-            $('#threshold').val(95);
-            $('#item_inches_or_f').text('°F');
-            break;
-          case 'tmin':
-            $('#thresholdUnits').text('F');
-            $('#threshold').val(32);
-            $('#item_inches_or_f').html('°F');
-            break;
-          case 'tavg':
-            $('#thresholdUnits').text('F');
-            $('#threshold').val(70);
-            $('#item_inches_or_f').text('°F');
-            break;
-        }
-        $("#thresholds-container").item({
-          threshold: parseFloat($('#threshold').val()),
-          variable: $('#itemvariable option:selected').val()
-        }).item('update');
-      });
-
-      $('#percentileThreshold').change(function () {
-
-        var value = $('#percentileThreshold').val();
-        if (value === '') {
-          return;
-        }
-
-        if (value <= 0 || value >= 100) {
-          $('#percentileThreshold').addClass('form-control-danger');
-          return;
-        }
-
-        $('#threshold').val($("#thresholds-container").item('getPercentileValue', value)).trigger('change');
-
-      });
-
-      $('#window').change(function () {
-        $("#thresholds-container").item({window: parseInt($('#window').val())});
-        $("#thresholds-container").item('update');
-      });
-
-
-      var stations_base_url = 'https://data.rcc-acis.org/StnData';
-      this.chart = new ChartBuilder(props, stations_base_url);
 
     }
-    if (selectedStationType === 'high_tide_flooding') {
-      var html =
-        '<div id="station-overlay">' +
-        '   <div id="station-overlay-close">x</div>' +
-        '   <div id="station-overlay-header">' +
-        '       <h3 class="accent-color" style="margin-bottom: 20px;"><span class="icon icon-district"></span>High Tide Flooding</h3>' +
-        '       <h5>Name: <span class="station_name">' + props.name + '</span></h5>' +
-        '       <h5>Station ID: <span class="station_id">' + props.station + '</span></h5>' +
-        '   </div>' +
-        '   <select name="" id="tidal_station" class="form-control" style="width: 200px;display:none">' +
-        '       <option value="" disabled selected hidden>Station</option>' +
-        '       <option value="8443970">Boston, MA</option>' +
-        '       <option value="8454000">Providence, RI</option>' +
-        '       <option value="8461490">New London, CT</option>' +
-        '       <option value="8510560">Montauk, NY</option>' +
-        '       <option value="8516945">Kings Point, NY</option>' +
-        '       <option value="8518750">Battery, NY</option>' +
-        '       <option value="8531680">Sandy Hook, NJ</option>' +
-        '       <option value="8534720">Atlantic City, NJ</option>' +
-        '       <option value="8545240">Philadelphia, PA</option>' +
-        '       <option value="8557380">Lewes, DE</option>' +
-        '       <option value="8574680">Baltimore, MD</option>' +
-        '       <option value="8575512">Annapolis, MD</option>' +
-        '       <option value="8594900">Washington D.C.</option>' +
-        '       <option value="8638610">Sewells Point, VA</option>' +
-        '       <option value="8658120">Wilmington, NC</option>' +
-        '       <option value="8665530">Charleston, SC</option>' +
-        '       <option value="8670870">Fort Pulaski, GA</option>' +
-        '       <option value="8720030">Fernandina Beach, FL</option>' +
-        '       <option value="8720218">Mayport, FL</option>' +
-        '       <option value="8724580">Key West, FL</option>' +
-        '       <option value="8726430">St Petersburg, FL</option>' +
-        '       <option value="8771341">Galveston Bay, TX</option>' +
-        '       <option value="8779770">Port Isabel, TX</option>' +
-        '       <option value="9410230">La Jolla, CA</option>' +
-        '       <option value="9414290">San Francisco, CA</option>' +
-        '       <option value="9447130">Seattle, WA</option>' +
-        '       <option value="1612340">Honolulu, HI</option>' +
-        '   </select>' +
-        '   <div id="overlay-chart-container">' +
-        '      <canvas id="tidal-chart"></canvas>' +
-        '       <div class="station_overlay_text">' +
-        '          <p>Gray bars show annual counts of high-tide flooding in the past. Red and blue bars show projections of the average number of high-tide flooding events in future years.</p>' +
-        '       </div>' +
-        '   </div>' +
-        '</div>';
 
-
-      $('#station-overlay-container').append(html);
-
-
-      $("#tidal-chart").tidalstationwidget({
-        station: '8665530',
-        data_url: '/resources/tidal/tidal_data.json', // defaults to tidal_data.json
-        responsive: true // set to false to disable ChartJS responsive sizing.
-      });
-
-      $('#station-overlay-header h3').html('Tidal Station');
-
-      $('#location-stations').addClass('type-tidal');
-
-      $('#stations-spinner').fadeOut(250);
-
-      $('#tidal_station').change(function () {
-        $("#tidal-chart").tidalstationwidget("update", {station: $(this).val()})
-
-        if ($(this).find('option:selected').length) {
-          $('#station-overlay-header .station-name').html($(this).find('option:selected').text());
-        }
-
-        $('#station-overlay-header .station-id').html($(this).val());
-      });
-
-      setTimeout(function () {
-        $("#tidal_station").val(props.station).trigger('change');
-      }, 250);
-
-
-    }
 
     $('#station-overlay-close').click(function () {
       $('#station-overlay-container').css('visibility', 'hidden');

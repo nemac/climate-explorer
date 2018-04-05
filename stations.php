@@ -199,7 +199,7 @@ else {
 <?php if (isset($active_station) && $active_station != null) { ?>
   <script>
     $(document).ready(function () {
-
+        // todo client-side state handling
       window.stations = $('#stations-map').stationsMap({stationId: <?php echo "'" . $active_station . "'"; ?>});
 
     });
