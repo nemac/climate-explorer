@@ -39,7 +39,7 @@
         var data_hist = [];
         for (var i = 1950; i <= 2016; i++) {
           try {
-            data_hist.push(this.data.hist[this.options.station][i]);
+            data_hist.push(this.data.flood_historical[this.options.station][i]);
           }
           catch (e) {
             if (e instanceof TypeError) {
@@ -61,8 +61,8 @@
             data_rcp45.push(0);
             data_rcp85.push(0);
           } else {
-            data_rcp45.push(this.data.rcp45[this.options.station][i]);
-            data_rcp85.push(this.data.rcp85[this.options.station][i]);
+            data_rcp45.push(this.data.low_scenario[this.options.station][i]);
+            data_rcp85.push(this.data.high[this.options.station][i]);
           }
         }
 
