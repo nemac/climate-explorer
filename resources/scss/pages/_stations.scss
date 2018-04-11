@@ -1,5 +1,5 @@
 .page-type-stations {
-  overflow:hidden;
+  overflow: hidden;
 
   #viewport {
     position: relative;
@@ -126,7 +126,6 @@
     }
   }
 
-
   .data-accordion-actions {
     float: right;
     margin-top: -15px;
@@ -182,8 +181,8 @@
         top: 22px;
         width: 0;
         height: 0;
-        border: 10px solid #fff;
-        border-color: transparent #fff transparent transparent;
+        border: 10px solid #ffffff;
+        border-color: transparent #ffffff transparent transparent;
       }
 
       h3 {
@@ -255,12 +254,12 @@
   }
 
   .legend-image {
-    height:350px;
-    margin-left:-13px;
+    height: 350px;
+    margin-left: -13px;
   }
 
   .ol-scale-line {
-    background: rgba(0,60,136,.3);
+    background: rgba(0, 60, 136, .3);
     border-radius: 4px;
     top: 20px;
     bottom: auto;
@@ -306,8 +305,6 @@
     }
   }
 }
-
-
 // OVERLAYS
 
 #stations-spinner {
@@ -321,22 +318,21 @@
   transform: translate(-50%, -50%);
   z-index: 15;
 }
-
 #station-overlay-container {
   position: absolute;
   top: 0;
   width: 100%;
   height: 100%;
   opacity: 1;
-  left:0;
+  left: 0;
   visibility: hidden;
   transition: left 0s ease 0.25s, opacity 0.25s ease 0s;
   background: transparentize($orange1, 0.05);
   z-index: 10;
-  overflow: hidden;
+  overflow-x:hidden;
+  overflow-y:auto;
   @include clearfix;
 }
-
 #thresholds-container {
   position: relative;
   padding: 25px;
@@ -346,8 +342,6 @@
   max-width: 80% !important;
   background-color: white;
 }
-
-
 #threshold_inputs {
   display: block;
   position: absolute;
@@ -355,18 +349,17 @@
   color: white;
   font-size: 0.9em;
   input {
-    background-color: #F44C36;
+    background-color: #f44c36;
     padding: 5px;
     margin-top: 0;
     margin-bottom: 13px;
     border: 1px solid white;
     color: white;
-
-    width:120px;
+    width: 120px;
     font-size: 0.9em;
   }
   select {
-    background-color: #F44C36;
+    background-color: #f44c36;
     padding: 5px;
     margin-top: 0px;
     margin-bottom: 13px;
@@ -375,42 +368,38 @@
     font-size: 0.9em;
   }
 }
-
 #tidal-chart {
-  background-color:white;
-  max-height:900px;
+  background-color: white;
+  height: 100%;
+  width: 100%;
+  position: relative;
 }
-
-#overlay-chart-container{
-  margin:25px;
-  max-height: 50vh !important;
+#overlay-chart-container {
+  margin: 25px;
+  height: 50vh;
   width: calc(100% - 50px);
 }
-
-
-#overlay-thresholds-container{
-  padding:25px;
+#overlay-thresholds-container {
+  padding: 25px;
   max-height: 70vh !important;
   width: calc(100% - 50px);
 }
 .left_chart {
-  position:relative;
+  position: relative;
   width: calc(50% - 40px);
-  margin:0 20px;
+  margin: 0 20px;
   float: left;
   height: 40vh;
   background-color: white;
 }
-
 .right_chart {
-  position:relative;
+  position: relative;
   width: calc(50% - 40px);
-  margin:0 20px 0 20px;
+  margin: 0 20px 0 20px;
   float: left;
   height: 40vh;
   background-color: white;
 }
-
 #station-overlay-close {
   position: absolute;
   top: 10px;
@@ -419,8 +408,6 @@
   color: $white;
   cursor: pointer;
 }
-
-
 // header
 
 #station-overlay-header {
@@ -440,7 +427,6 @@
     font-family: $sans-book;
   }
 }
-
 .form-group {
   @include clearfix;
   font-size: 0.75rem;
@@ -460,7 +446,7 @@
   input {
     display: inline-block;
     width: 100%;
-    background-color: #FFF;
+    background-color: #ffffff;
     border: 0;
     font-family: $roboto;
     font-size: 0.75rem;
@@ -486,21 +472,16 @@
   }
 
 }
-
-
-
 .station_overlay_text p {
-    width: 100%;
-    padding:10px 0;
-    overflow:hidden;
-    color: $white !important;
-    font-size: 1.125rem;
-    font-family: $roboto;
+  width: 100%;
+  padding: 10px 0;
+  overflow: hidden;
+  color: $white !important;
+  font-size: 1.125rem;
+  font-family: $roboto;
 }
-
-
 .station_overlay_text {
-  width:100%;
+  width: 100%;
   min-height: 100px;
   overflow-y: auto;
 }
@@ -516,7 +497,6 @@
   padding: 20px;
   z-index: 20;
 }
-
 .station-overlay-column {
   position: relative;
   float: left;
@@ -539,9 +519,16 @@
     }
   }
 }
-
-
-
+#stations-map .esri-display-object, #stations-map .esri-display-object svg {
+  pointer-events: none;
+}
+#stations-map .esri-display-object svg {
+  filter: drop-shadow(0.5px 0.5px 1px rgba(0, 0, 0, 0.2));
+}
+#stations-map svg g circle {
+  pointer-events: all;
+  cursor: pointer;
+}
 .year {
   position: absolute;
   bottom: 20px;

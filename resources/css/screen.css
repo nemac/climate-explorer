@@ -2714,8 +2714,7 @@ body .ui-tooltip {
 }
 
 /* line 36, resources/scss/_mixins.scss */
-*:before,
-*:after {
+*:before, *:after {
   -moz-box-sizing: border-box;
   -webkit-box-sizing: border-box;
   box-sizing: border-box;
@@ -6336,24 +6335,29 @@ body.detail-open #nav-overlay {
 
 /* line 2, resources/scss/pages/_variable.scss */
 .page-type-variables #viewport {
+  position: relative;
   overflow: hidden;
+  height: calc(100% - 110px);
+  width: calc(80% - 50px);
+  left: calc(20% + 30px);
+  top: 110px;
 }
 
-/* line 7, resources/scss/pages/_variable.scss */
+/* line 12, resources/scss/pages/_variable.scss */
 .page-type-variables #vars-legend h5 {
   margin: 0 0 6px 0;
   font: 1rem/1em "CESans-Heavy", Helvetica, "Helvetica Neue", Arial, sans-serif;
   color: #233a70;
 }
 
-/* line 13, resources/scss/pages/_variable.scss */
+/* line 18, resources/scss/pages/_variable.scss */
 .page-type-variables #vars-legend h6 {
   margin: 0 0 10px 0;
   font: 0.75rem/1.25em "CESans", Roboto, Helvetica, "Helvetica Neue", Arial, sans-serif;
   color: #5f5f5f;
 }
 
-/* line 19, resources/scss/pages/_variable.scss */
+/* line 24, resources/scss/pages/_variable.scss */
 .page-type-variables #vars-legend .legend {
   width: 100%;
   margin: 0 0 10px 0;
@@ -6363,24 +6367,24 @@ body.detail-open #nav-overlay {
   color: #233a70;
 }
 
-/* line 27, resources/scss/pages/_variable.scss */
+/* line 32, resources/scss/pages/_variable.scss */
 .page-type-variables #vars-legend .legend ul {
   margin: 15px 0 0 0;
 }
 
-/* line 31, resources/scss/pages/_variable.scss */
+/* line 36, resources/scss/pages/_variable.scss */
 .page-type-variables #vars-legend .legend li {
   margin: 10px 0;
 }
 
-/* line 35, resources/scss/pages/_variable.scss */
+/* line 40, resources/scss/pages/_variable.scss */
 .page-type-variables #vars-legend .legend .color {
   width: 8%;
   margin: 0 8% 0 0;
   padding: 0 0 8% 0;
 }
 
-/* line 43, resources/scss/pages/_variable.scss */
+/* line 48, resources/scss/pages/_variable.scss */
 .page-type-variables #main-content-wrap {
   position: absolute;
   top: 0;
@@ -6389,7 +6393,7 @@ body.detail-open #nav-overlay {
   height: 100%;
 }
 
-/* line 46, resources/scss/pages/_variable.scss */
+/* line 51, resources/scss/pages/_variable.scss */
 .page-type-variables #main-content-wrap #variable-map {
   position: absolute;
   top: 0;
@@ -6398,14 +6402,14 @@ body.detail-open #nav-overlay {
   height: 100%;
 }
 
-/* line 50, resources/scss/pages/_variable.scss */
+/* line 55, resources/scss/pages/_variable.scss */
 .page-type-variables #main-content-wrap #map-seasons-container {
   position: absolute;
   top: 20px;
   left: calc(20% + 35px);
 }
 
-/* line 56, resources/scss/pages/_variable.scss */
+/* line 61, resources/scss/pages/_variable.scss */
 .page-type-variables #main-content-wrap .fs-dropdown {
   margin: 0;
   -webkit-transition: 0.25s;
@@ -6414,7 +6418,7 @@ body.detail-open #nav-overlay {
   transition: 0.25s;
 }
 
-/* line 60, resources/scss/pages/_variable.scss */
+/* line 65, resources/scss/pages/_variable.scss */
 .page-type-variables #main-content-wrap .fs-dropdown button {
   height: auto;
   padding: 12px;
@@ -6434,7 +6438,7 @@ body.detail-open #nav-overlay {
   transition: 0.25s;
 }
 
-/* line 75, resources/scss/pages/_variable.scss */
+/* line 80, resources/scss/pages/_variable.scss */
 .page-type-variables #main-content-wrap .fs-dropdown-open .fs-dropdown-selected,
 .page-type-variables #main-content-wrap .fs-dropdown-focus .fs-dropdown-selected {
   -webkit-box-shadow: none;
@@ -6443,7 +6447,7 @@ body.detail-open #nav-overlay {
   background: #fff;
 }
 
-/* line 81, resources/scss/pages/_variable.scss */
+/* line 86, resources/scss/pages/_variable.scss */
 .page-type-variables #main-content-wrap .fs-dropdown-options {
   background: rgba(255, 255, 255, 0.8);
   border: none;
@@ -6453,53 +6457,53 @@ body.detail-open #nav-overlay {
   box-shadow: none;
 }
 
-/* line 87, resources/scss/pages/_variable.scss */
+/* line 92, resources/scss/pages/_variable.scss */
 .page-type-variables #main-content-wrap .fs-dropdown-options button {
   padding: 10px;
   font-size: 1rem;
 }
 
-/* line 91, resources/scss/pages/_variable.scss */
+/* line 96, resources/scss/pages/_variable.scss */
 .page-type-variables #main-content-wrap .fs-dropdown-options button:hover {
   background: #ebebeb;
 }
 
-/* line 97, resources/scss/pages/_variable.scss */
+/* line 102, resources/scss/pages/_variable.scss */
 .page-type-variables #main-content-wrap .split-pane {
   z-index: 1;
 }
 
-/* line 101, resources/scss/pages/_variable.scss */
+/* line 106, resources/scss/pages/_variable.scss */
 .page-type-variables #main-content-wrap #pane-left {
   background: url(../img/bg_variables-low.jpg) #fff no-repeat center;
   background-attachment: fixed;
   background-size: cover;
 }
 
-/* line 107, resources/scss/pages/_variable.scss */
+/* line 112, resources/scss/pages/_variable.scss */
 .page-type-variables #main-content-wrap #pane-right {
   background: url(../img/bg_variables-high.jpg) #fff no-repeat center;
   background-attachment: fixed;
   background-size: cover;
 }
 
-/* line 113, resources/scss/pages/_variable.scss */
+/* line 118, resources/scss/pages/_variable.scss */
 .page-type-variables #main-content-wrap .year {
   z-index: 3;
 }
 
-/* line 117, resources/scss/pages/_variable.scss */
+/* line 122, resources/scss/pages/_variable.scss */
 .page-type-variables #main-content-wrap .zoom {
   z-index: 4;
 }
 
-/* line 123, resources/scss/pages/_variable.scss */
+/* line 128, resources/scss/pages/_variable.scss */
 .page-type-variables .data-accordion-actions {
   float: right;
   margin-top: -15px;
 }
 
-/* line 127, resources/scss/pages/_variable.scss */
+/* line 132, resources/scss/pages/_variable.scss */
 .page-type-variables .data-accordion-actions a {
   display: inline-block;
   padding: 10px;
@@ -6510,19 +6514,19 @@ body.detail-open #nav-overlay {
   transition: 0.25s;
 }
 
-/* line 136, resources/scss/pages/_variable.scss */
+/* line 141, resources/scss/pages/_variable.scss */
 .page-type-variables .data-accordion-actions a .icon {
   margin: 0 8px 0 0;
   font-size: 1.25rem;
   color: #f5442d;
 }
 
-/* line 142, resources/scss/pages/_variable.scss */
+/* line 147, resources/scss/pages/_variable.scss */
 .page-type-variables .data-accordion-actions a:hover {
   background: #d5e8f2;
 }
 
-/* line 148, resources/scss/pages/_variable.scss */
+/* line 153, resources/scss/pages/_variable.scss */
 .page-type-variables #variable-slider {
   width: 95%;
   margin: auto;
@@ -6531,7 +6535,7 @@ body.detail-open #nav-overlay {
   position: relative;
 }
 
-/* line 157, resources/scss/pages/_variable.scss */
+/* line 162, resources/scss/pages/_variable.scss */
 .page-type-variables #vars-menu .layer-info {
   display: none;
   position: absolute;
@@ -6546,7 +6550,7 @@ body.detail-open #nav-overlay {
   white-space: normal;
 }
 
-/* line 170, resources/scss/pages/_variable.scss */
+/* line 175, resources/scss/pages/_variable.scss */
 .page-type-variables #vars-menu .layer-info:before {
   content: '';
   display: block;
@@ -6559,19 +6563,19 @@ body.detail-open #nav-overlay {
   border-color: transparent #fff transparent transparent;
 }
 
-/* line 182, resources/scss/pages/_variable.scss */
+/* line 187, resources/scss/pages/_variable.scss */
 .page-type-variables #vars-menu .layer-info h3 {
   margin: 0 0 10px 0;
   font-size: 1.625rem;
   color: #f5442d;
 }
 
-/* line 188, resources/scss/pages/_variable.scss */
+/* line 193, resources/scss/pages/_variable.scss */
 .page-type-variables #vars-menu .layer-info p {
   margin: 0 0 12px 0;
 }
 
-/* line 193, resources/scss/pages/_variable.scss */
+/* line 198, resources/scss/pages/_variable.scss */
 .page-type-variables #vars-menu .help {
   padding: 0;
   float: left;
@@ -6582,21 +6586,21 @@ body.detail-open #nav-overlay {
   margin-right: 7px;
 }
 
-/* line 205, resources/scss/pages/_variable.scss */
+/* line 210, resources/scss/pages/_variable.scss */
 .page-type-variables #vars-legend h5 {
   margin: 0 0 6px 0;
   font: 1rem/1em "CESans-Heavy", Helvetica, "Helvetica Neue", Arial, sans-serif;
   color: #233a70;
 }
 
-/* line 211, resources/scss/pages/_variable.scss */
+/* line 216, resources/scss/pages/_variable.scss */
 .page-type-variables #vars-legend h6 {
   margin: 0 0 10px 0;
   font: 0.75rem/1.25em "CESans", Roboto, Helvetica, "Helvetica Neue", Arial, sans-serif;
   color: #5f5f5f;
 }
 
-/* line 217, resources/scss/pages/_variable.scss */
+/* line 222, resources/scss/pages/_variable.scss */
 .page-type-variables #vars-legend .legend {
   width: 100%;
   margin: 0 0 10px 0;
@@ -6606,41 +6610,41 @@ body.detail-open #nav-overlay {
   color: #233a70;
 }
 
-/* line 225, resources/scss/pages/_variable.scss */
+/* line 230, resources/scss/pages/_variable.scss */
 .page-type-variables #vars-legend .legend ul {
   margin: 15px 0 0 0;
 }
 
-/* line 229, resources/scss/pages/_variable.scss */
+/* line 234, resources/scss/pages/_variable.scss */
 .page-type-variables #vars-legend .legend li {
   margin: 10px 0;
 }
 
-/* line 233, resources/scss/pages/_variable.scss */
+/* line 238, resources/scss/pages/_variable.scss */
 .page-type-variables #vars-legend .legend .color {
   width: 8%;
   margin: 0 8% 0 0;
   padding: 0 0 8% 0;
 }
 
-/* line 241, resources/scss/pages/_variable.scss */
+/* line 246, resources/scss/pages/_variable.scss */
 .page-type-variables .chart-legend {
   overflow: hidden;
   padding-top: 20px;
 }
 
-/* line 246, resources/scss/pages/_variable.scss */
+/* line 251, resources/scss/pages/_variable.scss */
 .page-type-variables .ol-zoom {
   display: none;
 }
 
-/* line 250, resources/scss/pages/_variable.scss */
+/* line 255, resources/scss/pages/_variable.scss */
 .page-type-variables .legend-image {
   height: 350px;
   margin-left: -13px;
 }
 
-/* line 255, resources/scss/pages/_variable.scss */
+/* line 260, resources/scss/pages/_variable.scss */
 .page-type-variables .ol-scale-line {
   background: rgba(0, 60, 136, 0.3);
   border-radius: 4px;
@@ -6650,7 +6654,7 @@ body.detail-open #nav-overlay {
   right: 100px;
 }
 
-/* line 264, resources/scss/pages/_variable.scss */
+/* line 269, resources/scss/pages/_variable.scss */
 .page-type-variables #district-trigger {
   position: absolute;
   top: 15%;
@@ -6676,7 +6680,7 @@ body.detail-open #nav-overlay {
   clear: both;
 }
 
-/* line 275, resources/scss/pages/_variable.scss */
+/* line 280, resources/scss/pages/_variable.scss */
 .page-type-variables #district-trigger span {
   display: block;
   float: left;
@@ -6684,7 +6688,7 @@ body.detail-open #nav-overlay {
   color: #0058cf;
 }
 
-/* line 282, resources/scss/pages/_variable.scss */
+/* line 287, resources/scss/pages/_variable.scss */
 .page-type-variables #district-trigger .text {
   margin-top: -2px;
   text-indent: -300px;
@@ -6694,23 +6698,23 @@ body.detail-open #nav-overlay {
   transition: text-indent 0.5s;
 }
 
-/* line 288, resources/scss/pages/_variable.scss */
+/* line 293, resources/scss/pages/_variable.scss */
 .page-type-variables #district-trigger .icon {
   padding-left: 10px;
   font-size: 1.25rem;
 }
 
-/* line 293, resources/scss/pages/_variable.scss */
+/* line 298, resources/scss/pages/_variable.scss */
 .page-type-variables #district-trigger:hover {
   padding-left: 15px;
 }
 
-/* line 296, resources/scss/pages/_variable.scss */
+/* line 301, resources/scss/pages/_variable.scss */
 .page-type-variables #district-trigger:hover .text {
   text-indent: 0;
 }
 
-/* line 303, resources/scss/pages/_variable.scss */
+/* line 308, resources/scss/pages/_variable.scss */
 .year {
   position: absolute;
   bottom: 20px;
@@ -6724,19 +6728,19 @@ body.detail-open #nav-overlay {
   transition: 0.25s;
 }
 
-/* line 312, resources/scss/pages/_variable.scss */
+/* line 317, resources/scss/pages/_variable.scss */
 .year:hover {
   background: rgba(255, 255, 255, 0.9);
 }
 
-/* line 316, resources/scss/pages/_variable.scss */
+/* line 321, resources/scss/pages/_variable.scss */
 .year .ui-slider {
   top: 20px;
   left: 10%;
   width: 80%;
 }
 
-/* line 321, resources/scss/pages/_variable.scss */
+/* line 326, resources/scss/pages/_variable.scss */
 .year .ui-slider .ui-slider-handle {
   top: -14px;
   width: 36px;
@@ -6753,14 +6757,14 @@ body.detail-open #nav-overlay {
   box-shadow: 0 0 4px rgba(0, 88, 207, 0.25);
 }
 
-/* line 334, resources/scss/pages/_variable.scss */
+/* line 339, resources/scss/pages/_variable.scss */
 .year .ui-slider .ui-slider-handle:hover {
   -webkit-box-shadow: 0 0 7px rgba(0, 88, 207, 0.4);
   -moz-box-shadow: 0 0 7px rgba(0, 88, 207, 0.4);
   box-shadow: 0 0 7px rgba(0, 88, 207, 0.4);
 }
 
-/* line 340, resources/scss/pages/_variable.scss */
+/* line 345, resources/scss/pages/_variable.scss */
 .year .year-label {
   position: absolute;
   top: 13px;
@@ -6768,14 +6772,36 @@ body.detail-open #nav-overlay {
   text-align: center;
 }
 
-/* line 346, resources/scss/pages/_variable.scss */
+/* line 351, resources/scss/pages/_variable.scss */
 .year .year-label.year-min {
   left: 0;
 }
 
-/* line 350, resources/scss/pages/_variable.scss */
+/* line 355, resources/scss/pages/_variable.scss */
 .year .year-label.year-max {
   right: 0;
+}
+
+/* line 362, resources/scss/pages/_variable.scss */
+.left-scenario, .right-scenario {
+  position: absolute;
+  width: 150px;
+  height: 40px;
+  display: block;
+  text-align: center;
+  margin-left: -180px;
+  margin-top: -3px;
+  background: rgba(255, 255, 255, 0.83);
+  font: 12px/40px montserrat-regular,sans-serif;
+  color: #2269b3;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  border: solid #fff 1px;
+}
+
+/* line 378, resources/scss/pages/_variable.scss */
+.right-scenario {
+  margin-left: 100px;
 }
 
 /* line 1, resources/scss/pages/_stations.scss */
@@ -6947,13 +6973,13 @@ body.detail-open #nav-overlay {
   z-index: 4;
 }
 
-/* line 130, resources/scss/pages/_stations.scss */
+/* line 129, resources/scss/pages/_stations.scss */
 .page-type-stations .data-accordion-actions {
   float: right;
   margin-top: -15px;
 }
 
-/* line 134, resources/scss/pages/_stations.scss */
+/* line 133, resources/scss/pages/_stations.scss */
 .page-type-stations .data-accordion-actions a {
   display: inline-block;
   padding: 10px;
@@ -6964,19 +6990,19 @@ body.detail-open #nav-overlay {
   transition: 0.25s;
 }
 
-/* line 143, resources/scss/pages/_stations.scss */
+/* line 142, resources/scss/pages/_stations.scss */
 .page-type-stations .data-accordion-actions a .icon {
   margin: 0 8px 0 0;
   font-size: 1.25rem;
   color: #f5442d;
 }
 
-/* line 149, resources/scss/pages/_stations.scss */
+/* line 148, resources/scss/pages/_stations.scss */
 .page-type-stations .data-accordion-actions a:hover {
   background: #d5e8f2;
 }
 
-/* line 155, resources/scss/pages/_stations.scss */
+/* line 154, resources/scss/pages/_stations.scss */
 .page-type-stations #variable-slider {
   width: 95%;
   margin: auto;
@@ -6985,7 +7011,7 @@ body.detail-open #nav-overlay {
   position: relative;
 }
 
-/* line 164, resources/scss/pages/_stations.scss */
+/* line 163, resources/scss/pages/_stations.scss */
 .page-type-stations #vars-menu .layer-info {
   display: none;
   position: absolute;
@@ -7000,7 +7026,7 @@ body.detail-open #nav-overlay {
   white-space: normal;
 }
 
-/* line 177, resources/scss/pages/_stations.scss */
+/* line 176, resources/scss/pages/_stations.scss */
 .page-type-stations #vars-menu .layer-info:before {
   content: '';
   display: block;
@@ -7009,23 +7035,23 @@ body.detail-open #nav-overlay {
   top: 22px;
   width: 0;
   height: 0;
-  border: 10px solid #fff;
-  border-color: transparent #fff transparent transparent;
+  border: 10px solid #ffffff;
+  border-color: transparent #ffffff transparent transparent;
 }
 
-/* line 189, resources/scss/pages/_stations.scss */
+/* line 188, resources/scss/pages/_stations.scss */
 .page-type-stations #vars-menu .layer-info h3 {
   margin: 0 0 10px 0;
   font-size: 1.625rem;
   color: #f5442d;
 }
 
-/* line 195, resources/scss/pages/_stations.scss */
+/* line 194, resources/scss/pages/_stations.scss */
 .page-type-stations #vars-menu .layer-info p {
   margin: 0 0 12px 0;
 }
 
-/* line 200, resources/scss/pages/_stations.scss */
+/* line 199, resources/scss/pages/_stations.scss */
 .page-type-stations #vars-menu .help {
   padding: 0;
   float: left;
@@ -7036,21 +7062,21 @@ body.detail-open #nav-overlay {
   margin-right: 7px;
 }
 
-/* line 212, resources/scss/pages/_stations.scss */
+/* line 211, resources/scss/pages/_stations.scss */
 .page-type-stations #vars-legend h5 {
   margin: 0 0 6px 0;
   font: 1rem/1em "CESans-Heavy", Helvetica, "Helvetica Neue", Arial, sans-serif;
   color: #233a70;
 }
 
-/* line 218, resources/scss/pages/_stations.scss */
+/* line 217, resources/scss/pages/_stations.scss */
 .page-type-stations #vars-legend h6 {
   margin: 0 0 10px 0;
   font: 0.75rem/1.25em "CESans", Roboto, Helvetica, "Helvetica Neue", Arial, sans-serif;
   color: #5f5f5f;
 }
 
-/* line 224, resources/scss/pages/_stations.scss */
+/* line 223, resources/scss/pages/_stations.scss */
 .page-type-stations #vars-legend .legend {
   width: 100%;
   margin: 0 0 10px 0;
@@ -7060,41 +7086,41 @@ body.detail-open #nav-overlay {
   color: #233a70;
 }
 
-/* line 232, resources/scss/pages/_stations.scss */
+/* line 231, resources/scss/pages/_stations.scss */
 .page-type-stations #vars-legend .legend ul {
   margin: 15px 0 0 0;
 }
 
-/* line 236, resources/scss/pages/_stations.scss */
+/* line 235, resources/scss/pages/_stations.scss */
 .page-type-stations #vars-legend .legend li {
   margin: 10px 0;
 }
 
-/* line 240, resources/scss/pages/_stations.scss */
+/* line 239, resources/scss/pages/_stations.scss */
 .page-type-stations #vars-legend .legend .color {
   width: 8%;
   margin: 0 8% 0 0;
   padding: 0 0 8% 0;
 }
 
-/* line 248, resources/scss/pages/_stations.scss */
+/* line 247, resources/scss/pages/_stations.scss */
 .page-type-stations .chart-legend {
   overflow: hidden;
   padding-top: 20px;
 }
 
-/* line 253, resources/scss/pages/_stations.scss */
+/* line 252, resources/scss/pages/_stations.scss */
 .page-type-stations .ol-zoom {
   display: none;
 }
 
-/* line 257, resources/scss/pages/_stations.scss */
+/* line 256, resources/scss/pages/_stations.scss */
 .page-type-stations .legend-image {
   height: 350px;
   margin-left: -13px;
 }
 
-/* line 262, resources/scss/pages/_stations.scss */
+/* line 261, resources/scss/pages/_stations.scss */
 .page-type-stations .ol-scale-line {
   background: rgba(0, 60, 136, 0.3);
   border-radius: 4px;
@@ -7104,7 +7130,7 @@ body.detail-open #nav-overlay {
   right: 100px;
 }
 
-/* line 271, resources/scss/pages/_stations.scss */
+/* line 270, resources/scss/pages/_stations.scss */
 .page-type-stations #district-trigger {
   position: absolute;
   top: 15%;
@@ -7130,7 +7156,7 @@ body.detail-open #nav-overlay {
   clear: both;
 }
 
-/* line 282, resources/scss/pages/_stations.scss */
+/* line 281, resources/scss/pages/_stations.scss */
 .page-type-stations #district-trigger span {
   display: block;
   float: left;
@@ -7138,7 +7164,7 @@ body.detail-open #nav-overlay {
   color: #0058cf;
 }
 
-/* line 289, resources/scss/pages/_stations.scss */
+/* line 288, resources/scss/pages/_stations.scss */
 .page-type-stations #district-trigger .text {
   margin-top: -2px;
   text-indent: -300px;
@@ -7148,23 +7174,23 @@ body.detail-open #nav-overlay {
   transition: text-indent 0.5s;
 }
 
-/* line 295, resources/scss/pages/_stations.scss */
+/* line 294, resources/scss/pages/_stations.scss */
 .page-type-stations #district-trigger .icon {
   padding-left: 10px;
   font-size: 1.25rem;
 }
 
-/* line 300, resources/scss/pages/_stations.scss */
+/* line 299, resources/scss/pages/_stations.scss */
 .page-type-stations #district-trigger:hover {
   padding-left: 15px;
 }
 
-/* line 303, resources/scss/pages/_stations.scss */
+/* line 302, resources/scss/pages/_stations.scss */
 .page-type-stations #district-trigger:hover .text {
   text-indent: 0;
 }
 
-/* line 313, resources/scss/pages/_stations.scss */
+/* line 310, resources/scss/pages/_stations.scss */
 #stations-spinner {
   display: none;
   position: absolute;
@@ -7177,7 +7203,7 @@ body.detail-open #nav-overlay {
   z-index: 15;
 }
 
-/* line 325, resources/scss/pages/_stations.scss */
+/* line 321, resources/scss/pages/_stations.scss */
 #station-overlay-container {
   position: absolute;
   top: 0;
@@ -7189,7 +7215,8 @@ body.detail-open #nav-overlay {
   transition: left 0s ease 0.25s, opacity 0.25s ease 0s;
   background: rgba(245, 68, 45, 0.95);
   z-index: 10;
-  overflow: hidden;
+  overflow-x: hidden;
+  overflow-y: auto;
 }
 
 /* line 52, resources/scss/_mixins.scss */
@@ -7203,7 +7230,7 @@ body.detail-open #nav-overlay {
   clear: both;
 }
 
-/* line 340, resources/scss/pages/_stations.scss */
+/* line 336, resources/scss/pages/_stations.scss */
 #thresholds-container {
   position: relative;
   padding: 25px;
@@ -7214,7 +7241,7 @@ body.detail-open #nav-overlay {
   background-color: white;
 }
 
-/* line 351, resources/scss/pages/_stations.scss */
+/* line 345, resources/scss/pages/_stations.scss */
 #threshold_inputs {
   display: block;
   position: absolute;
@@ -7223,9 +7250,9 @@ body.detail-open #nav-overlay {
   font-size: 0.9em;
 }
 
-/* line 357, resources/scss/pages/_stations.scss */
+/* line 351, resources/scss/pages/_stations.scss */
 #threshold_inputs input {
-  background-color: #F44C36;
+  background-color: #f44c36;
   padding: 5px;
   margin-top: 0;
   margin-bottom: 13px;
@@ -7235,9 +7262,9 @@ body.detail-open #nav-overlay {
   font-size: 0.9em;
 }
 
-/* line 368, resources/scss/pages/_stations.scss */
+/* line 361, resources/scss/pages/_stations.scss */
 #threshold_inputs select {
-  background-color: #F44C36;
+  background-color: #f44c36;
   padding: 5px;
   margin-top: 0px;
   margin-bottom: 13px;
@@ -7246,27 +7273,29 @@ body.detail-open #nav-overlay {
   font-size: 0.9em;
 }
 
-/* line 379, resources/scss/pages/_stations.scss */
+/* line 371, resources/scss/pages/_stations.scss */
 #tidal-chart {
   background-color: white;
-  max-height: 900px;
+  height: 100%;
+  width: 100%;
+  position: relative;
 }
 
-/* line 384, resources/scss/pages/_stations.scss */
+/* line 377, resources/scss/pages/_stations.scss */
 #overlay-chart-container {
   margin: 25px;
-  max-height: 50vh !important;
+  height: 50vh;
   width: calc(100% - 50px);
 }
 
-/* line 391, resources/scss/pages/_stations.scss */
+/* line 382, resources/scss/pages/_stations.scss */
 #overlay-thresholds-container {
   padding: 25px;
   max-height: 70vh !important;
   width: calc(100% - 50px);
 }
 
-/* line 396, resources/scss/pages/_stations.scss */
+/* line 387, resources/scss/pages/_stations.scss */
 .left_chart {
   position: relative;
   width: calc(50% - 40px);
@@ -7276,7 +7305,7 @@ body.detail-open #nav-overlay {
   background-color: white;
 }
 
-/* line 405, resources/scss/pages/_stations.scss */
+/* line 395, resources/scss/pages/_stations.scss */
 .right_chart {
   position: relative;
   width: calc(50% - 40px);
@@ -7286,7 +7315,7 @@ body.detail-open #nav-overlay {
   background-color: white;
 }
 
-/* line 414, resources/scss/pages/_stations.scss */
+/* line 403, resources/scss/pages/_stations.scss */
 #station-overlay-close {
   position: absolute;
   top: 10px;
@@ -7296,7 +7325,7 @@ body.detail-open #nav-overlay {
   cursor: pointer;
 }
 
-/* line 426, resources/scss/pages/_stations.scss */
+/* line 413, resources/scss/pages/_stations.scss */
 #station-overlay-header {
   height: 120px;
   color: #fff;
@@ -7314,12 +7343,12 @@ body.detail-open #nav-overlay {
   clear: both;
 }
 
-/* line 432, resources/scss/pages/_stations.scss */
+/* line 419, resources/scss/pages/_stations.scss */
 #station-overlay-header h3 {
   padding: 0;
 }
 
-/* line 436, resources/scss/pages/_stations.scss */
+/* line 423, resources/scss/pages/_stations.scss */
 #station-overlay-header h5 {
   float: left;
   width: 50%;
@@ -7327,7 +7356,7 @@ body.detail-open #nav-overlay {
   font-family: "CESans", Roboto, Helvetica, "Helvetica Neue", Arial, sans-serif;
 }
 
-/* line 444, resources/scss/pages/_stations.scss */
+/* line 430, resources/scss/pages/_stations.scss */
 .form-group {
   font-size: 0.75rem;
 }
@@ -7343,13 +7372,13 @@ body.detail-open #nav-overlay {
   clear: both;
 }
 
-/* line 448, resources/scss/pages/_stations.scss */
+/* line 434, resources/scss/pages/_stations.scss */
 .form-group label {
   color: #fff;
   display: block;
 }
 
-/* line 453, resources/scss/pages/_stations.scss */
+/* line 439, resources/scss/pages/_stations.scss */
 .form-group select {
   font-family: Roboto, Helvetica, "Helvetica Neue", Arial, sans-serif;
   font-size: 0.75rem;
@@ -7357,11 +7386,11 @@ body.detail-open #nav-overlay {
   padding: 3px;
 }
 
-/* line 460, resources/scss/pages/_stations.scss */
+/* line 446, resources/scss/pages/_stations.scss */
 .form-group input {
   display: inline-block;
   width: 100%;
-  background-color: #FFF;
+  background-color: #ffffff;
   border: 0;
   font-family: Roboto, Helvetica, "Helvetica Neue", Arial, sans-serif;
   font-size: 0.75rem;
@@ -7369,17 +7398,17 @@ body.detail-open #nav-overlay {
   padding: 4px 8px;
 }
 
-/* line 471, resources/scss/pages/_stations.scss */
+/* line 457, resources/scss/pages/_stations.scss */
 .form-group .field-pair {
   float: left;
 }
 
-/* line 475, resources/scss/pages/_stations.scss */
+/* line 461, resources/scss/pages/_stations.scss */
 .form-group .field-pair.append input {
   width: 100%;
 }
 
-/* line 479, resources/scss/pages/_stations.scss */
+/* line 465, resources/scss/pages/_stations.scss */
 .form-group .field-pair.append .append {
   color: #fff;
   display: inline-block;
@@ -7387,7 +7416,7 @@ body.detail-open #nav-overlay {
   vertical-align: middle;
 }
 
-/* line 492, resources/scss/pages/_stations.scss */
+/* line 475, resources/scss/pages/_stations.scss */
 .station_overlay_text p {
   width: 100%;
   padding: 10px 0;
@@ -7397,14 +7426,14 @@ body.detail-open #nav-overlay {
   font-family: Roboto, Helvetica, "Helvetica Neue", Arial, sans-serif;
 }
 
-/* line 502, resources/scss/pages/_stations.scss */
+/* line 483, resources/scss/pages/_stations.scss */
 .station_overlay_text {
   width: 100%;
   min-height: 100px;
   overflow-y: auto;
 }
 
-/* line 509, resources/scss/pages/_stations.scss */
+/* line 490, resources/scss/pages/_stations.scss */
 .station-overlay-content {
   position: absolute;
   bottom: 0;
@@ -7416,7 +7445,7 @@ body.detail-open #nav-overlay {
   z-index: 20;
 }
 
-/* line 520, resources/scss/pages/_stations.scss */
+/* line 500, resources/scss/pages/_stations.scss */
 .station-overlay-column {
   position: relative;
   float: left;
@@ -7424,12 +7453,12 @@ body.detail-open #nav-overlay {
   height: 100%;
 }
 
-/* line 526, resources/scss/pages/_stations.scss */
+/* line 506, resources/scss/pages/_stations.scss */
 .station-overlay-column.left {
   padding-right: 40px;
 }
 
-/* line 529, resources/scss/pages/_stations.scss */
+/* line 509, resources/scss/pages/_stations.scss */
 .station-overlay-column.left:after {
   content: '';
   display: block;
@@ -7442,7 +7471,23 @@ body.detail-open #nav-overlay {
   border-left-color: #fff;
 }
 
-/* line 545, resources/scss/pages/_stations.scss */
+/* line 522, resources/scss/pages/_stations.scss */
+#stations-map .esri-display-object, #stations-map .esri-display-object svg {
+  pointer-events: none;
+}
+
+/* line 525, resources/scss/pages/_stations.scss */
+#stations-map .esri-display-object svg {
+  filter: drop-shadow(0.5px 0.5px 1px rgba(0, 0, 0, 0.2));
+}
+
+/* line 528, resources/scss/pages/_stations.scss */
+#stations-map svg g circle {
+  pointer-events: all;
+  cursor: pointer;
+}
+
+/* line 532, resources/scss/pages/_stations.scss */
 .year {
   position: absolute;
   bottom: 20px;
@@ -7456,19 +7501,19 @@ body.detail-open #nav-overlay {
   transition: 0.25s;
 }
 
-/* line 554, resources/scss/pages/_stations.scss */
+/* line 541, resources/scss/pages/_stations.scss */
 .year:hover {
   background: rgba(255, 255, 255, 0.9);
 }
 
-/* line 558, resources/scss/pages/_stations.scss */
+/* line 545, resources/scss/pages/_stations.scss */
 .year .ui-slider {
   top: 20px;
   left: 10%;
   width: 80%;
 }
 
-/* line 563, resources/scss/pages/_stations.scss */
+/* line 550, resources/scss/pages/_stations.scss */
 .year .ui-slider .ui-slider-handle {
   top: -14px;
   width: 36px;
@@ -7485,14 +7530,14 @@ body.detail-open #nav-overlay {
   box-shadow: 0 0 4px rgba(0, 88, 207, 0.25);
 }
 
-/* line 576, resources/scss/pages/_stations.scss */
+/* line 563, resources/scss/pages/_stations.scss */
 .year .ui-slider .ui-slider-handle:hover {
   -webkit-box-shadow: 0 0 7px rgba(0, 88, 207, 0.4);
   -moz-box-shadow: 0 0 7px rgba(0, 88, 207, 0.4);
   box-shadow: 0 0 7px rgba(0, 88, 207, 0.4);
 }
 
-/* line 582, resources/scss/pages/_stations.scss */
+/* line 569, resources/scss/pages/_stations.scss */
 .year .year-label {
   position: absolute;
   top: 13px;
@@ -7500,12 +7545,12 @@ body.detail-open #nav-overlay {
   text-align: center;
 }
 
-/* line 588, resources/scss/pages/_stations.scss */
+/* line 575, resources/scss/pages/_stations.scss */
 .year .year-label.year-min {
   left: 0;
 }
 
-/* line 592, resources/scss/pages/_stations.scss */
+/* line 579, resources/scss/pages/_stations.scss */
 .year .year-label.year-max {
   right: 0;
 }

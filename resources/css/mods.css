@@ -279,27 +279,6 @@ input.location-mapper:focus:-ms-input-placeholder {
   display: none;
 }
 
-.emissions-low, .emissions-high {
-  position: absolute;
-  width: 150px;
-  height: 40px;
-  display: block;
-  text-align: center;
-  margin-left: -180px;
-  margin-top: -3px;
-  background: rgba(255,255,255,0.83);
-  font: 12px/40px montserrat-regular,sans-serif;
-  color: #2269b3;
-  letter-spacing: 1px;
-  text-transform: uppercase;
-  border: solid #fff 1px;
-}
-
-.emissions-high {
-  margin-left: 100px;
-}
-
-
 #nav-overlay #nav-controls a {
   white-space:normal!important;
 }
