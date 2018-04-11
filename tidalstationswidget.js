@@ -2,7 +2,7 @@
 (function ($) {
   Chart.defaults.scale.ticks.autoSkipPadding = 80;
 
-  if (undefined === $.widget) {
+  if (typeof($.widget) === 'undefined') {
     console.error("jQuery Widget not found.");
     return
   }
@@ -32,11 +32,14 @@
       }
     },
     _update: function () {
+      if (!this.options.station){
+        return
+      }
       // transform data from object to array
       let data_hist = [];
       for (let i = 1950; i <= 2016; i++) {
         try {
-          data_hist.push(this.data.hist[this.options.station][i]);
+          data_hist.push(this.data.floods_historical[String(this.options.station)][i]);
         }
         catch (e) {
           if (e instanceof TypeError) {
@@ -58,8 +61,8 @@
           data_rcp45.push(0);
           data_rcp85.push(0);
         } else {
-          data_rcp45.push(this.data.rcp45[this.options.station][i]);
-          data_rcp85.push(this.data.rcp85[this.options.station][i]);
+          data_rcp45.push(this.data.low_scenario[String(this.options.station)][i]);
+          data_rcp85.push(this.data.high[String(this.options.station)][i]);
         }
       }
 
@@ -67,7 +70,9 @@
       if (this.chart !== undefined) {
         this.chart.destroy()
       }
-      this.nodes.chart = $('<canvas></canvas>').uniqueId().appendTo(this.element);
+      if (this.nodes.chart === undefined) {
+        this.nodes.chart = $('<canvas></canvas>').uniqueId().appendTo(this.element);
+      }
       this.chart = new Chart(this.nodes.chart, {
         type: 'bar',
         data: {
@@ -141,8 +146,6 @@
           }
         }
       });
-
     }
   });
-
 })(jQuery);
