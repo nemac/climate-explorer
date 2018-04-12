@@ -1,5 +1,5 @@
 <?php
-
+include_once dirname(__DIR__) . '/functions.php';
 //DEFINING vars that were using _REQUEST
 $case = isset($_GET['id']) ? $purifier->purify($_GET['id']) : '';
 $city = isset($_GET['city']) ? $purifier->purify($_GET['city']) : '';
