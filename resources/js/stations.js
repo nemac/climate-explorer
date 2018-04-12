@@ -267,7 +267,68 @@
 
       this.view.ui.add(this.locateWidget, "top-left");
     },
-
+    _createStationLayer: function (layerURL, options) {
+      // We implement our own json layer creator
+      if (layerURL.endsWith('json')) {
+        return Promise.resolve($.ajax({
+          url: layerURL,
+          type: "GET",
+          contentType: "application/json; charset=utf-8",
+          dataType: "json",
+        }))
+          .catch(e => { console.log(e); })
+          .then((data) => {
+            if (undefined === data) {
+              console.log('Failed to retrieve station data. Refresh to try again.');
+              throw 'Failed to retrieve station data. Refresh to try again.'
+            }
+            let features = [];
+            data.forEach(function (station, index) {
+              features.push(new this.dojoMods.Graphic({
+                geometry: {
+                  type: "point",  // autocasts as new Point()
+                  longitude: station.lon,
+                  latitude: station.lat
+                },
+                attributes: {
+                  ObjectID: index,
+                  id: station.id,
+                  name: station.station ? station.station : station.name
+                }
+              }))
+            }.bind(this));
+            return new this.dojoMods.FeatureLayer(Object.assign({
+              // create an instance of esri/layers/support/Field for each field object
+              fields: [
+                {
+                  name: "ObjectID",
+                  alias: "ObjectID",
+                  type: "oid"
+                }, {
+                  name: "id",
+                  alias: "Type",
+                  type: "string"
+                }, {
+                  name: "name",
+                  alias: "Name",
+                  type: "string"
+                }],
+              objectIdField: "ObjectID",
+              geometryType: "point",
+              spatialReference: {wkid: 4326},
+              source: features,
+            }, options));
+          });
+      }
+      else {
+        //if url is a feature service or csv we use the provided methods for creating them.
+        let layerClass = this.dojoMods.FeatureLayer;
+        if (layerURL.endsWith('csv')) {
+          layerClass = this.dojoMods.CSVLayer;
+        }
+        return Promise.resolve(new layerClass(Object.assign({url: layerURL}, options)));
+      }
+    },
     _initDailyStationsLayer: function () {
       this._createStationLayer(this.options.dailyStationsLayerURL, {
         outfields: ['*'],
@@ -361,68 +422,7 @@
         }.bind(this));
       }.bind(this))
     },
-    _createStationLayer: function (layerURL, options) {
-      // We implement our own json layer creator
-      if (layerURL.endsWith('json')) {
-        return Promise.resolve($.ajax({
-          url: layerURL,
-          type: "GET",
-          contentType: "application/json; charset=utf-8",
-          dataType: "json",
-        }))
-          .catch(e => { console.log(e); })
-          .then((data) => {
-            if (undefined === data) {
-              console.log('Failed to retrieve station data. Refresh to try again.');
-              throw 'Failed to retrieve station data. Refresh to try again.'
-            }
-            let features = [];
-            data.forEach(function (station, index) {
-              features.push(new this.dojoMods.Graphic({
-                geometry: {
-                  type: "point",  // autocasts as new Point()
-                  longitude: station.lon,
-                  latitude: station.lat
-                },
-                attributes: {
-                  ObjectID: index,
-                  id: station.id,
-                  name: station.station ? station.station : station.name
-                }
-              }))
-            }.bind(this));
-            return new this.dojoMods.FeatureLayer(Object.assign({
-              // create an instance of esri/layers/support/Field for each field object
-              fields: [
-                {
-                  name: "ObjectID",
-                  alias: "ObjectID",
-                  type: "oid"
-                }, {
-                  name: "id",
-                  alias: "Type",
-                  type: "string"
-                }, {
-                  name: "name",
-                  alias: "Name",
-                  type: "string"
-                }],
-              objectIdField: "ObjectID",
-              geometryType: "point",
-              spatialReference: {wkid: 4326},
-              source: features,
-            }, options));
-          });
-      }
-      else {
-        //if url is a feature service or csv we use the provided methods for creating them.
-        let layerClass = this.dojoMods.FeatureLayer;
-        if (layerURL.endsWith('csv')) {
-          layerClass = this.dojoMods.CSVLayer;
-        }
-        return Promise.resolve(new layerClass(Object.assign({url: layerURL}, options)));
-      }
-    },
+
     _initTidalStationsLayer: function () {
       this._createStationLayer(this.options.tidalStationsLayerURL,
         {
@@ -504,7 +504,6 @@
               }
               if (undefined !== this.dailyStationsLayer) {
                 this.dailyStationsLayer.visible = true;
-
               }
               else {
                 this._whenDojoLoaded().then(this._initDailyStationsLayer.bind(this));
@@ -725,7 +724,7 @@
             $("#thresholds-container").item('update');
           });
 
-          this.chart = new ChartBuilder({station: value}, this.options.thresholdStationsDataURL);
+          // this.chart = new ChartBuilder({station: value}, this.options.thresholdStationsDataURL);
           break;
         case 'high_tide_flooding':
           $(this.nodes.stationOverlayContainer).append(
@@ -800,12 +799,10 @@
 
           break;
       }
-
       $('#station-overlay-close').click(function () {
         $(this.nodes.stationOverlayContainer).css('visibility', 'hidden');
         $(this.nodes.stationOverlayContainer).empty();
       }.bind(this));
-
     },
 
     _destroy: function () {
