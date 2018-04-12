@@ -1,6 +1,6 @@
 'use strict';
 (function ($) {
-  Chart.defaults.scale.ticks.autoSkipPadding = 80;
+
 
   if (typeof($.widget) === 'undefined') {
     console.error("jQuery Widget not found.");
@@ -140,7 +140,8 @@
               scaleLabel: {
                 fontSize: 13,
                 labelString: 'Year',
-                display: true
+                display: true,
+                autoSkipPadding: 80
               }
             }]
           }
