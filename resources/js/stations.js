@@ -91,9 +91,9 @@
       // Additional elements
       stationOverlayContainerId: "station-overlay-container",
       // Map layers
-      dailyStationsLayerURL: "/resources/item/stations.csv",
-      thresholdStationsLayerURL: "/resources/item/stations.csv",
-      tidalStationsLayerURL: "/resources/tidal/tidal_stations.csv",
+      dailyStationsLayerURL: "/resources/item/conus_stations_whitelist.json",
+      thresholdStationsLayerURL: "/resources/item/conus_stations_whitelist.json",
+      tidalStationsLayerURL: "/resources/tidal/tidal_stations.json",
       dailyStationsDataURL: "https://data.rcc-acis.org/StnData",
       thresholdStationsDataURL: "https://data.rcc-acis.org/StnData",
       // Controls debug output
@@ -219,7 +219,7 @@
 
     _initMap: function () {
       this.map = new this.dojoMods.Map({
-        basemap: this.options.mode === 'high_tide_flooding' ? 'oceans': 'topo'
+        basemap: this.options.mode === 'high_tide_flooding' ? 'oceans' : 'topo'
       });
 
       this.view = new this.dojoMods.MapView({
@@ -260,7 +260,7 @@
       this.locateWidget = new this.dojoMods.Locate({
         view: this.view,   // Attaches the Locate button to the view
         graphic: new this.dojoMods.Graphic({
-          symbol: { type: "simple-marker" }  // overwrites the default symbol used for the
+          symbol: {type: "simple-marker"}  // overwrites the default symbol used for the
           // graphic placed at the location of the user when found
         })
       });
@@ -269,12 +269,7 @@
     },
 
     _initDailyStationsLayer: function () {
-      let layerClass = this.dojoMods.FeatureLayer;
-      if (this.options.dailyStationsLayerURL.endsWith('csv')) {
-        layerClass = this.dojoMods.CSVLayer;
-      }
-      this.dailyStationsLayer = new layerClass({
-        url: this.options.dailyStationsLayerURL,
+      this._createStationLayer(this.options.dailyStationsLayerURL, {
         outfields: ['*'],
         renderer: {
           type: "simple",  // autocasts as new SimpleRenderer()
@@ -288,27 +283,29 @@
             }
           }
         }
-      });
-      this._MapInitPromise.then(function () {
-        this.map.add(this.dailyStationsLayer);
-        // this.view.on("pointer-move", function(event){
-        //   this.view.hitTest(event)
-        //     .then(function(response){
-        //       // check if a feature is returned from the hurricanesLayer
-        //       // do something with the result graphic
-        //      if (response){
-        //
-        //      }
-        //     });
-        // }.bind(this));
-        this.view.on("click", function (event) {
-          this.view.hitTest(event)
-            .then(function (response) {
-              let station = response.results.filter(function (result) {
-                return result.graphic.layer === this.dailyStationsLayer;
-              }.bind(this))[0].graphic;
-              this._setOptions({stationName: station.attributes.name, stationId: station.attributes.id});
-            }.bind(this));
+      }).then(function (layer) {
+        this.dailyStationsLayer = layer;
+        this._MapInitPromise.then(function () {
+          this.map.add(this.dailyStationsLayer);
+          // this.view.on("pointer-move", function(event){
+          //   this.view.hitTest(event)
+          //     .then(function(response){
+          //       // check if a feature is returned from the hurricanesLayer
+          //       // do something with the result graphic
+          //      if (response){
+          //
+          //      }
+          //     });
+          // }.bind(this));
+          this.view.on("click", function (event) {
+            this.view.hitTest(event)
+              .then(function (response) {
+                let station = response.results.filter(function (result) {
+                  return result.graphic.layer === this.dailyStationsLayer;
+                }.bind(this))[0].graphic;
+                this._setOptions({stationName: station.attributes.name, stationId: station.attributes.id});
+              }.bind(this));
+          }.bind(this));
         }.bind(this));
       }.bind(this));
     },
@@ -324,12 +321,7 @@
           this._initDailyStationsLayer();
         }
       }
-      let layerClass = this.dojoMods.FeatureLayer;
-      if (this.options.thresholdStationsLayerURL.endsWith('csv')) {
-        layerClass = this.dojoMods.CSVLayer;
-      }
-      this.thresholdStationsLayer = new layerClass({
-        url: this.options.thresholdStationsLayerURL,
+      this._createStationLayer(this.options.thresholdStationsDataURL, {
         outfields: ['*'],
         renderer: {
           type: "simple",  // autocasts as new SimpleRenderer()
@@ -343,72 +335,133 @@
             }
           }
         }
-      });
-      this._MapInitPromise.then(function () {
-        this.map.add(this.thresholdStationsLayer);
-        // this.view.on("pointer-move", function(event){
-        //   this.view.hitTest(event)
-        //     .then(function(response){
-        //       // check if a feature is returned from the hurricanesLayer
-        //       // do something with the result graphic
-        //      if (response){
-        //
-        //      }
-        //     });
-        // }.bind(this));
-        this.view.on("click", function (event) {
-          this.view.hitTest(event)
-            .then(function (response) {
-              let station = response.results.filter(function (result) {
-                return result.graphic.layer === this.thresholdStationsLayer;
-              }.bind(this))[0].graphic;
-              this._setOptions({stationName: station.attributes.name, stationId: station.attributes.id});
-            }.bind(this));
+      }).then(function (layer) {
+        this.thresholdStationsLayer = layer;
+        this._MapInitPromise.then(function () {
+          this.map.add(this.thresholdStationsLayer);
+          // this.view.on("pointer-move", function(event){
+          //   this.view.hitTest(event)
+          //     .then(function(response){
+          //       // check if a feature is returned from the hurricanesLayer
+          //       // do something with the result graphic
+          //      if (response){
+          //
+          //      }
+          //     });
+          // }.bind(this));
+          this.view.on("click", function (event) {
+            this.view.hitTest(event)
+              .then(function (response) {
+                let station = response.results.filter(function (result) {
+                  return result.graphic.layer === this.thresholdStationsLayer;
+                }.bind(this))[0].graphic;
+                this._setOptions({stationName: station.attributes.name, stationId: station.attributes.id});
+              }.bind(this));
+          }.bind(this));
         }.bind(this));
-      }.bind(this));
+      }.bind(this))
     },
-
-    _initTidalStationsLayer: function () {
-      let layerClass = this.dojoMods.tidalStationsLayerURL;
-      if (this.options.tidalStationsLayerURL.endsWith('csv')) {
-        layerClass = this.dojoMods.CSVLayer;
+    _createStationLayer: function (layerURL, options) {
+      // We implement our own json layer creator
+      if (layerURL.endsWith('json')) {
+        return Promise.resolve($.ajax({
+          url: layerURL,
+          type: "GET",
+          contentType: "application/json; charset=utf-8",
+          dataType: "json",
+        }))
+          .catch(e => { console.log(e); })
+          .then((data) => {
+            if (undefined === data) {
+              console.log('Failed to retrieve station data. Refresh to try again.');
+              throw 'Failed to retrieve station data. Refresh to try again.'
+            }
+            let features = [];
+            data.forEach(function (station, index) {
+              features.push(new this.dojoMods.Graphic({
+                geometry: {
+                  type: "point",  // autocasts as new Point()
+                  longitude: station.lon,
+                  latitude: station.lat
+                },
+                attributes: {
+                  ObjectID: index,
+                  id: station.id,
+                  name: station.station ? station.station : station.name
+                }
+              }))
+            }.bind(this));
+            return new this.dojoMods.FeatureLayer(Object.assign({
+              // create an instance of esri/layers/support/Field for each field object
+              fields: [
+                {
+                  name: "ObjectID",
+                  alias: "ObjectID",
+                  type: "oid"
+                }, {
+                  name: "id",
+                  alias: "Type",
+                  type: "string"
+                }, {
+                  name: "name",
+                  alias: "Name",
+                  type: "string"
+                }],
+              objectIdField: "ObjectID",
+              geometryType: "point",
+              spatialReference: {wkid: 4326},
+              source: features,
+            }, options));
+          });
       }
-      this.tidalStationsLayer = new layerClass({
-        url: this.options.tidalStationsLayerURL,
-        outfields: ['*'],
-        renderer: {
-          type: "simple",  // autocasts as new SimpleRenderer()
-          symbol: {
-            type: "simple-marker",  // autocasts as new SimpleMarkerSymbol()
-            size: 7,
-            color: "#3e6ac1",
-            outline: {
-              color: '#ffffff',
-              width: 1
+      else {
+        //if url is a feature service or csv we use the provided methods for creating them.
+        let layerClass = this.dojoMods.FeatureLayer;
+        if (layerURL.endsWith('csv')) {
+          layerClass = this.dojoMods.CSVLayer;
+        }
+        return Promise.resolve(new layerClass(Object.assign({url: layerURL}, options)));
+      }
+    },
+    _initTidalStationsLayer: function () {
+      this._createStationLayer(this.options.tidalStationsLayerURL,
+        {
+          outfields: ['*'],
+          renderer: {
+            type: "simple",  // autocasts as new SimpleRenderer()
+            symbol: {
+              type: "simple-marker",  // autocasts as new SimpleMarkerSymbol()
+              size: 7,
+              color: "#3e6ac1",
+              outline: {
+                color: '#ffffff',
+                width: 1
+              }
             }
           }
-        }
-      });
-      this._MapInitPromise.then(function () {
-        this.map.add(this.tidalStationsLayer);
-        // this.view.on("pointer-move", function(event){
-        //   this.view.hitTest(event)
-        //     .then(function(response){
-        //       // check if a feature is returned from the hurricanesLayer
-        //       // do something with the result graphic
-        //      if (response){
-        //
-        //      }
-        //     });
-        // }.bind(this));
-        this.view.on("click", function (event) {
-          this.view.hitTest(event)
-            .then(function (response) {
-              let station = response.results.filter(function (result) {
-                return result.graphic.layer === this.tidalStationsLayer;
-              }.bind(this))[0].graphic;
-              this._setOptions({stationName: station.attributes.name, stationId: station.attributes.id});
-            }.bind(this));
+        }).then(function (layer) {
+        this.tidalStationsLayer = layer;
+        this._MapInitPromise.then(function () {
+          this.map.add(this.tidalStationsLayer);
+          // this.view.on("pointer-move", function(event){
+          //   this.view.hitTest(event)
+          //     .then(function(response){
+          //       // check if a feature is returned from the hurricanesLayer
+          //       // do something with the result graphic
+          //      if (response){
+          //
+          //      }
+          //     });
+          // }.bind(this));
+          this.view.on("click", function (event) {
+            this.view.hitTest(event)
+              .then(function (response) {
+                let station = response.results.filter(function (result) {
+                  return result.graphic.layer === this.tidalStationsLayer;
+                }.bind(this))[0].graphic;
+                this._setOptions({stationName: station.attributes.name, stationId: station.attributes.id});
+              }.bind(this));
+          }.bind(this));
         }.bind(this));
       }.bind(this));
     },
@@ -456,7 +509,7 @@
               else {
                 this._whenDojoLoaded().then(this._initDailyStationsLayer.bind(this));
               }
-              if (this.map.basemap.id  !== 'topo'){
+              if (this.map.basemap.id !== 'topo') {
                 this.map.basemap = 'topo';
               }
               break;
@@ -474,7 +527,7 @@
               else {
                 this._whenDojoLoaded().then(this._initThresholdStationsLayer.bind(this));
               }
-              if (this.map.basemap.id  !== 'topo'){
+              if (this.map.basemap.id !== 'topo') {
                 this.map.basemap = 'topo';
               }
               break;
@@ -491,7 +544,7 @@
               else {
                 this._whenDojoLoaded().then(this._initTidalStationsLayer.bind(this));
               }
-              if (this.map.basemap.id  !== 'oceans'){
+              if (this.map.basemap.id !== 'oceans') {
                 this.map.basemap = 'oceans';
               }
               break;
