@@ -736,7 +736,7 @@
           $('#stations-spinner').fadeOut(250);
 
           $('#tidal_station').change(function () {
-            $("#tidal-chart").tidalstationwidget("update", {station: $(this).val()});
+            $("#tidal-chart").tidalstationwidget({station: $(this).val()});
 
             if ($(this).find('option:selected').length) {
               $('#station-overlay-header .station-name').html($(this).find('option:selected').text());
