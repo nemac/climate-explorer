@@ -1,6 +1,11 @@
 .page-type-variables {
   #viewport {
+    position: relative;
     overflow: hidden;
+    height: calc(100% - 110px);
+    width: calc(80% - 50px);
+    left: calc(20% + 30px);
+    top: 110px;
   }
   
   #vars-legend {
@@ -351,4 +356,25 @@
       right: 0;
     }
   }
+}
+
+
+.left-scenario, .right-scenario {
+  position: absolute;
+  width: 150px;
+  height: 40px;
+  display: block;
+  text-align: center;
+  margin-left: -180px;
+  margin-top: -3px;
+  background: rgba(255,255,255,0.83);
+  font: 12px/40px montserrat-regular,sans-serif;
+  color: #2269b3;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  border: solid #fff 1px;
+}
+
+.right-scenario {
+  margin-left: 100px;
 }
