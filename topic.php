@@ -1,6 +1,5 @@
 <?php
 include_once('functions.php');
-$page_slug = basename(__FILE__, '.php');
 $share_data['url'] = current_URL();
 
 $param = isset($_GET['param']) ? $purifier->purify($_GET['param']) : '';

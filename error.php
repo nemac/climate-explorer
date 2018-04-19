@@ -1,7 +1,4 @@
-<?php
-include_once('functions.php');
-$page_slug = basename(__FILE__, '.php');
-?>
+<?php include_once('functions.php'); ?>
 <!doctype html>
 <html>
 <head>

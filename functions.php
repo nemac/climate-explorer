@@ -11,9 +11,6 @@ $config->set('Cache.DefinitionImpl', null);
 $purifier = new HTMLPurifier($config);
 //    $clean_html = $purifier->purify($dirty_html);
 
-
-$page_slug = basename(__FILE__, '.php');
-
 $stations_base_url = 'https://data.rcc-acis.org/StnData';
 $data_base_url = '/resources/data/';
 

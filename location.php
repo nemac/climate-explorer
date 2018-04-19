@@ -1,8 +1,6 @@
 <?php
 include_once('functions.php');
 
-$page_slug = basename(__FILE__, '.php');
-
 $location = true;
 
 $city = isset($_GET['city']) ? $purifier->purify($_GET['city']) : '';
