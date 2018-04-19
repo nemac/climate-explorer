@@ -230,8 +230,5 @@
 
 <?php include_once('template/footer.php'); ?>
 
-<script src="/resources/js/cwg/climate-widget-graph.js"></script>
-<script src="/resources/js/cwg/cwg.js"></script>
-
 </body>
 </html>
