@@ -304,6 +304,7 @@ h6 {
   display: none;
   position: absolute;
   top: -55px;
+  white-space: nowrap;
   left: 50%;
   padding: 12px;
   background: $white;
@@ -325,31 +326,6 @@ h6 {
   }
 }
 
-// swipe
-
-.moveable {
-  position: absolute;
-  top: 0;
-  left: 50%;
-  width: 5px;
-  height: 100%;
-  margin: 0;
-  padding: 0 !important;
-  background: $white;
-  z-index: 2;
-  cursor: col-resize;
-
-  .handle {
-    display: block;
-    position: absolute;
-    top: 45%;
-    left: -34px;
-    width: 70px;
-    height: 36px;
-    @include border-radius(20px);
-    background: url(../img/swipe-arrows-stripe.png) center center rgba(34, 105, 179, 0.87);
-  }
-}
 
 // chart legend
 

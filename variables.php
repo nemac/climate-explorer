@@ -68,19 +68,20 @@
     <li class="search-field border" id="variable-search-by-location">
       <span class="icon icon-search"></span><input type="text" id="formmapper" placeholder="Zoom to location">
     </li>
+    <!---->
+    <!--    <li class="toggle border" id="variable-counties-toggle">-->
+    <!--      <label for="counties-overlay-toggle"><span class="text">Data by Counties</span>-->
+    <!--        <input type="checkbox" name="counties-overlay-toggle" id="counties-overlay-toggle" value="1" autocomplete="off">-->
+    <!--      </label>-->
+    <!--      <div id="info-counties" class="layer-info">-->
+    <!---->
+    <!--        <div class="actions">-->
+    <!--          <a href="#" class="layer-info-close"><span class="icon icon-close"></span>Close</a>-->
+    <!--          <a href="#" class="layer-info-next"><span class="icon icon-arrow-right"></span>Next</a>-->
+    <!--        </div>-->
+    <!--      </div>-->
+    <!--    </li>-->
 
-    <li class="toggle border" id="variable-counties-toggle">
-      <label for="counties-overlay-toggle"><span class="text">Data by Counties</span>
-        <input type="checkbox" name="counties-overlay-toggle" id="counties-overlay-toggle" value="1" autocomplete="off">
-      </label>
-      <div id="info-counties" class="layer-info">
-
-        <div class="actions">
-          <a href="#" class="layer-info-close"><span class="icon icon-close"></span>Close</a>
-          <a href="#" class="layer-info-next"><span class="icon icon-arrow-right"></span>Next</a>
-        </div>
-      </div>
-    </li>
 
     <li class="select border" id="variable-options-container">
       <select class="dropdown" id="variable-options" title="Variable">
@@ -105,6 +106,7 @@
         <option value="gddmod">Mod. Growing Degree Days</option>
       </select>
     </li>
+
     <li class="select border" id="map-seasons-container">
       <select class="dropdown" id="map-season" title="Season">
         <option value="summer">Summer (Jun-Aug)</option>
@@ -116,13 +118,7 @@
 
     <li class="about-link"><a href="#detail-tmax" class="nav-detail-link" id="about-variable-link">About Avg Daily Max Temp (°F)</a></li>
   </ul>
-
-  <div id="vars-legend" class="legend-wrap left-filler">
-    <div class="legend">
-      <h5>Legend</h5>
-      <div id="legend-container"></div>
-    </div>
-  </div>
+  <div class="cwg-container"></div>
 </header>
 
 <div id="viewport">
@@ -163,6 +159,8 @@
 
 <script type="text/javascript" src="/resources/js/tether.js"></script>
 <script type="text/javascript" src="/resources/js/shepherd.min.js"></script>
+<script type="text/javascript" src="/node_modules/terraformer/terraformer.js"></script>
+<script type="text/javascript" src="/node_modules/terraformer-arcgis-parser/terraformer-arcgis-parser.js"></script>
 
 <script type="text/javascript" src="/resources/js/variables.js"></script>
 <script type="text/javascript" src="/resources/js/cwg/climate-widget-graph.js"></script>
@@ -194,7 +192,10 @@
     app = new App('/resources/data/');
   });
   $(document).ready(function () {
-    window.scenariosMap = $('#variable-map').scenarioComparisonMap({stationId: window.ce.stationId, mode: window.ce.case});
+    window.scenariosMap = $('#variable-map').scenarioComparisonMap({stationId: window.ce.stationId, mode: window.ce.case,
+      countyselected: function(event, value){
+        window.countySelected($('.cwg-container')[0], value);
+      }});
   });
   $(document).ready(function () {
     'use strict';
@@ -209,6 +210,7 @@
           extent: null,
           center: [result.geometry.access_points[0].location.lat, result.geometry.access_points[0].location.lng],
           zoom: 8
+
         });
       } else {
         window.scenariosMap.scenarioComparisonMap({extent: null, center: [result.geometry.location.lat(), result.geometry.location.lng()], zoom: 8});
@@ -238,6 +240,12 @@
       else {
         window.scenariosMap.scenarioComparisonMap({variable: variable, disableScenarioSelection: false});
       }
+      if (window.scenariosMap.scenarioComparisonMap('getShowSeasonControls')) {
+        $('#map-seasons-container').show(200)
+      } else {
+        $('#map-seasons-container').hide()
+      }
+
     });
 
     $('#map-seasons-container .fs-dropdown-item').on('click', function (e) {
@@ -248,6 +256,12 @@
       $("#chart-name").html($('.fs-dropdown-selected').html());
     });
 
+
+
+
+    // $('#counties-overlay-toggle').on('click', function (e) {
+    //   window.scenariosMap.scenarioComparisonMap({showCounties: $(this).is(':checked')});
+    // });
 
     // function save_state() {
     //   var qtrs = location.search;

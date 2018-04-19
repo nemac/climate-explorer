@@ -7,74 +7,38 @@
     left: calc(20% + 30px);
     top: 110px;
   }
-  
-  #vars-legend {
-    h5 {
-      margin: 0 0 6px 0;
-      font: 1rem/1em $sans-heavy;
-      color: $blue2;
-    }
-    
-    h6 {
-      margin: 0 0 10px 0;
-      font: 0.75rem/1.25em $sans-book;
-      color: $grey1;
-    }
-    
-    .legend {
-      width: 100%;
-      margin: 0 0 10px 0;
-      padding: 20px;
-      background: $blue3;
-      font: 0.75rem/1em Monaco, monospace;
-      color: $blue2;
-      
-      ul {
-        margin: 15px 0 0 0;
-      }
-      
-      li {
-        margin: 10px 0;
-      }
-      
-      .color {
-        width: 8%;
-        margin: 0 8% 0 0;
-        padding: 0 0 8% 0;
-      }
-    }
-  }
-  
+
+
   #main-content-wrap {
     @include full-size;
-    
+
     #variable-map {
       @include full-size;
     }
-    
+
     #map-seasons-container {
       position: absolute;
       top: 20px;
       left: calc(20% + 35px);
     }
-    
+
     .fs-dropdown {
       margin: 0;
       @include transition(0.25s);
-      
+
       button {
         height: auto;
-        padding: 12px;
+        padding: 15px;
         padding-right: 40px;
         background: transparentize($white, 0.4);
-        border: 5px solid $white;
+        border: 0px solid $white;
         color: $blue1;
         @include border-radius(0);
         font: 400 1.125rem/1em $roboto;
         @include transition(0.25s);
       }
     }
-    
+
     .fs-dropdown-open,
     .fs-dropdown-focus {
       .fs-dropdown-selected {
@@ -82,53 +46,30 @@
         background: $white;
       }
     }
-    
+
     .fs-dropdown-options {
       background: transparentize($white, 0.2);
       border: none;
       border-radius: 0;
       @include box-shadow(none);
-      
+
       button {
         padding: 10px;
         font-size: 1rem;
-        
+
         &:hover {
           background: $grey2;
         }
       }
     }
-    
-    .split-pane {
-      z-index: 1;
-    }
-    
-    #pane-left {
-      background: url(../img/bg_variables-low.jpg) $white no-repeat center;
-      background-attachment: fixed;
-      background-size: cover;
-    }
-    
-    #pane-right {
-      background: url(../img/bg_variables-high.jpg) $white no-repeat center;
-      background-attachment: fixed;
-      background-size: cover;
-    }
-    
-    .year {
-      z-index: 3;
-    }
-    
-    .zoom {
-      z-index: 4;
-    }
+
+
   }
-  
-  
+
   .data-accordion-actions {
     float: right;
     margin-top: -15px;
-    
+
     a {
       display: inline-block;
       padding: 10px;
@@ -137,27 +78,19 @@
       -o-transition: 0.25s;
       -webkit-transition: 0.25s;
       transition: 0.25s;
-    
+
       .icon {
         margin: 0 8px 0 0;
         font-size: 1.25rem;
         color: #f5442d;
       }
-      
+
       &:hover {
         background: #d5e8f2;
       }
     }
   }
-  
-  #variable-slider {
-    width: 95%;
-    margin: auto;
-    margin-top: 23px;
-    margin-bottom: 50px;
-    position: relative;
-  }
-  
+
   #vars-menu {
     .layer-info {
       display: none;
@@ -171,7 +104,7 @@
       background: rgba(255, 255, 255, 0.9);
       color: #5f5f5f;
       white-space: normal;
-      
+
       &:before {
         content: '';
         display: block;
@@ -180,21 +113,21 @@
         top: 22px;
         width: 0;
         height: 0;
-        border: 10px solid #fff;
-        border-color: transparent #fff transparent transparent;
+        border: 10px solid #ffffff;
+        border-color: transparent #ffffff transparent transparent;
       }
-      
+
       h3 {
         margin: 0 0 10px 0;
         font-size: 1.625rem;
         color: #f5442d;
       }
-      
+
       p {
         margin: 0 0 12px 0;
       }
     }
-    
+
     .help {
       padding: 0;
       float: left;
@@ -205,20 +138,20 @@
       margin-right: 7px;
     }
   }
-  
+
   #vars-legend {
     h5 {
       margin: 0 0 6px 0;
       font: 1rem/1em "CESans-Heavy", Helvetica, "Helvetica Neue", Arial, sans-serif;
       color: #233a70;
     }
-    
+
     h6 {
       margin: 0 0 10px 0;
       font: 0.75rem/1.25em "CESans", Roboto, Helvetica, "Helvetica Neue", Arial, sans-serif;
       color: #5f5f5f;
     }
-    
+
     .legend {
       width: 100%;
       margin: 0 0 10px 0;
@@ -226,15 +159,15 @@
       background: #d5e8f2;
       font: 0.75rem/1em Monaco, monospace;
       color: #233a70;
-    
+
       ul {
         margin: 15px 0 0 0;
       }
-      
+
       li {
         margin: 10px 0;
       }
-      
+
       .color {
         width: 8%;
         margin: 0 8% 0 0;
@@ -242,30 +175,31 @@
       }
     }
   }
-  
+
   .chart-legend {
     overflow: hidden;
     padding-top: 20px;
   }
-  
+
   .ol-zoom {
     display: none;
   }
-  
+
   .legend-image {
-    height:350px;
-    margin-left:-13px;
+    max-height: 16rem;
+    max-width: inherit;
+
   }
-  
+
   .ol-scale-line {
-    background: rgba(0,60,136,.3);
+    background: rgba(0, 60, 136, .3);
     border-radius: 4px;
     top: 20px;
     bottom: auto;
     left: auto;
     right: 100px;
   }
-  
+
   #district-trigger {
     position: absolute;
     top: 15%;
@@ -276,28 +210,28 @@
     background: $white;
     @include transition(padding 0.5s);
     @include clearfix;
-    
+
     span {
       display: block;
       float: left;
       white-space: nowrap;
       color: $blue1;
     }
-    
+
     .text {
       margin-top: -2px;
       text-indent: -300px;
       @include transition(text-indent 0.5s);
     }
-    
+
     .icon {
       padding-left: 10px;
       font-size: 1.25rem;
     }
-    
+
     &:hover {
       padding-left: 15px;
-      
+
       .text {
         text-indent: 0;
       }
@@ -305,76 +239,137 @@
   }
 }
 
-.year {
+.esri-view-width-greater-than-xsmall .esri-expand__content {
+
+  z-index: 1000;
+}
+
+.esri-scale-bar.esri-widget {
+  margin-bottom: 45px;
+}
+
+.scenario-map-overlay-container {
   position: absolute;
-  bottom: 20px;
-  left: 35%;
-  width: 50%;
-  height: 50px;
-  background: transparentize($white, 0.5);
-  @include transition(0.25s);
-  
-  &:hover {
-    background: transparentize($white, 0.1);
-  }
-  
-  .ui-slider {
-    top: 20px;
-    left: 10%;
-    width: 80%;
-    
-    .ui-slider-handle {
-      top: -14px;
-      width: 36px;
+  height: 100%;
+  width: 100%;
+  pointer-events: none;
+  > * {pointer-events: auto;}
+  .movable {
+    position: absolute;
+    top: 0;
+    left: 50%;
+    width: 5px;
+    height: 100%;
+    margin: 0;
+    padding: 0 !important;
+    background: $white;
+    z-index: 2;
+    cursor: col-resize;
+
+    .handle {
+      display: block;
+      position: absolute;
+      top: 45%;
+      left: -34px;
+      width: 70px;
       height: 36px;
-      margin: 0 0 -18px -18px;
-      background: $white;
-      border: 4px solid $orange1;
+      @include border-radius(20px);
+      background: url(../img/swipe-arrows-stripe.png) center center rgba(34, 105, 179, 0.87);
+    }
+  }
+
+  .left-scenario-controls {
+    position: absolute;
+    bottom: 20px;
+    left: 10px;
+    max-width: 45%
+  }
+  .right-scenario-controls {
+    position: absolute;
+    bottom: 20px;
+    right: 10px;
+    max-width: 45%;
+    .right-scenario-dropdown, .year{
+      float:right;
+    }
+  }
+  .left-scenario-dropdown, .right-scenario-dropdown {
+    width: 200px;
+    width: 16rem;
+    height: 50px;
+    margin: 5px;
+    float: left;
+
+    .dropdown {
+      display: block;
       text-align: center;
-      font-size: 1.5rem;
-      line-height: 1.375rem;
-      color: $orange1;
-      @include box-shadow(0 0 4px transparentize($blue1, 0.75));
-      
-      &:hover {
-        @include box-shadow(0 0 7px transparentize($blue1, 0.6));
+      background: rgba(255, 255, 255, 0.83);
+      font: 12px/40px montserrat-regular, sans-serif;
+      color: #2269b3;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      border: solid #ffffff 1px;
+    }
+  }
+
+  .year {
+    float: left;
+    position: relative;
+    width: 23rem;
+    height: 50px;
+    margin:5px;
+    background: transparentize($white, 0.5);
+    @include transition(0.25s);
+
+    &:hover {
+      background: transparentize($white, 0.1);
+    }
+
+    .ui-slider {
+      top: 20px;
+      left: 15%;
+      width: 16rem;
+
+      .ui-slider-handle {
+        top: -14px;
+        width: 36px;
+        height: 36px;
+        margin: 0 0 -18px -18px;
+        background: $white;
+        border: 4px solid $orange1;
+        text-align: center;
+        font-size: 1.5rem;
+        line-height: 1.375rem;
+        color: $orange1;
+        @include box-shadow(0 0 4px transparentize($blue1, 0.75));
+
+        &:hover {
+          @include box-shadow(0 0 7px transparentize($blue1, 0.6));
+        }
+      }
+    }
+
+    .year-label {
+      position: absolute;
+      top: 13px;
+      width: 3.5rem;
+      text-align: center;
+
+      &.year-min {
+        left: 0;
+      }
+
+      &.year-max {
+        right: 0;
       }
     }
   }
-  
-  .year-label {
-    position: absolute;
-    top: 13px;
-    width: 10%;
-    text-align: center;
-    
-    &.year-min {
-      left: 0;
-    }
-    
-    &.year-max {
-      right: 0;
-    }
-  }
+
 }
 
-
-.left-scenario, .right-scenario {
-  position: absolute;
-  width: 150px;
-  height: 40px;
-  display: block;
-  text-align: center;
-  margin-left: -180px;
-  margin-top: -3px;
-  background: rgba(255,255,255,0.83);
-  font: 12px/40px montserrat-regular,sans-serif;
-  color: #2269b3;
-  letter-spacing: 1px;
-  text-transform: uppercase;
-  border: solid #fff 1px;
-}
-
-.right-scenario {
-  margin-left: 100px;
+.county-overlay{
+  background: $blue1;
+  color:white;
+  position:absolute;
+  @include full-size;
 }

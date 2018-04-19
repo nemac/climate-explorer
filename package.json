@@ -25,5 +25,7 @@
     "node-sass": "^4.7.2",
     "php2html": "^1.0.0"
   },
-  "dependencies": {}
+  "dependencies": {
+    "terraformer-arcgis-parser": "^1.0.5"
+  }
 }

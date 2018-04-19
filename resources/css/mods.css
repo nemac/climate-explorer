@@ -486,10 +486,10 @@ input.location-mapper:focus:-ms-input-placeholder {
     font: 300 1rem/1.2em Roboto, Helvetica, "Helvetica Neue", Arial, sans-serif;
 }
 
-.page-type-variables .legend-image {
-    height: 350px;
-    margin-left: 0;
-}
+/*.page-type-variables .legend-image {*/
+    /*height: 350px;*/
+    /*margin-left: 0;*/
+/*}*/
 
 .download-panel #download-precip-dismiss-button {
   display: block;
@@ -506,21 +506,21 @@ input.location-mapper:focus:-ms-input-placeholder {
 }
 
 
-/* line 46, ../scss/pages/_variable.scss */
-.page-type-variables #main-content-wrap #stations-map {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-}
+/*!* line 46, ../scss/pages/_variable.scss *!*/
+/*.page-type-variables #main-content-wrap #stations-map {*/
+  /*position: absolute;*/
+  /*top: 0;*/
+  /*left: 0;*/
+  /*width: 100%;*/
+  /*height: 100%;*/
+/*}*/
 
 
-/* line 459, ../scss/_media.scss */
-#stations-map {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-}
+/*!* line 459, ../scss/_media.scss *!*/
+/*#stations-map {*/
+  /*position: absolute;*/
+  /*top: 0;*/
+  /*left: 0;*/
+  /*width: 100%;*/
+  /*height: 100%;*/
+/*}*/
