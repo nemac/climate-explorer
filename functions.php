@@ -52,13 +52,16 @@ function current_DOMAIN()
 $current_url = current_URL();
 $current_domain = current_DOMAIN();
 
+// This is the only snippet which uses the variable $lockdown. It both does not
+// since it redirects to the root toolkit error page which is not error.php and
+// nothing in the URL encodings would be an XSS vulnerability/ SQL Injection...
 
-if(($current_url != strip_tags(rawurldecode($current_url)))&&($lockdown == 1)) {
-    if ($current_url != $current_domain."/error.php")
-    {
-        header("Location:" . $current_domain . "/error.php");
-    }
-}
+//if(($current_url != strip_tags(rawurldecode($current_url)))&&($lockdown == 1)) {
+//    if ($current_url != $current_domain."/error.php")
+//    {
+//        header("Location:" . $current_domain . "/error.php");
+//    }
+//}
 
 
 

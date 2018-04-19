@@ -1,5 +1,4 @@
 <?php
-$lockdown = 0;
 include_once('functions.php');
 $page_slug = basename(__FILE__, '.php');
 

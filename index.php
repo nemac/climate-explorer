@@ -1,8 +1,4 @@
-<?php
-$lockdown = 1;
-  include_once('functions.php');
-
-?>
+<?php include_once('functions.php'); ?>
 <!doctype html>
 <html>
 <head>
