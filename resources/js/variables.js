@@ -87,26 +87,31 @@
       leftScenario: 'historical', // 'historical', 'rcp85','rcp45'
       rightScenario: 'rcp85', // 'historical', 'rcp85','rcp45'
       disableScenarioSelection: false,
-      leftYear: 2000, //1950 - 2100
-      rightYear: 2000, //1950 - 2100
+      leftYear: 'avg', //1950 - 2100
+      rightYear: 2090, //1950 - 2100
       leftOpacity: 1,
       rightOpacity: 1,
       historicalYears: [1950, 1960, 1970, 1980, 1990, 2000],
-      rcp45Years: Array.from({length: 15}, (x, i) => (i * 10) + 1950),
-      rcp85Years: Array.from({length: 15}, (x, i) => (i * 10) + 1950),
-      showCounties: false,
+      rcp45Years: [2010, 2020, 2030, 2040, 2050, 2060, 2070, 2080, 2090],
+      rcp85Years: [2010, 2020, 2030, 2040, 2050, 2060, 2070, 2080, 2090],
+      showCounties: true,
       //extent provides the initial view area of the map.
       extent: {xmin: -119, xmax: -73, ymin: 18, ymax: 54},
       //zoom and center are ignored if extent is provided.
-      zoom: 5,
-      center: [-98.21, 37.42],
-
+      zoom: null, // Ex: 5
+      center: null, // Ex: [-98.21, 37.42]
+      swipeX: null,
       // Additional elements
       legendContainerId: "legend-container",
       // Map layers
-      historicalTilesURL: "https://s3.amazonaws.com/climate-explorer-bucket/tiles/avg-{season}-hist-{variable}/{level}/{col}/{row}.png",
-      rcp45TilesURL: "https://s3.amazonaws.com/climate-explorer-bucket/tiles/{year}-{season}-{scenario}-{variable}/{zoom}/{col}/{row}.png",
-      rcp85TilesURL: "https://s3.amazonaws.com/climate-explorer-bucket/tiles/{variable}/{z}/{x}/{-y}.png",
+      historicalTilesURL: "https://s3.amazonaws.com/climate-explorer-bucket/tiles/{year}-{season}-hist-{variable}/{level}/{col}/{row}.png",
+      historicalTilesTMS: true,
+      rcp45TilesURL: "https://s3.amazonaws.com/climate-explorer-bucket/tiles/{year}-{season}-rcp45-{variable}/{level}/{col}/{row}.png",
+      rcp45TilesTMS: true,
+      rcp85TilesURL: "https://s3.amazonaws.com/climate-explorer-bucket/tiles/{year}-{season}-rcp85-{variable}/{level}/{col}/{row}.png",
+      rcp85TilesTMS: true,
+      statesLayerURL: '/resources/data/states.json',
+      countiesLayerURL: '/resources/data/counties-20m.json',
       // Controls debug output
       // 0:off, 1:errors only, 2:errors and warnings, 3:everything
       debug: 0,
@@ -129,6 +134,7 @@
       'esri/Map',
       'esri/views/MapView',
       'esri/layers/FeatureLayer',
+      'esri/layers/support/Field',
       'esri/layers/WebTileLayer',
       'esri/layers/TileLayer',
       'esri/renderers/SimpleRenderer',
@@ -137,36 +143,41 @@
       'esri/symbols/SimpleFillSymbol',
       'esri/widgets/Legend',
       'esri/widgets/Expand',
+      'esri/widgets/OpacitySlider',
+      'esri/widgets/ColorSlider',
       'esri/widgets/BasemapGallery',
       'esri/widgets/ScaleBar',
       'esri/geometry/SpatialReference',
       'esri/layers/CSVLayer',
       'esri/geometry/Extent',
       'esri/geometry/Point',
+      'esri/geometry/Polygon',
       'esri/widgets/Locate',
     ],
-
+    map: null,
     variables: {
-      'tmax': 'Avg Daily Max Temp (°F)',
-      'tmin': 'Avg Daily Min Temp (°F)',
-      'days_tmin_lt_32f': 'Days With Minimum Below 32F&deg; F',
-      'days_tmax_gt_90f': 'Days w/ max > 90°F',
-      'days_tmax_gt_95f': 'Days With Maximum Above 95&deg; F',
-      'pcpn': 'Total precip',
-      'days_pcpn_gt_1in': 'Days of Precipitation Above 1 Inch',
-      'cdd_65f': 'Cooling Degree Days',
-      'hdd_65f': 'Heating Degree Days',
-      'days_tmax_gt_100f': 'Days w/ max > 100°F',
-      'days_tmax_gt_105f': 'Days w/ max > 105°F',
-      'days_tmax_lt_32f': 'Days w/ max < 32°F',
-      'days_tmin_gt_80f': 'Days w/ min > 80°F',
-      'days_tmin_gt_90f': 'Days w/ min > 90°F',
-      'days_pcpn_gt_2in': 'Days w/ > 2 in',
-      'days_pcpn_gt_3in': 'Days w/ > 3 in',
-      'days_dry_days': 'Dry Days',
-      'gdd': 'Growing Degree Days',
-      'gddmod': 'Mod. Growing Degree Days'
+      'tmax': {title: 'Avg Daily Max Temp (°F)', seasonal_data: true},
+      'tmin': {title: 'Avg Daily Min Temp (°F)', seasonal_data: true},
+      'days_tmin_lt_32f': {title: 'Days With Minimum Below 32F&deg; F', seasonal_data: false},
+      'days_tmax_gt_90f': {title: 'Days w/ max > 90°F', seasonal_data: false},
+      'days_tmax_gt_95f': {title: 'Days With Maximum Above 95&deg; F', seasonal_data: false},
+      'pcpn': {title: 'Total precip', seasonal_data: true},
+      'days_pcpn_gt_1in': {title: 'Days of Precipitation Above 1 Inch', seasonal_data: false},
+      'cdd_65f': {title: 'Cooling Degree Days', seasonal_data: false},
+      'hdd_65f': {title: 'Heating Degree Days', seasonal_data: false},
+      'days_tmax_gt_100f': {title: 'Days w/ max > 100°F', seasonal_data: false},
+      'days_tmax_gt_105f': {title: 'Days w/ max > 105°F', seasonal_data: false},
+      'days_tmax_lt_32f': {title: 'Days w/ max < 32°F', seasonal_data: false},
+      'days_tmin_gt_80f': {title: 'Days w/ min > 80°F', seasonal_data: false},
+      'days_tmin_gt_90f': {title: 'Days w/ min > 90°F', seasonal_data: false},
+      'days_pcpn_gt_2in': {title: 'Days w/ > 2 in', seasonal_data: false},
+      'days_pcpn_gt_3in': {title: 'Days w/ > 3 in', seasonal_data: false},
+      'days_dry_days': {title: 'Dry Days', seasonal_data: false},
+      'gdd': {title: 'Growing Degree Days', seasonal_data: false},
+      'gddmod': {title: 'Mod. Growing Degree Days', seasonal_data: false}
     },
+    leftLayer: null,
+    rightLayer: null,
 
     _dojoLoaded: function () {
       if (this.dojoMods === undefined) {
@@ -190,7 +201,7 @@
         return this._dojoLoadedPromise
       }
       if (this._dojoLoaded()) {
-        return Promise.resolve()
+        return Promise.resolve().catch(this._log);
       }
 
       this._dojoLoadedPromise = new Promise(function (resolve, reject) {
@@ -213,7 +224,8 @@
         } else {
           this._registerDojoMods(resolve);
         }
-      }.bind(this));
+      }.bind(this))
+        .catch(this._log);
       return this._dojoLoadedPromise
     },
     /**
@@ -226,6 +238,7 @@
         let mods = Array.prototype.slice.call(arguments, 1);
         this.dojoMods = {};
         // preserve the modules on this.dojoMods for later reference.
+
         for (let i = 0; i < mods.length; i++) {
           this.dojoMods[this.dojoDeps[i].split('/').pop()] = mods[i];
         }
@@ -237,161 +250,69 @@
       this.nodes.mapContainer = this.element[0];
       this.nodes.stationOverlayContainer = $('#' + this.options.stationOverlayContainerId)[0];
       this._initControlsOverlay();
-      this._MapInitPromise = this._whenDojoLoaded().then(this._initMap.bind(this));
+      this._mapInitPromise = this._whenDojoLoaded().then(this._initMap.bind(this)).catch(this._log);
 
-      this._whenDojoLoaded().then(this._initScenarioLayers.bind(this));
+      this._whenDojoLoaded().then(this._updateScenarioLayers.bind(this));
+      this._whenDojoLoaded().then(this._initStatesLayer.bind(this));
+
       if (this.options.showCounties) {
-        this._whenDojoLoaded().then(this._initCountiesLayer.bind(this));
+        this._whenDojoLoaded().then(this._updateCountiesLayer.bind(this));
       }
+
     },
     _initControlsOverlay: function () {
-      this.nodes.controlsOverLayContainer = $('<div>', {'class': "moveable", id: "sliderDiv"})[0];
-      $(this.nodes.controlsOverLayContainer).append(`
-        <div id="swipeImg" class="handle">
-          <div class="left-scenario">
-  
-            <select class="dropdown" id="le-options" style="width:125px">
-              <option value="hist">HISTORICAL</option>
-              <option value="rcp45">LOWER EMISSIONS</option>
-            </select>
-            <div class="year" id="left-year-slider-container">
-              <div class="year-label year-min">1950</div>
-              <div class="" id="left-year-slider" data-min="1950" data-max="2090" data-value="2020"></div>
-              <div class="year-label year-max">2090</div>
-            </div>
-          </div>
-          <div class="right-scenario">
-            <select class="dropdown swipe-dropdown" id="he-options" style="width:125px">
-              <option value="rcp85">HIGHER EMISSIONS</option>
-              <option value="rcp45">LOWER EMISSIONS</option>
-            </select>
-            
-            <div class="year" id="right-year-slider-container">
-              <div class="year-label year-min">1950</div>
-              <div class="" id="right-year-slider" data-min="1950" data-max="2090" data-value="2020"></div>
-              <div class="year-label year-max">2090</div>
-            </div>
+      this.nodes.$controlsOverLayContainer = $('<div>', {'class': 'scenario-map-overlay-container'});
+      this.nodes.$controlsOverLayContainer.append(`
+        <div class="movable slider-div">
+          <div class="handle"></div>
+        </div>
+        <div class="left-scenario-controls">
+         <div class="left-scenario-dropdown">
+          <select name="leftScenario" class="dropdown">
+            <option value="historical">HISTORICAL</option>
+            <option value="rcp45">LOWER EMISSIONS</option>
+          </select>
+        </div>
+           <div class="year left-year-slider-container">
+          <div class="year-label year-min"></div>
+          <div class="left-year-slider"></div>
+          <div class="year-label year-max"></div>
+        </div>
+        </div>
+        <div class="right-scenario-controls">
+                 
+          <div class="right-scenario-dropdown" >
+          <select name="rightScenario" class="dropdown">
+            <option value="rcp85">HIGHER EMISSIONS</option>
+            <option value="rcp45">LOWER EMISSIONS</option>
+          </select></div>
+          <div class="year right-year-slider-container">
+            <div class="year-label year-min"></div>
+            <div class="right-year-slider"></div>
+            <div class="year-label year-max"></div>
           </div>
         </div>
+          
     `);
-      $(this.nodes.mapContainer).append(this.nodes.controlsOverLayContainer);
-
-      var self = this;
-      var swipeVal = null, pos, wrapper;
-
-      $("#sliderDiv").draggable({
+      $(this.nodes.mapContainer).append(this.nodes.$controlsOverLayContainer);
+      this.nodes.$leftScenario = $(this.element).find(".left-scenario-controls .dropdown");
+      this.nodes.$leftScenario.dropdown({bottomEdge: 10});
+      this.nodes.$leftScenario.on('change', function () {this._setOptions({leftScenario: this.nodes.$leftScenario.val()})}.bind(this));
+      this.nodes.$rightScenario = $(this.element).find(".right-scenario-controls .dropdown");
+      this.nodes.$rightScenario.dropdown({bottomEdge: 10});
+      this.nodes.$rightScenario.on('change', function () {this._setOptions({rightScenario: this.nodes.$rightScenario.val()})}.bind(this));
+      this.nodes.$controlsOverLayContainer.find('.movable.slider-div').draggable({
         axis: "x",
-        containment: "#variable-map",
+        containment: this.nodes.$controlsOverLayContainer,
         scroll: false,
-        // drag: function (event, ui) {
-        //   pos = ui.helper.offset();
-        //   swipeVal = (pos.left - 20);
-        //   self.tileLayer.dispatchEvent('change');
-        //   $(".left-scenario").fadeOut();
-        //   $(".right-scenario").fadeOut();
-        // },
-        // stop: function (event, ui) {
-        //   pos = ui.helper.offset();
-        //   swipeVal = (pos.left - 20);
-        //   self.tileLayer.dispatchEvent('change');
-        //   $(".left-scenario").fadeIn();
-        //   $(".right-scenario").fadeIn();
-        // }
+        drag: function (event, ui) { this._setOption('swipeX', ui.position.left) }.bind(this),
+        stop: function (event, ui) { this._setOption('swipeX', ui.position.left) }.bind(this)
       });
-      //
-      // this.tileLayer85.on('precompose', function (event) {
-      //   var ctx = event.context;
-      //   var wrapper = $("#variable-map").width();
-      //   if (swipeVal === null) {
-      //     pos = $("#sliderDiv").offset(); //ui.helper.offset();
-      //     swipeVal = (pos.left - 20);
-      //   }
-      //   var screenPercent = swipeVal / wrapper;
-      //   var width = ctx.canvas.width * screenPercent;
-      //   ctx.save();
-      //   ctx.beginPath();
-      //   ctx.rect(width, 0, ctx.canvas.width - width, ctx.canvas.height);
-      //   ctx.clip();
-      // });
 
-      this.nodes.leftYearSlider = $('#left-year-slider')[0];
-      this.nodes.rightYearSlider = $('#right-year-slider')[0];
+      this._updateLeftYearSlider();
+      this._updateRightYearSlider();
 
-      let leftYearTooltip = $('<span class="tooltip">' + this.options.leftYear + '</span>').hide();
-      let rightYearTooltip = $('<span class="tooltip">' + this.options.rightYear + '</span>').hide();
 
-      $(this.nodes.leftYearSlider).slider({
-        range: false,
-        min: 1950,
-        max: 2100,
-        step: 10,
-        value: this.options.leftYear,
-        // slide: function (event, ui) {
-        //   if (self.selectedVariable !== 'tmax' && self.selectedVariable !== 'tmin' && self.selectedVariable !== 'pcpn') {
-        //     if (ui.value === 2000) {
-        //       return false;
-        //     }
-        //   }
-        //   tooltip.text(ui.value);
-        //   tooltip.fadeIn(200);
-        // },
-        // change: function (event, ui) {
-        //   year_slider.attr('data-value', ui.value);
-        // },
-        // stop: function (event, ui) {
-        //   year_slider.attr('data-value', ui.value);
-        //   self.activeYear = ui.value;
-        //
-        //   le_option_selected = $(".left-scenario .fs-dropdown-selected").text();
-        //   he_option_selected = $(".right-scenario .fs-dropdown-selected").text();
-        //
-        //   self.updateTiledLayer(true, true);
-        //
-        //   self.updateUrl();
-        //   tooltip.fadeOut(200);
-        // }
-      }).find(".ui-slider-handle").html('<span class="icon icon-arrow-left-right"></span>').append(leftYearTooltip);
-
-      $(this.nodes.rightYearSlider).slider({
-        range: false,
-        min: 1950,
-        max: 2100,
-        step: 10,
-        value: this.options.rightYear,
-        // slide: function (event, ui) {
-        //   if (self.selectedVariable !== 'tmax' && self.selectedVariable !== 'tmin' && self.selectedVariable !== 'pcpn') {
-        //     if (ui.value === 2000) {
-        //       return false;
-        //     }
-        //   }
-        //   tooltip.text(ui.value);
-        //   tooltip.fadeIn(200);
-        // },
-        // change: function (event, ui) {
-        //   year_slider.attr('data-value', ui.value);
-        // },
-        // stop: function (event, ui) {
-        //   year_slider.attr('data-value', ui.value);
-        //   self.activeYear = ui.value;
-        //
-        //   le_option_selected = $(".left-scenario .fs-dropdown-selected").text();
-        //   he_option_selected = $(".right-scenario .fs-dropdown-selected").text();
-        //
-        //   self.updateTiledLayer(true, true);
-        //
-        //   self.updateUrl();
-        //   tooltip.fadeOut(200);
-        // }
-      }).find(".ui-slider-handle").html('<span class="icon icon-arrow-left-right"></span>').append(rightYearTooltip);
-
-      //
-      // $(this).hover(function () {
-      //   tooltip.fadeIn(200);
-      // }, function () {
-      //   tooltip.fadeOut(100);
-      // });
-      //
-      // tooltip.fadeIn(200);
     },
     _initMap: function () {
       this.map = new this.dojoMods.Map({
@@ -411,6 +332,17 @@
         }
       });
 
+
+      this.locateWidget = new this.dojoMods.Locate({
+        view: this.view,   // Attaches the Locate button to the view
+        graphic: new this.dojoMods.Graphic({
+          symbol: {type: "simple-marker"}  // overwrites the default symbol used for the
+          // graphic placed at the location of the user when found
+        })
+      });
+
+      this.view.ui.add(this.locateWidget, "top-left");
+
       this.basemapGallery = new this.dojoMods.BasemapGallery({
         view: this.view,
         container: document.createElement('div')
@@ -424,6 +356,17 @@
 
       this.view.ui.add(this.bgExpand, 'top-left');
 
+      this.nodes.$legendContainer = $('<div></div>');
+      this.nodes.$legendContainer.html('<img class="legend-image" src="/resources/img/legends/summer_tmax.png" />');
+      this.legendExpand = new this.dojoMods.Expand({
+        expandIconClass: 'esri-icon-description',
+        view: this.view,
+        content: this.nodes.$legendContainer[0],
+        expanded: true,
+      });
+
+      this.view.ui.add(this.legendExpand, 'top-left');
+
       this.scaleBar = new this.dojoMods.ScaleBar({
         view: this.view,
         units: 'dual'
@@ -432,31 +375,97 @@
       this.view.ui.add(this.scaleBar, {
         position: "bottom-left"
       });
-
-      this.locateWidget = new this.dojoMods.Locate({
-        view: this.view,   // Attaches the Locate button to the view
-        graphic: new this.dojoMods.Graphic({
-          symbol: {type: "simple-marker"}  // overwrites the default symbol used for the
-          // graphic placed at the location of the user when found
-        })
-      });
-
-      this.view.ui.add(this.locateWidget, "top-left");
     },
 
-    _initScenarioLayers: function () {
-      let layerClass = this.dojoMods.TileLayer;
-      if (this.options.historicalTilesURL.endsWith('png')) {
-        layerClass = this.dojoMods.WebTileLayer;
-      }
-      // esriConfig.request.corsEnabledServers.push("s3.amazonaws.com");
-      this.historicalLayer = new layerClass({
-        urlTemplate: this.options.historicalTilesURL.replace('{season}', this.options.season).replace('{variable}', this.options.variable),
+    _updateScenarioLayers: function () {
 
-      });
-      this._MapInitPromise.then(function () {
-        this.map.add(this.historicalLayer);
+      this._updateLeftScenarioLayer();
+      this._updateRightScenarioLayer();
+    },
+
+    _updateLeftScenarioLayer: function () {
+      if (this.leftLayer !== null) {
+        let oldLeftLayer = this.leftLayer;
+        setTimeout(function () {
+            oldLeftLayer.visible = false;
+            oldLeftLayer.destroy();
+          }
+          , 400);
+        this.leftLayer = null;
+      }
+
+      return this._initScenarioLayer(this.options.leftScenario, this.options.leftYear, 'left', this.options.leftOpacity)
+        .then(function (layer) {
+          this.leftLayer = layer;
+          return layer;
+        }.bind(this));
+
+    },
+
+    _updateRightScenarioLayer: function () {
+      if (this.rightLayer !== null) {
+        let oldRightLayer = this.rightLayer;
+        setTimeout(function () {
+            oldRightLayer.visible = false;
+            oldRightLayer.destroy();
+          }
+          , 400);
+        this.rightLayer = null;
+      }
+
+      return this._initScenarioLayer(this.options.rightScenario, this.options.rightYear, 'right', this.options.rightOpacity)
+        .then(function (layer) {
+          this.rightLayer = layer;
+          return layer;
+        }.bind(this));
+    },
+
+    _initScenarioLayer: function (scenario, year, side, opacity) {
+      let promise = new Promise(function (resolve, reject) {
+        let layerClass = this.dojoMods.TileLayer;
+        if (this.options[scenario + 'TilesURL'].endsWith('png')) { layerClass = this.dojoMods.WebTileLayer; }
+        let layer = new layerClass({urlTemplate: this._getScenarioURL(scenario, year), opacity: opacity});
+        //TMS hack
+        if (this.options[scenario + 'TilesURL'].endsWith('png') && this.options[scenario + 'TilesTMS']) {
+          layer.getTileUrl = function (level, row, col) {
+            level = this.levelValues[level];
+            if (0 > row || row >= (1 << level)) { return null; }
+            row = Math.pow(2, level) - row - 1;
+
+            return this.tileServers[row % this.tileServers.length] + this.urlPath.replace(/\{level\}/gi, level).replace(/\{row\}/gi, row).replace(/\{col\}/gi, col);
+          };
+        }
+        this._mapInitPromise.then(function (layer) {
+          this.map.add(layer, 2);
+        }.bind(this, layer));
+        resolve(layer);
+      }.bind(this))
+        .catch(this._log);
+      // hook the layerView's first render to apply the clipping path.
+      promise.then(function (layer) {
+        this.view.whenLayerView(layer).then(function (layerView) {
+          new Promise(function (resolve) {
+            layerView.container._doRender = layerView.container.doRender;
+            layerView.container._setClipPath = this._setClipPath;
+            layerView.container._swipeX = this.options.swipeX;
+            layerView.container._setSwipeX = function (value) {this.options.swipeX = value;}.bind(this);
+            layerView.container.doRender = function (a) {
+              this._doRender(a);
+              if (this._swipeX === null) {
+                this._swipeX = this.element.width / 2;
+                this._setSwipeX(this._swipeX);
+              }
+              this._setClipPath(this.element, side, this._swipeX);
+              resolve();
+            };
+          }.bind(this))
+            .catch(this._log)
+            .then(function () {
+              layerView.container.doRender = layerView.container._doRender;
+            });
+        }.bind(this));
       }.bind(this));
+      return promise;
     },
 
     // Init is automatically invoked after create, and again every time the
@@ -465,16 +474,148 @@
       this._trigger('initialized');
     },
 
+    _updateCountiesLayer: function () {
+      if (undefined !== this.countiesLayer) {
+        return Promise.resolve(this.countiesLayer)
+      }
+      return this._createReferenceLayer(this.options.countiesLayerURL, {
+        geometryType: 'polygon',
+        spatialReference: {wkid: 4326},
+        objectIdField: 'STATE',
+        fields: [new this.dojoMods.Field({
+            name: "GEO_ID",
+            alias: "GEO_ID",
+            type: "string"
+          },
+          {
+            name: "NAME",
+            alias: "Name",
+            type: "string"
+          },
+          {
+            name: "STATE",
+            alias: "State",
+            type: "string"
+          },
+          {
+            name: "COUNTY",
+            alias: "County",
+            type: "string"
+          })],
+        renderer: {
+          type: 'simple',
+          symbol: {
+            type: "simple-fill",  // autocasts as new SimpleFillSymbol()
+            style: "solid",
+            color: [0, 0, 0, 0],
+            outline: {  // autocasts as new SimpleLineSymbol()
+              color: "black",
+              width: 0.3
+            }
+          }
+        }
+      }).then(function (layer) {
+        this.countiesLayer = layer;
+        this._mapInitPromise.then(function () {
+          this.map.add(this.countiesLayer, 10);
+          this.view.on("click", function (event) {
+            this.view.hitTest(event)
+              .then(function (response) {
+                let county = response.results.filter(function (result) {
+                  return result.graphic.layer === this.countiesLayer;
+                }.bind(this))[0].graphic;
+                this._countySelected({
+                  geo_id: county.attributes['GEO_ID'],
+                  name: county.attributes['NAME'] + ' ' + county.attributes['LSAD'],
+                  state: county.attributes['STATE'],
+                  county: county.attributes['county']
+                });
+              }.bind(this));
+          }.bind(this));
+        }.bind(this));
+        return layer;
+      }.bind(this));
 
-    // I find it useful to separate out my event handler logic just for
-    // organization and readability's sake, but it's certainly not necessary
-    _addHandlers: function () {
 
     },
+    _initStatesLayer: function () {
+      this._createReferenceLayer(this.options.statesLayerURL, {
+        geometryType: 'polygon',
+        spatialReference: {wkid: 4326},
+        objectIdField: 'GEO_ID',
+        opacity: 0.5,
+        fields: [new this.dojoMods.Field({
+          name: "GEO_ID",
+          alias: "GEO_ID",
+          type: "string"
+        }, {
+          name: "STATE",
+          alias: "State",
+          type: "string"
+        })],
+        renderer: {
+          type: 'simple',
+          symbol: {
+            type: "simple-fill",  // autocasts as new SimpleFillSymbol()
+            style: "none",
+            outline: {  // autocasts as new SimpleLineSymbol()
+              color: "black",
+              width: 1
+            }
+          }
+        }
+      }).then(function (layer) {
+        this.statesLayer = layer;
+        this._mapInitPromise.then(function () {
+          this.map.add(this.statesLayer, 10)
+        }.bind(this))
+      }.bind(this));
+
+    },
+
+
+    _createReferenceLayer: function (layerURL, options) {
+      // We implement our own json layer creator
+      if (layerURL.endsWith('json')) {
+        return Promise.resolve($.ajax({
+          url: layerURL,
+          type: "GET",
+          contentType: "application/json; charset=utf-8",
+          dataType: "json",
+        }))
+          .catch(this._log)
+          .then((data) => {
+            if (undefined === data) {
+              throw 'Failed to retrieve station data. Refresh to try again.'
+            }
+            return Terraformer.ArcGIS.convert(new Terraformer.Primitive(data));
+          })
+          .then(function (features) {
+            for (let i = 0; i < features.length; i++) {
+              features[i]['geometry'] = new this.dojoMods.Polygon(features[i]['geometry']);
+            }
+            // Use Terraformer to convert GeoJSON to ArcGIS JSON
+            return new this.dojoMods.FeatureLayer(Object.assign({
+              // create an instance of esri/layers/support/Field for each field object
+              source: features,
+            }, options));
+          }.bind(this));
+      }
+      else {
+        //if url is a feature service or csv we use the provided methods for creating them.
+        let layerClass = this.dojoMods.FeatureLayer;
+        if (layerURL.endsWith('csv')) {
+          layerClass = this.dojoMods.CSVLayer;
+        }
+        return Promise.resolve(new layerClass(Object.assign({url: layerURL}, options))).catch(this._log);
+      }
+    },
+
 
     // Allows the widget to react to option changes. Any custom behaviors
     // can be configured here.
     _setOption: function (key, value) {
+      let oldValue = this.options[key];
       // This will actually update the value in the options hash
       this._super(key, value);
       // And now we can act on that change
@@ -483,89 +624,148 @@
         case "state":
           this._init();
           break;
-        case "variable":
-          // update legend contents
-          var legendFilename = variable;
-          if (variable === 'tmax') {
-            legendFilename = 'summer_tmax';
-          } else if (variable === 'tmin') {
-            legendFilename = 'summer_tmin';
+        case "swipeX":
+          this._setSwipeX(value);
+          break;
+        case "leftYear":
+          if (value !== oldValue) {
+            this._updateLeftScenarioLayer();
           }
-          $('#vars-legend .legend #legend-container').html('<img class="legend-image" src="/resources/img/legends/' + legendFilename + '.png">');
-        case "season":
-          // update legend
-          var legendFilename;
-          legendFilename = self.selectedSeason + '_' + self.selectedVariable;
-          $('#vars-legend .legend #legend-container').html('<img class="legend-image" src="/resources/img/legends/' + legendFilename + '.png">');
-        case "mode":
-          // hide the overlay if it exists
-          $('#station-overlay-container').css('visibility', 'hidden').empty();
-
-          switch (this.options.mode) {
-            case 'daily_vs_climate':
-              if (undefined !== this.thresholdStationsLayer) {
-                this.thresholdStationsLayer.visible = false;
-              }
-              if (undefined !== this.tidalStationsLayer) {
-                this.tidalStationsLayer.visible = false;
-              }
-              if (undefined !== this.dailyStationsLayer) {
-                this.dailyStationsLayer.visible = true;
-
-              }
-              else {
-                this._whenDojoLoaded().then(this._initDailyStationsLayer.bind(this));
-              }
-              if (this.map.basemap.id !== 'topo') {
-                this.map.basemap = 'topo';
-              }
-              break;
-            case 'thresholds':
-              if (undefined !== this.dailyStationsLayer) {
-                this.dailyStationsLayer.visible = false;
-              }
-              if (undefined !== this.tidalStationsLayer) {
-                this.tidalStationsLayer.visible = false;
-              }
-              if (undefined !== this.thresholdStationsLayer) {
-                this.thresholdStationsLayer.visible = true;
-
-              }
-              else {
-                this._whenDojoLoaded().then(this._initThresholdStationsLayer.bind(this));
-              }
-              if (this.map.basemap.id !== 'topo') {
-                this.map.basemap = 'topo';
-              }
-              break;
-            case 'high_tide_flooding':
-              if (undefined !== this.dailyStationsLayer) {
-                this.dailyStationsLayer.visible = false;
-              }
-              if (undefined !== this.thresholdStationsLayer) {
-                this.thresholdStationsLayer.visible = false;
-              }
-              if (undefined !== this.tidalStationsLayer) {
-                this.tidalStationsLayer.visible = true;
-              }
-              else {
-                this._whenDojoLoaded().then(this._initTidalStationsLayer.bind(this));
-              }
-              if (this.map.basemap.id !== 'oceans') {
-                this.map.basemap = 'oceans';
-              }
-              break;
-
+          break;
+        case "rightYear":
+          if (value !== oldValue) {
+            this._updateRightScenarioLayer();
           }
+          break;
+        case "leftScenario":
+          if (value !== oldValue) {
+            if (!this._getLeftOptions().years.includes(this.options.leftYear)) {
+              this.options.leftYear = this._getLeftOptions().years.slice(-1)[0]
+            }
+            this._updateLeftScenarioLayer();
+            this._updateLeftYearSlider();
+          }
+          break;
+        case "rightScenario":
+          if (value !== oldValue) {
+            if (!this._getRightOptions().years.includes(this.options.rightYear)) {
+              this.options.rightYear = this._getRightOptions().years.slice(-1)[0]
+            }
+            this._updateRightScenarioLayer();
+            this._updateRightYearSlider();
+          }
+          break;
+        case "showCounties":
+
+          this._whenDojoLoaded().then(this._updateCountiesLayer.bind(this)).then(function (layer) {layer.visible = value});
+
           break;
       }
     },
+    _updateLeftYearSlider: function () {
+      if (this.nodes.$leftYearSlider === undefined) {
+        this.nodes.$leftYearSlider = $(this.element).find('.left-year-slider');
+      }
+      if (this.nodes.$leftYearTooltip === undefined) {
+        this.nodes.$leftYearTooltip = $('<span class="tooltip"></span>').hide();
+      }
+      if (this.options.leftYear === 'avg' && this.options.leftScenario === 'historical') {
+        this.nodes.$leftYearTooltip.text(this.options.historicalYears[0] + "-" + this.options.historicalYears.slice(-1)[0] + " Average");
+      } else {
+        this.nodes.$leftYearTooltip.text(this.options.leftYear);
+      }
+      let min = this._getLeftOptions().years[0];
+      let max = this.options.leftScenario === 'historical' ? 2010 : this._getLeftOptions().years.slice(-1)[0];
+      this.nodes.$controlsOverLayContainer.find('.left-year-slider-container .year-min').text(min);
+      this.nodes.$controlsOverLayContainer.find('.left-year-slider-container .year-max').text(this._getLeftOptions().years.slice(-1)[0]);
+      this.nodes.$leftYearSlider.slider({
+        range: false,
+        min: min,
+        max: max,
+        step: 10,
+        value: this.options.leftYear === 'avg' && this.options.leftScenario === 'historical' ? 2010 : this.options.leftYear,
+        slide: function (event, ui) {
+          if (ui.value === 2010 && this.options.leftScenario === 'historical') {
+            this.nodes.$leftYearTooltip.text(this.options.historicalYears[0] + "-" + this.options.historicalYears.slice(-1)[0] + " Average");
+          } else {
+            this.nodes.$leftYearTooltip.text(ui.value);
+          }
+        }.bind(this),
+        change: function (event, ui) {
+          this.nodes.$leftYearSlider.attr('data-value', ui.value);
+          if (ui.value === 2010 && this.options.leftScenario === 'historical') {
+            this._setOption('leftYear', 'avg');
+          }
+          else {
+            this._setOption('leftYear', ui.value);
+          }
+        }.bind(this),
+      }).find(".ui-slider-handle").html('<span class="icon icon-arrow-left-right"></span>').append(this.nodes.$leftYearTooltip);
 
+
+      this.nodes.$leftYearTooltip.fadeIn();
+    },
+
+    _updateRightYearSlider: function () {
+      if (this.nodes.$rightYearSlider === undefined) {
+        this.nodes.$rightYearSlider = $(this.element).find('.right-year-slider');
+      }
+      if (this.nodes.$rightYearTooltip === undefined) {
+        this.nodes.$rightYearTooltip = $('<span class="tooltip"></span>').hide();
+      }
+      this.nodes.$controlsOverLayContainer.find('.right-year-slider-container .year-min').text(this._getRightOptions().years[0]);
+      this.nodes.$controlsOverLayContainer.find('.right-year-slider-container .year-max').text(this._getRightOptions().years.slice(-1)[0]);
+      this.nodes.$rightYearTooltip.text(this.options.rightYear);
+      this.nodes.$rightYearSlider.slider({
+        range: false,
+        min: this._getRightOptions().years[0],
+        max: this._getRightOptions().years.slice(-1)[0],
+        step: 10,
+        value: this.options.rightYear,
+        slide: function (event, ui) {
+          this.nodes.$rightYearTooltip.text(ui.value);
+        }.bind(this),
+        change: function (event, ui) {
+          this.nodes.$rightYearSlider.attr('data-value', ui.value);
+          this._setOption('rightYear', ui.value);
+        }.bind(this),
+      }).find(".ui-slider-handle").html('<span class="icon icon-arrow-left-right"></span>').append(this.nodes.$rightYearTooltip);
+      this.nodes.$rightYearTooltip.fadeIn();
+    },
+    _setSwipeX: function (value) {
+      if (this.leftLayer && this.rightLayer) {
+        this.view.whenLayerView(this.leftLayer).then(function (layerView) {
+          this._setClipPath(layerView.container.element, 'left', value);
+        }.bind(this));
+        this.view.whenLayerView(this.rightLayer).then(function (layerView) {
+          this._setClipPath(layerView.container.element, 'right', value);
+        }.bind(this));
+      }
+    },
+
+    _getLeftOptions: function () {
+      return {
+        year: this.options.leftYear,
+        opacity: this.options.leftOpacity,
+        years: this.options[this.options.leftScenario + 'Years'],
+        tilesURL: this.options[this.options.leftScenario + 'TilesURL'],
+        tilesTMS: this.options[this.options.leftScenario + 'TilesTMS']
+      };
+    },
+    _getRightOptions: function () {
+      return {
+        year: this.options.rightYear,
+        opacity: this.options.rightOpacity,
+        years: this.options[this.options.rightScenario + 'Years'],
+        tilesURL: this.options[this.options.rightScenario + 'TilesURL'],
+        tilesTMS: this.options[this.options.rightScenario + 'TilesTMS']
+      };
+    },
     _setOptions: function (options) {
       let old_options = Object.assign({}, this.options);
       this._super(options);
-      if (this.options.stationId !== old_options.stationId) {
-        this._stationSelected();
+      if (this.options.county !== old_options.county) {
+        this._countySelected();
       }
       if (this.options.extent !== old_options.extent && this.options.extent !== null) {
         this.view.goTo(new this.dojoMods.Extent(this.options.extent));
@@ -574,247 +774,172 @@
         this.options.extent = null;
         this.view.goTo({center: new this.dojoMods.Point({latitude: this.options.center[0], longitude: this.options.center[1]}), zoom: this.options.zoom});
       }
-
+      if (this.options.variable !== old_options.variable || this.options.season !== old_options.season) {
+        this._updateScenarioLayers();
+        this._updateLegend();
+      }
       return this;
     },
-
-    _stationSelected: function () {
-      if (this.options.stationId === null) {
-        return
-      }
-      $(this.nodes.stationOverlayContainer).css('visibility', 'visible');
-      switch (this.options.mode) {
-        case 'daily_vs_climate':
-          $(this.nodes.stationOverlayContainer).append(
-            '<div id="station-overlay">' +
-            '   <div id="station-overlay-close">x</div>' +
-            '   <div id="station-overlay-header">' +
-            '       <h3 class="accent-color" style="margin-bottom: 20px;"><span class="icon icon-district"></span>Weather Station</h3>' +
-            '       <h5>Name: ' + this.options.stationName + '</h5>' +
-            '       <h5>Station ID: ' + this.options.stationId + '</h5>' +
-            '   </div>' +
-            '   <div id="multi-chart" class="left_chart"></div>' +
-            '   <div id="multi-precip-chart" class="right_chart"></div>' +
-            '   <div style="clear:both"></div>' +
-            '   <div id="overlay-chart-container">' +
-            '   <div class="station_overlay_text">' +
-            '       <p style="font-weight:bold">Scroll, click-and-drag, or hold down your SHIFT key to scroll on either graph or axis to view more years or adjust the display.</p>' +
-            '       <p>Blue bars on temperature graphs indicate the full range of observed temperatures for each day; the green band shows the average temperature range from 1981-2010. Comparing the two makes it easy to spot periods of above- and below-normal temperature.' +
-            '       Green areas on precipitation graphs track year-to-date cumulative precipitation. Comparing observed precipitation to normal year-to-date totals (the black line) shows whether each season received above-, below-, or near-normal amounts of precipitation. Vertical portions of the year-to-date precipitation line show days when precipitation occurred.' +
-            '       Data are from stations in the Global Historical Climatology Network-Daily dataset, compiled by the National Centers for Environmental Information and served by ACIS.</p>' +
-            '   </div>' +
-            '   </div>' +
-            '</div>'
-          );
-
-          this.chart = new ChartBuilder({station: this.options.stationId}, this.options.dailyStationsDataURL);
-
-          break;
-        case 'thresholds':
-          $(this.nodes.stationOverlayContainer).append(
-            '<div id="station-overlay">' +
-            '   <div id="station-overlay-close">x</div>' +
-            '   <div id="station-overlay-header">' +
-            '       <h3 class="accent-color" style="margin-bottom: 20px;"><span class="icon icon-district"></span>Weather Station</h3>' +
-            '       <h5>Name: ' + this.options.stationName + '</h5>' +
-            '       <h5>Station ID: ' + this.options.stationId + '</h5>' +
-            '   </div>' +
-            '   <div id="threshold_inputs">' +
-            '       <div class="field-pair field-var">' +
-            '           <label for="itemvariable">Variable:</label>' +
-            '           <div class="field">' +
-            '               <select name="itemvariable" id="itemvariable">' +
-            '                   <option value="precipitation">Precipitation</option>' +
-            '                   <option value="tavg">Average Temperature</option>' +
-            '                   <option value="tmax">Maximum Temperature</option>' +
-            '                   <option value="tmin">Minimum Temperature</option>' +
-            '               </select>' +
-            '           </div>' +
-            '       </div>' +
-            '       <div class="field-pair field-window append">' +
-            '           <label for="window">Window:</label>' +
-            '           <div class="field">' +
-            '               <input type="number" id="window" name="window" value="1"> <span class="append">days</span>' +
-            '           </div>' +
-            '       </div>' +
-            '       <div class="field-pair field-threshold append">' +
-            '           <label for="threshold">Threshold:</label>' +
-            '           <div class="field">' +
-            '               <input type="number" name="threshold" id="threshold" value="1" step="0.1"> <span class="append" id="item_inches_or_f">°F</span>' +
-            '           </div>' +
-            '       </div>' +
-            '   </div>' +
-            '   <div id="overlay-thresholds-container">' +
-            '<div id="thresholds-container"></div>' +
-            '   <div class="station_overlay_text">' +
-            '       <p style="width:65%!important;margin-left:200px;">To limit the tool to show to years with solid data records, we excluded years that are missing more than five daily temperature reports in a single month, or more than one precipitation report in a single month. Data are from stations in the Global Historical Climatology Network-Daily dataset, compiled by the National Centers for Environmental Information, and served by ACIS.</p>' +
-            '   </div>' +
-            '</div>' +
-            '</div>' +
-            '</div>'
-          );
-
-          $("#thresholds-container").item({
-            station: this.options.stationId, // GHCN-D Station id (required)
-            variable: 'precipitation', // Valid values: 'precipitation', 'tmax', 'tmin', 'tavg'
-            threshold: 1.0,
-            responsive: true,
-            thresholdOperator: '>', // Valid values: '==', '>=', '>', '<=', '<'
-            thresholdFilter: '', // Transformations/Filters to support additional units. Valid Values: 'KtoC','CtoK','FtoC','CtoF','InchToCM','CMtoInch'
-            thresholdFunction: undefined, //Pass in a custom function: function(this, values){ return _.sum(values) > v2; }
-            window: 1, // Rolling window size in days.
-            dailyValueValidator: undefined, // Pass in a custom validator predicate function(value, date){return date.slice(0, 4) > 1960 && value > 5 }
-            yearValidator: undefined, // Similar to dailyValueValidator
-            dataAPIEndpoint: this.options.thresholdStationsDataURL.split('StnData')[0],
-            barColor: '#307bda' // Color for bars.
-          });
-
-          $('#threshold').change(function () {
-            $("#thresholds-container").item({threshold: parseFloat($('#threshold').val())}).item('update');
-          });
-
-          $('#station').change(function () {
-            $("#thresholds-container").item('option', 'station', $('#station').val()).item('update');
-          });
-
-
-          // when #variable changes, update ui units and apply sensible defaults.
-          $('#itemvariable').change(function (e) {
-            let queryElements = undefined,
-              missingValueTreatment = undefined,
-              windowFunction = undefined;
-            switch ($('#itemvariable').val()) {
-              case 'precipitation':
-                $('#thresholdUnits').text('in');
-                $('#threshold').val(1.0);
-                $('#item_inches_or_f').text('inches');
-                break;
-              case 'tmax':
-                $('#thresholdUnits').text('F');
-                $('#threshold').val(95);
-                $('#item_inches_or_f').text('°F');
-                break;
-              case 'tmin':
-                $('#thresholdUnits').text('F');
-                $('#threshold').val(32);
-                $('#item_inches_or_f').html('°F');
-                break;
-              case 'tavg':
-                $('#thresholdUnits').text('F');
-                $('#threshold').val(70);
-                $('#item_inches_or_f').text('°F');
-                break;
-            }
-            $("#thresholds-container").item({
-              threshold: parseFloat($('#threshold').val()),
-              variable: $('#itemvariable option:selected').val()
-            }).item('update');
-          });
-
-          $('#percentileThreshold').change(function () {
-
-            let value = $('#percentileThreshold').val();
-            if (value === '') {
-              return;
-            }
-
-            if (value <= 0 || value >= 100) {
-              $('#percentileThreshold').addClass('form-control-danger');
-              return;
-            }
-
-            $('#threshold').val($("#thresholds-container").item('getPercentileValue', value)).trigger('change');
-
-          });
-
-          $('#window').change(function () {
-            $("#thresholds-container").item({window: parseInt($('#window').val())});
-            $("#thresholds-container").item('update');
-          });
-
-          this.chart = new ChartBuilder({station: value}, this.options.thresholdStationsDataURL);
-          break;
-        case 'high_tide_flooding':
-          $(this.nodes.stationOverlayContainer).append(
-            '<div id="station-overlay">' +
-            '   <div id="station-overlay-close">x</div>' +
-            '   <div id="station-overlay-header">' +
-            '       <h3 class="accent-color" style="margin-bottom: 20px;"><span class="icon icon-district"></span>High Tide Flooding</h3>' +
-            '       <h5>Name: <span class="station_name">' + this.options.stationName + '</span></h5>' +
-            '       <h5>Station ID: <span class="station_id">' + this.options.stationId + '</span></h5>' +
-            '   </div>' +
-            '   <select name="" id="tidal_station" class="form-control" style="width: 200px;display:none">' +
-            '       <option value="" disabled selected hidden>Station</option>' +
-            '       <option value="8443970">Boston, MA</option>' +
-            '       <option value="8454000">Providence, RI</option>' +
-            '       <option value="8461490">New London, CT</option>' +
-            '       <option value="8510560">Montauk, NY</option>' +
-            '       <option value="8516945">Kings Point, NY</option>' +
-            '       <option value="8518750">Battery, NY</option>' +
-            '       <option value="8531680">Sandy Hook, NJ</option>' +
-            '       <option value="8534720">Atlantic City, NJ</option>' +
-            '       <option value="8545240">Philadelphia, PA</option>' +
-            '       <option value="8557380">Lewes, DE</option>' +
-            '       <option value="8574680">Baltimore, MD</option>' +
-            '       <option value="8575512">Annapolis, MD</option>' +
-            '       <option value="8594900">Washington D.C.</option>' +
-            '       <option value="8638610">Sewells Point, VA</option>' +
-            '       <option value="8658120">Wilmington, NC</option>' +
-            '       <option value="8665530">Charleston, SC</option>' +
-            '       <option value="8670870">Fort Pulaski, GA</option>' +
-            '       <option value="8720030">Fernandina Beach, FL</option>' +
-            '       <option value="8720218">Mayport, FL</option>' +
-            '       <option value="8724580">Key West, FL</option>' +
-            '       <option value="8726430">St Petersburg, FL</option>' +
-            '       <option value="8771341">Galveston Bay, TX</option>' +
-            '       <option value="8779770">Port Isabel, TX</option>' +
-            '       <option value="9410230">La Jolla, CA</option>' +
-            '       <option value="9414290">San Francisco, CA</option>' +
-            '       <option value="9447130">Seattle, WA</option>' +
-            '       <option value="1612340">Honolulu, HI</option>' +
-            '   </select>' +
-            '   <div id="overlay-chart-container">' +
-            '      <div id="tidal-chart"></div>' +
-            '       <div class="station_overlay_text">' +
-            '          <p>Gray bars show annual counts of high-tide flooding in the past. Red and blue bars show projections of the average number of high-tide flooding events in future years.</p>' +
-            '       </div>' +
-            '   </div>' +
-            '</div>'
-          );
-
-
-          $("#tidal-chart").tidalstationwidget({
-            station: this.options.stationId,
-            data_url: '/resources/tidal/tidal_data.json', // defaults to tidal_data.json
-            responsive: true // set to false to disable ChartJS responsive sizing.
-          });
-
-          $('#station-overlay-header h3').html('Tidal Station');
-
-          $('#location-stations').addClass('type-tidal');
-
-          $('#stations-spinner').fadeOut(250);
-
-          $('#tidal_station').change(function () {
-            $("#tidal-chart").tidalstationwidget("update", {station: $(this).val()});
-
-            if ($(this).find('option:selected').length) {
-              $('#station-overlay-header .station-name').html($(this).find('option:selected').text());
-            }
-
-            $('#station-overlay-header .station-id').html($(this).val());
-          });
-
-          break;
-      }
-
-      $('#station-overlay-close').click(function () {
-        $(this.nodes.stationOverlayContainer).css('visibility', 'hidden');
-        $(this.nodes.stationOverlayContainer).empty();
-      }.bind(this));
-
+    _updateLegend: function () {
+      let legendFilename = this.variables[this.options.variable]['seasonal_data'] ? 'summer_' + this.options.variable : this.options.variable;
+      this.nodes.$legendContainer.html('<img class="legend-image" src="/resources/img/legends/' + legendFilename + '.png">')
     },
 
+    _countySelected: function (county) {
+      this.nodes.$countyOverlay = $(`<div class="county-overlay">
+  <div id="station-overlay-close">x</div>
+  <div class="county-overlay-inner">
+    <header>
+      <a href="location.php">
+        <h4 class="accent-color" style="margin-bottom: 20px;">
+          <span class="icon icon-emission-scenario"></span> <span class="text">Chart<span class="full-title">: ${county.name}</span>
+          <span class="source" id="temp-chart-name">${this.variables[this.options.variable].title}</span>
+        </span>
+        </h4>
+      </a>
+
+      <div class="data-accordion-actions">
+        <a href="javascript:void(0);" class="how-to-read local"><span class="icon icon-help"></span>How to read this</a>
+        <a href="javascript:void(0);" class="download-image local">
+          <span class="icon icon-download-image"></span>Image</a> <a href="javascript:void(0);"  class="download-data local">
+        <span class="icon icon-download-chart"></span>Data</a>
+      </div>
+    </header>
+    <div id="climate-chart" style="height:420px"></div>
+    <div class="chart-legend">
+      <div id="historical-obs" class="legend-item legend-item-range">
+        <div class="legend-item-line-container">
+          <div class="legend-item-line observed" id="over-baseline-block"></div>
+        </div>
+        Observations
+      </div>
+      <div id="historical-range" class="legend-item legend-item-range selected">
+        <div class="legend-item-block selected" id="historical-block"></div>
+        Historical (Modelled)
+      </div>
+      <div id="rcp45-range" class="legend-item legend-item-range selected">
+        <div class="legend-item-block selected" id="rcp45-block"></div>
+        Lower Emissions
+      </div>
+      <div id="rcp85-range" class="legend-item legend-item-range selected">
+        <div class="legend-item-block selected" id="rcp85-block"></div>
+        Higher Emissions
+      </div>
+      <div id="rcp45-mean" class="legend-item legend-item-range selected">
+        <div class="legend-item-line-container">
+          <div class="legend-item-line selected" id="rcp85-line"></div>
+          <div class="legend-item-line selected" id="rcp45-line"></div>
+        </div>
+        Averages
+      </div>
+    </div>
+    <div class="range" id="variable-slider">
+      <div id="slider-range"></div>
+      <div class="ui-slider-label range-label min" id="range-low">1950</div>
+      <div class="ui-slider-label range-label max" id="range-high">2100</div>
+    </div>
+  </div>
+     <div class="download-panel overlay">
+            <div class="download-inner">
+                <a href="javascript:void(0);" class="download-dismiss-button icon icon-close"></a>
+                <p>Use the following links to download this graph's data:</p>
+                <ul>
+                    <li><a href="javascript:void(0);" class='download_hist_obs_data button display-block border-white hover-bg-white'><span class='icon icon-arrow-down '></span>Observed Data</a></li>
+                    <li><a href="javascript:void(0);"class='download_hist_mod_data button display-block border-white hover-bg-white'><span class='icon icon-arrow-down'></span>Historical Modeled Data</a></li>
+                    <li><a href="javascript:void(0);" class='download_proj_mod_data button display-block border-white hover-bg-white'><span class='icon icon-arrow-down'></span>Projected Modeled Data</a></li>
+                </ul>
+
+            </div>
+        </div>
+</div>`);
+
+      $(this.element).append(this.nodes.$countyOverlay);
+      this.cwg = climate_widget.graph({
+        div: "div#climate-chart",
+        dataprefix: "/climate-explorer2-data/data",
+        font: "Roboto",
+        frequency: "annual",
+        county: county.geo_id.slice(-5),
+        variable: $('#variable-options-container').data().value,
+        scenario: "both",
+        pmedian: "true",
+        histobs: "false"
+      });
+
+      $(window).resize(function () {this.cwg.resize()}.bind(this));
+      this.nodes.$countyOverlay.find('#station-overlay-close').click(function () {
+        delete this['cwg'];
+        this.nodes.$countyOverlay.remove();
+      }.bind(this));
+
+      $('.legend-item-range').on('click', function (event) {
+        $(event.target).toggleClass('selected');
+        $(event.target).children('.legend-item-block, .legend-item-line').toggleClass('selected');
+        $(event.target).children('.legend-item-line-container').children('.legend-item-line').toggleClass('selected');
+
+        let scenario = '';
+        if ($('#rcp85-block').hasClass('selected') && $('#rcp45-block').hasClass('selected')) {
+          scenario = 'both';
+        } else if ($('#rcp45-block').hasClass('selected')) {
+          scenario = 'rcp45';
+        } else if ($('#rcp85-block').hasClass('selected')) {
+          scenario = 'rcp85';
+        }
+        this.cwg.update({
+          pmedian: $('#rcp85-line').hasClass('selected') || $('#rcp45-line').hasClass('selected'),
+          scenario: scenario,
+          histobs: $('#over-baseline-block').hasClass('selected') || $('#under-baseline-block').hasClass('selected'),
+          histmod: $('#historical-block').hasClass('selected') || $('#historical-block').hasClass('selected')
+        });
+      }.bind(this));
+
+      this.nodes.$countyOverlay.find('.download-image').click(function (event) {this.cwg && this.cwg.download_image(event.target, 'graph.png'); }.bind(this));
+      this.nodes.$countyOverlay.find('.download-data').click(function (event) { this.nodes.$countyOverlay.find('.download-panel').removeClass("hidden").show(250); }.bind(this));
+      this.nodes.$countyOverlay.find('.download_hist_obs_data').click(function (event) { this.cwg && this.cwg.download_hist_obs_data(event.target)}.bind(this));
+      this.nodes.$countyOverlay.find('.download_hist_mod_data').click(function (event) {this.cwg && this.cwg.download_hist_mod_data(event.target)}.bind(this));
+      this.nodes.$countyOverlay.find('.download_proj_mod_data').click(function (event) {this.cwg && this.cwg.download_proj_mod_data(event.target) }.bind(this));
+      this.nodes.$countyOverlay.find('.download-dismiss-button').click(function (event) {this.nodes.$countyOverlay.find('.download-panel').addClass("hidden").hide(); }.bind(this));
+
+      $('.how-to-read').on('click', function () {
+        var pre = '';
+        var closest = $(this).closest('.data-chart').attr('id');
+        if (closest === 'precipitation-chart') {
+          pre = 'precip-';
+        }
+        if (closest === 'derived-chart') {
+          pre = 'derive-';
+        }
+        if (window.app) {
+          window.app.takeGraphTour(pre);
+        }
+      });
+
+      $("#slider-range").slider({
+        range: true,
+        min: 1950,
+        max: 2099,
+        values: [1950, 2099],
+        slide: function (event, ui) {
+          return this.cwg.setXRange(ui.values[0], ui.values[1]);
+        }.bind(this)
+      });
+    },
+
+    _getScenarioURL: function (scenario, year) {
+      let tilesURL = this.options[scenario + 'TilesURL'];
+      let season = this.options.season;
+      if (scenario === 'historical') {
+        scenario = 'hist'
+      }
+      if (!['tmin', 'tmax', 'pcpn'].includes(this.options.variable)) {
+        season = 'annual'
+      }
+      return tilesURL
+        .replace('{scenario}', scenario)
+        .replace('{season}', season)
+        .replace('{variable}', this.options.variable)
+        .replace('{year}', year)
+    },
     _destroy: function () {
       // remove CSS classes, destroy nodes, etc
       Object.values(this.nodes).forEach(function (node) {
@@ -823,18 +948,16 @@
       this.map.destroy();
     },
 
+
     _log: function () {
       (this.options.debug === 3) && this._toLoggerMethod('log', arguments);
     },
-
     _warn: function () {
       (this.options.debug >= 2) && this._toLoggerMethod('warn', arguments);
     },
-
     _error: function () {
       (this.options.debug >= 1) && this._toLoggerMethod('error', arguments);
     },
-
     _toLoggerMethod: function (method, args) {
       args = Array.prototype.slice.call(arguments, 1);
       let logger = this.options.logger || console;
@@ -843,6 +966,9 @@
 
     // =========== Public methods=============================
 
+    getShowSeasonControls: function () {
+      return this.variables[this.options.variable]['seasonal_data'];
+    },
     disable: function () {
       // Do any custom logic for disabling here, then
       this._super();
@@ -861,6 +987,18 @@
         window.addEventListener('dojoModsLoaded', callback)
       }
     },
+    _setClipPath(element, side, value) {
+      if (side === 'left') {
+        element.style.clipPath = "polygon(0 0, " + value + "px 0, " + value + "px 100%, 0% 100%)";
+        element.style.WebkitClipPath = "polygon(0 0, " + value + "px 0, " + value + "px 100%, 0% 100%)";
+        element.style.clip = "rect(" + [0, value, element.height, 0].join(' ') + ")";
+      }
+      else if (side === 'right') {
+        element.style.clipPath = "polygon(" + value + "px 0, 100% 0%, 100% 100%, " + value + "px 100%)";
+        element.style.WebkitClipPath = "polygon(" + value + "px 0, 100% 0%, 100% 100%, " + value + "px 100%)";
+        element.style.clip = "rect(" + [0, element.width, element.height, value].join(' ') + ")";
+      }
+    }
 
 
     // ============ Public methods provided by the base widget =============
@@ -876,371 +1014,3 @@
 
   });
 }));
-
-
-/*
- *
- * get counties geojson and add to map
- *
- */
-Variables.prototype.addCounties = function () {
-
-  var self = this;
-  var style = function (feature, resolution) {
-
-    return [new ol.style.Style({
-      fill: new ol.style.Fill({
-        color: 'rgba(255, 255, 255, 0.1)'
-      }),
-      stroke: new ol.style.Stroke({
-        //color: '#2980b9',
-        color: '#444',
-        width: 0.2
-      })
-    })];
-
-  };
-
-  this.vectorLayer = new ol.layer.Vector({
-    title: 'added Layer',
-    source: new ol.source.Vector({
-      url: this.data_base_url + 'counties-20m.json',
-      format: new ol.format.GeoJSON()
-    }),
-    style: style
-  });
-
-  this.vectorLayer.set('layer_id', 'counties');
-  //this.vectorLayer.setVisible(false);
-  this.vectorLayer.setOpacity(0);
-  self.map.addLayer(this.vectorLayer);
-
-  setTimeout(function () {
-    self.vectorLayer.setVisible(false);
-  }, 500)
-};
-
-
-/*
- *
- * get states geojson and add to map
- *
- */
-Variables.prototype.addStates = function () {
-
-  var self = this;
-
-  var style = function (feature, resolution) {
-
-    return [new ol.style.Style({
-      fill: new ol.style.Fill({
-        color: 'rgba(0, 0, 0, 0)'
-      }),
-      stroke: new ol.style.Stroke({
-        color: '#444',
-        width: 0.8
-      })
-    })];
-
-  };
-
-  this.statesLayer = new ol.layer.Vector({
-    title: 'added Layer',
-    source: new ol.source.Vector({
-      url: this.data_base_url + 'states.json',
-      format: new ol.format.GeoJSON()
-    }),
-    style: style
-  });
-
-  this.statesLayer.set('layer_id', 'states');
-  this.map.addLayer(this.statesLayer);
-
-};
-
-
-/*
- * Highlight county feature
- * Also shows popup with the climate widget chart inside
- * Have to build chart UI dynamically
- *
- */
-Variables.prototype.countySelected = function (feature, event) {
-  var self = this;
-
-  if (feature) {
-    var props = feature.getProperties();
-    var fips = props.STATE + props.COUNTY;
-    var lonlat = ol.proj.transform(event.mapBrowserEvent.coordinate, 'EPSG:3857', 'EPSG:4326');
-    var lon = lonlat[0];
-    var lat = lonlat[1];
-    var state = this.stateFips[props.STATE];
-
-    var html = '<span class="text">' +
-      'Chart<span class="full-title">: <a href="location.php?county=' + props.NAME + '+County&city=' + props.NAME + ', ' + state + '&fips=' + fips + '&lat=' + lat + '&lon=' + lon + '">' + props.NAME + ' County</a></span><br />' +
-      '<span class="source" id="chart-name">' + $('.fs-dropdown-selected').html() + '</span>' +
-      '</span>' +
-      '<div class="data-accordion-actions">' +
-      '<a href="#" class="how-to-read-county"><span class="icon icon-help"></span>How to read this</a>' +
-      '<a href="#" class="download-image"><span class="icon icon-download-image"></span>Image</a>' +
-      '<a href="#" class="download-data"><span class="icon icon-download-chart"></span>Data</a>' +
-      '</div>' +
-      '</header>' +
-      '<div id="climate-chart" style="width:800px; height:420px"></div>' +
-      '<div class="chart-legend">' +
-      '<div id="historical-obs" class="legend-item legend-item-range">' +
-      '<div class="legend-item-line-container">' +
-      '<div class="legend-item-line observed" id="over-baseline-block"></div>' +
-      '</div>' +
-      '<span class="legend-item-line-label">Observations</span>' +
-      '</div>' +
-      '<div id="historical-range" class="legend-item legend-item-range selected">' +
-      '<div class="legend-item-block selected" id="historical-block"></div>' +
-      'Historical (Modelled)' +
-      '</div>' +
-      '<div id="rcp45-range" class="legend-item legend-item-range selected">' +
-      '<div class="legend-item-block selected" id="rcp45-block"></div>' +
-      'Lower Emissions' +
-      '</div>' +
-      '<div id="rcp85-range" class="legend-item legend-item-range selected">' +
-      '<div class="legend-item-block selected" id="rcp85-block"></div>' +
-      'Higher Emissions' +
-      '</div>' +
-      '<div id="rcp45-mean" class="legend-item legend-item-range selected">' +
-      '<div class="legend-item-line-container">' +
-      '<div class="legend-item-line selected" id="rcp85-line"></div>' +
-      '<div class="legend-item-line selected" id="rcp45-line"></div>' +
-      '</div>' +
-      '<span class="legend-item-line-label">Averages</span>' +
-      '</div>' +
-      '</div>' +
-      '<div class="range" id="variable-slider">' +
-      '<div id="slider-range"></div>' +
-      '<div class="ui-slider-label range-label min" id="range-low">1950</div>' +
-      '<div class="ui-slider-label range-label max" id="range-high">2100</div>' +
-      '</div>';
-    this.popup.show(event.mapBrowserEvent.coordinate, html);
-
-    self.cwg = climate_widget.graph({
-      div: "div#climate-chart",
-      dataprefix: "/climate-explorer2-data/data",
-      font: "Roboto",
-      frequency: "annual",
-      county: fips,
-      variable: this.selectedVariable,
-      scenario: "both",
-      pmedian: "true",
-      histobs: "false"
-    });
-
-    $('.legend-item-range').on('click', function () {
-      $(this).toggleClass('selected');
-      $(this).children('.legend-item-block, .legend-item-line').toggleClass('selected');
-      $(this).children('.legend-item-line-container').children('.legend-item-line').toggleClass('selected');
-
-      var scenario = null;
-      switch (true) {
-        case $('#rcp85-block').hasClass('selected') && $('#rcp45-block').hasClass('selected'):
-          scenario = 'both';
-          break;
-        case $('#rcp45-block').hasClass('selected'):
-          scenario = 'rcp45';
-          break;
-        case $('#rcp85-block').hasClass('selected'):
-          scenario = 'rcp85';
-          break;
-        default:
-          scenario = '';
-      }
-
-      var median = null;
-      switch (true) {
-        case $('#rcp85-line').hasClass('selected') && $('#rcp45-line').hasClass('selected'):
-          median = 'true';
-          break;
-        case $('#rcp45-line').hasClass('selected'):
-          median = 'true';
-          break;
-        case $('#rcp85-line').hasClass('selected'):
-          median = 'true';
-          break;
-        default:
-          median = 'false';
-      }
-
-      var histmod = null;
-      switch (true) {
-        case $('#historical-block').hasClass('selected') && $('#historical-block').hasClass('selected'):
-          histmod = 'true';
-          break;
-        case $('#historical-block').hasClass('selected'):
-          histmod = 'true';
-          break;
-        default:
-          histmod = 'false';
-      }
-
-
-      var histobs = null;
-      switch (true) {
-        case $('#over-baseline-block').hasClass('selected') && $('#under-baseline-block').hasClass('selected'):
-          histobs = 'true';
-          break;
-        case $('#over-baseline-block').hasClass('selected'):
-          histobs = 'true';
-          break;
-        case $('#under-baseline-block').hasClass('selected'):
-          histobs = 'true';
-          break;
-        default:
-          histobs = 'false';
-      }
-
-      self.cwg.update({
-        pmedian: median,
-        scenario: scenario,
-        histobs: histobs,
-        histmod: histmod
-      });
-
-    });
-
-    $('.download-image').click(function () {
-      self.cwg.download_image(this, 'graph.png');
-    });
-
-    $('.download-data').click(function (e) {
-
-      $('#download-panel').removeClass("hidden");
-
-      $('#download-panel').show();
-      $('#download-panel').fadeIn(250);
-
-    });
-
-    $('#download_hist_obs_data').click(function () {
-      if (cwg) {
-        cwg.download_hist_obs_data(this)
-      }
-    });
-    $('#download_hist_mod_data').click(function () {
-      if (cwg) {
-        cwg.download_hist_mod_data(this)
-      }
-    });
-    $('#download_proj_mod_data').click(function () {
-      if (cwg) {
-        cwg.download_proj_mod_data(this)
-      }
-    });
-
-
-    $('#download-dismiss-button').click(function () {
-      $('#download-panel').addClass("hidden");
-      $('#download-panel').hide();
-    });
-
-
-    $('#download-precip-dismiss-button').click(function () {
-      $('#download-precip-panel').addClass("hidden");
-      $('#download-precip-panel').hide();
-    });
-
-
-    $('#download-derived-dismiss-button').click(function () {
-      $('#download-derived-panel').addClass("hidden");
-      $('#download-derived-panel').hide();
-    });
-
-    $('.how-to-read').on('click', function () {
-      var pre = '';
-      var closest = $(this).closest('.data-chart').attr('id');
-      if (closest === 'precipitation-chart') {
-        pre = 'precip-';
-      }
-      if (closest === 'derived-chart') {
-        pre = 'derive-';
-      }
-      if (app) {
-        app.takeGraphTour(pre);
-      }
-    });
-
-    $("#slider-range").slider({
-      range: true,
-      min: 1950,
-      max: 2099,
-      values: [1950, 2099],
-      slide: function (event, ui) {
-        self.updateUrl();
-        return self.cwg.setXRange(ui.values[0], ui.values[1]);
-      }
-    });
-
-  } else {
-    this.cwg = null;
-    this.popup.hide();
-  }
-};
-
-/*
- * State fips for use in UI
- *
- */
-Variables.prototype.stateFips = {
-  "02": "AK",
-  "01": "AL",
-  "05": "AR",
-  "60": "AS",
-  "04": "AZ",
-  "06": "CA",
-  "08": "CO",
-  "09": "CT",
-  "11": "DC",
-  "10": "DE",
-  "12": "FL",
-  "13": "GA",
-  "66": "GU",
-  "15": "HI",
-  "19": "IA",
-  "16": "ID",
-  "17": "IL",
-  "18": "IN",
-  "20": "KS",
-  "21": "KY",
-  "22": "LA",
-  "25": "MA",
-  "24": "MD",
-  "23": "ME",
-  "26": "MI",
-  "27": "MN",
-  "29": "MO",
-  "28": "MS",
-  "30": "MT",
-  "37": "NC",
-  "38": "ND",
-  "31": "NE",
-  "33": "NH",
-  "34": "NJ",
-  "35": "NM",
-  "32": "NV",
-  "36": "NY",
-  "39": "OH",
-  "40": "OK",
-  "41": "OR",
-  "42": "PA",
-  "72": "PR",
-  "44": "RI",
-  "45": "SC",
-  "46": "SD",
-  "47": "TN",
-  "48": "TX",
-  "49": "UT",
-  "51": "VA",
-  "78": "VI",
-  "50": "VT",
-  "53": "WA",
-  "55": "WI",
-  "54": "WV",
-  "56": "WY"
-}

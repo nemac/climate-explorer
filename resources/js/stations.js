@@ -183,7 +183,7 @@
         } else {
           this._registerDojoMods(resolve);
         }
-      }.bind(this));
+      }.bind(this)).catch(this._log);
       return this._dojoLoadedPromise
     },
     /**

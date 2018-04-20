@@ -4,7 +4,9 @@ To setup your development environment use `npm install`. Additionally, for now y
 # Notes/TODO
 ## State variables
 ### Global
+
 - d
+
 ### Page-specific
 * Location:
   - city: name of city of interest
