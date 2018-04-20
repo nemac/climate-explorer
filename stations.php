@@ -2,8 +2,6 @@
 <html>
 <head>
   <?php include_once('template/head.php'); ?>
-
-
   <meta property="fb:app_id" content="187816851587993">
   <!--  todo absolute url-->
   <meta property="og:url" content="/stations.php"/>
@@ -12,16 +10,6 @@
   <meta property="og:description"
         content="The Climate Explorer allows you to view historical and projected climate trends and assess the impacts of climate change on the things you care about">
   <meta property="og:image" content="/resources/img/og.jpg">
-
-
-  <script>
-    var s = document.createElement("script");
-    s.type = "text/javascript";
-    s.src = window.location.hostname === 'climate.toolkit.gov' ?
-      "https://maps.googleapis.com/maps/api/js?sensor=false&amp;libraries=places&client=gme-noaa&channel=OAR.CLIMATE_GOV_CLIMATE_EXPLORER2" :
-      "https://maps.googleapis.com/maps/api/js?key=AIzaSyBSjujKAutsVyR0GcsfXJvGA-J-54zWT2U&libraries=places";
-    document.head.appendChild(s);
-  </script>
 </head>
 
 <body id="page-stations" class="page-type-stations">
@@ -86,14 +74,8 @@
 
 <script src="/resources/js/formmapper.js"></script>
 
-<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.1/Chart.bundle.min.js"
-        integrity="sha256-N4u5BjTLNwmGul6RgLoESPNqDFVUibVuOYhP4gJgrew=" crossorigin="anonymous"></script>
-
-<script src="https://cdnjs.cloudflare.com/ajax/libs/lodash.js/4.17.4/lodash.min.js"
-        integrity="sha256-8E6QUcFg1KTnpEU8TFGhpTGHw5fJqB9vCms3OhAYLqw=" crossorigin="anonymous"></script>
 
 <script type="text/javascript" src="/resources/js/station-charts.js"></script>
-<script type="text/javascript" src="/resources/js/global_functions.js"></script>
 
 
 <script>

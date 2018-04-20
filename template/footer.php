@@ -55,27 +55,11 @@
 
 <?php } ?>
 
-<!-- AIzaSyA- -->
-
-<?php if ($current_domain == 'http://climateexplorer.habitatseven.work') { ?>
-    <script type="text/javascript"
-            src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBSjujKAutsVyR0GcsfXJvGA-J-54zWT2U&libraries=places">
-    </script>
-<?php } else { ?>
-    <script src="https://maps.googleapis.com/maps/api/js?sensor=false&amp;libraries=places&client=gme-noaa&channel=OAR.CLIMATE_GOV_CLIMATE_EXPLORER2"></script>
-<?php } ?>
-
-
 <script src="/resources/js/formmapper.js"></script>
-
-<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.1/Chart.bundle.min.js" integrity="sha256-N4u5BjTLNwmGul6RgLoESPNqDFVUibVuOYhP4gJgrew=" crossorigin="anonymous"></script>
-
 
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/lodash.js/4.17.4/lodash.min.js" integrity="sha256-8E6QUcFg1KTnpEU8TFGhpTGHw5fJqB9vCms3OhAYLqw=" crossorigin="anonymous"></script>
 
-
-<script type="text/javascript" src="/resources/js/chart.js"></script>
 <script type="text/javascript" src="/resources/js/global_functions.js"></script>
 <script src="/resources/tidal/tidalstationswidget.js"></script>
 

@@ -179,7 +179,7 @@
           document.head.appendChild(arcgisScripts);
           arcgisScripts.addEventListener('load', (function (resolve) {
             this._registerDojoMods(resolve)
-          }.bind(this, resolve)))
+          }.bind(this, resolve)));
         } else {
           this._registerDojoMods(resolve);
         }

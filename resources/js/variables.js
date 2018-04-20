@@ -214,13 +214,18 @@
               deps: this.dojoDeps
             }
           };
-          let s = document.createElement("script");
-          s.type = "text/javascript";
-          s.src = "https://js.arcgis.com/4.6/";
-          $("head")[0].appendChild(s);
-          s.addEventListener('load', (function (resolve) {
+
+          let arcgisStyles =  document.createElement("link");
+          arcgisStyles.rel = 'stylesheet';
+          arcgisStyles.href = 'https://js.arcgis.com/4.6/esri/css/main.css';
+          document.head.appendChild(arcgisStyles);
+          let arcgisScripts = document.createElement("script");
+          arcgisScripts.type = "text/javascript";
+          arcgisScripts.src = "https://js.arcgis.com/4.6/";
+          document.head.appendChild(arcgisScripts);
+          arcgisScripts.addEventListener('load',function (resolve) {
             this._registerDojoMods(resolve)
-          }.bind(this, resolve)))
+          }.bind(this, resolve));
         } else {
           this._registerDojoMods(resolve);
         }
