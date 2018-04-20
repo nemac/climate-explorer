@@ -1,17 +1,8 @@
 <!doctype html>
 <html>
 <head>
-  <title>Climate Explorer</title>
-  <meta charset="utf-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <?php include_once('template/head.php'); ?>
 
-  <link rel="stylesheet" href="/resources/css/sweetalert.css">
-  <link rel="stylesheet" media="screen" href="/resources/css/screen.css">
-  <link rel="stylesheet" media="screen" href="/resources/css/mods.css">
-
-  <script type="text/javascript" src="/resources/js/jquery.min.js"></script>
-  <script type="text/javascript" src="/resources/js/jquery-ui.min.js"></script>
 
   <meta property="fb:app_id" content="187816851587993">
   <!--  todo absolute url-->
@@ -22,7 +13,7 @@
         content="The Climate Explorer allows you to view historical and projected climate trends and assess the impacts of climate change on the things you care about">
   <meta property="og:image" content="/resources/img/og.jpg">
 
-  <link rel="stylesheet" href="https://js.arcgis.com/4.6/esri/css/main.css">
+
   <script>
     var s = document.createElement("script");
     s.type = "text/javascript";
@@ -81,43 +72,14 @@
   <p>The Climate Explorer is optimized for desktop use. Please visit the site on a desktop computer.</p>
 </div>
 
-<!-- START:JS_LOADER -->
+<?php include_once('template/footer.php')?>
 
-<script src="/resources/item/jquery.fl-item.min.js"></script>
-
-<script type="text/javascript" src="/resources/js/lodash.js"></script>
-
-<script type="text/javascript" src="/resources/js/chart/chart.core.js"></script>
-<script type="text/javascript" src="/resources/js/chart/chart.line.js"></script>
-
-<script type="text/javascript" src="/resources/js/formstone/core.js"></script>
-<script type="text/javascript" src="/resources/js/formstone/mediaquery.js"></script>
-<script type="text/javascript" src="/resources/js/formstone/touch.js"></script>
-<script type="text/javascript" src="/resources/js/formstone/scrollbar.js"></script>
-<script type="text/javascript" src="/resources/js/formstone/dropdown.js"></script>
-<script type="text/javascript" src="/resources/js/formstone/equalize.js"></script>
-<script type="text/javascript" src="/resources/js/formstone/swap.js"></script>
-
-<script type="text/javascript" src="/resources/js/lc_switch.min.js"></script>
-<script type="text/javascript" src="/resources/js/jquery.cycle2.min.js"></script>
-<script type="text/javascript" src="/resources/js/jquery.waypoints.min.js"></script>
-<script type="text/javascript" src="/resources/js/jquery.waypoints.sticky.min.js"></script>
-<script type="text/javascript" src="/resources/js/split-pane.min.js"></script>
-<script type="text/javascript" src="/resources/js/download.js"></script>
-<script type="text/javascript" src="/resources/js/jquery.hoverintent.min.js"></script>
-
-<script type="text/javascript" src="/resources/js/tether.js"></script>
-<script type="text/javascript" src="/resources/js/shepherd.min.js"></script>
 <script type="text/javascript" src="/resources/js/stations.js"></script>
 <script  type="text/javascript"  src="/resources/tidal/tidalstationswidget.js"></script>
 <script type="text/javascript" src="/resources/js/cwg/climate-widget-graph.js"></script>
 
 <script type="text/javascript" src="/resources/js/cwg/cwg.js"></script>
 
-<script type="text/javascript" src="/resources/js/sweetalert.min.js"></script>
-
-<script type="text/javascript" src="/resources/js/es6-promise.auto.min.js"></script>
-<script type="text/javascript" src="/resources/js/es6-promise.min.js"></script>
 
 <script type="text/javascript" defer src="/resources/js/main.js"></script>
 
