@@ -48,8 +48,7 @@
       <ul id="home-menu" class="menu blue-menu">
         <li><a href="/#" class="launch-nav" data-nav-slide="0" id="home-search-by-location"><span class="icon icon-search"></span>Select a location</a></li>
         <li><a href="/#" class="launch-nav" data-nav-slide="1" id="home-search-by-variable"><span class="icon icon-variables"></span>View by variable</a></li>
-        <li class="border"><a href="/#" class="launch-nav" data-nav-slide="2" id="home-search-by-station"><span class="icon icon-bubble"></span>Explore Station
-            Data</a></li>
+        <li class="border"><a href="/#" class="launch-nav" data-nav-slide="2" id="home-search-by-station"><span class="icon icon-bubble"></span>Weather & Tidal Stations</a></li>
         <li><a href="/#" id="cd-tour-trigger" class="start-home-tour"><span class="icon icon-tour"></span>New here? Take the tour</a></li>
       </ul>
 

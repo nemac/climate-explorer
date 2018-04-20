@@ -233,8 +233,7 @@
               href="https://statesummaries.ncics.org/hi" target="_blank">State Climate Summaries</a> site.</p>
       </div>
 
-      <h4>How did you decide which stations and years to show in the Daily vs. Climate and Thresholds graphs in the <strong>Explore Station Data</strong>
-        section?</h4>
+            <h4>How did you decide which stations and years to show in the Daily vs. Climate and Thresholds graphs in the <strong>Weather & Tidal Stations</strong> section?</h4>
 
       <div class="accordion-text">
         <p>We started with a pool of all stations in the Global Historical Climatology Network - Daily dataset that are located within the contiguous United
