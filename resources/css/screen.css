@@ -3202,7 +3202,7 @@ h6 {
 }
 
 /* line 479, resources/scss/screen.scss */
-.download-panel #download-dismiss-button {
+.download-panel #download-dismiss-button, .download-panel .download-dismiss-button {
   display: block;
   position: absolute;
   top: -30px;
@@ -6314,7 +6314,7 @@ body.detail-open #nav-overlay {
   top: 110px;
 }
 
-/* line 12, resources/scss/pages/_variable.scss */
+/* line 11, resources/scss/pages/_variable.scss */
 .page-type-variables #main-content-wrap {
   position: absolute;
   top: 0;
@@ -6323,7 +6323,7 @@ body.detail-open #nav-overlay {
   height: 100%;
 }
 
-/* line 15, resources/scss/pages/_variable.scss */
+/* line 14, resources/scss/pages/_variable.scss */
 .page-type-variables #main-content-wrap #variable-map {
   position: absolute;
   top: 0;
@@ -6332,14 +6332,14 @@ body.detail-open #nav-overlay {
   height: 100%;
 }
 
-/* line 19, resources/scss/pages/_variable.scss */
+/* line 18, resources/scss/pages/_variable.scss */
 .page-type-variables #main-content-wrap #map-seasons-container {
   position: absolute;
   top: 20px;
   left: calc(20% + 35px);
 }
 
-/* line 25, resources/scss/pages/_variable.scss */
+/* line 24, resources/scss/pages/_variable.scss */
 .page-type-variables #main-content-wrap .fs-dropdown {
   margin: 0;
   -webkit-transition: 0.25s;
@@ -6348,7 +6348,7 @@ body.detail-open #nav-overlay {
   transition: 0.25s;
 }
 
-/* line 29, resources/scss/pages/_variable.scss */
+/* line 28, resources/scss/pages/_variable.scss */
 .page-type-variables #main-content-wrap .fs-dropdown button {
   height: auto;
   padding: 15px;
@@ -6368,7 +6368,7 @@ body.detail-open #nav-overlay {
   transition: 0.25s;
 }
 
-/* line 44, resources/scss/pages/_variable.scss */
+/* line 43, resources/scss/pages/_variable.scss */
 .page-type-variables #main-content-wrap .fs-dropdown-open .fs-dropdown-selected,
 .page-type-variables #main-content-wrap .fs-dropdown-focus .fs-dropdown-selected {
   -webkit-box-shadow: none;
@@ -6377,7 +6377,7 @@ body.detail-open #nav-overlay {
   background: #fff;
 }
 
-/* line 50, resources/scss/pages/_variable.scss */
+/* line 49, resources/scss/pages/_variable.scss */
 .page-type-variables #main-content-wrap .fs-dropdown-options {
   background: rgba(255, 255, 255, 0.8);
   border: none;
@@ -6387,24 +6387,24 @@ body.detail-open #nav-overlay {
   box-shadow: none;
 }
 
-/* line 56, resources/scss/pages/_variable.scss */
+/* line 55, resources/scss/pages/_variable.scss */
 .page-type-variables #main-content-wrap .fs-dropdown-options button {
   padding: 10px;
   font-size: 1rem;
 }
 
-/* line 60, resources/scss/pages/_variable.scss */
+/* line 59, resources/scss/pages/_variable.scss */
 .page-type-variables #main-content-wrap .fs-dropdown-options button:hover {
   background: #ebebeb;
 }
 
-/* line 69, resources/scss/pages/_variable.scss */
+/* line 67, resources/scss/pages/_variable.scss */
 .page-type-variables .data-accordion-actions {
   float: right;
   margin-top: -15px;
 }
 
-/* line 73, resources/scss/pages/_variable.scss */
+/* line 71, resources/scss/pages/_variable.scss */
 .page-type-variables .data-accordion-actions a {
   display: inline-block;
   padding: 10px;
@@ -6415,19 +6415,19 @@ body.detail-open #nav-overlay {
   transition: 0.25s;
 }
 
-/* line 82, resources/scss/pages/_variable.scss */
+/* line 80, resources/scss/pages/_variable.scss */
 .page-type-variables .data-accordion-actions a .icon {
   margin: 0 8px 0 0;
   font-size: 1.25rem;
   color: #f5442d;
 }
 
-/* line 88, resources/scss/pages/_variable.scss */
+/* line 86, resources/scss/pages/_variable.scss */
 .page-type-variables .data-accordion-actions a:hover {
   background: #d5e8f2;
 }
 
-/* line 95, resources/scss/pages/_variable.scss */
+/* line 93, resources/scss/pages/_variable.scss */
 .page-type-variables #vars-menu .layer-info {
   display: none;
   position: absolute;
@@ -6442,7 +6442,7 @@ body.detail-open #nav-overlay {
   white-space: normal;
 }
 
-/* line 108, resources/scss/pages/_variable.scss */
+/* line 106, resources/scss/pages/_variable.scss */
 .page-type-variables #vars-menu .layer-info:before {
   content: '';
   display: block;
@@ -6455,19 +6455,19 @@ body.detail-open #nav-overlay {
   border-color: transparent #ffffff transparent transparent;
 }
 
-/* line 120, resources/scss/pages/_variable.scss */
+/* line 118, resources/scss/pages/_variable.scss */
 .page-type-variables #vars-menu .layer-info h3 {
   margin: 0 0 10px 0;
   font-size: 1.625rem;
   color: #f5442d;
 }
 
-/* line 126, resources/scss/pages/_variable.scss */
+/* line 124, resources/scss/pages/_variable.scss */
 .page-type-variables #vars-menu .layer-info p {
   margin: 0 0 12px 0;
 }
 
-/* line 131, resources/scss/pages/_variable.scss */
+/* line 129, resources/scss/pages/_variable.scss */
 .page-type-variables #vars-menu .help {
   padding: 0;
   float: left;
@@ -6478,21 +6478,21 @@ body.detail-open #nav-overlay {
   margin-right: 7px;
 }
 
-/* line 143, resources/scss/pages/_variable.scss */
+/* line 141, resources/scss/pages/_variable.scss */
 .page-type-variables #vars-legend h5 {
   margin: 0 0 6px 0;
   font: 1rem/1em "CESans-Heavy", Helvetica, "Helvetica Neue", Arial, sans-serif;
   color: #233a70;
 }
 
-/* line 149, resources/scss/pages/_variable.scss */
+/* line 147, resources/scss/pages/_variable.scss */
 .page-type-variables #vars-legend h6 {
   margin: 0 0 10px 0;
   font: 0.75rem/1.25em "CESans", Roboto, Helvetica, "Helvetica Neue", Arial, sans-serif;
   color: #5f5f5f;
 }
 
-/* line 155, resources/scss/pages/_variable.scss */
+/* line 153, resources/scss/pages/_variable.scss */
 .page-type-variables #vars-legend .legend {
   width: 100%;
   margin: 0 0 10px 0;
@@ -6502,41 +6502,41 @@ body.detail-open #nav-overlay {
   color: #233a70;
 }
 
-/* line 163, resources/scss/pages/_variable.scss */
+/* line 161, resources/scss/pages/_variable.scss */
 .page-type-variables #vars-legend .legend ul {
   margin: 15px 0 0 0;
 }
 
-/* line 167, resources/scss/pages/_variable.scss */
+/* line 165, resources/scss/pages/_variable.scss */
 .page-type-variables #vars-legend .legend li {
   margin: 10px 0;
 }
 
-/* line 171, resources/scss/pages/_variable.scss */
+/* line 169, resources/scss/pages/_variable.scss */
 .page-type-variables #vars-legend .legend .color {
   width: 8%;
   margin: 0 8% 0 0;
   padding: 0 0 8% 0;
 }
 
-/* line 179, resources/scss/pages/_variable.scss */
+/* line 177, resources/scss/pages/_variable.scss */
 .page-type-variables .chart-legend {
   overflow: hidden;
   padding-top: 20px;
 }
 
-/* line 184, resources/scss/pages/_variable.scss */
+/* line 182, resources/scss/pages/_variable.scss */
 .page-type-variables .ol-zoom {
   display: none;
 }
 
-/* line 188, resources/scss/pages/_variable.scss */
+/* line 186, resources/scss/pages/_variable.scss */
 .page-type-variables .legend-image {
   max-height: 16rem;
   max-width: inherit;
 }
 
-/* line 194, resources/scss/pages/_variable.scss */
+/* line 191, resources/scss/pages/_variable.scss */
 .page-type-variables .ol-scale-line {
   background: rgba(0, 60, 136, 0.3);
   border-radius: 4px;
@@ -6546,7 +6546,7 @@ body.detail-open #nav-overlay {
   right: 100px;
 }
 
-/* line 203, resources/scss/pages/_variable.scss */
+/* line 200, resources/scss/pages/_variable.scss */
 .page-type-variables #district-trigger {
   position: absolute;
   top: 15%;
@@ -6572,7 +6572,7 @@ body.detail-open #nav-overlay {
   clear: both;
 }
 
-/* line 214, resources/scss/pages/_variable.scss */
+/* line 211, resources/scss/pages/_variable.scss */
 .page-type-variables #district-trigger span {
   display: block;
   float: left;
@@ -6580,7 +6580,7 @@ body.detail-open #nav-overlay {
   color: #0058cf;
 }
 
-/* line 221, resources/scss/pages/_variable.scss */
+/* line 218, resources/scss/pages/_variable.scss */
 .page-type-variables #district-trigger .text {
   margin-top: -2px;
   text-indent: -300px;
@@ -6590,33 +6590,33 @@ body.detail-open #nav-overlay {
   transition: text-indent 0.5s;
 }
 
-/* line 227, resources/scss/pages/_variable.scss */
+/* line 224, resources/scss/pages/_variable.scss */
 .page-type-variables #district-trigger .icon {
   padding-left: 10px;
   font-size: 1.25rem;
 }
 
-/* line 232, resources/scss/pages/_variable.scss */
+/* line 229, resources/scss/pages/_variable.scss */
 .page-type-variables #district-trigger:hover {
   padding-left: 15px;
 }
 
-/* line 235, resources/scss/pages/_variable.scss */
+/* line 232, resources/scss/pages/_variable.scss */
 .page-type-variables #district-trigger:hover .text {
   text-indent: 0;
 }
 
-/* line 242, resources/scss/pages/_variable.scss */
+/* line 238, resources/scss/pages/_variable.scss */
 .esri-view-width-greater-than-xsmall .esri-expand__content {
-  z-index: 1000;
+  z-index: 100;
 }
 
-/* line 247, resources/scss/pages/_variable.scss */
+/* line 241, resources/scss/pages/_variable.scss */
 .esri-scale-bar.esri-widget {
   margin-bottom: 45px;
 }
 
-/* line 251, resources/scss/pages/_variable.scss */
+/* line 244, resources/scss/pages/_variable.scss */
 .scenario-map-overlay-container {
   position: absolute;
   height: 100%;
@@ -6624,12 +6624,12 @@ body.detail-open #nav-overlay {
   pointer-events: none;
 }
 
-/* line 256, resources/scss/pages/_variable.scss */
+/* line 249, resources/scss/pages/_variable.scss */
 .scenario-map-overlay-container > * {
   pointer-events: auto;
 }
 
-/* line 257, resources/scss/pages/_variable.scss */
+/* line 250, resources/scss/pages/_variable.scss */
 .scenario-map-overlay-container .movable {
   position: absolute;
   top: 0;
@@ -6643,7 +6643,7 @@ body.detail-open #nav-overlay {
   cursor: col-resize;
 }
 
-/* line 269, resources/scss/pages/_variable.scss */
+/* line 262, resources/scss/pages/_variable.scss */
 .scenario-map-overlay-container .movable .handle {
   display: block;
   position: absolute;
@@ -6659,7 +6659,7 @@ body.detail-open #nav-overlay {
   background: url(../img/swipe-arrows-stripe.png) center center rgba(34, 105, 179, 0.87);
 }
 
-/* line 281, resources/scss/pages/_variable.scss */
+/* line 274, resources/scss/pages/_variable.scss */
 .scenario-map-overlay-container .left-scenario-controls {
   position: absolute;
   bottom: 20px;
@@ -6667,7 +6667,7 @@ body.detail-open #nav-overlay {
   max-width: 45%;
 }
 
-/* line 287, resources/scss/pages/_variable.scss */
+/* line 280, resources/scss/pages/_variable.scss */
 .scenario-map-overlay-container .right-scenario-controls {
   position: absolute;
   bottom: 20px;
@@ -6675,12 +6675,12 @@ body.detail-open #nav-overlay {
   max-width: 45%;
 }
 
-/* line 292, resources/scss/pages/_variable.scss */
+/* line 285, resources/scss/pages/_variable.scss */
 .scenario-map-overlay-container .right-scenario-controls .right-scenario-dropdown, .scenario-map-overlay-container .right-scenario-controls .year {
   float: right;
 }
 
-/* line 296, resources/scss/pages/_variable.scss */
+/* line 289, resources/scss/pages/_variable.scss */
 .scenario-map-overlay-container .left-scenario-dropdown, .scenario-map-overlay-container .right-scenario-dropdown {
   width: 200px;
   width: 16rem;
@@ -6689,7 +6689,7 @@ body.detail-open #nav-overlay {
   float: left;
 }
 
-/* line 303, resources/scss/pages/_variable.scss */
+/* line 296, resources/scss/pages/_variable.scss */
 .scenario-map-overlay-container .left-scenario-dropdown .dropdown, .scenario-map-overlay-container .right-scenario-dropdown .dropdown {
   display: block;
   text-align: center;
@@ -6701,9 +6701,10 @@ body.detail-open #nav-overlay {
   border: solid #ffffff 1px;
 }
 
-/* line 315, resources/scss/pages/_variable.scss */
+/* line 308, resources/scss/pages/_variable.scss */
 .scenario-map-overlay-container .year {
   float: left;
+  max-width: 100%;
   position: relative;
   width: 23rem;
   height: 50px;
@@ -6715,19 +6716,20 @@ body.detail-open #nav-overlay {
   transition: 0.25s;
 }
 
-/* line 324, resources/scss/pages/_variable.scss */
+/* line 318, resources/scss/pages/_variable.scss */
 .scenario-map-overlay-container .year:hover {
   background: rgba(255, 255, 255, 0.9);
 }
 
-/* line 328, resources/scss/pages/_variable.scss */
+/* line 322, resources/scss/pages/_variable.scss */
 .scenario-map-overlay-container .year .ui-slider {
   top: 20px;
   left: 15%;
   width: 16rem;
+  max-width: calc(100% - 7rem);
 }
 
-/* line 333, resources/scss/pages/_variable.scss */
+/* line 327, resources/scss/pages/_variable.scss */
 .scenario-map-overlay-container .year .ui-slider .ui-slider-handle {
   top: -14px;
   width: 36px;
@@ -6744,14 +6746,14 @@ body.detail-open #nav-overlay {
   box-shadow: 0 0 4px rgba(0, 88, 207, 0.25);
 }
 
-/* line 346, resources/scss/pages/_variable.scss */
+/* line 340, resources/scss/pages/_variable.scss */
 .scenario-map-overlay-container .year .ui-slider .ui-slider-handle:hover {
   -webkit-box-shadow: 0 0 7px rgba(0, 88, 207, 0.4);
   -moz-box-shadow: 0 0 7px rgba(0, 88, 207, 0.4);
   box-shadow: 0 0 7px rgba(0, 88, 207, 0.4);
 }
 
-/* line 352, resources/scss/pages/_variable.scss */
+/* line 346, resources/scss/pages/_variable.scss */
 .scenario-map-overlay-container .year .year-label {
   position: absolute;
   top: 13px;
@@ -6759,26 +6761,104 @@ body.detail-open #nav-overlay {
   text-align: center;
 }
 
-/* line 358, resources/scss/pages/_variable.scss */
+/* line 352, resources/scss/pages/_variable.scss */
 .scenario-map-overlay-container .year .year-label.year-min {
   left: 0;
 }
 
-/* line 362, resources/scss/pages/_variable.scss */
+/* line 356, resources/scss/pages/_variable.scss */
 .scenario-map-overlay-container .year .year-label.year-max {
   right: 0;
 }
 
-/* line 370, resources/scss/pages/_variable.scss */
+/* line 362, resources/scss/pages/_variable.scss */
 .county-overlay {
+  padding: 2rem;
   background: #0058cf;
-  color: white;
   position: absolute;
+  z-index: 200;
   position: absolute;
   top: 0;
   left: 0;
   width: 100%;
   height: 100%;
+  color: white;
+}
+
+/* line 369, resources/scss/pages/_variable.scss */
+.county-overlay .county-overlay-inner {
+  max-width: 900px;
+}
+
+/* line 52, resources/scss/_mixins.scss */
+.county-overlay header:before, .county-overlay header:after {
+  content: " ";
+  display: table;
+}
+
+/* line 58, resources/scss/_mixins.scss */
+.county-overlay header:after {
+  clear: both;
+}
+
+/* line 375, resources/scss/pages/_variable.scss */
+.county-overlay header a {
+  color: white;
+}
+
+/* line 377, resources/scss/pages/_variable.scss */
+.county-overlay .data-accordion-actions {
+  float: none;
+  position: inherit;
+  width: 100%;
+}
+
+/* line 52, resources/scss/_mixins.scss */
+.county-overlay .data-accordion-actions:before, .county-overlay .data-accordion-actions:after {
+  content: " ";
+  display: table;
+}
+
+/* line 58, resources/scss/_mixins.scss */
+.county-overlay .data-accordion-actions:after {
+  clear: both;
+}
+
+/* line 382, resources/scss/pages/_variable.scss */
+.county-overlay .data-accordion-actions .how-to-read {
+  position: inherit;
+  float: left;
+}
+
+/* line 386, resources/scss/pages/_variable.scss */
+.county-overlay .data-accordion-actions .download-data, .county-overlay .data-accordion-actions .download-image {
+  float: right;
+}
+
+/* line 389, resources/scss/pages/_variable.scss */
+.county-overlay .data-accordion-actions a {
+  color: white;
+}
+
+/* line 390, resources/scss/pages/_variable.scss */
+.county-overlay .data-accordion-actions a .icon {
+  color: white;
+}
+
+/* line 394, resources/scss/pages/_variable.scss */
+.county-overlay .range {
+  position: relative;
+  margin-top: 35px;
+}
+
+/* line 395, resources/scss/pages/_variable.scss */
+.county-overlay .range .range-label {
+  color: white;
+}
+
+/* line 397, resources/scss/pages/_variable.scss */
+.county-overlay .legend-item {
+  background: rgba(255, 255, 255, 0.3);
 }
 
 /* line 1, resources/scss/pages/_stations.scss */

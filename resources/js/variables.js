@@ -296,10 +296,10 @@
     `);
       $(this.nodes.mapContainer).append(this.nodes.$controlsOverLayContainer);
       this.nodes.$leftScenario = $(this.element).find(".left-scenario-controls .dropdown");
-      this.nodes.$leftScenario.dropdown({bottomEdge:10});
+      this.nodes.$leftScenario.dropdown({bottomEdge: 10});
       this.nodes.$leftScenario.on('change', function () {this._setOptions({leftScenario: this.nodes.$leftScenario.val()})}.bind(this));
       this.nodes.$rightScenario = $(this.element).find(".right-scenario-controls .dropdown");
-      this.nodes.$rightScenario.dropdown({bottomEdge:10});
+      this.nodes.$rightScenario.dropdown({bottomEdge: 10});
       this.nodes.$rightScenario.on('change', function () {this._setOptions({rightScenario: this.nodes.$rightScenario.val()})}.bind(this));
       this.nodes.$controlsOverLayContainer.find('.movable.slider-div').draggable({
         axis: "x",
@@ -786,49 +786,70 @@
     },
 
     _countySelected: function (county) {
-      this.nodes.$countyOverlay = $(`
-<div class="county-overlay">
- <div id="station-overlay-close">x</div>
-      <span class="text">Chart<span class="full-title">: <a href="location.php">${county.name}</a></span><br />
-        <span class="source" id="chart-name">${$('.fs-dropdown-selected').html()}</span>
+      this.nodes.$countyOverlay = $(`<div class="county-overlay">
+  <div id="station-overlay-close">x</div>
+  <div class="county-overlay-inner">
+    <header>
+      <a href="location.php">
+        <h4 class="accent-color" style="margin-bottom: 20px;">
+          <span class="icon icon-emission-scenario"></span> <span class="text">Chart<span class="full-title">: ${county.name}</span>
+          <span class="source" id="temp-chart-name">${this.variables[this.options.variable].title}</span>
         </span>
-        <div class="data-accordion-actions">
-        <a href="#" class="how-to-read-county"><span class="icon icon-help"></span>How to read this</a>
-        <a href="#" class="download-image"><span class="icon icon-download-image"></span>Image</a>
-        <a href="#" class="download-data"><span class="icon icon-download-chart"></span>Data</a>
-        </div>
-        <div id="climate-chart" style="width:800px; height:420px"></div>
-        <div class="chart-legend">
-        <div id="historical-obs" class="legend-item legend-item-range">
+        </h4>
+      </a>
+
+      <div class="data-accordion-actions">
+        <a href="javascript:void(0);" class="how-to-read local"><span class="icon icon-help"></span>How to read this</a>
+        <a href="javascript:void(0);" class="download-image local">
+          <span class="icon icon-download-image"></span>Image</a> <a href="javascript:void(0);"  class="download-data local">
+        <span class="icon icon-download-chart"></span>Data</a>
+      </div>
+    </header>
+    <div id="climate-chart" style="height:420px"></div>
+    <div class="chart-legend">
+      <div id="historical-obs" class="legend-item legend-item-range">
         <div class="legend-item-line-container">
-        <div class="legend-item-line observed" id="over-baseline-block"></div>
+          <div class="legend-item-line observed" id="over-baseline-block"></div>
         </div>
-        <span class="legend-item-line-label">Observations</span>
-        </div>
-        <div id="historical-range" class="legend-item legend-item-range selected">
+        Observations
+      </div>
+      <div id="historical-range" class="legend-item legend-item-range selected">
         <div class="legend-item-block selected" id="historical-block"></div>
         Historical (Modelled)
-        </div>
-        <div id="rcp45-range" class="legend-item legend-item-range selected">
+      </div>
+      <div id="rcp45-range" class="legend-item legend-item-range selected">
         <div class="legend-item-block selected" id="rcp45-block"></div>
         Lower Emissions
-        </div>
-        <div id="rcp85-range" class="legend-item legend-item-range selected">
+      </div>
+      <div id="rcp85-range" class="legend-item legend-item-range selected">
         <div class="legend-item-block selected" id="rcp85-block"></div>
         Higher Emissions
-        </div>
-        <div id="rcp45-mean" class="legend-item legend-item-range selected">
+      </div>
+      <div id="rcp45-mean" class="legend-item legend-item-range selected">
         <div class="legend-item-line-container">
-        <div class="legend-item-line selected" id="rcp85-line"></div>
-        <div class="legend-item-line selected" id="rcp45-line"></div>
+          <div class="legend-item-line selected" id="rcp85-line"></div>
+          <div class="legend-item-line selected" id="rcp45-line"></div>
         </div>
-        <span class="legend-item-line-label">Averages</span>
-        </div>
-        </div>
-        <div class="range" id="variable-slider">
-        <div id="slider-range"></div>
-        <div class="ui-slider-label range-label min" id="range-low">1950</div>
-        <div class="ui-slider-label range-label max" id="range-high">2100</div>
+        Averages
+      </div>
+    </div>
+    <div class="range" id="variable-slider">
+      <div id="slider-range"></div>
+      <div class="ui-slider-label range-label min" id="range-low">1950</div>
+      <div class="ui-slider-label range-label max" id="range-high">2100</div>
+    </div>
+  </div>
+     <div class="download-panel overlay">
+            <div class="download-inner">
+                <a href="javascript:void(0);" class="download-dismiss-button icon icon-close"></a>
+                <p>Use the following links to download this graph's data:</p>
+                <ul>
+                    <li><a href="javascript:void(0);" class='download_hist_obs_data button display-block border-white hover-bg-white'><span class='icon icon-arrow-down '></span>Observed Data</a></li>
+                    <li><a href="javascript:void(0);"class='download_hist_mod_data button display-block border-white hover-bg-white'><span class='icon icon-arrow-down'></span>Historical Modeled Data</a></li>
+                    <li><a href="javascript:void(0);" class='download_proj_mod_data button display-block border-white hover-bg-white'><span class='icon icon-arrow-down'></span>Projected Modeled Data</a></li>
+                </ul>
+
+            </div>
         </div>
 </div>`);
 
@@ -844,19 +865,24 @@
         pmedian: "true",
         histobs: "false"
       });
-      this.nodes.$countyOverlay.find('#station-overlay-close').click(function(){this.nodes.$countyOverlay.remove()}.bind(this));
 
-      $('.legend-item-range').on('click', function (el) {
-        $(el).toggleClass('selected');
-        $(el).children('.legend-item-block, .legend-item-line').toggleClass('selected');
-        $(el).children('.legend-item-line-container').children('.legend-item-line').toggleClass('selected');
+      $(window).resize(function () {this.cwg.resize()}.bind(this));
+      this.nodes.$countyOverlay.find('#station-overlay-close').click(function () {
+        delete this['cwg'];
+        this.nodes.$countyOverlay.remove();
+      }.bind(this));
+
+      $('.legend-item-range').on('click', function (event) {
+        $(event.target).toggleClass('selected');
+        $(event.target).children('.legend-item-block, .legend-item-line').toggleClass('selected');
+        $(event.target).children('.legend-item-line-container').children('.legend-item-line').toggleClass('selected');
 
         let scenario = '';
         if ($('#rcp85-block').hasClass('selected') && $('#rcp45-block').hasClass('selected')) {
           scenario = 'both';
-        } else if (true === $('#rcp45-block').hasClass('selected')) {
+        } else if ($('#rcp45-block').hasClass('selected')) {
           scenario = 'rcp45';
-        } else if (true === $('#rcp85-block').hasClass('selected')) {
+        } else if ($('#rcp85-block').hasClass('selected')) {
           scenario = 'rcp85';
         }
         this.cwg.update({
@@ -867,14 +893,12 @@
         });
       }.bind(this));
 
-      $('.download-image').click(function () {this.cwg && this.cwg.download_image(this, 'graph.png'); }.bind(this));
-      $('.download-data').click(function (e) { $('#download-panel').removeClass("hidden").show(250); });
-      $('#download_hist_obs_data').click(function () { this.cwg && this.cwg.download_hist_obs_data(this)}.bind(this));
-      $('#download_hist_mod_data').click(function () {this.cwg && this.cwg.download_hist_mod_data(this)}.bind(this));
-      $('#download_proj_mod_data').click(function () {this.cwg && this.cwg.download_proj_mod_data(this) }.bind(this));
-      $('#download-dismiss-button').click(function () { $('#download-panel').addClass("hidden").hide(); });
-      $('#download-precip-dismiss-button').click(function () { $('#download-precip-panel').addClass("hidden").hide(); });
-      $('#download-derived-dismiss-button').click(function () { $('#download-derived-panel').addClass("hidden").hide(); });
+      this.nodes.$countyOverlay.find('.download-image').click(function (event) {this.cwg && this.cwg.download_image(event.target, 'graph.png'); }.bind(this));
+      this.nodes.$countyOverlay.find('.download-data').click(function (event) { this.nodes.$countyOverlay.find('.download-panel').removeClass("hidden").show(250); }.bind(this));
+      this.nodes.$countyOverlay.find('.download_hist_obs_data').click(function (event) { this.cwg && this.cwg.download_hist_obs_data(event.target)}.bind(this));
+      this.nodes.$countyOverlay.find('.download_hist_mod_data').click(function (event) {this.cwg && this.cwg.download_hist_mod_data(event.target)}.bind(this));
+      this.nodes.$countyOverlay.find('.download_proj_mod_data').click(function (event) {this.cwg && this.cwg.download_proj_mod_data(event.target) }.bind(this));
+      this.nodes.$countyOverlay.find('.download-dismiss-button').click(function (event) {this.nodes.$countyOverlay.find('.download-panel').addClass("hidden").hide(); }.bind(this));
 
       $('.how-to-read').on('click', function () {
         var pre = '';
@@ -885,8 +909,8 @@
         if (closest === 'derived-chart') {
           pre = 'derive-';
         }
-        if (app) {
-          app.takeGraphTour(pre);
+        if (window.app) {
+          window.app.takeGraphTour(pre);
         }
       });
 
@@ -896,8 +920,8 @@
         max: 2099,
         values: [1950, 2099],
         slide: function (event, ui) {
-          return window.cwg1.setXRange(ui.values[0], ui.values[1]);
-        }
+          return this.cwg.setXRange(ui.values[0], ui.values[1]);
+        }.bind(this)
       });
     },
 

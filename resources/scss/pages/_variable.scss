@@ -8,7 +8,6 @@
     top: 110px;
   }
 
-
   #main-content-wrap {
     @include full-size;
 
@@ -62,7 +61,6 @@
         }
       }
     }
-
 
   }
 
@@ -188,7 +186,6 @@
   .legend-image {
     max-height: 16rem;
     max-width: inherit;
-
   }
 
   .ol-scale-line {
@@ -238,16 +235,12 @@
     }
   }
 }
-
 .esri-view-width-greater-than-xsmall .esri-expand__content {
-
-  z-index: 1000;
+  z-index: 100;
 }
-
 .esri-scale-bar.esri-widget {
   margin-bottom: 45px;
 }
-
 .scenario-map-overlay-container {
   position: absolute;
   height: 100%;
@@ -289,8 +282,8 @@
     bottom: 20px;
     right: 10px;
     max-width: 45%;
-    .right-scenario-dropdown, .year{
-      float:right;
+    .right-scenario-dropdown, .year {
+      float: right;
     }
   }
   .left-scenario-dropdown, .right-scenario-dropdown {
@@ -314,10 +307,11 @@
 
   .year {
     float: left;
+    max-width:100%;
     position: relative;
     width: 23rem;
     height: 50px;
-    margin:5px;
+    margin: 5px;
     background: transparentize($white, 0.5);
     @include transition(0.25s);
 
@@ -329,7 +323,7 @@
       top: 20px;
       left: 15%;
       width: 16rem;
-
+      max-width: calc(100% - 7rem);
       .ui-slider-handle {
         top: -14px;
         width: 36px;
@@ -364,12 +358,41 @@
       }
     }
   }
-
 }
-
-.county-overlay{
+.county-overlay {
+  padding: 2rem;
   background: $blue1;
-  color:white;
-  position:absolute;
+  position: absolute;
+  z-index: 200;
   @include full-size;
+  color: white;
+  .county-overlay-inner {
+    //margin: 0 auto;
+    max-width: 900px;
+  }
+  header {
+    @include clearfix;
+    a {color: white;}
+  }
+  .data-accordion-actions {
+    @include clearfix;
+    float: none;
+    position: inherit;
+    width: 100%;
+    .how-to-read {
+      position: inherit;
+      float: left;
+    }
+    .download-data, .download-image {
+      float: right;
+    }
+    a {color: white;
+      .icon {color: white;}
+    }
+
+  }
+  .range {position: relative; margin-top: 35px;
+    .range-label {color: white;}
+  }
+  .legend-item {background: rgba(255, 255, 255, 0.3)}
 }
