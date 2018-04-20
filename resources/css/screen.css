@@ -6927,7 +6927,7 @@ body.detail-open #nav-overlay {
 }
 
 /* line 53, resources/scss/pages/_stations.scss */
-.page-type-stations #main-content-wrap #variable-map {
+.page-type-stations #main-content-wrap #stations-map {
   position: absolute;
   top: 0;
   left: 0;
