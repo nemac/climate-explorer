@@ -1219,7 +1219,7 @@ App.prototype.takeVariablesTour = function () {
     });
 
     this.variablesTour.addStep('sliderDiv', {
-        text: 'Slide this bar left and right to compare projections for the variable in the future under two different emissions scenarios.',
+        text: 'Select historical observations (30-year average from 1961-1990) or a future scenario for each side of the map, and then swipe left and right to compare conditions for the selected variable.',
         attachTo: '#sliderDiv right',
         buttons: [
             {
@@ -1856,7 +1856,7 @@ App.prototype.takeMapTour = function (pre) {
     });
 
     this.mapTour.addStep('scenario-slider', {
-        text: 'Select historical observations or a future scenario for each side of the map, and then swipe left and right to compare conditions for the selected variable.',
+        text: 'Select historical observations (30-year average from 1961-1990) or a future scenario for each side of the map, and then swipe left and right to compare conditions for the selected variable.',
         attachTo: '#' + pre + 'swipeImg top',
         buttons: [
             {
