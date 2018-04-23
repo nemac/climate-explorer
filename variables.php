@@ -117,8 +117,8 @@
 <?php include_once('template/footer.php') ?>
 
 
-<script type="text/javascript" src="/node_modules/terraformer/terraformer.js"></script>
-<script type="text/javascript" src="/node_modules/terraformer-arcgis-parser/terraformer-arcgis-parser.js"></script>
+<script src="https://unpkg.com/terraformer@1.0.8/terraformer.js" integrity="sha384-+M797Pj3WZVCwMmLbOxAoaWYcKJo8NSxItmI48ytcLNeAnfn1d/IckFn31jEqrzP" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/terraformer-arcgis-parser@1.0.5/terraformer-arcgis-parser.js" integrity="sha384-duFUjKTSNoxEspdJNwr83CUgRxclf0ueKJB9DU/Vbit6bfWgzvZsHW6H1JLBBXhp" crossorigin="anonymous"></script>
 <script type="text/javascript" src="/resources/js/variables.js"></script>
 
 
