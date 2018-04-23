@@ -334,7 +334,7 @@ $stations_content = array(
 
                 <?php echo $item['detail']; ?>
 
-                <p><a href="variables.php?id=<?php echo $item['variable']; ?>" class="button bg-trans border-white hover-bg-white">Get started</a><a href="#" class="close-detail button bg-trans border-trans color-white arrow-left">Back</a></p>
+                <p><a href="/variables.php?id=<?php echo $item['variable']; ?>" class="button bg-trans border-white hover-bg-white">Get started</a><a href="#" class="close-detail button bg-trans border-trans color-white arrow-left">Back</a></p>
             </div>
 
             <?php
@@ -351,7 +351,7 @@ $stations_content = array(
             <p>We evaluate climate over long periods of observation. For example, in 2014, the global temperature was 1.24°F (0.69°C) above the long-term average for the 20th century, according to NOAA's National Climatic Data Center. That number made 2014 the warmest year on record in the NOAA database, which goes back to 1880.</p>
             <p>Data source: NOAA, 2015</p>
 
-            <p><a href="variables.php?id=pr" class="button bg-trans border-white hover-bg-white">Get started</a><a href="#" class="close-detail button bg-trans border-trans color-white arrow-left">Back</a></p>
+            <p><a href="/variables.php?id=pr" class="button bg-trans border-white hover-bg-white">Get started</a><a href="#" class="close-detail button bg-trans border-trans color-white arrow-left">Back</a></p>
         </div>
 
         <?php
@@ -367,7 +367,7 @@ $stations_content = array(
 
                 <p><?php echo $item['source']; ?></p>
 
-                <p><a href="variables.php?id=<?php echo $item['variable']; ?>" class="button bg-trans border-white hover-bg-white">Get started</a><a href="#" class="close-detail button bg-trans border-trans color-white arrow-left">Back</a></p>
+                <p><a href="/variables.php?id=<?php echo $item['variable']; ?>" class="button bg-trans border-white hover-bg-white">Get started</a><a href="#" class="close-detail button bg-trans border-trans color-white arrow-left">Back</a></p>
             </div>
 
             <?php
@@ -385,7 +385,7 @@ $stations_content = array(
 
             <p>Data source: NOAA, 2015</p>
 
-            <p><a href="variables.php?id=derived" class="button bg-trans border-white hover-bg-white">Get started</a><a href="#" class="close-detail button bg-trans border-trans color-white arrow-left">Back</a></p>
+            <p><a href="/variables.php?id=derived" class="button bg-trans border-white hover-bg-white">Get started</a><a href="#" class="close-detail button bg-trans border-trans color-white arrow-left">Back</a></p>
         </div>
 
         <?php
@@ -401,7 +401,7 @@ $stations_content = array(
 
                 <p><?php echo $item['source']; ?></p>
 
-                <p><a href="variables.php?id=<?php echo $item['variable']; ?>" class="button bg-trans border-white hover-bg-white">Get started</a><a href="#" class="close-detail button bg-trans border-trans color-white arrow-left">Back</a></p>
+                <p><a href="/variables.php?id=<?php echo $item['variable']; ?>" class="button bg-trans border-white hover-bg-white">Get started</a><a href="#" class="close-detail button bg-trans border-trans color-white arrow-left">Back</a></p>
             </div>
 
             <?php
@@ -426,7 +426,7 @@ $stations_content = array(
 
                 <p><?php echo $station['detail']; ?></p>
 
-                <p><a href="stations.php?id=<?php echo $station['variable']; ?>" class="button bg-trans border-white hover-bg-white">Get started</a><a href="#" class="close-detail button bg-trans border-trans color-white arrow-left">Back</a></p>
+                <p><a href="/stations.php?id=<?php echo $station['variable']; ?>" class="button bg-trans border-white hover-bg-white">Get started</a><a href="#" class="close-detail button bg-trans border-trans color-white arrow-left">Back</a></p>
             </div>
 
             <?php
