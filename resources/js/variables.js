@@ -215,7 +215,7 @@
             }
           };
 
-          let arcgisStyles =  document.createElement("link");
+          let arcgisStyles = document.createElement("link");
           arcgisStyles.rel = 'stylesheet';
           arcgisStyles.href = 'https://js.arcgis.com/4.6/esri/css/main.css';
           document.head.appendChild(arcgisStyles);
@@ -223,7 +223,7 @@
           arcgisScripts.type = "text/javascript";
           arcgisScripts.src = "https://js.arcgis.com/4.6/";
           document.head.appendChild(arcgisScripts);
-          arcgisScripts.addEventListener('load',function (resolve) {
+          arcgisScripts.addEventListener('load', function (resolve) {
             this._registerDojoMods(resolve)
           }.bind(this, resolve));
         } else {
@@ -257,12 +257,14 @@
       this._initControlsOverlay();
       this._mapInitPromise = this._whenDojoLoaded().then(this._initMap.bind(this)).catch(this._log);
 
-      this._whenDojoLoaded().then(this._updateScenarioLayers.bind(this));
-      this._whenDojoLoaded().then(this._initStatesLayer.bind(this));
-
+      let layerPromises = [
+        this._whenDojoLoaded().then(this._updateScenarioLayers.bind(this)),
+        this._whenDojoLoaded().then(this._initStatesLayer.bind(this))
+      ];
       if (this.options.showCounties) {
-        this._whenDojoLoaded().then(this._updateCountiesLayer.bind(this));
+        layerPromises.push(this._whenDojoLoaded().then(this._updateCountiesLayer.bind(this)));
       }
+      return Promise.all(layerPromises).then(this._trigger.bind(this, 'layersloaded', null, null));
 
     },
     _initControlsOverlay: function () {
@@ -383,9 +385,10 @@
     },
 
     _updateScenarioLayers: function () {
-
-      this._updateLeftScenarioLayer();
-      this._updateRightScenarioLayer();
+      return Promise.all([
+        this._updateLeftScenarioLayer(),
+        this._updateRightScenarioLayer()
+      ]);
     },
 
     _updateLeftScenarioLayer: function () {
@@ -395,7 +398,7 @@
             oldLeftLayer.visible = false;
             oldLeftLayer.destroy();
           }
-          , 400);
+          , 1000);
         this.leftLayer = null;
       }
 
@@ -544,7 +547,7 @@
 
     },
     _initStatesLayer: function () {
-      this._createReferenceLayer(this.options.statesLayerURL, {
+      return this._createReferenceLayer(this.options.statesLayerURL, {
         geometryType: 'polygon',
         spatialReference: {wkid: 4326},
         objectIdField: 'GEO_ID',
@@ -588,17 +591,22 @@
           contentType: "application/json; charset=utf-8",
           dataType: "json",
         }))
-          .catch(this._log)
-          .then((data) => {
+          .catch(this._error)
+          .then(function (data) {
             if (undefined === data) {
               throw 'Failed to retrieve station data. Refresh to try again.'
             }
-            return Terraformer.ArcGIS.convert(new Terraformer.Primitive(data));
-          })
+            return new Promise(function (resolve) {
+              setTimeout(function () { // using setTimeout here to keep from blocking for too long
+                let features = Terraformer.ArcGIS.convert(new Terraformer.Primitive(data));
+                for (let i = 0; i < features.length; i++) {
+                  features[i]['geometry'] = new this.dojoMods.Polygon(features[i]['geometry']);
+                }
+                resolve(features);
+              }.bind(this));
+            }.bind(this)).catch(this._error);
+          }.bind(this))
           .then(function (features) {
-            for (let i = 0; i < features.length; i++) {
-              features[i]['geometry'] = new this.dojoMods.Polygon(features[i]['geometry']);
-            }
             // Use Terraformer to convert GeoJSON to ArcGIS JSON
             return new this.dojoMods.FeatureLayer(Object.assign({
               // create an instance of esri/layers/support/Field for each field object

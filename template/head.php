@@ -19,7 +19,7 @@
 
 <script type="text/javascript" src="/resources/js/es6-promise.auto.min.js"></script>
 <script type="text/javascript" src="/resources/js/es6-promise.min.js"></script>
-
+<script type="text/javascript" src="/resources/js/spinner.js"></script>
 
 <script>
   var s = document.createElement("script");

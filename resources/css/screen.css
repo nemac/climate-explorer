@@ -2706,6 +2706,80 @@ body .ui-tooltip {
   border-width: 2px;
 }
 
+/* line 1, resources/scss/_spinner.scss */
+.logo-spinner-overlay {
+  opacity: 1;
+  display: block;
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background-color: rgba(255, 255, 255, 0.75);
+  z-index: 8000;
+}
+
+/* line 12, resources/scss/_spinner.scss */
+.logo-spinner {
+  position: absolute;
+  top: 40%;
+  top: calc(50% - 73px);
+  left: 40%;
+  left: calc(50% - 167px);
+}
+
+/* line 18, resources/scss/_spinner.scss */
+.logo-spinner .gear1 {
+  margin: 0;
+  padding: 0;
+  position: absolute;
+  top: 92px;
+  background-image: url("/resources/img/gear1.png");
+  width: 35px;
+  left: 85px;
+  height: 35px;
+  background-size: 100%;
+  display: block;
+  text-align: center;
+  transform-origin: center;
+  animation: gear1 0.5s linear infinite;
+}
+
+/* line 33, resources/scss/_spinner.scss */
+.logo-spinner .gear2 {
+  margin: 0;
+  padding: 0;
+  position: absolute;
+  top: 76px;
+  background-image: url(/resources/img/gear2.png);
+  width: 21px;
+  left: 109px;
+  height: 21px;
+  display: block;
+  text-align: center;
+  transform-origin: center;
+  animation: gear2 0.3s linear infinite;
+  background-size: 100%;
+}
+
+@keyframes gear1 {
+  0% {
+    transform: rotate(0);
+  }
+  100% {
+    transform: rotate(45deg);
+  }
+}
+
+@keyframes gear2 {
+  0% {
+    transform: rotate(45deg);
+  }
+  100% {
+    transform: rotate(0);
+  }
+}
+
 /* line 40, resources/scss/screen.scss */
 * {
   -moz-box-sizing: border-box;

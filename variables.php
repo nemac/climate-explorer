@@ -128,11 +128,17 @@
   $(document).ready(function () {
     app = new App('/resources/data/');
   });
+  $(function(){
+    $('#variable-map').spinner();
+  });
   $(document).ready(function () {
     window.scenariosMap = $('#variable-map').scenarioComparisonMap({
       stationId: window.ce.stationId, mode: window.ce.case,
       countyselected: function (event, value) {
         window.countySelected($('.cwg-container')[0], value);
+      },
+      layersloaded: function(event, value){
+        $('#variable-map').spinner('destroy');
       }
     });
   });
