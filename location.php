@@ -987,6 +987,7 @@ if (!isValidLongitude($lon)) {
 </div>
 
 <?php include_once('template/footer.php'); ?>
+<script type="text/javascript" src="/resources/js/location.js"></script>
 
 </body>
 </html>

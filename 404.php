@@ -2,20 +2,7 @@
 <!doctype html>
 <html>
 <head>
-  <title>404 - File Not Found</title>
-
-  <meta charset="utf-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-  <link rel="stylesheet" href="/resources/css/ol3-popup.css">
-
-  <link rel="stylesheet" media="screen" href="/resources/css/screen.css">
-  <link rel="stylesheet" media="screen" href="/resources/css/mods.css">
-
-  <script type="text/javascript" src="/resources/js/jquery.min.js"></script>
-  <script type="text/javascript" src="/resources/js/jquery-ui.min.js"></script>
-
+  <?php include_once ('template/head.php');?>
   <?php
 
   $share_data['url'] = current_URL();

@@ -2,35 +2,35 @@
 
 @font-face {
   font-family: 'CESans';
-  src: url('fonts/cesans-webfont.eot');
-  src: url('fonts/cesans-webfont.eot?#iefix') format('embedded-opentype'),
-       url('fonts/cesans-webfont.woff2') format('woff2'),
-       url('fonts/cesans-webfont.woff') format('woff'),
-       url('fonts/cesans-webfont.ttf') format('truetype'),
-       url('fonts/cesans-webfont.svg#cesansregular') format('svg');
+  src: url('/resources/fonts/cesans-webfont.eot');
+  src: url('/resources/fonts/cesans-webfont.eot?#iefix') format('embedded-opentype'),
+       url('/resources/fonts/cesans-webfont.woff2') format('woff2'),
+       url('/resources/fonts/cesans-webfont.woff') format('woff'),
+       url('/resources/fonts/cesans-webfont.ttf') format('truetype'),
+       url('/resources/fonts/cesans-webfont.svg#cesansregular') format('svg');
   font-weight: normal;
   font-style: normal;
 }
 
 @font-face {
   font-family: 'CESans-Heavy';
-  src: url('fonts/cesansheavy-webfont.eot');
-  src: url('fonts/cesansheavy-webfont.eot?#iefix') format('embedded-opentype'),
-       url('fonts/cesansheavy-webfont.woff2') format('woff2'),
-       url('fonts/cesansheavy-webfont.woff') format('woff'),
-       url('fonts/cesansheavy-webfont.ttf') format('truetype'),
-       url('fonts/cesansheavy-webfont.svg#cesans_heavyheavy') format('svg');
+  src: url('/resources/fonts/cesansheavy-webfont.eot');
+  src: url('/resources/fonts/cesansheavy-webfont.eot?#iefix') format('embedded-opentype'),
+       url('/resources/fonts/cesansheavy-webfont.woff2') format('woff2'),
+       url('/resources/fonts/cesansheavy-webfont.woff') format('woff'),
+       url('/resources/fonts/cesansheavy-webfont.ttf') format('truetype'),
+       url('/resources/fonts/cesansheavy-webfont.svg#cesans_heavyheavy') format('svg');
   font-weight: normal;
   font-style: normal;
 }
 
 @font-face {
 	font-family: 'icomoon';
-	src:url('fonts/icomoon.eot?earrx6');
-	src:url('fonts/icomoon.eot?earrx6#iefix') format('embedded-opentype'),
-		url('fonts/icomoon.ttf?earrx6') format('truetype'),
-		url('fonts/icomoon.woff?earrx6') format('woff'),
-		url('fonts/icomoon.svg?earrx6#icomoon') format('svg');
+	src:url('/resources/fonts/icomoon.eot?earrx6');
+	src:url('/resources/fonts/icomoon.eot?earrx6#iefix') format('embedded-opentype'),
+		url('/resources/fonts/icomoon.ttf?earrx6') format('truetype'),
+		url('/resources/fonts/icomoon.woff?earrx6') format('woff'),
+		url('/resources/fonts/icomoon.svg?earrx6#icomoon') format('svg');
 	font-weight: normal;
 	font-style: normal;
 }

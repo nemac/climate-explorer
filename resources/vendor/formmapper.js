@@ -1,3 +1,7 @@
+// Note, this file is based on/almost a direct copy of this project: https://github.com/ubilabs/geocomplete which is no longer maintained.
+// Version: Unknown.
+// License: MIT
+
 ;(function ($, window, document, undefined) {
 
   var defaults = {

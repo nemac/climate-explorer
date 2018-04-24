@@ -2,8 +2,8 @@
 
 // colors
 
-$white: #fff;
-$black: #000;
+$white: #ffffff;
+$black: #000000;
 $blue1: #0058cf;
 $blue2: #233a70;
 $blue3: #d5e8f2;
@@ -31,6 +31,8 @@ $sans-heavy: 'CESans-Heavy', Helvetica, 'Helvetica Neue', Arial, sans-serif;
 @import "formstone/range";
 @import "plugins/jquery-ui";
 @import "spinner";
+@import "sweetalert";
+
 // MIXINS
 
 @import "mixins";
@@ -40,12 +42,10 @@ $sans-heavy: 'CESans-Heavy', Helvetica, 'Helvetica Neue', Arial, sans-serif;
 * {
   @include box-sizing;
 }
-
 html {
   width: 100%;
   height: 100%;
 }
-
 body {
   width: 100%;
   height: 100%;
@@ -53,43 +53,34 @@ body {
   font: 300 16px/24px $roboto;
   color: $grey1;
 }
-
 a {
   color: $orange1;
   text-decoration: none;
 }
-
 img {
   display: block;
   max-width: 100%;
   height: auto;
 }
-
 h1 {
   font: 6.25rem/0.9em $sans-heavy;
   text-transform: uppercase;
 }
-
 h2 {
   font: 2.875rem/1em $sans-heavy;
 }
-
 h3 {
   font: 2.25rem/1em $sans-book;
 }
-
 h4 {
   font: 400 2rem/1em $roboto;
 }
-
 h5 {
   font: 0.75rem/1em $sans-heavy;
 }
-
 h6 {
   font: 0.75rem/1em $sans-heavy;
 }
-
 // CLASSES
 
 // button
@@ -283,21 +274,18 @@ h6 {
     }
   }
 }
-
 // icon
 
 .icon {
   display: inline-block;
   vertical-align: middle;
 }
-
 // waypoints sticky
 
 .stuck {
   position: fixed;
   top: 0;
 }
-
 // tooltip
 
 .tooltip {
@@ -325,8 +313,6 @@ h6 {
     border-color: $white transparent transparent transparent;
   }
 }
-
-
 // chart legend
 
 .chart-legend {
@@ -342,11 +328,11 @@ h6 {
     text-align: left;
     cursor: pointer;
     padding: 6px;
-    border: 1px solid #FFF;
+    border: 1px solid #ffffff;
     @include transition(0.25s);
 
     &:hover {
-      border: 1px solid #EEE;
+      border: 1px solid #eeeeee;
     }
 
     &:after {
@@ -371,7 +357,7 @@ h6 {
     &.selected {
       //background: $blue3;
       //@include box-shadow(inset 0 2px 6px transparentize($black, 0.75));
-      border: 1px solid #bbb;
+      border: 1px solid #bbbbbb;
 
       &:after {
         opacity: 1;
@@ -391,7 +377,7 @@ h6 {
     &#rcp45-block,
     &#preciprcp45-block, &
     #derivercp45-block {
-      background: #99BCEC;
+      background: #99bcec;
     }
 
     &#rcp85-block,
@@ -403,7 +389,7 @@ h6 {
     &#historical-block,
     &#preciphistorical-block,
     &#derivehistorical-block {
-      background: #D6D6D6;
+      background: #d6d6d6;
     }
   }
 
@@ -411,31 +397,30 @@ h6 {
     &#over-baseline-block,
     &#precipover-baseline-block,
     &#deriveover-baseline-block {
-      background: #CD6760;
+      background: #cd6760;
     }
 
     &#under-baseline-block,
     &#precipunder-baseline-block,
     &#deriveunder-baseline-block {
       margin-top: 20px;
-      background: #6194C8;
+      background: #6194c8;
     }
 
     &#rcp45-line,
     &#preciprcp45-line,
     &#derivercp45-line {
       margin-top: 20px;
-      background: #0058CF;
+      background: #0058cf;
     }
 
     &#rcp85-line,
     &#preciprcp85-line,
     &#derivercp85-line {
-      background: #F5442D;
+      background: #f5442d;
     }
   }
 }
-
 // download
 
 .download-panel {
@@ -483,7 +468,6 @@ h6 {
     right: 0;
   }
 }
-
 // SOCIAL
 
 @import "template/share";
@@ -506,13 +490,11 @@ h6 {
   overflow: auto;
   z-index: 1;
 }
-
 // HEADER
 
 #desktop-warning {
   display: none;
 }
-
 @import "template/header";
 
 // zoom / legend
@@ -581,7 +563,6 @@ h6 {
     }
   }
 }
-
 .legend-wrap {
   .legend {
 
@@ -594,7 +575,6 @@ h6 {
 
   }
 }
-
 .zoom {
   position: absolute;
   top: 30%;
@@ -632,7 +612,6 @@ h6 {
     }
   }
 }
-
 .page-splash {
   padding: 8% 0;
   color: $blue2;
@@ -663,7 +642,6 @@ h6 {
     right: 0;
   }
 }
-
 // HOME PAGE
 
 @import "pages/home";
@@ -694,17 +672,14 @@ h6 {
     margin-top: 95px;
   }
 }
-
 #standard-splash {
   padding-bottom: 40px;
 }
-
 #subnav ul {
   position: absolute;
   right: 20px;
   top: 43px;
 }
-
 #standard-body {
   max-width: 75%;
   padding-left: calc(4% + 10px);
@@ -765,8 +740,8 @@ h6 {
     dt {
       margin: 0 0 15px 0;
       padding-bottom: 10px;
-      border-bottom: 1px solid #ddd;
-      color: #444;
+      border-bottom: 1px solid #dddddd;
+      color: #444444;
       font-weight: 400;
     }
 
@@ -783,7 +758,6 @@ h6 {
     background: $orange1;
   }
 }
-
 // PLUGINS
 
 // tour
@@ -800,14 +774,12 @@ h6 {
 .ui-slider-horizontal {
   height: 6px;
 }
-
 .ui-autocomplete {
   position: absolute;
   top: 0;
   left: 0;
   cursor: default;
 }
-
 .ui-menu {
   display: block;
   padding: 10px;
@@ -836,7 +808,6 @@ h6 {
     border-width: 1px 0 0 0;
   }
 }
-
 .ui-accordion {
   .ui-accordion-header {
     outline: none;
@@ -850,7 +821,6 @@ h6 {
     }
   }
 }
-
 .accordion-plain {
   .ui-accordion-header {
     padding: 8px 0;
@@ -871,7 +841,6 @@ h6 {
     padding: 20px 40px;
   }
 }
-
 .tabs-plain {
   .tabs-plain-list {
     li {
@@ -882,13 +851,11 @@ h6 {
         padding: 8px 10px;
 
         &.ui-state-active {
-
         }
       }
     }
   }
 }
-
 // split pane
 
 @import "plugins/split-pane";
@@ -897,28 +864,24 @@ h6 {
   background: blue;
   opacity: 0.25;
 }
-
 .split-pane-divider {
   right: 50%;
   width: 12px;
   background: $white;
   @include box-shadow(0 0 10px transparentize($blue2, 0.75));
 }
-
 .pane-content {
   @include full-size;
   overflow: auto;
 }
-
 #pane-left {
   right: 50%;
   margin-right: 12px;
 }
-
 #pane-right {
   width: 50%;
 }
-
 // MEDIA QUERIES
 
 @import "media";
+@import "mods";

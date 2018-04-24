@@ -62,29 +62,19 @@
 
 <?php include_once('template/footer.php')?>
 
-<script type="text/javascript" src="/resources/js/stations.js"></script>
-<script  type="text/javascript"  src="/resources/tidal/tidalstationswidget.js"></script>
-<script type="text/javascript" src="/resources/js/cwg/climate-widget-graph.js"></script>
-
-<script type="text/javascript" src="/resources/js/cwg/cwg.js"></script>
-
-
-<script type="text/javascript" defer src="/resources/js/main.js"></script>
-
-
-<script src="/resources/js/formmapper.js"></script>
-
-
+<script type="text/javascript" src="/resources/js/stationsMap.js"></script>
+<script  type="text/javascript"  src="/resources/vendor/tidal/tidalstationswidget.js"></script>
+<script  type="text/javascript"  src="/resources/vendor/item/jquery.fl-item.min.js"></script>
+<script type="text/javascript" src="/resources/vendor/climate-widget-graph/climate-widget-graph.js"></script>
 <script type="text/javascript" src="/resources/js/station-charts.js"></script>
 
 
 <script>
-  if (undefined === window.ce) {window.ce = {};}
   $(document).ready(function () {
     app = new App(<?php echo "'" . $data_base_url . "'"; ?>);
   });
   $(document).ready(function () {
-    window.stations = $('#stations-map').stationsMap({stationId: window.ce.stationId, mode: window.ce.case});
+    window.stations = $('#stations-map').stationsMap({});
   });
   $(document).ready(function () {
     var initFormMapper = function () {

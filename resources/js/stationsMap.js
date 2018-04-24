@@ -91,9 +91,9 @@
       // Additional elements
       stationOverlayContainerId: "station-overlay-container",
       // Map layers
-      dailyStationsLayerURL: "/resources/item/conus_stations_whitelist.json",
-      thresholdStationsLayerURL: "/resources/item/conus_stations_whitelist.json",
-      tidalStationsLayerURL: "/resources/tidal/tidal_stations.json",
+      dailyStationsLayerURL: "/resources/vendor/item/conus_stations_whitelist.json",
+      thresholdStationsLayerURL: "/resources/vendor/item/conus_stations_whitelist.json",
+      tidalStationsLayerURL: "/resources/vendor/tidal/tidal_stations.json",
       dailyStationsDataURL: "https://data.rcc-acis.org/StnData",
       thresholdStationsDataURL: "https://data.rcc-acis.org/StnData",
       // Controls debug output
@@ -169,7 +169,7 @@
               deps: this.dojoDeps
             }
           };
-          let arcgisStyles =  document.createElement("link");
+          let arcgisStyles = document.createElement("link");
           arcgisStyles.rel = 'stylesheet';
           arcgisStyles.href = 'https://js.arcgis.com/4.6/esri/css/main.css';
           document.head.appendChild(arcgisStyles);
@@ -582,25 +582,30 @@
       switch (this.options.mode) {
         case 'daily_vs_climate':
           $(this.nodes.stationOverlayContainer).append(
-            '<div id="station-overlay">' +
-            '   <div id="station-overlay-close">x</div>' +
-            '   <div id="station-overlay-header">' +
-            '       <h3 class="accent-color" style="margin-bottom: 20px;"><span class="icon icon-district"></span>Weather Station</h3>' +
-            '       <h5>Name: ' + this.options.stationName + '</h5>' +
-            '       <h5>Station ID: ' + this.options.stationId + '</h5>' +
-            '   </div>' +
-            '   <div id="multi-chart" class="left_chart"></div>' +
-            '   <div id="multi-precip-chart" class="right_chart"></div>' +
-            '   <div style="clear:both"></div>' +
-            '   <div id="overlay-chart-container">' +
-            '   <div class="station_overlay_text">' +
-            '       <p style="font-weight:bold">Scroll, click-and-drag, or hold down your SHIFT key to scroll on either graph or axis to view more years or adjust the display.</p>' +
-            '       <p>Blue bars on temperature graphs indicate the full range of observed temperatures for each day; the green band shows the average temperature range from 1981-2010. Comparing the two makes it easy to spot periods of above- and below-normal temperature.' +
-            '       Green areas on precipitation graphs track year-to-date cumulative precipitation. Comparing observed precipitation to normal year-to-date totals (the black line) shows whether each season received above-, below-, or near-normal amounts of precipitation. Vertical portions of the year-to-date precipitation line show days when precipitation occurred.' +
-            '       Data are from stations in the Global Historical Climatology Network-Daily dataset, compiled by the National Centers for Environmental Information and served by ACIS.</p>' +
-            '   </div>' +
-            '   </div>' +
-            '</div>'
+            `              <div id="station-overlay">
+                <div id="station-overlay-close">x</div>
+                <div id="station-overlay-header">
+                  <h3 class="accent-color" style="margin-bottom: 20px;"><span class="icon icon-district"></span>Weather Station</h3>
+                  <h5>Name: ${this.options.stationName}</h5>
+                  <h5>Station ID: ${this.options.stationId}</h5>
+                </div>
+                <div id="multi-chart" class="left_chart"></div>
+                <div id="multi-precip-chart" class="right_chart"></div>
+                <div style="clear:both"></div>
+                <div id="overlay-chart-container">
+                  <div class="station_overlay_text">
+                    <p style="font-weight:bold">Scroll, click-and-drag, or hold down your SHIFT key to scroll on either graph or axis to view more years or adjust the
+                      display.</p>
+                    <p>Blue bars on temperature graphs indicate the full range of observed temperatures for each day; the green band shows the average temperature range from
+                      1981-2010. Comparing the two ma it easy to spot periods of above- and below-normal temperature.
+                      Green areas on precipitation graphs track year-to-date cumulative precipitation. Comparing observed precipitation to normal year-to-date totals (the
+                      black line) shows whether each sea received above-, below-, or near-normal amounts of precipitation. Vertical portions of the year-to-date precipitation
+                      line show days when precipitation occurred.
+                      Data are from stations in the Global Historical Climatology Network-Daily dataset, compiled by the National Centers for Environmental Information and
+                      served by ACIS.</p>
+                  </div>
+                </div>
+              </div>`
           );
 
           this.chart = new ChartBuilder({station: this.options.stationId}, this.options.dailyStationsDataURL);
@@ -608,46 +613,48 @@
           break;
         case 'thresholds':
           $(this.nodes.stationOverlayContainer).append(
-            '<div id="station-overlay">' +
-            '   <div id="station-overlay-close">x</div>' +
-            '   <div id="station-overlay-header">' +
-            '       <h3 class="accent-color" style="margin-bottom: 20px;"><span class="icon icon-district"></span>Weather Station</h3>' +
-            '       <h5>Name: ' + this.options.stationName + '</h5>' +
-            '       <h5>Station ID: ' + this.options.stationId + '</h5>' +
-            '   </div>' +
-            '   <div id="threshold_inputs">' +
-            '       <div class="field-pair field-var">' +
-            '           <label for="itemvariable">Variable:</label>' +
-            '           <div class="field">' +
-            '               <select name="itemvariable" id="itemvariable">' +
-            '                   <option value="precipitation">Precipitation</option>' +
-            '                   <option value="tavg">Average Temperature</option>' +
-            '                   <option value="tmax">Maximum Temperature</option>' +
-            '                   <option value="tmin">Minimum Temperature</option>' +
-            '               </select>' +
-            '           </div>' +
-            '       </div>' +
-            '       <div class="field-pair field-window append">' +
-            '           <label for="window">Window:</label>' +
-            '           <div class="field">' +
-            '               <input type="number" id="window" name="window" value="1"> <span class="append">days</span>' +
-            '           </div>' +
-            '       </div>' +
-            '       <div class="field-pair field-threshold append">' +
-            '           <label for="threshold">Threshold:</label>' +
-            '           <div class="field">' +
-            '               <input type="number" name="threshold" id="threshold" value="1" step="0.1"> <span class="append" id="item_inches_or_f">°F</span>' +
-            '           </div>' +
-            '       </div>' +
-            '   </div>' +
-            '   <div id="overlay-thresholds-container">' +
-            '<div id="thresholds-container"></div>' +
-            '   <div class="station_overlay_text">' +
-            '       <p style="width:65%!important;margin-left:200px;">To limit the tool to show to years with solid data records, we excluded years that are missing more than five daily temperature reports in a single month, or more than one precipitation report in a single month. Data are from stations in the Global Historical Climatology Network-Daily dataset, compiled by the National Centers for Environmental Information, and served by ACIS.</p>' +
-            '   </div>' +
-            '</div>' +
-            '</div>' +
-            '</div>'
+            `            <div id="station-overlay">
+              <div id="station-overlay-close">x</div>
+              <div id="station-overlay-header">
+                <h3 class="accent-color" style="margin-bottom: 20px;"><span class="icon icon-district"></span>Weather Station</h3>
+                <h5>Name: ${this.options.stationName}</h5>
+                <h5>Station ID: ${this.options.stationId}</h5>
+              </div>
+              <div id="threshold_inputs">
+                <div class="field-pair field-var">
+                  <label for="itemvariable">Variable:</label>
+                  <div class="field">
+                    <select name="itemvariable" id="itemvariable">
+                      <option value="precipitation">Precipitation</option>
+                      <option value="tavg">Average Temperature</option>
+                      <option value="tmax">Maximum Temperature</option>
+                      <option value="tmin">Minimum Temperature</option>
+                    </select>
+                  </div>
+                </div>
+                <div class="field-pair field-window append">
+                  <label for="window">Window:</label>
+                  <div class="field">
+                    <input type="number" id="window" name="window" value="1"> <span class="append">days</span>
+                  </div>
+                </div>
+                <div class="field-pair field-threshold append">
+                  <label for="threshold">Threshold:</label>
+                  <div class="field">
+                    <input type="number" name="threshold" id="threshold" value="1" step="0.1"> <span class="append" id="item_inches_or_f">°F</span>
+                  </div>
+                </div>
+              </div>
+              <div id="overlay-thresholds-container">
+                <div id="thresholds-container"></div>
+                <div class="station_overlay_text">
+                  <p style="width:65%!important;margin-left:200px;">To limit the tool to show to years with solid data records, we excluded years that are missing more than
+                    five daily temperature reports i single month, or more than one precipitation report in a single month. Data are from stations in the Global Historical
+                    Climatology Network-Daily dataset, compiled by the National Centers for Environmental Information, and served by ACIS.</p>
+                </div>
+              </div>
+            </div>
+            </div>`
           );
 
           $("#thresholds-container").item({
@@ -732,56 +739,57 @@
           break;
         case 'high_tide_flooding':
           $(this.nodes.stationOverlayContainer).append(
-            '<div id="station-overlay">' +
-            '   <div id="station-overlay-close">x</div>' +
-            '   <div id="station-overlay-header">' +
-            '       <h3 class="accent-color" style="margin-bottom: 20px;"><span class="icon icon-district"></span>High Tide Flooding</h3>' +
-            '       <h5>Name: <span class="station_name">' + this.options.stationName + '</span></h5>' +
-            '       <h5>Station ID: <span class="station_id">' + this.options.stationId + '</span></h5>' +
-            '   </div>' +
-            '   <select name="" id="tidal_station" class="form-control" style="width: 200px;display:none">' +
-            '       <option value="" disabled selected hidden>Station</option>' +
-            '       <option value="8443970">Boston, MA</option>' +
-            '       <option value="8454000">Providence, RI</option>' +
-            '       <option value="8461490">New London, CT</option>' +
-            '       <option value="8510560">Montauk, NY</option>' +
-            '       <option value="8516945">Kings Point, NY</option>' +
-            '       <option value="8518750">Battery, NY</option>' +
-            '       <option value="8531680">Sandy Hook, NJ</option>' +
-            '       <option value="8534720">Atlantic City, NJ</option>' +
-            '       <option value="8545240">Philadelphia, PA</option>' +
-            '       <option value="8557380">Lewes, DE</option>' +
-            '       <option value="8574680">Baltimore, MD</option>' +
-            '       <option value="8575512">Annapolis, MD</option>' +
-            '       <option value="8594900">Washington D.C.</option>' +
-            '       <option value="8638610">Sewells Point, VA</option>' +
-            '       <option value="8658120">Wilmington, NC</option>' +
-            '       <option value="8665530">Charleston, SC</option>' +
-            '       <option value="8670870">Fort Pulaski, GA</option>' +
-            '       <option value="8720030">Fernandina Beach, FL</option>' +
-            '       <option value="8720218">Mayport, FL</option>' +
-            '       <option value="8724580">Key West, FL</option>' +
-            '       <option value="8726430">St Petersburg, FL</option>' +
-            '       <option value="8771341">Galveston Bay, TX</option>' +
-            '       <option value="8779770">Port Isabel, TX</option>' +
-            '       <option value="9410230">La Jolla, CA</option>' +
-            '       <option value="9414290">San Francisco, CA</option>' +
-            '       <option value="9447130">Seattle, WA</option>' +
-            '       <option value="1612340">Honolulu, HI</option>' +
-            '   </select>' +
-            '   <div id="overlay-chart-container">' +
-            '      <div id="tidal-chart"></div>' +
-            '       <div class="station_overlay_text">' +
-            '          <p>Gray bars show annual counts of high-tide flooding in the past. Red and blue bars show projections of the average number of high-tide flooding events in future years.</p>' +
-            '       </div>' +
-            '   </div>' +
-            '</div>'
+            `              <div id="station-overlay">
+                <div id="station-overlay-close">x</div>
+                <div id="station-overlay-header">
+                  <h3 class="accent-color" style="margin-bottom: 20px;"><span class="icon icon-district"></span>High Tide Flooding</h3>
+                  <h5>Name: <span class="station_name">${this.options.stationName}</span></h5>
+                  <h5>Station ID: <span class="station_id">${this.options.stationId}</span></h5>
+                </div>
+                <select name="" id="tidal_station" class="form-control" style="width: 200px;display:none">
+                  <option value="" disabled selected hidden>Station</option>
+                  <option value="8443970">Boston, MA</option>
+                  <option value="8454000">Providence, RI</option>
+                  <option value="8461490">New London, CT</option>
+                  <option value="8510560">Montauk, NY</option>
+                  <option value="8516945">Kings Point, NY</option>
+                  <option value="8518750">Battery, NY</option>
+                  <option value="8531680">Sandy Hook, NJ</option>
+                  <option value="8534720">Atlantic City, NJ</option>
+                  <option value="8545240">Philadelphia, PA</option>
+                  <option value="8557380">Lewes, DE</option>
+                  <option value="8574680">Baltimore, MD</option>
+                  <option value="8575512">Annapolis, MD</option>
+                  <option value="8594900">Washington D.C.</option>
+                  <option value="8638610">Sewells Point, VA</option>
+                  <option value="8658120">Wilmington, NC</option>
+                  <option value="8665530">Charleston, SC</option>
+                  <option value="8670870">Fort Pulaski, GA</option>
+                  <option value="8720030">Fernandina Beach, FL</option>
+                  <option value="8720218">Mayport, FL</option>
+                  <option value="8724580">Key West, FL</option>
+                  <option value="8726430">St Petersburg, FL</option>
+                  <option value="8771341">Galveston Bay, TX</option>
+                  <option value="8779770">Port Isabel, TX</option>
+                  <option value="9410230">La Jolla, CA</option>
+                  <option value="9414290">San Francisco, CA</option>
+                  <option value="9447130">Seattle, WA</option>
+                  <option value="1612340">Honolulu, HI</option>
+                </select>
+                <div id="overlay-chart-container">
+                  <div id="tidal-chart"></div>
+                  <div class="station_overlay_text">
+                    <p>Gray bars show annual counts of high-tide flooding in the past. Red and blue bars show projections of the average number of high-tide flooding events
+                      in future years.</p>
+                  </div>
+                </div>
+              </div>`
           );
 
 
           $("#tidal-chart").tidalstationwidget({
             station: this.options.stationId,
-            data_url: '/resources/tidal/tidal_data.json', // defaults to tidal_data.json
+            data_url: '/resources/vendor/tidal/tidal_data.json', // defaults to tidal_data.json
             responsive: true // set to false to disable ChartJS responsive sizing.
           });
 

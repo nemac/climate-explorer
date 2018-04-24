@@ -91,6 +91,7 @@ especially when it comes to interacting with the DOM and handling events.
     //
 
     options: {
+
       // Controls debug output
       // 0:off, 1:errors only, 2:errors and warnings, 3:everything
       debug: 0,
@@ -210,5 +211,7 @@ especially when it comes to interacting with the DOM and handling events.
     //      or relevant generated element.
 
   });
-  $(document).ce({});
+  $(document).ce({stationID: null});
+  $(document).ce({stationID: '1'});
+
 }));
