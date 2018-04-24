@@ -159,7 +159,61 @@ especially when it comes to interacting with the DOM and handling events.
       //alternative place to handle option changes when multiple options change at the same time.
     },
 
+    getUrlParam: function (key) {
+      var params = decodeURIComponent(window.location.search.substring(1)).split("&"),
+          param,
+          i;
+
+      for (i = 0; i < params.length; i++) {
+        param = params[i].split('=');
+
+        if (param[0] === key) {
+          return param[1] === undefined ? true : param[1];
+        }
+      }
+    }
+
+    // Replaces all URL params with the passed array
+    // params is a nested array of objects with the keys "key" and "value"
+    setUrlParams: function (params) {
+      var href = window.location.href.split("?")[0],
+          i;
+
+      if (params.length === 0) return;
+      if (window.hasOwnProperty("history") === false || window.history.replaceState === false) return;
+        
+
+      for (i = 0; i < params.length; i++) {
+        params[i] = encodeURIComponent(params[i].key) + "=" + encodeURIComponent(params[i].value);
+      }
+
+      window.history.replaceState({}, "", href + "?" + params.join("&")); 
+    }
+
+    // Replaces specified URL param with the passed value
+    setUrlParam: function (key, value) {
+      var params = decodeURIComponent(window.location.search.substring(1)).split("&"),
+          param,
+          href = window.location.href.split("?")[0],
+          i;
+
+      if (window.hasOwnProperty("history") === false || window.history.replaceState === false) return;
+
+      for (i = 0; i < params.length; i++) {
+        param = params[i].split('=');
+
+        if (param[0] === key) {
+          param[1] = value;
+        }
+
+        params[i] = encodeURIComponent(param[0]) + "=" + encodeURIComponent(param[1]);
+      }
+
+      window.history.replaceState({}, "", href + "?" + params.join("&")); 
+    }
+    
     //todo write public getters for state variables
+
     // called using `$(window).ce('getMapState')`...and maybe `window.ce.getMapState` if that's easier
     getMapState: function () {
       return {
@@ -168,6 +222,8 @@ especially when it comes to interacting with the DOM and handling events.
         zoom: this.state.zoom,
       };
     },
+
+    // CASE.PHP functions
 
     _destroy: function () {
       // The public destroy method will do some stuff and
