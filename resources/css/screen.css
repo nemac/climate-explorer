@@ -7883,12 +7883,6 @@ body.detail-open #nav-overlay {
 }
 
 /* line 186, resources/scss/pages/_variable.scss */
-.page-type-variables .legend-image {
-  max-height: 16rem;
-  max-width: inherit;
-}
-
-/* line 191, resources/scss/pages/_variable.scss */
 .page-type-variables .ol-scale-line {
   background: rgba(0, 60, 136, 0.3);
   border-radius: 4px;
@@ -7898,7 +7892,7 @@ body.detail-open #nav-overlay {
   right: 100px;
 }
 
-/* line 200, resources/scss/pages/_variable.scss */
+/* line 195, resources/scss/pages/_variable.scss */
 .page-type-variables #district-trigger {
   position: absolute;
   top: 15%;
@@ -7924,7 +7918,7 @@ body.detail-open #nav-overlay {
   clear: both;
 }
 
-/* line 211, resources/scss/pages/_variable.scss */
+/* line 206, resources/scss/pages/_variable.scss */
 .page-type-variables #district-trigger span {
   display: block;
   float: left;
@@ -7932,7 +7926,7 @@ body.detail-open #nav-overlay {
   color: #0058cf;
 }
 
-/* line 218, resources/scss/pages/_variable.scss */
+/* line 213, resources/scss/pages/_variable.scss */
 .page-type-variables #district-trigger .text {
   margin-top: -2px;
   text-indent: -300px;
@@ -7942,33 +7936,39 @@ body.detail-open #nav-overlay {
   transition: text-indent 0.5s;
 }
 
-/* line 224, resources/scss/pages/_variable.scss */
+/* line 219, resources/scss/pages/_variable.scss */
 .page-type-variables #district-trigger .icon {
   padding-left: 10px;
   font-size: 1.25rem;
 }
 
-/* line 229, resources/scss/pages/_variable.scss */
+/* line 224, resources/scss/pages/_variable.scss */
 .page-type-variables #district-trigger:hover {
   padding-left: 15px;
 }
 
-/* line 232, resources/scss/pages/_variable.scss */
+/* line 227, resources/scss/pages/_variable.scss */
 .page-type-variables #district-trigger:hover .text {
   text-indent: 0;
 }
 
-/* line 238, resources/scss/pages/_variable.scss */
+/* line 233, resources/scss/pages/_variable.scss */
 .esri-view-width-greater-than-xsmall .esri-expand__content {
   z-index: 100;
 }
 
-/* line 241, resources/scss/pages/_variable.scss */
+/* line 237, resources/scss/pages/_variable.scss */
 .esri-scale-bar.esri-widget {
   margin-bottom: 45px;
 }
 
-/* line 244, resources/scss/pages/_variable.scss */
+/* line 240, resources/scss/pages/_variable.scss */
+.legend-image {
+  max-height: 16rem;
+  max-width: none;
+}
+
+/* line 245, resources/scss/pages/_variable.scss */
 .scenario-map-overlay-container {
   position: absolute;
   height: 100%;
@@ -7976,12 +7976,12 @@ body.detail-open #nav-overlay {
   pointer-events: none;
 }
 
-/* line 249, resources/scss/pages/_variable.scss */
+/* line 250, resources/scss/pages/_variable.scss */
 .scenario-map-overlay-container > * {
   pointer-events: auto;
 }
 
-/* line 250, resources/scss/pages/_variable.scss */
+/* line 251, resources/scss/pages/_variable.scss */
 .scenario-map-overlay-container .movable {
   position: absolute;
   top: 0;
@@ -7995,7 +7995,7 @@ body.detail-open #nav-overlay {
   cursor: col-resize;
 }
 
-/* line 262, resources/scss/pages/_variable.scss */
+/* line 263, resources/scss/pages/_variable.scss */
 .scenario-map-overlay-container .movable .handle {
   display: block;
   position: absolute;
@@ -8011,7 +8011,7 @@ body.detail-open #nav-overlay {
   background: url(../img/swipe-arrows-stripe.png) center center rgba(34, 105, 179, 0.87);
 }
 
-/* line 274, resources/scss/pages/_variable.scss */
+/* line 275, resources/scss/pages/_variable.scss */
 .scenario-map-overlay-container .left-scenario-controls {
   position: absolute;
   bottom: 20px;
@@ -8019,7 +8019,7 @@ body.detail-open #nav-overlay {
   max-width: 45%;
 }
 
-/* line 280, resources/scss/pages/_variable.scss */
+/* line 281, resources/scss/pages/_variable.scss */
 .scenario-map-overlay-container .right-scenario-controls {
   position: absolute;
   bottom: 20px;
@@ -8027,12 +8027,12 @@ body.detail-open #nav-overlay {
   max-width: 45%;
 }
 
-/* line 285, resources/scss/pages/_variable.scss */
+/* line 286, resources/scss/pages/_variable.scss */
 .scenario-map-overlay-container .right-scenario-controls .right-scenario-dropdown, .scenario-map-overlay-container .right-scenario-controls .year {
   float: right;
 }
 
-/* line 289, resources/scss/pages/_variable.scss */
+/* line 290, resources/scss/pages/_variable.scss */
 .scenario-map-overlay-container .left-scenario-dropdown, .scenario-map-overlay-container .right-scenario-dropdown {
   width: 200px;
   width: 16rem;
@@ -8041,7 +8041,7 @@ body.detail-open #nav-overlay {
   float: left;
 }
 
-/* line 296, resources/scss/pages/_variable.scss */
+/* line 297, resources/scss/pages/_variable.scss */
 .scenario-map-overlay-container .left-scenario-dropdown .dropdown, .scenario-map-overlay-container .right-scenario-dropdown .dropdown {
   display: block;
   text-align: center;
@@ -8053,7 +8053,7 @@ body.detail-open #nav-overlay {
   border: solid #ffffff 1px;
 }
 
-/* line 308, resources/scss/pages/_variable.scss */
+/* line 309, resources/scss/pages/_variable.scss */
 .scenario-map-overlay-container .year {
   float: left;
   max-width: 100%;
@@ -8068,12 +8068,12 @@ body.detail-open #nav-overlay {
   transition: 0.25s;
 }
 
-/* line 318, resources/scss/pages/_variable.scss */
+/* line 319, resources/scss/pages/_variable.scss */
 .scenario-map-overlay-container .year:hover {
   background: rgba(255, 255, 255, 0.9);
 }
 
-/* line 322, resources/scss/pages/_variable.scss */
+/* line 323, resources/scss/pages/_variable.scss */
 .scenario-map-overlay-container .year .ui-slider {
   top: 20px;
   left: 15%;
@@ -8081,7 +8081,7 @@ body.detail-open #nav-overlay {
   max-width: calc(100% - 7rem);
 }
 
-/* line 327, resources/scss/pages/_variable.scss */
+/* line 328, resources/scss/pages/_variable.scss */
 .scenario-map-overlay-container .year .ui-slider .ui-slider-handle {
   top: -14px;
   width: 36px;
@@ -8098,14 +8098,14 @@ body.detail-open #nav-overlay {
   box-shadow: 0 0 4px rgba(0, 88, 207, 0.25);
 }
 
-/* line 340, resources/scss/pages/_variable.scss */
+/* line 341, resources/scss/pages/_variable.scss */
 .scenario-map-overlay-container .year .ui-slider .ui-slider-handle:hover {
   -webkit-box-shadow: 0 0 7px rgba(0, 88, 207, 0.4);
   -moz-box-shadow: 0 0 7px rgba(0, 88, 207, 0.4);
   box-shadow: 0 0 7px rgba(0, 88, 207, 0.4);
 }
 
-/* line 346, resources/scss/pages/_variable.scss */
+/* line 347, resources/scss/pages/_variable.scss */
 .scenario-map-overlay-container .year .year-label {
   position: absolute;
   top: 13px;
@@ -8113,17 +8113,17 @@ body.detail-open #nav-overlay {
   text-align: center;
 }
 
-/* line 352, resources/scss/pages/_variable.scss */
+/* line 353, resources/scss/pages/_variable.scss */
 .scenario-map-overlay-container .year .year-label.year-min {
   left: 0;
 }
 
-/* line 356, resources/scss/pages/_variable.scss */
+/* line 357, resources/scss/pages/_variable.scss */
 .scenario-map-overlay-container .year .year-label.year-max {
   right: 0;
 }
 
-/* line 362, resources/scss/pages/_variable.scss */
+/* line 363, resources/scss/pages/_variable.scss */
 .county-overlay {
   padding: 2rem;
   background: #0058cf;
@@ -8137,7 +8137,7 @@ body.detail-open #nav-overlay {
   color: white;
 }
 
-/* line 369, resources/scss/pages/_variable.scss */
+/* line 370, resources/scss/pages/_variable.scss */
 .county-overlay .county-overlay-inner {
   max-width: 900px;
 }
@@ -8153,12 +8153,12 @@ body.detail-open #nav-overlay {
   clear: both;
 }
 
-/* line 375, resources/scss/pages/_variable.scss */
+/* line 376, resources/scss/pages/_variable.scss */
 .county-overlay header a {
   color: white;
 }
 
-/* line 377, resources/scss/pages/_variable.scss */
+/* line 378, resources/scss/pages/_variable.scss */
 .county-overlay .data-accordion-actions {
   float: none;
   position: inherit;
@@ -8176,39 +8176,39 @@ body.detail-open #nav-overlay {
   clear: both;
 }
 
-/* line 382, resources/scss/pages/_variable.scss */
+/* line 383, resources/scss/pages/_variable.scss */
 .county-overlay .data-accordion-actions .how-to-read {
   position: inherit;
   float: left;
 }
 
-/* line 386, resources/scss/pages/_variable.scss */
+/* line 387, resources/scss/pages/_variable.scss */
 .county-overlay .data-accordion-actions .download-data, .county-overlay .data-accordion-actions .download-image {
   float: right;
 }
 
-/* line 389, resources/scss/pages/_variable.scss */
+/* line 390, resources/scss/pages/_variable.scss */
 .county-overlay .data-accordion-actions a {
   color: white;
 }
 
-/* line 390, resources/scss/pages/_variable.scss */
+/* line 391, resources/scss/pages/_variable.scss */
 .county-overlay .data-accordion-actions a .icon {
   color: white;
 }
 
-/* line 394, resources/scss/pages/_variable.scss */
+/* line 395, resources/scss/pages/_variable.scss */
 .county-overlay .range {
   position: relative;
   margin-top: 35px;
 }
 
-/* line 395, resources/scss/pages/_variable.scss */
+/* line 396, resources/scss/pages/_variable.scss */
 .county-overlay .range .range-label {
   color: white;
 }
 
-/* line 397, resources/scss/pages/_variable.scss */
+/* line 398, resources/scss/pages/_variable.scss */
 .county-overlay .legend-item {
   background: rgba(255, 255, 255, 0.3);
 }
@@ -8524,12 +8524,6 @@ body.detail-open #nav-overlay {
 }
 
 /* line 256, resources/scss/pages/_stations.scss */
-.page-type-stations .legend-image {
-  height: 350px;
-  margin-left: -13px;
-}
-
-/* line 261, resources/scss/pages/_stations.scss */
 .page-type-stations .ol-scale-line {
   background: rgba(0, 60, 136, 0.3);
   border-radius: 4px;
@@ -8539,7 +8533,7 @@ body.detail-open #nav-overlay {
   right: 100px;
 }
 
-/* line 270, resources/scss/pages/_stations.scss */
+/* line 265, resources/scss/pages/_stations.scss */
 .page-type-stations #district-trigger {
   position: absolute;
   top: 15%;
@@ -8565,7 +8559,7 @@ body.detail-open #nav-overlay {
   clear: both;
 }
 
-/* line 281, resources/scss/pages/_stations.scss */
+/* line 276, resources/scss/pages/_stations.scss */
 .page-type-stations #district-trigger span {
   display: block;
   float: left;
@@ -8573,7 +8567,7 @@ body.detail-open #nav-overlay {
   color: #0058cf;
 }
 
-/* line 288, resources/scss/pages/_stations.scss */
+/* line 283, resources/scss/pages/_stations.scss */
 .page-type-stations #district-trigger .text {
   margin-top: -2px;
   text-indent: -300px;
@@ -8583,23 +8577,23 @@ body.detail-open #nav-overlay {
   transition: text-indent 0.5s;
 }
 
-/* line 294, resources/scss/pages/_stations.scss */
+/* line 289, resources/scss/pages/_stations.scss */
 .page-type-stations #district-trigger .icon {
   padding-left: 10px;
   font-size: 1.25rem;
 }
 
-/* line 299, resources/scss/pages/_stations.scss */
+/* line 294, resources/scss/pages/_stations.scss */
 .page-type-stations #district-trigger:hover {
   padding-left: 15px;
 }
 
-/* line 302, resources/scss/pages/_stations.scss */
+/* line 297, resources/scss/pages/_stations.scss */
 .page-type-stations #district-trigger:hover .text {
   text-indent: 0;
 }
 
-/* line 310, resources/scss/pages/_stations.scss */
+/* line 305, resources/scss/pages/_stations.scss */
 #stations-spinner {
   display: none;
   position: absolute;
@@ -8612,7 +8606,7 @@ body.detail-open #nav-overlay {
   z-index: 15;
 }
 
-/* line 321, resources/scss/pages/_stations.scss */
+/* line 316, resources/scss/pages/_stations.scss */
 #station-overlay-container {
   position: absolute;
   top: 0;
@@ -8639,7 +8633,7 @@ body.detail-open #nav-overlay {
   clear: both;
 }
 
-/* line 336, resources/scss/pages/_stations.scss */
+/* line 331, resources/scss/pages/_stations.scss */
 #thresholds-container {
   position: relative;
   padding: 25px;
@@ -8650,7 +8644,7 @@ body.detail-open #nav-overlay {
   background-color: white;
 }
 
-/* line 345, resources/scss/pages/_stations.scss */
+/* line 340, resources/scss/pages/_stations.scss */
 #threshold_inputs {
   display: block;
   position: absolute;
@@ -8659,7 +8653,7 @@ body.detail-open #nav-overlay {
   font-size: 0.9em;
 }
 
-/* line 351, resources/scss/pages/_stations.scss */
+/* line 346, resources/scss/pages/_stations.scss */
 #threshold_inputs input {
   background-color: #f44c36;
   padding: 5px;
@@ -8671,7 +8665,7 @@ body.detail-open #nav-overlay {
   font-size: 0.9em;
 }
 
-/* line 361, resources/scss/pages/_stations.scss */
+/* line 356, resources/scss/pages/_stations.scss */
 #threshold_inputs select {
   background-color: #f44c36;
   padding: 5px;
@@ -8682,7 +8676,7 @@ body.detail-open #nav-overlay {
   font-size: 0.9em;
 }
 
-/* line 371, resources/scss/pages/_stations.scss */
+/* line 366, resources/scss/pages/_stations.scss */
 #tidal-chart {
   background-color: white;
   height: 100%;
@@ -8690,21 +8684,21 @@ body.detail-open #nav-overlay {
   position: relative;
 }
 
-/* line 377, resources/scss/pages/_stations.scss */
+/* line 372, resources/scss/pages/_stations.scss */
 #overlay-chart-container {
   margin: 25px;
   height: 50vh;
   width: calc(100% - 50px);
 }
 
-/* line 382, resources/scss/pages/_stations.scss */
+/* line 377, resources/scss/pages/_stations.scss */
 #overlay-thresholds-container {
   padding: 25px;
   max-height: 70vh !important;
   width: calc(100% - 50px);
 }
 
-/* line 387, resources/scss/pages/_stations.scss */
+/* line 382, resources/scss/pages/_stations.scss */
 .left_chart {
   position: relative;
   width: calc(50% - 40px);
@@ -8714,7 +8708,7 @@ body.detail-open #nav-overlay {
   background-color: white;
 }
 
-/* line 395, resources/scss/pages/_stations.scss */
+/* line 390, resources/scss/pages/_stations.scss */
 .right_chart {
   position: relative;
   width: calc(50% - 40px);
@@ -8724,7 +8718,7 @@ body.detail-open #nav-overlay {
   background-color: white;
 }
 
-/* line 403, resources/scss/pages/_stations.scss */
+/* line 398, resources/scss/pages/_stations.scss */
 #station-overlay-close {
   position: absolute;
   top: 10px;
@@ -8734,7 +8728,7 @@ body.detail-open #nav-overlay {
   cursor: pointer;
 }
 
-/* line 413, resources/scss/pages/_stations.scss */
+/* line 408, resources/scss/pages/_stations.scss */
 #station-overlay-header {
   height: 120px;
   color: #ffffff;
@@ -8752,12 +8746,12 @@ body.detail-open #nav-overlay {
   clear: both;
 }
 
-/* line 419, resources/scss/pages/_stations.scss */
+/* line 414, resources/scss/pages/_stations.scss */
 #station-overlay-header h3 {
   padding: 0;
 }
 
-/* line 423, resources/scss/pages/_stations.scss */
+/* line 418, resources/scss/pages/_stations.scss */
 #station-overlay-header h5 {
   float: left;
   width: 50%;
@@ -8765,7 +8759,7 @@ body.detail-open #nav-overlay {
   font-family: "CESans", Roboto, Helvetica, "Helvetica Neue", Arial, sans-serif;
 }
 
-/* line 430, resources/scss/pages/_stations.scss */
+/* line 425, resources/scss/pages/_stations.scss */
 .form-group {
   font-size: 0.75rem;
 }
@@ -8781,13 +8775,13 @@ body.detail-open #nav-overlay {
   clear: both;
 }
 
-/* line 434, resources/scss/pages/_stations.scss */
+/* line 429, resources/scss/pages/_stations.scss */
 .form-group label {
   color: #ffffff;
   display: block;
 }
 
-/* line 439, resources/scss/pages/_stations.scss */
+/* line 434, resources/scss/pages/_stations.scss */
 .form-group select {
   font-family: Roboto, Helvetica, "Helvetica Neue", Arial, sans-serif;
   font-size: 0.75rem;
@@ -8795,7 +8789,7 @@ body.detail-open #nav-overlay {
   padding: 3px;
 }
 
-/* line 446, resources/scss/pages/_stations.scss */
+/* line 441, resources/scss/pages/_stations.scss */
 .form-group input {
   display: inline-block;
   width: 100%;
@@ -8807,17 +8801,17 @@ body.detail-open #nav-overlay {
   padding: 4px 8px;
 }
 
-/* line 457, resources/scss/pages/_stations.scss */
+/* line 452, resources/scss/pages/_stations.scss */
 .form-group .field-pair {
   float: left;
 }
 
-/* line 461, resources/scss/pages/_stations.scss */
+/* line 456, resources/scss/pages/_stations.scss */
 .form-group .field-pair.append input {
   width: 100%;
 }
 
-/* line 465, resources/scss/pages/_stations.scss */
+/* line 460, resources/scss/pages/_stations.scss */
 .form-group .field-pair.append .append {
   color: #ffffff;
   display: inline-block;
@@ -8825,7 +8819,7 @@ body.detail-open #nav-overlay {
   vertical-align: middle;
 }
 
-/* line 475, resources/scss/pages/_stations.scss */
+/* line 470, resources/scss/pages/_stations.scss */
 .station_overlay_text p {
   width: 100%;
   padding: 10px 0;
@@ -8835,14 +8829,14 @@ body.detail-open #nav-overlay {
   font-family: Roboto, Helvetica, "Helvetica Neue", Arial, sans-serif;
 }
 
-/* line 483, resources/scss/pages/_stations.scss */
+/* line 478, resources/scss/pages/_stations.scss */
 .station_overlay_text {
   width: 100%;
   min-height: 100px;
   overflow-y: auto;
 }
 
-/* line 490, resources/scss/pages/_stations.scss */
+/* line 485, resources/scss/pages/_stations.scss */
 .station-overlay-content {
   position: absolute;
   bottom: 0;
@@ -8854,7 +8848,7 @@ body.detail-open #nav-overlay {
   z-index: 20;
 }
 
-/* line 500, resources/scss/pages/_stations.scss */
+/* line 495, resources/scss/pages/_stations.scss */
 .station-overlay-column {
   position: relative;
   float: left;
@@ -8862,12 +8856,12 @@ body.detail-open #nav-overlay {
   height: 100%;
 }
 
-/* line 506, resources/scss/pages/_stations.scss */
+/* line 501, resources/scss/pages/_stations.scss */
 .station-overlay-column.left {
   padding-right: 40px;
 }
 
-/* line 509, resources/scss/pages/_stations.scss */
+/* line 504, resources/scss/pages/_stations.scss */
 .station-overlay-column.left:after {
   content: '';
   display: block;
@@ -8880,17 +8874,17 @@ body.detail-open #nav-overlay {
   border-left-color: #ffffff;
 }
 
-/* line 522, resources/scss/pages/_stations.scss */
+/* line 517, resources/scss/pages/_stations.scss */
 #stations-map .esri-display-object, #stations-map .esri-display-object svg {
   pointer-events: none;
 }
 
-/* line 525, resources/scss/pages/_stations.scss */
+/* line 520, resources/scss/pages/_stations.scss */
 #stations-map .esri-display-object svg {
   filter: drop-shadow(0.5px 0.5px 1px rgba(0, 0, 0, 0.2));
 }
 
-/* line 528, resources/scss/pages/_stations.scss */
+/* line 523, resources/scss/pages/_stations.scss */
 #stations-map svg g circle {
   pointer-events: all;
   cursor: pointer;

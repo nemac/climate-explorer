@@ -364,7 +364,7 @@
       this.view.ui.add(this.bgExpand, 'top-left');
 
       this.nodes.$legendContainer = $('<div></div>');
-      this.nodes.$legendContainer.html('<img class="legend-image" src="/resources/img/legends/summer_tmax.png" />');
+      this._updateLegend();
       this.legendExpand = new this.dojoMods.Expand({
         expandIconClass: 'esri-icon-description',
         view: this.view,

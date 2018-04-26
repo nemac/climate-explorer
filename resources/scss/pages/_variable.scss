@@ -183,11 +183,6 @@
     display: none;
   }
 
-  .legend-image {
-    max-height: 16rem;
-    max-width: inherit;
-  }
-
   .ol-scale-line {
     background: rgba(0, 60, 136, .3);
     border-radius: 4px;
@@ -238,9 +233,15 @@
 .esri-view-width-greater-than-xsmall .esri-expand__content {
   z-index: 100;
 }
+
 .esri-scale-bar.esri-widget {
   margin-bottom: 45px;
 }
+.legend-image {
+  max-height: 16rem;
+  max-width: none;
+}
+
 .scenario-map-overlay-container {
   position: absolute;
   height: 100%;
