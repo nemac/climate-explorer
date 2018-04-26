@@ -81,17 +81,20 @@
 
 
 <script>
-  if (undefined === window.ce) {window.ce = {};}
   $(document).ready(function () {
     app = new App(<?php echo "'" . $data_base_url . "'"; ?>);
   });
   $(document).ready(function () {
-    var stationParams = window.ce.ce("getStationState")
-    window.stations = $('#stations-map').stationsMap(stationParams);
+    var stationsMapState = window.ce.ce("getStationState");
+    window.stations = $('#stations-map').stationsMap(Object.assign({
+      // When state changes, just pass the current options along directly for this page.
+      // If we re-use the stationsMap widget on another page there may be more handling to do.
+      change: function (options) {window.ce.ce('setStationMapState', options);}
+    }, stationsMapState));
 
-    if (stationParams.mode) {
-      $("#stations-options").val(stationParams.mode);
-      $("option[value=" + stationParams.mode + "]").attr("selected", "selected");
+    if (stationsMapState.mode) {
+      $("#stations-options").val(stationsMapState.mode);
+      $("option[value=" + stationsMapState.mode + "]").attr("selected", "selected");
     }
   });
   $(document).ready(function () {

@@ -161,8 +161,8 @@ especially when it comes to interacting with the DOM and handling events.
 
     getUrlParam: function (key) {
       var params = decodeURIComponent(window.location.search.substring(1)).split("&"),
-          param,
-          i;
+        param,
+        i;
 
       for (i = 0; i < params.length; i++) {
         param = params[i].split('=');
@@ -175,16 +175,18 @@ especially when it comes to interacting with the DOM and handling events.
       return undefined;
     },
 
-    // Gets and formats multiple url params. Expects an array of objects with keys "url"
-    // and "key"
-    getUrlParams: function (config) {
-      var results = {},
-          result,
-          i;
-      for (i = 0; i < config.length; i++) {
-        results[config[i].hasOwnProperty("key") ? config[i].key : config[i].url] = this.getUrlParam(config[i].url);
-      }
+    /**
+     * Gets url parameters and re-keys them as specified by params
+     * @param {Object} params - An object with newkey:oldkey key:value pairs
+     */
+    getUrlParams: function (params) {
+      var results = {};
 
+      Object.keys(params).forEach(function (newkey) {
+        if (this.getUrlParam(params[newkey]) !== undefined) {
+          results[newkey] = this.getUrlParam(params[newkey])
+        }
+      }.bind(this));
       return results;
     },
 
@@ -192,26 +194,26 @@ especially when it comes to interacting with the DOM and handling events.
     // params is a nested array of objects with the keys "key" and "value"
     setUrlParams: function (params) {
       var href = window.location.href.split("?")[0],
-          i;
+        i;
 
       if (params.length === 0) return;
       if (window.hasOwnProperty("history") === false || window.history.replaceState === false) return;
-        
+
 
       for (i = 0; i < params.length; i++) {
         params[i] = encodeURIComponent(params[i].key) + "=" + encodeURIComponent(params[i].value);
       }
 
-      window.history.replaceState({}, "", href + "?" + params.join("&")); 
+      window.history.replaceState({}, "", href + "?" + params.join("&"));
     },
 
     // Replaces specified URL param with the passed value
     setUrlParam: function (key, value) {
       var params = decodeURIComponent(window.location.search.substring(1)).split("&"),
-          param,
-          href = window.location.href.split("?")[0],
-          paramExists = false,
-          i;
+        param,
+        href = window.location.href.split("?")[0],
+        paramExists = false,
+        i;
 
       if (window.hasOwnProperty("history") === false || window.history.replaceState === false) return;
 
@@ -230,16 +232,16 @@ especially when it comes to interacting with the DOM and handling events.
         params.push(encodeURIComponent(key) + "=" + encodeURIComponent(value));
       }
 
-      window.history.replaceState({}, "", href + "?" + params.join("&")); 
+      window.history.replaceState({}, "", href + "?" + params.join("&"));
     },
-    
+
     // Removes specified URL param
     removeUrlParam: function (key) {
       var params = decodeURIComponent(window.location.search.substring(1)).split("&"),
-          param,
-          newParams = [],
-          href = window.location.href.split("?")[0],
-          i;
+        param,
+        newParams = [],
+        href = window.location.href.split("?")[0],
+        i;
 
       if (window.hasOwnProperty("history") === false || window.history.replaceState === false) return;
 
@@ -253,22 +255,20 @@ especially when it comes to interacting with the DOM and handling events.
         newParams.push(encodeURIComponent(param[0]) + "=" + encodeURIComponent(param[1]));
       }
 
-      window.history.replaceState({}, "", href + "?" + newParams.join("&")); 
+      window.history.replaceState({}, "", href + "?" + newParams.join("&"));
     },
-    
+
     //todo write public getters for state variables
-    getStationState: function () {
-        var params = [
-          {
-            "url" : "id",
-            "key" : "mode"
-          },
-          {
-            "url" : "station",
-            "key" : "stationId"
-          }
-        ];
-        return this.getUrlParams(params);
+    getStationsMapState: function () {
+      return this.getUrlParams({
+        mode: 'id',
+        stationID: 'station',
+        variable: 'variable',
+        zoom: 'zoom'
+      });
+    },
+    setStationsMapState:function(state){
+      // todo
     },
 
     // called using `$(window).ce('getMapState')`...and maybe `window.ce.getMapState` if that's easier
@@ -282,11 +282,6 @@ especially when it comes to interacting with the DOM and handling events.
 
     // CASE.PHP functions
 
-    _destroy: function () {
-      // The public destroy method will do some stuff and
-      // then invoke this method, so do any extra stuff here
-      // (removing CSS classes, destroying detached nodes, etc)
-    },
 
     // These 3 methods give you an easy way to control debug messages
     _log: function () { (this.options.debug === 3) && this._toLoggerMethod('log', arguments); },
@@ -298,18 +293,6 @@ especially when it comes to interacting with the DOM and handling events.
       logger.error.apply(logger, args);
     },
 
-    // =========== Public methods to implement =============================
-
-
-    disable: function () {
-      // Do any custom logic for disabling here, then
-      this._super();
-    },
-
-    enable: function () {
-      // Do any custom logic for enabling here, then
-      this._super();
-    }
 
     // ============ Public methods provided by the base widget =============
     // instance() - Retrieves the widget's instance object. If the element
@@ -324,4 +307,7 @@ especially when it comes to interacting with the DOM and handling events.
 
   });
 }));
-window.ce = $(window).ce({});
+$(function () {
+  window.ce = $(window).ce({});
+});
+

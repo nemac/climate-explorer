@@ -219,6 +219,10 @@
           this._whenDojoLoaded().then(this._initTidalStationsLayer.bind(this));
           break;
       }
+
+      if (this.options.stationId){
+        this._stationSelected();
+      }
     },
 
     _initMap: function () {
@@ -575,17 +579,13 @@
         this.options.extent = null;
         this.view.goTo({center: new this.dojoMods.Point({latitude: this.options.center[0], longitude: this.options.center[1]}), zoom: this.options.zoom});
       }
-
+      this._trigger('change', null, this.options);
       return this;
     },
 
     _stationSelected: function () {
       if (this.options.stationId === null) {
         return
-      }
-
-      if (window.ce && window.ce.ce) {
-        window.ce.ce("setUrlParam", "station", this.options.stationId);
       }
 
       $(this.nodes.stationOverlayContainer).css('visibility', 'visible');
