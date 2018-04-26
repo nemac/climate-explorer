@@ -262,13 +262,17 @@ especially when it comes to interacting with the DOM and handling events.
     getStationsMapState: function () {
       return this.getUrlParams({
         mode: 'id',
-        stationID: 'station',
+        stationId: 'station',
         variable: 'variable',
         zoom: 'zoom'
       });
     },
-    setStationsMapState:function(state){
-      // todo
+    setStationsMapState: function (state) {
+      if (Object.keys(state).includes('stationId')) {
+        this.setUrlParam('station', state['stationId']);
+      } else {
+        this.removeUrlParam('stationID');
+      }
     },
 
     // called using `$(window).ce('getMapState')`...and maybe `window.ce.getMapState` if that's easier

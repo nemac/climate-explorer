@@ -85,11 +85,11 @@
     app = new App(<?php echo "'" . $data_base_url . "'"; ?>);
   });
   $(document).ready(function () {
-    var stationsMapState = window.ce.ce("getStationState");
+    var stationsMapState = window.ce.ce("getStationsMapState");
     window.stations = $('#stations-map').stationsMap(Object.assign({
       // When state changes, just pass the current options along directly for this page.
       // If we re-use the stationsMap widget on another page there may be more handling to do.
-      change: function (options) {window.ce.ce('setStationMapState', options);}
+      change: function (event, options) {window.ce.ce('setStationsMapState', options);}
     }, stationsMapState));
 
     if (stationsMapState.mode) {
