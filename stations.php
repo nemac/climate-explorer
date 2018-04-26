@@ -60,7 +60,7 @@
   <p>The Climate Explorer is optimized for desktop use. Please visit the site on a desktop computer.</p>
 </div>
 
-<?php include_once('template/footer.php') ?>
+<?php include_once('template/footer.php')?>
 
 <script type="text/javascript" src="/resources/js/stationsMap.js"></script>
 <script type="text/javascript" src="/resources/vendor/tidal/tidalstationswidget.js"></script>
@@ -68,9 +68,20 @@
 <script type="text/javascript" src="/resources/vendor/climate-widget-graph/climate-widget-graph.js"></script>
 <script type="text/javascript" src="/resources/js/station-charts.js"></script>
 
+
 <script>
   $(document).ready(function () {
-    window.stations = $('#stations-map').stationsMap({});
+    var stationsMapState = window.ce.ce("getStationsMapState");
+    window.stations = $('#stations-map').stationsMap(Object.assign({
+      // When state changes, just pass the current options along directly for this page.
+      // If we re-use the stationsMap widget on another page there may be more handling to do.
+      change: function (event, options) {window.ce.ce('setStationsMapState', options);}
+    }, stationsMapState));
+
+    if (stationsMapState.mode) {
+      $("#stations-options").val(stationsMapState.mode);
+      $("option[value=" + stationsMapState.mode + "]").attr("selected", "selected");
+    }
   });
   $(document).ready(function () {
     var initFormMapper = function () {
@@ -112,6 +123,7 @@
     $('#stations-options').on('change', function () {
       $("#chart-name").html($('.fs-dropdown-selected').html());
     });
+
   });
 </script>
 

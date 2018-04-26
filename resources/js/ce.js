@@ -91,7 +91,6 @@ especially when it comes to interacting with the DOM and handling events.
     //
 
     options: {
-
       // Controls debug output
       // 0:off, 1:errors only, 2:errors and warnings, 3:everything
       debug: 0,
@@ -160,7 +159,122 @@ especially when it comes to interacting with the DOM and handling events.
       //alternative place to handle option changes when multiple options change at the same time.
     },
 
+    getUrlParam: function (key) {
+      var params = decodeURIComponent(window.location.search.substring(1)).split("&"),
+        param,
+        i;
+
+      for (i = 0; i < params.length; i++) {
+        param = params[i].split('=');
+
+        if (param[0] === key) {
+          return param[1] || true;
+        }
+      }
+
+      return undefined;
+    },
+
+    /**
+     * Gets url parameters and re-keys them as specified by params
+     * @param {Object} params - An object with newkey:oldkey key:value pairs
+     */
+    getUrlParams: function (params) {
+      var results = {};
+
+      Object.keys(params).forEach(function (newkey) {
+        if (this.getUrlParam(params[newkey]) !== undefined) {
+          results[newkey] = this.getUrlParam(params[newkey])
+        }
+      }.bind(this));
+      return results;
+    },
+
+    // Replaces all URL params with the passed array
+    // params is a nested array of objects with the keys "key" and "value"
+    setUrlParams: function (params) {
+      var href = window.location.href.split("?")[0],
+        i;
+
+      if (params.length === 0) return;
+      if (window.hasOwnProperty("history") === false || window.history.replaceState === false) return;
+
+
+      for (i = 0; i < params.length; i++) {
+        params[i] = encodeURIComponent(params[i].key) + "=" + encodeURIComponent(params[i].value);
+      }
+
+      window.history.replaceState({}, "", href + "?" + params.join("&"));
+    },
+
+    // Replaces specified URL param with the passed value
+    setUrlParam: function (key, value) {
+      var params = decodeURIComponent(window.location.search.substring(1)).split("&"),
+        param,
+        href = window.location.href.split("?")[0],
+        paramExists = false,
+        i;
+
+      if (window.hasOwnProperty("history") === false || window.history.replaceState === false) return;
+
+      for (i = 0; i < params.length; i++) {
+        param = params[i].split('=');
+
+        if (param[0] === key) {
+          param[1] = value;
+          paramExists = true;
+        }
+
+        params[i] = encodeURIComponent(param[0]) + "=" + encodeURIComponent(param[1]);
+      }
+
+      if (!paramExists) {
+        params.push(encodeURIComponent(key) + "=" + encodeURIComponent(value));
+      }
+
+      window.history.replaceState({}, "", href + "?" + params.join("&"));
+    },
+
+    // Removes specified URL param
+    removeUrlParam: function (key) {
+      var params = decodeURIComponent(window.location.search.substring(1)).split("&"),
+        param,
+        newParams = [],
+        href = window.location.href.split("?")[0],
+        i;
+
+      if (window.hasOwnProperty("history") === false || window.history.replaceState === false) return;
+
+      for (i = 0; i < params.length; i++) {
+        param = params[i].split('=');
+
+        if (param[0] === key) {
+          continue;
+        }
+
+        newParams.push(encodeURIComponent(param[0]) + "=" + encodeURIComponent(param[1]));
+      }
+
+      window.history.replaceState({}, "", href + "?" + newParams.join("&"));
+    },
+
     //todo write public getters for state variables
+    getStationsMapState: function () {
+      return this.getUrlParams({
+        mode: 'id',
+        stationId: 'station',
+        variable: 'variable',
+        zoom: 'zoom'
+      });
+    },
+    setStationsMapState: function (state) {
+      if (Object.keys(state).includes('stationId')) {
+        this.setUrlParam('station', state['stationId']);
+      } else {
+        this.removeUrlParam('stationID');
+      }
+    },
+
     // called using `$(window).ce('getMapState')`...and maybe `window.ce.getMapState` if that's easier
     getMapState: function () {
       return {
@@ -170,11 +284,8 @@ especially when it comes to interacting with the DOM and handling events.
       };
     },
 
-    _destroy: function () {
-      // The public destroy method will do some stuff and
-      // then invoke this method, so do any extra stuff here
-      // (removing CSS classes, destroying detached nodes, etc)
-    },
+    // CASE.PHP functions
+
 
     // These 3 methods give you an easy way to control debug messages
     _log: function () { (this.options.debug === 3) && this._toLoggerMethod('log', arguments); },
@@ -186,18 +297,6 @@ especially when it comes to interacting with the DOM and handling events.
       logger.error.apply(logger, args);
     },
 
-    // =========== Public methods to implement =============================
-
-
-    disable: function () {
-      // Do any custom logic for disabling here, then
-      this._super();
-    },
-
-    enable: function () {
-      // Do any custom logic for enabling here, then
-      this._super();
-    }
 
     // ============ Public methods provided by the base widget =============
     // instance() - Retrieves the widget's instance object. If the element
@@ -211,7 +310,8 @@ especially when it comes to interacting with the DOM and handling events.
     //      or relevant generated element.
 
   });
-  $(document).ce({stationID: null});
-  $(document).ce({stationID: '1'});
-
 }));
+$(function () {
+  window.ce = $(window).ce({});
+});
+
