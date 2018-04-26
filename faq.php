@@ -5,12 +5,8 @@
   <?php include_once('template/head.php') ?>
 
   <?php
-
-  $share_data['url'] = current_URL();
   $share_data['title'] = 'Definitions';
-
   echo opengraph_output($share_data);
-
   ?>
 
 </head>

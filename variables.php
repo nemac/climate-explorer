@@ -117,27 +117,23 @@
 <?php include_once('template/footer.php') ?>
 
 
-<script src="https://unpkg.com/terraformer@1.0.8/terraformer.js" integrity="sha384-+M797Pj3WZVCwMmLbOxAoaWYcKJo8NSxItmI48ytcLNeAnfn1d/IckFn31jEqrzP" crossorigin="anonymous"></script>
-<script src="https://unpkg.com/terraformer-arcgis-parser@1.0.5/terraformer-arcgis-parser.js" integrity="sha384-duFUjKTSNoxEspdJNwr83CUgRxclf0ueKJB9DU/Vbit6bfWgzvZsHW6H1JLBBXhp" crossorigin="anonymous"></script>
-<script type="text/javascript" src="/resources/js/variables.js"></script>
-
+<script src="https://unpkg.com/terraformer@1.0.8/terraformer.js" integrity="sha384-+M797Pj3WZVCwMmLbOxAoaWYcKJo8NSxItmI48ytcLNeAnfn1d/IckFn31jEqrzP"
+        crossorigin="anonymous"></script>
+<script src="https://unpkg.com/terraformer-arcgis-parser@1.0.5/terraformer-arcgis-parser.js"
+        integrity="sha384-duFUjKTSNoxEspdJNwr83CUgRxclf0ueKJB9DU/Vbit6bfWgzvZsHW6H1JLBBXhp" crossorigin="anonymous"></script>
+<script type="text/javascript" src="/resources/js/scenarioComparisonMap.js"></script>
 
 
 <script>
-  if (undefined === window.ce) {window.ce = {};}
-  $(document).ready(function () {
-    app = new App('/resources/data/');
-  });
-  $(function(){
+  $(function () {
     $('#variable-map').spinner();
   });
   $(document).ready(function () {
     window.scenariosMap = $('#variable-map').scenarioComparisonMap({
-      stationId: window.ce.stationId, mode: window.ce.case,
       countyselected: function (event, value) {
         window.countySelected($('.cwg-container')[0], value);
       },
-      layersloaded: function(event, value){
+      layersloaded: function (event, value) {
         $('#variable-map').spinner('destroy');
       }
     });
@@ -240,7 +236,5 @@
     // }
   });
 </script>
-
-
 </body>
 </html>

@@ -581,8 +581,8 @@
       $(this.nodes.stationOverlayContainer).css('visibility', 'visible');
       switch (this.options.mode) {
         case 'daily_vs_climate':
-          $(this.nodes.stationOverlayContainer).append(
-            `              <div id="station-overlay">
+          $(this.nodes.stationOverlayContainer).append(`
+              <div id="station-overlay">
                 <div id="station-overlay-close">x</div>
                 <div id="station-overlay-header">
                   <h3 class="accent-color" style="margin-bottom: 20px;"><span class="icon icon-district"></span>Weather Station</h3>
@@ -612,8 +612,8 @@
 
           break;
         case 'thresholds':
-          $(this.nodes.stationOverlayContainer).append(
-            `            <div id="station-overlay">
+          $(this.nodes.stationOverlayContainer).append(`
+            <div id="station-overlay">
               <div id="station-overlay-close">x</div>
               <div id="station-overlay-header">
                 <h3 class="accent-color" style="margin-bottom: 20px;"><span class="icon icon-district"></span>Weather Station</h3>
@@ -738,8 +738,8 @@
           // this.chart = new ChartBuilder({station: value}, this.options.thresholdStationsDataURL);
           break;
         case 'high_tide_flooding':
-          $(this.nodes.stationOverlayContainer).append(
-            `              <div id="station-overlay">
+          $(this.nodes.stationOverlayContainer).append(`
+              <div id="station-overlay">
                 <div id="station-overlay-close">x</div>
                 <div id="station-overlay-header">
                   <h3 class="accent-color" style="margin-bottom: 20px;"><span class="icon icon-district"></span>High Tide Flooding</h3>

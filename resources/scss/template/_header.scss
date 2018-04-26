@@ -101,6 +101,7 @@
       display: inline-block;
       height: 70px;
       padding: 23px 16px 0 16px;
+      &:empty:before{content: '\200b';}
     }
   }
   

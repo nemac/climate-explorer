@@ -1,6 +1,6 @@
 <?php
 $share_title = isset($share_data['title']) ? $purifier->purify($share_data['title']) : 'Climate Explorer';
-$share_url = isset($share_data['url']) ? $purifier->purify($share_data['url']) : current_URL();
+$share_url = isset($share_data['url']) ? $purifier->purify($share_data['url']) : '/';
 $tweet_text = $share_title . ' via @NOAA Climate Explorer: ' . $share_url;
 ?>
 
@@ -14,6 +14,6 @@ $tweet_text = $share_title . ' via @NOAA Climate Explorer: ' . $share_url;
   </ul>
   
   <div id="share-permalink-input">
-    <input type="text" id="share_link" value="<?php echo current_URL(); ?>">
+    <input type="text" id="share_link" value="<?php echo $_SERVER["REQUEST_URI"] ?>">
   </div>
 </div>

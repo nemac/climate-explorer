@@ -32,24 +32,8 @@
 <script type="text/javascript" src="/resources/vendor/tidal/tidalstationswidget.js"></script>
 
 
-<?php if (isset($active_variable) && $active_variable != null) { ?>
-  <script>
-    $(document).ready(function () {
-      window.variables = new Variables(<?php echo "'" . $active_variable . "'"; ?>, <?php echo "'" . $data_base_url . "'"; ?>);
-    });
-  </script>
-<?php } ?>
-
-<?php if (isset($location) && $location != null) { ?>
-  <script>
-    $(document).ready(function () {
-      window.loc = new Location(<?php echo "'" . $lat . "'"; ?>, <?php echo "'" . $lon . "'"; ?>, <?php echo "'" . $stations_base_url . "'"; ?>, <?php echo "'" . $data_base_url . "'"; ?>);
-    });
-  </script>
-<?php } ?>
-
 <script>
   $(document).ready(function () {
-    window.app = new App(<?php echo "'" . $data_base_url . "'"; ?>);
+    window.app = new App('/resources/data/');
   });
 </script>

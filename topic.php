@@ -18,12 +18,6 @@ if ($param != 'coastal' && $param != 'health' && $param != 'water' && $param != 
   <?php
   echo opengraph_output($share_data);
   ?>
-
-  <style>
-
-
-  </style>
-
 </head>
 
 <body id="page-station-<?php echo $param; ?>" class="page-type-stations">
@@ -45,7 +39,7 @@ if ($param != 'coastal' && $param != 'health' && $param != 'water' && $param != 
         <ul id="substations-list">
 
         </ul>
-        <a href="<?php $current_domain ?>case.php?id=<?php echo $param ?>&group=all" id="substations-view-all"
+        <a href="/case.php?id=<?php echo $param ?>&group=all" id="substations-view-all"
            class="button display-block border-white color-orange arrow-right">View all layers for station</a>
       </div>
     </section>
@@ -61,19 +55,19 @@ if ($param != 'coastal' && $param != 'health' && $param != 'water' && $param != 
 
 
 <script>
-  $.getJSON(<?php echo "'" . $data_base_url . "'"; ?>+'data-grouped.json', function (data) {
+  $.getJSON('/resources/data/data-grouped.json', function (data) {
     var li;
     var desc = data.stations['<?php echo $param ?>'].description;
     $('#station-description').html(desc);
 
     $.each(data.stations['<?php echo $param; ?>'].groups, function (i, group) {
-      li = '<li><a href="<?php $current_domain ?>#<?php echo $param; ?>-' + i + '">' + group.title + '</a></li>';
+      li = '<li><a href="/#<?php echo $param; ?>-' + i + '">' + group.title + '</a></li>';
       $('#substations-list').append(li);
 
       var html = '<article id="<?php echo $param ?>-' + i + '" class="station-banner">' +
         '<div class="station-banner-text">' +
         '<h4>Impact</h4>' +
-        '<h3><a href="<?php $current_domain ?>case.php?id=<?php echo $param ?>&group=' + i + '">' + group.title + '</a></h3>' +
+        '<h3><a href="/case.php?id=<?php echo $param ?>&group=' + i + '">' + group.title + '</a></h3>' +
         '<p>' + group.description + '</p>' +
         '</div>' +
         '<div class="station-layers white-menu">' +
@@ -81,7 +75,7 @@ if ($param != 'coastal' && $param != 'health' && $param != 'water' && $param != 
         '<ul id="' + i + '-layer-list">' +
         '</ul>' +
         '</div>' +
-        '<a href="<?php $current_domain ?>case.php?id=<?php echo $param ?>&group=' + i + '" class="button bg-trans border-white hover-bg-white plus">View details</a>' +
+        '<a href="/case.php?id=<?php echo $param ?>&group=' + i + '" class="button bg-trans border-white hover-bg-white plus">View details</a>' +
         '</article>';
 
       $('#substations').append(html);

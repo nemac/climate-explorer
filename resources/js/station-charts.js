@@ -1,3 +1,5 @@
+//todo refactor to jquery widget
+
 var ChartBuilder = function (props, stations_base_url) {
   var self = this;
 

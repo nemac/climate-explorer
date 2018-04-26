@@ -591,7 +591,7 @@
 
             if (parent_tab_name === 'temperature-chart'){
                 setTimeout(function () {
-                    cwg.resize();
+                    tempChart.resize();
                 }, 100);
             }
 
@@ -893,7 +893,7 @@
                 $('.ui-slider-range').addClass('accent-background').html('<span class="icon icon-arrow-left-right"></span>');
 
                 setTimeout(function () {
-                    cwg.resize();
+                    tempChart.resize();
                     precipChart.resize();
                     derivedChart.resize();
                 }, 1500);

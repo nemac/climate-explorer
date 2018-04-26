@@ -4,7 +4,7 @@
     height: calc(100% - 40px);
     margin-top: 95px;
   }
-  
+
   #main-content-wrap {
     position: relative;
     padding: 2%;
@@ -14,30 +14,29 @@
     background-attachment: fixed;
     z-index: 1;
   }
-  
+
   .page-splash {
     color: $blue1;
-    
+
     .splash-text {
       mix-blend-mode: normal;
     }
-    
+
     h1 {
       font-size: 5rem;
     }
-    
+
     h3 {
       margin: 0 0 3% 0;
       color: $orange1;
     }
   }
-  
+
   section {
     position: relative;
     margin: 0 0 3% 0;
   }
 }
-
 #location-search {
   position: absolute;
   top: 20px;
@@ -45,7 +44,7 @@
   height: 60px;
   background: transparentize($white, 0.2);
   z-index: 1;
-  
+
   input {
     height: 60px;
     margin: 0;
@@ -56,54 +55,53 @@
     outline: none;
     background: $white;
     @include transition(0.5s);
-    
+
     &::-webkit-input-placeholder {
       color: $blue2;
       padding-top: 3px;
       @include transition(0.25s);
     }
-    
+
     &:-moz-placeholder {
       color: $blue2;
       padding-top: 3px;
       @include transition(0.25s);
     }
-    
+
     &::-moz-placeholder {
       color: $blue2;
       padding-top: 3px;
       @include transition(0.25s);
     }
-    
+
     &:-ms-input-placeholder {
       color: $blue2;
       padding-top: 3px;
       @include transition(0.25s);
     }
-    
+
     &:focus {
       background: $blue1;
       color: $white;
-      
+
       &::-webkit-input-placeholder {
         color: transparentize($white, 0.5);
       }
-      
+
       &:-moz-placeholder {
         color: transparentize($white, 0.5);
       }
-      
+
       &::-moz-placeholder {
         color: transparentize($white, 0.5);
       }
-      
+
       &:-ms-input-placeholder {
         color: transparentize($white, 0.5);
       }
     }
   }
 }
-
 #page-nav {
   width: 60%;
   padding-top: 20px;
@@ -112,7 +110,7 @@
   border-top: 3px solid $blue1;
   color: $blue2;
   @include clearfix;
-  
+
   h4 {
     float: left;
     width: 15%;
@@ -120,22 +118,22 @@
     font: 0.875rem/1.125rem $sans-heavy;
     text-transform: uppercase;
   }
-  
+
   ul {
     float: left;
     width: 85%;
-    
+
     li {
       float: left;
       margin: 0 2%;
       font: 1.125rem/1.125rem $sans-book;
-      
+
       a {
         display: block;
       }
     }
   }
-  
+
   &.stuck {
     top: 20px;
     left: 20px;
@@ -146,54 +144,54 @@
     background: transparentize($white, 0.2);
     border-top: none;
     z-index: 5;
-    
+
     h4 {
       width: auto;
       margin-right: 2%;
     }
   }
 }
-
 .location-data-section-wrap {
   padding: 1%;
   border: 10px solid $white;
   background: transparentize($white, 0.1);
 }
-
 .location-data-section {
   position: relative;
   @include legacy-clearfix;
-  
+
   .map {
-    @include full-size;
+    position:relative;
+    top:110px;
+    left:0;
     background: url(../img/bg_location-map.jpg) no-repeat top right;
     background-size: cover;
     z-index: 1;
   }
-  
+
   header {
     position: relative;
     padding: 0 0 10px 0;
     @include legacy-clearfix;
   }
-  
+
   h3 {
     margin: 0 0 10% 0;
     padding: 20px 0 0 0;
     font: 2rem/1em $roboto;
-    
+
     .icon {
       display: inline;
       margin: 0 20px 0 0;
       font-size: 2.5rem;
     }
   }
-  
+
   .data-vars {
     margin: 20px 0;
     border-top: 2px solid $grey2;
     @include legacy-clearfix;
-    
+
     label {
       display: block;
       float: left;
@@ -202,14 +200,14 @@
       font: 400 1rem/1em $roboto;
     }
   }
-  
+
   // dropdown
-  
+
   .fs-dropdown {
     float: left;
     margin: 0 10px 0 0;
     @include transition(0.25s);
-    
+
     button {
       height: auto;
       padding: 20px;
@@ -220,24 +218,24 @@
       font: 400 1rem/1em $roboto;
       @include transition(0.25s);
     }
-  
+
     .fs-dropdown-selected {
     }
   }
-  
+
   .fs-dropdown-open,
   .fs-dropdown-focus {
     .fs-dropdown-selected {
       @include box-shadow(none);
     }
   }
-  
+
   .fs-dropdown-options {
     background: $blue3;
     border: none;
     border-radius: 0;
     @include box-shadow(none);
-    
+
     button {
       padding: 10px;
       font-size: 1rem;
@@ -245,7 +243,7 @@
       background: $blue3;
     }
   }
-  
+
   .data-accordion-wrap {
     position: relative;
     float: left;
@@ -254,12 +252,13 @@
     padding: 0 0 50% 0;
     border: 10px solid $white;
     @include legacy-clearfix;
+
   }
-  
+
   .data-accordion {
     @include full-size;
     @include legacy-clearfix;
-    
+
     .data-accordion-tab {
       position: relative;
       float: left;
@@ -267,7 +266,7 @@
       height: 100%;
       overflow: hidden;
       @include transition(0.5s);
-      
+
       &:before {
         content: '';
         display: block;
@@ -280,12 +279,12 @@
         z-index: 3;
         @include transition(0.25s);
       }
-      
+
       header {
         @include full-size;
         cursor: pointer;
         z-index: 2;
-        
+
         h4 {
           position: absolute;
           top: 50%;
@@ -293,32 +292,35 @@
           width: 50px;
           height: 50px;
           margin: 0;
-          color: $white!important;
+          color: $white !important;
           text-align: center;
           font: 0.75rem/1em $sans-heavy;
           @include transform(translateY(-50%));
-          
+
           .icon {
             display: block;
             margin: 0 auto 10px auto;
             font-size: 2rem;
           }
-          
+
           .full-title {
             display: none;
           }
-          
+
           .source {
             display: none;
             font: 0.75rem/1.25em $sans-book;
           }
         }
-        
+
         .data-accordion-actions {
           display: none;
           float: right;
           white-space: nowrap;
-          
+          .how-to-read {
+            position: inherit;
+            float: left;
+          }
           a {
             display: inline-block;
             padding: 8px;
@@ -326,39 +328,43 @@
             line-height: 1.25em;
             color: $grey1;
             @include transition(0.25s);
-            
+
             .icon {
               margin: 0 8px 0 0;
               font-size: 1.25rem;
-              color: $orange1; 
+              color: $orange1;
             }
-            
+
             &:hover {
               background: $blue3;
             }
           }
         }
       }
-      
+
       .data-accordion-content {
-        @include full-size;
-        top: 50%;
-        left: 50%;
-        @include transform(translateX(-50%) translateY(-50%));
+        position: relative;
+        top:73px;
+        left:0;
+        height:calc(100% - 73px);
+        width:100%;
+        //top: 50%;
+        //left: 50%;
+        //@include transform(translateX(-50%) translateY(-50%));
         opacity: 0.25;
         mix-blend-mode: multiply;
         @include transition(0.25s);
         z-index: 1;
       }
-      
+
       &.data-chart {
         @include box-shadow(inset -10px 0 20px -10px transparentize($black, 0.5));
-          
+
         &:before {
           right: 0;
           border-color: transparent $white transparent transparent;
         }
-        
+
         .chart-wrap {
           position: absolute;
           top: 12%;
@@ -367,7 +373,7 @@
           height: 75%;
           z-index: 1;
         }
-        
+
         .chart-canvas {
           position: absolute;
           top: 0;
@@ -375,37 +381,37 @@
           height: 80%;
           z-index: 1;
         }
-        
+
         .chart-legend {
           position: absolute;
           bottom: 0;
           width: 100%;
           height: 15%;
           z-index: 2;
-          
+
           ul {
             li {
               display: inline-block;
               margin: 0 0 0 20px;
             }
           }
-          
+
           span {
             display: inline-block;
             vertical-align: middle;
           }
-          
+
           .colour {
             height: 5px;
             width: 15px;
             margin: 0 10px 0 0;
           }
-          
+
           .label {
             font-size: 0.875rem;
           }
         }
-        
+
         .range {
           position: absolute;
           bottom: 2%;
@@ -414,7 +420,7 @@
           height: 8%;
           z-index: 2;
         }
-        
+
         .chart-range {
           position: absolute;
           left: 0;
@@ -422,22 +428,22 @@
           height: 30px;
           background: $blue3;
           @include box-shadow(inset 0 5px 10px -5px transparentize($black, 0.5));
-          
+
           .ui-slider-handle {
             top: 0;
             width: 0;
             height: 30px;
             margin: 0;
             @include border-radius(none);
-            
+
             .tooltip {
               //left: -24px;
             }
           }
-          
+
           &.not-annual {
             height: 6px;
-            
+
             .ui-slider-handle {
               width: 16px;
               height: 16px;
@@ -445,30 +451,30 @@
             }
           }
         }
-        
+
         &.open {
-          background: transparentize($white, 0.2)!important;
-          
+          background: transparentize($white, 0.2) !important;
+
           .chart {
             opacity: 1;
             border-right: 5px solid $white;
           }
         }
       }
-      
+
       &.data-map {
         @include box-shadow(inset 10px 0 20px -10px transparentize($black, 0.5));
-        
+
         &:before {
           left: -1px;
           border-color: transparent transparent transparent $white;
         }
-        
+
         header {
           .map-seasons-container {
             float: left;
           }
-          
+
           .fs-dropdown {
             button {
               height: auto;
@@ -478,7 +484,7 @@
               font-size: 0.75rem;
               line-height: 1.25em;
               color: $grey1;
-              
+
               &.fs-dropdown-selected {
                 &:before {
                   display: inline-block;
@@ -490,77 +496,42 @@
                   line-height: 1;
                   color: #f5442d;
                 }
-              
+
                 &:hover {
                   background: $blue3;
                 }
               }
-              
+
               &:after {
                 right: 5px;
               }
             }
           }
         }
-        
+
         .data-accordion-content {
           background: $grey2;
         }
-        
-        .moveable {
-          width: 2px;
-          display: none;
-          z-index: 2;
-          
-          .handle {
-          }
-        }
-        
+
         .map-element {
-          display: block;
-          @include full-size;
-          text-align:center;
+          height:100%;
+          width:100%;
+          text-align: center;
           z-index: 1;
         }
-        
+
         .full-map-btn {
-          display: block;
-          position: absolute;
-          right: 10px;
-          bottom: 60px;
+          display: inline-block;
+          float: left;
+          //right: 10px;
+          //bottom: 60px;
+          border: none;
+          font-size: 1rem;
           padding: 8px 30px 8px 8px;
           z-index: 2;
         }
-        
-        .location-map-legend-container {
-          display: block;
-          position: absolute;
-          left: 10px;
-          top: 50%;
-          width: 100px;
-          padding: 8px;
-          background: $white;
-          z-index: 2;
-          @include transform(translateY(-50%));
-          color: $orange1;
-          
-          img {
-            display: block;
-            width: 100%;
-            height: auto;
-          }
-        }
-        
-        .year {
-          bottom: 0;
-          left: 0;
-          width: 100%;
-          
-          .ui-slider-handle {
-            background: $white!important;
-          }
-        }
-        
+
+
         &.open {
           .map {
             opacity: 1;
@@ -568,17 +539,17 @@
           }
         }
       }
-      
+
       &.open {
         width: 90%;
-        background: $white!important;
+        background: $white !important;
         @include box-shadow(none);
-        
+
         &:before {
           border-width: 0;
           margin-top: -9px;
         }
-        
+
         header {
           top: 0;
           left: 0;
@@ -588,43 +559,43 @@
           background: transparentize($white, 0.2);
           cursor: default;
           @include legacy-clearfix;
-          
+
           h4 {
             position: static;
             width: auto;
             height: auto;
             float: left;
             font: 1.5rem/1em $sans-book;
-            color: inherit!important;
+            color: inherit !important;
             text-align: left;
             z-index: 2;
             @include transform(none);
-            
+
             .icon {
               display: inline-block;
               margin: -4px 15px 0 0;
             }
-            
+
             .text {
               display: inline-block;
               vertical-align: middle;
             }
-            
+
             .full-title {
               display: inline;
             }
-          
+
             .source {
               display: block;
               margin: 4px 0 0 0;
             }
           }
-          
+
           .data-accordion-actions {
             display: block;
           }
         }
-        
+
         .data-accordion-content {
           @include box-shadow(none);
           opacity: 1;
@@ -633,23 +604,23 @@
       }
     }
   }
-  
+
   .data-list {
     position: relative;
     float: left;
     width: 30%;
     margin: 0 1% 0 0;
-    
+
     form {
       position: absolute;
       left: -9999px;
     }
   }
-  
+
   .data-options-trigger {
     display: none;
   }
-  
+
   .data-options {
     li {
       padding-left: 12%;
@@ -660,54 +631,54 @@
       border-bottom: 1px solid $grey2;
       @include transition(0.25s);
       @include clearfix;
-      
+
       &:last-child {
         border-bottom: none;
       }
-        
+
       &:hover {
         padding-left: calc(12% - 10px);
         border-left-width: 10px;
         border-left-color: $grey2;
       }
-        
+
       &.active {
         font-weight: 400;
         padding-left: calc(12% - 10px);
         border-left-width: 10px;
-        border-bottom-color: $grey2!important;
+        border-bottom-color: $grey2 !important;
       }
-      
+
       h4 {
         font-size: 1rem;
         @include clearfix;
         outline: none;
-        
+
         .ui-accordion-header-icon {
           display: none;
         }
       }
-      
+
       a {
         display: block;
         padding: 2%;
         color: $grey1;
         @include transition(0.25s);
-        
+
         &.text {
           width: 90%;
           float: left;
         }
-        
+
         &.icon {
           width: 10%;
-          float: right;     
+          float: right;
           text-align: right;
           line-height: 1.5rem;
-          color: #aaa;
+          color: #aaaaaa;
         }
       }
-      
+
       ul {
         li {
           font-size: 0.875rem;
@@ -717,47 +688,45 @@
     }
   }
 }
-
 #stations-data {
   p {
     margin: 0 0 20px 0;
   }
 }
-
 #location-temperature {
   .accent-color {
     color: $orange1;
   }
-  
+
   .accent-background {
     background-color: $orange1;
   }
-  
+
   .accent-border {
     border-color: $orange1;
   }
-  
+
   .data-options {
     .accent-color {
       //color: $grey1;
     }
-    
+
     .accent-border {
       border-left-color: $grey2;
       border-bottom-color: $grey2;
     }
-    
+
     .active {
       &.accent-border {
         border-left-color: $orange1;
         border-bottom-color: $grey2;
       }
-      
+
       .accent-color {
         color: $orange1;
       }
     }
-    
+
     ul {
       li {
         &.active {
@@ -766,48 +735,47 @@
       }
     }
   }
-  
+
   .data-vars {
     button {
       color: $orange1;
     }
   }
 }
-
 #location-precipitation {
   .accent-color {
     color: $blue1;
   }
-  
+
   .accent-background {
     background-color: $blue1;
   }
-  
+
   .accent-border {
     border-color: $blue1;
   }
-  
+
   .data-options {
     .accent-color {
       //color: $grey1;
     }
-    
+
     .accent-border {
       border-left-color: $grey2;
       border-bottom-color: $grey2;
     }
-    
+
     .active {
       &.accent-border {
         border-left-color: $blue1;
         border-bottom-color: $grey2;
       }
-      
+
       .accent-color {
         color: $blue1;
       }
     }
-    
+
     ul {
       li {
         &.active {
@@ -816,14 +784,13 @@
       }
     }
   }
-  
-  
+
   .data-vars {
     button {
       color: $blue1;
     }
   }
-  
+
   .range {
     .ui-slider {
       .ui-slider-range {
@@ -832,41 +799,40 @@
     }
   }
 }
-
 #location-derived {
   .accent-color {
     color: $brown1;
   }
-  
+
   .accent-background {
     background-color: $brown1;
   }
-  
+
   .accent-border {
     border-color: $brown1;
   }
-  
+
   .data-options {
     .accent-color {
       //color: $grey1;
     }
-    
+
     .accent-border {
       border-left-color: $grey2;
       border-bottom-color: $grey2;
     }
-    
+
     .active {
       &.accent-border {
         border-left-color: $brown1;
         border-bottom-color: $grey2;
       }
-      
+
       .accent-color {
         color: $brown1;
       }
     }
-    
+
     ul {
       li {
         &.active {
@@ -875,28 +841,27 @@
       }
     }
   }
-  
+
   .data-vars {
     button {
       color: $brown1;
     }
   }
 }
-
 #location-stations {
   padding: 0;
   height: calc(100vh - 160px);
-  
+
   .location-data-section {
     @include full-size;
   }
-  
+
   h3 {
     margin: 0 0 2% 0;
   }
-  
+
   // INTRO
-  
+
   #location-stations-about {
     position: absolute;
     top: 0;
@@ -905,34 +870,34 @@
     background: transparentize($white, 0.15);
     padding: 20px 20px 10px 20px;
     z-index: 5;
-    
+
     p {
       font-size: 0.875rem;
       margin: 20px 0;
     }
   }
-  
+
   // MAP
-  
+
   #location-stations-map-wrap {
     @include full-size;
     z-index: 1;
   }
-  
+
   #location-station-map {
     @include full-size;
-    
+
     .ol-attribution, .ol-rotate {
       display: none;
     }
-  
+
     .ol-zoom {
       position: absolute;
       z-index: 1;
       top: 50%;
       right: 2%;
       @include transform(translateY(-50%));
-      
+
       button {
         display: block;
         width: 30px;
@@ -1049,25 +1014,25 @@
   }
 
   // standard
-  
+
   #station-detail-data {
     background: $white;
     padding: 20px;
   }
-  
+
   .form-group {
     @include clearfix;
     font-size: 0.75rem;
-    
+
     label {
       display: block;
     }
-    
+
     select {
       font-family: $roboto;
       font-size: 0.75rem;
     }
-    
+
     input {
       display: inline-block;
       width: calc(100% - 10px);
@@ -1076,16 +1041,16 @@
       line-height: 1.2;
       padding: 4px 8px;
     }
-    
+
     .field-pair {
       float: left;
       width: 25%;
-      
+
       &.append {
         input {
           width: 50%;
         }
-        
+
         .append {
           display: inline-block;
           padding-left: 4px;
@@ -1094,21 +1059,20 @@
       }
     }
   }
-  
+
   // tidal
-  
+
   #station-detail-tidal {
-    
   }
-  
+
   #tidal-chart {
     background-color: $white;
   }
-  
+
   // BUTTONS
-  
+
   // close
-  
+
   #station-overlay-close {
     display: block;
     position: absolute;
@@ -1119,9 +1083,9 @@
     cursor: pointer;
     z-index: 2;
   }
-  
+
   // spinner
-  
+
   #stations-spinner {
     display: none;
     position: absolute;
@@ -1133,52 +1097,49 @@
     transform: translate(-50%, -50%);
     z-index: 15;
   }
-  
+
   .data-list {
     //width: 69%;
   }
-  
+
   .data-accordion-wrap {
     width: 30%;
   }
-  
-  
-  
-  
+
   #station-charts-tabs {
     height: 100%;
     padding: 20px;
     background: $white;
-    
+
     .chart-tab-list {
       margin: 0 0 10px 0;
-      
+
       li {
         display: inline-block;
-        
+
         a {
           display: block;
           padding: 8px 10px;
           color: $blue2;
         }
-        
+
         &.selected {
           background-color: $blue3;
         }
       }
     }
-    
+
     .chart-tabs-wrap {
       position: relative;
       height: 300px;
     }
-    
+
     .chart-tab {
       @include full-size;
       left: -9999px;
       opacity: 0;
       transition: left 0s ease 0.25s, opacity 0.25s ease 0s;
-      
+
       &.selected {
         left: 0;
         opacity: 1;

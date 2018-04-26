@@ -215,39 +215,11 @@ input.location-mapper:focus:-ms-input-placeholder {
   box-shadow: inset 0 5px 10px -5px rgba(0, 0, 0, 0.5);
 }
 
-.location-data-section .data-accordion .data-accordion-tab.data-chart .chart-range .ui-slider-handle {
-  top: 0;
-  width: 16px;
-  height: 16px;
-  margin: -3px 0px -8px -8px;
-}
-
-#location-precipitation .ui-slider-handle {
-  background-color: #0058cf;
-}
-
-#derived-slider-range .ui-slider-handle {
-  background-color: #904848;
-}
-
 #vars-legend .source {
   display: none;
 }
 
 
-
-.page-type-location .ol-overlaycontainer-stopevent {
-  display: none;
-}
-
-.page-type-location #location-station-map .ol-overlaycontainer-stopevent {
-  display: block;
-}
-
-
-.page-type-location .year .icon.icon-arrow-left-right{
-  margin-top: 2px;
-}
 
 #location-temperature .accent-background {
     background-color: #f5442d;
@@ -275,9 +247,6 @@ input.location-mapper:focus:-ms-input-placeholder {
   width:65%;
 }
 
-.page-type-location .moveable, .page-type-location .year {
-  display: none;
-}
 
 #nav-overlay #nav-controls a {
   white-space:normal!important;
@@ -366,15 +335,6 @@ input.location-mapper:focus:-ms-input-placeholder {
   font-size:1.5em !important;
 }
 
-
-.how-to-read {
-  float: left;
-  position: absolute;
-  left: 102px;
-  display: block;
-  z-index: 10;
-  top: 102px;
-}
 
 .how-to-read-county {
   float: left;
@@ -486,11 +446,6 @@ input.location-mapper:focus:-ms-input-placeholder {
     font: 300 1rem/1.2em Roboto, Helvetica, "Helvetica Neue", Arial, sans-serif;
 }
 
-/*.page-type-variables .legend-image {*/
-    /*height: 350px;*/
-    /*margin-left: 0;*/
-/*}*/
-
 .download-panel #download-precip-dismiss-button {
   display: block;
   position: absolute;
@@ -504,23 +459,3 @@ input.location-mapper:focus:-ms-input-placeholder {
   top: -30px;
   right: 0;
 }
-
-
-/*!* line 46, ../scss/pages/_variable.scss *!*/
-/*.page-type-variables #main-content-wrap #stations-map {*/
-  /*position: absolute;*/
-  /*top: 0;*/
-  /*left: 0;*/
-  /*width: 100%;*/
-  /*height: 100%;*/
-/*}*/
-
-
-/*!* line 459, ../scss/_media.scss *!*/
-/*#stations-map {*/
-  /*position: absolute;*/
-  /*top: 0;*/
-  /*left: 0;*/
-  /*width: 100%;*/
-  /*height: 100%;*/
-/*}*/
