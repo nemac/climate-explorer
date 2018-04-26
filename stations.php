@@ -74,6 +74,8 @@
 
 <script src="/resources/js/formmapper.js"></script>
 
+<script src="/resources/js/ce.js"></script>
+
 
 <script type="text/javascript" src="/resources/js/station-charts.js"></script>
 
@@ -84,7 +86,13 @@
     app = new App(<?php echo "'" . $data_base_url . "'"; ?>);
   });
   $(document).ready(function () {
-    window.stations = $('#stations-map').stationsMap({stationId: window.ce.stationId, mode: window.ce.case});
+    var stationParams = window.ce.ce("getStationState")
+    window.stations = $('#stations-map').stationsMap(stationParams);
+
+    if (stationParams.mode) {
+      $("#stations-options").val(stationParams.mode);
+      $("option[value=" + stationParams.mode + "]").attr("selected", "selected");
+    }
   });
   $(document).ready(function () {
     var initFormMapper = function () {
@@ -126,6 +134,7 @@
     $('#stations-options').on('change', function () {
       $("#chart-name").html($('.fs-dropdown-selected').html());
     });
+
   });
 </script>
 

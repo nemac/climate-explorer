@@ -168,10 +168,25 @@ especially when it comes to interacting with the DOM and handling events.
         param = params[i].split('=');
 
         if (param[0] === key) {
-          return param[1] === undefined ? true : param[1];
+          return param[1] || true;
         }
       }
-    }
+
+      return undefined;
+    },
+
+    // Gets and formats multiple url params. Expects an array of objects with keys "url"
+    // and "key"
+    getUrlParams: function (config) {
+      var results = {},
+          result,
+          i;
+      for (i = 0; i < config.length; i++) {
+        results[config[i].hasOwnProperty("key") ? config[i].key : config[i].url] = this.getUrlParam(config[i].url);
+      }
+
+      return results;
+    },
 
     // Replaces all URL params with the passed array
     // params is a nested array of objects with the keys "key" and "value"
@@ -188,13 +203,14 @@ especially when it comes to interacting with the DOM and handling events.
       }
 
       window.history.replaceState({}, "", href + "?" + params.join("&")); 
-    }
+    },
 
     // Replaces specified URL param with the passed value
     setUrlParam: function (key, value) {
       var params = decodeURIComponent(window.location.search.substring(1)).split("&"),
           param,
           href = window.location.href.split("?")[0],
+          paramExists = false,
           i;
 
       if (window.hasOwnProperty("history") === false || window.history.replaceState === false) return;
@@ -204,15 +220,56 @@ especially when it comes to interacting with the DOM and handling events.
 
         if (param[0] === key) {
           param[1] = value;
+          paramExists = true;
         }
 
         params[i] = encodeURIComponent(param[0]) + "=" + encodeURIComponent(param[1]);
       }
 
+      if (!paramExists) {
+        params.push(encodeURIComponent(key) + "=" + encodeURIComponent(value));
+      }
+
       window.history.replaceState({}, "", href + "?" + params.join("&")); 
-    }
+    },
+    
+    // Removes specified URL param
+    removeUrlParam: function (key) {
+      var params = decodeURIComponent(window.location.search.substring(1)).split("&"),
+          param,
+          newParams = [],
+          href = window.location.href.split("?")[0],
+          i;
+
+      if (window.hasOwnProperty("history") === false || window.history.replaceState === false) return;
+
+      for (i = 0; i < params.length; i++) {
+        param = params[i].split('=');
+
+        if (param[0] === key) {
+          continue;
+        }
+
+        newParams.push(encodeURIComponent(param[0]) + "=" + encodeURIComponent(param[1]));
+      }
+
+      window.history.replaceState({}, "", href + "?" + newParams.join("&")); 
+    },
     
     //todo write public getters for state variables
+    getStationState: function () {
+        var params = [
+          {
+            "url" : "id",
+            "key" : "mode"
+          },
+          {
+            "url" : "station",
+            "key" : "stationId"
+          }
+        ];
+        return this.getUrlParams(params);
+    },
 
     // called using `$(window).ce('getMapState')`...and maybe `window.ce.getMapState` if that's easier
     getMapState: function () {
@@ -266,5 +323,5 @@ especially when it comes to interacting with the DOM and handling events.
     //      or relevant generated element.
 
   });
-  $(document).ce({});
 }));
+window.ce = $(window).ce({});
