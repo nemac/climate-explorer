@@ -15,6 +15,7 @@
     "css:watch": "node-sass -o resources/css/ resources/scss/screen.scss --include-path node_modules/compass-mixins/lib/ --output-style expanded --source-comments -wr",
     "deploy:fli": "aws s3 sync --delete --no-follow-symlinks dist/ s3://climate-explorer/",
     "deploy:fli:redirects": "set -ex; for f in *.php; do touch dist/$f && aws s3 cp dist/$f s3://climate-explorer/ --website-redirect \"/${f%.php}/\"; done;"
+    "dev:php":"php -S localhost:8080 -t ./ ./php-router.php"
   },
   "repository": {
     "type": "git",
