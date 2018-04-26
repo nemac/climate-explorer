@@ -11,56 +11,6 @@ $config->set('Cache.DefinitionImpl', null);
 $purifier = new HTMLPurifier($config);
 //    $clean_html = $purifier->purify($dirty_html);
 
-$stations_base_url = 'https://data.rcc-acis.org/StnData';
-$data_base_url = '/resources/data/';
-
-function current_URL()
-{
-// todo cleanup
-//    $purifier = new HTMLPurifier();
-//    $pageURL = 'http';
-//    $pageURL .= "://";
-//    if ($purifier->purify($_SERVER["SERVER_PORT"]) != "80") {
-//        $pageURL .= $purifier->purify($_SERVER["SERVER_NAME"] . ":" . $_SERVER["SERVER_PORT"] . $_SERVER["REQUEST_URI"]);
-//    } else {
-//        $pageURL .= $purifier->purify($_SERVER["SERVER_NAME"] . $_SERVER["REQUEST_URI"]);
-//    }
-//    return $pageURL;
-  return '';
-}
-
-// current domain app is living on
-
-function current_DOMAIN()
-{
-//   todo cleanup
-//    $purifier = new HTMLPurifier();
-//    $pageURL = 'http';
-//    $pageURL .= "://";
-//    if ($_SERVER["SERVER_PORT"] != "80") {
-//        $pageURL .= $purifier->purify($_SERVER["SERVER_NAME"] . ":" . $_SERVER["SERVER_PORT"]);
-//    } else {
-//        $pageURL .= $purifier->purify($_SERVER["SERVER_NAME"]);
-//    }
-//    return $pageURL;
-  return '/';
-}
-
-$current_url = current_URL();
-$current_domain = current_DOMAIN();
-
-// This is the only snippet which uses the variable $lockdown. It both does not
-// since it redirects to the root toolkit error page which is not error.php and
-// nothing in the URL encodings would be an XSS vulnerability/ SQL Injection...
-
-//if(($current_url != strip_tags(rawurldecode($current_url)))&&($lockdown == 1)) {
-//    if ($current_url != $current_domain."/error.php")
-//    {
-//        header("Location:" . $current_domain . "/error.php");
-//    }
-//}
-
-
 
 function validate_alphanumeric_underscore($str)
 {
@@ -80,7 +30,7 @@ function opengraph_output($data)
     if (isset($data['url'])) {
         $output_data['url'] = $data['url'];
     } else {
-        $output_data['url'] = current_URL();
+        $output_data['url'] = $_SERVER["REQUEST_URI"];
     }
 
     // title

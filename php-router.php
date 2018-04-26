@@ -2,38 +2,44 @@
 
 chdir(__DIR__);
 // php file matching last name; serve through interpreter
-if (realpath(rtrim(ltrim($_SERVER["REQUEST_URI"], '/'), '/') . '.php')) {
-  include(realpath(rtrim(ltrim($_SERVER["REQUEST_URI"], '/'), '/') . '.php'));
+if (realpath(trim(strtok($_SERVER["REQUEST_URI"], '?'), '/') . '.php')) {
+  include(realpath(trim(strtok($_SERVER["REQUEST_URI"], '?'), '/') . '.php'));
 }
-$filePath = realpath(ltrim($_SERVER["REQUEST_URI"], '/'));
-if ($filePath && is_dir($filePath)) {
+else {
+  if (is_file($_SERVER['DOCUMENT_ROOT'] . '/' . $_SERVER['SCRIPT_NAME'])) {
+    // probably a static file...
+    return false;
+  }
+  $filePath = realpath(ltrim(strtok($_SERVER["REQUEST_URI"], '?'), '/'));
+  if ($filePath && is_dir($filePath)) {
 // attempt to find an index file
-  foreach (['index.php', 'index.html'] as $indexFile) {
-    if ($filePath = realpath($filePath . DIRECTORY_SEPARATOR . $indexFile)) {
-      break;
+    foreach (['index.php', 'index.html'] as $indexFile) {
+      if ($filePath = realpath($filePath . DIRECTORY_SEPARATOR . $indexFile)) {
+        break;
+      }
     }
   }
-}
-if ($filePath && is_file($filePath)) {
+  if ($filePath && is_file($filePath)) {
 // 1. check that file is not outside of this directory for security
 // 2. check for circular reference to router.php
 // 3. don't serve dotfiles
-  if (strpos($filePath, __DIR__ . DIRECTORY_SEPARATOR) === 0 &&
-    $filePath != __DIR__ . DIRECTORY_SEPARATOR . 'router.php' &&
-    substr(basename($filePath), 0, 1) != '.'
-  ) {
-    if (strtolower(substr($filePath, -4)) == '.php') {
+    if (strpos($filePath, __DIR__ . DIRECTORY_SEPARATOR) === 0 &&
+      $filePath != __DIR__ . DIRECTORY_SEPARATOR . 'router.php' &&
+      substr(basename($filePath), 0, 1) != '.'
+    ) {
+      if (strtolower(substr($filePath, -4)) == '.php') {
 // php file; serve through interpreter
-      include $filePath;
+        include $filePath;
+      }
+      else {
+// asset file; serve from filesystem
+        return false;
+      }
     }
     else {
-// asset file; serve from filesystem
-      return false;
+// disallowed file
+      header($_SERVER["SERVER_PROTOCOL"] . " 404 Not Found", true, 404);
     }
   }
-  else {
-// disallowed file
-    header("HTTP/1.1 404 Not Found");
-    echo "404 Not Found";
-  }
+  header($_SERVER["SERVER_PROTOCOL"] . " 404 Not Found", true, 404);
 }
