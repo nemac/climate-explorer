@@ -310,8 +310,8 @@
         axis: "x",
         containment: this.nodes.$controlsOverLayContainer,
         scroll: false,
-        drag: function (event, ui) { this._setOption('swipeX', ui.position.left) }.bind(this),
-        stop: function (event, ui) { this._setOption('swipeX', ui.position.left) }.bind(this)
+        drag: function (event, ui) { this._setOptions({swipeX:ui.position.left}) }.bind(this),
+        stop: function (event, ui) { this._setOptions({swipeX:ui.position.left}) }.bind(this)
       });
 
       this._updateLeftYearSlider();
@@ -699,10 +699,10 @@
         change: function (event, ui) {
           this.nodes.$leftYearSlider.attr('data-value', ui.value);
           if (ui.value === 2010 && this.options.leftScenario === 'historical') {
-            this._setOption('leftYear', 'avg');
+            this._setOptions({leftYear:'avg'});
           }
           else {
-            this._setOption('leftYear', ui.value);
+            this._setOptions({leftYear:ui.value});
           }
         }.bind(this),
       }).find(".ui-slider-handle").html('<span class="icon icon-arrow-left-right"></span>').append(this.nodes.$leftYearTooltip);
@@ -732,7 +732,7 @@
         }.bind(this),
         change: function (event, ui) {
           this.nodes.$rightYearSlider.attr('data-value', ui.value);
-          this._setOption('rightYear', ui.value);
+          this._setOptions({rightYear:ui.value});
         }.bind(this),
       }).find(".ui-slider-handle").html('<span class="icon icon-arrow-left-right"></span>').append(this.nodes.$rightYearTooltip);
       this.nodes.$rightYearTooltip.fadeIn();
@@ -783,6 +783,7 @@
         this._updateScenarioLayers();
         this._updateLegend();
       }
+      this._trigger('change', null, this.options);
       return this;
     },
     _updateLegend: function () {
