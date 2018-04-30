@@ -258,6 +258,21 @@ especially when it comes to interacting with the DOM and handling events.
       window.history.replaceState({}, "", href + "?" + newParams.join("&"));
     },
 
+    _extentToString : function (extent) {
+      return extent.xmin + "," + extent.xmax + "," + extent.ymin + "," + extent.ymax;
+    },
+
+    // expects string with 4 comma separated values
+    _extentToObject : function (extent) {
+      extent = extent.split(",");
+      return {
+          xmin : extent[0],
+          xmax : extent[1],
+          ymin : extent[2],
+          ymax : extent[3]
+      };
+    },
+
     //todo write public getters for state variables
     getStationsMapState: function () {
       return this.getUrlParams({
@@ -275,13 +290,35 @@ especially when it comes to interacting with the DOM and handling events.
     },
 
     getVariablesMapState: function () {
-      return this.getUrlParams({
+      var state = this.getUrlParams({
         variable: 'id',
+        season: 'season',
+        leftScenario: 'left',
+        rightScenario: 'right',
+        extent: 'extent',
         zoom: 'zoom'
       });
+
+      if (state.extent) state.extent = this._extentToObject(state.extent);
+
+      return state;
     },
     setVariablesMapState: function (state) {
       Object.keys(state).includes('variable') ? this.setUrlParam('id', state['variable']) :
+        null;
+      Object.keys(state).includes('season') ? this.setUrlParam('season', state['season']) :
+        null;
+      Object.keys(state).includes('leftScenario') ? this.setUrlParam('left', state['leftScenario']) :
+        null;
+      Object.keys(state).includes('leftYear') ? this.setUrlParam('leftyear', state['leftYear']) :
+        null;
+      Object.keys(state).includes('rightScenario') ? this.setUrlParam('right', state['rightScenario']) :
+        null;
+      Object.keys(state).includes('rightYear') ? this.setUrlParam('rightyear', state['rightYear']) :
+        null;
+      Object.keys(state).includes('extent') ? this.setUrlParam('extent', this._extentToString(state['extent'])) :
+        null;
+      Object.keys(state).includes('zoom') ? this.setUrlParam('zoom', state['zoom']) :
         null;
 //      Object.keys(state).includes('mode') ? this.setUrlParam('id', state['mode']) :
 //        this.removeUrlParam('station'); // on mode change overlay goes away
