@@ -133,7 +133,6 @@
     window.scenariosMap = $('#variable-map').scenarioComparisonMap(Object.assign(
       {
         change : function (event, options) {
-          console.log("HEY HI HELLO");
           window.ce.ce("setVariablesMapState", options);
         },
         countyselected : function (event, value) {
