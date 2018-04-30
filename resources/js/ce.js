@@ -268,11 +268,23 @@ especially when it comes to interacting with the DOM and handling events.
       });
     },
     setStationsMapState: function (state) {
-      if (Object.keys(state).includes('stationId')) {
-        this.setUrlParam('station', state['stationId']);
-      } else {
-        this.removeUrlParam('stationID');
-      }
+      (Object.keys(state).includes('stationId') && state.stationId) ? this.setUrlParam('station', state['stationId']) :
+        this.removeUrlParam('station');
+      Object.keys(state).includes('mode') ? this.setUrlParam('id', state['mode']) :
+        this.removeUrlParam('station'); // on mode change overlay goes away
+    },
+
+    getVariablesMapState: function () {
+      return this.getUrlParams({
+        variable: 'id',
+        zoom: 'zoom'
+      });
+    },
+    setVariablesMapState: function (state) {
+      Object.keys(state).includes('variable') ? this.setUrlParam('id', state['variable']) :
+        null;
+//      Object.keys(state).includes('mode') ? this.setUrlParam('id', state['mode']) :
+//        this.removeUrlParam('station'); // on mode change overlay goes away
     },
 
     // called using `$(window).ce('getMapState')`...and maybe `window.ce.getMapState` if that's easier

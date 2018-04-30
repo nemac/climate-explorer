@@ -502,11 +502,6 @@
           // hide the overlay if it exists
           $('#station-overlay-container').css('visibility', 'hidden').empty();
 
-          if (window.ce && window.ce.ce) {
-              window.ce.ce("setUrlParam", "id", this.options.mode);
-              window.ce.ce("removeUrlParam", "station");
-          }
-
           switch (this.options.mode) {
             case 'daily_vs_climate':
               if (undefined !== this.thresholdStationsLayer) {
@@ -816,10 +811,6 @@
       $('#station-overlay-close').click(function () {
         $(this.nodes.stationOverlayContainer).css('visibility', 'hidden');
         $(this.nodes.stationOverlayContainer).empty();
-
-        if (window.ce && window.ce.ce) {
-          window.ce.ce("removeUrlParam", "station");
-        }
       }.bind(this));
     },
 

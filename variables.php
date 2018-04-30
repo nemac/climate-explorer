@@ -124,17 +124,24 @@
 
 
 <script>
-  if (undefined === window.ce) {window.ce = {};}
   $(document).ready(function () {
     app = new App('/resources/data/');
   });
   $(document).ready(function () {
-    window.scenariosMap = $('#variable-map').scenarioComparisonMap({
-      stationId: window.ce.stationId, mode: window.ce.case,
-      countyselected: function (event, value) {
-        window.countySelected($('.cwg-container')[0], value);
-      }
-    });
+    var variablesMapState = window.ce.ce("getVariablesMapState") || {};
+
+    window.scenariosMap = $('#variable-map').scenarioComparisonMap(Object.assign(
+      {
+        change : function (event, options) {
+          console.log("HEY HI HELLO");
+          window.ce.ce("setVariablesMapState", options);
+        },
+        countyselected : function (event, value) {
+          window.countySelected($('.cwg-container')[0], value);
+        }
+      },
+      variablesMapState
+    ));
   });
   $(document).ready(function () {
     'use strict';
