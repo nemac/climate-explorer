@@ -1,9 +1,3 @@
-<?php
-$share_title = isset($share_data['title']) ? $purifier->purify($share_data['title']) : 'Climate Explorer';
-$share_url = isset($share_data['url']) ? $purifier->purify($share_data['url']) : '/';
-$tweet_text = $share_title . ' via @NOAA Climate Explorer: ' . $share_url;
-?>
-
 <div class="share-widget">
   <a href="#" class="share-trigger"><span class="icon icon-social"></span>Share</a>
   <ul>
