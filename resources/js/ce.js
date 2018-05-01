@@ -210,11 +210,18 @@ especially when it comes to interacting with the DOM and handling events.
         param,
         href = window.location.href.split("?")[0],
         paramExists = false,
-        i;
+        i, l;
 
       if (window.hasOwnProperty("history") === false || window.history.replaceState === false) return;
 
-      for (i = 0; i < params.length; i++) {
+      for (i = 0, l = params.length; i < l; i++) {
+        if (params[i] === "") {
+          params.splice(i, 1);
+          i--;
+          l--;
+          continue;
+        }
+
         param = params[i].split('=');
 
         if (param[0] === key) {
@@ -225,7 +232,7 @@ especially when it comes to interacting with the DOM and handling events.
         params[i] = encodeURIComponent(param[0]) + "=" + encodeURIComponent(param[1]);
       }
 
-      if (!paramExists) {
+      if (!paramExists && key && value) {
         params.push(encodeURIComponent(key) + "=" + encodeURIComponent(value));
       }
 
