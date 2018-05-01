@@ -369,7 +369,8 @@ especially when it comes to interacting with the DOM and handling events.
 
       switch (page) {
         case 'location':
-          breadcrumb_text = this.getUrlParam('city').replace(/\+/g, " ") || "";
+          breadcrumb_text = this.getUrlParam('city') || "";
+          breadcrumb_text = breadcrumb_text.replace(/\+/g, " ");
           additional_breadcrumb = '<a href="#nav-search" class="parent launch-nav breadcrumb-middle" data-nav-slide="0"><span class="icon icon-district"></span>Location</a>';
           break;
         case 'about':
@@ -382,8 +383,8 @@ especially when it comes to interacting with the DOM and handling events.
           breadcrumb_text = 'Credits';
           break;
         case 'stations':
-          breadcrumb_text = this.getUrlParam('param').replace(/\_/g, " ") || "";
-          breadcrumb_text = breadcrumb_text.replace(/\w\S*/g, function(txt){return txt.charAt(0).toUpperCase() + txt.substr(1).toLowerCase();});;
+          breadcrumb_text = this.getUrlParam('id') || "";
+          breadcrumb_text = breadcrumb_text.replace(/\_/g, " ").replace(/\w\S*/g, function(txt){return txt.charAt(0).toUpperCase() + txt.substr(1).toLowerCase();});;
 
           additonal_breadcrumb = '<a href="#nav-stations" class="parent launch-nav breadcrumb-middle" data-nav-slide="2"><span class="icon icon-bubble"></span>Stations</a>';
           break;
