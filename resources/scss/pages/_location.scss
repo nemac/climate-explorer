@@ -793,7 +793,7 @@
 
   .range {
     .ui-slider {
-      .ui-slider-range {
+      .ui-slider-range,.ui-slider-handle {
         background: $blue1;
       }
     }
@@ -847,7 +847,45 @@
       color: $brown1;
     }
   }
+  .range {
+    .ui-slider {
+      .ui-slider-range,.ui-slider-handle {
+        background: $brown1;
+      }
+    }
+  }
 }
+
+
+.location-data-section .data-accordion .data-accordion-tab.data-chart .chart-range {
+  position: absolute;
+  left: 0;
+  width: 100%;
+  height: 9px;
+  background: #d5e8f2;
+  -moz-box-shadow: inset 0 5px 10px -5px rgba(0, 0, 0, 0.5);
+  -webkit-box-shadow: inset 0 5px 10px -5px rgba(0, 0, 0, 0.5);
+  box-shadow: inset 0 5px 10px -5px rgba(0, 0, 0, 0.5);
+}
+
+.location-data-section .data-accordion .data-accordion-tab.data-chart .chart-range .ui-slider-handle {
+  top: 0;
+  width: 16px;
+  height: 16px;
+  margin: -3px 0px -8px -8px;
+}
+
+#precip-slider-range {
+  width: 100%;
+  margin: auto;
+}
+
+#derived-slider-range {
+  width: 100%;
+  margin: auto;
+}
+
+
 #location-stations {
   padding: 0;
   height: calc(100vh - 160px);

@@ -1019,8 +1019,7 @@ App.prototype.tour = function () {
         $(this).addClass('accent-color');
         $(this).parents('li').addClass('active').addClass('accent-border');
 
-        var val = $(this).html().toLowerCase();
-        self.frequency['precipitation-chart'] = val;
+      self.frequency['precipitation-chart'] = $(this).html().toLowerCase();
     });
 
 

@@ -209,42 +209,6 @@
     });
 
 
-    // $('#counties-overlay-toggle').on('click', function (e) {
-    //   window.scenariosMap.scenarioComparisonMap({showCounties: $(this).is(':checked')});
-    // });
-
-    // function save_state() {
-    //   var qtrs = location.search;
-    //   var qs = this.parseQueryString(qtrs);
-    //
-    //   qs.id = this.selthuisectedVariable;
-    //   qs.zoom = this.map.getView().getZoom();
-    //   qs.center = this.map.getView().getCenter().toString();
-    //   qs.year = this.activeYear;
-    //
-    //   var str = $.param(qs);
-    //   history.replaceState(null, "", 'variables.php?' + str);
-    //   setTimeout(function () {
-    //     selectedVariableOption = $('#variable-options option:selected').text();
-    //     actualurl = window.location.href;     // Returns full URL
-    //     actualurlEncoded = encodeURIComponent(actualurl);
-    //     twitterurl = "https://twitter.com/intent/tweet?text=" + selectedVariableOption + "+via+%40NOAA+Climate+Explorer%3A+" + actualurlEncoded;     // Returns full URL
-    //     facebookurl = "https://www.facebook.com/sharer/sharer.php?u=" + actualurlEncoded;     // Returns full URL
-    //
-    //
-    //     $('#share_facebook').attr("href", facebookurl);
-    //     $('#share_facebook').attr("data-href", actualurl);
-    //     $('#share_twitter').attr("href", twitterurl);
-    //     $('#share_link').val(actualurl);
-    //
-    //   }, 500);
-    //
-    //   $('#about-variable-link').html('About ' + this.varMapping[this.selectedVariable]);
-    //   $('#about-variable-link').prop('href', '#detail-' + this.selectedVariable.split('.')[0]);
-    //
-    //   $('#variable-options').val(id).attr('selected', true).change();
-    //
-    // }
   });
 </script>
 </body>

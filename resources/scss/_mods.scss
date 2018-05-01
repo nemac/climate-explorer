@@ -46,16 +46,6 @@ input.location-mapper {
   height: 100%;
 }
 
-#precip-slider-range {
-  width: 100%;
-  margin: auto;
-}
-
-#derived-slider-range {
-  width: 100%;
-  margin: auto;
-}
-
 input.location-mapper::-webkit-input-placeholder {
   color: #fff;
   padding-top: 3px;
@@ -204,16 +194,8 @@ input.location-mapper:focus:-ms-input-placeholder {
   width:100%;
 }
 
-.location-data-section .data-accordion .data-accordion-tab.data-chart .chart-range {
-  position: absolute;
-  left: 0;
-  width: 100%;
-  height: 9px;
-  background: #d5e8f2;
-  -moz-box-shadow: inset 0 5px 10px -5px rgba(0, 0, 0, 0.5);
-  -webkit-box-shadow: inset 0 5px 10px -5px rgba(0, 0, 0, 0.5);
-  box-shadow: inset 0 5px 10px -5px rgba(0, 0, 0, 0.5);
-}
+
+
 
 #vars-legend .source {
   display: none;

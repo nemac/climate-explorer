@@ -10,29 +10,53 @@ $(function () {
     $(this).siblings('.data-options').slideDown();
   });
 
-  $('#location-temperature .data-accordion-tab').on('click', function () {
+  $('#temperature-map-container header').on('click', function () {
     $('#temperature-map').height($('#temperature-map').parent().height());
-    $('#location-temperature .seasonal-monthly').toggleClass('disabled');
+    $('#location-temperature .seasonal-monthly').addClass('disabled');
     if (typeof window.temperatureScenariosMap === 'undefined') {
-      window.temperatureScenariosMap = $('#temperature-map').scenarioComparisonMap({variable: activeVariableTemperature});
+      $('#temperature-map').spinner();
+      window.temperatureScenariosMap = $('#temperature-map').scenarioComparisonMap({
+        variable: activeVariableTemperature,
+        layersloaded: function () {
+          $('#temperature-map').spinner('destroy');
+        }
+      });
     }
   });
-  $('#location-precipitation .data-accordion-tab').on('click', function () {
-    $('#temperature-map').height($('#temperature-map').parent().height());
-    $('#location-precipitation .seasonal-monthly').toggleClass('disabled');
+  $('#temperature-chart header').on('click', function () {$('#location-temperature .seasonal-monthly').removeClass('disabled');});
+
+
+  $('#precipitation-map-container header').on('click', function () {
+    $('#precipitation-map').height($('#precipitation-map').parent().height());
+    $('#location-precipitation .seasonal-monthly').addClass('disabled');
     if (typeof window.precipitationScenariosMap === 'undefined') {
-      window.precipitationScenariosMap = $('#precipitation-map').scenarioComparisonMap({variable: activeVariablePrecipitation});
+      $('#precipitation-map').spinner();
+      window.precipitationScenariosMap = $('#precipitation-map').scenarioComparisonMap({
+        variable: activeVariablePrecipitation,
+        layersloaded: function () {
+          $('#precipitation-map').spinner('destroy');
+        }
+      });
     }
   });
-  $('#location-derived .data-accordion-tab').on('click', function () {
+  $('#precipitation-chart header').on('click', function () {$('#location-precipitation .seasonal-monthly').removeClass('disabled');});
+
+
+  $('#derived-map-container header').on('click', function () {
     $('#derived-map').height($('#derived-map').parent().height());
-    $('#location-derived .seasonal-monthly').toggleClass('disabled');
+    $('#location-derived .seasonal-monthly').addClass('disabled');
     if (typeof window.derivedScenariosMap === 'undefined') {
-      window.derivedScenariosMap = $('#derived-map').scenarioComparisonMap(
-        {variable: ['hdd', 'cdd'].includes(activeVariableDerived) ? activeVariableDerived + '_65f' : activeVariableDerived}
+      $('#derived-map').spinner();
+      window.derivedScenariosMap = $('#derived-map').scenarioComparisonMap({
+          variable: ['hdd', 'cdd'].includes(activeVariableDerived) ? activeVariableDerived + '_65f' : activeVariableDerived,
+          layersloaded: function () {
+            $('#derived-map').spinner('destroy');
+          }
+        }
       );
     }
   });
+  $('#derived-chart header').on('click', function () {$('#location-temperature .seasonal-monthly').removeClass('disabled');});
 
 
   let variable_li_update = function (container, el) {
@@ -74,7 +98,6 @@ $(function () {
     e.preventDefault();
     variable_li_update($('#derived-data .data-options'), $(this));
     activeVariableDerived = $(this).data('value');
-
     if (window.derivedScenariosMap) {
       $(window.derivedScenariosMap).scenarioComparisonMap({
         variable: ['hdd', 'cdd'].includes(activeVariableDerived) ? activeVariableDerived + '_65f' : activeVariableDerived
@@ -429,7 +452,6 @@ $(function () {
   $('.legend-item-range').on('click', function () {
     $(this).toggleClass('selected');
     $(this).find('.legend-item-block, .legend-item-line').toggleClass('selected');
-    $(this).find('.legend-item-line-container').children('.legend-item-line').toggleClass('selected');
 
     let pre = $(this).closest('.chart-legend').attr('id');
     if (!pre) {
@@ -452,7 +474,7 @@ $(function () {
       default:
         scenario = '';
     }
-    if (pre === 'precip') {
+    if (pre === 'precipitation') {
       $('#precip-scenario').val(scenario).change();
     } else if (pre === 'derive') {
       $('#derived-scenario').val(scenario).change();
@@ -461,19 +483,9 @@ $(function () {
     }
 
 
-    let median = null;
-    switch (true) {
-      case $('#' + pre + 'rcp85-line').hasClass('selected') && $('#rcp45-line').hasClass('selected'):
-        median = 'true';
-        break;
-      case $('#' + pre + 'rcp45-line').hasClass('selected'):
-        median = 'true';
-        break;
-      case $('#' + pre + 'rcp85-line').hasClass('selected'):
-        median = 'true';
-        break;
-      default:
-        median = 'false';
+    let median = 'false';
+    if ($('#' + pre + 'rcp85-line').hasClass('selected') || $('#' + pre + 'rcp45-line').hasClass('selected')) {
+      median = 'true';
     }
 
     if (pre === 'precip') {

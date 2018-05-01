@@ -126,9 +126,6 @@
       show: null
     },
 
-    // All DOM nodes used by the widget (must be maintained for clean destruction)
-    nodes: {},
-
     // Dojo modules this widget expects to use.
     dojoDeps: [
       'esri/Map',
@@ -154,7 +151,6 @@
       'esri/geometry/Polygon',
       'esri/widgets/Locate',
     ],
-    map: null,
     variables: {
       'tmax': {title: 'Avg Daily Max Temp (°F)', seasonal_data: true},
       'tmin': {title: 'Avg Daily Min Temp (°F)', seasonal_data: true},
@@ -176,8 +172,6 @@
       'gdd': {title: 'Growing Degree Days', seasonal_data: false},
       'gddmod': {title: 'Mod. Growing Degree Days', seasonal_data: false}
     },
-    leftLayer: null,
-    rightLayer: null,
 
     _dojoLoaded: function () {
       if (this.dojoMods === undefined) {
@@ -252,6 +246,12 @@
     },
     // Called once on instantiation.
     _create: function () {
+      // All DOM nodes used by the widget (must be maintained for clean destruction)
+      this.nodes = {};
+
+      this.leftLayer = null;
+      this.rightLayer = null;
+
       this.nodes.mapContainer = this.element[0];
       this.nodes.stationOverlayContainer = $('#' + this.options.stationOverlayContainerId)[0];
       this._initControlsOverlay();
@@ -847,8 +847,8 @@
         Averages
       </div>
     </div>
-    <div class="range" id="variable-slider">
-      <div id="slider-range"></div>
+    <div class="range">
+      <div class="slider-range"></div>
       <div class="ui-slider-label range-label min" id="range-low">1950</div>
       <div class="ui-slider-label range-label max" id="range-high">2100</div>
     </div>
@@ -859,7 +859,7 @@
                 <p>Use the following links to download this graph's data:</p>
                 <ul>
                     <li><a href="javascript:void(0);" class='download_hist_obs_data button display-block border-white hover-bg-white'><span class='icon icon-arrow-down '></span>Observed Data</a></li>
-                    <li><a href="javascript:void(0);"class='download_hist_mod_data button display-block border-white hover-bg-white'><span class='icon icon-arrow-down'></span>Historical Modeled Data</a></li>
+                    <li><a href="javascript:void(0);" class='download_hist_mod_data button display-block border-white hover-bg-white'><span class='icon icon-arrow-down'></span>Historical Modeled Data</a></li>
                     <li><a href="javascript:void(0);" class='download_proj_mod_data button display-block border-white hover-bg-white'><span class='icon icon-arrow-down'></span>Projected Modeled Data</a></li>
                 </ul>
 
@@ -874,7 +874,7 @@
         font: "Roboto",
         frequency: "annual",
         county: county.geo_id.slice(-5),
-        variable: $('#variable-options-container').data().value,
+        variable: this.options.variable,
         scenario: "both",
         pmedian: "true",
         histobs: "false"
@@ -928,7 +928,7 @@
         }
       });
 
-      $("#slider-range").slider({
+      this.nodes.$countyOverlay.find(".slider-range").slider({
         range: true,
         min: 1950,
         max: 2099,

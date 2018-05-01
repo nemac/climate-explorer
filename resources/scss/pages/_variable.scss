@@ -373,6 +373,8 @@
   }
   header {
     @include clearfix;
+    position: relative !important;
+    background-color: transparent !important;
     a {color: white;}
   }
   .data-accordion-actions {
@@ -387,13 +389,14 @@
     .download-data, .download-image {
       float: right;
     }
-    a {color: white;
-      .icon {color: white;}
+    a {color: white !important;
+      .icon {color: white !important;}
     }
 
   }
   .range {position: relative; margin-top: 35px;
     .range-label {color: white;}
+    .ui-slider {position: relative;}
   }
   .legend-item {background: rgba(255, 255, 255, 0.3)}
 }
