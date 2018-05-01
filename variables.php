@@ -129,14 +129,19 @@
     $('#variable-map').spinner();
   });
   $(document).ready(function () {
-    window.scenariosMap = $('#variable-map').scenarioComparisonMap({
+    window.scenariosMap = $('#variable-map').scenarioComparisonMap(Object.assign(
+      window.ce.ce("getVariablesMapState"),
+      {
+      change : function (event, options) {
+        window.ce.ce("setVariablesMapState", options);
+      },
       countyselected: function (event, value) {
         window.countySelected($('.cwg-container')[0], value);
       },
       layersloaded: function (event, value) {
         $('#variable-map').spinner('destroy');
       }
-    });
+    }));
   });
   $(document).ready(function () {
     'use strict';
