@@ -111,14 +111,10 @@ especially when it comes to interacting with the DOM and handling events.
 
     // Called once on instantiation.
     _create: function () {
-      $('body').addClass('hello-world');
+      this.updateSharing();
 
+      //todo breadcrumbs
 
-      //todo parse query string, save variables using
-
-      //todo breadcrumbs?
-
-      //todo hook events as needed
     },
 
     // Optional -Return value will be sent as the `create` event's data.
@@ -205,6 +201,7 @@ especially when it comes to interacting with the DOM and handling events.
       }
 
       window.history.replaceState({}, "", href + "?" + params.join("&"));
+      this.updateSharing();
     },
 
     // Replaces specified URL param with the passed value
@@ -233,6 +230,7 @@ especially when it comes to interacting with the DOM and handling events.
       }
 
       window.history.replaceState({}, "", href + "?" + params.join("&"));
+      this.updateSharing();
     },
 
     // Removes specified URL param
@@ -346,6 +344,11 @@ especially when it comes to interacting with the DOM and handling events.
       logger.error.apply(logger, args);
     },
 
+    updateSharing:function(){
+      $('#share_facebook').prop('href','https://www.facebook.com/sharer/sharer.php?u='+ encodeURIComponent(window.location.href));
+      $('#share_twitter').prop('href','https://twitter.com/intent/tweet?text='+ encodeURIComponent(window.location.href));
+      $('#share-permalink').prop('href','https://www.facebook.com/sharer/sharer.php?u='+ encodeURIComponent(window.location.href));
+    }
 
     // ============ Public methods provided by the base widget =============
     // instance() - Retrieves the widget's instance object. If the element
