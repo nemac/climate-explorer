@@ -1,15 +1,13 @@
-<?php include_once('functions.php'); ?>
 <!doctype html>
 <html>
 <head>
   <?php include_once('template/head.php') ?>
-
-  <?php
-  $share_data['title'] = 'About Climate Explorer';
-  echo opengraph_output($share_data);
-
-  ?>
-
+  <meta property="fb:app_id" content="187816851587993" />
+  <meta property="og:url" content="/about.php" />
+  <meta property="og:type" content="article" />
+  <meta property="og:title" content="About Climate Explorer" />
+  <meta property="og:description" content="The Climate Explorer allows you to view historical and projected climate trends and assess the impacts of climate change on the things you care about" />
+  <meta property="og:image" content="/resources/img/og.jpg" />
 </head>
 
 <body id="page-about" class="page-type-text">

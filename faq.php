@@ -1,14 +1,13 @@
-<?php include_once('functions.php'); ?>
 <!doctype html>
 <html>
 <head>
   <?php include_once('template/head.php') ?>
-
-  <?php
-  $share_data['title'] = 'Definitions';
-  echo opengraph_output($share_data);
-  ?>
-
+  <meta property="fb:app_id" content="187816851587993" />
+  <meta property="og:url" content="/faq.php" />
+  <meta property="og:type" content="article" />
+  <meta property="og:title" content="FAQ" />
+  <meta property="og:description" content="The Climate Explorer allows you to view historical and projected climate trends and assess the impacts of climate change on the things you care about" />
+  <meta property="og:image" content="/resources/img/og.jpg" />
 </head>
 
 <body id="page-definitions" class="page-type-text">

@@ -8,7 +8,7 @@
     "macbuild": "npm run html:macbuild && npm run js:macbuild && npm run data:build && npm run css:build",
     "data:build": "mkdir -p dist/resources && cp -rf resources/data resources/img dist/resources/",
     "js:build": "mkdir -p dist/resources && cp -rf resources/js resources/vendor dist/resources/",
-    "html:build": "for f in *.php; do echo $f && php-cgi -q $f > dist/${f%.php}.html && mkdir -p dist/${f%.php} && cp -f --dereference dist/${f%.php}.html dist/${f%.php}/index.html; done; sed -i 's/.php/\\//g' dist/*.html",
+    "html:build": "for f in *.php; do echo $f && php-cgi -q $f > dist/${f%.php}.html && mkdir -p dist/${f%.php} && cp -f dist/${f%.php}.html dist/${f%.php}/index.html; done;",
     "js:macbuild": "mkdir -p dist/resources && cp -rf resources/js resources/item resources/tidal dist/resources/ && sed -i '' 's/.php/\\//g' dist/resources/js/*.js dist/resources/js/**/*.js",
     "html:macbuild": "for f in *.php; do echo $f && php-cgi -q $f > dist/${f%.php}.html && mkdir -p dist/${f%.php} && cp -f dist/${f%.php}.html dist/${f%.php}/index.html; done; sed -i '' 's/.php/\\//g' dist/**/*.html; sed -i '' 's/.php/\\//g' dist/*.html",
     "css:build": "node-sass -o resources/css/ resources/scss/screen.scss --include-path node_modules/compass-mixins/lib/ --output-style expanded --source-comments && mkdir -p dist/resources && cp -rf resources/fonts resources/css dist/resources/",

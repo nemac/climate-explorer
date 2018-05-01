@@ -1,6 +1,3 @@
-<?php
-include_once('functions.php');
-?>
 <!doctype html>
 <html>
 <head>

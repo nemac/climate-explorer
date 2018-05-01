@@ -1,16 +1,7 @@
-<?php include_once('functions.php'); ?>
 <!doctype html>
 <html>
 <head>
   <?php include_once ('template/head.php');?>
-  <?php
-
-  $share_data['url'] = current_URL();
-  $share_data['title'] = 'ERROR';
-
-
-  ?>
-
 </head>
 
 <body id="page-about" class="page-type-text">

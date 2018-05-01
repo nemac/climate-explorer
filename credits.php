@@ -1,12 +1,13 @@
-<?php include_once('functions.php'); ?>
 <!doctype html>
 <html>
 <head>
   <?php include_once('template/head.php') ?>
-
-  <?php $share_data['title'] = 'Credits';
-  echo opengraph_output($share_data); ?>
-
+  <meta property="fb:app_id" content="187816851587993" />
+  <meta property="og:url" content="/credits.php" />
+  <meta property="og:type" content="article" />
+  <meta property="og:title" content="Credits" />
+  <meta property="og:description" content="The Climate Explorer allows you to view historical and projected climate trends and assess the impacts of climate change on the things you care about" />
+  <meta property="og:image" content="/resources/img/og.jpg" />
 </head>
 
 <body id="page-credits" class="page-type-text">
@@ -75,8 +76,9 @@
         <li>Phil Evans, senior designer, HabitatSeven
         <li>James Fox, director & product manager, NEMAC
         <li>Ian Johnson, geospatial technician, NEMAC
+        <li>John Frimmel, principal software developer, NEMAC
         <li>Jeff Hicks, director & programmer, Fernleaf Interactive
-        <li>Josh Wilson, programmer, Fernleaf Interactive</li>
+        <li>Josh Wilson, software engineer, Fernleaf Interactive</li>
       </ul>
 
       <h3>Thanks also to reviewers:</h3>
