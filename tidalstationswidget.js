@@ -61,8 +61,8 @@
           data_rcp45.push(0);
           data_rcp85.push(0);
         } else {
-          data_rcp45.push(this.data.low_scenario[String(this.options.station)][i]);
-          data_rcp85.push(this.data.high[String(this.options.station)][i]);
+          data_rcp45.push(this.data.int_low[String(this.options.station)][i]);
+          data_rcp85.push(this.data.int[String(this.options.station)][i]);
         }
       }
 
