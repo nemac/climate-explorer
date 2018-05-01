@@ -265,18 +265,18 @@ especially when it comes to interacting with the DOM and handling events.
       window.history.replaceState({}, "", href + "?" + newParams.join("&"));
     },
 
-    _extentToString : function (extent) {
+    _extentToString: function (extent) {
       return extent.xmin + "," + extent.xmax + "," + extent.ymin + "," + extent.ymax;
     },
 
     // expects string with 4 comma separated values
-    _extentToObject : function (extent) {
+    _extentToObject: function (extent) {
       extent = extent.split(",");
       return {
-          xmin : extent[0],
-          xmax : extent[1],
-          ymin : extent[2],
-          ymax : extent[3]
+        xmin: extent[0],
+        xmax: extent[1],
+        ymin: extent[2],
+        ymax: extent[3]
       };
     },
 
@@ -296,16 +296,20 @@ especially when it comes to interacting with the DOM and handling events.
         this.removeUrlParam('station'); // on mode change overlay goes away
     },
 
-    getVariablesMapState: function () {
+    getVariablesPageState: function () {
       var state = this.getUrlParams({
         variable: 'id',
         season: 'season',
         leftScenario: 'left',
         rightScenario: 'right',
         extent: 'extent',
+        lat: 'lat',
+        lon: 'lon',
         zoom: 'zoom'
       });
-
+      if (state.lat && state.lon){
+        state.center = [state.lat, state.lon]
+      }
       if (state.extent) state.extent = this._extentToObject(state.extent);
 
       return state;
@@ -340,7 +344,21 @@ especially when it comes to interacting with the DOM and handling events.
       };
     },
 
-    // CASE.PHP functions
+
+    getLocationPageState: function () {
+      var state = this.getUrlParams({
+        county: 'county',
+        city: 'city',
+        fips: 'fips',
+        extent: 'extent',
+        zoom: 'zoom'
+      });
+      if (state.county) { state.county = state.county.replace('+', ' '); }
+      if (state.city) { state.city = state.city.replace('+', ' '); }
+      if (state.extent) state.extent = this._extentToObject(state.extent);
+
+      return state;
+    },
 
 
     // These 3 methods give you an easy way to control debug messages
@@ -353,9 +371,9 @@ especially when it comes to interacting with the DOM and handling events.
       logger.error.apply(logger, args);
     },
 
-    updateSharing:function(){
-      $('#share_facebook').prop('href','https://www.facebook.com/sharer/sharer.php?u='+ encodeURIComponent(window.location.href));
-      $('#share_twitter').prop('href','https://twitter.com/intent/tweet?text='+ encodeURIComponent(window.location.href));
+    updateSharing: function () {
+      $('#share_facebook').prop('href', 'https://www.facebook.com/sharer/sharer.php?u=' + encodeURIComponent(window.location.href));
+      $('#share_twitter').prop('href', 'https://twitter.com/intent/tweet?text=' + encodeURIComponent(window.location.href));
       $('#share_link').val(window.location.href);
     },
 
@@ -363,7 +381,7 @@ especially when it comes to interacting with the DOM and handling events.
       var breadcrumb_text,
           additional_breadcrumb;
 
-      var page = window.location.pathname.split("/").filter(function(p) {return p !== ""}).pop().replace(".php", "");
+      var page = window.location.pathname.split("/").filter(function (p) {return p !== ""}).pop().replace(".php", "");
 
       if (!page) return;
 
@@ -389,9 +407,7 @@ especially when it comes to interacting with the DOM and handling events.
           additonal_breadcrumb = '<a href="#nav-stations" class="parent launch-nav breadcrumb-middle" data-nav-slide="2"><span class="icon icon-bubble"></span>Stations</a>';
           break;
         case 'variables':
-          var id = this.getUrlParam('id') || '';
-          breadcrumb_text = this._getVariableBreadcrumb(id);
-
+          breadcrumb_text = this._getVariableBreadcrumb(this.getUrlParam('id') || 'tmax');
           additional_breadcrumb = '<a href="#nav-variables" class="parent launch-nav breadcrumb-middle" data-nav-slide="1"><span class="icon icon-bubble"></span>Variable</a>';
       }
 
@@ -405,9 +421,9 @@ especially when it comes to interacting with the DOM and handling events.
       var variables = {
         'tmax': {title: 'Avg Daily Max Temp (°F)', seasonal_data: true},
         'tmin': {title: 'Avg Daily Min Temp (°F)', seasonal_data: true},
-        'days_tmin_lt_32f': {title: 'Days With Minimum Below 32F&deg; F', seasonal_data: false},
+        'days_tmin_lt_32f': {title: 'Days With Minimum Below 32F°F', seasonal_data: false},
         'days_tmax_gt_90f': {title: 'Days w/ max > 90°F', seasonal_data: false},
-        'days_tmax_gt_95f': {title: 'Days With Maximum Above 95&deg; F', seasonal_data: false},
+        'days_tmax_gt_95f': {title: 'Days With Maximum Above 95°F', seasonal_data: false},
         'pcpn': {title: 'Total precip', seasonal_data: true},
         'days_pcpn_gt_1in': {title: 'Days of Precipitation Above 1 Inch', seasonal_data: false},
         'cdd_65f': {title: 'Cooling Degree Days', seasonal_data: false},

@@ -4,6 +4,12 @@ $(function () {
   let activeVariableDerived = 'hdd';
 
 
+  $('#splash-city').text(window.ce.ce('getLocationPageState')['city']);
+  $('#splash-county').text(window.ce.ce('getLocationPageState')['county']);
+  $('.data-accordion-tab .full-title').text(window.ce.ce('getLocationPageState')['county']);
+  $('select#derived-county, select#precip-county, select#county').append($('<option value="'+window.ce.ce('getLocationPageState')['fips']+'" selected="selected">'+window.ce.ce('getLocationPageState')['county']+'</option>'));
+
+
   $('.data-options-trigger').click(function (e) {
     e.preventDefault();
 
@@ -17,6 +23,9 @@ $(function () {
       $('#temperature-map').spinner();
       window.temperatureScenariosMap = $('#temperature-map').scenarioComparisonMap({
         variable: activeVariableTemperature,
+        extent: window.ce.ce('getLocationPageState')['extent'],
+        center: window.ce.ce('getLocationPageState')['center'],
+        zoom: window.ce.ce('getLocationPageState')['zoom'],
         layersloaded: function () {
           $('#temperature-map').spinner('destroy');
         }

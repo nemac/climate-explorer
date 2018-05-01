@@ -22,11 +22,8 @@ include_once dirname(__DIR__) . '/functions.php';
             </ul>
         </nav>
 
-        <?php
-          include_once dirname(__DIR__) . '/template/breadcrumb.php';
-        ?>
         <div id="breadcrumb">
-            <a href="/"><span class="icon icon-arrow-up"></span>Home</a><?php echo isset($breadcrumb) ? $breadcrumb:'';?>
+            <a href="/"><span class="icon icon-arrow-up"></span>Home</a><span class="current"></span>
         </div>
     </div>
 </header>

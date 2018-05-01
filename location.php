@@ -1,42 +1,19 @@
 <?php
 include_once('functions.php');
-
-$location = true;
-
-$city = isset($_GET['city']) ? $purifier->purify($_GET['city']) : '';
-$county = isset($_GET['county']) ? $purifier->purify($_GET['county']) : '';
-$fips = isset($_GET['fips']) ? $purifier->purify($_GET['fips']) : '';
-$lat = isset($_GET['lat']) ? $purifier->purify($_GET['lat']) : '';
-$lon = isset($_GET['lon']) ? $purifier->purify($_GET['lon']) : '';
-
-//if (preg_match('/[^a-z, .\'_\-0-9]/i', $city)) {
-//  header("Location:error.php?1");
-//}
-//if (preg_match('/[^a-z, .\'_\-0-9]/i', $county)) {
-//  header("Location:error.php?2");
-//}
-//if (!is_numeric($fips)) {
-//  header("Location:error.php?3");
-//}
-//if (!isValidLatitude($lat)) {
-//  header("Location:error.php?4");
-//}
-//if (!isValidLongitude($lon)) {
-//  header("Location:error.php?5");
-//}
 ?>
 <!doctype html>
 <html>
 <head>
   <?php include_once('template/head.php') ?>
-  <?php
-  $share_data['title'] = 'Location data for ' . $city;
-  echo opengraph_output($share_data);
-  ?>
-
+  <meta property="fb:app_id" content="187816851587993">
+  <meta property="og:url" content="/">
+  <meta property="og:type" content="article">
+  <meta property="og:title" content="Location data for Buncombe County, NC">
+  <meta property="og:description" content="The Climate Explorer allows you to view historical and projected climate trends and assess the impacts of climate change on the things you care about">
+  <meta property="og:image" content="/resources/img/og.jpg">
 </head>
 
-<body id="page-location-<?php echo $fips; ?>" class="page-type-location">
+<body id="page-location" class="page-type-location">
 <div class="cd-cover-layer"></div>
 <?php include_once('template/header.php'); ?>
 
@@ -51,8 +28,9 @@ $lon = isset($_GET['lon']) ? $purifier->purify($_GET['lon']) : '';
 
     <section id="location-splash" class="page-splash">
       <div class="splash-text">
-        <h1><?php echo $city ?></h1>
-        <h3><?php echo $county ?></h3>
+        <h1 id="splash-city"></h1>
+        <h3 id="splash-county"></h3>
+
         <p>Graphs and maps below show observed and modeled data for the county of your selected location. Adjust the displays to focus on times or regions of
           interest.</p>
       </div>
@@ -219,7 +197,6 @@ $lon = isset($_GET['lon']) ? $purifier->purify($_GET['lon']) : '';
             <div class="row">
               <label for="county">County</label>
               <select id="county" class="u-full-width">
-                <option value="<?php echo $fips ?>" selected="selected"><?php echo $county ?></option>
               </select>
             </div>
             <div class="row">
@@ -304,7 +281,7 @@ $lon = isset($_GET['lon']) ? $purifier->purify($_GET['lon']) : '';
               <header>
                 <h4>
                   <span class="icon icon-emission-scenario"></span> <span class="text">
-                                Chart<span class="full-title">: <?php echo $county ?></span>
+                                Chart:&nbsp;<span class="full-title"></span>
                                 <span class="source" id="temp-chart-name">Avg Daily Max Temp (°F)</span>
                               </span>
                 </h4>
@@ -363,7 +340,7 @@ $lon = isset($_GET['lon']) ? $purifier->purify($_GET['lon']) : '';
               <header>
                 <h4 class="accent-color">
                   <span class="icon icon-district"></span>
-                  <span class="text">Map<span class="full-title">: <?php echo $county ?></span>
+                  <span class="text">Map:&nbsp;<span class="full-title"></span>
                   <span class="source" id="temp-map-name">Avg Daily Max Temp (°F)</span>
                 </span>
                 </h4>
@@ -453,7 +430,6 @@ $lon = isset($_GET['lon']) ? $purifier->purify($_GET['lon']) : '';
             <div class="row">
               <label for="precip-county">County</label>
               <select id="precip-county" class="u-full-width">
-                <option value="<?php echo $fips ?>" selected="selected"><?php echo $county ?></option>
               </select>
             </div>
             <div class="row">
@@ -542,7 +518,7 @@ $lon = isset($_GET['lon']) ? $purifier->purify($_GET['lon']) : '';
               <header>
                 <h4>
                   <span class="icon icon-emission-scenario"></span> <span class="text">
-                                Chart<span class="full-title">: <?php echo $county ?></span>
+                                Chart:&nbsp;<span class="full-title"></span>
                                 <span class="source" id="precip-chart-name">Total precip</span>
                               </span>
                 </h4>
@@ -598,7 +574,7 @@ $lon = isset($_GET['lon']) ? $purifier->purify($_GET['lon']) : '';
               <header>
                 <h4 class="accent-color">
                   <span class="icon icon-district"></span> <span class="text">
-                              Map<span class="full-title">: <?php echo $county ?></span>
+                              Map:&nbsp;<span class="full-title"></span>
                               <span class="source" id="precip-map-name">Total precip</span>
                             </span>
                 </h4>
@@ -678,7 +654,7 @@ $lon = isset($_GET['lon']) ? $purifier->purify($_GET['lon']) : '';
             <div class="row">
               <label for="derived-county">County</label>
               <select id="derived-county" class="u-full-width">
-                <option value="<?php echo $fips ?>" selected="selected"><?php echo $county ?></option>
+
               </select>
             </div>
             <div class="row">
@@ -766,7 +742,7 @@ $lon = isset($_GET['lon']) ? $purifier->purify($_GET['lon']) : '';
               <header>
                 <h4>
                   <span class="icon icon-emission-scenario"></span> <span class="text">
-                                Chart<span class="full-title">: <?php echo $county ?></span>
+                                Chart:&nbsp;<span class="full-title"></span>
                                 <span class="source" id="derived-chart-name">Heating Degree Days</span>
                               </span>
                 </h4>
@@ -824,7 +800,7 @@ $lon = isset($_GET['lon']) ? $purifier->purify($_GET['lon']) : '';
 
                 <h4 class="accent-color">
                   <span class="icon icon-district"></span> <span class="text">
-                                Map<span class="full-title">: <?php echo $county ?></span>
+                                Map:&nbsp;<span class="full-title"></span>
                                 <span class="source" id="derived-map-name">Heating Degree Days</span>
                               </span>
                 </h4>

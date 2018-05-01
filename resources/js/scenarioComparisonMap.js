@@ -150,15 +150,17 @@
       'esri/geometry/Point',
       'esri/geometry/Polygon',
       'esri/widgets/Locate',
+      'esri/core/watchUtils',
+      'esri/geometry/support/webMercatorUtils'
     ],
     // recreated in ce.js for the purposes of breadcrumbs
     // todo: move to one central variable location
     variables: {
       'tmax': {title: 'Avg Daily Max Temp (°F)', seasonal_data: true},
       'tmin': {title: 'Avg Daily Min Temp (°F)', seasonal_data: true},
-      'days_tmin_lt_32f': {title: 'Days With Minimum Below 32F&deg; F', seasonal_data: false},
+      'days_tmin_lt_32f': {title: 'Days With Minimum Below 32F°; F', seasonal_data: false},
       'days_tmax_gt_90f': {title: 'Days w/ max > 90°F', seasonal_data: false},
-      'days_tmax_gt_95f': {title: 'Days With Maximum Above 95&deg; F', seasonal_data: false},
+      'days_tmax_gt_95f': {title: 'Days With Maximum Above 95°; F', seasonal_data: false},
       'pcpn': {title: 'Total precip', seasonal_data: true},
       'days_pcpn_gt_1in': {title: 'Days of Precipitation Above 1 Inch', seasonal_data: false},
       'cdd_65f': {title: 'Cooling Degree Days', seasonal_data: false},
@@ -197,7 +199,7 @@
         return this._dojoLoadedPromise
       }
       if (this._dojoLoaded()) {
-        return Promise.resolve().catch(this._log);
+        return Promise.resolve().catch(this._log.bind(this));
       }
 
       this._dojoLoadedPromise = new Promise(function (resolve, reject) {
@@ -226,7 +228,7 @@
           this._registerDojoMods(resolve);
         }
       }.bind(this))
-        .catch(this._log);
+        .catch(this._log.bind(this));
       return this._dojoLoadedPromise
     },
     /**
@@ -257,7 +259,7 @@
       this.nodes.mapContainer = this.element[0];
       this.nodes.stationOverlayContainer = $('#' + this.options.stationOverlayContainerId)[0];
       this._initControlsOverlay();
-      this._mapInitPromise = this._whenDojoLoaded().then(this._initMap.bind(this)).catch(this._log);
+      this._mapInitPromise = this._whenDojoLoaded().then(this._initMap.bind(this)).catch(this._log.bind(this));
 
       let layerPromises = [
         this._whenDojoLoaded().then(this._updateScenarioLayers.bind(this)),
@@ -314,8 +316,8 @@
         axis: "x",
         containment: this.nodes.$controlsOverLayContainer,
         scroll: false,
-        drag: function (event, ui) { this._setOptions({swipeX:ui.position.left}) }.bind(this),
-        stop: function (event, ui) { this._setOptions({swipeX:ui.position.left}) }.bind(this)
+        drag: function (event, ui) { this._setOptions({swipeX: ui.position.left}) }.bind(this),
+        stop: function (event, ui) { this._setOptions({swipeX: ui.position.left}) }.bind(this)
       });
 
       this._updateLeftYearSlider();
@@ -331,9 +333,9 @@
       this.view = new this.dojoMods.MapView({
         container: this.nodes.mapContainer,
         map: this.map,
-        zoom: this.options.extent ? null : this.options.zoom,
+        zoom: this.options.zoom,
         center: this.options.extent ? null : this.options.center,
-        extent: this.options.extent ? new this.dojoMods.Extent(this.options.extent) : null,
+        extent: this.options.extent ? this.dojoMods.webMercatorUtils.geographicToWebMercator(new this.dojoMods.Extent(this.options.extent)) : null,
         constraints: {
           rotationEnabled: false,
           minZoom: 4,
@@ -341,6 +343,23 @@
         }
       });
 
+      // Watch view's stationary property
+      this.dojoMods.watchUtils.whenTrue(this.view, "stationary", function () {
+        // Get the new extent of the view when view is stationary.
+        if (this.view.extent) {
+          let xymin = this.dojoMods.webMercatorUtils.xyToLngLat(this.view.extent.xmin, this.view.extent.ymin);
+          let xymax = this.dojoMods.webMercatorUtils.xyToLngLat(this.view.extent.xmax, this.view.extent.ymax);
+          let quickRound = function (num) {return Math.round(num * 100 + Number.EPSILON) / 100};
+          this.options.extent = {
+            xmin: quickRound(xymin[0]),
+            xmax: quickRound(xymax[0]),
+            ymin: quickRound(xymin[1]),
+            ymax: quickRound(xymax[1])
+          };
+          if (this.view.zoom && this.view.zoom > 0) { this.options.zoom = this.view.zoom;}
+          this._trigger('change', null, this.options);
+        }
+      }.bind(this));
 
       this.locateWidget = new this.dojoMods.Locate({
         view: this.view,   // Attaches the Locate button to the view
@@ -450,7 +469,7 @@
         }.bind(this, layer));
         resolve(layer);
       }.bind(this))
-        .catch(this._log);
+        .catch(this._log.bind(this));
       // hook the layerView's first render to apply the clipping path.
       promise.then(function (layer) {
         this.view.whenLayerView(layer).then(function (layerView) {
@@ -469,7 +488,7 @@
               resolve();
             };
           }.bind(this))
-            .catch(this._log)
+            .catch(this._log.bind(this))
             .then(function () {
               layerView.container.doRender = layerView.container._doRender;
             });
@@ -622,7 +641,7 @@
         if (layerURL.endsWith('csv')) {
           layerClass = this.dojoMods.CSVLayer;
         }
-        return Promise.resolve(new layerClass(Object.assign({url: layerURL}, options))).catch(this._log);
+        return Promise.resolve(new layerClass(Object.assign({url: layerURL}, options))).catch(this._log.bind(this));
       }
     },
 
@@ -709,10 +728,10 @@
         change: function (event, ui) {
           this.nodes.$leftYearSlider.attr('data-value', ui.value);
           if (ui.value === 2010 && this.options.leftScenario === 'historical') {
-            this._setOptions({leftYear:'avg'});
+            this._setOptions({leftYear: 'avg'});
           }
           else {
-            this._setOptions({leftYear:ui.value});
+            this._setOptions({leftYear: ui.value});
           }
         }.bind(this),
       }).find(".ui-slider-handle").html('<span class="icon icon-arrow-left-right"></span>').append(this.nodes.$leftYearTooltip);
@@ -742,7 +761,7 @@
         }.bind(this),
         change: function (event, ui) {
           this.nodes.$rightYearSlider.attr('data-value', ui.value);
-          this._setOptions({rightYear:ui.value});
+          this._setOptions({rightYear: ui.value});
         }.bind(this),
       }).find(".ui-slider-handle").html('<span class="icon icon-arrow-left-right"></span>').append(this.nodes.$rightYearTooltip);
       this.nodes.$rightYearTooltip.fadeIn();

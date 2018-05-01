@@ -130,7 +130,7 @@
   });
   $(document).ready(function () {
     window.scenariosMap = $('#variable-map').scenarioComparisonMap(Object.assign(
-      window.ce.ce("getVariablesMapState"),
+      window.ce.ce("getVariablesPageState"),
       {
       change : function (event, options) {
         window.ce.ce("setVariablesMapState", options);
@@ -163,8 +163,8 @@
       }
     });
 
-    $('#variable-options').val(window.ce.ce("getVariablesMapState")['variable'] || 'tmax').change();
-    $('#map-season').val(window.ce.ce("getVariablesMapState")['season'] || 'summer').change();
+    $('#variable-options').val(window.ce.ce("getVariablesPageState")['variable'] || 'tmax').change();
+    $('#map-season').val(window.ce.ce("getVariablesPageState")['season'] || 'summer').change();
 
 
     $('#variable-options-container .fs-dropdown-item').on('click', function (e) {
