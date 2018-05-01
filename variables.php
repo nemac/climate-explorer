@@ -163,6 +163,10 @@
       }
     });
 
+    $('#variable-options').val(window.ce.ce("getVariablesMapState")['variable'] || 'tmax').change();
+    $('#map-season').val(window.ce.ce("getVariablesMapState")['season'] || 'summer').change();
+
+
     $('#variable-options-container .fs-dropdown-item').on('click', function (e) {
       let variable = $(this).data().value;
       let variableTitle = $(this).text();
@@ -193,6 +197,8 @@
       }
 
     });
+
+
 
     $('#map-seasons-container .fs-dropdown-item').on('click', function (e) {
       window.scenariosMap.scenarioComparisonMap({season: $(this).data().value});
