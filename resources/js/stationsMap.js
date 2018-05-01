@@ -410,7 +410,7 @@
           this._initDailyStationsLayer();
         }
       }
-      this._createStationLayer(this.options.thresholdStationsDataURL, {
+      this._createStationLayer(this.options.thresholdStationsLayerURL, {
         outfields: ['*'],
         renderer: {
           type: "simple",  // autocasts as new SimpleRenderer()
