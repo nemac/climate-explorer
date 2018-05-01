@@ -282,18 +282,32 @@ especially when it comes to interacting with the DOM and handling events.
 
     //todo write public getters for state variables
     getStationsMapState: function () {
-      return this.getUrlParams({
+      var state = this.getUrlParams({
         mode: 'id',
         stationId: 'station',
         variable: 'variable',
+
+        extent: 'extent',
+        lat: 'lat',
+        lon: 'lon',
         zoom: 'zoom'
       });
+      if (state.lat && state.lon) {
+        state.center = [state.lat, state.lon]
+      }
+      if (state.extent) {state.extent = this._extentToObject(state.extent);}
+
+      return state
     },
     setStationsMapState: function (state) {
       (Object.keys(state).includes('stationId') && state.stationId) ? this.setUrlParam('station', state['stationId']) :
         this.removeUrlParam('station');
       Object.keys(state).includes('mode') ? this.setUrlParam('id', state['mode']) :
         this.removeUrlParam('station'); // on mode change overlay goes away
+      Object.keys(state).includes('extent') ? this.setUrlParam('extent', this._extentToString(state['extent'])) :
+        null;
+      Object.keys(state).includes('zoom') ? this.setUrlParam('zoom', state['zoom']) :
+        null;
     },
 
     getVariablesPageState: function () {
@@ -307,10 +321,10 @@ especially when it comes to interacting with the DOM and handling events.
         lon: 'lon',
         zoom: 'zoom'
       });
-      if (state.lat && state.lon){
+      if (state.lat && state.lon) {
         state.center = [state.lat, state.lon]
       }
-      if (state.extent) state.extent = this._extentToObject(state.extent);
+      if (state.extent) {state.extent = this._extentToObject(state.extent);}
 
       return state;
     },
@@ -379,7 +393,7 @@ especially when it comes to interacting with the DOM and handling events.
 
     updateBreadcrumbs: function () {
       var breadcrumb_text,
-          additional_breadcrumb;
+        additional_breadcrumb;
 
       var page = window.location.pathname.split("/").filter(function (p) {return p !== ""}).pop().replace(".php", "");
 
@@ -402,7 +416,8 @@ especially when it comes to interacting with the DOM and handling events.
           break;
         case 'stations':
           breadcrumb_text = this.getUrlParam('id') || "";
-          breadcrumb_text = breadcrumb_text.replace(/\_/g, " ").replace(/\w\S*/g, function(txt){return txt.charAt(0).toUpperCase() + txt.substr(1).toLowerCase();});;
+          breadcrumb_text = breadcrumb_text.replace(/\_/g, " ").replace(/\w\S*/g, function (txt) {return txt.charAt(0).toUpperCase() + txt.substr(1).toLowerCase();});
+          ;
 
           additional_breadcrumb = '<a href="#nav-stations" class="parent launch-nav breadcrumb-middle" data-nav-slide="2"><span class="icon icon-bubble"></span>Stations</a>';
           break;

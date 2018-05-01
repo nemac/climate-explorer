@@ -904,6 +904,7 @@
       $(window).resize(function () {this.cwg.resize()}.bind(this));
       this.nodes.$countyOverlay.find('#station-overlay-close').click(function () {
         delete this['tempChart'];
+        this.options.county = null;
         this.nodes.$countyOverlay.remove();
       }.bind(this));
 

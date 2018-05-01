@@ -132,6 +132,8 @@
       'esri/geometry/Extent',
       'esri/geometry/Point',
       'esri/widgets/Locate',
+      'esri/core/watchUtils',
+      'esri/geometry/support/webMercatorUtils'
     ],
 
     _dojoLoaded: function () {
@@ -242,6 +244,24 @@
           maxZoom: 10
         }
       });
+
+      // Watch view's stationary property
+      this.dojoMods.watchUtils.whenTrue(this.view, "stationary", function () {
+        // Get the new extent of the view when view is stationary.
+        if (this.view.extent) {
+          let xymin = this.dojoMods.webMercatorUtils.xyToLngLat(this.view.extent.xmin, this.view.extent.ymin);
+          let xymax = this.dojoMods.webMercatorUtils.xyToLngLat(this.view.extent.xmax, this.view.extent.ymax);
+          let quickRound = function (num) {return Math.round(num * 100 + Number.EPSILON) / 100};
+          this.options.extent = {
+            xmin: quickRound(xymin[0]),
+            xmax: quickRound(xymax[0]),
+            ymin: quickRound(xymin[1]),
+            ymax: quickRound(xymax[1])
+          };
+          if (this.view.zoom && this.view.zoom > 0) { this.options.zoom = this.view.zoom;}
+          this._trigger('change', null, this.options);
+        }
+      }.bind(this));
 
       this.basemapGallery = new this.dojoMods.BasemapGallery({
         view: this.view,
@@ -818,6 +838,7 @@
       }
       $('#station-overlay-close').click(function () {
         $(this.nodes.stationOverlayContainer).css('visibility', 'hidden');
+        this.options.stationId = null;
         $(this.nodes.stationOverlayContainer).empty();
       }.bind(this));
     },
