@@ -354,7 +354,7 @@ especially when it comes to interacting with the DOM and handling events.
     updateSharing:function(){
       $('#share_facebook').prop('href','https://www.facebook.com/sharer/sharer.php?u='+ encodeURIComponent(window.location.href));
       $('#share_twitter').prop('href','https://twitter.com/intent/tweet?text='+ encodeURIComponent(window.location.href));
-      $('#share-permalink').prop('href','https://www.facebook.com/sharer/sharer.php?u='+ encodeURIComponent(window.location.href));
+      $('#share_link').val(window.location.href);
     }
 
     // ============ Public methods provided by the base widget =============
