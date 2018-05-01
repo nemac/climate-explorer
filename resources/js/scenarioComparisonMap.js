@@ -151,6 +151,8 @@
       'esri/geometry/Polygon',
       'esri/widgets/Locate',
     ],
+    // recreated in ce.js for the purposes of breadcrumbs
+    // todo: move to one central variable location
     variables: {
       'tmax': {title: 'Avg Daily Max Temp (°F)', seasonal_data: true},
       'tmin': {title: 'Avg Daily Min Temp (°F)', seasonal_data: true},

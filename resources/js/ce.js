@@ -114,7 +114,7 @@ especially when it comes to interacting with the DOM and handling events.
       this.updateSharing();
 
       //todo breadcrumbs
-
+      this.updateBreadcrumbs();
     },
 
     // Optional -Return value will be sent as the `create` event's data.
@@ -202,6 +202,7 @@ especially when it comes to interacting with the DOM and handling events.
 
       window.history.replaceState({}, "", href + "?" + params.join("&"));
       this.updateSharing();
+      this.updateBreadcrumbs();
     },
 
     // Replaces specified URL param with the passed value
@@ -238,6 +239,7 @@ especially when it comes to interacting with the DOM and handling events.
 
       window.history.replaceState({}, "", href + "?" + params.join("&"));
       this.updateSharing();
+      this.updateBreadcrumbs();
     },
 
     // Removes specified URL param
@@ -355,6 +357,73 @@ especially when it comes to interacting with the DOM and handling events.
       $('#share_facebook').prop('href','https://www.facebook.com/sharer/sharer.php?u='+ encodeURIComponent(window.location.href));
       $('#share_twitter').prop('href','https://twitter.com/intent/tweet?text='+ encodeURIComponent(window.location.href));
       $('#share_link').val(window.location.href);
+    },
+
+    updateBreadcrumbs: function () {
+      var breadcrumb_text,
+          additional_breadcrumb;
+
+      var page = window.location.pathname.split("/").filter(function(p) {return p !== ""}).pop().replace(".php", "");
+
+      if (!page) return;
+
+      switch (page) {
+        case 'location':
+          breadcrumb_text = this.getUrlParam('city').replace(/\+/g, " ") || "";
+          additional_breadcrumb = '<a href="#nav-search" class="parent launch-nav breadcrumb-middle" data-nav-slide="0"><span class="icon icon-district"></span>Location</a>';
+          break;
+        case 'about':
+          breadcrumb_text = 'About';
+          break;
+        case 'definitions':
+          breadcrumb_text = 'Definitions';
+          break;
+        case 'credits':
+          breadcrumb_text = 'Credits';
+          break;
+        case 'stations':
+          breadcrumb_text = this.getUrlParam('param').replace(/\_/g, " ") || "";
+          breadcrumb_text = breadcrumb_text.replace(/\w\S*/g, function(txt){return txt.charAt(0).toUpperCase() + txt.substr(1).toLowerCase();});;
+
+          additonal_breadcrumb = '<a href="#nav-stations" class="parent launch-nav breadcrumb-middle" data-nav-slide="2"><span class="icon icon-bubble"></span>Stations</a>';
+          break;
+        case 'variables':
+          var id = this.getUrlParam('id') || '';
+          breadcrumb_text = this._getVariableBreadcrumb(id);
+
+          additional_breadcrumb = '<a href="#nav-variables" class="parent launch-nav breadcrumb-middle" data-nav-slide="1"><span class="icon icon-bubble"></span>Variable</a>';
+      }
+
+      $(".breadcrumb-middle").remove();
+      $(".current").text(breadcrumb_text);
+      $(".current").before(additional_breadcrumb);
+    },
+
+    // recreates list of variables found in scenarioComparisonMap.js
+    _getVariableBreadcrumb: function (key) {
+      var variables = {
+        'tmax': {title: 'Avg Daily Max Temp (°F)', seasonal_data: true},
+        'tmin': {title: 'Avg Daily Min Temp (°F)', seasonal_data: true},
+        'days_tmin_lt_32f': {title: 'Days With Minimum Below 32F&deg; F', seasonal_data: false},
+        'days_tmax_gt_90f': {title: 'Days w/ max > 90°F', seasonal_data: false},
+        'days_tmax_gt_95f': {title: 'Days With Maximum Above 95&deg; F', seasonal_data: false},
+        'pcpn': {title: 'Total precip', seasonal_data: true},
+        'days_pcpn_gt_1in': {title: 'Days of Precipitation Above 1 Inch', seasonal_data: false},
+        'cdd_65f': {title: 'Cooling Degree Days', seasonal_data: false},
+        'hdd_65f': {title: 'Heating Degree Days', seasonal_data: false},
+        'days_tmax_gt_100f': {title: 'Days w/ max > 100°F', seasonal_data: false},
+        'days_tmax_gt_105f': {title: 'Days w/ max > 105°F', seasonal_data: false},
+        'days_tmax_lt_32f': {title: 'Days w/ max < 32°F', seasonal_data: false},
+        'days_tmin_gt_80f': {title: 'Days w/ min > 80°F', seasonal_data: false},
+        'days_tmin_gt_90f': {title: 'Days w/ min > 90°F', seasonal_data: false},
+        'days_pcpn_gt_2in': {title: 'Days w/ > 2 in', seasonal_data: false},
+        'days_pcpn_gt_3in': {title: 'Days w/ > 3 in', seasonal_data: false},
+        'days_dry_days': {title: 'Dry Days', seasonal_data: false},
+        'gdd': {title: 'Growing Degree Days', seasonal_data: false},
+        'gddmod': {title: 'Mod. Growing Degree Days', seasonal_data: false}
+      }
+
+      return variables[key].title;
     }
 
     // ============ Public methods provided by the base widget =============
