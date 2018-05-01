@@ -404,7 +404,7 @@ especially when it comes to interacting with the DOM and handling events.
           breadcrumb_text = this.getUrlParam('id') || "";
           breadcrumb_text = breadcrumb_text.replace(/\_/g, " ").replace(/\w\S*/g, function(txt){return txt.charAt(0).toUpperCase() + txt.substr(1).toLowerCase();});;
 
-          additonal_breadcrumb = '<a href="#nav-stations" class="parent launch-nav breadcrumb-middle" data-nav-slide="2"><span class="icon icon-bubble"></span>Stations</a>';
+          additional_breadcrumb = '<a href="#nav-stations" class="parent launch-nav breadcrumb-middle" data-nav-slide="2"><span class="icon icon-bubble"></span>Stations</a>';
           break;
         case 'variables':
           breadcrumb_text = this._getVariableBreadcrumb(this.getUrlParam('id') || 'tmax');
@@ -413,7 +413,9 @@ especially when it comes to interacting with the DOM and handling events.
 
       $(".breadcrumb-middle").remove();
       $(".current").text(breadcrumb_text);
-      $(".current").before(additional_breadcrumb);
+      if (additional_breadcrumb) {
+        $(".current").before(additional_breadcrumb);
+      }
     },
 
     // recreates list of variables found in scenarioComparisonMap.js
