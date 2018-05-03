@@ -234,7 +234,16 @@ input.location-mapper:focus:-ms-input-placeholder {
   white-space:normal!important;
 }
 
-@media screen and (max-width: 1375px) {
+@media screen and (min-width: 1500px) {
+  #subnav ul {
+    position: absolute;
+    right: 20px;
+    top: 43px;
+  }
+
+}
+
+@media screen and (max-width: 1500px) {
   /* line 27, ../scss/formstone/_grid.scss */
   #main-header #subnav {
     margin:0 !important;

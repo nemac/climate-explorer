@@ -181,7 +181,7 @@ $stations_content = array(
     <ul id="nav-cycle-pager">
       <li><a href="#nav-search"><span class="icon icon-search"></span> Select a location</a></li>
       <li><a href="#nav-variables"><span class="icon icon-variables"></span> View by variable</a></li>
-      <li><a href="#nav-stations"><span class="icon icon-bubble"></span> Explore Station Data</a></li>
+      <li><a href="#nav-stations"><span class="icon icon-bubble"></span> Weather & Tidal Stations</a></li>
     </ul>
   </div>
 

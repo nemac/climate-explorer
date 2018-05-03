@@ -666,7 +666,7 @@
                 <div class="field-pair field-threshold append">
                   <label for="threshold">Threshold:</label>
                   <div class="field">
-                    <input type="number" name="threshold" id="threshold" value="1" step="0.1"> <span class="append" id="item_inches_or_f">°F</span>
+                    <input type="number" name="threshold" id="threshold" value="1" step="0.1"> <span class="append" id="item_inches_or_f">inches</span>
                   </div>
                 </div>
               </div>

@@ -14,11 +14,11 @@ include_once dirname(__DIR__) . '/functions.php';
             <span id="subnav-trigger">More…</span>
 
             <ul>
-                <li><a href="#" id="tour-this-page"><span class="text">Tour This Page</span></a></li>
-                <li><a href="about.php"><span class="text">About</span></a></li>
-                <li><a href="definitions.php"><span class="text">Definitions</span></a></li>
-                <li><a href="faq.php"><span class="text">FAQ</span></a></li>
-                <li><a href="credits.php"><span class="text">Credits</span></a></li>
+              <li><a href="#" id="tour-this-page"><span class="text">Tour This Page</span></a></li>
+              <li><a href="/about/"><span class="text">About</span></a></li>
+              <li><a href="/definitions/"><span class="text">Definitions</span></a></li>
+              <li><a href="/faq/"><span class="text">FAQ</span></a></li>
+              <li><a href="/credits/"><span class="text">Credits</span></a></li>
             </ul>
         </nav>
 
