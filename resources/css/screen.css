@@ -11190,59 +11190,68 @@ input.location-mapper:focus:-ms-input-placeholder {
   white-space: normal !important;
 }
 
-@media screen and (max-width: 1375px) {
+@media screen and (min-width: 1500px) {
+  /* line 238, resources/scss/_mods.scss */
+  #subnav ul {
+    position: absolute;
+    right: 20px;
+    top: 43px;
+  }
+}
+
+@media screen and (max-width: 1500px) {
   /* line 27, ../scss/formstone/_grid.scss */
-  /* line 239, resources/scss/_mods.scss */
+  /* line 248, resources/scss/_mods.scss */
   #main-header #subnav {
     margin: 0 !important;
   }
-  /* line 242, resources/scss/_mods.scss */
+  /* line 251, resources/scss/_mods.scss */
   #main-header #subnav li {
     display: block;
     margin: -5% 0 0 15px;
   }
-  /* line 246, resources/scss/_mods.scss */
+  /* line 255, resources/scss/_mods.scss */
   .page-type-stations #substations-menu ul {
     display: block;
     white-space: normal;
   }
-  /* line 251, resources/scss/_mods.scss */
+  /* line 260, resources/scss/_mods.scss */
   .station-banner {
     background-size: cover !important;
   }
 }
 
 @media screen and (max-width: 1030px) {
-  /* line 256, resources/scss/_mods.scss */
+  /* line 265, resources/scss/_mods.scss */
   #page-variables #main-header #subnav {
     display: none !important;
   }
-  /* line 260, resources/scss/_mods.scss */
+  /* line 269, resources/scss/_mods.scss */
   .location-data-section .data-list {
     width: 100%;
   }
-  /* line 264, resources/scss/_mods.scss */
+  /* line 273, resources/scss/_mods.scss */
   .location-data-section .data-accordion-wrap {
     width: 100%;
   }
 }
 
-/* line 270, resources/scss/_mods.scss */
+/* line 279, resources/scss/_mods.scss */
 .stations-list .station-layers {
   margin-top: 40px;
 }
 
 @media screen and (max-height: 600px) {
-  /* line 275, resources/scss/_mods.scss */
+  /* line 284, resources/scss/_mods.scss */
   #detail-overlay .nav-detail .nav-detail-item {
     top: 300px;
   }
-  /* line 279, resources/scss/_mods.scss */
+  /* line 288, resources/scss/_mods.scss */
   #detail-overlay .nav-detail {
     overflow-y: scroll;
     overflow-x: hidden;
   }
-  /* line 284, resources/scss/_mods.scss */
+  /* line 293, resources/scss/_mods.scss */
   .overlay .close {
     position: fixed;
     top: 20px;
@@ -11257,34 +11266,34 @@ input.location-mapper:focus:-ms-input-placeholder {
   }
 }
 
-/* line 298, resources/scss/_mods.scss */
+/* line 307, resources/scss/_mods.scss */
 #left-header .left-filler {
   overflow: auto;
 }
 
-/* line 302, resources/scss/_mods.scss */
+/* line 311, resources/scss/_mods.scss */
 .page-type-location #location-search {
   width: 400px;
 }
 
-/* line 306, resources/scss/_mods.scss */
+/* line 315, resources/scss/_mods.scss */
 .ol-popup-content {
   min-width: 170px;
   max-height: 910px;
   overflow: inherit;
 }
 
-/* line 312, resources/scss/_mods.scss */
+/* line 321, resources/scss/_mods.scss */
 .download-image {
   font-size: 1.5em !important;
 }
 
-/* line 316, resources/scss/_mods.scss */
+/* line 325, resources/scss/_mods.scss */
 .download-data {
   font-size: 1.5em !important;
 }
 
-/* line 321, resources/scss/_mods.scss */
+/* line 330, resources/scss/_mods.scss */
 .how-to-read-county {
   float: left;
   position: absolute;
@@ -11296,27 +11305,27 @@ input.location-mapper:focus:-ms-input-placeholder {
 
 /* iPad Air LandScape */
 @media only screen and (device-width: 768px) {
-  /* line 333, resources/scss/_mods.scss */
+  /* line 342, resources/scss/_mods.scss */
   .location-data-section .data-accordion .data-accordion-tab.data-map .location-map-legend-container {
     width: 80px;
   }
-  /* line 337, resources/scss/_mods.scss */
+  /* line 346, resources/scss/_mods.scss */
   html {
     font-size: 60%;
   }
-  /* line 340, resources/scss/_mods.scss */
+  /* line 349, resources/scss/_mods.scss */
   #variable-counties-toggle > label > span {
     font-size: 60%;
   }
-  /* line 343, resources/scss/_mods.scss */
+  /* line 352, resources/scss/_mods.scss */
   #variable-time-slider > span > span.icon.icon-arrow-left-right::before {
     font-size: 2em;
   }
-  /* line 346, resources/scss/_mods.scss */
+  /* line 355, resources/scss/_mods.scss */
   #temperature-map-time-slider > span > span.icon.icon-arrow-left-right {
     font-size: 1.8em;
   }
-  /* line 349, resources/scss/_mods.scss */
+  /* line 358, resources/scss/_mods.scss */
   .how-to-read {
     float: right !important;
     position: absolute !important;
@@ -11326,7 +11335,7 @@ input.location-mapper:focus:-ms-input-placeholder {
     display: block !important;
     z-index: 10 !important;
   }
-  /* line 359, resources/scss/_mods.scss */
+  /* line 368, resources/scss/_mods.scss */
   .ui-slider-handle {
     left: 3px;
     width: 16px;
@@ -11342,7 +11351,7 @@ input.location-mapper:focus:-ms-input-placeholder {
   }
 }
 
-/* line 376, resources/scss/_mods.scss */
+/* line 385, resources/scss/_mods.scss */
 #swipeImg .fs-dropdown button {
   padding: 2px !important;
   padding-right: 40px;
@@ -11361,7 +11370,7 @@ input.location-mapper:focus:-ms-input-placeholder {
   transition: 0.25s;
 }
 
-/* line 395, resources/scss/_mods.scss */
+/* line 404, resources/scss/_mods.scss */
 .handle .fs-dropdown button {
   padding: 2px !important;
   padding-right: 40px;
@@ -11381,7 +11390,7 @@ input.location-mapper:focus:-ms-input-placeholder {
   transition: 0.25s;
 }
 
-/* line 415, resources/scss/_mods.scss */
+/* line 424, resources/scss/_mods.scss */
 #location-stations #station-no-data {
   background: #F45440;
   color: white;
@@ -11391,7 +11400,7 @@ input.location-mapper:focus:-ms-input-placeholder {
   text-align: center;
 }
 
-/* line 424, resources/scss/_mods.scss */
+/* line 433, resources/scss/_mods.scss */
 #nav-overlay .nav-content .tab ol ul li {
   float: none !important;
   width: auto !important;
@@ -11399,7 +11408,7 @@ input.location-mapper:focus:-ms-input-placeholder {
   font: 300 1rem/1.2em Roboto, Helvetica, "Helvetica Neue", Arial, sans-serif;
 }
 
-/* line 431, resources/scss/_mods.scss */
+/* line 440, resources/scss/_mods.scss */
 .download-panel #download-precip-dismiss-button {
   display: block;
   position: absolute;
@@ -11407,7 +11416,7 @@ input.location-mapper:focus:-ms-input-placeholder {
   right: 0;
 }
 
-/* line 438, resources/scss/_mods.scss */
+/* line 447, resources/scss/_mods.scss */
 .download-panel #download-derived-dismiss-button {
   display: block;
   position: absolute;
