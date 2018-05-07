@@ -367,8 +367,8 @@ especially when it comes to interacting with the DOM and handling events.
         extent: 'extent',
         zoom: 'zoom'
       });
-      if (state.county) { state.county = state.county.replace('+', ' '); }
-      if (state.city) { state.city = state.city.replace('+', ' '); }
+      if (state.county) { state.county = state.county.replace(/\+/g, ' '); }
+      if (state.city) { state.city = state.city.replace(/\+/g, ' '); }
       if (state.extent) state.extent = this._extentToObject(state.extent);
 
       return state;
