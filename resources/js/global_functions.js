@@ -169,7 +169,7 @@
 
             if (settings.action === 'open') {
 
-                var link_href = this.attr('href');
+                var link_href = this.attr('href').replace(/\//g, "");
 
                 var detail_item = $('#detail-overlay').find(link_href);
                 var detail_div = detail_item.parents('.nav-detail');

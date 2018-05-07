@@ -36,9 +36,9 @@
         <h4>Jump to:</h4>
 
         <ul>
-          <li><a href="/#location-temperature" class="smooth-scroll">Temperature</a></li>
-          <li><a href="/#location-precipitation" class="smooth-scroll">Precipitation</a></li>
-          <li><a href="/#location-derived" class="smooth-scroll">Other Variables</a></li>
+          <li><a href="#location-temperature" class="smooth-scroll">Temperature</a></li>
+          <li><a href="#location-precipitation" class="smooth-scroll">Precipitation</a></li>
+          <li><a href="#location-derived" class="smooth-scroll">Other Variables</a></li>
           <!--<li><a href="#location-impacts">Relevant Impacts</a></li>-->
         </ul>
       </div>
@@ -106,7 +106,7 @@
 
           <ul class="data-options">
             <li class="active accent-border">
-              <h4 id="var-tmax" data-value="tmax"><a href="/#" class="text">Avg Daily Max Temp (°F)</a><a href="/#detail-tmax"
+              <h4 id="var-tmax" data-value="tmax"><a href="#" class="text">Avg Daily Max Temp (°F)</a><a href="#detail-tmax"
                                                                                                           class="icon icon-help nav-detail-link"></a></h4>
               <ul class="location-resolution">
                 <li class="active accent-border"><a class="accent-color">Annual</a></li>
@@ -116,7 +116,7 @@
             </li>
 
             <li class="">
-              <h4 id="var-tmin" data-value="tmin"><a href="/#" class="text">Avg Daily Min Temp (°F)</a><a href="/#detail-tmin"
+              <h4 id="var-tmin" data-value="tmin"><a href="#" class="text">Avg Daily Min Temp (°F)</a><a href="#detail-tmin"
                                                                                                           class="icon icon-help nav-detail-link"></a></h4>
               <ul class="location-resolution">
                 <li><a>Annual</a></li>
@@ -126,64 +126,64 @@
             </li>
 
             <li class="">
-              <h4 id="var-days_tmax_gt_90f" data-value="days_tmax_gt_90f"><a href="/#" class="text">Days w/ max > 90°F</a><a
-                    href="/#detail-days_tmax_gt_90f" class="icon icon-help nav-detail-link"></a></h4>
+              <h4 id="var-days_tmax_gt_90f" data-value="days_tmax_gt_90f"><a href="#" class="text">Days w/ max > 90°F</a><a
+                    href="#detail-days_tmax_gt_90f" class="icon icon-help nav-detail-link"></a></h4>
               <ul class="location-resolution">
                 <li><a>Annual</a></li>
               </ul>
             </li>
 
             <li class="">
-              <h4 id="var-days_tmax_gt_95f" data-value="days_tmax_gt_95f"><a href="/#" class="text">Days w/ max > 95°F</a><a
-                    href="/#detail-days_tmax_gt_95f" class="icon icon-help nav-detail-link"></a></h4>
+              <h4 id="var-days_tmax_gt_95f" data-value="days_tmax_gt_95f"><a href="#" class="text">Days w/ max > 95°F</a><a
+                    href="#detail-days_tmax_gt_95f" class="icon icon-help nav-detail-link"></a></h4>
               <ul class="location-resolution">
                 <li><a>Annual</a></li>
               </ul>
             </li>
 
             <li class="">
-              <h4 id="var-days_tmax_gt_100f" data-value="days_tmax_gt_100f"><a href="/#" class="text">Days w/ max > 100°F</a><a
-                    href="/#detail-days_tmax_gt_100f" class="icon icon-help nav-detail-link"></a></h4>
+              <h4 id="var-days_tmax_gt_100f" data-value="days_tmax_gt_100f"><a href="#" class="text">Days w/ max > 100°F</a><a
+                    href="#detail-days_tmax_gt_100f" class="icon icon-help nav-detail-link"></a></h4>
               <ul class="location-resolution">
                 <li><a>Annual</a></li>
               </ul>
             </li>
 
             <li class="">
-              <h4 id="var-days_tmax_gt_105f" data-value="days_tmax_gt_105f"><a href="/#" class="text">Days w/ max > 105°F</a><a
-                    href="/#detail-days_tmax_gt_105f" class="icon icon-help nav-detail-link"></a></h4>
+              <h4 id="var-days_tmax_gt_105f" data-value="days_tmax_gt_105f"><a href="#" class="text">Days w/ max > 105°F</a><a
+                    href="#detail-days_tmax_gt_105f" class="icon icon-help nav-detail-link"></a></h4>
               <ul class="location-resolution">
                 <li><a>Annual</a></li>
               </ul>
             </li>
 
             <li class="">
-              <h4 id="var-days_tmax_lt_32f" data-value="days_tmax_lt_32f"><a href="/#" class="text">Days w/ max < 32°F</a><a
-                    href="/#detail-days_tmax_lt_32f" class="icon icon-help nav-detail-link"></a></h4>
+              <h4 id="var-days_tmax_lt_32f" data-value="days_tmax_lt_32f"><a href="#" class="text">Days w/ max < 32°F</a><a
+                    href="#detail-days_tmax_lt_32f" class="icon icon-help nav-detail-link"></a></h4>
               <ul class="location-resolution">
                 <li><a>Annual</a></li>
               </ul>
             </li>
 
             <li class="">
-              <h4 id="var-days_tmin_lt_32f" data-value="days_tmin_lt_32f"><a href="/#" class="text">Days w/ min < 32°F</a><a
-                    href="/#detail-days_tmin_lt_32f" class="icon icon-help nav-detail-link"></a></h4>
+              <h4 id="var-days_tmin_lt_32f" data-value="days_tmin_lt_32f"><a href="#" class="text">Days w/ min < 32°F</a><a
+                    href="#detail-days_tmin_lt_32f" class="icon icon-help nav-detail-link"></a></h4>
               <ul>
                 <li><a>Annual</a></li>
               </ul>
             </li>
 
             <li class="">
-              <h4 id="var-days_tmin_gt_80f" data-value="days_tmin_gt_80f"><a href="/#" class="text">Days w/ min > 32°F</a><a
-                    href="/#detail-days_tmin_gt_80f" class="icon icon-help nav-detail-link"></a></h4>
+              <h4 id="var-days_tmin_gt_80f" data-value="days_tmin_gt_80f"><a href="#" class="text">Days w/ min > 32°F</a><a
+                    href="#detail-days_tmin_gt_80f" class="icon icon-help nav-detail-link"></a></h4>
               <ul class="location-resolution">
                 <li><a>Annual</a></li>
               </ul>
             </li>
 
             <li class="">
-              <h4 id="var-days_tmin_gt_90f" data-value="days_tmin_gt_90f"><a href="/#" class="text">Days w/ min > 90°F</a><a
-                    href="/#detail-days_tmin_gt_90f" class="icon icon-help nav-detail-link"></a></h4>
+              <h4 id="var-days_tmin_gt_90f" data-value="days_tmin_gt_90f"><a href="#" class="text">Days w/ min > 90°F</a><a
+                    href="#detail-days_tmin_gt_90f" class="icon icon-help nav-detail-link"></a></h4>
               <ul class="location-resolution">
                 <li><a>Annual</a></li>
               </ul>
@@ -379,7 +379,7 @@
 
           <ul class="data-options">
             <li class="active accent-border">
-              <h4 id="var-pcpn" data-value="pcpn"><a href="/#" class="text">Total precip</a><a href="/#detail-pcpn"
+              <h4 id="var-pcpn" data-value="pcpn"><a href="#" class="text">Total precip</a><a href="#detail-pcpn"
                                                                                                class="icon icon-help nav-detail-link"></a></h4>
               <ul class="location-resolution">
                 <li class="active accent-border"><a class="accent-color">Annual</a></li>
@@ -389,31 +389,31 @@
             </li>
 
             <li class="">
-              <h4 id="var-days_pcpn_gt_1in" data-value="days_pcpn_gt_1in"><a href="/#" class="text">Days w/ > 1 in</a><a
-                    href="/#detail-days_pcpn_gt_1in" class="icon icon-help nav-detail-link"></a></h4>
+              <h4 id="var-days_pcpn_gt_1in" data-value="days_pcpn_gt_1in"><a href="#" class="text">Days w/ > 1 in</a><a
+                    href="#detail-days_pcpn_gt_1in" class="icon icon-help nav-detail-link"></a></h4>
               <ul class="location-resolution">
                 <li><a>Annual</a></li>
               </ul>
             </li>
 
             <li class="">
-              <h4 id="var-days_pcpn_gt_2in" data-value="days_pcpn_gt_2in"><a href="/#" class="text">Days w/ > 2 in</a><a
-                    href="/#detail-days_pcpn_gt_2in" class="icon icon-help nav-detail-link"></a></h4>
+              <h4 id="var-days_pcpn_gt_2in" data-value="days_pcpn_gt_2in"><a href="#" class="text">Days w/ > 2 in</a><a
+                    href="#detail-days_pcpn_gt_2in" class="icon icon-help nav-detail-link"></a></h4>
               <ul class="location-resolution">
                 <li><a>Annual</a></li>
               </ul>
             </li>
 
             <li class="">
-              <h4 id="var-days_pcpn_gt_3in" data-value="days_pcpn_gt_3in"><a href="/#" class="text">Days w/ > 3 in</a><a
-                    href="/#detail-days_pcpn_gt_3in" class="icon icon-help nav-detail-link"></a></h4>
+              <h4 id="var-days_pcpn_gt_3in" data-value="days_pcpn_gt_3in"><a href="#" class="text">Days w/ > 3 in</a><a
+                    href="#detail-days_pcpn_gt_3in" class="icon icon-help nav-detail-link"></a></h4>
               <ul class="location-resolution">
                 <li><a>Annual</a></li>
               </ul>
             </li>
 
             <li class="">
-              <h4 id="var-days_dry_days" data-value="days_dry_days"><a href="/#" class="text">Dry Days</a><a href="/#detail-days_dry_days"
+              <h4 id="var-days_dry_days" data-value="days_dry_days"><a href="#" class="text">Dry Days</a><a href="#detail-days_dry_days"
                                                                                                              class="icon
                             icon-help nav-detail-link"></a></h4>
               <ul class="location-resolution">
@@ -614,23 +614,23 @@
 
           <ul class="data-options">
             <li class="active accent-border">
-              <h4 id="var-hdd_65f" data-value="hdd_65f"><a href="/#" class="text">Heating Degree Days (°F-days)</a><a
-                    href="/#detail-hdd_65f" class="icon icon-help nav-detail-link"></a></h4>
+              <h4 id="var-hdd_65f" data-value="hdd_65f"><a href="#" class="text">Heating Degree Days (°F-days)</a><a
+                    href="#detail-hdd_65f" class="icon icon-help nav-detail-link"></a></h4>
               <ul>
                 <li class="active accent-border"><a class="accent-color">Annual</a></li>
               </ul>
             </li>
 
             <li class="">
-              <h4 id="var-cdd_65f" data-value="cdd_65f"><a href="/#" class="text">Cooling Degree Days (°F-days)</a><a
-                    href="/#detail-cdd_65f" class="icon icon-help nav-detail-link"></a></h4>
+              <h4 id="var-cdd_65f" data-value="cdd_65f"><a href="#" class="text">Cooling Degree Days (°F-days)</a><a
+                    href="#detail-cdd_65f" class="icon icon-help nav-detail-link"></a></h4>
               <ul>
                 <li><a>Annual</a></li>
               </ul>
             </li>
 
             <li class="">
-              <h4 id="var-gdd" data-value="gdd"><a href="/#" class="text">Growing Degree Days (°F-days)</a><a href="/#detail-gdd"
+              <h4 id="var-gdd" data-value="gdd"><a href="#" class="text">Growing Degree Days (°F-days)</a><a href="#detail-gdd"
                                                                                                               class="icon icon-help nav-detail-link"></a>
               </h4>
               <ul>
@@ -639,8 +639,8 @@
             </li>
 
             <li class="">
-              <h4 id="var-gddmod" data-value="gddmod"><a href="/#" class="text">Modified Growing Degree Days (°F-days)</a><a
-                    href="/#detail-gddmod" class="icon icon-help nav-detail-link"></a></h4>
+              <h4 id="var-gddmod" data-value="gddmod"><a href="#" class="text">Modified Growing Degree Days (°F-days)</a><a
+                    href="#detail-gddmod" class="icon icon-help nav-detail-link"></a></h4>
               <ul>
                 <li><a>Annual</a></li>
               </ul>
