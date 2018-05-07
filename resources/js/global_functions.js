@@ -437,6 +437,7 @@
         //
         // -----
 
+/*
         window.fbAsyncInit = function () {
             FB.init({
                 appId: '1515755258521649', // dev
@@ -456,7 +457,7 @@
             js.src = "//connect.facebook.net/en_US/sdk.js";
             fjs.parentNode.insertBefore(js, fjs);
         }(document, 'script', 'facebook-jssdk'));
-
+*/
         $('.share-trigger').click(function (e) {
             e.preventDefault();
 
@@ -478,7 +479,7 @@
             e.preventDefault();
 
             if ($(this).hasClass('share-facebook')) {
-
+/*
                 var share_URL = $(this).attr('data-href');
 
                 FB.ui({
@@ -487,7 +488,7 @@
                 }, function (response) {
                     // nothing
                 });
-
+*/
             } else if ($(this).hasClass('share-permalink')) {
 
                 if ($('#share-permalink').hasClass('open')) {
