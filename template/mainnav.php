@@ -202,7 +202,7 @@ $stations_content = array(
 
       <div class="nav-content-wrap">
         <h3 class="search-field"><span class="icon icon-search"></span>
-          <input type="text" class="location-mapper" placeholder="Enter county, city, or zip code">
+          <input type="text" class="location-mapper" autocomplete="off" placeholder="Enter county, city, or zip code">
         </h3>
       </div>
     </div>

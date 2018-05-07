@@ -1,6 +1,5 @@
 (function ($) {
 
-    var filename = window.location.href.substr(window.location.href.lastIndexOf("/") + 1);
     var name;
 
     /*if (filename.toLowerCase().indexOf("location") >= 0) {

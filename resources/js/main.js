@@ -923,6 +923,7 @@ App.prototype.locationSearch = function () {
         });
         //console.log('data', data);
         var county = (data.administrative_area_level_2) ? data.administrative_area_level_2.replace(/ /g, '+') : data.locality + '+County';
+
         county = county.latinize();
         var city = data.locality + ', ' + data.administrative_area_level_1_short;
 
@@ -954,6 +955,9 @@ App.prototype.locationSearch = function () {
         if (data.administrative_area_level_1_short === "DC") {
             fips = '11001';
         }
+
+
+
         //console.log('data', data, 'fips', fips);
         if (fips) {
             window.location.href = '/location/?county=' + county + '&city=' + city + '&fips=' + fips + '&lat=' + lat + '&lon=' + lon;

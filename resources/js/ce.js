@@ -392,6 +392,9 @@ especially when it comes to interacting with the DOM and handling events.
     },
 
     updateBreadcrumbs: function () {
+      if (window.location.pathname === '/'){
+        return
+      }
       var breadcrumb_text,
         additional_breadcrumb;
 
