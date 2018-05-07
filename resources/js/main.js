@@ -1064,25 +1064,34 @@ App.prototype.tour = function () {
             self.takeMapTour(pre);
         }
     });
-
-
-
 };
 
+// run this on close/cancel to remove all steps form the dom so that tours won't re-create them
+App.prototype._cleanShepherdTour = function () {
+  Shepherd.activeTour.steps.forEach(function (step) {
+    step.destroy();
+  });
+  var i, l;
+  for (i = 0, l = Shepherd.activeTour.steps.length; i < l; i++) {
+    Shepherd.activeTour.steps.pop();
+  }
+}
 
 App.prototype.takeHomeTour = function () {
-    var self = this;
+  var self = this;
 
-    if (this.homeTour) {
-        this.homeTour.cancel();
-    } else {
-        this.homeTour = new Shepherd.Tour({
-            defaults: {
-                classes: 'shepherd-element shepherd-open shepherd-theme-arrows',
-                showCancelLink: false
-            }
-        });
-    }
+  if (this.homeTour && this.homeTour.steps.length) {
+    this.homeTour.cancel();
+  } else {
+    this.homeTour = new Shepherd.Tour({
+      defaults: {
+        classes: 'shepherd-element shepherd-open shepherd-theme-arrows',
+        showCancelLink: false
+      }
+    });
+    this.homeTour.on("complete", this._cleanShepherdTour);
+    this.homeTour.on("cancel", this._cleanShepherdTour);
+  }
 
     var step1 = this.homeTour.addStep('search-by-location', {
         text: 'Enter a city, zip code, or county name to select any county in the contiguous United States.',
@@ -1121,33 +1130,21 @@ App.prototype.takeHomeTour = function () {
         attachTo: '#home-search-by-station left',
         buttons: [
             {
-                text: 'Close',
+                text: 'Done',
                 classes: 'shepherd-button-secondary',
-                action: this.homeTour.cancel
-            },
-            {
-                text: 'Next',
-                action: this.homeTour.next
+                action: this.homeTour.complete
             }
         ]
     });
 
-    this.homeTour.on('show', function () {
-        //$('.cd-cover-layer').addClass('is-visible');
-        setTimeout(function () {
-            //$('.cd-cover-layer').removeClass('is-visible');
-        }, 4000);
-    });
-
     this.homeTour.start();
-
 };
 
 
 App.prototype.takeVariablesTour = function () {
     var self = this;
 
-    if (this.variablesTour) {
+    if (this.variablesTour && this.variablesTour.steps.length) {
         this.variablesTour.cancel();
     } else {
         this.variablesTour = new Shepherd.Tour({
@@ -1156,6 +1153,8 @@ App.prototype.takeVariablesTour = function () {
                 scrollTo: false
             }
         });
+        this.variablesTour.on("complete", this._cleanShepherdTour);
+        this.variablesTour.on("cancel", this._cleanShepherdTour);
     }
 
     this.variablesTour.addStep('search-by-location', {
@@ -1174,6 +1173,7 @@ App.prototype.takeVariablesTour = function () {
         ]
     });
 
+/*
     this.variablesTour.addStep('variable-counties-toggle', {
         text: 'Toggle county boundaries on and off. While on, click any county to display its graph.',
         attachTo: '#variable-counties-toggle right',
@@ -1189,6 +1189,7 @@ App.prototype.takeVariablesTour = function () {
             }
         ]
     });
+*/
 
     this.variablesTour.addStep('variable-options-container', {
         text: 'Select another climate variable. Click the About... button directly below for information on each variable.',
@@ -1206,25 +1207,27 @@ App.prototype.takeVariablesTour = function () {
         ]
     });
 
-    this.variablesTour.addStep('map-seasons-container', {
+    if ($("#map-seasons-container").length > 0 && $("#map-seasons-container").css("display") !== "none") {
+      this.variablesTour.addStep('map-seasons-container', {
         text: 'For some variables, you can select different months to explore how projections for that variable differ across seasons.',
-        attachTo: '#map-seasons-container bottom',
+        attachTo: '#map-seasons-container right',
         buttons: [
-            {
-                text: 'Close',
-                classes: 'shepherd-button-secondary',
-                action: this.variablesTour.cancel
-            },
-            {
-                text: 'Next',
-                action: this.variablesTour.next
-            }
+          {
+            text: 'Close',
+            classes: 'shepherd-button-secondary',
+            action: this.variablesTour.cancel
+          },
+          {
+            text: 'Next',
+            action: this.variablesTour.next
+          }
         ]
-    });
+      });
+    }
 
     this.variablesTour.addStep('sliderDiv', {
         text: 'Select historical observations (30-year average from 1961-1990) or a future scenario for each side of the map, and then swipe left and right to compare conditions for the selected variable.',
-        attachTo: '#sliderDiv right',
+        attachTo: '.slider-div .handle right',
         buttons: [
             {
                 text: 'Close',
@@ -1240,22 +1243,14 @@ App.prototype.takeVariablesTour = function () {
 
     this.variablesTour.addStep('year-slider-container', {
         text: 'Use this slider to change the selected year you wish to view the current variable for.',
-        attachTo: '#year-slider-container top',
+        attachTo: '.left-year-slider-container top',
         buttons: [
             {
-                text: 'Close',
+                text: 'Done',
                 classes: 'shepherd-button-secondary',
-                action: this.variablesTour.cancel
+                action: this.variablesTour.complete
             }
         ]
-    });
-
-    this.variablesTour.on('show', function () {
-        //$('.cd-cover-layer').removeClass('is-visible');
-        //$('.cd-cover-layer').addClass('is-visible');
-        setTimeout(function () {
-            //$('.cd-cover-layer').removeClass('is-visible');
-        }, 4000);
     });
 
     this.variablesTour.start();
@@ -1265,7 +1260,7 @@ App.prototype.takeVariablesTour = function () {
 App.prototype.takeLocationTour = function () {
     var self = this;
 
-    if (this.locationTour) {
+    if (this.locationTour && this.locationTour.steps.length) {
         this.locationTour.cancel();
     } else {
         this.locationTour = new Shepherd.Tour({
@@ -1274,6 +1269,8 @@ App.prototype.takeLocationTour = function () {
                 scrollTo: false
             }
         });
+        this.locationTour.on("complete", this._cleanShepherdTour);
+        this.locationTour.on("cancel", this._cleanShepherdTour);
     }
 
     this.locationTour.addStep('location-search', {
@@ -1326,12 +1323,12 @@ App.prototype.takeLocationTour = function () {
 
     this.locationTour.addStep('moreinfo', {
         text: 'For more information about climate projections and data in Climate Explorer, check the Definitions, FAQs, and About pages.',
-        attachTo: '#subnav bottom',
+        attachTo: '#subnav ul bottom',
         buttons: [
             {
-                text: 'Close',
+                text: 'Done',
                 classes: 'shepherd-button-secondary',
-                action: this.locationTour.cancel
+                action: this.locationTour.complete
             }
         ]
     });
@@ -1384,9 +1381,9 @@ App.prototype.takeCaseTour = function () {
         attachTo: '#case-menu right',
         buttons: [
             {
-                text: 'Close',
+                text: 'Done',
                 classes: 'shepherd-button-secondary',
-                action: this.caseTour.cancel
+                action: this.caseTour.complete
             }
         ]
     });
@@ -1406,15 +1403,8 @@ App.prototype.takeCaseTour = function () {
 App.prototype.takeAnnualGraphTour = function (pre) {
     var self = this;
 
-    if (this.graphTour) {
+    if (this.graphTour && this.graphTour.steps.length) {
         this.graphTour.cancel();
-        this.graphTour = null;
-        this.graphTour = new Shepherd.Tour({
-            defaults: {
-                classes: 'shepherd-theme-arrows',
-                scrollTo: false
-            }
-        });
     } else {
         this.graphTour = new Shepherd.Tour({
             defaults: {
@@ -1422,6 +1412,8 @@ App.prototype.takeAnnualGraphTour = function (pre) {
                 scrollTo: false
             }
         });
+        this.graphTour.on("complete", this._cleanShepherdTour);
+        this.graphTour.on("cancel", this._cleanShepherdTour);
     }
 
     this.graphTour.addStep('graph', {
@@ -1541,12 +1533,12 @@ App.prototype.takeAnnualGraphTour = function (pre) {
 
     this.graphTour.addStep('moreinfo', {
         text: 'For more information about climate projections and data in Climate Explorer, check the Definitions, FAQs, and About pages.',
-        attachTo: '#subnav bottom',
+        attachTo: '#subnav ul bottom',
         buttons: [
             {
-                text: 'Close',
+                text: 'Done',
                 classes: 'shepherd-button-secondary',
-                action: this.graphTour.cancel
+                action: this.graphTour.complete
             }
         ]
     });
@@ -1567,15 +1559,8 @@ App.prototype.takeAnnualGraphTour = function (pre) {
 App.prototype.takeSeasonalGraphTour = function (pre) {
     var self = this;
 
-    if (this.seasonalTour) {
+    if (this.seasonalTour && this.seasonalTour.steps.length) {
         this.seasonalTour.cancel();
-        this.seasonalTour = null;
-        this.seasonalTour = new Shepherd.Tour({
-            defaults: {
-                classes: 'shepherd-theme-arrows',
-                scrollTo: false
-            }
-        });
     } else {
         this.seasonalTour = new Shepherd.Tour({
             defaults: {
@@ -1583,6 +1568,8 @@ App.prototype.takeSeasonalGraphTour = function (pre) {
                 scrollTo: false
             }
         });
+        this.seasonalTour.on("complete", this._cleanShepherdTour);
+        this.seasonalTour.on("cancel", this._cleanShepherdTour);
     }
 
     this.seasonalTour.addStep('graph', {
@@ -1672,9 +1659,9 @@ App.prototype.takeSeasonalGraphTour = function (pre) {
         attachTo: '#' + pre + 'slider-range top',
         buttons: [
             {
-                text: 'Close',
+                text: 'Done',
                 classes: 'shepherd-button-secondary',
-                action: this.seasonalTour.cancel
+                action: this.seasonalTour.complete
             }
         ]
     });
@@ -1696,15 +1683,8 @@ App.prototype.takeSeasonalGraphTour = function (pre) {
 App.prototype.takeMonthlyGraphTour = function (pre) {
     var self = this;
 
-    if (this.monthlyTour) {
+    if (this.monthlyTour && this.monthlyTour.steps.length) {
         this.monthlyTour.cancel();
-        this.monthlyTour = null;
-        this.monthlyTour = new Shepherd.Tour({
-            defaults: {
-                classes: 'shepherd-theme-arrows',
-                scrollTo: false
-            }
-        });
     } else {
         this.monthlyTour = new Shepherd.Tour({
             defaults: {
@@ -1712,6 +1692,8 @@ App.prototype.takeMonthlyGraphTour = function (pre) {
                 scrollTo: false
             }
         });
+        this.monthlyTour.on("complete", this._cleanShepherdTour);
+        this.monthlyTour.on("cancel", this._cleanShepherdTour);
     }
 
 
@@ -1826,15 +1808,8 @@ App.prototype.takeMonthlyGraphTour = function (pre) {
 App.prototype.takeMapTour = function (pre) {
     var self = this;
 
-    if (this.mapTour) {
+    if (this.mapTour && this.mapTour.steps.length) {
         this.mapTour.cancel();
-        this.mapTour = null;
-        this.mapTour = new Shepherd.Tour({
-            defaults: {
-                classes: 'shepherd-theme-arrows',
-                scrollTo: false
-            }
-        });
     } else {
         this.mapTour = new Shepherd.Tour({
             defaults: {
@@ -1842,6 +1817,8 @@ App.prototype.takeMapTour = function (pre) {
                 scrollTo: false
             }
         });
+        this.mapTour.on("complete", this._cleanShepherdTour);
+        this.mapTour.on("cancel", this._cleanShepherdTour);
     }
 
     this.mapTour.addStep('whole-map', {
@@ -1861,7 +1838,7 @@ App.prototype.takeMapTour = function (pre) {
 
     this.mapTour.addStep('scenario-slider', {
         text: 'Select historical observations (30-year average from 1961-1990) or a future scenario for each side of the map, and then swipe left and right to compare conditions for the selected variable.',
-        attachTo: '#' + pre + 'swipeImg top',
+        attachTo: '#' + pre + 'map-container .handle top',
         buttons: [
             {
                 text: 'Close',
@@ -1877,7 +1854,7 @@ App.prototype.takeMapTour = function (pre) {
 
     this.mapTour.addStep('season-selector', {
         text: 'Select the season for the map display. Monthly projections for January, April, July, or October represent their respective seasons.',
-        attachTo: '#' + pre + 'map-season top',
+        attachTo: '#' + pre + 'map-season bottom',
         buttons: [
             {
                 text: 'Close',
@@ -1895,12 +1872,12 @@ App.prototype.takeMapTour = function (pre) {
 
     this.mapTour.addStep('time-slider', {
         text: 'Move the time slider to display projected conditions for any decade from 1950 to 2090.',
-        attachTo: '#' + pre + 'map-slider-container top',
+        attachTo: '#' + pre + 'map-container .left-year-slider-container top',
         buttons: [
             {
-                text: 'Close',
+                text: 'Done',
                 classes: 'shepherd-button-secondary',
-                action: this.mapTour.cancel
+                action: this.mapTour.complete
             }
         ]
     });
