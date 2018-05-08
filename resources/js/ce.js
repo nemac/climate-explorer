@@ -112,8 +112,6 @@ especially when it comes to interacting with the DOM and handling events.
     // Called once on instantiation.
     _create: function () {
       this.updateSharing();
-
-      //todo breadcrumbs
       this.updateBreadcrumbs();
     },
 
@@ -392,9 +390,8 @@ especially when it comes to interacting with the DOM and handling events.
     },
 
     updateBreadcrumbs: function () {
-      if (window.location.pathname === '/'){
-        return
-      }
+      if (window.location.pathname === '/') return;
+
       var breadcrumb_text,
         additional_breadcrumb;
 
@@ -420,7 +417,6 @@ especially when it comes to interacting with the DOM and handling events.
         case 'stations':
           breadcrumb_text = this.getUrlParam('id') || "";
           breadcrumb_text = breadcrumb_text.replace(/\_/g, " ").replace(/\w\S*/g, function (txt) {return txt.charAt(0).toUpperCase() + txt.substr(1).toLowerCase();});
-          ;
 
           additional_breadcrumb = '<a href="#nav-stations" class="parent launch-nav breadcrumb-middle" data-nav-slide="2"><span class="icon icon-bubble"></span>Stations</a>';
           break;
@@ -429,9 +425,8 @@ especially when it comes to interacting with the DOM and handling events.
           additional_breadcrumb = '<a href="#nav-variables" class="parent launch-nav breadcrumb-middle" data-nav-slide="1"><span class="icon icon-bubble"></span>Variable</a>';
       }
 
-      $(".breadcrumb-middle").remove();
       $(".current").text(breadcrumb_text);
-      if (additional_breadcrumb) {
+      if (additional_breadcrumb && $(".breadcrumb-middle").length === 0) {
         $(".current").before(additional_breadcrumb);
       }
     },
