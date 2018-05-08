@@ -1077,95 +1077,79 @@ App.prototype._cleanShepherdTour = function () {
   }
 }
 
-App.prototype.takeHomeTour = function () {
-  if (this.homeTour && this.homeTour.steps.length) {
-    this.homeTour.cancel();
+App.prototype._createShepherdTour = function () {
+  var tour = Shepherd.activeTour;
+  if (tour && tour.steps.length) {
+    tour.cancel();
   } else {
-    this.homeTour = new Shepherd.Tour({
+    tour = new Shepherd.Tour({
       defaults: {
         classes: 'shepherd-element shepherd-open shepherd-theme-arrows',
         showCancelLink: false
       }
     });
-    this.homeTour.on("complete", this._cleanShepherdTour);
-    this.homeTour.on("cancel", this._cleanShepherdTour);
+    tour.on("complete", this._cleanShepherdTour);
+    tour.on("cancel", this._cleanShepherdTour);
   }
 
-  this.homeTour.addStep('search-by-location', {
+  return tour;
+}
+
+App.prototype._makeStdButtons = function (tour) {
+  return [
+    {
+      text: 'Close',
+      classes: 'shepherd-button-secondary',
+      action: tour.cancel
+    },
+    {
+      text: 'Next',
+      action: tour.next
+    }
+  ];
+}
+
+App.prototype._makeEndButtons = function (tour) {
+  return [
+    {
+      text: 'Done',
+      classes: 'shepherd-button-secondary',
+      action: tour.complete
+    }
+  ];
+}
+
+App.prototype.takeHomeTour = function () {
+  var homeTour = this._createShepherdTour();
+
+  homeTour.addStep('search-by-location', {
     text: 'Enter a city, zip code, or county name to select any county in the contiguous United States.',
     attachTo: '#home-search-by-location left',
-    buttons: [
-      {
-        text: 'Close',
-        classes: 'shepherd-button-secondary',
-        action: this.homeTour.cancel
-      },
-      {
-        text: 'Next',
-        action: this.homeTour.next
-      }
-    ]
+    buttons: this._makeStdButtons(homeTour)
   });
 
-  this.homeTour.addStep('search-by-variable', {
+  homeTour.addStep('search-by-variable', {
     text: 'Explore maps or graphs of temperature, precipitation, and related variables.',
     attachTo: '#home-search-by-variable left',
-    buttons: [
-      {
-        text: 'Close',
-        classes: 'shepherd-button-secondary',
-        action: this.homeTour.cancel
-      },
-      {
-        text: 'Next',
-        action: this.homeTour.next
-      }
-    ]
+    buttons: this._makeStdButtons(homeTour)
   });
 
-  this.homeTour.addStep('search-by-station', {
+  homeTour.addStep('search-by-station', {
     text: 'View data from weather stations and tidal gauges.',
     attachTo: '#home-search-by-station left',
-    buttons: [
-      {
-        text: 'Done',
-        classes: 'shepherd-button-secondary',
-        action: this.homeTour.complete
-      }
-    ]
+    buttons: this._makeEndButtons(homeTour)
   });
 
-  this.homeTour.start();
+  homeTour.start();
 };
 
 App.prototype.takeVariablesTour = function () {
-  if (this.variablesTour && this.variablesTour.steps.length) {
-    this.variablesTour.cancel();
-  } else {
-    this.variablesTour = new Shepherd.Tour({
-      defaults: {
-        classes: 'shepherd-theme-arrows',
-        scrollTo: false
-      }
-    });
-    this.variablesTour.on("complete", this._cleanShepherdTour);
-    this.variablesTour.on("cancel", this._cleanShepherdTour);
-  }
+  var variablesTour = this._createShepherdTour();
 
-  this.variablesTour.addStep('search-by-location', {
+  variablesTour.addStep('search-by-location', {
     text: 'Enter a location in the contiguous United States to zoom to that region.',
     attachTo: '#variable-search-by-location right',
-    buttons: [
-      {
-        text: 'Close',
-        classes: 'shepherd-button-secondary',
-        action: this.variablesTour.cancel
-      },
-      {
-        text: 'Next',
-        action: this.variablesTour.next
-      }
-    ]
+    buttons: this._makeStdButtons(variablesTour)
   });
 
 /*
@@ -1186,146 +1170,63 @@ App.prototype.takeVariablesTour = function () {
     });
 */
 
-  this.variablesTour.addStep('variable-options-container', {
+  variablesTour.addStep('variable-options-container', {
     text: 'Select another climate variable. Click the About... button directly below for information on each variable.',
     attachTo: '#variable-options-container right',
-    buttons: [
-      {
-        text: 'Close',
-        classes: 'shepherd-button-secondary',
-        action: this.variablesTour.cancel
-      },
-      {
-        text: 'Next',
-        action: this.variablesTour.next
-      }
-    ]
+    buttons: this._makeStdButtons(variablesTour)
   });
 
   if ($("#map-seasons-container").length > 0 && $("#map-seasons-container").css("display") !== "none") {
-    this.variablesTour.addStep('map-seasons-container', {
+    variablesTour.addStep('map-seasons-container', {
       text: 'For some variables, you can select different months to explore how projections for that variable differ across seasons.',
       attachTo: '#map-seasons-container right',
-      buttons: [
-        {
-          text: 'Close',
-          classes: 'shepherd-button-secondary',
-          action: this.variablesTour.cancel
-        },
-        {
-          text: 'Next',
-          action: this.variablesTour.next
-        }
-      ]
+      buttons: this._makeStdButtons(variablesTour)
     });
   }
 
-  this.variablesTour.addStep('sliderDiv', {
+  variablesTour.addStep('sliderDiv', {
     text: 'Select historical observations (30-year average from 1961-1990) or a future scenario for each side of the map, and then swipe left and right to compare conditions for the selected variable.',
     attachTo: '.slider-div .handle right',
-    buttons: [
-      {
-        text: 'Close',
-        classes: 'shepherd-button-secondary',
-        action: this.variablesTour.cancel
-      },
-      {
-        text: 'Next',
-        action: this.variablesTour.next
-      }
-    ]
+    buttons: this._makeStdButtons(variablesTour)
   });
 
-  this.variablesTour.addStep('year-slider-container', {
+  variablesTour.addStep('year-slider-container', {
     text: 'Use this slider to change the selected year you wish to view the current variable for.',
     attachTo: '.left-year-slider-container top',
-    buttons: [
-      {
-        text: 'Done',
-        classes: 'shepherd-button-secondary',
-        action: this.variablesTour.complete
-      }
-    ]
+    buttons: this._makeEndButtons(variablesTour)
   });
 
-  this.variablesTour.start();
+  variablesTour.start();
 };
 
 App.prototype.takeLocationTour = function () {
-  if (this.locationTour && this.locationTour.steps.length) {
-    this.locationTour.cancel();
-  } else {
-    this.locationTour = new Shepherd.Tour({
-      defaults: {
-        classes: 'shepherd-theme-arrows',
-        scrollTo: false
-      }
-    });
-    this.locationTour.on("complete", this._cleanShepherdTour);
-    this.locationTour.on("cancel", this._cleanShepherdTour);
-  }
+  var locationTour = this._createShepherdTour();
 
-  this.locationTour.addStep('location-search', {
+  locationTour.addStep('location-search', {
     text: 'Switch to another county by entering a city, zip code, or county name.',
     attachTo: '#location-search bottom',
-    buttons: [
-      {
-        text: 'Close',
-        classes: 'shepherd-button-secondary',
-        action: this.locationTour.cancel
-      },
-      {
-        text: 'Next',
-        action: this.locationTour.next
-      }
-    ]
+    buttons: this._makeStdButtons(locationTour)
   });
 
-  this.locationTour.addStep('page-nav', {
+  locationTour.addStep('page-nav', {
     text: 'Click any link to jump down the page.',
     attachTo: '#page-nav bottom',
-    buttons: [
-      {
-        text: 'Close',
-        classes: 'shepherd-button-secondary',
-        action: this.locationTour.cancel
-      },
-      {
-        text: 'Next',
-        action: this.locationTour.next
-      }
-    ]
+    buttons: this._makeStdButtons(locationTour)
   });
 
-  this.locationTour.addStep('temperature-data', {
+  locationTour.addStep('temperature-data', {
     text: 'Scroll down to see more. You can choose different variables, switch between actual values and anomalies, move the endpoints of the time slider, or view maps.',
     attachTo: '#temperature-data top',
-    buttons: [
-      {
-        text: 'Close',
-        classes: 'shepherd-button-secondary',
-        action: this.locationTour.cancel
-      },
-      {
-        text: 'Next',
-        action: this.locationTour.next
-      }
-    ]
+    buttons: this._makeStdButtons(locationTour)
   });
 
-  this.locationTour.addStep('moreinfo', {
+  locationTour.addStep('moreinfo', {
     text: 'For more information about climate projections and data in Climate Explorer, check the Definitions, FAQs, and About pages.',
     attachTo: '#subnav ul bottom',
-    buttons: [
-      {
-        text: 'Done',
-        classes: 'shepherd-button-secondary',
-        action: this.locationTour.complete
-      }
-    ]
+    buttons: this._makeEndButtons(locationTour)
   });
 
-  this.locationTour.start();
+  locationTour.start();
 };
 
 App.prototype.takeCaseTour = function () {
@@ -1383,434 +1284,166 @@ App.prototype.takeCaseTour = function () {
 
 
 App.prototype.takeAnnualGraphTour = function (pre) {
-  if (this.graphTour && this.graphTour.steps.length) {
-    this.graphTour.cancel();
-  } else {
-    this.graphTour = new Shepherd.Tour({
-      defaults: {
-        classes: 'shepherd-theme-arrows',
-        scrollTo: false
-      }
-    });
-    this.graphTour.on("complete", this._cleanShepherdTour);
-    this.graphTour.on("cancel", this._cleanShepherdTour);
-  }
+  var graphTour = this._createShepherdTour();
 
-  this.graphTour.addStep('graph', {
+  graphTour.addStep('graph', {
     text: 'For the county and variable you selected, this chart offers observed annual averages from 1950-2013; climate model simulations  (hindcasts) from 1950-2005; and climate model projections for two possible futures out to 2100.',
-    buttons: [
-      {
-        text: 'Close',
-        classes: 'shepherd-button-secondary',
-        action: this.graphTour.cancel
-      },
-      {
-        text: 'Next',
-        action: this.graphTour.next
-      }
-    ]
+    buttons: this._makeStdButtons(graphTour)
   });
 
-  this.graphTour.addStep('historical-obs', {
+  graphTour.addStep('historical-obs', {
     text: 'When activated, dark gray bars show observed annual averages from 1950-2013. The horizontal line from which bars extend represents the overall average from 1961-1990. Bars that extend above the line show years that were above average. Bars that extend below the line were below average.',
     attachTo: '#' + pre + 'historical-obs top',
-    buttons: [
-      {
-        text: 'Close',
-        classes: 'shepherd-button-secondary',
-        action: this.graphTour.cancel
-      },
-      {
-        text: 'Next',
-        action: this.graphTour.next
-      }
-    ]
+    buttons: this._makeStdButtons(graphTour)
   });
 
-  this.graphTour.addStep('historical-range', {
+  graphTour.addStep('historical-range', {
     text: 'The light gray band shows the range of climate model simulations (hindcasts) generated for 1950 to 2005. To get a sense of how well climate models predict this variable in this region, compare the year-to-year variability of observations (dark gray bars) with the range of values in the climate model hindcasts.',
     attachTo: '#' + pre + 'historical-range top',
-    buttons: [
-      {
-        text: 'Close',
-        classes: 'shepherd-button-secondary',
-        action: this.graphTour.cancel
-      },
-      {
-        text: 'Next',
-        action: this.graphTour.next
-      }
-    ]
+    buttons: this._makeStdButtons(graphTour)
   });
 
-  this.graphTour.addStep('rcp45-range', {
+  graphTour.addStep('rcp45-range', {
     text: 'The blue band shows the range of projections for a possible future in which global emissions of heat-trapping gases peak around 2040 and then decline. This scenario is called RCP 4.5.<a href="http://asr.science.energy.gov/publications/program-docs/RCP4.5-Pathway.pdf" target="_BLANK">Learn more »</a>',
     attachTo: '#' + pre + 'rcp45-range top',
-    buttons: [
-      {
-        text: 'Close',
-        classes: 'shepherd-button-secondary',
-        action: this.graphTour.cancel
-      },
-      {
-        text: 'Next',
-        action: this.graphTour.next
-      }
-    ]
+    buttons: this._makeStdButtons(graphTour)
   });
 
-  this.graphTour.addStep('rcp85-range', {
+  graphTour.addStep('rcp85-range', {
     text: 'The red band shows the range of projections for a possible future in which global emissions of heat-trapping gases continue to increase through the 21st century. This scenario is called RCP 8.5. For planning purposes, people who have a low tolerance for risk often focus on this scenario. <a href="http://link.springer.com/article/10.1007%2Fs10584-011-0148-z" target="_BLANK">Learn more »</a>',
     attachTo: '#' + pre + 'rcp85-range top',
-    buttons: [
-      {
-        text: 'Close',
-        classes: 'shepherd-button-secondary',
-        action: this.graphTour.cancel
-      },
-      {
-        text: 'Next',
-        action: this.graphTour.next
-      }
-    ]
+    buttons: this._makeStdButtons(graphTour)
   });
 
-  this.graphTour.addStep('rcp45-mean', {
+  graphTour.addStep('rcp45-mean', {
     text: 'Average lines show the weighted mean of all projections at each time step (projections are weighted based on model independence and skill). The lines aren’t predictions of actual values; they merely highlight trends in the projections.',
     attachTo: '#' + pre + 'rcp45-mean top',
-    buttons: [
-      {
-        text: 'Close',
-        classes: 'shepherd-button-secondary',
-        action: this.graphTour.cancel
-      },
-      {
-        text: 'Next',
-        action: this.graphTour.next
-      }
-    ]
+    buttons: this._makeStdButtons(graphTour)
   });
 
-  this.graphTour.addStep('timeline', {
+  graphTour.addStep('timeline', {
     text: 'Drag the endpoints of the time slider to zoom to specific periods. You can also click and drag the Y axis to adjust the graph display.',
     attachTo: '#' + pre + 'slider-range top',
-    buttons: [
-      {
-        text: 'Close',
-        classes: 'shepherd-button-secondary',
-        action: this.graphTour.cancel
-      },
-      {
-        text: 'Next',
-        action: this.graphTour.next
-      }
-    ]
+    buttons: this._makeStdButtons(graphTour)
   });
 
-  this.graphTour.addStep('moreinfo', {
+  graphTour.addStep('moreinfo', {
     text: 'For more information about climate projections and data in Climate Explorer, check the Definitions, FAQs, and About pages.',
     attachTo: '#subnav ul bottom',
-    buttons: [
-      {
-        text: 'Done',
-        classes: 'shepherd-button-secondary',
-        action: this.graphTour.complete
-      }
-    ]
+    buttons: this._makeEndButtons(graphTour)
   });
 
-  this.graphTour.start();
+  graphTour.start();
 };
 
 App.prototype.takeSeasonalGraphTour = function (pre) {
-  if (this.seasonalTour && this.seasonalTour.steps.length) {
-    this.seasonalTour.cancel();
-  } else {
-    this.seasonalTour = new Shepherd.Tour({
-      defaults: {
-        classes: 'shepherd-theme-arrows',
-        scrollTo: false
-      }
-    });
-    this.seasonalTour.on("complete", this._cleanShepherdTour);
-    this.seasonalTour.on("cancel", this._cleanShepherdTour);
-  }
+  var seasonalTour = this._createShepherdTour();
 
-  this.seasonalTour.addStep('graph', {
+  seasonalTour.addStep('graph', {
     text: 'For the county and variable you selected, this chart shows observed seasonal averages from 1961-1990. It also shows the range of projections for each season during the early-, mid-, or late 21st century for two possible futures.The slight horizontal offset of observations and projections for each season is for visual clarity.',
-    buttons: [
-      {
-        text: 'Close',
-        classes: 'shepherd-button-secondary',
-        action: this.seasonalTour.cancel
-      },
-      {
-        text: 'Next',
-        action: this.seasonalTour.next
-      }
-    ]
+    buttons: this._makeStdButtons(seasonalTour)
   });
 
-  this.seasonalTour.addStep('historical-obs', {
+  seasonalTour.addStep('historical-obs', {
     text: 'Black lines show observed three-month averages from 1961-1990. Winter = December-February; Spring = March-May; Summer = June-August; Fall = September-November',
     attachTo: '#' + pre + 'historical-obs top',
-    buttons: [
-      {
-        text: 'Close',
-        classes: 'shepherd-button-secondary',
-        action: this.seasonalTour.cancel
-      },
-      {
-        text: 'Next',
-        action: this.seasonalTour.next
-      }
-    ]
+    buttons: this._makeStdButtons(seasonalTour)
   });
 
-  this.seasonalTour.addStep('rcp45-range', {
+  seasonalTour.addStep('rcp45-range', {
     text: 'The blue bars show the range of projections for each season in a possible future in which global emissions of heat-trapping gases peak around 2040 and then decline. This scenario is called RCP 4.5. <a href="http://asr.science.energy.gov/publications/program-docs/RCP4.5-Pathway.pdf" target="_BLANK">Learn more »</a>',
     attachTo: '#' + pre + 'rcp45-range top',
-    buttons: [
-      {
-        text: 'Close',
-        classes: 'shepherd-button-secondary',
-        action: this.seasonalTour.cancel
-      },
-      {
-        text: 'Next',
-        action: this.seasonalTour.next
-      }
-    ]
+    buttons: this._makeStdButtons(seasonalTour)
   });
 
-  this.seasonalTour.addStep('rcp85-range', {
+  seasonalTour.addStep('rcp85-range', {
     text: 'Red bars shows the range of projections for each season in a possible future in which global emissions of heat-trapping gases continue to increase through the 21st century. This scenario is called RCP 8.5. For planning purposes, people who have a low tolerance for risk often focus on this scenario. <a href="http://link.springer.com/article/10.1007%2Fs10584-011-0148-z" target="_BLANK">Learn more »</a>',
     attachTo: '#' + pre + 'rcp85-range top',
-    buttons: [
-      {
-        text: 'Close',
-        classes: 'shepherd-button-secondary',
-        action: this.seasonalTour.cancel
-      },
-      {
-        text: 'Next',
-        action: this.seasonalTour.next
-      }
-    ]
+    buttons: this._makeStdButtons(seasonalTour)
   });
 
-  this.seasonalTour.addStep('rcp45-mean', {
+  seasonalTour.addStep('rcp45-mean', {
     text: 'Average lines show the weighted mean of all projections at each time step (projections are weighted based on model independence and skill). Viewing the lines can help highlight trends in the projections.',
     attachTo: '#' + pre + 'rcp45-mean top',
-    buttons: [
-      {
-        text: 'Close',
-        classes: 'shepherd-button-secondary',
-        action: this.seasonalTour.cancel
-      },
-      {
-        text: 'Next',
-        action: this.seasonalTour.next
-      }
-    ]
+    buttons: this._makeStdButtons(seasonalTour)
   });
 
 
-  this.seasonalTour.addStep('timeline', {
+  seasonalTour.addStep('timeline', {
     text: 'Drag the endpoints of the time slider to zoom to specific periods. You can also click and drag the Y axis to adjust the graph display.',
     attachTo: '#' + pre + 'slider-range top',
-    buttons: [
-      {
-        text: 'Done',
-        classes: 'shepherd-button-secondary',
-        action: this.seasonalTour.complete
-      }
-    ]
+    buttons: this._makeEndButtons(seasonalTour)
   });
 
-  this.seasonalTour.start();
+  seasonalTour.start();
 };
 
 App.prototype.takeMonthlyGraphTour = function (pre) {
-  if (this.monthlyTour && this.monthlyTour.steps.length) {
-    this.monthlyTour.cancel();
-  } else {
-    this.monthlyTour = new Shepherd.Tour({
-      defaults: {
-        classes: 'shepherd-theme-arrows',
-        scrollTo: false
-      }
-    });
-    this.monthlyTour.on("complete", this._cleanShepherdTour);
-    this.monthlyTour.on("cancel", this._cleanShepherdTour);
-  }
+  var monthlyTour = this._createShepherdTour();
 
-  this.monthlyTour.addStep('graph', {
+  monthlyTour.addStep('graph', {
     text: 'For the county and variable you selected, this chart shows observed averages for each month and monthly projections for two possible futures. The timeline gives you the option to view projections for the early-, mid-, or late 21st century.',
-    buttons: [
-      {
-        text: 'Close',
-        classes: 'shepherd-button-secondary',
-        action: this.monthlyTour.cancel
-      },
-      {
-        text: 'Next',
-        action: this.monthlyTour.next
-      }
-    ]
+    buttons: this._makeStdButtons(monthlyTour)
   });
 
-  this.monthlyTour.addStep('historical-obs', {
+  monthlyTour.addStep('historical-obs', {
     text: 'The black line connects observed averages in the selected region for each month from 1961-1990.',
     attachTo: '#' + pre + 'historical-obs top',
-    buttons: [
-      {
-        text: 'Close',
-        classes: 'shepherd-button-secondary',
-        action: this.monthlyTour.cancel
-      },
-      {
-        text: 'Next',
-        action: this.monthlyTour.next
-      }
-    ]
+    buttons: this._makeStdButtons(monthlyTour)
   });
 
-  this.monthlyTour.addStep('rcp45-range', {
+  monthlyTour.addStep('rcp45-range', {
     text: 'The blue band shows the range of projections for a possible future in which global emissions of heat-trapping gases peak around 2040 and then decline. This scenario is called RCP 4.5. <a href="http://asr.science.energy.gov/publications/program-docs/RCP4.5-Pathway.pdf" target="_BLANK">Learn more »</a>',
     attachTo: '#' + pre + 'rcp45-range top',
-    buttons: [
-      {
-        text: 'Close',
-        classes: 'shepherd-button-secondary',
-        action: this.monthlyTour.cancel
-      },
-      {
-        text: 'Next',
-        action: this.monthlyTour.next
-      }
-    ]
+    buttons: this._makeStdButtons(monthlyTour)
   });
 
-  this.monthlyTour.addStep('rcp85-range', {
+  monthlyTour.addStep('rcp85-range', {
     text: 'The red band shows the range of projections for a possible future in which global emissions of heat-trapping gases continue to increase through the 21st century. This scenario is called RCP 8.5. For planning purposes, people who have a low tolerance for risk often focus on this scenario. <a href="http://link.springer.com/article/10.1007%2Fs10584-011-0148-z" target="_BLANK">Learn more »</a>',
     attachTo: '#' + pre + 'rcp85-range top',
-    buttons: [
-      {
-        text: 'Close',
-        classes: 'shepherd-button-secondary',
-        action: this.monthlyTour.cancel
-      },
-      {
-        text: 'Next',
-        action: this.monthlyTour.next
-      }
-    ]
+    buttons: this._makeStdButtons(monthlyTour)
   });
 
-  this.monthlyTour.addStep('rcp45-mean', {
+  monthlyTour.addStep('rcp45-mean', {
     text: 'Average lines show the weighted mean of all projections at each time step (projections are weighted based on model independence and skill). The lines aren’t predictions of actual values; they merely highlight trends in the projections.',
     attachTo: '#' + pre + 'rcp45-mean top',
-    buttons: [
-      {
-        text: 'Close',
-        classes: 'shepherd-button-secondary',
-        action: this.monthlyTour.cancel
-      },
-      {
-        text: 'Next',
-        action: this.monthlyTour.next
-      }
-    ]
+    buttons: this._makeStdButtons(monthlyTour)
   });
 
-  this.monthlyTour.addStep('rcp45-mean', {
+  monthlyTour.addStep('rcp45-mean', {
     text: 'Drag the endpoints of the time slider to zoom to specific periods. You can also click and drag the Y axis to adjust the graph display.',
     attachTo: '#slider-range top',
-    buttons: [
-      {
-        text: 'Close',
-        classes: 'shepherd-button-secondary',
-        action: this.monthlyTour.cancel
-      }
-    ]
+    buttons: this._makeEndButtons(monthlyTour)
   });
 
-  this.monthlyTour.start();
+  monthlyTour.start();
 };
 
 App.prototype.takeMapTour = function (pre) {
-  if (this.mapTour && this.mapTour.steps.length) {
-    this.mapTour.cancel();
-  } else {
-    this.mapTour = new Shepherd.Tour({
-      defaults: {
-        classes: 'shepherd-theme-arrows',
-        scrollTo: false
-      }
-    });
-    this.mapTour.on("complete", this._cleanShepherdTour);
-    this.mapTour.on("cancel", this._cleanShepherdTour);
-  }
+  var mapTour = this._createShepherdTour();
 
-  this.mapTour.addStep('whole-map', {
+  mapTour.addStep('whole-map', {
     text: 'Colors on the map show projected average values for the selected variable for the season shown in the upper right during the decade indicated by the time slider below.',
-    buttons: [
-      {
-        text: 'Close',
-        classes: 'shepherd-button-secondary',
-        action: this.mapTour.cancel
-      },
-      {
-        text: 'Next',
-        action: this.mapTour.next
-      }
-    ]
+    buttons: this._makeStdButtons(mapTour)
   });
 
-  this.mapTour.addStep('scenario-slider', {
+  mapTour.addStep('scenario-slider', {
     text: 'Select historical observations (30-year average from 1961-1990) or a future scenario for each side of the map, and then swipe left and right to compare conditions for the selected variable.',
     attachTo: '#' + pre + 'map-container .handle top',
-    buttons: [
-      {
-        text: 'Close',
-        classes: 'shepherd-button-secondary',
-        action: this.mapTour.cancel
-      },
-      {
-        text: 'Next',
-        action: this.mapTour.next
-      }
-    ]
+    buttons: this._makeStdButtons(mapTour)
   });
 
-  this.mapTour.addStep('season-selector', {
+  mapTour.addStep('season-selector', {
     text: 'Select the season for the map display. Monthly projections for January, April, July, or October represent their respective seasons.',
     attachTo: '#' + pre + 'map-season bottom',
-    buttons: [
-      {
-        text: 'Close',
-        classes: 'shepherd-button-secondary',
-        action: this.mapTour.cancel
-      },
-      {
-        text: 'Next',
-        action: this.mapTour.next
-      }
-    ]
+    buttons: this._makeStdButtons(mapTour)
   });
 
-  this.mapTour.addStep('time-slider', {
+  mapTour.addStep('time-slider', {
     text: 'Move the time slider to display projected conditions for any decade from 1950 to 2090.',
     attachTo: '#' + pre + 'map-container .left-year-slider-container top',
-    buttons: [
-      {
-        text: 'Done',
-        classes: 'shepherd-button-secondary',
-        action: this.mapTour.complete
-      }
-    ]
+    buttons: this._makeEndButtons(mapTour)
   });
 
-  this.mapTour.start();
+  mapTour.start();
 };
