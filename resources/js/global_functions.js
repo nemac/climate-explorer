@@ -475,53 +475,37 @@
         });
 
         $('.share-link').click(function (e) {
-            e.preventDefault();
+          if ($(this).hasClass('share-facebook')) return;
 
-            if ($(this).hasClass('share-facebook')) {
-/*
-                var share_URL = $(this).attr('data-href');
+          e.preventDefault();
 
-                FB.ui({
-                    method: 'share',
-                    href: share_URL,
-                }, function (response) {
-                    // nothing
-                });
-*/
-            } else if ($(this).hasClass('share-permalink')) {
-
-                if ($('#share-permalink').hasClass('open')) {
-
-                    $('#share-permalink').removeClass('open');
-                    $('#share-permalink-input').fadeOut(250);
-
-                } else {
-
-                    $('#share-permalink').addClass('open');
-
-                    $('#share-permalink-input').show().position({
-                        my: 'right',
-                        at: 'left-15',
-                        of: $('#share-permalink')
-                    });
-                }
-
+          if ($(this).hasClass('share-permalink')) {
+            if ($('#share-permalink').hasClass('open')) {
+              $('#share-permalink').removeClass('open');
+              $('#share-permalink-input').fadeOut(250);
             } else {
+              $('#share-permalink').addClass('open');
 
-                var width = 575,
-                    height = 320,
-                    left = ($(window).width() - width) / 2,
-                    top = ($(window).height() - height) / 2,
-                    url = this.href,
-                    opts = 'status=0' +
-                        ',width=' + width +
-                        ',height=' + height +
-                        ',top=' + top +
-                        ',left=' + left;
-
-                window.open(url, 'sharepopup', opts);
-
+              $('#share-permalink-input').show().position({
+                my: 'right',
+                at: 'left-15',
+                of: $('#share-permalink')
+              });
             }
+          } else {
+            var width = 575,
+              height = 320,
+              left = ($(window).width() - width) / 2,
+              top = ($(window).height() - height) / 2,
+              url = this.href,
+              opts = 'status=0' +
+                ',width=' + width +
+                ',height=' + height +
+                ',top=' + top +
+                ',left=' + left;
+
+            window.open(url, 'sharepopup', opts);
+          }
         });
 
         // --------

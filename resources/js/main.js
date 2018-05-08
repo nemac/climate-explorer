@@ -10,53 +10,9 @@ var App = function (data_base_url) {
       'precipitation-chart': 'annual',
       'derived-chart': 'annual'
   };
-  this.handleOutboundLinks();
   this.getCountyCodes();
   this.tour();
 };
-
-
-
-App.prototype.handleOutboundLinks = function() {
-
-
-  var comp = new RegExp(location.host);
-
-  var nodes = document.getElementsByTagName("a"), i = nodes.length;
-  var regExp = new RegExp("//" + location.host + "($|/)");
-  while(i--){
-    var href = nodes[i].href;
-    var isLocal = (href.substring(0,4) === "http") ? regExp.test(href) : true;
-    var classAdd = (isLocal) ? "local" : "external";
-    nodes[i].className += " "+ classAdd;
-  }
-
-  $('#header-logo').removeClass('external').addClass('local');
-
-  $('a').on('click', function(e) {
-    var loc = $(this).attr('href');
-
-    if ( !$(this).hasClass('local')) {
-      e.preventDefault();
-      e.stopPropagation();
-
-      swal({
-        title: "You are exiting an NCEI website.",
-        text: "Thank you for visiting our site. We have provided a link because it has information that may interest you. NCEI does not endorse the views expressed, the information presented, or any commercial products that may be advertised or available on that site.",
-        type: "info",
-        showCancelButton: true,
-        confirmButtonColor: "#2470D2",
-        confirmButtonText: "Continue",
-        closeOnConfirm: true
-      },
-        function(){
-          window.location = loc;
-        });
-    }
-
-  });
-};
-
 
 App.prototype.getCountyCodes = function () {
     var self = this;
