@@ -621,13 +621,7 @@
                   <div class="station_overlay_text">
                     <p style="font-weight:bold">Scroll, click-and-drag, or hold down your SHIFT key to scroll on either graph or axis to view more years or adjust the
                       display.</p>
-                    <p>Blue bars on temperature graphs indicate the full range of observed temperatures for each day; the green band shows the average temperature range from
-                      1981-2010. Comparing the two ma it easy to spot periods of above- and below-normal temperature.
-                      Green areas on precipitation graphs track year-to-date cumulative precipitation. Comparing observed precipitation to normal year-to-date totals (the
-                      black line) shows whether each sea received above-, below-, or near-normal amounts of precipitation. Vertical portions of the year-to-date precipitation
-                      line show days when precipitation occurred.
-                      Data are from stations in the Global Historical Climatology Network-Daily dataset, compiled by the National Centers for Environmental Information and
-                      served by ACIS.</p>
+                    <p>Blue bars on temperature graphs indicate the full range of observed temperatures for each day; the green band shows the average temperature range from 1981-2010. Comparing the two makes it easy to spot periods of above- and below-normal temperature. Green areas on precipitation graphs track year-to-date cumulative precipitation. Comparing observed precipitation to normal year-to-date totals (the black line) shows whether each season received above-, below-, or near-normal amounts of precipitation. Vertical portions of the year-to-date precipitation line show days when precipitation occurred. Data are from stations in the Global Historical Climatology Network-Daily dataset, compiled by the National Centers for Environmental Information and served by ACIS.</p>
                   </div>
                 </div>
               </div>`
@@ -673,9 +667,7 @@
               <div id="overlay-thresholds-container">
                 <div id="thresholds-container"></div>
                 <div class="station_overlay_text">
-                  <p style="width:65%!important;margin-left:200px;">To limit the tool to show to years with solid data records, we excluded years that are missing more than
-                    five daily temperature reports i single month, or more than one precipitation report in a single month. Data are from stations in the Global Historical
-                    Climatology Network-Daily dataset, compiled by the National Centers for Environmental Information, and served by ACIS.</p>
+                  <p style="width:65%!important;margin-left:200px;">This graph shows how often the selected threshold has been exceeded per year. To limit the tool to show to years with solid data records, we excluded years that are missing more than five daily temperature reports in a single month, or more than one precipitation report in a single month. Data are from stations in the Global Historical Climatology Network-Daily dataset, compiled by the National Centers for Environmental Information, and served by ACIS.</p>
                 </div>
               </div>
             </div>
