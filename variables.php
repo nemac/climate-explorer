@@ -146,6 +146,11 @@
   $(document).ready(function () {
     'use strict';
 
+    function updateAboutLink(title, link) {
+      $('#about-variable-link').prop('href', '#detail-' + link)
+        .html('About ' + title);
+    }
+
     $("#formmapper").formmapper({
       details: "form"
     });
@@ -163,9 +168,12 @@
       }
     });
 
-    $('#variable-options').val(window.ce.ce("getVariablesPageState")['variable'] || 'tmax').change();
+    var initVariable = window.ce.ce("getVariablesPageState")['variable'] || 'tmax';
+    $('#variable-options').val(initVariable).change();
+
     $('#map-season').val(window.ce.ce("getVariablesPageState")['season'] || 'summer').change();
 
+    updateAboutLink($(".fs-dropdown-item[data-value=" + initVariable + "]").text(), initVariable);
 
     $('#variable-options-container .fs-dropdown-item').on('click', function (e) {
       let variable = $(this).data().value;
@@ -174,8 +182,7 @@
       // update breadcrumb label
       $('#breadcrumb .current').html(variableTitle);
       // update about link
-      $('#about-variable-link').html('About ' + variableTitle);
-      $('#about-variable-link').prop('href', '#detail-' + variable.split('.')[0]);
+      updateAboutLink(variableTitle, variable.split('.')[0]);
 
       $(".level-1").html(variableTitle);
       //dry days only show rcp45 vs rcp85 scenario

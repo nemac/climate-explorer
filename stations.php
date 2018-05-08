@@ -71,18 +71,23 @@
 
 <script>
   $(document).ready(function () {
+    function updateAboutLink(title, link) {
+      $('#about-stations-link').prop('href', '#detail-' + link)
+        .html('About ' + title);
+    }
+
     var stationsMapState = window.ce.ce("getStationsMapState");
     if (stationsMapState.mode) {
       $("#stations-options").val(stationsMapState.mode).change();
       $("option[value=" + stationsMapState.mode + "]").attr("selected", "selected");
+      updateAboutLink($(".fs-dropdown-item[data-value=" + stationsMapState.mode + "]").text(), stationsMapState.mode);
     }
     window.stations = $('#stations-map').stationsMap(Object.assign({
       // When state changes, just pass the current options along directly for this page.
       // If we re-use the stationsMap widget on another page there may be more handling to do.
       change: function (event, options) {window.ce.ce('setStationsMapState', options);}
     }, stationsMapState));
-  });
-  $(document).ready(function () {
+
     var initFormMapper = function () {
       $("#formmapper").formmapper({
         details: "form"
@@ -113,8 +118,7 @@
     $('#stations-options-container .fs-dropdown-item').on('click', function (e) {
       window.stations.stationsMap({mode: $(this).data().value});
       // update about link
-      $('#about-stations-link').html('About ' + $(this).text());
-      $('#about-stations-link').prop('href', '#detail-' + $(this).data().value);
+      updateAboutLink($(this).text(), $(this).data().value);
 
       $('#breadcrumb .current').html($(this).text());
     });
