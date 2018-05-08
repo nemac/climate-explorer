@@ -6,7 +6,7 @@
   <meta property="og:url" content="/faq.php" />
   <meta property="og:type" content="article" />
   <meta property="og:title" content="FAQ" />
-  <meta property="og:description" content="The Climate Explorer allows you to view historical and projected climate trends and assess the impacts of climate change on the things you care about" />
+  <meta property="og:description" content="The Climate Explorer allows you to view historical and projected climate variables and assess the impacts of climate change on the things you care about" />
   <meta property="og:image" content="/resources/img/og.jpg" />
 </head>
 

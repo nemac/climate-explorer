@@ -9,7 +9,7 @@
   <meta property="og:url" content="/">
   <meta property="og:type" content="article">
   <meta property="og:title" content="Climate Explorer">
-  <meta property="og:description" content="The Climate Explorer allows you to view historical and projected climate trends and assess the impacts of climate change on the things you care about">
+  <meta property="og:description" content="The Climate Explorer allows you to view historical and projected climate variables and assess the impacts of climate change on the things you care about">
   <meta property="og:image" content="/resources/img/og.jpg">
 
 </head>
@@ -42,7 +42,7 @@
 
       <div id="home-text" class="splash-text">
         <h1>The Climate Explorer</h1>
-        <p>Explore graphs and maps of historical and projected climate trends for any county in the contiguous United States.</p>
+        <p>Explore graphs and maps of historical and projected climate variables for any county in the contiguous United States.</p>
       </div>
 
       <ul id="home-menu" class="menu blue-menu">

@@ -54,7 +54,7 @@ function opengraph_output($data)
     if (isset($data['description'])) {
         $output_data['description'] = $data['description'];
     } else {
-        $output_data['description'] = 'The Climate Explorer allows you to view historical and projected climate trends and assess the impacts of climate change on the things you care about';
+        $output_data['description'] = 'The Climate Explorer allows you to view historical and projected climate variables and assess the impacts of climate change on the things you care about';
     }
 
     // image
