@@ -10932,6 +10932,11 @@ https://raw.github.com/shagstrom/split-pane/master/LICENSE
 }
 
 /* line 14, resources/scss/_mods.scss */
+.display-block {
+  display: block;
+}
+
+/* line 18, resources/scss/_mods.scss */
 input.location-mapper {
   display: inline-block;
   width: 80%;
@@ -10946,12 +10951,12 @@ input.location-mapper {
   transition: 0.25s;
 }
 
-/* line 27, resources/scss/_mods.scss */
+/* line 31, resources/scss/_mods.scss */
 #nav-overlay .icon-search {
   margin-right: 10px;
 }
 
-/* line 31, resources/scss/_mods.scss */
+/* line 35, resources/scss/_mods.scss */
 #close-wx-station {
   position: absolute;
   right: 4px;
@@ -10960,19 +10965,19 @@ input.location-mapper {
   font-size: 28px;
 }
 
-/* line 39, resources/scss/_mods.scss */
+/* line 43, resources/scss/_mods.scss */
 #close-wx-station:hover {
   cursor: pointer;
   color: #000;
 }
 
-/* line 44, resources/scss/_mods.scss */
+/* line 48, resources/scss/_mods.scss */
 .chart-canvas, canvas {
   width: 100%;
   height: 100%;
 }
 
-/* line 49, resources/scss/_mods.scss */
+/* line 53, resources/scss/_mods.scss */
 input.location-mapper::-webkit-input-placeholder {
   color: #fff;
   padding-top: 3px;
@@ -10982,7 +10987,7 @@ input.location-mapper::-webkit-input-placeholder {
   transition: 0.25s;
 }
 
-/* line 57, resources/scss/_mods.scss */
+/* line 61, resources/scss/_mods.scss */
 input.location-mapper:-moz-placeholder {
   color: #fff;
   padding-top: 3px;
@@ -10992,7 +10997,7 @@ input.location-mapper:-moz-placeholder {
   transition: 0.25s;
 }
 
-/* line 65, resources/scss/_mods.scss */
+/* line 69, resources/scss/_mods.scss */
 input.location-mapper::-moz-placeholder {
   color: #fff;
   padding-top: 3px;
@@ -11002,7 +11007,7 @@ input.location-mapper::-moz-placeholder {
   transition: 0.25s;
 }
 
-/* line 73, resources/scss/_mods.scss */
+/* line 77, resources/scss/_mods.scss */
 input.location-mapper:-ms-input-placeholder {
   color: #fff;
   padding-top: 3px;
@@ -11012,33 +11017,33 @@ input.location-mapper:-ms-input-placeholder {
   transition: 0.25s;
 }
 
-/* line 81, resources/scss/_mods.scss */
+/* line 85, resources/scss/_mods.scss */
 input.location-mapper:focus::-webkit-input-placeholder {
   color: rgba(255, 255, 255, 0.25);
 }
 
-/* line 84, resources/scss/_mods.scss */
+/* line 88, resources/scss/_mods.scss */
 input.location-mapper:focus:-moz-placeholder {
   color: rgba(255, 255, 255, 0.25);
 }
 
-/* line 87, resources/scss/_mods.scss */
+/* line 91, resources/scss/_mods.scss */
 input.location-mapper:focus::-moz-placeholder {
   color: rgba(255, 255, 255, 0.25);
 }
 
-/* line 90, resources/scss/_mods.scss */
+/* line 94, resources/scss/_mods.scss */
 input.location-mapper:focus:-ms-input-placeholder {
   color: rgba(255, 255, 255, 0.25);
 }
 
-/* line 94, resources/scss/_mods.scss */
+/* line 98, resources/scss/_mods.scss */
 .location-data-section .data-accordion .data-accordion-tab.data-map .data-accordion-content {
   /*background: none;*/
   background-size: inherit;
 }
 
-/* line 99, resources/scss/_mods.scss */
+/* line 103, resources/scss/_mods.scss */
 .location-data-section .data-accordion .data-accordion-tab.open .data-accordion-content {
   /*-moz-box-shadow: none;
     -webkit-box-shadow: none;
@@ -11047,12 +11052,12 @@ input.location-mapper:focus:-ms-input-placeholder {
     mix-blend-mode: normal;*/
 }
 
-/* line 107, resources/scss/_mods.scss */
+/* line 111, resources/scss/_mods.scss */
 .location-data-section .data-accordion .data-accordion-tab .data-accordion-content {
   /*mix-blend-mode: normal;*/
 }
 
-/* line 113, resources/scss/_mods.scss */
+/* line 117, resources/scss/_mods.scss */
 .chart-legend .legend-item-block {
   height: 28px;
   float: left;
@@ -11061,7 +11066,7 @@ input.location-mapper:focus:-ms-input-placeholder {
   overflow: hidden;
 }
 
-/* line 121, resources/scss/_mods.scss */
+/* line 125, resources/scss/_mods.scss */
 .chart-legend .legend-item-line-container {
   height: 5px;
   float: left;
@@ -11070,37 +11075,37 @@ input.location-mapper:focus:-ms-input-placeholder {
   padding-top: 8px;
 }
 
-/* line 129, resources/scss/_mods.scss */
+/* line 133, resources/scss/_mods.scss */
 .chart-legend .legend-item-line-label {
   padding-top: 8px;
 }
 
-/* line 133, resources/scss/_mods.scss */
+/* line 137, resources/scss/_mods.scss */
 .chart-legend .legend-item-line#under-baseline-block, .chart-legend .legend-item-line#precipunder-baseline-block, .chart-legend .legend-item-line#deriveunder-baseline-block {
   margin-top: 0px;
 }
 
-/* line 137, resources/scss/_mods.scss */
+/* line 141, resources/scss/_mods.scss */
 .chart-legend .legend-item-line#rcp45-line, .chart-legend .legend-item-line#preciprcp45-line, .chart-legend .legend-item-line#derivercp45-line {
   margin-top: 7px;
 }
 
-/* line 141, resources/scss/_mods.scss */
+/* line 145, resources/scss/_mods.scss */
 .chart-legend .legend-item-block#rcp45-block, .chart-legend .legend-item-block#preciprcp45-block, .chart-legend .legend-item-block#derivercp45-block {
   background: #99BCEC;
 }
 
-/* line 145, resources/scss/_mods.scss */
+/* line 149, resources/scss/_mods.scss */
 .legend-item-range {
   height: 43px;
 }
 
-/* line 149, resources/scss/_mods.scss */
+/* line 153, resources/scss/_mods.scss */
 .chart-legend .legend-item-line {
   width: 100%;
 }
 
-/* line 153, resources/scss/_mods.scss */
+/* line 157, resources/scss/_mods.scss */
 .chart-legend .observed {
   background-color: transparent !important;
   background-image: url(../img/observed.png) !important;
@@ -11110,7 +11115,7 @@ input.location-mapper:focus:-ms-input-placeholder {
   margin-top: -8px !important;
 }
 
-/* line 162, resources/scss/_mods.scss */
+/* line 166, resources/scss/_mods.scss */
 .chart-legend .observed.seasonal {
   background-color: transparent !important;
   background-image: url(../img/observed-seasonal.png) !important;
@@ -11120,41 +11125,41 @@ input.location-mapper:focus:-ms-input-placeholder {
   margin-top: -8px !important;
 }
 
-/* line 171, resources/scss/_mods.scss */
+/* line 175, resources/scss/_mods.scss */
 #variable-map .ol-popup {
   z-index: 500;
 }
 
-/* line 175, resources/scss/_mods.scss */
+/* line 179, resources/scss/_mods.scss */
 #map-seasons-container .fs-dropdown-selected.disabled {
   background: #EEE;
   cursor: default;
 }
 
-/* line 180, resources/scss/_mods.scss */
+/* line 184, resources/scss/_mods.scss */
 .ol-popup-content {
   min-width: 170px;
   max-height: 910px;
   overflow-x: auto;
 }
 
-/* line 188, resources/scss/_mods.scss */
+/* line 192, resources/scss/_mods.scss */
 .page-type-location #location-search {
   width: 300px;
 }
 
-/* line 192, resources/scss/_mods.scss */
+/* line 196, resources/scss/_mods.scss */
 .page-type-location #location-search input {
   font-size: 1.1em;
   width: 100%;
 }
 
-/* line 200, resources/scss/_mods.scss */
+/* line 204, resources/scss/_mods.scss */
 #vars-legend .source {
   display: none;
 }
 
-/* line 206, resources/scss/_mods.scss */
+/* line 210, resources/scss/_mods.scss */
 #location-temperature .accent-background {
   background-color: #f5442d;
   position: relative;
@@ -11163,35 +11168,35 @@ input.location-mapper:focus:-ms-input-placeholder {
   height: 100%;
 }
 
-/* line 214, resources/scss/_mods.scss */
+/* line 218, resources/scss/_mods.scss */
 .page-type-location .seasonal-monthly.disabled a {
   color: #EEE;
 }
 
 /* line 661, ../scss/pages/_location.scss */
-/* line 219, resources/scss/_mods.scss */
+/* line 223, resources/scss/_mods.scss */
 .page-type-location .seasonal-monthly.disabled:hover {
   border-left-color: #FFF;
 }
 
-/* line 223, resources/scss/_mods.scss */
+/* line 227, resources/scss/_mods.scss */
 #station-legends .station-legend-item {
   float: left;
   width: 50%;
 }
 
-/* line 228, resources/scss/_mods.scss */
+/* line 232, resources/scss/_mods.scss */
 #station-legends img {
   width: 65%;
 }
 
-/* line 233, resources/scss/_mods.scss */
+/* line 237, resources/scss/_mods.scss */
 #nav-overlay #nav-controls a {
   white-space: normal !important;
 }
 
 @media screen and (min-width: 1500px) {
-  /* line 238, resources/scss/_mods.scss */
+  /* line 242, resources/scss/_mods.scss */
   #subnav ul {
     position: absolute;
     right: 20px;
@@ -11201,57 +11206,57 @@ input.location-mapper:focus:-ms-input-placeholder {
 
 @media screen and (max-width: 1500px) {
   /* line 27, ../scss/formstone/_grid.scss */
-  /* line 248, resources/scss/_mods.scss */
+  /* line 252, resources/scss/_mods.scss */
   #main-header #subnav {
     margin: 0 !important;
   }
-  /* line 251, resources/scss/_mods.scss */
+  /* line 255, resources/scss/_mods.scss */
   #main-header #subnav li {
     display: block;
     margin: -5% 0 0 15px;
   }
-  /* line 255, resources/scss/_mods.scss */
+  /* line 259, resources/scss/_mods.scss */
   .page-type-stations #substations-menu ul {
     display: block;
     white-space: normal;
   }
-  /* line 260, resources/scss/_mods.scss */
+  /* line 264, resources/scss/_mods.scss */
   .station-banner {
     background-size: cover !important;
   }
 }
 
 @media screen and (max-width: 1030px) {
-  /* line 265, resources/scss/_mods.scss */
+  /* line 269, resources/scss/_mods.scss */
   #page-variables #main-header #subnav {
     display: none !important;
   }
-  /* line 269, resources/scss/_mods.scss */
+  /* line 273, resources/scss/_mods.scss */
   .location-data-section .data-list {
     width: 100%;
   }
-  /* line 273, resources/scss/_mods.scss */
+  /* line 277, resources/scss/_mods.scss */
   .location-data-section .data-accordion-wrap {
     width: 100%;
   }
 }
 
-/* line 279, resources/scss/_mods.scss */
+/* line 283, resources/scss/_mods.scss */
 .stations-list .station-layers {
   margin-top: 40px;
 }
 
 @media screen and (max-height: 600px) {
-  /* line 284, resources/scss/_mods.scss */
+  /* line 288, resources/scss/_mods.scss */
   #detail-overlay .nav-detail .nav-detail-item {
     top: 300px;
   }
-  /* line 288, resources/scss/_mods.scss */
+  /* line 292, resources/scss/_mods.scss */
   #detail-overlay .nav-detail {
     overflow-y: scroll;
     overflow-x: hidden;
   }
-  /* line 293, resources/scss/_mods.scss */
+  /* line 297, resources/scss/_mods.scss */
   .overlay .close {
     position: fixed;
     top: 20px;
@@ -11266,34 +11271,34 @@ input.location-mapper:focus:-ms-input-placeholder {
   }
 }
 
-/* line 307, resources/scss/_mods.scss */
+/* line 311, resources/scss/_mods.scss */
 #left-header .left-filler {
   overflow: auto;
 }
 
-/* line 311, resources/scss/_mods.scss */
+/* line 315, resources/scss/_mods.scss */
 .page-type-location #location-search {
   width: 400px;
 }
 
-/* line 315, resources/scss/_mods.scss */
+/* line 319, resources/scss/_mods.scss */
 .ol-popup-content {
   min-width: 170px;
   max-height: 910px;
   overflow: inherit;
 }
 
-/* line 321, resources/scss/_mods.scss */
+/* line 325, resources/scss/_mods.scss */
 .download-image {
   font-size: 1.5em !important;
 }
 
-/* line 325, resources/scss/_mods.scss */
+/* line 329, resources/scss/_mods.scss */
 .download-data {
   font-size: 1.5em !important;
 }
 
-/* line 330, resources/scss/_mods.scss */
+/* line 334, resources/scss/_mods.scss */
 .how-to-read-county {
   float: left;
   position: absolute;
@@ -11305,27 +11310,27 @@ input.location-mapper:focus:-ms-input-placeholder {
 
 /* iPad Air LandScape */
 @media only screen and (device-width: 768px) {
-  /* line 342, resources/scss/_mods.scss */
+  /* line 346, resources/scss/_mods.scss */
   .location-data-section .data-accordion .data-accordion-tab.data-map .location-map-legend-container {
     width: 80px;
   }
-  /* line 346, resources/scss/_mods.scss */
+  /* line 350, resources/scss/_mods.scss */
   html {
     font-size: 60%;
   }
-  /* line 349, resources/scss/_mods.scss */
+  /* line 353, resources/scss/_mods.scss */
   #variable-counties-toggle > label > span {
     font-size: 60%;
   }
-  /* line 352, resources/scss/_mods.scss */
+  /* line 356, resources/scss/_mods.scss */
   #variable-time-slider > span > span.icon.icon-arrow-left-right::before {
     font-size: 2em;
   }
-  /* line 355, resources/scss/_mods.scss */
+  /* line 359, resources/scss/_mods.scss */
   #temperature-map-time-slider > span > span.icon.icon-arrow-left-right {
     font-size: 1.8em;
   }
-  /* line 358, resources/scss/_mods.scss */
+  /* line 362, resources/scss/_mods.scss */
   .how-to-read {
     float: right !important;
     position: absolute !important;
@@ -11335,7 +11340,7 @@ input.location-mapper:focus:-ms-input-placeholder {
     display: block !important;
     z-index: 10 !important;
   }
-  /* line 368, resources/scss/_mods.scss */
+  /* line 372, resources/scss/_mods.scss */
   .ui-slider-handle {
     left: 3px;
     width: 16px;
@@ -11351,7 +11356,7 @@ input.location-mapper:focus:-ms-input-placeholder {
   }
 }
 
-/* line 385, resources/scss/_mods.scss */
+/* line 389, resources/scss/_mods.scss */
 #swipeImg .fs-dropdown button {
   padding: 2px !important;
   padding-right: 40px;
@@ -11370,7 +11375,7 @@ input.location-mapper:focus:-ms-input-placeholder {
   transition: 0.25s;
 }
 
-/* line 404, resources/scss/_mods.scss */
+/* line 408, resources/scss/_mods.scss */
 .handle .fs-dropdown button {
   padding: 2px !important;
   padding-right: 40px;
@@ -11390,7 +11395,7 @@ input.location-mapper:focus:-ms-input-placeholder {
   transition: 0.25s;
 }
 
-/* line 424, resources/scss/_mods.scss */
+/* line 428, resources/scss/_mods.scss */
 #location-stations #station-no-data {
   background: #F45440;
   color: white;
@@ -11400,7 +11405,7 @@ input.location-mapper:focus:-ms-input-placeholder {
   text-align: center;
 }
 
-/* line 433, resources/scss/_mods.scss */
+/* line 437, resources/scss/_mods.scss */
 #nav-overlay .nav-content .tab ol ul li {
   float: none !important;
   width: auto !important;
@@ -11408,7 +11413,7 @@ input.location-mapper:focus:-ms-input-placeholder {
   font: 300 1rem/1.2em Roboto, Helvetica, "Helvetica Neue", Arial, sans-serif;
 }
 
-/* line 440, resources/scss/_mods.scss */
+/* line 444, resources/scss/_mods.scss */
 .download-panel #download-precip-dismiss-button {
   display: block;
   position: absolute;
@@ -11416,7 +11421,7 @@ input.location-mapper:focus:-ms-input-placeholder {
   right: 0;
 }
 
-/* line 447, resources/scss/_mods.scss */
+/* line 451, resources/scss/_mods.scss */
 .download-panel #download-derived-dismiss-button {
   display: block;
   position: absolute;

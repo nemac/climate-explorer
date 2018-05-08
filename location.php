@@ -57,8 +57,8 @@
                   class='icon icon-arrow-down'></span>Historical Modeled Data</a></li>
           <li><a href="javascript:void(0);" id="download_proj_mod_data" class='button display-block border-white hover-bg-white'><span
                   class='icon icon-arrow-down'></span>Projected Modeled Data</a></li>
+          <li><a href="/downloads/Key-to-Climate-Explorer-Download-Filenames-and-Column-Headings.xlsx" class="button display-block border-white hover-bg-white"><span class="icon icon-arrow-down"></span>Information for Interpreting Data</a></li>
         </ul>
-
       </div>
     </div>
 
@@ -74,8 +74,8 @@
                   class='icon icon-arrow-down'></span>Historical Modeled Data</a></li>
           <li><a href="javascript:void(0);" id="download_precip_proj_mod_data" class='button display-block border-white hover-bg-white'><span
                   class='icon icon-arrow-down'></span>Projected Modeled Data</a></li>
+          <li><a href="/downloads/Key-to-Climate-Explorer-Download-Filenames-and-Column-Headings.xlsx" class="button display-block border-white hover-bg-white"><span class="icon icon-arrow-down"></span>Information for Interpreting Data</a></li>
         </ul>
-
       </div>
     </div>
 
@@ -91,8 +91,8 @@
                   class='icon icon-arrow-down'></span>Historical Modeled Data</a></li>
           <li><a href="javascript:void(0);" id="download_derived_proj_mod_data" class='button display-block border-white hover-bg-white'><span
                   class='icon icon-arrow-down'></span>Projected Modeled Data</a></li>
+          <li><a href="/downloads/Key-to-Climate-Explorer-Download-Filenames-and-Column-Headings.xlsx" class="button display-block border-white hover-bg-white"><span class="icon icon-arrow-down"></span>Information for Interpreting Data</a></li>
         </ul>
-
       </div>
     </div>
 
@@ -284,11 +284,9 @@
                 </h4>
 
                 <div class="data-accordion-actions">
-                  <a href="javascript:void(0);" class="how-to-read"><span class="icon icon-help"></span>How to read this</a> <a href="javascript:void(0);"
-                                                                                                                                id="temp-download-image"
-                                                                                                                                class="download-image"><span
-                        class="icon icon-download-image"></span>Image</a> <a href="javascript:void(0);" id="temp-download-data" class="download-data"><span
-                        class="icon icon-download-chart"></span>Data</a>
+                  <a href="javascript:void(0);" class="how-to-read"><span class="icon icon-help"></span>How to read this</a>
+                  <a href="javascript:void(0);" id="temp-download-image" class="download-image"><span class="icon icon-download-image"></span>Image</a>
+                  <a href="javascript:void(0);" id="temp-download-data" class="download-data"><span class="icon icon-download-chart"></span>Data</a>
                 </div>
               </header>
 
