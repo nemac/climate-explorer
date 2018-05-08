@@ -20,25 +20,7 @@
 <div id="viewport">
   <div id="main-content-wrap">
     <section id="home-splash">
-      <?php
-
-      $locations = array(
-        '', // [0]
-        '<a href="/location/?county=Monroe+County&city=Marathon,%20FL&fips=12087&lat=24.726026&lon=-81.04462619999998">Explore: Marathon, Florida</a>',
-        '<a href="/location/?county=Carbon+County&city=Carbon+County,%20UT&fips=49007&lat=39.6479807&lon=-110.61689209999997">Explore: Carbon County, Utah</a>',
-        '<a href="/location/?county=Suffolk+County&city=Boston,%20MA&fips=25025&lat=42.3600825&lon=-71.05888010000001">Explore: Boston, Massachusetts</a>',
-        '<a href="/location/?county=Alameda+County&city=Oakland,%20CA&fips=06001&lat=37.8043637&lon=-122.2711137">Explore: Oakland, California</a>',
-        '<a href="/location/?county=Pinal+County&city=Pinal+County,%20AZ&fips=04021&lat=32.8162061&lon=-111.28450250000003">Explore: Pinal County, Arizona</a>',
-        '<a href="/location/?county=Yuba+County&city=Camptonville,%20CA&fips=06115&lat=39.45213229999999&lon=-121.04859799999997">Explore: Camptonville, California</a>'
-      );
-
-      $splash_id = rand(1, 6);
-
-      ?>
-
-      <div id="splash-<?php echo $splash_id; ?>" class="splash-bg">
-        <div class="slide-text"><span class="location"><?php echo $locations[$splash_id]; ?></span></div>
-      </div>
+      <div id="splash-6" class="splash-bg"></div>
 
       <div id="home-text" class="splash-text">
         <h1>The Climate Explorer</h1>
@@ -74,35 +56,5 @@
 
 <?php include_once('template/footer.php'); ?>
 
-<script>
-  $(document).ready(function () {
-    'use strict';
-
-    function getRandomInt (min, max) {
-      min = Math.ceil(min);
-      max = Math.floor(max);
-      return Math.floor(Math.random() * (max - min + 1)) + min;
-    }
-
-    function updateSplash () {
-      var locations = [
-        '',
-        '<a href="/location/?county=Monroe+County&city=Marathon,%20FL&fips=12087&lat=24.726026&lon=-81.04462619999998">Explore: Marathon, Florida</a>',
-        '<a href="/location/?county=Carbon+County&city=Carbon+County,%20UT&fips=49007&lat=39.6479807&lon=-110.61689209999997">Explore: Carbon County, Utah</a>',
-        '<a href="/location/?county=Suffolk+County&city=Boston,%20MA&fips=25025&lat=42.3600825&lon=-71.05888010000001">Explore: Boston, Massachusetts</a>',
-        '<a href="/location/?county=Alameda+County&city=Oakland,%20CA&fips=06001&lat=37.8043637&lon=-122.2711137">Explore: Oakland, California</a>',
-        '<a href="/location/?county=Pinal+County&city=Pinal+County,%20AZ&fips=04021&lat=32.8162061&lon=-111.28450250000003">Explore: Pinal County, Arizona</a>',
-        '<a href="/location/?county=Yuba+County&city=Camptonville,%20CA&fips=06115&lat=39.45213229999999&lon=-121.04859799999997">Explore: Camptonville, California</a>'
-      ];
-
-      var splash_id = getRandomInt(1, 6);
-
-      $(".splash-bg").attr("id", "splash-" + splash_id);
-      $(".slide-text .location").html(locations[splash_id]);
-    };
-
-    updateSplash();
-  });
-</script>
 </body>
 </html>

@@ -20,62 +20,8 @@
     z-index: 1;
   }
   
-  .slide-text {
-    position: absolute;
-    left: 40%;
-    bottom: 5%;
-    width: 20%;
-    text-align: center;
-    
-    span {
-      display: block;
-    }
-    
-    .icon {
-      float: left;
-      font-size: 2rem;
-      color: $orange1;
-    }
-    
-    .title {
-      margin: 0 0 8px 50px;
-      color: $orange1;
-      font: 0.75rem/1em $sans-heavy;
-    }
-    
-    .location {
-      //margin: 0 0 0 50px;
-      color: $blue2;
-      font: 0.75rem/1em $sans-heavy;
-    }
-  }
-  
-  #splash-1 {
-    background-image: url(../img/bg_splash-sevenmile.jpg);
-  }
-  
-  #splash-2 {
-    background-image: url(../img/bg_splash-carboncounty.jpg);
-  }
-  
-  #splash-3 {
-    background-image: url(../img/bg_splash-boston.jpg);
-  }
-  
-  #splash-4 {
-    background-image: url(../img/bg_splash-anchorage.jpg);
-  }
-  
-  #splash-5 {
-    background-image: url(../img/bg_splash-oakland.jpg);
-  }
-  
   #splash-6 {
     background-image: url(../img/bg_splash-pinal.jpg);
-  }
-  
-  #splash-7 {
-    background-image: url(../img/bg_splash-camptonville.jpg);
   }
 }
 

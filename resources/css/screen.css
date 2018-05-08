@@ -6045,75 +6045,11 @@ body.detail-open #nav-overlay {
 }
 
 /* line 23, resources/scss/pages/_home.scss */
-#home-splash .slide-text {
-  position: absolute;
-  left: 40%;
-  bottom: 5%;
-  width: 20%;
-  text-align: center;
-}
-
-/* line 30, resources/scss/pages/_home.scss */
-#home-splash .slide-text span {
-  display: block;
-}
-
-/* line 34, resources/scss/pages/_home.scss */
-#home-splash .slide-text .icon {
-  float: left;
-  font-size: 2rem;
-  color: #f5442d;
-}
-
-/* line 40, resources/scss/pages/_home.scss */
-#home-splash .slide-text .title {
-  margin: 0 0 8px 50px;
-  color: #f5442d;
-  font: 0.75rem/1em "CESans-Heavy", Helvetica, "Helvetica Neue", Arial, sans-serif;
-}
-
-/* line 46, resources/scss/pages/_home.scss */
-#home-splash .slide-text .location {
-  color: #233a70;
-  font: 0.75rem/1em "CESans-Heavy", Helvetica, "Helvetica Neue", Arial, sans-serif;
-}
-
-/* line 53, resources/scss/pages/_home.scss */
-#home-splash #splash-1 {
-  background-image: url(../img/bg_splash-sevenmile.jpg);
-}
-
-/* line 57, resources/scss/pages/_home.scss */
-#home-splash #splash-2 {
-  background-image: url(../img/bg_splash-carboncounty.jpg);
-}
-
-/* line 61, resources/scss/pages/_home.scss */
-#home-splash #splash-3 {
-  background-image: url(../img/bg_splash-boston.jpg);
-}
-
-/* line 65, resources/scss/pages/_home.scss */
-#home-splash #splash-4 {
-  background-image: url(../img/bg_splash-anchorage.jpg);
-}
-
-/* line 69, resources/scss/pages/_home.scss */
-#home-splash #splash-5 {
-  background-image: url(../img/bg_splash-oakland.jpg);
-}
-
-/* line 73, resources/scss/pages/_home.scss */
 #home-splash #splash-6 {
   background-image: url(../img/bg_splash-pinal.jpg);
 }
 
-/* line 77, resources/scss/pages/_home.scss */
-#home-splash #splash-7 {
-  background-image: url(../img/bg_splash-camptonville.jpg);
-}
-
-/* line 82, resources/scss/pages/_home.scss */
+/* line 28, resources/scss/pages/_home.scss */
 #home-text {
   position: absolute;
   top: 50%;
@@ -6128,12 +6064,12 @@ body.detail-open #nav-overlay {
   color: #233a70;
 }
 
-/* line 91, resources/scss/pages/_home.scss */
+/* line 37, resources/scss/pages/_home.scss */
 #home-text h1 {
   margin: 0 0 20px 0;
 }
 
-/* line 95, resources/scss/pages/_home.scss */
+/* line 41, resources/scss/pages/_home.scss */
 #home-text p {
   width: 75%;
   background: rgba(255, 255, 255, 0.8);
@@ -6141,7 +6077,7 @@ body.detail-open #nav-overlay {
   font: 1.375rem/1.5em Roboto, Helvetica, "Helvetica Neue", Arial, sans-serif;
 }
 
-/* line 103, resources/scss/pages/_home.scss */
+/* line 49, resources/scss/pages/_home.scss */
 #home-menu {
   position: absolute;
   top: 50%;
@@ -6157,14 +6093,14 @@ body.detail-open #nav-overlay {
   z-index: 4;
 }
 
-/* line 115, resources/scss/pages/_home.scss */
+/* line 61, resources/scss/pages/_home.scss */
 #page-home #main-content-wrap {
   position: relative;
   height: 100%;
   margin: 0;
 }
 
-/* line 121, resources/scss/pages/_home.scss */
+/* line 67, resources/scss/pages/_home.scss */
 #page-home #logos {
   position: absolute;
   bottom: 0;
@@ -6175,7 +6111,7 @@ body.detail-open #nav-overlay {
   z-index: 3;
 }
 
-/* line 130, resources/scss/pages/_home.scss */
+/* line 76, resources/scss/pages/_home.scss */
 #page-home #logos a {
   display: block;
   float: right;
@@ -6183,12 +6119,12 @@ body.detail-open #nav-overlay {
   height: 60px;
 }
 
-/* line 137, resources/scss/pages/_home.scss */
+/* line 83, resources/scss/pages/_home.scss */
 #page-home #logos #global-change {
   width: 120px;
 }
 
-/* line 142, resources/scss/pages/_home.scss */
+/* line 88, resources/scss/pages/_home.scss */
 #page-home #h7 {
   position: absolute;
   left: 0;
@@ -6200,19 +6136,19 @@ body.detail-open #nav-overlay {
   z-index: 3;
 }
 
-/* line 152, resources/scss/pages/_home.scss */
+/* line 98, resources/scss/pages/_home.scss */
 #page-home #h7 a {
   display: block;
   color: #233a70;
 }
 
-/* line 157, resources/scss/pages/_home.scss */
+/* line 103, resources/scss/pages/_home.scss */
 #page-home #h7 span {
   display: block;
   float: left;
 }
 
-/* line 162, resources/scss/pages/_home.scss */
+/* line 108, resources/scss/pages/_home.scss */
 #page-home #h7 .logo {
   width: 20px;
   height: 20px;
@@ -10461,13 +10397,7 @@ https://raw.github.com/shagstrom/split-pane/master/LICENSE
   #home-splash .splash-bg {
     background-size: auto 100%;
   }
-  /* line 328, resources/scss/_media.scss */
-  #home-cycle .slide-text {
-    left: 6%;
-    left: calc(6% + 10px);
-    width: 60%;
-  }
-  /* line 335, resources/scss/_media.scss */
+  /* line 327, resources/scss/_media.scss */
   #home-text {
     position: relative;
     top: auto;
@@ -10481,7 +10411,7 @@ https://raw.github.com/shagstrom/split-pane/master/LICENSE
     -o-transform: none;
     transform: none;
   }
-  /* line 345, resources/scss/_media.scss */
+  /* line 337, resources/scss/_media.scss */
   #home-menu {
     position: relative;
     top: auto;
@@ -10495,11 +10425,11 @@ https://raw.github.com/shagstrom/split-pane/master/LICENSE
     -o-transform: none;
     transform: none;
   }
-  /* line 357, resources/scss/_media.scss */
+  /* line 349, resources/scss/_media.scss */
   .page-splash {
     margin-top: 60px;
   }
-  /* line 360, resources/scss/_media.scss */
+  /* line 352, resources/scss/_media.scss */
   .page-splash .splash-text {
     float: none;
     width: 80%;
@@ -10507,69 +10437,69 @@ https://raw.github.com/shagstrom/split-pane/master/LICENSE
     margin: 0 auto 20px auto;
     padding-left: 0;
   }
-  /* line 367, resources/scss/_media.scss */
+  /* line 359, resources/scss/_media.scss */
   .page-splash .splash-text p {
     width: auto;
     font-size: 1rem;
   }
-  /* line 376, resources/scss/_media.scss */
+  /* line 368, resources/scss/_media.scss */
   #page-nav {
     width: 80%;
     margin: 0 auto;
     padding-left: 0;
   }
-  /* line 383, resources/scss/_media.scss */
+  /* line 375, resources/scss/_media.scss */
   .page-type-location .page-splashed {
     margin-top: 60px;
   }
-  /* line 389, resources/scss/_media.scss */
+  /* line 381, resources/scss/_media.scss */
   .location-data-section h3 {
     margin: 0 0 30px 0;
   }
-  /* line 393, resources/scss/_media.scss */
+  /* line 385, resources/scss/_media.scss */
   .location-data-section .data-options-trigger {
     display: block;
     float: right;
     margin: 25px 0 0 0;
     cursor: pointer;
   }
-  /* line 399, resources/scss/_media.scss */
+  /* line 391, resources/scss/_media.scss */
   .location-data-section .data-options-trigger .hamburger {
     margin: 0 10px 0 0;
   }
-  /* line 404, resources/scss/_media.scss */
+  /* line 396, resources/scss/_media.scss */
   .location-data-section .data-options {
     display: none;
   }
-  /* line 408, resources/scss/_media.scss */
+  /* line 400, resources/scss/_media.scss */
   .location-data-section .data-vars {
     clear: both;
   }
-  /* line 412, resources/scss/_media.scss */
+  /* line 404, resources/scss/_media.scss */
   .location-data-section .data-list,
   .location-data-section .data-chart {
     float: none;
     width: auto;
   }
-  /* line 418, resources/scss/_media.scss */
+  /* line 410, resources/scss/_media.scss */
   .location-data-section .data-accordion-wrap {
     float: none;
     width: auto;
     padding: 0 0 100% 0;
   }
-  /* line 427, resources/scss/_media.scss */
+  /* line 419, resources/scss/_media.scss */
   .location-data-section .data-accordion .data-accordion-tab.data-chart .chart-canvas {
     height: 70%;
   }
-  /* line 431, resources/scss/_media.scss */
+  /* line 423, resources/scss/_media.scss */
   .location-data-section .data-accordion .data-accordion-tab.data-chart .chart-legend {
     height: 30%;
   }
-  /* line 439, resources/scss/_media.scss */
+  /* line 431, resources/scss/_media.scss */
   .chart-legend {
     text-align: center;
   }
-  /* line 442, resources/scss/_media.scss */
+  /* line 434, resources/scss/_media.scss */
   .chart-legend .legend-item {
     display: inline-block;
     float: none;
@@ -10577,11 +10507,11 @@ https://raw.github.com/shagstrom/split-pane/master/LICENSE
     margin: 2% 1%;
     vertical-align: top;
   }
-  /* line 452, resources/scss/_media.scss */
+  /* line 444, resources/scss/_media.scss */
   #location-stations .data-accordion-wrap {
     padding: 0 0 50% 0;
   }
-  /* line 459, resources/scss/_media.scss */
+  /* line 451, resources/scss/_media.scss */
   #variable-map {
     position: absolute;
     top: 0;
@@ -10589,52 +10519,52 @@ https://raw.github.com/shagstrom/split-pane/master/LICENSE
     width: 100%;
     height: 100%;
   }
-  /* line 465, resources/scss/_media.scss */
+  /* line 457, resources/scss/_media.scss */
   #station-splash {
     padding: 6%;
     padding-bottom: 12%;
   }
-  /* line 469, resources/scss/_media.scss */
+  /* line 461, resources/scss/_media.scss */
   #station-splash .splash-text {
     float: none;
     width: auto;
     padding: 0;
   }
-  /* line 475, resources/scss/_media.scss */
+  /* line 467, resources/scss/_media.scss */
   #station-splash #substations-menu {
     float: none;
     width: 80%;
     max-width: 80%;
     margin: 0 auto;
   }
-  /* line 484, resources/scss/_media.scss */
+  /* line 476, resources/scss/_media.scss */
   .stations-list h4 {
     margin: 0 0 20px 0;
     font-size: 1.25rem;
   }
-  /* line 489, resources/scss/_media.scss */
+  /* line 481, resources/scss/_media.scss */
   .stations-list article {
     padding: 6% 4% 14% 4%;
     background-size: auto 100%;
     background-attachment: scroll;
     overflow: hidden;
   }
-  /* line 495, resources/scss/_media.scss */
+  /* line 487, resources/scss/_media.scss */
   .stations-list article h3 {
     font-size: 3.5rem;
   }
-  /* line 500, resources/scss/_media.scss */
+  /* line 492, resources/scss/_media.scss */
   .stations-list .station-banner-text {
     float: none;
     width: auto;
     margin: 0 0 40px 0;
   }
-  /* line 506, resources/scss/_media.scss */
+  /* line 498, resources/scss/_media.scss */
   .stations-list .station-layers {
     float: none;
     width: auto;
   }
-  /* line 515, resources/scss/_media.scss */
+  /* line 507, resources/scss/_media.scss */
   .page-type-case #main-content-wrap {
     position: absolute;
     top: 0;
@@ -10642,11 +10572,11 @@ https://raw.github.com/shagstrom/split-pane/master/LICENSE
     width: 100%;
     height: 100%;
   }
-  /* line 521, resources/scss/_media.scss */
+  /* line 513, resources/scss/_media.scss */
   .page-type-case #case-menu .legend .layer-info {
     width: 100%;
   }
-  /* line 527, resources/scss/_media.scss */
+  /* line 519, resources/scss/_media.scss */
   .page-type-case #map {
     position: absolute;
     top: 0;
@@ -10657,43 +10587,43 @@ https://raw.github.com/shagstrom/split-pane/master/LICENSE
 }
 
 @media screen and (max-width: 600px) {
-  /* line 537, resources/scss/_media.scss */
+  /* line 529, resources/scss/_media.scss */
   body {
     padding: 0;
   }
-  /* line 541, resources/scss/_media.scss */
+  /* line 533, resources/scss/_media.scss */
   h1 {
     font-size: 3rem;
   }
-  /* line 547, resources/scss/_media.scss */
+  /* line 539, resources/scss/_media.scss */
   .share-widget {
     right: 20px;
   }
-  /* line 554, resources/scss/_media.scss */
+  /* line 546, resources/scss/_media.scss */
   .top-header #logos {
     display: none;
   }
-  /* line 559, resources/scss/_media.scss */
+  /* line 551, resources/scss/_media.scss */
   .top-header #main-header #nav-trigger {
     float: right;
   }
-  /* line 566, resources/scss/_media.scss */
+  /* line 558, resources/scss/_media.scss */
   .left-header #main-header {
     left: 0;
   }
-  /* line 569, resources/scss/_media.scss */
+  /* line 561, resources/scss/_media.scss */
   .left-header #main-header #header-logo {
     width: auto;
     max-width: 50px;
     float: none;
     margin: 0 auto;
   }
-  /* line 576, resources/scss/_media.scss */
+  /* line 568, resources/scss/_media.scss */
   .left-header #main-header #nav-trigger {
     float: none;
     margin: 10px auto 0 auto;
   }
-  /* line 586, resources/scss/_media.scss */
+  /* line 578, resources/scss/_media.scss */
   #nav-overlay #nav-controls {
     width: calc(100% - 40px);
     margin: 0;
@@ -10708,11 +10638,11 @@ https://raw.github.com/shagstrom/split-pane/master/LICENSE
   #nav-overlay #nav-controls:after {
     clear: both;
   }
-  /* line 592, resources/scss/_media.scss */
+  /* line 584, resources/scss/_media.scss */
   #nav-overlay #nav-controls li {
     margin: 0;
   }
-  /* line 596, resources/scss/_media.scss */
+  /* line 588, resources/scss/_media.scss */
   #nav-overlay #nav-controls a {
     margin: 0;
     padding: 15px 0;
@@ -10721,43 +10651,43 @@ https://raw.github.com/shagstrom/split-pane/master/LICENSE
     font-size: 0.75rem;
     line-height: 1.25em;
   }
-  /* line 604, resources/scss/_media.scss */
+  /* line 596, resources/scss/_media.scss */
   #nav-overlay #nav-controls a .icon {
     display: block;
     margin: 0 auto 10px auto;
   }
-  /* line 610, resources/scss/_media.scss */
+  /* line 602, resources/scss/_media.scss */
   #nav-overlay #nav-controls #nav-overlay-home {
     float: left;
     width: 25%;
     margin: 0;
     padding: 15px 0;
   }
-  /* line 617, resources/scss/_media.scss */
+  /* line 609, resources/scss/_media.scss */
   #nav-overlay #nav-controls #nav-cycle-pager {
     float: left;
     width: 75%;
   }
-  /* line 623, resources/scss/_media.scss */
+  /* line 615, resources/scss/_media.scss */
   #nav-overlay .nav-content-wrap {
     top: 90px;
     height: calc(100% - 100px);
     overflow: auto;
   }
-  /* line 628, resources/scss/_media.scss */
+  /* line 620, resources/scss/_media.scss */
   #nav-overlay .nav-content-wrap h3 {
     display: none;
   }
-  /* line 634, resources/scss/_media.scss */
+  /* line 626, resources/scss/_media.scss */
   #nav-overlay .nav-content nav {
     display: none;
     padding: 0;
   }
-  /* line 638, resources/scss/_media.scss */
+  /* line 630, resources/scss/_media.scss */
   #nav-overlay .nav-content nav a {
     width: 50%;
   }
-  /* line 643, resources/scss/_media.scss */
+  /* line 635, resources/scss/_media.scss */
   #nav-overlay .nav-content button {
     position: relative;
     width: 100%;
@@ -10766,11 +10696,11 @@ https://raw.github.com/shagstrom/split-pane/master/LICENSE
     font: 1.25rem/1em Roboto, Helvetica, "Helvetica Neue", Arial, sans-serif;
     color: #ffffff;
   }
-  /* line 651, resources/scss/_media.scss */
+  /* line 643, resources/scss/_media.scss */
   #nav-overlay .nav-content button.fs-tabs-active {
     border-bottom: 2px solid #ffffff;
   }
-  /* line 654, resources/scss/_media.scss */
+  /* line 646, resources/scss/_media.scss */
   #nav-overlay .nav-content button.fs-tabs-active:after {
     content: '';
     display: block;
@@ -10787,97 +10717,90 @@ https://raw.github.com/shagstrom/split-pane/master/LICENSE
     -o-transition: 0.25s;
     transition: 0.25s;
   }
-  /* line 673, resources/scss/_media.scss */
+  /* line 665, resources/scss/_media.scss */
   #nav-overlay .nav-content .tab ul li,
   #nav-overlay .nav-content .tab ol li {
     float: none !important;
     width: auto !important;
     margin: 0 0 20px 0;
   }
-  /* line 678, resources/scss/_media.scss */
+  /* line 670, resources/scss/_media.scss */
   #nav-overlay .nav-content .tab ul li ul,
   #nav-overlay .nav-content .tab ol li ul {
     margin-left: 20px;
   }
-  /* line 686, resources/scss/_media.scss */
+  /* line 678, resources/scss/_media.scss */
   #nav-overlay #nav-search {
     background-image: url(../img/bg_contours-lightblue.png);
   }
-  /* line 689, resources/scss/_media.scss */
+  /* line 681, resources/scss/_media.scss */
   #nav-overlay #nav-search h3 {
     display: block;
   }
-  /* line 694, resources/scss/_media.scss */
+  /* line 686, resources/scss/_media.scss */
   #nav-overlay #nav-variables {
     background-image: url(../img/bg_contours-blue.png);
   }
-  /* line 698, resources/scss/_media.scss */
+  /* line 690, resources/scss/_media.scss */
   #nav-overlay #nav-stations {
     background-image: url(../img/bg_contours-orange.png);
   }
-  /* line 705, resources/scss/_media.scss */
+  /* line 697, resources/scss/_media.scss */
   .overlay .slide {
     background-repeat: no-repeat;
     background-position: center;
     background-size: 100% auto;
     z-index: 1;
   }
-  /* line 711, resources/scss/_media.scss */
+  /* line 703, resources/scss/_media.scss */
   .overlay .slide .slide-bg {
     display: none;
   }
-  /* line 722, resources/scss/_media.scss */
+  /* line 714, resources/scss/_media.scss */
   #page-home #viewport,
   .page-type-location #viewport,
   .page-type-stations #viewport {
     margin: 0 !important;
   }
-  /* line 730, resources/scss/_media.scss */
+  /* line 722, resources/scss/_media.scss */
   #home-text h1 {
     font-size: 3rem;
   }
-  /* line 734, resources/scss/_media.scss */
+  /* line 726, resources/scss/_media.scss */
   #home-text p {
     width: auto;
   }
-  /* line 739, resources/scss/_media.scss */
+  /* line 731, resources/scss/_media.scss */
   #home-menu {
     margin: 0 auto 120px auto;
   }
-  /* line 744, resources/scss/_media.scss */
-  #home-splash .slide-text {
-    left: 20px;
-    bottom: 60px;
-    width: 50%;
-    text-align: left;
-  }
-  /* line 753, resources/scss/_media.scss */
+  /* line 736, resources/scss/_media.scss */
   #page-home #h7 {
     padding: 8px;
   }
-  /* line 763, resources/scss/_media.scss */
+  /* line 746, resources/scss/_media.scss */
   #station-splash .splash-text {
     float: none;
   }
-  /* line 766, resources/scss/_media.scss */
+  /* line 749, resources/scss/_media.scss */
   #station-splash .splash-text h1 {
     font-size: 2.5rem;
   }
-  /* line 773, resources/scss/_media.scss */
+  /* line 756, resources/scss/_media.scss */
   .stations-list h4 {
     margin: 0 0 20px 0;
     font-size: 1.375rem;
   }
-  /* line 778, resources/scss/_media.scss */
+  /* line 761, resources/scss/_media.scss */
   .stations-list article {
     padding-bottom: 24%;
     background-size: auto 100%;
   }
-  /* line 782, resources/scss/_media.scss */
+  /* line 765, resources/scss/_media.scss */
   .stations-list article h3 {
     font-size: 3rem;
   }
-  /* line 791, resources/scss/_media.scss */
+  /* line 774, resources/scss/_media.scss */
   .page-type-variables #district-trigger {
     left: calc(20% + 10px);
     z-index: 3;
@@ -10885,11 +10808,11 @@ https://raw.github.com/shagstrom/split-pane/master/LICENSE
 }
 
 @media screen and (max-width: 765px) {
-  /* line 800, resources/scss/_media.scss */
+  /* line 783, resources/scss/_media.scss */
   body {
     overflow: hidden;
   }
-  /* line 804, resources/scss/_media.scss */
+  /* line 787, resources/scss/_media.scss */
   #desktop-warning {
     display: block;
     position: absolute;
@@ -10901,7 +10824,7 @@ https://raw.github.com/shagstrom/split-pane/master/LICENSE
     z-index: 999;
     background: rgba(255, 255, 255, 0.98);
   }
-  /* line 811, resources/scss/_media.scss */
+  /* line 794, resources/scss/_media.scss */
   #desktop-warning p {
     position: absolute;
     top: 50%;
