@@ -132,16 +132,19 @@
     window.scenariosMap = $('#variable-map').scenarioComparisonMap(Object.assign(
       window.ce.ce("getVariablesPageState"),
       {
-      change : function (event, options) {
-        window.ce.ce("setVariablesMapState", options);
-      },
-      countyselected: function (event, value) {
-        window.countySelected($('.cwg-container')[0], value);
-      },
-      layersloaded: function (event, value) {
-        $('#variable-map').spinner('destroy');
-      }
-    }));
+        change: function (event, options) {
+          window.ce.ce("setVariablesMapState", options);
+        },
+        countyselected: function (event, value) {
+          window.countySelected($('.cwg-container')[0], value);
+        },
+        layersloaded: function (event, value) {
+          $('#variable-map').spinner('destroy');
+        }
+      }));
+    if (!window.scenariosMap.scenarioComparisonMap('getShowSeasonControls')) {
+      $('#map-seasons-container').hide()
+    }
   });
   $(document).ready(function () {
     'use strict';
@@ -204,7 +207,6 @@
       }
 
     });
-
 
 
     $('#map-seasons-container .fs-dropdown-item').on('click', function (e) {
