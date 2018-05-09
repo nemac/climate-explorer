@@ -553,12 +553,9 @@
                 let county = response.results.filter(function (result) {
                   return result.graphic.layer === this.countiesLayer;
                 }.bind(this))[0].graphic;
-                this._countySelected({
-                  geo_id: county.attributes['GEO_ID'],
-                  name: county.attributes['NAME'] + ' ' + county.attributes['LSAD'],
-                  state: county.attributes['STATE'],
-                  county: county.attributes['county']
-                });
+                this.options.county = county.attributes['GEO_ID'];
+                this.options.countyName = county.attributes['NAME'] + ' ' + county.attributes['LSAD'];
+                this._updateOverlay();
               }.bind(this));
           }.bind(this));
         }.bind(this));
@@ -811,6 +808,7 @@
       if (this.options.variable !== old_options.variable || this.options.season !== old_options.season) {
         this._updateScenarioLayers();
         this._updateLegend();
+        this._updateOverlay();
       }
       this._trigger('change', null, this.options);
       return this;
@@ -820,14 +818,24 @@
       this.nodes.$legendContainer.html('<img class="legend-image" src="/resources/img/legends/' + legendFilename + '.png">')
     },
 
-    _countySelected: function (county) {
+    _updateOverlay: function () {
+      if (typeof this.options.county === 'undefined' || this.options.county === null){
+        if (typeof this.nodes.$countyOverlay !== 'undefined' ){
+          delete this['cwg'];
+          this.nodes.$countyOverlay.remove();
+        }
+        return
+      }
+      if (this.nodes.$countyOverlay !== undefined && this.nodes.$countyOverlay !== null){
+
+      }
       this.nodes.$countyOverlay = $(`<div class="county-overlay">
-  <div id="station-overlay-close">x</div>
+  <div id="county-overlay-close">x</div>
   <div class="county-overlay-inner">
     <header>
-      <a href="location.php">
+      <a href="/location/">
         <h4 class="accent-color" style="margin-bottom: 20px;">
-          <span class="icon icon-emission-scenario"></span> <span class="text">Chart<span class="full-title">: ${county.name}</span>
+          <span class="icon icon-emission-scenario"></span> <span class="text">Chart<span class="full-title">: ${this.options.countyName}</span>
           <span class="source" id="temp-chart-name">${this.variables[this.options.variable].title}</span>
         </span>
         </h4>
@@ -894,7 +902,7 @@
         dataprefix: "/climate-explorer2-data/data",
         font: "Roboto",
         frequency: "annual",
-        county: county.geo_id.slice(-5),
+        county: this.options.county.geo_id.slice(-5),
         variable: this.options.variable,
         scenario: "both",
         pmedian: "true",
@@ -902,8 +910,8 @@
       });
 
       $(window).resize(function () {this.cwg.resize()}.bind(this));
-      this.nodes.$countyOverlay.find('#station-overlay-close').click(function () {
-        delete this['tempChart'];
+      this.nodes.$countyOverlay.find('#county-overlay-close').click(function () {
+        delete this['cwg'];
         this.options.county = null;
         this.nodes.$countyOverlay.remove();
       }.bind(this));

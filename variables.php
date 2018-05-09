@@ -44,7 +44,7 @@
 
   <ul id="vars-menu" class="menu blue-menu">
     <li class="search-field border" id="variable-search-by-location">
-      <span class="icon icon-search"></span><input type="text" id="formmapper" placeholder="Zoom to location">
+      <span class="icon icon-search"></span><input type="text" id="formmapper" autocomplete="off" placeholder="Zoom to location">
     </li>
     <!---->
     <!--    <li class="toggle border" id="variable-counties-toggle">-->
