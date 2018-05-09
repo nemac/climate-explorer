@@ -702,7 +702,7 @@
         this.nodes.$leftYearTooltip = $('<span class="tooltip"></span>').hide();
       }
       if (this.options.leftYear === 'avg' && this.options.leftScenario === 'historical') {
-        this.nodes.$leftYearTooltip.text(this.options.historicalYears[0] + "-" + this.options.historicalYears.slice(-1)[0] + " Average");
+        this.nodes.$leftYearTooltip.text("1961-1990 Average");
       } else {
         this.nodes.$leftYearTooltip.text(this.options.leftYear);
       }

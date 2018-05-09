@@ -87,10 +87,10 @@
 
     <li class="select border" id="map-seasons-container">
       <select class="dropdown" id="map-season" title="Season">
-        <option value="summer">Summer (Jun-Aug)</option>
-        <option value="fall">Fall (Sep-Nov)</option>
-        <option value="winter">Winter (Dec-Feb)</option>
-        <option value="spring">Spring (Mar-May)</option>
+        <option value="summer">July (Summer)</option>
+        <option value="fall">October (Fall)</option>
+        <option value="winter">Jan (Winter)</option>
+        <option value="spring">April (Spring)</option>
       </select>
     </li>
 
