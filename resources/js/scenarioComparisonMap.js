@@ -704,6 +704,9 @@
           }
 
         }
+        else{
+          this._updateScenarioLayers();
+        }
         this._updateLegend();
         this._updateOverlay();
       }
@@ -891,7 +894,7 @@
 
       }
       this.nodes.$countyOverlay = $(`<div class="county-overlay">
-  <div id="county-overlay-close">x</div>
+  <div class="county-overlay-close">x</div>
   <div class="county-overlay-inner">
     <header>
       <a href="/location/">
@@ -971,7 +974,7 @@
       });
 
       $(window).resize(function () {this.cwg.resize()}.bind(this));
-      this.nodes.$countyOverlay.find('#county-overlay-close').click(function () {
+      this.nodes.$countyOverlay.find('.county-overlay-close').click(function () {
         delete this['cwg'];
         this.options.county = null;
         this.nodes.$countyOverlay.remove();
