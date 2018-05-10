@@ -622,7 +622,7 @@
             <li class="">
               <h4 id="var-cdd_65f" data-value="cdd_65f"><a href="#" class="text">Cooling Degree Days (°F-days)</a><a
                     href="#detail-cdd_65f" class="icon icon-help nav-detail-link"></a></h4>
-              <ul>
+              <ul class="location-resolution">
                 <li><a>Annual</a></li>
               </ul>
             </li>
@@ -631,7 +631,7 @@
               <h4 id="var-gdd" data-value="gdd"><a href="#" class="text">Growing Degree Days (°F-days)</a><a href="#detail-gdd"
                                                                                                               class="icon icon-help nav-detail-link"></a>
               </h4>
-              <ul>
+              <ul class="location-resolution">
                 <li><a>Annual</a></li>
               </ul>
             </li>
@@ -639,7 +639,7 @@
             <li class="">
               <h4 id="var-gddmod" data-value="gddmod"><a href="#" class="text">Modified Growing Degree Days (°F-days)</a><a
                     href="#detail-gddmod" class="icon icon-help nav-detail-link"></a></h4>
-              <ul>
+              <ul class="location-resolution">
                 <li><a>Annual</a></li>
               </ul>
             </li>

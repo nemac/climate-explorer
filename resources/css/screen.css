@@ -7115,122 +7115,137 @@ body.detail-open #nav-overlay {
   border-bottom-color: #ebebeb;
 }
 
-/* line 720, resources/scss/pages/_location.scss */
-#location-temperature .data-options .active.accent-border {
+/* line 718, resources/scss/pages/_location.scss */
+#location-temperature .data-options .active.disabled a {
+  color: #ebebeb !important;
+}
+
+/* line 722, resources/scss/pages/_location.scss */
+#location-temperature .data-options .active:not(.disabled).accent-border {
   border-left-color: #f5442d;
   border-bottom-color: #ebebeb;
 }
 
-/* line 725, resources/scss/pages/_location.scss */
-#location-temperature .data-options .active .accent-color {
+/* line 727, resources/scss/pages/_location.scss */
+#location-temperature .data-options .active:not(.disabled) .accent-color {
   color: #f5442d;
 }
 
-/* line 732, resources/scss/pages/_location.scss */
-#location-temperature .data-options ul li.active {
+/* line 734, resources/scss/pages/_location.scss */
+#location-temperature .data-options ul li.active:not(.disabled) {
   border-left: 10px solid #f5442d;
 }
 
-/* line 740, resources/scss/pages/_location.scss */
+/* line 742, resources/scss/pages/_location.scss */
 #location-temperature .data-vars button {
   color: #f5442d;
 }
 
-/* line 746, resources/scss/pages/_location.scss */
+/* line 748, resources/scss/pages/_location.scss */
 #location-precipitation .accent-color {
   color: #0058cf;
 }
 
-/* line 750, resources/scss/pages/_location.scss */
+/* line 752, resources/scss/pages/_location.scss */
 #location-precipitation .accent-background {
   background-color: #0058cf;
 }
 
-/* line 754, resources/scss/pages/_location.scss */
+/* line 756, resources/scss/pages/_location.scss */
 #location-precipitation .accent-border {
   border-color: #0058cf;
 }
 
-/* line 763, resources/scss/pages/_location.scss */
+/* line 765, resources/scss/pages/_location.scss */
 #location-precipitation .data-options .accent-border {
   border-left-color: #ebebeb;
   border-bottom-color: #ebebeb;
 }
 
 /* line 769, resources/scss/pages/_location.scss */
-#location-precipitation .data-options .active.accent-border {
+#location-precipitation .data-options .active.disabled a {
+  color: #ebebeb !important;
+}
+
+/* line 773, resources/scss/pages/_location.scss */
+#location-precipitation .data-options .active:not(.disabled).accent-border {
   border-left-color: #0058cf;
   border-bottom-color: #ebebeb;
 }
 
-/* line 774, resources/scss/pages/_location.scss */
-#location-precipitation .data-options .active .accent-color {
+/* line 778, resources/scss/pages/_location.scss */
+#location-precipitation .data-options .active:not(.disabled) .accent-color {
   color: #0058cf;
 }
 
-/* line 781, resources/scss/pages/_location.scss */
-#location-precipitation .data-options ul li.active {
+/* line 785, resources/scss/pages/_location.scss */
+#location-precipitation .data-options ul li.active:not(.disabled) {
   border-left: 10px solid #0058cf;
 }
 
-/* line 789, resources/scss/pages/_location.scss */
+/* line 793, resources/scss/pages/_location.scss */
 #location-precipitation .data-vars button {
   color: #0058cf;
 }
 
-/* line 796, resources/scss/pages/_location.scss */
+/* line 800, resources/scss/pages/_location.scss */
 #location-precipitation .range .ui-slider .ui-slider-range, #location-precipitation .range .ui-slider .ui-slider-handle {
   background: #0058cf;
 }
 
-/* line 803, resources/scss/pages/_location.scss */
+/* line 807, resources/scss/pages/_location.scss */
 #location-derived .accent-color {
   color: #904848;
 }
 
-/* line 807, resources/scss/pages/_location.scss */
+/* line 811, resources/scss/pages/_location.scss */
 #location-derived .accent-background {
   background-color: #904848;
 }
 
-/* line 811, resources/scss/pages/_location.scss */
+/* line 815, resources/scss/pages/_location.scss */
 #location-derived .accent-border {
   border-color: #904848;
 }
 
-/* line 820, resources/scss/pages/_location.scss */
+/* line 824, resources/scss/pages/_location.scss */
 #location-derived .data-options .accent-border {
   border-left-color: #ebebeb;
   border-bottom-color: #ebebeb;
 }
 
-/* line 826, resources/scss/pages/_location.scss */
-#location-derived .data-options .active.accent-border {
+/* line 828, resources/scss/pages/_location.scss */
+#location-derived .data-options .active.disabled a {
+  color: #ebebeb !important;
+}
+
+/* line 832, resources/scss/pages/_location.scss */
+#location-derived .data-options .active:not(.disabled).accent-border {
   border-left-color: #904848;
   border-bottom-color: #ebebeb;
 }
 
-/* line 831, resources/scss/pages/_location.scss */
-#location-derived .data-options .active .accent-color {
+/* line 837, resources/scss/pages/_location.scss */
+#location-derived .data-options .active:not(.disabled) .accent-color {
   color: #904848;
 }
 
-/* line 838, resources/scss/pages/_location.scss */
-#location-derived .data-options ul li.active {
+/* line 844, resources/scss/pages/_location.scss */
+#location-derived .data-options ul li.active:not(.disabled) {
   border-left: 10px solid #904848;
 }
 
-/* line 846, resources/scss/pages/_location.scss */
+/* line 852, resources/scss/pages/_location.scss */
 #location-derived .data-vars button {
   color: #904848;
 }
 
-/* line 852, resources/scss/pages/_location.scss */
+/* line 858, resources/scss/pages/_location.scss */
 #location-derived .range .ui-slider .ui-slider-range, #location-derived .range .ui-slider .ui-slider-handle {
   background: #904848;
 }
 
-/* line 860, resources/scss/pages/_location.scss */
+/* line 866, resources/scss/pages/_location.scss */
 .location-data-section .data-accordion .data-accordion-tab.data-chart .chart-range {
   position: absolute;
   left: 0;
@@ -7242,7 +7257,7 @@ body.detail-open #nav-overlay {
   box-shadow: inset 0 5px 10px -5px rgba(0, 0, 0, 0.5);
 }
 
-/* line 871, resources/scss/pages/_location.scss */
+/* line 877, resources/scss/pages/_location.scss */
 .location-data-section .data-accordion .data-accordion-tab.data-chart .chart-range .ui-slider-handle {
   top: 0;
   width: 16px;
@@ -7250,25 +7265,25 @@ body.detail-open #nav-overlay {
   margin: -3px 0px -8px -8px;
 }
 
-/* line 878, resources/scss/pages/_location.scss */
+/* line 884, resources/scss/pages/_location.scss */
 #precip-slider-range {
   width: 100%;
   margin: auto;
 }
 
-/* line 883, resources/scss/pages/_location.scss */
+/* line 889, resources/scss/pages/_location.scss */
 #derived-slider-range {
   width: 100%;
   margin: auto;
 }
 
-/* line 889, resources/scss/pages/_location.scss */
+/* line 895, resources/scss/pages/_location.scss */
 #location-stations {
   padding: 0;
   height: calc(100vh - 160px);
 }
 
-/* line 893, resources/scss/pages/_location.scss */
+/* line 899, resources/scss/pages/_location.scss */
 #location-stations .location-data-section {
   position: absolute;
   top: 0;
@@ -7277,12 +7292,12 @@ body.detail-open #nav-overlay {
   height: 100%;
 }
 
-/* line 897, resources/scss/pages/_location.scss */
+/* line 903, resources/scss/pages/_location.scss */
 #location-stations h3 {
   margin: 0 0 2% 0;
 }
 
-/* line 903, resources/scss/pages/_location.scss */
+/* line 909, resources/scss/pages/_location.scss */
 #location-stations #location-stations-about {
   position: absolute;
   top: 0;
@@ -7293,13 +7308,13 @@ body.detail-open #nav-overlay {
   z-index: 5;
 }
 
-/* line 912, resources/scss/pages/_location.scss */
+/* line 918, resources/scss/pages/_location.scss */
 #location-stations #location-stations-about p {
   font-size: 0.875rem;
   margin: 20px 0;
 }
 
-/* line 920, resources/scss/pages/_location.scss */
+/* line 926, resources/scss/pages/_location.scss */
 #location-stations #location-stations-map-wrap {
   position: absolute;
   top: 0;
@@ -7309,7 +7324,7 @@ body.detail-open #nav-overlay {
   z-index: 1;
 }
 
-/* line 925, resources/scss/pages/_location.scss */
+/* line 931, resources/scss/pages/_location.scss */
 #location-stations #location-station-map {
   position: absolute;
   top: 0;
@@ -7318,12 +7333,12 @@ body.detail-open #nav-overlay {
   height: 100%;
 }
 
-/* line 928, resources/scss/pages/_location.scss */
+/* line 934, resources/scss/pages/_location.scss */
 #location-stations #location-station-map .ol-attribution, #location-stations #location-station-map .ol-rotate {
   display: none;
 }
 
-/* line 932, resources/scss/pages/_location.scss */
+/* line 938, resources/scss/pages/_location.scss */
 #location-stations #location-station-map .ol-zoom {
   position: absolute;
   z-index: 1;
@@ -7336,7 +7351,7 @@ body.detail-open #nav-overlay {
   transform: translateY(-50%);
 }
 
-/* line 939, resources/scss/pages/_location.scss */
+/* line 945, resources/scss/pages/_location.scss */
 #location-stations #location-station-map .ol-zoom button {
   display: block;
   width: 30px;
@@ -7355,7 +7370,7 @@ body.detail-open #nav-overlay {
   border-radius: 50%;
 }
 
-/* line 957, resources/scss/pages/_location.scss */
+/* line 963, resources/scss/pages/_location.scss */
 #location-stations #location-stations-overlay {
   position: absolute;
   top: 0;
@@ -7379,7 +7394,7 @@ body.detail-open #nav-overlay {
   clear: both;
 }
 
-/* line 967, resources/scss/pages/_location.scss */
+/* line 973, resources/scss/pages/_location.scss */
 #location-stations.overlay-on #location-stations-overlay {
   left: 0;
   opacity: 1;
@@ -7387,29 +7402,29 @@ body.detail-open #nav-overlay {
   background: rgba(245, 68, 45, 0.9);
 }
 
-/* line 974, resources/scss/pages/_location.scss */
+/* line 980, resources/scss/pages/_location.scss */
 #location-stations.overlay-on .station-overlay-content {
   transition: left 0s ease 0s, opacity 0.25s ease 0s;
 }
 
-/* line 979, resources/scss/pages/_location.scss */
+/* line 985, resources/scss/pages/_location.scss */
 #location-stations.overlay-on:not(.type-tidal) #station-detail {
   left: 0;
   opacity: 1;
 }
 
-/* line 986, resources/scss/pages/_location.scss */
+/* line 992, resources/scss/pages/_location.scss */
 #location-stations.overlay-on.type-tidal #location-stations-overlay {
   background: rgba(0, 88, 207, 0.9);
 }
 
-/* line 990, resources/scss/pages/_location.scss */
+/* line 996, resources/scss/pages/_location.scss */
 #location-stations.overlay-on.type-tidal #station-detail-tidal {
   left: 0;
   opacity: 1;
 }
 
-/* line 999, resources/scss/pages/_location.scss */
+/* line 1005, resources/scss/pages/_location.scss */
 #location-stations #station-overlay-header {
   height: 120px;
   color: #ffffff;
@@ -7427,12 +7442,12 @@ body.detail-open #nav-overlay {
   clear: both;
 }
 
-/* line 1005, resources/scss/pages/_location.scss */
+/* line 1011, resources/scss/pages/_location.scss */
 #location-stations #station-overlay-header h3 {
   padding: 0;
 }
 
-/* line 1009, resources/scss/pages/_location.scss */
+/* line 1015, resources/scss/pages/_location.scss */
 #location-stations #station-overlay-header h5 {
   float: left;
   width: 50%;
@@ -7440,7 +7455,7 @@ body.detail-open #nav-overlay {
   font-family: "CESans", Roboto, Helvetica, "Helvetica Neue", Arial, sans-serif;
 }
 
-/* line 1019, resources/scss/pages/_location.scss */
+/* line 1025, resources/scss/pages/_location.scss */
 #location-stations .station-overlay-content {
   position: absolute;
   bottom: 0;
@@ -7453,7 +7468,7 @@ body.detail-open #nav-overlay {
   z-index: 1;
 }
 
-/* line 1031, resources/scss/pages/_location.scss */
+/* line 1037, resources/scss/pages/_location.scss */
 #location-stations .station-overlay-column {
   position: relative;
   float: left;
@@ -7461,12 +7476,12 @@ body.detail-open #nav-overlay {
   height: 100%;
 }
 
-/* line 1037, resources/scss/pages/_location.scss */
+/* line 1043, resources/scss/pages/_location.scss */
 #location-stations .station-overlay-column.left {
   padding-right: 40px;
 }
 
-/* line 1040, resources/scss/pages/_location.scss */
+/* line 1046, resources/scss/pages/_location.scss */
 #location-stations .station-overlay-column.left:after {
   content: '';
   display: block;
@@ -7479,13 +7494,13 @@ body.detail-open #nav-overlay {
   border-left-color: #ffffff;
 }
 
-/* line 1056, resources/scss/pages/_location.scss */
+/* line 1062, resources/scss/pages/_location.scss */
 #location-stations #station-detail-data {
   background: #ffffff;
   padding: 20px;
 }
 
-/* line 1061, resources/scss/pages/_location.scss */
+/* line 1067, resources/scss/pages/_location.scss */
 #location-stations .form-group {
   font-size: 0.75rem;
 }
@@ -7501,18 +7516,18 @@ body.detail-open #nav-overlay {
   clear: both;
 }
 
-/* line 1065, resources/scss/pages/_location.scss */
+/* line 1071, resources/scss/pages/_location.scss */
 #location-stations .form-group label {
   display: block;
 }
 
-/* line 1069, resources/scss/pages/_location.scss */
+/* line 1075, resources/scss/pages/_location.scss */
 #location-stations .form-group select {
   font-family: Roboto, Helvetica, "Helvetica Neue", Arial, sans-serif;
   font-size: 0.75rem;
 }
 
-/* line 1074, resources/scss/pages/_location.scss */
+/* line 1080, resources/scss/pages/_location.scss */
 #location-stations .form-group input {
   display: inline-block;
   width: calc(100% - 10px);
@@ -7522,30 +7537,30 @@ body.detail-open #nav-overlay {
   padding: 4px 8px;
 }
 
-/* line 1083, resources/scss/pages/_location.scss */
+/* line 1089, resources/scss/pages/_location.scss */
 #location-stations .form-group .field-pair {
   float: left;
   width: 25%;
 }
 
-/* line 1088, resources/scss/pages/_location.scss */
+/* line 1094, resources/scss/pages/_location.scss */
 #location-stations .form-group .field-pair.append input {
   width: 50%;
 }
 
-/* line 1092, resources/scss/pages/_location.scss */
+/* line 1098, resources/scss/pages/_location.scss */
 #location-stations .form-group .field-pair.append .append {
   display: inline-block;
   padding-left: 4px;
   vertical-align: middle;
 }
 
-/* line 1106, resources/scss/pages/_location.scss */
+/* line 1112, resources/scss/pages/_location.scss */
 #location-stations #tidal-chart {
   background-color: #ffffff;
 }
 
-/* line 1114, resources/scss/pages/_location.scss */
+/* line 1120, resources/scss/pages/_location.scss */
 #location-stations #station-overlay-close {
   display: block;
   position: absolute;
@@ -7557,7 +7572,7 @@ body.detail-open #nav-overlay {
   z-index: 2;
 }
 
-/* line 1127, resources/scss/pages/_location.scss */
+/* line 1133, resources/scss/pages/_location.scss */
 #location-stations #stations-spinner {
   display: none;
   position: absolute;
@@ -7570,47 +7585,47 @@ body.detail-open #nav-overlay {
   z-index: 15;
 }
 
-/* line 1143, resources/scss/pages/_location.scss */
+/* line 1149, resources/scss/pages/_location.scss */
 #location-stations .data-accordion-wrap {
   width: 30%;
 }
 
-/* line 1147, resources/scss/pages/_location.scss */
+/* line 1153, resources/scss/pages/_location.scss */
 #location-stations #station-charts-tabs {
   height: 100%;
   padding: 20px;
   background: #ffffff;
 }
 
-/* line 1152, resources/scss/pages/_location.scss */
+/* line 1158, resources/scss/pages/_location.scss */
 #location-stations #station-charts-tabs .chart-tab-list {
   margin: 0 0 10px 0;
 }
 
-/* line 1155, resources/scss/pages/_location.scss */
+/* line 1161, resources/scss/pages/_location.scss */
 #location-stations #station-charts-tabs .chart-tab-list li {
   display: inline-block;
 }
 
-/* line 1158, resources/scss/pages/_location.scss */
+/* line 1164, resources/scss/pages/_location.scss */
 #location-stations #station-charts-tabs .chart-tab-list li a {
   display: block;
   padding: 8px 10px;
   color: #233a70;
 }
 
-/* line 1164, resources/scss/pages/_location.scss */
+/* line 1170, resources/scss/pages/_location.scss */
 #location-stations #station-charts-tabs .chart-tab-list li.selected {
   background-color: #d5e8f2;
 }
 
-/* line 1170, resources/scss/pages/_location.scss */
+/* line 1176, resources/scss/pages/_location.scss */
 #location-stations #station-charts-tabs .chart-tabs-wrap {
   position: relative;
   height: 300px;
 }
 
-/* line 1175, resources/scss/pages/_location.scss */
+/* line 1181, resources/scss/pages/_location.scss */
 #location-stations #station-charts-tabs .chart-tab {
   position: absolute;
   top: 0;
@@ -7622,7 +7637,7 @@ body.detail-open #nav-overlay {
   transition: left 0s ease 0.25s, opacity 0.25s ease 0s;
 }
 
-/* line 1181, resources/scss/pages/_location.scss */
+/* line 1187, resources/scss/pages/_location.scss */
 #location-stations #station-charts-tabs .chart-tab.selected {
   left: 0;
   opacity: 1;

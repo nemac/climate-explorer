@@ -715,8 +715,10 @@
       border-left-color: $grey2;
       border-bottom-color: $grey2;
     }
-
-    .active {
+    .active.disabled a {
+      color: $grey2 !important;
+    }
+    .active:not(.disabled) {
       &.accent-border {
         border-left-color: $orange1;
         border-bottom-color: $grey2;
@@ -729,7 +731,7 @@
 
     ul {
       li {
-        &.active {
+        &.active:not(.disabled) {
           border-left: 10px solid $orange1;
         }
       }
@@ -764,8 +766,10 @@
       border-left-color: $grey2;
       border-bottom-color: $grey2;
     }
-
-    .active {
+    .active.disabled a {
+      color: $grey2 !important;
+    }
+    .active:not(.disabled) {
       &.accent-border {
         border-left-color: $blue1;
         border-bottom-color: $grey2;
@@ -778,7 +782,7 @@
 
     ul {
       li {
-        &.active {
+        &.active:not(.disabled) {
           border-left: 10px solid $blue1;
         }
       }
@@ -821,8 +825,10 @@
       border-left-color: $grey2;
       border-bottom-color: $grey2;
     }
-
-    .active {
+    .active.disabled a {
+      color: $grey2 !important;
+    }
+    .active:not(.disabled) {
       &.accent-border {
         border-left-color: $brown1;
         border-bottom-color: $grey2;
@@ -835,7 +841,7 @@
 
     ul {
       li {
-        &.active {
+        &.active:not(.disabled) {
           border-left: 10px solid $brown1;
         }
       }

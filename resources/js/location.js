@@ -7,7 +7,7 @@ $(function () {
   $('#splash-city').text(window.ce.ce('getLocationPageState')['city']);
   $('#splash-county').text(window.ce.ce('getLocationPageState')['county']);
   $('.data-accordion-tab .full-title').text(window.ce.ce('getLocationPageState')['county']);
-  $('select#derived-county, select#precip-county, select#county').append($('<option value="'+window.ce.ce('getLocationPageState')['fips']+'" selected="selected">'+window.ce.ce('getLocationPageState')['county']+'</option>'));
+  $('select#derived-county, select#precip-county, select#county').append($('<option value="' + window.ce.ce('getLocationPageState')['fips'] + '" selected="selected">' + window.ce.ce('getLocationPageState')['county'] + '</option>'));
 
 
   $('.data-options-trigger').click(function (e) {
@@ -18,7 +18,7 @@ $(function () {
 
   $('#temperature-map-container header').on('click', function () {
     $('#temperature-map').height($('#temperature-map').parent().height());
-    $('#location-temperature .seasonal-monthly').addClass('disabled');
+    $('#location-temperature .location-resolution li').addClass('disabled');
     if (typeof window.temperatureScenariosMap === 'undefined') {
       $('#temperature-map').spinner();
       window.temperatureScenariosMap = $('#temperature-map').scenarioComparisonMap({
@@ -32,12 +32,12 @@ $(function () {
       });
     }
   });
-  $('#temperature-chart header').on('click', function () {$('#location-temperature .seasonal-monthly').removeClass('disabled');});
+  $('#temperature-chart header').on('click', function () {$('#location-temperature .location-resolution li').removeClass('disabled');});
 
 
   $('#precipitation-map-container header').on('click', function () {
     $('#precipitation-map').height($('#precipitation-map').parent().height());
-    $('#location-precipitation .seasonal-monthly').addClass('disabled');
+    $('#location-precipitation .location-resolution li').addClass('disabled');
     if (typeof window.precipitationScenariosMap === 'undefined') {
       $('#precipitation-map').spinner();
       window.precipitationScenariosMap = $('#precipitation-map').scenarioComparisonMap({
@@ -48,12 +48,12 @@ $(function () {
       });
     }
   });
-  $('#precipitation-chart header').on('click', function () {$('#location-precipitation .seasonal-monthly').removeClass('disabled');});
+  $('#precipitation-chart header').on('click', function () {$('#location-precipitation .location-resolution li').removeClass('disabled');});
 
 
   $('#derived-map-container header').on('click', function () {
     $('#derived-map').height($('#derived-map').parent().height());
-    $('#location-derived .seasonal-monthly').addClass('disabled');
+    $('#location-derived .location-resolution li').addClass('disabled');
     if (typeof window.derivedScenariosMap === 'undefined') {
       $('#derived-map').spinner();
       window.derivedScenariosMap = $('#derived-map').scenarioComparisonMap({
@@ -65,7 +65,7 @@ $(function () {
       );
     }
   });
-  $('#derived-chart header').on('click', function () {$('#location-temperature .seasonal-monthly').removeClass('disabled');});
+  $('#derived-chart header').on('click', function () {$('#location-derived .location-resolution li').removeClass('disabled');});
 
 
   let variable_li_update = function (container, el) {
