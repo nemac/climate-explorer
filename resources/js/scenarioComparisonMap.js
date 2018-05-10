@@ -307,11 +307,21 @@
     `);
       $(this.nodes.mapContainer).append(this.nodes.$controlsOverLayContainer);
       this.nodes.$leftScenario = $(this.element).find(".left-scenario-controls .dropdown");
+      this.nodes.$leftScenario.val(this.options.leftScenario);
       this.nodes.$leftScenario.dropdown({bottomEdge: 10});
-      this.nodes.$leftScenario.on('change', function () {this._setOptions({leftScenario: this.nodes.$leftScenario.val()})}.bind(this));
+      this.nodes.$leftScenario.on('change', function () {
+        if (this.nodes.$leftScenario.val() !== undefined && this.nodes.$leftScenario.val() !== null) {
+          this._setOptions({leftScenario: this.nodes.$leftScenario.val()})
+        }
+      }.bind(this));
       this.nodes.$rightScenario = $(this.element).find(".right-scenario-controls .dropdown");
+      this.nodes.$leftScenario.val(this.options.rightScenario);
       this.nodes.$rightScenario.dropdown({bottomEdge: 10});
-      this.nodes.$rightScenario.on('change', function () {this._setOptions({rightScenario: this.nodes.$rightScenario.val()})}.bind(this));
+      this.nodes.$rightScenario.on('change', function () {
+        if (this.nodes.$rightScenario.val() !== undefined && this.nodes.$rightScenario.val() !== null) {
+          this._setOptions({rightScenario: this.nodes.$rightScenario.val()});
+        }
+      }.bind(this));
       this.nodes.$controlsOverLayContainer.find('.movable.slider-div').draggable({
         axis: "x",
         containment: this.nodes.$controlsOverLayContainer,
@@ -420,7 +430,7 @@
             oldLeftLayer.visible = false;
             oldLeftLayer.destroy();
           }
-          , 1000);
+          , 400);
         this.leftLayer = null;
       }
 
@@ -646,6 +656,61 @@
 
     // Allows the widget to react to option changes. Any custom behaviors
     // can be configured here.
+    _setOptions: function (options) {
+      let old_options = Object.assign({}, this.options);
+      this._super(options);
+      if (this.options.county !== old_options.county) {
+        this._countySelected();
+      }
+      if (this.options.extent !== old_options.extent && this.options.extent !== null) {
+        this.view.goTo(new this.dojoMods.Extent(this.options.extent));
+      }
+      else if (this.options.center !== old_options.center && this.options.center !== null) {
+        this.options.extent = null;
+        this.view.goTo({center: new this.dojoMods.Point({latitude: this.options.center[0], longitude: this.options.center[1]}), zoom: this.options.zoom});
+      }
+      if (this.options.variable !== old_options.variable || this.options.season !== old_options.season) {
+        // Only a few variables allow for seasons
+        if (this.variables[this.options.variable]['seasonal_data']) {
+          this.options.season = this.options.season ? this.options.season : 'summer';
+        } else {
+          this.options.season = null;
+        }
+        // pcpn and dry days only show rcp45 vs rcp85 scenario
+        if (['pcpn', 'days_dry_days'].includes(this.options.variable)) {
+          if (this.options.leftScenario !== 'rcp45') {
+            if (!this.options.rcp45Years.includes(this.options.leftYear)) {
+              this.options.leftYear = this.options.rightYear
+            }
+            this._setOption('leftScenario', 'rcp45');
+          } else {
+            this._updateLeftScenarioLayer();
+          }
+          if (this.options.rightScenario !== 'rcp85') {
+            this._setOption('rightScenario', 'rcp85');
+          } else {
+            this._updateRightScenarioLayer();
+          }
+          this._setOption('disableScenarioSelection', true);
+        }
+        else if (['pcpn', 'days_dry_days'].includes(old_options.variable)) {
+          this._setOption('disableScenarioSelection', false);
+          this.options.leftYear = 'avg';
+          this._setOption('leftScenario', 'historical');
+          if (this.options.rightScenario !== 'rcp85') {
+            this._setOption('rightScenario', 'rcp85');
+          } else {
+            this._updateRightScenarioLayer();
+          }
+
+        }
+        this._updateLegend();
+        this._updateOverlay();
+      }
+      this._trigger('change', null, this.options);
+      return this;
+    },
+
     _setOption: function (key, value) {
       let oldValue = this.options[key];
       // This will actually update the value in the options hash
@@ -672,7 +737,10 @@
         case "leftScenario":
           if (value !== oldValue) {
             if (!this._getLeftOptions().years.includes(this.options.leftYear)) {
-              this.options.leftYear = this._getLeftOptions().years.slice(-1)[0]
+              this.options.leftYear = this.options.leftScenario === 'historical' ? 'avg' : this._getLeftOptions().years.slice(-1)[0];
+            }
+            if (this.nodes.$leftScenario.val() !== value) {
+              this.nodes.$leftScenario.val(value).trigger('change');
             }
             this._updateLeftScenarioLayer();
             this._updateLeftYearSlider();
@@ -683,6 +751,9 @@
             if (!this._getRightOptions().years.includes(this.options.rightYear)) {
               this.options.rightYear = this._getRightOptions().years.slice(-1)[0]
             }
+            if (this.nodes.$rightScenario.val() !== value) {
+              this.nodes.$rightScenario.val(value).trigger('change');
+            }
             this._updateRightScenarioLayer();
             this._updateRightYearSlider();
           }
@@ -692,6 +763,15 @@
           this._whenDojoLoaded().then(this._updateCountiesLayer.bind(this)).then(function (layer) {layer.visible = value});
 
           break;
+        case "disableScenarioSelection":
+          if (this.options.disableScenarioSelection ){
+            this.nodes.$leftScenario.dropdown("disable", 1);
+            this.nodes.$rightScenario.dropdown("disable",1);
+          }
+          else {
+            this.nodes.$leftScenario.dropdown("enable", 1);
+            this.nodes.$rightScenario.dropdown("enable", 1);
+          }
       }
     },
     _updateLeftYearSlider: function () {
@@ -701,7 +781,7 @@
       if (this.nodes.$leftYearTooltip === undefined) {
         this.nodes.$leftYearTooltip = $('<span class="tooltip"></span>').hide();
       }
-      if (this.options.leftYear === 'avg' && this.options.leftScenario === 'historical') {
+      if (this.options.leftYear === 'avg') {
         this.nodes.$leftYearTooltip.text("1961-1990 Average");
       } else {
         this.nodes.$leftYearTooltip.text(this.options.leftYear);
@@ -715,10 +795,10 @@
         min: min,
         max: max,
         step: 10,
-        value: this.options.leftYear === 'avg' && this.options.leftScenario === 'historical' ? 2010 : this.options.leftYear,
+        value: this.options.leftYear === 'avg' ? 2010 : this.options.leftYear,
         slide: function (event, ui) {
           if (ui.value === 2010 && this.options.leftScenario === 'historical') {
-            this.nodes.$leftYearTooltip.text(this.options.historicalYears[0] + "-" + this.options.historicalYears.slice(-1)[0] + " Average");
+            this.nodes.$leftYearTooltip.text("1961-1990 Average");
           } else {
             this.nodes.$leftYearTooltip.text(ui.value);
           }
@@ -793,41 +873,21 @@
         tilesTMS: this.options[this.options.rightScenario + 'TilesTMS']
       };
     },
-    _setOptions: function (options) {
-      let old_options = Object.assign({}, this.options);
-      this._super(options);
-      if (this.options.county !== old_options.county) {
-        this._countySelected();
-      }
-      if (this.options.extent !== old_options.extent && this.options.extent !== null) {
-        this.view.goTo(new this.dojoMods.Extent(this.options.extent));
-      }
-      else if (this.options.center !== old_options.center && this.options.center !== null) {
-        this.options.extent = null;
-        this.view.goTo({center: new this.dojoMods.Point({latitude: this.options.center[0], longitude: this.options.center[1]}), zoom: this.options.zoom});
-      }
-      if (this.options.variable !== old_options.variable || this.options.season !== old_options.season) {
-        this._updateScenarioLayers();
-        this._updateLegend();
-        this._updateOverlay();
-      }
-      this._trigger('change', null, this.options);
-      return this;
-    },
+
     _updateLegend: function () {
       let legendFilename = this.variables[this.options.variable]['seasonal_data'] ? 'summer_' + this.options.variable : this.options.variable;
       this.nodes.$legendContainer.html('<img class="legend-image" src="/resources/img/legends/' + legendFilename + '.png">')
     },
 
     _updateOverlay: function () {
-      if (typeof this.options.county === 'undefined' || this.options.county === null){
-        if (typeof this.nodes.$countyOverlay !== 'undefined' ){
+      if (typeof this.options.county === 'undefined' || this.options.county === null) {
+        if (typeof this.nodes.$countyOverlay !== 'undefined') {
           delete this['cwg'];
           this.nodes.$countyOverlay.remove();
         }
         return
       }
-      if (this.nodes.$countyOverlay !== undefined && this.nodes.$countyOverlay !== null){
+      if (this.nodes.$countyOverlay !== undefined && this.nodes.$countyOverlay !== null) {
 
       }
       this.nodes.$countyOverlay = $(`<div class="county-overlay">
@@ -976,13 +1036,17 @@
       if (scenario === 'historical') {
         scenario = 'hist'
       }
-      if (!['tmin', 'tmax', 'pcpn'].includes(this.options.variable)) {
+      let variable = this.options.variable;
+      if (this.options.variable === 'days_dry_days') {
+        variable = 'dry_days';
+      }
+      if (!['tmin', 'tmax', 'pcpn'].includes(variable)) {
         season = 'annual'
       }
       return tilesURL
         .replace('{scenario}', scenario)
         .replace('{season}', season)
-        .replace('{variable}', this.options.variable)
+        .replace('{variable}', variable)
         .replace('{year}', year)
     },
     _destroy: function () {

@@ -188,18 +188,9 @@
       updateAboutLink(variableTitle, variable.split('.')[0]);
 
       $(".level-1").html(variableTitle);
-      //dry days only show rcp45 vs rcp85 scenario
-      if (variable === 'pcpn' || variable === 'days_dry_days') {
-        window.scenariosMap.scenarioComparisonMap({
-          variable: variable,
-          leftScenario: 'rcp45',
-          rightScenario: 'rcp85',
-          disableScenarioSelection: true
-        });
-      }
-      else {
-        window.scenariosMap.scenarioComparisonMap({variable: variable, disableScenarioSelection: false});
-      }
+
+      window.scenariosMap.scenarioComparisonMap({variable: variable});
+
       if (window.scenariosMap.scenarioComparisonMap('getShowSeasonControls')) {
         $('#map-seasons-container').show(200)
       } else {
