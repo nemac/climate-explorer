@@ -95,8 +95,9 @@
       rcp45Years: [2010, 2020, 2030, 2040, 2050, 2060, 2070, 2080, 2090],
       rcp85Years: [2010, 2020, 2030, 2040, 2050, 2060, 2070, 2080, 2090],
       showCounties: true,
+      defaultExtent: {xmin: -119, xmax: -73, ymin: 18, ymax: 54},
       //extent provides the initial view area of the map.
-      extent: {xmin: -119, xmax: -73, ymin: 18, ymax: 54},
+      extent: null,
       //zoom and center are ignored if extent is provided.
       zoom: null, // Ex: 5
       center: null, // Ex: [-98.21, 37.42]
@@ -340,10 +341,14 @@
         basemap: 'topo'
       });
 
+      if ((undefined === this.options.extent || null === this.options.extent) && (undefined === this.options.center || null === this.options.center)){
+        this.options.extent = this.options.defaultExtent;
+      }
       this.view = new this.dojoMods.MapView({
         container: this.nodes.mapContainer,
         map: this.map,
-        zoom: this.options.zoom,
+        zoom:  this.options.zoom,
+        // center: this.options.extent ? null : this.dojoMods.webMercatorUtils.lngLatToXY(this.options.center[0],this.options.center[1]),
         center: this.options.extent ? null : this.options.center,
         extent: this.options.extent ? this.dojoMods.webMercatorUtils.geographicToWebMercator(new this.dojoMods.Extent(this.options.extent)) : null,
         constraints: {

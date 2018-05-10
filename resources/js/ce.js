@@ -320,7 +320,7 @@ especially when it comes to interacting with the DOM and handling events.
         zoom: 'zoom'
       });
       if (state.lat && state.lon) {
-        state.center = [state.lat, state.lon]
+        state.center = [ state.lon, state.lat]
       }
       if (state.extent) {state.extent = this._extentToObject(state.extent);}
 
@@ -363,8 +363,12 @@ especially when it comes to interacting with the DOM and handling events.
         city: 'city',
         fips: 'fips',
         extent: 'extent',
+        lat: 'lat',
+        lon: 'lon',
         zoom: 'zoom'
       });
+      if (state.lat && state.lon) { state.center = [state.lon,state.lat] }
+
       if (state.county) { state.county = state.county.replace(/\+/g, ' '); }
       if (state.city) { state.city = state.city.replace(/\+/g, ' '); }
       if (state.extent) state.extent = this._extentToObject(state.extent);

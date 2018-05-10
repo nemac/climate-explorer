@@ -25,7 +25,7 @@ $(function () {
         variable: activeVariableTemperature,
         extent: window.ce.ce('getLocationPageState')['extent'],
         center: window.ce.ce('getLocationPageState')['center'],
-        zoom: window.ce.ce('getLocationPageState')['zoom'],
+        zoom: window.ce.ce('getLocationPageState')['zoom'] || 9,
         layersloaded: function () {
           $('#temperature-map').spinner('destroy');
         }
