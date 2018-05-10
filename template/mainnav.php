@@ -157,19 +157,19 @@ $stations_content = array(
     'variable' => 'daily_vs_climate',
     'name' => 'Daily vs. Climate',
     'overlayname' => 'What does <u>Daily vs. Climate</u> tell us?',
-    'detail' => 'These graphs compare daily temperature ranges and precipitation totals at observing stations to long-term averages. Users can identify when and by how much daily conditions at each station differed from long-term averages (Climate Normals) calculated from the previous three decades.'
+    'detail' => 'Graphs for individual observing stations let you compare daily temperatures and precipitation totals to long-term averages. The graphs show when and by how much daily conditions differ from Climate Normals, values that are calculated from observations over the previous three decades.'
   ),
   array(
     'variable' => 'thresholds',
     'name' => 'Thresholds',
     'overlayname' => 'What do <u>Thresholds</u> tell us?',
-    'detail' => 'The phrases “too hot” and “too much rain” mean different things to different people. This interface lets users select a station and set their own threshold value for temperature or precipitation: results show how often that value has been exceeded per year.</p><p>For example, it may be “too hot” for herds of cattle when temperatures exceed 95°F. A city could have “too much rain”  if flooding occurs whenever they receive more than 3 inches of rain over two days.</p><p>Knowing how often thresholds have been reached or exceeded in the past can help users estimate how frequently the same thresholds may be crossed in the future.'
+    'detail' => 'The phrases “too hot” and “too much rain” mean different things in different situations. This interface lets you select a station and set your own threshold value for temperature or precipitation: results show how often that value has been exceeded per year.</p><p>For example, it may be “too hot” for herds of cattle when temperatures exceed 95°F. A city could have “too much rain” if flooding occurs every time they receive 3 inches of rain over two days.</p><p>Knowing how often thresholds have been reached or exceeded in the past can give you an idea of how frequently the same thresholds may be crossed in the future.'
   ),
   array(
     'variable' => 'high_tide_flooding',
-    'name' => ' Days with High Tide Flooding',
+    'name' => ' What do Days with High-tide Flooding tell us?',
     'overlayname' => 'What do <u>Days with High Tide Flooding</u> tell us?',
-    'detail' => 'The annual number of days when local sea level rises above locally identified thresholds for flooding, in the absence of storm surge or riverine flooding, reflects increases in global sea level.</p><p>At each of the stations shown, local emergency managers have identified flooding thresholds related to impacts such as inundation of low-lying roads or seawater infiltration into stormwater systems. Historical counts and future projections are currently available for 28 cities.'
+    'detail' => 'The number of days per year when local sea level rises above the identified threshold for flooding—without storm surge or riverine flooding—reflects increases in global sea level.</p><p>At each of the tidal gauge stations on the map, local emergency managers have identified a flooding threshold related to impacts such as inundation of low-lying roads or seawater pouring into stormwater systems. Threshold heights for flooding at each station are expressed as distances above the average daily highest water level from 1983 to 2001, also known as mean higher high water (MHHW).'
   )); ?>
 
 <nav id="nav-overlay" class="overlay">
