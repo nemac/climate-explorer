@@ -941,7 +941,7 @@
       </div>
     </div>
     <div class="range">
-      <div class="slider-range"></div>
+      <div id="slider-range" class="slider-range"></div>
       <div class="ui-slider-label range-label min" id="range-low">1950</div>
       <div class="ui-slider-label range-label max" id="range-high">2100</div>
     </div>
@@ -966,7 +966,7 @@
         dataprefix: "/climate-explorer2-data/data",
         font: "Roboto",
         frequency: "annual",
-        county: this.options.county.geo_id.slice(-5),
+        county: this.options.county.slice(-5),
         variable: this.options.variable,
         scenario: "both",
         pmedian: "true",
@@ -1009,16 +1009,8 @@
       this.nodes.$countyOverlay.find('.download-dismiss-button').click(function (event) {this.nodes.$countyOverlay.find('.download-panel').addClass("hidden").hide(); }.bind(this));
 
       $('.how-to-read').on('click', function () {
-        var pre = '';
-        var closest = $(this).closest('.data-chart').attr('id');
-        if (closest === 'precipitation-chart') {
-          pre = 'precip-';
-        }
-        if (closest === 'derived-chart') {
-          pre = 'derive-';
-        }
         if (window.app) {
-          window.app.takeGraphTour(pre);
+          window.app.takeAnnualGraphTour('');
         }
       });
 

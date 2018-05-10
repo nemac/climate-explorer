@@ -7930,18 +7930,18 @@ body.detail-open #nav-overlay {
   z-index: 100;
 }
 
-/* line 237, resources/scss/pages/_variable.scss */
+/* line 236, resources/scss/pages/_variable.scss */
 .esri-scale-bar.esri-widget {
   margin-bottom: 45px;
 }
 
-/* line 240, resources/scss/pages/_variable.scss */
+/* line 239, resources/scss/pages/_variable.scss */
 .legend-image {
   max-height: 16rem;
   max-width: none;
 }
 
-/* line 245, resources/scss/pages/_variable.scss */
+/* line 243, resources/scss/pages/_variable.scss */
 .scenario-map-overlay-container {
   position: absolute;
   height: 100%;
@@ -7949,12 +7949,12 @@ body.detail-open #nav-overlay {
   pointer-events: none;
 }
 
-/* line 250, resources/scss/pages/_variable.scss */
+/* line 248, resources/scss/pages/_variable.scss */
 .scenario-map-overlay-container > * {
   pointer-events: auto;
 }
 
-/* line 251, resources/scss/pages/_variable.scss */
+/* line 249, resources/scss/pages/_variable.scss */
 .scenario-map-overlay-container .movable {
   position: absolute;
   top: 0;
@@ -7968,7 +7968,7 @@ body.detail-open #nav-overlay {
   cursor: col-resize;
 }
 
-/* line 263, resources/scss/pages/_variable.scss */
+/* line 261, resources/scss/pages/_variable.scss */
 .scenario-map-overlay-container .movable .handle {
   display: block;
   position: absolute;
@@ -7984,7 +7984,7 @@ body.detail-open #nav-overlay {
   background: url(../img/swipe-arrows-stripe.png) center center rgba(34, 105, 179, 0.87);
 }
 
-/* line 275, resources/scss/pages/_variable.scss */
+/* line 273, resources/scss/pages/_variable.scss */
 .scenario-map-overlay-container .left-scenario-controls {
   position: absolute;
   bottom: 20px;
@@ -7992,7 +7992,7 @@ body.detail-open #nav-overlay {
   max-width: 45%;
 }
 
-/* line 281, resources/scss/pages/_variable.scss */
+/* line 279, resources/scss/pages/_variable.scss */
 .scenario-map-overlay-container .right-scenario-controls {
   position: absolute;
   bottom: 20px;
@@ -8000,12 +8000,12 @@ body.detail-open #nav-overlay {
   max-width: 45%;
 }
 
-/* line 286, resources/scss/pages/_variable.scss */
+/* line 284, resources/scss/pages/_variable.scss */
 .scenario-map-overlay-container .right-scenario-controls .right-scenario-dropdown, .scenario-map-overlay-container .right-scenario-controls .year {
   float: right;
 }
 
-/* line 290, resources/scss/pages/_variable.scss */
+/* line 288, resources/scss/pages/_variable.scss */
 .scenario-map-overlay-container .left-scenario-dropdown, .scenario-map-overlay-container .right-scenario-dropdown {
   width: 200px;
   width: 16rem;
@@ -8014,7 +8014,7 @@ body.detail-open #nav-overlay {
   float: left;
 }
 
-/* line 297, resources/scss/pages/_variable.scss */
+/* line 295, resources/scss/pages/_variable.scss */
 .scenario-map-overlay-container .left-scenario-dropdown .dropdown, .scenario-map-overlay-container .right-scenario-dropdown .dropdown {
   display: block;
   text-align: center;
@@ -8026,7 +8026,7 @@ body.detail-open #nav-overlay {
   border: solid #ffffff 1px;
 }
 
-/* line 309, resources/scss/pages/_variable.scss */
+/* line 307, resources/scss/pages/_variable.scss */
 .scenario-map-overlay-container .year {
   float: left;
   max-width: 100%;
@@ -8041,12 +8041,12 @@ body.detail-open #nav-overlay {
   transition: 0.25s;
 }
 
-/* line 319, resources/scss/pages/_variable.scss */
+/* line 317, resources/scss/pages/_variable.scss */
 .scenario-map-overlay-container .year:hover {
   background: rgba(255, 255, 255, 0.9);
 }
 
-/* line 323, resources/scss/pages/_variable.scss */
+/* line 321, resources/scss/pages/_variable.scss */
 .scenario-map-overlay-container .year .ui-slider {
   top: 20px;
   left: 15%;
@@ -8054,7 +8054,7 @@ body.detail-open #nav-overlay {
   max-width: calc(100% - 7rem);
 }
 
-/* line 328, resources/scss/pages/_variable.scss */
+/* line 326, resources/scss/pages/_variable.scss */
 .scenario-map-overlay-container .year .ui-slider .ui-slider-handle {
   top: -14px;
   width: 36px;
@@ -8071,14 +8071,14 @@ body.detail-open #nav-overlay {
   box-shadow: 0 0 4px rgba(0, 88, 207, 0.25);
 }
 
-/* line 341, resources/scss/pages/_variable.scss */
+/* line 339, resources/scss/pages/_variable.scss */
 .scenario-map-overlay-container .year .ui-slider .ui-slider-handle:hover {
   -webkit-box-shadow: 0 0 7px rgba(0, 88, 207, 0.4);
   -moz-box-shadow: 0 0 7px rgba(0, 88, 207, 0.4);
   box-shadow: 0 0 7px rgba(0, 88, 207, 0.4);
 }
 
-/* line 347, resources/scss/pages/_variable.scss */
+/* line 345, resources/scss/pages/_variable.scss */
 .scenario-map-overlay-container .year .year-label {
   position: absolute;
   top: 13px;
@@ -8086,17 +8086,17 @@ body.detail-open #nav-overlay {
   text-align: center;
 }
 
-/* line 353, resources/scss/pages/_variable.scss */
+/* line 351, resources/scss/pages/_variable.scss */
 .scenario-map-overlay-container .year .year-label.year-min {
   left: 0;
 }
 
-/* line 357, resources/scss/pages/_variable.scss */
+/* line 355, resources/scss/pages/_variable.scss */
 .scenario-map-overlay-container .year .year-label.year-max {
   right: 0;
 }
 
-/* line 363, resources/scss/pages/_variable.scss */
+/* line 361, resources/scss/pages/_variable.scss */
 .county-overlay {
   padding: 2rem;
   background: #0058cf;
@@ -8110,12 +8110,22 @@ body.detail-open #nav-overlay {
   color: white;
 }
 
-/* line 370, resources/scss/pages/_variable.scss */
+/* line 368, resources/scss/pages/_variable.scss */
 .county-overlay .county-overlay-inner {
   max-width: 900px;
 }
 
-/* line 374, resources/scss/pages/_variable.scss */
+/* line 372, resources/scss/pages/_variable.scss */
+.county-overlay .county-overlay-close {
+  position: absolute;
+  top: 10px;
+  right: 25px;
+  font-size: 2rem;
+  color: #ffffff;
+  cursor: pointer;
+}
+
+/* line 381, resources/scss/pages/_variable.scss */
 .county-overlay header {
   position: relative !important;
   background-color: transparent !important;
@@ -8132,12 +8142,12 @@ body.detail-open #nav-overlay {
   clear: both;
 }
 
-/* line 378, resources/scss/pages/_variable.scss */
+/* line 385, resources/scss/pages/_variable.scss */
 .county-overlay header a {
   color: white;
 }
 
-/* line 380, resources/scss/pages/_variable.scss */
+/* line 387, resources/scss/pages/_variable.scss */
 .county-overlay .data-accordion-actions {
   float: none;
   position: inherit;
@@ -8155,44 +8165,44 @@ body.detail-open #nav-overlay {
   clear: both;
 }
 
-/* line 385, resources/scss/pages/_variable.scss */
+/* line 392, resources/scss/pages/_variable.scss */
 .county-overlay .data-accordion-actions .how-to-read {
   position: inherit;
   float: left;
 }
 
-/* line 389, resources/scss/pages/_variable.scss */
+/* line 396, resources/scss/pages/_variable.scss */
 .county-overlay .data-accordion-actions .download-data, .county-overlay .data-accordion-actions .download-image {
   float: right;
 }
 
-/* line 392, resources/scss/pages/_variable.scss */
+/* line 399, resources/scss/pages/_variable.scss */
 .county-overlay .data-accordion-actions a {
   color: white !important;
 }
 
-/* line 393, resources/scss/pages/_variable.scss */
+/* line 400, resources/scss/pages/_variable.scss */
 .county-overlay .data-accordion-actions a .icon {
   color: white !important;
 }
 
-/* line 397, resources/scss/pages/_variable.scss */
+/* line 404, resources/scss/pages/_variable.scss */
 .county-overlay .range {
   position: relative;
   margin-top: 35px;
 }
 
-/* line 398, resources/scss/pages/_variable.scss */
+/* line 405, resources/scss/pages/_variable.scss */
 .county-overlay .range .range-label {
   color: white;
 }
 
-/* line 399, resources/scss/pages/_variable.scss */
+/* line 406, resources/scss/pages/_variable.scss */
 .county-overlay .range .ui-slider {
   position: relative;
 }
 
-/* line 401, resources/scss/pages/_variable.scss */
+/* line 408, resources/scss/pages/_variable.scss */
 .county-overlay .legend-item {
   background: rgba(255, 255, 255, 0.3);
 }

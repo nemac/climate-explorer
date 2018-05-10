@@ -233,7 +233,6 @@
 .esri-view-width-greater-than-xsmall .esri-expand__content {
   z-index: 100;
 }
-
 .esri-scale-bar.esri-widget {
   margin-bottom: 45px;
 }
@@ -241,7 +240,6 @@
   max-height: 16rem;
   max-width: none;
 }
-
 .scenario-map-overlay-container {
   position: absolute;
   height: 100%;
@@ -308,7 +306,7 @@
 
   .year {
     float: left;
-    max-width:100%;
+    max-width: 100%;
     position: relative;
     width: 23rem;
     height: 50px;
@@ -370,6 +368,15 @@
   .county-overlay-inner {
     //margin: 0 auto;
     max-width: 900px;
+  }
+  .county-overlay-close {
+    position: absolute;
+    top: 10px;
+    right: 25px;
+    font-size: 2rem;
+    color: $white;
+    cursor: pointer;
+
   }
   header {
     @include clearfix;
