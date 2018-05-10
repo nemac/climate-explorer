@@ -110,7 +110,7 @@
                                                                                                           class="icon icon-help nav-detail-link"></a></h4>
               <ul class="location-resolution">
                 <li class="active accent-border"><a class="accent-color">Annual</a></li>
-<!--                <li class="seasonal-monthly"><a>Monthly</a></li>-->
+                <li class="seasonal-monthly"><a>Monthly</a></li>
 <!--                <li class="seasonal-monthly"><a>Seasonal</a></li>-->
               </ul>
             </li>
@@ -120,7 +120,7 @@
                                                                                                           class="icon icon-help nav-detail-link"></a></h4>
               <ul class="location-resolution">
                 <li><a>Annual</a></li>
-<!--                <li class="seasonal-monthly"><a>Monthly</a></li>-->
+                <li class="seasonal-monthly"><a>Monthly</a></li>
 <!--                <li class="seasonal-monthly"><a>Seasonal</a></li>-->
               </ul>
             </li>
@@ -200,7 +200,7 @@
               <label for="frequency">Frequency</label>
               <select id="frequency" class="u-full-width">
                 <option value="annual" selected="selected">Annual</option>
-<!--                <option value="monthly">Monthly</option>-->
+                <option value="monthly">Monthly</option>
 <!--                <option value="seasonal">Seasonal</option>-->
               </select>
             </div>
@@ -381,7 +381,7 @@
                                                                                                class="icon icon-help nav-detail-link"></a></h4>
               <ul class="location-resolution">
                 <li class="active accent-border"><a class="accent-color">Annual</a></li>
-<!--                <li class="seasonal-monthly"><a>Monthly</a></li>-->
+                <li class="seasonal-monthly"><a>Monthly</a></li>
 <!--                <li class="seasonal-monthly"><a>Seasonal</a></li>-->
               </ul>
             </li>
@@ -431,7 +431,7 @@
               <label for="precip-frequency">Frequency</label>
               <select id="precip-frequency" class="u-full-width">
                 <option value="annual" selected="selected">Annual</option>
-<!--                <option value="monthly">Monthly</option>-->
+                <option value="monthly">Monthly</option>
 <!--                <option value="seasonal">Seasonal</option>-->
               </select>
             </div>
@@ -656,7 +656,7 @@
               <label for="derived-frequency">Frequency</label>
               <select id="derived-frequency" class="u-full-width">
                 <option value="annual" selected="selected">Annual</option>
-<!--                <option value="monthly">Monthly</option>-->
+                <option value="monthly">Monthly</option>
 <!--                <option value="seasonal">Seasonal</option>-->
               </select>
             </div>
