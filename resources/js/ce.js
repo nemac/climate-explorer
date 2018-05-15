@@ -205,13 +205,20 @@ especially when it comes to interacting with the DOM and handling events.
 
     // Replaces specified URL param with the passed value
     setUrlParam: function (key, value) {
-      var params = decodeURIComponent(window.location.search.substring(1)).split("&"),
+      var currentParams = window.location.search.substring(1),
+        newParams,
+        params = decodeURIComponent(currentParams).split("&"),
         param,
         href = window.location.href.split("?")[0],
         paramExists = false,
         i, l;
 
       if (window.hasOwnProperty("history") === false || window.history.replaceState === false) return;
+
+      if (value === null || value === undefined || value === false) {
+          this.removeUrlParam(key);
+          return;
+      }
 
       for (i = 0, l = params.length; i < l; i++) {
         if (params[i] === "") {
@@ -235,7 +242,10 @@ especially when it comes to interacting with the DOM and handling events.
         params.push(encodeURIComponent(key) + "=" + encodeURIComponent(value));
       }
 
-      window.history.replaceState({}, "", href + "?" + params.join("&"));
+      newParams = params.join("&");
+      if (newParams !== currentParams) {
+        window.history.replaceState({}, "", href + "?" + newParams);
+      }
       this.updateSharing();
       this.updateBreadcrumbs();
     },
@@ -260,7 +270,9 @@ especially when it comes to interacting with the DOM and handling events.
         newParams.push(encodeURIComponent(param[0]) + "=" + encodeURIComponent(param[1]));
       }
 
-      window.history.replaceState({}, "", href + "?" + newParams.join("&"));
+      if (params.length !== newParams.length) {
+        window.history.replaceState({}, "", href + "?" + newParams.join("&"));
+      }
     },
 
     _extentToString: function (extent) {
