@@ -584,7 +584,7 @@
                       <option value="spring">April (Spring)</option>
                     </select>
                   </div>
-                  <a href="/variables/?id=pr" class="full-map-btn button bg-white color-orange arrow-right">View full map</a>
+                  <a href="/variables/?id=pcpn" class="full-map-btn button bg-white color-orange arrow-right">View full map</a>
 
 
                 </div>
