@@ -10,7 +10,7 @@
     "js:build": "mkdir -p dist/resources && cp -rf resources/js resources/vendor dist/resources/",
     "html:pages": "echo \"index,location,stations,variables,error,faq,definitions,credits,about,404\"",
     "html:build": "export IFS=','; mkdir -p dist; htmlpages=$(npm run html:pages --silent); for f in $htmlpages; do echo $f && php-cgi -q ${f}.php > dist/${f}.html && mkdir -p dist/${f} && cp -f dist/${f}.html dist/${f}/index.html; done;",
-    "download:build": "mkdir -p dist/downloads && cp -rf resources/downloads/* dist/downloads/",
+    "download:build": "mkdir -p dist/resources/downloads && cp -rf resources/downloads/* dist/resources/downloads/",
 
     "css:build": "node-sass -o resources/css/ resources/scss/screen.scss --include-path node_modules/compass-mixins/lib/ --output-style expanded --source-comments && mkdir -p dist/resources && cp -rf resources/fonts resources/css dist/resources/",
     "css:watch": "node-sass -o resources/css/ resources/scss/screen.scss --include-path node_modules/compass-mixins/lib/ --output-style expanded --source-comments -wr",
