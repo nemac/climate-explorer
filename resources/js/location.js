@@ -26,6 +26,7 @@ $(function () {
         extent: window.ce.ce('getLocationPageState')['extent'],
         center: window.ce.ce('getLocationPageState')['center'],
         zoom: window.ce.ce('getLocationPageState')['zoom'] || 9,
+        showCounties: false,
         layersloaded: function () {
           $('#temperature-map').spinner('destroy');
         }
@@ -42,6 +43,7 @@ $(function () {
       $('#precipitation-map').spinner();
       window.precipitationScenariosMap = $('#precipitation-map').scenarioComparisonMap({
         variable: activeVariablePrecipitation,
+        showCounties: false,
         layersloaded: function () {
           $('#precipitation-map').spinner('destroy');
         }
@@ -58,6 +60,7 @@ $(function () {
       $('#derived-map').spinner();
       window.derivedScenariosMap = $('#derived-map').scenarioComparisonMap({
           variable: ['hdd', 'cdd'].includes(activeVariableDerived) ? activeVariableDerived + '_65f' : activeVariableDerived,
+        showCounties: false,
           layersloaded: function () {
             $('#derived-map').spinner('destroy');
           }

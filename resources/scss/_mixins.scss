@@ -5,16 +5,6 @@
   -moz-osx-font-smoothing: grayscale;
 }
 
-@mixin all-caps {
-  text-decoration: none;
-  text-transform: uppercase;
-  letter-spacing: 4px;
-}
-
-@mixin undo-all-caps {
-  text-transform: none;
-  letter-spacing: normal;
-}
 
 @mixin no-text {
   font-size: 0;

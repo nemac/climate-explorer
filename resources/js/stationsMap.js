@@ -376,16 +376,6 @@
         this.dailyStationsLayer = layer;
         this._MapInitPromise.then(function () {
           this.map.add(this.dailyStationsLayer);
-          // this.view.on("pointer-move", function(event){
-          //   this.view.hitTest(event)
-          //     .then(function(response){
-          //       // check if a feature is returned from the hurricanesLayer
-          //       // do something with the result graphic
-          //      if (response){
-          //
-          //      }
-          //     });
-          // }.bind(this));
           this.view.on("click", function (event) {
             this.view.hitTest(event)
               .then(function (response) {
@@ -611,7 +601,7 @@
                 <div id="station-overlay-close">x</div>
                 <div id="station-overlay-header">
                   <h3 class="accent-color" style="margin-bottom: 20px;"><span class="icon icon-district"></span>Weather Station</h3>
-                  <h5>Name: ${this.options.stationName}</h5>
+                  <h5>Name: ${this.options.stationName}, ${this.options}</h5>
                   <h5>Station ID: ${this.options.stationId}</h5>
                 </div>
                 <div id="multi-chart" class="left_chart"></div>
@@ -619,6 +609,12 @@
                 <div style="clear:both"></div>
                 <div id="overlay-chart-container">
                   <div class="station_overlay_text">
+                  <p class="text-bold">Pan or zoom on these graphs to view other years. Place your cursor on either axis and then scroll, click-and-drag, or hold down your SHIFT key and scroll to adjust the display.</p>
+                  <p>Blue bars on temperature graphs indicate the range of observed temperatures for each day; the green band shows Climate Normals for temperature—the average temperature range at that station from 1981-2010. Blue areas on precipitation graphs track year-to-date cumulative precipitation; the black line shows Climate Normals for precipitation. Data from <a href="https://www.ncdc.noaa.gov/data-access/land-based-station-data/land-based-datasets/global-historical-climatology-network-ghcn">Global Historical Climatology Network-Daily dataset</a>, served by  <a href="http://www.rcc-acis.org/">ACIS</a>.</p>
+          
+
+                  
+                  
                     <p style="font-weight:bold">Scroll, click-and-drag, or hold down your SHIFT key to scroll on either graph or axis to view more years or adjust the
                       display.</p>
                     <p>Blue bars on temperature graphs indicate the full range of observed temperatures for each day; the green band shows the average temperature range from 1981-2010. Comparing the two makes it easy to spot periods of above- and below-normal temperature. Green areas on precipitation graphs track year-to-date cumulative precipitation. Comparing observed precipitation to normal year-to-date totals (the black line) shows whether each season received above-, below-, or near-normal amounts of precipitation. Vertical portions of the year-to-date precipitation line show days when precipitation occurred. Data are from stations in the Global Historical Climatology Network-Daily dataset, compiled by the National Centers for Environmental Information and served by ACIS.</p>
@@ -667,7 +663,7 @@
               <div id="overlay-thresholds-container">
                 <div id="thresholds-container"></div>
                 <div class="station_overlay_text">
-                  <p style="width:65%!important;margin-left:200px;">This graph shows how often the selected threshold has been exceeded per year. To limit the tool to show to years with solid data records, we excluded years that are missing more than five daily temperature reports in a single month, or more than one precipitation report in a single month. Data are from stations in the Global Historical Climatology Network-Daily dataset, compiled by the National Centers for Environmental Information, and served by ACIS.</p>
+                  <p style="width:65%!important;margin-left:200px;">This graph shows how often the selected threshold has been exceeded per year. For consistency, this chart excludes any years that are missing more than five daily temperature reports or more than one precipitation report in a single month. Data from <a href="https://www.ncdc.noaa.gov/data-access/land-based-station-data/land-based-datasets/global-historical-climatology-network-ghcn">Global Historical Climatology Network</a>, served by <a href="http://www.rcc-acis.org/">ACIS</a>.</p>
                 </div>
               </div>
             </div>
@@ -796,8 +792,7 @@
                 <div id="overlay-chart-container">
                   <div id="tidal-chart"></div>
                   <div class="station_overlay_text">
-                    <p>Gray bars show annual counts of high-tide flooding in the past. Red and blue bars show projections of the average number of high-tide flooding events
-                      in future years.</p>
+                    <p>Place your cursor over the annual bars on this graph for details. Gray bars from 1950 to 2016 show observed annual counts of high-tide flooding. Red and blue bars show the average number of high-tide flooding events projected for future years under two scenarios. Data from <a href="https://tidesandcurrents.noaa.gov/publications/techrpt86_PaP_of_HTFlooding.pdf">NOAA Technical Report NOS CO-OPS 086 - Patterns and Projections of High Tide Flooding</a>.</p>
                   </div>
                 </div>
               </div>`

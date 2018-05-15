@@ -82,18 +82,14 @@
     options: {
       state: null,
       county: null,
-      variable: 'tmax',
-      season: 'summer',
-      leftScenario: 'historical', // 'historical', 'rcp85','rcp45'
-      rightScenario: 'rcp85', // 'historical', 'rcp85','rcp45'
-      disableScenarioSelection: false,
-      leftYear: 'avg', //1950 - 2100
-      rightYear: 2090, //1950 - 2100
+      variable: 'tmax', //required
+      season: null,
+      leftScenario: null, // 'historical', 'rcp85','rcp45'
+      rightScenario: null, // 'historical', 'rcp85','rcp45'
+      leftYear: null, //1950 - 2100
+      rightYear: null, //1950 - 2100
       leftOpacity: 1,
       rightOpacity: 1,
-      historicalYears: [1950, 1960, 1970, 1980, 1990, 2000],
-      rcp45Years: [2010, 2020, 2030, 2040, 2050, 2060, 2070, 2080, 2090],
-      rcp85Years: [2010, 2020, 2030, 2040, 2050, 2060, 2070, 2080, 2090],
       showCounties: true,
       defaultExtent: {xmin: -119, xmax: -73, ymin: 18, ymax: 54},
       //extent provides the initial view area of the map.
@@ -104,27 +100,227 @@
       swipeX: null,
       // Additional elements
       legendContainerId: "legend-container",
-      // Map layers
-      historicalTilesURL: "https://s3.amazonaws.com/climate-explorer-bucket/tiles/{year}-{season}-hist-{variable}/{level}/{col}/{row}.png",
-      historicalTilesTMS: true,
-      rcp45TilesURL: "https://s3.amazonaws.com/climate-explorer-bucket/tiles/{year}-{season}-rcp45-{variable}/{level}/{col}/{row}.png",
-      rcp45TilesTMS: true,
-      rcp85TilesURL: "https://s3.amazonaws.com/climate-explorer-bucket/tiles/{year}-{season}-rcp85-{variable}/{level}/{col}/{row}.png",
-      rcp85TilesTMS: true,
+      //Map reference layers
       statesLayerURL: '/resources/data/states.json',
       countiesLayerURL: '/resources/data/counties-20m.json',
       // Controls debug output
       // 0:off, 1:errors only, 2:errors and warnings, 3:everything
-      debug: 0,
+      debug: 3,
       logger: console,
       // built-in options
       disabled: false,
-      // if and how to animate the hiding of the element
-      // http://api.jqueryui.com/jQuery.widget/#option-hide
-      hide: null,
-      // likewise for show
-      // http://api.jqueryui.com/jQuery.widget/#option-show
-      show: null
+      scenarios: {
+        'historical': {
+          title: "Historical",
+          tilesURL: "https://s3.amazonaws.com/climate-explorer-bucket/tiles/{year}-{season}-hist-{variable}/{level}/{col}/{row}.png",
+          tilesTMS: true,
+          years: [
+            {value: '1950', label: '1950'},
+            {value: '1960', label: '1960'},
+            {value: '1970', label: '1970'},
+            {value: '1980', label: '1980'},
+            {value: '1990', label: '1990'},
+            {value: '2000', label: '2000'},
+            {value: 'avg', label: '1961-1990 Average'}
+          ],
+          defaultYear: 'avg'
+        },
+        'rcp45': {
+          title: 'Lower Emissions',
+          tilesURL: "https://s3.amazonaws.com/climate-explorer-bucket/tiles/{year}-{season}-rcp45-{variable}/{level}/{col}/{row}.png",
+          tilesTMS: true,
+          years: [
+            {value: '2010', label: '2010'},
+            {value: '2020', label: '2020'},
+            {value: '2030', label: '2030'},
+            {value: '2040', label: '2040'},
+            {value: '2050', label: '2050'},
+            {value: '2060', label: '2060'},
+            {value: '2070', label: '2070'},
+            {value: '2080', label: '2080'},
+            {value: '2090', label: '2090'}
+          ],
+          defaultYear: '2090'
+        },
+        'rcp85': {
+          title: 'Higher Emissions',
+          tilesURL: "https://s3.amazonaws.com/climate-explorer-bucket/tiles/{year}-{season}-rcp85-{variable}/{level}/{col}/{row}.png",
+          tilesTMS: true,
+          years: [
+            {value: '2010', label: '2010'},
+            {value: '2020', label: '2020'},
+            {value: '2030', label: '2030'},
+            {value: '2040', label: '2040'},
+            {value: '2050', label: '2050'},
+            {value: '2060', label: '2060'},
+            {value: '2070', label: '2070'},
+            {value: '2080', label: '2080'},
+            {value: '2090', label: '2090'}
+          ],
+          defaultYear: '2090'
+        }
+      },
+      variables: {
+        'tmax': {
+          title: 'Avg Daily Max Temp (°F)',
+          seasonal_data: true,
+          defaultConfig: {
+            leftScenario: 'historical',
+            rightScenario: 'rcp85',
+            season: 'summer'
+          }
+        },
+        'tmin': {
+          title: 'Avg Daily Min Temp (°F)',
+          seasonal_data: true,
+          defaultConfig: {
+            leftScenario: 'historical',
+            rightScenario: 'rcp85',
+            season: 'summer'
+          }
+        },
+        'days_tmax_gt_90f': {
+          title: 'Days w/ max > 90°F',
+          seasonal_data: false,
+          defaultConfig: {
+            leftScenario: 'historical',
+            rightScenario: 'rcp85',
+          }
+        },
+        'days_tmax_gt_95f': {
+          title: 'Days w/ max > 95°F',
+          seasonal_data: false,
+          defaultConfig: {
+            leftScenario: 'historical',
+            rightScenario: 'rcp85',
+          }
+        },
+        'days_tmax_gt_100f': {
+          title: 'Days w/ max > 100°F',
+          seasonal_data: false,
+          defaultConfig: {
+            leftScenario: 'historical',
+            rightScenario: 'rcp85',
+          }
+        },
+        'days_tmax_gt_105f': {
+          title: 'Days w/ max > 105°F',
+          seasonal_data: false,
+          defaultConfig: {
+            leftScenario: 'historical',
+            rightScenario: 'rcp85',
+          }
+        },
+
+        'days_tmax_lt_32f': {
+          title: 'Days w/ max < 32°F',
+          seasonal_data: false,
+          defaultConfig: {
+            leftScenario: 'historical',
+            rightScenario: 'rcp85',
+          }
+        },
+        'days_tmin_lt_32f': {
+          title: 'Days w/ min < 32°F',
+          seasonal_data: false,
+          defaultConfig: {
+            leftScenario: 'historical',
+            rightScenario: 'rcp85',
+          }
+        },
+
+        'days_tmin_gt_80f': {
+          title: 'Days w/ min > 80°F',
+          seasonal_data: false,
+          defaultConfig: {
+            leftScenario: 'historical',
+            rightScenario: 'rcp85',
+          }
+        },
+        'days_tmin_gt_90f': {
+          title: 'Days w/ min > 90°F',
+          seasonal_data: false,
+          defaultConfig: {
+            leftScenario: 'historical',
+            rightScenario: 'rcp85',
+          }
+        },
+        'pcpn': {
+          title: 'Total Precipitation',
+          seasonal_data: true,
+          defaultConfig: {
+            leftScenario: 'rcp45',
+            rightScenario: 'rcp85',
+            season: 'summer'
+          },
+          disabledScenarios: ['historical']
+        },
+        'days_pcpn_gt_1in': {
+          title: 'Days w/ > 1 in',
+          seasonal_data: false,
+          defaultConfig: {
+            leftScenario: 'historical',
+            rightScenario: 'rcp85',
+          }
+        },
+        'days_pcpn_gt_2in': {
+          title: 'Days w/ > 2 in',
+          seasonal_data: false,
+          defaultConfig: {
+            leftScenario: 'historical',
+            rightScenario: 'rcp85',
+          }
+        },
+        'days_pcpn_gt_3in': {
+          title: 'Days w/ > 3 in',
+          seasonal_data: false,
+          defaultConfig: {
+            leftScenario: 'historical',
+            rightScenario: 'rcp85',
+          }
+        },
+        'days_dry_days': {
+          title: 'Dry Days',
+          seasonal_data: false,
+          defaultConfig: {
+            leftScenario: 'rcp45',
+            rightScenario: 'rcp85',
+          },
+          disabledScenarios: ['historical']
+        },
+        'hdd_65f': {
+          title: 'Heating Degree Days',
+          seasonal_data: false,
+          defaultConfig: {
+            leftScenario: 'historical',
+            rightScenario: 'rcp85',
+          }
+        },
+        'cdd_65f': {
+          title: 'Cooling Degree Days',
+          seasonal_data: false,
+          defaultConfig: {
+            leftScenario: 'historical',
+            rightScenario: 'rcp85',
+          }
+        },
+        'gdd': {
+          title: 'Growing Degree Days',
+          seasonal_data: false,
+          defaultConfig: {
+            leftScenario: 'historical',
+            rightScenario: 'rcp85',
+          }
+        },
+        'gddmod': {
+          title: 'Mod. Growing Degree Days',
+          seasonal_data: false,
+          defaultConfig: {
+            leftScenario: 'historical',
+            rightScenario: 'rcp85',
+          }
+        }
+      },
     },
 
     // Dojo modules this widget expects to use.
@@ -135,18 +331,18 @@
       'esri/layers/support/Field',
       'esri/layers/WebTileLayer',
       'esri/layers/TileLayer',
-      'esri/renderers/SimpleRenderer',
+      // 'esri/renderers/SimpleRenderer',
       'esri/Graphic',
-      'esri/symbols/WebStyleSymbol',
+      // 'esri/symbols/WebStyleSymbol',
       'esri/symbols/SimpleFillSymbol',
       'esri/widgets/Legend',
       'esri/widgets/Expand',
-      'esri/widgets/OpacitySlider',
-      'esri/widgets/ColorSlider',
-      'esri/widgets/BasemapGallery',
+      // 'esri/widgets/OpacitySlider',
+      // 'esri/widgets/ColorSlider',
+      // 'esri/widgets/BasemapGallery',
       'esri/widgets/ScaleBar',
       'esri/geometry/SpatialReference',
-      'esri/layers/CSVLayer',
+      // 'esri/layers/CSVLayer',
       'esri/geometry/Extent',
       'esri/geometry/Point',
       'esri/geometry/Polygon',
@@ -155,28 +351,7 @@
       'esri/geometry/support/webMercatorUtils'
     ],
     // recreated in ce.js for the purposes of breadcrumbs
-    // todo: move to one central variable location
-    variables: {
-      'tmax': {title: 'Avg Daily Max Temp (°F)', seasonal_data: true},
-      'tmin': {title: 'Avg Daily Min Temp (°F)', seasonal_data: true},
-      'days_tmax_gt_90f': {title: 'Days w/ max > 90°F', seasonal_data: false},
-      'days_tmax_gt_95f': {title: 'Days w/ max > 95°F', seasonal_data: false},
-      'days_tmax_gt_100f': {title: 'Days w/ max > 100°F', seasonal_data: false},
-      'days_tmax_gt_105f': {title: 'Days w/ max > 105°F', seasonal_data: false},
-      'days_tmax_lt_32f': {title: 'Days w/ max < 32°F', seasonal_data: false},
-      'days_tmin_lt_32f': {title: 'Days w/ min < 32°F', seasonal_data: false},
-      'days_tmin_gt_80f': {title: 'Days w/ min > 80°F', seasonal_data: false},
-      'days_tmin_gt_90f': {title: 'Days w/ min > 90°F', seasonal_data: false},
-      'pcpn': {title: 'Total Precipitation', seasonal_data: true},
-      'days_pcpn_gt_1in': {title: 'Days w/ > 1 in', seasonal_data: false},
-      'days_pcpn_gt_2in': {title: 'Days w/ > 2 in', seasonal_data: false},
-      'days_pcpn_gt_3in': {title: 'Days w/ > 3 in', seasonal_data: false},
-      'days_dry_days': {title: 'Dry Days', seasonal_data: false},
-      'hdd_65f': {title: 'Heating Degree Days', seasonal_data: false},
-      'cdd_65f': {title: 'Cooling Degree Days', seasonal_data: false},
-      'gdd': {title: 'Growing Degree Days', seasonal_data: false},
-      'gddmod': {title: 'Mod. Growing Degree Days', seasonal_data: false}
-    },
+
 
     _dojoLoaded: function () {
       if (this.dojoMods === undefined) {
@@ -259,12 +434,30 @@
 
       this.nodes.mapContainer = this.element[0];
       this.nodes.stationOverlayContainer = $('#' + this.options.stationOverlayContainerId)[0];
-      this._initControlsOverlay();
+
+      this.options.variable = this.options.variable || 'tmax';
+      if (this.options.leftScenario === undefined || this.options.rightScenario === null || (this.options.variables[this.options.variable].disabledScenarios || []).includes(this.options.leftScenario)) {
+        this.options.leftScenario = this.options.variables[this.options.variable].defaultConfig.leftScenario;
+      }
+
+      if (this.options.rightScenario === undefined || this.options.rightScenario === null || this.options.rightScenario === null || (this.options.variables[this.options.variable].disabledScenarios || []).includes(this.options.rightScenario)) {
+        this.options.rightScenario = this.options.variables[this.options.variable].defaultConfig.rightScenario;
+      }
+
+      if (undefined === this.options.leftYear || this.options.leftYear === null || !this.options.scenarios[this.options.leftScenario].years.find((v) => v.value === this.options.leftYear)) {
+        this.options.leftYear = this.options.scenarios[this.options.leftScenario].defaultYear;
+      }
+      if (undefined === this.options.rightYear || this.options.rightYear === null || !this.options.scenarios[this.options.rightScenario].years.find((v) => v.value === this.options.rightYear)) {
+        this.options.rightYear = this.options.scenarios[this.options.rightScenario].defaultYear;
+      }
+      this.options.season = this.options.season || this.options.variables[this.options.variable].defaultConfig.season;
+
       this._mapInitPromise = this._whenDojoLoaded().then(this._initMap.bind(this)).catch(this._log.bind(this));
+      this._initControlsOverlay();
 
       let layerPromises = [
         this._whenDojoLoaded().then(this._updateScenarioLayers.bind(this)),
-        this._whenDojoLoaded().then(this._initStatesLayer.bind(this))
+        // this._whenDojoLoaded().then(this._initStatesLayer.bind(this))
       ];
       if (this.options.showCounties) {
         layerPromises.push(this._whenDojoLoaded().then(this._updateCountiesLayer.bind(this)));
@@ -307,22 +500,7 @@
           
     `);
       $(this.nodes.mapContainer).append(this.nodes.$controlsOverLayContainer);
-      this.nodes.$leftScenario = $(this.element).find(".left-scenario-controls .dropdown");
-      this.nodes.$leftScenario.val(this.options.leftScenario);
-      this.nodes.$leftScenario.dropdown({bottomEdge: 10});
-      this.nodes.$leftScenario.on('change', function () {
-        if (this.nodes.$leftScenario.val() !== undefined && this.nodes.$leftScenario.val() !== null) {
-          this._setOptions({leftScenario: this.nodes.$leftScenario.val()})
-        }
-      }.bind(this));
-      this.nodes.$rightScenario = $(this.element).find(".right-scenario-controls .dropdown");
-      this.nodes.$leftScenario.val(this.options.rightScenario);
-      this.nodes.$rightScenario.dropdown({bottomEdge: 10});
-      this.nodes.$rightScenario.on('change', function () {
-        if (this.nodes.$rightScenario.val() !== undefined && this.nodes.$rightScenario.val() !== null) {
-          this._setOptions({rightScenario: this.nodes.$rightScenario.val()});
-        }
-      }.bind(this));
+
       this.nodes.$controlsOverLayContainer.find('.movable.slider-div').draggable({
         axis: "x",
         containment: this.nodes.$controlsOverLayContainer,
@@ -331,24 +509,23 @@
         stop: function (event, ui) { this._setOptions({swipeX: ui.position.left}) }.bind(this)
       });
 
+      this._updateLeftScenarioSelect();
+      this._updateRightScenarioSelect();
       this._updateLeftYearSlider();
       this._updateRightYearSlider();
-
-
     },
     _initMap: function () {
       this.map = new this.dojoMods.Map({
         basemap: 'topo'
       });
-
-      if ((undefined === this.options.extent || null === this.options.extent) && (undefined === this.options.center || null === this.options.center)){
+      // todo add reference layer https://server.arcgisonline.com/ArcGIS/rest/services/Reference/World_Boundaries_and_Places/MapServer/tile/6/27/20
+      if ((undefined === this.options.extent || null === this.options.extent) && (undefined === this.options.center || null === this.options.center)) {
         this.options.extent = this.options.defaultExtent;
       }
       this.view = new this.dojoMods.MapView({
         container: this.nodes.mapContainer,
         map: this.map,
-        zoom:  this.options.zoom,
-        // center: this.options.extent ? null : this.dojoMods.webMercatorUtils.lngLatToXY(this.options.center[0],this.options.center[1]),
+        zoom: this.options.zoom,
         center: this.options.extent ? null : this.options.center,
         extent: this.options.extent ? this.dojoMods.webMercatorUtils.geographicToWebMercator(new this.dojoMods.Extent(this.options.extent)) : null,
         constraints: {
@@ -387,18 +564,18 @@
 
       this.view.ui.add(this.locateWidget, "top-left");
 
-      this.basemapGallery = new this.dojoMods.BasemapGallery({
-        view: this.view,
-        container: document.createElement('div')
-      });
+      // this.basemapGallery = new this.dojoMods.BasemapGallery({
+      //   view: this.view,
+      //   container: document.createElement('div')
+      // });
+      //
+      // this.bgExpand = new this.dojoMods.Expand({
+      //   expandIconClass: 'esri-icon-basemap',
+      //   view: this.view,
+      //   content: this.basemapGallery.domNode
+      // });
 
-      this.bgExpand = new this.dojoMods.Expand({
-        expandIconClass: 'esri-icon-basemap',
-        view: this.view,
-        content: this.basemapGallery.domNode
-      });
-
-      this.view.ui.add(this.bgExpand, 'top-left');
+      // this.view.ui.add(this.bgExpand, 'top-left');
 
       this.nodes.$legendContainer = $('<div></div>');
       this._updateLegend();
@@ -425,7 +602,7 @@
       return Promise.all([
         this._updateLeftScenarioLayer(),
         this._updateRightScenarioLayer()
-      ]);
+      ]).catch(this._error.bind(this));
     },
 
     _updateLeftScenarioLayer: function () {
@@ -468,10 +645,10 @@
     _initScenarioLayer: function (scenario, year, side, opacity) {
       let promise = new Promise(function (resolve, reject) {
         let layerClass = this.dojoMods.TileLayer;
-        if (this.options[scenario + 'TilesURL'].endsWith('png')) { layerClass = this.dojoMods.WebTileLayer; }
+        if (this.options.scenarios[scenario].tilesURL.endsWith('png')) { layerClass = this.dojoMods.WebTileLayer; }
         let layer = new layerClass({urlTemplate: this._getScenarioURL(scenario, year), opacity: opacity});
         //TMS hack
-        if (this.options[scenario + 'TilesURL'].endsWith('png') && this.options[scenario + 'TilesTMS']) {
+        if (this.options.scenarios[scenario].tilesURL.endsWith('png') && this.options.scenarios[scenario].tilesTMS) {
           layer.getTileUrl = function (level, row, col) {
             level = this.levelValues[level];
             if (0 > row || row >= (1 << level)) { return null; }
@@ -489,25 +666,21 @@
       // hook the layerView's first render to apply the clipping path.
       promise.then(function (layer) {
         this.view.whenLayerView(layer).then(function (layerView) {
-          new Promise(function (resolve) {
-            layerView.container._doRender = layerView.container.doRender;
-            layerView.container._setClipPath = this._setClipPath;
-            layerView.container._swipeX = this.options.swipeX;
-            layerView.container._setSwipeX = function (value) {this.options.swipeX = value;}.bind(this);
-            layerView.container.doRender = function (a) {
-              this._doRender(a);
-              if (this._swipeX === null) {
-                this._swipeX = this.element.width / 2;
-                this._setSwipeX(this._swipeX);
-              }
-              this._setClipPath(this.element, side, this._swipeX);
-              resolve();
-            };
-          }.bind(this))
-            .catch(this._log.bind(this))
-            .then(function () {
-              layerView.container.doRender = layerView.container._doRender;
-            });
+
+          let layerViewContainer = layerView.container;
+          layerViewContainer._doRender = layerViewContainer.doRender;
+          layerViewContainer.doRender = (a) => {
+            layerViewContainer._doRender(a);
+            if (this.options.swipeX === null) {
+              this.options.swipeX = layerViewContainer.element.width / 2;
+            }
+            if (this.options.swipeX > layerViewContainer.element.width){
+              this.options.swipeX = layerViewContainer.element.width;
+              this.nodes.$controlsOverLayContainer.find('.movable.slider-div').css('left',this.options.swipeX );
+            }
+
+            this._setClipPath(layerViewContainer.element, side, this.options.swipeX);
+          };
         }.bind(this));
       }.bind(this));
       return promise;
@@ -618,7 +791,7 @@
 
     _createReferenceLayer: function (layerURL, options) {
       // We implement our own json layer creator
-      if (layerURL.endsWith('json')) {
+      if (layerURL.endsWith('json') || layerURL.endsWith('geojson')) {
         return Promise.resolve($.ajax({
           url: layerURL,
           type: "GET",
@@ -676,17 +849,14 @@
       }
       if (this.options.variable !== old_options.variable || this.options.season !== old_options.season) {
         // Only a few variables allow for seasons
-        if (this.variables[this.options.variable]['seasonal_data']) {
-          this.options.season = this.options.season ? this.options.season : 'summer';
+        if (this.options.variables[this.options.variable]['seasonal_data']) {
+          this.options.season = this.options.season || this.options.variables[this.options.variable].defaultConfig.season;
         } else {
           this.options.season = null;
         }
         // pcpn and dry days only show rcp45 vs rcp85 scenario
         if (['pcpn', 'days_dry_days'].includes(this.options.variable)) {
           if (this.options.leftScenario !== 'rcp45') {
-            if (!this.options.rcp45Years.includes(this.options.leftYear)) {
-              this.options.leftYear = this.options.rightYear
-            }
             this._setOption('leftScenario', 'rcp45');
           } else {
             this._updateLeftScenarioLayer();
@@ -696,10 +866,12 @@
           } else {
             this._updateRightScenarioLayer();
           }
-          this._setOption('disableScenarioSelection', true);
+          this._updateLeftScenarioSelect();
+          this._updateRightScenarioSelect();
         }
         else if (['pcpn', 'days_dry_days'].includes(old_options.variable)) {
-          this._setOption('disableScenarioSelection', false);
+          this._updateLeftScenarioSelect();
+          this._updateRightScenarioSelect();
           this.options.leftYear = 'avg';
           this._setOption('leftScenario', 'historical');
           if (this.options.rightScenario !== 'rcp85') {
@@ -709,7 +881,7 @@
           }
 
         }
-        else{
+        else {
           this._updateScenarioLayers();
         }
         this._updateLegend();
@@ -744,24 +916,23 @@
           break;
         case "leftScenario":
           if (value !== oldValue) {
-            if (!this._getLeftOptions().years.includes(this.options.leftYear)) {
-              this.options.leftYear = this.options.leftScenario === 'historical' ? 'avg' : this._getLeftOptions().years.slice(-1)[0];
+            if (this.options.variables[this.options.variable].disabledScenarios.includes(value)) {
+              break;
             }
-            if (this.nodes.$leftScenario.val() !== value) {
-              this.nodes.$leftScenario.val(value).trigger('change');
+            if (!this.options.scenarios[this.options.leftScenario].years.find((v) => v.value === this.options.leftYear)) {
+              this.options.leftYear = this.options.scenarios[this.options.leftScenario].defaultYear;
             }
+            this._updateLeftScenarioSelect();
             this._updateLeftScenarioLayer();
             this._updateLeftYearSlider();
           }
           break;
         case "rightScenario":
           if (value !== oldValue) {
-            if (!this._getRightOptions().years.includes(this.options.rightYear)) {
-              this.options.rightYear = this._getRightOptions().years.slice(-1)[0]
+            if (!this.options.scenarios[this.options.rightScenario].years.find((v) => v.value === this.options.rightYear)) {
+              this.options.rightYear = this.options.scenarios[this.options.leftScenario].defaultYear;
             }
-            if (this.nodes.$rightScenario.val() !== value) {
-              this.nodes.$rightScenario.val(value).trigger('change');
-            }
+            this._updateRightScenarioSelect();
             this._updateRightScenarioLayer();
             this._updateRightYearSlider();
           }
@@ -771,15 +942,6 @@
           this._whenDojoLoaded().then(this._updateCountiesLayer.bind(this)).then(function (layer) {layer.visible = value});
 
           break;
-        case "disableScenarioSelection":
-          if (this.options.disableScenarioSelection ){
-            this.nodes.$leftScenario.dropdown("disable", 1);
-            this.nodes.$rightScenario.dropdown("disable",1);
-          }
-          else {
-            this.nodes.$leftScenario.dropdown("enable", 1);
-            this.nodes.$rightScenario.dropdown("enable", 1);
-          }
       }
     },
     _updateLeftYearSlider: function () {
@@ -789,40 +951,29 @@
       if (this.nodes.$leftYearTooltip === undefined) {
         this.nodes.$leftYearTooltip = $('<span class="tooltip"></span>').hide();
       }
+      let maxLabel = this.options.scenarios[this.options.leftScenario].years.slice(-1)[0].label;
       if (this.options.leftYear === 'avg') {
-        this.nodes.$leftYearTooltip.text("1961-1990 Average");
-      } else {
-        this.nodes.$leftYearTooltip.text(this.options.leftYear);
+        maxLabel = '2000'
       }
-      let min = this._getLeftOptions().years[0];
-      let max = this.options.leftScenario === 'historical' ? 2010 : this._getLeftOptions().years.slice(-1)[0];
-      this.nodes.$controlsOverLayContainer.find('.left-year-slider-container .year-min').text(min);
-      this.nodes.$controlsOverLayContainer.find('.left-year-slider-container .year-max').text(this._getLeftOptions().years.slice(-1)[0]);
+      this.nodes.$leftYearTooltip.text(this.options.scenarios[this.options.leftScenario].years.find((v) => v.value === this.options.leftYear.toString()).label);
+      this.nodes.$controlsOverLayContainer.find('.left-year-slider-container .year-min').text(this.options.scenarios[this.options.leftScenario].years[0].label);
+      this.nodes.$controlsOverLayContainer.find('.left-year-slider-container .year-max').text(maxLabel);
       this.nodes.$leftYearSlider.slider({
         range: false,
-        min: min,
-        max: max,
-        step: 10,
-        value: this.options.leftYear === 'avg' ? 2010 : this.options.leftYear,
+        min: 0,
+        max: this.options.scenarios[this.options.leftScenario].years.length - 1,
+        step: 1,
+        value: this.options.scenarios[this.options.leftScenario].years.findIndex((v) => v.value === this.options.leftYear.toString()),
         slide: function (event, ui) {
-          if (ui.value === 2010 && this.options.leftScenario === 'historical') {
-            this.nodes.$leftYearTooltip.text("1961-1990 Average");
-          } else {
-            this.nodes.$leftYearTooltip.text(ui.value);
-          }
+          this.nodes.$leftYearTooltip.text(this.options.scenarios[this.options.leftScenario].years[ui.value].label);
         }.bind(this),
         change: function (event, ui) {
           this.nodes.$leftYearSlider.attr('data-value', ui.value);
-          if (ui.value === 2010 && this.options.leftScenario === 'historical') {
-            this._setOptions({leftYear: 'avg'});
-          }
-          else {
-            this._setOptions({leftYear: ui.value});
-          }
+
+          this._setOptions({leftYear: this.options.scenarios[this.options.leftScenario].years[ui.value].value});
+
         }.bind(this),
       }).find(".ui-slider-handle").html('<span class="icon icon-arrow-left-right"></span>').append(this.nodes.$leftYearTooltip);
-
-
       this.nodes.$leftYearTooltip.fadeIn();
     },
 
@@ -833,25 +984,85 @@
       if (this.nodes.$rightYearTooltip === undefined) {
         this.nodes.$rightYearTooltip = $('<span class="tooltip"></span>').hide();
       }
-      this.nodes.$controlsOverLayContainer.find('.right-year-slider-container .year-min').text(this._getRightOptions().years[0]);
-      this.nodes.$controlsOverLayContainer.find('.right-year-slider-container .year-max').text(this._getRightOptions().years.slice(-1)[0]);
-      this.nodes.$rightYearTooltip.text(this.options.rightYear);
+      let maxLabel = this.options.scenarios[this.options.rightScenario].years.slice(-1)[0].label;
+      if (this.options.rightYear === 'avg') {
+        maxLabel = '2000'
+      }
+      this.nodes.$rightYearTooltip.text(this.options.scenarios[this.options.rightScenario].years.find((v) => v.value === this.options.rightYear.toString()).label);
+      this.nodes.$controlsOverLayContainer.find('.right-year-slider-container .year-min').text(this.options.scenarios[this.options.rightScenario].years[0].label);
+      this.nodes.$controlsOverLayContainer.find('.right-year-slider-container .year-max').text(maxLabel);
       this.nodes.$rightYearSlider.slider({
         range: false,
-        min: this._getRightOptions().years[0],
-        max: this._getRightOptions().years.slice(-1)[0],
-        step: 10,
-        value: this.options.rightYear,
+        min: 0,
+        max: this.options.scenarios[this.options.rightScenario].years.length - 1,
+        step: 1,
+        value: this.options.scenarios[this.options.rightScenario].years.findIndex((v) => v.value === this.options.rightYear.toString()),
         slide: function (event, ui) {
-          this.nodes.$rightYearTooltip.text(ui.value);
+          this.nodes.$rightYearTooltip.text(this.options.scenarios[this.options.rightScenario].years[ui.value].label);
         }.bind(this),
         change: function (event, ui) {
           this.nodes.$rightYearSlider.attr('data-value', ui.value);
-          this._setOptions({rightYear: ui.value});
+
+          this._setOptions({rightYear: this.options.scenarios[this.options.rightScenario].years[ui.value].value});
+
         }.bind(this),
-      }).find(".ui-slider-handle").html('<span class="icon icon-arrow-left-right"></span>').append(this.nodes.$rightYearTooltip);
+      }).find(".ui-slider-handle").html('<span class="icon icon-arrow-right-right"></span>').append(this.nodes.$rightYearTooltip);
       this.nodes.$rightYearTooltip.fadeIn();
     },
+
+    _updateLeftScenarioSelect: function () {
+      if (this.nodes.$leftScenarioSelect === undefined) {
+        this.nodes.$leftScenarioSelect = $(this.nodes.$controlsOverLayContainer).find(".left-scenario-controls .dropdown");
+        this.nodes.$leftScenarioSelect.val(this.options.leftScenario);
+        this.nodes.$leftScenarioSelect.dropdown({bottomEdge: 10});
+        this.nodes.$leftScenarioSelect.on('change', function () {
+          if (this.nodes.$leftScenarioSelect.val() !== undefined && this.nodes.$leftScenarioSelect.val() !== null) {
+            this._setOptions({leftScenario: this.nodes.$leftScenarioSelect.val()})
+          }
+        }.bind(this));
+      }
+      if (this.options.variables[this.options.variable].disabledScenarios) {
+        $(this.nodes.$leftScenarioSelect.find('option').each((i, o) => {
+          if (this.options.variables[this.options.variable].disabledScenarios.includes($(o).val())) {
+            this.nodes.$leftScenarioSelect.dropdown("disable", $(o).val());
+          }
+          else {
+            this.nodes.$leftScenarioSelect.dropdown("enable", $(o).val());
+          }
+        }));
+      }
+      if (this.nodes.$leftScenarioSelect.val() !== this.options.leftScenario) {
+        this.nodes.$leftScenarioSelect.val(this.options.leftScenario).trigger('change');
+      }
+    },
+
+    _updateRightScenarioSelect: function () {
+      if (this.nodes.$rightScenarioSelect === undefined) {
+        this.nodes.$rightScenarioSelect = $(this.nodes.$controlsOverLayContainer).find(".right-scenario-controls .dropdown");
+        this.nodes.$rightScenarioSelect.val(this.options.rightScenario);
+        this.nodes.$rightScenarioSelect.dropdown({bottomEdge: 10});
+        this.nodes.$rightScenarioSelect.on('change', function () {
+          if (this.nodes.$rightScenarioSelect.val() !== undefined && this.nodes.$rightScenarioSelect.val() !== null) {
+            this._setOptions({rightScenario: this.nodes.$rightScenarioSelect.val()})
+          }
+        }.bind(this));
+      }
+      if (this.options.variables[this.options.variable].disabledScenarios) {
+        $(this.nodes.$leftScenarioSelect.find('option').each((i, o) => {
+          if (this.options.variables[this.options.variable].disabledScenarios.includes($(o).val())) {
+            this.nodes.$leftScenarioSelect.dropdown("disable", $(o).val());
+          }
+          else {
+            this.nodes.$leftScenarioSelect.dropdown("enable", $(o).val());
+          }
+        }));
+      }
+      if (this.nodes.$rightScenarioSelect.val() !== this.options.rightScenario) {
+        this.nodes.$rightScenarioSelect.val(this.options.rightScenario).trigger('change');
+      }
+
+    },
+
     _setSwipeX: function (value) {
       if (this.leftLayer && this.rightLayer) {
         this.view.whenLayerView(this.leftLayer).then(function (layerView) {
@@ -863,27 +1074,8 @@
       }
     },
 
-    _getLeftOptions: function () {
-      return {
-        year: this.options.leftYear,
-        opacity: this.options.leftOpacity,
-        years: this.options[this.options.leftScenario + 'Years'],
-        tilesURL: this.options[this.options.leftScenario + 'TilesURL'],
-        tilesTMS: this.options[this.options.leftScenario + 'TilesTMS']
-      };
-    },
-    _getRightOptions: function () {
-      return {
-        year: this.options.rightYear,
-        opacity: this.options.rightOpacity,
-        years: this.options[this.options.rightScenario + 'Years'],
-        tilesURL: this.options[this.options.rightScenario + 'TilesURL'],
-        tilesTMS: this.options[this.options.rightScenario + 'TilesTMS']
-      };
-    },
-
     _updateLegend: function () {
-      let legendFilename = this.variables[this.options.variable]['seasonal_data'] ? 'summer_' + this.options.variable : this.options.variable;
+      let legendFilename = this.options.variables[this.options.variable]['seasonal_data'] ? [this.options.season || 'summer', this.options.variable].join('_') : this.options.variable;
       this.nodes.$legendContainer.html('<img class="legend-image" src="/resources/img/legends/' + legendFilename + '.png">')
     },
 
@@ -905,7 +1097,7 @@
       <a href="/location/">
         <h4 class="accent-color" style="margin-bottom: 20px;">
           <span class="icon icon-emission-scenario"></span> <span class="text">Chart<span class="full-title">: ${this.options.countyName}</span>
-          <span class="source" id="temp-chart-name">${this.variables[this.options.variable].title}</span>
+          <span class="source" id="temp-chart-name">${this.options.variables[this.options.variable].title}</span>
         </span>
         </h4>
       </a>
@@ -1031,7 +1223,7 @@
     },
 
     _getScenarioURL: function (scenario, year) {
-      let tilesURL = this.options[scenario + 'TilesURL'];
+      let tilesURL = this.options.scenarios[scenario].tilesURL;
       let season = this.options.season;
       if (scenario === 'historical') {
         scenario = 'hist'
@@ -1076,7 +1268,7 @@
     // =========== Public methods=============================
 
     getShowSeasonControls: function () {
-      return this.variables[this.options.variable]['seasonal_data'];
+      return this.options.variables[this.options.variable]['seasonal_data'];
     },
     disable: function () {
       // Do any custom logic for disabling here, then
