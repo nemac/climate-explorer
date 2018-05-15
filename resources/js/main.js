@@ -1260,7 +1260,7 @@ App.prototype.takeAnnualGraphTour = function (pre) {
   });
 
   graphTour.addStep('rcp45-range', {
-    text: 'The blue band shows the range of projections for a possible future in which global emissions of heat-trapping gases peak around 2040 and then decline. This scenario is called RCP 4.5.<a href="http://asr.science.energy.gov/publications/program-docs/RCP4.5-Pathway.pdf" target="_BLANK">Learn more »</a>',
+    text: 'The blue band shows the range of projections for a possible future in which global emissions of heat-trapping gases peak around 2040 and then decline. This scenario is called RCP 4.5. <a href="http://asr.science.energy.gov/publications/program-docs/RCP4.5-Pathway.pdf" target="_BLANK">Learn more »</a>',
     attachTo: '#' + pre + 'rcp45-range top',
     buttons: this._makeStdButtons(graphTour)
   });
