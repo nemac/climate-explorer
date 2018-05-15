@@ -298,8 +298,6 @@
           @include transform(translateY(-50%));
 
           .icon {
-            display: block;
-            margin: 0 auto 10px auto;
             font-size: 2rem;
           }
 
@@ -565,7 +563,7 @@
             width: auto;
             height: auto;
             float: left;
-            font: 1.5rem/1em $sans-book;
+            font: 1.4rem/1em $sans-book;
             color: inherit !important;
             text-align: left;
             z-index: 2;
@@ -573,7 +571,7 @@
 
             .icon {
               display: inline-block;
-              margin: -4px 15px 0 0;
+              margin: -4px 10px 0 0;
             }
 
             .text {

@@ -344,10 +344,10 @@
                   <a href="#" class="how-to-read"><span class="icon icon-help"></span>How to read this</a>
                   <div class="select map-seasons-container" id="temperature-map-season">
                     <select class="dropdown">
-                      <option value="summer">July</option>
-                      <option value="fall">October</option>
-                      <option value="winter">January</option>
-                      <option value="spring">April</option>
+                      <option value="summer">July (Summer)</option>
+                      <option value="fall">October (Fall)</option>
+                      <option value="winter">January (Winter)</option>
+                      <option value="spring">April (Spring)</option>
                     </select>
                   </div>
                   <a href="/variables/?id=tmax" class="full-map-btn button bg-white color-orange arrow-right">View full map</a>
@@ -578,10 +578,10 @@
                   <a href="#" class="how-to-read"><span class="icon icon-help"></span>How to read this</a>
                   <div class="select map-seasons-container" id="precipitation-map-season">
                     <select title="Season" class="dropdown">
-                      <option value="summer">July</option>
-                      <option value="fall">October</option>
-                      <option value="winter">January</option>
-                      <option value="spring">April</option>
+                      <option value="summer">July (Summer)</option>
+                      <option value="fall">October (Fall)</option>
+                      <option value="winter">January (Winter)</option>
+                      <option value="spring">April (Spring)</option>
                     </select>
                   </div>
                   <a href="/variables/?id=pr" class="full-map-btn button bg-white color-orange arrow-right">View full map</a>
@@ -804,10 +804,10 @@
                   <a href="#" class="how-to-read"><span class="icon icon-help"></span>How to read this</a>
                   <div class="select map-seasons-container" id="derived-map-season">
                     <select class="dropdown">
-                      <option value="summer">July</option>
-                      <option value="fall">October</option>
-                      <option value="winter">January</option>
-                      <option value="spring">April</option>
+                      <option value="summer">July (Summer)</option>
+                      <option value="fall">October (Fall)</option>
+                      <option value="winter">January (Winter)</option>
+                      <option value="spring">April (Spring)</option>
                     </select>
                   </div>
                   <!--  todo fix url and handle variable changes -->
@@ -843,5 +843,29 @@
 <script type="text/javascript" src="/resources/js/scenarioComparisonMap.js"></script>
 <script type="text/javascript" src="/resources/js/location.js"></script>
 
+<script>
+  $(document).ready(function () {
+    "use strict";
+
+    function updateTemperatureSeason () {
+      (window.temperatureScenariosMap && window.temperatureScenariosMap.scenarioComparisonMap("getShowSeasonControls")) ?
+        $("#temperature-map-season").show(200) : $("#temperature-map-season").hide();
+    }
+
+    function updatePrecipitationSeason () {
+      (window.precipitationScenariosMap && window.precipitationScenariosMap.scenarioComparisonMap("getShowSeasonControls")) ?
+        $("#precipitation-map-season").show(200) : $("#precipitation-map-season").hide();
+    }
+
+    function updateDerivedSeason () {
+      (window.derivedScenariosMap && window.derivedScenariosMap.scenarioComparisonMap("getShowSeasonControls")) ?
+        $("#derived-map-season").show(200) : $("#derived-map-season").hide();
+    }
+
+    $('#temperature-data h4').on('click', updateTemperatureSeason);
+    $('#precipitation-data h4').on('click', updatePrecipitationSeason);
+    $('#derived-data h4').on('click', updateDerivedSeason);
+  });
+</script>
 </body>
 </html>
