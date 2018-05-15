@@ -141,15 +141,7 @@ $derived_content = array(
     'overlayname' => 'Modified Growing Degree Days',
     'detail' => "<p>Corn growers use the number of modified growing degree days to monitor the development of corn crops. </p><p>As corn development occurs only when temperature is above 50°F but below 86°F, the standard calculation for growing-degree days is modified to omit conditions outside this range. In future decades, regions where temperatures regularly exceed 86°F may be less successful in growing corn.</p>",
     'source' => ''
-  ),
-  array(
-    'variable' => 'dry_days',
-    'name' => 'Dry Days',
-    'overlayname' => 'Dry Days',
-    'detail' => "<p>The number of dry days per year (days when precipitation is less than 0.01 inches) gives a sense of the portion of the year when no moisture is being added to the environment. </p><p>Long-term average precipitation totals show that most locations experience one or more relatively dry months or seasons through the year. Any increase in the number of days with no precipitation may indicate a tendency toward drier conditions in one or more seasons. </p>",
-    'source' => ''
   )
-
 );
 
 $stations_content = array(
