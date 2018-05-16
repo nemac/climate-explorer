@@ -13,8 +13,9 @@
       data_url: 'tidal_data.json'
     },
     data: {},
-    nodes: {},
+
     _create: function (options) {
+      this.nodes = {};
       $.getJSON(this.options.data_url, function (json) {
         this.data = json;
         this._update(options);
