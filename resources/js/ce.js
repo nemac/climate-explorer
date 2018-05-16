@@ -215,9 +215,9 @@ especially when it comes to interacting with the DOM and handling events.
 
       if (window.hasOwnProperty("history") === false || window.history.replaceState === false) return;
 
-      if (value === null || value === undefined || value === false) {
-          this.removeUrlParam(key);
-          return;
+      if (undefined === value || value === null || value === false) {
+        this.removeUrlParam(key);
+        return;
       }
 
       for (i = 0, l = params.length; i < l; i++) {
@@ -290,11 +290,11 @@ especially when it comes to interacting with the DOM and handling events.
       };
     },
 
-    //todo write public getters for state variables
     getStationsMapState: function () {
       var state = this.getUrlParams({
         mode: 'id',
         stationId: 'station',
+        stationName: 'station-name',
         variable: 'variable',
 
         extent: 'extent',
@@ -310,14 +310,11 @@ especially when it comes to interacting with the DOM and handling events.
       return state
     },
     setStationsMapState: function (state) {
-      (Object.keys(state).includes('stationId') && state.stationId) ? this.setUrlParam('station', state['stationId']) :
-        this.removeUrlParam('station');
-      Object.keys(state).includes('mode') ? this.setUrlParam('id', state['mode']) :
-        this.removeUrlParam('station'); // on mode change overlay goes away
-      Object.keys(state).includes('extent') ? this.setUrlParam('extent', this._extentToString(state['extent'])) :
-        null;
-      Object.keys(state).includes('zoom') ? this.setUrlParam('zoom', state['zoom']) :
-        null;
+      (Object.keys(state).includes('stationId') && state.stationId) ? this.setUrlParam('station', state['stationId']) : this.removeUrlParam('station');
+      (Object.keys(state).includes('stationName') && state.stationName) ? this.setUrlParam('station-name', state.stationName) : this.removeUrlParam('station-name');
+      Object.keys(state).includes('mode') ? this.setUrlParam('id', state['mode']) : this.removeUrlParam('station'); // on mode change overlay goes away
+      Object.keys(state).includes('extent') ? this.setUrlParam('extent', this._extentToString(state['extent'])) : null;
+      Object.keys(state).includes('zoom') ? this.setUrlParam('zoom', state['zoom']) : null;
     },
 
     getVariablesPageState: function () {
@@ -332,31 +329,21 @@ especially when it comes to interacting with the DOM and handling events.
         zoom: 'zoom'
       });
       if (state.lat && state.lon) {
-        state.center = [ state.lon, state.lat]
+        state.center = [state.lon, state.lat];
       }
       if (state.extent) {state.extent = this._extentToObject(state.extent);}
 
       return state;
     },
     setVariablesMapState: function (state) {
-      Object.keys(state).includes('variable') ? this.setUrlParam('id', state['variable']) :
-        null;
-      Object.keys(state).includes('season') ? this.setUrlParam('season', state['season']) :
-        null;
-      Object.keys(state).includes('leftScenario') ? this.setUrlParam('left', state['leftScenario']) :
-        null;
-      Object.keys(state).includes('leftYear') ? this.setUrlParam('leftyear', state['leftYear']) :
-        null;
-      Object.keys(state).includes('rightScenario') ? this.setUrlParam('right', state['rightScenario']) :
-        null;
-      Object.keys(state).includes('rightYear') ? this.setUrlParam('rightyear', state['rightYear']) :
-        null;
-      Object.keys(state).includes('extent') ? this.setUrlParam('extent', this._extentToString(state['extent'])) :
-        null;
-      Object.keys(state).includes('zoom') ? this.setUrlParam('zoom', state['zoom']) :
-        null;
-//      Object.keys(state).includes('mode') ? this.setUrlParam('id', state['mode']) :
-//        this.removeUrlParam('station'); // on mode change overlay goes away
+      Object.keys(state).includes('variable') ? this.setUrlParam('id', state['variable']) : null;
+      Object.keys(state).includes('season') ? this.setUrlParam('season', state['season']) : null;
+      Object.keys(state).includes('leftScenario') ? this.setUrlParam('left', state['leftScenario']) : null;
+      Object.keys(state).includes('leftYear') ? this.setUrlParam('leftyear', state['leftYear']) : null;
+      Object.keys(state).includes('rightScenario') ? this.setUrlParam('right', state['rightScenario']) : null;
+      Object.keys(state).includes('rightYear') ? this.setUrlParam('rightyear', state['rightYear']) : null;
+      Object.keys(state).includes('extent') ? this.setUrlParam('extent', this._extentToString(state['extent'])) : null;
+      Object.keys(state).includes('zoom') ? this.setUrlParam('zoom', state['zoom']) : null;
     },
 
     // called using `$(window).ce('getMapState')`...and maybe `window.ce.getMapState` if that's easier
@@ -379,7 +366,7 @@ especially when it comes to interacting with the DOM and handling events.
         lon: 'lon',
         zoom: 'zoom'
       });
-      if (state.lat && state.lon) { state.center = [state.lon,state.lat] }
+      if (state.lat && state.lon) { state.center = [state.lon, state.lat] }
 
       if (state.county) { state.county = state.county.replace(/\+/g, ' '); }
       if (state.city) { state.city = state.city.replace(/\+/g, ' '); }
