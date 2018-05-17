@@ -20,7 +20,7 @@
 
   <ul id="vars-menu" class="menu blue-menu">
     <li class="search-field border" id="stations-search-by-location"><span class="icon icon-search"></span>
-      <input type="text" id="formmapper" placeholder="Zoom to location">
+      <input type="text" id="formmapper" autocomplete="off" placeholder="Zoom to location">
     </li>
 
     <li class="select border" id="stations-options-container">

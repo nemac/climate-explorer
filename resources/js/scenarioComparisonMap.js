@@ -331,6 +331,7 @@
       'esri/layers/support/Field',
       'esri/layers/WebTileLayer',
       'esri/layers/TileLayer',
+      // 'esri/widgets/BasemapToggle',
       // 'esri/renderers/SimpleRenderer',
       'esri/Graphic',
       // 'esri/symbols/WebStyleSymbol',
@@ -339,7 +340,7 @@
       'esri/widgets/Expand',
       // 'esri/widgets/OpacitySlider',
       // 'esri/widgets/ColorSlider',
-      // 'esri/widgets/BasemapGallery',
+      'esri/widgets/BasemapGallery',
       'esri/widgets/ScaleBar',
       'esri/geometry/SpatialReference',
       // 'esri/layers/CSVLayer',
@@ -518,7 +519,9 @@
       this.map = new this.dojoMods.Map({
         basemap: 'topo'
       });
-      // todo add reference layer https://server.arcgisonline.com/ArcGIS/rest/services/Reference/World_Boundaries_and_Places/MapServer/tile/6/27/20
+      // this.map.basemap.referenceLayers.clear();
+      // this.map.basemap.referenceLayers.add(new this.dojoMods.TileLayer({url: 'https://server.arcgisonline.com/ArcGIS/rest/services/Reference/World_Boundaries_and_Places/MapServer'}));
+      // this.map.basemap.referenceLayers.add(new this.dojoMods.TileLayer({url: 'https://services.arcgisonline.com/ArcGIS/rest/services/Canvas/World_Light_Gray_Reference/MapServer'}));
       if ((undefined === this.options.extent || null === this.options.extent) && (undefined === this.options.center || null === this.options.center)) {
         this.options.extent = this.options.defaultExtent;
       }
@@ -564,18 +567,27 @@
 
       this.view.ui.add(this.locateWidget, "top-left");
 
-      // this.basemapGallery = new this.dojoMods.BasemapGallery({
-      //   view: this.view,
-      //   container: document.createElement('div')
+      // esri-icon-labels
+
+      // this.basemapToggle = new this.dojoMods.BasemapToggle({
+      //   view: this.view,  // The view that provides access to the map's "streets" basemap
+      //   nextBasemap: "topo"  // Allows for toggling to the "hybrid" basemap
       // });
       //
-      // this.bgExpand = new this.dojoMods.Expand({
-      //   expandIconClass: 'esri-icon-basemap',
-      //   view: this.view,
-      //   content: this.basemapGallery.domNode
-      // });
+      // this.view.ui.add(this.basemapToggle, 'top-left');
 
-      // this.view.ui.add(this.bgExpand, 'top-left');
+      this.basemapGallery = new this.dojoMods.BasemapGallery({
+        view: this.view,
+        container: document.createElement('div')
+      });
+
+      this.bgExpand = new this.dojoMods.Expand({
+        expandIconClass: 'esri-icon-basemap',
+        view: this.view,
+        content: this.basemapGallery.domNode
+      });
+
+      this.view.ui.add(this.bgExpand, 'top-left');
 
       this.nodes.$legendContainer = $('<div></div>');
       this._updateLegend();
@@ -674,9 +686,9 @@
             if (this.options.swipeX === null) {
               this.options.swipeX = layerViewContainer.element.width / 2;
             }
-            if (this.options.swipeX > layerViewContainer.element.width){
+            if (this.options.swipeX > layerViewContainer.element.width) {
               this.options.swipeX = layerViewContainer.element.width;
-              this.nodes.$controlsOverLayContainer.find('.movable.slider-div').css('left',this.options.swipeX );
+              this.nodes.$controlsOverLayContainer.find('.movable.slider-div').css('left', this.options.swipeX);
             }
 
             this._setClipPath(layerViewContainer.element, side, this.options.swipeX);
@@ -848,41 +860,24 @@
         this.view.goTo({center: new this.dojoMods.Point({latitude: this.options.center[0], longitude: this.options.center[1]}), zoom: this.options.zoom});
       }
       if (this.options.variable !== old_options.variable || this.options.season !== old_options.season) {
-        // Only a few variables allow for seasons
+        // Only a few variables have seasonal data
         if (this.options.variables[this.options.variable]['seasonal_data']) {
           this.options.season = this.options.season || this.options.variables[this.options.variable].defaultConfig.season;
         } else {
           this.options.season = null;
         }
-        // pcpn and dry days only show rcp45 vs rcp85 scenario
-        if (['pcpn', 'days_dry_days'].includes(this.options.variable)) {
-          if (this.options.leftScenario !== 'rcp45') {
-            this._setOption('leftScenario', 'rcp45');
-          } else {
-            this._updateLeftScenarioLayer();
-          }
-          if (this.options.rightScenario !== 'rcp85') {
-            this._setOption('rightScenario', 'rcp85');
-          } else {
-            this._updateRightScenarioLayer();
-          }
-          this._updateLeftScenarioSelect();
-          this._updateRightScenarioSelect();
+        // validate current scenario config and apply default configs as needed.
+        if ((this.options.variables[this.options.variable].disabledScenarios || []).includes(this.options.leftScenario) ||
+          (this.options.variables[old_options.variable].disabledScenarios || []).includes(this.options.variables[this.options.variable].defaultConfig.leftScenario)) {
+          this._setOption('leftScenario', this.options.variables[this.options.variable].defaultConfig.leftScenario);
+        } else {
+          this._updateLeftScenario();
         }
-        else if (['pcpn', 'days_dry_days'].includes(old_options.variable)) {
-          this._updateLeftScenarioSelect();
-          this._updateRightScenarioSelect();
-          this.options.leftYear = 'avg';
-          this._setOption('leftScenario', 'historical');
-          if (this.options.rightScenario !== 'rcp85') {
-            this._setOption('rightScenario', 'rcp85');
-          } else {
-            this._updateRightScenarioLayer();
-          }
-
-        }
-        else {
-          this._updateScenarioLayers();
+        if ((this.options.variables[this.options.variable].disabledScenarios || []).includes(this.options.rightScenario) ||
+          (this.options.variables[old_options.variable].disabledScenarios || []).includes(this.options.variables[this.options.variable].defaultConfig.rightScenario)) {
+          this._setOption('rightScenario', this.options.variables[this.options.variable].defaultConfig.rightScenario);
+        } else {
+          this._updateRightScenario();
         }
         this._updateLegend();
         this._updateOverlay();
@@ -916,25 +911,18 @@
           break;
         case "leftScenario":
           if (value !== oldValue) {
-            if (this.options.variables[this.options.variable].disabledScenarios.includes(value)) {
+            if ((this.options.variables[this.options.variable].disabledScenarios || []).includes(value)) {
               break;
             }
-            if (!this.options.scenarios[this.options.leftScenario].years.find((v) => v.value === this.options.leftYear)) {
-              this.options.leftYear = this.options.scenarios[this.options.leftScenario].defaultYear;
-            }
-            this._updateLeftScenarioSelect();
-            this._updateLeftScenarioLayer();
-            this._updateLeftYearSlider();
+            this._updateLeftScenario();
           }
           break;
         case "rightScenario":
           if (value !== oldValue) {
-            if (!this.options.scenarios[this.options.rightScenario].years.find((v) => v.value === this.options.rightYear)) {
-              this.options.rightYear = this.options.scenarios[this.options.leftScenario].defaultYear;
+            if ((this.options.variables[this.options.variable].disabledScenarios || []).includes(value)) {
+              break;
             }
-            this._updateRightScenarioSelect();
-            this._updateRightScenarioLayer();
-            this._updateRightYearSlider();
+            this._updateRightScenario();
           }
           break;
         case "showCounties":
@@ -944,6 +932,24 @@
           break;
       }
     },
+
+    _updateLeftScenario: function () {
+      if (!this.options.scenarios[this.options.leftScenario].years.find((v) => v.value === this.options.leftYear)) {
+        this.options.leftYear = this.options.scenarios[this.options.leftScenario].defaultYear;
+      }
+      this._updateLeftScenarioSelect();
+      this._updateLeftScenarioLayer();
+      this._updateLeftYearSlider();
+    },
+    _updateRightScenario: function () {
+      if (!this.options.scenarios[this.options.rightScenario].years.find((v) => v.value === this.options.rightYear)) {
+        this.options.rightYear = this.options.scenarios[this.options.leftScenario].defaultYear;
+      }
+      this._updateRightScenarioSelect();
+      this._updateRightScenarioLayer();
+      this._updateRightYearSlider();
+    },
+
     _updateLeftYearSlider: function () {
       if (this.nodes.$leftYearSlider === undefined) {
         this.nodes.$leftYearSlider = $(this.element).find('.left-year-slider');
@@ -1006,7 +1012,7 @@
           this._setOptions({rightYear: this.options.scenarios[this.options.rightScenario].years[ui.value].value});
 
         }.bind(this),
-      }).find(".ui-slider-handle").html('<span class="icon icon-arrow-right-right"></span>').append(this.nodes.$rightYearTooltip);
+      }).find(".ui-slider-handle").html('<span class="icon icon-arrow-left-right"></span>').append(this.nodes.$rightYearTooltip);
       this.nodes.$rightYearTooltip.fadeIn();
     },
 
@@ -1021,16 +1027,16 @@
           }
         }.bind(this));
       }
-      if (this.options.variables[this.options.variable].disabledScenarios) {
-        $(this.nodes.$leftScenarioSelect.find('option').each((i, o) => {
-          if (this.options.variables[this.options.variable].disabledScenarios.includes($(o).val())) {
-            this.nodes.$leftScenarioSelect.dropdown("disable", $(o).val());
-          }
-          else {
-            this.nodes.$leftScenarioSelect.dropdown("enable", $(o).val());
-          }
-        }));
-      }
+
+      $(this.nodes.$leftScenarioSelect.find('option').each((i, o) => {
+        if ((this.options.variables[this.options.variable].disabledScenarios || []).includes($(o).val())) {
+          this.nodes.$leftScenarioSelect.dropdown("disable", $(o).val());
+        }
+        else {
+          this.nodes.$leftScenarioSelect.dropdown("enable", $(o).val());
+        }
+      }));
+
       if (this.nodes.$leftScenarioSelect.val() !== this.options.leftScenario) {
         this.nodes.$leftScenarioSelect.val(this.options.leftScenario).trigger('change');
       }
@@ -1047,16 +1053,15 @@
           }
         }.bind(this));
       }
-      if (this.options.variables[this.options.variable].disabledScenarios) {
-        $(this.nodes.$leftScenarioSelect.find('option').each((i, o) => {
-          if (this.options.variables[this.options.variable].disabledScenarios.includes($(o).val())) {
-            this.nodes.$leftScenarioSelect.dropdown("disable", $(o).val());
-          }
-          else {
-            this.nodes.$leftScenarioSelect.dropdown("enable", $(o).val());
-          }
-        }));
-      }
+
+      $(this.nodes.$leftScenarioSelect.find('option').each((i, o) => {
+        if ((this.options.variables[this.options.variable].disabledScenarios || []).includes($(o).val())) {
+          this.nodes.$leftScenarioSelect.dropdown("disable", $(o).val());
+        }
+        else {
+          this.nodes.$leftScenarioSelect.dropdown("enable", $(o).val());
+        }
+      }));
       if (this.nodes.$rightScenarioSelect.val() !== this.options.rightScenario) {
         this.nodes.$rightScenarioSelect.val(this.options.rightScenario).trigger('change');
       }
@@ -1143,18 +1148,6 @@
       <div class="ui-slider-label range-label max" id="range-high">2100</div>
     </div>
   </div>
-     <div class="download-panel overlay">
-            <div class="download-inner">
-                <a href="javascript:void(0);" class="download-dismiss-button icon icon-close"></a>
-                <p>Use the following links to download this graph's data:</p>
-                <ul>
-                    <li><a href="javascript:void(0);" class='download_hist_obs_data button display-block border-white hover-bg-white'><span class='icon icon-arrow-down '></span>Observed Data</a></li>
-                    <li><a href="javascript:void(0);" class='download_hist_mod_data button display-block border-white hover-bg-white'><span class='icon icon-arrow-down'></span>Historical Modeled Data</a></li>
-                    <li><a href="javascript:void(0);" class='download_proj_mod_data button display-block border-white hover-bg-white'><span class='icon icon-arrow-down'></span>Projected Modeled Data</a></li>
-                </ul>
-
-            </div>
-        </div>
 </div>`);
 
       $(this.element).append(this.nodes.$countyOverlay);
@@ -1199,11 +1192,31 @@
       }.bind(this));
 
       this.nodes.$countyOverlay.find('.download-image').click(function (event) {this.cwg && this.cwg.download_image(event.target, 'graph.png'); }.bind(this));
-      this.nodes.$countyOverlay.find('.download-data').click(function (event) { this.nodes.$countyOverlay.find('.download-panel').removeClass("hidden").show(250); }.bind(this));
-      this.nodes.$countyOverlay.find('.download_hist_obs_data').click(function (event) { this.cwg && this.cwg.download_hist_obs_data(event.target)}.bind(this));
-      this.nodes.$countyOverlay.find('.download_hist_mod_data').click(function (event) {this.cwg && this.cwg.download_hist_mod_data(event.target)}.bind(this));
-      this.nodes.$countyOverlay.find('.download_proj_mod_data').click(function (event) {this.cwg && this.cwg.download_proj_mod_data(event.target) }.bind(this));
-      this.nodes.$countyOverlay.find('.download-dismiss-button').click(function (event) {this.nodes.$countyOverlay.find('.download-panel').addClass("hidden").hide(); }.bind(this));
+      this.nodes.$countyOverlay.find('.download-data').click(function (event) {
+        this.nodes.$countyOverlayDownload = $(
+          `<div class="download-panel overlay">
+            <div class="download-inner">
+                <a href="javascript:void(0);" class="download-dismiss-button icon icon-close"></a>
+                <p>Use the following links to download this graph's data:</p>
+                <ul>
+                    <li><a href="javascript:void(0);" class='download_hist_obs_data button display-block border-white hover-bg-white'><span class='icon icon-arrow-down '></span>Observed Data</a></li>
+                    <li><a href="javascript:void(0);" class='download_hist_mod_data button display-block border-white hover-bg-white'><span class='icon icon-arrow-down'></span>Historical Modeled Data</a></li>
+                    <li><a href="javascript:void(0);" class='download_proj_mod_data button display-block border-white hover-bg-white'><span class='icon icon-arrow-down'></span>Projected Modeled Data</a></li>
+                    <li><a href="/resources/data/Key-to-Climate-Explorer-Download-Filenames-and-Column-Headings.xlsx" class="button display-block border-white hover-bg-white"><span class="icon icon-arrow-down"></span>Information for Interpreting Data</a></li>
+                </ul>
+
+            </div>
+        </div>`
+        ).appendTo($(document.body));
+
+        this.nodes.$countyOverlayDownload.removeClass("hidden").show(250);
+
+        this.nodes.$countyOverlayDownload.find('.download_hist_obs_data').click(function (event) { this.cwg && this.cwg.download_hist_obs_data(event.target)}.bind(this));
+        this.nodes.$countyOverlayDownload.find('.download_hist_mod_data').click(function (event) {this.cwg && this.cwg.download_hist_mod_data(event.target)}.bind(this));
+        this.nodes.$countyOverlayDownload.find('.download_proj_mod_data').click(function (event) {this.cwg && this.cwg.download_proj_mod_data(event.target) }.bind(this));
+        this.nodes.$countyOverlayDownload.find('.download-dismiss-button').click(function (event) {this.nodes.$countyOverlayDownload.addClass("hidden").hide(); }.bind(this));
+      }.bind(this));
+
 
       $('.how-to-read').on('click', function () {
         if (window.app) {

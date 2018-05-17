@@ -422,6 +422,8 @@
     font-family: $sans-book;
   }
 }
+.station_overlay_text a,.station_overlay_text a:focus{color: white; text-decoration:underline;}
+
 .form-group {
   @include clearfix;
   font-size: 0.75rem;
