@@ -25,12 +25,16 @@ $(function () {
         variable: activeVariableTemperature,
         extent: window.ce.ce('getLocationPageState')['extent'],
         center: window.ce.ce('getLocationPageState')['center'],
-        zoom: window.ce.ce('getLocationPageState')['zoom'] || 9,
+        zoom: window.ce.ce('getLocationPageState')['zoom'] || 8,
         showCounties: false,
         layersloaded: function () {
           $('#temperature-map').spinner('destroy');
+        },
+        change: function(){
+          window.temperatureScenariosMap.scenarioComparisonMap("getShowSeasonControls") ? $("#temperature-map-season").show(200) : $("#temperature-map-season").hide();
         }
       });
+      window.temperatureScenariosMap.scenarioComparisonMap("getShowSeasonControls") ? $("#temperature-map-season").show(200) : $("#temperature-map-season").hide();
     }
   });
   $('#temperature-chart header').on('click', function () {$('#location-temperature .location-resolution li').removeClass('disabled');});
@@ -46,8 +50,12 @@ $(function () {
         showCounties: false,
         layersloaded: function () {
           $('#precipitation-map').spinner('destroy');
+        },
+        change: function(){
+          window.precipitationScenariosMap.scenarioComparisonMap("getShowSeasonControls") ? $("#precipitation-map-season").show(200) : $("#precipitation-map-season").hide();
         }
       });
+      window.precipitationScenariosMap.scenarioComparisonMap("getShowSeasonControls") ? $("#precipitation-map-season").show(200) : $("#precipitation-map-season").hide();
     }
   });
   $('#precipitation-chart header').on('click', function () {$('#location-precipitation .location-resolution li').removeClass('disabled');});
@@ -63,9 +71,13 @@ $(function () {
         showCounties: false,
           layersloaded: function () {
             $('#derived-map').spinner('destroy');
+          },
+          change: function(){
+            window.derivedScenariosMap.scenarioComparisonMap("getShowSeasonControls") ? $("#derived-map-season").show(200) : $("#derived-map-season").hide();
           }
         }
       );
+      window.derivedScenariosMap.scenarioComparisonMap("getShowSeasonControls") ? $("#derived-map-season").show(200) : $("#derived-map-season").hide();
     }
   });
   $('#derived-chart header').on('click', function () {$('#location-derived .location-resolution li').removeClass('disabled');});
@@ -117,7 +129,7 @@ $(function () {
     }
     $('#derived-map-container .full-map-btn').prop({'href': '/variables/?id=' + activeVariableDerived});
   });
-
+  
   // season selectors
   $('#precipitation-map-season .fs-dropdown-item').on('click', function () {
     $(window.precipitationScenariosMap).scenarioComparisonMap({season: $(this).data().value});

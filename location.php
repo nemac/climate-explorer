@@ -843,29 +843,5 @@
 <script type="text/javascript" src="/resources/js/scenarioComparisonMap.js"></script>
 <script type="text/javascript" src="/resources/js/location.js"></script>
 
-<script>
-  $(document).ready(function () {
-    "use strict";
-
-    function updateTemperatureSeason () {
-      (window.temperatureScenariosMap && window.temperatureScenariosMap.scenarioComparisonMap("getShowSeasonControls")) ?
-        $("#temperature-map-season").show(200) : $("#temperature-map-season").hide();
-    }
-
-    function updatePrecipitationSeason () {
-      (window.precipitationScenariosMap && window.precipitationScenariosMap.scenarioComparisonMap("getShowSeasonControls")) ?
-        $("#precipitation-map-season").show(200) : $("#precipitation-map-season").hide();
-    }
-
-    function updateDerivedSeason () {
-      (window.derivedScenariosMap && window.derivedScenariosMap.scenarioComparisonMap("getShowSeasonControls")) ?
-        $("#derived-map-season").show(200) : $("#derived-map-season").hide();
-    }
-
-    $('#temperature-data h4').on('click', updateTemperatureSeason);
-    $('#precipitation-data h4').on('click', updatePrecipitationSeason);
-    $('#derived-data h4').on('click', updateDerivedSeason);
-  });
-</script>
 </body>
 </html>
