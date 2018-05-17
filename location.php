@@ -57,7 +57,7 @@
                   class='icon icon-arrow-down'></span>Historical Modeled Data</a></li>
           <li><a href="javascript:void(0);" id="download_proj_mod_data" class='button display-block border-white hover-bg-white'><span
                   class='icon icon-arrow-down'></span>Projected Modeled Data</a></li>
-          <li><a href="/resources/downloads/Key-to-Climate-Explorer-Download-Filenames-and-Column-Headings.xlsx" class="button display-block border-white hover-bg-white"><span class="icon icon-arrow-down"></span>Information for Interpreting Data</a></li>
+          <li><a href="/resources/data/Key-to-Climate-Explorer-Download-Filenames-and-Column-Headings.xlsx" class="button display-block border-white hover-bg-white"><span class="icon icon-arrow-down"></span>Information for Interpreting Data</a></li>
         </ul>
       </div>
     </div>
@@ -74,7 +74,7 @@
                   class='icon icon-arrow-down'></span>Historical Modeled Data</a></li>
           <li><a href="javascript:void(0);" id="download_precip_proj_mod_data" class='button display-block border-white hover-bg-white'><span
                   class='icon icon-arrow-down'></span>Projected Modeled Data</a></li>
-          <li><a href="/resources/downloads/Key-to-Climate-Explorer-Download-Filenames-and-Column-Headings.xlsx" class="button display-block border-white hover-bg-white"><span class="icon icon-arrow-down"></span>Information for Interpreting Data</a></li>
+          <li><a href="/resources/data/Key-to-Climate-Explorer-Download-Filenames-and-Column-Headings.xlsx" class="button display-block border-white hover-bg-white"><span class="icon icon-arrow-down"></span>Information for Interpreting Data</a></li>
         </ul>
       </div>
     </div>
@@ -91,7 +91,7 @@
                   class='icon icon-arrow-down'></span>Historical Modeled Data</a></li>
           <li><a href="javascript:void(0);" id="download_derived_proj_mod_data" class='button display-block border-white hover-bg-white'><span
                   class='icon icon-arrow-down'></span>Projected Modeled Data</a></li>
-          <li><a href="/resources/downloads/Key-to-Climate-Explorer-Download-Filenames-and-Column-Headings.xlsx" class="button display-block border-white hover-bg-white"><span class="icon icon-arrow-down"></span>Information for Interpreting Data</a></li>
+          <li><a href="/resources/data/Key-to-Climate-Explorer-Download-Filenames-and-Column-Headings.xlsx" class="button display-block border-white hover-bg-white"><span class="icon icon-arrow-down"></span>Information for Interpreting Data</a></li>
         </ul>
       </div>
     </div>

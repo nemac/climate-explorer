@@ -1,7 +1,3 @@
-<?php
-include_once dirname(__DIR__) . '/functions.php';
-
-?>
 <!-- BEGIN HEADER TEMPLATE -->
 
 <header id="main-header">

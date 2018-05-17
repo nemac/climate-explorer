@@ -3,7 +3,6 @@
 <head>
   <?php include_once('template/head.php'); ?>
   <meta property="fb:app_id" content="187816851587993">
-  <!--  todo absolute url-->
   <meta property="og:url" content="/stations.php"/>
   <meta property="og:type" content="article">
   <meta property="og:title" content="Variables">
