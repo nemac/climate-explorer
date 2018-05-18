@@ -6534,6 +6534,7 @@ body.detail-open #nav-overlay {
   left: 0;
   width: 100%;
   height: 100%;
+  max-height: calc(100vh - 150px);
 }
 
 /* line 53, resources/scss/_mixins.scss */
@@ -7331,44 +7332,7 @@ body.detail-open #nav-overlay {
   height: 100%;
 }
 
-/* line 932, resources/scss/pages/_location.scss */
-#location-stations #location-station-map .ol-attribution, #location-stations #location-station-map .ol-rotate {
-  display: none;
-}
-
-/* line 936, resources/scss/pages/_location.scss */
-#location-stations #location-station-map .ol-zoom {
-  position: absolute;
-  z-index: 1;
-  top: 50%;
-  right: 2%;
-  -webkit-transform: translateY(-50%);
-  -moz-transform: translateY(-50%);
-  -ms-transform: translateY(-50%);
-  -o-transform: translateY(-50%);
-  transform: translateY(-50%);
-}
-
-/* line 943, resources/scss/pages/_location.scss */
-#location-stations #location-station-map .ol-zoom button {
-  display: block;
-  width: 30px;
-  height: 30px;
-  margin: 10px 0;
-  padding: 0;
-  text-align: center;
-  background: #ffffff;
-  color: #f5442d;
-  font: 1.125rem/10px Roboto, Helvetica, "Helvetica Neue", Arial, sans-serif;
-  border: 3px solid #f5442d;
-  -webkit-border-radius: 50%;
-  -moz-border-radius: 50%;
-  -ms-border-radius: 50%;
-  -o-border-radius: 50%;
-  border-radius: 50%;
-}
-
-/* line 961, resources/scss/pages/_location.scss */
+/* line 937, resources/scss/pages/_location.scss */
 #location-stations #location-stations-overlay {
   position: absolute;
   top: 0;
@@ -7392,7 +7356,7 @@ body.detail-open #nav-overlay {
   clear: both;
 }
 
-/* line 971, resources/scss/pages/_location.scss */
+/* line 947, resources/scss/pages/_location.scss */
 #location-stations.overlay-on #location-stations-overlay {
   left: 0;
   opacity: 1;
@@ -7400,29 +7364,29 @@ body.detail-open #nav-overlay {
   background: rgba(245, 68, 45, 0.9);
 }
 
-/* line 978, resources/scss/pages/_location.scss */
+/* line 954, resources/scss/pages/_location.scss */
 #location-stations.overlay-on .station-overlay-content {
   transition: left 0s ease 0s, opacity 0.25s ease 0s;
 }
 
-/* line 983, resources/scss/pages/_location.scss */
+/* line 959, resources/scss/pages/_location.scss */
 #location-stations.overlay-on:not(.type-tidal) #station-detail {
   left: 0;
   opacity: 1;
 }
 
-/* line 990, resources/scss/pages/_location.scss */
+/* line 966, resources/scss/pages/_location.scss */
 #location-stations.overlay-on.type-tidal #location-stations-overlay {
   background: rgba(0, 88, 207, 0.9);
 }
 
-/* line 994, resources/scss/pages/_location.scss */
+/* line 970, resources/scss/pages/_location.scss */
 #location-stations.overlay-on.type-tidal #station-detail-tidal {
   left: 0;
   opacity: 1;
 }
 
-/* line 1003, resources/scss/pages/_location.scss */
+/* line 979, resources/scss/pages/_location.scss */
 #location-stations #station-overlay-header {
   height: 120px;
   color: #ffffff;
@@ -7440,12 +7404,12 @@ body.detail-open #nav-overlay {
   clear: both;
 }
 
-/* line 1009, resources/scss/pages/_location.scss */
+/* line 985, resources/scss/pages/_location.scss */
 #location-stations #station-overlay-header h3 {
   padding: 0;
 }
 
-/* line 1013, resources/scss/pages/_location.scss */
+/* line 989, resources/scss/pages/_location.scss */
 #location-stations #station-overlay-header h5 {
   float: left;
   width: 50%;
@@ -7453,7 +7417,7 @@ body.detail-open #nav-overlay {
   font-family: "CESans", Roboto, Helvetica, "Helvetica Neue", Arial, sans-serif;
 }
 
-/* line 1023, resources/scss/pages/_location.scss */
+/* line 999, resources/scss/pages/_location.scss */
 #location-stations .station-overlay-content {
   position: absolute;
   bottom: 0;
@@ -7466,7 +7430,7 @@ body.detail-open #nav-overlay {
   z-index: 1;
 }
 
-/* line 1035, resources/scss/pages/_location.scss */
+/* line 1011, resources/scss/pages/_location.scss */
 #location-stations .station-overlay-column {
   position: relative;
   float: left;
@@ -7474,12 +7438,12 @@ body.detail-open #nav-overlay {
   height: 100%;
 }
 
-/* line 1041, resources/scss/pages/_location.scss */
+/* line 1017, resources/scss/pages/_location.scss */
 #location-stations .station-overlay-column.left {
   padding-right: 40px;
 }
 
-/* line 1044, resources/scss/pages/_location.scss */
+/* line 1020, resources/scss/pages/_location.scss */
 #location-stations .station-overlay-column.left:after {
   content: '';
   display: block;
@@ -7492,13 +7456,13 @@ body.detail-open #nav-overlay {
   border-left-color: #ffffff;
 }
 
-/* line 1060, resources/scss/pages/_location.scss */
+/* line 1036, resources/scss/pages/_location.scss */
 #location-stations #station-detail-data {
   background: #ffffff;
   padding: 20px;
 }
 
-/* line 1065, resources/scss/pages/_location.scss */
+/* line 1041, resources/scss/pages/_location.scss */
 #location-stations .form-group {
   font-size: 0.75rem;
 }
@@ -7514,18 +7478,18 @@ body.detail-open #nav-overlay {
   clear: both;
 }
 
-/* line 1069, resources/scss/pages/_location.scss */
+/* line 1045, resources/scss/pages/_location.scss */
 #location-stations .form-group label {
   display: block;
 }
 
-/* line 1073, resources/scss/pages/_location.scss */
+/* line 1049, resources/scss/pages/_location.scss */
 #location-stations .form-group select {
   font-family: Roboto, Helvetica, "Helvetica Neue", Arial, sans-serif;
   font-size: 0.75rem;
 }
 
-/* line 1078, resources/scss/pages/_location.scss */
+/* line 1054, resources/scss/pages/_location.scss */
 #location-stations .form-group input {
   display: inline-block;
   width: calc(100% - 10px);
@@ -7535,30 +7499,30 @@ body.detail-open #nav-overlay {
   padding: 4px 8px;
 }
 
-/* line 1087, resources/scss/pages/_location.scss */
+/* line 1063, resources/scss/pages/_location.scss */
 #location-stations .form-group .field-pair {
   float: left;
   width: 25%;
 }
 
-/* line 1092, resources/scss/pages/_location.scss */
+/* line 1068, resources/scss/pages/_location.scss */
 #location-stations .form-group .field-pair.append input {
   width: 50%;
 }
 
-/* line 1096, resources/scss/pages/_location.scss */
+/* line 1072, resources/scss/pages/_location.scss */
 #location-stations .form-group .field-pair.append .append {
   display: inline-block;
   padding-left: 4px;
   vertical-align: middle;
 }
 
-/* line 1110, resources/scss/pages/_location.scss */
+/* line 1086, resources/scss/pages/_location.scss */
 #location-stations #tidal-chart {
   background-color: #ffffff;
 }
 
-/* line 1118, resources/scss/pages/_location.scss */
+/* line 1094, resources/scss/pages/_location.scss */
 #location-stations #station-overlay-close {
   display: block;
   position: absolute;
@@ -7570,7 +7534,7 @@ body.detail-open #nav-overlay {
   z-index: 2;
 }
 
-/* line 1131, resources/scss/pages/_location.scss */
+/* line 1107, resources/scss/pages/_location.scss */
 #location-stations #stations-spinner {
   display: none;
   position: absolute;
@@ -7583,47 +7547,47 @@ body.detail-open #nav-overlay {
   z-index: 15;
 }
 
-/* line 1147, resources/scss/pages/_location.scss */
+/* line 1123, resources/scss/pages/_location.scss */
 #location-stations .data-accordion-wrap {
   width: 30%;
 }
 
-/* line 1151, resources/scss/pages/_location.scss */
+/* line 1127, resources/scss/pages/_location.scss */
 #location-stations #station-charts-tabs {
   height: 100%;
   padding: 20px;
   background: #ffffff;
 }
 
-/* line 1156, resources/scss/pages/_location.scss */
+/* line 1132, resources/scss/pages/_location.scss */
 #location-stations #station-charts-tabs .chart-tab-list {
   margin: 0 0 10px 0;
 }
 
-/* line 1159, resources/scss/pages/_location.scss */
+/* line 1135, resources/scss/pages/_location.scss */
 #location-stations #station-charts-tabs .chart-tab-list li {
   display: inline-block;
 }
 
-/* line 1162, resources/scss/pages/_location.scss */
+/* line 1138, resources/scss/pages/_location.scss */
 #location-stations #station-charts-tabs .chart-tab-list li a {
   display: block;
   padding: 8px 10px;
   color: #233a70;
 }
 
-/* line 1168, resources/scss/pages/_location.scss */
+/* line 1144, resources/scss/pages/_location.scss */
 #location-stations #station-charts-tabs .chart-tab-list li.selected {
   background-color: #d5e8f2;
 }
 
-/* line 1174, resources/scss/pages/_location.scss */
+/* line 1150, resources/scss/pages/_location.scss */
 #location-stations #station-charts-tabs .chart-tabs-wrap {
   position: relative;
   height: 300px;
 }
 
-/* line 1179, resources/scss/pages/_location.scss */
+/* line 1155, resources/scss/pages/_location.scss */
 #location-stations #station-charts-tabs .chart-tab {
   position: absolute;
   top: 0;
@@ -7635,50 +7599,15 @@ body.detail-open #nav-overlay {
   transition: left 0s ease 0.25s, opacity 0.25s ease 0s;
 }
 
-/* line 1185, resources/scss/pages/_location.scss */
+/* line 1161, resources/scss/pages/_location.scss */
 #location-stations #station-charts-tabs .chart-tab.selected {
   left: 0;
   opacity: 1;
   transition: left 0s ease 0s, opacity 0.25s ease 0s;
 }
 
-/* line 2, resources/scss/pages/_variable.scss */
-.page-type-variables #viewport {
-  position: relative;
-  overflow: hidden;
-  height: calc(100% - 110px);
-  width: calc(80% - 50px);
-  left: calc(20% + 30px);
-  top: 110px;
-}
-
-/* line 11, resources/scss/pages/_variable.scss */
-.page-type-variables #main-content-wrap {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-}
-
-/* line 14, resources/scss/pages/_variable.scss */
-.page-type-variables #main-content-wrap #variable-map {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-}
-
-/* line 18, resources/scss/pages/_variable.scss */
-.page-type-variables #main-content-wrap #map-seasons-container {
-  position: absolute;
-  top: 20px;
-  left: calc(20% + 35px);
-}
-
-/* line 24, resources/scss/pages/_variable.scss */
-.page-type-variables #main-content-wrap .fs-dropdown {
+/* line 1, resources/scss/pages/_variable.scss */
+.variables-fs-dropdown, .page-type-variables #main-content-wrap .fs-dropdown, .scenario-map-overlay-container .left-scenario-dropdown .fs-dropdown, .scenario-map-overlay-container .right-scenario-dropdown .fs-dropdown {
   margin: 0;
   -webkit-transition: 0.25s;
   -moz-transition: 0.25s;
@@ -7686,12 +7615,12 @@ body.detail-open #nav-overlay {
   transition: 0.25s;
 }
 
-/* line 28, resources/scss/pages/_variable.scss */
-.page-type-variables #main-content-wrap .fs-dropdown button {
+/* line 5, resources/scss/pages/_variable.scss */
+.variables-fs-dropdown button, .page-type-variables #main-content-wrap .fs-dropdown button, .scenario-map-overlay-container .left-scenario-dropdown .fs-dropdown button, .scenario-map-overlay-container .right-scenario-dropdown .fs-dropdown button {
   height: auto;
   padding: 15px;
   padding-right: 40px;
-  background: rgba(255, 255, 255, 0.6);
+  background: rgba(255, 255, 255, 0.5);
   border: 0px solid #ffffff;
   color: #0058cf;
   -webkit-border-radius: 0;
@@ -7706,17 +7635,16 @@ body.detail-open #nav-overlay {
   transition: 0.25s;
 }
 
-/* line 43, resources/scss/pages/_variable.scss */
-.page-type-variables #main-content-wrap .fs-dropdown-open .fs-dropdown-selected,
-.page-type-variables #main-content-wrap .fs-dropdown-focus .fs-dropdown-selected {
+/* line 19, resources/scss/pages/_variable.scss */
+.variables-fs-dropdown.fs-dropdown-open .fs-dropdown-selected, .page-type-variables #main-content-wrap .fs-dropdown-open.fs-dropdown .fs-dropdown-selected, .scenario-map-overlay-container .left-scenario-dropdown .fs-dropdown-open.fs-dropdown .fs-dropdown-selected, .scenario-map-overlay-container .right-scenario-dropdown .fs-dropdown-open.fs-dropdown .fs-dropdown-selected, .variables-fs-dropdown.fs-dropdown-focus .fs-dropdown-selected, .page-type-variables #main-content-wrap .fs-dropdown-focus.fs-dropdown .fs-dropdown-selected, .scenario-map-overlay-container .left-scenario-dropdown .fs-dropdown-focus.fs-dropdown .fs-dropdown-selected, .scenario-map-overlay-container .right-scenario-dropdown .fs-dropdown-focus.fs-dropdown .fs-dropdown-selected {
   -webkit-box-shadow: none;
   -moz-box-shadow: none;
   box-shadow: none;
   background: #ffffff;
 }
 
-/* line 49, resources/scss/pages/_variable.scss */
-.page-type-variables #main-content-wrap .fs-dropdown-options {
+/* line 25, resources/scss/pages/_variable.scss */
+.variables-fs-dropdown .fs-dropdown-options, .page-type-variables #main-content-wrap .fs-dropdown .fs-dropdown-options, .scenario-map-overlay-container .left-scenario-dropdown .fs-dropdown .fs-dropdown-options, .scenario-map-overlay-container .right-scenario-dropdown .fs-dropdown .fs-dropdown-options {
   background: rgba(255, 255, 255, 0.8);
   border: none;
   border-radius: 0;
@@ -7725,24 +7653,59 @@ body.detail-open #nav-overlay {
   box-shadow: none;
 }
 
-/* line 55, resources/scss/pages/_variable.scss */
-.page-type-variables #main-content-wrap .fs-dropdown-options button {
+/* line 31, resources/scss/pages/_variable.scss */
+.variables-fs-dropdown .fs-dropdown-options button, .page-type-variables #main-content-wrap .fs-dropdown .fs-dropdown-options button, .scenario-map-overlay-container .left-scenario-dropdown .fs-dropdown .fs-dropdown-options button, .scenario-map-overlay-container .right-scenario-dropdown .fs-dropdown .fs-dropdown-options button {
   padding: 10px;
   font-size: 1rem;
 }
 
-/* line 59, resources/scss/pages/_variable.scss */
-.page-type-variables #main-content-wrap .fs-dropdown-options button:hover {
+/* line 35, resources/scss/pages/_variable.scss */
+.variables-fs-dropdown .fs-dropdown-options button:hover, .page-type-variables #main-content-wrap .fs-dropdown .fs-dropdown-options button:hover, .scenario-map-overlay-container .left-scenario-dropdown .fs-dropdown .fs-dropdown-options button:hover, .scenario-map-overlay-container .right-scenario-dropdown .fs-dropdown .fs-dropdown-options button:hover {
   background: #ebebeb;
 }
 
-/* line 67, resources/scss/pages/_variable.scss */
+/* line 42, resources/scss/pages/_variable.scss */
+.page-type-variables #viewport {
+  position: relative;
+  overflow: hidden;
+  height: calc(100% - 110px);
+  width: calc(80% - 50px);
+  left: calc(20% + 30px);
+  top: 110px;
+}
+
+/* line 51, resources/scss/pages/_variable.scss */
+.page-type-variables #main-content-wrap {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+
+/* line 54, resources/scss/pages/_variable.scss */
+.page-type-variables #main-content-wrap #variable-map {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+
+/* line 58, resources/scss/pages/_variable.scss */
+.page-type-variables #main-content-wrap #map-seasons-container {
+  position: absolute;
+  top: 20px;
+  left: calc(20% + 35px);
+}
+
+/* line 69, resources/scss/pages/_variable.scss */
 .page-type-variables .data-accordion-actions {
   float: right;
   margin-top: -15px;
 }
 
-/* line 71, resources/scss/pages/_variable.scss */
+/* line 73, resources/scss/pages/_variable.scss */
 .page-type-variables .data-accordion-actions a {
   display: inline-block;
   padding: 10px;
@@ -7753,19 +7716,19 @@ body.detail-open #nav-overlay {
   transition: 0.25s;
 }
 
-/* line 80, resources/scss/pages/_variable.scss */
+/* line 82, resources/scss/pages/_variable.scss */
 .page-type-variables .data-accordion-actions a .icon {
   margin: 0 8px 0 0;
   font-size: 1.25rem;
   color: #f5442d;
 }
 
-/* line 86, resources/scss/pages/_variable.scss */
+/* line 88, resources/scss/pages/_variable.scss */
 .page-type-variables .data-accordion-actions a:hover {
   background: #d5e8f2;
 }
 
-/* line 93, resources/scss/pages/_variable.scss */
+/* line 95, resources/scss/pages/_variable.scss */
 .page-type-variables #vars-menu .layer-info {
   display: none;
   position: absolute;
@@ -7780,7 +7743,7 @@ body.detail-open #nav-overlay {
   white-space: normal;
 }
 
-/* line 106, resources/scss/pages/_variable.scss */
+/* line 108, resources/scss/pages/_variable.scss */
 .page-type-variables #vars-menu .layer-info:before {
   content: '';
   display: block;
@@ -7793,19 +7756,19 @@ body.detail-open #nav-overlay {
   border-color: transparent #ffffff transparent transparent;
 }
 
-/* line 118, resources/scss/pages/_variable.scss */
+/* line 120, resources/scss/pages/_variable.scss */
 .page-type-variables #vars-menu .layer-info h3 {
   margin: 0 0 10px 0;
   font-size: 1.625rem;
   color: #f5442d;
 }
 
-/* line 124, resources/scss/pages/_variable.scss */
+/* line 126, resources/scss/pages/_variable.scss */
 .page-type-variables #vars-menu .layer-info p {
   margin: 0 0 12px 0;
 }
 
-/* line 129, resources/scss/pages/_variable.scss */
+/* line 131, resources/scss/pages/_variable.scss */
 .page-type-variables #vars-menu .help {
   padding: 0;
   float: left;
@@ -7816,21 +7779,21 @@ body.detail-open #nav-overlay {
   margin-right: 7px;
 }
 
-/* line 141, resources/scss/pages/_variable.scss */
+/* line 143, resources/scss/pages/_variable.scss */
 .page-type-variables #vars-legend h5 {
   margin: 0 0 6px 0;
   font: 1rem/1em "CESans-Heavy", Helvetica, "Helvetica Neue", Arial, sans-serif;
   color: #233a70;
 }
 
-/* line 147, resources/scss/pages/_variable.scss */
+/* line 149, resources/scss/pages/_variable.scss */
 .page-type-variables #vars-legend h6 {
   margin: 0 0 10px 0;
   font: 0.75rem/1.25em "CESans", Roboto, Helvetica, "Helvetica Neue", Arial, sans-serif;
   color: #5f5f5f;
 }
 
-/* line 153, resources/scss/pages/_variable.scss */
+/* line 155, resources/scss/pages/_variable.scss */
 .page-type-variables #vars-legend .legend {
   width: 100%;
   margin: 0 0 10px 0;
@@ -7840,35 +7803,35 @@ body.detail-open #nav-overlay {
   color: #233a70;
 }
 
-/* line 161, resources/scss/pages/_variable.scss */
+/* line 163, resources/scss/pages/_variable.scss */
 .page-type-variables #vars-legend .legend ul {
   margin: 15px 0 0 0;
 }
 
-/* line 165, resources/scss/pages/_variable.scss */
+/* line 167, resources/scss/pages/_variable.scss */
 .page-type-variables #vars-legend .legend li {
   margin: 10px 0;
 }
 
-/* line 169, resources/scss/pages/_variable.scss */
+/* line 171, resources/scss/pages/_variable.scss */
 .page-type-variables #vars-legend .legend .color {
   width: 8%;
   margin: 0 8% 0 0;
   padding: 0 0 8% 0;
 }
 
-/* line 177, resources/scss/pages/_variable.scss */
+/* line 179, resources/scss/pages/_variable.scss */
 .page-type-variables .chart-legend {
   overflow: hidden;
   padding-top: 20px;
 }
 
-/* line 182, resources/scss/pages/_variable.scss */
+/* line 184, resources/scss/pages/_variable.scss */
 .page-type-variables .ol-zoom {
   display: none;
 }
 
-/* line 186, resources/scss/pages/_variable.scss */
+/* line 188, resources/scss/pages/_variable.scss */
 .page-type-variables .ol-scale-line {
   background: rgba(0, 60, 136, 0.3);
   border-radius: 4px;
@@ -7878,7 +7841,7 @@ body.detail-open #nav-overlay {
   right: 100px;
 }
 
-/* line 195, resources/scss/pages/_variable.scss */
+/* line 197, resources/scss/pages/_variable.scss */
 .page-type-variables #district-trigger {
   position: absolute;
   top: 15%;
@@ -7904,7 +7867,7 @@ body.detail-open #nav-overlay {
   clear: both;
 }
 
-/* line 206, resources/scss/pages/_variable.scss */
+/* line 208, resources/scss/pages/_variable.scss */
 .page-type-variables #district-trigger span {
   display: block;
   float: left;
@@ -7912,7 +7875,7 @@ body.detail-open #nav-overlay {
   color: #0058cf;
 }
 
-/* line 213, resources/scss/pages/_variable.scss */
+/* line 215, resources/scss/pages/_variable.scss */
 .page-type-variables #district-trigger .text {
   margin-top: -2px;
   text-indent: -300px;
@@ -7922,194 +7885,247 @@ body.detail-open #nav-overlay {
   transition: text-indent 0.5s;
 }
 
-/* line 219, resources/scss/pages/_variable.scss */
+/* line 221, resources/scss/pages/_variable.scss */
 .page-type-variables #district-trigger .icon {
   padding-left: 10px;
   font-size: 1.25rem;
 }
 
-/* line 224, resources/scss/pages/_variable.scss */
+/* line 226, resources/scss/pages/_variable.scss */
 .page-type-variables #district-trigger:hover {
   padding-left: 15px;
 }
 
-/* line 227, resources/scss/pages/_variable.scss */
+/* line 229, resources/scss/pages/_variable.scss */
 .page-type-variables #district-trigger:hover .text {
   text-indent: 0;
 }
 
-/* line 233, resources/scss/pages/_variable.scss */
+/* line 235, resources/scss/pages/_variable.scss */
 .esri-view-width-greater-than-xsmall .esri-expand__content {
   z-index: 100;
 }
 
-/* line 236, resources/scss/pages/_variable.scss */
+/* line 238, resources/scss/pages/_variable.scss */
 .esri-scale-bar.esri-widget {
   margin-bottom: 45px;
 }
 
-/* line 239, resources/scss/pages/_variable.scss */
+/* line 241, resources/scss/pages/_variable.scss */
 .legend-image {
   max-height: 16rem;
   max-width: none;
 }
 
-/* line 243, resources/scss/pages/_variable.scss */
+/* line 245, resources/scss/pages/_variable.scss */
 .scenario-map-overlay-container {
   position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
   height: 100%;
   width: 100%;
   pointer-events: none;
+  display: flex;
+  z-index: 100;
+  flex-flow: row wrap;
+  justify-content: flex-end;
+  align-content: flex-end;
 }
 
-/* line 248, resources/scss/pages/_variable.scss */
+/* line 259, resources/scss/pages/_variable.scss */
 .scenario-map-overlay-container > * {
   pointer-events: auto;
 }
 
-/* line 249, resources/scss/pages/_variable.scss */
+/* line 261, resources/scss/pages/_variable.scss */
 .scenario-map-overlay-container .movable {
   position: absolute;
   top: 0;
   left: 50%;
-  width: 5px;
+  width: 4px;
   height: 100%;
   margin: 0;
   padding: 0 !important;
-  background: #ffffff;
-  z-index: 2;
+  background: white;
+  z-index: -1;
   cursor: col-resize;
+  box-shadow: 1px 0 2px 0 rgba(0, 0, 0, 0.15);
 }
 
-/* line 261, resources/scss/pages/_variable.scss */
+/* line 273, resources/scss/pages/_variable.scss */
 .scenario-map-overlay-container .movable .handle {
   display: block;
   position: absolute;
   top: 45%;
-  left: -34px;
-  width: 70px;
-  height: 36px;
+  left: -23px;
+  width: 50px;
+  height: 29px;
   -webkit-border-radius: 20px;
   -moz-border-radius: 20px;
   -ms-border-radius: 20px;
   -o-border-radius: 20px;
   border-radius: 20px;
   background: url(../img/swipe-arrows-stripe.png) center center rgba(34, 105, 179, 0.87);
-}
-
-/* line 273, resources/scss/pages/_variable.scss */
-.scenario-map-overlay-container .left-scenario-controls {
-  position: absolute;
-  bottom: 20px;
-  left: 10px;
-  max-width: 45%;
-}
-
-/* line 279, resources/scss/pages/_variable.scss */
-.scenario-map-overlay-container .right-scenario-controls {
-  position: absolute;
-  bottom: 20px;
-  right: 10px;
-  max-width: 45%;
-}
-
-/* line 284, resources/scss/pages/_variable.scss */
-.scenario-map-overlay-container .right-scenario-controls .right-scenario-dropdown, .scenario-map-overlay-container .right-scenario-controls .year {
-  float: right;
+  background-size: 110% auto;
+  background-repeat: no-repeat;
+  box-shadow: 1px 0 2px 0 rgba(0, 0, 0, 0.15);
 }
 
 /* line 288, resources/scss/pages/_variable.scss */
-.scenario-map-overlay-container .left-scenario-dropdown, .scenario-map-overlay-container .right-scenario-dropdown {
-  width: 200px;
-  width: 16rem;
-  height: 50px;
-  margin: 5px;
-  float: left;
+.scenario-map-overlay-container .bottom-scenario-controls {
+  display: flex;
+  flex-flow: row nowrap;
+  flex: 0 0 auto;
+  width: 100%;
+  pointer-events: none;
+  padding: 1rem;
 }
 
-/* line 295, resources/scss/pages/_variable.scss */
+/* line 297, resources/scss/pages/_variable.scss */
+.scenario-map-overlay-container .left-scenario-controls {
+  justify-self: flex-start;
+  align-self: flex-end;
+  display: flex;
+  flex: 1 0 50%;
+  justify-content: flex-start;
+  flex-flow: row wrap;
+}
+
+/* line 305, resources/scss/pages/_variable.scss */
+.scenario-map-overlay-container .left-scenario-controls > * {
+  pointer-events: auto;
+}
+
+/* line 307, resources/scss/pages/_variable.scss */
+.scenario-map-overlay-container .right-scenario-controls {
+  justify-self: flex-end;
+  align-self: flex-end;
+  display: flex;
+  flex: 1 0 50%;
+  justify-content: flex-start;
+  flex-flow: row-reverse wrap;
+}
+
+/* line 315, resources/scss/pages/_variable.scss */
+.scenario-map-overlay-container .right-scenario-controls > * {
+  pointer-events: auto;
+}
+
+/* line 318, resources/scss/pages/_variable.scss */
+.scenario-map-overlay-container .left-scenario-dropdown, .scenario-map-overlay-container .right-scenario-dropdown {
+  flex: 0 auto;
+  width: 14rem;
+  margin: 5px;
+}
+
+/* line 322, resources/scss/pages/_variable.scss */
+.scenario-map-overlay-container .left-scenario-dropdown .fs-dropdown, .scenario-map-overlay-container .right-scenario-dropdown .fs-dropdown {
+  position: relative;
+  float: none;
+}
+
+/* line 326, resources/scss/pages/_variable.scss */
+.scenario-map-overlay-container .left-scenario-dropdown .fs-dropdown button, .scenario-map-overlay-container .right-scenario-dropdown .fs-dropdown button {
+  padding: 1rem !important;
+  font-size: 0.8rem !important;
+  line-height: 0.7rem !important;
+}
+
+/* line 332, resources/scss/pages/_variable.scss */
 .scenario-map-overlay-container .left-scenario-dropdown .dropdown, .scenario-map-overlay-container .right-scenario-dropdown .dropdown {
   display: block;
+  padding: 1rem;
+  font-size: 0.8rem;
+  line-height: 0.7rem;
   text-align: center;
-  background: rgba(255, 255, 255, 0.83);
-  font: 12px/40px montserrat-regular, sans-serif;
+  background: none;
+  font-family: montserrat-regular, sans-serif;
   color: #2269b3;
   letter-spacing: 1px;
   text-transform: uppercase;
   border: solid #ffffff 1px;
+  padding-top: 0.75rem;
+  padding-bottom: 0.75rem;
 }
 
-/* line 307, resources/scss/pages/_variable.scss */
+/* line 346, resources/scss/pages/_variable.scss */
+.scenario-map-overlay-container .left-scenario-dropdown .dropdown button, .scenario-map-overlay-container .right-scenario-dropdown .dropdown button {
+  background: rgba(255, 255, 255, 0.83);
+}
+
+/* line 352, resources/scss/pages/_variable.scss */
 .scenario-map-overlay-container .year {
-  float: left;
-  max-width: 100%;
-  position: relative;
-  width: 23rem;
-  height: 50px;
-  margin: 5px;
+  flex: 1 0 auto;
+  max-width: 96%;
+  min-width: 20rem;
+  height: 2.7rem;
   background: rgba(255, 255, 255, 0.5);
+  display: flex;
+  flex-flow: row nowrap;
+  align-items: center;
+  margin: 5px;
   -webkit-transition: 0.25s;
   -moz-transition: 0.25s;
   -o-transition: 0.25s;
   transition: 0.25s;
 }
 
-/* line 317, resources/scss/pages/_variable.scss */
+/* line 364, resources/scss/pages/_variable.scss */
 .scenario-map-overlay-container .year:hover {
-  background: rgba(255, 255, 255, 0.9);
+  background: rgba(255, 255, 255, 0.7);
 }
 
-/* line 321, resources/scss/pages/_variable.scss */
+/* line 368, resources/scss/pages/_variable.scss */
 .scenario-map-overlay-container .year .ui-slider {
-  top: 20px;
-  left: 15%;
-  width: 16rem;
-  max-width: calc(100% - 7rem);
+  position: relative;
+  flex: 1 0 auto;
+  margin: 0.7rem;
 }
 
-/* line 326, resources/scss/pages/_variable.scss */
+/* line 372, resources/scss/pages/_variable.scss */
 .scenario-map-overlay-container .year .ui-slider .ui-slider-handle {
-  top: -14px;
-  width: 36px;
-  height: 36px;
-  margin: 0 0 -18px -18px;
+  width: 1.8rem;
+  height: 1.8rem;
+  border: 0.18rem solid #f5442d;
+  font-size: 1.2rem;
+  line-height: 1.2rem;
   background: #ffffff;
-  border: 4px solid #f5442d;
   text-align: center;
-  font-size: 1.5rem;
-  line-height: 1.375rem;
+  top: -0.7rem;
+  margin: 0;
+  margin-left: -0.9rem;
+  padding: 0;
   color: #f5442d;
   -webkit-box-shadow: 0 0 4px rgba(0, 88, 207, 0.25);
   -moz-box-shadow: 0 0 4px rgba(0, 88, 207, 0.25);
   box-shadow: 0 0 4px rgba(0, 88, 207, 0.25);
 }
 
-/* line 339, resources/scss/pages/_variable.scss */
+/* line 387, resources/scss/pages/_variable.scss */
 .scenario-map-overlay-container .year .ui-slider .ui-slider-handle:hover {
   -webkit-box-shadow: 0 0 7px rgba(0, 88, 207, 0.4);
   -moz-box-shadow: 0 0 7px rgba(0, 88, 207, 0.4);
   box-shadow: 0 0 7px rgba(0, 88, 207, 0.4);
 }
 
-/* line 345, resources/scss/pages/_variable.scss */
+/* line 393, resources/scss/pages/_variable.scss */
 .scenario-map-overlay-container .year .year-label {
-  position: absolute;
-  top: 13px;
-  width: 3.5rem;
+  flex: 0 auto;
   text-align: center;
+  margin: 0.5rem 1rem;
 }
 
-/* line 351, resources/scss/pages/_variable.scss */
-.scenario-map-overlay-container .year .year-label.year-min {
-  left: 0;
+/* line 400, resources/scss/pages/_variable.scss */
+.scenario-map-overlay-container .tooltip {
+  top: -2.6rem;
+  left: 50%;
+  padding: 0.5rem;
+  font: 0.9rem/0.9rem Roboto, Helvetica, "Helvetica Neue", Arial, sans-serif;
 }
 
-/* line 355, resources/scss/pages/_variable.scss */
-.scenario-map-overlay-container .year .year-label.year-max {
-  right: 0;
-}
-
-/* line 361, resources/scss/pages/_variable.scss */
+/* line 409, resources/scss/pages/_variable.scss */
 .county-overlay {
   padding: 2rem;
   background: #0058cf;
@@ -8123,12 +8139,12 @@ body.detail-open #nav-overlay {
   color: white;
 }
 
-/* line 368, resources/scss/pages/_variable.scss */
+/* line 416, resources/scss/pages/_variable.scss */
 .county-overlay .county-overlay-inner {
   max-width: 900px;
 }
 
-/* line 372, resources/scss/pages/_variable.scss */
+/* line 420, resources/scss/pages/_variable.scss */
 .county-overlay .county-overlay-close {
   position: absolute;
   top: 10px;
@@ -8138,7 +8154,7 @@ body.detail-open #nav-overlay {
   cursor: pointer;
 }
 
-/* line 381, resources/scss/pages/_variable.scss */
+/* line 428, resources/scss/pages/_variable.scss */
 .county-overlay header {
   position: relative !important;
   background-color: transparent !important;
@@ -8155,12 +8171,12 @@ body.detail-open #nav-overlay {
   clear: both;
 }
 
-/* line 385, resources/scss/pages/_variable.scss */
+/* line 432, resources/scss/pages/_variable.scss */
 .county-overlay header a {
   color: white;
 }
 
-/* line 387, resources/scss/pages/_variable.scss */
+/* line 434, resources/scss/pages/_variable.scss */
 .county-overlay .data-accordion-actions {
   float: none;
   position: inherit;
@@ -8178,44 +8194,44 @@ body.detail-open #nav-overlay {
   clear: both;
 }
 
-/* line 392, resources/scss/pages/_variable.scss */
+/* line 439, resources/scss/pages/_variable.scss */
 .county-overlay .data-accordion-actions .how-to-read {
   position: inherit;
   float: left;
 }
 
-/* line 396, resources/scss/pages/_variable.scss */
+/* line 443, resources/scss/pages/_variable.scss */
 .county-overlay .data-accordion-actions .download-data, .county-overlay .data-accordion-actions .download-image {
   float: right;
 }
 
-/* line 399, resources/scss/pages/_variable.scss */
+/* line 446, resources/scss/pages/_variable.scss */
 .county-overlay .data-accordion-actions a {
   color: white !important;
 }
 
-/* line 400, resources/scss/pages/_variable.scss */
+/* line 447, resources/scss/pages/_variable.scss */
 .county-overlay .data-accordion-actions a .icon {
   color: white !important;
 }
 
-/* line 404, resources/scss/pages/_variable.scss */
+/* line 451, resources/scss/pages/_variable.scss */
 .county-overlay .range {
   position: relative;
   margin-top: 35px;
 }
 
-/* line 405, resources/scss/pages/_variable.scss */
+/* line 452, resources/scss/pages/_variable.scss */
 .county-overlay .range .range-label {
   color: white;
 }
 
-/* line 406, resources/scss/pages/_variable.scss */
+/* line 453, resources/scss/pages/_variable.scss */
 .county-overlay .range .ui-slider {
   position: relative;
 }
 
-/* line 408, resources/scss/pages/_variable.scss */
+/* line 455, resources/scss/pages/_variable.scss */
 .county-overlay .legend-item {
   background: rgba(255, 255, 255, 0.3);
 }
@@ -8761,7 +8777,7 @@ body.detail-open #nav-overlay {
 /* line 418, resources/scss/pages/_stations.scss */
 #station-overlay-header h5 {
   float: left;
-  width: 50%;
+  width: 30%;
   font-size: 1.125rem;
   font-family: "CESans", Roboto, Helvetica, "Helvetica Neue", Arial, sans-serif;
 }
@@ -8772,7 +8788,7 @@ body.detail-open #nav-overlay {
   text-decoration: underline;
 }
 
-/* line 426, resources/scss/pages/_stations.scss */
+/* line 427, resources/scss/pages/_stations.scss */
 .form-group {
   font-size: 0.75rem;
 }
@@ -8788,13 +8804,13 @@ body.detail-open #nav-overlay {
   clear: both;
 }
 
-/* line 430, resources/scss/pages/_stations.scss */
+/* line 431, resources/scss/pages/_stations.scss */
 .form-group label {
   color: #ffffff;
   display: block;
 }
 
-/* line 435, resources/scss/pages/_stations.scss */
+/* line 436, resources/scss/pages/_stations.scss */
 .form-group select {
   font-family: Roboto, Helvetica, "Helvetica Neue", Arial, sans-serif;
   font-size: 0.75rem;
@@ -8802,7 +8818,7 @@ body.detail-open #nav-overlay {
   padding: 3px;
 }
 
-/* line 442, resources/scss/pages/_stations.scss */
+/* line 443, resources/scss/pages/_stations.scss */
 .form-group input {
   display: inline-block;
   width: 100%;
@@ -8814,17 +8830,17 @@ body.detail-open #nav-overlay {
   padding: 4px 8px;
 }
 
-/* line 453, resources/scss/pages/_stations.scss */
+/* line 454, resources/scss/pages/_stations.scss */
 .form-group .field-pair {
   float: left;
 }
 
-/* line 457, resources/scss/pages/_stations.scss */
+/* line 458, resources/scss/pages/_stations.scss */
 .form-group .field-pair.append input {
   width: 100%;
 }
 
-/* line 461, resources/scss/pages/_stations.scss */
+/* line 462, resources/scss/pages/_stations.scss */
 .form-group .field-pair.append .append {
   color: #ffffff;
   display: inline-block;
@@ -8832,7 +8848,7 @@ body.detail-open #nav-overlay {
   vertical-align: middle;
 }
 
-/* line 471, resources/scss/pages/_stations.scss */
+/* line 472, resources/scss/pages/_stations.scss */
 .station_overlay_text p {
   width: 100%;
   padding: 10px 0;
@@ -8842,14 +8858,14 @@ body.detail-open #nav-overlay {
   font-family: Roboto, Helvetica, "Helvetica Neue", Arial, sans-serif;
 }
 
-/* line 479, resources/scss/pages/_stations.scss */
+/* line 480, resources/scss/pages/_stations.scss */
 .station_overlay_text {
   width: 100%;
   min-height: 100px;
   overflow-y: auto;
 }
 
-/* line 486, resources/scss/pages/_stations.scss */
+/* line 487, resources/scss/pages/_stations.scss */
 .station-overlay-content {
   position: absolute;
   bottom: 0;
@@ -8861,7 +8877,7 @@ body.detail-open #nav-overlay {
   z-index: 20;
 }
 
-/* line 496, resources/scss/pages/_stations.scss */
+/* line 497, resources/scss/pages/_stations.scss */
 .station-overlay-column {
   position: relative;
   float: left;
@@ -8869,12 +8885,12 @@ body.detail-open #nav-overlay {
   height: 100%;
 }
 
-/* line 502, resources/scss/pages/_stations.scss */
+/* line 503, resources/scss/pages/_stations.scss */
 .station-overlay-column.left {
   padding-right: 40px;
 }
 
-/* line 505, resources/scss/pages/_stations.scss */
+/* line 506, resources/scss/pages/_stations.scss */
 .station-overlay-column.left:after {
   content: '';
   display: block;
@@ -8887,17 +8903,17 @@ body.detail-open #nav-overlay {
   border-left-color: #ffffff;
 }
 
-/* line 518, resources/scss/pages/_stations.scss */
+/* line 519, resources/scss/pages/_stations.scss */
 #stations-map .esri-display-object, #stations-map .esri-display-object svg {
   pointer-events: none;
 }
 
-/* line 521, resources/scss/pages/_stations.scss */
+/* line 522, resources/scss/pages/_stations.scss */
 #stations-map .esri-display-object svg {
   filter: drop-shadow(0.5px 0.5px 1px rgba(0, 0, 0, 0.2));
 }
 
-/* line 524, resources/scss/pages/_stations.scss */
+/* line 525, resources/scss/pages/_stations.scss */
 #stations-map svg g circle {
   pointer-events: all;
   cursor: pointer;

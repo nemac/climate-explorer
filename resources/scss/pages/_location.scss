@@ -258,7 +258,7 @@
   .data-accordion {
     @include full-size;
     @include legacy-clearfix;
-
+    max-height: calc(100vh - 150px);
     .data-accordion-tab {
       position: relative;
       float: left;
@@ -929,31 +929,7 @@
   #location-station-map {
     @include full-size;
 
-    .ol-attribution, .ol-rotate {
-      display: none;
-    }
 
-    .ol-zoom {
-      position: absolute;
-      z-index: 1;
-      top: 50%;
-      right: 2%;
-      @include transform(translateY(-50%));
-
-      button {
-        display: block;
-        width: 30px;
-        height: 30px;
-        margin: 10px 0;
-        padding: 0;
-        text-align: center;
-        background: $white;
-        color: $orange1;
-        font: 1.125rem/10px $roboto;
-        border: 3px solid $orange1;
-        @include border-radius(50%);
-      }
-    }
   }
 
   // OVERLAYS

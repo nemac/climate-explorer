@@ -33,7 +33,7 @@
     // window - a jQuery object containing the `window` that contains the
     //      widget. Useful for iframe interaction.
 
-    // =========== Private methods provided by the base widgetn ============
+    // =========== Private methods provided by the base widget ============
     // _delay(fn[, delay=0]) - calls fn after the delay with `this` context
     // _focusable(element) - set up element to apply ui-state-focus on focus
     //      event handlers are cleaned up on destroy
@@ -92,6 +92,7 @@
       rightOpacity: 1,
       showCounties: true,
       defaultExtent: {xmin: -119, xmax: -73, ymin: 18, ymax: 54},
+      constrainMapToExtent: {xmin: -119, xmax: -73, ymin: 18, ymax: 54},
       //extent provides the initial view area of the map.
       extent: null,
       //zoom and center are ignored if extent is provided.
@@ -340,7 +341,7 @@
       'esri/widgets/Expand',
       // 'esri/widgets/OpacitySlider',
       // 'esri/widgets/ColorSlider',
-      'esri/widgets/BasemapGallery',
+      // 'esri/widgets/BasemapGallery',
       'esri/widgets/ScaleBar',
       'esri/geometry/SpatialReference',
       // 'esri/layers/CSVLayer',
@@ -468,38 +469,40 @@
     },
     _initControlsOverlay: function () {
       this.nodes.$controlsOverLayContainer = $('<div>', {'class': 'scenario-map-overlay-container'});
-      this.nodes.$controlsOverLayContainer.append(`
+      this.nodes.$controlsOverLayContainer.append(`        
         <div class="movable slider-div">
           <div class="handle"></div>
         </div>
-        <div class="left-scenario-controls">
-         <div class="left-scenario-dropdown">
-          <select name="leftScenario" class="dropdown">
-            <option value="historical">HISTORICAL</option>
-            <option value="rcp45">LOWER EMISSIONS</option>
-          </select>
-        </div>
-           <div class="year left-year-slider-container">
-          <div class="year-label year-min"></div>
-          <div class="left-year-slider"></div>
-          <div class="year-label year-max"></div>
-        </div>
-        </div>
-        <div class="right-scenario-controls">
-                 
-          <div class="right-scenario-dropdown" >
-          <select name="rightScenario" class="dropdown">
-            <option value="rcp85">HIGHER EMISSIONS</option>
-            <option value="rcp45">LOWER EMISSIONS</option>
-          </select></div>
-          <div class="year right-year-slider-container">
-            <div class="year-label year-min"></div>
-            <div class="right-year-slider"></div>
-            <div class="year-label year-max"></div>
+        <div class="bottom-scenario-controls">
+          <div class="left-scenario-controls">
+            <div class="left-scenario-dropdown">
+              <select name="leftScenario" class="dropdown">
+                <option value="historical">HISTORICAL</option>
+                <option value="rcp45">LOWER EMISSIONS</option>
+              </select>
+            </div>
+            <div class="year left-year-slider-container">
+              <div class="year-label year-min"></div>
+              <div class="left-year-slider"></div>
+              <div class="year-label year-max"></div>
+            </div>
+          </div>
+          <div class="right-scenario-controls">
+        
+            <div class="right-scenario-dropdown">
+              <select name="rightScenario" class="dropdown">
+                <option value="rcp85">HIGHER EMISSIONS</option>
+                <option value="rcp45">LOWER EMISSIONS</option>
+              </select></div>
+            <div class="year right-year-slider-container">
+              <div class="year-label year-min"></div>
+              <div class="right-year-slider"></div>
+              <div class="year-label year-max"></div>
+            </div>
           </div>
         </div>
-          
-    `);
+                  
+            `);
       $(this.nodes.mapContainer).append(this.nodes.$controlsOverLayContainer);
 
       this.nodes.$controlsOverLayContainer.find('.movable.slider-div').draggable({
@@ -520,7 +523,8 @@
         basemap: 'topo'
       });
       // this.map.basemap.referenceLayers.clear();
-      // this.map.basemap.referenceLayers.add(new this.dojoMods.TileLayer({url: 'https://server.arcgisonline.com/ArcGIS/rest/services/Reference/World_Boundaries_and_Places/MapServer'}));
+      this.map.basemap.referenceLayers.add(new this.dojoMods.TileLayer({url: 'https://server.arcgisonline.com/ArcGIS/rest/services/Reference/World_Boundaries_and_Places/MapServer'}));
+      this.map.basemap.referenceLayers.items.slice(-1)[0].minScale = 5000000;
       // this.map.basemap.referenceLayers.add(new this.dojoMods.TileLayer({url: 'https://services.arcgisonline.com/ArcGIS/rest/services/Canvas/World_Light_Gray_Reference/MapServer'}));
       if ((undefined === this.options.extent || null === this.options.extent) && (undefined === this.options.center || null === this.options.center)) {
         this.options.extent = this.options.defaultExtent;
@@ -537,9 +541,20 @@
           maxZoom: 10
         }
       });
+      if (this.options.constrainMapToExtent) {
+        this.constrainMapToExtent = this.dojoMods.webMercatorUtils.geographicToWebMercator(new this.dojoMods.Extent(this.options.constrainMapToExtent));
+      }
 
       // Watch view's stationary property
       this.dojoMods.watchUtils.whenTrue(this.view, "stationary", function () {
+        // Constrain map panning
+        if (this.view.extent !== undefined && this.view.extent !== null && this.constrainMapToExtent !== undefined && !this.constrainMapToExtent.contains(this.view.extent.center)) {
+          //clamp center
+          let x = Math.min(Math.max(this.view.extent.center.x, this.constrainMapToExtent.xmin), this.constrainMapToExtent.xmax);
+          let y = Math.min(Math.max(this.view.extent.center.y, this.constrainMapToExtent.ymin), this.constrainMapToExtent.ymax);
+          this.view.center = new this.dojoMods.Point({x: x, y: y, spatialReference: this.view.extent.spatialReference});
+        }
+
         // Get the new extent of the view when view is stationary.
         if (this.view.extent) {
           let xymin = this.dojoMods.webMercatorUtils.xyToLngLat(this.view.extent.xmin, this.view.extent.ymin);
@@ -555,6 +570,18 @@
           this._trigger('change', null, this.options);
         }
       }.bind(this));
+
+      this.nodes.$legendContainer = $('<div></div>');
+      this._updateLegend();
+      this.legendExpand = new this.dojoMods.Expand({
+        expandIconClass: 'esri-icon-description',
+        view: this.view,
+        content: this.nodes.$legendContainer[0],
+        expanded: true,
+      });
+
+      this.view.ui.add(this.legendExpand, 'top-left');
+      this.view.ui.move("zoom", "top-left");
 
       this.locateWidget = new this.dojoMods.Locate({
         view: this.view,   // Attaches the Locate button to the view
@@ -576,29 +603,19 @@
       //
       // this.view.ui.add(this.basemapToggle, 'top-left');
 
-      this.basemapGallery = new this.dojoMods.BasemapGallery({
-        view: this.view,
-        container: document.createElement('div')
-      });
+      // this.basemapGallery = new this.dojoMods.BasemapGallery({
+      //   view: this.view,
+      //   container: document.createElement('div')
+      // });
+      //
+      // this.bgExpand = new this.dojoMods.Expand({
+      //   expandIconClass: 'esri-icon-basemap',
+      //   view: this.view,
+      //   content: this.basemapGallery.domNode
+      // });
 
-      this.bgExpand = new this.dojoMods.Expand({
-        expandIconClass: 'esri-icon-basemap',
-        view: this.view,
-        content: this.basemapGallery.domNode
-      });
+      // this.view.ui.add(this.bgExpand, 'top-left');
 
-      this.view.ui.add(this.bgExpand, 'top-left');
-
-      this.nodes.$legendContainer = $('<div></div>');
-      this._updateLegend();
-      this.legendExpand = new this.dojoMods.Expand({
-        expandIconClass: 'esri-icon-description',
-        view: this.view,
-        content: this.nodes.$legendContainer[0],
-        expanded: true,
-      });
-
-      this.view.ui.add(this.legendExpand, 'top-left');
 
       this.scaleBar = new this.dojoMods.ScaleBar({
         view: this.view,
@@ -655,7 +672,7 @@
     },
 
     _initScenarioLayer: function (scenario, year, side, opacity) {
-      let promise = new Promise(function (resolve, reject) {
+      let promise = new Promise(function (resolve) {
         let layerClass = this.dojoMods.TileLayer;
         if (this.options.scenarios[scenario].tilesURL.endsWith('png')) { layerClass = this.dojoMods.WebTileLayer; }
         let layer = new layerClass({urlTemplate: this._getScenarioURL(scenario, year), opacity: opacity});
@@ -850,7 +867,7 @@
       let old_options = Object.assign({}, this.options);
       this._super(options);
       if (this.options.county !== old_options.county) {
-        this._countySelected();
+        this._updateOverlay();
       }
       if (this.options.extent !== old_options.extent && this.options.extent !== null) {
         this.view.goTo(new this.dojoMods.Extent(this.options.extent));
@@ -961,6 +978,7 @@
       if (this.options.leftYear === 'avg') {
         maxLabel = '2000'
       }
+
       this.nodes.$leftYearTooltip.text(this.options.scenarios[this.options.leftScenario].years.find((v) => v.value === this.options.leftYear.toString()).label);
       this.nodes.$controlsOverLayContainer.find('.left-year-slider-container .year-min').text(this.options.scenarios[this.options.leftScenario].years[0].label);
       this.nodes.$controlsOverLayContainer.find('.left-year-slider-container .year-max').text(maxLabel);
@@ -1020,7 +1038,7 @@
       if (this.nodes.$leftScenarioSelect === undefined) {
         this.nodes.$leftScenarioSelect = $(this.nodes.$controlsOverLayContainer).find(".left-scenario-controls .dropdown");
         this.nodes.$leftScenarioSelect.val(this.options.leftScenario);
-        this.nodes.$leftScenarioSelect.dropdown({bottomEdge: 10});
+        this.nodes.$leftScenarioSelect.dropdown({bottomEdge: 80});
         this.nodes.$leftScenarioSelect.on('change', function () {
           if (this.nodes.$leftScenarioSelect.val() !== undefined && this.nodes.$leftScenarioSelect.val() !== null) {
             this._setOptions({leftScenario: this.nodes.$leftScenarioSelect.val()})
@@ -1031,9 +1049,11 @@
       $(this.nodes.$leftScenarioSelect.find('option').each((i, o) => {
         if ((this.options.variables[this.options.variable].disabledScenarios || []).includes($(o).val())) {
           this.nodes.$leftScenarioSelect.dropdown("disable", $(o).val());
+          this.nodes.$leftScenarioSelect.parent().find('button[data-value="' + $(o).val() + '"]').hide()
         }
         else {
           this.nodes.$leftScenarioSelect.dropdown("enable", $(o).val());
+          this.nodes.$leftScenarioSelect.parent().find('button[data-value="' + $(o).val() + '"]').show()
         }
       }));
 
@@ -1046,7 +1066,7 @@
       if (this.nodes.$rightScenarioSelect === undefined) {
         this.nodes.$rightScenarioSelect = $(this.nodes.$controlsOverLayContainer).find(".right-scenario-controls .dropdown");
         this.nodes.$rightScenarioSelect.val(this.options.rightScenario);
-        this.nodes.$rightScenarioSelect.dropdown({bottomEdge: 10});
+        this.nodes.$rightScenarioSelect.dropdown({bottomEdge: 80});
         this.nodes.$rightScenarioSelect.on('change', function () {
           if (this.nodes.$rightScenarioSelect.val() !== undefined && this.nodes.$rightScenarioSelect.val() !== null) {
             this._setOptions({rightScenario: this.nodes.$rightScenarioSelect.val()})
@@ -1163,7 +1183,7 @@
         histobs: "false"
       });
 
-      $(window).resize(function () {this.cwg.resize()}.bind(this));
+      $('window').resize(function () {this.cwg.resize()}.bind(this));
       this.nodes.$countyOverlay.find('.county-overlay-close').click(function () {
         delete this['cwg'];
         this.options.county = null;
@@ -1192,7 +1212,7 @@
       }.bind(this));
 
       this.nodes.$countyOverlay.find('.download-image').click(function (event) {this.cwg && this.cwg.download_image(event.target, 'graph.png'); }.bind(this));
-      this.nodes.$countyOverlay.find('.download-data').click(function (event) {
+      this.nodes.$countyOverlay.find('.download-data').click(function () {
         this.nodes.$countyOverlayDownload = $(
           `<div class="download-panel overlay">
             <div class="download-inner">
@@ -1214,7 +1234,7 @@
         this.nodes.$countyOverlayDownload.find('.download_hist_obs_data').click(function (event) { this.cwg && this.cwg.download_hist_obs_data(event.target)}.bind(this));
         this.nodes.$countyOverlayDownload.find('.download_hist_mod_data').click(function (event) {this.cwg && this.cwg.download_hist_mod_data(event.target)}.bind(this));
         this.nodes.$countyOverlayDownload.find('.download_proj_mod_data').click(function (event) {this.cwg && this.cwg.download_proj_mod_data(event.target) }.bind(this));
-        this.nodes.$countyOverlayDownload.find('.download-dismiss-button').click(function (event) {this.nodes.$countyOverlayDownload.addClass("hidden").hide(); }.bind(this));
+        this.nodes.$countyOverlayDownload.find('.download-dismiss-button').click(function () {this.nodes.$countyOverlayDownload.addClass("hidden").hide(); }.bind(this));
       }.bind(this));
 
 
@@ -1303,14 +1323,14 @@
     },
     _setClipPath(element, side, value) {
       if (side === 'left') {
-        element.style.clipPath = "polygon(0 0, " + value + "px 0, " + value + "px 100%, 0% 100%)";
-        element.style.WebkitClipPath = "polygon(0 0, " + value + "px 0, " + value + "px 100%, 0% 100%)";
-        element.style.clip = "rect(" + [0, value, element.height, 0].join(' ') + ")";
+        $(element).css("clipPath", "polygon(0 0, " + value + "px 0, " + value + "px 100%, 0% 100%)");
+        $(element).css("WebkitClipPath","polygon(0 0, " + value + "px 0, " + value + "px 100%, 0% 100%)");
+        $(element).css("clip", "rect(" + [0, value + "px", element.height + "px", 0].join(' ') + ")");
       }
       else if (side === 'right') {
-        element.style.clipPath = "polygon(" + value + "px 0, 100% 0%, 100% 100%, " + value + "px 100%)";
-        element.style.WebkitClipPath = "polygon(" + value + "px 0, 100% 0%, 100% 100%, " + value + "px 100%)";
-        element.style.clip = "rect(" + [0, element.width, element.height, value].join(' ') + ")";
+        $(element).css("clipPath", "polygon(" + value + "px 0, 100% 0%, 100% 100%, " + value + "px 100%)");
+        $(element).css("WebkitClipPath", "polygon(" + value + "px 0, 100% 0%, 100% 100%, " + value + "px 100%)");
+        $(element).css("clip", "rect(" + [0, element.width + "px", element.height + "px", value+ "px"].join(' ') + ")");
       }
     }
 

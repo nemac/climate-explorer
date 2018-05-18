@@ -1,3 +1,43 @@
+.variables-fs-dropdown {
+  margin: 0;
+  @include transition(0.25s);
+
+  button {
+    height: auto;
+    padding: 15px;
+    padding-right: 40px;
+    background: transparentize($white, 0.5);
+    border: 0px solid $white;
+    color: $blue1;
+    @include border-radius(0);
+    font: 400 1.125rem/1em $roboto;
+    @include transition(0.25s);
+  }
+
+  &.fs-dropdown-open,
+  &.fs-dropdown-focus {
+    .fs-dropdown-selected {
+      @include box-shadow(none);
+      background: $white;
+    }
+  }
+
+  .fs-dropdown-options {
+    background: transparentize($white, 0.2);
+    border: none;
+    border-radius: 0;
+    @include box-shadow(none);
+
+    button {
+      padding: 10px;
+      font-size: 1rem;
+
+      &:hover {
+        background: $grey2;
+      }
+    }
+  }
+}
 .page-type-variables {
   #viewport {
     position: relative;
@@ -20,46 +60,8 @@
       top: 20px;
       left: calc(20% + 35px);
     }
-
     .fs-dropdown {
-      margin: 0;
-      @include transition(0.25s);
-
-      button {
-        height: auto;
-        padding: 15px;
-        padding-right: 40px;
-        background: transparentize($white, 0.4);
-        border: 0px solid $white;
-        color: $blue1;
-        @include border-radius(0);
-        font: 400 1.125rem/1em $roboto;
-        @include transition(0.25s);
-      }
-    }
-
-    .fs-dropdown-open,
-    .fs-dropdown-focus {
-      .fs-dropdown-selected {
-        @include box-shadow(none);
-        background: $white;
-      }
-    }
-
-    .fs-dropdown-options {
-      background: transparentize($white, 0.2);
-      border: none;
-      border-radius: 0;
-      @include box-shadow(none);
-
-      button {
-        padding: 10px;
-        font-size: 1rem;
-
-        &:hover {
-          background: $grey2;
-        }
-      }
+      @extend .variables-fs-dropdown;
     }
 
   }
@@ -242,97 +244,143 @@
 }
 .scenario-map-overlay-container {
   position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
   height: 100%;
   width: 100%;
   pointer-events: none;
+  display: flex;
+  z-index: 100;
+  flex-flow: row wrap;
+  justify-content: flex-end;
+  align-content: flex-end;
   > * {pointer-events: auto;}
+
   .movable {
     position: absolute;
     top: 0;
     left: 50%;
-    width: 5px;
+    width: 4px;
     height: 100%;
     margin: 0;
     padding: 0 !important;
-    background: $white;
-    z-index: 2;
+    background: white;
+    z-index: -1;
     cursor: col-resize;
-
+    box-shadow: 1px 0 2px 0 rgba(0, 0, 0, 0.15);
     .handle {
       display: block;
       position: absolute;
       top: 45%;
-      left: -34px;
-      width: 70px;
-      height: 36px;
+      left: -23px;
+      width: 50px;
+      height: 29px;
       @include border-radius(20px);
       background: url(../img/swipe-arrows-stripe.png) center center rgba(34, 105, 179, 0.87);
+      background-size: 110% auto;
+      background-repeat: no-repeat;
+      box-shadow: 1px 0 2px 0 rgba(0, 0, 0, 0.15);
     }
+  }
+
+  .bottom-scenario-controls {
+    display: flex;
+    flex-flow: row nowrap;
+    flex: 0 0 auto;
+    width: 100%;
+    pointer-events: none;
+    padding: 1rem;
   }
 
   .left-scenario-controls {
-    position: absolute;
-    bottom: 20px;
-    left: 10px;
-    max-width: 45%
+    justify-self: flex-start;
+    align-self: flex-end;
+    display: flex;
+    flex: 1 0 50%;
+    //padding: 1.5rem 0;
+    justify-content: flex-start;
+    flex-flow: row wrap;
+    > * {pointer-events: auto;}
   }
   .right-scenario-controls {
-    position: absolute;
-    bottom: 20px;
-    right: 10px;
-    max-width: 45%;
-    .right-scenario-dropdown, .year {
-      float: right;
-    }
+    justify-self: flex-end;
+    align-self: flex-end;
+    display: flex;
+    flex: 1 0 50%;
+    //padding: 1.5rem 0;
+    justify-content: flex-start;
+    flex-flow: row-reverse wrap;
+    > * {pointer-events: auto;}
   }
-  .left-scenario-dropdown, .right-scenario-dropdown {
-    width: 200px;
-    width: 16rem;
-    height: 50px;
-    margin: 5px;
-    float: left;
 
+  .left-scenario-dropdown, .right-scenario-dropdown {
+    flex: 0 auto;
+    width: 14rem;
+    margin: 5px;
+    .fs-dropdown {
+      @extend .variables-fs-dropdown;
+      position: relative;
+      float: none;
+      button {
+        padding: 1rem !important;
+        font-size: 0.8rem !important;
+        line-height: 0.7rem !important;
+      }
+    }
     .dropdown {
       display: block;
+      padding: 1rem;
+      font-size: 0.8rem;
+      line-height: 0.7rem;
       text-align: center;
-      background: rgba(255, 255, 255, 0.83);
-      font: 12px/40px montserrat-regular, sans-serif;
+      background: none;
+      font-family: montserrat-regular, sans-serif;
       color: #2269b3;
       letter-spacing: 1px;
       text-transform: uppercase;
       border: solid #ffffff 1px;
+      padding-top: 0.75rem;
+      padding-bottom: 0.75rem;
+      button{
+        background: rgba(255, 255, 255, 0.83);
+      }
     }
   }
 
   .year {
-    float: left;
-    max-width: 100%;
-    position: relative;
-    width: 23rem;
-    height: 50px;
+    flex: 1 0 auto;
+    max-width: 96%;
+    min-width: 20rem;
+    height: 2.7rem;
+    background: rgba(255, 255, 255, 0.5);
+    display: flex;
+    flex-flow: row nowrap;
+    align-items: center;
     margin: 5px;
-    background: transparentize($white, 0.5);
     @include transition(0.25s);
 
     &:hover {
-      background: transparentize($white, 0.1);
+      background: rgba(255, 255, 255, 0.7);
     }
 
     .ui-slider {
-      top: 20px;
-      left: 15%;
-      width: 16rem;
-      max-width: calc(100% - 7rem);
+      position: relative;
+      flex: 1 0 auto;
+      margin: 0.7rem;
       .ui-slider-handle {
-        top: -14px;
-        width: 36px;
-        height: 36px;
-        margin: 0 0 -18px -18px;
+        width: 1.8rem;
+        height: 1.8rem;
+        border: 0.18rem solid $orange1;
+        font-size: 1.2rem;
+        line-height: 1.2rem;
         background: $white;
-        border: 4px solid $orange1;
         text-align: center;
-        font-size: 1.5rem;
-        line-height: 1.375rem;
+        top: -0.7rem;
+        margin: 0;
+        margin-left: -0.9rem;
+        padding: 0;
         color: $orange1;
         @include box-shadow(0 0 4px transparentize($blue1, 0.75));
 
@@ -343,20 +391,20 @@
     }
 
     .year-label {
-      position: absolute;
-      top: 13px;
-      width: 3.5rem;
+      flex: 0 auto;
       text-align: center;
-
-      &.year-min {
-        left: 0;
-      }
-
-      &.year-max {
-        right: 0;
-      }
+      margin: 0.5rem 1rem;
+      //font-family: 'Lato', sans-serif;
     }
   }
+  .tooltip{
+    top: -2.6rem;
+    left: 50%;
+    padding: 0.5rem;
+    font: 0.9rem/0.9rem Roboto, Helvetica, "Helvetica Neue", Arial, sans-serif;
+  }
+
+
 }
 .county-overlay {
   padding: 2rem;
@@ -376,7 +424,6 @@
     font-size: 2rem;
     color: $white;
     cursor: pointer;
-
   }
   header {
     @include clearfix;
