@@ -685,7 +685,7 @@
               <div id="overlay-thresholds-container">
                 <div id="thresholds-container"></div>
                 <div class="station_overlay_text">
-                  <p style="width:65%!important;margin-left:200px;">This graph shows how often the selected threshold has been exceeded per year. For consistency, this chart excludes any years that are missing more than five daily temperature reports or more than one precipitation report in a single month. Data from <a href="https://www.ncdc.noaa.gov/data-access/land-based-station-data/land-based-datasets/global-historical-climatology-network-ghcn">Global Historical Climatology Network</a>, served by <a  target="_blank" href="http://www.rcc-acis.org/">ACIS</a>.</p>
+                  <p style="width:65%!important;margin-left:200px;">This graph shows how often the selected threshold has been exceeded per year. For consistency, this chart excludes any years that are missing more than five daily temperature reports or more than one precipitation report in a single month. Data from <a target="_blank" href="https://www.ncdc.noaa.gov/data-access/land-based-station-data/land-based-datasets/global-historical-climatology-network-ghcn">Global Historical Climatology Network</a>, served by <a  target="_blank" href="http://www.rcc-acis.org/">ACIS</a>.</p>
                 </div>
               </div>
             </div>

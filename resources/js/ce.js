@@ -296,7 +296,7 @@ especially when it comes to interacting with the DOM and handling events.
       (Object.keys(state).includes('stationName') && state.stationName) ? this.setUrlParam('station-name', state.stationName) : this.removeUrlParam('station-name');
       (Object.keys(state).includes('stationMOverMHHW') && state.stationMOverMHHW) ? this.setUrlParam('station-mhhw', state.stationMOverMHHW) : this.removeUrlParam('station-mhhw');
       Object.keys(state).includes('mode') ? this.setUrlParam('id', state['mode']) : this.removeUrlParam('mode');
-      Object.keys(state).includes('extent') ? this.setUrlParam('extent', this._extentToString(state['extent'])) : null;
+      Object.keys(state).includes('extent') && state['extent'] ? this.setUrlParam('extent', this._extentToString(state['extent'])) : null;
       Object.keys(state).includes('zoom') ? this.setUrlParam('zoom', state['zoom']) : null;
     },
 
@@ -325,7 +325,7 @@ especially when it comes to interacting with the DOM and handling events.
       Object.keys(state).includes('leftYear') ? this.setUrlParam('leftyear', state['leftYear']) : null;
       Object.keys(state).includes('rightScenario') ? this.setUrlParam('right', state['rightScenario']) : null;
       Object.keys(state).includes('rightYear') ? this.setUrlParam('rightyear', state['rightYear']) : null;
-      Object.keys(state).includes('extent') ? this.setUrlParam('extent', this._extentToString(state['extent'])) : null;
+      Object.keys(state).includes('extent') && state['extent'] ? this.setUrlParam('extent', this._extentToString(state['extent'])) : null;
       Object.keys(state).includes('zoom') ? this.setUrlParam('zoom', state['zoom']) : null;
     },
 
