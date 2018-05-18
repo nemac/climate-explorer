@@ -6,7 +6,7 @@
   "scripts": {
     "build": "npm run html:build && npm run js:build && npm run data:build && npm run css:build",
     "data:build": "mkdir -p dist/resources && cp -rf resources/data resources/img dist/resources/",
-    "js:build": "mkdir -p dist/resources && cp -rf resources/js resources/vendor dist/resources/",
+    "js:build": "mkdir -p dist/resources && babel resources/js --out-dir dist/resources/js && cp -rf resources/vendor dist/resources/",
     "html:pages": "echo \"index,location,stations,variables,error,faq,definitions,credits,about,404\"",
     "html:build": "export IFS=','; mkdir -p dist; htmlpages=$(npm run html:pages --silent); for f in $htmlpages; do echo $f && php-cgi -q ${f}.php > dist/${f}.html && mkdir -p dist/${f} && cp -f dist/${f}.html dist/${f}/index.html; done;",
     "css:build": "node-sass -o resources/css/ resources/scss/screen.scss --include-path node_modules/compass-mixins/lib/ --output-style expanded --source-comments && mkdir -p dist/resources && cp -rf resources/fonts resources/css dist/resources/",
@@ -26,7 +26,8 @@
   "homepage": "https://bitbucket.org/jwilson-waystone/climate-explorer#readme",
   "devDependencies": {
     "babel-cli": "^6.26.0",
-    "babel-plugin-transform-runtime": "^6.23.0",
+    "babel-plugin-transform-es2015-literals": "^6.22.0",
+    "babel-plugin-transform-object-assign": "^6.22.0",
     "babel-preset-env": "^1.7.0",
     "compass-mixins": "github:Igosuki/compass-mixins",
     "es6-promise": "^4.2.4",

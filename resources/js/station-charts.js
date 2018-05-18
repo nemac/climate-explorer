@@ -1,7 +1,7 @@
 //todo refactor to jquery widget
 
-var ChartBuilder = function (props, stations_base_url) {
-  var self = this;
+const ChartBuilder = function (props, stations_base_url) {
+  const self = this;
 
   this.stations_base_url = stations_base_url;
 
@@ -16,10 +16,10 @@ var ChartBuilder = function (props, stations_base_url) {
 
 
 ChartBuilder.prototype.getData = function (callback) {
-  var self = this;
+  const self = this;
 
-  var id = this.props.station;
-  var year = new Date().getFullYear();
+  const id = this.props.station;
+  const year = new Date().getFullYear();
   this.records = {
     'temp': {
       url: this.stations_base_url,
@@ -77,7 +77,7 @@ ChartBuilder.prototype.getData = function (callback) {
     }
   };
 
-  var i = 0;
+  let i = 0;
   $.each(this.records, function (key, record) {
     $.ajax({
       url: record.url,
@@ -98,15 +98,15 @@ ChartBuilder.prototype.getData = function (callback) {
 
 
 ChartBuilder.prototype.buildChart = function () {
-  var temps = this.getTemperatureValues();
-  var tmpl = this.getTemplate('temperature', temps);
+  const temps = this.getTemperatureValues();
+  const tmpl = this.getTemplate('temperature', temps);
   $('#multi-chart').multigraph({'muglString': tmpl});
   $('#multi-chart').multigraph('done', function (m) { $(window).resize(function () { m.resize();}); });
 
 
-  var precip = this.getPrecipitationValues();
+  const precip = this.getPrecipitationValues();
   //console.log('precip', precip);
-  var precipTmpl = this.getTemplate('precipitation', precip);
+  const precipTmpl = this.getTemplate('precipitation', precip);
   $('#multi-precip-chart').multigraph({'muglString': precipTmpl});
   $('#multi-precip-chart').multigraph('done', function (m) { $(window).resize(function () { m.resize();}); });
 
@@ -115,8 +115,8 @@ ChartBuilder.prototype.buildChart = function () {
 
 ChartBuilder.prototype.getTemperatureValues = function () {
 
-  var max = {};
-  var min = {};
+  const max = {};
+  const min = {};
   $.each(this.records.temp.data, function (i, a) {
     //discard missing values
     if (a.indexOf('M') !== -1) {
@@ -126,8 +126,8 @@ ChartBuilder.prototype.getTemperatureValues = function () {
     min[a[0].replace(/-/g, '')] = a[2];
   });
 
-  var normmax = {};
-  var normmin = {};
+  const normmax = {};
+  const normmin = {};
   $.each(this.records.temp_normal.data, function (i, a) {
     //discard missing values
     if (a.indexOf('M') !== -1) {
@@ -137,14 +137,14 @@ ChartBuilder.prototype.getTemperatureValues = function () {
     normmin[a[0].replace(/-/g, '')] = a[2];
   });
 
-  var year = new Date().getFullYear();
-  var merge = [];
-  var startdate = String(Math.min(parseInt(Object.keys(max)[0]), parseInt(Object.keys(min)[0]), parseInt(Object.keys(normmax)[0]), parseInt(Object.keys(normmin)[0])))
+  const year = new Date().getFullYear();
+  const merge = [];
+  let startdate = String(Math.min(parseInt(Object.keys(max)[0]), parseInt(Object.keys(min)[0]), parseInt(Object.keys(normmax)[0]), parseInt(Object.keys(normmin)[0])));
   startdate = new Date(startdate.slice(0, 4), parseInt(startdate.slice(4, 6)) - 1, startdate.slice(6, 8));
-  var enddate = String(Math.max(parseInt(Object.keys(max)[Object.keys(max).length - 1]), parseInt(Object.keys(min)[Object.keys(min).length - 1]), parseInt(Object.keys(normmax)[Object.keys(normmax).length - 1]), parseInt(Object.keys(normmin)[Object.keys(normmin).length - 1])));
+  let enddate = String(Math.max(parseInt(Object.keys(max)[Object.keys(max).length - 1]), parseInt(Object.keys(min)[Object.keys(min).length - 1]), parseInt(Object.keys(normmax)[Object.keys(normmax).length - 1]), parseInt(Object.keys(normmin)[Object.keys(normmin).length - 1])));
   enddate = new Date(enddate.slice(0, 4), parseInt(enddate.slice(4, 6) - 1), enddate.slice(6, 8));
-  var idate = new Date(startdate.getTime());
-  var dmin, dmax, dnormmin, dnormmax, key;
+  const idate = new Date(startdate.getTime());
+  let dmin, dmax, dnormmin, dnormmax, key;
   dmin = dmax = dnormmax = dnormmin = key = '';
   while (idate < enddate) {
     key = [
@@ -156,7 +156,7 @@ ChartBuilder.prototype.getTemperatureValues = function () {
       dmax = max[key];
       dmin = min[key];
     }
-    var normdate = String(year - ((year - parseInt(key.slice(0, 4))) % 4)) + key.slice(-4);
+    let normdate = String(year - ((year - parseInt(key.slice(0, 4))) % 4)) + key.slice(-4);
     if (normmax.hasOwnProperty(normdate) && normmin.hasOwnProperty(normdate)) {
       dnormmax = normmax[normdate];
       dnormmin = normmin[normdate];
@@ -179,10 +179,10 @@ ChartBuilder.prototype.getTemperatureValues = function () {
   //   });
 
   //append ~8 years of normals
-  var lastnormal = parseInt(merge[merge.length - 1].slice(0, 8));
-  for (var i = 0; i < (8 + year - parseInt(String(lastnormal).slice(0, 4))); i += 4) {
+  const lastnormal = parseInt(merge[merge.length - 1].slice(0, 8));
+  for (let i = 0; i < (8 + year - parseInt(String(lastnormal).slice(0, 4))); i += 4) {
     $.each(normmin, function (key, value) {
-      var normdate = String(parseInt(key.slice(0, 4)) + i) + key.slice(-4);
+      const normdate = String(parseInt(key.slice(0, 4)) + i) + key.slice(-4);
       if (parseInt(normdate) > lastnormal && !min.hasOwnProperty(normdate) && normmax.hasOwnProperty(key)) {
         merge.push(normdate + ',,,' + normmax[key] + ',' + value);
       }
@@ -193,7 +193,7 @@ ChartBuilder.prototype.getTemperatureValues = function () {
 };
 
 ChartBuilder.prototype.getPrecipitationValues = function () {
-  var precip = {};
+  const precip = {};
   $.each(this.records.precip_ytd.data, function (i, a) {
     //discard missing values, zero Jan 1 if missing.
     if (a.indexOf('M') !== -1) {
@@ -206,7 +206,7 @@ ChartBuilder.prototype.getPrecipitationValues = function () {
     }
     precip[a[0].replace(/-/g, '')] = a[1];
   });
-  var normprecip = {};
+  const normprecip = {};
   $.each(this.records.precip_ytd_normal.data, function (i, a) {
     //discard missing values, zero Jan 1 if missing.
     if (a.indexOf('M') !== -1 || a.indexOf('T') !== -1) {
@@ -219,15 +219,15 @@ ChartBuilder.prototype.getPrecipitationValues = function () {
     }
     normprecip[a[0].replace(/-/g, '')] = a[1];
   });
-  var year = new Date().getFullYear();
-  var merge = [];
+  const year = new Date().getFullYear();
+  const merge = [];
 
-  var startdate = String(Math.min(parseInt(Object.keys(precip)[0]), parseInt(Object.keys(normprecip)[0])));
+  let startdate = String(Math.min(parseInt(Object.keys(precip)[0]), parseInt(Object.keys(normprecip)[0])));
   startdate = new Date(startdate.slice(0, 4), parseInt(startdate.slice(4, 6)) - 1, startdate.slice(6, 8));
-  var enddate = String(Math.max(parseInt(Object.keys(precip)[Object.keys(precip).length - 1]), parseInt(Object.keys(normprecip)[Object.keys(normprecip).length - 1])));
+  let enddate = String(Math.max(parseInt(Object.keys(precip)[Object.keys(precip).length - 1]), parseInt(Object.keys(normprecip)[Object.keys(normprecip).length - 1])));
   enddate = new Date(enddate.slice(0, 4), parseInt(enddate.slice(4, 6)) - 1, enddate.slice(6, 8));
-  var idate = new Date(startdate.getTime());
-  var dprecip, dnormprecip, key;
+  const idate = new Date(startdate.getTime());
+  let dprecip, dnormprecip, key;
   dprecip = dnormprecip = key = '';
   while (idate < enddate) {
     key = [
@@ -238,7 +238,7 @@ ChartBuilder.prototype.getPrecipitationValues = function () {
     if (precip.hasOwnProperty(key)) {
       dprecip = precip[key];
     }
-    var normdate = String(year - ((year - parseInt(key.slice(0, 4))) % 4)) + key.slice(-4);
+    let normdate = String(year - ((year - parseInt(key.slice(0, 4))) % 4)) + key.slice(-4);
     if (normprecip.hasOwnProperty(normdate)) {
       dnormprecip = normprecip[normdate];
     }
@@ -250,10 +250,10 @@ ChartBuilder.prototype.getPrecipitationValues = function () {
   }
 
   //append ~8 years of normals
-  var lastnormal = parseInt(merge[merge.length - 1].slice(0, 8));
-  for (var i = 0; i < (8 + year - parseInt(String(lastnormal).slice(0, 4))); i += 4) {
+  const lastnormal = parseInt(merge[merge.length - 1].slice(0, 8));
+  for (let i = 0; i < (8 + year - parseInt(String(lastnormal).slice(0, 4))); i += 4) {
     $.each(normprecip, function (key, value) {
-      var normdate = String(parseInt(key.slice(0, 4)) + i) + key.slice(-4);
+      const normdate = String(parseInt(key.slice(0, 4)) + i) + key.slice(-4);
       if (parseInt(normdate) > lastnormal && !precip.hasOwnProperty(normdate)) {
         merge.push(normdate + ',' + ',' + value);
       }
@@ -264,9 +264,9 @@ ChartBuilder.prototype.getPrecipitationValues = function () {
 };
 
 ChartBuilder.prototype.getTemplate = function (type, values) {
-  var today = new Date().toISOString().slice(0, 10).replace(/-/g, '');
+  const today = new Date().toISOString().slice(0, 10).replace(/-/g, '');
   //console.log('values', values);
-  var templates = {
+  const templates = {
     'temperature': '<mugl>' +
     '<plotarea margintop="18"/>' +
     '<legend rows="1" border="0" opacity="0.0" base="0 1" anchor="0 1" position="0 25">' +

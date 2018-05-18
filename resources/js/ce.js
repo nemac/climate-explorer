@@ -154,8 +154,8 @@ especially when it comes to interacting with the DOM and handling events.
     },
 
     getUrlParam: function (key) {
-      var params = decodeURIComponent(window.location.search.substring(1)).split("&"),
-        param,
+      const params = decodeURIComponent(window.location.search.substring(1)).split("&");
+      let param,
         i;
 
       for (i = 0; i < params.length; i++) {
@@ -174,7 +174,7 @@ especially when it comes to interacting with the DOM and handling events.
      * @param {Object} params - An object with newkey:oldkey key:value pairs
      */
     getUrlParams: function (params) {
-      var results = {};
+      const results = {};
 
       Object.keys(params).forEach(function (newkey) {
         if (this.getUrlParam(params[newkey]) !== undefined) {
@@ -184,33 +184,14 @@ especially when it comes to interacting with the DOM and handling events.
       return results;
     },
 
-    // Replaces all URL params with the passed array
-    // params is a nested array of objects with the keys "key" and "value"
-    setUrlParams: function (params) {
-      var href = window.location.href.split("?")[0],
-        i;
-
-      if (params.length === 0) return;
-      if (window.hasOwnProperty("history") === false || window.history.replaceState === false) return;
-
-
-      for (i = 0; i < params.length; i++) {
-        params[i] = encodeURIComponent(params[i].key) + "=" + encodeURIComponent(params[i].value);
-      }
-
-      window.history.replaceState({}, "", href + "?" + params.join("&"));
-      this.updateSharing();
-      this.updateBreadcrumbs();
-    },
-
     // Replaces specified URL param with the passed value
     setUrlParam: function (key, value) {
-      var currentParams = window.location.search.substring(1),
-        newParams,
-        params = decodeURIComponent(currentParams).split("&"),
-        param,
-        href = window.location.href.split("?")[0],
-        paramExists = false,
+      const currentParams = window.location.search.substring(1);
+      let newParams;
+      const params = decodeURIComponent(currentParams).split("&");
+      let param;
+      const href = window.location.href.split("?")[0];
+      let paramExists = false,
         i, l;
 
       if (window.hasOwnProperty("history") === false || window.history.replaceState === false) return;
@@ -252,11 +233,11 @@ especially when it comes to interacting with the DOM and handling events.
 
     // Removes specified URL param
     removeUrlParam: function (key) {
-      var params = decodeURIComponent(window.location.search.substring(1)).split("&"),
-        param,
-        newParams = [],
-        href = window.location.href.split("?")[0],
-        i;
+      const params = decodeURIComponent(window.location.search.substring(1)).split("&");
+      let param;
+      const newParams = [],
+        href = window.location.href.split("?")[0];
+      let i;
 
       if (window.hasOwnProperty("history") === false || window.history.replaceState === false) return;
 
@@ -291,10 +272,11 @@ especially when it comes to interacting with the DOM and handling events.
     },
 
     getStationsMapState: function () {
-      var state = this.getUrlParams({
+      const state = this.getUrlParams({
         mode: 'id',
         stationId: 'station',
         stationName: 'station-name',
+        stationMOverMHHW: 'station-mhhw',
         variable: 'variable',
 
         extent: 'extent',
@@ -312,13 +294,14 @@ especially when it comes to interacting with the DOM and handling events.
     setStationsMapState: function (state) {
       (Object.keys(state).includes('stationId') && state.stationId) ? this.setUrlParam('station', state['stationId']) : this.removeUrlParam('station');
       (Object.keys(state).includes('stationName') && state.stationName) ? this.setUrlParam('station-name', state.stationName) : this.removeUrlParam('station-name');
-      Object.keys(state).includes('mode') ? this.setUrlParam('id', state['mode']) : this.removeUrlParam('station'); // on mode change overlay goes away
+      (Object.keys(state).includes('stationMOverMHHW') && state.stationMOverMHHW) ? this.setUrlParam('station-mhhw', state.stationMOverMHHW) : this.removeUrlParam('station-mhhw');
+      Object.keys(state).includes('mode') ? this.setUrlParam('id', state['mode']) : this.removeUrlParam('mode');
       Object.keys(state).includes('extent') ? this.setUrlParam('extent', this._extentToString(state['extent'])) : null;
       Object.keys(state).includes('zoom') ? this.setUrlParam('zoom', state['zoom']) : null;
     },
 
     getVariablesPageState: function () {
-      var state = this.getUrlParams({
+      const state = this.getUrlParams({
         variable: 'id',
         season: 'season',
         leftScenario: 'left',
@@ -346,18 +329,9 @@ especially when it comes to interacting with the DOM and handling events.
       Object.keys(state).includes('zoom') ? this.setUrlParam('zoom', state['zoom']) : null;
     },
 
-    // called using `$(window).ce('getMapState')`...and maybe `window.ce.getMapState` if that's easier
-    getMapState: function () {
-      return {
-        lat: this.state.lat,
-        lon: this.state.lon,
-        zoom: this.state.zoom,
-      };
-    },
-
 
     getLocationPageState: function () {
-      var state = this.getUrlParams({
+      const state = this.getUrlParams({
         county: 'county',
         city: 'city',
         fips: 'fips',
@@ -381,9 +355,7 @@ especially when it comes to interacting with the DOM and handling events.
     _warn: function () { (this.options.debug >= 2) && this._toLoggerMethod('warn', arguments); },
     _error: function () { (this.options.debug >= 1) && this._toLoggerMethod('error', arguments); },
     _toLoggerMethod: function (method, args) {
-      var args = Array.prototype.slice.call(arguments, 1),
-        logger = this.options.logger || console;
-      logger.error.apply(logger, args);
+      logger.error.apply(this.options.logger || console, Array.prototype.slice.call(arguments, 1));
     },
 
     updateSharing: function () {
@@ -395,10 +367,10 @@ especially when it comes to interacting with the DOM and handling events.
     updateBreadcrumbs: function () {
       if (window.location.pathname === '/') return;
 
-      var breadcrumb_text,
+      let breadcrumb_text,
         additional_breadcrumb;
 
-      var page = window.location.pathname.split("/").filter(function (p) {return p !== ""}).pop().replace(".php", "");
+      let page = window.location.pathname.split("/").filter(function (p) {return p !== ""}).pop().replace(".php", "");
 
       if (!page) return;
 
@@ -436,7 +408,7 @@ especially when it comes to interacting with the DOM and handling events.
 
     // recreates list of variables found in scenarioComparisonMap.js
     _getVariableBreadcrumb: function (key) {
-      var variables = {
+      const variables = {
         'tmax': {title: 'Avg Daily Max Temp (°F)', seasonal_data: true},
         'tmin': {title: 'Avg Daily Min Temp (°F)', seasonal_data: true},
         'days_tmax_gt_90f': {title: 'Days w/ max > 90°F', seasonal_data: false},
@@ -456,7 +428,7 @@ especially when it comes to interacting with the DOM and handling events.
         'cdd_65f': {title: 'Cooling Degree Days', seasonal_data: false},
         'gdd': {title: 'Growing Degree Days', seasonal_data: false},
         'gddmod': {title: 'Mod. Growing Degree Days', seasonal_data: false}
-      }
+      };
 
       return variables[key].title;
     }

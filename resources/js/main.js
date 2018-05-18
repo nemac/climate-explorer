@@ -1,4 +1,5 @@
-var App = function (data_base_url) {
+'use strict';
+const App = function (data_base_url) {
   this.data_base_url = data_base_url;
 
   //if(top != self) {
@@ -6,17 +7,17 @@ var App = function (data_base_url) {
   // }
 
   this.frequency = {
-      'temperature-chart': 'annual',
-      'precipitation-chart': 'annual',
-      'derived-chart': 'annual'
+    'temperature-chart': 'annual',
+    'precipitation-chart': 'annual',
+    'derived-chart': 'annual'
   };
   this.getCountyCodes();
   this.tour();
 };
 
 App.prototype.getCountyCodes = function () {
-    var self = this;
-    this.fips_codes = null;
+  const self = this;
+  this.fips_codes = null;
     $.getJSON(this.data_base_url + 'fips_codes.json', function (data) {
         self.fips_codes = data;
         self.locationSearch();
@@ -25,14 +26,14 @@ App.prototype.getCountyCodes = function () {
 
 
 App.prototype.locationSearch = function () {
-    var self = this;
+  const self = this;
 
-    $(".location-mapper").formmapper({
+  $(".location-mapper").formmapper({
         details: "form"
     });
 
-    var Latinise = {};
-    Latinise.latin_map = {
+  const Latinise = {};
+  Latinise.latin_map = {
         "Á": "A",
         "Ă": "A",
         "Ắ": "A",
@@ -865,30 +866,30 @@ App.prototype.locationSearch = function () {
     };
     String.prototype.latinize = String.prototype.latinise;
     String.prototype.isLatin = function () {
-        return this == this.latinise();
+        return this === this.latinise();
     };
 
     $(".location-mapper").bind("geocode:result", function (event, result) {
 
         //console.log('result', result);
-        var data = {};
-        $.each(result.address_components, function (index, object) {
-            var name = object.types[0];
-            data[name] = object.long_name;
+      const data = {};
+      $.each(result.address_components, function (index, object) {
+          const name = object.types[0];
+          data[name] = object.long_name;
             data[name + "_short"] = object.short_name;
         });
         //console.log('data', data);
-        var county = (data.administrative_area_level_2) ? data.administrative_area_level_2.replace(/ /g, '+') : data.locality + '+County';
+      let county = (data.administrative_area_level_2) ? data.administrative_area_level_2.replace(/ /g, '+') : data.locality + '+County';
 
-        county = county.latinize();
-        var city = data.locality + ', ' + data.administrative_area_level_1_short;
+      county = county.latinize();
+      let city = data.locality + ', ' + data.administrative_area_level_1_short;
 
-        if (!data.locality) {
+      if (!data.locality) {
             city = county + ', ' + data.administrative_area_level_1_short;
         }
 
-        var lat, lon;
-        if (result.geometry.access_points) {
+      let lat, lon;
+      if (result.geometry.access_points) {
             lat = result.geometry.access_points[0].location.lat;
             lon = result.geometry.access_points[0].location.lng;
         } else {
@@ -896,8 +897,8 @@ App.prototype.locationSearch = function () {
             lon = result.geometry.location.lng();
         }
 
-        var fips;
-        // console.log('data.administrative_area_level_1_short', data.administrative_area_level_1_short);
+      let fips;
+      // console.log('data.administrative_area_level_1_short', data.administrative_area_level_1_short);
         // console.log('COUNTY', county);
         $.each(self.fips_codes[data.administrative_area_level_1_short], function (i, c) {
             if (c.label === county.replace(/\+/g, ' ') || c.label === county.replace(/\+County/g, ' city')) {
@@ -925,10 +926,10 @@ App.prototype.locationSearch = function () {
 
 
 App.prototype.tour = function () {
-    var tour;
-    var self = this;
+  let tour;
+  const self = this;
 
-    $('.start-home-tour').on('click', function (e) {
+  $('.start-home-tour').on('click', function (e) {
         e.preventDefault();
         self.takeHomeTour();
     });
@@ -948,12 +949,8 @@ App.prototype.tour = function () {
         self.takeLocationTour();
     });
 
-    $('.page-type-case #tour-this-page').on('click', function (e) {
-        e.preventDefault();
-        self.takeCaseTour();
-    });
 
-    $('#temperature-data .location-resolution a').on('click', function (e) {
+    $('#temperature-data .location-resolution a').on('click', function () {
         if ( $(this).parent().hasClass('disabled') ) {
           return;
         }
@@ -964,11 +961,10 @@ App.prototype.tour = function () {
         $(this).addClass('accent-color');
         $(this).parents('li').addClass('active').addClass('accent-border');
 
-        var val = $(this).html().toLowerCase();
-        self.frequency['temperature-chart'] = val;
+        self.frequency['temperature-chart'] = $(this).html().toLowerCase();
     });
 
-    $('#precipitation-data .location-resolution a').on('click', function (e) {
+    $('#precipitation-data .location-resolution a').on('click', function () {
         if ( $(this).parent().hasClass('disabled') ) {
           return;
         }
@@ -984,11 +980,11 @@ App.prototype.tour = function () {
 
 
     $('.how-to-read').on('click', function () {
-        var pre = '';
-        var closest = $(this).closest('.data-chart').attr('id');
-        var mapclosest = $(this).closest('.data-map').attr('id');
+      let pre = '';
+      const closest = $(this).closest('.data-chart').attr('id');
+      const mapclosest = $(this).closest('.data-map').attr('id');
 
-        if (closest === 'precipitation-chart') {
+      if (closest === 'precipitation-chart') {
             pre = 'precip-';
         }
         if (closest === 'derived-chart') {
@@ -1027,14 +1023,14 @@ App.prototype._cleanShepherdTour = function () {
   Shepherd.activeTour.steps.forEach(function (step) {
     step.destroy();
   });
-  var i, l;
+  let i, l;
   for (i = 0, l = Shepherd.activeTour.steps.length; i < l; i++) {
     Shepherd.activeTour.steps.pop();
   }
-}
+};
 
 App.prototype._createShepherdTour = function () {
-  var tour = Shepherd.activeTour;
+  let tour = Shepherd.activeTour;
   if (tour && tour.steps.length) {
     tour.cancel();
   } else {
@@ -1049,7 +1045,7 @@ App.prototype._createShepherdTour = function () {
   }
 
   return tour;
-}
+};
 
 App.prototype._makeStdButtons = function (tour) {
   return [
@@ -1063,7 +1059,7 @@ App.prototype._makeStdButtons = function (tour) {
       action: tour.next
     }
   ];
-}
+};
 
 App.prototype._makeEndButtons = function (tour) {
   return [
@@ -1073,10 +1069,10 @@ App.prototype._makeEndButtons = function (tour) {
       action: tour.complete
     }
   ];
-}
+};
 
 App.prototype.takeHomeTour = function () {
-  var homeTour = this._createShepherdTour();
+  const homeTour = this._createShepherdTour();
 
   homeTour.addStep('search-by-location', {
     text: 'Enter a city, zip code, or county name to select any county in the contiguous United States.',
@@ -1100,7 +1096,7 @@ App.prototype.takeHomeTour = function () {
 };
 
 App.prototype.takeVariablesTour = function () {
-  var variablesTour = this._createShepherdTour();
+  const variablesTour = this._createShepherdTour();
 
   variablesTour.addStep('search-by-location', {
     text: 'Enter a location in the contiguous United States to zoom to that region.',
@@ -1156,7 +1152,7 @@ App.prototype.takeVariablesTour = function () {
 };
 
 App.prototype.takeLocationTour = function () {
-  var locationTour = this._createShepherdTour();
+  const locationTour = this._createShepherdTour();
 
   locationTour.addStep('location-search', {
     text: 'Switch to another county by entering a city, zip code, or county name.',
@@ -1185,62 +1181,8 @@ App.prototype.takeLocationTour = function () {
   locationTour.start();
 };
 
-App.prototype.takeCaseTour = function () {
-    var self = this;
-
-    if (this.caseTour) {
-        this.caseTour.cancel();
-    } else {
-        this.caseTour = new Shepherd.Tour({
-            defaults: {
-                classes: 'shepherd-theme-arrows',
-                scrollTo: false
-            }
-        });
-    }
-
-    this.caseTour.addStep('search-field', {
-        text: 'Here you can change what location in the United States you wish to explore within the station map.',
-        attachTo: '#search-by-location right',
-        buttons: [
-            {
-                text: 'Close',
-                classes: 'shepherd-button-secondary',
-                action: this.caseTour.cancel
-            },
-            {
-                text: 'Next',
-                action: this.caseTour.next
-            }
-        ]
-    });
-
-    this.caseTour.addStep('case-menu', {
-        text: 'Here is the list of all available layers to show in the map. Select the "?" to view more information about each layer, as well as to toggle on and of their visibility. Lastly, click and drag to reorder the layers.',
-        attachTo: '#case-menu right',
-        buttons: [
-            {
-                text: 'Done',
-                classes: 'shepherd-button-secondary',
-                action: this.caseTour.complete
-            }
-        ]
-    });
-
-    this.caseTour.on('show', function () {
-        //$('.cd-cover-layer').removeClass('is-visible');
-        //$('.cd-cover-layer').addClass('is-visible');
-        setTimeout(function () {
-            //$('.cd-cover-layer').removeClass('is-visible');
-        }, 4000);
-    });
-
-    this.caseTour.start();
-};
-
-
 App.prototype.takeAnnualGraphTour = function (pre) {
-  var graphTour = this._createShepherdTour();
+  const graphTour = this._createShepherdTour();
 
   graphTour.addStep('graph', {
     text: 'For the county and variable you selected, this chart offers observed annual averages from 1950-2013; climate model simulations  (hindcasts) from 1950-2005; and climate model projections for two possible futures out to 2100.',
@@ -1272,7 +1214,7 @@ App.prototype.takeAnnualGraphTour = function (pre) {
   });
 
   graphTour.addStep('rcp45-mean', {
-    text: 'Average lines show the weighted mean of all projections at each time step (projections are weighted based on model independence and skill). The lines aren’t predictions of actual values; they merely highlight trends in the projections.',
+    text: "Average lines show the weighted mean of all projections at each time step (projections are weighted based on model independence and skill). The lines aren’t predictions of actual values; they merely highlight trends in the projections.",
     attachTo: '#' + pre + 'rcp45-mean top',
     buttons: this._makeStdButtons(graphTour)
   });
@@ -1293,7 +1235,7 @@ App.prototype.takeAnnualGraphTour = function (pre) {
 };
 
 App.prototype.takeSeasonalGraphTour = function (pre) {
-  var seasonalTour = this._createShepherdTour();
+  const seasonalTour = this._createShepherdTour();
 
   seasonalTour.addStep('graph', {
     text: 'For the county and variable you selected, this chart shows observed seasonal averages from 1961-1990. It also shows the range of projections for each season during the early-, mid-, or late 21st century for two possible futures.The slight horizontal offset of observations and projections for each season is for visual clarity.',
@@ -1335,7 +1277,7 @@ App.prototype.takeSeasonalGraphTour = function (pre) {
 };
 
 App.prototype.takeMonthlyGraphTour = function (pre) {
-  var monthlyTour = this._createShepherdTour();
+  const monthlyTour = this._createShepherdTour();
 
   monthlyTour.addStep('graph', {
     text: 'For the county and variable you selected, this chart shows observed averages for each month and monthly projections for two possible futures. The timeline gives you the option to view projections for the early-, mid-, or late 21st century.',
@@ -1361,7 +1303,7 @@ App.prototype.takeMonthlyGraphTour = function (pre) {
   });
 
   monthlyTour.addStep('rcp45-mean', {
-    text: 'Average lines show the weighted mean of all projections at each time step (projections are weighted based on model independence and skill). The lines aren’t predictions of actual values; they merely highlight trends in the projections.',
+    text: "Average lines show the weighted mean of all projections at each time step (projections are weighted based on model independence and skill). The lines aren’t predictions of actual values; they merely highlight trends in the projections.",
     attachTo: '#' + pre + 'rcp45-mean top',
     buttons: this._makeStdButtons(monthlyTour)
   });
@@ -1376,7 +1318,7 @@ App.prototype.takeMonthlyGraphTour = function (pre) {
 };
 
 App.prototype.takeMapTour = function (pre) {
-  var mapTour = this._createShepherdTour();
+  const mapTour = this._createShepherdTour();
 
   mapTour.addStep('whole-map', {
     text: 'Colors on the map show projected average values for the selected variable for the season shown in the upper right during the decade indicated by the time slider below.',
