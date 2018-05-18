@@ -1323,14 +1323,33 @@
     },
     _setClipPath(element, side, value) {
       if (side === 'left') {
-        $(element).css("clipPath", "polygon(0 0, " + value + "px 0, " + value + "px 100%, 0% 100%)");
-        $(element).css("WebkitClipPath","polygon(0 0, " + value + "px 0, " + value + "px 100%, 0% 100%)");
-        $(element).css("clip", "rect(" + [0, value + "px", element.height + "px", 0].join(' ') + ")");
+        if (element.style.WebkitClipPath !== undefined) {
+          element.style.WebkitClipPath = "polygon(0 0, " + value + "px 0, " + value + "px 100%, 0% 100%)";
+        }
+        if (element.style.ClipPath !== undefined) {
+          element.style.clipPath = "polygon(0 0, " + value + "px 0, " + value + "px 100%, 0% 100%)";
+        }
+        if (element.style.clipPath === undefined || element.style.clipPath === '' || element.style.WebkitClipPath === undefined || element.style.WebkitClipPath === '') {
+          element.style.clip = "rect(" + ["0px", value + "px", element.height + "px", "0px"].join(' ') + ")";
+        }
+
+        // $(element).css("clipPath", "polygon(0 0, " + value + "px 0, " + value + "px 100%, 0% 100%)");
+        // $(element).css("-webkit-clip-path","polygon(0 0, " + value + "px 0, " + value + "px 100%, 0% 100%)");
+        // $(element).css("clip", "rect(" + [0, value + "px", element.height + "px", 0].join(' ') + ")");
       }
       else if (side === 'right') {
-        $(element).css("clipPath", "polygon(" + value + "px 0, 100% 0%, 100% 100%, " + value + "px 100%)");
-        $(element).css("WebkitClipPath", "polygon(" + value + "px 0, 100% 0%, 100% 100%, " + value + "px 100%)");
-        $(element).css("clip", "rect(" + [0, element.width + "px", element.height + "px", value+ "px"].join(' ') + ")");
+        if (element.style.WebkitClipPath !== undefined) {
+          element.style.WebkitClipPath = "polygon(" + value + "px 0, 100% 0%, 100% 100%, " + value + "px 100%)";
+        }
+        if (element.style.clipPath !== undefined) {
+          element.style.clipPath = "polygon(" + value + "px 0, 100% 0%, 100% 100%, " + value + "px 100%)";
+        }
+        if (element.style.clipPath === undefined || element.style.clipPath === '' || element.style.WebkitClipPath === undefined || element.style.WebkitClipPath === '') {
+          element.style.clip = "rect(" + ['0px', element.width + "px", element.height + "px", value + "px"].join(' ') + ")"
+        }
+        // $(element).css("clipPath", "polygon(" + value + "px 0, 100% 0%, 100% 100%, " + value + "px 100%)");
+        // $(element).css("-webkit-clip-path", "polygon(" + value + "px 0, 100% 0%, 100% 100%, " + value + "px 100%)");
+        // $(element).css("clip", "rect(" + [0, element.width + "px", element.height + "px", value+ "px"].join(' ') + ")");
       }
     }
 
