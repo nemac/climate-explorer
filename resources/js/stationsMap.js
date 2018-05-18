@@ -82,6 +82,7 @@
     options: {
       stationId: null,
       stationName: null,
+      stationMOverMHHW: null, // only used for tidal stations
       mode: 'daily_vs_climate', // 'daily_vs_climate','thresholds','high_tide_flooding'
       //extent provides the initial view area of the map.
       extent: {xmin: -119, xmax: -73, ymin: 18, ymax: 54},
@@ -110,7 +111,6 @@
       show: null
 
     },
-
 
 
     // Dojo modules this widget expects to use.
@@ -160,7 +160,7 @@
         return Promise.resolve()
       }
 
-      this._dojoLoadedPromise = new Promise(function (resolve, reject) {
+      this._dojoLoadedPromise = new Promise(function (resolve) {
         if (window.require === undefined) {
           window.dojoConfig = {
             has: {
@@ -207,7 +207,7 @@
     _create: function () {
 
       // All DOM nodes used by the widget (must be maintained for clean destruction)
-      this.nodes =  {};
+      this.nodes = {};
 
       this.nodes.mapContainer = this.element[0];
       this.nodes.stationOverlayContainer = $('#' + this.options.stationOverlayContainerId)[0];
@@ -225,7 +225,7 @@
           break;
       }
 
-      if (this.options.stationId){
+      if (this.options.stationId) {
         this._stationSelected();
       }
     },
@@ -324,7 +324,8 @@
                 attributes: {
                   ObjectID: index,
                   id: station.id,
-                  name: station.station ? station.station : station.name
+                  name: station.station ? station.station : station.name,
+                  mOverMHHW: station.derived || null
                 }
               }))
             }.bind(this));
@@ -342,6 +343,11 @@
                 }, {
                   name: "name",
                   alias: "Name",
+                  type: "string"
+                },
+                {
+                  name: "mOverMHHW",
+                  alias: "mOverMHHW",
                   type: "string"
                 }],
               objectIdField: "ObjectID",
@@ -480,7 +486,7 @@
                 let station = response.results.filter(function (result) {
                   return result.graphic.layer === this.tidalStationsLayer;
                 }.bind(this))[0].graphic;
-                this._setOptions({stationName: station.attributes.name, stationId: station.attributes.id});
+                this._setOptions({stationName: station.attributes.name, stationId: station.attributes.id, stationMOverMHHW: station.attributes.mOverMHHW || null});
               }.bind(this));
           }.bind(this));
         }.bind(this));
@@ -692,10 +698,7 @@
 
 
           // when #variable changes, update ui units and apply sensible defaults.
-          $('#itemvariable').change(function (e) {
-            let queryElements = undefined,
-              missingValueTreatment = undefined,
-              windowFunction = undefined;
+          $('#itemvariable').change(function () {
             switch ($('#itemvariable').val()) {
               case 'precipitation':
                 $('#thresholdUnits').text('in');
@@ -755,6 +758,7 @@
                   <h3 class="accent-color" style="margin-bottom: 20px;"><span class="icon icon-district"></span>High Tide Flooding</h3>
                   <h5>Name: <span class="station_name">${this.options.stationName}</span></h5>
                   <h5>Station ID: <span class="station_id">${this.options.stationId}</span></h5>
+                  <h5>${this.options.stationMOverMHHW ? this.options.stationMOverMHHW + "m over MHHW":""}</h5>
                 </div>
                 <select name="" id="tidal_station" class="form-control" style="width: 200px;display:none">
                   <option value="" disabled selected hidden>Station</option>
@@ -824,7 +828,7 @@
         $(this.nodes.stationOverlayContainer).css('visibility', 'hidden');
         this.options.stationId = null;
         this.options.stationName = null;
-        this._trigger('change',null, this.options);
+        this._trigger('change', null, this.options);
         $(this.nodes.stationOverlayContainer).empty();
       }.bind(this));
     },
