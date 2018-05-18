@@ -213,7 +213,7 @@ $stations_content = array(
               <li>Temperature
                 <ul>
                   <?php foreach ($temp_content as $item) { ?>
-                    <li><a href="#detail-<?php echo $item['variable']; ?>" class="nav-detail-link"><?php echo $item['name']; ?></a></li>
+                    <li><a href="#detail-<?php echo $item['variable']; ?>" class="nav-detail-link"><?php echo htmlentities($item['name']); ?></a></li>
                   <?php } ?>
                 </ul>
               </li>
@@ -222,14 +222,14 @@ $stations_content = array(
                   <?php
 
                   foreach ($precip_content as $item) { ?>
-                    <li><a href="#detail-<?php echo $item['variable']; ?>" class="nav-detail-link"><?php echo $item['name']; ?></a></li>
+                    <li><a href="#detail-<?php echo $item['variable']; ?>" class="nav-detail-link"><?php echo htmlentities($item['name']); ?></a></li>
                   <?php } ?>
                 </ul>
               </li>
               <li>Other
                 <ul>
                   <?php foreach ($derived_content as $item) { ?>
-                    <li><a href="#detail-<?php echo $item['variable']; ?>" class="nav-detail-link"><?php echo $item['name']; ?></a></li>
+                    <li><a href="#detail-<?php echo $item['variable']; ?>" class="nav-detail-link"><?php echo htmlentities($item['name']); ?></a></li>
                   <?php } ?>
                 </ul>
               </li>
@@ -251,7 +251,7 @@ $stations_content = array(
           <div id="nav-stations-list" class="tab nav-content-tab">
             <ul class="col-3">
               <?php foreach ($stations_content as $station) { ?>
-                <li><a href="#detail-<?php echo $station['variable']; ?>" class="nav-detail-link"><?php echo $station['name']; ?></a></li>
+                <li><a href="#detail-<?php echo $station['variable']; ?>" class="nav-detail-link"><?php echo htmlentities($station['name']); ?></a></li>
               <?php } ?>
             </ul>
           </div>
@@ -352,7 +352,7 @@ $stations_content = array(
   <div id="stations-details" class="nav-detail">
     <?php foreach ($stations_content as $station) { ?>
       <div id="detail-<?php echo $station['variable']; ?>" class="nav-detail-item">
-        <h3><?php echo $station['overlayname']; ?></u></h3>
+        <h3><?php echo $station['overlayname']; ?></h3>
         <p><?php echo $station['detail']; ?></p>
         <p><a href="/stations/?id=<?php echo $station['variable']; ?>" class="button bg-trans border-white hover-bg-white">Get started</a>
           <a href="#" class="close-detail button bg-trans border-trans color-white arrow-left">Back</a>
