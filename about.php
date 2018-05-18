@@ -42,8 +42,7 @@
         The tool also displays observations of temperature, precipitation, and related variables from 1950 to 2013. These are averages calculated from
         quality-checked ground-based weather stations across the country. Users can compare graphs of observed conditions to climate model simulations
         (hindcasts, or 'projections' generated for the past) for the same period. Comparing the range of observations to the simulations can provide insights on
-        the models' collective ability to predict the future. For temperature variables, simulations and observations generally show a good match. For other
-        variables—especially precipitation-related variables—comparisons reveal consistent biases or limitations of the models. </p>
+        the models' collective ability to predict the future. For temperature-related variables, the range of observations are generally within the envelope of simulations (hindcasts). For some variables—especially precipitation-related variables—comparing observations with hindcasts reveals limitations of the models. </p>
       <p>
 
       <hr>
@@ -162,8 +161,9 @@
         <li>Phil Evans, senior designer, HabitatSeven</li>
         <li>James Fox, director & product manager, NEMAC</li>
         <li>Ian Johnson, geospatial technician, NEMAC</li>
-        <li>Jeff Hicks, director & programmer, Fernleaf Interactive</li>
-        <li>Josh Wilson, programmer, Fernleaf Interactive</li>
+        <li>John Frimmel, principal software developer, NEMAC</li>
+        <li>Jeff Hicks, lead analyst, Fernleaf Interactive</li>
+        <li>Josh Wilson, software engineer, Fernleaf Interactive</li>
         <li>Bill Noon, application programmer, Cornell University</li>
       </ul>
 
@@ -175,6 +175,7 @@
         <li>Keith Dixon, climate modeler, NOAA Geophysical Fluid Dynamics Laboratory</li>
         <li>Katherine Hayhoe, climate modeler, Texas Tech University</li>
         <li>Ken Kunkel, climate modeler, NOAA National Centers for Environmental Information</li>
+        <li>David Pierce, Programmer/Analyst, Scripps Institution of Oceanography</li>
       </ul>
 
       <p>
