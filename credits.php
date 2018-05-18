@@ -45,12 +45,12 @@
         Interagency Climate Projection Team Members </p>
       <ul>
 
-        <li>Fred Lipschultz, Chair, contractor to U.S. Global Change Research Program
-        <li>Jay Alder, U.S. Geological Survey
-        <li>Forrest Melton, NASA Ames Research Center Cooperative for Research in Earth Science and Technology / California State University Monterey Bay
-        <li>Phil Morefield, U.S. Environmental Protection Agency
-        <li>Andrea Ray, NOAA Earth System Research Laboratory
-        <li>Liqiang Sun, NOAA National Centers for Environmental Information
+        <li>Fred Lipschultz, Chair, contractor to U.S. Global Change Research Program</li>
+        <li>Jay Alder, U.S. Geological Survey</li>
+        <li>Forrest Melton, NASA Ames Research Center Cooperative for Research in Earth Science and Technology / California State University Monterey Bay</li>
+        <li>Phil Morefield, U.S. Environmental Protection Agency</li>
+        <li>Andrea Ray, NOAA Earth System Research Laboratory</li>
+        <li>Liqiang Sun, NOAA National Centers for Environmental Information</li>
         <li>William Sweet, NOAA National Ocean Service</li>
       </ul>
 
@@ -58,9 +58,9 @@
 
       <ul>
 
-        <li>David Herring, program manager, NOAA Climate Program Office
-        <li>LuAnn Dahlman, managing editor, contractor to NOAA Climate Program Office
-        <li>Ned Gardiner, public engagement manager, contractor to NOAA Climate Program Office
+        <li>David Herring, program manager, NOAA Climate Program Office</li>
+        <li>LuAnn Dahlman, managing editor, contractor to NOAA Climate Program Office</li>
+        <li>Ned Gardiner, public engagement manager, contractor to NOAA Climate Program Office</li>
         <li>Larry Belcher, programmer, contractor to NOAA Climate Program Office</li>
       </ul>
 
@@ -68,27 +68,29 @@
 
       <ul>
 
-        <li>Jamie Herring, president & lead designer, HabitatSeven
-        <li>Jordan Harding, chief technology officer, HabitatSeven
-        <li>Brendan Heberton, application architect, HabitatSeven
-        <li>Wesley Bowman, data developer, HabitatSeven
-        <li>Aires Almeida, chief creative officer, HabitatSeven
-        <li>Phil Evans, senior designer, HabitatSeven
-        <li>James Fox, director & product manager, NEMAC
-        <li>Ian Johnson, geospatial technician, NEMAC
-        <li>John Frimmel, principal software developer, NEMAC
-        <li>Jeff Hicks, director & programmer, Fernleaf Interactive
+        <li>Jamie Herring, president & lead designer, HabitatSeven</li>
+        <li>Jordan Harding, chief technology officer, HabitatSeven</li>
+        <li>Brendan Heberton, application architect, HabitatSeven</li>
+        <li>Wesley Bowman, data developer, HabitatSeven</li>
+        <li>Aires Almeida, chief creative officer, HabitatSeven</li>
+        <li>Phil Evans, senior designer, HabitatSeven</li>
+        <li>James Fox, director & product manager, NEMAC</li>
+        <li>Ian Johnson, geospatial technician, NEMAC</li>
+        <li>John Frimmel, principal software developer, NEMAC</li>
+        <li>Jeff Hicks, lead analyst, Fernleaf Interactive</li>
         <li>Josh Wilson, software engineer, Fernleaf Interactive</li>
+        <li>Bill Noon, application programmer, Cornell University</li>
       </ul>
 
       <h3>Thanks also to reviewers:</h3>
 
       <ul>
 
-        <li>Daniel Cayan, climate modeler, Scripps Institution of Oceanography
-        <li>Keith Dixon, climate modeler, NOAA Geophysical Fluid Dynamics Laboratory
-        <li>Katherine Hayhoe, climate modeler, Texas Tech University
+        <li>Daniel Cayan, climate modeler, Scripps Institution of Oceanography</li>
+        <li>Keith Dixon, climate modeler, NOAA Geophysical Fluid Dynamics Laboratory</li>
+        <li>Katherine Hayhoe, climate modeler, Texas Tech University</li>
         <li>Ken Kunkel, climate modeler, NOAA National Centers for Environmental Information</li>
+        <li>David Pierce, Programmer/Analyst, Scripps Institution of Oceanography</li>
       </ul>
 
     </section>
