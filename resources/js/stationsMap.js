@@ -85,7 +85,9 @@
       stationMOverMHHW: null, // only used for tidal stations
       mode: 'daily_vs_climate', // 'daily_vs_climate','thresholds','high_tide_flooding'
       //extent provides the initial view area of the map.
-      extent: {xmin: -119, xmax: -73, ymin: 18, ymax: 54},
+      extent: null,
+      defaultExtent: {xmin: -119, xmax: -73, ymin: 18, ymax: 54},
+      constrainMapToExtent: {xmin: -119, xmax: -73, ymin: 18, ymax: 54},
       //zoom and center are ignored if extent is provided.
       zoom: 5,
       center: [-98.21, 37.42],
@@ -234,13 +236,15 @@
       this.map = new this.dojoMods.Map({
         basemap: this.options.mode === 'high_tide_flooding' ? 'oceans' : 'topo'
       });
-
+      if ((undefined === this.options.extent || null === this.options.extent) && (undefined === this.options.center || null === this.options.center)) {
+        this.options.extent = this.options.defaultExtent;
+      }
       this.view = new this.dojoMods.MapView({
         container: this.nodes.mapContainer,
         map: this.map,
         zoom: this.options.extent ? null : this.options.zoom,
         center: this.options.extent ? null : this.options.center,
-        extent: this.options.extent ? new this.dojoMods.Extent(this.options.extent) : null,
+        extent: this.options.extent ? this.dojoMods.webMercatorUtils.geographicToWebMercator(new this.dojoMods.Extent(this.options.extent)) : null,
         constraints: {
           rotationEnabled: false,
           minZoom: 4,
@@ -248,7 +252,22 @@
         }
       });
 
+      if (this.options.constrainMapToExtent) {
+        this.constrainMapToExtent = this.dojoMods.webMercatorUtils.geographicToWebMercator(new this.dojoMods.Extent(this.options.constrainMapToExtent));
+      }
+
       // Watch view's stationary property
+      this.dojoMods.watchUtils.whenTrue(this.view, "stationary", function () {
+        // Constrain map panning
+        if (this.view.extent !== undefined && this.view.extent !== null && this.constrainMapToExtent !== undefined && !this.constrainMapToExtent.contains(this.view.extent.center)) {
+          //clamp center
+          let x = Math.min(Math.max(this.view.extent.center.x, this.constrainMapToExtent.xmin), this.constrainMapToExtent.xmax);
+          let y = Math.min(Math.max(this.view.extent.center.y, this.constrainMapToExtent.ymin), this.constrainMapToExtent.ymax);
+          this.view.center = new this.dojoMods.Point({x: x, y: y, spatialReference: this.view.extent.spatialReference});
+        }
+      }.bind(this));
+
+          // Watch view's stationary property
       this.dojoMods.watchUtils.whenTrue(this.view, "stationary", function () {
         // Get the new extent of the view when view is stationary.
         if (this.view.extent) {
