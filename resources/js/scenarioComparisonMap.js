@@ -92,7 +92,7 @@
       rightOpacity: 1,
       showCounties: true,
       defaultExtent: {xmin: -119, xmax: -73, ymin: 18, ymax: 54},
-      constrainMapToExtent: {xmin: -119, xmax: -73, ymin: 18, ymax: 54},
+      constrainMapToExtent: {xmin: -165, xmax: -62, ymin: 16, ymax: 54},
       //extent provides the initial view area of the map.
       extent: null,
       //zoom and center are ignored if extent is provided.
