@@ -386,9 +386,9 @@
             has: {
               "esri-promise-compatibility": 1,
               "esri-promise-compatibility-deprecation-warnings": 0,
-              async: 1,
-              deps: this.dojoDeps
-            }
+            },
+            async: 1,
+            deps: this.dojoDeps
           };
 
           let arcgisStyles = document.createElement("link");
