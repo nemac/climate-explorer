@@ -174,7 +174,7 @@
             </li>
 
             <li class="">
-              <h4 id="var-days_tmin_gt_80f" data-value="days_tmin_gt_80f"><a href="#" class="text">Days w/ min > 32°F</a><a
+              <h4 id="var-days_tmin_gt_80f" data-value="days_tmin_gt_80f"><a href="#" class="text">Days w/ min > 80°F</a><a
                     href="#detail-days_tmin_gt_80f" class="icon icon-help nav-detail-link"></a></h4>
               <ul class="location-resolution">
                 <li><a>Annual</a></li>
