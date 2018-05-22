@@ -459,7 +459,7 @@
 
       let layerPromises = [
         this._whenDojoLoaded().then(this._updateScenarioLayers.bind(this)),
-        // this._whenDojoLoaded().then(this._initStatesLayer.bind(this))
+        this._whenDojoLoaded().then(this._initStatesLayer.bind(this))
       ];
       if (this.options.showCounties) {
         layerPromises.push(this._whenDojoLoaded().then(this._updateCountiesLayer.bind(this)));
@@ -756,7 +756,7 @@
             style: "solid",
             color: [0, 0, 0, 0],
             outline: {  // autocasts as new SimpleLineSymbol()
-              color: "black",
+              color: [70, 70, 70, 1],
               width: 0.3
             }
           }
