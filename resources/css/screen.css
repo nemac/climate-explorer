@@ -7620,7 +7620,7 @@ body.detail-open #nav-overlay {
   height: auto;
   padding: 15px;
   padding-right: 40px;
-  background: rgba(255, 255, 255, 0.5);
+  background: rgba(255, 255, 255, 0.75);
   border: 0px solid #ffffff;
   color: #0058cf;
   -webkit-border-radius: 0;
@@ -8061,7 +8061,7 @@ body.detail-open #nav-overlay {
   max-width: 96%;
   min-width: 20rem;
   height: 2.7rem;
-  background: rgba(255, 255, 255, 0.5);
+  background: rgba(255, 255, 255, 0.75);
   display: flex;
   flex-flow: row nowrap;
   align-items: center;

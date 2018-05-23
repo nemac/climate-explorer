@@ -6,7 +6,7 @@
     height: auto;
     padding: 15px;
     padding-right: 40px;
-    background: transparentize($white, 0.5);
+    background: transparentize($white, 0.25);
     border: 0px solid $white;
     color: $blue1;
     @include border-radius(0);
@@ -354,7 +354,7 @@
     max-width: 96%;
     min-width: 20rem;
     height: 2.7rem;
-    background: rgba(255, 255, 255, 0.5);
+    background: rgba(255, 255, 255, 0.75);
     display: flex;
     flex-flow: row nowrap;
     align-items: center;
