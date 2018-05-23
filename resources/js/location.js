@@ -423,50 +423,26 @@ $(function () {
     let val = $(this).html().toLowerCase();
     $('#precip-frequency').val(val).change();
   });
-  $('#temperature-data h4').on('click', function () {
-    // removed - duplicate click functions in location.js
-    //$('ul.data-options li').removeClass('active accent-border');
-    //$(this).closest('li').addClass('active accent-border');
+  let data_source_click_handler = function (e) {
+    let val = $(this).children("a");
+    let $wrapper = $(this).parents(".location-data-section-wrap");
 
-    let val = $(this).children('a');
+    $wrapper.find(".source").html(val[0].text);
 
+    let id = $(this).attr("id").replace("var-", "");
+    let wrapper_id = $wrapper.attr("id");
+    let selector_prepend = "#";
 
-    $('#temp-chart-name').html(val[0].text);
-    $('#temp-map-name').html(val[0].text);
+    if (wrapper_id === "location-precipitation") {
+      selector_prepend += "precip-";
+    } else if (wrapper_id === "location-derived") {
+      selector_prepend += "derived-";
+    }
 
-    let id = $(this).attr('id').replace('var-', '');
-    $('#frequency').val('annual').change();
-    $('#variable').val(id).change();
-  });
-  $('#precipitation-data h4').on('click', function () {
-    // removed - duplicate click functions in location.js
-    //$('ul.data-options li').removeClass('active accent-border');
-    //$(this).closest('li').addClass('active accent-border');
-
-    let val = $(this).children('a');
-
-    $('#precip-chart-name').html(val[0].text);
-    $('#precip-map-name').html(val[0].text);
-
-    let id = $(this).attr('id').replace('var-', '');
-    $('#precip-frequency').val('annual').change();
-    $('#precip-variable').val(id).change();
-  });
-  $('#derived-data h4').on('click', function () {
-    // removed - duplicate click functions in location.js
-    //$('ul.data-options li').removeClass('active accent-border');
-    //$(this).closest('li').addClass('active accent-border');
-
-    let val = $(this).children('a');
-
-
-    $('#derived-chart-name').html(val[0].text);
-    $('#derived-map-name').html(val[0].text);
-
-    let id = $(this).attr('id').replace('var-', '');
-    $('#derived-frequency').val('annual').change();
-    $('#derived-variable').val(id).change();
-  });
+    $(selector_prepend + "frequency").val("annual").change();
+    $(selector_prepend + "variable").val(id).change();
+  }
+  $('.data-list h4').on('click', data_source_click_handler);
   $('#temperature-presentation').on('change', function () {
     let val = $(this).val();
     $('#presentation').val(val).change();
