@@ -778,7 +778,7 @@
                   <h3 class="accent-color" style="margin-bottom: 20px;"><span class="icon icon-district"></span>High Tide Flooding</h3>
                   <h5>Name: <span class="station_name">${this.options.stationName}</span></h5>
                   <h5>Station ID: <span class="station_id">${this.options.stationId}</span></h5>
-                  <h5>${this.options.stationMOverMHHW ? this.options.stationMOverMHHW + "m over MHHW":""}</h5>
+                  <h5>Local threshold: ${this.options.stationMOverMHHW ? this.options.stationMOverMHHW + "m over MHHW":""}</h5>
                 </div>
                 <select name="" id="tidal_station" class="form-control" style="width: 200px;display:none">
                   <option value="" disabled selected hidden>Station</option>
