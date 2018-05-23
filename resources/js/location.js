@@ -409,28 +409,17 @@ $(function () {
       prange: $('#range').val()
     });
   });
-  $('#temperature-data .location-resolution a').on('click', function () {
-    if ($(this).parent().hasClass('disabled')) {
-      return;
-    }
-    let val = $(this).html().toLowerCase();
-    $('#frequency').val(val).change();
-  });
-  $('#precipitation-data .location-resolution a').on('click', function () {
-    if ($(this).parent().hasClass('disabled')) {
-      return;
-    }
-    let val = $(this).html().toLowerCase();
-    $('#precip-frequency').val(val).change();
-  });
-  let data_source_click_handler = function (e) {
-    let val = $(this).children("a");
-    let $wrapper = $(this).parents(".location-data-section-wrap");
 
-    $wrapper.find(".source").html(val[0].text);
+  // @arg $wrapper - jquery wrapper of the section DOM wrapper of element that was clicked
+  // @arg freq - string of the dataset frequency. Annual or Monthly
+  // @arg dataset - string of the dataset, ex Avg Daily Max Temp
+  let timescale_label_update = function ($wrapper, freq, dataset) {
+    $wrapper.find(".source").html(freq + " " + dataset);
+  }
 
-    let id = $(this).attr("id").replace("var-", "");
-    let wrapper_id = $wrapper.attr("id");
+  // @arg $wrapper - jquery wrapper of the section DOM wrapper of element that was clicked
+  let find_hidden_select_selector_prepend = function ($wrapper) {
+    let wrapper_id = $wrapper.prop("id");
     let selector_prepend = "#";
 
     if (wrapper_id === "location-precipitation") {
@@ -439,10 +428,40 @@ $(function () {
       selector_prepend += "derived-";
     }
 
+    return selector_prepend;
+  }
+
+  let data_resolution_click_handler = function (e) {
+    if ($(this).parent().hasClass('disabled')) {
+      return;
+    }
+
+    let $wrapper = $(this).parents(".location-data-section-wrap");
+    let dataset = $(this).parents(".location-resolution").siblings("h4").children("a")[0].text;
+    let freq = $(this).html();
+
+    timescale_label_update($wrapper, freq, dataset);
+
+    let val = freq.toLowerCase();
+    $(find_hidden_select_selector_prepend($wrapper) + "frequency").val(val).change();
+  }
+
+  let data_source_click_handler = function (e) {
+    let val = $(this).children("a");
+    let $wrapper = $(this).parents(".location-data-section-wrap");
+
+    timescale_label_update($wrapper, "Annual", val[0].text);
+
+    let id = $(this).attr("id").replace("var-", "");
+    let selector_prepend = find_hidden_select_selector_prepend($wrapper);
+
     $(selector_prepend + "frequency").val("annual").change();
     $(selector_prepend + "variable").val(id).change();
   }
+
+  $('.location-resolution a').on('click', data_resolution_click_handler);
   $('.data-list h4').on('click', data_source_click_handler);
+
   $('#temperature-presentation').on('change', function () {
     let val = $(this).val();
     $('#presentation').val(val).change();
@@ -715,7 +734,6 @@ $(function () {
   function pxrangeset(min, max) {
     $("#precip-slider-range").slider("option", "values", [min, max]);
   }
-
 
   window.tempChart = climate_widget.graph({
     'div': "div#chart-123",

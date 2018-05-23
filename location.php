@@ -279,7 +279,7 @@
                 <h4>
                   <span class="icon icon-emission-scenario"></span> <span class="text">
                                 Chart:&nbsp;<span class="full-title"></span>
-                                <span class="source" id="temp-chart-name">Avg Daily Max Temp (°F)</span>
+                                <span class="source" id="temp-chart-name">Annual Avg Daily Max Temp (°F)</span>
                               </span>
                 </h4>
 
@@ -336,7 +336,7 @@
                 <h4 class="accent-color">
                   <span class="icon icon-district"></span>
                   <span class="text">Map:&nbsp;<span class="full-title"></span>
-                  <span class="source" id="temp-map-name">Avg Daily Max Temp (°F)</span>
+                  <span class="source" id="temp-map-name">Annual Avg Daily Max Temp (°F)</span>
                 </span>
                 </h4>
 
@@ -514,7 +514,7 @@
                 <h4>
                   <span class="icon icon-emission-scenario"></span> <span class="text">
                                 Chart:&nbsp;<span class="full-title"></span>
-                                <span class="source" id="precip-chart-name">Total precip</span>
+                                <span class="source" id="precip-chart-name">Annual Total precip</span>
                               </span>
                 </h4>
                 <div class="data-accordion-actions">
@@ -570,7 +570,7 @@
                 <h4 class="accent-color">
                   <span class="icon icon-district"></span> <span class="text">
                               Map:&nbsp;<span class="full-title"></span>
-                              <span class="source" id="precip-map-name">Total precip</span>
+                              <span class="source" id="precip-map-name">Annual Total precip</span>
                             </span>
                 </h4>
 
@@ -738,7 +738,7 @@
                 <h4>
                   <span class="icon icon-emission-scenario"></span> <span class="text">
                                 Chart:&nbsp;<span class="full-title"></span>
-                                <span class="source" id="derived-chart-name">Heating Degree Days</span>
+                                <span class="source" id="derived-chart-name">Annual Heating Degree Days</span>
                               </span>
                 </h4>
 
@@ -796,7 +796,7 @@
                 <h4 class="accent-color">
                   <span class="icon icon-district"></span> <span class="text">
                                 Map:&nbsp;<span class="full-title"></span>
-                                <span class="source" id="derived-map-name">Heating Degree Days</span>
+                                <span class="source" id="derived-map-name">Annual Heating Degree Days</span>
                               </span>
                 </h4>
 
