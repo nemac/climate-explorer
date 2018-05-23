@@ -25,7 +25,7 @@ $(function () {
         variable: activeVariableTemperature,
         extent: window.ce.ce('getLocationPageState')['extent'],
         center: window.ce.ce('getLocationPageState')['center'],
-        zoom: window.ce.ce('getLocationPageState')['zoom'] || 8,
+        zoom: window.ce.ce('getLocationPageState')['zoom'] || 9,
         showCounties: false,
         layersloaded: function () {
           $('#temperature-map').spinner('destroy');
@@ -49,7 +49,7 @@ $(function () {
         variable: activeVariablePrecipitation,
         extent: window.ce.ce('getLocationPageState')['extent'],
         center: window.ce.ce('getLocationPageState')['center'],
-        zoom: window.ce.ce('getLocationPageState')['zoom'] || 8,
+        zoom: window.ce.ce('getLocationPageState')['zoom'] || 9,
         showCounties: false,
         layersloaded: function () {
           $('#precipitation-map').spinner('destroy');
@@ -73,7 +73,7 @@ $(function () {
           variable: ['hdd', 'cdd'].includes(activeVariableDerived) ? activeVariableDerived + '_65f' : activeVariableDerived,
           extent: window.ce.ce('getLocationPageState')['extent'],
           center: window.ce.ce('getLocationPageState')['center'],
-          zoom: window.ce.ce('getLocationPageState')['zoom'] || 8,
+          zoom: window.ce.ce('getLocationPageState')['zoom'] || 9,
           showCounties: false,
           layersloaded: function () {
             $('#derived-map').spinner('destroy');
