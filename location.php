@@ -341,7 +341,6 @@
                 </h4>
 
                 <div class="data-accordion-actions">
-                  <a href="#" class="how-to-read"><span class="icon icon-help"></span>How to read this</a>
                   <div class="select map-seasons-container" id="temperature-map-season">
                     <select class="dropdown">
                       <option value="summer">July (Summer)</option>
@@ -350,6 +349,7 @@
                       <option value="spring">April (Spring)</option>
                     </select>
                   </div>
+                  <a href="#" class="how-to-read"><span class="icon icon-help"></span>How to read this</a>
                   <a href="/variables/?id=tmax" class="full-map-btn button bg-white color-orange arrow-right">View full map</a>
 
                 </div>
@@ -575,7 +575,6 @@
                 </h4>
 
                 <div class="data-accordion-actions">
-                  <a href="#" class="how-to-read"><span class="icon icon-help"></span>How to read this</a>
                   <div class="select map-seasons-container" id="precipitation-map-season">
                     <select title="Season" class="dropdown">
                       <option value="summer">July (Summer)</option>
@@ -584,6 +583,7 @@
                       <option value="spring">April (Spring)</option>
                     </select>
                   </div>
+                  <a href="#" class="how-to-read"><span class="icon icon-help"></span>How to read this</a>
                   <a href="/variables/?id=pcpn" class="full-map-btn button bg-white color-orange arrow-right">View full map</a>
 
 
@@ -801,7 +801,6 @@
                 </h4>
 
                 <div class="data-accordion-actions">
-                  <a href="#" class="how-to-read"><span class="icon icon-help"></span>How to read this</a>
                   <div class="select map-seasons-container" id="derived-map-season">
                     <select class="dropdown">
                       <option value="summer">July (Summer)</option>
@@ -810,6 +809,7 @@
                       <option value="spring">April (Spring)</option>
                     </select>
                   </div>
+                  <a href="#" class="how-to-read"><span class="icon icon-help"></span>How to read this</a>
                   <!--  todo fix url and handle variable changes -->
                   <a href="variables.php?id=hdd_65f" class="full-map-btn button bg-white color-orange arrow-right">View full map</a>
 
