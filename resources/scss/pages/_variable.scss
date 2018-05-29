@@ -343,7 +343,7 @@
       border: solid #ffffff 1px;
       padding-top: 0.75rem;
       padding-bottom: 0.75rem;
-      button{
+      button {
         background: rgba(255, 255, 255, 0.83);
       }
     }
@@ -397,13 +397,25 @@
       //font-family: 'Lato', sans-serif;
     }
   }
-  .tooltip{
+  .year.disabled {
+    flex-grow: 0;
+    min-width: 0;
+    padding: 0px 1rem;
+    background: rgba(255, 255, 255, 0.75);
+    border: 0px solid #ffffff;
+    -webkit-border-radius: 0;
+    -moz-border-radius: 0;
+    -ms-border-radius: 0;
+    -o-border-radius: 0;
+    border-radius: 0;
+    font: 0.9rem/0.9rem Roboto, Helvetica, "Helvetica Neue", Arial, sans-serif;
+  }
+  .tooltip {
     top: -2.6rem;
     left: 50%;
     padding: 0.5rem;
     font: 0.9rem/0.9rem Roboto, Helvetica, "Helvetica Neue", Arial, sans-serif;
   }
-
 
 }
 .county-overlay {

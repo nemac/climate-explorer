@@ -131,7 +131,7 @@
           tilesURL: "https://s3.amazonaws.com/climate-explorer-bucket/tiles/{year}-{season}-rcp45-{variable}/{level}/{col}/{row}.png",
           tilesTMS: true,
           years: [
-            {value: '2010', label: '2010'},
+            // {value: '2010', label: '2010'},
             {value: '2020', label: '2020'},
             {value: '2030', label: '2030'},
             {value: '2040', label: '2040'},
@@ -148,7 +148,7 @@
           tilesURL: "https://s3.amazonaws.com/climate-explorer-bucket/tiles/{year}-{season}-rcp85-{variable}/{level}/{col}/{row}.png",
           tilesTMS: true,
           years: [
-            {value: '2010', label: '2010'},
+            // {value: '2010', label: '2010'},
             {value: '2020', label: '2020'},
             {value: '2030', label: '2030'},
             {value: '2040', label: '2040'},
@@ -968,9 +968,25 @@
     },
 
     _updateLeftYearSlider: function () {
+      //override to disable left year slider for historical
+      if (this.options.leftYear === 'avg') {
+        this.nodes.$controlsOverLayContainer.find('.left-year-slider-container').addClass('disabled').text(this.options.scenarios[this.options.leftScenario].years.slice(-1)[0].label);
+        delete this.nodes['$leftYearSlider'];
+        delete this.nodes['$leftYearTooltip'];
+        return;
+      }
+      else if(this.nodes.$controlsOverLayContainer.find('.left-year-slider-container').hasClass('disabled')){
+        this.nodes.$controlsOverLayContainer.find('.left-year-slider-container').removeClass('disabled').html(`
+              <div class="year-label year-min"></div>
+              <div class="left-year-slider"></div>
+              <div class="year-label year-max"></div>`);
+      }
+
       if (this.nodes.$leftYearSlider === undefined) {
         this.nodes.$leftYearSlider = $(this.element).find('.left-year-slider');
       }
+
+
       if (this.nodes.$leftYearTooltip === undefined) {
         this.nodes.$leftYearTooltip = $('<span class="tooltip"></span>').hide();
       }

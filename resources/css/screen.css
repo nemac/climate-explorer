@@ -8118,6 +8118,21 @@ body.detail-open #nav-overlay {
 }
 
 /* line 400, resources/scss/pages/_variable.scss */
+.scenario-map-overlay-container .year.disabled {
+  flex-grow: 0;
+  min-width: 0;
+  padding: 0px 1rem;
+  background: rgba(255, 255, 255, 0.75);
+  border: 0px solid #ffffff;
+  -webkit-border-radius: 0;
+  -moz-border-radius: 0;
+  -ms-border-radius: 0;
+  -o-border-radius: 0;
+  border-radius: 0;
+  font: 0.9rem/0.9rem Roboto, Helvetica, "Helvetica Neue", Arial, sans-serif;
+}
+
+/* line 413, resources/scss/pages/_variable.scss */
 .scenario-map-overlay-container .tooltip {
   top: -2.6rem;
   left: 50%;
@@ -8125,7 +8140,7 @@ body.detail-open #nav-overlay {
   font: 0.9rem/0.9rem Roboto, Helvetica, "Helvetica Neue", Arial, sans-serif;
 }
 
-/* line 409, resources/scss/pages/_variable.scss */
+/* line 421, resources/scss/pages/_variable.scss */
 .county-overlay {
   padding: 2rem;
   background: #0058cf;
@@ -8139,12 +8154,12 @@ body.detail-open #nav-overlay {
   color: white;
 }
 
-/* line 416, resources/scss/pages/_variable.scss */
+/* line 428, resources/scss/pages/_variable.scss */
 .county-overlay .county-overlay-inner {
   max-width: 900px;
 }
 
-/* line 420, resources/scss/pages/_variable.scss */
+/* line 432, resources/scss/pages/_variable.scss */
 .county-overlay .county-overlay-close {
   position: absolute;
   top: 10px;
@@ -8154,7 +8169,7 @@ body.detail-open #nav-overlay {
   cursor: pointer;
 }
 
-/* line 428, resources/scss/pages/_variable.scss */
+/* line 440, resources/scss/pages/_variable.scss */
 .county-overlay header {
   position: relative !important;
   background-color: transparent !important;
@@ -8171,12 +8186,12 @@ body.detail-open #nav-overlay {
   clear: both;
 }
 
-/* line 432, resources/scss/pages/_variable.scss */
+/* line 444, resources/scss/pages/_variable.scss */
 .county-overlay header a {
   color: white;
 }
 
-/* line 434, resources/scss/pages/_variable.scss */
+/* line 446, resources/scss/pages/_variable.scss */
 .county-overlay .data-accordion-actions {
   float: none;
   position: inherit;
@@ -8194,44 +8209,44 @@ body.detail-open #nav-overlay {
   clear: both;
 }
 
-/* line 439, resources/scss/pages/_variable.scss */
+/* line 451, resources/scss/pages/_variable.scss */
 .county-overlay .data-accordion-actions .how-to-read {
   position: inherit;
   float: left;
 }
 
-/* line 443, resources/scss/pages/_variable.scss */
+/* line 455, resources/scss/pages/_variable.scss */
 .county-overlay .data-accordion-actions .download-data, .county-overlay .data-accordion-actions .download-image {
   float: right;
 }
 
-/* line 446, resources/scss/pages/_variable.scss */
+/* line 458, resources/scss/pages/_variable.scss */
 .county-overlay .data-accordion-actions a {
   color: white !important;
 }
 
-/* line 447, resources/scss/pages/_variable.scss */
+/* line 459, resources/scss/pages/_variable.scss */
 .county-overlay .data-accordion-actions a .icon {
   color: white !important;
 }
 
-/* line 451, resources/scss/pages/_variable.scss */
+/* line 463, resources/scss/pages/_variable.scss */
 .county-overlay .range {
   position: relative;
   margin-top: 35px;
 }
 
-/* line 452, resources/scss/pages/_variable.scss */
+/* line 464, resources/scss/pages/_variable.scss */
 .county-overlay .range .range-label {
   color: white;
 }
 
-/* line 453, resources/scss/pages/_variable.scss */
+/* line 465, resources/scss/pages/_variable.scss */
 .county-overlay .range .ui-slider {
   position: relative;
 }
 
-/* line 455, resources/scss/pages/_variable.scss */
+/* line 467, resources/scss/pages/_variable.scss */
 .county-overlay .legend-item {
   background: rgba(255, 255, 255, 0.3);
 }
