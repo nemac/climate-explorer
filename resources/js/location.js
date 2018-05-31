@@ -701,8 +701,7 @@ $(function () {
     }
   });
 
-
-  $('#download_derived_hist_mod_data').click(function () {
+  $('#download_derived_hist_obs_data').click(function () {
     if (window.derivedChart) {
       window.derivedChart.download_hist_obs_data(this)
     }
