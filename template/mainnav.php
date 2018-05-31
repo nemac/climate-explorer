@@ -161,7 +161,7 @@ $stations_content = array(
     'variable' => 'high_tide_flooding',
     'name' => ' Days with High Tide Flooding',
     'overlayname' => 'What do <u>Days with High Tide Flooding</u> tell us?',
-    'detail' => 'The number of days per year when local sea level rises above the identified threshold for flooding—without storm surge or riverine flooding—reflects increases in global sea level.</p><p>At each of the tidal gauge stations on the map, local emergency managers have identified a flooding threshold related to impacts such as inundation of low-lying roads or seawater pouring into stormwater systems. Threshold heights for flooding at each station are expressed as distances above the average daily highest water level from 1983 to 2001, also known as mean higher high water (MHHW).'
+    'detail' => 'Over time, increases in the number of days per year when local sea level rises above identified thresholds for flooding ultimately reflects increases in global sea level.</p><p>At each of the tidal gauge stations on the map, emergency managers identified flooding heights related to local impacts such as inundation of low-lying roads or seawater pouring into stormwater systems. Oceanographers compiled these heights for many stations, and then performed statistical analyses on the dataset to establish a threshold flood height at each station. Threshold heights are expressed as distance above the long-term average of the daily highest water level, also known as mean higher high water (MHHW).'
   )); ?>
 
 <nav id="nav-overlay" class="overlay">
