@@ -47,7 +47,7 @@
 
 
     _destroy: function () {
-      this.nodes.$overlay.fadeOut(200, function () {$(this).remove();});
+      this.nodes.$overlay.hide(0, function () {$(this).remove();});
     },
 
     // =========== Public methods to implement =============================
