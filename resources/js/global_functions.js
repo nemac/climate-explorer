@@ -110,6 +110,11 @@
 
     // plugin
 
+    $('#nav-cycle').on('cycle-after',function(event, optionHash, outgoingSlideEl, incomingSlideEl, forwardFlag){
+      if ($(incomingSlideEl).data().slideNum === 0 || $(incomingSlideEl).data().slideNum === "0"){
+        $('input.location-mapper').focus();
+      }});
+
     $.fn.do_nav = function (options, callback) {
       const settings = $.extend({
         action: 'open',
@@ -127,11 +132,15 @@
           if (typeof callback === 'function') {
             callback.call(this);
           }
-
+          if (settings.slide === 0||settings.slide === "0"){
+            $('input.location-mapper').focus();
+          }
           $('#nav-cycle').cycle('goto', settings.slide);
+
         });
       }
     };
+
 
     // VARIABLE DETAIL
 
