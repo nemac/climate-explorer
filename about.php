@@ -101,7 +101,7 @@
         Days, Cooling Degree Days, Growing Degree Days, Modified Growing Degree Days, all data are presented as average annual values across a decade with the
         starting year indicated in the time slider. </p>
       <p>
-        Days with High Tide Flooding were compiled from tide-gauge data based on locally identified thresholds related to impacts such as flooding of low-lying
+        Days with High-tide Flooding were compiled from tide-gauge data based on locally identified thresholds related to impacts such as flooding of low-lying
         roads. </p>
       <h3>Stations</h3>
 

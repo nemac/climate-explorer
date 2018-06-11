@@ -4112,7 +4112,8 @@ body.stop-scrolling {
 }
 
 /* line 26, resources/scss/_mixins.scss */
-*:before, *:after {
+*:before,
+*:after {
   -moz-box-sizing: border-box;
   -webkit-box-sizing: border-box;
   box-sizing: border-box;

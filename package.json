@@ -31,7 +31,7 @@
     "babel-preset-env": "^1.7.0",
     "compass-mixins": "github:Igosuki/compass-mixins",
     "es6-promise": "^4.2.4",
-    "node-sass": "^4.7.2"
+    "node-sass": "^4.9.0"
   },
   "dependencies": {
     "terraformer-arcgis-parser": "^1.0.5"

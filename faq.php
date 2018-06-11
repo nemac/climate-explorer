@@ -200,12 +200,7 @@
       <h4>Where do the sea level projections come from?</h4>
 
       <div class="accordion-text">
-        <p>William Sweet and other researchers at NOAA's National Ocean Service used the latest peer-reviewed estimates of global sea level rise to produce
-          these estimates. Combined with information on local land subsidence or uplift, they estimated the frequency of high-tide flooding during each future
-          decade out to 2100. The graphs show observed annual flood days through 2016 and projections for the number of days per year when inundation will
-          exceed a locally defined level: high-tide flooding events should not be envisioned as city-wide floods.</p>
-        <p>For further information, see <a href="https://tidesandcurrents.noaa.gov/publications/NOAA_Technical_Report_NOS_COOPS_073.pdf" target="_blank">https://tidesandcurrents.noaa.gov/publications/NOAA_Technical_Report_NOS_COOPS_073.pdf</a>
-        </p>
+        <p>William Sweet and other researchers at NOAA's National Ocean Service used the latest peer-reviewed estimates of global sea level rise and local reports of flooding impacts to produce these estimates. Combined with information on local land subsidence or uplift, oceanographers estimated the frequency of high-tide flooding at each location during future decades out to 2100. The graphs show observed annual high-tide flood days through 2016 and projections for the number of days per year when inundation will exceed a locally defined level through 2100. </p><p> High-tide flooding events should not be envisioned as days-long city-wide floods. Rather, these events result in temporary innundation of low-lying portions of the coastal cities at each station. </p><p> For further information, see <a href="https://tidesandcurrents.noaa.gov/publications/techrpt86_PaP_of_HTFlooding.pdf">Patterns and Projections of High-tide flooding along the U.S. Coastline using a Common Impact Threshold</a>.</p>
       </div>
 
       <h4>What are the scenarios represented by the blue, red, and gray bands in the tool’s charts?</h4>
@@ -250,6 +245,11 @@
           managers and NOAA Weather Forecasting Offices have identified flooding thresholds related to impacts such as flooding of low-lying roads or
           infiltration into storm-water systems. In the CE, users can now view the observed annual number of days with high tide flooding at selected stations,
           and projections for the annual number of high tide flooding, for two difference scenarios, through 2100 (Sweet and Park, 2014).</p>
+
+        <p>High-tide flooding occurs when local sea level rises and temporarily inundates some portion of normally dry land. This type of flooding has also been called nuisance, sunny day, or recurrent flooding. The graphs show observed and projected annual frequencies of high-tide flooding: projections show two scenarios through 2100—one in which emissions of heat-trapping gases peak around 2040, and then decline, and one in which emissions continue increasing through 2100.</p><p>At each tidal station, local emergency managers identified flooding thresholds (expressed as heights above mean high higher water) related to impacts such as flooding of low-lying roads or infiltration into storm-water systems. Oceanographers compiled these heights  for many stations, and then performed statistical analyses on the dataset to establish a threshold flood height for each station.</p><p>For more information, see <a href="https://tidesandcurrents.noaa.gov/publications/techrpt86_PaP_of_HTFlooding.pdf">Patterns and Projections of High-tide flooding along the U.S. Coastline using a Common Impact Threshold.</a>
+
+        </p>
+
       </div>
 
 
