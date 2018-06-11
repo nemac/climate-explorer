@@ -142,7 +142,7 @@
         return false;
       }
       for (let i = 0; i < this.dojoDeps; i++) {
-        if (!window.dojoMod.hasOwnProperty(this.dojoDeps[i][i].split('/').pop())) {
+        if (!this.dojoMods.hasOwnProperty(this.dojoDeps[i][i].split('/').pop())) {
           return false
         }
       }
