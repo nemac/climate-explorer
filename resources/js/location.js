@@ -499,7 +499,7 @@ $(function () {
       default:
         scenario = '';
     }
-    if (pre === 'precipitation') {
+    if (pre === 'precip') {
       $('#precip-scenario').val(scenario).change();
     } else if (pre === 'derive') {
       $('#derived-scenario').val(scenario).change();
