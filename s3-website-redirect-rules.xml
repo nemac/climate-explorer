@@ -4,6 +4,8 @@
             <KeyPrefixEquals>index.php</KeyPrefixEquals>
         </Condition>
         <Redirect>
+            <Protocol>https</Protocol>
+            <HostName>crt-climate-explorer.nemac.org</HostName>
             <ReplaceKeyPrefixWith></ReplaceKeyPrefixWith>
         </Redirect>
     </RoutingRule>
@@ -13,6 +15,8 @@
             <KeyPrefixEquals>location.php</KeyPrefixEquals>
         </Condition>
         <Redirect>
+            <Protocol>https</Protocol>
+            <HostName>crt-climate-explorer.nemac.org</HostName>
             <ReplaceKeyPrefixWith>location/</ReplaceKeyPrefixWith>
         </Redirect>
     </RoutingRule>
@@ -21,6 +25,8 @@
             <KeyPrefixEquals>stations.php</KeyPrefixEquals>
         </Condition>
         <Redirect>
+            <Protocol>https</Protocol>
+            <HostName>crt-climate-explorer.nemac.org</HostName>
             <ReplaceKeyPrefixWith>stations/</ReplaceKeyPrefixWith>
         </Redirect>
     </RoutingRule>
@@ -29,6 +35,8 @@
             <KeyPrefixEquals>variables.php</KeyPrefixEquals>
         </Condition>
         <Redirect>
+            <Protocol>https</Protocol>
+            <HostName>crt-climate-explorer.nemac.org</HostName>
             <ReplaceKeyPrefixWith>variables/</ReplaceKeyPrefixWith>
         </Redirect>
     </RoutingRule>
@@ -37,6 +45,8 @@
             <KeyPrefixEquals>error.php</KeyPrefixEquals>
         </Condition>
         <Redirect>
+            <Protocol>https</Protocol>
+            <HostName>crt-climate-explorer.nemac.org</HostName>
             <ReplaceKeyPrefixWith>error/</ReplaceKeyPrefixWith>
         </Redirect>
     </RoutingRule>
@@ -45,6 +55,8 @@
             <KeyPrefixEquals>faq.php</KeyPrefixEquals>
         </Condition>
         <Redirect>
+            <Protocol>https</Protocol>
+            <HostName>crt-climate-explorer.nemac.org</HostName>
             <ReplaceKeyPrefixWith>faq/</ReplaceKeyPrefixWith>
         </Redirect>
     </RoutingRule>
@@ -53,6 +65,8 @@
             <KeyPrefixEquals>definitions.php</KeyPrefixEquals>
         </Condition>
         <Redirect>
+            <Protocol>https</Protocol>
+            <HostName>crt-climate-explorer.nemac.org</HostName>
             <ReplaceKeyPrefixWith>definitions/</ReplaceKeyPrefixWith>
         </Redirect>
     </RoutingRule>
@@ -61,6 +75,8 @@
             <KeyPrefixEquals>credits.php</KeyPrefixEquals>
         </Condition>
         <Redirect>
+            <Protocol>https</Protocol>
+            <HostName>crt-climate-explorer.nemac.org</HostName>
             <ReplaceKeyPrefixWith>credits/</ReplaceKeyPrefixWith>
         </Redirect>
     </RoutingRule>
@@ -69,6 +85,8 @@
             <KeyPrefixEquals>about.php</KeyPrefixEquals>
         </Condition>
         <Redirect>
+            <Protocol>https</Protocol>
+            <HostName>crt-climate-explorer.nemac.org</HostName>
             <ReplaceKeyPrefixWith>about/</ReplaceKeyPrefixWith>
         </Redirect>
     </RoutingRule>
@@ -77,6 +95,8 @@
             <KeyPrefixEquals>404.php</KeyPrefixEquals>
         </Condition>
         <Redirect>
+            <Protocol>https</Protocol>
+            <HostName>crt-climate-explorer.nemac.org</HostName>
             <ReplaceKeyPrefixWith>404/</ReplaceKeyPrefixWith>
         </Redirect>
     </RoutingRule>
