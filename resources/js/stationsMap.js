@@ -87,15 +87,15 @@
       //extent provides the initial view area of the map.
       extent: null,
       defaultExtent: {xmin: -119, xmax: -73, ymin: 18, ymax: 54},
-      constrainMapToExtent: {xmin: -165, xmax: -62, ymin: 16, ymax: 54},
+      // constrainMapToExtent: {xmin: -180, xmax: -62, ymin: 10, ymax: 54},
       //zoom and center are ignored if extent is provided.
       zoom: 5,
       center: [-98.21, 37.42],
       // Additional elements
       stationOverlayContainerId: "station-overlay-container",
       // Map layers
-      dailyStationsLayerURL: "/resources/vendor/item/conus_stations_whitelist.json",
-      thresholdStationsLayerURL: "/resources/vendor/item/conus_stations_whitelist.json",
+      dailyStationsLayerURL: "/resources/data/stations_whitelist.json",
+      thresholdStationsLayerURL: "/resources/data/stations_whitelist.json",
       tidalStationsLayerURL: "/resources/vendor/tidal/tidal_stations.json",
       dailyStationsDataURL: "https://data.rcc-acis.org/StnData",
       thresholdStationsDataURL: "https://data.rcc-acis.org/StnData",
