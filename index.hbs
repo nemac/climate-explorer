@@ -3,7 +3,7 @@
 <head>
 
 
-  <?php include_once('template/head.php') ?>
+  {{> head }}
 
   <meta property="fb:app_id" content="187816851587993">
   <meta property="og:url" content="/">
@@ -15,7 +15,7 @@
 </head>
 <body id="page-home" class="">
 <div class="cd-cover-layer"></div>
-<?php include_once('template/header.php'); ?>
+{{> header }}
 
 <div id="viewport">
   <div id="main-content-wrap">
@@ -51,10 +51,10 @@
 
   </div>
 
-  <?php include_once('template/share.php'); ?>
+  {{> share }}
 </div>
 
-<?php include_once('template/footer.php'); ?>
+{{> footer }}
 
 </body>
 </html>

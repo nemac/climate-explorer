@@ -1,7 +1,7 @@
 <!doctype html>
 <html>
 <head>
-  <?php include_once('template/head.php') ?>
+  {{> head }}
   <meta property="fb:app_id" content="187816851587993">
   <meta property="og:url" content="/">
   <meta property="og:type" content="article">
@@ -12,12 +12,12 @@
 
 <body id="page-location" class="page-type-location">
 <div class="cd-cover-layer"></div>
-<?php include_once('template/header.php'); ?>
+{{> header }}
 
 <div id="viewport">
   <div id="main-content-wrap">
 
-    <?php include_once('template/share.php'); ?>
+    {{> share }}
 
     <div id="location-search">
       <input type="text" class="autocomplete location-mapper" autocomplete="off" placeholder="Search another City, County or Zip code">
@@ -834,7 +834,7 @@
   </div>
 </div>
 
-<?php include_once('template/footer.php'); ?>
+{{> footer }}
 
 <script src="https://unpkg.com/terraformer@1.0.8/terraformer.js" integrity="sha384-+M797Pj3WZVCwMmLbOxAoaWYcKJo8NSxItmI48ytcLNeAnfn1d/IckFn31jEqrzP"
         crossorigin="anonymous"></script>

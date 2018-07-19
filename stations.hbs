@@ -1,7 +1,7 @@
 <!doctype html>
 <html>
 <head>
-  <?php include_once('template/head.php'); ?>
+  {{> head }}
   <meta property="fb:app_id" content="187816851587993">
   <meta property="og:url" content="/stations.php"/>
   <meta property="og:type" content="article">
@@ -13,7 +13,7 @@
 
 <body id="page-stations" class="page-type-stations">
 <div class="cd-cover-layer"></div>
-<?php include_once('template/header.php'); ?>
+{{> header }}
 
 <header id="left-header">
   <span class="trigger icon icon-close" id="left-header-trigger"></span>
@@ -44,7 +44,7 @@
 
     <div id="stations-map"></div>
 
-    <?php include_once('template/share.php'); ?>
+    {{> share }}
 
     <!-- begin weather stations map -->
 
@@ -59,7 +59,7 @@
   <p>The Climate Explorer is optimized for desktop use. Please visit the site on a desktop computer.</p>
 </div>
 
-<?php include_once('template/footer.php') ?>
+{{> footer }}
 
 <script type="text/javascript" src="/resources/js/stationsMap.js"></script>
 <script type="text/javascript" src="/resources/vendor/tidal/tidalstationswidget.js"></script>

@@ -7,15 +7,14 @@
     "build": "npm run html:build && npm run js:build && npm run data:build && npm run css:build",
     "data:build": "mkdir -p dist/resources && cp -rf resources/data resources/img dist/resources/",
     "js:build": "mkdir -p dist/resources && babel resources/js --out-dir dist/resources/js && cp -rf resources/vendor dist/resources/",
-    "html:pages": "echo \"index,location,stations,variables,error,faq,definitions,credits,about,404\"",
-    "html:build": "export IFS=','; mkdir -p dist; htmlpages=$(npm run html:pages --silent); for f in $htmlpages; do echo $f && php-cgi -q ${f}.php > dist/${f}.html && mkdir -p dist/${f} && cp -f dist/${f}.html dist/${f}/index.html; done;",
+    "html:pages": "echo \"index location stations variables error faq definitions credits about 404\"",
+    "html:build": "mkdir -p dist; bundlebars --compile --data config.yml --partials template --partialExt -o dist/ ./*.hbs; htmlpages=$(npm run html:pages --silent); for f in $htmlpages; do echo $f && mv dist/$f.hbs dist/$f.html && mkdir -p dist/${f} && cp -f dist/${f}.html dist/${f}/index.html; done;",
     "css:build": "node-sass -o resources/css/ resources/scss/screen.scss --include-path node_modules/compass-mixins/lib/ --output-style expanded --source-comments && mkdir -p dist/resources && cp -rf resources/fonts resources/css dist/resources/",
     "css:watch": "node-sass -o resources/css/ resources/scss/screen.scss --include-path node_modules/compass-mixins/lib/ --output-style expanded --source-comments -wr",
     "deploy:fli": "aws s3 sync --delete --no-follow-symlinks dist/ s3://climate-explorer/",
-    "deploy:fli:redirects": "set -ex; for f in *.php; do touch dist/$f && aws s3 cp dist/$f s3://climate-explorer/ --website-redirect \"/${f%.php}/\"; done;",
     "deploy:nemac": "aws s3 sync --delete --no-follow-symlinks dist/ s3://climateexplorer2.nemac.org/ &&  aws cloudfront create-invalidation --distribution-id E1Q1S8U8911R6D --paths '/*'",
-    "deploy:nemac:redirects": "export IFS=','; set -ex; for f in $(npm run html:pages --silent); do touch dist/$f.php && aws s3 cp dist/$f.php s3://climateexplorer2.nemac.org --website-redirect \"/$f/\"; done;",
-    "dev:php": "php -S localhost:8080 -t ./ ./php-router.php"
+    "deploy:nemac:redirects": "set -ex; for f in $(npm run html:pages --silent); do touch dist/$f.php && aws s3 cp dist/$f.php s3://climateexplorer2.nemac.org --website-redirect \"/$f/\"; done;",
+    "start": "static -p 8080 dist/"
   },
   "repository": {
     "type": "git",
@@ -29,11 +28,14 @@
     "babel-plugin-transform-es2015-literals": "^6.22.0",
     "babel-plugin-transform-object-assign": "^6.22.0",
     "babel-preset-env": "^1.7.0",
+    "bundlebars": "^1.2.0",
     "compass-mixins": "github:Igosuki/compass-mixins",
     "es6-promise": "^4.2.4",
-    "node-sass": "^4.9.0"
+    "handlebars": "^4.0.11",
+    "node-sass": "^4.9.2",
+    "node-static": "^0.7.10"
   },
   "dependencies": {
-    "terraformer-arcgis-parser": "^1.0.5"
+    "terraformer-arcgis-parser": "^1.1.0"
   }
 }

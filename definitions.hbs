@@ -1,7 +1,7 @@
 <!doctype html>
 <html>
 <head>
-  <?php include_once('template/head.php') ?>
+  {{> head }}
   <meta property="fb:app_id" content="187816851587993" />
   <meta property="og:url" content="/definitions.php" />
   <meta property="og:type" content="article" />
@@ -12,12 +12,12 @@
 
 <body id="page-definitions" class="page-type-text">
 <div class="cd-cover-layer"></div>
-<?php include_once('template/header.php'); ?>
+{{> header }}
 
 <div id="viewport">
   <div id="main-content-wrap">
 
-    <?php include_once('template/share.php'); ?>
+    {{> share }}
 
     <section id="standard-splash" class="page-splash">
       <div class="splash-text">
@@ -150,7 +150,7 @@
   </div>
 </div>
 
-<?php include_once('template/footer.php'); ?>
+{{> footer }}
 
 </body>
 </html>
