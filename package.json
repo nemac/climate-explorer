@@ -11,9 +11,8 @@
     "html:build": "mkdir -p dist; bundlebars --compile --data config.yml --partials template --partialExt -o dist/ ./*.hbs; htmlpages=$(npm run html:pages --silent); for f in $htmlpages; do echo $f && mv dist/$f.hbs dist/$f.html && mkdir -p dist/${f} && cp -f dist/${f}.html dist/${f}/index.html; done;",
     "css:build": "node-sass -o resources/css/ resources/scss/screen.scss --include-path node_modules/compass-mixins/lib/ --output-style expanded --source-comments && mkdir -p dist/resources && cp -rf resources/fonts resources/css dist/resources/",
     "css:watch": "node-sass -o resources/css/ resources/scss/screen.scss --include-path node_modules/compass-mixins/lib/ --output-style expanded --source-comments -wr",
-    "deploy:fli": "aws s3 sync --delete --no-follow-symlinks dist/ s3://climate-explorer/",
+    "deploy:fli": "aws s3 sync --delete --no-follow-symlinks dist/ s3://climate-explorer/ &&  aws cloudfront create-invalidation --distribution-id E34SU5ZJ0O3LC0 --paths '/*'",
     "deploy:nemac": "aws s3 sync --delete --no-follow-symlinks dist/ s3://climateexplorer2.nemac.org/ &&  aws cloudfront create-invalidation --distribution-id E1Q1S8U8911R6D --paths '/*'",
-    "deploy:nemac:redirects": "set -ex; for f in $(npm run html:pages --silent); do touch dist/$f.php && aws s3 cp dist/$f.php s3://climateexplorer2.nemac.org --website-redirect \"/$f/\"; done;",
     "start": "static -p 8080 dist/"
   },
   "repository": {

@@ -86,11 +86,11 @@
       mode: 'daily_vs_climate', // 'daily_vs_climate','thresholds','high_tide_flooding'
       //extent provides the initial view area of the map.
       extent: null,
-      defaultExtent: {xmin: -119, xmax: -73, ymin: 18, ymax: 54},
+      // defaultExtent: {xmin: -170, xmax: -70, ymin: 16, ymax: 67},
       // constrainMapToExtent: {xmin: -180, xmax: -62, ymin: 10, ymax: 54},
       //zoom and center are ignored if extent is provided.
-      zoom: 5,
-      center: [-98.21, 37.42],
+      zoom: 3,
+      center: [-123,42],
       // Additional elements
       stationOverlayContainerId: "station-overlay-container",
       // Map layers
@@ -248,7 +248,7 @@
         extent: this.options.extent ? this.dojoMods.webMercatorUtils.geographicToWebMercator(new this.dojoMods.Extent(this.options.extent)) : null,
         constraints: {
           rotationEnabled: false,
-          minZoom: 4,
+          minZoom: 3,
           maxZoom: 10
         }
       });
