@@ -74,36 +74,37 @@
         this.nodes.chart = $('<canvas></canvas>').uniqueId().appendTo(this.element);
       }
       this.chart = new Chart(this.nodes.chart, {
-        type: 'bar',
+        type: 'line',
         data: {
           labels: labels,
           datasets: [
             {
               data: data_hist,
               label: "Historic",
-              backgroundColor: "#aaaaaa",
+              backgroundColor: "#d6d6d6",
               borderColor: "#aaaaaa",
-              borderWidth: 5,
-              fill: false
+              borderWidth: 3,
+              fill: true
             },
             {
               data: data_rcp45,
               label: "Lower Emissions",
-              backgroundColor: "#0058cf",
+              backgroundColor: "#99BCEC",
               borderColor: "#0058cf",
-              borderWidth: 5,
-              fill: false
+              borderWidth: 3,
+              fill: true
             }, {
               data: data_rcp85,
               label: "Higher Emissions",
-              backgroundColor: "#f5442d",
+              backgroundColor: "#fbb4ab",
               borderColor: "#f5442d",
-              borderWidth: 5,
-              fill: false
+              borderWidth: 3,
+              fill: true
             }
           ]
         },
         options: {
+          elements: {point:{radius:0}},
           responsive: this.options.responsive,
           maintainAspectRatio: false,
           // events: [],
@@ -125,23 +126,32 @@
           scales: {
             yAxes: [{
               scaleLabel: {
-                fontSize: 13,
+                fontSize: 16,
                 labelString: 'Annual Days with High Tide Flooding',
                 display: true
               },
               ticks: {
                 beginAtZero: true,
+                fontSize: 14,
                 max: 365,
                 stepSize: 100,
-                maxTicksLimit: 20
+                maxTicksLimit: 20,
+                padding: 0,
               }
             }],
             xAxes: [{
               scaleLabel: {
-                fontSize: 13,
+                fontSize: 16,
                 labelString: 'Year',
                 display: true,
                 autoSkipPadding: 80
+              },
+              ticks: {
+                  autoskip: true,
+                  autoSkipPadding: 20,
+                  fontSize: 14,
+                  min: 1950,
+                  max: 2100,
               }
             }]
           }
