@@ -327,17 +327,28 @@
   overflow-x:hidden;
   overflow-y:auto;
   @include clearfix;
-  .download-tidal-image {
+  .download-tidal-image, .download-thresholds-image {
     color: white;
     font-size: 1.5rem;
     padding-right: 1rem;
   }
-  .download-tidal-data {
+  .download-tidal-data, .download-thresholds-data {
     color: white;
     font-size: 1.5rem;
   }
   .tidal-header {
     font-size: 2rem;
+  }
+  .download-temp-data, .download-precipitation-data {
+    color: white;
+    border: 1px solid white;
+    padding: .2rem .4rem .2rem .2rem;
+  }
+  .download-temp-image, .download-precipitation-image {
+    color: white;
+    margin-right: 1rem;
+    border: 1px solid white;
+    padding: .2rem .4rem .2rem .2rem;
   }
   .station-overlay-header-icon {
     padding-right: 0.5rem;
@@ -541,4 +552,19 @@
 #stations-map svg g circle {
   pointer-events: all;
   cursor: pointer;
+}
+
+.temp-download-btns {
+  width: 47%;
+  text-align: right;
+  margin-top: .5rem;
+  margin-bottom: 1rem;
+  float: left;
+}
+
+.precip-download-btns {
+  text-align: right;
+  margin-top: .5rem;
+  margin-right: 2rem;
+  float: right;
 }

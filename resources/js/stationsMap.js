@@ -629,13 +629,23 @@
               <div id="station-overlay">
                 <div id="station-overlay-close">x</div>
                 <div id="station-overlay-header">
-                  <h3 class="accent-color" style="margin-bottom: 20px;"><span class="icon icon-district station-overlay-header-icon"></span>Weather Station Daily vs. Climate</h3>
+                  <div class="accent-color tidal-header" style="margin-bottom: 20px;">
+                    <span class="icon icon-district station-overlay-header-icon"></span>Weather Station Daily vs. Climate
+                  </div>
                   <h5>Name: ${this.options.stationName}</h5>
                   <h5>Station ID: ${this.options.stationId}</h5>
                 </div>
                 <div id="multi-chart" class="left_chart"></div>
                 <div id="multi-precip-chart" class="right_chart"></div>
                 <div style="clear:both"></div>
+                <div class="temp-download-btns">
+                  <a href="javascript:void(0)" class="download-temp-image"><span class="icon icon-download-image"></span> Image</a> 
+                  <a href="javascript:void(0)" class="download-temp-data"><span class="icon icon-download-chart"></span> Data</a>
+                </div>
+                <div class="precip-download-btns" ">
+                  <a href="javascript:void(0)" class="download-precipitation-image"><span class="icon icon-download-image"></span> Image</a> 
+                  <a href="javascript:void(0)" class="download-precipitation-data"><span class="icon icon-download-chart"></span> Data</a>
+                </div>
                 <div id="overlay-chart-container">
                   <div class="station_overlay_text">
                   <p class="text-bold">Pan or zoom on these graphs to view other years. Place your cursor on either axis and then scroll, click-and-drag, or hold down your SHIFT key and scroll to adjust the display.</p>
@@ -645,6 +655,16 @@
               </div>`
           );
 
+          $('.download-temp-image').click((function (event) {
+              event.target.href = $("#multi-chart canvas")[0].toDataURL('image/png');
+              event.target.download = "daily_vs_climate_temp_"+this.options.stationId+".png";
+          }).bind(this));
+
+          $('.download-precipitation-image').click((function (event) {
+              event.target.href = $("#multi-precip-chart canvas")[0].toDataURL('image/png');
+              event.target.download = "daily_vs_climate_precip_"+this.options.stationId+".png";
+          }).bind(this));
+
           this.chart = new ChartBuilder({station: this.options.stationId}, this.options.dailyStationsDataURL);
 
           break;
@@ -653,11 +673,11 @@
             <div id="station-overlay">
               <div id="station-overlay-close">x</div>
               <div id="station-overlay-header">
-                <div class="accent-color station-header" style="margin-bottom: 20px;">
+                <div class="accent-color tidal-header" style="margin-bottom: 20px;">
                 <span class="icon icon-district station-overlay-header-icon"></span>Weather Station Threshholds
                 <span style="float: right; padding-right: 3rem">
-                    <a href="javascript:void(0)" class="download-tidal-image"><span class="icon icon-download-image"></span> Image</a> 
-                    <a href="javascript:void(0)" class="download-tidal-data"><span class="icon icon-download-chart"></span> Data</a>
+                    <a href="javascript:void(0)" class="download-thresholds-image"><span class="icon icon-download-image"></span> Image</a> 
+                    <a href="javascript:void(0)" class="download-thresholds-data"><span class="icon icon-download-chart"></span> Data</a>
                     </span>
                 </div>
                 <h5>Name: ${this.options.stationName}</h5>
@@ -713,6 +733,11 @@
             dataAPIEndpoint: this.options.thresholdStationsDataURL.split('StnData')[0],
             barColor: '#307bda' // Color for bars.
           });
+
+          $('.download-thresholds-image').click((function (event) {
+              event.target.href = $("#thresholds-container canvas")[0].toDataURL('image/png');
+              event.target.download = "thresholds_"+this.options.stationId+".png";
+          }).bind(this));
 
           $('#threshold').change(function () {
             $("#thresholds-container").item({threshold: parseFloat($('#threshold').val())}).item('update');
