@@ -629,7 +629,7 @@
               <div id="station-overlay">
                 <div id="station-overlay-close">x</div>
                 <div id="station-overlay-header">
-                  <h3 class="accent-color" style="margin-bottom: 20px;"><span class="icon icon-district"></span>Weather Station</h3>
+                  <h3 class="accent-color" style="margin-bottom: 20px;"><span class="icon icon-district station-overlay-header-icon"></span>Weather Station Daily vs. Climate</h3>
                   <h5>Name: ${this.options.stationName}</h5>
                   <h5>Station ID: ${this.options.stationId}</h5>
                 </div>
@@ -653,7 +653,13 @@
             <div id="station-overlay">
               <div id="station-overlay-close">x</div>
               <div id="station-overlay-header">
-                <h3 class="accent-color" style="margin-bottom: 20px;"><span class="icon icon-district"></span>Weather Station</h3>
+                <div class="accent-color station-header" style="margin-bottom: 20px;">
+                <span class="icon icon-district station-overlay-header-icon"></span>Weather Station Threshholds
+                <span style="float: right; padding-right: 3rem">
+                    <a href="javascript:void(0)" class="download-tidal-image"><span class="icon icon-download-image"></span> Image</a> 
+                    <a href="javascript:void(0)" class="download-tidal-data"><span class="icon icon-download-chart"></span> Data</a>
+                    </span>
+                </div>
                 <h5>Name: ${this.options.stationName}</h5>
                 <h5>Station ID: ${this.options.stationId}</h5>
               </div>
@@ -775,7 +781,13 @@
               <div id="station-overlay">
                 <div id="station-overlay-close">x</div>
                 <div id="station-overlay-header">
-                  <h3 class="accent-color" style="margin-bottom: 20px;"><span class="icon icon-district"></span>High-tide Flooding</h3>
+                  <div class="accent-color tidal-header" style="margin-bottom: 20px;">
+                    <span class="icon icon-district station-overlay-header-icon"></span>Tidal Station High-tide Flooding
+                    <span style="float: right; padding-right: 3rem">
+                    <a href="javascript:void(0)" class="download-tidal-image"><span class="icon icon-download-image"></span> Image</a> 
+                    <a href="https://tidesandcurrents.noaa.gov/publications/techrpt86_PaP_of_HTFlooding.csv" class="download-tidal-data"><span class="icon icon-download-chart"></span> Data</a>
+                    </span>
+                  </div>
                   <h5>Name: <span class="station_name">${this.options.stationName}</span></h5>
                   <h5>Station ID: <span class="station_id">${this.options.stationId}</span></h5>
                   <h5>Local threshold: ${this.options.stationMOverMHHW ? this.options.stationMOverMHHW + "m over MHHW":""}</h5>
@@ -825,6 +837,11 @@
             data_url: '/resources/vendor/tidal/tidal_data.json', // defaults to tidal_data.json
             responsive: true // set to false to disable ChartJS responsive sizing.
           });
+
+          $('.download-tidal-image').click((function (event) {
+              event.target.href = $("#tidal-chart canvas")[0].toDataURL('image/png');
+              event.target.download = "high_tide_flooding_"+this.options.stationId+".png";
+          }).bind(this));
 
           $('#station-overlay-header h3').html('Tidal Station');
 
