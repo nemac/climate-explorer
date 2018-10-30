@@ -55,7 +55,7 @@
               <div class="row">
                 <div class="navbar selector">
                   <form class="navbar-form pull-right">
-                    <button type="button" class="btn btn-primary" id="zoom-btn">Historical Mode <span class="glyphicon glyphicon-zoom-in" aria-hidden="true"></span></button>
+                    <button type="button" class="btn btn-danger" id="zoom-btn">Historical Mode <span class="glyphicon glyphicon-zoom-in" aria-hidden="true"></span></button>
                     <select name="" id="station" class="form-control" style="width: 200px;">
                       <option value="" disabled selected hidden>Station</option>
                       <option value="1611400">Nawiliwili, HI</option>
@@ -159,13 +159,11 @@
                       <option value="9759110">Magueyes Island, PR</option>
                     </select>
                   </form>
-
                 </div>
               </div>
             </ul>
           </ul>
         </div>
-        <!--<button type="button" class="btn btn-primary" id="zoom-btn">Historical Mode <span class="glyphicon glyphicon-zoom-in" aria-hidden="true"></span></button>-->
       </div>
     </nav>
 
@@ -189,8 +187,17 @@
       $('#station').change(function () {
         $( "#chart" ).tidalstationwidget({station: $('#station').val()})
       });
+
+      var zoomed = false;
       $('#zoom-btn').click(function(){
         $( "#chart" ).tidalstationwidget('zoomToggle');
+        zoomed = !zoomed;
+        if (zoomed) {
+          $('#zoom-btn').css({"background-color": "green", "border-color": "green"});
+        }
+        else {
+          $('#zoom-btn').css({"background-color": "#c9302c", "border-color": "#ac2925"})
+        }
       });
 
     </script>
