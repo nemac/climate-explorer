@@ -99,18 +99,39 @@ ChartBuilder.prototype.getData = function (callback) {
 
 ChartBuilder.prototype.buildChart = function () {
   const temps = this.getTemperatureValues();
+  this.temperatureData = temps;
   const tmpl = this.getTemplate('temperature', temps);
   $('#multi-chart').multigraph({'muglString': tmpl});
   $('#multi-chart').multigraph('done', function (m) { $(window).resize(function () { m.resize();}); });
 
 
   const precip = this.getPrecipitationValues();
+  this.precipitationData = precip;
   //console.log('precip', precip);
   const precipTmpl = this.getTemplate('precipitation', precip);
   $('#multi-precip-chart').multigraph({'muglString': precipTmpl});
   $('#multi-precip-chart').multigraph('done', function (m) { $(window).resize(function () { m.resize();}); });
 
 };
+
+ChartBuilder.prototype.downloadTemperatureData = function(link){
+  link.href =  'data:text/csv;base64,' + window.btoa(('date,min,max,normal_min,normal_max,' + '\n' + this.temperatureData.join('\n')));
+  link.download = [
+    this.options.station,
+    "temperature",
+    'degreeF'
+  ].join('-').replace(/ /g, '_') + '.csv';
+};
+
+ChartBuilder.prototype.downloadPrecipitationData = function(link){
+  link.href =  'data:text/csv;base64,' + window.btoa(('date,precipitation,precipitation_normal' + '\n' + this.precipitationData.join('\n')));
+  link.download = [
+    this.options.station,
+    "precipitation",
+    'inch'
+  ].join('-').replace(/ /g, '_') + '.csv';
+};
+
 
 
 ChartBuilder.prototype.getTemperatureValues = function () {
