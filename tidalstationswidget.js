@@ -10,7 +10,12 @@
     options: {
       responsive: true,
       station: '',
-      data_url: 'tidal_data.json'
+      data_url: 'tidal_data.json',
+      scale: 'full'
+    },
+    scales:{
+      full: {x_max: 2100, y_max: 365, y_step: 75},
+      historic: {x_max: 2020, y_max: 50, y_step: 10}
     },
     data: {},
 
@@ -33,13 +38,19 @@
       }
     },
     zoomToggle: function(){
-      this.options.zoom = !this.options.zoom;
-      // set xmax
-      var zoomed = $.extend({}, this.chart.options.scales);
-      // zoomed.xAxes[0].ticks.max = 2020;
-      zoomed.xAxes[0].ticks.autoSkipPadding = 200;
-      this.chart.options.scales = zoomed;
-      this.chart.update();
+      if (this.options.scale == 'full') {
+        this.chart.options.scales.xAxes[0].ticks.max = this.scales.historic.x_max;
+        this.chart.options.scales.yAxes[0].ticks.max = this.scales.historic.y_max;
+        this.chart.options.scales.yAxes[0].ticks.stepSize = this.scales.historic.y_step;
+        this.chart.update();
+        this.options.scale = 'historic';
+      } else {
+        this.chart.options.scales.xAxes[0].ticks.max = this.scales.full.x_max;
+        this.chart.options.scales.yAxes[0].ticks.max = this.scales.full.y_max;
+        this.chart.options.scales.yAxes[0].ticks.stepSize = this.scales.full.y_step;
+        this.chart.update();
+        this.options.scale = 'full';
+      }
     },
     
     _update: function () {
@@ -65,7 +76,7 @@
       let data_rcp85 = [];
       for (let i = 1950; i <= 2100; i++) {
         // build an array of labels
-        labels.push(i.toString());
+        labels.push(i);
 
         // prepend 0s to historical range
         if (i <= 2000) {
@@ -146,8 +157,8 @@
               ticks: {
                 beginAtZero: true,
                 fontSize: 14,
-                max: 365,
-                stepSize: 100,
+                max: this.scales[this.options.scale].y_max,
+                stepSize: this.scales[this.options.scale].y_step,
                 maxTicksLimit: 20
               }
             }],
@@ -161,9 +172,9 @@
               ticks: {
                   autoskip: true,
                   autoSkipPadding: 60,
-                  fontSize: 15,
+                  fontSize: 16,
                   min: 1950,
-                  max: 2200,
+                  max: this.scales[this.options.scale].x_max,
               }
             }]
           }
