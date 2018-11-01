@@ -68,6 +68,8 @@ There are a handful of widget methods that may be useful:
 
 **getYearlyExceedance** - Returns a collection of counts of days which exceeded threshold in year.
 
+**downloadExceedanceData** - Given an element like `<a id='download-link'>download</a>` calling `$('#download-link').click(function(e){$('#output').item('download_exceedance_data', e.target)}) will cause the browser to download the data currently shown as a csv of year:exceedance values.
+
 Call any of these methods like this: `$("#output").item('getPercentileValue', value)`
 
 
