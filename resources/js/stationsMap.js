@@ -739,6 +739,10 @@
               event.target.download = "thresholds_"+this.options.stationId+".png";
           }).bind(this));
 
+           $('.download-thresholds-data').click((function (event) {
+             $("#thresholds-container").item('downloadExceedanceData',event.currentTarget);
+          }).bind(this));
+
           $('#threshold').change(function () {
             $("#thresholds-container").item({threshold: parseFloat($('#threshold').val())}).item('update');
           });
@@ -816,6 +820,7 @@
                   <h5>Name: <span class="station_name">${this.options.stationName}</span></h5>
                   <h5>Station ID: <span class="station_id">${this.options.stationId}</span></h5>
                   <h5>Local threshold: ${this.options.stationMOverMHHW ? this.options.stationMOverMHHW + "m over MHHW":""}</h5>
+                  <button type="button" class="tidal-zoom-toggle-btn"><span class="glyphicon glyphicon-zoom-in" aria-hidden="true"></span> Historical</button>
                 </div>
                 <select name="" id="tidal_station" class="form-control" style="width: 200px;display:none">
                   <option value="" disabled selected hidden>Station</option>
@@ -861,6 +866,11 @@
             station: this.options.stationId,
             data_url: '/resources/vendor/tidal/tidal_data.json', // defaults to tidal_data.json
             responsive: true // set to false to disable ChartJS responsive sizing.
+          });
+
+          $('.tidal-zoom-toggle-btn').click(function(){
+            $( "#tidal-chart" ).tidalstationwidget('zoomToggle');
+            $('.tidal-zoom-toggle-btn').toggleClass('active');
           });
 
           $('.download-tidal-image').click((function (event) {

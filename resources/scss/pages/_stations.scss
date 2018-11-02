@@ -332,6 +332,17 @@
     font-size: 1.5rem;
     padding-right: 1rem;
   }
+  .tidal-zoom-toggle-btn {
+    color: white;
+    font-size: 1.3rem;
+    background: rgba(0, 0, 0, 0.0);
+    border: 1px solid white;
+    padding: .3rem .6rem;
+    &.active {
+      background: rgba(0, 0, 0, 0.3);
+    }
+
+  }
   .download-tidal-data, .download-thresholds-data {
     color: white;
     font-size: 1.5rem;

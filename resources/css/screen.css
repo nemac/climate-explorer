@@ -8679,24 +8679,38 @@ body.detail-open #nav-overlay {
 }
 
 /* line 335, resources/scss/pages/_stations.scss */
+#station-overlay-container .tidal-zoom-toggle-btn {
+  color: white;
+  font-size: 1.3rem;
+  background: rgba(0, 0, 0, 0);
+  border: 1px solid white;
+  padding: .3rem .6rem;
+}
+
+/* line 341, resources/scss/pages/_stations.scss */
+#station-overlay-container .tidal-zoom-toggle-btn.active {
+  background: rgba(0, 0, 0, 0.3);
+}
+
+/* line 346, resources/scss/pages/_stations.scss */
 #station-overlay-container .download-tidal-data, #station-overlay-container .download-thresholds-data {
   color: white;
   font-size: 1.5rem;
 }
 
-/* line 339, resources/scss/pages/_stations.scss */
+/* line 350, resources/scss/pages/_stations.scss */
 #station-overlay-container .tidal-header {
   font-size: 2rem;
 }
 
-/* line 342, resources/scss/pages/_stations.scss */
+/* line 353, resources/scss/pages/_stations.scss */
 #station-overlay-container .download-temp-data, #station-overlay-container .download-precipitation-data {
   color: white;
   border: 1px solid white;
   padding: .2rem .4rem .2rem .2rem;
 }
 
-/* line 347, resources/scss/pages/_stations.scss */
+/* line 358, resources/scss/pages/_stations.scss */
 #station-overlay-container .download-temp-image, #station-overlay-container .download-precipitation-image {
   color: white;
   margin-right: 1rem;
@@ -8704,12 +8718,12 @@ body.detail-open #nav-overlay {
   padding: .2rem .4rem .2rem .2rem;
 }
 
-/* line 353, resources/scss/pages/_stations.scss */
+/* line 364, resources/scss/pages/_stations.scss */
 #station-overlay-container .station-overlay-header-icon {
   padding-right: 0.5rem;
 }
 
-/* line 358, resources/scss/pages/_stations.scss */
+/* line 369, resources/scss/pages/_stations.scss */
 #thresholds-container {
   position: relative;
   padding: 25px;
@@ -8720,7 +8734,7 @@ body.detail-open #nav-overlay {
   background-color: white;
 }
 
-/* line 367, resources/scss/pages/_stations.scss */
+/* line 378, resources/scss/pages/_stations.scss */
 #threshold_inputs {
   display: block;
   position: absolute;
@@ -8729,7 +8743,7 @@ body.detail-open #nav-overlay {
   font-size: 0.9em;
 }
 
-/* line 373, resources/scss/pages/_stations.scss */
+/* line 384, resources/scss/pages/_stations.scss */
 #threshold_inputs input {
   background-color: #f44c36;
   padding: 5px;
@@ -8741,7 +8755,7 @@ body.detail-open #nav-overlay {
   font-size: 0.9em;
 }
 
-/* line 383, resources/scss/pages/_stations.scss */
+/* line 394, resources/scss/pages/_stations.scss */
 #threshold_inputs select {
   background-color: #f44c36;
   padding: 5px;
@@ -8752,7 +8766,7 @@ body.detail-open #nav-overlay {
   font-size: 0.9em;
 }
 
-/* line 393, resources/scss/pages/_stations.scss */
+/* line 404, resources/scss/pages/_stations.scss */
 #tidal-chart {
   background-color: white;
   height: 100%;
@@ -8760,21 +8774,21 @@ body.detail-open #nav-overlay {
   position: relative;
 }
 
-/* line 399, resources/scss/pages/_stations.scss */
+/* line 410, resources/scss/pages/_stations.scss */
 #overlay-chart-container {
   margin: 25px;
   height: 50vh;
   width: calc(100% - 50px);
 }
 
-/* line 404, resources/scss/pages/_stations.scss */
+/* line 415, resources/scss/pages/_stations.scss */
 #overlay-thresholds-container {
   padding: 25px;
   max-height: 70vh !important;
   width: calc(100% - 50px);
 }
 
-/* line 409, resources/scss/pages/_stations.scss */
+/* line 420, resources/scss/pages/_stations.scss */
 .left_chart {
   position: relative;
   width: calc(50% - 40px);
@@ -8784,7 +8798,7 @@ body.detail-open #nav-overlay {
   background-color: white;
 }
 
-/* line 417, resources/scss/pages/_stations.scss */
+/* line 428, resources/scss/pages/_stations.scss */
 .right_chart {
   position: relative;
   width: calc(50% - 40px);
@@ -8794,7 +8808,7 @@ body.detail-open #nav-overlay {
   background-color: white;
 }
 
-/* line 425, resources/scss/pages/_stations.scss */
+/* line 436, resources/scss/pages/_stations.scss */
 #station-overlay-close {
   position: absolute;
   top: 10px;
@@ -8804,7 +8818,7 @@ body.detail-open #nav-overlay {
   cursor: pointer;
 }
 
-/* line 435, resources/scss/pages/_stations.scss */
+/* line 446, resources/scss/pages/_stations.scss */
 #station-overlay-header {
   height: 120px;
   color: #ffffff;
@@ -8822,12 +8836,12 @@ body.detail-open #nav-overlay {
   clear: both;
 }
 
-/* line 441, resources/scss/pages/_stations.scss */
+/* line 452, resources/scss/pages/_stations.scss */
 #station-overlay-header h3 {
   padding: 0;
 }
 
-/* line 445, resources/scss/pages/_stations.scss */
+/* line 456, resources/scss/pages/_stations.scss */
 #station-overlay-header h5 {
   float: left;
   width: 30%;
@@ -8835,13 +8849,13 @@ body.detail-open #nav-overlay {
   font-family: "CESans", Roboto, Helvetica, "Helvetica Neue", Arial, sans-serif;
 }
 
-/* line 452, resources/scss/pages/_stations.scss */
+/* line 463, resources/scss/pages/_stations.scss */
 .station_overlay_text a, .station_overlay_text a:focus {
   color: white;
   text-decoration: underline;
 }
 
-/* line 454, resources/scss/pages/_stations.scss */
+/* line 465, resources/scss/pages/_stations.scss */
 .form-group {
   font-size: 0.75rem;
 }
@@ -8857,13 +8871,13 @@ body.detail-open #nav-overlay {
   clear: both;
 }
 
-/* line 458, resources/scss/pages/_stations.scss */
+/* line 469, resources/scss/pages/_stations.scss */
 .form-group label {
   color: #ffffff;
   display: block;
 }
 
-/* line 463, resources/scss/pages/_stations.scss */
+/* line 474, resources/scss/pages/_stations.scss */
 .form-group select {
   font-family: Roboto, Helvetica, "Helvetica Neue", Arial, sans-serif;
   font-size: 0.75rem;
@@ -8871,7 +8885,7 @@ body.detail-open #nav-overlay {
   padding: 3px;
 }
 
-/* line 470, resources/scss/pages/_stations.scss */
+/* line 481, resources/scss/pages/_stations.scss */
 .form-group input {
   display: inline-block;
   width: 100%;
@@ -8883,17 +8897,17 @@ body.detail-open #nav-overlay {
   padding: 4px 8px;
 }
 
-/* line 481, resources/scss/pages/_stations.scss */
+/* line 492, resources/scss/pages/_stations.scss */
 .form-group .field-pair {
   float: left;
 }
 
-/* line 485, resources/scss/pages/_stations.scss */
+/* line 496, resources/scss/pages/_stations.scss */
 .form-group .field-pair.append input {
   width: 100%;
 }
 
-/* line 489, resources/scss/pages/_stations.scss */
+/* line 500, resources/scss/pages/_stations.scss */
 .form-group .field-pair.append .append {
   color: #ffffff;
   display: inline-block;
@@ -8901,7 +8915,7 @@ body.detail-open #nav-overlay {
   vertical-align: middle;
 }
 
-/* line 499, resources/scss/pages/_stations.scss */
+/* line 510, resources/scss/pages/_stations.scss */
 .station_overlay_text p {
   width: 100%;
   padding: 10px 0;
@@ -8911,14 +8925,14 @@ body.detail-open #nav-overlay {
   font-family: Roboto, Helvetica, "Helvetica Neue", Arial, sans-serif;
 }
 
-/* line 507, resources/scss/pages/_stations.scss */
+/* line 518, resources/scss/pages/_stations.scss */
 .station_overlay_text {
   width: 100%;
   min-height: 100px;
   overflow-y: auto;
 }
 
-/* line 514, resources/scss/pages/_stations.scss */
+/* line 525, resources/scss/pages/_stations.scss */
 .station-overlay-content {
   position: absolute;
   bottom: 0;
@@ -8930,7 +8944,7 @@ body.detail-open #nav-overlay {
   z-index: 20;
 }
 
-/* line 524, resources/scss/pages/_stations.scss */
+/* line 535, resources/scss/pages/_stations.scss */
 .station-overlay-column {
   position: relative;
   float: left;
@@ -8938,12 +8952,12 @@ body.detail-open #nav-overlay {
   height: 100%;
 }
 
-/* line 530, resources/scss/pages/_stations.scss */
+/* line 541, resources/scss/pages/_stations.scss */
 .station-overlay-column.left {
   padding-right: 40px;
 }
 
-/* line 533, resources/scss/pages/_stations.scss */
+/* line 544, resources/scss/pages/_stations.scss */
 .station-overlay-column.left:after {
   content: '';
   display: block;
@@ -8956,23 +8970,23 @@ body.detail-open #nav-overlay {
   border-left-color: #ffffff;
 }
 
-/* line 546, resources/scss/pages/_stations.scss */
+/* line 557, resources/scss/pages/_stations.scss */
 #stations-map .esri-display-object, #stations-map .esri-display-object svg {
   pointer-events: none;
 }
 
-/* line 549, resources/scss/pages/_stations.scss */
+/* line 560, resources/scss/pages/_stations.scss */
 #stations-map .esri-display-object svg {
   filter: drop-shadow(0.5px 0.5px 1px rgba(0, 0, 0, 0.2));
 }
 
-/* line 552, resources/scss/pages/_stations.scss */
+/* line 563, resources/scss/pages/_stations.scss */
 #stations-map svg g circle {
   pointer-events: all;
   cursor: pointer;
 }
 
-/* line 557, resources/scss/pages/_stations.scss */
+/* line 568, resources/scss/pages/_stations.scss */
 .temp-download-btns {
   width: 47%;
   text-align: right;
@@ -8981,7 +8995,7 @@ body.detail-open #nav-overlay {
   float: left;
 }
 
-/* line 565, resources/scss/pages/_stations.scss */
+/* line 576, resources/scss/pages/_stations.scss */
 .precip-download-btns {
   text-align: right;
   margin-top: .5rem;
