@@ -2,6 +2,7 @@
 (function ($) {
 
 
+  
   if (typeof($.widget) === 'undefined') {
     console.error("jQuery Widget not found.");
     return
@@ -18,7 +19,7 @@
       historic: {x_max: 2020, y_max: 50, y_step: 10}
     },
     data: {},
-
+    
     _create: function (options) {
       this.nodes = {};
       $.getJSON(this.options.data_url, function (json) {
@@ -44,15 +45,15 @@
       else {
         this.options.scale = 'historic';
       }
-
-
+      
+      
       this.chart.options.scales.xAxes[0].ticks.max = this.scales[this.options.scale].x_max;
       this.chart.options.scales.yAxes[0].ticks.max = this.scales[this.options.scale].y_max;
       this.chart.options.scales.yAxes[0].ticks.stepSize = this.scales[this.options.scale].y_step;
       this.chart.update();
-
+      
     },
-
+    
     _update: function () {
       if (!this.options.station) {
         return
@@ -69,7 +70,7 @@
           }
         }
       }
-
+      
       // turn projected data values into an array
       let labels = [];
       let data_rcp45 = [];
@@ -77,7 +78,7 @@
       for (let i = 1950; i <= 2100; i++) {
         // build an array of labels
         labels.push(i);
-
+        
         // prepend 0s to historical range
         if (i <= 2000) {
           data_rcp45.push(0);
@@ -87,7 +88,7 @@
           data_rcp85.push(this.data.int[String(this.options.station)][i]);
         }
       }
-
+      
       // compose chart
       if (this.chart !== undefined) {
         this.chart.destroy()
@@ -95,6 +96,15 @@
       if (this.nodes.chart === undefined) {
         this.nodes.chart = $('<canvas></canvas>').uniqueId().appendTo(this.element);
       }
+      // White background for downloaded images.
+      Chart.plugins.register({
+        beforeDraw: function(chartInstance) {
+          var ctx = chartInstance.chart.ctx;
+          ctx.fillStyle = "white";
+          ctx.fillRect(0, 0, chartInstance.chart.width, chartInstance.chart.height);
+        }
+      });
+
       this.chart = new Chart(this.nodes.chart, {
         type: 'bar',
         data: {
