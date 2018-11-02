@@ -1,7 +1,7 @@
 'use strict';
 (function ($) {
-
-
+  
+  
   if (typeof($.widget) === 'undefined') {
     console.error("jQuery Widget not found.");
     return
@@ -10,11 +10,17 @@
     options: {
       responsive: true,
       station: '',
-      data_url: 'tidal_data.json'
+      data_url: 'tidal_data.json',
+      scale: 'full'
+    },
+    scales: {
+      full: {x_max: 2100, y_max: 365, y_step: 75},
+      historic: {x_max: 2020, y_max: 50, y_step: 10}
     },
     data: {},
-    nodes: {},
+    
     _create: function (options) {
+      this.nodes = {};
       $.getJSON(this.options.data_url, function (json) {
         this.data = json;
         this._update(options);
@@ -31,8 +37,24 @@
         this._update()
       }
     },
+    zoomToggle: function () {
+      if (this.options.scale === 'historic') {
+        this.options.scale = 'full';
+      }
+      else {
+        this.options.scale = 'historic';
+      }
+      
+      
+      this.chart.options.scales.xAxes[0].ticks.max = this.scales[this.options.scale].x_max;
+      this.chart.options.scales.yAxes[0].ticks.max = this.scales[this.options.scale].y_max;
+      this.chart.options.scales.yAxes[0].ticks.stepSize = this.scales[this.options.scale].y_step;
+      this.chart.update();
+      
+    },
+    
     _update: function () {
-      if (!this.options.station){
+      if (!this.options.station) {
         return
       }
       // transform data from object to array
@@ -47,25 +69,25 @@
           }
         }
       }
-
+      
       // turn projected data values into an array
       let labels = [];
       let data_rcp45 = [];
       let data_rcp85 = [];
       for (let i = 1950; i <= 2100; i++) {
         // build an array of labels
-        labels.push(i.toString());
-
+        labels.push(i);
+        
         // prepend 0s to historical range
         if (i <= 2000) {
           data_rcp45.push(0);
           data_rcp85.push(0);
         } else {
-          data_rcp45.push(this.data.low_scenario[String(this.options.station)][i]);
-          data_rcp85.push(this.data.high[String(this.options.station)][i]);
+          data_rcp45.push(this.data.int_low[String(this.options.station)][i]);
+          data_rcp85.push(this.data.int[String(this.options.station)][i]);
         }
       }
-
+      
       // compose chart
       if (this.chart !== undefined) {
         this.chart.destroy()
@@ -74,7 +96,7 @@
         this.nodes.chart = $('<canvas></canvas>').uniqueId().appendTo(this.element);
       }
       this.chart = new Chart(this.nodes.chart, {
-        type: 'line',
+        type: 'bar',
         data: {
           labels: labels,
           datasets: [
@@ -92,19 +114,21 @@
               backgroundColor: "#99BCEC",
               borderColor: "#0058cf",
               borderWidth: 3,
-              fill: true
+              fill: true,
+              type: 'line'
             }, {
               data: data_rcp85,
               label: "Higher Emissions",
               backgroundColor: "#fbb4ab",
               borderColor: "#f5442d",
               borderWidth: 3,
-              fill: true
+              fill: true,
+              type: 'line'
             }
           ]
         },
         options: {
-          elements: {point:{radius:0}},
+          elements: {point: {radius: 0}},
           responsive: this.options.responsive,
           maintainAspectRatio: false,
           // events: [],
@@ -133,10 +157,9 @@
               ticks: {
                 beginAtZero: true,
                 fontSize: 14,
-                max: 365,
-                stepSize: 100,
-                maxTicksLimit: 20,
-                padding: 0,
+                max: this.scales[this.options.scale].y_max,
+                stepSize: this.scales[this.options.scale].y_step,
+                maxTicksLimit: 20
               }
             }],
             xAxes: [{
@@ -147,11 +170,11 @@
                 autoSkipPadding: 80
               },
               ticks: {
-                  autoskip: true,
-                  autoSkipPadding: 20,
-                  fontSize: 14,
-                  min: 1950,
-                  max: 2100,
+                autoskip: true,
+                autoSkipPadding: 60,
+                fontSize: 16,
+                min: 1950,
+                max: this.scales[this.options.scale].x_max,
               }
             }]
           }
