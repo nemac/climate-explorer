@@ -36,6 +36,11 @@
         margin-left: 0;
         margin-right: 0;
       }
+
+      #zoom-btn {
+        align
+      }
+
     </style>
   </head>
   <body>
@@ -50,6 +55,7 @@
               <div class="row">
                 <div class="navbar selector">
                   <form class="navbar-form pull-right">
+                    <button type="button" class="btn btn-danger" id="zoom-btn">Historical Mode <span class="glyphicon glyphicon-zoom-in" aria-hidden="true"></span></button>
                     <select name="" id="station" class="form-control" style="width: 200px;">
                       <option value="" disabled selected hidden>Station</option>
                       <option value="1611400">Nawiliwili, HI</option>
@@ -163,11 +169,15 @@
 
     <div class="container-fluid">
       <div class="row">
+
         <div class="col-xs-12" style="padding:2rem;">
+
           <div id="chart" style="height: 70vh"></div>
         </div>
       </div>
     </div>
+
+
 
     <script>
       $(document).ready(function () {
@@ -176,6 +186,18 @@
 
       $('#station').change(function () {
         $( "#chart" ).tidalstationwidget({station: $('#station').val()})
+      });
+
+      var zoomed = false;
+      $('#zoom-btn').click(function(){
+        $( "#chart" ).tidalstationwidget('zoomToggle');
+        zoomed = !zoomed;
+        if (zoomed) {
+          $('#zoom-btn').css({"background-color": "green", "border-color": "green"});
+        }
+        else {
+          $('#zoom-btn').css({"background-color": "#c9302c", "border-color": "#ac2925"})
+        }
       });
 
     </script>

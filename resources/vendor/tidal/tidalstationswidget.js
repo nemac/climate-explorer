@@ -10,7 +10,12 @@
     options: {
       responsive: true,
       station: '',
-      data_url: 'tidal_data.json'
+      data_url: 'tidal_data.json',
+      scale: 'full'
+    },
+    scales: {
+      full: {x_max: 2100, y_max: 365, y_step: 75},
+      historic: {x_max: 2020, y_max: 50, y_step: 10}
     },
     data: {},
 
@@ -32,8 +37,24 @@
         this._update()
       }
     },
+    zoomToggle: function () {
+      if (this.options.scale === 'historic') {
+        this.options.scale = 'full';
+      }
+      else {
+        this.options.scale = 'historic';
+      }
+
+
+      this.chart.options.scales.xAxes[0].ticks.max = this.scales[this.options.scale].x_max;
+      this.chart.options.scales.yAxes[0].ticks.max = this.scales[this.options.scale].y_max;
+      this.chart.options.scales.yAxes[0].ticks.stepSize = this.scales[this.options.scale].y_step;
+      this.chart.update();
+
+    },
+
     _update: function () {
-      if (!this.options.station){
+      if (!this.options.station) {
         return
       }
       // transform data from object to array
@@ -55,7 +76,7 @@
       let data_rcp85 = [];
       for (let i = 1950; i <= 2100; i++) {
         // build an array of labels
-        labels.push(i.toString());
+        labels.push(i);
 
         // prepend 0s to historical range
         if (i <= 2000) {
@@ -82,29 +103,32 @@
             {
               data: data_hist,
               label: "Historic",
-              backgroundColor: "#aaaaaa",
+              backgroundColor: "#d6d6d6",
               borderColor: "#aaaaaa",
-              borderWidth: 5,
-              fill: false
+              borderWidth: 3,
+              fill: true
             },
             {
               data: data_rcp45,
               label: "Lower Emissions",
-              backgroundColor: "#0058cf",
+              backgroundColor: "#99BCEC",
               borderColor: "#0058cf",
-              borderWidth: 5,
-              fill: false
+              borderWidth: 3,
+              fill: true,
+              type: 'line'
             }, {
               data: data_rcp85,
               label: "Higher Emissions",
-              backgroundColor: "#f5442d",
+              backgroundColor: "#fbb4ab",
               borderColor: "#f5442d",
-              borderWidth: 5,
-              fill: false
+              borderWidth: 3,
+              fill: true,
+              type: 'line'
             }
           ]
         },
         options: {
+          elements: {point: {radius: 0}},
           responsive: this.options.responsive,
           maintainAspectRatio: false,
           // events: [],
@@ -126,23 +150,31 @@
           scales: {
             yAxes: [{
               scaleLabel: {
-                fontSize: 13,
+                fontSize: 16,
                 labelString: 'Annual Days with High-tide Flooding',
                 display: true
               },
               ticks: {
                 beginAtZero: true,
-                max: 365,
-                stepSize: 100,
+                fontSize: 14,
+                max: this.scales[this.options.scale].y_max,
+                stepSize: this.scales[this.options.scale].y_step,
                 maxTicksLimit: 20
               }
             }],
             xAxes: [{
               scaleLabel: {
-                fontSize: 13,
+                fontSize: 16,
                 labelString: 'Year',
                 display: true,
                 autoSkipPadding: 80
+              },
+              ticks: {
+                autoskip: true,
+                autoSkipPadding: 60,
+                fontSize: 16,
+                min: 1950,
+                max: this.scales[this.options.scale].x_max,
               }
             }]
           }
