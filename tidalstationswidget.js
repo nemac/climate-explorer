@@ -1,6 +1,7 @@
 'use strict';
 (function ($) {
-  
+
+
   
   if (typeof($.widget) === 'undefined') {
     console.error("jQuery Widget not found.");
@@ -95,6 +96,15 @@
       if (this.nodes.chart === undefined) {
         this.nodes.chart = $('<canvas></canvas>').uniqueId().appendTo(this.element);
       }
+      // White background for downloaded images.
+      Chart.plugins.register({
+        beforeDraw: function(chartInstance) {
+          var ctx = chartInstance.chart.ctx;
+          ctx.fillStyle = "white";
+          ctx.fillRect(0, 0, chartInstance.chart.width, chartInstance.chart.height);
+        }
+      });
+
       this.chart = new Chart(this.nodes.chart, {
         type: 'bar',
         data: {
