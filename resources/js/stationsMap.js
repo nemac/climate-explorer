@@ -855,7 +855,7 @@
                 <div id="overlay-chart-container">
                   <div id="tidal-chart"></div>
                   <div class="station_overlay_text">
-                    <p>Place your cursor over the annual bars on this graph for details. Gray bars from 1950 to 2016 show observed annual counts of high-tide flooding. Red and blue bars show the average number of high-tide flooding events projected for future years under two scenarios. Data from <a target="_blank" href="https://tidesandcurrents.noaa.gov/publications/techrpt86_PaP_of_HTFlooding.pdf">NOAA Technical Report NOS CO-OPS 086 - Patterns and Projections of High-tide Flooding</a>.</p>
+                    <p>Click 'Historical' button to zoom in on or out from the observational period. Place your cursor over the curves on this graph for details. Gray bars from 1950 to 2016 show observed annual counts of high-tide flooding. Red and blue curves show the average number of high-tide flooding events projected for future years under two scenarios. Data from <a target="_blank" href="https://tidesandcurrents.noaa.gov/publications/techrpt86_PaP_of_HTFlooding.pdf">NOAA Technical Report NOS CO-OPS 086 - Patterns and Projections of High-tide Flooding</a>.</p>
                   </div>
                 </div>
               </div>`
