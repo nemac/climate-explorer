@@ -4453,7 +4453,7 @@ h6 {
   float: left;
   width: 18%;
   margin: 0 1%;
-  font-size: 0.67em;
+  font-size: 0.8em;
   line-height: 1.5em;
   text-align: left;
   cursor: pointer;
@@ -8248,7 +8248,7 @@ body.detail-open #nav-overlay {
 
 /* line 467, resources/scss/pages/_variable.scss */
 .county-overlay .legend-item {
-  background: rgba(255, 255, 255, 0.3);
+  background: rgba(255, 255, 255, 0.09);
 }
 
 /* line 1, resources/scss/pages/_stations.scss */

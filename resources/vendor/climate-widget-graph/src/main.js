@@ -1644,7 +1644,7 @@
       },
       pan: {
         allowed: "yes",
-        min: -7500.5,
+        min: 0,
         max: 10000.5
       },
       zoom: {
