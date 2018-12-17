@@ -166,6 +166,8 @@ $(function () {
       $('label[for=presentation]').css("opacity", 1.0);
       $('#slider-range').show();
       $('#x-axis-pan-note').hide();
+      // $('#download_hist_mod_data').show();
+      // $('#download_precip_hist_mod_data').show();
     }
     if (freq === "monthly") {
       $('#timeperiod').removeAttr("disabled");
@@ -174,6 +176,8 @@ $(function () {
       $('label[for=presentation]').css("opacity", 0.5);
       //$('#slider-range').hide();
       $('#x-axis-pan-note').show();
+      // $('#download_hist_mod_data').hide();
+      // $('#download_precip_hist_mod_data').hide();
     }
     if (freq === "seasonal") {
       $('#timeperiod').removeAttr("disabled");
@@ -462,18 +466,18 @@ $(function () {
   $('.location-resolution a').on('click', data_resolution_click_handler);
   $('.data-list h4').on('click', data_source_click_handler);
 
-  $('#temperature-presentation').on('change', function () {
-    let val = $(this).val();
-    $('#presentation').val(val).change();
-  });
-  $('#precipitation-presentation').on('change', function () {
-    let val = $(this).val();
-    $('#precip-presentation').val(val).change();
-  });
-  $('#der-presentation').on('change', function () {
-    let val = $(this).val();
-    $('#derived-presentation').val(val).change();
-  });
+  // $('#temperature-presentation').on('change', function () {
+  //   let val = $(this).val();
+  //   $('#presentation').val(val).change();
+  // });
+  // $('#precipitation-presentation').on('change', function () {
+  //   let val = $(this).val();
+  //   $('#precip-presentation').val(val).change();
+  // });
+  // $('#der-presentation').on('change', function () {
+  //   let val = $(this).val();
+  //   $('#derived-presentation').val(val).change();
+  // });
   $('.legend-item-range').on('click', function () {
     $(this).toggleClass('selected');
     $(this).find('.legend-item-block, .legend-item-line').toggleClass('selected');
@@ -583,12 +587,18 @@ $(function () {
 
     console.log('.download-data clicked');
     $('#download-panel').removeClass("hidden");
-
     $('#download-panel').show();
     $('#download-panel').fadeIn(250);
 
   });
 
+  $('.location-data-section-wrap #temperature-data .seasonal-monthly').click(function () {
+    $('#download_hist_mod_data').hide();
+  });
+
+  $('.location-data-section-wrap #temperature-data .seasonal-monthly').siblings().click(function () {
+    $('#download_hist_mod_data').show();
+  });
 
   $('#precip-download-data').click(function () {
 
@@ -599,6 +609,14 @@ $(function () {
     $('#download-precip-panel').show();
     $('#download-precip-panel').fadeIn(250);
 
+  });
+
+  $('.location-data-section-wrap #precipitation-data .seasonal-monthly').click(function () {
+    $('#download_precip_hist_mod_data').hide();
+  });
+
+  $('.location-data-section-wrap #precipitation-data .seasonal-monthly').siblings().click(function () {
+    $('#download_precip_hist_mod_data').show();
   });
 
   $('#derived-download-data').click(function () {
