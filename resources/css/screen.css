@@ -7620,7 +7620,7 @@ body.detail-open #nav-overlay {
   height: auto;
   padding: 15px;
   padding-right: 40px;
-  background: rgba(255, 255, 255, 0.75);
+  background: rgba(255, 255, 255, 0.96);
   border: 0px solid #ffffff;
   color: #0058cf;
   -webkit-border-radius: 0;
@@ -8052,7 +8052,7 @@ body.detail-open #nav-overlay {
 
 /* line 346, resources/scss/pages/_variable.scss */
 .scenario-map-overlay-container .left-scenario-dropdown .dropdown button, .scenario-map-overlay-container .right-scenario-dropdown .dropdown button {
-  background: rgba(255, 255, 255, 0.83);
+  background: rgba(255, 255, 255, 0.96);
 }
 
 /* line 352, resources/scss/pages/_variable.scss */
@@ -8061,7 +8061,7 @@ body.detail-open #nav-overlay {
   max-width: 96%;
   min-width: 20rem;
   height: 2.7rem;
-  background: rgba(255, 255, 255, 0.75);
+  background: rgba(255, 255, 255, 0.96);
   display: flex;
   flex-flow: row nowrap;
   align-items: center;
@@ -8074,7 +8074,7 @@ body.detail-open #nav-overlay {
 
 /* line 364, resources/scss/pages/_variable.scss */
 .scenario-map-overlay-container .year:hover {
-  background: rgba(255, 255, 255, 0.7);
+  background: rgba(255, 255, 255, 0.96);
 }
 
 /* line 368, resources/scss/pages/_variable.scss */
@@ -8122,7 +8122,7 @@ body.detail-open #nav-overlay {
   flex-grow: 0;
   min-width: 0;
   padding: 0px 1rem;
-  background: rgba(255, 255, 255, 0.75);
+  background: rgba(255, 255, 255, 0.96);
   border: 0px solid #ffffff;
   -webkit-border-radius: 0;
   -moz-border-radius: 0;
