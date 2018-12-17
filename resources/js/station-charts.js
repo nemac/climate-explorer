@@ -392,6 +392,7 @@ ChartBuilder.prototype.getTemplate = function (type, values) {
     '<renderer type="fill">' +
     '<option name="fillcolor" value="0x3288bd"/>' +
     '<option name="fillopacity" value="0.5"/>' +
+    '<option name="linecolor" value="0x3288bd"/>' +
     '</renderer>' +
     '<datatips format="{0}: {1}">' +
     '<variable format="%n %y"/>' +
