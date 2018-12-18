@@ -123,7 +123,7 @@ ChartBuilder.prototype.buildChart = function () {
 };
 
 ChartBuilder.prototype.downloadTemperatureData = function (link) {
-  link.href = 'data:text/csv;base64,' + window.btoa(('date,min,max,normal_min,normal_max,' + '\n' + this.temperatureData.join('\n')));
+  link.href = 'data:text/csv;base64,' + window.btoa(('date,min,max,normal_min,normal_max' + '\n' + this.temperatureData));
   link.download = [
     this.props.station,
     "temperature",
@@ -132,7 +132,7 @@ ChartBuilder.prototype.downloadTemperatureData = function (link) {
 };
 
 ChartBuilder.prototype.downloadPrecipitationData = function (link) {
-  link.href = 'data:text/csv;base64,' + window.btoa(('date,precipitation,precipitation_normal' + '\n' + this.precipitationData.join('\n')));
+  link.href = 'data:text/csv;base64,' + window.btoa(('date,precipitation,precipitation_normal' + '\n' + this.precipitationData));
   link.download = [
     this.props.station,
     "precipitation",

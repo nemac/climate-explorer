@@ -655,9 +655,16 @@
               </div>`
           );
 
+
+          this.chart = new ChartBuilder({station: this.options.stationId}, this.options.dailyStationsDataURL);
+
           $('.download-temp-image').click((function (event) {
               event.target.href = $("#multi-chart canvas")[0].toDataURL('image/png');
               event.target.download = "daily_vs_climate_temp_"+this.options.stationId+".png";
+          }).bind(this));
+
+          $('.download-temp-data').click((function (event) {
+            this.chart.downloadTemperatureData(event.currentTarget);
           }).bind(this));
 
           $('.download-precipitation-image').click((function (event) {
@@ -665,7 +672,9 @@
               event.target.download = "daily_vs_climate_precip_"+this.options.stationId+".png";
           }).bind(this));
 
-          this.chart = new ChartBuilder({station: this.options.stationId}, this.options.dailyStationsDataURL);
+          $('.download-precipitation-data').click((function (event) {
+            this.chart.downloadPrecipitationData(event.currentTarget);
+          }).bind(this));
 
           break;
         case 'thresholds':
