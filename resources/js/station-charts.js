@@ -328,7 +328,7 @@ ChartBuilder.prototype.getTemplate = function (type, values, ymin, ymax, endpor)
       '<binding id="time-binding" min="19000101" max="20000101"/>' +
       '</horizontalaxis>' +
       '<verticalaxis id="temp" min="' + ymin + '" max="' + ymax + '">' +
-      '<title anchor="0 -1" angle="90" position="-25 0">Degrees (F)</title>' +
+      '<title anchor="0 -1" angle="90" position="-30 0">Degrees (F)</title>' +
       '<grid/>' +
       '<labels spacing="100 50 20 10 5 1 0.5 0.2 0.1" format="%f"/>' +
       '<pan min="'+ (Math.floor(ymin) - 15) +'" max="'+ (Math.ceil(ymax) + 15) +'" />' +
@@ -389,14 +389,14 @@ ChartBuilder.prototype.getTemplate = function (type, values, ymin, ymax, endpor)
       '<binding id="time-binding" min="19000101" max="20000101"/>' +
       '</horizontalaxis>' +
       '<verticalaxis id="precip" min="' + ymin + '" max="' + ymax + '">' +
-      '<title anchor="0 -1" angle="90" position="-25 0">Inches</title>' +
+      '<title anchor="0, -1" angle="90" position="-30, 0">Inches</title>' +
       '<grid/>' +
       '<labels spacing="100 50 20 10 5 1 0.5 0.2 0.1" format="%f"/>' +
       '<pan min="0" max="'+ (Math.round(ymax) + 10) +'" />' +
       '<zoom min="0" />' +
       '</verticalaxis>' +
       '<plot>' +
-      '<legend label="Normal YTD Precipitation"/>' +
+      '<legend label="Normal YTD Precipitation" />' +
       '<horizontalaxis ref="datetime">' +
       '<variable ref="datetime"/>' +
       '</horizontalaxis>' +
