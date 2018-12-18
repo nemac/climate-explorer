@@ -696,6 +696,20 @@
       promise.then(function (layer) {
         this.view.whenLayerView(layer).then(function (layerView) {
 
+            // animate swipe on map load
+            this.view.when().then((() => {
+              setTimeout(() => { // delay 1000ms for the map to load a bit
+                $(".movable").animate({left: "50%"},
+                  {
+                    duration: 1200,
+                    easing: 'easeInOutCubic',
+                    step: (function (now, fx) {
+                      this._setOption('swipeX', layerViewContainer.element.width * now / 100);
+                    }).bind(this)
+                  });
+              }, 1500);
+            }).bind(this));
+
           let layerViewContainer = layerView.container;
           layerViewContainer._doRender = layerViewContainer.doRender;
           layerViewContainer.doRender = (a) => {

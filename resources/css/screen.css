@@ -6768,6 +6768,7 @@ body.detail-open #nav-overlay {
 .location-data-section .data-accordion .data-accordion-tab.data-chart .chart-range .ui-slider-handle {
   top: 0;
   width: 0;
+  left: 0;
   height: 30px;
   margin: 0;
   -webkit-border-radius: none;
@@ -6777,48 +6778,48 @@ body.detail-open #nav-overlay {
   border-radius: none;
 }
 
-/* line 442, resources/scss/pages/_location.scss */
+/* line 443, resources/scss/pages/_location.scss */
 .location-data-section .data-accordion .data-accordion-tab.data-chart .chart-range.not-annual {
   height: 6px;
 }
 
-/* line 445, resources/scss/pages/_location.scss */
+/* line 446, resources/scss/pages/_location.scss */
 .location-data-section .data-accordion .data-accordion-tab.data-chart .chart-range.not-annual .ui-slider-handle {
   width: 16px;
   height: 16px;
   margin: -5px 0 0 -5px;
 }
 
-/* line 453, resources/scss/pages/_location.scss */
+/* line 454, resources/scss/pages/_location.scss */
 .location-data-section .data-accordion .data-accordion-tab.data-chart.open {
   background: rgba(255, 255, 255, 0.8) !important;
 }
 
-/* line 456, resources/scss/pages/_location.scss */
+/* line 457, resources/scss/pages/_location.scss */
 .location-data-section .data-accordion .data-accordion-tab.data-chart.open .chart {
   opacity: 1;
   border-right: 5px solid #ffffff;
 }
 
-/* line 463, resources/scss/pages/_location.scss */
+/* line 464, resources/scss/pages/_location.scss */
 .location-data-section .data-accordion .data-accordion-tab.data-map {
   -webkit-box-shadow: inset 10px 0 20px -10px rgba(0, 0, 0, 0.5);
   -moz-box-shadow: inset 10px 0 20px -10px rgba(0, 0, 0, 0.5);
   box-shadow: inset 10px 0 20px -10px rgba(0, 0, 0, 0.5);
 }
 
-/* line 466, resources/scss/pages/_location.scss */
+/* line 467, resources/scss/pages/_location.scss */
 .location-data-section .data-accordion .data-accordion-tab.data-map:before {
   left: -1px;
   border-color: transparent transparent transparent #ffffff;
 }
 
-/* line 472, resources/scss/pages/_location.scss */
+/* line 473, resources/scss/pages/_location.scss */
 .location-data-section .data-accordion .data-accordion-tab.data-map header .map-seasons-container {
   float: left;
 }
 
-/* line 477, resources/scss/pages/_location.scss */
+/* line 478, resources/scss/pages/_location.scss */
 .location-data-section .data-accordion .data-accordion-tab.data-map header .fs-dropdown button {
   height: auto;
   padding: 8px 25px 8px 8px;
@@ -6829,7 +6830,7 @@ body.detail-open #nav-overlay {
   color: #5f5f5f;
 }
 
-/* line 487, resources/scss/pages/_location.scss */
+/* line 488, resources/scss/pages/_location.scss */
 .location-data-section .data-accordion .data-accordion-tab.data-map header .fs-dropdown button.fs-dropdown-selected:before {
   display: inline-block;
   margin: 0 8px 0 0;
@@ -6840,22 +6841,22 @@ body.detail-open #nav-overlay {
   color: #f5442d;
 }
 
-/* line 498, resources/scss/pages/_location.scss */
+/* line 499, resources/scss/pages/_location.scss */
 .location-data-section .data-accordion .data-accordion-tab.data-map header .fs-dropdown button.fs-dropdown-selected:hover {
   background: #d5e8f2;
 }
 
-/* line 503, resources/scss/pages/_location.scss */
+/* line 504, resources/scss/pages/_location.scss */
 .location-data-section .data-accordion .data-accordion-tab.data-map header .fs-dropdown button:after {
   right: 5px;
 }
 
-/* line 510, resources/scss/pages/_location.scss */
+/* line 511, resources/scss/pages/_location.scss */
 .location-data-section .data-accordion .data-accordion-tab.data-map .data-accordion-content {
   background: #ebebeb;
 }
 
-/* line 514, resources/scss/pages/_location.scss */
+/* line 515, resources/scss/pages/_location.scss */
 .location-data-section .data-accordion .data-accordion-tab.data-map .map-element {
   height: 100%;
   width: 100%;
@@ -6863,7 +6864,7 @@ body.detail-open #nav-overlay {
   z-index: 1;
 }
 
-/* line 521, resources/scss/pages/_location.scss */
+/* line 522, resources/scss/pages/_location.scss */
 .location-data-section .data-accordion .data-accordion-tab.data-map .full-map-btn {
   display: inline-block;
   float: left;
@@ -6873,13 +6874,13 @@ body.detail-open #nav-overlay {
   z-index: 2;
 }
 
-/* line 534, resources/scss/pages/_location.scss */
+/* line 535, resources/scss/pages/_location.scss */
 .location-data-section .data-accordion .data-accordion-tab.data-map.open .map {
   opacity: 1;
   border-left: 5px solid #ffffff;
 }
 
-/* line 541, resources/scss/pages/_location.scss */
+/* line 542, resources/scss/pages/_location.scss */
 .location-data-section .data-accordion .data-accordion-tab.open {
   width: 90%;
   background: #ffffff !important;
@@ -6888,13 +6889,13 @@ body.detail-open #nav-overlay {
   box-shadow: none;
 }
 
-/* line 546, resources/scss/pages/_location.scss */
+/* line 547, resources/scss/pages/_location.scss */
 .location-data-section .data-accordion .data-accordion-tab.open:before {
   border-width: 0;
   margin-top: -9px;
 }
 
-/* line 551, resources/scss/pages/_location.scss */
+/* line 552, resources/scss/pages/_location.scss */
 .location-data-section .data-accordion .data-accordion-tab.open header {
   top: 0;
   left: 0;
@@ -6916,7 +6917,7 @@ body.detail-open #nav-overlay {
   clear: both;
 }
 
-/* line 561, resources/scss/pages/_location.scss */
+/* line 562, resources/scss/pages/_location.scss */
 .location-data-section .data-accordion .data-accordion-tab.open header h4 {
   position: static;
   width: auto;
@@ -6933,35 +6934,35 @@ body.detail-open #nav-overlay {
   transform: none;
 }
 
-/* line 572, resources/scss/pages/_location.scss */
+/* line 573, resources/scss/pages/_location.scss */
 .location-data-section .data-accordion .data-accordion-tab.open header h4 .icon {
   display: inline-block;
   margin: -4px 10px 0 0;
 }
 
-/* line 577, resources/scss/pages/_location.scss */
+/* line 578, resources/scss/pages/_location.scss */
 .location-data-section .data-accordion .data-accordion-tab.open header h4 .text {
   display: inline-block;
   vertical-align: middle;
 }
 
-/* line 582, resources/scss/pages/_location.scss */
+/* line 583, resources/scss/pages/_location.scss */
 .location-data-section .data-accordion .data-accordion-tab.open header h4 .full-title {
   display: inline;
 }
 
-/* line 586, resources/scss/pages/_location.scss */
+/* line 587, resources/scss/pages/_location.scss */
 .location-data-section .data-accordion .data-accordion-tab.open header h4 .source {
   display: block;
   margin: 4px 0 0 0;
 }
 
-/* line 592, resources/scss/pages/_location.scss */
+/* line 593, resources/scss/pages/_location.scss */
 .location-data-section .data-accordion .data-accordion-tab.open header .data-accordion-actions {
   display: block;
 }
 
-/* line 597, resources/scss/pages/_location.scss */
+/* line 598, resources/scss/pages/_location.scss */
 .location-data-section .data-accordion .data-accordion-tab.open .data-accordion-content {
   -webkit-box-shadow: none;
   -moz-box-shadow: none;
@@ -6970,7 +6971,7 @@ body.detail-open #nav-overlay {
   mix-blend-mode: initial;
 }
 
-/* line 606, resources/scss/pages/_location.scss */
+/* line 607, resources/scss/pages/_location.scss */
 .location-data-section .data-list {
   position: relative;
   float: left;
@@ -6978,18 +6979,18 @@ body.detail-open #nav-overlay {
   margin: 0 1% 0 0;
 }
 
-/* line 612, resources/scss/pages/_location.scss */
+/* line 613, resources/scss/pages/_location.scss */
 .location-data-section .data-list form {
   position: absolute;
   left: -9999px;
 }
 
-/* line 618, resources/scss/pages/_location.scss */
+/* line 619, resources/scss/pages/_location.scss */
 .location-data-section .data-options-trigger {
   display: none;
 }
 
-/* line 623, resources/scss/pages/_location.scss */
+/* line 624, resources/scss/pages/_location.scss */
 .location-data-section .data-options li {
   padding-left: 12%;
   background: #ffffff;
@@ -7014,19 +7015,19 @@ body.detail-open #nav-overlay {
   clear: both;
 }
 
-/* line 633, resources/scss/pages/_location.scss */
+/* line 634, resources/scss/pages/_location.scss */
 .location-data-section .data-options li:last-child {
   border-bottom: none;
 }
 
-/* line 637, resources/scss/pages/_location.scss */
+/* line 638, resources/scss/pages/_location.scss */
 .location-data-section .data-options li:hover {
   padding-left: calc(12% - 10px);
   border-left-width: 10px;
   border-left-color: #ebebeb;
 }
 
-/* line 643, resources/scss/pages/_location.scss */
+/* line 644, resources/scss/pages/_location.scss */
 .location-data-section .data-options li.active {
   font-weight: 400;
   padding-left: calc(12% - 10px);
@@ -7034,7 +7035,7 @@ body.detail-open #nav-overlay {
   border-bottom-color: #ebebeb !important;
 }
 
-/* line 650, resources/scss/pages/_location.scss */
+/* line 651, resources/scss/pages/_location.scss */
 .location-data-section .data-options li h4 {
   font-size: 1rem;
   outline: none;
@@ -7051,12 +7052,12 @@ body.detail-open #nav-overlay {
   clear: both;
 }
 
-/* line 655, resources/scss/pages/_location.scss */
+/* line 656, resources/scss/pages/_location.scss */
 .location-data-section .data-options li h4 .ui-accordion-header-icon {
   display: none;
 }
 
-/* line 660, resources/scss/pages/_location.scss */
+/* line 661, resources/scss/pages/_location.scss */
 .location-data-section .data-options li a {
   display: block;
   padding: 2%;
@@ -7067,13 +7068,13 @@ body.detail-open #nav-overlay {
   transition: 0.25s;
 }
 
-/* line 666, resources/scss/pages/_location.scss */
+/* line 667, resources/scss/pages/_location.scss */
 .location-data-section .data-options li a.text {
   width: 90%;
   float: left;
 }
 
-/* line 671, resources/scss/pages/_location.scss */
+/* line 672, resources/scss/pages/_location.scss */
 .location-data-section .data-options li a.icon {
   width: 10%;
   float: right;
@@ -7082,169 +7083,169 @@ body.detail-open #nav-overlay {
   color: #aaaaaa;
 }
 
-/* line 681, resources/scss/pages/_location.scss */
+/* line 682, resources/scss/pages/_location.scss */
 .location-data-section .data-options li ul li {
   font-size: 0.875rem;
   line-height: 1.5rem;
 }
 
-/* line 690, resources/scss/pages/_location.scss */
+/* line 691, resources/scss/pages/_location.scss */
 #stations-data p {
   margin: 0 0 20px 0;
 }
 
-/* line 695, resources/scss/pages/_location.scss */
+/* line 696, resources/scss/pages/_location.scss */
 #location-temperature .accent-color {
   color: #f5442d;
 }
 
-/* line 699, resources/scss/pages/_location.scss */
+/* line 700, resources/scss/pages/_location.scss */
 #location-temperature .accent-background {
   background-color: #f5442d;
 }
 
-/* line 703, resources/scss/pages/_location.scss */
+/* line 704, resources/scss/pages/_location.scss */
 #location-temperature .accent-border {
   border-color: #f5442d;
 }
 
-/* line 712, resources/scss/pages/_location.scss */
+/* line 713, resources/scss/pages/_location.scss */
 #location-temperature .data-options .accent-border {
   border-left-color: #ebebeb;
   border-bottom-color: #ebebeb;
 }
 
-/* line 716, resources/scss/pages/_location.scss */
+/* line 717, resources/scss/pages/_location.scss */
 #location-temperature .data-options .active.disabled a {
   color: #ebebeb !important;
 }
 
-/* line 720, resources/scss/pages/_location.scss */
+/* line 721, resources/scss/pages/_location.scss */
 #location-temperature .data-options .active:not(.disabled).accent-border {
   border-left-color: #f5442d;
   border-bottom-color: #ebebeb;
 }
 
-/* line 725, resources/scss/pages/_location.scss */
+/* line 726, resources/scss/pages/_location.scss */
 #location-temperature .data-options .active:not(.disabled) .accent-color {
   color: #f5442d;
 }
 
-/* line 732, resources/scss/pages/_location.scss */
+/* line 733, resources/scss/pages/_location.scss */
 #location-temperature .data-options ul li.active:not(.disabled) {
   border-left: 10px solid #f5442d;
 }
 
-/* line 740, resources/scss/pages/_location.scss */
+/* line 741, resources/scss/pages/_location.scss */
 #location-temperature .data-vars button {
   color: #f5442d;
 }
 
-/* line 746, resources/scss/pages/_location.scss */
+/* line 747, resources/scss/pages/_location.scss */
 #location-precipitation .accent-color {
   color: #0058cf;
 }
 
-/* line 750, resources/scss/pages/_location.scss */
+/* line 751, resources/scss/pages/_location.scss */
 #location-precipitation .accent-background {
   background-color: #0058cf;
 }
 
-/* line 754, resources/scss/pages/_location.scss */
+/* line 755, resources/scss/pages/_location.scss */
 #location-precipitation .accent-border {
   border-color: #0058cf;
 }
 
-/* line 763, resources/scss/pages/_location.scss */
+/* line 764, resources/scss/pages/_location.scss */
 #location-precipitation .data-options .accent-border {
   border-left-color: #ebebeb;
   border-bottom-color: #ebebeb;
 }
 
-/* line 767, resources/scss/pages/_location.scss */
+/* line 768, resources/scss/pages/_location.scss */
 #location-precipitation .data-options .active.disabled a {
   color: #ebebeb !important;
 }
 
-/* line 771, resources/scss/pages/_location.scss */
+/* line 772, resources/scss/pages/_location.scss */
 #location-precipitation .data-options .active:not(.disabled).accent-border {
   border-left-color: #0058cf;
   border-bottom-color: #ebebeb;
 }
 
-/* line 776, resources/scss/pages/_location.scss */
+/* line 777, resources/scss/pages/_location.scss */
 #location-precipitation .data-options .active:not(.disabled) .accent-color {
   color: #0058cf;
 }
 
-/* line 783, resources/scss/pages/_location.scss */
+/* line 784, resources/scss/pages/_location.scss */
 #location-precipitation .data-options ul li.active:not(.disabled) {
   border-left: 10px solid #0058cf;
 }
 
-/* line 791, resources/scss/pages/_location.scss */
+/* line 792, resources/scss/pages/_location.scss */
 #location-precipitation .data-vars button {
   color: #0058cf;
 }
 
-/* line 798, resources/scss/pages/_location.scss */
+/* line 799, resources/scss/pages/_location.scss */
 #location-precipitation .range .ui-slider .ui-slider-range, #location-precipitation .range .ui-slider .ui-slider-handle {
   background: #0058cf;
 }
 
-/* line 805, resources/scss/pages/_location.scss */
+/* line 806, resources/scss/pages/_location.scss */
 #location-derived .accent-color {
   color: #904848;
 }
 
-/* line 809, resources/scss/pages/_location.scss */
+/* line 810, resources/scss/pages/_location.scss */
 #location-derived .accent-background {
   background-color: #904848;
 }
 
-/* line 813, resources/scss/pages/_location.scss */
+/* line 814, resources/scss/pages/_location.scss */
 #location-derived .accent-border {
   border-color: #904848;
 }
 
-/* line 822, resources/scss/pages/_location.scss */
+/* line 823, resources/scss/pages/_location.scss */
 #location-derived .data-options .accent-border {
   border-left-color: #ebebeb;
   border-bottom-color: #ebebeb;
 }
 
-/* line 826, resources/scss/pages/_location.scss */
+/* line 827, resources/scss/pages/_location.scss */
 #location-derived .data-options .active.disabled a {
   color: #ebebeb !important;
 }
 
-/* line 830, resources/scss/pages/_location.scss */
+/* line 831, resources/scss/pages/_location.scss */
 #location-derived .data-options .active:not(.disabled).accent-border {
   border-left-color: #904848;
   border-bottom-color: #ebebeb;
 }
 
-/* line 835, resources/scss/pages/_location.scss */
+/* line 836, resources/scss/pages/_location.scss */
 #location-derived .data-options .active:not(.disabled) .accent-color {
   color: #904848;
 }
 
-/* line 842, resources/scss/pages/_location.scss */
+/* line 843, resources/scss/pages/_location.scss */
 #location-derived .data-options ul li.active:not(.disabled) {
   border-left: 10px solid #904848;
 }
 
-/* line 850, resources/scss/pages/_location.scss */
+/* line 851, resources/scss/pages/_location.scss */
 #location-derived .data-vars button {
   color: #904848;
 }
 
-/* line 856, resources/scss/pages/_location.scss */
+/* line 857, resources/scss/pages/_location.scss */
 #location-derived .range .ui-slider .ui-slider-range, #location-derived .range .ui-slider .ui-slider-handle {
   background: #904848;
 }
 
-/* line 864, resources/scss/pages/_location.scss */
+/* line 865, resources/scss/pages/_location.scss */
 .location-data-section .data-accordion .data-accordion-tab.data-chart .chart-range {
   position: absolute;
   left: 0;
@@ -7256,7 +7257,7 @@ body.detail-open #nav-overlay {
   box-shadow: inset 0 5px 10px -5px rgba(0, 0, 0, 0.5);
 }
 
-/* line 875, resources/scss/pages/_location.scss */
+/* line 876, resources/scss/pages/_location.scss */
 .location-data-section .data-accordion .data-accordion-tab.data-chart .chart-range .ui-slider-handle {
   top: 0;
   width: 16px;
@@ -7264,25 +7265,25 @@ body.detail-open #nav-overlay {
   margin: -3px 0px -8px -8px;
 }
 
-/* line 882, resources/scss/pages/_location.scss */
+/* line 883, resources/scss/pages/_location.scss */
 #precip-slider-range {
   width: 100%;
   margin: auto;
 }
 
-/* line 887, resources/scss/pages/_location.scss */
+/* line 888, resources/scss/pages/_location.scss */
 #derived-slider-range {
   width: 100%;
   margin: auto;
 }
 
-/* line 893, resources/scss/pages/_location.scss */
+/* line 894, resources/scss/pages/_location.scss */
 #location-stations {
   padding: 0;
   height: calc(100vh - 160px);
 }
 
-/* line 897, resources/scss/pages/_location.scss */
+/* line 898, resources/scss/pages/_location.scss */
 #location-stations .location-data-section {
   position: absolute;
   top: 0;
@@ -7291,12 +7292,12 @@ body.detail-open #nav-overlay {
   height: 100%;
 }
 
-/* line 901, resources/scss/pages/_location.scss */
+/* line 902, resources/scss/pages/_location.scss */
 #location-stations h3 {
   margin: 0 0 2% 0;
 }
 
-/* line 907, resources/scss/pages/_location.scss */
+/* line 908, resources/scss/pages/_location.scss */
 #location-stations #location-stations-about {
   position: absolute;
   top: 0;
@@ -7307,13 +7308,13 @@ body.detail-open #nav-overlay {
   z-index: 5;
 }
 
-/* line 916, resources/scss/pages/_location.scss */
+/* line 917, resources/scss/pages/_location.scss */
 #location-stations #location-stations-about p {
   font-size: 0.875rem;
   margin: 20px 0;
 }
 
-/* line 924, resources/scss/pages/_location.scss */
+/* line 925, resources/scss/pages/_location.scss */
 #location-stations #location-stations-map-wrap {
   position: absolute;
   top: 0;
@@ -7323,7 +7324,7 @@ body.detail-open #nav-overlay {
   z-index: 1;
 }
 
-/* line 929, resources/scss/pages/_location.scss */
+/* line 930, resources/scss/pages/_location.scss */
 #location-stations #location-station-map {
   position: absolute;
   top: 0;
@@ -7332,7 +7333,7 @@ body.detail-open #nav-overlay {
   height: 100%;
 }
 
-/* line 937, resources/scss/pages/_location.scss */
+/* line 938, resources/scss/pages/_location.scss */
 #location-stations #location-stations-overlay {
   position: absolute;
   top: 0;
@@ -7356,7 +7357,7 @@ body.detail-open #nav-overlay {
   clear: both;
 }
 
-/* line 947, resources/scss/pages/_location.scss */
+/* line 948, resources/scss/pages/_location.scss */
 #location-stations.overlay-on #location-stations-overlay {
   left: 0;
   opacity: 1;
@@ -7364,29 +7365,29 @@ body.detail-open #nav-overlay {
   background: rgba(245, 68, 45, 0.9);
 }
 
-/* line 954, resources/scss/pages/_location.scss */
+/* line 955, resources/scss/pages/_location.scss */
 #location-stations.overlay-on .station-overlay-content {
   transition: left 0s ease 0s, opacity 0.25s ease 0s;
 }
 
-/* line 959, resources/scss/pages/_location.scss */
+/* line 960, resources/scss/pages/_location.scss */
 #location-stations.overlay-on:not(.type-tidal) #station-detail {
   left: 0;
   opacity: 1;
 }
 
-/* line 966, resources/scss/pages/_location.scss */
+/* line 967, resources/scss/pages/_location.scss */
 #location-stations.overlay-on.type-tidal #location-stations-overlay {
   background: rgba(0, 88, 207, 0.9);
 }
 
-/* line 970, resources/scss/pages/_location.scss */
+/* line 971, resources/scss/pages/_location.scss */
 #location-stations.overlay-on.type-tidal #station-detail-tidal {
   left: 0;
   opacity: 1;
 }
 
-/* line 979, resources/scss/pages/_location.scss */
+/* line 980, resources/scss/pages/_location.scss */
 #location-stations #station-overlay-header {
   height: 120px;
   color: #ffffff;
@@ -7404,12 +7405,12 @@ body.detail-open #nav-overlay {
   clear: both;
 }
 
-/* line 985, resources/scss/pages/_location.scss */
+/* line 986, resources/scss/pages/_location.scss */
 #location-stations #station-overlay-header h3 {
   padding: 0;
 }
 
-/* line 989, resources/scss/pages/_location.scss */
+/* line 990, resources/scss/pages/_location.scss */
 #location-stations #station-overlay-header h5 {
   float: left;
   width: 50%;
@@ -7417,7 +7418,7 @@ body.detail-open #nav-overlay {
   font-family: "CESans", Roboto, Helvetica, "Helvetica Neue", Arial, sans-serif;
 }
 
-/* line 999, resources/scss/pages/_location.scss */
+/* line 1000, resources/scss/pages/_location.scss */
 #location-stations .station-overlay-content {
   position: absolute;
   bottom: 0;
@@ -7430,7 +7431,7 @@ body.detail-open #nav-overlay {
   z-index: 1;
 }
 
-/* line 1011, resources/scss/pages/_location.scss */
+/* line 1012, resources/scss/pages/_location.scss */
 #location-stations .station-overlay-column {
   position: relative;
   float: left;
@@ -7438,12 +7439,12 @@ body.detail-open #nav-overlay {
   height: 100%;
 }
 
-/* line 1017, resources/scss/pages/_location.scss */
+/* line 1018, resources/scss/pages/_location.scss */
 #location-stations .station-overlay-column.left {
   padding-right: 40px;
 }
 
-/* line 1020, resources/scss/pages/_location.scss */
+/* line 1021, resources/scss/pages/_location.scss */
 #location-stations .station-overlay-column.left:after {
   content: '';
   display: block;
@@ -7456,13 +7457,13 @@ body.detail-open #nav-overlay {
   border-left-color: #ffffff;
 }
 
-/* line 1036, resources/scss/pages/_location.scss */
+/* line 1037, resources/scss/pages/_location.scss */
 #location-stations #station-detail-data {
   background: #ffffff;
   padding: 20px;
 }
 
-/* line 1041, resources/scss/pages/_location.scss */
+/* line 1042, resources/scss/pages/_location.scss */
 #location-stations .form-group {
   font-size: 0.75rem;
 }
@@ -7478,18 +7479,18 @@ body.detail-open #nav-overlay {
   clear: both;
 }
 
-/* line 1045, resources/scss/pages/_location.scss */
+/* line 1046, resources/scss/pages/_location.scss */
 #location-stations .form-group label {
   display: block;
 }
 
-/* line 1049, resources/scss/pages/_location.scss */
+/* line 1050, resources/scss/pages/_location.scss */
 #location-stations .form-group select {
   font-family: Roboto, Helvetica, "Helvetica Neue", Arial, sans-serif;
   font-size: 0.75rem;
 }
 
-/* line 1054, resources/scss/pages/_location.scss */
+/* line 1055, resources/scss/pages/_location.scss */
 #location-stations .form-group input {
   display: inline-block;
   width: calc(100% - 10px);
@@ -7499,30 +7500,30 @@ body.detail-open #nav-overlay {
   padding: 4px 8px;
 }
 
-/* line 1063, resources/scss/pages/_location.scss */
+/* line 1064, resources/scss/pages/_location.scss */
 #location-stations .form-group .field-pair {
   float: left;
   width: 25%;
 }
 
-/* line 1068, resources/scss/pages/_location.scss */
+/* line 1069, resources/scss/pages/_location.scss */
 #location-stations .form-group .field-pair.append input {
   width: 50%;
 }
 
-/* line 1072, resources/scss/pages/_location.scss */
+/* line 1073, resources/scss/pages/_location.scss */
 #location-stations .form-group .field-pair.append .append {
   display: inline-block;
   padding-left: 4px;
   vertical-align: middle;
 }
 
-/* line 1086, resources/scss/pages/_location.scss */
+/* line 1087, resources/scss/pages/_location.scss */
 #location-stations #tidal-chart {
   background-color: #ffffff;
 }
 
-/* line 1094, resources/scss/pages/_location.scss */
+/* line 1095, resources/scss/pages/_location.scss */
 #location-stations #station-overlay-close {
   display: block;
   position: absolute;
@@ -7534,7 +7535,7 @@ body.detail-open #nav-overlay {
   z-index: 2;
 }
 
-/* line 1107, resources/scss/pages/_location.scss */
+/* line 1108, resources/scss/pages/_location.scss */
 #location-stations #stations-spinner {
   display: none;
   position: absolute;
@@ -7547,47 +7548,47 @@ body.detail-open #nav-overlay {
   z-index: 15;
 }
 
-/* line 1123, resources/scss/pages/_location.scss */
+/* line 1124, resources/scss/pages/_location.scss */
 #location-stations .data-accordion-wrap {
   width: 30%;
 }
 
-/* line 1127, resources/scss/pages/_location.scss */
+/* line 1128, resources/scss/pages/_location.scss */
 #location-stations #station-charts-tabs {
   height: 100%;
   padding: 20px;
   background: #ffffff;
 }
 
-/* line 1132, resources/scss/pages/_location.scss */
+/* line 1133, resources/scss/pages/_location.scss */
 #location-stations #station-charts-tabs .chart-tab-list {
   margin: 0 0 10px 0;
 }
 
-/* line 1135, resources/scss/pages/_location.scss */
+/* line 1136, resources/scss/pages/_location.scss */
 #location-stations #station-charts-tabs .chart-tab-list li {
   display: inline-block;
 }
 
-/* line 1138, resources/scss/pages/_location.scss */
+/* line 1139, resources/scss/pages/_location.scss */
 #location-stations #station-charts-tabs .chart-tab-list li a {
   display: block;
   padding: 8px 10px;
   color: #233a70;
 }
 
-/* line 1144, resources/scss/pages/_location.scss */
+/* line 1145, resources/scss/pages/_location.scss */
 #location-stations #station-charts-tabs .chart-tab-list li.selected {
   background-color: #d5e8f2;
 }
 
-/* line 1150, resources/scss/pages/_location.scss */
+/* line 1151, resources/scss/pages/_location.scss */
 #location-stations #station-charts-tabs .chart-tabs-wrap {
   position: relative;
   height: 300px;
 }
 
-/* line 1155, resources/scss/pages/_location.scss */
+/* line 1156, resources/scss/pages/_location.scss */
 #location-stations #station-charts-tabs .chart-tab {
   position: absolute;
   top: 0;
@@ -7599,7 +7600,7 @@ body.detail-open #nav-overlay {
   transition: left 0s ease 0.25s, opacity 0.25s ease 0s;
 }
 
-/* line 1161, resources/scss/pages/_location.scss */
+/* line 1162, resources/scss/pages/_location.scss */
 #location-stations #station-charts-tabs .chart-tab.selected {
   left: 0;
   opacity: 1;
@@ -7943,7 +7944,7 @@ body.detail-open #nav-overlay {
 .scenario-map-overlay-container .movable {
   position: absolute;
   top: 0;
-  left: 50%;
+  left: 0;
   width: 4px;
   height: 100%;
   margin: 0;
