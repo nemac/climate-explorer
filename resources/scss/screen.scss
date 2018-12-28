@@ -498,6 +498,8 @@ h6 {
 }
 @import "template/header";
 
+
+
 // zoom / legend
 
 .ui-slider-label {
@@ -676,11 +678,7 @@ h6 {
 #standard-splash {
   padding-bottom: 40px;
 }
-#subnav ul {
-  position: absolute;
-  right: 20px;
-  top: 17px;
-}
+
 #standard-body {
   max-width: 75%;
   padding-left: calc(4% + 10px);

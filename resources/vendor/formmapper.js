@@ -26,7 +26,7 @@
     },
 
     markerOptions: {
-      draggable: false
+      draggable: false,
     },
 
     maxZoom: 16, //The maximum zoom level to zoom in to after a geocoding response. Default: 16

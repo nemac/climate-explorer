@@ -3,17 +3,36 @@
   top: 0;
   left: 0;
   width: 100%;
-  padding: 20px;
+  padding: 10px 0 0 20px;
   background: $white;
   z-index: 600;
-  
-  nav {
-    
+
+  .topnav {
+    overflow: hidden;
   }
-  
+
+  .topnav a {
+    float: left;
+    display: block;
+    text-align: center;
+    padding: .5rem 0;
+    text-decoration: none;
+    font-size: 17px;
+  }
+
+  .topnav a:not(:first-child) {
+    padding-top: 1rem;
+  }
+
+  #home-nav {
+    margin-left: 6rem;
+  }
+
+  .topnav .icon {
+    display: none;
+  }
+
   #main-nav {
-    display: inline;
-    
     a {
       .icon {
         font-size: 1.25rem;
@@ -22,7 +41,7 @@
       
       .text {
         display: inline-block;
-        padding: 0 0 0 15px;
+        padding: 1rem 2.39rem 0 2.39rem;
         color: $grey1;
       }
     }
@@ -30,7 +49,6 @@
   
   #header-logo {
     display: block;
-    float: left;
     width: 200px;
     margin: 0 2% 0 0;
     
@@ -239,7 +257,7 @@
     }
     
     &.search-field {
-      padding: 8%;
+      padding: 1.2rem;
       white-space: nowrap;
       
       input {
@@ -374,9 +392,9 @@
     
     &.about-link {
       font: 0.875em/1.4em $sans-heavy;
-      
+      height: 64.68px;
+
       a {
-        padding: 6% 8%;
         white-space: normal;
       }
     }

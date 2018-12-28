@@ -22,7 +22,7 @@
     //      widget's prototype. A 'ui' namespace => `$.ui`.
     // options - The current options hash. User-provided options will be
     //      merged with default options on instantiation, with default
-    //      options beind overwritten.
+    //      options being overwritten.
     // uuid - A unique int identifier for the widget
     // version - the string version of the widget
     // widgetEventPrefix - The prefix prepended to events fired from this

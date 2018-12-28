@@ -1,19 +1,16 @@
 @media screen and (max-width: 1200px) {
   h1 {
-    font-size: 6rem;
+    font-size: 5rem;
   }
-  
-  .left-header {
-    #main-header {
-      #header-logo {
-        max-width: 100%;
-        
-        img {
-        }
-      }
+  #main-header {
+    #main-nav a .text {
+      padding: 1rem 1.5rem 0 1.5rem;
+    }
+    #home-nav {
+      margin-left: 2rem;
     }
   }
-  
+
   .page-splash {
     .splash-text  {
       max-width: 75%;
@@ -39,40 +36,42 @@
   }
 }
 
-@media screen and (max-width: 1000px) {
+@media screen and (max-width: 1024px) {
   h1 {
-    font-size: 5rem;
+    font-size: 3.4rem;
   }
-  
+  #main-header #main-nav a .text {
+    padding: 1rem .65rem 0 .65rem;
+  }
   .left-header {
     #main-header {
+
       #nav-trigger {
         width: 40px;
         height: 40px;
         margin-top: 5%;
         padding: 18px 8px;
-        
+
         span {
           width: 24px;
         }
-        
+
         &:before,
         &:after {
           left: 8px;
           width: 24px;
         }
-        
+
         &:before {
           top: 8px;
         }
-        
+
         &:after {
           bottom: 8px;
         }
       }
     }
   }
-  
   .blue-menu {
     font-size: 0.875rem;
   }
@@ -104,8 +103,7 @@
       }
     }
   }
-  
-  
+
   .stations-list {
     .station-banner-text {
       width: 65%;
@@ -136,77 +134,44 @@
     top: auto;
     left: auto;
     @include legacy-clearfix;
-    
-    #main-nav {
-      a {
-        text-align: center;
-        
-        .icon {
-          display: block;
-          height: 23px;
-          margin: 1px auto 0 auto;
-        }
-        
-        .text {
-          display: block;
-          padding: 0;
-          font-size: 0.875rem;
-        }
-      }
-      
-      .nav-btn {
-        padding: 15px 10px 0 10px;
-      }
+
+    .topnav a:not(:first-child) {display: none;}
+    .topnav a.icon {
+      float: right;
+      display: block;
     }
-    
+
     #subnav-trigger {
       display: block;
     }
-    
-    #subnav {
-      ul {
-        display: none;
-        position: absolute;
-        top: 14px;
-        right: 0;
-        width: 160px;
-        padding: 0 10px 10px 10px;
-        background: $white;
-      }
-      
-      li {
-        display: block;
-        margin: 0;
-        
-        a {
-          display: block;
-          padding: 10px;
-          text-align: left;
-          
-          &:hover {
-            background: $grey2;
-          }
-        
-          .text {
-            padding: 0;
-          }
-          
-          .icon {
-            display: none;
-          }
-        }
-      }
+
+    #main-header #header-logo {
+      margin: 0 2% 1rem 0;
+      float: none;
     }
-    
-    #breadcrumb {
-      float: left;
-      width: auto;
-      margin: 5px 0 0 10px;
-      font-size: 0.875rem;
-      
-      span {
-        padding: 10px;
-      }
+
+    #home-nav {
+      margin-left: 0;
+    }
+
+    .topnav a {
+      padding: 0;
+    }
+
+    #nav-trigger {
+      display: none;
+    }
+
+    .topnav.responsive {position: relative;}
+    .topnav.responsive .icon {
+      position: absolute;
+      right: 0;
+      top: 0;
+    }
+    .topnav.responsive a {
+      float: none;
+      display: block;
+      text-align: left;
     }
   }
   
@@ -542,6 +507,8 @@
   
   // HEADER
   
+
+  
   .top-header {
     #logos {
       display: none;
@@ -782,22 +749,6 @@
   
   body {
     overflow: hidden;
-  }
-  
-  #desktop-warning {
-    display: block;
-    @include full-size;
-    position: fixed;
-    z-index: 999;
-    background: transparentize($white, 0.02);
-    
-    p {
-      position: absolute;
-      top: 50%;
-      width: 100%;
-      @include transform(translateY(-50%));
-      text-align: center;
-    }
   }
   
 }
