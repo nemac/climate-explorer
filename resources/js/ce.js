@@ -386,6 +386,9 @@ especially when it comes to interacting with the DOM and handling events.
         case 'definitions':
           breadcrumb_text = 'Definitions';
           break;
+        case 'faq':
+          breadcrumb_text = 'FAQ';
+          break;
         case 'credits':
           breadcrumb_text = 'Credits';
           break;

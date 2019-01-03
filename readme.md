@@ -56,5 +56,6 @@ To setup your development environment use `npm install`. Additionally, for now y
 ## improvements
 - caching for stations data
 - minification for js dependencies
-- 
 
+## 3rd Party Resources/Attribution
+- nav home icon from Material Design

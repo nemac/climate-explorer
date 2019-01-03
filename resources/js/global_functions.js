@@ -810,4 +810,17 @@
     });
 
   });
+
+  //mobile topnav expand
+  $('#expand-topnav-btn').click(function() {
+    let x = document.getElementById("main-nav");
+    if (x.className === "topnav") {
+      x.className += " expanded";
+      $('.nav-pages .spacer-bars').hide();
+    } else {
+      x.className = "topnav";
+      $('.nav-pages .spacer-bars').show();
+    }
+  });
+
 }(jQuery));

@@ -67,7 +67,8 @@ h1 {
   text-transform: uppercase;
 }
 h2 {
-  font: 2.875rem/1em $sans-heavy;
+  font: 3.25rem/0.9em $sans-heavy;
+  text-transform: uppercase;
 }
 h3 {
   font: 2.25rem/1em $sans-book;
@@ -481,7 +482,7 @@ h6 {
 
 #viewport {
   position: fixed;
-  top: 110px;
+  top: 93px;
   left: 20px;
   width: calc(100% - 40px);
   height: calc(100% - 130px);
@@ -670,9 +671,9 @@ h6 {
 .page-type-text {
   #viewport {
     background-color: transparentize($blue3, 0.5);
-    top: 20px;
+    //top: 20px;
     height: calc(100% - 40px);
-    margin-top: 95px;
+    //margin-top: 95px;
   }
 }
 #standard-splash {
