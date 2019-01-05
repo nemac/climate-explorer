@@ -805,8 +805,43 @@
     display: none;
   }
 
+  #home-splash {
+    height: 90vh;
+  }
+
+  .share-widget {
+    top: 0;
+    right: 0;
+  }
+
+  #home-text {
+    margin: 6% 3%;
+  }
+  #home-menu {
+    width: 98%;
+  }
+
   #main-header #header-logo {
     width: 150px;
+  }
+
+  //NAV OVERLAY
+  #detail-overlay {
+    .nav-detail {
+      .nav-detail-item {
+        top: 45%;
+        left: 2.2rem;
+        width: 80%;
+        h3 {
+          font: 1.2rem/1.2em "CESans-Heavy", Helvetica, "Helvetica Neue", Arial, sans-serif;
+          margin: 0 0 1rem 0;
+        }
+        p {
+          margin: 0 0 1rem 0;
+          line-height: 1rem;
+        }
+      }
+    }
   }
 
   //LOCATION PAGE
@@ -831,6 +866,14 @@
 
     #page-nav {
       width: 90%;
+      h4 {
+        float: none;
+        width: initial;
+      }
+      ul li {
+        float: none;
+        margin: .4rem;
+      }
     }
   }
 
@@ -839,11 +882,14 @@
     .location-data-section {
       .data-accordion-wrap {
         border: none;
-        padding: 0 0 100vh 0;
+        padding: 0 0 85vh 0;
       }
       .data-accordion {
         .data-accordion-tab {
-          //overflow: auto;
+          .data-accordion-actions {
+            float: left;
+            padding-left: 1.5rem;
+          }
         }
         .data-accordion-tab.data-chart .chart-wrap {
           height: 15rem;
@@ -853,7 +899,7 @@
         }
         .data-accordion-tab.open header h4 {
           .icon {
-            font-size: 1rem;
+            font-size: 1.4rem;
           }
 
           .text {
@@ -876,5 +922,65 @@
       width: 1.2rem;
       height: 1.2rem;
     }
+  }
+
+  .page-type-variables {
+    #viewport {
+      position: absolute;
+      width: 99%;
+      left: .1rem;
+
+    }
+  }
+  .page-type-stations {
+    #viewport {
+      position: absolute;
+      width: 99%;
+      left: .1rem;
+      height: 100%;
+    }
+  }
+
+  .scenario-map-overlay-container {
+    .left-scenario-controls {
+      position: absolute;
+      left: 0;
+      width: 31%;
+    }
+    .right-scenario-controls {
+      position: absolute;
+      right: 0;
+      width: 31%;
+    }
+    .year {
+      min-width: 11rem;
+      .year-label {
+        margin: .5rem .3rem;
+      }
+    }
+  }
+
+  #left-header {
+    left: 0;
+    top: 36%;
+    width: 62%;
+    height: 36%;
+    border-right: none;
+    .left-filler {
+      background: none;
+    }
+  }
+
+  #left-header-trigger {
+    top: 0;
+    right: -40px;
+  }
+
+  body.left-header-closed #left-header {
+    left: -16rem;
+  }
+
+  .esri-view-width-xsmall .esri-expand__mask--expanded {
+    z-index: -1;
   }
 }

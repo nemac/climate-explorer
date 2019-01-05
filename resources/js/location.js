@@ -10,10 +10,14 @@ $(function () {
   $('select#derived-county, select#precip-county, select#county').append($('<option value="' + window.ce.ce('getLocationPageState')['fips'] + '" selected="selected">' + window.ce.ce('getLocationPageState')['county'] + '</option>'));
 
 
-  $('.data-options-trigger').click(function (e) {
-    e.preventDefault();
-
-    $(this).siblings('.data-options').slideDown();
+  let slid = false;
+  $('.data-options-trigger').click(function () {
+    slid = !slid;
+    if (slid) {
+      $(this).siblings('.data-options').slideDown();
+    } else {
+      $(this).siblings('.data-options').slideUp();
+    }
   });
 
   $('#temperature-map-container header').on('click', function () {

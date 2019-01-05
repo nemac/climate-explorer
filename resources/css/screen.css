@@ -11528,69 +11528,175 @@ input.location-mapper:focus:-ms-input-placeholder {
     display: none;
   }
   /* line 808, resources/scss/_media.scss */
+  #home-splash {
+    height: 90vh;
+  }
+  /* line 812, resources/scss/_media.scss */
+  .share-widget {
+    top: 0;
+    right: 0;
+  }
+  /* line 817, resources/scss/_media.scss */
+  #home-text {
+    margin: 6% 3%;
+  }
+  /* line 820, resources/scss/_media.scss */
+  #home-menu {
+    width: 98%;
+  }
+  /* line 824, resources/scss/_media.scss */
   #main-header #header-logo {
     width: 150px;
   }
-  /* line 814, resources/scss/_media.scss */
+  /* line 831, resources/scss/_media.scss */
+  #detail-overlay .nav-detail .nav-detail-item {
+    top: 45%;
+    left: 2.2rem;
+    width: 80%;
+  }
+  /* line 835, resources/scss/_media.scss */
+  #detail-overlay .nav-detail .nav-detail-item h3 {
+    font: 1.2rem/1.2em "CESans-Heavy", Helvetica, "Helvetica Neue", Arial, sans-serif;
+    margin: 0 0 1rem 0;
+  }
+  /* line 839, resources/scss/_media.scss */
+  #detail-overlay .nav-detail .nav-detail-item p {
+    margin: 0 0 1rem 0;
+    line-height: 1rem;
+  }
+  /* line 849, resources/scss/_media.scss */
   .page-type-location #location-search {
     width: 17rem;
     top: inherit;
     right: inherit;
   }
-  /* line 822, resources/scss/_media.scss */
+  /* line 857, resources/scss/_media.scss */
   .page-splash .splash-text {
     width: 90%;
     max-width: 90%;
     margin: 0 0 0 1rem;
   }
-  /* line 826, resources/scss/_media.scss */
+  /* line 861, resources/scss/_media.scss */
   .page-splash .splash-text h1 {
     font: 3.25rem/0.9em "CESans-Heavy", Helvetica, "Helvetica Neue", Arial, sans-serif;
     padding: 4rem 0 1rem 0;
   }
-  /* line 832, resources/scss/_media.scss */
+  /* line 867, resources/scss/_media.scss */
   .page-splash #page-nav {
     width: 90%;
   }
-  /* line 837, resources/scss/_media.scss */
+  /* line 869, resources/scss/_media.scss */
+  .page-splash #page-nav h4 {
+    float: none;
+    width: initial;
+  }
+  /* line 873, resources/scss/_media.scss */
+  .page-splash #page-nav ul li {
+    float: none;
+    margin: .4rem;
+  }
+  /* line 880, resources/scss/_media.scss */
   .location-data-section-wrap {
     border: none;
   }
-  /* line 840, resources/scss/_media.scss */
+  /* line 883, resources/scss/_media.scss */
   .location-data-section-wrap .location-data-section .data-accordion-wrap {
     border: none;
-    padding: 0 0 100vh 0;
+    padding: 0 0 85vh 0;
   }
-  /* line 848, resources/scss/_media.scss */
+  /* line 889, resources/scss/_media.scss */
+  .location-data-section-wrap .location-data-section .data-accordion .data-accordion-tab .data-accordion-actions {
+    float: left;
+    padding-left: 1.5rem;
+  }
+  /* line 894, resources/scss/_media.scss */
   .location-data-section-wrap .location-data-section .data-accordion .data-accordion-tab.data-chart .chart-wrap {
     height: 15rem;
   }
-  /* line 851, resources/scss/_media.scss */
+  /* line 897, resources/scss/_media.scss */
   .location-data-section-wrap .location-data-section .data-accordion .data-accordion-tab.data-chart.open .chart {
     border: none;
   }
-  /* line 855, resources/scss/_media.scss */
+  /* line 901, resources/scss/_media.scss */
   .location-data-section-wrap .location-data-section .data-accordion .data-accordion-tab.open header h4 .icon {
-    font-size: 1rem;
+    font-size: 1.4rem;
   }
-  /* line 859, resources/scss/_media.scss */
+  /* line 905, resources/scss/_media.scss */
   .location-data-section-wrap .location-data-section .data-accordion .data-accordion-tab.open header h4 .text {
     font-size: 1rem;
   }
-  /* line 867, resources/scss/_media.scss */
+  /* line 913, resources/scss/_media.scss */
   .chart-legend {
     display: flex;
     flex-flow: column nowrap;
     align-items: center;
     width: 100%;
   }
-  /* line 872, resources/scss/_media.scss */
+  /* line 918, resources/scss/_media.scss */
   .chart-legend .legend-item {
     width: 60%;
   }
-  /* line 875, resources/scss/_media.scss */
+  /* line 921, resources/scss/_media.scss */
   .chart-legend .legend-item-block {
     width: 1.2rem;
     height: 1.2rem;
+  }
+  /* line 928, resources/scss/_media.scss */
+  .page-type-variables #viewport {
+    position: absolute;
+    width: 99%;
+    left: .1rem;
+  }
+  /* line 936, resources/scss/_media.scss */
+  .page-type-stations #viewport {
+    position: absolute;
+    width: 99%;
+    left: .1rem;
+    height: 100%;
+  }
+  /* line 945, resources/scss/_media.scss */
+  .scenario-map-overlay-container .left-scenario-controls {
+    position: absolute;
+    left: 0;
+    width: 31%;
+  }
+  /* line 950, resources/scss/_media.scss */
+  .scenario-map-overlay-container .right-scenario-controls {
+    position: absolute;
+    right: 0;
+    width: 31%;
+  }
+  /* line 955, resources/scss/_media.scss */
+  .scenario-map-overlay-container .year {
+    min-width: 11rem;
+  }
+  /* line 957, resources/scss/_media.scss */
+  .scenario-map-overlay-container .year .year-label {
+    margin: .5rem .3rem;
+  }
+  /* line 963, resources/scss/_media.scss */
+  #left-header {
+    left: 0;
+    top: 36%;
+    width: 62%;
+    height: 36%;
+    border-right: none;
+  }
+  /* line 969, resources/scss/_media.scss */
+  #left-header .left-filler {
+    background: none;
+  }
+  /* line 974, resources/scss/_media.scss */
+  #left-header-trigger {
+    top: 0;
+    right: -40px;
+  }
+  /* line 979, resources/scss/_media.scss */
+  body.left-header-closed #left-header {
+    left: -16rem;
+  }
+  /* line 983, resources/scss/_media.scss */
+  .esri-view-width-xsmall .esri-expand__mask--expanded {
+    z-index: -1;
   }
 }
