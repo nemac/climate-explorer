@@ -800,8 +800,81 @@
   }
 }
 
-@media screen and (max-width: 400px) {
+@media screen and (max-width: 401px) {
+  .d-none-400 {
+    display: none;
+  }
+
   #main-header #header-logo {
     width: 150px;
+  }
+
+  //LOCATION PAGE
+  .page-type-location {
+    #location-search {
+      width: 17rem;
+      top: inherit;
+      right: inherit;
+    }
+  }
+
+  .page-splash {
+    .splash-text {
+      width: 90%;
+      max-width: 90%;
+      margin: 0 0 0 1rem;
+      h1 {
+        font: 3.25rem/0.9em "CESans-Heavy", Helvetica, "Helvetica Neue", Arial, sans-serif;
+        padding: 4rem 0 1rem 0;
+      }
+    }
+
+    #page-nav {
+      width: 90%;
+    }
+  }
+
+  .location-data-section-wrap {
+    border: none;
+    .location-data-section {
+      .data-accordion-wrap {
+        border: none;
+        padding: 0 0 100vh 0;
+      }
+      .data-accordion {
+        .data-accordion-tab {
+          //overflow: auto;
+        }
+        .data-accordion-tab.data-chart .chart-wrap {
+          height: 15rem;
+        }
+        .data-accordion-tab.data-chart.open .chart {
+          border: none;
+        }
+        .data-accordion-tab.open header h4 {
+          .icon {
+            font-size: 1rem;
+          }
+
+          .text {
+            font-size: 1rem;
+          }
+        }
+      }
+    }
+  }
+
+  .chart-legend {
+    display: flex;
+    flex-flow: column nowrap;
+    align-items: center;
+    width: 100%;
+    .legend-item {
+      width: 60%;
+    }
+    .legend-item-block {
+      width: 1.2rem;
+      height: 1.2rem;
+    }
   }
 }

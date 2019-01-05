@@ -159,7 +159,8 @@
     width: 60%;
     height: 70%;
     z-index: 2;
-  
+    overflow: auto;
+
     a {
       color: $white;
     }

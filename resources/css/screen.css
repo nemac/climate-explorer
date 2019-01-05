@@ -4908,32 +4908,33 @@ h6 {
   width: 60%;
   height: 70%;
   z-index: 2;
+  overflow: auto;
 }
 
-/* line 163, resources/scss/template/_nav-overlay.scss */
+/* line 164, resources/scss/template/_nav-overlay.scss */
 #nav-overlay .nav-content-wrap a {
   color: #ffffff;
 }
 
-/* line 167, resources/scss/template/_nav-overlay.scss */
+/* line 168, resources/scss/template/_nav-overlay.scss */
 #nav-overlay .nav-content-wrap h3 {
   margin: 0 0 5% 0;
   color: #ffffff;
   font: 1.625rem/4.875rem "CESans-Heavy", Helvetica, "Helvetica Neue", Arial, sans-serif;
 }
 
-/* line 172, resources/scss/template/_nav-overlay.scss */
+/* line 173, resources/scss/template/_nav-overlay.scss */
 #nav-overlay .nav-content-wrap h3 .icon {
   margin-right: 20px;
 }
 
-/* line 179, resources/scss/template/_nav-overlay.scss */
+/* line 180, resources/scss/template/_nav-overlay.scss */
 #nav-overlay .nav-content nav {
   height: 40px;
   padding: 0 4%;
 }
 
-/* line 183, resources/scss/template/_nav-overlay.scss */
+/* line 184, resources/scss/template/_nav-overlay.scss */
 #nav-overlay .nav-content nav a {
   position: relative;
   display: block;
@@ -4944,7 +4945,7 @@ h6 {
   color: #ffffff;
 }
 
-/* line 192, resources/scss/template/_nav-overlay.scss */
+/* line 193, resources/scss/template/_nav-overlay.scss */
 #nav-overlay .nav-content nav a span {
   position: relative;
   display: inline-block;
@@ -4958,7 +4959,7 @@ h6 {
   vertical-align: top;
 }
 
-/* line 201, resources/scss/template/_nav-overlay.scss */
+/* line 202, resources/scss/template/_nav-overlay.scss */
 #nav-overlay .nav-content nav a span:after {
   content: '';
   display: block;
@@ -4976,20 +4977,20 @@ h6 {
   transition: 0.25s;
 }
 
-/* line 217, resources/scss/template/_nav-overlay.scss */
+/* line 218, resources/scss/template/_nav-overlay.scss */
 #nav-overlay .nav-content nav a.fs-tabs-active span {
   margin: 0;
   border-bottom-width: 4px;
 }
 
-/* line 221, resources/scss/template/_nav-overlay.scss */
+/* line 222, resources/scss/template/_nav-overlay.scss */
 #nav-overlay .nav-content nav a.fs-tabs-active span:after {
   bottom: -16px;
   margin: 0 0 0 -6px;
   border-width: 6px;
 }
 
-/* line 231, resources/scss/template/_nav-overlay.scss */
+/* line 232, resources/scss/template/_nav-overlay.scss */
 #nav-overlay .nav-content .tab {
   margin: -6px 0 0 0;
   padding: 6% 4%;
@@ -5007,13 +5008,13 @@ h6 {
   clear: both;
 }
 
-/* line 239, resources/scss/template/_nav-overlay.scss */
+/* line 240, resources/scss/template/_nav-overlay.scss */
 #nav-overlay .nav-content .tab ol > li {
   float: left;
   font: 400 1.25rem/1em Roboto, Helvetica, "Helvetica Neue", Arial, sans-serif;
 }
 
-/* line 244, resources/scss/template/_nav-overlay.scss */
+/* line 245, resources/scss/template/_nav-overlay.scss */
 #nav-overlay .nav-content .tab ol > li:before {
   float: left;
   width: 10%;
@@ -5023,12 +5024,12 @@ h6 {
   color: #f5442d;
 }
 
-/* line 259, resources/scss/template/_nav-overlay.scss */
+/* line 260, resources/scss/template/_nav-overlay.scss */
 #nav-overlay .nav-content .tab ol ul {
   margin: 15px 0 0 0;
 }
 
-/* line 262, resources/scss/template/_nav-overlay.scss */
+/* line 263, resources/scss/template/_nav-overlay.scss */
 #nav-overlay .nav-content .tab ol ul li {
   float: none !important;
   width: auto !important;
@@ -5050,7 +5051,7 @@ h6 {
   clear: both;
 }
 
-/* line 277, resources/scss/template/_nav-overlay.scss */
+/* line 278, resources/scss/template/_nav-overlay.scss */
 #nav-overlay .nav-content .tab ol.col-2 li,
 #nav-overlay .nav-content .tab ul.col-2 li {
   float: left;
@@ -5071,7 +5072,7 @@ h6 {
   clear: both;
 }
 
-/* line 286, resources/scss/template/_nav-overlay.scss */
+/* line 287, resources/scss/template/_nav-overlay.scss */
 #nav-overlay .nav-content .tab ol.col-3 li,
 #nav-overlay .nav-content .tab ul.col-3 li {
   float: left;
@@ -5092,19 +5093,19 @@ h6 {
   clear: both;
 }
 
-/* line 295, resources/scss/template/_nav-overlay.scss */
+/* line 296, resources/scss/template/_nav-overlay.scss */
 #nav-overlay .nav-content .tab ol.col-4 li,
 #nav-overlay .nav-content .tab ul.col-4 li {
   float: left;
   width: 25%;
 }
 
-/* line 311, resources/scss/template/_nav-overlay.scss */
+/* line 312, resources/scss/template/_nav-overlay.scss */
 #detail-overlay {
   z-index: 601;
 }
 
-/* line 314, resources/scss/template/_nav-overlay.scss */
+/* line 315, resources/scss/template/_nav-overlay.scss */
 #detail-overlay .nav-detail {
   display: none;
   position: absolute;
@@ -5116,7 +5117,7 @@ h6 {
   z-index: 1;
 }
 
-/* line 322, resources/scss/template/_nav-overlay.scss */
+/* line 323, resources/scss/template/_nav-overlay.scss */
 #detail-overlay .nav-detail .nav-detail-item {
   display: none;
   position: absolute;
@@ -5130,44 +5131,44 @@ h6 {
   transform: translateY(-50%);
 }
 
-/* line 330, resources/scss/template/_nav-overlay.scss */
+/* line 331, resources/scss/template/_nav-overlay.scss */
 #detail-overlay .nav-detail .nav-detail-item h3 {
   font: 1.625rem/1em "CESans-Heavy", Helvetica, "Helvetica Neue", Arial, sans-serif;
   margin: 0 0 40px 0;
 }
 
-/* line 335, resources/scss/template/_nav-overlay.scss */
+/* line 336, resources/scss/template/_nav-overlay.scss */
 #detail-overlay .nav-detail .nav-detail-item p {
   margin: 0 0 20px 0;
   line-height: 2em;
 }
 
-/* line 341, resources/scss/template/_nav-overlay.scss */
+/* line 342, resources/scss/template/_nav-overlay.scss */
 #detail-overlay .nav-detail#variable-details {
   background: #0058cf;
 }
 
-/* line 345, resources/scss/template/_nav-overlay.scss */
+/* line 346, resources/scss/template/_nav-overlay.scss */
 #detail-overlay .nav-detail#stations-details {
   background: #f5442d;
 }
 
-/* line 353, resources/scss/template/_nav-overlay.scss */
+/* line 354, resources/scss/template/_nav-overlay.scss */
 #page-home #detail-overlay .nav-detail {
   background: #0058cf;
 }
 
-/* line 356, resources/scss/template/_nav-overlay.scss */
+/* line 357, resources/scss/template/_nav-overlay.scss */
 #page-home #detail-overlay .nav-detail#variable-details {
   background: #0058cf;
 }
 
-/* line 360, resources/scss/template/_nav-overlay.scss */
+/* line 361, resources/scss/template/_nav-overlay.scss */
 #page-home #detail-overlay .nav-detail#stations-details {
   background: #f5442d;
 }
 
-/* line 372, resources/scss/template/_nav-overlay.scss */
+/* line 373, resources/scss/template/_nav-overlay.scss */
 body.nav-open #viewport,
 body.nav-open #main-header,
 body.nav-open #left-header, body.detail-open #viewport,
@@ -5180,7 +5181,7 @@ body.detail-open #left-header {
   filter: blur(3px);
 }
 
-/* line 384, resources/scss/template/_nav-overlay.scss */
+/* line 385, resources/scss/template/_nav-overlay.scss */
 body.detail-open #nav-overlay {
   -webkit-filter: blur(6px);
   -moz-filter: blur(6px);
@@ -10306,6 +10307,525 @@ https://raw.github.com/shagstrom/split-pane/master/LICENSE
   width: 50%;
 }
 
+/*
+
+This file is due for a cleanup. Please do not add to the mess.
+
+ */
+/* line 7, resources/scss/_mods.scss */
+.level-1 {
+  text-transform: capitalize;
+}
+
+/* line 11, resources/scss/_mods.scss */
+.caps {
+  text-transform: uppercase;
+}
+
+/* line 15, resources/scss/_mods.scss */
+.state-name {
+  margin-left: 0px;
+  padding-left: 0px !important;
+}
+
+/* line 20, resources/scss/_mods.scss */
+.display-block {
+  display: block;
+}
+
+/* line 24, resources/scss/_mods.scss */
+input.location-mapper {
+  display: inline-block;
+  width: 80%;
+  background: transparent;
+  border: none;
+  font: 300 1rem/1em Roboto, Helvetica, "Helvetica Neue", Arial, sans-serif;
+  color: #fff;
+  outline: none;
+  -moz-transition: 0.25s;
+  -o-transition: 0.25s;
+  -webkit-transition: 0.25s;
+  transition: 0.25s;
+}
+
+/* line 37, resources/scss/_mods.scss */
+#nav-overlay .icon-search {
+  margin-right: 10px;
+}
+
+/* line 41, resources/scss/_mods.scss */
+#close-wx-station {
+  position: absolute;
+  right: 4px;
+  top: 27px;
+  font-weight: 500;
+  font-size: 28px;
+}
+
+/* line 49, resources/scss/_mods.scss */
+#close-wx-station:hover {
+  cursor: pointer;
+  color: #000;
+}
+
+/* line 54, resources/scss/_mods.scss */
+.chart-canvas, canvas {
+  width: 100%;
+  height: 100%;
+}
+
+/* line 59, resources/scss/_mods.scss */
+input.location-mapper::-webkit-input-placeholder {
+  color: #fff;
+  padding-top: 3px;
+  -moz-transition: 0.25s;
+  -o-transition: 0.25s;
+  -webkit-transition: 0.25s;
+  transition: 0.25s;
+}
+
+/* line 67, resources/scss/_mods.scss */
+input.location-mapper:-moz-placeholder {
+  color: #fff;
+  padding-top: 3px;
+  -moz-transition: 0.25s;
+  -o-transition: 0.25s;
+  -webkit-transition: 0.25s;
+  transition: 0.25s;
+}
+
+/* line 75, resources/scss/_mods.scss */
+input.location-mapper::-moz-placeholder {
+  color: #fff;
+  padding-top: 3px;
+  -moz-transition: 0.25s;
+  -o-transition: 0.25s;
+  -webkit-transition: 0.25s;
+  transition: 0.25s;
+}
+
+/* line 83, resources/scss/_mods.scss */
+input.location-mapper:-ms-input-placeholder {
+  color: #fff;
+  padding-top: 3px;
+  -moz-transition: 0.25s;
+  -o-transition: 0.25s;
+  -webkit-transition: 0.25s;
+  transition: 0.25s;
+}
+
+/* line 91, resources/scss/_mods.scss */
+input.location-mapper:focus::-webkit-input-placeholder {
+  color: rgba(255, 255, 255, 0.25);
+}
+
+/* line 94, resources/scss/_mods.scss */
+input.location-mapper:focus:-moz-placeholder {
+  color: rgba(255, 255, 255, 0.25);
+}
+
+/* line 97, resources/scss/_mods.scss */
+input.location-mapper:focus::-moz-placeholder {
+  color: rgba(255, 255, 255, 0.25);
+}
+
+/* line 100, resources/scss/_mods.scss */
+input.location-mapper:focus:-ms-input-placeholder {
+  color: rgba(255, 255, 255, 0.25);
+}
+
+/* line 104, resources/scss/_mods.scss */
+.location-data-section .data-accordion .data-accordion-tab.data-map .data-accordion-content {
+  /*background: none;*/
+  background-size: inherit;
+}
+
+/* line 109, resources/scss/_mods.scss */
+.location-data-section .data-accordion .data-accordion-tab.open .data-accordion-content {
+  /*-moz-box-shadow: none;
+    -webkit-box-shadow: none;
+    box-shadow: none;
+    opacity: 1;
+    mix-blend-mode: normal;*/
+}
+
+/* line 117, resources/scss/_mods.scss */
+.location-data-section .data-accordion .data-accordion-tab .data-accordion-content {
+  /*mix-blend-mode: normal;*/
+}
+
+/* line 123, resources/scss/_mods.scss */
+.chart-legend .legend-item-block {
+  height: 28px;
+  float: left;
+  width: 25px;
+  margin-right: 5px;
+  overflow: hidden;
+}
+
+/* line 131, resources/scss/_mods.scss */
+.chart-legend .legend-item-line-container {
+  height: 5px;
+  float: left;
+  width: 25px;
+  margin-right: 5px;
+  padding-top: 8px;
+}
+
+/* line 139, resources/scss/_mods.scss */
+.chart-legend .legend-item-line-label {
+  padding-top: 8px;
+}
+
+/* line 143, resources/scss/_mods.scss */
+.chart-legend .legend-item-line#under-baseline-block, .chart-legend .legend-item-line#precipunder-baseline-block, .chart-legend .legend-item-line#deriveunder-baseline-block {
+  margin-top: 0px;
+}
+
+/* line 147, resources/scss/_mods.scss */
+.chart-legend .legend-item-line#rcp45-line, .chart-legend .legend-item-line#preciprcp45-line, .chart-legend .legend-item-line#derivercp45-line {
+  margin-top: 7px;
+}
+
+/* line 151, resources/scss/_mods.scss */
+.chart-legend .legend-item-block#rcp45-block, .chart-legend .legend-item-block#preciprcp45-block, .chart-legend .legend-item-block#derivercp45-block {
+  background: #99BCEC;
+}
+
+/* line 155, resources/scss/_mods.scss */
+.legend-item-range {
+  height: 43px;
+}
+
+/* line 159, resources/scss/_mods.scss */
+.chart-legend .legend-item-line {
+  width: 100%;
+}
+
+/* line 163, resources/scss/_mods.scss */
+.chart-legend .observed {
+  background-color: transparent !important;
+  background-image: url(../img/observed.png) !important;
+  height: 33px;
+  width: 26px;
+  background-size: 100% !important;
+  margin-top: -8px !important;
+}
+
+/* line 172, resources/scss/_mods.scss */
+.chart-legend .observed.seasonal {
+  background-color: transparent !important;
+  background-image: url(../img/observed-seasonal.png) !important;
+  height: 33px;
+  width: 26px;
+  background-size: 100% !important;
+  margin-top: -8px !important;
+}
+
+/* line 181, resources/scss/_mods.scss */
+#variable-map .ol-popup {
+  z-index: 500;
+}
+
+/* line 185, resources/scss/_mods.scss */
+#map-seasons-container .fs-dropdown-selected.disabled {
+  background: #EEE;
+  cursor: default;
+}
+
+/* line 190, resources/scss/_mods.scss */
+.ol-popup-content {
+  min-width: 170px;
+  max-height: 910px;
+  overflow-x: auto;
+}
+
+/* line 198, resources/scss/_mods.scss */
+.page-type-location #location-search {
+  width: 300px;
+}
+
+/* line 202, resources/scss/_mods.scss */
+.page-type-location #location-search input {
+  font-size: 1.1em;
+  width: 100%;
+}
+
+/* line 210, resources/scss/_mods.scss */
+#vars-legend .source {
+  display: none;
+}
+
+/* line 216, resources/scss/_mods.scss */
+#location-temperature .accent-background {
+  background-color: #f5442d;
+  position: relative;
+  bottom: 0px;
+  /* width: 100%; */
+  height: 100%;
+}
+
+/* line 224, resources/scss/_mods.scss */
+.page-type-location .seasonal-monthly.disabled a {
+  color: #EEE;
+}
+
+/* line 661, ../scss/pages/_location.scss */
+/* line 229, resources/scss/_mods.scss */
+.page-type-location .seasonal-monthly.disabled:hover {
+  border-left-color: #FFF;
+}
+
+/* line 233, resources/scss/_mods.scss */
+#station-legends .station-legend-item {
+  float: left;
+  width: 50%;
+}
+
+/* line 238, resources/scss/_mods.scss */
+#station-legends img {
+  width: 65%;
+}
+
+/* line 243, resources/scss/_mods.scss */
+#nav-overlay #nav-controls a {
+  white-space: normal !important;
+}
+
+@media screen and (min-width: 1500px) {
+  /* line 248, resources/scss/_mods.scss */
+  #subnav ul {
+    position: absolute;
+    right: 20px;
+    top: 43px;
+  }
+}
+
+@media screen and (max-width: 1500px) {
+  /* line 27, ../scss/formstone/_grid.scss */
+  /* line 258, resources/scss/_mods.scss */
+  #main-header #subnav {
+    margin: 0 !important;
+  }
+  /* line 261, resources/scss/_mods.scss */
+  #main-header #subnav li {
+    display: block;
+    margin: -5% 0 0 15px;
+  }
+  /* line 265, resources/scss/_mods.scss */
+  .page-type-stations #substations-menu ul {
+    display: block;
+    white-space: normal;
+  }
+  /* line 270, resources/scss/_mods.scss */
+  .station-banner {
+    background-size: cover !important;
+  }
+}
+
+@media screen and (max-width: 1030px) {
+  /* line 275, resources/scss/_mods.scss */
+  #page-variables #main-header #subnav {
+    display: none !important;
+  }
+  /* line 279, resources/scss/_mods.scss */
+  .location-data-section .data-list {
+    width: 100%;
+  }
+  /* line 283, resources/scss/_mods.scss */
+  .location-data-section .data-accordion-wrap {
+    width: 100%;
+  }
+}
+
+/* line 289, resources/scss/_mods.scss */
+.stations-list .station-layers {
+  margin-top: 40px;
+}
+
+@media screen and (max-height: 600px) {
+  /* line 294, resources/scss/_mods.scss */
+  #detail-overlay .nav-detail .nav-detail-item {
+    top: 300px;
+  }
+  /* line 298, resources/scss/_mods.scss */
+  #detail-overlay .nav-detail {
+    overflow-y: scroll;
+    overflow-x: hidden;
+  }
+  /* line 303, resources/scss/_mods.scss */
+  .overlay .close {
+    position: fixed;
+    top: 20px;
+    left: 20px;
+    width: 40px;
+    height: 40px;
+    padding: 0;
+    background: #fff;
+    color: #000;
+    mix-blend-mode: screen;
+    z-index: 2;
+  }
+}
+
+/* line 317, resources/scss/_mods.scss */
+#left-header .left-filler {
+  overflow: auto;
+}
+
+/* line 321, resources/scss/_mods.scss */
+.page-type-location #location-search {
+  width: 400px;
+}
+
+/* line 325, resources/scss/_mods.scss */
+.ol-popup-content {
+  min-width: 170px;
+  max-height: 910px;
+  overflow: inherit;
+}
+
+/* line 331, resources/scss/_mods.scss */
+.download-image {
+  font-size: 1.5em !important;
+}
+
+/* line 335, resources/scss/_mods.scss */
+.download-data {
+  font-size: 1.5em !important;
+}
+
+/* line 340, resources/scss/_mods.scss */
+.how-to-read-county {
+  float: left;
+  position: absolute;
+  left: 71px;
+  display: block;
+  z-index: 10;
+  top: 79px;
+}
+
+/* iPad Air LandScape */
+@media only screen and (device-width: 768px) {
+  /* line 352, resources/scss/_mods.scss */
+  .location-data-section .data-accordion .data-accordion-tab.data-map .location-map-legend-container {
+    width: 80px;
+  }
+  /* line 356, resources/scss/_mods.scss */
+  html {
+    font-size: 60%;
+  }
+  /* line 359, resources/scss/_mods.scss */
+  #variable-counties-toggle > label > span {
+    font-size: 60%;
+  }
+  /* line 362, resources/scss/_mods.scss */
+  #variable-time-slider > span > span.icon.icon-arrow-left-right::before {
+    font-size: 2em;
+  }
+  /* line 365, resources/scss/_mods.scss */
+  #temperature-map-time-slider > span > span.icon.icon-arrow-left-right {
+    font-size: 1.8em;
+  }
+  /* line 368, resources/scss/_mods.scss */
+  .how-to-read {
+    float: right !important;
+    position: absolute !important;
+    top: 25px !important;
+    left: auto !important;
+    right: 230px !important;
+    display: block !important;
+    z-index: 10 !important;
+  }
+  /* line 378, resources/scss/_mods.scss */
+  .ui-slider-handle {
+    left: 3px;
+    width: 16px;
+    height: 16px;
+    margin: 0 0 -8px -8px;
+    background: #f5442d;
+    -moz-border-radius: 50%;
+    -webkit-border-radius: 50%;
+    border-radius: 50%;
+    outline: none;
+    z-index: 10000000 !important;
+    cursor: pointer;
+  }
+}
+
+/* line 395, resources/scss/_mods.scss */
+#swipeImg .fs-dropdown button {
+  padding: 2px !important;
+  padding-right: 40px;
+  padding-left: 5px !important;
+  height: 39px !important;
+  background: rgba(255, 255, 255, 0.6);
+  border: 5px solid #fff;
+  color: #0058cf;
+  -moz-border-radius: 0;
+  -webkit-border-radius: 0;
+  border-radius: 0;
+  font: 400 .7rem/1em Roboto, Helvetica, "Helvetica Neue", Arial, sans-serif !important;
+  -moz-transition: 0.25s;
+  -o-transition: 0.25s;
+  -webkit-transition: 0.25s;
+  transition: 0.25s;
+}
+
+/* line 414, resources/scss/_mods.scss */
+.handle .fs-dropdown button {
+  padding: 2px !important;
+  padding-right: 40px;
+  padding-left: 5px !important;
+  height: 39px !important;
+  width: 150px;
+  background: rgba(255, 255, 255, 0.6);
+  border: 5px solid #fff;
+  color: #0058cf;
+  -moz-border-radius: 0;
+  -webkit-border-radius: 0;
+  border-radius: 0;
+  font: 400 .7rem/1em Roboto, Helvetica, "Helvetica Neue", Arial, sans-serif !important;
+  -moz-transition: 0.25s;
+  -o-transition: 0.25s;
+  -webkit-transition: 0.25s;
+  transition: 0.25s;
+}
+
+/* line 434, resources/scss/_mods.scss */
+#location-stations #station-no-data {
+  background: #F45440;
+  color: white;
+  padding-top: 305px;
+  font-weight: bold;
+  font-size: 1.2em;
+  text-align: center;
+}
+
+/* line 443, resources/scss/_mods.scss */
+#nav-overlay .nav-content .tab ol ul li {
+  float: none !important;
+  width: auto !important;
+  margin: 0 10px 10px 0;
+  font: 300 1rem/1.2em Roboto, Helvetica, "Helvetica Neue", Arial, sans-serif;
+}
+
+/* line 450, resources/scss/_mods.scss */
+.download-panel #download-precip-dismiss-button {
+  display: block;
+  position: absolute;
+  top: -30px;
+  right: 0;
+}
+
+/* line 457, resources/scss/_mods.scss */
+.download-panel #download-derived-dismiss-button {
+  display: block;
+  position: absolute;
+  top: -30px;
+  right: 0;
+}
+
 @media screen and (max-width: 1200px) {
   /* line 18, resources/scss/_media.scss */
   h1 {
@@ -11002,528 +11522,75 @@ https://raw.github.com/shagstrom/split-pane/master/LICENSE
   }
 }
 
-@media screen and (max-width: 400px) {
+@media screen and (max-width: 401px) {
   /* line 804, resources/scss/_media.scss */
+  .d-none-400 {
+    display: none;
+  }
+  /* line 808, resources/scss/_media.scss */
   #main-header #header-logo {
     width: 150px;
   }
-}
-
-/*
-
-This file is due for a cleanup. Please do not add to the mess.
-
- */
-/* line 7, resources/scss/_mods.scss */
-.level-1 {
-  text-transform: capitalize;
-}
-
-/* line 11, resources/scss/_mods.scss */
-.caps {
-  text-transform: uppercase;
-}
-
-/* line 15, resources/scss/_mods.scss */
-.state-name {
-  margin-left: 0px;
-  padding-left: 0px !important;
-}
-
-/* line 20, resources/scss/_mods.scss */
-.display-block {
-  display: block;
-}
-
-/* line 24, resources/scss/_mods.scss */
-input.location-mapper {
-  display: inline-block;
-  width: 80%;
-  background: transparent;
-  border: none;
-  font: 300 1rem/1em Roboto, Helvetica, "Helvetica Neue", Arial, sans-serif;
-  color: #fff;
-  outline: none;
-  -moz-transition: 0.25s;
-  -o-transition: 0.25s;
-  -webkit-transition: 0.25s;
-  transition: 0.25s;
-}
-
-/* line 37, resources/scss/_mods.scss */
-#nav-overlay .icon-search {
-  margin-right: 10px;
-}
-
-/* line 41, resources/scss/_mods.scss */
-#close-wx-station {
-  position: absolute;
-  right: 4px;
-  top: 27px;
-  font-weight: 500;
-  font-size: 28px;
-}
-
-/* line 49, resources/scss/_mods.scss */
-#close-wx-station:hover {
-  cursor: pointer;
-  color: #000;
-}
-
-/* line 54, resources/scss/_mods.scss */
-.chart-canvas, canvas {
-  width: 100%;
-  height: 100%;
-}
-
-/* line 59, resources/scss/_mods.scss */
-input.location-mapper::-webkit-input-placeholder {
-  color: #fff;
-  padding-top: 3px;
-  -moz-transition: 0.25s;
-  -o-transition: 0.25s;
-  -webkit-transition: 0.25s;
-  transition: 0.25s;
-}
-
-/* line 67, resources/scss/_mods.scss */
-input.location-mapper:-moz-placeholder {
-  color: #fff;
-  padding-top: 3px;
-  -moz-transition: 0.25s;
-  -o-transition: 0.25s;
-  -webkit-transition: 0.25s;
-  transition: 0.25s;
-}
-
-/* line 75, resources/scss/_mods.scss */
-input.location-mapper::-moz-placeholder {
-  color: #fff;
-  padding-top: 3px;
-  -moz-transition: 0.25s;
-  -o-transition: 0.25s;
-  -webkit-transition: 0.25s;
-  transition: 0.25s;
-}
-
-/* line 83, resources/scss/_mods.scss */
-input.location-mapper:-ms-input-placeholder {
-  color: #fff;
-  padding-top: 3px;
-  -moz-transition: 0.25s;
-  -o-transition: 0.25s;
-  -webkit-transition: 0.25s;
-  transition: 0.25s;
-}
-
-/* line 91, resources/scss/_mods.scss */
-input.location-mapper:focus::-webkit-input-placeholder {
-  color: rgba(255, 255, 255, 0.25);
-}
-
-/* line 94, resources/scss/_mods.scss */
-input.location-mapper:focus:-moz-placeholder {
-  color: rgba(255, 255, 255, 0.25);
-}
-
-/* line 97, resources/scss/_mods.scss */
-input.location-mapper:focus::-moz-placeholder {
-  color: rgba(255, 255, 255, 0.25);
-}
-
-/* line 100, resources/scss/_mods.scss */
-input.location-mapper:focus:-ms-input-placeholder {
-  color: rgba(255, 255, 255, 0.25);
-}
-
-/* line 104, resources/scss/_mods.scss */
-.location-data-section .data-accordion .data-accordion-tab.data-map .data-accordion-content {
-  /*background: none;*/
-  background-size: inherit;
-}
-
-/* line 109, resources/scss/_mods.scss */
-.location-data-section .data-accordion .data-accordion-tab.open .data-accordion-content {
-  /*-moz-box-shadow: none;
-    -webkit-box-shadow: none;
-    box-shadow: none;
-    opacity: 1;
-    mix-blend-mode: normal;*/
-}
-
-/* line 117, resources/scss/_mods.scss */
-.location-data-section .data-accordion .data-accordion-tab .data-accordion-content {
-  /*mix-blend-mode: normal;*/
-}
-
-/* line 123, resources/scss/_mods.scss */
-.chart-legend .legend-item-block {
-  height: 28px;
-  float: left;
-  width: 25px;
-  margin-right: 5px;
-  overflow: hidden;
-}
-
-/* line 131, resources/scss/_mods.scss */
-.chart-legend .legend-item-line-container {
-  height: 5px;
-  float: left;
-  width: 25px;
-  margin-right: 5px;
-  padding-top: 8px;
-}
-
-/* line 139, resources/scss/_mods.scss */
-.chart-legend .legend-item-line-label {
-  padding-top: 8px;
-}
-
-/* line 143, resources/scss/_mods.scss */
-.chart-legend .legend-item-line#under-baseline-block, .chart-legend .legend-item-line#precipunder-baseline-block, .chart-legend .legend-item-line#deriveunder-baseline-block {
-  margin-top: 0px;
-}
-
-/* line 147, resources/scss/_mods.scss */
-.chart-legend .legend-item-line#rcp45-line, .chart-legend .legend-item-line#preciprcp45-line, .chart-legend .legend-item-line#derivercp45-line {
-  margin-top: 7px;
-}
-
-/* line 151, resources/scss/_mods.scss */
-.chart-legend .legend-item-block#rcp45-block, .chart-legend .legend-item-block#preciprcp45-block, .chart-legend .legend-item-block#derivercp45-block {
-  background: #99BCEC;
-}
-
-/* line 155, resources/scss/_mods.scss */
-.legend-item-range {
-  height: 43px;
-}
-
-/* line 159, resources/scss/_mods.scss */
-.chart-legend .legend-item-line {
-  width: 100%;
-}
-
-/* line 163, resources/scss/_mods.scss */
-.chart-legend .observed {
-  background-color: transparent !important;
-  background-image: url(../img/observed.png) !important;
-  height: 33px;
-  width: 26px;
-  background-size: 100% !important;
-  margin-top: -8px !important;
-}
-
-/* line 172, resources/scss/_mods.scss */
-.chart-legend .observed.seasonal {
-  background-color: transparent !important;
-  background-image: url(../img/observed-seasonal.png) !important;
-  height: 33px;
-  width: 26px;
-  background-size: 100% !important;
-  margin-top: -8px !important;
-}
-
-/* line 181, resources/scss/_mods.scss */
-#variable-map .ol-popup {
-  z-index: 500;
-}
-
-/* line 185, resources/scss/_mods.scss */
-#map-seasons-container .fs-dropdown-selected.disabled {
-  background: #EEE;
-  cursor: default;
-}
-
-/* line 190, resources/scss/_mods.scss */
-.ol-popup-content {
-  min-width: 170px;
-  max-height: 910px;
-  overflow-x: auto;
-}
-
-/* line 198, resources/scss/_mods.scss */
-.page-type-location #location-search {
-  width: 300px;
-}
-
-/* line 202, resources/scss/_mods.scss */
-.page-type-location #location-search input {
-  font-size: 1.1em;
-  width: 100%;
-}
-
-/* line 210, resources/scss/_mods.scss */
-#vars-legend .source {
-  display: none;
-}
-
-/* line 216, resources/scss/_mods.scss */
-#location-temperature .accent-background {
-  background-color: #f5442d;
-  position: relative;
-  bottom: 0px;
-  /* width: 100%; */
-  height: 100%;
-}
-
-/* line 224, resources/scss/_mods.scss */
-.page-type-location .seasonal-monthly.disabled a {
-  color: #EEE;
-}
-
-/* line 661, ../scss/pages/_location.scss */
-/* line 229, resources/scss/_mods.scss */
-.page-type-location .seasonal-monthly.disabled:hover {
-  border-left-color: #FFF;
-}
-
-/* line 233, resources/scss/_mods.scss */
-#station-legends .station-legend-item {
-  float: left;
-  width: 50%;
-}
-
-/* line 238, resources/scss/_mods.scss */
-#station-legends img {
-  width: 65%;
-}
-
-/* line 243, resources/scss/_mods.scss */
-#nav-overlay #nav-controls a {
-  white-space: normal !important;
-}
-
-@media screen and (min-width: 1500px) {
-  /* line 248, resources/scss/_mods.scss */
-  #subnav ul {
-    position: absolute;
-    right: 20px;
-    top: 43px;
+  /* line 814, resources/scss/_media.scss */
+  .page-type-location #location-search {
+    width: 17rem;
+    top: inherit;
+    right: inherit;
   }
-}
-
-@media screen and (max-width: 1500px) {
-  /* line 27, ../scss/formstone/_grid.scss */
-  /* line 258, resources/scss/_mods.scss */
-  #main-header #subnav {
-    margin: 0 !important;
+  /* line 822, resources/scss/_media.scss */
+  .page-splash .splash-text {
+    width: 90%;
+    max-width: 90%;
+    margin: 0 0 0 1rem;
   }
-  /* line 261, resources/scss/_mods.scss */
-  #main-header #subnav li {
-    display: block;
-    margin: -5% 0 0 15px;
+  /* line 826, resources/scss/_media.scss */
+  .page-splash .splash-text h1 {
+    font: 3.25rem/0.9em "CESans-Heavy", Helvetica, "Helvetica Neue", Arial, sans-serif;
+    padding: 4rem 0 1rem 0;
   }
-  /* line 265, resources/scss/_mods.scss */
-  .page-type-stations #substations-menu ul {
-    display: block;
-    white-space: normal;
+  /* line 832, resources/scss/_media.scss */
+  .page-splash #page-nav {
+    width: 90%;
   }
-  /* line 270, resources/scss/_mods.scss */
-  .station-banner {
-    background-size: cover !important;
+  /* line 837, resources/scss/_media.scss */
+  .location-data-section-wrap {
+    border: none;
   }
-}
-
-@media screen and (max-width: 1030px) {
-  /* line 275, resources/scss/_mods.scss */
-  #page-variables #main-header #subnav {
-    display: none !important;
+  /* line 840, resources/scss/_media.scss */
+  .location-data-section-wrap .location-data-section .data-accordion-wrap {
+    border: none;
+    padding: 0 0 100vh 0;
   }
-  /* line 279, resources/scss/_mods.scss */
-  .location-data-section .data-list {
+  /* line 848, resources/scss/_media.scss */
+  .location-data-section-wrap .location-data-section .data-accordion .data-accordion-tab.data-chart .chart-wrap {
+    height: 15rem;
+  }
+  /* line 851, resources/scss/_media.scss */
+  .location-data-section-wrap .location-data-section .data-accordion .data-accordion-tab.data-chart.open .chart {
+    border: none;
+  }
+  /* line 855, resources/scss/_media.scss */
+  .location-data-section-wrap .location-data-section .data-accordion .data-accordion-tab.open header h4 .icon {
+    font-size: 1rem;
+  }
+  /* line 859, resources/scss/_media.scss */
+  .location-data-section-wrap .location-data-section .data-accordion .data-accordion-tab.open header h4 .text {
+    font-size: 1rem;
+  }
+  /* line 867, resources/scss/_media.scss */
+  .chart-legend {
+    display: flex;
+    flex-flow: column nowrap;
+    align-items: center;
     width: 100%;
   }
-  /* line 283, resources/scss/_mods.scss */
-  .location-data-section .data-accordion-wrap {
-    width: 100%;
+  /* line 872, resources/scss/_media.scss */
+  .chart-legend .legend-item {
+    width: 60%;
   }
-}
-
-/* line 289, resources/scss/_mods.scss */
-.stations-list .station-layers {
-  margin-top: 40px;
-}
-
-@media screen and (max-height: 600px) {
-  /* line 294, resources/scss/_mods.scss */
-  #detail-overlay .nav-detail .nav-detail-item {
-    top: 300px;
+  /* line 875, resources/scss/_media.scss */
+  .chart-legend .legend-item-block {
+    width: 1.2rem;
+    height: 1.2rem;
   }
-  /* line 298, resources/scss/_mods.scss */
-  #detail-overlay .nav-detail {
-    overflow-y: scroll;
-    overflow-x: hidden;
-  }
-  /* line 303, resources/scss/_mods.scss */
-  .overlay .close {
-    position: fixed;
-    top: 20px;
-    left: 20px;
-    width: 40px;
-    height: 40px;
-    padding: 0;
-    background: #fff;
-    color: #000;
-    mix-blend-mode: screen;
-    z-index: 2;
-  }
-}
-
-/* line 317, resources/scss/_mods.scss */
-#left-header .left-filler {
-  overflow: auto;
-}
-
-/* line 321, resources/scss/_mods.scss */
-.page-type-location #location-search {
-  width: 400px;
-}
-
-/* line 325, resources/scss/_mods.scss */
-.ol-popup-content {
-  min-width: 170px;
-  max-height: 910px;
-  overflow: inherit;
-}
-
-/* line 331, resources/scss/_mods.scss */
-.download-image {
-  font-size: 1.5em !important;
-}
-
-/* line 335, resources/scss/_mods.scss */
-.download-data {
-  font-size: 1.5em !important;
-}
-
-/* line 340, resources/scss/_mods.scss */
-.how-to-read-county {
-  float: left;
-  position: absolute;
-  left: 71px;
-  display: block;
-  z-index: 10;
-  top: 79px;
-}
-
-/* iPad Air LandScape */
-@media only screen and (device-width: 768px) {
-  /* line 352, resources/scss/_mods.scss */
-  .location-data-section .data-accordion .data-accordion-tab.data-map .location-map-legend-container {
-    width: 80px;
-  }
-  /* line 356, resources/scss/_mods.scss */
-  html {
-    font-size: 60%;
-  }
-  /* line 359, resources/scss/_mods.scss */
-  #variable-counties-toggle > label > span {
-    font-size: 60%;
-  }
-  /* line 362, resources/scss/_mods.scss */
-  #variable-time-slider > span > span.icon.icon-arrow-left-right::before {
-    font-size: 2em;
-  }
-  /* line 365, resources/scss/_mods.scss */
-  #temperature-map-time-slider > span > span.icon.icon-arrow-left-right {
-    font-size: 1.8em;
-  }
-  /* line 368, resources/scss/_mods.scss */
-  .how-to-read {
-    float: right !important;
-    position: absolute !important;
-    top: 25px !important;
-    left: auto !important;
-    right: 230px !important;
-    display: block !important;
-    z-index: 10 !important;
-  }
-  /* line 378, resources/scss/_mods.scss */
-  .ui-slider-handle {
-    left: 3px;
-    width: 16px;
-    height: 16px;
-    margin: 0 0 -8px -8px;
-    background: #f5442d;
-    -moz-border-radius: 50%;
-    -webkit-border-radius: 50%;
-    border-radius: 50%;
-    outline: none;
-    z-index: 10000000 !important;
-    cursor: pointer;
-  }
-}
-
-/* line 395, resources/scss/_mods.scss */
-#swipeImg .fs-dropdown button {
-  padding: 2px !important;
-  padding-right: 40px;
-  padding-left: 5px !important;
-  height: 39px !important;
-  background: rgba(255, 255, 255, 0.6);
-  border: 5px solid #fff;
-  color: #0058cf;
-  -moz-border-radius: 0;
-  -webkit-border-radius: 0;
-  border-radius: 0;
-  font: 400 .7rem/1em Roboto, Helvetica, "Helvetica Neue", Arial, sans-serif !important;
-  -moz-transition: 0.25s;
-  -o-transition: 0.25s;
-  -webkit-transition: 0.25s;
-  transition: 0.25s;
-}
-
-/* line 414, resources/scss/_mods.scss */
-.handle .fs-dropdown button {
-  padding: 2px !important;
-  padding-right: 40px;
-  padding-left: 5px !important;
-  height: 39px !important;
-  width: 150px;
-  background: rgba(255, 255, 255, 0.6);
-  border: 5px solid #fff;
-  color: #0058cf;
-  -moz-border-radius: 0;
-  -webkit-border-radius: 0;
-  border-radius: 0;
-  font: 400 .7rem/1em Roboto, Helvetica, "Helvetica Neue", Arial, sans-serif !important;
-  -moz-transition: 0.25s;
-  -o-transition: 0.25s;
-  -webkit-transition: 0.25s;
-  transition: 0.25s;
-}
-
-/* line 434, resources/scss/_mods.scss */
-#location-stations #station-no-data {
-  background: #F45440;
-  color: white;
-  padding-top: 305px;
-  font-weight: bold;
-  font-size: 1.2em;
-  text-align: center;
-}
-
-/* line 443, resources/scss/_mods.scss */
-#nav-overlay .nav-content .tab ol ul li {
-  float: none !important;
-  width: auto !important;
-  margin: 0 10px 10px 0;
-  font: 300 1rem/1.2em Roboto, Helvetica, "Helvetica Neue", Arial, sans-serif;
-}
-
-/* line 450, resources/scss/_mods.scss */
-.download-panel #download-precip-dismiss-button {
-  display: block;
-  position: absolute;
-  top: -30px;
-  right: 0;
-}
-
-/* line 457, resources/scss/_mods.scss */
-.download-panel #download-derived-dismiss-button {
-  display: block;
-  position: absolute;
-  top: -30px;
-  right: 0;
 }
