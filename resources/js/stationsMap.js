@@ -636,13 +636,23 @@
                   <h5>Station ID: ${this.options.stationId}</h5>
                 </div>
                 <div id="multi-chart" class="left_chart"></div>
-                <div id="multi-precip-chart" class="right_chart"></div>
-                <div style="clear:both"></div>
-                <div class="temp-download-btns">
+                <!--only shows here if on xs screens-->
+                <div class="temp-download-btns d-xs-only">
                   <a href="javascript:void(0)" class="download-temp-image"><span class="icon icon-download-image"></span> Image</a> 
                   <a href="javascript:void(0)" class="download-temp-data"><span class="icon icon-download-chart"></span> Data</a>
                 </div>
-                <div class="precip-download-btns" ">
+                <div id="multi-precip-chart" class="right_chart"></div>
+                <div class="precip-download-btns d-xs-only">
+                  <a href="javascript:void(0)" class="download-precipitation-image"><span class="icon icon-download-image"></span> Image</a> 
+                  <a href="javascript:void(0)" class="download-precipitation-data"><span class="icon icon-download-chart"></span> Data</a>
+                </div>
+                <!--end-->
+                <div style="clear:both"></div>
+                <div class="temp-download-btns d-none-xs">
+                  <a href="javascript:void(0)" class="download-temp-image"><span class="icon icon-download-image"></span> Image</a> 
+                  <a href="javascript:void(0)" class="download-temp-data"><span class="icon icon-download-chart"></span> Data</a>
+                </div>
+                <div class="precip-download-btns d-none-xs">
                   <a href="javascript:void(0)" class="download-precipitation-image"><span class="icon icon-download-image"></span> Image</a> 
                   <a href="javascript:void(0)" class="download-precipitation-data"><span class="icon icon-download-chart"></span> Data</a>
                 </div>
@@ -684,10 +694,10 @@
               <div id="station-overlay-header">
                 <div class="accent-color tidal-header" style="margin-bottom: 20px;">
                 <span class="icon icon-district station-overlay-header-icon"></span>Weather Station Threshholds
-                <span style="float: right; padding-right: 3rem">
-                    <a href="javascript:void(0)" class="download-thresholds-image"><span class="icon icon-download-image"></span> Image</a> 
-                    <a href="javascript:void(0)" class="download-thresholds-data"><span class="icon icon-download-chart"></span> Data</a>
-                    </span>
+                <div class="thresholds-download-btns">
+                    <a href="javascript:void(0)" class="download-thresholds-image"><span class="icon icon-download-image"></span><span class="d-none-xs">Image</span></a> 
+                    <a href="javascript:void(0)" class="download-thresholds-data"><span class="icon icon-download-chart"></span><span class="d-none-xs">Data</span></a>
+                    </div>
                 </div>
                 <h5>Name: ${this.options.stationName}</h5>
                 <h5>Station ID: ${this.options.stationId}</h5>
@@ -721,7 +731,7 @@
               <div id="overlay-thresholds-container">
                 <div id="thresholds-container"></div>
                 <div class="station_overlay_text">
-                  <p style="width:65%!important;margin-left:200px;">This graph shows how often the selected threshold has been exceeded per year. For consistency, this chart excludes any years that are missing more than five daily temperature reports or more than one precipitation report in a single month. Data from <a target="_blank" href="https://www.ncdc.noaa.gov/data-access/land-based-station-data/land-based-datasets/global-historical-climatology-network-ghcn">Global Historical Climatology Network</a>, served by <a  target="_blank" href="http://www.rcc-acis.org/">ACIS</a>.</p>
+                  <p>This graph shows how often the selected threshold has been exceeded per year. For consistency, this chart excludes any years that are missing more than five daily temperature reports or more than one precipitation report in a single month. Data from <a target="_blank" href="https://www.ncdc.noaa.gov/data-access/land-based-station-data/land-based-datasets/global-historical-climatology-network-ghcn">Global Historical Climatology Network</a>, served by <a  target="_blank" href="http://www.rcc-acis.org/">ACIS</a>.</p>
                 </div>
               </div>
             </div>
@@ -821,9 +831,9 @@
                 <div id="station-overlay-header">
                   <div class="accent-color tidal-header" style="margin-bottom: 20px;">
                     <span class="icon icon-district station-overlay-header-icon"></span>Tidal Station High-tide Flooding
-                    <span style="float: right; padding-right: 3rem">
-                    <a href="javascript:void(0)" class="download-tidal-image"><span class="icon icon-download-image"></span> Image</a> 
-                    <a href="https://tidesandcurrents.noaa.gov/publications/techrpt86_PaP_of_HTFlooding.csv" class="download-tidal-data"><span class="icon icon-download-chart"></span> Data</a>
+                    <span class="tidal-download-btns">
+                    <a href="javascript:void(0)" class="download-tidal-image"><span class="icon icon-download-image"></span><span class="d-none-xs">Image</span></a> 
+                    <a href="https://tidesandcurrents.noaa.gov/publications/techrpt86_PaP_of_HTFlooding.csv" class="download-tidal-data"><span class="icon icon-download-chart"></span><span class="d-none-xs">Data</span></a>
                     </span>
                   </div>
                   <h5>Name: <span class="station_name">${this.options.stationName}</span></h5>

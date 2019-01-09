@@ -1158,10 +1158,11 @@
       </a>
 
       <div class="data-accordion-actions">
-        <a href="javascript:void(0);" class="how-to-read local"><span class="icon icon-help"></span>How to read this</a>
+        <a href="javascript:void(0);" class="how-to-read local"><span class="icon icon-help"></span><span class="d-none-xs">How to read this</span></a>
         <a href="javascript:void(0);" class="download-image local">
-          <span class="icon icon-download-image"></span>Image</a> <a href="javascript:void(0);"  class="download-data local">
-        <span class="icon icon-download-chart"></span>Data</a>
+          <span class="icon icon-download-image"></span><span class="d-none-xs">Image</span></a>
+          <a href="javascript:void(0);"  class="download-data local">
+        <span class="icon icon-download-chart"></span><span class="d-none-xs">Data</span></a>
       </div>
     </header>
     <div id="climate-chart" style="height:420px"></div>

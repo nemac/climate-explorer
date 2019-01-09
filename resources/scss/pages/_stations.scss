@@ -301,7 +301,6 @@
   }
 }
 // OVERLAYS
-
 #stations-spinner {
   display: none;
   position: absolute;
@@ -578,4 +577,9 @@
   margin-top: .5rem;
   margin-right: 2rem;
   float: right;
+}
+
+.tidal-download-btns {
+  float: right;
+  padding-right: 3rem;
 }

@@ -499,7 +499,18 @@
 
     show_spinner: function () {
       this.hide_spinner();
-      var style = "<style>.ce-stationgraph-spinner { margin-top: -2.5rem; border-radius: 100%;border-style: solid;border-width: 0.25rem;height: 5rem;width: 5rem;animation: basic 1s infinite linear; border-color: rgba(0, 0, 0, 0.2);border-top-color: rgba(0, 0, 0, 1); }@keyframes basic {0%   { transform: rotate(0); }100% { transform: rotate(359.9deg); }} .ce-stationgraph-spinner-wrapper {display:flex; align-items: center; justify-content: center; }</style>";
+      var style = "<style>.ce-stationgraph-spinner { " +
+        "position: absolute;" +
+        "top: 40%;" +
+        "left: 42%;" +
+        "border-radius: 100%;" +
+        "border-style: solid;" +
+        "border-width: 0.25rem;" +
+        "height: 5rem;width: 5rem;" +
+        "animation: basic 1s infinite linear;" +
+        "border-color: rgba(0, 0, 0, 0.2);" +
+        "border-top-color: rgba(0, 0, 0, 1);}" +
+        "@keyframes basic {0%   { transform: rotate(0); }100% { transform: rotate(359.9deg); }} .ce-stationgraph-spinner-wrapper {display:flex; align-items: center; justify-content: center; }</style>";
       $("<div class='ce-stationgraph-wrapper'><div class='ce-stationgraph-spinner'></div></div>").css({
         position: "absolute",
         width: "100%",

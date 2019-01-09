@@ -801,8 +801,12 @@
 }
 
 @media screen and (max-width: 401px) {
-  .d-none-400 {
+  .d-none-xs {
     display: none;
+  }
+  
+  .d-xs-only {
+    display: block;
   }
 
   #home-splash {
@@ -824,6 +828,38 @@
   #main-header #header-logo {
     width: 150px;
   }
+
+  //ABOUT PAGE
+  #page-about, #page-definitions, #page-faq, #page-credits {
+    #viewport {
+      width: 100%;
+      left: 0;
+      #standard-splash {
+        .splash-text {
+          h2 {
+            font: 2rem/0.9em "CESans-Heavy", Helvetica, "Helvetica Neue", Arial, sans-serif;
+          }
+        }
+      }
+      #standard-body {
+        max-width: 99%;
+        padding-left: 1rem;
+        margin-bottom: 4rem;
+        p {
+          line-height: 1.3rem;
+        }
+        h2 {
+          font-size: 1.8rem;
+        }
+        h4 {
+          font-size: 1rem;
+        }
+      }
+    }
+  }
+
+  //DEFINITIONS PAGE
+
 
   //NAV OVERLAY
   #detail-overlay {
@@ -924,21 +960,42 @@
     }
   }
 
+  //VARIABLES PAGE
   .page-type-variables {
     #viewport {
       position: absolute;
-      width: 99%;
-      left: .1rem;
-
+      width: 100%;
+      left: 0;
+      top: 5rem;
+      height: 62rem;
+      .county-overlay {
+        padding: 1rem 0 0 0;
+        header {
+          padding: 1rem;
+          h4 {
+            font: 400 1.5rem/1.5em Roboto, Helvetica, "Helvetica Neue", Arial, sans-serif;
+          }
+        }
+        .range {
+          margin: 2rem 1rem;
+        }
+      }
     }
+
   }
+
+  //STATIONS PAGE
   .page-type-stations {
     #viewport {
       position: absolute;
-      width: 99%;
-      left: .1rem;
+      width: 100%;
+      left: 0;
       height: 100%;
+      top: 5rem;
     }
+  }
+  .esri-view-width-xsmall .esri-expand__mask--expanded, .esri-view-width-xsmall .esri-expand__container--expanded {
+    display: none !important;
   }
 
   .scenario-map-overlay-container {
@@ -980,7 +1037,6 @@
     left: -16rem;
   }
 
-  //STATIONS PAGE
   #station-overlay-close {
     top: 5px;
     right: 9px;
@@ -991,10 +1047,54 @@
       .tidal-header {
         font-size: 1.3rem;
       }
-
-      .left-chart, .right-chart {
+      .left_chart, .right_chart {
         width: 95%;
         margin: 10px;
+      }
+      .precip-download-btns {
+        float: left;
+        margin-left: 1rem;
+      }
+      #station-overlay-header {
+        height: auto;
+
+        .tidal-download-btns, .thresholds-download-btns {
+          float: none;
+        }
+        .icon-download-image, .icon-download-chart {
+          margin-top: 1rem;
+        }
+        h5 {
+          float: none;
+          margin-bottom: 1rem;
+          width: 100%;
+        }
+      }
+      .tidal-zoom-toggle-btn {
+        margin-left: 7rem;
+      }
+      #overlay-chart-container {
+        margin: 2px;
+        width: 99%;
+        #tidal-chart {
+          margin-top: 1rem;
+        }
+      }
+
+      #overlay-thresholds-container {
+        width: 100%;
+        padding: 0;
+        #thresholds-container {
+          margin: 12rem 0 0 1px;
+          padding: 1rem .5rem;
+          max-width: 100% !important;
+          min-height: 0;
+        }
+      }
+      .station_overlay_text p {
+        width: 95% !important;
+        margin: 0 0 6rem 0;
+        padding: 10px;
       }
     }
   }
