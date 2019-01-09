@@ -655,8 +655,8 @@
               </div>`
           );
 
-
-          this.chart = new ChartBuilder({station: this.options.stationId}, this.options.dailyStationsDataURL);
+          $('#multi-chart').stationAnnualGraph({variable: 'temperature', station: this.options.stationId, stationName: this.options.stationName});
+          $('#multi-precip-chart').stationAnnualGraph({variable: 'precipitation', station: this.options.stationId, stationName: this.options.stationName});
 
           $('.download-temp-image').click((function (event) {
               event.target.href = $("#multi-chart canvas")[0].toDataURL('image/png');
@@ -664,7 +664,7 @@
           }).bind(this));
 
           $('.download-temp-data').click((function (event) {
-            this.chart.downloadTemperatureData(event.currentTarget);
+            $('#multi-chart').stationAnnualGraph('downloadTemperatureData', event.currentTarget);
           }).bind(this));
 
           $('.download-precipitation-image').click((function (event) {
@@ -673,7 +673,7 @@
           }).bind(this));
 
           $('.download-precipitation-data').click((function (event) {
-            this.chart.downloadPrecipitationData(event.currentTarget);
+            $('#multi-precip-chart').stationAnnualGraph('downloadPrecipitationData', event.currentTarget);
           }).bind(this));
 
           break;
