@@ -443,3 +443,20 @@ ChartBuilder.prototype.getTemplate = function (type, values, ymin, ymax, endpor)
 
   return templates[type];
 };
+
+function show_spinner($div) {
+  hide_spinner($div);
+  var style = "<style>.cwg-spinner { margin-top: -2.5rem; border-radius: 100%;border-style: solid;border-width: 0.25rem;height: 5rem;width: 5rem;animation: basic 1s infinite linear; border-color: rgba(0, 0, 0, 0.2);border-top-color: rgba(0, 0, 0, 1); }@keyframes basic {0%   { transform: rotate(0); }100% { transform: rotate(359.9deg); }} .cwg-spinner-wrapper {display:flex; align-items: center; justify-content: center; }</style>";
+  $("<div class='cwg-spinner-wrapper'><div class='cwg-spinner'></div></div>").css({
+    position: "absolute",
+    width: "100%",
+    height: "100%",
+    left: 0,
+    top: 0,
+    zIndex: 1000000
+  }).append(style).appendTo($div.css("position", "relative"));
+}
+
+function hide_spinner($div) {
+  $div.children('.cwg-spinner-wrapper').remove();
+}

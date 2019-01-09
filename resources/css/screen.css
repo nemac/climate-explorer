@@ -11487,7 +11487,7 @@ input.location-mapper:focus:-ms-input-placeholder {
   }
   /* line 753, resources/scss/_media.scss */
   #home-menu {
-    margin: 0 auto 120px auto;
+    margin: 0 auto 9rem auto;
   }
   /* line 758, resources/scss/_media.scss */
   #page-home #h7 {
@@ -11529,7 +11529,7 @@ input.location-mapper:focus:-ms-input-placeholder {
   }
   /* line 808, resources/scss/_media.scss */
   #home-splash {
-    height: 90vh;
+    height: 100%;
   }
   /* line 812, resources/scss/_media.scss */
   .share-widget {
@@ -11538,7 +11538,7 @@ input.location-mapper:focus:-ms-input-placeholder {
   }
   /* line 817, resources/scss/_media.scss */
   #home-text {
-    margin: 6% 3%;
+    margin: 4rem .4rem 1rem .4rem;
   }
   /* line 820, resources/scss/_media.scss */
   #home-menu {
@@ -11695,8 +11695,18 @@ input.location-mapper:focus:-ms-input-placeholder {
   body.left-header-closed #left-header {
     left: -16rem;
   }
-  /* line 983, resources/scss/_media.scss */
-  .esri-view-width-xsmall .esri-expand__mask--expanded {
-    z-index: -1;
+  /* line 984, resources/scss/_media.scss */
+  #station-overlay-close {
+    top: 5px;
+    right: 9px;
+  }
+  /* line 991, resources/scss/_media.scss */
+  #station-overlay-container #station-overlay .tidal-header {
+    font-size: 1.3rem;
+  }
+  /* line 995, resources/scss/_media.scss */
+  #station-overlay-container #station-overlay .left-chart, #station-overlay-container #station-overlay .right-chart {
+    width: 95%;
+    margin: 10px;
   }
 }

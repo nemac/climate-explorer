@@ -751,7 +751,7 @@
   }
   
   #home-menu {
-    margin: 0 auto 120px auto;
+    margin: 0 auto 9rem auto;
   }
   
   #page-home {
@@ -806,7 +806,7 @@
   }
 
   #home-splash {
-    height: 90vh;
+    height: 100%;
   }
 
   .share-widget {
@@ -815,7 +815,7 @@
   }
 
   #home-text {
-    margin: 6% 3%;
+    margin: 4rem .4rem 1rem .4rem;
   }
   #home-menu {
     width: 98%;
@@ -980,7 +980,22 @@
     left: -16rem;
   }
 
-  .esri-view-width-xsmall .esri-expand__mask--expanded {
-    z-index: -1;
+  //STATIONS PAGE
+  #station-overlay-close {
+    top: 5px;
+    right: 9px;
+  }
+
+  #station-overlay-container {
+    #station-overlay {
+      .tidal-header {
+        font-size: 1.3rem;
+      }
+
+      .left-chart, .right-chart {
+        width: 95%;
+        margin: 10px;
+      }
+    }
   }
 }
