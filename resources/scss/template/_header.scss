@@ -31,6 +31,10 @@
 
   .nav-pages {
     margin-right: 2rem;
+    #feedback-link {
+      margin-left: .5rem;
+      color: lighten($orange1, 10%);
+    }
   }
 
   .menu-text {
