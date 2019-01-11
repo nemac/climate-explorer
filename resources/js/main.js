@@ -949,6 +949,11 @@ App.prototype.tour = function () {
         self.takeLocationTour();
     });
 
+    $('.page-type-stations #tour-this-page').on('click', function (e) {
+          e.preventDefault();
+          self.takeStationsTour();
+    });
+
 
     $('#temperature-data .location-resolution a').on('click', function () {
         if ( $(this).parent().hasClass('disabled') ) {
@@ -1344,4 +1349,34 @@ App.prototype.takeMapTour = function (pre) {
   });
 
   mapTour.start();
+};
+
+App.prototype.takeStationsTour = function (pre) {
+      const stationsTour = this._createShepherdTour();
+
+      stationsTour.addStep('circles', {
+            text: 'Each circle on the map represents a station.  Click on the desired station to view more.',
+            attachTo: 'circle',
+            buttons: this._makeStdButtons(stationsTour)
+      });
+
+      stationsTour.addStep('stations-options-container', {
+            text: 'Type in a location to zoom to a specific region.',
+            attachTo: '#stations-search-by-location right',
+            buttons: this._makeStdButtons(stationsTour)
+      });
+
+      stationsTour.addStep('stations-options', {
+            text: 'Change the station type.',
+            attachTo: '#stations-options right',
+            buttons: this._makeStdButtons(stationsTour)
+      });
+
+      stationsTour.addStep('about-link', {
+            text: 'Click to learn more about the selected station type.',
+            attachTo: '#about-stations-link right',
+            buttons: this._makeEndButtons(stationsTour)
+      });
+
+      stationsTour.start();
 };
