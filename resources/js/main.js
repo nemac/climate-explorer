@@ -913,8 +913,6 @@ App.prototype.locationSearch = function () {
             fips = '11001';
         }
 
-
-
         //console.log('data', data, 'fips', fips);
         if (fips) {
             window.location.href = '/location/?county=' + county + '&city=' + city + '&fips=' + fips + '&lat=' + lat + '&lon=' + lon;

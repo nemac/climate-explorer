@@ -8,12 +8,13 @@
     bounds: true, //Whether to snap geocode search to map bounds. Default: true if null search globally.
     country: 'USA',
     map: false, //A selector, a jQuery object or a DOM element. Default: false which shows no map.
-    details: false, //The container that should be populated with form data. Default: false which ignores the setting.
+    details: true, //The container that should be populated with form data. Default: false which ignores the setting.
     detailsAttribute: "name", //The attribute's name to use as an indicator. Default: name
     useViewport: true, //Should map zoom to the google suggested viewport
     location: false, //Location to initialize the map on. Default is false shows a blank map.
     satelliteOnZoom: false, //Switch to satellite view when zoomed in. Default: false
     findme: false, //Ask user access to their location. Default: false
+    autoselect: true,
 
     mapOptions: { //Options to pass to the google.maps.Map constructor.
                   //See the full list of options at http://code.google.com/apis/maps/documentation/javascript/reference.html#MapOptions
@@ -32,18 +33,14 @@
     maxZoom: 16, //The maximum zoom level to zoom in to after a geocoding response. Default: 16
     types: ['(regions)'],  //An array containing one or more of the supported types for the places request. Default: geocode
     //See the full list of options at http://code.google.com/apis/maps/documentation/javascript/places.html#place_search_requests
-    blur: false, //triggers on blur event. Default: false
+    blur: true, //triggers on blur event. Default: false
+    geocodeAfterResult: true,
+    restoreValueAfterBlur: true,
     dragged: false //default state of marker to determine if map should zoom in steps
   };
 
   // See: https://developers.google.com/maps/documentation/geocoding/#Types on Google Developers
-  var componentTypes = ("street_address route intersection political " +
-    "country administrative_area_level_1 administrative_area_level_2 " +
-    "administrative_area_level_3 colloquial_area locality sublocality " +
-    "neighborhood premise subpremise postal_code natural_feature airport " +
-    "park point_of_interest post_box street_number floor room " +
-    "lat lng viewport location " +
-    "formatted_address location_type bounds").split(" ");
+  var componentTypes = ["street_address", "route", "intersection", "political", "country", "administrative_area_level_1", "administrative_area_level_2","administrative_area_level_3", "colloquial_area", "locality", "sublocality", "neighborhood", "premise", "subpremise", "postal_code", "natural_feature", "airport", "park", "point_of_interest", "post_box", "street_number", "floor", "room", "lat", "lng", "viewport", "location","formatted_address", "location_type", "bounds"];
 
   // See: Places Details Responses at https://developers.google.com/maps/documentation/javascript/places#place_details_responses on Google Developers.
   var placesDetails = ("postal_code").split(" ");
@@ -153,9 +150,9 @@
       );
 
       // Prevent parent form from being submitted if user hit enter.
-      this.$input.keypress(function (event) {
-        if (event.keyCode === 13) { return false; }
-      });
+      // this.$input.keypress(function (event) {
+      //   if (event.keyCode === 13) { return false; }
+      // });
 
       // Listen for geocode events and trigger find action.
       this.$input.bind("geocode", $.proxy(function () {
@@ -167,6 +164,18 @@
       if (this.options.blur === true) {
         this.$input.blur($.proxy(function () {
           this.find();
+        }, this));
+      }
+
+      if (this.options.blur === true){
+        this.$input.on('blur.' + this._name, $.proxy(function(){
+          if (this.options.geocodeAfterResult === true && this.selected === true) { return; }
+
+          if (this.options.restoreValueAfterBlur === true && this.selected === true) {
+            setTimeout($.proxy(this.restoreLastValue, this), 0);
+          } else {
+            this.find();
+          }
         }, this));
       }
     },
@@ -237,6 +246,27 @@
       this.geocode({
         address: address || this.$input.val()
       });
+    },
+
+    // Get the selected result. If no result is selected on the list, then get the first result from the list.
+    selectFirstResult: function() {
+      var selected = '';
+
+      if ($(".pac-item-selected")[0]) {
+        selected = '-selected';
+      }
+
+      var $span1 = $(".pac-container:visible .pac-item" + selected + ":first span:nth-child(2)").text();
+      var $span2 = $(".pac-container:visible .pac-item" + selected + ":first span:nth-child(3)").text();
+
+      var firstResult = $span1;
+      if ($span2) {
+        firstResult += " - " + $span2;
+      }
+
+      this.$input.val(firstResult);
+
+      return firstResult;
     },
 
     // Requests details about a given location.
@@ -399,10 +429,24 @@
 
     // Update the plugin after the user has selected an autocomplete entry.
     // If the place has no geometry it passes it to the geocoder.
-    placeChanged: function () {
+    // placeChanged: function () {
+    //   var place = this.autocomplete.getPlace();
+    //   if (!place.geometry) {
+    //     this.find(place.name);
+    //   } else {
+    //     this.update(place);
+    //   }
+    // },
+
+    placeChanged: function(){
       var place = this.autocomplete.getPlace();
-      if (!place.geometry) {
-        this.find(place.name);
+      this.selected = true;
+
+      if (!place.geometry){
+        if (this.options.autoselect) {
+            var autoSelection = this.selectFirstResult();
+          this.find(autoSelection);
+        }
       } else {
         this.update(place);
       }

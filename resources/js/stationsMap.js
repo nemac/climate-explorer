@@ -134,7 +134,8 @@
       'esri/geometry/Point',
       'esri/widgets/Locate',
       'esri/core/watchUtils',
-      'esri/geometry/support/webMercatorUtils'
+      'esri/geometry/support/webMercatorUtils',
+      'esri/widgets/Feature'
     ],
 
     _dojoLoaded: function () {
@@ -417,6 +418,7 @@
         }.bind(this));
       }.bind(this));
     },
+
 
     _initThresholdStationsLayer: function () {
       // if same data, only load one.
