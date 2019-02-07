@@ -134,8 +134,7 @@
       'esri/geometry/Point',
       'esri/widgets/Locate',
       'esri/core/watchUtils',
-      'esri/geometry/support/webMercatorUtils',
-      'esri/widgets/Feature'
+      'esri/geometry/support/webMercatorUtils'
     ],
 
     _dojoLoaded: function () {
