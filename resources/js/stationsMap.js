@@ -416,29 +416,21 @@
                 //   items: "circle",
                 //   content: `${station.attributes.name}`,
                 // });
-                if (station) {
-                  $('#stations-map .ui-tooltip').remove();
-                  $('#stations-map').tooltip({
-                    items: response.screenPoint.native.target,
+
+                $('circle').tooltip({
+                  items: 'circle',
                     content: `${station.attributes.name}`,
-                    show: null, // show immediately
-                    track: true,
+                    // show: null, // show immediately
                     open: function(event) {
                       if (typeof(event.originalEvent) === 'undefined') {
                         return false;
                       }
+                    $('.ui-tooltip').not(this).remove();
                     },
-                    close: function(event) {
-                      if (typeof(event.originalEvent) === 'undefined') {
-                        return false;
-                      }
-                      $('#stations-map .ui-tooltip').not(this.circle).remove();
-                    },
-
+                  track: true
                   });
 
                   console.log(station.attributes.name);
-                }
               }.bind(this));
           }.bind(this));
           this.view.on("click", function (event) {
