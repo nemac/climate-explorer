@@ -10306,6 +10306,16 @@ https://raw.github.com/shagstrom/split-pane/master/LICENSE
   width: 50%;
 }
 
+/* line 905, resources/scss/screen.scss */
+.ui-tooltip {
+  background-color: #0058cf;
+  color: white;
+  border-radius: 14px;
+  font-size: .6rem;
+  height: 1.5rem;
+  padding-top: 0;
+}
+
 /*
 
 This file is due for a cleanup. Please do not add to the mess.

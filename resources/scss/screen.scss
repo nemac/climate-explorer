@@ -901,7 +901,15 @@ h6 {
 #pane-right {
   width: 50%;
 }
-// MEDIA QUERIES
 
+.ui-tooltip {
+  background-color: $blue1;
+  color: white;
+  border-radius: 14px;
+  font-size: .6rem;
+  height: 1.5rem;
+  padding-top: 0;
+}
+// MEDIA QUERIES
 @import "mods";
 @import "media";

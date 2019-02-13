@@ -134,7 +134,8 @@
       'esri/geometry/Point',
       'esri/widgets/Locate',
       'esri/core/watchUtils',
-      'esri/geometry/support/webMercatorUtils'
+      'esri/geometry/support/webMercatorUtils',
+      // 'esri/widgets/Feature'
     ],
 
     _dojoLoaded: function () {
@@ -405,19 +406,55 @@
         this.dailyStationsLayer = layer;
         this._MapInitPromise.then(function () {
           this.map.add(this.dailyStationsLayer);
+          this.view.on("pointer-move", function (event) {
+            this.view.hitTest(event)
+              .then(function (response) {
+                let station = response.results.filter(function (result) {
+                  return result.graphic.layer === this.dailyStationsLayer;
+                }.bind(this))[0].graphic;
+                // $("circle").tooltip({
+                //   items: "circle",
+                //   content: `${station.attributes.name}`,
+                // });
+                if (station) {
+                  $('#stations-map .ui-tooltip').remove();
+                  $('#stations-map').tooltip({
+                    items: response.screenPoint.native.target,
+                    content: `${station.attributes.name}`,
+                    show: null, // show immediately
+                    track: true,
+                    open: function(event) {
+                      if (typeof(event.originalEvent) === 'undefined') {
+                        return false;
+                      }
+                    },
+                    close: function(event) {
+                      if (typeof(event.originalEvent) === 'undefined') {
+                        return false;
+                      }
+                      $('#stations-map .ui-tooltip').not(this.circle).remove();
+                    },
+
+                  });
+
+                  console.log(station.attributes.name);
+                }
+              }.bind(this));
+          }.bind(this));
           this.view.on("click", function (event) {
             this.view.hitTest(event)
               .then(function (response) {
                 let station = response.results.filter(function (result) {
                   return result.graphic.layer === this.dailyStationsLayer;
                 }.bind(this))[0].graphic;
+                console.log(station.attributes.name);
                 this._setOptions({stationName: station.attributes.name, stationId: station.attributes.id});
               }.bind(this));
           }.bind(this));
+
         }.bind(this));
       }.bind(this));
     },
-
 
     _initThresholdStationsLayer: function () {
       // if same data, only load one.
@@ -983,6 +1020,5 @@
     // option(options) - Sets one or more options for the widget
     // widget() - Returns a jQuery object containing the original element
     //      or relevant generated element.
-
   });
 }));

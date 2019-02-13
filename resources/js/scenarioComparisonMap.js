@@ -116,12 +116,12 @@
           tilesURL: "https://s3.amazonaws.com/climate-explorer-bucket/tiles/{year}-{season}-hist-{variable}/{level}/{col}/{row}.png",
           tilesTMS: true,
           years: [
-            {value: '1950', label: "1950's"},
-            {value: '1960', label: "1960's"},
-            {value: '1970', label: "1970's"},
-            {value: '1980', label: "1980's"},
-            {value: '1990', label: "1990's"},
-            {value: '2000', label: "2000's"},
+            {value: '1950', label: "1950s"},
+            {value: '1960', label: "1960s"},
+            {value: '1970', label: "1970s"},
+            {value: '1980', label: "1980s"},
+            {value: '1990', label: "1990s"},
+            {value: '2000', label: "2000s"},
             {value: 'avg', label: '1961-1990 Average'}
           ],
           defaultYear: 'avg'
@@ -132,14 +132,14 @@
           tilesTMS: true,
           years: [
             // {value: '2010', label: '2010'},
-            {value: '2020', label: "2020's"},
-            {value: '2030', label: "2030's"},
-            {value: '2040', label: "2040's"},
-            {value: '2050', label: "2050's"},
-            {value: '2060', label: "2060's"},
-            {value: '2070', label: "2070's"},
-            {value: '2080', label: "2080's"},
-            {value: '2090', label: "2090's"}
+            {value: '2020', label: "2020s"},
+            {value: '2030', label: "2030s"},
+            {value: '2040', label: "2040s"},
+            {value: '2050', label: "2050s"},
+            {value: '2060', label: "2060s"},
+            {value: '2070', label: "2070s"},
+            {value: '2080', label: "2080s"},
+            {value: '2090', label: "2090s"}
           ],
           defaultYear: '2090'
         },
@@ -149,14 +149,14 @@
           tilesTMS: true,
           years: [
             // {value: '2010', label: '2010'},
-            {value: '2020', label: "2020's"},
-            {value: '2030', label: "2030's"},
-            {value: '2040', label: "2040's"},
-            {value: '2050', label: "2050's"},
-            {value: '2060', label: "2060's"},
-            {value: '2070', label: "2070's"},
-            {value: '2080', label: "2080's"},
-            {value: '2090', label: "2090's"}
+            {value: '2020', label: "2020s"},
+            {value: '2030', label: "2030s"},
+            {value: '2040', label: "2040s"},
+            {value: '2050', label: "2050s"},
+            {value: '2060', label: "2060s"},
+            {value: '2070', label: "2070s"},
+            {value: '2080', label: "2080s"},
+            {value: '2090', label: "2090s"}
           ],
           defaultYear: '2090'
         }
