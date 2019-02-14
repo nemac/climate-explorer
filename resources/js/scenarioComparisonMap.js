@@ -110,6 +110,7 @@
       logger: console,
       // built-in options
       disabled: false,
+      animateIntro: true,
       scenarios: {
         'historical': {
           title: "Historical",
@@ -695,10 +696,10 @@
       // hook the layerView's first render to apply the clipping path.
       promise.then(function (layer) {
         this.view.whenLayerView(layer).then(function (layerView) {
-
-            // animate swipe on map load
+          // animate swipe on map load
+          if (this.options.animateIntro) {
             this.view.when().then((() => {
-              setTimeout(() => { // delay 1000ms for the map to load a bit
+              setTimeout(() => {
                 $(".movable").animate({left: "50%"},
                   {
                     duration: 1200,
@@ -707,8 +708,10 @@
                       this._setOption('swipeX', layerViewContainer.element.width * now / 100);
                     }).bind(this)
                   });
-              }, 1500);
+                this.options.animateIntro = false;
+              }, 1800);  // delay 1800ms for the map to load a bit
             }).bind(this));
+          }
 
           let layerViewContainer = layerView.container;
           layerViewContainer._doRender = layerViewContainer.doRender;
@@ -727,6 +730,7 @@
         }.bind(this));
       }.bind(this));
       return promise;
+
     },
 
     // Init is automatically invoked after create, and again every time the

@@ -22,7 +22,7 @@
   }
   .topnav a {
     text-decoration: none;
-    font-size: 17px;
+    font-size: 19px;
   }
 
   .nav-btn {
@@ -38,7 +38,7 @@
   }
 
   .menu-text {
-    vertical-align: 3px;
+    vertical-align: -5px;
   }
 
   .topnav .nav-pages-icon {
@@ -101,6 +101,10 @@
   #breadcrumb {
     white-space: nowrap;
     flex-grow: 1;
+
+    .material-icons {
+      margin-right: 3px;
+    }
     
     a {
       display: inline-block;
@@ -111,7 +115,7 @@
       @include transition(0.25s);
     
       .icon {
-        margin: 2px 15px 0 0;
+        margin: -1px 9px 0 0;
         font-size: 1.25rem;
       }
     }
@@ -120,7 +124,7 @@
       display: inline-block;
       height: 70px;
       padding: 23px 16px 0 16px;
-      font-size: 17px;
+      font-size: 19px;
       &:empty:before{content: '\200b';}
     }
   }
@@ -154,7 +158,7 @@
   height: 23px;
   padding: 9px 0 0 0;
   @include transition(0.25s);
-  //vertical-align: top;
+  vertical-align: bottom;
   
   .bar {
     display: block;
@@ -241,7 +245,8 @@
 
 #left-header {
   position: fixed;
-  top: 110px;
+  //top: 110px;
+  top: 93px;
   left: 20px;
   width: 20%;
   width: calc(20% + 10px);
