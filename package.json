@@ -35,6 +35,8 @@
     "node-static": "^0.7.10"
   },
   "dependencies": {
-    "terraformer-arcgis-parser": "^1.1.0"
+    "popper.js": "^1.14.7",
+    "terraformer-arcgis-parser": "^1.1.0",
+    "tooltip.js": "^1.3.1"
   }
 }

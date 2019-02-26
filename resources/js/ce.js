@@ -278,7 +278,6 @@ especially when it comes to interacting with the DOM and handling events.
         stationName: 'station-name',
         stationMOverMHHW: 'station-mhhw',
         variable: 'variable',
-
         extent: 'extent',
         lat: 'lat',
         lon: 'lon',
@@ -329,6 +328,29 @@ especially when it comes to interacting with the DOM and handling events.
       Object.keys(state).includes('zoom') ? this.setUrlParam('zoom', state['zoom']) : null;
     },
 
+    getNavState: function () {
+      let pages = ["location", "variables", "stations"];
+      const state = this.getUrlParams({
+      slide: 'menu',
+      detail: 'menuDetail',
+      });
+      if (state.slide) { state.slide = pages.indexOf(state.slide); }
+      return state;
+    },
+
+    setNavState: function(state) {
+      let pages = ["location", "variables", "stations"];
+      if (Object.keys(state).includes('slide')) {
+        this.setUrlParam('menu', pages[state['slide']]);
+      } else {
+        if (Object.keys(state).includes('detail')) {
+          this.setUrlParam('menuDetail', state['detail']);
+        } else {
+          this.setUrlParam('menu', null);
+          this.setUrlParam('menuDetail', null);
+        }
+      }
+    },
 
     getLocationPageState: function () {
       const state = this.getUrlParams({

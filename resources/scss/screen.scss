@@ -86,6 +86,20 @@ h6 {
 }
 
 // CLASSES
+.tooltip {
+  display: block !important;
+  margin-left: 8px !important;
+  padding: 4px !important;
+  font-size: 12px !important;
+}
+
+//remove this if tooltip.js positioning is changed from "right"
+.tooltip:after {
+  bottom: 25% !important;
+  left: -3px !important;
+  margin-left: -7px !important;
+  border-color: transparent #ffffff transparent transparent !important;
+}
 
 .d-xs-only {
   display: none;

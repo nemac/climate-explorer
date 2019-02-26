@@ -24,7 +24,6 @@ App.prototype.getCountyCodes = function () {
     });
 };
 
-
 App.prototype.locationSearch = function () {
   const self = this;
 
@@ -921,7 +920,6 @@ App.prototype.locationSearch = function () {
     });
 
 };
-
 
 App.prototype.tour = function () {
   let tour;

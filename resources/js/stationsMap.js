@@ -1,5 +1,6 @@
 'use strict';
 // Use AMD loader if present, if not use global jQuery
+
 ((function (root, factory) {
   if (typeof define === 'function' && define.amd) {
     // AMD. Register as an anonymous module.
@@ -407,28 +408,27 @@
         this._MapInitPromise.then(function () {
           this.map.add(this.dailyStationsLayer);
           this.view.on("pointer-move", function (event) {
+            $('#stations-map circle').each(function(){
+              if ("stationTooltip" in this){
+                this.stationTooltip.hide()
+              }
+            });
             this.view.hitTest(event)
               .then(function (response) {
                 let station = response.results.filter(function (result) {
                   return result.graphic.layer === this.dailyStationsLayer;
                 }.bind(this))[0].graphic;
-                // $("circle").tooltip({
-                //   items: "circle",
-                //   content: `${station.attributes.name}`,
-                // });
 
-                $('circle').tooltip({
-                  items: 'circle',
-                    content: `${station.attributes.name}`,
-                    // show: null, // show immediately
-                    open: function(event) {
-                      if (typeof(event.originalEvent) === 'undefined') {
-                        return false;
-                      }
-                    $('.ui-tooltip').not(this).remove();
-                    },
-                  track: true
-                  });
+                var refEl = $('circle:hover').first();
+                if (!("stationTooltip" in refEl))
+                {
+                  refEl.stationTooltip = new Tooltip(refEl, {
+                    placement: 'right',
+                    title: station.attributes.name,
+                    container: $('#stations-map')[0],
+                  })
+                }
+                refEl.stationTooltip.show();
 
                   console.log(station.attributes.name);
               }.bind(this));
@@ -784,8 +784,8 @@
           });
 
           $('.download-thresholds-image').click((function (event) {
-              event.target.href = $("#thresholds-container canvas")[0].toDataURL('image/png');
-              event.target.download = "thresholds_"+this.options.stationId+".png";
+              event.currentTarget.href = $("#thresholds-container canvas")[0].toDataURL('image/png');
+              event.currentTarget.download = "thresholds_"+this.options.stationId+".png";
           }).bind(this));
 
            $('.download-thresholds-data').click((function (event) {
@@ -923,8 +923,8 @@
           });
 
           $('.download-tidal-image').click((function (event) {
-              event.target.href = $("#tidal-chart canvas")[0].toDataURL('image/png');
-              event.target.download = "high_tide_flooding_"+this.options.stationId+".png";
+              event.currentTarget.href = $("#tidal-chart canvas")[0].toDataURL('image/png');
+              event.currentTarget.download = "high_tide_flooding_"+this.options.stationId+".png";
           }).bind(this));
 
           $('#station-overlay-header h3').html('Tidal Station');
