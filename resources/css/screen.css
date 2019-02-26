@@ -8351,24 +8351,24 @@ body.detail-open #nav-overlay {
   height: calc(100% - 110px);
   width: calc(80% - 50px);
   left: calc(20% + 30px);
-  top: 110px;
+  top: 93px;
 }
 
-/* line 14, resources/scss/pages/_stations.scss */
+/* line 15, resources/scss/pages/_stations.scss */
 .page-type-stations #vars-legend h5 {
   margin: 0 0 6px 0;
   font: 1rem/1em "CESans-Heavy", Helvetica, "Helvetica Neue", Arial, sans-serif;
   color: #233a70;
 }
 
-/* line 20, resources/scss/pages/_stations.scss */
+/* line 21, resources/scss/pages/_stations.scss */
 .page-type-stations #vars-legend h6 {
   margin: 0 0 10px 0;
   font: 0.75rem/1.25em "CESans", Roboto, Helvetica, "Helvetica Neue", Arial, sans-serif;
   color: #5f5f5f;
 }
 
-/* line 26, resources/scss/pages/_stations.scss */
+/* line 27, resources/scss/pages/_stations.scss */
 .page-type-stations #vars-legend .legend {
   width: 100%;
   margin: 0 0 10px 0;
@@ -8378,24 +8378,24 @@ body.detail-open #nav-overlay {
   color: #233a70;
 }
 
-/* line 34, resources/scss/pages/_stations.scss */
+/* line 35, resources/scss/pages/_stations.scss */
 .page-type-stations #vars-legend .legend ul {
   margin: 15px 0 0 0;
 }
 
-/* line 38, resources/scss/pages/_stations.scss */
+/* line 39, resources/scss/pages/_stations.scss */
 .page-type-stations #vars-legend .legend li {
   margin: 10px 0;
 }
 
-/* line 42, resources/scss/pages/_stations.scss */
+/* line 43, resources/scss/pages/_stations.scss */
 .page-type-stations #vars-legend .legend .color {
   width: 8%;
   margin: 0 8% 0 0;
   padding: 0 0 8% 0;
 }
 
-/* line 50, resources/scss/pages/_stations.scss */
+/* line 51, resources/scss/pages/_stations.scss */
 .page-type-stations #main-content-wrap {
   position: absolute;
   top: 0;
@@ -8404,7 +8404,7 @@ body.detail-open #nav-overlay {
   height: 100%;
 }
 
-/* line 53, resources/scss/pages/_stations.scss */
+/* line 54, resources/scss/pages/_stations.scss */
 .page-type-stations #main-content-wrap #stations-map {
   position: absolute;
   top: 0;
@@ -8413,14 +8413,14 @@ body.detail-open #nav-overlay {
   height: 100%;
 }
 
-/* line 57, resources/scss/pages/_stations.scss */
+/* line 58, resources/scss/pages/_stations.scss */
 .page-type-stations #main-content-wrap #map-seasons-container {
   position: absolute;
   top: 20px;
   left: calc(20% + 35px);
 }
 
-/* line 63, resources/scss/pages/_stations.scss */
+/* line 64, resources/scss/pages/_stations.scss */
 .page-type-stations #main-content-wrap .fs-dropdown {
   margin: 0;
   -webkit-transition: 0.25s;
@@ -8429,7 +8429,7 @@ body.detail-open #nav-overlay {
   transition: 0.25s;
 }
 
-/* line 67, resources/scss/pages/_stations.scss */
+/* line 68, resources/scss/pages/_stations.scss */
 .page-type-stations #main-content-wrap .fs-dropdown button {
   height: auto;
   padding: 12px;
@@ -8449,7 +8449,7 @@ body.detail-open #nav-overlay {
   transition: 0.25s;
 }
 
-/* line 82, resources/scss/pages/_stations.scss */
+/* line 83, resources/scss/pages/_stations.scss */
 .page-type-stations #main-content-wrap .fs-dropdown-open .fs-dropdown-selected,
 .page-type-stations #main-content-wrap .fs-dropdown-focus .fs-dropdown-selected {
   -webkit-box-shadow: none;
@@ -8458,7 +8458,7 @@ body.detail-open #nav-overlay {
   background: #ffffff;
 }
 
-/* line 88, resources/scss/pages/_stations.scss */
+/* line 89, resources/scss/pages/_stations.scss */
 .page-type-stations #main-content-wrap .fs-dropdown-options {
   background: rgba(255, 255, 255, 0.8);
   border: none;
@@ -8468,53 +8468,53 @@ body.detail-open #nav-overlay {
   box-shadow: none;
 }
 
-/* line 94, resources/scss/pages/_stations.scss */
+/* line 95, resources/scss/pages/_stations.scss */
 .page-type-stations #main-content-wrap .fs-dropdown-options button {
   padding: 10px;
   font-size: 1rem;
 }
 
-/* line 98, resources/scss/pages/_stations.scss */
+/* line 99, resources/scss/pages/_stations.scss */
 .page-type-stations #main-content-wrap .fs-dropdown-options button:hover {
   background: #ebebeb;
 }
 
-/* line 104, resources/scss/pages/_stations.scss */
+/* line 105, resources/scss/pages/_stations.scss */
 .page-type-stations #main-content-wrap .split-pane {
   z-index: 1;
 }
 
-/* line 108, resources/scss/pages/_stations.scss */
+/* line 109, resources/scss/pages/_stations.scss */
 .page-type-stations #main-content-wrap #pane-left {
   background: url(../img/bg_variables-low.jpg) #ffffff no-repeat center;
   background-attachment: fixed;
   background-size: cover;
 }
 
-/* line 114, resources/scss/pages/_stations.scss */
+/* line 115, resources/scss/pages/_stations.scss */
 .page-type-stations #main-content-wrap #pane-right {
   background: url(../img/bg_variables-high.jpg) #ffffff no-repeat center;
   background-attachment: fixed;
   background-size: cover;
 }
 
-/* line 120, resources/scss/pages/_stations.scss */
+/* line 121, resources/scss/pages/_stations.scss */
 .page-type-stations #main-content-wrap .year {
   z-index: 3;
 }
 
-/* line 124, resources/scss/pages/_stations.scss */
+/* line 125, resources/scss/pages/_stations.scss */
 .page-type-stations #main-content-wrap .zoom {
   z-index: 4;
 }
 
-/* line 129, resources/scss/pages/_stations.scss */
+/* line 130, resources/scss/pages/_stations.scss */
 .page-type-stations .data-accordion-actions {
   float: right;
   margin-top: -15px;
 }
 
-/* line 133, resources/scss/pages/_stations.scss */
+/* line 134, resources/scss/pages/_stations.scss */
 .page-type-stations .data-accordion-actions a {
   display: inline-block;
   padding: 10px;
@@ -8525,19 +8525,19 @@ body.detail-open #nav-overlay {
   transition: 0.25s;
 }
 
-/* line 142, resources/scss/pages/_stations.scss */
+/* line 143, resources/scss/pages/_stations.scss */
 .page-type-stations .data-accordion-actions a .icon {
   margin: 0 8px 0 0;
   font-size: 1.25rem;
   color: #f5442d;
 }
 
-/* line 148, resources/scss/pages/_stations.scss */
+/* line 149, resources/scss/pages/_stations.scss */
 .page-type-stations .data-accordion-actions a:hover {
   background: #d5e8f2;
 }
 
-/* line 154, resources/scss/pages/_stations.scss */
+/* line 155, resources/scss/pages/_stations.scss */
 .page-type-stations #variable-slider {
   width: 95%;
   margin: auto;
@@ -8546,7 +8546,7 @@ body.detail-open #nav-overlay {
   position: relative;
 }
 
-/* line 163, resources/scss/pages/_stations.scss */
+/* line 164, resources/scss/pages/_stations.scss */
 .page-type-stations #vars-menu .layer-info {
   display: none;
   position: absolute;
@@ -8561,7 +8561,7 @@ body.detail-open #nav-overlay {
   white-space: normal;
 }
 
-/* line 176, resources/scss/pages/_stations.scss */
+/* line 177, resources/scss/pages/_stations.scss */
 .page-type-stations #vars-menu .layer-info:before {
   content: '';
   display: block;
@@ -8574,19 +8574,19 @@ body.detail-open #nav-overlay {
   border-color: transparent #ffffff transparent transparent;
 }
 
-/* line 188, resources/scss/pages/_stations.scss */
+/* line 189, resources/scss/pages/_stations.scss */
 .page-type-stations #vars-menu .layer-info h3 {
   margin: 0 0 10px 0;
   font-size: 1.625rem;
   color: #f5442d;
 }
 
-/* line 194, resources/scss/pages/_stations.scss */
+/* line 195, resources/scss/pages/_stations.scss */
 .page-type-stations #vars-menu .layer-info p {
   margin: 0 0 12px 0;
 }
 
-/* line 199, resources/scss/pages/_stations.scss */
+/* line 200, resources/scss/pages/_stations.scss */
 .page-type-stations #vars-menu .help {
   padding: 0;
   float: left;
@@ -8597,21 +8597,21 @@ body.detail-open #nav-overlay {
   margin-right: 7px;
 }
 
-/* line 211, resources/scss/pages/_stations.scss */
+/* line 212, resources/scss/pages/_stations.scss */
 .page-type-stations #vars-legend h5 {
   margin: 0 0 6px 0;
   font: 1rem/1em "CESans-Heavy", Helvetica, "Helvetica Neue", Arial, sans-serif;
   color: #233a70;
 }
 
-/* line 217, resources/scss/pages/_stations.scss */
+/* line 218, resources/scss/pages/_stations.scss */
 .page-type-stations #vars-legend h6 {
   margin: 0 0 10px 0;
   font: 0.75rem/1.25em "CESans", Roboto, Helvetica, "Helvetica Neue", Arial, sans-serif;
   color: #5f5f5f;
 }
 
-/* line 223, resources/scss/pages/_stations.scss */
+/* line 224, resources/scss/pages/_stations.scss */
 .page-type-stations #vars-legend .legend {
   width: 100%;
   margin: 0 0 10px 0;
@@ -8621,35 +8621,35 @@ body.detail-open #nav-overlay {
   color: #233a70;
 }
 
-/* line 231, resources/scss/pages/_stations.scss */
+/* line 232, resources/scss/pages/_stations.scss */
 .page-type-stations #vars-legend .legend ul {
   margin: 15px 0 0 0;
 }
 
-/* line 235, resources/scss/pages/_stations.scss */
+/* line 236, resources/scss/pages/_stations.scss */
 .page-type-stations #vars-legend .legend li {
   margin: 10px 0;
 }
 
-/* line 239, resources/scss/pages/_stations.scss */
+/* line 240, resources/scss/pages/_stations.scss */
 .page-type-stations #vars-legend .legend .color {
   width: 8%;
   margin: 0 8% 0 0;
   padding: 0 0 8% 0;
 }
 
-/* line 247, resources/scss/pages/_stations.scss */
+/* line 248, resources/scss/pages/_stations.scss */
 .page-type-stations .chart-legend {
   overflow: hidden;
   padding-top: 20px;
 }
 
-/* line 252, resources/scss/pages/_stations.scss */
+/* line 253, resources/scss/pages/_stations.scss */
 .page-type-stations .ol-zoom {
   display: none;
 }
 
-/* line 256, resources/scss/pages/_stations.scss */
+/* line 257, resources/scss/pages/_stations.scss */
 .page-type-stations .ol-scale-line {
   background: rgba(0, 60, 136, 0.3);
   border-radius: 4px;
@@ -8659,7 +8659,7 @@ body.detail-open #nav-overlay {
   right: 100px;
 }
 
-/* line 265, resources/scss/pages/_stations.scss */
+/* line 266, resources/scss/pages/_stations.scss */
 .page-type-stations #district-trigger {
   position: absolute;
   top: 15%;
@@ -8685,7 +8685,7 @@ body.detail-open #nav-overlay {
   clear: both;
 }
 
-/* line 276, resources/scss/pages/_stations.scss */
+/* line 277, resources/scss/pages/_stations.scss */
 .page-type-stations #district-trigger span {
   display: block;
   float: left;
@@ -8693,7 +8693,7 @@ body.detail-open #nav-overlay {
   color: #0058cf;
 }
 
-/* line 283, resources/scss/pages/_stations.scss */
+/* line 284, resources/scss/pages/_stations.scss */
 .page-type-stations #district-trigger .text {
   margin-top: -2px;
   text-indent: -300px;
@@ -8703,23 +8703,23 @@ body.detail-open #nav-overlay {
   transition: text-indent 0.5s;
 }
 
-/* line 289, resources/scss/pages/_stations.scss */
+/* line 290, resources/scss/pages/_stations.scss */
 .page-type-stations #district-trigger .icon {
   padding-left: 10px;
   font-size: 1.25rem;
 }
 
-/* line 294, resources/scss/pages/_stations.scss */
+/* line 295, resources/scss/pages/_stations.scss */
 .page-type-stations #district-trigger:hover {
   padding-left: 15px;
 }
 
-/* line 297, resources/scss/pages/_stations.scss */
+/* line 298, resources/scss/pages/_stations.scss */
 .page-type-stations #district-trigger:hover .text {
   text-indent: 0;
 }
 
-/* line 304, resources/scss/pages/_stations.scss */
+/* line 305, resources/scss/pages/_stations.scss */
 #stations-spinner {
   display: none;
   position: absolute;
@@ -8732,7 +8732,7 @@ body.detail-open #nav-overlay {
   z-index: 15;
 }
 
-/* line 315, resources/scss/pages/_stations.scss */
+/* line 316, resources/scss/pages/_stations.scss */
 #station-overlay-container {
   position: absolute;
   top: 0;
@@ -8759,14 +8759,14 @@ body.detail-open #nav-overlay {
   clear: both;
 }
 
-/* line 329, resources/scss/pages/_stations.scss */
+/* line 330, resources/scss/pages/_stations.scss */
 #station-overlay-container .download-tidal-image, #station-overlay-container .download-thresholds-image {
   color: white;
   font-size: 1.5rem;
   padding-right: 1rem;
 }
 
-/* line 334, resources/scss/pages/_stations.scss */
+/* line 335, resources/scss/pages/_stations.scss */
 #station-overlay-container .tidal-zoom-toggle-btn {
   color: white;
   font-size: 1.3rem;
@@ -8775,30 +8775,30 @@ body.detail-open #nav-overlay {
   padding: .3rem .6rem;
 }
 
-/* line 340, resources/scss/pages/_stations.scss */
+/* line 341, resources/scss/pages/_stations.scss */
 #station-overlay-container .tidal-zoom-toggle-btn.active {
   background: rgba(0, 0, 0, 0.3);
 }
 
-/* line 345, resources/scss/pages/_stations.scss */
+/* line 346, resources/scss/pages/_stations.scss */
 #station-overlay-container .download-tidal-data, #station-overlay-container .download-thresholds-data {
   color: white;
   font-size: 1.5rem;
 }
 
-/* line 349, resources/scss/pages/_stations.scss */
+/* line 350, resources/scss/pages/_stations.scss */
 #station-overlay-container .tidal-header {
   font-size: 2rem;
 }
 
-/* line 352, resources/scss/pages/_stations.scss */
+/* line 353, resources/scss/pages/_stations.scss */
 #station-overlay-container .download-temp-data, #station-overlay-container .download-precipitation-data {
   color: white;
   border: 1px solid white;
   padding: .2rem .4rem .2rem .2rem;
 }
 
-/* line 357, resources/scss/pages/_stations.scss */
+/* line 358, resources/scss/pages/_stations.scss */
 #station-overlay-container .download-temp-image, #station-overlay-container .download-precipitation-image {
   color: white;
   margin-right: 1rem;
@@ -8806,12 +8806,12 @@ body.detail-open #nav-overlay {
   padding: .2rem .4rem .2rem .2rem;
 }
 
-/* line 363, resources/scss/pages/_stations.scss */
+/* line 364, resources/scss/pages/_stations.scss */
 #station-overlay-container .station-overlay-header-icon {
   padding-right: 0.5rem;
 }
 
-/* line 368, resources/scss/pages/_stations.scss */
+/* line 369, resources/scss/pages/_stations.scss */
 #thresholds-container {
   position: relative;
   padding: 25px;
@@ -8822,7 +8822,7 @@ body.detail-open #nav-overlay {
   background-color: white;
 }
 
-/* line 377, resources/scss/pages/_stations.scss */
+/* line 378, resources/scss/pages/_stations.scss */
 #threshold_inputs {
   display: block;
   position: absolute;
@@ -8831,7 +8831,7 @@ body.detail-open #nav-overlay {
   font-size: 0.9em;
 }
 
-/* line 383, resources/scss/pages/_stations.scss */
+/* line 384, resources/scss/pages/_stations.scss */
 #threshold_inputs input {
   background-color: #f44c36;
   padding: 5px;
@@ -8843,7 +8843,7 @@ body.detail-open #nav-overlay {
   font-size: 0.9em;
 }
 
-/* line 393, resources/scss/pages/_stations.scss */
+/* line 394, resources/scss/pages/_stations.scss */
 #threshold_inputs select {
   background-color: #f44c36;
   padding: 5px;
@@ -8854,7 +8854,7 @@ body.detail-open #nav-overlay {
   font-size: 0.9em;
 }
 
-/* line 403, resources/scss/pages/_stations.scss */
+/* line 404, resources/scss/pages/_stations.scss */
 #tidal-chart {
   background-color: white;
   height: 100%;
@@ -8862,21 +8862,21 @@ body.detail-open #nav-overlay {
   position: relative;
 }
 
-/* line 409, resources/scss/pages/_stations.scss */
+/* line 410, resources/scss/pages/_stations.scss */
 #overlay-chart-container {
   margin: 25px;
   height: 50vh;
   width: calc(100% - 50px);
 }
 
-/* line 414, resources/scss/pages/_stations.scss */
+/* line 415, resources/scss/pages/_stations.scss */
 #overlay-thresholds-container {
   padding: 25px;
   max-height: 70vh !important;
   width: calc(100% - 50px);
 }
 
-/* line 419, resources/scss/pages/_stations.scss */
+/* line 420, resources/scss/pages/_stations.scss */
 .left_chart {
   position: relative;
   width: calc(50% - 40px);
@@ -8886,7 +8886,7 @@ body.detail-open #nav-overlay {
   background-color: white;
 }
 
-/* line 427, resources/scss/pages/_stations.scss */
+/* line 428, resources/scss/pages/_stations.scss */
 .right_chart {
   position: relative;
   width: calc(50% - 40px);
@@ -8896,7 +8896,7 @@ body.detail-open #nav-overlay {
   background-color: white;
 }
 
-/* line 435, resources/scss/pages/_stations.scss */
+/* line 436, resources/scss/pages/_stations.scss */
 #station-overlay-close {
   position: absolute;
   top: 10px;
@@ -8906,7 +8906,7 @@ body.detail-open #nav-overlay {
   cursor: pointer;
 }
 
-/* line 445, resources/scss/pages/_stations.scss */
+/* line 446, resources/scss/pages/_stations.scss */
 #station-overlay-header {
   height: 120px;
   color: #ffffff;
@@ -8924,12 +8924,12 @@ body.detail-open #nav-overlay {
   clear: both;
 }
 
-/* line 451, resources/scss/pages/_stations.scss */
+/* line 452, resources/scss/pages/_stations.scss */
 #station-overlay-header h3 {
   padding: 0;
 }
 
-/* line 455, resources/scss/pages/_stations.scss */
+/* line 456, resources/scss/pages/_stations.scss */
 #station-overlay-header h5 {
   float: left;
   width: 30%;
@@ -8937,13 +8937,13 @@ body.detail-open #nav-overlay {
   font-family: "CESans", Roboto, Helvetica, "Helvetica Neue", Arial, sans-serif;
 }
 
-/* line 462, resources/scss/pages/_stations.scss */
+/* line 463, resources/scss/pages/_stations.scss */
 .station_overlay_text a, .station_overlay_text a:focus {
   color: white;
   text-decoration: underline;
 }
 
-/* line 464, resources/scss/pages/_stations.scss */
+/* line 465, resources/scss/pages/_stations.scss */
 .form-group {
   font-size: 0.75rem;
 }
@@ -8959,13 +8959,13 @@ body.detail-open #nav-overlay {
   clear: both;
 }
 
-/* line 468, resources/scss/pages/_stations.scss */
+/* line 469, resources/scss/pages/_stations.scss */
 .form-group label {
   color: #ffffff;
   display: block;
 }
 
-/* line 473, resources/scss/pages/_stations.scss */
+/* line 474, resources/scss/pages/_stations.scss */
 .form-group select {
   font-family: Roboto, Helvetica, "Helvetica Neue", Arial, sans-serif;
   font-size: 0.75rem;
@@ -8973,7 +8973,7 @@ body.detail-open #nav-overlay {
   padding: 3px;
 }
 
-/* line 480, resources/scss/pages/_stations.scss */
+/* line 481, resources/scss/pages/_stations.scss */
 .form-group input {
   display: inline-block;
   width: 100%;
@@ -8985,17 +8985,17 @@ body.detail-open #nav-overlay {
   padding: 4px 8px;
 }
 
-/* line 491, resources/scss/pages/_stations.scss */
+/* line 492, resources/scss/pages/_stations.scss */
 .form-group .field-pair {
   float: left;
 }
 
-/* line 495, resources/scss/pages/_stations.scss */
+/* line 496, resources/scss/pages/_stations.scss */
 .form-group .field-pair.append input {
   width: 100%;
 }
 
-/* line 499, resources/scss/pages/_stations.scss */
+/* line 500, resources/scss/pages/_stations.scss */
 .form-group .field-pair.append .append {
   color: #ffffff;
   display: inline-block;
@@ -9003,7 +9003,7 @@ body.detail-open #nav-overlay {
   vertical-align: middle;
 }
 
-/* line 509, resources/scss/pages/_stations.scss */
+/* line 510, resources/scss/pages/_stations.scss */
 .station_overlay_text p {
   width: 100%;
   padding: 10px 0;
@@ -9013,14 +9013,14 @@ body.detail-open #nav-overlay {
   font-family: Roboto, Helvetica, "Helvetica Neue", Arial, sans-serif;
 }
 
-/* line 517, resources/scss/pages/_stations.scss */
+/* line 518, resources/scss/pages/_stations.scss */
 .station_overlay_text {
   width: 100%;
   min-height: 100px;
   overflow-y: auto;
 }
 
-/* line 524, resources/scss/pages/_stations.scss */
+/* line 525, resources/scss/pages/_stations.scss */
 .station-overlay-content {
   position: absolute;
   bottom: 0;
@@ -9032,7 +9032,7 @@ body.detail-open #nav-overlay {
   z-index: 20;
 }
 
-/* line 534, resources/scss/pages/_stations.scss */
+/* line 535, resources/scss/pages/_stations.scss */
 .station-overlay-column {
   position: relative;
   float: left;
@@ -9040,12 +9040,12 @@ body.detail-open #nav-overlay {
   height: 100%;
 }
 
-/* line 540, resources/scss/pages/_stations.scss */
+/* line 541, resources/scss/pages/_stations.scss */
 .station-overlay-column.left {
   padding-right: 40px;
 }
 
-/* line 543, resources/scss/pages/_stations.scss */
+/* line 544, resources/scss/pages/_stations.scss */
 .station-overlay-column.left:after {
   content: '';
   display: block;
@@ -9058,23 +9058,23 @@ body.detail-open #nav-overlay {
   border-left-color: #ffffff;
 }
 
-/* line 556, resources/scss/pages/_stations.scss */
+/* line 557, resources/scss/pages/_stations.scss */
 #stations-map .esri-display-object, #stations-map .esri-display-object svg {
   pointer-events: none;
 }
 
-/* line 559, resources/scss/pages/_stations.scss */
+/* line 560, resources/scss/pages/_stations.scss */
 #stations-map .esri-display-object svg {
   filter: drop-shadow(0.5px 0.5px 1px rgba(0, 0, 0, 0.2));
 }
 
-/* line 562, resources/scss/pages/_stations.scss */
+/* line 563, resources/scss/pages/_stations.scss */
 #stations-map svg g circle {
   pointer-events: all;
   cursor: pointer;
 }
 
-/* line 567, resources/scss/pages/_stations.scss */
+/* line 568, resources/scss/pages/_stations.scss */
 .temp-download-btns {
   width: 47%;
   text-align: right;
@@ -9083,7 +9083,7 @@ body.detail-open #nav-overlay {
   float: left;
 }
 
-/* line 575, resources/scss/pages/_stations.scss */
+/* line 576, resources/scss/pages/_stations.scss */
 .precip-download-btns {
   text-align: right;
   margin-top: .5rem;
@@ -9091,7 +9091,7 @@ body.detail-open #nav-overlay {
   float: right;
 }
 
-/* line 582, resources/scss/pages/_stations.scss */
+/* line 583, resources/scss/pages/_stations.scss */
 .tidal-download-btns {
   float: right;
   padding-right: 3rem;

@@ -429,8 +429,6 @@
                   })
                 }
                 refEl.stationTooltip.show();
-
-                  console.log(station.attributes.name);
               }.bind(this));
           }.bind(this));
           this.view.on("click", function (event) {
@@ -477,16 +475,30 @@
         this.thresholdStationsLayer = layer;
         this._MapInitPromise.then(function () {
           this.map.add(this.thresholdStationsLayer);
-          // this.view.on("pointer-move", function(event){
-          //   this.view.hitTest(event)
-          //     .then(function(response){
-          //       // check if a feature is returned from the hurricanesLayer
-          //       // do something with the result graphic
-          //      if (response){
-          //
-          //      }
-          //     });
-          // }.bind(this));
+          this.view.on("pointer-move", function (event) {
+            $('#stations-map circle').each(function(){
+              if ("stationTooltip" in this){
+                this.stationTooltip.hide()
+              }
+            });
+            this.view.hitTest(event)
+              .then(function (response) {
+                let station = response.results.filter(function (result) {
+                  return result.graphic.layer === this.thresholdStationsLayer;
+                }.bind(this))[0].graphic;
+
+                var refEl = $('circle:hover').first();
+                if (!("stationTooltip" in refEl))
+                {
+                  refEl.stationTooltip = new Tooltip(refEl, {
+                    placement: 'right',
+                    title: station.attributes.name,
+                    container: $('#stations-map')[0],
+                  })
+                }
+                refEl.stationTooltip.show();
+              }.bind(this));
+          }.bind(this));
           this.view.on("click", function (event) {
             this.view.hitTest(event)
               .then(function (response) {
@@ -520,16 +532,30 @@
         this.tidalStationsLayer = layer;
         this._MapInitPromise.then(function () {
           this.map.add(this.tidalStationsLayer);
-          // this.view.on("pointer-move", function(event){
-          //   this.view.hitTest(event)
-          //     .then(function(response){
-          //       // check if a feature is returned from the hurricanesLayer
-          //       // do something with the result graphic
-          //      if (response){
-          //
-          //      }
-          //     });
-          // }.bind(this));
+          this.view.on("pointer-move", function (event) {
+            $('#stations-map circle').each(function(){
+              if ("stationTooltip" in this){
+                this.stationTooltip.hide()
+              }
+            });
+            this.view.hitTest(event)
+              .then(function (response) {
+                let station = response.results.filter(function (result) {
+                  return result.graphic.layer === this.tidalStationsLayer;
+                }.bind(this))[0].graphic;
+
+                var refEl = $('circle:hover').first();
+                if (!("stationTooltip" in refEl))
+                {
+                  refEl.stationTooltip = new Tooltip(refEl, {
+                    placement: 'right',
+                    title: station.attributes.name,
+                    container: $('#stations-map')[0],
+                  })
+                }
+                refEl.stationTooltip.show();
+              }.bind(this));
+          }.bind(this));
           this.view.on("click", function (event) {
             this.view.hitTest(event)
               .then(function (response) {
