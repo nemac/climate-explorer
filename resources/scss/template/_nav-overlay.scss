@@ -71,6 +71,8 @@
   #nav-stations {
     .slide-bg {
       background-image: url(../img/bg_contours-orange.png);
+      filter: brightness(.9) contrast(.9);
+      -webkit-filter: brightness(.9) contrast(.9);
     }
   }
   
@@ -292,7 +294,6 @@
   .nav-detail {
     display: none;
     @include full-size;
-    background: $blue1;
     //backdrop-filter: blur(10px);
     //-webkit-backdrop-filter: blur(10px);
     z-index: 1;
@@ -315,14 +316,6 @@
         line-height: 2em;
       }
     }
-    
-    &#variable-details {
-      background: $blue1;
-    }
-    
-    &#stations-details {
-      background: $orange1;
-    }
   }
 }
 
@@ -336,7 +329,7 @@
       }
       
       &#stations-details {
-        background: $orange1;
+        background: #d44525;
       }
     }
   }

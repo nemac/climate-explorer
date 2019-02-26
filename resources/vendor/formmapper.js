@@ -23,7 +23,8 @@
       maxZoom: 20, //The maximum zoom level the user is allowed achieve with controls. Default: 20
       scrollwheel: false,
       panControl: false,
-      mapTypeId: "roadmap"
+      mapTypeId: "roadmap",
+      snapToZoom: false,
     },
 
     markerOptions: {
