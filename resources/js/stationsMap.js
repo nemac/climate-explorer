@@ -251,7 +251,8 @@
         constraints: {
           rotationEnabled: false,
           minZoom: 3,
-          maxZoom: 10
+          maxZoom: 10,
+          snapToZoom: false,
         }
       });
 
