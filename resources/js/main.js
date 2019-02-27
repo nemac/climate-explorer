@@ -877,8 +877,12 @@ App.prototype.locationSearch = function () {
           data[name] = object.long_name;
             data[name + "_short"] = object.short_name;
         });
-        //console.log('data', data);
-      let county = (data.administrative_area_level_2) ? data.administrative_area_level_2.replace(/ /g, '+') : data.locality + '+County';
+        //console.log('data', data);\
+          if (!data.administrative_area_level_2) {
+                $(".location-mapper").formmapper('geocode', {address: result.formatted_address});
+          }
+          let county = data.administrative_area_level_2.replace(/ /g, '+');
+
 
       county = county.latinize();
       let city = data.locality + ', ' + data.administrative_area_level_1_short;
