@@ -575,6 +575,24 @@ $(function () {
     }
 
   });
+
+  $('#switch-to-stations-btn').on('click', function () {
+    let currLat = window.ce.ce('getLocationPageState')['lat'];
+    let currLon = window.ce.ce('getLocationPageState')['lon'];
+
+    this.href = "/stations/?id=daily_vs_climate&zoom=8&lat=" + encodeURIComponent(currLat) + "&lon=" + encodeURIComponent(currLon);
+  });
+
+  $('#switch-to-thresholds-btn').on('click', function () {
+    let currLat = window.ce.ce('getLocationPageState')['lat'];
+    let currLon = window.ce.ce('getLocationPageState')['lon'];
+
+    this.href = "/stations/?id=thresholds&zoom=8&lat=" + encodeURIComponent(currLat) + "&lon=" + encodeURIComponent(currLon);
+  });
+
+  $('#current-location-city').text(window.ce.ce('getLocationPageState')['city']);
+
+
   $('#temp-download-image').on('click', function () {
     $('#download-image-link-temp').get(0).click();
     return false;

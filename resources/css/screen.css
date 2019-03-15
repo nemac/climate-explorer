@@ -7324,7 +7324,44 @@ body.detail-open #nav-overlay {
   background: #904848;
 }
 
-/* line 863, resources/scss/pages/_location.scss */
+/* line 862, resources/scss/pages/_location.scss */
+#location-weather-stations {
+  padding-bottom: 3%;
+}
+
+/* line 865, resources/scss/pages/_location.scss */
+#location-weather-stations .accent-color {
+  color: #f5442d;
+  margin-bottom: 2%;
+}
+
+/* line 870, resources/scss/pages/_location.scss */
+#location-weather-stations p {
+  width: 75%;
+  margin: 0 0 20px 0;
+  font: 400 1.2rem/1.5em Roboto, Helvetica, "Helvetica Neue", Arial, sans-serif;
+  color: #0058cf;
+}
+
+/* line 877, resources/scss/pages/_location.scss */
+#location-weather-stations .switch-to-btn {
+  border: 4px solid #f5442d;
+  padding: 1rem;
+  margin-right: 2rem;
+}
+
+/* line 882, resources/scss/pages/_location.scss */
+#location-weather-stations .switch-to-btn:hover {
+  background-color: #f5442d;
+  color: #fff;
+}
+
+/* line 889, resources/scss/pages/_location.scss */
+.content-wrapper {
+  margin-left: calc(4% + 2px);
+}
+
+/* line 893, resources/scss/pages/_location.scss */
 .location-data-section .data-accordion .data-accordion-tab.data-chart .chart-range {
   position: absolute;
   left: 0;
@@ -7336,7 +7373,7 @@ body.detail-open #nav-overlay {
   box-shadow: inset 0 5px 10px -5px rgba(0, 0, 0, 0.5);
 }
 
-/* line 874, resources/scss/pages/_location.scss */
+/* line 904, resources/scss/pages/_location.scss */
 .location-data-section .data-accordion .data-accordion-tab.data-chart .chart-range .ui-slider-handle {
   top: 0;
   width: 16px;
@@ -7344,25 +7381,25 @@ body.detail-open #nav-overlay {
   margin: -3px 0px -8px -8px;
 }
 
-/* line 881, resources/scss/pages/_location.scss */
+/* line 911, resources/scss/pages/_location.scss */
 #precip-slider-range {
   width: 100%;
   margin: auto;
 }
 
-/* line 886, resources/scss/pages/_location.scss */
+/* line 916, resources/scss/pages/_location.scss */
 #derived-slider-range {
   width: 100%;
   margin: auto;
 }
 
-/* line 892, resources/scss/pages/_location.scss */
+/* line 922, resources/scss/pages/_location.scss */
 #location-stations {
   padding: 0;
   height: calc(100vh - 160px);
 }
 
-/* line 896, resources/scss/pages/_location.scss */
+/* line 926, resources/scss/pages/_location.scss */
 #location-stations .location-data-section {
   position: absolute;
   top: 0;
@@ -7371,12 +7408,12 @@ body.detail-open #nav-overlay {
   height: 100%;
 }
 
-/* line 900, resources/scss/pages/_location.scss */
+/* line 930, resources/scss/pages/_location.scss */
 #location-stations h3 {
   margin: 0 0 2% 0;
 }
 
-/* line 906, resources/scss/pages/_location.scss */
+/* line 936, resources/scss/pages/_location.scss */
 #location-stations #location-stations-about {
   position: absolute;
   top: 0;
@@ -7387,13 +7424,13 @@ body.detail-open #nav-overlay {
   z-index: 5;
 }
 
-/* line 915, resources/scss/pages/_location.scss */
+/* line 945, resources/scss/pages/_location.scss */
 #location-stations #location-stations-about p {
   font-size: 0.875rem;
   margin: 20px 0;
 }
 
-/* line 923, resources/scss/pages/_location.scss */
+/* line 953, resources/scss/pages/_location.scss */
 #location-stations #location-stations-map-wrap {
   position: absolute;
   top: 0;
@@ -7403,7 +7440,7 @@ body.detail-open #nav-overlay {
   z-index: 1;
 }
 
-/* line 928, resources/scss/pages/_location.scss */
+/* line 958, resources/scss/pages/_location.scss */
 #location-stations #location-station-map {
   position: absolute;
   top: 0;
@@ -7412,7 +7449,7 @@ body.detail-open #nav-overlay {
   height: 100%;
 }
 
-/* line 936, resources/scss/pages/_location.scss */
+/* line 966, resources/scss/pages/_location.scss */
 #location-stations #location-stations-overlay {
   position: absolute;
   top: 0;
@@ -7436,7 +7473,7 @@ body.detail-open #nav-overlay {
   clear: both;
 }
 
-/* line 946, resources/scss/pages/_location.scss */
+/* line 976, resources/scss/pages/_location.scss */
 #location-stations.overlay-on #location-stations-overlay {
   left: 0;
   opacity: 1;
@@ -7444,29 +7481,29 @@ body.detail-open #nav-overlay {
   background: rgba(245, 68, 45, 0.9);
 }
 
-/* line 953, resources/scss/pages/_location.scss */
+/* line 983, resources/scss/pages/_location.scss */
 #location-stations.overlay-on .station-overlay-content {
   transition: left 0s ease 0s, opacity 0.25s ease 0s;
 }
 
-/* line 958, resources/scss/pages/_location.scss */
+/* line 988, resources/scss/pages/_location.scss */
 #location-stations.overlay-on:not(.type-tidal) #station-detail {
   left: 0;
   opacity: 1;
 }
 
-/* line 965, resources/scss/pages/_location.scss */
+/* line 995, resources/scss/pages/_location.scss */
 #location-stations.overlay-on.type-tidal #location-stations-overlay {
   background: rgba(0, 88, 207, 0.9);
 }
 
-/* line 969, resources/scss/pages/_location.scss */
+/* line 999, resources/scss/pages/_location.scss */
 #location-stations.overlay-on.type-tidal #station-detail-tidal {
   left: 0;
   opacity: 1;
 }
 
-/* line 978, resources/scss/pages/_location.scss */
+/* line 1008, resources/scss/pages/_location.scss */
 #location-stations #station-overlay-header {
   height: 120px;
   color: #ffffff;
@@ -7484,12 +7521,12 @@ body.detail-open #nav-overlay {
   clear: both;
 }
 
-/* line 984, resources/scss/pages/_location.scss */
+/* line 1014, resources/scss/pages/_location.scss */
 #location-stations #station-overlay-header h3 {
   padding: 0;
 }
 
-/* line 988, resources/scss/pages/_location.scss */
+/* line 1018, resources/scss/pages/_location.scss */
 #location-stations #station-overlay-header h5 {
   float: left;
   width: 50%;
@@ -7497,7 +7534,7 @@ body.detail-open #nav-overlay {
   font-family: "CESans", Roboto, Helvetica, "Helvetica Neue", Arial, sans-serif;
 }
 
-/* line 998, resources/scss/pages/_location.scss */
+/* line 1028, resources/scss/pages/_location.scss */
 #location-stations .station-overlay-content {
   position: absolute;
   bottom: 0;
@@ -7510,7 +7547,7 @@ body.detail-open #nav-overlay {
   z-index: 1;
 }
 
-/* line 1010, resources/scss/pages/_location.scss */
+/* line 1040, resources/scss/pages/_location.scss */
 #location-stations .station-overlay-column {
   position: relative;
   float: left;
@@ -7518,12 +7555,12 @@ body.detail-open #nav-overlay {
   height: 100%;
 }
 
-/* line 1016, resources/scss/pages/_location.scss */
+/* line 1046, resources/scss/pages/_location.scss */
 #location-stations .station-overlay-column.left {
   padding-right: 40px;
 }
 
-/* line 1019, resources/scss/pages/_location.scss */
+/* line 1049, resources/scss/pages/_location.scss */
 #location-stations .station-overlay-column.left:after {
   content: '';
   display: block;
@@ -7536,13 +7573,13 @@ body.detail-open #nav-overlay {
   border-left-color: #ffffff;
 }
 
-/* line 1035, resources/scss/pages/_location.scss */
+/* line 1065, resources/scss/pages/_location.scss */
 #location-stations #station-detail-data {
   background: #ffffff;
   padding: 20px;
 }
 
-/* line 1040, resources/scss/pages/_location.scss */
+/* line 1070, resources/scss/pages/_location.scss */
 #location-stations .form-group {
   font-size: 0.75rem;
 }
@@ -7558,18 +7595,18 @@ body.detail-open #nav-overlay {
   clear: both;
 }
 
-/* line 1044, resources/scss/pages/_location.scss */
+/* line 1074, resources/scss/pages/_location.scss */
 #location-stations .form-group label {
   display: block;
 }
 
-/* line 1048, resources/scss/pages/_location.scss */
+/* line 1078, resources/scss/pages/_location.scss */
 #location-stations .form-group select {
   font-family: Roboto, Helvetica, "Helvetica Neue", Arial, sans-serif;
   font-size: 0.75rem;
 }
 
-/* line 1053, resources/scss/pages/_location.scss */
+/* line 1083, resources/scss/pages/_location.scss */
 #location-stations .form-group input {
   display: inline-block;
   width: calc(100% - 10px);
@@ -7579,30 +7616,30 @@ body.detail-open #nav-overlay {
   padding: 4px 8px;
 }
 
-/* line 1062, resources/scss/pages/_location.scss */
+/* line 1092, resources/scss/pages/_location.scss */
 #location-stations .form-group .field-pair {
   float: left;
   width: 25%;
 }
 
-/* line 1067, resources/scss/pages/_location.scss */
+/* line 1097, resources/scss/pages/_location.scss */
 #location-stations .form-group .field-pair.append input {
   width: 50%;
 }
 
-/* line 1071, resources/scss/pages/_location.scss */
+/* line 1101, resources/scss/pages/_location.scss */
 #location-stations .form-group .field-pair.append .append {
   display: inline-block;
   padding-left: 4px;
   vertical-align: middle;
 }
 
-/* line 1085, resources/scss/pages/_location.scss */
+/* line 1115, resources/scss/pages/_location.scss */
 #location-stations #tidal-chart {
   background-color: #ffffff;
 }
 
-/* line 1093, resources/scss/pages/_location.scss */
+/* line 1123, resources/scss/pages/_location.scss */
 #location-stations #station-overlay-close {
   display: block;
   position: absolute;
@@ -7614,7 +7651,7 @@ body.detail-open #nav-overlay {
   z-index: 2;
 }
 
-/* line 1106, resources/scss/pages/_location.scss */
+/* line 1136, resources/scss/pages/_location.scss */
 #location-stations #stations-spinner {
   display: none;
   position: absolute;
@@ -7627,47 +7664,47 @@ body.detail-open #nav-overlay {
   z-index: 15;
 }
 
-/* line 1122, resources/scss/pages/_location.scss */
+/* line 1152, resources/scss/pages/_location.scss */
 #location-stations .data-accordion-wrap {
   width: 30%;
 }
 
-/* line 1126, resources/scss/pages/_location.scss */
+/* line 1156, resources/scss/pages/_location.scss */
 #location-stations #station-charts-tabs {
   height: 100%;
   padding: 20px;
   background: #ffffff;
 }
 
-/* line 1131, resources/scss/pages/_location.scss */
+/* line 1161, resources/scss/pages/_location.scss */
 #location-stations #station-charts-tabs .chart-tab-list {
   margin: 0 0 10px 0;
 }
 
-/* line 1134, resources/scss/pages/_location.scss */
+/* line 1164, resources/scss/pages/_location.scss */
 #location-stations #station-charts-tabs .chart-tab-list li {
   display: inline-block;
 }
 
-/* line 1137, resources/scss/pages/_location.scss */
+/* line 1167, resources/scss/pages/_location.scss */
 #location-stations #station-charts-tabs .chart-tab-list li a {
   display: block;
   padding: 8px 10px;
   color: #233a70;
 }
 
-/* line 1143, resources/scss/pages/_location.scss */
+/* line 1173, resources/scss/pages/_location.scss */
 #location-stations #station-charts-tabs .chart-tab-list li.selected {
   background-color: #d5e8f2;
 }
 
-/* line 1149, resources/scss/pages/_location.scss */
+/* line 1179, resources/scss/pages/_location.scss */
 #location-stations #station-charts-tabs .chart-tabs-wrap {
   position: relative;
   height: 300px;
 }
 
-/* line 1154, resources/scss/pages/_location.scss */
+/* line 1184, resources/scss/pages/_location.scss */
 #location-stations #station-charts-tabs .chart-tab {
   position: absolute;
   top: 0;
@@ -7679,7 +7716,7 @@ body.detail-open #nav-overlay {
   transition: left 0s ease 0.25s, opacity 0.25s ease 0s;
 }
 
-/* line 1160, resources/scss/pages/_location.scss */
+/* line 1190, resources/scss/pages/_location.scss */
 #location-stations #station-charts-tabs .chart-tab.selected {
   left: 0;
   opacity: 1;

@@ -246,7 +246,7 @@
         container: this.nodes.mapContainer,
         map: this.map,
         zoom: this.options.extent ? null : this.options.zoom,
-        center: this.options.extent ? null : this.options.center,
+        center: this.options.extent ? null : new this.dojoMods.Point({latitude: this.options.center[0], longitude: this.options.center[1]}),
         extent: this.options.extent ? this.dojoMods.webMercatorUtils.geographicToWebMercator(new this.dojoMods.Extent(this.options.extent)) : null,
         constraints: {
           rotationEnabled: false,
