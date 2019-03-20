@@ -1,16 +1,16 @@
-$(function () {
-  let activeVariableTemperature = 'tmax';
-  let activeVariablePrecipitation = 'pcpn';
-  let activeVariableDerived = 'hdd';
+'use strict';
 
+$(function () {
+  var activeVariableTemperature = 'tmax';
+  var activeVariablePrecipitation = 'pcpn';
+  var activeVariableDerived = 'hdd';
 
   $('#splash-city').text(window.ce.ce('getLocationPageState')['city']);
   $('#splash-county').text(window.ce.ce('getLocationPageState')['county']);
   $('.data-accordion-tab .full-title').text(window.ce.ce('getLocationPageState')['county']);
   $('select#derived-county, select#precip-county, select#county').append($('<option value="' + window.ce.ce('getLocationPageState')['fips'] + '" selected="selected">' + window.ce.ce('getLocationPageState')['county'] + '</option>'));
 
-
-  let slid = false;
+  var slid = false;
   $('.data-options-trigger').click(function () {
     slid = !slid;
     if (slid) {
@@ -31,18 +31,19 @@ $(function () {
         center: window.ce.ce('getLocationPageState')['center'],
         zoom: window.ce.ce('getLocationPageState')['zoom'] || 9,
         showCounties: false,
-        layersloaded: function () {
+        layersloaded: function layersloaded() {
           $('#temperature-map').spinner('destroy');
         },
-        change: function () {
+        change: function change() {
           window.temperatureScenariosMap.scenarioComparisonMap("getShowSeasonControls") ? $("#temperature-map-season").show(200) : $("#temperature-map-season").hide();
         }
       });
       window.temperatureScenariosMap.scenarioComparisonMap("getShowSeasonControls") ? $("#temperature-map-season").show(200) : $("#temperature-map-season").hide();
     }
   });
-  $('#temperature-chart header').on('click', function () {$('#location-temperature .location-resolution li').removeClass('disabled');});
-
+  $('#temperature-chart header').on('click', function () {
+    $('#location-temperature .location-resolution li').removeClass('disabled');
+  });
 
   $('#precipitation-map-container header').on('click', function () {
     $('#precipitation-map').height($('#precipitation-map').parent().height());
@@ -55,18 +56,19 @@ $(function () {
         center: window.ce.ce('getLocationPageState')['center'],
         zoom: window.ce.ce('getLocationPageState')['zoom'] || 9,
         showCounties: false,
-        layersloaded: function () {
+        layersloaded: function layersloaded() {
           $('#precipitation-map').spinner('destroy');
         },
-        change: function () {
+        change: function change() {
           window.precipitationScenariosMap.scenarioComparisonMap("getShowSeasonControls") ? $("#precipitation-map-season").show(200) : $("#precipitation-map-season").hide();
         }
       });
       window.precipitationScenariosMap.scenarioComparisonMap("getShowSeasonControls") ? $("#precipitation-map-season").show(200) : $("#precipitation-map-season").hide();
     }
   });
-  $('#precipitation-chart header').on('click', function () {$('#location-precipitation .location-resolution li').removeClass('disabled');});
-
+  $('#precipitation-chart header').on('click', function () {
+    $('#location-precipitation .location-resolution li').removeClass('disabled');
+  });
 
   $('#derived-map-container header').on('click', function () {
     $('#derived-map').height($('#derived-map').parent().height());
@@ -74,26 +76,26 @@ $(function () {
     if (typeof window.derivedScenariosMap === 'undefined') {
       $('#derived-map').spinner();
       window.derivedScenariosMap = $('#derived-map').scenarioComparisonMap({
-          variable: ['hdd', 'cdd'].includes(activeVariableDerived) ? activeVariableDerived + '_65f' : activeVariableDerived,
-          extent: window.ce.ce('getLocationPageState')['extent'],
-          center: window.ce.ce('getLocationPageState')['center'],
-          zoom: window.ce.ce('getLocationPageState')['zoom'] || 9,
-          showCounties: false,
-          layersloaded: function () {
-            $('#derived-map').spinner('destroy');
-          },
-          change: function () {
-            window.derivedScenariosMap.scenarioComparisonMap("getShowSeasonControls") ? $("#derived-map-season").show(200) : $("#derived-map-season").hide();
-          }
+        variable: ['hdd', 'cdd'].includes(activeVariableDerived) ? activeVariableDerived + '_65f' : activeVariableDerived,
+        extent: window.ce.ce('getLocationPageState')['extent'],
+        center: window.ce.ce('getLocationPageState')['center'],
+        zoom: window.ce.ce('getLocationPageState')['zoom'] || 9,
+        showCounties: false,
+        layersloaded: function layersloaded() {
+          $('#derived-map').spinner('destroy');
+        },
+        change: function change() {
+          window.derivedScenariosMap.scenarioComparisonMap("getShowSeasonControls") ? $("#derived-map-season").show(200) : $("#derived-map-season").hide();
         }
-      );
+      });
       window.derivedScenariosMap.scenarioComparisonMap("getShowSeasonControls") ? $("#derived-map-season").show(200) : $("#derived-map-season").hide();
     }
   });
-  $('#derived-chart header').on('click', function () {$('#location-derived .location-resolution li').removeClass('disabled');});
+  $('#derived-chart header').on('click', function () {
+    $('#location-derived .location-resolution li').removeClass('disabled');
+  });
 
-
-  let variable_li_update = function (container, el) {
+  var variable_li_update = function variable_li_update(container, el) {
     // remove all active, accent border and accent color classes
     $(container).find('.active').removeClass('active');
     $(container).find('.accent-border').removeClass('accent-border');
@@ -103,7 +105,7 @@ $(function () {
     el.parents('li').addClass('active').addClass('accent-border');
 
     // set the first link under the h4 to active
-    let first_li = $(el.siblings('ul')).find('li').first();
+    var first_li = $(el.siblings('ul')).find('li').first();
 
     first_li.addClass('active').addClass('accent-border');
     first_li.find('a').addClass('accent-color');
@@ -115,18 +117,18 @@ $(function () {
     variable_li_update($('#temperature-data .data-options'), $(this));
     activeVariableTemperature = $(this).data('value');
     if (window.temperatureScenariosMap) {
-      $(window.temperatureScenariosMap).scenarioComparisonMap({variable: activeVariableTemperature})
+      $(window.temperatureScenariosMap).scenarioComparisonMap({ variable: activeVariableTemperature });
     }
-    $('#temperature-map-container .full-map-btn').prop({'href': '/variables/?id=' + activeVariableTemperature});
+    $('#temperature-map-container .full-map-btn').prop({ 'href': '/variables/?id=' + activeVariableTemperature });
   });
   $('#precipitation-data h4').on('click', function (e) {
     e.preventDefault();
     variable_li_update($('#precipitation-data .data-options'), $(this));
     activeVariablePrecipitation = $(this).data('value');
     if (window.precipitationScenariosMap) {
-      $(window.precipitationScenariosMap).scenarioComparisonMap({variable: activeVariablePrecipitation})
+      $(window.precipitationScenariosMap).scenarioComparisonMap({ variable: activeVariablePrecipitation });
     }
-    $('#precipitation-map-container .full-map-btn').prop({'href': '/variables/?id=' + activeVariablePrecipitation});
+    $('#precipitation-map-container .full-map-btn').prop({ 'href': '/variables/?id=' + activeVariablePrecipitation });
   });
   $('#derived-data h4').on('click', function (e) {
     e.preventDefault();
@@ -137,32 +139,32 @@ $(function () {
         variable: ['hdd', 'cdd'].includes(activeVariableDerived) ? activeVariableDerived + '_65f' : activeVariableDerived
       });
     }
-    $('#derived-map-container .full-map-btn').prop({'href': '/variables/?id=' + activeVariableDerived});
+    $('#derived-map-container .full-map-btn').prop({ 'href': '/variables/?id=' + activeVariableDerived });
   });
 
   // season selectors
   $('#precipitation-map-season .fs-dropdown-item').on('click', function () {
-    $(window.precipitationScenariosMap).scenarioComparisonMap({season: $(this).data().value});
+    $(window.precipitationScenariosMap).scenarioComparisonMap({ season: $(this).data().value });
   });
   $('#temperature-map-season .fs-dropdown-item').on('click', function () {
-    $(window.temperatureScenariosMap).scenarioComparisonMap({season: $(this).data().value});
+    $(window.temperatureScenariosMap).scenarioComparisonMap({ season: $(this).data().value });
   });
   $('#derived-map-season .fs-dropdown-item').on('click', function () {
-    $(window.derivedScenariosMap).scenarioComparisonMap({season: $(this).data().value});
+    $(window.derivedScenariosMap).scenarioComparisonMap({ season: $(this).data().value });
   });
 
   function populate_variables(frequency) {
-    let variables = climate_widget.variables(frequency);
+    var variables = climate_widget.variables(frequency);
     $("select#variable").empty();
     $(variables.map(function (v) {
-      return ('<option value="' + v.id + '"' + '>' + v.title + '</option>');
+      return '<option value="' + v.id + '"' + '>' + v.title + '</option>';
     }).join("")).appendTo($("select#variable"));
   }
 
   populate_variables('annual');
 
   function update_frequency_ui() {
-    let freq = $('#frequency').val();
+    var freq = $('#frequency').val();
     if (freq === "annual") {
       $('#timeperiod').attr("disabled", "true");
       $('label[for=timeperiod]').css("opacity", 0.5);
@@ -198,7 +200,7 @@ $(function () {
 
   $('#frequency').change(function () {
     update_frequency_ui();
-    let id = $('#frequency').val();
+    var id = $('#frequency').val();
     if (id !== 'annual') {
       $('#historical-range, #under-baseline-range, #over-baseline-range').hide();
       $('#temperature-chart .legend-item-line.observed').addClass('seasonal');
@@ -219,26 +221,26 @@ $(function () {
         min: 0,
         max: 2,
         value: 0,
-        slide: function (event, ui) {
-          let val = (ui.value === 0) ? '2025' : '2050';
+        slide: function slide(event, ui) {
+          var val = ui.value === 0 ? '2025' : '2050';
           if (ui.value === 2) {
             val = '2075';
           }
-          window.tempChart.update({timeperiod: val});
+          window.tempChart.update({ timeperiod: val });
         }
       });
       $('#temp-range-low').html('30 Years Centered in 2025');
       $('#temp-range-mid').show().html('30 Years Centered in 2050');
       $('#temp-range-high').html('30 Years Centered in 2075');
     } else {
-      let sliderisnotannual = $("#slider-range").hasClass("not-annual");
+      var sliderisnotannual = $("#slider-range").hasClass("not-annual");
       if (sliderisnotannual) {
         $("#slider-range").removeClass('not-annual').slider('destroy').slider({
           range: true,
           min: 1950,
           max: 2099,
           values: [1950, 2099],
-          slide: function (event, ui) {
+          slide: function slide(event, ui) {
             return window.tempChart.setXRange(ui.values[0], ui.values[1]);
           }
         }).find(".ui-slider-range").html('<span class="icon icon-arrow-left-right"></span>');
@@ -257,7 +259,7 @@ $(function () {
 
   $('#precip-frequency').change(function () {
     update_frequency_ui();
-    let id = $('#precip-frequency').val();
+    var id = $('#precip-frequency').val();
     if (id !== 'annual') {
       $('#precip-historical-range, #under-baseline-range, #over-baseline-range').hide();
       $('#precipitation-chart .legend-item-line.observed').addClass('seasonal');
@@ -272,19 +274,19 @@ $(function () {
         min: 0,
         max: 2,
         value: 0,
-        slide: function (event, ui) {
-          let val = (ui.value === 0) ? '2025' : '2050';
+        slide: function slide(event, ui) {
+          var val = ui.value === 0 ? '2025' : '2050';
           if (ui.value === 2) {
             val = '2075';
           }
-          window.precipChart.update({timeperiod: val});
+          window.precipChart.update({ timeperiod: val });
         }
       });
       $('#precip-range-low').html('30 Years Centered in 2025');
       $('#precip-range-mid').show().html('30 Years Centered in 2050');
       $('#precip-range-high').html('30 Years Centered in 2075');
     } else {
-      let psliderisnotannual = $("#precip-slider-range").hasClass("not-annual");
+      var psliderisnotannual = $("#precip-slider-range").hasClass("not-annual");
       if (psliderisnotannual) {
 
         $("#precip-slider-range").removeClass('not-annual').slider('destroy').slider({
@@ -292,7 +294,7 @@ $(function () {
           min: 1950,
           max: 2099,
           values: [1950, 2099],
-          slide: function (event, ui) {
+          slide: function slide(event, ui) {
             return window.precipChart.setXRange(ui.values[0], ui.values[1]);
           }
         }).find(".ui-slider-range").html('<span class="icon icon-arrow-left-right"></span>');
@@ -421,14 +423,14 @@ $(function () {
   // @arg $wrapper - jquery wrapper of the section DOM wrapper of element that was clicked
   // @arg freq - string of the dataset frequency. Annual or Monthly
   // @arg dataset - string of the dataset, ex Avg Daily Max Temp
-  let timescale_label_update = function ($wrapper, freq, dataset) {
+  var timescale_label_update = function timescale_label_update($wrapper, freq, dataset) {
     $wrapper.find(".source").html(freq + " " + dataset);
-  }
+  };
 
   // @arg $wrapper - jquery wrapper of the section DOM wrapper of element that was clicked
-  let find_hidden_select_selector_prepend = function ($wrapper) {
-    let wrapper_id = $wrapper.prop("id");
-    let selector_prepend = "#";
+  var find_hidden_select_selector_prepend = function find_hidden_select_selector_prepend($wrapper) {
+    var wrapper_id = $wrapper.prop("id");
+    var selector_prepend = "#";
 
     if (wrapper_id === "location-precipitation") {
       selector_prepend += "precip-";
@@ -437,35 +439,35 @@ $(function () {
     }
 
     return selector_prepend;
-  }
+  };
 
-  let data_resolution_click_handler = function (e) {
+  var data_resolution_click_handler = function data_resolution_click_handler(e) {
     if ($(this).parent().hasClass('disabled')) {
       return;
     }
 
-    let $wrapper = $(this).parents(".location-data-section-wrap");
-    let dataset = $(this).parents(".location-resolution").siblings("h4").children("a")[0].text;
-    let freq = $(this).html();
+    var $wrapper = $(this).parents(".location-data-section-wrap");
+    var dataset = $(this).parents(".location-resolution").siblings("h4").children("a")[0].text;
+    var freq = $(this).html();
 
     timescale_label_update($wrapper, freq, dataset);
 
-    let val = freq.toLowerCase();
+    var val = freq.toLowerCase();
     $(find_hidden_select_selector_prepend($wrapper) + "frequency").val(val).change();
-  }
+  };
 
-  let data_source_click_handler = function (e) {
-    let val = $(this).children("a");
-    let $wrapper = $(this).parents(".location-data-section-wrap");
+  var data_source_click_handler = function data_source_click_handler(e) {
+    var val = $(this).children("a");
+    var $wrapper = $(this).parents(".location-data-section-wrap");
 
     timescale_label_update($wrapper, "Annual", val[0].text);
 
-    let id = $(this).attr("id").replace("var-", "");
-    let selector_prepend = find_hidden_select_selector_prepend($wrapper);
+    var id = $(this).attr("id").replace("var-", "");
+    var selector_prepend = find_hidden_select_selector_prepend($wrapper);
 
     $(selector_prepend + "frequency").val("annual").change();
     $(selector_prepend + "variable").val(id).change();
-  }
+  };
 
   $('.location-resolution a').on('click', data_resolution_click_handler);
   $('.data-list h4').on('click', data_source_click_handler);
@@ -486,14 +488,14 @@ $(function () {
     $(this).toggleClass('selected');
     $(this).find('.legend-item-block, .legend-item-line').toggleClass('selected');
 
-    let pre = $(this).closest('.chart-legend').attr('id');
+    var pre = $(this).closest('.chart-legend').attr('id');
     if (!pre) {
       pre = '';
     } else {
       pre = pre.replace('-chart', '');
     }
 
-    let scenario = null;
+    var scenario = null;
     switch (true) {
       case $('#' + pre + 'rcp85-block').hasClass('selected') && $('#' + pre + 'rcp45-block').hasClass('selected'):
         scenario = 'both';
@@ -515,8 +517,7 @@ $(function () {
       $('#scenario').val(scenario).change();
     }
 
-
-    let median = 'false';
+    var median = 'false';
     if ($('#' + pre + 'rcp85-line').hasClass('selected') || $('#' + pre + 'rcp45-line').hasClass('selected')) {
       median = 'true';
     }
@@ -529,8 +530,7 @@ $(function () {
       $('#median').val(median).change();
     }
 
-
-    let histmod = null;
+    var histmod = null;
     switch (true) {
       case $('#' + pre + 'historical-block').hasClass('selected') && $('#historical-block').hasClass('selected'):
         histmod = 'true';
@@ -550,8 +550,7 @@ $(function () {
       $('#hist-mod').val(histmod).change();
     }
 
-
-    let histobs = null;
+    var histobs = null;
     switch (true) {
       case $('#' + pre + 'over-baseline-block').hasClass('selected') && $('#under-baseline-block').hasClass('selected'):
         histobs = 'true';
@@ -573,7 +572,6 @@ $(function () {
     } else {
       $('#hist-obs').val(histobs).change();
     }
-
   });
   $('#temp-download-image').on('click', function () {
     $('#download-image-link-temp').get(0).click();
@@ -593,7 +591,6 @@ $(function () {
     $('#download-panel').removeClass("hidden");
     $('#download-panel').show();
     $('#download-panel').fadeIn(250);
-
   });
 
   $('.location-data-section-wrap #temperature-data .seasonal-monthly').click(function () {
@@ -612,7 +609,6 @@ $(function () {
     $('#download-precip-panel').removeClass("hidden");
     $('#download-precip-panel').show();
     $('#download-precip-panel').fadeIn(250);
-
   });
 
   $('.location-data-section-wrap #precipitation-data .seasonal-monthly').click(function () {
@@ -628,18 +624,15 @@ $(function () {
     $('#download-derived-panel').removeClass("hidden");
     $('#download-derived-panel').show();
     $('#download-derived-panel').fadeIn(250);
-
   });
 
   $('#download-dismiss-button').click(function () {
     $('#download-panel').fadeOut(250);
   });
 
-
   $('#download-precip-dismiss-button').click(function () {
     $('#download-precip-panel').fadeOut(250);
   });
-
 
   $('#download-derived-dismiss-button').click(function () {
     $('#download-derived-panel').fadeOut(250);
@@ -659,7 +652,7 @@ $(function () {
     min: 1950,
     max: 2099,
     values: [1950, 2099],
-    slide: function (event, ui) {
+    slide: function slide(event, ui) {
       // return the return value returned by setXRange, to keep
       // the slider thumb(s) from moving into a disallowed range
       return window.tempChart.setXRange(ui.values[0], ui.values[1]);
@@ -670,7 +663,7 @@ $(function () {
     min: 1950,
     max: 2099,
     values: [1950, 2099],
-    slide: function (event, ui) {
+    slide: function slide(event, ui) {
       // return the return value returned by setXRange, to keep
       // the slider thumb(s) from moving into a disallowed range
       return window.precipChart.setXRange(ui.values[0], ui.values[1]);
@@ -681,7 +674,7 @@ $(function () {
     min: 1950,
     max: 2099,
     values: [1950, 2099],
-    slide: function (event, ui) {
+    slide: function slide(event, ui) {
       // return the return value returned by setXRange, to keep
       // the slider thumb(s) from moving into a disallowed range
       return window.derivedChart.setXRange(ui.values[0], ui.values[1]);
@@ -689,59 +682,56 @@ $(function () {
   });
   $('#download_hist_obs_data').click(function () {
     if (window.tempChart) {
-      window.tempChart.download_hist_obs_data(this)
+      window.tempChart.download_hist_obs_data(this);
     }
   });
 
   $('#download_hist_mod_data').click(function () {
     if (window.tempChart) {
-      window.tempChart.download_hist_mod_data(this)
+      window.tempChart.download_hist_mod_data(this);
     }
   });
   $('#download_proj_mod_data').click(function () {
     if (window.tempChart) {
-      window.tempChart.download_proj_mod_data(this)
+      window.tempChart.download_proj_mod_data(this);
     }
   });
-
 
   $('#download_precip_hist_obs_data').click(function () {
     if (window.precipChart) {
-      window.precipChart.download_hist_obs_data(this)
+      window.precipChart.download_hist_obs_data(this);
     }
   });
 
-
   $('#download_precip_hist_mod_data').click(function () {
     if (window.precipChart) {
-      window.precipChart.download_hist_mod_data(this)
+      window.precipChart.download_hist_mod_data(this);
     }
   });
   $('#download_precip_proj_mod_data').click(function () {
     if (window.precipChart) {
-      window.precipChart.download_proj_mod_data(this)
+      window.precipChart.download_proj_mod_data(this);
     }
   });
 
   $('#download_derived_hist_obs_data').click(function () {
     if (window.derivedChart) {
-      window.derivedChart.download_hist_obs_data(this)
+      window.derivedChart.download_hist_obs_data(this);
     }
   });
 
-
   $('#download_derived_hist_mod_data').click(function () {
     if (window.derivedChart) {
-      window.derivedChart.download_hist_mod_data(this)
+      window.derivedChart.download_hist_mod_data(this);
     }
   });
   $('#download_derived_proj_mod_data').click(function () {
     if (window.derivedChart) {
-      window.derivedChart.download_proj_mod_data(this)
+      window.derivedChart.download_proj_mod_data(this);
     }
   });
 
-// This function will be called whenever the user changes the x-scale in the graph.
+  // This function will be called whenever the user changes the x-scale in the graph.
   function xrangeset(min, max) {
     // Force the slider thumbs to adjust to the appropriate place
 
@@ -809,7 +799,13 @@ $(function () {
     window.precipChart.resize();
     window.derivedChart.resize();
   }, 700);
-  $(window).resize(function () { window.tempChart.resize(); });
-  $(window).resize(function () { window.precipChart.resize(); });
-  $(window).resize(function () { window.derivedChart.resize(); });
+  $(window).resize(function () {
+    window.tempChart.resize();
+  });
+  $(window).resize(function () {
+    window.precipChart.resize();
+  });
+  $(window).resize(function () {
+    window.derivedChart.resize();
+  });
 });

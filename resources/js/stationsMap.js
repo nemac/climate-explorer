@@ -1,7 +1,9 @@
 'use strict';
 // Use AMD loader if present, if not use global jQuery
 
-((function (root, factory) {
+var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
+
+(function (root, factory) {
   if (typeof define === 'function' && define.amd) {
     // AMD. Register as an anonymous module.
     define(['jquery'], factory);
@@ -91,7 +93,7 @@
       // constrainMapToExtent: {xmin: -180, xmax: -62, ymin: 10, ymax: 54},
       //zoom and center are ignored if extent is provided.
       zoom: 3,
-      center: [-123,42],
+      center: [-123, 42],
       // Additional elements
       stationOverlayContainerId: "station-overlay-container",
       // Map layers
@@ -115,37 +117,16 @@
 
     },
 
-
     // Dojo modules this widget expects to use.
-    dojoDeps: [
-      'esri/Map',
-      'esri/views/MapView',
-      'esri/layers/FeatureLayer',
-      'esri/renderers/SimpleRenderer',
-      'esri/Graphic',
-      'esri/symbols/WebStyleSymbol',
-      'esri/symbols/SimpleFillSymbol',
-      'esri/widgets/Legend',
-      'esri/widgets/Expand',
-      'esri/widgets/BasemapGallery',
-      'esri/widgets/ScaleBar',
-      'esri/geometry/SpatialReference',
-      'esri/layers/CSVLayer',
-      'esri/geometry/Extent',
-      'esri/geometry/Point',
-      'esri/widgets/Locate',
-      'esri/core/watchUtils',
-      'esri/geometry/support/webMercatorUtils',
-      // 'esri/widgets/Feature'
-    ],
+    dojoDeps: ['esri/Map', 'esri/views/MapView', 'esri/layers/FeatureLayer', 'esri/renderers/SimpleRenderer', 'esri/Graphic', 'esri/symbols/WebStyleSymbol', 'esri/symbols/SimpleFillSymbol', 'esri/widgets/Legend', 'esri/widgets/Expand', 'esri/widgets/BasemapGallery', 'esri/widgets/ScaleBar', 'esri/geometry/SpatialReference', 'esri/layers/CSVLayer', 'esri/geometry/Extent', 'esri/geometry/Point', 'esri/widgets/Locate', 'esri/core/watchUtils', 'esri/geometry/support/webMercatorUtils'],
 
-    _dojoLoaded: function () {
+    _dojoLoaded: function _dojoLoaded() {
       if (this.dojoMods === undefined) {
         return false;
       }
-      for (let i = 0; i < this.dojoDeps; i++) {
+      for (var i = 0; i < this.dojoDeps; i++) {
         if (!this.dojoMods.hasOwnProperty(this.dojoDeps[i][i].split('/').pop())) {
-          return false
+          return false;
         }
       }
       return true;
@@ -156,12 +137,12 @@
      * @resolve null
      * @private
      */
-    _whenDojoLoaded: function () {
+    _whenDojoLoaded: function _whenDojoLoaded() {
       if (undefined !== this._dojoLoadedPromise) {
-        return this._dojoLoadedPromise
+        return this._dojoLoadedPromise;
       }
       if (this._dojoLoaded()) {
-        return Promise.resolve()
+        return Promise.resolve();
       }
 
       this._dojoLoadedPromise = new Promise(function (resolve) {
@@ -169,47 +150,47 @@
           window.dojoConfig = {
             has: {
               "esri-promise-compatibility": 1,
-              "esri-promise-compatibility-deprecation-warnings": 0,
+              "esri-promise-compatibility-deprecation-warnings": 0
 
             },
             async: 1,
             deps: this.dojoDeps
           };
-          let arcgisStyles = document.createElement("link");
+          var arcgisStyles = document.createElement("link");
           arcgisStyles.rel = 'stylesheet';
-          arcgisStyles.href = 'https://js.arcgis.com/4.6/esri/css/main.css';
+          arcgisStyles.href = 'https://js.arcgis.com/4.9/esri/css/main.css';
           document.head.appendChild(arcgisStyles);
-          let arcgisScripts = document.createElement("script");
+          var arcgisScripts = document.createElement("script");
           arcgisScripts.type = "text/javascript";
-          arcgisScripts.src = "https://js.arcgis.com/4.6/";
+          arcgisScripts.src = "https://js.arcgis.com/4.9/";
           document.head.appendChild(arcgisScripts);
-          arcgisScripts.addEventListener('load', (function (resolve) {
-            this._registerDojoMods(resolve)
-          }.bind(this, resolve)));
+          arcgisScripts.addEventListener('load', function (resolve) {
+            this._registerDojoMods(resolve);
+          }.bind(this, resolve));
         } else {
           this._registerDojoMods(resolve);
         }
       }.bind(this)).catch(this._log);
-      return this._dojoLoadedPromise
+      return this._dojoLoadedPromise;
     },
     /**
      *
      * @private
      */
-    _registerDojoMods: function (resolve) {
-      require(this.dojoDeps, (function (resolve) {
+    _registerDojoMods: function _registerDojoMods(resolve) {
+      require(this.dojoDeps, function (resolve) {
         //get the list of modules
-        let mods = Array.prototype.slice.call(arguments, 1);
+        var mods = Array.prototype.slice.call(arguments, 1);
         this.dojoMods = {};
         // preserve the modules on this.dojoMods for later reference.
-        for (let i = 0; i < mods.length; i++) {
+        for (var i = 0; i < mods.length; i++) {
           this.dojoMods[this.dojoDeps[i].split('/').pop()] = mods[i];
         }
-        resolve()
-      }).bind(this, resolve));
+        resolve();
+      }.bind(this, resolve));
     },
     // Called once on instantiation.
-    _create: function () {
+    _create: function _create() {
 
       // All DOM nodes used by the widget (must be maintained for clean destruction)
       this.nodes = {};
@@ -235,7 +216,7 @@
       }
     },
 
-    _initMap: function () {
+    _initMap: function _initMap() {
       this.map = new this.dojoMods.Map({
         basemap: this.options.mode === 'high_tide_flooding' ? 'oceans' : 'topo'
       });
@@ -252,7 +233,7 @@
           rotationEnabled: false,
           minZoom: 3,
           maxZoom: 10,
-          snapToZoom: false,
+          snapToZoom: false
         }
       });
 
@@ -265,26 +246,30 @@
         // Constrain map panning
         if (this.view.extent !== undefined && this.view.extent !== null && this.constrainMapToExtent !== undefined && !this.constrainMapToExtent.contains(this.view.extent.center)) {
           //clamp center
-          let x = Math.min(Math.max(this.view.extent.center.x, this.constrainMapToExtent.xmin), this.constrainMapToExtent.xmax);
-          let y = Math.min(Math.max(this.view.extent.center.y, this.constrainMapToExtent.ymin), this.constrainMapToExtent.ymax);
-          this.view.center = new this.dojoMods.Point({x: x, y: y, spatialReference: this.view.extent.spatialReference});
+          var x = Math.min(Math.max(this.view.extent.center.x, this.constrainMapToExtent.xmin), this.constrainMapToExtent.xmax);
+          var y = Math.min(Math.max(this.view.extent.center.y, this.constrainMapToExtent.ymin), this.constrainMapToExtent.ymax);
+          this.view.center = new this.dojoMods.Point({ x: x, y: y, spatialReference: this.view.extent.spatialReference });
         }
       }.bind(this));
 
-          // Watch view's stationary property
+      // Watch view's stationary property
       this.dojoMods.watchUtils.whenTrue(this.view, "stationary", function () {
         // Get the new extent of the view when view is stationary.
         if (this.view.extent) {
-          let xymin = this.dojoMods.webMercatorUtils.xyToLngLat(this.view.extent.xmin, this.view.extent.ymin);
-          let xymax = this.dojoMods.webMercatorUtils.xyToLngLat(this.view.extent.xmax, this.view.extent.ymax);
-          let quickRound = function (num) {return Math.round(num * 100 + Number.EPSILON) / 100};
+          var xymin = this.dojoMods.webMercatorUtils.xyToLngLat(this.view.extent.xmin, this.view.extent.ymin);
+          var xymax = this.dojoMods.webMercatorUtils.xyToLngLat(this.view.extent.xmax, this.view.extent.ymax);
+          var quickRound = function quickRound(num) {
+            return Math.round(num * 100 + Number.EPSILON) / 100;
+          };
           this.options.extent = {
             xmin: quickRound(xymin[0]),
             xmax: quickRound(xymax[0]),
             ymin: quickRound(xymin[1]),
             ymax: quickRound(xymax[1])
           };
-          if (this.view.zoom && this.view.zoom > 0) { this.options.zoom = this.view.zoom;}
+          if (this.view.zoom && this.view.zoom > 0) {
+            this.options.zoom = this.view.zoom;
+          }
           this._trigger('change', null, this.options);
         }
       }.bind(this));
@@ -312,90 +297,89 @@
       });
 
       this.locateWidget = new this.dojoMods.Locate({
-        view: this.view,   // Attaches the Locate button to the view
+        view: this.view, // Attaches the Locate button to the view
         graphic: new this.dojoMods.Graphic({
-          symbol: {type: "simple-marker"}  // overwrites the default symbol used for the
-          // graphic placed at the location of the user when found
-        })
+          symbol: { type: "simple-marker" // overwrites the default symbol used for the
+            // graphic placed at the location of the user when found
+          } })
       });
 
       this.view.ui.add(this.locateWidget, "top-left");
     },
-    _createStationLayer: function (layerURL, options) {
+    _createStationLayer: function _createStationLayer(layerURL, options) {
+      var _this = this;
+
       // We implement our own json layer creator
       if (layerURL.endsWith('json')) {
         return Promise.resolve($.ajax({
           url: layerURL,
           type: "GET",
           contentType: "application/json; charset=utf-8",
-          dataType: "json",
-        }))
-          .catch(e => { console.log(e); })
-          .then((data) => {
-            if (undefined === data) {
-              console.log('Failed to retrieve station data. Refresh to try again.');
-              throw 'Failed to retrieve station data. Refresh to try again.'
-            }
-            let features = [];
-            data.forEach(function (station, index) {
-              features.push(new this.dojoMods.Graphic({
-                geometry: {
-                  type: "point",  // autocasts as new Point()
-                  longitude: station.lon,
-                  latitude: station.lat
-                },
-                attributes: {
-                  ObjectID: index,
-                  id: station.id,
-                  name: station.station ? station.station : station.name,
-                  mOverMHHW: station.derived || null
-                }
-              }))
-            }.bind(this));
-            return new this.dojoMods.FeatureLayer(Object.assign({
-              // create an instance of esri/layers/support/Field for each field object
-              fields: [
-                {
-                  name: "ObjectID",
-                  alias: "ObjectID",
-                  type: "oid"
-                }, {
-                  name: "id",
-                  alias: "Type",
-                  type: "string"
-                }, {
-                  name: "name",
-                  alias: "Name",
-                  type: "string"
-                },
-                {
-                  name: "mOverMHHW",
-                  alias: "mOverMHHW",
-                  type: "string"
-                }],
-              objectIdField: "ObjectID",
-              geometryType: "point",
-              spatialReference: {wkid: 4326},
-              source: features,
-            }, options));
-          });
-      }
-      else {
+          dataType: "json"
+        })).catch(function (e) {
+          console.log(e);
+        }).then(function (data) {
+          if (undefined === data) {
+            console.log('Failed to retrieve station data. Refresh to try again.');
+            throw 'Failed to retrieve station data. Refresh to try again.';
+          }
+          var features = [];
+          data.forEach(function (station, index) {
+            features.push(new this.dojoMods.Graphic({
+              geometry: {
+                type: "point", // autocasts as new Point()
+                longitude: station.lon,
+                latitude: station.lat
+              },
+              attributes: {
+                ObjectID: index,
+                id: station.id,
+                name: station.station ? station.station : station.name,
+                mOverMHHW: station.derived || null
+              }
+            }));
+          }.bind(_this));
+          return new _this.dojoMods.FeatureLayer(_extends({
+            // create an instance of esri/layers/support/Field for each field object
+            fields: [{
+              name: "ObjectID",
+              alias: "ObjectID",
+              type: "oid"
+            }, {
+              name: "id",
+              alias: "Type",
+              type: "string"
+            }, {
+              name: "name",
+              alias: "Name",
+              type: "string"
+            }, {
+              name: "mOverMHHW",
+              alias: "mOverMHHW",
+              type: "string"
+            }],
+            objectIdField: "ObjectID",
+            geometryType: "point",
+            spatialReference: { wkid: 4326 },
+            source: features
+          }, options));
+        });
+      } else {
         //if url is a feature service or csv we use the provided methods for creating them.
-        let layerClass = this.dojoMods.FeatureLayer;
+        var layerClass = this.dojoMods.FeatureLayer;
         if (layerURL.endsWith('csv')) {
           layerClass = this.dojoMods.CSVLayer;
         }
-        return Promise.resolve(new layerClass(Object.assign({url: layerURL}, options)));
+        return Promise.resolve(new layerClass(_extends({ url: layerURL }, options)));
       }
     },
-    _initDailyStationsLayer: function () {
+    _initDailyStationsLayer: function _initDailyStationsLayer() {
       this._createStationLayer(this.options.dailyStationsLayerURL, {
         outfields: ['*'],
         renderer: {
-          type: "simple",  // autocasts as new SimpleRenderer()
+          type: "simple", // autocasts as new SimpleRenderer()
           symbol: {
-            type: "simple-marker",  // autocasts as new SimpleMarkerSymbol()
+            type: "simple-marker", // autocasts as new SimpleMarkerSymbol()
             size: 7,
             color: "#df3e2e",
             outline: {
@@ -409,45 +393,41 @@
         this._MapInitPromise.then(function () {
           this.map.add(this.dailyStationsLayer);
           this.view.on("pointer-move", function (event) {
-            $('#stations-map circle').each(function(){
-              if ("stationTooltip" in this){
-                this.stationTooltip.hide()
+            $('#stations-map circle').each(function () {
+              if ("stationTooltip" in this) {
+                this.stationTooltip.hide();
               }
             });
-            this.view.hitTest(event)
-              .then(function (response) {
-                let station = response.results.filter(function (result) {
-                  return result.graphic.layer === this.dailyStationsLayer;
-                }.bind(this))[0].graphic;
+            this.view.hitTest(event).then(function (response) {
+              var station = response.results.filter(function (result) {
+                return result.graphic.layer === this.dailyStationsLayer;
+              }.bind(this))[0].graphic;
 
-                var refEl = $('circle:hover').first();
-                if (!("stationTooltip" in refEl))
-                {
-                  refEl.stationTooltip = new Tooltip(refEl, {
-                    placement: 'right',
-                    title: station.attributes.name,
-                    container: $('#stations-map')[0],
-                  })
-                }
-                refEl.stationTooltip.show();
-              }.bind(this));
+              var refEl = $('circle:hover').first();
+              if (!("stationTooltip" in refEl)) {
+                refEl.stationTooltip = new Tooltip(refEl, {
+                  placement: 'right',
+                  title: station.attributes.name,
+                  container: $('#stations-map')[0]
+                });
+              }
+              refEl.stationTooltip.show();
+            }.bind(this));
           }.bind(this));
           this.view.on("click", function (event) {
-            this.view.hitTest(event)
-              .then(function (response) {
-                let station = response.results.filter(function (result) {
-                  return result.graphic.layer === this.dailyStationsLayer;
-                }.bind(this))[0].graphic;
-                console.log(station.attributes.name);
-                this._setOptions({stationName: station.attributes.name, stationId: station.attributes.id});
-              }.bind(this));
+            this.view.hitTest(event).then(function (response) {
+              var station = response.results.filter(function (result) {
+                return result.graphic.layer === this.dailyStationsLayer;
+              }.bind(this))[0].graphic;
+              console.log(station.attributes.name);
+              this._setOptions({ stationName: station.attributes.name, stationId: station.attributes.id });
+            }.bind(this));
           }.bind(this));
-
         }.bind(this));
       }.bind(this));
     },
 
-    _initThresholdStationsLayer: function () {
+    _initThresholdStationsLayer: function _initThresholdStationsLayer() {
       // if same data, only load one.
       if (this.options.thresholdStationsLayerURL === this.options.dailyStationsLayerURL) {
         if (undefined !== this.dailyStationsLayer) {
@@ -461,9 +441,9 @@
       this._createStationLayer(this.options.thresholdStationsLayerURL, {
         outfields: ['*'],
         renderer: {
-          type: "simple",  // autocasts as new SimpleRenderer()
+          type: "simple", // autocasts as new SimpleRenderer()
           symbol: {
-            type: "simple-marker",  // autocasts as new SimpleMarkerSymbol()
+            type: "simple-marker", // autocasts as new SimpleMarkerSymbol()
             size: 7,
             color: "#df3e2e",
             outline: {
@@ -477,94 +457,87 @@
         this._MapInitPromise.then(function () {
           this.map.add(this.thresholdStationsLayer);
           this.view.on("pointer-move", function (event) {
-            $('#stations-map circle').each(function(){
-              if ("stationTooltip" in this){
-                this.stationTooltip.hide()
+            $('#stations-map circle').each(function () {
+              if ("stationTooltip" in this) {
+                this.stationTooltip.hide();
               }
             });
-            this.view.hitTest(event)
-              .then(function (response) {
-                let station = response.results.filter(function (result) {
-                  return result.graphic.layer === this.thresholdStationsLayer;
-                }.bind(this))[0].graphic;
+            this.view.hitTest(event).then(function (response) {
+              var station = response.results.filter(function (result) {
+                return result.graphic.layer === this.thresholdStationsLayer;
+              }.bind(this))[0].graphic;
 
-                var refEl = $('circle:hover').first();
-                if (!("stationTooltip" in refEl))
-                {
-                  refEl.stationTooltip = new Tooltip(refEl, {
-                    placement: 'right',
-                    title: station.attributes.name,
-                    container: $('#stations-map')[0],
-                  })
-                }
-                refEl.stationTooltip.show();
-              }.bind(this));
+              var refEl = $('circle:hover').first();
+              if (!("stationTooltip" in refEl)) {
+                refEl.stationTooltip = new Tooltip(refEl, {
+                  placement: 'right',
+                  title: station.attributes.name,
+                  container: $('#stations-map')[0]
+                });
+              }
+              refEl.stationTooltip.show();
+            }.bind(this));
           }.bind(this));
           this.view.on("click", function (event) {
-            this.view.hitTest(event)
-              .then(function (response) {
-                let station = response.results.filter(function (result) {
-                  return result.graphic.layer === this.thresholdStationsLayer;
-                }.bind(this))[0].graphic;
-                this._setOptions({stationName: station.attributes.name, stationId: station.attributes.id});
-              }.bind(this));
+            this.view.hitTest(event).then(function (response) {
+              var station = response.results.filter(function (result) {
+                return result.graphic.layer === this.thresholdStationsLayer;
+              }.bind(this))[0].graphic;
+              this._setOptions({ stationName: station.attributes.name, stationId: station.attributes.id });
+            }.bind(this));
           }.bind(this));
         }.bind(this));
-      }.bind(this))
+      }.bind(this));
     },
 
-    _initTidalStationsLayer: function () {
-      this._createStationLayer(this.options.tidalStationsLayerURL,
-        {
-          outfields: ['*'],
-          renderer: {
-            type: "simple",  // autocasts as new SimpleRenderer()
-            symbol: {
-              type: "simple-marker",  // autocasts as new SimpleMarkerSymbol()
-              size: 7,
-              color: "#3e6ac1",
-              outline: {
-                color: '#ffffff',
-                width: 1
-              }
+    _initTidalStationsLayer: function _initTidalStationsLayer() {
+      this._createStationLayer(this.options.tidalStationsLayerURL, {
+        outfields: ['*'],
+        renderer: {
+          type: "simple", // autocasts as new SimpleRenderer()
+          symbol: {
+            type: "simple-marker", // autocasts as new SimpleMarkerSymbol()
+            size: 7,
+            color: "#3e6ac1",
+            outline: {
+              color: '#ffffff',
+              width: 1
             }
           }
-        }).then(function (layer) {
+        }
+      }).then(function (layer) {
         this.tidalStationsLayer = layer;
         this._MapInitPromise.then(function () {
           this.map.add(this.tidalStationsLayer);
           this.view.on("pointer-move", function (event) {
-            $('#stations-map circle').each(function(){
-              if ("stationTooltip" in this){
-                this.stationTooltip.hide()
+            $('#stations-map circle').each(function () {
+              if ("stationTooltip" in this) {
+                this.stationTooltip.hide();
               }
             });
-            this.view.hitTest(event)
-              .then(function (response) {
-                let station = response.results.filter(function (result) {
-                  return result.graphic.layer === this.tidalStationsLayer;
-                }.bind(this))[0].graphic;
+            this.view.hitTest(event).then(function (response) {
+              var station = response.results.filter(function (result) {
+                return result.graphic.layer === this.tidalStationsLayer;
+              }.bind(this))[0].graphic;
 
-                var refEl = $('circle:hover').first();
-                if (!("stationTooltip" in refEl))
-                {
-                  refEl.stationTooltip = new Tooltip(refEl, {
-                    placement: 'right',
-                    title: station.attributes.name,
-                    container: $('#stations-map')[0],
-                  })
-                }
-                refEl.stationTooltip.show();
-              }.bind(this));
+              var refEl = $('circle:hover').first();
+              if (!("stationTooltip" in refEl)) {
+                refEl.stationTooltip = new Tooltip(refEl, {
+                  placement: 'right',
+                  title: station.attributes.name,
+                  container: $('#stations-map')[0]
+                });
+              }
+              refEl.stationTooltip.show();
+            }.bind(this));
           }.bind(this));
           this.view.on("click", function (event) {
-            this.view.hitTest(event)
-              .then(function (response) {
-                let station = response.results.filter(function (result) {
-                  return result.graphic.layer === this.tidalStationsLayer;
-                }.bind(this))[0].graphic;
-                this._setOptions({stationName: station.attributes.name, stationId: station.attributes.id, stationMOverMHHW: station.attributes.mOverMHHW || null});
-              }.bind(this));
+            this.view.hitTest(event).then(function (response) {
+              var station = response.results.filter(function (result) {
+                return result.graphic.layer === this.tidalStationsLayer;
+              }.bind(this))[0].graphic;
+              this._setOptions({ stationName: station.attributes.name, stationId: station.attributes.id, stationMOverMHHW: station.attributes.mOverMHHW || null });
+            }.bind(this));
           }.bind(this));
         }.bind(this));
       }.bind(this));
@@ -572,20 +545,17 @@
 
     // Init is automatically invoked after create, and again every time the
     //  widget is invoked with no arguments after that
-    _init: function () {
+    _init: function _init() {
       this._trigger('initialized');
     },
 
-
     // I find it useful to separate out my event handler logic just for
     // organization and readability's sake, but it's certainly not necessary
-    _addHandlers: function () {
-
-    },
+    _addHandlers: function _addHandlers() {},
 
     // Allows the widget to react to option changes. Any custom behaviors
     // can be configured here.
-    _setOption: function (key, value) {
+    _setOption: function _setOption(key, value) {
       // This will actually update the value in the options hash
       this._super(key, value);
       // And now we can act on that change
@@ -608,8 +578,7 @@
               }
               if (undefined !== this.dailyStationsLayer) {
                 this.dailyStationsLayer.visible = true;
-              }
-              else {
+              } else {
                 this._whenDojoLoaded().then(this._initDailyStationsLayer.bind(this));
               }
               if (this.map.basemap.id !== 'topo') {
@@ -625,9 +594,7 @@
               }
               if (undefined !== this.thresholdStationsLayer) {
                 this.thresholdStationsLayer.visible = true;
-
-              }
-              else {
+              } else {
                 this._whenDojoLoaded().then(this._initThresholdStationsLayer.bind(this));
               }
               if (this.map.basemap.id !== 'topo') {
@@ -643,8 +610,7 @@
               }
               if (undefined !== this.tidalStationsLayer) {
                 this.tidalStationsLayer.visible = true;
-              }
-              else {
+              } else {
                 this._whenDojoLoaded().then(this._initTidalStationsLayer.bind(this));
               }
               if (this.map.basemap.id !== 'oceans') {
@@ -657,143 +623,56 @@
       }
     },
 
-    _setOptions: function (options) {
-      let old_options = Object.assign({}, this.options);
+    _setOptions: function _setOptions(options) {
+      var old_options = _extends({}, this.options);
       this._super(options);
       if (this.options.stationId !== old_options.stationId) {
         this._stationSelected();
       }
       if (this.options.extent !== old_options.extent && this.options.extent !== null) {
         this.view.goTo(new this.dojoMods.Extent(this.options.extent));
-      }
-      else if (this.options.center !== old_options.center && this.options.center !== null) {
+      } else if (this.options.center !== old_options.center && this.options.center !== null) {
         this.options.extent = null;
-        this.view.goTo({center: new this.dojoMods.Point({latitude: this.options.center[0], longitude: this.options.center[1]}), zoom: this.options.zoom});
+        this.view.goTo({ center: new this.dojoMods.Point({ latitude: this.options.center[0], longitude: this.options.center[1] }), zoom: this.options.zoom });
       }
       this._trigger('change', null, this.options);
       return this;
     },
 
-    _stationSelected: function () {
+    _stationSelected: function _stationSelected() {
       if (this.options.stationId === null) {
-        return
+        return;
       }
 
       $(this.nodes.stationOverlayContainer).css('visibility', 'visible');
       switch (this.options.mode) {
         case 'daily_vs_climate':
-          $(this.nodes.stationOverlayContainer).append(`
-              <div id="station-overlay">
-                <div id="station-overlay-close">x</div>
-                <div id="station-overlay-header">
-                  <div class="accent-color tidal-header" style="margin-bottom: 20px;">
-                    <span class="icon icon-district station-overlay-header-icon"></span>Weather Station Daily vs. Climate
-                  </div>
-                  <h5>Name: ${this.options.stationName}</h5>
-                  <h5>Station ID: ${this.options.stationId}</h5>
-                </div>
-                <div id="multi-chart" class="left_chart"></div>
-                <!--only shows here if on xs screens-->
-                <div class="temp-download-btns d-xs-only">
-                  <a href="javascript:void(0)" class="download-temp-image"><span class="icon icon-download-image"></span> Image</a> 
-                  <a href="javascript:void(0)" class="download-temp-data"><span class="icon icon-download-chart"></span> Data</a>
-                </div>
-                <div id="multi-precip-chart" class="right_chart"></div>
-                <div class="precip-download-btns d-xs-only">
-                  <a href="javascript:void(0)" class="download-precipitation-image"><span class="icon icon-download-image"></span> Image</a> 
-                  <a href="javascript:void(0)" class="download-precipitation-data"><span class="icon icon-download-chart"></span> Data</a>
-                </div>
-                <!--end-->
-                <div style="clear:both"></div>
-                <div class="temp-download-btns d-none-xs">
-                  <a href="javascript:void(0)" class="download-temp-image"><span class="icon icon-download-image"></span> Image</a> 
-                  <a href="javascript:void(0)" class="download-temp-data"><span class="icon icon-download-chart"></span> Data</a>
-                </div>
-                <div class="precip-download-btns d-none-xs">
-                  <a href="javascript:void(0)" class="download-precipitation-image"><span class="icon icon-download-image"></span> Image</a> 
-                  <a href="javascript:void(0)" class="download-precipitation-data"><span class="icon icon-download-chart"></span> Data</a>
-                </div>
-                <div id="overlay-chart-container">
-                  <div class="station_overlay_text">
-                  <p class="text-bold">Pan or zoom on these graphs to view other years. Place your cursor on either axis and then scroll, click-and-drag, or hold down your SHIFT key and scroll to adjust the display.</p>
-                  <p>Blue bars on temperature graphs indicate the range of observed temperatures for each day; the green band shows Climate Normals for temperature—the average temperature range at that station from 1981-2010. Blue areas on precipitation graphs track year-to-date cumulative precipitation; the black line shows Climate Normals for precipitation. Data from <a target="_blank" href="https://www.ncdc.noaa.gov/data-access/land-based-station-data/land-based-datasets/global-historical-climatology-network-ghcn">Global Historical Climatology Network-Daily dataset</a>, served by  <a target="_blank"  href="http://www.rcc-acis.org/">ACIS</a>.</p>
-                  </div>
-                </div>
-              </div>`
-          );
+          $(this.nodes.stationOverlayContainer).append('\n              <div id="station-overlay">\n                <div id="station-overlay-close">x</div>\n                <div id="station-overlay-header">\n                  <div class="accent-color tidal-header" style="margin-bottom: 20px;">\n                    <span class="icon icon-district station-overlay-header-icon"></span>Weather Station Daily vs. Climate\n                  </div>\n                  <h5>Name: ' + this.options.stationName + '</h5>\n                  <h5>Station ID: ' + this.options.stationId + '</h5>\n                </div>\n                <div id="multi-chart" class="left_chart"></div>\n                <!--only shows here if on xs screens-->\n                <div class="temp-download-btns d-xs-only">\n                  <a href="javascript:void(0)" class="download-temp-image"><span class="icon icon-download-image"></span> Image</a> \n                  <a href="javascript:void(0)" class="download-temp-data"><span class="icon icon-download-chart"></span> Data</a>\n                </div>\n                <div id="multi-precip-chart" class="right_chart"></div>\n                <div class="precip-download-btns d-xs-only">\n                  <a href="javascript:void(0)" class="download-precipitation-image"><span class="icon icon-download-image"></span> Image</a> \n                  <a href="javascript:void(0)" class="download-precipitation-data"><span class="icon icon-download-chart"></span> Data</a>\n                </div>\n                <!--end-->\n                <div style="clear:both"></div>\n                <div class="temp-download-btns d-none-xs">\n                  <a href="javascript:void(0)" class="download-temp-image"><span class="icon icon-download-image"></span> Image</a> \n                  <a href="javascript:void(0)" class="download-temp-data"><span class="icon icon-download-chart"></span> Data</a>\n                </div>\n                <div class="precip-download-btns d-none-xs">\n                  <a href="javascript:void(0)" class="download-precipitation-image"><span class="icon icon-download-image"></span> Image</a> \n                  <a href="javascript:void(0)" class="download-precipitation-data"><span class="icon icon-download-chart"></span> Data</a>\n                </div>\n                <div id="overlay-chart-container">\n                  <div class="station_overlay_text">\n                  <p class="text-bold">Pan or zoom on these graphs to view other years. Place your cursor on either axis and then scroll, click-and-drag, or hold down your SHIFT key and scroll to adjust the display.</p>\n                  <p>Blue bars on temperature graphs indicate the range of observed temperatures for each day; the green band shows Climate Normals for temperature\u2014the average temperature range at that station from 1981-2010. Blue areas on precipitation graphs track year-to-date cumulative precipitation; the black line shows Climate Normals for precipitation. Data from <a target="_blank" href="https://www.ncdc.noaa.gov/data-access/land-based-station-data/land-based-datasets/global-historical-climatology-network-ghcn">Global Historical Climatology Network-Daily dataset</a>, served by  <a target="_blank"  href="http://www.rcc-acis.org/">ACIS</a>.</p>\n                  </div>\n                </div>\n              </div>');
 
-          $('#multi-chart').stationAnnualGraph({variable: 'temperature', station: this.options.stationId, stationName: this.options.stationName});
-          $('#multi-precip-chart').stationAnnualGraph({variable: 'precipitation', station: this.options.stationId, stationName: this.options.stationName});
+          $('#multi-chart').stationAnnualGraph({ variable: 'temperature', station: this.options.stationId, stationName: this.options.stationName });
+          $('#multi-precip-chart').stationAnnualGraph({ variable: 'precipitation', station: this.options.stationId, stationName: this.options.stationName });
 
-          $('.download-temp-image').click((function (event) {
-              event.target.href = $("#multi-chart canvas")[0].toDataURL('image/png');
-              event.target.download = "daily_vs_climate_temp_"+this.options.stationId+".png";
-          }).bind(this));
+          $('.download-temp-image').click(function (event) {
+            event.target.href = $("#multi-chart canvas")[0].toDataURL('image/png');
+            event.target.download = "daily_vs_climate_temp_" + this.options.stationId + ".png";
+          }.bind(this));
 
-          $('.download-temp-data').click((function (event) {
+          $('.download-temp-data').click(function (event) {
             $('#multi-chart').stationAnnualGraph('downloadTemperatureData', event.currentTarget);
-          }).bind(this));
+          }.bind(this));
 
-          $('.download-precipitation-image').click((function (event) {
-              event.target.href = $("#multi-precip-chart canvas")[0].toDataURL('image/png');
-              event.target.download = "daily_vs_climate_precip_"+this.options.stationId+".png";
-          }).bind(this));
+          $('.download-precipitation-image').click(function (event) {
+            event.target.href = $("#multi-precip-chart canvas")[0].toDataURL('image/png');
+            event.target.download = "daily_vs_climate_precip_" + this.options.stationId + ".png";
+          }.bind(this));
 
-          $('.download-precipitation-data').click((function (event) {
+          $('.download-precipitation-data').click(function (event) {
             $('#multi-precip-chart').stationAnnualGraph('downloadPrecipitationData', event.currentTarget);
-          }).bind(this));
+          }.bind(this));
 
           break;
         case 'thresholds':
-          $(this.nodes.stationOverlayContainer).append(`
-            <div id="station-overlay">
-              <div id="station-overlay-close">x</div>
-              <div id="station-overlay-header">
-                <div class="accent-color tidal-header" style="margin-bottom: 20px;">
-                <span class="icon icon-district station-overlay-header-icon"></span>Weather Station Threshholds
-                <div class="thresholds-download-btns">
-                    <a href="javascript:void(0)" class="download-thresholds-image"><span class="icon icon-download-image"></span><span class="d-none-xs">Image</span></a> 
-                    <a href="javascript:void(0)" class="download-thresholds-data"><span class="icon icon-download-chart"></span><span class="d-none-xs">Data</span></a>
-                    </div>
-                </div>
-                <h5>Name: ${this.options.stationName}</h5>
-                <h5>Station ID: ${this.options.stationId}</h5>
-              </div>
-              <div id="threshold_inputs">
-                <div class="field-pair field-var">
-                  <label for="itemvariable">Variable:</label>
-                  <div class="field">
-                    <select name="itemvariable" id="itemvariable">
-                      <option value="precipitation">Precipitation</option>
-                      <option value="tavg">Average Temperature</option>
-                      <option value="tmax">Maximum Temperature</option>
-                      <option value="tmin">Minimum Temperature</option>
-                    </select>
-                  </div>
-                </div>
-                <div class="field-pair field-threshold append">
-                  <label for="threshold">Threshold:</label>
-                  <div class="field">
-                    <input type="number" name="threshold" id="threshold" value="1" step="0.1"> <span class="append" id="item_inches_or_f">inches</span>
-                  </div>
-                </div>
-                <div class="field-pair field-window append">
-                  <label for="window">Window:</label>
-                  <div class="field">
-                    <input type="number" id="window" name="window" value="1"> <span class="append">days</span>
-                  </div>
-                </div>
-                
-              </div>
-              <div id="overlay-thresholds-container">
-                <div id="thresholds-container"></div>
-                <div class="station_overlay_text">
-                  <p>This graph shows how often the selected threshold has been exceeded per year. For consistency, this chart excludes any years that are missing more than five daily temperature reports or more than one precipitation report in a single month. Data from <a target="_blank" href="https://www.ncdc.noaa.gov/data-access/land-based-station-data/land-based-datasets/global-historical-climatology-network-ghcn">Global Historical Climatology Network</a>, served by <a  target="_blank" href="http://www.rcc-acis.org/">ACIS</a>.</p>
-                </div>
-              </div>
-            </div>
-            </div>`
-          );
+          $(this.nodes.stationOverlayContainer).append('\n            <div id="station-overlay">\n              <div id="station-overlay-close">x</div>\n              <div id="station-overlay-header">\n                <div class="accent-color tidal-header" style="margin-bottom: 20px;">\n                <span class="icon icon-district station-overlay-header-icon"></span>Weather Station Threshholds\n                <div class="thresholds-download-btns">\n                    <a href="javascript:void(0)" class="download-thresholds-image"><span class="icon icon-download-image"></span><span class="d-none-xs">Image</span></a> \n                    <a href="javascript:void(0)" class="download-thresholds-data"><span class="icon icon-download-chart"></span><span class="d-none-xs">Data</span></a>\n                    </div>\n                </div>\n                <h5>Name: ' + this.options.stationName + '</h5>\n                <h5>Station ID: ' + this.options.stationId + '</h5>\n              </div>\n              <div id="threshold_inputs">\n                <div class="field-pair field-var">\n                  <label for="itemvariable">Variable:</label>\n                  <div class="field">\n                    <select name="itemvariable" id="itemvariable">\n                      <option value="precipitation">Precipitation</option>\n                      <option value="tavg">Average Temperature</option>\n                      <option value="tmax">Maximum Temperature</option>\n                      <option value="tmin">Minimum Temperature</option>\n                    </select>\n                  </div>\n                </div>\n                <div class="field-pair field-threshold append">\n                  <label for="threshold">Threshold:</label>\n                  <div class="field">\n                    <input type="number" name="threshold" id="threshold" value="1" step="0.1"> <span class="append" id="item_inches_or_f">inches</span>\n                  </div>\n                </div>\n                <div class="field-pair field-window append">\n                  <label for="window">Window:</label>\n                  <div class="field">\n                    <input type="number" id="window" name="window" value="1"> <span class="append">days</span>\n                  </div>\n                </div>\n                \n              </div>\n              <div id="overlay-thresholds-container">\n                <div id="thresholds-container"></div>\n                <div class="station_overlay_text">\n                  <p>This graph shows how often the selected threshold has been exceeded per year. For consistency, this chart excludes any years that are missing more than five daily temperature reports or more than one precipitation report in a single month. Data from <a target="_blank" href="https://www.ncdc.noaa.gov/data-access/land-based-station-data/land-based-datasets/global-historical-climatology-network-ghcn">Global Historical Climatology Network</a>, served by <a  target="_blank" href="http://www.rcc-acis.org/">ACIS</a>.</p>\n                </div>\n              </div>\n            </div>\n            </div>');
 
           $("#thresholds-container").item({
             station: this.options.stationId, // GHCN-D Station id (required)
@@ -810,23 +689,22 @@
             barColor: '#307bda' // Color for bars.
           });
 
-          $('.download-thresholds-image').click((function (event) {
-              event.currentTarget.href = $("#thresholds-container canvas")[0].toDataURL('image/png');
-              event.currentTarget.download = "thresholds_"+this.options.stationId+".png";
-          }).bind(this));
+          $('.download-thresholds-image').click(function (event) {
+            event.currentTarget.href = $("#thresholds-container canvas")[0].toDataURL('image/png');
+            event.currentTarget.download = "thresholds_" + this.options.stationId + ".png";
+          }.bind(this));
 
-           $('.download-thresholds-data').click((function (event) {
-             $("#thresholds-container").item('downloadExceedanceData',event.currentTarget);
-          }).bind(this));
+          $('.download-thresholds-data').click(function (event) {
+            $("#thresholds-container").item('downloadExceedanceData', event.currentTarget);
+          }.bind(this));
 
           $('#threshold').change(function () {
-            $("#thresholds-container").item({threshold: parseFloat($('#threshold').val())}).item('update');
+            $("#thresholds-container").item({ threshold: parseFloat($('#threshold').val()) }).item('update');
           });
 
           $('#station').change(function () {
             $("#thresholds-container").item('option', 'station', $('#station').val()).item('update');
           });
-
 
           // when #variable changes, update ui units and apply sensible defaults.
           $('#itemvariable').change(function () {
@@ -860,7 +738,7 @@
 
           $('#percentileThreshold').change(function () {
 
-            let value = $('#percentileThreshold').val();
+            var value = $('#percentileThreshold').val();
             if (value === '') {
               return;
             }
@@ -871,72 +749,17 @@
             }
 
             $('#threshold').val($("#thresholds-container").item('getPercentileValue', value)).trigger('change');
-
           });
 
           $('#window').change(function () {
-            $("#thresholds-container").item({window: parseInt($('#window').val())});
+            $("#thresholds-container").item({ window: parseInt($('#window').val()) });
             $("#thresholds-container").item('update');
           });
 
           // this.chart = new ChartBuilder({station: value}, this.options.thresholdStationsDataURL);
           break;
         case 'high_tide_flooding':
-          $(this.nodes.stationOverlayContainer).append(`
-              <div id="station-overlay">
-                <div id="station-overlay-close">x</div>
-                <div id="station-overlay-header">
-                  <div class="accent-color tidal-header" style="margin-bottom: 20px;">
-                    <span class="icon icon-district station-overlay-header-icon"></span>Tidal Station High-tide Flooding
-                    <span class="tidal-download-btns">
-                    <a href="javascript:void(0)" class="download-tidal-image"><span class="icon icon-download-image"></span><span class="d-none-xs">Image</span></a> 
-                    <a href="https://tidesandcurrents.noaa.gov/publications/techrpt86_PaP_of_HTFlooding.csv" class="download-tidal-data"><span class="icon icon-download-chart"></span><span class="d-none-xs">Data</span></a>
-                    </span>
-                  </div>
-                  <h5>Name: <span class="station_name">${this.options.stationName}</span></h5>
-                  <h5>Station ID: <span class="station_id">${this.options.stationId}</span></h5>
-                  <h5>Local threshold: ${this.options.stationMOverMHHW ? this.options.stationMOverMHHW + "m over MHHW":""}</h5>
-                  <button type="button" class="tidal-zoom-toggle-btn"><span class="glyphicon glyphicon-zoom-in" aria-hidden="true"></span> Historical</button>
-                </div>
-                <select name="" id="tidal_station" class="form-control" style="width: 200px;display:none">
-                  <option value="" disabled selected hidden>Station</option>
-                  <option value="8443970">Boston, MA</option>
-                  <option value="8454000">Providence, RI</option>
-                  <option value="8461490">New London, CT</option>
-                  <option value="8510560">Montauk, NY</option>
-                  <option value="8516945">Kings Point, NY</option>
-                  <option value="8518750">Battery, NY</option>
-                  <option value="8531680">Sandy Hook, NJ</option>
-                  <option value="8534720">Atlantic City, NJ</option>
-                  <option value="8545240">Philadelphia, PA</option>
-                  <option value="8557380">Lewes, DE</option>
-                  <option value="8574680">Baltimore, MD</option>
-                  <option value="8575512">Annapolis, MD</option>
-                  <option value="8594900">Washington D.C.</option>
-                  <option value="8638610">Sewells Point, VA</option>
-                  <option value="8658120">Wilmington, NC</option>
-                  <option value="8665530">Charleston, SC</option>
-                  <option value="8670870">Fort Pulaski, GA</option>
-                  <option value="8720030">Fernandina Beach, FL</option>
-                  <option value="8720218">Mayport, FL</option>
-                  <option value="8724580">Key West, FL</option>
-                  <option value="8726430">St Petersburg, FL</option>
-                  <option value="8771341">Galveston Bay, TX</option>
-                  <option value="8779770">Port Isabel, TX</option>
-                  <option value="9410230">La Jolla, CA</option>
-                  <option value="9414290">San Francisco, CA</option>
-                  <option value="9447130">Seattle, WA</option>
-                  <option value="1612340">Honolulu, HI</option>
-                </select>
-                <div id="overlay-chart-container">
-                  <div id="tidal-chart"></div>
-                  <div class="station_overlay_text">
-                    <p>Click 'Historical' button to zoom in on or out from the observational period. Place your cursor over the curves on this graph for details. Gray bars from 1950 to 2016 show observed annual counts of high-tide flooding. Red and blue curves show the average number of high-tide flooding events projected for future years under two scenarios. Data from <a target="_blank" href="https://tidesandcurrents.noaa.gov/publications/techrpt86_PaP_of_HTFlooding.pdf">NOAA Technical Report NOS CO-OPS 086 - Patterns and Projections of High-tide Flooding</a>.</p>
-                  </div>
-                </div>
-              </div>`
-          );
-
+          $(this.nodes.stationOverlayContainer).append('\n              <div id="station-overlay">\n                <div id="station-overlay-close">x</div>\n                <div id="station-overlay-header">\n                  <div class="accent-color tidal-header" style="margin-bottom: 20px;">\n                    <span class="icon icon-district station-overlay-header-icon"></span>Tidal Station High-tide Flooding\n                    <span class="tidal-download-btns">\n                    <a href="javascript:void(0)" class="download-tidal-image"><span class="icon icon-download-image"></span><span class="d-none-xs">Image</span></a> \n                    <a href="https://tidesandcurrents.noaa.gov/publications/techrpt86_PaP_of_HTFlooding.csv" class="download-tidal-data"><span class="icon icon-download-chart"></span><span class="d-none-xs">Data</span></a>\n                    </span>\n                  </div>\n                  <h5>Name: <span class="station_name">' + this.options.stationName + '</span></h5>\n                  <h5>Station ID: <span class="station_id">' + this.options.stationId + '</span></h5>\n                  <h5>Local threshold: ' + (this.options.stationMOverMHHW ? this.options.stationMOverMHHW + "m over MHHW" : "") + '</h5>\n                  <button type="button" class="tidal-zoom-toggle-btn"><span class="glyphicon glyphicon-zoom-in" aria-hidden="true"></span> Historical</button>\n                </div>\n                <select name="" id="tidal_station" class="form-control" style="width: 200px;display:none">\n                  <option value="" disabled selected hidden>Station</option>\n                  <option value="8443970">Boston, MA</option>\n                  <option value="8454000">Providence, RI</option>\n                  <option value="8461490">New London, CT</option>\n                  <option value="8510560">Montauk, NY</option>\n                  <option value="8516945">Kings Point, NY</option>\n                  <option value="8518750">Battery, NY</option>\n                  <option value="8531680">Sandy Hook, NJ</option>\n                  <option value="8534720">Atlantic City, NJ</option>\n                  <option value="8545240">Philadelphia, PA</option>\n                  <option value="8557380">Lewes, DE</option>\n                  <option value="8574680">Baltimore, MD</option>\n                  <option value="8575512">Annapolis, MD</option>\n                  <option value="8594900">Washington D.C.</option>\n                  <option value="8638610">Sewells Point, VA</option>\n                  <option value="8658120">Wilmington, NC</option>\n                  <option value="8665530">Charleston, SC</option>\n                  <option value="8670870">Fort Pulaski, GA</option>\n                  <option value="8720030">Fernandina Beach, FL</option>\n                  <option value="8720218">Mayport, FL</option>\n                  <option value="8724580">Key West, FL</option>\n                  <option value="8726430">St Petersburg, FL</option>\n                  <option value="8771341">Galveston Bay, TX</option>\n                  <option value="8779770">Port Isabel, TX</option>\n                  <option value="9410230">La Jolla, CA</option>\n                  <option value="9414290">San Francisco, CA</option>\n                  <option value="9447130">Seattle, WA</option>\n                  <option value="1612340">Honolulu, HI</option>\n                </select>\n                <div id="overlay-chart-container">\n                  <div id="tidal-chart"></div>\n                  <div class="station_overlay_text">\n                    <p>Click \'Historical\' button to zoom in on or out from the observational period. Place your cursor over the curves on this graph for details. Gray bars from 1950 to 2016 show observed annual counts of high-tide flooding. Red and blue curves show the average number of high-tide flooding events projected for future years under two scenarios. Data from <a target="_blank" href="https://tidesandcurrents.noaa.gov/publications/techrpt86_PaP_of_HTFlooding.pdf">NOAA Technical Report NOS CO-OPS 086 - Patterns and Projections of High-tide Flooding</a>.</p>\n                  </div>\n                </div>\n              </div>');
 
           $("#tidal-chart").tidalstationwidget({
             station: this.options.stationId,
@@ -944,15 +767,15 @@
             responsive: true // set to false to disable ChartJS responsive sizing.
           });
 
-          $('.tidal-zoom-toggle-btn').click(function(){
-            $( "#tidal-chart" ).tidalstationwidget('zoomToggle');
+          $('.tidal-zoom-toggle-btn').click(function () {
+            $("#tidal-chart").tidalstationwidget('zoomToggle');
             $('.tidal-zoom-toggle-btn').toggleClass('active');
           });
 
-          $('.download-tidal-image').click((function (event) {
-              event.currentTarget.href = $("#tidal-chart canvas")[0].toDataURL('image/png');
-              event.currentTarget.download = "high_tide_flooding_"+this.options.stationId+".png";
-          }).bind(this));
+          $('.download-tidal-image').click(function (event) {
+            event.currentTarget.href = $("#tidal-chart canvas")[0].toDataURL('image/png');
+            event.currentTarget.download = "high_tide_flooding_" + this.options.stationId + ".png";
+          }.bind(this));
 
           $('#station-overlay-header h3').html('Tidal Station');
 
@@ -961,7 +784,7 @@
           $('#stations-spinner').fadeOut(250);
 
           $('#tidal_station').change(function () {
-            $("#tidal-chart").tidalstationwidget({station: $(this).val()});
+            $("#tidal-chart").tidalstationwidget({ station: $(this).val() });
 
             if ($(this).find('option:selected').length) {
               $('#station-overlay-header .station-name').html($(this).find('option:selected').text());
@@ -981,53 +804,51 @@
       }.bind(this));
     },
 
-    _destroy: function () {
+    _destroy: function _destroy() {
       // remove CSS classes, destroy nodes, etc
       Object.values(this.nodes).forEach(function (node) {
-        node.remove()
+        node.remove();
       });
       this.map.destroy();
     },
 
-    _log: function () {
-      (this.options.debug === 3) && this._toLoggerMethod('log', arguments);
+    _log: function _log() {
+      this.options.debug === 3 && this._toLoggerMethod('log', arguments);
     },
 
-    _warn: function () {
-      (this.options.debug >= 2) && this._toLoggerMethod('warn', arguments);
+    _warn: function _warn() {
+      this.options.debug >= 2 && this._toLoggerMethod('warn', arguments);
     },
 
-    _error: function () {
-      (this.options.debug >= 1) && this._toLoggerMethod('error', arguments);
+    _error: function _error() {
+      this.options.debug >= 1 && this._toLoggerMethod('error', arguments);
     },
 
-    _toLoggerMethod: function (method, args) {
+    _toLoggerMethod: function _toLoggerMethod(method, args) {
       args = Array.prototype.slice.call(arguments, 1);
-      let logger = this.options.logger || console;
+      var logger = this.options.logger || console;
       logger.error.apply(logger, args);
     },
 
     // =========== Public methods=============================
 
-    disable: function () {
+    disable: function disable() {
       // Do any custom logic for disabling here, then
       this._super();
     },
 
-    enable: function () {
+    enable: function enable() {
       // Do any custom logic for enabling here, then
       this._super();
     },
-    whenDojoMods: function (callback) {
+    whenDojoMods: function whenDojoMods(callback) {
 
       if (this.dojoMods !== undefined) {
         callback();
+      } else {
+        window.addEventListener('dojoModsLoaded', callback);
       }
-      else {
-        window.addEventListener('dojoModsLoaded', callback)
-      }
-    },
-
+    }
 
     // ============ Public methods provided by the base widget =============
     // instance() - Retrieves the widget's instance object. If the element
@@ -1040,4 +861,4 @@
     // widget() - Returns a jQuery object containing the original element
     //      or relevant generated element.
   });
-}));
+});

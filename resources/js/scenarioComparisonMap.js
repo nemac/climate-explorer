@@ -1,6 +1,9 @@
 'use strict';
 // Use AMD loader if present, if not use global jQuery
-((function (root, factory) {
+
+var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
+
+(function (root, factory) {
   if (typeof define === 'function' && define.amd) {
     // AMD. Register as an anonymous module.
     define(['jquery'], factory);
@@ -82,6 +85,9 @@
     options: {
       state: null,
       county: null,
+
+      countyName: '',
+      stateName: '',
       variable: 'tmax', //required
       season: null,
       leftScenario: null, // 'historical', 'rcp85','rcp45'
@@ -91,8 +97,8 @@
       leftOpacity: 1,
       rightOpacity: 1,
       showCounties: true,
-      defaultExtent: {xmin: -119, xmax: -73, ymin: 18, ymax: 54},
-      constrainMapToExtent: {xmin: -165, xmax: -62, ymin: 16, ymax: 54},
+      defaultExtent: { xmin: -119, xmax: -73, ymin: 18, ymax: 54 },
+      constrainMapToExtent: { xmin: -165, xmax: -62, ymin: 16, ymax: 54 },
       //extent provides the initial view area of the map.
       extent: null,
       //zoom and center are ignored if extent is provided.
@@ -102,8 +108,8 @@
       // Additional elements
       legendContainerId: "legend-container",
       //Map reference layers
-      statesLayerURL: '/resources/data/states.json',
-      countiesLayerURL: '/resources/data/counties-20m.json',
+      statesLayerURL: 'https://services.arcgis.com/P3ePLMYs2RVChkJx/arcgis/rest/services/USA_States_Generalized/FeatureServer/0',
+      countiesLayerURL: 'https://services.arcgis.com/P3ePLMYs2RVChkJx/arcgis/rest/services/USA_Counties_Generalized/FeatureServer/0',
       // Controls debug output
       // 0:off, 1:errors only, 2:errors and warnings, 3:everything
       debug: 3,
@@ -114,52 +120,34 @@
       scenarios: {
         'historical': {
           title: "Historical",
-          tilesURL: "https://s3.amazonaws.com/climate-explorer-bucket/tiles/{year}-{season}-hist-{variable}/{level}/{col}/{row}.png",
+          tilesURL: "http://climate-explorer-webtiles.s3-website-us-east-1.amazonaws.com/hist/{variable}/{season_month}/{level}/{col}/{row}.png",
           tilesTMS: true,
-          years: [
-            {value: '1950', label: "1950s"},
-            {value: '1960', label: "1960s"},
-            {value: '1970', label: "1970s"},
-            {value: '1980', label: "1980s"},
-            {value: '1990', label: "1990s"},
-            {value: '2000', label: "2000s"},
-            {value: 'avg', label: '1961-1990 Average'}
-          ],
-          defaultYear: 'avg'
+          years: [{ value: 'avg', label: '1961-1990 Average' }],
+          defaultYear: 'avg',
+          min_zoom_level: 3,
+          max_zoom_level: 6
         },
         'rcp45': {
           title: 'Lower Emissions',
-          tilesURL: "https://s3.amazonaws.com/climate-explorer-bucket/tiles/{year}-{season}-rcp45-{variable}/{level}/{col}/{row}.png",
+          tilesURL: "http://climate-explorer-webtiles.s3-website-us-east-1.amazonaws.com/rcp45/{variable}/{year}/{season_month}/{level}/{col}/{row}.png",
           tilesTMS: true,
           years: [
-            // {value: '2010', label: '2010'},
-            {value: '2020', label: "2020s"},
-            {value: '2030', label: "2030s"},
-            {value: '2040', label: "2040s"},
-            {value: '2050', label: "2050s"},
-            {value: '2060', label: "2060s"},
-            {value: '2070', label: "2070s"},
-            {value: '2080', label: "2080s"},
-            {value: '2090', label: "2090s"}
-          ],
-          defaultYear: '2090'
+          // {value: '2010', label: '2010'},
+          { value: '2020s', label: "2020s" }, { value: '2030s', label: "2030s" }, { value: '2040s', label: "2040s" }, { value: '2050s', label: "2050s" }, { value: '2060s', label: "2060s" }, { value: '2070s', label: "2070s" }, { value: '2080s', label: "2080s" }, { value: '2090s', label: "2090s" }],
+          defaultYear: '2090s',
+          min_zoom_level: 3,
+          max_zoom_level: 6
         },
         'rcp85': {
           title: 'Higher Emissions',
-          tilesURL: "https://s3.amazonaws.com/climate-explorer-bucket/tiles/{year}-{season}-rcp85-{variable}/{level}/{col}/{row}.png",
+          tilesURL: "http://climate-explorer-webtiles.s3-website-us-east-1.amazonaws.com/rcp85/{variable}/{year}/{season_month}/{level}/{col}/{row}.png",
           tilesTMS: true,
           years: [
-            // {value: '2010', label: '2010'},
-            {value: '2020', label: "2020s"},
-            {value: '2030', label: "2030s"},
-            {value: '2040', label: "2040s"},
-            {value: '2050', label: "2050s"},
-            {value: '2060', label: "2060s"},
-            {value: '2070', label: "2070s"},
-            {value: '2080', label: "2080s"},
-            {value: '2090', label: "2090s"}
-          ],
-          defaultYear: '2090'
+          // {value: '2010', label: '2010'},
+          { value: '2020s', label: "2020s" }, { value: '2030s', label: "2030s" }, { value: '2040s', label: "2040s" }, { value: '2050s', label: "2050s" }, { value: '2060s', label: "2060s" }, { value: '2070s', label: "2070s" }, { value: '2080s', label: "2080s" }, { value: '2090s', label: "2090s" }],
+          defaultYear: '2090s',
+          min_zoom_level: 3,
+          max_zoom_level: 6
         }
       },
       variables: {
@@ -186,7 +174,7 @@
           seasonal_data: false,
           defaultConfig: {
             leftScenario: 'historical',
-            rightScenario: 'rcp85',
+            rightScenario: 'rcp85'
           }
         },
         'days_tmax_gt_95f': {
@@ -194,7 +182,7 @@
           seasonal_data: false,
           defaultConfig: {
             leftScenario: 'historical',
-            rightScenario: 'rcp85',
+            rightScenario: 'rcp85'
           }
         },
         'days_tmax_gt_100f': {
@@ -202,7 +190,7 @@
           seasonal_data: false,
           defaultConfig: {
             leftScenario: 'historical',
-            rightScenario: 'rcp85',
+            rightScenario: 'rcp85'
           }
         },
         'days_tmax_gt_105f': {
@@ -210,7 +198,7 @@
           seasonal_data: false,
           defaultConfig: {
             leftScenario: 'historical',
-            rightScenario: 'rcp85',
+            rightScenario: 'rcp85'
           }
         },
 
@@ -219,7 +207,7 @@
           seasonal_data: false,
           defaultConfig: {
             leftScenario: 'historical',
-            rightScenario: 'rcp85',
+            rightScenario: 'rcp85'
           }
         },
         'days_tmin_lt_32f': {
@@ -227,7 +215,7 @@
           seasonal_data: false,
           defaultConfig: {
             leftScenario: 'historical',
-            rightScenario: 'rcp85',
+            rightScenario: 'rcp85'
           }
         },
 
@@ -236,7 +224,7 @@
           seasonal_data: false,
           defaultConfig: {
             leftScenario: 'historical',
-            rightScenario: 'rcp85',
+            rightScenario: 'rcp85'
           }
         },
         'days_tmin_gt_90f': {
@@ -244,7 +232,7 @@
           seasonal_data: false,
           defaultConfig: {
             leftScenario: 'historical',
-            rightScenario: 'rcp85',
+            rightScenario: 'rcp85'
           }
         },
         'pcpn': {
@@ -262,7 +250,7 @@
           seasonal_data: false,
           defaultConfig: {
             leftScenario: 'historical',
-            rightScenario: 'rcp85',
+            rightScenario: 'rcp85'
           }
         },
         'days_pcpn_gt_2in': {
@@ -270,7 +258,7 @@
           seasonal_data: false,
           defaultConfig: {
             leftScenario: 'historical',
-            rightScenario: 'rcp85',
+            rightScenario: 'rcp85'
           }
         },
         'days_pcpn_gt_3in': {
@@ -278,7 +266,7 @@
           seasonal_data: false,
           defaultConfig: {
             leftScenario: 'historical',
-            rightScenario: 'rcp85',
+            rightScenario: 'rcp85'
           }
         },
         'days_dry_days': {
@@ -286,7 +274,7 @@
           seasonal_data: false,
           defaultConfig: {
             leftScenario: 'rcp45',
-            rightScenario: 'rcp85',
+            rightScenario: 'rcp85'
           },
           disabledScenarios: ['historical']
         },
@@ -295,7 +283,7 @@
           seasonal_data: false,
           defaultConfig: {
             leftScenario: 'historical',
-            rightScenario: 'rcp85',
+            rightScenario: 'rcp85'
           }
         },
         'cdd_65f': {
@@ -303,7 +291,7 @@
           seasonal_data: false,
           defaultConfig: {
             leftScenario: 'historical',
-            rightScenario: 'rcp85',
+            rightScenario: 'rcp85'
           }
         },
         'gdd': {
@@ -311,7 +299,7 @@
           seasonal_data: false,
           defaultConfig: {
             leftScenario: 'historical',
-            rightScenario: 'rcp85',
+            rightScenario: 'rcp85'
           }
         },
         'gddmod': {
@@ -319,50 +307,36 @@
           seasonal_data: false,
           defaultConfig: {
             leftScenario: 'historical',
-            rightScenario: 'rcp85',
+            rightScenario: 'rcp85'
           }
         }
       },
+      season_months: {'winter':'01', 'spring':'04','summer':'07','fall':'10'}
     },
 
     // Dojo modules this widget expects to use.
-    dojoDeps: [
-      'esri/Map',
-      'esri/views/MapView',
-      'esri/layers/FeatureLayer',
-      'esri/layers/support/Field',
-      'esri/layers/WebTileLayer',
-      'esri/layers/TileLayer',
-      // 'esri/widgets/BasemapToggle',
-      // 'esri/renderers/SimpleRenderer',
-      'esri/Graphic',
-      // 'esri/symbols/WebStyleSymbol',
-      'esri/symbols/SimpleFillSymbol',
-      'esri/widgets/Legend',
-      'esri/widgets/Expand',
-      // 'esri/widgets/OpacitySlider',
-      // 'esri/widgets/ColorSlider',
-      // 'esri/widgets/BasemapGallery',
-      'esri/widgets/ScaleBar',
-      'esri/geometry/SpatialReference',
-      // 'esri/layers/CSVLayer',
-      'esri/geometry/Extent',
-      'esri/geometry/Point',
-      'esri/geometry/Polygon',
-      'esri/widgets/Locate',
-      'esri/core/watchUtils',
-      'esri/geometry/support/webMercatorUtils'
-    ],
+    dojoDeps: ['esri/Map', 'esri/views/MapView', 'esri/layers/FeatureLayer', 'esri/layers/support/Field', 'esri/layers/WebTileLayer', 'esri/layers/TileLayer',
+    // 'esri/widgets/BasemapToggle',
+    // 'esri/renderers/SimpleRenderer',
+    'esri/Graphic',
+    // 'esri/symbols/WebStyleSymbol',
+    'esri/symbols/SimpleFillSymbol', 'esri/widgets/Legend', 'esri/widgets/Expand',
+    // 'esri/widgets/OpacitySlider',
+    // 'esri/widgets/ColorSlider',
+    // 'esri/widgets/BasemapGallery',
+    'esri/widgets/ScaleBar', 'esri/geometry/SpatialReference',
+    // 'esri/layers/CSVLayer',
+    'esri/geometry/Extent', 'esri/geometry/Point', 'esri/geometry/Polygon', 'esri/widgets/Locate', 'esri/core/watchUtils', 'esri/geometry/support/webMercatorUtils'],
     // recreated in ce.js for the purposes of breadcrumbs
 
 
-    _dojoLoaded: function () {
+    _dojoLoaded: function _dojoLoaded() {
       if (this.dojoMods === undefined) {
         return false;
       }
-      for (let i = 0; i < this.dojoDeps; i++) {
+      for (var i = 0; i < this.dojoDeps; i++) {
         if (!this.dojoMods.hasOwnProperty(this.dojoDeps[i][i].split('/').pop())) {
-          return false
+          return false;
         }
       }
       return true;
@@ -373,9 +347,9 @@
      * @resolve null
      * @private
      */
-    _whenDojoLoaded: function () {
+    _whenDojoLoaded: function _whenDojoLoaded() {
       if (undefined !== this._dojoLoadedPromise) {
-        return this._dojoLoadedPromise
+        return this._dojoLoadedPromise;
       }
       if (this._dojoLoaded()) {
         return Promise.resolve().catch(this._log.bind(this));
@@ -386,49 +360,50 @@
           window.dojoConfig = {
             has: {
               "esri-promise-compatibility": 1,
-              "esri-promise-compatibility-deprecation-warnings": 0,
+              "esri-promise-compatibility-deprecation-warnings": 0
             },
             async: 1,
             deps: this.dojoDeps
           };
 
-          let arcgisStyles = document.createElement("link");
+          var arcgisStyles = document.createElement("link");
           arcgisStyles.rel = 'stylesheet';
-          arcgisStyles.href = 'https://js.arcgis.com/4.6/esri/css/main.css';
+          arcgisStyles.href = 'https://js.arcgis.com/4.9/esri/css/main.css';
           document.head.appendChild(arcgisStyles);
-          let arcgisScripts = document.createElement("script");
+          var arcgisScripts = document.createElement("script");
           arcgisScripts.type = "text/javascript";
-          arcgisScripts.src = "https://js.arcgis.com/4.6/";
+          arcgisScripts.src = "https://js.arcgis.com/4.9/";
           document.head.appendChild(arcgisScripts);
           arcgisScripts.addEventListener('load', function (resolve) {
-            this._registerDojoMods(resolve)
+            this._registerDojoMods(resolve);
           }.bind(this, resolve));
         } else {
           this._registerDojoMods(resolve);
         }
-      }.bind(this))
-        .catch(this._log.bind(this));
-      return this._dojoLoadedPromise
+      }.bind(this)).catch(this._log.bind(this));
+      return this._dojoLoadedPromise;
     },
     /**
      *
      * @private
      */
-    _registerDojoMods: function (resolve) {
-      require(this.dojoDeps, (function (resolve) {
+    _registerDojoMods: function _registerDojoMods(resolve) {
+      require(this.dojoDeps, function (resolve) {
         //get the list of modules
-        let mods = Array.prototype.slice.call(arguments, 1);
+        var mods = Array.prototype.slice.call(arguments, 1);
         this.dojoMods = {};
         // preserve the modules on this.dojoMods for later reference.
 
-        for (let i = 0; i < mods.length; i++) {
+        for (var i = 0; i < mods.length; i++) {
           this.dojoMods[this.dojoDeps[i].split('/').pop()] = mods[i];
         }
-        resolve()
-      }).bind(this, resolve));
+        resolve();
+      }.bind(this, resolve));
     },
     // Called once on instantiation.
-    _create: function () {
+    _create: function _create() {
+      var _this = this;
+
       // All DOM nodes used by the widget (must be maintained for clean destruction)
       this.nodes = {};
 
@@ -447,10 +422,14 @@
         this.options.rightScenario = this.options.variables[this.options.variable].defaultConfig.rightScenario;
       }
 
-      if (undefined === this.options.leftYear || this.options.leftYear === null || !this.options.scenarios[this.options.leftScenario].years.find((v) => v.value === this.options.leftYear)) {
+      if (undefined === this.options.leftYear || this.options.leftYear === null || !this.options.scenarios[this.options.leftScenario].years.find(function (v) {
+        return v.value === _this.options.leftYear;
+      })) {
         this.options.leftYear = this.options.scenarios[this.options.leftScenario].defaultYear;
       }
-      if (undefined === this.options.rightYear || this.options.rightYear === null || !this.options.scenarios[this.options.rightScenario].years.find((v) => v.value === this.options.rightYear)) {
+      if (undefined === this.options.rightYear || this.options.rightYear === null || !this.options.scenarios[this.options.rightScenario].years.find(function (v) {
+        return v.value === _this.options.rightYear;
+      })) {
         this.options.rightYear = this.options.scenarios[this.options.rightScenario].defaultYear;
       }
       this.options.season = this.options.season || this.options.variables[this.options.variable].defaultConfig.season;
@@ -458,60 +437,27 @@
       this._mapInitPromise = this._whenDojoLoaded().then(this._initMap.bind(this)).catch(this._log.bind(this));
       this._initControlsOverlay();
 
-      let layerPromises = [
-        this._whenDojoLoaded().then(this._updateScenarioLayers.bind(this)),
-        this._whenDojoLoaded().then(this._initStatesLayer.bind(this))
-      ];
+      var layerPromises = [this._whenDojoLoaded().then(this._updateScenarioLayers.bind(this)), this._whenDojoLoaded().then(this._initStatesLayer.bind(this))];
       if (this.options.showCounties) {
         layerPromises.push(this._whenDojoLoaded().then(this._updateCountiesLayer.bind(this)));
       }
       return Promise.all(layerPromises).then(this._trigger.bind(this, 'layersloaded', null, null));
-
     },
-    _initControlsOverlay: function () {
-      this.nodes.$controlsOverLayContainer = $('<div>', {'class': 'scenario-map-overlay-container'});
-      this.nodes.$controlsOverLayContainer.append(`        
-        <div class="movable slider-div">
-          <div class="handle"></div>
-        </div>
-        <div class="bottom-scenario-controls">
-          <div class="left-scenario-controls">
-            <div class="left-scenario-dropdown">
-              <select name="leftScenario" class="dropdown">
-                <option value="historical">HISTORICAL</option>
-                <option value="rcp45">LOWER EMISSIONS</option>
-              </select>
-            </div>
-            <div class="year left-year-slider-container">
-              <div class="year-label year-min"></div>
-              <div class="left-year-slider"></div>
-              <div class="year-label year-max"></div>
-            </div>
-          </div>
-          <div class="right-scenario-controls">
-        
-            <div class="right-scenario-dropdown">
-              <select name="rightScenario" class="dropdown">
-                <option value="rcp85">HIGHER EMISSIONS</option>
-                <option value="rcp45">LOWER EMISSIONS</option>
-              </select></div>
-            <div class="year right-year-slider-container">
-              <div class="year-label year-min"></div>
-              <div class="right-year-slider"></div>
-              <div class="year-label year-max"></div>
-            </div>
-          </div>
-        </div>
-                  
-            `);
+    _initControlsOverlay: function _initControlsOverlay() {
+      this.nodes.$controlsOverLayContainer = $('<div>', { 'class': 'scenario-map-overlay-container' });
+      this.nodes.$controlsOverLayContainer.append('        \n        <div class="movable slider-div">\n          <div class="handle"></div>\n        </div>\n        <div class="bottom-scenario-controls">\n          <div class="left-scenario-controls">\n            <div class="left-scenario-dropdown">\n              <select name="leftScenario" class="dropdown">\n                <option value="historical">HISTORICAL</option>\n                <option value="rcp45">LOWER EMISSIONS</option>\n              </select>\n            </div>\n            <div class="year left-year-slider-container">\n              <div class="year-label year-min"></div>\n              <div class="left-year-slider"></div>\n              <div class="year-label year-max"></div>\n            </div>\n          </div>\n          <div class="right-scenario-controls">\n        \n            <div class="right-scenario-dropdown">\n              <select name="rightScenario" class="dropdown">\n                <option value="rcp85">HIGHER EMISSIONS</option>\n                <option value="rcp45">LOWER EMISSIONS</option>\n              </select></div>\n            <div class="year right-year-slider-container">\n              <div class="year-label year-min"></div>\n              <div class="right-year-slider"></div>\n              <div class="year-label year-max"></div>\n            </div>\n          </div>\n        </div>\n                  \n            ');
       $(this.nodes.mapContainer).append(this.nodes.$controlsOverLayContainer);
 
       this.nodes.$controlsOverLayContainer.find('.movable.slider-div').draggable({
         axis: "x",
         containment: this.nodes.$controlsOverLayContainer,
         scroll: false,
-        drag: function (event, ui) { this._setOptions({swipeX: ui.position.left}) }.bind(this),
-        stop: function (event, ui) { this._setOptions({swipeX: ui.position.left}) }.bind(this)
+        drag: function (event, ui) {
+          this._setOptions({ swipeX: ui.position.left });
+        }.bind(this),
+        stop: function (event, ui) {
+          this._setOptions({ swipeX: ui.position.left });
+        }.bind(this)
       });
 
       this._updateLeftScenarioSelect();
@@ -519,13 +465,13 @@
       this._updateLeftYearSlider();
       this._updateRightYearSlider();
     },
-    _initMap: function () {
+    _initMap: function _initMap() {
       this.map = new this.dojoMods.Map({
         basemap: 'topo'
       });
       // this.map.basemap.referenceLayers.clear();
-      this.map.basemap.referenceLayers.add(new this.dojoMods.TileLayer({url: 'https://server.arcgisonline.com/ArcGIS/rest/services/Reference/World_Boundaries_and_Places/MapServer'}));
-      this.map.basemap.referenceLayers.items.slice(-1)[0].minScale = 5000000;
+      // this.map.basemap.referenceLayers.add(new this.dojoMods.TileLayer({ url: 'https://server.arcgisonline.com/ArcGIS/rest/services/Reference/World_Boundaries_and_Places/MapServer' }));
+      // this.map.basemap.referenceLayers.items.slice(-1)[0].minScale = 5000000;
       // this.map.basemap.referenceLayers.add(new this.dojoMods.TileLayer({url: 'https://services.arcgisonline.com/ArcGIS/rest/services/Canvas/World_Light_Gray_Reference/MapServer'}));
       if ((undefined === this.options.extent || null === this.options.extent) && (undefined === this.options.center || null === this.options.center)) {
         this.options.extent = this.options.defaultExtent;
@@ -551,23 +497,27 @@
         // Constrain map panning
         if (this.view.extent !== undefined && this.view.extent !== null && this.constrainMapToExtent !== undefined && !this.constrainMapToExtent.contains(this.view.extent.center)) {
           //clamp center
-          let x = Math.min(Math.max(this.view.extent.center.x, this.constrainMapToExtent.xmin), this.constrainMapToExtent.xmax);
-          let y = Math.min(Math.max(this.view.extent.center.y, this.constrainMapToExtent.ymin), this.constrainMapToExtent.ymax);
-          this.view.center = new this.dojoMods.Point({x: x, y: y, spatialReference: this.view.extent.spatialReference});
+          var x = Math.min(Math.max(this.view.extent.center.x, this.constrainMapToExtent.xmin), this.constrainMapToExtent.xmax);
+          var y = Math.min(Math.max(this.view.extent.center.y, this.constrainMapToExtent.ymin), this.constrainMapToExtent.ymax);
+          this.view.center = new this.dojoMods.Point({ x: x, y: y, spatialReference: this.view.extent.spatialReference });
         }
 
         // Get the new extent of the view when view is stationary.
         if (this.view.extent) {
-          let xymin = this.dojoMods.webMercatorUtils.xyToLngLat(this.view.extent.xmin, this.view.extent.ymin);
-          let xymax = this.dojoMods.webMercatorUtils.xyToLngLat(this.view.extent.xmax, this.view.extent.ymax);
-          let quickRound = function (num) {return Math.round(num * 100 + Number.EPSILON) / 100};
+          var xymin = this.dojoMods.webMercatorUtils.xyToLngLat(this.view.extent.xmin, this.view.extent.ymin);
+          var xymax = this.dojoMods.webMercatorUtils.xyToLngLat(this.view.extent.xmax, this.view.extent.ymax);
+          var quickRound = function quickRound(num) {
+            return Math.round(num * 100 + Number.EPSILON) / 100;
+          };
           this.options.extent = {
             xmin: quickRound(xymin[0]),
             xmax: quickRound(xymax[0]),
             ymin: quickRound(xymin[1]),
             ymax: quickRound(xymax[1])
           };
-          if (this.view.zoom && this.view.zoom > 0) { this.options.zoom = this.view.zoom;}
+          if (this.view.zoom && this.view.zoom > 0) {
+            this.options.zoom = this.view.zoom;
+          }
           this._trigger('change', null, this.options);
         }
       }.bind(this));
@@ -578,14 +528,14 @@
         expandIconClass: 'esri-icon-description',
         view: this.view,
         content: this.nodes.$legendContainer[0],
-        expanded: true,
+        expanded: true
       });
 
       this.view.ui.add(this.legendExpand, 'top-left');
       this.view.ui.move("zoom", "top-left");
 
       this.locateWidget = new this.dojoMods.Locate({
-        view: this.view,   // Attaches the Locate button to the view
+        view: this.view, // Attaches the Locate button to the view
         // graphic: new this.dojoMods.Graphic({
         //   symbol: {type: "simple-marker"}  // overwrites the default symbol used for the
         //   // graphic placed at the location of the user when found
@@ -628,60 +578,63 @@
       });
     },
 
-    _updateScenarioLayers: function () {
-      return Promise.all([
-        this._updateLeftScenarioLayer(),
-        this._updateRightScenarioLayer()
-      ]).catch(this._error.bind(this));
+    _updateScenarioLayers: function _updateScenarioLayers() {
+      return Promise.all([this._updateLeftScenarioLayer(), this._updateRightScenarioLayer()]).catch(this._error.bind(this));
     },
 
-    _updateLeftScenarioLayer: function () {
+    _updateLeftScenarioLayer: function _updateLeftScenarioLayer() {
       if (this.leftLayer !== null) {
-        let oldLeftLayer = this.leftLayer;
+        var oldLeftLayer = this.leftLayer;
         setTimeout(function () {
-            oldLeftLayer.visible = false;
-            oldLeftLayer.destroy();
-          }
-          , 400);
+          oldLeftLayer.visible = false;
+          oldLeftLayer.destroy();
+        }, 400);
         this.leftLayer = null;
       }
 
-      return this._initScenarioLayer(this.options.leftScenario, this.options.leftYear, 'left', this.options.leftOpacity)
-        .then(function (layer) {
-          this.leftLayer = layer;
-          return layer;
-        }.bind(this));
-
+      return this._initScenarioLayer(this.options.leftScenario, this.options.leftYear, 'left', this.options.leftOpacity).then(function (layer) {
+        this.leftLayer = layer;
+        return layer;
+      }.bind(this));
     },
 
-    _updateRightScenarioLayer: function () {
+    _updateRightScenarioLayer: function _updateRightScenarioLayer() {
       if (this.rightLayer !== null) {
-        let oldRightLayer = this.rightLayer;
+        var oldRightLayer = this.rightLayer;
         setTimeout(function () {
-            oldRightLayer.visible = false;
-            oldRightLayer.destroy();
-          }
-          , 400);
+          oldRightLayer.visible = false;
+          oldRightLayer.destroy();
+        }, 400);
         this.rightLayer = null;
       }
 
-      return this._initScenarioLayer(this.options.rightScenario, this.options.rightYear, 'right', this.options.rightOpacity)
-        .then(function (layer) {
-          this.rightLayer = layer;
-          return layer;
-        }.bind(this));
+      return this._initScenarioLayer(this.options.rightScenario, this.options.rightYear, 'right', this.options.rightOpacity).then(function (layer) {
+        this.rightLayer = layer;
+        return layer;
+      }.bind(this));
     },
 
-    _initScenarioLayer: function (scenario, year, side, opacity) {
-      let promise = new Promise(function (resolve) {
-        let layerClass = this.dojoMods.TileLayer;
-        if (this.options.scenarios[scenario].tilesURL.endsWith('png')) { layerClass = this.dojoMods.WebTileLayer; }
-        let layer = new layerClass({urlTemplate: this._getScenarioURL(scenario, year), opacity: opacity});
+    _initScenarioLayer: function _initScenarioLayer(scenario, year, side, opacity) {
+      var promise = new Promise(function (resolve) {
+        var layerClass = this.dojoMods.TileLayer;
+        if (this.options.scenarios[scenario].tilesURL.endsWith('png')) {
+          layerClass = this.dojoMods.WebTileLayer;
+        }
+
+        var layer = new layerClass({ urlTemplate: this._getScenarioURL(scenario, year), opacity: opacity });
+
+
+        if (this.options.scenarios[scenario].max_zoom_level && this.options.scenarios[scenario].min_zoom_level){
+          layer.tileInfo.lods = layer.tileInfo.lods.filter((lod) => lod.level >=  this.options.scenarios[scenario].min_zoom_level && lod.level <=  this.options.scenarios[scenario].max_zoom_level);
+        }
+
         //TMS hack
         if (this.options.scenarios[scenario].tilesURL.endsWith('png') && this.options.scenarios[scenario].tilesTMS) {
           layer.getTileUrl = function (level, row, col) {
             level = this.levelValues[level];
-            if (0 > row || row >= (1 << level)) { return null; }
+            if (0 > row || row >= 1 << level) {
+              return null;
+            }
             row = Math.pow(2, level) - row - 1;
 
             return this.tileServers[row % this.tileServers.length] + this.urlPath.replace(/\{level\}/gi, level).replace(/\{row\}/gi, row).replace(/\{col\}/gi, col);
@@ -691,89 +644,557 @@
           this.map.add(layer, 2);
         }.bind(this, layer));
         resolve(layer);
-      }.bind(this))
-        .catch(this._log.bind(this));
+      }.bind(this)).catch(this._log.bind(this));
       // hook the layerView's first render to apply the clipping path.
       promise.then(function (layer) {
         this.view.whenLayerView(layer).then(function (layerView) {
+          var _this2 = this;
+
           // animate swipe on map load
           if (this.options.animateIntro) {
-            this.view.when().then((() => {
-              setTimeout(() => {
-                $(".movable").animate({left: "50%"},
-                  {
-                    duration: 1200,
-                    easing: 'easeInOutCubic',
-                    step: (function (now, fx) {
-                      this._setOption('swipeX', layerViewContainer.element.width * now / 100);
-                    }).bind(this)
-                  });
-                this.options.animateIntro = false;
-              }, 1800);  // delay 1800ms for the map to load a bit
-            }).bind(this));
+            this.view.when().then(function () {
+              setTimeout(function () {
+                $(".movable").animate({ left: "50%" }, {
+                  duration: 1200,
+                  easing: 'easeInOutCubic',
+                  step: function (now, fx) {
+                    this._setOption('swipeX', layerViewContainer.element.width * now / 100);
+                  }.bind(_this2)
+                });
+                _this2.options.animateIntro = false;
+              }, 1800); // delay 1800ms for the map to load a bit
+            }.bind(this));
           }
 
-          let layerViewContainer = layerView.container;
+          var layerViewContainer = layerView.container;
           layerViewContainer._doRender = layerViewContainer.doRender;
-          layerViewContainer.doRender = (a) => {
+          layerViewContainer.doRender = function (a) {
             layerViewContainer._doRender(a);
-            if (this.options.swipeX === null) {
-              this.options.swipeX = layerViewContainer.element.width / 2;
+            if (_this2.options.swipeX === null) {
+              _this2.options.swipeX = layerViewContainer.element.width / 2;
             }
-            if (this.options.swipeX > layerViewContainer.element.width) {
-              this.options.swipeX = layerViewContainer.element.width;
-              this.nodes.$controlsOverLayContainer.find('.movable.slider-div').css('left', this.options.swipeX);
+            if (_this2.options.swipeX > layerViewContainer.element.width) {
+              _this2.options.swipeX = layerViewContainer.element.width;
+              _this2.nodes.$controlsOverLayContainer.find('.movable.slider-div').css('left', _this2.options.swipeX);
             }
 
-            this._setClipPath(layerViewContainer.element, side, this.options.swipeX);
+            _this2._setClipPath(layerViewContainer.element, side, _this2.options.swipeX);
           };
         }.bind(this));
       }.bind(this));
       return promise;
-
     },
 
     // Init is automatically invoked after create, and again every time the
     //  widget is invoked with no arguments after that
-    _init: function () {
+    _init: function _init() {
       this._trigger('initialized');
     },
 
-    _updateCountiesLayer: function () {
+    _updateCountiesLayer: function _updateCountiesLayer() {
       if (undefined !== this.countiesLayer) {
-        return Promise.resolve(this.countiesLayer)
+        return Promise.resolve(this.countiesLayer);
       }
       return this._createReferenceLayer(this.options.countiesLayerURL, {
-        geometryType: 'polygon',
-        spatialReference: {wkid: 4326},
-        objectIdField: 'STATE',
-        fields: [new this.dojoMods.Field({
-            name: "GEO_ID",
-            alias: "GEO_ID",
-            type: "string"
-          },
-          {
-            name: "NAME",
-            alias: "Name",
-            type: "string"
-          },
-          {
-            name: "STATE",
-            alias: "State",
-            type: "string"
-          },
-          {
-            name: "COUNTY",
-            alias: "County",
-            type: "string"
-          })],
+        opacity: 1,
+        "objectIdFieldName" : "FID",
+        "uniqueIdField" : {
+        "name" : "FID",
+        "isSystemMaintained" : true
+      },
+      "globalIdFieldName" : "",
+        "geometryType" : "polygon",
+        "spatialReference" : {
+        "wkid" : 102100,
+          "latestWkid" : 3857
+      },
+        "outFields":['*'],
+      "fields" : [
+        {
+          "name" : "FID",
+          "type" : "esriFieldTypeOID",
+          "alias" : "FID",
+          "sqlType" : "sqlTypeInteger",
+          "domain" : null,
+          "defaultValue" : null
+        },
+        {
+          "name" : "OBJECTID",
+          "type" : "esriFieldTypeInteger",
+          "alias" : "OBJECTID",
+          "sqlType" : "sqlTypeInteger",
+          "domain" : null,
+          "defaultValue" : null
+        },
+        {
+          "name" : "NAME",
+          "type" : "esriFieldTypeString",
+          "alias" : "NAME",
+          "sqlType" : "sqlTypeNVarchar",
+          "length" : 32,
+          "domain" : null,
+          "defaultValue" : null
+        },
+        {
+          "name" : "STATE_NAME",
+          "type" : "esriFieldTypeString",
+          "alias" : "STATE_NAME",
+          "sqlType" : "sqlTypeNVarchar",
+          "length" : 35,
+          "domain" : null,
+          "defaultValue" : null
+        },
+        {
+          "name" : "STATE_FIPS",
+          "type" : "esriFieldTypeString",
+          "alias" : "STATE_FIPS",
+          "sqlType" : "sqlTypeNVarchar",
+          "length" : 2,
+          "domain" : null,
+          "defaultValue" : null
+        },
+        {
+          "name" : "CNTY_FIPS",
+          "type" : "esriFieldTypeString",
+          "alias" : "CNTY_FIPS",
+          "sqlType" : "sqlTypeNVarchar",
+          "length" : 3,
+          "domain" : null,
+          "defaultValue" : null
+        },
+        {
+          "name" : "FIPS",
+          "type" : "esriFieldTypeString",
+          "alias" : "FIPS",
+          "sqlType" : "sqlTypeNVarchar",
+          "length" : 5,
+          "domain" : null,
+          "defaultValue" : null
+        },
+        {
+          "name" : "POPULATION",
+          "type" : "esriFieldTypeInteger",
+          "alias" : "POPULATION",
+          "sqlType" : "sqlTypeInteger",
+          "domain" : null,
+          "defaultValue" : null
+        },
+        {
+          "name" : "POP_SQMI",
+          "type" : "esriFieldTypeDouble",
+          "alias" : "POP_SQMI",
+          "sqlType" : "sqlTypeFloat",
+          "domain" : null,
+          "defaultValue" : null
+        },
+        {
+          "name" : "POP2010",
+          "type" : "esriFieldTypeInteger",
+          "alias" : "POP2010",
+          "sqlType" : "sqlTypeInteger",
+          "domain" : null,
+          "defaultValue" : null
+        },
+        {
+          "name" : "POP10_SQMI",
+          "type" : "esriFieldTypeDouble",
+          "alias" : "POP10_SQMI",
+          "sqlType" : "sqlTypeFloat",
+          "domain" : null,
+          "defaultValue" : null
+        },
+        {
+          "name" : "WHITE",
+          "type" : "esriFieldTypeInteger",
+          "alias" : "WHITE",
+          "sqlType" : "sqlTypeInteger",
+          "domain" : null,
+          "defaultValue" : null
+        },
+        {
+          "name" : "BLACK",
+          "type" : "esriFieldTypeInteger",
+          "alias" : "BLACK",
+          "sqlType" : "sqlTypeInteger",
+          "domain" : null,
+          "defaultValue" : null
+        },
+        {
+          "name" : "AMERI_ES",
+          "type" : "esriFieldTypeInteger",
+          "alias" : "AMERI_ES",
+          "sqlType" : "sqlTypeInteger",
+          "domain" : null,
+          "defaultValue" : null
+        },
+        {
+          "name" : "ASIAN",
+          "type" : "esriFieldTypeInteger",
+          "alias" : "ASIAN",
+          "sqlType" : "sqlTypeInteger",
+          "domain" : null,
+          "defaultValue" : null
+        },
+        {
+          "name" : "HAWN_PI",
+          "type" : "esriFieldTypeInteger",
+          "alias" : "HAWN_PI",
+          "sqlType" : "sqlTypeInteger",
+          "domain" : null,
+          "defaultValue" : null
+        },
+        {
+          "name" : "HISPANIC",
+          "type" : "esriFieldTypeInteger",
+          "alias" : "HISPANIC",
+          "sqlType" : "sqlTypeInteger",
+          "domain" : null,
+          "defaultValue" : null
+        },
+        {
+          "name" : "OTHER",
+          "type" : "esriFieldTypeInteger",
+          "alias" : "OTHER",
+          "sqlType" : "sqlTypeInteger",
+          "domain" : null,
+          "defaultValue" : null
+        },
+        {
+          "name" : "MULT_RACE",
+          "type" : "esriFieldTypeInteger",
+          "alias" : "MULT_RACE",
+          "sqlType" : "sqlTypeInteger",
+          "domain" : null,
+          "defaultValue" : null
+        },
+        {
+          "name" : "MALES",
+          "type" : "esriFieldTypeInteger",
+          "alias" : "MALES",
+          "sqlType" : "sqlTypeInteger",
+          "domain" : null,
+          "defaultValue" : null
+        },
+        {
+          "name" : "FEMALES",
+          "type" : "esriFieldTypeInteger",
+          "alias" : "FEMALES",
+          "sqlType" : "sqlTypeInteger",
+          "domain" : null,
+          "defaultValue" : null
+        },
+        {
+          "name" : "AGE_UNDER5",
+          "type" : "esriFieldTypeInteger",
+          "alias" : "AGE_UNDER5",
+          "sqlType" : "sqlTypeInteger",
+          "domain" : null,
+          "defaultValue" : null
+        },
+        {
+          "name" : "AGE_5_9",
+          "type" : "esriFieldTypeInteger",
+          "alias" : "AGE_5_9",
+          "sqlType" : "sqlTypeInteger",
+          "domain" : null,
+          "defaultValue" : null
+        },
+        {
+          "name" : "AGE_10_14",
+          "type" : "esriFieldTypeInteger",
+          "alias" : "AGE_10_14",
+          "sqlType" : "sqlTypeInteger",
+          "domain" : null,
+          "defaultValue" : null
+        },
+        {
+          "name" : "AGE_15_19",
+          "type" : "esriFieldTypeInteger",
+          "alias" : "AGE_15_19",
+          "sqlType" : "sqlTypeInteger",
+          "domain" : null,
+          "defaultValue" : null
+        },
+        {
+          "name" : "AGE_20_24",
+          "type" : "esriFieldTypeInteger",
+          "alias" : "AGE_20_24",
+          "sqlType" : "sqlTypeInteger",
+          "domain" : null,
+          "defaultValue" : null
+        },
+        {
+          "name" : "AGE_25_34",
+          "type" : "esriFieldTypeInteger",
+          "alias" : "AGE_25_34",
+          "sqlType" : "sqlTypeInteger",
+          "domain" : null,
+          "defaultValue" : null
+        },
+        {
+          "name" : "AGE_35_44",
+          "type" : "esriFieldTypeInteger",
+          "alias" : "AGE_35_44",
+          "sqlType" : "sqlTypeInteger",
+          "domain" : null,
+          "defaultValue" : null
+        },
+        {
+          "name" : "AGE_45_54",
+          "type" : "esriFieldTypeInteger",
+          "alias" : "AGE_45_54",
+          "sqlType" : "sqlTypeInteger",
+          "domain" : null,
+          "defaultValue" : null
+        },
+        {
+          "name" : "AGE_55_64",
+          "type" : "esriFieldTypeInteger",
+          "alias" : "AGE_55_64",
+          "sqlType" : "sqlTypeInteger",
+          "domain" : null,
+          "defaultValue" : null
+        },
+        {
+          "name" : "AGE_65_74",
+          "type" : "esriFieldTypeInteger",
+          "alias" : "AGE_65_74",
+          "sqlType" : "sqlTypeInteger",
+          "domain" : null,
+          "defaultValue" : null
+        },
+        {
+          "name" : "AGE_75_84",
+          "type" : "esriFieldTypeInteger",
+          "alias" : "AGE_75_84",
+          "sqlType" : "sqlTypeInteger",
+          "domain" : null,
+          "defaultValue" : null
+        },
+        {
+          "name" : "AGE_85_UP",
+          "type" : "esriFieldTypeInteger",
+          "alias" : "AGE_85_UP",
+          "sqlType" : "sqlTypeInteger",
+          "domain" : null,
+          "defaultValue" : null
+        },
+        {
+          "name" : "MED_AGE",
+          "type" : "esriFieldTypeDouble",
+          "alias" : "MED_AGE",
+          "sqlType" : "sqlTypeFloat",
+          "domain" : null,
+          "defaultValue" : null
+        },
+        {
+          "name" : "MED_AGE_M",
+          "type" : "esriFieldTypeDouble",
+          "alias" : "MED_AGE_M",
+          "sqlType" : "sqlTypeFloat",
+          "domain" : null,
+          "defaultValue" : null
+        },
+        {
+          "name" : "MED_AGE_F",
+          "type" : "esriFieldTypeDouble",
+          "alias" : "MED_AGE_F",
+          "sqlType" : "sqlTypeFloat",
+          "domain" : null,
+          "defaultValue" : null
+        },
+        {
+          "name" : "HOUSEHOLDS",
+          "type" : "esriFieldTypeInteger",
+          "alias" : "HOUSEHOLDS",
+          "sqlType" : "sqlTypeInteger",
+          "domain" : null,
+          "defaultValue" : null
+        },
+        {
+          "name" : "AVE_HH_SZ",
+          "type" : "esriFieldTypeDouble",
+          "alias" : "AVE_HH_SZ",
+          "sqlType" : "sqlTypeFloat",
+          "domain" : null,
+          "defaultValue" : null
+        },
+        {
+          "name" : "HSEHLD_1_M",
+          "type" : "esriFieldTypeInteger",
+          "alias" : "HSEHLD_1_M",
+          "sqlType" : "sqlTypeInteger",
+          "domain" : null,
+          "defaultValue" : null
+        },
+        {
+          "name" : "HSEHLD_1_F",
+          "type" : "esriFieldTypeInteger",
+          "alias" : "HSEHLD_1_F",
+          "sqlType" : "sqlTypeInteger",
+          "domain" : null,
+          "defaultValue" : null
+        },
+        {
+          "name" : "MARHH_CHD",
+          "type" : "esriFieldTypeInteger",
+          "alias" : "MARHH_CHD",
+          "sqlType" : "sqlTypeInteger",
+          "domain" : null,
+          "defaultValue" : null
+        },
+        {
+          "name" : "MARHH_NO_C",
+          "type" : "esriFieldTypeInteger",
+          "alias" : "MARHH_NO_C",
+          "sqlType" : "sqlTypeInteger",
+          "domain" : null,
+          "defaultValue" : null
+        },
+        {
+          "name" : "MHH_CHILD",
+          "type" : "esriFieldTypeInteger",
+          "alias" : "MHH_CHILD",
+          "sqlType" : "sqlTypeInteger",
+          "domain" : null,
+          "defaultValue" : null
+        },
+        {
+          "name" : "FHH_CHILD",
+          "type" : "esriFieldTypeInteger",
+          "alias" : "FHH_CHILD",
+          "sqlType" : "sqlTypeInteger",
+          "domain" : null,
+          "defaultValue" : null
+        },
+        {
+          "name" : "FAMILIES",
+          "type" : "esriFieldTypeInteger",
+          "alias" : "FAMILIES",
+          "sqlType" : "sqlTypeInteger",
+          "domain" : null,
+          "defaultValue" : null
+        },
+        {
+          "name" : "AVE_FAM_SZ",
+          "type" : "esriFieldTypeDouble",
+          "alias" : "AVE_FAM_SZ",
+          "sqlType" : "sqlTypeFloat",
+          "domain" : null,
+          "defaultValue" : null
+        },
+        {
+          "name" : "HSE_UNITS",
+          "type" : "esriFieldTypeInteger",
+          "alias" : "HSE_UNITS",
+          "sqlType" : "sqlTypeInteger",
+          "domain" : null,
+          "defaultValue" : null
+        },
+        {
+          "name" : "VACANT",
+          "type" : "esriFieldTypeInteger",
+          "alias" : "VACANT",
+          "sqlType" : "sqlTypeInteger",
+          "domain" : null,
+          "defaultValue" : null
+        },
+        {
+          "name" : "OWNER_OCC",
+          "type" : "esriFieldTypeInteger",
+          "alias" : "OWNER_OCC",
+          "sqlType" : "sqlTypeInteger",
+          "domain" : null,
+          "defaultValue" : null
+        },
+        {
+          "name" : "RENTER_OCC",
+          "type" : "esriFieldTypeInteger",
+          "alias" : "RENTER_OCC",
+          "sqlType" : "sqlTypeInteger",
+          "domain" : null,
+          "defaultValue" : null
+        },
+        {
+          "name" : "NO_FARMS12",
+          "type" : "esriFieldTypeDouble",
+          "alias" : "NO_FARMS12",
+          "sqlType" : "sqlTypeFloat",
+          "domain" : null,
+          "defaultValue" : null
+        },
+        {
+          "name" : "AVE_SIZE12",
+          "type" : "esriFieldTypeDouble",
+          "alias" : "AVE_SIZE12",
+          "sqlType" : "sqlTypeFloat",
+          "domain" : null,
+          "defaultValue" : null
+        },
+        {
+          "name" : "CROP_ACR12",
+          "type" : "esriFieldTypeDouble",
+          "alias" : "CROP_ACR12",
+          "sqlType" : "sqlTypeFloat",
+          "domain" : null,
+          "defaultValue" : null
+        },
+        {
+          "name" : "AVE_SALE12",
+          "type" : "esriFieldTypeDouble",
+          "alias" : "AVE_SALE12",
+          "sqlType" : "sqlTypeFloat",
+          "domain" : null,
+          "defaultValue" : null
+        },
+        {
+          "name" : "SQMI",
+          "type" : "esriFieldTypeDouble",
+          "alias" : "SQMI",
+          "sqlType" : "sqlTypeFloat",
+          "domain" : null,
+          "defaultValue" : null
+        },
+        {
+          "name" : "Shape_Leng",
+          "type" : "esriFieldTypeDouble",
+          "alias" : "Shape_Leng",
+          "sqlType" : "sqlTypeFloat",
+          "domain" : null,
+          "defaultValue" : null
+        },
+        {
+          "name" : "Shape_Area",
+          "type" : "esriFieldTypeDouble",
+          "alias" : "Shape_Area",
+          "sqlType" : "sqlTypeFloat",
+          "domain" : null,
+          "defaultValue" : null
+        },
+        {
+          "name" : "Shape__Area",
+          "type" : "esriFieldTypeDouble",
+          "alias" : "Shape__Area",
+          "sqlType" : "sqlTypeFloat",
+          "domain" : null,
+          "defaultValue" : null
+        },
+        {
+          "name" : "Shape__Length",
+          "type" : "esriFieldTypeDouble",
+          "alias" : "Shape__Length",
+          "sqlType" : "sqlTypeFloat",
+          "domain" : null,
+          "defaultValue" : null
+        }
+      ],
         renderer: {
           type: 'simple',
           symbol: {
-            type: "simple-fill",  // autocasts as new SimpleFillSymbol()
+            type: "simple-fill", // autocasts as new SimpleFillSymbol()
             style: "solid",
-            color: [0, 0, 0, 0],
-            outline: {  // autocasts as new SimpleLineSymbol()
+            color: "rgba(0,0,0,0)",
+            outline: { // autocasts as new SimpleLineSymbol()
               color: [70, 70, 70, 1],
               width: 0.3
             }
@@ -784,43 +1205,493 @@
         this._mapInitPromise.then(function () {
           this.map.add(this.countiesLayer, 10);
           this.view.on("click", function (event) {
-            this.view.hitTest(event)
-              .then(function (response) {
-                let county = response.results.filter(function (result) {
-                  return result.graphic.layer === this.countiesLayer;
-                }.bind(this))[0].graphic;
-                this.options.county = county.attributes['GEO_ID'];
-                this.options.countyName = county.attributes['NAME'] + ' ' + county.attributes['LSAD'];
-                this._updateOverlay();
-              }.bind(this));
+            this.countiesLayer.queryFeatures({geometry: event.mapPoint, outFields: ["*"]}).then(function (response) {
+              if (!'features' in response || response.features.length < 1){
+                return
+              }
+              var county = response.features[0];
+              this.options.county = county.attributes['FIPS'];
+              // this.options.countyName = county.attributes['NAME'] + ' ' + county.attributes['LSAD'];
+              this.options.countyName = (county.attributes['NAME'] + " County").replace(/County County/ig, 'County');
+              this.options.stateName = county.attributes['STATE_NAME'];
+              this._updateOverlay();
+            }.bind(this));
           }.bind(this));
         }.bind(this));
         return layer;
       }.bind(this));
-
-
     },
-    _initStatesLayer: function () {
+    _initStatesLayer: function _initStatesLayer() {
       return this._createReferenceLayer(this.options.statesLayerURL, {
-        geometryType: 'polygon',
-        spatialReference: {wkid: 4326},
-        objectIdField: 'GEO_ID',
+
         opacity: 0.5,
-        fields: [new this.dojoMods.Field({
-          name: "GEO_ID",
-          alias: "GEO_ID",
-          type: "string"
-        }, {
-          name: "STATE",
-          alias: "State",
-          type: "string"
-        })],
+        "objectIdFieldName" : "FID",
+        "uniqueIdField" :
+        {
+        "name" : "FID",
+        "isSystemMaintained" : true
+        },
+        "globalIdFieldName" : "",
+        "geometryType" : "polygon",
+        "spatialReference" : {
+        "wkid" : 102100,
+        "latestWkid" : 3857
+        },
+        "outFields":['*'],
+        "fields" : [
+        {
+        "name" : "FID",
+        "type" : "esriFieldTypeOID",
+        "alias" : "FID",
+        "sqlType" : "sqlTypeInteger",
+        "domain" : null,
+        "defaultValue" : null
+        },
+        {
+        "name" : "STATE_NAME",
+        "type" : "esriFieldTypeString",
+        "alias" : "STATE_NAME",
+        "sqlType" : "sqlTypeNVarchar",
+        "length" : 25,
+        "domain" : null,
+        "defaultValue" : null
+        },
+        {
+        "name" : "STATE_FIPS",
+        "type" : "esriFieldTypeString",
+        "alias" : "STATE_FIPS",
+        "sqlType" : "sqlTypeNVarchar",
+        "length" : 2,
+        "domain" : null,
+        "defaultValue" : null
+        },
+        {
+        "name" : "STATE_ABBR",
+        "type" : "esriFieldTypeString",
+        "alias" : "STATE_ABBR",
+        "sqlType" : "sqlTypeNVarchar",
+        "length" : 2,
+        "domain" : null,
+        "defaultValue" : null
+        },
+        {
+        "name" : "POPULATION",
+        "type" : "esriFieldTypeInteger",
+        "alias" : "POPULATION",
+        "sqlType" : "sqlTypeInteger",
+        "domain" : null,
+        "defaultValue" : null
+        },
+        {
+        "name" : "POP_SQMI",
+        "type" : "esriFieldTypeDouble",
+        "alias" : "POP_SQMI",
+        "sqlType" : "sqlTypeFloat",
+        "domain" : null,
+        "defaultValue" : null
+        },
+        {
+        "name" : "POP2010",
+        "type" : "esriFieldTypeInteger",
+        "alias" : "POP2010",
+        "sqlType" : "sqlTypeInteger",
+        "domain" : null,
+        "defaultValue" : null
+        },
+        {
+        "name" : "POP10_SQMI",
+        "type" : "esriFieldTypeDouble",
+        "alias" : "POP10_SQMI",
+        "sqlType" : "sqlTypeFloat",
+        "domain" : null,
+        "defaultValue" : null
+        },
+        {
+        "name" : "WHITE",
+        "type" : "esriFieldTypeInteger",
+        "alias" : "WHITE",
+        "sqlType" : "sqlTypeInteger",
+        "domain" : null,
+        "defaultValue" : null
+        },
+        {
+        "name" : "BLACK",
+        "type" : "esriFieldTypeInteger",
+        "alias" : "BLACK",
+        "sqlType" : "sqlTypeInteger",
+        "domain" : null,
+        "defaultValue" : null
+        },
+        {
+        "name" : "AMERI_ES",
+        "type" : "esriFieldTypeInteger",
+        "alias" : "AMERI_ES",
+        "sqlType" : "sqlTypeInteger",
+        "domain" : null,
+        "defaultValue" : null
+        },
+        {
+        "name" : "ASIAN",
+        "type" : "esriFieldTypeInteger",
+        "alias" : "ASIAN",
+        "sqlType" : "sqlTypeInteger",
+        "domain" : null,
+        "defaultValue" : null
+        },
+        {
+        "name" : "HAWN_PI",
+        "type" : "esriFieldTypeInteger",
+        "alias" : "HAWN_PI",
+        "sqlType" : "sqlTypeInteger",
+        "domain" : null,
+        "defaultValue" : null
+        },
+        {
+        "name" : "HISPANIC",
+        "type" : "esriFieldTypeInteger",
+        "alias" : "HISPANIC",
+        "sqlType" : "sqlTypeInteger",
+        "domain" : null,
+        "defaultValue" : null
+        },
+        {
+        "name" : "OTHER",
+        "type" : "esriFieldTypeInteger",
+        "alias" : "OTHER",
+        "sqlType" : "sqlTypeInteger",
+        "domain" : null,
+        "defaultValue" : null
+        },
+        {
+        "name" : "MULT_RACE",
+        "type" : "esriFieldTypeInteger",
+        "alias" : "MULT_RACE",
+        "sqlType" : "sqlTypeInteger",
+        "domain" : null,
+        "defaultValue" : null
+        },
+        {
+        "name" : "MALES",
+        "type" : "esriFieldTypeInteger",
+        "alias" : "MALES",
+        "sqlType" : "sqlTypeInteger",
+        "domain" : null,
+        "defaultValue" : null
+        },
+        {
+        "name" : "FEMALES",
+        "type" : "esriFieldTypeInteger",
+        "alias" : "FEMALES",
+        "sqlType" : "sqlTypeInteger",
+        "domain" : null,
+        "defaultValue" : null
+        },
+        {
+        "name" : "AGE_UNDER5",
+        "type" : "esriFieldTypeInteger",
+        "alias" : "AGE_UNDER5",
+        "sqlType" : "sqlTypeInteger",
+        "domain" : null,
+        "defaultValue" : null
+        },
+        {
+        "name" : "AGE_5_9",
+        "type" : "esriFieldTypeInteger",
+        "alias" : "AGE_5_9",
+        "sqlType" : "sqlTypeInteger",
+        "domain" : null,
+        "defaultValue" : null
+        },
+        {
+        "name" : "AGE_10_14",
+        "type" : "esriFieldTypeInteger",
+        "alias" : "AGE_10_14",
+        "sqlType" : "sqlTypeInteger",
+        "domain" : null,
+        "defaultValue" : null
+        },
+        {
+        "name" : "AGE_15_19",
+        "type" : "esriFieldTypeInteger",
+        "alias" : "AGE_15_19",
+        "sqlType" : "sqlTypeInteger",
+        "domain" : null,
+        "defaultValue" : null
+        },
+        {
+        "name" : "AGE_20_24",
+        "type" : "esriFieldTypeInteger",
+        "alias" : "AGE_20_24",
+        "sqlType" : "sqlTypeInteger",
+        "domain" : null,
+        "defaultValue" : null
+        },
+        {
+        "name" : "AGE_25_34",
+        "type" : "esriFieldTypeInteger",
+        "alias" : "AGE_25_34",
+        "sqlType" : "sqlTypeInteger",
+        "domain" : null,
+        "defaultValue" : null
+        },
+        {
+        "name" : "AGE_35_44",
+        "type" : "esriFieldTypeInteger",
+        "alias" : "AGE_35_44",
+        "sqlType" : "sqlTypeInteger",
+        "domain" : null,
+        "defaultValue" : null
+        },
+        {
+        "name" : "AGE_45_54",
+        "type" : "esriFieldTypeInteger",
+        "alias" : "AGE_45_54",
+        "sqlType" : "sqlTypeInteger",
+        "domain" : null,
+        "defaultValue" : null
+        },
+        {
+        "name" : "AGE_55_64",
+        "type" : "esriFieldTypeInteger",
+        "alias" : "AGE_55_64",
+        "sqlType" : "sqlTypeInteger",
+        "domain" : null,
+        "defaultValue" : null
+        },
+        {
+        "name" : "AGE_65_74",
+        "type" : "esriFieldTypeInteger",
+        "alias" : "AGE_65_74",
+        "sqlType" : "sqlTypeInteger",
+        "domain" : null,
+        "defaultValue" : null
+        },
+        {
+        "name" : "AGE_75_84",
+        "type" : "esriFieldTypeInteger",
+        "alias" : "AGE_75_84",
+        "sqlType" : "sqlTypeInteger",
+        "domain" : null,
+        "defaultValue" : null
+        },
+        {
+        "name" : "AGE_85_UP",
+        "type" : "esriFieldTypeInteger",
+        "alias" : "AGE_85_UP",
+        "sqlType" : "sqlTypeInteger",
+        "domain" : null,
+        "defaultValue" : null
+        },
+        {
+        "name" : "MED_AGE",
+        "type" : "esriFieldTypeDouble",
+        "alias" : "MED_AGE",
+        "sqlType" : "sqlTypeFloat",
+        "domain" : null,
+        "defaultValue" : null
+        },
+        {
+        "name" : "MED_AGE_M",
+        "type" : "esriFieldTypeDouble",
+        "alias" : "MED_AGE_M",
+        "sqlType" : "sqlTypeFloat",
+        "domain" : null,
+        "defaultValue" : null
+        },
+        {
+        "name" : "MED_AGE_F",
+        "type" : "esriFieldTypeDouble",
+        "alias" : "MED_AGE_F",
+        "sqlType" : "sqlTypeFloat",
+        "domain" : null,
+        "defaultValue" : null
+        },
+        {
+        "name" : "HOUSEHOLDS",
+        "type" : "esriFieldTypeInteger",
+        "alias" : "HOUSEHOLDS",
+        "sqlType" : "sqlTypeInteger",
+        "domain" : null,
+        "defaultValue" : null
+        },
+        {
+        "name" : "AVE_HH_SZ",
+        "type" : "esriFieldTypeDouble",
+        "alias" : "AVE_HH_SZ",
+        "sqlType" : "sqlTypeFloat",
+        "domain" : null,
+        "defaultValue" : null
+        },
+        {
+        "name" : "HSEHLD_1_M",
+        "type" : "esriFieldTypeInteger",
+        "alias" : "HSEHLD_1_M",
+        "sqlType" : "sqlTypeInteger",
+        "domain" : null,
+        "defaultValue" : null
+        },
+        {
+        "name" : "HSEHLD_1_F",
+        "type" : "esriFieldTypeInteger",
+        "alias" : "HSEHLD_1_F",
+        "sqlType" : "sqlTypeInteger",
+        "domain" : null,
+        "defaultValue" : null
+        },
+        {
+        "name" : "MARHH_CHD",
+        "type" : "esriFieldTypeInteger",
+        "alias" : "MARHH_CHD",
+        "sqlType" : "sqlTypeInteger",
+        "domain" : null,
+        "defaultValue" : null
+        },
+        {
+        "name" : "MARHH_NO_C",
+        "type" : "esriFieldTypeInteger",
+        "alias" : "MARHH_NO_C",
+        "sqlType" : "sqlTypeInteger",
+        "domain" : null,
+        "defaultValue" : null
+        },
+        {
+        "name" : "MHH_CHILD",
+        "type" : "esriFieldTypeInteger",
+        "alias" : "MHH_CHILD",
+        "sqlType" : "sqlTypeInteger",
+        "domain" : null,
+        "defaultValue" : null
+        },
+        {
+        "name" : "FHH_CHILD",
+        "type" : "esriFieldTypeInteger",
+        "alias" : "FHH_CHILD",
+        "sqlType" : "sqlTypeInteger",
+        "domain" : null,
+        "defaultValue" : null
+        },
+        {
+        "name" : "FAMILIES",
+        "type" : "esriFieldTypeInteger",
+        "alias" : "FAMILIES",
+        "sqlType" : "sqlTypeInteger",
+        "domain" : null,
+        "defaultValue" : null
+        },
+        {
+        "name" : "AVE_FAM_SZ",
+        "type" : "esriFieldTypeDouble",
+        "alias" : "AVE_FAM_SZ",
+        "sqlType" : "sqlTypeFloat",
+        "domain" : null,
+        "defaultValue" : null
+        },
+        {
+        "name" : "HSE_UNITS",
+        "type" : "esriFieldTypeInteger",
+        "alias" : "HSE_UNITS",
+        "sqlType" : "sqlTypeInteger",
+        "domain" : null,
+        "defaultValue" : null
+        },
+        {
+        "name" : "VACANT",
+        "type" : "esriFieldTypeInteger",
+        "alias" : "VACANT",
+        "sqlType" : "sqlTypeInteger",
+        "domain" : null,
+        "defaultValue" : null
+        },
+        {
+        "name" : "OWNER_OCC",
+        "type" : "esriFieldTypeInteger",
+        "alias" : "OWNER_OCC",
+        "sqlType" : "sqlTypeInteger",
+        "domain" : null,
+        "defaultValue" : null
+        },
+        {
+        "name" : "RENTER_OCC",
+        "type" : "esriFieldTypeInteger",
+        "alias" : "RENTER_OCC",
+        "sqlType" : "sqlTypeInteger",
+        "domain" : null,
+        "defaultValue" : null
+        },
+        {
+        "name" : "NO_FARMS12",
+        "type" : "esriFieldTypeDouble",
+        "alias" : "NO_FARMS12",
+        "sqlType" : "sqlTypeFloat",
+        "domain" : null,
+        "defaultValue" : null
+        },
+        {
+        "name" : "AVE_SIZE12",
+        "type" : "esriFieldTypeDouble",
+        "alias" : "AVE_SIZE12",
+        "sqlType" : "sqlTypeFloat",
+        "domain" : null,
+        "defaultValue" : null
+        },
+        {
+        "name" : "CROP_ACR12",
+        "type" : "esriFieldTypeDouble",
+        "alias" : "CROP_ACR12",
+        "sqlType" : "sqlTypeFloat",
+        "domain" : null,
+        "defaultValue" : null
+        },
+        {
+        "name" : "AVE_SALE12",
+        "type" : "esriFieldTypeDouble",
+        "alias" : "AVE_SALE12",
+        "sqlType" : "sqlTypeFloat",
+        "domain" : null,
+        "defaultValue" : null
+        },
+        {
+        "name" : "SQMI",
+        "type" : "esriFieldTypeDouble",
+        "alias" : "SQMI",
+        "sqlType" : "sqlTypeFloat",
+        "domain" : null,
+        "defaultValue" : null
+        },
+        {
+        "name" : "Shape__Area",
+        "type" : "esriFieldTypeDouble",
+        "alias" : "Shape__Area",
+        "sqlType" : "sqlTypeFloat",
+        "domain" : null,
+        "defaultValue" : null
+        },
+        {
+        "name" : "Shape__Length",
+        "type" : "esriFieldTypeDouble",
+        "alias" : "Shape__Length",
+        "sqlType" : "sqlTypeFloat",
+        "domain" : null,
+        "defaultValue" : null
+        }
+        ],
+
+
+
+
+
+
+
+
+
+
+
         renderer: {
           type: 'simple',
           symbol: {
-            type: "simple-fill",  // autocasts as new SimpleFillSymbol()
+            type: "simple-fill", // autocasts as new SimpleFillSymbol()
             style: "none",
-            outline: {  // autocasts as new SimpleLineSymbol()
+            outline: { // autocasts as new SimpleLineSymbol()
               color: "black",
               width: 1
             }
@@ -829,70 +1700,63 @@
       }).then(function (layer) {
         this.statesLayer = layer;
         this._mapInitPromise.then(function () {
-          this.map.add(this.statesLayer, 10)
-        }.bind(this))
+          this.map.add(this.statesLayer, 10);
+        }.bind(this));
       }.bind(this));
-
     },
 
-
-    _createReferenceLayer: function (layerURL, options) {
+    _createReferenceLayer: function _createReferenceLayer(layerURL, options) {
       // We implement our own json layer creator
       if (layerURL.endsWith('json') || layerURL.endsWith('geojson')) {
         return Promise.resolve($.ajax({
           url: layerURL,
           type: "GET",
           contentType: "application/json; charset=utf-8",
-          dataType: "json",
-        }))
-          .catch(this._error)
-          .then(function (data) {
-            if (undefined === data) {
-              throw 'Failed to retrieve station data. Refresh to try again.'
-            }
-            return new Promise(function (resolve) {
-              setTimeout(function () { // using setTimeout here to keep from blocking for too long
-                let features = Terraformer.ArcGIS.convert(new Terraformer.Primitive(data));
-                for (let i = 0; i < features.length; i++) {
-                  features[i]['geometry'] = new this.dojoMods.Polygon(features[i]['geometry']);
-                }
-                resolve(features);
-              }.bind(this));
-            }.bind(this)).catch(this._error);
-          }.bind(this))
-          .then(function (features) {
-            // Use Terraformer to convert GeoJSON to ArcGIS JSON
-            return new this.dojoMods.FeatureLayer(Object.assign({
-              // create an instance of esri/layers/support/Field for each field object
-              source: features,
-            }, options));
-          }.bind(this));
-      }
-      else {
+          dataType: "json"
+        })).catch(this._error).then(function (data) {
+          if (undefined === data) {
+            throw 'Failed to retrieve station data. Refresh to try again.';
+          }
+          return new Promise(function (resolve) {
+            setTimeout(function () {
+              // using setTimeout here to keep from blocking for too long
+              var features = Terraformer.ArcGIS.convert(new Terraformer.Primitive(data));
+              for (var i = 0; i < features.length; i++) {
+                features[i]['geometry'] = new this.dojoMods.Polygon(features[i]['geometry']);
+              }
+              resolve(features);
+            }.bind(this));
+          }.bind(this)).catch(this._error);
+        }.bind(this)).then(function (features) {
+          // Use Terraformer to convert GeoJSON to ArcGIS JSON
+          return new this.dojoMods.FeatureLayer(_extends({
+            // create an instance of esri/layers/support/Field for each field object
+            source: features
+          }, options));
+        }.bind(this));
+      } else {
         //if url is a feature service or csv we use the provided methods for creating them.
-        let layerClass = this.dojoMods.FeatureLayer;
+        var layerClass = this.dojoMods.FeatureLayer;
         if (layerURL.endsWith('csv')) {
           layerClass = this.dojoMods.CSVLayer;
         }
-        return Promise.resolve(new layerClass(Object.assign({url: layerURL}, options))).catch(this._log.bind(this));
+        return Promise.resolve(new layerClass(_extends({ url: layerURL }, options))).catch(this._log.bind(this));
       }
     },
 
-
     // Allows the widget to react to option changes. Any custom behaviors
     // can be configured here.
-    _setOptions: function (options) {
-      let old_options = Object.assign({}, this.options);
+    _setOptions: function _setOptions(options) {
+      var old_options = _extends({}, this.options);
       this._super(options);
       if (this.options.county !== old_options.county) {
         this._updateOverlay();
       }
       if (this.options.extent !== old_options.extent && this.options.extent !== null) {
         this.view.goTo(new this.dojoMods.Extent(this.options.extent));
-      }
-      else if (this.options.center !== old_options.center && this.options.center !== null) {
+      } else if (this.options.center !== old_options.center && this.options.center !== null) {
         this.options.extent = null;
-        this.view.goTo({center: new this.dojoMods.Point({latitude: this.options.center[0], longitude: this.options.center[1]}), zoom: this.options.zoom});
+        this.view.goTo({ center: new this.dojoMods.Point({ latitude: this.options.center[0], longitude: this.options.center[1] }), zoom: this.options.zoom });
       }
       if (this.options.variable !== old_options.variable || this.options.season !== old_options.season) {
         // Only a few variables have seasonal data
@@ -902,14 +1766,12 @@
           this.options.season = null;
         }
         // validate current scenario config and apply default configs as needed.
-        if ((this.options.variables[this.options.variable].disabledScenarios || []).includes(this.options.leftScenario) ||
-          (this.options.variables[old_options.variable].disabledScenarios || []).includes(this.options.variables[this.options.variable].defaultConfig.leftScenario)) {
+        if ((this.options.variables[this.options.variable].disabledScenarios || []).includes(this.options.leftScenario) || (this.options.variables[old_options.variable].disabledScenarios || []).includes(this.options.variables[this.options.variable].defaultConfig.leftScenario)) {
           this._setOption('leftScenario', this.options.variables[this.options.variable].defaultConfig.leftScenario);
         } else {
           this._updateLeftScenario();
         }
-        if ((this.options.variables[this.options.variable].disabledScenarios || []).includes(this.options.rightScenario) ||
-          (this.options.variables[old_options.variable].disabledScenarios || []).includes(this.options.variables[this.options.variable].defaultConfig.rightScenario)) {
+        if ((this.options.variables[this.options.variable].disabledScenarios || []).includes(this.options.rightScenario) || (this.options.variables[old_options.variable].disabledScenarios || []).includes(this.options.variables[this.options.variable].defaultConfig.rightScenario)) {
           this._setOption('rightScenario', this.options.variables[this.options.variable].defaultConfig.rightScenario);
         } else {
           this._updateRightScenario();
@@ -921,8 +1783,8 @@
       return this;
     },
 
-    _setOption: function (key, value) {
-      let oldValue = this.options[key];
+    _setOption: function _setOption(key, value) {
+      var oldValue = this.options[key];
       // This will actually update the value in the options hash
       this._super(key, value);
       // And now we can act on that change
@@ -962,22 +1824,32 @@
           break;
         case "showCounties":
 
-          this._whenDojoLoaded().then(this._updateCountiesLayer.bind(this)).then(function (layer) {layer.visible = value});
+          this._whenDojoLoaded().then(this._updateCountiesLayer.bind(this)).then(function (layer) {
+            layer.visible = value;
+          });
 
           break;
       }
     },
 
-    _updateLeftScenario: function () {
-      if (!this.options.scenarios[this.options.leftScenario].years.find((v) => v.value === this.options.leftYear)) {
+    _updateLeftScenario: function _updateLeftScenario() {
+      var _this3 = this;
+
+      if (!this.options.scenarios[this.options.leftScenario].years.find(function (v) {
+        return v.value === _this3.options.leftYear;
+      })) {
         this.options.leftYear = this.options.scenarios[this.options.leftScenario].defaultYear;
       }
       this._updateLeftScenarioSelect();
       this._updateLeftScenarioLayer();
       this._updateLeftYearSlider();
     },
-    _updateRightScenario: function () {
-      if (!this.options.scenarios[this.options.rightScenario].years.find((v) => v.value === this.options.rightYear)) {
+    _updateRightScenario: function _updateRightScenario() {
+      var _this4 = this;
+
+      if (!this.options.scenarios[this.options.rightScenario].years.find(function (v) {
+        return v.value === _this4.options.rightYear;
+      })) {
         this.options.rightYear = this.options.scenarios[this.options.leftScenario].defaultYear;
       }
       this._updateRightScenarioSelect();
@@ -985,35 +1857,34 @@
       this._updateRightYearSlider();
     },
 
-    _updateLeftYearSlider: function () {
+    _updateLeftYearSlider: function _updateLeftYearSlider() {
+      var _this5 = this;
+
       //override to disable left year slider for historical
       if (this.options.leftYear === 'avg') {
         this.nodes.$controlsOverLayContainer.find('.left-year-slider-container').addClass('disabled').text(this.options.scenarios[this.options.leftScenario].years.slice(-1)[0].label);
         delete this.nodes['$leftYearSlider'];
         delete this.nodes['$leftYearTooltip'];
         return;
-      }
-      else if(this.nodes.$controlsOverLayContainer.find('.left-year-slider-container').hasClass('disabled')){
-        this.nodes.$controlsOverLayContainer.find('.left-year-slider-container').removeClass('disabled').html(`
-              <div class="year-label year-min"></div>
-              <div class="left-year-slider"></div>
-              <div class="year-label year-max"></div>`);
+      } else if (this.nodes.$controlsOverLayContainer.find('.left-year-slider-container').hasClass('disabled')) {
+        this.nodes.$controlsOverLayContainer.find('.left-year-slider-container').removeClass('disabled').html('\n              <div class="year-label year-min"></div>\n              <div class="left-year-slider"></div>\n              <div class="year-label year-max"></div>');
       }
 
       if (this.nodes.$leftYearSlider === undefined) {
         this.nodes.$leftYearSlider = $(this.element).find('.left-year-slider');
       }
 
-
       if (this.nodes.$leftYearTooltip === undefined) {
         this.nodes.$leftYearTooltip = $('<span class="tooltip"></span>').hide();
       }
-      let maxLabel = this.options.scenarios[this.options.leftScenario].years.slice(-1)[0].label;
+      var maxLabel = this.options.scenarios[this.options.leftScenario].years.slice(-1)[0].label;
       if (this.options.leftYear === 'avg') {
-        maxLabel = '2000'
+        maxLabel = '2000';
       }
 
-      this.nodes.$leftYearTooltip.text(this.options.scenarios[this.options.leftScenario].years.find((v) => v.value === this.options.leftYear.toString()).label);
+      this.nodes.$leftYearTooltip.text(this.options.scenarios[this.options.leftScenario].years.find(function (v) {
+        return v.value === _this5.options.leftYear.toString();
+      }).label);
       this.nodes.$controlsOverLayContainer.find('.left-year-slider-container .year-min').text(this.options.scenarios[this.options.leftScenario].years[0].label);
       this.nodes.$controlsOverLayContainer.find('.left-year-slider-container .year-max').text(maxLabel);
       this.nodes.$leftYearSlider.slider({
@@ -1021,32 +1892,37 @@
         min: 0,
         max: this.options.scenarios[this.options.leftScenario].years.length - 1,
         step: 1,
-        value: this.options.scenarios[this.options.leftScenario].years.findIndex((v) => v.value === this.options.leftYear.toString()),
+        value: this.options.scenarios[this.options.leftScenario].years.findIndex(function (v) {
+          return v.value === _this5.options.leftYear.toString();
+        }),
         slide: function (event, ui) {
           this.nodes.$leftYearTooltip.text(this.options.scenarios[this.options.leftScenario].years[ui.value].label);
         }.bind(this),
         change: function (event, ui) {
           this.nodes.$leftYearSlider.attr('data-value', ui.value);
 
-          this._setOptions({leftYear: this.options.scenarios[this.options.leftScenario].years[ui.value].value});
-
-        }.bind(this),
+          this._setOptions({ leftYear: this.options.scenarios[this.options.leftScenario].years[ui.value].value });
+        }.bind(this)
       }).find(".ui-slider-handle").html('<span class="icon icon-arrow-left-right"></span>').append(this.nodes.$leftYearTooltip);
       this.nodes.$leftYearTooltip.fadeIn();
     },
 
-    _updateRightYearSlider: function () {
+    _updateRightYearSlider: function _updateRightYearSlider() {
+      var _this6 = this;
+
       if (this.nodes.$rightYearSlider === undefined) {
         this.nodes.$rightYearSlider = $(this.element).find('.right-year-slider');
       }
       if (this.nodes.$rightYearTooltip === undefined) {
-        this.nodes.$rightYearTooltip = $('<span class="tooltip"></span>').hide();
+        this.nodes.$rightYearTooltip = $("<span class='tooltip'></span>").hide();
       }
-      let maxLabel = this.options.scenarios[this.options.rightScenario].years.slice(-1)[0].label;
+      var maxLabel = this.options.scenarios[this.options.rightScenario].years.slice(-1)[0].label;
       if (this.options.rightYear === 'avg') {
-        maxLabel = '2000'
+        maxLabel = '2000';
       }
-      this.nodes.$rightYearTooltip.text(this.options.scenarios[this.options.rightScenario].years.find((v) => v.value === this.options.rightYear.toString()).label);
+      this.nodes.$rightYearTooltip.text(this.options.scenarios[this.options.rightScenario].years.find(function (v) {
+        return v.value === _this6.options.rightYear.toString();
+      }).label);
       this.nodes.$controlsOverLayContainer.find('.right-year-slider-container .year-min').text(this.options.scenarios[this.options.rightScenario].years[0].label);
       this.nodes.$controlsOverLayContainer.find('.right-year-slider-container .year-max').text(maxLabel);
       this.nodes.$rightYearSlider.slider({
@@ -1054,40 +1930,42 @@
         min: 0,
         max: this.options.scenarios[this.options.rightScenario].years.length - 1,
         step: 1,
-        value: this.options.scenarios[this.options.rightScenario].years.findIndex((v) => v.value === this.options.rightYear.toString()),
+        value: this.options.scenarios[this.options.rightScenario].years.findIndex(function (v) {
+          return v.value === _this6.options.rightYear.toString();
+        }),
         slide: function (event, ui) {
           this.nodes.$rightYearTooltip.text(this.options.scenarios[this.options.rightScenario].years[ui.value].label);
         }.bind(this),
         change: function (event, ui) {
           this.nodes.$rightYearSlider.attr('data-value', ui.value);
 
-          this._setOptions({rightYear: this.options.scenarios[this.options.rightScenario].years[ui.value].value});
-
-        }.bind(this),
-      }).find(".ui-slider-handle").html('<span class="icon icon-arrow-left-right"></span>').append(this.nodes.$rightYearTooltip);
+          this._setOptions({ rightYear: this.options.scenarios[this.options.rightScenario].years[ui.value].value });
+        }.bind(this)
+      }).find(".ui-slider-handle").html("<span class='icon icon-arrow-left-right'></span>").append(this.nodes.$rightYearTooltip);
       this.nodes.$rightYearTooltip.fadeIn();
     },
 
-    _updateLeftScenarioSelect: function () {
+    _updateLeftScenarioSelect: function _updateLeftScenarioSelect() {
+      var _this7 = this;
+
       if (this.nodes.$leftScenarioSelect === undefined) {
         this.nodes.$leftScenarioSelect = $(this.nodes.$controlsOverLayContainer).find(".left-scenario-controls .dropdown");
         this.nodes.$leftScenarioSelect.val(this.options.leftScenario);
-        this.nodes.$leftScenarioSelect.dropdown({bottomEdge: 80});
+        this.nodes.$leftScenarioSelect.dropdown({ bottomEdge: 80 });
         this.nodes.$leftScenarioSelect.on('change', function () {
           if (this.nodes.$leftScenarioSelect.val() !== undefined && this.nodes.$leftScenarioSelect.val() !== null) {
-            this._setOptions({leftScenario: this.nodes.$leftScenarioSelect.val()})
+            this._setOptions({ leftScenario: this.nodes.$leftScenarioSelect.val() });
           }
         }.bind(this));
       }
 
-      $(this.nodes.$leftScenarioSelect.find('option').each((i, o) => {
-        if ((this.options.variables[this.options.variable].disabledScenarios || []).includes($(o).val())) {
-          this.nodes.$leftScenarioSelect.dropdown("disable", $(o).val());
-          this.nodes.$leftScenarioSelect.parent().find('button[data-value="' + $(o).val() + '"]').hide()
-        }
-        else {
-          this.nodes.$leftScenarioSelect.dropdown("enable", $(o).val());
-          this.nodes.$leftScenarioSelect.parent().find('button[data-value="' + $(o).val() + '"]').show()
+      $(this.nodes.$leftScenarioSelect.find('option').each(function (i, o) {
+        if ((_this7.options.variables[_this7.options.variable].disabledScenarios || []).includes($(o).val())) {
+          _this7.nodes.$leftScenarioSelect.dropdown("disable", $(o).val());
+          _this7.nodes.$leftScenarioSelect.parent().find('button[data-value="' + $(o).val() + '"]').hide();
+        } else {
+          _this7.nodes.$leftScenarioSelect.dropdown("enable", $(o).val());
+          _this7.nodes.$leftScenarioSelect.parent().find('button[data-value="' + $(o).val() + '"]').show();
         }
       }));
 
@@ -1096,33 +1974,33 @@
       }
     },
 
-    _updateRightScenarioSelect: function () {
+    _updateRightScenarioSelect: function _updateRightScenarioSelect() {
+      var _this8 = this;
+
       if (this.nodes.$rightScenarioSelect === undefined) {
         this.nodes.$rightScenarioSelect = $(this.nodes.$controlsOverLayContainer).find(".right-scenario-controls .dropdown");
         this.nodes.$rightScenarioSelect.val(this.options.rightScenario);
-        this.nodes.$rightScenarioSelect.dropdown({bottomEdge: 80});
+        this.nodes.$rightScenarioSelect.dropdown({ bottomEdge: 80 });
         this.nodes.$rightScenarioSelect.on('change', function () {
           if (this.nodes.$rightScenarioSelect.val() !== undefined && this.nodes.$rightScenarioSelect.val() !== null) {
-            this._setOptions({rightScenario: this.nodes.$rightScenarioSelect.val()})
+            this._setOptions({ rightScenario: this.nodes.$rightScenarioSelect.val() });
           }
         }.bind(this));
       }
 
-      $(this.nodes.$leftScenarioSelect.find('option').each((i, o) => {
-        if ((this.options.variables[this.options.variable].disabledScenarios || []).includes($(o).val())) {
-          this.nodes.$leftScenarioSelect.dropdown("disable", $(o).val());
-        }
-        else {
-          this.nodes.$leftScenarioSelect.dropdown("enable", $(o).val());
+      $(this.nodes.$leftScenarioSelect.find('option').each(function (i, o) {
+        if ((_this8.options.variables[_this8.options.variable].disabledScenarios || []).includes($(o).val())) {
+          _this8.nodes.$leftScenarioSelect.dropdown("disable", $(o).val());
+        } else {
+          _this8.nodes.$leftScenarioSelect.dropdown("enable", $(o).val());
         }
       }));
       if (this.nodes.$rightScenarioSelect.val() !== this.options.rightScenario) {
         this.nodes.$rightScenarioSelect.val(this.options.rightScenario).trigger('change');
       }
-
     },
 
-    _setSwipeX: function (value) {
+    _setSwipeX: function _setSwipeX(value) {
       if (this.leftLayer && this.rightLayer) {
         this.view.whenLayerView(this.leftLayer).then(function (layerView) {
           this._setClipPath(layerView.container.element, 'left', value);
@@ -1133,77 +2011,21 @@
       }
     },
 
-    _updateLegend: function () {
-      let legendFilename = this.options.variables[this.options.variable]['seasonal_data'] ? [this.options.season || 'summer', this.options.variable].join('_') : this.options.variable;
-      this.nodes.$legendContainer.html('<img class="legend-image" src="/resources/img/legends/' + legendFilename + '.png">')
+    _updateLegend: function _updateLegend() {
+      var legendFilename = this.options.variables[this.options.variable]['seasonal_data'] ? [this.options.season || 'summer', this.options.variable].join('_') : this.options.variable;
+      this.nodes.$legendContainer.html('<img class="legend-image" src="/resources/img/legends/' + legendFilename + '.png">');
     },
 
-    _updateOverlay: function () {
+    _updateOverlay: function _updateOverlay() {
       if (typeof this.options.county === 'undefined' || this.options.county === null) {
         if (typeof this.nodes.$countyOverlay !== 'undefined') {
           delete this['cwg'];
           this.nodes.$countyOverlay.remove();
         }
-        return
+        return;
       }
-      if (this.nodes.$countyOverlay !== undefined && this.nodes.$countyOverlay !== null) {
-
-      }
-      this.nodes.$countyOverlay = $(`<div class="county-overlay">
-  <div class="county-overlay-close">x</div>
-  <div class="county-overlay-inner">
-    <header>
-      <a href="/location/">
-        <h4 class="accent-color" style="margin-bottom: 20px;">
-          <span class="icon icon-emission-scenario"></span> <span class="text">Chart<span class="full-title">: ${this.options.countyName}</span>
-          <span class="source" id="temp-chart-name">${this.options.variables[this.options.variable].title}</span>
-        </span>
-        </h4>
-      </a>
-
-      <div class="data-accordion-actions">
-        <a href="javascript:void(0);" class="how-to-read local"><span class="icon icon-help"></span><span class="d-none-xs">How to read this</span></a>
-        <a href="javascript:void(0);" class="download-image local">
-          <span class="icon icon-download-image"></span><span class="d-none-xs">Image</span></a>
-          <a href="javascript:void(0);"  class="download-data local">
-        <span class="icon icon-download-chart"></span><span class="d-none-xs">Data</span></a>
-      </div>
-    </header>
-    <div id="climate-chart" style="height:420px"></div>
-    <div class="chart-legend">
-      <div id="historical-obs" class="legend-item legend-item-range">
-        <div class="legend-item-line-container">
-          <div class="legend-item-line observed" id="over-baseline-block"></div>
-        </div>
-        Observations
-      </div>
-      <div id="historical-range" class="legend-item legend-item-range selected">
-        <div class="legend-item-block selected" id="historical-block"></div>
-        Historical (Modelled)
-      </div>
-      <div id="rcp45-range" class="legend-item legend-item-range selected">
-        <div class="legend-item-block selected" id="rcp45-block"></div>
-        Lower Emissions
-      </div>
-      <div id="rcp85-range" class="legend-item legend-item-range selected">
-        <div class="legend-item-block selected" id="rcp85-block"></div>
-        Higher Emissions
-      </div>
-      <div id="rcp45-mean" class="legend-item legend-item-range selected">
-        <div class="legend-item-line-container">
-          <div class="legend-item-line selected" id="rcp85-line"></div>
-          <div class="legend-item-line selected" id="rcp45-line"></div>
-        </div>
-        Averages
-      </div>
-    </div>
-    <div class="range">
-      <div id="slider-range" class="slider-range"></div>
-      <div class="ui-slider-label range-label min" id="range-low">1950</div>
-      <div class="ui-slider-label range-label max" id="range-high">2100</div>
-    </div>
-  </div>
-</div>`);
+      if (this.nodes.$countyOverlay !== undefined && this.nodes.$countyOverlay !== null) {}
+      this.nodes.$countyOverlay = $('<div class="county-overlay">\n  <div class="county-overlay-close">x</div>\n  <div class="county-overlay-inner">\n    <header>\n      <a href="/location/">\n        <h4 class="accent-color" style="margin-bottom: 20px;">\n          <span class="icon icon-emission-scenario"></span> <span class="text">Chart<span class="full-title">: ' + this.options.countyName + ', ' + this.options.stateName + '</span>\n          <span class="source" id="temp-chart-name">' + this.options.variables[this.options.variable].title + '</span>\n        </span>\n        </h4>\n      </a>\n\n      <div class="data-accordion-actions">\n        <a href="javascript:void(0);" class="how-to-read local"><span class="icon icon-help"></span><span class="d-none-xs">How to read this</span></a>\n        <a href="javascript:void(0);" class="download-image local">\n          <span class="icon icon-download-image"></span><span class="d-none-xs">Image</span></a>\n          <a href="javascript:void(0);"  class="download-data local">\n        <span class="icon icon-download-chart"></span><span class="d-none-xs">Data</span></a>\n      </div>\n    </header>\n    <div id="climate-chart" style="height:420px"></div>\n    <div class="chart-legend">\n      <div id="historical-obs" class="legend-item legend-item-range">\n        <div class="legend-item-line-container">\n          <div class="legend-item-line observed" id="over-baseline-block"></div>\n        </div>\n        Observations\n      </div>\n      <div id="historical-range" class="legend-item legend-item-range selected">\n        <div class="legend-item-block selected" id="historical-block"></div>\n        Historical (Modelled)\n      </div>\n      <div id="rcp45-range" class="legend-item legend-item-range selected">\n        <div class="legend-item-block selected" id="rcp45-block"></div>\n        Lower Emissions\n      </div>\n      <div id="rcp85-range" class="legend-item legend-item-range selected">\n        <div class="legend-item-block selected" id="rcp85-block"></div>\n        Higher Emissions\n      </div>\n      <div id="rcp45-mean" class="legend-item legend-item-range selected">\n        <div class="legend-item-line-container">\n          <div class="legend-item-line selected" id="rcp85-line"></div>\n          <div class="legend-item-line selected" id="rcp45-line"></div>\n        </div>\n        Averages\n      </div>\n    </div>\n    <div class="range">\n      <div id="slider-range" class="slider-range"></div>\n      <div class="ui-slider-label range-label min" id="range-low">1950</div>\n      <div class="ui-slider-label range-label max" id="range-high">2100</div>\n    </div>\n  </div>\n</div>');
 
       $(this.element).append(this.nodes.$countyOverlay);
       this.cwg = climate_widget.graph({
@@ -1218,7 +2040,9 @@
         histobs: "false"
       });
 
-      $('window').resize(function () {this.cwg.resize()}.bind(this));
+      $('window').resize(function () {
+        this.cwg.resize();
+      }.bind(this));
       this.nodes.$countyOverlay.find('.county-overlay-close').click(function () {
         delete this['cwg'];
         this.options.county = null;
@@ -1230,7 +2054,7 @@
         $(event.target).children('.legend-item-block, .legend-item-line').toggleClass('selected');
         $(event.target).children('.legend-item-line-container').children('.legend-item-line').toggleClass('selected');
 
-        let scenario = '';
+        var scenario = '';
         if ($('#rcp85-block').hasClass('selected') && $('#rcp45-block').hasClass('selected')) {
           scenario = 'both';
         } else if ($('#rcp45-block').hasClass('selected')) {
@@ -1246,32 +2070,27 @@
         });
       }.bind(this));
 
-      this.nodes.$countyOverlay.find('.download-image').click(function (event) {this.cwg && this.cwg.download_image(event.target, 'graph.png'); }.bind(this));
+      this.nodes.$countyOverlay.find('.download-image').click(function (event) {
+        this.cwg && this.cwg.download_image(event.target, 'graph.png');
+      }.bind(this));
       this.nodes.$countyOverlay.find('.download-data').click(function () {
-        this.nodes.$countyOverlayDownload = $(
-          `<div class="download-panel overlay">
-            <div class="download-inner">
-                <a href="javascript:void(0);" class="download-dismiss-button icon icon-close"></a>
-                <p>Use the following links to download this graph's data:</p>
-                <ul>
-                    <li><a href="javascript:void(0);" class='download_hist_obs_data button display-block border-white hover-bg-white'><span class='icon icon-arrow-down '></span>Observed Data</a></li>
-                    <li><a href="javascript:void(0);" class='download_hist_mod_data button display-block border-white hover-bg-white'><span class='icon icon-arrow-down'></span>Historical Modeled Data</a></li>
-                    <li><a href="javascript:void(0);" class='download_proj_mod_data button display-block border-white hover-bg-white'><span class='icon icon-arrow-down'></span>Projected Modeled Data</a></li>
-                    <li><a href="/resources/data/Key-to-Climate-Explorer-Download-Filenames-and-Column-Headings.xlsx" class="button display-block border-white hover-bg-white"><span class="icon icon-arrow-down"></span>Information for Interpreting Data</a></li>
-                </ul>
-
-            </div>
-        </div>`
-        ).appendTo($(document.body));
+        this.nodes.$countyOverlayDownload = $("<div class='download-panel overlay'>\n            <div class='download-inner'>\n                <a href='javascript:void(0);' class='download-dismiss-button icon icon-close'></a>\n                <p>Use the following links to download this graph\'s data:</p>\n                <ul>\n                    <li><a href='javascript:void(0);' class=\'download_hist_obs_data button display-block border-white hover-bg-white\'><span class=\'icon icon-arrow-down \'></span>Observed Data</a></li>\n                    <li><a href='javascript:void(0);' class=\'download_hist_mod_data button display-block border-white hover-bg-white\'><span class=\'icon icon-arrow-down\'></span>Historical Modeled Data</a></li>\n                    <li><a href='javascript:void(0);' class=\'download_proj_mod_data button display-block border-white hover-bg-white\'><span class=\'icon icon-arrow-down\'></span>Projected Modeled Data</a></li>\n                    <li><a href='/resources/data/Key-to-Climate-Explorer-Download-Filenames-and-Column-Headings.xlsx' class='button display-block border-white hover-bg-white'><span class='icon icon-arrow-down'></span>Information for Interpreting Data</a></li>\n                </ul>\n\n            </div>\n        </div>").appendTo($(document.body));
 
         this.nodes.$countyOverlayDownload.removeClass("hidden").show(250);
 
-        this.nodes.$countyOverlayDownload.find('.download_hist_obs_data').click(function (event) { this.cwg && this.cwg.download_hist_obs_data(event.target)}.bind(this));
-        this.nodes.$countyOverlayDownload.find('.download_hist_mod_data').click(function (event) {this.cwg && this.cwg.download_hist_mod_data(event.target)}.bind(this));
-        this.nodes.$countyOverlayDownload.find('.download_proj_mod_data').click(function (event) {this.cwg && this.cwg.download_proj_mod_data(event.target) }.bind(this));
-        this.nodes.$countyOverlayDownload.find('.download-dismiss-button').click(function () {this.nodes.$countyOverlayDownload.addClass("hidden").hide(); }.bind(this));
+        this.nodes.$countyOverlayDownload.find('.download_hist_obs_data').click(function (event) {
+          this.cwg && this.cwg.download_hist_obs_data(event.target);
+        }.bind(this));
+        this.nodes.$countyOverlayDownload.find('.download_hist_mod_data').click(function (event) {
+          this.cwg && this.cwg.download_hist_mod_data(event.target);
+        }.bind(this));
+        this.nodes.$countyOverlayDownload.find('.download_proj_mod_data').click(function (event) {
+          this.cwg && this.cwg.download_proj_mod_data(event.target);
+        }.bind(this));
+        this.nodes.$countyOverlayDownload.find('.download-dismiss-button').click(function () {
+          this.nodes.$countyOverlayDownload.addClass("hidden").hide();
+        }.bind(this));
       }.bind(this));
-
 
       $('.how-to-read').on('click', function () {
         if (window.app) {
@@ -1290,73 +2109,71 @@
       });
     },
 
-    _getScenarioURL: function (scenario, year) {
-      let tilesURL = this.options.scenarios[scenario].tilesURL;
-      let season = this.options.season;
+    _getScenarioURL: function _getScenarioURL(scenario, year) {
+      var tilesURL = this.options.scenarios[scenario].tilesURL;
+      var season = this.options.season || '';
+      var season_month = this.options.season_months[season] || '';
       if (scenario === 'historical') {
-        scenario = 'hist'
+        scenario = 'hist';
       }
-      let variable = this.options.variable;
-      if (this.options.variable === 'days_dry_days') {
-        variable = 'dry_days';
-      }
+      var variable = this.options.variable;
+      // if (this.options.variable === 'days_dry_days') {
+      //   variable = 'dry_days';
+      // }
       if (!['tmin', 'tmax', 'pcpn'].includes(variable)) {
-        season = 'annual'
+        season = 'annual';
       }
+      // fill template variables and collapse empty '//' values (that aren't part of the 'https://') as s3 hates them.
+      tilesURL = tilesURL.replace('{scenario}', scenario).replace('{season}', season).replace('{season_month}', season_month).replace('{variable}', variable).replace('{year}', year).replace(/\/\//g, (i => m => !i++ ? m : '/')(0));
+      console.log(tilesURL);
       return tilesURL
-        .replace('{scenario}', scenario)
-        .replace('{season}', season)
-        .replace('{variable}', variable)
-        .replace('{year}', year)
     },
-    _destroy: function () {
+    _destroy: function _destroy() {
       // remove CSS classes, destroy nodes, etc
       Object.values(this.nodes).forEach(function (node) {
-        node.remove()
+        node.remove();
       });
       this.map.destroy();
     },
 
-
-    _log: function () {
-      (this.options.debug === 3) && this._toLoggerMethod('log', arguments);
+    _log: function _log() {
+      this.options.debug === 3 && this._toLoggerMethod('log', arguments);
     },
-    _warn: function () {
-      (this.options.debug >= 2) && this._toLoggerMethod('warn', arguments);
+    _warn: function _warn() {
+      this.options.debug >= 2 && this._toLoggerMethod('warn', arguments);
     },
-    _error: function () {
-      (this.options.debug >= 1) && this._toLoggerMethod('error', arguments);
+    _error: function _error() {
+      this.options.debug >= 1 && this._toLoggerMethod('error', arguments);
     },
-    _toLoggerMethod: function (method, args) {
+    _toLoggerMethod: function _toLoggerMethod(method, args) {
       args = Array.prototype.slice.call(arguments, 1);
-      let logger = this.options.logger || console;
+      var logger = this.options.logger || console;
       logger.error.apply(logger, args);
     },
 
     // =========== Public methods=============================
 
-    getShowSeasonControls: function () {
+    getShowSeasonControls: function getShowSeasonControls() {
       return this.options.variables[this.options.variable]['seasonal_data'];
     },
-    disable: function () {
+    disable: function disable() {
       // Do any custom logic for disabling here, then
       this._super();
     },
 
-    enable: function () {
+    enable: function enable() {
       // Do any custom logic for enabling here, then
       this._super();
     },
-    whenDojoMods: function (callback) {
+    whenDojoMods: function whenDojoMods(callback) {
 
       if (this.dojoMods !== undefined) {
         callback();
-      }
-      else {
-        window.addEventListener('dojoModsLoaded', callback)
+      } else {
+        window.addEventListener('dojoModsLoaded', callback);
       }
     },
-    _setClipPath(element, side, value) {
+    _setClipPath: function _setClipPath(element, side, value) {
       if (side === 'left') {
         if (element.style.WebkitClipPath !== undefined) {
           element.style.WebkitClipPath = "polygon(0 0, " + value + "px 0, " + value + "px 100%, 0% 100%)";
@@ -1371,8 +2188,7 @@
         // $(element).css("clipPath", "polygon(0 0, " + value + "px 0, " + value + "px 100%, 0% 100%)");
         // $(element).css("-webkit-clip-path","polygon(0 0, " + value + "px 0, " + value + "px 100%, 0% 100%)");
         // $(element).css("clip", "rect(" + [0, value + "px", element.height + "px", 0].join(' ') + ")");
-      }
-      else if (side === 'right') {
+      } else if (side === 'right') {
         if (element.style.WebkitClipPath !== undefined) {
           element.style.WebkitClipPath = "polygon(" + value + "px 0, 100% 0%, 100% 100%, " + value + "px 100%)";
         }
@@ -1380,14 +2196,13 @@
           element.style.clipPath = "polygon(" + value + "px 0, 100% 0%, 100% 100%, " + value + "px 100%)";
         }
         if (element.style.clipPath === undefined || element.style.clipPath === '' || element.style.WebkitClipPath === undefined || element.style.WebkitClipPath === '') {
-          element.style.clip = "rect(" + ['0px', element.width + "px", element.height + "px", value + "px"].join(' ') + ")"
+          element.style.clip = "rect(" + ['0px', element.width + "px", element.height + "px", value + "px"].join(' ') + ")";
         }
         // $(element).css("clipPath", "polygon(" + value + "px 0, 100% 0%, 100% 100%, " + value + "px 100%)");
         // $(element).css("-webkit-clip-path", "polygon(" + value + "px 0, 100% 0%, 100% 100%, " + value + "px 100%)");
         // $(element).css("clip", "rect(" + [0, element.width + "px", element.height + "px", value+ "px"].join(' ') + ")");
       }
     }
-
 
     // ============ Public methods provided by the base widget =============
     // instance() - Retrieves the widget's instance object. If the element
@@ -1401,4 +2216,4 @@
     //      or relevant generated element.
 
   });
-}));
+});

@@ -12,7 +12,8 @@ especially when it comes to interacting with the DOM and handling events.
 
 'use strict';
 // Use AMD loader if present, if not use global jQuery
-((function (root, factory) {
+
+(function (root, factory) {
   if (typeof define === 'function' && define.amd) {
     // AMD. Register as an anonymous module.
     define(['jquery'], factory);
@@ -110,7 +111,7 @@ especially when it comes to interacting with the DOM and handling events.
     nodes: {},
 
     // Called once on instantiation.
-    _create: function () {
+    _create: function _create() {
       this.updateSharing();
       this.updateBreadcrumbs();
     },
@@ -129,13 +130,13 @@ especially when it comes to interacting with the DOM and handling events.
 
     // Init is automatically invoked after create, and again every time the
     //  widget is invoked with no arguments after that
-    _init: function () {
+    _init: function _init() {
       this._trigger('initialized');
     },
 
     // Allows the widget to react to option changes. Any custom behaviors
     // can be configured here.
-    _setOption: function (key, value) {
+    _setOption: function _setOption(key, value) {
       // This will actually update the value in the options hash
       this._super(key, value);
       // And now we can act on that change
@@ -147,16 +148,16 @@ especially when it comes to interacting with the DOM and handling events.
       }
     },
 
-    _setOptions: function (options) {
+    _setOptions: function _setOptions(options) {
       this._super(options);
 
       //alternative place to handle option changes when multiple options change at the same time.
     },
 
-    getUrlParam: function (key) {
-      const params = decodeURIComponent(window.location.search.substring(1)).split("&");
-      let param,
-        i;
+    getUrlParam: function getUrlParam(key) {
+      var params = decodeURIComponent(window.location.search.substring(1)).split("&");
+      var param = void 0,
+          i = void 0;
 
       for (i = 0; i < params.length; i++) {
         param = params[i].split('=');
@@ -173,26 +174,27 @@ especially when it comes to interacting with the DOM and handling events.
      * Gets url parameters and re-keys them as specified by params
      * @param {Object} params - An object with newkey:oldkey key:value pairs
      */
-    getUrlParams: function (params) {
-      const results = {};
+    getUrlParams: function getUrlParams(params) {
+      var results = {};
 
       Object.keys(params).forEach(function (newkey) {
         if (this.getUrlParam(params[newkey]) !== undefined) {
-          results[newkey] = this.getUrlParam(params[newkey])
+          results[newkey] = this.getUrlParam(params[newkey]);
         }
       }.bind(this));
       return results;
     },
 
     // Replaces specified URL param with the passed value
-    setUrlParam: function (key, value) {
-      const currentParams = window.location.search.substring(1);
-      let newParams;
-      const params = decodeURIComponent(currentParams).split("&");
-      let param;
-      const href = window.location.href.split("?")[0];
-      let paramExists = false,
-        i, l;
+    setUrlParam: function setUrlParam(key, value) {
+      var currentParams = window.location.search.substring(1);
+      var newParams = void 0;
+      var params = decodeURIComponent(currentParams).split("&");
+      var param = void 0;
+      var href = window.location.href.split("?")[0];
+      var paramExists = false,
+          i = void 0,
+          l = void 0;
 
       if (window.hasOwnProperty("history") === false || window.history.replaceState === false) return;
 
@@ -232,12 +234,12 @@ especially when it comes to interacting with the DOM and handling events.
     },
 
     // Removes specified URL param
-    removeUrlParam: function (key) {
-      const params = decodeURIComponent(window.location.search.substring(1)).split("&");
-      let param;
-      const newParams = [],
-        href = window.location.href.split("?")[0];
-      let i;
+    removeUrlParam: function removeUrlParam(key) {
+      var params = decodeURIComponent(window.location.search.substring(1)).split("&");
+      var param = void 0;
+      var newParams = [],
+          href = window.location.href.split("?")[0];
+      var i = void 0;
 
       if (window.hasOwnProperty("history") === false || window.history.replaceState === false) return;
 
@@ -256,12 +258,12 @@ especially when it comes to interacting with the DOM and handling events.
       }
     },
 
-    _extentToString: function (extent) {
+    _extentToString: function _extentToString(extent) {
       return extent.xmin + "," + extent.xmax + "," + extent.ymin + "," + extent.ymax;
     },
 
     // expects string with 4 comma separated values
-    _extentToObject: function (extent) {
+    _extentToObject: function _extentToObject(extent) {
       extent = extent.split(",");
       return {
         xmin: extent[0],
@@ -271,8 +273,8 @@ especially when it comes to interacting with the DOM and handling events.
       };
     },
 
-    getStationsMapState: function () {
-      const state = this.getUrlParams({
+    getStationsMapState: function getStationsMapState() {
+      var state = this.getUrlParams({
         mode: 'id',
         stationId: 'station',
         stationName: 'station-name',
@@ -284,23 +286,25 @@ especially when it comes to interacting with the DOM and handling events.
         zoom: 'zoom'
       });
       if (state.lat && state.lon) {
-        state.center = [state.lat, state.lon]
+        state.center = [state.lat, state.lon];
       }
-      if (state.extent) {state.extent = this._extentToObject(state.extent);}
+      if (state.extent) {
+        state.extent = this._extentToObject(state.extent);
+      }
 
-      return state
+      return state;
     },
-    setStationsMapState: function (state) {
-      (Object.keys(state).includes('stationId') && state.stationId) ? this.setUrlParam('station', state['stationId']) : this.removeUrlParam('station');
-      (Object.keys(state).includes('stationName') && state.stationName) ? this.setUrlParam('station-name', state.stationName) : this.removeUrlParam('station-name');
-      (Object.keys(state).includes('stationMOverMHHW') && state.stationMOverMHHW) ? this.setUrlParam('station-mhhw', state.stationMOverMHHW) : this.removeUrlParam('station-mhhw');
+    setStationsMapState: function setStationsMapState(state) {
+      Object.keys(state).includes('stationId') && state.stationId ? this.setUrlParam('station', state['stationId']) : this.removeUrlParam('station');
+      Object.keys(state).includes('stationName') && state.stationName ? this.setUrlParam('station-name', state.stationName) : this.removeUrlParam('station-name');
+      Object.keys(state).includes('stationMOverMHHW') && state.stationMOverMHHW ? this.setUrlParam('station-mhhw', state.stationMOverMHHW) : this.removeUrlParam('station-mhhw');
       Object.keys(state).includes('mode') ? this.setUrlParam('id', state['mode']) : this.removeUrlParam('mode');
       Object.keys(state).includes('extent') && state['extent'] ? this.setUrlParam('extent', this._extentToString(state['extent'])) : null;
       Object.keys(state).includes('zoom') ? this.setUrlParam('zoom', state['zoom']) : null;
     },
 
-    getVariablesPageState: function () {
-      const state = this.getUrlParams({
+    getVariablesPageState: function getVariablesPageState() {
+      var state = this.getUrlParams({
         variable: 'id',
         season: 'season',
         leftScenario: 'left',
@@ -313,11 +317,13 @@ especially when it comes to interacting with the DOM and handling events.
       if (state.lat && state.lon) {
         state.center = [state.lon, state.lat];
       }
-      if (state.extent) {state.extent = this._extentToObject(state.extent);}
+      if (state.extent) {
+        state.extent = this._extentToObject(state.extent);
+      }
 
       return state;
     },
-    setVariablesMapState: function (state) {
+    setVariablesMapState: function setVariablesMapState(state) {
       Object.keys(state).includes('variable') ? this.setUrlParam('id', state['variable']) : null;
       Object.keys(state).includes('season') ? this.setUrlParam('season', state['season']) : null;
       Object.keys(state).includes('leftScenario') ? this.setUrlParam('left', state['leftScenario']) : null;
@@ -328,18 +334,20 @@ especially when it comes to interacting with the DOM and handling events.
       Object.keys(state).includes('zoom') ? this.setUrlParam('zoom', state['zoom']) : null;
     },
 
-    getNavState: function () {
-      let pages = ["location", "variables", "stations"];
-      const state = this.getUrlParams({
-      slide: 'menu',
-      detail: 'menuDetail',
+    getNavState: function getNavState() {
+      var pages = ["location", "variables", "stations"];
+      var state = this.getUrlParams({
+        slide: 'menu',
+        detail: 'menuDetail'
       });
-      if (state.slide) { state.slide = pages.indexOf(state.slide); }
+      if (state.slide) {
+        state.slide = pages.indexOf(state.slide);
+      }
       return state;
     },
 
-    setNavState: function(state) {
-      let pages = ["location", "variables", "stations"];
+    setNavState: function setNavState(state) {
+      var pages = ["location", "variables", "stations"];
       if (Object.keys(state).includes('slide')) {
         this.setUrlParam('menu', pages[state['slide']]);
       } else {
@@ -352,8 +360,8 @@ especially when it comes to interacting with the DOM and handling events.
       }
     },
 
-    getLocationPageState: function () {
-      const state = this.getUrlParams({
+    getLocationPageState: function getLocationPageState() {
+      var state = this.getUrlParams({
         county: 'county',
         city: 'city',
         fips: 'fips',
@@ -362,37 +370,50 @@ especially when it comes to interacting with the DOM and handling events.
         lon: 'lon',
         zoom: 'zoom'
       });
-      if (state.lat && state.lon) { state.center = [state.lon, state.lat] }
+      if (state.lat && state.lon) {
+        state.center = [state.lon, state.lat];
+      }
 
-      if (state.county) { state.county = state.county.replace(/\+/g, ' '); }
-      if (state.city) { state.city = state.city.replace(/\+/g, ' '); }
+      if (state.county) {
+        state.county = state.county.replace(/\+/g, ' ');
+      }
+      if (state.city) {
+        state.city = state.city.replace(/\+/g, ' ');
+      }
       if (state.extent) state.extent = this._extentToObject(state.extent);
 
       return state;
     },
 
-
     // These 3 methods give you an easy way to control debug messages
-    _log: function () { (this.options.debug === 3) && this._toLoggerMethod('log', arguments); },
-    _warn: function () { (this.options.debug >= 2) && this._toLoggerMethod('warn', arguments); },
-    _error: function () { (this.options.debug >= 1) && this._toLoggerMethod('error', arguments); },
-    _toLoggerMethod: function (method, args) {
+    _log: function _log() {
+      this.options.debug === 3 && this._toLoggerMethod('log', arguments);
+    },
+    _warn: function _warn() {
+      this.options.debug >= 2 && this._toLoggerMethod('warn', arguments);
+    },
+    _error: function _error() {
+      this.options.debug >= 1 && this._toLoggerMethod('error', arguments);
+    },
+    _toLoggerMethod: function _toLoggerMethod(method, args) {
       logger.error.apply(this.options.logger || console, Array.prototype.slice.call(arguments, 1));
     },
 
-    updateSharing: function () {
+    updateSharing: function updateSharing() {
       $('#share_facebook').prop('href', 'https://www.facebook.com/sharer/sharer.php?u=' + encodeURIComponent(window.location.href));
       $('#share_twitter').prop('href', 'https://twitter.com/intent/tweet?text=' + encodeURIComponent(window.location.href));
       $('#share_link').val(window.location.href);
     },
 
-    updateBreadcrumbs: function () {
+    updateBreadcrumbs: function updateBreadcrumbs() {
       if (window.location.pathname === '/') return;
 
-      let breadcrumb_text,
-        additional_breadcrumb;
+      var breadcrumb_text = void 0,
+          additional_breadcrumb = void 0;
 
-      let page = window.location.pathname.split("/").filter(function (p) {return p !== ""}).pop().replace(".php", "");
+      var page = window.location.pathname.split("/").filter(function (p) {
+        return p !== "";
+      }).pop().replace(".php", "");
 
       if (!page) return;
 
@@ -416,7 +437,9 @@ especially when it comes to interacting with the DOM and handling events.
           break;
         case 'stations':
           breadcrumb_text = this.getUrlParam('id') || "";
-          breadcrumb_text = breadcrumb_text.replace(/\_/g, " ").replace(/\w\S*/g, function (txt) {return txt.charAt(0).toUpperCase() + txt.substr(1).toLowerCase();});
+          breadcrumb_text = breadcrumb_text.replace(/\_/g, " ").replace(/\w\S*/g, function (txt) {
+            return txt.charAt(0).toUpperCase() + txt.substr(1).toLowerCase();
+          });
 
           additional_breadcrumb = '<a href="#nav-stations" class="parent launch-nav breadcrumb-middle" data-nav-slide="2"><span class="icon icon-bubble"></span>Stations</a>';
           break;
@@ -432,27 +455,27 @@ especially when it comes to interacting with the DOM and handling events.
     },
 
     // recreates list of variables found in scenarioComparisonMap.js
-    _getVariableBreadcrumb: function (key) {
-      const variables = {
-        'tmax': {title: 'Avg Daily Max Temp (°F)', seasonal_data: true},
-        'tmin': {title: 'Avg Daily Min Temp (°F)', seasonal_data: true},
-        'days_tmax_gt_90f': {title: 'Days w/ max > 90°F', seasonal_data: false},
-        'days_tmax_gt_95f': {title: 'Days w/ max > 95°F', seasonal_data: false},
-        'days_tmax_gt_100f': {title: 'Days w/ max > 100°F', seasonal_data: false},
-        'days_tmax_gt_105f': {title: 'Days w/ max > 105°F', seasonal_data: false},
-        'days_tmax_lt_32f': {title: 'Days w/ max < 32°F', seasonal_data: false},
-        'days_tmin_lt_32f': {title: 'Days w/ min < 32°F', seasonal_data: false},
-        'days_tmin_gt_80f': {title: 'Days w/ min > 80°F', seasonal_data: false},
-        'days_tmin_gt_90f': {title: 'Days w/ min > 90°F', seasonal_data: false},
-        'pcpn': {title: 'Total Precipitation', seasonal_data: true},
-        'days_pcpn_gt_1in': {title: 'Days w/ > 1 in', seasonal_data: false},
-        'days_pcpn_gt_2in': {title: 'Days w/ > 2 in', seasonal_data: false},
-        'days_pcpn_gt_3in': {title: 'Days w/ > 3 in', seasonal_data: false},
-        'days_dry_days': {title: 'Dry Days', seasonal_data: false},
-        'hdd_65f': {title: 'Heating Degree Days', seasonal_data: false},
-        'cdd_65f': {title: 'Cooling Degree Days', seasonal_data: false},
-        'gdd': {title: 'Growing Degree Days', seasonal_data: false},
-        'gddmod': {title: 'Mod. Growing Degree Days', seasonal_data: false}
+    _getVariableBreadcrumb: function _getVariableBreadcrumb(key) {
+      var variables = {
+        'tmax': { title: 'Avg Daily Max Temp (°F)', seasonal_data: true },
+        'tmin': { title: 'Avg Daily Min Temp (°F)', seasonal_data: true },
+        'days_tmax_gt_90f': { title: 'Days w/ max > 90°F', seasonal_data: false },
+        'days_tmax_gt_95f': { title: 'Days w/ max > 95°F', seasonal_data: false },
+        'days_tmax_gt_100f': { title: 'Days w/ max > 100°F', seasonal_data: false },
+        'days_tmax_gt_105f': { title: 'Days w/ max > 105°F', seasonal_data: false },
+        'days_tmax_lt_32f': { title: 'Days w/ max < 32°F', seasonal_data: false },
+        'days_tmin_lt_32f': { title: 'Days w/ min < 32°F', seasonal_data: false },
+        'days_tmin_gt_80f': { title: 'Days w/ min > 80°F', seasonal_data: false },
+        'days_tmin_gt_90f': { title: 'Days w/ min > 90°F', seasonal_data: false },
+        'pcpn': { title: 'Total Precipitation', seasonal_data: true },
+        'days_pcpn_gt_1in': { title: 'Days w/ > 1 in', seasonal_data: false },
+        'days_pcpn_gt_2in': { title: 'Days w/ > 2 in', seasonal_data: false },
+        'days_pcpn_gt_3in': { title: 'Days w/ > 3 in', seasonal_data: false },
+        'days_dry_days': { title: 'Dry Days', seasonal_data: false },
+        'hdd_65f': { title: 'Heating Degree Days', seasonal_data: false },
+        'cdd_65f': { title: 'Cooling Degree Days', seasonal_data: false },
+        'gdd': { title: 'Growing Degree Days', seasonal_data: false },
+        'gddmod': { title: 'Mod. Growing Degree Days', seasonal_data: false }
       };
 
       return variables[key].title;
@@ -470,8 +493,7 @@ especially when it comes to interacting with the DOM and handling events.
     //      or relevant generated element.
 
   });
-}));
+});
 $(function () {
   window.ce = $(window).ce({});
 });
-
