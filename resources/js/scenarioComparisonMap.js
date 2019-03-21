@@ -120,7 +120,7 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
       scenarios: {
         'historical': {
           title: "Historical",
-          tilesURL: "http://climate-explorer-webtiles.s3-website-us-east-1.amazonaws.com/hist/{variable}/{season_month}/{level}/{col}/{row}.png",
+          tilesURL: "https://climate-explorer.fernleafinteractive.com/webtiles/hist/{variable}/{season_month}/{level}/{col}/{row}.png",
           tilesTMS: true,
           years: [{ value: 'avg', label: '1961-1990 Average' }],
           defaultYear: 'avg',
@@ -129,7 +129,7 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
         },
         'rcp45': {
           title: 'Lower Emissions',
-          tilesURL: "http://climate-explorer-webtiles.s3-website-us-east-1.amazonaws.com/rcp45/{variable}/{year}/{season_month}/{level}/{col}/{row}.png",
+          tilesURL: "https://climate-explorer.fernleafinteractive.com/webtiles/rcp45/{variable}/{year}/{season_month}/{level}/{col}/{row}.png",
           tilesTMS: true,
           years: [
           // {value: '2010', label: '2010'},
@@ -140,7 +140,7 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
         },
         'rcp85': {
           title: 'Higher Emissions',
-          tilesURL: "http://climate-explorer-webtiles.s3-website-us-east-1.amazonaws.com/rcp85/{variable}/{year}/{season_month}/{level}/{col}/{row}.png",
+          tilesURL: "https://climate-explorer.fernleafinteractive.com/webtiles/rcp85/{variable}/{year}/{season_month}/{level}/{col}/{row}.png",
           tilesTMS: true,
           years: [
           // {value: '2010', label: '2010'},
@@ -671,7 +671,7 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
           layerViewContainer.doRender = function (a) {
             layerViewContainer._doRender(a);
             if (_this2.options.swipeX === null) {
-              _this2.options.swipeX = layerViewContainer.element.width / 2;
+              _this2.options.swipeX = layerViewContainer.element.width;
             }
             if (_this2.options.swipeX > layerViewContainer.element.width) {
               _this2.options.swipeX = layerViewContainer.element.width;
@@ -1212,7 +1212,7 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
               var county = response.features[0];
               this.options.county = county.attributes['FIPS'];
               // this.options.countyName = county.attributes['NAME'] + ' ' + county.attributes['LSAD'];
-              this.options.countyName = (county.attributes['NAME'] + " County").replace(/County County/ig, 'County');
+              this.options.countyName = county.attributes['NAME'];
               this.options.stateName = county.attributes['STATE_NAME'];
               this._updateOverlay();
             }.bind(this));
@@ -2025,7 +2025,7 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
         return;
       }
       if (this.nodes.$countyOverlay !== undefined && this.nodes.$countyOverlay !== null) {}
-      this.nodes.$countyOverlay = $('<div class="county-overlay">\n  <div class="county-overlay-close">x</div>\n  <div class="county-overlay-inner">\n    <header>\n      <a href="/location/">\n        <h4 class="accent-color" style="margin-bottom: 20px;">\n          <span class="icon icon-emission-scenario"></span> <span class="text">Chart<span class="full-title">: ' + this.options.countyName + ', ' + this.options.stateName + '</span>\n          <span class="source" id="temp-chart-name">' + this.options.variables[this.options.variable].title + '</span>\n        </span>\n        </h4>\n      </a>\n\n      <div class="data-accordion-actions">\n        <a href="javascript:void(0);" class="how-to-read local"><span class="icon icon-help"></span><span class="d-none-xs">How to read this</span></a>\n        <a href="javascript:void(0);" class="download-image local">\n          <span class="icon icon-download-image"></span><span class="d-none-xs">Image</span></a>\n          <a href="javascript:void(0);"  class="download-data local">\n        <span class="icon icon-download-chart"></span><span class="d-none-xs">Data</span></a>\n      </div>\n    </header>\n    <div id="climate-chart" style="height:420px"></div>\n    <div class="chart-legend">\n      <div id="historical-obs" class="legend-item legend-item-range">\n        <div class="legend-item-line-container">\n          <div class="legend-item-line observed" id="over-baseline-block"></div>\n        </div>\n        Observations\n      </div>\n      <div id="historical-range" class="legend-item legend-item-range selected">\n        <div class="legend-item-block selected" id="historical-block"></div>\n        Historical (Modelled)\n      </div>\n      <div id="rcp45-range" class="legend-item legend-item-range selected">\n        <div class="legend-item-block selected" id="rcp45-block"></div>\n        Lower Emissions\n      </div>\n      <div id="rcp85-range" class="legend-item legend-item-range selected">\n        <div class="legend-item-block selected" id="rcp85-block"></div>\n        Higher Emissions\n      </div>\n      <div id="rcp45-mean" class="legend-item legend-item-range selected">\n        <div class="legend-item-line-container">\n          <div class="legend-item-line selected" id="rcp85-line"></div>\n          <div class="legend-item-line selected" id="rcp45-line"></div>\n        </div>\n        Averages\n      </div>\n    </div>\n    <div class="range">\n      <div id="slider-range" class="slider-range"></div>\n      <div class="ui-slider-label range-label min" id="range-low">1950</div>\n      <div class="ui-slider-label range-label max" id="range-high">2100</div>\n    </div>\n  </div>\n</div>');
+      this.nodes.$countyOverlay = $('<div class="county-overlay">\n  <div class="county-overlay-close">x</div>\n  <div class="county-overlay-inner">\n    <header>\n      <a href="/location/">\n        <h4 class="accent-color" style="margin-bottom: 20px;">\n          <span class="icon icon-emission-scenario"></span> <span class="text">Chart:<span class="source" id="temp-chart-name">' + this.options.variables[this.options.variable].title + '</span>&nbsp;for <span class="full-title"> ' + this.options.countyName + ', ' + this.options.stateName + '</span>\n          \n        </span>\n        </h4>\n      </a>\n\n      <div class="data-accordion-actions">\n        <a href="javascript:void(0);" class="how-to-read local"><span class="icon icon-help"></span><span class="d-none-xs">How to read this</span></a>\n        <a href="javascript:void(0);" class="download-image local">\n          <span class="icon icon-download-image"></span><span class="d-none-xs">Image</span></a>\n          <a href="javascript:void(0);"  class="download-data local">\n        <span class="icon icon-download-chart"></span><span class="d-none-xs">Data</span></a>\n      </div>\n    </header>\n    <div id="climate-chart" style="height:420px"></div>\n    <div class="chart-legend">\n      <div id="historical-obs" class="legend-item legend-item-range">\n        <div class="legend-item-line-container">\n          <div class="legend-item-line observed" id="over-baseline-block"></div>\n        </div>\n        Observations\n      </div>\n      <div id="historical-range" class="legend-item legend-item-range selected">\n        <div class="legend-item-block selected" id="historical-block"></div>\n        Historical (Modelled)\n      </div>\n      <div id="rcp45-range" class="legend-item legend-item-range selected">\n        <div class="legend-item-block selected" id="rcp45-block"></div>\n        Lower Emissions\n      </div>\n      <div id="rcp85-range" class="legend-item legend-item-range selected">\n        <div class="legend-item-block selected" id="rcp85-block"></div>\n        Higher Emissions\n      </div>\n      <div id="rcp45-mean" class="legend-item legend-item-range selected">\n        <div class="legend-item-line-container">\n          <div class="legend-item-line selected" id="rcp85-line"></div>\n          <div class="legend-item-line selected" id="rcp45-line"></div>\n        </div>\n        Averages\n      </div>\n    </div>\n    <div class="range">\n      <div id="slider-range" class="slider-range"></div>\n      <div class="ui-slider-label range-label min" id="range-low">1950</div>\n      <div class="ui-slider-label range-label max" id="range-high">2100</div>\n    </div>\n  </div>\n</div>');
 
       $(this.element).append(this.nodes.$countyOverlay);
       this.cwg = climate_widget.graph({

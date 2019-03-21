@@ -8022,7 +8022,7 @@ body.detail-open #nav-overlay {
 .scenario-map-overlay-container .movable {
   position: absolute;
   top: 0;
-  left: 0;
+  left: 100%;
   width: 4px;
   height: 100%;
   margin: 0;
