@@ -319,21 +319,20 @@
   }
 }
 
-#page-home {
-  #detail-overlay {
-    .nav-detail {
+#detail-overlay {
+  .nav-detail {
+    background: $blue1;
+
+    &#variable-details {
       background: $blue1;
-    
-      &#variable-details {
-        background: $blue1;
-      }
-      
-      &#stations-details {
-        background: #d44525;
-      }
+    }
+
+    &#stations-details {
+      background: #d44525;
     }
   }
 }
+
 
 // blur
 

@@ -470,8 +470,8 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
         basemap: 'topo'
       });
       // this.map.basemap.referenceLayers.clear();
-      // this.map.basemap.referenceLayers.add(new this.dojoMods.TileLayer({ url: 'https://server.arcgisonline.com/ArcGIS/rest/services/Reference/World_Boundaries_and_Places/MapServer' }));
-      // this.map.basemap.referenceLayers.items.slice(-1)[0].minScale = 5000000;
+      this.map.basemap.referenceLayers.add(new this.dojoMods.TileLayer({ url: 'https://server.arcgisonline.com/ArcGIS/rest/services/Reference/World_Boundaries_and_Places/MapServer' }));
+      this.map.basemap.referenceLayers.items.slice(-1)[0].minScale = 5000000;
       // this.map.basemap.referenceLayers.add(new this.dojoMods.TileLayer({url: 'https://services.arcgisonline.com/ArcGIS/rest/services/Canvas/World_Light_Gray_Reference/MapServer'}));
       if ((undefined === this.options.extent || null === this.options.extent) && (undefined === this.options.center || null === this.options.center)) {
         this.options.extent = this.options.defaultExtent;
