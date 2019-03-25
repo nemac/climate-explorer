@@ -151,23 +151,23 @@ h6 {
     }
   }
 
-  &.arrow-left {
-    &:before,
-    &:after {
-      width: 10px;
-      height: 4px;
-    }
-
-    &:before {
-      @include rotate(-45deg);
-      margin-top: -4px;
-    }
-
-    &:after {
-      @include rotate(45deg);
-      margin-top: 1px;
-    }
-  }
+  //&.arrow-left {
+  //  &:before,
+  //  &:after {
+  //    width: 10px;
+  //    height: 4px;
+  //  }
+  //
+  //  &:before {
+  //    @include rotate(-45deg);
+  //    margin-top: -4px;
+  //  }
+  //
+  //  &:after {
+  //    @include rotate(45deg);
+  //    margin-top: 1px;
+  //  }
+  //}
 
   &.arrow-right {
     &:before,

@@ -4246,32 +4246,6 @@ h6 {
   margin: -7px 5px 0 0;
 }
 
-/* line 155, resources/scss/screen.scss */
-.button.arrow-left:before, .button.arrow-left:after {
-  width: 10px;
-  height: 4px;
-}
-
-/* line 161, resources/scss/screen.scss */
-.button.arrow-left:before {
-  -webkit-transform: rotate(-45deg);
-  -moz-transform: rotate(-45deg);
-  -ms-transform: rotate(-45deg);
-  -o-transform: rotate(-45deg);
-  transform: rotate(-45deg);
-  margin-top: -4px;
-}
-
-/* line 166, resources/scss/screen.scss */
-.button.arrow-left:after {
-  -webkit-transform: rotate(45deg);
-  -moz-transform: rotate(45deg);
-  -ms-transform: rotate(45deg);
-  -o-transform: rotate(45deg);
-  transform: rotate(45deg);
-  margin-top: 1px;
-}
-
 /* line 173, resources/scss/screen.scss */
 .button.arrow-right:before, .button.arrow-right:after {
   width: 10px;
@@ -5119,9 +5093,20 @@ h6 {
   width: 100%;
   height: 100%;
   z-index: 1;
+  background: #0058cf;
 }
 
-/* line 301, resources/scss/template/_nav-overlay.scss */
+/* line 302, resources/scss/template/_nav-overlay.scss */
+#detail-overlay .nav-detail#variable-details {
+  background: #0058cf;
+}
+
+/* line 306, resources/scss/template/_nav-overlay.scss */
+#detail-overlay .nav-detail#stations-details {
+  background: #d44525;
+}
+
+/* line 310, resources/scss/template/_nav-overlay.scss */
 #detail-overlay .nav-detail .nav-detail-item {
   display: none;
   position: absolute;
@@ -5135,34 +5120,24 @@ h6 {
   transform: translateY(-50%);
 }
 
-/* line 309, resources/scss/template/_nav-overlay.scss */
+/* line 318, resources/scss/template/_nav-overlay.scss */
 #detail-overlay .nav-detail .nav-detail-item h3 {
   font: 1.625rem/1em "CESans-Heavy", Helvetica, "Helvetica Neue", Arial, sans-serif;
   margin: 0 0 40px 0;
 }
 
-/* line 314, resources/scss/template/_nav-overlay.scss */
+/* line 323, resources/scss/template/_nav-overlay.scss */
 #detail-overlay .nav-detail .nav-detail-item p {
   margin: 0 0 20px 0;
   line-height: 2em;
 }
 
-/* line 324, resources/scss/template/_nav-overlay.scss */
-#page-home #detail-overlay .nav-detail {
-  background: #0058cf;
+/* line 330, resources/scss/template/_nav-overlay.scss */
+#detail-overlay .close-detail > .icon-arrow-left {
+  padding-right: 0.5em;
 }
 
-/* line 327, resources/scss/template/_nav-overlay.scss */
-#page-home #detail-overlay .nav-detail#variable-details {
-  background: #0058cf;
-}
-
-/* line 331, resources/scss/template/_nav-overlay.scss */
-#page-home #detail-overlay .nav-detail#stations-details {
-  background: #d44525;
-}
-
-/* line 343, resources/scss/template/_nav-overlay.scss */
+/* line 341, resources/scss/template/_nav-overlay.scss */
 body.nav-open #viewport,
 body.nav-open #main-header,
 body.nav-open #left-header, body.detail-open #viewport,
@@ -5175,7 +5150,7 @@ body.detail-open #left-header {
   filter: blur(3px);
 }
 
-/* line 355, resources/scss/template/_nav-overlay.scss */
+/* line 353, resources/scss/template/_nav-overlay.scss */
 body.detail-open #nav-overlay {
   -webkit-filter: blur(6px);
   -moz-filter: blur(6px);

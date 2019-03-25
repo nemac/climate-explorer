@@ -31,11 +31,12 @@
         <div id="suggested-cities">
           <span>or choose from the following suggested cities:</span>
           <ul>
-            <li><a href="/location/?county=Mecklenburg+County&city=Charlotte,%20NC&fips=37119&lat=35.2270869&lon=-80.84312669999997">Charlotte, NC</a></li>
-            <li><a href="/location/?county=Los+Angeles+County&city=Los%20Angeles,%20CA&fips=06037&lat=34.0522342&lon=-118.2436849">Los Angeles, CA</a></li>
             <li><a href="/location/?county=New%20York+County&city=New%20York,%20NY&fips=36061&lat=40.7127753&lon=-74.0059728">New York City, NY</a></li>
+            <li><a href="/location/?county=Los+Angeles+County&city=Los%20Angeles,%20CA&fips=06037&lat=34.0522342&lon=-118.2436849">Los Angeles, CA</a></li>
+            <li><a href="/location/?county=Cook+County&city=Chicago,%20IL&fips=17031&lat=41.8781136&lon=-87.62979819999998">Chicago, IL</a></li>
             <li><a href="/location/?county=Maricopa+County&city=Phoenix,%20AZ&fips=04013&lat=33.4483771&lon=-112.07403729999999">Phoenix, AZ</a></li>
-            <li><a href="/location/?county=Bexar+County&city=San%20Antonio,%20TX&fips=48029&lat=29.4241219&lon=-98.49362819999999">San Antonio, TX</a></li>
+            <li><a href="/location/?county=Harris+County&city=Houston,%20TX&fips=48201&lat=29.7604267&lon=-95.3698028">Houston, TX</a></li>
+
           </ul>
         </div>
       </div>
@@ -122,7 +123,7 @@
         {{{ detail }}}
 
         <p><a href="/variables/?id={{ variable }}" class="button bg-trans border-white hover-bg-white">Get started</a>
-          <a href="#" class="close-detail button bg-trans border-trans color-white arrow-left">Back</a>
+          <a href="#" class="close-detail button bg-trans border-trans color-white"><span class='icon-arrow-left'></span>&nbsp;Back</a>
         </p>
       </div>
 
@@ -140,7 +141,7 @@
       <p>Data source: NOAA, 2015</p>
 
       <p><a href="/variables/?id=pr" class="button bg-trans border-white hover-bg-white">Get started</a>
-        <a href="#" class="close-detail button bg-trans border-trans color-white arrow-left">Back</a>
+        <a href="#" class="close-detail button bg-trans border-trans color-white"><span class='icon-arrow-left'></span>&nbsp;Back</a>
       </p>
     </div>
 
@@ -154,7 +155,7 @@
         <p>{{ source }}</p>
 
         <p><a href="/variables/?id={{ variable }}" class="button bg-trans border-white hover-bg-white">Get started</a>
-          <a href="#" class="close-detail button bg-trans border-trans color-white arrow-left">Back</a>
+          <a href="#" class="close-detail button bg-trans border-trans color-white"><span class='icon-arrow-left'></span>&nbsp;Back</a>
         </p>
       </div>
 
@@ -170,7 +171,7 @@
       <p>Data source: NOAA, 2015</p>
 
       <p><a href="/variables/?id=derived" class="button bg-trans border-white hover-bg-white">Get started</a>
-        <a href="#" class="close-detail button bg-trans border-trans color-white arrow-left">Back</a>
+        <a href="#" class="close-detail button bg-trans border-trans color-white"><span class='icon-arrow-left'></span>&nbsp;Back</a>
       </p>
     </div>
 
@@ -181,7 +182,7 @@
         {{{ detail }}}
         <p>{{ source }}</p>
         <p><a href="/variables/?id={{ variable }}" class="button bg-trans border-white hover-bg-white">Get started</a>
-          <a href="#" class="close-detail button bg-trans border-trans color-white arrow-left">Back</a>
+          <a href="#" class="close-detail button bg-trans border-trans color-white"><span class='icon-arrow-left'></span>&nbsp;Back</a>
         </p>
       </div>
     {{/each}}
@@ -195,7 +196,7 @@
         <h3>{{{ overlayname }}}</h3>
         <p>{{{detail}}}</p>
         <p><a href="/stations/?id={{variable}}" class="button bg-trans border-white hover-bg-white">Get started</a>
-          <a href="#" class="close-detail button bg-trans border-trans color-white arrow-left">Back</a>
+          <a href="#" class="close-detail button bg-trans border-trans color-white"><span class='icon-arrow-left'></span>&nbsp;Back</a>
         </p>
       </div>
     {{/each}}

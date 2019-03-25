@@ -290,14 +290,23 @@
 
 #detail-overlay {
   z-index: 601;
-  
+
   .nav-detail {
     display: none;
     @include full-size;
     //backdrop-filter: blur(10px);
     //-webkit-backdrop-filter: blur(10px);
     z-index: 1;
-    
+    background: $blue1;
+
+    &#variable-details {
+      background: $blue1;
+    }
+
+    &#stations-details {
+      background: #d44525;
+    }
+
     .nav-detail-item {
       display: none;
       position: absolute;
@@ -317,19 +326,9 @@
       }
     }
   }
-}
 
-#detail-overlay {
-  .nav-detail {
-    background: $blue1;
-
-    &#variable-details {
-      background: $blue1;
-    }
-
-    &#stations-details {
-      background: #d44525;
-    }
+  .close-detail > .icon-arrow-left {
+    padding-right: 0.5em;
   }
 }
 
