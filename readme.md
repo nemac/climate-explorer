@@ -1,14 +1,23 @@
-# Development environment
-To setup your development environment use `npm install`. Additionally, for now you install php and php-cgi.
+## Development environment
+To setup your development environment use `npm install` then run `npm run build` to build and `npm run start` to start the development server. Changes to html may require you to re-run `npm run build`.
 
-# Notes/TODO
+#### Additional tools and what they do
+
+* handlebars/bundlebars provides static templating. All files ending in '.hbs' are handlebars templates. Running `npm run html:build` will build the templates using the config file `config.yml`.
+* Sass/SCSS is used for styling and node-sass is used to build the styles. Running `npm run css:build` will build the stylesheets used in this project, or running `npm run css:watch` will automatically build the stylesheets when the source '.scss' files have changed.
+* All javascript in this project is either directly written to be ES5-compatible, whether directly, or by using ES6 and a transpiling process.  
+
+
+# Deployment notes
+
+This project is intended for deployment as a static site, but there are a handful of services aside from the code in this repo that are expected. Most notably, the "Variables" page depends on TMS webtile services for all of its maps. Additionally, Google Analytics has been included at the bottom of `footer.hbs`. It can be removed, or the account it is attached to can be changed via "google_analytics_id" in `config.yml`
+
+
 ## State variables
-### Global
+This project has a number of url-persisted state variables that are passed from page to page when applicable. Primarily these variables are managed by `resources/js/ce.js`, but it depends on each page to give it variables and not all pages use this convention.
 
-- d
-
-### Page-specific
-* Location:
+#### Page-specific state variables
+* Location page:
   - city: name of city of interest
   - county: name of county of interest
   - fips: fips code for county
@@ -18,7 +27,7 @@ To setup your development environment use `npm install`. Additionally, for now y
   - anomaly: all charts show data as compared to normals
   - precip_variable: variable for precip chart/map
   - other_variable: variable for "other" chart/map
-* Stations:
+* Stations page:
   - mode/case: which station map / charts to show
   - variable: the variable to show when a station is selected
   - lat/lon: map center
@@ -28,7 +37,7 @@ To setup your development environment use `npm install`. Additionally, for now y
   - threshold: threshold chart value
   - threshold_window: rolling window for threshold chart
   - basemap: map basemap
-* Variables:
+* Variables page:
   - variable: current variable
   - leftScenario: left scenario on map
   - rightScenario: right scenario on map
@@ -39,23 +48,7 @@ To setup your development environment use `npm install`. Additionally, for now y
   - lat/lon: map center
   - zoom: map zoom level
   
-
-## dynamic PHP -> PHP templating only -> HTML
-- Eliminate usages of `functions.php`
-- Simplify `header.php`, `footer.php`, etc
-- Create an inventory of all state-related query string variables
-- Move state query-string variables to a single client-side module
-- Replace all references to `$currentDomain` with `/` (watching for places which need client-side handling)
-- Setup client-side breadcrumb handling/replace uses of variables like `$city`, `$county`, etc with client-side state handling.
-- Client side meta/head handling
-
-## bugs
-- Secondary nav wraps out of container on medium width displays.
-- Clicking the current page on menu reloads the page.
-
-## improvements
-- caching for stations data
-- minification for js dependencies
+  
 
 ## 3rd Party Resources/Attribution
 - nav home icon from Material Design

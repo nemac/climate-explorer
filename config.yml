@@ -1,6 +1,8 @@
 #
 # This file is a centralized place to define variables which may be used in any HandleBars template file (.hbs).
 #
+google_analytics_id: 'UA-119744751-1'
+
 # Nav config
 nav:
   # Temperature section
