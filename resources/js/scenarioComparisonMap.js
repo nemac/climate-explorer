@@ -311,7 +311,7 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
           }
         }
       },
-      season_months: {'winter':'01', 'spring':'04','summer':'07','fall':'10'}
+      season_months: {'winter':'01', 'spring':'04','summer':'07','fall':'10','annual':'annual'}
     },
 
     // Dojo modules this widget expects to use.
