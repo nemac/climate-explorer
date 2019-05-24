@@ -43,21 +43,21 @@ $ce3-historical-weather-fill: #ABDDA4;
 $ce3-historical-weather-border: #1D64DD;
 
 $ce3-main-header-height: 84px;
-$ce3-header-height: 48px;
+$ce3-secondary-header-height: 48px;
 
 $ce3-main-logo-height: 60px;
-$ce3-logo-height: 36px;
+$ce3-secondary-logo-height: 36px;
 
 $ce3-main-btn-height: 60px;
 $ce3-btnheight: 36px;
 
 $ce3-main-title-font-size: 48px;
-$ce3-title-font-size: 24px;
+$ce3-secondary-title-font-size: 24px;
 
 $ce3-default-padding: 12px;
 $ce3-padding-big-break: 48px;
 
-$ce3-main-bottom: 105px;
+$ce3-main-bottom: 120px;
 // $border-radius-5: @include border-radius(5px, 5px);
 //
 // $border-radius-15: @include border-radius(25px, 5px);
@@ -89,6 +89,8 @@ $sans-heavy: 'CESans-Heavy', Roboto, Helvetica, 'Helvetica Neue', Arial, sans-se
 @import "compass/css3";
 @import "compass/utilities/general/clearfix";
 @import "fonts";
+@import "stateface/stateface";
+@import "fontawesome/fontawesome";
 @import "formstone/grid";
 @import "formstone/scrollbar";
 @import "formstone/dropdown";
@@ -107,14 +109,8 @@ $sans-heavy: 'CESans-Heavy', Roboto, Helvetica, 'Helvetica Neue', Arial, sans-se
 * {
   @include box-sizing;
 }
-html {
-  // width: 100%;
-  // height: 100%;
-}
+
 body {
-  // width: 100%;
-  // height: 100%;
-  // background: $white;
   font: 300 16px $roboto;
   color: $ce3-blue3;
 }
@@ -228,11 +224,6 @@ h6 {
   border: 1px solid $ce3-blue3alpha !important;
 }
 
-.flex-container {
-  display: flex !important;
-  flex-flow: row wrap !important;
-}
-
 .height-100 {
   height: 100% !important;
 }
@@ -285,6 +276,10 @@ h6 {
   padding-bottom: 12px !important;
 }
 
+.padding-default-half {
+  padding: 6px !important;
+}
+
 .padding-default {
   padding: 12px !important;
 }
@@ -292,6 +287,10 @@ h6 {
 .padding-horrizontal {
   padding-left: 12px !important;
   padding-right: 12px !important;
+}
+
+.padding-bottom {
+  padding-bottom: 12px !important;
 }
 
 .padding-break {
@@ -328,6 +327,20 @@ h6 {
   flex-direction: column !important;
 }
 
+.flex-container {
+  display: flex !important;
+  flex-flow: row wrap !important;
+}
+
+.flex-container-nowrap {
+  display: flex !important;
+  flex-flow: row nowrap !important;
+}
+
+.flex-justify {
+  justify-content: space-between !important;
+}
+
 .d-flex-fill {
     display: flex !important;
     flex: 1 1 auto !important;
@@ -352,6 +365,10 @@ h6 {
   align-content: flex-end !important;
   justify-content: flex-end !important;
   margin-top: auto !important;
+}
+
+.d-flex-fill {
+  flex: 1 1 auto !important;
 }
 
 .d-block {
@@ -776,6 +793,8 @@ h6 {
 
 @import "template/nav-overlay";
 
+
+@import "template/nav_footer";
 // PAGE STRUCTURE
 
 
@@ -799,8 +818,8 @@ h6 {
 #desktop-warning {
   display: none;
 }
-@import "template/header";
-
+@import "template/main_header";
+@import "template/secondary_header";
 
 
 // zoom / legend
@@ -952,7 +971,7 @@ h6 {
 
 @import "pages/home";
 
-// LOCATION
+// LOCATIO
 
 @import "pages/location";
 
@@ -967,6 +986,10 @@ h6 {
 // CASE
 
 @import "pages/case";
+
+// cards-home
+@import "pages/cards-home";
+
 
 // STANDARD PAGE
 

@@ -19,7 +19,6 @@
   max-height: 100px !important;
 }
 
-
 .rounded-box {
   @include border-radius(5px, 5px);
   @include box-shadow(0px 2px 4px transparentize(#000, 0.761));
@@ -42,6 +41,18 @@ input.input-inner::placeholder  {
   font: 800 24px $roboto !important;
 }
 
+input.input-inner:focus::placeholder  {
+  color: $ce3-blue3alpha;
+  font: 800 24px $roboto !important;
+  -moz-transition: 0.25s;
+  -o-transition: 0.25s;
+  -webkit-transition: 0.25s;
+  transition: 0.25s;
+}
+
+input.input-inner:focus  {
+  outline: none !important;
+}
 
 .icon-search {
   $icon-rect-size: 40px;
@@ -53,181 +64,16 @@ input.input-inner::placeholder  {
   font-size: 18px;
   font-weight: 800;
 }
-//
-// .search-field {
-//   @include border-radius(5px, 5px);
-//   @include box-shadow(0px 2px 4px transparentize(#000, 0.761));
-//   background-color: $ce3-blue5;
-//   color: $ce3-blue3;
-//
-//   input {
-//     color: $ce3-blue3;
-//     font: 800 24px $roboto !important;
-//   }
-//
-//   input::placeholder {
-//     color: $ce3-blue3;
-//   }
-//
-//   .icon-search {
-//     $icon-rect-size: 40px;
-//     width: $icon-rect-size;
-//     height: $icon-rect-size;
-//     background-color: $ce3-blue6;
-//     @include border-radius($icon-rect-size, $icon-rect-size);
-//     margin-top: 10px;
-//     font-size: 18px;
-//     font-weight: 800;
-//   }
-// }
-
-
-.search-wrap {
-  // display: block;
-  // width: 100%;
-}
 
 .main-logos {
-  // background: $ce3-blue6;
-  // text-align: right;
-  // z-index: 3;
-  // overflow: auto;
-  // align-self: flex-end !important;
   flex: 0 1 $ce3-main-bottom !important;
 
   a {
-    // display: block;
-    // float: right;
-    width: 60px;
-    height: 60px;
+    width: $ce3-main-logo-height; 
+    height:$ce3-main-logo-height;
   }
 
   #global-change {
     width: 120px;
   }
 }
-
-//
-// #page-home {
-//   #viewport {
-//     margin-top: 0!important;
-//   }
-//
-//   #breadcrumb {
-//     display: none !important;
-//   }
-// }
-//
-// #home-splash {
-//   @include full-size;
-//   overflow: hidden;
-//
-//   .splash-bg {
-//     @include full-size;
-//     background-position: center;
-//     background-repeat: no-repeat;
-//     background-size: cover;
-//     z-index: 1;
-//   }
-//
-//   #splash-6 {
-//     // background-image: url(../img/bg_splash-pinal.jpg);
-//   }
-// }
-
-// #home-text {
-//   // display: flex;
-//   // position: absolute;
-//   // top: 50%;
-//   // left: 6%;
-//   // @include transform(translateY(-50%));
-//   // z-index: 4;
-//   // width: 100%;
-//   // padding-bottom: 48px;
-//
-//   // h1 {
-//   //   margin: 0 0 20px 0;
-//   // }
-//
-//   .describe-main {
-//     font: 500 34px $roboto !important;
-//     color: $blue2;
-//     @include border-radius(5px, 5px);
-//     background: $ce3-blue6;
-//   }
-// }
-//
-// #home-menu {
-//   position: absolute;
-//   top: 50%;
-//   right: 4%;
-//   min-width: 25%;
-//   border: 10px solid $white;
-//   font: 1.125rem/1em $sans-heavy;
-//   @include transform(translateY(-50%));
-//   z-index: 4;
-// }
-//
-// #page-home {
-//   #main-content-wrap {
-//     position: relative;
-//     height: 100%;
-//     margin: 0;
-//   }
-//
-
-//
-//   #logos {
-//     position: absolute;
-//     bottom: 0;
-//     right: 0;
-//     background: $ce3-blue6;
-//     padding: 12px;
-//     text-align: right;
-//     // z-index: 3;
-//
-//     a {
-//       display: block;
-//       float: right;
-//       width: 60px;
-//       height: 60px;
-//     }
-//
-//     #global-change {
-//       width: 120px;
-//     }
-//   }
-//
-//   #h7 {
-//     position: absolute;
-//     left: 0;
-//     bottom: 0;
-//     padding: 10px 10px 0 0;
-//     background: $white;
-//     font-size: 0.75rem;
-//     line-height: 1.25em;
-//     z-index: 3;
-//
-//     a {
-//       display: block;
-//       color: $blue2;
-//     }
-//
-//     span {
-//       display: block;
-//       float: left;
-//     }
-//
-//     .logo {
-//       width: 20px;
-//       height: 20px;
-//       margin: 0 8px 0 0;
-//       // background: url(../img/habitatseven.png) no-repeat center;
-//       background-size: 100% auto;
-//     }
-//
-//     .text {
-//
-//     }
-//   }
-// }

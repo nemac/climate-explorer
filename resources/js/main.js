@@ -871,7 +871,7 @@ App.prototype.locationSearch = function () {
 
   $(".location-mapper").bind("geocode:result", function (event, result) {
 
-    //console.log('result', result);
+    // console.log('result', result);
     var data = {};
     $.each(result.address_components, function (index, object) {
       var name = object.types[0];
@@ -918,8 +918,10 @@ App.prototype.locationSearch = function () {
     }
 
     //console.log('data', data, 'fips', fips);
+    // TO DO DAVEISM - change location when search on page other thant home or cards-home
+    // do no want users to search loction and go back cards page or do we?
     if (fips) {
-      window.location.href = '/location/?county=' + county + '&city=' + city + '&fips=' + fips + '&lat=' + lat + '&lon=' + lon;
+      window.location.href = '/cards-home/?county=' + county + '&city=' + city + '&fips=' + fips + '&lat=' + lat + '&lon=' + lon;
     }
   });
 };

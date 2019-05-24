@@ -2,7 +2,6 @@
 <html lang='en' class="width-100 height-100">
 <head>
 
-
   {{> head }}
 
   <meta property="fb:app_id" content="187816851587993">
@@ -14,27 +13,27 @@
 
 </head>
 <body id="page-home" class="width-100 height-100">
-  {{> header }}
+    {{> main_header }}
 
-  <div id="home-viewport" class="home-container padding-default flex-d-flex d-flex-column" >
+
+  <div id="home-viewport" class="home-container padding-default d-flex d-flex-column" >
     <div id="home-text" class="splash-text padding-break padding-horrizontal d-flex width-100">
       <span class="describe-main padding-horrizontal width-100">Explore graphs and maps of historical and projected climate variables for any county in the contiguous United States.</span>
     </div>
 
     <div class="search-row d-flex d-flex-column width-100 padding-horrizontal padding-break">
       <div class="rounded-box input-outer padding-horrizontal bottom-padding main-btn-height width-100">
-        <input type="text" class="input-inner border-none main-btn-height width-90" autocomplete="off" placeholder="Enter county, city, or zip code">
+        <input id="" type="text" class="location-mapper input-inner border-none main-btn-height width-90" autocomplete="off" placeholder="Enter county, city, or zip code">
         <span class="icon icon-search float-right padding-default"></span>
       </div>
       <div id="suggested-cities" class="padding-default width-100">
         <span>or choose from the following suggested cities:</span>
         <ul>
-          <li><a href="/location/?county=New%20York+County&city=New%20York,%20NY&fips=36061&lat=40.7127753&lon=-74.0059728">New York City, NY</a></li>
-          <li><a href="/location/?county=Los+Angeles+County&city=Los%20Angeles,%20CA&fips=06037&lat=34.0522342&lon=-118.2436849">Los Angeles, CA</a></li>
-          <li><a href="/location/?county=Cook+County&city=Chicago,%20IL&fips=17031&lat=41.8781136&lon=-87.62979819999998">Chicago, IL</a></li>
-          <li><a href="/location/?county=Maricopa+County&city=Phoenix,%20AZ&fips=04013&lat=33.4483771&lon=-112.07403729999999">Phoenix, AZ</a></li>
-          <li><a href="/location/?county=Harris+County&city=Houston,%20TX&fips=48201&lat=29.7604267&lon=-95.3698028">Houston, TX</a></li>
-
+          <li><a href="/cards-home/?county=New%20York+County&city=New%20York,%20NY&fips=36061&lat=40.7127753&lon=-74.0059728">New York City, NY</a></li>
+          <li><a href="/cards-home/?county=Los+Angeles+County&city=Los%20Angeles,%20CA&fips=06037&lat=34.0522342&lon=-118.2436849">Los Angeles, CA</a></li>
+          <li><a href="/cards-home/?county=Cook+County&city=Chicago,%20IL&fips=17031&lat=41.8781136&lon=-87.62979819999998">Chicago, IL</a></li>
+          <li><a href="/cards-home/?county=Maricopa+County&city=Phoenix,%20AZ&fips=04013&lat=33.4483771&lon=-112.07403729999999">Phoenix, AZ</a></li>
+          <li><a href="/cards-home/?county=Harris+County&city=Houston,%20TX&fips=48201&lat=29.7604267&lon=-95.3698028">Houston, TX</a></li>
         </ul>
       </div>
     </div>
@@ -52,6 +51,8 @@
 
 
   </div>
+
+  {{> footer}}
 
 </body>
 </html>

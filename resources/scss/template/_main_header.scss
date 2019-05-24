@@ -1,27 +1,26 @@
-.main-logo {
-  height: $ce3-main-logo-height;
-  width: auto;
-  img {
-    height: $ce3-main-logo-height;
-    width: auto;
-  }
-}
-
-.main-font-title {
-   font: 500 48px $roboto !important;
-   color: $ce3-blue6 !important;
-}
-
 #main-header {
   background: $ce3-blue2;
-  z-index: 600;
   height: $ce3-main-header-height;
+
+  .main-logo {
+    height: $ce3-main-logo-height;
+    width: auto;
+    img {
+      height: $ce3-main-logo-height;
+      width: auto;
+    }
+  }
+
+  .main-font-title {
+    font: 500 36px $roboto !important;
+    color: $ce3-blue6 !important;
+    align-self: center;
+  }
 
   .topnav a {
     text-decoration: none;
     font: 500 18px $roboto;
   }
-
 
   #main-nav {
     a {
@@ -46,5 +45,4 @@
       width: auto;
     }
   }
-
 }

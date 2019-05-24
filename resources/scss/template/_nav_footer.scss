@@ -1,0 +1,73 @@
+
+#nav-footer {
+    flex: 0 1 $ce3-main-bottom !important;
+    height: $ce3-main-bottom !important;
+    align-self: flex-end !important;
+}
+
+.nav-footer-items {
+  justify-content: space-evenly !important;
+}
+
+.nav-footer-row-1 {
+  flex-grow: 0 !important;
+  align-content: center;
+}
+
+.nav-footer-row-2 {
+  flex-grow: 4 !important;
+  min-width: 526px !important;
+}
+
+.nav-footer-item {
+  font: 500 14px $roboto !important;
+  color: $ce3-darkgray !important;
+  justify-content: center !important;
+}
+
+.nav-footer-item-selected {
+  font: 700 14px $roboto !important;
+  color: $ce3-blue3 !important;
+  justify-content: center !important;
+  align-content: center !important;
+  align-self: center !important;
+}
+
+.nav-footer-icon {
+  font-size: 48px !important;
+  font-weight: 500 !important;
+  justify-content: center !important;
+  align-content: center !important;
+  align-self: center !important;
+}
+
+.nav-footer-label {
+  font-size: 14px !important;
+  font-weight: 500 !important;
+  justify-content: center !important;
+  align-content: center !important;
+  align-self: center !important;
+}
+
+.nav-footer-labels-selected {
+  font-size: 14px !important;
+  font-weight: 700 !important;
+  justify-content: center !important;
+  align-content: center !important;
+  align-self: center !important;
+}
+
+.stateface {
+  font-size: 48px !important
+}
+
+.nav-footer-area-title {
+  font: 500 16px $roboto !important;
+  color: $ce3-darkgray !important;
+}
+
+.nav-footer-area-line {
+  border-top: 1px dotted $ce3-darkgray !important;
+  margin-left: 6px !important;
+  margin-right: 6px !important;
+}

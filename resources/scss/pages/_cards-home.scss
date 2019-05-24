@@ -1,0 +1,12 @@
+#cards-viewport {
+  background-color: $white;
+  height: calc(100% - 48px - 120px) !important;
+  overflow: scroll !important;
+  @media screen and (max-width: 1177px) {
+    height: calc(100% - 48px - 210px) !important;
+  }
+}
+
+.cards-row {
+  flex: 1 1 auto !important;
+}
