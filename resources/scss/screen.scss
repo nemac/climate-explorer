@@ -55,6 +55,10 @@ $ce3-main-title-font-size: 48px;
 $ce3-secondary-title-font-size: 24px;
 
 $ce3-default-padding: 12px;
+$ce3-padding-half: 6px;
+$ce3-default-vertical-padding: 12px;
+$ce3-default-horizontal-padding: 12px;
+
 $ce3-padding-big-break: 48px;
 
 $ce3-main-bottom: 120px;
@@ -269,28 +273,28 @@ h6 {
 }
 
 .right-padding {
-  padding-right: 12px !important;
+  padding-right: $ce3-default-horizontal-padding !important;
 }
 
 .bottom-padding {
-  padding-bottom: 12px !important;
+  padding-bottom: $ce3-default-vertical-padding !important;
 }
 
 .padding-default-half {
-  padding: 6px !important;
+  padding: $ce3-padding-half !important;
 }
 
 .padding-default {
-  padding: 12px !important;
+  padding: $ce3-default-horizontal-padding  $ce3-default-vertical-padding !important;
 }
 
 .padding-horrizontal {
-  padding-left: 12px !important;
-  padding-right: 12px !important;
+  padding-left: $ce3-default-horizontal-padding !important;
+  padding-right: $ce3-default-horizontal-padding !important;
 }
 
 .padding-bottom {
-  padding-bottom: 12px !important;
+  padding-bottom: $ce3-default-horizontal-padding !important;
 }
 
 .padding-break {
