@@ -12927,24 +12927,31 @@ body.detail-open #nav-overlay {
   }
 }
 
-/* line 15, resources/scss/template/_nav_footer.scss */
+/* line 17, resources/scss/template/_nav_footer.scss */
 .nav-footer-row-1 {
   flex-grow: 0 !important;
-  align-content: center;
+  align-content: flex-end !important;
 }
 
-/* line 21, resources/scss/template/_nav_footer.scss */
+@media screen and (max-width: 788px) {
+  /* line 17, resources/scss/template/_nav_footer.scss */
+  .nav-footer-row-1 {
+    align-content: center !important;
+  }
+}
+
+/* line 25, resources/scss/template/_nav_footer.scss */
 .nav-footer-row-2 {
   flex-grow: 4 !important;
 }
 
-/* line 25, resources/scss/template/_nav_footer.scss */
+/* line 29, resources/scss/template/_nav_footer.scss */
 .nav-footer-items {
   justify-content: space-evenly !important;
 }
 
 @media screen and (max-width: 900px) {
-  /* line 25, resources/scss/template/_nav_footer.scss */
+  /* line 29, resources/scss/template/_nav_footer.scss */
   .nav-footer-items {
     padding-bottom: 6px;
     flex-wrap: nowrap !important;
@@ -12952,14 +12959,14 @@ body.detail-open #nav-overlay {
 }
 
 @media screen and (max-width: 1177px) {
-  /* line 39, resources/scss/template/_nav_footer.scss */
+  /* line 38, resources/scss/template/_nav_footer.scss */
   .nav-footer-items .padding-horrizontal {
     padding-left: 6px !important;
     padding-right: 6px !important;
   }
 }
 
-/* line 46, resources/scss/template/_nav_footer.scss */
+/* line 45, resources/scss/template/_nav_footer.scss */
 .nav-footer-item {
   font: 500 14px Roboto, Helvetica, "Helvetica Neue", Arial, sans-serif !important;
   color: #4D4D4D !important;
@@ -12967,13 +12974,13 @@ body.detail-open #nav-overlay {
 }
 
 @media screen and (max-width: 500px) {
-  /* line 46, resources/scss/template/_nav_footer.scss */
+  /* line 45, resources/scss/template/_nav_footer.scss */
   .nav-footer-item {
     max-width: 80px !important;
   }
 }
 
-/* line 55, resources/scss/template/_nav_footer.scss */
+/* line 54, resources/scss/template/_nav_footer.scss */
 .nav-footer-item-selected {
   font: 700 14px Roboto, Helvetica, "Helvetica Neue", Arial, sans-serif !important;
   color: #124086 !important;
@@ -12982,7 +12989,7 @@ body.detail-open #nav-overlay {
   align-self: center !important;
 }
 
-/* line 63, resources/scss/template/_nav_footer.scss */
+/* line 62, resources/scss/template/_nav_footer.scss */
 .nav-footer-icon {
   font-size: 48px !important;
   font-weight: 500 !important;
@@ -12992,13 +12999,13 @@ body.detail-open #nav-overlay {
 }
 
 @media screen and (max-width: 1177px) {
-  /* line 63, resources/scss/template/_nav_footer.scss */
+  /* line 62, resources/scss/template/_nav_footer.scss */
   .nav-footer-icon {
     font-size: 36px !important;
   }
 }
 
-/* line 74, resources/scss/template/_nav_footer.scss */
+/* line 73, resources/scss/template/_nav_footer.scss */
 .nav-footer-label {
   font-size: 14px !important;
   font-weight: 500 !important;
@@ -13008,27 +13015,27 @@ body.detail-open #nav-overlay {
 }
 
 @media screen and (max-width: 900px) {
-  /* line 74, resources/scss/template/_nav_footer.scss */
+  /* line 73, resources/scss/template/_nav_footer.scss */
   .nav-footer-label {
     flex-flow: row wrap !important;
   }
 }
 
 @media screen and (max-width: 1177px) {
-  /* line 74, resources/scss/template/_nav_footer.scss */
+  /* line 73, resources/scss/template/_nav_footer.scss */
   .nav-footer-label {
     display: none;
   }
 }
 
-@media screen and (min-width: 1177px) {
-  /* line 88, resources/scss/template/_nav_footer.scss */
+@media screen and (min-width: 1178px) {
+  /* line 87, resources/scss/template/_nav_footer.scss */
   .nav-footer-label-smallscreen {
     display: none;
   }
 }
 
-/* line 94, resources/scss/template/_nav_footer.scss */
+/* line 93, resources/scss/template/_nav_footer.scss */
 .nav-footer-labels-selected {
   font-size: 14px !important;
   font-weight: 700 !important;
@@ -13037,25 +13044,13 @@ body.detail-open #nav-overlay {
   align-self: center !important;
 }
 
-/* line 102, resources/scss/template/_nav_footer.scss */
-.stateface {
-  font-size: 48px !important;
-}
-
-@media screen and (max-width: 900px) {
-  /* line 102, resources/scss/template/_nav_footer.scss */
-  .stateface {
-    font-size: 36px !important;
-  }
-}
-
-/* line 109, resources/scss/template/_nav_footer.scss */
+/* line 101, resources/scss/template/_nav_footer.scss */
 .nav-footer-area-title {
   font: 500 16px Roboto, Helvetica, "Helvetica Neue", Arial, sans-serif !important;
   color: #4D4D4D !important;
 }
 
-/* line 114, resources/scss/template/_nav_footer.scss */
+/* line 106, resources/scss/template/_nav_footer.scss */
 .nav-footer-area-line {
   border-top: 1px dotted #4D4D4D !important;
   margin-left: 6px !important;
@@ -13063,8 +13058,8 @@ body.detail-open #nav-overlay {
   width: 30% !important;
 }
 
-@media screen and (max-width: 900px) {
-  /* line 114, resources/scss/template/_nav_footer.scss */
+@media screen and (max-width: 950px) {
+  /* line 106, resources/scss/template/_nav_footer.scss */
   .nav-footer-area-line {
     width: 20% !important;
   }
@@ -16606,7 +16601,7 @@ input.input-inner:focus {
 @media screen and (max-width: 900px) {
   /* line 1, resources/scss/pages/_cards-home.scss */
   #cards-viewport {
-    height: calc(100% - 24px - 12px - 120px) !important;
+    height: calc(100% - 36px - 12px - 120px) !important;
   }
 }
 

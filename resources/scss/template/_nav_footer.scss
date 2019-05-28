@@ -2,10 +2,12 @@
     flex: 0 1 $ce3-main-bottom !important;
     height: $ce3-main-bottom !important;
     align-self: flex-end !important;
+
     @media screen and (max-width: 788px) {
       flex: 0 1 188px !important;
       height: 188px !important;
     }
+
     @media screen and (max-width: 500px) {
       flex: 0 1 210px !important;
       height: 210px !important;
@@ -14,8 +16,10 @@
 
 .nav-footer-row-1 {
   flex-grow: 0 !important;
-  align-content: center;
-
+  align-content: flex-end !important;
+  @media screen and (max-width: 788px) {
+    align-content: center !important;
+  }
 }
 
 .nav-footer-row-2 {
@@ -24,16 +28,11 @@
 
 .nav-footer-items {
   justify-content: space-evenly !important;
-  // @media screen and (max-width: 1177px) {
-  //   padding-bottom: $ce3-default-vertical-padding;
-  // }
+
   @media screen and (max-width: 900px) {
     padding-bottom: $ce3-default-vertical-padding/2;
     flex-wrap: nowrap !important;
   }
-  // @media screen and (max-width: 768px) {
-  //   flex-wrap: nowrap !important;
-  // }
 
   @media screen and (max-width: 1177px) {
     .padding-horrizontal {
@@ -86,7 +85,7 @@
 }
 
 .nav-footer-label-smallscreen {
-  @media screen and (min-width: 1177px) {
+  @media screen and (min-width: 1178px) {
     display: none
   }
 }
@@ -99,13 +98,6 @@
   align-self: center !important;
 }
 
-.stateface {
-  font-size: 48px !important;
-  @media screen and (max-width: 900px) {
-    font-size: 36px !important;
-  }
-}
-
 .nav-footer-area-title {
   font: 500 16px $roboto !important;
   color: $ce3-darkgray !important;
@@ -116,7 +108,7 @@
   margin-left: 6px !important;
   margin-right: 6px !important;
   width: 30% !important;
-  @media screen and (max-width: 900px) {
+  @media screen and (max-width: 950px) {
     width: 20% !important;
   }
 }
