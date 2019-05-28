@@ -58,7 +58,6 @@ $ce3-default-padding: 12px;
 $ce3-padding-half: 6px;
 $ce3-default-vertical-padding: 12px;
 $ce3-default-horizontal-padding: 12px;
-
 $ce3-padding-big-break: 48px;
 
 $ce3-main-bottom: 120px;
@@ -274,10 +273,16 @@ h6 {
 
 .right-padding {
   padding-right: $ce3-default-horizontal-padding !important;
+  @media screen and (max-width: 900px) {
+    padding-right: $ce3-default-horizontal-padding/2 !important;
+  }
 }
 
 .bottom-padding {
   padding-bottom: $ce3-default-vertical-padding !important;
+  @media screen and (max-width: 900px) {
+    padding-bottom: $ce3-default-vertical-padding/2 !important;
+  }
 }
 
 .padding-default-half {
@@ -286,19 +291,32 @@ h6 {
 
 .padding-default {
   padding: $ce3-default-horizontal-padding  $ce3-default-vertical-padding !important;
+  @media screen and (max-width: 900px) {
+    padding: $ce3-default-horizontal-padding/2  $ce3-default-vertical-padding/2 !important;
+  }
 }
 
 .padding-horrizontal {
   padding-left: $ce3-default-horizontal-padding !important;
   padding-right: $ce3-default-horizontal-padding !important;
+  @media screen and (max-width: 900px) {
+    padding-left: $ce3-default-horizontal-padding/2 !important;
+    padding-right: $ce3-default-horizontal-padding/2 !important;
+  }
 }
 
 .padding-bottom {
   padding-bottom: $ce3-default-horizontal-padding !important;
+  @media screen and (max-width: 900px) {
+    padding-bottom: $ce3-default-horizontal-padding/2 !important;
+  }
 }
 
 .padding-break {
   padding-bottom: $ce3-padding-big-break !important;
+  @media screen and (max-width: 900px) {
+    padding-bottom: $ce3-padding-big-break/2 !important;
+  }
 }
 
 .float-left {

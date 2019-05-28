@@ -4,24 +4,39 @@
     align-self: flex-end !important;
 }
 
-.nav-footer-items {
-  justify-content: space-evenly !important;
-}
-
 .nav-footer-row-1 {
   flex-grow: 0 !important;
   align-content: center;
+
 }
 
 .nav-footer-row-2 {
   flex-grow: 4 !important;
-  min-width: 526px !important;
+  // min-width: 526px !important;
+}
+
+.nav-footer-items {
+  justify-content: space-evenly !important;
+  @media screen and (max-width: 1177px) {
+    padding-bottom: $ce3-default-vertical-padding;
+  }
+  @media screen and (max-width: 900px) {
+    padding-bottom: $ce3-default-vertical-padding/2;
+  }
+  @media screen and (max-width: 768px) {
+    // max-width: 320px !important;
+    flex-wrap: nowrap !important;
+  }
 }
 
 .nav-footer-item {
   font: 500 14px $roboto !important;
   color: $ce3-darkgray !important;
   justify-content: center !important;
+  @media screen and (max-width: 500px) {
+    max-width: 80px !important;
+  }
+
 }
 
 .nav-footer-item-selected {
@@ -34,6 +49,9 @@
 
 .nav-footer-icon {
   font-size: 48px !important;
+  @media screen and (max-width: 900px) {
+    font-size: 36px !important;
+  }
   font-weight: 500 !important;
   justify-content: center !important;
   align-content: center !important;
@@ -46,6 +64,12 @@
   justify-content: center !important;
   align-content: center !important;
   align-self: center !important;
+  @media screen and (max-width: 900px) {
+    flex-flow: row wrap !important;
+  }
+  @media screen and (max-width: 600px) {
+    flex-flow: row wrap !important;
+  }
 }
 
 .nav-footer-labels-selected {
@@ -57,7 +81,10 @@
 }
 
 .stateface {
-  font-size: 48px !important
+  font-size: 48px !important;
+  @media screen and (max-width: 900px) {
+    font-size: 36px !important;
+  }
 }
 
 .nav-footer-area-title {
@@ -69,4 +96,8 @@
   border-top: 1px dotted $ce3-darkgray !important;
   margin-left: 6px !important;
   margin-right: 6px !important;
+  width: 30% !important;
+  @media screen and (max-width: 500px) {
+    width: 20% !important;
+  }
 }

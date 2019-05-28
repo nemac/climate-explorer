@@ -13,6 +13,9 @@
 
   .secondary-font-title {
      font: 500 24px $roboto !important;
+     @media screen and (max-width: 600px) {
+       font: 500 18px $roboto !important;
+     }
      color: $ce3-blue6 !important;
      align-self: center;
   }
