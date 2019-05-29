@@ -4,7 +4,7 @@
 }
 
 .search-row {
-   flex: 1 1 auto !important;
+  flex: 1 1 auto !important;
 }
 
 .home-container {
@@ -54,7 +54,7 @@ input.input-inner:focus  {
   outline: none !important;
 }
 
-.icon-search {
+.search-main {
   $icon-rect-size: 40px;
   width: $icon-rect-size;
   height: $icon-rect-size;
@@ -69,7 +69,7 @@ input.input-inner:focus  {
   flex: 0 1 $ce3-main-bottom !important;
 
   a {
-    width: $ce3-main-logo-height; 
+    width: $ce3-main-logo-height;
     height:$ce3-main-logo-height;
   }
 

@@ -319,6 +319,20 @@ h6 {
   }
 }
 
+.padding-bottom-half {
+  padding-bottom: $ce3-padding-half !important;
+  @media screen and (max-width: 900px) {
+    padding-bottom: $ce3-padding-half/2 !important;
+  }
+}
+
+.padding-top-half {
+  padding-top: $ce3-padding-half !important;
+  @media screen and (max-width: 900px) {
+    padding-top: $ce3-padding-half/2 !important;
+  }
+}
+
 .padding-break {
   padding-bottom: $ce3-padding-big-break !important;
   @media screen and (max-width: 900px) {
@@ -424,6 +438,63 @@ h6 {
   @include box-shadow(0px 2px 4px transparentize(#000, 0.761));
 }
 
+.rounded-info-box {
+  @include border-radius(5px, 5px);
+  background-color: $ce3-blue6;
+  color: $ce3-blue3;
+  border: 1px solid $ce3-border-color !important;
+  min-height: 70px !important;
+  @media screen and (max-width: 900px) {
+    min-height: 105px !important;
+  }
+}
+
+.icon-info-box {
+  font-size: 24px !important;
+  padding-right: $ce3-default-padding !important;
+}
+
+.text-info-box {
+  font-size: 18px !important;
+  font-weight: 700 !important;
+}
+
+.search-default {
+  $icon-rect-size: 24px;
+  width: $icon-rect-size !important;
+  height: $icon-rect-size !important;
+  background-color: $ce3-blue6 !important;
+  @include border-radius($icon-rect-size, $icon-rect-size);
+  margin-top: 7px !important;
+  font-size: 14px !important;
+  font-weight: 800 !important;
+  padding: 5px !important;
+}
+
+input.input-inner-default {
+  background-color: $ce3-blue5;
+  color: $ce3-blue3;
+  font: 800 18px $roboto !important;
+}
+
+input.input-inner-default::placeholder  {
+  background-color: $ce3-blue5;
+  color: $ce3-blue3;
+  font: 800 18px $roboto !important;
+}
+
+input.input-inner-default:focus::placeholder  {
+  color: $ce3-blue3alpha;
+  font: 800 18px $roboto !important;
+  -moz-transition: 0.25s;
+  -o-transition: 0.25s;
+  -webkit-transition: 0.25s;
+  transition: 0.25s;
+}
+
+input.input-inner-default:focus  {
+  outline: none !important;
+}
 // CLASSES
 .tooltip {
   display: block !important;

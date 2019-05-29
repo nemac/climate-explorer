@@ -18,15 +18,15 @@
 }
 
 #data-card {
-  width: 30%  !important;
-  height: auto !important;
+  width: 33%  !important;
+  height: 50% !important;
   @include border-radius(5px, 5px);
   border: 1px solid $ce3-border-color !important;
 
   @media screen and (max-width: 1240px) {
-    width: 60% !important;
+    width: 90% !important;
     height: auto !important;
-    margin: $ce3-default-padding !important;
+    margin: $ce3-padding-half !important;
   }
 
   @media screen and (max-width: 768px) {
@@ -38,12 +38,25 @@
 #card-row {
   justify-content: space-evenly !important;
   height: auto !important;
-  padding-top: $ce3-padding-half !important;
+  // padding-top: $ce3-padding-half !important;
 
   @media screen and (max-width: 1240px) {
     justify-content: center !important;
     height: auto !important;
     min-height: unset !important;
+  }
+}
+
+#info-row, #search-row {
+  width: 100% !important;
+  align-self: center !important;
+
+  @media screen and (max-width: 1240px) {
+    width: 90% !important;
+  }
+
+  @media screen and (max-width: 768px) {
+    width: 90% !important;
   }
 }
 
@@ -56,10 +69,10 @@
 #card-text {
   background-color: $ce3-blue3 !important;
   color: $ce3-blue6 !important;
-  flex: 1 1 75px !important;
-  padding: $ce3-default-padding !important;
-  height: 125px !important;
-  min-height: 125px !important;
+  flex: 1 1 80px !important;
+  padding: $ce3-padding-half !important;
+  height: 80px !important;
+  min-height: 80px !important;
   @media screen and (max-width: 768px) {
     min-height: auto !important;
   }
@@ -67,11 +80,12 @@
 
 #card-title-icon {
   font: 700 18px $roboto !important;
-  padding-bottom: $ce3-default-padding !important;
+  padding-bottom: $ce3-padding-half !important;
+  max-height: 28px;
 }
 
 .card-title {
-  font-size: 24px !important;
+  font-size: 18px !important;
 
   @media screen and (max-width: 500px) {
     font-size: 18px !important;
@@ -83,7 +97,7 @@
 
 .card-icon {
   flex: 0 0 auto !important;
-  font-size: 36px !important;
+  font-size: 24px !important;
 }
 
 .card-image {
@@ -91,5 +105,9 @@
   @include border-radius(5px, 5px);
   max-width: 100% !important;
   align-self: center !important;
-  padding: $ce3-default-padding;
+  padding: 1px !important;
+}
+
+#card-description {
+  font-size: 14px !important;
 }
