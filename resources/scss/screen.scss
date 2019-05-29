@@ -312,10 +312,26 @@ h6 {
   }
 }
 
+.padding-top {
+  padding-top: $ce3-default-horizontal-padding !important;
+  @media screen and (max-width: 900px) {
+    padding-top: $ce3-default-horizontal-padding/2 !important;
+  }
+}
+
 .padding-break {
   padding-bottom: $ce3-padding-big-break !important;
   @media screen and (max-width: 900px) {
     padding-bottom: $ce3-padding-big-break/2 !important;
+  }
+}
+
+.margin-horrizontal {
+  margin-left: $ce3-default-horizontal-padding !important;
+  margin-right: $ce3-default-horizontal-padding !important;
+  @media screen and (max-width: 900px) {
+    margin-left: $ce3-default-horizontal-padding/2 !important;
+    margin-right: $ce3-default-horizontal-padding/2 !important;
   }
 }
 
@@ -339,6 +355,9 @@ h6 {
   flex-wrap: nowrap !important;
 }
 
+.d-flex-wrap {
+  flex-wrap: wrap !important;
+}
 .d-flex-row {
   display: flex !important;
   flex-flow: row wrap !important;
@@ -349,16 +368,19 @@ h6 {
   flex-direction: column !important;
 }
 
+// fix to match naming convention
 .flex-container {
   display: flex !important;
   flex-flow: row wrap !important;
 }
 
+// fix to match naming convention
 .flex-container-nowrap {
   display: flex !important;
   flex-flow: row nowrap !important;
 }
 
+// fix to match naming convention
 .flex-justify {
   justify-content: space-between !important;
 }
