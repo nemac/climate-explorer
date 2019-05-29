@@ -19,7 +19,7 @@
 
 #data-card {
   width: 33%  !important;
-  height: 50% !important;
+  height: auto !important;
   @include border-radius(5px, 5px);
   border: 1px solid $ce3-border-color !important;
 

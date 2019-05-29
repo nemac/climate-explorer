@@ -16751,7 +16751,7 @@ input.input-inner:focus {
 /* line 20, resources/scss/pages/_cards-home.scss */
 #data-card {
   width: 33%  !important;
-  height: 50% !important;
+  height: auto !important;
   -webkit-border-radius: 5px 5px;
   -moz-border-radius: 5px / 5px;
   border-radius: 5px / 5px;
