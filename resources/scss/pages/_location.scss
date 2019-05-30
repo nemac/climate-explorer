@@ -34,7 +34,7 @@
   display: none !important;
 }
 
-#downloads-select-wrapper, #stations-select-wrapper {
+#downloads-select-wrapper, #stations-select-wrapper{
   background-color: $ce3-blue5;
   color: $ce3-blue3;
   font: 500 14px $roboto !important;
@@ -43,12 +43,12 @@
   }
 }
 
-#varriable-select-wrapper {
-  background-color: $ce3-blue5;
-  color: $ce3-blue3;
-  font: 500 14px $roboto !important;
+#varriable-select-wrapper, #chartmap-wrapper, #time-wrapper, #type-wrapper {
   @media screen and (max-width: 900px) {
-    display: none !important
+    height: auto !important;
+    width: 100% !important;
+    padding-top: $ce3-padding-half !important;
+    padding-bottom:  $ce3-padding-half !important;
   }
 }
 

@@ -50,6 +50,7 @@ $ce3-secondary-logo-height: 36px;
 
 $ce3-main-btn-height: 60px;
 $ce3-btnheight: 36px;
+$ce3-btnheight-smallecreen: 48px;
 $ce3-btninnerheight: 24px;
 
 $ce3-main-title-font-size: 48px;
@@ -162,6 +163,9 @@ h6 {
 
 .default-btn-height {
   height: $ce3-btnheight !important;
+  @media screen and (max-width: 900px) {
+    height: $ce3-btnheight-smallecreen !important;
+  }
 }
 
 .select-hidden {
@@ -183,6 +187,9 @@ h6 {
   color: $ce3-blue3;
   width: 100%;
   height: $ce3-btnheight !important;
+  @media screen and (max-width: 900px) {
+    height: $ce3-btnheight-smallecreen !important;
+ }
 }
 
 .select-styled {
@@ -192,6 +199,7 @@ h6 {
   background-color: $ce3-blue5;
   @include transition(all 0.2s ease-in);
   color: $ce3-blue3;
+  margin-left: $ce3-padding-half !important;
   &:after {
     position: absolute;
     background-color: $ce3-blue6;
@@ -245,6 +253,9 @@ h6 {
 
 .default-select-option {
   height: $ce3-btnheight !important;
+  @media screen and (max-width: 900px) {
+    height: $ce3-btnheight-smallecreen !important;
+ }
   background-color: $ce3-blue5 !important;
   color: $ce3-blue3 !important;
   font: 500 14px $roboto !important;
@@ -360,6 +371,15 @@ h6 {
   @media screen and (max-width: 900px) {
     padding-left: $ce3-padding-half/2 !important;
     padding-right: $ce3-padding-half/2 !important;
+  }
+}
+
+.padding-vertical-half {
+  padding-top: $ce3-padding-half !important;
+  padding-bottom: $ce3-padding-half !important;
+  @media screen and (max-width: 900px) {
+    padding-top: $ce3-padding-half/2 !important;
+    padding-bottom: $ce3-padding-half/2 !important;
   }
 }
 .padding-bottom {
@@ -497,6 +517,9 @@ h6 {
 
 .btn-default {
   height: $ce3-btnheight !important;
+  @media screen and (max-width: 900px) {
+    height: $ce3-btnheight-smallecreen !important;
+  }
   background-color: $ce3-blue5 !important;
   color: $ce3-blue3 !important;
   font: 500 14px $roboto !important;
@@ -506,6 +529,9 @@ h6 {
 .btn-default:hover {
   cursor: pointer;
   height: $ce3-btnheight !important;
+  @media screen and (max-width: 900px) {
+    height: $ce3-btnheight-smallecreen !important;
+  }
   background-color: darken($ce3-blue5, 5) !important;
   color: $ce3-blue3 !important;
   font: 500 14px $roboto !important;
@@ -515,6 +541,9 @@ h6 {
 .btn-default:focus {
   cursor: pointer;
   height: $ce3-btnheight !important;
+  @media screen and (max-width: 900px) {
+    height: $ce3-btnheight-smallecreen !important;
+  }
   background-color: darken($ce3-blue5, 5) !important;
   color: $ce3-blue3 !important;
   font: 500 14px $roboto !important;
@@ -524,6 +553,9 @@ h6 {
 
 .btn-default-selected {
   height: $ce3-btnheight !important;
+  @media screen and (max-width: 900px) {
+    height: $ce3-btnheight-smallecreen !important;
+  }
   background-color: $ce3-blue3 !important;
   color: $ce3-blue5 !important;
   font: 500 14px $roboto !important;
@@ -533,6 +565,9 @@ h6 {
 .btn-default-selected:hover  {
   cursor: pointer;
   height: $ce3-btnheight !important;
+  @media screen and (max-width: 900px) {
+    height: $ce3-btnheight-smallecreen !important;
+  }
   background-color: lighten($ce3-blue3, 7) !important;
   color: $ce3-blue5 !important;
   font: 500 14px $roboto !important;
@@ -542,6 +577,9 @@ h6 {
 .btn-default-selected:focus  {
   cursor: pointer;
   height: $ce3-btnheight !important;
+  @media screen and (max-width: 900px) {
+    height: $ce3-btnheight-smallecreen !important;
+  }
   background-color: lighten($ce3-blue3, 7) !important;
   color: $ce3-blue5 !important;
   font: 500 14px $roboto !important;
@@ -556,8 +594,8 @@ h6 {
   min-height: 36px !important;
   max-height: 36px !important;
   @media screen and (max-width: 900px) {
-    min-height: 48px !important;
-    max-height: 48px !important;
+    min-height: $ce3-btnheight-smallecreen !important;
+    max-height: $ce3-btnheight-smallecreen !important;
   }
 }
 
