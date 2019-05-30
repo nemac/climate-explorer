@@ -69,10 +69,21 @@
 #card-text {
   background-color: $ce3-blue3 !important;
   color: $ce3-blue6 !important;
-  flex: 1 1 80px !important;
-  padding: $ce3-padding-half !important;
-  height: 80px !important;
-  min-height: 80px !important;
+  flex: 1 1 90px !important;
+  height: 90px !important;
+  min-height: 90px !important;
+  padding-top: $ce3-default-horizontal-padding !important;
+  padding-bottom: $ce3-default-horizontal-padding !important;
+  padding-left: $ce3-default-horizontal-padding !important;
+  padding-right: $ce3-default-horizontal-padding !important;
+
+  @media screen and (max-width: 900px) {
+    padding-top: $ce3-default-horizontal-padding/2 !important;
+    padding-bottom: $ce3-default-horizontal-padding/2 !important;
+    padding-left: $ce3-default-horizontal-padding/2 !important;
+    padding-right: $ce3-default-horizontal-padding/2 !important;
+  }
+
   @media screen and (max-width: 768px) {
     min-height: auto !important;
   }
@@ -98,6 +109,7 @@
 .card-icon {
   flex: 0 0 auto !important;
   font-size: 24px !important;
+  margin-right: 12px !important;
 }
 
 .card-image {

@@ -275,7 +275,6 @@ article, aside, details, figcaption, figure, footer, header, hgroup, main, menu,
 /* line 14, resources/scss/stateface/_stateface.scss */
 .stateface:before {
   font-family: "StateFaceRegular";
-  margin-right: 5px;
 }
 
 /* line 19, resources/scss/stateface/_stateface.scss */
@@ -16821,10 +16820,23 @@ input.input-inner:focus {
 #card-text {
   background-color: #124086 !important;
   color: #FBFCFE !important;
-  flex: 1 1 80px !important;
-  padding: 6px !important;
-  height: 80px !important;
-  min-height: 80px !important;
+  flex: 1 1 90px !important;
+  height: 90px !important;
+  min-height: 90px !important;
+  padding-top: 12px !important;
+  padding-bottom: 12px !important;
+  padding-left: 12px !important;
+  padding-right: 12px !important;
+}
+
+@media screen and (max-width: 900px) {
+  /* line 69, resources/scss/pages/_cards-home.scss */
+  #card-text {
+    padding-top: 6px !important;
+    padding-bottom: 6px !important;
+    padding-left: 6px !important;
+    padding-right: 6px !important;
+  }
 }
 
 @media screen and (max-width: 768px) {
@@ -16834,14 +16846,14 @@ input.input-inner:focus {
   }
 }
 
-/* line 81, resources/scss/pages/_cards-home.scss */
+/* line 92, resources/scss/pages/_cards-home.scss */
 #card-title-icon {
   font: 700 18px Roboto, Helvetica, "Helvetica Neue", Arial, sans-serif !important;
   padding-bottom: 6px !important;
   max-height: 28px;
 }
 
-/* line 87, resources/scss/pages/_cards-home.scss */
+/* line 98, resources/scss/pages/_cards-home.scss */
 .card-title {
   font-size: 18px !important;
   flex: 1 1 auto !important;
@@ -16849,19 +16861,20 @@ input.input-inner:focus {
 }
 
 @media screen and (max-width: 500px) {
-  /* line 87, resources/scss/pages/_cards-home.scss */
+  /* line 98, resources/scss/pages/_cards-home.scss */
   .card-title {
     font-size: 18px !important;
   }
 }
 
-/* line 98, resources/scss/pages/_cards-home.scss */
+/* line 109, resources/scss/pages/_cards-home.scss */
 .card-icon {
   flex: 0 0 auto !important;
   font-size: 24px !important;
+  margin-right: 12px !important;
 }
 
-/* line 103, resources/scss/pages/_cards-home.scss */
+/* line 115, resources/scss/pages/_cards-home.scss */
 .card-image {
   height: auto !important;
   -webkit-border-radius: 5px 5px;
@@ -16872,7 +16885,7 @@ input.input-inner:focus {
   padding: 1px !important;
 }
 
-/* line 111, resources/scss/pages/_cards-home.scss */
+/* line 123, resources/scss/pages/_cards-home.scss */
 #card-description {
   font-size: 14px !important;
 }
