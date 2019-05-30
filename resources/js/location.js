@@ -5,6 +5,74 @@ $(function () {
   var activeVariablePrecipitation = 'pcpn';
   var activeVariableDerived = 'hdd';
 
+  $('#default-city-state').text(window.ce.ce('getLocationPageState')['city']);
+  $('#default-city-county').text(window.ce.ce('getLocationPageState')['county']);
+  $('#cards-search-input').val(window.ce.ce('getLocationPageState')['city']);
+
+  makeCustomSelect('#stations-select');
+  makeCustomSelect('#downnloads-select','<i class="fas fa-download select-icon"></i>');
+  makeCustomSelect('#varriable-select');
+
+  function makeCustomSelect(selectSelector, icon) {
+    // custom select start
+    // from https://speckyboy.com/open-source-css-javascript-select-box-snippets/ - https://codepen.io/wallaceerick/pen/ctsCz
+    $(selectSelector).each(function(){
+        var $this = $(this), numberOfOptions = $(this).children('option').length;
+
+        $this.addClass('select-hidden');
+        $this.wrap('<div class="select"></div>');
+        $this.after(`<div class="select-styled">${icon}</div>`);
+        // if (icon) {
+        //   $this.after(`<div class="select-styled">${icon}</div>`);
+        // } else {
+        //   $this.after('<div class="select-styled"></div>');
+        // }
+
+
+        var $styledSelect = $this.next('div.select-styled');
+        $styledSelect.text($this.children('option').eq(0).text());
+        $styledSelect.prepend(icon);
+
+        var $list = $('<ul />', {
+            'class': 'select-options'
+        }).insertAfter($styledSelect);
+
+        for (var i = 0; i < numberOfOptions; i++) {
+            $('<li />', {
+                text: $this.children('option').eq(i).text(),
+                rel: $this.children('option').eq(i).val()
+            }).appendTo($list);
+        }
+
+        var $listItems = $list.children('li');
+
+        $styledSelect.click(function(e) {
+            e.stopPropagation();
+            $('div.select-styled.active').not(this).each(function(){
+                $(this).removeClass('active').next('ul.select-options').hide();
+            });
+            $(this).toggleClass('active').next('ul.select-options').toggle();
+        });
+
+        $listItems.click(function(e, icon) {
+            e.stopPropagation();
+            $styledSelect.text($(this).text()).removeClass('active');
+            $styledSelect.prepend(icon);
+            $this.val($(this).attr('rel'));
+            $list.hide();
+            //console.log($this.val());
+        });
+
+        $(document).click(function() {
+            $styledSelect.removeClass('active');
+            $list.hide();
+        });
+
+    });
+    // custom select end
+  }
+
+
   $('#splash-city').text(window.ce.ce('getLocationPageState')['city']);
   $('#splash-county').text(window.ce.ce('getLocationPageState')['county']);
   $('.data-accordion-tab .full-title').text(window.ce.ce('getLocationPageState')['county']);
