@@ -14,9 +14,11 @@ $(function () {
   makeCustomSelect('#varriable-select');
 
   function makeCustomSelect(selectSelector, icon) {
+
     // custom select start
     // from https://speckyboy.com/open-source-css-javascript-select-box-snippets/ - https://codepen.io/wallaceerick/pen/ctsCz
     $(selectSelector).each(function(){
+
         var $this = $(this), numberOfOptions = $(this).children('option').length;
 
         $this.addClass('select-hidden');
@@ -28,10 +30,16 @@ $(function () {
         //   $this.after('<div class="select-styled"></div>');
         // }
 
+        // exit and do not create select if disabled
 
         var $styledSelect = $this.next('div.select-styled');
         $styledSelect.text($this.children('option').eq(0).text());
         $styledSelect.prepend(icon);
+
+        if ( $(selectSelector).hasClass( 'disabled' )){
+          $styledSelect.addClass('disabled');
+          return null;
+        }
 
         var $list = $('<ul />', {
             'class': 'select-options'

@@ -192,6 +192,8 @@ h6 {
  }
 }
 
+
+
 .select-styled {
   display: flex !important;
   justify-content: left;
@@ -200,6 +202,11 @@ h6 {
   @include transition(all 0.2s ease-in);
   color: $ce3-blue3;
   margin-left: $ce3-padding-half !important;
+
+  &.disabled {
+    color: $ce3-disabled-font !important
+  }
+
   &:after {
     position: absolute;
     background-color: $ce3-blue6;
