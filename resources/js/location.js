@@ -10,27 +10,28 @@ $(function () {
   $('#cards-search-input').val(window.ce.ce('getLocationPageState')['city']);
 
   makeCustomSelect('#stations-select');
-  makeCustomSelect('#downnloads-select','<i class="fas fa-download select-icon"></i>');
+  makeCustomSelect('#downnloads-select');
   makeCustomSelect('#varriable-select');
 
-  function makeCustomSelect(selectSelector, icon) {
+  function makeCustomSelect(selectSelector) {
 
     // custom select start
     // from https://speckyboy.com/open-source-css-javascript-select-box-snippets/ - https://codepen.io/wallaceerick/pen/ctsCz
     $(selectSelector).each(function(){
 
         var $this = $(this), numberOfOptions = $(this).children('option').length;
+        var iconAttr = $(this).attr('icon');
+
+        if (typeof iconAttr !== typeof undefined && iconAttr !== false) {
+          // Element has this attribute
+          var icon = `<i class="${iconAttr}"></i>`;
+        } else {
+          var icon = '';
+        }
 
         $this.addClass('select-hidden');
         $this.wrap('<div class="select"></div>');
         $this.after(`<div class="select-styled">${icon}</div>`);
-        // if (icon) {
-        //   $this.after(`<div class="select-styled">${icon}</div>`);
-        // } else {
-        //   $this.after('<div class="select-styled"></div>');
-        // }
-
-        // exit and do not create select if disabled
 
         var $styledSelect = $this.next('div.select-styled');
         $styledSelect.text($this.children('option').eq(0).text());
@@ -48,11 +49,15 @@ $(function () {
         for (var i = 0; i < numberOfOptions; i++) {
             $('<li />', {
                 text: $this.children('option').eq(i).text(),
-                rel: $this.children('option').eq(i).val()
+                rel: $this.children('option').eq(i).val(),
+                icon: $this.children('option').attr('icon'),
+                // future version allow for different icons...
+                // html: `${icon}${$this.children('option').eq(i).text()}`
             }).appendTo($list);
         }
 
         var $listItems = $list.children('li');
+        console.log($listItems)
 
         $styledSelect.click(function(e) {
             e.stopPropagation();
@@ -67,8 +72,18 @@ $(function () {
             $styledSelect.text($(this).text()).removeClass('active');
             $styledSelect.prepend(icon);
             $this.val($(this).attr('rel'));
+
+            var iconAttr = $(this).attr('icon');
+            if (typeof iconAttr !== typeof undefined && iconAttr !== false) {
+              // Element has this attribute
+              var icon = `<i class="${iconAttr}"></i>`;
+            } else {
+              var icon = '';
+            }
+
+            $styledSelect.prepend(icon);
             $list.hide();
-            //console.log($this.val());
+            console.log($this.val(), $(this).attr('icon') );
         });
 
         $(document).click(function() {
