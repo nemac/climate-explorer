@@ -149,6 +149,36 @@ h6 {
   font: 600 12px $roboto;
 }
 
+::-webkit-scrollbar {
+  width: 6px;
+  border: 1px solid $ce3-blue3;
+  background-color: $ce3-blue3;
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: $ce3-blue3;
+  border-radius: 6px;
+  -webkit-border-radius: 6px !important;
+  -moz-border-radius: 6px !important;
+  &:vertical {
+    height: 6px;
+  }
+}
+
+::-webkit-scrollbar-track {
+  border: 1px solid $ce3-blue4;
+  background-color: #E9F1FC;
+}
+
+::-webkit-scrollbar-track-piece {
+  margin-right: 10px;
+  height: 6px;
+  width: 6px;
+}
+
+::-webkit-scrollbar-corner {
+  display: none;
+}
 // font classes
 .main-font-description {
    font: 500 24px $roboto !important;
@@ -241,6 +271,12 @@ h6 {
   overflow: auto !important;
   // border: 1px solid $ce3-blue3alpha !important;
   @include border-radius(5px, 5px);
+
+  .default-select-option-group {
+    padding: $ce3-padding-half !important;
+    font-weight: 600 !important;
+  }
+
   li {
     margin: 0;
     padding: $ce3-default-padding 0;
@@ -258,16 +294,16 @@ h6 {
   }
 }
 
-.default-select-option {
-  height: $ce3-btnheight !important;
-  @media screen and (max-width: 900px) {
-    height: $ce3-btnheight-smallecreen !important;
- }
-  background-color: $ce3-blue5 !important;
-  color: $ce3-blue3 !important;
-  font: 500 14px $roboto !important;
-  // border: 1px solid $ce3-blue3alpha !important;
-}
+// .default-select-option {
+//   height: $ce3-btnheight !important;
+//   @media screen and (max-width: 900px) {
+//     height: $ce3-btnheight-smallecreen !important;
+//  }
+//   background-color: $ce3-blue5 !important;
+//   color: $ce3-blue3 !important;
+//   font: 500 14px $roboto !important;
+//   // border: 1px solid $ce3-blue3alpha !important;
+// }
 
 .font-title {
    font: 500 24px $roboto !important;

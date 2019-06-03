@@ -72,11 +72,30 @@
 
             <div id="varriable-select-wrapper" class="rounded-choice-box padding-horrizontal-half padding-vertical-half default-btn-height d-flex-center width-30">
               <select id="varriable-select" class="default-select border-none  d-flex-center width-90" >
-                  <option class="default-select-option" value="none">Avg Daily Max Temp (°F)</option>
-                  <option class="default-select-option" value="download-image">Avg Daily Max Temp (°F)</option>
-                  <option class="default-select-option" value="download-data">Days w/ max > 90°F</option>
+                  <option class="default-select-option-group" value="none" icon="fas fa-temperature-high select-icon">Temperature</option>
+                  <option class="default-select-option" value="avg-max">Avg Daily Max Temp (°F)</option>
+                  <option class="default-select-option" value="avg-min">Avg Daily Min Temp (°F)</option>
+                  <option class="default-select-option" value="max-gt-90">Days w/ max > 90°F</option>
+                  <option class="default-select-option" value="max-gt-95">Days w/ max > 95°F</option>
+                  <option class="default-select-option" value="max-gt-100">Days w/ max > 100°F</option>
+                  <option class="default-select-option" value="max-gt-90">Days w/ max > 105°F</option>
+                  <option class="default-select-option" value="max-lt-32">Days w/ max < 32°F</option>
+                  <option class="default-select-option" value="min-lt-32">Days w/ min > 32°F</option>
+                  <option class="default-select-option" value="min-gt-80">Days w/ min > 80°F</option>
+                  <option class="default-select-option" value="min-gt-90">Days w/ min > 90°F</option>
+                  <option class="default-select-option-group" value="none" icon="fas fa-cloud-rain select-icon">Precipitation</option>
+                  <option class="default-select-option" value="total-precip">Total precipitation</option>
+                  <option class="default-select-option" value="gt-1inch">Days w/ > 1 in Precipitation</option>
+                  <option class="default-select-option" value="gt-3inch">Days w/ > 3 in Precipitation</option>
+                  <option class="default-select-option" value="Dry-Days">Dry Days</option>
+                  <option class="default-select-option-group" value="none" icon="fas fa-bacon select-icon">Other</option>
+                  <option class="default-select-option" value="Dry-Days">Cooling Degree Days</option>
+                  <option class="default-select-option" value="growing-degree-days">Growing Degree Days</option>
+                  <option class="default-select-option" value="heating-degree-days">Heating Degree Days</option>
+                  <option class="default-select-option" value="mo-growing-degree-days">Mod. Growing Degree Days</option>
               </select>
             </div>
+
 
             <div id="chartmap-wrapper" class="padding-horrizontal-half padding-vertical-half default-btn-height d-flex-center width-20">
               <div id="btn-chart" class="btn-default-selected circle-box-left d-flex-center width-50" >

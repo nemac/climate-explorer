@@ -11594,47 +11594,85 @@ h6 {
   font: 600 12px Roboto, Helvetica, "Helvetica Neue", Arial, sans-serif;
 }
 
-/* line 153, resources/scss/screen.scss */
+/* line 152, resources/scss/screen.scss */
+::-webkit-scrollbar {
+  width: 6px;
+  border: 1px solid #124086;
+  background-color: #124086;
+}
+
+/* line 158, resources/scss/screen.scss */
+::-webkit-scrollbar-thumb {
+  background-color: #124086;
+  border-radius: 6px;
+  -webkit-border-radius: 6px !important;
+  -moz-border-radius: 6px !important;
+}
+
+/* line 163, resources/scss/screen.scss */
+::-webkit-scrollbar-thumb:vertical {
+  height: 6px;
+}
+
+/* line 168, resources/scss/screen.scss */
+::-webkit-scrollbar-track {
+  border: 1px solid #1D6ADD;
+  background-color: #E9F1FC;
+}
+
+/* line 173, resources/scss/screen.scss */
+::-webkit-scrollbar-track-piece {
+  margin-right: 10px;
+  height: 6px;
+  width: 6px;
+}
+
+/* line 179, resources/scss/screen.scss */
+::-webkit-scrollbar-corner {
+  display: none;
+}
+
+/* line 183, resources/scss/screen.scss */
 .main-font-description {
   font: 500 24px Roboto, Helvetica, "Helvetica Neue", Arial, sans-serif !important;
 }
 
-/* line 157, resources/scss/screen.scss */
+/* line 187, resources/scss/screen.scss */
 .font-description {
   font: 500 24px Roboto, Helvetica, "Helvetica Neue", Arial, sans-serif !important;
 }
 
-/* line 160, resources/scss/screen.scss */
+/* line 190, resources/scss/screen.scss */
 .main-btn-height {
   height: 60px !important;
 }
 
-/* line 164, resources/scss/screen.scss */
+/* line 194, resources/scss/screen.scss */
 .default-btn-height {
   height: 36px !important;
 }
 
 @media screen and (max-width: 900px) {
-  /* line 164, resources/scss/screen.scss */
+  /* line 194, resources/scss/screen.scss */
   .default-btn-height {
     height: 48px !important;
   }
 }
 
-/* line 171, resources/scss/screen.scss */
+/* line 201, resources/scss/screen.scss */
 .select-hidden {
   display: none;
   visibility: hidden;
   padding-right: 10px;
 }
 
-/* line 177, resources/scss/screen.scss */
+/* line 207, resources/scss/screen.scss */
 .select-icon {
   margin-right: 12px !important;
   margin-top: 3px !important;
 }
 
-/* line 182, resources/scss/screen.scss */
+/* line 212, resources/scss/screen.scss */
 .select {
   cursor: pointer;
   display: inline-block;
@@ -11646,13 +11684,13 @@ h6 {
 }
 
 @media screen and (max-width: 900px) {
-  /* line 182, resources/scss/screen.scss */
+  /* line 212, resources/scss/screen.scss */
   .select {
     height: 48px !important;
   }
 }
 
-/* line 197, resources/scss/screen.scss */
+/* line 227, resources/scss/screen.scss */
 .select-styled {
   display: flex !important;
   justify-content: left;
@@ -11666,12 +11704,12 @@ h6 {
   margin-left: 6px !important;
 }
 
-/* line 206, resources/scss/screen.scss */
+/* line 236, resources/scss/screen.scss */
 .select-styled.disabled {
   color: rgba(18, 64, 134, 0.5) !important;
 }
 
-/* line 210, resources/scss/screen.scss */
+/* line 240, resources/scss/screen.scss */
 .select-styled:after {
   position: absolute;
   background-color: #FBFCFE;
@@ -11687,12 +11725,12 @@ h6 {
   justify-content: center;
 }
 
-/* line 224, resources/scss/screen.scss */
+/* line 254, resources/scss/screen.scss */
 .select-styled:hover {
   background-color: #E9F1FC;
 }
 
-/* line 229, resources/scss/screen.scss */
+/* line 259, resources/scss/screen.scss */
 .select-options {
   display: none;
   position: relative;
@@ -11711,7 +11749,13 @@ h6 {
   border-radius: 5px / 5px;
 }
 
-/* line 244, resources/scss/screen.scss */
+/* line 275, resources/scss/screen.scss */
+.select-options .default-select-option-group {
+  padding: 6px !important;
+  font-weight: 600 !important;
+}
+
+/* line 280, resources/scss/screen.scss */
 .select-options li {
   margin: 0;
   padding: 12px 0;
@@ -11726,342 +11770,327 @@ h6 {
   transition: all 0.15s ease-in;
 }
 
-/* line 251, resources/scss/screen.scss */
+/* line 287, resources/scss/screen.scss */
 .select-options li:hover {
   color: #124086;
   background: #d3e3f9;
 }
 
-/* line 255, resources/scss/screen.scss */
+/* line 291, resources/scss/screen.scss */
 .select-options li[rel="hide"] {
   display: none;
 }
 
-/* line 261, resources/scss/screen.scss */
-.default-select-option {
-  height: 36px !important;
-  background-color: #E9F1FC !important;
-  color: #124086 !important;
-  font: 500 14px Roboto, Helvetica, "Helvetica Neue", Arial, sans-serif !important;
-}
-
-@media screen and (max-width: 900px) {
-  /* line 261, resources/scss/screen.scss */
-  .default-select-option {
-    height: 48px !important;
-  }
-}
-
-/* line 272, resources/scss/screen.scss */
+/* line 308, resources/scss/screen.scss */
 .font-title {
   font: 500 24px Roboto, Helvetica, "Helvetica Neue", Arial, sans-serif !important;
   color: #FBFCFE !important;
 }
 
-/* line 277, resources/scss/screen.scss */
+/* line 313, resources/scss/screen.scss */
 .border-none {
   border: none !important;
   outline: none !important;
 }
 
-/* line 282, resources/scss/screen.scss */
+/* line 318, resources/scss/screen.scss */
 .border-default {
   border: 1px solid rgba(18, 64, 134, 0.5) !important;
 }
 
-/* line 286, resources/scss/screen.scss */
+/* line 322, resources/scss/screen.scss */
 .height-100 {
   height: 100% !important;
 }
 
-/* line 290, resources/scss/screen.scss */
+/* line 326, resources/scss/screen.scss */
 .width-100 {
   width: 100% !important;
 }
 
-/* line 294, resources/scss/screen.scss */
+/* line 330, resources/scss/screen.scss */
 .width-90 {
   width: 90% !important;
 }
 
-/* line 298, resources/scss/screen.scss */
+/* line 334, resources/scss/screen.scss */
 .width-80 {
   width: 80% !important;
 }
 
-/* line 302, resources/scss/screen.scss */
+/* line 338, resources/scss/screen.scss */
 .width-70 {
   width: 70% !important;
 }
 
-/* line 306, resources/scss/screen.scss */
+/* line 342, resources/scss/screen.scss */
 .width-75 {
   width: 75% !important;
 }
 
-/* line 310, resources/scss/screen.scss */
+/* line 346, resources/scss/screen.scss */
 .width-60 {
   width: 60% !important;
 }
 
-/* line 314, resources/scss/screen.scss */
+/* line 350, resources/scss/screen.scss */
 .width-50 {
   width: 50% !important;
 }
 
-/* line 318, resources/scss/screen.scss */
+/* line 354, resources/scss/screen.scss */
 .width-40 {
   width: 40% !important;
 }
 
-/* line 322, resources/scss/screen.scss */
+/* line 358, resources/scss/screen.scss */
 .width-30 {
   width: 30% !important;
 }
 
-/* line 326, resources/scss/screen.scss */
+/* line 362, resources/scss/screen.scss */
 .width-20 {
   width: 20% !important;
 }
 
-/* line 330, resources/scss/screen.scss */
+/* line 366, resources/scss/screen.scss */
 .width-25 {
   width: 25% !important;
 }
 
-/* line 334, resources/scss/screen.scss */
+/* line 370, resources/scss/screen.scss */
 .width-15 {
   width: 15% !important;
 }
 
-/* line 337, resources/scss/screen.scss */
+/* line 373, resources/scss/screen.scss */
 .width-10 {
   width: 10% !important;
 }
 
-/* line 341, resources/scss/screen.scss */
+/* line 377, resources/scss/screen.scss */
 .right-padding {
   padding-right: 12px !important;
 }
 
 @media screen and (max-width: 900px) {
-  /* line 341, resources/scss/screen.scss */
+  /* line 377, resources/scss/screen.scss */
   .right-padding {
     padding-right: 6px !important;
   }
 }
 
-/* line 348, resources/scss/screen.scss */
+/* line 384, resources/scss/screen.scss */
 .bottom-padding {
   padding-bottom: 12px !important;
 }
 
 @media screen and (max-width: 900px) {
-  /* line 348, resources/scss/screen.scss */
+  /* line 384, resources/scss/screen.scss */
   .bottom-padding {
     padding-bottom: 6px !important;
   }
 }
 
-/* line 355, resources/scss/screen.scss */
+/* line 391, resources/scss/screen.scss */
 .padding-default-half {
   padding: 6px !important;
 }
 
-/* line 359, resources/scss/screen.scss */
+/* line 395, resources/scss/screen.scss */
 .padding-default {
   padding: 12px 12px !important;
 }
 
 @media screen and (max-width: 900px) {
-  /* line 359, resources/scss/screen.scss */
+  /* line 395, resources/scss/screen.scss */
   .padding-default {
     padding: 6px 6px !important;
   }
 }
 
-/* line 366, resources/scss/screen.scss */
+/* line 402, resources/scss/screen.scss */
 .padding-horrizontal {
   padding-left: 12px !important;
   padding-right: 12px !important;
 }
 
 @media screen and (max-width: 900px) {
-  /* line 366, resources/scss/screen.scss */
+  /* line 402, resources/scss/screen.scss */
   .padding-horrizontal {
     padding-left: 6px !important;
     padding-right: 6px !important;
   }
 }
 
-/* line 375, resources/scss/screen.scss */
+/* line 411, resources/scss/screen.scss */
 .padding-horrizontal-half {
   padding-left: 6px !important;
   padding-right: 6px !important;
 }
 
 @media screen and (max-width: 900px) {
-  /* line 375, resources/scss/screen.scss */
+  /* line 411, resources/scss/screen.scss */
   .padding-horrizontal-half {
     padding-left: 3px !important;
     padding-right: 3px !important;
   }
 }
 
-/* line 384, resources/scss/screen.scss */
+/* line 420, resources/scss/screen.scss */
 .padding-vertical-half {
   padding-top: 6px !important;
   padding-bottom: 6px !important;
 }
 
 @media screen and (max-width: 900px) {
-  /* line 384, resources/scss/screen.scss */
+  /* line 420, resources/scss/screen.scss */
   .padding-vertical-half {
     padding-top: 3px !important;
     padding-bottom: 3px !important;
   }
 }
 
-/* line 392, resources/scss/screen.scss */
+/* line 428, resources/scss/screen.scss */
 .padding-bottom {
   padding-bottom: 12px !important;
 }
 
 @media screen and (max-width: 900px) {
-  /* line 392, resources/scss/screen.scss */
+  /* line 428, resources/scss/screen.scss */
   .padding-bottom {
     padding-bottom: 6px !important;
   }
 }
 
-/* line 399, resources/scss/screen.scss */
+/* line 435, resources/scss/screen.scss */
 .padding-top {
   padding-top: 12px !important;
 }
 
 @media screen and (max-width: 900px) {
-  /* line 399, resources/scss/screen.scss */
+  /* line 435, resources/scss/screen.scss */
   .padding-top {
     padding-top: 6px !important;
   }
 }
 
-/* line 406, resources/scss/screen.scss */
+/* line 442, resources/scss/screen.scss */
 .padding-bottom-half {
   padding-bottom: 6px !important;
 }
 
 @media screen and (max-width: 900px) {
-  /* line 406, resources/scss/screen.scss */
+  /* line 442, resources/scss/screen.scss */
   .padding-bottom-half {
     padding-bottom: 3px !important;
   }
 }
 
-/* line 413, resources/scss/screen.scss */
+/* line 449, resources/scss/screen.scss */
 .padding-top-half {
   padding-top: 6px !important;
 }
 
 @media screen and (max-width: 900px) {
-  /* line 413, resources/scss/screen.scss */
+  /* line 449, resources/scss/screen.scss */
   .padding-top-half {
     padding-top: 3px !important;
   }
 }
 
-/* line 420, resources/scss/screen.scss */
+/* line 456, resources/scss/screen.scss */
 .padding-break {
   padding-bottom: 48px !important;
 }
 
 @media screen and (max-width: 900px) {
-  /* line 420, resources/scss/screen.scss */
+  /* line 456, resources/scss/screen.scss */
   .padding-break {
     padding-bottom: 24px !important;
   }
 }
 
-/* line 427, resources/scss/screen.scss */
+/* line 463, resources/scss/screen.scss */
 .margin-horrizontal {
   margin-left: 12px !important;
   margin-right: 12px !important;
 }
 
 @media screen and (max-width: 900px) {
-  /* line 427, resources/scss/screen.scss */
+  /* line 463, resources/scss/screen.scss */
   .margin-horrizontal {
     margin-left: 6px !important;
     margin-right: 6px !important;
   }
 }
 
-/* line 436, resources/scss/screen.scss */
+/* line 472, resources/scss/screen.scss */
 .float-left {
   float: left !important;
 }
 
-/* line 440, resources/scss/screen.scss */
+/* line 476, resources/scss/screen.scss */
 .float-right {
   float: right !important;
 }
 
-/* line 444, resources/scss/screen.scss */
+/* line 480, resources/scss/screen.scss */
 .d-none {
   display: none !important;
 }
 
-/* line 448, resources/scss/screen.scss */
+/* line 484, resources/scss/screen.scss */
 .d-flex {
   display: flex !important;
 }
 
-/* line 452, resources/scss/screen.scss */
+/* line 488, resources/scss/screen.scss */
 .d-flex-nowrap {
   flex-wrap: nowrap !important;
 }
 
-/* line 456, resources/scss/screen.scss */
+/* line 492, resources/scss/screen.scss */
 .d-flex-wrap {
   flex-wrap: wrap !important;
 }
 
-/* line 459, resources/scss/screen.scss */
+/* line 495, resources/scss/screen.scss */
 .d-flex-row {
   display: flex !important;
   flex-flow: row wrap !important;
 }
 
-/* line 464, resources/scss/screen.scss */
+/* line 500, resources/scss/screen.scss */
 .d-flex-column {
   display: flex !important;
   flex-direction: column !important;
 }
 
-/* line 470, resources/scss/screen.scss */
+/* line 506, resources/scss/screen.scss */
 .flex-container {
   display: flex !important;
   flex-flow: row wrap !important;
 }
 
-/* line 476, resources/scss/screen.scss */
+/* line 512, resources/scss/screen.scss */
 .flex-container-nowrap {
   display: flex !important;
   flex-flow: row nowrap !important;
 }
 
-/* line 482, resources/scss/screen.scss */
+/* line 518, resources/scss/screen.scss */
 .flex-justify {
   justify-content: space-between !important;
 }
 
-/* line 486, resources/scss/screen.scss */
+/* line 522, resources/scss/screen.scss */
 .d-flex-fill {
   display: flex !important;
   flex: 1 1 auto !important;
 }
 
-/* line 491, resources/scss/screen.scss */
+/* line 527, resources/scss/screen.scss */
 .d-flex-center {
   display: flex !important;
   align-items: center !important;
@@ -12069,7 +12098,7 @@ h6 {
   justify-content: center !important;
 }
 
-/* line 498, resources/scss/screen.scss */
+/* line 534, resources/scss/screen.scss */
 .d-flex-left {
   display: flex !important;
   align-items: flex-start !important;
@@ -12077,7 +12106,7 @@ h6 {
   justify-content: flex-start !important;
 }
 
-/* line 505, resources/scss/screen.scss */
+/* line 541, resources/scss/screen.scss */
 .d-flex-bottom {
   align-self: flex-end !important;
   align-content: flex-end !important;
@@ -12085,17 +12114,17 @@ h6 {
   margin-top: auto !important;
 }
 
-/* line 512, resources/scss/screen.scss */
+/* line 548, resources/scss/screen.scss */
 .d-flex-fill {
   flex: 1 1 auto !important;
 }
 
-/* line 516, resources/scss/screen.scss */
+/* line 552, resources/scss/screen.scss */
 .d-block {
   display: block !important;
 }
 
-/* line 520, resources/scss/screen.scss */
+/* line 556, resources/scss/screen.scss */
 .input-border {
   -webkit-border-radius: 5px 5px;
   -moz-border-radius: 5px / 5px;
@@ -12105,7 +12134,7 @@ h6 {
   box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.239);
 }
 
-/* line 525, resources/scss/screen.scss */
+/* line 561, resources/scss/screen.scss */
 .btn-default {
   height: 36px !important;
   background-color: #E9F1FC !important;
@@ -12115,13 +12144,13 @@ h6 {
 }
 
 @media screen and (max-width: 900px) {
-  /* line 525, resources/scss/screen.scss */
+  /* line 561, resources/scss/screen.scss */
   .btn-default {
     height: 48px !important;
   }
 }
 
-/* line 536, resources/scss/screen.scss */
+/* line 572, resources/scss/screen.scss */
 .btn-default:hover {
   cursor: pointer;
   height: 36px !important;
@@ -12132,13 +12161,13 @@ h6 {
 }
 
 @media screen and (max-width: 900px) {
-  /* line 536, resources/scss/screen.scss */
+  /* line 572, resources/scss/screen.scss */
   .btn-default:hover {
     height: 48px !important;
   }
 }
 
-/* line 548, resources/scss/screen.scss */
+/* line 584, resources/scss/screen.scss */
 .btn-default:focus {
   cursor: pointer;
   height: 36px !important;
@@ -12150,13 +12179,13 @@ h6 {
 }
 
 @media screen and (max-width: 900px) {
-  /* line 548, resources/scss/screen.scss */
+  /* line 584, resources/scss/screen.scss */
   .btn-default:focus {
     height: 48px !important;
   }
 }
 
-/* line 561, resources/scss/screen.scss */
+/* line 597, resources/scss/screen.scss */
 .btn-default-selected {
   height: 36px !important;
   background-color: #124086 !important;
@@ -12166,13 +12195,13 @@ h6 {
 }
 
 @media screen and (max-width: 900px) {
-  /* line 561, resources/scss/screen.scss */
+  /* line 597, resources/scss/screen.scss */
   .btn-default-selected {
     height: 48px !important;
   }
 }
 
-/* line 572, resources/scss/screen.scss */
+/* line 608, resources/scss/screen.scss */
 .btn-default-selected:hover {
   cursor: pointer;
   height: 36px !important;
@@ -12183,13 +12212,13 @@ h6 {
 }
 
 @media screen and (max-width: 900px) {
-  /* line 572, resources/scss/screen.scss */
+  /* line 608, resources/scss/screen.scss */
   .btn-default-selected:hover {
     height: 48px !important;
   }
 }
 
-/* line 584, resources/scss/screen.scss */
+/* line 620, resources/scss/screen.scss */
 .btn-default-selected:focus {
   cursor: pointer;
   height: 36px !important;
@@ -12200,13 +12229,13 @@ h6 {
 }
 
 @media screen and (max-width: 900px) {
-  /* line 584, resources/scss/screen.scss */
+  /* line 620, resources/scss/screen.scss */
   .btn-default-selected:focus {
     height: 48px !important;
   }
 }
 
-/* line 596, resources/scss/screen.scss */
+/* line 632, resources/scss/screen.scss */
 .rounded-choice-box {
   -webkit-border-radius: 25px 25px;
   -moz-border-radius: 25px / 25px;
@@ -12218,14 +12247,14 @@ h6 {
 }
 
 @media screen and (max-width: 900px) {
-  /* line 596, resources/scss/screen.scss */
+  /* line 632, resources/scss/screen.scss */
   .rounded-choice-box {
     min-height: 48px !important;
     max-height: 48px !important;
   }
 }
 
-/* line 609, resources/scss/screen.scss */
+/* line 645, resources/scss/screen.scss */
 .rounded-info-box {
   -webkit-border-radius: 5px 5px;
   -moz-border-radius: 5px / 5px;
@@ -12237,13 +12266,13 @@ h6 {
 }
 
 @media screen and (max-width: 900px) {
-  /* line 609, resources/scss/screen.scss */
+  /* line 645, resources/scss/screen.scss */
   .rounded-info-box {
     min-height: 105px !important;
   }
 }
 
-/* line 620, resources/scss/screen.scss */
+/* line 656, resources/scss/screen.scss */
 .rounded-filters-box {
   -webkit-border-radius: 5px 5px;
   -moz-border-radius: 5px / 5px;
@@ -12255,27 +12284,27 @@ h6 {
 }
 
 @media screen and (max-width: 900px) {
-  /* line 620, resources/scss/screen.scss */
+  /* line 656, resources/scss/screen.scss */
   .rounded-filters-box {
     min-height: unset !important;
   }
 }
 
-/* line 632, resources/scss/screen.scss */
+/* line 668, resources/scss/screen.scss */
 .rounded-box-secondary {
   -webkit-border-radius: 5px 5px;
   -moz-border-radius: 5px / 5px;
   border-radius: 5px / 5px;
 }
 
-/* line 636, resources/scss/screen.scss */
+/* line 672, resources/scss/screen.scss */
 .rounded-box-secondary {
   -webkit-border-radius: 5px 5px;
   -moz-border-radius: 5px / 5px;
   border-radius: 5px / 5px;
 }
 
-/* line 640, resources/scss/screen.scss */
+/* line 676, resources/scss/screen.scss */
 .rounded-box {
   -webkit-border-radius: 5px;
   -moz-border-radius: 5px;
@@ -12284,35 +12313,35 @@ h6 {
   border-radius: 5px;
 }
 
-/* line 644, resources/scss/screen.scss */
+/* line 680, resources/scss/screen.scss */
 .rounded-box-top-left {
   -moz-border-radius-topleft: 5px;
   -webkit-border-top-left-radius: 5px;
   border-top-left-radius: 5px;
 }
 
-/* line 648, resources/scss/screen.scss */
+/* line 684, resources/scss/screen.scss */
 .rounded-box-top-right {
   -moz-border-radius-topright: 5px;
   -webkit-border-top-right-radius: 5px;
   border-top-right-radius: 5px;
 }
 
-/* line 652, resources/scss/screen.scss */
+/* line 688, resources/scss/screen.scss */
 .rounded-box-bottom-left {
   -moz-border-radius-bottomleft: 5px;
   -webkit-border-bottom-left-radius: 5px;
   border-bottom-left-radius: 5px;
 }
 
-/* line 656, resources/scss/screen.scss */
+/* line 692, resources/scss/screen.scss */
 .rounded-box-bottom-right {
   -moz-border-radius-bottomright: 5px;
   -webkit-border-bottom-right-radius: 5px;
   border-bottom-right-radius: 5px;
 }
 
-/* line 660, resources/scss/screen.scss */
+/* line 696, resources/scss/screen.scss */
 .rounded-box-top {
   -moz-border-radius-topleft: 5px;
   -webkit-border-top-left-radius: 5px;
@@ -12322,7 +12351,7 @@ h6 {
   border-top-right-radius: 5px;
 }
 
-/* line 664, resources/scss/screen.scss */
+/* line 700, resources/scss/screen.scss */
 .rounded-box-bottom {
   -moz-border-radius-bottomleft: 5px;
   -webkit-border-bottom-left-radius: 5px;
@@ -12332,7 +12361,7 @@ h6 {
   border-bottom-right-radius: 5px;
 }
 
-/* line 668, resources/scss/screen.scss */
+/* line 704, resources/scss/screen.scss */
 .rounded-box-left {
   -moz-border-radius-topleft: 5px;
   -webkit-border-top-left-radius: 5px;
@@ -12342,7 +12371,7 @@ h6 {
   border-bottom-left-radius: 5px;
 }
 
-/* line 672, resources/scss/screen.scss */
+/* line 708, resources/scss/screen.scss */
 .rounded-box-right {
   -moz-border-radius-topright: 5px;
   -webkit-border-top-right-radius: 5px;
@@ -12352,21 +12381,21 @@ h6 {
   border-bottom-right-radius: 5px;
 }
 
-/* line 677, resources/scss/screen.scss */
+/* line 713, resources/scss/screen.scss */
 .circle-box-secondary {
   -webkit-border-radius: 25px 15px;
   -moz-border-radius: 25px / 15px;
   border-radius: 25px / 15px;
 }
 
-/* line 681, resources/scss/screen.scss */
+/* line 717, resources/scss/screen.scss */
 .circle-box-secondary {
   -webkit-border-radius: 25px 25px;
   -moz-border-radius: 25px / 25px;
   border-radius: 25px / 25px;
 }
 
-/* line 685, resources/scss/screen.scss */
+/* line 721, resources/scss/screen.scss */
 .rounded-box {
   -webkit-border-radius: 25px;
   -moz-border-radius: 25px;
@@ -12375,35 +12404,35 @@ h6 {
   border-radius: 25px;
 }
 
-/* line 689, resources/scss/screen.scss */
+/* line 725, resources/scss/screen.scss */
 .circle-box-top-left {
   -moz-border-radius-topleft: 25px;
   -webkit-border-top-left-radius: 25px;
   border-top-left-radius: 25px;
 }
 
-/* line 693, resources/scss/screen.scss */
+/* line 729, resources/scss/screen.scss */
 .circle-box-top-right {
   -moz-border-radius-topright: 25px;
   -webkit-border-top-right-radius: 25px;
   border-top-right-radius: 25px;
 }
 
-/* line 697, resources/scss/screen.scss */
+/* line 733, resources/scss/screen.scss */
 .circle-box-bottom-left {
   -moz-border-radius-bottomleft: 25px;
   -webkit-border-bottom-left-radius: 25px;
   border-bottom-left-radius: 25px;
 }
 
-/* line 701, resources/scss/screen.scss */
+/* line 737, resources/scss/screen.scss */
 .circle-box-bottom-right {
   -moz-border-radius-bottomright: 25px;
   -webkit-border-bottom-right-radius: 25px;
   border-bottom-right-radius: 25px;
 }
 
-/* line 705, resources/scss/screen.scss */
+/* line 741, resources/scss/screen.scss */
 .circle-box-top {
   -moz-border-radius-topleft: 25px;
   -webkit-border-top-left-radius: 25px;
@@ -12413,7 +12442,7 @@ h6 {
   border-top-right-radius: 25px;
 }
 
-/* line 709, resources/scss/screen.scss */
+/* line 745, resources/scss/screen.scss */
 .circle-box-bottom {
   -moz-border-radius-bottomleft: 25px;
   -webkit-border-bottom-left-radius: 25px;
@@ -12423,7 +12452,7 @@ h6 {
   border-bottom-right-radius: 25px;
 }
 
-/* line 713, resources/scss/screen.scss */
+/* line 749, resources/scss/screen.scss */
 .circle-box-left {
   -moz-border-radius-topleft: 25px;
   -webkit-border-top-left-radius: 25px;
@@ -12433,7 +12462,7 @@ h6 {
   border-bottom-left-radius: 25px;
 }
 
-/* line 717, resources/scss/screen.scss */
+/* line 753, resources/scss/screen.scss */
 .circle-box-right {
   -moz-border-radius-topright: 25px;
   -webkit-border-top-right-radius: 25px;
@@ -12443,26 +12472,26 @@ h6 {
   border-bottom-right-radius: 25px;
 }
 
-/* line 721, resources/scss/screen.scss */
+/* line 757, resources/scss/screen.scss */
 .icon-info-box {
   font-size: 24px !important;
   padding-right: 12px !important;
   vertical-align: middle;
 }
 
-/* line 727, resources/scss/screen.scss */
+/* line 763, resources/scss/screen.scss */
 .text-info-box {
   font-size: 18px !important;
   font-weight: 700 !important;
 }
 
-/* line 732, resources/scss/screen.scss */
+/* line 768, resources/scss/screen.scss */
 .text-info-box-secondary {
   font-size: 18px !important;
   font-weight: 500 !important;
 }
 
-/* line 737, resources/scss/screen.scss */
+/* line 773, resources/scss/screen.scss */
 .search-default {
   width: 24px !important;
   height: 24px !important;
@@ -12476,21 +12505,21 @@ h6 {
   padding: 5px !important;
 }
 
-/* line 749, resources/scss/screen.scss */
+/* line 785, resources/scss/screen.scss */
 input.input-inner-default {
   background-color: #E9F1FC;
   color: #124086;
   font: 800 18px Roboto, Helvetica, "Helvetica Neue", Arial, sans-serif !important;
 }
 
-/* line 755, resources/scss/screen.scss */
+/* line 791, resources/scss/screen.scss */
 input.input-inner-default::placeholder {
   background-color: #E9F1FC;
   color: #124086;
   font: 800 18px Roboto, Helvetica, "Helvetica Neue", Arial, sans-serif !important;
 }
 
-/* line 761, resources/scss/screen.scss */
+/* line 797, resources/scss/screen.scss */
 input.input-inner-default:focus::placeholder {
   color: rgba(18, 64, 134, 0.5);
   font: 800 18px Roboto, Helvetica, "Helvetica Neue", Arial, sans-serif !important;
@@ -12500,32 +12529,32 @@ input.input-inner-default:focus::placeholder {
   transition: 0.25s;
 }
 
-/* line 770, resources/scss/screen.scss */
+/* line 806, resources/scss/screen.scss */
 input.input-inner-default:focus {
   outline: none !important;
 }
 
-/* line 774, resources/scss/screen.scss */
+/* line 810, resources/scss/screen.scss */
 #info-row, #search-row {
   width: 100% !important;
   align-self: center !important;
 }
 
 @media screen and (max-width: 1240px) {
-  /* line 774, resources/scss/screen.scss */
+  /* line 810, resources/scss/screen.scss */
   #info-row, #search-row {
     width: 90% !important;
   }
 }
 
 @media screen and (max-width: 768px) {
-  /* line 774, resources/scss/screen.scss */
+  /* line 810, resources/scss/screen.scss */
   #info-row, #search-row {
     width: 90% !important;
   }
 }
 
-/* line 788, resources/scss/screen.scss */
+/* line 824, resources/scss/screen.scss */
 .tooltip {
   display: block !important;
   margin-left: 8px !important;
@@ -12533,7 +12562,7 @@ input.input-inner-default:focus {
   font-size: 12px !important;
 }
 
-/* line 796, resources/scss/screen.scss */
+/* line 832, resources/scss/screen.scss */
 .tooltip:after {
   bottom: 25% !important;
   left: -3px !important;
@@ -12541,12 +12570,12 @@ input.input-inner-default:focus {
   border-color: transparent #ffffff transparent transparent !important;
 }
 
-/* line 803, resources/scss/screen.scss */
+/* line 839, resources/scss/screen.scss */
 .d-xs-only {
   display: none;
 }
 
-/* line 809, resources/scss/screen.scss */
+/* line 845, resources/scss/screen.scss */
 .button {
   position: relative;
   display: inline-block;
@@ -12559,7 +12588,7 @@ input.input-inner-default:focus {
   transition: 0.25s;
 }
 
-/* line 817, resources/scss/screen.scss */
+/* line 853, resources/scss/screen.scss */
 .button:before, .button:after {
   content: '';
   display: block;
@@ -12568,37 +12597,37 @@ input.input-inner-default:focus {
   top: 50%;
 }
 
-/* line 828, resources/scss/screen.scss */
+/* line 864, resources/scss/screen.scss */
 .button.display-blocks {
   display: block;
 }
 
-/* line 834, resources/scss/screen.scss */
+/* line 870, resources/scss/screen.scss */
 .button .icon {
   margin: -2px 10px 0 0;
 }
 
-/* line 839, resources/scss/screen.scss */
+/* line 875, resources/scss/screen.scss */
 .button.plus:before {
   width: 14px;
   height: 4px;
   margin-top: -2px;
 }
 
-/* line 845, resources/scss/screen.scss */
+/* line 881, resources/scss/screen.scss */
 .button.plus:after {
   width: 4px;
   height: 14px;
   margin: -7px 5px 0 0;
 }
 
-/* line 871, resources/scss/screen.scss */
+/* line 907, resources/scss/screen.scss */
 .button.arrow-right:before, .button.arrow-right:after {
   width: 10px;
   height: 4px;
 }
 
-/* line 877, resources/scss/screen.scss */
+/* line 913, resources/scss/screen.scss */
 .button.arrow-right:before {
   -webkit-transform: rotate(-45deg);
   -moz-transform: rotate(-45deg);
@@ -12608,7 +12637,7 @@ input.input-inner-default:focus {
   margin-top: 1px;
 }
 
-/* line 882, resources/scss/screen.scss */
+/* line 918, resources/scss/screen.scss */
 .button.arrow-right:after {
   -webkit-transform: rotate(45deg);
   -moz-transform: rotate(45deg);
@@ -12618,7 +12647,7 @@ input.input-inner-default:focus {
   margin-top: -4px;
 }
 
-/* line 889, resources/scss/screen.scss */
+/* line 925, resources/scss/screen.scss */
 .button.close:before, .button.close:after {
   right: 6px;
   width: 24px;
@@ -12626,7 +12655,7 @@ input.input-inner-default:focus {
   margin-top: -4px;
 }
 
-/* line 897, resources/scss/screen.scss */
+/* line 933, resources/scss/screen.scss */
 .button.close:before {
   -webkit-transform: rotate(-45deg);
   -moz-transform: rotate(-45deg);
@@ -12635,7 +12664,7 @@ input.input-inner-default:focus {
   transform: rotate(-45deg);
 }
 
-/* line 901, resources/scss/screen.scss */
+/* line 937, resources/scss/screen.scss */
 .button.close:after {
   -webkit-transform: rotate(45deg);
   -moz-transform: rotate(45deg);
@@ -12644,107 +12673,107 @@ input.input-inner-default:focus {
   transform: rotate(45deg);
 }
 
-/* line 908, resources/scss/screen.scss */
+/* line 944, resources/scss/screen.scss */
 .button.color-white {
   color: #ffffff;
 }
 
-/* line 911, resources/scss/screen.scss */
+/* line 947, resources/scss/screen.scss */
 .button.color-white:before, .button.color-white:after {
   background: #ffffff;
 }
 
-/* line 917, resources/scss/screen.scss */
+/* line 953, resources/scss/screen.scss */
 .button.color-orange {
   color: #f5442d !important;
 }
 
-/* line 920, resources/scss/screen.scss */
+/* line 956, resources/scss/screen.scss */
 .button.color-orange:before, .button.color-orange:after {
   background: #f5442d !important;
 }
 
-/* line 926, resources/scss/screen.scss */
+/* line 962, resources/scss/screen.scss */
 .button.color-orange.arrow-right:before {
   background: #f5442d !important;
 }
 
-/* line 930, resources/scss/screen.scss */
+/* line 966, resources/scss/screen.scss */
 .button.color-orange.arrow-right:after {
   background: #f5442d !important;
 }
 
-/* line 938, resources/scss/screen.scss */
+/* line 974, resources/scss/screen.scss */
 .button.border-white {
   border-color: #ffffff;
   color: #ffffff;
 }
 
-/* line 942, resources/scss/screen.scss */
+/* line 978, resources/scss/screen.scss */
 .button.border-white:before, .button.border-white:after {
   background: #ffffff;
 }
 
-/* line 948, resources/scss/screen.scss */
+/* line 984, resources/scss/screen.scss */
 .button.border-trans {
   border-color: transparent;
 }
 
-/* line 952, resources/scss/screen.scss */
+/* line 988, resources/scss/screen.scss */
 .button.border-none {
   border: none;
 }
 
-/* line 958, resources/scss/screen.scss */
+/* line 994, resources/scss/screen.scss */
 .button.bg-trans {
   background: transparent;
 }
 
-/* line 962, resources/scss/screen.scss */
+/* line 998, resources/scss/screen.scss */
 .button.bg-white {
   background: white;
 }
 
-/* line 971, resources/scss/screen.scss */
+/* line 1007, resources/scss/screen.scss */
 .button.hover-bg-white:hover {
   background: #ffffff;
   color: #0058cf;
   mix-blend-mode: screen;
 }
 
-/* line 976, resources/scss/screen.scss */
+/* line 1012, resources/scss/screen.scss */
 .button.hover-bg-white:hover:before, .button.hover-bg-white:hover:after {
   background: #000000;
 }
 
-/* line 985, resources/scss/screen.scss */
+/* line 1021, resources/scss/screen.scss */
 .button.blend-screen {
   mix-blend-mode: screen;
 }
 
-/* line 988, resources/scss/screen.scss */
+/* line 1024, resources/scss/screen.scss */
 .button.blend-screen:before, .button.blend-screen:after {
   background: #000000;
 }
 
-/* line 993, resources/scss/screen.scss */
+/* line 1029, resources/scss/screen.scss */
 .button.blend-screen:hover {
   color: #000000;
 }
 
-/* line 1000, resources/scss/screen.scss */
+/* line 1036, resources/scss/screen.scss */
 .icon {
   display: inline-block;
   vertical-align: middle;
 }
 
-/* line 1006, resources/scss/screen.scss */
+/* line 1042, resources/scss/screen.scss */
 .stuck {
   position: fixed;
   top: 0;
 }
 
-/* line 1012, resources/scss/screen.scss */
+/* line 1048, resources/scss/screen.scss */
 .tooltip {
   display: none;
   position: absolute;
@@ -12766,7 +12795,7 @@ input.input-inner-default:focus {
   box-shadow: 0 0 8px rgba(0, 88, 207, 0.25);
 }
 
-/* line 1026, resources/scss/screen.scss */
+/* line 1062, resources/scss/screen.scss */
 .tooltip:after {
   content: '';
   display: block;
@@ -12789,7 +12818,7 @@ input.input-inner-default:focus {
   clear: both;
 }
 
-/* line 1042, resources/scss/screen.scss */
+/* line 1078, resources/scss/screen.scss */
 .chart-legend .legend-item {
   position: relative;
   float: left;
@@ -12807,12 +12836,12 @@ input.input-inner-default:focus {
   transition: 0.25s;
 }
 
-/* line 1055, resources/scss/screen.scss */
+/* line 1091, resources/scss/screen.scss */
 .chart-legend .legend-item:hover {
   border: 1px solid #eeeeee;
 }
 
-/* line 1059, resources/scss/screen.scss */
+/* line 1095, resources/scss/screen.scss */
 .chart-legend .legend-item:after {
   content: "\e91f";
   display: block;
@@ -12839,64 +12868,64 @@ input.input-inner-default:focus {
   transition: 0.25s;
 }
 
-/* line 1078, resources/scss/screen.scss */
+/* line 1114, resources/scss/screen.scss */
 .chart-legend .legend-item.selected {
   border: 1px solid #bbbbbb;
 }
 
-/* line 1083, resources/scss/screen.scss */
+/* line 1119, resources/scss/screen.scss */
 .chart-legend .legend-item.selected:after {
   opacity: 1;
 }
 
-/* line 1089, resources/scss/screen.scss */
+/* line 1125, resources/scss/screen.scss */
 .chart-legend .legend-item-block {
   height: 20px;
 }
 
-/* line 1093, resources/scss/screen.scss */
+/* line 1129, resources/scss/screen.scss */
 .chart-legend .legend-item-line {
   height: 5px;
 }
 
-/* line 1098, resources/scss/screen.scss */
+/* line 1134, resources/scss/screen.scss */
 .chart-legend .legend-item-block#rcp45-block, .chart-legend .legend-item-block#preciprcp45-block, .chart-legend .legend-item-block #derivercp45-block {
   background: #99bcec;
 }
 
-/* line 1104, resources/scss/screen.scss */
+/* line 1140, resources/scss/screen.scss */
 .chart-legend .legend-item-block#rcp85-block, .chart-legend .legend-item-block#preciprcp85-block, .chart-legend .legend-item-block#derivercp85-block {
   background: #fbb4ab;
 }
 
-/* line 1110, resources/scss/screen.scss */
+/* line 1146, resources/scss/screen.scss */
 .chart-legend .legend-item-block#historical-block, .chart-legend .legend-item-block#preciphistorical-block, .chart-legend .legend-item-block#derivehistorical-block {
   background: #d6d6d6;
 }
 
-/* line 1118, resources/scss/screen.scss */
+/* line 1154, resources/scss/screen.scss */
 .chart-legend .legend-item-line#over-baseline-block, .chart-legend .legend-item-line#precipover-baseline-block, .chart-legend .legend-item-line#deriveover-baseline-block {
   background: #cd6760;
 }
 
-/* line 1124, resources/scss/screen.scss */
+/* line 1160, resources/scss/screen.scss */
 .chart-legend .legend-item-line#under-baseline-block, .chart-legend .legend-item-line#precipunder-baseline-block, .chart-legend .legend-item-line#deriveunder-baseline-block {
   margin-top: 20px;
   background: #6194c8;
 }
 
-/* line 1131, resources/scss/screen.scss */
+/* line 1167, resources/scss/screen.scss */
 .chart-legend .legend-item-line#rcp45-line, .chart-legend .legend-item-line#preciprcp45-line, .chart-legend .legend-item-line#derivercp45-line {
   margin-top: 20px;
   background: #0058cf;
 }
 
-/* line 1138, resources/scss/screen.scss */
+/* line 1174, resources/scss/screen.scss */
 .chart-legend .legend-item-line#rcp85-line, .chart-legend .legend-item-line#preciprcp85-line, .chart-legend .legend-item-line#derivercp85-line {
   background: #f5442d;
 }
 
-/* line 1147, resources/scss/screen.scss */
+/* line 1183, resources/scss/screen.scss */
 .download-panel {
   display: none;
   position: fixed;
@@ -12911,7 +12940,7 @@ input.input-inner-default:focus {
   opacity: 0.95;
 }
 
-/* line 1162, resources/scss/screen.scss */
+/* line 1198, resources/scss/screen.scss */
 .download-panel .download-inner {
   margin: auto;
   position: absolute;
@@ -12927,22 +12956,22 @@ input.input-inner-default:focus {
   padding: 30px;
 }
 
-/* line 1172, resources/scss/screen.scss */
+/* line 1208, resources/scss/screen.scss */
 .download-panel .download-inner p {
   margin: 0 0 20px 0;
 }
 
-/* line 1176, resources/scss/screen.scss */
+/* line 1212, resources/scss/screen.scss */
 .download-panel .download-inner li {
   margin: 0 0 10px 0;
 }
 
-/* line 1180, resources/scss/screen.scss */
+/* line 1216, resources/scss/screen.scss */
 .download-panel .download-inner a {
   color: #ffffff;
 }
 
-/* line 1185, resources/scss/screen.scss */
+/* line 1221, resources/scss/screen.scss */
 .download-panel #download-dismiss-button, .download-panel .download-dismiss-button {
   display: block;
   position: absolute;
@@ -13666,7 +13695,7 @@ body.detail-open #nav-overlay {
   }
 }
 
-/* line 1222, resources/scss/screen.scss */
+/* line 1258, resources/scss/screen.scss */
 #desktop-warning {
   display: none;
 }
@@ -13790,7 +13819,7 @@ body.detail-open #nav-overlay {
   width: auto;
 }
 
-/* line 1231, resources/scss/screen.scss */
+/* line 1267, resources/scss/screen.scss */
 .ui-slider-label {
   position: absolute;
   width: 21px;
@@ -13809,7 +13838,7 @@ body.detail-open #nav-overlay {
   cursor: pointer;
 }
 
-/* line 1242, resources/scss/screen.scss */
+/* line 1278, resources/scss/screen.scss */
 .ui-slider-label:before, .ui-slider-label:after {
   content: '';
   display: block;
@@ -13822,7 +13851,7 @@ body.detail-open #nav-overlay {
   background: #f5442d;
 }
 
-/* line 1259, resources/scss/screen.scss */
+/* line 1295, resources/scss/screen.scss */
 .ui-slider-label.plus:after {
   top: 4px;
   left: 6px;
@@ -13830,7 +13859,7 @@ body.detail-open #nav-overlay {
   height: 9px;
 }
 
-/* line 1267, resources/scss/screen.scss */
+/* line 1303, resources/scss/screen.scss */
 .ui-slider-label.range-label {
   bottom: 0;
   width: auto;
@@ -13847,17 +13876,17 @@ body.detail-open #nav-overlay {
   border-radius: none;
 }
 
-/* line 1276, resources/scss/screen.scss */
+/* line 1312, resources/scss/screen.scss */
 .ui-slider-label.range-label:before, .ui-slider-label.range-label:after {
   display: none;
 }
 
-/* line 1281, resources/scss/screen.scss */
+/* line 1317, resources/scss/screen.scss */
 .ui-slider-label.range-label.min {
   left: 0;
 }
 
-/* line 1285, resources/scss/screen.scss */
+/* line 1321, resources/scss/screen.scss */
 .ui-slider-label.range-label.mid {
   left: 50%;
   -webkit-transform: translateX(-50%);
@@ -13867,12 +13896,12 @@ body.detail-open #nav-overlay {
   transform: translateX(-50%);
 }
 
-/* line 1290, resources/scss/screen.scss */
+/* line 1326, resources/scss/screen.scss */
 .ui-slider-label.range-label.max {
   right: 0;
 }
 
-/* line 1298, resources/scss/screen.scss */
+/* line 1334, resources/scss/screen.scss */
 .legend-wrap .legend .color {
   display: inline-block;
   height: 0;
@@ -13880,7 +13909,7 @@ body.detail-open #nav-overlay {
   vertical-align: middle;
 }
 
-/* line 1307, resources/scss/screen.scss */
+/* line 1343, resources/scss/screen.scss */
 .zoom {
   position: absolute;
   top: 30%;
@@ -13894,12 +13923,12 @@ body.detail-open #nav-overlay {
   transition: 0.25s;
 }
 
-/* line 1316, resources/scss/screen.scss */
+/* line 1352, resources/scss/screen.scss */
 .zoom:hover {
   background: rgba(255, 255, 255, 0.9);
 }
 
-/* line 1320, resources/scss/screen.scss */
+/* line 1356, resources/scss/screen.scss */
 .zoom .zoom-slider {
   left: calc(50% - 3px);
   top: 17%;
@@ -13907,7 +13936,7 @@ body.detail-open #nav-overlay {
   height: 66%;
 }
 
-/* line 1327, resources/scss/screen.scss */
+/* line 1363, resources/scss/screen.scss */
 .zoom .ui-slider-handle {
   -webkit-transition: 0.15s;
   -moz-transition: 0.15s;
@@ -13915,53 +13944,53 @@ body.detail-open #nav-overlay {
   transition: 0.15s;
 }
 
-/* line 1331, resources/scss/screen.scss */
+/* line 1367, resources/scss/screen.scss */
 .zoom .zoom-label {
   left: 50%;
   margin-left: -10px;
 }
 
-/* line 1335, resources/scss/screen.scss */
+/* line 1371, resources/scss/screen.scss */
 .zoom .zoom-label.minus {
   bottom: 10px;
 }
 
-/* line 1339, resources/scss/screen.scss */
+/* line 1375, resources/scss/screen.scss */
 .zoom .zoom-label.plus {
   top: 10px;
 }
 
-/* line 1344, resources/scss/screen.scss */
+/* line 1380, resources/scss/screen.scss */
 .page-splash {
   padding: 8% 0;
   color: #233a70;
 }
 
-/* line 1348, resources/scss/screen.scss */
+/* line 1384, resources/scss/screen.scss */
 .page-splash .splash-text {
   max-width: 65%;
   padding-left: calc(4% + 10px);
 }
 
-/* line 1353, resources/scss/screen.scss */
+/* line 1389, resources/scss/screen.scss */
 .page-splash .splash-text h1 {
   margin: 0 0 20px 0;
 }
 
-/* line 1357, resources/scss/screen.scss */
+/* line 1393, resources/scss/screen.scss */
 .page-splash .splash-text h4 {
   margin: 0 0 40px 0;
   color: #f5442d;
 }
 
-/* line 1362, resources/scss/screen.scss */
+/* line 1398, resources/scss/screen.scss */
 .page-splash .splash-text p {
   width: 75%;
   margin: 0 0 20px 0;
   font: 400 1.375rem/1.5em Roboto, Helvetica, "Helvetica Neue", Arial, sans-serif;
 }
 
-/* line 1369, resources/scss/screen.scss */
+/* line 1405, resources/scss/screen.scss */
 .page-splash .share-widget {
   top: 0;
   right: 0;
@@ -15978,89 +16007,89 @@ input.input-inner:focus {
   font-size: 14px !important;
 }
 
-/* line 1401, resources/scss/screen.scss */
+/* line 1437, resources/scss/screen.scss */
 .page-type-text #viewport {
   background-color: rgba(213, 232, 242, 0.5);
   height: calc(100% - 40px);
 }
 
-/* line 1408, resources/scss/screen.scss */
+/* line 1444, resources/scss/screen.scss */
 #standard-splash {
   padding-bottom: 40px;
 }
 
-/* line 1412, resources/scss/screen.scss */
+/* line 1448, resources/scss/screen.scss */
 #standard-body {
   max-width: 75%;
   padding-left: calc(4% + 10px);
 }
 
-/* line 1416, resources/scss/screen.scss */
+/* line 1452, resources/scss/screen.scss */
 #standard-body a {
   text-decoration: underline;
 }
 
-/* line 1420, resources/scss/screen.scss */
+/* line 1456, resources/scss/screen.scss */
 #standard-body p {
   line-height: 1.75em;
   margin: 0 0 20px 0;
 }
 
-/* line 1425, resources/scss/screen.scss */
+/* line 1461, resources/scss/screen.scss */
 #standard-body strong {
   font-weight: 600;
 }
 
-/* line 1429, resources/scss/screen.scss */
+/* line 1465, resources/scss/screen.scss */
 #standard-body h2 {
   margin: 30px 0;
   font-size: 2rem;
   color: #0058cf;
 }
 
-/* line 1435, resources/scss/screen.scss */
+/* line 1471, resources/scss/screen.scss */
 #standard-body h3 {
   margin: 20px 0;
   font-size: 1.75rem;
   color: #f5442d;
 }
 
-/* line 1441, resources/scss/screen.scss */
+/* line 1477, resources/scss/screen.scss */
 #standard-body h4 {
   margin: 0 0 15px 0;
   font-size: 1.25rem;
   line-height: 1.375em;
 }
 
-/* line 1447, resources/scss/screen.scss */
+/* line 1483, resources/scss/screen.scss */
 #standard-body ul, #standard-body ol {
   margin: 0 20px 30px 20px;
   padding: 0 0 0 30px;
   font: 300 1rem/1.5em Roboto, Helvetica, "Helvetica Neue", Arial, sans-serif;
 }
 
-/* line 1452, resources/scss/screen.scss */
+/* line 1488, resources/scss/screen.scss */
 #standard-body ul li, #standard-body ol li {
   margin: 0 0 10px 0;
 }
 
-/* line 1457, resources/scss/screen.scss */
+/* line 1493, resources/scss/screen.scss */
 #standard-body ol {
   list-style-type: decimal;
 }
 
-/* line 1461, resources/scss/screen.scss */
+/* line 1497, resources/scss/screen.scss */
 #standard-body li {
   list-style-type: disc;
 }
 
-/* line 1465, resources/scss/screen.scss */
+/* line 1501, resources/scss/screen.scss */
 #standard-body dl {
   margin: 0 0 30px 0;
   font: 300 1rem/1.5em Roboto, Helvetica, "Helvetica Neue", Arial, sans-serif;
 }
 
-/* line 1469, resources/scss/screen.scss */
+/* line 1505, resources/scss/screen.scss */
 #standard-body dl dt {
   margin: 0 0 15px 0;
   padding-bottom: 10px;
@@ -16069,12 +16098,12 @@ input.input-inner:focus {
   font-weight: 400;
 }
 
-/* line 1477, resources/scss/screen.scss */
+/* line 1513, resources/scss/screen.scss */
 #standard-body dl dd {
   margin: 0 0 25px 0;
 }
 
-/* line 1482, resources/scss/screen.scss */
+/* line 1518, resources/scss/screen.scss */
 #standard-body hr {
   display: block;
   height: 3px;
@@ -16666,12 +16695,12 @@ input.input-inner:focus {
   cursor: default;
 }
 
-/* line 1503, resources/scss/screen.scss */
+/* line 1539, resources/scss/screen.scss */
 .ui-slider-horizontal {
   height: 6px;
 }
 
-/* line 1506, resources/scss/screen.scss */
+/* line 1542, resources/scss/screen.scss */
 .ui-autocomplete {
   position: absolute;
   top: 0;
@@ -16679,7 +16708,7 @@ input.input-inner:focus {
   cursor: default;
 }
 
-/* line 1512, resources/scss/screen.scss */
+/* line 1548, resources/scss/screen.scss */
 .ui-menu {
   display: block;
   padding: 10px;
@@ -16692,12 +16721,12 @@ input.input-inner:focus {
   box-shadow: 0 0 12px rgba(35, 58, 112, 0.25);
 }
 
-/* line 1521, resources/scss/screen.scss */
+/* line 1557, resources/scss/screen.scss */
 .ui-menu .ui-menu {
   position: absolute;
 }
 
-/* line 1525, resources/scss/screen.scss */
+/* line 1561, resources/scss/screen.scss */
 .ui-menu .ui-menu-item {
   position: relative;
   margin: 0;
@@ -16705,7 +16734,7 @@ input.input-inner:focus {
   cursor: pointer;
 }
 
-/* line 1532, resources/scss/screen.scss */
+/* line 1568, resources/scss/screen.scss */
 .ui-menu .ui-menu-divider {
   margin: 5px 0;
   height: 0;
@@ -16714,12 +16743,12 @@ input.input-inner:focus {
   border-width: 1px 0 0 0;
 }
 
-/* line 1541, resources/scss/screen.scss */
+/* line 1577, resources/scss/screen.scss */
 .ui-accordion .ui-accordion-header {
   outline: none;
 }
 
-/* line 1544, resources/scss/screen.scss */
+/* line 1580, resources/scss/screen.scss */
 .ui-accordion .ui-accordion-header .ui-accordion-header-icon {
   display: inline-block;
   position: static;
@@ -16728,14 +16757,14 @@ input.input-inner:focus {
   overflow: visible;
 }
 
-/* line 1554, resources/scss/screen.scss */
+/* line 1590, resources/scss/screen.scss */
 .accordion-plain .ui-accordion-header {
   padding: 8px 0;
   color: #233a70;
   line-height: 28px;
 }
 
-/* line 1559, resources/scss/screen.scss */
+/* line 1595, resources/scss/screen.scss */
 .accordion-plain .ui-accordion-header .ui-accordion-header-icon {
   display: block;
   float: left;
@@ -16745,17 +16774,17 @@ input.input-inner:focus {
   line-height: 28px;
 }
 
-/* line 1569, resources/scss/screen.scss */
+/* line 1605, resources/scss/screen.scss */
 .accordion-plain .accordion-text {
   padding: 20px 40px;
 }
 
-/* line 1575, resources/scss/screen.scss */
+/* line 1611, resources/scss/screen.scss */
 .tabs-plain .tabs-plain-list li {
   display: inline-block;
 }
 
-/* line 1578, resources/scss/screen.scss */
+/* line 1614, resources/scss/screen.scss */
 .tabs-plain .tabs-plain-list li a {
   display: block;
   padding: 8px 10px;
@@ -16894,13 +16923,13 @@ https://raw.github.com/shagstrom/split-pane/master/LICENSE
   cursor: row-resize;
 }
 
-/* line 1592, resources/scss/screen.scss */
+/* line 1628, resources/scss/screen.scss */
 .pretty-split-pane-frame .split-pane > .split-pane-divider.dragged.touch {
   background: blue;
   opacity: 0.25;
 }
 
-/* line 1596, resources/scss/screen.scss */
+/* line 1632, resources/scss/screen.scss */
 .split-pane-divider {
   right: 50%;
   width: 12px;
@@ -16910,7 +16939,7 @@ https://raw.github.com/shagstrom/split-pane/master/LICENSE
   box-shadow: 0 0 10px rgba(35, 58, 112, 0.25);
 }
 
-/* line 1602, resources/scss/screen.scss */
+/* line 1638, resources/scss/screen.scss */
 .pane-content {
   position: absolute;
   top: 0;
@@ -16920,18 +16949,18 @@ https://raw.github.com/shagstrom/split-pane/master/LICENSE
   overflow: auto;
 }
 
-/* line 1606, resources/scss/screen.scss */
+/* line 1642, resources/scss/screen.scss */
 #pane-left {
   right: 50%;
   margin-right: 12px;
 }
 
-/* line 1610, resources/scss/screen.scss */
+/* line 1646, resources/scss/screen.scss */
 #pane-right {
   width: 50%;
 }
 
-/* line 1614, resources/scss/screen.scss */
+/* line 1650, resources/scss/screen.scss */
 .ui-tooltip {
   background-color: #0058cf;
   color: white;

@@ -19,9 +19,9 @@ $(function () {
     // from https://speckyboy.com/open-source-css-javascript-select-box-snippets/ - https://codepen.io/wallaceerick/pen/ctsCz
     $(selectSelector).each(function(){
 
-        var $this = $(this), numberOfOptions = $(this).children('option').length;
+        var $this = $(this), numberOfOptionGroups = $(this).children('optgroup').length, numberOfOptions = $(this).children('option').length;
         var iconAttr = $(this).attr('icon');
-
+        console.log(numberOfOptionGroups)
         if (typeof iconAttr !== typeof undefined && iconAttr !== false) {
           // Element has this attribute
           var icon = `<i class="${iconAttr}"></i>`;
@@ -34,7 +34,16 @@ $(function () {
         $this.after(`<div class="select-styled">${icon}</div>`);
 
         var $styledSelect = $this.next('div.select-styled');
-        $styledSelect.text($this.children('option').eq(0).text());
+
+        // needs improvment
+        // check if the first select option is group title will have a class of default-select-option-group
+        // if so make the defailt select value the the second element (assume it is not a group title.)
+        if ($this.children('option').eq(0).hasClass( 'default-select-option-group' )) {
+          $styledSelect.text($this.children('option').eq(1).text());
+        } else {
+          $styledSelect.text($this.children('option').eq(0).text());
+        }
+
         $styledSelect.prepend(icon);
 
         if ( $(selectSelector).hasClass( 'disabled' )){
@@ -47,13 +56,30 @@ $(function () {
         }).insertAfter($styledSelect);
 
         for (var i = 0; i < numberOfOptions; i++) {
+          var opticon = `<i class="${$this.children('option').eq(i).attr('icon')}" ></i>`
+
+          // check if the select option is group title will have a class of default-select-option-group
+          // if so make it div element otherwise make it a li element which means it will be available for
+          // the user to select
+          if ( $this.children('option').eq(i).hasClass( 'default-select-option-group' )){
+              $('<div />', {
+                  text: $this.children('option').eq(numberOfOptionGroups - i).text(),
+                  icon: $this.children('option').eq(i).attr('icon'),
+                  class: $this.children('option').eq(i).attr('class'),
+                  html: `${opticon}${$this.children('option').eq(i).text()}`
+              }).appendTo($list);
+          } else {
+
             $('<li />', {
                 text: $this.children('option').eq(i).text(),
                 rel: $this.children('option').eq(i).val(),
-                icon: $this.children('option').attr('icon'),
+                icon: $this.children('option').eq(i).attr('icon'),
+                class: $this.children('option').eq(i).attr('class')
                 // future version allow for different icons...
                 // html: `${icon}${$this.children('option').eq(i).text()}`
             }).appendTo($list);
+          }
+
         }
 
         var $listItems = $list.children('li');
@@ -67,10 +93,9 @@ $(function () {
             $(this).toggleClass('active').next('ul.select-options').toggle();
         });
 
-        $listItems.click(function(e, icon) {
+        $listItems.click(function(e) {
             e.stopPropagation();
             $styledSelect.text($(this).text()).removeClass('active');
-            $styledSelect.prepend(icon);
             $this.val($(this).attr('rel'));
 
             var iconAttr = $(this).attr('icon');
@@ -83,7 +108,7 @@ $(function () {
 
             $styledSelect.prepend(icon);
             $list.hide();
-            console.log($this.val(), $(this).attr('icon') );
+            // console.log($this.val(), $(this).attr('icon') );
         });
 
         $(document).click(function() {
