@@ -6,6 +6,7 @@
 // ce3 colors
 $ce3-blue1: #0B2752; // very dark
 $ce3-blue2: #0D3064; // main header
+$ce3-blue2alpha: rgba(13, 48, 100, 0.50);
 $ce3-blue3: #124086; // text, button backgrounds, selected icon borders. main color
 $ce3-blue3alpha: rgba(18,64,134,0.50);  // some borders and color disabled items
 $ce3-blue4: #1D6ADD;  // some backgrounds and borders
@@ -321,6 +322,22 @@ h6 {
 
 .height-100 {
   height: 100% !important;
+}
+
+.height-90 {
+  height: 90% !important;
+}
+
+.height-80 {
+  height: 80% !important;
+}
+
+.height-20 {
+  height: 20% !important;
+}
+
+.height-10 {
+  height: 10% !important;
 }
 
 .width-100 {
@@ -1263,120 +1280,121 @@ input.input-inner-default:focus  {
 
 
 // zoom / legend
-
-.ui-slider-label {
-  position: absolute;
-  width: 21px;
-  height: 21px;
-  border: 3px solid $orange1;
-  color: $orange1;
-  font: 0.75rem/0.75rem $sans-heavy;
-  @include border-radius(50%);
-  @include no-text;
-  cursor: pointer;
-
-  &:before,
-  &:after {
-    content: '';
-    display: block;
-    position: absolute;
-    top: 7px;
-    left: 3px;
-    width: 9px;
-    height: 3px;
-    margin: -1px 0 0 0;
-    background: $orange1;
-  }
-
-  &.minus {
-  }
-
-  &.plus {
-    &:after {
-      top: 4px;
-      left: 6px;
-      width: 3px;
-      height: 9px;
-    }
-  }
-
-  &.range-label {
-    bottom: 0;
-    width: auto;
-    @include undo-no-text;
-    font: 300 0.875rem/1em $roboto;
-    color: $grey1;
-    border: none;
-    @include border-radius(none);
-
-    &:before,
-    &:after {
-      display: none;
-    }
-
-    &.min {
-      left: 0;
-    }
-
-    &.mid {
-      left: 50%;
-      @include transform(translateX(-50%));
-    }
-
-    &.max {
-      right: 0;
-    }
-  }
-}
-.legend-wrap {
-  .legend {
-
-    .color {
-      display: inline-block;
-      height: 0;
-      background: red;
-      vertical-align: middle;
-    }
-
-  }
-}
-.zoom {
-  position: absolute;
-  top: 30%;
-  right: 20px;
-  width: 40px;
-  height: 40%;
-  background: transparentize($white, 0.5);
-  @include transition(0.25s);
-
-  &:hover {
-    background: transparentize($white, 0.1);
-  }
-
-  .zoom-slider {
-    left: calc(50% - 3px);
-    top: 17%;
-    width: 6px;
-    height: 66%;
-  }
-
-  .ui-slider-handle {
-    @include transition(0.15s);
-  }
-
-  .zoom-label {
-    left: 50%;
-    margin-left: -10px;
-
-    &.minus {
-      bottom: 10px;
-    }
-
-    &.plus {
-      top: 10px;
-    }
-  }
-}
+//
+// .ui-slider-label {
+//   position: absolute;
+//   width: 21px;
+//   height: 21px;
+//   border: 3px solid $orange1;
+//   color: $orange1;
+//   font: 0.75rem/0.75rem $sans-heavy;
+//   @include border-radius(50%);
+//   @include no-text;
+//   cursor: pointer;
+//
+//   &:before,
+//   &:after {
+//     content: '';
+//     display: block;
+//     position: absolute;
+//     top: 7px;
+//     left: 3px;
+//     width: 9px;
+//     height: 3px;
+//     margin: -1px 0 0 0;
+//     background: $orange1;
+//   }
+//
+//   &.minus {
+//   }
+//
+//   &.plus {
+//     &:after {
+//       top: 4px;
+//       left: 6px;
+//       width: 3px;
+//       height: 9px;
+//     }
+//   }
+//
+//   &.range-label {
+//     bottom: 0;
+//     width: auto;
+//     @include undo-no-text;
+//     font: 300 0.875rem/1em $roboto;
+//     color: $grey1;
+//     border: none;
+//     @include border-radius(none);
+//
+//     &:before,
+//     &:after {
+//       display: none;
+//     }
+//
+//     &.min {
+//       left: 0;
+//     }
+//
+//     &.mid {
+//       left: 50%;
+//       @include transform(translateX(-50%));
+//     }
+//
+//     &.max {
+//       right: 0;
+//     }
+//   }
+// }
+//
+// .legend-wrap {
+//   .legend {
+//
+//     .color {
+//       display: inline-block;
+//       height: 0;
+//       background: red;
+//       vertical-align: middle;
+//     }
+//
+//   }
+// }
+// .zoom {
+//   position: absolute;
+//   top: 30%;
+//   right: 20px;
+//   width: 40px;
+//   height: 40%;
+//   background: transparentize($white, 0.5);
+//   @include transition(0.25s);
+//
+//   &:hover {
+//     background: transparentize($white, 0.1);
+//   }
+//
+//   .zoom-slider {
+//     left: calc(50% - 3px);
+//     top: 17%;
+//     width: 6px;
+//     height: 66%;
+//   }
+//
+//   .ui-slider-handle {
+//     @include transition(0.15s);
+//   }
+//
+//   .zoom-label {
+//     left: 50%;
+//     margin-left: -10px;
+//
+//     &.minus {
+//       bottom: 10px;
+//     }
+//
+//     &.plus {
+//       top: 10px;
+//     }
+//   }
+// }
 .page-splash {
   padding: 8% 0;
   color: $blue2;
@@ -1536,9 +1554,10 @@ input.input-inner-default:focus  {
 
 // jquery UI
 
-.ui-slider-horizontal {
-  height: 6px;
-}
+// .ui-slider-horizontal {
+//   height: 6px;
+// }
+
 .ui-autocomplete {
   position: absolute;
   top: 0;
