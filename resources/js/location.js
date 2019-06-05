@@ -15,19 +15,16 @@ $(function () {
 
 
   $('#varriable-select-vis').bind('cs-changed', function (e) {
-    console.log($('#varriable-select-vis').attr('rel'));
-    // window.tempChart.update({
-    //   variable: $('#varriable-select-vis').attr('rel')
-    // });
+    // console.log($('#varriable-select-vis').attr('rel'));
+    window.tempChart.update({
+      variable: $('#varriable-select-vis').attr('rel')
+    });
   });
 
-  // $('#varriable-select-vis').contentchanged(function (e) {
-  //   console.log(e.target.id);
-  //   // window.tempChart.update({
-  //   //   variable: $('#variable').val()
-  //   // });
-  // });
-
+  // this function Updates the chart title.
+  function updateTitle(chartText) {
+    $('#default-chart-map-varriable').html(chartText);
+  }
 
   function makeCustomSelect(selectSelector) {
 
@@ -104,7 +101,6 @@ $(function () {
 
         $styledSelect.click(function(e) {
             e.stopPropagation();
-            // jQuery.event.trigger('e')
             $('div.select-styled.active').not(this).each(function(){
                 $(this).removeClass('active').next('ul.select-options').hide();
             });
@@ -114,6 +110,7 @@ $(function () {
         $listItems.click(function(e) {
             e.stopPropagation();
             $styledSelect.text($(this).text()).removeClass('active');
+            updateTitle($(this).text());
             $styledSelect.attr('rel',$(this).attr('rel'))
 
             $this.val($(this).attr('rel'));
@@ -127,6 +124,7 @@ $(function () {
 
             $styledSelect.prepend(icon);
             $list.hide();
+            // trigger custom event so we know the user changed or selected an item
             $styledSelect.trigger('cs-changed' );
         });
 
@@ -865,7 +863,6 @@ $(function () {
   // This function will be called whenever the user changes the x-scale in the graph.
   function xrangeset(min, max) {
     // Force the slider thumbs to adjust to the appropriate place
-
      $("#slider-range").slider("option", "values", [min, max]);
   }
 
@@ -895,7 +892,7 @@ $(function () {
     'responsive': true,
     'frequency': 'annual',
     'timeperiod': 2025,
-    'county': 37021,
+    'county':  window.ce.ce('getLocationPageState')['fips'],
     'variable': 'tmax',
     'scenario': 'both',
     'presentation': 'absolute',
@@ -952,18 +949,12 @@ $(function () {
   //   'xrangefunc': dxrangeset
   // });
   //
-  // setTimeout(function () {
-  //   window.tempChart.resize();
-  //   window.precipChart.resize();
-  //   window.derivedChart.resize();
-  // }, 700);
-  // $(window).resize(function () {
-  //   window.tempChart.resize();
-  // });
-  // $(window).resize(function () {
-  //   window.precipChart.resize();
-  // });
-  // $(window).resize(function () {
-  //   window.derivedChart.resize();
-  // });
+  setTimeout(function () {
+    window.tempChart.resize();
+  }, 700);
+
+  $(window).resize(function () {
+    window.tempChart.resize();
+  });
+
 });
