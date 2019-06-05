@@ -115,61 +115,11 @@
   display: flex;
   font: 500 18px $roboto !important;
   color: $ce3-blue3 !important;
-  // background-color: $ce3-blue3 !important;
   height: 25px !important;
   width: 50px !important;
-  justify-content: center;
+  justify-content: center !important;
+  margin: auto !important;
 }
-// .ui-slider-horizontal .ui-slider-handle {
-//   position: relative !important;
-//   background-color: $ce3-blue5 !important;
-//
-// }
-//
-// .ui-slider .ui-slider-range {
-//   position: relative !important;
-// }
-//
-// .ui-slider .ui-slider-handle {
-//   cursor: pointer !important;
-// }
-//
-// .ui-slider-horizontal .ui-slider-handle {
-//   cursor: pointer !important;
-//
-// }
-// .chart-range {
-//   position: absolute;
-//   left: 0;
-//   width: 100%;
-//   height: 30px;
-//   background: $blue3;
-//   @include box-shadow(inset 0 5px 10px -5px transparentize($black, 0.5));
-//
-//   .ui-slider-handle {
-//     top: 0;
-//     width: 0;
-//     left: 0;
-//     height: 30px;
-//     margin: 0;
-//     @include border-radius(none);
-//
-//     .tooltip {
-//       //left: -24px;
-//     }
-//   }
-//
-//   &.not-annual {
-//     height: 6px;
-//
-//     .ui-slider-handle {
-//       width: 16px;
-//       height: 16px;
-//       margin: -5px 0 0 -5px;
-//     }
-//   }
-// }
-
 
 // // *************
 // // original will remove when complete
