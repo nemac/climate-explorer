@@ -14133,7 +14133,8 @@ input.input-inner:focus {
   color: #124086 !important;
   height: 25px !important;
   width: 50px !important;
-  justify-content: center;
+  justify-content: center !important;
+  margin: auto !important;
 }
 
 /* line 1, resources/scss/pages/_variable.scss */
