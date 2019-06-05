@@ -154,6 +154,13 @@ especially when it comes to interacting with the DOM and handling events.
       //alternative place to handle option changes when multiple options change at the same time.
     },
 
+    /**
+     * Gets url pathname
+     */
+    getURLPath: function getURLPathpathname() {
+      return window.location.pathname.replace(/\//g,'');
+    },
+
     getUrlParam: function getUrlParam(key) {
       var params = decodeURIComponent(window.location.search.substring(1)).split("&");
       var param = void 0,
@@ -184,6 +191,7 @@ especially when it comes to interacting with the DOM and handling events.
       }.bind(this));
       return results;
     },
+
 
     // Replaces specified URL param with the passed value
     setUrlParam: function setUrlParam(key, value) {

@@ -921,7 +921,12 @@ App.prototype.locationSearch = function () {
     // TO DO DAVEISM - change location when search on page other thant home or cards-home
     // do no want users to search loction and go back cards page or do we?
     if (fips) {
-      window.location.href = '/cards-home/?county=' + county + '&city=' + city + '&fips=' + fips + '&lat=' + lat + '&lon=' + lon;
+      var page = window.location.pathname.replace(/\//g,'');
+      console.log('page', page)
+      if (page.length === 0) {
+        page = 'cards-home';
+      }
+      window.location.href = `/${page}/?county=` + county + '&city=' + city + '&fips=' + fips + '&lat=' + lat + '&lon=' + lon;
     }
   });
 };

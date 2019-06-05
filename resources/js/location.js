@@ -13,14 +13,14 @@ $(function () {
   makeCustomSelect('#downnloads-select');
   makeCustomSelect('#varriable-select');
 
-
+  // console.log(window.ce.ce('getURLPath'));
+  // console.log(window.ce.ce("getNavState"))
   $('#chartmap-wrapper').click( function(e) {
     toggleButton($(e.target));
   })
 
   $('#time-wrapper').click( function(e) {
     toggleButton($(e.target));
-    // updateFrequency(e.target);
     updateFrequency(e.target);
   })
 
@@ -948,7 +948,7 @@ $(function () {
     'frequency': 'annual',
     'timeperiod': 2025,
     'county': window.ce.ce('getLocationPageState')['fips'],
-    'variable': $('#varriable-select-vis').attr('rel'),
+    'variable':'tmax',
     'scenario': 'both',
     'presentation': 'absolute',
     'pmedian': true,

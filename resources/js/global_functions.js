@@ -48,7 +48,6 @@
     //update with following forced by jquery upgrade
     //$(window).load(function() {
     $(window).on('load', function () {
-
       if (window_width() <= 600) {
         $('body').addClass('size-600');
       } else if (window_width() <= 800) {

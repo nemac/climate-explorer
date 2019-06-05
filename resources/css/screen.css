@@ -12555,21 +12555,21 @@ input.input-inner-default:focus {
 }
 
 /* line 827, resources/scss/screen.scss */
-#info-row, #search-row {
+#info-row, #search-row, #chart-row {
   width: 100% !important;
   align-self: center !important;
 }
 
 @media screen and (max-width: 1240px) {
   /* line 827, resources/scss/screen.scss */
-  #info-row, #search-row {
+  #info-row, #search-row, #chart-row {
     width: 90% !important;
   }
 }
 
 @media screen and (max-width: 768px) {
   /* line 827, resources/scss/screen.scss */
-  #info-row, #search-row {
+  #info-row, #search-row, #chart-row {
     width: 90% !important;
   }
 }
