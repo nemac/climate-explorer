@@ -14,8 +14,22 @@ $(function () {
   makeCustomSelect('#varriable-select');
 
 
+  $('#chartmap-wrapper').click( function(e) {
+    toggleButton($(e.target));
+  })
+
+  $('#time-wrapper').click( function(e) {
+    toggleButton($(e.target));
+    // updateFrequency(e.target);
+    updateFrequency(e.target);
+  })
+
+  $('#presentation-wrapper').click( function(e) {
+    toggleButton($(e.target));
+    updatePresentation($(e.target))
+  })
+
   $('#varriable-select-vis').bind('cs-changed', function (e) {
-    // console.log($('#varriable-select-vis').attr('rel'));
     window.tempChart.update({
       variable: $('#varriable-select-vis').attr('rel')
     });
@@ -26,8 +40,41 @@ $(function () {
     $('#default-chart-map-varriable').html(chartText);
   }
 
-  function makeCustomSelect(selectSelector) {
+  // this function changes the frequency for the charts
+  function updateFrequency(target) {
+    window.tempChart.update({
+      frequency: $(target).attr('val'),
+      variable: $('#varriable-select-vis').attr('rel'),
+      histobs: true,
+    });
+  }
 
+  // this function changes the presentation (anomaly,actual) for the charts
+  function updatePresentation(target) {
+    window.tempChart.update({
+      presentation: $(target).attr('val')
+    });
+  }
+
+  // function changes button to selected
+  function toggleButton(selector){
+    toggleAllButtonsOff(selector.get())
+    $(selector).addClass('btn-default-selected');
+  }
+
+  // function changes button to selected
+  function toggleAllButtonsOff(btnElem){
+    const parentElem = btnElem[0].parentElement;
+    const elems = parentElem.childNodes;
+     elems.forEach((elem) => {
+      if (elem instanceof Element) {
+        elem.classList.remove('btn-default-selected');
+        elem.classList.add('btn-default');
+      }
+    });
+  }
+
+  function makeCustomSelect(selectSelector) {
     // custom select start
     // from https://speckyboy.com/open-source-css-javascript-select-box-snippets/ - https://codepen.io/wallaceerick/pen/ctsCz
     $(selectSelector).each(function(){
@@ -55,8 +102,10 @@ $(function () {
         // if so make the defailt select value the the second element (assume it is not a group title.)
         if ($this.children('option').eq(0).hasClass( 'default-select-option-group' )) {
           $styledSelect.text($this.children('option').eq(1).text());
+          $styledSelect.attr('rel', $this.children('option').eq(1).val())
         } else {
           $styledSelect.text($this.children('option').eq(0).text());
+          $styledSelect.attr('rel', $this.children('option').eq(0).val())
         }
 
         $styledSelect.prepend(icon);
@@ -84,7 +133,6 @@ $(function () {
                   html: `${opticon}${$this.children('option').eq(i).text()}`
               }).appendTo($list);
           } else {
-
             $('<li />', {
                 text: $this.children('option').eq(i).text(),
                 rel: $this.children('option').eq(i).val(),
@@ -105,6 +153,7 @@ $(function () {
                 $(this).removeClass('active').next('ul.select-options').hide();
             });
             $(this).toggleClass('active').next('ul.select-options').toggle();
+
         });
 
         $listItems.click(function(e) {
@@ -861,6 +910,12 @@ $(function () {
   // });
   //
   // This function will be called whenever the user changes the x-scale in the graph.
+  function xrangesetmon() {
+    // Force the slider thumbs to adjust to the appropriate place
+     $("#slider-range").slider("option", "values", [0, 1]);
+  }
+
+
   function xrangeset(min, max) {
     // Force the slider thumbs to adjust to the appropriate place
      $("#slider-range").slider("option", "values", [min, max]);
@@ -892,12 +947,13 @@ $(function () {
     'responsive': true,
     'frequency': 'annual',
     'timeperiod': 2025,
-    'county':  window.ce.ce('getLocationPageState')['fips'],
-    'variable': 'tmax',
+    'county': window.ce.ce('getLocationPageState')['fips'],
+    'variable': $('#varriable-select-vis').attr('rel'),
     'scenario': 'both',
     'presentation': 'absolute',
     'pmedian': true,
-    'histobs': true,
+    'histobs': false,
+    'hist_mod': false,
     // 'frequency': $('#frequency').val(),
     // 'timeperiod': $('#timeperiod').val(),
     // 'county': $('#county').val(),

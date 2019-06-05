@@ -65,7 +65,7 @@
           <span id="" class="text-info-box" > in </span>
           <span id="default-city-county" class="text-info-box"></span>
           <span id="" class="text-info-box" > - </span>
-          <span id="default-chart-map-varriable" class="text-info-box">Annual average daily maximum temperature (°F) </span>
+          <span id="default-chart-map-varriable" class="text-info-box" rel="tmax">Avg Daily Max Temp (°F)</span>
           <!-- <div id="default-chart-map-discuss" class="text-info-box-secondary padding-top-half">Graphs and maps below show observed and modeled data for the county of your selected location.</div> -->
 
           <div id="filters-row" class="d-flex-row flex-justify padding-top padding-bottom d-flex-left" >
@@ -98,7 +98,7 @@
 
 
             <div id="chartmap-wrapper" class="padding-horrizontal-half padding-vertical-half default-btn-height d-flex-center width-20">
-              <div id="btn-chart" class="btn-default-selected circle-box-left d-flex-center width-50" >
+              <div id="btn-chart" class="btn-default-selected circle-box-left d-flex-center width-50"  >
                 Chart
               </div>
               <div id="btn-chart" class="btn-default circle-box-right d-flex-center width-50" >
@@ -107,19 +107,19 @@
             </div>
 
             <div id="time-wrapper" class="padding-horrizontal-half padding-vertical-half default-btn-height d-flex-center width-20">
-              <div id="btn-chart" class="btn-default-selected circle-box-left d-flex-center width-50" >
+              <div id="btn-chart" class="btn-default-selected circle-box-left d-flex-center width-50" val="annual" >
                 Annual
               </div>
-              <div id="btn-chart" class="btn-default circle-box-right d-flex-center width-50" >
+              <div id="btn-chart" class="btn-default circle-box-right d-flex-center width-50" val="monthly"  >
                 Monthly
               </div>
             </div>
 
-            <div id="type-wrapper" class="padding-horrizontal-half padding-vertical-half default-btn-height d-flex-center width-20">
-              <div id="btn-chart" class="btn-default-selected circle-box-left d-flex-center width-50" >
+            <div id="presentation-wrapper" class="padding-horrizontal-half padding-vertical-half default-btn-height d-flex-center width-20">
+              <div id="btn-chart" class="btn-default-selected circle-box-left d-flex-center width-50"  val="absolute" >
                 Actual
               </div>
-              <div id="btn-chart" class="btn-default circle-box-right d-flex-center width-50" >
+              <div id="btn-chart" class="btn-default circle-box-right d-flex-center width-50" val="anomaly" >
                 Anomaly
               </div>
             </div>
