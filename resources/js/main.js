@@ -917,9 +917,6 @@ App.prototype.locationSearch = function () {
       fips = '11001';
     }
 
-    //console.log('data', data, 'fips', fips);
-    // TO DO DAVEISM - change location when search on page other thant home or cards-home
-    // do no want users to search loction and go back cards page or do we?
     if (fips) {
       var page = window.location.pathname.replace(/\//g,'');
       if (page.length === 0) {

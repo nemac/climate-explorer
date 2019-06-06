@@ -43,12 +43,26 @@
   }
 }
 
-#varriable-select-wrapper, #chartmap-wrapper, #time-wrapper, #type-wrapper {
+#varriable-select-wrapper, #chartmap-wrapper, #time-wrapper, #presentation-wrapper {
   @media screen and (max-width: 900px) {
     height: auto !important;
     width: 100% !important;
     padding-top: $ce3-padding-half !important;
     padding-bottom:  $ce3-padding-half !important;
+  }
+}
+
+#monthly-select-wrapper {
+  @media screen and (max-width: 900px) {
+    flex-flow: row wrap !important;
+    height: auto !important;
+
+    #btn-chart {
+      width: 100% !important;
+      padding-top: $ce3-padding-half !important;
+      padding-bottom:  $ce3-padding-half !important;
+      @include border-radius(0px, 0px);
+    }
   }
 }
 
@@ -115,7 +129,7 @@
   @include border-radius(6px, 6px);
 }
 
-#slider-value-low, #slider-value-high {
+#slider-value-low, #slider-value-mid, #slider-value-high {
   display: flex;
   font: 500 18px $roboto !important;
   color: $ce3-blue3 !important;
@@ -125,6 +139,15 @@
   margin: auto !important;
 }
 
+// #slider-value-low.monthly-label {
+//   left: 10% !important;
+// }
+// #slider-value-mid.monthly-label {
+//   left: 50% !important;
+// }
+// #slider-value-high.monthly-label {
+//   left: 90% !important;
+// }
 // // *************
 // // original will remove when complete
 // .page-type-location {
