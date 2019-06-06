@@ -278,6 +278,10 @@ h6 {
     padding: $ce3-padding-half !important;
     font-weight: 600 !important;
   }
+  .default-select-option-disabled {
+    color: $ce3-disabled-font !important;
+    cursor: default !important;
+  }
 
   li {
     margin: 0;
@@ -584,6 +588,7 @@ h6 {
 }
 
 .btn-default {
+  cursor: pointer;
   height: $ce3-btnheight !important;
   @media screen and (max-width: 900px) {
     height: $ce3-btnheight-smallecreen !important;
@@ -592,6 +597,18 @@ h6 {
   color: $ce3-blue3 !important;
   font: 500 14px $roboto !important;
   border: 1px solid $ce3-blue3alpha !important;
+}
+
+.btn-default-disabled {
+  cursor: default;
+  height: $ce3-btnheight !important;
+  background-color: $ce3-blue5 !important;
+  color: $ce3-disabled-font !important;
+  font: 500 14px $roboto !important;
+  border: 1px solid $ce3-blue3alpha !important;
+  @media screen and (max-width: 900px) {
+    height: $ce3-btnheight-smallecreen !important;
+  }
 }
 
 .btn-default:hover {
@@ -687,7 +704,6 @@ h6 {
   @media screen and (max-width: 900px) {
     min-height: unset !important;
   }
-
 }
 
 .rounded-box-secondary {
@@ -836,9 +852,9 @@ input.input-inner-default:focus  {
   width: 100% !important;
   align-self: center !important;
 
-  @media screen and (max-width: 1240px) {
-    width: 90% !important;
-  }
+  // @media screen and (max-width: 1240px) {
+  //   width: 90% !important;
+  // }
 
   @media screen and (max-width: 768px) {
     width: 90% !important;

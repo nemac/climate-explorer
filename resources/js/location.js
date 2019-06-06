@@ -13,9 +13,11 @@ $(function () {
   enableCustomSelect('download-select');
   enableCustomSelect('stations-select');
   enableCustomSelect('varriable-select');
-  // enableCustomSelect('monthly-select');
 
   initSlider();
+
+  const validMonthly = ['tmax', 'tmin', 'pcpn'];
+
   // function to enable downloads (images and data)
   $('.download-select li a').click( function (e) {
     const downloadAction = $(this).attr('rel');
@@ -46,19 +48,22 @@ $(function () {
   $('#chartmap-wrapper').click( function(e) {
     toggleButton($(e.target));
     window.tempChart.update({
-      variable: $(e.target).attr('rel')
+      'variable': $(e.target).attr('rel')
     });
   })
 
   $('#time-wrapper').click( function(e) {
-    toggleButton($(e.target));
-    updateFrequency(e.target);
-    updateFrequencySlider(e.target);
+    const notDisabled = !$(e.target).hasClass('btn-default-disabled');
+    if ( notDisabled ) {
+      toggleButton($(e.target));
+      updateFrequency(e.target);
+      updateFrequencySlider(e.target);
+    }
   })
 
   $('#presentation-wrapper').click( function(e) {
-    toggleButton($(e.target));
-    updatePresentation($(e.target))
+      toggleButton($(e.target));
+      updatePresentation($(e.target))
   })
 
   $('#monthly-select-wrapper').click( function(e) {
@@ -70,7 +75,17 @@ $(function () {
     window.tempChart.update({
       variable: $('#varriable-select-vis').attr('rel')
     });
+
     updateTitle($('#varriable-select-vis').text());
+
+    const isvalid =   jQuery.inArray( $('#varriable-select-vis').attr('rel') , validMonthly);
+    if (  isvalid < 0 ) {
+      $('[val="monthly"]').addClass('btn-default-disabled')
+      $('[val="monthly"]').removeClass('btn-default')
+    } else {
+      $('[val="monthly"]').removeClass('btn-default-disabled')
+      $('[val="monthly"]').addClass('btn-default')
+    }
   });
 
   $('#monthly-select-wrapper').bind('cs-changed', function (e) {
@@ -79,44 +94,49 @@ $(function () {
     });
   });
 
-
   // this function Updates the chart title.
   function updateTitle(chartText) {
     $('#default-chart-map-varriable').html(chartText);
   }
 
+  function validVarrablesDisable() {
+    $('#varriable-select-wrapper .default-select-option').each( function()  {
+      const attribute =  $(this).attr('rel');
+      const isvalid =   jQuery.inArray( attribute, validMonthly);
+      if (  isvalid < 0 ) {
+        $(this).addClass('default-select-option-disabled');
+        $(this).removeClass('default-select-option');
+      }
+    })
+  }
+
+  function validVarrablesEnable() {
+    $('#varriable-select-wrapper .default-select-option-disabled').each( function()  {
+      const attribute =  $(this).attr('rel');
+      $(this).removeClass('default-select-option-disabled');
+      $(this).addClass('default-select-option');
+    })
+  }
+
   function updateFrequencySlider(target) {
     const frequency = $(target).attr('val');
+
     switch (frequency) {
       case 'annual':
         annualSliderOn();
         monthlySelectOff();
+        validVarrablesEnable();
         break;
       case 'monthly':
         monthlySelectOn();
         annualSliderOff();
-        console.log( $(target).attr('val') )
+        validVarrablesDisable();
         break;
       default:
         annualSliderOn();
         monthlySelectOff();
+        validVarrablesEnable();
     }
-    //     $("#slider-range").addClass('not-annual').slider('destroy').slider({
-    //       range: false,
-    //       min: 0,
-    //       max: 2,
-    //       value: 0,
-    //       slide: function slide(event, ui) {
-    //         var val = ui.value === 0 ? '2025' : '2050';
-    //         if (ui.value === 2) {
-    //           val = '2075';
-    //         }
-    //         window.tempChart.update({ timeperiod: val });
-    //       }
-    //     });
-    //     $('#temp-range-low').html('30 Years Centered in 2025');
-    //     $('#temp-range-mid').show().html('30 Years Centered in 2050');
-    //     $('#temp-range-high').html('30 Years Centered in 2075');
   }
 
   // this function changes the frequency for the charts
@@ -162,7 +182,7 @@ $(function () {
       return null;
     }
 
-    // enable click and show otpions
+    // enable click and show options
     $styledSelect.click(function(e) {
       e.stopPropagation();
       $(`.select.${uniqueSelector} div.select-styled.active`).not(this).each(function(){
@@ -177,6 +197,10 @@ $(function () {
 
     // enable click for options
     $listItems.click(function(e) {
+
+      // check if disabled exit if it is
+      if ($(this).hasClass('default-select-option-disabled')) {return null}
+
       e.stopPropagation();
 
       // option item has href make it a element so links work
@@ -222,6 +246,13 @@ $(function () {
      $("#slider-range").slider("option", "values", [min, max]);
   }
 
+  // function populate_variables(frequency) {
+  //   var variables = climate_widget.variables(frequency);
+  //   $("select#variable").empty();
+  //   $(variables.map(function (v) {
+  //     return '<option value="' + v.id + '"' + '>' + v.title + '</option>';
+  //   }).join("")).appendTo($("select#variable"));
+  // }
 
   function initSlider() {
     annualSliderOn();
@@ -266,39 +297,6 @@ $(function () {
   function monthlySelectOff() {
     $('#monthly-select-wrapper').addClass('d-none');
     $('#monthly-select-wrapper').removeClass('d-flex-center');
-    // $("#slider-range").slider('destroy').slider({
-    //   range: false,
-    //   min: 0,
-    //   max: 2,
-    //   step: 1,
-    //   values: [0, 2],
-    //   create: function (event, ui) {
-    //     $('#slider-value-high').text(2075).addClass('monthly-label');
-    //     $('#slider-value-mid').text(2050).addClass('monthly-label');
-    //     $('#slider-value-low').text(2025).addClass('monthly-label');
-    //     $('#slider-range').addClass('monthly-label');
-    //     $('#slider-value-mid').show();
-    //     $( $('.ui-slider-handle')[1]).hide();
-    //   },
-    //   slide: function (event, ui) {
-    //     let val = 2025;
-    //     switch (ui.value) {
-    //       case 0:
-    //         val = 2025;
-    //         break;
-    //       case 1:
-    //         val = 2050;
-    //         break;
-    //       case 2:
-    //         val = 2075;
-    //         break;
-    //       default:
-    //         val = 2025;
-    //     }
-    //
-    //     return window.tempChart.update({ timeperiod: val });
-    //   }
-    // });
   }
 
   window.tempChart = climate_widget.graph({
@@ -508,13 +506,7 @@ $(function () {
     //   $(window.derivedScenariosMap).scenarioComparisonMap({ season: $(this).data().value });
     // });
     //
-    // function populate_variables(frequency) {
-    //   var variables = climate_widget.variables(frequency);
-    //   $("select#variable").empty();
-    //   $(variables.map(function (v) {
-    //     return '<option value="' + v.id + '"' + '>' + v.title + '</option>';
-    //   }).join("")).appendTo($("select#variable"));
-    // }
+
     //
     // populate_variables('annual');
     //
