@@ -9,12 +9,38 @@ $(function () {
   $('#default-city-county').text(window.ce.ce('getLocationPageState')['county']);
   $('#cards-search-input').val(window.ce.ce('getLocationPageState')['city']);
 
-  makeCustomSelect('#stations-select');
-  makeCustomSelect('#downnloads-select');
-  makeCustomSelect('#varriable-select');
+  // enable custom selction boxes
+  enableCustomSelect('download-select');
+  enableCustomSelect('stations-select');
+  enableCustomSelect('varriable-select');
 
-  // console.log(window.ce.ce('getURLPath'));
-  // console.log(window.ce.ce("getNavState"))
+  // function to enable downloads (images and data)
+  $('.download-select li a').click( function (e) {
+    const downloadAction = $(this).attr('rel');
+
+    // capture what we are downloading
+    switch (downloadAction) {
+      case 'download-image': // download image
+        window.tempChart.download_image(this, 'graph.png');
+        break;
+      case 'download-observed-data':
+        window.tempChart.download_hist_obs_data(this);
+        break;
+      case 'download-historical-modeled-data':
+        window.tempChart.download_hist_mod_data(this);
+        break;
+      case 'download-projected-modeled-data':
+        window.tempChart.download_proj_mod_data(this);
+        break;
+      case 'download-interpreting':
+        break;
+      default:
+        window.tempChart.download_image(this, 'graph.png');
+    }
+  });
+
+  // enable choice button toggle and function
+
   $('#chartmap-wrapper').click( function(e) {
     toggleButton($(e.target));
   })
@@ -33,6 +59,7 @@ $(function () {
     window.tempChart.update({
       variable: $('#varriable-select-vis').attr('rel')
     });
+    updateTitle($('#varriable-select-vis').text());
   });
 
   // this function Updates the chart title.
@@ -74,118 +101,64 @@ $(function () {
     });
   }
 
-  function makeCustomSelect(selectSelector) {
-    // custom select start
-    // from https://speckyboy.com/open-source-css-javascript-select-box-snippets/ - https://codepen.io/wallaceerick/pen/ctsCz
-    $(selectSelector).each(function(){
+  // function enables custom selection
+  function enableCustomSelect(uniqueSelector) {
+    const $styledSelect = $(`.select.${uniqueSelector} div.select-styled`);
 
-        var $this = $(this), numberOfOptionGroups = $(this).children('optgroup').length, numberOfOptions = $(this).children('option').length;
-        var iconAttr = $(this).attr('icon');
+    // if disabled exit and do not enable pulldown
+    if ( $styledSelect.hasClass( 'disabled' )){
+      return null;
+    }
 
-        if (typeof iconAttr !== typeof undefined && iconAttr !== false) {
-          // Element has this attribute
-          var icon = `<i class="${iconAttr}"></i>`;
-        } else {
-          var icon = '';
-        }
-
-        $this.addClass('select-hidden');
-        // console.log($this.attr('id'))
-        $this.wrap(`<div class="select"></div>`);
-        $this.after(`<div id="${$this.attr('id')}-vis" class="select-styled">${icon}</div>`);
-
-        var $styledSelect = $this.next('div.select-styled');
-
-
-        // needs improvment
-        // check if the first select option is group title will have a class of default-select-option-group
-        // if so make the defailt select value the the second element (assume it is not a group title.)
-        if ($this.children('option').eq(0).hasClass( 'default-select-option-group' )) {
-          $styledSelect.text($this.children('option').eq(1).text());
-          $styledSelect.attr('rel', $this.children('option').eq(1).val())
-        } else {
-          $styledSelect.text($this.children('option').eq(0).text());
-          $styledSelect.attr('rel', $this.children('option').eq(0).val())
-        }
-
-        $styledSelect.prepend(icon);
-
-        if ( $(selectSelector).hasClass( 'disabled' )){
-          $styledSelect.addClass('disabled');
-          return null;
-        }
-
-        var $list = $('<ul />', {
-            'class': 'select-options'
-        }).insertAfter($styledSelect);
-
-        for (var i = 0; i < numberOfOptions; i++) {
-          var opticon = `<i class="${$this.children('option').eq(i).attr('icon')}" ></i>`
-
-          // check if the select option is group title will have a class of default-select-option-group
-          // if so make it div element otherwise make it a li element which means it will be available for
-          // the user to select
-          if ( $this.children('option').eq(i).hasClass( 'default-select-option-group' )){
-              $('<div />', {
-                  text: $this.children('option').eq(numberOfOptionGroups - i).text(),
-                  icon: $this.children('option').eq(i).attr('icon'),
-                  class: $this.children('option').eq(i).attr('class'),
-                  html: `${opticon}${$this.children('option').eq(i).text()}`
-              }).appendTo($list);
-          } else {
-            $('<li />', {
-                text: $this.children('option').eq(i).text(),
-                rel: $this.children('option').eq(i).val(),
-                icon: $this.children('option').eq(i).attr('icon'),
-                class: $this.children('option').eq(i).attr('class')
-                // future version allow for different icons...
-                // html: `${icon}${$this.children('option').eq(i).text()}`
-            }).appendTo($list);
-          }
-
-        }
-
-        var $listItems = $list.children('li');
-
-        $styledSelect.click(function(e) {
-            e.stopPropagation();
-            $('div.select-styled.active').not(this).each(function(){
-                $(this).removeClass('active').next('ul.select-options').hide();
-            });
-            $(this).toggleClass('active').next('ul.select-options').toggle();
-
-        });
-
-        $listItems.click(function(e) {
-            e.stopPropagation();
-            $styledSelect.text($(this).text()).removeClass('active');
-            updateTitle($(this).text());
-            $styledSelect.attr('rel',$(this).attr('rel'))
-
-            $this.val($(this).attr('rel'));
-            var iconAttr = $(this).attr('icon');
-            if (typeof iconAttr !== typeof undefined && iconAttr !== false) {
-              // Element has this attribute
-              var icon = `<i class="${iconAttr}"></i>`;
-            } else {
-              var icon = '';
-            }
-
-            $styledSelect.prepend(icon);
-            $list.hide();
-            // trigger custom event so we know the user changed or selected an item
-            $styledSelect.trigger('cs-changed' );
-        });
-
-        $(document).click(function() {
-            $styledSelect.removeClass('active');
-            $list.hide();
-        });
-
+    // enable click and show otpions
+    $styledSelect.click(function(e) {
+      e.stopPropagation();
+      $(`.select.${uniqueSelector} div.select-styled.active`).not(this).each(function(){
+        $(this).removeClass('active').next('ul.select-options').hide();
+      });
+      $(this).toggleClass('active').next('ul.select-options').toggle();
     });
-    // custom select end
-  }
 
+    // get list tiems so we can add user interactions
+    var $list = $(`.select.${uniqueSelector} ul`);
+    var $listItems = $(`.select.${uniqueSelector} ul`).children('li');
+
+    // enable click for options
+    $listItems.click(function(e) {
+      e.stopPropagation();
+
+      // option item has href make it a element so links work
+      var hrefAttr = $(this).attr('href');
+      if (typeof hrefAttr !== typeof undefined && hrefAttr !== false) {
+        $styledSelect.html(`<a href="${hrefAttr}" rel="${$(this).attr('rel')}">${$(this).text()}</a>`).removeClass('active');
+      } else {
+        $styledSelect.text($(this).text()).removeClass('active');
+      }
+
+      $styledSelect.attr('rel',$(this).attr('rel'))
+
+      // option item has icon add it
+      var iconAttr = $(this).attr('icon');
+      if (typeof iconAttr !== typeof undefined && iconAttr !== false) {
+        // Element has this attribute
+        var icon = `<i class="${iconAttr}"></i>`;
+      } else {
+        var icon = '';
+      }
+
+      $styledSelect.prepend(icon);
+      $list.hide();
+      // trigger custom event so we know the user changed or selected an item
+      $styledSelect.trigger('cs-changed' );
+    });
+
+    // hide pulldown when user clicks anywhere outside of selected area
+    $(document).click(function() {
+        $styledSelect.removeClass('active');
+        $list.hide();
+    });
+
+  }
 
   // $('#splash-city').text(window.ce.ce('getLocationPageState')['city']);
   // $('#splash-county').text(window.ce.ce('getLocationPageState')['county']);

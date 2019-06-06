@@ -223,8 +223,6 @@ h6 {
  }
 }
 
-
-
 .select-styled {
   display: flex !important;
   justify-content: left;
@@ -233,7 +231,9 @@ h6 {
   @include transition(all 0.2s ease-in);
   color: $ce3-blue3;
   margin-left: $ce3-padding-half !important;
-
+  a {
+    color: $ce3-blue3 !important;
+  }
   &.disabled {
     color: $ce3-disabled-font !important
   }
@@ -270,9 +270,10 @@ h6 {
   background-color: $ce3-blue5;
   max-height: 400px !important;
   overflow: auto !important;
-  // border: 1px solid $ce3-blue3alpha !important;
   @include border-radius(5px, 5px);
-
+  a {
+    color: $ce3-blue3 !important;
+  }
   .default-select-option-group {
     padding: $ce3-padding-half !important;
     font-weight: 600 !important;
@@ -285,6 +286,9 @@ h6 {
     border-top: 1px solid $ce3-blue5;
     @include border-radius(5px, 5px);
     @include transition(all 0.15s ease-in);
+    a {
+      color: $ce3-blue3 !important;
+    }
     &:hover {
       color: $ce3-blue3;
       background:  darken($ce3-blue5, 5);

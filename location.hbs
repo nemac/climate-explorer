@@ -28,33 +28,53 @@
 
       <div id="search-row" class="padding-horizontal d-flex-row flex-justify padding-top padding-bottom-half d-flex-justify" >
 
-        <div class="rounded-box-secondary input-outer padding-horrizontal bottom-padding default-btn-height search-box-secondary width-50">
+        <div class="rounded-box-secondary input-outer padding-horrizontal bottom-padding default-btn-height search-box-secondary width-40">
           <input id="cards-search-input" type="text" class="location-mapper input-inner-default border-none default-btn-height width-90" autocomplete="off" placeholder="Enter county, city, or zip code">
           <span class="icon icon-search search-default float-right padding-default"></span>
         </div>
 
-        <div id="stations-select-wrapper" class="rounded-choice-box padding-horrizontal default-btn-height d-flex-center width-20">
-          <select id="stations-select" class="default-select disabled border-none  d-flex-center width-90" >
-              <option class="default-select-option" value="none">Stations</option>
-              <option class="default-select-option" value="station-1">Station 1</option>
-              <option class="default-select-option" value="station-2">Station 2</option>
-              <option class="default-select-option" value="station-3">Station 3</option>
-              <option class="default-select-option" value="station-4">Station 4</option>
-          </select>
-          <!-- <span class="icon icon-search search-default float-right padding-default"></span> -->
+        <div id="stations-select-wrapper" class="rounded-choice-box padding-horrizontal default-btn-height top-select-wrapper d-flex-center">
+          <div class="select">
+            <div id="stations-select-vis" class="select-styled disabled" rel="none">Stations</div>
+            <ul class="select-options" style="display: none;">
+              <li rel="none" class="default-select-option">Stations</li>
+              <li rel="station-1" class="default-select-option">Stations 1</li>
+              <li rel="station-2" class="default-select-option">Stations 2</li>
+              <li rel="station-3" class="default-select-option">Stations 3</li>
+              <li rel="station-4" class="default-select-option">Stations 4</li>
+            </ul>
+          </div>
         </div>
 
-        <div id="downloads-select-wrapper" class="rounded-choice-box padding-horrizontal default-btn-height d-flex-center width-20">
-          <!-- <button id="downnloads-button" class="border-none default-btn-inner-height width-90"  ></button> -->
-          <select id="downnloads-select" class="default-select border-none d-flex-center width-90" icon="fas fa-download select-icon">
-              <option class="default-select-option" value="none" icon="fas fa-download select-icon" >Downloads</option>
-              <option class="default-select-option" value="download-image" icon="fas fa-download select-icon" >Download image</option>
-              <option class="default-select-option" value="download-data" icon="fas fa-download select-icon" >Download data</option>
-          </select>
-          <!-- <span class="icon icon-search search-default float-right padding-default"></span> -->
+        <div id="downloads-select-wrapper" class="rounded-choice-box padding-horrizontal default-btn-height top-select-wrapper d-flex-center">
+
+          <div class="select download-select">
+            <div id="downnloads-select-vis" class="select-styled" rel="none" href="javascript:void(0);">
+              <i class="fas fa-download select-icon"></i>
+              <a rel="none" href="javascript:void(0);" >Downloads</a>
+            </div>
+            <ul class="select-options" style="display: none;">
+              <li icon="fas fa-download select-icon"  class="default-select-option">
+                <a rel="none" href="javascript:void(0);" >Downloads</a>
+              </li>
+              <li rel="download-image" icon="fas fa-download select-icon" href="javascript:void(0);" class="default-select-option">
+                <a rel="download-image" href="javascript:void(0);" >Download image</a>
+              </li>
+              <li rel="download-observed-data" icon="fas fa-download select-icon" href="javascript:void(0);" class="default-select-option">
+                <a rel="download-observed-data" href="javascript:void(0);" >Download Observed Data</a>
+              </li>
+              <li rel="download-historical-modeled-data" icon="fas fa-download select-icon" href="javascript:void(0);" class="default-select-option">
+                <a rel="download-historical-modeled-data" href="javascript:void(0);" >Download Historical Modeled Data</a>
+              </li>
+              <li rel="download-projected-modeled-data" icon="fas fa-download select-icon" href="javascript:void(0);" class="default-select-option">
+                <a rel="download-projected-modeled-data" href="javascript:void(0);" >Projected Modeled Data</a>
+              </li>
+              <li rel="download-interpreting" icon="fas fa-download select-icon" class="default-select-option">
+                <a rel="download-interpreting" href="/resources/data/Key-to-Climate-Explorer-Download-Filenames-and-Column-Headings.xlsx" >Information for Interpreting Data</a>
+              </li>
+            </ul>
+          </div>
         </div>
-
-
 
       </div>
 
@@ -66,34 +86,42 @@
           <span id="default-city-county" class="text-info-box"></span>
           <span id="" class="text-info-box" > - </span>
           <span id="default-chart-map-varriable" class="text-info-box" rel="tmax">Avg Daily Max Temp (°F)</span>
-          <!-- <div id="default-chart-map-discuss" class="text-info-box-secondary padding-top-half">Graphs and maps below show observed and modeled data for the county of your selected location.</div> -->
 
           <div id="filters-row" class="d-flex-row flex-justify padding-top padding-bottom d-flex-left" >
 
             <div id="varriable-select-wrapper" class="rounded-choice-box padding-horrizontal-half padding-vertical-half default-btn-height d-flex-center width-30">
-              <select id="varriable-select" class="default-select border-none  d-flex-center width-90" >
-                  <option class="default-select-option-group" value="none" icon="fas fa-temperature-high select-icon">Temperature</option>
-                  <option class="default-select-option" value="tmax">Avg Daily Max Temp (°F)</option>
-                  <option class="default-select-option" value="tmin">Avg Daily Min Temp (°F)</option>
-                  <option class="default-select-option" value="days_tmax_gt_90f">Days w/ max > 90°F</option>
-                  <option class="default-select-option" value="days_tmax_gt_95f">Days w/ max > 95°F</option>
-                  <option class="default-select-option" value="days_tmax_gt_100f">Days w/ max > 100°F</option>
-                  <option class="default-select-option" value="days_tmax_gt_105f">Days w/ max > 105°F</option>
-                  <option class="default-select-option" value="days_tmax_lt_32f">Days w/ max < 32°F</option>
-                  <option class="default-select-option" value="days_tmin_lt_32f">Days w/ min > 32°F</option>
-                  <option class="default-select-option" value="days_tmin_gt_80f">Days w/ min > 80°F</option>
-                  <option class="default-select-option" value="days_tmin_gt_90f">Days w/ min > 90°F</option>
-                  <option class="default-select-option-group" value="none" icon="fas fa-cloud-rain select-icon">Precipitation</option>
-                  <option class="default-select-option" value="pcpn">Total precipitation</option>
-                  <option class="default-select-option" value="days_pcpn_gt_1in">Days w/ > 1 in Precipitation</option>
-                  <option class="default-select-option" value="days_pcpn_gt_3in">Days w/ > 3 in Precipitation</option>
-                  <option class="default-select-option" value="days_dry_days">Dry Days</option>
-                  <option class="default-select-option-group" value="none" icon="fas fa-bacon select-icon">Other</option>
-                  <option class="default-select-option" value="cdd_65f">Cooling Degree Days</option>
-                  <option class="default-select-option" value="gdd">Growing Degree Days</option>
-                  <option class="default-select-option" value="hdd_65f">Heating Degree Days</option>
-                  <option class="default-select-option" value="gddmod">Modified Growing Degree Days</option>
-              </select>
+              <div class="select varriable-select">
+                <div id="varriable-select-vis" class="select-styled" rel="tmax">Avg Daily Max Temp (°F)</div>
+                <ul class="select-options">
+                  <div icon="fas fa-temperature-high select-icon" class="default-select-option-group">
+                    <i class="fas fa-temperature-high select-icon"></i>Temperature
+                  </div>
+                  <li rel="tmax" class="default-select-option">Avg Daily Max Temp (°F)</li>
+                  <li rel="tmin" class="default-select-option">Avg Daily Min Temp (°F)</li>
+                  <li rel="days_tmax_gt_90f" class="default-select-option">Days w/ max > 90°F</li>
+                  <li rel="days_tmax_gt_95f" class="default-select-option">Days w/ max > 95°F</li>
+                  <li rel="days_tmax_gt_100f" class="default-select-option">Days w/ max > 100°F</li>
+                  <li rel="days_tmax_gt_105f" class="default-select-option">Days w/ max > 105°F</li>
+                  <li rel="days_tmax_lt_32f" class="default-select-option">Days w/ max < 32°F</li>
+                  <li rel="days_tmin_lt_32f" class="default-select-option">Days w/ min < 32°F</li>
+                  <li rel="days_tmin_gt_80f" class="default-select-option">Days w/ min > 80°F</li>
+                  <li rel="days_tmin_gt_90f" class="default-select-option">Days w/ min > 90°F</li>
+                  <div icon="fas fa-cloud-rain select-icon" class="default-select-option-group">
+                    <i class="fas fa-cloud-rain select-icon"></i>Precipitation
+                  </div>
+                  <li rel="pcpn" class="default-select-option">Total precipitation</li>
+                  <li rel="days_pcpn_gt_1in" class="default-select-option">Days w/ > 1 in Precipitation</li>
+                  <li rel="days_pcpn_gt_3in" class="default-select-option">Days w/ > 3 in Precipitation</li>
+                  <li rel="days_dry_days" class="default-select-option">Dry Days</li>
+                  <div icon="fas fa-bacon select-icon" class="default-select-option-group">
+                    <i class="fas fa-bacon select-icon"></i>Other
+                  </div>
+                  <li rel="cdd_65f" class="default-select-option">Cooling Degree Days</li>
+                  <li rel="gdd" class="default-select-option">Growing Degree Days</li>
+                  <li rel="hdd_65f" class="default-select-option">Heating Degree Days</li>
+                  <li rel="gddmod" class="default-select-option">Modified Growing Degree Days</li>
+                </ul>
+              </div>
             </div>
 
 

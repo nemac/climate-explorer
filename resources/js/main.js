@@ -922,7 +922,6 @@ App.prototype.locationSearch = function () {
     // do no want users to search loction and go back cards page or do we?
     if (fips) {
       var page = window.location.pathname.replace(/\//g,'');
-      console.log('page', page)
       if (page.length === 0) {
         page = 'cards-home';
       }
