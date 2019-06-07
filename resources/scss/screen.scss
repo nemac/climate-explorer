@@ -587,6 +587,110 @@ h6 {
   @include box-shadow(0px 2px 4px transparentize(#000, 0.761));
 }
 
+.btn-histobs {
+  cursor: pointer;
+  text-decoration: line-through !important;
+  background-color: #777 !important;
+  color: transparentize($ce3-blue6, 0.5) !important;
+  height: $ce3-btnheight !important;
+  font: 500 14px $roboto !important;
+  border: 1px solid $ce3-blue3alpha !important;
+
+  @media screen and (max-width: 900px) {
+    height: $ce3-btnheight-smallecreen !important;
+  }
+
+  &:hover {
+    background-color: darken(#777, 5) !important;
+  }
+  &:focus {
+    background-color: darken(#777, 5) !important;
+    outline: none !important;
+  }
+  &.selected {
+    color: $ce3-blue6 !important;
+    text-decoration: unset !important;
+  }
+}
+
+.btn-hismod {
+  cursor: pointer;
+  text-decoration: line-through !important;
+  background-color: #D6D6D6 !important;
+  color: transparentize($ce3-blue3, 0.5) !important;
+  height: $ce3-btnheight !important;
+  font: 500 14px $roboto !important;
+  border: 1px solid $ce3-blue3alpha !important;
+
+  @media screen and (max-width: 900px) {
+    height: $ce3-btnheight-smallecreen !important;
+  }
+
+  &:hover {
+    background-color: darken(#D6D6D6, 10) !important;
+  }
+  &:focus {
+    background-color: darken(#D6D6D6, 10) !important;
+    outline: none !important;
+  }
+  &.selected {
+    color: $ce3-blue3 !important;
+    text-decoration: unset !important;
+  }
+}
+
+.btn-lower-emissions {
+  cursor: pointer;
+  text-decoration: line-through !important;
+  background-color: #98BCEB !important;
+  color: transparentize($ce3-blue3, 0.5) !important;
+  height: $ce3-btnheight !important;
+  font: 500 14px $roboto !important;
+  border: 1px solid $ce3-blue3alpha !important;
+
+  @media screen and (max-width: 900px) {
+    height: $ce3-btnheight-smallecreen !important;
+  }
+
+  &:hover {
+    background-color: darken(#98BCEB, 10) !important;
+  }
+  &:focus {
+    background-color: darken(#98BCEB, 10) !important;
+    outline: none !important;
+  }
+  &.selected {
+    color: $ce3-blue3 !important;
+    text-decoration: unset !important;
+  }
+}
+
+.btn-higher-emissions {
+  cursor: pointer;
+  text-decoration: line-through !important;
+  background-color: #FBB4AA !important;
+  color: transparentize($ce3-blue3, 0.5) !important;
+  height: $ce3-btnheight !important;
+  font: 500 14px $roboto !important;
+  border: 1px solid $ce3-blue3alpha !important;
+
+  @media screen and (max-width: 900px) {
+    height: $ce3-btnheight-smallecreen !important;
+  }
+
+  &:hover {
+    background-color: darken(#FBB4AA, 10) !important;
+  }
+  &:focus {
+    background-color: darken(#FBB4AA, 10) !important;
+    outline: none !important;
+  }
+  &.selected {
+    color: $ce3-blue3 !important;
+    text-decoration: unset !important;
+  }
+}
+
 .btn-default {
   cursor: pointer;
   height: $ce3-btnheight !important;

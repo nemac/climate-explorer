@@ -61,6 +61,10 @@ $(function () {
     }
   })
 
+  $('#legend-wrapper').click( function(e) {
+    updateChartLayers($(e.target))
+  })
+
   $('#presentation-wrapper').click( function(e) {
       toggleButton($(e.target));
       updatePresentation($(e.target))
@@ -93,6 +97,72 @@ $(function () {
       variable: $('#monthly-select-wrapper').attr('rel')
     });
   });
+
+  // this function changes chart layers
+  function updateChartLayers(target){
+    target.toggleClass('selected');
+    const allItems = $(target).parent().children();
+
+    // map all buttons and get the val from html val attribute
+    const valid = allItems.map( function()  {
+      const elAttribute =  $(this).attr('val');
+      var obj = Object.assign({}, this);
+      obj[elAttribute] = $(this).hasClass('selected');
+      return obj;
+    })
+
+    // flatten the array
+    var merged = Object.assign.apply(Object, valid);
+    let scenario = true;
+
+    // check scenarios
+
+    // both rcp45 & rcp85
+    if(merged.rcp45 && merged.rcp85) {
+      scenario = 'both';
+    }
+
+    // rcp45
+    if(merged.rcp45 && !merged.rcp85) {
+      scenario = 'rcp45';
+    }
+
+    // rcp86
+    if(!merged.rcp45 && merged.rcp85) {
+      scenario = 'rcp85';
+    }
+
+    // Neihter rcp45 & rcp85
+    if(!merged.rcp45 && !merged.rcp85) {
+      scenario = '';
+    }
+
+    // set historical
+    const histmod = merged.hist_mod;
+    const histobs = merged.histobs;
+
+    console.log({
+      scenario,
+      histmod,
+      histobs
+    })
+
+    // update chart
+    window.tempChart.update({
+      scenario,
+      histmod,
+      histobs
+    });
+  }
+
+  // this function forces a map legend button to be selcted
+  function forceSlected(selector) {
+    $(selector).addClass('selected');
+  }
+
+  function forceUnSlected(selector) {
+    $(selector).removeClass('selected');
+  }
 
   // this function Updates the chart title.
   function updateTitle(chartText) {
@@ -146,6 +216,7 @@ $(function () {
       variable: $('#varriable-select-vis').attr('rel'),
       histobs: true,
     });
+    forceSlected('.btn-histobs');
   }
 
   // this function changes the presentation (anomaly,actual) for the charts
@@ -311,9 +382,9 @@ $(function () {
     'scenario': 'both',
     'presentation': 'absolute',
     'pmedian': true,
-    'hmedian': true,
-    'histobs': true,
-    'hist_mod': true,
+    'hmedian': false,
+    'histobs': false,
+    'histmod': true,
     // 'frequency': $('#frequency').val(),
     // 'timeperiod': $('#timeperiod').val(),
     // 'county': $('#county').val(),
@@ -324,7 +395,6 @@ $(function () {
     // 'histobs': $('#hist-obs').val(),
     'xrangefunc': xrangeset
   });
-
 
   setTimeout(function () {
     window.tempChart.resize();

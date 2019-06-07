@@ -21,7 +21,6 @@
 #chart-row {
   justify-content: space-evenly !important;
   height: 100% !important;
-  // padding-top: $ce3-padding-half !important;
 
   @media screen and (max-width: 1240px) {
     justify-content: center !important;
@@ -137,6 +136,13 @@
   width: 50px !important;
   justify-content: center !important;
   margin: auto !important;
+}
+
+#legend-wrapper {
+  // position: relative !important;
+  // top: 24px !important;
+  z-index: 999 !important;
+  width: 80% !important;
 }
 
 // #slider-value-low.monthly-label {
