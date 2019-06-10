@@ -14173,6 +14173,7 @@ input.input-inner:focus {
   /* line 1, resources/scss/pages/_location.scss */
   #location-viewport {
     height: calc(100% - 36px - 12px - 120px) !important;
+    min-height: calc(100% - 36px - 12px - 120px) !important;
   }
 }
 
@@ -14180,6 +14181,7 @@ input.input-inner:focus {
   /* line 1, resources/scss/pages/_location.scss */
   #location-viewport {
     height: calc(100% - 36px - 12px - 188px) !important;
+    min-height: calc(100% - 36px - 12px - 188px) !important;
   }
 }
 
@@ -14187,17 +14189,18 @@ input.input-inner:focus {
   /* line 1, resources/scss/pages/_location.scss */
   #location-viewport {
     height: calc(100% - 48px - 12px - 210px) !important;
+    min-height: calc(100% - 48px - 12px - 210px) !important;
   }
 }
 
-/* line 21, resources/scss/pages/_location.scss */
+/* line 24, resources/scss/pages/_location.scss */
 #chart-row {
   justify-content: space-evenly !important;
   height: 100% !important;
 }
 
 @media screen and (max-width: 1240px) {
-  /* line 21, resources/scss/pages/_location.scss */
+  /* line 24, resources/scss/pages/_location.scss */
   #chart-row {
     justify-content: center !important;
     height: auto !important;
@@ -14205,27 +14208,56 @@ input.input-inner:focus {
   }
 }
 
-/* line 32, resources/scss/pages/_location.scss */
+/* line 35, resources/scss/pages/_location.scss */
 #stations-select, #downnloads-select, #varriable-select {
   display: none !important;
 }
 
-/* line 36, resources/scss/pages/_location.scss */
-#downloads-select-wrapper, #stations-select-wrapper {
+/* line 39, resources/scss/pages/_location.scss */
+#downloads-select-wrapper, #stations-select-wrapper, #chartmap-select-wrapper, #presentation-select-wrapper {
   background-color: #E9F1FC;
   color: #124086;
   font: 500 14px Roboto, Helvetica, "Helvetica Neue", Arial, sans-serif !important;
 }
 
 @media screen and (max-width: 900px) {
-  /* line 36, resources/scss/pages/_location.scss */
-  #downloads-select-wrapper, #stations-select-wrapper {
+  /* line 39, resources/scss/pages/_location.scss */
+  #downloads-select-wrapper, #stations-select-wrapper, #chartmap-select-wrapper, #presentation-select-wrapper {
+    display: none !important;
+  }
+}
+
+/* line 49, resources/scss/pages/_location.scss */
+#chartmap-select-wrapper, #time-select-wrapper, #presentation-select-wrapper {
+  background-color: #E9F1FC;
+  color: #124086;
+  font: 500 14px Roboto, Helvetica, "Helvetica Neue", Arial, sans-serif !important;
+  display: none !important;
+}
+
+@media screen and (max-width: 900px) {
+  /* line 49, resources/scss/pages/_location.scss */
+  #chartmap-select-wrapper, #time-select-wrapper, #presentation-select-wrapper {
+    height: auto !important;
+    margin-top: 6px !important;
+    display: inherit !important;
+    width: 100% !important;
+  }
+  /* line 59, resources/scss/pages/_location.scss */
+  #chartmap-select-wrapper .select-options, #time-select-wrapper .select-options, #presentation-select-wrapper .select-options {
+    margin-top: 5px !important;
+  }
+}
+
+@media screen and (max-width: 900px) {
+  /* line 65, resources/scss/pages/_location.scss */
+  #chartmap-wrapper, #time-wrapper, #presentation-wrapper {
     display: none !important;
   }
 }
 
 @media screen and (max-width: 900px) {
-  /* line 45, resources/scss/pages/_location.scss */
+  /* line 71, resources/scss/pages/_location.scss */
   #varriable-select-wrapper, #chartmap-wrapper, #time-wrapper, #presentation-wrapper {
     height: auto !important;
     width: 100% !important;
@@ -14235,48 +14267,75 @@ input.input-inner:focus {
 }
 
 @media screen and (max-width: 900px) {
-  /* line 54, resources/scss/pages/_location.scss */
+  /* line 81, resources/scss/pages/_location.scss */
   #monthly-select-wrapper {
     flex-flow: row wrap !important;
     height: auto !important;
   }
-  /* line 59, resources/scss/pages/_location.scss */
+  /* line 86, resources/scss/pages/_location.scss */
   #monthly-select-wrapper #btn-chart {
     width: 100% !important;
     padding-top: 6px !important;
     padding-bottom: 6px !important;
-    -webkit-border-radius: 0px 0px;
-    -moz-border-radius: 0px / 0px;
-    border-radius: 0px / 0px;
+  }
+  /* line 92, resources/scss/pages/_location.scss */
+  #monthly-select-wrapper .circle-box-left {
+    -moz-border-radius-topleft: 5px;
+    -webkit-border-top-left-radius: 5px;
+    border-top-left-radius: 5px;
+    -moz-border-radius-topright: 5px;
+    -webkit-border-top-right-radius: 5px;
+    border-top-right-radius: 5px;
+    -moz-border-radius-bottomleft: 0px;
+    -webkit-border-bottom-left-radius: 0px;
+    border-bottom-left-radius: 0px;
+    -moz-border-radius-bottomright: 0px;
+    -webkit-border-bottom-right-radius: 0px;
+    border-bottom-right-radius: 0px;
+  }
+  /* line 96, resources/scss/pages/_location.scss */
+  #monthly-select-wrapper .circle-box-right {
+    -moz-border-radius-topleft: 0px;
+    -webkit-border-top-left-radius: 0px;
+    border-top-left-radius: 0px;
+    -moz-border-radius-topright: 0px;
+    -webkit-border-top-right-radius: 0px;
+    border-top-right-radius: 0px;
+    -moz-border-radius-bottomleft: 5px;
+    -webkit-border-bottom-left-radius: 5px;
+    border-bottom-left-radius: 5px;
+    -moz-border-radius-bottomright: 5px;
+    -webkit-border-bottom-right-radius: 5px;
+    border-bottom-right-radius: 5px;
   }
 }
 
-/* line 68, resources/scss/pages/_location.scss */
+/* line 103, resources/scss/pages/_location.scss */
 .top-select-wrapper {
   width: 29% !important;
 }
 
 @media screen and (max-width: 900px) {
-  /* line 72, resources/scss/pages/_location.scss */
+  /* line 107, resources/scss/pages/_location.scss */
   .search-box-secondary {
     width: 100% !important;
   }
 }
 
-/* line 78, resources/scss/pages/_location.scss */
+/* line 113, resources/scss/pages/_location.scss */
 #slider-range {
   width: 90% !important;
   margin: auto !important;
 }
 
-/* line 83, resources/scss/pages/_location.scss */
+/* line 118, resources/scss/pages/_location.scss */
 .ui-slider-range {
   display: block !important;
   position: relative !important;
   height: 6px !important;
 }
 
-/* line 89, resources/scss/pages/_location.scss */
+/* line 124, resources/scss/pages/_location.scss */
 .ui-widget-header {
   border: 0px solid #000 !important;
   background-color: #124086 !important;
@@ -14286,13 +14345,13 @@ input.input-inner:focus {
   top: 0px !important;
 }
 
-/* line 98, resources/scss/pages/_location.scss */
+/* line 133, resources/scss/pages/_location.scss */
 .ui-slider-horizontal {
   height: 12px !important;
   top: 3px !important;
 }
 
-/* line 103, resources/scss/pages/_location.scss */
+/* line 138, resources/scss/pages/_location.scss */
 .ui-slider-handle {
   cursor: pointer !important;
   background-color: #124086 !important;
@@ -14305,7 +14364,7 @@ input.input-inner:focus {
   margin-left: -3px !important;
 }
 
-/* line 113, resources/scss/pages/_location.scss */
+/* line 148, resources/scss/pages/_location.scss */
 .ui-slider-handle:focus {
   outline: none !important;
   -webkit-box-shadow: 0px 0px 0px 8px rgba(18, 64, 134, 0.25);
@@ -14313,7 +14372,7 @@ input.input-inner:focus {
   box-shadow: 0px 0px 0px 8px rgba(18, 64, 134, 0.25);
 }
 
-/* line 118, resources/scss/pages/_location.scss */
+/* line 153, resources/scss/pages/_location.scss */
 .ui-slider-handle:hover {
   outline: none !important;
   -webkit-box-shadow: 0px 0px 0px 8px rgba(18, 64, 134, 0.25);
@@ -14321,7 +14380,7 @@ input.input-inner:focus {
   box-shadow: 0px 0px 0px 8px rgba(18, 64, 134, 0.25);
 }
 
-/* line 123, resources/scss/pages/_location.scss */
+/* line 158, resources/scss/pages/_location.scss */
 .ui-widget-content {
   border: 0px solid #1b60c9 !important;
   background: #1b60c9 !important;
@@ -14332,7 +14391,7 @@ input.input-inner:focus {
   border-radius: 6px / 6px;
 }
 
-/* line 131, resources/scss/pages/_location.scss */
+/* line 166, resources/scss/pages/_location.scss */
 #slider-value-low, #slider-value-mid, #slider-value-high {
   display: flex;
   font: 500 18px Roboto, Helvetica, "Helvetica Neue", Arial, sans-serif !important;
@@ -14343,24 +14402,24 @@ input.input-inner:focus {
   margin: auto !important;
 }
 
-/* line 141, resources/scss/pages/_location.scss */
+/* line 176, resources/scss/pages/_location.scss */
 #legend-wrapper {
   width: 80% !important;
 }
 
 @media screen and (max-width: 900px) {
-  /* line 141, resources/scss/pages/_location.scss */
+  /* line 176, resources/scss/pages/_location.scss */
   #legend-wrapper {
     height: auto !important;
     flex-wrap: wrap !important;
     order: 3;
     width: 100% !important;
   }
-  /* line 151, resources/scss/pages/_location.scss */
+  /* line 186, resources/scss/pages/_location.scss */
   #legend-wrapper #btn-chart {
     width: 100% !important;
   }
-  /* line 154, resources/scss/pages/_location.scss */
+  /* line 189, resources/scss/pages/_location.scss */
   #legend-wrapper .circle-box-left {
     -moz-border-radius-topleft: 5px;
     -webkit-border-top-left-radius: 5px;
@@ -14375,7 +14434,7 @@ input.input-inner:focus {
     -webkit-border-bottom-right-radius: 0px;
     border-bottom-right-radius: 0px;
   }
-  /* line 158, resources/scss/pages/_location.scss */
+  /* line 193, resources/scss/pages/_location.scss */
   #legend-wrapper .circle-box-right {
     -moz-border-radius-topleft: 0px;
     -webkit-border-top-left-radius: 0px;
@@ -14393,24 +14452,24 @@ input.input-inner:focus {
 }
 
 @media screen and (max-width: 900px) {
-  /* line 165, resources/scss/pages/_location.scss */
+  /* line 200, resources/scss/pages/_location.scss */
   #chart-row {
     height: auto !important;
     order: 1;
   }
-  /* line 169, resources/scss/pages/_location.scss */
+  /* line 204, resources/scss/pages/_location.scss */
   #chart-row .chart-wrap {
     min-height: 250px !important;
   }
 }
 
 @media screen and (max-width: 900px) {
-  /* line 175, resources/scss/pages/_location.scss */
+  /* line 210, resources/scss/pages/_location.scss */
   #annual-slider-wrapper {
     height: auto !important;
     order: 2;
   }
-  /* line 179, resources/scss/pages/_location.scss */
+  /* line 214, resources/scss/pages/_location.scss */
   #annual-slider-wrapper #slider-range {
     width: 60% !important;
   }

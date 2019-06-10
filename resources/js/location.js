@@ -13,6 +13,10 @@ $(function () {
   enableCustomSelect('download-select');
   enableCustomSelect('stations-select');
   enableCustomSelect('varriable-select');
+  enableCustomSelect('chartmap-select');
+  enableCustomSelect('time-select');
+  enableCustomSelect('presentation-select');
+
 
   initSlider();
 
@@ -55,9 +59,19 @@ $(function () {
   $('#time-wrapper').click( function(e) {
     const notDisabled = !$(e.target).hasClass('btn-default-disabled');
     if ( notDisabled ) {
+      const val = $(e.target).attr('val')
       toggleButton($(e.target));
-      updateFrequency(e.target);
-      updateFrequencySlider(e.target);
+      updateFrequency(val);
+      updateFrequencySlider(val);
+    }
+  })
+
+  $('#time-select-vis').bind('cs-changed', function(e) {
+    const notDisabled = !$(e.target).hasClass('btn-default-disabled');
+    if ( notDisabled ) {
+      const val = $('#time-select-vis').attr('rel')
+      updateFrequency(val);
+      updateFrequencySlider(val);
     }
   })
 
@@ -66,8 +80,14 @@ $(function () {
   })
 
   $('#presentation-wrapper').click( function(e) {
+      const val = $(e.target).attr('val');
       toggleButton($(e.target));
-      updatePresentation($(e.target))
+      updatePresentation(val)
+  })
+
+  $('#presentation-select-vis').bind('cs-changed', function(e) {
+      const val = $('#presentation-select-vis').attr('rel');
+      updatePresentation(val)
   })
 
   $('#monthly-select-wrapper').click( function(e) {
@@ -188,10 +208,10 @@ $(function () {
     })
   }
 
-  function updateFrequencySlider(target) {
-    const frequency = $(target).attr('val');
+  function updateFrequencySlider(targetval) {
+    // const frequency = $(target).attr('val');
 
-    switch (frequency) {
+    switch (targetval) {
       case 'annual':
         annualSliderOn();
         monthlySelectOff();
@@ -210,9 +230,9 @@ $(function () {
   }
 
   // this function changes the frequency for the charts
-  function updateFrequency(target) {
+  function updateFrequency(targetval) {
     window.tempChart.update({
-      frequency: $(target).attr('val'),
+      frequency: targetval,
       variable: $('#varriable-select-vis').attr('rel'),
       histobs: true,
     });
@@ -220,9 +240,9 @@ $(function () {
   }
 
   // this function changes the presentation (anomaly,actual) for the charts
-  function updatePresentation(target) {
+  function updatePresentation(targetval) {
     window.tempChart.update({
-      presentation: $(target).attr('val')
+      presentation: targetval
     });
   }
 
