@@ -141,10 +141,46 @@
 #legend-wrapper {
   // position: relative !important;
   // top: 24px !important;
-  z-index: 999 !important;
+  // z-index: 999 !important;
   width: 80% !important;
+  @media screen and (max-width: 900px) {
+    height: auto !important;
+    flex-wrap: wrap !important;
+    order: 3;
+    width: 100% !important;
+    #btn-chart {
+      width: 100% !important;
+    }
+    .circle-box-left {
+      @include border-top-radius(5px);
+      @include border-bottom-radius(0px);
+    }
+    .circle-box-right {
+      @include border-top-radius(0px);
+      @include border-bottom-radius(5px);
+    }
+  }
 }
 
+#chart-row {
+  @media screen and (max-width: 900px) {
+    height: auto !important;
+    order: 1;
+    .chart-wrap {
+      min-height: 250px !important;      
+    }
+  }
+}
+
+#annual-slider-wrapper {
+  @media screen and (max-width: 900px) {
+    height: auto !important;
+    order: 2;
+    #slider-range {
+      width: 60% !important;
+    }
+  }
+}
 // #slider-value-low.monthly-label {
 //   left: 10% !important;
 // }

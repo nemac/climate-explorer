@@ -231,6 +231,9 @@ h6 {
   @include transition(all 0.2s ease-in);
   color: $ce3-blue3;
   margin-left: $ce3-padding-half !important;
+  @media screen and (max-width: 900px) {
+    margin-top: 14px;
+  }
   a {
     color: $ce3-blue3 !important;
   }

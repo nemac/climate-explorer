@@ -260,6 +260,7 @@ $(function () {
         $(this).removeClass('active').next('ul.select-options').hide();
       });
       $(this).toggleClass('active').next('ul.select-options').toggle();
+      // $(this).toggleClass('active').next('ul.select-options').css("visibility", "visible");
     });
 
     // get list tiems so we can add user interactions
