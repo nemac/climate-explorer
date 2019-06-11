@@ -47,22 +47,32 @@ $(function () {
     }
   });
 
-  // enable choice button toggle and function
+  // update select text
+  function setSelectFromButton(target) {
+    const innerText = target.html().trim();
+    const val = target.attr('val');
+    const selector = target.attr('sel');
 
+    $(`#${selector}`).text(innerText);
+    $(`#${selector}`).attr('rel', val);
+  }
+
+  // enable choice button toggle and function
   $('#chartmap-wrapper').click( function(e) {
-    toggleButton($(e.target));
-    window.tempChart.update({
-      'variable': $(e.target).attr('rel')
-    });
+    const target = $(e.target);
+    toggleButton($(target));
+    setSelectFromButton(target);
   })
 
   $('#time-wrapper').click( function(e) {
-    const notDisabled = !$(e.target).hasClass('btn-default-disabled');
+    const target = $(e.target);
+    const notDisabled = !target.hasClass('btn-default-disabled');
     if ( notDisabled ) {
-      const val = $(e.target).attr('val')
-      toggleButton($(e.target));
+      const val = target.attr('val')
+      toggleButton(target);
       updateFrequency(val);
       updateFrequencySlider(val);
+      setSelectFromButton(target);
     }
   })
 
@@ -70,6 +80,7 @@ $(function () {
     const notDisabled = !$(e.target).hasClass('btn-default-disabled');
     if ( notDisabled ) {
       const val = $('#time-select-vis').attr('rel')
+      toggleButton($(`.btn-${$('#time-select-vis').attr('rel')}`));
       updateFrequency(val);
       updateFrequencySlider(val);
     }
@@ -80,13 +91,16 @@ $(function () {
   })
 
   $('#presentation-wrapper').click( function(e) {
-      const val = $(e.target).attr('val');
-      toggleButton($(e.target));
+      const target = $(e.target);
+      const val = target.attr('val');
+      toggleButton(target);
       updatePresentation(val)
+      setSelectFromButton(target);
   })
 
   $('#presentation-select-vis').bind('cs-changed', function(e) {
       const val = $('#presentation-select-vis').attr('rel');
+      toggleButton($(`.btn-${$('#presentation-select-vis').attr('rel')}`));
       updatePresentation(val)
   })
 
