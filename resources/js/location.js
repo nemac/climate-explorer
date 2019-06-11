@@ -145,7 +145,6 @@ $(function () {
   // to update the chart
   $('#presentation-select-vis').bind('cs-changed', function(e) {
       const val = $('#presentation-select-vis').attr('rel');
-      console.log(val);
 
       // toggle button visual state
       toggleButton($(`.btn-${$('#presentation-select-vis').attr('rel')}`));
