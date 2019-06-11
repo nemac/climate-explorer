@@ -306,17 +306,6 @@ h6 {
   }
 }
 
-// .default-select-option {
-//   height: $ce3-btnheight !important;
-//   @media screen and (max-width: 900px) {
-//     height: $ce3-btnheight-smallecreen !important;
-//  }
-//   background-color: $ce3-blue5 !important;
-//   color: $ce3-blue3 !important;
-//   font: 500 14px $roboto !important;
-//   // border: 1px solid $ce3-blue3alpha !important;
-// }
-
 .font-title {
    font: 500 24px $roboto !important;
    color: $ce3-blue6 !important;
@@ -716,31 +705,20 @@ h6 {
   @media screen and (max-width: 900px) {
     height: $ce3-btnheight-smallecreen !important;
   }
-}
 
-.btn-default:hover {
-  cursor: pointer;
-  height: $ce3-btnheight !important;
-  @media screen and (max-width: 900px) {
-    height: $ce3-btnheight-smallecreen !important;
+  &:focus {
+    background-color: darken($ce3-blue5, 5) !important;
+    color: $ce3-blue3 !important;
+    border: 1px solid $ce3-blue3alpha !important;
+    outline: none !important
   }
-  background-color: darken($ce3-blue5, 5) !important;
-  color: $ce3-blue3 !important;
-  font: 500 14px $roboto !important;
-  border: 1px solid $ce3-blue3alpha !important;
-}
 
-.btn-default:focus {
-  cursor: pointer;
-  height: $ce3-btnheight !important;
-  @media screen and (max-width: 900px) {
-    height: $ce3-btnheight-smallecreen !important;
+  &:hover {
+    background-color: darken($ce3-blue5, 5) !important;
+    color: $ce3-blue3 !important;
+    border: 1px solid $ce3-blue3alpha !important;
+    outline: none !important
   }
-  background-color: darken($ce3-blue5, 5) !important;
-  color: $ce3-blue3 !important;
-  font: 500 14px $roboto !important;
-  border: 1px solid $ce3-blue3alpha !important;
-  outline: none !important
 }
 
 .btn-default-selected {
@@ -752,37 +730,26 @@ h6 {
   color: $ce3-blue5 !important;
   font: 500 14px $roboto !important;
   border: 1px solid $ce3-blue3alpha !important;
-}
 
-.btn-default-selected:hover  {
-  cursor: pointer;
-  height: $ce3-btnheight !important;
-  @media screen and (max-width: 900px) {
-    height: $ce3-btnheight-smallecreen !important;
+  &:focus {
+    background-color: lighten($ce3-blue3, 7) !important;
+    color: $ce3-blue5 !important;
+    border: 1px solid $ce3-blue3alpha !important;
+    outline: none !important
   }
-  background-color: lighten($ce3-blue3, 7) !important;
-  color: $ce3-blue5 !important;
-  font: 500 14px $roboto !important;
-  border: 1px solid $ce3-blue3alpha !important;
-}
 
-.btn-default-selected:focus  {
-  cursor: pointer;
-  height: $ce3-btnheight !important;
-  @media screen and (max-width: 900px) {
-    height: $ce3-btnheight-smallecreen !important;
+  &:hover {
+    background-color: lighten($ce3-blue3, 7) !important;
+    color: $ce3-blue5 !important;
+    border: 1px solid $ce3-blue3alpha !important;
+    outline: none !important
   }
-  background-color: lighten($ce3-blue3, 7) !important;
-  color: $ce3-blue5 !important;
-  font: 500 14px $roboto !important;
-  border: 1px solid $ce3-blue3alpha !important;
 }
 
 .rounded-choice-box {
   @include border-radius(25px, 25px);
   background-color: $ce3-blue5;
   color: $ce3-blue3;
-  // border: 1px solid $ce3-border-color !important;
   min-height: 36px !important;
   max-height: 36px !important;
   @media screen and (max-width: 900px) {
