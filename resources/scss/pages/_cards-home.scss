@@ -18,6 +18,7 @@
 }
 
 #data-card {
+  cursor: pointer;
   width: 33%  !important;
   height: auto !important;
   @include border-radius(5px, 5px);
@@ -91,6 +92,11 @@
 
   flex: 1 1 auto !important;
   align-self: center !important;
+
+  a {
+    color: $ce3-blue6 !important;
+    text-decoration: none !important;
+  }
 }
 
 .card-icon {

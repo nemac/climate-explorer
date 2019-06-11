@@ -16146,6 +16146,7 @@ input.input-inner:focus {
 
 /* line 20, resources/scss/pages/_cards-home.scss */
 #data-card {
+  cursor: pointer;
   width: 33%  !important;
   height: auto !important;
   -webkit-border-radius: 5px 5px;
@@ -16171,14 +16172,14 @@ input.input-inner:focus {
   }
 }
 
-/* line 38, resources/scss/pages/_cards-home.scss */
+/* line 39, resources/scss/pages/_cards-home.scss */
 #card-row {
   justify-content: space-evenly !important;
   height: auto !important;
 }
 
 @media screen and (max-width: 1240px) {
-  /* line 38, resources/scss/pages/_cards-home.scss */
+  /* line 39, resources/scss/pages/_cards-home.scss */
   #card-row {
     justify-content: center !important;
     height: auto !important;
@@ -16186,14 +16187,14 @@ input.input-inner:focus {
   }
 }
 
-/* line 50, resources/scss/pages/_cards-home.scss */
+/* line 51, resources/scss/pages/_cards-home.scss */
 #card-image-row {
   background-color: #124086 !important;
   justify-content: center !important;
   align-content: center !important;
 }
 
-/* line 56, resources/scss/pages/_cards-home.scss */
+/* line 57, resources/scss/pages/_cards-home.scss */
 #card-text {
   background-color: #124086 !important;
   color: #FBFCFE !important;
@@ -16207,7 +16208,7 @@ input.input-inner:focus {
 }
 
 @media screen and (max-width: 900px) {
-  /* line 56, resources/scss/pages/_cards-home.scss */
+  /* line 57, resources/scss/pages/_cards-home.scss */
   #card-text {
     padding-top: 6px !important;
     padding-bottom: 6px !important;
@@ -16217,20 +16218,20 @@ input.input-inner:focus {
 }
 
 @media screen and (max-width: 768px) {
-  /* line 56, resources/scss/pages/_cards-home.scss */
+  /* line 57, resources/scss/pages/_cards-home.scss */
   #card-text {
     min-height: auto !important;
   }
 }
 
-/* line 79, resources/scss/pages/_cards-home.scss */
+/* line 80, resources/scss/pages/_cards-home.scss */
 #card-title-icon {
   font: 700 18px Roboto, Helvetica, "Helvetica Neue", Arial, sans-serif !important;
   padding-bottom: 6px !important;
   max-height: 28px;
 }
 
-/* line 85, resources/scss/pages/_cards-home.scss */
+/* line 86, resources/scss/pages/_cards-home.scss */
 .card-title {
   font-size: 18px !important;
   flex: 1 1 auto !important;
@@ -16238,20 +16239,26 @@ input.input-inner:focus {
 }
 
 @media screen and (max-width: 500px) {
-  /* line 85, resources/scss/pages/_cards-home.scss */
+  /* line 86, resources/scss/pages/_cards-home.scss */
   .card-title {
     font-size: 18px !important;
   }
 }
 
 /* line 96, resources/scss/pages/_cards-home.scss */
+.card-title a {
+  color: #FBFCFE !important;
+  text-decoration: none !important;
+}
+
+/* line 102, resources/scss/pages/_cards-home.scss */
 .card-icon {
   flex: 0 0 auto !important;
   font-size: 24px !important;
   margin-right: 12px !important;
 }
 
-/* line 102, resources/scss/pages/_cards-home.scss */
+/* line 108, resources/scss/pages/_cards-home.scss */
 .card-image {
   height: auto !important;
   -webkit-border-radius: 5px 5px;
@@ -16262,7 +16269,7 @@ input.input-inner:focus {
   padding: 1px !important;
 }
 
-/* line 110, resources/scss/pages/_cards-home.scss */
+/* line 116, resources/scss/pages/_cards-home.scss */
 #card-description {
   font-size: 14px !important;
 }
