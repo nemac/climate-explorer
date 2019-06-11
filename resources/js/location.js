@@ -105,8 +105,10 @@ $(function () {
   })
 
   $('#monthly-select-wrapper').click( function(e) {
-    toggleButton($(e.target));
-    updatePresentation($(e.target))
+    const target = $(e.target);
+    const val = target.attr('val');
+    toggleButton(target);
+    updateTimePeriod(val);
   })
 
   $('#varriable-select-vis').bind('cs-changed', function (e) {
@@ -259,6 +261,13 @@ $(function () {
       presentation: targetval
     });
   }
+  // this function changes the time period for monthly chart centered on 2025, 2050, 2075
+  function updateTimePeriod(targetval) {
+    window.tempChart.update({
+      timeperiod: targetval
+    });
+  }
+
 
   // function changes button to selected
   function toggleButton(selector){
@@ -411,7 +420,7 @@ $(function () {
     'font': 'Roboto',
     'responsive': true,
     'frequency': 'annual',
-    'timeperiod': 2025,
+    'timeperiod': '2025',
     'county': window.ce.ce('getLocationPageState')['fips'],
     'variable':'tmax',
     'scenario': 'both',
