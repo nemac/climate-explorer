@@ -517,14 +517,15 @@ h6 {
 .d-flex-wrap {
   flex-wrap: wrap !important;
 }
+
 .d-flex-row {
-  display: flex !important;
-  flex-flow: row wrap !important;
+  display: flex;
+  flex-flow: row wrap;
 }
 
 .d-flex-column {
-  display: flex !important;
-  flex-direction: column !important;
+  display: flex;
+  flex-direction: column;
 }
 
 // fix to match naming convention

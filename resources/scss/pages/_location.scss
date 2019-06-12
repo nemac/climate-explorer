@@ -5,20 +5,20 @@
   overflow: auto !important;
   flex: 1 1 auto !important;
 
-  @media screen and (max-width: 900px) {
-    height: calc(100% - 36px - 12px - 120px) !important;
-    min-height: calc(100% - 36px - 12px - 120px) !important;
-  }
-
-  @media screen and (max-width: 788px) {
-    height: calc(100% - 36px - 12px - 188px) !important;
-    min-height: calc(100% - 36px - 12px - 188px) !important;
-  }
-
-  @media screen and (max-width: 500px) {
-    height: calc(100% - 48px - 12px - 210px) !important;
-    min-height: calc(100% - 48px - 12px - 210px) !important;
-  }
+  // @media screen and (max-width: 900px) {
+  //   height: calc(100% - 36px - 12px - 120px) !important;
+  //   min-height: calc(100% - 36px - 12px - 120px) !important;
+  // }
+  //
+  // @media screen and (max-width: 788px) {
+  //   height: calc(100% - 36px - 12px - 188px) !important;
+  //   min-height: calc(100% - 36px - 12px - 188px) !important;
+  // }
+  //
+  // @media screen and (max-width: 500px) {
+  //   height: calc(100% - 48px - 12px - 210px) !important;
+  //   min-height: calc(100% - 48px - 12px - 210px) !important;
+  // }
 }
 
 #chart-row {

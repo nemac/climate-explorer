@@ -11,10 +11,15 @@ $(function () {
   const navFooterItemNOTSelected = 'nav-footer-item';
   const selectorAddOn = '-nav-footer';
 
+  // more navs
+  const moreNavs = ["historical-weather", "historical-thresholds", "hightide-flooding"];
+
   // add click events to footer
   // uses invisiable a link
   addNavlick('home', 'home', selectorAddOn);
   addNavlick('local-climate-charts', 'local-climate-charts', selectorAddOn);
+  addNavlick('more', 'more', selectorAddOn);
+  addNavlick('hightide-flooding', 'hightide-flooding', selectorAddOn);
 
   // get the url location from the state
   let navLocation = window.ce.ce('getNavFooterState')['nav'];
@@ -23,6 +28,9 @@ $(function () {
   if (navLocation === undefined || navLocation === null) {
     navLocation = 'home';
   }
+
+  // check if nav item is a more nav
+  const isvalid = jQuery.inArray( navLocation, moreNavs);
 
   // remove all selected nav items from the footer
   const elems = document.querySelectorAll(`.${navFooterItemSelected}`);
@@ -44,6 +52,17 @@ $(function () {
   // turnoff unselected and add selected class
   navLocationElem.classList.remove(navFooterItemNOTSelected);
   navLocationElem.classList.add(navFooterItemSelected);
+
+  // if the nav item is stations based it maybe hidden in more
+  // in repsonsive mode so we should highlight also
+  if (isvalid > 0) {
+    const moreElem = document.querySelector(`#more${selectorAddOn}`)
+    moreElem.classList.remove(navFooterItemNOTSelected);
+    moreElem.classList.add(navFooterItemSelected);
+  } else {
+    const moreElem = document.querySelector(`#more${selectorAddOn}`)
+    moreElem.classList.remove(navFooterItemSelected);
+  }
 
   // adds a click event to got to card location
   function addNavlick(selector, nav, selectorAddOn) {
