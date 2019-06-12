@@ -13765,9 +13765,20 @@ body.detail-open #nav-overlay {
 
 /* line 45, resources/scss/template/_nav_footer.scss */
 .nav-footer-item {
+  cursor: pointer;
   font: 500 14px Roboto, Helvetica, "Helvetica Neue", Arial, sans-serif !important;
   color: #4D4D4D !important;
   justify-content: center !important;
+}
+
+/* line 51, resources/scss/template/_nav_footer.scss */
+.nav-footer-item .nav-footer-label {
+  color: #4D4D4D !important;
+}
+
+/* line 55, resources/scss/template/_nav_footer.scss */
+.nav-footer-item .nav-footer-icon {
+  color: #4D4D4D !important;
 }
 
 @media screen and (max-width: 500px) {
@@ -13777,16 +13788,7 @@ body.detail-open #nav-overlay {
   }
 }
 
-/* line 54, resources/scss/template/_nav_footer.scss */
-.nav-footer-item-selected {
-  font: 700 14px Roboto, Helvetica, "Helvetica Neue", Arial, sans-serif !important;
-  color: #124086 !important;
-  justify-content: center !important;
-  align-content: center !important;
-  align-self: center !important;
-}
-
-/* line 62, resources/scss/template/_nav_footer.scss */
+/* line 64, resources/scss/template/_nav_footer.scss */
 .nav-footer-icon {
   font-size: 48px !important;
   font-weight: 500 !important;
@@ -13796,58 +13798,71 @@ body.detail-open #nav-overlay {
 }
 
 @media screen and (max-width: 1177px) {
-  /* line 62, resources/scss/template/_nav_footer.scss */
+  /* line 64, resources/scss/template/_nav_footer.scss */
   .nav-footer-icon {
     font-size: 36px !important;
   }
 }
 
-/* line 73, resources/scss/template/_nav_footer.scss */
+/* line 75, resources/scss/template/_nav_footer.scss */
+.nav-footer-item-selected {
+  cursor: pointer;
+  font: 600 14px Roboto, Helvetica, "Helvetica Neue", Arial, sans-serif !important;
+  color: #124086 !important;
+  justify-content: center !important;
+  align-content: center !important;
+  align-self: center !important;
+}
+
+/* line 83, resources/scss/template/_nav_footer.scss */
+.nav-footer-item-selected .nav-footer-label {
+  font-weight: 600 !important;
+  color: #124086 !important;
+}
+
+/* line 89, resources/scss/template/_nav_footer.scss */
+.nav-footer-item-selected .nav-footer-icon {
+  font-weight: 600 !important;
+  color: #124086 !important;
+}
+
+/* line 96, resources/scss/template/_nav_footer.scss */
 .nav-footer-label {
   font-size: 14px !important;
-  font-weight: 500 !important;
+  font-weight: 500;
   justify-content: center !important;
   align-content: center !important;
   align-self: center !important;
 }
 
 @media screen and (max-width: 900px) {
-  /* line 73, resources/scss/template/_nav_footer.scss */
+  /* line 96, resources/scss/template/_nav_footer.scss */
   .nav-footer-label {
     flex-flow: row wrap !important;
   }
 }
 
 @media screen and (max-width: 1177px) {
-  /* line 73, resources/scss/template/_nav_footer.scss */
+  /* line 96, resources/scss/template/_nav_footer.scss */
   .nav-footer-label {
     display: none;
   }
 }
 
 @media screen and (min-width: 1178px) {
-  /* line 87, resources/scss/template/_nav_footer.scss */
+  /* line 110, resources/scss/template/_nav_footer.scss */
   .nav-footer-label-smallscreen {
     display: none;
   }
 }
 
-/* line 93, resources/scss/template/_nav_footer.scss */
-.nav-footer-labels-selected {
-  font-size: 14px !important;
-  font-weight: 700 !important;
-  justify-content: center !important;
-  align-content: center !important;
-  align-self: center !important;
-}
-
-/* line 101, resources/scss/template/_nav_footer.scss */
+/* line 116, resources/scss/template/_nav_footer.scss */
 .nav-footer-area-title {
   font: 500 16px Roboto, Helvetica, "Helvetica Neue", Arial, sans-serif !important;
   color: #4D4D4D !important;
 }
 
-/* line 106, resources/scss/template/_nav_footer.scss */
+/* line 121, resources/scss/template/_nav_footer.scss */
 .nav-footer-area-line {
   border-top: 1px dotted #4D4D4D !important;
   margin-left: 6px !important;
@@ -13856,7 +13871,7 @@ body.detail-open #nav-overlay {
 }
 
 @media screen and (max-width: 950px) {
-  /* line 106, resources/scss/template/_nav_footer.scss */
+  /* line 121, resources/scss/template/_nav_footer.scss */
   .nav-footer-area-line {
     width: 20% !important;
   }

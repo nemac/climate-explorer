@@ -281,6 +281,13 @@ especially when it comes to interacting with the DOM and handling events.
       };
     },
 
+    getNavFooterState: function getNavFooterState() {
+      var state = this.getUrlParams({
+        nav: 'nav'
+      });
+      return state;
+    },
+
     getStationsMapState: function getStationsMapState() {
       var state = this.getUrlParams({
         mode: 'id',
