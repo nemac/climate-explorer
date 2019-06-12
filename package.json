@@ -35,7 +35,6 @@
     "node-static": "^0.7.10"
   },
   "dependencies": {
-    "jquery-ui-touch-punch": "^0.2.3",
     "nouislider": "^13.1.5",
     "popper.js": "^1.14.7",
     "terraformer-arcgis-parser": "^1.1.0",
