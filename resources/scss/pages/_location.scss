@@ -118,49 +118,61 @@
 .ui-slider-range {
   display: block !important;
   position: relative !important;
-  height: 6px !important;
+  height: 8px !important;
 }
 
-.ui-widget-header {
-    border: 0px solid #000 !important;
-    background-color :$ce3-blue3 !important;
-    color: $ce3-blue3 !important;
-    font-weight: 500 !important;
-    height: 3px !important;
-    top: 0px !important;
+.noUi-horizontal {
+  height: 8px !important;
 }
 
-.ui-slider-horizontal {
-  height: 12px !important;
-  top: 3px !important;
+.noUi-target {
+    background: lighten($ce3-blue3, 25) !important;
+    border-radius: 8px !important;
+    border: 0px transparent transparent;
+    box-shadow: unset !important;
 }
 
-.ui-slider-handle {
+.noUi-base {
+  background: lighten($ce3-blue3, 25) !important;
+  border-radius: 18px !important;
+}
+
+.noUi-connect {
+  background: $ce3-blue3 !important;
+}
+
+.noUi-handle {
   cursor: pointer !important;
   background-color: $ce3-blue3 !important;
-  height: 12px !important;
-  width: 12px !important;
-  @include border-radius(12px, 12px);
+  height: 14px !important;
+  width: 14px !important;
+  @include border-radius(14px, 14px !important);
+  right: -10px !important;
+  box-shadow: unset !important;
+  border: unset !important;
   top: -4px !important;
-  margin-left: -3px !important;
 
   &:focus {
     outline: none !important;
-    @include box-shadow(0px 0px 0px 8px  transparentize($ce3-blue3, 0.75));
+    @include box-shadow(0px 0px 0px 8px  transparentize($ce3-blue3, 0.75) !important);
   }
 
   &:hover {
     outline: none !important;
-    @include box-shadow(0px 0px 0px 8px  transparentize($ce3-blue3, 0.75));
+    @include box-shadow(0px 0px 0px 8px  transparentize($ce3-blue3, 0.75) !important);
+  }
+
+  &:before, &:after {
+    display: none !important;
   }
 }
 
-.ui-widget-content {
-  border: 0px solid lighten($ce3-blue3, 15) !important;
-  background: lighten($ce3-blue3, 15) !important;
-  color: lighten($ce3-blue3, 15) !important;
-  height: 3px !important;
-  @include border-radius(6px, 6px);
+#slider-value-high {
+  margin-left: 12px !important
+}
+
+#slider-value-low {
+  margin-right: 12px !important
 }
 
 #slider-value-low, #slider-value-mid, #slider-value-high {
@@ -170,7 +182,6 @@
   height: 25px !important;
   width: 50px !important;
   justify-content: center !important;
-  margin: auto !important;
 }
 
 #legend-wrapper {
@@ -208,8 +219,8 @@
   @media screen and (max-width: 900px) {
     height: auto !important;
     order: 2;
-    #slider-range {
-      width: 60% !important;
-    }
+    // #slider-range {
+    //   // width: 60% !important;
+    // }
   }
 }

@@ -408,31 +408,46 @@ $(function () {
   // this function sets the xrangeset
   function xrangeset(min, max) {
     // Force the slider thumbs to adjust to the appropriate place
-     $("#slider-range").slider("option", "values", [min, max]);
+    var sliderElem = document.getElementById('slider-range');
+    sliderElem.noUiSlider.set([min, max]);
   }
 
   function initSlider() {
     annualSliderOn();
     monthlySelectOff();
-    $("#slider-range").slider({
-      range: true,
-      min: 1950,
-      max: 2099,
-      step: 1,
-      values: [1950, 2099],
-      create: function (event, ui) {
-        $('#slider-value-high').text(2099);
-        $('#slider-value-low').text(1950);
-        $('#slider-value-mid').hide();
-      },
-      slide: function (event, ui) {
-        $('#slider-value-high').text(ui.values[1])
-        $('#slider-value-low').text(ui.values[0])
-        // return the return value returned by setXRange, to keep
-        // the slider thumb(s) from moving into a disallowed range
-        return window.tempChart.setXRange(ui.values[0], ui.values[1]);
-      }
+
+    var sliderElem = document.getElementById('slider-range');
+    noUiSlider.create(sliderElem, {
+        start: [20, 80],
+        connect: true,
+        range: {
+            'min': 1950,
+            'max': 2099
+        },
+        step: 1,
+        // Handles start at ...
+        start: [1950, 2099]
     });
+
+    // set slider on slide event
+    sliderElem.noUiSlider.on('slide', function () {
+      const values = sliderElem.noUiSlider.get();
+      const minValue = parseInt(values[0]);
+      const maxValue =  parseInt(values[1]);
+      $('#slider-value-high').text(maxValue);
+      $('#slider-value-low').text(minValue);
+
+      // update chart with new max min range
+      return window.tempChart.setXRange(minValue, maxValue);
+    });
+
+    // update chart with default starting min max
+    const values = sliderElem.noUiSlider.get();
+    const minValue = parseInt(values[0]);
+    const maxValue =  parseInt(values[1]);
+    $('#slider-value-high').text(maxValue);
+    $('#slider-value-low').text(minValue);
+
     $('#monthly-select-wrapper').hide();
   }
 
@@ -471,7 +486,7 @@ $(function () {
     'hmedian': false,
     'histobs': false,
     'histmod': true,
-    'xrangefunc': xrangeset
+    'xrangefunc': xrangeset(1950, 2099)
   });
 
   setTimeout(function () {
