@@ -13780,7 +13780,7 @@ body.detail-open #nav-overlay {
   }
 }
 
-@media screen and (max-width: 1277px) {
+@media screen and (max-width: 1177px) {
   /* line 54, resources/scss/template/_nav_footer.scss */
   .nav-footer-items .padding-horrizontal {
     padding-left: 6px !important;
@@ -13819,7 +13819,7 @@ body.detail-open #nav-overlay {
   font-weight: 500 !important;
 }
 
-@media screen and (max-width: 1277px) {
+@media screen and (max-width: 600px) {
   /* line 80, resources/scss/template/_nav_footer.scss */
   .nav-footer-icon {
     font-size: 36px !important;
@@ -13873,14 +13873,14 @@ body.detail-open #nav-overlay {
   }
 }
 
-@media screen and (max-width: 1277px) {
+@media screen and (max-width: 1224px) {
   /* line 113, resources/scss/template/_nav_footer.scss */
   .nav-footer-label {
     display: none;
   }
 }
 
-@media screen and (min-width: 1278px) {
+@media screen and (min-width: 1225px) {
   /* line 127, resources/scss/template/_nav_footer.scss */
   .nav-footer-label-smallscreen {
     display: none;

@@ -50,7 +50,7 @@
     flex-wrap: nowrap !important;
   }
 
-  @media screen and (max-width: 1277px) {
+  @media screen and (max-width: 1177px) {
     .padding-horrizontal {
       padding-left: $ce3-default-horizontal-padding/2 !important;
       padding-right: $ce3-default-horizontal-padding/2 !important;
@@ -79,7 +79,7 @@
 
 .nav-footer-icon {
   font-size: 48px !important;
-  @media screen and (max-width: 1277px) {
+  @media screen and (max-width: 600px) {
     font-size: 36px !important;
   }
   font-weight: 500 !important;
@@ -119,13 +119,13 @@
   @media screen and (max-width: 950px) {
     flex-flow: row wrap !important;
   }
-  @media screen and (max-width: 1277px) {
+  @media screen and (max-width: 1224px) {
     display: none
   }
 }
 
 .nav-footer-label-smallscreen {
-  @media screen and (min-width: 1278px) {
+  @media screen and (min-width: 1225px) {
     display: none
   }
 }
