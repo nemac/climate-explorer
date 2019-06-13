@@ -7,6 +7,7 @@ $(function () {
   $('#cards-search-input').val(window.ce.ce('getLocationPageState')['city']);
 
   addCardClick('card-local-charts','local-climate-charts');
+  addCardClick('card-hightide-flooding', 'hightide-flooding');
 
   // adds a click event to got to card location
   function addCardClick(selctor, nav) {

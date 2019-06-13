@@ -39,12 +39,21 @@
 #card-row {
   justify-content: space-evenly !important;
   height: auto !important;
-  // padding-top: $ce3-padding-half !important;
+  flex-flow: row nowrap !important;
+  padding-right: $ce3-default-padding !important;
+  left: $ce3-default-padding !important;
 
   @media screen and (max-width: 1240px) {
     justify-content: center !important;
     height: auto !important;
     min-height: unset !important;
+    flex-flow: row nowrap !important;
+  }
+
+  @media screen and (max-width: 900px) {
+    flex-flow: row wrap !important;
+    padding-right: $ce3-default-padding/2 !important;
+    left: $ce3-default-padding/2 !important;
   }
 }
 

@@ -1,24 +1,24 @@
 #location-viewport {
   background-color: $white;
-  height: calc(100% - 48px - $ce3-main-bottom) !important;
-  min-height: calc(100% - 48px - $ce3-main-bottom) !important;
+  height: calc(100% - 48px - 120px) !important;
+  min-height: calc(100% - 48px - 120px) !important;
   overflow: auto !important;
   flex: 1 1 auto !important;
 
-  // @media screen and (max-width: 900px) {
-  //   height: calc(100% - 36px - 12px - 120px) !important;
-  //   min-height: calc(100% - 36px - 12px - 120px) !important;
-  // }
-  //
-  // @media screen and (max-width: 788px) {
-  //   height: calc(100% - 36px - 12px - 188px) !important;
-  //   min-height: calc(100% - 36px - 12px - 188px) !important;
-  // }
-  //
-  // @media screen and (max-width: 500px) {
-  //   height: calc(100% - 48px - 12px - 210px) !important;
-  //   min-height: calc(100% - 48px - 12px - 210px) !important;
-  // }
+  @media screen and (max-width: 900px) {
+    height: calc(100% - 36px - 12px - 120px) !important;
+    min-height: calc(100% - 36px - 12px - 120px) !important;
+  }
+
+  @media screen and (max-width: 788px) {
+    height: calc(100% - 36px - 12px - 188px) !important;
+    min-height: calc(100% - 36px - 12px - 188px) !important;
+  }
+
+  @media screen and (max-width: 500px) {
+    height: calc(100% - 48px - 12px - 210px) !important;
+    min-height: calc(100% - 48px - 12px - 210px) !important;
+  }
 }
 
 #chart-row {
@@ -76,7 +76,6 @@
     padding-bottom:  $ce3-padding-half !important;
   }
 }
-
 
 #monthly-select-wrapper {
   @media screen and (max-width: 900px) {
@@ -186,7 +185,6 @@
 
 #legend-wrapper {
   width: 80% !important;
-  z-index: 999 !important;
   @media screen and (max-width: 900px) {
     height: auto !important;
     flex-wrap: wrap !important;
@@ -212,14 +210,14 @@
     order: 1;
     .chart-wrap {
       min-height: 250px !important;
+      height: 250px !important;
     }
   }
 }
 
 #annual-slider-wrapper {
-  height: $ce3-btnheight !important;
   @media screen and (max-width: 900px) {
-    height: $ce3-btnheight-smallecreen !important;
+    height: auto !important;
     order: 2;
     // #slider-range {
     //   // width: 60% !important;

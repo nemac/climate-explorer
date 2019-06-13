@@ -13,10 +13,81 @@ $(function () {
   // uses invisiable a link
   addNavlick('home', 'home', navConstants.selectorAddOn);
   addNavlick('local-climate-charts', 'local-climate-charts', navConstants.selectorAddOn);
-  addNavlick('more', 'more', navConstants.selectorAddOn);
+  // addNavlick('more', 'more', navConstants.selectorAddOn);
   addNavlick('hightide-flooding', 'hightide-flooding', navConstants.selectorAddOn);
 
   updateNavBar();
+  addMoreClickEvent();
+
+  // this function adds click event to the more nav item
+  // which expands the nav footer to show the entire station based
+  // otpions.  Trying to limit the space the navbar takes up on moblie divices
+  function addMoreClickEvent() {
+    // setup some constants
+    const navConstants = setNavItemsCostants();
+
+    const moreElem = document.getElementById(navConstants.moreElemID);
+    if (moreElem) {
+      moreElem.addEventListener('click', addMoreClickEventHandle);
+    }
+  }
+
+  function nullString(checkString) {
+    if (checkString === undefined || checkString === null) {
+      return '';
+    }
+    return checkString;
+  }
+
+  function addStyle(elem, style) {
+    if (elem) {
+      let tempStyle = elem.getAttribute('style');
+      tempStyle = nullString(tempStyle);
+      elem.setAttribute('style', `${tempStyle}; ${style}`);
+    }
+  }
+
+  function addStyleAll(elems, style) {
+    if (elems) {
+      elems.forEach((elem) => {
+        if (elem) {
+          let tempStyle = elem.getAttribute('style');
+          tempStyle = nullString(tempStyle);
+          elem.setAttribute('style', `${tempStyle}; ${style}`);
+        }
+      });
+    }
+  }
+
+  // this function adds click event handler
+  function addMoreClickEventHandle(e) {
+    // setup some constants
+    const navConstants = setNavItemsCostants();
+    const hasid = ParentContains(e.target, navConstants.moreElemID);
+
+    const expandedFooterElem = document.getElementById(navConstants.expandedFooterElem);
+    const moreFooterElem = document.getElementById(navConstants.moreFooterElem);
+    const navFooterRow2Elem = document.querySelector(`.${navConstants.navFooterRow2Elem}`);
+    const navFooterAreaLine = document.querySelectorAll(`.${navConstants.navFooterAreaLine}`);
+    const navFooter = document.getElementById(navConstants.navFooter);
+    const locationViewport = document.getElementById(navConstants.locationViewport);
+    const cardsViewport = document.getElementById(navConstants.cardsViewport);
+
+    // addStyle(expandedFooterElem, 'display: flex !important');
+    // addStyle(moreFooterElem, 'display: none !important');
+    // addStyle(navFooterRow2Elem, 'flex-flow: row wrap !important');
+    //
+    //
+    // addStyle(locationViewport, 'height: calc(100% - 48px - 12px - 210px) !important');
+    // addStyle(locationViewport, 'min-height: calc(100% - 48px - 12px - 210px) !important');
+    // addStyle(cardsViewport, 'height: calc(100% - 48px - 12px - 210px) !important');
+    // addStyle(cardsViewport, 'min-height: calc(100% - 48px - 12px - 210px) !important');
+    // addStyle(navFooter, 'flex: 0 1 210px !important');
+    // addStyle(navFooter, 'height: 210px !important');
+    //
+    //
+    // addStyleAll(navFooterAreaLine, 'display: flex !important');
+  }
 
   // this function checks if the nav item would be hidden behind the more item
   function isMoreNav(navLocation) {
@@ -43,7 +114,16 @@ $(function () {
       navFooterItemSelected: 'nav-footer-item-selected',
       navFooterItemNOTSelected: 'nav-footer-item',
       selectorAddOn: '-nav-footer',
-      moreNavs: ["historical-weather", "historical-thresholds", "hightide-flooding"]
+      moreNavs: ['historical-weather', 'historical-thresholds', 'hightide-flooding'],
+      moreElemID: 'more-nav-footer',
+      expandedFooterElem: 'expanded-wrapper-nav-footer',
+      moreFooterElem: 'more-wrapper-nav-footer',
+      navFooterRow1Elem: 'nav-footer-row-1',
+      navFooterRow2Elem: 'nav-footer-row-2',
+      navFooterAreaLine: 'nav-footer-area-line',
+      navFooter: 'nav-footer',
+      cardsViewport: 'cards-viewport',
+      locationViewport: 'location-viewport',
     }
   }
 
@@ -89,7 +169,7 @@ $(function () {
 
       // if the nav item is stations based it maybe hidden in more
       // in repsonsive mode so we should highlight also
-      if (isMoreNav() > 0) {
+      if (isMoreNavItem > 0) {
         const moreElem = document.querySelector(`#more${navConstants.selectorAddOn}`)
         moreElem.classList.remove(navConstants.navFooterItemNOTSelected);
         moreElem.classList.add(navConstants.navFooterItemSelected);
@@ -156,4 +236,13 @@ $(function () {
     return `?${newParams.join('&')}`;
   }
 
+  // check if a parentelemet contains a dom id
+  // deals with event bubbling so we can check
+  // if the child is in a specifc parent
+  function ParentContains(target, id) {
+    for (let p = target && target.parentElement; p; p = p.parentElement) {
+      if (p.id === id) { return true; }
+    }
+    return false;
+  }
 });
