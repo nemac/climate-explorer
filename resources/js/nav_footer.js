@@ -18,6 +18,7 @@ $(function () {
 
   updateNavBar();
   addMoreClickEvent();
+  addLessClickEvent();
 
   // this function adds click event to the more nav item
   // which expands the nav footer to show the entire station based
@@ -30,6 +31,20 @@ $(function () {
 
     if (moreWrapperNavFooterElem) {
       moreWrapperNavFooterElem.addEventListener('click', addMoreClickEventHandle);
+    }
+  }
+
+  // this function adds click event to the less nav item
+  // which un-expands the nav footer to hide the  station based
+  // otpions.  Trying to limit the space the navbar takes up on moblie divices
+  function addLessClickEvent() {
+    // setup some constants
+    const navConstants = setNavItemsCostants();
+
+    const lessWrapperNavFooterElem = document.getElementById(navConstants.lessWrapperNavFooterElem);
+
+    if (lessWrapperNavFooterElem) {
+      lessWrapperNavFooterElem.addEventListener('click', addLessClickEventHandle);
     }
   }
 
@@ -46,11 +61,27 @@ $(function () {
     }
   }
 
+  function removeClass(elem, cssClass) {
+    if (elem) {
+      elem.classList.remove(cssClass);
+    }
+  }
+
   function addClassAll(elems, cssClass) {
     if (elems) {
       elems.forEach((elem) => {
         if (elem) {
           elem.classList.add(cssClass);
+        }
+      });
+    }
+  }
+
+  function removeClassAll(elems, cssClass) {
+    if (elems) {
+      elems.forEach((elem) => {
+        if (elem) {
+          elem.classList.remove(cssClass);
         }
       });
     }
@@ -66,7 +97,7 @@ $(function () {
     const navFooter = document.getElementById(navConstants.navFooter);
     const locationViewport = document.getElementById(navConstants.locationViewport);
     const cardsViewport = document.getElementById(navConstants.cardsViewport);
-
+    const lessWrapperNavFooterElem = document.getElementById(navConstants.lessWrapperNavFooterElem);
     const navFooterAreaLineElem = document.querySelectorAll(`.${navConstants.navFooterAreaLineElem}`);
 
     addClass(navFooterRow2Elem, 'expanded');
@@ -75,9 +106,34 @@ $(function () {
     addClass(navFooter, 'expanded');
     addClass(locationViewport, 'expanded');
     addClass(cardsViewport, 'expanded');
+    addClass(lessWrapperNavFooterElem, 'expanded');
 
     addClassAll(navFooterAreaLineElem, 'expanded');
   }
+
+    // this function adds click event handler
+    function addLessClickEventHandle(e) {
+      // setup some constants
+      const navConstants = setNavItemsCostants();
+      const navFooterRow2Elem = document.querySelector(`.${navConstants.navFooterRow2Elem}`);
+      const expandedWrapperNavFooterElem = document.getElementById(navConstants.expandedWrapperNavFooterElem);
+      const moreWrapperNavFooterElem = document.getElementById(navConstants.moreWrapperNavFooterElem);
+      const navFooter = document.getElementById(navConstants.navFooter);
+      const locationViewport = document.getElementById(navConstants.locationViewport);
+      const cardsViewport = document.getElementById(navConstants.cardsViewport);
+      const lessWrapperNavFooterElem = document.getElementById(navConstants.lessWrapperNavFooterElem);
+      const navFooterAreaLineElem = document.querySelectorAll(`.${navConstants.navFooterAreaLineElem}`);
+
+      removeClass(navFooterRow2Elem, 'expanded');
+      removeClass(expandedWrapperNavFooterElem, 'expanded');
+      removeClass(moreWrapperNavFooterElem, 'expanded');
+      removeClass(navFooter, 'expanded');
+      removeClass(locationViewport, 'expanded');
+      removeClass(cardsViewport, 'expanded');
+      removeClass(lessWrapperNavFooterElem, 'expanded');
+
+      removeClassAll(navFooterAreaLineElem, 'expanded');
+    }
 
   // this function checks if the nav item would be hidden behind the more item
   function isMoreNav(navLocation) {
@@ -114,6 +170,7 @@ $(function () {
       navFooter: 'nav-footer',
       cardsViewport: 'cards-viewport',
       locationViewport: 'location-viewport',
+      lessWrapperNavFooterElem: 'less-wrapper-nav-footer'
     }
   }
 

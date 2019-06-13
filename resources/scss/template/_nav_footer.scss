@@ -8,7 +8,7 @@
     align-self: flex-end !important;
 
     &.expanded {
-      @media screen and (min-width: 788px) {
+      @media screen and (min-width: 850px) {
         flex: 0 1 120px !important;
         height: 120px !important;
       }
@@ -21,7 +21,7 @@
 .nav-footer-row-1 {
   flex-grow: 0 !important;
   align-content: flex-end !important;
-  @media screen and (max-width: 788px) {
+  @media screen and (max-width: 850px) {
     align-content: center !important;
   }
 }
@@ -50,7 +50,7 @@
     flex-wrap: nowrap !important;
   }
 
-  @media screen and (max-width: 1177px) {
+  @media screen and (max-width: 1277px) {
     .padding-horrizontal {
       padding-left: $ce3-default-horizontal-padding/2 !important;
       padding-right: $ce3-default-horizontal-padding/2 !important;
@@ -79,7 +79,7 @@
 
 .nav-footer-icon {
   font-size: 48px !important;
-  @media screen and (max-width: 1177px) {
+  @media screen and (max-width: 1277px) {
     font-size: 36px !important;
   }
   font-weight: 500 !important;
@@ -116,16 +116,16 @@
   justify-content: center !important;
   align-content: center !important;
   align-self: center !important;
-  @media screen and (max-width: 900px) {
+  @media screen and (max-width: 950px) {
     flex-flow: row wrap !important;
   }
-  @media screen and (max-width: 1177px) {
+  @media screen and (max-width: 1277px) {
     display: none
   }
 }
 
 .nav-footer-label-smallscreen {
-  @media screen and (min-width: 1178px) {
+  @media screen and (min-width: 1278px) {
     display: none
   }
 }
@@ -175,6 +175,14 @@
 
 #less-wrapper-nav-footer {
   display: none !important;
+
+  @media screen and (max-width: 900px) {
+    display: none !important;
+  }
+
+  &.expanded {
+    display: flex !important;
+  }
 }
 
 #expanded-wrapper-nav-footer {

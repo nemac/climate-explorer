@@ -6,7 +6,7 @@
   flex: 1 1 auto !important;
 
   &.expanded {
-    @media screen and (min-width: 788px) {
+    @media screen and (min-width: 850px) {
       min-height: calc(100% - 48px - 12px - 120px) !important;
       height: calc(100% - 48px - 12px - 120px) !important
     }

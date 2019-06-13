@@ -13724,7 +13724,7 @@ body.detail-open #nav-overlay {
   height: 210px !important;
 }
 
-@media screen and (min-width: 788px) {
+@media screen and (min-width: 850px) {
   /* line 10, resources/scss/template/_nav_footer.scss */
   #nav-footer.expanded {
     flex: 0 1 120px !important;
@@ -13738,7 +13738,7 @@ body.detail-open #nav-overlay {
   align-content: flex-end !important;
 }
 
-@media screen and (max-width: 788px) {
+@media screen and (max-width: 850px) {
   /* line 21, resources/scss/template/_nav_footer.scss */
   .nav-footer-row-1 {
     align-content: center !important;
@@ -13780,7 +13780,7 @@ body.detail-open #nav-overlay {
   }
 }
 
-@media screen and (max-width: 1177px) {
+@media screen and (max-width: 1277px) {
   /* line 54, resources/scss/template/_nav_footer.scss */
   .nav-footer-items .padding-horrizontal {
     padding-left: 6px !important;
@@ -13819,7 +13819,7 @@ body.detail-open #nav-overlay {
   font-weight: 500 !important;
 }
 
-@media screen and (max-width: 1177px) {
+@media screen and (max-width: 1277px) {
   /* line 80, resources/scss/template/_nav_footer.scss */
   .nav-footer-icon {
     font-size: 36px !important;
@@ -13866,21 +13866,21 @@ body.detail-open #nav-overlay {
   align-self: center !important;
 }
 
-@media screen and (max-width: 900px) {
+@media screen and (max-width: 950px) {
   /* line 113, resources/scss/template/_nav_footer.scss */
   .nav-footer-label {
     flex-flow: row wrap !important;
   }
 }
 
-@media screen and (max-width: 1177px) {
+@media screen and (max-width: 1277px) {
   /* line 113, resources/scss/template/_nav_footer.scss */
   .nav-footer-label {
     display: none;
   }
 }
 
-@media screen and (min-width: 1178px) {
+@media screen and (min-width: 1278px) {
   /* line 127, resources/scss/template/_nav_footer.scss */
   .nav-footer-label-smallscreen {
     display: none;
@@ -13943,35 +13943,47 @@ body.detail-open #nav-overlay {
   display: none !important;
 }
 
-/* line 181, resources/scss/template/_nav_footer.scss */
+@media screen and (max-width: 900px) {
+  /* line 176, resources/scss/template/_nav_footer.scss */
+  #less-wrapper-nav-footer {
+    display: none !important;
+  }
+}
+
+/* line 183, resources/scss/template/_nav_footer.scss */
+#less-wrapper-nav-footer.expanded {
+  display: flex !important;
+}
+
+/* line 189, resources/scss/template/_nav_footer.scss */
 #expanded-wrapper-nav-footer.expanded {
   display: flex !important;
 }
 
 @media screen and (max-width: 900px) {
-  /* line 180, resources/scss/template/_nav_footer.scss */
+  /* line 188, resources/scss/template/_nav_footer.scss */
   #expanded-wrapper-nav-footer {
     display: none !important;
   }
 }
 
-/* line 191, resources/scss/template/_nav_footer.scss */
+/* line 199, resources/scss/template/_nav_footer.scss */
 .nav-footer-area-title .nav-footer-area-text-smallecreen {
   display: none !important;
 }
 
 @media screen and (max-width: 900px) {
-  /* line 190, resources/scss/template/_nav_footer.scss */
+  /* line 198, resources/scss/template/_nav_footer.scss */
   .nav-footer-area-title {
     min-height: 21px !important;
     height: 21px !important;
     max-height: 21px !important;
   }
-  /* line 200, resources/scss/template/_nav_footer.scss */
+  /* line 208, resources/scss/template/_nav_footer.scss */
   .nav-footer-area-title .nav-footer-area-text {
     display: none !important;
   }
-  /* line 204, resources/scss/template/_nav_footer.scss */
+  /* line 212, resources/scss/template/_nav_footer.scss */
   .nav-footer-area-title .nav-footer-area-text-smallecreen {
     display: inherit !important;
   }
@@ -14253,7 +14265,7 @@ input.input-inner:focus {
   height: calc(100% - 48px - 12px - 210px) !important;
 }
 
-@media screen and (min-width: 788px) {
+@media screen and (min-width: 850px) {
   /* line 8, resources/scss/pages/_local-climate-charts.scss */
   #location-viewport.expanded {
     min-height: calc(100% - 48px - 12px - 120px) !important;
@@ -16258,7 +16270,7 @@ input.input-inner:focus {
   height: calc(100% - 48px - 12px - 210px) !important;
 }
 
-@media screen and (min-width: 788px) {
+@media screen and (min-width: 850px) {
   /* line 7, resources/scss/pages/_cards-home.scss */
   #cards-viewport.expanded {
     min-height: calc(100% - 48px - 12px - 120px) !important;
