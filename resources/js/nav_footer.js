@@ -26,9 +26,10 @@ $(function () {
     // setup some constants
     const navConstants = setNavItemsCostants();
 
-    const moreElem = document.getElementById(navConstants.moreElemID);
-    if (moreElem) {
-      moreElem.addEventListener('click', addMoreClickEventHandle);
+    const moreWrapperNavFooterElem = document.getElementById(navConstants.moreWrapperNavFooterElem);
+
+    if (moreWrapperNavFooterElem) {
+      moreWrapperNavFooterElem.addEventListener('click', addMoreClickEventHandle);
     }
   }
 
@@ -39,21 +40,17 @@ $(function () {
     return checkString;
   }
 
-  function addStyle(elem, style) {
+  function addClass(elem, cssClass) {
     if (elem) {
-      let tempStyle = elem.getAttribute('style');
-      tempStyle = nullString(tempStyle);
-      elem.setAttribute('style', `${tempStyle}; ${style}`);
+      elem.classList.add(cssClass);
     }
   }
 
-  function addStyleAll(elems, style) {
+  function addClassAll(elems, cssClass) {
     if (elems) {
       elems.forEach((elem) => {
         if (elem) {
-          let tempStyle = elem.getAttribute('style');
-          tempStyle = nullString(tempStyle);
-          elem.setAttribute('style', `${tempStyle}; ${style}`);
+          elem.classList.add(cssClass);
         }
       });
     }
@@ -63,30 +60,23 @@ $(function () {
   function addMoreClickEventHandle(e) {
     // setup some constants
     const navConstants = setNavItemsCostants();
-    const hasid = ParentContains(e.target, navConstants.moreElemID);
-
-    const expandedFooterElem = document.getElementById(navConstants.expandedFooterElem);
-    const moreFooterElem = document.getElementById(navConstants.moreFooterElem);
     const navFooterRow2Elem = document.querySelector(`.${navConstants.navFooterRow2Elem}`);
-    const navFooterAreaLine = document.querySelectorAll(`.${navConstants.navFooterAreaLine}`);
+    const expandedWrapperNavFooterElem = document.getElementById(navConstants.expandedWrapperNavFooterElem);
+    const moreWrapperNavFooterElem = document.getElementById(navConstants.moreWrapperNavFooterElem);
     const navFooter = document.getElementById(navConstants.navFooter);
     const locationViewport = document.getElementById(navConstants.locationViewport);
     const cardsViewport = document.getElementById(navConstants.cardsViewport);
 
-    // addStyle(expandedFooterElem, 'display: flex !important');
-    // addStyle(moreFooterElem, 'display: none !important');
-    // addStyle(navFooterRow2Elem, 'flex-flow: row wrap !important');
-    //
-    //
-    // addStyle(locationViewport, 'height: calc(100% - 48px - 12px - 210px) !important');
-    // addStyle(locationViewport, 'min-height: calc(100% - 48px - 12px - 210px) !important');
-    // addStyle(cardsViewport, 'height: calc(100% - 48px - 12px - 210px) !important');
-    // addStyle(cardsViewport, 'min-height: calc(100% - 48px - 12px - 210px) !important');
-    // addStyle(navFooter, 'flex: 0 1 210px !important');
-    // addStyle(navFooter, 'height: 210px !important');
-    //
-    //
-    // addStyleAll(navFooterAreaLine, 'display: flex !important');
+    const navFooterAreaLineElem = document.querySelectorAll(`.${navConstants.navFooterAreaLineElem}`);
+
+    addClass(navFooterRow2Elem, 'expanded');
+    addClass(expandedWrapperNavFooterElem, 'expanded');
+    addClass(moreWrapperNavFooterElem, 'expanded');
+    addClass(navFooter, 'expanded');
+    addClass(locationViewport, 'expanded');
+    addClass(cardsViewport, 'expanded');
+
+    addClassAll(navFooterAreaLineElem, 'expanded');
   }
 
   // this function checks if the nav item would be hidden behind the more item
@@ -115,12 +105,12 @@ $(function () {
       navFooterItemNOTSelected: 'nav-footer-item',
       selectorAddOn: '-nav-footer',
       moreNavs: ['historical-weather', 'historical-thresholds', 'hightide-flooding'],
-      moreElemID: 'more-nav-footer',
-      expandedFooterElem: 'expanded-wrapper-nav-footer',
-      moreFooterElem: 'more-wrapper-nav-footer',
+      moreNavFooter: 'more-nav-footer',
+      expandedWrapperNavFooterElem: 'expanded-wrapper-nav-footer',
+      moreWrapperNavFooterElem: 'more-wrapper-nav-footer',
       navFooterRow1Elem: 'nav-footer-row-1',
       navFooterRow2Elem: 'nav-footer-row-2',
-      navFooterAreaLine: 'nav-footer-area-line',
+      navFooterAreaLineElem: 'nav-footer-area-line',
       navFooter: 'nav-footer',
       cardsViewport: 'cards-viewport',
       locationViewport: 'location-viewport',

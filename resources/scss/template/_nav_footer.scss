@@ -1,17 +1,31 @@
+#more-wrapper-nav-footer {
+  cursor: pointer !important;
+}
+
 #nav-footer {
     flex: 0 1 $ce3-main-bottom !important;
     height: $ce3-main-bottom !important;
     align-self: flex-end !important;
 
-    @media screen and (max-width: 788px) {
-      flex: 0 1 $ce3-main-bottom !important;
-      height: $ce3-main-bottom !important;
+    &.expanded {
+      @media screen and (min-width: 788px) {
+        flex: 0 1 120px !important;
+        height: 120px !important;
+      }
+
+      flex: 0 1 210px !important;
+      height: 210px !important;
     }
 
-    @media screen and (max-width: 500px) {
-      flex: 0 1 $ce3-main-bottom !important;
-      height: $ce3-main-bottom !important;
-    }
+    // @media screen and (max-width: 788px) {
+    //   flex: 0 1 $ce3-main-bottom !important;
+    //   height: $ce3-main-bottom !important;
+    // }
+    //
+    // @media screen and (max-width: 500px) {
+    //   flex: 0 1 $ce3-main-bottom !important;
+    //   height: $ce3-main-bottom !important;
+    // }
 }
 
 .nav-footer-row-1 {
@@ -24,6 +38,17 @@
 
 .nav-footer-row-2 {
   flex-grow: 4 !important;
+
+  &.expanded {
+    flex-flow: row wrap !important;
+  }
+
+  @media screen and (max-width: 900px) {
+    flex-flow: row nowrap;
+    &.expanded {
+      flex-flow: row wrap !important;
+    }
+  }
 }
 
 .nav-footer-items {
@@ -124,12 +149,22 @@
   margin-left: 6px !important;
   margin-right: 6px !important;
   width: 30% !important;
+
   @media screen and (max-width: 950px) {
     width: 20% !important;
+  }
+
+  &.expanded {
+    display: flex !important;
+    width: 30% !important;
   }
 }
 
 #more-wrapper-nav-footer {
+  &.expanded {
+    display: none !important;
+  }
+
   @media screen and (min-width: 900px) {
     display: none !important;
   }
@@ -140,6 +175,10 @@
 }
 
 #expanded-wrapper-nav-footer {
+  &.expanded {
+    display: flex !important
+  }
+
   @media screen and (max-width: 900px) {
     display: none !important;
   }
@@ -164,15 +203,8 @@
     }
 
     .nav-footer-area-line {
-      display: none !important;
+      // display: none !important;
     }
 
-  }
-}
-
-.nav-footer-row-2 {
-  flex-flow: row wrap;
-  @media screen and (max-width: 900px) {
-    flex-flow: row nowrap;
   }
 }
