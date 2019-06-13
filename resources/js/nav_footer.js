@@ -7,65 +7,104 @@ $(function () {
   $('#cards-search-input').val(window.ce.ce('getLocationPageState')['city']);
 
   // setup some constants
-  const navFooterItemSelected = 'nav-footer-item-selected';
-  const navFooterItemNOTSelected = 'nav-footer-item';
-  const selectorAddOn = '-nav-footer';
-
-  // more navs
-  const moreNavs = ["historical-weather", "historical-thresholds", "hightide-flooding"];
+  const navConstants = setNavItemsCostants();
 
   // add click events to footer
   // uses invisiable a link
-  addNavlick('home', 'home', selectorAddOn);
-  addNavlick('local-climate-charts', 'local-climate-charts', selectorAddOn);
-  addNavlick('more', 'more', selectorAddOn);
-  addNavlick('hightide-flooding', 'hightide-flooding', selectorAddOn);
+  addNavlick('home', 'home', navConstants.selectorAddOn);
+  addNavlick('local-climate-charts', 'local-climate-charts', navConstants.selectorAddOn);
+  addNavlick('more', 'more', navConstants.selectorAddOn);
+  addNavlick('hightide-flooding', 'hightide-flooding', navConstants.selectorAddOn);
 
-  // get the url location from the state
-  let navLocation = window.ce.ce('getNavFooterState')['nav'];
+  updateNavBar();
+
+  // this function checks if the nav item would be hidden behind the more item
+  function isMoreNav(navLocation) {
+    const navConstants = setNavItemsCostants();
+
+    // check if nav item is a more nav
+    return jQuery.inArray( navLocation, navConstants.moreNavs);
+  }
+
+  // remove all selected css class nav items from the footer
+  function removeSelectedNavItemClass(selector) {
+    // remove all selected css class nav items from the footer
+    const elems = document.querySelectorAll(`.${selector}`);
+    if (elems) return null;
+    elems.forEach((elem) => {
+      if (elem) {
+        elem.classList.remove(selector);
+      }
+    });
+  }
+
+  function setNavItemsCostants() {
+    return {
+      navFooterItemSelected: 'nav-footer-item-selected',
+      navFooterItemNOTSelected: 'nav-footer-item',
+      selectorAddOn: '-nav-footer',
+      moreNavs: ["historical-weather", "historical-thresholds", "hightide-flooding"]
+    }
+  }
 
   // make the location home if not defined in the state
-  if (navLocation === undefined || navLocation === null) {
-    navLocation = 'home';
-  }
-
-  // check if nav item is a more nav
-  const isvalid = jQuery.inArray( navLocation, moreNavs);
-
-  // remove all selected nav items from the footer
-  const elems = document.querySelectorAll(`.${navFooterItemSelected}`);
-  elems.forEach((elem) => {
-    if (elem) {
-      elem.classList.remove(navFooterItemSelected);
+  function ensureNavLocIsValid(navLocation) {
+    // make the location home if not defined in the state
+    if (navLocation === undefined || navLocation === null) {
+      return 'home';
     }
-  });
-
-  // get new active nav item and chance display class
-  let navLocationElem = document.querySelector(`#${navLocation}${selectorAddOn}`)
-
-  // make nav location home if element is null
-  if (navLocationElem === undefined || navLocationElem === null) {
-      navLocation = 'home';
-      navLocationElem = document.querySelector(`#${navLocation}${selectorAddOn}`)
+    return navLocation;
   }
 
-  // turnoff unselected and add selected class
-  navLocationElem.classList.remove(navFooterItemNOTSelected);
-  navLocationElem.classList.add(navFooterItemSelected);
+  // this function updates the nav bar so the current page is appears "selected"
+  // in the footer nav bar
+  function updateNavBar() {
+      // setup some constants
+      const navConstants = setNavItemsCostants();
 
-  // if the nav item is stations based it maybe hidden in more
-  // in repsonsive mode so we should highlight also
-  if (isvalid > 0) {
-    const moreElem = document.querySelector(`#more${selectorAddOn}`)
-    moreElem.classList.remove(navFooterItemNOTSelected);
-    moreElem.classList.add(navFooterItemSelected);
-  } else {
-    const moreElem = document.querySelector(`#more${selectorAddOn}`)
-    moreElem.classList.remove(navFooterItemSelected);
+      // get the url location from the state
+      let navLocation = window.ce.ce('getNavFooterState')['nav'];
+
+      // make the location home if not defined in the state
+      navLocation = ensureNavLocIsValid(navLocation)
+
+      // check if nav item is a more nav
+      const isMoreNavItem = isMoreNav(navLocation);
+
+      // remove all selected css class nav items from the footer
+      removeSelectedNavItemClass(navConstants.navFooterItemSelected);
+
+      // get new active nav item and chance display class
+      let navLocationElem = document.querySelector(`#${navLocation}${navConstants.selectorAddOn}`)
+
+      // make nav location home if element is null
+      if (navLocationElem === undefined || navLocationElem === null) {
+          navLocation = 'home';
+          navLocationElem = document.querySelector(`#${navLocation}${navConstants.selectorAddOn}`)
+      }
+
+      // turnoff unselected and add selected class
+      navLocationElem.classList.remove(navConstants.navFooterItemNOTSelected);
+      navLocationElem.classList.add(navConstants.navFooterItemSelected);
+
+      // if the nav item is stations based it maybe hidden in more
+      // in repsonsive mode so we should highlight also
+      if (isMoreNav() > 0) {
+        const moreElem = document.querySelector(`#more${navConstants.selectorAddOn}`)
+        moreElem.classList.remove(navConstants.navFooterItemNOTSelected);
+        moreElem.classList.add(navConstants.navFooterItemSelected);
+      } else {
+        const moreElem = document.querySelector(`#more${navConstants.selectorAddOn}`)
+        moreElem.classList.remove(navConstants.navFooterItemSelected);
+      }
   }
+
 
   // adds a click event to got to card location
   function addNavlick(selector, nav, selectorAddOn) {
+    // setup some constants
+    const navConstants = setNavItemsCostants();
+
     // find the the nav-item and add click event
     $(`#${selector}${selectorAddOn}`).click( function(e) {
       e.stopPropagation();
@@ -75,7 +114,7 @@ $(function () {
 
       // get the invisiable link just outside the element node tree
       // if inside we have issues will bubbling propogation
-      const link = document.querySelector(`#${selector}-secretlink${selectorAddOn}`);
+      const link = document.querySelector(`#${selector}-secretlink${navConstants.selectorAddOn}`);
 
       // set the url and search params
       const url = `${$(link).attr('href')}/${seachParams}&nav=${nav}`

@@ -869,9 +869,9 @@ App.prototype.locationSearch = function () {
     return this === this.latinise();
   };
 
-  $(".location-mapper").bind("geocode:result", function (event, result) {
 
-    // console.log('result', result);
+  // adds events for geocodeing locations - this gets the city, countty, fips code
+  $(".location-mapper").bind("geocode:result", function (event, result) {
     var data = {};
     $.each(result.address_components, function (index, object) {
       var name = object.types[0];
@@ -922,7 +922,8 @@ App.prototype.locationSearch = function () {
       if (page.length === 0) {
         page = 'cards-home';
       }
-      window.location.href = `/${page}/?county=` + county + '&city=' + city + '&fips=' + fips + '&lat=' + lat + '&lon=' + lon;
+      const navLocation = window.ce.ce('getNavFooterState')['nav'];
+      window.location.href = `/${page}/?county=` + county + '&city=' + city + '&fips=' + fips + '&lat=' + lat + '&lon=' + lon + '&nav=' + navLocation;
     }
   });
 };
