@@ -16,16 +16,6 @@
       flex: 0 1 210px !important;
       height: 210px !important;
     }
-
-    // @media screen and (max-width: 788px) {
-    //   flex: 0 1 $ce3-main-bottom !important;
-    //   height: $ce3-main-bottom !important;
-    // }
-    //
-    // @media screen and (max-width: 500px) {
-    //   flex: 0 1 $ce3-main-bottom !important;
-    //   height: $ce3-main-bottom !important;
-    // }
 }
 
 .nav-footer-row-1 {
@@ -38,6 +28,7 @@
 
 .nav-footer-row-2 {
   flex-grow: 4 !important;
+  flex-flow: row nowrap !important;
 
   &.expanded {
     flex-flow: row wrap !important;
@@ -157,6 +148,18 @@
   &.expanded {
     display: flex !important;
     width: 30% !important;
+  }
+}
+
+#sation-based {
+  @media screen and (max-width: 600px) {
+    .nav-footer-area-line {
+      display: none !important;
+      &.expanded {
+        display: flex !important;
+        width: 30% !important;
+      }
+    }
   }
 }
 
