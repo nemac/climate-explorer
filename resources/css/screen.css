@@ -12115,14 +12115,14 @@ h6 {
 
 /* line 521, resources/scss/screen.scss */
 .d-flex-row {
-  display: flex;
-  flex-flow: row wrap;
+  display: flex !important;
+  flex-flow: row wrap  !important;
 }
 
 /* line 526, resources/scss/screen.scss */
 .d-flex-column {
-  display: flex;
-  flex-direction: column;
+  display: flex !important;
+  flex-direction: column !important;
 }
 
 /* line 532, resources/scss/screen.scss */

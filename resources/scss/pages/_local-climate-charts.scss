@@ -1,0 +1,228 @@
+#location-viewport {
+  background-color: $white;
+  height: calc(100% - 48px - $ce3-main-bottom) !important;
+  min-height: calc(100% - 48px - $ce3-main-bottom) !important;
+  overflow: auto !important;
+  flex: 1 1 auto !important;
+
+  // @media screen and (max-width: 900px) {
+  //   height: calc(100% - 36px - 12px - 120px) !important;
+  //   min-height: calc(100% - 36px - 12px - 120px) !important;
+  // }
+  //
+  // @media screen and (max-width: 788px) {
+  //   height: calc(100% - 36px - 12px - 188px) !important;
+  //   min-height: calc(100% - 36px - 12px - 188px) !important;
+  // }
+  //
+  // @media screen and (max-width: 500px) {
+  //   height: calc(100% - 48px - 12px - 210px) !important;
+  //   min-height: calc(100% - 48px - 12px - 210px) !important;
+  // }
+}
+
+#chart-row {
+  justify-content: space-evenly !important;
+  height: 100% !important;
+
+  @media screen and (max-width: 1240px) {
+    justify-content: center !important;
+    height: auto !important;
+    min-height: unset !important;
+  }
+}
+
+#stations-select, #downnloads-select, #varriable-select {
+  display: none !important;
+}
+
+#downloads-select-wrapper, #stations-select-wrapper, #chartmap-select-wrapper, #presentation-select-wrapper {
+  background-color: $ce3-blue5;
+  color: $ce3-blue3;
+  font: 500 14px $roboto !important;
+  @media screen and (max-width: 900px) {
+    display: none !important;
+  }
+}
+
+
+#chartmap-select-wrapper, #time-select-wrapper, #presentation-select-wrapper {
+  background-color: $ce3-blue5;
+  color: $ce3-blue3;
+  font: 500 14px $roboto !important;
+  display: none !important;
+  @media screen and (max-width: 900px) {
+    height: auto !important;
+    margin-top: $ce3-padding-half !important;
+    display: inherit !important;
+    width: 100% !important;
+    .select-options {
+      margin-top: 5px !important;
+    }
+  }
+}
+
+#chartmap-wrapper, #time-wrapper, #presentation-wrapper  {
+  @media screen and (max-width: 900px) {
+    display: none !important;
+  }
+}
+
+#varriable-select-wrapper, #chartmap-wrapper, #time-wrapper, #presentation-wrapper {
+  @media screen and (max-width: 900px) {
+    height: auto !important;
+    width: 100% !important;
+    padding-top: $ce3-padding-half !important;
+    padding-bottom:  $ce3-padding-half !important;
+  }
+}
+
+
+#monthly-select-wrapper {
+  @media screen and (max-width: 900px) {
+    flex-flow: row wrap !important;
+    height: auto !important;
+
+    #btn-chart {
+      width: 100% !important;
+      padding-top: $ce3-padding-half !important;
+      padding-bottom:  $ce3-padding-half !important;
+    }
+
+    .circle-box-left {
+      @include border-top-radius(5px);
+      @include border-bottom-radius(0px);
+    }
+    .circle-box-right {
+      @include border-top-radius(0px);
+      @include border-bottom-radius(5px);
+    }
+  }
+}
+
+.top-select-wrapper {
+  width: 29% !important;
+}
+
+.search-box-secondary {
+  @media screen and (max-width: 900px) {
+    width: 100% !important;
+  }
+}
+
+#slider-range {
+  width: 90% !important;
+  margin: auto !important;
+}
+
+.ui-slider-range {
+  display: block !important;
+  position: relative !important;
+  height: 8px !important;
+}
+
+.noUi-horizontal {
+  height: 8px !important;
+}
+
+.noUi-target {
+    background: lighten($ce3-blue3, 25) !important;
+    border-radius: 8px !important;
+    border: 0px transparent transparent;
+    box-shadow: unset !important;
+}
+
+.noUi-base {
+  background: lighten($ce3-blue3, 25) !important;
+  border-radius: 18px !important;
+}
+
+.noUi-connect {
+  background: $ce3-blue3 !important;
+}
+
+.noUi-handle {
+  cursor: pointer !important;
+  background-color: $ce3-blue3 !important;
+  height: 14px !important;
+  width: 14px !important;
+  @include border-radius(14px, 14px !important);
+  right: -10px !important;
+  box-shadow: unset !important;
+  border: unset !important;
+  top: -4px !important;
+
+  &:focus {
+    outline: none !important;
+    @include box-shadow(0px 0px 0px 8px  transparentize($ce3-blue3, 0.75) !important);
+  }
+
+  &:hover {
+    outline: none !important;
+    @include box-shadow(0px 0px 0px 8px  transparentize($ce3-blue3, 0.75) !important);
+  }
+
+  &:before, &:after {
+    display: none !important;
+  }
+}
+
+#slider-value-high {
+  margin-left: 12px !important
+}
+
+#slider-value-low {
+  margin-right: 12px !important
+}
+
+#slider-value-low, #slider-value-mid, #slider-value-high {
+  display: flex;
+  font: 500 18px $roboto !important;
+  color: $ce3-blue3 !important;
+  height: 25px !important;
+  width: 50px !important;
+  justify-content: center !important;
+}
+
+#legend-wrapper {
+  width: 80% !important;
+  z-index: 999 !important;
+  @media screen and (max-width: 900px) {
+    height: auto !important;
+    flex-wrap: wrap !important;
+    order: 3;
+    width: 100% !important;
+    #btn-chart {
+      width: 100% !important;
+    }
+    .circle-box-left {
+      @include border-top-radius(5px);
+      @include border-bottom-radius(0px);
+    }
+    .circle-box-right {
+      @include border-top-radius(0px);
+      @include border-bottom-radius(5px);
+    }
+  }
+}
+
+#chart-row {
+  @media screen and (max-width: 900px) {
+    height: auto !important;
+    order: 1;
+    .chart-wrap {
+      min-height: 250px !important;
+    }
+  }
+}
+
+#annual-slider-wrapper {
+  height: $ce3-btnheight !important;
+  @media screen and (max-width: 900px) {
+    height: $ce3-btnheight-smallecreen !important;
+    order: 2;
+    // #slider-range {
+    //   // width: 60% !important;
+    // }
+  }
+}
