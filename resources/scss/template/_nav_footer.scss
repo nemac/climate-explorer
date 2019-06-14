@@ -132,15 +132,22 @@
   @media screen and (min-width: 1225px) {
     display: none
   }
-  @media screen and (max-width: 376px) {
+  @media screen and (max-width: 500px) {
     display: none
   }
 }
 
 .nav-footer-label-verysmallscreen {
-  font-size: 12px !important;
-  @media screen and (min-width: 376px) {
-    display: none
+  @media screen and (min-width: 501px) {
+    display: none !important;
+  }
+  @media screen and (max-width: 501px) {
+    font-size: 14px !important;
+    display: flex !important;
+  }
+  @media screen and (max-width: 376px) {
+    font-size: 12px !important;
+    display: flex !important;
   }
 }
 
@@ -164,7 +171,7 @@
     width: 30% !important;
   }
 
-  @media screen and (max-width: 350px) {
+  @media screen and (max-width: 360px) {
     &.expanded {
       width: 20% !important;
     }
@@ -181,7 +188,7 @@
       }
     }
   }
-  @media screen and (max-width: 350px) {
+  @media screen and (max-width: 360px) {
     .nav-footer-area-line.expanded {
       width: 20% !important;
     }
