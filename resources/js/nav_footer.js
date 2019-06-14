@@ -99,6 +99,7 @@ $(function () {
     const cardsViewport = document.getElementById(navConstants.cardsViewport);
     const lessWrapperNavFooterElem = document.getElementById(navConstants.lessWrapperNavFooterElem);
     const navFooterAreaLineElem = document.querySelectorAll(`.${navConstants.navFooterAreaLineElem}`);
+    const lessRow1Elem = document.getElementById(navConstants.lessRow1Elem);
 
     addClass(navFooterRow2Elem, 'expanded');
     addClass(expandedWrapperNavFooterElem, 'expanded');
@@ -107,6 +108,7 @@ $(function () {
     addClass(locationViewport, 'expanded');
     addClass(cardsViewport, 'expanded');
     addClass(lessWrapperNavFooterElem, 'expanded');
+    addClass(lessRow1Elem, 'expanded');
 
     addClassAll(navFooterAreaLineElem, 'expanded');
   }
@@ -123,6 +125,7 @@ $(function () {
       const cardsViewport = document.getElementById(navConstants.cardsViewport);
       const lessWrapperNavFooterElem = document.getElementById(navConstants.lessWrapperNavFooterElem);
       const navFooterAreaLineElem = document.querySelectorAll(`.${navConstants.navFooterAreaLineElem}`);
+      const lessRow1Elem = document.getElementById(navConstants.lessRow1Elem);
 
       removeClass(navFooterRow2Elem, 'expanded');
       removeClass(expandedWrapperNavFooterElem, 'expanded');
@@ -131,6 +134,7 @@ $(function () {
       removeClass(locationViewport, 'expanded');
       removeClass(cardsViewport, 'expanded');
       removeClass(lessWrapperNavFooterElem, 'expanded');
+      removeClass(lessRow1Elem, 'expanded');
 
       removeClassAll(navFooterAreaLineElem, 'expanded');
     }
@@ -170,7 +174,8 @@ $(function () {
       navFooter: 'nav-footer',
       cardsViewport: 'cards-viewport',
       locationViewport: 'location-viewport',
-      lessWrapperNavFooterElem: 'less-wrapper-nav-footer'
+      lessWrapperNavFooterElem: 'less-wrapper-nav-footer',
+      lessRow1Elem: 'less-row-1'
     }
   }
 
