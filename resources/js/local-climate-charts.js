@@ -51,6 +51,32 @@ $(function () {
     }
   });
 
+  // toggle filters click
+  $('#filters-toggle').click( function(e) {
+      const target = $(e.target);
+      if (target.hasClass('closed-filters')) {
+        target.removeClass('closed-filters');
+      } else {
+        target.addClass('closed-filters');
+      }
+
+      const infoRowElem = $('#info-row');
+      if ($(infoRowElem).hasClass('closed-filters')) {
+        $(infoRowElem).removeClass('closed-filters');
+      } else {
+        $(infoRowElem).addClass('closed-filters');
+      }
+
+      const chartRowElem = $('#chart-row');
+      if ($(chartRowElem).hasClass('closed-filters')) {
+        $(chartRowElem).removeClass('closed-filters');
+      } else {
+        $(chartRowElem).addClass('closed-filters');
+      }
+
+      window.tempChart.resize();
+  })
+
   // update select text
   function setSelectFromButton(target) {
     const innerText = target.html().trim();

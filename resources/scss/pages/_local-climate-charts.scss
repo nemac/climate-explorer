@@ -16,17 +16,6 @@
   }
 }
 
-#chart-row {
-  justify-content: space-evenly !important;
-  height: 100% !important;
-
-  @media screen and (max-width: 1240px) {
-    justify-content: center !important;
-    height: auto !important;
-    min-height: unset !important;
-  }
-}
-
 // make the varriable more visually important
 #varriable-select-wrapper {
 
@@ -319,6 +308,33 @@
 }
 
 #chart-row {
+  justify-content: space-evenly !important;
+  height: 100% !important;
+
+  &.closed-filters {
+    .chart-wrap {
+      height: 86% !important;
+    }
+
+    #annual-slider-wrapper {
+      height: 7% !important;
+    }
+
+    #monthly-select-wrapper {
+      height: 7% !important;
+    }
+
+    #legend-wrapper {
+      height: 7% !important;
+    }
+  }
+
+  @media screen and (max-width: 1240px) {
+    justify-content: center !important;
+    height: auto !important;
+    min-height: unset !important;
+  }
+
   @media screen and (max-width: 900px) {
     height: auto !important;
     order: 1;
@@ -344,5 +360,41 @@
     // #slider-range {
     //   // width: 60% !important;
     // }
+  }
+}
+
+#filters-toggle {
+  position: absolute;
+  height: 36px;
+  width: 36px;
+  left: calc(100% - 48px);
+  top: 108px;
+  padding-left: 3px;
+  // background-color: lighten($ce3-blue5, 2);
+  @include border-radius(36px);
+
+  .select-styled {
+    &::after {
+      background-color: darken($ce3-blue5, 3);
+      content: '\f0d8';
+    }
+    &.closed-filters {
+      &::after {
+        font-family: 'Font Awesome 5 Free';
+        content: '\f0d7';
+      }
+    }
+  }
+}
+
+#info-row {
+ &.closed-filters {
+    .rounded-filters-box {
+      min-height: 53px !important;
+    }
+
+    #filters-row {
+      display: none !important;
+    }
   }
 }
