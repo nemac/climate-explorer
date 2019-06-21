@@ -342,6 +342,26 @@
       min-height: 350px !important;
       height: 350px !important;
     }
+
+    &.closed-filters {
+      .chart-wrap {
+        min-height: 350px !important;
+        height: 350px !important;
+      }
+
+      #annual-slider-wrapper {
+        height: auto !important;
+      }
+
+      #monthly-select-wrapper {
+        height: auto !important;
+      }
+
+      #legend-wrapper {
+        height: auto !important;
+      }
+    }
+
   }
   @media screen and (max-width: 500px) {
     height: auto !important;
@@ -364,13 +384,9 @@
 }
 
 #filters-toggle {
-  position: absolute;
   height: 36px;
   width: 36px;
-  left: calc(100% - 48px);
-  top: 108px;
-  padding-left: 3px;
-  // background-color: lighten($ce3-blue5, 2);
+  margin-top: -13px;
   @include border-radius(36px);
 
   .select-styled {
