@@ -346,6 +346,7 @@ $(function () {
       return null;
     }
 
+
     // enable click and show options
     $styledSelect.click(function(e) {
       e.stopPropagation();

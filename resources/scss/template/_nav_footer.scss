@@ -9,12 +9,12 @@
 
     &.expanded {
       @media screen and (min-width: 850px) {
-        flex: 0 1 120px !important;
-        height: 120px !important;
+        flex: 0 1 100px !important;
+        height: 100px !important;
       }
 
-      flex: 0 1 210px !important;
-      height: 210px !important;
+      flex: 0 1 170px !important;
+      height: 170px !important;
     }
 }
 
@@ -33,13 +33,6 @@
   &.expanded {
     flex-flow: row wrap !important;
   }
-
-  // @media screen and (max-width: 900px) {
-  //   flex-flow: row nowrap;
-  //   &.expanded {
-  //     flex-flow: row wrap !important;
-  //   }
-  // }
 }
 
 .nav-footer-items {
@@ -79,12 +72,12 @@
 }
 
 .nav-footer-icon {
-  font-size: 48px !important;
+  font-size: 36px !important;
   @media screen and (max-width: 820px) {
-    font-size: 36px !important;
+    font-size: 24px !important;
   }
   @media screen and (max-width: 330px) {
-    font-size: 24px !important;
+    font-size: 20px !important;
   }
   font-weight: 500 !important;
   @media screen and (min-width: 400px) {

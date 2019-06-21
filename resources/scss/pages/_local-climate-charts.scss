@@ -1,18 +1,18 @@
 #location-viewport {
   background-color: $white;
-  height: calc(100% - 48px - 120px) !important;
-  min-height: calc(100% - 48px - 120px) !important;
+  height: calc(100% - 48px - 100px) !important;
+  min-height: calc(100% - 48px - 100px) !important;
   overflow: auto !important;
   flex: 1 1 auto !important;
 
   &.expanded {
     @media screen and (min-width: 850px) {
-      min-height: calc(100% - 48px - 12px - 120px) !important;
-      height: calc(100% - 48px - 12px - 120px) !important
+      min-height: calc(100% - 48px - 12px - 100px) !important;
+      height: calc(100% - 48px - 12px - 100px) !important
     }
 
-    min-height: calc(100% - 48px - 12px - 210px) !important;
-    height: calc(100% - 48px - 12px - 210px) !important
+    min-height: calc(100% - 48px - 12px - 170px) !important;
+    height: calc(100% - 48px - 12px - 170px) !important
   }
 }
 
@@ -27,14 +27,116 @@
   }
 }
 
+// make the varriable more visually important
+#varriable-select-wrapper {
+
+  background-color: $ce3-blue3 !important;
+  color: $ce3-blue5  !important;
+  padding-right: $ce3-padding-half !important;
+  margin-right: $ce3-default-padding !important;
+  @media screen and (max-width: 900px) {
+    margin-right: 0px !important;
+  }
+
+  &:hover {
+    background-color: lighten($ce3-blue4, 7) !important;
+
+    .select-styled {
+      background-color: lighten($ce3-blue4, 7) !important;
+    }
+  }
+
+  ::-webkit-scrollbar {
+    width: 6px;
+    border: 1px solid $ce3-blue5;
+    background-color: $ce3-blue5;
+
+    &-thumb {
+      background-color: $ce3-blue2;
+      border-radius: 6px;
+      -webkit-border-radius: 6px !important;
+      -moz-border-radius: 6px !important;
+      &:vertical {
+        height: 6px;
+      }
+    }
+
+    &-track {
+      border: 1px solid $ce3-blue4;
+      background-color: #E9F1FC;
+    }
+
+    &-track-piece {
+      margin-right: 10px;
+      height: 6px;
+      width: 6px;
+    }
+
+    &-corner {
+      display: none;
+    }
+  }
+
+  .varriable-select {
+    color: $ce3-blue5  !important;
+
+    .select {
+      color: $ce3-blue5 !important;
+    }
+
+    .select-styled {
+      // background-color: $ce3-blue3 !important;
+      // color: $ce3-blue5 !important;
+
+      a {
+        color: $ce3-blue5 !important;
+      }
+
+      &.disabled {
+        color: $ce3-blue5alpha !important
+      }
+
+      &:after {
+        background-color: $ce3-blue5 !important;
+        color: $ce3-blue3 !important;
+      }
+    }
+
+    .select-options {
+      background-color: $ce3-blue3 !important;
+      color: $ce3-blue5  !important;
+
+      a {
+        color: $ce3-blue5 !important;
+      }
+      .default-select-option-disabled {
+        color: $ce3-blue5alpha !important;
+      }
+
+      li {
+        border-top: 1px solid $ce3-blue3;
+        a {
+          color: $ce3-blue5 !important;
+        }
+        &:hover {
+          color: $ce3-blue5 !important;
+          background:  lighten($ce3-blue4, 7)  !important;
+        }
+      }
+    }
+  }
+
+}
+
 #stations-select, #downnloads-select, #varriable-select {
   display: none !important;
 }
 
-#downloads-select-wrapper, #stations-select-wrapper, #chartmap-select-wrapper, #presentation-select-wrapper {
+#downloads-select-wrapper, #stations-select-wrapper, {
   background-color: $ce3-blue5;
   color: $ce3-blue3;
   font: 500 14px $roboto !important;
+
   @media screen and (max-width: 900px) {
     display: none !important;
   }
@@ -44,8 +146,12 @@
   background-color: $ce3-blue5;
   color: $ce3-blue3;
   font: 500 14px $roboto !important;
+  margin-left: $ce3-padding-half !important;
+  margin-right: $ce3-padding-half !important;
   display: none !important;
   @media screen and (max-width: 900px) {
+    margin-left: 0px !important;
+    margin-right: 0px !important;
     height: auto !important;
     margin-top: $ce3-padding-half !important;
     display: inherit !important;
@@ -57,6 +163,7 @@
 }
 
 #chartmap-wrapper, #time-wrapper, #presentation-wrapper  {
+  // display: none !important;
   @media screen and (max-width: 900px) {
     display: none !important;
   }
@@ -72,6 +179,11 @@
 }
 
 #monthly-select-wrapper {
+  #btn-chart {
+    width: 100% !important;
+    height: 30px !important;
+  }
+
   @media screen and (max-width: 900px) {
     flex-flow: row wrap !important;
     height: auto !important;
@@ -178,7 +290,13 @@
 }
 
 #legend-wrapper {
-  width: 80% !important;
+  padding-top: $ce3-default-padding !important;
+  padding-bottom: $ce3-default-padding !important;
+  width: 60% !important;
+  #btn-chart {
+    height: $ce3-btnheight-legends !important
+  }
+
   @media screen and (max-width: 900px) {
     height: auto !important;
     flex-wrap: wrap !important;
@@ -186,6 +304,7 @@
     width: 100% !important;
     padding-bottom: $ce3-default-padding !important;
     #btn-chart {
+      height: $ce3-btnheight-smallecreen !important;
       width: 100% !important;
     }
     .circle-box-left {

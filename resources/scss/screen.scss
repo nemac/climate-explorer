@@ -11,9 +11,10 @@ $ce3-blue3: #124086; // text, button backgrounds, selected icon borders. main co
 $ce3-blue3alpha: rgba(18,64,134,0.50);  // some borders and color disabled items
 $ce3-blue4: #1D6ADD;  // some backgrounds and borders
 $ce3-blue5: #E9F1FC; // button text boxes, not slected radio buttons
-$ce3-blue5alpha: rgba(13,48,100,0.50);
+$ce3-blue5alpha: rgba(233, 241, 252,0.50);
 $ce3-blue6: #FBFCFE; // text for dark backgrounds, light backgrounds, backgrounds for boxes and pulldowns
-$ce3-darkgray: #4D4D4D; // icon not selected
+// $ce3-darkgray: #4D4D4D; // icon not selected
+$ce3-darkgray: #585858; // #4D4D4D; // icon not selected
 
 $ce3-dark-background: $ce3-blue3;
 $ce3-dark-font: $ce3-blue3;
@@ -51,7 +52,11 @@ $ce3-secondary-logo-height: 36px;
 
 $ce3-main-btn-height: 60px;
 $ce3-btnheight: 36px;
+$ce3-btnheight-legends: 30px;
+
 $ce3-btnheight-smallecreen: 48px;
+$ce3-btnheight-smallecreen-legend: 36px;
+
 $ce3-btninnerheight: 24px;
 
 $ce3-main-title-font-size: 48px;
@@ -63,7 +68,7 @@ $ce3-default-vertical-padding: 12px;
 $ce3-default-horizontal-padding: 12px;
 $ce3-padding-big-break: 48px;
 
-$ce3-main-bottom: 120px;
+$ce3-main-bottom: 100px;
 // $border-radius-5: @include border-radius(5px, 5px);
 //
 // $border-radius-15: @include border-radius(25px, 5px);
@@ -154,32 +159,33 @@ h6 {
   width: 6px;
   border: 1px solid $ce3-blue3;
   background-color: $ce3-blue3;
-}
 
-::-webkit-scrollbar-thumb {
-  background-color: $ce3-blue3;
-  border-radius: 6px;
-  -webkit-border-radius: 6px !important;
-  -moz-border-radius: 6px !important;
-  &:vertical {
+  &-thumb {
+    background-color: $ce3-blue3;
+    border-radius: 6px;
+    -webkit-border-radius: 6px !important;
+    -moz-border-radius: 6px !important;
+    &:vertical {
+      height: 6px;
+    }
+  }
+
+  &-track {
+    border: 1px solid $ce3-blue4;
+    background-color: #E9F1FC;
+  }
+
+  &-track-piece {
+    margin-right: 10px;
     height: 6px;
+    width: 6px;
+  }
+
+  &-corner {
+    display: none;
   }
 }
 
-::-webkit-scrollbar-track {
-  border: 1px solid $ce3-blue4;
-  background-color: #E9F1FC;
-}
-
-::-webkit-scrollbar-track-piece {
-  margin-right: 10px;
-  height: 6px;
-  width: 6px;
-}
-
-::-webkit-scrollbar-corner {
-  display: none;
-}
 // font classes
 .main-font-description {
    font: 500 24px $roboto !important;
@@ -227,12 +233,15 @@ h6 {
   display: flex !important;
   justify-content: left;
   margin-top: 7px;
-  background-color: $ce3-blue5;
+  height: calc(100% - 7px) !important;
+  @include border-radius(24px, 24px);
   @include transition(all 0.2s ease-in);
-  color: $ce3-blue3;
+  // background-color: $ce3-blue5;
+  // color: $ce3-blue3;
   margin-left: $ce3-padding-half !important;
   @media screen and (max-width: 900px) {
     margin-top: 14px;
+    height: calc(100% - 14px) !important;
   }
   a {
     color: $ce3-blue3 !important;
@@ -255,15 +264,15 @@ h6 {
     align-items: center;
     justify-content: center
   }
-  &:hover {
-    background-color: $ce3-blue5;
-  }
+  // &:hover {
+  //   background-color: $ce3-blue5;
+  // }
 }
 
 .select-options {
   display: none;
   position: relative;
-  top: 12px;
+  top: 2px;
   right: 0;
   left: 0;
   z-index: 999;
@@ -697,6 +706,20 @@ h6 {
   color: $ce3-blue3 !important;
   font: 500 14px $roboto !important;
   border: 1px solid $ce3-blue3alpha !important;
+
+  &:focus {
+    background-color: darken($ce3-blue5, 7) !important;
+    color: $ce3-blue3 !important;
+    border: 1px solid $ce3-blue3alpha !important;
+    outline: none !important
+  }
+
+  &:hover {
+    background-color: darken($ce3-blue5, 7) !important;
+    color: $ce3-blue3 !important;
+    border: 1px solid $ce3-blue3alpha !important;
+    outline: none !important
+  }
 }
 
 .btn-default-disabled {
@@ -711,14 +734,14 @@ h6 {
   }
 
   &:focus {
-    background-color: darken($ce3-blue5, 5) !important;
+    background-color: darken($ce3-blue5, 10) !important;
     color: $ce3-blue3 !important;
     border: 1px solid $ce3-blue3alpha !important;
     outline: none !important
   }
 
   &:hover {
-    background-color: darken($ce3-blue5, 5) !important;
+    background-color: darken($ce3-blue5, 10) !important;
     color: $ce3-blue3 !important;
     border: 1px solid $ce3-blue3alpha !important;
     outline: none !important
@@ -727,23 +750,41 @@ h6 {
 
 .btn-default-selected {
   height: $ce3-btnheight !important;
-  @media screen and (max-width: 900px) {
-    height: $ce3-btnheight-smallecreen !important;
-  }
+  @include border-left-radius(25px !important);
+  @include border-right-radius(25px !important);
+  z-index: 999 !important;
   background-color: $ce3-blue3 !important;
   color: $ce3-blue5 !important;
   font: 500 14px $roboto !important;
   border: 1px solid $ce3-blue3alpha !important;
 
+  &.circle-box-left {
+    margin-right: -12px !important;
+  }
+
+  &.circle-box-right {
+    margin-left: -12px !important;
+  }
+
+  &.circle-box-middle {
+    margin-right: -12px !important;
+    margin-left: -12px !important;
+  }
+
+  @media screen and (max-width: 900px) {
+    height: $ce3-btnheight-smallecreen !important;
+  }
+
+
   &:focus {
-    background-color: lighten($ce3-blue3, 7) !important;
+    background-color: lighten($ce3-blue4, 7) !important;
     color: $ce3-blue5 !important;
     border: 1px solid $ce3-blue3alpha !important;
     outline: none !important
   }
 
   &:hover {
-    background-color: lighten($ce3-blue3, 7) !important;
+    background-color: lighten($ce3-blue4, 7) !important;
     color: $ce3-blue5 !important;
     border: 1px solid $ce3-blue3alpha !important;
     outline: none !important
@@ -759,6 +800,13 @@ h6 {
   @media screen and (max-width: 900px) {
     min-height: $ce3-btnheight-smallecreen !important;
     max-height: $ce3-btnheight-smallecreen !important;
+  }
+
+  &:hover {
+    background-color: darken($ce3-blue5, 7) !important;
+    .select-styled {
+      background-color: darken($ce3-blue5, 7) !important;
+    }
   }
 }
 
