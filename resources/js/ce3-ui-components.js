@@ -1,6 +1,3 @@
-'use strict';
-
-$(function () {
 
   // function enables custom selection dropdown from a li element
   function enableCustomSelect(uniqueSelector) {
@@ -83,4 +80,3 @@ $(function () {
       }
     });
   }
-});
