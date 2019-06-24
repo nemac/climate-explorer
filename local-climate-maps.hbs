@@ -80,16 +80,29 @@
 
       <div id="info-row" class="d-flex-row flex-justify padding-top-half padding-bottom-half d-flex-center" >
         <div class="rounded-filters-box padding-default width-100">
-          <i class="fas fa-chart-line icon-info-box"></i>
-          <span id="default-city-state" class="text-info-box" ></span>
-          <span id="" class="text-info-box" > in </span>
-          <span id="default-city-county" class="text-info-box"></span>
-          <span id="" class="text-info-box" > - </span>
-          <span id="default-chart-map-varriable" class="text-info-box" rel="tmax">Avg Daily Max Temp (°F)</span>
+
+          <div class="d-flex-row">
+
+            <div id="info-text-wrapper" class="width-95">
+              <i class="fas fa-chart-line icon-info-box"></i>
+              <span id="default-city-state" class="text-info-box" ></span>
+              <span id="" class="text-info-box" > in </span>
+              <span id="default-city-county" class="text-info-box"></span>
+              <span id="" class="text-info-box" > - </span>
+              <span id="default-chart-map-varriable" class="text-info-box" rel="tmax">Avg Daily Max Temp (°F)</span>
+            </div>
+
+            <div id="filters-toggle" class="width-5">
+              <div class="select filters-toggle-select">
+                <div id="filters-toggle-select-vis" class="select-styled" rel="filter"></div>
+              </div>
+            </div>
+
+          </div>
 
           <div id="filters-row" class="d-flex-row flex-justify padding-top padding-bottom d-flex-left" >
 
-            <div id="varriable-select-wrapper" class="rounded-choice-box padding-horrizontal-half padding-vertical-half default-btn-height d-flex-center width-25">
+            <div id="varriable-select-wrapper" class="rounded-choice-box padding-horrizontal-half padding-vertical-half default-btn-height d-flex-center width-30">
               <div class="select varriable-select">
                 <div id="varriable-select-vis" class="select-styled" rel="tmax">Avg Daily Max Temp (°F)</div>
                 <ul class="select-options">
@@ -125,7 +138,7 @@
             </div>
 
 
-            <div id="chartmap-wrapper" class="padding-horrizontal-half padding-vertical-half default-btn-height d-flex-center width-25">
+            <div id="chartmap-wrapper" class="padding-horrizontal-half padding-vertical-half default-btn-height d-flex-center width-20">
               <div id="btn-chart" class="btn-chart btn-default-selected circle-box-left d-flex-center width-50" val="chart" sel="chartmap-select-vis">
                 Chart
               </div>
@@ -134,9 +147,9 @@
               </div>
             </div>
 
-            <div id="chartmap-select-wrapper" class="rounded-choice-box padding-horrizontal-half padding-vertical-half default-btn-height d-flex-center width-100">
+            <div id="chartmap-select-wrapper" class="rounded-choice-box padding-horrizontal-half padding-vertical-half default-btn-height d-flex-center width-20">
               <div class="select chartmap-select">
-                <div id="chartmap-select-vis" class="select-styled" rel="map">Chart</div>
+                <div id="chartmap-select-vis" class="select-styled" rel="chart">Chart</div>
                 <ul class="select-options">
                   <li rel="chart" class="default-select-option">Chart</li>
                   <li rel="map" class="default-select-option">Map</li>
@@ -144,7 +157,7 @@
               </div>
             </div>
 
-            <div id="time-wrapper" class="padding-horrizontal-half padding-vertical-half default-btn-height d-flex-center width-25">
+            <div id="time-wrapper" class="padding-horrizontal-half padding-vertical-half default-btn-height d-flex-center width-20">
               <div id="btn-chart" class="btn-annual btn-default-selected circle-box-left d-flex-center width-50" val="annual" sel="time-select-vis">
                 Annual
               </div>
@@ -153,7 +166,7 @@
               </div>
             </div>
 
-            <div id="time-select-wrapper" class="rounded-choice-box padding-horrizontal-half padding-vertical-half default-btn-height d-flex-center width-100">
+            <div id="time-select-wrapper" class="rounded-choice-box padding-horrizontal-half padding-vertical-half default-btn-height d-flex-center width-20">
               <div class="select time-select">
                 <div id="time-select-vis" class="select-styled" rel="annual">Annual</div>
                 <ul class="select-options">
@@ -163,66 +176,22 @@
               </div>
             </div>
 
-            <div id="presentation-wrapper" class="padding-horrizontal-half padding-vertical-half default-btn-height d-flex-center width-25">
-              <div id="btn-chart" class="btn-absolute btn-default-selected circle-box-left d-flex-center width-50"  val="absolute" sel="presentation-select-vis">
-                Actual
-              </div>
-              <div id="btn-chart" class="btn-anomaly btn-default circle-box-right d-flex-center width-50" val="anomaly" sel="presentation-select-vis">
-                Anomaly
-              </div>
-            </div>
-
-            <div id="presentation-select-wrapper" class="rounded-choice-box padding-horrizontal-half padding-vertical-half default-btn-height d-flex-center width-100">
-              <div class="select presentation-select">
-                <div id="presentation-select-vis" class="select-styled" rel="absolute">Actual</div>
-                <ul class="select-options">
-                  <li rel="absolute" class="default-select-option">Actual</li>
-                  <li rel="anomaly" class="default-select-option">Anomaly</li>
-                </ul>
-              </div>
-            </div>
 
           </div>
+
+
+
         </div>
       </div>
 
-      <div id="chart-row" class="padding-horizontal padding-top-half padding-bottom-half d-flex-row flex-justify" >
 
-        <div id="legend-wrapper" class="padding-horrizontal-half default-btn-height d-flex-center width-100 height-10">
-          <div id="btn-chart" class="btn-histobs circle-box-left d-flex-center width-50" val="histobs" >
-            Historical Observed
-          </div>
-          <div id="btn-chart" class="btn-hismod selected d-flex-center width-50" val="hist_mod"  >
-            Historical Modeled
-          </div>
-          <div id="btn-chart" class="btn-lower-emissions selected  d-flex-center width-50" val="rcp45"  >
-            Lower Emissions
-          </div>
-          <div id="btn-chart" class="btn-higher-emissions selected circle-box-right d-flex-center width-50" val="rcp85"  >
-            Higher Emissions
-          </div>
-        </div>
+
+      <div id="chart-row" class="padding-horizontal padding-top-half padding-bottom-half d-flex-row flex-justify" >
 
           <div class="chart-wrap d-flex d-flex-center width-100 height-80">
             <div id="chart-123" class="chart-canvas width-100 height-100" data-chart-ID="123"></div>
           </div>
-          <div id="annual-slider-wrapper" class="slider-wrap padding-default width-100 d-flex-center d-none height-10">
-            <div id="slider-value-low" class="width-10 height-100"></div>
-            <div id="slider-range" class="width-80 height-25"></div>
-            <div id="slider-value-high" class="width-10 height-100"></div>
-          </div>
-          <!-- <div id="monthly-select-wrapper" class="rounded-choice-box padding-horrizontal-half padding-vertical-half default-btn-height d-flex-center d-none width-100"> -->
-          <div id="monthly-select-wrapper" class="padding-horrizontal-half padding-vertical-half default-btn-height d-flex-center d-none width-100">
-            <div id="btn-chart" class="btn-default-selected circle-box-left d-flex-center width-33" val="2025" >
-              Centered on 2025
-            </div>
-            <div id="btn-chart" class="btn-default d-flex-center width-33" val="2050"  >
-              Centered on 2050
-            </div>
-            <div id="btn-chart" class="btn-default circle-box-right d-flex-center width-33" val="2075"  >
-              Centered on 2075
-            </div>
-          </div>
+
       </div>
       </div>
     </div>
@@ -235,6 +204,7 @@
 <script src="https://unpkg.com/terraformer-arcgis-parser@1.0.5/terraformer-arcgis-parser.js"
         integrity="sha384-duFUjKTSNoxEspdJNwr83CUgRxclf0ueKJB9DU/Vbit6bfWgzvZsHW6H1JLBBXhp" crossorigin="anonymous"></script>
 <script type="text/javascript" src="/resources/js/scenarioComparisonMap.js"></script>
+<script type="text/javascript" src="/resources/js/ce3-ui-components.js"></script>
 <script type="text/javascript" src="/resources/js/local-climate-maps.js"></script>
 <script type="text/javascript" src="/resources/js/nouislider.min.js"></script>
 </body>

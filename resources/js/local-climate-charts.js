@@ -79,26 +79,6 @@ $(function () {
       }, 600);
   })
 
-  // update select text
-  function setSelectFromButton(target) {
-    const innerText = target.html().trim();
-    const val = target.attr('val');
-    const selector = target.attr('sel');
-
-    $(`#${selector}`).text(innerText);
-    $(`#${selector}`).attr('rel', val);
-  }
-
-  // eanbles time chart, map click events
-  $('#chartmap-wrapper').click( function(e) {
-    const target = $(e.target);
-
-    // toggle button visual state
-    toggleButton($(target));
-
-    // change select pulldowns for resposnive mode
-    setSelectFromButton(target);
-  })
 
   // eanbles time annual, monlthly click events
   $('#time-wrapper').click( function(e) {
