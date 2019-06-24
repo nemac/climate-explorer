@@ -1,4 +1,4 @@
-#location-viewport {
+#local-climate-charts-viewport {
   background-color: $white;
   height: calc(100% - 48px - 100px) !important;
   min-height: calc(100% - 48px - 100px) !important;
@@ -151,8 +151,8 @@
   }
 }
 
+
 #chartmap-wrapper, #time-wrapper, #presentation-wrapper  {
-  // display: none !important;
   @media screen and (max-width: 900px) {
     display: none !important;
   }

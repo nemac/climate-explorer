@@ -712,13 +712,20 @@ h6 {
 .btn-default {
   cursor: pointer;
   height: $ce3-btnheight !important;
-  @media screen and (max-width: 900px) {
-    height: $ce3-btnheight-smallecreen !important;
-  }
   background-color: $ce3-blue5 !important;
   color: $ce3-blue3 !important;
   font: 500 14px $roboto !important;
   border: 1px solid $ce3-blue3alpha !important;
+
+  a {
+    cursor: pointer;
+    text-decoration: none !important;
+    color: $ce3-blue3 !important;
+  }
+
+  @media screen and (max-width: 900px) {
+    height: $ce3-btnheight-smallecreen !important;
+  }
 
   &:focus {
     background-color: darken($ce3-blue5, 7) !important;
@@ -742,6 +749,7 @@ h6 {
   color: $ce3-disabled-font !important;
   font: 500 14px $roboto !important;
   border: 1px solid $ce3-blue3alpha !important;
+
   @media screen and (max-width: 900px) {
     height: $ce3-btnheight-smallecreen !important;
   }
@@ -762,6 +770,7 @@ h6 {
 }
 
 .btn-default-selected {
+  cursor: pointer;
   height: $ce3-btnheight !important;
   @include border-left-radius(25px !important);
   @include border-right-radius(25px !important);
@@ -770,6 +779,13 @@ h6 {
   color: $ce3-blue5 !important;
   font: 500 14px $roboto !important;
   border: 1px solid $ce3-blue3alpha !important;
+
+  a {
+    cursor: pointer;
+    text-decoration: none !important;
+    color: $ce3-blue5 !important;
+  }
+
 
   &.circle-box-left {
     margin-right: -12px !important;

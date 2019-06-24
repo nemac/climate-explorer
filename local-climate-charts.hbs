@@ -24,7 +24,7 @@
 
   </div> -->
 
-    <div id="location-viewport" class="padding-horrizontal d-flex d-flex-column">
+    <div id="local-climate-charts-viewport" class="padding-horrizontal d-flex d-flex-column">
 
       <div id="search-row" class="padding-horizontal d-flex-row flex-justify padding-top padding-bottom-half d-flex-justify" >
 
@@ -138,11 +138,13 @@
             </div>
 
 
+            <a id="chartmap-btn-chart-link"  href="../local-climate-charts" class="d-none"></a>
+            <a id="chartmap-btn-map-link"  href="../local-climate-maps" class="d-none">Map</a>
             <div id="chartmap-wrapper" class="padding-horrizontal-half padding-vertical-half default-btn-height d-flex-center width-20">
-              <div id="btn-chart" class="btn-chart btn-default-selected circle-box-left d-flex-center width-50" val="chart" sel="chartmap-select-vis">
+              <div id="btn-chart" class="btn-chart btn-default-selected circle-box-left d-flex-center width-50" val="chart" nav="local-climate-charts" link="chartmap-btn-chart-link" sel="chartmap-select-vis">
                 Chart
               </div>
-              <div id="btn-chart" class="btn-map btn-default circle-box-right d-flex-center width-50" val="map" sel="chartmap-select-vis">
+              <div id="btn-chart" class="btn-map btn-default circle-box-right d-flex-center width-50"  nav="local-climate-maps"  val="map" link="chartmap-btn-map-link" sel="chartmap-select-vis">
                 Map
               </div>
             </div>
@@ -151,8 +153,9 @@
               <div class="select chartmap-select">
                 <div id="chartmap-select-vis" class="select-styled" rel="chart">Chart</div>
                 <ul class="select-options">
-                  <li rel="chart" class="default-select-option">Chart</li>
-                  <li rel="map" class="default-select-option">Map</li>
+                  <li id="chartmap-select-chart-link" rel="chart" class="default-select-option"><a href="../local-climate-charts" >Chart</a></li>
+                  <li id=chartmap-select-map-link"" rel="map" class="default-select-option"><a href="../local-climate-maps" >Map</a></li>
+                </ul>
                 </ul>
               </div>
             </div>

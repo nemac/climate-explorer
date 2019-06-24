@@ -79,6 +79,20 @@ $(function () {
       }, 600);
   })
 
+  // eanbles time chart, map click events
+  $('#chartmap-wrapper').click( function(e) {
+    const target = $(e.target);
+
+    // toggle button visual state
+    toggleButton($(target));
+
+    // change select pulldowns for resposnive mode
+    setSelectFromButton(target);
+
+
+    handleChartMapClick(target);
+  })
+
 
   // eanbles time annual, monlthly click events
   $('#time-wrapper').click( function(e) {

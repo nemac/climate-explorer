@@ -259,36 +259,6 @@ $(function () {
     });
   }
 
-  //  TODO move this global functions so its not in two places
-  // this function removes existing paramaters of the key undefined
-  // and returns a new search param string.  We need to do this to avoid
-  // mulitple nav paramaters, which would causes issues with only using the first
-  // occurance of the nav parameter - aka we end up on the wrong page
-  function removeUrlParam(key) {
-    var params = decodeURIComponent(window.location.search.substring(1)).split('&');
-    var param = void 0;
-    var newParams = [],
-        href = window.location.href.split('?')[0];
-    var i = void 0;
-
-    if (window.hasOwnProperty('history') === false || window.history.replaceState === false) return;
-
-    for (i = 0; i < params.length; i++) {
-      param = params[i].split('=');
-
-      if (param[0] === key) {
-        continue;
-      }
-
-      newParams.push(`${encodeURIComponent(param[0])}=${encodeURIComponent(param[1])}`);
-    }
-
-    if (params.length !== newParams.length) {
-      return  `?${newParams.join('&')}`;
-    }
-
-    return `?${newParams.join('&')}`;
-  }
 
   // check if a parentelemet contains a dom id
   // deals with event bubbling so we can check

@@ -17,6 +17,15 @@ $(function () {
   enableCustomSelect('chartmap-select');
   enableCustomSelect('time-select');
 
+  // // $('#chartmap-btn-chart-link').click(handleChartLink)
+  //  $('#chartmap-wrapper').parent.click(handleChartLink);
+  //
+  // $('#chartmap-select-chart-link').click(handleChartLink);
+  //
+  // $('#chartmap-btn-map-link').click( handleMapLink);
+  // $('#chartmap-select-map-link').click( handleMapLink);
+
+
   // toggle filters click
   $('#filters-toggle').click( function(e) {
       const target = $(e.target);
@@ -50,6 +59,9 @@ $(function () {
 
     // change select pulldowns for resposnive mode
     setSelectFromButton(target);
+
+
+    handleChartMapClick(target);
   })
 
   // eanbles time annual, monlthly click events
@@ -70,6 +82,9 @@ $(function () {
       setSelectFromButton(target);
     }
   })
+
+
+
 
 
 });

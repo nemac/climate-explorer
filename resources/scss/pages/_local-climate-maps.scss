@@ -1,20 +1,25 @@
-// #location-viewport {
-//   background-color: $white;
-//   height: calc(100% - 48px - 120px) !important;
-//   min-height: calc(100% - 48px - 120px) !important;
-//   overflow: auto !important;
-//   flex: 1 1 auto !important;
-//
-//   &.expanded {
-//     @media screen and (min-width: 850px) {
-//       min-height: calc(100% - 48px - 12px - 120px) !important;
-//       height: calc(100% - 48px - 12px - 120px) !important
-//     }
-//
-//     min-height: calc(100% - 48px - 12px - 210px) !important;
-//     height: calc(100% - 48px - 12px - 210px) !important
-//   }
-// }
+// NOTE most of the css will be found _local-climate-charts.scscc
+// only when we need to overide or add missing css will the css appear here
+
+#local-climate-maps-viewport {
+  background-color: $white;
+  height: calc(100% - 48px - 100px) !important;
+  min-height: calc(100% - 48px - 100px) !important;
+  overflow: auto !important;
+  flex: 1 1 auto !important;
+
+  &.expanded {
+    @media screen and (min-width: 850px) {
+      min-height: calc(100% - 48px - 12px - 100px) !important;
+      height: calc(100% - 48px - 12px - 100px) !important
+    }
+
+    min-height: calc(100% - 48px - 12px - 170px) !important;
+    height: calc(100% - 48px - 12px - 170px) !important
+  }
+}
+
+
 //
 // #chart-row {
 //   justify-content: space-evenly !important;

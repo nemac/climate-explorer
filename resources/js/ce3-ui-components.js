@@ -101,3 +101,57 @@
     // change select pulldowns for resposnive mode
     setSelectFromButton(target);
   })
+
+
+  //  TODO move this global functions so its not in two places
+  // this function removes existing paramaters of the key undefined
+  // and returns a new search param string.  We need to do this to avoid
+  // mulitple nav paramaters, which would causes issues with only using the first
+  // occurance of the nav parameter - aka we end up on the wrong page
+  function removeUrlParam(key) {
+    var params = decodeURIComponent(window.location.search.substring(1)).split('&');
+    var param = void 0;
+    var newParams = [],
+        href = window.location.href.split('?')[0];
+    var i = void 0;
+
+    if (window.hasOwnProperty('history') === false || window.history.replaceState === false) return;
+
+    for (i = 0; i < params.length; i++) {
+      param = params[i].split('=');
+
+      if (param[0] === key) {
+        continue;
+      }
+
+      newParams.push(`${encodeURIComponent(param[0])}=${encodeURIComponent(param[1])}`);
+    }
+
+    if (params.length !== newParams.length) {
+      return  `?${newParams.join('&')}`;
+    }
+
+    return `?${newParams.join('&')}`;
+  }
+
+function handleChartMapClick(target) {
+  const link = target.attr('link');
+  const nav = target.attr('nav');
+  const seachParams =  removeUrlParam('nav');
+  const url = `../${nav}/${seachParams}&nav=${nav}`;
+  $(`#${link}`).attr('href', url);
+  $(`#${link}`).click();
+  document.getElementById(link).click();
+}
+  // function handleChartLink(e){
+  //   const seachParams =  removeUrlParam('nav')
+  //   const url = `${$(this).attr('href')}/${seachParams}&nav=local-climate-charts`
+  //   $(this).attr('href', url);
+  // }
+  //
+  // function handleMapLink(e) {
+  //   const seachParams =  removeUrlParam('nav')
+  //   console.log(seachParams)
+  //   const url = `${$(this).attr('href')}/${seachParams}&nav=local-climate-maps`
+  //   $(this).attr('href', url);
+  // }
