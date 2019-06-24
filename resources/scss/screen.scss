@@ -257,6 +257,9 @@ h6 {
     font-weight: 900;
     content: '\f0d7';
     right: 6px;
+    @media screen and (max-width: 768px) {
+      right: -2px;
+    }
     width: 24px;
     height: 24px;
     border-radius: 24px;
@@ -837,9 +840,16 @@ h6 {
   color: $ce3-blue3;
   border: 1px solid $ce3-border-color !important;
   min-height: 105px !important;
+  @include transition(0.5s);
+  @include transition-property(min-height);
+  @include transition-timing-function(ease-out)
   @media screen and (max-width: 900px) {
-    min-height: unset !important;
+    min-height: 1px !important;
+    @include transition(0.5s);
+    @include transition-property(min-height);
+    @include transition-timing-function(ease-out);
   }
+;
 }
 
 .rounded-box-secondary {
