@@ -74,7 +74,9 @@ $(function () {
         $(chartRowElem).addClass('closed-filters');
       }
 
-      window.tempChart.resize();
+      setTimeout(function () {
+        window.tempChart.resize();
+      }, 600);
   })
 
   // update select text

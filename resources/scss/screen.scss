@@ -839,17 +839,15 @@ h6 {
   background-color: $ce3-blue6;
   color: $ce3-blue3;
   border: 1px solid $ce3-border-color !important;
-  min-height: 105px !important;
+  min-height: 112px !important;
+  height: auto !important;
+  max-height:999px;
   @include transition(0.5s);
-  @include transition-property(min-height);
+  @include transition-property(all);
   @include transition-timing-function(ease-out)
   @media screen and (max-width: 900px) {
     min-height: 1px !important;
-    @include transition(0.5s);
-    @include transition-property(min-height);
-    @include transition-timing-function(ease-out);
   }
-;
 }
 
 .rounded-box-secondary {

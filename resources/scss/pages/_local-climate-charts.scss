@@ -405,24 +405,19 @@
 
 #filters-row {
   visibility: visible !important;
-  @include transition(0.5s);
-  @include transition-property(min-height);
+  @include transition(0.6s);
+  @include transition-property(visibility);
   @include transition-timing-function(ease);
 }
 
 #info-row {
- &.closed-filters {
+  &.closed-filters {
     .rounded-filters-box {
-      min-height: 53px !important;
-      @include transition(0.5s);
-      @include transition-property(min-height);
-      @include transition-timing-function(ease-in);
+      min-height: 52px !important;
+      max-height:1.2em;
     }
 
     #filters-row {
-      @include transition(0.5s);
-      @include transition-property(visibility);
-      @include transition-timing-function(ease);
       display: none !important;
       visibility: hidden !important;
     }
