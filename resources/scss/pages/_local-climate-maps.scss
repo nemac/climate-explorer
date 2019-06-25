@@ -20,6 +20,26 @@
 }
 
 
+// #time-wrapper {
+//   @media screen and (max-width: 900px) {
+//       .circle-box-left {
+//         @include border-top-radius(5px !important);
+//         @include border-bottom-radius(0px !important);
+//       }
+//
+//       .circle-box-middle {
+//         @include border-top-radius(0px !important);
+//         @include border-bottom-radius(0px !important);
+//       }
+//
+//       .btn-default-selected.circle-box-left, .btn-default-selected.circle-box-right {
+//         margin-right: 0px !important;
+//         margin-left: 0px !important;
+//       }
+//   }
+// }
+
+
 //
 // #chart-row {
 //   justify-content: space-evenly !important;
