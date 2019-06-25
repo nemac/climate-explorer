@@ -176,20 +176,34 @@
   @media screen and (max-width: 900px) {
     flex-flow: row wrap !important;
     height: auto !important;
+    width: 100% !important;
+    padding-bottom: 24px !important;
 
     #btn-chart {
       width: 100% !important;
+      height: 48px !important;
       padding-top: $ce3-padding-half !important;
       padding-bottom:  $ce3-padding-half !important;
     }
 
     .circle-box-left {
-      @include border-top-radius(5px);
-      @include border-bottom-radius(0px);
+      @include border-top-radius(5px !important);
+      @include border-bottom-radius(0px !important);
     }
+
+    .circle-box-middle {
+      @include border-top-radius(0px !important);
+      @include border-bottom-radius(0px !important);
+    }
+
+    .btn-default-selected.circle-box-left, .btn-default-selected.circle-box-right {
+      margin-right: 0px !important;
+      margin-left: 0px !important;
+    }
+
     .circle-box-right {
-      @include border-top-radius(0px);
-      @include border-bottom-radius(5px);
+      @include border-top-radius(0px !important);
+      @include border-bottom-radius(5px !important);
     }
   }
 }
