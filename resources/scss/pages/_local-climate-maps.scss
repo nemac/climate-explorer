@@ -20,6 +20,168 @@
 }
 
 
+.esri-expand__container {
+  height: 32px;
+  width: 32px;
+}
+
+.legend-image {
+  max-height: 16rem;
+  max-width: none;
+}
+
+.esri-view-width-greater-than-xsmall .esri-expand--auto .esri-expand__content {
+  position: relative;
+}
+
+.scenario-map-overlay-container {
+  position: absolute;
+}
+
+.esri-view {
+    padding: $ce3-default-padding;
+}
+
+.movable {
+  width: 4px;
+  height: 100%;
+  margin: 0;
+  padding: 0 !important;
+  background: white;
+  z-index: 100;
+  cursor: col-resize;
+  box-shadow: 1px 0 2px 0 rgba(0, 0, 0, 0.15);
+  .handle {
+    position: relative;
+    top: 50%;
+    left: -24px;
+    width: 50px;
+    height: 29px;
+    @include border-radius(20px);
+    background: url(../img/swipe-arrows-stripe.png) center center rgba(34, 105, 179, 0.87);
+    background-size: 110% auto;
+    background-repeat: no-repeat;
+    box-shadow: 1px 0 2px 0 rgba(0, 0, 0, 0.15);
+  }
+}
+
+// #map-row {
+//   .map-wrap {
+//     min-height: 450px !important;
+//     height: 450px !important;
+//     // min-height: calc(100% - 48px - 12px - 100px) !important;
+//     // height: calc(100% - 48px - 12px - 100px)  !important;
+//   }
+//   @media screen and (max-width: 900px) {
+//     height: auto !important;
+//     .map-wrap {
+//       min-height: 350px !important;
+//       height: 350px !important;
+//     }
+//   }
+//   @media screen and (max-width: 500px) {
+//     height: auto !important;
+//     order: 1;
+//     .map-wrap {
+//       min-height: 250px !important;
+//       height: 250px !important;
+//     }
+//   }
+// }
+//
+// .esri-view-user-storage {
+//   display: none;
+// }
+//
+// .scenario-map-overlay-container {
+//   position: absolute;
+//   top: 0;
+//   left: 0;
+//   right: 0;
+//   bottom: 0;
+//   height: 100%;
+//   width: 100%;
+//   pointer-events: none;
+//   display: flex;
+//   z-index: 100;
+//   flex-flow: row wrap;
+//   justify-content: flex-end;
+//   align-content: flex-end;
+//   > * {pointer-events: auto;}
+//
+//   .movable {
+//     position: absolute;
+//     top: 0;
+//     left: 100%;
+//     width: 4px;
+//     height: 100%;
+//     margin: 0;
+//     padding: 0 !important;
+//     background: white;
+//     z-index: -1;
+//     cursor: col-resize;
+//     box-shadow: 1px 0 2px 0 rgba(0, 0, 0, 0.15);
+//     .handle {
+//       display: block;
+//       position: absolute;
+//       top: 45%;
+//       left: -23px;
+//       width: 50px;
+//       height: 29px;
+//       @include border-radius(20px);
+//       background: url(../img/swipe-arrows-stripe.png) center center rgba(34, 105, 179, 0.87);
+//       background-size: 110% auto;
+//       background-repeat: no-repeat;
+//       box-shadow: 1px 0 2px 0 rgba(0, 0, 0, 0.15);
+//     }
+//   }
+// }
+//
+//
+//
+//   .bottom-scenario-controls {
+//     display: flex;
+//     flex-flow: row nowrap;
+//     flex: 0 0 auto;
+//     width: 100%;
+//     pointer-events: none;
+//     padding: 1rem;
+//   }
+//
+//   .left-scenario-controls {
+//     justify-self: flex-start;
+//     align-self: flex-end;
+//     display: flex;
+//     flex: 1 0 50%;
+//     //padding: 1.5rem 0;
+//     justify-content: flex-start;
+//     flex-flow: row wrap;
+//     > * {pointer-events: auto;}
+//   }
+//   .right-scenario-controls {
+//     justify-self: flex-end;
+//     align-self: flex-end;
+//     display: flex;
+//     flex: 1 0 50%;
+//     //padding: 1.5rem 0;
+//     justify-content: flex-start;
+//     flex-flow: row-reverse wrap;
+//     > * {pointer-events: auto;}
+//   }
+
+// .scenario-map-overlay-container .bottom-scenario-controls {
+//     display: flex;
+//     flex-flow: row nowrap;
+//     flex: 0 0 auto;
+//     width: 100%;
+//     pointer-events: none;
+//     padding: 1rem;
+// }
+
+// .scenario-map-overlay-container .movable {
+//   margin-left: 10px !important;
+// }
+
 // #time-wrapper {
 //   @media screen and (max-width: 900px) {
 //       .circle-box-left {

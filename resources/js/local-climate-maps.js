@@ -10,6 +10,10 @@ $(function () {
   $('#default-city-county').text(window.ce.ce('getLocationPageState')['county']);
   $('#cards-search-input').val(window.ce.ce('getLocationPageState')['city']);
 
+  const mapExtent = window.ce.ce('getLocationPageState')['extent'];
+  const mapZoom = window.ce.ce('getLocationPageState')['zoom'] || 9;
+  const mapcenter = window.ce.ce('getLocationPageState')['center'];
+
   // enable custom selction boxes
   enableCustomSelect('download-select');
   enableCustomSelect('stations-select');
@@ -48,6 +52,11 @@ $(function () {
       } else {
         $(chartRowElem).addClass('closed-filters');
       }
+
+      setTimeout(function () {
+        $('#temperature-map').height($('#temperature-map').parent().height());
+      }, 600);
+
   })
 
   // eanbles time chart, map click events
@@ -83,7 +92,6 @@ $(function () {
     }
   })
 
-
   // in repsonsive mode the time is a pulldown this eanbles the change of the chart map
   $('#chartmap-select-vis').bind('cs-changed', function(e) {
     const target = $(e.target);
@@ -98,4 +106,39 @@ $(function () {
     }
   })
 
+  // $('#precipitation-map-container header').on('click', function () {
+    $('#temperature-map').height($('#temperature-map').parent().height());
+    console.log('height', $('#temperature-map').height($('#temperature-map').parent().height()) )
+    console.log(mapExtent,mapcenter, mapZoom)
+    // $('#location-precipitation .location-resolution li').addClass('disabled');
+    if (typeof window.precipitationScenariosMap === 'undefined') {
+      $('#temperature-map').spinner();
+      window.precipitationScenariosMap = $('#temperature-map').scenarioComparisonMap({
+        variable: 'tmax',
+        extent: mapExtent,
+        center: mapcenter,
+        zoom: mapZoom,
+        showCounties: false,
+        layersloaded: function layersloaded() {
+          $('#temperature-map').spinner('destroy');
+        },
+        change: function change() {
+          window.precipitationScenariosMap.scenarioComparisonMap("getShowSeasonControls") ? $("#precipitation-map-season").show(200) : $("#precipitation-map-season").hide();
+        }
+      });
+      window.precipitationScenariosMap.scenarioComparisonMap("getShowSeasonControls") ? $("#precipitation-map-season").show(200) : $("#precipitation-map-season").hide();
+    }
+  // });
+
+  $(window).resize(function () {
+    $('#temperature-map').height($('#temperature-map').parent().height())
+    // $('#scenario-map-overlay-container').height($('#temperature-map').parent().height())
+
+    const rect = document.getElementById('temperature-map').getBoundingClientRect();
+
+    document.querySelector('.scenario-map-overlay-container').style.top = `${rect.top}px`;
+    document.querySelector('.scenario-map-overlay-container').style.left = `${rect.left}px`;
+    document.querySelector('.scenario-map-overlay-container').style.width = `${rect.width}px`;
+    document.querySelector('.scenario-map-overlay-container').style.height = `${rect.height}px`;
+  })
 });

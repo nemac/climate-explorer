@@ -1875,7 +1875,7 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
       }
 
       if (this.nodes.$leftYearTooltip === undefined) {
-        this.nodes.$leftYearTooltip = $('<span class="tooltip"></span>').hide();
+        this.nodes.$leftYearTooltip = $('<span class="map-tooltip"></span>').hide();
       }
       var maxLabel = this.options.scenarios[this.options.leftScenario].years.slice(-1)[0].label;
       if (this.options.leftYear === 'avg') {
@@ -1914,7 +1914,7 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
         this.nodes.$rightYearSlider = $(this.element).find('.right-year-slider');
       }
       if (this.nodes.$rightYearTooltip === undefined) {
-        this.nodes.$rightYearTooltip = $("<span class='tooltip'></span>").hide();
+        this.nodes.$rightYearTooltip = $("<span class='map-tooltip'></span>").hide();
       }
       var maxLabel = this.options.scenarios[this.options.rightScenario].years.slice(-1)[0].label;
       if (this.options.rightYear === 'avg') {
