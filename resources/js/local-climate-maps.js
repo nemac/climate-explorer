@@ -84,7 +84,18 @@ $(function () {
   })
 
 
+  // in repsonsive mode the time is a pulldown this eanbles the change of the chart map
+  $('#chartmap-select-vis').bind('cs-changed', function(e) {
+    const target = $(e.target);
+    const notDisabled = !target.hasClass('btn-default-disabled');
+    if ( notDisabled ) {
+      const val = $('#time-select-vis').attr('rel')
 
+      // toggle button visual state
+      toggleButton($(`.btn-${$('#chartmap-select-vis').attr('rel')}`));
 
+      handleChartMapClick(target);
+    }
+  })
 
 });
