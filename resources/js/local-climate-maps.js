@@ -108,8 +108,6 @@ $(function () {
 
   // $('#precipitation-map-container header').on('click', function () {
     $('#temperature-map').height($('#temperature-map').parent().height());
-    console.log('height', $('#temperature-map').height($('#temperature-map').parent().height()) )
-    console.log(mapExtent,mapcenter, mapZoom)
     // $('#location-precipitation .location-resolution li').addClass('disabled');
     if (typeof window.precipitationScenariosMap === 'undefined') {
       $('#temperature-map').spinner();
@@ -130,15 +128,19 @@ $(function () {
     }
   // });
 
-  $(window).resize(function () {
+  function setMapSize() {
     $('#temperature-map').height($('#temperature-map').parent().height())
-    // $('#scenario-map-overlay-container').height($('#temperature-map').parent().height())
 
     const rect = document.getElementById('temperature-map').getBoundingClientRect();
-
     document.querySelector('.scenario-map-overlay-container').style.top = `${rect.top}px`;
     document.querySelector('.scenario-map-overlay-container').style.left = `${rect.left}px`;
     document.querySelector('.scenario-map-overlay-container').style.width = `${rect.width}px`;
     document.querySelector('.scenario-map-overlay-container').style.height = `${rect.height}px`;
+  }
+
+  setMapSize();
+  
+  $(window).resize(function () {
+    setMapSize();
   })
 });

@@ -56,7 +56,8 @@
   .fs-dropdown-options {
     background-color: transparentize($ce3-blue5, 0.04);
     color: $ce3-blue3;
-    margin-bottom: 2px;
+    margin-bottom: 1px;
+    margin-top: 1px;
     border: none;
     width: 90%;
     left: 5%;
@@ -86,6 +87,12 @@
 }
 
 .scenario-map-overlay-container {
+  pointer-events: none;
+
+  .movable {
+    pointer-events: auto;
+  }
+  
   .bottom-scenario-controls {
     position: relative;
     top: -84px;
