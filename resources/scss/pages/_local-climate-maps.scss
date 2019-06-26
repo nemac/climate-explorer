@@ -20,6 +20,43 @@
 }
 
 
+#map-row {
+  justify-content: space-evenly !important;
+  height: 100% !important;
+
+  &.closed-filters {
+    .map-wrap {
+      height: 86% !important;
+    }
+  }
+
+  @media screen and (max-width: 1240px) {
+    justify-content: center !important;
+    height: auto !important;
+    min-height: unset !important;
+  }
+
+  @media screen and (max-width: 900px) {
+    height: auto !important;
+    order: 1;
+
+    .map-wrap {
+      min-height: 350px !important;
+      height: 350px !important;
+    }
+  }
+
+  @media screen and (max-width: 500px) {
+    height: auto !important;
+    order: 1;
+    .map-wrap {
+      min-height: 250px !important;
+      height: 250px !important;
+    }
+  }
+}
+
+
 .esri-expand__container {
   height: 32px;
   width: 32px;
@@ -39,7 +76,17 @@
 }
 
 .esri-view {
-    padding: $ce3-default-padding;
+  padding: $ce3-default-padding;
+}
+
+.esri-view-surface {
+  @include border-radius(5px);
+}
+
+// Not untill I can fix legend images
+.esri-widget--button {
+  // background: $ce3-blue5 !important;
+  // color: $ce3-blue3 !important;
 }
 
 .movable {
@@ -47,23 +94,39 @@
   height: 100%;
   margin: 0;
   padding: 0 !important;
-  background: white;
+  background: $ce3-blue5;
   z-index: 100;
   cursor: col-resize;
   box-shadow: 1px 0 2px 0 rgba(0, 0, 0, 0.15);
   .handle {
     position: relative;
     top: 50%;
-    left: -24px;
-    width: 50px;
-    height: 29px;
+    left: -23px;
+    width: 48px;
+    height: 36px;
     @include border-radius(20px);
-    background: url(../img/swipe-arrows-stripe.png) center center rgba(34, 105, 179, 0.87);
-    background-size: 110% auto;
-    background-repeat: no-repeat;
     box-shadow: 1px 0 2px 0 rgba(0, 0, 0, 0.15);
+    &:after {
+      cursor: col-resize;
+      position: absolute;
+      background-color: transparentize($ce3-blue3, 0.04);
+      color: $ce3-blue5 !important;
+      font-family: 'Font Awesome 5 Free';
+      font-weight: 900;
+      // @include transform(rotate(-90deg));
+      content: '\f0d9\00a0\00a0\00a0\f0da';
+      width: 48px;
+      height: 36px;
+      border-radius: 36px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border: none !important;
+      font-size: 1.25rem;
+    }
   }
 }
+
 
 // #map-row {
 //   .map-wrap {
