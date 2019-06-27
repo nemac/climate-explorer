@@ -1060,24 +1060,24 @@
     display: none !important;
   }
 
-  .scenario-map-overlay-container {
-    .left-scenario-controls {
-      position: absolute;
-      left: 0;
-      width: 31%;
-    }
-    .right-scenario-controls {
-      position: absolute;
-      right: 0;
-      width: 31%;
-    }
-    .year {
-      min-width: 11rem;
-      .year-label {
-        margin: .5rem .3rem;
-      }
-    }
-  }
+  // .scenario-map-overlay-container {
+  //   .left-scenario-controls {
+  //     position: absolute;
+  //     left: 0;
+  //     width: 31%;
+  //   }
+  //   .right-scenario-controls {
+  //     position: absolute;
+  //     right: 0;
+  //     width: 31%;
+  //   }
+  //   .year {
+  //     min-width: 11rem;
+  //     .year-label {
+  //       margin: .5rem .3rem;
+  //     }
+  //   }
+  // }
 
   #left-header {
     left: 0;

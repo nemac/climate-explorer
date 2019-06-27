@@ -119,6 +119,10 @@ $(function () {
         showCounties: false,
         layersloaded: function layersloaded() {
           $('#temperature-map').spinner('destroy');
+          const rect = document.getElementById('map-wrap').getBoundingClientRect();
+          document.querySelector('.esri-view-root').style.minWidth = `${rect.width}px`;
+          document.querySelector('.esri-view-root').style.height = `${rect.height}px`;
+          document.querySelector('.esri-view-root').style.minWidth = `${rect.height}px`;
         },
         change: function change() {
           window.precipitationScenariosMap.scenarioComparisonMap("getShowSeasonControls") ? $("#precipitation-map-season").show(200) : $("#precipitation-map-season").hide();
@@ -131,15 +135,63 @@ $(function () {
   function setMapSize() {
     $('#temperature-map').height($('#temperature-map').parent().height())
 
-    const rect = document.getElementById('temperature-map').getBoundingClientRect();
+    const rect = document.getElementById('map-wrap').getBoundingClientRect();
+
+    // document.querySelector('.esri-view-root').style.width = `${rect.width}px`;
+    // document.querySelector('.esri-view-root').style.minWdth = `${rect.width}px`;
+    // document.querySelector('.esri-view-root').style.height = `${rect.height}px`;
+    //
+    // document.querySelector('#temperature-map').style.width = `${rect.width}px`;
+
+    // setTimeout(function () {
+    //   document.querySelector('.esri-view-root').style.minWdth = `${rect.width}px`;
+    // }, 600);
+    if (document.querySelector('.esri-view-root')) {
+      document.querySelector('.esri-view-root').style.minWidth = `${rect.width}px`;
+      document.querySelector('.esri-view-root').style.maxWidth = `${rect.width}px`;
+      document.querySelector('.esri-view-root').style.height = `${rect.height}px`;
+      document.querySelector('.esri-view-root').style.minWidth = `${rect.height}px`;
+    }
+
+    if (document.querySelector('.esri-view-user-storage')) {
+      document.querySelector('.esri-view-user-storage').style.minWidth = `${rect.width}px`;
+      document.querySelector('.esri-view-user-storage').style.maxWidth = `${rect.width}px`;
+    }
+
+    if (document.querySelector('.temperature-map')) {
+      document.querySelector('.temperature-map').style.minWidth = `${rect.width}px`;
+      document.querySelector('.temperature-map').style.maxWidth = `${rect.width}px`;
+      document.querySelector('.temperature-map').style.height = `${rect.height}px`;
+      document.querySelector('.temperature-map').style.minWidth = `${rect.height}px`;
+    }
+
+
     document.querySelector('.scenario-map-overlay-container').style.top = `${rect.top}px`;
     document.querySelector('.scenario-map-overlay-container').style.left = `${rect.left}px`;
     document.querySelector('.scenario-map-overlay-container').style.width = `${rect.width}px`;
     document.querySelector('.scenario-map-overlay-container').style.height = `${rect.height}px`;
+
+    // document.querySelector('.esri-view-root').style.top = `${rect.top}px`;
+    // document.querySelector('.esri-view-root').style.left = `${rect.left}px`;
+    // document.querySelector('.esri-view-root').style.width = `${rect.width}px`;
+    // document.querySelector('.esri-view-root').style.height = `${rect.height}px`;
+
   }
 
   setMapSize();
-  
+
+  // document.getElementById('local-climate-maps-viewport').addEventListener('onscroll', (e) => {
+  //   console.log('scrolling');
+  // })
+
+  document.getElementById('local-climate-maps-viewport').addEventListener('scroll', (e) => {
+    // setMapSize();;
+  })
+
+  // document.getElementById('local-climate-maps-viewport').addEventListener('touchend', (e) => {
+  //   console.log('scrolling');
+  // })
+
   $(window).resize(function () {
     setMapSize();
   })

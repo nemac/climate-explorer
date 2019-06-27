@@ -30,6 +30,19 @@
     }
   }
 
+  #temperature-map {
+    width: 100%;
+    flex-wrap: wrap;
+  }
+
+  .scenario-map-overlay-container {
+    position: absolute !important;
+  }
+
+  .esri-view-user-storage {
+    height: unset !important;
+  }
+
   @media screen and (max-width: 1240px) {
     justify-content: center !important;
     height: auto !important;
@@ -39,6 +52,124 @@
   @media screen and (max-width: 900px) {
     height: auto !important;
     order: 1;
+    padding-bottom: 250px !important;
+
+    #temperature-map {
+      width: 100%;
+      flex-wrap: wrap;
+      min-height: 350px !important;
+      max-height: 350px !important;
+      height: 350px !important;
+
+      .esri-view-root {
+        flex: 0 0 100%;
+        // min-height: 350px !important;
+        height: 100% !important;
+        width: 100% !important;
+      }
+
+      .esri-overlay-surface {
+        flex: 0 0 100%;
+        height: 100% !important;
+        width: 100% !important;
+      }
+
+      .esri-view-user-storage {
+        overflow: visible !important;
+        height: 100% !important;
+        width: 100% !important;
+      }
+
+      .scenario-map-overlay-container {
+        position: relative !important;
+        top: 0px !important;
+        left: 0px !important;
+        width: 100% !important;
+        height: 100% !important;
+      }
+
+      .movable.slider-div {
+        height: 350px;
+        top: -350px;
+        z-index: 200;
+      }
+
+      .bottom-scenario-controls {
+        position: inherit !important;
+        top: -350px !important;
+        width: 100% !important;
+        padding: 1rem 0rem !important;
+
+        .left-scenario-controls {
+          width: 50% !important;
+          margin: 0px !important;
+          padding-right: 6px;
+        }
+
+        .right-scenario-controls {
+          width: 50% !important;
+          margin: 0px !important;
+          padding-left: 6px;
+        }
+
+        .left-year-slider-container {
+          max-width: 100%;
+          min-width: 100%;
+          width: 100%;
+        }
+
+        .right-year-slider-container {
+          max-width: 100%;
+          min-width: 100%;
+          width: 100%;
+        }
+
+        .left-scenario-dropdown {
+          max-width: 200%;
+          min-width: 100%;
+          width: 200%;
+          margin: 0px;
+          .fs-dropdown.fs-dropdown-mobile {
+            width: 200%;
+            min-width: 180%;
+            border-left: 2px $ce3-blue3 solid;
+          }
+        }
+
+        .left-year-slider-container {
+          position: relative;
+          top: 24px;
+          max-width: 180%;
+          min-width: 100%;
+          width: 180%;
+          border-left: 2px $ce3-blue3 solid;
+        }
+
+        .right-scenario-dropdown {
+          position: relative;
+          top: 150px;
+          max-width: 200%;
+          min-width: 100%;
+          width: 200%;
+          margin: 0px;
+          .fs-dropdown.fs-dropdown-mobile {
+            width: 200%;
+            min-width: 180%;
+            left: -80%;
+            border-right: 2px $ce3-blue3 solid;
+          }
+        }
+
+        .right-year-slider-container {
+          position: relative;
+          top: 175px;
+          max-width: 180%;
+          min-width: 100%;
+          width: 180%;
+          border-right: 2px $ce3-blue3 solid;
+        }
+      }
+    }
 
     .map-wrap {
       min-height: 350px !important;
@@ -72,7 +203,7 @@
 }
 
 .scenario-map-overlay-container {
-  position: absolute;
+  position: relative;
 }
 
 .esri-view {
@@ -106,6 +237,7 @@
     height: 36px;
     @include border-radius(20px);
     box-shadow: 1px 0 2px 0 rgba(0, 0, 0, 0.15);
+
     &:after {
       cursor: col-resize;
       position: absolute;
@@ -126,6 +258,10 @@
     }
   }
 }
+
+
+// 1183 starts reposioton of ma elements.
+
 
 
 // #map-row {
