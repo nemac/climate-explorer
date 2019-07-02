@@ -12,6 +12,10 @@ function enableCustomSelect(uniqueSelector) {
   // enable click and show options
   $styledSelect.click(function(e) {
     e.stopPropagation();
+    if ( $(e.target).hasClass( 'disabled' )){
+      return null;
+    }
+
     $(`.select.${uniqueSelector} div.select-styled.active`).not(this).each(function(){
       $(this).removeClass('active').next('ul.select-options').hide();
     });

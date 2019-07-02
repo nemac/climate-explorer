@@ -811,6 +811,12 @@ h6 {
     margin-left: -12px !important;
   }
 
+  &.btn-default-disabled {
+    color: darken($ce3-blue5, 12) !important;
+    background-color: lighten($ce3-blue3, 7) !important;
+
+  }
+
   @media screen and (max-width: 900px) {
     height: $ce3-btnheight-smallecreen !important;
   }

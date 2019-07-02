@@ -22,14 +22,10 @@ $(function () {
   enableCustomSelect('time-select');
 
 
-  // // $('#chartmap-btn-chart-link').click(handleChartLink)
-  //  $('#chartmap-wrapper').parent.click(handleChartLink);
-  //
-  // $('#chartmap-select-chart-link').click(handleChartLink);
-  //
-  // $('#chartmap-btn-map-link').click( handleMapLink);
-  // $('#chartmap-select-map-link').click( handleMapLink);
-
+  // valid seasonal varriables
+  // seasonal timeperoid is only valud for limitited varriables
+  // to dissable those varriabls from the user we use this constant
+  const validSeasonal = ['tmax', 'tmin', 'pcpn'];
 
   // toggle filters click
   $('#filters-toggle').click( function(e) {
@@ -70,9 +66,16 @@ $(function () {
     // change select pulldowns for resposnive mode
     setSelectFromButton(target);
 
-
     handleChartMapClick(target);
   })
+
+  // update season map
+  function updateSeason(targetval) {
+    if (window.precipitationScenariosMap) {
+      $(window.precipitationScenariosMap).scenarioComparisonMap({ season: targetval });
+    }
+  }
+
 
   // eanbles time annual, monlthly click events
   $('#time-wrapper').click( function(e) {
@@ -90,13 +93,16 @@ $(function () {
 
       // change select pulldowns for resposnive mode
       setSelectFromButton(target);
+
+      // change map varriable
+      updateSeason(val);
     }
   })
 
   // in repsonsive mode the time is a pulldown this eanbles the change of the chart map
   $('#chartmap-select-vis').bind('cs-changed', function(e) {
     const target = $(e.target);
-    const notDisabled = !target.hasClass('btn-default-disabled');
+    const notDisabled = !target.hasClass('disabled');
     if ( notDisabled ) {
       const val = $('#time-select-vis').attr('rel')
 
@@ -107,9 +113,73 @@ $(function () {
     }
   })
 
-  // $('#precipitation-map-container header').on('click', function () {
+  // event hanlder a for when map varriable changes
+  $('#varriable-select-vis').bind('cs-changed', function(e) {
+    const target = $(e.target);
+    const notDisabled = !target.hasClass('btn-default-disabled');
+    if ( notDisabled ) {
+      const val = $('#varriable-select-vis').attr('rel')
+
+      // disable varriablles if they are valid time period
+      const isvalid =   jQuery.inArray( val , validSeasonal);
+      if (  isvalid < 0 ) {
+        $('.btn-summer').addClass('btn-default-disabled');
+        $('.btn-summer').removeClass('btn-default');
+
+        $('.btn-winter').addClass('btn-default-disabled');
+        $('.btn-winter').removeClass('btn-default');
+
+        $('.btn-fall').addClass('btn-default-disabled');
+        $('.btn-fall').removeClass('btn-default');
+
+        $('.btn-spring').addClass('btn-default-disabled');
+        $('.btn-spring').removeClass('btn-default');
+
+        $('#time-select-vis').addClass('disabled');
+        $('#time-select-wrapper').addClass('disabled');
+
+      } else {
+        $('.btn-summer').removeClass('btn-default-disabled');
+        $('.btn-summer').addClass('btn-default');
+
+        $('.btn-winter').removeClass('btn-default-disabled');
+        $('.btn-winter').addClass('btn-default');
+
+        $('.btn-fall').removeClass('btn-default-disabled');
+        $('.btn-fall').addClass('btn-default');
+
+        $('.btn-spring').removeClass('btn-default-disabled');
+        $('.btn-spring').addClass('btn-default');
+
+        $('#time-select-vis').removeClass('disabled');
+        $('#time-select-wrapper').removeClass('disabled');
+
+      }
+
+      // change map varriable
+      if (window.precipitationScenariosMap) {
+        $(window.precipitationScenariosMap).scenarioComparisonMap({ variable: val });
+      }
+    }
+  })
+
+  // in resposnive mode, event hanlder a for when season (time) varriable changes
+  $('#time-select-vis').bind('cs-changed', function(e) {
+    const target = $(e.target);
+    const notDisabled = !target.hasClass('btn-default-disabled');
+    if ( notDisabled ) {
+      const val = $('#time-select-vis').attr('rel')
+
+      // change map varriable
+      updateSeason(val);
+    }
+  })
+
+
+// $(window.precipitationScenariosMap).scenarioComparisonMap({ season: $(this).data().value });
+
+
     $('#temperature-map').height($('#temperature-map').parent().height());
-    // $('#location-precipitation .location-resolution li').addClass('disabled');
     if (typeof window.precipitationScenariosMap === 'undefined') {
       $('#temperature-map').spinner();
       window.precipitationScenariosMap = $('#temperature-map').scenarioComparisonMap({
@@ -134,7 +204,6 @@ $(function () {
       });
       window.precipitationScenariosMap.scenarioComparisonMap("getShowSeasonControls") ? $("#precipitation-map-season").show(200) : $("#precipitation-map-season").hide();
     }
-  // });
 
   function setMapSize() {
     $('#temperature-map').height($('#temperature-map').parent().height())
