@@ -236,8 +236,6 @@ h6 {
   height: calc(100% - 7px) !important;
   @include border-radius(24px, 24px);
   @include transition(all 0.2s ease-in);
-  // background-color: $ce3-blue5;
-  // color: $ce3-blue3;
   margin-left: $ce3-padding-half !important;
   @media screen and (max-width: 900px) {
     margin-top: 14px;
