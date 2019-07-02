@@ -43,6 +43,7 @@
     align-items: center;
     justify-content: center;
     border: none !important;
+    top: 9px;
   }
 
   &.fs-dropdown-open,
@@ -92,7 +93,7 @@
   .movable {
     pointer-events: auto;
   }
-  
+
   .bottom-scenario-controls {
     position: relative;
     top: -84px;

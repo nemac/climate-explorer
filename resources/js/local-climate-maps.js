@@ -21,6 +21,7 @@ $(function () {
   enableCustomSelect('chartmap-select');
   enableCustomSelect('time-select');
 
+
   // // $('#chartmap-btn-chart-link').click(handleChartLink)
   //  $('#chartmap-wrapper').parent.click(handleChartLink);
   //
@@ -123,6 +124,9 @@ $(function () {
           document.querySelector('.esri-view-root').style.minWidth = `${rect.width}px`;
           document.querySelector('.esri-view-root').style.height = `${rect.height}px`;
           document.querySelector('.esri-view-root').style.minWidth = `${rect.height}px`;
+          enableCustomSelect('leftScenario-select');
+          enableCustomSelect('rightScenario-select');
+
         },
         change: function change() {
           window.precipitationScenariosMap.scenarioComparisonMap("getShowSeasonControls") ? $("#precipitation-map-season").show(200) : $("#precipitation-map-season").hide();

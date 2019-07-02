@@ -13,7 +13,7 @@
     "css:watch": "node-sass -o resources/css/ resources/scss/screen.scss --include-path node_modules/compass-mixins/lib/ --output-style expanded --source-comments -wr",
     "deploy:fli": "aws s3 sync --delete --no-follow-symlinks dist/ s3://climate-explorer/ &&  aws cloudfront create-invalidation --distribution-id E34SU5ZJ0O3LC0 --paths '/*'",
     "deploy:nemac": "aws s3 sync --delete --no-follow-symlinks dist/ s3://climateexplorer2.nemac.org/ &&  aws cloudfront create-invalidation --distribution-id E1Q1S8U8911R6D --paths '/*'",
-    "start": "static -p 8080 dist/"
+    "start": "static -a 0.0.0.0 -p 8080 dist/"
   },
   "repository": {
     "type": "git",
@@ -35,6 +35,7 @@
     "node-static": "^0.7.10"
   },
   "dependencies": {
+    "formstone": "^1.4.13-1",
     "jquery-ui-touch-punch": "^0.2.3",
     "nouislider": "^13.1.5",
     "popper.js": "^1.14.7",

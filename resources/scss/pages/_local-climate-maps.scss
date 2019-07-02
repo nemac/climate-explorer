@@ -49,6 +49,12 @@
     min-height: unset !important;
   }
 
+
+  .bottom-scenario-controls .rounded-choice-box {
+    min-height: 100% !important;
+    max-height: 100% !important;
+  }
+
   @media screen and (max-width: 900px) {
     height: auto !important;
     order: 1;
@@ -86,6 +92,7 @@
         left: 0px !important;
         width: 100% !important;
         height: 100% !important;
+        margin: 0px !important;
       }
 
       .movable.slider-div {
@@ -98,40 +105,68 @@
         position: inherit !important;
         top: -350px !important;
         width: 100% !important;
+        height: 100% !important;
         padding: 1rem 0rem !important;
 
+
         .left-scenario-controls {
-          width: 50% !important;
+          width: 100% !important;
+          flex: 1 0 100% !important;
           margin: 0px !important;
           padding-right: 6px;
+          position: relative;
+          top: -225px;
         }
 
         .right-scenario-controls {
-          width: 50% !important;
+          width: 100% !important;
+          flex: 1 0 100% !important;
           margin: 0px !important;
           padding-left: 6px;
+          position: relative;
+          top: -225px;
+          left: -100%;
         }
 
         .left-year-slider-container {
-          max-width: 100%;
-          min-width: 100%;
-          width: 100%;
+          max-width: 90%;
+          min-width: 90%;
+          width: 90%;
+          &:focus, &:hover {
+            border-left: 2px $ce3-blue3 solid !important;
+          }
+        }
+
+        #leftScenario-select-wrapper {
+          border-left: 2px $ce3-blue3 solid !important;
+        }
+
+        #rightScenario-select-wrapper {
+          border-right: 2px $ce3-blue3 solid !important;
         }
 
         .right-year-slider-container {
-          max-width: 100%;
-          min-width: 100%;
-          width: 100%;
+          max-width: 90%;
+          min-width: 90%;
+          width: 90%;
+          &:focus, &:hover {
+            border-right: 2px $ce3-blue3 solid !important;
+          }
+        }
+
+        .fs-dropdown-options {
+          position: relative;
+          left: -150px;
         }
 
         .left-scenario-dropdown {
-          max-width: 200%;
-          min-width: 100%;
-          width: 200%;
+          max-width: 90%;
+          min-width: 90%;
+          width: 90%;
           margin: 0px;
           .fs-dropdown.fs-dropdown-mobile {
-            width: 200%;
-            min-width: 180%;
+            width: 100%;
+            min-width: 100%;
             border-left: 2px $ce3-blue3 solid;
           }
         }
@@ -139,23 +174,23 @@
         .left-year-slider-container {
           position: relative;
           top: 24px;
-          max-width: 180%;
-          min-width: 100%;
-          width: 180%;
+          max-width: 90%;
+          min-width: 90%;
+          width: 90%;
           border-left: 2px $ce3-blue3 solid;
         }
 
         .right-scenario-dropdown {
           position: relative;
           top: 150px;
-          max-width: 200%;
-          min-width: 100%;
-          width: 200%;
+          max-width: 90%;
+          min-width: 90%;
+          width: 90%;
           margin: 0px;
           .fs-dropdown.fs-dropdown-mobile {
-            width: 200%;
-            min-width: 180%;
-            left: -80%;
+            width: 100%;
+            min-width: 100%;
+            // left: -80%;
             border-right: 2px $ce3-blue3 solid;
           }
         }
@@ -163,9 +198,9 @@
         .right-year-slider-container {
           position: relative;
           top: 175px;
-          max-width: 180%;
-          min-width: 100%;
-          width: 180%;
+          max-width: 90%;
+          min-width: 90%;
+          width: 90%;
           border-right: 2px $ce3-blue3 solid;
         }
       }

@@ -444,8 +444,9 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
       return Promise.all(layerPromises).then(this._trigger.bind(this, 'layersloaded', null, null));
     },
     _initControlsOverlay: function _initControlsOverlay() {
+
       this.nodes.$controlsOverLayContainer = $('<div>', { 'class': 'scenario-map-overlay-container' });
-      this.nodes.$controlsOverLayContainer.append('        \n        <div class="movable slider-div">\n          <div class="handle"></div>\n        </div>\n        <div class="bottom-scenario-controls">\n          <div class="left-scenario-controls">\n            <div class="left-scenario-dropdown">\n              <select name="leftScenario" class="dropdown">\n                <option value="historical">HISTORICAL</option>\n                <option value="rcp45">LOWER EMISSIONS</option>\n              </select>\n            </div>\n            <div class="year left-year-slider-container">\n              <div class="year-label year-min"></div>\n              <div class="left-year-slider"></div>\n              <div class="year-label year-max"></div>\n            </div>\n          </div>\n          <div class="right-scenario-controls">\n        \n            <div class="right-scenario-dropdown">\n              <select name="rightScenario" class="dropdown">\n                <option value="rcp85">HIGHER EMISSIONS</option>\n                <option value="rcp45">LOWER EMISSIONS</option>\n              </select></div>\n            <div class="year right-year-slider-container">\n              <div class="year-label year-min"></div>\n              <div class="right-year-slider"></div>\n              <div class="year-label year-max"></div>\n            </div>\n          </div>\n        </div>\n                  \n            ');
+      this.nodes.$controlsOverLayContainer.append('        \n        <div class="movable slider-div">\n          <div class="handle"></div>\n        </div>\n        <div class="bottom-scenario-controls">\n          <div class="left-scenario-controls">\n            <div class="left-scenario-dropdown">\n              <div id="leftScenario-select-wrapper" class="rounded-choice-box padding-horrizontal-half padding-vertical-half default-btn-height d-flex-center width-100">\n<div class="select leftScenario-select">\n  <div id="leftScenario-select-vis" class="select-styled" rel="historical">HISTORICAL</div>\n  <ul class="select-options">\n    <li id="leftScenario-select" rel="historical" class="default-select-option">HISTORICAL</li>\n    <li id="leftScenario-select" rel="rcp45" class="default-select-option">LOWER EMISSIONS</li>\n  </ul>\n</div>\n</div>\n           </div>\n            <div class="year left-year-slider-container">\n              <div class="year-label year-min"></div>\n              <div class="left-year-slider"></div>\n              <div class="year-label year-max"></div>\n            </div>\n          </div>\n          <div class="right-scenario-controls">\n        \n            <div class="right-scenario-dropdown">\n             <div id="rightScenario-select-wrapper" class="rounded-choice-box padding-horrizontal-half padding-vertical-half default-btn-height d-flex-center width-100">\n  <div class="select rightScenario-select">\n    <div id="rightScenario-select-vis" class="select-styled" rel="rcp85">HIGHER EMISSIONS</div>\n    <ul class="select-options">\n      <li id="rightScenario-select" rel="rcp85" class="default-select-option">HIGHER EMISSIONS</li>\n      <li id="rightScenario-select-map" rel="rcp45" class="default-select-option">LOWER EMISSIONS</li>\n    </ul>\n  </div>\n</div>\n</div>\n            <div class="year right-year-slider-container">\n              <div class="year-label year-min"></div>\n              <div class="right-year-slider"></div>\n              <div class="year-label year-max"></div>\n            </div>\n          </div>\n        </div>\n                  \n            ');
       $(this.nodes.mapContainer).append(this.nodes.$controlsOverLayContainer);
 
       this.nodes.$controlsOverLayContainer.find('.movable.slider-div').draggable({
@@ -1949,28 +1950,14 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
       var _this7 = this;
 
       if (this.nodes.$leftScenarioSelect === undefined) {
-        this.nodes.$leftScenarioSelect = $(this.nodes.$controlsOverLayContainer).find(".left-scenario-controls .dropdown");
-        this.nodes.$leftScenarioSelect.val(this.options.leftScenario);
-        this.nodes.$leftScenarioSelect.dropdown({ bottomEdge: 80 });
-        this.nodes.$leftScenarioSelect.on('change', function () {
-          if (this.nodes.$leftScenarioSelect.val() !== undefined && this.nodes.$leftScenarioSelect.val() !== null) {
-            this._setOptions({ leftScenario: this.nodes.$leftScenarioSelect.val() });
+        this.nodes.$leftScenarioSelect = $(this.nodes.$controlsOverLayContainer).find("#leftScenario-select-vis");
+        this.nodes.$leftScenarioSelect.attr('rel');
+
+        this.nodes.$leftScenarioSelect.bind('cs-changed', function () {
+          if (this.nodes.$leftScenarioSelect.attr('rel') !== undefined && this.nodes.$leftScenarioSelect.attr('rel') !== null) {
+            this._setOptions({ leftScenario: this.nodes.$leftScenarioSelect.attr('rel') });
           }
         }.bind(this));
-      }
-
-      $(this.nodes.$leftScenarioSelect.find('option').each(function (i, o) {
-        if ((_this7.options.variables[_this7.options.variable].disabledScenarios || []).includes($(o).val())) {
-          _this7.nodes.$leftScenarioSelect.dropdown("disable", $(o).val());
-          _this7.nodes.$leftScenarioSelect.parent().find('button[data-value="' + $(o).val() + '"]').hide();
-        } else {
-          _this7.nodes.$leftScenarioSelect.dropdown("enable", $(o).val());
-          _this7.nodes.$leftScenarioSelect.parent().find('button[data-value="' + $(o).val() + '"]').show();
-        }
-      }));
-
-      if (this.nodes.$leftScenarioSelect.val() !== this.options.leftScenario) {
-        this.nodes.$leftScenarioSelect.val(this.options.leftScenario).trigger('change');
       }
     },
 
@@ -1978,25 +1965,14 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
       var _this8 = this;
 
       if (this.nodes.$rightScenarioSelect === undefined) {
-        this.nodes.$rightScenarioSelect = $(this.nodes.$controlsOverLayContainer).find(".right-scenario-controls .dropdown");
-        this.nodes.$rightScenarioSelect.val(this.options.rightScenario);
-        this.nodes.$rightScenarioSelect.dropdown({ bottomEdge: 80 });
-        this.nodes.$rightScenarioSelect.on('change', function () {
-          if (this.nodes.$rightScenarioSelect.val() !== undefined && this.nodes.$rightScenarioSelect.val() !== null) {
-            this._setOptions({ rightScenario: this.nodes.$rightScenarioSelect.val() });
+        this.nodes.$rightScenarioSelect = $(this.nodes.$controlsOverLayContainer).find("#rightScenario-select-vis");
+        this.nodes.$rightScenarioSelect.attr('rel');
+
+        this.nodes.$rightScenarioSelect.bind('cs-changed', function () {
+          if (this.nodes.$rightScenarioSelect.attr('rel') !== undefined && this.nodes.$rightScenarioSelect.attr('rel') !== null) {
+            this._setOptions({ rightScenario: this.nodes.$rightScenarioSelect.attr('rel') });
           }
         }.bind(this));
-      }
-
-      $(this.nodes.$leftScenarioSelect.find('option').each(function (i, o) {
-        if ((_this8.options.variables[_this8.options.variable].disabledScenarios || []).includes($(o).val())) {
-          _this8.nodes.$leftScenarioSelect.dropdown("disable", $(o).val());
-        } else {
-          _this8.nodes.$leftScenarioSelect.dropdown("enable", $(o).val());
-        }
-      }));
-      if (this.nodes.$rightScenarioSelect.val() !== this.options.rightScenario) {
-        this.nodes.$rightScenarioSelect.val(this.options.rightScenario).trigger('change');
       }
     },
 

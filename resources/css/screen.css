@@ -15046,6 +15046,12 @@ input.input-inner:focus {
   }
 }
 
+/* line 53, resources/scss/pages/_local-climate-maps.scss */
+#map-row .bottom-scenario-controls .rounded-choice-box {
+  min-height: 100% !important;
+  max-height: 100% !important;
+}
+
 @media screen and (max-width: 900px) {
   /* line 23, resources/scss/pages/_local-climate-maps.scss */
   #map-row {
@@ -15053,7 +15059,7 @@ input.input-inner:focus {
     order: 1;
     padding-bottom: 250px !important;
   }
-  /* line 57, resources/scss/pages/_local-climate-maps.scss */
+  /* line 63, resources/scss/pages/_local-climate-maps.scss */
   #map-row #temperature-map {
     width: 100%;
     flex-wrap: wrap;
@@ -15061,117 +15067,146 @@ input.input-inner:focus {
     max-height: 350px !important;
     height: 350px !important;
   }
-  /* line 64, resources/scss/pages/_local-climate-maps.scss */
+  /* line 70, resources/scss/pages/_local-climate-maps.scss */
   #map-row #temperature-map .esri-view-root {
     flex: 0 0 100%;
     height: 100% !important;
     width: 100% !important;
   }
-  /* line 71, resources/scss/pages/_local-climate-maps.scss */
+  /* line 77, resources/scss/pages/_local-climate-maps.scss */
   #map-row #temperature-map .esri-overlay-surface {
     flex: 0 0 100%;
     height: 100% !important;
     width: 100% !important;
   }
-  /* line 77, resources/scss/pages/_local-climate-maps.scss */
+  /* line 83, resources/scss/pages/_local-climate-maps.scss */
   #map-row #temperature-map .esri-view-user-storage {
     overflow: visible !important;
     height: 100% !important;
     width: 100% !important;
   }
-  /* line 83, resources/scss/pages/_local-climate-maps.scss */
+  /* line 89, resources/scss/pages/_local-climate-maps.scss */
   #map-row #temperature-map .scenario-map-overlay-container {
     position: relative !important;
     top: 0px !important;
     left: 0px !important;
     width: 100% !important;
     height: 100% !important;
+    margin: 0px !important;
   }
-  /* line 91, resources/scss/pages/_local-climate-maps.scss */
+  /* line 98, resources/scss/pages/_local-climate-maps.scss */
   #map-row #temperature-map .movable.slider-div {
     height: 350px;
     top: -350px;
     z-index: 200;
   }
-  /* line 97, resources/scss/pages/_local-climate-maps.scss */
+  /* line 104, resources/scss/pages/_local-climate-maps.scss */
   #map-row #temperature-map .bottom-scenario-controls {
     position: inherit !important;
     top: -350px !important;
     width: 100% !important;
+    height: 100% !important;
     padding: 1rem 0rem !important;
   }
-  /* line 103, resources/scss/pages/_local-climate-maps.scss */
+  /* line 112, resources/scss/pages/_local-climate-maps.scss */
   #map-row #temperature-map .bottom-scenario-controls .left-scenario-controls {
-    width: 50% !important;
+    width: 100% !important;
+    flex: 1 0 100% !important;
     margin: 0px !important;
     padding-right: 6px;
-  }
-  /* line 109, resources/scss/pages/_local-climate-maps.scss */
-  #map-row #temperature-map .bottom-scenario-controls .right-scenario-controls {
-    width: 50% !important;
-    margin: 0px !important;
-    padding-left: 6px;
-  }
-  /* line 115, resources/scss/pages/_local-climate-maps.scss */
-  #map-row #temperature-map .bottom-scenario-controls .left-year-slider-container {
-    max-width: 100%;
-    min-width: 100%;
-    width: 100%;
+    position: relative;
+    top: -225px;
   }
   /* line 121, resources/scss/pages/_local-climate-maps.scss */
-  #map-row #temperature-map .bottom-scenario-controls .right-year-slider-container {
-    max-width: 100%;
-    min-width: 100%;
-    width: 100%;
+  #map-row #temperature-map .bottom-scenario-controls .right-scenario-controls {
+    width: 100% !important;
+    flex: 1 0 100% !important;
+    margin: 0px !important;
+    padding-left: 6px;
+    position: relative;
+    top: -225px;
+    left: -100%;
   }
-  /* line 127, resources/scss/pages/_local-climate-maps.scss */
+  /* line 131, resources/scss/pages/_local-climate-maps.scss */
+  #map-row #temperature-map .bottom-scenario-controls .left-year-slider-container {
+    max-width: 90%;
+    min-width: 90%;
+    width: 90%;
+  }
+  /* line 135, resources/scss/pages/_local-climate-maps.scss */
+  #map-row #temperature-map .bottom-scenario-controls .left-year-slider-container:focus, #map-row #temperature-map .bottom-scenario-controls .left-year-slider-container:hover {
+    border-left: 2px #124086 solid !important;
+  }
+  /* line 140, resources/scss/pages/_local-climate-maps.scss */
+  #map-row #temperature-map .bottom-scenario-controls #leftScenario-select-wrapper {
+    border-left: 2px #124086 solid !important;
+  }
+  /* line 144, resources/scss/pages/_local-climate-maps.scss */
+  #map-row #temperature-map .bottom-scenario-controls #rightScenario-select-wrapper {
+    border-right: 2px #124086 solid !important;
+  }
+  /* line 148, resources/scss/pages/_local-climate-maps.scss */
+  #map-row #temperature-map .bottom-scenario-controls .right-year-slider-container {
+    max-width: 90%;
+    min-width: 90%;
+    width: 90%;
+  }
+  /* line 152, resources/scss/pages/_local-climate-maps.scss */
+  #map-row #temperature-map .bottom-scenario-controls .right-year-slider-container:focus, #map-row #temperature-map .bottom-scenario-controls .right-year-slider-container:hover {
+    border-right: 2px #124086 solid !important;
+  }
+  /* line 157, resources/scss/pages/_local-climate-maps.scss */
+  #map-row #temperature-map .bottom-scenario-controls .fs-dropdown-options {
+    position: relative;
+    left: -150px;
+  }
+  /* line 162, resources/scss/pages/_local-climate-maps.scss */
   #map-row #temperature-map .bottom-scenario-controls .left-scenario-dropdown {
-    max-width: 200%;
-    min-width: 100%;
-    width: 200%;
+    max-width: 90%;
+    min-width: 90%;
+    width: 90%;
     margin: 0px;
   }
-  /* line 132, resources/scss/pages/_local-climate-maps.scss */
+  /* line 167, resources/scss/pages/_local-climate-maps.scss */
   #map-row #temperature-map .bottom-scenario-controls .left-scenario-dropdown .fs-dropdown.fs-dropdown-mobile {
-    width: 200%;
-    min-width: 180%;
+    width: 100%;
+    min-width: 100%;
     border-left: 2px #124086 solid;
   }
-  /* line 139, resources/scss/pages/_local-climate-maps.scss */
+  /* line 174, resources/scss/pages/_local-climate-maps.scss */
   #map-row #temperature-map .bottom-scenario-controls .left-year-slider-container {
     position: relative;
     top: 24px;
-    max-width: 180%;
-    min-width: 100%;
-    width: 180%;
+    max-width: 90%;
+    min-width: 90%;
+    width: 90%;
     border-left: 2px #124086 solid;
   }
-  /* line 148, resources/scss/pages/_local-climate-maps.scss */
+  /* line 183, resources/scss/pages/_local-climate-maps.scss */
   #map-row #temperature-map .bottom-scenario-controls .right-scenario-dropdown {
     position: relative;
     top: 150px;
-    max-width: 200%;
-    min-width: 100%;
-    width: 200%;
+    max-width: 90%;
+    min-width: 90%;
+    width: 90%;
     margin: 0px;
   }
-  /* line 155, resources/scss/pages/_local-climate-maps.scss */
+  /* line 190, resources/scss/pages/_local-climate-maps.scss */
   #map-row #temperature-map .bottom-scenario-controls .right-scenario-dropdown .fs-dropdown.fs-dropdown-mobile {
-    width: 200%;
-    min-width: 180%;
-    left: -80%;
+    width: 100%;
+    min-width: 100%;
     border-right: 2px #124086 solid;
   }
-  /* line 163, resources/scss/pages/_local-climate-maps.scss */
+  /* line 198, resources/scss/pages/_local-climate-maps.scss */
   #map-row #temperature-map .bottom-scenario-controls .right-year-slider-container {
     position: relative;
     top: 175px;
-    max-width: 180%;
-    min-width: 100%;
-    width: 180%;
+    max-width: 90%;
+    min-width: 90%;
+    width: 90%;
     border-right: 2px #124086 solid;
   }
-  /* line 174, resources/scss/pages/_local-climate-maps.scss */
+  /* line 209, resources/scss/pages/_local-climate-maps.scss */
   #map-row .map-wrap {
     min-height: 350px !important;
     height: 350px !important;
@@ -15184,41 +15219,41 @@ input.input-inner:focus {
     height: auto !important;
     order: 1;
   }
-  /* line 183, resources/scss/pages/_local-climate-maps.scss */
+  /* line 218, resources/scss/pages/_local-climate-maps.scss */
   #map-row .map-wrap {
     min-height: 250px !important;
     height: 250px !important;
   }
 }
 
-/* line 191, resources/scss/pages/_local-climate-maps.scss */
+/* line 226, resources/scss/pages/_local-climate-maps.scss */
 .esri-expand__container {
   height: 32px;
   width: 32px;
 }
 
-/* line 196, resources/scss/pages/_local-climate-maps.scss */
+/* line 231, resources/scss/pages/_local-climate-maps.scss */
 .legend-image {
   max-height: 16rem;
   max-width: none;
 }
 
-/* line 201, resources/scss/pages/_local-climate-maps.scss */
+/* line 236, resources/scss/pages/_local-climate-maps.scss */
 .esri-view-width-greater-than-xsmall .esri-expand--auto .esri-expand__content {
   position: relative;
 }
 
-/* line 205, resources/scss/pages/_local-climate-maps.scss */
+/* line 240, resources/scss/pages/_local-climate-maps.scss */
 .scenario-map-overlay-container {
   position: relative;
 }
 
-/* line 209, resources/scss/pages/_local-climate-maps.scss */
+/* line 244, resources/scss/pages/_local-climate-maps.scss */
 .esri-view {
   padding: 12px;
 }
 
-/* line 213, resources/scss/pages/_local-climate-maps.scss */
+/* line 248, resources/scss/pages/_local-climate-maps.scss */
 .esri-view-surface {
   -webkit-border-radius: 5px;
   -moz-border-radius: 5px;
@@ -15227,7 +15262,7 @@ input.input-inner:focus {
   border-radius: 5px;
 }
 
-/* line 223, resources/scss/pages/_local-climate-maps.scss */
+/* line 258, resources/scss/pages/_local-climate-maps.scss */
 .movable {
   width: 4px;
   height: 100%;
@@ -15239,7 +15274,7 @@ input.input-inner:focus {
   box-shadow: 1px 0 2px 0 rgba(0, 0, 0, 0.15);
 }
 
-/* line 232, resources/scss/pages/_local-climate-maps.scss */
+/* line 267, resources/scss/pages/_local-climate-maps.scss */
 .movable .handle {
   position: relative;
   top: 50%;
@@ -15254,7 +15289,7 @@ input.input-inner:focus {
   box-shadow: 1px 0 2px 0 rgba(0, 0, 0, 0.15);
 }
 
-/* line 241, resources/scss/pages/_local-climate-maps.scss */
+/* line 276, resources/scss/pages/_local-climate-maps.scss */
 .movable .handle:after {
   cursor: col-resize;
   position: absolute;
@@ -15335,9 +15370,10 @@ input.input-inner:focus {
   align-items: center;
   justify-content: center;
   border: none !important;
+  top: 9px;
 }
 
-/* line 50, resources/scss/pages/_variable.scss */
+/* line 51, resources/scss/pages/_variable.scss */
 .variables-fs-dropdown.fs-dropdown-open .fs-dropdown-selected, .scenario-map-overlay-container .left-scenario-dropdown .fs-dropdown-open.fs-dropdown .fs-dropdown-selected, .scenario-map-overlay-container .right-scenario-dropdown .fs-dropdown-open.fs-dropdown .fs-dropdown-selected, .variables-fs-dropdown.fs-dropdown-focus .fs-dropdown-selected, .scenario-map-overlay-container .left-scenario-dropdown .fs-dropdown-focus.fs-dropdown .fs-dropdown-selected, .scenario-map-overlay-container .right-scenario-dropdown .fs-dropdown-focus.fs-dropdown .fs-dropdown-selected {
   background-color: rgba(233, 241, 252, 0.96);
   -webkit-box-shadow: none;
@@ -15345,7 +15381,7 @@ input.input-inner:focus {
   box-shadow: none;
 }
 
-/* line 56, resources/scss/pages/_variable.scss */
+/* line 57, resources/scss/pages/_variable.scss */
 .variables-fs-dropdown .fs-dropdown-options, .scenario-map-overlay-container .left-scenario-dropdown .fs-dropdown .fs-dropdown-options, .scenario-map-overlay-container .right-scenario-dropdown .fs-dropdown .fs-dropdown-options {
   background-color: rgba(233, 241, 252, 0.96);
   color: #124086;
@@ -15363,7 +15399,7 @@ input.input-inner:focus {
   border-radius: 5px / 5px;
 }
 
-/* line 68, resources/scss/pages/_variable.scss */
+/* line 69, resources/scss/pages/_variable.scss */
 .variables-fs-dropdown .fs-dropdown-options button, .scenario-map-overlay-container .left-scenario-dropdown .fs-dropdown .fs-dropdown-options button, .scenario-map-overlay-container .right-scenario-dropdown .fs-dropdown .fs-dropdown-options button {
   padding: 10px;
   font-size: 1rem;
@@ -15375,29 +15411,29 @@ input.input-inner:focus {
   border-radius: 0px;
 }
 
-/* line 74, resources/scss/pages/_variable.scss */
+/* line 75, resources/scss/pages/_variable.scss */
 .variables-fs-dropdown .fs-dropdown-options button:hover, .scenario-map-overlay-container .left-scenario-dropdown .fs-dropdown .fs-dropdown-options button:hover, .scenario-map-overlay-container .right-scenario-dropdown .fs-dropdown .fs-dropdown-options button:hover {
   color: #124086;
   background: #d3e3f9;
 }
 
-/* line 81, resources/scss/pages/_variable.scss */
+/* line 82, resources/scss/pages/_variable.scss */
 .variables-fs-dropdown .fs-dropdown-options .fs-dropdown-item:hover, .scenario-map-overlay-container .left-scenario-dropdown .fs-dropdown .fs-dropdown-options .fs-dropdown-item:hover, .scenario-map-overlay-container .right-scenario-dropdown .fs-dropdown .fs-dropdown-options .fs-dropdown-item:hover {
   color: #124086;
   background: #d3e3f9;
 }
 
-/* line 89, resources/scss/pages/_variable.scss */
+/* line 90, resources/scss/pages/_variable.scss */
 .scenario-map-overlay-container {
   pointer-events: none;
 }
 
-/* line 92, resources/scss/pages/_variable.scss */
+/* line 93, resources/scss/pages/_variable.scss */
 .scenario-map-overlay-container .movable {
   pointer-events: auto;
 }
 
-/* line 96, resources/scss/pages/_variable.scss */
+/* line 97, resources/scss/pages/_variable.scss */
 .scenario-map-overlay-container .bottom-scenario-controls {
   position: relative;
   top: -84px;
@@ -15409,7 +15445,7 @@ input.input-inner:focus {
   padding: 1rem;
 }
 
-/* line 107, resources/scss/pages/_variable.scss */
+/* line 108, resources/scss/pages/_variable.scss */
 .scenario-map-overlay-container .left-scenario-controls {
   justify-self: flex-start;
   align-self: flex-end;
@@ -15419,12 +15455,12 @@ input.input-inner:focus {
   flex-flow: row wrap;
 }
 
-/* line 114, resources/scss/pages/_variable.scss */
+/* line 115, resources/scss/pages/_variable.scss */
 .scenario-map-overlay-container .left-scenario-controls > * {
   pointer-events: auto;
 }
 
-/* line 117, resources/scss/pages/_variable.scss */
+/* line 118, resources/scss/pages/_variable.scss */
 .scenario-map-overlay-container .right-scenario-controls {
   justify-self: flex-end;
   align-self: flex-end;
@@ -15434,38 +15470,38 @@ input.input-inner:focus {
   flex-flow: row-reverse wrap;
 }
 
-/* line 124, resources/scss/pages/_variable.scss */
+/* line 125, resources/scss/pages/_variable.scss */
 .scenario-map-overlay-container .right-scenario-controls > * {
   pointer-events: auto;
 }
 
-/* line 127, resources/scss/pages/_variable.scss */
+/* line 128, resources/scss/pages/_variable.scss */
 .scenario-map-overlay-container .left-scenario-dropdown, .scenario-map-overlay-container .right-scenario-dropdown {
   flex: 0 auto;
   width: 14rem;
   margin: 5px;
 }
 
-/* line 132, resources/scss/pages/_variable.scss */
+/* line 133, resources/scss/pages/_variable.scss */
 .scenario-map-overlay-container .left-scenario-dropdown:focus, .scenario-map-overlay-container .right-scenario-dropdown:focus {
   border: none;
   outline: none;
 }
 
-/* line 137, resources/scss/pages/_variable.scss */
+/* line 138, resources/scss/pages/_variable.scss */
 .scenario-map-overlay-container .left-scenario-dropdown .fs-dropdown, .scenario-map-overlay-container .right-scenario-dropdown .fs-dropdown {
   position: relative;
   float: none;
 }
 
-/* line 142, resources/scss/pages/_variable.scss */
+/* line 143, resources/scss/pages/_variable.scss */
 .scenario-map-overlay-container .left-scenario-dropdown .fs-dropdown button, .scenario-map-overlay-container .right-scenario-dropdown .fs-dropdown button {
   padding: 1rem !important;
   font-size: 0.8rem !important;
   line-height: 0.7rem !important;
 }
 
-/* line 149, resources/scss/pages/_variable.scss */
+/* line 150, resources/scss/pages/_variable.scss */
 .scenario-map-overlay-container .left-scenario-dropdown .dropdown, .scenario-map-overlay-container .right-scenario-dropdown .dropdown {
   display: block;
   padding: 1rem;
@@ -15481,12 +15517,12 @@ input.input-inner:focus {
   padding-bottom: 0.75rem;
 }
 
-/* line 162, resources/scss/pages/_variable.scss */
+/* line 163, resources/scss/pages/_variable.scss */
 .scenario-map-overlay-container .left-scenario-dropdown .dropdown button, .scenario-map-overlay-container .right-scenario-dropdown .dropdown button {
   background: rgba(255, 255, 255, 0.96);
 }
 
-/* line 168, resources/scss/pages/_variable.scss */
+/* line 169, resources/scss/pages/_variable.scss */
 .scenario-map-overlay-container .year {
   flex: 1 0 auto;
   max-width: 96%;
@@ -15503,12 +15539,12 @@ input.input-inner:focus {
   transition: 0.25s;
 }
 
-/* line 180, resources/scss/pages/_variable.scss */
+/* line 181, resources/scss/pages/_variable.scss */
 .scenario-map-overlay-container .year:hover {
   background: rgba(255, 255, 255, 0.96);
 }
 
-/* line 184, resources/scss/pages/_variable.scss */
+/* line 185, resources/scss/pages/_variable.scss */
 .scenario-map-overlay-container .year.right-year-slider-container, .scenario-map-overlay-container .year.left-year-slider-container {
   font: 500 0.9rem/0.9rem Roboto, Helvetica, "Helvetica Neue", Arial, sans-serif !important;
   background-color: rgba(233, 241, 252, 0.96) !important;
@@ -15518,26 +15554,26 @@ input.input-inner:focus {
   border-radius: 5px / 5px !important;
 }
 
-/* line 190, resources/scss/pages/_variable.scss */
+/* line 191, resources/scss/pages/_variable.scss */
 .scenario-map-overlay-container .year.right-year-slider-container:focus, .scenario-map-overlay-container .year.left-year-slider-container:focus {
   background: rgba(211, 227, 249, 0.96) !important;
   border: none !important;
   outline: none !important;
 }
 
-/* line 196, resources/scss/pages/_variable.scss */
+/* line 197, resources/scss/pages/_variable.scss */
 .scenario-map-overlay-container .year.right-year-slider-container:hover, .scenario-map-overlay-container .year.left-year-slider-container:hover {
   background: rgba(211, 227, 249, 0.96) !important;
   border: none !important;
   outline: none !important;
 }
 
-/* line 203, resources/scss/pages/_variable.scss */
+/* line 204, resources/scss/pages/_variable.scss */
 .scenario-map-overlay-container .year .ui-slider-horizontal {
   height: 6px;
 }
 
-/* line 207, resources/scss/pages/_variable.scss */
+/* line 208, resources/scss/pages/_variable.scss */
 .scenario-map-overlay-container .year .ui-slider {
   position: relative;
   flex: 1 0 auto;
@@ -15550,12 +15586,12 @@ input.input-inner:focus {
   border-radius: 5px / 5px !important;
 }
 
-/* line 216, resources/scss/pages/_variable.scss */
+/* line 217, resources/scss/pages/_variable.scss */
 .scenario-map-overlay-container .year .ui-slider .icon-arrow-left-right:before {
   content: '' !important;
 }
 
-/* line 220, resources/scss/pages/_variable.scss */
+/* line 221, resources/scss/pages/_variable.scss */
 .scenario-map-overlay-container .year .ui-slider .map-tooltip {
   cursor: pointer !important;
   color: #124086 !important;
@@ -15567,7 +15603,7 @@ input.input-inner:focus {
   left: -1.1rem !important;
 }
 
-/* line 228, resources/scss/pages/_variable.scss */
+/* line 229, resources/scss/pages/_variable.scss */
 .scenario-map-overlay-container .year .ui-slider .map-tooltip:after {
   content: '' !important;
   border: 5px solid #E9F1FC !important;
@@ -15576,7 +15612,7 @@ input.input-inner:focus {
   box-shadow: 0 0 8px rgba(233, 241, 252, 0) !important;
 }
 
-/* line 237, resources/scss/pages/_variable.scss */
+/* line 238, resources/scss/pages/_variable.scss */
 .scenario-map-overlay-container .year .ui-slider .ui-slider-handle {
   cursor: pointer !important;
   font-size: 1.2rem;
@@ -15601,7 +15637,7 @@ input.input-inner:focus {
   box-shadow: 0 0 4px rgba(0, 88, 207, 0.25);
 }
 
-/* line 256, resources/scss/pages/_variable.scss */
+/* line 257, resources/scss/pages/_variable.scss */
 .scenario-map-overlay-container .year .ui-slider .ui-slider-handle:focus {
   outline: none !important;
   -webkit-box-shadow: 0px 0px 0px 8px rgba(18, 64, 134, 0.25) !important;
@@ -15609,7 +15645,7 @@ input.input-inner:focus {
   box-shadow: 0px 0px 0px 8px rgba(18, 64, 134, 0.25) !important;
 }
 
-/* line 261, resources/scss/pages/_variable.scss */
+/* line 262, resources/scss/pages/_variable.scss */
 .scenario-map-overlay-container .year .ui-slider .ui-slider-handle:hover {
   outline: none !important;
   -webkit-box-shadow: 0px 0px 0px 8px rgba(18, 64, 134, 0.25) !important;
@@ -15617,19 +15653,19 @@ input.input-inner:focus {
   box-shadow: 0px 0px 0px 8px rgba(18, 64, 134, 0.25) !important;
 }
 
-/* line 266, resources/scss/pages/_variable.scss */
+/* line 267, resources/scss/pages/_variable.scss */
 .scenario-map-overlay-container .year .ui-slider .ui-slider-handle:before, .scenario-map-overlay-container .year .ui-slider .ui-slider-handle:after {
   display: none !important;
 }
 
-/* line 272, resources/scss/pages/_variable.scss */
+/* line 273, resources/scss/pages/_variable.scss */
 .scenario-map-overlay-container .year .year-label {
   flex: 0 auto;
   text-align: center;
   margin: 0.5rem 1rem;
 }
 
-/* line 279, resources/scss/pages/_variable.scss */
+/* line 280, resources/scss/pages/_variable.scss */
 .scenario-map-overlay-container .year.disabled {
   cursor: pointer;
   flex-grow: 0;
@@ -15643,21 +15679,21 @@ input.input-inner:focus {
   border-radius: 5px / 5px;
 }
 
-/* line 289, resources/scss/pages/_variable.scss */
+/* line 290, resources/scss/pages/_variable.scss */
 .scenario-map-overlay-container .year.disabled:focus {
   background: rgba(211, 227, 249, 0.96);
   border: none !important;
   outline: none !important;
 }
 
-/* line 295, resources/scss/pages/_variable.scss */
+/* line 296, resources/scss/pages/_variable.scss */
 .scenario-map-overlay-container .year.disabled:hover {
   background: rgba(211, 227, 249, 0.96);
   border: none !important;
   outline: none !important;
 }
 
-/* line 302, resources/scss/pages/_variable.scss */
+/* line 303, resources/scss/pages/_variable.scss */
 .scenario-map-overlay-container .map-tooltip {
   position: absolute;
   display: inline;
@@ -15671,7 +15707,7 @@ input.input-inner:focus {
   font: 0.9rem/0.9rem Roboto, Helvetica, "Helvetica Neue", Arial, sans-serif;
 }
 
-/* line 315, resources/scss/pages/_variable.scss */
+/* line 316, resources/scss/pages/_variable.scss */
 .scenario-map-overlay-container .map-tooltip:after {
   content: '';
   display: block;
