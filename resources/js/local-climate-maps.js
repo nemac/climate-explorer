@@ -27,6 +27,11 @@ $(function () {
   // to dissable those varriabls from the user we use this constant
   const validSeasonal = ['tmax', 'tmin', 'pcpn'];
 
+  // this function Updates the chart title.
+  function updateTitle(chartText) {
+    $('#default-chart-map-varriable').html(chartText);
+  }
+
   // toggle filters click
   $('#filters-toggle').click( function(e) {
       const target = $(e.target);
@@ -155,6 +160,9 @@ $(function () {
         $('#time-select-wrapper').removeClass('disabled');
 
       }
+
+      // update the text
+      updateTitle($('#varriable-select-vis').text());
 
       // change map varriable
       if (window.precipitationScenariosMap) {

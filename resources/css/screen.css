@@ -14984,10 +14984,16 @@ input.input-inner:focus {
 /* line 429, resources/scss/pages/_local-climate-charts.scss */
 #info-row.closed-filters .rounded-filters-box {
   min-height: 52px !important;
-  max-height: 1.2em;
 }
 
-/* line 434, resources/scss/pages/_local-climate-charts.scss */
+@media screen and (max-width: 900px) {
+  /* line 429, resources/scss/pages/_local-climate-charts.scss */
+  #info-row.closed-filters .rounded-filters-box {
+    min-height: 65px !important;
+  }
+}
+
+/* line 437, resources/scss/pages/_local-climate-charts.scss */
 #info-row.closed-filters #filters-row {
   display: none !important;
   visibility: hidden !important;

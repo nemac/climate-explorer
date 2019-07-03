@@ -428,7 +428,10 @@
   &.closed-filters {
     .rounded-filters-box {
       min-height: 52px !important;
-      max-height:1.2em;
+      @media screen and (max-width: 900px) {
+        min-height: 65px !important;
+      }
+      // max-height:1.2em;
     }
 
     #filters-row {
