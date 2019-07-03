@@ -43,23 +43,21 @@
     height: unset !important;
   }
 
+  .bottom-scenario-controls .rounded-choice-box {
+    min-height: 100% !important;
+    max-height: 100% !important;
+  }
 
+  #temperature-map {
+    .movable.slider-div {
+      top: 0px !important;
+    }
+  }
 
   @media screen and (max-width: 1240px) {
     justify-content: center !important;
     height: auto !important;
     min-height: unset !important;
-  }
-
-
-  .bottom-scenario-controls .rounded-choice-box {
-    min-height: 100% !important;
-    max-height: 100% !important;
-  }
-  #temperature-map {
-    .movable.slider-div {
-      top: 0px !important;
-    }
   }
 
   @media screen and (max-width: 900px) {

@@ -130,6 +130,10 @@
     width: 14rem;
     margin: 5px;
 
+    @media screen and (max-width: 1185px) {
+      width: 42% !important;
+    }
+
     &:focus {
       border: none;
       outline: none;
@@ -187,6 +191,11 @@
       background-color: transparentize($ce3-blue5, 0.04) !important;
       color: $ce3-blue3 !important;
       @include border-radius(5px, 5px !important);
+      @media screen and (max-width: 1185px) {
+        max-width: none !important;
+        min-width: 0px !important;
+        width: 50% !important;
+      }
 
       &:focus {
         background:  transparentize(darken($ce3-blue5, 5), 0.04) !important;
