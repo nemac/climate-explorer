@@ -64,7 +64,7 @@
       padding-top: 0.75rem;
       padding-bottom: 0.75rem;
       button {
-        background: rgba(255, 255, 255, 0.96);
+        background: rgba(255, 255, 255, 0.75);
       }
     }
   }
@@ -74,7 +74,7 @@
     max-width: 96%;
     min-width: 20rem;
     height: 2.7rem;
-    background-color: transparentize($ce3-blue5, 0.04) !important;
+    background-color: transparentize($ce3-blue5, 0.75) !important;
     display: flex;
     flex-flow: row nowrap;
     align-items: center;
@@ -87,7 +87,7 @@
 
     &.right-year-slider-container, &.left-year-slider-container {
       font: 500 0.9rem/0.9rem $roboto !important;
-      background-color: transparentize($ce3-blue5, 0.04) !important;
+      background-color: transparentize($ce3-blue5, 0.25) !important;
       color: $ce3-blue3 !important;
       @include border-radius(5px, 5px !important);
       @media screen and (max-width: 1185px)  and (min-width: 901px){
@@ -97,13 +97,13 @@
       }
 
       &:focus {
-        background:  transparentize(darken($ce3-blue5, 5), 0.04) !important;
+        background:  transparentize(darken($ce3-blue5, 5), 0.25) !important;
         border: none !important;
         outline: none !important;
       }
 
       &:hover {
-        background:  transparentize(darken($ce3-blue5, 5), 0.04) !important;
+        background:  transparentize(darken($ce3-blue5, 5), 0.25) !important;
         border: none !important;
         outline: none !important;
       }

@@ -45,7 +45,29 @@
   .bottom-scenario-controls .rounded-choice-box {
     min-height: 100% !important;
     max-height: 100% !important;
+    background-color: transparentize($ce3-blue5, 0.25) !important;
+
+    .select-styled {
+      background-color: transparentize($ce3-blue5, 0.25) !important;
+      &:hover {
+        background-color: transparentize($ce3-blue5, 0.25) !important;
+      }
+
+      &:focus {
+        background-color: transparentize($ce3-blue5, 0.25) !important;
+      }
+    }
+
+    &:hover {
+      background-color: transparentize($ce3-blue5, 0.25) !important;
+    }
+
+    &:focus {
+      background-color: transparentize($ce3-blue5, 0.25) !important;
+    }
   }
+
+
 
   #temperature-map {
     .movable.slider-div {
