@@ -56,12 +56,9 @@
 
   @media screen and (max-width: 1240px) {
     justify-content: center !important;
-    height: auto !important;
-    min-height: unset !important;
   }
 
   @media screen and (max-width: 900px) {
-    height: auto !important;
     order: 1;
     padding-bottom: 250px !important;
 
@@ -74,7 +71,6 @@
 
       .esri-view-root {
         flex: 0 0 100%;
-        // min-height: 350px !important;
         height: 100% !important;
         width: 100% !important;
       }

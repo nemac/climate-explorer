@@ -199,9 +199,9 @@ $(function () {
         layersloaded: function layersloaded() {
           $('#temperature-map').spinner('destroy');
           const rect = document.getElementById('map-wrap').getBoundingClientRect();
+          console.log(rect)
           document.querySelector('.esri-view-root').style.minWidth = `${rect.width}px`;
           document.querySelector('.esri-view-root').style.height = `${rect.height}px`;
-          document.querySelector('.esri-view-root').style.minWidth = `${rect.height}px`;
           enableCustomSelect('leftScenario-select');
           enableCustomSelect('rightScenario-select');
 
@@ -231,7 +231,6 @@ $(function () {
       document.querySelector('.esri-view-root').style.minWidth = `${rect.width}px`;
       document.querySelector('.esri-view-root').style.maxWidth = `${rect.width}px`;
       document.querySelector('.esri-view-root').style.height = `${rect.height}px`;
-      document.querySelector('.esri-view-root').style.minWidth = `${rect.height}px`;
     }
 
     if (document.querySelector('.esri-view-user-storage')) {

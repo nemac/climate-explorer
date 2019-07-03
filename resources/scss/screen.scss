@@ -262,9 +262,6 @@ h6 {
     align-items: center;
     justify-content: center
   }
-  // &:hover {
-  //   background-color: $ce3-blue5;
-  // }
 }
 
 #filters-toggle .select-styled:after  {
@@ -287,13 +284,24 @@ h6 {
   max-height: 400px !important;
   overflow: auto !important;
   @include border-radius(5px, 5px);
+
+  @media screen and (max-width: 768px) {
+    max-height: 250px !important;
+  }
+
+  @media screen and (max-height: 800px) {
+    max-height: 250px !important;
+  }
+
   a {
     color: $ce3-blue3 !important;
   }
+
   .default-select-option-group {
     padding: $ce3-padding-half !important;
     font-weight: 600 !important;
   }
+
   .default-select-option-disabled {
     color: $ce3-disabled-font !important;
     cursor: default !important;
