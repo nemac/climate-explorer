@@ -43,6 +43,8 @@
     height: unset !important;
   }
 
+
+
   @media screen and (max-width: 1240px) {
     justify-content: center !important;
     height: auto !important;
@@ -56,7 +58,7 @@
   }
   #temperature-map {
     .movable.slider-div {
-      top: 0px !important;      
+      top: 0px !important;
     }
   }
 
@@ -220,6 +222,7 @@
   @media screen and (max-width: 500px) {
     height: auto !important;
     order: 1;
+
     .map-wrap {
       min-height: 250px !important;
       height: 250px !important;
@@ -238,8 +241,21 @@
   max-width: none;
 }
 
+
+.esri-ui-top-left .esri-expand__content, .esri-ui-top-right .esri-expand__content {
+  top: -32px !important;
+}
+
+.esri-view-width-xsmall .esri-component.esri-expand.esri-widget.esri-expand--auto {
+  display: none !important;
+}
+
+.esri-view-width-xsmall .esri-expand--auto .esri-expand__container--expanded {
+  position: relative !important;
+}
+
 .esri-view-width-greater-than-xsmall .esri-expand--auto .esri-expand__content {
-  position: relative;
+  position: relative !important;
 }
 
 .scenario-map-overlay-container {
