@@ -10,6 +10,7 @@ $(function () {
   $('#default-city-county').text(window.ce.ce('getLocationPageState')['county']);
   $('#cards-search-input').val(window.ce.ce('getLocationPageState')['city']);
 
+
   const mapExtent = window.ce.ce('getLocationPageState')['extent'];
   const mapZoom = window.ce.ce('getLocationPageState')['zoom'] || 9;
   const mapcenter = window.ce.ce('getLocationPageState')['center'];
@@ -22,6 +23,9 @@ $(function () {
   enableCustomSelect('time-select');
 
 
+  // $styledSelect.attr('rel', varriableID);
+  // $styledSelect.text();
+  //
   // valid seasonal varriables
   // seasonal timeperoid is only valud for limitited varriables
   // to dissable those varriabls from the user we use this constant
@@ -123,10 +127,10 @@ $(function () {
     const target = $(e.target);
     const notDisabled = !target.hasClass('btn-default-disabled');
     if ( notDisabled ) {
-      const val = $('#varriable-select-vis').attr('rel')
-
+      const variable = $('#varriable-select-vis').attr('rel')
+      window.ce.ce('setVariablesMapState',{variable})
       // disable varriablles if they are valid time period
-      const isvalid =   jQuery.inArray( val , validSeasonal);
+      const isvalid =   jQuery.inArray( variable , validSeasonal);
       if (  isvalid < 0 ) {
         $('.btn-summer').addClass('btn-default-disabled');
         $('.btn-summer').removeClass('btn-default');
@@ -166,7 +170,7 @@ $(function () {
 
       // change map varriable
       if (window.precipitationScenariosMap) {
-        $(window.precipitationScenariosMap).scenarioComparisonMap({ variable: val });
+        $(window.precipitationScenariosMap).scenarioComparisonMap({ variable });
       }
     }
   })
@@ -183,10 +187,6 @@ $(function () {
     }
   })
 
-
-// $(window.precipitationScenariosMap).scenarioComparisonMap({ season: $(this).data().value });
-
-
     $('#temperature-map').height($('#temperature-map').parent().height());
     if (typeof window.precipitationScenariosMap === 'undefined') {
       $('#temperature-map').spinner();
@@ -199,11 +199,23 @@ $(function () {
         layersloaded: function layersloaded() {
           $('#temperature-map').spinner('destroy');
           const rect = document.getElementById('map-wrap').getBoundingClientRect();
-          console.log(rect)
           document.querySelector('.esri-view-root').style.minWidth = `${rect.width}px`;
           document.querySelector('.esri-view-root').style.height = `${rect.height}px`;
           enableCustomSelect('leftScenario-select');
           enableCustomSelect('rightScenario-select');
+
+          const variable = window.ce.ce('getVariablesPageState')['variable'];
+          console.log(variable)
+          if ( variable !== undefined) {
+            console.log('in layerloaded', variable, ( variable !== undefined || variable !== null))
+            const $styledSelect = $('.select.varriable-select div.select-styled');
+            $(`[rel="${variable}"]`).click();
+
+            // change map varriable
+            if (window.precipitationScenariosMap) {
+              $(window.precipitationScenariosMap).scenarioComparisonMap({ variable });
+            }
+          }
 
         },
         change: function change() {
@@ -218,15 +230,7 @@ $(function () {
 
     const rect = document.getElementById('map-wrap').getBoundingClientRect();
 
-    // document.querySelector('.esri-view-root').style.width = `${rect.width}px`;
-    // document.querySelector('.esri-view-root').style.minWdth = `${rect.width}px`;
-    // document.querySelector('.esri-view-root').style.height = `${rect.height}px`;
-    //
-    // document.querySelector('#temperature-map').style.width = `${rect.width}px`;
 
-    // setTimeout(function () {
-    //   document.querySelector('.esri-view-root').style.minWdth = `${rect.width}px`;
-    // }, 600);
     if (document.querySelector('.esri-view-root')) {
       document.querySelector('.esri-view-root').style.minWidth = `${rect.width}px`;
       document.querySelector('.esri-view-root').style.maxWidth = `${rect.width}px`;
@@ -245,34 +249,18 @@ $(function () {
       document.querySelector('.temperature-map').style.minWidth = `${rect.height}px`;
     }
 
-
     document.querySelector('.scenario-map-overlay-container').style.top = `${rect.top}px`;
     document.querySelector('.scenario-map-overlay-container').style.left = `${rect.left}px`;
     document.querySelector('.scenario-map-overlay-container').style.width = `${rect.width}px`;
     document.querySelector('.scenario-map-overlay-container').style.height = `${rect.height}px`;
 
-    // document.querySelector('.esri-view-root').style.top = `${rect.top}px`;
-    // document.querySelector('.esri-view-root').style.left = `${rect.left}px`;
-    // document.querySelector('.esri-view-root').style.width = `${rect.width}px`;
-    // document.querySelector('.esri-view-root').style.height = `${rect.height}px`;
-
   }
 
   setMapSize();
 
-  // document.getElementById('local-climate-maps-viewport').addEventListener('onscroll', (e) => {
-  //   console.log('scrolling');
-  // })
-
-  document.getElementById('local-climate-maps-viewport').addEventListener('scroll', (e) => {
-    // setMapSize();;
-  })
-
-  // document.getElementById('local-climate-maps-viewport').addEventListener('touchend', (e) => {
-  //   console.log('scrolling');
-  // })
-
   $(window).resize(function () {
     setMapSize();
   })
+
+
 });

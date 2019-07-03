@@ -21,6 +21,7 @@ $(function () {
   // init slider
   initSlider();
 
+
   // valid monlthly varriables
   // monlthly timeperoid is only valud for limitited varriables
   // to dissable those varriabls from the user we use this constant
@@ -132,7 +133,7 @@ $(function () {
       handleChartMapClick(target);
     }
   })
-  
+
   // in repsonsive mode the time is a pulldown this eanbles the change of the timeperiod
   // to update the chart
   $('#time-select-vis').bind('cs-changed', function(e) {
@@ -203,16 +204,19 @@ $(function () {
 
   // binds update of chart varriable to change of selector
   $('#varriable-select-vis').bind('cs-changed', function (e) {
+  const variable = $('#varriable-select-vis').attr('rel');
     // update the chart based on char varriable
     window.tempChart.update({
-      variable: $('#varriable-select-vis').attr('rel')
+      variable
     });
+
+    window.ce.ce('setVariablesMapState',{variable})
 
     // update the text
     updateTitle($('#varriable-select-vis').text());
 
     // disable varriablles if they are valid time period
-    const isvalid =   jQuery.inArray( $('#varriable-select-vis').attr('rel') , validMonthly);
+    const isvalid =   jQuery.inArray( variable , validMonthly);
     if (  isvalid < 0 ) {
       $('[val="monthly"]').addClass('btn-default-disabled')
       $('[val="monthly"]').removeClass('btn-default')
@@ -230,7 +234,7 @@ $(function () {
 
     // map all buttons and get the val from html val attribute
     const valid = allItems.map( function()  {
-      const elAttribute =  $(this).attr('val');
+      const elAttribute = $(this).attr('val');
       var obj = Object.assign({}, this);
       obj[elAttribute] = $(this).hasClass('selected');
       return obj;
@@ -458,4 +462,17 @@ $(function () {
   $(window).resize(function () {
     window.tempChart.resize();
   });
+
+
+  const variable = window.ce.ce('getVariablesPageState')['variable'];
+  if ( variable !== undefined) {
+    const $styledSelect = $('.select.varriable-select div.select-styled');
+    $(`[rel="${variable}"]`).click();
+
+    // change chart varriable
+    window.tempChart.update({
+      variable
+    });
+  }
+
 });
