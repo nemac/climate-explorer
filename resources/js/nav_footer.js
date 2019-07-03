@@ -97,8 +97,8 @@ $(function () {
     const expandedWrapperNavFooterElem = document.getElementById(navConstants.expandedWrapperNavFooterElem);
     const moreWrapperNavFooterElem = document.getElementById(navConstants.moreWrapperNavFooterElem);
     const navFooter = document.getElementById(navConstants.navFooter);
-    const locationViewport = document.getElementById(navConstants.locationViewport);
-    const cardsViewport = document.getElementById(navConstants.cardsViewport);
+    const locationChartsViewport = document.getElementById(navConstants.locationChartsViewport);
+    const locationMapsViewport = document.getElementById(navConstants.locationMapsViewport);    const cardsViewport = document.getElementById(navConstants.cardsViewport);
     const lessWrapperNavFooterElem = document.getElementById(navConstants.lessWrapperNavFooterElem);
     const navFooterAreaLineElem = document.querySelectorAll(`.${navConstants.navFooterAreaLineElem}`);
     const lessRow1Elem = document.getElementById(navConstants.lessRow1Elem);
@@ -107,7 +107,8 @@ $(function () {
     addClass(expandedWrapperNavFooterElem, 'expanded');
     addClass(moreWrapperNavFooterElem, 'expanded');
     addClass(navFooter, 'expanded');
-    addClass(locationViewport, 'expanded');
+    addClass(locationChartsViewport, 'expanded');
+    addClass(locationMapsViewport, 'expanded');
     addClass(cardsViewport, 'expanded');
     addClass(lessWrapperNavFooterElem, 'expanded');
     addClass(lessRow1Elem, 'expanded');
@@ -123,7 +124,8 @@ $(function () {
       const expandedWrapperNavFooterElem = document.getElementById(navConstants.expandedWrapperNavFooterElem);
       const moreWrapperNavFooterElem = document.getElementById(navConstants.moreWrapperNavFooterElem);
       const navFooter = document.getElementById(navConstants.navFooter);
-      const locationViewport = document.getElementById(navConstants.locationViewport);
+      const locationChartsViewport = document.getElementById(navConstants.locationChartsViewport);
+      const locationMapsViewport = document.getElementById(navConstants.locationMapsViewport);
       const cardsViewport = document.getElementById(navConstants.cardsViewport);
       const lessWrapperNavFooterElem = document.getElementById(navConstants.lessWrapperNavFooterElem);
       const navFooterAreaLineElem = document.querySelectorAll(`.${navConstants.navFooterAreaLineElem}`);
@@ -133,7 +135,8 @@ $(function () {
       removeClass(expandedWrapperNavFooterElem, 'expanded');
       removeClass(moreWrapperNavFooterElem, 'expanded');
       removeClass(navFooter, 'expanded');
-      removeClass(locationViewport, 'expanded');
+      removeClass(locationChartsViewport, 'expanded');
+      removeClass(locationMapsViewport, 'expanded');
       removeClass(cardsViewport, 'expanded');
       removeClass(lessWrapperNavFooterElem, 'expanded');
       removeClass(lessRow1Elem, 'expanded');
@@ -175,7 +178,8 @@ $(function () {
       navFooterAreaLineElem: 'nav-footer-area-line',
       navFooter: 'nav-footer',
       cardsViewport: 'cards-viewport',
-      locationViewport: 'location-viewport',
+      locationChartsViewport: 'local-climate-charts-viewport',
+      locationMapsViewport: 'local-climate-maps-viewport',
       lessWrapperNavFooterElem: 'less-wrapper-nav-footer',
       lessRow1Elem: 'less-row-1'
     }
