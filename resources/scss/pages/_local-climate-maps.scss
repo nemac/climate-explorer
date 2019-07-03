@@ -54,6 +54,11 @@
     min-height: 100% !important;
     max-height: 100% !important;
   }
+  #temperature-map {
+    .movable.slider-div {
+      top: 0px !important;      
+    }
+  }
 
   @media screen and (max-width: 900px) {
     height: auto !important;
@@ -97,7 +102,7 @@
 
       .movable.slider-div {
         height: 350px;
-        top: -350px;
+        top: -350px !important;
         z-index: 200;
       }
 
