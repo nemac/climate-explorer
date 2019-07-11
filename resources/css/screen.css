@@ -15124,17 +15124,17 @@ input.input-inner:focus {
 
 /* line 50, resources/scss/pages/_local-climate-maps.scss */
 #map-row .bottom-scenario-controls .rounded-choice-box .select-styled {
-  background-color: rgba(233, 241, 252, 0.75) !important;
+  background-color: rgba(233, 241, 252, 0) !important;
 }
 
 /* line 52, resources/scss/pages/_local-climate-maps.scss */
 #map-row .bottom-scenario-controls .rounded-choice-box .select-styled:hover {
-  background-color: rgba(233, 241, 252, 0.75) !important;
+  background-color: rgba(233, 241, 252, 0) !important;
 }
 
 /* line 56, resources/scss/pages/_local-climate-maps.scss */
 #map-row .bottom-scenario-controls .rounded-choice-box .select-styled:focus {
-  background-color: rgba(233, 241, 252, 0.75) !important;
+  background-color: rgba(233, 241, 252, 0) !important;
 }
 
 /* line 61, resources/scss/pages/_local-climate-maps.scss */
