@@ -21,6 +21,12 @@ This file is due for a cleanup. Please do not add to the mess.
   display: block;
 }
 
+input.location-mapper {
+  @media screen and (max-width: 900px) {
+    width: 80% !important;
+  }
+}
+
 // input.location-mapper {
 //     display: inline-block;
 //     width: 95%;

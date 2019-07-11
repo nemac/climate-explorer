@@ -14175,51 +14175,79 @@ body.detail-open #nav-overlay {
   height: 84px;
 }
 
-/* line 5, resources/scss/template/_main_header.scss */
+@media screen and (max-width: 768px) {
+  /* line 1, resources/scss/template/_main_header.scss */
+  #main-header {
+    height: 48px;
+  }
+}
+
+/* line 9, resources/scss/template/_main_header.scss */
 #main-header .main-logo {
   height: 60px;
   width: auto;
 }
 
-/* line 8, resources/scss/template/_main_header.scss */
+@media screen and (max-width: 768px) {
+  /* line 9, resources/scss/template/_main_header.scss */
+  #main-header .main-logo {
+    height: 36px;
+  }
+}
+
+/* line 17, resources/scss/template/_main_header.scss */
 #main-header .main-logo img {
   height: 60px;
   width: auto;
 }
 
-/* line 14, resources/scss/template/_main_header.scss */
+@media screen and (max-width: 768px) {
+  /* line 17, resources/scss/template/_main_header.scss */
+  #main-header .main-logo img {
+    height: 36px;
+  }
+}
+
+/* line 27, resources/scss/template/_main_header.scss */
 #main-header .main-font-title {
   font: 500 36px Roboto, Helvetica, "Helvetica Neue", Arial, sans-serif !important;
   color: #FBFCFE !important;
   align-self: center;
 }
 
-/* line 20, resources/scss/template/_main_header.scss */
+@media screen and (max-width: 768px) {
+  /* line 27, resources/scss/template/_main_header.scss */
+  #main-header .main-font-title {
+    font: 500 18px Roboto, Helvetica, "Helvetica Neue", Arial, sans-serif !important;
+  }
+}
+
+/* line 36, resources/scss/template/_main_header.scss */
 #main-header .topnav a {
   text-decoration: none;
   font: 500 18px Roboto, Helvetica, "Helvetica Neue", Arial, sans-serif;
 }
 
-/* line 27, resources/scss/template/_main_header.scss */
+/* line 43, resources/scss/template/_main_header.scss */
 #main-header #main-nav a .icon {
   font: 500 18px Roboto, Helvetica, "Helvetica Neue", Arial, sans-serif !important;
 }
 
-/* line 31, resources/scss/template/_main_header.scss */
+/* line 47, resources/scss/template/_main_header.scss */
 #main-header #main-nav a .text {
   display: inline-block;
   color: #FBFCFE;
   padding: 0 .5rem 0 .5rem;
 }
 
-/* line 39, resources/scss/template/_main_header.scss */
+/* line 55, resources/scss/template/_main_header.scss */
 #main-header #header-logo {
   margin: 0 2% 0 0;
   height: 60px;
   width: auto;
 }
 
-/* line 43, resources/scss/template/_main_header.scss */
+/* line 59, resources/scss/template/_main_header.scss */
 #main-header #header-logo img {
   height: 60px;
   width: auto;
@@ -14330,28 +14358,53 @@ body.detail-open #nav-overlay {
   height: calc(100% - 84px) !important;
 }
 
-/* line 6, resources/scss/pages/_home.scss */
+@media screen and (max-width: 768px) {
+  /* line 1, resources/scss/pages/_home.scss */
+  #home-viewport {
+    height: calc(100% - 48px) !important;
+  }
+}
+
+/* line 10, resources/scss/pages/_home.scss */
 .search-row {
   flex: 1 1 auto !important;
 }
 
-/* line 10, resources/scss/pages/_home.scss */
+@media screen and (max-width: 900px) {
+  /* line 14, resources/scss/pages/_home.scss */
+  .search-row .icon-search:before {
+    position: relative;
+    top: 5px;
+    left: 5px;
+  }
+}
+
+/* line 22, resources/scss/pages/_home.scss */
 .home-container {
   align-content: start;
 }
 
-/* line 14, resources/scss/pages/_home.scss */
+/* line 26, resources/scss/pages/_home.scss */
 .describe-main {
   font: 500 24px Roboto, Helvetica, "Helvetica Neue", Arial, sans-serif !important;
   color: #233a70;
+  background: #FBFCFE;
+  max-height: 100px !important;
   -webkit-border-radius: 5px 5px;
   -moz-border-radius: 5px / 5px;
   border-radius: 5px / 5px;
-  background: #FBFCFE;
-  max-height: 100px !important;
 }
 
-/* line 22, resources/scss/pages/_home.scss */
+@media screen and (max-width: 900px) {
+  /* line 26, resources/scss/pages/_home.scss */
+  .describe-main {
+    max-height: 250px !important;
+    height: auto !important;
+    padding-bottom: 6px !important;
+  }
+}
+
+/* line 40, resources/scss/pages/_home.scss */
 .rounded-box {
   -webkit-border-radius: 5px 5px;
   -moz-border-radius: 5px / 5px;
@@ -14361,27 +14414,27 @@ body.detail-open #nav-overlay {
   box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.239);
 }
 
-/* line 27, resources/scss/pages/_home.scss */
+/* line 45, resources/scss/pages/_home.scss */
 .input-outer {
   background-color: #E9F1FC;
   color: #124086;
 }
 
-/* line 32, resources/scss/pages/_home.scss */
+/* line 50, resources/scss/pages/_home.scss */
 input.input-inner {
   background-color: #E9F1FC;
   color: #124086;
   font: 800 24px Roboto, Helvetica, "Helvetica Neue", Arial, sans-serif !important;
 }
 
-/* line 38, resources/scss/pages/_home.scss */
+/* line 56, resources/scss/pages/_home.scss */
 input.input-inner::placeholder {
   background-color: #E9F1FC;
   color: #124086;
   font: 800 24px Roboto, Helvetica, "Helvetica Neue", Arial, sans-serif !important;
 }
 
-/* line 44, resources/scss/pages/_home.scss */
+/* line 62, resources/scss/pages/_home.scss */
 input.input-inner:focus::placeholder {
   color: rgba(18, 64, 134, 0.5);
   font: 800 24px Roboto, Helvetica, "Helvetica Neue", Arial, sans-serif !important;
@@ -14391,12 +14444,12 @@ input.input-inner:focus::placeholder {
   transition: 0.25s;
 }
 
-/* line 53, resources/scss/pages/_home.scss */
+/* line 71, resources/scss/pages/_home.scss */
 input.input-inner:focus {
   outline: none !important;
 }
 
-/* line 57, resources/scss/pages/_home.scss */
+/* line 75, resources/scss/pages/_home.scss */
 .search-main {
   width: 40px;
   height: 40px;
@@ -14409,18 +14462,18 @@ input.input-inner:focus {
   font-weight: 800;
 }
 
-/* line 68, resources/scss/pages/_home.scss */
+/* line 86, resources/scss/pages/_home.scss */
 .main-logos {
   flex: 0 1 100px !important;
 }
 
-/* line 71, resources/scss/pages/_home.scss */
+/* line 89, resources/scss/pages/_home.scss */
 .main-logos a {
   width: 60px;
   height: 60px;
 }
 
-/* line 76, resources/scss/pages/_home.scss */
+/* line 94, resources/scss/pages/_home.scss */
 .main-logos #global-change {
   width: 120px;
 }
@@ -17860,12 +17913,19 @@ This file is due for a cleanup. Please do not add to the mess.
   display: block;
 }
 
-/* line 38, resources/scss/_mods.scss */
+@media screen and (max-width: 900px) {
+  /* line 24, resources/scss/_mods.scss */
+  input.location-mapper {
+    width: 80% !important;
+  }
+}
+
+/* line 44, resources/scss/_mods.scss */
 #nav-overlay .icon-search {
   margin-right: 10px;
 }
 
-/* line 42, resources/scss/_mods.scss */
+/* line 48, resources/scss/_mods.scss */
 #close-wx-station {
   position: absolute;
   right: 4px;
@@ -17874,25 +17934,25 @@ This file is due for a cleanup. Please do not add to the mess.
   font-size: 28px;
 }
 
-/* line 50, resources/scss/_mods.scss */
+/* line 56, resources/scss/_mods.scss */
 #close-wx-station:hover {
   cursor: pointer;
   color: #000;
 }
 
-/* line 55, resources/scss/_mods.scss */
+/* line 61, resources/scss/_mods.scss */
 .chart-canvas, canvas {
   width: 100%;
   height: 100%;
 }
 
-/* line 105, resources/scss/_mods.scss */
+/* line 111, resources/scss/_mods.scss */
 .location-data-section .data-accordion .data-accordion-tab.data-map .data-accordion-content {
   /*background: none;*/
   background-size: inherit;
 }
 
-/* line 110, resources/scss/_mods.scss */
+/* line 116, resources/scss/_mods.scss */
 .location-data-section .data-accordion .data-accordion-tab.open .data-accordion-content {
   /*-moz-box-shadow: none;
     -webkit-box-shadow: none;
@@ -17901,12 +17961,12 @@ This file is due for a cleanup. Please do not add to the mess.
     mix-blend-mode: normal;*/
 }
 
-/* line 118, resources/scss/_mods.scss */
+/* line 124, resources/scss/_mods.scss */
 .location-data-section .data-accordion .data-accordion-tab .data-accordion-content {
   /*mix-blend-mode: normal;*/
 }
 
-/* line 124, resources/scss/_mods.scss */
+/* line 130, resources/scss/_mods.scss */
 .chart-legend .legend-item-block {
   height: 28px;
   float: left;
@@ -17915,7 +17975,7 @@ This file is due for a cleanup. Please do not add to the mess.
   overflow: hidden;
 }
 
-/* line 132, resources/scss/_mods.scss */
+/* line 138, resources/scss/_mods.scss */
 .chart-legend .legend-item-line-container {
   height: 5px;
   float: left;
@@ -17924,37 +17984,37 @@ This file is due for a cleanup. Please do not add to the mess.
   padding-top: 8px;
 }
 
-/* line 140, resources/scss/_mods.scss */
+/* line 146, resources/scss/_mods.scss */
 .chart-legend .legend-item-line-label {
   padding-top: 8px;
 }
 
-/* line 144, resources/scss/_mods.scss */
+/* line 150, resources/scss/_mods.scss */
 .chart-legend .legend-item-line#under-baseline-block, .chart-legend .legend-item-line#precipunder-baseline-block, .chart-legend .legend-item-line#deriveunder-baseline-block {
   margin-top: 0px;
 }
 
-/* line 148, resources/scss/_mods.scss */
+/* line 154, resources/scss/_mods.scss */
 .chart-legend .legend-item-line#rcp45-line, .chart-legend .legend-item-line#preciprcp45-line, .chart-legend .legend-item-line#derivercp45-line {
   margin-top: 7px;
 }
 
-/* line 152, resources/scss/_mods.scss */
+/* line 158, resources/scss/_mods.scss */
 .chart-legend .legend-item-block#rcp45-block, .chart-legend .legend-item-block#preciprcp45-block, .chart-legend .legend-item-block#derivercp45-block {
   background: #99BCEC;
 }
 
-/* line 156, resources/scss/_mods.scss */
+/* line 162, resources/scss/_mods.scss */
 .legend-item-range {
   height: 43px;
 }
 
-/* line 160, resources/scss/_mods.scss */
+/* line 166, resources/scss/_mods.scss */
 .chart-legend .legend-item-line {
   width: 100%;
 }
 
-/* line 164, resources/scss/_mods.scss */
+/* line 170, resources/scss/_mods.scss */
 .chart-legend .observed {
   background-color: transparent !important;
   background-image: url(../img/observed.png) !important;
@@ -17964,7 +18024,7 @@ This file is due for a cleanup. Please do not add to the mess.
   margin-top: -8px !important;
 }
 
-/* line 173, resources/scss/_mods.scss */
+/* line 179, resources/scss/_mods.scss */
 .chart-legend .observed.seasonal {
   background-color: transparent !important;
   background-image: url(../img/observed-seasonal.png) !important;
@@ -17974,41 +18034,41 @@ This file is due for a cleanup. Please do not add to the mess.
   margin-top: -8px !important;
 }
 
-/* line 182, resources/scss/_mods.scss */
+/* line 188, resources/scss/_mods.scss */
 #variable-map .ol-popup {
   z-index: 500;
 }
 
-/* line 186, resources/scss/_mods.scss */
+/* line 192, resources/scss/_mods.scss */
 #map-seasons-container .fs-dropdown-selected.disabled {
   background: #EEE;
   cursor: default;
 }
 
-/* line 191, resources/scss/_mods.scss */
+/* line 197, resources/scss/_mods.scss */
 .ol-popup-content {
   min-width: 170px;
   max-height: 910px;
   overflow-x: auto;
 }
 
-/* line 199, resources/scss/_mods.scss */
+/* line 205, resources/scss/_mods.scss */
 .page-type-location #location-search {
   width: 300px;
 }
 
-/* line 203, resources/scss/_mods.scss */
+/* line 209, resources/scss/_mods.scss */
 .page-type-location #location-search input {
   font-size: 1.1em;
   width: 100%;
 }
 
-/* line 211, resources/scss/_mods.scss */
+/* line 217, resources/scss/_mods.scss */
 #vars-legend .source {
   display: none;
 }
 
-/* line 217, resources/scss/_mods.scss */
+/* line 223, resources/scss/_mods.scss */
 #location-temperature .accent-background {
   background-color: #f5442d;
   position: relative;
@@ -18017,35 +18077,35 @@ This file is due for a cleanup. Please do not add to the mess.
   height: 100%;
 }
 
-/* line 225, resources/scss/_mods.scss */
+/* line 231, resources/scss/_mods.scss */
 .page-type-location .seasonal-monthly.disabled a {
   color: #EEE;
 }
 
 /* line 661, ../scss/pages/_location.scss */
-/* line 230, resources/scss/_mods.scss */
+/* line 236, resources/scss/_mods.scss */
 .page-type-location .seasonal-monthly.disabled:hover {
   border-left-color: #FFF;
 }
 
-/* line 234, resources/scss/_mods.scss */
+/* line 240, resources/scss/_mods.scss */
 #station-legends .station-legend-item {
   float: left;
   width: 50%;
 }
 
-/* line 239, resources/scss/_mods.scss */
+/* line 245, resources/scss/_mods.scss */
 #station-legends img {
   width: 65%;
 }
 
-/* line 244, resources/scss/_mods.scss */
+/* line 250, resources/scss/_mods.scss */
 #nav-overlay #nav-controls a {
   white-space: normal !important;
 }
 
 @media screen and (min-width: 1500px) {
-  /* line 249, resources/scss/_mods.scss */
+  /* line 255, resources/scss/_mods.scss */
   #subnav ul {
     position: absolute;
     right: 20px;
@@ -18055,57 +18115,57 @@ This file is due for a cleanup. Please do not add to the mess.
 
 @media screen and (max-width: 1500px) {
   /* line 27, ../scss/formstone/_grid.scss */
-  /* line 259, resources/scss/_mods.scss */
+  /* line 265, resources/scss/_mods.scss */
   #main-header #subnav {
     margin: 0 !important;
   }
-  /* line 262, resources/scss/_mods.scss */
+  /* line 268, resources/scss/_mods.scss */
   #main-header #subnav li {
     display: block;
     margin: -5% 0 0 15px;
   }
-  /* line 266, resources/scss/_mods.scss */
+  /* line 272, resources/scss/_mods.scss */
   .page-type-stations #substations-menu ul {
     display: block;
     white-space: normal;
   }
-  /* line 271, resources/scss/_mods.scss */
+  /* line 277, resources/scss/_mods.scss */
   .station-banner {
     background-size: cover !important;
   }
 }
 
 @media screen and (max-width: 1030px) {
-  /* line 276, resources/scss/_mods.scss */
+  /* line 282, resources/scss/_mods.scss */
   #page-variables #main-header #subnav {
     display: none !important;
   }
-  /* line 280, resources/scss/_mods.scss */
+  /* line 286, resources/scss/_mods.scss */
   .location-data-section .data-list {
     width: 100%;
   }
-  /* line 284, resources/scss/_mods.scss */
+  /* line 290, resources/scss/_mods.scss */
   .location-data-section .data-accordion-wrap {
     width: 100%;
   }
 }
 
-/* line 290, resources/scss/_mods.scss */
+/* line 296, resources/scss/_mods.scss */
 .stations-list .station-layers {
   margin-top: 40px;
 }
 
 @media screen and (max-height: 600px) {
-  /* line 295, resources/scss/_mods.scss */
+  /* line 301, resources/scss/_mods.scss */
   #detail-overlay .nav-detail .nav-detail-item {
     top: 300px;
   }
-  /* line 299, resources/scss/_mods.scss */
+  /* line 305, resources/scss/_mods.scss */
   #detail-overlay .nav-detail {
     overflow-y: scroll;
     overflow-x: hidden;
   }
-  /* line 304, resources/scss/_mods.scss */
+  /* line 310, resources/scss/_mods.scss */
   .overlay .close {
     position: fixed;
     top: 20px;
@@ -18120,34 +18180,34 @@ This file is due for a cleanup. Please do not add to the mess.
   }
 }
 
-/* line 318, resources/scss/_mods.scss */
+/* line 324, resources/scss/_mods.scss */
 #left-header .left-filler {
   overflow: auto;
 }
 
-/* line 322, resources/scss/_mods.scss */
+/* line 328, resources/scss/_mods.scss */
 .page-type-location #location-search {
   width: 400px;
 }
 
-/* line 326, resources/scss/_mods.scss */
+/* line 332, resources/scss/_mods.scss */
 .ol-popup-content {
   min-width: 170px;
   max-height: 910px;
   overflow: inherit;
 }
 
-/* line 332, resources/scss/_mods.scss */
+/* line 338, resources/scss/_mods.scss */
 .download-image {
   font-size: 1.5em !important;
 }
 
-/* line 336, resources/scss/_mods.scss */
+/* line 342, resources/scss/_mods.scss */
 .download-data {
   font-size: 1.5em !important;
 }
 
-/* line 341, resources/scss/_mods.scss */
+/* line 347, resources/scss/_mods.scss */
 .how-to-read-county {
   float: left;
   position: absolute;
@@ -18159,27 +18219,27 @@ This file is due for a cleanup. Please do not add to the mess.
 
 /* iPad Air LandScape */
 @media only screen and (device-width: 768px) {
-  /* line 353, resources/scss/_mods.scss */
+  /* line 359, resources/scss/_mods.scss */
   .location-data-section .data-accordion .data-accordion-tab.data-map .location-map-legend-container {
     width: 80px;
   }
-  /* line 357, resources/scss/_mods.scss */
+  /* line 363, resources/scss/_mods.scss */
   html {
     font-size: 60%;
   }
-  /* line 360, resources/scss/_mods.scss */
+  /* line 366, resources/scss/_mods.scss */
   #variable-counties-toggle > label > span {
     font-size: 60%;
   }
-  /* line 363, resources/scss/_mods.scss */
+  /* line 369, resources/scss/_mods.scss */
   #variable-time-slider > span > span.icon.icon-arrow-left-right::before {
     font-size: 2em;
   }
-  /* line 366, resources/scss/_mods.scss */
+  /* line 372, resources/scss/_mods.scss */
   #temperature-map-time-slider > span > span.icon.icon-arrow-left-right {
     font-size: 1.8em;
   }
-  /* line 369, resources/scss/_mods.scss */
+  /* line 375, resources/scss/_mods.scss */
   .how-to-read {
     float: right !important;
     position: absolute !important;
@@ -18189,7 +18249,7 @@ This file is due for a cleanup. Please do not add to the mess.
     display: block !important;
     z-index: 10 !important;
   }
-  /* line 379, resources/scss/_mods.scss */
+  /* line 385, resources/scss/_mods.scss */
   .ui-slider-handle {
     left: 3px;
     width: 16px;
@@ -18205,7 +18265,7 @@ This file is due for a cleanup. Please do not add to the mess.
   }
 }
 
-/* line 396, resources/scss/_mods.scss */
+/* line 402, resources/scss/_mods.scss */
 #swipeImg .fs-dropdown button {
   padding: 2px !important;
   padding-right: 40px;
@@ -18224,7 +18284,7 @@ This file is due for a cleanup. Please do not add to the mess.
   transition: 0.25s;
 }
 
-/* line 415, resources/scss/_mods.scss */
+/* line 421, resources/scss/_mods.scss */
 .handle .fs-dropdown button {
   padding: 2px !important;
   padding-right: 40px;
@@ -18244,7 +18304,7 @@ This file is due for a cleanup. Please do not add to the mess.
   transition: 0.25s;
 }
 
-/* line 435, resources/scss/_mods.scss */
+/* line 441, resources/scss/_mods.scss */
 #location-stations #station-no-data {
   background: #F45440;
   color: white;
@@ -18254,7 +18314,7 @@ This file is due for a cleanup. Please do not add to the mess.
   text-align: center;
 }
 
-/* line 444, resources/scss/_mods.scss */
+/* line 450, resources/scss/_mods.scss */
 #nav-overlay .nav-content .tab ol ul li {
   float: none !important;
   width: auto !important;
@@ -18262,7 +18322,7 @@ This file is due for a cleanup. Please do not add to the mess.
   font: 300 1rem/1.2em Roboto, Helvetica, "Helvetica Neue", Arial, sans-serif;
 }
 
-/* line 451, resources/scss/_mods.scss */
+/* line 457, resources/scss/_mods.scss */
 .download-panel #download-precip-dismiss-button {
   display: block;
   position: absolute;
@@ -18270,7 +18330,7 @@ This file is due for a cleanup. Please do not add to the mess.
   right: 0;
 }
 
-/* line 458, resources/scss/_mods.scss */
+/* line 464, resources/scss/_mods.scss */
 .download-panel #download-derived-dismiss-button {
   display: block;
   position: absolute;

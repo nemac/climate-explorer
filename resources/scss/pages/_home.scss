@@ -1,10 +1,22 @@
 #home-viewport {
   background-color: $white;
   height: calc(100% - 84px) !important;
+  
+  @media screen and (max-width: 768px) {
+    height: calc(100% - 48px) !important;
+  }
 }
 
 .search-row {
   flex: 1 1 auto !important;
+
+  @media screen and (max-width: 900px) {
+    .icon-search:before {
+      position: relative;
+      top: 5px;
+      left: 5px;
+    }
+  }
 }
 
 .home-container {
@@ -14,9 +26,15 @@
 .describe-main {
   font: 500 24px $roboto !important;
   color: $blue2;
-  @include border-radius(5px, 5px);
   background: $ce3-blue6;
   max-height: 100px !important;
+  @include border-radius(5px, 5px);
+
+  @media screen and (max-width: 900px) {
+    max-height: 250px !important;
+    height: auto !important;
+    padding-bottom: $ce3-padding-half !important;
+  }
 }
 
 .rounded-box {
