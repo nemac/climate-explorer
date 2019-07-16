@@ -14,6 +14,7 @@ $(function () {
   addNavlick('home', 'home', navConstants.selectorAddOn);
   addNavlick('local-climate-charts', 'local-climate-charts', navConstants.selectorAddOn);
   addNavlick('local-climate-maps', 'local-climate-maps', navConstants.selectorAddOn);
+  addNavlick('national-climate-maps', 'national-climate-maps', navConstants.selectorAddOn);
 
   // addNavlick('more', 'more', navConstants.selectorAddOn);
   addNavlick('hightide-flooding', 'hightide-flooding', navConstants.selectorAddOn);
@@ -253,12 +254,12 @@ $(function () {
       // get the invisiable link just outside the element node tree
       // if inside we have issues will bubbling propogation
       const link = document.querySelector(`#${selector}-secretlink${navConstants.selectorAddOn}`);
-      console.log(link)
+
       // set the url and search params
       const url = `${$(link).attr('href')}/${seachParams}&nav=${nav}`
       $(link).attr('href', url);
 
-      // force click on invisiable link
+      // force click on invisible link
       link.click();
     });
   }

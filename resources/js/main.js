@@ -922,7 +922,13 @@ App.prototype.locationSearch = function () {
       if (page.length === 0) {
         page = 'cards-home';
       }
-      const navLocation = window.ce.ce('getNavFooterState')['nav'];
+      if(page === 'national-climate-maps'){
+        page = 'local-climate-maps'
+      }
+      let navLocation = window.ce.ce('getNavFooterState')['nav'];
+      if(page === 'national-climate-maps' || page === 'local-climate-maps'){
+        navLocation = 'local-climate-maps'
+      }
       window.location.href = `/${page}/?county=` + county + '&city=' + city + '&fips=' + fips + '&lat=' + lat + '&lon=' + lon + '&nav=' + navLocation;
     }
   });

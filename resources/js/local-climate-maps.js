@@ -10,10 +10,16 @@ $(function () {
   $('#default-city-county').text(window.ce.ce('getLocationPageState')['county']);
   $('#cards-search-input').val(window.ce.ce('getLocationPageState')['city']);
 
+  let mapcenter = window.ce.ce('getLocationPageState')['center'];
+  let mapExtent = window.ce.ce('getLocationPageState')['extent'];
+  let mapZoom = window.ce.ce('getLocationPageState')['zoom'] || 9;
 
-  const mapExtent = window.ce.ce('getLocationPageState')['extent'];
-  const mapZoom = window.ce.ce('getLocationPageState')['zoom'] || 9;
-  const mapcenter = window.ce.ce('getLocationPageState')['center'];
+  if (isNational()) {
+    mapcenter = null;
+    mapExtent = null;
+    mapZoom = 7;
+    console.log('mapZoom', mapZoom)
+  }
 
   // enable custom selction boxes
   enableCustomSelect('download-select');
@@ -22,10 +28,6 @@ $(function () {
   enableCustomSelect('chartmap-select');
   enableCustomSelect('time-select');
 
-
-  // $styledSelect.attr('rel', varriableID);
-  // $styledSelect.text();
-  //
   // valid seasonal varriables
   // seasonal timeperoid is only valud for limitited varriables
   // to dissable those varriabls from the user we use this constant
@@ -187,6 +189,11 @@ $(function () {
     }
   })
 
+  function isNational(){
+    return (window.ce.ce('getNavFooterState')['nav'] ===  'national-climate-maps' )
+  }
+
+
     $('#temperature-map').height($('#temperature-map').parent().height());
     if (typeof window.precipitationScenariosMap === 'undefined') {
       $('#temperature-map').spinner();
@@ -195,7 +202,10 @@ $(function () {
         extent: mapExtent,
         center: mapcenter,
         zoom: mapZoom,
-        showCounties: false,
+        showCounties: isNational(),
+        // countyselected: function countyselected(event, value) {
+        //   window.countySelected($('.cwg-container')[0], value);
+        // },
         layersloaded: function layersloaded() {
           $('#temperature-map').spinner('destroy');
           const rect = document.getElementById('map-wrap').getBoundingClientRect();
@@ -207,7 +217,6 @@ $(function () {
           const variable = window.ce.ce('getVariablesPageState')['variable'];
           console.log(variable)
           if ( variable !== undefined) {
-            console.log('in layerloaded', variable, ( variable !== undefined || variable !== null))
             const $styledSelect = $('.select.varriable-select div.select-styled');
             $(`[rel="${variable}"]`).click();
 

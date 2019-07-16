@@ -1215,7 +1215,30 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
               // this.options.countyName = county.attributes['NAME'] + ' ' + county.attributes['LSAD'];
               this.options.countyName = county.attributes['NAME'];
               this.options.stateName = county.attributes['STATE_NAME'];
-              this._updateOverlay();
+
+              // e.stopPropagation();
+
+              // get the invisiable link just outside the element node tree
+              // if inside we have issues will bubbling propogation
+              const link = document.querySelector('#national-climate-maps-secretlink-forcharts');
+              const params = `?fips=${this.options.county}&county=${this.options.countyName}`
+
+              console.log( params )
+              console.log( $(link) )
+              // set the url and search params
+              const url = `${$(link).attr('href')}/?fips=${this.options.county}&lat=${event.mapPoint.latitude}&lon=${event.mapPoint.longitude}&city=${this.options.countyName}  County, ${this.options.stateName} County&county=${this.options.countyName} County&nav=local-climate-charts`
+              // &city=${}, ${}
+              console.log('url', url )
+
+              $(link).attr('href', url);
+
+              // force click on invisible link
+              link.click();
+
+              //  not doing overlay now, going to local charts instead...
+              // the new ui is not styling this but Davism is leaving it incase we want
+              // re-enable it.
+              // this._updateOverlay();
             }.bind(this));
           }.bind(this));
         }.bind(this));
@@ -2001,88 +2024,88 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
         return;
       }
       if (this.nodes.$countyOverlay !== undefined && this.nodes.$countyOverlay !== null) {}
-      this.nodes.$countyOverlay = $('<div class="county-overlay">\n  <div class="county-overlay-close">x</div>\n  <div class="county-overlay-inner">\n    <header>\n      <a href="/location/">\n        <h4 class="accent-color" style="margin-bottom: 20px;">\n          <span class="icon icon-emission-scenario"></span> <span class="text">Chart:<span class="source" id="temp-chart-name">' + this.options.variables[this.options.variable].title + '</span>&nbsp;for <span class="full-title"> ' + this.options.countyName + ', ' + this.options.stateName + '</span>\n          \n        </span>\n        </h4>\n      </a>\n\n      <div class="data-accordion-actions">\n        <a href="javascript:void(0);" class="how-to-read local"><span class="icon icon-help"></span><span class="d-none-xs">How to read this</span></a>\n        <a href="javascript:void(0);" class="download-image local">\n          <span class="icon icon-download-image"></span><span class="d-none-xs">Image</span></a>\n          <a href="javascript:void(0);"  class="download-data local">\n        <span class="icon icon-download-chart"></span><span class="d-none-xs">Data</span></a>\n      </div>\n    </header>\n    <div id="climate-chart" style="height:420px"></div>\n    <div class="chart-legend">\n      <div id="historical-obs" class="legend-item legend-item-range">\n        <div class="legend-item-line-container">\n          <div class="legend-item-line observed" id="over-baseline-block"></div>\n        </div>\n        Observations\n      </div>\n      <div id="historical-range" class="legend-item legend-item-range selected">\n        <div class="legend-item-block selected" id="historical-block"></div>\n        Historical (Modelled)\n      </div>\n      <div id="rcp45-range" class="legend-item legend-item-range selected">\n        <div class="legend-item-block selected" id="rcp45-block"></div>\n        Lower Emissions\n      </div>\n      <div id="rcp85-range" class="legend-item legend-item-range selected">\n        <div class="legend-item-block selected" id="rcp85-block"></div>\n        Higher Emissions\n      </div>\n      <div id="rcp45-mean" class="legend-item legend-item-range selected">\n        <div class="legend-item-line-container">\n          <div class="legend-item-line selected" id="rcp85-line"></div>\n          <div class="legend-item-line selected" id="rcp45-line"></div>\n        </div>\n        Averages\n      </div>\n    </div>\n    <div class="range">\n      <div id="slider-range" class="slider-range"></div>\n      <div class="ui-slider-label range-label min" id="range-low">1950</div>\n      <div class="ui-slider-label range-label max" id="range-high">2100</div>\n    </div>\n  </div>\n</div>');
-
-      $(this.element).append(this.nodes.$countyOverlay);
-      this.cwg = climate_widget.graph({
-        div: "div#climate-chart",
-        dataprefix: "/climate-explorer2-data/data",
-        font: "Roboto",
-        frequency: "annual",
-        county: this.options.county.slice(-5),
-        variable: this.options.variable,
-        scenario: "both",
-        pmedian: "true",
-        histobs: "false"
-      });
-
-      $('window').resize(function () {
-        this.cwg.resize();
-      }.bind(this));
-      this.nodes.$countyOverlay.find('.county-overlay-close').click(function () {
-        delete this['cwg'];
-        this.options.county = null;
-        this.nodes.$countyOverlay.remove();
-      }.bind(this));
-
-      $('.legend-item-range').on('click', function (event) {
-        $(event.target).toggleClass('selected');
-        $(event.target).children('.legend-item-block, .legend-item-line').toggleClass('selected');
-        $(event.target).children('.legend-item-line-container').children('.legend-item-line').toggleClass('selected');
-
-        var scenario = '';
-        if ($('#rcp85-block').hasClass('selected') && $('#rcp45-block').hasClass('selected')) {
-          scenario = 'both';
-        } else if ($('#rcp45-block').hasClass('selected')) {
-          scenario = 'rcp45';
-        } else if ($('#rcp85-block').hasClass('selected')) {
-          scenario = 'rcp85';
-        }
-        this.cwg.update({
-          pmedian: $('#rcp85-line').hasClass('selected') || $('#rcp45-line').hasClass('selected'),
-          scenario: scenario,
-          histobs: $('#over-baseline-block').hasClass('selected') || $('#under-baseline-block').hasClass('selected'),
-          histmod: $('#historical-block').hasClass('selected') || $('#historical-block').hasClass('selected')
-        });
-      }.bind(this));
-
-      this.nodes.$countyOverlay.find('.download-image').click(function (event) {
-        this.cwg && this.cwg.download_image(event.target, 'graph.png');
-      }.bind(this));
-      this.nodes.$countyOverlay.find('.download-data').click(function () {
-        this.nodes.$countyOverlayDownload = $("<div class='download-panel overlay'>\n            <div class='download-inner'>\n                <a href='javascript:void(0);' class='download-dismiss-button icon icon-close'></a>\n                <p>Use the following links to download this graph\'s data:</p>\n                <ul>\n                    <li><a href='javascript:void(0);' class=\'download_hist_obs_data button display-block border-white hover-bg-white\'><span class=\'icon icon-arrow-down \'></span>Observed Data</a></li>\n                    <li><a href='javascript:void(0);' class=\'download_hist_mod_data button display-block border-white hover-bg-white\'><span class=\'icon icon-arrow-down\'></span>Historical Modeled Data</a></li>\n                    <li><a href='javascript:void(0);' class=\'download_proj_mod_data button display-block border-white hover-bg-white\'><span class=\'icon icon-arrow-down\'></span>Projected Modeled Data</a></li>\n                    <li><a href='/resources/data/Key-to-Climate-Explorer-Download-Filenames-and-Column-Headings.xlsx' class='button display-block border-white hover-bg-white'><span class='icon icon-arrow-down'></span>Information for Interpreting Data</a></li>\n                </ul>\n\n            </div>\n        </div>").appendTo($(document.body));
-
-        this.nodes.$countyOverlayDownload.removeClass("hidden").show(250);
-
-        this.nodes.$countyOverlayDownload.find('.download_hist_obs_data').click(function (event) {
-          this.cwg && this.cwg.download_hist_obs_data(event.target);
-        }.bind(this));
-        this.nodes.$countyOverlayDownload.find('.download_hist_mod_data').click(function (event) {
-          this.cwg && this.cwg.download_hist_mod_data(event.target);
-        }.bind(this));
-        this.nodes.$countyOverlayDownload.find('.download_proj_mod_data').click(function (event) {
-          this.cwg && this.cwg.download_proj_mod_data(event.target);
-        }.bind(this));
-        this.nodes.$countyOverlayDownload.find('.download-dismiss-button').click(function () {
-          this.nodes.$countyOverlayDownload.addClass("hidden").hide();
-        }.bind(this));
-      }.bind(this));
-
-      $('.how-to-read').on('click', function () {
-        if (window.app) {
-          window.app.takeAnnualGraphTour('');
-        }
-      });
-
-      this.nodes.$countyOverlay.find(".slider-range").slider({
-        range: true,
-        min: 1950,
-        max: 2099,
-        values: [1950, 2099],
-        slide: function (event, ui) {
-          return this.cwg.setXRange(ui.values[0], ui.values[1]);
-        }.bind(this)
-      });
+      // this.nodes.$countyOverlay = $('<div class="county-overlay">\n  <div class="county-overlay-close">x</div>\n  <div class="county-overlay-inner">\n    <header>\n      <a href="/location/">\n        <h4 class="accent-color" style="margin-bottom: 20px;">\n          <span class="icon icon-emission-scenario"></span> <span class="text">Chart:<span class="source" id="temp-chart-name">' + this.options.variables[this.options.variable].title + '</span>&nbsp;for <span class="full-title"> ' + this.options.countyName + ', ' + this.options.stateName + '</span>\n          \n        </span>\n        </h4>\n      </a>\n\n      <div class="data-accordion-actions">\n        <a href="javascript:void(0);" class="how-to-read local"><span class="icon icon-help"></span><span class="d-none-xs">How to read this</span></a>\n        <a href="javascript:void(0);" class="download-image local">\n          <span class="icon icon-download-image"></span><span class="d-none-xs">Image</span></a>\n          <a href="javascript:void(0);"  class="download-data local">\n        <span class="icon icon-download-chart"></span><span class="d-none-xs">Data</span></a>\n      </div>\n    </header>\n    <div id="climate-chart" style="height:420px"></div>\n    <div class="chart-legend">\n      <div id="historical-obs" class="legend-item legend-item-range">\n        <div class="legend-item-line-container">\n          <div class="legend-item-line observed" id="over-baseline-block"></div>\n        </div>\n        Observations\n      </div>\n      <div id="historical-range" class="legend-item legend-item-range selected">\n        <div class="legend-item-block selected" id="historical-block"></div>\n        Historical (Modelled)\n      </div>\n      <div id="rcp45-range" class="legend-item legend-item-range selected">\n        <div class="legend-item-block selected" id="rcp45-block"></div>\n        Lower Emissions\n      </div>\n      <div id="rcp85-range" class="legend-item legend-item-range selected">\n        <div class="legend-item-block selected" id="rcp85-block"></div>\n        Higher Emissions\n      </div>\n      <div id="rcp45-mean" class="legend-item legend-item-range selected">\n        <div class="legend-item-line-container">\n          <div class="legend-item-line selected" id="rcp85-line"></div>\n          <div class="legend-item-line selected" id="rcp45-line"></div>\n        </div>\n        Averages\n      </div>\n    </div>\n    <div class="range">\n      <div id="slider-range" class="slider-range"></div>\n      <div class="ui-slider-label range-label min" id="range-low">1950</div>\n      <div class="ui-slider-label range-label max" id="range-high">2100</div>\n    </div>\n  </div>\n</div>');
+      //
+      // $(this.element).append(this.nodes.$countyOverlay);
+      // this.cwg = climate_widget.graph({
+      //   div: "div#climate-chart",
+      //   dataprefix: "/climate-explorer2-data/data",
+      //   font: "Roboto",
+      //   frequency: "annual",
+      //   county: this.options.county.slice(-5),
+      //   variable: this.options.variable,
+      //   scenario: "both",
+      //   pmedian: "true",
+      //   histobs: "false"
+      // });
+      //
+      // $('window').resize(function () {
+      //   this.cwg.resize();
+      // }.bind(this));
+      // this.nodes.$countyOverlay.find('.county-overlay-close').click(function () {
+      //   delete this['cwg'];
+      //   this.options.county = null;
+      //   this.nodes.$countyOverlay.remove();
+      // }.bind(this));
+      //
+      // $('.legend-item-range').on('click', function (event) {
+      //   $(event.target).toggleClass('selected');
+      //   $(event.target).children('.legend-item-block, .legend-item-line').toggleClass('selected');
+      //   $(event.target).children('.legend-item-line-container').children('.legend-item-line').toggleClass('selected');
+      //
+      //   var scenario = '';
+      //   if ($('#rcp85-block').hasClass('selected') && $('#rcp45-block').hasClass('selected')) {
+      //     scenario = 'both';
+      //   } else if ($('#rcp45-block').hasClass('selected')) {
+      //     scenario = 'rcp45';
+      //   } else if ($('#rcp85-block').hasClass('selected')) {
+      //     scenario = 'rcp85';
+      //   }
+      //   this.cwg.update({
+      //     pmedian: $('#rcp85-line').hasClass('selected') || $('#rcp45-line').hasClass('selected'),
+      //     scenario: scenario,
+      //     histobs: $('#over-baseline-block').hasClass('selected') || $('#under-baseline-block').hasClass('selected'),
+      //     histmod: $('#historical-block').hasClass('selected') || $('#historical-block').hasClass('selected')
+      //   });
+      // }.bind(this));
+      //
+      // this.nodes.$countyOverlay.find('.download-image').click(function (event) {
+      //   this.cwg && this.cwg.download_image(event.target, 'graph.png');
+      // }.bind(this));
+      // this.nodes.$countyOverlay.find('.download-data').click(function () {
+      //   this.nodes.$countyOverlayDownload = $("<div class='download-panel overlay'>\n            <div class='download-inner'>\n                <a href='javascript:void(0);' class='download-dismiss-button icon icon-close'></a>\n                <p>Use the following links to download this graph\'s data:</p>\n                <ul>\n                    <li><a href='javascript:void(0);' class=\'download_hist_obs_data button display-block border-white hover-bg-white\'><span class=\'icon icon-arrow-down \'></span>Observed Data</a></li>\n                    <li><a href='javascript:void(0);' class=\'download_hist_mod_data button display-block border-white hover-bg-white\'><span class=\'icon icon-arrow-down\'></span>Historical Modeled Data</a></li>\n                    <li><a href='javascript:void(0);' class=\'download_proj_mod_data button display-block border-white hover-bg-white\'><span class=\'icon icon-arrow-down\'></span>Projected Modeled Data</a></li>\n                    <li><a href='/resources/data/Key-to-Climate-Explorer-Download-Filenames-and-Column-Headings.xlsx' class='button display-block border-white hover-bg-white'><span class='icon icon-arrow-down'></span>Information for Interpreting Data</a></li>\n                </ul>\n\n            </div>\n        </div>").appendTo($(document.body));
+      //
+      //   this.nodes.$countyOverlayDownload.removeClass("hidden").show(250);
+      //
+      //   this.nodes.$countyOverlayDownload.find('.download_hist_obs_data').click(function (event) {
+      //     this.cwg && this.cwg.download_hist_obs_data(event.target);
+      //   }.bind(this));
+      //   this.nodes.$countyOverlayDownload.find('.download_hist_mod_data').click(function (event) {
+      //     this.cwg && this.cwg.download_hist_mod_data(event.target);
+      //   }.bind(this));
+      //   this.nodes.$countyOverlayDownload.find('.download_proj_mod_data').click(function (event) {
+      //     this.cwg && this.cwg.download_proj_mod_data(event.target);
+      //   }.bind(this));
+      //   this.nodes.$countyOverlayDownload.find('.download-dismiss-button').click(function () {
+      //     this.nodes.$countyOverlayDownload.addClass("hidden").hide();
+      //   }.bind(this));
+      // }.bind(this));
+      //
+      // $('.how-to-read').on('click', function () {
+      //   if (window.app) {
+      //     window.app.takeAnnualGraphTour('');
+      //   }
+      // });
+      //
+      // this.nodes.$countyOverlay.find(".slider-range").slider({
+      //   range: true,
+      //   min: 1950,
+      //   max: 2099,
+      //   values: [1950, 2099],
+      //   slide: function (event, ui) {
+      //     return this.cwg.setXRange(ui.values[0], ui.values[1]);
+      //   }.bind(this)
+      // });
     },
 
     _getScenarioURL: function _getScenarioURL(scenario, year) {

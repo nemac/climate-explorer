@@ -8,6 +8,7 @@ $(function () {
 
   addCardClick('card-local-charts','local-climate-charts');
   addCardClick('card-local-maps','local-climate-maps');
+  addCardClick('card-national-maps','national-climate-maps');
 
   addCardClick('card-hightide-flooding', 'hightide-flooding');
 
