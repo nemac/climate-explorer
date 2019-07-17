@@ -70,14 +70,18 @@ $(function () {
   // eanbles time chart, map click events
   $('#chartmap-wrapper').click( function(e) {
     const target = $(e.target);
+    const notDisabled = (!target.hasClass('btn-default-disabled') || !target.hasClass('disabled'));
 
-    // toggle button visual state
-    toggleButton($(target));
+    if ( notDisabled ) {
 
-    // change select pulldowns for resposnive mode
-    setSelectFromButton(target);
+      // toggle button visual state
+      toggleButton($(target));
 
-    handleChartMapClick(target);
+      // change select pulldowns for resposnive mode
+      setSelectFromButton(target);
+
+      handleChartMapClick(target);
+    }
   })
 
   // update season map

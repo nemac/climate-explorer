@@ -97,17 +97,6 @@ function setSelectFromButton(target) {
   $(`#${selector}`).attr('rel', val);
 }
 
-// eanbles time chart, map click events
-$('#chartmap-wrapper').click( function(e) {
-  const target = $(e.target);
-
-  // toggle button visual state
-  toggleButton($(target));
-
-  // change select pulldowns for resposnive mode
-  setSelectFromButton(target);
-})
-
 
 //  TODO move this global functions so its not in two places
 // this function removes existing paramaters of the key undefined

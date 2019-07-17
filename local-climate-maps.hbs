@@ -140,7 +140,7 @@
 
             <a id="chartmap-btn-chart-link"  href="../local-climate-charts" class="d-none"></a>
             <a id="chartmap-btn-map-link"  href="../local-climate-maps" class="d-none">Map</a>
-            <div id="chartmap-wrapper" class="padding-horrizontal-half padding-vertical-half default-btn-height d-flex-center width-20">
+            <div id="chartmap-wrapper" class="padding-horrizontal-half padding-vertical-half default-btn-height d-flex-center width-20 disabled">
               <div id="btn-chart" class="btn-chart btn-default circle-box-left d-flex-center width-50" val="chart" nav="local-climate-charts" link="chartmap-btn-chart-link" sel="chartmap-select-vis">
                 Chart
               </div>
@@ -169,8 +169,11 @@
               <div id="btn-chart" class="btn-winter btn-default circle-box-middle d-flex-center width-50" val="winter" sel="time-select-vis" >
                 Winter
               </div>
-              <div id="btn-chart" class="btn-spring btn-default circle-box-right d-flex-center width-50" val="spring" sel="time-select-vis" >
+              <div id="btn-chart" class="btn-spring btn-default circle-box-middle d-flex-center width-50" val="spring" sel="time-select-vis" >
                 Spring
+              </div>
+              <div id="btn-chart" class="btn-spring btn-default circle-box-right d-flex-center width-50" val="annual" sel="time-select-vis" >
+                Annual
               </div>
             </div>
 
@@ -182,6 +185,7 @@
                   <li rel="fall" class="default-select-option">Fall</li>
                   <li rel="winter" class="default-select-option">Winter</li>
                   <li rel="spring" class="default-select-option">Spring</li>
+                  <li rel="annual" class="default-select-option">Annual</li>
                 </ul>
               </div>
             </div>
