@@ -290,7 +290,7 @@ especially when it comes to interacting with the DOM and handling events.
 
     getStationsMapState: function getStationsMapState() {
       var state = this.getUrlParams({
-        mode: 'id',
+        mode: 'mode',
         stationId: 'station',
         stationName: 'station-name',
         stationMOverMHHW: 'station-mhhw',
@@ -300,6 +300,7 @@ especially when it comes to interacting with the DOM and handling events.
         lon: 'lon',
         zoom: 'zoom'
       });
+      console.log('getStationsMapState', state)
       if (state.lat && state.lon) {
         state.center = [state.lat, state.lon];
       }
@@ -313,7 +314,7 @@ especially when it comes to interacting with the DOM and handling events.
       Object.keys(state).includes('stationId') && state.stationId ? this.setUrlParam('station', state['stationId']) : this.removeUrlParam('station');
       Object.keys(state).includes('stationName') && state.stationName ? this.setUrlParam('station-name', state.stationName) : this.removeUrlParam('station-name');
       Object.keys(state).includes('stationMOverMHHW') && state.stationMOverMHHW ? this.setUrlParam('station-mhhw', state.stationMOverMHHW) : this.removeUrlParam('station-mhhw');
-      Object.keys(state).includes('mode') ? this.setUrlParam('id', state['mode']) : this.removeUrlParam('mode');
+      Object.keys(state).includes('mode') ? this.setUrlParam('mode', state['mode']) : this.removeUrlParam('mode');
       Object.keys(state).includes('extent') && state['extent'] ? this.setUrlParam('extent', this._extentToString(state['extent'])) : null;
       Object.keys(state).includes('zoom') ? this.setUrlParam('zoom', state['zoom']) : null;
     },

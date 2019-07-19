@@ -18,7 +18,6 @@ $(function () {
     mapcenter = null;
     mapExtent = null;
     mapZoom = 7;
-    console.log('mapZoom', mapZoom)
   }
 
   // enable custom selction boxes
@@ -40,30 +39,30 @@ $(function () {
 
   // toggle filters click
   $('#filters-toggle').click( function(e) {
-      const target = $(e.target);
-      if (target.hasClass('closed-filters')) {
-        target.removeClass('closed-filters');
-      } else {
-        target.addClass('closed-filters');
-      }
+    const target = $(e.target);
+    if (target.hasClass('closed-filters')) {
+      target.removeClass('closed-filters');
+    } else {
+      target.addClass('closed-filters');
+    }
 
-      const infoRowElem = $('#info-row');
-      if ($(infoRowElem).hasClass('closed-filters')) {
-        $(infoRowElem).removeClass('closed-filters');
-      } else {
-        $(infoRowElem).addClass('closed-filters');
-      }
+    const infoRowElem = $('#info-row');
+    if ($(infoRowElem).hasClass('closed-filters')) {
+      $(infoRowElem).removeClass('closed-filters');
+    } else {
+      $(infoRowElem).addClass('closed-filters');
+    }
 
-      const chartRowElem = $('#chart-row');
-      if ($(chartRowElem).hasClass('closed-filters')) {
-        $(chartRowElem).removeClass('closed-filters');
-      } else {
-        $(chartRowElem).addClass('closed-filters');
-      }
+    const chartRowElem = $('#chart-row');
+    if ($(chartRowElem).hasClass('closed-filters')) {
+      $(chartRowElem).removeClass('closed-filters');
+    } else {
+      $(chartRowElem).addClass('closed-filters');
+    }
 
-      setTimeout(function () {
-        $('#temperature-map').height($('#temperature-map').parent().height());
-      }, 600);
+    setTimeout(function () {
+      $('#temperature-map').height($('#temperature-map').parent().height());
+    }, 600);
 
   })
 
@@ -197,52 +196,46 @@ $(function () {
     return (window.ce.ce('getNavFooterState')['nav'] ===  'national-climate-maps' )
   }
 
+  $('#temperature-map').height($('#temperature-map').parent().height());
+  if (typeof window.precipitationScenariosMap === 'undefined') {
+    $('#temperature-map').spinner();
+    window.precipitationScenariosMap = $('#temperature-map').scenarioComparisonMap({
+      variable: 'tmax',
+      extent: mapExtent,
+      center: mapcenter,
+      zoom: mapZoom,
+      showCounties: isNational(),
+      layersloaded: function layersloaded() {
+        $('#temperature-map').spinner('destroy');
+        const rect = document.getElementById('map-wrap').getBoundingClientRect();
+        document.querySelector('.esri-view-root').style.minWidth = `${rect.width}px`;
+        document.querySelector('.esri-view-root').style.height = `${rect.height}px`;
+        enableCustomSelect('leftScenario-select');
+        enableCustomSelect('rightScenario-select');
 
-    $('#temperature-map').height($('#temperature-map').parent().height());
-    if (typeof window.precipitationScenariosMap === 'undefined') {
-      $('#temperature-map').spinner();
-      window.precipitationScenariosMap = $('#temperature-map').scenarioComparisonMap({
-        variable: 'tmax',
-        extent: mapExtent,
-        center: mapcenter,
-        zoom: mapZoom,
-        showCounties: isNational(),
-        // countyselected: function countyselected(event, value) {
-        //   window.countySelected($('.cwg-container')[0], value);
-        // },
-        layersloaded: function layersloaded() {
-          $('#temperature-map').spinner('destroy');
-          const rect = document.getElementById('map-wrap').getBoundingClientRect();
-          document.querySelector('.esri-view-root').style.minWidth = `${rect.width}px`;
-          document.querySelector('.esri-view-root').style.height = `${rect.height}px`;
-          enableCustomSelect('leftScenario-select');
-          enableCustomSelect('rightScenario-select');
+        const variable = window.ce.ce('getVariablesPageState')['variable'];
+        if ( variable !== undefined) {
+          const $styledSelect = $('.select.varriable-select div.select-styled');
+          $(`[rel="${variable}"]`).click();
 
-          const variable = window.ce.ce('getVariablesPageState')['variable'];
-          console.log(variable)
-          if ( variable !== undefined) {
-            const $styledSelect = $('.select.varriable-select div.select-styled');
-            $(`[rel="${variable}"]`).click();
-
-            // change map varriable
-            if (window.precipitationScenariosMap) {
-              $(window.precipitationScenariosMap).scenarioComparisonMap({ variable });
-            }
+          // change map varriable
+          if (window.precipitationScenariosMap) {
+            $(window.precipitationScenariosMap).scenarioComparisonMap({ variable });
           }
-
-        },
-        change: function change() {
-          window.precipitationScenariosMap.scenarioComparisonMap("getShowSeasonControls") ? $("#precipitation-map-season").show(200) : $("#precipitation-map-season").hide();
         }
-      });
-      window.precipitationScenariosMap.scenarioComparisonMap("getShowSeasonControls") ? $("#precipitation-map-season").show(200) : $("#precipitation-map-season").hide();
-    }
+
+      },
+      change: function change() {
+        window.precipitationScenariosMap.scenarioComparisonMap("getShowSeasonControls") ? $("#precipitation-map-season").show(200) : $("#precipitation-map-season").hide();
+      }
+    });
+    window.precipitationScenariosMap.scenarioComparisonMap("getShowSeasonControls") ? $("#precipitation-map-season").show(200) : $("#precipitation-map-season").hide();
+  }
 
   function setMapSize() {
     $('#temperature-map').height($('#temperature-map').parent().height())
 
     const rect = document.getElementById('map-wrap').getBoundingClientRect();
-
 
     if (document.querySelector('.esri-view-root')) {
       document.querySelector('.esri-view-root').style.minWidth = `${rect.width}px`;
@@ -266,7 +259,6 @@ $(function () {
     document.querySelector('.scenario-map-overlay-container').style.left = `${rect.left}px`;
     document.querySelector('.scenario-map-overlay-container').style.width = `${rect.width}px`;
     document.querySelector('.scenario-map-overlay-container').style.height = `${rect.height}px`;
-
   }
 
   setMapSize();

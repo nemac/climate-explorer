@@ -15,6 +15,8 @@ $(function () {
   addNavlick('local-climate-charts', 'local-climate-charts', navConstants.selectorAddOn);
   addNavlick('local-climate-maps', 'local-climate-maps', navConstants.selectorAddOn);
   addNavlick('national-climate-maps', 'national-climate-maps', navConstants.selectorAddOn);
+  addNavlick('historical-weather-data', 'historical-weather-data', navConstants.selectorAddOn);
+
 
   // addNavlick('more', 'more', navConstants.selectorAddOn);
   addNavlick('hightide-flooding', 'hightide-flooding', navConstants.selectorAddOn);

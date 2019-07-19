@@ -226,9 +226,9 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
       this.view = new this.dojoMods.MapView({
         container: this.nodes.mapContainer,
         map: this.map,
-        zoom: this.options.extent ? null : this.options.zoom,
-        center: this.options.extent ? null : this.options.center,
-        extent: this.options.extent ? this.dojoMods.webMercatorUtils.geographicToWebMercator(new this.dojoMods.Extent(this.options.extent)) : null,
+        zoom: this.options.zoom ? this.options.zoom : 9,
+        center: this.options.center,
+        // extent: this.options.extent ? this.dojoMods.webMercatorUtils.geographicToWebMercator(new this.dojoMods.Extent(this.options.extent)) : null,
         constraints: {
           rotationEnabled: false,
           minZoom: 3,
@@ -419,7 +419,6 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
               var station = response.results.filter(function (result) {
                 return result.graphic.layer === this.dailyStationsLayer;
               }.bind(this))[0].graphic;
-              console.log(station.attributes.name);
               this._setOptions({ stationName: station.attributes.name, stationId: station.attributes.id });
             }.bind(this));
           }.bind(this));

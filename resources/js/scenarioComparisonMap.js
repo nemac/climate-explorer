@@ -1223,13 +1223,8 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
               const link = document.querySelector('#national-climate-maps-secretlink-forcharts');
               const params = `?fips=${this.options.county}&county=${this.options.countyName}`
 
-              console.log( params )
-              console.log( $(link) )
               // set the url and search params
               const url = `${$(link).attr('href')}/?fips=${this.options.county}&lat=${event.mapPoint.latitude}&lon=${event.mapPoint.longitude}&city=${this.options.countyName}  County, ${this.options.stateName} County&county=${this.options.countyName} County&nav=local-climate-charts`
-              // &city=${}, ${}
-              console.log('url', url )
-
               $(link).attr('href', url);
 
               // force click on invisible link
