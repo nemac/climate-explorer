@@ -300,7 +300,7 @@ especially when it comes to interacting with the DOM and handling events.
         lon: 'lon',
         zoom: 'zoom'
       });
-      console.log('getStationsMapState', state)
+
       if (state.lat && state.lon) {
         state.center = [state.lat, state.lon];
       }

@@ -380,11 +380,11 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
           type: "simple", // autocasts as new SimpleRenderer()
           symbol: {
             type: "simple-marker", // autocasts as new SimpleMarkerSymbol()
-            size: 7,
-            color: "#df3e2e",
+            size: 10,
+            color: "#124086",
             outline: {
-              color: '#ffffff',
-              width: 1
+              color: '#1D64DD',
+              width: 2
             }
           }
         }
@@ -399,10 +399,17 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
               }
             });
             this.view.hitTest(event).then(function (response) {
+
+              if(response.results.length > 0){
+                // make pointer cursor - mouse IS over a station feature
+                document.getElementById('stations-map').style.cursor = "pointer";
+              } else {
+                // make default cursor - mouse IS NOT over station feature
+                document.getElementById('stations-map').style.cursor = "default";
+              }
               var station = response.results.filter(function (result) {
                 return result.graphic.layer === this.dailyStationsLayer;
               }.bind(this))[0].graphic;
-
               var refEl = $('circle:hover').first();
               if (!("stationTooltip" in refEl)) {
                 refEl.stationTooltip = new Tooltip(refEl, {
