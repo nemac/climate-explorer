@@ -283,8 +283,8 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
               };
 
               // make geojson from arcgis json data so we can use turf to do a points in polygon
-              // turf is added via script tag we might need to check if
-              if (ArcgisToGeojsonUtils) {
+              // maje sure esri arcgis utils and turf have been added via script tag
+              if (typeof ArcgisToGeojsonUtils !== "undefined" && typeof turf !== "undefined") {
                 const LayerGeoJSON = ArcgisToGeojsonUtils.arcgisToGeoJSON(firstLayerJSON, "ObjectID" );
 
                 // make polygon from current map extent
