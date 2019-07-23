@@ -1,11 +1,43 @@
 'use strict';
 
-
 $(function () {
   var activeVariableTemperature = 'tmax';
   var activeVariablePrecipitation = 'pcpn';
   var activeVariableDerived = 'hdd';
 
+
+  enableCustomSelect('chartmap-select');
+
+  // eanbles time chart, map click events
+  $('#chartmap-wrapper').click( function(e) {
+    const target = $(e.target);
+    const notDisabled = (!target.hasClass('btn-default-disabled') || !target.hasClass('disabled'));
+
+    if ( notDisabled ) {
+
+      // toggle button visual state
+      toggleButton($(target));
+
+      // change select pulldowns for resposnive mode
+      setSelectFromButton(target);
+
+      // handleChartMapClick(target);
+    }
+  })
+
+  // in repsonsive mode the time is a pulldown this eanbles the change of the chart map
+  $('#chartmap-select-vis').bind('cs-changed', function(e) {
+    const target = $(e.target);
+    const notDisabled = !target.hasClass('disabled');
+    if ( notDisabled ) {
+      const val = $('#time-select-vis').attr('rel')
+
+      // toggle button visual state
+      toggleButton($(`.btn-${$('#chartmap-select-vis').attr('rel')}`));
+
+      // handleChartMapClick(target);
+    }
+  })
   // get city, state from state url
   $('#default-city-state').text(window.ce.ce('getLocationPageState')['city']);
   $('#default-city-county').text(window.ce.ce('getLocationPageState')['county']);
@@ -22,6 +54,7 @@ $(function () {
   const stationName = stationsMapState['station-name'];
   const stationMOverMHHW = stationsMapState['station-mhhw'];
   const center = [lon, lat]
+  console.log('stationId', stationId)
 
   stationsMapState = {
     mode,
@@ -39,6 +72,28 @@ $(function () {
   function updateTitle(chartText) {
     $('#default-chart-map-varriable').html(chartText);
   }
+
+  // this function Updates the chart title.
+  function updateStationText(text) {
+    $('#default-station').html(text);
+  }
+
+  // this function Updates the chart title.
+  function updateStationIDText(text) {
+    $('#default-station-id').html(text);
+  }
+
+  function renderStationInfo(stationName, stationId) {
+    if (stationName) {
+      document.getElementById('station-info').classList.remove('d-none');
+      updateStationIDText(`${stationId}`);
+      updateStationText(`${stationName}`);
+    } else {
+      document.getElementById('station-info').classList.add('d-none');
+    }
+  }
+
+  renderStationInfo(stationName, stationId);
 
   // toggle filters click
   $('#filters-toggle').click( function(e) {
@@ -74,8 +129,16 @@ $(function () {
     // If we re-use the stationsMap widget on another page there may be more handling to do.
     change: function change(event, options) {
       window.ce.ce('setStationsMapState', options);
-    }
+      renderStationInfo(options.stationId, options.stationName);
+
+    },
+
+    // layersloaded: function(event) {
+    //   console.log(layersloadedevent)
+    //   window.ce.stationsMap('getStationsInExtent');
+    // }
   }, stationsMapState));
+
 
 
 

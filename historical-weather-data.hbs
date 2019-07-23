@@ -88,9 +88,17 @@
           <span id="default-city-state" class="text-info-box" ></span>
           <span id="" class="text-info-box" > in </span>
           <span id="default-city-county" class="text-info-box"></span>
-          <span id="" class="text-info-box" > - </span>
-          <span id="default-chart-map-varriable" class="text-info-box" rel="tmax">Avg Daily Max Temp (°F)</span>
+          <span id="station-info" class="padding-horizontal d-none">
+            <span id="default-station-label" class="text-info-box label" >- Station id: </span>
+            <span id="default-station" class="text-info-box" ></span>
+            <span id="default-station-id-label" class="text-info-box label" >Station: </span>
+            <span id="default-station-id" class="text-info-box" ></span>
+          </span>
+
+          <!-- <span id="" class="text-info-box" > - </span> -->
+          <!-- <span id="default-chart-map-varriable" class="text-info-box" rel="tmax">Avg Daily Max Temp (°F)</span> -->
         </div>
+
 
         <div id="filters-toggle" class="width-10">
           <div class="select filters-toggle-select">
@@ -99,6 +107,34 @@
         </div>
 
       </div>
+
+
+      <div id="filters-row" class="d-flex-row flex-justify padding-top padding-bottom d-flex-left" >
+
+        <a id="national-climate-maps-secretlink-forcharts" href="../historical-weather-data" class="d-none"></a>
+        <a id="chartmap-btn-chart-link"  href="../historical-weather-data" class="d-none"></a>
+        <a id="chartmap-btn-map-link"  href="../historical-weather-data" class="d-none">Map</a>
+        <div id="chartmap-wrapper" class="padding-horrizontal-half padding-vertical-half default-btn-height d-flex-center width-20 disabled">
+          <div id="btn-chart" class="btn-chart btn-default circle-box-left d-flex-center width-50" val="chart" nav="historical-weather-data" link="chartmap-btn-chart-link" sel="chartmap-select-vis">
+            Chart
+          </div>
+          <div id="btn-chart" class="btn-map btn-default-selected circle-box-right d-flex-center width-50"  nav="historical-weather-data"  val="map" link="chartmap-btn-map-link" sel="chartmap-select-vis">
+            Map
+          </div>
+        </div>
+
+        <div id="chartmap-select-wrapper" class="rounded-choice-box padding-horrizontal-half padding-vertical-half default-btn-height d-flex-center width-20">
+          <div class="select chartmap-select">
+            <div id="chartmap-select-vis" class="select-styled" rel="chart">Map</div>
+            <ul class="select-options">
+              <li id="chartmap-select-chart-link" rel="chart" class="default-select-option" nav="historical-weather-data" link="chartmap-btn-chart-link" >Chart</li>
+              <li id="chartmap-select-map-link" rel="map" class="default-select-option" nav="historical-weather-data" link="chartmap-btn-map-link">Map</li>
+            </ul>
+          </div>
+        </div>
+
+      </div>
+
     </div>
   </div>
 
@@ -118,6 +154,8 @@
 {{> nav_footer }}
 {{> footer }}
 
+<script src="https://unpkg.com/@esri/arcgis-to-geojson-utils"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Turf.js/5.1.6/turf.min.js" integrity="sha256-Nhtik+K3xORhs5S9o0qlol4eRNB9O5OyTOJqbLucPk8=" crossorigin="anonymous"></script>
 <script type="text/javascript" src="/resources/js/stationsMap.js"></script>
 <script src="https://unpkg.com/terraformer@1.0.8/terraformer.js" integrity="sha384-+M797Pj3WZVCwMmLbOxAoaWYcKJo8NSxItmI48ytcLNeAnfn1d/IckFn31jEqrzP"
 crossorigin="anonymous"></script>

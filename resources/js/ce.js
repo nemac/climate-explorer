@@ -9,7 +9,6 @@ The jQuery widget factory has largely been outmoded by ES6 classes, but still pr
 especially when it comes to interacting with the DOM and handling events.
 
  */
-
 'use strict';
 // Use AMD loader if present, if not use global jQuery
 

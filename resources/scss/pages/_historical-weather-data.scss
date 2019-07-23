@@ -111,6 +111,9 @@
   }
 }
 
+.text-info-box.label {
+  font-weight: 500 !important;
+}
 
 .esri-expand__container {
   height: 32px;
@@ -121,7 +124,6 @@
   max-height: 16rem;
   max-width: none;
 }
-
 
 .esri-ui-top-left .esri-expand__content, .esri-ui-top-right .esri-expand__content {
   top: -32px !important;

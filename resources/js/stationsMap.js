@@ -202,6 +202,8 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
       switch (this.options.mode) {
         case 'daily_vs_climate':
           this._whenDojoLoaded().then(this._initDailyStationsLayer.bind(this));
+          // console.log('daily_vs_climate', this) //dailyStationsLayer.dailyStationsLayer
+          // getStationsInExtent()
           break;
         case 'thresholds':
           this._whenDojoLoaded().then(this._initThresholdStationsLayer.bind(this));
@@ -267,6 +269,39 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
             ymin: quickRound(xymin[1]),
             ymax: quickRound(xymax[1])
           };
+
+          // make sure layers item exists we will assume first layer
+          // is the layer in question we will need to rethink this if we have multiple
+          // layers, but as of now we have only ONE
+          if (this.map.layers.items[0]) {
+              // create arcgis json from layer
+              const firstLayerJSON = {
+                fields: this.map.layers.items[0].fields,
+                geometryType: this.map.layers.items[0].geometryType,
+                spatialReference: { wkid: this.map.layers.items[0].spatialReference.wkid },
+                features: this.map.layers.items[0].features
+              };
+
+              // make geojson from arcgis json data so we can use turf to do a points in polygon
+              // turf is added via script tag we might need to check if
+              if (ArcgisToGeojsonUtils) {
+                const LayerGeoJSON = ArcgisToGeojsonUtils.arcgisToGeoJSON(firstLayerJSON, "ObjectID" );
+
+                // make polygon from current map extent
+                // need to check performance on full extent may limit and may need to sort by human readable name
+                // which is the id (I think)
+                const bbox = [xymin[0], xymin[1], xymax[0], xymax[1]];
+                const poly = turf.bboxPolygon(bbox);
+
+                // get station points within exte polygon
+                var ptsWithin = turf.pointsWithinPolygon(LayerGeoJSON, poly);
+
+                console.log('stationary ptsWithin', ptsWithin);
+
+                // add current object view object in case we need it again
+                this.view.currentstations = ptsWithin;
+              }
+          }
           if (this.view.zoom && this.view.zoom > 0) {
             this.options.zoom = this.view.zoom;
           }
@@ -339,7 +374,10 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
               }
             }));
           }.bind(_this));
-          return new _this.dojoMods.FeatureLayer(_extends({
+
+          // add featureLayerJSON must have a object key features
+          //  to be valud arcgis feature json
+          const featureLayerJSON = {
             // create an instance of esri/layers/support/Field for each field object
             fields: [{
               name: "ObjectID",
@@ -361,8 +399,10 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
             objectIdField: "ObjectID",
             geometryType: "point",
             spatialReference: { wkid: 4326 },
+            features: features,
             source: features
-          }, options));
+          };
+        return new _this.dojoMods.FeatureLayer(_extends(featureLayerJSON, options));
         });
       } else {
         //if url is a feature service or csv we use the provided methods for creating them.
@@ -389,6 +429,7 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
           }
         }
       }).then(function (layer) {
+
         this.dailyStationsLayer = layer;
         this._MapInitPromise.then(function () {
           this.map.add(this.dailyStationsLayer);
@@ -847,6 +888,11 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
       // Do any custom logic for enabling here, then
       this._super();
     },
+
+    getStationsInExtent: function getStationsInExtent(){
+      console.log(this.map.Extent);
+    },
+
     whenDojoMods: function whenDojoMods(callback) {
 
       if (this.dojoMods !== undefined) {
