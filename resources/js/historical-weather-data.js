@@ -15,6 +15,24 @@ $(function () {
   enableCustomSelect('chartmap-select');
   enableCustomSelect('stations-select');
 
+  // in resposnive mode, event hanlder a for when season (time) varriable changes
+  $('#stations-select-vis').bind('cs-changed', function(e) {
+    const target = $(e.target);
+    const notDisabled = !target.hasClass('disabled');
+    if ( notDisabled ) {
+      const val = $('#stations-select-vis').attr('rel').split(',');
+      const stationId = val[1];
+      const stationName = val[0];
+
+      document.getElementById('station-info').classList.remove('d-none');
+      updateStationIDText(`${stationId}`);
+      updateStationText(`${stationName}`);
+      // change map varriable
+      window.ce.ce('setStationsMapState', {stationId, stationName});
+      // console.log(val);
+    }
+  })
+
   // eanbles time chart, map click events
   $('#chartmap-wrapper').click( function(e) {
     const target = $(e.target);
@@ -74,6 +92,7 @@ $(function () {
     zoom,
     center
   };
+
 
   // this function Updates the chart title.
   function updateTitle(chartText) {
@@ -139,55 +158,8 @@ $(function () {
       renderStationInfo(options.stationId, options.stationName);
 
     },
-
-    // layersloaded: function(event) {
-    //   console.log(layersloadedevent)
-    //   window.ce.stationsMap('getStationsInExtent');
-    // }
   }, stationsMapState));
 
-
-
-
-  // $('#stations-map').height($('#stations-map').parent().height());
-    // if (typeof window.precipitationScenariosMap === 'undefined') {
-      // $('#temperature-map').spinner();
-      // window.precipitationScenariosMap = $('#temperature-map').scenarioComparisonMap({
-      //   variable: 'tmax',
-      //   extent: mapExtent,
-      //   center: mapcenter,
-      //   zoom: mapZoom,
-      //   showCounties: isNational(),
-      //   // countyselected: function countyselected(event, value) {
-      //   //   window.countySelected($('.cwg-container')[0], value);
-      //   // },
-      //   layersloaded: function layersloaded() {
-      //     $('#temperature-map').spinner('destroy');
-      //     const rect = document.getElementById('map-wrap').getBoundingClientRect();
-      //     document.querySelector('.esri-view-root').style.minWidth = `${rect.width}px`;
-      //     document.querySelector('.esri-view-root').style.height = `${rect.height}px`;
-      //     enableCustomSelect('leftScenario-select');
-      //     enableCustomSelect('rightScenario-select');
-      //
-      //     const variable = window.ce.ce('getVariablesPageState')['variable'];
-      //     console.log(variable)
-      //     if ( variable !== undefined) {
-      //       const $styledSelect = $('.select.varriable-select div.select-styled');
-      //       $(`[rel="${variable}"]`).click();
-      //
-      //       // change map varriable
-      //       if (window.precipitationScenariosMap) {
-      //         $(window.precipitationScenariosMap).scenarioComparisonMap({ variable });
-      //       }
-      //     }
-      //
-      //   },
-      //   change: function change() {
-      //     window.precipitationScenariosMap.scenarioComparisonMap("getShowSeasonControls") ? $("#precipitation-map-season").show(200) : $("#precipitation-map-season").hide();
-      //   }
-      // });
-      // window.precipitationScenariosMap.scenarioComparisonMap("getShowSeasonControls") ? $("#precipitation-map-season").show(200) : $("#precipitation-map-season").hide();
-    // }
 
   function setMapSize() {
     $('#stations-map').height($('#stations-map').parent().height())
@@ -211,11 +183,6 @@ $(function () {
       document.querySelector('#stations-map').style.minWidth = `${rect.height}px`;
     }
 
-    // document.querySelector('.scenario-map-overlay-container').style.top = `${rect.top}px`;
-    // document.querySelector('.scenario-map-overlay-container').style.left = `${rect.left}px`;
-    // document.querySelector('.scenario-map-overlay-container').style.width = `${rect.width}px`;
-    // document.querySelector('.scenario-map-overlay-container').style.height = `${rect.height}px`;
-
   }
 
   setMapSize();
@@ -226,64 +193,3 @@ $(function () {
 
 
 });
-
-
-// var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
-//
-// $(function () {
-//   function updateAboutLink(title, link) {
-//     $('#about-stations-link').prop('href', '#detail-' + link).html('About ' + title);
-//   }
-//
-//   var stationsMapState = window.ce.ce("getStationsMapState");
-//   if (stationsMapState.mode) {
-//     $("#stations-options").val(stationsMapState.mode).change();
-//     $("option[value=" + stationsMapState.mode + "]").attr("selected", "selected");
-//     updateAboutLink($(".fs-dropdown-item[data-value=" + stationsMapState.mode + "]").text(), stationsMapState.mode);
-//   }
-//   window.stations = $('#stations-map').stationsMap(_extends({
-//     // When state changes, just pass the current options along directly for this page.
-//     // If we re-use the stationsMap widget on another page there may be more handling to do.
-//     change: function change(event, options) {
-//       window.ce.ce('setStationsMapState', options);
-//     }
-//   }, stationsMapState));
-//
-//   var initFormMapper = function initFormMapper() {
-//     $("#formmapper").formmapper({
-//       details: "form"
-//     });
-//
-//     $("#formmapper").bind("geocode:result", function (event, result) {
-//       if (result.geometry.access_points) {
-//         window.stations.stationsMap({
-//           extent: null,
-//           center: [result.geometry.access_points[0].location.lat, result.geometry.access_points[0].location.lng],
-//           zoom: 8
-//         });
-//       } else {
-//         window.stations.stationsMap({ extent: null, center: [result.geometry.location.lat(), result.geometry.location.lng()], zoom: 8 });
-//       }
-//     });
-//   };
-//   var whenFormMapper = function whenFormMapper() {
-//     if (window.google !== undefined) {
-//       initFormMapper();
-//     } else {
-//       setTimeout(whenFormMapper);
-//     }
-//   };
-//   whenFormMapper();
-//
-//   $('#stations-options-container .fs-dropdown-item').on('click', function (e) {
-//     window.stations.stationsMap({ mode: $(this).data().value });
-//     // update about link
-//     updateAboutLink($(this).text(), $(this).data().value);
-//
-//     $('#breadcrumb .current').html($(this).text());
-//   });
-//
-//   $('#stations-options').on('change', function () {
-//     $("#chart-name").html($('.fs-dropdown-selected').html());
-//   });
-// });

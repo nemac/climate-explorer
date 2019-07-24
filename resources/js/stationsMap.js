@@ -202,8 +202,6 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
       switch (this.options.mode) {
         case 'daily_vs_climate':
           this._whenDojoLoaded().then(this._initDailyStationsLayer.bind(this));
-          // console.log('daily_vs_climate', this) //dailyStationsLayer.dailyStationsLayer
-          // getStationsInExtent()
           break;
         case 'thresholds':
           this._whenDojoLoaded().then(this._initThresholdStationsLayer.bind(this));
@@ -297,10 +295,15 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
                 // get station points within exte polygon
                 var ptsWithin = turf.pointsWithinPolygon(LayerGeoJSON, poly);
 
-                console.log('stationary ptsWithin', ptsWithin);
+                // console.log('stationary ptsWithin', ptsWithin);
 
-                // update station pulldown
+                // update station pulldown and click events
                 this._updateStationSelect(ptsWithin);
+
+                // ensure function is defined
+                if (typeof reEnableSelectNewItems !== "undefined") {
+                  reEnableSelectNewItems('stations-select');
+                }
                 // add current object view object in case we need it again
                 this.view.currentstations = ptsWithin;
               }
@@ -345,8 +348,6 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
       this.view.ui.add(this.locateWidget, "top-left");
     },
     _updateStationSelect: function _updateStationSelect(currentstations){
-      console.log(currentstations)
-
       // sort hubs by name A-Z
       const currentstationsSorted = currentstations.features.sort((a, b) => {
         if (a.properties.name > b.properties.name) {
@@ -362,7 +363,7 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
       // make li for select pulldown
       let stationLi = '';
       currentstationsSorted.forEach( (station) => {
-         stationLi += `<li rel="${station.properties.id}" class="default-select-option">${station.properties.name} - (${station.properties.id})</li>\n`
+         stationLi += `<li rel="${station.properties.id},${station.properties.name}" class="default-select-option">${station.properties.name} - (${station.properties.id})</li>\n`
       })
 
       // update select elem if it exists
@@ -459,7 +460,6 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
           }
         }
       }).then(function (layer) {
-
         this.dailyStationsLayer = layer;
         this._MapInitPromise.then(function () {
           this.map.add(this.dailyStationsLayer);
@@ -917,10 +917,6 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
     enable: function enable() {
       // Do any custom logic for enabling here, then
       this._super();
-    },
-
-    getStationsInExtent: function getStationsInExtent(){
-      console.log(this.map.Extent);
     },
 
     whenDojoMods: function whenDojoMods(callback) {

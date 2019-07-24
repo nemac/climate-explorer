@@ -1,17 +1,64 @@
-
-// function enables custom selection dropdown from a li element
-function enableCustomSelect(uniqueSelector) {
+//  when we get stations in the map extent
+// the addition of the new stations removes existing click events
+// so we need to re add them
+function reEnableSelectNewItems(uniqueSelector){
   const $styledSelect = $(`.select.${uniqueSelector} div.select-styled`);
-
   // if disabled exit and do not enable pulldown
   if ( $styledSelect.hasClass( 'disabled' )){
     return null;
   }
 
+  // get list tiems so we can add user interactions
+  var $list = $(`.select.${uniqueSelector} ul`);
+  var $listItems = $(`.select.${uniqueSelector} ul`).children('li');
+
+  // enable click for options
+  $listItems.click(function(e) {
+    // check if disabled exit if it is
+    if ($(this).hasClass('default-select-option-disabled')) {return null}
+
+    e.stopPropagation();
+
+    // option item has href make it a element so links work
+    var hrefAttr = $(this).attr('href');
+    if (typeof hrefAttr !== typeof undefined && hrefAttr !== false) {
+      $styledSelect.html(`<a href="${hrefAttr}" rel="${$(this).attr('rel')}">${$(this).text()}</a>`).removeClass('active');
+    } else {
+      $styledSelect.text($(this).text()).removeClass('active');
+    }
+
+    $styledSelect.attr('rel',$(this).attr('rel'))
+    $styledSelect.attr('link',$(this).attr('link'))
+    $styledSelect.attr('nav',$(this).attr('nav'))
+
+    // option item has icon add it
+    var iconAttr = $(this).attr('icon');
+    if (typeof iconAttr !== typeof undefined && iconAttr !== false) {
+      // Element has this attribute
+      var icon = `<i class="${iconAttr}"></i>`;
+    } else {
+      var icon = '';
+    }
+
+    $styledSelect.prepend(icon);
+    $list.hide();
+    // trigger custom event so we know the user changed or selected an item
+    $styledSelect.trigger('cs-changed' );
+  });
+}
+
+// function enables custom selection dropdown from a li element
+function enableCustomSelect(uniqueSelector) {
+  const $styledSelect = $(`.select.${uniqueSelector} div.select-styled`);
+  // if disabled exit and do not enable pulldown
+  if ( $styledSelect.hasClass( 'disabled' )){
+    return null;
+  }
 
   // enable click and show options
   $styledSelect.click(function(e) {
     e.stopPropagation();
+
     if ( $(e.target).hasClass( 'disabled' )){
       return null;
     }
@@ -28,7 +75,6 @@ function enableCustomSelect(uniqueSelector) {
 
   // enable click for options
   $listItems.click(function(e) {
-
     // check if disabled exit if it is
     if ($(this).hasClass('default-select-option-disabled')) {return null}
 
