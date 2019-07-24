@@ -288,8 +288,9 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
                 const LayerGeoJSON = ArcgisToGeojsonUtils.arcgisToGeoJSON(firstLayerJSON, "ObjectID" );
 
                 // make polygon from current map extent
-                // need to check performance on full extent may limit and may need to sort by human readable name
-                // which is the id (I think)
+                // need to check performance on full extent may limit (full extent is acting funny)
+                // but this is working for most scales.  we probably need to limit bigger than conus
+                // limit the populatiing the list.
                 const bbox = [xymin[0], xymin[1], xymax[0], xymax[1]];
                 const poly = turf.bboxPolygon(bbox);
 
@@ -298,6 +299,8 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
 
                 console.log('stationary ptsWithin', ptsWithin);
 
+                // update station pulldown
+                this._updateStationSelect(ptsWithin);
                 // add current object view object in case we need it again
                 this.view.currentstations = ptsWithin;
               }
@@ -340,6 +343,33 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
       });
 
       this.view.ui.add(this.locateWidget, "top-left");
+    },
+    _updateStationSelect: function _updateStationSelect(currentstations){
+      console.log(currentstations)
+
+      // sort hubs by name A-Z
+      const currentstationsSorted = currentstations.features.sort((a, b) => {
+        if (a.properties.name > b.properties.name) {
+          return 1;
+        }
+        if (a.properties.name < b.properties.name) {
+          return -1;
+        }
+        // a must be equal to b
+        return 0;
+      });
+
+      // make li for select pulldown
+      let stationLi = '';
+      currentstationsSorted.forEach( (station) => {
+         stationLi += `<li rel="${station.properties.id}" class="default-select-option">${station.properties.name} - (${station.properties.id})</li>\n`
+      })
+
+      // update select elem if it exists
+      const stationsElem = document.querySelector('#stations-select-wrapper .select-options')
+      if (stationsElem) {
+        stationsElem.innerHTML = stationLi;
+      }
     },
     _createStationLayer: function _createStationLayer(layerURL, options) {
       var _this = this;

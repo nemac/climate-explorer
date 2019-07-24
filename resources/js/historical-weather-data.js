@@ -6,7 +6,14 @@ $(function () {
   var activeVariableDerived = 'hdd';
 
 
+  // renove disable state of stations
+  const stationsSelectElem = $('#stations-select-vis');
+  if ($(stationsSelectElem).hasClass('disabled')) {
+    $(stationsSelectElem).removeClass('disabled');
+  }
+
   enableCustomSelect('chartmap-select');
+  enableCustomSelect('stations-select');
 
   // eanbles time chart, map click events
   $('#chartmap-wrapper').click( function(e) {
