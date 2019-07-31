@@ -89,7 +89,10 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
       mode: 'daily_vs_climate', // 'daily_vs_climate','thresholds','high_tide_flooding'
       //extent provides the initial view area of the map.
       extent: null,
-      // defaultExtent: {xmin: -170, xmax: -70, ymin: 16, ymax: 67},
+      defaultExtent: {xmin: 125, xmax: 49., ymin: -1, ymax: 69}, // {xmin: -170, xmax: -70, ymin: 16, ymax: 67},
+      defaultCenter: [-123, 42],
+      defaultZoom: 3,
+      // 124.65,49.4,-0.95,69.13
       // constrainMapToExtent: {xmin: -180, xmax: -62, ymin: 10, ymax: 54},
       //zoom and center are ignored if extent is provided.
       zoom: 3,
@@ -217,19 +220,40 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
     },
 
     _initMap: function _initMap() {
+
       this.map = new this.dojoMods.Map({
         basemap: this.options.mode === 'high_tide_flooding' ? 'oceans' : 'topo'
       });
-      if ((undefined === this.options.extent || null === this.options.extent) && (undefined === this.options.center || null === this.options.center)) {
+
+      if ( undefined == this.options.extent || null == this.options.extent ) {
         this.options.extent = this.options.defaultExtent;
       }
-      console.log('_initMap before this.view', this.view)
+
+      if ( undefined == this.options.center || null == this.options.center ) {
+        this.options.center = this.options.defaultCenter;
+      }
+
+      if ( isNaN(this.options.extent)  ) {
+        this.options.extent = this.options.defaultExtent;
+      }
+
+      if ( isNaN(this.options.center)  ) {
+        this.options.center = this.options.defaultCenter;
+      }
+
+      if ( undefined == this.options.zoom || null == this.options.zoom  ) {
+        this.options.zoom = this.options.defaultZoom;
+      }
+
+      if ( isNaN(this.options.zoom)  ) {
+        this.options.zoom = this.options.defaultZoom;
+      }
+
       this.view = new this.dojoMods.MapView({
         container: this.nodes.mapContainer,
         map: this.map,
         zoom: this.options.zoom ? this.options.zoom : 9,
-        // center: this.options.center ? this.options.center :  [-123, 42],
-        center: this.options.lat && this.options.lon  ? [this.options.lat, this.options.lon] :  [-123, 42],
+        center: this.options.center,
         // extent: this.options.extent ? this.dojoMods.webMercatorUtils.geographicToWebMercator(new this.dojoMods.Extent(this.options.extent)) : null,
         constraints: {
           rotationEnabled: false,
@@ -239,28 +263,6 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
         }
       });
 
-      // console.log('_initMap after this.view', this.view)
-      //
-      // if (this.options.center) {
-      //   const latlon = [this.options.center[0], this.options.center[1]]
-      //   console.log('_initMap 1 latlon', latlon);
-      //   this.view.center = [this.options.lat, this.options.lon]
-      // } else {
-      //   const latlon = this.dojoMods.webMercatorUtils.xyToLngLat(this.options.center[0], this.options.center[1]);
-      //   console.log('_initMap 2 latlon', latlon);
-      //   this.options.lat = Math.round(latlon[0]*1000)/1000;
-      //   this.options.lon = Math.round(latlon[1]*1000)/1000;
-      //   this.view.center = [this.options.lat, this.options.lon]
-      // }
-      //
-      // if (this.options.zoom) {
-      //   this.view.zoom = this.options.zoom;
-      //   console.log('_initMap zoom 1', this.options.zoom);
-      // } else {
-      //   this.view.zoom = 9;
-      //   console.log('_initMap zoom 2 9');
-      // }
-
       if (this.options.constrainMapToExtent) {
         this.constrainMapToExtent = this.dojoMods.webMercatorUtils.geographicToWebMercator(new this.dojoMods.Extent(this.options.constrainMapToExtent));
       }
@@ -269,49 +271,47 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
       this.dojoMods.watchUtils.whenTrue(this.view, "stationary", function () {
         // Constrain map panning
         if (this.view.extent !== undefined && this.view.extent !== null && this.constrainMapToExtent !== undefined && !this.constrainMapToExtent.contains(this.view.extent.center)) {
-          //clamp center
-          var x = Math.min(Math.max(this.view.extent.center.x, this.constrainMapToExtent.xmin), this.constrainMapToExtent.xmax);
-          var y = Math.min(Math.max(this.view.extent.center.y, this.constrainMapToExtent.ymin), this.constrainMapToExtent.ymax);
-          this.view.center = new this.dojoMods.Point({ x: x, y: y, spatialReference: this.view.extent.spatialReference });
+
+          // var quickRound = function quickRound(num) {
+          //   return Math.round(num * 100 + Number.EPSILON) / 100;
+          // };
+          //
+          // //clamp center
+          // var x = Math.min(Math.max(this.view.extent.center.x, this.constrainMapToExtent.xmin), this.constrainMapToExtent.xmax);
+          // var y = Math.min(Math.max(this.view.extent.center.y, this.constrainMapToExtent.ymin), this.constrainMapToExtent.ymax);
+          // this.view.center = new this.dojoMods.Point({ x: x, y: y, spatialReference: this.view.extent.spatialReference });
+          // this.options.center = this.view.center
+          // this.options.lat = quickRound(y);
+          // this.options.lon = quickRound(x);
         }
       }.bind(this));
 
       // Watch view's stationary property
       this.dojoMods.watchUtils.whenTrue(this.view, "stationary", function () {
+        // console.log('dojoMods.watchUtils start this.options.center', this.options)
+
         // Get the new extent of the view when view is stationary.
-        console.log('dojoMods.watchUtils')
-        console.log('dojoMods.watchUtils with trigger options', this.options);
-        console.log('dojoMods.watchUtils with trigger view', this.view);
-
-        if (this.view.center) {
-          // const latlon = [this.options.center[0], this.options.center[1]]
-          const latlon =  this.dojoMods.webMercatorUtils.xyToLngLat(this.view.center.x, this.view.center.y);
-          // this.dojoMods.webMercatorUtils.xyToLngLat(this.view.center[0], this.view.center[1]);
-          console.log('dojoMods.watchUtils with trigger latlon', latlon);
-          this.options.lat = Math.round(latlon[0]*1000)/1000;
-          this.options.lon = Math.round(latlon[1]*1000)/1000;
-          this.options.center = [this.options.lat, this.options.lon]
-        }
-        // } else {
-        //   const latlon = this.dojoMods.webMercatorUtils.xyToLngLat(this.options.center[0], this.options.center[1]);
-        //   console.log('dojoMods.watchUtils with trigger latlon', latlon);
-        //   this.options.lat = Math.round(latlon[0]*1000)/1000;
-        //   this.options.lon = Math.round(latlon[1]*1000)/1000;
-        //   this.options.center = [this.options.lat, this.options.lon]
-        // }
-
         if (this.view.extent) {
           var xymin = this.dojoMods.webMercatorUtils.xyToLngLat(this.view.extent.xmin, this.view.extent.ymin);
           var xymax = this.dojoMods.webMercatorUtils.xyToLngLat(this.view.extent.xmax, this.view.extent.ymax);
+
           var quickRound = function quickRound(num) {
             return Math.round(num * 100 + Number.EPSILON) / 100;
           };
-          this.options.extent = {
-            xmin: quickRound(xymin[0]),
-            xmax: quickRound(xymax[0]),
-            ymin: quickRound(xymin[1]),
-            ymax: quickRound(xymax[1])
-          };
+
+          // get center point and save it options os it us updated in url state.
+          var x = Math.min(Math.max(this.view.extent.center.x, quickRound(xymin[0]) ), quickRound(xymax[0]));
+          var y = Math.min(Math.max(this.view.extent.center.y, quickRound(xymin[1]) ), quickRound(xymax[1]));
+          // this.options.lat = quickRound(y);
+          // this.options.lon = quickRound(x);
+          // console.log('dojoMods.watchUtils xymin', xymin)
+          // console.log('dojoMods.watchUtils center x', x)
+          // this.options.extent = {
+          //   xmin: quickRound(xymin[0]),
+          //   xmax: quickRound(xymax[0]),
+          //   ymin: quickRound(xymin[1]),
+          //   ymax: quickRound(xymax[1])
+          // };
 
           // make sure layers item exists we will assume first layer
           // is the layer in question we will need to rethink this if we have multiple
@@ -325,37 +325,46 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
                 features: this.map.layers.items[0].features
               };
 
-              // make geojson from arcgis json data so we can use turf to do a points in polygon
-              // maje sure esri arcgis utils and turf have been added via script tag
-              if (typeof ArcgisToGeojsonUtils !== "undefined" && typeof turf !== "undefined") {
-                const LayerGeoJSON = ArcgisToGeojsonUtils.arcgisToGeoJSON(firstLayerJSON, "ObjectID" );
+              if ( !isNaN(xymin[0]) ) {
 
-                // make polygon from current map extent
-                // need to check performance on full extent may limit (full extent is acting funny)
-                // but this is working for most scales.  we probably need to limit bigger than conus
-                // limit the populatiing the list.
-                const bbox = [xymin[0], xymin[1], xymax[0], xymax[1]];
-                const poly = turf.bboxPolygon(bbox);
+                // make geojson from arcgis json data so we can use turf to do a points in polygon
+                // maje sure esri arcgis utils and turf have been added via script tag
+                if (typeof ArcgisToGeojsonUtils !== "undefined" && typeof turf !== "undefined") {
+                  const LayerGeoJSON = ArcgisToGeojsonUtils.arcgisToGeoJSON(firstLayerJSON, "ObjectID" );
 
-                // get station points within exte polygon
-                var ptsWithin = turf.pointsWithinPolygon(LayerGeoJSON, poly);
+                  // make polygon from current map extent
+                  // need to check performance on full extent may limit (full extent is acting funny)
+                  // but this is working for most scales.  we probably need to limit bigger than conus
+                  // limit the populatiing the list.
+                  const bbox = [xymin[0], xymin[1], xymax[0], xymax[1]];
+                  const poly = turf.bboxPolygon(bbox);
 
-                // console.log('stationary ptsWithin', ptsWithin);
+                  // get station points within exte polygon
+                  var ptsWithin = turf.pointsWithinPolygon(LayerGeoJSON, poly);
 
-                // update station pulldown and click events
-                this._updateStationSelect(ptsWithin);
+                  // console.log('stationary ptsWithin', ptsWithin);
 
-                // ensure function is defined
-                if (typeof reEnableSelectNewItems !== "undefined") {
-                  reEnableSelectNewItems('stations-select');
+                  // update station pulldown and click events
+                  this._updateStationSelect(ptsWithin);
+
+                  // ensure function is defined
+                  if (typeof reEnableSelectNewItems !== "undefined") {
+                    reEnableSelectNewItems('stations-select');
+                  }
+                  // add current object view object in case we need it again
+                  this.view.currentstations = ptsWithin;
                 }
-                // add current object view object in case we need it again
-                this.view.currentstations = ptsWithin;
               }
           }
-          if (this.view.zoom && this.view.zoom > 0) {
-            this.options.zoom = Math.round(this.view.zoom*100)/100;;
+          console.log('this.view.zoom', this.view.zoom)
+          console.log('this.options.zoom', this.options.zoom)
+          if (this.options.zoom && this.options.zoom > 0) {
+            this.view.zoom = this.options.zoom;
+          } else {
+            this.options.zoom = this.view.zoom;
           }
+
+          // this.view.center
           this._trigger('change', null, this.options);
         }
       }.bind(this));

@@ -5,15 +5,47 @@ $(function () {
   var activeVariablePrecipitation = 'pcpn';
   var activeVariableDerived = 'hdd';
 
+  enableCustomSelect('chartmap-select');
+  enableCustomSelect('stations-select');
+
+  // get city, state from state url
+  // $('#default-city-state').text(window.ce.ce('getLocationPageState')['city']);
+  // $('#default-city-county').text(window.ce.ce('getLocationPageState')['county']);
+  // $('#cards-search-input').val(window.ce.ce('getLocationPageState')['city']);
+
+  let stationsMapState = window.ce.ce("getStationsMapState");
+  const county =  window.ce.ce('getLocationPageState')['county']
+  const city = window.ce.ce('getLocationPageState')['city']
+  const mapcenter = window.ce.ce('getLocationPageState')['center'];
+  const mapExtent = window.ce.ce('getLocationPageState')['extent'];
+  const zoom = window.ce.ce('getLocationPageState')['zoom'] || 9;
+  const lat = window.ce.ce('getLocationPageState')['lat'];
+  const lon = window.ce.ce('getLocationPageState')['lon'];
+  const mode = stationsMapState['mode'];
+  const extent = stationsMapState['extent'];
+  const stationId = stationsMapState['stationId'];
+  const stationName = stationsMapState['stationName'];
+  const stationMOverMHHW = stationsMapState['stationMOverMHHW'];
+  const center = [lon, lat]
+
+  stationsMapState = {
+    mode,
+    stationId,
+    stationName,
+    stationMOverMHHW,
+    // extent,
+    // variable: 'variable',
+    lat,
+    lon,
+    zoom,
+    center
+  };
 
   // renove disable state of stations
   const stationsSelectElem = $('#stations-select-vis');
   if ($(stationsSelectElem).hasClass('disabled')) {
     $(stationsSelectElem).removeClass('disabled');
   }
-
-  enableCustomSelect('chartmap-select');
-  enableCustomSelect('stations-select');
 
   // in resposnive mode, event hanlder a for when season (time) varriable changes
   $('#stations-select-vis').bind('cs-changed', function(e) {
@@ -29,6 +61,20 @@ $(function () {
       updateStationText(`${stationName}`);
       // change map varriable
       window.ce.ce('setStationsMapState', {stationId, stationName});
+
+      stationsMapState = {
+        mode,
+        stationId,
+        stationName,
+        stationMOverMHHW,
+        // extent,
+        // variable: 'variable',
+        lat,
+        lon,
+        zoom,
+        center
+      };
+
       // console.log(val);
     }
   })
@@ -63,36 +109,6 @@ $(function () {
       // handleChartMapClick(target);
     }
   })
-  // get city, state from state url
-  $('#default-city-state').text(window.ce.ce('getLocationPageState')['city']);
-  $('#default-city-county').text(window.ce.ce('getLocationPageState')['county']);
-  $('#cards-search-input').val(window.ce.ce('getLocationPageState')['city']);
-
-  let stationsMapState = window.ce.ce("getStationsMapState");
-  const mapcenter = window.ce.ce('getLocationPageState')['center'];
-  const mapExtent = window.ce.ce('getLocationPageState')['extent'];
-  const zoom = window.ce.ce('getLocationPageState')['zoom'] || 9;
-  const lat = window.ce.ce('getLocationPageState')['lat'];
-  const lon = window.ce.ce('getLocationPageState')['lon'];
-  const mode = stationsMapState['mode'];
-  const stationId = stationsMapState['station'];
-  const stationName = stationsMapState['station-name'];
-  const stationMOverMHHW = stationsMapState['station-mhhw'];
-  const center = [lon, lat]
-  console.log('stationId', stationId)
-
-  stationsMapState = {
-    mode,
-    stationId,
-    stationName,
-    stationMOverMHHW,
-    // variable: 'variable',
-    lat,
-    lon,
-    zoom,
-    center
-  };
-
 
   // this function Updates the chart title.
   function updateTitle(chartText) {
@@ -147,20 +163,25 @@ $(function () {
       setTimeout(function () {
         $('#stations-map').height($('#stations-map').parent().height());
       }, 600);
-
   })
 
-  window.stations = $('#stations-map').stationsMap(_extends({
-    // When state changes, just pass the current options along directly for this page.
-    // If we re-use the stationsMap widget on another page there may be more handling to do.
-    change: function change(event, options) {
-      window.ce.ce('setStationsMapState', options);
-      renderStationInfo(options.stationId, options.stationName);
+//
+// window.onload = function () {
+//   console.log('page is fully loaded', stationsMapState);
+//   window.ce.ce('setStationsMapState', stationsMapState);
 
-    },
-  }, stationsMapState));
+window.stations = $('#stations-map').stationsMap(_extends({
+  // When state changes, just pass the current options along directly for this page.
+  // If we re-use the stationsMap widget on another page there may be more handling to do.
+  change: function change(event, options) {
+    window.ce.ce('setStationsMapState', options);
+    renderStationInfo(options.stationId, options.stationName);
+  },
+}, stationsMapState));
 
+// }
 
+  // resize map when browser is resized
   function setMapSize() {
     $('#stations-map').height($('#stations-map').parent().height())
 
@@ -182,7 +203,6 @@ $(function () {
       document.querySelector('#stations-map').style.height = `${rect.height}px`;
       document.querySelector('#stations-map').style.minWidth = `${rect.height}px`;
     }
-
   }
 
   setMapSize();
@@ -190,6 +210,4 @@ $(function () {
   $(window).resize(function () {
     setMapSize();
   })
-
-
 });

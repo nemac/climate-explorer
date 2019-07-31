@@ -233,6 +233,7 @@ especially when it comes to interacting with the DOM and handling events.
       }
 
       newParams = params.join("&");
+
       if (newParams !== currentParams) {
         window.history.replaceState({}, "", href + "?" + newParams);
       }
@@ -294,28 +295,30 @@ especially when it comes to interacting with the DOM and handling events.
         stationName: 'station-name',
         stationMOverMHHW: 'station-mhhw',
         variable: 'variable',
-        extent: 'extent',
+        // extent: 'extent',
         lat: 'lat',
         lon: 'lon',
         zoom: 'zoom'
       });
-
       if (state.lat && state.lon) {
         state.center = [state.lat, state.lon];
       }
       if (state.extent) {
         state.extent = this._extentToObject(state.extent);
       }
-
       return state;
     },
     setStationsMapState: function setStationsMapState(state) {
+      // console.log('setStationsMapState 1 state.extent',  state.extent)
       Object.keys(state).includes('stationId') && state.stationId ? this.setUrlParam('station', state['stationId']) : this.removeUrlParam('station');
       Object.keys(state).includes('stationName') && state.stationName ? this.setUrlParam('station-name', state.stationName) : this.removeUrlParam('station-name');
       Object.keys(state).includes('stationMOverMHHW') && state.stationMOverMHHW ? this.setUrlParam('station-mhhw', state.stationMOverMHHW) : this.removeUrlParam('station-mhhw');
       Object.keys(state).includes('mode') ? this.setUrlParam('mode', state['mode']) : this.removeUrlParam('mode');
-      Object.keys(state).includes('extent') && state['extent'] ? this.setUrlParam('extent', this._extentToString(state['extent'])) : null;
-      Object.keys(state).includes('zoom') ? this.setUrlParam('zoom', state['zoom']) : null;
+      // Object.keys(state).includes('extent') && state['extent'] ? this.setUrlParam('extent', this._extentToString(state['extent'])) : null;
+      Object.keys(state).includes('zoom') ? this.setUrlParam('zoom', state['zoom']) : 4;
+      Object.keys(state).includes('lat') ? this.setUrlParam('lat', state['lat']) : null;
+      Object.keys(state).includes('lon') ? this.setUrlParam('lon', state['lon']) : null;
+      // console.log('setStationsMapState 2 state.extent',  state.extent)
     },
 
     getVariablesPageState: function getVariablesPageState() {
@@ -324,7 +327,7 @@ especially when it comes to interacting with the DOM and handling events.
         season: 'season',
         leftScenario: 'left',
         rightScenario: 'right',
-        extent: 'extent',
+        // extent: 'extent',
         lat: 'lat',
         lon: 'lon',
         zoom: 'zoom'
@@ -335,7 +338,6 @@ especially when it comes to interacting with the DOM and handling events.
       if (state.extent) {
         state.extent = this._extentToObject(state.extent);
       }
-
       return state;
     },
     setVariablesMapState: function setVariablesMapState(state) {
@@ -345,12 +347,14 @@ especially when it comes to interacting with the DOM and handling events.
       Object.keys(state).includes('leftYear') ? this.setUrlParam('leftyear', state['leftYear']) : null;
       Object.keys(state).includes('rightScenario') ? this.setUrlParam('right', state['rightScenario']) : null;
       Object.keys(state).includes('rightYear') ? this.setUrlParam('rightyear', state['rightYear']) : null;
-      Object.keys(state).includes('extent') && state['extent'] ? this.setUrlParam('extent', this._extentToString(state['extent'])) : null;
-      Object.keys(state).includes('zoom') ? this.setUrlParam('zoom', state['zoom']) : null;
+      // Object.keys(state).includes('extent') && state['extent'] ? this.setUrlParam('extent', this._extentToString(state['extent'])) : null;
+      Object.keys(state).includes('zoom') ? this.setUrlParam('zoom', state['zoom']) : 14;
+      Object.keys(state).includes('lat') ? this.setUrlParam('lat', state['lat']) : null;
+      Object.keys(state).includes('lon') ? this.setUrlParam('lon', state['lon']) : null;
     },
 
     getNavState: function getNavState() {
-      var pages = ["local-climate-charts", "variables", "stations"];
+      var pages = ["local-climate-charts", "local-climate-maps", "historical-weather-data","variables", "stations"];
       var state = this.getUrlParams({
         slide: 'menu',
         detail: 'menuDetail'
@@ -362,7 +366,7 @@ especially when it comes to interacting with the DOM and handling events.
     },
 
     setNavState: function setNavState(state) {
-      var pages = ["local-climate-charts", "variables", "stations"];
+      var pages = ["local-climate-charts", "local-climate-maps", "historical-weather-data","variables", "stations"];
       if (Object.keys(state).includes('slide')) {
         this.setUrlParam('menu', pages[state['slide']]);
       } else {
@@ -395,6 +399,7 @@ especially when it comes to interacting with the DOM and handling events.
       if (state.city) {
         state.city = state.city.replace(/\+/g, ' ');
       }
+
       if (state.extent) state.extent = this._extentToObject(state.extent);
 
       return state;

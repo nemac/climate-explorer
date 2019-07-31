@@ -929,7 +929,10 @@ App.prototype.locationSearch = function () {
       if(page === 'national-climate-maps' || page === 'local-climate-maps'){
         navLocation = 'local-climate-maps'
       }
-      window.location.href = `/${page}/?county=` + county + '&city=' + city + '&fips=' + fips + '&lat=' + lat + '&lon=' + lon + '&nav=' + navLocation;
+
+      const zoom = 8;
+      console.log(`/${page}/?county=` + county + '&city=' + city + '&fips=' + fips + '&lat=' + lat + '&lon=' + lon + '&zoom=' + zoom + '&nav=' + navLocation)
+      window.location.href = `/${page}/?county=` + county + '&city=' + city + '&fips=' + fips + '&lat=' + lat + '&lon=' + lon + '&zoom=' + zoom + '&nav=' + navLocation;
     }
   });
 };
