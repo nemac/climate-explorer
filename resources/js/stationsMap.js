@@ -519,6 +519,7 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
                 return result.graphic.layer === this.dailyStationsLayer;
               }.bind(this))[0].graphic;
               this._setOptions({ stationName: station.attributes.name, stationId: station.attributes.id });
+              this._trigger('stationUpdated', null, this.options);
             }.bind(this));
           }.bind(this));
         }.bind(this));

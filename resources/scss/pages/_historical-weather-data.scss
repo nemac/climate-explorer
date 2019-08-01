@@ -111,6 +111,30 @@
   }
 }
 
+      .left_chart {
+          position: relative;
+          width: calc(50% - 40px);
+          margin: 0 20px;
+          float: left;
+          height: 40vh;
+          background-color: white;
+      }
+
+      .right_chart {
+          position: relative;
+          width: calc(50% - 40px);
+          margin: 0 20px 0 20px;
+          float: left;
+          height: 40vh;
+          background-color: white;
+      }
+
+      #overlay-chart-container {
+          margin: 25px;
+          height: 50vh;
+          width: calc(100% - 50px);
+      }
+
 .text-info-box.label {
   font-weight: 500 !important;
 }

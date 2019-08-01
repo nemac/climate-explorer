@@ -138,43 +138,92 @@ $(function () {
 
   // toggle filters click
   $('#filters-toggle').click( function(e) {
-      const target = $(e.target);
-      if (target.hasClass('closed-filters')) {
-        target.removeClass('closed-filters');
-      } else {
-        target.addClass('closed-filters');
-      }
+    const target = $(e.target);
+    if (target.hasClass('closed-filters')) {
+      target.removeClass('closed-filters');
+    } else {
+      target.addClass('closed-filters');
+    }
 
-      const infoRowElem = $('#info-row');
-      if ($(infoRowElem).hasClass('closed-filters')) {
-        $(infoRowElem).removeClass('closed-filters');
-      } else {
-        $(infoRowElem).addClass('closed-filters');
-      }
+    const infoRowElem = $('#info-row');
+    if ($(infoRowElem).hasClass('closed-filters')) {
+      $(infoRowElem).removeClass('closed-filters');
+    } else {
+      $(infoRowElem).addClass('closed-filters');
+    }
 
-      const chartRowElem = $('#chart-row');
-      if ($(chartRowElem).hasClass('closed-filters')) {
-        $(chartRowElem).removeClass('closed-filters');
-      } else {
-        $(chartRowElem).addClass('closed-filters');
-      }
+    const chartRowElem = $('#chart-row');
+    if ($(chartRowElem).hasClass('closed-filters')) {
+      $(chartRowElem).removeClass('closed-filters');
+    } else {
+      $(chartRowElem).addClass('closed-filters');
+    }
 
-      setTimeout(function () {
-        $('#stations-map').height($('#stations-map').parent().height());
-      }, 600);
+    setTimeout(function () {
+      $('#stations-map').height($('#stations-map').parent().height());
+    }, 600);
   })
 
 
-window.stations = $('#stations-map').stationsMap(_extends({
-  // When state changes, just pass the current options along directly for this page.
-  // If we re-use the stationsMap widget on another page there may be more handling to do.
-  change: function change(event, options) {
-    window.ce.ce('setStationsMapState', options);
-    renderStationInfo(options.stationId, options.stationName);
-  },
-}, stationsMapState));
+  window.stations = $('#stations-map').stationsMap(_extends({
+    // When state changes, just pass the current options along directly for this page.
+    // If we re-use the stationsMap widget on another page there may be more handling to do.
+    change: function change(event, options) {
+      window.ce.ce('setStationsMapState', options);
+      renderStationInfo(options.stationId, options.stationName);
+    },
 
-// }
+    // when user clicks on map station marker
+    // show graph hide map
+    // todo add this to puldown events also
+    stationUpdated: function(event, options) {
+      // console.log('stationupdated')
+      const stationsGraphRowElem = document.getElementById('stations-graph-row');
+      const stationsMapRowElem = document.getElementById('stations-map-row');
+      window.ce.ce('setStationsMapState', options);
+      console.log(options)
+      if (stationsGraphRowElem) {
+        stationsGraphRowElem.classList.remove('d-none');
+        // stationsMapRowElem.classList.add('d-flex');
+      }
+
+      if (stationsMapRowElem) {
+        stationsMapRowElem.classList.add('d-none');
+        stationsMapRowElem.classList.remove('d-flex');
+      }
+
+      $('#multi-chart').stationAnnualGraph({ variable: 'temperature', station: options.stationId, stationName:  options.stationName });
+      $('#multi-precip-chart').stationAnnualGraph({ variable: 'precipitation', station:  options.stationId, stationName:  options.stationName });
+
+      $('#multi-chart').stationAnnualGraph.resize();
+      $('#multi-precip-chart').stationAnnualGraph.resize();
+    }
+  }, stationsMapState));
+
+  if (stationId) {
+    console.log('stationId',stationId)
+    $('#multi-chart').stationAnnualGraph({ variable: 'temperature', station: stationId, stationName: stationName });
+    $('#multi-precip-chart').stationAnnualGraph({ variable: 'precipitation', station: stationId, stationName: stationName });
+
+    $('.download-temp-image').click(function (event) {
+      event.target.href = $("#multi-chart canvas")[0].toDataURL('image/png');
+      event.target.download = "daily_vs_climate_temp_" + stationId + ".png";
+    });
+
+    $('.download-temp-data').click(function (event) {
+      $('#multi-chart').stationAnnualGraph('downloadTemperatureData', event.currentTarget);
+    });
+
+    $('.download-precipitation-image').click(function (event) {
+      event.target.href = $("#multi-precip-chart canvas")[0].toDataURL('image/png');
+      event.target.download = "daily_vs_climate_precip_" + stationId + ".png";
+    });
+
+    $('.download-precipitation-data').click(function (event) {
+      $('#multi-precip-chart').stationAnnualGraph('downloadPrecipitationData', event.currentTarget);
+    });
+  }
+
 
   // resize map when browser is resized
   function setMapSize() {

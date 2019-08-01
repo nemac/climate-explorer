@@ -161,8 +161,44 @@
   <div id="stations-graph-row" class="padding-horizontal padding-top-half width-100 height-100 d-none" >
 
     <div id="stations-graph-wrap" class="graph-wrap width-100 height-100 ">
-      <!-- <div id="chart-123" class="chart-canvas width-100 height-100" data-chart-ID="123"></div> -->
-      <div id="stations-graph" class="graph-element"></div>
+      <div id="station-overlay">
+        <!-- <div id="station-overlay-close">x</div> -->
+        <!-- <div id="station-overlay-header">
+          <div class="accent-color tidal-header">
+            <span class="icon icon-district station-overlay-header-icon"></span>Weather Station Daily vs. Climate
+          </div>
+          <h5>Name: ' + this.options.stationName + '</h5>
+          <h5>Station ID: ' + this.options.stationId + '</h5>
+        </div> -->
+        <div id="multi-chart" class="left_chart"></div>
+        <!--only shows here if on xs screens-->
+        <div class="temp-download-btns d-xs-only">
+          <a href="javascript:void(0)" class="download-temp-image"><span class="icon icon-download-image"></span> Image</a>
+          <a href="javascript:void(0)" class="download-temp-data"><span class="icon icon-download-chart"></span> Data</a>
+        </div>
+        <div id="multi-precip-chart" class="right_chart"></div>
+        <div class="precip-download-btns d-xs-only">
+          <a href="javascript:void(0)" class="download-precipitation-image"><span class="icon icon-download-image"></span> Image</a>
+          <a href="javascript:void(0)" class="download-precipitation-data"><span class="icon icon-download-chart"></span> Data</a>
+        </div>
+        <!--end-->
+        <div style="clear:both"></div>
+        <div class="temp-download-btns d-none-xs">
+          <a href="javascript:void(0)" class="download-temp-image"><span class="icon icon-download-image"></span> Image</a>
+          <a href="javascript:void(0)" class="download-temp-data"><span class="icon icon-download-chart"></span> Data</a>
+        </div>
+        <div class="precip-download-btns d-none-xs">
+          <a href="javascript:void(0)" class="download-precipitation-image"><span class="icon icon-download-image"></span> Image</a>
+          <a href="javascript:void(0)" class="download-precipitation-data"><span class="icon icon-download-chart"></span> Data</a>
+        </div>
+        <div id="overlay-chart-container">
+          <div class="station_overlay_text">
+            <p class="text-bold">Pan or zoom on these graphs to view other years. Place your cursor on either axis and then scroll, click-and-drag, or hold down your SHIFT key and scroll to adjust the display.</p>
+            <p>Blue bars on temperature graphs indicate the range of observed temperatures for each day; the green band shows Climate Normals for temperature\u2014the average temperature range at that station from 1981-2010. Blue areas on precipitation graphs track year-to-date cumulative precipitation; the black line shows Climate Normals for precipitation. Data from <a target="_blank" href="https://www.ncdc.noaa.gov/data-access/land-based-station-data/land-based-datasets/global-historical-climatology-network-ghcn">Global Historical Climatology Network-Daily dataset</a>, served by  <a target="_blank"  href="http://www.rcc-acis.org/">ACIS</a>.</p>
+          </div>
+        </div>
+      </div>
+
     </div>
 
   </div>
@@ -176,6 +212,7 @@
 <script src="https://unpkg.com/@esri/arcgis-to-geojson-utils"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/Turf.js/5.1.6/turf.min.js" integrity="sha256-Nhtik+K3xORhs5S9o0qlol4eRNB9O5OyTOJqbLucPk8=" crossorigin="anonymous"></script>
 <script type="text/javascript" src="/resources/js/stationsMap.js"></script>
+<script type="text/javascript" src="/resources/js/stationAnnualGraph.js"></script>
 <script src="https://unpkg.com/terraformer@1.0.8/terraformer.js" integrity="sha384-+M797Pj3WZVCwMmLbOxAoaWYcKJo8NSxItmI48ytcLNeAnfn1d/IckFn31jEqrzP"
 crossorigin="anonymous"></script>
 <script src="https://unpkg.com/terraformer-arcgis-parser@1.0.5/terraformer-arcgis-parser.js"

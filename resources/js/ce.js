@@ -295,7 +295,6 @@ especially when it comes to interacting with the DOM and handling events.
         stationName: 'station-name',
         stationMOverMHHW: 'station-mhhw',
         variable: 'variable',
-        // extent: 'extent',
         lat: 'lat',
         lon: 'lon',
         zoom: 'zoom'
@@ -313,7 +312,6 @@ especially when it comes to interacting with the DOM and handling events.
       Object.keys(state).includes('stationName') && state.stationName ? this.setUrlParam('station-name', state.stationName) : this.removeUrlParam('station-name');
       Object.keys(state).includes('stationMOverMHHW') && state.stationMOverMHHW ? this.setUrlParam('station-mhhw', state.stationMOverMHHW) : this.removeUrlParam('station-mhhw');
       Object.keys(state).includes('mode') ? this.setUrlParam('mode', state['mode']) : this.removeUrlParam('mode');
-      // Object.keys(state).includes('extent') && state['extent'] ? this.setUrlParam('extent', this._extentToString(state['extent'])) : null;
       Object.keys(state).includes('zoom') ? this.setUrlParam('zoom', state['zoom']) : 4;
       Object.keys(state).includes('lat') ? this.setUrlParam('lat', state['lat']) : null;
       Object.keys(state).includes('lon') ? this.setUrlParam('lon', state['lon']) : null;
@@ -345,7 +343,6 @@ especially when it comes to interacting with the DOM and handling events.
       Object.keys(state).includes('leftYear') ? this.setUrlParam('leftyear', state['leftYear']) : null;
       Object.keys(state).includes('rightScenario') ? this.setUrlParam('right', state['rightScenario']) : null;
       Object.keys(state).includes('rightYear') ? this.setUrlParam('rightyear', state['rightYear']) : null;
-      // Object.keys(state).includes('extent') && state['extent'] ? this.setUrlParam('extent', this._extentToString(state['extent'])) : null;
       Object.keys(state).includes('zoom') ? this.setUrlParam('zoom', state['zoom']) : 14;
       Object.keys(state).includes('lat') ? this.setUrlParam('lat', state['lat']) : null;
       Object.keys(state).includes('lon') ? this.setUrlParam('lon', state['lon']) : null;
@@ -382,7 +379,6 @@ especially when it comes to interacting with the DOM and handling events.
       Object.keys(state).includes('fips') ? this.setUrlParam('fips', state['fips']) : null;
       Object.keys(state).includes('county') ? this.setUrlParam('county', state['county']) : null;
       Object.keys(state).includes('city') ? this.setUrlParam('city', state['city']) : null;
-      // Object.keys(state).includes('extent') && state['extent'] ? this.setUrlParam('extent', this._extentToString(state['extent'])) : null;
       Object.keys(state).includes('zoom') ? this.setUrlParam('zoom', state['zoom']) : 14;
       Object.keys(state).includes('lat') ? this.setUrlParam('lat', state['lat']) : null;
       Object.keys(state).includes('lon') ? this.setUrlParam('lon', state['lon']) : null;
@@ -394,7 +390,6 @@ especially when it comes to interacting with the DOM and handling events.
         county: 'county',
         city: 'city',
         fips: 'fips',
-        // extent: 'extent',
         lat: 'lat',
         lon: 'lon',
         zoom: 'zoom'
