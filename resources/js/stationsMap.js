@@ -223,18 +223,21 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
       if ((undefined === this.options.extent || null === this.options.extent) && (undefined === this.options.center || null === this.options.center)) {
         this.options.extent = this.options.defaultExtent;
       }
-      console.log('_initMap before this.view', this.view)
-      console.log('_initMap before this.options', this.options)
+
+      // for some reason lat long is backwards and to center a map you must pass long lat.
+      // here I am switching lat long from center of tha map which is long lat back lat long order
+      // this will although keeping the state url consistent accross local climate maps and stations map
       const mapCenter = this.options.lat && this.options.lon  ? [this.options.lon, this.options.lat] :  [-123, 42];
       const mapZoom = this.options.zoom   ? this.options.zoom :  8;
-      console.log('_initMap before mapCenter', mapCenter)
+
+      // for some reason lat long is backwards and to center a map you must pass long lat.
+      // here I am switching lat long from center of tha map which is long lat back lat long order
+      // this will although keeping the state url consistent accross local climate maps and stations map
       this.view = new this.dojoMods.MapView({
         container: this.nodes.mapContainer,
         map: this.map,
         zoom: mapZoom,
-        // center: this.options.center ? this.options.center :  [-123, 42],
         center: mapCenter,
-        // extent: this.options.extent ? this.dojoMods.webMercatorUtils.geographicToWebMercator(new this.dojoMods.Extent(this.options.extent)) : null,
         constraints: {
           rotationEnabled: false,
           minZoom: 3,
@@ -243,79 +246,35 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
         }
       });
 
-      // console.log('_initMap after this.view', this.view)
-      //
-      // if (this.options.center) {
-      //   const latlon = [this.options.center[0], this.options.center[1]]
-      //   console.log('_initMap 1 latlon', latlon);
-      //   this.view.center = [this.options.lat, this.options.lon]
-      // } else {
-      //   const latlon = this.dojoMods.webMercatorUtils.xyToLngLat(this.options.center[0], this.options.center[1]);
-      //   console.log('_initMap 2 latlon', latlon);
-      //   this.options.lat = Math.round(latlon[0]*1000)/1000;
-      //   this.options.lon = Math.round(latlon[1]*1000)/1000;
-      //   this.view.center = [this.options.lat, this.options.lon]
-      // }
-      //
-      // if (this.options.zoom) {
-      //   this.view.zoom = this.options.zoom;
-      //   console.log('_initMap zoom 1', this.options.zoom);
-      // } else {
-      //   this.view.zoom = 9;
-      //   console.log('_initMap zoom 2 9');
-      // }
-
       if (this.options.constrainMapToExtent) {
         this.constrainMapToExtent = this.dojoMods.webMercatorUtils.geographicToWebMercator(new this.dojoMods.Extent(this.options.constrainMapToExtent));
       }
-
-      // // Watch view's stationary property
-      // this.dojoMods.watchUtils.whenTrue(this.view, "stationary", function () {
-      //   // Constrain map panning
-      //   if (this.view.extent !== undefined && this.view.extent !== null && this.constrainMapToExtent !== undefined && !this.constrainMapToExtent.contains(this.view.extent.center)) {
-      //     //clamp center
-      //     var x = Math.min(Math.max(this.view.extent.center.x, this.constrainMapToExtent.xmin), this.constrainMapToExtent.xmax);
-      //     var y = Math.min(Math.max(this.view.extent.center.y, this.constrainMapToExtent.ymin), this.constrainMapToExtent.ymax);
-      //     console.log('dojoMods.watchUtils x y', [x, y]);
-      //     this.view.center = new this.dojoMods.Point({ x: x, y: y, spatialReference: this.view.extent.spatialReference });
-      //   }
-      // }.bind(this));
 
       // Watch view's stationary property
       this.dojoMods.watchUtils.whenTrue(this.view, "stationary", function () {
         // Get the new extent of the view when view is stationary.
         if (this.view.center) {
-          // const latlon = [this.options.center[0], this.options.center[1]]
           const latlon =  this.dojoMods.webMercatorUtils.xyToLngLat(this.view.center.x, this.view.center.y);
 
+          // for some odd reason I can't identify the first
+          // lat and long value is between 1 and -1 this is not something a user
+          // has done so we ignore it.
+          // of course if a user actually does pan that part of the map it will not be passed to the state url
+          // and could cause issues later...
           if (latlon[0] <= 1 && latlon[0]  >= -1) {
-            console.log('between 1 and 01 ')
             return null;
           }
 
-          console.log('dojoMods.watchUtils', latlon[0])
-
-
-          // if (latlon[0] < 1 || latlon[0] > 1) {
-          //   return null;
-          // }
-          console.log('dojoMods.watchUtils')
-          console.log('dojoMods.watchUtils with trigger options', this.options);
-          console.log('dojoMods.watchUtils with trigger view', this.view);
-          // this.dojoMods.webMercatorUtils.xyToLngLat(this.view.center[0], this.view.center[1]);
-          console.log('dojoMods.watchUtils with trigger latlon', latlon);
+          // for some reason lat long is backwards and to center a map you must pass long lat.
+          // here I am switching lat long from center of tha map which is long lat back lat long order
+          // this will although keeping the state url consistent accross local climate maps and stations map
           this.options.lat = Math.round(latlon[1]*1000)/1000;
           this.options.lon = Math.round(latlon[0]*1000)/1000;
           this.options.center = [this.options.lat, this.options.lon]
         }
-        // } else {
-        //   const latlon = this.dojoMods.webMercatorUtils.xyToLngLat(this.options.center[0], this.options.center[1]);
-        //   console.log('dojoMods.watchUtils with trigger latlon', latlon);
-        //   this.options.lat = Math.round(latlon[0]*1000)/1000;
-        //   this.options.lon = Math.round(latlon[1]*1000)/1000;
-        //   this.options.center = [this.options.lat, this.options.lon]
-        // }
 
+        // make sure the extent is defined than get the current map extent
+        // use extent to get a list of current statiobs.
         if (this.view.extent) {
           var xymin = this.dojoMods.webMercatorUtils.xyToLngLat(this.view.extent.xmin, this.view.extent.ymin);
           var xymax = this.dojoMods.webMercatorUtils.xyToLngLat(this.view.extent.xmax, this.view.extent.ymax);
@@ -369,9 +328,9 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
                 this.view.currentstations = ptsWithin;
               }
           }
+          // sets url state zoom level
           if (this.view.zoom && this.view.zoom > 0) {
             this.options.zoom = Math.round(this.view.zoom*100)/100;
-            console.log('dojoMods.watchUtils this.options.zoom', this.options.zoom);
           }
           this._trigger('change', null, this.options);
         }

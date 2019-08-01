@@ -309,7 +309,6 @@ especially when it comes to interacting with the DOM and handling events.
       return state;
     },
     setStationsMapState: function setStationsMapState(state) {
-      // console.log('setStationsMapState 1 state.extent',  state.extent)
       Object.keys(state).includes('stationId') && state.stationId ? this.setUrlParam('station', state['stationId']) : this.removeUrlParam('station');
       Object.keys(state).includes('stationName') && state.stationName ? this.setUrlParam('station-name', state.stationName) : this.removeUrlParam('station-name');
       Object.keys(state).includes('stationMOverMHHW') && state.stationMOverMHHW ? this.setUrlParam('station-mhhw', state.stationMOverMHHW) : this.removeUrlParam('station-mhhw');
@@ -318,7 +317,6 @@ especially when it comes to interacting with the DOM and handling events.
       Object.keys(state).includes('zoom') ? this.setUrlParam('zoom', state['zoom']) : 4;
       Object.keys(state).includes('lat') ? this.setUrlParam('lat', state['lat']) : null;
       Object.keys(state).includes('lon') ? this.setUrlParam('lon', state['lon']) : null;
-      // console.log('setStationsMapState 2 state.extent',  state.extent)
     },
 
     getVariablesPageState: function getVariablesPageState() {

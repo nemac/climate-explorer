@@ -75,7 +75,6 @@ $(function () {
         center
       };
 
-      // console.log(val);
     }
   })
 
@@ -165,10 +164,6 @@ $(function () {
       }, 600);
   })
 
-//
-// window.onload = function () {
-//   console.log('page is fully loaded', stationsMapState);
-//   window.ce.ce('setStationsMapState', stationsMapState);
 
 window.stations = $('#stations-map').stationsMap(_extends({
   // When state changes, just pass the current options along directly for this page.
