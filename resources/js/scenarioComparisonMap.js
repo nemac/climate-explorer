@@ -1794,7 +1794,9 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
         this.view.goTo(new this.dojoMods.Extent(this.options.extent));
       } else if (this.options.center !== old_options.center && this.options.center !== null) {
         this.options.extent = null;
-        this.view.goTo({ center: new this.dojoMods.Point({ latitude: this.options.center[0], longitude: this.options.center[1] }), zoom: this.options.zoom });
+        if (this.view) {
+          this.view.goTo({ center: new this.dojoMods.Point({ latitude: this.options.center[0], longitude: this.options.center[1] }), zoom: this.options.zoom });
+        }
       }
       if (this.options.variable) {
         if (this.options.variable !== old_options.variable || this.options.season !== old_options.season) {

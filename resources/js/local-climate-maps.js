@@ -28,6 +28,8 @@ $(function () {
   };
 
   if (isNational()) {
+    lat = null,
+    lon = null,
     mapcenter = null;
     mapExtent = null;
     mapZoom = 7;
@@ -244,14 +246,15 @@ $(function () {
     window.precipitationScenariosMap.scenarioComparisonMap("getShowSeasonControls") ? $("#precipitation-map-season").show(200) : $("#precipitation-map-season").hide();
   }
 
-  window.stations = $('#temperature-map').scenarioComparisonMap(_extends({
-    // When state changes, just pass the current options along directly for this page.
-    // If we re-use the stationsMap widget on another page there may be more handling to do.
-    change: function change(event, options) {
-      window.ce.ce('setLocationPageState', options);
-    },
-  }, locationMapState ));
-
+  if (!isNational()) {
+      window.stations = $('#temperature-map').scenarioComparisonMap(_extends({
+        // When state changes, just pass the current options along directly for this page.
+        // If we re-use the stationsMap widget on another page there may be more handling to do.
+        change: function change(event, options) {
+          window.ce.ce('setLocationPageState', options);
+        },
+      }, locationMapState ));
+  }
 
   function setMapSize() {
     $('#temperature-map').height($('#temperature-map').parent().height())
