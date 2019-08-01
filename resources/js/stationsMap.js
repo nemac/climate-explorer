@@ -268,8 +268,8 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
           // for some reason lat long is backwards and to center a map you must pass long lat.
           // here I am switching lat long from center of tha map which is long lat back lat long order
           // this will although keeping the state url consistent accross local climate maps and stations map
-          this.options.lat = Math.round(latlon[1]*1000)/1000;
-          this.options.lon = Math.round(latlon[0]*1000)/1000;
+          this.options.lat = Math.round(latlon[1]*100)/100;
+          this.options.lon = Math.round(latlon[0]*100)/100;
           this.options.center = [this.options.lat, this.options.lon]
         }
 

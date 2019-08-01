@@ -377,12 +377,24 @@ especially when it comes to interacting with the DOM and handling events.
       }
     },
 
+    setLocationPageState: function setLocationPageState(state) {
+      Object.keys(state).includes('variable') ? this.setUrlParam('id', state['variable']) : 'tmax';
+      Object.keys(state).includes('fips') ? this.setUrlParam('fips', state['fips']) : null;
+      Object.keys(state).includes('county') ? this.setUrlParam('county', state['county']) : null;
+      Object.keys(state).includes('city') ? this.setUrlParam('city', state['city']) : null;
+      // Object.keys(state).includes('extent') && state['extent'] ? this.setUrlParam('extent', this._extentToString(state['extent'])) : null;
+      Object.keys(state).includes('zoom') ? this.setUrlParam('zoom', state['zoom']) : 14;
+      Object.keys(state).includes('lat') ? this.setUrlParam('lat', state['lat']) : null;
+      Object.keys(state).includes('lon') ? this.setUrlParam('lon', state['lon']) : null;
+    },
+
     getLocationPageState: function getLocationPageState() {
       var state = this.getUrlParams({
+        variable: 'id',
         county: 'county',
         city: 'city',
         fips: 'fips',
-        extent: 'extent',
+        // extent: 'extent',
         lat: 'lat',
         lon: 'lon',
         zoom: 'zoom'

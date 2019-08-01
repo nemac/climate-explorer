@@ -931,7 +931,6 @@ App.prototype.locationSearch = function () {
       }
 
       const zoom = 8;
-      console.log(`/${page}/?county=` + county + '&city=' + city + '&fips=' + fips + '&lat=' + lat + '&lon=' + lon + '&zoom=' + zoom + '&nav=' + navLocation)
       window.location.href = `/${page}/?county=` + county + '&city=' + city + '&fips=' + fips + '&lat=' + lat + '&lon=' + lon + '&zoom=' + zoom + '&nav=' + navLocation;
     }
   });

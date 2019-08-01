@@ -495,6 +495,25 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
 
       // Watch view's stationary property
       this.dojoMods.watchUtils.whenTrue(this.view, "stationary", function () {
+        if (this.view.center) {
+          const latlon =  this.dojoMods.webMercatorUtils.xyToLngLat(this.view.center.x, this.view.center.y);
+
+          // for some odd reason I can't identify the first
+          // lat and long value is between 1 and -1 this is not something a user
+          // has done so we ignore it.
+          // of course if a user actually does pan that part of the map it will not be passed to the state url
+          // and could cause issues later...
+          if (latlon[0] <= 1 && latlon[0]  >= -1) {
+            return null;
+          }
+
+          // for some reason lat long is backwards and to center a map you must pass long lat.
+          // here I am switching lat long from center of tha map which is long lat back lat long order
+          // this will although keeping the state url consistent accross local climate maps and stations map
+          this.options.lat = Math.round(latlon[1]*100)/100;
+          this.options.lon = Math.round(latlon[0]*100)/100;
+          this.options.center = [this.options.lat, this.options.lon]
+        }
         // Constrain map panning
         if (this.view.extent !== undefined && this.view.extent !== null && this.constrainMapToExtent !== undefined && !this.constrainMapToExtent.contains(this.view.extent.center)) {
           //clamp center
@@ -1777,26 +1796,28 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
         this.options.extent = null;
         this.view.goTo({ center: new this.dojoMods.Point({ latitude: this.options.center[0], longitude: this.options.center[1] }), zoom: this.options.zoom });
       }
-      if (this.options.variable !== old_options.variable || this.options.season !== old_options.season) {
-        // Only a few variables have seasonal data
-        if (this.options.variables[this.options.variable]['seasonal_data']) {
-          this.options.season = this.options.season || this.options.variables[this.options.variable].defaultConfig.season;
-        } else {
-          this.options.season = null;
+      if (this.options.variable) {
+        if (this.options.variable !== old_options.variable || this.options.season !== old_options.season) {
+          // Only a few variables have seasonal data
+          if (this.options.variables[this.options.variable]['seasonal_data'] ) {
+            this.options.season = this.options.season || this.options.variables[this.options.variable].defaultConfig.season;
+          } else {
+            this.options.season = null;
+          }
+          // validate current scenario config and apply default configs as needed.
+          if ((this.options.variables[this.options.variable].disabledScenarios || []).includes(this.options.leftScenario) || (this.options.variables[old_options.variable].disabledScenarios || []).includes(this.options.variables[this.options.variable].defaultConfig.leftScenario)) {
+            this._setOption('leftScenario', this.options.variables[this.options.variable].defaultConfig.leftScenario);
+          } else {
+            this._updateLeftScenario();
+          }
+          if ((this.options.variables[this.options.variable].disabledScenarios || []).includes(this.options.rightScenario) || (this.options.variables[old_options.variable].disabledScenarios || []).includes(this.options.variables[this.options.variable].defaultConfig.rightScenario)) {
+            this._setOption('rightScenario', this.options.variables[this.options.variable].defaultConfig.rightScenario);
+          } else {
+            this._updateRightScenario();
+          }
+          this._updateLegend();
+          this._updateOverlay();
         }
-        // validate current scenario config and apply default configs as needed.
-        if ((this.options.variables[this.options.variable].disabledScenarios || []).includes(this.options.leftScenario) || (this.options.variables[old_options.variable].disabledScenarios || []).includes(this.options.variables[this.options.variable].defaultConfig.leftScenario)) {
-          this._setOption('leftScenario', this.options.variables[this.options.variable].defaultConfig.leftScenario);
-        } else {
-          this._updateLeftScenario();
-        }
-        if ((this.options.variables[this.options.variable].disabledScenarios || []).includes(this.options.rightScenario) || (this.options.variables[old_options.variable].disabledScenarios || []).includes(this.options.variables[this.options.variable].defaultConfig.rightScenario)) {
-          this._setOption('rightScenario', this.options.variables[this.options.variable].defaultConfig.rightScenario);
-        } else {
-          this._updateRightScenario();
-        }
-        this._updateLegend();
-        this._updateOverlay();
       }
       this._trigger('change', null, this.options);
       return this;

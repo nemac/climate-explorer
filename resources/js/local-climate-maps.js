@@ -10,9 +10,22 @@ $(function () {
   $('#default-city-county').text(window.ce.ce('getLocationPageState')['county']);
   $('#cards-search-input').val(window.ce.ce('getLocationPageState')['city']);
 
-  let mapcenter = window.ce.ce('getLocationPageState')['center'];
+  // let mapcenter = window.ce.ce('getLocationPageState')['center'];
   let mapExtent = window.ce.ce('getLocationPageState')['extent'];
   let mapZoom = window.ce.ce('getLocationPageState')['zoom'] || 9;
+  let lat = window.ce.ce('getLocationPageState')['lat'];
+  let lon = window.ce.ce('getLocationPageState')['lon'];
+  let variable = window.ce.ce('getLocationPageState')['id'] || 'tmax';
+
+  let mapcenter = [lon, lat];
+
+  const locationMapState = {
+      variable,
+      lat,
+      lon,
+      zoom: mapZoom,
+      center: mapcenter
+  };
 
   if (isNational()) {
     mapcenter = null;
@@ -89,7 +102,6 @@ $(function () {
       $(window.precipitationScenariosMap).scenarioComparisonMap({ season: targetval });
     }
   }
-
 
   // eanbles time annual, monlthly click events
   $('#time-wrapper').click( function(e) {
@@ -225,12 +237,21 @@ $(function () {
         }
 
       },
-      change: function change() {
+      change: function change(event) {
         window.precipitationScenariosMap.scenarioComparisonMap("getShowSeasonControls") ? $("#precipitation-map-season").show(200) : $("#precipitation-map-season").hide();
       }
     });
     window.precipitationScenariosMap.scenarioComparisonMap("getShowSeasonControls") ? $("#precipitation-map-season").show(200) : $("#precipitation-map-season").hide();
   }
+
+  window.stations = $('#temperature-map').scenarioComparisonMap(_extends({
+    // When state changes, just pass the current options along directly for this page.
+    // If we re-use the stationsMap widget on another page there may be more handling to do.
+    change: function change(event, options) {
+      window.ce.ce('setLocationPageState', options);
+    },
+  }, locationMapState ));
+
 
   function setMapSize() {
     $('#temperature-map').height($('#temperature-map').parent().height())
