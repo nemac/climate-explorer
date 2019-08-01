@@ -16,17 +16,17 @@ $(function () {
   let stationsMapState = window.ce.ce("getStationsMapState");
   const county =  window.ce.ce('getLocationPageState')['county']
   const city = window.ce.ce('getLocationPageState')['city']
-  const mapcenter = window.ce.ce('getLocationPageState')['center'];
-  const mapExtent = window.ce.ce('getLocationPageState')['extent'];
+  // const mapcenter = window.ce.ce('getLocationPageState')['center'];
+  // const mapExtent = window.ce.ce('getLocationPageState')['extent'];
   const zoom = window.ce.ce('getLocationPageState')['zoom'] || 9;
   const lat = window.ce.ce('getLocationPageState')['lat'];
   const lon = window.ce.ce('getLocationPageState')['lon'];
   const mode = stationsMapState['mode'];
-  const extent = stationsMapState['extent'];
+  // const extent = stationsMapState['extent'];
   const stationId = stationsMapState['stationId'];
   const stationName = stationsMapState['stationName'];
   const stationMOverMHHW = stationsMapState['stationMOverMHHW'];
-  const center = [lon, lat]
+  const center = [lat, lon]
 
   stationsMapState = {
     mode,

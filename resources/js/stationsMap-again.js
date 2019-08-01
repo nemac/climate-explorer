@@ -89,7 +89,7 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
       mode: 'daily_vs_climate', // 'daily_vs_climate','thresholds','high_tide_flooding'
       //extent provides the initial view area of the map.
       extent: null,
-      // defaultExtent: {xmin: -170, xmax: -70, ymin: 16, ymax: 67},
+      defaultExtent: {xmin: -170, xmax: -70, ymin: 16, ymax: 67},
       // constrainMapToExtent: {xmin: -180, xmax: -62, ymin: 10, ymax: 54},
       //zoom and center are ignored if extent is provided.
       zoom: 3,
@@ -224,16 +224,14 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
         this.options.extent = this.options.defaultExtent;
       }
       console.log('_initMap before this.view', this.view)
-      console.log('_initMap before this.options', this.options)
-      const mapCenter = this.options.lat && this.options.lon  ? [this.options.lon, this.options.lat] :  [-123, 42];
-      const mapZoom = this.options.zoom   ? this.options.zoom :  8;
-      console.log('_initMap before mapCenter', mapCenter)
+      console.log('_initMap before this.options lat lon', this.options.lat, this.options.lon)
+
       this.view = new this.dojoMods.MapView({
         container: this.nodes.mapContainer,
         map: this.map,
-        zoom: mapZoom,
+        zoom: this.options.zoom ? this.options.zoom : 9,
         // center: this.options.center ? this.options.center :  [-123, 42],
-        center: mapCenter,
+        center: this.options.lat && this.options.lon  ? [this.options.lat, this.options.lon] :  [-123, 42],
         // extent: this.options.extent ? this.dojoMods.webMercatorUtils.geographicToWebMercator(new this.dojoMods.Extent(this.options.extent)) : null,
         constraints: {
           rotationEnabled: false,
@@ -243,7 +241,10 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
         }
       });
 
-      // console.log('_initMap after this.view', this.view)
+      console.log('_initMap after this.view.center', this.options.lat && this.options.lon  ? [this.options.lat, this.options.lon] :  [-123, 42])
+      console.log('_initMap end')
+      console.log('')
+
       //
       // if (this.options.center) {
       //   const latlon = [this.options.center[0], this.options.center[1]]
@@ -276,31 +277,34 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
           //clamp center
           var x = Math.min(Math.max(this.view.extent.center.x, this.constrainMapToExtent.xmin), this.constrainMapToExtent.xmax);
           var y = Math.min(Math.max(this.view.extent.center.y, this.constrainMapToExtent.ymin), this.constrainMapToExtent.ymax);
-          console.log('dojoMods.watchUtils x y', [x, y]);
           this.view.center = new this.dojoMods.Point({ x: x, y: y, spatialReference: this.view.extent.spatialReference });
         }
       }.bind(this));
 
       // Watch view's stationary property
       this.dojoMods.watchUtils.whenTrue(this.view, "stationary", function () {
-        // Get the new extent of the view when view is stationary.
-        if (this.view.center) {
-          // const latlon = [this.options.center[0], this.options.center[1]]
-          const latlon =  this.dojoMods.webMercatorUtils.xyToLngLat(this.view.center.x, this.view.center.y);
+        // // Get the new extent of the view when view is stationary.
+        // console.log('dojoMods.watchUtils')
+        // // console.log('dojoMods.watchUtils with trigger options', this.options);
+        // console.log('dojoMods.watchUtils with trigger options latlong', this.options.lat, this.options.lon)
+        // // console.log('dojoMods.watchUtils with trigger view', this.view);
+        // console.log('dojoMods.watchUtils with trigger view latlong', this.view.center.x, this.view.center.y);
 
-
-          if (latlon[0] < 1) {
-            return null;
-          }
-          console.log('dojoMods.watchUtils')
-          console.log('dojoMods.watchUtils with trigger options', this.options);
-          console.log('dojoMods.watchUtils with trigger view', this.view);
-          // this.dojoMods.webMercatorUtils.xyToLngLat(this.view.center[0], this.view.center[1]);
-          console.log('dojoMods.watchUtils with trigger latlon', latlon);
-          this.options.lat = Math.round(latlon[0]*1000)/1000;
-          this.options.lon = Math.round(latlon[1]*1000)/1000;
-          this.options.center = [this.options.lon, this.options.lat]
-        }
+        // if (this.view.center) {
+        //   console.log('dojoMods.watchUtils this.view.center', this.view.center.x, this.view.center.y)
+        //   console.log('dojoMods.watchUtils this.options latlong', this.options.lat, this.options.lon)
+        //   // const latlon = [this.options.center[0], this.options.center[1]]
+        //   let latlon =  this.dojoMods.webMercatorUtils.xyToLngLat(this.options.lat, this.options.lon);
+        //   if (this.view.center.x > 1){
+        //     latlon =  this.dojoMods.webMercatorUtils.xyToLngLat(this.view.center.x, this.view.center.y);
+        //   }
+        //
+        //   // this.dojoMods.webMercatorUtils.xyToLngLat(this.view.center[0], this.view.center[1]);
+        //   console.log('dojoMods.watchUtils with trigger last latlon', latlon);
+        //   this.options.lat = Math.round(latlon[0]*1000)/1000;
+        //   this.options.lon = Math.round(latlon[1]*1000)/1000;
+        //   this.options.center = [this.options.lat, this.options.lon]
+        // }
         // } else {
         //   const latlon = this.dojoMods.webMercatorUtils.xyToLngLat(this.options.center[0], this.options.center[1]);
         //   console.log('dojoMods.watchUtils with trigger latlon', latlon);
@@ -363,8 +367,7 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
               }
           }
           if (this.view.zoom && this.view.zoom > 0) {
-            this.options.zoom = Math.round(this.view.zoom*100)/100;
-            console.log('dojoMods.watchUtils this.options.zoom', this.options.zoom);
+            this.options.zoom = Math.round(this.view.zoom*100)/100;;
           }
           this._trigger('change', null, this.options);
         }
