@@ -269,17 +269,17 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
         this.constrainMapToExtent = this.dojoMods.webMercatorUtils.geographicToWebMercator(new this.dojoMods.Extent(this.options.constrainMapToExtent));
       }
 
-      // Watch view's stationary property
-      this.dojoMods.watchUtils.whenTrue(this.view, "stationary", function () {
-        // Constrain map panning
-        if (this.view.extent !== undefined && this.view.extent !== null && this.constrainMapToExtent !== undefined && !this.constrainMapToExtent.contains(this.view.extent.center)) {
-          //clamp center
-          var x = Math.min(Math.max(this.view.extent.center.x, this.constrainMapToExtent.xmin), this.constrainMapToExtent.xmax);
-          var y = Math.min(Math.max(this.view.extent.center.y, this.constrainMapToExtent.ymin), this.constrainMapToExtent.ymax);
-          console.log('dojoMods.watchUtils x y', [x, y]);
-          this.view.center = new this.dojoMods.Point({ x: x, y: y, spatialReference: this.view.extent.spatialReference });
-        }
-      }.bind(this));
+      // // Watch view's stationary property
+      // this.dojoMods.watchUtils.whenTrue(this.view, "stationary", function () {
+      //   // Constrain map panning
+      //   if (this.view.extent !== undefined && this.view.extent !== null && this.constrainMapToExtent !== undefined && !this.constrainMapToExtent.contains(this.view.extent.center)) {
+      //     //clamp center
+      //     var x = Math.min(Math.max(this.view.extent.center.x, this.constrainMapToExtent.xmin), this.constrainMapToExtent.xmax);
+      //     var y = Math.min(Math.max(this.view.extent.center.y, this.constrainMapToExtent.ymin), this.constrainMapToExtent.ymax);
+      //     console.log('dojoMods.watchUtils x y', [x, y]);
+      //     this.view.center = new this.dojoMods.Point({ x: x, y: y, spatialReference: this.view.extent.spatialReference });
+      //   }
+      // }.bind(this));
 
       // Watch view's stationary property
       this.dojoMods.watchUtils.whenTrue(this.view, "stationary", function () {
@@ -288,18 +288,25 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
           // const latlon = [this.options.center[0], this.options.center[1]]
           const latlon =  this.dojoMods.webMercatorUtils.xyToLngLat(this.view.center.x, this.view.center.y);
 
-
-          if (latlon[0] < 1) {
+          if (latlon[0] <= 1 && latlon[0]  >= -1) {
+            console.log('between 1 and 01 ')
             return null;
           }
+
+          console.log('dojoMods.watchUtils', latlon[0])
+
+
+          // if (latlon[0] < 1 || latlon[0] > 1) {
+          //   return null;
+          // }
           console.log('dojoMods.watchUtils')
           console.log('dojoMods.watchUtils with trigger options', this.options);
           console.log('dojoMods.watchUtils with trigger view', this.view);
           // this.dojoMods.webMercatorUtils.xyToLngLat(this.view.center[0], this.view.center[1]);
           console.log('dojoMods.watchUtils with trigger latlon', latlon);
-          this.options.lat = Math.round(latlon[0]*1000)/1000;
-          this.options.lon = Math.round(latlon[1]*1000)/1000;
-          this.options.center = [this.options.lon, this.options.lat]
+          this.options.lat = Math.round(latlon[1]*1000)/1000;
+          this.options.lon = Math.round(latlon[0]*1000)/1000;
+          this.options.center = [this.options.lat, this.options.lon]
         }
         // } else {
         //   const latlon = this.dojoMods.webMercatorUtils.xyToLngLat(this.options.center[0], this.options.center[1]);
