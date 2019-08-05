@@ -1,28 +1,17 @@
 'use strict';
 
 $(function () {
-  var activeVariableTemperature = 'tmax';
-  var activeVariablePrecipitation = 'pcpn';
-  var activeVariableDerived = 'hdd';
 
   enableCustomSelect('chartmap-select');
   enableCustomSelect('stations-select');
 
-  // get city, state from state url
-  // $('#default-city-state').text(window.ce.ce('getLocationPageState')['city']);
-  // $('#default-city-county').text(window.ce.ce('getLocationPageState')['county']);
-  // $('#cards-search-input').val(window.ce.ce('getLocationPageState')['city']);
-
   let stationsMapState = window.ce.ce("getStationsMapState");
   const county =  window.ce.ce('getLocationPageState')['county']
   const city = window.ce.ce('getLocationPageState')['city']
-  // const mapcenter = window.ce.ce('getLocationPageState')['center'];
-  // const mapExtent = window.ce.ce('getLocationPageState')['extent'];
   const zoom = window.ce.ce('getLocationPageState')['zoom'] || 9;
   const lat = window.ce.ce('getLocationPageState')['lat'];
   const lon = window.ce.ce('getLocationPageState')['lon'];
   const mode = stationsMapState['mode'];
-  // const extent = stationsMapState['extent'];
   const stationId = stationsMapState['stationId'];
   const stationName = stationsMapState['stationName'];
   const stationMOverMHHW = stationsMapState['stationMOverMHHW'];
@@ -33,15 +22,13 @@ $(function () {
     stationId,
     stationName,
     stationMOverMHHW,
-    // extent,
-    // variable: 'variable',
     lat,
     lon,
     zoom,
     center
   };
 
-  // renove disable state of stations
+  // renmove disable state of stations
   const stationsSelectElem = $('#stations-select-vis');
   if ($(stationsSelectElem).hasClass('disabled')) {
     $(stationsSelectElem).removeClass('disabled');
@@ -70,10 +57,10 @@ $(function () {
 
     // toggle button visual state
     const selector = $("#chartmap-wrapper #btn-chart")
-    toggleAllButtonsOff(selector.get())
     toggleButton($('.btn-chart'));
 
     setTimeout(function () {
+      setMapSize();
       // $('#multi-chart').stationAnnualGraph.resize();
       // $('#multi-precip-chart').stationAnnualGraph.resize()
     }, 600);
@@ -100,15 +87,12 @@ $(function () {
         stationId,
         stationName,
         stationMOverMHHW,
-        // extent,
-        // variable: 'variable',
         lat,
         lon,
         zoom,
         center
       };
 
-      console.log(stationId, stationName)
       $('#stations-graph-wrap').empty()
 
       $('#stations-graph-wrap').append('<div id="multi-chart" class="left_chart d-flex-center width-50"></div>');
@@ -119,9 +103,9 @@ $(function () {
 
       // toggle button visual state
       const selector = $("#chartmap-wrapper #btn-chart")
-      toggleAllButtonsOff(selector.get())
+      // toggleAllButtonsOff(selector.get())
       toggleButton($('.btn-chart'));
-
+      setMapSize();
     }
   })
 
@@ -168,9 +152,8 @@ $(function () {
         default:
 
       }
-
-      // handleChartMapClick(target);
     }
+    setMapSize();
   })
 
   // in repsonsive mode the time is a pulldown this eanbles the change of the chart map
@@ -213,6 +196,7 @@ $(function () {
 
       }
     }
+    setMapSize();
   })
 
   // this function Updates the chart title.
@@ -266,9 +250,10 @@ $(function () {
     }
 
     setTimeout(function () {
-      $('#stations-map').height($('#stations-map').parent().height());
-      $('#multi-chart').stationAnnualGraph.resize();
-      $('#multi-precip-chart').stationAnnualGraph.resize()
+      // $('#stations-map').height($('#stations-map').parent().height());
+      // $('#multi-chart').stationAnnualGraph.resize();
+      // $('#multi-precip-chart').stationAnnualGraph.resize()
+      setMapSize();
     }, 600);
   })
 
@@ -285,10 +270,8 @@ $(function () {
     // show graph hide map
     // todo add this to puldown events also
     stationUpdated: function(event, options) {
-      console.log('stationupdated')
       const stationsGraphRowElem = document.getElementById('stations-graph-row');
       const stationsMapRowElem = document.getElementById('stations-map-row');
-      console.log('stationupdated2')
 
       if (stationsGraphRowElem) {
         stationsGraphRowElem.classList.remove('d-off');
@@ -300,36 +283,13 @@ $(function () {
         stationsMapRowElem.classList.remove('d-flex');
       }
 
-      console.log('stationupdated3')
-
-
-      // const innerText = target.html().trim();
-      // const val = target.attr('val');
-      // const selector = target.attr('sel');
-      //
-      // console.log('selector', selector)
-      //
-      //
-      // $(`#${selector}`).text(innerText);
-      // $(`#${selector}`).attr('rel', val);
-
-      // $('#stations-graph-wrap').empty()
-      //
-      // $('#stations-graph-wrap').append('<div id="multi-chart" class="left_chart d-flex-center width-50"></div>');
-      // $('#stations-graph-wrap').append('<div id="multi-precip-chart" class="left_chart d-flex-center width-50"></div>');
-      //
-      // $('#multi-chart').stationAnnualGraph({ variable: 'temperature', station: stationId, stationName:  stationName });
-      // $('#multi-precip-chart').stationAnnualGraph({ variable: 'precipitation', station:  stationId, stationName:  stationName });
 
       // toggle button visual state
       const selectorToggle = $("#chartmap-wrapper #btn-chart")
       // toggleAllButtonsOff(selector.get())
       toggleButton($('.btn-chart'));
 
-
-      console.log(stationId, stationName)
-      $('#stations-graph-wrap').empty()
-
+      $('#stations-graph-wrap').empty();
       $('#stations-graph-wrap').append('<div id="multi-chart" class="left_chart d-flex-center width-50"></div>');
       $('#stations-graph-wrap').append('<div id="multi-precip-chart" class="left_chart d-flex-center width-50"></div>');
 
@@ -344,15 +304,17 @@ $(function () {
   }, stationsMapState));
 
 
-  function resetGraphs(options) {
-    console.log('resetGraphs', options)
-    $('#stations-graph-wrap').empty()
+  function resetGraphs(stationId, stationName) {
+    // remove and reset old graphs
+    $('#stations-graph-wrap').empty();
 
+    // add new graph wrappers so they will initialize
     $('#stations-graph-wrap').append('<div id="multi-chart" class="left_chart d-flex-center width-50"></div>');
     $('#stations-graph-wrap').append('<div id="multi-precip-chart" class="left_chart d-flex-center width-50"></div>');
 
-    $('#multi-chart').stationAnnualGraph({ variable: 'temperature', station: options.stationId, stationName:  options.stationName });
-    $('#multi-precip-chart').stationAnnualGraph({ variable: 'precipitation', station:  options.stationId, stationName:  options.stationName });
+    // update graphs with new station id and station name
+    $('#multi-chart').stationAnnualGraph({ variable: 'temperature', station: stationId, stationName });
+    $('#multi-precip-chart').stationAnnualGraph({ variable: 'precipitation', station:  stationId, stationName });
   }
 
   // resize map when browser is resized
@@ -376,6 +338,21 @@ $(function () {
       document.querySelector('#stations-map').style.maxWidth = `${rect.width}px`;
       document.querySelector('#stations-map').style.height = `${rect.height}px`;
       document.querySelector('#stations-map').style.minWidth = `${rect.height}px`;
+    }
+
+    const graphRect = document.getElementById('stations-graph-wrap').getBoundingClientRect();
+    if (document.querySelector('#multi-chart')) {
+      document.querySelector('#multi-chart').style.minWidth = `${graphRect.width}px`;
+      document.querySelector('#multi-chart').style.maxWidth = `${graphRect.width}px`;
+      document.querySelector('#multi-chart').style.height = `${graphRect.height}px`;
+      document.querySelector('#multi-chart').style.minWidth = `${graphRect.height}px`;
+    }
+
+    if (document.querySelector('#multi-precip-chart')) {
+      document.querySelector('#multi-precip-chart').style.minWidth = `${graphRect.width}px`;
+      document.querySelector('#multi-precip-chart').style.maxWidth = `${graphRect.width}px`;
+      document.querySelector('#multi-precip-chart').style.height = `${graphRect.height}px`;
+      document.querySelector('#multi-precip-chart').style.minWidth = `${graphRect.height}px`;
     }
   }
 

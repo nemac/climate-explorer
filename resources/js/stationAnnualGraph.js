@@ -22,13 +22,10 @@ var _slicedToArray = function () { function sliceIterator(arr, i) { var _arr = [
     _create: function _create() {
       this.temperatureData = null;
       this.precipitationData = null;
-      console.log('_create', this)
-
       this._update();
     },
     _update: function _update() {
       var _this = this;
-      console.log('_update this.options', this.options)
       if (this.options.variable === 'temperature') {
         this.show_spinner();
         this.getTemperatureData().then(function () {
@@ -62,7 +59,6 @@ var _slicedToArray = function () { function sliceIterator(arr, i) { var _arr = [
 
       var id = this.options.station;
       var year = new Date().getFullYear();
-      console.log('getTemperatureData id', id, year, this.options.annualStationsDataURL )
       this.records = {
         'temp': {
           url: this.options.annualStationsDataURL,
@@ -94,7 +90,6 @@ var _slicedToArray = function () { function sliceIterator(arr, i) { var _arr = [
             record = _ref2[1];
 
         return new Promise(function (resolve) {
-          console.log('send', record.params)
           $.ajax({
             url: record.url,
             type: "POST",
@@ -103,7 +98,6 @@ var _slicedToArray = function () { function sliceIterator(arr, i) { var _arr = [
             data: JSON.stringify(record.params)
           }).done(function (data) {
             this.records[key].data = data.data;
-            console.log('done', data.data)
             resolve();
           }.bind(_this2));
         });
@@ -162,7 +156,6 @@ var _slicedToArray = function () { function sliceIterator(arr, i) { var _arr = [
     buildPrecipitationChart: function buildPrecipitationChart() {
       var precip = this.getPrecipitationValues();
       this.precipitationData = precip.data;
-      //console.log('precip', precip);
       var precipTmpl = this.getTemplate('precipitation', precip.data, precip.min, precip.max + 5, precip.endpor);
       $(this.element).multigraph({ 'muglString': precipTmpl });
       $(this.element).multigraph('done', function (m) {
@@ -378,7 +371,6 @@ var _slicedToArray = function () { function sliceIterator(arr, i) { var _arr = [
         return d;
       };
       endpor = addMonth(new Date(endpor.slice(0, 4), parseInt(endpor.slice(4, 6) - 1), endpor.slice(6, 8))).toISOString().slice(0, 10).replace(/-/g, '');
-      //console.log('values', values);
       var templates = {
         'temperature': '          \n          <mugl>\n            <plotarea margintop=\'18\'/>\n            <legend rows=\'1\' border=\'0\' opacity=\'0.0\' base=\'0 1\' anchor=\'0 1\' position=\'0 25\'>\n              <icon border=\'0\' width=\'30\' height=\'30\'/>\n            </legend>\n            <horizontalaxis id=\'date\' type=\'datetime\' min=\'' + (parseFloat(endpor.slice(0, 4)) - 2 + '0501') + '\' max=\'' + endpor + '\'>\n              <labels spacing=\'100Y 50Y 20Y 10Y 5Y 1Y 6M 3M 2M 1M 7D 1D\' format=\'%n %d%L%Y\'/>\n              <title/>\n              <grid/>\n              <binding id=\'time-binding\' min=\'19000101\' max=\'20000101\'/>\n            </horizontalaxis>\n            <verticalaxis id=\'temp\' min=\'' + ymin + '\' max=\'' + ymax + '\'>\n              <title anchor=\'0 -1\' angle=\'90\' position=\'-30 0\'>Degrees (F)</title>\n              <grid/>\n              <labels spacing=\'100 50 20 10 5 1 0.5 0.2 0.1\' format=\'%f\'/>\n              <pan min=\'' + (Math.floor(ymin) - 15) + '\' max=\'' + (Math.ceil(ymax) + 15) + '\'/>\n            </verticalaxis>\n            <plot>\n              <legend label=\'Normal Temperature Range\'/>\n              <horizontalaxis ref=\'date\'>\n                <variable ref=\'date\'/>\n              </horizontalaxis>\n              <verticalaxis ref=\'temp\'>\n                <variable ref=\'normal_mint\'/>\n                <variable ref=\'normal_maxt\'/>\n              </verticalaxis>\n              <renderer type=\'band\'>\n                <option name=\'fillcolor\' value=\'0xabdda4\'/>\n                <option name=\'linewidth\' value=\'0\'/>\n                <option name=\'linecolor\' value=\'0xabdda4\'/>\n              </renderer>\n            </plot>\n            <plot>\n              <legend label=\'Actual Temperature Range\'/>\n              <horizontalaxis ref=\'date\'>\n                <variable ref=\'date\'/>\n              </horizontalaxis>\n              <verticalaxis ref=\'temp\'>\n                <variable ref=\'mint\'/>\n                <variable ref=\'maxt\'/>\n              </verticalaxis>\n              <renderer type=\'rangebar\'>\n                <option name=\'fillcolor\' value=\'0x3288bd\'/>\n                <option name=\'barwidth\' value=\'20H\'/>\n                <option name=\'baroffset\' value=\'0.5\'/>\n                <option name=\'linecolor\' value=\'0x3288bd\'/>\n              </renderer>\n            </plot>\n            <data>\n              <variables missingvalue=\'-9000\' missingop=\'le\'>\n                <variable column=\'0\' id=\'date\' type=\'datetime\'/>\n                <variable column=\'1\' id=\'maxt\'/>\n                <variable column=\'2\' id=\'mint\'/>\n                <variable column=\'3\' id=\'normal_maxt\'/>\n                <variable column=\'4\' id=\'normal_mint\'/>\n              </variables>\n              <values>\n                ' + values + '\n              </values>\n            </data>\n          </mugl>',
         'precipitation': '          \n          <mugl>\n            <plotarea margintop=\'18\'/>\n            <legend rows=\'1\' border=\'0\' opacity=\'0.0\' base=\'0 1\' anchor=\'0 1\' position=\'0 25\'>\n              <icon border=\'0\' width=\'30\' height=\'30\'/>\n            </legend>\n            <horizontalaxis id=\'datetime\' type=\'datetime\' min=\'' + (parseFloat(endpor.slice(0, 4)) - 2) + '\' max=\'' + endpor + '\'>\n              <labels spacing=\'100Y 50Y 20Y 10Y 5Y 1Y 6M 3M 2M 1M 7D 1D\' format=\'%n %d%L%Y\'/>\n              <title/>\n              <grid/>\n              <binding id=\'time-binding\' min=\'19000101\' max=\'20000101\'/>\n            </horizontalaxis>\n            <verticalaxis id=\'precip\' min=\'' + ymin + '\' max=\'' + ymax + '\'>\n              <title anchor=\'0, -1\' angle=\'90\' position=\'-30, 0\'>Inches</title>\n              <grid/>\n              <labels spacing=\'100 50 20 10 5 1 0.5 0.2 0.1\' format=\'%f\'/>\n              <pan min=\'0\' max=\'' + (Math.round(ymax) + 10) + '\'/>\n              <zoom min=\'0\'/>\n            </verticalaxis>\n            <plot>\n              <legend label=\'Normal YTD Precipitation\'/>\n              <horizontalaxis ref=\'datetime\'>\n                <variable ref=\'datetime\'/>\n              </horizontalaxis>\n              <verticalaxis ref=\'precip\'>\n                <variable ref=\'precip_normal\'/>\n              </verticalaxis>\n              <legend label=\'annual\'/>\n              <renderer type=\'pointline\'>\n                <option name=\'linecolor\' value=\'#2c3e50\'/>\n                <option name=\'linewidth\' value=\'1.5\'/>\n              </renderer>\n            </plot>\n            <plot>\n              <legend label=\'YTD Precipitation\'/>\n              <horizontalaxis ref=\'datetime\'>\n                <variable ref=\'datetime\'/>\n              </horizontalaxis>\n              <verticalaxis ref=\'precip\'>\n                <variable ref=\'precip\'/>\n              </verticalaxis>\n              <legend visible=\'false\'/>\n              <renderer type=\'fill\'>\n                <option name=\'fillcolor\' value=\'0x3288bd\'/>\n                <option name=\'fillopacity\' value=\'0.5\'/>\n                <option name=\'linecolor\' value=\'0x3288bd\'/>\n              </renderer>\n              <datatips format=\'{0}: {1}\'>\n                <variable format=\'%n %y\'/>\n                <variable format=\'%1d\'/>\n              </datatips>\n            </plot>\n            <data>\n              <variables missingvalue=\'-9000\' missingop=\'le\'>\n                <variable column=\'0\' id=\'datetime\' type=\'datetime\'/>\n                <variable column=\'1\' id=\'precip\'/>\n                <variable column=\'2\' id=\'precip_normal\'/>\n              </variables>\n              <values>\n                ' + values + '\n              </values>\n            </data>\n          </mugl>'

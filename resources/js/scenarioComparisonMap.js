@@ -2142,7 +2142,7 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
       }
       // fill template variables and collapse empty '//' values (that aren't part of the 'https://') as s3 hates them.
       tilesURL = tilesURL.replace('{scenario}', scenario).replace('{season}', season).replace('{season_month}', season_month).replace('{variable}', variable).replace('{year}', year).replace(/\/\//g, (i => m => !i++ ? m : '/')(0));
-      console.log(tilesURL);
+      // console.log(tilesURL);
       return tilesURL
     },
     _destroy: function _destroy() {
