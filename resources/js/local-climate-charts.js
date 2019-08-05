@@ -1,9 +1,9 @@
 'use strict';
 
 $(function () {
-  var activeVariableTemperature = 'tmax';
-  var activeVariablePrecipitation = 'pcpn';
-  var activeVariableDerived = 'hdd';
+  // var activeVariableTemperature = 'tmax';
+  // var activeVariablePrecipitation = 'pcpn';
+  // var activeVariableDerived = 'hdd';
 
   // get city, state from state url
   $('#default-city-state').text(window.ce.ce('getLocationPageState')['city']);

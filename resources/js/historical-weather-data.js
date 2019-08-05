@@ -5,6 +5,11 @@ $(function () {
   enableCustomSelect('chartmap-select');
   enableCustomSelect('stations-select');
 
+  // get city, state from state url
+  $('#default-city-state').text(window.ce.ce('getLocationPageState')['city']);
+  $('#default-city-county').text(window.ce.ce('getLocationPageState')['county']);
+  $('#cards-search-input').val(window.ce.ce('getLocationPageState')['city']);
+
   let stationsMapState = window.ce.ce("getStationsMapState");
   const county =  window.ce.ce('getLocationPageState')['county']
   const city = window.ce.ce('getLocationPageState')['city']
@@ -19,6 +24,8 @@ $(function () {
 
   // initialize staion map state from url values
   stationsMapState = {
+    city,
+    county,
     mode,
     stationId,
     stationName,
@@ -33,8 +40,10 @@ $(function () {
 function updateStationSelectText(stations) {
   const stationsSelectElem = $('#stations-select-vis');
   if (stationsSelectElem) {
+    if ( stations.stationId !== undefined) {
       stationsSelectElem.attr('rel',`${stations.stationId},${stations.stationName}`);
       stationsSelectElem.text(`${stations.stationName} - (${stations.stationId})`);
+    }
   }
 }
 
@@ -140,6 +149,7 @@ if (stationId) {
       window.ce.ce('setStationsMapState', {stationId, stationName});
 
       stationsMapState = {
+        county,
         mode,
         stationId,
         stationName,

@@ -291,6 +291,7 @@ especially when it comes to interacting with the DOM and handling events.
     getStationsMapState: function getStationsMapState() {
       var state = this.getUrlParams({
         mode: 'mode',
+        county: 'county',
         variable: 'id',
         stationId: 'station',
         stationName: 'station-name',
@@ -310,6 +311,7 @@ especially when it comes to interacting with the DOM and handling events.
     },
     setStationsMapState: function setStationsMapState(state) {
       Object.keys(state).includes('variable') ? this.setUrlParam('id', state['variable']) : 'tmax';
+      Object.keys(state).includes('county') ? this.setUrlParam('county', state['county']) : null;
       Object.keys(state).includes('stationId') && state.stationId ? this.setUrlParam('station', state['stationId']) : this.removeUrlParam('station');
       Object.keys(state).includes('stationName') && state.stationName ? this.setUrlParam('station-name', state.stationName) : this.removeUrlParam('station-name');
       Object.keys(state).includes('stationMOverMHHW') && state.stationMOverMHHW ? this.setUrlParam('station-mhhw', state.stationMOverMHHW) : this.removeUrlParam('station-mhhw');
@@ -325,7 +327,7 @@ especially when it comes to interacting with the DOM and handling events.
         season: 'season',
         leftScenario: 'left',
         rightScenario: 'right',
-        // extent: 'extent',
+        county: 'county',
         lat: 'lat',
         lon: 'lon',
         zoom: 'zoom'
@@ -340,6 +342,7 @@ especially when it comes to interacting with the DOM and handling events.
     },
     setVariablesMapState: function setVariablesMapState(state) {
       Object.keys(state).includes('variable') ? this.setUrlParam('id', state['variable']) : null;
+      Object.keys(state).includes('county') ? this.setUrlParam('county', state['county']) : null;
       Object.keys(state).includes('season') ? this.setUrlParam('season', state['season']) : null;
       Object.keys(state).includes('leftScenario') ? this.setUrlParam('left', state['leftScenario']) : null;
       Object.keys(state).includes('leftYear') ? this.setUrlParam('leftyear', state['leftYear']) : null;

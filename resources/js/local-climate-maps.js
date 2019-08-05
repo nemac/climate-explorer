@@ -1,14 +1,15 @@
 'use strict';
 
 $(function () {
-  var activeVariableTemperature = 'tmax';
-  var activeVariablePrecipitation = 'pcpn';
-  var activeVariableDerived = 'hdd';
+  // var activeVariableTemperature = 'tmax';
+  // var activeVariablePrecipitation = 'pcpn';
+  // var activeVariableDerived = 'hdd';
 
   // get city, state from state url
   $('#default-city-state').text(window.ce.ce('getLocationPageState')['city']);
   $('#default-city-county').text(window.ce.ce('getLocationPageState')['county']);
   $('#cards-search-input').val(window.ce.ce('getLocationPageState')['city']);
+
 
   // let mapcenter = window.ce.ce('getLocationPageState')['center'];
   let mapExtent = window.ce.ce('getLocationPageState')['extent'];
@@ -16,15 +17,19 @@ $(function () {
   let lat = window.ce.ce('getLocationPageState')['lat'];
   let lon = window.ce.ce('getLocationPageState')['lon'];
   let variable = window.ce.ce('getLocationPageState')['id'] || 'tmax';
-
+  let city = window.ce.ce('getLocationPageState')['city'];
+  let county = window.ce.ce('getLocationPageState')['county'];
   let mapcenter = [lon, lat];
 
   const locationMapState = {
-      variable,
-      lat,
-      lon,
-      zoom: mapZoom,
-      center: mapcenter
+    city,
+    county,
+    variable,
+    lat,
+    lon,
+    zoom: mapZoom,
+    center: mapcenter,
+    id: variable
   };
 
   if (isNational()) {
