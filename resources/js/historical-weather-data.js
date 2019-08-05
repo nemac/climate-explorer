@@ -59,10 +59,14 @@ $(function () {
     const selector = $("#chartmap-wrapper #btn-chart")
     toggleButton($('.btn-chart'));
 
+    const stationsSelectElem = $('#stations-select-vis');
+    if (stationsSelectElem) {
+        stationsSelectElem.attr('rel',`${stationId},${stationName}`);
+        stationsSelectElem.text(`${stationName} - (${stationId})`);
+    }
+
     setTimeout(function () {
       setMapSize();
-      // $('#multi-chart').stationAnnualGraph.resize();
-      // $('#multi-precip-chart').stationAnnualGraph.resize()
     }, 600);
   }
 
@@ -250,9 +254,6 @@ $(function () {
     }
 
     setTimeout(function () {
-      // $('#stations-map').height($('#stations-map').parent().height());
-      // $('#multi-chart').stationAnnualGraph.resize();
-      // $('#multi-precip-chart').stationAnnualGraph.resize()
       setMapSize();
     }, 600);
   })
@@ -296,13 +297,17 @@ $(function () {
       $('#multi-chart').stationAnnualGraph({ variable: 'temperature', station: options.stationId, stationName:  options.stationName });
       $('#multi-precip-chart').stationAnnualGraph({ variable: 'precipitation', station:  options.stationId, stationName:  options.stationName });
 
+      const stationsSelectElem = $('#stations-select-vis');
+      if (stationsSelectElem) {
+          stationsSelectElem.attr('rel',`${options.stationId},${options.stationName}`);
+          stationsSelectElem.text(`${options.stationName} - (${options.stationId})`);
+      }
 
       // resetGraphs(options);
       window.ce.ce('setStationsMapState', options);
 
     }
   }, stationsMapState));
-
 
   function resetGraphs(stationId, stationName) {
     // remove and reset old graphs
