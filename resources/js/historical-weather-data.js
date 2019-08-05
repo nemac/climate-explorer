@@ -28,11 +28,8 @@ $(function () {
     center
   };
 
-  // renmove disable state of stations
-  const stationsSelectElem = $('#stations-select-vis');
-  if ($(stationsSelectElem).hasClass('disabled')) {
-    $(stationsSelectElem).removeClass('disabled');
-  }
+  // updates the visible text for the station pulldown with the information from the state url
+  updateStationSelectText({stationName, stationId})
 
   // if state url has a station render station and not map.
   if (stationId) {
@@ -59,11 +56,8 @@ $(function () {
     const selector = $("#chartmap-wrapper #btn-chart")
     toggleButton($('.btn-chart'));
 
-    const stationsSelectElem = $('#stations-select-vis');
-    if (stationsSelectElem) {
-        stationsSelectElem.attr('rel',`${stationId},${stationName}`);
-        stationsSelectElem.text(`${stationName} - (${stationId})`);
-    }
+    // updates the visible text for the station pulldown with the information from the state url
+    updateStationSelectText({from: 'start', stationName, stationId})
 
     setTimeout(function () {
       setMapSize();
@@ -96,6 +90,20 @@ $(function () {
         zoom,
         center
       };
+
+      const stationsGraphRowElem = document.getElementById('stations-graph-row');
+      const stationsMapRowElem = document.getElementById('stations-map-row');
+
+      if (stationsGraphRowElem) {
+        stationsGraphRowElem.classList.remove('d-off');
+        stationsGraphRowElem.classList.add('d-flex');
+      }
+
+      if (stationsMapRowElem) {
+        stationsMapRowElem.classList.add('d-off');
+        stationsMapRowElem.classList.remove('d-flex');
+      }
+
 
       $('#stations-graph-wrap').empty()
 
@@ -297,17 +305,23 @@ $(function () {
       $('#multi-chart').stationAnnualGraph({ variable: 'temperature', station: options.stationId, stationName:  options.stationName });
       $('#multi-precip-chart').stationAnnualGraph({ variable: 'precipitation', station:  options.stationId, stationName:  options.stationName });
 
-      const stationsSelectElem = $('#stations-select-vis');
-      if (stationsSelectElem) {
-          stationsSelectElem.attr('rel',`${options.stationId},${options.stationName}`);
-          stationsSelectElem.text(`${options.stationName} - (${options.stationId})`);
-      }
+      // updates the visible text for the station pulldown with the information from the state url
+      updateStationSelectText({stationName: options.stationName, stationId: options.stationId})
 
       // resetGraphs(options);
       window.ce.ce('setStationsMapState', options);
 
     }
   }, stationsMapState));
+
+  // updates the visible text for the station pulldown with the information from the state url
+  function updateStationSelectText(stations) {
+    const stationsSelectElem = $('#stations-select-vis');
+    if (stationsSelectElem) {
+        stationsSelectElem.attr('rel',`${stations.stationId},${stations.stationName}`);
+        stationsSelectElem.text(`${stations.stationName} - (${stations.stationId})`);
+    }
+  }
 
   function resetGraphs(stationId, stationName) {
     // remove and reset old graphs
