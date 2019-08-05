@@ -22,12 +22,13 @@ var _slicedToArray = function () { function sliceIterator(arr, i) { var _arr = [
     _create: function _create() {
       this.temperatureData = null;
       this.precipitationData = null;
+      console.log('_create', this)
 
       this._update();
     },
     _update: function _update() {
       var _this = this;
-
+      console.log('_update this.options', this.options)
       if (this.options.variable === 'temperature') {
         this.show_spinner();
         this.getTemperatureData().then(function () {
@@ -52,7 +53,8 @@ var _slicedToArray = function () { function sliceIterator(arr, i) { var _arr = [
     },
     _setOptions: function _setOptions(options) {
       this._super(options);
-      this.refresh();
+      this._update();
+      // this.refresh();
     },
 
     getTemperatureData: function getTemperatureData() {
@@ -60,6 +62,7 @@ var _slicedToArray = function () { function sliceIterator(arr, i) { var _arr = [
 
       var id = this.options.station;
       var year = new Date().getFullYear();
+      console.log('getTemperatureData id', id, year, this.options.annualStationsDataURL )
       this.records = {
         'temp': {
           url: this.options.annualStationsDataURL,
@@ -91,6 +94,7 @@ var _slicedToArray = function () { function sliceIterator(arr, i) { var _arr = [
             record = _ref2[1];
 
         return new Promise(function (resolve) {
+          console.log('send', record.params)
           $.ajax({
             url: record.url,
             type: "POST",
@@ -99,6 +103,7 @@ var _slicedToArray = function () { function sliceIterator(arr, i) { var _arr = [
             data: JSON.stringify(record.params)
           }).done(function (data) {
             this.records[key].data = data.data;
+            console.log('done', data.data)
             resolve();
           }.bind(_this2));
         });

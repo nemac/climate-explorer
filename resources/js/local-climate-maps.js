@@ -213,6 +213,7 @@ $(function () {
   $('#temperature-map').height($('#temperature-map').parent().height());
   if (typeof window.precipitationScenariosMap === 'undefined') {
     $('#temperature-map').spinner();
+    const variable = window.ce.ce('getVariablesPageState')['variable'] || 'tmax';
     window.precipitationScenariosMap = $('#temperature-map').scenarioComparisonMap({
       variable: 'tmax',
       extent: mapExtent,
@@ -227,7 +228,6 @@ $(function () {
         enableCustomSelect('leftScenario-select');
         enableCustomSelect('rightScenario-select');
 
-        const variable = window.ce.ce('getVariablesPageState')['variable'];
         if ( variable !== undefined) {
           const $styledSelect = $('.select.varriable-select div.select-styled');
           $(`[rel="${variable}"]`).click();

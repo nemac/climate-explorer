@@ -10,6 +10,7 @@ $(function () {
   $('#default-city-county').text(window.ce.ce('getLocationPageState')['county']);
   $('#cards-search-input').val(window.ce.ce('getLocationPageState')['city']);
 
+
   // enable custom selction boxes
   enableCustomSelect('download-select');
   enableCustomSelect('stations-select');

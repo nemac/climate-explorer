@@ -291,6 +291,7 @@ especially when it comes to interacting with the DOM and handling events.
     getStationsMapState: function getStationsMapState() {
       var state = this.getUrlParams({
         mode: 'mode',
+        variable: 'id',
         stationId: 'station',
         stationName: 'station-name',
         stationMOverMHHW: 'station-mhhw',
@@ -308,6 +309,7 @@ especially when it comes to interacting with the DOM and handling events.
       return state;
     },
     setStationsMapState: function setStationsMapState(state) {
+      Object.keys(state).includes('variable') ? this.setUrlParam('id', state['variable']) : 'tmax';
       Object.keys(state).includes('stationId') && state.stationId ? this.setUrlParam('station', state['stationId']) : this.removeUrlParam('station');
       Object.keys(state).includes('stationName') && state.stationName ? this.setUrlParam('station-name', state.stationName) : this.removeUrlParam('station-name');
       Object.keys(state).includes('stationMOverMHHW') && state.stationMOverMHHW ? this.setUrlParam('station-mhhw', state.stationMOverMHHW) : this.removeUrlParam('station-mhhw');

@@ -47,14 +47,47 @@ $(function () {
     $(stationsSelectElem).removeClass('disabled');
   }
 
+  // if state url has a station render station and not map.
+  if (stationId) {
+    const stationsGraphRowElem = document.getElementById('stations-graph-row');
+    const stationsMapRowElem = document.getElementById('stations-map-row');
+
+    if (stationsGraphRowElem) {
+      stationsGraphRowElem.classList.remove('d-off');
+      stationsGraphRowElem.classList.add('d-flex');
+    }
+
+    if (stationsMapRowElem) {
+      stationsMapRowElem.classList.add('d-off');
+      stationsMapRowElem.classList.remove('d-flex');
+    }
+
+    const options = {variable: 'temperature', station: stationId, stationName:  stationName }
+    // resetGraphs(options);
+
+    $('#multi-chart').stationAnnualGraph({ variable: 'temperature', station: stationId, stationName:  stationName });
+    $('#multi-precip-chart').stationAnnualGraph({ variable: 'precipitation', station:  stationId, stationName:  stationName });
+
+    // toggle button visual state
+    const selector = $("#chartmap-wrapper #btn-chart")
+    toggleAllButtonsOff(selector.get())
+    toggleButton($('.btn-chart'));
+
+    setTimeout(function () {
+      // $('#multi-chart').stationAnnualGraph.resize();
+      // $('#multi-precip-chart').stationAnnualGraph.resize()
+    }, 600);
+  }
+
   // in resposnive mode, event hanlder a for when season (time) varriable changes
   $('#stations-select-vis').bind('cs-changed', function(e) {
     const target = $(e.target);
     const notDisabled = !target.hasClass('disabled');
     if ( notDisabled ) {
       const val = $('#stations-select-vis').attr('rel').split(',');
-      const stationId = val[1];
-      const stationName = val[0];
+      const stationName = val[1];
+      const stationId = val[0];
+
 
       document.getElementById('station-info').classList.remove('d-none');
       updateStationIDText(`${stationId}`);
@@ -75,6 +108,20 @@ $(function () {
         center
       };
 
+      console.log(stationId, stationName)
+      $('#stations-graph-wrap').empty()
+
+      $('#stations-graph-wrap').append('<div id="multi-chart" class="left_chart d-flex-center width-50"></div>');
+      $('#stations-graph-wrap').append('<div id="multi-precip-chart" class="left_chart d-flex-center width-50"></div>');
+
+      $('#multi-chart').stationAnnualGraph({ variable: 'temperature', station: stationId, stationName:  stationName });
+      $('#multi-precip-chart').stationAnnualGraph({ variable: 'precipitation', station:  stationId, stationName:  stationName });
+
+      // toggle button visual state
+      const selector = $("#chartmap-wrapper #btn-chart")
+      toggleAllButtonsOff(selector.get())
+      toggleButton($('.btn-chart'));
+
     }
   })
 
@@ -91,6 +138,37 @@ $(function () {
       // change select pulldowns for resposnive mode
       setSelectFromButton(target);
 
+
+      const stationsGraphRowElem = document.getElementById('stations-graph-row');
+      const stationsMapRowElem = document.getElementById('stations-map-row');
+
+      switch (target.attr('val')) {
+        case 'chart':
+          if (stationsGraphRowElem) {
+            stationsGraphRowElem.classList.remove('d-off');
+            stationsGraphRowElem.classList.add('d-flex');
+          }
+
+          if (stationsMapRowElem) {
+            stationsMapRowElem.classList.add('d-off');
+            stationsMapRowElem.classList.remove('d-flex');
+          }
+          break;
+        case 'map':
+          if (stationsGraphRowElem) {
+            stationsGraphRowElem.classList.remove('d-flex');
+            stationsGraphRowElem.classList.add('d-off');
+          }
+
+          if (stationsMapRowElem) {
+            stationsMapRowElem.classList.add('d-flex');
+            stationsMapRowElem.classList.remove('d-off');
+          }
+          break
+        default:
+
+      }
+
       // handleChartMapClick(target);
     }
   })
@@ -105,7 +183,35 @@ $(function () {
       // toggle button visual state
       toggleButton($(`.btn-${$('#chartmap-select-vis').attr('rel')}`));
 
-      // handleChartMapClick(target);
+      const stationsGraphRowElem = document.getElementById('stations-graph-row');
+      const stationsMapRowElem = document.getElementById('stations-map-row');
+
+      switch (target.attr('val')) {
+        case 'chart':
+          if (stationsGraphRowElem) {
+            stationsGraphRowElem.classList.remove('d-off');
+            stationsGraphRowElem.classList.add('d-flex');
+          }
+
+          if (stationsMapRowElem) {
+            stationsMapRowElem.classList.add('d-off');
+            stationsMapRowElem.classList.remove('d-flex');
+          }
+          break;
+        case 'map':
+          if (stationsGraphRowElem) {
+            stationsGraphRowElem.classList.remove('d-flex');
+            stationsGraphRowElem.classList.add('d-off');
+          }
+
+          if (stationsMapRowElem) {
+            stationsMapRowElem.classList.add('d-flex');
+            stationsMapRowElem.classList.remove('d-off');
+          }
+          break
+        default:
+
+      }
     }
   })
 
@@ -161,6 +267,8 @@ $(function () {
 
     setTimeout(function () {
       $('#stations-map').height($('#stations-map').parent().height());
+      $('#multi-chart').stationAnnualGraph.resize();
+      $('#multi-precip-chart').stationAnnualGraph.resize()
     }, 600);
   })
 
@@ -177,53 +285,75 @@ $(function () {
     // show graph hide map
     // todo add this to puldown events also
     stationUpdated: function(event, options) {
-      // console.log('stationupdated')
+      console.log('stationupdated')
       const stationsGraphRowElem = document.getElementById('stations-graph-row');
       const stationsMapRowElem = document.getElementById('stations-map-row');
-      window.ce.ce('setStationsMapState', options);
-      console.log(options)
+      console.log('stationupdated2')
+
       if (stationsGraphRowElem) {
-        stationsGraphRowElem.classList.remove('d-none');
-        // stationsMapRowElem.classList.add('d-flex');
+        stationsGraphRowElem.classList.remove('d-off');
+        stationsGraphRowElem.classList.add('d-flex');
       }
 
       if (stationsMapRowElem) {
-        stationsMapRowElem.classList.add('d-none');
+        stationsMapRowElem.classList.add('d-off');
         stationsMapRowElem.classList.remove('d-flex');
       }
+
+      console.log('stationupdated3')
+
+
+      // const innerText = target.html().trim();
+      // const val = target.attr('val');
+      // const selector = target.attr('sel');
+      //
+      // console.log('selector', selector)
+      //
+      //
+      // $(`#${selector}`).text(innerText);
+      // $(`#${selector}`).attr('rel', val);
+
+      // $('#stations-graph-wrap').empty()
+      //
+      // $('#stations-graph-wrap').append('<div id="multi-chart" class="left_chart d-flex-center width-50"></div>');
+      // $('#stations-graph-wrap').append('<div id="multi-precip-chart" class="left_chart d-flex-center width-50"></div>');
+      //
+      // $('#multi-chart').stationAnnualGraph({ variable: 'temperature', station: stationId, stationName:  stationName });
+      // $('#multi-precip-chart').stationAnnualGraph({ variable: 'precipitation', station:  stationId, stationName:  stationName });
+
+      // toggle button visual state
+      const selectorToggle = $("#chartmap-wrapper #btn-chart")
+      // toggleAllButtonsOff(selector.get())
+      toggleButton($('.btn-chart'));
+
+
+      console.log(stationId, stationName)
+      $('#stations-graph-wrap').empty()
+
+      $('#stations-graph-wrap').append('<div id="multi-chart" class="left_chart d-flex-center width-50"></div>');
+      $('#stations-graph-wrap').append('<div id="multi-precip-chart" class="left_chart d-flex-center width-50"></div>');
 
       $('#multi-chart').stationAnnualGraph({ variable: 'temperature', station: options.stationId, stationName:  options.stationName });
       $('#multi-precip-chart').stationAnnualGraph({ variable: 'precipitation', station:  options.stationId, stationName:  options.stationName });
 
-      $('#multi-chart').stationAnnualGraph.resize();
-      $('#multi-precip-chart').stationAnnualGraph.resize();
+
+      // resetGraphs(options);
+      window.ce.ce('setStationsMapState', options);
+
     }
   }, stationsMapState));
 
-  if (stationId) {
-    console.log('stationId',stationId)
-    $('#multi-chart').stationAnnualGraph({ variable: 'temperature', station: stationId, stationName: stationName });
-    $('#multi-precip-chart').stationAnnualGraph({ variable: 'precipitation', station: stationId, stationName: stationName });
 
-    $('.download-temp-image').click(function (event) {
-      event.target.href = $("#multi-chart canvas")[0].toDataURL('image/png');
-      event.target.download = "daily_vs_climate_temp_" + stationId + ".png";
-    });
+  function resetGraphs(options) {
+    console.log('resetGraphs', options)
+    $('#stations-graph-wrap').empty()
 
-    $('.download-temp-data').click(function (event) {
-      $('#multi-chart').stationAnnualGraph('downloadTemperatureData', event.currentTarget);
-    });
+    $('#stations-graph-wrap').append('<div id="multi-chart" class="left_chart d-flex-center width-50"></div>');
+    $('#stations-graph-wrap').append('<div id="multi-precip-chart" class="left_chart d-flex-center width-50"></div>');
 
-    $('.download-precipitation-image').click(function (event) {
-      event.target.href = $("#multi-precip-chart canvas")[0].toDataURL('image/png');
-      event.target.download = "daily_vs_climate_precip_" + stationId + ".png";
-    });
-
-    $('.download-precipitation-data').click(function (event) {
-      $('#multi-precip-chart').stationAnnualGraph('downloadPrecipitationData', event.currentTarget);
-    });
+    $('#multi-chart').stationAnnualGraph({ variable: 'temperature', station: options.stationId, stationName:  options.stationName });
+    $('#multi-precip-chart').stationAnnualGraph({ variable: 'precipitation', station:  options.stationId, stationName:  options.stationName });
   }
-
 
   // resize map when browser is resized
   function setMapSize() {
@@ -254,4 +384,6 @@ $(function () {
   $(window).resize(function () {
     setMapSize();
   })
+
+
 });

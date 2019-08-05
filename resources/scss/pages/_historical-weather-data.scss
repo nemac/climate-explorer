@@ -4,6 +4,11 @@
 // NOTE most of the css will be found _local-climate-charts.scscc
 // only when we need to overide or add missing css will the css appear here
 
+.d-off {
+  position: absolute;
+  left: -1000000px;
+}
+
 #historical-weather-data-viewport {
   background-color: $white;
   height: calc(100% - 48px - 100px) !important;
@@ -112,27 +117,38 @@
 }
 
       .left_chart {
-          position: relative;
-          width: calc(50% - 40px);
-          margin: 0 20px;
-          float: left;
-          height: 40vh;
-          background-color: white;
+        // position: relative;
+        width: calc(50% - 40px);
+        // margin: 0 20px;
+        // float: left;
+        padding: $ce3-default-padding;
+        height: 100%;
+        background-color: white;
       }
 
       .right_chart {
-          position: relative;
-          width: calc(50% - 40px);
-          margin: 0 20px 0 20px;
-          float: left;
-          height: 40vh;
-          background-color: white;
+        // position: relative;
+        width: calc(50% - 40px);
+        // margin: 0 20px 0 20px;
+        // float: left;
+        padding: $ce3-default-padding;
+        height: 100%;
+        background-color: white;
       }
 
       #overlay-chart-container {
           margin: 25px;
           height: 50vh;
           width: calc(100% - 50px);
+      }
+
+      #stations-graph-wrap {
+        // margin: -$ce3-default-padding;
+        height: 100%;
+      }
+
+      #station-overlay {
+        height: 100%;
       }
 
 .text-info-box.label {
