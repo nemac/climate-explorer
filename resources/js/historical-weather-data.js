@@ -36,100 +36,137 @@ $(function () {
     center
   };
 
-// updates the visible text for the station pulldown with the information from the state url
-function updateStationSelectText(stations) {
-  const stationsSelectElem = $('#stations-select-vis');
-  if (stationsSelectElem) {
-    if ( stations.stationId !== undefined) {
-      stationsSelectElem.attr('rel',`${stations.stationId},${stations.stationName}`);
-      stationsSelectElem.text(`${stations.stationName} - (${stations.stationId})`);
+  // updates the visible text for the station pulldown with the information from the state url
+  function updateStationSelectText(stations) {
+    const stationsSelectElem = $('#stations-select-vis');
+    if (stationsSelectElem) {
+      if ( stations.stationId !== undefined) {
+        stationsSelectElem.attr('rel',`${stations.stationId},${stations.stationName}`);
+        stationsSelectElem.text(`${stations.stationName} - (${stations.stationId})`);
+      }
     }
   }
-}
 
-// the way graphs are handled and initialized require them to visible
-// so we move them off the screen.  this not ideal but we can move
-// trade them with the map when we the use needs them
-function resetGraphs(stations) {
-  // remove and reset old graphs
-  $('#stations-graph-wrap').empty();
+  // the way graphs are handled and initialized require them to visible
+  // so we move them off the screen.  this not ideal but we can move
+  // trade them with the map when we the use needs them
+  function resetGraphs(stations) {
+    // remove and reset old graphs
+    $('#stations-graph-wrap').empty();
 
-  // add new graph wrappers so they will initialize
-  $('#stations-graph-wrap').append('<div id="multi-chart" class="left_chart d-flex-center width-50"></div>');
-  $('#stations-graph-wrap').append('<div id="multi-precip-chart" class="left_chart d-flex-center width-50"></div>');
+    // add new graph wrappers so they will initialize
+    $('#stations-graph-wrap').append('<div id="multi-chart" class="left_chart d-flex-center width-50"></div>');
+    $('#stations-graph-wrap').append('<div id="multi-precip-chart" class="left_chart d-flex-center width-50"></div>');
 
-  // update graphs with new station id and station name
-  $('#multi-chart').stationAnnualGraph({ variable: 'temperature', station: stations.stationId, stationName: stations.stationName });
-  $('#multi-precip-chart').stationAnnualGraph({ variable: 'precipitation', station:  stations.stationId, stationName: stations.stationName });
-}
-
-
-// updates the visible text for the station pulldown with the information from the state url
-updateStationSelectText({stationName, stationId})
-
-// show graph overlay.
-// graph is visbile and on page just pushed of viewable area
-// so we can intialize it when needed
-function showGraphs() {
-  const stationsGraphRowElem = document.getElementById('stations-graph-row');
-  const stationsMapRowElem = document.getElementById('stations-map-row');
-
-  // unhide chart overlay
-  if (stationsGraphRowElem) {
-    stationsGraphRowElem.classList.remove('d-off');
-    stationsGraphRowElem.classList.add('d-flex');
+    // update graphs with new station id and station name
+    $('#multi-chart').stationAnnualGraph({ variable: 'temperature', station: stations.stationId, stationName: stations.stationName });
+    $('#multi-precip-chart').stationAnnualGraph({ variable: 'precipitation', station:  stations.stationId, stationName: stations.stationName });
   }
-
-  // hide chart overlay
-  if (stationsMapRowElem) {
-    stationsMapRowElem.classList.add('d-off');
-    stationsMapRowElem.classList.remove('d-flex');
-  }
-}
-
-// show map overlay.
-// map is visbile and on page just pushed of viewable area
-// so we can intialize it when needed
-function showMap() {
-  const stationsGraphRowElem = document.getElementById('stations-graph-row');
-  const stationsMapRowElem = document.getElementById('stations-map-row');
-
-  // unhide chart overlay
-  if (stationsGraphRowElem) {
-    stationsGraphRowElem.classList.remove('d-flex');
-    stationsGraphRowElem.classList.add('d-off');
-  }
-
-  // unhide map overlay
-  if (stationsMapRowElem) {
-    stationsMapRowElem.classList.add('d-flex');
-    stationsMapRowElem.classList.remove('d-off');
-  }
-}
-
-
-// if state url has a station render station and not map.
-if (stationId) {
-  // unhide chart overlay
-  showGraphs()
-
-  // reset graphs
-  resetGraphs({variable: 'temperature', stationId, stationName });;
-
-  // toggle button visual state
-  const selector = $("#chartmap-wrapper #btn-chart")
-  toggleButton($('.btn-chart'));
 
   // updates the visible text for the station pulldown with the information from the state url
   updateStationSelectText({stationName, stationId})
 
-  setTimeout(function () {
+  // show graph overlay.
+  // graph is visbile and on page just pushed of viewable area
+  // so we can intialize it when needed
+  function showGraphs() {
+    const stationsGraphRowElem = document.getElementById('stations-graph-row');
+    const stationsMapRowElem = document.getElementById('stations-map-row');
+
+    // unhide chart overlay
+    if (stationsGraphRowElem) {
+      stationsGraphRowElem.classList.remove('d-off');
+      stationsGraphRowElem.classList.add('d-flex');
+    }
+
+    // hide chart overlay
+    if (stationsMapRowElem) {
+      stationsMapRowElem.classList.add('d-off');
+      stationsMapRowElem.classList.remove('d-flex');
+    }
+  }
+
+  // show map overlay.
+  // map is visbile and on page just pushed of viewable area
+  // so we can intialize it when needed
+  function showMap() {
+    const stationsGraphRowElem = document.getElementById('stations-graph-row');
+    const stationsMapRowElem = document.getElementById('stations-map-row');
+
+    // unhide chart overlay
+    if (stationsGraphRowElem) {
+      stationsGraphRowElem.classList.remove('d-flex');
+      stationsGraphRowElem.classList.add('d-off');
+    }
+
+    // unhide map overlay
+    if (stationsMapRowElem) {
+      stationsMapRowElem.classList.add('d-flex');
+      stationsMapRowElem.classList.remove('d-off');
+    }
+  }
+
+  // reuturn attribute of html element based on rel for dropdown or val based on button
+  // we probably should switch all elements to val for consistency.
+  function RelorVal(target){
+    if (target.attr('val') === undefined || target.attr('val') === null) {
+      return target.attr('rel');
+    }
+    return  target.attr('val');
+  }
+
+  function chooseGraphOrMap(target){
+    // check val of button to see if user is on map  or chart
+    // hide or unhide the appropriate overlay (map, chart)
+    switch (RelorVal(target)) {
+      case 'chart':
+      // unhide chart overlay
+      showGraphs();
+      break;
+      case 'map':
+      // unhide map overlay
+      showMap();
+      break
+      default:
+      // unhide chart overlay
+      showGraphs();
+    }
+  }
+
+  // update chart pulldown to chart as default
+  function chartPulldownChartText(){
+    // updart pulldown default of chart
+    const chartMapElem = $('#chartmap-select-vis');
+    if (chartMapElem){
+      chartMapElem.attr('rel','chart');
+      chartMapElem.text('Chart');
+    }
+  }
+
+  // if state url has a station render station and not map.
+  if (stationId) {
+    // unhide chart overlay
+    showGraphs()
+
+    // reset graphs
+    resetGraphs({variable: 'temperature', stationId, stationName });;
+
+    // toggle button visual state
+    toggleButton($('.btn-chart'));
+
+    // update chart pulldown to chart as default
+    chartPulldownChartText()
+
+    // updates the visible text for the station pulldown with the information from the state url
+    updateStationSelectText({stationName, stationId})
+
+    setTimeout(function () {
     // reset map and chart sizes
     // filer transistion means heigh will be updates in few seconds
     // so delaying the resize ensures proper size
     setMapSize();
-  }, 600);
-}
+    }, 600);
+  }
 
   // in resposnive mode, event hanlder a for when season (time) varriable changes
   $('#stations-select-vis').bind('cs-changed', function(e) {
@@ -148,6 +185,7 @@ if (stationId) {
       // change map varriable
       window.ce.ce('setStationsMapState', {stationId, stationName});
 
+      // state url object
       stationsMapState = {
         county,
         mode,
@@ -189,18 +227,7 @@ if (stationId) {
 
       // check val of button to see if user is on map  or chart
       // hide or unhide the appropriate overlay (map, chart)
-      switch (target.attr('val')) {
-        case 'chart':
-          // unhide chart overlay
-          showGraphs();
-          break;
-        case 'map':
-          // unhide map overlay
-          showMap();
-          break
-        default:
-
-      }
+      chooseGraphOrMap(target)
     }
     // reset map and chart sizes
     setMapSize();
@@ -213,23 +240,15 @@ if (stationId) {
     if ( notDisabled ) {
       const val = $('#time-select-vis').attr('rel')
 
+      console.log('chartmap-select-vis', target);
+
       // toggle button visual state
       toggleButton($(`.btn-${$('#chartmap-select-vis').attr('rel')}`));
 
       // check val of button to see if user is on map  or chart
       // hide or unhide the appropriate overlay (map, chart)
-      switch (target.attr('val')) {
-        case 'chart':
-          // unhide chart overlay
-          showGraphs();
-          break;
-        case 'map':
-          // unhide map overlay
-          showMap();
-          break
-        default:
+      chooseGraphOrMap(target)
 
-      }
     }
     // reset map and chart sizes
     setMapSize();
@@ -293,7 +312,6 @@ if (stationId) {
     }, 600);
   })
 
-
   window.stations = $('#stations-map').stationsMap(_extends({
     // When state changes, just pass the current options along directly for this page.
     // If we re-use the stationsMap widget on another page there may be more handling to do.
@@ -309,11 +327,11 @@ if (stationId) {
       // unhide chart overlay
       showGraphs();
 
-      // toggle button visual state
-      const selectorToggle = $("#chartmap-wrapper #btn-chart")
-
       // toggle button to select chart
       toggleButton($('.btn-chart'));
+
+      // update chart pulldown to chart as default
+      chartPulldownChartText()
 
       // reset graphs
       resetGraphs({variable: 'temperature', stationId: options.stationId, stationName: options.stationName });;
@@ -323,6 +341,8 @@ if (stationId) {
 
       window.ce.ce('setStationsMapState', options);
 
+      // reset map and chart sizes
+      setMapSize();
     }
   }, stationsMapState));
 
@@ -355,7 +375,6 @@ if (stationId) {
       document.querySelector('#stations-map').style.height = `${rect.height}px`;
       document.querySelector('#stations-map').style.minWidth = `${rect.height}px`;
     }
-
 
     // get graph parent element - which provides the correct dimensions for the graph
     const graphRect = document.getElementById('stations-graph-wrap').getBoundingClientRect();

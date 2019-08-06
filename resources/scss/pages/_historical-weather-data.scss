@@ -29,6 +29,14 @@
   #stations-map-wrap {
     min-height: 150px !important
   }
+
+  #stations-select-wrapper {
+     display: flex !important;
+     @media screen and (max-width: 900px) {
+       width: 100% !important;
+       margin-top: 6px;
+     }
+   }
 }
 
 #stations-map-row {
@@ -117,20 +125,21 @@
 }
 
       .left_chart {
-        // position: relative;
         width: calc(50% - 40px);
-        // margin: 0 20px;
-        // float: left;
+        @media screen and (max-width: 900px) {
+          width: calc(100% - 40px);
+        }
         padding: $ce3-default-padding;
         height: 100%;
         background-color: white;
+
       }
 
       .right_chart {
-        // position: relative;
         width: calc(50% - 40px);
-        // margin: 0 20px 0 20px;
-        // float: left;
+        @media screen and (max-width: 900px) {
+          width: calc(100%);
+        }
         padding: $ce3-default-padding;
         height: 100%;
         background-color: white;
@@ -143,8 +152,29 @@
       }
 
       #stations-graph-wrap {
-        // margin: -$ce3-default-padding;
         height: 100%;
+        width: 80%;
+        @media screen and (max-width: 900px) {
+          min-height: 300px !important;
+          max-height: 300px !important;
+          height: 300px !important;
+        }
+      }
+
+      #stations-map-wrap {
+        height: 100%;
+        @media screen and (max-width: 900px) {
+          min-height: 350px !important;
+          max-height: 350px !important;
+          height: 350px !important;
+        }
+      }
+
+      #stations-map-row, #stations-graph-wrap {
+        align-self: center;
+        @media screen and (max-width: 768px) {
+          width: 90% !important;
+        }
       }
 
       #station-overlay {
