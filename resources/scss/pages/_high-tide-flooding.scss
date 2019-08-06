@@ -7,7 +7,7 @@
   left: -1000000px;
 }
 
-#historical-weather-data-viewport {
+#high-tide-flooding-viewport {
   background-color: $white;
   height: calc(100% - 48px - 100px) !important;
   min-height: calc(100% - 48px - 100px) !important;
@@ -39,6 +39,7 @@
    #chartmap-wrapper {
      width: 30% !important;
    }
+
 
    #stations-map-row {
      justify-content: space-evenly !important;
@@ -125,8 +126,8 @@
      }
    }
 
-         .left_chart {
-           width: calc(50% - 40px);
+         .tidal-chart {
+           width: calc(100% - 40px);
            @media screen and (max-width: 900px) {
              width: calc(100%);
            }
@@ -135,15 +136,6 @@
            padding-right: $ce3-padding-half;
          }
 
-         .right_chart {
-           width: calc(50% - 40px);
-           @media screen and (max-width: 900px) {
-             width: calc(100%);
-           }
-           height: 100%;
-           background-color: white;
-           padding-left: $ce3-padding-half;
-         }
 
          #overlay-chart-container {
            margin: 25px;

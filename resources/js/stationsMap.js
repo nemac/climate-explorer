@@ -543,11 +543,11 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
           type: "simple", // autocasts as new SimpleRenderer()
           symbol: {
             type: "simple-marker", // autocasts as new SimpleMarkerSymbol()
-            size: 7,
-            color: "#df3e2e",
+            size: 10,
+            color: "#124086",
             outline: {
-              color: '#ffffff',
-              width: 1
+              color: '#1D64DD',
+              width: 2
             }
           }
         }
@@ -596,11 +596,11 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
           type: "simple", // autocasts as new SimpleRenderer()
           symbol: {
             type: "simple-marker", // autocasts as new SimpleMarkerSymbol()
-            size: 7,
-            color: "#3e6ac1",
+            size: 10,
+            color: "#124086",
             outline: {
-              color: '#ffffff',
-              width: 1
+              color: '#1D64DD',
+              width: 2
             }
           }
         }
@@ -615,10 +615,17 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
               }
             });
             this.view.hitTest(event).then(function (response) {
+
+              if(response.results.length > 0){
+                // make pointer cursor - mouse IS over a station feature
+                document.getElementById('stations-map').style.cursor = "pointer";
+              } else {
+                // make default cursor - mouse IS NOT over station feature
+                document.getElementById('stations-map').style.cursor = "default";
+              }
               var station = response.results.filter(function (result) {
                 return result.graphic.layer === this.tidalStationsLayer;
               }.bind(this))[0].graphic;
-
               var refEl = $('circle:hover').first();
               if (!("stationTooltip" in refEl)) {
                 refEl.stationTooltip = new Tooltip(refEl, {
@@ -635,7 +642,8 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
               var station = response.results.filter(function (result) {
                 return result.graphic.layer === this.tidalStationsLayer;
               }.bind(this))[0].graphic;
-              this._setOptions({ stationName: station.attributes.name, stationId: station.attributes.id, stationMOverMHHW: station.attributes.mOverMHHW || null });
+              this._setOptions({ stationName: station.attributes.name, stationId: station.attributes.id });
+              this._trigger('stationUpdated', null, this.options);
             }.bind(this));
           }.bind(this));
         }.bind(this));
@@ -750,6 +758,8 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
           // all handled via html in template now
           break;
         case 'thresholds':
+        return null;
+        // all handled via html in template now
           $(this.nodes.stationOverlayContainer).append('\n            <div id="station-overlay">\n              <div id="station-overlay-close">x</div>\n              <div id="station-overlay-header">\n                <div class="accent-color tidal-header" style="margin-bottom: 20px;">\n                <span class="icon icon-district station-overlay-header-icon"></span>Weather Station Threshholds\n                <div class="thresholds-download-btns">\n                    <a href="javascript:void(0)" class="download-thresholds-image"><span class="icon icon-download-image"></span><span class="d-none-xs">Image</span></a> \n                    <a href="javascript:void(0)" class="download-thresholds-data"><span class="icon icon-download-chart"></span><span class="d-none-xs">Data</span></a>\n                    </div>\n                </div>\n                <h5>Name: ' + this.options.stationName + '</h5>\n                <h5>Station ID: ' + this.options.stationId + '</h5>\n              </div>\n              <div id="threshold_inputs">\n                <div class="field-pair field-var">\n                  <label for="itemvariable">Variable:</label>\n                  <div class="field">\n                    <select name="itemvariable" id="itemvariable">\n                      <option value="precipitation">Precipitation</option>\n                      <option value="tavg">Average Temperature</option>\n                      <option value="tmax">Maximum Temperature</option>\n                      <option value="tmin">Minimum Temperature</option>\n                    </select>\n                  </div>\n                </div>\n                <div class="field-pair field-threshold append">\n                  <label for="threshold">Threshold:</label>\n                  <div class="field">\n                    <input type="number" name="threshold" id="threshold" value="1" step="0.1"> <span class="append" id="item_inches_or_f">inches</span>\n                  </div>\n                </div>\n                <div class="field-pair field-window append">\n                  <label for="window">Window:</label>\n                  <div class="field">\n                    <input type="number" id="window" name="window" value="1"> <span class="append">days</span>\n                  </div>\n                </div>\n                \n              </div>\n              <div id="overlay-thresholds-container">\n                <div id="thresholds-container"></div>\n                <div class="station_overlay_text">\n                  <p>This graph shows how often the selected threshold has been exceeded per year. For consistency, this chart excludes any years that are missing more than five daily temperature reports or more than one precipitation report in a single month. Data from <a target="_blank" href="https://www.ncdc.noaa.gov/data-access/land-based-station-data/land-based-datasets/global-historical-climatology-network-ghcn">Global Historical Climatology Network</a>, served by <a  target="_blank" href="http://www.rcc-acis.org/">ACIS</a>.</p>\n                </div>\n              </div>\n            </div>\n            </div>');
 
           $("#thresholds-container").item({
@@ -837,6 +847,8 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
           // this.chart = new ChartBuilder({station: value}, this.options.thresholdStationsDataURL);
           break;
         case 'high_tide_flooding':
+        return null;
+        // all handled via html in template now
           $(this.nodes.stationOverlayContainer).append('\n              <div id="station-overlay">\n                <div id="station-overlay-close">x</div>\n                <div id="station-overlay-header">\n                  <div class="accent-color tidal-header" style="margin-bottom: 20px;">\n                    <span class="icon icon-district station-overlay-header-icon"></span>Tidal Station High-tide Flooding\n                    <span class="tidal-download-btns">\n                    <a href="javascript:void(0)" class="download-tidal-image"><span class="icon icon-download-image"></span><span class="d-none-xs">Image</span></a> \n                    <a href="https://tidesandcurrents.noaa.gov/publications/techrpt86_PaP_of_HTFlooding.csv" class="download-tidal-data"><span class="icon icon-download-chart"></span><span class="d-none-xs">Data</span></a>\n                    </span>\n                  </div>\n                  <h5>Name: <span class="station_name">' + this.options.stationName + '</span></h5>\n                  <h5>Station ID: <span class="station_id">' + this.options.stationId + '</span></h5>\n                  <h5>Local threshold: ' + (this.options.stationMOverMHHW ? this.options.stationMOverMHHW + "m over MHHW" : "") + '</h5>\n                  <button type="button" class="tidal-zoom-toggle-btn"><span class="glyphicon glyphicon-zoom-in" aria-hidden="true"></span> Historical</button>\n                </div>\n                <select name="" id="tidal_station" class="form-control" style="width: 200px;display:none">\n                  <option value="" disabled selected hidden>Station</option>\n                  <option value="8443970">Boston, MA</option>\n                  <option value="8454000">Providence, RI</option>\n                  <option value="8461490">New London, CT</option>\n                  <option value="8510560">Montauk, NY</option>\n                  <option value="8516945">Kings Point, NY</option>\n                  <option value="8518750">Battery, NY</option>\n                  <option value="8531680">Sandy Hook, NJ</option>\n                  <option value="8534720">Atlantic City, NJ</option>\n                  <option value="8545240">Philadelphia, PA</option>\n                  <option value="8557380">Lewes, DE</option>\n                  <option value="8574680">Baltimore, MD</option>\n                  <option value="8575512">Annapolis, MD</option>\n                  <option value="8594900">Washington D.C.</option>\n                  <option value="8638610">Sewells Point, VA</option>\n                  <option value="8658120">Wilmington, NC</option>\n                  <option value="8665530">Charleston, SC</option>\n                  <option value="8670870">Fort Pulaski, GA</option>\n                  <option value="8720030">Fernandina Beach, FL</option>\n                  <option value="8720218">Mayport, FL</option>\n                  <option value="8724580">Key West, FL</option>\n                  <option value="8726430">St Petersburg, FL</option>\n                  <option value="8771341">Galveston Bay, TX</option>\n                  <option value="8779770">Port Isabel, TX</option>\n                  <option value="9410230">La Jolla, CA</option>\n                  <option value="9414290">San Francisco, CA</option>\n                  <option value="9447130">Seattle, WA</option>\n                  <option value="1612340">Honolulu, HI</option>\n                </select>\n                <div id="overlay-chart-container">\n                  <div id="tidal-chart"></div>\n                  <div class="station_overlay_text">\n                    <p>Click \'Historical\' button to zoom in on or out from the observational period. Place your cursor over the curves on this graph for details. Gray bars from 1950 to 2016 show observed annual counts of high-tide flooding. Red and blue curves show the average number of high-tide flooding events projected for future years under two scenarios. Data from <a target="_blank" href="https://tidesandcurrents.noaa.gov/publications/techrpt86_PaP_of_HTFlooding.pdf">NOAA Technical Report NOS CO-OPS 086 - Patterns and Projections of High-tide Flooding</a>.</p>\n                  </div>\n                </div>\n              </div>');
 
           $("#tidal-chart").tidalstationwidget({

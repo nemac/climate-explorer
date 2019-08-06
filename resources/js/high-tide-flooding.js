@@ -17,7 +17,7 @@ $(function () {
   const zoom = window.ce.ce('getLocationPageState')['zoom'] || 9;
   const lat = window.ce.ce('getLocationPageState')['lat'];
   const lon = window.ce.ce('getLocationPageState')['lon'];
-  const mode = 'daily_vs_climate'  // stationsMapState['mode'];
+  const mode = 'high_tide_flooding' // stationsMapState['mode'];
   const stationId = stationsMapState['stationId'];
   const stationName = stationsMapState['stationName'];
   const stationMOverMHHW = stationsMapState['stationMOverMHHW'];
@@ -56,12 +56,12 @@ $(function () {
     $('#stations-graph-wrap').empty();
 
     // add new graph wrappers so they will initialize
-    $('#stations-graph-wrap').append('<div id="multi-chart" class="left_chart d-flex-center width-50"></div>');
-    $('#stations-graph-wrap').append('<div id="multi-precip-chart" class="left_chart d-flex-center width-50"></div>');
+    $('#stations-graph-wrap').append('<div id="tidal-chart" class="tidal-chart d-flex-center width-100"></div>');
+    // $('#stations-graph-wrap').append('<div id="multi-precip-chart" class="left_chart d-flex-center width-50"></div>');
 
     // update graphs with new station id and station name
-    $('#multi-chart').stationAnnualGraph({ variable: 'temperature', station: stations.stationId, stationName: stations.stationName });
-    $('#multi-precip-chart').stationAnnualGraph({ variable: 'precipitation', station:  stations.stationId, stationName: stations.stationName });
+    $('#stations-graph-wrap').stationAnnualGraph({ variable: 'temperature', station: stations.stationId, stationName: stations.stationName });
+    // $('#multi-precip-chart').stationAnnualGraph({ variable: 'precipitation', station:  stations.stationId, stationName: stations.stationName });
   }
 
   // updates the visible text for the station pulldown with the information from the state url
@@ -445,28 +445,15 @@ $(function () {
 
     // get graph parent element - which provides the correct dimensions for the graph
     const graphRect = document.getElementById('stations-graph-wrap').getBoundingClientRect();
-    let graphWidth = graphRect.width/2;
+    let graphWidth = graphRect.width;
 
-    // when smaller than 900 (full size)
-    // expand graphs to cover 100%
-    if (graphRect.width <= 882) {
-      graphWidth = graphRect.width;
-    }
 
-    // set size of temp chart
-    if (document.querySelector('#multi-chart')) {
-      document.querySelector('#multi-chart').style.minWidth = `${graphWidth}px`;
-      document.querySelector('#multi-chart').style.maxWidth = `${graphWidth}px`;
-      document.querySelector('#multi-chart').style.width = `${graphWidth}px`;
-      document.querySelector('#multi-chart').style.height = `${graphRect.height}px`;
-    }
-
-    // set size of precip chart
-    if (document.querySelector('#multi-precip-chart')) {
-      document.querySelector('#multi-precip-chart').style.minWidth = `${graphWidth}px`;
-      document.querySelector('#multi-precip-chart').style.maxWidth = `${graphWidth}px`;
-      document.querySelector('#multi-precip-chart').style.width = `${graphWidth}px`;
-      document.querySelector('#multi-precip-chart').style.height = `${graphRect.height}px`;
+    // set size of tidal-chart chart
+    if (document.querySelector('#tidal-chart')) {
+      document.querySelector('#tidal-chart').style.minWidth = `${graphWidth}px`;
+      document.querySelector('#tidal-chart').style.maxWidth = `${graphWidth}px`;
+      document.querySelector('#tidal-chart').style.width = `${graphWidth}px`;
+      document.querySelector('#tidal-chart').style.height = `${graphRect.height}px`;
     }
   }
 
