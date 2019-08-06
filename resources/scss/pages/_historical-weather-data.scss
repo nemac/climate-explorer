@@ -127,9 +127,8 @@
       .left_chart {
         width: calc(50% - 40px);
         @media screen and (max-width: 900px) {
-          width: calc(100% - 40px);
+          width: calc(100%);
         }
-        padding: $ce3-default-padding;
         height: 100%;
         background-color: white;
 
@@ -140,7 +139,6 @@
         @media screen and (max-width: 900px) {
           width: calc(100%);
         }
-        padding: $ce3-default-padding;
         height: 100%;
         background-color: white;
       }
@@ -170,7 +168,7 @@
         }
       }
 
-      #stations-map-row, #stations-graph-wrap {
+      #stations-map-row, #stations-graph-row {
         align-self: center;
         @media screen and (max-width: 768px) {
           width: 90% !important;

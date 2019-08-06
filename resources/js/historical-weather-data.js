@@ -372,27 +372,34 @@ $(function () {
     if (document.querySelector('#stations-map')) {
       document.querySelector('#stations-map').style.minWidth = `${rect.width}px`;
       document.querySelector('#stations-map').style.maxWidth = `${rect.width}px`;
+      document.querySelector('#stations-map').style.width = `${rect.width}px`;
       document.querySelector('#stations-map').style.height = `${rect.height}px`;
-      document.querySelector('#stations-map').style.minWidth = `${rect.height}px`;
     }
 
     // get graph parent element - which provides the correct dimensions for the graph
     const graphRect = document.getElementById('stations-graph-wrap').getBoundingClientRect();
+    let graphWidth = graphRect.width/2;
+
+    // when smaller than 900 (full size)
+    // expand graphs to cover 100%
+    if (graphRect.width <= 882) {
+      graphWidth = graphRect.width;
+    }
 
     // set size of temp chart
     if (document.querySelector('#multi-chart')) {
-      document.querySelector('#multi-chart').style.minWidth = `${graphRect.width}px`;
-      document.querySelector('#multi-chart').style.maxWidth = `${graphRect.width}px`;
+      document.querySelector('#multi-chart').style.minWidth = `${graphWidth}px`;
+      document.querySelector('#multi-chart').style.maxWidth = `${graphWidth}px`;
+      document.querySelector('#multi-chart').style.width = `${graphWidth}px`;
       document.querySelector('#multi-chart').style.height = `${graphRect.height}px`;
-      document.querySelector('#multi-chart').style.minWidth = `${graphRect.height}px`;
     }
 
     // set size of precip chart
     if (document.querySelector('#multi-precip-chart')) {
-      document.querySelector('#multi-precip-chart').style.minWidth = `${graphRect.width}px`;
-      document.querySelector('#multi-precip-chart').style.maxWidth = `${graphRect.width}px`;
+      document.querySelector('#multi-precip-chart').style.minWidth = `${graphWidth}px`;
+      document.querySelector('#multi-precip-chart').style.maxWidth = `${graphWidth}px`;
+      document.querySelector('#multi-precip-chart').style.width = `${graphWidth}px`;
       document.querySelector('#multi-precip-chart').style.height = `${graphRect.height}px`;
-      document.querySelector('#multi-precip-chart').style.minWidth = `${graphRect.height}px`;
     }
   }
 
