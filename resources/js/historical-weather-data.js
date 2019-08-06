@@ -188,7 +188,7 @@ $(function () {
     // updates the visible text for the station pulldown with the information from the state url
     updateStationSelectText({stationName, stationId})
 
-    toggleChartInfoText('map');
+    toggleChartInfoText('chart');
 
     toggleDownloads();
 
