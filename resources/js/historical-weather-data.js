@@ -139,7 +139,6 @@ $(function () {
     if ( ChartInfoTextElem ) {
       switch (val) {
         case 'chart':
-        console.log(ChartInfoTextElem.classList)
           // unhide chart text
           ChartInfoTextElem.setAttribute("style", 'display: flex;');
           break;
@@ -151,6 +150,13 @@ $(function () {
           // unhide chart text
           ChartInfoTextElem.setAttribute("style", 'display: flex;');
       }
+    }
+  }
+
+  function toggleDownloads() {
+    const target = $('#downnloads-select-vis');
+    if (target.hasClass('disabled')) {
+      target.removeClass('disabled');
     }
   }
 
@@ -182,6 +188,8 @@ $(function () {
     updateStationSelectText({stationName, stationId})
 
     toggleChartInfoText('map');
+
+    toggleDownloads();
 
     setTimeout(function () {
       // reset map and chart sizes
@@ -261,6 +269,8 @@ $(function () {
 
       toggleChartInfoText('chart');
 
+      toggleDownloads();
+
       // reset map and chart sizes
       setMapSize();
     }
@@ -295,8 +305,6 @@ $(function () {
     const notDisabled = !target.hasClass('disabled');
     if ( notDisabled ) {
       const val = $('#time-select-vis').attr('rel')
-
-      console.log('chartmap-select-vis', target);
 
       // toggle button visual state
       toggleButton($(`.btn-${$('#chartmap-select-vis').attr('rel')}`));
@@ -398,6 +406,8 @@ $(function () {
       window.ce.ce('setStationsMapState', options);
 
       toggleChartInfoText('chart');
+
+      toggleDownloads();
 
       // reset map and chart sizes
       setMapSize();

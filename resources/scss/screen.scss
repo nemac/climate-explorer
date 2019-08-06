@@ -245,7 +245,10 @@ h6 {
     color: $ce3-blue3 !important;
   }
   &.disabled {
-    color: $ce3-disabled-font !important
+    color: $ce3-disabled-font !important;
+    a {
+      color: $ce3-disabled-font !important;
+    }
   }
 
   &:after {
