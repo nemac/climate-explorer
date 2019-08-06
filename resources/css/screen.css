@@ -15476,47 +15476,52 @@ input.input-inner:focus {
   }
 }
 
-/* line 42, resources/scss/pages/_historical-weather-data.scss */
+/* line 41, resources/scss/pages/_historical-weather-data.scss */
+#historical-weather-data-viewport #chartmap-wrapper {
+  width: 50% !important;
+}
+
+/* line 46, resources/scss/pages/_historical-weather-data.scss */
 #stations-map-row {
   justify-content: space-evenly !important;
   height: 100% !important;
 }
 
-/* line 47, resources/scss/pages/_historical-weather-data.scss */
+/* line 51, resources/scss/pages/_historical-weather-data.scss */
 #stations-map-row.closed-filters .map-wrap {
   height: 86% !important;
 }
 
-/* line 52, resources/scss/pages/_historical-weather-data.scss */
+/* line 56, resources/scss/pages/_historical-weather-data.scss */
 #stations-map-row #stations-map {
   width: 100%;
   flex-wrap: wrap;
 }
 
-/* line 57, resources/scss/pages/_historical-weather-data.scss */
+/* line 61, resources/scss/pages/_historical-weather-data.scss */
 #stations-map-row .esri-view-user-storage {
   height: unset !important;
 }
 
-/* line 62, resources/scss/pages/_historical-weather-data.scss */
+/* line 66, resources/scss/pages/_historical-weather-data.scss */
 #stations-map-row #stations-map .movable.slider-div {
   top: 0px !important;
 }
 
 @media screen and (max-width: 1240px) {
-  /* line 42, resources/scss/pages/_historical-weather-data.scss */
+  /* line 46, resources/scss/pages/_historical-weather-data.scss */
   #stations-map-row {
     justify-content: center !important;
   }
 }
 
 @media screen and (max-width: 900px) {
-  /* line 42, resources/scss/pages/_historical-weather-data.scss */
+  /* line 46, resources/scss/pages/_historical-weather-data.scss */
   #stations-map-row {
     order: 1;
     padding-bottom: 250px !important;
   }
-  /* line 75, resources/scss/pages/_historical-weather-data.scss */
+  /* line 79, resources/scss/pages/_historical-weather-data.scss */
   #stations-map-row #stations-map {
     width: 100%;
     flex-wrap: wrap;
@@ -15524,30 +15529,30 @@ input.input-inner:focus {
     max-height: 350px !important;
     height: 350px !important;
   }
-  /* line 82, resources/scss/pages/_historical-weather-data.scss */
+  /* line 86, resources/scss/pages/_historical-weather-data.scss */
   #stations-map-row #stations-map .map-wrap {
     min-height: 350px !important;
     height: 350px !important;
   }
-  /* line 87, resources/scss/pages/_historical-weather-data.scss */
+  /* line 91, resources/scss/pages/_historical-weather-data.scss */
   #stations-map-row #stations-map .esri-view-root {
     flex: 0 0 100%;
     height: 100% !important;
     width: 100% !important;
   }
-  /* line 93, resources/scss/pages/_historical-weather-data.scss */
+  /* line 97, resources/scss/pages/_historical-weather-data.scss */
   #stations-map-row #stations-map .esri-overlay-surface {
     flex: 0 0 100%;
     height: 100% !important;
     width: 100% !important;
   }
-  /* line 99, resources/scss/pages/_historical-weather-data.scss */
+  /* line 103, resources/scss/pages/_historical-weather-data.scss */
   #stations-map-row #stations-map .esri-view-user-storage {
     overflow: visible !important;
     height: 100% !important;
     width: 100% !important;
   }
-  /* line 105, resources/scss/pages/_historical-weather-data.scss */
+  /* line 109, resources/scss/pages/_historical-weather-data.scss */
   #stations-map-row #stations-map .scenario-map-overlay-container {
     position: relative !important;
     top: 0px !important;
@@ -15559,19 +15564,19 @@ input.input-inner:focus {
 }
 
 @media screen and (max-width: 500px) {
-  /* line 42, resources/scss/pages/_historical-weather-data.scss */
+  /* line 46, resources/scss/pages/_historical-weather-data.scss */
   #stations-map-row {
     height: auto !important;
     order: 1;
   }
-  /* line 120, resources/scss/pages/_historical-weather-data.scss */
+  /* line 124, resources/scss/pages/_historical-weather-data.scss */
   #stations-map-row .map-wrap {
     min-height: 250px !important;
     height: 250px !important;
   }
 }
 
-/* line 127, resources/scss/pages/_historical-weather-data.scss */
+/* line 131, resources/scss/pages/_historical-weather-data.scss */
 .left_chart {
   width: calc(50% - 40px);
   height: 100%;
@@ -15579,13 +15584,13 @@ input.input-inner:focus {
 }
 
 @media screen and (max-width: 900px) {
-  /* line 127, resources/scss/pages/_historical-weather-data.scss */
+  /* line 131, resources/scss/pages/_historical-weather-data.scss */
   .left_chart {
     width: calc(100%);
   }
 }
 
-/* line 137, resources/scss/pages/_historical-weather-data.scss */
+/* line 141, resources/scss/pages/_historical-weather-data.scss */
 .right_chart {
   width: calc(50% - 40px);
   height: 100%;
@@ -15593,27 +15598,27 @@ input.input-inner:focus {
 }
 
 @media screen and (max-width: 900px) {
-  /* line 137, resources/scss/pages/_historical-weather-data.scss */
+  /* line 141, resources/scss/pages/_historical-weather-data.scss */
   .right_chart {
     width: calc(100%);
   }
 }
 
-/* line 146, resources/scss/pages/_historical-weather-data.scss */
+/* line 150, resources/scss/pages/_historical-weather-data.scss */
 #overlay-chart-container {
   margin: 25px;
   height: 50vh;
   width: calc(100% - 50px);
 }
 
-/* line 152, resources/scss/pages/_historical-weather-data.scss */
+/* line 156, resources/scss/pages/_historical-weather-data.scss */
 #stations-graph-wrap {
   height: 100%;
   width: 80%;
 }
 
 @media screen and (max-width: 900px) {
-  /* line 152, resources/scss/pages/_historical-weather-data.scss */
+  /* line 156, resources/scss/pages/_historical-weather-data.scss */
   #stations-graph-wrap {
     min-height: 300px !important;
     max-height: 300px !important;
@@ -15621,13 +15626,13 @@ input.input-inner:focus {
   }
 }
 
-/* line 162, resources/scss/pages/_historical-weather-data.scss */
+/* line 166, resources/scss/pages/_historical-weather-data.scss */
 #stations-map-wrap {
   height: 100%;
 }
 
 @media screen and (max-width: 900px) {
-  /* line 162, resources/scss/pages/_historical-weather-data.scss */
+  /* line 166, resources/scss/pages/_historical-weather-data.scss */
   #stations-map-wrap {
     min-height: 350px !important;
     max-height: 350px !important;
@@ -15635,71 +15640,71 @@ input.input-inner:focus {
   }
 }
 
-/* line 171, resources/scss/pages/_historical-weather-data.scss */
+/* line 175, resources/scss/pages/_historical-weather-data.scss */
 #stations-map-row, #stations-graph-row {
   align-self: center;
 }
 
 @media screen and (max-width: 768px) {
-  /* line 171, resources/scss/pages/_historical-weather-data.scss */
+  /* line 175, resources/scss/pages/_historical-weather-data.scss */
   #stations-map-row, #stations-graph-row {
     width: 90% !important;
   }
 }
 
-/* line 178, resources/scss/pages/_historical-weather-data.scss */
+/* line 182, resources/scss/pages/_historical-weather-data.scss */
 #station-overlay {
   height: 100%;
 }
 
-/* line 182, resources/scss/pages/_historical-weather-data.scss */
+/* line 186, resources/scss/pages/_historical-weather-data.scss */
 .text-info-box.label {
   font-weight: 500 !important;
 }
 
-/* line 186, resources/scss/pages/_historical-weather-data.scss */
+/* line 190, resources/scss/pages/_historical-weather-data.scss */
 .esri-expand__container {
   height: 32px;
   width: 32px;
 }
 
-/* line 191, resources/scss/pages/_historical-weather-data.scss */
+/* line 195, resources/scss/pages/_historical-weather-data.scss */
 .legend-image {
   max-height: 16rem;
   max-width: none;
 }
 
-/* line 196, resources/scss/pages/_historical-weather-data.scss */
+/* line 200, resources/scss/pages/_historical-weather-data.scss */
 .esri-ui-top-left .esri-expand__content, .esri-ui-top-right .esri-expand__content {
   top: -32px !important;
 }
 
-/* line 200, resources/scss/pages/_historical-weather-data.scss */
+/* line 204, resources/scss/pages/_historical-weather-data.scss */
 .esri-view-width-xsmall .esri-component.esri-expand.esri-widget.esri-expand--auto {
   display: none !important;
 }
 
-/* line 204, resources/scss/pages/_historical-weather-data.scss */
+/* line 208, resources/scss/pages/_historical-weather-data.scss */
 .esri-view-width-xsmall .esri-expand--auto .esri-expand__container--expanded {
   position: relative !important;
 }
 
-/* line 208, resources/scss/pages/_historical-weather-data.scss */
+/* line 212, resources/scss/pages/_historical-weather-data.scss */
 .esri-view-width-greater-than-xsmall .esri-expand--auto .esri-expand__content {
   position: relative !important;
 }
 
-/* line 212, resources/scss/pages/_historical-weather-data.scss */
+/* line 216, resources/scss/pages/_historical-weather-data.scss */
 .scenario-map-overlay-container {
   position: relative;
 }
 
-/* line 216, resources/scss/pages/_historical-weather-data.scss */
+/* line 220, resources/scss/pages/_historical-weather-data.scss */
 .esri-view {
   padding: 12px;
 }
 
-/* line 220, resources/scss/pages/_historical-weather-data.scss */
+/* line 224, resources/scss/pages/_historical-weather-data.scss */
 .esri-view-surface {
   -webkit-border-radius: 5px;
   -moz-border-radius: 5px;
