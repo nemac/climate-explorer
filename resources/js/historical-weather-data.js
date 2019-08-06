@@ -4,6 +4,7 @@ $(function () {
 
   enableCustomSelect('chartmap-select');
   enableCustomSelect('stations-select');
+  enableCustomSelect('download-select');
 
   // get city, state from state url
   $('#default-city-state').text(window.ce.ce('getLocationPageState')['city']);
@@ -120,16 +121,36 @@ $(function () {
     // hide or unhide the appropriate overlay (map, chart)
     switch (RelorVal(target)) {
       case 'chart':
-      // unhide chart overlay
-      showGraphs();
-      break;
+        // unhide chart overlay
+        showGraphs();
+        break;
       case 'map':
-      // unhide map overlay
-      showMap();
+        // unhide map overlay
+        showMap();
       break
       default:
-      // unhide chart overlay
-      showGraphs();
+        // unhide chart overlay
+        showGraphs();
+    }
+  }
+
+  function toggleChartInfoText(val) {
+    const ChartInfoTextElem = document.getElementById('station-info-row');
+    if ( ChartInfoTextElem ) {
+      switch (val) {
+        case 'chart':
+        console.log(ChartInfoTextElem.classList)
+          // unhide chart text
+          ChartInfoTextElem.setAttribute("style", 'display: flex;');
+          break;
+        case 'map':
+          // unhide map overlay
+          ChartInfoTextElem.setAttribute("style", 'display: none !important;');
+          break
+        default:
+          // unhide chart text
+          ChartInfoTextElem.setAttribute("style", 'display: flex;');
+      }
     }
   }
 
@@ -167,6 +188,31 @@ $(function () {
     setMapSize();
     }, 600);
   }
+
+  // function to enable downloads (images and data)
+  $('.download-select li a').click( function (e) {
+    const downloadAction = $(this).attr('rel');
+
+    // capture what we are downloading
+    switch (downloadAction) {
+      case 'download-precipitation-image': // download image
+        event.target.href = $("#multi-precip-chart canvas")[0].toDataURL('image/png');
+        event.target.download = "daily_vs_climate_precip_" + stationId + ".png";
+        break;
+      case 'download-precipitation-data':
+        $('#multi-chart').stationAnnualGraph('downloadPrecipitationData', event.currentTarget);
+        break;
+      case 'download-temperature-image': // download image
+        event.target.href = $("#multi-chart canvas")[0].toDataURL('image/png');
+        event.target.download = "daily_vs_climate_precip_" + stationId + ".png";
+        break;
+      case 'download-temperature-image':
+        $('#multi-chart').stationAnnualGraph('downloadTemperatureData', event.currentTarget);
+        break;
+      default:
+        $('#multi-chart').stationAnnualGraph('downloadTemperatureData', event.currentTarget);
+    }
+  });
 
   // in resposnive mode, event hanlder a for when season (time) varriable changes
   $('#stations-select-vis').bind('cs-changed', function(e) {
@@ -207,6 +253,8 @@ $(function () {
       // toggle button visual state
       toggleButton($('.btn-chart'));
 
+      toggleChartInfoText('chart');
+      
       // reset map and chart sizes
       setMapSize();
     }
@@ -227,8 +275,10 @@ $(function () {
 
       // check val of button to see if user is on map  or chart
       // hide or unhide the appropriate overlay (map, chart)
-      chooseGraphOrMap(target)
+      chooseGraphOrMap(target);
+      toggleChartInfoText(RelorVal(target));
     }
+
     // reset map and chart sizes
     setMapSize();
   })
@@ -247,8 +297,8 @@ $(function () {
 
       // check val of button to see if user is on map  or chart
       // hide or unhide the appropriate overlay (map, chart)
-      chooseGraphOrMap(target)
-
+      chooseGraphOrMap(target);
+      toggleChartInfoText(RelorVal(target));
     }
     // reset map and chart sizes
     setMapSize();
@@ -341,12 +391,12 @@ $(function () {
 
       window.ce.ce('setStationsMapState', options);
 
+      toggleChartInfoText('chart');
+
       // reset map and chart sizes
       setMapSize();
     }
   }, stationsMapState));
-
-
 
   // resize map when browser is resized
   function setMapSize() {

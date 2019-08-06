@@ -39,7 +39,7 @@
    }
 
    #chartmap-wrapper {
-     width: 50% !important;
+     width: 30% !important;
    }
 }
 
@@ -135,7 +135,7 @@
         }
         height: 100%;
         background-color: white;
-
+        padding-right: $ce3-padding-half;
       }
 
       .right_chart {
@@ -145,12 +145,13 @@
         }
         height: 100%;
         background-color: white;
+        padding-left: $ce3-padding-half;
       }
 
       #overlay-chart-container {
-          margin: 25px;
-          height: 50vh;
-          width: calc(100% - 50px);
+        margin: 25px;
+        height: 50vh;
+        width: calc(100% - 50px);
       }
 
       #stations-graph-wrap {
@@ -172,7 +173,7 @@
         }
       }
 
-      #stations-map-row, #stations-graph-row {
+      #stations-map-row, #stations-graph-row, #station-info-row {
         align-self: center;
         @media screen and (max-width: 768px) {
           width: 90% !important;

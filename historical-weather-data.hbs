@@ -14,16 +14,6 @@
 
   {{> secondary_header }}
 
-  <!-- <div id="main-content-wrap">
-
-  {{> share }}
-
-  <div id="location-search">
-  <input type="text" class="autocomplete location-mapper" autocomplete="off" placeholder="Search another City, County or Zip code">
-</div>
-
-</div> -->
-
 <div id="historical-weather-data-viewport" class="padding-horrizontal d-flex d-flex-column">
 
   <div id="search-row" class="padding-horizontal d-flex-row flex-justify padding-top padding-bottom-half d-flex-justify" >
@@ -55,21 +45,25 @@
           <li icon="fas fa-download select-icon"  class="default-select-option">
             <a rel="none" href="javascript:void(0);" >Downloads</a>
           </li>
+          <div icon="fas fa-temperature-high select-icon" class="default-select-option-group">
+            <i class="fas fa-temperature-high select-icon"></i>Temperature
+          </div>
+          <li rel="download-temperature-image" icon="fas fa-download select-icon" href="javascript:void(0);" class="default-select-option">
+            <a rel="download-temperature-image" href="javascript:void(0);" >Download temperature image</a>
+          </li>
+          <li rel="download-temperature-data" icon="fas fa-download select-icon" href="javascript:void(0);" class="default-select-option">
+            <a rel="download-temperature-data" href="javascript:void(0);" >Download temperature data</a>
+          </li>
+          <div icon="fas fa-cloud-rain select-icon" class="default-select-option-group">
+            <i class="fas fa-cloud-rain select-icon"></i>Precipitation
+          </div>
           <li rel="download-image" icon="fas fa-download select-icon" href="javascript:void(0);" class="default-select-option">
-            <a rel="download-image" href="javascript:void(0);" >Download image</a>
+            <a rel="download-precipitation-image" href="javascript:void(0);" >Download precipitation image</a>
           </li>
-          <li rel="download-observed-data" icon="fas fa-download select-icon" href="javascript:void(0);" class="default-select-option">
-            <a rel="download-observed-data" href="javascript:void(0);" >Download Observed Data</a>
+          <li rel="download-precipitation-observed-data" icon="fas fa-download select-icon" href="javascript:void(0);" class="default-select-option">
+            <a rel="download-precipitation-data" href="javascript:void(0);" >Download precipitation data</a>
           </li>
-          <li rel="download-historical-modeled-data" icon="fas fa-download select-icon" href="javascript:void(0);" class="default-select-option">
-            <a rel="download-historical-modeled-data" href="javascript:void(0);" >Download Historical Modeled Data</a>
-          </li>
-          <li rel="download-projected-modeled-data" icon="fas fa-download select-icon" href="javascript:void(0);" class="default-select-option">
-            <a rel="download-projected-modeled-data" href="javascript:void(0);" >Projected Modeled Data</a>
-          </li>
-          <li rel="download-interpreting" icon="fas fa-download select-icon" class="default-select-option">
-            <a rel="download-interpreting" href="/resources/data/Key-to-Climate-Explorer-Download-Filenames-and-Column-Headings.xlsx" >Information for Interpreting Data</a>
-          </li>
+
         </ul>
       </div>
     </div>
@@ -136,7 +130,7 @@
     </div>
   </div>
 
-  <div id="stations-map-row" class="padding-horizontal padding-top-half width-100 height-100 d-flex" >
+  <div id="stations-map-row" class="padding-horrizontal padding-top-half width-100 height-100 d-flex" >
 
     <div id="stations-map-wrap" class="map-wrap width-100 height-100 ">
       <!-- <div id="chart-123" class="chart-canvas width-100 height-100" data-chart-ID="123"></div> -->
@@ -145,50 +139,26 @@
 
   </div>
 
-  <div id="stations-graph-row" class="padding-horizontal padding-top-half width-100 height-100" >
-
+  <div id="stations-graph-row" class="padding-vertical width-100 height-100" >
     <div id="stations-graph-wrap" class="width-100 height-100 d-flex-row">
-      <!-- <div id="station-overlay"> -->
-        <!-- <div id="station-overlay-close">x</div> -->
-        <!-- <div id="station-overlay-header">
-          <div class="accent-color tidal-header">
-            <span class="icon icon-district station-overlay-header-icon"></span>Weather Station Daily vs. Climate
-          </div>
-          <h5>Name: ' + this.options.stationName + '</h5>
-          <h5>Station ID: ' + this.options.stationId + '</h5>
-        </div> -->
         <div id="multi-chart" class="left_chart d-flex-center width-50"></div>
-        <!--only shows here if on xs screens-->
-        <!-- <div class="temp-download-btns d-xs-only">
-          <a href="javascript:void(0)" class="download-temp-image"><span class="icon icon-download-image"></span> Image</a>
-          <a href="javascript:void(0)" class="download-temp-data"><span class="icon icon-download-chart"></span> Data</a>
-        </div> -->
         <div id="multi-precip-chart" class="right_chart d-flex-center width-50"></div>
-        <!-- <div class="precip-download-btns d-xs-only">
-          <a href="javascript:void(0)" class="download-precipitation-image"><span class="icon icon-download-image"></span> Image</a>
-          <a href="javascript:void(0)" class="download-precipitation-data"><span class="icon icon-download-chart"></span> Data</a>
-        </div> -->
-        <!--end-->
-        <!-- <div style="clear:both"></div>
-        <div class="temp-download-btns d-none-xs">
-          <a href="javascript:void(0)" class="download-temp-image"><span class="icon icon-download-image"></span> Image</a>
-          <a href="javascript:void(0)" class="download-temp-data"><span class="icon icon-download-chart"></span> Data</a>
-        </div>
-        <div class="precip-download-btns d-none-xs">
-          <a href="javascript:void(0)" class="download-precipitation-image"><span class="icon icon-download-image"></span> Image</a>
-          <a href="javascript:void(0)" class="download-precipitation-data"><span class="icon icon-download-chart"></span> Data</a>
-        </div> -->
-        <!-- <div id="overlay-chart-container">
-          <div class="station_overlay_text">
-            <p class="text-bold">Pan or zoom on these graphs to view other years. Place your cursor on either axis and then scroll, click-and-drag, or hold down your SHIFT key and scroll to adjust the display.</p>
-            <p>Blue bars on temperature graphs indicate the range of observed temperatures for each day; the green band shows Climate Normals for temperature\u2014the average temperature range at that station from 1981-2010. Blue areas on precipitation graphs track year-to-date cumulative precipitation; the black line shows Climate Normals for precipitation. Data from <a target="_blank" href="https://www.ncdc.noaa.gov/data-access/land-based-station-data/land-based-datasets/global-historical-climatology-network-ghcn">Global Historical Climatology Network-Daily dataset</a>, served by  <a target="_blank"  href="http://www.rcc-acis.org/">ACIS</a>.</p>
-          </div>
-        </div> -->
-      <!-- </div> -->
-
     </div>
-
   </div>
+
+  <div id="station-info-row" class="d-flex-row flex-justify padding-horrizontal padding-bottom d-flex-left d-none" >
+    <span class="padding-bottom-half" >Pan or zoom on these graphs to view other years. Place your cursor on either axis and then scroll, click-and-drag,
+      or hold down your SHIFT key and scroll to adjust the display.
+    </span>
+    <span class="padding-top-half" >Blue bars on temperature graphs indicate the range of observed temperatures for each day; the green band shows Climate Normals
+      for temperature&mdash;the average temperature range at that station from 1981-2010. Blue areas on precipitation graphs
+      track year-to-date cumulative precipitation; the black line shows Climate Normals for precipitation.
+      Data from <a target="_blank" href="https://www.ncdc.noaa.gov/data-access/land-based-station-data/land-based-datasets/global-historical-climatology-network-ghcn">
+        Global Historical Climatology Network-Daily dataset</a>,
+      served by  <a target="_blank"  href="http://www.rcc-acis.org/">ACIS</a>.
+    </span>
+  </div>
+
 
 </div>
 <!-- </div> -->

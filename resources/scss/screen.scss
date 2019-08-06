@@ -472,6 +472,15 @@ h6 {
   }
 }
 
+.padding-vertical {
+  padding-top: $ce3-default-horizontal-padding !important;
+  padding-bottom: $ce3-default-horizontal-padding !important;
+  @media screen and (max-width: 900px) {
+    padding-top: $ce3-default-horizontal-padding/2 !important;
+    padding-bottom: $ce3-default-horizontal-padding/2 !important;
+  }
+}
+
 .padding-horrizontal-half {
   padding-left: $ce3-padding-half !important;
   padding-right: $ce3-padding-half !important;
