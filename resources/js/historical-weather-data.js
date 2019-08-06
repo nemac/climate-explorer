@@ -181,12 +181,18 @@ $(function () {
     // updates the visible text for the station pulldown with the information from the state url
     updateStationSelectText({stationName, stationId})
 
+    toggleChartInfoText('map');
+
     setTimeout(function () {
-    // reset map and chart sizes
-    // filer transistion means heigh will be updates in few seconds
-    // so delaying the resize ensures proper size
-    setMapSize();
+      // reset map and chart sizes
+      // filer transistion means heigh will be updates in few seconds
+      // so delaying the resize ensures proper size
+      setMapSize();
     }, 600);
+  } else {
+    showMap();
+    toggleChartInfoText('map');
+    setMapSize();
   }
 
   // function to enable downloads (images and data)
@@ -254,7 +260,7 @@ $(function () {
       toggleButton($('.btn-chart'));
 
       toggleChartInfoText('chart');
-      
+
       // reset map and chart sizes
       setMapSize();
     }
