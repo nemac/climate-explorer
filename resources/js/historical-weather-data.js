@@ -157,6 +157,7 @@ $(function () {
     const target = $('#downnloads-select-vis');
     if (target.hasClass('disabled')) {
       target.removeClass('disabled');
+      enableCustomSelect('download-select');
     }
   }
 
