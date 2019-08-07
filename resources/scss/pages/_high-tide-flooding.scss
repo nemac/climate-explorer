@@ -28,6 +28,18 @@
     min-height: 150px !important
   }
 
+  .map-nostations-message {
+    z-index: 500;
+    width: 50%;
+    position: relative;
+    top: -250px;
+    left: 150px;
+    background-color: $ce3-blue3 !important;
+    color: $ce3-blue5 !important;
+    font: 500 14px $roboto !important;
+    border: 1px solid $ce3-blue3alpha !important;
+  }
+
   #stations-select-wrapper, #tidalzoom-wrapper, #btn-tidalzoom {
      display: flex !important;
      @media screen and (max-width: 900px) {

@@ -400,6 +400,12 @@ $(function () {
     change: function change(event, options) {
       window.ce.ce('setStationsMapState', options);
       renderStationInfo(options.tidalStationId, options.tidalStationName, options.tidalStationMOverMHHW);
+
+      // check if there are any tidal stations in map extent
+      if (options.currentstations.features.length === 0) {
+        // const messsageElem = 
+        console.log('There are no tidal gauge stations within the map view.')
+      }
     },
 
     // when user clicks on map station marker

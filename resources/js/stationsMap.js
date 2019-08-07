@@ -326,6 +326,7 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
                 }
                 // add current object view object in case we need it again
                 this.view.currentstations = ptsWithin;
+                this.options.currentstations = ptsWithin;
               }
           }
           // sets url state zoom level
