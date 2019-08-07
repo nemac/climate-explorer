@@ -28,7 +28,7 @@
     min-height: 150px !important
   }
 
-  #stations-select-wrapper {
+  #stations-select-wrapper, #tidalzoom-wrapper, #btn-tidalzoom {
      display: flex !important;
      @media screen and (max-width: 900px) {
        width: 100% !important;
@@ -36,6 +36,28 @@
      }
    }
 
+   #btn-tidalzoom {
+     &.active {
+       background-color: $ce3-blue3 !important;
+       color: $ce3-blue5 !important;
+       font: 500 14px $roboto !important;
+       border: 1px solid $ce3-blue3alpha !important;
+
+       &:focus {
+         background-color: lighten($ce3-blue4, 7) !important;
+         color: $ce3-blue5 !important;
+         border: 1px solid $ce3-blue3alpha !important;
+         outline: none !important
+       }
+
+       &:hover {
+         background-color: lighten($ce3-blue4, 7) !important;
+         color: $ce3-blue5 !important;
+         border: 1px solid $ce3-blue3alpha !important;
+         outline: none !important
+       }
+     }
+   }
    #chartmap-wrapper {
      width: 30% !important;
    }

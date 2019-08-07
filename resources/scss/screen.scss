@@ -946,9 +946,9 @@ h6 {
 }
 
 
-.circle-box-secondary {
-  @include border-radius(25px, 15px);
-}
+// .circle-box-secondary {
+//   @include border-radius(25px, 15px);
+// }
 
 .circle-box-secondary {
   @include border-radius(25px, 25px);

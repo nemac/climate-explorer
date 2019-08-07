@@ -48,6 +48,11 @@ $(function () {
     }
   }
 
+  // zoom to historical part of chart
+  $('.btn-tidalzoom').click(function () {
+    $("#tidal-chart").tidalstationwidget('zoomToggle');
+    $('.btn-tidalzoom').toggleClass('active');
+  });
   // the way graphs are handled and initialized require them to visible
   // so we move them off the screen.  this not ideal but we can move
   // trade them with the map when we the use needs them
@@ -57,11 +62,17 @@ $(function () {
 
     // add new graph wrappers so they will initialize
     $('#stations-graph-wrap').append('<div id="tidal-chart" class="tidal-chart d-flex-center width-100"></div>');
-    // $('#stations-graph-wrap').append('<div id="multi-precip-chart" class="left_chart d-flex-center width-50"></div>');
 
     // update graphs with new station id and station name
-    $('#stations-graph-wrap').stationAnnualGraph({ variable: 'temperature', station: stations.stationId, stationName: stations.stationName });
-    // $('#multi-precip-chart').stationAnnualGraph({ variable: 'precipitation', station:  stations.stationId, stationName: stations.stationName });
+    $("#tidal-chart").tidalstationwidget({
+      station: stations.stationId,
+      data_url: '/resources/vendor/tidal/tidal_data.json', // defaults to tidal_data.json
+      responsive: true // set to false to disable ChartJS responsive sizing.
+    });
+
+    $('#tidal_station').change(function () {
+      $("#tidal-chart").tidalstationwidget({ station: stations.stationId });
+    });
   }
 
   // updates the visible text for the station pulldown with the information from the state url
@@ -210,22 +221,16 @@ $(function () {
 
     // capture what we are downloading
     switch (downloadAction) {
-      case 'download-precipitation-image': // download image
-        event.target.href = $("#multi-precip-chart canvas")[0].toDataURL('image/png');
-        event.target.download = "daily_vs_climate_precip_" + stationId + ".png";
+      case 'download-tidal-image': // download image
+        event.target.href = $("#tidal-chart canvas")[0].toDataURL('image/png');
+        event.target.download = "high_tide_flooding_" + stationId + ".png";
         break;
-      case 'download-precipitation-data':
+      case 'download-tidal-data':
         $('#multi-chart').stationAnnualGraph('downloadPrecipitationData', event.currentTarget);
         break;
-      case 'download-temperature-image': // download image
-        event.target.href = $("#multi-chart canvas")[0].toDataURL('image/png');
-        event.target.download = "daily_vs_climate_precip_" + stationId + ".png";
-        break;
-      case 'download-temperature-image':
-        $('#multi-chart').stationAnnualGraph('downloadTemperatureData', event.currentTarget);
-        break;
       default:
-        $('#multi-chart').stationAnnualGraph('downloadTemperatureData', event.currentTarget);
+      event.target.href = $("#tidal-chart canvas")[0].toDataURL('image/png');
+      event.target.download = "high_tide_flooding_" + stationId + ".png";
     }
   });
 
