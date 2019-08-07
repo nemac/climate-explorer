@@ -41,13 +41,12 @@ $(function () {
     center
   };
 
-  console.log('stationsMapState', stationsMapState)
   // updates the visible text for the station pulldown with the information from the state url
   function updateStationSelectText(stations) {
     const stationsSelectElem = $('#stations-select-vis');
     if (stationsSelectElem) {
       if ( stations.tidalStationId !== undefined) {
-        stationsSelectElem.attr('rel',`${stations.tidalStationId},${stations.tidalStationName}`);
+        stationsSelectElem.attr('rel',`${stations.tidalStationId}|${stations.tidalStationName}|${stations.tidalStationMOverMHHW}`);
         stationsSelectElem.text(`${stations.tidalStationName} - (${stations.tidalStationId})`);
       }
     }
@@ -77,7 +76,6 @@ $(function () {
 
     $('#tidal_station').change(function () {
       $("#tidal-chart").tidalstationwidget({ tidalStation: stations.tidalStationId });
-      console.log('tidal-chart change', { tidalStation: stations.tidalStationId })
     });
   }
 
@@ -245,17 +243,18 @@ $(function () {
     const target = $(e.target);
     const notDisabled = !target.hasClass('disabled');
     if ( notDisabled ) {
-      const val = $('#stations-select-vis').attr('rel').split(',');
+      const val = $('#stations-select-vis').attr('rel').split('|');
       const tidalStationName = val[1];
       const tidalStationId = val[0];
-
+      const tidalStationMOverMHHW = val[2];
 
       document.getElementById('station-info').classList.remove('d-none');
       updateStationIDText(`${tidalStationId}`);
       updateStationText(`${tidalStationName}`);
+      updatestationMOverMHHWText(`${tidalStationMOverMHHW}m over MHHW`);
 
       // change map varriable
-      window.ce.ce('setStationsMapState', {tidalStationId, tidalStationName});
+      window.ce.ce('setStationsMapState', {tidalStationId, tidalStationName, tidalStationMOverMHHW});
 
       // state url object
       stationsMapState = {
@@ -271,7 +270,7 @@ $(function () {
         zoom,
         center
       };
-      console.log('cs-changed stations', stationsMapState)
+
       // unhide chart overlay
       showGraphs();
 
@@ -346,18 +345,23 @@ $(function () {
   function updateStationIDText(text) {
     $('#default-station-id').html(text);
   }
+  // this function Updates the chart title.
+  function updatestationMOverMHHWText(text) {
+    $('#default-stationMOverMHHW').html(text);
+  }
 
-  function renderStationInfo(tidalStationName, tidalStationId) {
+  function renderStationInfo(tidalStationName, tidalStationId, tidalStationMOverMHHW) {
     if (tidalStationName) {
       document.getElementById('station-info').classList.remove('d-none');
       updateStationIDText(`${tidalStationId}`);
       updateStationText(`${tidalStationName}`);
+      updatestationMOverMHHWText(`${tidalStationMOverMHHW}m over MHHW`)
     } else {
       document.getElementById('station-info').classList.add('d-none');
     }
   }
 
-  renderStationInfo(tidalStationName, tidalStationId);
+  renderStationInfo(tidalStationName, tidalStationId, tidalStationMOverMHHW);
 
   // toggle filters click
   $('#filters-toggle').click( function(e) {
@@ -395,7 +399,7 @@ $(function () {
     // If we re-use the stationsMap widget on another page there may be more handling to do.
     change: function change(event, options) {
       window.ce.ce('setStationsMapState', options);
-      renderStationInfo(options.tidalStationId, options.tidalStationName);
+      renderStationInfo(options.tidalStationId, options.tidalStationName, options.tidalStationMOverMHHW);
     },
 
     // when user clicks on map station marker
@@ -416,7 +420,7 @@ $(function () {
 
       // updates the visible text for the station pulldown with the information from the state url
       updateStationSelectText({tidalStationName: options.tidalStationName, tidalStationId: options.tidalStationId})
-      console.log('stationUpdated', options)
+
       window.ce.ce('setStationsMapState', options);
 
       toggleChartInfoText('chart');

@@ -384,7 +384,11 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
       // make li for select pulldown
       let stationLi = '';
       currentstationsSorted.forEach( (station) => {
-         stationLi += `<li rel="${station.properties.id},${station.properties.name}" class="default-select-option">${station.properties.name} - (${station.properties.id})</li>\n`
+        if (this.options.mode === 'high_tide_flooding') {
+          stationLi += `<li rel="${station.properties.id}|${station.properties.name}|${station.properties.mOverMHHW}|" class="default-select-option">${station.properties.name} - (${station.properties.id})</li>\n`;
+        } else {
+          stationLi += `<li rel="${station.properties.id},${station.properties.name}" class="default-select-option">${station.properties.name} - (${station.properties.id})</li>\n`;
+        }
       })
 
       // update select elem if it exists
