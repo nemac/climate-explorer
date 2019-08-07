@@ -295,7 +295,9 @@ especially when it comes to interacting with the DOM and handling events.
         variable: 'id',
         stationId: 'station',
         stationName: 'station-name',
-        stationMOverMHHW: 'station-mhhw',
+        tidalStationMOverMHHW: 'tidal-station-mhhw',
+        tidalStationId: 'tidal-station',
+        tidalStationName: 'tidal-station-name',
         variable: 'variable',
         lat: 'lat',
         lon: 'lon',
@@ -314,7 +316,9 @@ especially when it comes to interacting with the DOM and handling events.
       Object.keys(state).includes('county') ? this.setUrlParam('county', state['county']) : null;
       Object.keys(state).includes('stationId') && state.stationId ? this.setUrlParam('station', state['stationId']) : this.removeUrlParam('station');
       Object.keys(state).includes('stationName') && state.stationName ? this.setUrlParam('station-name', state.stationName) : this.removeUrlParam('station-name');
-      Object.keys(state).includes('stationMOverMHHW') && state.stationMOverMHHW ? this.setUrlParam('station-mhhw', state.stationMOverMHHW) : this.removeUrlParam('station-mhhw');
+      Object.keys(state).includes('tidalStationId') && state.tidalStationId ? this.setUrlParam('tidal-station', state.tidalStationId) : this.removeUrlParam('tidal-station');
+      Object.keys(state).includes('tidalStationName') && state.tidalStationName ? this.setUrlParam('tidal-station-name', state.tidalStationName) : this.removeUrlParam('tidal-station-name');
+      Object.keys(state).includes('tidalStationMOverMHHW') && state.tidalStationMOverMHHW ? this.setUrlParam('tidal-station-mhhw', state.tidalStationMOverMHHW) : this.removeUrlParam('tidal-station-mhhw');
       Object.keys(state).includes('mode') ? this.setUrlParam('mode', state['mode']) : this.removeUrlParam('mode');
       Object.keys(state).includes('zoom') ? this.setUrlParam('zoom', state['zoom']) : 4;
       Object.keys(state).includes('lat') ? this.setUrlParam('lat', state['lat']) : null;
@@ -354,7 +358,7 @@ especially when it comes to interacting with the DOM and handling events.
     },
 
     getNavState: function getNavState() {
-      var pages = ["local-climate-charts", "local-climate-maps", "high_tide_flooding", "historical-weather-data","variables", "stations"];
+      var pages = ["local-climate-charts", "local-climate-maps", "high-tide-flooding", "historical-weather-data","variables", "stations"];
       var state = this.getUrlParams({
         slide: 'menu',
         detail: 'menuDetail'
@@ -366,7 +370,7 @@ especially when it comes to interacting with the DOM and handling events.
     },
 
     setNavState: function setNavState(state) {
-      var pages = ["local-climate-charts", "local-climate-maps", "high_tide_flooding", "historical-weather-data", "variables", "stations"];
+      var pages = ["local-climate-charts", "local-climate-maps", "high-tide-flooding", "historical-weather-data", "variables", "stations"];
       if (Object.keys(state).includes('slide')) {
         this.setUrlParam('menu', pages[state['slide']]);
       } else {

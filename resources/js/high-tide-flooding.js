@@ -20,7 +20,9 @@ $(function () {
   const mode = 'high_tide_flooding' // stationsMapState['mode'];
   const stationId = stationsMapState['stationId'];
   const stationName = stationsMapState['stationName'];
-  const stationMOverMHHW = stationsMapState['stationMOverMHHW'];
+  const tidalStationId = stationsMapState['tidalStationId'];
+  const tidalStationName = stationsMapState['tidalStationName'];
+  const tidalStationMOverMHHW = stationsMapState['tidalStationMOverMHHW'];
   const center = [lat, lon]
 
   // initialize staion map state from url values
@@ -30,20 +32,23 @@ $(function () {
     mode,
     stationId,
     stationName,
-    stationMOverMHHW,
+    tidalStationId,
+    tidalStationName,
+    tidalStationMOverMHHW,
     lat,
     lon,
     zoom,
     center
   };
 
+  console.log('stationsMapState', stationsMapState)
   // updates the visible text for the station pulldown with the information from the state url
   function updateStationSelectText(stations) {
     const stationsSelectElem = $('#stations-select-vis');
     if (stationsSelectElem) {
-      if ( stations.stationId !== undefined) {
-        stationsSelectElem.attr('rel',`${stations.stationId},${stations.stationName}`);
-        stationsSelectElem.text(`${stations.stationName} - (${stations.stationId})`);
+      if ( stations.tidalStationId !== undefined) {
+        stationsSelectElem.attr('rel',`${stations.tidalStationId},${stations.tidalStationName}`);
+        stationsSelectElem.text(`${stations.tidalStationName} - (${stations.tidalStationId})`);
       }
     }
   }
@@ -65,18 +70,19 @@ $(function () {
 
     // update graphs with new station id and station name
     $("#tidal-chart").tidalstationwidget({
-      station: stations.stationId,
+      station: stations.tidalStationId,
       data_url: '/resources/vendor/tidal/tidal_data.json', // defaults to tidal_data.json
       responsive: true // set to false to disable ChartJS responsive sizing.
     });
 
     $('#tidal_station').change(function () {
-      $("#tidal-chart").tidalstationwidget({ station: stations.stationId });
+      $("#tidal-chart").tidalstationwidget({ tidalStation: stations.tidalStationId });
+      console.log('tidal-chart change', { tidalStation: stations.tidalStationId })
     });
   }
 
   // updates the visible text for the station pulldown with the information from the state url
-  updateStationSelectText({stationName, stationId})
+  updateStationSelectText({tidalStationName, tidalStationId})
 
   // show graph overlay.
   // graph is visbile and on page just pushed of viewable area
@@ -183,12 +189,12 @@ $(function () {
   }
 
   // if state url has a station render station and not map.
-  if (stationId) {
+  if (tidalStationId) {
     // unhide chart overlay
     showGraphs()
 
     // reset graphs
-    resetGraphs({variable: 'temperature', stationId, stationName });;
+    resetGraphs({variable: 'temperature', tidalStationId, tidalStationName });;
 
     // toggle button visual state
     toggleButton($('.btn-chart'));
@@ -197,7 +203,7 @@ $(function () {
     chartPulldownChartText()
 
     // updates the visible text for the station pulldown with the information from the state url
-    updateStationSelectText({stationName, stationId})
+    updateStationSelectText({tidalStationName, tidalStationId})
 
     toggleChartInfoText('chart');
 
@@ -223,14 +229,14 @@ $(function () {
     switch (downloadAction) {
       case 'download-tidal-image': // download image
         event.target.href = $("#tidal-chart canvas")[0].toDataURL('image/png');
-        event.target.download = "high_tide_flooding_" + stationId + ".png";
+        event.target.download = "high_tide_flooding_" + tidalStationId + ".png";
         break;
       case 'download-tidal-data':
         $('#multi-chart').stationAnnualGraph('downloadPrecipitationData', event.currentTarget);
         break;
       default:
       event.target.href = $("#tidal-chart canvas")[0].toDataURL('image/png');
-      event.target.download = "high_tide_flooding_" + stationId + ".png";
+      event.target.download = "high_tide_flooding_" + tidalStationId + ".png";
     }
   });
 
@@ -240,16 +246,16 @@ $(function () {
     const notDisabled = !target.hasClass('disabled');
     if ( notDisabled ) {
       const val = $('#stations-select-vis').attr('rel').split(',');
-      const stationName = val[1];
-      const stationId = val[0];
+      const tidalStationName = val[1];
+      const tidalStationId = val[0];
 
 
       document.getElementById('station-info').classList.remove('d-none');
-      updateStationIDText(`${stationId}`);
-      updateStationText(`${stationName}`);
+      updateStationIDText(`${tidalStationId}`);
+      updateStationText(`${tidalStationName}`);
 
       // change map varriable
-      window.ce.ce('setStationsMapState', {stationId, stationName});
+      window.ce.ce('setStationsMapState', {tidalStationId, tidalStationName});
 
       // state url object
       stationsMapState = {
@@ -257,18 +263,20 @@ $(function () {
         mode,
         stationId,
         stationName,
-        stationMOverMHHW,
+        tidalStationId,
+        tidalStationName,
+        tidalStationMOverMHHW,
         lat,
         lon,
         zoom,
         center
       };
-
+      console.log('cs-changed stations', stationsMapState)
       // unhide chart overlay
       showGraphs();
 
       // reset graphs
-      resetGraphs({variable: 'temperature', stationId, stationName });;
+      resetGraphs({variable: 'temperature', tidalStationId, tidalStationName });;
 
       // toggle button visual state
       toggleButton($('.btn-chart'));
@@ -339,17 +347,17 @@ $(function () {
     $('#default-station-id').html(text);
   }
 
-  function renderStationInfo(stationName, stationId) {
-    if (stationName) {
+  function renderStationInfo(tidalStationName, tidalStationId) {
+    if (tidalStationName) {
       document.getElementById('station-info').classList.remove('d-none');
-      updateStationIDText(`${stationId}`);
-      updateStationText(`${stationName}`);
+      updateStationIDText(`${tidalStationId}`);
+      updateStationText(`${tidalStationName}`);
     } else {
       document.getElementById('station-info').classList.add('d-none');
     }
   }
 
-  renderStationInfo(stationName, stationId);
+  renderStationInfo(tidalStationName, tidalStationId);
 
   // toggle filters click
   $('#filters-toggle').click( function(e) {
@@ -387,7 +395,7 @@ $(function () {
     // If we re-use the stationsMap widget on another page there may be more handling to do.
     change: function change(event, options) {
       window.ce.ce('setStationsMapState', options);
-      renderStationInfo(options.stationId, options.stationName);
+      renderStationInfo(options.tidalStationId, options.tidalStationName);
     },
 
     // when user clicks on map station marker
@@ -404,11 +412,11 @@ $(function () {
       chartPulldownChartText()
 
       // reset graphs
-      resetGraphs({variable: 'temperature', stationId: options.stationId, stationName: options.stationName });;
+      resetGraphs({variable: 'temperature', tidalStationId: options.tidalStationId, tidalStationName: options.tidalStationName });;
 
       // updates the visible text for the station pulldown with the information from the state url
-      updateStationSelectText({stationName: options.stationName, stationId: options.stationId})
-
+      updateStationSelectText({tidalStationName: options.tidalStationName, tidalStationId: options.tidalStationId})
+      console.log('stationUpdated', options)
       window.ce.ce('setStationsMapState', options);
 
       toggleChartInfoText('chart');

@@ -20,7 +20,9 @@ $(function () {
   const mode = 'daily_vs_climate'  // stationsMapState['mode'];
   const stationId = stationsMapState['stationId'];
   const stationName = stationsMapState['stationName'];
-  const stationMOverMHHW = stationsMapState['stationMOverMHHW'];
+  const tidalStationId = stationsMapState['tidalStationId'];
+  const tidalStationName = stationsMapState['tidalStationName'];
+  const tidalStationMOverMHHW = stationsMapState['tidalStationMOverMHHW'];
   const center = [lat, lon]
 
   // initialize staion map state from url values
@@ -30,7 +32,9 @@ $(function () {
     mode,
     stationId,
     stationName,
-    stationMOverMHHW,
+    tidalStationId,
+    tidalStationName,
+    tidalStationMOverMHHW,
     lat,
     lon,
     zoom,
@@ -252,7 +256,9 @@ $(function () {
         mode,
         stationId,
         stationName,
-        stationMOverMHHW,
+        tidalStationId,
+        tidalStationName,
+        tidalStationMOverMHHW,
         lat,
         lon,
         zoom,
