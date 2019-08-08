@@ -419,7 +419,6 @@ $(function () {
           messsageElem.innerHTML = 'There are no tidal gauge stations within the map view.'
           messsageElem.classList.remove('d-none');
         }
-        console.log('There are no tidal gauge stations within the map view.')
       } else {
         messsageElem.classList.add('d-none');
       }
@@ -469,7 +468,7 @@ $(function () {
       messsageElem.style.left = `${(rect.right - rect.left)/3}px`;
       messsageElem.style.top = `-${((rect.bottom - rect.top)/2)}px`;
     }
-    
+
     // set size of map overlay
     if (document.querySelector('.esri-view-root')) {
       document.querySelector('.esri-view-root').style.minWidth = `${rect.width}px`;

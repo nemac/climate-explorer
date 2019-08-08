@@ -28,6 +28,20 @@
     min-height: 150px !important
   }
 
+  .map-nostations-message {
+    z-index: 500;
+    width: 25%;
+    position: relative;
+    top: -250px;
+    left: 150px;
+    padding: $ce3-default-padding;
+    background-color: $ce3-blue5 !important;
+    color: $ce3-blue3 !important;
+    font: 500 14px $roboto !important;
+    border: 1px solid $ce3-blue3alpha !important;
+    @include border-radius(5px, 5px);
+  }
+  
   #stations-select-wrapper {
      display: flex !important;
      @media screen and (max-width: 900px) {
