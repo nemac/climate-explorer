@@ -54,9 +54,13 @@ $(function () {
 
   // zoom to historical part of chart
   $('.btn-tidalzoom').click(function () {
-    $("#tidal-chart").tidalstationwidget('zoomToggle');
-    $('.btn-tidalzoom').toggleClass('active');
+    // only allow click event if button is not disabled
+    if (!$("#btn-tidalzoom").hasClass('btn-default-disabled')) {
+      $("#tidal-chart").tidalstationwidget('zoomToggle');
+      $('.btn-tidalzoom').toggleClass('active');
+    }
   });
+
   // the way graphs are handled and initialized require them to visible
   // so we move them off the screen.  this not ideal but we can move
   // trade them with the map when we the use needs them
@@ -77,6 +81,8 @@ $(function () {
     $('#tidal_station').change(function () {
       $("#tidal-chart").tidalstationwidget({ tidalStation: stations.tidalStationId });
     });
+
+    $('.btn-tidalzoom').removeClass('btn-default-disabled');
   }
 
   // updates the visible text for the station pulldown with the information from the state url
@@ -131,6 +137,7 @@ $(function () {
     return  target.attr('val');
   }
 
+  // hide or unhide appropriate view
   function chooseGraphOrMap(target){
     // check val of button to see if user is on map  or chart
     // hide or unhide the appropriate overlay (map, chart)
@@ -401,10 +408,20 @@ $(function () {
       window.ce.ce('setStationsMapState', options);
       renderStationInfo(options.tidalStationId, options.tidalStationName, options.tidalStationMOverMHHW);
 
+      const messsageElem = document.getElementById('stations-map-message');
       // check if there are any tidal stations in map extent
       if (options.currentstations.features.length === 0) {
-        // const messsageElem = 
+        // get map parent element - which provides the correct dimensions for the map
+        if (messsageElem) {
+          const rect = document.getElementById('stations-map-wrap').getBoundingClientRect();
+          messsageElem.style.left = `${(rect.right - rect.left)/3}px`;
+          messsageElem.style.top = `-${((rect.bottom - rect.top)/2)}px`;
+          messsageElem.innerHTML = 'There are no tidal gauge stations within the map view.'
+          messsageElem.classList.remove('d-none');
+        }
         console.log('There are no tidal gauge stations within the map view.')
+      } else {
+        messsageElem.classList.add('d-none');
       }
     },
 
@@ -445,6 +462,14 @@ $(function () {
     // get map parent element - which provides the correct dimensions for the map
     const rect = document.getElementById('stations-map-wrap').getBoundingClientRect();
 
+    const messsageElem = document.getElementById('stations-map-message');
+    // get map parent element - which provides the correct dimensions for the map
+    if (messsageElem) {
+      const rect = document.getElementById('stations-map-wrap').getBoundingClientRect();
+      messsageElem.style.left = `${(rect.right - rect.left)/3}px`;
+      messsageElem.style.top = `-${((rect.bottom - rect.top)/2)}px`;
+    }
+    
     // set size of map overlay
     if (document.querySelector('.esri-view-root')) {
       document.querySelector('.esri-view-root').style.minWidth = `${rect.width}px`;
@@ -469,7 +494,6 @@ $(function () {
     // get graph parent element - which provides the correct dimensions for the graph
     const graphRect = document.getElementById('stations-graph-wrap').getBoundingClientRect();
     let graphWidth = graphRect.width;
-
 
     // set size of tidal-chart chart
     if (document.querySelector('#tidal-chart')) {
