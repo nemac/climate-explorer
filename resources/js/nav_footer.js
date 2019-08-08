@@ -16,11 +16,12 @@ $(function () {
   addNavlick('local-climate-maps', 'local-climate-maps', navConstants.selectorAddOn);
   addNavlick('national-climate-maps', 'national-climate-maps', navConstants.selectorAddOn);
   addNavlick('historical-weather-data', 'historical-weather-data', navConstants.selectorAddOn);
-  addNavlick('high-tide-flooding', 'high-tide-flooding', navConstants.selectorAddOn);
-
-
-  // addNavlick('more', 'more', navConstants.selectorAddOn);
   addNavlick('hightide-flooding', 'hightide-flooding', navConstants.selectorAddOn);
+  addNavlick('historical-thresholds', 'historical-thresholds', navConstants.selectorAddOn);
+
+  //
+  // // addNavlick('more', 'more', navConstants.selectorAddOn);
+  // addNavlick('hightide-flooding', 'hightide-flooding', navConstants.selectorAddOn);
 
   updateNavBar();
   addMoreClickEvent();

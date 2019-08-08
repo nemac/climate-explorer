@@ -1,0 +1,174 @@
+<!doctype html>
+<html lang='en' class="width-100 height-100">
+<head>
+  {{> head }}
+  <meta property="fb:app_id" content="187816851587993">
+  <meta property="og:url" content="historical-thresholds">
+  <meta property="og:type" content="article">
+  <meta property="og:title" content="Location data for Buncombe County, NC">
+  <meta property="og:description" content="The Climate Explorer allows you to view historical and projected climate variables and assess the impacts of climate change on the things you care about">
+  <meta property="og:image" content="/resources/img/og.jpg">
+</head>
+
+<body class="width-100 height-100">
+
+  {{> secondary_header }}
+
+  <div id="historical-thresholds-viewport" class="padding-horrizontal d-flex d-flex-column">
+
+    <div id="search-row" class="padding-horizontal d-flex-row flex-justify padding-top padding-bottom-half d-flex-justify" >
+
+      <div class="rounded-box-secondary input-outer padding-horrizontal bottom-padding default-btn-height search-box-secondary width-40">
+        <input id="cards-search-input" type="text" class="location-mapper input-inner-default border-none default-btn-height width-90" autocomplete="off" placeholder="Enter county, city, or zip code">
+        <span class="icon icon-search search-default float-right padding-default"></span>
+      </div>
+
+
+      <div id="stations-select-wrapper" class="rounded-choice-box padding-horrizontal default-btn-height top-select-wrapper d-flex-center">
+        <div class="select stations-select">
+          <div id="stations-select-vis" class="select-styled" rel="station-1">Stations</div>
+          <ul class="select-options">
+            <li rel="station-1" class="default-select-option">Stations 1</li>
+            <li rel="station-2" class="default-select-option">Stations 2</li>
+          </ul>
+        </div>
+      </div>
+
+      <div id="downloads-select-wrapper" class="rounded-choice-box padding-horrizontal default-btn-height top-select-wrapper d-flex-center">
+
+        <div class="select download-select">
+          <div id="downnloads-select-vis" class="select-styled disabled" rel="none" href="javascript:void(0);">
+            <i class="fas fa-download select-icon"></i>
+            <a rel="none" href="javascript:void(0);" >Downloads</a>
+          </div>
+          <ul class="select-options" style="display: none;">
+            <li icon="fas fa-download select-icon"  class="default-select-option">
+              <a rel="none" href="javascript:void(0);" >Downloads</a>
+            </li>
+            <div icon="fas fa-water select-icon" class="default-select-option-group">
+              <i class="fas fa-water select-icon"></i>Tidal Flooding
+            </div>
+            <li rel="download-tidal-image" icon="fas fa-download select-icon" href="javascript:void(0);" class="default-select-option">
+              <a rel="download-tidal-image" href="javascript:void(0);" >Download tidal flooding image</a>
+            </li>
+            <li rel="download-tidal-data" icon="fas fa-download select-icon" href="javascript:void(0);" class="default-select-option">
+              <a rel="download-tidal-data" href="https://tidesandcurrents.noaa.gov/publications/techrpt86_PaP_of_HTFlooding.csv" >Download tidal flooding data</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+
+    </div>
+
+    <div id="info-row" class="d-flex-row flex-justify padding-top-half padding-bottom-half d-flex-center" >
+      <div class="rounded-filters-box padding-default width-100">
+
+        <div class="d-flex-row">
+
+          <div id="info-text-wrapper" class="width-90">
+            <i class="fas fa-chart-bar icon-info-box"></i>
+            <span id="default-city-state" class="text-info-box" ></span>
+            <span id="" class="text-info-box" > in </span>
+            <span id="default-city-county" class="text-info-box"></span>
+            <span id="station-info" class="padding-horizontal d-none">
+              <span id="default-station-label" class="text-info-box label" >- Station id: </span>
+              <span id="default-station" class="text-info-box" ></span>
+              <span id="default-station-id-label" class="text-info-box label" >Station: </span>
+              <span id="default-station-id" class="text-info-box" ></span>
+              <span id="default-stationMOverMHHW-label" class="text-info-box label" >Local threshold: </span>
+              <span id="default-stationMOverMHHW" class="text-info-box" ></span>
+            </span>
+
+            <!-- <span id="" class="text-info-box" > - </span> -->
+            <!-- <span id="default-chart-map-varriable" class="text-info-box" rel="tmax">Avg Daily Max Temp (°F)</span> -->
+          </div>
+
+
+          <div id="filters-toggle" class="width-10">
+            <div class="select filters-toggle-select">
+              <div id="filters-toggle-select-vis" class="select-styled" rel="filter"></div>
+            </div>
+          </div>
+
+        </div>
+
+
+        <div id="filters-row" class="d-flex-row flex-justify padding-top padding-bottom d-flex-left" >
+
+          <a id="high-tide-secretlink-forcharts" href="../historical-thresholds" class="d-none"></a>
+          <a id="chartmap-btn-chart-link"  href="../historical-thresholds" class="d-none"></a>
+          <a id="chartmap-btn-map-link"  href="../historical-thresholds" class="d-none">Map</a>
+          <div id="chartmap-wrapper" class="padding-horrizontal-half padding-vertical-half default-btn-height d-flex-center width-20 disabled">
+            <div id="btn-chart" class="btn-chart btn-default circle-box-left d-flex-center width-50" val="chart" nav="historical-thresholds" link="chartmap-btn-chart-link" sel="chartmap-select-vis">
+              Chart
+            </div>
+            <div id="btn-chart" class="btn-map btn-default-selected circle-box-right d-flex-center width-50"  nav="historical-thresholds"  val="map" link="chartmap-btn-map-link" sel="chartmap-select-vis">
+              Map
+            </div>
+          </div>
+
+          <div id="chartmap-select-wrapper" class="rounded-choice-box padding-horrizontal-half padding-vertical-half default-btn-height d-flex-center width-20">
+            <div class="select chartmap-select">
+              <div id="chartmap-select-vis" class="select-styled" rel="chart">Map</div>
+              <ul class="select-options">
+                <li id="chartmap-select-chart-link" rel="chart" class="default-select-option" nav="historical-thresholds" link="chartmap-btn-chart-link" >Chart</li>
+                <li id="chartmap-select-map-link" rel="map" class="default-select-option" nav="historical-thresholds" link="chartmap-btn-map-link">Map</li>
+              </ul>
+            </div>
+          </div>
+
+          <div id="tidalzoom-wrapper" class="padding-horrizontal-half padding-vertical-half default-btn-height d-flex-center width-30">
+            <div id="btn-tidalzoom" class="btn-tidalzoom btn-default circle-box-secondary d-flex-center width-90 btn-default-disabled" val="Historical" >
+              Historical
+            </div>
+          </div>
+
+        </div>
+
+      </div>
+    </div>
+
+    <div id="stations-map-row" class="padding-top-half width-100 height-100 d-flex" >
+      <div id="stations-map-wrap" class="map-wrap width-100 height-100 ">
+        <div id="stations-map" class="map-element"></div>
+        <div id="stations-map-message" class="map-nostations-message d-none"></div>
+      </div>
+    </div>
+
+    <div id="stations-graph-row" class="padding-vertical width-100 height-100" >
+      <div id="stations-graph-wrap" class="width-100 height-100 d-flex-row">
+        <div id="tidal-chart" class="tidal-chart d-flex-center width-100"></div>
+      </div>
+    </div>
+
+    <div id="station-info-row" class="d-flex-row flex-justify padding-horrizontal padding-bottom d-flex-left d-none" >
+      <span class="padding-bottom-half" >Click 'Historical' button to zoom in on or out from the observational period.
+        Place your cursor over the curves on this graph for details. Gray bars from 1950 to 2016 show observed annual
+        counts of high-tide flooding. Red and blue curves show the average number of high-tide flooding events projected
+        for future years under two scenarios. Data from
+        <a target="_blank" href="https://tidesandcurrents.noaa.gov/publications/techrpt86_PaP_of_HTFlooding.pdf">
+          NOAA Technical Report NOS CO-OPS 086 - Patterns and Projections of High-tide Flooding</a>.
+        </span>
+      </div>
+
+
+    </div>
+    <!-- </div> -->
+
+    {{> nav_footer }}
+    {{> footer }}
+
+    <script src="https://unpkg.com/@esri/arcgis-to-geojson-utils"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Turf.js/5.1.6/turf.min.js" integrity="sha256-Nhtik+K3xORhs5S9o0qlol4eRNB9O5OyTOJqbLucPk8=" crossorigin="anonymous"></script>
+    <script type="text/javascript" src="/resources/js/stationsMap.js"></script>
+    <script type="text/javascript" src="/resources/js/stationAnnualGraph.js"></script>
+    <script type="text/javascript" src="/resources/vendor/tidal/tidalstationswidget.js"></script>
+    <script src="https://unpkg.com/terraformer@1.0.8/terraformer.js" integrity="sha384-+M797Pj3WZVCwMmLbOxAoaWYcKJo8NSxItmI48ytcLNeAnfn1d/IckFn31jEqrzP"
+    crossorigin="anonymous"></script>
+    <script src="https://unpkg.com/terraformer-arcgis-parser@1.0.5/terraformer-arcgis-parser.js"
+    integrity="sha384-duFUjKTSNoxEspdJNwr83CUgRxclf0ueKJB9DU/Vbit6bfWgzvZsHW6H1JLBBXhp" crossorigin="anonymous"></script>
+    <script type="text/javascript" src="/resources/js/ce3-ui-components.js"></script>
+    <script type="text/javascript" src="/resources/js/historical-thresholds.js"></script>
+    <script type="text/javascript" src="/resources/js/nouislider.min.js"></script>
+  </body>
+  </html>

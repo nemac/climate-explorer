@@ -11,6 +11,7 @@ $(function () {
   addCardClick('card-national-maps','national-climate-maps');
   addCardClick('card-historical-weather-data','historical-weather-data');
   addCardClick('card-hightide-flooding', 'hightide-flooding');
+  addCardClick('card-historical-thresholds', 'historical-thresholds');
 
   // adds a click event to got to card location
   function addCardClick(selctor, nav) {
