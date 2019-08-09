@@ -45,15 +45,25 @@
             <li icon="fas fa-download select-icon"  class="default-select-option">
               <a rel="none" href="javascript:void(0);" >Downloads</a>
             </li>
-            <div icon="fas fa-water select-icon" class="default-select-option-group">
-              <i class="fas fa-water select-icon"></i>Tidal Flooding
+            <div icon="fas fa-temperature-high select-icon" class="default-select-option-group">
+              <i class="fas fa-temperature-high select-icon"></i>Temperature
             </div>
-            <li rel="download-tidal-image" icon="fas fa-download select-icon" href="javascript:void(0);" class="default-select-option">
-              <a rel="download-tidal-image" href="javascript:void(0);" >Download tidal flooding image</a>
+            <li rel="download-temperature-image" icon="fas fa-download select-icon" href="javascript:void(0);" class="default-select-option">
+              <a rel="download-temperature-image" href="javascript:void(0);" >Download temperature image</a>
             </li>
-            <li rel="download-tidal-data" icon="fas fa-download select-icon" href="javascript:void(0);" class="default-select-option">
-              <a rel="download-tidal-data" href="https://tidesandcurrents.noaa.gov/publications/techrpt86_PaP_of_HTFlooding.csv" >Download tidal flooding data</a>
+            <li rel="download-temperature-data" icon="fas fa-download select-icon" href="javascript:void(0);" class="default-select-option">
+              <a rel="download-temperature-data" href="javascript:void(0);" >Download temperature data</a>
             </li>
+            <div icon="fas fa-cloud-rain select-icon" class="default-select-option-group">
+              <i class="fas fa-cloud-rain select-icon"></i>Precipitation
+            </div>
+            <li rel="download-image" icon="fas fa-download select-icon" href="javascript:void(0);" class="default-select-option">
+              <a rel="download-precipitation-image" href="javascript:void(0);" >Download precipitation image</a>
+            </li>
+            <li rel="download-precipitation-observed-data" icon="fas fa-download select-icon" href="javascript:void(0);" class="default-select-option">
+              <a rel="download-precipitation-data" href="javascript:void(0);" >Download precipitation data</a>
+            </li>
+
           </ul>
         </div>
       </div>
@@ -66,7 +76,7 @@
         <div class="d-flex-row">
 
           <div id="info-text-wrapper" class="width-90">
-            <i class="fas fa-chart-bar icon-info-box"></i>
+            <i class="fas fa-chart-area icon-info-box"></i>
             <span id="default-city-state" class="text-info-box" ></span>
             <span id="" class="text-info-box" > in </span>
             <span id="default-city-county" class="text-info-box"></span>
@@ -75,8 +85,6 @@
               <span id="default-station" class="text-info-box" ></span>
               <span id="default-station-id-label" class="text-info-box label" >Station: </span>
               <span id="default-station-id" class="text-info-box" ></span>
-              <span id="default-stationMOverMHHW-label" class="text-info-box label" >Local threshold: </span>
-              <span id="default-stationMOverMHHW" class="text-info-box" ></span>
             </span>
 
             <!-- <span id="" class="text-info-box" > - </span> -->
@@ -95,14 +103,14 @@
 
         <div id="filters-row" class="d-flex-row flex-justify padding-top padding-bottom d-flex-left" >
 
-          <a id="high-tide-secretlink-forcharts" href="../historical-thresholds" class="d-none"></a>
-          <a id="chartmap-btn-chart-link"  href="../historical-thresholds" class="d-none"></a>
-          <a id="chartmap-btn-map-link"  href="../historical-thresholds" class="d-none">Map</a>
+          <a id="national-climate-maps-secretlink-forcharts" href="../historical-weather-data" class="d-none"></a>
+          <a id="chartmap-btn-chart-link"  href="../historical-weather-data" class="d-none"></a>
+          <a id="chartmap-btn-map-link"  href="../historical-weather-data" class="d-none">Map</a>
           <div id="chartmap-wrapper" class="padding-horrizontal-half padding-vertical-half default-btn-height d-flex-center width-20 disabled">
-            <div id="btn-chart" class="btn-chart btn-default circle-box-left d-flex-center width-50" val="chart" nav="historical-thresholds" link="chartmap-btn-chart-link" sel="chartmap-select-vis">
+            <div id="btn-chart" class="btn-chart btn-default circle-box-left d-flex-center width-50" val="chart" nav="historical-weather-data" link="chartmap-btn-chart-link" sel="chartmap-select-vis">
               Chart
             </div>
-            <div id="btn-chart" class="btn-map btn-default-selected circle-box-right d-flex-center width-50"  nav="historical-thresholds"  val="map" link="chartmap-btn-map-link" sel="chartmap-select-vis">
+            <div id="btn-chart" class="btn-map btn-default-selected circle-box-right d-flex-center width-50"  nav="historical-weather-data"  val="map" link="chartmap-btn-map-link" sel="chartmap-select-vis">
               Map
             </div>
           </div>
@@ -111,15 +119,9 @@
             <div class="select chartmap-select">
               <div id="chartmap-select-vis" class="select-styled" rel="chart">Map</div>
               <ul class="select-options">
-                <li id="chartmap-select-chart-link" rel="chart" class="default-select-option" nav="historical-thresholds" link="chartmap-btn-chart-link" >Chart</li>
-                <li id="chartmap-select-map-link" rel="map" class="default-select-option" nav="historical-thresholds" link="chartmap-btn-map-link">Map</li>
+                <li id="chartmap-select-chart-link" rel="chart" class="default-select-option" nav="historical-weather-data" link="chartmap-btn-chart-link" >Chart</li>
+                <li id="chartmap-select-map-link" rel="map" class="default-select-option" nav="historical-weather-data" link="chartmap-btn-map-link">Map</li>
               </ul>
-            </div>
-          </div>
-
-          <div id="tidalzoom-wrapper" class="padding-horrizontal-half padding-vertical-half default-btn-height d-flex-center width-30">
-            <div id="btn-tidalzoom" class="btn-tidalzoom btn-default circle-box-secondary d-flex-center width-90 btn-default-disabled" val="Historical" >
-              Historical
             </div>
           </div>
 
@@ -136,23 +138,27 @@
     </div>
 
     <div id="stations-graph-row" class="padding-vertical width-100 height-100" >
-      <div id="stations-graph-wrap" class="width-100 height-100 d-flex-row">
-        <div id="tidal-chart" class="tidal-chart d-flex-center width-100"></div>
+      <div id="stations-graph-wrap" class=" d-flex-row">
+        <!-- width-100 height-100  -->
+          <div id="thresholds-container" class="d-flex-center width-100"></div>
+          <!-- <div id="multi-precip-chart" class="right_chart d-flex-center width-100"></div> -->
       </div>
     </div>
 
     <div id="station-info-row" class="d-flex-row flex-justify padding-horrizontal padding-bottom d-flex-left d-none" >
-      <span class="padding-bottom-half" >Click 'Historical' button to zoom in on or out from the observational period.
-        Place your cursor over the curves on this graph for details. Gray bars from 1950 to 2016 show observed annual
-        counts of high-tide flooding. Red and blue curves show the average number of high-tide flooding events projected
-        for future years under two scenarios. Data from
-        <a target="_blank" href="https://tidesandcurrents.noaa.gov/publications/techrpt86_PaP_of_HTFlooding.pdf">
-          NOAA Technical Report NOS CO-OPS 086 - Patterns and Projections of High-tide Flooding</a>.
-        </span>
-      </div>
-
-
+      <!-- <span class="padding-bottom-half" >Pan or zoom on these graphs to view other years. Place your cursor on either axis and then scroll, click-and-drag,
+        or hold down your SHIFT key and scroll to adjust the display.
+      </span> -->
+      <span class="padding-top-half" >This graph shows how often the selected threshold has been exceeded per year. For consistency,
+        this chart excludes any years that are missing more than five daily temperature reports or more
+        than one precipitation report in a single month. Data from
+        <a target="_blank" href="https://www.ncdc.noaa.gov/data-access/land-based-station-data/land-based-datasets/global-historical-climatology-network-ghcn">
+          Global Historical Climatology Network</a>, served by <a  target="_blank" href="http://www.rcc-acis.org/">ACIS</a>..
+      </span>
     </div>
+
+
+  </div>
     <!-- </div> -->
 
     {{> nav_footer }}
@@ -162,7 +168,8 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Turf.js/5.1.6/turf.min.js" integrity="sha256-Nhtik+K3xORhs5S9o0qlol4eRNB9O5OyTOJqbLucPk8=" crossorigin="anonymous"></script>
     <script type="text/javascript" src="/resources/js/stationsMap.js"></script>
     <script type="text/javascript" src="/resources/js/stationAnnualGraph.js"></script>
-    <script type="text/javascript" src="/resources/vendor/tidal/tidalstationswidget.js"></script>
+    <script type="text/javascript" src="/resources/vendor/item/jquery.fl-item.min.js"></script>
+    <script type="text/javascript" src="/resources/vendor/climate-widget-graph/climate-widget-graph.js"></script>
     <script src="https://unpkg.com/terraformer@1.0.8/terraformer.js" integrity="sha384-+M797Pj3WZVCwMmLbOxAoaWYcKJo8NSxItmI48ytcLNeAnfn1d/IckFn31jEqrzP"
     crossorigin="anonymous"></script>
     <script src="https://unpkg.com/terraformer-arcgis-parser@1.0.5/terraformer-arcgis-parser.js"
@@ -170,5 +177,6 @@
     <script type="text/javascript" src="/resources/js/ce3-ui-components.js"></script>
     <script type="text/javascript" src="/resources/js/historical-thresholds.js"></script>
     <script type="text/javascript" src="/resources/js/nouislider.min.js"></script>
+
   </body>
   </html>

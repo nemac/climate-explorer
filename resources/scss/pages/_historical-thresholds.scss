@@ -34,6 +34,7 @@
     position: relative;
     top: -250px;
     left: 150px;
+    text-align: center;
     padding: $ce3-default-padding;
     background-color: $ce3-blue5 !important;
     color: $ce3-blue3 !important;
@@ -185,6 +186,14 @@
          }
 
          #stations-graph-wrap {
+           // position: relative;
+           // padding: $ce3-default-padding;
+           // min-height: 300px;
+           // max-height: 100%;
+           // margin-left: 200px;
+           // margin-right: calc(20% + -25px);
+           // max-width: 80% !important;
+           // background-color: white;
            height: 100%;
            width: 80%;
            @media screen and (max-width: 900px) {

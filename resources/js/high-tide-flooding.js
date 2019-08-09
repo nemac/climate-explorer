@@ -46,7 +46,7 @@ $(function () {
     const stationsSelectElem = $('#stations-select-vis');
     if (stationsSelectElem) {
       if ( stations.tidalStationId !== undefined) {
-        stationsSelectElem.attr('rel',`${stations.tidalStationId}|${stations.tidalStationName}|${stations.tidalStationMOverMHHW}`);
+        stationsSelectElem.attr('rel',`${stations.tidalStationId}|${stations.tidalStationName}`);
         stationsSelectElem.text(`${stations.tidalStationName} - (${stations.tidalStationId})`);
       }
     }
