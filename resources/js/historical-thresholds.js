@@ -5,6 +5,7 @@ $(function () {
   enableCustomSelect('chartmap-select');
   enableCustomSelect('stations-select');
   enableCustomSelect('download-select');
+  enableCustomSelect('threshold-variable-select');
 
   // get city, state from state url
   $('#default-city-state').text(window.ce.ce('getLocationPageState')['city']);
@@ -494,22 +495,13 @@ $(function () {
     }
 
     // get graph parent element - which provides the correct dimensions for the graph
-    const graphRect = document.getElementById('stations-graph-row').getBoundingClientRect();
+    const graphRect = document.getElementById('stations-graph-wrap').getBoundingClientRect();
     let graphWidth = graphRect.width;
 
     // when smaller than 900 (full size)
     // expand graphs to cover 100%
     if (graphRect.width <= 882) {
       graphWidth = graphRect.width;
-    }
-
-    // set size of temp chart
-    if (document.querySelector('#stations-graph-wrap')) {
-      document.querySelector('#stations-graph-wrap').style.minWidth = `${graphWidth}px`;
-      document.querySelector('#stations-graph-wrap').style.maxWidth = `${graphWidth}px`;
-      document.querySelector('#stations-graph-wrap').style.width = `${graphWidth}px`;
-      document.querySelector('#stations-graph-wrap').style.height = `${graphRect.height}px`;
-      document.querySelector('#stations-graph-wrap').style.maxHeight = `${graphRect.height}px`;
     }
 
     // set size of temp chart

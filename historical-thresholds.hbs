@@ -117,13 +117,47 @@
 
           <div id="chartmap-select-wrapper" class="rounded-choice-box padding-horrizontal-half padding-vertical-half default-btn-height d-flex-center width-20">
             <div class="select chartmap-select">
-              <div id="chartmap-select-vis" class="select-styled" rel="chart">Map</div>
+              <div id="chartmap-select-vis" class="select-styled" rel="map">Map</div>
               <ul class="select-options">
                 <li id="chartmap-select-chart-link" rel="chart" class="default-select-option" nav="historical-weather-data" link="chartmap-btn-chart-link" >Chart</li>
                 <li id="chartmap-select-map-link" rel="map" class="default-select-option" nav="historical-weather-data" link="chartmap-btn-map-link">Map</li>
               </ul>
             </div>
           </div>
+
+
+          <!-- <div id="threshold_inputs_wraper" class="padding-horrizontal-half padding-vertical-half default-btn-height d-flex-left width-80"> -->
+
+            <div id="threshold-variable-select-wrapper" class="rounded-choice-box padding-horrizontal-half padding-vertical-half default-btn-height d-flex-center width-20">
+              <div class="select threshold-variable-select">
+                <div id="threshold-variable-select-vis" class="select-styled" rel="precipitation">Precipitation</div>
+                <ul class="select-options">
+                  <li id="threshold-variable-select-chart-link" rel="precipitation" class="default-select-option" nav="historical-weather-data" link="threshold-variable-btn-chart-link" >Precipitation Temperature</li>
+                  <li id="threshold-variable-select-map-link" rel="tavg" class="default-select-option" nav="historical-weather-data" link="threshold-variable-btn-map-link">Average Temperature</li>
+                  <li id="threshold-variable-select-map-link" rel="tmax" class="default-select-option" nav="historical-weather-data" link="threshold-variable-btn-map-link">Maximum Temperature</li>
+                  <li id="threshold-variable-select-map-link" rel="tmin" class="default-select-option" nav="historical-weather-data" link="threshold-variable-btn-map-link">Minimum Temperature</li>
+                </ul>
+              </div>
+            </div>
+
+
+            <div class="form-field" class="padding-horrizontal-half padding-vertical-half default-btn-height d-flex width-40">
+              <div class="form-field__control">
+                <label for="exampleField" class="form-field__label">Example field</label>
+                <input id="exampleField" type="text" class="form-field__input" />
+              </div>
+            </div>
+
+            <div class="form-field" class="padding-horrizontal-half padding-vertical-half default-btn-height d-flex width-40">
+              <div class="form-field__control">
+                <label for="exampleField" class="form-field__label">Example field</label>
+                <input id="exampleField" type="text" class="form-field__input" />
+              </div>
+            </div>
+
+
+
+          <!-- </div> -->
 
         </div>
 
@@ -138,7 +172,7 @@
     </div>
 
     <div id="stations-graph-row" class="padding-vertical width-100 height-100" >
-      <div id="stations-graph-wrap" class=" d-flex-row">
+      <div id="stations-graph-wrap" class="width-100 height-100 d-flex-row">
         <!-- width-100 height-100  -->
           <div id="thresholds-container" class="d-flex-center width-100"></div>
           <!-- <div id="multi-precip-chart" class="right_chart d-flex-center width-100"></div> -->
