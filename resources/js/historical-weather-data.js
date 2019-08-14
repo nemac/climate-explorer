@@ -244,6 +244,7 @@ $(function () {
 
 
       document.getElementById('station-info').classList.remove('d-none');
+      document.getElementById('station-info-none').classList.add('d-none');
       updateStationIDText(`${stationId}`);
       updateStationText(`${stationName}`);
 
@@ -343,10 +344,12 @@ $(function () {
   function renderStationInfo(stationName, stationId) {
     if (stationName) {
       document.getElementById('station-info').classList.remove('d-none');
+      document.getElementById('station-info-none').classList.add('d-none');
       updateStationIDText(`${stationId}`);
       updateStationText(`${stationName}`);
     } else {
       document.getElementById('station-info').classList.add('d-none');
+      document.getElementById('station-info-none').classList.remove('d-none');
     }
   }
 
@@ -450,7 +453,7 @@ $(function () {
       messsageElem.style.left = `${(rect.right - rect.left)/3}px`;
       messsageElem.style.top = `-${((rect.bottom - rect.top)/2)}px`;
     }
-    
+
     // set size of map overlay
     if (document.querySelector('.esri-view-root')) {
       document.querySelector('.esri-view-root').style.minWidth = `${rect.width}px`;

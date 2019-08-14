@@ -265,6 +265,7 @@ $(function () {
 
 
       document.getElementById('station-info').classList.remove('d-none');
+      document.getElementById('station-info-none').classList.add('d-none');
       updateStationIDText(`${stationId}`);
       updateStationText(`${stationName}`);
 
@@ -364,10 +365,12 @@ $(function () {
   function renderStationInfo(stationName, stationId) {
     if (stationName) {
       document.getElementById('station-info').classList.remove('d-none');
+      document.getElementById('station-info-none').classList.add('d-none');
       updateStationIDText(`${stationId}`);
       updateStationText(`${stationName}`);
     } else {
       document.getElementById('station-info').classList.add('d-none');
+      document.getElementById('station-info-none').classList.remove('d-none');
     }
   }
 

@@ -256,6 +256,7 @@ $(function () {
       const tidalStationMOverMHHW = val[2];
 
       document.getElementById('station-info').classList.remove('d-none');
+      document.getElementById('station-info-none').classList.add('d-none');
       updateStationIDText(`${tidalStationId}`);
       updateStationText(`${tidalStationName}`);
       updatestationMOverMHHWText(`${tidalStationMOverMHHW}m over MHHW`);
@@ -360,11 +361,13 @@ $(function () {
   function renderStationInfo(tidalStationName, tidalStationId, tidalStationMOverMHHW) {
     if (tidalStationName) {
       document.getElementById('station-info').classList.remove('d-none');
+      document.getElementById('station-info-none').classList.add('d-none');
       updateStationIDText(`${tidalStationId}`);
       updateStationText(`${tidalStationName}`);
       updatestationMOverMHHWText(`${tidalStationMOverMHHW}m over MHHW`)
     } else {
       document.getElementById('station-info').classList.add('d-none');
+      document.getElementById('station-info-none').classList.remove('d-none');
     }
   }
 
