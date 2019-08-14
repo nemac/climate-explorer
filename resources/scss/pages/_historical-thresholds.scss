@@ -7,6 +7,18 @@
   left: -1000000px;
 }
 
+$animation-duration: 0.4s;
+
+@mixin label-inactive() {
+  font-size: 1.2rem;
+  transform: translateY(0);
+}
+
+@mixin label-active() {
+  font-size: 0.75rem;
+  transform: translateY(-14px);
+}
+
 #historical-thresholds-viewport {
   background-color: $white;
   height: calc(100% - 48px - 100px) !important;
@@ -28,6 +40,104 @@
     min-height: 150px !important
   }
 
+
+
+
+      @mixin label-inactive() {
+        font: 500 14px Roboto, Helvetica, "Helvetica Neue", Arial, sans-serif !important;
+        transform: translateY(0);
+      }
+
+      @mixin label-active() {
+        font: 500 12px Roboto, Helvetica, "Helvetica Neue", Arial, sans-serif !important;
+        transform: translateY(-28px);
+      }
+
+      .form-field {
+        display: block;
+        // margin-bottom: 16px;
+        padding-bottom: 0px !important;
+        padding-top: 0px !important;
+        height: $ce3-btnheight !important;
+        line-height: $ce3-btnheight !important;
+      }
+
+      .form-field__label {
+        @include label-active();
+        display: block;
+        font-weight: normal;
+        left: 0;
+        margin: 0;
+        padding: 26px 6px;
+        position: absolute;
+        top: -16px;
+        transition: all $animation-duration;
+        width: 100%;
+      }
+      .form-field__control {
+        background: $ce3-blue5;
+        line-height: $ce3-btnheight !important;
+        @include border-top-left-radius(5px);
+        @include border-top-right-radius(5px);
+        // overflow: hidden;
+        position: relative;
+        width: 100%;
+      }
+      .form-field__bar {
+        // border-bottom: 2px solid $ce3-blue3;
+        bottom: 0;
+        content: "";
+        display: block;
+        left: 0;
+        margin: 0 auto;
+        position: absolute;
+        right: 0;
+        transform: scaleX(0);
+        transition: all $animation-duration;
+        width: 1%;
+      }
+      .form-field__input,
+      .form-field__textarea {
+        appearance: none;
+        background: transparent;
+        border: 0;
+        border-bottom: 1px solid  $ce3-blue3;
+        color: $ce3-blue3;
+        display: block;
+        font: 500 14px Roboto, Helvetica, "Helvetica Neue", Arial, sans-serif !important;
+        // margin-top: 24px;
+        outline: 0;
+        padding: $ce3-default-padding $ce3-default-padding 0 $ce3-default-padding;
+        width: 100%;
+
+        // IE 10-11
+        &:-ms-input-placeholder {
+          ~ .form-field__label {
+            @include label-inactive();
+          }
+        }
+        // All other browsers except Edge
+        &:placeholder-shown {
+          ~ .form-field__label {
+            @include label-inactive();
+          }
+        }
+        &:focus {
+          ~ .form-field__label {
+            color: $ce3-blue3;
+            @include label-active();
+          }
+          ~ .form-field__bar {
+            // border-bottom: 2px solid $ce3-blue3;
+            transform: scaleX(150);
+          }
+        }
+      }
+      .form-field__textarea {
+        height: 150px;
+      }
+
+
   .map-nostations-message {
     z-index: 500;
     width: 25%;
@@ -43,11 +153,18 @@
     @include border-radius(5px, 5px);
   }
 
-  #stations-select-wrapper, #tidalzoom-wrapper, #btn-tidalzoom {
+  #stations-select-wrapper, #threshold-variable-select-wrapper,
+  #threshold_value_form_field, #window_value_form_field {
      display: flex !important;
      @media screen and (max-width: 900px) {
        width: 100% !important;
        margin-top: 6px;
+     }
+   }
+
+   #threshold_value_form_field, #window_value_form_field {
+     @media screen and (max-width: 900px) {
+       margin-top: 24px;
      }
    }
 
