@@ -178,7 +178,7 @@ $animation-duration: 0.4s;
         font: 500 14px Roboto, Helvetica, "Helvetica Neue", Arial, sans-serif !important;
         // margin-top: 24px;
         outline: 0;
-        padding: $ce3-default-padding $ce3-default-padding 0 $ce3-default-padding;
+        padding: $ce3-default-padding; //$ce3-default-padding 0 $ce3-default-padding;
         width: 100%;
 
         // IE 10-11

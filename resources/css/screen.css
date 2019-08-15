@@ -15920,7 +15920,7 @@ input.input-inner:focus {
   display: block;
   font: 500 14px Roboto, Helvetica, "Helvetica Neue", Arial, sans-serif !important;
   outline: 0;
-  padding: 12px 12px 0 12px;
+  padding: 12px;
   width: 100%;
 }
 

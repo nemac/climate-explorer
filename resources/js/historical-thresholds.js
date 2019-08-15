@@ -233,22 +233,16 @@ $(function () {
 
     // capture what we are downloading
     switch (downloadAction) {
-      case 'download-precipitation-image': // download image
-        event.target.href = $("#multi-precip-chart canvas")[0].toDataURL('image/png');
-        event.target.download = "daily_vs_climate_precip_" + stationId + ".png";
+      case 'download-thresholds-image': // download image
+        event.target.href = $("#thresholds-container canvas")[0].toDataURL('image/png');
+        event.target.download = "thresholds_" + stationId + ".png";
         break;
-      case 'download-precipitation-data':
-        $('#multi-chart').stationAnnualGraph('downloadPrecipitationData', event.currentTarget);
-        break;
-      case 'download-temperature-image': // download image
-        event.target.href = $("#multi-chart canvas")[0].toDataURL('image/png');
-        event.target.download = "daily_vs_climate_precip_" + stationId + ".png";
-        break;
-      case 'download-temperature-image':
-        $('#multi-chart').stationAnnualGraph('downloadTemperatureData', event.currentTarget);
+      case 'download-thresholds-data':
+        $("#thresholds-container").item('downloadExceedanceData', event.currentTarget);
         break;
       default:
-        $('#multi-chart').stationAnnualGraph('downloadTemperatureData', event.currentTarget);
+      event.target.href = $("#thresholds-container canvas")[0].toDataURL('image/png');
+      event.target.download = "thresholds_" + stationId + ".png";
     }
   });
 
