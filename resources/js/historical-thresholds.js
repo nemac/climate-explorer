@@ -59,8 +59,6 @@ $(function () {
   };
 
   $("#thresholds-container").item(initialObj);
-
-    console.log('initialObj', initialObj)
   // updates the visible text for the station pulldown with the information from the state url
   function updateStationSelectText(stations) {
     const stationsSelectElem = $('#stations-select-vis');
@@ -254,6 +252,162 @@ $(function () {
     }
   });
 
+  // imcrement threshold
+  $('.threshold-up').click( function (e) {
+    const target = $(e.target);
+    const thresholdValueElem = document.getElementById('threshold-value');
+    if (thresholdValueElem) {
+      const min = parseFloat(thresholdValueElem.getAttribute('min')).toFixed(1);
+      const max = parseFloat(thresholdValueElem.getAttribute('max')).toFixed(1);
+      const step = parseFloat(thresholdValueElem.getAttribute('step')).toFixed(1);
+      const val = parseFloat($(thresholdValueElem).val()).toFixed(1);
+      const newVal = parseFloat(parseFloat(val) + parseFloat(step)).toFixed(1);
+
+      if (parseFloat(newVal) > parseFloat(max)) {
+        $(thresholdValueElem).val(val);
+      } else {
+        $(thresholdValueElem).val(newVal);
+        $("#thresholds-container").item({
+          threshold: newVal,
+        }).item('update');
+      }
+    }
+  });
+
+  // descrememt threshold
+  $('.threshold-down').click( function (e) {
+    const target = $(e.target);
+    const thresholdValueElem = document.getElementById('threshold-value');
+    if (thresholdValueElem) {
+      const min = parseFloat(thresholdValueElem.getAttribute('min')).toFixed(1);
+      const max = parseFloat(thresholdValueElem.getAttribute('max')).toFixed(1);
+      const step = parseFloat(thresholdValueElem.getAttribute('step')).toFixed(1);
+      const val = parseFloat($(thresholdValueElem).val()).toFixed(1);
+      const newVal = parseFloat(parseFloat(val) - parseFloat(step)).toFixed(1);
+
+      if (parseFloat(newVal) < parseFloat(min)) {
+        $(thresholdValueElem).val(val);
+      } else {
+        $(thresholdValueElem).val(newVal);
+        $("#thresholds-container").item({
+          threshold: newVal,
+        }).item('update');
+      }
+    }
+  });
+
+  // imcrement window
+  $('.window-up').click( function (e) {
+    const target = $(e.target);
+    const windowValueElem = document.getElementById('window-value');
+    if (windowValueElem) {
+      const min = parseFloat(windowValueElem.getAttribute('min')).toFixed(1);
+      const max = parseFloat(windowValueElem.getAttribute('max')).toFixed(1);
+      const step = parseFloat(windowValueElem.getAttribute('step')).toFixed(1);
+      const val = parseFloat($(windowValueElem).val()).toFixed(1);
+      const newVal = parseFloat(parseFloat(val) + parseFloat(step)).toFixed(1);
+
+      if (parseFloat(newVal) > parseFloat(max)) {
+        $(windowValueElem).val(val);
+      } else {
+        $(windowValueElem).val(newVal);
+        $("#thresholds-container").item({
+          window: newVal,
+        }).item('update');
+      }
+    }
+  });
+
+  // descrememt window
+  $('.window-down').click( function (e) {
+    const target = $(e.target);
+    const windowValueElem = document.getElementById('window-value');
+    if (windowValueElem) {
+      const min = parseFloat(windowValueElem.getAttribute('min')).toFixed(1);
+      const max = parseFloat(windowValueElem.getAttribute('max')).toFixed(1);
+      const step = parseFloat(windowValueElem.getAttribute('step')).toFixed(1);
+      const val = parseFloat($(windowValueElem).val()).toFixed(1);
+      const newVal = parseFloat(parseFloat(val) - parseFloat(step)).toFixed(1);
+
+      if (parseFloat(newVal) < parseFloat(min)) {
+        $(windowValueElem).val(val);
+      } else {
+        $(windowValueElem).val(newVal);
+        $("#thresholds-container").item({
+          window: newVal,
+        }).item('update');
+      }
+    }
+  });
+
+  // in resposnive mode, event hanlder a for when season (time) varriable changes
+  $('#threshold-variable-select-vis').bind('cs-changed', function(e) {
+    const target = $(e.target);
+    const notDisabled = !target.hasClass('disabled');
+    if ( notDisabled ) {
+      const val = $('#threshold-variable-select-vis').attr('rel');
+
+      const thresholdValueElem = document.getElementById('threshold-value');
+      const windowValueElem = document.getElementById('window-value');
+
+      if (thresholdValueElem) {
+        // capture what we are downloading
+        switch (val) {
+          case 'precipitation':
+            thresholdValueElem.setAttribute('min', 0);
+            thresholdValueElem.setAttribute('max', 150);
+            thresholdValueElem.setAttribute('step', .1);
+            thresholdValueElem.setAttribute('value', 1);
+            $(thresholdValueElem).val(1);
+            document.getElementById('threshold-unit').innerHTML = ' in inches';
+            break;
+          case 'tavg':
+            thresholdValueElem.setAttribute('min', -200);
+            thresholdValueElem.setAttribute('max', 200);
+            thresholdValueElem.setAttribute('step', .1);
+            thresholdValueElem.setAttribute('value', 70);
+            $(thresholdValueElem).val(70);
+            document.getElementById('threshold-unit').innerHTML = ' °F';
+            break;
+          case 'tmin':
+            thresholdValueElem.setAttribute('min', -200);
+            thresholdValueElem.setAttribute('max', 200);
+            thresholdValueElem.setAttribute('step', .1);
+            thresholdValueElem.setAttribute('value', 32);
+            $(thresholdValueElem).val(32);
+            document.getElementById('threshold-unit').innerHTML = ' °F';
+            break;
+          case 'tmax':
+            thresholdValueElem.setAttribute('min', -200);
+            thresholdValueElem.setAttribute('max', 200);
+            thresholdValueElem.setAttribute('step', .1);
+            thresholdValueElem.setAttribute('value', 95);
+            $(thresholdValueElem).val(95);
+            document.getElementById('threshold-unit').innerHTML = ' °F';
+            break;
+          default:
+            thresholdValueElem.setAttribute('min', 0);
+            thresholdValueElem.setAttribute('max', 150);
+            thresholdValueElem.setAttribute('step', .1);
+            thresholdValueElem.setAttribute('value', 1);
+            $(thresholdValueElem).val(1);
+            document.getElementById('threshold-unit').innerHTML = ' in inches';
+        }
+      }
+
+      const variableValue = val;
+      const windowValue = parseInt($('#window-value').val());
+      const thresholdValue = parseFloat($('#threshold-value').val());
+
+      $("#thresholds-container").item({
+        threshold: thresholdValue,
+        window: windowValue,
+        variable: variableValue
+      }).item('update');
+
+    }
+  });
+
   // in resposnive mode, event hanlder a for when season (time) varriable changes
   $('#stations-select-vis').bind('cs-changed', function(e) {
     const target = $(e.target);
@@ -305,6 +459,26 @@ $(function () {
     }
   })
 
+  // in resposnive mode, event hanlder a for when  threshold value (inches of rain temp in F) changes
+  $('#threshold-value').change( function(e) {
+    const target = $(e.target);
+    const newValue = parseFloat($(target).val());
+
+    // update chart with new threshold value
+    $("#thresholds-container").item({ threshold: newValue }).item('update');
+
+  });
+
+  // in resposnive mode, event hanlder a for when  window value (duration of days) changes
+  $('#window-value').change( function(e) {
+    const target = $(e.target);
+    const newValue = parseInt($(target).val());
+
+    // update chart with new threshold value
+    $("#thresholds-container").item({ window: newValue }).item('update');
+
+  });
+
   // eanbles time chart, map click events
   $('#chartmap-wrapper').click( function(e) {
     const target = $(e.target);
@@ -326,7 +500,7 @@ $(function () {
 
     // reset map and chart sizes
     setMapSize();
-  })
+  });
 
   // in repsonsive mode the time is a pulldown this eanbles the change of the chart map
   $('#chartmap-select-vis').bind('cs-changed', function(e) {

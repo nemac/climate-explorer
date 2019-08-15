@@ -26,6 +26,15 @@ $animation-duration: 0.4s;
   overflow: auto !important;
   flex: 1 1 auto !important;
 
+  input[type=number] {
+      height: 30px;
+  }
+
+  input[type=number]:hover::-webkit-inner-spin-button {
+      width: 14px;
+      height: 30px;
+  }
+
   &.expanded {
     @media screen and (min-width: 850px) {
       min-height: calc(100% - 48px - 12px - 100px) !important;
@@ -41,7 +50,17 @@ $animation-duration: 0.4s;
   }
 
 
+      input[type=number]::-webkit-inner-spin-button,
+      input[type=number]::-webkit-outer-spin-button
+      {
+        -webkit-appearance: none;
+        margin: 0;
+      }
 
+      input[type=number]
+      {
+        -moz-appearance: textfield;
+      }
 
       @mixin label-inactive() {
         font: 500 14px Roboto, Helvetica, "Helvetica Neue", Arial, sans-serif !important;
@@ -53,6 +72,57 @@ $animation-duration: 0.4s;
         transform: translateY(-28px);
       }
 
+      .threshold-nav, .window-nav {
+        z-index: 500;
+        font: 700 14px Roboto, Helvetica, "Helvetica Neue", Arial, sans-serif !important;
+        float: left;
+        margin-left: -18px;
+        height: $ce3-btnheight !important;
+        width: $ce3-btnheight/2;
+      }
+
+      .threshold-button.threshold-up, .window-button.window-up{
+        cursor: pointer;
+        position: relative;
+        height: $ce3-btnheight/2;
+        width: $ce3-btnheight/2;
+        top: 1px;
+        left: 3px;
+        align-items: center;
+        justify-content: center;
+        display: flex;
+        background-color: $ce3-blue6;
+        @include border-top-left-radius(5px);
+        @include border-top-right-radius(5px);
+        border: 1px solid transparentize($ce3-blue3, 0.5);
+        &:hover, &:focus {
+          outline: none;
+          background-color: darken($ce3-blue6, 5) !important;
+        }
+      }
+
+      .threshold-button.threshold-down,
+        .window-button.window-down{
+        cursor: pointer;
+        font: 700 16px Roboto, Helvetica, "Helvetica Neue", Arial, sans-serif !important;
+        position: relative;
+        bottom: 0px;
+        left: 3px;
+        height: $ce3-btnheight/2;
+        width: $ce3-btnheight/2;
+        align-items: center;
+        justify-content: center;
+        display: flex;
+        background-color: $ce3-blue6;
+        @include border-bottom-left-radius(5px);
+        @include border-bottom-right-radius(5px);
+        border: 1px solid transparentize($ce3-blue3, 0.5);
+        &:hover, &:focus {
+          outline: none;
+          background-color: darken($ce3-blue6, 5) !important;
+        }
+      }
+
       .form-field {
         display: block;
         // margin-bottom: 16px;
@@ -62,19 +132,21 @@ $animation-duration: 0.4s;
         line-height: $ce3-btnheight !important;
       }
 
-      .form-field__label {
+      .form-field-label {
         @include label-active();
         display: block;
         font-weight: normal;
         left: 0;
         margin: 0;
-        padding: 26px 6px;
+        // padding: 26px 6px;
         position: absolute;
-        top: -16px;
+        top: 10px;
         transition: all $animation-duration;
         width: 100%;
+        height: 18px !important;
       }
-      .form-field__control {
+
+      .form-field-control {
         background: $ce3-blue5;
         line-height: $ce3-btnheight !important;
         @include border-top-left-radius(5px);
@@ -83,7 +155,8 @@ $animation-duration: 0.4s;
         position: relative;
         width: 100%;
       }
-      .form-field__bar {
+
+      .form-field-bar {
         // border-bottom: 2px solid $ce3-blue3;
         bottom: 0;
         content: "";
@@ -96,9 +169,10 @@ $animation-duration: 0.4s;
         transition: all $animation-duration;
         width: 1%;
       }
-      .form-field__input,
-      .form-field__textarea {
+
+      .form-field-input {
         appearance: none;
+        float: left;
         background: transparent;
         border: 0;
         border-bottom: 1px solid  $ce3-blue3;
@@ -112,31 +186,28 @@ $animation-duration: 0.4s;
 
         // IE 10-11
         &:-ms-input-placeholder {
-          ~ .form-field__label {
+          ~ .form-field-label {
             @include label-inactive();
           }
         }
         // All other browsers except Edge
         &:placeholder-shown {
-          ~ .form-field__label {
+          ~ .form-field-label {
             @include label-inactive();
           }
         }
+
         &:focus {
-          ~ .form-field__label {
+          ~ .form-field-label {
             color: $ce3-blue3;
             @include label-active();
           }
-          ~ .form-field__bar {
+          ~ .form-field-bar {
             // border-bottom: 2px solid $ce3-blue3;
             transform: scaleX(150);
           }
         }
       }
-      .form-field__textarea {
-        height: 150px;
-      }
-
 
   .map-nostations-message {
     z-index: 500;

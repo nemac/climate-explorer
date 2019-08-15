@@ -88,9 +88,6 @@
               <span id="default-station-id-label" class="text-info-box label" >Station: </span>
               <span id="default-station-id" class="text-info-box data right-padding" ></span>
             </span>
-
-            <!-- <span id="" class="text-info-box" > - </span> -->
-            <!-- <span id="default-chart-map-varriable" class="text-info-box" rel="tmax">Avg Daily Max Temp (°F)</span> -->
           </div>
 
 
@@ -134,7 +131,7 @@
               <div class="select threshold-variable-select">
                 <div id="threshold-variable-select-vis" class="select-styled" rel="precipitation">Precipitation</div>
                 <ul class="select-options">
-                  <li id="threshold-variable-select-chart-link" rel="precipitation" class="default-select-option" nav="historical-weather-data" link="threshold-variable-btn-chart-link" >Precipitation Temperature</li>
+                  <li id="threshold-variable-select-chart-link" rel="precipitation" class="default-select-option" nav="historical-weather-data" link="threshold-variable-btn-chart-link" >Precipitation</li>
                   <li id="threshold-variable-select-map-link" rel="tavg" class="default-select-option" nav="historical-weather-data" link="threshold-variable-btn-map-link">Average Temperature</li>
                   <li id="threshold-variable-select-map-link" rel="tmax" class="default-select-option" nav="historical-weather-data" link="threshold-variable-btn-map-link">Maximum Temperature</li>
                   <li id="threshold-variable-select-map-link" rel="tmin" class="default-select-option" nav="historical-weather-data" link="threshold-variable-btn-map-link">Minimum Temperature</li>
@@ -145,20 +142,28 @@
 
             <div id="threshold_value_form_field" class="form-field padding-horrizontal-half padding-vertical-half default-btn-height d-flex width-20">
 
-                <div class="form-field__control height-100">
-                  <input id="street" type="text" class="form-field__input height-100" placeholder=" " />
-                  <label for="street"class="form-field__label height-100">Threshold<span id="threshold__unit"> in degress F</span></label>
-                  <div class="form-field__bar height-100"></div>
+                <div class="form-field-control height-100">
+                  <input id="threshold-value" type="number" class="form-field-input height-100" placeholder=" " min="0" max="200" value="1" autofocus="autofocus" step="0.1"/>
+                  <div class="threshold-nav">
+                    <div class="threshold-button threshold-up">+</div>
+                    <div class="threshold-button threshold-down">-</div>
+                  </div>
+                  <label for="threshold-value" class="form-field-label height-100">Threshold<span id="threshold-unit"> in inches</span></label>
+                  <div class="form-field-bar height-100"></div>
                 </div>
 
               </div>
 
             <div id="window_value_form_field" class="form-field padding-horrizontal-half padding-vertical-half default-btn-height d-flex width-20">
 
-              <div class="form-field__control height-100">
-                <input id="Other" type="text" class="form-field__input height-100" placeholder=" " />
-                <label for="Other" class="form-field__label height-100">Window<span id="window_unit"> in days</span></label>
-                <div class="form-field__bar height-100"></div>
+              <div class="form-field-control height-100">
+                <input id="window-value" type="number" class="form-field-input height-100" placeholder=" " min="0" max="365" value="1" autofocus="autofocus" step="1"/>
+                <div class="window-nav">
+                  <div class="window-button window-up">+</div>
+                  <div class="window-button window-down">-</div>
+                </div>
+                <label for="window-value" class="form-field-label height-100">Window<span id="window-unit"> in days</span></label>
+                <div class="form-field-bar height-100"></div>
               </div>
 
             </div>
