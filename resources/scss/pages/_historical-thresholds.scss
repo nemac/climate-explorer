@@ -85,13 +85,13 @@ $animation-duration: 0.4s;
         align-items: center;
         justify-content: center;
         display: flex;
-        background-color: $ce3-blue5;
+        background-color: $ce3-blue6;
         @include border-bottom-right-radius(5px);
         @include border-top-right-radius(5px);
         border: 1px solid transparentize($ce3-blue3, 0.5);
         &:hover, &:focus {
           outline: none;
-          background-color: darken($ce3-blue5, 5) !important;
+          background-color: darken($ce3-blue6, 10) !important;
         }
       }
 
@@ -109,13 +109,13 @@ $animation-duration: 0.4s;
         align-items: center;
         justify-content: center;
         display: flex;
-        background-color: $ce3-blue5;
+        background-color: $ce3-blue6;
         @include border-top-left-radius(5px);
         @include border-bottom-left-radius(5px);
         border: 1px solid transparentize($ce3-blue3, 0.5);
         &:hover, &:focus {
           outline: none;
-          background-color: darken($ce3-blue5, 5) !important;
+          background-color: darken($ce3-blue6, 10) !important;
         }
       }
 
@@ -130,9 +130,10 @@ $animation-duration: 0.4s;
 
       .form-field-label {
         @include label-active();
+        white-space: pre;
         display: block;
         font-weight: normal;
-        left: 0;
+        left: -24px;
         margin: 0;
         // padding: 26px 6px;
         position: absolute;
@@ -224,7 +225,9 @@ $animation-duration: 0.4s;
   #stations-select-wrapper, #threshold-variable-select-wrapper,
   #threshold_value_form_field, #window_value_form_field {
      display: flex !important;
+     padding-right: 24px !important;
      @media screen and (max-width: 900px) {
+       padding-right: 0px !important;
        width: 100% !important;
        margin-top: 6px;
      }
