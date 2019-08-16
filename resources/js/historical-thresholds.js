@@ -1,5 +1,7 @@
 'use strict';
 
+// needs state url update of threshold varriables
+
 $(function () {
 
   enableCustomSelect('chartmap-select');
@@ -79,12 +81,15 @@ $(function () {
 
     // add new graph wrappers so they will initialize
     $('#stations-graph-wrap').append('<div id="thresholds-container" class="d-flex-center width-100"></div>');
-    // $('#stations-graph-wrap').append('<div id="multi-precip-chart" class="left_chart d-flex-center width-50"></div>');
 
     // update graphs with new station id and station name
-    $('#thresholds-container').item({ variable: 'precipitation', station: stations.stationId, stationName: stations.stationName });
-    // $('#multi-chart').stationAnnualGraph({ variable: 'temperature', station: stations.stationId, stationName: stations.stationName });
-    // $('#multi-precip-chart').stationAnnualGraph({ variable: 'precipitation', station:  stations.stationId, stationName: stations.stationName });
+    $('#thresholds-container').item({
+      variable: stations.variable,
+      station: stations.stationId,
+      stationName: stations.stationName,
+      window: stations.window,
+      threshold: stations.stations
+    }).item('update');
   }
 
   // updates the visible text for the station pulldown with the information from the state url
@@ -199,8 +204,19 @@ $(function () {
     // // unhide chart overlay
     showGraphs()
 
+    // get current threshold values
+    const variableValue = $('#threshold-variable-select-vis').attr('rel');
+    const windowValue = parseInt($('#window-value').val());
+    const thresholdValue = parseFloat($('#threshold-value').val());
+
     // reset graphs
-    resetGraphs({variable: 'precipitation', stationId, stationName });;
+    resetGraphs({
+      variable: variableValue,
+      stationId,
+      stationName,
+      window: windowValue,
+      threshold: thresholdValue
+    });;
 
     // toggle button visual state
     toggleButton($('.btn-chart'));
@@ -250,13 +266,16 @@ $(function () {
   $('.threshold-up').click( function (e) {
     const target = $(e.target);
     const thresholdValueElem = document.getElementById('threshold-value');
+
+    // ensure thresholdValue element exits
     if (thresholdValueElem) {
+
+      // get thresholdValue element values
       const min = parseFloat(thresholdValueElem.getAttribute('min')).toFixed(1);
       const max = parseFloat(thresholdValueElem.getAttribute('max')).toFixed(1);
       const step = parseFloat(thresholdValueElem.getAttribute('step')).toFixed(1);
       const val = parseFloat($(thresholdValueElem).val()).toFixed(1);
       const newVal = parseFloat(parseFloat(val) + parseFloat(step)).toFixed(1);
-
       if (parseFloat(newVal) > parseFloat(max)) {
         $(thresholdValueElem).val(val);
       } else {
@@ -334,16 +353,14 @@ $(function () {
     }
   });
 
-  // in resposnive mode, event hanlder a for when season (time) varriable changes
-  $('#threshold-variable-select-vis').bind('cs-changed', function(e) {
-    const target = $(e.target);
+  function thresholdVariableChanged(target) {
+    console.log('thresholdVariableChanged target', target)
     const notDisabled = !target.hasClass('disabled');
     if ( notDisabled ) {
       const val = $('#threshold-variable-select-vis').attr('rel');
-
       const thresholdValueElem = document.getElementById('threshold-value');
       const windowValueElem = document.getElementById('window-value');
-
+      console.log('thresholdVariableChanged val', val)
       if (thresholdValueElem) {
         // capture what we are downloading
         switch (val) {
@@ -400,6 +417,10 @@ $(function () {
       }).item('update');
 
     }
+  }
+  // in resposnive mode, event hanlder a for when season (time) varriable changes
+  $('#threshold-variable-select-vis').bind('cs-changed', function(e) {
+    thresholdVariableChanged($(e.target));
   });
 
   // in resposnive mode, event hanlder a for when season (time) varriable changes
@@ -438,8 +459,22 @@ $(function () {
       // unhide chart overlay
       showGraphs();
 
+      // get current threshold values
+      const variableValue = $('#threshold-variable-select-vis').attr('rel');
+      const windowValue = parseInt($('#window-value').val());
+      const thresholdValue = parseFloat($('#threshold-value').val());
+
       // reset graphs
-      resetGraphs({variable: 'precipitation', stationId, stationName });;
+      resetGraphs({
+        variable: variableValue,
+        stationId,
+        stationName,
+        window: windowValue,
+        threshold: thresholdValue
+      });
+
+      // make sure selctor actually changes
+      thresholdVariableChanged($('#threshold-variable-select-vis'));
 
       // toggle button visual state
       toggleButton($('.btn-chart'));
@@ -602,7 +637,6 @@ $(function () {
     // show graph hide map
     // todo add this to puldown events also
     stationUpdated: function(event, options) {
-
       // unhide chart overlay
       showGraphs();
 
@@ -612,8 +646,19 @@ $(function () {
       // update chart pulldown to chart as default
       chartPulldownChartText()
 
+      // get current threshold values
+      const variableValue = $('#threshold-variable-select-vis').attr('rel');
+      const windowValue = parseInt($('#window-value').val());
+      const thresholdValue = parseFloat($('#threshold-value').val());
+
       // reset graphs
-      resetGraphs({variable: 'precipitation', stationId: options.stationId, stationName: options.stationName });;
+      resetGraphs({
+        variable: variableValue,
+        window: windowValue,
+        threshold: thresholdValue,
+        stationId: options.stationId,
+        stationName: options.stationName
+      });
 
       // updates the visible text for the station pulldown with the information from the state url
       updateStationSelectText({stationName: options.stationName, stationId: options.stationId})
@@ -624,8 +669,14 @@ $(function () {
 
       toggleDownloads();
 
-      // reset map and chart sizes
-      setMapSize();
+      thresholdVariableChanged($('#threshold-variable-select-vis'));
+
+      setTimeout(function () {
+        // reset map and chart sizes
+        // filer transistion means heigh will be updates in few seconds
+        // so delaying the resize ensures proper size
+        setMapSize();
+      }, 100);
     }
   }, stationsMapState));
 
