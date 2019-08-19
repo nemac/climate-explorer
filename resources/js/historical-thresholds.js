@@ -31,7 +31,6 @@ $(function () {
   const threshold = stationsMapState['threshold']  || 1;
   const windowValue = stationsMapState['window']  || 1;
   const thresholdVariable = stationsMapState['thresholdVariable']  || 'precipitation';
-  console.log('thresholdVariable', thresholdVariable)
 
   // initialize staion map state from url values
   stationsMapState = {
@@ -67,14 +66,15 @@ $(function () {
     dataAPIEndpoint:  thresholdStationsDataURL.split('StnData')[0],
     barColor: '#307bda' // Color for bars.
   };
-
-  console.log('initialObj', initialObj)
-
-  $('#threshold-value').val(initialObj.threshold)
-  $('#window-value').val(initialObj.window)
+  console.log('initialObj.threshold',  initialObj.threshold)
   updateThresholdVariableSelectText(initialObj);
+  $('#threshold-value').val(initialObj.threshold)
+  $('#threshold-value').text(initialObj.threshold)
+  $('#window-value').val(initialObj.window)
+  $('#window-value').text(initialObj.window)
 
-  $("#thresholds-container").item(initialObj);
+   $("#thresholds-container").item(initialObj);
+  // $("#thresholds-container").item(initialObj).item('update');
 
   // updates the visible text for the station pulldown with the information from the state url
   function updateStationSelectText(stations) {
@@ -92,7 +92,6 @@ $(function () {
     const thresholdVariableSelectElem = $('#threshold-variable-select-vis');
     const thresholdVariable = initialObj.variable;
 
-    console.log('updateThresholdVariableSelectText', initialObj, thresholdVariable)
     if (thresholdVariableSelectElem) {
       if ( thresholdVariable !== undefined) {
         thresholdVariableSelectElem.attr('rel', thresholdVariable);
@@ -122,7 +121,7 @@ $(function () {
   function resetGraphs(stations) {
     // remove and reset old graphs
     $('#stations-graph-wrap').empty();
-
+    console.log('resetGraphs stations', stations)
     // add new graph wrappers so they will initialize
     $('#stations-graph-wrap').append('<div id="thresholds-container" class="d-flex-center width-100"></div>');
 
@@ -255,12 +254,13 @@ $(function () {
 
     // reset graphs
     resetGraphs({
-      variable: variableValue,
       stationId,
       stationName,
+      variable: variableValue,
       window: windowValue,
-      threshold: thresholdValue
-    });;
+      threshold: thresholdValue,
+      from: 'stationid'
+    });
 
     // toggle button visual state
     toggleButton($('.btn-chart'));
@@ -330,7 +330,6 @@ $(function () {
         const stationId = stations[0];
         const variableValue = $('#threshold-variable-select-vis').attr('rel'); //  , thresholdValue: variableValue
 
-        console.log('threshold-up', stationId, stationName)
         // change map url state
         window.ce.ce('setStationsMapState', { stationId, stationName, threshold: newVal, thresholdValue: variableValue});
 
@@ -425,7 +424,7 @@ $(function () {
         const variableValue = $('#threshold-variable-select-vis').attr('rel'); //  , thresholdValue: variableValue
 
         // change map url state
-        window.ce.ce('setStationsMapState', { stationId, stationName, window: newVal,  thresholdValue: variableValu });
+        window.ce.ce('setStationsMapState', { stationId, stationName, window: newVal,  thresholdValue: variableValue });
 
         $("#thresholds-container").item({
           window: newVal,
@@ -496,8 +495,6 @@ $(function () {
       // change map url state
       window.ce.ce('setStationsMapState', {stationId, stationName,  threshold: thresholdValue, window: windowValue, thresholdVariable: variableValue});
 
-      console.log('setStationsMapState', {stationId, stationName,  threshold: thresholdValue, window: windowValue, thresholdVariable: variableValue})
-
       $("#thresholds-container").item({
         threshold: thresholdValue,
         window: windowValue,
@@ -551,8 +548,6 @@ $(function () {
         thresholdVariable: variableValue
       };
 
-      console.log(stationsMapState)
-
       // unhide chart overlay
       showGraphs();
 
@@ -565,7 +560,7 @@ $(function () {
         threshold: thresholdValue
       });
 
-      // make sure selctor actually changes
+      // make sure selector actually changes
       thresholdVariableChanged($('#threshold-variable-select-vis'));
 
       // toggle button visual state
@@ -857,5 +852,7 @@ $(function () {
     setMapSize();
   })
 
-
+  // not sure why but on initalize does not update the graph so this makes sure url updates happen.
+  let thresholdValueTEMP = parseFloat($('#threshold-value').val());
+  $("#thresholds-container").item({ threshold: thresholdValueTEMP }).item('update');
 });
