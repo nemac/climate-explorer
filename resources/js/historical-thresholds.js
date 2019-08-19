@@ -1,6 +1,5 @@
 'use strict';
 
-// needs state url update of threshold varriables
 // add auto hide for what is this.
 
 $(function () {
@@ -66,15 +65,13 @@ $(function () {
     dataAPIEndpoint:  thresholdStationsDataURL.split('StnData')[0],
     barColor: '#307bda' // Color for bars.
   };
-  console.log('initialObj.threshold',  initialObj.threshold)
+
   updateThresholdVariableSelectText(initialObj);
-  $('#threshold-value').val(initialObj.threshold)
-  $('#threshold-value').text(initialObj.threshold)
-  $('#window-value').val(initialObj.window)
-  $('#window-value').text(initialObj.window)
+  $('#threshold-value').val(initialObj.threshold);
+  $('#window-value').val(initialObj.window);
 
    $("#thresholds-container").item(initialObj);
-  // $("#thresholds-container").item(initialObj).item('update');
+   $("#thresholds-container").item(initialObj);
 
   // updates the visible text for the station pulldown with the information from the state url
   function updateStationSelectText(stations) {
@@ -113,6 +110,8 @@ $(function () {
         }
       }
     }
+
+    thresholdVariableChanged($(thresholdVariableSelectElem))
   }
 
   // the way graphs are handled and initialized require them to visible
@@ -853,6 +852,7 @@ $(function () {
   })
 
   // not sure why but on initalize does not update the graph so this makes sure url updates happen.
+  // this is a bit hacky way of resolving....
   let thresholdValueTEMP = parseFloat($('#threshold-value').val());
   $("#thresholds-container").item({ threshold: thresholdValueTEMP }).item('update');
 });
