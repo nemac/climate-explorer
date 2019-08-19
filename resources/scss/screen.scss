@@ -234,13 +234,15 @@ h6 {
   overflow: hidden;
   white-space: pre;
   justify-content: left;
-  margin-top: 7px;
+  // margin-top: 7px;
+  height: 36px !important;
+  padding-left: 6px;
+  padding-top: 8px;
   height: calc(100% - 7px) !important;
   @include border-radius(24px, 24px);
   @include transition(all 0.2s ease-in);
   margin-left: $ce3-padding-half !important;
-  height: 36px !important;
-  padding-left: 6px;
+
 
   @media screen and (max-width: 900px) {
     margin-top: 14px;
@@ -287,7 +289,7 @@ h6 {
 .select-options {
   display: none;
   position: relative;
-  top: 2px;
+  top: 8px;
   right: 0;
   left: 0;
   z-index: 999;
