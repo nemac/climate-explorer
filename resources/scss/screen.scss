@@ -231,12 +231,17 @@ h6 {
 
 .select-styled {
   display: flex !important;
+  overflow: hidden;
+  white-space: pre;
   justify-content: left;
   margin-top: 7px;
   height: calc(100% - 7px) !important;
   @include border-radius(24px, 24px);
   @include transition(all 0.2s ease-in);
   margin-left: $ce3-padding-half !important;
+  height: 36px !important;
+  padding-left: 6px;
+
   @media screen and (max-width: 900px) {
     margin-top: 14px;
     height: calc(100% - 14px) !important;
@@ -257,7 +262,9 @@ h6 {
     font-family: 'Font Awesome 5 Free';
     font-weight: 900;
     content: '\f0d7';
-    right: 6px;
+    // right: 6px;
+    right: 0px;
+    bottom: 6px;
     width: 24px;
     height: 24px;
     border-radius: 24px;
@@ -1045,7 +1052,7 @@ input.input-inner-default:focus  {
 #info-row, #search-row, #chart-row, #map-row {
   width: 100% !important;
   align-self: center !important;
-
+  // min-height: 58px;
   // @media screen and (max-width: 1240px) {
   //   width: 90% !important;
   // }
