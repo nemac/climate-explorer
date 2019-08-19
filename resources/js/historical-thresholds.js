@@ -1,6 +1,7 @@
 'use strict';
 
 // needs state url update of threshold varriables
+// add auto hide for what is this.
 
 $(function () {
 
@@ -280,6 +281,15 @@ $(function () {
         $(thresholdValueElem).val(val);
       } else {
         $(thresholdValueElem).val(newVal);
+
+        const stations = $('#stations-select-vis').attr('rel').split(',');
+        const stationName = stations[1];
+        const stationId = stations[0];
+
+        console.log('threshold-up', stationId, stationName)
+        // change map url state
+        window.ce.ce('setStationsMapState', { stationId, stationName, threshold: newVal });
+
         $("#thresholds-container").item({
           threshold: newVal,
         }).item('update');
@@ -302,6 +312,14 @@ $(function () {
         $(thresholdValueElem).val(val);
       } else {
         $(thresholdValueElem).val(newVal);
+
+        const stations = $('#stations-select-vis').attr('rel').split(',');
+        const stationName = stations[1];
+        const stationId = stations[0];
+
+        // change map url state
+        window.ce.ce('setStationsMapState', { stationId, stationName, threshold: newVal });
+
         $("#thresholds-container").item({
           threshold: newVal,
         }).item('update');
@@ -324,6 +342,14 @@ $(function () {
         $(windowValueElem).val(val);
       } else {
         $(windowValueElem).val(newVal);
+
+        const stations = $('#stations-select-vis').attr('rel').split(',');
+        const stationName = stations[1];
+        const stationId = stations[0];
+
+        // change map url state
+        window.ce.ce('setStationsMapState', {stationId, stationName,  window: newVal });
+
         $("#thresholds-container").item({
           window: newVal,
         }).item('update');
@@ -346,6 +372,14 @@ $(function () {
         $(windowValueElem).val(val);
       } else {
         $(windowValueElem).val(newVal);
+
+        const stations = $('#stations-select-vis').attr('rel').split(',');
+        const stationName = stations[1];
+        const stationId = stations[0];
+
+        // change map url state
+        window.ce.ce('setStationsMapState', { stationId, stationName, window: newVal });
+
         $("#thresholds-container").item({
           window: newVal,
         }).item('update');
@@ -354,13 +388,11 @@ $(function () {
   });
 
   function thresholdVariableChanged(target) {
-    console.log('thresholdVariableChanged target', target)
     const notDisabled = !target.hasClass('disabled');
     if ( notDisabled ) {
       const val = $('#threshold-variable-select-vis').attr('rel');
       const thresholdValueElem = document.getElementById('threshold-value');
       const windowValueElem = document.getElementById('window-value');
-      console.log('thresholdVariableChanged val', val)
       if (thresholdValueElem) {
         // capture what we are downloading
         switch (val) {
@@ -410,6 +442,13 @@ $(function () {
       const windowValue = parseInt($('#window-value').val());
       const thresholdValue = parseFloat($('#threshold-value').val());
 
+      const stations = $('#stations-select-vis').attr('rel').split(',');
+      const stationName = stations[1];
+      const stationId = stations[0];
+
+      // change map url state
+      window.ce.ce('setStationsMapState', {stationId, stationName,  threshold: thresholdValue, window: windowValue, thresholdVariable: variableValue});
+
       $("#thresholds-container").item({
         threshold: thresholdValue,
         window: windowValue,
@@ -432,14 +471,18 @@ $(function () {
       const stationName = val[1];
       const stationId = val[0];
 
-
       document.getElementById('station-info').classList.remove('d-none');
       document.getElementById('station-info-none').classList.add('d-none');
       updateStationIDText(`${stationId}`);
       updateStationText(`${stationName}`);
 
+      // get current threshold values
+      const variableValue = $('#threshold-variable-select-vis').attr('rel');
+      const windowValue = parseInt($('#window-value').val());
+      const thresholdValue = parseFloat($('#threshold-value').val());
+
       // change map varriable
-      window.ce.ce('setStationsMapState', {stationId, stationName});
+      window.ce.ce('setStationsMapState', {stationId, stationName, threshold: thresholdValue, window: windowValue, thresholdVariable: variableValue});
 
       // state url object
       stationsMapState = {
@@ -453,16 +496,16 @@ $(function () {
         lat,
         lon,
         zoom,
-        center
+        center,
+        threshold: thresholdValue,
+        window: windowValue,
+        thresholdVariable: variableValue
       };
+
+      console.log(stationsMapState)
 
       // unhide chart overlay
       showGraphs();
-
-      // get current threshold values
-      const variableValue = $('#threshold-variable-select-vis').attr('rel');
-      const windowValue = parseInt($('#window-value').val());
-      const thresholdValue = parseFloat($('#threshold-value').val());
 
       // reset graphs
       resetGraphs({
@@ -633,6 +676,7 @@ $(function () {
       }
     },
 
+
     // when user clicks on map station marker
     // show graph hide map
     // todo add this to puldown events also
@@ -662,6 +706,10 @@ $(function () {
 
       // updates the visible text for the station pulldown with the information from the state url
       updateStationSelectText({stationName: options.stationName, stationId: options.stationId})
+
+      options.threshold = thresholdValue;
+      options.window = windowValue;
+      options.thresholdVariable = variableValue;
 
       window.ce.ce('setStationsMapState', options);
 

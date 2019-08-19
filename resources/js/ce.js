@@ -298,6 +298,9 @@ especially when it comes to interacting with the DOM and handling events.
         tidalStationMOverMHHW: 'tidal-station-mhhw',
         tidalStationId: 'tidal-station',
         tidalStationName: 'tidal-station-name',
+        threshold: 'threshold',
+        window: 'window',
+        thresholdVariable: 'threshold-variable',
         variable: 'variable',
         lat: 'lat',
         lon: 'lon',
@@ -323,6 +326,10 @@ especially when it comes to interacting with the DOM and handling events.
       Object.keys(state).includes('zoom') ? this.setUrlParam('zoom', state['zoom']) : 4;
       Object.keys(state).includes('lat') ? this.setUrlParam('lat', state['lat']) : null;
       Object.keys(state).includes('lon') ? this.setUrlParam('lon', state['lon']) : null;
+      Object.keys(state).includes('lon') ? this.setUrlParam('lon', state['lon']) : null;
+      Object.keys(state).includes('threshold') ? this.setUrlParam('threshold', state['threshold']) : 1;
+      Object.keys(state).includes('window') ? this.setUrlParam('window', state['window']) : 1;
+      Object.keys(state).includes('thresholdVariable') ? this.setUrlParam('thresholdVariable', state['thresholdVariable']) : 'precipitation';
     },
 
     getVariablesPageState: function getVariablesPageState() {
@@ -355,6 +362,9 @@ especially when it comes to interacting with the DOM and handling events.
       Object.keys(state).includes('zoom') ? this.setUrlParam('zoom', state['zoom']) : 14;
       Object.keys(state).includes('lat') ? this.setUrlParam('lat', state['lat']) : null;
       Object.keys(state).includes('lon') ? this.setUrlParam('lon', state['lon']) : null;
+      Object.keys(state).includes('threshold') ? this.setUrlParam('threshold', state['threshold']) : 1;
+      Object.keys(state).includes('window') ? this.setUrlParam('window', state['window']) : 1;
+      Object.keys(state).includes('thresholdVariable') ? this.setUrlParam('thresholdVariable', state['thresholdVariable']) : 'precipitation';
     },
 
     getNavState: function getNavState() {
