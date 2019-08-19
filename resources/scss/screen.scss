@@ -270,7 +270,11 @@ h6 {
     border-radius: 24px;
     display: flex;
     align-items: center;
-    justify-content: center
+    justify-content: center;
+    @media screen and (max-width: 900px) {
+      right: 12px;
+      bottom: 12px;
+    }
   }
 }
 
@@ -1047,6 +1051,12 @@ input.input-inner-default:focus::placeholder  {
 
 input.input-inner-default:focus  {
   outline: none !important;
+}
+
+#search-row {
+  @media screen and (max-width: 900px) {
+    display: block !important;
+  }
 }
 
 #info-row, #search-row, #chart-row, #map-row {
