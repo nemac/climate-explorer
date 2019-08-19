@@ -300,7 +300,7 @@ especially when it comes to interacting with the DOM and handling events.
         tidalStationName: 'tidal-station-name',
         threshold: 'threshold',
         window: 'window',
-        thresholdVariable: 'threshold-variable',
+        thresholdVariable: 'thresholdVariable',
         variable: 'variable',
         lat: 'lat',
         lon: 'lon',

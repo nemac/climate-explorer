@@ -28,6 +28,10 @@ $(function () {
   const tidalStationName = stationsMapState['tidalStationName'];
   const tidalStationMOverMHHW = stationsMapState['tidalStationMOverMHHW'];
   const center = [lat, lon]
+  const threshold = stationsMapState['threshold']  || 1;
+  const windowValue = stationsMapState['window']  || 1;
+  const thresholdVariable = stationsMapState['thresholdVariable']  || 'precipitation';
+  console.log('thresholdVariable', thresholdVariable)
 
   // initialize staion map state from url values
   stationsMapState = {
@@ -39,6 +43,9 @@ $(function () {
     tidalStationId,
     tidalStationName,
     tidalStationMOverMHHW,
+    threshold,
+    window: windowValue,
+    thresholdVariable,
     lat,
     lon,
     zoom,
@@ -48,20 +55,27 @@ $(function () {
   const thresholdStationsDataURL = "https://data.rcc-acis.org/StnData";
   const initialObj = {
     station: stationsMapState.stationId, // GHCN-D Station id (required)
-    variable: 'precipitation', // Valid values: 'precipitation', 'tmax', 'tmin', 'tavg'
-    threshold: 1.0,
+    variable: stationsMapState.thresholdVariable, // Valid values: 'precipitation', 'tmax', 'tmin', 'tavg'
+    threshold: stationsMapState.threshold,
     responsive: true,
     thresholdOperator: '>', // Valid values: '==', '>=', '>', '<=', '<'
     thresholdFilter: '', // Transformations/Filters to support additional units. Valid Values: 'KtoC','CtoK','FtoC','CtoF','InchToCM','CMtoInch'
     thresholdFunction: undefined, //Pass in a custom function: function(this, values){ return _.sum(values) > v2; }
-    window: 1, // Rolling window size in days.
+    window: stationsMapState.window, // Rolling window size in days.
     dailyValueValidator: undefined, // Pass in a custom validator predicate function(value, date){return date.slice(0, 4) > 1960 && value > 5 }
     yearValidator: undefined, // Similar to dailyValueValidator
     dataAPIEndpoint:  thresholdStationsDataURL.split('StnData')[0],
     barColor: '#307bda' // Color for bars.
   };
 
+  console.log('initialObj', initialObj)
+
+  $('#threshold-value').val(initialObj.threshold)
+  $('#window-value').val(initialObj.window)
+  updateThresholdVariableSelectText(initialObj);
+
   $("#thresholds-container").item(initialObj);
+
   // updates the visible text for the station pulldown with the information from the state url
   function updateStationSelectText(stations) {
     const stationsSelectElem = $('#stations-select-vis');
@@ -69,6 +83,35 @@ $(function () {
       if ( stations.stationId !== undefined) {
         stationsSelectElem.attr('rel',`${stations.stationId},${stations.stationName}`);
         stationsSelectElem.text(`${stations.stationName} - (${stations.stationId})`);
+      }
+    }
+  }
+
+  // updates the visible text for the Threshold Variable pulldown with the information from the state url
+  function updateThresholdVariableSelectText(initialObj) {
+    const thresholdVariableSelectElem = $('#threshold-variable-select-vis');
+    const thresholdVariable = initialObj.variable;
+
+    console.log('updateThresholdVariableSelectText', initialObj, thresholdVariable)
+    if (thresholdVariableSelectElem) {
+      if ( thresholdVariable !== undefined) {
+        thresholdVariableSelectElem.attr('rel', thresholdVariable);
+        switch (thresholdVariable) {
+          case 'precipitation':
+            thresholdVariableSelectElem.text('Precipitation');
+            break;
+          case 'tmax':
+            thresholdVariableSelectElem.text('Maximum Temperature');
+            break;
+          case 'tmin':
+            thresholdVariableSelectElem.text('Minimum Temperature');
+            break;
+          case 'tavg':
+            thresholdVariableSelectElem.text('Average Temperature');
+            break;
+          default:
+            thresholdVariableSelectElem.text('Precipitation');
+        }
       }
     }
   }
@@ -285,10 +328,11 @@ $(function () {
         const stations = $('#stations-select-vis').attr('rel').split(',');
         const stationName = stations[1];
         const stationId = stations[0];
+        const variableValue = $('#threshold-variable-select-vis').attr('rel'); //  , thresholdValue: variableValue
 
         console.log('threshold-up', stationId, stationName)
         // change map url state
-        window.ce.ce('setStationsMapState', { stationId, stationName, threshold: newVal });
+        window.ce.ce('setStationsMapState', { stationId, stationName, threshold: newVal, thresholdValue: variableValue});
 
         $("#thresholds-container").item({
           threshold: newVal,
@@ -316,9 +360,10 @@ $(function () {
         const stations = $('#stations-select-vis').attr('rel').split(',');
         const stationName = stations[1];
         const stationId = stations[0];
+        const variableValue = $('#threshold-variable-select-vis').attr('rel'); //  , thresholdValue: variableValue
 
         // change map url state
-        window.ce.ce('setStationsMapState', { stationId, stationName, threshold: newVal });
+        window.ce.ce('setStationsMapState', { stationId, stationName, threshold: newVal, thresholdValue: variableValue});
 
         $("#thresholds-container").item({
           threshold: newVal,
@@ -346,9 +391,10 @@ $(function () {
         const stations = $('#stations-select-vis').attr('rel').split(',');
         const stationName = stations[1];
         const stationId = stations[0];
+        const variableValue = $('#threshold-variable-select-vis').attr('rel'); //  , thresholdValue: variableValue
 
         // change map url state
-        window.ce.ce('setStationsMapState', {stationId, stationName,  window: newVal });
+        window.ce.ce('setStationsMapState', {stationId, stationName,  window: newVal, thresholdValue: variableValue});
 
         $("#thresholds-container").item({
           window: newVal,
@@ -376,9 +422,10 @@ $(function () {
         const stations = $('#stations-select-vis').attr('rel').split(',');
         const stationName = stations[1];
         const stationId = stations[0];
+        const variableValue = $('#threshold-variable-select-vis').attr('rel'); //  , thresholdValue: variableValue
 
         // change map url state
-        window.ce.ce('setStationsMapState', { stationId, stationName, window: newVal });
+        window.ce.ce('setStationsMapState', { stationId, stationName, window: newVal,  thresholdValue: variableValu });
 
         $("#thresholds-container").item({
           window: newVal,
@@ -448,6 +495,8 @@ $(function () {
 
       // change map url state
       window.ce.ce('setStationsMapState', {stationId, stationName,  threshold: thresholdValue, window: windowValue, thresholdVariable: variableValue});
+
+      console.log('setStationsMapState', {stationId, stationName,  threshold: thresholdValue, window: windowValue, thresholdVariable: variableValue})
 
       $("#thresholds-container").item({
         threshold: thresholdValue,
@@ -536,6 +585,14 @@ $(function () {
     const target = $(e.target);
     const newValue = parseFloat($(target).val());
 
+    const stations = $('#stations-select-vis').attr('rel').split(',');
+    const stationName = stations[1];
+    const stationId = stations[0];
+    const variableValue = $('#threshold-variable-select-vis').attr('rel'); //  , thresholdValue: variableValue
+
+    // change map url state
+    window.ce.ce('setStationsMapState', { stationId, stationName, threshold: newValue, thresholdValue: variableValue});
+
     // update chart with new threshold value
     $("#thresholds-container").item({ threshold: newValue }).item('update');
 
@@ -545,6 +602,15 @@ $(function () {
   $('#window-value').change( function(e) {
     const target = $(e.target);
     const newValue = parseInt($(target).val());
+
+    const stations = $('#stations-select-vis').attr('rel').split(',');
+    const stationName = stations[1];
+    const stationId = stations[0];
+    const variableValue = $('#threshold-variable-select-vis').attr('rel'); //  , thresholdValue: variableValue
+
+    // change map url state
+    window.ce.ce('setStationsMapState', { stationId, stationName, window: newValue, thresholdValue: variableValue});
+
 
     // update chart with new threshold value
     $("#thresholds-container").item({ window: newValue }).item('update');
