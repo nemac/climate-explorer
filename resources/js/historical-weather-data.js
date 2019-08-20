@@ -486,6 +486,14 @@ $(function () {
     }
 
     // set size of temp chart
+    if (graphRect.width <= 900) {
+      if (document.querySelector('#stations-graph-row')) {
+        document.querySelector('#stations-graph-row').style.height = `350px`;
+        document.querySelector('#stations-graph-row').style.minHeight = `350px`;
+      }
+    }
+
+    // set size of temp chart
     if (document.querySelector('#multi-chart')) {
       document.querySelector('#multi-chart').style.minWidth = `${graphWidth}px`;
       document.querySelector('#multi-chart').style.maxWidth = `${graphWidth}px`;

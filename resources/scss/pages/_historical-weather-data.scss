@@ -166,13 +166,23 @@
            width: calc(100% - 50px);
          }
 
+         #stations-graph-row {
+           @media screen and (max-width: 900px) {
+             min-height: 610px !important;
+             max-height: 610px !important;
+             height: 610px !important;
+             display: block !important;
+           }
+         }
+
          #stations-graph-wrap {
-           height: 100%;
+           height: 100% !important;
            width: 80%;
            @media screen and (max-width: 900px) {
              min-height: 300px !important;
              max-height: 300px !important;
              height: 300px !important;
+             display: block !important;
            }
          }
 
@@ -182,6 +192,17 @@
              min-height: 350px !important;
              max-height: 350px !important;
              height: 350px !important;
+             display: block !important;
+           }
+         }
+
+         #station-info-row {
+           @media screen and (max-width: 900px) {
+             // padding-top: 350px !important;
+             min-height: 250px;
+             max-height: 250px !important;
+             height: 250px !important;
+             display: block !important;
            }
          }
 

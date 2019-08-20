@@ -497,6 +497,14 @@ $(function () {
     const graphRect = document.getElementById('stations-graph-wrap').getBoundingClientRect();
     let graphWidth = graphRect.width;
 
+    // set size of temp chart
+    if (graphRect.width <= 900) {
+      if (document.querySelector('#stations-graph-row')) {
+        document.querySelector('#stations-graph-row').style.height = `350px`;
+        document.querySelector('#stations-graph-row').style.minHeight = `350px`;
+      }
+    }
+    
     // set size of tidal-chart chart
     if (document.querySelector('#tidal-chart')) {
       document.querySelector('#tidal-chart').style.minWidth = `${graphWidth}px`;

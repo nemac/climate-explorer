@@ -210,7 +210,7 @@ $(function () {
       switch (val) {
         case 'chart':
           // unhide chart text
-          ChartInfoTextElem.setAttribute("style", 'display: flex;');
+          ChartInfoTextElem.setAttribute("style", 'display: block;');
           break;
         case 'map':
           // unhide map overlay
@@ -218,7 +218,7 @@ $(function () {
           break
         default:
           // unhide chart text
-          ChartInfoTextElem.setAttribute("style", 'display: flex;');
+          ChartInfoTextElem.setAttribute("style", 'display: block;');
       }
     }
   }
@@ -832,6 +832,15 @@ $(function () {
     // expand graphs to cover 100%
     if (graphRect.width <= 882) {
       graphWidth = graphRect.width;
+    }
+
+    // set size of temp chart
+    if (graphRect.width <= 900) {
+      if (document.querySelector('#stations-graph-row')) {
+        document.querySelector('#stations-graph-row').style.height = `350px`;
+        document.querySelector('#stations-graph-row').style.minHeight = `350px`;
+
+      }
     }
 
     // set size of temp chart
