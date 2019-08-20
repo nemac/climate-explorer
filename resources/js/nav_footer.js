@@ -174,7 +174,7 @@ $(function () {
       navFooterItemSelected: 'nav-footer-item-selected',
       navFooterItemNOTSelected: 'nav-footer-item',
       selectorAddOn: '-nav-footer',
-      moreNavs: ['historical-weather', 'historical-thresholds', 'hightide-flooding'],
+      moreNavs: ['-999', 'historical-weather-data', 'historical-thresholds', 'hightide-flooding'],
       moreNavFooter: 'more-nav-footer',
       expandedWrapperNavFooterElem: 'expanded-wrapper-nav-footer',
       moreWrapperNavFooterElem: 'more-wrapper-nav-footer',
@@ -213,6 +213,7 @@ $(function () {
 
       // check if nav item is a more nav
       const isMoreNavItem = isMoreNav(navLocation);
+      console.log('updateNavBar navLocation', navLocation, isMoreNavItem, navConstants.moreNavs)
 
       // remove all selected css class nav items from the footer
       removeSelectedNavItemClass(navConstants.navFooterItemSelected);
