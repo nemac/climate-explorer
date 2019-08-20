@@ -398,7 +398,7 @@ $(function () {
       if (options.currentstations.features.length === 0) {
         // get map parent element - which provides the correct dimensions for the map
         if (messsageElem) {
-          const rect = document.getElementById('stations-map-wrap').getBoundingClientRect();
+          const rect = document.getElementById('stations-map').getBoundingClientRect();
           messsageElem.style.left = `${(rect.right - rect.left)/3}px`;
           messsageElem.style.top = `-${((rect.bottom - rect.top)/2)}px`;
           messsageElem.innerHTML = 'There are no weather stations within the map view.'

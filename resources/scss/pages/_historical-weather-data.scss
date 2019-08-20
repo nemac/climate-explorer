@@ -34,6 +34,11 @@
     position: relative;
     top: -250px;
     left: 150px;
+    @media screen and (max-width: 500px) {
+      top: -200px !important;
+      left: 10% !important;
+      width: 80%;
+    }
     text-align: center;
     padding: $ce3-default-padding;
     background-color: $ce3-blue5 !important;
