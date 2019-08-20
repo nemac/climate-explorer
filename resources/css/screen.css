@@ -11792,14 +11792,6 @@ h6 {
   }
 }
 
-@media screen and (max-height: 800px) {
-  /* line 290, resources/scss/screen.scss */
-  .select-options {
-    max-height: 250px !important;
-    top: 2px;
-  }
-}
-
 /* line 315, resources/scss/screen.scss */
 .select-options a {
   color: #124086 !important;

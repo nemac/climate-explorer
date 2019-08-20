@@ -120,7 +120,7 @@ $(function () {
   function resetGraphs(stations) {
     // remove and reset old graphs
     $('#stations-graph-wrap').empty();
-    console.log('resetGraphs stations', stations)
+
     // add new graph wrappers so they will initialize
     $('#stations-graph-wrap').append('<div id="thresholds-container" class="d-flex-center width-100"></div>');
 

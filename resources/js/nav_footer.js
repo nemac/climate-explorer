@@ -213,7 +213,6 @@ $(function () {
 
       // check if nav item is a more nav
       const isMoreNavItem = isMoreNav(navLocation);
-      console.log('updateNavBar navLocation', navLocation, isMoreNavItem, navConstants.moreNavs)
 
       // remove all selected css class nav items from the footer
       removeSelectedNavItemClass(navConstants.navFooterItemSelected);
