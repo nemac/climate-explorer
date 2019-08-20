@@ -332,6 +332,10 @@ $animation-duration: 0.4s;
            overflow: visible !important;
            height: 100% !important;
            width: 100% !important;
+           @media screen and (max-width: 900px) {
+             position: relative !important;
+             top: -350px;
+           }
          }
 
          .scenario-map-overlay-container {

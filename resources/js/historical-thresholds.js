@@ -839,7 +839,6 @@ $(function () {
       if (document.querySelector('#stations-graph-row')) {
         document.querySelector('#stations-graph-row').style.height = `350px`;
         document.querySelector('#stations-graph-row').style.minHeight = `350px`;
-
       }
     }
 

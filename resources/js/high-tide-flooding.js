@@ -504,7 +504,7 @@ $(function () {
         document.querySelector('#stations-graph-row').style.minHeight = `350px`;
       }
     }
-    
+
     // set size of tidal-chart chart
     if (document.querySelector('#tidal-chart')) {
       document.querySelector('#tidal-chart').style.minWidth = `${graphWidth}px`;
