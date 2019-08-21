@@ -18,71 +18,39 @@
 
 #share-widget-wrapper {
   width: 48px !important;
-  // width: 95px !important;
-  height: 32px !important;
+  height: 48px !important;
   min-width: 48px;
-  padding-top: 3px;
-  margin-right: 0px;
-  margin-left: auto;
-  // margin-top: -8px;
-  @media screen and (max-width: 500px) {
-    margin-right: -6px;
-    // padding-top: 16px;
-    // margin-top: 0px;
-
-    // display: inline-block !important;
-    // position: relative;
-    // top: 53px;
-    // left: 80%;
-    // &.share-bg {
-    //   display: none !important;
-    // }
+  margin-top: -8px;
+  @media screen and (max-width: 900px) {
+    padding-top: 16px;
+    margin-top: 0px;
+    display: inline-block !important;
+    &.share-bg {
+      display: none !important;
+    }
   }
 }
 
 
 .share-widget {
   cursor: pointer;
-  background: $ce3-blue3;
-  @include border-radius(5px !important);
-  max-width: 40px;
-  // margin-left: auto;
-  // padding-right: 12px;
-  // min-height: 32px;
-  // min-width: 48px;
-  // width: 48px;
-  // margin-top: 12px;
-  // min-height: 36px;
-  // height: 24px !important;
-  // width: 48px !important;
-  // margin-right: 3px;
-  // position: relative;
-  // right: 8px;
-  // width: 48px !important;
-  // height: 48px !important;
+  position: relative;
+  right: 8px;
+  width: 48px !important;
+  height: 48px !important;
   @media screen and (max-width: 900px) {
-    // margin-right: -85px;
+    right: 0px;
   }
   z-index: 10;
-  padding: 6px;
-  margin-right: 12px;
+
 
   a {
-    // display: block;
-    // padding: $ce3-default-padding;
-    width: 48px !important;
-    min-width:  48px !important;
-    height: 32px !important;
-    min-height:  32px !important;
+    display: block;
+    padding: $ce3-default-padding;
+    width: 48px;
+    height: 48px;
     text-align: center;
     @include transition(0.25s);
-    white-space: nowrap;
-    font-size: 14px !important;
-    @media screen and (max-width: 500px) {
-      .a-share-label {
-        display: none;
-      }
-    }
   }
 
   .icon {
@@ -94,11 +62,7 @@
   }
 
   .share-icon {
-    width: 32px;
-    // min-width:  48px !important;
-    // height: 32px !important;
-    // min-height:  32px !important;
-    font-size: 1.25rem;
+    font-size: 1rem;
     padding-bottom: 0px;
     @media screen and (max-width: 900px) {
       font-size: 1rem;
@@ -107,12 +71,9 @@
   }
 
   .share-trigger {
-    // position: absolute;
-    // min-width:  48px !important;
-    // height: 32px !important;
-    // min-height:  32px !important;
-    // bottom: 0;
-    // background: $ce3-blue3;
+    position: absolute;
+    bottom: 0;
+    background: $ce3-blue3;
     text-align: center;
     font: 0.625rem/1em $sans-heavy;
     @include border-radius(5px !important);
@@ -128,54 +89,27 @@
 
   ul {
     position: absolute;
-    // top: 48px;
-    margin-right: 10px;
-    margin-left: -5px;
-    margin-top: 6px;
-    width: 40px;
-    @media screen and (max-width: 500px) {
-      width: 40px;
-      min-width: 40px;
-    }
-
+    top: 48px;
+    width: 48px;
     height: 0;
     overflow: hidden;
-    z-index: 100;
+    z-index: 1;
     @include border-bottom-right-radius(5px !important);
     @include border-bottom-left-radius(5px !important);
 
     li {
-      width: 40px;
-      min-width: 40px;
-      @media screen and (max-width: 500px) {
-        width: 40px;
-        min-width: 40px;
-      }
 
-      background: darken($ce3-blue5, 5%);
-      .a-share-label {
-        @include no-text;
-      }
-      &:hover {
-        background: darken($ce3-blue5, 15%);;
-      }
-      a {
-        top: 0px;
-        /* left: 6px; */
-        position: relative;
-        z-index: -1;
-        &:hover {
-          background: darken($ce3-blue5, 3%);;
-        }
-      }
     }
 
     a {
       padding: 12px;
-      background: $ce3-blue5;
+      background: transparentize($ce3-blue5, 0.1);
       color: $ce3-blue3;
       @include no-text;
 
+      &:hover {
+        background: darken($ce3-blue5, 3%);;
+      }
     }
 
     .icon {
@@ -191,7 +125,7 @@
   display: none;
   position: absolute;
   width: 240px;
-  height: 32px;
+  height: 36px;
   margin: 0 15px 0 0;
   padding: 10px;
   background: $ce3-blue5;

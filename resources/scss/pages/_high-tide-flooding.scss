@@ -281,4 +281,17 @@
      @include border-radius(5px);
    }
 
+   .top-select-wrapper {
+     width: 29% !important;
+     &-minor {
+       width: 5% !important;
+     }
+   }
+
+   .search-box-secondary {
+     @media screen and (max-width: 900px) {
+       width: 100% !important;
+       display: inline-block !important;
+     }
+   }
 }

@@ -13,11 +13,6 @@
 
   .secondary-font-title {
      font: 500 24px $roboto !important;
-     white-space: nowrap;
-     width: 70%;
-     @media screen and (max-width: 500px) {
-       width: 25%;
-     }
      @media screen and (max-width: 768px) {
        font: 500 18px $roboto !important;
      }

@@ -271,4 +271,18 @@
      @include border-radius(5px);
    }
 
+   .top-select-wrapper {
+     width: 25% !important;
+     &-minor {
+       width: 5% !important;
+     }
+   }
+
+   .search-box-secondary {
+     @media screen and (max-width: 900px) {
+       width: 80% !important;
+       display: inline-block !important;
+     }
+   }
+
 }

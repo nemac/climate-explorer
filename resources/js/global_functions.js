@@ -461,9 +461,18 @@
 
           $('#share-permalink-input').show().position({
             my: 'right',
-            at: 'left-15',
+            at: 'left-10',
             of: $('#share-permalink')
           });
+
+          // copy url to clipboard
+          const textArea = document.getElementById('share_link');
+          if (textArea) {
+            textArea.focus();
+            textArea.select();
+            document.execCommand('copy');
+          }
+
         }
       } else {
         var width = 575,
@@ -476,6 +485,7 @@
         window.open(url, 'sharepopup', opts);
       }
     });
+
 
     // --------
     //

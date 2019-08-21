@@ -14,6 +14,20 @@
     min-height: calc(100% - 48px - 12px - 170px) !important;
     height: calc(100% - 48px - 12px - 170px) !important
   }
+
+  .top-select-wrapper {
+    width: 25% !important;
+    &-minor {
+      width: 5% !important;
+    }
+  }
+
+  .search-box-secondary {
+    @media screen and (max-width: 900px) {
+      width: 80% !important;
+      display: inline-block !important;
+    }
+  }
 }
 
 // make the varriable more visually  important
@@ -204,16 +218,6 @@
       @include border-top-radius(0px !important);
       @include border-bottom-radius(5px !important);
     }
-  }
-}
-
-.top-select-wrapper {
-  width: 29% !important;
-}
-
-.search-box-secondary {
-  @media screen and (max-width: 900px) {
-    width: 100% !important;
   }
 }
 
