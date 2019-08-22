@@ -101,7 +101,7 @@
     font-size: 1.25rem;
     padding-bottom: 0px;
     @media screen and (max-width: 900px) {
-      font-size: 1rem;
+      font-size: .875rem;
       padding-bottom: 3px;
     }
   }
@@ -143,10 +143,12 @@
     z-index: 100;
     @include border-bottom-right-radius(5px !important);
     @include border-bottom-left-radius(5px !important);
+    @include box-shadow(0px 2px 4px transparentize(#000, 0.761));
 
     li {
       width: 40px;
       min-width: 40px;
+      height: 60px;
       @media screen and (max-width: 500px) {
         width: 40px;
         min-width: 40px;
@@ -196,17 +198,19 @@
   padding: 10px;
   background: $ce3-blue5;
   @include border-radius(5px !important);
+  border: 1px solid $ce3-blue3;
+  @include box-shadow(0px 2px 4px transparentize(#000, 0.761));
   @media screen and (max-width: 900px) {
-    border: 1px solid $ce3-blue3;
     padding: 8px;
     width: 205px;
   }
 
   input {
     display: block;
-    position: relative;
+    position: absolute;
     height: 30px;
-    bottom: 4px;
+    bottom: 0px;
+    left: 3px;
     width: 100%;
     margin: 0;
     padding: 0 6px;

@@ -115,6 +115,10 @@ $sans-heavy: 'CESans-Heavy', Roboto, Helvetica, 'Helvetica Neue', Arial, sans-se
 
 @import "mixins";
 
+// MEDIA QUERIES
+@import "mods";
+@import "media";
+
 // TAGS
 
 * {
@@ -1915,6 +1919,3 @@ input.input-inner-default:focus  {
   height: 1.5rem;
   padding-top: 0;
 }
-// MEDIA QUERIES
-@import "mods";
-@import "media";

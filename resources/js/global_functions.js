@@ -459,7 +459,8 @@
         } else {
           $('#share-permalink').addClass('open');
 
-          $('#share-permalink-input').show().position({
+          $('#share-permalink-input').show()
+          .position({
             my: 'right',
             at: 'left-10',
             of: $('#share-permalink')
