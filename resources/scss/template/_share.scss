@@ -1,42 +1,12 @@
-// .share-bg {
-//   @media screen and (max-width: 900px) {
-//     display: none !important;
-//     .share-widget {
-//       display: none !important;
-//     }
-//   }
-// }
-//
-// .share-sm {
-//   @media screen and (min-width: 900px) {
-//     display: none !important;
-//     .share-widget {
-//       display: none !important;
-//     }
-//   }
-// }
-
 #share-widget-wrapper {
   width: 48px !important;
-  // width: 95px !important;
   height: 32px !important;
   min-width: 48px;
   padding-top: 3px;
   margin-right: 0px;
   margin-left: auto;
-  // margin-top: -8px;
   @media screen and (max-width: 500px) {
     margin-right: -6px;
-    // padding-top: 16px;
-    // margin-top: 0px;
-
-    // display: inline-block !important;
-    // position: relative;
-    // top: 53px;
-    // left: 80%;
-    // &.share-bg {
-    //   display: none !important;
-    // }
   }
 }
 
@@ -46,30 +16,13 @@
   background: $ce3-blue3;
   @include border-radius(5px !important);
   max-width: 40px;
-  // margin-left: auto;
-  // padding-right: 12px;
-  // min-height: 32px;
-  // min-width: 48px;
-  // width: 48px;
-  // margin-top: 12px;
-  // min-height: 36px;
-  // height: 24px !important;
-  // width: 48px !important;
-  // margin-right: 3px;
-  // position: relative;
-  // right: 8px;
-  // width: 48px !important;
-  // height: 48px !important;
   @media screen and (max-width: 900px) {
-    // margin-right: -85px;
   }
   z-index: 10;
   padding: 6px;
   margin-right: 12px;
 
   a {
-    // display: block;
-    // padding: $ce3-default-padding;
     width: 48px !important;
     min-width:  48px !important;
     height: 32px !important;
@@ -95,9 +48,6 @@
 
   .share-icon {
     width: 32px;
-    // min-width:  48px !important;
-    // height: 32px !important;
-    // min-height:  32px !important;
     font-size: 1.25rem;
     padding-bottom: 0px;
     @media screen and (max-width: 900px) {
@@ -107,12 +57,6 @@
   }
 
   .share-trigger {
-    // position: absolute;
-    // min-width:  48px !important;
-    // height: 32px !important;
-    // min-height:  32px !important;
-    // bottom: 0;
-    // background: $ce3-blue3;
     text-align: center;
     font: 0.625rem/1em $sans-heavy;
     @include border-radius(5px !important);
@@ -128,7 +72,6 @@
 
   ul {
     position: absolute;
-    // top: 48px;
     margin-right: 10px;
     margin-left: -5px;
     margin-top: 6px;
