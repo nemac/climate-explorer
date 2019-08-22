@@ -353,3 +353,14 @@
     }
   }
 }
+
+#temperature-map,
+.esri-view-root,
+.esri-view-surface,
+.esri-display-object,
+.esri-view,
+.esri-bitmap {
+  &:focus {
+    outline: none !important;
+  }
+}

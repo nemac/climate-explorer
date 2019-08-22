@@ -17122,6 +17122,16 @@ input.input-inner:focus {
   font-size: 1.25rem;
 }
 
+/* line 363, resources/scss/pages/_local-climate-maps.scss */
+#temperature-map:focus,
+.esri-view-root:focus,
+.esri-view-surface:focus,
+.esri-display-object:focus,
+.esri-view:focus,
+.esri-bitmap:focus {
+  outline: none !important;
+}
+
 /* line 5, resources/scss/pages/_historical-weather-data.scss */
 .d-off {
   position: absolute;
