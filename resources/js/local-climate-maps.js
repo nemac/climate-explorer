@@ -40,6 +40,7 @@ $(function () {
     mapZoom = 7;
   }
 
+
   // enable custom selction boxes
   enableCustomSelect('download-select');
   enableCustomSelect('stations-select');
@@ -55,6 +56,31 @@ $(function () {
   // this function Updates the chart title.
   function updateTitle(chartText) {
     $('#default-chart-map-varriable').html(chartText);
+  }
+
+  // function to enable downloads (images and data)
+  $('.download-select li a').click( function (e) {
+    const downloadAction = $(this).attr('rel');
+
+    // capture what we are downloading
+    switch (downloadAction) {
+      case 'download-rightmap-image': // download image
+        mapToImage();
+        break;
+      default:
+        mapToImage();
+    }
+  });
+
+  function mapToImage() {
+    html2canvas($('#temperature-map'), {
+      onrendered: function(canvas) {
+        var a = document.createElement('a');
+        a.href = canvas.toDataURL("image/jpeg").replace("image/jpeg", "image/octet-stream");
+        a.download = 'local-climate-map.jpg';
+        a.click();
+      }
+    });
   }
 
   // toggle filters click
@@ -81,7 +107,10 @@ $(function () {
     }
 
     setTimeout(function () {
-      $('#temperature-map').height($('#temperature-map').parent().height());
+      // reset map and chart sizes
+      // filer transistion means heigh will be updates in few seconds
+      // so delaying the resize ensures proper size
+      setMapSize();
     }, 600);
 
   })

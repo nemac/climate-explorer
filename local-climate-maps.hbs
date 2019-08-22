@@ -49,7 +49,7 @@
         <div id="downloads-select-wrapper" class="rounded-choice-box padding-horrizontal default-btn-height top-select-wrapper d-flex-center">
 
           <div class="select download-select">
-            <div id="downnloads-select-vis" class="select-styled disabled" rel="none" href="javascript:void(0);">
+            <div id="downnloads-select-vis" class="select-styled" rel="none" >
               <i class="fas fa-download select-icon"></i>
               <a rel="none" href="javascript:void(0);" >Downloads</a>
             </div>
@@ -57,39 +57,12 @@
               <li icon="fas fa-download select-icon"  class="default-select-option">
                 <a rel="none" href="javascript:void(0);" >Downloads</a>
               </li>
-              <li rel="download-image" icon="fas fa-download select-icon" href="javascript:void(0);" class="default-select-option">
-                <a rel="download-image" href="javascript:void(0);" >Download image</a>
-              </li>
-              <li rel="download-observed-data" icon="fas fa-download select-icon" href="javascript:void(0);" class="default-select-option">
-                <a rel="download-observed-data" href="javascript:void(0);" >Download Observed Data</a>
-              </li>
-              <li rel="download-historical-modeled-data" icon="fas fa-download select-icon" href="javascript:void(0);" class="default-select-option">
-                <a rel="download-historical-modeled-data" href="javascript:void(0);" >Download Historical Modeled Data</a>
-              </li>
-              <li rel="download-projected-modeled-data" icon="fas fa-download select-icon" href="javascript:void(0);" class="default-select-option">
-                <a rel="download-projected-modeled-data" href="javascript:void(0);" >Projected Modeled Data</a>
-              </li>
-              <li rel="download-interpreting" icon="fas fa-download select-icon" class="default-select-option">
-                <a rel="download-interpreting" href="/resources/data/Key-to-Climate-Explorer-Download-Filenames-and-Column-Headings.xlsx" >Information for Interpreting Data</a>
+              <li rel="download-rightmap-image" icon="fas fa-download select-icon" href="javascript:void(0);" class="default-select-option">
+                <a rel="download-rightmap-image" href="javascript:void(0);" >Download map (map in right only) image</a>
               </li>
             </ul>
           </div>
         </div>
-
-        <!-- <div id="share-widget-wrapper" class="padding-horrizontal default-btn-height top-select-wrapper-minor d-flex-center">
-          <div class="share-widget">
-            <a href="#" class="share-trigger "><span class="fa fa-share-alt share-icon"></span>Share</a>
-            <ul >
-              <li><a href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fcrt-climate-explorer.nemac.org%2Fstations%2F%3Fid%3Dhigh_tide_flooding%26extent%3D-86.27%252C-71.21%252C32.47%252C38.43%26zoom%3D7%26station-mhhw%3D0.54" id="share_facebook" class="share-link share-facebook" target="_blank"><span class="icon icon-facebook"></span>Facebook</a></li>
-              <li><a href="https://twitter.com/intent/tweet?text=https%3A%2F%2Fcrt-climate-explorer.nemac.org%2Fstations%2F%3Fid%3Dhigh_tide_flooding%26extent%3D-86.27%252C-71.21%252C32.47%252C38.43%26zoom%3D7%26station-mhhw%3D0.54" id="share_twitter" class="share-link share-twitter" target="_blank"><span class="icon icon-twitter"></span>Twitter</a></li>
-              <li id="share-permalink"><a href="#" class="share-link share-permalink"><span class="icon icon-link"></span>Copy Permalink</a></li>
-            </ul>
-
-            <div id="share-permalink-input">
-              <input type="text" id="share_link" value="">
-            </div>
-          </div>
-        </div> -->
 
       </div>
 
@@ -231,6 +204,7 @@
 
 <script src="https://unpkg.com/terraformer@1.0.8/terraformer.js" integrity="sha384-+M797Pj3WZVCwMmLbOxAoaWYcKJo8NSxItmI48ytcLNeAnfn1d/IckFn31jEqrzP"
         crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/0.4.1/html2canvas.min.js" integrity="sha256-c3RzsUWg+y2XljunEQS0LqWdQ04X1D3j22fd/8JCAKw=" crossorigin="anonymous"></script>
 <script src="https://unpkg.com/terraformer-arcgis-parser@1.0.5/terraformer-arcgis-parser.js"
         integrity="sha384-duFUjKTSNoxEspdJNwr83CUgRxclf0ueKJB9DU/Vbit6bfWgzvZsHW6H1JLBBXhp" crossorigin="anonymous"></script>
 <script type="text/javascript" src="/resources/js/scenarioComparisonMap.js"></script>

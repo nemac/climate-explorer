@@ -11,11 +11,6 @@
       margin-top: -5px;
     }
     @media screen and (max-width: 500px) {
-      // background-size: contain;
-      // background-repeat: no-repeat;
-      // width: auto;
-      // height: 36px;
-      // background-image: url(/resources/img/crt-logo-mobile.png);
       img {
         content:url(/resources/img/crt-logo-mobile.png);
       }

@@ -283,6 +283,12 @@ h6 {
   }
 }
 
+#downloads-select-wrapper {
+  .select-styled {
+    white-space: normal;
+  }
+}
+
 #filters-toggle .select-styled:after  {
   @media screen and (max-width: 768px) {
     right: -2px;
