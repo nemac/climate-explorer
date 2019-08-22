@@ -15688,12 +15688,17 @@ body.detail-open #nav-overlay {
   }
 }
 
+/* line 171, resources/scss/template/_nav_footer.scss */
+#home-nav-footer {
+  padding-bottom: 4px;
+}
+
 @media screen and (max-width: 600px) {
-  /* line 173, resources/scss/template/_nav_footer.scss */
+  /* line 177, resources/scss/template/_nav_footer.scss */
   #sation-based .nav-footer-area-line {
     display: none !important;
   }
-  /* line 175, resources/scss/template/_nav_footer.scss */
+  /* line 179, resources/scss/template/_nav_footer.scss */
   #sation-based .nav-footer-area-line.expanded {
     display: flex !important;
     width: 30% !important;
@@ -15701,80 +15706,80 @@ body.detail-open #nav-overlay {
 }
 
 @media screen and (max-width: 360px) {
-  /* line 182, resources/scss/template/_nav_footer.scss */
+  /* line 186, resources/scss/template/_nav_footer.scss */
   #sation-based .nav-footer-area-line.expanded {
     width: 20% !important;
   }
 }
 
-/* line 189, resources/scss/template/_nav_footer.scss */
+/* line 193, resources/scss/template/_nav_footer.scss */
 #more-wrapper-nav-footer.expanded {
   display: none !important;
 }
 
 @media screen and (min-width: 900px) {
-  /* line 188, resources/scss/template/_nav_footer.scss */
+  /* line 192, resources/scss/template/_nav_footer.scss */
   #more-wrapper-nav-footer {
     display: none !important;
   }
 }
 
-/* line 198, resources/scss/template/_nav_footer.scss */
+/* line 202, resources/scss/template/_nav_footer.scss */
 #less-row-1 {
   display: none !important;
 }
 
-/* line 201, resources/scss/template/_nav_footer.scss */
+/* line 205, resources/scss/template/_nav_footer.scss */
 #less-row-1.expanded {
   display: flex !important;
 }
 
-/* line 206, resources/scss/template/_nav_footer.scss */
+/* line 210, resources/scss/template/_nav_footer.scss */
 #less-wrapper-nav-footer {
   display: none !important;
 }
 
 @media screen and (max-width: 900px) {
-  /* line 206, resources/scss/template/_nav_footer.scss */
+  /* line 210, resources/scss/template/_nav_footer.scss */
   #less-wrapper-nav-footer {
     display: none !important;
   }
 }
 
-/* line 213, resources/scss/template/_nav_footer.scss */
+/* line 217, resources/scss/template/_nav_footer.scss */
 #less-wrapper-nav-footer.expanded {
   display: flex !important;
 }
 
-/* line 219, resources/scss/template/_nav_footer.scss */
+/* line 223, resources/scss/template/_nav_footer.scss */
 #expanded-wrapper-nav-footer.expanded {
   display: flex !important;
 }
 
 @media screen and (max-width: 900px) {
-  /* line 218, resources/scss/template/_nav_footer.scss */
+  /* line 222, resources/scss/template/_nav_footer.scss */
   #expanded-wrapper-nav-footer {
     display: none !important;
   }
 }
 
-/* line 229, resources/scss/template/_nav_footer.scss */
+/* line 233, resources/scss/template/_nav_footer.scss */
 .nav-footer-area-title .nav-footer-area-text-smallecreen {
   display: none !important;
 }
 
 @media screen and (max-width: 900px) {
-  /* line 228, resources/scss/template/_nav_footer.scss */
+  /* line 232, resources/scss/template/_nav_footer.scss */
   .nav-footer-area-title {
     min-height: 21px !important;
     height: 21px !important;
     max-height: 21px !important;
   }
-  /* line 238, resources/scss/template/_nav_footer.scss */
+  /* line 242, resources/scss/template/_nav_footer.scss */
   .nav-footer-area-title .nav-footer-area-text {
     display: none !important;
   }
-  /* line 242, resources/scss/template/_nav_footer.scss */
+  /* line 246, resources/scss/template/_nav_footer.scss */
   .nav-footer-area-title .nav-footer-area-text-smallecreen {
     display: inherit !important;
   }
