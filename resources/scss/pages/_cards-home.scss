@@ -7,10 +7,10 @@
   &:after {
     content: '';
     width: 100%;
-    height: 100%;
+    height: 5px;
     position: absolute;
-    top: -100px;
-    left :-2px;
+    top: calc(100% - 105px);
+    left: -2px;
     @include box-shadow( inset 0 -2px 2px transparentize(#000, 0.7));
   }
 
@@ -19,14 +19,14 @@
       min-height: calc(100% - 48px - 12px - 100px) !important;
       height: calc(100% - 48px - 12px - 100px) !important;
       &:after {
-        top: -112px;
+        top: calc(100% - 117px);
       }
     }
 
     min-height: calc(100% - 48px - 12px - 170px) !important;
     height: calc(100% - 48px - 12px - 170px) !important;
     &:after {
-      top: -182px;
+      top: calc(100% - 187px);
     }
   }
 }

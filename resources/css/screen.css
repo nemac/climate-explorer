@@ -16111,9 +16111,9 @@ input.input-inner:focus {
 #local-climate-charts-viewport:after {
   content: '';
   width: 100%;
-  height: 100%;
+  height: 5px;
   position: absolute;
-  top: -100px;
+  top: calc(100% - 105px);
   left: -2px;
   -webkit-box-shadow: inset 0 -2px 2px rgba(0, 0, 0, 0.3);
   -moz-box-shadow: inset 0 -2px 2px rgba(0, 0, 0, 0.3);
@@ -16134,13 +16134,13 @@ input.input-inner:focus {
   }
   /* line 23, resources/scss/pages/_local-climate-charts.scss */
   #local-climate-charts-viewport.expanded:after {
-    top: -112px;
+    top: calc(100% - 117px);
   }
 }
 
 /* line 30, resources/scss/pages/_local-climate-charts.scss */
 #local-climate-charts-viewport.expanded:after {
-  top: -182px;
+  top: calc(100% - 187px);
 }
 
 /* line 35, resources/scss/pages/_local-climate-charts.scss */
@@ -16726,9 +16726,9 @@ input.input-inner:focus {
 #local-climate-maps-viewport:after {
   content: '';
   width: 100%;
-  height: 100%;
+  height: 5px;
   position: absolute;
-  top: -100px;
+  top: calc(100% - 105px);
   left: -2px;
   -webkit-box-shadow: inset 0 -2px 2px rgba(0, 0, 0, 0.3);
   -moz-box-shadow: inset 0 -2px 2px rgba(0, 0, 0, 0.3);
@@ -16749,13 +16749,13 @@ input.input-inner:focus {
   }
   /* line 25, resources/scss/pages/_local-climate-maps.scss */
   #local-climate-maps-viewport.expanded:after {
-    top: -112px;
+    top: calc(100% - 117px);
   }
 }
 
 /* line 32, resources/scss/pages/_local-climate-maps.scss */
 #local-climate-maps-viewport.expanded:after {
-  top: -182px;
+  top: calc(100% - 187px);
 }
 
 /* line 37, resources/scss/pages/_local-climate-maps.scss */
@@ -17136,9 +17136,9 @@ input.input-inner:focus {
 #historical-weather-data-viewport:after {
   content: '';
   width: 100%;
-  height: 100%;
+  height: 5px;
   position: absolute;
-  top: -100px;
+  top: calc(100% - 105px);
   left: -2px;
   -webkit-box-shadow: inset 0 -2px 2px rgba(0, 0, 0, 0.3);
   -moz-box-shadow: inset 0 -2px 2px rgba(0, 0, 0, 0.3);
@@ -17159,13 +17159,13 @@ input.input-inner:focus {
   }
   /* line 31, resources/scss/pages/_historical-weather-data.scss */
   #historical-weather-data-viewport.expanded:after {
-    top: -112px;
+    top: calc(100% - 117px);
   }
 }
 
 /* line 38, resources/scss/pages/_historical-weather-data.scss */
 #historical-weather-data-viewport.expanded:after {
-  top: -182px;
+  top: calc(100% - 187px);
 }
 
 /* line 43, resources/scss/pages/_historical-weather-data.scss */
@@ -17527,9 +17527,9 @@ input.input-inner:focus {
 #historical-thresholds-viewport:after {
   content: '';
   width: 100%;
-  height: 100%;
+  height: 5px;
   position: absolute;
-  top: -100px;
+  top: calc(100% - 105px);
   left: -2px;
   -webkit-box-shadow: inset 0 -2px 2px rgba(0, 0, 0, 0.3);
   -moz-box-shadow: inset 0 -2px 2px rgba(0, 0, 0, 0.3);
@@ -17561,13 +17561,13 @@ input.input-inner:focus {
   }
   /* line 52, resources/scss/pages/_historical-thresholds.scss */
   #historical-thresholds-viewport.expanded:after {
-    top: -112px;
+    top: calc(100% - 117px);
   }
 }
 
 /* line 59, resources/scss/pages/_historical-thresholds.scss */
 #historical-thresholds-viewport.expanded:after {
-  top: -182px;
+  top: calc(100% - 187px);
 }
 
 /* line 64, resources/scss/pages/_historical-thresholds.scss */
@@ -18109,9 +18109,9 @@ input.input-inner:focus {
 #high-tide-flooding-viewport:after {
   content: '';
   width: 100%;
-  height: 100%;
+  height: 5px;
   position: absolute;
-  top: -100px;
+  top: calc(100% - 105px);
   left: -2px;
   -webkit-box-shadow: inset 0 -2px 2px rgba(0, 0, 0, 0.3);
   -moz-box-shadow: inset 0 -2px 2px rgba(0, 0, 0, 0.3);
@@ -18132,13 +18132,13 @@ input.input-inner:focus {
   }
   /* line 31, resources/scss/pages/_high-tide-flooding.scss */
   #high-tide-flooding-viewport.expanded:after {
-    top: -112px;
+    top: calc(100% - 117px);
   }
 }
 
 /* line 38, resources/scss/pages/_high-tide-flooding.scss */
 #high-tide-flooding-viewport.expanded:after {
-  top: -182px;
+  top: calc(100% - 187px);
 }
 
 /* line 43, resources/scss/pages/_high-tide-flooding.scss */
@@ -19075,9 +19075,9 @@ input.input-inner:focus {
 #cards-viewport:after {
   content: '';
   width: 100%;
-  height: 100%;
+  height: 5px;
   position: absolute;
-  top: -100px;
+  top: calc(100% - 105px);
   left: -2px;
   -webkit-box-shadow: inset 0 -2px 2px rgba(0, 0, 0, 0.3);
   -moz-box-shadow: inset 0 -2px 2px rgba(0, 0, 0, 0.3);
@@ -19098,13 +19098,13 @@ input.input-inner:focus {
   }
   /* line 21, resources/scss/pages/_cards-home.scss */
   #cards-viewport.expanded:after {
-    top: -112px;
+    top: calc(100% - 117px);
   }
 }
 
 /* line 28, resources/scss/pages/_cards-home.scss */
 #cards-viewport.expanded:after {
-  top: -182px;
+  top: calc(100% - 187px);
 }
 
 /* line 35, resources/scss/pages/_cards-home.scss */
