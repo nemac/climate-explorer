@@ -105,7 +105,8 @@ $(function () {
     const historicalWeatherDataViewport = document.getElementById(navConstants.historicalWeatherDataViewport);
     const historicalThresholdsViewport = document.getElementById(navConstants.historicalThresholdsViewport);
     const highTideFloodingViewport = document.getElementById(navConstants.highTideFloodingViewport);
-    const locationMapsViewport = document.getElementById(navConstants.locationMapsViewport);    const cardsViewport = document.getElementById(navConstants.cardsViewport);
+    const locationMapsViewport = document.getElementById(navConstants.locationMapsViewport);
+    const cardsViewport = document.getElementById(navConstants.cardsViewport);
     const lessWrapperNavFooterElem = document.getElementById(navConstants.lessWrapperNavFooterElem);
     const navFooterAreaLineElem = document.querySelectorAll(`.${navConstants.navFooterAreaLineElem}`);
     const lessRow1Elem = document.getElementById(navConstants.lessRow1Elem);
@@ -115,6 +116,7 @@ $(function () {
     addClass(moreWrapperNavFooterElem, 'expanded');
     addClass(navFooter, 'expanded');
     addClass(locationChartsViewport, 'expanded');
+    addClass(locationMapsViewport, 'expanded');
     addClass(historicalWeatherDataViewport, 'expanded');
     addClass(historicalThresholdsViewport, 'expanded');
     addClass(highTideFloodingViewport, 'expanded');
