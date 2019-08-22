@@ -470,7 +470,7 @@ $animation-duration: 0.4s;
    }
 
    .top-select-wrapper {
-     width: 25% !important;
+     width: 29% !important;
      &-minor {
        width: 5% !important;
      }
@@ -478,10 +478,9 @@ $animation-duration: 0.4s;
 
    .search-box-secondary {
      @media screen and (max-width: 900px) {
-       width: 80% !important;
+       width: 100% !important;
        display: inline-block !important;
      }
    }
-
 
 }

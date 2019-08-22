@@ -305,6 +305,7 @@ h6 {
   max-height: 400px !important;
   overflow: auto !important;
   @include border-radius(5px, 5px);
+  @include box-shadow(0px 2px 4px transparentize(#000, 0.761));
 
   @media screen and (max-width: 768px) {
     max-height: 250px !important;
