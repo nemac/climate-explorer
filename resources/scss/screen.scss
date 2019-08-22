@@ -247,7 +247,6 @@ h6 {
   @include transition(all 0.2s ease-in);
   margin-left: $ce3-padding-half !important;
 
-
   @media screen and (max-width: 900px) {
     margin-top: 14px;
     height: calc(100% - 14px) !important;

@@ -26,6 +26,17 @@ $animation-duration: 0.4s;
   overflow: auto !important;
   flex: 1 1 auto !important;
 
+  &:after {
+    content: '';
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: -100px;
+    left :-2px;
+    @include box-shadow( inset 0 -2px 2px transparentize(#000, 0.7));
+  }
+
+
   input[type=number] {
       height: 30px;
   }
@@ -38,11 +49,17 @@ $animation-duration: 0.4s;
   &.expanded {
     @media screen and (min-width: 850px) {
       min-height: calc(100% - 48px - 12px - 100px) !important;
-      height: calc(100% - 48px - 12px - 100px) !important
+      height: calc(100% - 48px - 12px - 100px) !important;
+      &:after {
+        top: -112px;
+      }
     }
 
     min-height: calc(100% - 48px - 12px - 170px) !important;
-    height: calc(100% - 48px - 12px - 170px) !important
+    height: calc(100% - 48px - 12px - 170px) !important;
+    &:after {
+      top: -182px;
+    }
   }
 
   #stations-map-wrap {
