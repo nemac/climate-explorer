@@ -1085,11 +1085,8 @@ input.input-inner-default:focus  {
 
 #map-for-print {
   position: absolute;
-  // background-color: $white;
   left: 0px;
   top: 150px;
-  // background-repeat: no-repeat;
-  // background-size: auto;
   width: 100%;
   height: 100%;
   z-index: 0;
@@ -1099,6 +1096,17 @@ input.input-inner-default:focus  {
     position: absolute;
     top: 0px;
     left: 0px;
+  }
+  .attribution {
+    top: calc(100% - 17px);
+  }
+
+  .legend {
+    max-height: 300px;
+    height: 300px;
+    width: auto;
+    top: 24px;
+    left: 24px
   }
   // opacity: 0.5;
 }
