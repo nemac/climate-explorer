@@ -1083,6 +1083,26 @@ input.input-inner-default:focus  {
   }
 }
 
+#map-for-print {
+  position: absolute;
+  // background-color: $white;
+  left: 0px;
+  top: 150px;
+  // background-repeat: no-repeat;
+  // background-size: auto;
+  width: 100%;
+  height: 100%;
+  z-index: 0;
+  img {
+    width: 100%;
+    height: auto;
+    position: absolute;
+    top: 0px;
+    left: 0px;
+  }
+  // opacity: 0.5;
+}
+
 // CLASSES
 .tooltip {
   display: block !important;

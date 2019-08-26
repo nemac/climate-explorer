@@ -72,15 +72,218 @@ $(function () {
     }
   });
 
+
+  function addImage(imageUrl, add=false){
+    if (add) {
+      const elem = document.getElementById('map-for-print');
+      elem.innerHTML = '';
+    }
+    var img = document.createElement('img');
+    img.src = imageUrl;
+    document.getElementById('map-for-print').appendChild(img);
+  }
+
+  function addBackGroundImage(imageUrl, add=false){
+    const currentBackGroundImages = $('#map-for-print').css('background');
+    console.log('currentBackGroundImages', currentBackGroundImages)
+    if (add) {
+       $('#map-for-print').css('background', ` url(${imageUrl}) no-repeat, ${currentBackGroundImages}`);
+    } else {
+        $('#map-for-print').css('background', ` url(${imageUrl}) no-repeat`);
+         console.log('one', $('#map-for-print').css('background-image'));
+    }
+    // console.log('currentBackGroundImages', currentBackGroundImages)
+    //
+    //
+    // const currentBackGroundImages2 = $('#map-for-print').css('background-image');
+    // console.log('currentBackGroundImages2', currentBackGroundImages2)
+
+  }
+
   function mapToImage() {
-    html2canvas($('#temperature-map'), {
+
+    // document.querySelectorAll('#temperature-map .esri-view-root .esri-view-surface canvas.esri-display-object[display="none"]').forEach(e => e.parentNode.removeChild(e));
+
+
+    html2canvas($('#temperature-map .esri-view-root .esri-view-surface canvas.esri-display-object')[0] , {
+      allowTaint: true,
+      useCORS: true,
+      backgroundColor: null,
+      // logging: true,
+      // letterRendering: 1,
+      removeContainer: true,
+      foreignObjectRendering: true,
       onrendered: function(canvas) {
-        var a = document.createElement('a');
-        a.href = canvas.toDataURL("image/jpeg").replace("image/jpeg", "image/octet-stream");
-        a.download = 'local-climate-map.jpg';
-        a.click();
+        // var a = document.createElement('a');
+        const imageUrl  = canvas.toDataURL("image/png").replace("image/png", "image/octet-stream");
+        addImage(imageUrl, true);
+        // console.log('onrendered', canvas);
+        // // undo your ugly changes
+        // a.href = canvas.toDataURL("image/jpeg").replace("image/jpeg", "image/octet-stream");
+        // a.download = 'local-climate-map-right.jpg';
+        // a.click();
       }
     });
+
+    // const imgElem =  document.get('div');
+    html2canvas($('#temperature-map .esri-view-root .esri-view-surface canvas.esri-display-object')[2] , {
+      allowTaint: true,
+      useCORS: true,
+      backgroundColor: null,
+      // logging: true,
+      // letterRendering: 1,
+      removeContainer: true,
+      foreignObjectRendering: true,
+      onrendered: function(canvas) {
+        // var a = document.createElement('a');
+        const imageUrl  = canvas.toDataURL("image/png").replace("image/png", "image/octet-stream");
+        // addBackGroundImage(imageUrl);
+        addImage(imageUrl);
+        // console.log('onrendered', canvas);
+        // undo your ugly changes
+        // a.href = canvas.toDataURL("image/jpeg").replace("image/jpeg", "image/octet-stream");
+        // a.download = 'local-climate-map-basemap.jpg';
+        // a.click();
+      }
+    });
+
+
+    // html2canvas($('#temperature-map .esri-ui-corner-container') , {
+    //   allowTaint: true,
+    //   useCORS: true,
+    //   logging: true,
+    //   backgroundColor: null,
+    //   letterRendering: 1,
+    //   removeContainer: true,
+    //   foreignObjectRendering: true,
+    //   onrendered: function(canvas) {
+    //     var a = document.createElement('a');
+    //     const imageUrl  = canvas.toDataURL("image/png").replace("image/png", "image/octet-stream");
+    //     // addBackGroundImage(imageUrl, true);
+    //     addImage(imageUrl);
+    //     // var a = document.createElement('a');
+    //     // console.log('onrendered', canvas);
+    //     // // undo your ugly changes
+    //     // a.href = canvas.toDataURL("image/jpeg").replace("image/jpeg", "image/octet-stream");
+    //     // a.download = 'local-climate-map-legend.jpg';
+    //     // a.click();
+    //   }
+    // });
+
+
+    // const imgElem =  document.get('div');
+    const canvasLength =  $('#temperature-map .esri-view-root .esri-view-surface canvas.esri-display-object').length
+    console.log('canvasLength', canvasLength)
+    html2canvas($('#temperature-map .esri-view-root .esri-view-surface canvas.esri-display-object')[4] , {
+      allowTaint: true,
+      useCORS: true,
+      backgroundColor: null,
+      // logging: true,
+      // letterRendering: 1,
+      removeContainer: true,
+      foreignObjectRendering: true,
+      onrendered: function(canvas) {
+        // var a = document.createElement('a');
+        const imageUrl  = canvas.toDataURL("image/png").replace("image/png", "image/octet-stream");
+        // addBackGroundImage(imageUrl, true);
+        addImage(imageUrl);
+        const elem = document.getElementById('map-for-print');
+        elem.classList.remove('d-none');
+        // console.log('onrendered', canvas);
+        // undo your ugly changes
+        // a.href = canvas.toDataURL("image/jpeg").replace("image/jpeg", "image/octet-stream");
+        // a.download = 'local-climate-map-labels.jpg';
+        // a.click();
+      }
+    });
+
+
+    //
+    // html2canvas($('#temperature-map .esri-view-root .esri-view-surface canvas.esri-display-object')[4] , {
+    //   allowTaint: true,
+    //   useCORS: true,
+    //   logging: true,
+    //   letterRendering: 1,
+    //   removeContainer: false,
+    //   foreignObjectRendering: true,
+    //   onrendered: function(canvas) {
+    //     var a = document.createElement('a');
+    //     console.log('onrendered', canvas);
+    //     // undo your ugly changes
+    //     a.href = canvas.toDataURL("image/jpeg").replace("image/jpeg", "image/octet-stream");
+    //     a.download = 'local-climate-map-left.jpg';
+    //     a.click();
+    //   }
+    // });
+    //
+    // html2canvas($('#temperature-map .esri-view-root .esri-view-surfaced .esri-display-object canvas.esri-display-object') , {
+    //   allowTaint: true,
+    //   useCORS: true,
+    //   logging: true,
+    //   backgroundColor: 	'#ffffff',
+    //   letterRendering: 1,
+    //   removeContainer: true,
+    //   foreignObjectRendering: true,
+    //   onrendered: function(canvas) {
+    //     var a = document.createElement('a');
+    //     const imageUrl  = canvas.toDataURL("image/png").replace("image/png", "image/octet-stream");
+    //     addBackGroundImage(imageUrl, true);
+    //     // undo your ugly changes
+    //   //   a.href = canvas.toDataURL("image/jpeg").replace("image/jpeg", "image/octet-stream");
+    //   //   a.download = 'local-climate-map-states.jpg';
+    //   //   a.click();
+    //   }
+    // });
+
+    //
+    // html2canvas($('#temperature-map .esri-view-user-storage .bottom-scenario-controls') , {
+    //   allowTaint: true,
+    //   useCORS: true,
+    //   logging: true,
+    //   backgroundColor: 	'#ffffff',
+    //   letterRendering: 1,
+    //   removeContainer: true,
+    //   foreignObjectRendering: true,
+    //   onrendered: function(canvas) {
+    //     var a = document.createElement('a');
+    //     console.log('onrendered', canvas);
+    //     // undo your ugly changes
+    //     a.href = canvas.toDataURL("image/jpeg").replace("image/jpeg", "image/octet-stream");
+    //     a.download = 'local-climate-map-buttons.jpg';
+    //     a.click();
+    //   }
+    // });
+    //
+
+
+    html2canvas($('#map-for-print') , {
+      allowTaint: true,
+      useCORS: true,
+      logging: true,
+      backgroundColor: '#ffffff',
+      letterRendering: 1,
+      // removeContainer: true,
+      foreignObjectRendering: true,
+      onrendered: function(canvas) {
+        const elem = document.getElementById('map-for-print');
+        var a = document.createElement('a');
+        console.log('onrendered', canvas);
+        // undo your ugly changes
+        a.href = canvas.toDataURL("image/png").replace("image/png", "image/octet-stream");
+        a.download = 'local-climate-map.png';
+        a.click();
+        elem.classList.add('d-none');
+      }
+    });
+
+
+    // domtoimage.toJpeg(document.getElementById('map-row'), { quality: 0.95 })
+    //   .then(function (dataUrl) {
+    //       var link = document.createElement('a');
+    //       link.download = 'my-image-name.jpeg';
+    //       link.href = dataUrl;
+    //       link.click();
+    //   });
   }
 
   // toggle filters click
@@ -317,6 +520,13 @@ $(function () {
     document.querySelector('.scenario-map-overlay-container').style.left = `${rect.left}px`;
     document.querySelector('.scenario-map-overlay-container').style.width = `${rect.width}px`;
     document.querySelector('.scenario-map-overlay-container').style.height = `${rect.height}px`;
+
+    document.querySelector('#map-for-print').style.top = `${rect.top}px`;
+    document.querySelector('#map-for-print').style.left = `${rect.left}px`;
+    document.querySelector('#map-for-print').style.width = `${rect.width}px`;
+    document.querySelector('#map-for-print').style.height = `${rect.height}px`;
+
+
   }
 
   setMapSize();

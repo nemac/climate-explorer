@@ -605,10 +605,12 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
     _updateLeftScenarioLayer: function _updateLeftScenarioLayer() {
       if (this.leftLayer !== null) {
         var oldLeftLayer = this.leftLayer;
-        setTimeout(function () {
-          oldLeftLayer.visible = false;
-          oldLeftLayer.destroy();
-        }, 400);
+        const lay = this.map.findLayerById(this.leftLayer.id)
+        this.map.remove(lay);
+        // setTimeout(function () {
+        //   oldLeftLayer.visible = false;
+        //   oldLeftLayer.destroy();
+        // }, 400);
         this.leftLayer = null;
       }
 
@@ -621,10 +623,12 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
     _updateRightScenarioLayer: function _updateRightScenarioLayer() {
       if (this.rightLayer !== null) {
         var oldRightLayer = this.rightLayer;
-        setTimeout(function () {
-          oldRightLayer.visible = false;
-          oldRightLayer.destroy();
-        }, 400);
+        const lay = this.map.findLayerById(this.rightLayer.id)
+        this.map.remove(lay);
+        // setTimeout(function () {
+        //   oldRightLayer.visible = false;
+        //   oldRightLayer.destroy();
+        // }, 400);
         this.rightLayer = null;
       }
 
@@ -661,7 +665,11 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
           };
         }
         this._mapInitPromise.then(function (layer) {
-          this.map.add(layer, 2);
+          if (side === 'left') {
+            this.map.add(layer, 0);
+          } else {
+            this.map.add(layer, 1);
+          }
         }.bind(this, layer));
         resolve(layer);
       }.bind(this)).catch(this._log.bind(this));
