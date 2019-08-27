@@ -58,26 +58,37 @@ $(function () {
     $('#default-chart-map-varriable').html(chartText);
   }
 
+  // $('#downloads-select-wrapper').click( function (e) {
+  //   mapToImageRight();
+  // });
+
+  window.addEventListener('last-left-image-added', function(e) {
+    exportLeft();
+  })
+
+  window.addEventListener('last-right-image-added', function(e) {
+    exportRight();
+  })
+
   // function to enable downloads (images and data)
   $('.download-select li a').click( function (e) {
     const downloadAction = $(this).attr('rel');
-
     // capture what we are downloading
     switch (downloadAction) {
       case 'download-rightmap-image': // download image
-      mapToImageRight();
-      break;
+        mapToImageRight();
+        break;
       case 'download-lefttmap-image': // download image
-      mapToImageLeft();
-      break;
+        mapToImageLeft();
+        break;
       default:
-      mapToImageRight();
+        mapToImageRight();
     }
   });
 
-  function addImage(imageUrl, cssclass='none', add=false){
+  function addImage(imageUrl, side='left', cssclass='none', add=false){
     if (add) {
-      const elem = document.getElementById('map-for-print');
+      const elem = document.getElementById(`map-for-print-${side}`);
       elem.innerHTML = '';
     }
     var img = document.createElement('img');
@@ -85,8 +96,8 @@ $(function () {
     if (cssclass) {
       img.classList.add(cssclass)
     }
-    img.setAttribute('crossOrigin','anonymous');
-    document.getElementById('map-for-print').appendChild(img);
+    img.setAttribute('crossorigin','anonymous');
+    document.getElementById(`map-for-print-${side}`).appendChild(img);
   }
 
   function getBase64Image(img) {
@@ -100,6 +111,56 @@ $(function () {
     return dataURL.replace(/^data:image\/(png|jpg);base64,/, "");
   }
 
+
+    function exportRight() {
+      // download image of images
+      const elem = document.getElementById('map-for-print-right');
+      elem.classList.remove('d-none');
+
+      html2canvas($('#map-for-print-right') , {
+        allowTaint: true,
+        useCORS: true,
+        backgroundColor: null,
+        letterRendering: 1,
+        // imageTimeout: 40000,
+        foreignObjectRendering: true,
+        onrendered: function(canvas) {
+
+          var a = document.createElement('a');
+          a.href = canvas.toDataURL("image/png").replace("image/png", "image/octet-stream");
+          a.download = 'local-climate-map-right.png';
+          a.click();
+          elem.classList.add('d-none');
+          // document.body.appendChild(canvas);
+        }
+      });
+    }
+
+
+    function exportLeft() {
+      // download image of images
+      const elem = document.getElementById('map-for-print-left');
+      elem.classList.remove('d-none');
+
+      html2canvas($('#map-for-print-left') , {
+        allowTaint: true,
+        useCORS: true,
+        backgroundColor: null,
+        letterRendering: 1,
+        // imageTimeout: 40000,
+        foreignObjectRendering: true,
+        onrendered: function(canvas) {
+
+          var a = document.createElement('a');
+          a.href = canvas.toDataURL("image/png").replace("image/png", "image/octet-stream");
+          a.download = 'local-climate-map-left.png';
+          a.click();
+          elem.classList.add('d-none');
+          // document.body.appendChild(canvas);
+        }
+      });
+    }
+
   function mapToImageRight() {
     // base map
     html2canvas($('#temperature-map .esri-view-root .esri-view-surface canvas.esri-display-object')[0] , {
@@ -107,10 +168,11 @@ $(function () {
       useCORS: true,
       backgroundColor: null,
       removeContainer: true,
+      // imageTimeout: 30000,
       foreignObjectRendering: true,
       onrendered: function(canvas) {
         const imageUrl  = canvas.toDataURL("image/png").replace("image/png", "image/octet-stream");
-        addImage(imageUrl, 'basemap', true);
+        addImage(imageUrl, 'right', 'basemap', true);
       }
     });
 
@@ -123,7 +185,7 @@ $(function () {
       foreignObjectRendering: true,
       onrendered: function(canvas) {
         const imageUrl  = canvas.toDataURL("image/png").replace("image/png", "image/octet-stream");
-        addImage(imageUrl, 'rightmap');
+        addImage(imageUrl, 'right', 'rightmap');
       }
     });
 
@@ -136,26 +198,25 @@ $(function () {
       foreignObjectRendering: true,
       onrendered: function(canvas) {
         const imageUrl  = canvas.toDataURL("image/png").replace("image/png", "image/octet-stream");
-        addImage(imageUrl, 'label-boundaries-overlay1');
+        addImage(imageUrl, 'right', 'label-boundaries-overlay1');
       }
     });
 
     // export label and state boundaries overlay
     const canvasLength = $('#temperature-map .esri-view-root .esri-view-surface canvas.esri-display-object').length;
-    if (canvasLength <= 6) {
-      const elem = $('#temperature-map .esri-view-root .esri-view-surface canvas.esri-display-object')[5];
-      elem.setAttribute('crossOrigin','anonymous');
+    if (canvasLength >= 6) {
+      // const elem = $('#temperature-map .esri-view-root .esri-view-surface canvas.esri-display-object')[5];
+      // elem.setAttribute('crossorigin','anonymous');
 
       html2canvas($('#temperature-map .esri-view-root .esri-view-surface canvas.esri-display-object')[5] , {
         allowTaint: true,
         useCORS: true,
         backgroundColor: null,
         removeContainer: true,
-        imageTimeout: 0,
         foreignObjectRendering: true,
         onrendered: function(canvas) {
           const imageUrl  = canvas.toDataURL("image/png").replace("image/png", "image/octet-stream");
-          addImage(imageUrl, 'label-boundaries-overlay2');
+          addImage(imageUrl, 'right', 'label-boundaries-overlay2');
         }
       });
     }
@@ -166,14 +227,13 @@ $(function () {
       useCORS: true,
       backgroundColor: null,
       removeContainer: true,
-      imageTimeout: 0,
       foreignObjectRendering: true,
       onrendered: function(canvas) {
         const imageUrl  = canvas.toDataURL("image/png").replace("image/png", "image/octet-stream");
         const base64temp = getBase64Image($('.esri-expand__content .legend-image')[0])
-        addImage(base64temp, 'legend');
-        const elem = document.getElementById('map-for-print');
-        elem.classList.remove('d-none');
+        addImage(base64temp, 'right', 'legend');
+        // const elem = document.getElementById('map-for-print');
+        // elem.classList.remove('d-none');
       }
     });
 
@@ -186,26 +246,9 @@ $(function () {
       foreignObjectRendering: true,
       onrendered: function(canvas) {
         const imageUrl  = canvas.toDataURL("image/png").replace("image/png", "image/octet-stream");
-        addImage(imageUrl, 'attribution');
-      }
-    });
-
-
-    // download image of images
-    html2canvas($('#map-for-print') , {
-      allowTaint: true,
-      useCORS: true,
-      backgroundColor: null,
-      letterRendering: 1,
-      foreignObjectRendering: true,
-      onrendered: function(canvas) {
-        const elem = document.getElementById('map-for-print');
-        var a = document.createElement('a');
-        a.href = canvas.toDataURL("image/png").replace("image/png", "image/octet-stream");
-        a.download = 'local-climate-map-right.png';
-        a.click();
-        elem.classList.add('d-none');
-        // document.body.appendChild(canvas);
+        addImage(imageUrl, 'right', 'attribution');
+        const leftMapDoneEvent = new CustomEvent('last-right-image-added');
+        window.dispatchEvent(leftMapDoneEvent);
       }
     });
   }
@@ -220,7 +263,7 @@ $(function () {
       foreignObjectRendering: true,
       onrendered: function(canvas) {
         const imageUrl  = canvas.toDataURL("image/png").replace("image/png", "image/octet-stream");
-        addImage(imageUrl, 'basemap', true);
+        addImage(imageUrl, 'left', 'basemap', true);
       }
     });
 
@@ -233,7 +276,7 @@ $(function () {
       foreignObjectRendering: true,
       onrendered: function(canvas) {
         const imageUrl  = canvas.toDataURL("image/png").replace("image/png", "image/octet-stream");
-        addImage(imageUrl, 'leftmap');
+        addImage(imageUrl, 'left', 'leftmap');
       }
     });
 
@@ -246,13 +289,13 @@ $(function () {
       foreignObjectRendering: true,
       onrendered: function(canvas) {
         const imageUrl  = canvas.toDataURL("image/png").replace("image/png", "image/octet-stream");
-        addImage(imageUrl, 'label-boundaries-overlay1');
+        addImage(imageUrl, 'left', 'label-boundaries-overlay1');
       }
     });
 
     // export label and state boundaries overlay
     const canvasLength = $('#temperature-map .esri-view-root .esri-view-surface canvas.esri-display-object').length;
-    if (canvasLength <= 6) {
+    if (canvasLength >= 6) {
       html2canvas($('#temperature-map .esri-view-root .esri-view-surface canvas.esri-display-object')[5] , {
         allowTaint: true,
         useCORS: true,
@@ -261,7 +304,7 @@ $(function () {
         foreignObjectRendering: true,
         onrendered: function(canvas) {
           const imageUrl  = canvas.toDataURL("image/png").replace("image/png", "image/octet-stream");
-          addImage(imageUrl, 'label-boundaries-overlay2');
+          addImage(imageUrl, 'left', 'label-boundaries-overlay2');
         }
       });
     }
@@ -276,9 +319,9 @@ $(function () {
       onrendered: function(canvas) {
         const imageUrl  = canvas.toDataURL("image/png").replace("image/png", "image/octet-stream");
         const base64temp = getBase64Image($('.esri-expand__content .legend-image')[0])
-        addImage(base64temp, 'legend');
-        const elem = document.getElementById('map-for-print');
-        elem.classList.remove('d-none');
+        addImage(base64temp, 'left', 'legend');
+        // const elem = document.getElementById('map-for-print');
+        // elem.classList.remove('d-none');
       }
     });
 
@@ -291,25 +334,9 @@ $(function () {
       foreignObjectRendering: true,
       onrendered: function(canvas) {
         const imageUrl  = canvas.toDataURL("image/png").replace("image/png", "image/octet-stream");
-        addImage(imageUrl, 'attribution');
-      }
-    });
-
-    // download image of images
-    html2canvas($('#map-for-print') , {
-      allowTaint: true,
-      useCORS: true,
-      backgroundColor: null,
-      letterRendering: 1,
-      foreignObjectRendering: true,
-      onrendered: function(canvas) {
-        const elem = document.getElementById('map-for-print');
-        var a = document.createElement('a');
-        a.href = canvas.toDataURL("image/png").replace("image/png", "image/octet-stream");
-        a.download = 'local-climate-map-leftt.png';
-        a.click();
-        elem.classList.add('d-none');
-        // document.body.appendChild(canvas);
+        addImage(imageUrl, 'left', 'attribution');
+        const leftMapDoneEvent = new CustomEvent('last-left-image-added');
+        window.dispatchEvent(leftMapDoneEvent);
       }
     });
   }
@@ -549,12 +576,15 @@ $(function () {
     document.querySelector('.scenario-map-overlay-container').style.width = `${rect.width}px`;
     document.querySelector('.scenario-map-overlay-container').style.height = `${rect.height}px`;
 
-    document.querySelector('#map-for-print').style.top = `${rect.top}px`;
-    document.querySelector('#map-for-print').style.left = `${rect.left}px`;
-    document.querySelector('#map-for-print').style.width = `${rect.width}px`;
-    document.querySelector('#map-for-print').style.height = `${rect.height}px`;
+    document.querySelector('#map-for-print-left').style.top = `${rect.top}px`;
+    document.querySelector('#map-for-print-left').style.left = `${rect.left}px`;
+    document.querySelector('#map-for-print-left').style.width = `${rect.width}px`;
+    document.querySelector('#map-for-print-left').style.height = `${rect.height}px`;
 
-
+    document.querySelector('#map-for-print-right').style.top = `${rect.top}px`;
+    document.querySelector('#map-for-print-right').style.left = `${rect.left}px`;
+    document.querySelector('#map-for-print-right').style.width = `${rect.width}px`;
+    document.querySelector('#map-for-print-right').style.height = `${rect.height}px`;
   }
 
   setMapSize();
