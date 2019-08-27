@@ -1231,7 +1231,7 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
       }).then(function (layer) {
         this.countiesLayer = layer;
         this._mapInitPromise.then(function () {
-          this.map.add(this.countiesLayer, 10);
+          this.map.add(this.countiesLayer, 4);
           this.view.on("click", function (event) {
             this.countiesLayer.queryFeatures({geometry: event.mapPoint, outFields: ["*"]}).then(function (response) {
               if (!'features' in response || response.features.length < 1){
