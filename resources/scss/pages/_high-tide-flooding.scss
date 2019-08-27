@@ -25,7 +25,7 @@
   }
 
   &.expanded {
-    @media screen and (min-width: 850px) {
+    @include medium-expand-bottom {
       min-height: calc(100% - 48px - 12px - 100px) !important;
       height: calc(100% - 48px - 12px - 100px) !important;
       &:after {
@@ -50,7 +50,7 @@
     position: relative;
     top: -250px;
     left: 150px;
-    @media screen and (max-width: 500px) {
+    @include very-small {
       top: -200px !important;
       left: 10% !important;
       width: 80%;
@@ -66,7 +66,7 @@
 
   #stations-select-wrapper, #tidalzoom-wrapper, #btn-tidalzoom {
      display: flex !important;
-     @media screen and (max-width: 900px) {
+     @include medium {
        width: 100% !important;
        margin-top: 6px;
      }
@@ -129,11 +129,11 @@
        }
      }
 
-     @media screen and (max-width: 1240px) {
+     @include large {
        justify-content: center !important;
      }
 
-     @media screen and (max-width: 900px) {
+     @include medium {
        order: 1;
        padding-bottom: 250px !important;
 
@@ -153,7 +153,7 @@
            flex: 0 0 100%;
            height: 100% !important;
            width: 100% !important;
-           @media screen and (max-width: 500px) {
+           @include very-small {
             z-index: 200;
           }
          }
@@ -168,7 +168,7 @@
            overflow: visible !important;
            height: 100% !important;
            width: 100% !important;
-           @media screen and (max-width: 900px) {
+           @include medium {
              position: relative !important;
              top: -350px;
            }
@@ -185,7 +185,7 @@
        }
      }
 
-     @media screen and (max-width: 500px) {
+     @include very-small {
        height: auto !important;
        order: 1;
 
@@ -198,7 +198,7 @@
 
          .tidal-chart {
            width: calc(100% - 40px);
-           @media screen and (max-width: 900px) {
+           @include medium {
              width: calc(100%);
            }
            height: 100%;
@@ -216,7 +216,7 @@
          #stations-graph-wrap {
            height: 100% !important;
            width: 80%;
-           @media screen and (max-width: 900px) {
+           @include medium {
              min-height: 300px !important;
              max-height: 300px !important;
              height: 300px !important;
@@ -226,7 +226,7 @@
 
          #stations-map-wrap {
            height: 100%;
-           @media screen and (max-width: 900px) {
+           @include medium {
              min-height: 350px !important;
              max-height: 350px !important;
              height: 350px !important;
@@ -235,7 +235,7 @@
          }
 
          #station-info-row {
-           @media screen and (max-width: 900px) {
+           @include medium {
              // padding-top: 350px !important;
              min-height: 250px;
              max-height: 250px !important;
@@ -246,7 +246,7 @@
 
          #stations-map-row, #stations-graph-row, #station-info-row {
            align-self: center;
-           @media screen and (max-width: 768px) {
+           @include small {
              width: 90% !important;
            }
          }
@@ -305,7 +305,7 @@
    }
 
    .search-box-secondary {
-     @media screen and (max-width: 900px) {
+     @include medium {
        width: 100% !important;
        display: inline-block !important;
      }

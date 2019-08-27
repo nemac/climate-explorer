@@ -12068,12 +12068,12 @@ This file is due for a cleanup. Please do not add to the mess.
     top: auto;
     left: auto;
   }
-  /* line 53, resources/scss/_mixins.scss */
+  /* line 150, resources/scss/_mixins.scss */
   #main-header:before, #main-header:after {
     content: " ";
     display: table;
   }
-  /* line 59, resources/scss/_mixins.scss */
+  /* line 156, resources/scss/_mixins.scss */
   #main-header:after {
     clear: both;
   }
@@ -12182,12 +12182,12 @@ This file is due for a cleanup. Please do not add to the mess.
     top: auto;
     left: auto;
   }
-  /* line 53, resources/scss/_mixins.scss */
+  /* line 150, resources/scss/_mixins.scss */
   #main-header:before, #main-header:after {
     content: " ";
     display: table;
   }
-  /* line 59, resources/scss/_mixins.scss */
+  /* line 156, resources/scss/_mixins.scss */
   #main-header:after {
     clear: both;
   }
@@ -12264,12 +12264,12 @@ This file is due for a cleanup. Please do not add to the mess.
     width: 80%;
     margin: 20px auto;
   }
-  /* line 53, resources/scss/_mixins.scss */
+  /* line 150, resources/scss/_mixins.scss */
   #nav-overlay #nav-controls:before, #nav-overlay #nav-controls:after {
     content: " ";
     display: table;
   }
-  /* line 59, resources/scss/_mixins.scss */
+  /* line 156, resources/scss/_mixins.scss */
   #nav-overlay #nav-controls:after {
     clear: both;
   }
@@ -12548,12 +12548,12 @@ This file is due for a cleanup. Please do not add to the mess.
     top: 5.5rem;
     left: 1.5rem;
   }
-  /* line 53, resources/scss/_mixins.scss */
+  /* line 150, resources/scss/_mixins.scss */
   #nav-overlay #nav-controls:before, #nav-overlay #nav-controls:after {
     content: " ";
     display: table;
   }
-  /* line 59, resources/scss/_mixins.scss */
+  /* line 156, resources/scss/_mixins.scss */
   #nav-overlay #nav-controls:after {
     clear: both;
   }
@@ -12977,79 +12977,79 @@ This file is due for a cleanup. Please do not add to the mess.
   }
 }
 
-/* line 124, resources/scss/screen.scss */
+/* line 123, resources/scss/screen.scss */
 * {
   -moz-box-sizing: border-box;
   -webkit-box-sizing: border-box;
   box-sizing: border-box;
 }
 
-/* line 26, resources/scss/_mixins.scss */
+/* line 123, resources/scss/_mixins.scss */
 *:before, *:after {
   -moz-box-sizing: border-box;
   -webkit-box-sizing: border-box;
   box-sizing: border-box;
 }
 
-/* line 128, resources/scss/screen.scss */
+/* line 127, resources/scss/screen.scss */
 body {
   font: 300 16px Roboto, Helvetica, "Helvetica Neue", Arial, sans-serif;
   color: #124086;
 }
 
-/* line 132, resources/scss/screen.scss */
+/* line 131, resources/scss/screen.scss */
 a {
   color: #1D6ADD;
   text-decoration: none;
 }
 
-/* line 136, resources/scss/screen.scss */
+/* line 135, resources/scss/screen.scss */
 img {
   display: block;
   max-width: 100%;
   height: auto;
 }
 
-/* line 141, resources/scss/screen.scss */
+/* line 140, resources/scss/screen.scss */
 h1 {
   font: 800 24px Roboto, Helvetica, "Helvetica Neue", Arial, sans-serif;
   text-transform: uppercase;
 }
 
-/* line 145, resources/scss/screen.scss */
+/* line 144, resources/scss/screen.scss */
 h2 {
   font: 800 18px Roboto, Helvetica, "Helvetica Neue", Arial, sans-serif;
   text-transform: uppercase;
 }
 
-/* line 149, resources/scss/screen.scss */
+/* line 148, resources/scss/screen.scss */
 h3 {
   font: 800 16px Roboto, Helvetica, "Helvetica Neue", Arial, sans-serif;
 }
 
-/* line 152, resources/scss/screen.scss */
+/* line 151, resources/scss/screen.scss */
 h4 {
   font: 800 14px Roboto, Helvetica, "Helvetica Neue", Arial, sans-serif;
 }
 
-/* line 155, resources/scss/screen.scss */
+/* line 154, resources/scss/screen.scss */
 h5 {
   font: 800 12px Roboto, Helvetica, "Helvetica Neue", Arial, sans-serif;
 }
 
-/* line 158, resources/scss/screen.scss */
+/* line 157, resources/scss/screen.scss */
 h6 {
   font: 600 12px Roboto, Helvetica, "Helvetica Neue", Arial, sans-serif;
 }
 
-/* line 162, resources/scss/screen.scss */
+/* line 161, resources/scss/screen.scss */
 ::-webkit-scrollbar {
   width: 6px;
   border: 1px solid #124086;
   background-color: #124086;
 }
 
-/* line 167, resources/scss/screen.scss */
+/* line 166, resources/scss/screen.scss */
 ::-webkit-scrollbar-thumb {
   background-color: #124086;
   border-radius: 6px;
@@ -13057,70 +13057,70 @@ h6 {
   -moz-border-radius: 6px !important;
 }
 
-/* line 172, resources/scss/screen.scss */
+/* line 171, resources/scss/screen.scss */
 ::-webkit-scrollbar-thumb:vertical {
   height: 6px;
 }
 
-/* line 177, resources/scss/screen.scss */
+/* line 176, resources/scss/screen.scss */
 ::-webkit-scrollbar-track {
   border: 1px solid #1D6ADD;
   background-color: #E9F1FC;
 }
 
-/* line 182, resources/scss/screen.scss */
+/* line 181, resources/scss/screen.scss */
 ::-webkit-scrollbar-track-piece {
   margin-right: 10px;
   height: 6px;
   width: 6px;
 }
 
-/* line 188, resources/scss/screen.scss */
+/* line 187, resources/scss/screen.scss */
 ::-webkit-scrollbar-corner {
   display: none;
 }
 
-/* line 194, resources/scss/screen.scss */
+/* line 193, resources/scss/screen.scss */
 .main-font-description {
   font: 500 24px Roboto, Helvetica, "Helvetica Neue", Arial, sans-serif !important;
 }
 
-/* line 198, resources/scss/screen.scss */
+/* line 197, resources/scss/screen.scss */
 .font-description {
   font: 500 24px Roboto, Helvetica, "Helvetica Neue", Arial, sans-serif !important;
 }
 
-/* line 201, resources/scss/screen.scss */
+/* line 200, resources/scss/screen.scss */
 .main-btn-height {
   height: 60px !important;
 }
 
-/* line 205, resources/scss/screen.scss */
+/* line 204, resources/scss/screen.scss */
 .default-btn-height {
   height: 36px !important;
 }
 
 @media screen and (max-width: 900px) {
-  /* line 205, resources/scss/screen.scss */
+  /* line 204, resources/scss/screen.scss */
   .default-btn-height {
     height: 48px !important;
   }
 }
 
-/* line 212, resources/scss/screen.scss */
+/* line 211, resources/scss/screen.scss */
 .select-hidden {
   display: none;
   visibility: hidden;
   padding-right: 10px;
 }
 
-/* line 218, resources/scss/screen.scss */
+/* line 217, resources/scss/screen.scss */
 .select-icon {
   margin-right: 12px !important;
   margin-top: 3px !important;
 }
 
-/* line 223, resources/scss/screen.scss */
+/* line 222, resources/scss/screen.scss */
 .select {
   cursor: pointer;
   display: inline-block;
@@ -13132,13 +13132,13 @@ h6 {
 }
 
 @media screen and (max-width: 900px) {
-  /* line 223, resources/scss/screen.scss */
+  /* line 222, resources/scss/screen.scss */
   .select {
     height: 48px !important;
   }
 }
 
-/* line 236, resources/scss/screen.scss */
+/* line 235, resources/scss/screen.scss */
 .select-styled {
   display: flex !important;
   overflow: hidden;
@@ -13159,7 +13159,7 @@ h6 {
 }
 
 @media screen and (max-width: 900px) {
-  /* line 236, resources/scss/screen.scss */
+  /* line 235, resources/scss/screen.scss */
   .select-styled {
     margin-top: 14px;
     height: calc(100% - 14px) !important;
@@ -13167,22 +13167,22 @@ h6 {
   }
 }
 
-/* line 255, resources/scss/screen.scss */
+/* line 254, resources/scss/screen.scss */
 .select-styled a {
   color: #124086 !important;
 }
 
-/* line 258, resources/scss/screen.scss */
+/* line 257, resources/scss/screen.scss */
 .select-styled.disabled {
   color: rgba(18, 64, 134, 0.5) !important;
 }
 
-/* line 260, resources/scss/screen.scss */
+/* line 259, resources/scss/screen.scss */
 .select-styled.disabled a {
   color: rgba(18, 64, 134, 0.5) !important;
 }
 
-/* line 265, resources/scss/screen.scss */
+/* line 264, resources/scss/screen.scss */
 .select-styled:after {
   position: absolute;
   background-color: #FBFCFE;
@@ -13200,26 +13200,26 @@ h6 {
 }
 
 @media screen and (max-width: 900px) {
-  /* line 265, resources/scss/screen.scss */
+  /* line 264, resources/scss/screen.scss */
   .select-styled:after {
     right: 12px;
     bottom: 12px;
   }
 }
 
-/* line 287, resources/scss/screen.scss */
+/* line 286, resources/scss/screen.scss */
 #downloads-select-wrapper .select-styled {
   white-space: normal;
 }
 
 @media screen and (max-width: 768px) {
-  /* line 292, resources/scss/screen.scss */
+  /* line 291, resources/scss/screen.scss */
   #filters-toggle .select-styled:after {
     right: -2px;
   }
 }
 
-/* line 298, resources/scss/screen.scss */
+/* line 297, resources/scss/screen.scss */
 .select-options {
   display: none;
   position: relative;
@@ -13242,31 +13242,31 @@ h6 {
 }
 
 @media screen and (max-width: 768px) {
-  /* line 298, resources/scss/screen.scss */
+  /* line 297, resources/scss/screen.scss */
   .select-options {
     max-height: 250px !important;
     top: 2px;
   }
 }
 
-/* line 324, resources/scss/screen.scss */
+/* line 318, resources/scss/screen.scss */
 .select-options a {
   color: #124086 !important;
 }
 
-/* line 328, resources/scss/screen.scss */
+/* line 322, resources/scss/screen.scss */
 .select-options .default-select-option-group {
   padding: 6px !important;
   font-weight: 600 !important;
 }
 
-/* line 333, resources/scss/screen.scss */
+/* line 327, resources/scss/screen.scss */
 .select-options .default-select-option-disabled {
   color: rgba(18, 64, 134, 0.5) !important;
   cursor: default !important;
 }
 
-/* line 338, resources/scss/screen.scss */
+/* line 332, resources/scss/screen.scss */
 .select-options li {
   margin: 0;
   padding: 12px 0;
@@ -13281,396 +13281,396 @@ h6 {
   transition: all 0.15s ease-in;
 }
 
-/* line 345, resources/scss/screen.scss */
+/* line 339, resources/scss/screen.scss */
 .select-options li a {
   color: #124086 !important;
 }
 
-/* line 348, resources/scss/screen.scss */
+/* line 342, resources/scss/screen.scss */
 .select-options li:hover {
   color: #124086;
   background: #d3e3f9;
 }
 
-/* line 352, resources/scss/screen.scss */
+/* line 346, resources/scss/screen.scss */
 .select-options li[rel="hide"] {
   display: none;
 }
 
-/* line 358, resources/scss/screen.scss */
+/* line 352, resources/scss/screen.scss */
 .font-title {
   font: 500 24px Roboto, Helvetica, "Helvetica Neue", Arial, sans-serif !important;
   color: #FBFCFE !important;
 }
 
-/* line 363, resources/scss/screen.scss */
+/* line 357, resources/scss/screen.scss */
 .border-none {
   border: none !important;
   outline: none !important;
 }
 
-/* line 368, resources/scss/screen.scss */
+/* line 362, resources/scss/screen.scss */
 .border-default {
   border: 1px solid rgba(18, 64, 134, 0.5) !important;
 }
 
-/* line 372, resources/scss/screen.scss */
+/* line 366, resources/scss/screen.scss */
 .height-100 {
   height: 100% !important;
 }
 
-/* line 376, resources/scss/screen.scss */
+/* line 370, resources/scss/screen.scss */
 .height-90 {
   height: 90% !important;
 }
 
-/* line 380, resources/scss/screen.scss */
+/* line 374, resources/scss/screen.scss */
 .height-80 {
   height: 80% !important;
 }
 
-/* line 384, resources/scss/screen.scss */
+/* line 378, resources/scss/screen.scss */
 .height-60 {
   height: 60% !important;
 }
 
-/* line 388, resources/scss/screen.scss */
+/* line 382, resources/scss/screen.scss */
 .height-50 {
   height: 50% !important;
 }
 
-/* line 392, resources/scss/screen.scss */
+/* line 386, resources/scss/screen.scss */
 .height-20 {
   height: 20% !important;
 }
 
-/* line 396, resources/scss/screen.scss */
+/* line 390, resources/scss/screen.scss */
 .height-25 {
   height: 25% !important;
 }
 
-/* line 400, resources/scss/screen.scss */
+/* line 394, resources/scss/screen.scss */
 .height-10 {
   height: 10% !important;
 }
 
-/* line 404, resources/scss/screen.scss */
+/* line 398, resources/scss/screen.scss */
 .width-100 {
   width: 100% !important;
 }
 
-/* line 408, resources/scss/screen.scss */
+/* line 402, resources/scss/screen.scss */
 .width-90 {
   width: 90% !important;
 }
 
-/* line 412, resources/scss/screen.scss */
+/* line 406, resources/scss/screen.scss */
 .width-95 {
   width: 95% !important;
 }
 
-/* line 417, resources/scss/screen.scss */
+/* line 411, resources/scss/screen.scss */
 .width-80 {
   width: 80% !important;
 }
 
-/* line 421, resources/scss/screen.scss */
+/* line 415, resources/scss/screen.scss */
 .width-70 {
   width: 70% !important;
 }
 
-/* line 425, resources/scss/screen.scss */
+/* line 419, resources/scss/screen.scss */
 .width-75 {
   width: 75% !important;
 }
 
-/* line 429, resources/scss/screen.scss */
+/* line 423, resources/scss/screen.scss */
 .width-60 {
   width: 60% !important;
 }
 
-/* line 433, resources/scss/screen.scss */
+/* line 427, resources/scss/screen.scss */
 .width-50 {
   width: 50% !important;
 }
 
-/* line 437, resources/scss/screen.scss */
+/* line 431, resources/scss/screen.scss */
 .width-40 {
   width: 40% !important;
 }
 
-/* line 441, resources/scss/screen.scss */
+/* line 435, resources/scss/screen.scss */
 .width-30 {
   width: 30% !important;
 }
 
-/* line 445, resources/scss/screen.scss */
+/* line 439, resources/scss/screen.scss */
 .width-33 {
   width: 33% !important;
 }
 
-/* line 449, resources/scss/screen.scss */
+/* line 443, resources/scss/screen.scss */
 .width-20 {
   width: 20% !important;
 }
 
-/* line 453, resources/scss/screen.scss */
+/* line 447, resources/scss/screen.scss */
 .width-25 {
   width: 25% !important;
 }
 
-/* line 457, resources/scss/screen.scss */
+/* line 451, resources/scss/screen.scss */
 .width-15 {
   width: 15% !important;
 }
 
-/* line 461, resources/scss/screen.scss */
+/* line 455, resources/scss/screen.scss */
 .width-10 {
   width: 10% !important;
 }
 
-/* line 465, resources/scss/screen.scss */
+/* line 459, resources/scss/screen.scss */
 .width-5 {
   width: 5% !important;
 }
 
-/* line 469, resources/scss/screen.scss */
+/* line 463, resources/scss/screen.scss */
 .right-padding {
   padding-right: 12px !important;
 }
 
 @media screen and (max-width: 900px) {
-  /* line 469, resources/scss/screen.scss */
+  /* line 463, resources/scss/screen.scss */
   .right-padding {
     padding-right: 6px !important;
   }
 }
 
-/* line 476, resources/scss/screen.scss */
+/* line 470, resources/scss/screen.scss */
 .bottom-padding {
   padding-bottom: 12px !important;
 }
 
 @media screen and (max-width: 900px) {
-  /* line 476, resources/scss/screen.scss */
+  /* line 470, resources/scss/screen.scss */
   .bottom-padding {
     padding-bottom: 6px !important;
   }
 }
 
-/* line 483, resources/scss/screen.scss */
+/* line 477, resources/scss/screen.scss */
 .padding-default-half {
   padding: 6px !important;
 }
 
-/* line 487, resources/scss/screen.scss */
+/* line 481, resources/scss/screen.scss */
 .padding-default {
   padding: 12px 12px !important;
 }
 
 @media screen and (max-width: 900px) {
-  /* line 487, resources/scss/screen.scss */
+  /* line 481, resources/scss/screen.scss */
   .padding-default {
     padding: 6px 6px !important;
   }
 }
 
-/* line 494, resources/scss/screen.scss */
+/* line 488, resources/scss/screen.scss */
 .padding-horrizontal {
   padding-left: 12px !important;
   padding-right: 12px !important;
 }
 
 @media screen and (max-width: 900px) {
-  /* line 494, resources/scss/screen.scss */
+  /* line 488, resources/scss/screen.scss */
   .padding-horrizontal {
     padding-left: 6px !important;
     padding-right: 6px !important;
   }
 }
 
-/* line 503, resources/scss/screen.scss */
+/* line 497, resources/scss/screen.scss */
 .padding-vertical {
   padding-top: 12px !important;
   padding-bottom: 12px !important;
 }
 
 @media screen and (max-width: 900px) {
-  /* line 503, resources/scss/screen.scss */
+  /* line 497, resources/scss/screen.scss */
   .padding-vertical {
     padding-top: 6px !important;
     padding-bottom: 6px !important;
   }
 }
 
-/* line 512, resources/scss/screen.scss */
+/* line 506, resources/scss/screen.scss */
 .padding-horrizontal-half {
   padding-left: 6px !important;
   padding-right: 6px !important;
 }
 
 @media screen and (max-width: 900px) {
-  /* line 512, resources/scss/screen.scss */
+  /* line 506, resources/scss/screen.scss */
   .padding-horrizontal-half {
     padding-left: 3px !important;
     padding-right: 3px !important;
   }
 }
 
-/* line 521, resources/scss/screen.scss */
+/* line 515, resources/scss/screen.scss */
 .padding-vertical-half {
   padding-top: 6px !important;
   padding-bottom: 6px !important;
 }
 
 @media screen and (max-width: 900px) {
-  /* line 521, resources/scss/screen.scss */
+  /* line 515, resources/scss/screen.scss */
   .padding-vertical-half {
     padding-top: 3px !important;
     padding-bottom: 3px !important;
   }
 }
 
-/* line 529, resources/scss/screen.scss */
+/* line 523, resources/scss/screen.scss */
 .padding-bottom {
   padding-bottom: 12px !important;
 }
 
 @media screen and (max-width: 900px) {
-  /* line 529, resources/scss/screen.scss */
+  /* line 523, resources/scss/screen.scss */
   .padding-bottom {
     padding-bottom: 6px !important;
   }
 }
 
-/* line 536, resources/scss/screen.scss */
+/* line 530, resources/scss/screen.scss */
 .padding-top {
   padding-top: 12px !important;
 }
 
 @media screen and (max-width: 900px) {
-  /* line 536, resources/scss/screen.scss */
+  /* line 530, resources/scss/screen.scss */
   .padding-top {
     padding-top: 6px !important;
   }
 }
 
-/* line 543, resources/scss/screen.scss */
+/* line 537, resources/scss/screen.scss */
 .padding-bottom-half {
   padding-bottom: 6px !important;
 }
 
 @media screen and (max-width: 900px) {
-  /* line 543, resources/scss/screen.scss */
+  /* line 537, resources/scss/screen.scss */
   .padding-bottom-half {
     padding-bottom: 3px !important;
   }
 }
 
-/* line 550, resources/scss/screen.scss */
+/* line 544, resources/scss/screen.scss */
 .padding-top-half {
   padding-top: 6px !important;
 }
 
 @media screen and (max-width: 900px) {
-  /* line 550, resources/scss/screen.scss */
+  /* line 544, resources/scss/screen.scss */
   .padding-top-half {
     padding-top: 3px !important;
   }
 }
 
-/* line 557, resources/scss/screen.scss */
+/* line 551, resources/scss/screen.scss */
 .padding-break {
   padding-bottom: 48px !important;
 }
 
 @media screen and (max-width: 900px) {
-  /* line 557, resources/scss/screen.scss */
+  /* line 551, resources/scss/screen.scss */
   .padding-break {
     padding-bottom: 24px !important;
   }
 }
 
-/* line 564, resources/scss/screen.scss */
+/* line 558, resources/scss/screen.scss */
 .margin-horrizontal {
   margin-left: 12px !important;
   margin-right: 12px !important;
 }
 
 @media screen and (max-width: 900px) {
-  /* line 564, resources/scss/screen.scss */
+  /* line 558, resources/scss/screen.scss */
   .margin-horrizontal {
     margin-left: 6px !important;
     margin-right: 6px !important;
   }
 }
 
-/* line 573, resources/scss/screen.scss */
+/* line 567, resources/scss/screen.scss */
 .float-left {
   float: left !important;
 }
 
-/* line 577, resources/scss/screen.scss */
+/* line 571, resources/scss/screen.scss */
 .float-right {
   float: right !important;
 }
 
-/* line 581, resources/scss/screen.scss */
+/* line 575, resources/scss/screen.scss */
 .d-none {
   display: none !important;
 }
 
-/* line 585, resources/scss/screen.scss */
+/* line 579, resources/scss/screen.scss */
 .d-flex {
   display: flex !important;
 }
 
-/* line 589, resources/scss/screen.scss */
+/* line 583, resources/scss/screen.scss */
 .d-flex-nowrap {
   flex-wrap: nowrap !important;
 }
 
-/* line 593, resources/scss/screen.scss */
+/* line 587, resources/scss/screen.scss */
 .d-flex-wrap {
   flex-wrap: wrap !important;
 }
 
-/* line 596, resources/scss/screen.scss */
+/* line 590, resources/scss/screen.scss */
 .d-flex-row {
   display: flex !important;
   flex-flow: row wrap !important;
 }
 
-/* line 601, resources/scss/screen.scss */
+/* line 595, resources/scss/screen.scss */
 .d-flex-column {
   display: flex !important;
   flex-direction: column !important;
 }
 
-/* line 607, resources/scss/screen.scss */
+/* line 601, resources/scss/screen.scss */
 .flex-container {
   display: flex !important;
   flex-flow: row wrap !important;
 }
 
-/* line 613, resources/scss/screen.scss */
+/* line 607, resources/scss/screen.scss */
 .flex-container-nowrap {
   display: flex !important;
   flex-flow: row nowrap !important;
 }
 
-/* line 619, resources/scss/screen.scss */
+/* line 613, resources/scss/screen.scss */
 .flex-justify {
   justify-content: space-between !important;
 }
 
-/* line 623, resources/scss/screen.scss */
+/* line 617, resources/scss/screen.scss */
 .d-flex-fill {
   display: flex !important;
   flex: 1 1 auto !important;
 }
 
-/* line 628, resources/scss/screen.scss */
+/* line 622, resources/scss/screen.scss */
 .d-flex-center {
   display: flex !important;
   align-items: center !important;
@@ -13678,7 +13678,7 @@ h6 {
   justify-content: center !important;
 }
 
-/* line 635, resources/scss/screen.scss */
+/* line 629, resources/scss/screen.scss */
 .d-flex-left {
   display: flex !important;
   align-items: flex-start !important;
@@ -13686,7 +13686,7 @@ h6 {
   justify-content: flex-start !important;
 }
 
-/* line 642, resources/scss/screen.scss */
+/* line 636, resources/scss/screen.scss */
 .d-flex-bottom {
   align-self: flex-end !important;
   align-content: flex-end !important;
@@ -13694,17 +13694,17 @@ h6 {
   margin-top: auto !important;
 }
 
-/* line 649, resources/scss/screen.scss */
+/* line 643, resources/scss/screen.scss */
 .d-flex-fill {
   flex: 1 1 auto !important;
 }
 
-/* line 653, resources/scss/screen.scss */
+/* line 647, resources/scss/screen.scss */
 .d-block {
   display: block !important;
 }
 
-/* line 657, resources/scss/screen.scss */
+/* line 651, resources/scss/screen.scss */
 .input-border {
   -webkit-border-radius: 5px 5px;
   -moz-border-radius: 5px / 5px;
@@ -13714,7 +13714,7 @@ h6 {
   box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.239);
 }
 
-/* line 662, resources/scss/screen.scss */
+/* line 656, resources/scss/screen.scss */
 .btn-histobs {
   cursor: pointer;
   text-decoration: line-through !important;
@@ -13726,30 +13726,30 @@ h6 {
 }
 
 @media screen and (max-width: 900px) {
-  /* line 662, resources/scss/screen.scss */
+  /* line 656, resources/scss/screen.scss */
   .btn-histobs {
     height: 48px !important;
   }
 }
 
-/* line 675, resources/scss/screen.scss */
+/* line 669, resources/scss/screen.scss */
 .btn-histobs:hover {
   background-color: #6a6a6a !important;
 }
 
-/* line 678, resources/scss/screen.scss */
+/* line 672, resources/scss/screen.scss */
 .btn-histobs:focus {
   background-color: #6a6a6a !important;
   outline: none !important;
 }
 
-/* line 682, resources/scss/screen.scss */
+/* line 676, resources/scss/screen.scss */
 .btn-histobs.selected {
   color: #FBFCFE !important;
   text-decoration: unset !important;
 }
 
-/* line 688, resources/scss/screen.scss */
+/* line 682, resources/scss/screen.scss */
 .btn-hismod {
   cursor: pointer;
   text-decoration: line-through !important;
@@ -13761,30 +13761,30 @@ h6 {
 }
 
 @media screen and (max-width: 900px) {
-  /* line 688, resources/scss/screen.scss */
+  /* line 682, resources/scss/screen.scss */
   .btn-hismod {
     height: 48px !important;
   }
 }
 
-/* line 701, resources/scss/screen.scss */
+/* line 695, resources/scss/screen.scss */
 .btn-hismod:hover {
   background-color: #bdbdbd !important;
 }
 
-/* line 704, resources/scss/screen.scss */
+/* line 698, resources/scss/screen.scss */
 .btn-hismod:focus {
   background-color: #bdbdbd !important;
   outline: none !important;
 }
 
-/* line 708, resources/scss/screen.scss */
+/* line 702, resources/scss/screen.scss */
 .btn-hismod.selected {
   color: #124086 !important;
   text-decoration: unset !important;
 }
 
-/* line 714, resources/scss/screen.scss */
+/* line 708, resources/scss/screen.scss */
 .btn-lower-emissions {
   cursor: pointer;
   text-decoration: line-through !important;
@@ -13796,30 +13796,30 @@ h6 {
 }
 
 @media screen and (max-width: 900px) {
-  /* line 714, resources/scss/screen.scss */
+  /* line 708, resources/scss/screen.scss */
   .btn-lower-emissions {
     height: 48px !important;
   }
 }
 
-/* line 727, resources/scss/screen.scss */
+/* line 721, resources/scss/screen.scss */
 .btn-lower-emissions:hover {
   background-color: #6da0e3 !important;
 }
 
-/* line 730, resources/scss/screen.scss */
+/* line 724, resources/scss/screen.scss */
 .btn-lower-emissions:focus {
   background-color: #6da0e3 !important;
   outline: none !important;
 }
 
-/* line 734, resources/scss/screen.scss */
+/* line 728, resources/scss/screen.scss */
 .btn-lower-emissions.selected {
   color: #124086 !important;
   text-decoration: unset !important;
 }
 
-/* line 740, resources/scss/screen.scss */
+/* line 734, resources/scss/screen.scss */
 .btn-higher-emissions {
   cursor: pointer;
   text-decoration: line-through !important;
@@ -13831,30 +13831,30 @@ h6 {
 }
 
 @media screen and (max-width: 900px) {
-  /* line 740, resources/scss/screen.scss */
+  /* line 734, resources/scss/screen.scss */
   .btn-higher-emissions {
     height: 48px !important;
   }
 }
 
-/* line 753, resources/scss/screen.scss */
+/* line 747, resources/scss/screen.scss */
 .btn-higher-emissions:hover {
   background-color: #f98979 !important;
 }
 
-/* line 756, resources/scss/screen.scss */
+/* line 750, resources/scss/screen.scss */
 .btn-higher-emissions:focus {
   background-color: #f98979 !important;
   outline: none !important;
 }
 
-/* line 760, resources/scss/screen.scss */
+/* line 754, resources/scss/screen.scss */
 .btn-higher-emissions.selected {
   color: #124086 !important;
   text-decoration: unset !important;
 }
 
-/* line 766, resources/scss/screen.scss */
+/* line 760, resources/scss/screen.scss */
 .btn-default {
   cursor: pointer;
   height: 36px !important;
@@ -13864,7 +13864,7 @@ h6 {
   border: 1px solid rgba(18, 64, 134, 0.5) !important;
 }
 
-/* line 774, resources/scss/screen.scss */
+/* line 768, resources/scss/screen.scss */
 .btn-default a {
   cursor: pointer;
   text-decoration: none !important;
@@ -13872,13 +13872,13 @@ h6 {
 }
 
 @media screen and (max-width: 900px) {
-  /* line 766, resources/scss/screen.scss */
+  /* line 760, resources/scss/screen.scss */
   .btn-default {
     height: 48px !important;
   }
 }
 
-/* line 784, resources/scss/screen.scss */
+/* line 778, resources/scss/screen.scss */
 .btn-default:focus {
   background-color: #caddf8 !important;
   color: #124086 !important;
@@ -13886,7 +13886,7 @@ h6 {
   outline: none !important;
 }
 
-/* line 791, resources/scss/screen.scss */
+/* line 785, resources/scss/screen.scss */
 .btn-default:hover {
   background-color: #caddf8 !important;
   color: #124086 !important;
@@ -13894,7 +13894,7 @@ h6 {
   outline: none !important;
 }
 
-/* line 799, resources/scss/screen.scss */
+/* line 793, resources/scss/screen.scss */
 .btn-default-disabled {
   cursor: default;
   height: 36px !important;
@@ -13905,13 +13905,13 @@ h6 {
 }
 
 @media screen and (max-width: 900px) {
-  /* line 799, resources/scss/screen.scss */
+  /* line 793, resources/scss/screen.scss */
   .btn-default-disabled {
     height: 48px !important;
   }
 }
 
-/* line 811, resources/scss/screen.scss */
+/* line 805, resources/scss/screen.scss */
 .btn-default-disabled:focus {
   background-color: #bcd4f6 !important;
   color: #124086 !important;
@@ -13919,7 +13919,7 @@ h6 {
   outline: none !important;
 }
 
-/* line 818, resources/scss/screen.scss */
+/* line 812, resources/scss/screen.scss */
 .btn-default-disabled:hover {
   background-color: #bcd4f6 !important;
   color: #124086 !important;
@@ -13927,7 +13927,7 @@ h6 {
   outline: none !important;
 }
 
-/* line 826, resources/scss/screen.scss */
+/* line 820, resources/scss/screen.scss */
 .btn-default-selected {
   cursor: pointer;
   height: 36px !important;
@@ -13950,43 +13950,43 @@ h6 {
   border: 1px solid rgba(18, 64, 134, 0.5) !important;
 }
 
-/* line 837, resources/scss/screen.scss */
+/* line 831, resources/scss/screen.scss */
 .btn-default-selected a {
   cursor: pointer;
   text-decoration: none !important;
   color: #E9F1FC !important;
 }
 
-/* line 844, resources/scss/screen.scss */
+/* line 838, resources/scss/screen.scss */
 .btn-default-selected.circle-box-left {
   margin-right: -12px !important;
 }
 
-/* line 848, resources/scss/screen.scss */
+/* line 842, resources/scss/screen.scss */
 .btn-default-selected.circle-box-right {
   margin-left: -12px !important;
 }
 
-/* line 852, resources/scss/screen.scss */
+/* line 846, resources/scss/screen.scss */
 .btn-default-selected.circle-box-middle {
   margin-right: -12px !important;
   margin-left: -12px !important;
 }
 
-/* line 857, resources/scss/screen.scss */
+/* line 851, resources/scss/screen.scss */
 .btn-default-selected.btn-default-disabled {
   color: #b3cff5 !important;
   background-color: #164fa5 !important;
 }
 
 @media screen and (max-width: 900px) {
-  /* line 826, resources/scss/screen.scss */
+  /* line 820, resources/scss/screen.scss */
   .btn-default-selected {
     height: 48px !important;
   }
 }
 
-/* line 867, resources/scss/screen.scss */
+/* line 861, resources/scss/screen.scss */
 .btn-default-selected:focus {
   background-color: #397ee5 !important;
   color: #E9F1FC !important;
@@ -13994,7 +13994,7 @@ h6 {
   outline: none !important;
 }
 
-/* line 874, resources/scss/screen.scss */
+/* line 868, resources/scss/screen.scss */
 .btn-default-selected:hover {
   background-color: #397ee5 !important;
   color: #E9F1FC !important;
@@ -14002,7 +14002,7 @@ h6 {
   outline: none !important;
 }
 
-/* line 882, resources/scss/screen.scss */
+/* line 876, resources/scss/screen.scss */
 .rounded-choice-box {
   -webkit-border-radius: 25px 25px;
   -moz-border-radius: 25px / 25px;
@@ -14014,19 +14014,19 @@ h6 {
 }
 
 @media screen and (max-width: 900px) {
-  /* line 882, resources/scss/screen.scss */
+  /* line 876, resources/scss/screen.scss */
   .rounded-choice-box {
     min-height: 48px !important;
     max-height: 48px !important;
   }
 }
 
-/* line 893, resources/scss/screen.scss */
+/* line 887, resources/scss/screen.scss */
 .rounded-choice-box:hover {
   background-color: #caddf8 !important;
 }
 
-/* line 898, resources/scss/screen.scss */
+/* line 892, resources/scss/screen.scss */
 .rounded-info-box {
   -webkit-border-radius: 5px 5px;
   -moz-border-radius: 5px / 5px;
@@ -14038,13 +14038,13 @@ h6 {
 }
 
 @media screen and (max-width: 900px) {
-  /* line 898, resources/scss/screen.scss */
+  /* line 892, resources/scss/screen.scss */
   .rounded-info-box {
     min-height: 105px !important;
   }
 }
 
-/* line 909, resources/scss/screen.scss */
+/* line 903, resources/scss/screen.scss */
 .rounded-filters-box {
   -webkit-border-radius: 5px 5px;
   -moz-border-radius: 5px / 5px;
@@ -14070,27 +14070,27 @@ h6 {
 }
 
 @media screen and (max-width: 900px) {
-  /* line 909, resources/scss/screen.scss */
+  /* line 903, resources/scss/screen.scss */
   .rounded-filters-box {
     min-height: 1px !important;
   }
 }
 
-/* line 925, resources/scss/screen.scss */
+/* line 919, resources/scss/screen.scss */
 .rounded-box-secondary {
   -webkit-border-radius: 5px 5px;
   -moz-border-radius: 5px / 5px;
   border-radius: 5px / 5px;
 }
 
-/* line 929, resources/scss/screen.scss */
+/* line 923, resources/scss/screen.scss */
 .rounded-box-secondary {
   -webkit-border-radius: 5px 5px;
   -moz-border-radius: 5px / 5px;
   border-radius: 5px / 5px;
 }
 
-/* line 933, resources/scss/screen.scss */
+/* line 927, resources/scss/screen.scss */
 .rounded-box {
   -webkit-border-radius: 5px;
   -moz-border-radius: 5px;
@@ -14099,35 +14099,35 @@ h6 {
   border-radius: 5px;
 }
 
-/* line 937, resources/scss/screen.scss */
+/* line 931, resources/scss/screen.scss */
 .rounded-box-top-left {
   -moz-border-radius-topleft: 5px;
   -webkit-border-top-left-radius: 5px;
   border-top-left-radius: 5px;
 }
 
-/* line 941, resources/scss/screen.scss */
+/* line 935, resources/scss/screen.scss */
 .rounded-box-top-right {
   -moz-border-radius-topright: 5px;
   -webkit-border-top-right-radius: 5px;
   border-top-right-radius: 5px;
 }
 
-/* line 945, resources/scss/screen.scss */
+/* line 939, resources/scss/screen.scss */
 .rounded-box-bottom-left {
   -moz-border-radius-bottomleft: 5px;
   -webkit-border-bottom-left-radius: 5px;
   border-bottom-left-radius: 5px;
 }
 
-/* line 949, resources/scss/screen.scss */
+/* line 943, resources/scss/screen.scss */
 .rounded-box-bottom-right {
   -moz-border-radius-bottomright: 5px;
   -webkit-border-bottom-right-radius: 5px;
   border-bottom-right-radius: 5px;
 }
 
-/* line 953, resources/scss/screen.scss */
+/* line 947, resources/scss/screen.scss */
 .rounded-box-top {
   -moz-border-radius-topleft: 5px;
   -webkit-border-top-left-radius: 5px;
@@ -14137,7 +14137,7 @@ h6 {
   border-top-right-radius: 5px;
 }
 
-/* line 957, resources/scss/screen.scss */
+/* line 951, resources/scss/screen.scss */
 .rounded-box-bottom {
   -moz-border-radius-bottomleft: 5px;
   -webkit-border-bottom-left-radius: 5px;
@@ -14147,7 +14147,7 @@ h6 {
   border-bottom-right-radius: 5px;
 }
 
-/* line 961, resources/scss/screen.scss */
+/* line 955, resources/scss/screen.scss */
 .rounded-box-left {
   -moz-border-radius-topleft: 5px;
   -webkit-border-top-left-radius: 5px;
@@ -14157,7 +14157,7 @@ h6 {
   border-bottom-left-radius: 5px;
 }
 
-/* line 965, resources/scss/screen.scss */
+/* line 959, resources/scss/screen.scss */
 .rounded-box-right {
   -moz-border-radius-topright: 5px;
   -webkit-border-top-right-radius: 5px;
@@ -14167,14 +14167,14 @@ h6 {
   border-bottom-right-radius: 5px;
 }
 
-/* line 974, resources/scss/screen.scss */
+/* line 968, resources/scss/screen.scss */
 .circle-box-secondary {
   -webkit-border-radius: 25px 25px;
   -moz-border-radius: 25px / 25px;
   border-radius: 25px / 25px;
 }
 
-/* line 978, resources/scss/screen.scss */
+/* line 972, resources/scss/screen.scss */
 .rounded-box {
   -webkit-border-radius: 25px;
   -moz-border-radius: 25px;
@@ -14183,35 +14183,35 @@ h6 {
   border-radius: 25px;
 }
 
-/* line 982, resources/scss/screen.scss */
+/* line 976, resources/scss/screen.scss */
 .circle-box-top-left {
   -moz-border-radius-topleft: 25px;
   -webkit-border-top-left-radius: 25px;
   border-top-left-radius: 25px;
 }
 
-/* line 986, resources/scss/screen.scss */
+/* line 980, resources/scss/screen.scss */
 .circle-box-top-right {
   -moz-border-radius-topright: 25px;
   -webkit-border-top-right-radius: 25px;
   border-top-right-radius: 25px;
 }
 
-/* line 990, resources/scss/screen.scss */
+/* line 984, resources/scss/screen.scss */
 .circle-box-bottom-left {
   -moz-border-radius-bottomleft: 25px;
   -webkit-border-bottom-left-radius: 25px;
   border-bottom-left-radius: 25px;
 }
 
-/* line 994, resources/scss/screen.scss */
+/* line 988, resources/scss/screen.scss */
 .circle-box-bottom-right {
   -moz-border-radius-bottomright: 25px;
   -webkit-border-bottom-right-radius: 25px;
   border-bottom-right-radius: 25px;
 }
 
-/* line 998, resources/scss/screen.scss */
+/* line 992, resources/scss/screen.scss */
 .circle-box-top {
   -moz-border-radius-topleft: 25px;
   -webkit-border-top-left-radius: 25px;
@@ -14221,7 +14221,7 @@ h6 {
   border-top-right-radius: 25px;
 }
 
-/* line 1002, resources/scss/screen.scss */
+/* line 996, resources/scss/screen.scss */
 .circle-box-bottom {
   -moz-border-radius-bottomleft: 25px;
   -webkit-border-bottom-left-radius: 25px;
@@ -14231,7 +14231,7 @@ h6 {
   border-bottom-right-radius: 25px;
 }
 
-/* line 1006, resources/scss/screen.scss */
+/* line 1000, resources/scss/screen.scss */
 .circle-box-left {
   -moz-border-radius-topleft: 25px;
   -webkit-border-top-left-radius: 25px;
@@ -14241,7 +14241,7 @@ h6 {
   border-bottom-left-radius: 25px;
 }
 
-/* line 1010, resources/scss/screen.scss */
+/* line 1004, resources/scss/screen.scss */
 .circle-box-right {
   -moz-border-radius-topright: 25px;
   -webkit-border-top-right-radius: 25px;
@@ -14251,26 +14251,26 @@ h6 {
   border-bottom-right-radius: 25px;
 }
 
-/* line 1014, resources/scss/screen.scss */
+/* line 1008, resources/scss/screen.scss */
 .icon-info-box {
   font-size: 24px !important;
   padding-right: 12px !important;
   vertical-align: middle;
 }
 
-/* line 1020, resources/scss/screen.scss */
+/* line 1014, resources/scss/screen.scss */
 .text-info-box {
   font-size: 18px !important;
   font-weight: 700 !important;
 }
 
-/* line 1025, resources/scss/screen.scss */
+/* line 1019, resources/scss/screen.scss */
 .text-info-box-secondary {
   font-size: 18px !important;
   font-weight: 500 !important;
 }
 
-/* line 1030, resources/scss/screen.scss */
+/* line 1024, resources/scss/screen.scss */
 .search-default {
   width: 24px !important;
   height: 24px !important;
@@ -14284,21 +14284,21 @@ h6 {
   padding: 5px !important;
 }
 
-/* line 1042, resources/scss/screen.scss */
+/* line 1036, resources/scss/screen.scss */
 input.input-inner-default {
   background-color: #E9F1FC;
   color: #124086;
   font: 800 18px Roboto, Helvetica, "Helvetica Neue", Arial, sans-serif !important;
 }
 
-/* line 1048, resources/scss/screen.scss */
+/* line 1042, resources/scss/screen.scss */
 input.input-inner-default::placeholder {
   background-color: #E9F1FC;
   color: #124086;
   font: 800 18px Roboto, Helvetica, "Helvetica Neue", Arial, sans-serif !important;
 }
 
-/* line 1054, resources/scss/screen.scss */
+/* line 1048, resources/scss/screen.scss */
 input.input-inner-default:focus::placeholder {
   color: rgba(18, 64, 134, 0.5);
   font: 800 18px Roboto, Helvetica, "Helvetica Neue", Arial, sans-serif !important;
@@ -14308,32 +14308,32 @@ input.input-inner-default:focus::placeholder {
   transition: 0.25s;
 }
 
-/* line 1063, resources/scss/screen.scss */
+/* line 1057, resources/scss/screen.scss */
 input.input-inner-default:focus {
   outline: none !important;
 }
 
 @media screen and (max-width: 900px) {
-  /* line 1067, resources/scss/screen.scss */
+  /* line 1061, resources/scss/screen.scss */
   #search-row {
     display: block !important;
   }
 }
 
-/* line 1073, resources/scss/screen.scss */
+/* line 1067, resources/scss/screen.scss */
 #info-row, #search-row, #chart-row, #map-row {
   width: 100% !important;
   align-self: center !important;
 }
 
 @media screen and (max-width: 768px) {
-  /* line 1073, resources/scss/screen.scss */
+  /* line 1067, resources/scss/screen.scss */
   #info-row, #search-row, #chart-row, #map-row {
     width: 90% !important;
   }
 }
 
-/* line 1086, resources/scss/screen.scss */
+/* line 1076, resources/scss/screen.scss */
 #map-for-print {
   position: absolute;
   left: 0px;
@@ -14343,7 +14343,7 @@ input.input-inner-default:focus {
   z-index: 0;
 }
 
-/* line 1093, resources/scss/screen.scss */
+/* line 1083, resources/scss/screen.scss */
 #map-for-print img {
   width: 100%;
   height: auto;
@@ -14352,12 +14352,12 @@ input.input-inner-default:focus {
   left: 0px;
 }
 
-/* line 1100, resources/scss/screen.scss */
+/* line 1090, resources/scss/screen.scss */
 #map-for-print .attribution {
   top: calc(100% - 17px);
 }
 
-/* line 1104, resources/scss/screen.scss */
+/* line 1094, resources/scss/screen.scss */
 #map-for-print .legend {
   max-height: 300px;
   height: 300px;
@@ -14366,7 +14366,7 @@ input.input-inner-default:focus {
   left: 24px;
 }
 
-/* line 1115, resources/scss/screen.scss */
+/* line 1105, resources/scss/screen.scss */
 .tooltip {
   display: block !important;
   margin-left: 8px !important;
@@ -14374,7 +14374,7 @@ input.input-inner-default:focus {
   font-size: 12px !important;
 }
 
-/* line 1123, resources/scss/screen.scss */
+/* line 1113, resources/scss/screen.scss */
 .tooltip:after {
   bottom: 25% !important;
   left: -3px !important;
@@ -14382,12 +14382,12 @@ input.input-inner-default:focus {
   border-color: transparent #ffffff transparent transparent !important;
 }
 
-/* line 1130, resources/scss/screen.scss */
+/* line 1120, resources/scss/screen.scss */
 .d-xs-only {
   display: none;
 }
 
-/* line 1136, resources/scss/screen.scss */
+/* line 1126, resources/scss/screen.scss */
 .button {
   position: relative;
   display: inline-block;
@@ -14400,7 +14400,7 @@ input.input-inner-default:focus {
   transition: 0.25s;
 }
 
-/* line 1144, resources/scss/screen.scss */
+/* line 1134, resources/scss/screen.scss */
 .button:before, .button:after {
   content: '';
   display: block;
@@ -14409,37 +14409,37 @@ input.input-inner-default:focus {
   top: 50%;
 }
 
-/* line 1155, resources/scss/screen.scss */
+/* line 1145, resources/scss/screen.scss */
 .button.display-blocks {
   display: block;
 }
 
-/* line 1161, resources/scss/screen.scss */
+/* line 1151, resources/scss/screen.scss */
 .button .icon {
   margin: -2px 10px 0 0;
 }
 
-/* line 1166, resources/scss/screen.scss */
+/* line 1156, resources/scss/screen.scss */
 .button.plus:before {
   width: 14px;
   height: 4px;
   margin-top: -2px;
 }
 
-/* line 1172, resources/scss/screen.scss */
+/* line 1162, resources/scss/screen.scss */
 .button.plus:after {
   width: 4px;
   height: 14px;
   margin: -7px 5px 0 0;
 }
 
-/* line 1198, resources/scss/screen.scss */
+/* line 1188, resources/scss/screen.scss */
 .button.arrow-right:before, .button.arrow-right:after {
   width: 10px;
   height: 4px;
 }
 
-/* line 1204, resources/scss/screen.scss */
+/* line 1194, resources/scss/screen.scss */
 .button.arrow-right:before {
   -webkit-transform: rotate(-45deg);
   -moz-transform: rotate(-45deg);
@@ -14449,7 +14449,7 @@ input.input-inner-default:focus {
   margin-top: 1px;
 }
 
-/* line 1209, resources/scss/screen.scss */
+/* line 1199, resources/scss/screen.scss */
 .button.arrow-right:after {
   -webkit-transform: rotate(45deg);
   -moz-transform: rotate(45deg);
@@ -14459,7 +14459,7 @@ input.input-inner-default:focus {
   margin-top: -4px;
 }
 
-/* line 1216, resources/scss/screen.scss */
+/* line 1206, resources/scss/screen.scss */
 .button.close:before, .button.close:after {
   right: 6px;
   width: 24px;
@@ -14467,7 +14467,7 @@ input.input-inner-default:focus {
   margin-top: -4px;
 }
 
-/* line 1224, resources/scss/screen.scss */
+/* line 1214, resources/scss/screen.scss */
 .button.close:before {
   -webkit-transform: rotate(-45deg);
   -moz-transform: rotate(-45deg);
@@ -14476,7 +14476,7 @@ input.input-inner-default:focus {
   transform: rotate(-45deg);
 }
 
-/* line 1228, resources/scss/screen.scss */
+/* line 1218, resources/scss/screen.scss */
 .button.close:after {
   -webkit-transform: rotate(45deg);
   -moz-transform: rotate(45deg);
@@ -14485,107 +14485,107 @@ input.input-inner-default:focus {
   transform: rotate(45deg);
 }
 
-/* line 1235, resources/scss/screen.scss */
+/* line 1225, resources/scss/screen.scss */
 .button.color-white {
   color: #ffffff;
 }
 
-/* line 1238, resources/scss/screen.scss */
+/* line 1228, resources/scss/screen.scss */
 .button.color-white:before, .button.color-white:after {
   background: #ffffff;
 }
 
-/* line 1244, resources/scss/screen.scss */
+/* line 1234, resources/scss/screen.scss */
 .button.color-orange {
   color: #f5442d !important;
 }
 
-/* line 1247, resources/scss/screen.scss */
+/* line 1237, resources/scss/screen.scss */
 .button.color-orange:before, .button.color-orange:after {
   background: #f5442d !important;
 }
 
-/* line 1253, resources/scss/screen.scss */
+/* line 1243, resources/scss/screen.scss */
 .button.color-orange.arrow-right:before {
   background: #f5442d !important;
 }
 
-/* line 1257, resources/scss/screen.scss */
+/* line 1247, resources/scss/screen.scss */
 .button.color-orange.arrow-right:after {
   background: #f5442d !important;
 }
 
-/* line 1265, resources/scss/screen.scss */
+/* line 1255, resources/scss/screen.scss */
 .button.border-white {
   border-color: #ffffff;
   color: #ffffff;
 }
 
-/* line 1269, resources/scss/screen.scss */
+/* line 1259, resources/scss/screen.scss */
 .button.border-white:before, .button.border-white:after {
   background: #ffffff;
 }
 
-/* line 1275, resources/scss/screen.scss */
+/* line 1265, resources/scss/screen.scss */
 .button.border-trans {
   border-color: transparent;
 }
 
-/* line 1279, resources/scss/screen.scss */
+/* line 1269, resources/scss/screen.scss */
 .button.border-none {
   border: none;
 }
 
-/* line 1285, resources/scss/screen.scss */
+/* line 1275, resources/scss/screen.scss */
 .button.bg-trans {
   background: transparent;
 }
 
-/* line 1289, resources/scss/screen.scss */
+/* line 1279, resources/scss/screen.scss */
 .button.bg-white {
   background: white;
 }
 
-/* line 1298, resources/scss/screen.scss */
+/* line 1288, resources/scss/screen.scss */
 .button.hover-bg-white:hover {
   background: #ffffff;
   color: #0058cf;
   mix-blend-mode: screen;
 }
 
-/* line 1303, resources/scss/screen.scss */
+/* line 1293, resources/scss/screen.scss */
 .button.hover-bg-white:hover:before, .button.hover-bg-white:hover:after {
   background: #000000;
 }
 
-/* line 1312, resources/scss/screen.scss */
+/* line 1302, resources/scss/screen.scss */
 .button.blend-screen {
   mix-blend-mode: screen;
 }
 
-/* line 1315, resources/scss/screen.scss */
+/* line 1305, resources/scss/screen.scss */
 .button.blend-screen:before, .button.blend-screen:after {
   background: #000000;
 }
 
-/* line 1320, resources/scss/screen.scss */
+/* line 1310, resources/scss/screen.scss */
 .button.blend-screen:hover {
   color: #000000;
 }
 
-/* line 1327, resources/scss/screen.scss */
+/* line 1317, resources/scss/screen.scss */
 .icon {
   display: inline-block;
   vertical-align: middle;
 }
 
-/* line 1333, resources/scss/screen.scss */
+/* line 1323, resources/scss/screen.scss */
 .stuck {
   position: fixed;
   top: 0;
 }
 
-/* line 1339, resources/scss/screen.scss */
+/* line 1329, resources/scss/screen.scss */
 .tooltip {
   display: none;
   position: absolute;
@@ -14607,7 +14607,7 @@ input.input-inner-default:focus {
   box-shadow: 0 0 8px rgba(0, 88, 207, 0.25);
 }
 
-/* line 1353, resources/scss/screen.scss */
+/* line 1343, resources/scss/screen.scss */
 .tooltip:after {
   content: '';
   display: block;
@@ -14619,18 +14619,18 @@ input.input-inner-default:focus {
   border-color: #ffffff transparent transparent transparent;
 }
 
-/* line 53, resources/scss/_mixins.scss */
+/* line 150, resources/scss/_mixins.scss */
 .chart-legend:before, .chart-legend:after {
   content: " ";
   display: table;
 }
 
-/* line 59, resources/scss/_mixins.scss */
+/* line 156, resources/scss/_mixins.scss */
 .chart-legend:after {
   clear: both;
 }
 
-/* line 1369, resources/scss/screen.scss */
+/* line 1359, resources/scss/screen.scss */
 .chart-legend .legend-item {
   position: relative;
   float: left;
@@ -14648,12 +14648,12 @@ input.input-inner-default:focus {
   transition: 0.25s;
 }
 
-/* line 1382, resources/scss/screen.scss */
+/* line 1372, resources/scss/screen.scss */
 .chart-legend .legend-item:hover {
   border: 1px solid #eeeeee;
 }
 
-/* line 1386, resources/scss/screen.scss */
+/* line 1376, resources/scss/screen.scss */
 .chart-legend .legend-item:after {
   content: "\e91f";
   display: block;
@@ -14680,64 +14680,64 @@ input.input-inner-default:focus {
   transition: 0.25s;
 }
 
-/* line 1405, resources/scss/screen.scss */
+/* line 1395, resources/scss/screen.scss */
 .chart-legend .legend-item.selected {
   border: 1px solid #bbbbbb;
 }
 
-/* line 1410, resources/scss/screen.scss */
+/* line 1400, resources/scss/screen.scss */
 .chart-legend .legend-item.selected:after {
   opacity: 1;
 }
 
-/* line 1416, resources/scss/screen.scss */
+/* line 1406, resources/scss/screen.scss */
 .chart-legend .legend-item-block {
   height: 20px;
 }
 
-/* line 1420, resources/scss/screen.scss */
+/* line 1410, resources/scss/screen.scss */
 .chart-legend .legend-item-line {
   height: 5px;
 }
 
-/* line 1425, resources/scss/screen.scss */
+/* line 1415, resources/scss/screen.scss */
 .chart-legend .legend-item-block#rcp45-block, .chart-legend .legend-item-block#preciprcp45-block, .chart-legend .legend-item-block #derivercp45-block {
   background: #99bcec;
 }
 
-/* line 1431, resources/scss/screen.scss */
+/* line 1421, resources/scss/screen.scss */
 .chart-legend .legend-item-block#rcp85-block, .chart-legend .legend-item-block#preciprcp85-block, .chart-legend .legend-item-block#derivercp85-block {
   background: #fbb4ab;
 }
 
-/* line 1437, resources/scss/screen.scss */
+/* line 1427, resources/scss/screen.scss */
 .chart-legend .legend-item-block#historical-block, .chart-legend .legend-item-block#preciphistorical-block, .chart-legend .legend-item-block#derivehistorical-block {
   background: #d6d6d6;
 }
 
-/* line 1445, resources/scss/screen.scss */
+/* line 1435, resources/scss/screen.scss */
 .chart-legend .legend-item-line#over-baseline-block, .chart-legend .legend-item-line#precipover-baseline-block, .chart-legend .legend-item-line#deriveover-baseline-block {
   background: #cd6760;
 }
 
-/* line 1451, resources/scss/screen.scss */
+/* line 1441, resources/scss/screen.scss */
 .chart-legend .legend-item-line#under-baseline-block, .chart-legend .legend-item-line#precipunder-baseline-block, .chart-legend .legend-item-line#deriveunder-baseline-block {
   margin-top: 20px;
   background: #6194c8;
 }
 
-/* line 1458, resources/scss/screen.scss */
+/* line 1448, resources/scss/screen.scss */
 .chart-legend .legend-item-line#rcp45-line, .chart-legend .legend-item-line#preciprcp45-line, .chart-legend .legend-item-line#derivercp45-line {
   margin-top: 20px;
   background: #0058cf;
 }
 
-/* line 1465, resources/scss/screen.scss */
+/* line 1455, resources/scss/screen.scss */
 .chart-legend .legend-item-line#rcp85-line, .chart-legend .legend-item-line#preciprcp85-line, .chart-legend .legend-item-line#derivercp85-line {
   background: #f5442d;
 }
 
-/* line 1474, resources/scss/screen.scss */
+/* line 1464, resources/scss/screen.scss */
 .download-panel {
   display: none;
   position: fixed;
@@ -14752,7 +14752,7 @@ input.input-inner-default:focus {
   opacity: 0.95;
 }
 
-/* line 1489, resources/scss/screen.scss */
+/* line 1479, resources/scss/screen.scss */
 .download-panel .download-inner {
   margin: auto;
   position: absolute;
@@ -14768,22 +14768,22 @@ input.input-inner-default:focus {
   padding: 30px;
 }
 
-/* line 1499, resources/scss/screen.scss */
+/* line 1489, resources/scss/screen.scss */
 .download-panel .download-inner p {
   margin: 0 0 20px 0;
 }
 
-/* line 1503, resources/scss/screen.scss */
+/* line 1493, resources/scss/screen.scss */
 .download-panel .download-inner li {
   margin: 0 0 10px 0;
 }
 
-/* line 1507, resources/scss/screen.scss */
+/* line 1497, resources/scss/screen.scss */
 .download-panel .download-inner a {
   color: #ffffff;
 }
 
-/* line 1512, resources/scss/screen.scss */
+/* line 1502, resources/scss/screen.scss */
 .download-panel #download-dismiss-button, .download-panel .download-dismiss-button {
   display: block;
   position: absolute;
@@ -14801,7 +14801,7 @@ input.input-inner-default:focus {
   margin-left: auto;
 }
 
-@media screen and (max-width: 500px) {
+@media screen and (max-width: 599px) {
   /* line 1, resources/scss/template/_share.scss */
   #share-widget-wrapper {
     margin-right: -6px;
@@ -14838,7 +14838,7 @@ input.input-inner-default:focus {
   font-size: 14px !important;
 }
 
-@media screen and (max-width: 500px) {
+@media screen and (max-width: 599px) {
   /* line 35, resources/scss/template/_share.scss */
   .share-widget a .a-share-label {
     display: none;
@@ -14914,7 +14914,7 @@ input.input-inner-default:focus {
   box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.239);
 }
 
-@media screen and (max-width: 500px) {
+@media screen and (max-width: 599px) {
   /* line 73, resources/scss/template/_share.scss */
   .share-widget ul {
     width: 40px;
@@ -14930,7 +14930,7 @@ input.input-inner-default:focus {
   background: #d3e3f9;
 }
 
-@media screen and (max-width: 500px) {
+@media screen and (max-width: 599px) {
   /* line 91, resources/scss/template/_share.scss */
   .share-widget ul li {
     width: 40px;
@@ -15305,13 +15305,13 @@ input.input-inner-default:focus {
   background: rgba(255, 255, 255, 0.1);
 }
 
-/* line 53, resources/scss/_mixins.scss */
+/* line 150, resources/scss/_mixins.scss */
 #nav-overlay .nav-content .tab ol:before, #nav-overlay .nav-content .tab ol:after {
   content: " ";
   display: table;
 }
 
-/* line 59, resources/scss/_mixins.scss */
+/* line 156, resources/scss/_mixins.scss */
 #nav-overlay .nav-content .tab ol:after {
   clear: both;
 }
@@ -15345,7 +15345,7 @@ input.input-inner-default:focus {
   font: 300 1rem/1em Roboto, Helvetica, "Helvetica Neue", Arial, sans-serif;
 }
 
-/* line 53, resources/scss/_mixins.scss */
+/* line 150, resources/scss/_mixins.scss */
 #nav-overlay .nav-content .tab ol.col-2:before, #nav-overlay .nav-content .tab ol.col-2:after,
 #nav-overlay .nav-content .tab ul.col-2:before,
 #nav-overlay .nav-content .tab ul.col-2:after {
@@ -15353,7 +15353,7 @@ input.input-inner-default:focus {
   display: table;
 }
 
-/* line 59, resources/scss/_mixins.scss */
+/* line 156, resources/scss/_mixins.scss */
 #nav-overlay .nav-content .tab ol.col-2:after,
 #nav-overlay .nav-content .tab ul.col-2:after {
   clear: both;
@@ -15366,7 +15366,7 @@ input.input-inner-default:focus {
   width: 50%;
 }
 
-/* line 53, resources/scss/_mixins.scss */
+/* line 150, resources/scss/_mixins.scss */
 #nav-overlay .nav-content .tab ol.col-3:before, #nav-overlay .nav-content .tab ol.col-3:after,
 #nav-overlay .nav-content .tab ul.col-3:before,
 #nav-overlay .nav-content .tab ul.col-3:after {
@@ -15374,7 +15374,7 @@ input.input-inner-default:focus {
   display: table;
 }
 
-/* line 59, resources/scss/_mixins.scss */
+/* line 156, resources/scss/_mixins.scss */
 #nav-overlay .nav-content .tab ol.col-3:after,
 #nav-overlay .nav-content .tab ul.col-3:after {
   clear: both;
@@ -15387,7 +15387,7 @@ input.input-inner-default:focus {
   width: 33%;
 }
 
-/* line 53, resources/scss/_mixins.scss */
+/* line 150, resources/scss/_mixins.scss */
 #nav-overlay .nav-content .tab ol.col-4:before, #nav-overlay .nav-content .tab ol.col-4:after,
 #nav-overlay .nav-content .tab ul.col-4:before,
 #nav-overlay .nav-content .tab ul.col-4:after {
@@ -15395,7 +15395,7 @@ input.input-inner-default:focus {
   display: table;
 }
 
-/* line 59, resources/scss/_mixins.scss */
+/* line 156, resources/scss/_mixins.scss */
 #nav-overlay .nav-content .tab ol.col-4:after,
 #nav-overlay .nav-content .tab ul.col-4:after {
   clear: both;
@@ -15823,7 +15823,7 @@ body.detail-open #nav-overlay {
   }
 }
 
-/* line 1549, resources/scss/screen.scss */
+/* line 1539, resources/scss/screen.scss */
 #desktop-warning {
   display: none;
 }
@@ -15931,7 +15931,7 @@ body.detail-open #nav-overlay {
   margin-top: -5px;
 }
 
-@media screen and (max-width: 500px) {
+@media screen and (max-width: 599px) {
   /* line 14, resources/scss/template/_secondary_header.scss */
   #secondary-header .secondary-logo img {
     content: url(/resources/img/crt-logo-mobile.png);
@@ -15947,7 +15947,7 @@ body.detail-open #nav-overlay {
   align-self: center;
 }
 
-@media screen and (max-width: 500px) {
+@media screen and (max-width: 599px) {
   /* line 20, resources/scss/template/_secondary_header.scss */
   #secondary-header .secondary-font-title {
     width: 25%;
@@ -15987,37 +15987,37 @@ body.detail-open #nav-overlay {
   width: auto;
 }
 
-/* line 1672, resources/scss/screen.scss */
+/* line 1662, resources/scss/screen.scss */
 .page-splash {
   padding: 8% 0;
   color: #233a70;
 }
 
-/* line 1676, resources/scss/screen.scss */
+/* line 1666, resources/scss/screen.scss */
 .page-splash .splash-text {
   max-width: 65%;
   padding-left: calc(4% + 10px);
 }
 
-/* line 1681, resources/scss/screen.scss */
+/* line 1671, resources/scss/screen.scss */
 .page-splash .splash-text h1 {
   margin: 0 0 20px 0;
 }
 
-/* line 1685, resources/scss/screen.scss */
+/* line 1675, resources/scss/screen.scss */
 .page-splash .splash-text h4 {
   margin: 0 0 40px 0;
   color: #f5442d;
 }
 
-/* line 1690, resources/scss/screen.scss */
+/* line 1680, resources/scss/screen.scss */
 .page-splash .splash-text p {
   width: 75%;
   margin: 0 0 20px 0;
   font: 400 1.375rem/1.5em Roboto, Helvetica, "Helvetica Neue", Arial, sans-serif;
 }
 
-/* line 1697, resources/scss/screen.scss */
+/* line 1687, resources/scss/screen.scss */
 .page-splash .share-widget {
   top: 0;
   right: 0;
@@ -16684,7 +16684,7 @@ input.input-inner:focus {
   }
 }
 
-@media screen and (max-width: 500px) {
+@media screen and (max-width: 599px) {
   /* line 344, resources/scss/pages/_local-climate-charts.scss */
   #chart-row {
     height: auto !important;
@@ -16886,7 +16886,7 @@ input.input-inner:focus {
   background-color: rgba(233, 241, 252, 0.75) !important;
 }
 
-/* line 103, resources/scss/pages/_local-climate-maps.scss */
+/* line 101, resources/scss/pages/_local-climate-maps.scss */
 #map-row #temperature-map .movable.slider-div {
   top: 0px !important;
 }
@@ -16904,7 +16904,7 @@ input.input-inner:focus {
     order: 1;
     padding-bottom: 250px !important;
   }
-  /* line 116, resources/scss/pages/_local-climate-maps.scss */
+  /* line 114, resources/scss/pages/_local-climate-maps.scss */
   #map-row #temperature-map {
     width: 100%;
     flex-wrap: wrap;
@@ -16912,25 +16912,25 @@ input.input-inner:focus {
     max-height: 350px !important;
     height: 350px !important;
   }
-  /* line 123, resources/scss/pages/_local-climate-maps.scss */
+  /* line 121, resources/scss/pages/_local-climate-maps.scss */
   #map-row #temperature-map .esri-view-root {
     flex: 0 0 100%;
     height: 100% !important;
     width: 100% !important;
   }
-  /* line 129, resources/scss/pages/_local-climate-maps.scss */
+  /* line 127, resources/scss/pages/_local-climate-maps.scss */
   #map-row #temperature-map .esri-overlay-surface {
     flex: 0 0 100%;
     height: 100% !important;
     width: 100% !important;
   }
-  /* line 135, resources/scss/pages/_local-climate-maps.scss */
+  /* line 133, resources/scss/pages/_local-climate-maps.scss */
   #map-row #temperature-map .esri-view-user-storage {
     overflow: visible !important;
     height: 100% !important;
     width: 100% !important;
   }
-  /* line 141, resources/scss/pages/_local-climate-maps.scss */
+  /* line 139, resources/scss/pages/_local-climate-maps.scss */
   #map-row #temperature-map .scenario-map-overlay-container {
     position: relative !important;
     top: 0px !important;
@@ -16939,13 +16939,13 @@ input.input-inner:focus {
     height: 100% !important;
     margin: 0px !important;
   }
-  /* line 150, resources/scss/pages/_local-climate-maps.scss */
+  /* line 148, resources/scss/pages/_local-climate-maps.scss */
   #map-row #temperature-map .movable.slider-div {
     height: 350px;
     top: -350px !important;
     z-index: 200;
   }
-  /* line 156, resources/scss/pages/_local-climate-maps.scss */
+  /* line 154, resources/scss/pages/_local-climate-maps.scss */
   #map-row #temperature-map .bottom-scenario-controls {
     position: inherit !important;
     top: -350px !important;
@@ -16953,7 +16953,7 @@ input.input-inner:focus {
     height: 100% !important;
     padding: 1rem 0rem !important;
   }
-  /* line 164, resources/scss/pages/_local-climate-maps.scss */
+  /* line 162, resources/scss/pages/_local-climate-maps.scss */
   #map-row #temperature-map .bottom-scenario-controls .left-scenario-controls {
     width: 100% !important;
     flex: 1 0 100% !important;
@@ -16962,7 +16962,7 @@ input.input-inner:focus {
     position: relative;
     top: -225px;
   }
-  /* line 173, resources/scss/pages/_local-climate-maps.scss */
+  /* line 171, resources/scss/pages/_local-climate-maps.scss */
   #map-row #temperature-map .bottom-scenario-controls .right-scenario-controls {
     width: 100% !important;
     flex: 1 0 100% !important;
@@ -16972,53 +16972,53 @@ input.input-inner:focus {
     top: -225px;
     left: -100%;
   }
-  /* line 183, resources/scss/pages/_local-climate-maps.scss */
+  /* line 181, resources/scss/pages/_local-climate-maps.scss */
   #map-row #temperature-map .bottom-scenario-controls .left-year-slider-container {
     max-width: 90%;
     min-width: 90%;
     width: 90%;
   }
-  /* line 187, resources/scss/pages/_local-climate-maps.scss */
+  /* line 185, resources/scss/pages/_local-climate-maps.scss */
   #map-row #temperature-map .bottom-scenario-controls .left-year-slider-container:focus, #map-row #temperature-map .bottom-scenario-controls .left-year-slider-container:hover {
     border-left: 2px #124086 solid !important;
   }
-  /* line 192, resources/scss/pages/_local-climate-maps.scss */
+  /* line 190, resources/scss/pages/_local-climate-maps.scss */
   #map-row #temperature-map .bottom-scenario-controls #leftScenario-select-wrapper {
     border-left: 2px #124086 solid !important;
   }
-  /* line 196, resources/scss/pages/_local-climate-maps.scss */
+  /* line 194, resources/scss/pages/_local-climate-maps.scss */
   #map-row #temperature-map .bottom-scenario-controls #rightScenario-select-wrapper {
     border-right: 2px #124086 solid !important;
   }
-  /* line 200, resources/scss/pages/_local-climate-maps.scss */
+  /* line 198, resources/scss/pages/_local-climate-maps.scss */
   #map-row #temperature-map .bottom-scenario-controls .right-year-slider-container {
     max-width: 90%;
     min-width: 90%;
     width: 90%;
   }
-  /* line 204, resources/scss/pages/_local-climate-maps.scss */
+  /* line 202, resources/scss/pages/_local-climate-maps.scss */
   #map-row #temperature-map .bottom-scenario-controls .right-year-slider-container:focus, #map-row #temperature-map .bottom-scenario-controls .right-year-slider-container:hover {
     border-right: 2px #124086 solid !important;
   }
-  /* line 209, resources/scss/pages/_local-climate-maps.scss */
+  /* line 207, resources/scss/pages/_local-climate-maps.scss */
   #map-row #temperature-map .bottom-scenario-controls .fs-dropdown-options {
     position: relative;
     left: -150px;
   }
-  /* line 214, resources/scss/pages/_local-climate-maps.scss */
+  /* line 212, resources/scss/pages/_local-climate-maps.scss */
   #map-row #temperature-map .bottom-scenario-controls .left-scenario-dropdown {
     max-width: 90%;
     min-width: 90%;
     width: 90%;
     margin: 0px;
   }
-  /* line 219, resources/scss/pages/_local-climate-maps.scss */
+  /* line 217, resources/scss/pages/_local-climate-maps.scss */
   #map-row #temperature-map .bottom-scenario-controls .left-scenario-dropdown .fs-dropdown.fs-dropdown-mobile {
     width: 100%;
     min-width: 100%;
     border-left: 2px #124086 solid;
   }
-  /* line 226, resources/scss/pages/_local-climate-maps.scss */
+  /* line 224, resources/scss/pages/_local-climate-maps.scss */
   #map-row #temperature-map .bottom-scenario-controls .left-year-slider-container {
     position: relative;
     top: 24px;
@@ -17027,7 +17027,7 @@ input.input-inner:focus {
     width: 90%;
     border-left: 2px #124086 solid;
   }
-  /* line 235, resources/scss/pages/_local-climate-maps.scss */
+  /* line 233, resources/scss/pages/_local-climate-maps.scss */
   #map-row #temperature-map .bottom-scenario-controls .right-scenario-dropdown {
     position: relative;
     top: 150px;
@@ -17036,13 +17036,13 @@ input.input-inner:focus {
     width: 90%;
     margin: 0px;
   }
-  /* line 242, resources/scss/pages/_local-climate-maps.scss */
+  /* line 240, resources/scss/pages/_local-climate-maps.scss */
   #map-row #temperature-map .bottom-scenario-controls .right-scenario-dropdown .fs-dropdown.fs-dropdown-mobile {
     width: 100%;
     min-width: 100%;
     border-right: 2px #124086 solid;
   }
-  /* line 250, resources/scss/pages/_local-climate-maps.scss */
+  /* line 248, resources/scss/pages/_local-climate-maps.scss */
   #map-row #temperature-map .bottom-scenario-controls .right-year-slider-container {
     position: relative;
     top: 175px;
@@ -17051,81 +17051,81 @@ input.input-inner:focus {
     width: 90%;
     border-right: 2px #124086 solid;
   }
-  /* line 261, resources/scss/pages/_local-climate-maps.scss */
+  /* line 259, resources/scss/pages/_local-climate-maps.scss */
   #map-row .map-wrap {
     min-height: 350px !important;
     height: 350px !important;
   }
 }
 
-@media screen and (max-width: 500px) {
+@media screen and (max-width: 599px) {
   /* line 52, resources/scss/pages/_local-climate-maps.scss */
   #map-row {
     height: auto !important;
     order: 1;
   }
-  /* line 271, resources/scss/pages/_local-climate-maps.scss */
+  /* line 269, resources/scss/pages/_local-climate-maps.scss */
   #map-row .map-wrap {
     min-height: 250px !important;
     height: 250px !important;
   }
 }
 
-/* line 279, resources/scss/pages/_local-climate-maps.scss */
+/* line 277, resources/scss/pages/_local-climate-maps.scss */
 .esri-expand__container {
   height: 32px;
   width: 32px;
 }
 
-/* line 284, resources/scss/pages/_local-climate-maps.scss */
+/* line 282, resources/scss/pages/_local-climate-maps.scss */
 .legend-image {
   max-height: 16rem;
   max-width: none;
 }
 
-/* line 290, resources/scss/pages/_local-climate-maps.scss */
+/* line 288, resources/scss/pages/_local-climate-maps.scss */
 .esri-ui-top-left .esri-expand__content, .esri-ui-top-right .esri-expand__content {
   top: -32px !important;
 }
 
-/* line 294, resources/scss/pages/_local-climate-maps.scss */
+/* line 292, resources/scss/pages/_local-climate-maps.scss */
 .esri-view-width-xsmall .esri-component.esri-expand.esri-widget.esri-expand--auto {
   display: none !important;
 }
 
-/* line 298, resources/scss/pages/_local-climate-maps.scss */
+/* line 296, resources/scss/pages/_local-climate-maps.scss */
 .esri-view-width-xsmall .esri-expand--auto .esri-expand__container--expanded {
   position: relative !important;
 }
 
-/* line 302, resources/scss/pages/_local-climate-maps.scss */
+/* line 300, resources/scss/pages/_local-climate-maps.scss */
 .esri-view-width-greater-than-xsmall .esri-expand--auto .esri-expand__content {
   position: relative !important;
 }
 
-/* line 306, resources/scss/pages/_local-climate-maps.scss */
+/* line 304, resources/scss/pages/_local-climate-maps.scss */
 .scenario-map-overlay-container {
   position: relative;
 }
 
-/* line 310, resources/scss/pages/_local-climate-maps.scss */
+/* line 308, resources/scss/pages/_local-climate-maps.scss */
 .esri-expand__content.esri-expand__content--expanded {
   height: 256px;
   width: 64px;
 }
 
-/* line 313, resources/scss/pages/_local-climate-maps.scss */
+/* line 311, resources/scss/pages/_local-climate-maps.scss */
 .esri-expand__content.esri-expand__content--expanded img {
   height: 256px;
   width: 64px;
 }
 
-/* line 319, resources/scss/pages/_local-climate-maps.scss */
+/* line 317, resources/scss/pages/_local-climate-maps.scss */
 .esri-view {
   padding: 12px;
 }
 
-/* line 323, resources/scss/pages/_local-climate-maps.scss */
+/* line 321, resources/scss/pages/_local-climate-maps.scss */
 .esri-view-surface {
   -webkit-border-radius: 5px;
   -moz-border-radius: 5px;
@@ -17134,7 +17134,7 @@ input.input-inner:focus {
   border-radius: 5px;
 }
 
-/* line 327, resources/scss/pages/_local-climate-maps.scss */
+/* line 325, resources/scss/pages/_local-climate-maps.scss */
 .movable {
   width: 4px;
   height: 100%;
@@ -17146,7 +17146,7 @@ input.input-inner:focus {
   box-shadow: 1px 0 2px 0 rgba(0, 0, 0, 0.15);
 }
 
-/* line 336, resources/scss/pages/_local-climate-maps.scss */
+/* line 334, resources/scss/pages/_local-climate-maps.scss */
 .movable .handle {
   position: relative;
   top: 50%;
@@ -17161,7 +17161,7 @@ input.input-inner:focus {
   box-shadow: 1px 0 2px 0 rgba(0, 0, 0, 0.15);
 }
 
-/* line 345, resources/scss/pages/_local-climate-maps.scss */
+/* line 343, resources/scss/pages/_local-climate-maps.scss */
 .movable .handle:after {
   cursor: col-resize;
   position: absolute;
@@ -17180,7 +17180,7 @@ input.input-inner:focus {
   font-size: 1.25rem;
 }
 
-/* line 372, resources/scss/pages/_local-climate-maps.scss */
+/* line 370, resources/scss/pages/_local-climate-maps.scss */
 #temperature-map:focus,
 .esri-view-root:focus,
 .esri-view-surface:focus,
@@ -17264,7 +17264,7 @@ input.input-inner:focus {
   border-radius: 5px / 5px;
 }
 
-@media screen and (max-width: 500px) {
+@media screen and (max-width: 599px) {
   /* line 47, resources/scss/pages/_historical-weather-data.scss */
   #historical-weather-data-viewport .map-nostations-message {
     top: -200px !important;
@@ -17352,7 +17352,7 @@ input.input-inner:focus {
   }
 }
 
-@media screen and (max-width: 900px) and (max-width: 500px) {
+@media screen and (max-width: 900px) and (max-width: 599px) {
   /* line 124, resources/scss/pages/_historical-weather-data.scss */
   #historical-weather-data-viewport #stations-map-row #stations-map .esri-view-root {
     z-index: 200;
@@ -17394,7 +17394,7 @@ input.input-inner:focus {
   }
 }
 
-@media screen and (max-width: 500px) {
+@media screen and (max-width: 599px) {
   /* line 79, resources/scss/pages/_historical-weather-data.scss */
   #historical-weather-data-viewport #stations-map-row {
     height: auto !important;
@@ -17830,7 +17830,7 @@ input.input-inner:focus {
   border-radius: 5px / 5px;
 }
 
-@media screen and (max-width: 500px) {
+@media screen and (max-width: 599px) {
   /* line 226, resources/scss/pages/_historical-thresholds.scss */
   #historical-thresholds-viewport .map-nostations-message {
     top: -200px !important;
@@ -17959,7 +17959,7 @@ input.input-inner:focus {
   }
 }
 
-@media screen and (max-width: 900px) and (max-width: 500px) {
+@media screen and (max-width: 900px) and (max-width: 599px) {
   /* line 340, resources/scss/pages/_historical-thresholds.scss */
   #historical-thresholds-viewport #stations-map-row #stations-map .esri-view-root {
     z-index: 200;
@@ -18001,7 +18001,7 @@ input.input-inner:focus {
   }
 }
 
-@media screen and (max-width: 500px) {
+@media screen and (max-width: 599px) {
   /* line 290, resources/scss/pages/_historical-thresholds.scss */
   #historical-thresholds-viewport #stations-map-row {
     height: auto !important;
@@ -18237,7 +18237,7 @@ input.input-inner:focus {
   border-radius: 5px / 5px;
 }
 
-@media screen and (max-width: 500px) {
+@media screen and (max-width: 599px) {
   /* line 47, resources/scss/pages/_high-tide-flooding.scss */
   #high-tide-flooding-viewport .map-nostations-message {
     top: -200px !important;
@@ -18355,7 +18355,7 @@ input.input-inner:focus {
   }
 }
 
-@media screen and (max-width: 900px) and (max-width: 500px) {
+@media screen and (max-width: 900px) and (max-width: 599px) {
   /* line 152, resources/scss/pages/_high-tide-flooding.scss */
   #high-tide-flooding-viewport #stations-map-row #stations-map .esri-view-root {
     z-index: 200;
@@ -18397,7 +18397,7 @@ input.input-inner:focus {
   }
 }
 
-@media screen and (max-width: 500px) {
+@media screen and (max-width: 599px) {
   /* line 102, resources/scss/pages/_high-tide-flooding.scss */
   #high-tide-flooding-viewport #stations-map-row {
     height: auto !important;
@@ -18931,13 +18931,13 @@ input.input-inner:focus {
       }*/
 }
 
-/* line 53, resources/scss/_mixins.scss */
+/* line 150, resources/scss/_mixins.scss */
 .page-type-case #case-menu .legend:before, .page-type-case #case-menu .legend:after {
   content: " ";
   display: table;
 }
 
-/* line 59, resources/scss/_mixins.scss */
+/* line 156, resources/scss/_mixins.scss */
 .page-type-case #case-menu .legend:after {
   clear: both;
 }
@@ -19076,13 +19076,13 @@ input.input-inner:focus {
   margin: 5% 0;
 }
 
-/* line 53, resources/scss/_mixins.scss */
+/* line 150, resources/scss/_mixins.scss */
 .page-type-case #case-menu .legend .layer-info .opacity-slider-wrap:before, .page-type-case #case-menu .legend .layer-info .opacity-slider-wrap:after {
   content: " ";
   display: table;
 }
 
-/* line 59, resources/scss/_mixins.scss */
+/* line 156, resources/scss/_mixins.scss */
 .page-type-case #case-menu .legend .layer-info .opacity-slider-wrap:after {
   clear: both;
 }
@@ -19287,7 +19287,7 @@ input.input-inner:focus {
   align-self: center !important;
 }
 
-@media screen and (max-width: 500px) {
+@media screen and (max-width: 599px) {
   /* line 110, resources/scss/pages/_cards-home.scss */
   .card-title {
     font-size: 18px !important;
@@ -19323,89 +19323,89 @@ input.input-inner:focus {
   font-size: 14px !important;
 }
 
-/* line 1733, resources/scss/screen.scss */
+/* line 1723, resources/scss/screen.scss */
 .page-type-text #viewport {
   background-color: rgba(213, 232, 242, 0.5);
   height: calc(100% - 40px);
 }
 
-/* line 1740, resources/scss/screen.scss */
+/* line 1730, resources/scss/screen.scss */
 #standard-splash {
   padding-bottom: 40px;
 }
 
-/* line 1744, resources/scss/screen.scss */
+/* line 1734, resources/scss/screen.scss */
 #standard-body {
   max-width: 75%;
   padding-left: calc(4% + 10px);
 }
 
-/* line 1748, resources/scss/screen.scss */
+/* line 1738, resources/scss/screen.scss */
 #standard-body a {
   text-decoration: underline;
 }
 
-/* line 1752, resources/scss/screen.scss */
+/* line 1742, resources/scss/screen.scss */
 #standard-body p {
   line-height: 1.75em;
   margin: 0 0 20px 0;
 }
 
-/* line 1757, resources/scss/screen.scss */
+/* line 1747, resources/scss/screen.scss */
 #standard-body strong {
   font-weight: 600;
 }
 
-/* line 1761, resources/scss/screen.scss */
+/* line 1751, resources/scss/screen.scss */
 #standard-body h2 {
   margin: 30px 0;
   font-size: 2rem;
   color: #0058cf;
 }
 
-/* line 1767, resources/scss/screen.scss */
+/* line 1757, resources/scss/screen.scss */
 #standard-body h3 {
   margin: 20px 0;
   font-size: 1.75rem;
   color: #f5442d;
 }
 
-/* line 1773, resources/scss/screen.scss */
+/* line 1763, resources/scss/screen.scss */
 #standard-body h4 {
   margin: 0 0 15px 0;
   font-size: 1.25rem;
   line-height: 1.375em;
 }
 
-/* line 1779, resources/scss/screen.scss */
+/* line 1769, resources/scss/screen.scss */
 #standard-body ul, #standard-body ol {
   margin: 0 20px 30px 20px;
   padding: 0 0 0 30px;
   font: 300 1rem/1.5em Roboto, Helvetica, "Helvetica Neue", Arial, sans-serif;
 }
 
-/* line 1784, resources/scss/screen.scss */
+/* line 1774, resources/scss/screen.scss */
 #standard-body ul li, #standard-body ol li {
   margin: 0 0 10px 0;
 }
 
-/* line 1789, resources/scss/screen.scss */
+/* line 1779, resources/scss/screen.scss */
 #standard-body ol {
   list-style-type: decimal;
 }
 
-/* line 1793, resources/scss/screen.scss */
+/* line 1783, resources/scss/screen.scss */
 #standard-body li {
   list-style-type: disc;
 }
 
-/* line 1797, resources/scss/screen.scss */
+/* line 1787, resources/scss/screen.scss */
 #standard-body dl {
   margin: 0 0 30px 0;
   font: 300 1rem/1.5em Roboto, Helvetica, "Helvetica Neue", Arial, sans-serif;
 }
 
-/* line 1801, resources/scss/screen.scss */
+/* line 1791, resources/scss/screen.scss */
 #standard-body dl dt {
   margin: 0 0 15px 0;
   padding-bottom: 10px;
@@ -19414,12 +19414,12 @@ input.input-inner:focus {
   font-weight: 400;
 }
 
-/* line 1809, resources/scss/screen.scss */
+/* line 1799, resources/scss/screen.scss */
 #standard-body dl dd {
   margin: 0 0 25px 0;
 }
 
-/* line 1814, resources/scss/screen.scss */
+/* line 1804, resources/scss/screen.scss */
 #standard-body hr {
   display: block;
   height: 3px;
@@ -20011,7 +20011,7 @@ input.input-inner:focus {
   cursor: default;
 }
 
-/* line 1839, resources/scss/screen.scss */
+/* line 1829, resources/scss/screen.scss */
 .ui-autocomplete {
   position: absolute;
   top: 0;
@@ -20019,7 +20019,7 @@ input.input-inner:focus {
   cursor: default;
 }
 
-/* line 1845, resources/scss/screen.scss */
+/* line 1835, resources/scss/screen.scss */
 .ui-menu {
   display: block;
   padding: 10px;
@@ -20032,12 +20032,12 @@ input.input-inner:focus {
   box-shadow: 0 0 12px rgba(35, 58, 112, 0.25);
 }
 
-/* line 1854, resources/scss/screen.scss */
+/* line 1844, resources/scss/screen.scss */
 .ui-menu .ui-menu {
   position: absolute;
 }
 
-/* line 1858, resources/scss/screen.scss */
+/* line 1848, resources/scss/screen.scss */
 .ui-menu .ui-menu-item {
   position: relative;
   margin: 0;
@@ -20045,7 +20045,7 @@ input.input-inner:focus {
   cursor: pointer;
 }
 
-/* line 1865, resources/scss/screen.scss */
+/* line 1855, resources/scss/screen.scss */
 .ui-menu .ui-menu-divider {
   margin: 5px 0;
   height: 0;
@@ -20054,12 +20054,12 @@ input.input-inner:focus {
   border-width: 1px 0 0 0;
 }
 
-/* line 1874, resources/scss/screen.scss */
+/* line 1864, resources/scss/screen.scss */
 .ui-accordion .ui-accordion-header {
   outline: none;
 }
 
-/* line 1877, resources/scss/screen.scss */
+/* line 1867, resources/scss/screen.scss */
 .ui-accordion .ui-accordion-header .ui-accordion-header-icon {
   display: inline-block;
   position: static;
@@ -20068,14 +20068,14 @@ input.input-inner:focus {
   overflow: visible;
 }
 
-/* line 1887, resources/scss/screen.scss */
+/* line 1877, resources/scss/screen.scss */
 .accordion-plain .ui-accordion-header {
   padding: 8px 0;
   color: #233a70;
   line-height: 28px;
 }
 
-/* line 1892, resources/scss/screen.scss */
+/* line 1882, resources/scss/screen.scss */
 .accordion-plain .ui-accordion-header .ui-accordion-header-icon {
   display: block;
   float: left;
@@ -20085,17 +20085,17 @@ input.input-inner:focus {
   line-height: 28px;
 }
 
-/* line 1902, resources/scss/screen.scss */
+/* line 1892, resources/scss/screen.scss */
 .accordion-plain .accordion-text {
   padding: 20px 40px;
 }
 
-/* line 1908, resources/scss/screen.scss */
+/* line 1898, resources/scss/screen.scss */
 .tabs-plain .tabs-plain-list li {
   display: inline-block;
 }
 
-/* line 1911, resources/scss/screen.scss */
+/* line 1901, resources/scss/screen.scss */
 .tabs-plain .tabs-plain-list li a {
   display: block;
   padding: 8px 10px;
@@ -20234,13 +20234,13 @@ https://raw.github.com/shagstrom/split-pane/master/LICENSE
   cursor: row-resize;
 }
 
-/* line 1925, resources/scss/screen.scss */
+/* line 1915, resources/scss/screen.scss */
 .pretty-split-pane-frame .split-pane > .split-pane-divider.dragged.touch {
   background: blue;
   opacity: 0.25;
 }
 
-/* line 1929, resources/scss/screen.scss */
+/* line 1919, resources/scss/screen.scss */
 .split-pane-divider {
   right: 50%;
   width: 12px;
@@ -20250,7 +20250,7 @@ https://raw.github.com/shagstrom/split-pane/master/LICENSE
   box-shadow: 0 0 10px rgba(35, 58, 112, 0.25);
 }
 
-/* line 1935, resources/scss/screen.scss */
+/* line 1925, resources/scss/screen.scss */
 .pane-content {
   position: absolute;
   top: 0;
@@ -20260,18 +20260,18 @@ https://raw.github.com/shagstrom/split-pane/master/LICENSE
   overflow: auto;
 }
 
-/* line 1939, resources/scss/screen.scss */
+/* line 1929, resources/scss/screen.scss */
 #pane-left {
   right: 50%;
   margin-right: 12px;
 }
 
-/* line 1943, resources/scss/screen.scss */
+/* line 1933, resources/scss/screen.scss */
 #pane-right {
   width: 50%;
 }
 
-/* line 1947, resources/scss/screen.scss */
+/* line 1937, resources/scss/screen.scss */
 .ui-tooltip {
   background-color: #0058cf;
   color: white;

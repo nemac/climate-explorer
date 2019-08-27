@@ -15,7 +15,7 @@
   }
 
   &.expanded {
-    @media screen and (min-width: 850px) {
+    @include medium-expand-bottom {
       min-height: calc(100% - 48px - 12px - 100px) !important;
       height: calc(100% - 48px - 12px - 100px) !important;
       &:after {
@@ -39,13 +39,13 @@
   @include border-radius(5px, 5px);
   border: 1px solid $ce3-border-color !important;
 
-  @media screen and (max-width: 1240px) {
+  @include large {
     width: 90% !important;
     height: auto !important;
     margin: $ce3-padding-half !important;
   }
 
-  @media screen and (max-width: 768px) {
+  @include small {
     width: 90% !important;
     height: auto !important;
   }
@@ -58,14 +58,14 @@
   padding-right: $ce3-default-padding !important;
   left: $ce3-default-padding !important;
 
-  @media screen and (max-width: 1240px) {
+  @include large {
     justify-content: center !important;
     height: auto !important;
     min-height: unset !important;
     flex-flow: row nowrap !important;
   }
 
-  @media screen and (max-width: 900px) {
+  @include medium {
     flex-flow: row wrap !important;
     padding-right: $ce3-default-padding/2 !important;
     left: $ce3-default-padding/2 !important;
@@ -89,14 +89,14 @@
   padding-left: $ce3-default-horizontal-padding !important;
   padding-right: $ce3-default-horizontal-padding !important;
 
-  @media screen and (max-width: 900px) {
+  @include medium {
     padding-top: $ce3-default-horizontal-padding/2 !important;
     padding-bottom: $ce3-default-horizontal-padding/2 !important;
     padding-left: $ce3-default-horizontal-padding/2 !important;
     padding-right: $ce3-default-horizontal-padding/2 !important;
   }
 
-  @media screen and (max-width: 768px) {
+  @include small {
     min-height: auto !important;
   }
 }
@@ -110,7 +110,7 @@
 .card-title {
   font-size: 18px !important;
 
-  @media screen and (max-width: 500px) {
+  @include very-small  {
     font-size: 18px !important;
   }
 

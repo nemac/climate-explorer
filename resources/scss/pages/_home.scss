@@ -1,8 +1,8 @@
 #home-viewport {
   background-color: $white;
   height: calc(100% - 84px) !important;
-  
-  @media screen and (max-width: 768px) {
+
+  @include small {
     height: calc(100% - 48px) !important;
   }
 }
@@ -10,7 +10,7 @@
 .search-row {
   flex: 1 1 auto !important;
 
-  @media screen and (max-width: 900px) {
+  @include medium {
     .icon-search:before {
       position: relative;
       top: 5px;
@@ -30,7 +30,7 @@
   max-height: 100px !important;
   @include border-radius(5px, 5px);
 
-  @media screen and (max-width: 900px) {
+  @include medium {
     max-height: 250px !important;
     height: auto !important;
     padding-bottom: $ce3-padding-half !important;

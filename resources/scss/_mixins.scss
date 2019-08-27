@@ -1,4 +1,101 @@
 
+// normal break points
+@mixin very-small {
+  @media screen and (max-width: 599px) { @content; }
+}
+
+@mixin small {
+  @media screen and (max-width: 768px) { @content; }
+}
+
+@mixin medium {
+  @media screen and (max-width: 900px) { @content; }
+}
+
+@mixin medium-expand-bottom {
+  @media screen and (min-width: 850px) { @content; }
+}
+
+@mixin large {
+  @media screen and (max-width: 1240px) { @content; }
+}
+
+
+// break points for nav footer to resolve font and other issues with responsiveness
+@mixin nav-footer-1224-max {
+  @media screen and (max-width: 1224px) { @content; }
+}
+
+@mixin nav-footer-1225-min {
+  @media screen and (min-width: 1225px) { @content; }
+}
+
+@mixin nav-footer-1177-max {
+  @media screen and (max-width: 1177px) { @content; }
+}
+
+@mixin nav-footer-950-max {
+  @media screen and (max-width: 950px) { @content; }
+}
+
+@mixin nav-footer-900-max {
+  @media screen and (max-width: 900px) { @content; }
+}
+
+@mixin nav-footer-900-min {
+  @media screen and (min-width: 900px) { @content; }
+}
+
+@mixin nav-footer-850-max {
+  @media screen and (max-width: 850px) { @content; }
+}
+@mixin nav-footer-850-min {
+  @media screen and (min-width: 850px) { @content; }
+}
+
+@mixin nav-footer-820-max {
+  @media screen and (max-width: 820px) { @content; }
+}
+
+@mixin nav-footer-600-max {
+  @media screen and (max-width: 600px) { @content; }
+}
+
+@mixin nav-footer-501-max {
+  @media screen and (max-width: 501px) {@content; }
+}
+
+@mixin nav-footer-501-min {
+  @media screen and (min-width: 501px) { @content; }
+}
+
+@mixin nav-footer-500-max {
+  @media screen and (max-width: 500px) { @content; }
+}
+
+@mixin nav-footer-400-min {
+  @media screen and (min-width: 400px) { @content; }
+}
+
+@mixin nav-footer-376-max {
+  @media screen and (max-width: 376px) { @content; }
+}
+
+@mixin nav-footer-360-max {
+  @media screen and (max-width: 360px) { @content; }
+}
+
+@mixin nav-footer-330-max {
+  @media screen and (max-width: 330px) { @content; }
+}
+
+
+// varriables
+@mixin map-varriables-min-max {
+  @media screen and (max-width: 1185px) and (min-width: 901px)  { @content; }
+}
+
+
 
 @mixin smoothing {
   -webkit-font-smoothing: antialiased;

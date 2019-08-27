@@ -15,7 +15,7 @@
      font: 500 24px $roboto !important;
      white-space: nowrap;
      width: 100%;
-     @media screen and (max-width: 768px) {
+     @include small {
        font: 500 18px $roboto !important;
      }
      color: $ce3-blue6 !important;

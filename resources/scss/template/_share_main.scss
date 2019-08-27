@@ -1,27 +1,10 @@
-// .share-bg {
-//   @media screen and (max-width: 900px) {
-//     display: none !important;
-//     .share-widget {
-//       display: none !important;
-//     }
-//   }
-// }
-//
-// .share-sm {
-//   @media screen and (min-width: 900px) {
-//     display: none !important;
-//     .share-widget {
-//       display: none !important;
-//     }
-//   }
-// }
 
 #share-widget-wrapper {
   width: 48px !important;
   height: 48px !important;
   min-width: 48px;
   margin-top: -8px;
-  @media screen and (max-width: 900px) {
+  @include medium {
     padding-top: 16px;
     margin-top: 0px;
     display: inline-block !important;
@@ -38,7 +21,7 @@
   right: 8px;
   width: 48px !important;
   height: 48px !important;
-  @media screen and (max-width: 900px) {
+  @include medium {
     right: 0px;
   }
   z-index: 10;
@@ -64,7 +47,7 @@
   .share-icon {
     font-size: 1rem;
     padding-bottom: 0px;
-    @media screen and (max-width: 900px) {
+    @include medium {
       font-size: 1rem;
       padding-bottom: 3px;
     }
@@ -130,7 +113,7 @@
   padding: 10px;
   background: $ce3-blue5;
   @include border-radius(5px !important);
-  @media screen and (max-width: 900px) {
+  @include medium {
     border: 1px solid $ce3-blue3;
     padding: 8px;
     width: 205px;

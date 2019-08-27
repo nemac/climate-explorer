@@ -10,7 +10,7 @@
       width: auto;
       margin-top: -5px;
     }
-    @media screen and (max-width: 500px) {
+    @include very-small  {
       img {
         content:url(/resources/img/crt-logo-mobile.png);
       }
@@ -21,10 +21,10 @@
      font: 500 24px $roboto !important;
      white-space: nowrap;
      width: 70%;
-     @media screen and (max-width: 500px) {
+     @include very-small  {
        width: 25%;
      }
-     @media screen and (max-width: 768px) {
+     @include small {
        font: 500 18px $roboto !important;
      }
      color: $ce3-blue6 !important;

@@ -41,7 +41,7 @@
     width: 14rem;
     margin: 5px;
 
-    @media screen and (max-width: 1185px)  and (min-width: 901px){
+    @include map-varriables-min-max {
       width: 42% !important;
     }
 
@@ -90,7 +90,7 @@
       background-color: transparentize($ce3-blue5, 0.25) !important;
       color: $ce3-blue3 !important;
       @include border-radius(5px, 5px !important);
-      @media screen and (max-width: 1185px)  and (min-width: 901px){
+      @include map-varriables-min-max {
         max-width: none !important;
         min-width: 0px !important;
         width: 50% !important;

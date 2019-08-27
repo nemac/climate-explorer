@@ -19,7 +19,7 @@
   }
 
   &.expanded {
-    @media screen and (min-width: 850px) {
+    @include medium-expand-bottom {
       min-height: calc(100% - 48px - 12px - 100px) !important;
       height: calc(100% - 48px - 12px - 100px) !important;
       &:after {
@@ -42,7 +42,7 @@
   }
 
   .search-box-secondary {
-    @media screen and (max-width: 900px) {
+    @include medium {
       width: 100% !important;
       display: inline-block !important;
     }
@@ -97,19 +97,17 @@
     }
   }
 
-
-
   #temperature-map {
     .movable.slider-div {
       top: 0px !important;
     }
   }
 
-  @media screen and (max-width: 1240px) {
+  @include large {
     justify-content: center !important;
   }
 
-  @media screen and (max-width: 900px) {
+  @include medium {
     order: 1;
     padding-bottom: 250px !important;
 
@@ -264,7 +262,7 @@
     }
   }
 
-  @media screen and (max-width: 500px) {
+  @include very-small {
     height: auto !important;
     order: 1;
 

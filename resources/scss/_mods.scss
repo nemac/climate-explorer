@@ -22,7 +22,7 @@ This file is due for a cleanup. Please do not add to the mess.
 }
 
 input.location-mapper {
-  @media screen and (max-width: 900px) {
+  @include medium {
     width: 80% !important;
   }
 }
