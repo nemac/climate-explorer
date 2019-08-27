@@ -58,10 +58,6 @@ $(function () {
     $('#default-chart-map-varriable').html(chartText);
   }
 
-  // $('#downloads-select-wrapper').click( function (e) {
-  //   mapToImageRight();
-  // });
-
   window.addEventListener('last-left-image-added', function(e) {
     exportLeft();
   })
@@ -73,6 +69,7 @@ $(function () {
   // function to enable downloads (images and data)
   $('.download-select li a').click( function (e) {
     const downloadAction = $(this).attr('rel');
+    $('#temperature-map').spinner();
     // capture what we are downloading
     switch (downloadAction) {
       case 'download-rightmap-image': // download image
@@ -131,6 +128,7 @@ $(function () {
           a.download = 'local-climate-map-right.png';
           a.click();
           elem.classList.add('d-none');
+          $('#temperature-map').spinner('destroy');
           // document.body.appendChild(canvas);
         }
       });
@@ -156,6 +154,7 @@ $(function () {
           a.download = 'local-climate-map-left.png';
           a.click();
           elem.classList.add('d-none');
+          $('#temperature-map').spinner('destroy');
           // document.body.appendChild(canvas);
         }
       });
