@@ -134,25 +134,28 @@ $(function () {
       backgroundColor: null,
       removeContainer: true,
       foreignObjectRendering: true,
-      imageTimeout:	50000,
       onrendered: function(canvas) {
         const imageUrl  = canvas.toDataURL("image/png").replace("image/png", "image/octet-stream");
-        addImage(imageUrl, 'label-boundaries-overlay');
+        addImage(imageUrl, 'label-boundaries-overlay1');
       }
     });
 
     // export label and state boundaries overlay
     const canvasLength = $('#temperature-map .esri-view-root .esri-view-surface canvas.esri-display-object').length;
-    if (canvasLength < 5) {
+    if (canvasLength <= 6) {
+      const elem = $('#temperature-map .esri-view-root .esri-view-surface canvas.esri-display-object')[5];
+      elem.setAttribute('crossOrigin','anonymous');
+
       html2canvas($('#temperature-map .esri-view-root .esri-view-surface canvas.esri-display-object')[5] , {
         allowTaint: true,
         useCORS: true,
         backgroundColor: null,
         removeContainer: true,
+        imageTimeout: 0,
         foreignObjectRendering: true,
         onrendered: function(canvas) {
           const imageUrl  = canvas.toDataURL("image/png").replace("image/png", "image/octet-stream");
-          addImage(imageUrl, 'label-boundaries-overlay');
+          addImage(imageUrl, 'label-boundaries-overlay2');
         }
       });
     }
@@ -163,6 +166,7 @@ $(function () {
       useCORS: true,
       backgroundColor: null,
       removeContainer: true,
+      imageTimeout: 0,
       foreignObjectRendering: true,
       onrendered: function(canvas) {
         const imageUrl  = canvas.toDataURL("image/png").replace("image/png", "image/octet-stream");
@@ -242,9 +246,25 @@ $(function () {
       foreignObjectRendering: true,
       onrendered: function(canvas) {
         const imageUrl  = canvas.toDataURL("image/png").replace("image/png", "image/octet-stream");
-        addImage(imageUrl, 'label-boundaries-overlay');
+        addImage(imageUrl, 'label-boundaries-overlay1');
       }
     });
+
+    // export label and state boundaries overlay
+    const canvasLength = $('#temperature-map .esri-view-root .esri-view-surface canvas.esri-display-object').length;
+    if (canvasLength <= 6) {
+      html2canvas($('#temperature-map .esri-view-root .esri-view-surface canvas.esri-display-object')[5] , {
+        allowTaint: true,
+        useCORS: true,
+        backgroundColor: null,
+        removeContainer: true,
+        foreignObjectRendering: true,
+        onrendered: function(canvas) {
+          const imageUrl  = canvas.toDataURL("image/png").replace("image/png", "image/octet-stream");
+          addImage(imageUrl, 'label-boundaries-overlay2');
+        }
+      });
+    }
 
     // export legend
     html2canvas($('.esri-expand__content .legend-image') , {
