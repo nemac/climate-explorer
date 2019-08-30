@@ -1,9 +1,10 @@
 #local-climate-charts-viewport {
   background-color: $white;
-  height: calc(100% - 48px - 100px) !important;
-  min-height: calc(100% - 48px - 100px) !important;
+  height: calc(100% - 48px - 6px - 100px) !important;
+  min-height: calc(100% - 48px - 6px - 100px) !important;
   overflow: auto !important;
   flex: 1 1 auto !important;
+  margin-bottom: 6px;
 
   &:after {
     content: '';
