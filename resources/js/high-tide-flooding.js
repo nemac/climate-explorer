@@ -97,13 +97,13 @@ $(function () {
 
     // unhide chart overlay
     if (stationsGraphRowElem) {
-      stationsGraphRowElem.classList.remove('d-none');
+      stationsGraphRowElem.classList.remove('d-off');
       stationsGraphRowElem.classList.add('d-flex');
     }
 
     // hide chart overlay
     if (stationsMapRowElem) {
-      stationsMapRowElem.classList.add('d-none');
+      stationsMapRowElem.classList.add('d-off');
       stationsMapRowElem.classList.remove('d-flex');
     }
   }
@@ -118,13 +118,13 @@ $(function () {
     // unhide chart overlay
     if (stationsGraphRowElem) {
       stationsGraphRowElem.classList.remove('d-flex');
-      stationsGraphRowElem.classList.add('d-none');
+      stationsGraphRowElem.classList.add('d-off');
     }
 
     // unhide map overlay
     if (stationsMapRowElem) {
       stationsMapRowElem.classList.add('d-flex');
-      stationsMapRowElem.classList.remove('d-none');
+      stationsMapRowElem.classList.remove('d-off');
     }
   }
 
@@ -319,6 +319,7 @@ $(function () {
 
     // reset map and chart sizes
     setMapSize();
+    chooseGraphOrMap(target);
   })
 
   // in repsonsive mode the time is a pulldown this eanbles the change of the chart map

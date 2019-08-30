@@ -914,6 +914,12 @@ h6 {
   @include medium {
     min-height: 1px !important;
   }
+
+  #station-info {
+    @include medium {
+      min-height: 100px !important;
+    }
+  }
 }
 
 .rounded-box-secondary {
@@ -1059,7 +1065,9 @@ input.input-inner-default:focus  {
 }
 
 #search-row {
+  min-height: 50px;
   @include medium {
+    min-height: 106px;
     display: block !important;
   }
 }
@@ -1098,7 +1106,7 @@ input.input-inner-default:focus  {
       width: auto;
       top: 24px;
       left: 24px
-    }    
+    }
   }
   // opacity: 0.5;
 }
