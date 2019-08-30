@@ -80,13 +80,13 @@ $(function () {
 
     // unhide chart overlay
     if (stationsGraphRowElem) {
-      stationsGraphRowElem.classList.remove('d-off');
+      stationsGraphRowElem.classList.remove('d-none');
       stationsGraphRowElem.classList.add('d-flex');
     }
 
     // hide chart overlay
     if (stationsMapRowElem) {
-      stationsMapRowElem.classList.add('d-off');
+      stationsMapRowElem.classList.add('d-none');
       stationsMapRowElem.classList.remove('d-flex');
     }
   }
@@ -101,13 +101,13 @@ $(function () {
     // unhide chart overlay
     if (stationsGraphRowElem) {
       stationsGraphRowElem.classList.remove('d-flex');
-      stationsGraphRowElem.classList.add('d-off');
+      stationsGraphRowElem.classList.add('d-none');
     }
 
     // unhide map overlay
     if (stationsMapRowElem) {
       stationsMapRowElem.classList.add('d-flex');
-      stationsMapRowElem.classList.remove('d-off');
+      stationsMapRowElem.classList.remove('d-none');
     }
   }
 
@@ -120,7 +120,7 @@ $(function () {
     return  target.attr('val');
   }
 
-  function chooseGraphOrMap(target){
+  function chooseGraphOrMap(target) {
     // check val of button to see if user is on map  or chart
     // hide or unhide the appropriate overlay (map, chart)
     switch (RelorVal(target)) {
@@ -136,6 +136,7 @@ $(function () {
         // unhide chart overlay
         showGraphs();
     }
+    forceResize();
   }
 
   function toggleChartInfoText(val) {
