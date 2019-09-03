@@ -353,11 +353,16 @@
   height: 100% !important;
 
   @include medium-min {
-    height: calc(100% - 48px - 6px - 140px ) !important;
- }
+    height: calc(100% - 195px) !important;
+  }
+
   &.closed-filters {
+    @include medium-min {
+      height: calc(100% - 135px) !important;
+    }
+
     .chart-wrap {
-      // height: 86% !important;
+      // height: calc(100%) !important;
     }
 
     #annual-slider-wrapper {
