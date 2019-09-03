@@ -575,8 +575,7 @@ $(function () {
       document.querySelector('#temperature-map').style.maxHeight = `${rect.height}px`;
       document.querySelector('#temperature-map').style.minWidth = `${rect.width}px`;
     }
-    // -infoRowRect.height
-
+// -infoRowRect.height
     document.querySelector('.scenario-map-overlay-container').style.top = `${rect.top}px`;
     document.querySelector('.scenario-map-overlay-container').style.left = `${rect.left}px`;
     document.querySelector('.scenario-map-overlay-container').style.width = `${rect.width}px`;
