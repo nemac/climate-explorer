@@ -77,7 +77,7 @@
      width: 30% !important;
    }
 
-   #stations-map-row{
+   #stations-map-row {
      @include medium-min {
        height: calc(100% - 48px - 6px - 140px ) !important;
      }

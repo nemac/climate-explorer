@@ -355,11 +355,15 @@ $(function () {
       $(infoRowElem).addClass('closed-filters');
     }
 
-    const chartRowElem = $('#chart-row');
+    const chartRowElem = $('#map-row');
     if ($(chartRowElem).hasClass('closed-filters')) {
       $(chartRowElem).removeClass('closed-filters');
+      // $(chartRowElem).removeClass('d-flex');
+      // $(chartRowElem).addClass('d-flex');
     } else {
       $(chartRowElem).addClass('closed-filters');
+      // $(chartRowElem).removeClass('d-flex');
+      // $(chartRowElem).addClass('d-flex');
     }
 
     setTimeout(function () {
@@ -550,6 +554,7 @@ $(function () {
     $('#temperature-map').height($('#temperature-map').parent().height())
 
     const rect = document.getElementById('map-wrap').getBoundingClientRect();
+    const infoRowRect = document.getElementById('info-row').getBoundingClientRect();
 
     if (document.querySelector('.esri-view-root')) {
       document.querySelector('.esri-view-root').style.minWidth = `${rect.width}px`;
@@ -562,17 +567,23 @@ $(function () {
       document.querySelector('.esri-view-user-storage').style.maxWidth = `${rect.width}px`;
     }
 
-    if (document.querySelector('.temperature-map')) {
-      document.querySelector('.temperature-map').style.minWidth = `${rect.width}px`;
-      document.querySelector('.temperature-map').style.maxWidth = `${rect.width}px`;
-      document.querySelector('.temperature-map').style.height = `${rect.height}px`;
-      document.querySelector('.temperature-map').style.minWidth = `${rect.height}px`;
+    if (document.querySelector('#temperature-map')) {
+      document.querySelector('#temperature-map').style.minWidth = `${rect.width}px`;
+      document.querySelector('#temperature-map').style.maxWidth = `${rect.width}px`;
+      document.querySelector('#temperature-map').style.height = `${rect.height}px`;
+      document.querySelector('#temperature-map').style.minHeight = `${rect.height}px`;
+      document.querySelector('#temperature-map').style.maxHeight = `${rect.height}px`;
+      document.querySelector('#temperature-map').style.minWidth = `${rect.width}px`;
     }
+    // -infoRowRect.height
 
     document.querySelector('.scenario-map-overlay-container').style.top = `${rect.top}px`;
     document.querySelector('.scenario-map-overlay-container').style.left = `${rect.left}px`;
     document.querySelector('.scenario-map-overlay-container').style.width = `${rect.width}px`;
     document.querySelector('.scenario-map-overlay-container').style.height = `${rect.height}px`;
+    document.querySelector('.scenario-map-overlay-container').style.minHeight = `${rect.height}px`;
+    document.querySelector('.scenario-map-overlay-container').style.maxHeight = `${rect.height}px`;
+
 
     document.querySelector('#map-for-print-left').style.top = `${rect.top}px`;
     document.querySelector('#map-for-print-left').style.left = `${rect.left}px`;

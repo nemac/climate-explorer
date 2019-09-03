@@ -8,7 +8,7 @@
   overflow: auto !important;
   flex: 1 1 auto !important;
   margin-bottom: 6px;
-  
+
   &:after {
     content: '';
     width: 100%;
@@ -52,11 +52,15 @@
 
 #map-row {
   justify-content: space-evenly !important;
-  height: 100% !important;
+  // height: 100% !important;
+
+  // @include medium-min {
+  //   height: calc(100% - 48px - 6px - 110px ) !important;
+  // }
 
   &.closed-filters {
     .map-wrap {
-      height: 86% !important;
+      // height: calc(100% + 40px) !important;
     }
   }
 
@@ -154,7 +158,7 @@
 
       .bottom-scenario-controls {
         position: inherit !important;
-        top: -350px !important;
+        top: -175px !important;
         width: 100% !important;
         height: 100% !important;
         padding: 1rem 0rem !important;
