@@ -514,6 +514,14 @@ $(function () {
       document.querySelector('#tidal-chart').style.width = `${graphWidth}px`;
       document.querySelector('#tidal-chart').style.height = `${graphRect.height}px`;
     }
+
+    // set size of map
+    if (document.querySelector('.chartjs-size-monitor')) {
+      document.querySelector('.chartjs-size-monitor').style.minWidth = `${graphWidth}px`;
+      document.querySelector('.chartjs-size-monitor').style.maxWidth = `${graphWidth}px`;
+      document.querySelector('.chartjs-size-monitor').style.width = `${graphWidth}px`;
+      document.querySelector('.chartjs-size-monitor').style.height = `${graphRect.height}px`;
+    }
   }
 
   // reset map and chart sizes
