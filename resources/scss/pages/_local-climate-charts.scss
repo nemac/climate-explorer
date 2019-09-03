@@ -183,6 +183,12 @@
   }
 }
 
+#filters-row {
+  .select-options {
+    margin-top: 0px !important;
+  }
+}
+
 #chartmap-wrapper, #time-wrapper, #presentation-wrapper  {
   @include medium {
     display: none !important;

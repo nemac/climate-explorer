@@ -349,6 +349,14 @@ h6 {
   }
 }
 
+@include medium {
+  #filters-row {
+    .select-options {
+      margin-top: 0px !important;
+    }
+  }
+}
+
 .font-title {
    font: 500 24px $roboto !important;
    color: $ce3-blue6 !important;
@@ -1703,7 +1711,7 @@ input.input-inner-default:focus  {
 
 @import "pages/home";
 
-// LOCATIO
+// LOCATIOn
 
 @import "pages/local-climate-charts";
 @import "pages/local-climate-maps";
