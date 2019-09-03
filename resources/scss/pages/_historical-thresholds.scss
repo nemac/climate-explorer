@@ -288,9 +288,21 @@ $animation-duration: 0.4s;
    }
 
 
+  #stations-map-row{
+    @include medium-min {
+      height: calc(100% - 48px - 6px - 140px ) !important;
+    }
+  }
+
+  #stations-graph-row {
+    @include medium-min {
+      height: calc(100% - 48px - 6px - 205px ) !important;
+    }
+  }
+
    #stations-map-row {
      justify-content: space-evenly !important;
-     height: 100% !important;
+     // height: 100% !important;
 
      &.closed-filters {
        .map-wrap {

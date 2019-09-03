@@ -12,6 +12,10 @@
   @media screen and (max-width: 900px) { @content; }
 }
 
+@mixin medium-min {
+  @media screen and (min-width: 901px) { @content; }
+}
+
 @mixin medium-expand-bottom {
   @media screen and (min-width: 850px) { @content; }
 }
