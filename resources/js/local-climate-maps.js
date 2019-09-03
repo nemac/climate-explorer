@@ -119,17 +119,17 @@ $(function () {
         useCORS: true,
         backgroundColor: null,
         letterRendering: 1,
-        // imageTimeout: 40000,
         foreignObjectRendering: true,
         onrendered: function(canvas) {
 
           var a = document.createElement('a');
           a.href = canvas.toDataURL("image/png").replace("image/png", "image/octet-stream");
           a.download = 'local-climate-map-right.png';
+          document.body.appendChild(a);
           a.click();
           elem.classList.add('d-none');
+          document.body.removeChild(a);
           $('#temperature-map').spinner('destroy');
-          // document.body.appendChild(canvas);
         }
       });
     }
@@ -145,17 +145,17 @@ $(function () {
         useCORS: true,
         backgroundColor: null,
         letterRendering: 1,
-        // imageTimeout: 40000,
         foreignObjectRendering: true,
         onrendered: function(canvas) {
 
           var a = document.createElement('a');
           a.href = canvas.toDataURL("image/png").replace("image/png", "image/octet-stream");
           a.download = 'local-climate-map-left.png';
+          document.body.appendChild(a);
           a.click();
           elem.classList.add('d-none');
+          document.body.removeChild(a);
           $('#temperature-map').spinner('destroy');
-          // document.body.appendChild(canvas);
         }
       });
     }
@@ -167,7 +167,6 @@ $(function () {
       useCORS: true,
       backgroundColor: null,
       removeContainer: true,
-      // imageTimeout: 30000,
       foreignObjectRendering: true,
       onrendered: function(canvas) {
         const imageUrl  = canvas.toDataURL("image/png").replace("image/png", "image/octet-stream");
