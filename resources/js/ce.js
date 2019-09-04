@@ -234,7 +234,7 @@ especially when it comes to interacting with the DOM and handling events.
 
       newParams = params.join("&");
 
-      if (newParams !== currentParams) {
+      if (newParams.trim() !== currentParams.trim()) {
         window.history.replaceState({}, "", href + "?" + newParams);
       }
       this.updateSharing();

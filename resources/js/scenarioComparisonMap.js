@@ -1829,6 +1829,12 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
           this._updateOverlay();
         }
       }
+
+      // skip send change trigger for sliding the map changer. it causes issues for some browsers
+      // when using an event listenter on the map
+      if (options.swipeX) {
+        return this;
+      }
       this._trigger('change', null, this.options);
       return this;
     },
