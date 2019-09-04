@@ -444,7 +444,6 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
       return Promise.all(layerPromises).then(this._trigger.bind(this, 'layersloaded', null, null));
     },
     _initControlsOverlay: function _initControlsOverlay() {
-
       this.nodes.$controlsOverLayContainer = $('<div>', { 'class': 'scenario-map-overlay-container' });
       this.nodes.$controlsOverLayContainer.append('        \n        <div class="movable slider-div">\n          <div class="handle"></div>\n        </div>\n        <div class="bottom-scenario-controls">\n          <div class="left-scenario-controls">\n            <div class="left-scenario-dropdown">\n              <div id="leftScenario-select-wrapper" class="rounded-choice-box padding-horrizontal-half padding-vertical-half default-btn-height d-flex-center width-100">\n<div class="select leftScenario-select">\n  <div id="leftScenario-select-vis" class="select-styled" rel="historical">HISTORICAL</div>\n  <ul class="select-options">\n    <li id="leftScenario-select" rel="historical" class="default-select-option">HISTORICAL</li>\n    <li id="leftScenario-select" rel="rcp45" class="default-select-option">LOWER EMISSIONS</li>\n  </ul>\n</div>\n</div>\n           </div>\n            <div class="year left-year-slider-container">\n              <div class="year-label year-min"></div>\n              <div class="left-year-slider"></div>\n              <div class="year-label year-max"></div>\n            </div>\n          </div>\n          <div class="right-scenario-controls">\n        \n            <div class="right-scenario-dropdown">\n             <div id="rightScenario-select-wrapper" class="rounded-choice-box padding-horrizontal-half padding-vertical-half default-btn-height d-flex-center width-100">\n  <div class="select rightScenario-select">\n    <div id="rightScenario-select-vis" class="select-styled" rel="rcp85">HIGHER EMISSIONS</div>\n    <ul class="select-options">\n      <li id="rightScenario-select" rel="rcp85" class="default-select-option">HIGHER EMISSIONS</li>\n      <li id="rightScenario-select-map" rel="rcp45" class="default-select-option">LOWER EMISSIONS</li>\n    </ul>\n  </div>\n</div>\n</div>\n            <div class="year right-year-slider-container">\n              <div class="year-label year-min"></div>\n              <div class="right-year-slider"></div>\n              <div class="year-label year-max"></div>\n            </div>\n          </div>\n        </div>\n                  \n            ');
       $(this.nodes.mapContainer).append(this.nodes.$controlsOverLayContainer);
@@ -465,7 +464,7 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
       this._updateRightScenarioSelect();
       this._updateLeftYearSlider();
       this._updateRightYearSlider();
-    },
+},
     _initMap: function _initMap() {
       this.map = new this.dojoMods.Map({
         basemap: 'topo'
