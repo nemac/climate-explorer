@@ -382,6 +382,10 @@ h6 {
       background:  darken($ce3-blue5, 5);
     }
   }
+  .pac-item-selected {
+    color: $ce3-blue3;
+    background:  darken($ce3-blue5, 5);    
+  }
 }
 
 .pac-container:empty{
