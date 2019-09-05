@@ -442,7 +442,6 @@
     placeChanged: function(){
       var place = this.autocomplete.getPlace();
       this.selected = true;
-
       if (!place.geometry){
         if (this.options.autoselect) {
             var autoSelection = this.selectFirstResult();
