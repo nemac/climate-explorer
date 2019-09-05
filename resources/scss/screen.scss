@@ -351,7 +351,7 @@ h6 {
 
 .pac-container {
   font: 500 14px $roboto !important;
-  display: block !important;
+  display: block;
   z-index: 999;
   margin: 0;
   padding: 0;
@@ -384,11 +384,8 @@ h6 {
   }
 }
 
-// .pac-container:empty{
-//     display: block !important;
-//     width: auto !important;
-//     height: auto !important;
-// }
+.pac-container:empty{
+}
 
 @include medium {
   #filters-row {
