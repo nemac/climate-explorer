@@ -72,12 +72,21 @@
     padding-right: $ce3-default-padding/2 !important;
     left: $ce3-default-padding/2 !important;
   }
+
+  @include medium {
+    min-height: 912px !important;
+  }
 }
 
 #card-image-row {
   background-color: $ce3-blue3 !important;
   justify-content: center !important;
   align-content: center !important;
+
+  @include medium {
+    justify-content: start !important;
+    align-content: start !important;
+  }
 }
 
 #card-text {
@@ -87,16 +96,32 @@
   height: 85px !important;
   min-height: 85px !important;
 
+  @include medium {
+    flex: 1 1 150px !important;
+    height: 150px !important;
+    min-height: 150px !important;
+  }
+
   @include tall {
     flex: 1 1 120px !important;
     height: 120px !important;
     min-height: 120px !important;
+    @include medium {
+      flex: 1 1 85px !important;
+      height: 85px !important;
+      min-height: 85px !important;
+    }
   }
 
   @include very-tall {
     flex: 1 1 150px !important;
     height: 150px !important;
     min-height: 150px !important;
+    @include medium {
+      flex: 1 1 85px !important;
+      height: 85px !important;
+      min-height: 85px !important;
+    }
   }
 
   padding-top: $ce3-default-horizontal-padding/2 !important;
@@ -150,6 +175,10 @@
   max-width: 100% !important;
   align-self: center !important;
   padding: 1px !important;
+
+  @include medium {
+    align-self: start !important;
+  }
 }
 
 #card-description {
