@@ -24,6 +24,13 @@
   @media screen and (max-width: 1240px) { @content; }
 }
 
+@mixin tall {
+  @media screen and (min-height: 1000px) { @content; }
+}
+
+@mixin very-tall {
+  @media screen and (min-height: 1200px) { @content; }
+}
 
 // break points for nav footer to resolve font and other issues with responsiveness
 @mixin nav-footer-1224-max {

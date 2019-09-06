@@ -36,7 +36,7 @@
 
 #data-card {
   cursor: pointer;
-  width: 33%  !important;
+  width: 32%  !important;
   height: auto !important;
   @include border-radius(5px, 5px);
   border: 1px solid $ce3-border-color !important;
@@ -83,11 +83,24 @@
 #card-text {
   background-color: $ce3-blue3 !important;
   color: $ce3-blue6 !important;
-  flex: 1 1 90px !important;
-  height: 90px !important;
-  min-height: 90px !important;
-  padding-top: $ce3-default-horizontal-padding !important;
-  padding-bottom: $ce3-default-horizontal-padding !important;
+  flex: 1 1 85px !important;
+  height: 85px !important;
+  min-height: 85px !important;
+
+  @include tall {
+    flex: 1 1 120px !important;
+    height: 120px !important;
+    min-height: 120px !important;
+  }
+
+  @include very-tall {
+    flex: 1 1 150px !important;
+    height: 150px !important;
+    min-height: 150px !important;
+  }
+
+  padding-top: $ce3-default-horizontal-padding/2 !important;
+  padding-bottom: $ce3-default-horizontal-padding/2 !important;
   padding-left: $ce3-default-horizontal-padding !important;
   padding-right: $ce3-default-horizontal-padding !important;
 
