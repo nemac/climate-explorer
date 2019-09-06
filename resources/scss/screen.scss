@@ -1158,11 +1158,23 @@ input.input-inner-default:focus  {
       left: 24px;
     }
 
-    .legend {
-      max-height: 300px;
-      height: 300px;
+    .title {
+      background-color: transparentize($ce3-blue5, 0.25) !important;
+      max-height: 42px;
+      height: 42px;
+      padding: $ce3-default-padding;
       width: auto;
-      top: 24px;
+      top: 0px;
+      left: 0px;
+      @include border-bottom-right-radius(5px);
+      @include border-top-right-radius(5px);
+    }
+
+    .legend {
+      max-height: 250px;
+      height: 250px;
+      width: auto;
+      top: 66px;
       left: 24px;
     }
   }

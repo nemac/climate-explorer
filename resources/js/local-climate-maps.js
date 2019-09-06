@@ -241,6 +241,19 @@ $(function () {
       }
     });
 
+    // export right title
+    html2canvas($('#info-text-wrapper') , {
+      allowTaint: true,
+      useCORS: true,
+      backgroundColor: null,
+      removeContainer: true,
+      foreignObjectRendering: true,
+      onrendered: function(canvas) {
+        const imageUrl  = canvas.toDataURL("image/png").replace("image/png", "image/octet-stream");
+        addImage(imageUrl, 'right', 'title');
+      }
+    });
+
     // export attribution
     html2canvas($('.esri-ui-inner-container.esri-ui-manual-container .esri-component.esri-attribution.esri-widget') , {
       allowTaint: true,
@@ -324,6 +337,19 @@ $(function () {
         const imageUrl  = canvas.toDataURL("image/png").replace("image/png", "image/octet-stream");
         const base64temp = getBase64Image($('.esri-expand__content .legend-image')[0])
         addImage(base64temp, 'left', 'legend');
+      }
+    });
+
+    // export left title
+    html2canvas($('#info-text-wrapper') , {
+      allowTaint: true,
+      useCORS: true,
+      backgroundColor: null,
+      removeContainer: true,
+      foreignObjectRendering: true,
+      onrendered: function(canvas) {
+        const imageUrl  = canvas.toDataURL("image/png").replace("image/png", "image/octet-stream");
+        addImage(imageUrl, 'left', 'title');
       }
     });
 
