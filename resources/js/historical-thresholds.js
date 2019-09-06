@@ -290,6 +290,8 @@ $(function () {
   // function to enable downloads (images and data)
   $('.download-select li a').click( function (e) {
     const downloadAction = $(this).attr('rel');
+    const stationsMapState = window.ce.ce("getStationsMapState");
+    const stationId = stationsMapState['stationId'];
 
     // capture what we are downloading
     switch (downloadAction) {
