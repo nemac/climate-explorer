@@ -108,57 +108,55 @@ $(function () {
     return dataURL.replace(/^data:image\/(png|jpg);base64,/, "");
   }
 
+  function exportRight() {
+    // download image of images
+    const elem = document.getElementById('map-for-print-right');
+    elem.classList.remove('d-none');
 
-    function exportRight() {
-      // download image of images
-      const elem = document.getElementById('map-for-print-right');
-      elem.classList.remove('d-none');
+    html2canvas($('#map-for-print-right') , {
+      allowTaint: true,
+      useCORS: true,
+      backgroundColor: null,
+      letterRendering: 1,
+      foreignObjectRendering: true,
+      onrendered: function(canvas) {
 
-      html2canvas($('#map-for-print-right') , {
-        allowTaint: true,
-        useCORS: true,
-        backgroundColor: null,
-        letterRendering: 1,
-        foreignObjectRendering: true,
-        onrendered: function(canvas) {
+        var a = document.createElement('a');
+        a.href = canvas.toDataURL("image/png").replace("image/png", "image/octet-stream");
+        a.download = `local-climate-map-${variable}-right.png`;
+        document.body.appendChild(a);
+        a.click();
+        elem.classList.add('d-none');
+        document.body.removeChild(a);
+        $('#temperature-map').spinner('destroy');
+      }
+    });
+  }
 
-          var a = document.createElement('a');
-          a.href = canvas.toDataURL("image/png").replace("image/png", "image/octet-stream");
-          a.download = 'local-climate-map-right.png';
-          document.body.appendChild(a);
-          a.click();
-          elem.classList.add('d-none');
-          document.body.removeChild(a);
-          $('#temperature-map').spinner('destroy');
-        }
-      });
-    }
+  function exportLeft() {
+    // download image of images
+    const elem = document.getElementById('map-for-print-left');
+    elem.classList.remove('d-none');
 
+    html2canvas($('#map-for-print-left') , {
+      allowTaint: true,
+      useCORS: true,
+      backgroundColor: null,
+      letterRendering: 1,
+      foreignObjectRendering: true,
+      onrendered: function(canvas) {
 
-    function exportLeft() {
-      // download image of images
-      const elem = document.getElementById('map-for-print-left');
-      elem.classList.remove('d-none');
-
-      html2canvas($('#map-for-print-left') , {
-        allowTaint: true,
-        useCORS: true,
-        backgroundColor: null,
-        letterRendering: 1,
-        foreignObjectRendering: true,
-        onrendered: function(canvas) {
-
-          var a = document.createElement('a');
-          a.href = canvas.toDataURL("image/png").replace("image/png", "image/octet-stream");
-          a.download = 'local-climate-map-left.png';
-          document.body.appendChild(a);
-          a.click();
-          elem.classList.add('d-none');
-          document.body.removeChild(a);
-          $('#temperature-map').spinner('destroy');
-        }
-      });
-    }
+        var a = document.createElement('a');
+        a.href = canvas.toDataURL("image/png").replace("image/png", "image/octet-stream");
+        a.download = `local-climate-map-${variable}-left.png`;
+        document.body.appendChild(a);
+        a.click();
+        elem.classList.add('d-none');
+        document.body.removeChild(a);
+        $('#temperature-map').spinner('destroy');
+      }
+    });
+  }
 
   function mapToImageRight() {
     // base map
@@ -203,9 +201,6 @@ $(function () {
     // export label and state boundaries overlay
     const canvasLength = $('#temperature-map .esri-view-root .esri-view-surface canvas.esri-display-object').length;
     if (canvasLength >= 6) {
-      // const elem = $('#temperature-map .esri-view-root .esri-view-surface canvas.esri-display-object')[5];
-      // elem.setAttribute('crossorigin','anonymous');
-
       html2canvas($('#temperature-map .esri-view-root .esri-view-surface canvas.esri-display-object')[5] , {
         allowTaint: true,
         useCORS: true,
@@ -230,8 +225,19 @@ $(function () {
         const imageUrl  = canvas.toDataURL("image/png").replace("image/png", "image/octet-stream");
         const base64temp = getBase64Image($('.esri-expand__content .legend-image')[0])
         addImage(base64temp, 'right', 'legend');
-        // const elem = document.getElementById('map-for-print');
-        // elem.classList.remove('d-none');
+      }
+    });
+
+    // export right controls
+    html2canvas($('.bottom-scenario-controls .right-scenario-controls') , {
+      allowTaint: true,
+      useCORS: true,
+      backgroundColor: null,
+      removeContainer: true,
+      foreignObjectRendering: true,
+      onrendered: function(canvas) {
+        const imageUrl  = canvas.toDataURL("image/png").replace("image/png", "image/octet-stream");
+        addImage(imageUrl, 'right', 'botttom-controls');
       }
     });
 
@@ -318,8 +324,19 @@ $(function () {
         const imageUrl  = canvas.toDataURL("image/png").replace("image/png", "image/octet-stream");
         const base64temp = getBase64Image($('.esri-expand__content .legend-image')[0])
         addImage(base64temp, 'left', 'legend');
-        // const elem = document.getElementById('map-for-print');
-        // elem.classList.remove('d-none');
+      }
+    });
+
+    // export left controls
+    html2canvas($('.bottom-scenario-controls .left-scenario-controls') , {
+      allowTaint: true,
+      useCORS: true,
+      backgroundColor: null,
+      removeContainer: true,
+      foreignObjectRendering: true,
+      onrendered: function(canvas) {
+        const imageUrl  = canvas.toDataURL("image/png").replace("image/png", "image/octet-stream");
+        addImage(imageUrl, 'left', 'botttom-controls');
       }
     });
 
@@ -358,12 +375,8 @@ $(function () {
     const chartRowElem = $('#map-row');
     if ($(chartRowElem).hasClass('closed-filters')) {
       $(chartRowElem).removeClass('closed-filters');
-      // $(chartRowElem).removeClass('d-flex');
-      // $(chartRowElem).addClass('d-flex');
     } else {
       $(chartRowElem).addClass('closed-filters');
-      // $(chartRowElem).removeClass('d-flex');
-      // $(chartRowElem).addClass('d-flex');
     }
 
     setTimeout(function () {

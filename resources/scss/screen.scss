@@ -384,7 +384,7 @@ h6 {
   }
   .pac-item-selected {
     color: $ce3-blue3;
-    background:  darken($ce3-blue5, 5);    
+    background:  darken($ce3-blue5, 5);
   }
 }
 
@@ -1150,12 +1150,20 @@ input.input-inner-default:focus  {
       top: calc(100% - 17px);
     }
 
+    .botttom-controls {
+      max-height: 54px;
+      height: 54px;
+      width: auto;
+      top: calc(100% - 88px);
+      left: 24px;
+    }
+
     .legend {
       max-height: 300px;
       height: 300px;
       width: auto;
       top: 24px;
-      left: 24px
+      left: 24px;
     }
   }
   // opacity: 0.5;
