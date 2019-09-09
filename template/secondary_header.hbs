@@ -3,7 +3,11 @@
 <header id="secondary-header" class="flex-container  padding-default-half width-100 ">
     <span id="secondary-nav" class="topnav d-flex width-100" >
         <a href="https://toolkit.climate.gov" class="secondary-logo padding-horrizontal d-flex-left" title="U.S. Climate Resilience Toolkit">
-          <img src="/resources/img/crt-logo.png" alt="U.S. Climate Resilience Toolkit">
+          <picture>
+            <source media="(max-width: 599px)" srcset="/resources/img/crt-logo-mobile.png">
+            <source media="(min-width: 600px)" srcset="/resources/img/crt-logo.png">
+            <img src="/resources/img/crt-logo.png" alt="U.S. Climate Resilience Toolkit">
+          </picture>
         </a>
 
         <div class="secondary-font-title float-left d-flex-nowrap padding-horrizontal">
