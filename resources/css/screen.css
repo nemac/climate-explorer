@@ -15058,28 +15058,26 @@ input.input-inner-default:focus {
 /* line 107, resources/scss/template/_share.scss */
 .share-widget ul li a {
   top: 0px;
-  /* left: 6px; */
   position: relative;
-  z-index: -1;
 }
 
-/* line 112, resources/scss/template/_share.scss */
+/* line 110, resources/scss/template/_share.scss */
 .share-widget ul li a:hover {
-  background: #dce8fa;
+  background: #a6c6f3;
 }
 
-/* line 118, resources/scss/template/_share.scss */
+/* line 116, resources/scss/template/_share.scss */
 .share-widget ul a {
-  padding: 12px;
-  background: #E9F1FC;
   color: #124086;
   font-size: 0;
   line-height: 0;
   text-indent: -9999px;
 }
 
-/* line 126, resources/scss/template/_share.scss */
+/* line 122, resources/scss/template/_share.scss */
 .share-widget ul .icon {
+  width: 40px;
+  padding: 12px;
   font-size: 16px;
   line-height: 24px;
   text-indent: 0px;
@@ -15088,7 +15086,7 @@ input.input-inner-default:focus {
   margin: 0 auto;
 }
 
-/* line 135, resources/scss/template/_share.scss */
+/* line 133, resources/scss/template/_share.scss */
 #share-permalink-input {
   display: none;
   position: absolute;
@@ -15109,14 +15107,14 @@ input.input-inner-default:focus {
 }
 
 @media screen and (max-width: 900px) {
-  /* line 135, resources/scss/template/_share.scss */
+  /* line 133, resources/scss/template/_share.scss */
   #share-permalink-input {
     padding: 8px;
     width: 205px;
   }
 }
 
-/* line 151, resources/scss/template/_share.scss */
+/* line 149, resources/scss/template/_share.scss */
 #share-permalink-input input {
   display: block;
   position: absolute;
@@ -15139,12 +15137,12 @@ input.input-inner-default:focus {
   outline: none;
 }
 
-/* line 169, resources/scss/template/_share.scss */
+/* line 167, resources/scss/template/_share.scss */
 #share-permalink-inputfocus {
   outline: none !important;
 }
 
-/* line 173, resources/scss/template/_share.scss */
+/* line 171, resources/scss/template/_share.scss */
 #share-permalink-input:after {
   content: '';
   display: block;

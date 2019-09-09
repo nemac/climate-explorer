@@ -106,24 +106,22 @@
       }
       a {
         top: 0px;
-        /* left: 6px; */
         position: relative;
-        z-index: -1;
         &:hover {
-          background: darken($ce3-blue5, 3%);;
+          background: darken($ce3-blue5, 15%);;
         }
       }
     }
 
     a {
-      padding: 12px;
-      background: $ce3-blue5;
       color: $ce3-blue3;
       @include no-text;
 
     }
 
     .icon {
+      width: 40px;
+      padding: $ce3-default-padding;
       @include undo-no-text;
       font-size: 1.25rem;
       line-height: 40px;
