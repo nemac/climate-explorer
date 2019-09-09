@@ -291,12 +291,18 @@ $animation-duration: 0.4s;
   #stations-map-row{
     @include medium-min {
       height: calc(100% - 48px - 6px - 140px ) !important;
+      &.closed-filters {
+        height: calc(100% - 48px - 6px ) !important;
+      }
     }
   }
 
   #stations-graph-row {
     @include medium-min {
       height: calc(100% - 48px - 6px - 205px ) !important;
+      &.closed-filters {
+        height: calc(100% - 48px - 6px ) !important;
+      }
     }
   }
 
@@ -305,7 +311,7 @@ $animation-duration: 0.4s;
      // height: 100% !important;
 
      &.closed-filters {
-       .map-wrap {
+       .stations-map-wrap {
          height: 86% !important;
        }
      }

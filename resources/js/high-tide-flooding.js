@@ -393,11 +393,18 @@ $(function () {
       $(infoRowElem).addClass('closed-filters');
     }
 
-    const chartRowElem = $('#chart-row');
+    const chartRowElem = $('#stations-graph-row');
     if ($(chartRowElem).hasClass('closed-filters')) {
       $(chartRowElem).removeClass('closed-filters');
     } else {
       $(chartRowElem).addClass('closed-filters');
+    }
+
+    const stationsMapRowElem = $('#stations-map-row');
+    if ($(stationsMapRowElem).hasClass('closed-filters')) {
+      $(stationsMapRowElem).removeClass('closed-filters');
+    } else {
+      $(stationsMapRowElem).addClass('closed-filters');
     }
 
     setTimeout(function () {
