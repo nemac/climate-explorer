@@ -1,0 +1,688 @@
+[
+  {
+    "id": "1611400",
+    "station": "Nawiliwili, HI",
+    "lon": "-159.36",
+    "lat": "21.95",
+    "derived": "0.52"
+  },
+  {
+    "id": "1612340",
+    "station": "Honolulu, HI",
+    "lon": "-157.87",
+    "lat": "21.31",
+    "derived": "0.52"
+  },
+  {
+    "id": "1612480",
+    "station": "Mokuoloe, HI",
+    "lon": "-157.79",
+    "lat": "21.43",
+    "derived": "0.53"
+  },
+  {
+    "id": "1615680",
+    "station": "Kahului, HI",
+    "lon": "-156.48",
+    "lat": "20.9",
+    "derived": "0.53"
+  },
+  {
+    "id": "1617433",
+    "station": "Kawaihae, HI",
+    "lon": "-155.83",
+    "lat": "20.04",
+    "derived": "0.53"
+  },
+  {
+    "id": "1617760",
+    "station": "Hilo, HI",
+    "lon": "-155.06",
+    "lat": "19.73",
+    "derived": "0.53"
+  },
+  {
+    "id": "1619910",
+    "station": "Midway Island",
+    "lon": "-177.36",
+    "lat": "28.21",
+    "derived": "0.52"
+  },
+  {
+    "id": "1630000",
+    "station": "Apra Harbor, Guam",
+    "lon": "144.65",
+    "lat": "13.44",
+    "derived": "0.53"
+  },
+  {
+    "id": "1770000",
+    "station": "Pago Pago, American Samoa ",
+    "lon": "-170.69",
+    "lat": "-14.28",
+    "derived": "0.53"
+  },
+  {
+    "id": "1820000",
+    "station": "Kwajalein Island",
+    "lon": "167.74",
+    "lat": "8.73",
+    "derived": "0.55"
+  },
+  {
+    "id": "1890000",
+    "station": "Wake Island",
+    "lon": "166.62",
+    "lat": "19.29",
+    "derived": "0.53"
+  },
+  {
+    "id": "8413320",
+    "station": "Bar Harbor, ME",
+    "lon": "-68.21",
+    "lat": "44.39",
+    "derived": "0.64"
+  },
+  {
+    "id": "8418150",
+    "station": "Portland, ME",
+    "lon": "-70.25",
+    "lat": "43.66",
+    "derived": "0.62"
+  },
+  {
+    "id": "8443970",
+    "station": "Boston, MA",
+    "lon": "-71.05",
+    "lat": "42.35",
+    "derived": "0.63"
+  },
+  {
+    "id": "8447930",
+    "station": "Woods Hole, MA",
+    "lon": "-70.67",
+    "lat": "41.52",
+    "derived": "0.53"
+  },
+  {
+    "id": "8449130",
+    "station": "Nantucket Island, MA",
+    "lon": "-70.1",
+    "lat": "41.29",
+    "derived": "0.54"
+  },
+  {
+    "id": "8452660",
+    "station": "Newport, RI",
+    "lon": "-71.33",
+    "lat": "41.51",
+    "derived": "0.55"
+  },
+  {
+    "id": "8454000",
+    "station": "Providence, RI",
+    "lon": "-71.4",
+    "lat": "41.81",
+    "derived": "0.56"
+  },
+  {
+    "id": "8461490",
+    "station": "New London, CT",
+    "lon": "-72.09",
+    "lat": "41.36",
+    "derived": "0.54"
+  },
+  {
+    "id": "8467150",
+    "station": "Bridgeport, CT",
+    "lon": "-73.18",
+    "lat": "41.17",
+    "derived": "0.59"
+  },
+  {
+    "id": "8510560",
+    "station": "Montauk, NY",
+    "lon": "-71.96",
+    "lat": "41.05",
+    "derived": "0.53"
+  },
+  {
+    "id": "8516945",
+    "station": "Kings Point, NY",
+    "lon": "-73.76",
+    "lat": "40.81",
+    "derived": "0.6"
+  },
+  {
+    "id": "8518750",
+    "station": "The Battery, NY",
+    "lon": "-74.01",
+    "lat": "40.7",
+    "derived": "0.56"
+  },
+  {
+    "id": "8519483",
+    "station": "Bergen Point, NY",
+    "lon": "-74.14",
+    "lat": "40.64",
+    "derived": "0.57"
+  },
+  {
+    "id": "8531680",
+    "station": "Sandy Hook, NJ",
+    "lon": "-74.01",
+    "lat": "40.47",
+    "derived": "0.56"
+  },
+  {
+    "id": "8534720",
+    "station": "Atlantic City, NJ",
+    "lon": "-74.42",
+    "lat": "39.36",
+    "derived": "0.56"
+  },
+  {
+    "id": "8536110",
+    "station": "Cape May, NJ",
+    "lon": "-74.96",
+    "lat": "38.97",
+    "derived": "0.57"
+  },
+  {
+    "id": "8545240",
+    "station": "Philadelphia, PA",
+    "lon": "-75.14",
+    "lat": "39.93",
+    "derived": "0.58"
+  },
+  {
+    "id": "8551910",
+    "station": "Reedy Point, DE",
+    "lon": "-75.57",
+    "lat": "39.56",
+    "derived": "0.57"
+  },
+  {
+    "id": "8557380",
+    "station": "Lewes, DE",
+    "lon": "-75.12",
+    "lat": "38.78",
+    "derived": "0.56"
+  },
+  {
+    "id": "8571892",
+    "station": "Cambridge, MD",
+    "lon": "-76.07",
+    "lat": "38.57",
+    "derived": "0.52"
+  },
+  {
+    "id": "8573364",
+    "station": "Tolchester Beach, MD",
+    "lon": "-76.25",
+    "lat": "39.21",
+    "derived": "0.52"
+  },
+  {
+    "id": "8574680",
+    "station": "Baltimore, MD",
+    "lon": "-76.58",
+    "lat": "39.27",
+    "derived": "0.52"
+  },
+  {
+    "id": "8575512",
+    "station": "Annapolis, MD",
+    "lon": "-76.48",
+    "lat": "38.98",
+    "derived": "0.52"
+  },
+  {
+    "id": "8577330",
+    "station": "Solomons Island, MD",
+    "lon": "-76.45",
+    "lat": "38.32",
+    "derived": "0.52"
+  },
+  {
+    "id": "8594900",
+    "station": "Washington, DC",
+    "lon": "-77.02",
+    "lat": "38.87",
+    "derived": "0.54"
+  },
+  {
+    "id": "8631044",
+    "station": "Wachapreague, VA",
+    "lon": "-75.69",
+    "lat": "37.61",
+    "derived": "0.56"
+  },
+  {
+    "id": "8632200",
+    "station": "Kiptopeke, VA",
+    "lon": "-75.99",
+    "lat": "37.17",
+    "derived": "0.54"
+  },
+  {
+    "id": "8635750",
+    "station": "Lewisetta, VA",
+    "lon": "-76.46",
+    "lat": "38.0",
+    "derived": "0.52"
+  },
+  {
+    "id": "8636580",
+    "station": "Windmill Point, VA",
+    "lon": "-76.29",
+    "lat": "37.62",
+    "derived": "0.52"
+  },
+  {
+    "id": "8638610",
+    "station": "Sewells Point, VA",
+    "lon": "-76.33",
+    "lat": "36.95",
+    "derived": "0.53"
+  },
+  {
+    "id": "8638863",
+    "station": "Chesapeake Bay Bridge, VA",
+    "lon": "-76.11",
+    "lat": "36.97",
+    "derived": "0.54"
+  },
+  {
+    "id": "8651370",
+    "station": "Duck, NC",
+    "lon": "-75.75",
+    "lat": "36.18",
+    "derived": "0.54"
+  },
+  {
+    "id": "8652587",
+    "station": "Oregon Inlet, NC ",
+    "lon": "-75.55",
+    "lat": "35.8",
+    "derived": "0.51"
+  },
+  {
+    "id": "8656483",
+    "station": "Beaufort, NC",
+    "lon": "-76.67",
+    "lat": "34.72",
+    "derived": "0.54"
+  },
+  {
+    "id": "8658120",
+    "station": "Wilmington, NC",
+    "lon": "-77.95",
+    "lat": "34.23",
+    "derived": "0.56"
+  },
+  {
+    "id": "8661070",
+    "station": "Springmaid Pier, SC",
+    "lon": "-78.92",
+    "lat": "33.66",
+    "derived": "0.57"
+  },
+  {
+    "id": "8665530",
+    "station": "Charleston, SC",
+    "lon": "-79.93",
+    "lat": "32.78",
+    "derived": "0.57"
+  },
+  {
+    "id": "8670870",
+    "station": "Fort Pulaski, GA",
+    "lon": "-80.9",
+    "lat": "32.03",
+    "derived": "0.59"
+  },
+  {
+    "id": "8720030",
+    "station": "Fernandina Beach, FL",
+    "lon": "-81.47",
+    "lat": "30.67",
+    "derived": "0.58"
+  },
+  {
+    "id": "8720218",
+    "station": "Mayport, FL",
+    "lon": "-81.43",
+    "lat": "30.4",
+    "derived": "0.56"
+  },
+  {
+    "id": "8721604",
+    "station": "Trident Pier, FL",
+    "lon": "-80.59",
+    "lat": "28.42",
+    "derived": "0.55"
+  },
+  {
+    "id": "8723214",
+    "station": "Virginia Key, FL",
+    "lon": "-80.16",
+    "lat": "25.73",
+    "derived": "0.53"
+  },
+  {
+    "id": "8723970",
+    "station": "Vaca Key, FL",
+    "lon": "-81.11",
+    "lat": "24.71",
+    "derived": "0.51"
+  },
+  {
+    "id": "8724580",
+    "station": "Key West, FL",
+    "lon": "-81.81",
+    "lat": "24.56",
+    "derived": "0.52"
+  },
+  {
+    "id": "8725110",
+    "station": "Naples, FL",
+    "lon": "-81.81",
+    "lat": "26.13",
+    "derived": "0.53"
+  },
+  {
+    "id": "8725520",
+    "station": "Fort Myers, FL",
+    "lon": "-81.87",
+    "lat": "26.65",
+    "derived": "0.52"
+  },
+  {
+    "id": "8726520",
+    "station": "St. Petersburg, FL",
+    "lon": "-82.63",
+    "lat": "27.76",
+    "derived": "0.53"
+  },
+  {
+    "id": "8726724",
+    "station": "Clearwater, FL",
+    "lon": "-82.83",
+    "lat": "27.98",
+    "derived": "0.53"
+  },
+  {
+    "id": "8727520",
+    "station": "Cedar Key, FL",
+    "lon": "-83.03",
+    "lat": "29.14",
+    "derived": "0.55"
+  },
+  {
+    "id": "8728690",
+    "station": "Apalachicola, FL",
+    "lon": "-84.98",
+    "lat": "29.73",
+    "derived": "0.52"
+  },
+  {
+    "id": "8729108",
+    "station": "Panama City, FL",
+    "lon": "-85.67",
+    "lat": "30.15",
+    "derived": "0.52"
+  },
+  {
+    "id": "8729210",
+    "station": "Panama City Beach, FL",
+    "lon": "-85.88",
+    "lat": "30.21",
+    "derived": "0.52"
+  },
+  {
+    "id": "8729840",
+    "station": "Pensacola, FL",
+    "lon": "-87.21",
+    "lat": "30.4",
+    "derived": "0.52"
+  },
+  {
+    "id": "8735180",
+    "station": "Dauphin Island, AL",
+    "lon": "-88.08",
+    "lat": "30.25",
+    "derived": "0.51"
+  },
+  {
+    "id": "8747437",
+    "station": "Bay Waveland, MS",
+    "lon": "-89.33",
+    "lat": "30.33",
+    "derived": "0.52"
+  },
+  {
+    "id": "8761724",
+    "station": "Grand Isle, LA",
+    "lon": "-89.96",
+    "lat": "29.26",
+    "derived": "0.51"
+  },
+  {
+    "id": "8770570",
+    "station": "Sabine Pass, TX",
+    "lon": "-93.87",
+    "lat": "29.73",
+    "derived": "0.52"
+  },
+  {
+    "id": "8770613",
+    "station": "Morgans Point, TX",
+    "lon": "-94.99",
+    "lat": "29.68",
+    "derived": "0.52"
+  },
+  {
+    "id": "8771450",
+    "station": "Galveston Pier 21, TX",
+    "lon": "-94.79",
+    "lat": "29.31",
+    "derived": "0.52"
+  },
+  {
+    "id": "8774770",
+    "station": "Rockport, TX",
+    "lon": "-97.05",
+    "lat": "28.02",
+    "derived": "0.5"
+  },
+  {
+    "id": "8775870",
+    "station": "Corpus Christi, TX",
+    "lon": "-97.22",
+    "lat": "27.58",
+    "derived": "0.52"
+  },
+  {
+    "id": "8779770",
+    "station": "Port Isabel, TX",
+    "lon": "-97.22",
+    "lat": "26.06",
+    "derived": "0.52"
+  },
+  {
+    "id": "9410170",
+    "station": "San Diego, CA",
+    "lon": "-117.17",
+    "lat": "32.71",
+    "derived": "0.57"
+  },
+  {
+    "id": "9410230",
+    "station": "La Jolla, CA",
+    "lon": "-117.26",
+    "lat": "32.87",
+    "derived": "0.56"
+  },
+  {
+    "id": "9410660",
+    "station": "Los Angeles, CA",
+    "lon": "-118.27",
+    "lat": "33.72",
+    "derived": "0.57"
+  },
+  {
+    "id": "9410840",
+    "station": "Santa Monica, CA",
+    "lon": "-118.5",
+    "lat": "34.01",
+    "derived": "0.57"
+  },
+  {
+    "id": "9412110",
+    "station": "Port San Luis, CA",
+    "lon": "-120.76",
+    "lat": "35.18",
+    "derived": "0.56"
+  },
+  {
+    "id": "9413450",
+    "station": "Monterey, CA",
+    "lon": "-121.89",
+    "lat": "36.61",
+    "derived": "0.57"
+  },
+  {
+    "id": "9414290",
+    "station": "San Francisco, CA",
+    "lon": "-122.47",
+    "lat": "37.81",
+    "derived": "0.57"
+  },
+  {
+    "id": "9414750",
+    "station": "Alameda, CA",
+    "lon": "-122.3",
+    "lat": "37.77",
+    "derived": "0.58"
+  },
+  {
+    "id": "9415020",
+    "station": "Point Reyes, CA",
+    "lon": "-122.98",
+    "lat": "38.0",
+    "derived": "0.57"
+  },
+  {
+    "id": "9415144",
+    "station": "Port Chicago, CA",
+    "lon": "-122.04",
+    "lat": "38.06",
+    "derived": "0.56"
+  },
+  {
+    "id": "9416841",
+    "station": "Arena Cove, CA",
+    "lon": "-123.71",
+    "lat": "38.91",
+    "derived": "0.57"
+  },
+  {
+    "id": "9418767",
+    "station": "Humboldt Bay, CA",
+    "lon": "-124.22",
+    "lat": "40.77",
+    "derived": "0.58"
+  },
+  {
+    "id": "9431647",
+    "station": "Port Orford, CA",
+    "lon": "-124.5",
+    "lat": "42.74",
+    "derived": "0.59"
+  },
+  {
+    "id": "9432780",
+    "station": "Charleston, OR",
+    "lon": "-124.32",
+    "lat": "43.35",
+    "derived": "0.59"
+  },
+  {
+    "id": "9435380",
+    "station": "South Beach, OR",
+    "lon": "-124.04",
+    "lat": "44.63",
+    "derived": "0.6"
+  },
+  {
+    "id": "9440910",
+    "station": "Toke Point,WA",
+    "lon": "-123.97",
+    "lat": "46.71",
+    "derived": "0.61"
+  },
+  {
+    "id": "9444090",
+    "station": "Port Angeles, WA",
+    "lon": "-123.44",
+    "lat": "48.13",
+    "derived": "0.59"
+  },
+  {
+    "id": "9444900",
+    "station": "Port Townsend, WA",
+    "lon": "-122.76",
+    "lat": "48.11",
+    "derived": "0.6"
+  },
+  {
+    "id": "9447130",
+    "station": "Seattle, WA",
+    "lon": "-122.34",
+    "lat": "47.6",
+    "derived": "0.64"
+  },
+  {
+    "id": "9449424",
+    "station": "Cherry Point, WA",
+    "lon": "-122.76",
+    "lat": "48.86",
+    "derived": "0.61"
+  },
+  {
+    "id": "9449880",
+    "station": "Friday Harbor, WA",
+    "lon": "-123.01",
+    "lat": "48.55",
+    "derived": "0.59"
+  },
+  {
+    "id": "9751401",
+    "station": "Lime Tree Bay, VI",
+    "lon": "-64.75",
+    "lat": "17.69",
+    "derived": "0.51"
+  },
+  {
+    "id": "9751639",
+    "station": "Charlotte Amalie, VI",
+    "lon": "-64.92",
+    "lat": "18.34",
+    "derived": "0.51"
+  },
+  {
+    "id": "9755371",
+    "station": "San Juan, PR",
+    "lon": "-66.12",
+    "lat": "18.46",
+    "derived": "0.52"
+  },
+  {
+    "id": "9759110",
+    "station": "Magueyes Island, PR",
+    "lon": "-67.05",
+    "lat": "17.97",
+    "derived": "0.51"
+  }
+]

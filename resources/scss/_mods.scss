@@ -1,0 +1,462 @@
+/*
+
+This file is due for a cleanup. Please do not add to the mess.
+
+ */
+
+.level-1 {
+  text-transform: capitalize;
+}
+
+.caps {
+  text-transform: uppercase;
+}
+
+.state-name {
+  margin-left:0px;
+  padding-left:0px !important;
+}
+
+.display-block {
+  display: block;
+}
+
+input.location-mapper {
+    display: inline-block;
+    width: 95%;
+    background: transparent;
+    // border: none;
+    font: 300 1rem/1em Roboto, Helvetica, "Helvetica Neue", Arial, sans-serif;
+    color: $ce3-blue3;
+    outline: none;
+    -moz-transition: 0.25s;
+    -o-transition: 0.25s;
+    -webkit-transition: 0.25s;
+    transition: 0.25s;
+}
+#nav-overlay .icon-search {
+  margin-right: 10px;
+}
+
+#close-wx-station {
+  position: absolute;
+  right: 4px;
+  top: 27px;
+  font-weight: 500;
+  font-size: 28px;
+}
+
+#close-wx-station:hover {
+  cursor: pointer;
+  color:#000;
+}
+
+.chart-canvas, canvas {
+  width: 100%;
+  height: 100%;
+}
+
+input.location-mapper::-webkit-input-placeholder {
+  color: #fff;
+  padding-top: 3px;
+  -moz-transition: 0.25s;
+  -o-transition: 0.25s;
+  -webkit-transition: 0.25s;
+  transition: 0.25s;
+}
+input.location-mapper:-moz-placeholder {
+  color: #fff;
+  padding-top: 3px;
+  -moz-transition: 0.25s;
+  -o-transition: 0.25s;
+  -webkit-transition: 0.25s;
+  transition: 0.25s;
+}
+input.location-mapper::-moz-placeholder {
+  color: #fff;
+  padding-top: 3px;
+  -moz-transition: 0.25s;
+  -o-transition: 0.25s;
+  -webkit-transition: 0.25s;
+  transition: 0.25s;
+}
+input.location-mapper:-ms-input-placeholder {
+  color: #fff;
+  padding-top: 3px;
+  -moz-transition: 0.25s;
+  -o-transition: 0.25s;
+  -webkit-transition: 0.25s;
+  transition: 0.25s;
+}
+input.location-mapper:focus::-webkit-input-placeholder {
+  color: rgba(255, 255, 255, 0.25);
+}
+input.location-mapper:focus:-moz-placeholder {
+  color: rgba(255, 255, 255, 0.25);
+}
+input.location-mapper:focus::-moz-placeholder {
+  color: rgba(255, 255, 255, 0.25);
+}
+input.location-mapper:focus:-ms-input-placeholder {
+  color: rgba(255, 255, 255, 0.25);
+}
+
+.location-data-section .data-accordion .data-accordion-tab.data-map .data-accordion-content {
+  /*background: none;*/
+  background-size: inherit;
+}
+
+.location-data-section .data-accordion .data-accordion-tab.open .data-accordion-content {
+    /*-moz-box-shadow: none;
+    -webkit-box-shadow: none;
+    box-shadow: none;
+    opacity: 1;
+    mix-blend-mode: normal;*/
+}
+
+.location-data-section .data-accordion .data-accordion-tab .data-accordion-content {
+  /*mix-blend-mode: normal;*/
+}
+
+
+
+.chart-legend .legend-item-block {
+  height: 28px;
+  float: left;
+  width: 25px;
+  margin-right: 5px;
+  overflow: hidden;
+}
+
+.chart-legend .legend-item-line-container {
+  height: 5px;
+  float: left;
+  width: 25px;
+  margin-right: 5px;
+  padding-top: 8px;
+}
+
+.chart-legend .legend-item-line-label {
+  padding-top:8px;
+}
+
+.chart-legend .legend-item-line#under-baseline-block, .chart-legend .legend-item-line#precipunder-baseline-block, .chart-legend .legend-item-line#deriveunder-baseline-block {
+  margin-top: 0px;
+}
+
+.chart-legend .legend-item-line#rcp45-line, .chart-legend .legend-item-line#preciprcp45-line, .chart-legend .legend-item-line#derivercp45-line {
+  margin-top: 7px;
+}
+
+.chart-legend .legend-item-block#rcp45-block, .chart-legend .legend-item-block#preciprcp45-block, .chart-legend .legend-item-block#derivercp45-block {
+  background: #99BCEC;
+}
+
+.legend-item-range {
+  height: 43px;
+}
+
+.chart-legend .legend-item-line {
+  width: 100%;
+}
+
+.chart-legend .observed {
+  background-color: transparent !important;
+  background-image: url(../img/observed.png) !important;
+  height: 33px;
+  width: 26px;
+  background-size: 100% !important;
+  margin-top:-8px !important;
+}
+
+.chart-legend .observed.seasonal {
+  background-color: transparent !important;
+  background-image: url(../img/observed-seasonal.png) !important;
+  height: 33px;
+  width: 26px;
+  background-size: 100% !important;
+  margin-top:-8px !important;
+}
+
+#variable-map .ol-popup {
+  z-index: 500;
+}
+
+#map-seasons-container .fs-dropdown-selected.disabled {
+  background:#EEE;
+  cursor:default;
+}
+
+.ol-popup-content {
+  min-width: 170px;
+  max-height: 910px;
+  overflow-x: auto;
+}
+
+
+
+.page-type-location #location-search {
+  width:300px;
+}
+
+.page-type-location #location-search input {
+  font-size:1.1em;
+  width:100%;
+}
+
+
+
+
+#vars-legend .source {
+  display: none;
+}
+
+
+
+#location-temperature .accent-background {
+    background-color: #f5442d;
+     position: relative;
+     bottom: 0px;
+    /* width: 100%; */
+    height: 100%;
+}
+
+.page-type-location .seasonal-monthly.disabled a {
+  color: #EEE;
+}
+
+/* line 661, ../scss/pages/_location.scss */
+.page-type-location .seasonal-monthly.disabled:hover {
+  border-left-color: #FFF;
+}
+
+#station-legends .station-legend-item {
+  float:left;
+  width:50%;
+}
+
+#station-legends img {
+  width:65%;
+}
+
+
+#nav-overlay #nav-controls a {
+  white-space:normal!important;
+}
+
+@media screen and (min-width: 1500px) {
+  #subnav ul {
+    position: absolute;
+    right: 20px;
+    top: 43px;
+  }
+
+}
+
+@media screen and (max-width: 1500px) {
+  /* line 27, ../scss/formstone/_grid.scss */
+  #main-header #subnav {
+    margin:0 !important;
+  }
+  #main-header #subnav li {
+    display: block;
+    margin: -5% 0 0 15px;
+  }
+  .page-type-stations #substations-menu ul {
+    display: block;
+    white-space: normal;
+  }
+
+  .station-banner {
+    background-size: cover !important;
+  }
+}
+@media screen and (max-width: 1030px) {
+#page-variables  #main-header #subnav {
+  display:none!important;
+}
+
+  .location-data-section .data-list {
+    width: 100%;
+  }
+
+  .location-data-section .data-accordion-wrap {
+    width: 100%;
+  }
+
+}
+
+.stations-list .station-layers {
+     margin-top: 40px;
+   }
+
+@media screen and (max-height: 600px) {
+  #detail-overlay .nav-detail .nav-detail-item {
+    top: 300px;
+  }
+
+  #detail-overlay .nav-detail {
+    overflow-y: scroll;
+    overflow-x: hidden;
+  }
+
+  .overlay .close {
+    position: fixed;
+    top: 20px;
+    left: 20px;
+    width: 40px;
+    height: 40px;
+    padding: 0;
+    background: #fff;
+    color: #000;
+    mix-blend-mode: screen;
+    z-index: 2;
+  }
+}
+
+#left-header .left-filler {
+  overflow: auto;
+}
+
+.page-type-location #location-search {
+  width: 400px;
+}
+
+.ol-popup-content {
+  min-width: 170px;
+  max-height: 910px;
+  overflow: inherit;
+}
+
+.download-image {
+  font-size:1.5em !important;
+}
+
+.download-data {
+  font-size:1.5em !important;
+}
+
+
+.how-to-read-county {
+  float: left;
+  position: absolute;
+  left: 71px;
+  display: block;
+  z-index: 10;
+  top: 79px;
+}
+
+/* iPad Air LandScape */
+@media only screen and (device-width: 768px) {
+
+  .location-data-section .data-accordion .data-accordion-tab.data-map .location-map-legend-container {
+    width: 80px;
+  }
+
+  html {
+    font-size: 60%;
+  }
+  #variable-counties-toggle > label > span {
+    font-size: 60%;
+  }
+  #variable-time-slider > span > span.icon.icon-arrow-left-right::before {
+    font-size: 2em;
+  }
+  #temperature-map-time-slider > span > span.icon.icon-arrow-left-right {
+    font-size: 1.8em;
+  }
+  .how-to-read {
+    float: right !important;
+    position: absolute !important;
+    top: 25px !important;
+    left: auto !important;
+    right: 230px !important;
+    display: block !important;
+    z-index: 10 !important;
+  }
+
+  .ui-slider-handle {
+    left: 3px;
+    width: 16px;
+    height: 16px;
+    margin: 0 0 -8px -8px;
+    background: #f5442d;
+    -moz-border-radius: 50%;
+    -webkit-border-radius: 50%;
+    border-radius: 50%;
+    outline: none;
+    z-index: 10000000 !important;
+    cursor: pointer;
+  }
+
+}
+
+
+#swipeImg .fs-dropdown button {
+  padding: 2px !important;
+  padding-right: 40px;
+  padding-left: 5px !important;
+  height: 39px !important;
+  background: rgba(255, 255, 255, 0.6);
+  border: 5px solid #fff;
+  color: #0058cf;
+  -moz-border-radius: 0;
+  -webkit-border-radius: 0;
+  border-radius: 0;
+  font: 400 .7rem/1em Roboto, Helvetica, "Helvetica Neue", Arial, sans-serif !important;
+  -moz-transition: 0.25s;
+  -o-transition: 0.25s;
+  -webkit-transition: 0.25s;
+  transition: 0.25s;
+}
+
+
+ .handle .fs-dropdown button {
+  padding: 2px !important;
+  padding-right: 40px;
+  padding-left: 5px !important;
+  height: 39px !important;
+  width: 150px;
+  background: rgba(255, 255, 255, 0.6);
+  border: 5px solid #fff;
+  color: #0058cf;
+  -moz-border-radius: 0;
+  -webkit-border-radius: 0;
+  border-radius: 0;
+  font: 400 .7rem/1em Roboto, Helvetica, "Helvetica Neue", Arial, sans-serif !important;
+  -moz-transition: 0.25s;
+  -o-transition: 0.25s;
+  -webkit-transition: 0.25s;
+  transition: 0.25s;
+}
+
+
+#location-stations #station-no-data {
+    background: #F45440;
+    color: white;
+    padding-top: 305px;
+    font-weight: bold;
+    font-size: 1.2em;
+    text-align: center;
+}
+
+#nav-overlay .nav-content .tab ol ul li {
+    float: none !important;
+    width: auto !important;
+    margin: 0 10px 10px 0;
+    font: 300 1rem/1.2em Roboto, Helvetica, "Helvetica Neue", Arial, sans-serif;
+}
+
+.download-panel #download-precip-dismiss-button {
+  display: block;
+  position: absolute;
+  top: -30px;
+  right: 0;
+}
+
+.download-panel #download-derived-dismiss-button {
+  display: block;
+  position: absolute;
+  top: -30px;
+  right: 0;
+}

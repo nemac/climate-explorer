@@ -1,0 +1,435 @@
+{
+  "cases": {
+    "arctic": {
+      "layers": [
+        "social_vulnerability_index",
+        "population_density",
+        "bia_indian_lands",
+        "drought",
+        "landcover",
+        "weather_stations"
+      ]
+    },
+    "coasts": {
+      "layers": [
+        "sea_level_rise",
+        "flood_hazard_zones",
+        "coastal_flood_hazard_composite",
+        "critical_coastal_facilities",
+        "social_vulnerability_index_coastal_states",
+        "weather_stations"
+      ]
+    },
+    "ecosystems": {
+      "layers": [
+        "landcover",
+        "sea_level_rise",
+        "flood_hazard_zones",
+        "drought",
+        "wetlands",
+        "weather_stations"
+      ]
+    },
+    "energy": {
+      "layers": [
+        "sea_level_rise",
+        "flood_hazard_zones",
+        "major_highways",
+        "weather_stations"
+      ]
+    },
+    "food": {
+      "layers": [
+        "landcover",
+        "drought",
+        "cropland",
+        "major_highways",
+        "social_vulnerability_index",
+        "weather_stations"
+      ]
+    },
+    "water": {
+      "layers": [
+        "sea_level_rise_3ft",
+        "drought",
+        "landcover",
+        "impervious_surfaces",
+        "rivers_streams",
+        "flood_hazard_zones",
+        "social_vulnerability_index",
+        "weather_stations"
+      ]
+    },
+    "tribal_nations": {
+      "layers": [
+        "bia_indian_lands",
+        "landcover",
+        "sea_level_rise",
+        "flood_hazard_zones",
+        "drought",
+        "social_vulnerability_index",
+        "weather_stations"
+      ]
+    },
+    "health": {
+      "layers": [
+        "percent_elderly",
+        "percent_poverty",
+        "social_vulnerability_index",
+        "hospitals",
+        "sea_level_rise_3ft",
+        "flood_hazard_zones",
+        "weather_stations"
+      ]
+    },
+    "transportation": {
+      "layers": [
+        "major_highways",
+        "airports",
+        "bridges_tunnels",
+        "sea_level_rise",
+        "flood_hazard_zones",
+        "weather_stations"
+      ]
+    }
+  },
+  "layers": {
+    "weather_stations": {
+      "type": "JSON",
+      "id": "weather_stations",
+      "title": "Weather Stations",
+      "description": "Check how observed temperature and precipitation measurements compare to long-term averages at weather stations near your area of interest. Look for times when temperatures are above average and/or precipitation is below average for weeks at a time: these indicate times that drought conditions may develop.",
+      "url": "resources/data/wx_stations.json",
+      "options": {},
+      "defaults": {
+        "visible": false
+      }
+    },
+    "drought": {
+      "type": "WMS",
+      "id": "drought",
+      "title": "Current Drought",
+      "description": "Examine where the amount of water available in soils, streams, and lakes is lower than usual for this time of year. In this weekly map, the darker the color, the more severe the lack of moisture. Depending on how severe it is and how long it lasts, drought can devastate crops and forests, lead to food shortages for livestock and wildlife, increase risks for wildfires, and have a negative effect on local and regional economies.",
+      "url": "https://gis.ncdc.noaa.gov/maps/proxy?wms=http://torka.unl.edu:8080/cgi-bin/mapserv.exe?map=/ms4w/apps/dm/service/usdm_current_wms.map&SRS=EPSG%3A900913",
+      "options": {
+        "layer": "usdm_current",
+        "type": "mapserv"
+      },
+      "defaults": {
+        "visible": false
+      }
+    },
+    "landcover": {
+      "type": "ArcGISRest",
+      "id": "landcover",
+      "title": "Land Cover",
+      "description": "This layer shows natural vegetation, broad categories of crops, and the intensity of human development across a region. Examine colors on the map, and then check the legend to see which category it represents.",
+      "url": "https://raster.nationalmap.gov/arcgis/rest/services/LandCover/USGS_EROS_LandCover_NLCD/MapServer",
+      "options": {},
+      "defaults": {
+        "visible": false
+      }
+    },
+    "rivers_streams": {
+      "type": "tileWMS",
+      "id": "rivers_streams",
+      "title": "Rivers and Streams",
+      "description": "USGS National Hydrology Dataset",
+      "url": "https://basemap.nationalmap.gov/arcgis/services/USGSHydroNHD/MapServer/WMSServer",
+      "options": {
+        "layer": "0"
+      },
+      "defaults": {
+        "visible": false
+      }
+    },
+    "sea_level_rise": {
+      "type": "ArcGISRest",
+      "id": "sea_level_rise",
+      "title": "Sea Level Rise (For 1 to 6 feet) ",
+      "description": "View areas that will be covered by seawater during high tides after the indicated amount of local sea level rise. A few inches of water will cover the lightest blue areas; water will be deeper where the map is dark blue. Bright green areas will be below sea level, but are not connected to the ocean. Visualize changes over time by turning on progressively higher sea levels.",
+      "sublayers": [
+        {
+          "type": "ArcGISRest",
+          "id": "sea_level_rise_1ft",
+          "title": "Inundation from Sea Level Rise 1ft",
+          "url": "https://coast.noaa.gov/arcgis/rest/services/dc_slr/slr_1ft/MapServer",
+          "options": {},
+          "defaults": {
+            "visible": false
+          }
+        },
+        {
+          "type": "ArcGISRest",
+          "id": "sea_level_rise_2ft",
+          "title": "Inundation from Sea Level Rise 2ft",
+          "url": "https://coast.noaa.gov/arcgis/rest/services/dc_slr/slr_2ft/MapServer",
+          "options": {},
+          "defaults": {
+            "visible": false
+          }
+        },
+        {
+          "type": "ArcGISRest",
+          "id": "sea_level_rise_3ft",
+          "title": "Inundation from Sea Level Rise 3ft",
+          "url": "https://coast.noaa.gov/arcgis/rest/services/dc_slr/slr_3ft/MapServer",
+          "options": {},
+          "defaults": {
+            "visible": false
+          }
+        },
+        {
+          "type": "ArcGISRest",
+          "id": "sea_level_rise_4ft",
+          "title": "Inundation from Sea Level Rise 4ft",
+          "url": "https://coast.noaa.gov/arcgis/rest/services/dc_slr/slr_4ft/MapServer",
+          "options": {},
+          "defaults": {
+            "visible": false
+          }
+        },
+        {
+          "type": "ArcGISRest",
+          "id": "sea_level_rise_5ft",
+          "title": "Inundation from Sea Level Rise 5ft",
+          "url": "https://coast.noaa.gov/arcgis/rest/services/dc_slr/slr_5ft/MapServer",
+          "options": {},
+          "defaults": {
+            "visible": false
+          }
+        },
+        {
+          "type": "ArcGISRest",
+          "id": "sea_level_rise_6ft",
+          "title": "Inundation from Sea Level Rise 6ft",
+          "url": "https://coast.noaa.gov/arcgis/rest/services/dc_slr/slr_6ft/MapServer",
+          "options": {},
+          "defaults": {
+            "visible": false
+          }
+        }
+      ],
+      "defaults": {
+        "units": "Feet"
+      }
+    },
+    "flood_hazard_zones": {
+      "type": "tileWMS",
+      "id": "flood_hazard_zones",
+      "title": "Flood Hazard Zones",
+      "description": "Check which local areas have been designated by FEMA to be at risk of flooding. Aqua areas show land judged to have a 1% chance of flooding each year; this area is also known as the base flood zone or 100-year flood zone. Colors and patterns also indicate floodways and other hazard areas.",
+      "url": "https://hazards.fema.gov/gis/nfhl/services/public/NFHLWMS/MapServer/WmsServer",
+      "options": {},
+      "defaults": {
+        "visible": false
+      }
+    },
+    "coastal_flood_hazard_composite": {
+      "type": "ArcGISRest",
+      "id": "coastal_flood_hazard_composite",
+      "title": "Coastal Flood Hazard Composite",
+      "description": "Check the number of federal studies (out of six) that designated coastal locations as susceptible to flooding. The darker the red color, the higher the number of studies that judged the area to be at risk for flooding.",
+      "url": "https://coast.noaa.gov/arcgis/rest/services/FloodExposureMapper/CFEM_CoastalFloodHazardComposite/MapServer",
+      "options": {},
+      "defaults": {
+        "visible": false
+      }
+    },
+    "critical_coastal_facilities": {
+      "type": "ArcGISRest",
+      "id": "critical_coastal_facilities",
+      "title": "Critical Coastal Facilities",
+      "description": "View locations of hospitals, schools, and fire and police stations along the Atlantic and Gulf Coasts. If flooded, these structures present an immediate threat to life, public health, and safety.",
+      "url": "https://coast.noaa.gov/arcgis/rest/services/FloodExposureMapper/CFEM_CriticalFacilities/MapServer",
+      "options": {},
+      "defaults": {
+        "visible": false
+      }
+    },
+    "social_vulnerability_index_coastal_states": {
+      "type": "ArcGISRest",
+      "id": "social_vulnerability_index_coastal_states",
+      "title": "Social Vulnerability Index for Coastal States",
+      "description": "View community vulnerability to environmental hazards. The darker the color, the higher the vulnerability. Communities with elevated social vulnerability (as measured by the U.S. Census) may need support in preparing for hazards, or recovering from disaster.",
+      "url": "https://coast.noaa.gov/arcgis/rest/services/dc_slr/SOVI/MapServer",
+      "options": {},
+      "defaults": {
+        "visible": false
+      }
+    },
+    "impervious_surfaces": {
+      "type": "ArcGISRest",
+      "id": "impervious_surfaces",
+      "title": "Impervious Surfaces",
+      "description": "Roads, parking lots, buildings, and landscaping can block water from soaking into the soil. These impervious (blocking) surfaces show up in shades of pink, red, and purple; black areas show where natural surfaces can absorb water. In highly developed areas, heavy precipitation over impermeable surfaces can lead to flooding.",
+      "url": "https://raster.nationalmap.gov/arcgis/rest/services/LandCover/USGS_EROS_LandCover_NLCD/MapServer",
+      "options": {
+        "layer": "show:7"
+      },
+      "defaults": {
+        "visible": false
+      }
+    },
+    "sea_level_rise_3ft": {
+      "type": "ArcGISRest",
+      "id": "sea_level_rise_3ft",
+      "title": "Inundation from Sea Level Rise (3 feet) ",
+      "description": "View areas that will be covered by seawater during high tides after 3 feet of local sea level rise. A few inches of water will cover the lightest blue areas; water will be deeper where the map is dark blue. Bright green areas will be below sea level, but are not connected to the ocean.",
+      "url": "https://coast.noaa.gov/arcgis/rest/services/dc_slr/slr_3ft/MapServer/export",
+      "options": {},
+      "defaults": {
+        "visible": false
+      }
+    },
+    "social_vulnerability_index": {
+      "type": "ArcGISRest",
+      "id": "social_vulnerability_index",
+      "title": "Social Vulnerability Index",
+      "description": "View community vulnerability to environmental hazards. The darker the color, the higher the vulnerability. Communities with elevated social vulnerability (as measured by the U.S. Census) may need support in preparing for hazards, or recovering from disaster.",
+      "url": "https://commons.wim.usgs.gov/arcgis/rest/services/CDC_SVI/CDC_SVI/MapServer",
+      "options": {},
+      "defaults": {
+        "visible": false
+      }
+    },
+    "bia_indian_lands": {
+      "type": "ArcGISRest",
+      "id": "bia_indian_lands",
+      "title": "BIA Indian Lands",
+      "description": "This layer shows  American Indian Reservations, Federally Recognized Tribal Entities, and Alaska Native Villages in the contiguous U.S. and Alaska.",
+      "url": "https://commons.wim.usgs.gov/arcgis/rest/services/AIR_NDGA/AIR_NDGA/MapServer/export",
+      "options": {},
+      "defaults": {
+        "visible": false
+      }
+    },
+    "bia_ceded_lands": {
+      "type": "",
+      "id": "bia_ceded_lands",
+      "title": "BIA Ceded Lands",
+      "description": "This layer shows where an Indian tribe proved its original tribal occupancy of lands via the Indian Claims Act established in 1946.",
+      "url": "",
+      "options": {},
+      "defaults": {
+        "visible": false
+      }
+    },
+    "wetlands": {
+      "type": "ArcGISRest",
+      "id": "wetlands",
+      "title": "Wetlands",
+      "description": "View the location of wetlands along the Atlantic and Gulf coasts.",
+      "url": "https://coast.noaa.gov/arcgis/rest/services/FloodExposureMapper/CFEM_LandCover_NaturalAreasOpenSpace/MapServer",
+      "options": {},
+      "defaults": {
+        "visible": false
+      }
+    },
+    "percent_poverty": {
+      "type": "WMS",
+      "id": "percent_poverty",
+      "title": "Percent Poverty",
+      "description": "Colors show the ercent of population below the poverty threshold in 2000. The darker the color, the higher the percentage of people in poverty. Communities with high percentages of poor residents may need support in preparing for hazards, or recovering from disaster.",
+      "url": "https://gis.ncdc.noaa.gov/maps/proxy?wms=http://sedac.ciesin.org/geoserver/ows",
+      "options": {
+        "layer": "usgrid:usgrid-summary-file3-2000_usa-pctpopbelowpovlevel-2000",
+        "type": "geoserver"
+      },
+      "defaults": {
+        "visible": false
+      }
+    },
+    "percent_elderly": {
+      "type": "WMS",
+      "id": "percent_elderly",
+      "title": "Percent Elderly",
+      "description": "View the percent of population aged 65-79 in 2000. The darker the color, the higher the percentage of elderly people in the population. Communities with elevated social vulnerability (as measured by the U.S. Census) may need support in preparing for hazards, or recovering from disaster.",
+      "url": "https://gis.ncdc.noaa.gov/maps/proxy?wms=http://sedac.ciesin.org/geoserver/ows",
+      "options": {
+        "type": "geoserver",
+        "layer": "usgrid:usgrid-summary-file1-2000_usa-pctpop65to79-2000"
+      },
+      "defaults": {
+        "visible": false
+      }
+    },
+    "population_density": {
+      "type": "WMS",
+      "id": "population_density",
+      "title": "Populaton Density",
+      "description": "Find centers of population across the Arctic in this global map layer.",
+      "url": "https://gis.ncdc.noaa.gov/maps/proxy?wms=http://sedac.ciesin.org/geoserver/ows",
+      "options": {
+        "layer": "grump-v1:grump-v1-population-density_2000",
+        "type": "geoserver",
+        "version": "1.1.1"
+      },
+      "defaults": {
+        "visible": false
+      }
+    },
+    "cropland": {
+      "type": "WMS",
+      "id": "cropland",
+      "title": "Cropland",
+      "description": "View the types of crops in place during the previous main growing season.",
+      "url": "",
+      "options": {
+      },
+      "defaults": {
+        "visible": false
+      }
+    },
+    "hospitals": {
+      "type": "ArcGISRest",
+      "id": "hospitals",
+      "title": "Hospitals",
+      "description": "View the location of hospitals: explore which are vulnerable to sea level rise or other flood hazards",
+      "url": "https://hsip.geoplatform.gov/arcgis/services/HSIP_Public/PublicHealth/MapServer",
+      "options": {
+        "layer": 0
+      },
+      "defaults": {
+        "visible": false
+      }
+    },
+    "major_highways": {
+      "type": "WMS",
+      "id": "major_highways",
+      "title": "Major Highways",
+      "description": "View the location of major regional roadways.",
+      "url": "https://services.nationalmap.gov/arcgis/services/transportation/MapServer",
+      "options": {
+        "layer": "5,13",
+        "type": "mapserv",
+        "version": "1.1.1"
+      },
+      "defaults": {
+        "visible": false
+      }
+    },
+    "bridges_tunnels": {
+      "type": "ArcGISRest",
+      "id": "bridges_tunnels",
+      "title": "Bridges and Tunnels",
+      "description": "Check locations of publically accessible bridges and tunnels.",
+      "url": "http://hsip.geoplatform.gov/arcgis/rest/services/HSIP_Public/TransportationGround/MapServer",
+      "options": {},
+      "defaults": {
+        "visible": false
+      }
+    },
+    "airports": {
+      "type": "ArcGISRest",
+      "id": "airports",
+      "title": "Airports",
+      "description": "Check locations of aircraft landing facilities available for public use.",
+      "url": "http://hsip.geoplatform.gov/arcgis/rest/services/HSIP_Public/TransportationAir/MapServer",
+      "options": {},
+      "defaults": {
+        "visible": false
+      }
+    }
+  }
+}

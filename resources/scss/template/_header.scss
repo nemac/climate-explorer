@@ -1,0 +1,50 @@
+.main-logo {
+  height: $ce3-main-logo-height;
+  width: auto;
+  img {
+    height: $ce3-main-logo-height;
+    width: auto;
+  }
+}
+
+.main-font-title {
+   font: 500 48px $roboto !important;
+   color: $ce3-blue6 !important;
+}
+
+#main-header {
+  background: $ce3-blue2;
+  z-index: 600;
+  height: $ce3-main-header-height;
+
+  .topnav a {
+    text-decoration: none;
+    font: 500 18px $roboto;
+  }
+
+
+  #main-nav {
+    a {
+      .icon {
+        font: 500 18px $roboto !important;
+      }
+
+      .text {
+        display: inline-block;
+        color: $ce3-blue6;
+        padding: 0 .5rem 0 .5rem;
+      }
+    }
+  }
+
+  #header-logo {
+    margin: 0 2% 0 0;
+    height: $ce3-main-logo-height;
+    width: auto;
+    img {
+      height: $ce3-main-logo-height;
+      width: auto;
+    }
+  }
+
+}
