@@ -1,0 +1,803 @@
+@media screen and (max-width: 1200px) {
+  h1 {
+    font-size: 6rem;
+  }
+  
+  .left-header {
+    #main-header {
+      #header-logo {
+        max-width: 100%;
+        
+        img {
+        }
+      }
+    }
+  }
+  
+  .page-splash {
+    .splash-text  {
+      max-width: 75%;
+    }
+  }
+  
+  // LOCATION
+  
+  .location-data-section {
+    h3 {
+      font-size: 1.5rem;
+    }
+    
+    .fs-dropdown {
+      button {
+        padding-left: 10px;
+      }
+    }
+  }
+  
+  #station-splash #substations-menu {
+    max-width: 25%;
+  }
+}
+
+@media screen and (max-width: 1000px) {
+  h1 {
+    font-size: 5rem;
+  }
+  
+  .left-header {
+    #main-header {
+      #nav-trigger {
+        width: 40px;
+        height: 40px;
+        margin-top: 5%;
+        padding: 18px 8px;
+        
+        span {
+          width: 24px;
+        }
+        
+        &:before,
+        &:after {
+          left: 8px;
+          width: 24px;
+        }
+        
+        &:before {
+          top: 8px;
+        }
+        
+        &:after {
+          bottom: 8px;
+        }
+      }
+    }
+  }
+  
+  .blue-menu {
+    font-size: 0.875rem;
+  }
+  
+  .page-splash {
+    .splash-text {
+      max-width: 75%;
+      
+      p {
+        font-size: 1rem;
+      }
+    }
+  }
+  
+  // LOCATION
+  
+  .location-data-section {
+    h3 {
+      font-size: 1.125rem;
+      
+      .icon {
+        margin-right: 5px;
+      }
+    }
+    
+    .fs-dropdown {
+      button {
+        font-size: 1rem;
+      }
+    }
+  }
+  
+  
+  .stations-list {
+    .station-banner-text {
+      width: 65%;
+    }
+  }
+}
+
+@media screen and (max-width: 800px) {
+  body {
+    width: auto;
+    height: auto;
+    padding: 0 0 20px 0;
+  }
+  
+  h1 {
+    font-size: 4rem;
+  }
+  
+  // CLASSES
+  
+  .share-widget {
+  }
+  
+  // HEADER
+  
+  #main-header {
+    position: relative;
+    top: auto;
+    left: auto;
+    @include legacy-clearfix;
+    
+    #main-nav {
+      a {
+        text-align: center;
+        
+        .icon {
+          display: block;
+          height: 23px;
+          margin: 1px auto 0 auto;
+        }
+        
+        .text {
+          display: block;
+          padding: 0;
+          font-size: 0.875rem;
+        }
+      }
+      
+      .nav-btn {
+        padding: 15px 10px 0 10px;
+      }
+    }
+    
+    #subnav-trigger {
+      display: block;
+    }
+    
+    #subnav {
+      ul {
+        display: none;
+        position: absolute;
+        top: 14px;
+        right: 0;
+        width: 160px;
+        padding: 0 10px 10px 10px;
+        background: $white;
+      }
+      
+      li {
+        display: block;
+        margin: 0;
+        
+        a {
+          display: block;
+          padding: 10px;
+          text-align: left;
+          
+          &:hover {
+            background: $grey2;
+          }
+        
+          .text {
+            padding: 0;
+          }
+          
+          .icon {
+            display: none;
+          }
+        }
+      }
+    }
+    
+    #breadcrumb {
+      float: left;
+      width: auto;
+      margin: 5px 0 0 10px;
+      font-size: 0.875rem;
+      
+      span {
+        padding: 10px;
+      }
+    }
+  }
+  
+  #left-header-trigger {
+    display: block;
+    position: absolute;
+    top: 0px;
+    right: -50px;
+    width: 40px;
+    height: 40px;
+    padding: 10px;
+    background: $white;
+    color: $blue1;
+    font-size: 20px;
+  }
+  
+  #left-header {
+    width: calc(40% + 10px);
+    @include transition(0.5s);
+  }
+  
+  body.left-header-closed {
+    #left-header {
+      left: calc(-40% - 10px);
+    }
+  }
+  
+  // NAV OVERLAY
+  
+  #nav-overlay {
+    #nav-controls {
+      position: relative;
+      top: auto;
+      left: auto;
+      width: 80%;
+      margin: 20px auto;
+      @include legacy-clearfix;
+      
+      #nav-overlay-home {
+        position: relative;
+        left: auto;
+        margin: 0 0 20px 0;
+      }
+      
+      li {
+        float: left;
+        width: 33.333%;
+        margin: 0 0 10px 0;
+      }
+      
+    }
+    
+    .nav-content-wrap {
+      top: 30%;
+      left: 10%;
+      width: 80%;
+    }
+  }
+  
+  .blue-menu {
+    a {
+      text-align: center;
+      padding: 4%;
+      
+      .text {
+        display: none;
+      }
+    }
+  }
+  
+  .white-menu {
+    h4 {
+      padding-left: 0;
+    }
+    
+    ul {
+      padding: 10px 0;
+      
+      li {
+        padding: 10px 20px;
+      }
+    }
+  }
+  
+  // PAGES
+  
+  #page-home,
+  .page-type-location,
+  .page-type-stations {
+    #viewport {
+      position: relative;
+      top: auto!important;
+      left: auto;
+      width: auto;
+      height: auto;
+      margin: 0 20px!important;
+      overflow: visible;
+    }
+  }
+  
+  // home
+  
+  #page-home {
+    #main-content-wrap {
+      position: static;
+      height: auto;
+    }
+  }
+  
+  #home-splash {
+    position: static;
+    
+    .splash-bg {
+      background-size: auto 100%;
+    }
+  }
+  
+  #home-text {
+    position: relative;
+    top: auto;
+    left: auto;
+    width: auto;
+    margin: 6%;
+    padding: 0;
+    @include transform(none);
+  }
+  
+  #home-menu {
+    position: relative;
+    top: auto;
+    right: auto;
+    width: 70%;
+    margin: 6%;
+    margin-bottom: 18%;
+    @include transform(none);
+  }
+  
+  // PAGE
+  
+  .page-splash {
+    margin-top: 60px;
+    
+    .splash-text {
+      float: none;
+      width: 80%;
+      max-width: 80%;
+      margin: 0 auto 20px auto;
+      padding-left: 0;
+      
+      p {
+        width: auto;
+        font-size: 1rem;
+      }
+    }
+  }
+  
+  // LOCATION
+  
+  #page-nav {
+    width: 80%;
+    margin: 0 auto;
+    padding-left: 0;
+  }
+  
+  .page-type-location {
+    .page-splashed {
+      margin-top: 60px;
+    }
+  }
+  
+  .location-data-section {
+    h3 {
+      margin: 0 0 30px 0;
+    }
+    
+    .data-options-trigger {
+      display: block;
+      float: right;
+      margin: 25px 0 0 0;
+      cursor: pointer;
+      
+      .hamburger {
+        margin: 0 10px 0 0;
+      }
+    }
+    
+    .data-options {
+      display: none;
+    }
+    
+    .data-vars {
+      clear: both;
+    }
+    
+    .data-list,
+    .data-chart {
+      float: none;
+      width: auto;
+    }
+    
+    .data-accordion-wrap {
+      float: none;
+      width: auto;
+      padding: 0 0 100% 0;
+    }
+    
+    .data-accordion {
+      .data-accordion-tab {
+        &.data-chart {
+          .chart-canvas {
+            height: 70%;
+          }
+          
+          .chart-legend {
+            height: 30%;
+          }
+        }
+      }
+    }
+  }
+  
+  .chart-legend {
+    text-align: center;
+    
+    .legend-item {
+      display: inline-block;
+      float: none;
+      width: 30%;
+      margin: 2% 1%;
+      vertical-align: top;
+    }
+  }
+  
+  #location-stations {
+    .data-accordion-wrap {
+      padding: 0 0 50% 0;
+    }
+  }
+  
+  // VARIABLE
+  
+  #variable-map {
+    @include full-size;
+  }
+  
+  // stationS
+  
+  #station-splash {
+    padding: 6%;
+    padding-bottom: 12%;
+    
+    .splash-text {
+      float: none;
+      width: auto;
+      padding: 0;
+    }
+    
+    #substations-menu {
+      float: none;
+      width: 80%;
+      max-width: 80%;
+      margin: 0 auto;
+    }
+  }
+  
+  .stations-list {
+    h4 {
+      margin: 0 0 20px 0;
+      font-size: 1.25rem;
+    }
+    
+    article {
+      padding: 6% 4% 14% 4%;
+      background-size: auto 100%;
+      background-attachment: scroll;
+      overflow: hidden;
+      
+      h3 {
+        font-size: 3.5rem;
+      }
+    }
+    
+    .station-banner-text {
+      float: none;
+      width: auto;
+      margin: 0 0 40px 0;
+    }
+    
+    .station-layers {
+      float: none;
+      width: auto;
+    }
+  }
+  
+  // CASE
+  
+  .page-type-case {
+    #main-content-wrap {
+      @include full-size;
+    }
+    
+    #case-menu {
+      .legend {
+        .layer-info {
+          width: 100%;
+        }
+      }
+    }
+    
+    #map {
+      @include full-size;
+    }
+  }
+}
+
+@media screen and (max-width: 600px) {
+  
+  // TAGS
+  
+  body {
+    padding: 0;
+  }
+  
+  h1 {
+    font-size: 3rem;
+  }
+  
+  // CLASSES
+  
+  .share-widget {
+    right: 20px;
+  }
+  
+  // HEADER
+  
+  .top-header {
+    #logos {
+      display: none;
+    }
+    
+    #main-header {
+      #nav-trigger {
+        float: right;
+      }
+    }
+  }
+  
+  .left-header {
+    #main-header {
+      left: 0;
+      
+      #header-logo {
+        width: auto;
+        max-width: 50px;
+        float: none;
+        margin: 0 auto;
+      }
+      
+      #nav-trigger {
+        float: none;
+        margin: 10px auto 0 auto;
+      }
+    }
+  }
+  
+  // NAV
+  
+  #nav-overlay {
+    #nav-controls {
+      width: calc(100% - 40px);
+      margin: 0;
+      padding: 0;
+      @include legacy-clearfix;
+      
+      li {
+        margin: 0;
+      }
+      
+      a {
+        margin: 0;
+        padding: 15px 0;
+        border: none;
+        white-space: normal;
+        font-size: 0.75rem;
+        line-height: 1.25em;
+        
+        .icon {
+          display: block;
+          margin: 0 auto 10px auto;
+        }
+      }
+      
+      #nav-overlay-home {
+        float: left;
+        width: 25%;
+        margin: 0;
+        padding: 15px 0;
+      }
+      
+      #nav-cycle-pager {
+        float: left;
+        width: 75%;
+      }
+    }
+    
+    .nav-content-wrap {
+      top: 90px;
+      height: calc(100% - 100px);
+      overflow: auto;
+      
+      h3 {
+        display: none;
+      }
+    }
+    
+    .nav-content {
+      nav {
+        display: none;
+        padding: 0;
+        
+        a {
+          width: 50%;
+        }
+      }
+      
+      button {
+        position: relative;
+        width: 100%;
+        padding: 5%;
+        background: transparent;
+        font: 1.25rem/1em $roboto;
+        color: $white;
+        
+        &.fs-tabs-active {
+          border-bottom: 2px solid $white;
+              
+          &:after {
+            content: '';
+            display: block;
+            position: absolute;
+            left: 50%;
+            bottom: -14px;
+            width: 0;
+            height: 0;
+            margin: 0;
+            border: 6px solid $white;
+            border-color: $white transparent transparent transparent;
+            @include transition(0.25s);
+          }
+        }
+      }
+      
+      .tab {
+        ul,
+        ol {
+          li {
+            float: none!important;
+            width: auto!important;
+            margin: 0 0 20px 0;
+            
+            ul {
+              margin-left: 20px;
+            }
+          }
+        }
+      }
+    }
+    
+    #nav-search {
+      background-image: url(../img/bg_contours-lightblue.png);
+      
+      h3 {
+        display: block;
+      }
+    }
+  
+    #nav-variables {
+      background-image: url(../img/bg_contours-blue.png);
+    }
+  
+    #nav-stations {
+      background-image: url(../img/bg_contours-orange.png);
+    }
+    
+  }
+  
+  .overlay {
+    .slide {
+      background-repeat: no-repeat;
+      background-position: center;
+      background-size: 100% auto;
+      z-index: 1;
+
+      .slide-bg {
+        display: none;
+      }
+    }
+  }
+  
+  // PAGE STRUCTURE
+  
+  #page-home,
+  .page-type-location,
+  .page-type-stations {
+    #viewport {
+      margin: 0!important;
+    }
+  }
+  
+  // HOME
+  
+  #home-text {
+    h1 {
+      font-size: 3rem;
+    }
+    
+    p {
+      width: auto;
+    }
+  }
+  
+  #home-menu {
+    margin: 0 auto 120px auto;
+  }
+  
+  #page-home {
+    #h7 {
+      padding: 8px;
+    }
+  }
+  
+  // LOCATIONS
+  
+  // stationS
+  
+  #station-splash {
+    .splash-text {
+      float: none;
+      
+      h1 {
+        font-size: 2.5rem;
+      }
+    }
+  }
+  
+  .stations-list {
+    h4 {
+      margin: 0 0 20px 0;
+      font-size: 1.375rem;
+    }
+    
+    article {
+      padding-bottom: 24%;
+      background-size: auto 100%;
+      
+      h3 {
+        font-size: 3rem;
+      }
+    }
+  }
+  
+  // VARIABLES
+  
+  .page-type-variables {
+    #district-trigger {
+      left: calc(20% + 10px);
+      z-index: 3;
+    }
+  }
+}
+
+@media screen and (max-width: 765px) {
+  
+  body {
+    overflow: hidden;
+  }
+  
+  #desktop-warning {
+    display: block;
+    @include full-size;
+    position: fixed;
+    z-index: 999;
+    background: transparentize($white, 0.02);
+    
+    p {
+      position: absolute;
+      top: 50%;
+      width: 100%;
+      @include transform(translateY(-50%));
+      text-align: center;
+    }
+  }
+  
+}
