@@ -382,7 +382,7 @@ $(function () {
       $(chartRowElem).addClass('closed-filters');
     }
 
-    const stationsMapRowElem = $('#stations-map-row');
+    const stationsMapRowElem = $('#stations-map-wrap');
     if ($(stationsMapRowElem).hasClass('closed-filters')) {
       $(stationsMapRowElem).removeClass('closed-filters');
     } else {
@@ -393,6 +393,8 @@ $(function () {
       // reset map and chart sizes
       // filer transistion means heigh will be updates in few seconds
       // so delaying the resize ensures proper size
+      showGraphs();
+      forceResize();
       setMapSize();
     }, 600);
   })
