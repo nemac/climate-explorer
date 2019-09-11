@@ -13356,387 +13356,392 @@ h6 {
   background: #d3e3f9;
 }
 
+/* line 394, resources/scss/screen.scss */
+#filters-row {
+  padding-left: 24px;
+}
+
 @media screen and (max-width: 900px) {
-  /* line 396, resources/scss/screen.scss */
+  /* line 400, resources/scss/screen.scss */
   #filters-row .select-options {
     margin-top: 0px !important;
   }
 }
 
-/* line 402, resources/scss/screen.scss */
+/* line 406, resources/scss/screen.scss */
 .font-title {
   font: 500 24px Roboto, Helvetica, "Helvetica Neue", Arial, sans-serif !important;
   color: #FBFCFE !important;
 }
 
-/* line 407, resources/scss/screen.scss */
+/* line 411, resources/scss/screen.scss */
 .border-none {
   border: none !important;
   outline: none !important;
 }
 
-/* line 412, resources/scss/screen.scss */
+/* line 416, resources/scss/screen.scss */
 .border-default {
   border: 1px solid rgba(18, 64, 134, 0.5) !important;
 }
 
-/* line 416, resources/scss/screen.scss */
+/* line 420, resources/scss/screen.scss */
 .height-100 {
   height: 100% !important;
 }
 
-/* line 420, resources/scss/screen.scss */
+/* line 424, resources/scss/screen.scss */
 .height-90 {
   height: 90% !important;
 }
 
-/* line 424, resources/scss/screen.scss */
+/* line 428, resources/scss/screen.scss */
 .height-80 {
   height: 80% !important;
 }
 
-/* line 428, resources/scss/screen.scss */
+/* line 432, resources/scss/screen.scss */
 .height-60 {
   height: 60% !important;
 }
 
-/* line 432, resources/scss/screen.scss */
+/* line 436, resources/scss/screen.scss */
 .height-50 {
   height: 50% !important;
 }
 
-/* line 436, resources/scss/screen.scss */
+/* line 440, resources/scss/screen.scss */
 .height-20 {
   height: 20% !important;
 }
 
-/* line 440, resources/scss/screen.scss */
+/* line 444, resources/scss/screen.scss */
 .height-25 {
   height: 25% !important;
 }
 
-/* line 444, resources/scss/screen.scss */
+/* line 448, resources/scss/screen.scss */
 .height-10 {
   height: 10% !important;
 }
 
-/* line 448, resources/scss/screen.scss */
+/* line 452, resources/scss/screen.scss */
 .width-100 {
   width: 100% !important;
 }
 
-/* line 452, resources/scss/screen.scss */
+/* line 456, resources/scss/screen.scss */
 .width-90 {
   width: 90% !important;
 }
 
-/* line 456, resources/scss/screen.scss */
+/* line 460, resources/scss/screen.scss */
 .width-95 {
   width: 95% !important;
 }
 
-/* line 461, resources/scss/screen.scss */
+/* line 465, resources/scss/screen.scss */
 .width-80 {
   width: 80% !important;
 }
 
-/* line 465, resources/scss/screen.scss */
+/* line 469, resources/scss/screen.scss */
 .width-70 {
   width: 70% !important;
 }
 
-/* line 469, resources/scss/screen.scss */
+/* line 473, resources/scss/screen.scss */
 .width-75 {
   width: 75% !important;
 }
 
-/* line 473, resources/scss/screen.scss */
+/* line 477, resources/scss/screen.scss */
 .width-60 {
   width: 60% !important;
 }
 
-/* line 477, resources/scss/screen.scss */
+/* line 481, resources/scss/screen.scss */
 .width-50 {
   width: 50% !important;
 }
 
-/* line 481, resources/scss/screen.scss */
+/* line 485, resources/scss/screen.scss */
 .width-40 {
   width: 40% !important;
 }
 
-/* line 485, resources/scss/screen.scss */
+/* line 489, resources/scss/screen.scss */
 .width-30 {
   width: 30% !important;
 }
 
-/* line 489, resources/scss/screen.scss */
+/* line 493, resources/scss/screen.scss */
 .width-33 {
   width: 33% !important;
 }
 
-/* line 493, resources/scss/screen.scss */
+/* line 497, resources/scss/screen.scss */
 .width-20 {
   width: 20% !important;
 }
 
-/* line 497, resources/scss/screen.scss */
+/* line 501, resources/scss/screen.scss */
 .width-25 {
   width: 25% !important;
 }
 
-/* line 501, resources/scss/screen.scss */
+/* line 505, resources/scss/screen.scss */
 .width-15 {
   width: 15% !important;
 }
 
-/* line 505, resources/scss/screen.scss */
+/* line 509, resources/scss/screen.scss */
 .width-10 {
   width: 10% !important;
 }
 
-/* line 509, resources/scss/screen.scss */
+/* line 513, resources/scss/screen.scss */
 .width-5 {
   width: 5% !important;
 }
 
-/* line 513, resources/scss/screen.scss */
+/* line 517, resources/scss/screen.scss */
 .right-padding {
   padding-right: 12px !important;
 }
 
 @media screen and (max-width: 900px) {
-  /* line 513, resources/scss/screen.scss */
+  /* line 517, resources/scss/screen.scss */
   .right-padding {
     padding-right: 6px !important;
   }
 }
 
-/* line 520, resources/scss/screen.scss */
+/* line 524, resources/scss/screen.scss */
 .bottom-padding {
   padding-bottom: 12px !important;
 }
 
 @media screen and (max-width: 900px) {
-  /* line 520, resources/scss/screen.scss */
+  /* line 524, resources/scss/screen.scss */
   .bottom-padding {
     padding-bottom: 6px !important;
   }
 }
 
-/* line 527, resources/scss/screen.scss */
+/* line 531, resources/scss/screen.scss */
 .padding-default-half {
   padding: 6px !important;
 }
 
-/* line 531, resources/scss/screen.scss */
+/* line 535, resources/scss/screen.scss */
 .padding-default {
   padding: 12px 12px !important;
 }
 
 @media screen and (max-width: 900px) {
-  /* line 531, resources/scss/screen.scss */
+  /* line 535, resources/scss/screen.scss */
   .padding-default {
     padding: 6px 6px !important;
   }
 }
 
-/* line 538, resources/scss/screen.scss */
+/* line 542, resources/scss/screen.scss */
 .padding-horrizontal {
   padding-left: 12px !important;
   padding-right: 12px !important;
 }
 
 @media screen and (max-width: 900px) {
-  /* line 538, resources/scss/screen.scss */
+  /* line 542, resources/scss/screen.scss */
   .padding-horrizontal {
     padding-left: 6px !important;
     padding-right: 6px !important;
   }
 }
 
-/* line 547, resources/scss/screen.scss */
+/* line 551, resources/scss/screen.scss */
 .padding-vertical {
   padding-top: 12px !important;
   padding-bottom: 12px !important;
 }
 
 @media screen and (max-width: 900px) {
-  /* line 547, resources/scss/screen.scss */
+  /* line 551, resources/scss/screen.scss */
   .padding-vertical {
     padding-top: 6px !important;
     padding-bottom: 6px !important;
   }
 }
 
-/* line 556, resources/scss/screen.scss */
+/* line 560, resources/scss/screen.scss */
 .padding-horrizontal-half {
   padding-left: 6px !important;
   padding-right: 6px !important;
 }
 
 @media screen and (max-width: 900px) {
-  /* line 556, resources/scss/screen.scss */
+  /* line 560, resources/scss/screen.scss */
   .padding-horrizontal-half {
     padding-left: 3px !important;
     padding-right: 3px !important;
   }
 }
 
-/* line 565, resources/scss/screen.scss */
+/* line 569, resources/scss/screen.scss */
 .padding-vertical-half {
   padding-top: 6px !important;
   padding-bottom: 6px !important;
 }
 
 @media screen and (max-width: 900px) {
-  /* line 565, resources/scss/screen.scss */
+  /* line 569, resources/scss/screen.scss */
   .padding-vertical-half {
     padding-top: 3px !important;
     padding-bottom: 3px !important;
   }
 }
 
-/* line 573, resources/scss/screen.scss */
+/* line 577, resources/scss/screen.scss */
 .padding-bottom {
   padding-bottom: 12px !important;
 }
 
 @media screen and (max-width: 900px) {
-  /* line 573, resources/scss/screen.scss */
+  /* line 577, resources/scss/screen.scss */
   .padding-bottom {
     padding-bottom: 6px !important;
   }
 }
 
-/* line 580, resources/scss/screen.scss */
+/* line 584, resources/scss/screen.scss */
 .padding-top {
   padding-top: 12px !important;
 }
 
 @media screen and (max-width: 900px) {
-  /* line 580, resources/scss/screen.scss */
+  /* line 584, resources/scss/screen.scss */
   .padding-top {
     padding-top: 6px !important;
   }
 }
 
-/* line 587, resources/scss/screen.scss */
+/* line 591, resources/scss/screen.scss */
 .padding-bottom-half {
   padding-bottom: 6px !important;
 }
 
 @media screen and (max-width: 900px) {
-  /* line 587, resources/scss/screen.scss */
+  /* line 591, resources/scss/screen.scss */
   .padding-bottom-half {
     padding-bottom: 3px !important;
   }
 }
 
-/* line 594, resources/scss/screen.scss */
+/* line 598, resources/scss/screen.scss */
 .padding-top-half {
   padding-top: 6px !important;
 }
 
 @media screen and (max-width: 900px) {
-  /* line 594, resources/scss/screen.scss */
+  /* line 598, resources/scss/screen.scss */
   .padding-top-half {
     padding-top: 3px !important;
   }
 }
 
-/* line 601, resources/scss/screen.scss */
+/* line 605, resources/scss/screen.scss */
 .padding-break {
   padding-bottom: 48px !important;
 }
 
 @media screen and (max-width: 900px) {
-  /* line 601, resources/scss/screen.scss */
+  /* line 605, resources/scss/screen.scss */
   .padding-break {
     padding-bottom: 24px !important;
   }
 }
 
-/* line 608, resources/scss/screen.scss */
+/* line 612, resources/scss/screen.scss */
 .margin-horrizontal {
   margin-left: 12px !important;
   margin-right: 12px !important;
 }
 
 @media screen and (max-width: 900px) {
-  /* line 608, resources/scss/screen.scss */
+  /* line 612, resources/scss/screen.scss */
   .margin-horrizontal {
     margin-left: 6px !important;
     margin-right: 6px !important;
   }
 }
 
-/* line 617, resources/scss/screen.scss */
+/* line 621, resources/scss/screen.scss */
 .float-left {
   float: left !important;
 }
 
-/* line 621, resources/scss/screen.scss */
+/* line 625, resources/scss/screen.scss */
 .float-right {
   float: right !important;
 }
 
-/* line 625, resources/scss/screen.scss */
+/* line 629, resources/scss/screen.scss */
 .d-none {
   display: none !important;
 }
 
-/* line 629, resources/scss/screen.scss */
+/* line 633, resources/scss/screen.scss */
 .d-flex {
   display: flex !important;
 }
 
-/* line 633, resources/scss/screen.scss */
+/* line 637, resources/scss/screen.scss */
 .d-flex-nowrap {
   flex-wrap: nowrap !important;
 }
 
-/* line 637, resources/scss/screen.scss */
+/* line 641, resources/scss/screen.scss */
 .d-flex-wrap {
   flex-wrap: wrap !important;
 }
 
-/* line 640, resources/scss/screen.scss */
+/* line 644, resources/scss/screen.scss */
 .d-flex-row {
   display: flex !important;
   flex-flow: row wrap !important;
 }
 
-/* line 645, resources/scss/screen.scss */
+/* line 649, resources/scss/screen.scss */
 .d-flex-column {
   display: flex !important;
   flex-direction: column !important;
 }
 
-/* line 651, resources/scss/screen.scss */
+/* line 655, resources/scss/screen.scss */
 .flex-container {
   display: flex !important;
   flex-flow: row wrap !important;
 }
 
-/* line 657, resources/scss/screen.scss */
+/* line 661, resources/scss/screen.scss */
 .flex-container-nowrap {
   display: flex !important;
   flex-flow: row nowrap !important;
 }
 
-/* line 663, resources/scss/screen.scss */
+/* line 667, resources/scss/screen.scss */
 .flex-justify {
   justify-content: space-between !important;
 }
 
-/* line 667, resources/scss/screen.scss */
+/* line 671, resources/scss/screen.scss */
 .d-flex-fill {
   display: flex !important;
   flex: 1 1 auto !important;
 }
 
-/* line 672, resources/scss/screen.scss */
+/* line 676, resources/scss/screen.scss */
 .d-flex-center {
   display: flex !important;
   align-items: center !important;
@@ -13744,7 +13749,7 @@ h6 {
   justify-content: center !important;
 }
 
-/* line 679, resources/scss/screen.scss */
+/* line 683, resources/scss/screen.scss */
 .d-flex-left {
   display: flex !important;
   align-items: flex-start !important;
@@ -13752,7 +13757,7 @@ h6 {
   justify-content: flex-start !important;
 }
 
-/* line 686, resources/scss/screen.scss */
+/* line 690, resources/scss/screen.scss */
 .d-flex-bottom {
   align-self: flex-end !important;
   align-content: flex-end !important;
@@ -13760,17 +13765,17 @@ h6 {
   margin-top: auto !important;
 }
 
-/* line 693, resources/scss/screen.scss */
+/* line 697, resources/scss/screen.scss */
 .d-flex-fill {
   flex: 1 1 auto !important;
 }
 
-/* line 697, resources/scss/screen.scss */
+/* line 701, resources/scss/screen.scss */
 .d-block {
   display: block !important;
 }
 
-/* line 701, resources/scss/screen.scss */
+/* line 705, resources/scss/screen.scss */
 .input-border {
   -webkit-border-radius: 5px 5px;
   -moz-border-radius: 5px / 5px;
@@ -13780,7 +13785,7 @@ h6 {
   box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.239);
 }
 
-/* line 706, resources/scss/screen.scss */
+/* line 710, resources/scss/screen.scss */
 .btn-histobs {
   cursor: pointer;
   text-decoration: line-through !important;
@@ -13792,30 +13797,30 @@ h6 {
 }
 
 @media screen and (max-width: 900px) {
-  /* line 706, resources/scss/screen.scss */
+  /* line 710, resources/scss/screen.scss */
   .btn-histobs {
     height: 48px !important;
   }
 }
 
-/* line 719, resources/scss/screen.scss */
+/* line 723, resources/scss/screen.scss */
 .btn-histobs:hover {
   background-color: #6a6a6a !important;
 }
 
-/* line 722, resources/scss/screen.scss */
+/* line 726, resources/scss/screen.scss */
 .btn-histobs:focus {
   background-color: #6a6a6a !important;
   outline: none !important;
 }
 
-/* line 726, resources/scss/screen.scss */
+/* line 730, resources/scss/screen.scss */
 .btn-histobs.selected {
   color: #FBFCFE !important;
   text-decoration: unset !important;
 }
 
-/* line 732, resources/scss/screen.scss */
+/* line 736, resources/scss/screen.scss */
 .btn-hismod {
   cursor: pointer;
   text-decoration: line-through !important;
@@ -13827,30 +13832,30 @@ h6 {
 }
 
 @media screen and (max-width: 900px) {
-  /* line 732, resources/scss/screen.scss */
+  /* line 736, resources/scss/screen.scss */
   .btn-hismod {
     height: 48px !important;
   }
 }
 
-/* line 745, resources/scss/screen.scss */
+/* line 749, resources/scss/screen.scss */
 .btn-hismod:hover {
   background-color: #bdbdbd !important;
 }
 
-/* line 748, resources/scss/screen.scss */
+/* line 752, resources/scss/screen.scss */
 .btn-hismod:focus {
   background-color: #bdbdbd !important;
   outline: none !important;
 }
 
-/* line 752, resources/scss/screen.scss */
+/* line 756, resources/scss/screen.scss */
 .btn-hismod.selected {
   color: #124086 !important;
   text-decoration: unset !important;
 }
 
-/* line 758, resources/scss/screen.scss */
+/* line 762, resources/scss/screen.scss */
 .btn-lower-emissions {
   cursor: pointer;
   text-decoration: line-through !important;
@@ -13862,30 +13867,30 @@ h6 {
 }
 
 @media screen and (max-width: 900px) {
-  /* line 758, resources/scss/screen.scss */
+  /* line 762, resources/scss/screen.scss */
   .btn-lower-emissions {
     height: 48px !important;
   }
 }
 
-/* line 771, resources/scss/screen.scss */
+/* line 775, resources/scss/screen.scss */
 .btn-lower-emissions:hover {
   background-color: #6da0e3 !important;
 }
 
-/* line 774, resources/scss/screen.scss */
+/* line 778, resources/scss/screen.scss */
 .btn-lower-emissions:focus {
   background-color: #6da0e3 !important;
   outline: none !important;
 }
 
-/* line 778, resources/scss/screen.scss */
+/* line 782, resources/scss/screen.scss */
 .btn-lower-emissions.selected {
   color: #124086 !important;
   text-decoration: unset !important;
 }
 
-/* line 784, resources/scss/screen.scss */
+/* line 788, resources/scss/screen.scss */
 .btn-higher-emissions {
   cursor: pointer;
   text-decoration: line-through !important;
@@ -13897,30 +13902,30 @@ h6 {
 }
 
 @media screen and (max-width: 900px) {
-  /* line 784, resources/scss/screen.scss */
+  /* line 788, resources/scss/screen.scss */
   .btn-higher-emissions {
     height: 48px !important;
   }
 }
 
-/* line 797, resources/scss/screen.scss */
+/* line 801, resources/scss/screen.scss */
 .btn-higher-emissions:hover {
   background-color: #f98979 !important;
 }
 
-/* line 800, resources/scss/screen.scss */
+/* line 804, resources/scss/screen.scss */
 .btn-higher-emissions:focus {
   background-color: #f98979 !important;
   outline: none !important;
 }
 
-/* line 804, resources/scss/screen.scss */
+/* line 808, resources/scss/screen.scss */
 .btn-higher-emissions.selected {
   color: #124086 !important;
   text-decoration: unset !important;
 }
 
-/* line 810, resources/scss/screen.scss */
+/* line 814, resources/scss/screen.scss */
 .btn-default {
   cursor: pointer;
   height: 36px !important;
@@ -13930,7 +13935,7 @@ h6 {
   border: 1px solid rgba(18, 64, 134, 0.5) !important;
 }
 
-/* line 818, resources/scss/screen.scss */
+/* line 822, resources/scss/screen.scss */
 .btn-default a {
   cursor: pointer;
   text-decoration: none !important;
@@ -13938,13 +13943,13 @@ h6 {
 }
 
 @media screen and (max-width: 900px) {
-  /* line 810, resources/scss/screen.scss */
+  /* line 814, resources/scss/screen.scss */
   .btn-default {
     height: 48px !important;
   }
 }
 
-/* line 828, resources/scss/screen.scss */
+/* line 832, resources/scss/screen.scss */
 .btn-default:focus {
   background-color: #caddf8 !important;
   color: #124086 !important;
@@ -13952,7 +13957,7 @@ h6 {
   outline: none !important;
 }
 
-/* line 835, resources/scss/screen.scss */
+/* line 839, resources/scss/screen.scss */
 .btn-default:hover {
   background-color: #caddf8 !important;
   color: #124086 !important;
@@ -13960,7 +13965,7 @@ h6 {
   outline: none !important;
 }
 
-/* line 843, resources/scss/screen.scss */
+/* line 847, resources/scss/screen.scss */
 .btn-default-disabled {
   cursor: default;
   height: 36px !important;
@@ -13971,13 +13976,13 @@ h6 {
 }
 
 @media screen and (max-width: 900px) {
-  /* line 843, resources/scss/screen.scss */
+  /* line 847, resources/scss/screen.scss */
   .btn-default-disabled {
     height: 48px !important;
   }
 }
 
-/* line 855, resources/scss/screen.scss */
+/* line 859, resources/scss/screen.scss */
 .btn-default-disabled:focus {
   background-color: #bcd4f6 !important;
   color: #124086 !important;
@@ -13985,7 +13990,7 @@ h6 {
   outline: none !important;
 }
 
-/* line 862, resources/scss/screen.scss */
+/* line 866, resources/scss/screen.scss */
 .btn-default-disabled:hover {
   background-color: #bcd4f6 !important;
   color: #124086 !important;
@@ -13993,7 +13998,7 @@ h6 {
   outline: none !important;
 }
 
-/* line 870, resources/scss/screen.scss */
+/* line 874, resources/scss/screen.scss */
 .btn-default-selected {
   cursor: pointer;
   height: 36px !important;
@@ -14016,43 +14021,43 @@ h6 {
   border: 1px solid rgba(18, 64, 134, 0.5) !important;
 }
 
-/* line 881, resources/scss/screen.scss */
+/* line 885, resources/scss/screen.scss */
 .btn-default-selected a {
   cursor: pointer;
   text-decoration: none !important;
   color: #E9F1FC !important;
 }
 
-/* line 888, resources/scss/screen.scss */
+/* line 892, resources/scss/screen.scss */
 .btn-default-selected.circle-box-left {
   margin-right: -12px !important;
 }
 
-/* line 892, resources/scss/screen.scss */
+/* line 896, resources/scss/screen.scss */
 .btn-default-selected.circle-box-right {
   margin-left: -12px !important;
 }
 
-/* line 896, resources/scss/screen.scss */
+/* line 900, resources/scss/screen.scss */
 .btn-default-selected.circle-box-middle {
   margin-right: -12px !important;
   margin-left: -12px !important;
 }
 
-/* line 901, resources/scss/screen.scss */
+/* line 905, resources/scss/screen.scss */
 .btn-default-selected.btn-default-disabled {
   color: #b3cff5 !important;
   background-color: #164fa5 !important;
 }
 
 @media screen and (max-width: 900px) {
-  /* line 870, resources/scss/screen.scss */
+  /* line 874, resources/scss/screen.scss */
   .btn-default-selected {
     height: 48px !important;
   }
 }
 
-/* line 911, resources/scss/screen.scss */
+/* line 915, resources/scss/screen.scss */
 .btn-default-selected:focus {
   background-color: #397ee5 !important;
   color: #E9F1FC !important;
@@ -14060,7 +14065,7 @@ h6 {
   outline: none !important;
 }
 
-/* line 918, resources/scss/screen.scss */
+/* line 922, resources/scss/screen.scss */
 .btn-default-selected:hover {
   background-color: #397ee5 !important;
   color: #E9F1FC !important;
@@ -14068,7 +14073,7 @@ h6 {
   outline: none !important;
 }
 
-/* line 926, resources/scss/screen.scss */
+/* line 930, resources/scss/screen.scss */
 .rounded-choice-box {
   -webkit-border-radius: 25px 25px;
   -moz-border-radius: 25px / 25px;
@@ -14080,19 +14085,19 @@ h6 {
 }
 
 @media screen and (max-width: 900px) {
-  /* line 926, resources/scss/screen.scss */
+  /* line 930, resources/scss/screen.scss */
   .rounded-choice-box {
     min-height: 48px !important;
     max-height: 48px !important;
   }
 }
 
-/* line 937, resources/scss/screen.scss */
+/* line 941, resources/scss/screen.scss */
 .rounded-choice-box:hover {
   background-color: #caddf8 !important;
 }
 
-/* line 942, resources/scss/screen.scss */
+/* line 946, resources/scss/screen.scss */
 .rounded-info-box {
   -webkit-border-radius: 5px 5px;
   -moz-border-radius: 5px / 5px;
@@ -14104,13 +14109,13 @@ h6 {
 }
 
 @media screen and (max-width: 900px) {
-  /* line 942, resources/scss/screen.scss */
+  /* line 946, resources/scss/screen.scss */
   .rounded-info-box {
     min-height: 105px !important;
   }
 }
 
-/* line 953, resources/scss/screen.scss */
+/* line 957, resources/scss/screen.scss */
 .rounded-filters-box {
   -webkit-border-radius: 5px 5px;
   -moz-border-radius: 5px / 5px;
@@ -14136,24 +14141,17 @@ h6 {
 }
 
 @media screen and (max-width: 900px) {
-  /* line 953, resources/scss/screen.scss */
+  /* line 957, resources/scss/screen.scss */
   .rounded-filters-box {
     min-height: 1px !important;
   }
 }
 
 @media screen and (max-width: 900px) {
-  /* line 968, resources/scss/screen.scss */
+  /* line 972, resources/scss/screen.scss */
   .rounded-filters-box #station-info {
     min-height: 100px !important;
   }
-}
-
-/* line 975, resources/scss/screen.scss */
-.rounded-box-secondary {
-  -webkit-border-radius: 5px 5px;
-  -moz-border-radius: 5px / 5px;
-  border-radius: 5px / 5px;
 }
 
 /* line 979, resources/scss/screen.scss */
@@ -14164,6 +14162,13 @@ h6 {
 }
 
 /* line 983, resources/scss/screen.scss */
+.rounded-box-secondary {
+  -webkit-border-radius: 5px 5px;
+  -moz-border-radius: 5px / 5px;
+  border-radius: 5px / 5px;
+}
+
+/* line 987, resources/scss/screen.scss */
 .rounded-box {
   -webkit-border-radius: 5px;
   -moz-border-radius: 5px;
@@ -14172,35 +14177,35 @@ h6 {
   border-radius: 5px;
 }
 
-/* line 987, resources/scss/screen.scss */
+/* line 991, resources/scss/screen.scss */
 .rounded-box-top-left {
   -moz-border-radius-topleft: 5px;
   -webkit-border-top-left-radius: 5px;
   border-top-left-radius: 5px;
 }
 
-/* line 991, resources/scss/screen.scss */
+/* line 995, resources/scss/screen.scss */
 .rounded-box-top-right {
   -moz-border-radius-topright: 5px;
   -webkit-border-top-right-radius: 5px;
   border-top-right-radius: 5px;
 }
 
-/* line 995, resources/scss/screen.scss */
+/* line 999, resources/scss/screen.scss */
 .rounded-box-bottom-left {
   -moz-border-radius-bottomleft: 5px;
   -webkit-border-bottom-left-radius: 5px;
   border-bottom-left-radius: 5px;
 }
 
-/* line 999, resources/scss/screen.scss */
+/* line 1003, resources/scss/screen.scss */
 .rounded-box-bottom-right {
   -moz-border-radius-bottomright: 5px;
   -webkit-border-bottom-right-radius: 5px;
   border-bottom-right-radius: 5px;
 }
 
-/* line 1003, resources/scss/screen.scss */
+/* line 1007, resources/scss/screen.scss */
 .rounded-box-top {
   -moz-border-radius-topleft: 5px;
   -webkit-border-top-left-radius: 5px;
@@ -14210,7 +14215,7 @@ h6 {
   border-top-right-radius: 5px;
 }
 
-/* line 1007, resources/scss/screen.scss */
+/* line 1011, resources/scss/screen.scss */
 .rounded-box-bottom {
   -moz-border-radius-bottomleft: 5px;
   -webkit-border-bottom-left-radius: 5px;
@@ -14220,7 +14225,7 @@ h6 {
   border-bottom-right-radius: 5px;
 }
 
-/* line 1011, resources/scss/screen.scss */
+/* line 1015, resources/scss/screen.scss */
 .rounded-box-left {
   -moz-border-radius-topleft: 5px;
   -webkit-border-top-left-radius: 5px;
@@ -14230,7 +14235,7 @@ h6 {
   border-bottom-left-radius: 5px;
 }
 
-/* line 1015, resources/scss/screen.scss */
+/* line 1019, resources/scss/screen.scss */
 .rounded-box-right {
   -moz-border-radius-topright: 5px;
   -webkit-border-top-right-radius: 5px;
@@ -14240,14 +14245,14 @@ h6 {
   border-bottom-right-radius: 5px;
 }
 
-/* line 1024, resources/scss/screen.scss */
+/* line 1028, resources/scss/screen.scss */
 .circle-box-secondary {
   -webkit-border-radius: 25px 25px;
   -moz-border-radius: 25px / 25px;
   border-radius: 25px / 25px;
 }
 
-/* line 1028, resources/scss/screen.scss */
+/* line 1032, resources/scss/screen.scss */
 .rounded-box {
   -webkit-border-radius: 25px;
   -moz-border-radius: 25px;
@@ -14256,35 +14261,35 @@ h6 {
   border-radius: 25px;
 }
 
-/* line 1032, resources/scss/screen.scss */
+/* line 1036, resources/scss/screen.scss */
 .circle-box-top-left {
   -moz-border-radius-topleft: 25px;
   -webkit-border-top-left-radius: 25px;
   border-top-left-radius: 25px;
 }
 
-/* line 1036, resources/scss/screen.scss */
+/* line 1040, resources/scss/screen.scss */
 .circle-box-top-right {
   -moz-border-radius-topright: 25px;
   -webkit-border-top-right-radius: 25px;
   border-top-right-radius: 25px;
 }
 
-/* line 1040, resources/scss/screen.scss */
+/* line 1044, resources/scss/screen.scss */
 .circle-box-bottom-left {
   -moz-border-radius-bottomleft: 25px;
   -webkit-border-bottom-left-radius: 25px;
   border-bottom-left-radius: 25px;
 }
 
-/* line 1044, resources/scss/screen.scss */
+/* line 1048, resources/scss/screen.scss */
 .circle-box-bottom-right {
   -moz-border-radius-bottomright: 25px;
   -webkit-border-bottom-right-radius: 25px;
   border-bottom-right-radius: 25px;
 }
 
-/* line 1048, resources/scss/screen.scss */
+/* line 1052, resources/scss/screen.scss */
 .circle-box-top {
   -moz-border-radius-topleft: 25px;
   -webkit-border-top-left-radius: 25px;
@@ -14294,7 +14299,7 @@ h6 {
   border-top-right-radius: 25px;
 }
 
-/* line 1052, resources/scss/screen.scss */
+/* line 1056, resources/scss/screen.scss */
 .circle-box-bottom {
   -moz-border-radius-bottomleft: 25px;
   -webkit-border-bottom-left-radius: 25px;
@@ -14304,7 +14309,7 @@ h6 {
   border-bottom-right-radius: 25px;
 }
 
-/* line 1056, resources/scss/screen.scss */
+/* line 1060, resources/scss/screen.scss */
 .circle-box-left {
   -moz-border-radius-topleft: 25px;
   -webkit-border-top-left-radius: 25px;
@@ -14314,7 +14319,7 @@ h6 {
   border-bottom-left-radius: 25px;
 }
 
-/* line 1060, resources/scss/screen.scss */
+/* line 1064, resources/scss/screen.scss */
 .circle-box-right {
   -moz-border-radius-topright: 25px;
   -webkit-border-top-right-radius: 25px;
@@ -14324,26 +14329,26 @@ h6 {
   border-bottom-right-radius: 25px;
 }
 
-/* line 1064, resources/scss/screen.scss */
+/* line 1068, resources/scss/screen.scss */
 .icon-info-box {
   font-size: 24px !important;
   padding-right: 12px !important;
   vertical-align: middle;
 }
 
-/* line 1070, resources/scss/screen.scss */
+/* line 1074, resources/scss/screen.scss */
 .text-info-box {
   font-size: 18px !important;
   font-weight: 700 !important;
 }
 
-/* line 1075, resources/scss/screen.scss */
+/* line 1079, resources/scss/screen.scss */
 .text-info-box-secondary {
   font-size: 18px !important;
   font-weight: 500 !important;
 }
 
-/* line 1080, resources/scss/screen.scss */
+/* line 1084, resources/scss/screen.scss */
 .search-default {
   width: 24px !important;
   height: 24px !important;
@@ -14357,21 +14362,21 @@ h6 {
   padding: 5px !important;
 }
 
-/* line 1092, resources/scss/screen.scss */
+/* line 1096, resources/scss/screen.scss */
 input.input-inner-default {
   background-color: #E9F1FC;
   color: #124086;
   font: 800 18px Roboto, Helvetica, "Helvetica Neue", Arial, sans-serif !important;
 }
 
-/* line 1098, resources/scss/screen.scss */
+/* line 1102, resources/scss/screen.scss */
 input.input-inner-default::placeholder {
   background-color: #E9F1FC;
   color: #124086;
   font: 800 18px Roboto, Helvetica, "Helvetica Neue", Arial, sans-serif !important;
 }
 
-/* line 1104, resources/scss/screen.scss */
+/* line 1108, resources/scss/screen.scss */
 input.input-inner-default:focus::placeholder {
   color: rgba(18, 64, 134, 0.5);
   font: 800 18px Roboto, Helvetica, "Helvetica Neue", Arial, sans-serif !important;
@@ -14381,38 +14386,38 @@ input.input-inner-default:focus::placeholder {
   transition: 0.25s;
 }
 
-/* line 1113, resources/scss/screen.scss */
+/* line 1117, resources/scss/screen.scss */
 input.input-inner-default:focus {
   outline: none !important;
 }
 
-/* line 1117, resources/scss/screen.scss */
+/* line 1121, resources/scss/screen.scss */
 #search-row {
   min-height: 50px;
 }
 
 @media screen and (max-width: 900px) {
-  /* line 1117, resources/scss/screen.scss */
+  /* line 1121, resources/scss/screen.scss */
   #search-row {
     min-height: 106px;
     display: block !important;
   }
 }
 
-/* line 1125, resources/scss/screen.scss */
+/* line 1129, resources/scss/screen.scss */
 #info-row, #search-row, #chart-row, #map-row {
   width: 100% !important;
   align-self: center !important;
 }
 
 @media screen and (max-width: 768px) {
-  /* line 1125, resources/scss/screen.scss */
+  /* line 1129, resources/scss/screen.scss */
   #info-row, #search-row, #chart-row, #map-row {
     width: 90% !important;
   }
 }
 
-/* line 1135, resources/scss/screen.scss */
+/* line 1139, resources/scss/screen.scss */
 #map-for-print-right, #map-for-print-left {
   position: absolute;
   left: 0px;
@@ -14422,7 +14427,7 @@ input.input-inner-default:focus {
   z-index: 0;
 }
 
-/* line 1142, resources/scss/screen.scss */
+/* line 1146, resources/scss/screen.scss */
 #map-for-print-right img, #map-for-print-left img {
   width: 100%;
   height: auto;
@@ -14431,12 +14436,12 @@ input.input-inner-default:focus {
   left: 0px;
 }
 
-/* line 1149, resources/scss/screen.scss */
+/* line 1153, resources/scss/screen.scss */
 #map-for-print-right .attribution, #map-for-print-left .attribution {
   top: calc(100% - 17px);
 }
 
-/* line 1153, resources/scss/screen.scss */
+/* line 1157, resources/scss/screen.scss */
 #map-for-print-right .botttom-controls, #map-for-print-left .botttom-controls {
   max-height: 54px;
   height: 54px;
@@ -14445,7 +14450,7 @@ input.input-inner-default:focus {
   left: 24px;
 }
 
-/* line 1161, resources/scss/screen.scss */
+/* line 1165, resources/scss/screen.scss */
 #map-for-print-right .title, #map-for-print-left .title {
   background-color: rgba(233, 241, 252, 0.75) !important;
   max-height: 42px;
@@ -14462,7 +14467,7 @@ input.input-inner-default:focus {
   border-top-right-radius: 5px;
 }
 
-/* line 1173, resources/scss/screen.scss */
+/* line 1177, resources/scss/screen.scss */
 #map-for-print-right .legend, #map-for-print-left .legend {
   max-height: 250px;
   height: 250px;
@@ -14471,7 +14476,7 @@ input.input-inner-default:focus {
   left: 24px;
 }
 
-/* line 1185, resources/scss/screen.scss */
+/* line 1189, resources/scss/screen.scss */
 .tooltip {
   display: block !important;
   margin-left: 8px !important;
@@ -14479,7 +14484,7 @@ input.input-inner-default:focus {
   font-size: 12px !important;
 }
 
-/* line 1193, resources/scss/screen.scss */
+/* line 1197, resources/scss/screen.scss */
 .tooltip:after {
   bottom: 25% !important;
   left: -3px !important;
@@ -14487,12 +14492,12 @@ input.input-inner-default:focus {
   border-color: transparent #ffffff transparent transparent !important;
 }
 
-/* line 1200, resources/scss/screen.scss */
+/* line 1204, resources/scss/screen.scss */
 .d-xs-only {
   display: none;
 }
 
-/* line 1206, resources/scss/screen.scss */
+/* line 1210, resources/scss/screen.scss */
 .button {
   position: relative;
   display: inline-block;
@@ -14505,7 +14510,7 @@ input.input-inner-default:focus {
   transition: 0.25s;
 }
 
-/* line 1214, resources/scss/screen.scss */
+/* line 1218, resources/scss/screen.scss */
 .button:before, .button:after {
   content: '';
   display: block;
@@ -14514,37 +14519,37 @@ input.input-inner-default:focus {
   top: 50%;
 }
 
-/* line 1225, resources/scss/screen.scss */
+/* line 1229, resources/scss/screen.scss */
 .button.display-blocks {
   display: block;
 }
 
-/* line 1231, resources/scss/screen.scss */
+/* line 1235, resources/scss/screen.scss */
 .button .icon {
   margin: -2px 10px 0 0;
 }
 
-/* line 1236, resources/scss/screen.scss */
+/* line 1240, resources/scss/screen.scss */
 .button.plus:before {
   width: 14px;
   height: 4px;
   margin-top: -2px;
 }
 
-/* line 1242, resources/scss/screen.scss */
+/* line 1246, resources/scss/screen.scss */
 .button.plus:after {
   width: 4px;
   height: 14px;
   margin: -7px 5px 0 0;
 }
 
-/* line 1268, resources/scss/screen.scss */
+/* line 1272, resources/scss/screen.scss */
 .button.arrow-right:before, .button.arrow-right:after {
   width: 10px;
   height: 4px;
 }
 
-/* line 1274, resources/scss/screen.scss */
+/* line 1278, resources/scss/screen.scss */
 .button.arrow-right:before {
   -webkit-transform: rotate(-45deg);
   -moz-transform: rotate(-45deg);
@@ -14554,7 +14559,7 @@ input.input-inner-default:focus {
   margin-top: 1px;
 }
 
-/* line 1279, resources/scss/screen.scss */
+/* line 1283, resources/scss/screen.scss */
 .button.arrow-right:after {
   -webkit-transform: rotate(45deg);
   -moz-transform: rotate(45deg);
@@ -14564,7 +14569,7 @@ input.input-inner-default:focus {
   margin-top: -4px;
 }
 
-/* line 1286, resources/scss/screen.scss */
+/* line 1290, resources/scss/screen.scss */
 .button.close:before, .button.close:after {
   right: 6px;
   width: 24px;
@@ -14572,7 +14577,7 @@ input.input-inner-default:focus {
   margin-top: -4px;
 }
 
-/* line 1294, resources/scss/screen.scss */
+/* line 1298, resources/scss/screen.scss */
 .button.close:before {
   -webkit-transform: rotate(-45deg);
   -moz-transform: rotate(-45deg);
@@ -14581,7 +14586,7 @@ input.input-inner-default:focus {
   transform: rotate(-45deg);
 }
 
-/* line 1298, resources/scss/screen.scss */
+/* line 1302, resources/scss/screen.scss */
 .button.close:after {
   -webkit-transform: rotate(45deg);
   -moz-transform: rotate(45deg);
@@ -14590,107 +14595,107 @@ input.input-inner-default:focus {
   transform: rotate(45deg);
 }
 
-/* line 1305, resources/scss/screen.scss */
+/* line 1309, resources/scss/screen.scss */
 .button.color-white {
   color: #ffffff;
 }
 
-/* line 1308, resources/scss/screen.scss */
+/* line 1312, resources/scss/screen.scss */
 .button.color-white:before, .button.color-white:after {
   background: #ffffff;
 }
 
-/* line 1314, resources/scss/screen.scss */
+/* line 1318, resources/scss/screen.scss */
 .button.color-orange {
   color: #f5442d !important;
 }
 
-/* line 1317, resources/scss/screen.scss */
+/* line 1321, resources/scss/screen.scss */
 .button.color-orange:before, .button.color-orange:after {
   background: #f5442d !important;
 }
 
-/* line 1323, resources/scss/screen.scss */
+/* line 1327, resources/scss/screen.scss */
 .button.color-orange.arrow-right:before {
   background: #f5442d !important;
 }
 
-/* line 1327, resources/scss/screen.scss */
+/* line 1331, resources/scss/screen.scss */
 .button.color-orange.arrow-right:after {
   background: #f5442d !important;
 }
 
-/* line 1335, resources/scss/screen.scss */
+/* line 1339, resources/scss/screen.scss */
 .button.border-white {
   border-color: #ffffff;
   color: #ffffff;
 }
 
-/* line 1339, resources/scss/screen.scss */
+/* line 1343, resources/scss/screen.scss */
 .button.border-white:before, .button.border-white:after {
   background: #ffffff;
 }
 
-/* line 1345, resources/scss/screen.scss */
+/* line 1349, resources/scss/screen.scss */
 .button.border-trans {
   border-color: transparent;
 }
 
-/* line 1349, resources/scss/screen.scss */
+/* line 1353, resources/scss/screen.scss */
 .button.border-none {
   border: none;
 }
 
-/* line 1355, resources/scss/screen.scss */
+/* line 1359, resources/scss/screen.scss */
 .button.bg-trans {
   background: transparent;
 }
 
-/* line 1359, resources/scss/screen.scss */
+/* line 1363, resources/scss/screen.scss */
 .button.bg-white {
   background: white;
 }
 
-/* line 1368, resources/scss/screen.scss */
+/* line 1372, resources/scss/screen.scss */
 .button.hover-bg-white:hover {
   background: #ffffff;
   color: #0058cf;
   mix-blend-mode: screen;
 }
 
-/* line 1373, resources/scss/screen.scss */
+/* line 1377, resources/scss/screen.scss */
 .button.hover-bg-white:hover:before, .button.hover-bg-white:hover:after {
   background: #000000;
 }
 
-/* line 1382, resources/scss/screen.scss */
+/* line 1386, resources/scss/screen.scss */
 .button.blend-screen {
   mix-blend-mode: screen;
 }
 
-/* line 1385, resources/scss/screen.scss */
+/* line 1389, resources/scss/screen.scss */
 .button.blend-screen:before, .button.blend-screen:after {
   background: #000000;
 }
 
-/* line 1390, resources/scss/screen.scss */
+/* line 1394, resources/scss/screen.scss */
 .button.blend-screen:hover {
   color: #000000;
 }
 
-/* line 1397, resources/scss/screen.scss */
+/* line 1401, resources/scss/screen.scss */
 .icon {
   display: inline-block;
   vertical-align: middle;
 }
 
-/* line 1403, resources/scss/screen.scss */
+/* line 1407, resources/scss/screen.scss */
 .stuck {
   position: fixed;
   top: 0;
 }
 
-/* line 1409, resources/scss/screen.scss */
+/* line 1413, resources/scss/screen.scss */
 .tooltip {
   display: none;
   position: absolute;
@@ -14712,7 +14717,7 @@ input.input-inner-default:focus {
   box-shadow: 0 0 8px rgba(0, 88, 207, 0.25);
 }
 
-/* line 1423, resources/scss/screen.scss */
+/* line 1427, resources/scss/screen.scss */
 .tooltip:after {
   content: '';
   display: block;
@@ -14735,7 +14740,7 @@ input.input-inner-default:focus {
   clear: both;
 }
 
-/* line 1439, resources/scss/screen.scss */
+/* line 1443, resources/scss/screen.scss */
 .chart-legend .legend-item {
   position: relative;
   float: left;
@@ -14753,12 +14758,12 @@ input.input-inner-default:focus {
   transition: 0.25s;
 }
 
-/* line 1452, resources/scss/screen.scss */
+/* line 1456, resources/scss/screen.scss */
 .chart-legend .legend-item:hover {
   border: 1px solid #eeeeee;
 }
 
-/* line 1456, resources/scss/screen.scss */
+/* line 1460, resources/scss/screen.scss */
 .chart-legend .legend-item:after {
   content: "\e91f";
   display: block;
@@ -14785,64 +14790,64 @@ input.input-inner-default:focus {
   transition: 0.25s;
 }
 
-/* line 1475, resources/scss/screen.scss */
+/* line 1479, resources/scss/screen.scss */
 .chart-legend .legend-item.selected {
   border: 1px solid #bbbbbb;
 }
 
-/* line 1480, resources/scss/screen.scss */
+/* line 1484, resources/scss/screen.scss */
 .chart-legend .legend-item.selected:after {
   opacity: 1;
 }
 
-/* line 1486, resources/scss/screen.scss */
+/* line 1490, resources/scss/screen.scss */
 .chart-legend .legend-item-block {
   height: 20px;
 }
 
-/* line 1490, resources/scss/screen.scss */
+/* line 1494, resources/scss/screen.scss */
 .chart-legend .legend-item-line {
   height: 5px;
 }
 
-/* line 1495, resources/scss/screen.scss */
+/* line 1499, resources/scss/screen.scss */
 .chart-legend .legend-item-block#rcp45-block, .chart-legend .legend-item-block#preciprcp45-block, .chart-legend .legend-item-block #derivercp45-block {
   background: #99bcec;
 }
 
-/* line 1501, resources/scss/screen.scss */
+/* line 1505, resources/scss/screen.scss */
 .chart-legend .legend-item-block#rcp85-block, .chart-legend .legend-item-block#preciprcp85-block, .chart-legend .legend-item-block#derivercp85-block {
   background: #fbb4ab;
 }
 
-/* line 1507, resources/scss/screen.scss */
+/* line 1511, resources/scss/screen.scss */
 .chart-legend .legend-item-block#historical-block, .chart-legend .legend-item-block#preciphistorical-block, .chart-legend .legend-item-block#derivehistorical-block {
   background: #d6d6d6;
 }
 
-/* line 1515, resources/scss/screen.scss */
+/* line 1519, resources/scss/screen.scss */
 .chart-legend .legend-item-line#over-baseline-block, .chart-legend .legend-item-line#precipover-baseline-block, .chart-legend .legend-item-line#deriveover-baseline-block {
   background: #cd6760;
 }
 
-/* line 1521, resources/scss/screen.scss */
+/* line 1525, resources/scss/screen.scss */
 .chart-legend .legend-item-line#under-baseline-block, .chart-legend .legend-item-line#precipunder-baseline-block, .chart-legend .legend-item-line#deriveunder-baseline-block {
   margin-top: 20px;
   background: #6194c8;
 }
 
-/* line 1528, resources/scss/screen.scss */
+/* line 1532, resources/scss/screen.scss */
 .chart-legend .legend-item-line#rcp45-line, .chart-legend .legend-item-line#preciprcp45-line, .chart-legend .legend-item-line#derivercp45-line {
   margin-top: 20px;
   background: #0058cf;
 }
 
-/* line 1535, resources/scss/screen.scss */
+/* line 1539, resources/scss/screen.scss */
 .chart-legend .legend-item-line#rcp85-line, .chart-legend .legend-item-line#preciprcp85-line, .chart-legend .legend-item-line#derivercp85-line {
   background: #f5442d;
 }
 
-/* line 1544, resources/scss/screen.scss */
+/* line 1548, resources/scss/screen.scss */
 .download-panel {
   display: none;
   position: fixed;
@@ -14857,7 +14862,7 @@ input.input-inner-default:focus {
   opacity: 0.95;
 }
 
-/* line 1559, resources/scss/screen.scss */
+/* line 1563, resources/scss/screen.scss */
 .download-panel .download-inner {
   margin: auto;
   position: absolute;
@@ -14873,22 +14878,22 @@ input.input-inner-default:focus {
   padding: 30px;
 }
 
-/* line 1569, resources/scss/screen.scss */
+/* line 1573, resources/scss/screen.scss */
 .download-panel .download-inner p {
   margin: 0 0 20px 0;
 }
 
-/* line 1573, resources/scss/screen.scss */
+/* line 1577, resources/scss/screen.scss */
 .download-panel .download-inner li {
   margin: 0 0 10px 0;
 }
 
-/* line 1577, resources/scss/screen.scss */
+/* line 1581, resources/scss/screen.scss */
 .download-panel .download-inner a {
   color: #ffffff;
 }
 
-/* line 1582, resources/scss/screen.scss */
+/* line 1586, resources/scss/screen.scss */
 .download-panel #download-dismiss-button, .download-panel .download-dismiss-button {
   display: block;
   position: absolute;
@@ -15926,7 +15931,7 @@ body.detail-open #nav-overlay {
   }
 }
 
-/* line 1619, resources/scss/screen.scss */
+/* line 1623, resources/scss/screen.scss */
 #desktop-warning {
   display: none;
 }
@@ -20002,7 +20007,7 @@ input.input-inner:focus {
   cursor: default;
 }
 
-/* line 1931, resources/scss/screen.scss */
+/* line 1935, resources/scss/screen.scss */
 .ui-autocomplete {
   position: absolute;
   top: 0;
@@ -20010,7 +20015,7 @@ input.input-inner:focus {
   cursor: default;
 }
 
-/* line 1937, resources/scss/screen.scss */
+/* line 1941, resources/scss/screen.scss */
 .ui-menu {
   display: block;
   padding: 10px;
@@ -20023,12 +20028,12 @@ input.input-inner:focus {
   box-shadow: 0 0 12px rgba(35, 58, 112, 0.25);
 }
 
-/* line 1946, resources/scss/screen.scss */
+/* line 1950, resources/scss/screen.scss */
 .ui-menu .ui-menu {
   position: absolute;
 }
 
-/* line 1950, resources/scss/screen.scss */
+/* line 1954, resources/scss/screen.scss */
 .ui-menu .ui-menu-item {
   position: relative;
   margin: 0;
@@ -20036,7 +20041,7 @@ input.input-inner:focus {
   cursor: pointer;
 }
 
-/* line 1957, resources/scss/screen.scss */
+/* line 1961, resources/scss/screen.scss */
 .ui-menu .ui-menu-divider {
   margin: 5px 0;
   height: 0;
@@ -20045,12 +20050,12 @@ input.input-inner:focus {
   border-width: 1px 0 0 0;
 }
 
-/* line 1966, resources/scss/screen.scss */
+/* line 1970, resources/scss/screen.scss */
 .ui-accordion .ui-accordion-header {
   outline: none;
 }
 
-/* line 1969, resources/scss/screen.scss */
+/* line 1973, resources/scss/screen.scss */
 .ui-accordion .ui-accordion-header .ui-accordion-header-icon {
   display: inline-block;
   position: static;
@@ -20059,14 +20064,14 @@ input.input-inner:focus {
   overflow: visible;
 }
 
-/* line 1979, resources/scss/screen.scss */
+/* line 1983, resources/scss/screen.scss */
 .accordion-plain .ui-accordion-header {
   padding: 8px 0;
   color: #233a70;
   line-height: 28px;
 }
 
-/* line 1984, resources/scss/screen.scss */
+/* line 1988, resources/scss/screen.scss */
 .accordion-plain .ui-accordion-header .ui-accordion-header-icon {
   display: block;
   float: left;
@@ -20076,17 +20081,17 @@ input.input-inner:focus {
   line-height: 28px;
 }
 
-/* line 1994, resources/scss/screen.scss */
+/* line 1998, resources/scss/screen.scss */
 .accordion-plain .accordion-text {
   padding: 20px 40px;
 }
 
-/* line 2000, resources/scss/screen.scss */
+/* line 2004, resources/scss/screen.scss */
 .tabs-plain .tabs-plain-list li {
   display: inline-block;
 }
 
-/* line 2003, resources/scss/screen.scss */
+/* line 2007, resources/scss/screen.scss */
 .tabs-plain .tabs-plain-list li a {
   display: block;
   padding: 8px 10px;
@@ -20225,13 +20230,13 @@ https://raw.github.com/shagstrom/split-pane/master/LICENSE
   cursor: row-resize;
 }
 
-/* line 2017, resources/scss/screen.scss */
+/* line 2021, resources/scss/screen.scss */
 .pretty-split-pane-frame .split-pane > .split-pane-divider.dragged.touch {
   background: blue;
   opacity: 0.25;
 }
 
-/* line 2021, resources/scss/screen.scss */
+/* line 2025, resources/scss/screen.scss */
 .split-pane-divider {
   right: 50%;
   width: 12px;
@@ -20241,7 +20246,7 @@ https://raw.github.com/shagstrom/split-pane/master/LICENSE
   box-shadow: 0 0 10px rgba(35, 58, 112, 0.25);
 }
 
-/* line 2027, resources/scss/screen.scss */
+/* line 2031, resources/scss/screen.scss */
 .pane-content {
   position: absolute;
   top: 0;
@@ -20251,18 +20256,18 @@ https://raw.github.com/shagstrom/split-pane/master/LICENSE
   overflow: auto;
 }
 
-/* line 2031, resources/scss/screen.scss */
+/* line 2035, resources/scss/screen.scss */
 #pane-left {
   right: 50%;
   margin-right: 12px;
 }
 
-/* line 2035, resources/scss/screen.scss */
+/* line 2039, resources/scss/screen.scss */
 #pane-right {
   width: 50%;
 }
 
-/* line 2039, resources/scss/screen.scss */
+/* line 2043, resources/scss/screen.scss */
 .ui-tooltip {
   background-color: #0058cf;
   color: white;

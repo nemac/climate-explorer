@@ -391,6 +391,10 @@ h6 {
 .pac-container:empty{
 }
 
+#filters-row {
+  padding-left: $ce3-default-padding*2;
+}
+
 @include medium {
   #filters-row {
     .select-options {
