@@ -1137,8 +1137,21 @@ input.input-inner-default:focus  {
 #search-row {
   min-height: 50px;
   @include medium {
-    min-height: 106px;
+    min-height: 50px;
     display: block !important;
+  }
+}
+
+
+#high-tide-flooding-viewport,
+#historical-thresholds-viewport,
+#historical-weather-data-viewport {
+  #search-row {
+    min-height: 50px;
+    @include medium {
+      min-height: 106px;
+      display: block !important;
+    }
   }
 }
 

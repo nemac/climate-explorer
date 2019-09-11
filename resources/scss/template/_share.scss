@@ -1,15 +1,20 @@
-#share-widget-wrapper {
+
+
+#share-widget-wrapper, #about-widget-wrapper {
   width: 48px !important;
   height: 32px !important;
   min-width: 48px;
   padding-top: 3px;
   margin-right: 0px;
-  margin-left: auto;
   @include very-small  {
     margin-right: -6px;
   }
 }
 
+
+#about-widget-wrapper {
+  margin-left: auto;
+}
 
 .share-widget {
   cursor: pointer;
