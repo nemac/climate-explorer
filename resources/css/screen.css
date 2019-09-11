@@ -19096,7 +19096,7 @@ input.input-inner:focus {
   -webkit-border-radius: 5px 5px;
   -moz-border-radius: 5px / 5px;
   border-radius: 5px / 5px;
-  border: 1px solid rgba(18, 64, 134, 0.05) !important;
+  border: 1px solid #124086 !important;
 }
 
 @media screen and (max-width: 1240px) {
@@ -19153,7 +19153,6 @@ input.input-inner:focus {
 
 /* line 81, resources/scss/pages/_cards-home.scss */
 #card-image-row {
-  background-color: #124086 !important;
   justify-content: center !important;
   align-content: center !important;
 }
