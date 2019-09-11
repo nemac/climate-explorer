@@ -9,6 +9,7 @@ $ce3-blue2: #0D3064; // main header
 $ce3-blue2alpha: rgba(13, 48, 100, 0.50);
 $ce3-blue3: #124086; // text, button backgrounds, selected icon borders. main color
 $ce3-blue3alpha: rgba(18,64,134,0.50);  // some borders and color disabled items
+$ce3-blue3alphad: rgba(18,64,134,0.10);  // some borders and color disabled items
 $ce3-blue4: #1D6ADD;  // some backgrounds and borders
 $ce3-blue5: #E9F1FC; // button text boxes, not slected radio buttons
 $ce3-blue5alpha: rgba(233, 241, 252,0.50);
@@ -25,7 +26,7 @@ $ce3-verylight-background: $ce3-blue6;
 $ce3-verylight-font: $ce3-blue6;
 
 $ce3-disabled-font: $ce3-blue3alpha;
-$ce3-border-color: $ce3-blue3alpha;
+$ce3-border-color: $ce3-blue3alphad;
 
 // chart colors - used for legend buttons
 $ce3-lower-emissions: #98BCEB;
