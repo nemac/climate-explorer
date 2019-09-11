@@ -9,7 +9,7 @@ $ce3-blue2: #0D3064; // main header
 $ce3-blue2alpha: rgba(13, 48, 100, 0.50);
 $ce3-blue3: #124086; // text, button backgrounds, selected icon borders. main color
 $ce3-blue3alpha: rgba(18,64,134,0.50);  // some borders and color disabled items
-$ce3-blue3alphad: rgba(18,64,134,0.10);  // some borders and color disabled items
+$ce3-blue3alphad: rgba(18,64,134,0.05);  // some borders and color disabled items
 $ce3-blue4: #1D6ADD;  // some backgrounds and borders
 $ce3-blue5: #E9F1FC; // button text boxes, not slected radio buttons
 $ce3-blue5alpha: rgba(233, 241, 252,0.50);
@@ -394,6 +394,9 @@ h6 {
 
 #filters-row {
   padding-left: $ce3-default-padding*2;
+  &.padding-top {
+    padding-top: $ce3-default-padding+10 !important;
+  }
 }
 
 @include medium {
@@ -401,6 +404,18 @@ h6 {
     .select-options {
       margin-top: 0px !important;
     }
+  }
+}
+
+.filter-border-bottom {
+  padding-bottom: $ce3-padding-half;
+  border-bottom: 1px solid $ce3-blue3alpha;
+}
+
+.closed-filters {
+  .filter-border-bottom {
+    padding-bottom: $ce3-padding-half;
+    border-bottom: 0px solid $ce3-blue3alpha;
   }
 }
 
