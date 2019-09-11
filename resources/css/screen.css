@@ -16090,42 +16090,6 @@ body.detail-open #nav-overlay {
   width: auto;
 }
 
-/* line 1742, resources/scss/screen.scss */
-.page-splash {
-  padding: 8% 0;
-  color: #233a70;
-}
-
-/* line 1746, resources/scss/screen.scss */
-.page-splash .splash-text {
-  max-width: 65%;
-  padding-left: calc(4% + 10px);
-}
-
-/* line 1751, resources/scss/screen.scss */
-.page-splash .splash-text h1 {
-  margin: 0 0 20px 0;
-}
-
-/* line 1755, resources/scss/screen.scss */
-.page-splash .splash-text h4 {
-  margin: 0 0 40px 0;
-  color: #f5442d;
-}
-
-/* line 1760, resources/scss/screen.scss */
-.page-splash .splash-text p {
-  width: 75%;
-  margin: 0 0 20px 0;
-  font: 400 1.375rem/1.5em Roboto, Helvetica, "Helvetica Neue", Arial, sans-serif;
-}
-
-/* line 1767, resources/scss/screen.scss */
-.page-splash .share-widget {
-  top: 0;
-  right: 0;
-}
-
 /* line 1, resources/scss/pages/_home.scss */
 #home-viewport {
   background-color: #ffffff;
@@ -19056,281 +19020,6 @@ input.input-inner:focus {
   box-shadow: 0 0 8px rgba(0, 88, 207, 0.25);
 }
 
-/* line 2, resources/scss/pages/_case.scss */
-.page-type-case #viewport {
-  overflow: hidden;
-}
-
-/* line 5, resources/scss/pages/_case.scss */
-.page-type-case #viewport #main-content-wrap {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-}
-
-/* line 9, resources/scss/pages/_case.scss */
-.page-type-case #viewport #map {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-}
-
-/* line 14, resources/scss/pages/_case.scss */
-.page-type-case #case-menu {
-  /*li {
-      &:last-child,
-      &:nth-last-child(2) {
-        .layer-info {
-          top: auto;
-          bottom: 0;
-          
-          &:before {
-            top: auto;
-            bottom: 22px;
-          }
-        }
-      }
-    }*/
-}
-
-/* line 15, resources/scss/pages/_case.scss */
-.page-type-case #case-menu li {
-  position: static;
-}
-
-/* line 19, resources/scss/pages/_case.scss */
-.page-type-case #case-menu .ui-state-highlight {
-  background: #d5e8f2;
-}
-
-/* line 23, resources/scss/pages/_case.scss */
-.page-type-case #case-menu .legend {
-  position: relative;
-  padding: 6%;
-  -webkit-transition: background 0.25s;
-  -moz-transition: background 0.25s;
-  -o-transition: background 0.25s;
-  transition: background 0.25s;
-  /*
-      
-      
-      .visibility {
-        float: right;
-        width: 24px;
-        height: 24px;
-        margin-top: 0px;
-      }*/
-}
-
-/* line 161, resources/scss/_mixins.scss */
-.page-type-case #case-menu .legend:before, .page-type-case #case-menu .legend:after {
-  content: " ";
-  display: table;
-}
-
-/* line 167, resources/scss/_mixins.scss */
-.page-type-case #case-menu .legend:after {
-  clear: both;
-}
-
-/* line 34, resources/scss/pages/_case.scss */
-.page-type-case #case-menu .legend .icons .icon {
-  padding: 0;
-  margin: 0 10px 0 0;
-  opacity: 0.5;
-  -webkit-transition: 0.25s;
-  -moz-transition: 0.25s;
-  -o-transition: 0.25s;
-  transition: 0.25s;
-  cursor: pointer;
-}
-
-/* line 41, resources/scss/pages/_case.scss */
-.page-type-case #case-menu .legend .icons .icon:hover {
-  opacity: 0.75;
-}
-
-/* line 45, resources/scss/pages/_case.scss */
-.page-type-case #case-menu .legend .icons .icon.layer-order {
-  cursor: move;
-}
-
-/* line 51, resources/scss/pages/_case.scss */
-.page-type-case #case-menu .legend .help {
-  display: inline-block;
-  background: none;
-}
-
-/* line 58, resources/scss/pages/_case.scss */
-.page-type-case #case-menu .legend .sublayer-slider {
-  position: relative;
-  clear: both;
-  margin-top: 10px;
-}
-
-/* line 64, resources/scss/pages/_case.scss */
-.page-type-case #case-menu .legend .sublayer-slider.ui-slider .ui-slider-handle {
-  background: #ebebeb;
-}
-
-/* line 70, resources/scss/pages/_case.scss */
-.page-type-case #case-menu .legend .sublayer-range-values {
-  font-size: 0.8em;
-  margin-top: 7px;
-}
-
-/* line 77, resources/scss/pages/_case.scss */
-.page-type-case #case-menu .legend.ui-sortable-helper .icon .layer-order {
-  opacity: 1;
-}
-
-/* line 95, resources/scss/pages/_case.scss */
-.page-type-case #case-menu .legend li {
-  position: relative;
-  margin: 10px 0 0 0;
-}
-
-/* line 100, resources/scss/pages/_case.scss */
-.page-type-case #case-menu .legend .color {
-  display: block;
-  width: 100%;
-  height: 0;
-  padding: 0 0 30% 0;
-}
-
-/* line 107, resources/scss/pages/_case.scss */
-.page-type-case #case-menu .legend .tooltip {
-  font-size: 0.875rem;
-}
-
-/* line 113, resources/scss/pages/_case.scss */
-.page-type-case #case-menu .legend.info-on {
-  background: rgba(245, 68, 45, 0.92);
-}
-
-/* line 116, resources/scss/pages/_case.scss */
-.page-type-case #case-menu .legend.info-on .help {
-  opacity: 1;
-}
-
-/* line 121, resources/scss/pages/_case.scss */
-.page-type-case #case-menu .legend .layer-info {
-  display: none;
-  position: absolute;
-  top: 0;
-  left: 100%;
-  width: 210%;
-  width: calc(200% + 40px);
-  height: auto;
-  max-height: 600px;
-  padding: 10%;
-  background: rgba(255, 255, 255, 0.9);
-  color: #5f5f5f;
-  white-space: normal;
-}
-
-/* line 135, resources/scss/pages/_case.scss */
-.page-type-case #case-menu .legend .layer-info:before {
-  content: '';
-  display: block;
-  position: absolute;
-  left: -20px;
-  top: 22px;
-  width: 0;
-  height: 0;
-  border: 10px solid #ffffff;
-  border-color: transparent #ffffff transparent transparent;
-}
-
-/* line 147, resources/scss/pages/_case.scss */
-.page-type-case #case-menu .legend .layer-info h3 {
-  margin: 0 0 10px 0;
-  font-size: 1.625rem;
-  color: #f5442d;
-}
-
-/* line 153, resources/scss/pages/_case.scss */
-.page-type-case #case-menu .legend .layer-info p {
-  margin: 0 0 12px 0;
-}
-
-/* line 157, resources/scss/pages/_case.scss */
-.page-type-case #case-menu .legend .layer-info .source-link {
-  padding: 0;
-  background: transparent;
-  color: #0058cf;
-  display: inline;
-}
-
-/* line 164, resources/scss/pages/_case.scss */
-.page-type-case #case-menu .legend .layer-info .opacity-slider-wrap {
-  margin: 5% 0;
-}
-
-/* line 161, resources/scss/_mixins.scss */
-.page-type-case #case-menu .legend .layer-info .opacity-slider-wrap:before, .page-type-case #case-menu .legend .layer-info .opacity-slider-wrap:after {
-  content: " ";
-  display: table;
-}
-
-/* line 167, resources/scss/_mixins.scss */
-.page-type-case #case-menu .legend .layer-info .opacity-slider-wrap:after {
-  clear: both;
-}
-
-/* line 168, resources/scss/pages/_case.scss */
-.page-type-case #case-menu .legend .layer-info .opacity-slider-wrap h4 {
-  float: left;
-  width: 25%;
-  font: 0.875rem/1em Roboto, Helvetica, "Helvetica Neue", Arial, sans-serif;
-}
-
-/* line 174, resources/scss/pages/_case.scss */
-.page-type-case #case-menu .legend .layer-info .opacity-slider-wrap .opacity-slider {
-  position: relative;
-  float: left;
-  width: 75%;
-  margin-top: 3px;
-}
-
-/* line 183, resources/scss/pages/_case.scss */
-.page-type-case #case-menu .legend .layer-info .info-accordion h4 {
-  padding: 10px 0;
-  outline: none;
-  -webkit-transition: 0.25s;
-  -moz-transition: 0.25s;
-  -o-transition: 0.25s;
-  transition: 0.25s;
-}
-
-/* line 188, resources/scss/pages/_case.scss */
-.page-type-case #case-menu .legend .layer-info .info-accordion h4.ui-accordion-header-active {
-  color: #f5442d;
-}
-
-/* line 194, resources/scss/pages/_case.scss */
-.page-type-case #case-menu .legend .layer-info .actions {
-  text-align: right;
-}
-
-/* line 197, resources/scss/pages/_case.scss */
-.page-type-case #case-menu .legend .layer-info .actions a {
-  display: inline-block;
-  margin: 0 0 0 10px;
-  padding: 8px 12px;
-  background: #d5e8f2;
-  color: #0058cf;
-}
-
-/* line 204, resources/scss/pages/_case.scss */
-.page-type-case #case-menu .legend .layer-info .actions a .icon {
-  margin-right: 10px;
-}
-
 /* line 1, resources/scss/pages/_cards-home.scss */
 #cards-viewport {
   background-color: #ffffff;
@@ -19587,90 +19276,111 @@ input.input-inner:focus {
   font-size: 14px !important;
 }
 
-/* line 1803, resources/scss/screen.scss */
-.page-type-text #viewport {
-  background-color: rgba(213, 232, 242, 0.5);
-  height: calc(100% - 40px);
+/* line 2, resources/scss/pages/about.scss */
+#about-viewport {
+  background-color: #ffffff;
+  color: #124086;
+  height: calc(100% - 48px - 6px - 100px);
+  min-height: calc(100% - 48px - 6px - 100px);
+  overflow: auto;
+  flex: 1 1 auto;
+  margin-bottom: 6px;
 }
 
-/* line 1810, resources/scss/screen.scss */
-#standard-splash {
-  padding-bottom: 40px;
+/* line 11, resources/scss/pages/about.scss */
+#about-viewport:after {
+  content: '';
+  width: 100%;
+  height: 5px;
+  position: absolute;
+  top: calc(100% - 105px);
+  left: -2px;
+  -webkit-box-shadow: inset 0 -2px 2px rgba(0, 0, 0, 0.3);
+  -moz-box-shadow: inset 0 -2px 2px rgba(0, 0, 0, 0.3);
+  box-shadow: inset 0 -2px 2px rgba(0, 0, 0, 0.3);
 }
 
-/* line 1814, resources/scss/screen.scss */
-#standard-body {
-  max-width: 75%;
-  padding-left: calc(4% + 10px);
+/* line 21, resources/scss/pages/about.scss */
+#about-viewport #about-text-row {
+  width: 90% !important;
+  align-self: center !important;
 }
 
-/* line 1818, resources/scss/screen.scss */
-#standard-body a {
+@media screen and (max-width: 768px) {
+  /* line 21, resources/scss/pages/about.scss */
+  #about-viewport #about-text-row {
+    width: 90% !important;
+  }
+}
+
+/* line 30, resources/scss/pages/about.scss */
+#about-viewport a {
+  color: #1D6ADD;
   text-decoration: underline;
 }
 
-/* line 1822, resources/scss/screen.scss */
-#standard-body p {
+/* line 35, resources/scss/pages/about.scss */
+#about-viewport p {
   line-height: 1.75em;
   margin: 0 0 20px 0;
 }
 
-/* line 1827, resources/scss/screen.scss */
-#standard-body strong {
+/* line 40, resources/scss/pages/about.scss */
+#about-viewport strong {
   font-weight: 600;
 }
 
-/* line 1831, resources/scss/screen.scss */
-#standard-body h2 {
+/* line 44, resources/scss/pages/about.scss */
+#about-viewport h2 {
   margin: 30px 0;
   font-size: 2rem;
-  color: #0058cf;
+  color: #0D3064;
 }
 
-/* line 1837, resources/scss/screen.scss */
-#standard-body h3 {
+/* line 50, resources/scss/pages/about.scss */
+#about-viewport h3 {
   margin: 20px 0;
   font-size: 1.75rem;
-  color: #f5442d;
+  color: #124086;
 }
 
-/* line 1843, resources/scss/screen.scss */
-#standard-body h4 {
+/* line 56, resources/scss/pages/about.scss */
+#about-viewport h4 {
   margin: 0 0 15px 0;
   font-size: 1.25rem;
   line-height: 1.375em;
 }
 
-/* line 1849, resources/scss/screen.scss */
-#standard-body ul, #standard-body ol {
+/* line 61, resources/scss/pages/about.scss */
+#about-viewport ul, #about-viewport ol {
   margin: 0 20px 30px 20px;
   padding: 0 0 0 30px;
   font: 300 1rem/1.5em Roboto, Helvetica, "Helvetica Neue", Arial, sans-serif;
 }
 
-/* line 1854, resources/scss/screen.scss */
-#standard-body ul li, #standard-body ol li {
+/* line 66, resources/scss/pages/about.scss */
+#about-viewport ul li, #about-viewport ol li {
   margin: 0 0 10px 0;
 }
 
-/* line 1859, resources/scss/screen.scss */
-#standard-body ol {
+/* line 71, resources/scss/pages/about.scss */
+#about-viewport ol {
   list-style-type: decimal;
 }
 
-/* line 1863, resources/scss/screen.scss */
-#standard-body li {
+/* line 75, resources/scss/pages/about.scss */
+#about-viewport li {
   list-style-type: disc;
 }
 
-/* line 1867, resources/scss/screen.scss */
-#standard-body dl {
+/* line 79, resources/scss/pages/about.scss */
+#about-viewport dl {
   margin: 0 0 30px 0;
   font: 300 1rem/1.5em Roboto, Helvetica, "Helvetica Neue", Arial, sans-serif;
 }
 
-/* line 1871, resources/scss/screen.scss */
-#standard-body dl dt {
+/* line 83, resources/scss/pages/about.scss */
+#about-viewport dl dt {
   margin: 0 0 15px 0;
   padding-bottom: 10px;
   border-bottom: 1px solid #dddddd;
@@ -19678,18 +19388,18 @@ input.input-inner:focus {
   font-weight: 400;
 }
 
-/* line 1879, resources/scss/screen.scss */
-#standard-body dl dd {
+/* line 91, resources/scss/pages/about.scss */
+#about-viewport dl dd {
   margin: 0 0 25px 0;
 }
 
-/* line 1884, resources/scss/screen.scss */
-#standard-body hr {
+/* line 96, resources/scss/pages/about.scss */
+#about-viewport hr {
   display: block;
   height: 3px;
   margin: 60px 0;
   border: none;
-  background: #f5442d;
+  background: rgba(18, 64, 134, 0.5);
 }
 
 /* line 1, resources/scss/plugins/_shepherd-theme-arrows.scss */
@@ -20275,7 +19985,7 @@ input.input-inner:focus {
   cursor: default;
 }
 
-/* line 1909, resources/scss/screen.scss */
+/* line 1931, resources/scss/screen.scss */
 .ui-autocomplete {
   position: absolute;
   top: 0;
@@ -20283,7 +19993,7 @@ input.input-inner:focus {
   cursor: default;
 }
 
-/* line 1915, resources/scss/screen.scss */
+/* line 1937, resources/scss/screen.scss */
 .ui-menu {
   display: block;
   padding: 10px;
@@ -20296,12 +20006,12 @@ input.input-inner:focus {
   box-shadow: 0 0 12px rgba(35, 58, 112, 0.25);
 }
 
-/* line 1924, resources/scss/screen.scss */
+/* line 1946, resources/scss/screen.scss */
 .ui-menu .ui-menu {
   position: absolute;
 }
 
-/* line 1928, resources/scss/screen.scss */
+/* line 1950, resources/scss/screen.scss */
 .ui-menu .ui-menu-item {
   position: relative;
   margin: 0;
@@ -20309,7 +20019,7 @@ input.input-inner:focus {
   cursor: pointer;
 }
 
-/* line 1935, resources/scss/screen.scss */
+/* line 1957, resources/scss/screen.scss */
 .ui-menu .ui-menu-divider {
   margin: 5px 0;
   height: 0;
@@ -20318,12 +20028,12 @@ input.input-inner:focus {
   border-width: 1px 0 0 0;
 }
 
-/* line 1944, resources/scss/screen.scss */
+/* line 1966, resources/scss/screen.scss */
 .ui-accordion .ui-accordion-header {
   outline: none;
 }
 
-/* line 1947, resources/scss/screen.scss */
+/* line 1969, resources/scss/screen.scss */
 .ui-accordion .ui-accordion-header .ui-accordion-header-icon {
   display: inline-block;
   position: static;
@@ -20332,14 +20042,14 @@ input.input-inner:focus {
   overflow: visible;
 }
 
-/* line 1957, resources/scss/screen.scss */
+/* line 1979, resources/scss/screen.scss */
 .accordion-plain .ui-accordion-header {
   padding: 8px 0;
   color: #233a70;
   line-height: 28px;
 }
 
-/* line 1962, resources/scss/screen.scss */
+/* line 1984, resources/scss/screen.scss */
 .accordion-plain .ui-accordion-header .ui-accordion-header-icon {
   display: block;
   float: left;
@@ -20349,17 +20059,17 @@ input.input-inner:focus {
   line-height: 28px;
 }
 
-/* line 1972, resources/scss/screen.scss */
+/* line 1994, resources/scss/screen.scss */
 .accordion-plain .accordion-text {
   padding: 20px 40px;
 }
 
-/* line 1978, resources/scss/screen.scss */
+/* line 2000, resources/scss/screen.scss */
 .tabs-plain .tabs-plain-list li {
   display: inline-block;
 }
 
-/* line 1981, resources/scss/screen.scss */
+/* line 2003, resources/scss/screen.scss */
 .tabs-plain .tabs-plain-list li a {
   display: block;
   padding: 8px 10px;
@@ -20498,13 +20208,13 @@ https://raw.github.com/shagstrom/split-pane/master/LICENSE
   cursor: row-resize;
 }
 
-/* line 1995, resources/scss/screen.scss */
+/* line 2017, resources/scss/screen.scss */
 .pretty-split-pane-frame .split-pane > .split-pane-divider.dragged.touch {
   background: blue;
   opacity: 0.25;
 }
 
-/* line 1999, resources/scss/screen.scss */
+/* line 2021, resources/scss/screen.scss */
 .split-pane-divider {
   right: 50%;
   width: 12px;
@@ -20514,7 +20224,7 @@ https://raw.github.com/shagstrom/split-pane/master/LICENSE
   box-shadow: 0 0 10px rgba(35, 58, 112, 0.25);
 }
 
-/* line 2005, resources/scss/screen.scss */
+/* line 2027, resources/scss/screen.scss */
 .pane-content {
   position: absolute;
   top: 0;
@@ -20524,18 +20234,18 @@ https://raw.github.com/shagstrom/split-pane/master/LICENSE
   overflow: auto;
 }
 
-/* line 2009, resources/scss/screen.scss */
+/* line 2031, resources/scss/screen.scss */
 #pane-left {
   right: 50%;
   margin-right: 12px;
 }
 
-/* line 2013, resources/scss/screen.scss */
+/* line 2035, resources/scss/screen.scss */
 #pane-right {
   width: 50%;
 }
 
-/* line 2017, resources/scss/screen.scss */
+/* line 2039, resources/scss/screen.scss */
 .ui-tooltip {
   background-color: #0058cf;
   color: white;

@@ -266,7 +266,7 @@
 
     $(window).resize(function () {
       if ($('body').hasClass('page-type-location') || $('body').hasClass('page-type-text')) {
-        $('#viewport').css('height', $(window).height() - 40 - parseInt($('#viewport').css('margin-top')) + 'px');
+        // $('#viewport').css('height', $(window).height() - 40 - parseInt($('#viewport').css('margin-top')) + 'px');
       }
     });
 

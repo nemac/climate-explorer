@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang='en' class="width-100 height-100">
+<html>
 <head>
   {{> head }}
   <meta property="fb:app_id" content="187816851587993" />
@@ -10,28 +10,23 @@
   <meta property="og:image" content="/resources/img/og.jpg" />
 </head>
 
-<body class="width-100 height-100">
+<body id="page-about" class="page-type-text">
+<div class="cd-cover-layer"></div>
+{{> secondary_header }}
 
-  {{> secondary_header }}
-
-  <!-- <div id="main-content-wrap">
+<div id="viewport">
+  <div id="main-content-wrap">
 
     {{> share }}
 
-    <div id="location-search">
-      <input type="text" class="autocomplete location-mapper" autocomplete="off" placeholder="Search another City, County or Zip code">
-    </div>
+    <section id="standard-splash" class="page-splash">
+      <div class="splash-text">
+        <h2>About Climate Explorer</h2>
+      </div>
+    </section>
 
-  </div> -->
-<div id="about-viewport" class="padding-horrizontal d-flex d-flex-column">
+    <section id="standard-body" class="page-text">
 
-  <div id="about-text-row" class="padding-vertical width-100" >
-
-    <div class="splash-text">
-      <h2>About Climate Explorer</h2>
-    </div>
-
-    <div id="standard-body" class="page-text">
       <p>
         Individuals, businesses, and communities of all sizes can use the Climate Explorer to understand how climate conditions in their location may change
         over coming decades. This information—derived from global climate models—can help them make decisions and build resilience to extreme events. </p>
@@ -210,7 +205,7 @@
               href="https://doi.org/10.1175/BAMS-D-11-00094.1">10.1175/BAMS-D-11-00094.1</a><span style="text-decoration:underline;">. </span></li>
         <li>Sweet, W.V., J. J. Marra and G. Dusek (2017): 2016 State of U.S. High Tide Flooding and a 2017 Outlook. Supplement to State of the Climate: National
           Overview for May 2017, published online June 2017, retrieved on 9/15/17 from <a
-              href="https://www.ncdc.noaa.gov/monitoring-content/sotc/national/2017/may/2016_StateofHighTideFlooding.pdf">2016_StateofHighTideFlooding.pdf</a>.
+              href="https://www.ncdc.noaa.gov/monitoring-content/sotc/national/2017/may/2016_StateofHighTideFlooding.pdf">https://www.ncdc.noaa.gov/monitoring-content/sotc/national/2017/may/2016_StateofHighTideFlooding.pdf</a>.
         </li>
         <li>Sweet, W.V. and J. Park (2014): From the extreme and the mean: Acceleration and tipping point of coastal inundation from sea level rise. Earth
           Futures, 2 579-600. doi: <a href="https://doi.org/10.1002/2014EF000272">10.1002/2014EF000272</a></li>
@@ -223,20 +218,12 @@
 
       <p>If you have questions or comments on the Climate Explorer, please direct them to <a href="mailto:noaa.toolkit@noaa.gov">noaa.toolkit@noaa.gov</a>.</p>
 
-    </div>
-
+    </section>
 
   </div>
-
-
 </div>
 
-{{> nav_footer }}
 {{> footer }}
 
-<script src="https://unpkg.com/terraformer@1.0.8/terraformer.js" integrity="sha384-+M797Pj3WZVCwMmLbOxAoaWYcKJo8NSxItmI48ytcLNeAnfn1d/IckFn31jEqrzP"
-        crossorigin="anonymous"></script>
-<script src="https://unpkg.com/terraformer-arcgis-parser@1.0.5/terraformer-arcgis-parser.js"
-        integrity="sha384-duFUjKTSNoxEspdJNwr83CUgRxclf0ueKJB9DU/Vbit6bfWgzvZsHW6H1JLBBXhp" crossorigin="anonymous"></script>
-</body>ååå
+</body>
 </html>
