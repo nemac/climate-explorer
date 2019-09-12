@@ -14,6 +14,11 @@
 
 #about-widget-wrapper {
   margin-left: auto;
+  width: 148px !important;
+  @include very-small  {
+    width: 48px !important;
+    margin-right: 3px !important;
+  }
 }
 
 .share-widget {
@@ -21,8 +26,7 @@
   background: $ce3-blue3;
   @include border-radius(5px !important);
   max-width: 40px;
-  @include medium {
-  }
+
   z-index: 10;
   padding: 6px;
   margin-right: 12px;
@@ -81,6 +85,7 @@
     margin-left: -5px;
     margin-top: 6px;
     width: 40px;
+
     @include very-small  {
       width: 40px;
       min-width: 40px;
@@ -96,6 +101,7 @@
     li {
       width: 40px;
       min-width: 40px;
+
       height: 60px;
       @include very-small  {
         width: 40px;
@@ -133,6 +139,83 @@
       margin: 0 auto;
     }
   }
+
+  // about widget
+  &.about {
+    width: 148px;
+    max-width: 148px;
+
+    @include very-mid-small {
+      margin-right: 38px;
+    }
+
+    @include very-small {
+      width: 40px;
+      max-width: 40px;
+    }
+
+    .icon {
+      display: unset !important;
+      font-size: 1.5rem;
+      @include very-small {
+        font-size: 1.25rem;
+      }
+    }
+
+    .share-icon {
+      @include very-small {
+        font-size: 1.25rem;
+      }
+    }
+
+    a {
+      @include very-small {
+        padding-top: 0px;
+        width: 40px !important;
+        max-width: 40px !important;
+        min-width: 40px !important;
+      }
+
+      flex-wrap: nowrap !important;
+    }
+
+    ul {
+      width: 137px;
+      text-indent: 0px;
+      @include very-small {
+        width: 40px;
+        max-width: 40px;
+      }
+
+      li {
+        width: 137px;
+        padding-top: 5px;
+
+        a {
+          padding-top: $ce3-default-padding;
+          @include very-small {
+            padding-top: 0px;
+          }
+        }
+
+        @include very-small {
+          width: 40px;
+          max-width: 40px;
+        }
+
+        .a-share-label {
+          font-size: 14px;
+          text-indent: 0px;
+          @include very-small {
+            display: none;
+          }
+
+        }
+      }
+    }
+  }
+
+
 }
 
 #share-permalink-input {

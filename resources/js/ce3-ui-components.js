@@ -143,7 +143,6 @@ function setSelectFromButton(target) {
   $(`#${selector}`).attr('rel', val);
 }
 
-
 //  TODO move this global functions so its not in two places
 // this function removes existing paramaters of the key undefined
 // and returns a new search param string.  We need to do this to avoid

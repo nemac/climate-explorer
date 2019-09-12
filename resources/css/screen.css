@@ -12068,12 +12068,12 @@ This file is due for a cleanup. Please do not add to the mess.
     top: auto;
     left: auto;
   }
-  /* line 161, resources/scss/_mixins.scss */
+  /* line 169, resources/scss/_mixins.scss */
   #main-header:before, #main-header:after {
     content: " ";
     display: table;
   }
-  /* line 167, resources/scss/_mixins.scss */
+  /* line 175, resources/scss/_mixins.scss */
   #main-header:after {
     clear: both;
   }
@@ -12182,12 +12182,12 @@ This file is due for a cleanup. Please do not add to the mess.
     top: auto;
     left: auto;
   }
-  /* line 161, resources/scss/_mixins.scss */
+  /* line 169, resources/scss/_mixins.scss */
   #main-header:before, #main-header:after {
     content: " ";
     display: table;
   }
-  /* line 167, resources/scss/_mixins.scss */
+  /* line 175, resources/scss/_mixins.scss */
   #main-header:after {
     clear: both;
   }
@@ -12264,12 +12264,12 @@ This file is due for a cleanup. Please do not add to the mess.
     width: 80%;
     margin: 20px auto;
   }
-  /* line 161, resources/scss/_mixins.scss */
+  /* line 169, resources/scss/_mixins.scss */
   #nav-overlay #nav-controls:before, #nav-overlay #nav-controls:after {
     content: " ";
     display: table;
   }
-  /* line 167, resources/scss/_mixins.scss */
+  /* line 175, resources/scss/_mixins.scss */
   #nav-overlay #nav-controls:after {
     clear: both;
   }
@@ -12548,12 +12548,12 @@ This file is due for a cleanup. Please do not add to the mess.
     top: 5.5rem;
     left: 1.5rem;
   }
-  /* line 161, resources/scss/_mixins.scss */
+  /* line 169, resources/scss/_mixins.scss */
   #nav-overlay #nav-controls:before, #nav-overlay #nav-controls:after {
     content: " ";
     display: table;
   }
-  /* line 167, resources/scss/_mixins.scss */
+  /* line 175, resources/scss/_mixins.scss */
   #nav-overlay #nav-controls:after {
     clear: both;
   }
@@ -12984,7 +12984,7 @@ This file is due for a cleanup. Please do not add to the mess.
   box-sizing: border-box;
 }
 
-/* line 134, resources/scss/_mixins.scss */
+/* line 142, resources/scss/_mixins.scss */
 *:before, *:after {
   -moz-box-sizing: border-box;
   -webkit-box-sizing: border-box;
@@ -14763,13 +14763,13 @@ input.input-inner-default:focus {
   border-color: #ffffff transparent transparent transparent;
 }
 
-/* line 161, resources/scss/_mixins.scss */
+/* line 169, resources/scss/_mixins.scss */
 .chart-legend:before, .chart-legend:after {
   content: " ";
   display: table;
 }
 
-/* line 167, resources/scss/_mixins.scss */
+/* line 175, resources/scss/_mixins.scss */
 .chart-legend:after {
   clear: both;
 }
@@ -14954,9 +14954,18 @@ input.input-inner-default:focus {
 /* line 15, resources/scss/template/_share.scss */
 #about-widget-wrapper {
   margin-left: auto;
+  width: 148px !important;
 }
 
-/* line 19, resources/scss/template/_share.scss */
+@media screen and (max-width: 599px) {
+  /* line 15, resources/scss/template/_share.scss */
+  #about-widget-wrapper {
+    width: 48px !important;
+    margin-right: 3px !important;
+  }
+}
+
+/* line 24, resources/scss/template/_share.scss */
 .share-widget {
   cursor: pointer;
   background: #124086;
@@ -14971,7 +14980,7 @@ input.input-inner-default:focus {
   margin-right: 12px;
 }
 
-/* line 30, resources/scss/template/_share.scss */
+/* line 34, resources/scss/template/_share.scss */
 .share-widget a {
   width: 48px !important;
   min-width: 48px !important;
@@ -14987,13 +14996,13 @@ input.input-inner-default:focus {
 }
 
 @media screen and (max-width: 599px) {
-  /* line 40, resources/scss/template/_share.scss */
+  /* line 44, resources/scss/template/_share.scss */
   .share-widget a .a-share-label {
     display: none;
   }
 }
 
-/* line 46, resources/scss/template/_share.scss */
+/* line 50, resources/scss/template/_share.scss */
 .share-widget .icon {
   display: block;
   margin: 0 auto 4px auto;
@@ -15002,7 +15011,7 @@ input.input-inner-default:focus {
   text-indent: 0;
 }
 
-/* line 54, resources/scss/template/_share.scss */
+/* line 58, resources/scss/template/_share.scss */
 .share-widget .share-icon {
   width: 32px;
   font-size: 1.25rem;
@@ -15010,14 +15019,14 @@ input.input-inner-default:focus {
 }
 
 @media screen and (max-width: 900px) {
-  /* line 54, resources/scss/template/_share.scss */
+  /* line 58, resources/scss/template/_share.scss */
   .share-widget .share-icon {
     font-size: .875rem;
     padding-bottom: 3px;
   }
 }
 
-/* line 64, resources/scss/template/_share.scss */
+/* line 68, resources/scss/template/_share.scss */
 .share-widget .share-trigger {
   text-align: center;
   font: 0.625rem/1em "CESans-Heavy", Roboto, Helvetica, "Helvetica Neue", Arial, sans-serif;
@@ -15030,7 +15039,7 @@ input.input-inner-default:focus {
   z-index: 2;
 }
 
-/* line 71, resources/scss/template/_share.scss */
+/* line 75, resources/scss/template/_share.scss */
 .share-widget .share-trigger.open {
   background: #144693;
   -moz-border-radius-bottomright: 0px !important;
@@ -15041,7 +15050,7 @@ input.input-inner-default:focus {
   border-bottom-left-radius: 0px !important;
 }
 
-/* line 78, resources/scss/template/_share.scss */
+/* line 82, resources/scss/template/_share.scss */
 .share-widget ul {
   position: absolute;
   margin-right: 10px;
@@ -15063,14 +15072,14 @@ input.input-inner-default:focus {
 }
 
 @media screen and (max-width: 599px) {
-  /* line 78, resources/scss/template/_share.scss */
+  /* line 82, resources/scss/template/_share.scss */
   .share-widget ul {
     width: 40px;
     min-width: 40px;
   }
 }
 
-/* line 96, resources/scss/template/_share.scss */
+/* line 101, resources/scss/template/_share.scss */
 .share-widget ul li {
   width: 40px;
   min-width: 40px;
@@ -15079,37 +15088,37 @@ input.input-inner-default:focus {
 }
 
 @media screen and (max-width: 599px) {
-  /* line 96, resources/scss/template/_share.scss */
+  /* line 101, resources/scss/template/_share.scss */
   .share-widget ul li {
     width: 40px;
     min-width: 40px;
   }
 }
 
-/* line 106, resources/scss/template/_share.scss */
+/* line 112, resources/scss/template/_share.scss */
 .share-widget ul li .a-share-label {
   font-size: 0;
   line-height: 0;
   text-indent: -9999px;
 }
 
-/* line 109, resources/scss/template/_share.scss */
+/* line 115, resources/scss/template/_share.scss */
 .share-widget ul li:hover {
   background: #a6c6f3;
 }
 
-/* line 112, resources/scss/template/_share.scss */
+/* line 118, resources/scss/template/_share.scss */
 .share-widget ul li a {
   top: 0px;
   position: relative;
 }
 
-/* line 115, resources/scss/template/_share.scss */
+/* line 121, resources/scss/template/_share.scss */
 .share-widget ul li a:hover {
   background: #a6c6f3;
 }
 
-/* line 121, resources/scss/template/_share.scss */
+/* line 127, resources/scss/template/_share.scss */
 .share-widget ul a {
   color: #124086;
   font-size: 0;
@@ -15117,7 +15126,7 @@ input.input-inner-default:focus {
   text-indent: -9999px;
 }
 
-/* line 127, resources/scss/template/_share.scss */
+/* line 133, resources/scss/template/_share.scss */
 .share-widget ul .icon {
   width: 40px;
   padding: 12px;
@@ -15129,7 +15138,116 @@ input.input-inner-default:focus {
   margin: 0 auto;
 }
 
-/* line 138, resources/scss/template/_share.scss */
+/* line 144, resources/scss/template/_share.scss */
+.share-widget.about {
+  width: 148px;
+  max-width: 148px;
+}
+
+@media screen and (max-width: 900px) and (min-width: 599px) {
+  /* line 144, resources/scss/template/_share.scss */
+  .share-widget.about {
+    margin-right: 38px;
+  }
+}
+
+@media screen and (max-width: 599px) {
+  /* line 144, resources/scss/template/_share.scss */
+  .share-widget.about {
+    width: 40px;
+    max-width: 40px;
+  }
+}
+
+/* line 157, resources/scss/template/_share.scss */
+.share-widget.about .icon {
+  display: unset !important;
+  font-size: 1.5rem;
+}
+
+@media screen and (max-width: 599px) {
+  /* line 157, resources/scss/template/_share.scss */
+  .share-widget.about .icon {
+    font-size: 1.25rem;
+  }
+}
+
+@media screen and (max-width: 599px) {
+  /* line 165, resources/scss/template/_share.scss */
+  .share-widget.about .share-icon {
+    font-size: 1.25rem;
+  }
+}
+
+/* line 171, resources/scss/template/_share.scss */
+.share-widget.about a {
+  flex-wrap: nowrap !important;
+}
+
+@media screen and (max-width: 599px) {
+  /* line 171, resources/scss/template/_share.scss */
+  .share-widget.about a {
+    padding-top: 0px;
+    width: 40px !important;
+    max-width: 40px !important;
+    min-width: 40px !important;
+  }
+}
+
+/* line 182, resources/scss/template/_share.scss */
+.share-widget.about ul {
+  width: 137px;
+  text-indent: 0px;
+}
+
+@media screen and (max-width: 599px) {
+  /* line 182, resources/scss/template/_share.scss */
+  .share-widget.about ul {
+    width: 40px;
+    max-width: 40px;
+  }
+}
+
+/* line 190, resources/scss/template/_share.scss */
+.share-widget.about ul li {
+  width: 137px;
+  padding-top: 5px;
+}
+
+/* line 194, resources/scss/template/_share.scss */
+.share-widget.about ul li a {
+  padding-top: 12px;
+}
+
+@media screen and (max-width: 599px) {
+  /* line 194, resources/scss/template/_share.scss */
+  .share-widget.about ul li a {
+    padding-top: 0px;
+  }
+}
+
+@media screen and (max-width: 599px) {
+  /* line 190, resources/scss/template/_share.scss */
+  .share-widget.about ul li {
+    width: 40px;
+    max-width: 40px;
+  }
+}
+
+/* line 206, resources/scss/template/_share.scss */
+.share-widget.about ul li .a-share-label {
+  font-size: 14px;
+  text-indent: 0px;
+}
+
+@media screen and (max-width: 599px) {
+  /* line 206, resources/scss/template/_share.scss */
+  .share-widget.about ul li .a-share-label {
+    display: none;
+  }
+}
+
+/* line 221, resources/scss/template/_share.scss */
 #share-permalink-input {
   display: none;
   position: absolute;
@@ -15150,14 +15268,14 @@ input.input-inner-default:focus {
 }
 
 @media screen and (max-width: 900px) {
-  /* line 138, resources/scss/template/_share.scss */
+  /* line 221, resources/scss/template/_share.scss */
   #share-permalink-input {
     padding: 8px;
     width: 205px;
   }
 }
 
-/* line 154, resources/scss/template/_share.scss */
+/* line 237, resources/scss/template/_share.scss */
 #share-permalink-input input {
   display: block;
   position: absolute;
@@ -15180,12 +15298,12 @@ input.input-inner-default:focus {
   outline: none;
 }
 
-/* line 172, resources/scss/template/_share.scss */
+/* line 255, resources/scss/template/_share.scss */
 #share-permalink-inputfocus {
   outline: none !important;
 }
 
-/* line 176, resources/scss/template/_share.scss */
+/* line 259, resources/scss/template/_share.scss */
 #share-permalink-input:after {
   content: '';
   display: block;
@@ -15451,13 +15569,13 @@ input.input-inner-default:focus {
   background: rgba(255, 255, 255, 0.1);
 }
 
-/* line 161, resources/scss/_mixins.scss */
+/* line 169, resources/scss/_mixins.scss */
 #nav-overlay .nav-content .tab ol:before, #nav-overlay .nav-content .tab ol:after {
   content: " ";
   display: table;
 }
 
-/* line 167, resources/scss/_mixins.scss */
+/* line 175, resources/scss/_mixins.scss */
 #nav-overlay .nav-content .tab ol:after {
   clear: both;
 }
@@ -15491,7 +15609,7 @@ input.input-inner-default:focus {
   font: 300 1rem/1em Roboto, Helvetica, "Helvetica Neue", Arial, sans-serif;
 }
 
-/* line 161, resources/scss/_mixins.scss */
+/* line 169, resources/scss/_mixins.scss */
 #nav-overlay .nav-content .tab ol.col-2:before, #nav-overlay .nav-content .tab ol.col-2:after,
 #nav-overlay .nav-content .tab ul.col-2:before,
 #nav-overlay .nav-content .tab ul.col-2:after {
@@ -15499,7 +15617,7 @@ input.input-inner-default:focus {
   display: table;
 }
 
-/* line 167, resources/scss/_mixins.scss */
+/* line 175, resources/scss/_mixins.scss */
 #nav-overlay .nav-content .tab ol.col-2:after,
 #nav-overlay .nav-content .tab ul.col-2:after {
   clear: both;
@@ -15512,7 +15630,7 @@ input.input-inner-default:focus {
   width: 50%;
 }
 
-/* line 161, resources/scss/_mixins.scss */
+/* line 169, resources/scss/_mixins.scss */
 #nav-overlay .nav-content .tab ol.col-3:before, #nav-overlay .nav-content .tab ol.col-3:after,
 #nav-overlay .nav-content .tab ul.col-3:before,
 #nav-overlay .nav-content .tab ul.col-3:after {
@@ -15520,7 +15638,7 @@ input.input-inner-default:focus {
   display: table;
 }
 
-/* line 167, resources/scss/_mixins.scss */
+/* line 175, resources/scss/_mixins.scss */
 #nav-overlay .nav-content .tab ol.col-3:after,
 #nav-overlay .nav-content .tab ul.col-3:after {
   clear: both;
@@ -15533,7 +15651,7 @@ input.input-inner-default:focus {
   width: 33%;
 }
 
-/* line 161, resources/scss/_mixins.scss */
+/* line 169, resources/scss/_mixins.scss */
 #nav-overlay .nav-content .tab ol.col-4:before, #nav-overlay .nav-content .tab ol.col-4:after,
 #nav-overlay .nav-content .tab ul.col-4:before,
 #nav-overlay .nav-content .tab ul.col-4:after {
@@ -15541,7 +15659,7 @@ input.input-inner-default:focus {
   display: table;
 }
 
-/* line 167, resources/scss/_mixins.scss */
+/* line 175, resources/scss/_mixins.scss */
 #nav-overlay .nav-content .tab ol.col-4:after,
 #nav-overlay .nav-content .tab ul.col-4:after {
   clear: both;

@@ -24,9 +24,6 @@
 
       var destination = viewport_scrolltop + element_position;
 
-      //console.log(element_position);
-      //console.log(destination);
-
       $('#viewport').animate({
         scrollTop: destination - offset
       }, speed);
@@ -443,6 +440,9 @@
       } else {
         $(this).addClass('open').siblings('ul').animate({
           height: '180px'
+        }, 500);
+        $(this).addClass('open').siblings('ul.about').animate({
+          height: '240px'
         }, 500);
       }
     });

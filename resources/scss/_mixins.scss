@@ -4,6 +4,14 @@
   @media screen and (max-width: 599px) { @content; }
 }
 
+@mixin very-small-min {
+  @media screen and (min-width: 599px) { @content; }
+}
+
+@mixin very-mid-small {
+  @media screen and (max-width: 900px) and (min-width: 599px) { @content; }
+}
+
 @mixin small {
   @media screen and (max-width: 768px) { @content; }
 }

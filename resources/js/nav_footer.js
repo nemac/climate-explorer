@@ -268,7 +268,7 @@ $(function () {
       e.stopPropagation();
       // remove existing nav search url parameters
       // otherwise we use the first one which is most likely the wrong page
-      const seachParams =  removeUrlParam('nav')
+      const seachParams = removeUrlParam('nav')
 
       // get the invisiable link just outside the element node tree
       // if inside we have issues will bubbling propogation
