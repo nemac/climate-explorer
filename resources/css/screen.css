@@ -15142,6 +15142,7 @@ input.input-inner-default:focus {
 .share-widget.about {
   width: 148px;
   max-width: 148px;
+  max-height: 36px;
 }
 
 @media screen and (max-width: 900px) and (min-width: 599px) {
@@ -15154,38 +15155,51 @@ input.input-inner-default:focus {
 @media screen and (max-width: 599px) {
   /* line 144, resources/scss/template/_share.scss */
   .share-widget.about {
-    width: 40px;
-    max-width: 40px;
+    width: 46px;
+    max-width: 46px;
   }
 }
 
-/* line 157, resources/scss/template/_share.scss */
+/* line 158, resources/scss/template/_share.scss */
 .share-widget.about .icon {
-  display: unset !important;
+  width: 25%;
+  height: 100%;
+  float: left;
+  line-height: 14px;
+  padding-top: 12px;
   font-size: 1.5rem;
 }
 
 @media screen and (max-width: 599px) {
-  /* line 157, resources/scss/template/_share.scss */
+  /* line 158, resources/scss/template/_share.scss */
   .share-widget.about .icon {
     font-size: 1.25rem;
+    padding-top: 18px;
   }
 }
 
+/* line 172, resources/scss/template/_share.scss */
+.share-widget.about .share-icon {
+  vertical-align: middle;
+}
+
 @media screen and (max-width: 599px) {
-  /* line 165, resources/scss/template/_share.scss */
+  /* line 172, resources/scss/template/_share.scss */
   .share-widget.about .share-icon {
     font-size: 1.25rem;
   }
 }
 
-/* line 171, resources/scss/template/_share.scss */
+/* line 179, resources/scss/template/_share.scss */
 .share-widget.about a {
-  flex-wrap: nowrap !important;
+  display: block !important;
+  width: 100% !important;
+  height: 100% !important;
+  vertical-align: middle;
 }
 
 @media screen and (max-width: 599px) {
-  /* line 171, resources/scss/template/_share.scss */
+  /* line 179, resources/scss/template/_share.scss */
   .share-widget.about a {
     padding-top: 0px;
     width: 40px !important;
@@ -15194,60 +15208,69 @@ input.input-inner-default:focus {
   }
 }
 
-/* line 182, resources/scss/template/_share.scss */
+/* line 194, resources/scss/template/_share.scss */
 .share-widget.about ul {
   width: 137px;
   text-indent: 0px;
+  margin-top: 0px;
 }
 
 @media screen and (max-width: 599px) {
-  /* line 182, resources/scss/template/_share.scss */
+  /* line 194, resources/scss/template/_share.scss */
   .share-widget.about ul {
-    width: 40px;
-    max-width: 40px;
+    width: 46px;
+    max-width: 46px;
   }
 }
 
-/* line 190, resources/scss/template/_share.scss */
+/* line 204, resources/scss/template/_share.scss */
 .share-widget.about ul li {
   width: 137px;
   padding-top: 5px;
 }
 
-/* line 194, resources/scss/template/_share.scss */
+/* line 208, resources/scss/template/_share.scss */
 .share-widget.about ul li a {
   padding-top: 12px;
 }
 
 @media screen and (max-width: 599px) {
-  /* line 194, resources/scss/template/_share.scss */
+  /* line 208, resources/scss/template/_share.scss */
   .share-widget.about ul li a {
     padding-top: 0px;
   }
 }
 
 @media screen and (max-width: 599px) {
-  /* line 190, resources/scss/template/_share.scss */
+  /* line 204, resources/scss/template/_share.scss */
   .share-widget.about ul li {
-    width: 40px;
-    max-width: 40px;
+    width: 46px;
+    max-width: 46px;
   }
 }
 
-/* line 206, resources/scss/template/_share.scss */
+/* line 220, resources/scss/template/_share.scss */
 .share-widget.about ul li .a-share-label {
+  vertical-align: middle;
   font-size: 14px;
+  line-height: 14px;
+  width: 75%;
+  height: 100%;
+  float: left;
+  padding-top: 12px;
+  text-align: start;
+  padding-left: 12px;
   text-indent: 0px;
 }
 
 @media screen and (max-width: 599px) {
-  /* line 206, resources/scss/template/_share.scss */
+  /* line 220, resources/scss/template/_share.scss */
   .share-widget.about ul li .a-share-label {
     display: none;
   }
 }
 
-/* line 221, resources/scss/template/_share.scss */
+/* line 244, resources/scss/template/_share.scss */
 #share-permalink-input {
   display: none;
   position: absolute;
@@ -15268,14 +15291,14 @@ input.input-inner-default:focus {
 }
 
 @media screen and (max-width: 900px) {
-  /* line 221, resources/scss/template/_share.scss */
+  /* line 244, resources/scss/template/_share.scss */
   #share-permalink-input {
     padding: 8px;
     width: 205px;
   }
 }
 
-/* line 237, resources/scss/template/_share.scss */
+/* line 260, resources/scss/template/_share.scss */
 #share-permalink-input input {
   display: block;
   position: absolute;
@@ -15298,12 +15321,12 @@ input.input-inner-default:focus {
   outline: none;
 }
 
-/* line 255, resources/scss/template/_share.scss */
+/* line 278, resources/scss/template/_share.scss */
 #share-permalink-inputfocus {
   outline: none !important;
 }
 
-/* line 259, resources/scss/template/_share.scss */
+/* line 282, resources/scss/template/_share.scss */
 #share-permalink-input:after {
   content: '';
   display: block;

@@ -440,10 +440,10 @@
       } else {
         $(this).addClass('open').siblings('ul').animate({
           height: '180px'
-        }, 500);
+        }, 200);
         $(this).addClass('open').siblings('ul.about').animate({
           height: '240px'
-        }, 500);
+        }, 200);
       }
     });
 

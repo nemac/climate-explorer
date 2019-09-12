@@ -144,25 +144,33 @@
   &.about {
     width: 148px;
     max-width: 148px;
+    max-height: 36px;
 
     @include very-mid-small {
       margin-right: 38px;
     }
 
     @include very-small {
-      width: 40px;
-      max-width: 40px;
+      width: 46px;
+      max-width: 46px;
     }
 
     .icon {
-      display: unset !important;
+      width: 25%;
+      height: 100%;
+      float: left;
+      line-height: 14px;
+      padding-top: 12px;
       font-size: 1.5rem;
+
       @include very-small {
         font-size: 1.25rem;
+        padding-top: 18px;
       }
     }
 
     .share-icon {
+      vertical-align: middle;
       @include very-small {
         font-size: 1.25rem;
       }
@@ -176,15 +184,21 @@
         min-width: 40px !important;
       }
 
-      flex-wrap: nowrap !important;
+      display: block !important;
+      width: 100% !important;
+      height: 100% !important;
+      vertical-align: middle;
+
     }
 
     ul {
       width: 137px;
       text-indent: 0px;
+      margin-top: 0px;
+
       @include very-small {
-        width: 40px;
-        max-width: 40px;
+        width: 46px;
+        max-width: 46px;
       }
 
       li {
@@ -199,13 +213,22 @@
         }
 
         @include very-small {
-          width: 40px;
-          max-width: 40px;
+          width: 46px;
+          max-width: 46px;
         }
 
         .a-share-label {
+          vertical-align: middle;
           font-size: 14px;
+          line-height: 14px;
+          width: 75%;
+          height: 100%;
+          float: left;
+          padding-top: 12px;
+          text-align: start;
+          padding-left: 12px;
           text-indent: 0px;
+
           @include very-small {
             display: none;
           }
