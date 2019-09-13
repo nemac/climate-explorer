@@ -65,7 +65,7 @@ $(function () {
 
     // update graphs with new station id and station name
     $('#multi-chart').stationAnnualGraph({ variable: 'temperature', station: stations.stationId, stationName: stations.stationName });
-    $('#multi-precip-chart').stationAnnualGraph({ variable: 'precipitation', station:  stations.stationId, stationName: stations.stationName });
+    $('#multi-precip-chart').stationAnnualGraph({ variable: 'precipitation', station: stations.stationId, stationName: stations.stationName });
   }
 
   // updates the visible text for the station pulldown with the information from the state url
@@ -222,7 +222,7 @@ $(function () {
         event.target.download = "daily_vs_climate_precip_" + stationId + ".png";
         break;
       case 'download-precipitation-data':
-        $('#multi-chart').stationAnnualGraph('downloadPrecipitationData', event.currentTarget);
+        $('#multi-precip-chart').stationAnnualGraph('downloadPrecipitationData', event.currentTarget);
         break;
       case 'download-temperature-image': // download image
         event.target.href = $("#multi-chart canvas")[0].toDataURL('image/png');
