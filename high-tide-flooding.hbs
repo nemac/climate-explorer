@@ -139,16 +139,24 @@
       </div>
     </div>
 
-    <div id="station-info-row" class="d-flex-row flex-justify padding-horrizontal padding-bottom d-flex-left d-none" >
-      <span class="padding-bottom-half" >Click 'Historical' button to zoom in on or out from the observational period.
-        Place your cursor over the curves on this graph for details. Gray bars from 1950 to 2016 show observed annual
-        counts of high-tide flooding. Red and blue curves show the average number of high-tide flooding events projected
-        for future years under two scenarios. Data from
-        <a target="_blank" href="https://tidesandcurrents.noaa.gov/publications/techrpt86_PaP_of_HTFlooding.pdf">
-          NOAA Technical Report NOS CO-OPS 086 - Patterns and Projections of High-tide Flooding</a>.
-        </span>
-      </div>
-
+    <div id="station-info-row" class="d-flex-row flex-justify padding-bottom d-flex-left d-none" >
+      <h4 class="more-info btn-default">
+        <span class="more">More about the graphs</span>
+        <span class="less d-none">Less about the graphs</span>
+        <span class="fas fa-caret-down more-info more-icon"></span>
+        <span class="fas fa-caret-up more-info less-icon d-none"></span>
+      </h4>
+      <span id="more-info-description" class="d-none" >
+        <div class="padding-bottom-half more-info-description" >Click 'Historical' button to zoom in on or out from the observational period.
+          Place your cursor over the curves on this graph for details. Gray bars from 1950 to 2016 show observed annual
+          counts of high-tide flooding. Red and blue curves show the average number of high-tide flooding events projected
+          for future years under two scenarios. Data from
+          <a target="_blank" href="https://tidesandcurrents.noaa.gov/publications/techrpt86_PaP_of_HTFlooding.pdf">
+            NOAA Technical Report NOS CO-OPS 086 - Patterns and Projections of High-tide Flooding
+          </a>.
+        </div>
+      </span>
+    </div>
 
     </div>
     <!-- </div> -->

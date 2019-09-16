@@ -442,6 +442,19 @@ $animation-duration: 0.4s;
          }
 
          #station-info-row {
+           @include transition(0.5s);
+           @include transition-property(all);
+           @include transition-timing-function(ease-out)
+
+           #more-info-description {
+             padding-left: $ce3-default-padding/2;
+           }
+
+           .more-info-description {
+             padding-top: $ce3-default-padding/2;
+             width: 100%;
+           }
+           
            @include medium {
              // padding-top: 350px !important;
              min-height: 250px;

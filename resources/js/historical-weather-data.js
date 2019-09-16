@@ -556,10 +556,12 @@ $(function () {
 
     }
 
-    // force draw and resize of charts
-    showGraphs();
-    forceResize();
-    setMapSize();
+    setTimeout(function () {
+      // force draw and resize of charts
+      showGraphs();
+      forceResize();
+      setMapSize();
+    }, 200);
   })
 
   //
