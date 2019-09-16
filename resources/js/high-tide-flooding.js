@@ -559,7 +559,6 @@ $(function () {
 
       $('#station-info-row .less').addClass('d-none');
       $('#station-info-row .less-icon').addClass('d-none');
-
     }
 
     // force draw and resize of charts
