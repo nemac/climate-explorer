@@ -829,11 +829,19 @@ h6 {
 
 .btn-default {
   cursor: pointer;
+  padding: $ce3-default-padding/2;
   height: $ce3-btnheight !important;
   background-color: $ce3-blue5 !important;
   color: $ce3-blue3 !important;
   font: 500 14px $roboto !important;
   border: 1px solid $ce3-blue3alpha !important;
+
+  &.more-info {
+    border: 1px solid $ce3-blue3alphad !important;
+    background-color: $ce3-blue6 !important;
+    @include border-radius(5px, 5px);
+    padding-left: 12px;
+  }
 
   a {
     cursor: pointer;
@@ -847,6 +855,9 @@ h6 {
 
   &:focus {
     background-color: darken($ce3-blue5, 7) !important;
+    &.more-info {
+      background-color: darken($ce3-blue6, 7) !important;
+    }
     color: $ce3-blue3 !important;
     border: 1px solid $ce3-blue3alpha !important;
     outline: none !important
@@ -854,9 +865,27 @@ h6 {
 
   &:hover {
     background-color: darken($ce3-blue5, 7) !important;
+    &.more-info {
+      background-color: darken($ce3-blue6, 7) !important;
+    }
     color: $ce3-blue3 !important;
     border: 1px solid $ce3-blue3alpha !important;
     outline: none !important
+  }
+
+  .more-info:before {
+    position: inherit;
+    background-color: #FBFCFE;
+    font-family: 'Font Awesome 5 Free';
+    font-weight: 900;
+    margin-left: 12px;
+    margin-right: 6px;
+    width: 24px;
+    height: 24px;
+    border-radius: 24px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
   }
 }
 

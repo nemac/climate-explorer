@@ -141,19 +141,49 @@
     </div>
   </div>
 
-  <div id="station-info-row" class="d-flex-row flex-justify padding-horrizontal padding-bottom d-flex-left d-none" >
-    <span class="padding-bottom-half" >Pan or zoom on these graphs to view other years. Place your cursor on either axis and then scroll, click-and-drag,
-      or hold down your SHIFT key and scroll to adjust the display.
-    </span>
-    <span class="padding-top-half" >Blue bars on temperature graphs indicate the range of observed temperatures for each day; the green band shows Climate Normals
-      for temperature&mdash;the average temperature range at that station from 1981-2010. Blue areas on precipitation graphs
-      track year-to-date cumulative precipitation; the black line shows Climate Normals for precipitation.
-      Data from <a target="_blank" href="https://www.ncdc.noaa.gov/data-access/land-based-station-data/land-based-datasets/global-historical-climatology-network-ghcn">
-        Global Historical Climatology Network-Daily dataset</a>,
-      served by  <a target="_blank"  href="http://www.rcc-acis.org/">ACIS</a>.
+  <div id="station-info-row" class="d-flex-row flex-justify padding-bottom d-flex-left d-none" >
+    <h4 class="more-info btn-default">
+      <span class="more">More about the graphs</span>
+      <span class="less d-none">Less about the graphs</span>
+      <!-- <span class="fas fa-info more-info"></span> -->
+      <span class="fas fa-caret-down more-info more-icon"></span>
+      <span class="fas fa-caret-up more-info less-icon d-none"></span>
+
+    </h4>
+    <span id="more-info-description" class="d-none" >
+      <div class="padding-bottom-half more-info-description" >Pan or zoom on these graphs to view other years. Place your cursor on either axis and then scroll, click-and-drag,
+        or hold down your SHIFT key and scroll to adjust the display.
+      </div>
+      <div class="padding-top-half more-info-description" >Blue bars on temperature graphs indicate the range of observed temperatures for each day; the green band shows Climate Normals
+        for temperature&mdash;the average temperature range at that station from 1981-2010. Blue areas on precipitation graphs
+        track year-to-date cumulative precipitation; the black line shows Climate Normals for precipitation.
+        Data from <a target="_blank" href="https://www.ncdc.noaa.gov/data-access/land-based-station-data/land-based-datasets/global-historical-climatology-network-ghcn">
+          Global Historical Climatology Network-Daily dataset</a>,
+        served by  <a target="_blank"  href="http://www.rcc-acis.org/">ACIS</a>.
+      </div>
     </span>
   </div>
 
+
+  <!-- <div id="station-info-row" class="d-flex-row flex-justify padding-horrizontal padding-bottom d-flex-left d-none accordion-plain ui-accordion ui-widget ui-helper-reset" role="tablist">
+
+    <h4 class="ui-accordion-header ui-corner-top ui-state-default ui-accordion-icons ui-accordion-header-collapsed ui-corner-all" role="tab" id="ui-id-1" aria-controls="ui-id-2" aria-selected="false" aria-expanded="false" tabindex="0">
+      Find out more about the graphs
+    </h4>
+
+    <div class="accordion-text ui-accordion-content ui-corner-bottom ui-helper-reset ui-widget-content ui-accordion-content-active" style="" id="ui-id-2" aria-labelledby="ui-id-1" role="tabpanel" aria-hidden="false">
+        <span class="padding-bottom-half" >Pan or zoom on these graphs to view other years. Place your cursor on either axis and then scroll, click-and-drag,
+          or hold down your SHIFT key and scroll to adjust the display.
+        </span>
+        <span class="padding-top-half" >Blue bars on temperature graphs indicate the range of observed temperatures for each day; the green band shows Climate Normals
+          for temperature&mdash;the average temperature range at that station from 1981-2010. Blue areas on precipitation graphs
+          track year-to-date cumulative precipitation; the black line shows Climate Normals for precipitation.
+          Data from <a target="_blank" href="https://www.ncdc.noaa.gov/data-access/land-based-station-data/land-based-datasets/global-historical-climatology-network-ghcn">
+            Global Historical Climatology Network-Daily dataset</a>,
+          served by  <a target="_blank"  href="http://www.rcc-acis.org/">ACIS</a>.
+        </span>
+      </div>
+  </div> -->
 
 </div>
 <!-- </div> -->

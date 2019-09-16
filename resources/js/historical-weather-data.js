@@ -25,6 +25,7 @@ $(function () {
   const tidalStationMOverMHHW = stationsMapState['tidalStationMOverMHHW'];
   const center = [lat, lon]
 
+
   // initialize staion map state from url values
   stationsMapState = {
     city,
@@ -533,5 +534,51 @@ $(function () {
     setMapSize();
   })
 
+  $('#station-info-row .more-info.btn-default').click( function (e) {
+    const target = $('#more-info-description');
+    // show description of charts
+    if (target.hasClass('d-none')) {
+      target.removeClass('d-none');
+      $('#station-info-row .more').addClass('d-none');
+      $('#station-info-row .more-icon').addClass('d-none');
 
+      $('#station-info-row .less').removeClass('d-none');
+      $('#station-info-row .less-icon').removeClass('d-none');
+
+    // hide description of charts
+    } else {
+      target.addClass('d-none');
+      $('#station-info-row .more').removeClass('d-none');
+      $('#station-info-row .more-icon').removeClass('d-none');
+
+      $('#station-info-row .less').addClass('d-none');
+      $('#station-info-row .less-icon').addClass('d-none');
+
+    }
+
+    // force draw and resize of charts
+    showGraphs();
+    forceResize();
+    setMapSize();
+  })
+
+  //
+  //
+  // $('.ui-accordion-header').click( function (e) {
+  //   let stationsMapState = window.ce.ce("getStationsMapState");
+  //   const stationId = stationsMapState['stationId'];
+  //   if (stationId) {
+  //     setTimeout(function () {
+  //       // reset map and chart sizes
+  //       // filer transistion means heigh will be updates in few seconds
+  //       // so delaying the resize ensures proper size
+  //       showGraphs();
+  //       forceResize();
+  //       setMapSize();
+  //     }, 300);
+  //   }
+  // })
+  //
+  // // shrink more info for charts
+  // $('.ui-accordion-header').click();
 });

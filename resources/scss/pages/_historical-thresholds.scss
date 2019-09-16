@@ -449,9 +449,13 @@ $animation-duration: 0.4s;
              height: 250px !important;
              display: block !important;
            }
+
+           @include small {
+             width: 90% !important;
+           }
          }
 
-         #stations-map-row, #stations-graph-row, #station-info-row {
+         #stations-map-row, #stations-graph-row {
            align-self: center;
            @include small {
              width: 90% !important;

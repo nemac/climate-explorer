@@ -91,7 +91,7 @@
        height: calc(100% - 48px - 6px - 205px ) !important;
        &.closed-filters {
          height: calc(100% - 48px - 6px ) !important;
-       }       
+       }
      }
    }
 
@@ -244,6 +244,19 @@
          }
 
          #station-info-row {
+           @include transition(0.5s);
+           @include transition-property(all);
+           @include transition-timing-function(ease-out)
+
+           #more-info-description {
+             padding-left: $ce3-default-padding/2;             
+           }
+
+           .more-info-description {
+             padding-top: $ce3-default-padding/2;
+             width: 100%;
+           }
+
            @include medium {
              // padding-top: 350px !important;
              min-height: 250px;
@@ -251,9 +264,14 @@
              height: 250px !important;
              display: block !important;
            }
+
+           @include small {
+             align-self: center;
+             width: 90% !important;
+           }
          }
 
-         #stations-map-row, #stations-graph-row, #station-info-row {
+         #stations-map-row, #stations-graph-row {
            align-self: center;
            @include small {
              width: 90% !important;
@@ -320,4 +338,7 @@
      }
    }
 
+   .ui-icon {
+     background-image: none !important;
+   }
 }
