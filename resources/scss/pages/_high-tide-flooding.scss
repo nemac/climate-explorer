@@ -119,8 +119,7 @@
 
    #stations-map-row {
      justify-content: space-evenly !important;
-     // height: 100% !important;
-
+s
      &.closed-filters {
        .stations-map-wrap {
          height: 86% !important;
@@ -265,9 +264,8 @@
              padding-top: $ce3-default-padding/2;
              width: 100%;
            }
-           
+
            @include medium {
-             // padding-top: 350px !important;
              min-height: 250px;
              max-height: 250px !important;
              height: 250px !important;

@@ -218,7 +218,6 @@ $animation-duration: 0.4s;
             @include label-active();
           }
           ~ .form-field-bar {
-            // border-bottom: 2px solid $ce3-blue3;
             transform: scaleX(150);
           }
         }
@@ -308,7 +307,6 @@ $animation-duration: 0.4s;
 
    #stations-map-row {
      justify-content: space-evenly !important;
-     // height: 100% !important;
 
      &.closed-filters {
        .stations-map-wrap {
@@ -454,9 +452,8 @@ $animation-duration: 0.4s;
              padding-top: $ce3-default-padding/2;
              width: 100%;
            }
-           
+
            @include medium {
-             // padding-top: 350px !important;
              min-height: 250px;
              max-height: 250px !important;
              height: 250px !important;

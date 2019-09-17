@@ -66,279 +66,275 @@
   }
 
   #stations-select-wrapper {
-     display: flex !important;
-     @include medium {
-       width: 100% !important;
-       margin-top: 6px;
-     }
-   }
+    display: flex !important;
+    @include medium {
+      width: 100% !important;
+      margin-top: 6px;
+    }
+  }
 
-   #chartmap-wrapper {
-     width: 30% !important;
-   }
+  #chartmap-wrapper {
+    width: 30% !important;
+  }
 
-   #stations-map-row {
-     @include medium-min {
-       height: calc(100% - 48px - 6px - 140px ) !important;
-        &.closed-filters {
-          height: calc(100% - 48px - 6px ) !important;
+  #stations-map-row {
+    @include medium-min {
+      height: calc(100% - 48px - 6px - 140px ) !important;
+      &.closed-filters {
+        height: calc(100% - 48px - 6px ) !important;
+      }
+    }
+  }
+
+  #stations-graph-row {
+    @include medium-min {
+      height: calc(100% - 48px - 6px - 205px ) !important;
+      &.closed-filters {
+        height: calc(100% - 48px - 6px ) !important;
+      }
+    }
+  }
+
+  #stations-map-row {
+    justify-content: space-evenly !important;
+
+    &.closed-filters {
+      .stations-map-wrap {
+        height: 86% !important;
+      }
+    }
+
+    #stations-map {
+      width: 100%;
+      flex-wrap: wrap;
+    }
+
+    .esri-view-user-storage {
+      height: unset !important;
+    }
+
+    #stations-map {
+      .movable.slider-div {
+        top: 0px !important;
+      }
+    }
+
+    @include large {
+      justify-content: center !important;
+    }
+
+    @include medium {
+      order: 1;
+      padding-bottom: 250px !important;
+
+      #stations-map {
+        width: 100%;
+        flex-wrap: wrap;
+        min-height: 350px !important;
+        max-height: 350px !important;
+        height: 350px !important;
+
+        .map-wrap {
+          min-height: 350px !important;
+          height: 350px !important;
         }
-     }
-   }
 
-   #stations-graph-row {
-     @include medium-min {
-       height: calc(100% - 48px - 6px - 205px ) !important;
-       &.closed-filters {
-         height: calc(100% - 48px - 6px ) !important;
-       }
-     }
-   }
-
-   #stations-map-row {
-     justify-content: space-evenly !important;
-     // height: 100% !important;
-
-     &.closed-filters {
-       .stations-map-wrap {
-         height: 86% !important;
-       }
-     }
-
-     #stations-map {
-       width: 100%;
-       flex-wrap: wrap;
-     }
-
-     .esri-view-user-storage {
-       height: unset !important;
-     }
-
-     #stations-map {
-       .movable.slider-div {
-         top: 0px !important;
-       }
-     }
-
-     @include large {
-       justify-content: center !important;
-     }
-
-     @include medium {
-       order: 1;
-       padding-bottom: 250px !important;
-
-       #stations-map {
-         width: 100%;
-         flex-wrap: wrap;
-         min-height: 350px !important;
-         max-height: 350px !important;
-         height: 350px !important;
-
-         .map-wrap {
-           min-height: 350px !important;
-           height: 350px !important;
-         }
-
-         .esri-view-root {
-           flex: 0 0 100%;
-           height: 100% !important;
-           width: 100% !important;
-           @include very-small {
+        .esri-view-root {
+          flex: 0 0 100%;
+          height: 100% !important;
+          width: 100% !important;
+          @include very-small {
             z-index: 200;
           }
-         }
+        }
 
-         .esri-overlay-surface {
-           flex: 0 0 100%;
-           height: 100% !important;
-           width: 100% !important;
-         }
+        .esri-overlay-surface {
+          flex: 0 0 100%;
+          height: 100% !important;
+          width: 100% !important;
+        }
 
-         .esri-view-user-storage {
-           overflow: visible !important;
-           height: 100% !important;
-           width: 100% !important;
-           @include medium {
-             position: relative !important;
-             top: -350px;
-           }
-         }
+        .esri-view-user-storage {
+          overflow: visible !important;
+          height: 100% !important;
+          width: 100% !important;
+          @include medium {
+            position: relative !important;
+            top: -350px;
+          }
+        }
 
-         .scenario-map-overlay-container {
-           position: relative !important;
-           top: 0px !important;
-           left: 0px !important;
-           width: 100% !important;
-           height: 100% !important;
-           margin: 0px !important;
-         }
-       }
-     }
+        .scenario-map-overlay-container {
+          position: relative !important;
+          top: 0px !important;
+          left: 0px !important;
+          width: 100% !important;
+          height: 100% !important;
+          margin: 0px !important;
+        }
+      }
+    }
 
-     @include very-small  {
-       height: auto !important;
-       order: 1;
+    @include very-small  {
+      height: auto !important;
+      order: 1;
 
-       .map-wrap {
-         min-height: 250px !important;
-         height: 250px !important;
-       }
-     }
-   }
+      .map-wrap {
+        min-height: 250px !important;
+        height: 250px !important;
+      }
+    }
+  }
 
-         .left_chart {
-           width: calc(50% - 40px);
-           @include medium {
-             width: calc(100%);
-           }
-           height: 100%;
-           background-color: white;
-           padding-right: $ce3-padding-half;
-         }
+  .left_chart {
+    width: calc(50% - 40px);
+    @include medium {
+      width: calc(100%);
+    }
+    height: 100%;
+    background-color: white;
+    padding-right: $ce3-padding-half;
+  }
 
-         .right_chart {
-           width: calc(50% - 40px);
-           @include medium {
-             width: calc(100%);
-           }
-           height: 100%;
-           background-color: white;
-           padding-left: $ce3-padding-half;
-         }
+  .right_chart {
+    width: calc(50% - 40px);
+    @include medium {
+      width: calc(100%);
+    }
+    height: 100%;
+    background-color: white;
+    padding-left: $ce3-padding-half;
+  }
 
-         #overlay-chart-container {
-           margin: 25px;
-           height: 50vh;
-           width: calc(100% - 50px);
-         }
+  #overlay-chart-container {
+    margin: 25px;
+    height: 50vh;
+    width: calc(100% - 50px);
+  }
 
-         #stations-graph-row {
-           @include medium {
-             min-height: 610px !important;
-             max-height: 610px !important;
-             height: 610px !important;
-             // display: block !important;
-           }
-         }
+  #stations-graph-row {
+    @include medium {
+      min-height: 610px !important;
+      max-height: 610px !important;
+      height: 610px !important;
+    }
+  }
 
-         #stations-graph-wrap {
-           height: 100% !important;
-           width: 80%;
-           @include medium {
-             min-height: 300px !important;
-             max-height: 300px !important;
-             height: 300px !important;
-             // display: block !important;
-           }
-         }
+  #stations-graph-wrap {
+    height: 100% !important;
+    width: 80%;
+    @include medium {
+      min-height: 300px !important;
+      max-height: 300px !important;
+      height: 300px !important;
+    }
+  }
 
-         #stations-map-wrap {
-           height: 100%;
-           @include medium {
-             min-height: 350px !important;
-             max-height: 350px !important;
-             height: 350px !important;
-             display: block !important;
-           }
-         }
+  #stations-map-wrap {
+    height: 100%;
+    @include medium {
+      min-height: 350px !important;
+      max-height: 350px !important;
+      height: 350px !important;
+      display: block !important;
+    }
+  }
 
-         #station-info-row {
-           @include transition(0.5s);
-           @include transition-property(all);
-           @include transition-timing-function(ease-out)
+  #station-info-row {
+    @include transition(0.5s);
+    @include transition-property(all);
+    @include transition-timing-function(ease-out)
 
-           #more-info-description {
-             padding-left: $ce3-default-padding/2;
-           }
+    #more-info-description {
+      padding-left: $ce3-default-padding/2;
+    }
 
-           .more-info-description {
-             padding-top: $ce3-default-padding/2;
-             width: 100%;
-           }
+    .more-info-description {
+      padding-top: $ce3-default-padding/2;
+      width: 100%;
+    }
 
-           @include medium {
-             // padding-top: 350px !important;
-             min-height: 250px;
-             max-height: 250px !important;
-             height: 250px !important;
-             display: block !important;
-           }
+    @include medium {
+      min-height: 250px;
+      max-height: 250px !important;
+      height: 250px !important;
+      display: block !important;
+    }
 
-           @include small {
-             align-self: center;
-             width: 90% !important;
-           }
-         }
+    @include small {
+      align-self: center;
+      width: 90% !important;
+    }
+  }
 
-         #stations-map-row, #stations-graph-row {
-           align-self: center;
-           @include small {
-             width: 90% !important;
-           }
-         }
+  #stations-map-row, #stations-graph-row {
+    align-self: center;
+    @include small {
+      width: 90% !important;
+    }
+  }
 
-         #station-overlay {
-           height: 100%;
-         }
+  #station-overlay {
+    height: 100%;
+  }
 
-   .text-info-box.label {
-     font-weight: 500 !important;
-   }
+  .text-info-box.label {
+    font-weight: 500 !important;
+  }
 
-   .esri-expand__container {
-     height: 32px;
-     width: 32px;
-   }
+  .esri-expand__container {
+    height: 32px;
+    width: 32px;
+  }
 
-   .legend-image {
-     max-height: 16rem;
-     max-width: none;
-   }
+  .legend-image {
+    max-height: 16rem;
+    max-width: none;
+  }
 
-   .esri-ui-top-left .esri-expand__content, .esri-ui-top-right .esri-expand__content {
-     top: -32px !important;
-   }
+  .esri-ui-top-left .esri-expand__content, .esri-ui-top-right .esri-expand__content {
+    top: -32px !important;
+  }
 
-   .esri-view-width-xsmall .esri-component.esri-expand.esri-widget.esri-expand--auto {
-     display: none !important;
-   }
+  .esri-view-width-xsmall .esri-component.esri-expand.esri-widget.esri-expand--auto {
+    display: none !important;
+  }
 
-   .esri-view-width-xsmall .esri-expand--auto .esri-expand__container--expanded {
-     position: relative !important;
-   }
+  .esri-view-width-xsmall .esri-expand--auto .esri-expand__container--expanded {
+    position: relative !important;
+  }
 
-   .esri-view-width-greater-than-xsmall .esri-expand--auto .esri-expand__content {
-     position: relative !important;
-   }
+  .esri-view-width-greater-than-xsmall .esri-expand--auto .esri-expand__content {
+    position: relative !important;
+  }
 
-   .scenario-map-overlay-container {
-     position: relative;
-   }
+  .scenario-map-overlay-container {
+    position: relative;
+  }
 
-   .esri-view {
-     // padding: $ce3-default-padding;
-   }
+  .esri-view {
+    // padding: $ce3-default-padding;
+  }
 
-   .esri-view-surface {
-     @include border-radius(5px);
-   }
+  .esri-view-surface {
+    @include border-radius(5px);
+  }
 
-   .top-select-wrapper {
-     width: 29% !important;
-     &-minor {
-       width: 5% !important;
-     }
-   }
+  .top-select-wrapper {
+    width: 29% !important;
+    &-minor {
+      width: 5% !important;
+    }
+  }
 
-   .search-box-secondary {
-     @include medium {
-       width: 100% !important;
-       display: inline-block !important;
-     }
-   }
+  .search-box-secondary {
+    @include medium {
+      width: 100% !important;
+      display: inline-block !important;
+    }
+  }
 
-   .ui-icon {
-     background-image: none !important;
-   }
+  .ui-icon {
+    background-image: none !important;
+  }
 }

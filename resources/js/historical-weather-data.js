@@ -560,24 +560,4 @@ $(function () {
     forceResize();
     setMapSize();
   })
-
-  //
-  //
-  // $('.ui-accordion-header').click( function (e) {
-  //   let stationsMapState = window.ce.ce("getStationsMapState");
-  //   const stationId = stationsMapState['stationId'];
-  //   if (stationId) {
-  //     setTimeout(function () {
-  //       // reset map and chart sizes
-  //       // filer transistion means heigh will be updates in few seconds
-  //       // so delaying the resize ensures proper size
-  //       showGraphs();
-  //       forceResize();
-  //       setMapSize();
-  //     }, 300);
-  //   }
-  // })
-  //
-  // // shrink more info for charts
-  // $('.ui-accordion-header').click();
 });
