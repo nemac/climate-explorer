@@ -903,18 +903,14 @@ App.prototype.locationSearch = function () {
 
   // adds events for geocodeing locations - this gets the city, countty, fips code
   $(".location-mapper").bind("geocode:result", function (event, result) {
-    var data = {};
-    $.each(result.address_components, function (index, object) {
-      var name = object.types[0];
-      data[name] = object.long_name;
-      data[name + "_short"] = object.short_name;
-    });
-    //console.log('data', data);\
-    if (!data.administrative_area_level_2) {
-      $(".location-mapper").formmapper('geocode', { address: result.formatted_address });
-    }
 
-    var county = data.administrative_area_level_2.replace(/ /g, '+');
+   var data = {};
+   $.each(result.address_components, function (index, object) {
+     var name = object.types[0];
+     data[name] = object.long_name;
+     data[name + "_short"] = object.short_name;
+   });
+   var county = data.administrative_area_level_2 ? data.administrative_area_level_2.replace(/ /g, '+') : data.locality + '+County';
 
     county = county.latinize();
     var city = data.locality + ', ' + data.administrative_area_level_1_short;
