@@ -225,6 +225,11 @@ $(function () {
   }
 
   function toggleDownloads() {
+    const targetParent = $('#downloads-select-wrapper');
+    if (targetParent.hasClass('disabled')) {
+      targetParent.removeClass('disabled');
+    }
+
     const target = $('#downnloads-select-vis');
     if (target.hasClass('disabled')) {
       target.removeClass('disabled');
