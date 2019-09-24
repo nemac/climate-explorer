@@ -484,8 +484,8 @@ $(function () {
       // disable varriablles if they are valid time period
       const isvalid =   jQuery.inArray( variable , validSeasonal);
       if (  isvalid < 0 ) {
-        $('.btn-annual').addClass('btn-default-disabled');
-        $('.btn-annual').removeClass('btn-default');
+        // $('.btn-annual').addClass('btn-default-disabled');
+        // $('.btn-annual').removeClass('btn-default');
 
         $('.btn-summer').addClass('btn-default-disabled');
         $('.btn-summer').removeClass('btn-default');
@@ -503,8 +503,8 @@ $(function () {
         $('#time-select-wrapper').addClass('disabled');
 
       } else {
-        $('.btn-annual').removeClass('btn-default-disabled');
-        $('.btn-annual').addClass('btn-default')
+        // $('.btn-annual').removeClass('btn-default-disabled');
+        // $('.btn-annual').addClass('btn-default')
 
         $('.btn-summer').removeClass('btn-default-disabled');
         $('.btn-summer').addClass('btn-default');

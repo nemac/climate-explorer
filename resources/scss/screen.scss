@@ -986,6 +986,10 @@ h6 {
   &:hover {
     background-color: darken($ce3-blue5, 7) !important;
   }
+
+  &.disabled:hover {
+    background-color: $ce3-blue5 !important;
+  }
 }
 
 .rounded-info-box {
