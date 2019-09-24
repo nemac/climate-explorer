@@ -22,7 +22,7 @@
   },
   "author": "",
   "license": "UNLICENSED",
-  "homepage": "https://bitbucket.org/jwilson-waystone/climate-explorer#readme",
+  "homepage": "https://github.com/nemac/climate-explorer/blob/master/readme.md",
   "devDependencies": {
     "babel-cli": "^6.26.0",
     "babel-plugin-transform-es2015-literals": "^6.22.0",
