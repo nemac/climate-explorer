@@ -442,7 +442,6 @@ $(function () {
   $('#time-wrapper').click( function(e) {
     const target = $(e.target);
     const notDisabled = !target.hasClass('btn-default-disabled');
-    console.log('#time-wrapper', target)
     // not all varriables can display monthly chart
     // when the varriable cannot display monthly chart do
     // do execute the click event
