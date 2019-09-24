@@ -442,7 +442,7 @@ $(function () {
   $('#time-wrapper').click( function(e) {
     const target = $(e.target);
     const notDisabled = !target.hasClass('btn-default-disabled');
-
+    console.log('#time-wrapper', target)
     // not all varriables can display monthly chart
     // when the varriable cannot display monthly chart do
     // do execute the click event
@@ -484,8 +484,17 @@ $(function () {
       // disable varriablles if they are valid time period
       const isvalid =   jQuery.inArray( variable , validSeasonal);
       if (  isvalid < 0 ) {
-        // $('.btn-annual').addClass('btn-default-disabled');
-        // $('.btn-annual').removeClass('btn-default');
+        const val = 'annual';
+        $(window.precipitationScenariosMap).scenarioComparisonMap({ season: val });
+        const target = $('#btn-chart.btn-annual');
+        // toggle button visual state
+        toggleButton(target);
+
+        // change select pulldowns for resposnive mode
+        setSelectFromButton(target);
+
+        // change map varriable
+        updateSeason(val);
 
         $('.btn-summer').addClass('btn-default-disabled');
         $('.btn-summer').removeClass('btn-default');
@@ -503,8 +512,6 @@ $(function () {
         $('#time-select-wrapper').addClass('disabled');
 
       } else {
-        // $('.btn-annual').removeClass('btn-default-disabled');
-        // $('.btn-annual').addClass('btn-default')
 
         $('.btn-summer').removeClass('btn-default-disabled');
         $('.btn-summer').addClass('btn-default');
