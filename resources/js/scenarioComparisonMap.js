@@ -698,7 +698,9 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
           layerViewContainer.doRender = function (a) {
             layerViewContainer._doRender(a);
             if (_this2.options.swipeX === null) {
-              _this2.options.swipeX = layerViewContainer.element.width;
+              if (layerViewContainer !== null) {
+                _this2.options.swipeX = layerViewContainer.element.width;
+              }
             }
             if (_this2.options.swipeX > layerViewContainer.element.width) {
               _this2.options.swipeX = layerViewContainer.element.width;
