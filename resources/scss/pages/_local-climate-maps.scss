@@ -322,6 +322,11 @@
     height: 256px;
     width: 64px;
   }
+  .esri-basemap-gallery__item-thumbnail {
+    height: 64px;
+    width: auto;
+    box-shadow: 0 0 0 1px rgba(50,50,50,0.25)
+  }
 }
 
 .esri-view {
