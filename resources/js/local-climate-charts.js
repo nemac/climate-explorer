@@ -22,6 +22,7 @@ $(function () {
   // init slider
   initSlider();
 
+  initVarriableToolTips();
 
   // valid monlthly varriables
   // monlthly timeperoid is only valud for limitited varriables

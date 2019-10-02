@@ -347,7 +347,7 @@ $(function () {
     }
   });
 
-  // descrememt threshold
+  // decrememt threshold
   $('.threshold-down').click( function (e) {
     const target = $(e.target);
     const thresholdValueElem = document.getElementById('threshold-value');

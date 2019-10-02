@@ -77,7 +77,7 @@ function enableCustomSelect(uniqueSelector) {
   $listItems.click(function(e) {
     // check if disabled exit if it is
     if ($(this).hasClass('default-select-option-disabled')) {return null}
-
+    console.log('click', $(this))
     e.stopPropagation();
 
     // option item has href make it a element so links work
@@ -193,4 +193,80 @@ function forceResize() {
   var event = document.createEvent('HTMLEvents');
   event.initEvent('resize', true, false);
   el.dispatchEvent(event);
+}
+
+// init tool helpers for varriables in varriable pulldowns on map and chart pages
+function initVarriableToolTips() {
+  // const listWidth = -500 //(document.getElementById('varriable-select-vis').offsetWidth - 24)* -1
+  // // console.log('initVarriableToolTips', listWidth)
+  const tmaxReference = document.getElementById('tmax-tooltip');
+  makeTip(tmaxReference);
+
+  const tminReference = document.getElementById('tmin-tooltip');
+  makeTip(tminReference);
+
+  const days_tmax_gt_90f = document.getElementById('days_tmax_gt_90f-tooltip');
+  makeTip(days_tmax_gt_90f);
+
+  const days_tmax_gt_95f = document.getElementById('days_tmax_gt_95f-tooltip');
+  makeTip(days_tmax_gt_95f);
+
+  const days_tmax_gt_100f = document.getElementById('days_tmax_gt_100f-tooltip');
+  makeTip(days_tmax_gt_100f);
+
+  const days_tmax_gt_105f = document.getElementById('days_tmax_gt_105f-tooltip');
+  makeTip(days_tmax_gt_105f);
+
+  const days_tmax_lt_32f = document.getElementById('days_tmax_lt_32f-tooltip');
+  makeTip(days_tmax_lt_32f);
+
+  const days_tmin_lt_32f = document.getElementById('days_tmin_lt_32f-tooltip');
+  makeTip(days_tmin_lt_32f);
+
+  const days_tmin_gt_80f = document.getElementById('days_tmin_gt_80f-tooltip');
+  makeTip(days_tmin_gt_80f);
+
+  const days_tmin_gt_90f = document.getElementById('days_tmin_gt_90f-tooltip');
+  makeTip(days_tmin_gt_90f);
+
+  const pcpn = document.getElementById('pcpn-tooltip');
+  makeTip(pcpn);
+
+  const days_pcpn_gt_1in = document.getElementById('days_pcpn_gt_1in-tooltip');
+  makeTip(days_pcpn_gt_1in);
+
+  const days_pcpn_gt_2in = document.getElementById('days_pcpn_gt_2in-tooltip');
+  makeTip(days_pcpn_gt_2in);
+
+  const days_pcpn_gt_3in = document.getElementById('days_pcpn_gt_3in-tooltip');
+  makeTip(days_pcpn_gt_3in);
+
+  const days_dry_days = document.getElementById('days_dry_days-tooltip');
+  makeTip(days_dry_days);
+
+  const cdd_65f = document.getElementById('cdd_65f-tooltip');
+  makeTip(cdd_65f);
+
+  const gdd = document.getElementById('gdd-tooltip');
+  makeTip(gdd);
+
+  const hdd_65f = document.getElementById('hdd_65f-tooltip');
+  makeTip(hdd_65f);
+
+  const gddmod = document.getElementById('gddmod-tooltip');
+  makeTip(gddmod);
+}
+
+function makeTip(elem) {
+  elem.addEventListener('mouseover', tippy( elem, {
+      theme: 'ce-three',
+      arrow: false,
+      interactive: false,
+      hideOnClick: false,
+      flipOnUpdate: false
+     })
+   );
+
+
+
 }
