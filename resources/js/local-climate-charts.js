@@ -28,6 +28,11 @@ $(function () {
   // to dissable those varriabls from the user we use this constant
   const validMonthly = ['tmax', 'tmin', 'pcpn'];
 
+  $('#clear-location').click( function(e){
+    const target = $(e.target);
+    handleClearLocationClick(target);
+  })
+
   // function to enable downloads (images and data)
   $('.download-select li a').click( function (e) {
     const downloadAction = $(this).attr('rel');

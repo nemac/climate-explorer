@@ -66,6 +66,11 @@ $(function () {
     barColor: '#307bda' // Color for bars.
   };
 
+  $('#clear-location').click( function(e){
+    const target = $(e.target);
+    handleClearLocationClick(target);
+  })
+
   updateThresholdVariableSelectText(initialObj);
   $('#threshold-value').val(initialObj.threshold);
   $('#window-value').val(initialObj.window);

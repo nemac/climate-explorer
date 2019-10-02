@@ -1155,6 +1155,15 @@ h6 {
   font-size: 14px !important;
   font-weight: 800 !important;
   padding: 5px !important;
+  margin-left: $ce3-padding-half;
+
+  &.fa-times-circle {
+    cursor: pointer;
+
+    &:hover {
+      background-color: darken($ce3-blue6, 10) !important;
+    }
+  }
 }
 
 input.input-inner-default {

@@ -42,6 +42,12 @@ $(function () {
     center
   };
 
+
+  $('#clear-location').click( function(e){
+    const target = $(e.target);
+    handleClearLocationClick(target);
+  })
+
   // updates the visible text for the station pulldown with the information from the state url
   function updateStationSelectText(stations) {
     const stationsSelectElem = $('#stations-select-vis');

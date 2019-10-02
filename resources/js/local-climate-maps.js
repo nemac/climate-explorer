@@ -68,6 +68,11 @@ $(function () {
     exportRight();
   })
 
+  $('#clear-location').click( function(e){
+    const target = $(e.target);
+    handleClearLocationClick(target);
+  })
+
   // function to enable downloads (images and data)
   $('.download-select li a').click( function (e) {
     const downloadAction = $(this).attr('rel');

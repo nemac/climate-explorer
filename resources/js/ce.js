@@ -354,6 +354,8 @@ especially when it comes to interacting with the DOM and handling events.
     setVariablesMapState: function setVariablesMapState(state) {
       Object.keys(state).includes('variable') ? this.setUrlParam('id', state['variable']) : null;
       Object.keys(state).includes('county') ? this.setUrlParam('county', state['county']) : null;
+      Object.keys(state).includes('city') ? this.setUrlParam('city', state['city']) : null;
+      Object.keys(state).includes('fips') ? this.setUrlParam('fips', state['fips']) : null;
       Object.keys(state).includes('season') ? this.setUrlParam('season', state['season']) : null;
       Object.keys(state).includes('leftScenario') ? this.setUrlParam('left', state['leftScenario']) : null;
       Object.keys(state).includes('leftYear') ? this.setUrlParam('leftyear', state['leftYear']) : null;

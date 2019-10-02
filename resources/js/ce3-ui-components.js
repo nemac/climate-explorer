@@ -200,6 +200,45 @@ function handleChartMapClick(target) {
   document.getElementById(link).click();
 }
 
+function handleClearLocationClick(target) {
+  window.ce.ce('setVariablesMapState',{ county: null });
+  window.ce.ce('setVariablesMapState',{ city: null });
+  window.ce.ce('setVariablesMapState',{ fips: null });
+  window.ce.ce('setStationsMapState',{ stationId: null });
+  window.ce.ce('setStationsMapState',{ stationName: null });
+  window.ce.ce('setStationsMapState',{ tidalStationId: null });
+  window.ce.ce('setStationsMapState',{ tidalStationName: null });
+  window.ce.ce('setStationsMapState',{ tidalStationName: null });
+  window.ce.ce('setStationsMapState',{ tidalStationMOverMHHW: null });
+  target.val('');
+  const link = target.attr('link');
+  const nav = target.attr('nav');
+  const seachParams =  removeUrlParam('nav');
+  const url = `../${nav}/${seachParams}&nav=${nav}`;
+  $(`#${link}`).attr('href', url);
+  $(`#${link}`).click();
+  document.getElementById(link).click();
+}
+
+function handleClearSationClick(target) {
+  window.ce.ce('setStationsMapState',{ stationId: null });
+  window.ce.ce('setStationsMapState',{ stationName: null });
+  window.ce.ce('setStationsMapState',{ tidalStationId: null });
+  window.ce.ce('setStationsMapState',{ tidalStationName: null });
+  window.ce.ce('setStationsMapState',{ tidalStationName: null });
+  window.ce.ce('setStationsMapState',{ tidalStationMOverMHHW: null });
+
+  target.val('');
+  const link = target.attr('link');
+  const nav = target.attr('nav');
+  const seachParams =  removeUrlParam('nav');
+  const url = `../${nav}/${seachParams}&nav=${nav}`;
+  $(`#${link}`).attr('href', url);
+  $(`#${link}`).click();
+  document.getElementById(link).click();
+}
+
+
 function forceResize() {
   var el = document; // This can be your element on which to trigger the event
   var event = document.createEvent('HTMLEvents');
