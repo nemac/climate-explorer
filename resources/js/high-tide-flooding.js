@@ -435,7 +435,7 @@ $(function () {
           const rect = document.getElementById('stations-map-wrap').getBoundingClientRect();
           messsageElem.style.left = `${(rect.right - rect.left)/3}px`;
           messsageElem.style.top = `-${((rect.bottom - rect.top)/2)}px`;
-          messsageElem.innerHTML = 'There are no tidal gauge stations within the map view.'
+          messsageElem.innerHTML = 'Pan the map to a coastal location to select a tidal gauge station.'
           messsageElem.classList.remove('d-none');
         }
       } else {
