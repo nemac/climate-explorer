@@ -115,7 +115,6 @@ function enableCustomSelect(uniqueSelector) {
 
     const relAttr = $(this).attr('rel');
     const testItem = $(`li[rel='${relAttr}']`);
-    console.log('testItem', `li[rel='${relAttr}']`)
     $(testItem).click();
   });
 
