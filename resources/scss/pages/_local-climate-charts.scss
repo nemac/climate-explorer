@@ -323,8 +323,10 @@
   padding-top: $ce3-default-padding !important;
   padding-bottom: $ce3-default-padding !important;
   width: 60% !important;
+  height: $ce3-btnheight-legends !important;
+
   #btn-chart {
-    height: $ce3-btnheight-legends !important
+    height: $ce3-btnheight-legends !important;
   }
 
   @include medium {
@@ -366,15 +368,15 @@
     }
 
     #annual-slider-wrapper {
-      height: 7% !important;
+      height: $ce3-btnheight-legends !important;
     }
 
     #monthly-select-wrapper {
-      height: 7% !important;
+      height: $ce3-btnheight-legends !important;
     }
 
     #legend-wrapper {
-      height: 7% !important;
+      height: $ce3-btnheight-legends !important;
     }
   }
 
@@ -399,15 +401,15 @@
       }
 
       #annual-slider-wrapper {
-        height: auto !important;
+        height: $ce3-btnheight-legends !important;
       }
 
       #monthly-select-wrapper {
-        height: auto !important;
+        height: $ce3-btnheight-legends !important;
       }
 
       #legend-wrapper {
-        height: auto !important;
+        height: $ce3-btnheight-legends !important;
       }
     }
 
@@ -424,7 +426,7 @@
 
 #annual-slider-wrapper {
   @include medium {
-    height: auto !important;
+    height: $ce3-btnheight-legends !important;
     order: 2;
     // #slider-range {
     //   // width: 60% !important;
