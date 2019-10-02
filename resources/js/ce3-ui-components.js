@@ -77,11 +77,10 @@ function enableCustomSelect(uniqueSelector) {
   $listItems.click(function(e) {
     // check if disabled exit if it is
     if ($(this).hasClass('default-select-option-disabled')) {return null}
-    console.log('click', $(this))
     e.stopPropagation();
 
     // option item has href make it a element so links work
-    var hrefAttr = $(this).attr('href');
+    const hrefAttr = $(this).attr('href');
     if (typeof hrefAttr !== typeof undefined && hrefAttr !== false) {
       $styledSelect.html(`<a href="${hrefAttr}" rel="${$(this).attr('rel')}">${$(this).text()}</a>`).removeClass('active');
     } else {
@@ -93,7 +92,7 @@ function enableCustomSelect(uniqueSelector) {
     $styledSelect.attr('nav',$(this).attr('nav'))
 
     // option item has icon add it
-    var iconAttr = $(this).attr('icon');
+    const iconAttr = $(this).attr('icon');
     if (typeof iconAttr !== typeof undefined && iconAttr !== false) {
       // Element has this attribute
       var icon = `<i class="${iconAttr}"></i>`;
@@ -107,12 +106,26 @@ function enableCustomSelect(uniqueSelector) {
     $styledSelect.trigger('cs-changed' );
   });
 
+  var $listTips = $(`.select.${uniqueSelector} ul`).children('span');
+
+  $listTips.click(function(e) {
+    // check if disabled exit if it is
+    if ($(this).hasClass('default-select-option-disabled')) {return null}
+    e.stopPropagation();
+
+    const relAttr = $(this).attr('rel');
+    const testItem = $(`li[rel='${relAttr}']`);
+    console.log('testItem', `li[rel='${relAttr}']`)
+    $(testItem).click();
+  });
+
   // hide pulldown when user clicks anywhere outside of selected area
   $(document).click(function() {
     $styledSelect.removeClass('active');
     $list.hide();
   });
 }
+
 
 
 // function changes button to selected

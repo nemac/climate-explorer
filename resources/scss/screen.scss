@@ -354,7 +354,8 @@ h6 {
     a {
       color: $ce3-blue3 !important;
     }
-    &:hover {
+    &:hover, &:focus {
+      outline: none !important;
       color: $ce3-blue3;
       background:  darken($ce3-blue5, 5);
     }
