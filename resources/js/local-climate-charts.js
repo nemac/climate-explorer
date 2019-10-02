@@ -21,7 +21,6 @@ $(function () {
 
   // init slider
   initSlider();
-
   initVarriableToolTips();
 
   // valid monlthly varriables

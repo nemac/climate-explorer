@@ -48,6 +48,8 @@ $(function () {
   enableCustomSelect('chartmap-select');
   enableCustomSelect('time-select');
 
+  initVarriableToolTips();
+
   // valid seasonal varriables
   // seasonal timeperoid is only valud for limitited varriables
   // to dissable those varriabls from the user we use this constant
