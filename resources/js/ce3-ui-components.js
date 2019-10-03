@@ -312,7 +312,7 @@ function makeTip(elem) {
   elem.addEventListener('mouseover', tippy( elem, {
       theme: 'ce-three',
       arrow: false,
-      interactive: true,
+      interactive: false,
       hideOnClick: false,
       flipOnUpdate: false
      })
