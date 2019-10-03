@@ -31,6 +31,7 @@ $(function () {
   const windowValue = stationsMapState['window']  || 1;
   const thresholdVariable = stationsMapState['thresholdVariable']  || 'precipitation';
 
+
   // initialize staion map state from url values
   stationsMapState = {
     city,
@@ -71,12 +72,14 @@ $(function () {
     handleClearLocationClick(target);
   })
 
-  updateThresholdVariableSelectText(initialObj);
-  $('#threshold-value').val(initialObj.threshold);
-  $('#window-value').val(initialObj.window);
+  if ( stationId ) {
+    updateThresholdVariableSelectText(initialObj);
+    $('#threshold-value').val(initialObj.threshold);
+    $('#window-value').val(initialObj.window);
 
-   $("#thresholds-container").item(initialObj);
-   $("#thresholds-container").item(initialObj);
+     $("#thresholds-container").item(initialObj);
+     $("#thresholds-container").item(initialObj);
+  }
 
   // updates the visible text for the station pulldown with the information from the state url
   function updateStationSelectText(stations) {
