@@ -741,20 +741,25 @@ $(function () {
       window.ce.ce('setStationsMapState', options);
       renderStationInfo(options.stationId, options.stationName);
 
-      const messsageElem = document.getElementById('stations-map-message');
-      // check if there are any tidal stations in map extent
-      if (options.currentstations.features.length === 0) {
-        // get map parent element - which provides the correct dimensions for the map
-        if (messsageElem) {
-          const rect = document.getElementById('stations-map-wrap').getBoundingClientRect();
-          messsageElem.style.left = `${(rect.right - rect.left)/3}px`;
-          messsageElem.style.top = `-${((rect.bottom - rect.top)/2)}px`;
-          messsageElem.innerHTML = 'There are no weather stations within the map view.'
-          messsageElem.classList.remove('d-none');
+      if (options.currentstations) {
+        const messsageElem = document.getElementById('stations-map-message');
+        // check if there are any tidal stations in map extent
+        if (options.currentstations.features.length === 0) {
+          // get map parent element - which provides the correct dimensions for the map
+          if (messsageElem) {
+            const rect = document.getElementById('stations-map-wrap').getBoundingClientRect();
+            messsageElem.style.left = `${(rect.right - rect.left)/3}px`;
+            messsageElem.style.top = `-${((rect.bottom - rect.top)/2)}px`;
+            messsageElem.innerHTML = 'There are no weather stations within the map view.'
+            messsageElem.classList.remove('d-none');
+          }
+        } else {
+          messsageElem.classList.add('d-none');
         }
       } else {
         messsageElem.classList.add('d-none');
       }
+
     },
 
 
