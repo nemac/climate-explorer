@@ -345,14 +345,21 @@ h6 {
     border-top: 1px solid $ce3-blue5;
     @include border-radius(5px, 5px);
     @include transition(all 0.15s ease-in);
-    width: 90%;
+    width: 100%;
+    &.with-tip {
+      width: 90%;
+    }
 
     @include very-large-mid {
-      width: 80%;
+      &.with-tip {
+        width: 80%;
+      }
     }
 
     @include very-small {
-      width: 80%;
+      &.with-tip {
+        width: 80%;
+      }
     }
 
     a {
