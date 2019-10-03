@@ -363,10 +363,6 @@
       height: calc(100% - 135px) !important;
     }
 
-    .chart-wrap {
-      // height: calc(100%) !important;
-    }
-
     #annual-slider-wrapper {
       height: $ce3-btnheight-legends !important;
     }
@@ -414,6 +410,13 @@
     }
 
   }
+
+  @include medium-height {
+    .chart-wrap {
+      height: 65% !important;
+    }
+  }
+
   @include very-small {
     height: auto !important;
     order: 1;

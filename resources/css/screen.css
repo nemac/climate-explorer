@@ -12068,12 +12068,12 @@ This file is due for a cleanup. Please do not add to the mess.
     top: auto;
     left: auto;
   }
-  /* line 190, resources/scss/_mixins.scss */
+  /* line 193, resources/scss/_mixins.scss */
   #main-header:before, #main-header:after {
     content: " ";
     display: table;
   }
-  /* line 196, resources/scss/_mixins.scss */
+  /* line 199, resources/scss/_mixins.scss */
   #main-header:after {
     clear: both;
   }
@@ -12182,12 +12182,12 @@ This file is due for a cleanup. Please do not add to the mess.
     top: auto;
     left: auto;
   }
-  /* line 190, resources/scss/_mixins.scss */
+  /* line 193, resources/scss/_mixins.scss */
   #main-header:before, #main-header:after {
     content: " ";
     display: table;
   }
-  /* line 196, resources/scss/_mixins.scss */
+  /* line 199, resources/scss/_mixins.scss */
   #main-header:after {
     clear: both;
   }
@@ -12264,12 +12264,12 @@ This file is due for a cleanup. Please do not add to the mess.
     width: 80%;
     margin: 20px auto;
   }
-  /* line 190, resources/scss/_mixins.scss */
+  /* line 193, resources/scss/_mixins.scss */
   #nav-overlay #nav-controls:before, #nav-overlay #nav-controls:after {
     content: " ";
     display: table;
   }
-  /* line 196, resources/scss/_mixins.scss */
+  /* line 199, resources/scss/_mixins.scss */
   #nav-overlay #nav-controls:after {
     clear: both;
   }
@@ -12548,12 +12548,12 @@ This file is due for a cleanup. Please do not add to the mess.
     top: 5.5rem;
     left: 1.5rem;
   }
-  /* line 190, resources/scss/_mixins.scss */
+  /* line 193, resources/scss/_mixins.scss */
   #nav-overlay #nav-controls:before, #nav-overlay #nav-controls:after {
     content: " ";
     display: table;
   }
-  /* line 196, resources/scss/_mixins.scss */
+  /* line 199, resources/scss/_mixins.scss */
   #nav-overlay #nav-controls:after {
     clear: both;
   }
@@ -12984,7 +12984,7 @@ This file is due for a cleanup. Please do not add to the mess.
   box-sizing: border-box;
 }
 
-/* line 163, resources/scss/_mixins.scss */
+/* line 166, resources/scss/_mixins.scss */
 *:before, *:after {
   -moz-box-sizing: border-box;
   -webkit-box-sizing: border-box;
@@ -13241,7 +13241,7 @@ h6 {
   box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.239);
 }
 
-@media screen and (min-height: 600px) {
+@media screen and (max-height: 600px) {
   /* line 298, resources/scss/screen.scss */
   .select-options {
     max-height: 250px !important;
@@ -14877,13 +14877,13 @@ input.input-inner-default:focus {
   border-left-color: #FBFCFE;
 }
 
-/* line 190, resources/scss/_mixins.scss */
+/* line 193, resources/scss/_mixins.scss */
 .chart-legend:before, .chart-legend:after {
   content: " ";
   display: table;
 }
 
-/* line 196, resources/scss/_mixins.scss */
+/* line 199, resources/scss/_mixins.scss */
 .chart-legend:after {
   clear: both;
 }
@@ -15804,13 +15804,13 @@ input.input-inner-default:focus {
   background: rgba(255, 255, 255, 0.1);
 }
 
-/* line 190, resources/scss/_mixins.scss */
+/* line 193, resources/scss/_mixins.scss */
 #nav-overlay .nav-content .tab ol:before, #nav-overlay .nav-content .tab ol:after {
   content: " ";
   display: table;
 }
 
-/* line 196, resources/scss/_mixins.scss */
+/* line 199, resources/scss/_mixins.scss */
 #nav-overlay .nav-content .tab ol:after {
   clear: both;
 }
@@ -15844,7 +15844,7 @@ input.input-inner-default:focus {
   font: 300 1rem/1em Roboto, Helvetica, "Helvetica Neue", Arial, sans-serif;
 }
 
-/* line 190, resources/scss/_mixins.scss */
+/* line 193, resources/scss/_mixins.scss */
 #nav-overlay .nav-content .tab ol.col-2:before, #nav-overlay .nav-content .tab ol.col-2:after,
 #nav-overlay .nav-content .tab ul.col-2:before,
 #nav-overlay .nav-content .tab ul.col-2:after {
@@ -15852,7 +15852,7 @@ input.input-inner-default:focus {
   display: table;
 }
 
-/* line 196, resources/scss/_mixins.scss */
+/* line 199, resources/scss/_mixins.scss */
 #nav-overlay .nav-content .tab ol.col-2:after,
 #nav-overlay .nav-content .tab ul.col-2:after {
   clear: both;
@@ -15865,7 +15865,7 @@ input.input-inner-default:focus {
   width: 50%;
 }
 
-/* line 190, resources/scss/_mixins.scss */
+/* line 193, resources/scss/_mixins.scss */
 #nav-overlay .nav-content .tab ol.col-3:before, #nav-overlay .nav-content .tab ol.col-3:after,
 #nav-overlay .nav-content .tab ul.col-3:before,
 #nav-overlay .nav-content .tab ul.col-3:after {
@@ -15873,7 +15873,7 @@ input.input-inner-default:focus {
   display: table;
 }
 
-/* line 196, resources/scss/_mixins.scss */
+/* line 199, resources/scss/_mixins.scss */
 #nav-overlay .nav-content .tab ol.col-3:after,
 #nav-overlay .nav-content .tab ul.col-3:after {
   clear: both;
@@ -15886,7 +15886,7 @@ input.input-inner-default:focus {
   width: 33%;
 }
 
-/* line 190, resources/scss/_mixins.scss */
+/* line 193, resources/scss/_mixins.scss */
 #nav-overlay .nav-content .tab ol.col-4:before, #nav-overlay .nav-content .tab ol.col-4:after,
 #nav-overlay .nav-content .tab ul.col-4:before,
 #nav-overlay .nav-content .tab ul.col-4:after {
@@ -15894,7 +15894,7 @@ input.input-inner-default:focus {
   display: table;
 }
 
-/* line 196, resources/scss/_mixins.scss */
+/* line 199, resources/scss/_mixins.scss */
 #nav-overlay .nav-content .tab ol.col-4:after,
 #nav-overlay .nav-content .tab ul.col-4:after {
   clear: both;
@@ -17109,17 +17109,17 @@ input.input-inner:focus {
   }
 }
 
-/* line 370, resources/scss/pages/_local-climate-charts.scss */
+/* line 366, resources/scss/pages/_local-climate-charts.scss */
 #chart-row.closed-filters #annual-slider-wrapper {
   height: 30px !important;
 }
 
-/* line 374, resources/scss/pages/_local-climate-charts.scss */
+/* line 370, resources/scss/pages/_local-climate-charts.scss */
 #chart-row.closed-filters #monthly-select-wrapper {
   height: 30px !important;
 }
 
-/* line 378, resources/scss/pages/_local-climate-charts.scss */
+/* line 374, resources/scss/pages/_local-climate-charts.scss */
 #chart-row.closed-filters #legend-wrapper {
   height: 30px !important;
 }
@@ -17139,27 +17139,34 @@ input.input-inner:focus {
     height: auto !important;
     order: 1;
   }
-  /* line 392, resources/scss/pages/_local-climate-charts.scss */
+  /* line 388, resources/scss/pages/_local-climate-charts.scss */
   #chart-row .chart-wrap {
     min-height: 350px !important;
     height: 350px !important;
   }
-  /* line 398, resources/scss/pages/_local-climate-charts.scss */
+  /* line 394, resources/scss/pages/_local-climate-charts.scss */
   #chart-row.closed-filters .chart-wrap {
     min-height: 350px !important;
     height: 350px !important;
   }
-  /* line 403, resources/scss/pages/_local-climate-charts.scss */
+  /* line 399, resources/scss/pages/_local-climate-charts.scss */
   #chart-row.closed-filters #annual-slider-wrapper {
     height: 30px !important;
   }
-  /* line 407, resources/scss/pages/_local-climate-charts.scss */
+  /* line 403, resources/scss/pages/_local-climate-charts.scss */
   #chart-row.closed-filters #monthly-select-wrapper {
     height: 30px !important;
   }
-  /* line 411, resources/scss/pages/_local-climate-charts.scss */
+  /* line 407, resources/scss/pages/_local-climate-charts.scss */
   #chart-row.closed-filters #legend-wrapper {
     height: 30px !important;
+  }
+}
+
+@media screen and (max-height: 800px) {
+  /* line 415, resources/scss/pages/_local-climate-charts.scss */
+  #chart-row .chart-wrap {
+    height: 65% !important;
   }
 }
 
@@ -17169,7 +17176,7 @@ input.input-inner:focus {
     height: auto !important;
     order: 1;
   }
-  /* line 420, resources/scss/pages/_local-climate-charts.scss */
+  /* line 423, resources/scss/pages/_local-climate-charts.scss */
   #chart-row .chart-wrap {
     min-height: 250px !important;
     height: 250px !important;
@@ -17177,14 +17184,14 @@ input.input-inner:focus {
 }
 
 @media screen and (max-width: 900px) {
-  /* line 427, resources/scss/pages/_local-climate-charts.scss */
+  /* line 430, resources/scss/pages/_local-climate-charts.scss */
   #annual-slider-wrapper {
     height: 30px !important;
     order: 2;
   }
 }
 
-/* line 437, resources/scss/pages/_local-climate-charts.scss */
+/* line 440, resources/scss/pages/_local-climate-charts.scss */
 #filters-toggle {
   height: 36px;
   width: 36px;
@@ -17196,19 +17203,19 @@ input.input-inner:focus {
   border-radius: 36px;
 }
 
-/* line 444, resources/scss/pages/_local-climate-charts.scss */
+/* line 447, resources/scss/pages/_local-climate-charts.scss */
 #filters-toggle .select-styled::after {
   background-color: #dce8fa;
   content: '\f0d8';
 }
 
-/* line 449, resources/scss/pages/_local-climate-charts.scss */
+/* line 452, resources/scss/pages/_local-climate-charts.scss */
 #filters-toggle .select-styled.closed-filters::after {
   font-family: 'Font Awesome 5 Free';
   content: '\f0d7';
 }
 
-/* line 457, resources/scss/pages/_local-climate-charts.scss */
+/* line 460, resources/scss/pages/_local-climate-charts.scss */
 #filters-row {
   visibility: visible !important;
   -webkit-transition: 0.6s;
@@ -17225,19 +17232,19 @@ input.input-inner:focus {
   transition-timing-function: ease;
 }
 
-/* line 466, resources/scss/pages/_local-climate-charts.scss */
+/* line 469, resources/scss/pages/_local-climate-charts.scss */
 #info-row.closed-filters .rounded-filters-box {
   min-height: 52px !important;
 }
 
 @media screen and (max-width: 900px) {
-  /* line 466, resources/scss/pages/_local-climate-charts.scss */
+  /* line 469, resources/scss/pages/_local-climate-charts.scss */
   #info-row.closed-filters .rounded-filters-box {
     min-height: 65px !important;
   }
 }
 
-/* line 474, resources/scss/pages/_local-climate-charts.scss */
+/* line 477, resources/scss/pages/_local-climate-charts.scss */
 #info-row.closed-filters #filters-row {
   display: none !important;
   visibility: hidden !important;

@@ -48,10 +48,13 @@
   @media screen and (max-width: 1100px) { @content; }
 }
 
-@mixin short {
-  @media screen and (min-height: 600px) { @content; }
+@mixin medium-height {
+  @media screen and (max-height: 800px) { @content; }
 }
 
+@mixin short {
+  @media screen and (max-height: 600px) { @content; }
+}
 
 @mixin tall {
   @media screen and (min-height: 1000px) { @content; }
