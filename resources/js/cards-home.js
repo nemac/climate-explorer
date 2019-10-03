@@ -13,6 +13,11 @@ $(function () {
   addCardClick('card-hightide-flooding', 'hightide-flooding');
   addCardClick('card-historical-thresholds', 'historical-thresholds');
 
+  $('#clear-location').click( function(e){
+    const target = $(e.target);
+    handleClearLocationClick(target);
+  })
+
   // adds a click event to got to card location
   function addCardClick(selctor, nav) {
     // find the the nav-item and add click event

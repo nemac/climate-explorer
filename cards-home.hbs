@@ -14,15 +14,6 @@
 
   {{> secondary_header }}
 
-  <!-- <div id="main-content-wrap">
-
-    {{> share }}
-
-    <div id="location-search">
-      <input type="text" class="autocomplete location-mapper" autocomplete="off" placeholder="Search another City, County or Zip code">
-    </div>
-
-  </div> -->
 <div id="cards-viewport" class="padding-horrizontal d-flex d-flex-column">
 
 
@@ -30,8 +21,23 @@
       <div class="rounded-box-secondary input-outer padding-horrizontal bottom-padding default-btn-height width-100">
         <input id="cards-search-input" type="text" class="location-mapper input-inner-default border-none default-btn-height width-90" autocomplete="off" placeholder="Enter county, city, or zip code">
         <span class="icon icon-search search-default float-right padding-default"></span>
+        <div id="clear-location-wrapper" class="">
+          <a id="clear-location-link"  href="../cards-home" class="d-none"></a>
+          <span id="clear-location" nav="cards-home" link="clear-location-link" class="fas fa-times-circle"></span>
+        </div>
+
     </div>
   </div>
+
+  <!-- <div class="rounded-box-secondary input-outer padding-horrizontal bottom-padding default-btn-height search-box-secondary width-40">
+    <input id="cards-search-input" type="text" class="location-mapper input-inner-default border-none default-btn-height" autocomplete="off" placeholder="Enter county, city, or zip code">
+    <span class="icon icon-search search-default float-right padding-default"></span>
+    <div id="clear-location-wrapper" class="">
+      <a id="clear-location-link"  href="../high-tide-flooding" class="d-none"></a>
+      <span id="clear-location" nav="high-tide-flooding" link="clear-location-link" class="fas fa-times-circle"></span>
+    </div>
+  </div> -->
+
 
   <div id="info-row" class="padding-vertical width-100" >
     <div class="rounded-info-box padding-default width-100">

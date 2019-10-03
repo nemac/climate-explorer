@@ -14,25 +14,17 @@
 
   {{> secondary_header }}
 
-  <!-- <div id="main-content-wrap">
-
-    {{> share }}
-
-    <div id="location-search">
-      <input type="text" class="autocomplete location-mapper" autocomplete="off" placeholder="Search another City, County or Zip code">
-    </div>
-
-  </div> -->
-
     <div id="local-climate-maps-viewport" class="padding-horrizontal d-flex d-flex-column">
 
       <div id="search-row" class="padding-horizontal d-flex-row flex-justify padding-top padding-bottom-half d-flex-justify" >
 
         <div class="rounded-box-secondary input-outer padding-horrizontal bottom-padding default-btn-height search-box-secondary width-40">
-          <input id="cards-search-input" type="text" class="location-mapper input-inner-default border-none default-btn-height " autocomplete="off" placeholder="Enter county, city, or zip code">
-          <a id="clear-location-link"  href="../local-climate-maps" class="d-none"></a>
-          <span id="clear-location" nav="local-climate-maps" link="clear-location-link" class="fas fa-times-circle search-default float-right padding-default"></span>
+          <input id="cards-search-input" type="text" class="location-mapper input-inner-default border-none default-btn-height" autocomplete="off" placeholder="Enter county, city, or zip code">
           <span class="icon icon-search search-default float-right padding-default"></span>
+          <div id="clear-location-wrapper" class="">
+            <a id="clear-location-link"  href="../local-climate-maps" class="d-none"></a>
+            <span id="clear-location" nav="local-climate-maps" link="clear-location-link" class="fas fa-times-circle"></span>
+          </div>
         </div>
 
         <div id="stations-select-wrapper" class="rounded-choice-box padding-horrizontal default-btn-height top-select-wrapper d-flex-center disabled">
@@ -104,6 +96,7 @@
 
                   <li rel="tmin" class="default-select-option varriable-option-item float-left">Avg Daily Min Temp (°F)</li>
                   <span rel="tmin" id="tmin-tooltip" class="fas fa-question-circle padding-horrizontal-half varriable-option-tooltip float-right" data-tippy-content="<strong>Average Daily Minimum Temperature (°F)</strong><hr/><br />A day’s lowest (minimum) temperature usually occurs in the early morning, just before sunrise. Averaging the daily low temperatures for any period results in a mean minimum temperature for that period.<br /><br />Periods of low temperature give plants, animals, and people a chance to recover from daytime heat. When minimum temperatures aren’t sufficiently cool, plant and animal responses can trigger ecosystem changes and increased demand for energy can stress energy infrastructure."></span>
+
                   <li rel="days_tmax_gt_90f" class="default-select-option varriable-option-item float-left">Days w/ max > 90°F</li>
                   <span rel="tmin" id="days_tmax_gt_90f-tooltip" class="fas fa-question-circle padding-horrizontal-half varriable-option-tooltip float-right" data-tippy-content="<strong>Days per year with Maximum Temperature Above 90°F</strong><hr/><br />The total number of days per year with maximum temperature above various thresholds is an indicator of how often very hot conditions occur. Depending upon humidity, wind, and physical workload, people who work outdoors or don’t have access to air conditioning may feel very uncomfortable or experience heat stress or illness on very hot days.<br /><br />Hot days also stress plants, animals, and human infrastructure such as roads, railroads, and electric lines. Increased demand for electricity to cool homes and buildings can place additional stress on energy infrastructure."></span>
 
