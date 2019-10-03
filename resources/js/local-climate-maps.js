@@ -128,9 +128,10 @@ $(function () {
       foreignObjectRendering: true,
       onrendered: function(canvas) {
 
+        const emissionsText = $('#rightScenario-select-vis').text().toLowerCase().replace(' ','_');
         var a = document.createElement('a');
         a.href = canvas.toDataURL("image/png").replace("image/png", "image/octet-stream");
-        a.download = `local-climate-map-${variable}-right.png`;
+        a.download = `local-climate-map-${variable}-${emissionsText}-right.png`;
         document.body.appendChild(a);
         a.click();
         elem.classList.add('d-none');
@@ -153,9 +154,10 @@ $(function () {
       foreignObjectRendering: true,
       onrendered: function(canvas) {
 
+        const emissionsText = $('#leftScenario-select-vis').text().toLowerCase().replace(' ','_');
         var a = document.createElement('a');
         a.href = canvas.toDataURL("image/png").replace("image/png", "image/octet-stream");
-        a.download = `local-climate-map-${variable}-left.png`;
+        a.download = `local-climate-map-${variable}-${emissionsText}-left.png`;
         document.body.appendChild(a);
         a.click();
         elem.classList.add('d-none');
@@ -229,9 +231,23 @@ $(function () {
       removeContainer: true,
       foreignObjectRendering: true,
       onrendered: function(canvas) {
-        const imageUrl  = canvas.toDataURL("image/png").replace("image/png", "image/octet-stream");
-        const base64temp = getBase64Image($('.esri-expand__content .legend-image')[0])
-        addImage(base64temp, 'right', 'legend');
+
+        const imgurl = $('.esri-expand__content .legend-image')[0].src;
+        let imageExists = new Image();
+        imageExists.addEventListener('load', imageFound);
+        imageExists.addEventListener('error', imageNotFound);
+        imageExists.src = imgurl;
+
+        function imageFound() {
+            const imageUrl  = canvas.toDataURL("image/png").replace("image/png", "image/octet-stream");
+            const base64temp = getBase64Image($('.esri-expand__content .legend-image')[0])
+            addImage(base64temp, 'right', 'legend');
+            return true;
+        }
+
+        function imageNotFound() {
+          return false;
+        }
       }
     });
 
@@ -341,9 +357,22 @@ $(function () {
       removeContainer: true,
       foreignObjectRendering: true,
       onrendered: function(canvas) {
-        const imageUrl  = canvas.toDataURL("image/png").replace("image/png", "image/octet-stream");
-        const base64temp = getBase64Image($('.esri-expand__content .legend-image')[0])
-        addImage(base64temp, 'left', 'legend');
+        const imgurl = $('.esri-expand__content .legend-image')[0].src;
+        let imageExists = new Image();
+        imageExists.addEventListener('load', imageFound);
+        imageExists.addEventListener('error', imageNotFound);
+        imageExists.src = imgurl;
+
+        function imageFound() {
+            const imageUrl  = canvas.toDataURL("image/png").replace("image/png", "image/octet-stream");
+            const base64temp = getBase64Image($('.esri-expand__content .legend-image')[0])
+            addImage(base64temp, 'left', 'legend');
+            return true;
+        }
+
+        function imageNotFound() {
+          return false;
+        }
       }
     });
 
