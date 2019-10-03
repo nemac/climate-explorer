@@ -44,6 +44,9 @@
   @media screen and (max-width: 1240px) { @content; }
 }
 
+@mixin largeish {
+  @media screen and (max-width: 1100px) { @content; }
+}
 
 @mixin tall {
   @media screen and (min-height: 1000px) { @content; }

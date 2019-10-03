@@ -497,6 +497,10 @@ h6 {
   width: 80% !important;
 }
 
+.width-85 {
+  width: 85% !important;
+}
+
 .width-70 {
   width: 70% !important;
 }
@@ -1143,6 +1147,18 @@ h6 {
 .text-info-box-secondary {
   font-size: 18px !important;
   font-weight: 500 !important;
+}
+
+.cards-search-input {
+  width: 90% !important;
+
+  @include largeish {
+    width: 80% !important;
+  }
+
+  @include medium {
+    width: 90% !important;
+  }
 }
 
 .search-default {
