@@ -70,9 +70,6 @@ $ce3-default-horizontal-padding: 12px;
 $ce3-padding-big-break: 48px;
 
 $ce3-main-bottom: 100px;
-// $border-radius-5: @include border-radius(5px, 5px);
-//
-// $border-radius-15: @include border-radius(25px, 5px);
 
 $white: #ffffff;
 $black: #000000;
@@ -316,7 +313,7 @@ h6 {
     max-height: 175px !important;
     top: 2px;
   }
-  
+
   overflow: auto !important;
   @include border-radius(5px, 5px);
   @include box-shadow(0px 2px 4px transparentize(#000, 0.761));
@@ -1156,15 +1153,18 @@ h6 {
   font-weight: 500 !important;
 }
 
-.cards-search-input {
-  width: 90% !important;
+#cards-search-input {
+  width: 80% !important;
 
   @include largeish {
-    width: 80% !important;
+    width: 75% !important;
   }
 
   @include medium {
     width: 90% !important;
+  }
+  @include small {
+    width: 75% !important;
   }
 }
 
@@ -1186,6 +1186,36 @@ h6 {
     &:hover {
       background-color: darken($ce3-blue6, 10) !important;
     }
+  }
+}
+
+#clear-location-wrapper {
+  cursor: pointer;
+  width: $ce3-btnheight;
+  height: $ce3-btnheight;
+  background-color: $ce3-blue5;
+  @include border-bottom-left-radius(5px);
+  @include border-top-left-radius(5px);
+  margin-left: -12px;
+  padding-left: 6px;
+  float: left;
+  @include medium {
+    height: $ce3-btnheight-smallecreen;
+  }
+
+  #clear-location {
+    width: 100%;
+    height: 100%;
+    margin-top: 9px;
+    @include medium {
+      margin-top: 16px;
+    }
+
+    padding-left: 6px;
+  }
+
+  &:hover {
+    background-color: darken($ce3-blue5, 5);
   }
 }
 
@@ -1344,24 +1374,6 @@ input.input-inner-default:focus  {
     }
   }
 
-  //&.arrow-left {
-  //  &:before,
-  //  &:after {
-  //    width: 10px;
-  //    height: 4px;
-  //  }
-  //
-  //  &:before {
-  //    @include rotate(-45deg);
-  //    margin-top: -4px;
-  //  }
-  //
-  //  &:after {
-  //    @include rotate(45deg);
-  //    margin-top: 1px;
-  //  }
-  //}
-
   &.arrow-right {
     &:before,
     &:after {
@@ -1502,26 +1514,6 @@ input.input-inner-default:focus  {
   position: fixed;
   top: 0;
 }
-// tooltip
-// .tooltip {
-//   display: block !important;
-//   margin-left: 8px !important;
-//   padding: 4px !important;
-//   font-size: 12px !important;
-// }
-
-// //remove this if tooltip.js positioning is changed from "right"
-// .tooltip:after {
-//   bottom: 25% !important;
-//   left: -3px !important;
-//   margin-left: -7px !important;
-//   border-color: transparent #ffffff transparent transparent !important;
-// }
-
-// .varriable-option-wrapper {
-//   width: 100%;
-//   height: 44px;
-//   position: relative;
 
   .varriable-option-item {
     width: 100%;
@@ -1537,7 +1529,6 @@ input.input-inner-default:focus  {
 
     @include very-large-mid {
       width: 20%;
-      // padding-left: 3px !important;
     }
 
     @include very-small {
@@ -1551,48 +1542,28 @@ input.input-inner-default:focus  {
       color: $ce3-blue3;
       background:  darken($ce3-blue5, 5);
     }
-    // top: 18px;
-    // left: calc(100% - 50px);
   }
-// }
 
 .tooltip {
   position: relative;
   display: block;
   max-width: 60%;
-  // top: -55px;
-  // white-space: nowrap;
-  // left: 50%;
   z-index: 1000;
   padding: 12px;
   background: $ce3-blue6;
-  // text-align: center;
   font: 1.125rem/1em $roboto;
   color: $blue2;
-  // @include transform(translateX(-50%));
   @include box-shadow(0 0 8px transparentize($blue1, 0.75));
 
   .tooltip-arrow::before {
       position: absolute;
       left: calc(100% + 12px);
-      // top: 75px;
       content: "";
       border-style: solid;
       border-width: .4rem 0 .4rem .4rem;
       border-color: transparent;
       border-left-color: $ce3-blue6;
   }
-
-  // &:after {
-  //   content: '';
-  //   display: block;
-  //   position: absolute;
-  //   bottom: -10px;
-  //   left: 50%;
-  //   margin-left: -5px;
-  //   border: 5px solid $white;
-  //   border-color: $white transparent transparent transparent;
-  // }
 }
 // chart legend
 
@@ -1785,153 +1756,6 @@ input.input-inner-default:focus  {
 @import "template/main_header";
 @import "template/secondary_header";
 
-
-// zoom / legend
-//
-// .ui-slider-label {
-//   position: absolute;
-//   width: 21px;
-//   height: 21px;
-//   border: 3px solid $orange1;
-//   color: $orange1;
-//   font: 0.75rem/0.75rem $sans-heavy;
-//   @include border-radius(50%);
-//   @include no-text;
-//   cursor: pointer;
-//
-//   &:before,
-//   &:after {
-//     content: '';
-//     display: block;
-//     position: absolute;
-//     top: 7px;
-//     left: 3px;
-//     width: 9px;
-//     height: 3px;
-//     margin: -1px 0 0 0;
-//     background: $orange1;
-//   }
-//
-//   &.minus {
-//   }
-//
-//   &.plus {
-//     &:after {
-//       top: 4px;
-//       left: 6px;
-//       width: 3px;
-//       height: 9px;
-//     }
-//   }
-//
-//   &.range-label {
-//     bottom: 0;
-//     width: auto;
-//     @include undo-no-text;
-//     font: 300 0.875rem/1em $roboto;
-//     color: $grey1;
-//     border: none;
-//     @include border-radius(none);
-//
-//     &:before,
-//     &:after {
-//       display: none;
-//     }
-//
-//     &.min {
-//       left: 0;
-//     }
-//
-//     &.mid {
-//       left: 50%;
-//       @include transform(translateX(-50%));
-//     }
-//
-//     &.max {
-//       right: 0;
-//     }
-//   }
-// }
-//
-// .legend-wrap {
-//   .legend {
-//
-//     .color {
-//       display: inline-block;
-//       height: 0;
-//       background: red;
-//       vertical-align: middle;
-//     }
-//
-//   }
-// }
-// .zoom {
-//   position: absolute;
-//   top: 30%;
-//   right: 20px;
-//   width: 40px;
-//   height: 40%;
-//   background: transparentize($white, 0.5);
-//   @include transition(0.25s);
-//
-//   &:hover {
-//     background: transparentize($white, 0.1);
-//   }
-//
-//   .zoom-slider {
-//     left: calc(50% - 3px);
-//     top: 17%;
-//     width: 6px;
-//     height: 66%;
-//   }
-//
-//   .ui-slider-handle {
-//     @include transition(0.15s);
-//   }
-//
-//   .zoom-label {
-//     left: 50%;
-//     margin-left: -10px;
-//
-//     &.minus {
-//       bottom: 10px;
-//     }
-//
-//     &.plus {
-//       top: 10px;
-//     }
-//   }
-// }
-// .page-splash {
-//   padding: 8% 0;
-//   color: $blue2;
-//
-//   .splash-text {
-//     max-width: 65%;
-//     padding-left: calc(4% + 10px);
-//     //mix-blend-mode: hard-light;
-//
-//     h1 {
-//       margin: 0 0 20px 0;
-//     }
-//
-//     h4 {
-//       margin: 0 0 40px 0;
-//       color: $orange1;
-//     }
-//
-//     p {
-//       width: 75%;
-//       margin: 0 0 20px 0;
-//       font: 400 1.375rem/1.5em $roboto;
-//     }
-//   }
-//
-//   .share-widget {
-//     top: 0;
-//     right: 0;
-//   }
-// }
 // // HOME PAGE
 
 @import "pages/home";
@@ -1962,118 +1786,6 @@ input.input-inner-default:focus  {
 
 // about, definitions, creds, faq
 @import "pages/about";
-
-// // STANDARD PAGE
-// #about-viewport {
-//   background-color: $white;
-//   height: calc(100% - 48px - 6px - 100px) !important;
-//   min-height: calc(100% - 48px - 6px - 100px) !important;
-//   overflow: auto !important;
-//   flex: 1 1 auto !important;
-//   margin-bottom: 6px;
-//
-//   &:after {
-//     content: '';
-//     width: 100%;
-//     height: 5px;
-//     position: absolute;
-//     top: calc(100% - 105px);
-//     left: -2px;
-//     @include box-shadow( inset 0 -2px 2px transparentize(#000, 0.7));
-//   }
-// }
-
-// .page-type-text {
-//   #viewport {
-//     background-color: transparentize($blue3, 0.5);
-//     //top: 20px;
-//     height: calc(100% - 40px);
-//     //margin-top: 95px;
-//   }
-// }
-
-// #standard-splash {
-//   padding-bottom: 40px;
-// }
-//
-// #standard-body {
-//   max-width: 75%;
-//   padding-left: calc(4% + 10px);
-//
-//   a {
-//     text-decoration: underline;
-//   }
-//
-//   p {
-//     line-height: 1.75em;
-//     margin: 0 0 20px 0;
-//   }
-//
-//   strong {
-//     font-weight: 600;
-//   }
-//
-//   h2 {
-//     margin: 30px 0;
-//     font-size: 2rem;
-//     color: $blue1;
-//   }
-//
-//   h3 {
-//     margin: 20px 0;
-//     font-size: 1.75rem;
-//     color: $orange1;
-//   }
-//
-//   h4 {
-//     margin: 0 0 15px 0;
-//     font-size: 1.25rem;
-//     line-height: 1.375em;
-//   }
-//
-//   ul, ol {
-//     margin: 0 20px 30px 20px;
-//     padding: 0 0 0 30px;
-//     font: 300 1rem/1.5em $roboto;
-//
-//     li {
-//       margin: 0 0 10px 0;
-//     }
-//   }
-//
-//   ol {
-//     list-style-type: decimal;
-//   }
-//
-//   li {
-//     list-style-type: disc;
-//   }
-//
-//   dl {
-//     margin: 0 0 30px 0;
-//     font: 300 1rem/1.5em $roboto;
-//
-//     dt {
-//       margin: 0 0 15px 0;
-//       padding-bottom: 10px;
-//       border-bottom: 1px solid #dddddd;
-//       color: #444444;
-//       font-weight: 400;
-//     }
-//
-//     dd {
-//       margin: 0 0 25px 0;
-//     }
-//   }
-//
-//   hr {
-//     display: block;
-//     height: 3px;
-//     margin: 60px 0;
-//     border: none;
-//     background: $orange1;
-//   }
-// }
 // PLUGINS
 
 // tour

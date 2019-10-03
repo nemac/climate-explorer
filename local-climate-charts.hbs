@@ -14,25 +14,20 @@
 
   {{> secondary_header }}
 
-  <!-- <div id="main-content-wrap">
-
-    {{> share }}
-
-    <div id="location-search">
-      <input type="text" class="autocomplete location-mapper" autocomplete="off" placeholder="Search another City, County or Zip code">
-    </div>
-
-  </div> -->
-
     <div id="local-climate-charts-viewport" class="padding-horrizontal d-flex d-flex-column">
 
       <div id="search-row" class="padding-horizontal d-flex-row flex-justify padding-top padding-bottom-half d-flex-justify" >
 
         <div class="rounded-box-secondary input-outer padding-horrizontal bottom-padding default-btn-height search-box-secondary width-40">
           <input id="cards-search-input" type="text" class="location-mapper input-inner-default border-none default-btn-height" autocomplete="off" placeholder="Enter county, city, or zip code">
-          <a id="clear-location-link"  href="../local-climate-charts" class="d-none"></a>
-          <span id="clear-location" nav="local-climate-charts" link="clear-location-link" class="fas fa-times-circle search-default float-right padding-default"></span>
+          <!-- <span class="icon icon-search search-default float-right padding-default"></span> -->
+          <!-- <span id="clear-location" nav="local-climate-maps" link="clear-location-link" class="fas fa-times-circle search-default float-right padding-default"></span> -->
           <span class="icon icon-search search-default float-right padding-default"></span>
+          <div id="clear-location-wrapper" class="">
+            <a id="clear-location-link"  href="../local-climate-charts" class="d-none"></a>
+            <span id="clear-location" nav="local-climate-charts" link="clear-location-link" class="fas fa-times-circle"></span>
+          </div>
+
         </div>
 
         <div id="stations-select-wrapper" class="rounded-choice-box padding-horrizontal default-btn-height top-select-wrapper d-flex-center disabled">
