@@ -744,8 +744,9 @@ $(function () {
       window.ce.ce('setStationsMapState', options);
       renderStationInfo(options.stationId, options.stationName);
 
+      const messsageElem = document.getElementById('stations-map-message');
+
       if (options.currentstations) {
-        const messsageElem = document.getElementById('stations-map-message');
         // check if there are any tidal stations in map extent
         if (options.currentstations.features.length === 0) {
           // get map parent element - which provides the correct dimensions for the map
