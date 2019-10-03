@@ -416,6 +416,13 @@
     }
   }
 
+  @include short {
+    .chart-wrap {
+      height: 60% !important;
+    }
+  }
+
+
   @include very-small {
     height: auto !important;
     order: 1;
