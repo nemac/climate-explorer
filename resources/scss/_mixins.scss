@@ -53,7 +53,11 @@
 }
 
 @mixin short {
-  @media screen and (max-height: 600px) { @content; }
+  @media screen and (max-height: 700px) { @content; }
+}
+
+@mixin very-short {
+  @media screen and (max-height: 500px) { @content; }
 }
 
 @mixin tall {
