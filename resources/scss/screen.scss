@@ -1162,6 +1162,7 @@ h6 {
 
 #cards-search-input {
   width: 80% !important;
+  text-indent: $ce3-padding-half;
 
   @include largeish {
     width: 75% !important;
@@ -1199,15 +1200,16 @@ h6 {
 #clear-location-wrapper {
   cursor: pointer;
   width: $ce3-btnheight;
-  height: $ce3-btnheight;
-  background-color: $ce3-blue5;
+  height: $ce3-btnheight - 1;
+  background-color: $ce3-blue6;
+  border: 1px solid $ce3-blue3alphad;
   @include border-bottom-left-radius(5px);
   @include border-top-left-radius(5px);
   margin-left: -12px;
-  padding-left: 6px;
+  padding-left: 5px;
   float: left;
   @include medium {
-    height: $ce3-btnheight-smallecreen;
+    height: $ce3-btnheight-smallecreen - 1;
   }
 
   #clear-location {
