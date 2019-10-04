@@ -249,7 +249,6 @@ function forceResize() {
 // init tool helpers for varriables in varriable pulldowns on map and chart pages
 function initVarriableToolTips() {
   // const listWidth = -500 //(document.getElementById('varriable-select-vis').offsetWidth - 24)* -1
-  // // console.log('initVarriableToolTips', listWidth)
   const tmaxReference = document.getElementById('tmax-tooltip');
   makeTip(tmaxReference);
 
@@ -310,14 +309,10 @@ function initVarriableToolTips() {
 
 function makeTip(elem) {
   elem.addEventListener('mouseover', tippy( elem, {
-      theme: 'ce-three',
-      arrow: false,
-      interactive: false,
-      hideOnClick: false,
-      flipOnUpdate: false
-     })
-   );
-
-
-
+    theme: 'ce-three',
+    arrow: false,
+    interactive: false,
+    hideOnClick: false,
+    flipOnUpdate: false
+  }));
 }

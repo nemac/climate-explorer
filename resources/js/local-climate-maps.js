@@ -612,12 +612,12 @@ $(function () {
 
         if ( variable !== undefined) {
           const $styledSelect = $('.select.varriable-select div.select-styled');
-          $(`[rel="${variable}"]`).click();
+          $(`li[rel="${variable}"]`).click();
 
-          // change map varriable
-          if (window.precipitationScenariosMap) {
-            $(window.precipitationScenariosMap).scenarioComparisonMap({ variable });
-          }
+          // // change map varriable
+          // if (window.precipitationScenariosMap) {
+          //   $(window.precipitationScenariosMap).scenarioComparisonMap({ variable: variable });
+          // }
         }
 
       },
@@ -627,6 +627,8 @@ $(function () {
     });
     window.precipitationScenariosMap.scenarioComparisonMap("getShowSeasonControls") ? $("#precipitation-map-season").show(200) : $("#precipitation-map-season").hide();
   }
+
+
 
   if (!isNational()) {
     window.stations = $('#temperature-map').scenarioComparisonMap(_extends({
