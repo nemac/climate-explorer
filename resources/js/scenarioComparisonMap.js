@@ -577,173 +577,24 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
     },
 
     _updateScenarioLayers: function _updateScenarioLayers() {
-      // this.map.removeAll();
-
-      console.log('_updateScenarioLayers this.map', this.map)
-
-
-
       return Promise.all([this._updateLeftScenarioLayer(), this._updateRightScenarioLayer()]).catch(this._error.bind(this));
     },
 
     _updateLeftScenarioLayer: function _updateLeftScenarioLayer() {
-      // console.log('_updateLeftScenarioLayer this', this)
-
-      if (this.leftLayer !== null) {
-        var oldLeftLayer = this.leftLayer;
-        // this.map.removeAll();
-        // const oldLeftLayerID  = this.map.findLayerById(oldLeftLayer.id);
-        // console.log('oldLeftLayerID',oldLeftLayerID)
-        // const _thismap = this.map;
-
-        setTimeout(function () {
-          oldLeftLayer.visible = false;
-          // _thismap.remove(oldLeftLayerID);
-          oldLeftLayer.destroy();
-        }, 400);
-        // this.leftLayer = null;
-        // var oldLeftLayer = this.leftLayer;
-        // this.map.remove(this.map.findLayerById(oldLeftLayer.uid))
-        // oldRightLayer.destroy();
-        // var oldRightLayer = this.rightLayer;
-        // setTimeout(function () {
-        //   oldRightLayer.visible = false;
-        //   oldRightLayer.destroy();
-        // }, 400);
-        // this.rightLayer = null;
-        // // const oldlayuuid = this.map.findLayerById(oldLeftLayer.uid);
-        // // this.map.remove(oldlayuuid);
-        // const _thismap = this.map;
-        // console.log('_thismap 1', _thismap)
-        // setTimeout(function () {
-        //   oldLeftLayer.visible = false;
-        //
-        //   console.log('_thismap 2', _thismap)
-        // }, 400);
-        // this.leftLayer = null;
-        // console.log('this', this)
-        // console.log('this.map', this.map)
-        // console.log('this.rightLayer', this.rightLayer)
-        // var oldLeftLayer = this.rightLayer;
-        // this.leftLayer.visible = false;
-        // const oldlayuuid = this.map.findLayerById(this.leftLayer.uid);
-        // this.map.remove(this.leftLayer);
-        // this.leftLayer.destroy();
-        // this.leftLayer = null;
-
-        // var oldLeftLayer = this.leftLayer;
-        // var _thismap = this.map;
-        // const lay = _thismap.findLayerById(this.leftLayer.id);
-        //
-        //
-        // // this.map.remove(lay);
-        // // oldLeftLayer.destroy();
-        // // this.map.remove(lay);
-        // setTimeout(function () {
-        //   oldLeftLayer.visible = false;
-        //   _thismap.remove(lay);
-        //   oldLeftLayer.destroy();
-        // }, 400);
-        // oldLeftLayer = null;
-      }
-
       return this._initScenarioLayer(this.options.leftScenario, this.options.leftYear, 'left', this.options.leftOpacity).then(function (layer) {
-        // this.map.add(layer, 0);
         this.leftLayer = layer;
         return layer;
       }.bind(this));
     },
 
     _updateRightScenarioLayer: function _updateRightScenarioLayer() {
-      // console.log('_updateRightScenarioLayer this', this)
-      // console.log('_updateRightScenarioLayer options', this.options)
-
-
-      if (this.rightLayer !== null) {
-        var oldRightLayer = this.rightLayer;
-        // const oldRightLayerID  = this.map.findLayerById(oldRightLayer.id);
-        // console.log('oldRightLayerID',oldRightLayerID)
-        // const _thismap = this.map;
-
-        setTimeout(function () {
-          oldRightLayer.visible = false;
-          // _thismap.remove(oldRightLayerID);
-          oldRightLayer.destroy();
-        }, 400);
-        this.rightLayer = null;
-        // var oldRightLayer = this.rightLayer;
-        // this.map.remove(this.map.findLayerById(oldLeftLayer.uid))
-        // oldRightLayer.destroy();
-        // var oldLeftLayer = this.leftLayer;
-        // setTimeout(function () {
-        //   oldRightLayer.visible = false;
-        //   oldRightLayer.destroy();
-        // }, 400);
-        // this.leftLayer = null;
-        // // // const oldlayuuid = this.map.findLayerById(oldRightLayer.uid);
-        // // this.map.remove(oldlayuuid);
-        // const _thismap = this.map;
-        //
-        // setTimeout(function () {
-        //   oldRightLayer.visible = false;
-        //   oldRightLayer.destroy();
-        // }, 400);
-        // this.rightLayer = null;
-        // var oldRightLayer = this.rightLayer;
-        // oldRightLayer.visible = false;
-        // const oldlayuuid = this.map.findLayerById(oldRightLayer.uid);
-        // this.map.remove(oldlayuuid);
-        // oldRightLayer.destroy();
-        // oldRightLayer = null;
-
-        // this.map.remove(oldRightLayer);
-        // var _thismap = this.map;
-        // console.log('this', this)
-        // console.log('this.map', this.map)
-        // console.log('this.rightLayer', this.rightLayer)
-        // console.log('oldRightLayer', oldRightLayer)
-        //
-        //
-        // const lay = _thismap.findLayerById(oldRightLayer.id);
-        // this.map.remove(lay);
-
-
-
-        // oldRightLayer.visible = false;
-        // this.map.remove(lay);
-        // oldRightLayer.destroy();
-        // // this.map.remove(lay);
-        // setTimeout(function () {
-        //   oldRightLayer.visible = false;
-        //   _thismap.remove(lay);
-        //   oldRightLayer.destroy();
-        // }, 400);
-        // oldRightLayer = null;
-      }
-
       return this._initScenarioLayer(this.options.rightScenario, this.options.rightYear, 'right', this.options.rightOpacity).then(function (layer) {
-        // console.log('_updateRightScenarioLayer _initScenarioLayer allLayers', this.map.allLayers.items[1], this.map.allLayers.items[2])
-        console.log('_updateRightScenarioLayer _initScenarioLayer', this.map.allLayers.items)
-        // const layerFromId = this.map.findLayerById(layer.id);
-        // this.map.removeAll();
-        // this.map.add(layer, 1);
         this.rightLayer = layer;
         return layer;
       }.bind(this));
     },
 
     _initScenarioLayer: function _initScenarioLayer(scenario, year, side, opacity) {
-      console.log('_initScenarioLayer side', scenario, year, side, opacity)
-
-      let leftLayer = this.map.findLayerById('left-variable');
-      console.log('_updateScenarioLayers leftLayer', leftLayer)
-      this.map.remove(leftLayer);
-
-      let rightLayer  = this.map.findLayerById('right-variable');
-      console.log('_updateScenarioLayers rightLayer', rightLayer)
-      this.map.remove(rightLayer);
-
-
       var promise = new Promise(function (resolve) {
         var layerClass = this.dojoMods.TileLayer;
         if (this.options.scenarios[scenario].tilesURL.endsWith('png')) {
@@ -772,18 +623,18 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
         this._mapInitPromise.then(function (layer) {
 
           if (side === 'left') {
+            // removes old layer to renove stray layers
             let leftLayer = this.map.findLayerById('left-variable');
-            console.log('_updateScenarioLayers leftLayer', leftLayer)
             this.map.remove(leftLayer);
 
-            layer.id = `left-variable` // -${this.options.variable}
+            layer.id = `left-variable`;
             this.map.add(layer, 0);
           } else {
+            // removes old layer to renove stray layers
             let rightLayer  = this.map.findLayerById('right-variable');
-            console.log('_updateScenarioLayers rightLayer', rightLayer)
             this.map.remove(rightLayer);
-            
-            layer.id = `right-variable` // -${this.options.variable}
+
+            layer.id = `right-variable`;
             this.map.add(layer, 1);
           }
         }.bind(this, layer));
@@ -802,7 +653,9 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
                   duration: 1200,
                   easing: 'easeInOutCubic',
                   step: function (now, fx) {
-                    this._setOption('swipeX', layerViewContainer.element.width * now / 100);
+                    if (layerViewContainer.element) {
+                      this._setOption('swipeX', layerViewContainer.element.width * now / 100);
+                    }
                   }.bind(_this2)
                 });
                 _this2.options.animateIntro = false;
