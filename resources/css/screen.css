@@ -17162,37 +17162,38 @@ input.input-inner:focus {
 }
 
 @media screen and (max-height: 800px) {
-  /* line 363, resources/scss/pages/_local-climate-charts.scss */
+  /* line 358, resources/scss/pages/_local-climate-charts.scss */
   #chart-row .chart-wrap {
     height: calc(100% - 75px) !important;
   }
 }
 
 @media screen and (max-height: 700px) {
-  /* line 371, resources/scss/pages/_local-climate-charts.scss */
+  /* line 364, resources/scss/pages/_local-climate-charts.scss */
   #chart-row .chart-wrap {
     height: calc(100% - 85px) !important;
+    min-height: 125px !important;
   }
 }
 
 @media screen and (min-width: 901px) {
-  /* line 377, resources/scss/pages/_local-climate-charts.scss */
+  /* line 371, resources/scss/pages/_local-climate-charts.scss */
   #chart-row.closed-filters {
     height: calc(100% - 135px) !important;
   }
 }
 
-/* line 382, resources/scss/pages/_local-climate-charts.scss */
+/* line 376, resources/scss/pages/_local-climate-charts.scss */
 #chart-row.closed-filters #annual-slider-wrapper {
   height: 30px !important;
 }
 
-/* line 386, resources/scss/pages/_local-climate-charts.scss */
+/* line 380, resources/scss/pages/_local-climate-charts.scss */
 #chart-row.closed-filters #monthly-select-wrapper {
   height: 30px !important;
 }
 
-/* line 390, resources/scss/pages/_local-climate-charts.scss */
+/* line 384, resources/scss/pages/_local-climate-charts.scss */
 #chart-row.closed-filters #legend-wrapper {
   height: 30px !important;
 }
@@ -17211,25 +17212,25 @@ input.input-inner:focus {
     height: auto !important;
     order: 1;
   }
-  /* line 405, resources/scss/pages/_local-climate-charts.scss */
+  /* line 399, resources/scss/pages/_local-climate-charts.scss */
   #chart-row .chart-wrap {
     min-height: 350px !important;
     height: 350px !important;
   }
-  /* line 411, resources/scss/pages/_local-climate-charts.scss */
+  /* line 405, resources/scss/pages/_local-climate-charts.scss */
   #chart-row.closed-filters .chart-wrap {
     min-height: 350px !important;
     height: 350px !important;
   }
-  /* line 416, resources/scss/pages/_local-climate-charts.scss */
+  /* line 410, resources/scss/pages/_local-climate-charts.scss */
   #chart-row.closed-filters #annual-slider-wrapper {
     height: 30px !important;
   }
-  /* line 420, resources/scss/pages/_local-climate-charts.scss */
+  /* line 414, resources/scss/pages/_local-climate-charts.scss */
   #chart-row.closed-filters #monthly-select-wrapper {
     height: 30px !important;
   }
-  /* line 424, resources/scss/pages/_local-climate-charts.scss */
+  /* line 418, resources/scss/pages/_local-climate-charts.scss */
   #chart-row.closed-filters #legend-wrapper {
     height: 30px !important;
   }
@@ -17241,7 +17242,7 @@ input.input-inner:focus {
     height: auto !important;
     order: 1;
   }
-  /* line 435, resources/scss/pages/_local-climate-charts.scss */
+  /* line 429, resources/scss/pages/_local-climate-charts.scss */
   #chart-row .chart-wrap {
     min-height: 250px !important;
     height: 250px !important;
@@ -17249,14 +17250,14 @@ input.input-inner:focus {
 }
 
 @media screen and (max-width: 900px) {
-  /* line 442, resources/scss/pages/_local-climate-charts.scss */
+  /* line 436, resources/scss/pages/_local-climate-charts.scss */
   #annual-slider-wrapper {
     height: 30px !important;
     order: 2;
   }
 }
 
-/* line 452, resources/scss/pages/_local-climate-charts.scss */
+/* line 446, resources/scss/pages/_local-climate-charts.scss */
 #filters-toggle {
   height: 36px;
   width: 36px;
@@ -17268,19 +17269,19 @@ input.input-inner:focus {
   border-radius: 36px;
 }
 
-/* line 459, resources/scss/pages/_local-climate-charts.scss */
+/* line 453, resources/scss/pages/_local-climate-charts.scss */
 #filters-toggle .select-styled::after {
   background-color: #dce8fa;
   content: '\f0d8';
 }
 
-/* line 464, resources/scss/pages/_local-climate-charts.scss */
+/* line 458, resources/scss/pages/_local-climate-charts.scss */
 #filters-toggle .select-styled.closed-filters::after {
   font-family: 'Font Awesome 5 Free';
   content: '\f0d7';
 }
 
-/* line 472, resources/scss/pages/_local-climate-charts.scss */
+/* line 466, resources/scss/pages/_local-climate-charts.scss */
 #filters-row {
   visibility: visible !important;
   -webkit-transition: 0.6s;
@@ -17297,19 +17298,19 @@ input.input-inner:focus {
   transition-timing-function: ease;
 }
 
-/* line 481, resources/scss/pages/_local-climate-charts.scss */
+/* line 475, resources/scss/pages/_local-climate-charts.scss */
 #info-row.closed-filters .rounded-filters-box {
   min-height: 52px !important;
 }
 
 @media screen and (max-width: 900px) {
-  /* line 481, resources/scss/pages/_local-climate-charts.scss */
+  /* line 475, resources/scss/pages/_local-climate-charts.scss */
   #info-row.closed-filters .rounded-filters-box {
     min-height: 65px !important;
   }
 }
 
-/* line 489, resources/scss/pages/_local-climate-charts.scss */
+/* line 483, resources/scss/pages/_local-climate-charts.scss */
 #info-row.closed-filters #filters-row {
   display: none !important;
   visibility: hidden !important;
