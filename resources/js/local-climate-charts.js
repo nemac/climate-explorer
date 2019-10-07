@@ -452,7 +452,7 @@ $(function () {
     'frequency': 'annual',
     'timeperiod': '2025',
     'county': window.ce.ce('getLocationPageState')['fips'],
-    'variable':'tmax',
+    'variable': window.ce.ce('getVariablesPageState')['variable'] || 'tmax',
     'scenario': 'both',
     'presentation': 'absolute',
     'pmedian': true,
@@ -476,10 +476,10 @@ $(function () {
     const $styledSelect = $('.select.varriable-select div.select-styled');
     $(`[rel="${variable}"]`).click();
 
-    // change chart varriable
-    window.tempChart.update({
-      variable
-    });
+    // // change chart varriable
+    // window.tempChart.update({
+    //   variable
+    // });
   }
 
 });
