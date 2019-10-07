@@ -388,8 +388,7 @@
 
   @include large {
     justify-content: center !important;
-    // height: auto !important;
-    // height: calc(100% - 30px) !important;
+    height: calc(100% - 75px) !important;
     min-height: unset !important;
   }
 

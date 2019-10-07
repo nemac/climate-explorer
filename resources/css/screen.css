@@ -16388,7 +16388,7 @@ body.detail-open #nav-overlay {
   }
 }
 
-/* line 1762, resources/scss/screen.scss */
+/* line 1744, resources/scss/screen.scss */
 #desktop-warning {
   display: none;
 }
@@ -17202,6 +17202,7 @@ input.input-inner:focus {
   /* line 353, resources/scss/pages/_local-climate-charts.scss */
   #chart-row {
     justify-content: center !important;
+    height: calc(100% - 75px) !important;
     min-height: unset !important;
   }
 }
@@ -17212,25 +17213,25 @@ input.input-inner:focus {
     height: auto !important;
     order: 1;
   }
-  /* line 399, resources/scss/pages/_local-climate-charts.scss */
+  /* line 398, resources/scss/pages/_local-climate-charts.scss */
   #chart-row .chart-wrap {
     min-height: 350px !important;
     height: 350px !important;
   }
-  /* line 405, resources/scss/pages/_local-climate-charts.scss */
+  /* line 404, resources/scss/pages/_local-climate-charts.scss */
   #chart-row.closed-filters .chart-wrap {
     min-height: 350px !important;
     height: 350px !important;
   }
-  /* line 410, resources/scss/pages/_local-climate-charts.scss */
+  /* line 409, resources/scss/pages/_local-climate-charts.scss */
   #chart-row.closed-filters #annual-slider-wrapper {
     height: 30px !important;
   }
-  /* line 414, resources/scss/pages/_local-climate-charts.scss */
+  /* line 413, resources/scss/pages/_local-climate-charts.scss */
   #chart-row.closed-filters #monthly-select-wrapper {
     height: 30px !important;
   }
-  /* line 418, resources/scss/pages/_local-climate-charts.scss */
+  /* line 417, resources/scss/pages/_local-climate-charts.scss */
   #chart-row.closed-filters #legend-wrapper {
     height: 30px !important;
   }
@@ -17242,7 +17243,7 @@ input.input-inner:focus {
     height: auto !important;
     order: 1;
   }
-  /* line 429, resources/scss/pages/_local-climate-charts.scss */
+  /* line 428, resources/scss/pages/_local-climate-charts.scss */
   #chart-row .chart-wrap {
     min-height: 250px !important;
     height: 250px !important;
@@ -17250,14 +17251,14 @@ input.input-inner:focus {
 }
 
 @media screen and (max-width: 900px) {
-  /* line 436, resources/scss/pages/_local-climate-charts.scss */
+  /* line 435, resources/scss/pages/_local-climate-charts.scss */
   #annual-slider-wrapper {
     height: 30px !important;
     order: 2;
   }
 }
 
-/* line 446, resources/scss/pages/_local-climate-charts.scss */
+/* line 445, resources/scss/pages/_local-climate-charts.scss */
 #filters-toggle {
   height: 36px;
   width: 36px;
@@ -17269,19 +17270,19 @@ input.input-inner:focus {
   border-radius: 36px;
 }
 
-/* line 453, resources/scss/pages/_local-climate-charts.scss */
+/* line 452, resources/scss/pages/_local-climate-charts.scss */
 #filters-toggle .select-styled::after {
   background-color: #dce8fa;
   content: '\f0d8';
 }
 
-/* line 458, resources/scss/pages/_local-climate-charts.scss */
+/* line 457, resources/scss/pages/_local-climate-charts.scss */
 #filters-toggle .select-styled.closed-filters::after {
   font-family: 'Font Awesome 5 Free';
   content: '\f0d7';
 }
 
-/* line 466, resources/scss/pages/_local-climate-charts.scss */
+/* line 465, resources/scss/pages/_local-climate-charts.scss */
 #filters-row {
   visibility: visible !important;
   -webkit-transition: 0.6s;
@@ -17298,19 +17299,19 @@ input.input-inner:focus {
   transition-timing-function: ease;
 }
 
-/* line 475, resources/scss/pages/_local-climate-charts.scss */
+/* line 474, resources/scss/pages/_local-climate-charts.scss */
 #info-row.closed-filters .rounded-filters-box {
   min-height: 52px !important;
 }
 
 @media screen and (max-width: 900px) {
-  /* line 475, resources/scss/pages/_local-climate-charts.scss */
+  /* line 474, resources/scss/pages/_local-climate-charts.scss */
   #info-row.closed-filters .rounded-filters-box {
     min-height: 65px !important;
   }
 }
 
-/* line 483, resources/scss/pages/_local-climate-charts.scss */
+/* line 482, resources/scss/pages/_local-climate-charts.scss */
 #info-row.closed-filters #filters-row {
   display: none !important;
   visibility: hidden !important;
@@ -20587,7 +20588,7 @@ s
   cursor: default;
 }
 
-/* line 1815, resources/scss/screen.scss */
+/* line 1792, resources/scss/screen.scss */
 .ui-autocomplete {
   position: absolute;
   top: 0;
@@ -20595,7 +20596,7 @@ s
   cursor: default;
 }
 
-/* line 1821, resources/scss/screen.scss */
+/* line 1798, resources/scss/screen.scss */
 .ui-menu {
   display: block;
   padding: 10px;
@@ -20608,12 +20609,12 @@ s
   box-shadow: 0 0 12px rgba(35, 58, 112, 0.25);
 }
 
-/* line 1830, resources/scss/screen.scss */
+/* line 1807, resources/scss/screen.scss */
 .ui-menu .ui-menu {
   position: absolute;
 }
 
-/* line 1834, resources/scss/screen.scss */
+/* line 1811, resources/scss/screen.scss */
 .ui-menu .ui-menu-item {
   position: relative;
   margin: 0;
@@ -20621,7 +20622,7 @@ s
   cursor: pointer;
 }
 
-/* line 1841, resources/scss/screen.scss */
+/* line 1818, resources/scss/screen.scss */
 .ui-menu .ui-menu-divider {
   margin: 5px 0;
   height: 0;
@@ -20630,12 +20631,12 @@ s
   border-width: 1px 0 0 0;
 }
 
-/* line 1850, resources/scss/screen.scss */
+/* line 1827, resources/scss/screen.scss */
 .ui-accordion .ui-accordion-header {
   outline: none;
 }
 
-/* line 1853, resources/scss/screen.scss */
+/* line 1830, resources/scss/screen.scss */
 .ui-accordion .ui-accordion-header .ui-accordion-header-icon {
   display: inline-block;
   position: static;
@@ -20644,14 +20645,14 @@ s
   overflow: visible;
 }
 
-/* line 1863, resources/scss/screen.scss */
+/* line 1840, resources/scss/screen.scss */
 .accordion-plain .ui-accordion-header {
   padding: 8px 0;
   color: #233a70;
   line-height: 28px;
 }
 
-/* line 1868, resources/scss/screen.scss */
+/* line 1845, resources/scss/screen.scss */
 .accordion-plain .ui-accordion-header .ui-accordion-header-icon {
   display: block;
   float: left;
@@ -20661,17 +20662,17 @@ s
   line-height: 28px;
 }
 
-/* line 1878, resources/scss/screen.scss */
+/* line 1855, resources/scss/screen.scss */
 .accordion-plain .accordion-text {
   padding: 20px 40px;
 }
 
-/* line 1884, resources/scss/screen.scss */
+/* line 1861, resources/scss/screen.scss */
 .tabs-plain .tabs-plain-list li {
   display: inline-block;
 }
 
-/* line 1887, resources/scss/screen.scss */
+/* line 1864, resources/scss/screen.scss */
 .tabs-plain .tabs-plain-list li a {
   display: block;
   padding: 8px 10px;
@@ -20810,13 +20811,13 @@ https://raw.github.com/shagstrom/split-pane/master/LICENSE
   cursor: row-resize;
 }
 
-/* line 1901, resources/scss/screen.scss */
+/* line 1878, resources/scss/screen.scss */
 .pretty-split-pane-frame .split-pane > .split-pane-divider.dragged.touch {
   background: blue;
   opacity: 0.25;
 }
 
-/* line 1905, resources/scss/screen.scss */
+/* line 1882, resources/scss/screen.scss */
 .split-pane-divider {
   right: 50%;
   width: 12px;
@@ -20826,7 +20827,7 @@ https://raw.github.com/shagstrom/split-pane/master/LICENSE
   box-shadow: 0 0 10px rgba(35, 58, 112, 0.25);
 }
 
-/* line 1911, resources/scss/screen.scss */
+/* line 1888, resources/scss/screen.scss */
 .pane-content {
   position: absolute;
   top: 0;
@@ -20836,18 +20837,18 @@ https://raw.github.com/shagstrom/split-pane/master/LICENSE
   overflow: auto;
 }
 
-/* line 1915, resources/scss/screen.scss */
+/* line 1892, resources/scss/screen.scss */
 #pane-left {
   right: 50%;
   margin-right: 12px;
 }
 
-/* line 1919, resources/scss/screen.scss */
+/* line 1896, resources/scss/screen.scss */
 #pane-right {
   width: 50%;
 }
 
-/* line 1923, resources/scss/screen.scss */
+/* line 1900, resources/scss/screen.scss */
 .ui-tooltip {
   background-color: #0058cf;
   color: white;

@@ -1741,24 +1741,6 @@ input.input-inner-default:focus  {
 @import "template/nav_footer";
 // PAGE STRUCTURE
 
-
-//.feedback-btn {
-//  position: absolute;
-//  right: 0;
-//  top: 45%;
-//  width: 2rem;
-//  transform: rotate(90deg);
-//  z-index: 90000;
-//  font: 1rem/1em "CESans", Helvetica, "Helvetica Neue", Arial, sans-serif;
-//  .feedback-btn-text {
-//    background-color: $blue1;
-//    color: #fff;
-//    padding: .3rem .5rem;
-//    border: solid white 1px;
-//  }
-//}
-// HEADER
-
 #desktop-warning {
   display: none;
 }
@@ -1807,11 +1789,6 @@ input.input-inner-default:focus  {
 @import "plugins/toggles";
 
 // jquery UI
-
-// .ui-slider-horizontal {
-//   height: 6px;
-// }
-
 .ui-autocomplete {
   position: absolute;
   top: 0;
