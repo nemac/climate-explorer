@@ -287,9 +287,28 @@
     width: 32px;
   }
 
-  .legend-image {
-    max-height: 16rem;
-    max-width: none;
+  .scenario-map-legend-container {
+    max-width: 7rem;
+    background: #ffffff;
+    padding: 0.15rem 0.1rem;
+
+    .legend-unit-label {
+      margin: 0.2rem 0.25rem;
+      display: block;
+      font-size: 0.75rem;
+      font-weight: bold;
+    }
+
+    .legend-image {
+      display: block;
+      max-width: 5.2rem
+    }
+
+    .legend-note-label {
+      display: block;
+      font-size: 0.7rem;
+      margin: 0.1rem 0.3rem
+    }
   }
 
   .esri-ui-top-left .esri-expand__content, .esri-ui-top-right .esri-expand__content {

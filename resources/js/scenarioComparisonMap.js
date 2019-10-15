@@ -158,7 +158,8 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
             leftScenario: 'historical',
             rightScenario: 'rcp85',
             season: 'annual'
-          }
+          },
+          legend_unit: '&deg;Fahrenheit'
         },
         'tmin': {
           title: 'Avg Daily Min Temp (°F)',
@@ -166,7 +167,8 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
           defaultConfig: {
             leftScenario: 'historical',
             rightScenario: 'rcp85',
-            season: 'annual'
+            season: 'annual',
+          legend_unit: '&deg;Fahrenheit'
           }
         },
         'days_tmax_gt_90f': {
@@ -174,32 +176,36 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
           seasonal_data: false,
           defaultConfig: {
             leftScenario: 'historical',
-            rightScenario: 'rcp85'
-          }
+            rightScenario: 'rcp85',
+          },
+          legend_unit: 'Days'
         },
         'days_tmax_gt_95f': {
           title: 'Days w/ max > 95°F',
           seasonal_data: false,
           defaultConfig: {
             leftScenario: 'historical',
-            rightScenario: 'rcp85'
-          }
+            rightScenario: 'rcp85',
+          },
+          legend_unit: 'Days'
         },
         'days_tmax_gt_100f': {
           title: 'Days w/ max > 100°F',
           seasonal_data: false,
           defaultConfig: {
             leftScenario: 'historical',
-            rightScenario: 'rcp85'
-          }
+            rightScenario: 'rcp85',
+          },
+          legend_unit: 'Days'
         },
         'days_tmax_gt_105f': {
           title: 'Days w/ max > 105°F',
           seasonal_data: false,
           defaultConfig: {
             leftScenario: 'historical',
-            rightScenario: 'rcp85'
-          }
+            rightScenario: 'rcp85',
+          },
+          legend_unit: 'Days'
         },
 
         'days_tmax_lt_32f': {
@@ -207,16 +213,18 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
           seasonal_data: false,
           defaultConfig: {
             leftScenario: 'historical',
-            rightScenario: 'rcp85'
-          }
+            rightScenario: 'rcp85',
+          },
+          legend_unit: 'Days'
         },
         'days_tmin_lt_32f': {
           title: 'Days w/ min < 32°F',
           seasonal_data: false,
           defaultConfig: {
             leftScenario: 'historical',
-            rightScenario: 'rcp85'
-          }
+            rightScenario: 'rcp85',
+          },
+          legend_unit: 'Days'
         },
 
         'days_tmin_gt_80f': {
@@ -224,16 +232,18 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
           seasonal_data: false,
           defaultConfig: {
             leftScenario: 'historical',
-            rightScenario: 'rcp85'
-          }
+            rightScenario: 'rcp85',
+          },
+          legend_unit: 'Days'
         },
         'days_tmin_gt_90f': {
           title: 'Days w/ min > 90°F',
           seasonal_data: false,
           defaultConfig: {
             leftScenario: 'historical',
-            rightScenario: 'rcp85'
-          }
+            rightScenario: 'rcp85',
+          },
+          legend_unit: 'Days'
         },
         'pcpn': {
           title: 'Total Precipitation',
@@ -243,72 +253,87 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
             rightScenario: 'rcp85',
             season: 'annual'
           },
-          disabledScenarios: ['historical']
+          disabledScenarios: ['historical'],
+          legend_unit: '% Change',
+          legend_note: 'Note: Maps are anomalies from 1961-1990 baseline'
         },
         'days_pcpn_gt_1in': {
           title: 'Days w/ > 1 in',
           seasonal_data: false,
           defaultConfig: {
             leftScenario: 'historical',
-            rightScenario: 'rcp85'
-          }
+            rightScenario: 'rcp85',
+          },
+          legend_unit: '% Change',
+          legend_note: 'Note: Maps are anomalies from 1961-1990 baseline'
+
         },
         'days_pcpn_gt_2in': {
           title: 'Days w/ > 2 in',
           seasonal_data: false,
           defaultConfig: {
             leftScenario: 'historical',
-            rightScenario: 'rcp85'
-          }
+            rightScenario: 'rcp85',
+          },
+          legend_unit: '% Change',
+          legend_note: 'Note: Maps are anomalies from 1961-1990 baseline'
         },
         'days_pcpn_gt_3in': {
           title: 'Days w/ > 3 in',
           seasonal_data: false,
           defaultConfig: {
             leftScenario: 'historical',
-            rightScenario: 'rcp85'
-          }
+            rightScenario: 'rcp85',
+          },
+          legend_unit: '% Change',
+          legend_note: 'Note: Maps are anomalies from 1961-1990 baseline'
+
         },
         'days_dry_days': {
           title: 'Dry Days',
           seasonal_data: false,
           defaultConfig: {
             leftScenario: 'rcp45',
-            rightScenario: 'rcp85'
+            rightScenario: 'rcp85',
           },
-          disabledScenarios: ['historical']
+          disabledScenarios: ['historical'],
+          legend_unit: 'Degree Days',
         },
         'hdd_65f': {
           title: 'Heating Degree Days',
           seasonal_data: false,
           defaultConfig: {
             leftScenario: 'historical',
-            rightScenario: 'rcp85'
-          }
+            rightScenario: 'rcp85',
+          },
+          legend_unit: 'Degree Days',
         },
         'cdd_65f': {
           title: 'Cooling Degree Days',
           seasonal_data: false,
           defaultConfig: {
             leftScenario: 'historical',
-            rightScenario: 'rcp85'
-          }
+            rightScenario: 'rcp85',
+          },
+          legend_unit: 'Degree Days',
         },
         'gdd': {
           title: 'Growing Degree Days',
           seasonal_data: false,
           defaultConfig: {
             leftScenario: 'historical',
-            rightScenario: 'rcp85'
-          }
+            rightScenario: 'rcp85',
+          },
+          legend_unit: 'Degree Days',
         },
         'gddmod': {
           title: 'Mod. Growing Degree Days',
           seasonal_data: false,
           defaultConfig: {
             leftScenario: 'historical',
-            rightScenario: 'rcp85'
-          }
+            rightScenario: 'rcp85',
+          },
+          legend_unit: 'Degree Days',
         }
       },
       season_months: {'winter':'01', 'spring':'04','summer':'07','fall':'10','annual':'annual'}
@@ -542,7 +567,7 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
         }
       }.bind(this));
 
-      this.nodes.$legendContainer = $('<div></div>');
+      this.nodes.$legendContainer = $('<div class="scenario-map-legend-container"></div>');
       this._updateLegend();
       this.legendExpand = new this.dojoMods.Expand({
         expandIconClass: 'esri-icon-description',
@@ -621,16 +646,15 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
           };
         }
         this._mapInitPromise.then(function (layer) {
-
           if (side === 'left') {
-            // removes old layer to renove stray layers
+            // removes old layer to remove stray layers
             let leftLayer = this.map.findLayerById('left-variable');
             this.map.remove(leftLayer);
 
             layer.id = `left-variable`;
             this.map.add(layer, 0);
           } else {
-            // removes old layer to renove stray layers
+            // removes old layer to remove stray layers
             let rightLayer  = this.map.findLayerById('right-variable');
             this.map.remove(rightLayer);
 
@@ -2022,8 +2046,13 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
     },
 
     _updateLegend: function _updateLegend() {
-      var legendFilename = this.options.variables[this.options.variable]['seasonal_data'] ? [this.options.season || 'summer', this.options.variable].join('_') : this.options.variable;
-      this.nodes.$legendContainer.html('<img class="legend-image" src="/resources/img/legends/' + legendFilename + '.png">');
+      let legendFilename = this.options.variables[this.options.variable]['seasonal_data'] ? [this.options.season || 'summer', this.options.variable].join('_') : this.options.variable;
+      let legend_note = ('legend_note' in this.options.variables[this.options.variable] && !!this.options.variables[this.options.variable]['legend_note']) ? this.options.variables[this.options.variable]['legend_note'] : null;
+      this.nodes.$legendContainer.html(`
+        <span class="legend-unit-label">${this.options.variables[this.options.variable]['legend_unit']}</span>
+        <img alt="legend image" class="legend-image" src="/resources/img/legends/${legendFilename}.png">
+        ${!!legend_note ? `<span class="legend-note-label">${legend_note}</span>` : ''}
+      `);
     },
 
     _updateOverlay: function _updateOverlay() {
