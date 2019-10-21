@@ -25,7 +25,9 @@ $ce3-light-background: $ce3-blue5;
 $ce3-verylight-background: $ce3-blue6;
 $ce3-verylight-font: $ce3-blue6;
 
-$ce3-disabled-font: $ce3-blue3alpha;
+$ce3-disabled-font: lighten($ce3-blue3, 50);;
+$ce3-disabled-border: lighten($ce3-blue3, 50);;
+
 $ce3-border-color: $ce3-blue3alphad;
 
 // chart colors - used for legend buttons
@@ -925,7 +927,7 @@ h6 {
   background-color: $ce3-blue5 !important;
   color: $ce3-disabled-font !important;
   font: 500 14px $roboto !important;
-  border: 1px solid $ce3-blue3alpha !important;
+  border: 1px solid $ce3-disabled-border !important;
 
   @include medium {
     height: $ce3-btnheight-smallecreen !important;
