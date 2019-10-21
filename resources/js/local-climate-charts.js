@@ -11,11 +11,8 @@ $(function () {
   $('#cards-search-input').val(window.ce.ce('getLocationPageState')['city']);
 
   if (!window.ce.ce('getLocationPageState')['city']) {
-    // $('.rounded-box-secondary.search-box-secondary').addClass('nosearch');
     $('#cards-search-input').focus();
     $('#cards-search-input').addClass('nosearch');
-    // $('.rounded-box-secondary').addClass('nosearch');
-
     $('#cards-search-input').attr("placeholder", "Location missng, Enter a county, city, or zip code");
   }
 

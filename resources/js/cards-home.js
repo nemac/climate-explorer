@@ -2,9 +2,16 @@
 
 $(function () {
 
-  $('#default-city-state').text(window.ce.ce('getLocationPageState')['city'] || 'Please select a location');
+  $('#default-city-state').text(window.ce.ce('getLocationPageState')['city']);
   $('#default-city-county').text(window.ce.ce('getLocationPageState')['county']);
   $('#cards-search-input').val(window.ce.ce('getLocationPageState')['city']);
+
+  if (!window.ce.ce('getLocationPageState')['city']) {
+    $('#default-city-state').addClass('d-none');
+    $('#default-in').addClass('d-none');
+    $('#default-city-county').addClass('d-none');
+    $('#cards-search-input').attr("placeholder", "Location missng, Enter a county, city, or zip code");
+  }
 
   addCardClick('card-local-charts','local-climate-charts');
   addCardClick('card-local-maps','local-climate-maps');

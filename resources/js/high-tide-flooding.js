@@ -11,6 +11,10 @@ $(function () {
   $('#default-city-county').text(window.ce.ce('getLocationPageState')['county']);
   $('#cards-search-input').val(window.ce.ce('getLocationPageState')['city']);
 
+  if (!window.ce.ce('getLocationPageState')['city']) {
+    $('#cards-search-input').attr("placeholder", "Location missng, Enter a county, city, or zip code");
+  }
+
   let stationsMapState = window.ce.ce("getStationsMapState");
   const county =  window.ce.ce('getLocationPageState')['county']
   const city = window.ce.ce('getLocationPageState')['city']
