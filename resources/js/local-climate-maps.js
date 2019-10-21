@@ -107,8 +107,8 @@ $(function () {
   function getBase64Image(img) {
     var canvas = document.createElement("canvas");
     // hardcoded until there is a better way
-    canvas.width = 147;
-    canvas.height = 605;
+    canvas.width = 280;
+    canvas.height = 800;
     var ctx = canvas.getContext("2d");
     ctx.drawImage(img, 0, 0);
     var dataURL = canvas.toDataURL("image/png").replace("image/png", "image/octet-stream");;

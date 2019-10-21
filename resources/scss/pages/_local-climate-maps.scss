@@ -50,6 +50,16 @@
   }
 }
 
+#map-for-print-left , #map-for-print-right {
+  .legend {
+    margin: $ce3-default-padding;
+    padding: $ce3-default-padding;
+    background-color: white;
+    position: relative;
+    top: 34px;
+  }
+}
+
 #map-row {
   justify-content: space-evenly !important;
   // height: 100% !important;
@@ -311,7 +321,7 @@
   position: relative !important;
 }
 
-.esri-view-height-xsmall .esri-ui-corner .esri-component .esri-expand__content {
+.esri-ui-corner .esri-component .esri-expand__content {
     max-height: 280px !important;
     height: 280px;
     background-color: $ce3-blue6;

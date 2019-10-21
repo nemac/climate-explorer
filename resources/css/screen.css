@@ -17381,90 +17381,99 @@ input.input-inner:focus {
   }
 }
 
-/* line 53, resources/scss/pages/_local-climate-maps.scss */
+/* line 54, resources/scss/pages/_local-climate-maps.scss */
+#map-for-print-left .legend, #map-for-print-right .legend {
+  margin: 12px;
+  padding: 12px;
+  background-color: white;
+  position: relative;
+  top: 34px;
+}
+
+/* line 63, resources/scss/pages/_local-climate-maps.scss */
 #map-row {
   justify-content: space-evenly !important;
 }
 
 @media screen and (min-width: 901px) {
-  /* line 53, resources/scss/pages/_local-climate-maps.scss */
+  /* line 63, resources/scss/pages/_local-climate-maps.scss */
   #map-row {
     height: calc(100% - 205px) !important;
   }
 }
 
-/* line 61, resources/scss/pages/_local-climate-maps.scss */
+/* line 71, resources/scss/pages/_local-climate-maps.scss */
 #map-row.closed-filters {
   height: calc(100% - 135px) !important;
 }
 
-/* line 68, resources/scss/pages/_local-climate-maps.scss */
+/* line 78, resources/scss/pages/_local-climate-maps.scss */
 #map-row #temperature-map {
   width: 100%;
   flex-wrap: wrap;
 }
 
-/* line 73, resources/scss/pages/_local-climate-maps.scss */
+/* line 83, resources/scss/pages/_local-climate-maps.scss */
 #map-row .scenario-map-overlay-container {
   position: absolute !important;
 }
 
-/* line 77, resources/scss/pages/_local-climate-maps.scss */
+/* line 87, resources/scss/pages/_local-climate-maps.scss */
 #map-row .esri-view-user-storage {
   height: unset !important;
 }
 
-/* line 81, resources/scss/pages/_local-climate-maps.scss */
+/* line 91, resources/scss/pages/_local-climate-maps.scss */
 #map-row .bottom-scenario-controls .rounded-choice-box {
   min-height: 100% !important;
   max-height: 100% !important;
   background-color: rgba(233, 241, 252, 0.75) !important;
 }
 
-/* line 86, resources/scss/pages/_local-climate-maps.scss */
+/* line 96, resources/scss/pages/_local-climate-maps.scss */
 #map-row .bottom-scenario-controls .rounded-choice-box .select-styled {
   background-color: rgba(233, 241, 252, 0) !important;
 }
 
-/* line 88, resources/scss/pages/_local-climate-maps.scss */
+/* line 98, resources/scss/pages/_local-climate-maps.scss */
 #map-row .bottom-scenario-controls .rounded-choice-box .select-styled:hover {
   background-color: rgba(233, 241, 252, 0) !important;
 }
 
-/* line 92, resources/scss/pages/_local-climate-maps.scss */
+/* line 102, resources/scss/pages/_local-climate-maps.scss */
 #map-row .bottom-scenario-controls .rounded-choice-box .select-styled:focus {
   background-color: rgba(233, 241, 252, 0) !important;
 }
 
-/* line 97, resources/scss/pages/_local-climate-maps.scss */
+/* line 107, resources/scss/pages/_local-climate-maps.scss */
 #map-row .bottom-scenario-controls .rounded-choice-box:hover {
   background-color: rgba(233, 241, 252, 0.75) !important;
 }
 
-/* line 101, resources/scss/pages/_local-climate-maps.scss */
+/* line 111, resources/scss/pages/_local-climate-maps.scss */
 #map-row .bottom-scenario-controls .rounded-choice-box:focus {
   background-color: rgba(233, 241, 252, 0.75) !important;
 }
 
-/* line 107, resources/scss/pages/_local-climate-maps.scss */
+/* line 117, resources/scss/pages/_local-climate-maps.scss */
 #map-row #temperature-map .movable.slider-div {
   top: 0px !important;
 }
 
 @media screen and (max-width: 1240px) {
-  /* line 53, resources/scss/pages/_local-climate-maps.scss */
+  /* line 63, resources/scss/pages/_local-climate-maps.scss */
   #map-row {
     justify-content: center !important;
   }
 }
 
 @media screen and (max-width: 900px) {
-  /* line 53, resources/scss/pages/_local-climate-maps.scss */
+  /* line 63, resources/scss/pages/_local-climate-maps.scss */
   #map-row {
     order: 1;
     padding-bottom: 250px !important;
   }
-  /* line 120, resources/scss/pages/_local-climate-maps.scss */
+  /* line 130, resources/scss/pages/_local-climate-maps.scss */
   #map-row #temperature-map {
     width: 100%;
     flex-wrap: wrap;
@@ -17472,25 +17481,25 @@ input.input-inner:focus {
     max-height: 350px !important;
     height: 350px !important;
   }
-  /* line 127, resources/scss/pages/_local-climate-maps.scss */
+  /* line 137, resources/scss/pages/_local-climate-maps.scss */
   #map-row #temperature-map .esri-view-root {
     flex: 0 0 100%;
     height: 100% !important;
     width: 100% !important;
   }
-  /* line 133, resources/scss/pages/_local-climate-maps.scss */
+  /* line 143, resources/scss/pages/_local-climate-maps.scss */
   #map-row #temperature-map .esri-overlay-surface {
     flex: 0 0 100%;
     height: 100% !important;
     width: 100% !important;
   }
-  /* line 139, resources/scss/pages/_local-climate-maps.scss */
+  /* line 149, resources/scss/pages/_local-climate-maps.scss */
   #map-row #temperature-map .esri-view-user-storage {
     overflow: visible !important;
     height: 100% !important;
     width: 100% !important;
   }
-  /* line 145, resources/scss/pages/_local-climate-maps.scss */
+  /* line 155, resources/scss/pages/_local-climate-maps.scss */
   #map-row #temperature-map .scenario-map-overlay-container {
     position: relative !important;
     top: 0px !important;
@@ -17499,13 +17508,13 @@ input.input-inner:focus {
     height: 100% !important;
     margin: 0px !important;
   }
-  /* line 154, resources/scss/pages/_local-climate-maps.scss */
+  /* line 164, resources/scss/pages/_local-climate-maps.scss */
   #map-row #temperature-map .movable.slider-div {
     height: 350px;
     top: -350px !important;
     z-index: 200;
   }
-  /* line 160, resources/scss/pages/_local-climate-maps.scss */
+  /* line 170, resources/scss/pages/_local-climate-maps.scss */
   #map-row #temperature-map .bottom-scenario-controls {
     position: inherit !important;
     top: -175px !important;
@@ -17513,7 +17522,7 @@ input.input-inner:focus {
     height: 100% !important;
     padding: 1rem 0rem !important;
   }
-  /* line 168, resources/scss/pages/_local-climate-maps.scss */
+  /* line 178, resources/scss/pages/_local-climate-maps.scss */
   #map-row #temperature-map .bottom-scenario-controls .left-scenario-controls {
     width: 100% !important;
     flex: 1 0 100% !important;
@@ -17522,7 +17531,7 @@ input.input-inner:focus {
     position: relative;
     top: -225px;
   }
-  /* line 177, resources/scss/pages/_local-climate-maps.scss */
+  /* line 187, resources/scss/pages/_local-climate-maps.scss */
   #map-row #temperature-map .bottom-scenario-controls .right-scenario-controls {
     width: 100% !important;
     flex: 1 0 100% !important;
@@ -17532,53 +17541,53 @@ input.input-inner:focus {
     top: -225px;
     left: -100%;
   }
-  /* line 187, resources/scss/pages/_local-climate-maps.scss */
+  /* line 197, resources/scss/pages/_local-climate-maps.scss */
   #map-row #temperature-map .bottom-scenario-controls .left-year-slider-container {
     max-width: 90%;
     min-width: 90%;
     width: 90%;
   }
-  /* line 191, resources/scss/pages/_local-climate-maps.scss */
+  /* line 201, resources/scss/pages/_local-climate-maps.scss */
   #map-row #temperature-map .bottom-scenario-controls .left-year-slider-container:focus, #map-row #temperature-map .bottom-scenario-controls .left-year-slider-container:hover {
     border-left: 2px #124086 solid !important;
   }
-  /* line 196, resources/scss/pages/_local-climate-maps.scss */
+  /* line 206, resources/scss/pages/_local-climate-maps.scss */
   #map-row #temperature-map .bottom-scenario-controls #leftScenario-select-wrapper {
     border-left: 2px #124086 solid !important;
   }
-  /* line 200, resources/scss/pages/_local-climate-maps.scss */
+  /* line 210, resources/scss/pages/_local-climate-maps.scss */
   #map-row #temperature-map .bottom-scenario-controls #rightScenario-select-wrapper {
     border-right: 2px #124086 solid !important;
   }
-  /* line 204, resources/scss/pages/_local-climate-maps.scss */
+  /* line 214, resources/scss/pages/_local-climate-maps.scss */
   #map-row #temperature-map .bottom-scenario-controls .right-year-slider-container {
     max-width: 90%;
     min-width: 90%;
     width: 90%;
   }
-  /* line 208, resources/scss/pages/_local-climate-maps.scss */
+  /* line 218, resources/scss/pages/_local-climate-maps.scss */
   #map-row #temperature-map .bottom-scenario-controls .right-year-slider-container:focus, #map-row #temperature-map .bottom-scenario-controls .right-year-slider-container:hover {
     border-right: 2px #124086 solid !important;
   }
-  /* line 213, resources/scss/pages/_local-climate-maps.scss */
+  /* line 223, resources/scss/pages/_local-climate-maps.scss */
   #map-row #temperature-map .bottom-scenario-controls .fs-dropdown-options {
     position: relative;
     left: -150px;
   }
-  /* line 218, resources/scss/pages/_local-climate-maps.scss */
+  /* line 228, resources/scss/pages/_local-climate-maps.scss */
   #map-row #temperature-map .bottom-scenario-controls .left-scenario-dropdown {
     max-width: 90%;
     min-width: 90%;
     width: 90%;
     margin: 0px;
   }
-  /* line 223, resources/scss/pages/_local-climate-maps.scss */
+  /* line 233, resources/scss/pages/_local-climate-maps.scss */
   #map-row #temperature-map .bottom-scenario-controls .left-scenario-dropdown .fs-dropdown.fs-dropdown-mobile {
     width: 100%;
     min-width: 100%;
     border-left: 2px #124086 solid;
   }
-  /* line 230, resources/scss/pages/_local-climate-maps.scss */
+  /* line 240, resources/scss/pages/_local-climate-maps.scss */
   #map-row #temperature-map .bottom-scenario-controls .left-year-slider-container {
     position: relative;
     top: 24px;
@@ -17587,7 +17596,7 @@ input.input-inner:focus {
     width: 90%;
     border-left: 2px #124086 solid;
   }
-  /* line 239, resources/scss/pages/_local-climate-maps.scss */
+  /* line 249, resources/scss/pages/_local-climate-maps.scss */
   #map-row #temperature-map .bottom-scenario-controls .right-scenario-dropdown {
     position: relative;
     top: 150px;
@@ -17596,13 +17605,13 @@ input.input-inner:focus {
     width: 90%;
     margin: 0px;
   }
-  /* line 246, resources/scss/pages/_local-climate-maps.scss */
+  /* line 256, resources/scss/pages/_local-climate-maps.scss */
   #map-row #temperature-map .bottom-scenario-controls .right-scenario-dropdown .fs-dropdown.fs-dropdown-mobile {
     width: 100%;
     min-width: 100%;
     border-right: 2px #124086 solid;
   }
-  /* line 254, resources/scss/pages/_local-climate-maps.scss */
+  /* line 264, resources/scss/pages/_local-climate-maps.scss */
   #map-row #temperature-map .bottom-scenario-controls .right-year-slider-container {
     position: relative;
     top: 175px;
@@ -17611,7 +17620,7 @@ input.input-inner:focus {
     width: 90%;
     border-right: 2px #124086 solid;
   }
-  /* line 265, resources/scss/pages/_local-climate-maps.scss */
+  /* line 275, resources/scss/pages/_local-climate-maps.scss */
   #map-row .map-wrap {
     min-height: 350px !important;
     height: 350px !important;
@@ -17619,58 +17628,58 @@ input.input-inner:focus {
 }
 
 @media screen and (max-width: 599px) {
-  /* line 53, resources/scss/pages/_local-climate-maps.scss */
+  /* line 63, resources/scss/pages/_local-climate-maps.scss */
   #map-row {
     height: auto !important;
     order: 1;
   }
-  /* line 275, resources/scss/pages/_local-climate-maps.scss */
+  /* line 285, resources/scss/pages/_local-climate-maps.scss */
   #map-row .map-wrap {
     min-height: 250px !important;
     height: 250px !important;
   }
 }
 
-/* line 283, resources/scss/pages/_local-climate-maps.scss */
+/* line 293, resources/scss/pages/_local-climate-maps.scss */
 .esri-expand__container {
   height: 32px;
   width: 32px;
 }
 
-/* line 288, resources/scss/pages/_local-climate-maps.scss */
+/* line 298, resources/scss/pages/_local-climate-maps.scss */
 .legend-image {
   max-height: 16rem;
   max-width: none;
 }
 
-/* line 293, resources/scss/pages/_local-climate-maps.scss */
+/* line 303, resources/scss/pages/_local-climate-maps.scss */
 .esri-view-surface .esri-display-object {
   width: 100%;
   height: 100%;
 }
 
-/* line 298, resources/scss/pages/_local-climate-maps.scss */
+/* line 308, resources/scss/pages/_local-climate-maps.scss */
 .esri-ui-top-left .esri-expand__content, .esri-ui-top-right .esri-expand__content {
   top: -32px !important;
 }
 
-/* line 302, resources/scss/pages/_local-climate-maps.scss */
+/* line 312, resources/scss/pages/_local-climate-maps.scss */
 .esri-view-width-xsmall .esri-component.esri-expand.esri-widget.esri-expand--auto {
   display: none !important;
 }
 
-/* line 306, resources/scss/pages/_local-climate-maps.scss */
+/* line 316, resources/scss/pages/_local-climate-maps.scss */
 .esri-view-width-xsmall .esri-expand--auto .esri-expand__container--expanded {
   position: relative !important;
 }
 
-/* line 310, resources/scss/pages/_local-climate-maps.scss */
+/* line 320, resources/scss/pages/_local-climate-maps.scss */
 .esri-view-width-greater-than-xsmall .esri-expand--auto .esri-expand__content {
   position: relative !important;
 }
 
-/* line 314, resources/scss/pages/_local-climate-maps.scss */
-.esri-view-height-xsmall .esri-ui-corner .esri-component .esri-expand__content {
+/* line 324, resources/scss/pages/_local-climate-maps.scss */
+.esri-ui-corner .esri-component .esri-expand__content {
   max-height: 280px !important;
   height: 280px;
   background-color: #FBFCFE;
@@ -17678,36 +17687,36 @@ input.input-inner:focus {
   overflow: hidden;
 }
 
-/* line 322, resources/scss/pages/_local-climate-maps.scss */
+/* line 332, resources/scss/pages/_local-climate-maps.scss */
 .scenario-map-overlay-container {
   position: relative;
 }
 
-/* line 326, resources/scss/pages/_local-climate-maps.scss */
+/* line 336, resources/scss/pages/_local-climate-maps.scss */
 .esri-expand__content.esri-expand__content--expanded {
   height: 256px;
   width: 100px;
 }
 
-/* line 329, resources/scss/pages/_local-climate-maps.scss */
+/* line 339, resources/scss/pages/_local-climate-maps.scss */
 .esri-expand__content.esri-expand__content--expanded img {
   height: 256px;
   width: 86px;
 }
 
-/* line 333, resources/scss/pages/_local-climate-maps.scss */
+/* line 343, resources/scss/pages/_local-climate-maps.scss */
 .esri-expand__content.esri-expand__content--expanded .esri-basemap-gallery__item-thumbnail {
   height: 64px;
   width: auto;
   box-shadow: 0 0 0 1px rgba(50, 50, 50, 0.25);
 }
 
-/* line 340, resources/scss/pages/_local-climate-maps.scss */
+/* line 350, resources/scss/pages/_local-climate-maps.scss */
 .esri-view {
   padding: 12px;
 }
 
-/* line 344, resources/scss/pages/_local-climate-maps.scss */
+/* line 354, resources/scss/pages/_local-climate-maps.scss */
 .esri-view-surface {
   -webkit-border-radius: 5px;
   -moz-border-radius: 5px;
@@ -17716,7 +17725,7 @@ input.input-inner:focus {
   border-radius: 5px;
 }
 
-/* line 348, resources/scss/pages/_local-climate-maps.scss */
+/* line 358, resources/scss/pages/_local-climate-maps.scss */
 .movable {
   width: 4px;
   height: 100%;
@@ -17728,7 +17737,7 @@ input.input-inner:focus {
   box-shadow: 1px 0 2px 0 rgba(0, 0, 0, 0.15);
 }
 
-/* line 357, resources/scss/pages/_local-climate-maps.scss */
+/* line 367, resources/scss/pages/_local-climate-maps.scss */
 .movable .handle {
   position: relative;
   top: 50%;
@@ -17743,7 +17752,7 @@ input.input-inner:focus {
   box-shadow: 1px 0 2px 0 rgba(0, 0, 0, 0.15);
 }
 
-/* line 366, resources/scss/pages/_local-climate-maps.scss */
+/* line 376, resources/scss/pages/_local-climate-maps.scss */
 .movable .handle:after {
   cursor: col-resize;
   position: absolute;
@@ -17762,7 +17771,7 @@ input.input-inner:focus {
   font-size: 1.25rem;
 }
 
-/* line 393, resources/scss/pages/_local-climate-maps.scss */
+/* line 403, resources/scss/pages/_local-climate-maps.scss */
 #temperature-map:focus,
 .esri-view-root:focus,
 .esri-view-surface:focus,
