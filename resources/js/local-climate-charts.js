@@ -11,6 +11,8 @@ $(function () {
   $('#cards-search-input').val(window.ce.ce('getLocationPageState')['city']);
 
   if (!window.ce.ce('getLocationPageState')['city']) {
+    $('#default-in').addClass('d-none');
+    $('#default-dash').addClass('d-none');
     $('#cards-search-input').focus();
     $('#cards-search-input').addClass('nosearch');
     $('#cards-search-input').attr("placeholder", "Location missng, Enter a county, city, or zip code");
