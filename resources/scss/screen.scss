@@ -936,14 +936,14 @@ h6 {
   &:focus {
     background-color: $ce3-blue5 !important;
     color: $ce3-disabled-font !important;
-    border: 1px solid $ce3-blue3alpha !important;
+    border: 1px solid $ce3-disabled-border !important;
     outline: none !important
   }
 
   &:hover {
     background-color: $ce3-blue5 !important;
     color: $ce3-disabled-font !important;
-    border: 1px solid $ce3-blue3alpha !important;
+    border: 1px solid $ce3-disabled-border !important;
     outline: none !important
   }
 }
