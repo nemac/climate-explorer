@@ -539,31 +539,41 @@ $(function () {
         updateSeason(val);
 
         $('.btn-summer').addClass('btn-default-disabled');
+        $('.btn-summer').addClass('disabled-seasonal');
         $('.btn-summer').removeClass('btn-default');
 
         $('.btn-winter').addClass('btn-default-disabled');
+        $('.btn-winter').addClass('disabled-seasonal');
         $('.btn-winter').removeClass('btn-default');
 
         $('.btn-fall').addClass('btn-default-disabled');
+        $('.btn-fall').addClass('disabled-seasonal');
         $('.btn-fall').removeClass('btn-default');
 
+
         $('.btn-spring').addClass('btn-default-disabled');
+        $('.btn-spring').addClass('disabled-seasonal');
         $('.btn-spring').removeClass('btn-default');
 
         $('#time-select-vis').addClass('disabled');
+        $('.btn-summer').addClass('disabled-seasonal');
         $('#time-select-wrapper').addClass('disabled');
 
       } else {
 
         $('.btn-summer').removeClass('btn-default-disabled');
+        $('.btn-summer').removeClass('btn-default-disabled');
         $('.btn-summer').addClass('btn-default');
 
+        $('.btn-winter').removeClass('btn-default-disabled');
         $('.btn-winter').removeClass('btn-default-disabled');
         $('.btn-winter').addClass('btn-default');
 
         $('.btn-fall').removeClass('btn-default-disabled');
+        $('.btn-fall').removeClass('btn-default-disabled');
         $('.btn-fall').addClass('btn-default');
 
+        $('.btn-spring').removeClass('btn-default-disabled');
         $('.btn-spring').removeClass('btn-default-disabled');
         $('.btn-spring').addClass('btn-default');
 
