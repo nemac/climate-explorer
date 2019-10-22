@@ -958,7 +958,7 @@ App.prototype.locationSearch = function () {
         navLocation = 'local-climate-maps'
       }
 
-      const zoom = 9;
+      const zoom = 7;
       window.location.href = `/${page}/?county=` + county + '&city=' + city + '&fips=' + fips + '&lat=' + lat + '&lon=' + lon + '&zoom=' + zoom + '&nav=' + navLocation;
     }
   });
