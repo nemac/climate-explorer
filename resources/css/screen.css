@@ -16583,7 +16583,6 @@ body.detail-open #nav-overlay {
   margin: 24px;
   background-color: #ffffff;
   height: calc(100% - 132px) !important;
-  background-image: url(/resources/img/bg_splash-pinal.jpg);
 }
 
 @media screen and (max-width: 768px) {
@@ -16619,38 +16618,29 @@ body.detail-open #nav-overlay {
 /* line 33, resources/scss/pages/_home.scss */
 #suggested-cities {
   margin-top: 12px;
-  background: rgba(251, 252, 254, 0.75);
   -webkit-border-radius: 5px 5px;
   -moz-border-radius: 5px / 5px;
   border-radius: 5px / 5px;
   padding: 12px;
 }
 
-/* line 40, resources/scss/pages/_home.scss */
+/* line 39, resources/scss/pages/_home.scss */
 .home-container {
   align-content: start;
 }
 
-/* line 44, resources/scss/pages/_home.scss */
+/* line 43, resources/scss/pages/_home.scss */
 .describe-main {
-  font: 700 36px Roboto, Helvetica, "Helvetica Neue", Arial, sans-serif !important;
+  font: 700 24px Roboto, Helvetica, "Helvetica Neue", Arial, sans-serif !important;
   color: #233a70;
-  background: rgba(251, 252, 254, 0.5);
   max-height: 100px !important;
   -webkit-border-radius: 5px 5px;
   -moz-border-radius: 5px / 5px;
   border-radius: 5px / 5px;
 }
 
-@media screen and (max-width: 768px) {
-  /* line 44, resources/scss/pages/_home.scss */
-  .describe-main {
-    font: 700 24px Roboto, Helvetica, "Helvetica Neue", Arial, sans-serif !important;
-  }
-}
-
 @media screen and (max-width: 900px) {
-  /* line 44, resources/scss/pages/_home.scss */
+  /* line 43, resources/scss/pages/_home.scss */
   .describe-main {
     max-height: 250px !important;
     height: auto !important;
@@ -16658,7 +16648,7 @@ body.detail-open #nav-overlay {
   }
 }
 
-/* line 61, resources/scss/pages/_home.scss */
+/* line 56, resources/scss/pages/_home.scss */
 .rounded-box {
   -webkit-border-radius: 5px 5px;
   -moz-border-radius: 5px / 5px;
@@ -16668,27 +16658,27 @@ body.detail-open #nav-overlay {
   box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.239);
 }
 
-/* line 66, resources/scss/pages/_home.scss */
+/* line 61, resources/scss/pages/_home.scss */
 .input-outer {
   background-color: #E9F1FC;
   color: #124086;
 }
 
-/* line 71, resources/scss/pages/_home.scss */
+/* line 66, resources/scss/pages/_home.scss */
 input.input-inner {
   background-color: #E9F1FC;
   color: #124086;
   font: 800 24px Roboto, Helvetica, "Helvetica Neue", Arial, sans-serif !important;
 }
 
-/* line 77, resources/scss/pages/_home.scss */
+/* line 72, resources/scss/pages/_home.scss */
 input.input-inner::placeholder {
   background-color: #E9F1FC;
   color: #124086;
   font: 800 24px Roboto, Helvetica, "Helvetica Neue", Arial, sans-serif !important;
 }
 
-/* line 83, resources/scss/pages/_home.scss */
+/* line 78, resources/scss/pages/_home.scss */
 input.input-inner:focus::placeholder {
   color: rgba(18, 64, 134, 0.5);
   font: 800 24px Roboto, Helvetica, "Helvetica Neue", Arial, sans-serif !important;
@@ -16698,12 +16688,12 @@ input.input-inner:focus::placeholder {
   transition: 0.25s;
 }
 
-/* line 92, resources/scss/pages/_home.scss */
+/* line 87, resources/scss/pages/_home.scss */
 input.input-inner:focus {
   outline: none !important;
 }
 
-/* line 96, resources/scss/pages/_home.scss */
+/* line 91, resources/scss/pages/_home.scss */
 .search-main {
   width: 40px;
   height: 40px;
@@ -16716,7 +16706,7 @@ input.input-inner:focus {
   font-weight: 800;
 }
 
-/* line 107, resources/scss/pages/_home.scss */
+/* line 102, resources/scss/pages/_home.scss */
 .main-logos {
   flex: 0 1 100px !important;
   margin-right: -24px !important;
@@ -16724,14 +16714,14 @@ input.input-inner:focus {
   top: 12px;
 }
 
-/* line 115, resources/scss/pages/_home.scss */
+/* line 110, resources/scss/pages/_home.scss */
 .main-logos a {
   background-color: #FBFCFE;
   width: 60px;
   height: 60px;
 }
 
-/* line 121, resources/scss/pages/_home.scss */
+/* line 116, resources/scss/pages/_home.scss */
 .main-logos #global-change {
   width: 120px;
 }

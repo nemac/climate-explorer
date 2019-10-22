@@ -3,7 +3,7 @@ $home-text-transparency: .25;
   margin: 24px;
   background-color: $white;
   height: calc(100% - 132px) !important;
-  background-image: url(/resources/img/bg_splash-pinal.jpg);
+  // background-image: url(/resources/img/bg_splash-pinal.jpg);
 
   @include small {
     height: calc(100% - 48px) !important;
@@ -32,7 +32,6 @@ $home-text-transparency: .25;
 
 #suggested-cities {
   margin-top: $ce3-default-padding;
-  background: transparentize($ce3-blue6, $home-text-transparency);
   @include border-radius(5px, 5px);
   padding: $ce3-default-padding
 }
@@ -42,12 +41,8 @@ $home-text-transparency: .25;
 }
 
 .describe-main {
-  font: 700 36px $roboto !important;
-  @include small {
-    font: 700 24px $roboto !important;
-  }
+  font: 700 24px $roboto !important;
   color: $blue2;
-  background: transparentize($ce3-blue6, $home-text-transparency + $home-text-transparency);
   max-height: 100px !important;
   @include border-radius(5px, 5px);
 
