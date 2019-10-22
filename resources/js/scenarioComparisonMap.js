@@ -168,8 +168,8 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
             leftScenario: 'historical',
             rightScenario: 'rcp85',
             season: 'annual',
+          },
           legend_unit: '&deg;Fahrenheit'
-          }
         },
         'days_tmax_gt_90f': {
           title: 'Days w/ max > 90°F',

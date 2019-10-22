@@ -80,6 +80,13 @@
     flex-wrap: wrap;
   }
 
+  .scenario-map-legend-container {
+    .legend-unit-label {
+      font: 500 14px $roboto !important;
+      padding-bottom: $ce3-padding-half;
+    }
+  }
+
   .scenario-map-overlay-container {
     position: absolute !important;
   }
@@ -309,8 +316,8 @@
 }
 
 .esri-ui-corner .esri-component .esri-expand__content {
-    max-height: 280px !important;
-    height: 280px;
+    max-height: 260px !important;
+    height: 260px;
     background-color: $ce3-blue6;
     padding: $ce3-padding-half;
     overflow: hidden;
@@ -321,11 +328,15 @@
 }
 
 .esri-expand__content.esri-expand__content--expanded {
-  height: 256px;
+  height: 260px;
   width: 100px;
+  .legend-note-label {
+    display: none;
+  }
   img {
-    height: 256px;
-    width: 86px;
+    margin-top: $ce3-padding-half;
+    height: 224px;
+    width: 76px;
   }
   .esri-basemap-gallery__item-thumbnail {
     height: 64px;
