@@ -41,7 +41,7 @@ $home-text-transparency: .25;
 }
 
 .describe-main {
-  font: 700 24px $roboto !important;
+  font: 600 24px $roboto !important;
   color: $blue2;
   max-height: 100px !important;
   @include border-radius(5px, 5px);

@@ -16631,7 +16631,7 @@ body.detail-open #nav-overlay {
 
 /* line 43, resources/scss/pages/_home.scss */
 .describe-main {
-  font: 700 24px Roboto, Helvetica, "Helvetica Neue", Arial, sans-serif !important;
+  font: 600 24px Roboto, Helvetica, "Helvetica Neue", Arial, sans-serif !important;
   color: #233a70;
   max-height: 100px !important;
   -webkit-border-radius: 5px 5px;
