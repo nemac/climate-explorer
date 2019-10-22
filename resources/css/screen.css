@@ -16453,7 +16453,7 @@ body.detail-open #nav-overlay {
 }
 
 @media screen and (max-width: 399px) {
-  /* line 30, resources/scss/template/_main_header.scss */
+  /* line 31, resources/scss/template/_main_header.scss */
   #main-header .main-font-title .extra-title {
     display: none !important;
   }
@@ -16466,32 +16466,32 @@ body.detail-open #nav-overlay {
   }
 }
 
-/* line 41, resources/scss/template/_main_header.scss */
+/* line 42, resources/scss/template/_main_header.scss */
 #main-header .topnav a {
   text-decoration: none;
   font: 500 18px Roboto, Helvetica, "Helvetica Neue", Arial, sans-serif;
 }
 
-/* line 48, resources/scss/template/_main_header.scss */
+/* line 49, resources/scss/template/_main_header.scss */
 #main-header #main-nav a .icon {
   font: 500 18px Roboto, Helvetica, "Helvetica Neue", Arial, sans-serif !important;
 }
 
-/* line 52, resources/scss/template/_main_header.scss */
+/* line 53, resources/scss/template/_main_header.scss */
 #main-header #main-nav a .text {
   display: inline-block;
   color: #FBFCFE;
   padding: 0 .5rem 0 .5rem;
 }
 
-/* line 60, resources/scss/template/_main_header.scss */
+/* line 61, resources/scss/template/_main_header.scss */
 #main-header #header-logo {
   margin: 0 2% 0 0;
   height: 60px;
   width: auto;
 }
 
-/* line 64, resources/scss/template/_main_header.scss */
+/* line 65, resources/scss/template/_main_header.scss */
 #main-header #header-logo img {
   height: 60px;
   width: auto;

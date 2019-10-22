@@ -26,6 +26,7 @@
 
   .main-font-title {
     font: 500 36px $roboto !important;
+    
     @include tiny  {
       .extra-title {
         display: none !important;
