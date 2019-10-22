@@ -15,7 +15,7 @@ $(function () {
     $('#default-dash').addClass('d-none');
     $('#cards-search-input').focus();
     $('#cards-search-input').addClass('nosearch');
-    $('#cards-search-input').attr("placeholder", "Location missng, Enter a county, city, or zip code");
+    $('#cards-search-input').attr("placeholder", "Location missing, enter a county, city, or zip code");
   }
 
   // enable custom selction boxes
