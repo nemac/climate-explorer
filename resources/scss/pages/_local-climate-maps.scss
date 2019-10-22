@@ -91,26 +91,13 @@
   .bottom-scenario-controls .rounded-choice-box {
     min-height: 100% !important;
     max-height: 100% !important;
-    background-color: transparentize($ce3-blue5, 0.25) !important;
+    background-color: $ce3-blue5 !important;
 
-    .select-styled {
-      background-color: transparentize($ce3-blue5, 1) !important;
-      &:hover {
-        background-color: transparentize($ce3-blue5, 1) !important;
-      }
-
-      &:focus {
-        background-color: transparentize($ce3-blue5, 1) !important;
-      }
+    &:hover, :focus {
+      background-color: darken($ce3-blue5, 7) !important;
     }
 
-    &:hover {
-      background-color: transparentize($ce3-blue5, 0.25) !important;
-    }
 
-    &:focus {
-      background-color: transparentize($ce3-blue5, 0.25) !important;
-    }
   }
 
   #temperature-map {

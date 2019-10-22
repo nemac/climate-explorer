@@ -74,21 +74,23 @@
     max-width: 96%;
     min-width: 20rem;
     height: 2.7rem;
-    background-color: transparentize($ce3-blue5, 0.75) !important;
+    background-color: $ce3-blue5 !important;
     display: flex;
     flex-flow: row nowrap;
     align-items: center;
     margin: 5px;
     @include transition(0.25s);
 
-    &:hover {
-      background: rgba(255, 255, 255, 0.96);
-    }
+    // &:hover {
+    //   background: rgba(255, 255, 255, 0.96);
+    // }
 
     &.right-year-slider-container, &.left-year-slider-container {
       font: 500 0.9rem/0.9rem $roboto !important;
-      background-color: transparentize($ce3-blue5, 0.25) !important;
+      background-color: $ce3-blue5 !important;
       color: $ce3-blue3 !important;
+      transition: none !important;
+
       @include border-radius(5px, 5px !important);
       @include map-varriables-min-max {
         max-width: none !important;
@@ -96,31 +98,26 @@
         width: 50% !important;
       }
 
-      &:focus {
-        background:  transparentize(darken($ce3-blue5, 5), 0.25) !important;
-        border: none !important;
-        outline: none !important;
-      }
-
-      &:hover {
-        background:  transparentize(darken($ce3-blue5, 5), 0.25) !important;
+      &:hover, &:focus {
+        transition: none !important;
+        background:  darken($ce3-blue5, 5) !important;
         border: none !important;
         outline: none !important;
       }
     }
 
     .ui-slider-horizontal {
-      height: 6px;
+      height: 4px;
     }
 
     .ui-slider {
       position: relative;
       flex: 1 0 auto;
       margin: 0.7rem;
-      height: 6px;
+      height: 4px;
       background: $ce3-blue3 !important;
       cursor: pointer;
-      @include border-radius(5px, 5px !important);
+      @include border-radius(4px, 4px !important);
 
       .icon-arrow-left-right:before {
         content: '' !important;
