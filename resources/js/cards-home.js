@@ -10,7 +10,7 @@ $(function () {
     $('#default-city-state').addClass('d-none');
     $('#default-in').addClass('d-none');
     $('#default-city-county').addClass('d-none');
-    $('#cards-search-input').attr("placeholder", "Location missng, Enter a county, city, or zip code");
+    $('#cards-search-input').attr("placeholder", "Location missing, enter a county, city, or zip code");
   }
 
   addCardClick('card-local-charts','local-climate-charts');

@@ -12,9 +12,9 @@ $(function () {
   $('#cards-search-input').val(window.ce.ce('getLocationPageState')['city']);
 
   if (!window.ce.ce('getLocationPageState')['city']) {
-    $('#cards-search-input').attr("placeholder", "Location missng, Enter a county, city, or zip code");
+    $('#cards-search-input').attr("placeholder", "Location missing, enter a county, city, or zip code");
   }
-  
+
   let stationsMapState = window.ce.ce("getStationsMapState");
   const county =  window.ce.ce('getLocationPageState')['county']
   const city = window.ce.ce('getLocationPageState')['city']

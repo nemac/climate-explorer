@@ -15,7 +15,7 @@ $(function () {
     $('#default-in').addClass('d-none');
     $('#default-dash').addClass('d-none');
     $('#default-city-county').addClass('d-none');
-    $('#cards-search-input').attr("placeholder", "Location missng, Enter a county, city, or zip code");
+    $('#cards-search-input').attr("placeholder", "Location missing, enter a county, city, or zip code");
   }
 
   // let mapcenter = window.ce.ce('getLocationPageState')['center'];
