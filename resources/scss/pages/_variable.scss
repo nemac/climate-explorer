@@ -32,7 +32,9 @@
     display: flex;
     flex: 1 0 50%;
     justify-content: flex-start;
-    flex-flow: row-reverse wrap;
+    @include medium {
+      flex-flow: row-reverse wrap;
+    }
     > * {pointer-events: auto;}
   }
 

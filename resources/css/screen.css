@@ -19395,15 +19395,21 @@ s
   display: flex;
   flex: 1 0 50%;
   justify-content: flex-start;
-  flex-flow: row-reverse wrap;
 }
 
-/* line 36, resources/scss/pages/_variable.scss */
+@media screen and (max-width: 900px) {
+  /* line 29, resources/scss/pages/_variable.scss */
+  .scenario-map-overlay-container .right-scenario-controls {
+    flex-flow: row-reverse wrap;
+  }
+}
+
+/* line 38, resources/scss/pages/_variable.scss */
 .scenario-map-overlay-container .right-scenario-controls > * {
   pointer-events: auto;
 }
 
-/* line 39, resources/scss/pages/_variable.scss */
+/* line 41, resources/scss/pages/_variable.scss */
 .scenario-map-overlay-container .left-scenario-dropdown, .scenario-map-overlay-container .right-scenario-dropdown {
   flex: 0 auto;
   width: 14rem;
@@ -19411,19 +19417,19 @@ s
 }
 
 @media screen and (max-width: 1185px) and (min-width: 901px) {
-  /* line 39, resources/scss/pages/_variable.scss */
+  /* line 41, resources/scss/pages/_variable.scss */
   .scenario-map-overlay-container .left-scenario-dropdown, .scenario-map-overlay-container .right-scenario-dropdown {
     width: 42% !important;
   }
 }
 
-/* line 48, resources/scss/pages/_variable.scss */
+/* line 50, resources/scss/pages/_variable.scss */
 .scenario-map-overlay-container .left-scenario-dropdown:focus, .scenario-map-overlay-container .right-scenario-dropdown:focus {
   border: none;
   outline: none;
 }
 
-/* line 53, resources/scss/pages/_variable.scss */
+/* line 55, resources/scss/pages/_variable.scss */
 .scenario-map-overlay-container .left-scenario-dropdown .dropdown, .scenario-map-overlay-container .right-scenario-dropdown .dropdown {
   display: block;
   padding: 1rem;
@@ -19439,12 +19445,12 @@ s
   padding-bottom: 0.75rem;
 }
 
-/* line 66, resources/scss/pages/_variable.scss */
+/* line 68, resources/scss/pages/_variable.scss */
 .scenario-map-overlay-container .left-scenario-dropdown .dropdown button, .scenario-map-overlay-container .right-scenario-dropdown .dropdown button {
   background: rgba(255, 255, 255, 0.75);
 }
 
-/* line 72, resources/scss/pages/_variable.scss */
+/* line 74, resources/scss/pages/_variable.scss */
 .scenario-map-overlay-container .year {
   flex: 1 0 auto;
   max-width: 96%;
@@ -19461,7 +19467,7 @@ s
   transition: 0.25s;
 }
 
-/* line 88, resources/scss/pages/_variable.scss */
+/* line 90, resources/scss/pages/_variable.scss */
 .scenario-map-overlay-container .year.right-year-slider-container, .scenario-map-overlay-container .year.left-year-slider-container {
   font: 500 0.9rem/0.9rem Roboto, Helvetica, "Helvetica Neue", Arial, sans-serif !important;
   background-color: #E9F1FC !important;
@@ -19473,7 +19479,7 @@ s
 }
 
 @media screen and (max-width: 1185px) and (min-width: 901px) {
-  /* line 88, resources/scss/pages/_variable.scss */
+  /* line 90, resources/scss/pages/_variable.scss */
   .scenario-map-overlay-container .year.right-year-slider-container, .scenario-map-overlay-container .year.left-year-slider-container {
     max-width: none !important;
     min-width: 0px !important;
@@ -19481,7 +19487,7 @@ s
   }
 }
 
-/* line 101, resources/scss/pages/_variable.scss */
+/* line 103, resources/scss/pages/_variable.scss */
 .scenario-map-overlay-container .year.right-year-slider-container:hover, .scenario-map-overlay-container .year.right-year-slider-container:focus, .scenario-map-overlay-container .year.left-year-slider-container:hover, .scenario-map-overlay-container .year.left-year-slider-container:focus {
   transition: none !important;
   background: #d3e3f9 !important;
@@ -19489,12 +19495,12 @@ s
   outline: none !important;
 }
 
-/* line 109, resources/scss/pages/_variable.scss */
+/* line 111, resources/scss/pages/_variable.scss */
 .scenario-map-overlay-container .year .ui-slider-horizontal {
   height: 4px;
 }
 
-/* line 113, resources/scss/pages/_variable.scss */
+/* line 115, resources/scss/pages/_variable.scss */
 .scenario-map-overlay-container .year .ui-slider {
   position: relative;
   flex: 1 0 auto;
@@ -19507,12 +19513,12 @@ s
   border-radius: 4px / 4px !important;
 }
 
-/* line 122, resources/scss/pages/_variable.scss */
+/* line 124, resources/scss/pages/_variable.scss */
 .scenario-map-overlay-container .year .ui-slider .icon-arrow-left-right:before {
   content: '' !important;
 }
 
-/* line 126, resources/scss/pages/_variable.scss */
+/* line 128, resources/scss/pages/_variable.scss */
 .scenario-map-overlay-container .year .ui-slider .map-tooltip {
   cursor: pointer !important;
   color: #124086 !important;
@@ -19524,7 +19530,7 @@ s
   left: -1.1rem !important;
 }
 
-/* line 134, resources/scss/pages/_variable.scss */
+/* line 136, resources/scss/pages/_variable.scss */
 .scenario-map-overlay-container .year .ui-slider .map-tooltip:after {
   content: '' !important;
   border: 5px solid #E9F1FC !important;
@@ -19533,7 +19539,7 @@ s
   box-shadow: 0 0 8px rgba(233, 241, 252, 0) !important;
 }
 
-/* line 143, resources/scss/pages/_variable.scss */
+/* line 145, resources/scss/pages/_variable.scss */
 .scenario-map-overlay-container .year .ui-slider .ui-slider-handle {
   cursor: pointer !important;
   font-size: 1.2rem;
@@ -19558,7 +19564,7 @@ s
   box-shadow: 0 0 4px rgba(0, 88, 207, 0.25);
 }
 
-/* line 162, resources/scss/pages/_variable.scss */
+/* line 164, resources/scss/pages/_variable.scss */
 .scenario-map-overlay-container .year .ui-slider .ui-slider-handle:focus {
   outline: none !important;
   -webkit-box-shadow: 0px 0px 0px 8px rgba(18, 64, 134, 0.25) !important;
@@ -19566,7 +19572,7 @@ s
   box-shadow: 0px 0px 0px 8px rgba(18, 64, 134, 0.25) !important;
 }
 
-/* line 167, resources/scss/pages/_variable.scss */
+/* line 169, resources/scss/pages/_variable.scss */
 .scenario-map-overlay-container .year .ui-slider .ui-slider-handle:hover {
   outline: none !important;
   -webkit-box-shadow: 0px 0px 0px 8px rgba(18, 64, 134, 0.25) !important;
@@ -19574,19 +19580,19 @@ s
   box-shadow: 0px 0px 0px 8px rgba(18, 64, 134, 0.25) !important;
 }
 
-/* line 172, resources/scss/pages/_variable.scss */
+/* line 174, resources/scss/pages/_variable.scss */
 .scenario-map-overlay-container .year .ui-slider .ui-slider-handle:before, .scenario-map-overlay-container .year .ui-slider .ui-slider-handle:after {
   display: none !important;
 }
 
-/* line 178, resources/scss/pages/_variable.scss */
+/* line 180, resources/scss/pages/_variable.scss */
 .scenario-map-overlay-container .year .year-label {
   flex: 0 auto;
   text-align: center;
   margin: 0.5rem 1rem;
 }
 
-/* line 185, resources/scss/pages/_variable.scss */
+/* line 187, resources/scss/pages/_variable.scss */
 .scenario-map-overlay-container .year.disabled {
   cursor: pointer;
   flex-grow: 0;
@@ -19600,21 +19606,21 @@ s
   border-radius: 5px / 5px;
 }
 
-/* line 195, resources/scss/pages/_variable.scss */
+/* line 197, resources/scss/pages/_variable.scss */
 .scenario-map-overlay-container .year.disabled:focus {
   background: rgba(211, 227, 249, 0.96);
   border: none !important;
   outline: none !important;
 }
 
-/* line 201, resources/scss/pages/_variable.scss */
+/* line 203, resources/scss/pages/_variable.scss */
 .scenario-map-overlay-container .year.disabled:hover {
   background: rgba(211, 227, 249, 0.96);
   border: none !important;
   outline: none !important;
 }
 
-/* line 208, resources/scss/pages/_variable.scss */
+/* line 210, resources/scss/pages/_variable.scss */
 .scenario-map-overlay-container .map-tooltip {
   position: absolute;
   display: inline;
@@ -19628,7 +19634,7 @@ s
   font: 0.9rem/0.9rem Roboto, Helvetica, "Helvetica Neue", Arial, sans-serif;
 }
 
-/* line 221, resources/scss/pages/_variable.scss */
+/* line 223, resources/scss/pages/_variable.scss */
 .scenario-map-overlay-container .map-tooltip:after {
   content: '';
   display: block;
