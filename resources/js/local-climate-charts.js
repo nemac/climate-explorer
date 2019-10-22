@@ -13,7 +13,7 @@ $(function () {
   if (!window.ce.ce('getLocationPageState')['city']) {
     $('#default-in').addClass('d-none');
     $('#default-dash').addClass('d-none');
-    $('#cards-search-input').focus();
+    // $('#cards-search-input').focus();
     $('#cards-search-input').addClass('nosearch');
     $('#cards-search-input').attr("placeholder", "Location missing, enter a county, city, or zip code");
   }

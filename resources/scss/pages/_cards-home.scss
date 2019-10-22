@@ -43,6 +43,11 @@
 #cards-search-input {
   &.nosearch {
     border-bottom: 3px solid transparentize($ce3-error-state, .1) !important;
+
+    &:focus::placeholder{
+      color: transparentize($ce3-error-state, .6);
+    }
+
     &::placeholder {
       color: $ce3-error-state;
     }
