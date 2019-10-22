@@ -1,14 +1,25 @@
+$home-text-transparency: .25;
 #home-viewport {
+  margin: 24px;
   background-color: $white;
-  height: calc(100% - 84px) !important;
+  height: calc(100% - 132px) !important;
+  background-image: url(/resources/img/bg_splash-pinal.jpg);
 
   @include small {
     height: calc(100% - 48px) !important;
   }
 }
 
+#home-text {
+  padding-top: 5%;
+  margin-bottom: 12px;
+  margin-bottom:  $ce3-default-padding;
+}
+
 .search-row {
   flex: 1 1 auto !important;
+  padding-right: 5% !important;
+  padding-left: 5% !important;
 
   @include medium {
     .icon-search:before {
@@ -19,14 +30,24 @@
   }
 }
 
+#suggested-cities {
+  margin-top: $ce3-default-padding;
+  background: transparentize($ce3-blue6, $home-text-transparency);
+  @include border-radius(5px, 5px);
+  padding: $ce3-default-padding
+}
+
 .home-container {
   align-content: start;
 }
 
 .describe-main {
-  font: 500 24px $roboto !important;
+  font: 700 36px $roboto !important;
+  @include small {
+    font: 700 24px $roboto !important;
+  }
   color: $blue2;
-  background: $ce3-blue6;
+  background: transparentize($ce3-blue6, $home-text-transparency + $home-text-transparency);
   max-height: 100px !important;
   @include border-radius(5px, 5px);
 
@@ -85,8 +106,14 @@ input.input-inner:focus  {
 
 .main-logos {
   flex: 0 1 $ce3-main-bottom !important;
+  margin-right: -24px !important;
+  position: relative;
+  top: 12px;
+  // margin-right: 5% !important;
+  // @include border-radius(5px, 5px);
 
   a {
+    background-color: $ce3-blue6;
     width: $ce3-main-logo-height;
     height:$ce3-main-logo-height;
   }
