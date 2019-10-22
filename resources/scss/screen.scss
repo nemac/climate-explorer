@@ -949,13 +949,13 @@ h6 {
   }
 
   &.disabled-seasonal {
-    background: transparent !important;
-    color: transparent !important;
-    border: 0px !important;
+    background: $ce3-blue5 !important;
+    color: $ce3-disabled-font !important;
+    border: 1px solid $ce3-disabled-border !important;
 
     &:focus, &:hover {
-      background: transparent !important;
-      border: 0px !important
+      // background: transparent !important;
+      border: 1px solid $ce3-disabled-border !important;
     }
 
   }

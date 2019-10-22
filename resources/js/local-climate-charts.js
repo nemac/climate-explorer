@@ -1,10 +1,6 @@
 'use strict';
 
 $(function () {
-  // var activeVariableTemperature = 'tmax';
-  // var activeVariablePrecipitation = 'pcpn';
-  // var activeVariableDerived = 'hdd';
-
   // get city, state from state url
   $('#default-city-state').text(window.ce.ce('getLocationPageState')['city']);
   $('#default-city-county').text(window.ce.ce('getLocationPageState')['county']);
@@ -13,7 +9,6 @@ $(function () {
   if (!window.ce.ce('getLocationPageState')['city']) {
     $('#default-in').addClass('d-none');
     $('#default-dash').addClass('d-none');
-    // $('#cards-search-input').focus();
     $('#cards-search-input').addClass('nosearch');
     $('#cards-search-input').attr("placeholder", "Location missing, enter a county, city, or zip code");
   }

@@ -14096,15 +14096,14 @@ h6 {
 
 /* line 951, resources/scss/screen.scss */
 .btn-default-disabled.disabled-seasonal {
-  background: transparent !important;
-  color: transparent !important;
-  border: 0px !important;
+  background: #E9F1FC !important;
+  color: #a4c3f3 !important;
+  border: 1px solid #a4c3f3 !important;
 }
 
 /* line 956, resources/scss/screen.scss */
 .btn-default-disabled.disabled-seasonal:focus, .btn-default-disabled.disabled-seasonal:hover {
-  background: transparent !important;
-  border: 0px !important;
+  border: 1px solid #a4c3f3 !important;
 }
 
 /* line 966, resources/scss/screen.scss */
