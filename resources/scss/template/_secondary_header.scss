@@ -21,9 +21,17 @@
      font: 500 24px $roboto !important;
      white-space: nowrap;
      width: 70%;
+
+     @include tiny {
+       .extra-title {
+         display: none !important;
+       }       
+     }
+
      @include very-small  {
        width: 25%;
      }
+
      @include small {
        font: 500 18px $roboto !important;
      }
