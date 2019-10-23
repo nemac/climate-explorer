@@ -1,19 +1,42 @@
 $home-text-transparency: .25;
 #home-viewport {
   margin: 24px;
-  background-color: $white;
   height: calc(100% - 132px) !important;
-  // background-image: url(/resources/img/bg_splash-pinal.jpg);
+  min-height: 420px !important;
+
+  &:after{
+    content: '';
+    background: url(/resources/img/bg_splash-pinal.jpg) center no-repeat;
+    position: absolute;
+    top: 80px;
+    left: 0;
+    opacity: 0.15;
+    height: calc(100% - 128px) !important;
+    width: calc(100% - 48px);
+    z-index: -1;
+    margin: 24px;
+    background-size: cover;
+    min-height: 420px !important;
+    @include very-small {
+      top: 48px;
+      height: calc(100% - 48px) !important;
+    }
+  }
 
   @include small {
     height: calc(100% - 48px) !important;
   }
+
+
 }
 
 #home-text {
-  padding-top: 5%;
-  margin-bottom: 12px;
+  padding-top: $ce3-default-padding;
+  margin-bottom: $ce3-default-padding;
   margin-bottom:  $ce3-default-padding;
+  @include small {
+    padding-top: 60px;
+  }
 }
 
 .search-row {
@@ -41,7 +64,7 @@ $home-text-transparency: .25;
 }
 
 .describe-main {
-  font: 600 24px $roboto !important;
+  font: 500 24px $roboto !important;
   color: $blue2;
   max-height: 100px !important;
   @include border-radius(5px, 5px);
@@ -103,9 +126,27 @@ input.input-inner:focus  {
   flex: 0 1 $ce3-main-bottom !important;
   margin-right: -24px !important;
   position: relative;
-  top: 12px;
-  // margin-right: 5% !important;
-  // @include border-radius(5px, 5px);
+  top: $ce3-default-padding;
+  padding-right: $ce3-default-padding;
+
+  @include medium {
+    top: 6px;
+    margin-right: -$ce3-default-padding !important;
+    padding-right: $ce3-default-padding/2;
+  }
+
+  @include small {
+    top: -42px;
+  }
+
+  @include very-small {
+    top: -8px;
+  }
+
+  @include tiny {
+    top: -8px;
+  }
+
 
   a {
     background-color: $ce3-blue6;
@@ -115,5 +156,6 @@ input.input-inner:focus  {
 
   #global-change {
     width: 120px;
+    padding-right: $ce3-default-padding;
   }
 }

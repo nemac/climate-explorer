@@ -12068,12 +12068,12 @@ This file is due for a cleanup. Please do not add to the mess.
     top: auto;
     left: auto;
   }
-  /* line 197, resources/scss/_mixins.scss */
+  /* line 201, resources/scss/_mixins.scss */
   #main-header:before, #main-header:after {
     content: " ";
     display: table;
   }
-  /* line 203, resources/scss/_mixins.scss */
+  /* line 207, resources/scss/_mixins.scss */
   #main-header:after {
     clear: both;
   }
@@ -12182,12 +12182,12 @@ This file is due for a cleanup. Please do not add to the mess.
     top: auto;
     left: auto;
   }
-  /* line 197, resources/scss/_mixins.scss */
+  /* line 201, resources/scss/_mixins.scss */
   #main-header:before, #main-header:after {
     content: " ";
     display: table;
   }
-  /* line 203, resources/scss/_mixins.scss */
+  /* line 207, resources/scss/_mixins.scss */
   #main-header:after {
     clear: both;
   }
@@ -12264,12 +12264,12 @@ This file is due for a cleanup. Please do not add to the mess.
     width: 80%;
     margin: 20px auto;
   }
-  /* line 197, resources/scss/_mixins.scss */
+  /* line 201, resources/scss/_mixins.scss */
   #nav-overlay #nav-controls:before, #nav-overlay #nav-controls:after {
     content: " ";
     display: table;
   }
-  /* line 203, resources/scss/_mixins.scss */
+  /* line 207, resources/scss/_mixins.scss */
   #nav-overlay #nav-controls:after {
     clear: both;
   }
@@ -12548,12 +12548,12 @@ This file is due for a cleanup. Please do not add to the mess.
     top: 5.5rem;
     left: 1.5rem;
   }
-  /* line 197, resources/scss/_mixins.scss */
+  /* line 201, resources/scss/_mixins.scss */
   #nav-overlay #nav-controls:before, #nav-overlay #nav-controls:after {
     content: " ";
     display: table;
   }
-  /* line 203, resources/scss/_mixins.scss */
+  /* line 207, resources/scss/_mixins.scss */
   #nav-overlay #nav-controls:after {
     clear: both;
   }
@@ -12984,7 +12984,7 @@ This file is due for a cleanup. Please do not add to the mess.
   box-sizing: border-box;
 }
 
-/* line 170, resources/scss/_mixins.scss */
+/* line 174, resources/scss/_mixins.scss */
 *:before, *:after {
   -moz-box-sizing: border-box;
   -webkit-box-sizing: border-box;
@@ -14955,13 +14955,13 @@ input.input-inner-default:focus {
   border-left-color: #FBFCFE;
 }
 
-/* line 197, resources/scss/_mixins.scss */
+/* line 201, resources/scss/_mixins.scss */
 .chart-legend:before, .chart-legend:after {
   content: " ";
   display: table;
 }
 
-/* line 203, resources/scss/_mixins.scss */
+/* line 207, resources/scss/_mixins.scss */
 .chart-legend:after {
   clear: both;
 }
@@ -15882,13 +15882,13 @@ input.input-inner-default:focus {
   background: rgba(255, 255, 255, 0.1);
 }
 
-/* line 197, resources/scss/_mixins.scss */
+/* line 201, resources/scss/_mixins.scss */
 #nav-overlay .nav-content .tab ol:before, #nav-overlay .nav-content .tab ol:after {
   content: " ";
   display: table;
 }
 
-/* line 203, resources/scss/_mixins.scss */
+/* line 207, resources/scss/_mixins.scss */
 #nav-overlay .nav-content .tab ol:after {
   clear: both;
 }
@@ -15922,7 +15922,7 @@ input.input-inner-default:focus {
   font: 300 1rem/1em Roboto, Helvetica, "Helvetica Neue", Arial, sans-serif;
 }
 
-/* line 197, resources/scss/_mixins.scss */
+/* line 201, resources/scss/_mixins.scss */
 #nav-overlay .nav-content .tab ol.col-2:before, #nav-overlay .nav-content .tab ol.col-2:after,
 #nav-overlay .nav-content .tab ul.col-2:before,
 #nav-overlay .nav-content .tab ul.col-2:after {
@@ -15930,7 +15930,7 @@ input.input-inner-default:focus {
   display: table;
 }
 
-/* line 203, resources/scss/_mixins.scss */
+/* line 207, resources/scss/_mixins.scss */
 #nav-overlay .nav-content .tab ol.col-2:after,
 #nav-overlay .nav-content .tab ul.col-2:after {
   clear: both;
@@ -15943,7 +15943,7 @@ input.input-inner-default:focus {
   width: 50%;
 }
 
-/* line 197, resources/scss/_mixins.scss */
+/* line 201, resources/scss/_mixins.scss */
 #nav-overlay .nav-content .tab ol.col-3:before, #nav-overlay .nav-content .tab ol.col-3:after,
 #nav-overlay .nav-content .tab ul.col-3:before,
 #nav-overlay .nav-content .tab ul.col-3:after {
@@ -15951,7 +15951,7 @@ input.input-inner-default:focus {
   display: table;
 }
 
-/* line 203, resources/scss/_mixins.scss */
+/* line 207, resources/scss/_mixins.scss */
 #nav-overlay .nav-content .tab ol.col-3:after,
 #nav-overlay .nav-content .tab ul.col-3:after {
   clear: both;
@@ -15964,7 +15964,7 @@ input.input-inner-default:focus {
   width: 33%;
 }
 
-/* line 197, resources/scss/_mixins.scss */
+/* line 201, resources/scss/_mixins.scss */
 #nav-overlay .nav-content .tab ol.col-4:before, #nav-overlay .nav-content .tab ol.col-4:after,
 #nav-overlay .nav-content .tab ul.col-4:before,
 #nav-overlay .nav-content .tab ul.col-4:after {
@@ -15972,7 +15972,7 @@ input.input-inner-default:focus {
   display: table;
 }
 
-/* line 203, resources/scss/_mixins.scss */
+/* line 207, resources/scss/_mixins.scss */
 #nav-overlay .nav-content .tab ol.col-4:after,
 #nav-overlay .nav-content .tab ul.col-4:after {
   clear: both;
@@ -16581,8 +16581,32 @@ body.detail-open #nav-overlay {
 /* line 2, resources/scss/pages/_home.scss */
 #home-viewport {
   margin: 24px;
-  background-color: #ffffff;
   height: calc(100% - 132px) !important;
+  min-height: 420px !important;
+}
+
+/* line 7, resources/scss/pages/_home.scss */
+#home-viewport:after {
+  content: '';
+  background: url(/resources/img/bg_splash-pinal.jpg) center no-repeat;
+  position: absolute;
+  top: 80px;
+  left: 0;
+  opacity: 0.15;
+  height: calc(100% - 128px) !important;
+  width: calc(100% - 48px);
+  z-index: -1;
+  margin: 24px;
+  background-size: cover;
+  min-height: 420px !important;
+}
+
+@media screen and (max-width: 599px) {
+  /* line 7, resources/scss/pages/_home.scss */
+  #home-viewport:after {
+    top: 48px;
+    height: calc(100% - 48px) !important;
+  }
 }
 
 @media screen and (max-width: 768px) {
@@ -16592,14 +16616,21 @@ body.detail-open #nav-overlay {
   }
 }
 
-/* line 13, resources/scss/pages/_home.scss */
+/* line 33, resources/scss/pages/_home.scss */
 #home-text {
-  padding-top: 5%;
+  padding-top: 12px;
   margin-bottom: 12px;
   margin-bottom: 12px;
 }
 
-/* line 19, resources/scss/pages/_home.scss */
+@media screen and (max-width: 768px) {
+  /* line 33, resources/scss/pages/_home.scss */
+  #home-text {
+    padding-top: 60px;
+  }
+}
+
+/* line 42, resources/scss/pages/_home.scss */
 .search-row {
   flex: 1 1 auto !important;
   padding-right: 5% !important;
@@ -16607,7 +16638,7 @@ body.detail-open #nav-overlay {
 }
 
 @media screen and (max-width: 900px) {
-  /* line 25, resources/scss/pages/_home.scss */
+  /* line 48, resources/scss/pages/_home.scss */
   .search-row .icon-search:before {
     position: relative;
     top: 5px;
@@ -16615,7 +16646,7 @@ body.detail-open #nav-overlay {
   }
 }
 
-/* line 33, resources/scss/pages/_home.scss */
+/* line 56, resources/scss/pages/_home.scss */
 #suggested-cities {
   margin-top: 12px;
   -webkit-border-radius: 5px 5px;
@@ -16624,14 +16655,14 @@ body.detail-open #nav-overlay {
   padding: 12px;
 }
 
-/* line 39, resources/scss/pages/_home.scss */
+/* line 62, resources/scss/pages/_home.scss */
 .home-container {
   align-content: start;
 }
 
-/* line 43, resources/scss/pages/_home.scss */
+/* line 66, resources/scss/pages/_home.scss */
 .describe-main {
-  font: 600 24px Roboto, Helvetica, "Helvetica Neue", Arial, sans-serif !important;
+  font: 500 24px Roboto, Helvetica, "Helvetica Neue", Arial, sans-serif !important;
   color: #233a70;
   max-height: 100px !important;
   -webkit-border-radius: 5px 5px;
@@ -16640,7 +16671,7 @@ body.detail-open #nav-overlay {
 }
 
 @media screen and (max-width: 900px) {
-  /* line 43, resources/scss/pages/_home.scss */
+  /* line 66, resources/scss/pages/_home.scss */
   .describe-main {
     max-height: 250px !important;
     height: auto !important;
@@ -16648,7 +16679,7 @@ body.detail-open #nav-overlay {
   }
 }
 
-/* line 56, resources/scss/pages/_home.scss */
+/* line 79, resources/scss/pages/_home.scss */
 .rounded-box {
   -webkit-border-radius: 5px 5px;
   -moz-border-radius: 5px / 5px;
@@ -16658,27 +16689,27 @@ body.detail-open #nav-overlay {
   box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.239);
 }
 
-/* line 61, resources/scss/pages/_home.scss */
+/* line 84, resources/scss/pages/_home.scss */
 .input-outer {
   background-color: #E9F1FC;
   color: #124086;
 }
 
-/* line 66, resources/scss/pages/_home.scss */
+/* line 89, resources/scss/pages/_home.scss */
 input.input-inner {
   background-color: #E9F1FC;
   color: #124086;
   font: 800 24px Roboto, Helvetica, "Helvetica Neue", Arial, sans-serif !important;
 }
 
-/* line 72, resources/scss/pages/_home.scss */
+/* line 95, resources/scss/pages/_home.scss */
 input.input-inner::placeholder {
   background-color: #E9F1FC;
   color: #124086;
   font: 800 24px Roboto, Helvetica, "Helvetica Neue", Arial, sans-serif !important;
 }
 
-/* line 78, resources/scss/pages/_home.scss */
+/* line 101, resources/scss/pages/_home.scss */
 input.input-inner:focus::placeholder {
   color: rgba(18, 64, 134, 0.5);
   font: 800 24px Roboto, Helvetica, "Helvetica Neue", Arial, sans-serif !important;
@@ -16688,12 +16719,12 @@ input.input-inner:focus::placeholder {
   transition: 0.25s;
 }
 
-/* line 87, resources/scss/pages/_home.scss */
+/* line 110, resources/scss/pages/_home.scss */
 input.input-inner:focus {
   outline: none !important;
 }
 
-/* line 91, resources/scss/pages/_home.scss */
+/* line 114, resources/scss/pages/_home.scss */
 .search-main {
   width: 40px;
   height: 40px;
@@ -16706,24 +16737,56 @@ input.input-inner:focus {
   font-weight: 800;
 }
 
-/* line 102, resources/scss/pages/_home.scss */
+/* line 125, resources/scss/pages/_home.scss */
 .main-logos {
   flex: 0 1 100px !important;
   margin-right: -24px !important;
   position: relative;
   top: 12px;
+  padding-right: 12px;
 }
 
-/* line 110, resources/scss/pages/_home.scss */
+@media screen and (max-width: 900px) {
+  /* line 125, resources/scss/pages/_home.scss */
+  .main-logos {
+    top: 6px;
+    margin-right: -12px !important;
+    padding-right: 6px;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  /* line 125, resources/scss/pages/_home.scss */
+  .main-logos {
+    top: -42px;
+  }
+}
+
+@media screen and (max-width: 599px) {
+  /* line 125, resources/scss/pages/_home.scss */
+  .main-logos {
+    top: -8px;
+  }
+}
+
+@media screen and (max-width: 399px) {
+  /* line 125, resources/scss/pages/_home.scss */
+  .main-logos {
+    top: -8px;
+  }
+}
+
+/* line 151, resources/scss/pages/_home.scss */
 .main-logos a {
   background-color: #FBFCFE;
   width: 60px;
   height: 60px;
 }
 
-/* line 116, resources/scss/pages/_home.scss */
+/* line 157, resources/scss/pages/_home.scss */
 .main-logos #global-change {
   width: 120px;
+  padding-right: 12px;
 }
 
 /* line 1, resources/scss/pages/_local-climate-charts.scss */
