@@ -31,7 +31,7 @@ $home-text-transparency: .25;
 }
 
 #home-text {
-  padding-top: $ce3-default-padding;
+  padding-top: $ce3-default-padding*5;
   margin-bottom: $ce3-default-padding;
   margin-bottom:  $ce3-default-padding;
   @include small {
