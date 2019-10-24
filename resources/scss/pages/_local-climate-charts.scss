@@ -163,7 +163,7 @@
   }
 }
 
-#chartmap-select-wrapper, #time-select-wrapper, #presentation-select-wrapper {
+#chartmap-select-wrapper, #time-select-wrapper, #presentation-select-wrapper, #tidalzoom-select-wrapper {
   background-color: $ce3-blue5;
   color: $ce3-blue3;
   font: 500 14px $roboto !important;
@@ -189,13 +189,13 @@
   }
 }
 
-#chartmap-wrapper, #time-wrapper, #presentation-wrapper  {
+#chartmap-wrapper, #time-wrapper, #presentation-wrapper, #tidalzoom-wrapper  {
   @include medium {
     display: none !important;
   }
 }
 
-#varriable-select-wrapper, #chartmap-wrapper, #time-wrapper, #presentation-wrapper {
+#varriable-select-wrapper, #chartmap-wrapper, #time-wrapper, #presentation-wrapper, #tidalzoom-wrapper   {
   @include medium {
     height: auto !important;
     width: 100% !important;

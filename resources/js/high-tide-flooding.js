@@ -5,6 +5,7 @@ $(function () {
   enableCustomSelect('chartmap-select');
   enableCustomSelect('stations-select');
   enableCustomSelect('download-select');
+  enableCustomSelect('tidalzoom-select');
 
   // get city, state from state url
   $('#default-city-state').text(window.ce.ce('getLocationPageState')['city']);
@@ -62,13 +63,62 @@ $(function () {
   }
 
   // zoom to historical part of chart
-  $('.btn-tidalzoom').click(function () {
+  $('.btn-tidalzoom-hm').click(function () {
     // only allow click event if button is not disabled
-    if (!$("#btn-tidalzoom").hasClass('btn-default-disabled')) {
-      $("#tidal-chart").tidalstationwidget('zoomToggle');
-      $('.btn-tidalzoom').toggleClass('active');
+    if (!$(".btn-tidalzoom-hm").hasClass('btn-default-disabled') ) {
+      if ( !$(".btn-tidalzoom-hm").hasClass('btn-default-selected') ) {
+        $("#tidal-chart").tidalstationwidget('zoomToggle');
+        $('.btn-tidalzoom-hm').addClass('btn-default-selected');
+        $('.btn-tidalzoom-h').removeClass('btn-default-selected');
+
+        const tidalZoomElem = $('#tidalzoom-select-vis');
+        if (tidalZoomElem){
+          tidalZoomElem.attr('rel','hm');
+          tidalZoomElem.text('Historical & Modeled');
+        }
+      }
     }
   });
+
+
+  // zoom to historical part of chart
+  $('.btn-tidalzoom-h').click(function () {
+    // only allow click event if button is not disabled
+    if (!$(".btn-tidalzoom-h").hasClass('btn-default-disabled') ) {
+      if ( !$(".btn-tidalzoom-h").hasClass('btn-default-selected') ) {
+        $("#tidal-chart").tidalstationwidget('zoomToggle');
+        $('.btn-tidalzoom-hm').removeClass('btn-default-selected');
+        $('.btn-tidalzoom-h').addClass('btn-default-selected');
+
+        const tidalZoomElem = $('#tidalzoom-select-vis');
+        if (tidalZoomElem){
+          tidalZoomElem.attr('rel','h');
+          tidalZoomElem.text('Historical');
+        }
+      }
+    }
+  });
+
+  // in repsonsive mode the time is a pulldown this eanbles the change of the zoom of to
+  // historical vs zoom to historical and modeled
+  $('#tidalzoom-select-vis').bind('cs-changed', function(e) {
+    console.log('#tidalzoom-select-vis')
+    const target = $(e.target);
+
+    const notDisabled = !target.hasClass('btn-default-disabled');
+    if ( notDisabled ) {
+      const val = $('#tidalzoom-select-vis').attr('rel');
+      if ( !$(`.btn-tidalzoom-${val}`).hasClass('btn-default-selected') ) {
+        // toggle button visual state
+        $(`.btn-tidalzoom-hm`).removeClass('btn-default-selected');
+        $(`.btn-tidalzoom-h`).removeClass('btn-default-selected');
+
+        $(`.btn-tidalzoom-${val}`).addClass('btn-default-selected');
+
+        $("#tidal-chart").tidalstationwidget('zoomToggle');
+      }
+    }
+  })
 
   // the way graphs are handled and initialized require them to visible
   // so we move them off the screen.  this not ideal but we can move
@@ -91,7 +141,9 @@ $(function () {
       $("#tidal-chart").tidalstationwidget({ tidalStation: stations.tidalStationId });
     });
 
-    $('.btn-tidalzoom').removeClass('btn-default-disabled');
+    $('.btn-tidalzoom-hm').removeClass('btn-default-disabled');
+    $('.btn-tidalzoom-h').removeClass('btn-default-disabled');
+    $('.btn-tidalzoom-hm').addClass('btn-default-selected');
   }
 
   // updates the visible text for the station pulldown with the information from the state url

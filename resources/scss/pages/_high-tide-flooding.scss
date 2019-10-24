@@ -65,7 +65,7 @@
     @include border-radius(5px, 5px);
   }
 
-  #stations-select-wrapper, #tidalzoom-wrapper, #btn-tidalzoom {
+  #stations-select-wrapper {
      display: flex !important;
      @include medium {
        width: 100% !important;
