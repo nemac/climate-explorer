@@ -474,6 +474,26 @@ $(function () {
     }
   })
 
+  // eanbles time chart, map click events
+  $('#chartmap-wrapper').keyup( function(e) {
+    const target = $(e.target);
+    const notDisabled = !target.hasClass('btn-default-disabled');
+
+    if ( notDisabled ) {
+      if (e.keyCode === 13){
+        const target = $(e.target);
+
+        // toggle button visual state
+        toggleButton($(target));
+
+        // change select pulldowns for resposnive mode
+        setSelectFromButton(target);
+
+        handleChartMapClick(target);
+      }
+    }
+  })
+
   // update season map
   function updateSeason(targetval) {
     if (window.precipitationScenariosMap) {
@@ -499,6 +519,29 @@ $(function () {
 
       // change map varriable
       updateSeason(val);
+    }
+  })
+
+  // eanbles time annual, monlthly click events
+  $('#time-wrapper').keyup( function(e) {
+    if (e.keyCode === 13){
+      const target = $(e.target);
+      const notDisabled = !target.hasClass('btn-default-disabled');
+      // not all varriables can display monthly chart
+      // when the varriable cannot display monthly chart do
+      // do execute the click event
+      if ( notDisabled ) {
+        const val = target.attr('val')
+
+        // toggle button visual state
+        toggleButton(target);
+
+        // change select pulldowns for resposnive mode
+        setSelectFromButton(target);
+
+        // change map varriable
+        updateSeason(val);
+      }
     }
   })
 
