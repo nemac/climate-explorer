@@ -13334,7 +13334,12 @@ h6 {
   display: none;
 }
 
-/* line 382, resources/scss/screen.scss */
+/* line 381, resources/scss/screen.scss */
+.select-options span:hover, .select-options span:focus {
+  outline: none !important;
+}
+
+/* line 387, resources/scss/screen.scss */
 .pac-container {
   font: 500 14px Roboto, Helvetica, "Helvetica Neue", Arial, sans-serif !important;
   display: block;
@@ -13355,14 +13360,14 @@ h6 {
 }
 
 @media screen and (max-width: 768px) {
-  /* line 382, resources/scss/screen.scss */
+  /* line 387, resources/scss/screen.scss */
   .pac-container {
     max-height: 250px !important;
     top: 2px;
   }
 }
 
-/* line 401, resources/scss/screen.scss */
+/* line 406, resources/scss/screen.scss */
 .pac-container .pac-item {
   padding: 12px 0;
   text-indent: 15px;
@@ -13376,431 +13381,431 @@ h6 {
   transition: all 0.15s ease-in;
 }
 
-/* line 407, resources/scss/screen.scss */
+/* line 412, resources/scss/screen.scss */
 .pac-container .pac-item a {
   color: #124086 !important;
 }
 
-/* line 410, resources/scss/screen.scss */
+/* line 415, resources/scss/screen.scss */
 .pac-container .pac-item:hover {
   color: #124086;
   background: #d3e3f9;
 }
 
-/* line 415, resources/scss/screen.scss */
+/* line 420, resources/scss/screen.scss */
 .pac-container .pac-item-selected {
   color: #124086;
   background: #d3e3f9;
 }
 
-/* line 424, resources/scss/screen.scss */
+/* line 429, resources/scss/screen.scss */
 #filters-row {
   padding-left: 24px;
 }
 
-/* line 426, resources/scss/screen.scss */
+/* line 431, resources/scss/screen.scss */
 #filters-row.padding-top {
   padding-top: 22px !important;
 }
 
 @media screen and (max-width: 900px) {
-  /* line 433, resources/scss/screen.scss */
+  /* line 438, resources/scss/screen.scss */
   #filters-row .select-options {
     margin-top: 0px !important;
   }
 }
 
-/* line 439, resources/scss/screen.scss */
+/* line 444, resources/scss/screen.scss */
 .filter-border-bottom {
   padding-bottom: 6px;
   border-bottom: 1px solid rgba(18, 64, 134, 0.5);
 }
 
-/* line 445, resources/scss/screen.scss */
+/* line 450, resources/scss/screen.scss */
 .closed-filters .filter-border-bottom {
   padding-bottom: 6px;
   border-bottom: 0px solid rgba(18, 64, 134, 0.5);
 }
 
-/* line 451, resources/scss/screen.scss */
+/* line 456, resources/scss/screen.scss */
 .font-title {
   font: 500 24px Roboto, Helvetica, "Helvetica Neue", Arial, sans-serif !important;
   color: #FBFCFE !important;
 }
 
-/* line 456, resources/scss/screen.scss */
+/* line 461, resources/scss/screen.scss */
 .border-none {
   border: none !important;
   outline: none !important;
 }
 
-/* line 461, resources/scss/screen.scss */
+/* line 466, resources/scss/screen.scss */
 .border-default {
   border: 1px solid rgba(18, 64, 134, 0.5) !important;
 }
 
-/* line 465, resources/scss/screen.scss */
+/* line 470, resources/scss/screen.scss */
 .height-100 {
   height: 100% !important;
 }
 
-/* line 469, resources/scss/screen.scss */
+/* line 474, resources/scss/screen.scss */
 .height-90 {
   height: 90% !important;
 }
 
-/* line 473, resources/scss/screen.scss */
+/* line 478, resources/scss/screen.scss */
 .height-80 {
   height: 80% !important;
 }
 
-/* line 477, resources/scss/screen.scss */
+/* line 482, resources/scss/screen.scss */
 .height-60 {
   height: 60% !important;
 }
 
-/* line 481, resources/scss/screen.scss */
+/* line 486, resources/scss/screen.scss */
 .height-50 {
   height: 50% !important;
 }
 
-/* line 485, resources/scss/screen.scss */
+/* line 490, resources/scss/screen.scss */
 .height-20 {
   height: 20% !important;
 }
 
-/* line 489, resources/scss/screen.scss */
+/* line 494, resources/scss/screen.scss */
 .height-25 {
   height: 25% !important;
 }
 
-/* line 493, resources/scss/screen.scss */
+/* line 498, resources/scss/screen.scss */
 .height-10 {
   height: 10% !important;
 }
 
-/* line 497, resources/scss/screen.scss */
+/* line 502, resources/scss/screen.scss */
 .width-100 {
   width: 100% !important;
 }
 
-/* line 501, resources/scss/screen.scss */
+/* line 506, resources/scss/screen.scss */
 .width-90 {
   width: 90% !important;
 }
 
-/* line 505, resources/scss/screen.scss */
+/* line 510, resources/scss/screen.scss */
 .width-95 {
   width: 95% !important;
 }
 
-/* line 510, resources/scss/screen.scss */
+/* line 515, resources/scss/screen.scss */
 .width-80 {
   width: 80% !important;
 }
 
-/* line 514, resources/scss/screen.scss */
+/* line 519, resources/scss/screen.scss */
 .width-85 {
   width: 85% !important;
 }
 
-/* line 518, resources/scss/screen.scss */
+/* line 523, resources/scss/screen.scss */
 .width-70 {
   width: 70% !important;
 }
 
-/* line 522, resources/scss/screen.scss */
+/* line 527, resources/scss/screen.scss */
 .width-75 {
   width: 75% !important;
 }
 
-/* line 526, resources/scss/screen.scss */
+/* line 531, resources/scss/screen.scss */
 .width-60 {
   width: 60% !important;
 }
 
-/* line 530, resources/scss/screen.scss */
+/* line 535, resources/scss/screen.scss */
 .width-50 {
   width: 50% !important;
 }
 
-/* line 534, resources/scss/screen.scss */
+/* line 539, resources/scss/screen.scss */
 .width-40 {
   width: 40% !important;
 }
 
-/* line 538, resources/scss/screen.scss */
+/* line 543, resources/scss/screen.scss */
 .width-30 {
   width: 30% !important;
 }
 
-/* line 542, resources/scss/screen.scss */
+/* line 547, resources/scss/screen.scss */
 .width-33 {
   width: 33% !important;
 }
 
-/* line 546, resources/scss/screen.scss */
+/* line 551, resources/scss/screen.scss */
 .width-20 {
   width: 20% !important;
 }
 
-/* line 550, resources/scss/screen.scss */
+/* line 555, resources/scss/screen.scss */
 .width-25 {
   width: 25% !important;
 }
 
-/* line 554, resources/scss/screen.scss */
+/* line 559, resources/scss/screen.scss */
 .width-15 {
   width: 15% !important;
 }
 
-/* line 558, resources/scss/screen.scss */
+/* line 563, resources/scss/screen.scss */
 .width-10 {
   width: 10% !important;
 }
 
-/* line 562, resources/scss/screen.scss */
+/* line 567, resources/scss/screen.scss */
 .width-5 {
   width: 5% !important;
 }
 
-/* line 566, resources/scss/screen.scss */
+/* line 571, resources/scss/screen.scss */
 .right-padding {
   padding-right: 12px !important;
 }
 
 @media screen and (max-width: 900px) {
-  /* line 566, resources/scss/screen.scss */
+  /* line 571, resources/scss/screen.scss */
   .right-padding {
     padding-right: 6px !important;
   }
 }
 
-/* line 573, resources/scss/screen.scss */
+/* line 578, resources/scss/screen.scss */
 .bottom-padding {
   padding-bottom: 12px !important;
 }
 
 @media screen and (max-width: 900px) {
-  /* line 573, resources/scss/screen.scss */
+  /* line 578, resources/scss/screen.scss */
   .bottom-padding {
     padding-bottom: 6px !important;
   }
 }
 
-/* line 580, resources/scss/screen.scss */
+/* line 585, resources/scss/screen.scss */
 .padding-default-half {
   padding: 6px !important;
 }
 
-/* line 584, resources/scss/screen.scss */
+/* line 589, resources/scss/screen.scss */
 .padding-default {
   padding: 12px 12px !important;
 }
 
 @media screen and (max-width: 900px) {
-  /* line 584, resources/scss/screen.scss */
+  /* line 589, resources/scss/screen.scss */
   .padding-default {
     padding: 6px 6px !important;
   }
 }
 
-/* line 591, resources/scss/screen.scss */
+/* line 596, resources/scss/screen.scss */
 .padding-horrizontal {
   padding-left: 12px !important;
   padding-right: 12px !important;
 }
 
 @media screen and (max-width: 900px) {
-  /* line 591, resources/scss/screen.scss */
+  /* line 596, resources/scss/screen.scss */
   .padding-horrizontal {
     padding-left: 6px !important;
     padding-right: 6px !important;
   }
 }
 
-/* line 600, resources/scss/screen.scss */
+/* line 605, resources/scss/screen.scss */
 .padding-vertical {
   padding-top: 12px !important;
   padding-bottom: 12px !important;
 }
 
 @media screen and (max-width: 900px) {
-  /* line 600, resources/scss/screen.scss */
+  /* line 605, resources/scss/screen.scss */
   .padding-vertical {
     padding-top: 6px !important;
     padding-bottom: 6px !important;
   }
 }
 
-/* line 609, resources/scss/screen.scss */
+/* line 614, resources/scss/screen.scss */
 .padding-horrizontal-half {
   padding-left: 6px !important;
   padding-right: 6px !important;
 }
 
 @media screen and (max-width: 900px) {
-  /* line 609, resources/scss/screen.scss */
+  /* line 614, resources/scss/screen.scss */
   .padding-horrizontal-half {
     padding-left: 3px !important;
     padding-right: 3px !important;
   }
 }
 
-/* line 618, resources/scss/screen.scss */
+/* line 623, resources/scss/screen.scss */
 .padding-vertical-half {
   padding-top: 6px !important;
   padding-bottom: 6px !important;
 }
 
 @media screen and (max-width: 900px) {
-  /* line 618, resources/scss/screen.scss */
+  /* line 623, resources/scss/screen.scss */
   .padding-vertical-half {
     padding-top: 3px !important;
     padding-bottom: 3px !important;
   }
 }
 
-/* line 626, resources/scss/screen.scss */
+/* line 631, resources/scss/screen.scss */
 .padding-bottom {
   padding-bottom: 12px !important;
 }
 
 @media screen and (max-width: 900px) {
-  /* line 626, resources/scss/screen.scss */
+  /* line 631, resources/scss/screen.scss */
   .padding-bottom {
     padding-bottom: 6px !important;
   }
 }
 
-/* line 633, resources/scss/screen.scss */
+/* line 638, resources/scss/screen.scss */
 .padding-top {
   padding-top: 12px !important;
 }
 
 @media screen and (max-width: 900px) {
-  /* line 633, resources/scss/screen.scss */
+  /* line 638, resources/scss/screen.scss */
   .padding-top {
     padding-top: 6px !important;
   }
 }
 
-/* line 640, resources/scss/screen.scss */
+/* line 645, resources/scss/screen.scss */
 .padding-bottom-half {
   padding-bottom: 6px !important;
 }
 
 @media screen and (max-width: 900px) {
-  /* line 640, resources/scss/screen.scss */
+  /* line 645, resources/scss/screen.scss */
   .padding-bottom-half {
     padding-bottom: 3px !important;
   }
 }
 
-/* line 647, resources/scss/screen.scss */
+/* line 652, resources/scss/screen.scss */
 .padding-top-half {
   padding-top: 6px !important;
 }
 
 @media screen and (max-width: 900px) {
-  /* line 647, resources/scss/screen.scss */
+  /* line 652, resources/scss/screen.scss */
   .padding-top-half {
     padding-top: 3px !important;
   }
 }
 
-/* line 654, resources/scss/screen.scss */
+/* line 659, resources/scss/screen.scss */
 .padding-break {
   padding-bottom: 48px !important;
 }
 
 @media screen and (max-width: 900px) {
-  /* line 654, resources/scss/screen.scss */
+  /* line 659, resources/scss/screen.scss */
   .padding-break {
     padding-bottom: 24px !important;
   }
 }
 
-/* line 661, resources/scss/screen.scss */
+/* line 666, resources/scss/screen.scss */
 .margin-horrizontal {
   margin-left: 12px !important;
   margin-right: 12px !important;
 }
 
 @media screen and (max-width: 900px) {
-  /* line 661, resources/scss/screen.scss */
+  /* line 666, resources/scss/screen.scss */
   .margin-horrizontal {
     margin-left: 6px !important;
     margin-right: 6px !important;
   }
 }
 
-/* line 670, resources/scss/screen.scss */
+/* line 675, resources/scss/screen.scss */
 .float-left {
   float: left !important;
 }
 
-/* line 674, resources/scss/screen.scss */
+/* line 679, resources/scss/screen.scss */
 .float-right {
   float: right !important;
 }
 
-/* line 678, resources/scss/screen.scss */
+/* line 683, resources/scss/screen.scss */
 .d-none {
   display: none !important;
 }
 
-/* line 682, resources/scss/screen.scss */
+/* line 687, resources/scss/screen.scss */
 .d-flex {
   display: flex !important;
 }
 
-/* line 686, resources/scss/screen.scss */
+/* line 691, resources/scss/screen.scss */
 .d-flex-nowrap {
   flex-wrap: nowrap !important;
 }
 
-/* line 690, resources/scss/screen.scss */
+/* line 695, resources/scss/screen.scss */
 .d-flex-wrap {
   flex-wrap: wrap !important;
 }
 
-/* line 693, resources/scss/screen.scss */
+/* line 698, resources/scss/screen.scss */
 .d-flex-row {
   display: flex !important;
   flex-flow: row wrap !important;
 }
 
-/* line 698, resources/scss/screen.scss */
+/* line 703, resources/scss/screen.scss */
 .d-flex-column {
   display: flex !important;
   flex-direction: column !important;
 }
 
-/* line 704, resources/scss/screen.scss */
+/* line 709, resources/scss/screen.scss */
 .flex-container {
   display: flex !important;
   flex-flow: row wrap !important;
 }
 
-/* line 710, resources/scss/screen.scss */
+/* line 715, resources/scss/screen.scss */
 .flex-container-nowrap {
   display: flex !important;
   flex-flow: row nowrap !important;
 }
 
-/* line 716, resources/scss/screen.scss */
+/* line 721, resources/scss/screen.scss */
 .flex-justify {
   justify-content: space-between !important;
 }
 
-/* line 720, resources/scss/screen.scss */
+/* line 725, resources/scss/screen.scss */
 .d-flex-fill {
   display: flex !important;
   flex: 1 1 auto !important;
 }
 
-/* line 725, resources/scss/screen.scss */
+/* line 730, resources/scss/screen.scss */
 .d-flex-center {
   display: flex !important;
   align-items: center !important;
@@ -13808,7 +13813,7 @@ h6 {
   justify-content: center !important;
 }
 
-/* line 732, resources/scss/screen.scss */
+/* line 737, resources/scss/screen.scss */
 .d-flex-left {
   display: flex !important;
   align-items: flex-start !important;
@@ -13816,7 +13821,7 @@ h6 {
   justify-content: flex-start !important;
 }
 
-/* line 739, resources/scss/screen.scss */
+/* line 744, resources/scss/screen.scss */
 .d-flex-bottom {
   align-self: flex-end !important;
   align-content: flex-end !important;
@@ -13824,17 +13829,17 @@ h6 {
   margin-top: auto !important;
 }
 
-/* line 746, resources/scss/screen.scss */
+/* line 751, resources/scss/screen.scss */
 .d-flex-fill {
   flex: 1 1 auto !important;
 }
 
-/* line 750, resources/scss/screen.scss */
+/* line 755, resources/scss/screen.scss */
 .d-block {
   display: block !important;
 }
 
-/* line 754, resources/scss/screen.scss */
+/* line 759, resources/scss/screen.scss */
 .input-border {
   -webkit-border-radius: 5px 5px;
   -moz-border-radius: 5px / 5px;
@@ -13844,7 +13849,7 @@ h6 {
   box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.239);
 }
 
-/* line 759, resources/scss/screen.scss */
+/* line 764, resources/scss/screen.scss */
 .btn-histobs {
   cursor: pointer;
   text-decoration: line-through !important;
@@ -13856,30 +13861,30 @@ h6 {
 }
 
 @media screen and (max-width: 900px) {
-  /* line 759, resources/scss/screen.scss */
+  /* line 764, resources/scss/screen.scss */
   .btn-histobs {
     height: 48px !important;
   }
 }
 
-/* line 772, resources/scss/screen.scss */
+/* line 777, resources/scss/screen.scss */
 .btn-histobs:hover {
   background-color: #6a6a6a !important;
 }
 
-/* line 775, resources/scss/screen.scss */
+/* line 780, resources/scss/screen.scss */
 .btn-histobs:focus {
   background-color: #6a6a6a !important;
   outline: none !important;
 }
 
-/* line 779, resources/scss/screen.scss */
+/* line 784, resources/scss/screen.scss */
 .btn-histobs.selected {
   color: #FBFCFE !important;
   text-decoration: unset !important;
 }
 
-/* line 785, resources/scss/screen.scss */
+/* line 790, resources/scss/screen.scss */
 .btn-hismod {
   cursor: pointer;
   text-decoration: line-through !important;
@@ -13891,30 +13896,30 @@ h6 {
 }
 
 @media screen and (max-width: 900px) {
-  /* line 785, resources/scss/screen.scss */
+  /* line 790, resources/scss/screen.scss */
   .btn-hismod {
     height: 48px !important;
   }
 }
 
-/* line 798, resources/scss/screen.scss */
+/* line 803, resources/scss/screen.scss */
 .btn-hismod:hover {
   background-color: #bdbdbd !important;
 }
 
-/* line 801, resources/scss/screen.scss */
+/* line 806, resources/scss/screen.scss */
 .btn-hismod:focus {
   background-color: #bdbdbd !important;
   outline: none !important;
 }
 
-/* line 805, resources/scss/screen.scss */
+/* line 810, resources/scss/screen.scss */
 .btn-hismod.selected {
   color: #124086 !important;
   text-decoration: unset !important;
 }
 
-/* line 811, resources/scss/screen.scss */
+/* line 816, resources/scss/screen.scss */
 .btn-lower-emissions {
   cursor: pointer;
   text-decoration: line-through !important;
@@ -13926,30 +13931,30 @@ h6 {
 }
 
 @media screen and (max-width: 900px) {
-  /* line 811, resources/scss/screen.scss */
+  /* line 816, resources/scss/screen.scss */
   .btn-lower-emissions {
     height: 48px !important;
   }
 }
 
-/* line 824, resources/scss/screen.scss */
+/* line 829, resources/scss/screen.scss */
 .btn-lower-emissions:hover {
   background-color: #6da0e3 !important;
 }
 
-/* line 827, resources/scss/screen.scss */
+/* line 832, resources/scss/screen.scss */
 .btn-lower-emissions:focus {
   background-color: #6da0e3 !important;
   outline: none !important;
 }
 
-/* line 831, resources/scss/screen.scss */
+/* line 836, resources/scss/screen.scss */
 .btn-lower-emissions.selected {
   color: #124086 !important;
   text-decoration: unset !important;
 }
 
-/* line 837, resources/scss/screen.scss */
+/* line 842, resources/scss/screen.scss */
 .btn-higher-emissions {
   cursor: pointer;
   text-decoration: line-through !important;
@@ -13961,30 +13966,30 @@ h6 {
 }
 
 @media screen and (max-width: 900px) {
-  /* line 837, resources/scss/screen.scss */
+  /* line 842, resources/scss/screen.scss */
   .btn-higher-emissions {
     height: 48px !important;
   }
 }
 
-/* line 850, resources/scss/screen.scss */
+/* line 855, resources/scss/screen.scss */
 .btn-higher-emissions:hover {
   background-color: #f98979 !important;
 }
 
-/* line 853, resources/scss/screen.scss */
+/* line 858, resources/scss/screen.scss */
 .btn-higher-emissions:focus {
   background-color: #f98979 !important;
   outline: none !important;
 }
 
-/* line 857, resources/scss/screen.scss */
+/* line 862, resources/scss/screen.scss */
 .btn-higher-emissions.selected {
   color: #124086 !important;
   text-decoration: unset !important;
 }
 
-/* line 863, resources/scss/screen.scss */
+/* line 868, resources/scss/screen.scss */
 .btn-default {
   cursor: pointer;
   padding: 6px;
@@ -13995,7 +14000,7 @@ h6 {
   border: 1px solid rgba(18, 64, 134, 0.5) !important;
 }
 
-/* line 872, resources/scss/screen.scss */
+/* line 877, resources/scss/screen.scss */
 .btn-default.more-info {
   border: 1px solid rgba(18, 64, 134, 0.05) !important;
   background-color: #FBFCFE !important;
@@ -14005,7 +14010,7 @@ h6 {
   padding-left: 12px;
 }
 
-/* line 879, resources/scss/screen.scss */
+/* line 884, resources/scss/screen.scss */
 .btn-default a {
   cursor: pointer;
   text-decoration: none !important;
@@ -14013,13 +14018,13 @@ h6 {
 }
 
 @media screen and (max-width: 900px) {
-  /* line 863, resources/scss/screen.scss */
+  /* line 868, resources/scss/screen.scss */
   .btn-default {
     height: 48px !important;
   }
 }
 
-/* line 889, resources/scss/screen.scss */
+/* line 894, resources/scss/screen.scss */
 .btn-default:focus {
   background-color: #caddf8 !important;
   color: #124086 !important;
@@ -14027,12 +14032,12 @@ h6 {
   outline: none !important;
 }
 
-/* line 891, resources/scss/screen.scss */
+/* line 896, resources/scss/screen.scss */
 .btn-default:focus.more-info {
   background-color: #dee7f7 !important;
 }
 
-/* line 899, resources/scss/screen.scss */
+/* line 904, resources/scss/screen.scss */
 .btn-default:hover {
   background-color: #caddf8 !important;
   color: #124086 !important;
@@ -14040,12 +14045,12 @@ h6 {
   outline: none !important;
 }
 
-/* line 901, resources/scss/screen.scss */
+/* line 906, resources/scss/screen.scss */
 .btn-default:hover.more-info {
   background-color: #dee7f7 !important;
 }
 
-/* line 909, resources/scss/screen.scss */
+/* line 914, resources/scss/screen.scss */
 .btn-default .more-info:before {
   position: inherit;
   background-color: #FBFCFE;
@@ -14061,7 +14066,7 @@ h6 {
   justify-content: center;
 }
 
-/* line 925, resources/scss/screen.scss */
+/* line 930, resources/scss/screen.scss */
 .btn-default-disabled {
   cursor: default;
   height: 36px !important;
@@ -14072,13 +14077,13 @@ h6 {
 }
 
 @media screen and (max-width: 900px) {
-  /* line 925, resources/scss/screen.scss */
+  /* line 930, resources/scss/screen.scss */
   .btn-default-disabled {
     height: 48px !important;
   }
 }
 
-/* line 937, resources/scss/screen.scss */
+/* line 942, resources/scss/screen.scss */
 .btn-default-disabled:focus {
   background-color: #E9F1FC !important;
   color: #a4c3f3 !important;
@@ -14086,7 +14091,7 @@ h6 {
   outline: none !important;
 }
 
-/* line 944, resources/scss/screen.scss */
+/* line 949, resources/scss/screen.scss */
 .btn-default-disabled:hover {
   background-color: #E9F1FC !important;
   color: #a4c3f3 !important;
@@ -14094,19 +14099,19 @@ h6 {
   outline: none !important;
 }
 
-/* line 951, resources/scss/screen.scss */
+/* line 956, resources/scss/screen.scss */
 .btn-default-disabled.disabled-seasonal {
   background: #E9F1FC !important;
   color: #a4c3f3 !important;
   border: 1px solid #a4c3f3 !important;
 }
 
-/* line 956, resources/scss/screen.scss */
+/* line 961, resources/scss/screen.scss */
 .btn-default-disabled.disabled-seasonal:focus, .btn-default-disabled.disabled-seasonal:hover {
   border: 1px solid #a4c3f3 !important;
 }
 
-/* line 963, resources/scss/screen.scss */
+/* line 968, resources/scss/screen.scss */
 .btn-default-selected {
   cursor: pointer;
   height: 36px !important;
@@ -14129,37 +14134,37 @@ h6 {
   border: 1px solid rgba(18, 64, 134, 0.5) !important;
 }
 
-/* line 974, resources/scss/screen.scss */
+/* line 979, resources/scss/screen.scss */
 .btn-default-selected a {
   cursor: pointer;
   text-decoration: none !important;
   color: #E9F1FC !important;
 }
 
-/* line 981, resources/scss/screen.scss */
+/* line 986, resources/scss/screen.scss */
 .btn-default-selected.circle-box-left {
   margin-right: -12px !important;
 }
 
-/* line 985, resources/scss/screen.scss */
+/* line 990, resources/scss/screen.scss */
 .btn-default-selected.circle-box-right {
   margin-left: -12px !important;
 }
 
-/* line 989, resources/scss/screen.scss */
+/* line 994, resources/scss/screen.scss */
 .btn-default-selected.circle-box-middle {
   margin-right: -12px !important;
   margin-left: -12px !important;
 }
 
 @media screen and (max-width: 900px) {
-  /* line 963, resources/scss/screen.scss */
+  /* line 968, resources/scss/screen.scss */
   .btn-default-selected {
     height: 48px !important;
   }
 }
 
-/* line 998, resources/scss/screen.scss */
+/* line 1003, resources/scss/screen.scss */
 .btn-default-selected:focus, .btn-default-selected:hover {
   background-color: #397ee5 !important;
   color: #E9F1FC !important;
@@ -14167,20 +14172,20 @@ h6 {
   outline: none !important;
 }
 
-/* line 1005, resources/scss/screen.scss */
+/* line 1010, resources/scss/screen.scss */
 .btn-default-selected.btn-default-disabled {
   color: #b3cff5 !important;
   background-color: #347ae4 !important;
 }
 
-/* line 1009, resources/scss/screen.scss */
+/* line 1014, resources/scss/screen.scss */
 .btn-default-selected.btn-default-disabled:focus, .btn-default-selected.btn-default-disabled:hover {
   background-color: #347ae4 !important;
   color: #b3cff5 !important;
   outline: none !important;
 }
 
-/* line 1017, resources/scss/screen.scss */
+/* line 1022, resources/scss/screen.scss */
 .rounded-choice-box {
   -webkit-border-radius: 25px 25px;
   -moz-border-radius: 25px / 25px;
@@ -14192,24 +14197,44 @@ h6 {
 }
 
 @media screen and (max-width: 900px) {
-  /* line 1017, resources/scss/screen.scss */
+  /* line 1022, resources/scss/screen.scss */
   .rounded-choice-box {
     min-height: 48px !important;
     max-height: 48px !important;
   }
 }
 
-/* line 1028, resources/scss/screen.scss */
-.rounded-choice-box:hover {
+/* line 1033, resources/scss/screen.scss */
+.rounded-choice-box:hover, .rounded-choice-box:focus {
   background-color: #caddf8 !important;
+  outline: none !important;
 }
 
-/* line 1032, resources/scss/screen.scss */
-.rounded-choice-box.disabled:hover {
+/* line 1038, resources/scss/screen.scss */
+.rounded-choice-box.disabled:hover, .rounded-choice-box.disabled:focus {
+  color: #124086 !important;
   background-color: #E9F1FC !important;
+  outline: none !important;
 }
 
-/* line 1037, resources/scss/screen.scss */
+/* line 1046, resources/scss/screen.scss */
+.select-styled:hover, .select-styled:focus {
+  outline: none !important;
+}
+
+/* line 1047, resources/scss/screen.scss */
+.select-styled:hover a, .select-styled:focus a {
+  color: #0c2b59 !important;
+  font-weight: 600;
+}
+
+/* line 1052, resources/scss/screen.scss */
+.select-styled:hover.disabled, .select-styled:focus.disabled {
+  color: #a4c3f3 !important;
+  outline: none !important;
+}
+
+/* line 1060, resources/scss/screen.scss */
 .rounded-info-box {
   -webkit-border-radius: 5px 5px;
   -moz-border-radius: 5px / 5px;
@@ -14221,13 +14246,13 @@ h6 {
 }
 
 @media screen and (max-width: 900px) {
-  /* line 1037, resources/scss/screen.scss */
+  /* line 1060, resources/scss/screen.scss */
   .rounded-info-box {
     min-height: 105px !important;
   }
 }
 
-/* line 1048, resources/scss/screen.scss */
+/* line 1071, resources/scss/screen.scss */
 .rounded-filters-box {
   -webkit-border-radius: 5px 5px;
   -moz-border-radius: 5px / 5px;
@@ -14253,34 +14278,39 @@ h6 {
 }
 
 @media screen and (max-width: 900px) {
-  /* line 1048, resources/scss/screen.scss */
+  /* line 1071, resources/scss/screen.scss */
   .rounded-filters-box {
     min-height: 1px !important;
   }
 }
 
+/* line 1086, resources/scss/screen.scss */
+.rounded-filters-box:hover, .rounded-filters-box:focus {
+  outline: none !important;
+}
+
 @media screen and (max-width: 900px) {
-  /* line 1063, resources/scss/screen.scss */
+  /* line 1090, resources/scss/screen.scss */
   .rounded-filters-box #station-info {
     min-height: 100px !important;
   }
 }
 
-/* line 1070, resources/scss/screen.scss */
+/* line 1097, resources/scss/screen.scss */
 .rounded-box-secondary {
   -webkit-border-radius: 5px 5px;
   -moz-border-radius: 5px / 5px;
   border-radius: 5px / 5px;
 }
 
-/* line 1074, resources/scss/screen.scss */
+/* line 1101, resources/scss/screen.scss */
 .rounded-box-secondary {
   -webkit-border-radius: 5px 5px;
   -moz-border-radius: 5px / 5px;
   border-radius: 5px / 5px;
 }
 
-/* line 1078, resources/scss/screen.scss */
+/* line 1105, resources/scss/screen.scss */
 .rounded-box {
   -webkit-border-radius: 5px;
   -moz-border-radius: 5px;
@@ -14289,35 +14319,35 @@ h6 {
   border-radius: 5px;
 }
 
-/* line 1082, resources/scss/screen.scss */
+/* line 1109, resources/scss/screen.scss */
 .rounded-box-top-left {
   -moz-border-radius-topleft: 5px;
   -webkit-border-top-left-radius: 5px;
   border-top-left-radius: 5px;
 }
 
-/* line 1086, resources/scss/screen.scss */
+/* line 1113, resources/scss/screen.scss */
 .rounded-box-top-right {
   -moz-border-radius-topright: 5px;
   -webkit-border-top-right-radius: 5px;
   border-top-right-radius: 5px;
 }
 
-/* line 1090, resources/scss/screen.scss */
+/* line 1117, resources/scss/screen.scss */
 .rounded-box-bottom-left {
   -moz-border-radius-bottomleft: 5px;
   -webkit-border-bottom-left-radius: 5px;
   border-bottom-left-radius: 5px;
 }
 
-/* line 1094, resources/scss/screen.scss */
+/* line 1121, resources/scss/screen.scss */
 .rounded-box-bottom-right {
   -moz-border-radius-bottomright: 5px;
   -webkit-border-bottom-right-radius: 5px;
   border-bottom-right-radius: 5px;
 }
 
-/* line 1098, resources/scss/screen.scss */
+/* line 1125, resources/scss/screen.scss */
 .rounded-box-top {
   -moz-border-radius-topleft: 5px;
   -webkit-border-top-left-radius: 5px;
@@ -14327,7 +14357,7 @@ h6 {
   border-top-right-radius: 5px;
 }
 
-/* line 1102, resources/scss/screen.scss */
+/* line 1129, resources/scss/screen.scss */
 .rounded-box-bottom {
   -moz-border-radius-bottomleft: 5px;
   -webkit-border-bottom-left-radius: 5px;
@@ -14337,7 +14367,7 @@ h6 {
   border-bottom-right-radius: 5px;
 }
 
-/* line 1106, resources/scss/screen.scss */
+/* line 1133, resources/scss/screen.scss */
 .rounded-box-left {
   -moz-border-radius-topleft: 5px;
   -webkit-border-top-left-radius: 5px;
@@ -14347,7 +14377,7 @@ h6 {
   border-bottom-left-radius: 5px;
 }
 
-/* line 1110, resources/scss/screen.scss */
+/* line 1137, resources/scss/screen.scss */
 .rounded-box-right {
   -moz-border-radius-topright: 5px;
   -webkit-border-top-right-radius: 5px;
@@ -14357,14 +14387,14 @@ h6 {
   border-bottom-right-radius: 5px;
 }
 
-/* line 1119, resources/scss/screen.scss */
+/* line 1146, resources/scss/screen.scss */
 .circle-box-secondary {
   -webkit-border-radius: 25px 25px;
   -moz-border-radius: 25px / 25px;
   border-radius: 25px / 25px;
 }
 
-/* line 1123, resources/scss/screen.scss */
+/* line 1150, resources/scss/screen.scss */
 .rounded-box {
   -webkit-border-radius: 25px;
   -moz-border-radius: 25px;
@@ -14373,35 +14403,35 @@ h6 {
   border-radius: 25px;
 }
 
-/* line 1127, resources/scss/screen.scss */
+/* line 1154, resources/scss/screen.scss */
 .circle-box-top-left {
   -moz-border-radius-topleft: 25px;
   -webkit-border-top-left-radius: 25px;
   border-top-left-radius: 25px;
 }
 
-/* line 1131, resources/scss/screen.scss */
+/* line 1158, resources/scss/screen.scss */
 .circle-box-top-right {
   -moz-border-radius-topright: 25px;
   -webkit-border-top-right-radius: 25px;
   border-top-right-radius: 25px;
 }
 
-/* line 1135, resources/scss/screen.scss */
+/* line 1162, resources/scss/screen.scss */
 .circle-box-bottom-left {
   -moz-border-radius-bottomleft: 25px;
   -webkit-border-bottom-left-radius: 25px;
   border-bottom-left-radius: 25px;
 }
 
-/* line 1139, resources/scss/screen.scss */
+/* line 1166, resources/scss/screen.scss */
 .circle-box-bottom-right {
   -moz-border-radius-bottomright: 25px;
   -webkit-border-bottom-right-radius: 25px;
   border-bottom-right-radius: 25px;
 }
 
-/* line 1143, resources/scss/screen.scss */
+/* line 1170, resources/scss/screen.scss */
 .circle-box-top {
   -moz-border-radius-topleft: 25px;
   -webkit-border-top-left-radius: 25px;
@@ -14411,7 +14441,7 @@ h6 {
   border-top-right-radius: 25px;
 }
 
-/* line 1147, resources/scss/screen.scss */
+/* line 1174, resources/scss/screen.scss */
 .circle-box-bottom {
   -moz-border-radius-bottomleft: 25px;
   -webkit-border-bottom-left-radius: 25px;
@@ -14421,7 +14451,7 @@ h6 {
   border-bottom-right-radius: 25px;
 }
 
-/* line 1151, resources/scss/screen.scss */
+/* line 1178, resources/scss/screen.scss */
 .circle-box-left {
   -moz-border-radius-topleft: 25px;
   -webkit-border-top-left-radius: 25px;
@@ -14431,7 +14461,7 @@ h6 {
   border-bottom-left-radius: 25px;
 }
 
-/* line 1155, resources/scss/screen.scss */
+/* line 1182, resources/scss/screen.scss */
 .circle-box-right {
   -moz-border-radius-topright: 25px;
   -webkit-border-top-right-radius: 25px;
@@ -14441,53 +14471,53 @@ h6 {
   border-bottom-right-radius: 25px;
 }
 
-/* line 1159, resources/scss/screen.scss */
+/* line 1186, resources/scss/screen.scss */
 .icon-info-box {
   font-size: 24px !important;
   padding-right: 12px !important;
   vertical-align: middle;
 }
 
-/* line 1165, resources/scss/screen.scss */
+/* line 1192, resources/scss/screen.scss */
 .text-info-box {
   font-size: 18px !important;
   font-weight: 700 !important;
 }
 
-/* line 1170, resources/scss/screen.scss */
+/* line 1197, resources/scss/screen.scss */
 .text-info-box-secondary {
   font-size: 18px !important;
   font-weight: 500 !important;
 }
 
-/* line 1175, resources/scss/screen.scss */
+/* line 1202, resources/scss/screen.scss */
 #cards-search-input {
   width: 80% !important;
   text-indent: 6px;
 }
 
 @media screen and (max-width: 1100px) {
-  /* line 1175, resources/scss/screen.scss */
+  /* line 1202, resources/scss/screen.scss */
   #cards-search-input {
     width: 75% !important;
   }
 }
 
 @media screen and (max-width: 900px) {
-  /* line 1175, resources/scss/screen.scss */
+  /* line 1202, resources/scss/screen.scss */
   #cards-search-input {
     width: 90% !important;
   }
 }
 
 @media screen and (max-width: 768px) {
-  /* line 1175, resources/scss/screen.scss */
+  /* line 1202, resources/scss/screen.scss */
   #cards-search-input {
     width: 75% !important;
   }
 }
 
-/* line 1191, resources/scss/screen.scss */
+/* line 1218, resources/scss/screen.scss */
 .search-default {
   width: 24px !important;
   height: 24px !important;
@@ -14502,17 +14532,17 @@ h6 {
   margin-left: 6px;
 }
 
-/* line 1203, resources/scss/screen.scss */
+/* line 1230, resources/scss/screen.scss */
 .search-default.fa-times-circle {
   cursor: pointer;
 }
 
-/* line 1206, resources/scss/screen.scss */
+/* line 1233, resources/scss/screen.scss */
 .search-default.fa-times-circle:hover {
   background-color: #d2ddf4 !important;
 }
 
-/* line 1212, resources/scss/screen.scss */
+/* line 1239, resources/scss/screen.scss */
 #clear-location-wrapper {
   cursor: pointer;
   width: 36px;
@@ -14531,13 +14561,13 @@ h6 {
 }
 
 @media screen and (max-width: 900px) {
-  /* line 1212, resources/scss/screen.scss */
+  /* line 1239, resources/scss/screen.scss */
   #clear-location-wrapper {
     height: 47px;
   }
 }
 
-/* line 1227, resources/scss/screen.scss */
+/* line 1254, resources/scss/screen.scss */
 #clear-location-wrapper #clear-location {
   width: 100%;
   height: 100%;
@@ -14546,32 +14576,32 @@ h6 {
 }
 
 @media screen and (max-width: 900px) {
-  /* line 1227, resources/scss/screen.scss */
+  /* line 1254, resources/scss/screen.scss */
   #clear-location-wrapper #clear-location {
     margin-top: 16px;
   }
 }
 
-/* line 1238, resources/scss/screen.scss */
+/* line 1265, resources/scss/screen.scss */
 #clear-location-wrapper:hover {
   background-color: #d3e3f9;
 }
 
-/* line 1243, resources/scss/screen.scss */
+/* line 1270, resources/scss/screen.scss */
 input.input-inner-default {
   background-color: #E9F1FC;
   color: #124086;
   font: 800 18px Roboto, Helvetica, "Helvetica Neue", Arial, sans-serif !important;
 }
 
-/* line 1249, resources/scss/screen.scss */
+/* line 1276, resources/scss/screen.scss */
 input.input-inner-default::placeholder {
   background-color: #E9F1FC;
   color: #124086;
   font: 800 18px Roboto, Helvetica, "Helvetica Neue", Arial, sans-serif !important;
 }
 
-/* line 1255, resources/scss/screen.scss */
+/* line 1282, resources/scss/screen.scss */
 input.input-inner-default:focus::placeholder {
   color: rgba(18, 64, 134, 0.5);
   font: 800 18px Roboto, Helvetica, "Helvetica Neue", Arial, sans-serif !important;
@@ -14581,25 +14611,25 @@ input.input-inner-default:focus::placeholder {
   transition: 0.25s;
 }
 
-/* line 1264, resources/scss/screen.scss */
+/* line 1291, resources/scss/screen.scss */
 input.input-inner-default:focus {
   outline: none !important;
 }
 
-/* line 1268, resources/scss/screen.scss */
+/* line 1295, resources/scss/screen.scss */
 #search-row {
   min-height: 50px;
 }
 
 @media screen and (max-width: 900px) {
-  /* line 1268, resources/scss/screen.scss */
+  /* line 1295, resources/scss/screen.scss */
   #search-row {
     min-height: 50px;
     display: block !important;
   }
 }
 
-/* line 1280, resources/scss/screen.scss */
+/* line 1307, resources/scss/screen.scss */
 #high-tide-flooding-viewport #search-row,
 #historical-thresholds-viewport #search-row,
 #historical-weather-data-viewport #search-row {
@@ -14607,7 +14637,7 @@ input.input-inner-default:focus {
 }
 
 @media screen and (max-width: 900px) {
-  /* line 1280, resources/scss/screen.scss */
+  /* line 1307, resources/scss/screen.scss */
   #high-tide-flooding-viewport #search-row,
   #historical-thresholds-viewport #search-row,
   #historical-weather-data-viewport #search-row {
@@ -14616,20 +14646,20 @@ input.input-inner-default:focus {
   }
 }
 
-/* line 1289, resources/scss/screen.scss */
+/* line 1316, resources/scss/screen.scss */
 #info-row, #search-row, #chart-row, #map-row {
   width: 100% !important;
   align-self: center !important;
 }
 
 @media screen and (max-width: 768px) {
-  /* line 1289, resources/scss/screen.scss */
+  /* line 1316, resources/scss/screen.scss */
   #info-row, #search-row, #chart-row, #map-row {
     width: 90% !important;
   }
 }
 
-/* line 1299, resources/scss/screen.scss */
+/* line 1326, resources/scss/screen.scss */
 #map-for-print-right, #map-for-print-left {
   position: absolute;
   left: 0px;
@@ -14639,7 +14669,7 @@ input.input-inner-default:focus {
   z-index: 0;
 }
 
-/* line 1306, resources/scss/screen.scss */
+/* line 1333, resources/scss/screen.scss */
 #map-for-print-right img, #map-for-print-left img {
   width: 100%;
   height: auto;
@@ -14648,12 +14678,12 @@ input.input-inner-default:focus {
   left: 0px;
 }
 
-/* line 1313, resources/scss/screen.scss */
+/* line 1340, resources/scss/screen.scss */
 #map-for-print-right .attribution, #map-for-print-left .attribution {
   top: calc(100% - 17px);
 }
 
-/* line 1317, resources/scss/screen.scss */
+/* line 1344, resources/scss/screen.scss */
 #map-for-print-right .botttom-controls, #map-for-print-left .botttom-controls {
   max-height: 54px;
   height: 54px;
@@ -14662,7 +14692,7 @@ input.input-inner-default:focus {
   left: 24px;
 }
 
-/* line 1325, resources/scss/screen.scss */
+/* line 1352, resources/scss/screen.scss */
 #map-for-print-right .title, #map-for-print-left .title {
   background-color: rgba(233, 241, 252, 0.75) !important;
   max-height: 42px;
@@ -14679,7 +14709,7 @@ input.input-inner-default:focus {
   border-top-right-radius: 5px;
 }
 
-/* line 1337, resources/scss/screen.scss */
+/* line 1364, resources/scss/screen.scss */
 #map-for-print-right .legend, #map-for-print-left .legend {
   max-height: 250px;
   height: 250px;
@@ -14688,12 +14718,12 @@ input.input-inner-default:focus {
   left: 24px;
 }
 
-/* line 1349, resources/scss/screen.scss */
+/* line 1376, resources/scss/screen.scss */
 .d-xs-only {
   display: none;
 }
 
-/* line 1355, resources/scss/screen.scss */
+/* line 1382, resources/scss/screen.scss */
 .button {
   position: relative;
   display: inline-block;
@@ -14706,7 +14736,7 @@ input.input-inner-default:focus {
   transition: 0.25s;
 }
 
-/* line 1363, resources/scss/screen.scss */
+/* line 1390, resources/scss/screen.scss */
 .button:before, .button:after {
   content: '';
   display: block;
@@ -14715,37 +14745,37 @@ input.input-inner-default:focus {
   top: 50%;
 }
 
-/* line 1374, resources/scss/screen.scss */
+/* line 1401, resources/scss/screen.scss */
 .button.display-blocks {
   display: block;
 }
 
-/* line 1380, resources/scss/screen.scss */
+/* line 1407, resources/scss/screen.scss */
 .button .icon {
   margin: -2px 10px 0 0;
 }
 
-/* line 1385, resources/scss/screen.scss */
+/* line 1412, resources/scss/screen.scss */
 .button.plus:before {
   width: 14px;
   height: 4px;
   margin-top: -2px;
 }
 
-/* line 1391, resources/scss/screen.scss */
+/* line 1418, resources/scss/screen.scss */
 .button.plus:after {
   width: 4px;
   height: 14px;
   margin: -7px 5px 0 0;
 }
 
-/* line 1399, resources/scss/screen.scss */
+/* line 1426, resources/scss/screen.scss */
 .button.arrow-right:before, .button.arrow-right:after {
   width: 10px;
   height: 4px;
 }
 
-/* line 1405, resources/scss/screen.scss */
+/* line 1432, resources/scss/screen.scss */
 .button.arrow-right:before {
   -webkit-transform: rotate(-45deg);
   -moz-transform: rotate(-45deg);
@@ -14755,7 +14785,7 @@ input.input-inner-default:focus {
   margin-top: 1px;
 }
 
-/* line 1410, resources/scss/screen.scss */
+/* line 1437, resources/scss/screen.scss */
 .button.arrow-right:after {
   -webkit-transform: rotate(45deg);
   -moz-transform: rotate(45deg);
@@ -14765,7 +14795,7 @@ input.input-inner-default:focus {
   margin-top: -4px;
 }
 
-/* line 1417, resources/scss/screen.scss */
+/* line 1444, resources/scss/screen.scss */
 .button.close:before, .button.close:after {
   right: 6px;
   width: 24px;
@@ -14773,7 +14803,7 @@ input.input-inner-default:focus {
   margin-top: -4px;
 }
 
-/* line 1425, resources/scss/screen.scss */
+/* line 1452, resources/scss/screen.scss */
 .button.close:before {
   -webkit-transform: rotate(-45deg);
   -moz-transform: rotate(-45deg);
@@ -14782,7 +14812,7 @@ input.input-inner-default:focus {
   transform: rotate(-45deg);
 }
 
-/* line 1429, resources/scss/screen.scss */
+/* line 1456, resources/scss/screen.scss */
 .button.close:after {
   -webkit-transform: rotate(45deg);
   -moz-transform: rotate(45deg);
@@ -14791,113 +14821,113 @@ input.input-inner-default:focus {
   transform: rotate(45deg);
 }
 
-/* line 1436, resources/scss/screen.scss */
+/* line 1463, resources/scss/screen.scss */
 .button.color-white {
   color: #ffffff;
 }
 
-/* line 1439, resources/scss/screen.scss */
+/* line 1466, resources/scss/screen.scss */
 .button.color-white:before, .button.color-white:after {
   background: #ffffff;
 }
 
-/* line 1445, resources/scss/screen.scss */
+/* line 1472, resources/scss/screen.scss */
 .button.color-orange {
   color: #f5442d !important;
 }
 
-/* line 1448, resources/scss/screen.scss */
+/* line 1475, resources/scss/screen.scss */
 .button.color-orange:before, .button.color-orange:after {
   background: #f5442d !important;
 }
 
-/* line 1454, resources/scss/screen.scss */
+/* line 1481, resources/scss/screen.scss */
 .button.color-orange.arrow-right:before {
   background: #f5442d !important;
 }
 
-/* line 1458, resources/scss/screen.scss */
+/* line 1485, resources/scss/screen.scss */
 .button.color-orange.arrow-right:after {
   background: #f5442d !important;
 }
 
-/* line 1466, resources/scss/screen.scss */
+/* line 1493, resources/scss/screen.scss */
 .button.border-white {
   border-color: #ffffff;
   color: #ffffff;
 }
 
-/* line 1470, resources/scss/screen.scss */
+/* line 1497, resources/scss/screen.scss */
 .button.border-white:before, .button.border-white:after {
   background: #ffffff;
 }
 
-/* line 1476, resources/scss/screen.scss */
+/* line 1503, resources/scss/screen.scss */
 .button.border-trans {
   border-color: transparent;
 }
 
-/* line 1480, resources/scss/screen.scss */
+/* line 1507, resources/scss/screen.scss */
 .button.border-none {
   border: none;
 }
 
-/* line 1486, resources/scss/screen.scss */
+/* line 1513, resources/scss/screen.scss */
 .button.bg-trans {
   background: transparent;
 }
 
-/* line 1490, resources/scss/screen.scss */
+/* line 1517, resources/scss/screen.scss */
 .button.bg-white {
   background: white;
 }
 
-/* line 1499, resources/scss/screen.scss */
+/* line 1526, resources/scss/screen.scss */
 .button.hover-bg-white:hover {
   background: #ffffff;
   color: #0058cf;
   mix-blend-mode: screen;
 }
 
-/* line 1504, resources/scss/screen.scss */
+/* line 1531, resources/scss/screen.scss */
 .button.hover-bg-white:hover:before, .button.hover-bg-white:hover:after {
   background: #000000;
 }
 
-/* line 1513, resources/scss/screen.scss */
+/* line 1540, resources/scss/screen.scss */
 .button.blend-screen {
   mix-blend-mode: screen;
 }
 
-/* line 1516, resources/scss/screen.scss */
+/* line 1543, resources/scss/screen.scss */
 .button.blend-screen:before, .button.blend-screen:after {
   background: #000000;
 }
 
-/* line 1521, resources/scss/screen.scss */
+/* line 1548, resources/scss/screen.scss */
 .button.blend-screen:hover {
   color: #000000;
 }
 
-/* line 1528, resources/scss/screen.scss */
+/* line 1555, resources/scss/screen.scss */
 .icon {
   display: inline-block;
   vertical-align: middle;
 }
 
-/* line 1534, resources/scss/screen.scss */
+/* line 1561, resources/scss/screen.scss */
 .stuck {
   position: fixed;
   top: 0;
 }
 
-/* line 1539, resources/scss/screen.scss */
+/* line 1566, resources/scss/screen.scss */
 .varriable-option-item {
   width: 100%;
   height: 44px;
 }
 
-/* line 1544, resources/scss/screen.scss */
+/* line 1571, resources/scss/screen.scss */
 .varriable-option-tooltip {
   position: relative;
   padding-top: 12px;
@@ -14909,26 +14939,26 @@ input.input-inner-default:focus {
 }
 
 @media screen and (max-width: 1400px) and (min-width: 900px) {
-  /* line 1544, resources/scss/screen.scss */
+  /* line 1571, resources/scss/screen.scss */
   .varriable-option-tooltip {
     width: 20%;
   }
 }
 
 @media screen and (max-width: 599px) {
-  /* line 1544, resources/scss/screen.scss */
+  /* line 1571, resources/scss/screen.scss */
   .varriable-option-tooltip {
     width: 20%;
   }
 }
 
-/* line 1562, resources/scss/screen.scss */
+/* line 1589, resources/scss/screen.scss */
 .varriable-option-tooltip:hover {
   color: #124086;
   background: #d3e3f9;
 }
 
-/* line 1568, resources/scss/screen.scss */
+/* line 1595, resources/scss/screen.scss */
 .tooltip {
   position: relative;
   display: block;
@@ -14943,7 +14973,7 @@ input.input-inner-default:focus {
   box-shadow: 0 0 8px rgba(0, 88, 207, 0.25);
 }
 
-/* line 1579, resources/scss/screen.scss */
+/* line 1606, resources/scss/screen.scss */
 .tooltip .tooltip-arrow::before {
   position: absolute;
   left: calc(100% + 12px);
@@ -14965,7 +14995,7 @@ input.input-inner-default:focus {
   clear: both;
 }
 
-/* line 1594, resources/scss/screen.scss */
+/* line 1621, resources/scss/screen.scss */
 .chart-legend .legend-item {
   position: relative;
   float: left;
@@ -14983,12 +15013,12 @@ input.input-inner-default:focus {
   transition: 0.25s;
 }
 
-/* line 1607, resources/scss/screen.scss */
+/* line 1634, resources/scss/screen.scss */
 .chart-legend .legend-item:hover {
   border: 1px solid #eeeeee;
 }
 
-/* line 1611, resources/scss/screen.scss */
+/* line 1638, resources/scss/screen.scss */
 .chart-legend .legend-item:after {
   content: "\e91f";
   display: block;
@@ -15015,64 +15045,64 @@ input.input-inner-default:focus {
   transition: 0.25s;
 }
 
-/* line 1630, resources/scss/screen.scss */
+/* line 1657, resources/scss/screen.scss */
 .chart-legend .legend-item.selected {
   border: 1px solid #bbbbbb;
 }
 
-/* line 1635, resources/scss/screen.scss */
+/* line 1662, resources/scss/screen.scss */
 .chart-legend .legend-item.selected:after {
   opacity: 1;
 }
 
-/* line 1641, resources/scss/screen.scss */
+/* line 1668, resources/scss/screen.scss */
 .chart-legend .legend-item-block {
   height: 20px;
 }
 
-/* line 1645, resources/scss/screen.scss */
+/* line 1672, resources/scss/screen.scss */
 .chart-legend .legend-item-line {
   height: 5px;
 }
 
-/* line 1650, resources/scss/screen.scss */
+/* line 1677, resources/scss/screen.scss */
 .chart-legend .legend-item-block#rcp45-block, .chart-legend .legend-item-block#preciprcp45-block, .chart-legend .legend-item-block #derivercp45-block {
   background: #99bcec;
 }
 
-/* line 1656, resources/scss/screen.scss */
+/* line 1683, resources/scss/screen.scss */
 .chart-legend .legend-item-block#rcp85-block, .chart-legend .legend-item-block#preciprcp85-block, .chart-legend .legend-item-block#derivercp85-block {
   background: #fbb4ab;
 }
 
-/* line 1662, resources/scss/screen.scss */
+/* line 1689, resources/scss/screen.scss */
 .chart-legend .legend-item-block#historical-block, .chart-legend .legend-item-block#preciphistorical-block, .chart-legend .legend-item-block#derivehistorical-block {
   background: #d6d6d6;
 }
 
-/* line 1670, resources/scss/screen.scss */
+/* line 1697, resources/scss/screen.scss */
 .chart-legend .legend-item-line#over-baseline-block, .chart-legend .legend-item-line#precipover-baseline-block, .chart-legend .legend-item-line#deriveover-baseline-block {
   background: #cd6760;
 }
 
-/* line 1676, resources/scss/screen.scss */
+/* line 1703, resources/scss/screen.scss */
 .chart-legend .legend-item-line#under-baseline-block, .chart-legend .legend-item-line#precipunder-baseline-block, .chart-legend .legend-item-line#deriveunder-baseline-block {
   margin-top: 20px;
   background: #6194c8;
 }
 
-/* line 1683, resources/scss/screen.scss */
+/* line 1710, resources/scss/screen.scss */
 .chart-legend .legend-item-line#rcp45-line, .chart-legend .legend-item-line#preciprcp45-line, .chart-legend .legend-item-line#derivercp45-line {
   margin-top: 20px;
   background: #0058cf;
 }
 
-/* line 1690, resources/scss/screen.scss */
+/* line 1717, resources/scss/screen.scss */
 .chart-legend .legend-item-line#rcp85-line, .chart-legend .legend-item-line#preciprcp85-line, .chart-legend .legend-item-line#derivercp85-line {
   background: #f5442d;
 }
 
-/* line 1699, resources/scss/screen.scss */
+/* line 1726, resources/scss/screen.scss */
 .download-panel {
   display: none;
   position: fixed;
@@ -15087,7 +15117,7 @@ input.input-inner-default:focus {
   opacity: 0.95;
 }
 
-/* line 1714, resources/scss/screen.scss */
+/* line 1741, resources/scss/screen.scss */
 .download-panel .download-inner {
   margin: auto;
   position: absolute;
@@ -15103,22 +15133,22 @@ input.input-inner-default:focus {
   padding: 30px;
 }
 
-/* line 1724, resources/scss/screen.scss */
+/* line 1751, resources/scss/screen.scss */
 .download-panel .download-inner p {
   margin: 0 0 20px 0;
 }
 
-/* line 1728, resources/scss/screen.scss */
+/* line 1755, resources/scss/screen.scss */
 .download-panel .download-inner li {
   margin: 0 0 10px 0;
 }
 
-/* line 1732, resources/scss/screen.scss */
+/* line 1759, resources/scss/screen.scss */
 .download-panel .download-inner a {
   color: #ffffff;
 }
 
-/* line 1737, resources/scss/screen.scss */
+/* line 1764, resources/scss/screen.scss */
 .download-panel #download-dismiss-button, .download-panel .download-dismiss-button {
   display: block;
   position: absolute;
@@ -16399,7 +16429,7 @@ body.detail-open #nav-overlay {
   }
 }
 
-/* line 1756, resources/scss/screen.scss */
+/* line 1783, resources/scss/screen.scss */
 #desktop-warning {
   display: none;
 }
@@ -16925,60 +16955,79 @@ input.input-inner:focus {
   color: #E9F1FC !important;
 }
 
-/* line 112, resources/scss/pages/_local-climate-charts.scss */
+/* line 109, resources/scss/pages/_local-climate-charts.scss */
 #varriable-select-wrapper .varriable-select .select-styled a {
   color: #E9F1FC !important;
 }
 
-/* line 116, resources/scss/pages/_local-climate-charts.scss */
+/* line 113, resources/scss/pages/_local-climate-charts.scss */
 #varriable-select-wrapper .varriable-select .select-styled.disabled {
   color: rgba(233, 241, 252, 0.5) !important;
 }
 
-/* line 120, resources/scss/pages/_local-climate-charts.scss */
+/* line 117, resources/scss/pages/_local-climate-charts.scss */
 #varriable-select-wrapper .varriable-select .select-styled:after {
   background-color: #E9F1FC !important;
   color: #124086 !important;
 }
 
-/* line 126, resources/scss/pages/_local-climate-charts.scss */
+/* line 122, resources/scss/pages/_local-climate-charts.scss */
+#varriable-select-wrapper .varriable-select .select-styled:hover, #varriable-select-wrapper .varriable-select .select-styled:focus {
+  outline: none !important;
+  color: white !important;
+  font-weight: 600;
+}
+
+/* line 127, resources/scss/pages/_local-climate-charts.scss */
+#varriable-select-wrapper .varriable-select .select-styled:hover.disabled, #varriable-select-wrapper .varriable-select .select-styled:focus.disabled {
+  color: rgba(233, 241, 252, 0.5) !important;
+  outline: none !important;
+}
+
+/* line 134, resources/scss/pages/_local-climate-charts.scss */
 #varriable-select-wrapper .varriable-select .select-options {
   background-color: #124086 !important;
   color: #E9F1FC !important;
 }
 
-/* line 130, resources/scss/pages/_local-climate-charts.scss */
+/* line 138, resources/scss/pages/_local-climate-charts.scss */
 #varriable-select-wrapper .varriable-select .select-options a {
   color: #E9F1FC !important;
 }
 
-/* line 133, resources/scss/pages/_local-climate-charts.scss */
+/* line 141, resources/scss/pages/_local-climate-charts.scss */
 #varriable-select-wrapper .varriable-select .select-options .default-select-option-disabled {
   color: rgba(233, 241, 252, 0.5) !important;
 }
 
-/* line 137, resources/scss/pages/_local-climate-charts.scss */
+/* line 145, resources/scss/pages/_local-climate-charts.scss */
 #varriable-select-wrapper .varriable-select .select-options li {
   border-top: 1px solid #124086;
 }
 
-/* line 139, resources/scss/pages/_local-climate-charts.scss */
+/* line 147, resources/scss/pages/_local-climate-charts.scss */
 #varriable-select-wrapper .varriable-select .select-options li a {
   color: #E9F1FC !important;
 }
 
-/* line 142, resources/scss/pages/_local-climate-charts.scss */
-#varriable-select-wrapper .varriable-select .select-options li:hover {
+/* line 150, resources/scss/pages/_local-climate-charts.scss */
+#varriable-select-wrapper .varriable-select .select-options li:hover, #varriable-select-wrapper .varriable-select .select-options li:focus {
   color: #E9F1FC !important;
   background: #397ee5 !important;
 }
 
-/* line 152, resources/scss/pages/_local-climate-charts.scss */
+/* line 157, resources/scss/pages/_local-climate-charts.scss */
+#varriable-select-wrapper .varriable-select .select-options span:hover, #varriable-select-wrapper .varriable-select .select-options span:focus {
+  color: #E9F1FC !important;
+  background: #397ee5 !important;
+}
+
+/* line 167, resources/scss/pages/_local-climate-charts.scss */
 #stations-select, #downnloads-select, #varriable-select {
   display: none !important;
 }
 
-/* line 156, resources/scss/pages/_local-climate-charts.scss */
+/* line 171, resources/scss/pages/_local-climate-charts.scss */
 #downloads-select-wrapper, #stations-select-wrapper {
   background-color: #E9F1FC;
   color: #124086;
@@ -16986,13 +17035,13 @@ input.input-inner:focus {
 }
 
 @media screen and (max-width: 900px) {
-  /* line 156, resources/scss/pages/_local-climate-charts.scss */
+  /* line 171, resources/scss/pages/_local-climate-charts.scss */
   #downloads-select-wrapper, #stations-select-wrapper {
     display: none !important;
   }
 }
 
-/* line 166, resources/scss/pages/_local-climate-charts.scss */
+/* line 181, resources/scss/pages/_local-climate-charts.scss */
 #chartmap-select-wrapper, #time-select-wrapper, #presentation-select-wrapper, #tidalzoom-select-wrapper {
   background-color: #E9F1FC;
   color: #124086;
@@ -17003,7 +17052,7 @@ input.input-inner:focus {
 }
 
 @media screen and (max-width: 900px) {
-  /* line 166, resources/scss/pages/_local-climate-charts.scss */
+  /* line 181, resources/scss/pages/_local-climate-charts.scss */
   #chartmap-select-wrapper, #time-select-wrapper, #presentation-select-wrapper, #tidalzoom-select-wrapper {
     margin-left: 0px !important;
     margin-right: 0px !important;
@@ -17012,26 +17061,26 @@ input.input-inner:focus {
     display: inherit !important;
     width: 100% !important;
   }
-  /* line 180, resources/scss/pages/_local-climate-charts.scss */
+  /* line 195, resources/scss/pages/_local-climate-charts.scss */
   #chartmap-select-wrapper .select-options, #time-select-wrapper .select-options, #presentation-select-wrapper .select-options, #tidalzoom-select-wrapper .select-options {
     margin-top: 5px !important;
   }
 }
 
-/* line 187, resources/scss/pages/_local-climate-charts.scss */
+/* line 202, resources/scss/pages/_local-climate-charts.scss */
 #filters-row .select-options {
   margin-top: 0px !important;
 }
 
 @media screen and (max-width: 900px) {
-  /* line 192, resources/scss/pages/_local-climate-charts.scss */
+  /* line 207, resources/scss/pages/_local-climate-charts.scss */
   #chartmap-wrapper, #time-wrapper, #presentation-wrapper, #tidalzoom-wrapper {
     display: none !important;
   }
 }
 
 @media screen and (max-width: 900px) {
-  /* line 198, resources/scss/pages/_local-climate-charts.scss */
+  /* line 213, resources/scss/pages/_local-climate-charts.scss */
   #varriable-select-wrapper, #chartmap-wrapper, #time-wrapper, #presentation-wrapper, #tidalzoom-wrapper {
     height: auto !important;
     width: 100% !important;
@@ -17040,28 +17089,28 @@ input.input-inner:focus {
   }
 }
 
-/* line 208, resources/scss/pages/_local-climate-charts.scss */
+/* line 223, resources/scss/pages/_local-climate-charts.scss */
 #monthly-select-wrapper #btn-chart {
   width: 100% !important;
   height: 30px !important;
 }
 
 @media screen and (max-width: 900px) {
-  /* line 207, resources/scss/pages/_local-climate-charts.scss */
+  /* line 222, resources/scss/pages/_local-climate-charts.scss */
   #monthly-select-wrapper {
     flex-flow: row wrap !important;
     height: auto !important;
     width: 100% !important;
     padding-bottom: 24px !important;
   }
-  /* line 219, resources/scss/pages/_local-climate-charts.scss */
+  /* line 234, resources/scss/pages/_local-climate-charts.scss */
   #monthly-select-wrapper #btn-chart {
     width: 100% !important;
     height: 48px !important;
     padding-top: 6px !important;
     padding-bottom: 6px !important;
   }
-  /* line 226, resources/scss/pages/_local-climate-charts.scss */
+  /* line 241, resources/scss/pages/_local-climate-charts.scss */
   #monthly-select-wrapper .circle-box-left {
     -moz-border-radius-topleft: 5px !important;
     -webkit-border-top-left-radius: 5px !important;
@@ -17076,7 +17125,7 @@ input.input-inner:focus {
     -webkit-border-bottom-right-radius: 0px !important;
     border-bottom-right-radius: 0px !important;
   }
-  /* line 231, resources/scss/pages/_local-climate-charts.scss */
+  /* line 246, resources/scss/pages/_local-climate-charts.scss */
   #monthly-select-wrapper .circle-box-middle {
     -moz-border-radius-topleft: 0px !important;
     -webkit-border-top-left-radius: 0px !important;
@@ -17091,12 +17140,12 @@ input.input-inner:focus {
     -webkit-border-bottom-right-radius: 0px !important;
     border-bottom-right-radius: 0px !important;
   }
-  /* line 236, resources/scss/pages/_local-climate-charts.scss */
+  /* line 251, resources/scss/pages/_local-climate-charts.scss */
   #monthly-select-wrapper .btn-default-selected.circle-box-left, #monthly-select-wrapper .btn-default-selected.circle-box-right {
     margin-right: 0px !important;
     margin-left: 0px !important;
   }
-  /* line 241, resources/scss/pages/_local-climate-charts.scss */
+  /* line 256, resources/scss/pages/_local-climate-charts.scss */
   #monthly-select-wrapper .circle-box-right {
     -moz-border-radius-topleft: 0px !important;
     -webkit-border-top-left-radius: 0px !important;
@@ -17113,25 +17162,25 @@ input.input-inner:focus {
   }
 }
 
-/* line 248, resources/scss/pages/_local-climate-charts.scss */
+/* line 263, resources/scss/pages/_local-climate-charts.scss */
 #slider-range {
   width: 90% !important;
   margin: auto !important;
 }
 
-/* line 253, resources/scss/pages/_local-climate-charts.scss */
+/* line 268, resources/scss/pages/_local-climate-charts.scss */
 .ui-slider-range {
   display: block !important;
   position: relative !important;
   height: 8px !important;
 }
 
-/* line 259, resources/scss/pages/_local-climate-charts.scss */
+/* line 274, resources/scss/pages/_local-climate-charts.scss */
 .noUi-horizontal {
   height: 8px !important;
 }
 
-/* line 263, resources/scss/pages/_local-climate-charts.scss */
+/* line 278, resources/scss/pages/_local-climate-charts.scss */
 .noUi-target {
   background: #347ae4 !important;
   border-radius: 8px !important;
@@ -17139,18 +17188,18 @@ input.input-inner:focus {
   box-shadow: unset !important;
 }
 
-/* line 270, resources/scss/pages/_local-climate-charts.scss */
+/* line 285, resources/scss/pages/_local-climate-charts.scss */
 .noUi-base {
   background: #347ae4 !important;
   border-radius: 18px !important;
 }
 
-/* line 275, resources/scss/pages/_local-climate-charts.scss */
+/* line 290, resources/scss/pages/_local-climate-charts.scss */
 .noUi-connect {
   background: #124086 !important;
 }
 
-/* line 279, resources/scss/pages/_local-climate-charts.scss */
+/* line 294, resources/scss/pages/_local-climate-charts.scss */
 .noUi-handle {
   cursor: pointer !important;
   background-color: #124086 !important;
@@ -17165,7 +17214,7 @@ input.input-inner:focus {
   top: -4px !important;
 }
 
-/* line 290, resources/scss/pages/_local-climate-charts.scss */
+/* line 305, resources/scss/pages/_local-climate-charts.scss */
 .noUi-handle:focus {
   outline: none !important;
   -webkit-box-shadow: 0px 0px 0px 8px rgba(18, 64, 134, 0.25) !important;
@@ -17173,7 +17222,7 @@ input.input-inner:focus {
   box-shadow: 0px 0px 0px 8px rgba(18, 64, 134, 0.25) !important;
 }
 
-/* line 295, resources/scss/pages/_local-climate-charts.scss */
+/* line 310, resources/scss/pages/_local-climate-charts.scss */
 .noUi-handle:hover {
   outline: none !important;
   -webkit-box-shadow: 0px 0px 0px 8px rgba(18, 64, 134, 0.25) !important;
@@ -17181,22 +17230,22 @@ input.input-inner:focus {
   box-shadow: 0px 0px 0px 8px rgba(18, 64, 134, 0.25) !important;
 }
 
-/* line 300, resources/scss/pages/_local-climate-charts.scss */
+/* line 315, resources/scss/pages/_local-climate-charts.scss */
 .noUi-handle:before, .noUi-handle:after {
   display: none !important;
 }
 
-/* line 305, resources/scss/pages/_local-climate-charts.scss */
+/* line 320, resources/scss/pages/_local-climate-charts.scss */
 #slider-value-high {
   margin-left: 12px !important;
 }
 
-/* line 309, resources/scss/pages/_local-climate-charts.scss */
+/* line 324, resources/scss/pages/_local-climate-charts.scss */
 #slider-value-low {
   margin-right: 12px !important;
 }
 
-/* line 313, resources/scss/pages/_local-climate-charts.scss */
+/* line 328, resources/scss/pages/_local-climate-charts.scss */
 #slider-value-low, #slider-value-mid, #slider-value-high {
   display: flex;
   font: 500 18px Roboto, Helvetica, "Helvetica Neue", Arial, sans-serif !important;
@@ -17206,7 +17255,7 @@ input.input-inner:focus {
   justify-content: center !important;
 }
 
-/* line 322, resources/scss/pages/_local-climate-charts.scss */
+/* line 337, resources/scss/pages/_local-climate-charts.scss */
 #legend-wrapper {
   padding-top: 12px !important;
   padding-bottom: 12px !important;
@@ -17214,13 +17263,13 @@ input.input-inner:focus {
   height: 30px !important;
 }
 
-/* line 328, resources/scss/pages/_local-climate-charts.scss */
+/* line 343, resources/scss/pages/_local-climate-charts.scss */
 #legend-wrapper #btn-chart {
   height: 30px !important;
 }
 
 @media screen and (max-width: 900px) {
-  /* line 322, resources/scss/pages/_local-climate-charts.scss */
+  /* line 337, resources/scss/pages/_local-climate-charts.scss */
   #legend-wrapper {
     height: auto !important;
     flex-wrap: wrap !important;
@@ -17228,12 +17277,12 @@ input.input-inner:focus {
     width: 100% !important;
     padding-bottom: 12px !important;
   }
-  /* line 338, resources/scss/pages/_local-climate-charts.scss */
+  /* line 353, resources/scss/pages/_local-climate-charts.scss */
   #legend-wrapper #btn-chart {
     height: 48px !important;
     width: 100% !important;
   }
-  /* line 342, resources/scss/pages/_local-climate-charts.scss */
+  /* line 357, resources/scss/pages/_local-climate-charts.scss */
   #legend-wrapper .circle-box-left {
     -moz-border-radius-topleft: 5px;
     -webkit-border-top-left-radius: 5px;
@@ -17248,7 +17297,7 @@ input.input-inner:focus {
     -webkit-border-bottom-right-radius: 0px;
     border-bottom-right-radius: 0px;
   }
-  /* line 346, resources/scss/pages/_local-climate-charts.scss */
+  /* line 361, resources/scss/pages/_local-climate-charts.scss */
   #legend-wrapper .circle-box-right {
     -moz-border-radius-topleft: 0px;
     -webkit-border-top-left-radius: 0px;
@@ -17265,21 +17314,21 @@ input.input-inner:focus {
   }
 }
 
-/* line 353, resources/scss/pages/_local-climate-charts.scss */
+/* line 368, resources/scss/pages/_local-climate-charts.scss */
 #chart-row {
   justify-content: space-evenly !important;
   height: 100% !important;
 }
 
 @media screen and (max-height: 800px) {
-  /* line 358, resources/scss/pages/_local-climate-charts.scss */
+  /* line 373, resources/scss/pages/_local-climate-charts.scss */
   #chart-row .chart-wrap {
     height: calc(100% - 75px) !important;
   }
 }
 
 @media screen and (max-height: 700px) {
-  /* line 364, resources/scss/pages/_local-climate-charts.scss */
+  /* line 379, resources/scss/pages/_local-climate-charts.scss */
   #chart-row .chart-wrap {
     height: calc(100% - 85px) !important;
     min-height: 125px !important;
@@ -17287,29 +17336,29 @@ input.input-inner:focus {
 }
 
 @media screen and (min-width: 901px) {
-  /* line 371, resources/scss/pages/_local-climate-charts.scss */
+  /* line 386, resources/scss/pages/_local-climate-charts.scss */
   #chart-row.closed-filters {
     height: calc(100% - 135px) !important;
   }
 }
 
-/* line 376, resources/scss/pages/_local-climate-charts.scss */
+/* line 391, resources/scss/pages/_local-climate-charts.scss */
 #chart-row.closed-filters #annual-slider-wrapper {
   height: 30px !important;
 }
 
-/* line 380, resources/scss/pages/_local-climate-charts.scss */
+/* line 395, resources/scss/pages/_local-climate-charts.scss */
 #chart-row.closed-filters #monthly-select-wrapper {
   height: 30px !important;
 }
 
-/* line 384, resources/scss/pages/_local-climate-charts.scss */
+/* line 399, resources/scss/pages/_local-climate-charts.scss */
 #chart-row.closed-filters #legend-wrapper {
   height: 30px !important;
 }
 
 @media screen and (max-width: 1240px) {
-  /* line 353, resources/scss/pages/_local-climate-charts.scss */
+  /* line 368, resources/scss/pages/_local-climate-charts.scss */
   #chart-row {
     justify-content: center !important;
     height: calc(100% - 75px) !important;
@@ -17318,42 +17367,42 @@ input.input-inner:focus {
 }
 
 @media screen and (max-width: 900px) {
-  /* line 353, resources/scss/pages/_local-climate-charts.scss */
+  /* line 368, resources/scss/pages/_local-climate-charts.scss */
   #chart-row {
     height: auto !important;
     order: 1;
   }
-  /* line 398, resources/scss/pages/_local-climate-charts.scss */
+  /* line 413, resources/scss/pages/_local-climate-charts.scss */
   #chart-row .chart-wrap {
     min-height: 350px !important;
     height: 350px !important;
   }
-  /* line 404, resources/scss/pages/_local-climate-charts.scss */
+  /* line 419, resources/scss/pages/_local-climate-charts.scss */
   #chart-row.closed-filters .chart-wrap {
     min-height: 350px !important;
     height: 350px !important;
   }
-  /* line 409, resources/scss/pages/_local-climate-charts.scss */
+  /* line 424, resources/scss/pages/_local-climate-charts.scss */
   #chart-row.closed-filters #annual-slider-wrapper {
     height: 30px !important;
   }
-  /* line 413, resources/scss/pages/_local-climate-charts.scss */
+  /* line 428, resources/scss/pages/_local-climate-charts.scss */
   #chart-row.closed-filters #monthly-select-wrapper {
     height: 30px !important;
   }
-  /* line 417, resources/scss/pages/_local-climate-charts.scss */
+  /* line 432, resources/scss/pages/_local-climate-charts.scss */
   #chart-row.closed-filters #legend-wrapper {
     height: 30px !important;
   }
 }
 
 @media screen and (max-width: 599px) {
-  /* line 353, resources/scss/pages/_local-climate-charts.scss */
+  /* line 368, resources/scss/pages/_local-climate-charts.scss */
   #chart-row {
     height: auto !important;
     order: 1;
   }
-  /* line 428, resources/scss/pages/_local-climate-charts.scss */
+  /* line 441, resources/scss/pages/_local-climate-charts.scss */
   #chart-row .chart-wrap {
     min-height: 250px !important;
     height: 250px !important;
@@ -17361,14 +17410,14 @@ input.input-inner:focus {
 }
 
 @media screen and (max-width: 900px) {
-  /* line 435, resources/scss/pages/_local-climate-charts.scss */
+  /* line 448, resources/scss/pages/_local-climate-charts.scss */
   #annual-slider-wrapper {
     height: 30px !important;
     order: 2;
   }
 }
 
-/* line 445, resources/scss/pages/_local-climate-charts.scss */
+/* line 458, resources/scss/pages/_local-climate-charts.scss */
 #filters-toggle {
   height: 36px;
   width: 36px;
@@ -17380,19 +17429,19 @@ input.input-inner:focus {
   border-radius: 36px;
 }
 
-/* line 452, resources/scss/pages/_local-climate-charts.scss */
+/* line 465, resources/scss/pages/_local-climate-charts.scss */
 #filters-toggle .select-styled::after {
   background-color: #dce8fa;
   content: '\f0d8';
 }
 
-/* line 457, resources/scss/pages/_local-climate-charts.scss */
+/* line 470, resources/scss/pages/_local-climate-charts.scss */
 #filters-toggle .select-styled.closed-filters::after {
   font-family: 'Font Awesome 5 Free';
   content: '\f0d7';
 }
 
-/* line 465, resources/scss/pages/_local-climate-charts.scss */
+/* line 478, resources/scss/pages/_local-climate-charts.scss */
 #filters-row {
   visibility: visible !important;
   -webkit-transition: 0.6s;
@@ -17409,19 +17458,19 @@ input.input-inner:focus {
   transition-timing-function: ease;
 }
 
-/* line 474, resources/scss/pages/_local-climate-charts.scss */
+/* line 487, resources/scss/pages/_local-climate-charts.scss */
 #info-row.closed-filters .rounded-filters-box {
   min-height: 52px !important;
 }
 
 @media screen and (max-width: 900px) {
-  /* line 474, resources/scss/pages/_local-climate-charts.scss */
+  /* line 487, resources/scss/pages/_local-climate-charts.scss */
   #info-row.closed-filters .rounded-filters-box {
     min-height: 65px !important;
   }
 }
 
-/* line 482, resources/scss/pages/_local-climate-charts.scss */
+/* line 495, resources/scss/pages/_local-climate-charts.scss */
 #info-row.closed-filters #filters-row {
   display: none !important;
   visibility: hidden !important;
@@ -20763,7 +20812,7 @@ s
   cursor: default;
 }
 
-/* line 1804, resources/scss/screen.scss */
+/* line 1831, resources/scss/screen.scss */
 .ui-autocomplete {
   position: absolute;
   top: 0;
@@ -20771,7 +20820,7 @@ s
   cursor: default;
 }
 
-/* line 1810, resources/scss/screen.scss */
+/* line 1837, resources/scss/screen.scss */
 .ui-menu {
   display: block;
   padding: 10px;
@@ -20784,12 +20833,12 @@ s
   box-shadow: 0 0 12px rgba(35, 58, 112, 0.25);
 }
 
-/* line 1819, resources/scss/screen.scss */
+/* line 1846, resources/scss/screen.scss */
 .ui-menu .ui-menu {
   position: absolute;
 }
 
-/* line 1823, resources/scss/screen.scss */
+/* line 1850, resources/scss/screen.scss */
 .ui-menu .ui-menu-item {
   position: relative;
   margin: 0;
@@ -20797,7 +20846,7 @@ s
   cursor: pointer;
 }
 
-/* line 1830, resources/scss/screen.scss */
+/* line 1857, resources/scss/screen.scss */
 .ui-menu .ui-menu-divider {
   margin: 5px 0;
   height: 0;
@@ -20806,12 +20855,12 @@ s
   border-width: 1px 0 0 0;
 }
 
-/* line 1839, resources/scss/screen.scss */
+/* line 1866, resources/scss/screen.scss */
 .ui-accordion .ui-accordion-header {
   outline: none;
 }
 
-/* line 1842, resources/scss/screen.scss */
+/* line 1869, resources/scss/screen.scss */
 .ui-accordion .ui-accordion-header .ui-accordion-header-icon {
   display: inline-block;
   position: static;
@@ -20820,14 +20869,14 @@ s
   overflow: visible;
 }
 
-/* line 1852, resources/scss/screen.scss */
+/* line 1879, resources/scss/screen.scss */
 .accordion-plain .ui-accordion-header {
   padding: 8px 0;
   color: #233a70;
   line-height: 28px;
 }
 
-/* line 1857, resources/scss/screen.scss */
+/* line 1884, resources/scss/screen.scss */
 .accordion-plain .ui-accordion-header .ui-accordion-header-icon {
   display: block;
   float: left;
@@ -20837,17 +20886,17 @@ s
   line-height: 28px;
 }
 
-/* line 1867, resources/scss/screen.scss */
+/* line 1894, resources/scss/screen.scss */
 .accordion-plain .accordion-text {
   padding: 20px 40px;
 }
 
-/* line 1873, resources/scss/screen.scss */
+/* line 1900, resources/scss/screen.scss */
 .tabs-plain .tabs-plain-list li {
   display: inline-block;
 }
 
-/* line 1876, resources/scss/screen.scss */
+/* line 1903, resources/scss/screen.scss */
 .tabs-plain .tabs-plain-list li a {
   display: block;
   padding: 8px 10px;
@@ -20986,13 +21035,13 @@ https://raw.github.com/shagstrom/split-pane/master/LICENSE
   cursor: row-resize;
 }
 
-/* line 1890, resources/scss/screen.scss */
+/* line 1917, resources/scss/screen.scss */
 .pretty-split-pane-frame .split-pane > .split-pane-divider.dragged.touch {
   background: blue;
   opacity: 0.25;
 }
 
-/* line 1894, resources/scss/screen.scss */
+/* line 1921, resources/scss/screen.scss */
 .split-pane-divider {
   right: 50%;
   width: 12px;
@@ -21002,7 +21051,7 @@ https://raw.github.com/shagstrom/split-pane/master/LICENSE
   box-shadow: 0 0 10px rgba(35, 58, 112, 0.25);
 }
 
-/* line 1900, resources/scss/screen.scss */
+/* line 1927, resources/scss/screen.scss */
 .pane-content {
   position: absolute;
   top: 0;
@@ -21012,18 +21061,18 @@ https://raw.github.com/shagstrom/split-pane/master/LICENSE
   overflow: auto;
 }
 
-/* line 1904, resources/scss/screen.scss */
+/* line 1931, resources/scss/screen.scss */
 #pane-left {
   right: 50%;
   margin-right: 12px;
 }
 
-/* line 1908, resources/scss/screen.scss */
+/* line 1935, resources/scss/screen.scss */
 #pane-right {
   width: 50%;
 }
 
-/* line 1912, resources/scss/screen.scss */
+/* line 1939, resources/scss/screen.scss */
 .ui-tooltip {
   background-color: #0058cf;
   color: white;

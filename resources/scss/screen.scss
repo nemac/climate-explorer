@@ -377,6 +377,11 @@ h6 {
       display: none;
     }
   }
+  span {
+    &:hover, &:focus {
+      outline: none !important;
+    }
+  }
 }
 
 .pac-container {
@@ -1025,14 +1030,32 @@ h6 {
     max-height: $ce3-btnheight-smallecreen !important;
   }
 
-  &:hover {
+  &:hover, &:focus {
     background-color: darken($ce3-blue5, 7) !important;
+    outline: none !important;
   }
 
-  &.disabled:hover {
+  &.disabled:hover, &.disabled:focus  {
+    color: $ce3-blue3 !important;
     background-color: $ce3-blue5 !important;
+    outline: none !important;
   }
 }
+
+.select-styled {
+  &:hover, &:focus {
+    a {
+      color: darken($ce3-blue3, 10) !important;
+      font-weight: 600;
+    }
+    outline: none !important;
+    &.disabled {
+      color: $ce3-disabled-font !important;
+      outline: none !important;
+    }
+  }
+}
+
 
 .rounded-info-box {
   @include border-radius(5px, 5px);
@@ -1058,6 +1081,10 @@ h6 {
   @include transition-timing-function(ease-out)
   @include medium {
     min-height: 1px !important;
+  }
+
+  &:hover, &:focus {
+    outline: none !important;
   }
 
   #station-info {

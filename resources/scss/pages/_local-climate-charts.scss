@@ -106,9 +106,6 @@
     }
 
     .select-styled {
-      // background-color: $ce3-blue3 !important;
-      // color: $ce3-blue5 !important;
-
       a {
         color: $ce3-blue5 !important;
       }
@@ -120,6 +117,17 @@
       &:after {
         background-color: $ce3-blue5 !important;
         color: $ce3-blue3 !important;
+      }
+
+      &:hover, &:focus {
+        outline: none !important;
+        color: lighten($ce3-blue5, 20) !important;
+        font-weight: 600;
+        
+        &.disabled {
+          color: $ce3-blue5alpha !important;
+          outline: none !important;
+        }
       }
     }
 
@@ -139,7 +147,14 @@
         a {
           color: $ce3-blue5 !important;
         }
-        &:hover {
+        &:hover, &:focus  {
+          color: $ce3-blue5 !important;
+          background:  lighten($ce3-blue4, 7)  !important;
+        }
+      }
+
+      span {
+        &:hover, &:focus  {
           color: $ce3-blue5 !important;
           background:  lighten($ce3-blue4, 7)  !important;
         }
@@ -419,8 +434,6 @@
       }
     }
   }
-
-
 
   @include very-small {
     height: auto !important;
