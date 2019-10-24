@@ -318,6 +318,10 @@
 .esri-ui-corner .esri-component .esri-expand__content {
     max-height: 260px !important;
     height: 260px;
+    @include short {
+      max-height: 200px !important;
+      height: 200px;
+    }
     background-color: $ce3-blue6;
     padding: $ce3-padding-half;
     overflow: hidden;
@@ -328,16 +332,26 @@
 }
 
 .esri-expand__content.esri-expand__content--expanded {
-  height: 260px;
   width: 100px;
+
+  @include short {
+    width: 90px;
+  }
+
   .legend-note-label {
     display: none;
   }
+
   img {
     margin-top: $ce3-padding-half;
     height: 224px;
     width: 76px;
+    @include short {
+      height: 164px;
+      width: 55px;
+    }
   }
+
   .esri-basemap-gallery__item-thumbnail {
     height: 64px;
     width: auto;
