@@ -1,3 +1,6 @@
+// TO DO Need to revist this so tab, return on pulldowns are not duplciated code aka needs a function
+// that also deals with this contexts
+
 //  when we get stations in the map extent
 // the addition of the new stations removes existing click events
 // so we need to re add them
