@@ -90,6 +90,21 @@ $(function () {
   })
 
   // eanbles time chart, map click events
+  $('#chartmap-wrapper').keyup( function(e) {
+    if (e.keyCode === 13){
+      const target = $(e.target);
+
+      // toggle button visual state
+      toggleButton($(target));
+
+      // change select pulldowns for resposnive mode
+      setSelectFromButton(target);
+
+      handleChartMapClick(target);
+    }
+  })
+
+  // eanbles time chart, map click events
   $('#chartmap-wrapper').click( function(e) {
     const target = $(e.target);
 
@@ -99,10 +114,8 @@ $(function () {
     // change select pulldowns for resposnive mode
     setSelectFromButton(target);
 
-
     handleChartMapClick(target);
   })
-
 
   // eanbles time annual, monlthly click events
   $('#time-wrapper').click( function(e) {
@@ -126,6 +139,33 @@ $(function () {
 
       // change select pulldowns for resposnive mode
       setSelectFromButton(target);
+    }
+  })
+
+  // eanbles time annual, monlthly click events
+  $('#time-wrapper').keyup( function(e) {
+    if (e.keyCode === 13){
+      const target = $(e.target);
+      const notDisabled = !target.hasClass('btn-default-disabled');
+
+      // not all varriables can display monthly chart
+      // when the varriable cannot display monthly chart do
+      // do execute the click event
+      if ( notDisabled ) {
+        const val = target.attr('val')
+
+        // toggle button visual state
+        toggleButton(target);
+
+        // update chart frequency value
+        updateFrequency(val);
+
+        // update chart frequency slider based on timeperiod
+        updateFrequencySlider(val);
+
+        // change select pulldowns for resposnive mode
+        setSelectFromButton(target);
+      }
     }
   })
 
@@ -169,6 +209,17 @@ $(function () {
 
     // update the chart layers
     updateChartLayers(target);
+  })
+
+  // adds a click event to turn off chart layers aka what you
+  // see on the chart
+  $('#legend-wrapper').keyup( function(e) {
+    if (e.keyCode === 13){
+      const target = $(e.target);
+
+      // update the chart layers
+      updateChartLayers(target);
+    }
   })
 
   // adds a click event to change the presentation the chart
