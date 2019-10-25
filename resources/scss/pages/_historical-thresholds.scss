@@ -61,7 +61,7 @@ $animation-duration: 0.4s;
       top: calc(100% - 187px);
     }
   }
-
+  
   #stations-map-wrap {
     min-height: 150px !important
   }
@@ -163,15 +163,11 @@ $animation-duration: 0.4s;
       .form-field-control {
         background: $ce3-blue5;
         line-height: $ce3-btnheight !important;
-        // @include border-top-left-radius(5px);
-        // @include border-top-right-radius(5px);
-        // overflow: hidden;
         position: relative;
         width: 100%;
       }
 
       .form-field-bar {
-        // border-bottom: 2px solid $ce3-blue3;
         bottom: 0;
         content: "";
         display: block;
@@ -194,9 +190,8 @@ $animation-duration: 0.4s;
         color: $ce3-blue3;
         display: block;
         font: 500 14px Roboto, Helvetica, "Helvetica Neue", Arial, sans-serif !important;
-        // margin-top: 24px;
         outline: 0;
-        padding: $ce3-default-padding; //$ce3-default-padding 0 $ce3-default-padding;
+        padding: $ce3-default-padding;
         width: 100%;
 
         // IE 10-11
@@ -275,6 +270,7 @@ $animation-duration: 0.4s;
        }
      }
    }
+
    #chartmap-wrapper {
      width: 20% !important;
    }

@@ -18,26 +18,15 @@
 
 
   <div id="search-row" class="padding-horizontal d-flex-row flex-justify padding-top padding-bottom-half d-flex-justify" >
-      <div class="rounded-box-secondary input-outer padding-horrizontal bottom-padding default-btn-height width-100">
-        <input id="cards-search-input" type="text" class="location-mapper input-inner-default border-none default-btn-height width-90" autocomplete="off" placeholder="Enter county, city, or zip code">
-        <span class="icon icon-search search-default float-right padding-default"></span>
-        <div id="clear-location-wrapper" class="">
-          <a id="clear-location-link"  href="../cards-home" class="d-none"></a>
-          <span id="clear-location" nav="cards-home" link="clear-location-link" class="fas fa-times-circle"></span>
-        </div>
-
+    <div class="rounded-box-secondary input-outer padding-horrizontal bottom-padding default-btn-height width-100">
+      <input id="cards-search-input" type="text" class="location-mapper input-inner-default border-none default-btn-height width-90" autocomplete="off" placeholder="Enter county, city, or zip code">
+      <span class="icon icon-search search-default float-right padding-default"></span>
+      <div id="clear-location-wrapper" class="">
+        <a id="clear-location-link"  href="../cards-home" class="d-none"></a>
+        <span id="clear-location" nav="cards-home" link="clear-location-link" class="fas fa-times-circle"></span>
+      </div>
     </div>
   </div>
-
-  <!-- <div class="rounded-box-secondary input-outer padding-horrizontal bottom-padding default-btn-height search-box-secondary width-40">
-    <input id="cards-search-input" type="text" class="location-mapper input-inner-default border-none default-btn-height" autocomplete="off" placeholder="Enter county, city, or zip code">
-    <span class="icon icon-search search-default float-right padding-default"></span>
-    <div id="clear-location-wrapper" class="">
-      <a id="clear-location-link"  href="../high-tide-flooding" class="d-none"></a>
-      <span id="clear-location" nav="high-tide-flooding" link="clear-location-link" class="fas fa-times-circle"></span>
-    </div>
-  </div> -->
-
 
   <div id="info-row" class="padding-vertical width-100" >
     <div class="rounded-info-box padding-default width-100">
@@ -53,7 +42,7 @@
   <div id="card-row" class="padding-horizontal padding-top-half padding-bottom-half d-flex-row flex-justify" >
 
     <a id="card-national-maps-secretlink" href="../national-climate-maps" class="d-none"></a>
-    <div id="data-card" class="card-national-maps d-flex d-flex-column" >
+    <div tabindex="1" id="data-card" class="card-national-maps d-flex d-flex-column" >
        <div id="card-image-row" class="d-flex-row d-flex-fill width-100">
           <img class="card-image" src="../resources/img/card-nat-maps.png" />
        </div>
@@ -72,7 +61,7 @@
 
 
     <a id="card-local-charts-secretlink" href="../local-climate-charts" class="d-none"></a>
-    <div id="data-card" class="card-local-charts d-flex d-flex-column">
+    <div tabindex="2" id="data-card" class="card-local-charts d-flex d-flex-column">
       <div id="card-image-row" class="d-flex-row d-flex-fill width-100">
         <img class="card-image" src="../resources/img/card-local-charts.png" />
        </div>
@@ -90,7 +79,7 @@
     </div>
 
     <a id="card-local-maps-secretlink" href="../local-climate-maps" class="d-none"></a>
-    <div id="data-card" class="card-local-maps d-flex d-flex-column" >
+    <div tabindex="3" id="data-card" class="card-local-maps d-flex d-flex-column" >
       <div id="card-image-row" class="d-flex-row d-flex-fill width-100">
          <img class="card-image" src="../resources/img/card-local-maps.png" />
        </div>
@@ -112,7 +101,7 @@
   <div id="card-row" class="padding-horizontal padding-top-half padding-bottom-half d-flex-row flex-justify" >
 
     <a id="card-historical-weather-data-secretlink" href="../historical-weather-data" class="d-none"></a>
-    <div id="data-card" class="card-historical-weather-data d-flex d-flex-column" >
+    <div tabindex="4" id="data-card" class="card-historical-weather-data d-flex d-flex-column" >
       <div id="card-image-row" class="d-flex-row d-flex-fill width-100">
          <img class="card-image" src="../resources/img/card-hist-daily.png" />
        </div>
@@ -130,7 +119,7 @@
     </div>
 
     <a id="card-historical-thresholds-secretlink" href="../historical-thresholds" class="d-none"></a>
-    <div id="data-card" class="card-historical-thresholds d-flex d-flex-column" >
+    <div tabindex="5" id="data-card" class="card-historical-thresholds d-flex d-flex-column" >
       <div id="card-image-row" class="d-flex-row d-flex-fill width-100">
         <img class="card-image" src="../resources/img/card-hist-thresholds.png" />
        </div>
@@ -149,7 +138,7 @@
 
 
     <a id="card-hightide-flooding-secretlink" href="../high-tide-flooding" class="d-none"></a>
-    <div id="data-card" class="card-hightide-flooding d-flex d-flex-column" >
+    <div tabindex="6" id="data-card" class="card-hightide-flooding d-flex d-flex-column" >
       <div id="card-image-row" class="d-flex-row d-flex-fill width-100">
          <img class="card-image" src="../resources/img/card-tidal-data.png" />
        </div>

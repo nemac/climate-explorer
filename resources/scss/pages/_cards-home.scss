@@ -33,13 +33,6 @@
   }
 }
 
-// .rounded-box-secondary.search-box-secondary {
-//   &.nosearch {
-//     // border: 1px solid $ce3-error-state;
-//     @include box-shadow( inset  0 0 5px $ce3-error-state);
-//   }
-// }
-
 #cards-search-input {
   &.nosearch {
     border-bottom: 3px solid transparentize($ce3-error-state, .1) !important;
@@ -60,6 +53,12 @@
   height: auto !important;
   @include border-radius(5px, 5px);
   border: 1px solid $ce3-blue3 !important;
+
+  &:focus, &:hover {
+    border: 2px solid darken($ce3-blue3, 10) !important;
+    @include box-shadow(0px 5px 10px transparentize(#000, 0.761));
+    outline: none;
+  }
 
   @include large {
     width: 90% !important;

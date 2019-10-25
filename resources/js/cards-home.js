@@ -25,8 +25,32 @@ $(function () {
     handleClearLocationClick(target);
   })
 
+
+
   // adds a click event to got to card location
   function addCardClick(selctor, nav) {
+    // find the the nav-item and add click event
+    $(`.${selctor}`).keyup( function(e) {
+      if (e.keyCode === 13){
+        e.stopPropagation();
+
+        // remove existing nav search url parameters
+        // otherwise we use the first one which is most likely the wrong page
+        const link = document.querySelector(`#${selctor}-secretlink`);
+
+        // get the invisiable link just outside the element node tree
+        // if inside we have issues will bubbling propogation
+        const seachParams =  removeUrlParam('nav');
+
+        // set the url and search params
+        const url = `${$(link).attr('href')}/${seachParams}&nav=${nav}`
+        $(link).attr('href', url);
+
+        // force click on invisiable link
+        link.click();        
+      }
+    });
+
     // find the the nav-item and add click event
     $(`.${selctor}`).click( function(e) {
       e.stopPropagation();
