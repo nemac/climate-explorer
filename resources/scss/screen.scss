@@ -1033,7 +1033,7 @@ h6 {
 .select-styled {
   &:hover, &:focus {
     font-weight: 600;
-    
+
     a {
       color: darken($ce3-blue3, 10) !important;
       font-weight: 600;
@@ -1041,6 +1041,7 @@ h6 {
     outline: none !important;
 
     &.disabled {
+      font-weight: 500;
       color: $ce3-disabled-font !important;
       outline: none !important;
     }
