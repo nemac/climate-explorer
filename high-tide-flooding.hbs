@@ -19,7 +19,7 @@
     <div id="search-row" class="padding-horizontal d-flex-row flex-justify padding-top padding-bottom-half d-flex-justify" >
 
       <div class="rounded-box-secondary input-outer padding-horrizontal bottom-padding default-btn-height search-box-secondary width-40">
-        <input id="cards-search-input" type="text" class="location-mapper input-inner-default border-none default-btn-height" autocomplete="off" placeholder="Enter county, city, or zip code">
+        <input tabindex="1" id="cards-search-input" type="text" class="location-mapper input-inner-default border-none default-btn-height" autocomplete="off" placeholder="Enter county, city, or zip code">
         <span class="icon icon-search search-default float-right padding-default"></span>
         <div id="clear-location-wrapper" class="">
           <a id="clear-location-link"  href="../high-tide-flooding" class="d-none"></a>
@@ -29,10 +29,10 @@
 
       <div id="stations-select-wrapper" class="rounded-choice-box padding-horrizontal default-btn-height top-select-wrapper d-flex-center">
         <div class="select stations-select">
-          <div id="stations-select-vis" class="select-styled" rel="station-1">Stations</div>
+          <div tabindex="20" id="stations-select-vis" class="select-styled" rel="station-1">Stations</div>
           <ul class="select-options">
-            <li rel="station-1" class="default-select-option">Stations 1</li>
-            <li rel="station-2" class="default-select-option">Stations 2</li>
+            <li tabindex="21" rel="station-1" class="default-select-option">Stations 1</li>
+            <li tabindex="22" rel="station-2" class="default-select-option">Stations 2</li>
           </ul>
         </div>
       </div>
@@ -41,19 +41,19 @@
       <div id="downloads-select-wrapper" class="rounded-choice-box padding-horrizontal default-btn-height top-select-wrapper d-flex-center disabled">
 
         <div class="select download-select">
-          <div id="downnloads-select-vis" class="select-styled disabled" rel="none" href="javascript:void(0);">
+          <div tabindex="5000" id="downnloads-select-vis" class="select-styled disabled" rel="none" href="javascript:void(0);">
             <i class="fas fa-download select-icon"></i>
-            <a rel="none" class="download-link" href="javascript:void(0);" >Downloads</a>
+            <a tabindex="5001" rel="none" class="download-link" href="javascript:void(0);" >Downloads</a>
           </div>
           <ul class="select-options" style="display: none;">
             <div icon="fas fa-water select-icon" class="default-select-option-group">
               <i class="fas fa-water select-icon"></i>Tidal Flooding
             </div>
             <li rel="download-tidal-image" icon="fas fa-download select-icon" href="javascript:void(0);" class="default-select-option">
-              <a rel="download-tidal-image" class="download-link" href="javascript:void(0);" >Download tidal flooding image</a>
+              <a tabindex="5002" rel="download-tidal-image" class="download-link" href="javascript:void(0);" >Download tidal flooding image</a>
             </li>
             <li rel="download-tidal-data" icon="fas fa-download select-icon" href="javascript:void(0);" class="default-select-option">
-              <a rel="download-tidal-data" class="download-link" href="https://tidesandcurrents.noaa.gov/publications/techrpt86_PaP_of_HTFlooding.csv" >Download tidal flooding data</a>
+              <a tabindex="5003" rel="download-tidal-data" class="download-link" href="https://tidesandcurrents.noaa.gov/publications/techrpt86_PaP_of_HTFlooding.csv" >Download tidal flooding data</a>
             </li>
           </ul>
         </div>
@@ -98,39 +98,39 @@
           <a id="chartmap-btn-chart-link"  href="../high-tide-flooding" class="d-none"></a>
           <a id="chartmap-btn-map-link"  href="../high-tide-flooding" class="d-none">Map</a>
           <div id="chartmap-wrapper" class="padding-horrizontal-half padding-vertical-half default-btn-height d-flex-center width-20 disabled">
-            <div id="btn-chart" class="btn-chart btn-default circle-box-left d-flex-center width-50" val="chart" nav="high-tide-flooding" link="chartmap-btn-chart-link" sel="chartmap-select-vis">
+            <div tabindex="5004" id="btn-chart" class="btn-chart btn-default circle-box-left d-flex-center width-50" val="chart" nav="high-tide-flooding" link="chartmap-btn-chart-link" sel="chartmap-select-vis">
               Chart
             </div>
-            <div id="btn-chart" class="btn-map btn-default-selected circle-box-right d-flex-center width-50"  nav="high-tide-flooding"  val="map" link="chartmap-btn-map-link" sel="chartmap-select-vis">
+            <div tabindex="5005" id="btn-chart" class="btn-map btn-default-selected circle-box-right d-flex-center width-50"  nav="high-tide-flooding"  val="map" link="chartmap-btn-map-link" sel="chartmap-select-vis">
               Map
             </div>
           </div>
 
           <div id="chartmap-select-wrapper" class="rounded-choice-box padding-horrizontal-half padding-vertical-half default-btn-height d-flex-center width-20">
             <div class="select chartmap-select">
-              <div id="chartmap-select-vis" class="select-styled" rel="chart">Map</div>
+              <div tabindex="5006" id="chartmap-select-vis" class="select-styled" rel="chart">Map</div>
               <ul class="select-options">
-                <li id="chartmap-select-chart-link" rel="chart" class="default-select-option" nav="high-tide-flooding" link="chartmap-btn-chart-link" >Chart</li>
-                <li id="chartmap-select-map-link" rel="map" class="default-select-option" nav="high-tide-flooding" link="chartmap-btn-map-link">Map</li>
+                <li tabindex="5007" id="chartmap-select-chart-link" rel="chart" class="default-select-option" nav="high-tide-flooding" link="chartmap-btn-chart-link" >Chart</li>
+                <li tabindex="5008" id="chartmap-select-map-link" rel="map" class="default-select-option" nav="high-tide-flooding" link="chartmap-btn-map-link">Map</li>
               </ul>
             </div>
           </div>
 
           <div id="tidalzoom-wrapper" class="padding-horrizontal-half padding-vertical-half default-btn-height d-flex-center width-30">
-            <div id="btn-tidalzoom" class="btn-tidalzoom-hm btn-default circle-box-left d-flex-center width-90 btn-default-disabled" val="Historical and Modeled" >
+            <div tabindex="5009" id="btn-tidalzoom" class="btn-tidalzoom-hm btn-default circle-box-left d-flex-center width-90 btn-default-disabled" val="Historical and Modeled" >
               Historical & Modeled
             </div>
-            <div id="btn-tidalzoom" class="btn-tidalzoom-h btn-default circle-box-right d-flex-center width-90 btn-default-disabled" val="Historical" >
+            <div tabindex="5010" id="btn-tidalzoom" class="btn-tidalzoom-h btn-default circle-box-right d-flex-center width-90 btn-default-disabled" val="Historical" >
               Historical
             </div>
           </div>
 
           <div id="tidalzoom-select-wrapper" class="rounded-choice-box padding-horrizontal-half padding-vertical-half default-btn-height d-flex-center width-20">
             <div class="select tidalzoom-select">
-              <div id="tidalzoom-select-vis" class="select-styled" rel="hm">Historical & Modeled</div>
+              <div tabindex="5011" id="tidalzoom-select-vis" class="select-styled" rel="hm">Historical & Modeled</div>
               <ul class="select-options">
-                <li id="tidalzoom-select-chart-link" rel="hm" class="default-select-option" nav="high-tide-flooding" link="tidalzoom-btn-hm-link" >Historical & Modeled</li>
-                <li id="tidalzoom-select-map-link" rel="h" class="default-select-option" nav="high-tide-flooding" link="tidalzoom-btn-h-link">Historical</li>
+                <li tabindex="5012" id="tidalzoom-select-chart-link" rel="hm" class="default-select-option" nav="high-tide-flooding" link="tidalzoom-btn-hm-link" >Historical & Modeled</li>
+                <li tabindex="5013" id="tidalzoom-select-map-link" rel="h" class="default-select-option" nav="high-tide-flooding" link="tidalzoom-btn-h-link">Historical</li>
               </ul>
             </div>
           </div>

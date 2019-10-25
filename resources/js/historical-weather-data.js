@@ -304,6 +304,32 @@ $(function () {
   })
 
   // eanbles time chart, map click events
+  $('#chartmap-wrapper').keyup( function(e) {
+    if (e.keyCode === 13){
+      const target = $(e.target);
+      const notDisabled = (!target.hasClass('btn-default-disabled') || !target.hasClass('disabled'));
+
+      if ( notDisabled ) {
+
+        // toggle button visual state
+        toggleButton($(target));
+
+        // change select pulldowns for resposnive mode
+        setSelectFromButton(target);
+
+        // check val of button to see if user is on map  or chart
+        // hide or unhide the appropriate overlay (map, chart)
+        chooseGraphOrMap(target);
+        toggleChartInfoText(RelorVal(target));
+      }
+
+      // reset map and chart sizes
+      setMapSize();
+      chooseGraphOrMap(target);      
+    }
+  })
+
+  // eanbles time chart, map click events
   $('#chartmap-wrapper').click( function(e) {
     const target = $(e.target);
     const notDisabled = (!target.hasClass('btn-default-disabled') || !target.hasClass('disabled'));

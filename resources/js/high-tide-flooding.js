@@ -63,7 +63,27 @@ $(function () {
   }
 
   // zoom to historical part of chart
-  $('.btn-tidalzoom-hm').click(function () {
+  $('.btn-tidalzoom-hm').keyup(function (e) {
+    if (e.keyCode === 13){
+      // only allow click event if button is not disabled
+      if (!$(".btn-tidalzoom-hm").hasClass('btn-default-disabled') ) {
+        if ( !$(".btn-tidalzoom-hm").hasClass('btn-default-selected') ) {
+          $("#tidal-chart").tidalstationwidget('zoomToggle');
+          $('.btn-tidalzoom-hm').addClass('btn-default-selected');
+          $('.btn-tidalzoom-h').removeClass('btn-default-selected');
+
+          const tidalZoomElem = $('#tidalzoom-select-vis');
+          if (tidalZoomElem){
+            tidalZoomElem.attr('rel','hm');
+            tidalZoomElem.text('Historical & Modeled');
+          }
+        }
+      }
+    }
+  });
+
+  // zoom to historical part of chart
+  $('.btn-tidalzoom-hm').click(function (e) {
     // only allow click event if button is not disabled
     if (!$(".btn-tidalzoom-hm").hasClass('btn-default-disabled') ) {
       if ( !$(".btn-tidalzoom-hm").hasClass('btn-default-selected') ) {
@@ -80,9 +100,8 @@ $(function () {
     }
   });
 
-
   // zoom to historical part of chart
-  $('.btn-tidalzoom-h').click(function () {
+  $('.btn-tidalzoom-h').click(function (e) {
     // only allow click event if button is not disabled
     if (!$(".btn-tidalzoom-h").hasClass('btn-default-disabled') ) {
       if ( !$(".btn-tidalzoom-h").hasClass('btn-default-selected') ) {
@@ -94,6 +113,26 @@ $(function () {
         if (tidalZoomElem){
           tidalZoomElem.attr('rel','h');
           tidalZoomElem.text('Historical');
+        }
+      }
+    }
+  });
+
+  // zoom to historical part of chart
+  $('.btn-tidalzoom-h').keyup(function (e) {
+    if (e.keyCode === 13){
+      // only allow click event if button is not disabled
+      if (!$(".btn-tidalzoom-h").hasClass('btn-default-disabled') ) {
+        if ( !$(".btn-tidalzoom-h").hasClass('btn-default-selected') ) {
+          $("#tidal-chart").tidalstationwidget('zoomToggle');
+          $('.btn-tidalzoom-hm').removeClass('btn-default-selected');
+          $('.btn-tidalzoom-h').addClass('btn-default-selected');
+
+          const tidalZoomElem = $('#tidalzoom-select-vis');
+          if (tidalZoomElem){
+            tidalZoomElem.attr('rel','h');
+            tidalZoomElem.text('Historical');
+          }
         }
       }
     }
@@ -363,6 +402,32 @@ $(function () {
 
       // reset map and chart sizes
       setMapSize();
+    }
+  })
+
+  // eanbles time chart, map click events
+  $('#chartmap-wrapper').keyup( function(e) {
+    if (e.keyCode === 13){
+      const target = $(e.target);
+      const notDisabled = (!target.hasClass('btn-default-disabled') || !target.hasClass('disabled'));
+
+      if ( notDisabled ) {
+
+        // toggle button visual state
+        toggleButton($(target));
+
+        // change select pulldowns for resposnive mode
+        setSelectFromButton(target);
+
+        // check val of button to see if user is on map  or chart
+        // hide or unhide the appropriate overlay (map, chart)
+        chooseGraphOrMap(target);
+        toggleChartInfoText(RelorVal(target));
+      }
+
+      // reset map and chart sizes
+      setMapSize();
+      chooseGraphOrMap(target);  
     }
   })
 
