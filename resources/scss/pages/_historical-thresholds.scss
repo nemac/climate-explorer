@@ -267,14 +267,7 @@ $animation-duration: 0.4s;
        font: 500 14px $roboto !important;
        border: 1px solid $ce3-blue3alpha !important;
 
-       &:focus {
-         background-color: lighten($ce3-blue4, 7) !important;
-         color: $ce3-blue5 !important;
-         border: 1px solid $ce3-blue3alpha !important;
-         outline: none !important
-       }
-
-       &:hover {
+       &:hover, &:focus {
          background-color: lighten($ce3-blue4, 7) !important;
          color: $ce3-blue5 !important;
          border: 1px solid $ce3-blue3alpha !important;

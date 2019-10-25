@@ -325,6 +325,44 @@ $(function () {
     }
   });
 
+
+
+  // imcrement threshold
+  $('.threshold-up').keyup( function (e) {
+    if (e.keyCode === 13){
+      const target = $(e.target);
+      const thresholdValueElem = document.getElementById('threshold-value');
+
+      // ensure thresholdValue element exits
+      if (thresholdValueElem) {
+
+        // get thresholdValue element values
+        const min = parseFloat(thresholdValueElem.getAttribute('min')).toFixed(1);
+        const max = parseFloat(thresholdValueElem.getAttribute('max')).toFixed(1);
+        const step = parseFloat(thresholdValueElem.getAttribute('step')).toFixed(1);
+        const val = parseFloat($(thresholdValueElem).val()).toFixed(1);
+        const newVal = parseFloat(parseFloat(val) + parseFloat(step)).toFixed(1);
+        if (parseFloat(newVal) > parseFloat(max)) {
+          $(thresholdValueElem).val(val);
+        } else {
+          $(thresholdValueElem).val(newVal);
+
+          const stations = $('#stations-select-vis').attr('rel').split(',');
+          const stationName = stations[1];
+          const stationId = stations[0];
+          const variableValue = $('#threshold-variable-select-vis').attr('rel'); //  , thresholdValue: variableValue
+
+          // change map url state
+          window.ce.ce('setStationsMapState', { stationId, stationName, threshold: newVal, thresholdValue: variableValue});
+
+          $("#thresholds-container").item({
+            threshold: newVal,
+          }).item('update');
+        }
+      }
+    }
+  });
+
   // imcrement threshold
   $('.threshold-up').click( function (e) {
     const target = $(e.target);
@@ -355,6 +393,39 @@ $(function () {
         $("#thresholds-container").item({
           threshold: newVal,
         }).item('update');
+      }
+    }
+  });
+
+  // decrememt threshold
+  $('.threshold-down').keyup( function (e) {
+    if (e.keyCode === 13){
+      const target = $(e.target);
+      const thresholdValueElem = document.getElementById('threshold-value');
+      if (thresholdValueElem) {
+        const min = parseFloat(thresholdValueElem.getAttribute('min')).toFixed(1);
+        const max = parseFloat(thresholdValueElem.getAttribute('max')).toFixed(1);
+        const step = parseFloat(thresholdValueElem.getAttribute('step')).toFixed(1);
+        const val = parseFloat($(thresholdValueElem).val()).toFixed(1);
+        const newVal = parseFloat(parseFloat(val) - parseFloat(step)).toFixed(1);
+
+        if (parseFloat(newVal) < parseFloat(min)) {
+          $(thresholdValueElem).val(val);
+        } else {
+          $(thresholdValueElem).val(newVal);
+
+          const stations = $('#stations-select-vis').attr('rel').split(',');
+          const stationName = stations[1];
+          const stationId = stations[0];
+          const variableValue = $('#threshold-variable-select-vis').attr('rel'); //  , thresholdValue: variableValue
+
+          // change map url state
+          window.ce.ce('setStationsMapState', { stationId, stationName, threshold: newVal, thresholdValue: variableValue});
+
+          $("#thresholds-container").item({
+            threshold: newVal,
+          }).item('update');
+        }
       }
     }
   });
@@ -391,6 +462,39 @@ $(function () {
   });
 
   // imcrement window
+  $('.window-up').keyup( function (e) {
+    if (e.keyCode === 13){
+      const target = $(e.target);
+      const windowValueElem = document.getElementById('window-value');
+      if (windowValueElem) {
+        const min = parseFloat(windowValueElem.getAttribute('min')).toFixed(1);
+        const max = parseFloat(windowValueElem.getAttribute('max')).toFixed(1);
+        const step = parseFloat(windowValueElem.getAttribute('step')).toFixed(1);
+        const val = parseFloat($(windowValueElem).val()).toFixed(1);
+        const newVal = parseFloat(parseFloat(val) + parseFloat(step)).toFixed(1);
+
+        if (parseFloat(newVal) > parseFloat(max)) {
+          $(windowValueElem).val(val);
+        } else {
+          $(windowValueElem).val(newVal);
+
+          const stations = $('#stations-select-vis').attr('rel').split(',');
+          const stationName = stations[1];
+          const stationId = stations[0];
+          const variableValue = $('#threshold-variable-select-vis').attr('rel'); //  , thresholdValue: variableValue
+
+          // change map url state
+          window.ce.ce('setStationsMapState', {stationId, stationName,  window: newVal, thresholdValue: variableValue});
+
+          $("#thresholds-container").item({
+            window: newVal,
+          }).item('update');
+        }
+      }
+    }
+  });
+
+  // imcrement window
   $('.window-up').click( function (e) {
     const target = $(e.target);
     const windowValueElem = document.getElementById('window-value');
@@ -420,6 +524,40 @@ $(function () {
       }
     }
   });
+
+  // descrememt window
+  $('.window-down').keyup( function (e) {
+    if (e.keyCode === 13){
+      const target = $(e.target);
+      const windowValueElem = document.getElementById('window-value');
+      if (windowValueElem) {
+        const min = parseFloat(windowValueElem.getAttribute('min')).toFixed(1);
+        const max = parseFloat(windowValueElem.getAttribute('max')).toFixed(1);
+        const step = parseFloat(windowValueElem.getAttribute('step')).toFixed(1);
+        const val = parseFloat($(windowValueElem).val()).toFixed(1);
+        const newVal = parseFloat(parseFloat(val) - parseFloat(step)).toFixed(1);
+
+        if (parseFloat(newVal) < parseFloat(min)) {
+          $(windowValueElem).val(val);
+        } else {
+          $(windowValueElem).val(newVal);
+
+          const stations = $('#stations-select-vis').attr('rel').split(',');
+          const stationName = stations[1];
+          const stationId = stations[0];
+          const variableValue = $('#threshold-variable-select-vis').attr('rel'); //  , thresholdValue: variableValue
+
+          // change map url state
+          window.ce.ce('setStationsMapState', { stationId, stationName, window: newVal,  thresholdValue: variableValue });
+
+          $("#thresholds-container").item({
+            window: newVal,
+          }).item('update');
+        }
+      }      
+    }
+  });
+
 
   // descrememt window
   $('.window-down').click( function (e) {
