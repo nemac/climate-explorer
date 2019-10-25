@@ -294,6 +294,12 @@ h6 {
     right: -2px;
   }
 }
+.download-link {
+  &:hover, &:focus {
+    outline: none !important;
+    font-weight: 600;
+  }
+}
 
 .select-options {
   display: none;
@@ -368,11 +374,13 @@ h6 {
     a {
       color: $ce3-blue3 !important;
     }
+
     &:hover, &:focus {
       outline: none !important;
       color: $ce3-blue3;
       background:  darken($ce3-blue5, 5);
     }
+
     &[rel="hide"] {
       display: none;
     }
@@ -774,13 +782,12 @@ h6 {
     height: $ce3-btnheight-smallecreen !important;
   }
 
-  &:hover {
-    background-color: darken(#777, 5) !important;
-  }
-  &:focus {
+  &:focus, &:hover {
     background-color: darken(#777, 5) !important;
     outline: none !important;
+    font-weight: 600 !important;
   }
+
   &.selected {
     color: $ce3-blue6 !important;
     text-decoration: unset !important;
@@ -800,13 +807,12 @@ h6 {
     height: $ce3-btnheight-smallecreen !important;
   }
 
-  &:hover {
-    background-color: darken(#D6D6D6, 10) !important;
-  }
-  &:focus {
+  &:hover, &:focus {
     background-color: darken(#D6D6D6, 10) !important;
     outline: none !important;
+    font-weight: 600 !important;
   }
+
   &.selected {
     color: $ce3-blue3 !important;
     text-decoration: unset !important;
@@ -826,13 +832,12 @@ h6 {
     height: $ce3-btnheight-smallecreen !important;
   }
 
-  &:hover {
-    background-color: darken(#98BCEB, 10) !important;
-  }
-  &:focus {
+  &:hover, &:focus {
     background-color: darken(#98BCEB, 10) !important;
     outline: none !important;
+    font-weight: 600 !important;
   }
+
   &.selected {
     color: $ce3-blue3 !important;
     text-decoration: unset !important;
@@ -852,13 +857,12 @@ h6 {
     height: $ce3-btnheight-smallecreen !important;
   }
 
-  &:hover {
-    background-color: darken(#FBB4AA, 10) !important;
-  }
-  &:focus {
+  &:hover, &:focus  {
     background-color: darken(#FBB4AA, 10) !important;
     outline: none !important;
+    font-weight: 600 !important;
   }
+
   &.selected {
     color: $ce3-blue3 !important;
     text-decoration: unset !important;
@@ -891,25 +895,17 @@ h6 {
     height: $ce3-btnheight-smallecreen !important;
   }
 
-  &:focus {
+    &:hover, &:focus {
     background-color: darken($ce3-blue5, 7) !important;
     &.more-info {
       background-color: darken($ce3-blue6, 7) !important;
     }
     color: $ce3-blue3 !important;
     border: 1px solid $ce3-blue3alpha !important;
-    outline: none !important
+    outline: none !important;
+    font-weight: 600 !important;
   }
 
-  &:hover {
-    background-color: darken($ce3-blue5, 7) !important;
-    &.more-info {
-      background-color: darken($ce3-blue6, 7) !important;
-    }
-    color: $ce3-blue3 !important;
-    border: 1px solid $ce3-blue3alpha !important;
-    outline: none !important
-  }
 
   .more-info:before {
     position: inherit;
@@ -939,14 +935,7 @@ h6 {
     height: $ce3-btnheight-smallecreen !important;
   }
 
-  &:focus {
-    background-color: $ce3-blue5 !important;
-    color: $ce3-disabled-font !important;
-    border: 1px solid $ce3-disabled-border !important;
-    outline: none !important
-  }
-
-  &:hover {
+  &:hover, &:focus {
     background-color: $ce3-blue5 !important;
     color: $ce3-disabled-font !important;
     border: 1px solid $ce3-disabled-border !important;
@@ -959,7 +948,6 @@ h6 {
     border: 1px solid $ce3-disabled-border !important;
 
     &:focus, &:hover {
-      // background: transparent !important;
       border: 1px solid $ce3-disabled-border !important;
     }
   }
@@ -982,7 +970,6 @@ h6 {
     color: $ce3-blue5 !important;
   }
 
-
   &.circle-box-left {
     margin-right: -12px !important;
   }
@@ -1004,7 +991,8 @@ h6 {
     background-color: lighten($ce3-blue4, 7) !important;
     color: $ce3-blue5 !important;
     border: 1px solid $ce3-blue3alpha !important;
-    outline: none !important
+    outline: none !important;
+    font-weight: 600 !important;
   }
 
   &.btn-default-disabled {

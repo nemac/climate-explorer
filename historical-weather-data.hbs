@@ -19,7 +19,7 @@
   <div id="search-row" class="padding-horizontal d-flex-row flex-justify padding-top padding-bottom-half d-flex-justify" >
 
     <div class="rounded-box-secondary input-outer padding-horrizontal bottom-padding default-btn-height search-box-secondary width-40">
-      <input id="cards-search-input" type="text" class="location-mapper input-inner-default border-none default-btn-height" autocomplete="off" placeholder="Enter county, city, or zip code">
+      <input tabindex="1" id="cards-search-input" type="text" class="location-mapper input-inner-default border-none default-btn-height" autocomplete="off" placeholder="Enter county, city, or zip code">
       <span class="icon icon-search search-default float-right padding-default"></span>
       <div id="clear-location-wrapper" class="">
         <a id="clear-location-link"  href="../historical-weather-data" class="d-none"></a>
@@ -29,10 +29,10 @@
 
     <div id="stations-select-wrapper" class="rounded-choice-box padding-horrizontal default-btn-height top-select-wrapper d-flex-center">
       <div class="select stations-select">
-        <div id="stations-select-vis" class="select-styled" rel="station-1">Stations</div>
+        <div tabindex="1" id="stations-select-vis" class="select-styled" rel="station-1">Stations</div>
         <ul class="select-options">
-          <li rel="station-1" class="default-select-option">Stations 1</li>
-          <li rel="station-2" class="default-select-option">Stations 2</li>
+          <li tabindex="1" rel="station-1" class="default-select-option">Stations 1</li>
+          <li tabindex="1" rel="station-2" class="default-select-option">Stations 2</li>
         </ul>
       </div>
     </div>
@@ -40,7 +40,7 @@
     <div id="downloads-select-wrapper" class="rounded-choice-box padding-horrizontal default-btn-height top-select-wrapper d-flex-center disabled">
 
       <div class="select download-select">
-        <div id="downnloads-select-vis" class="select-styled disabled" rel="none" href="javascript:void(0);">
+        <div tabindex="1" id="downnloads-select-vis" class="select-styled disabled" rel="none" href="javascript:void(0);">
           <i class="fas fa-download select-icon"></i>
           <a rel="none" href="javascript:void(0);" >Downloads</a>
         </div>
@@ -48,20 +48,20 @@
           <div icon="fas fa-temperature-high select-icon" class="default-select-option-group">
             <i class="fas fa-temperature-high select-icon"></i>Temperature
           </div>
-          <li rel="download-temperature-image" icon="fas fa-download select-icon" href="javascript:void(0);" class="default-select-option">
-            <a rel="download-temperature-image" href="javascript:void(0);" >Download temperature image</a>
+          <li tabindex="1" rel="download-temperature-image" icon="fas fa-download select-icon" href="javascript:void(0);" class="default-select-option">
+            <a tabindex="1" rel="download-temperature-image" href="javascript:void(0);" >Download temperature image</a>
           </li>
-          <li rel="download-temperature-data" icon="fas fa-download select-icon" href="javascript:void(0);" class="default-select-option">
-            <a rel="download-temperature-data" href="javascript:void(0);" >Download temperature data</a>
+          <li tabindex="1" rel="download-temperature-data" icon="fas fa-download select-icon" href="javascript:void(0);" class="default-select-option">
+            <a tabindex="1" rel="download-temperature-data" href="javascript:void(0);" >Download temperature data</a>
           </li>
           <div icon="fas fa-cloud-rain select-icon" class="default-select-option-group">
             <i class="fas fa-cloud-rain select-icon"></i>Precipitation
           </div>
-          <li rel="download-image" icon="fas fa-download select-icon" href="javascript:void(0);" class="default-select-option">
-            <a rel="download-precipitation-image" href="javascript:void(0);" >Download precipitation image</a>
+          <li tabindex="1" rel="download-image" icon="fas fa-download select-icon" href="javascript:void(0);" class="default-select-option">
+            <a tabindex="1" rel="download-precipitation-image" href="javascript:void(0);" >Download precipitation image</a>
           </li>
-          <li rel="download-precipitation-observed-data" icon="fas fa-download select-icon" href="javascript:void(0);" class="default-select-option">
-            <a rel="download-precipitation-data" href="javascript:void(0);" >Download precipitation data</a>
+          <li tabindex="1" rel="download-precipitation-observed-data" icon="fas fa-download select-icon" href="javascript:void(0);" class="default-select-option">
+            <a tabindex="1" rel="download-precipitation-data" href="javascript:void(0);" >Download precipitation data</a>
           </li>
 
         </ul>
@@ -105,20 +105,20 @@
         <a id="chartmap-btn-chart-link"  href="../historical-weather-data" class="d-none"></a>
         <a id="chartmap-btn-map-link"  href="../historical-weather-data" class="d-none">Map</a>
         <div id="chartmap-wrapper" class="padding-horrizontal-half padding-vertical-half default-btn-height d-flex-center width-20 disabled">
-          <div id="btn-chart" class="btn-chart btn-default circle-box-left d-flex-center width-50" val="chart" nav="historical-weather-data" link="chartmap-btn-chart-link" sel="chartmap-select-vis">
+          <div tabindex="1" id="btn-chart" class="btn-chart btn-default circle-box-left d-flex-center width-50" val="chart" nav="historical-weather-data" link="chartmap-btn-chart-link" sel="chartmap-select-vis">
             Chart
           </div>
-          <div id="btn-chart" class="btn-map btn-default-selected circle-box-right d-flex-center width-50"  nav="historical-weather-data"  val="map" link="chartmap-btn-map-link" sel="chartmap-select-vis">
+          <div tabindex="1" id="btn-chart" class="btn-map btn-default-selected circle-box-right d-flex-center width-50"  nav="historical-weather-data"  val="map" link="chartmap-btn-map-link" sel="chartmap-select-vis">
             Map
           </div>
         </div>
 
         <div id="chartmap-select-wrapper" class="rounded-choice-box padding-horrizontal-half padding-vertical-half default-btn-height d-flex-center width-20">
           <div class="select chartmap-select">
-            <div id="chartmap-select-vis" class="select-styled" rel="chart">Map</div>
+            <div tabindex="1" id="chartmap-select-vis" class="select-styled" rel="chart">Map</div>
             <ul class="select-options">
-              <li id="chartmap-select-chart-link" rel="chart" class="default-select-option" nav="historical-weather-data" link="chartmap-btn-chart-link" >Chart</li>
-              <li id="chartmap-select-map-link" rel="map" class="default-select-option" nav="historical-weather-data" link="chartmap-btn-map-link">Map</li>
+              <li tabindex="1" rel="chart" id="chartmap-select-chart-link" class="default-select-option" nav="historical-weather-data" link="chartmap-btn-chart-link" >Chart</li>
+              <li tabindex="1" rel="map" id="chartmap-select-map-link" class="default-select-option" nav="historical-weather-data" link="chartmap-btn-map-link">Map</li>
             </ul>
           </div>
         </div>
