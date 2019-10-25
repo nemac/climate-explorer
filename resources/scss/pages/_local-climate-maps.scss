@@ -100,11 +100,10 @@
     max-height: 100% !important;
     background-color: $ce3-blue5 !important;
 
-    &:hover, :focus {
+    &:hover, &:focus {
       background-color: darken($ce3-blue5, 7) !important;
+      outline: none !important;
     }
-
-
   }
 
   #temperature-map {
