@@ -325,7 +325,7 @@ $(function () {
 
       // reset map and chart sizes
       setMapSize();
-      chooseGraphOrMap(target);      
+      chooseGraphOrMap(target);
     }
   })
 
@@ -443,8 +443,10 @@ $(function () {
     // When state changes, just pass the current options along directly for this page.
     // If we re-use the stationsMap widget on another page there may be more handling to do.
     change: function change(event, options) {
+      // error check
+      if (options.currentstations) {return null}
+
       window.ce.ce('setStationsMapState', options);
-      if (options.currentstations.features) {return null}
       renderStationInfo(options.stationId, options.stationName);
 
       const messsageElem = document.getElementById('stations-map-message');
