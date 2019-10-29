@@ -18,9 +18,6 @@ $(function () {
   addNavlick('historical-weather-data', 'historical-weather-data', navConstants.selectorAddOn);
   addNavlick('hightide-flooding', 'hightide-flooding', navConstants.selectorAddOn);
   addNavlick('historical-thresholds', 'historical-thresholds', navConstants.selectorAddOn);
-  //
-  // // addNavlick('more', 'more', navConstants.selectorAddOn);
-  // addNavlick('hightide-flooding', 'hightide-flooding', navConstants.selectorAddOn);
 
   updateNavBar();
   addMoreClickEvent();
@@ -262,6 +259,27 @@ $(function () {
   function addNavlick(selector, nav, selectorAddOn) {
     // setup some constants
     const navConstants = setNavItemsCostants();
+
+    // find the the nav-item and add click event
+    $(`#${selector}${selectorAddOn}`).keyup( function(e) {
+      if (e.keyCode === 13){
+        e.stopPropagation();
+        // remove existing nav search url parameters
+        // otherwise we use the first one which is most likely the wrong page
+        const seachParams = removeUrlParam('nav')
+
+        // get the invisiable link just outside the element node tree
+        // if inside we have issues will bubbling propogation
+        const link = document.querySelector(`#${selector}-secretlink${navConstants.selectorAddOn}`);
+
+        // set the url and search params
+        const url = `${$(link).attr('href')}/${seachParams}&nav=${nav}`
+        $(link).attr('href', url);
+
+        // force click on invisible link
+        link.click();
+      }
+    });
 
     // find the the nav-item and add click event
     $(`#${selector}${selectorAddOn}`).click( function(e) {

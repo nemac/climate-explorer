@@ -58,6 +58,12 @@
   justify-content: center !important;
   align-items: center !important;
 
+  &:hover, &:focus {
+    @include border-radius(5px, 5px);
+    @include box-shadow(0px 2px 4px transparentize(#000, 0.761));
+    outline: none !important;
+  }
+
   .nav-footer-label {
     color: $ce3-darkgray !important;
   }
@@ -91,14 +97,18 @@
   align-content: center !important;
   align-self: center !important;
 
+  &:hover, &:focus {
+    @include border-radius(5px, 5px);
+    @include box-shadow(0px 2px 4px transparentize(#000, 0.761));
+    outline: none !important;
+  }
+
   .nav-footer-label {
-    // font-size: 16px !important;
     font-weight: 600 !important;
     color: $ce3-blue3 !important;
   }
 
   .nav-footer-icon {
-    // font-size: 50px !important;
     font-weight: 600 !important;
     color: $ce3-blue3 !important;
   }
