@@ -166,7 +166,7 @@
             yAxes: [{
               scaleLabel: {
                 fontSize: 16,
-                labelString: 'Annual Days with High-tide Flooding',
+                labelString: 'Annual Days with High-Tide Flooding',
                 display: true
               },
               ticks: {
