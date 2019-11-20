@@ -146,7 +146,6 @@
             mode: 'index',
             intersect: false,
             itemSort: function(a, b) {
-              // console.log(a, b, b.datasetIndex, a.datasetIndex)
               return b.datasetIndex - a.datasetIndex
             },
             callbacks: {
