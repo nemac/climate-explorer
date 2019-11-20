@@ -39,11 +39,11 @@
       }
     },
     zoomToggle: function () {
-      if (this.options.scale === 'historic') {
+      if (this.options.scale === 'Historical') {
         this.options.scale = 'full';
       }
       else {
-        this.options.scale = 'historic';
+        this.options.scale = 'Historical';
       }
 
 
@@ -112,7 +112,7 @@
           datasets: [
             {
               data: data_hist,
-              label: "Historic",
+              label: "Historical",
               backgroundColor: "#d6d6d6",
               borderColor: "#aaaaaa",
               borderWidth: 3,
