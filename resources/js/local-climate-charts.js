@@ -470,6 +470,10 @@ $(function () {
     var sliderElem = document.getElementById('slider-range');
     if (sliderElem) {
       sliderElem.noUiSlider.set([min, max]);
+
+
+      // ga event action, category, label
+      googleAnalyticsEvent('slide', 'update-years', min + "-" + min);
     }
   }
 
