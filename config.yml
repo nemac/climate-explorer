@@ -1,8 +1,8 @@
 #
 # This file is a centralized place to define variables which may be used in any HandleBars template file (.hbs).
 #
-google_analytics_id: 'UA-119744751-1'
-
+google_analytics_id: 'UA-153103803-1'
+                      # UA-119744751-1 old Climate Explorer Google Analytics Code
 # Nav config
 nav:
   # Temperature section
