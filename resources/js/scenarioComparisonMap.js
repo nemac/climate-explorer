@@ -98,7 +98,7 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
       rightOpacity: 1,
       showCounties: true,
       defaultExtent: { xmin: -119, xmax: -73, ymin: 18, ymax: 54 },
-      constrainMapToExtent: { xmin: -165, xmax: -62, ymin: 16, ymax: 54 },
+      constrainMapToExtent: { xmin: -185, xmax: -62, ymin: 16, ymax: 75 },
       //extent provides the initial view area of the map.
       extent: null,
       //zoom and center are ignored if extent is provided.
