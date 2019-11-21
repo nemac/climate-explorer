@@ -122,6 +122,9 @@ $(function () {
     addClass(lessRow1Elem, 'expanded');
 
     addClassAll(navFooterAreaLineElem, 'expanded');
+
+    // ga event action, category, label
+    googleAnalyticsEvent('click', 'navbar', 'more');
   }
 
     // this function adds click event handler
@@ -156,6 +159,9 @@ $(function () {
       removeClass(lessRow1Elem, 'expanded');
 
       removeClassAll(navFooterAreaLineElem, 'expanded');
+
+      // ga event action, category, label
+      googleAnalyticsEvent('click', 'navbar', 'less');
     }
 
   // this function checks if the nav item would be hidden behind the more item
@@ -276,6 +282,9 @@ $(function () {
         const url = `${$(link).attr('href')}/${seachParams}&nav=${nav}`
         $(link).attr('href', url);
 
+        // ga event action, category, label
+        googleAnalyticsEvent('click-tab', 'navbar', nav);
+
         // force click on invisible link
         link.click();
       }
@@ -295,6 +304,9 @@ $(function () {
       // set the url and search params
       const url = `${$(link).attr('href')}/${seachParams}&nav=${nav}`
       $(link).attr('href', url);
+
+      // ga event action, category, label
+      googleAnalyticsEvent('click', 'navbar', nav);
 
       // force click on invisible link
       link.click();

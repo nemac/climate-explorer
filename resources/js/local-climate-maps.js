@@ -84,6 +84,10 @@ $(function () {
   $('.download-select li a').click( function (e) {
     const downloadAction = $(this).attr('rel');
     $('#temperature-map').spinner();
+
+    // ga event action, category, label
+    googleAnalyticsEvent('click', 'download', downloadAction);
+
     // capture what we are downloading
     switch (downloadAction) {
       case 'download-rightmap-image': // download image
@@ -429,9 +433,13 @@ $(function () {
   $('#filters-toggle').click( function(e) {
     const target = $(e.target);
     if (target.hasClass('closed-filters')) {
+      // ga event action, category, label
+      googleAnalyticsEvent('click', 'toggle-filters', 'open');
       target.removeClass('closed-filters');
     } else {
       target.addClass('closed-filters');
+      // ga event action, category, label
+      googleAnalyticsEvent('click', 'toggle-filters', 'closed');
     }
 
     const infoRowElem = $('#info-row');
@@ -519,6 +527,9 @@ $(function () {
 
       // change map varriable
       updateSeason(val);
+
+      // ga event action, category, label
+      googleAnalyticsEvent('click', 'update-time', val);
     }
   })
 
@@ -541,6 +552,9 @@ $(function () {
 
         // change map varriable
         updateSeason(val);
+
+        // ga event action, category, label
+        googleAnalyticsEvent('click-tab', 'update-time', val);
       }
     }
   })
@@ -687,7 +701,6 @@ $(function () {
     });
     window.precipitationScenariosMap.scenarioComparisonMap("getShowSeasonControls") ? $("#precipitation-map-season").show(200) : $("#precipitation-map-season").hide();
   }
-
 
 
   if (!isNational()) {

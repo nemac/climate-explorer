@@ -16,7 +16,7 @@
     },
     scales: {
       full: {x_max: 2100, y_max: 365, y_step: 75},
-      historic: {x_max: 2020, y_max: 50, y_step: 10}
+      historical: {x_max: 2020, y_max: 50, y_step: 10}
     },
     data: {},
 
@@ -39,11 +39,11 @@
       }
     },
     zoomToggle: function () {
-      if (this.options.scale === 'Historical') {
+      if (this.options.scale === 'historical') {
         this.options.scale = 'full';
       }
       else {
-        this.options.scale = 'Historical';
+        this.options.scale = 'historical';
       }
 
 

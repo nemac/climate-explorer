@@ -147,6 +147,8 @@ $(function () {
         // unhide chart overlay
         showGraphs();
     }
+    // ga event action, category, label
+    googleAnalyticsEvent('change', 'chartmap', RelorVal(target));
     forceResize();
   }
 
@@ -230,6 +232,9 @@ $(function () {
     const downloadAction = $(this).attr('rel');
     const stationsMapState = window.ce.ce("getStationsMapState");
     const stationId = stationsMapState['stationId'];
+
+    // ga event action, category, label
+    googleAnalyticsEvent('click', 'download', downloadAction);
 
     // capture what we are downloading
     switch (downloadAction) {
@@ -326,6 +331,9 @@ $(function () {
       // reset map and chart sizes
       setMapSize();
       chooseGraphOrMap(target);
+
+      // ga event action, category, label
+      googleAnalyticsEvent('click-tab', 'chartmap', target);
     }
   })
 
@@ -351,6 +359,9 @@ $(function () {
     // reset map and chart sizes
     setMapSize();
     chooseGraphOrMap(target);
+
+    // ga event action, category, label
+    googleAnalyticsEvent('click', 'chartmap', target);
   })
 
   // in repsonsive mode the time is a pulldown this eanbles the change of the chart map
@@ -406,8 +417,12 @@ $(function () {
     const target = $(e.target);
     if (target.hasClass('closed-filters')) {
       target.removeClass('closed-filters');
+        // ga event action, category, label
+        googleAnalyticsEvent('click', 'toggle-filters', 'open');
     } else {
       target.addClass('closed-filters');
+        // ga event action, category, label
+        googleAnalyticsEvent('click', 'toggle-filters', 'close');
     }
 
     const infoRowElem = $('#info-row');
@@ -587,6 +602,8 @@ $(function () {
       $('#station-info-row .less').removeClass('d-none');
       $('#station-info-row .less-icon').removeClass('d-none');
 
+      // ga event action, category, label
+      googleAnalyticsEvent('click', 'toggle-chart-info', 'open');
     // hide description of charts
     } else {
       target.addClass('d-none');
@@ -595,6 +612,9 @@ $(function () {
 
       $('#station-info-row .less').addClass('d-none');
       $('#station-info-row .less-icon').addClass('d-none');
+
+      // ga event action, category, label
+      googleAnalyticsEvent('click', 'toggle-chart-info', 'close');
     }
 
     // force draw and resize of charts

@@ -91,6 +91,9 @@ function reEnableSelectNewItems(uniqueSelector){
     if ($(this).hasClass('default-select-option-disabled')) {return null}
     e.stopPropagation();
 
+    // ga event action, category, label
+    googleAnalyticsEvent('click', 'dropdown-tip', relAttr);
+
     const relAttr = $(this).attr('rel');
     const testItem = $(`li[rel='${relAttr}']`);
     $(testItem).click();
@@ -102,6 +105,9 @@ function reEnableSelectNewItems(uniqueSelector){
       // check if disabled exit if it is
       if ($(this).hasClass('default-select-option-disabled')) {return null}
       e.stopPropagation();
+
+      // ga event action, category, label
+      googleAnalyticsEvent('click-tab', 'dropdown-tip', relAttr);
 
       const relAttr = $(this).attr('rel');
       const testItem = $(`li[rel='${relAttr}']`);
@@ -125,6 +131,9 @@ function enableCustomSelect(uniqueSelector) {
         return null;
       }
 
+      // ga event action, category, label
+      googleAnalyticsEvent('click-tab', 'dropdown', uniqueSelector);
+
       $(`.select.${uniqueSelector} div.select-styled.active`).not(this).each(function(){
         $(this).removeClass('active').next('ul.select-options').hide();
       });
@@ -141,6 +150,9 @@ function enableCustomSelect(uniqueSelector) {
     if ( $(e.target).hasClass( 'disabled' )){
       return null;
     }
+
+    // ga event action, category, label
+    googleAnalyticsEvent('click', 'dropdown', uniqueSelector);
 
     $(`.select.${uniqueSelector} div.select-styled.active`).not(this).each(function(){
       $(this).removeClass('active').next('ul.select-options').hide();
@@ -180,6 +192,9 @@ function enableCustomSelect(uniqueSelector) {
          var icon = '';
        }
 
+       // ga event action, category, label
+       googleAnalyticsEvent('click-tab', 'listitem', $(this).text());
+
        $styledSelect.prepend(icon);
        $list.hide();
        // trigger custom event so we know the user changed or selected an item
@@ -213,6 +228,8 @@ function enableCustomSelect(uniqueSelector) {
       } else {
         var icon = '';
       }
+      // ga event action, category, label
+      googleAnalyticsEvent('click', 'listitem', $(this).text());
 
       $styledSelect.prepend(icon);
       $list.hide();
@@ -229,6 +246,10 @@ function enableCustomSelect(uniqueSelector) {
 
     const relAttr = $(this).attr('rel');
     const testItem = $(`li[rel='${relAttr}']`);
+
+    // ga event action, category, label
+    googleAnalyticsEvent('click', 'select-list', relAttr);
+
     $(testItem).click();
   });
 
@@ -241,10 +262,13 @@ function enableCustomSelect(uniqueSelector) {
 
       const relAttr = $(this).attr('rel');
       const testItem = $(`li[rel='${relAttr}']`);
+
+      // ga event action, category, label
+      googleAnalyticsEvent('click-tab', 'select-list', relAttr);
+
       $(testItem).click();
     }
   });
-
 
   // hide pulldown when user clicks anywhere outside of selected area
   $(document).click(function() {
@@ -252,8 +276,6 @@ function enableCustomSelect(uniqueSelector) {
     $list.hide();
   });
 }
-
-
 
 // function changes button to selected
 function toggleButton(selector){
@@ -326,6 +348,9 @@ function handleChartMapClick(target) {
   $(`#${link}`).attr('href', url);
   $(`#${link}`).click();
   document.getElementById(link).click();
+
+  // ga event action, category, label
+  googleAnalyticsEvent('click', 'chartmap', nav);
 }
 
 function handleClearLocationClick(target) {
@@ -346,6 +371,9 @@ function handleClearLocationClick(target) {
   $(`#${link}`).attr('href', url);
   $(`#${link}`).click();
   document.getElementById(link).click();
+
+  // ga event action, category, label
+  googleAnalyticsEvent('click', 'location', 'clear');
 }
 
 function handleClearSationClick(target) {
@@ -364,6 +392,9 @@ function handleClearSationClick(target) {
   $(`#${link}`).attr('href', url);
   $(`#${link}`).click();
   document.getElementById(link).click();
+
+  // ga event action, category, label
+  googleAnalyticsEvent('click', 'station', 'clear');
 }
 
 
@@ -443,4 +474,13 @@ function makeTip(elem) {
     hideOnClick: false,
     flipOnUpdate: false
   }));
+}
+
+// adds a custom google events
+function googleAnalyticsEvent(action = '', category = '', label = '', value = 0) {
+  gtag('event', action, {  // eslint-disable-line
+    event_category: category,
+    event_label: label,
+    value: `${value}`
+  });
 }

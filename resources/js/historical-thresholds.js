@@ -214,6 +214,8 @@ $(function () {
         // unhide chart overlay
         showGraphs();
     }
+    // ga event action, category, label
+    googleAnalyticsEvent('change', 'chartmap', RelorVal(target));
     forceResize();
   }
 
@@ -310,6 +312,9 @@ $(function () {
     const stationsMapState = window.ce.ce("getStationsMapState");
     const stationId = stationsMapState['stationId'];
 
+    // ga event action, category, label
+    googleAnalyticsEvent('click', 'download', downloadAction);
+
     // capture what we are downloading
     switch (downloadAction) {
       case 'download-thresholds-image': // download image
@@ -355,6 +360,9 @@ $(function () {
           // change map url state
           window.ce.ce('setStationsMapState', { stationId, stationName, threshold: newVal, thresholdValue: variableValue});
 
+          // ga event action, category, label
+          googleAnalyticsEvent('click-tab', 'threshold-up', newVal);
+
           $("#thresholds-container").item({
             threshold: newVal,
           }).item('update');
@@ -390,6 +398,9 @@ $(function () {
         // change map url state
         window.ce.ce('setStationsMapState', { stationId, stationName, threshold: newVal, thresholdValue: variableValue});
 
+        // ga event action, category, label
+        googleAnalyticsEvent('click', 'threshold-up', newVal);
+
         $("#thresholds-container").item({
           threshold: newVal,
         }).item('update');
@@ -421,6 +432,9 @@ $(function () {
 
           // change map url state
           window.ce.ce('setStationsMapState', { stationId, stationName, threshold: newVal, thresholdValue: variableValue});
+
+          // ga event action, category, label
+          googleAnalyticsEvent('click-tab', 'threshold-down', newVal);
 
           $("#thresholds-container").item({
             threshold: newVal,
@@ -454,6 +468,9 @@ $(function () {
         // change map url state
         window.ce.ce('setStationsMapState', { stationId, stationName, threshold: newVal, thresholdValue: variableValue});
 
+        // ga event action, category, label
+        googleAnalyticsEvent('click', 'threshold-down', newVal);
+
         $("#thresholds-container").item({
           threshold: newVal,
         }).item('update');
@@ -485,6 +502,9 @@ $(function () {
 
           // change map url state
           window.ce.ce('setStationsMapState', {stationId, stationName,  window: newVal, thresholdValue: variableValue});
+
+          // ga event action, category, label
+          googleAnalyticsEvent('click-tab', 'window-up', newVal);
 
           $("#thresholds-container").item({
             window: newVal,
@@ -518,6 +538,9 @@ $(function () {
         // change map url state
         window.ce.ce('setStationsMapState', {stationId, stationName,  window: newVal, thresholdValue: variableValue});
 
+        // ga event action, category, label
+        googleAnalyticsEvent('click', 'window-up', newVal);
+
         $("#thresholds-container").item({
           window: newVal,
         }).item('update');
@@ -549,6 +572,9 @@ $(function () {
 
           // change map url state
           window.ce.ce('setStationsMapState', { stationId, stationName, window: newVal,  thresholdValue: variableValue });
+
+          // ga event action, category, label
+          googleAnalyticsEvent('click-tab', 'window-down', newVal);
 
           $("#thresholds-container").item({
             window: newVal,
@@ -582,6 +608,9 @@ $(function () {
 
         // change map url state
         window.ce.ce('setStationsMapState', { stationId, stationName, window: newVal,  thresholdValue: variableValue });
+
+        // ga event action, category, label
+        googleAnalyticsEvent('click', 'window-down', newVal);
 
         $("#thresholds-container").item({
           window: newVal,
@@ -745,6 +774,9 @@ $(function () {
     // change map url state
     window.ce.ce('setStationsMapState', { stationId, stationName, threshold: newValue, thresholdValue: variableValue});
 
+    // ga event action, category, label
+    googleAnalyticsEvent('click', 'threshold-value', newVal);
+
     // update chart with new threshold value
     $("#thresholds-container").item({ threshold: newValue }).item('update');
 
@@ -762,6 +794,9 @@ $(function () {
 
     // change map url state
     window.ce.ce('setStationsMapState', { stationId, stationName, window: newValue, thresholdValue: variableValue});
+
+    // ga event action, category, label
+    googleAnalyticsEvent('click', 'window-value', newVal);
 
 
     // update chart with new threshold value
@@ -791,7 +826,10 @@ $(function () {
 
       // reset map and chart sizes
       setMapSize();
-      chooseGraphOrMap(target);      
+      chooseGraphOrMap(target);
+
+      // ga event action, category, label
+      googleAnalyticsEvent('click-tab', 'chartmap', target);
     }
   });
 
@@ -818,6 +856,9 @@ $(function () {
     // reset map and chart sizes
     setMapSize();
     chooseGraphOrMap(target);
+
+    // ga event action, category, label
+    googleAnalyticsEvent('click', 'chartmap', target);
   });
 
   // in repsonsive mode the time is a pulldown this eanbles the change of the chart map
@@ -873,8 +914,12 @@ $(function () {
     const target = $(e.target);
     if (target.hasClass('closed-filters')) {
       target.removeClass('closed-filters');
+        // ga event action, category, label
+        googleAnalyticsEvent('click', 'toggle-filters', 'open');
     } else {
       target.addClass('closed-filters');
+        // ga event action, category, label
+        googleAnalyticsEvent('click', 'toggle-filters', 'close');
     }
 
     const infoRowElem = $('#info-row');
@@ -1083,6 +1128,8 @@ $(function () {
         $('#station-info-row .less').removeClass('d-none');
         $('#station-info-row .less-icon').removeClass('d-none');
 
+        // ga event action, category, label
+        googleAnalyticsEvent('click', 'toggle-chart-info', 'open');
       // hide description of charts
       } else {
         target.addClass('d-none');
@@ -1091,6 +1138,9 @@ $(function () {
 
         $('#station-info-row .less').addClass('d-none');
         $('#station-info-row .less-icon').addClass('d-none');
+
+        // ga event action, category, label
+        googleAnalyticsEvent('click', 'toggle-chart-info', 'close');
       }
 
       // force draw and resize of charts

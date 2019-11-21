@@ -40,6 +40,9 @@ $(function () {
   $('.download-select li a').click( function (e) {
     const downloadAction = $(this).attr('rel');
 
+    // ga event action, category, label
+    googleAnalyticsEvent('click', 'download', downloadAction);
+
     // capture what we are downloading
     switch (downloadAction) {
       case 'download-image': // download image
@@ -65,9 +68,13 @@ $(function () {
   $('#filters-toggle').click( function(e) {
       const target = $(e.target);
       if (target.hasClass('closed-filters')) {
+        // ga event action, category, label
+        googleAnalyticsEvent('click', 'toggle-filters', 'open');
         target.removeClass('closed-filters');
       } else {
         target.addClass('closed-filters');
+          // ga event action, category, label
+          googleAnalyticsEvent('click', 'toggle-filters', 'close');
       }
 
       const infoRowElem = $('#info-row');
@@ -101,6 +108,9 @@ $(function () {
       setSelectFromButton(target);
 
       handleChartMapClick(target);
+
+      // ga event action, category, label
+      googleAnalyticsEvent('clickt-tab', 'chartmap', target);
     }
   })
 
@@ -115,6 +125,9 @@ $(function () {
     setSelectFromButton(target);
 
     handleChartMapClick(target);
+
+    // ga event action, category, label
+    googleAnalyticsEvent('click', 'chartmap', target);
   })
 
   // eanbles time annual, monlthly click events
@@ -139,6 +152,9 @@ $(function () {
 
       // change select pulldowns for resposnive mode
       setSelectFromButton(target);
+
+      // ga event action, category, label
+      googleAnalyticsEvent('click', 'update-time', val);
     }
   })
 
@@ -165,6 +181,9 @@ $(function () {
 
         // change select pulldowns for resposnive mode
         setSelectFromButton(target);
+
+        // ga event action, category, label
+        googleAnalyticsEvent('click-tab', 'update-time', val);
       }
     }
   })
@@ -209,6 +228,9 @@ $(function () {
 
     // update the chart layers
     updateChartLayers(target);
+
+    // ga event action, category, label
+    googleAnalyticsEvent('click', 'legend-wrapper', target);
   })
 
   // adds a click event to turn off chart layers aka what you
@@ -219,6 +241,9 @@ $(function () {
 
       // update the chart layers
       updateChartLayers(target);
+
+      // ga event action, category, label
+      googleAnalyticsEvent('click-tab', 'legend-wrapper', target);
     }
   })
 
@@ -236,6 +261,9 @@ $(function () {
 
       // updates the select pulldown for repsonsive mode
       setSelectFromButton(target);
+
+      // ga event action, category, label
+      googleAnalyticsEvent('click', 'presentation', val);
   })
 
   // in repsonsive mode the presentation is a pulldown this eanbles the change of the presentation
@@ -260,6 +288,9 @@ $(function () {
 
     // change time period
     updateTimePeriod(val);
+
+    // ga event action, category, label
+    googleAnalyticsEvent('click-tab', 'monthly-select-wrapper', val);
   })
 
   // binds update of chart varriable to change of selector
@@ -329,6 +360,9 @@ $(function () {
     // set historical
     const histmod = merged.hist_mod;
     const histobs = merged.histobs;
+
+    // ga event action, category, label
+    googleAnalyticsEvent('change', 'chart', scenario + '-' + histmod + '-' + histobs);
 
     // update chart
     window.tempChart.update({
@@ -414,6 +448,9 @@ $(function () {
   }
   // this function changes the time period for monthly chart centered on 2025, 2050, 2075
   function updateTimePeriod(targetval) {
+    // ga event action, category, label
+    googleAnalyticsEvent('change', 'chart-time-period', targetval);
+
     window.tempChart.update({
       timeperiod: targetval
     });
@@ -464,6 +501,9 @@ $(function () {
 
         // update chart with new max min range
         return window.tempChart.setXRange(minValue, maxValue);
+
+        // ga event action, category, label
+        googleAnalyticsEvent('slide', 'update-years', minValue + "-" + maxValue);
       });
 
       // update chart with default starting min max

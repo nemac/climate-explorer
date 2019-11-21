@@ -46,8 +46,11 @@ $(function () {
         const url = `${$(link).attr('href')}/${seachParams}&nav=${nav}`
         $(link).attr('href', url);
 
+        // ga event action, category, label
+        googleAnalyticsEvent('click-tab', 'card', nav);
+
         // force click on invisiable link
-        link.click();        
+        link.click();
       }
     });
 
@@ -66,6 +69,9 @@ $(function () {
       // set the url and search params
       const url = `${$(link).attr('href')}/${seachParams}&nav=${nav}`
       $(link).attr('href', url);
+
+      // ga event action, category, label
+      googleAnalyticsEvent('click', 'card', nav);
 
       // force click on invisiable link
       link.click();
