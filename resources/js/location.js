@@ -30,6 +30,9 @@ $(function () {
   $('.download-select li a').click( function (e) {
     const downloadAction = $(this).attr('rel');
 
+    // ga event action, category, label
+    googleAnalyticsEvent('click', 'download', downloadAction);
+
     // capture what we are downloading
     switch (downloadAction) {
       case 'download-image': // download image
