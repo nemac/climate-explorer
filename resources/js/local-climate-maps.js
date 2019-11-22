@@ -704,7 +704,7 @@ $(function () {
               // messsageElem.style.top = `-${((rect.bottom - rect.top)/2)}px`;
               messsageElem.style.left = `${(rect.right - rect.left)/3}px`;
               messsageElem.style.top = `-${((rect.bottom - rect.top)-6)}px`;
-              messsageElem.innerHTML = 'The location on the map is outside the Contiental United States, there is currently no climate map data avaialble.'
+              messsageElem.innerHTML = 'The location on the map is outside the Continental United States. Currently, there is no climate map data available.'
               messsageElem.classList.remove('d-none');
           } else {
             messsageElem.classList.add('d-none');
