@@ -50,6 +50,27 @@
   }
 }
 
+.map-nodata-message {
+  z-index: 500;
+  width: 50%;
+  position: relative;
+  top: -250px;
+  left: 150px;
+  @include very-small {
+    top: -200px !important;
+    left: 10% !important;
+    width: 80%;
+  }
+  text-align: center;
+  padding: $ce3-default-padding;
+  background-color: lighten($ce3-warning-state, 30)!important;
+  color: $ce3-warning-state !important;
+  font: 500 14px $roboto !important;
+  border: 1px solid $ce3-warning-state !important;
+  @include border-radius(5px, 5px);
+}
+
+
 #map-for-print-left , #map-for-print-right {
   .legend {
     margin: $ce3-default-padding;

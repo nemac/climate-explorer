@@ -563,6 +563,20 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
           if (this.view.zoom && this.view.zoom > 0) {
             this.options.zoom = this.view.zoom;
           }
+
+          // make sure turf has been added
+          // add if center point is within the conus extent defeind by
+          // const bbox = [-128.74, 24.23,  -64.1, 51.41];
+          if (typeof turf !== "undefined") {
+            const bbox = [-128.74, 24.23,  -64.1, 51.41]; // conus extent
+            const poly = turf.bboxPolygon(bbox);
+            var pt = turf.point(this.options.center.reverse());
+            // is the center in conus
+            this.options.isCenterConus = turf.booleanPointInPolygon(pt, poly);
+            this._trigger('changeExtent', null, this.options);
+          }
+
+
           this._trigger('change', null, this.options);
         }
       }.bind(this));

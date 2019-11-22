@@ -1,10 +1,6 @@
 'use strict';
 
 $(function () {
-  // var activeVariableTemperature = 'tmax';
-  // var activeVariablePrecipitation = 'pcpn';
-  // var activeVariableDerived = 'hdd';
-
   // get city, state from state url
   $('#default-city-state').text(window.ce.ce('getLocationPageState')['city']);
   $('#default-city-county').text(window.ce.ce('getLocationPageState')['county']);
@@ -18,7 +14,6 @@ $(function () {
     $('#cards-search-input').attr("placeholder", "Location missing, enter a county, city, or zip code");
   }
 
-  // let mapcenter = window.ce.ce('getLocationPageState')['center'];
   let mapExtent = window.ce.ce('getLocationPageState')['extent'];
   let mapZoom = window.ce.ce('getLocationPageState')['zoom'] || 9;
   let lat = window.ce.ce('getLocationPageState')['lat'];
@@ -695,6 +690,28 @@ $(function () {
         }
 
       },
+      // when user pans zooms intiate to check current exent
+      // for alaska and islands to display not map data message...
+      changeExtent: function changeExtent(event, options) {
+        // console.log('changeExtent', options.extent, options.center, options.isCenterConus)
+        // xmin: -178.44, xmax: -13.56, ymin: 22.72, ymax: 50.93
+        const messsageElem = document.getElementById('map-message');
+        if (messsageElem) {
+          if (!options.isCenterConus) {
+            // get map parent element - which provides the correct dimensions for the map
+              const rect = document.getElementById('map-wrap').getBoundingClientRect();
+              // messsageElem.style.left = `${(rect.right - rect.left)/3}px`;
+              // messsageElem.style.top = `-${((rect.bottom - rect.top)/2)}px`;
+              messsageElem.style.left = `${(rect.right - rect.left)/3}px`;
+              messsageElem.style.top = `-${((rect.bottom - rect.top))}px`;
+              messsageElem.innerHTML = 'The location on the map is outside the Contiental United States, there is currently no climate map data avaialble.'
+              messsageElem.classList.remove('d-none');
+          } else {
+            messsageElem.classList.add('d-none');
+          }
+      }
+    },
+
       change: function change(event) {
         window.precipitationScenariosMap.scenarioComparisonMap("getShowSeasonControls") ? $("#precipitation-map-season").show(200) : $("#precipitation-map-season").hide();
       }
