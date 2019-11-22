@@ -942,7 +942,11 @@ App.prototype.locationSearch = function () {
 
       // alaska the Borough and Census Area are not in the json data so remove it for the comparison
       if(data.administrative_area_level_1_short === "AK"){
-        if (c.label.replace(/ Borough/g, '') === county.replace(/\+/g, ' ') || c.label.replace(/ Census Area/g, '') === county.replace(/\+/g, ' ')) {
+        console.log(c.label, '-',county)
+        if (c.label.replace(/ Borough/g, '') === county.replace(/\+/g, ' ') ||
+            c.label.replace(/ Census Area/g, '') === county.replace(/\+/g, ' ') ||
+            c.label.replace(/ Municipality/g, '') === county.replace(/\+/g, ' ')||
+            c.label.replace(/ City and Borough/g, '') === county.replace(/\+/g, ' ')) {
           fips = c.fips;
           if (c.label.match('city')) {
             county = county.replace('+County', '+City');
