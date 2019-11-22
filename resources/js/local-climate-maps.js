@@ -703,7 +703,7 @@ $(function () {
               // messsageElem.style.left = `${(rect.right - rect.left)/3}px`;
               // messsageElem.style.top = `-${((rect.bottom - rect.top)/2)}px`;
               messsageElem.style.left = `${(rect.right - rect.left)/3}px`;
-              messsageElem.style.top = `-${((rect.bottom - rect.top))}px`;
+              messsageElem.style.top = `-${((rect.bottom - rect.top)-6)}px`;
               messsageElem.innerHTML = 'The location on the map is outside the Contiental United States, there is currently no climate map data avaialble.'
               messsageElem.classList.remove('d-none');
           } else {
