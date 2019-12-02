@@ -6,9 +6,13 @@
   min-width: 48px;
   padding-top: 3px;
   margin-right: 0px;
+  &.main {
+    padding-top: 32px;
+  }
   @include very-small  {
     margin-right: -6px;
   }
+
 }
 
 
