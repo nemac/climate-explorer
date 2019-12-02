@@ -15241,6 +15241,13 @@ input.input-inner-default:focus {
   padding-top: 32px;
 }
 
+@media screen and (max-width: 768px) {
+  /* line 13, resources/scss/template/_share.scss */
+  #share-widget-wrapper.main, #about-widget-wrapper.main {
+    padding-top: 3px;
+  }
+}
+
 @media screen and (max-width: 599px) {
   /* line 3, resources/scss/template/_share.scss */
   #share-widget-wrapper, #about-widget-wrapper {
@@ -15248,21 +15255,21 @@ input.input-inner-default:focus {
   }
 }
 
-/* line 19, resources/scss/template/_share.scss */
+/* line 24, resources/scss/template/_share.scss */
 #about-widget-wrapper {
   margin-left: auto;
   width: 148px !important;
 }
 
 @media screen and (max-width: 599px) {
-  /* line 19, resources/scss/template/_share.scss */
+  /* line 24, resources/scss/template/_share.scss */
   #about-widget-wrapper {
     width: 48px !important;
     margin-right: 3px !important;
   }
 }
 
-/* line 28, resources/scss/template/_share.scss */
+/* line 33, resources/scss/template/_share.scss */
 .share-widget {
   cursor: pointer;
   background: #124086;
@@ -15277,7 +15284,7 @@ input.input-inner-default:focus {
   margin-right: 12px;
 }
 
-/* line 38, resources/scss/template/_share.scss */
+/* line 43, resources/scss/template/_share.scss */
 .share-widget a {
   width: 48px !important;
   min-width: 48px !important;
@@ -15293,13 +15300,13 @@ input.input-inner-default:focus {
 }
 
 @media screen and (max-width: 599px) {
-  /* line 48, resources/scss/template/_share.scss */
+  /* line 53, resources/scss/template/_share.scss */
   .share-widget a .a-share-label {
     display: none;
   }
 }
 
-/* line 54, resources/scss/template/_share.scss */
+/* line 59, resources/scss/template/_share.scss */
 .share-widget .icon {
   display: block;
   margin: 0 auto 4px auto;
@@ -15308,7 +15315,7 @@ input.input-inner-default:focus {
   text-indent: 0;
 }
 
-/* line 62, resources/scss/template/_share.scss */
+/* line 67, resources/scss/template/_share.scss */
 .share-widget .share-icon {
   width: 32px;
   font-size: 1.25rem;
@@ -15316,14 +15323,14 @@ input.input-inner-default:focus {
 }
 
 @media screen and (max-width: 900px) {
-  /* line 62, resources/scss/template/_share.scss */
+  /* line 67, resources/scss/template/_share.scss */
   .share-widget .share-icon {
     font-size: .875rem;
     padding-bottom: 3px;
   }
 }
 
-/* line 72, resources/scss/template/_share.scss */
+/* line 77, resources/scss/template/_share.scss */
 .share-widget .share-trigger {
   text-align: center;
   font: 0.625rem/1em "CESans-Heavy", Roboto, Helvetica, "Helvetica Neue", Arial, sans-serif;
@@ -15336,7 +15343,7 @@ input.input-inner-default:focus {
   z-index: 2;
 }
 
-/* line 79, resources/scss/template/_share.scss */
+/* line 84, resources/scss/template/_share.scss */
 .share-widget .share-trigger.open {
   background: #144693;
   -moz-border-radius-bottomright: 0px !important;
@@ -15347,7 +15354,7 @@ input.input-inner-default:focus {
   border-bottom-left-radius: 0px !important;
 }
 
-/* line 86, resources/scss/template/_share.scss */
+/* line 91, resources/scss/template/_share.scss */
 .share-widget ul {
   position: absolute;
   margin-right: 10px;
@@ -15369,14 +15376,14 @@ input.input-inner-default:focus {
 }
 
 @media screen and (max-width: 599px) {
-  /* line 86, resources/scss/template/_share.scss */
+  /* line 91, resources/scss/template/_share.scss */
   .share-widget ul {
     width: 40px;
     min-width: 40px;
   }
 }
 
-/* line 105, resources/scss/template/_share.scss */
+/* line 110, resources/scss/template/_share.scss */
 .share-widget ul li {
   width: 40px;
   min-width: 40px;
@@ -15385,37 +15392,37 @@ input.input-inner-default:focus {
 }
 
 @media screen and (max-width: 599px) {
-  /* line 105, resources/scss/template/_share.scss */
+  /* line 110, resources/scss/template/_share.scss */
   .share-widget ul li {
     width: 40px;
     min-width: 40px;
   }
 }
 
-/* line 116, resources/scss/template/_share.scss */
+/* line 121, resources/scss/template/_share.scss */
 .share-widget ul li .a-share-label {
   font-size: 0;
   line-height: 0;
   text-indent: -9999px;
 }
 
-/* line 119, resources/scss/template/_share.scss */
+/* line 124, resources/scss/template/_share.scss */
 .share-widget ul li:hover {
   background: #a6c6f3;
 }
 
-/* line 122, resources/scss/template/_share.scss */
+/* line 127, resources/scss/template/_share.scss */
 .share-widget ul li a {
   top: 0px;
   position: relative;
 }
 
-/* line 125, resources/scss/template/_share.scss */
+/* line 130, resources/scss/template/_share.scss */
 .share-widget ul li a:hover {
   background: #a6c6f3;
 }
 
-/* line 131, resources/scss/template/_share.scss */
+/* line 136, resources/scss/template/_share.scss */
 .share-widget ul a {
   color: #124086;
   font-size: 0;
@@ -15423,7 +15430,7 @@ input.input-inner-default:focus {
   text-indent: -9999px;
 }
 
-/* line 137, resources/scss/template/_share.scss */
+/* line 142, resources/scss/template/_share.scss */
 .share-widget ul .icon {
   width: 40px;
   padding: 12px;
@@ -15435,7 +15442,7 @@ input.input-inner-default:focus {
   margin: 0 auto;
 }
 
-/* line 148, resources/scss/template/_share.scss */
+/* line 153, resources/scss/template/_share.scss */
 .share-widget.about {
   width: 148px;
   max-width: 148px;
@@ -15443,21 +15450,21 @@ input.input-inner-default:focus {
 }
 
 @media screen and (max-width: 900px) and (min-width: 599px) {
-  /* line 148, resources/scss/template/_share.scss */
+  /* line 153, resources/scss/template/_share.scss */
   .share-widget.about {
     margin-right: 38px;
   }
 }
 
 @media screen and (max-width: 599px) {
-  /* line 148, resources/scss/template/_share.scss */
+  /* line 153, resources/scss/template/_share.scss */
   .share-widget.about {
     width: 46px;
     max-width: 46px;
   }
 }
 
-/* line 162, resources/scss/template/_share.scss */
+/* line 167, resources/scss/template/_share.scss */
 .share-widget.about .icon {
   width: 25%;
   height: 100%;
@@ -15468,26 +15475,26 @@ input.input-inner-default:focus {
 }
 
 @media screen and (max-width: 599px) {
-  /* line 162, resources/scss/template/_share.scss */
+  /* line 167, resources/scss/template/_share.scss */
   .share-widget.about .icon {
     font-size: 1.25rem;
     padding-top: 18px;
   }
 }
 
-/* line 176, resources/scss/template/_share.scss */
+/* line 181, resources/scss/template/_share.scss */
 .share-widget.about .share-icon {
   vertical-align: middle;
 }
 
 @media screen and (max-width: 599px) {
-  /* line 176, resources/scss/template/_share.scss */
+  /* line 181, resources/scss/template/_share.scss */
   .share-widget.about .share-icon {
     font-size: 1.25rem;
   }
 }
 
-/* line 183, resources/scss/template/_share.scss */
+/* line 188, resources/scss/template/_share.scss */
 .share-widget.about a {
   display: block !important;
   width: 100% !important;
@@ -15496,7 +15503,7 @@ input.input-inner-default:focus {
 }
 
 @media screen and (max-width: 599px) {
-  /* line 183, resources/scss/template/_share.scss */
+  /* line 188, resources/scss/template/_share.scss */
   .share-widget.about a {
     padding-top: 0px;
     width: 40px !important;
@@ -15505,7 +15512,7 @@ input.input-inner-default:focus {
   }
 }
 
-/* line 198, resources/scss/template/_share.scss */
+/* line 203, resources/scss/template/_share.scss */
 .share-widget.about ul {
   width: 137px;
   text-indent: 0px;
@@ -15513,40 +15520,40 @@ input.input-inner-default:focus {
 }
 
 @media screen and (max-width: 599px) {
-  /* line 198, resources/scss/template/_share.scss */
+  /* line 203, resources/scss/template/_share.scss */
   .share-widget.about ul {
     width: 46px;
     max-width: 46px;
   }
 }
 
-/* line 208, resources/scss/template/_share.scss */
+/* line 213, resources/scss/template/_share.scss */
 .share-widget.about ul li {
   width: 137px;
   padding-top: 5px;
 }
 
-/* line 212, resources/scss/template/_share.scss */
+/* line 217, resources/scss/template/_share.scss */
 .share-widget.about ul li a {
   padding-top: 12px;
 }
 
 @media screen and (max-width: 599px) {
-  /* line 212, resources/scss/template/_share.scss */
+  /* line 217, resources/scss/template/_share.scss */
   .share-widget.about ul li a {
     padding-top: 0px;
   }
 }
 
 @media screen and (max-width: 599px) {
-  /* line 208, resources/scss/template/_share.scss */
+  /* line 213, resources/scss/template/_share.scss */
   .share-widget.about ul li {
     width: 46px;
     max-width: 46px;
   }
 }
 
-/* line 224, resources/scss/template/_share.scss */
+/* line 229, resources/scss/template/_share.scss */
 .share-widget.about ul li .a-share-label {
   vertical-align: middle;
   font-size: 14px;
@@ -15561,13 +15568,13 @@ input.input-inner-default:focus {
 }
 
 @media screen and (max-width: 599px) {
-  /* line 224, resources/scss/template/_share.scss */
+  /* line 229, resources/scss/template/_share.scss */
   .share-widget.about ul li .a-share-label {
     display: none;
   }
 }
 
-/* line 248, resources/scss/template/_share.scss */
+/* line 253, resources/scss/template/_share.scss */
 #share-permalink-input {
   display: none;
   position: absolute;
@@ -15588,14 +15595,14 @@ input.input-inner-default:focus {
 }
 
 @media screen and (max-width: 900px) {
-  /* line 248, resources/scss/template/_share.scss */
+  /* line 253, resources/scss/template/_share.scss */
   #share-permalink-input {
     padding: 8px;
     width: 205px;
   }
 }
 
-/* line 264, resources/scss/template/_share.scss */
+/* line 269, resources/scss/template/_share.scss */
 #share-permalink-input input {
   display: block;
   position: absolute;
@@ -15618,12 +15625,12 @@ input.input-inner-default:focus {
   outline: none;
 }
 
-/* line 282, resources/scss/template/_share.scss */
+/* line 287, resources/scss/template/_share.scss */
 #share-permalink-inputfocus {
   outline: none !important;
 }
 
-/* line 286, resources/scss/template/_share.scss */
+/* line 291, resources/scss/template/_share.scss */
 #share-permalink-input:after {
   content: '';
   display: block;
