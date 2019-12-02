@@ -442,7 +442,7 @@
           height: '180px'
         }, 200);
         $(this).addClass('open').siblings('ul.about').animate({
-          height: '240px'
+          height: '180px'
         }, 200);
       }
     });
