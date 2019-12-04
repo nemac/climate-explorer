@@ -570,10 +570,12 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
           if (typeof turf !== "undefined") {
             const bbox = [-128.74, 24.23,  -64.1, 51.41]; // conus extent
             const poly = turf.bboxPolygon(bbox);
-            var pt = turf.point(this.options.center.reverse());
-            // is the center in conus
-            this.options.isCenterConus = turf.booleanPointInPolygon(pt, poly);
-            this._trigger('changeExtent', null, this.options);
+            if (this.options.center){
+              var pt = turf.point(this.options.center.reverse());
+              // is the center in conus
+              this.options.isCenterConus = turf.booleanPointInPolygon(pt, poly);
+              this._trigger('changeExtent', null, this.options);              
+            }
           }
 
 
