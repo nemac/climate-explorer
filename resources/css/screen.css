@@ -21124,3 +21124,119 @@ https://raw.github.com/shagstrom/split-pane/master/LICENSE
   height: 1.5rem;
   padding-top: 0;
 }
+
+/* line 1941, resources/scss/screen.scss */
+.feedback-trigger-small {
+  position: absolute;
+  cursor: pointer;
+  font: 500 18px Roboto, Helvetica, "Helvetica Neue", Arial, sans-serif;
+  top: calc(100% - 48px);
+  left: calc(100% - 48px);
+  width: 48px;
+  height: 48px;
+  display: inline-block;
+  text-align: center;
+  vertical-align: middle;
+  background-color: #124086;
+  color: #E9F1FC;
+  padding-top: 12px;
+  padding-left: 3px;
+  -moz-border-radius-topleft: 48px;
+  -webkit-border-top-left-radius: 48px;
+  border-top-left-radius: 48px;
+  -moz-border-radius-bottomleft: 48px;
+  -webkit-border-bottom-left-radius: 48px;
+  border-bottom-left-radius: 48px;
+  -moz-border-radius-topright: 48px;
+  -webkit-border-top-right-radius: 48px;
+  border-top-right-radius: 48px;
+  -webkit-box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.239);
+  -moz-box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.239);
+  box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.239);
+}
+
+/* line 1961, resources/scss/screen.scss */
+.feedback-trigger-small:hover {
+  background-color: #195abc;
+  -webkit-box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.239);
+  -moz-box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.239);
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.239);
+}
+
+/* line 1967, resources/scss/screen.scss */
+#feedback-close-button-yes, #feedback-close-button-no {
+  background-color: #FBFCFE;
+  vertical-align: middle;
+  line-height: 28px;
+  margin-left: 24px;
+  color: #124086;
+  -webkit-border-radius: 4px;
+  -moz-border-radius: 4px;
+  -ms-border-radius: 4px;
+  -o-border-radius: 4px;
+  border-radius: 4px;
+  cursor: pointer;
+  display: inline-block;
+  width: 42px;
+  height: 30px;
+}
+
+/* line 1979, resources/scss/screen.scss */
+#feedback-close-button-yes:hover, #feedback-close-button-no:hover {
+  background-color: #beceef;
+}
+
+/* line 1984, resources/scss/screen.scss */
+.feedback-trigger {
+  position: absolute;
+  background-color: #124086;
+  top: calc(100% - 54px);
+  left: calc(100% - 400px);
+  cursor: pointer;
+  width: 400px;
+  text-align: center;
+  font: 600 16px Roboto, Helvetica, "Helvetica Neue", Arial, sans-serif;
+  background-color: #124086;
+  color: #E9F1FC;
+  padding: 12px;
+  -webkit-box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.239);
+  -moz-box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.239);
+  box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.239);
+  -moz-border-radius-topleft: 24px;
+  -webkit-border-top-left-radius: 24px;
+  border-top-left-radius: 24px;
+  display: inline-block;
+}
+
+@media screen and (max-width: 768px) {
+  /* line 1984, resources/scss/screen.scss */
+  .feedback-trigger {
+    width: 100%;
+    left: 0px;
+  }
+}
+
+/* line 1998, resources/scss/screen.scss */
+.feedback-trigger .feedback-text {
+  padding-left: 6px;
+}
+
+/* line 2002, resources/scss/screen.scss */
+.feedback-trigger .feedback-icon {
+  margin-top: 3px;
+}
+
+@media screen and (max-width: 768px) {
+  /* line 2002, resources/scss/screen.scss */
+  .feedback-trigger .feedback-icon {
+    display: none;
+  }
+}
+
+/* line 2017, resources/scss/screen.scss */
+.feedback-trigger:hover {
+  background-color: #195abc;
+  -webkit-box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.239);
+  -moz-box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.239);
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.239);
+}

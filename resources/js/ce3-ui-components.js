@@ -484,3 +484,109 @@ function googleAnalyticsEvent(action = '', category = '', label = '', value = 0)
     value: `${value}`
   });
 }
+
+
+// feedback for beta. remove after we go live?
+function storageAvailable() {
+  const type = 'localStorage';
+  let storage;
+  try {
+    storage = window[type];
+    const x = '__storage_test__';
+    storage.setItem(x, x);
+    storage.removeItem(x);
+    return true;
+  } catch (e) {
+    return e instanceof DOMException && (
+      // everything except Firefox
+      e.code === 22 ||
+      // Firefox
+      e.code === 1014 ||
+      // test name field too, because code might not be present
+      // everything except Firefox
+      e.name === 'QuotaExceededError' ||
+      // Firefox
+      e.name === 'NS_ERROR_DOM_QUOTA_REACHED') &&
+      // acknowledge QuotaExceededError only if there's something already stored
+      storage.length !== 0;
+  }
+}
+
+const feedbackElem = document.getElementById('feedback-trigger');
+const feedbackSmallElem = document.getElementById('feedback-trigger-small');
+const feedbackYesElem = document.getElementById('feedback-close-button-yes');
+const feedbackNoElem = document.getElementById('feedback-close-button-no');
+const feedbackLinkElem = document.getElementById('feedback-link');
+
+if (storageAvailable()) {
+  const localStorage = window.localStorage;
+}
+
+function neverShowFeedbackAgain() {
+  if (storageAvailable()) {
+    localStorage.setItem('showfeedback', 'no');
+  }
+}
+
+function offFeedbackAsk() {
+  if (feedbackElem) {
+    feedbackElem.classList.add('d-none')
+  }
+}
+
+function onFeedbackAsk() {
+  if (feedbackElem) {
+    feedbackElem.classList.remove('d-none')
+  }
+}
+
+function onFeedbackSmall() {
+  if (feedbackSmallElem) {
+    feedbackSmallElem.classList.remove('d-none')
+  }
+}
+
+function offFeedbackSmall() {
+  if (feedbackSmallElem) {
+    feedbackSmallElem.classList.add('d-none')
+  }
+}
+
+if (feedbackYesElem) {
+  feedbackYesElem.addEventListener('click', function() {
+    if (feedbackLinkElem) {
+      feedbackLinkElem.click();
+    }
+    offFeedbackAsk();
+    onFeedbackSmall();
+    neverShowFeedbackAgain();
+  })
+}
+
+if (feedbackNoElem) {
+  feedbackNoElem.addEventListener('click', function() {
+    offFeedbackAsk();
+    onFeedbackSmall();
+    neverShowFeedbackAgain();
+  })
+}
+
+if (feedbackSmallElem) {
+  feedbackSmallElem.addEventListener('click', function() {
+    localStorage.removeItem('showfeedback');
+    onFeedbackAsk();
+    offFeedbackSmall();
+  })
+}
+
+
+if (storageAvailable()) {
+  const showStorage = localStorage.getItem('showfeedback');
+  if (showStorage === 'no') {
+    offFeedbackAsk();
+    onFeedbackSmall();
+  } else {
+    onFeedbackAsk();
+    offFeedbackSmall();
+  }
+}
