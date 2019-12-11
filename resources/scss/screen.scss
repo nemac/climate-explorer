@@ -1966,9 +1966,8 @@ input.input-inner-default:focus  {
 
 #feedback-close-button-yes, #feedback-close-button-no {
   background-color: $ce3-blue6;
-  vertical-align: middle;
-  line-height: 28px;
-  margin-left: $ce3-default-padding*2;
+  line-height: 32px;
+  margin-left: $ce3-default-padding;
   color: $ce3-blue3;
   @include border-radius(4px);
   cursor: pointer;
@@ -2000,7 +1999,8 @@ input.input-inner-default:focus  {
   }
 
   .feedback-icon {
-    margin-top: 3px;
+    font-size: 18px;
+    vertical-align: middle;
     @include small {
       display: none;
     }

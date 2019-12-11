@@ -21166,9 +21166,8 @@ https://raw.github.com/shagstrom/split-pane/master/LICENSE
 /* line 1967, resources/scss/screen.scss */
 #feedback-close-button-yes, #feedback-close-button-no {
   background-color: #FBFCFE;
-  vertical-align: middle;
-  line-height: 28px;
-  margin-left: 24px;
+  line-height: 32px;
+  margin-left: 12px;
   color: #124086;
   -webkit-border-radius: 4px;
   -moz-border-radius: 4px;
@@ -21181,12 +21180,12 @@ https://raw.github.com/shagstrom/split-pane/master/LICENSE
   height: 30px;
 }
 
-/* line 1979, resources/scss/screen.scss */
+/* line 1978, resources/scss/screen.scss */
 #feedback-close-button-yes:hover, #feedback-close-button-no:hover {
   background-color: #beceef;
 }
 
-/* line 1984, resources/scss/screen.scss */
+/* line 1983, resources/scss/screen.scss */
 .feedback-trigger {
   position: absolute;
   background-color: #124086;
@@ -21209,25 +21208,26 @@ https://raw.github.com/shagstrom/split-pane/master/LICENSE
 }
 
 @media screen and (max-width: 768px) {
-  /* line 1984, resources/scss/screen.scss */
+  /* line 1983, resources/scss/screen.scss */
   .feedback-trigger {
     width: 100%;
     left: 0px;
   }
 }
 
-/* line 1998, resources/scss/screen.scss */
+/* line 1997, resources/scss/screen.scss */
 .feedback-trigger .feedback-text {
   padding-left: 6px;
 }
 
-/* line 2002, resources/scss/screen.scss */
+/* line 2001, resources/scss/screen.scss */
 .feedback-trigger .feedback-icon {
-  margin-top: 3px;
+  font-size: 18px;
+  vertical-align: middle;
 }
 
 @media screen and (max-width: 768px) {
-  /* line 2002, resources/scss/screen.scss */
+  /* line 2001, resources/scss/screen.scss */
   .feedback-trigger .feedback-icon {
     display: none;
   }
