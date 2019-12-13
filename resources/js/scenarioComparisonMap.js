@@ -120,7 +120,7 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
       scenarios: {
         'historical': {
           title: "Historical",
-          tilesURL: "https://climate-explorer.fernleafinteractive.com/webtiles/hist/{variable}/{season_month}/{level}/{col}/{row}.png",
+          tilesURL: "https://climate-explorer3-dev.nemac.org/webtiles/hist/{variable}/{season_month}/{level}/{col}/{row}.png",
           tilesTMS: true,
           years: [{ value: 'avg', label: '1961-1990 Average' }],
           defaultYear: 'avg',
@@ -129,7 +129,7 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
         },
         'rcp45': {
           title: 'Lower Emissions',
-          tilesURL: "https://climate-explorer.fernleafinteractive.com/webtiles/rcp45/{variable}/{year}/{season_month}/{level}/{col}/{row}.png",
+          tilesURL: "https://climate-explorer3-dev.nemac.org/webtiles/rcp45/{variable}/{year}/{season_month}/{level}/{col}/{row}.png",
           tilesTMS: true,
           years: [
           // {value: '2010', label: '2010'},
@@ -140,7 +140,7 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
         },
         'rcp85': {
           title: 'Higher Emissions',
-          tilesURL: "https://climate-explorer.fernleafinteractive.com/webtiles/rcp85/{variable}/{year}/{season_month}/{level}/{col}/{row}.png",
+          tilesURL: "https://climate-explorer3-dev.nemac.org/webtiles/rcp85/{variable}/{year}/{season_month}/{level}/{col}/{row}.png",
           tilesTMS: true,
           years: [
           // {value: '2010', label: '2010'},
