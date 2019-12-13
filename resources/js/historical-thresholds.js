@@ -775,7 +775,7 @@ $(function () {
     window.ce.ce('setStationsMapState', { stationId, stationName, threshold: newValue, thresholdValue: variableValue});
 
     // ga event action, category, label
-    googleAnalyticsEvent('click', 'threshold-value', newVal);
+    googleAnalyticsEvent('click', 'threshold-value', newValue);
 
     // update chart with new threshold value
     $("#thresholds-container").item({ threshold: newValue }).item('update');
@@ -796,7 +796,7 @@ $(function () {
     window.ce.ce('setStationsMapState', { stationId, stationName, window: newValue, thresholdValue: variableValue});
 
     // ga event action, category, label
-    googleAnalyticsEvent('click', 'window-value', newVal);
+    googleAnalyticsEvent('click', 'window-value', newValue);
 
 
     // update chart with new threshold value
