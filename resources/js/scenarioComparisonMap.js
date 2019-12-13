@@ -574,7 +574,7 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
               var pt = turf.point(this.options.center.reverse());
               // is the center in conus
               this.options.isCenterConus = turf.booleanPointInPolygon(pt, poly);
-              this._trigger('changeExtent', null, this.options);              
+              this._trigger('changeExtent', null, this.options);
             }
           }
 
@@ -1259,8 +1259,15 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
               const link = document.querySelector('#national-climate-maps-secretlink-forcharts');
               const params = `?fips=${this.options.county}&county=${this.options.countyName}`
 
+ 
               // set the url and search params
-              const url = `${$(link).attr('href')}/?fips=${this.options.county}&lat=${event.mapPoint.latitude}&lon=${event.mapPoint.longitude}&city=${this.options.countyName}  County, ${this.options.stateName} County&county=${this.options.countyName} County&nav=local-climate-charts`
+              let url = `${$(link).attr('href')}/?fips=${this.options.county}&lat=${event.mapPoint.latitude}&lon=${event.mapPoint.longitude}&city=${this.options.countyName}  County, ${this.options.stateName} County&county=${this.options.countyName} County&nav=local-climate-charts`
+
+              // override for alaska there are no counties so remove count text
+              if (county.attributes['STATE_NAME'] === 'Alaska') {
+                url = `${$(link).attr('href')}/?fips=${this.options.county}&lat=${event.mapPoint.latitude}&lon=${event.mapPoint.longitude}&city=${this.options.countyName}, ${this.options.stateName} &county=${this.options.countyName}&nav=local-climate-charts`
+              }
+
               $(link).attr('href', url);
 
               // force click on invisible link

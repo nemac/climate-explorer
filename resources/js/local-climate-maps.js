@@ -2,16 +2,22 @@
 
 $(function () {
   // get city, state from state url
-  $('#default-city-state').text(window.ce.ce('getLocationPageState')['city']);
+  const cityState = $('#default-city-state').text();
+  $('#default-city-state').text(cityState);
   $('#default-city-county').text(window.ce.ce('getLocationPageState')['county']);
   $('#cards-search-input').val(window.ce.ce('getLocationPageState')['city']);
 
-  if (!window.ce.ce('getLocationPageState')['city']) {
+  if (!cityState) {
     $('#default-city-state').addClass('d-none');
     $('#default-in').addClass('d-none');
     $('#default-dash').addClass('d-none');
     $('#default-city-county').addClass('d-none');
     $('#cards-search-input').attr("placeholder", "Location missing, enter a county, city, or zip code");
+  }
+
+  if (cityState.indexOf('Alaska') > 0 || cityState.indexOf(', AK') > 0  ) {
+      $('#default-in').addClass('d-none');
+      $('#default-city-county').addClass('d-none');
   }
 
   let mapExtent = window.ce.ce('getLocationPageState')['extent'];
