@@ -21240,3 +21240,123 @@ https://raw.github.com/shagstrom/split-pane/master/LICENSE
   -moz-box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.239);
   box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.239);
 }
+
+/* line 2023, resources/scss/screen.scss */
+.about-tool-row {
+  height: auto;
+  align-items: start !important;
+  align-content: start !important;
+  justify-content: start !important;
+}
+
+/* line 2029, resources/scss/screen.scss */
+.about-tool-row.about-tool-equals {
+  align-items: center !important;
+  align-content: center !important;
+  justify-content: center !important;
+  font-size: 24px;
+  font-weight: 600;
+}
+
+/* line 2037, resources/scss/screen.scss */
+.about-tool-row .about-tool-content {
+  line-height: unset !important;
+  margin: 0px !important;
+  padding-bottom: 12px;
+  padding-top: 12px;
+}
+
+/* line 2043, resources/scss/screen.scss */
+.about-tool-row .about-tool-content.img-holder-left {
+  justify-content: start !important;
+}
+
+/* line 2045, resources/scss/screen.scss */
+.about-tool-row .about-tool-content.img-holder-left img {
+  border: 1px solid;
+}
+
+@media screen and (max-width: 900px) {
+  /* line 2043, resources/scss/screen.scss */
+  .about-tool-row .about-tool-content.img-holder-left {
+    justify-content: center !important;
+  }
+}
+
+/* line 2053, resources/scss/screen.scss */
+.about-tool-row .about-tool-content.img-holder-right {
+  justify-content: flex-end !important;
+}
+
+/* line 2055, resources/scss/screen.scss */
+.about-tool-row .about-tool-content.img-holder-right img {
+  border: 1px solid;
+}
+
+@media screen and (max-width: 900px) {
+  /* line 2053, resources/scss/screen.scss */
+  .about-tool-row .about-tool-content.img-holder-right {
+    justify-content: center !important;
+  }
+}
+
+/* line 2063, resources/scss/screen.scss */
+.about-tool-row .about-tool-content img {
+  display: block;
+  max-width: 100%;
+  height: auto;
+  width: 100%;
+  height: 100%;
+}
+
+/* line 2071, resources/scss/screen.scss */
+.about-tool-row .about-tool-content .sample-img {
+  max-height: 200px;
+  width: auto;
+}
+
+/* line 2077, resources/scss/screen.scss */
+.about-tool-row .btn-chart-text {
+  padding: 12px;
+}
+
+@media screen and (max-width: 900px) {
+  /* line 2023, resources/scss/screen.scss */
+  .about-tool-row {
+    width: 100% !important;
+    border-bottom: 1px solid #124086;
+  }
+  /* line 2086, resources/scss/screen.scss */
+  .about-tool-row .img-btn-chart {
+    width: 50% !important;
+    height: 50% !important;
+  }
+  /* line 2090, resources/scss/screen.scss */
+  .about-tool-row #btn-chart {
+    width: 100% !important;
+  }
+  /* line 2092, resources/scss/screen.scss */
+  .about-tool-row #btn-chart.circle-box-left {
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+    -ms-border-radius: 5px;
+    -o-border-radius: 5px;
+    border-radius: 5px;
+  }
+  /* line 2095, resources/scss/screen.scss */
+  .about-tool-row #btn-chart.circle-box-right {
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+    -ms-border-radius: 5px;
+    -o-border-radius: 5px;
+    border-radius: 5px;
+  }
+  /* line 2098, resources/scss/screen.scss */
+  .about-tool-row #btn-chart.circle-box-center {
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+    -ms-border-radius: 5px;
+    -o-border-radius: 5px;
+    border-radius: 5px;
+  }
+}
