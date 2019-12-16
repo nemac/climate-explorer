@@ -29,9 +29,6 @@ $(function () {
     }
   }
 
-
-  console.log( cityStateCE,"-",countyCE)
-
   // enable custom selction boxes
   enableCustomSelect('download-select');
   enableCustomSelect('stations-select');
