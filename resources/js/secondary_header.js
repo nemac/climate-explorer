@@ -21,7 +21,7 @@ $(function () {
       // get the invisiable link just outside the element node tree
       // if inside we have issues will bubbling propogation
       const link = document.querySelector(`.about-${selector}-link`);
-
+      console.log('link', link)
       // set the url and search params
       const url = `/${selector}/?${seachParams}`
 
