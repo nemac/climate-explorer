@@ -522,7 +522,7 @@ $(function () {
                 googleAnalyticsEvent('slide', 'update-years', minValue + "-" + maxValue);
 
                 // update chart with new max min range
-                return window.cbl_chart.setXRange(minValue, maxValue);
+                return window.cbl_chart.set_x_axis_range(minValue, maxValue);
             });
 
             // update chart with default starting min max
@@ -556,7 +556,7 @@ $(function () {
         $('#monthly-select-wrapper').removeClass('d-flex-center');
     }
 
-    window.cbl_chart = new ClimateByLocationWidget("div#chart-123", {
+    window.cbl_chart = new ClimateByLocationWidget($("div#chart-123")[0], {
         'font': 'Roboto',
         'responsive': true,
         'frequency': 'annual',
