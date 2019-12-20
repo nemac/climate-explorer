@@ -1,0 +1,66 @@
+# This file is used by repren to do mass regex replaces.
+#
+# Usage:
+# Install python 2.7 (python 3 not supported) using `pip2 install repren`
+# Run `repren -p typos.txt --preserve-case --word-breaks  resources/**/*.js **/*.scss **/*.hbs` to fix typos on most all files (requires globstar works in your terminal), or just `repren -p typos.txt --preserve-case --word-breaks somefile.js` to process individual files.
+# Once you are satisfied with the completion of the typo fixes run `rm **/*.orig` to cleanup backups that repren creates.
+#
+# You can add more patterns here, note they are TAB delimited.
+accross	across
+anuall	annual
+botttom	bottom
+btnheight	btn-height
+btninnerheight	btn-inner-height
+clickt	click
+costants	constants
+countty	county
+defeind	defined
+dispaly	display
+dissable	disable
+downnloads	downloads
+duplciated	duplicated
+eanbles	enables
+firce	force
+foooter	footer
+haldner	handler
+heightt	height
+heighttt	height
+hightide	high-tide
+horrizontal	horizontal
+initalize	initialize
+intialize	initialize
+invisiable	invisible
+limitited	limited
+messsage	message
+modifer	modifier
+monlthly	monthly
+neihter	neither
+perioid	period
+propogation	propagation
+puldown	dropdown
+pulldown	dropdown
+repsonsive	responsive
+resposnive	responsive
+reuturn	return
+sation	station
+seach	search
+seach	search
+selcted	selected
+selction	selection
+slction	selection
+slected	selected
+specifc	specific
+staion	station
+timeperoid	timeperiod
+transistion	transition
+treshold	threshold
+unhide	show
+updart	update
+valud	valid
+varrables	variables
+varriable	variable
+varriables	variables
+varriablles	variables
+varriabls	variables
+visbile	visible
+wraper	wrapper

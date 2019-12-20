@@ -36,21 +36,21 @@ $(function () {
     // capture what we are downloading
     switch (downloadAction) {
       case 'download-image': // download image
-        window.tempChart.download_image(this, 'graph.png');
+        window.cbl_chart.download_image(this, 'graph.png');
         break;
       case 'download-observed-data':
-        window.tempChart.download_hist_obs_data(this);
+        window.cbl_chart.download_hist_obs_data(this);
         break;
       case 'download-historical-modeled-data':
-        window.tempChart.download_hist_mod_data(this);
+        window.cbl_chart.download_hist_mod_data(this);
         break;
       case 'download-projected-modeled-data':
-        window.tempChart.download_proj_mod_data(this);
+        window.cbl_chart.download_proj_mod_data(this);
         break;
       case 'download-interpreting':
         break;
       default:
-        window.tempChart.download_image(this, 'graph.png');
+        window.cbl_chart.download_image(this, 'graph.png');
     }
   });
 
@@ -171,7 +171,7 @@ $(function () {
   // binds update of chart varriable to change of selector
   $('#varriable-select-vis').bind('cs-changed', function (e) {
     // update the chart based on char varriable
-    window.tempChart.update({
+    window.cbl_chart.update({
       variable: $('#varriable-select-vis').attr('rel')
     });
 
@@ -234,7 +234,7 @@ $(function () {
     const histobs = merged.histobs;
 
     // update chart
-    window.tempChart.update({
+    window.cbl_chart.update({
       scenario,
       histmod,
       histobs
@@ -301,7 +301,7 @@ $(function () {
 
   // this function changes the frequency for the charts
   function updateFrequency(targetval) {
-    window.tempChart.update({
+    window.cbl_chart.update({
       frequency: targetval,
       variable: $('#varriable-select-vis').attr('rel'),
       histobs: true,
@@ -311,13 +311,13 @@ $(function () {
 
   // this function changes the presentation (anomaly,actual) for the charts
   function updatePresentation(targetval) {
-    window.tempChart.update({
+    window.cbl_chart.update({
       presentation: targetval
     });
   }
   // this function changes the time period for monthly chart centered on 2025, 2050, 2075
   function updateTimePeriod(targetval) {
-    window.tempChart.update({
+    window.cbl_chart.update({
       timeperiod: targetval
     });
   }
@@ -441,7 +441,7 @@ $(function () {
       $('#slider-value-low').text(minValue);
 
       // update chart with new max min range
-      return window.tempChart.setXRange(minValue, maxValue);
+      return window.cbl_chart.setXRange(minValue, maxValue);
     });
 
     // update chart with default starting min max
@@ -493,10 +493,10 @@ $(function () {
   });
 
   setTimeout(function () {
-    window.tempChart.resize();
+    window.cbl_chart.resize();
   }, 700);
 
   $(window).resize(function () {
-    window.tempChart.resize();
+    window.cbl_chart.resize();
   });
 });
