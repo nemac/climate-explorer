@@ -494,13 +494,15 @@ function initVarriableToolTips() {
 }
 
 function makeTip(elem) {
-  elem.addEventListener('mouseover', tippy( elem, {
-    theme: 'ce-three',
-    arrow: false,
-    interactive: false,
-    hideOnClick: false,
-    flipOnUpdate: false
-  }));
+  if (elem) {
+    elem.addEventListener('mouseover', tippy( elem, {
+      theme: 'ce-three',
+      arrow: false,
+      interactive: false,
+      hideOnClick: false,
+      flipOnUpdate: false
+    }));    
+  }
 }
 
 // adds a custom google events
