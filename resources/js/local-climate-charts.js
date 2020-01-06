@@ -25,9 +25,11 @@ $(function () {
         if (isAlaska) {
             $('#default-in').addClass('d-none');
             $('#default-city-county').addClass('d-none');
+            $('#download-observed-data').addClass('default-select-option-disabled');
             $('#download-observed-data').addClass('disabled');
             $('.btn-histobs').addClass('disabled');
             $('.btn-lower-emissions').addClass('disabled');
+            $('.btn-lower-emissions').removeClass('selected');
             $('.btn-monthly').addClass('btn-default-disabled');
             $('.opt-not-ak').addClass('default-select-option-disabled');
         } else {
