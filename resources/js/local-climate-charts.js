@@ -29,6 +29,9 @@ $(function () {
             $('.btn-histobs').addClass('disabled');
             $('.btn-lower-emissions').addClass('disabled');
             $('.btn-monthly').addClass('btn-default-disabled');
+            $('.opt-not-ak').addClass('default-select-option-disabled');
+        } else {
+          $('.opt-only-ak').addClass('default-select-option-disabled');
         }
 
         if (cityStateCE.indexOf('County') > 0) {
@@ -273,7 +276,7 @@ $(function () {
               updateChartLayers(target);
 
               // ga event action, category, label
-              googleAnalyticsEvent('click-tab', 'legend-wrapper', target);            
+              googleAnalyticsEvent('click-tab', 'legend-wrapper', target);
             }
         }
     });

@@ -414,6 +414,18 @@ function initVarriableToolTips() {
   const tminReference = document.getElementById('tmin-tooltip');
   makeTip(tminReference);
 
+  const days_tmax_gt_50f = document.getElementById('days_tmax_gt_50f-tooltip');
+  makeTip(days_tmax_gt_50f);
+
+  const days_tmax_gt_60f = document.getElementById('days_tmax_gt_60f-tooltip');
+  makeTip(days_tmax_gt_60f);
+
+  const days_tmax_gt_70f = document.getElementById('days_tmax_gt_70f-tooltip');
+  makeTip(days_tmax_gt_70f);
+
+  const days_tmax_gt_80f = document.getElementById('days_tmax_gt_80f-tooltip');
+  makeTip(days_tmax_gt_80f);
+
   const days_tmax_gt_90f = document.getElementById('days_tmax_gt_90f-tooltip');
   makeTip(days_tmax_gt_90f);
 
@@ -438,8 +450,17 @@ function initVarriableToolTips() {
   const days_tmin_gt_90f = document.getElementById('days_tmin_gt_90f-tooltip');
   makeTip(days_tmin_gt_90f);
 
+  const days_tmin_lt_minus_40f = document.getElementById('days_tmin_lt_minus_40f-tooltip');
+  makeTip(days_tmin_lt_minus_40f);
+
+  const days_tmin_gt_60f = document.getElementById('days_tmin_gt_60f-tooltip');
+  makeTip(days_tmin_gt_60f);
+
   const pcpn = document.getElementById('pcpn-tooltip');
   makeTip(pcpn);
+
+  const days_pcpn_gt_0_25in = document.getElementById('days_pcpn_gt_0_25in-tooltip');
+  makeTip(days_pcpn_gt_0_25in);
 
   const days_pcpn_gt_1in = document.getElementById('days_pcpn_gt_1in-tooltip');
   makeTip(days_pcpn_gt_1in);
@@ -464,6 +485,12 @@ function initVarriableToolTips() {
 
   const gddmod = document.getElementById('gddmod-tooltip');
   makeTip(gddmod);
+
+  const hdd_32f = document.getElementById('hdd_32f-tooltip');
+  makeTip(hdd_32f);
+
+  const gdd_32f = document.getElementById('gdd_32f-tooltip');
+  makeTip(gdd_32f);
 }
 
 function makeTip(elem) {
