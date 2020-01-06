@@ -150,6 +150,12 @@
         &:hover, &:focus  {
           color: $ce3-blue5 !important;
           background:  lighten($ce3-blue4, 7)  !important;
+
+          &.default-select-option-disabled {
+            color: $ce3-blue5alpha !important;
+            background: $ce3-blue3 !important;;
+            cursor: default !important;
+          }
         }
       }
 

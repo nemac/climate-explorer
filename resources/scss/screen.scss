@@ -380,6 +380,11 @@ h6 {
       outline: none !important;
       color: $ce3-blue3;
       background:  darken($ce3-blue5, 5);
+      &.default-select-option-disabled {
+        color: $ce3-disabled-font !important;
+        background: $ce3-blue3 !important;;
+        cursor: default !important;
+      }
     }
 
     &[rel="hide"] {
