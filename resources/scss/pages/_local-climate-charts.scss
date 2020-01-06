@@ -147,6 +147,7 @@
         a {
           color: $ce3-blue5 !important;
         }
+
         &:hover, &:focus  {
           color: $ce3-blue5 !important;
           background:  lighten($ce3-blue4, 7)  !important;
@@ -187,6 +188,11 @@
     color: $ce3-disabled-font !important;
     a {
       color: $ce3-disabled-font !important;
+    }
+    &:hover, &:focus  {
+      color: $ce3-disabled-font !important;
+      background:  $ce3-blue5  !important;
+      font: 500 14px $roboto !important;
     }
   }
 }
