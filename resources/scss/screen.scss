@@ -340,7 +340,7 @@ h6 {
   .default-select-option-group {
     padding: $ce3-padding-half !important;
     font-weight: 600 !important;
-    width: 100%
+    width: 100%;
   }
 
   .default-select-option-disabled {
@@ -575,6 +575,10 @@ h6 {
 
 .width-5 {
   width: 5% !important;
+}
+
+.last-variable-space {
+  margin-bottom: $ce3-default-padding+$ce3-padding-half !important;
 }
 
 .right-padding {
