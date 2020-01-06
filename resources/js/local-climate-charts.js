@@ -4,6 +4,11 @@ $(function () {
     // get city, state from state url
     const cityStateCE = window.ce.ce('getLocationPageState')['city'];
     const countyCE = window.ce.ce('getLocationPageState')['county'];
+    let isAlaska = false;
+
+    if (cityStateCE) {
+        isAlaska = (cityStateCE.indexOf('Alaska') > 0 || cityStateCE.indexOf(', AK') > 0)
+    }
 
     $('#default-city-state').text(cityStateCE);
     $('#default-city-county').text(countyCE);
@@ -17,9 +22,13 @@ $(function () {
     }
 
     if (cityStateCE) {
-        if (cityStateCE.indexOf('Alaska') > 0 || cityStateCE.indexOf(', AK') > 0) {
+        if (isAlaska) {
             $('#default-in').addClass('d-none');
             $('#default-city-county').addClass('d-none');
+            $('#download-observed-data').addClass('disabled');
+            $('.btn-histobs').addClass('disabled');
+            $('.btn-lower-emissions').addClass('disabled');
+            $('.btn-monthly').addClass('btn-default-disabled');
         }
 
         if (cityStateCE.indexOf('County') > 0) {
@@ -55,7 +64,9 @@ $(function () {
     // function to enable downloads (images and data)
     $('.download-select li a').click(function (e) {
         const downloadAction = $(this).attr('rel');
-
+        if ( $(this).hasClass( 'disabled' )){
+          return null;
+        }
         // ga event action, category, label
         googleAnalyticsEvent('click', 'download', downloadAction);
 
@@ -241,12 +252,14 @@ $(function () {
     // see on the chart
     $('#legend-wrapper').click(function (e) {
         const target = $(e.target);
+        const notDisabled = !target.hasClass('disabled');
+        if (notDisabled) {
+          // update the chart layers
+          updateChartLayers(target);
 
-        // update the chart layers
-        updateChartLayers(target);
-
-        // ga event action, category, label
-        googleAnalyticsEvent('click', 'legend-wrapper', target);
+          // ga event action, category, label
+          googleAnalyticsEvent('click', 'legend-wrapper', target);
+        }
     });
 
     // adds a click event to turn off chart layers aka what you
@@ -254,12 +267,14 @@ $(function () {
     $('#legend-wrapper').keyup(function (e) {
         if (e.keyCode === 13) {
             const target = $(e.target);
+            const notDisabled = !target.hasClass('disabled');
+            if (notDisabled) {
+              // update the chart layers
+              updateChartLayers(target);
 
-            // update the chart layers
-            updateChartLayers(target);
-
-            // ga event action, category, label
-            googleAnalyticsEvent('click-tab', 'legend-wrapper', target);
+              // ga event action, category, label
+              googleAnalyticsEvent('click-tab', 'legend-wrapper', target);            
+            }
         }
     });
 

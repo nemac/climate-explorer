@@ -793,6 +793,19 @@ h6 {
     color: $ce3-blue6 !important;
     text-decoration: unset !important;
   }
+
+  &.disabled {
+    cursor: default;
+    background-color: lighten(#777, 10) !important;
+    color: lighten(#777, 25) !important;
+
+    &:hover, &:focus {
+      background-color: lighten(#777, 10) !important;
+      color: lighten(#777, 25) !important;
+      outline: none !important;
+      font-weight: 500 !important;
+    }
+  }
 }
 
 .btn-hismod {
@@ -818,12 +831,25 @@ h6 {
     color: $ce3-blue3 !important;
     text-decoration: unset !important;
   }
+
+  &.disabled {
+    cursor: default;
+    background-color: lighten(#D6D6D6, 10) !important;
+    color: lighten($ce3-blue3, 30) !important;
+
+    &:hover, &:focus {
+      background-color: lighten(#D6D6D6, 10) !important;
+      color: lighten($ce3-blue3, 30) !important;
+      outline: none !important;
+      font-weight: 500 !important;
+    }
+  }
 }
 
 .btn-lower-emissions {
   cursor: pointer;
   text-decoration: line-through !important;
-  background-color: #98BCEB !important;
+  background-color: $ce3-lower-emissions !important;
   color: transparentize($ce3-blue3, 0.5) !important;
   height: $ce3-btnheight !important;
   font: 500 14px $roboto !important;
@@ -834,7 +860,7 @@ h6 {
   }
 
   &:hover, &:focus {
-    background-color: darken(#98BCEB, 10) !important;
+    background-color: darken($ce3-lower-emissions, 10) !important;
     outline: none !important;
     font-weight: 600 !important;
   }
@@ -842,6 +868,19 @@ h6 {
   &.selected {
     color: $ce3-blue3 !important;
     text-decoration: unset !important;
+  }
+
+  &.disabled {
+    cursor: default;
+    background-color: lighten($ce3-lower-emissions, 10) !important;
+    color: lighten($ce3-blue3, 30) !important;
+
+    &:hover, &:focus {
+      background-color: lighten($ce3-lower-emissions, 10) !important;
+      color: lighten($ce3-blue3, 30) !important;
+      outline: none !important;
+      font-weight: 500 !important;
+    }
   }
 }
 
@@ -867,6 +906,19 @@ h6 {
   &.selected {
     color: $ce3-blue3 !important;
     text-decoration: unset !important;
+  }
+
+  &.disabled {
+    cursor: default;
+    background-color: lighten($ce3-higher-emissions, 10) !important;
+    color: lighten($ce3-blue3, 30) !important;
+
+    &:hover, &:focus {
+      background-color: lighten($ce3-higher-emissions, 10) !important;
+      color: lighten($ce3-blue3, 30) !important;
+      outline: none !important;
+      font-weight: 500 !important;
+    }
   }
 }
 
@@ -2082,7 +2134,7 @@ input.input-inner-default:focus  {
   @include medium {
     width: 100% !important;
     border-bottom: 1px solid $ce3-blue3;
-    
+
     .img-btn-chart {
       width: 50% !important;
       height: 50% !important;

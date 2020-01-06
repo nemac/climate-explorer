@@ -176,6 +176,13 @@
   @include medium {
     display: none !important;
   }
+
+  li.disabled {
+    color: $ce3-disabled-font !important;
+    a {
+      color: $ce3-disabled-font !important;
+    }
+  }
 }
 
 #chartmap-select-wrapper, #time-select-wrapper, #presentation-select-wrapper, #tidalzoom-select-wrapper {
