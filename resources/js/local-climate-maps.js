@@ -4,6 +4,11 @@ $(function () {
   // get city, state from state url
   const cityStateCE = window.ce.ce('getLocationPageState')['city'];
   const countyCE = window.ce.ce('getLocationPageState')['county'];
+  let isAlaska = false;
+
+  if (cityStateCE) {
+      isAlaska = (cityStateCE.indexOf('Alaska') > 0 || cityStateCE.indexOf(', AK') > 0)
+  }
 
   $('#default-city-state').text(cityStateCE);
   $('#default-city-county').text(countyCE);
@@ -17,9 +22,12 @@ $(function () {
   }
 
   if (cityStateCE) {
-    if (cityStateCE.indexOf('Alaska') > 0 || cityStateCE.indexOf(', AK') > 0  ) {
+    if (isAlaska) {
       $('#default-in').addClass('d-none');
       $('#default-city-county').addClass('d-none');
+      $('.opt-not-ak').addClass('default-select-option-disabled');
+    } else {
+      $('.opt-only-ak').addClass('default-select-option-disabled');
     }
 
     if (cityStateCE.indexOf('County') > 0  ) {
@@ -28,7 +36,7 @@ $(function () {
       $('#default-city-county').text('');
     }
   }
-  
+
   let mapExtent = window.ce.ce('getLocationPageState')['extent'];
   let mapZoom = window.ce.ce('getLocationPageState')['zoom'] || 9;
   let lat = window.ce.ce('getLocationPageState')['lat'];
