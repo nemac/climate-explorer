@@ -610,7 +610,6 @@ $(function () {
             $('.opt-not-ak').addClass('default-select-option-disabled');
             $('.btn-monthly').addClass('btn-default-disabled');
 
-
             // temporary fix for Aleutians West
             if (cityStateCE.includes('Aleutians West') > 0) {
               const messsageElemChart = document.getElementById('chart-message');
@@ -618,7 +617,7 @@ $(function () {
                 const rect = document.getElementById('chart-wrap').getBoundingClientRect();;
                 messsageElemChart.style.left = `${(rect.right - rect.left)/4}px`;
                 messsageElemChart.style.top = `${((rect.bottom + rect.top)/2.5)}px`;
-                messsageElemChart.innerHTML = cityStateCE + ' is currently unavailable.'
+                messsageElemChart.innerHTML = `The chart and data for ${cityStateCE}, is currently unavailable.`
                 messsageElemChart.classList.remove('d-none');
               }
             }
