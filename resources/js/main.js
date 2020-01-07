@@ -912,6 +912,7 @@ App.prototype.locationSearch = function () {
    });
    var county = data.administrative_area_level_2 ? data.administrative_area_level_2.replace(/ /g, '+') : data.locality + '+County';
 
+
     county = county.latinize();
     var city = data.locality + ', ' + data.administrative_area_level_1_short;
 
@@ -952,6 +953,21 @@ App.prototype.locationSearch = function () {
             county = county.replace('+County', '+City');
           }
         }
+
+        // temporary fix for Petersburg Alaska
+        if (city.includes('Petersburg') > 0) {
+          fips = '02280';
+        }
+
+        // temporary fix for Hoonah-Angoon Alaska
+        if (city.includes('Hoonah-Angoon') > 0) {
+          fips = '02232';
+        }
+
+        // temporary fix for Skagway Alaska
+        if (city.includes('Skagway') > 0) {
+          fips = '02232';
+        }
       }
     });
 
@@ -971,6 +987,9 @@ App.prototype.locationSearch = function () {
       if(page === 'national-climate-maps' || page === 'local-climate-maps'){
         navLocation = 'local-climate-maps'
       }
+
+      console.log('fips', fips)
+      console.log('city', city)
 
       // ga event action, category, label
       googleAnalyticsEvent('search', 'location', fips + '-' + city + '-' + county);
