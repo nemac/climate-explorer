@@ -383,6 +383,27 @@
   justify-content: space-evenly !important;
   height: 100% !important;
 
+  .chart-nodata-message {
+    z-index: 500;
+    width: 50%;
+    min-width: 250px;
+    position: relative;
+    top: -250px;
+    left: 150px;
+    @include very-small {
+      top: -200px !important;
+      left: 10% !important;
+      width: 80%;
+    }
+    text-align: center;
+    padding: $ce3-default-padding;
+    background-color: lighten($ce3-warning-state, 30)!important;
+    color: $ce3-warning-state !important;
+    font: 500 14px $roboto !important;
+    border: 1px solid $ce3-warning-state !important;
+    @include border-radius(5px, 5px);
+  }
+
   @include medium-height {
     .chart-wrap {
       height: calc(100% - 75px) !important;

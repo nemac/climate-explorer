@@ -912,7 +912,6 @@ App.prototype.locationSearch = function () {
    });
    var county = data.administrative_area_level_2 ? data.administrative_area_level_2.replace(/ /g, '+') : data.locality + '+County';
 
-
     county = county.latinize();
     var city = data.locality + ', ' + data.administrative_area_level_1_short;
 
@@ -968,6 +967,8 @@ App.prototype.locationSearch = function () {
         if (city.includes('Skagway') > 0) {
           fips = '02232';
         }
+
+        // temporary fix for Aleutians West in local-climate-charts.js
       }
     });
 
@@ -987,9 +988,6 @@ App.prototype.locationSearch = function () {
       if(page === 'national-climate-maps' || page === 'local-climate-maps'){
         navLocation = 'local-climate-maps'
       }
-
-      console.log('fips', fips)
-      console.log('city', city)
 
       // ga event action, category, label
       googleAnalyticsEvent('search', 'location', fips + '-' + city + '-' + county);

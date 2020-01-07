@@ -609,6 +609,20 @@ $(function () {
             $('.btn-lower-emissions').removeClass('selected');
             $('.opt-not-ak').addClass('default-select-option-disabled');
             $('.btn-monthly').addClass('btn-default-disabled');
+
+
+            // temporary fix for Aleutians West
+            if (cityStateCE.includes('Aleutians West') > 0) {
+              const messsageElemChart = document.getElementById('chart-message');
+              if (messsageElemChart) {
+                const rect = document.getElementById('chart-wrap').getBoundingClientRect();;
+                messsageElemChart.style.left = `-${(rect.right - rect.left)/2}px`;
+                messsageElemChart.style.top = `-${((rect.bottom - rect.top)/4)}px`;
+                messsageElemChart.innerHTML = cityStateCE + ' is currently unavailable.'
+                messsageElemChart.classList.remove('d-none');
+              }
+            }
+
         } else {
           $('.opt-only-ak').addClass('default-select-option-disabled');
         }
