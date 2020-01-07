@@ -17434,8 +17434,7 @@ input.input-inner:focus {
 #chart-row .chart-nodata-message {
   z-index: 500;
   width: 50%;
-  min-width: 250px;
-  position: relative;
+  position: absolute;
   top: -250px;
   left: 150px;
   text-align: center;
@@ -17452,8 +17451,9 @@ input.input-inner:focus {
 @media screen and (max-width: 599px) {
   /* line 386, resources/scss/pages/_local-climate-charts.scss */
   #chart-row .chart-nodata-message {
-    top: -200px !important;
-    left: 10% !important;
+    position: relative;
+    top: -50px !important;
+    left: -50% !important;
     width: 80%;
   }
 }

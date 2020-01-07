@@ -616,8 +616,8 @@ $(function () {
               const messsageElemChart = document.getElementById('chart-message');
               if (messsageElemChart) {
                 const rect = document.getElementById('chart-wrap').getBoundingClientRect();;
-                messsageElemChart.style.left = `-${(rect.right - rect.left)/2}px`;
-                messsageElemChart.style.top = `-${((rect.bottom - rect.top)/4)}px`;
+                messsageElemChart.style.left = `${(rect.right - rect.left)/4}px`;
+                messsageElemChart.style.top = `${((rect.bottom + rect.top)/2.5)}px`;
                 messsageElemChart.innerHTML = cityStateCE + ' is currently unavailable.'
                 messsageElemChart.classList.remove('d-none');
               }

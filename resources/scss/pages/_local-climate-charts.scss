@@ -386,13 +386,13 @@
   .chart-nodata-message {
     z-index: 500;
     width: 50%;
-    min-width: 250px;
-    position: relative;
+    position: absolute;
     top: -250px;
     left: 150px;
     @include very-small {
-      top: -200px !important;
-      left: 10% !important;
+      position: relative;
+      top: -50px !important;
+      left: -50% !important;
       width: 80%;
     }
     text-align: center;
