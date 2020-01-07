@@ -392,8 +392,9 @@
     @include very-small {
       position: relative;
       top: -50px !important;
-      left: -50% !important;
-      width: 80%;
+      left: -25% !important;
+      width: 50%;
+      margin-left: -25%;
     }
     text-align: center;
     padding: $ce3-default-padding;
