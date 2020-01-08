@@ -15,6 +15,7 @@
     "deploy:nemac": "aws s3 sync --delete --no-follow-symlinks dist/ s3://climateexplorer2.nemac.org/ &&  aws cloudfront create-invalidation --distribution-id E1Q1S8U8911R6D --paths '/*'",
     "deploy:ce3dev": "aws s3 sync --delete --no-follow-symlinks dist/ s3://climate-explorer3-dev.nemac.org/ &&  aws cloudfront create-invalidation --distribution-id E48HJ11B8EHXY --paths '/*'",
     "deploy:ce3-production": "aws s3 sync --delete --no-follow-symlinks dist/ s3://climate-explorer3-prod.nemac.org/ &&  aws cloudfront create-invalidation --distribution-id E1YUKWQWKH8H2Y --paths '/*'",
+    "deploy:ce26-legacy": "aws s3 sync --delete --no-follow-symlinks dist/ s3://climate-explorer26.nemac.org/ &&  aws cloudfront create-invalidation --distribution-id E2HEBFH20UVKTH --paths '/*'",    
     "start": "static -a 127.0.0.1 -p 8080 dist/",
     "git:submodules": "git submodule add git@github.com:nemac/climate-by-location.git resources/vendor/climate-by-location"
   },
