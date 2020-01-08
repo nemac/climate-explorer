@@ -1248,6 +1248,22 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
               }
               var county = response.features[0];
               this.options.county = county.attributes['FIPS'];
+
+              // temporary fix for Petersburg Alaska
+              if (county.attributes['NAME'].includes('Petersburg') > 0) {
+                this.options.county = '02280';
+              }
+
+              // temporary fix for Hoonah-Angoon Alaska
+              if (county.attributes['NAME'].includes('Hoonah-Angoon') > 0) {
+                this.options.county = '02232';
+              }
+
+              // temporary fix for Skagway Alaska
+              if (county.attributes['NAME'].includes('Skagway') > 0) {
+                this.options.county = '02232';
+              }
+              
               // this.options.countyName = county.attributes['NAME'] + ' ' + county.attributes['LSAD'];
               this.options.countyName = county.attributes['NAME'];
               this.options.stateName = county.attributes['STATE_NAME'];
@@ -1259,7 +1275,7 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
               const link = document.querySelector('#national-climate-maps-secretlink-forcharts');
               const params = `?fips=${this.options.county}&county=${this.options.countyName}`
 
- 
+
               // set the url and search params
               let url = `${$(link).attr('href')}/?fips=${this.options.county}&lat=${event.mapPoint.latitude}&lon=${event.mapPoint.longitude}&city=${this.options.countyName}  County, ${this.options.stateName} County&county=${this.options.countyName} County&nav=local-climate-charts`
 
