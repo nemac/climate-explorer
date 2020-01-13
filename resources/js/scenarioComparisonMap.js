@@ -1249,22 +1249,7 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
               var county = response.features[0];
               this.options.county = county.attributes['FIPS'];
 
-              // temporary fix for Petersburg Alaska
-              if (county.attributes['NAME'].includes('Petersburg') > 0) {
-                this.options.county = '02280';
-              }
 
-              // temporary fix for Hoonah-Angoon Alaska
-              if (county.attributes['NAME'].includes('Hoonah-Angoon') > 0) {
-                this.options.county = '02232';
-              }
-
-              // temporary fix for Skagway Alaska
-              if (county.attributes['NAME'].includes('Skagway') > 0) {
-                this.options.county = '02232';
-              }
-              
-              // this.options.countyName = county.attributes['NAME'] + ' ' + county.attributes['LSAD'];
               this.options.countyName = county.attributes['NAME'];
               this.options.stateName = county.attributes['STATE_NAME'];
 
@@ -1274,21 +1259,42 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
               // if inside we have issues will bubbling propogation
               const link = document.querySelector('#national-climate-maps-secretlink-forcharts');
               const params = `?fips=${this.options.county}&county=${this.options.countyName}`
-
-
               // set the url and search params
               let url = `${$(link).attr('href')}/?fips=${this.options.county}&lat=${event.mapPoint.latitude}&lon=${event.mapPoint.longitude}&city=${this.options.countyName}  County, ${this.options.stateName} County&county=${this.options.countyName} County&nav=local-climate-charts`
 
               // override for alaska there are no counties so remove count text
               if (county.attributes['STATE_NAME'] === 'Alaska') {
-                url = `${$(link).attr('href')}/?fips=${this.options.county}&lat=${event.mapPoint.latitude}&lon=${event.mapPoint.longitude}&city=${this.options.countyName}, ${this.options.stateName} &county=${this.options.countyName}&nav=local-climate-charts`
+                // get borrough or census area designation from fips_codes.json
+                // may need to revist a bit hacky to get to work
+                $.get('../resources/data/fips_codes.json', function(jsondata) {
+                  // temporary fix for Petersburg Alaska
+                  let fips = county.attributes['FIPS']
+                  if (county.attributes['NAME'].includes('Petersburg') > 0) {
+                    fips = '02280';
+                  }
+
+                  // temporary fix for Hoonah-Angoon Alaska
+                  if (county.attributes['NAME'].includes('Hoonah-Angoon') > 0) {
+                    fips = '02232';
+                  }
+
+                  // temporary fix for Skagway Alaska
+                  if (county.attributes['NAME'].includes('Skagway') > 0) {
+                    fips = '02232';
+                  }
+
+                  const akCounty = jsondata.AK.filter( element => element.fips === county.attributes['FIPS'] );
+                  const akCountLabel = akCounty[0].label;
+                  url = `${$(link).attr('href')}/?fips=${fips}&lat=${event.mapPoint.latitude}&lon=${event.mapPoint.longitude}&city=${county.attributes['NAME']}, AK&county=${akCountLabel}&nav=local-climate-charts`
+                  $(link).attr('href', url);
+                  link.click();
+                });
+              } else {
+                $(link).attr('href', url);
+
+                // force click on invisible link
+                link.click();
               }
-
-              $(link).attr('href', url);
-
-              // force click on invisible link
-              link.click();
-
               //  not doing overlay now, going to local charts instead...
               // the new ui is not styling this but Davism is leaving it incase we want
               // re-enable it.
