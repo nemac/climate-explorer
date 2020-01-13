@@ -600,8 +600,7 @@ $(function () {
 
     if (cityStateCE) {
         if (isAlaska) {
-            $('#default-in').addClass('d-none');
-            $('#default-city-county').addClass('d-none');
+             $('#default-in').html('—');
             $('#download-observed-data').addClass('default-select-option-disabled');
             $('#download-observed-data').addClass('disabled');
             $('.btn-histobs').addClass('disabled');

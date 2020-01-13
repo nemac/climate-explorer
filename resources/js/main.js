@@ -930,8 +930,6 @@ App.prototype.locationSearch = function () {
     }
 
     var fips = void 0;
-    // console.log('data.administrative_area_level_1_short', data.administrative_area_level_1_short);
-    // console.log('COUNTY', county);
     $.each(self.fips_codes[data.administrative_area_level_1_short], function (i, c) {
       if (c.label === county.replace(/\+/g, ' ') || c.label === county.replace(/\+County/g, ' city')) {
         fips = c.fips;
@@ -942,15 +940,12 @@ App.prototype.locationSearch = function () {
 
       // alaska the Borough and Census Area are not in the json data so remove it for the comparison
       if(data.administrative_area_level_1_short === "AK"){
-        // console.log(c.label, '-',county)
         if (c.label.replace(/ Borough/g, '') === county.replace(/\+/g, ' ') ||
             c.label.replace(/ Census Area/g, '') === county.replace(/\+/g, ' ') ||
             c.label.replace(/ Municipality/g, '') === county.replace(/\+/g, ' ')||
             c.label.replace(/ City and Borough/g, '') === county.replace(/\+/g, ' ')) {
           fips = c.fips;
-          if (c.label.match('city')) {
-            county = county.replace('+County', '+City');
-          }
+          county = c.label;
         }
 
         // temporary fix for Petersburg Alaska

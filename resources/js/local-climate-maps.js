@@ -23,8 +23,7 @@ $(function () {
 
   if (cityStateCE) {
     if (isAlaska) {
-      $('#default-in').addClass('d-none');
-      $('#default-city-county').addClass('d-none');
+      $('#default-in').html('—');
       $('.opt-not-ak').addClass('default-select-option-disabled');
     } else {
       $('.opt-only-ak').addClass('default-select-option-disabled');
