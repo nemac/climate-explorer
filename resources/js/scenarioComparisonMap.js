@@ -1265,7 +1265,8 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
               // override for alaska there are no counties so remove count text
               if (county.attributes['STATE_NAME'] === 'Alaska') {
                 // get borrough or census area designation from fips_codes.json
-                // may need to revist a bit hacky to get to work
+                // may need to revist a bit hacky to get to work but it used the fips_codes.json
+                // to get a consistent name for the area in Alaska
                 $.get('../resources/data/fips_codes.json', function(jsondata) {
                   // temporary fix for Petersburg Alaska
                   let fips = county.attributes['FIPS']

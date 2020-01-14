@@ -57,11 +57,19 @@
   color: $ce3-darkgray !important;
   justify-content: center !important;
   align-items: center !important;
+  &.nav-disabled {
+    cursor: default;
+    color: lighten($ce3-darkgray, 10) !important;
+  }
 
   &:hover, &:focus {
     @include border-radius(5px, 5px);
     @include box-shadow(0px 2px 4px transparentize(#000, 0.761));
     outline: none !important;
+    &.nav-disabled {
+      @include border-radius(0px, 0px);
+      @include box-shadow(0px 0px 0px transparentize(#000, 0.761));
+    }
   }
 
   .nav-footer-label {
@@ -96,11 +104,19 @@
   justify-content: center !important;
   align-content: center !important;
   align-self: center !important;
+  &.nav-disabled {
+    cursor: default;
+    color: lighten($ce3-blue3, 10) !important;
+  }
 
   &:hover, &:focus {
     @include border-radius(5px, 5px);
     @include box-shadow(0px 2px 4px transparentize(#000, 0.761));
     outline: none !important;
+    &.nav-disabled {
+      @include border-radius(0px, 0px);
+      @include box-shadow(0px 0px 0px transparentize(#000, 0.761));
+    }
   }
 
   .nav-footer-label {
@@ -125,6 +141,12 @@
   }
   @include nav-footer-1224-max {
     display: none
+  }
+}
+
+.nav-disabled {
+  .nav-footer-label, .nav-footer-icon {
+    color: lighten($ce3-darkgray, 25) !important;
   }
 }
 

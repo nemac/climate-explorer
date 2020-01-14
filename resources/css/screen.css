@@ -16231,7 +16231,13 @@ body.detail-open #nav-overlay {
   align-items: center !important;
 }
 
-/* line 61, resources/scss/template/_nav_footer.scss */
+/* line 60, resources/scss/template/_nav_footer.scss */
+.nav-footer-item.nav-disabled {
+  cursor: default;
+  color: #727272 !important;
+}
+
+/* line 65, resources/scss/template/_nav_footer.scss */
 .nav-footer-item:hover, .nav-footer-item:focus {
   -webkit-border-radius: 5px 5px;
   -moz-border-radius: 5px / 5px;
@@ -16242,7 +16248,17 @@ body.detail-open #nav-overlay {
   outline: none !important;
 }
 
-/* line 67, resources/scss/template/_nav_footer.scss */
+/* line 69, resources/scss/template/_nav_footer.scss */
+.nav-footer-item:hover.nav-disabled, .nav-footer-item:focus.nav-disabled {
+  -webkit-border-radius: 0px 0px;
+  -moz-border-radius: 0px / 0px;
+  border-radius: 0px / 0px;
+  -webkit-box-shadow: 0px 0px 0px rgba(0, 0, 0, 0.239);
+  -moz-box-shadow: 0px 0px 0px rgba(0, 0, 0, 0.239);
+  box-shadow: 0px 0px 0px rgba(0, 0, 0, 0.239);
+}
+
+/* line 75, resources/scss/template/_nav_footer.scss */
 .nav-footer-item .nav-footer-label {
   color: #585858 !important;
 }
@@ -16254,7 +16270,7 @@ body.detail-open #nav-overlay {
   }
 }
 
-/* line 76, resources/scss/template/_nav_footer.scss */
+/* line 84, resources/scss/template/_nav_footer.scss */
 .nav-footer-icon {
   color: #585858 !important;
   font-size: 36px !important;
@@ -16262,21 +16278,21 @@ body.detail-open #nav-overlay {
 }
 
 @media screen and (max-width: 820px) {
-  /* line 76, resources/scss/template/_nav_footer.scss */
+  /* line 84, resources/scss/template/_nav_footer.scss */
   .nav-footer-icon {
     font-size: 28px !important;
   }
 }
 
 @media screen and (max-width: 330px) {
-  /* line 76, resources/scss/template/_nav_footer.scss */
+  /* line 84, resources/scss/template/_nav_footer.scss */
   .nav-footer-icon {
     font-size: 28px !important;
   }
 }
 
 @media screen and (min-width: 400px) {
-  /* line 76, resources/scss/template/_nav_footer.scss */
+  /* line 84, resources/scss/template/_nav_footer.scss */
   .nav-footer-icon {
     justify-content: center !important;
     align-content: center !important;
@@ -16284,7 +16300,7 @@ body.detail-open #nav-overlay {
   }
 }
 
-/* line 92, resources/scss/template/_nav_footer.scss */
+/* line 100, resources/scss/template/_nav_footer.scss */
 .nav-footer-item-selected {
   cursor: pointer;
   font: 600 14px Roboto, Helvetica, "Helvetica Neue", Arial, sans-serif !important;
@@ -16294,7 +16310,13 @@ body.detail-open #nav-overlay {
   align-self: center !important;
 }
 
-/* line 100, resources/scss/template/_nav_footer.scss */
+/* line 107, resources/scss/template/_nav_footer.scss */
+.nav-footer-item-selected.nav-disabled {
+  cursor: default;
+  color: #1855b3 !important;
+}
+
+/* line 112, resources/scss/template/_nav_footer.scss */
 .nav-footer-item-selected:hover, .nav-footer-item-selected:focus {
   -webkit-border-radius: 5px 5px;
   -moz-border-radius: 5px / 5px;
@@ -16305,19 +16327,29 @@ body.detail-open #nav-overlay {
   outline: none !important;
 }
 
-/* line 106, resources/scss/template/_nav_footer.scss */
+/* line 116, resources/scss/template/_nav_footer.scss */
+.nav-footer-item-selected:hover.nav-disabled, .nav-footer-item-selected:focus.nav-disabled {
+  -webkit-border-radius: 0px 0px;
+  -moz-border-radius: 0px / 0px;
+  border-radius: 0px / 0px;
+  -webkit-box-shadow: 0px 0px 0px rgba(0, 0, 0, 0.239);
+  -moz-box-shadow: 0px 0px 0px rgba(0, 0, 0, 0.239);
+  box-shadow: 0px 0px 0px rgba(0, 0, 0, 0.239);
+}
+
+/* line 122, resources/scss/template/_nav_footer.scss */
 .nav-footer-item-selected .nav-footer-label {
   font-weight: 600 !important;
   color: #124086 !important;
 }
 
-/* line 111, resources/scss/template/_nav_footer.scss */
+/* line 127, resources/scss/template/_nav_footer.scss */
 .nav-footer-item-selected .nav-footer-icon {
   font-weight: 600 !important;
   color: #124086 !important;
 }
 
-/* line 117, resources/scss/template/_nav_footer.scss */
+/* line 133, resources/scss/template/_nav_footer.scss */
 .nav-footer-label {
   font-size: 14px !important;
   font-weight: 500;
@@ -16327,42 +16359,47 @@ body.detail-open #nav-overlay {
 }
 
 @media screen and (max-width: 950px) {
-  /* line 117, resources/scss/template/_nav_footer.scss */
+  /* line 133, resources/scss/template/_nav_footer.scss */
   .nav-footer-label {
     flex-flow: row wrap !important;
   }
 }
 
 @media screen and (max-width: 1224px) {
-  /* line 117, resources/scss/template/_nav_footer.scss */
+  /* line 133, resources/scss/template/_nav_footer.scss */
   .nav-footer-label {
     display: none;
   }
 }
 
+/* line 148, resources/scss/template/_nav_footer.scss */
+.nav-disabled .nav-footer-label, .nav-disabled .nav-footer-icon {
+  color: #989898 !important;
+}
+
 @media screen and (min-width: 1225px) {
-  /* line 131, resources/scss/template/_nav_footer.scss */
+  /* line 153, resources/scss/template/_nav_footer.scss */
   .nav-footer-label-smallscreen {
     display: none;
   }
 }
 
 @media screen and (max-width: 500px) {
-  /* line 131, resources/scss/template/_nav_footer.scss */
+  /* line 153, resources/scss/template/_nav_footer.scss */
   .nav-footer-label-smallscreen {
     display: none;
   }
 }
 
 @media screen and (min-width: 501px) {
-  /* line 140, resources/scss/template/_nav_footer.scss */
+  /* line 162, resources/scss/template/_nav_footer.scss */
   .nav-footer-label-verysmallscreen {
     display: none !important;
   }
 }
 
 @media screen and (max-width: 501px) {
-  /* line 140, resources/scss/template/_nav_footer.scss */
+  /* line 162, resources/scss/template/_nav_footer.scss */
   .nav-footer-label-verysmallscreen {
     font-size: 14px !important;
     display: flex !important;
@@ -16370,20 +16407,20 @@ body.detail-open #nav-overlay {
 }
 
 @media screen and (max-width: 376px) {
-  /* line 140, resources/scss/template/_nav_footer.scss */
+  /* line 162, resources/scss/template/_nav_footer.scss */
   .nav-footer-label-verysmallscreen {
     font-size: 12px !important;
     display: flex !important;
   }
 }
 
-/* line 154, resources/scss/template/_nav_footer.scss */
+/* line 176, resources/scss/template/_nav_footer.scss */
 .nav-footer-area-title {
   font: 500 16px Roboto, Helvetica, "Helvetica Neue", Arial, sans-serif !important;
   color: #585858 !important;
 }
 
-/* line 159, resources/scss/template/_nav_footer.scss */
+/* line 181, resources/scss/template/_nav_footer.scss */
 .nav-footer-area-line {
   border-top: 1px dotted #585858 !important;
   margin-left: 6px !important;
@@ -16392,36 +16429,36 @@ body.detail-open #nav-overlay {
 }
 
 @media screen and (max-width: 950px) {
-  /* line 159, resources/scss/template/_nav_footer.scss */
+  /* line 181, resources/scss/template/_nav_footer.scss */
   .nav-footer-area-line {
     width: 20% !important;
   }
 }
 
-/* line 169, resources/scss/template/_nav_footer.scss */
+/* line 191, resources/scss/template/_nav_footer.scss */
 .nav-footer-area-line.expanded {
   display: flex !important;
   width: 30% !important;
 }
 
 @media screen and (max-width: 360px) {
-  /* line 175, resources/scss/template/_nav_footer.scss */
+  /* line 197, resources/scss/template/_nav_footer.scss */
   .nav-footer-area-line.expanded {
     width: 20% !important;
   }
 }
 
-/* line 181, resources/scss/template/_nav_footer.scss */
+/* line 203, resources/scss/template/_nav_footer.scss */
 #home-nav-footer {
   padding-bottom: 4px;
 }
 
 @media screen and (max-width: 600px) {
-  /* line 187, resources/scss/template/_nav_footer.scss */
+  /* line 209, resources/scss/template/_nav_footer.scss */
   #sation-based .nav-footer-area-line {
     display: none !important;
   }
-  /* line 189, resources/scss/template/_nav_footer.scss */
+  /* line 211, resources/scss/template/_nav_footer.scss */
   #sation-based .nav-footer-area-line.expanded {
     display: flex !important;
     width: 30% !important;
@@ -16429,80 +16466,80 @@ body.detail-open #nav-overlay {
 }
 
 @media screen and (max-width: 360px) {
-  /* line 196, resources/scss/template/_nav_footer.scss */
+  /* line 218, resources/scss/template/_nav_footer.scss */
   #sation-based .nav-footer-area-line.expanded {
     width: 20% !important;
   }
 }
 
-/* line 203, resources/scss/template/_nav_footer.scss */
+/* line 225, resources/scss/template/_nav_footer.scss */
 #more-wrapper-nav-footer.expanded {
   display: none !important;
 }
 
 @media screen and (min-width: 900px) {
-  /* line 202, resources/scss/template/_nav_footer.scss */
+  /* line 224, resources/scss/template/_nav_footer.scss */
   #more-wrapper-nav-footer {
     display: none !important;
   }
 }
 
-/* line 212, resources/scss/template/_nav_footer.scss */
+/* line 234, resources/scss/template/_nav_footer.scss */
 #less-row-1 {
   display: none !important;
 }
 
-/* line 215, resources/scss/template/_nav_footer.scss */
+/* line 237, resources/scss/template/_nav_footer.scss */
 #less-row-1.expanded {
   display: flex !important;
 }
 
-/* line 220, resources/scss/template/_nav_footer.scss */
+/* line 242, resources/scss/template/_nav_footer.scss */
 #less-wrapper-nav-footer {
   display: none !important;
 }
 
 @media screen and (max-width: 900px) {
-  /* line 220, resources/scss/template/_nav_footer.scss */
+  /* line 242, resources/scss/template/_nav_footer.scss */
   #less-wrapper-nav-footer {
     display: none !important;
   }
 }
 
-/* line 227, resources/scss/template/_nav_footer.scss */
+/* line 249, resources/scss/template/_nav_footer.scss */
 #less-wrapper-nav-footer.expanded {
   display: flex !important;
 }
 
-/* line 233, resources/scss/template/_nav_footer.scss */
+/* line 255, resources/scss/template/_nav_footer.scss */
 #expanded-wrapper-nav-footer.expanded {
   display: flex !important;
 }
 
 @media screen and (max-width: 900px) {
-  /* line 232, resources/scss/template/_nav_footer.scss */
+  /* line 254, resources/scss/template/_nav_footer.scss */
   #expanded-wrapper-nav-footer {
     display: none !important;
   }
 }
 
-/* line 243, resources/scss/template/_nav_footer.scss */
+/* line 265, resources/scss/template/_nav_footer.scss */
 .nav-footer-area-title .nav-footer-area-text-smallecreen {
   display: none !important;
 }
 
 @media screen and (max-width: 900px) {
-  /* line 242, resources/scss/template/_nav_footer.scss */
+  /* line 264, resources/scss/template/_nav_footer.scss */
   .nav-footer-area-title {
     min-height: 21px !important;
     height: 21px !important;
     max-height: 21px !important;
   }
-  /* line 252, resources/scss/template/_nav_footer.scss */
+  /* line 274, resources/scss/template/_nav_footer.scss */
   .nav-footer-area-title .nav-footer-area-text {
     display: none !important;
   }
-  /* line 256, resources/scss/template/_nav_footer.scss */
+  /* line 278, resources/scss/template/_nav_footer.scss */
   .nav-footer-area-title .nav-footer-area-text-smallecreen {
     display: inherit !important;
   }

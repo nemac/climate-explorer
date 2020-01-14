@@ -2,12 +2,22 @@
 
 $(function () {
 
-  $('#default-city-state').text(window.ce.ce('getLocationPageState')['city']);
-  $('#default-city-county').text(window.ce.ce('getLocationPageState')['county']);
-  $('#cards-search-input').val(window.ce.ce('getLocationPageState')['city']);
+  const cityStateCE = window.ce.ce('getLocationPageState')['city'];
+  const countyCE = window.ce.ce('getLocationPageState')['county'];
+  let isAlaska = false;
+
+  if (cityStateCE) {
+      isAlaska = (cityStateCE.indexOf('Alaska') > 0 || cityStateCE.indexOf(', AK') > 0)
+  }
 
   // setup some constants
   const navConstants = setNavItemsCostants();
+
+  if (cityStateCE) {
+    if (isAlaska) {
+      $('#local-climate-maps-nav-footer').addClass('nav-disabled');
+    }
+  }
 
   // add click events to footer
   // uses invisiable a link
@@ -265,6 +275,11 @@ $(function () {
   function addNavlick(selector, nav, selectorAddOn) {
     // setup some constants
     const navConstants = setNavItemsCostants();
+    const $selectorElem = $(`#${selector}${navConstants.selectorAddOn}`);
+    // if disabled exit
+    if ( $selectorElem.hasClass('nav-disabled' )){
+      return null;
+    }
 
     // find the the nav-item and add click event
     $(`#${selector}${selectorAddOn}`).keyup( function(e) {
