@@ -24,6 +24,7 @@ $(function () {
     if (isAlaska) {
       $('#default-in').html('—');
       $('.opt-not-ak').addClass('default-select-option-disabled');
+      $('.card-local-maps').addClass('card-disabled');
     } else {
       $('.opt-only-ak').addClass('default-select-option-disabled');
     }
@@ -49,6 +50,13 @@ $(function () {
 
   // adds a click event to got to card location
   function addCardClick(selctor, nav) {
+    // setup some constants
+    const $selectorElem = $(`.${selctor}`);
+    // if disabled exit
+    if ( $selectorElem.hasClass('card-disabled' )){
+      return null;
+    }
+
     // find the the nav-item and add click event
     $(`.${selctor}`).keyup( function(e) {
       if (e.keyCode === 13){

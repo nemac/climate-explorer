@@ -54,10 +54,28 @@
   @include border-radius(5px, 5px);
   border: 1px solid $ce3-blue3 !important;
 
+  &.card-disabled {
+    cursor: default;
+    #card-image-row {
+      img {
+        -webkit-filter: grayscale(60%) contrast(50%);; /* Safari 6.0 - 9.0 */
+        filter: grayscale(60%) contrast(50%);;        
+      }
+    }
+    #card-text {
+      color: darken($ce3-blue6, 20) !important;
+    }
+  }
+
   &:focus, &:hover {
     border: 2px solid darken($ce3-blue3, 10) !important;
     @include box-shadow(0px 5px 10px transparentize(#000, 0.761));
     outline: none;
+    &.card-disabled{
+      @include box-shadow(0px 0px 0px transparentize(#000, 0.761));
+      border: 1px solid $ce3-blue3 !important;
+      outline: none;
+    }
   }
 
   @include large {
@@ -98,9 +116,9 @@
 }
 
 #card-image-row {
-  // background-color: $ce3-blue3 !important;
   justify-content: center !important;
   align-content: center !important;
+  z-index: 1;
 
   @include medium {
     justify-content: start !important;
@@ -114,6 +132,7 @@
   flex: 1 1 85px !important;
   height: 85px !important;
   min-height: 85px !important;
+  z-index: 2;
 
   @include medium {
     flex: 1 1 150px !important;

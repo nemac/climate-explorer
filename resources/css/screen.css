@@ -20085,11 +20085,37 @@ s
 }
 
 /* line 57, resources/scss/pages/_cards-home.scss */
+#data-card.card-disabled {
+  cursor: default;
+}
+
+/* line 60, resources/scss/pages/_cards-home.scss */
+#data-card.card-disabled #card-image-row img {
+  -webkit-filter: grayscale(60%) contrast(50%);
+  /* Safari 6.0 - 9.0 */
+  filter: grayscale(60%) contrast(50%);
+}
+
+/* line 65, resources/scss/pages/_cards-home.scss */
+#data-card.card-disabled #card-text {
+  color: #a9bfea !important;
+}
+
+/* line 70, resources/scss/pages/_cards-home.scss */
 #data-card:focus, #data-card:hover {
   border: 2px solid #0c2b59 !important;
   -webkit-box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.239);
   -moz-box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.239);
   box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.239);
+  outline: none;
+}
+
+/* line 74, resources/scss/pages/_cards-home.scss */
+#data-card:focus.card-disabled, #data-card:hover.card-disabled {
+  -webkit-box-shadow: 0px 0px 0px rgba(0, 0, 0, 0.239);
+  -moz-box-shadow: 0px 0px 0px rgba(0, 0, 0, 0.239);
+  box-shadow: 0px 0px 0px rgba(0, 0, 0, 0.239);
+  border: 1px solid #124086 !important;
   outline: none;
 }
 
@@ -20110,7 +20136,7 @@ s
   }
 }
 
-/* line 75, resources/scss/pages/_cards-home.scss */
+/* line 93, resources/scss/pages/_cards-home.scss */
 #card-row {
   justify-content: space-evenly !important;
   height: auto !important;
@@ -20120,7 +20146,7 @@ s
 }
 
 @media screen and (max-width: 1240px) {
-  /* line 75, resources/scss/pages/_cards-home.scss */
+  /* line 93, resources/scss/pages/_cards-home.scss */
   #card-row {
     justify-content: center !important;
     height: auto !important;
@@ -20130,7 +20156,7 @@ s
 }
 
 @media screen and (max-width: 900px) {
-  /* line 75, resources/scss/pages/_cards-home.scss */
+  /* line 93, resources/scss/pages/_cards-home.scss */
   #card-row {
     flex-flow: row wrap !important;
     padding-right: 6px !important;
@@ -20139,33 +20165,35 @@ s
 }
 
 @media screen and (max-width: 900px) {
-  /* line 75, resources/scss/pages/_cards-home.scss */
+  /* line 93, resources/scss/pages/_cards-home.scss */
   #card-row {
     min-height: 912px !important;
   }
 }
 
-/* line 100, resources/scss/pages/_cards-home.scss */
+/* line 118, resources/scss/pages/_cards-home.scss */
 #card-image-row {
   justify-content: center !important;
   align-content: center !important;
+  z-index: 1;
 }
 
 @media screen and (max-width: 900px) {
-  /* line 100, resources/scss/pages/_cards-home.scss */
+  /* line 118, resources/scss/pages/_cards-home.scss */
   #card-image-row {
     justify-content: start !important;
     align-content: start !important;
   }
 }
 
-/* line 111, resources/scss/pages/_cards-home.scss */
+/* line 129, resources/scss/pages/_cards-home.scss */
 #card-text {
   background-color: #124086 !important;
   color: #FBFCFE !important;
   flex: 1 1 85px !important;
   height: 85px !important;
   min-height: 85px !important;
+  z-index: 2;
   padding-top: 6px !important;
   padding-bottom: 6px !important;
   padding-left: 12px !important;
@@ -20173,7 +20201,7 @@ s
 }
 
 @media screen and (max-width: 900px) {
-  /* line 111, resources/scss/pages/_cards-home.scss */
+  /* line 129, resources/scss/pages/_cards-home.scss */
   #card-text {
     flex: 1 1 150px !important;
     height: 150px !important;
@@ -20182,7 +20210,7 @@ s
 }
 
 @media screen and (min-height: 1000px) {
-  /* line 111, resources/scss/pages/_cards-home.scss */
+  /* line 129, resources/scss/pages/_cards-home.scss */
   #card-text {
     flex: 1 1 120px !important;
     height: 120px !important;
@@ -20191,7 +20219,7 @@ s
 }
 
 @media screen and (min-height: 1000px) and (max-width: 900px) {
-  /* line 111, resources/scss/pages/_cards-home.scss */
+  /* line 129, resources/scss/pages/_cards-home.scss */
   #card-text {
     flex: 1 1 85px !important;
     height: 85px !important;
@@ -20200,7 +20228,7 @@ s
 }
 
 @media screen and (min-height: 1200px) {
-  /* line 111, resources/scss/pages/_cards-home.scss */
+  /* line 129, resources/scss/pages/_cards-home.scss */
   #card-text {
     flex: 1 1 150px !important;
     height: 150px !important;
@@ -20209,7 +20237,7 @@ s
 }
 
 @media screen and (min-height: 1200px) and (max-width: 900px) {
-  /* line 111, resources/scss/pages/_cards-home.scss */
+  /* line 129, resources/scss/pages/_cards-home.scss */
   #card-text {
     flex: 1 1 85px !important;
     height: 85px !important;
@@ -20218,7 +20246,7 @@ s
 }
 
 @media screen and (max-width: 900px) {
-  /* line 111, resources/scss/pages/_cards-home.scss */
+  /* line 129, resources/scss/pages/_cards-home.scss */
   #card-text {
     padding-top: 6px !important;
     padding-bottom: 6px !important;
@@ -20228,20 +20256,20 @@ s
 }
 
 @media screen and (max-width: 768px) {
-  /* line 111, resources/scss/pages/_cards-home.scss */
+  /* line 129, resources/scss/pages/_cards-home.scss */
   #card-text {
     min-height: auto !important;
   }
 }
 
-/* line 163, resources/scss/pages/_cards-home.scss */
+/* line 182, resources/scss/pages/_cards-home.scss */
 #card-title-icon {
   font: 700 18px Roboto, Helvetica, "Helvetica Neue", Arial, sans-serif !important;
   padding-bottom: 6px !important;
   max-height: 28px;
 }
 
-/* line 169, resources/scss/pages/_cards-home.scss */
+/* line 188, resources/scss/pages/_cards-home.scss */
 .card-title {
   font-size: 18px !important;
   flex: 1 1 auto !important;
@@ -20249,26 +20277,26 @@ s
 }
 
 @media screen and (max-width: 599px) {
-  /* line 169, resources/scss/pages/_cards-home.scss */
+  /* line 188, resources/scss/pages/_cards-home.scss */
   .card-title {
     font-size: 18px !important;
   }
 }
 
-/* line 179, resources/scss/pages/_cards-home.scss */
+/* line 198, resources/scss/pages/_cards-home.scss */
 .card-title a {
   color: #FBFCFE !important;
   text-decoration: none !important;
 }
 
-/* line 185, resources/scss/pages/_cards-home.scss */
+/* line 204, resources/scss/pages/_cards-home.scss */
 .card-icon {
   flex: 0 0 auto !important;
   font-size: 24px !important;
   margin-right: 12px !important;
 }
 
-/* line 191, resources/scss/pages/_cards-home.scss */
+/* line 210, resources/scss/pages/_cards-home.scss */
 .card-image {
   height: auto !important;
   -webkit-border-radius: 5px 5px;
@@ -20280,13 +20308,13 @@ s
 }
 
 @media screen and (max-width: 900px) {
-  /* line 191, resources/scss/pages/_cards-home.scss */
+  /* line 210, resources/scss/pages/_cards-home.scss */
   .card-image {
     align-self: start !important;
   }
 }
 
-/* line 203, resources/scss/pages/_cards-home.scss */
+/* line 222, resources/scss/pages/_cards-home.scss */
 #card-description {
   font-size: 14px !important;
 }

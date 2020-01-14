@@ -116,36 +116,45 @@ $(function () {
 
     // eanbles time chart, map click events
     $('#chartmap-wrapper').keyup(function (e) {
-        if (e.keyCode === 13) {
-            const target = $(e.target);
+        const target = $(e.target);
+        const notDisabled = !target.hasClass('btn-default-disabled');
 
-            // toggle button visual state
-            toggleButton($(target));
 
-            // change select pulldowns for resposnive mode
-            setSelectFromButton(target);
+        if (notDisabled) {
+          if (e.keyCode === 13) {
+              const target = $(e.target);
 
-            handleChartMapClick(target);
+              // toggle button visual state
+              toggleButton($(target));
 
-            // ga event action, category, label
-            googleAnalyticsEvent('clickt-tab', 'chartmap', target);
+              // change select pulldowns for resposnive mode
+              setSelectFromButton(target);
+
+              handleChartMapClick(target);
+
+              // ga event action, category, label
+              googleAnalyticsEvent('clickt-tab', 'chartmap', target);
+          }
         }
     });
 
     // eanbles time chart, map click events
     $('#chartmap-wrapper').click(function (e) {
         const target = $(e.target);
+        const notDisabled = !target.hasClass('btn-default-disabled');
 
-        // toggle button visual state
-        toggleButton($(target));
+        if (notDisabled) {
+          // toggle button visual state
+          toggleButton($(target));
 
-        // change select pulldowns for resposnive mode
-        setSelectFromButton(target);
+          // change select pulldowns for resposnive mode
+          setSelectFromButton(target);
 
-        handleChartMapClick(target);
+          handleChartMapClick(target);
 
-        // ga event action, category, label
-        googleAnalyticsEvent('click', 'chartmap', target);
+          // ga event action, category, label
+          googleAnalyticsEvent('click', 'chartmap', target);
+        }
     });
 
     // eanbles time annual, monlthly click events
