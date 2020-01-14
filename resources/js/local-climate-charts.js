@@ -119,7 +119,6 @@ $(function () {
         const target = $(e.target);
         const notDisabled = !target.hasClass('btn-default-disabled');
 
-
         if (notDisabled) {
           if (e.keyCode === 13) {
               const target = $(e.target);
@@ -595,6 +594,38 @@ $(function () {
         window.cbl_chart.resize();
     });
 
+
+    $('#chart-info-row .more-info.btn-default').click( function (e) {
+      const target = $('#more-info-description');
+      // show description of charts
+      if (target.hasClass('d-none')) {
+        target.removeClass('d-none');
+        $('#chart-info-row .more').addClass('d-none');
+        $('#chart-info-row .more-icon').addClass('d-none');
+
+        $('#chart-info-row .less').removeClass('d-none');
+        $('#chart-info-row .less-icon').removeClass('d-none');
+
+        // ga event action, category, label
+        googleAnalyticsEvent('click', 'toggle-chart-info', 'open');
+      // hide description of charts
+      } else {
+        target.addClass('d-none');
+        $('#chart-info-row .more').removeClass('d-none');
+        $('#chart-info-row .more-icon').removeClass('d-none');
+
+        $('#chart-info-row .less').addClass('d-none');
+        $('#chart-info-row .less-icon').addClass('d-none');
+
+        // ga event action, category, label
+        googleAnalyticsEvent('click', 'toggle-chart-info', 'close');
+      }
+
+      // // force draw and resize of charts
+      // showGraphs();
+      // forceResize();
+      // setMapSize();
+    })
 
     const variable = window.ce.ce('getVariablesPageState')['variable'];
     if (variable !== undefined) {

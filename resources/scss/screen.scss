@@ -796,6 +796,11 @@ h6 {
     background-color: darken(#777, 5) !important;
     outline: none !important;
     font-weight: 600 !important;
+    &.description {
+      cursor: default;
+      background-color: #777 !important;
+      font: 500 14px $roboto !important;
+    }
   }
 
   &.selected {
@@ -834,6 +839,11 @@ h6 {
     background-color: darken(#D6D6D6, 10) !important;
     outline: none !important;
     font-weight: 600 !important;
+    &.description {
+      cursor: default;
+      background-color: #D6D6D6 !important;
+      font: 500 14px $roboto !important;
+    }
   }
 
   &.selected {
@@ -872,6 +882,11 @@ h6 {
     background-color: darken($ce3-lower-emissions, 10) !important;
     outline: none !important;
     font-weight: 600 !important;
+    &.description {
+      cursor: default;
+      background-color: $ce3-lower-emissions !important;
+      font: 500 14px $roboto !important;
+    }
   }
 
   &.selected {
@@ -910,6 +925,11 @@ h6 {
     background-color: darken(#FBB4AA, 10) !important;
     outline: none !important;
     font-weight: 600 !important;
+    &.description {
+      cursor: default;
+      background-color: #FBB4AA !important;
+      font: 500 14px $roboto !important;
+    }
   }
 
   &.selected {
@@ -1110,6 +1130,13 @@ h6 {
   }
 }
 
+.rounded-description-box {
+  @include border-radius(5px, 5px);
+  background-color: $ce3-blue6;
+  color: $ce3-blue3;
+  border: 1px solid $ce3-border-color !important;
+  margin: $ce3-default-padding;
+}
 
 .rounded-info-box {
   @include border-radius(5px, 5px);

@@ -407,13 +407,13 @@
 
   @include medium-height {
     .chart-wrap {
-      height: calc(100% - 75px) !important;
+      height: calc(100% - 95px) !important;
     }
   }
 
   @include short {
     .chart-wrap {
-      height: calc(100% - 85px) !important;
+      height: calc(100% - 105px) !important;
       min-height: 125px !important;
     }
   }
@@ -481,13 +481,25 @@
   }
 }
 
+#chart-info-row {
+  &:hover, &:focus {
+    outline: none;
+  }
+  @include medium {
+    order: 1;
+  }
+}
+
 #annual-slider-wrapper {
   @include medium {
     height: $ce3-btnheight-legends !important;
     order: 2;
-    // #slider-range {
-    //   // width: 60% !important;
-    // }
+  }
+}
+
+#more-info-description  {
+  .about-tool-row {
+    width: 100% !important;
   }
 }
 

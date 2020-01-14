@@ -282,6 +282,83 @@
             </div>
           </div>
       </div>
+
+      <div tabindex="44" id="chart-info-row" class="d-flex-row flex-justify padding-bottom-half d-flex-left d-none" >
+        <h4 class="more-info btn-default">
+          <span class="more">More about the graph</span>
+          <span class="less d-none">Less about the graph</span>
+          <span class="fas fa-caret-down more-info more-icon"></span>
+          <span class="fas fa-caret-up more-info less-icon d-none"></span>
+        </h4>
+        <span id="more-info-description" class="rounded-description-box d-none" >
+
+          <div id="" class="padding-horizontal padding-top padding-bottom-half d-flex-center" >
+            <div id="" class="about-tool-row d-flex-row padding-horrizontal width-100 d-flex-center">
+
+              <div  id="btn-chart"  class="d-flex-row d-flex-center width-25">
+                <div  id="btn-chart" class="btn-histobs description circle-box-left d-flex-center width-100 selected" >
+                  Historical Observed
+                </div>
+                <div class="btn-chart-text d-flex-center width-100" >
+                  <img src="/resources/img/about-local-climate-graph-histobs.png" class="img-btn-chart width-80 height-80"/>
+                </div>
+                <div class="btn-chart-text d-flex-center width-100" >
+                  Annual average historical observations, shown as the difference from the 30-year average from 1961-1990.
+                  <br /><br />
+                  Note: Examining how historical observations vary within  the range of historical modeled values can help you recognize how future observations may vary about the range of projected values.
+                </div>
+              </div>
+
+              <div  id="btn-chart"  class="d-flex-row d-flex-center width-25">
+                <div  id="btn-chart" class="btn-hismod description selected circle-box-center d-flex-center width-100" >
+                  Historical Modeled
+                </div>
+                <div class="btn-chart-text d-flex-center width-100" >
+                  <img src="/resources/img/about-local-climate-graph-histmod.png" class="img-btn-chart width-80 height-80"/>
+                </div>
+                <div class="btn-chart-text d-flex-center width-100" >
+                  Range of climate model output for historical period (1950-2006). Also called hindcasts or simulations.
+                </div>
+              </div>
+
+              <div  id="btn-chart"  class="d-flex-row d-flex-center width-25">
+                <div  id="btn-chart" class="btn-lower-emissions description selected circle-box-center d-flex-center width-100">
+                  Lower Emissions
+                </div>
+                <div class="btn-chart-text d-flex-center width-100" >
+                  <img src="/resources/img/about-local-climate-graph-lowerem.png" class="img-btn-chart width-80 height-80"/>
+                </div>
+                <div class="btn-chart-text d-flex-center width-100" >
+                  Range of climate model projections for 2006-2100 if global emissions of heat-trapping gases are stabilized by 2040 and then dramatically reduced. Blue line shows weighted mean of all projections at each time step.
+                </div>
+              </div>
+
+              <div  id="btn-chart"  class="d-flex-row d-flex-center width-25">
+                <div id="btn-chart" class="btn-higher-emissions description selected circle-box-right d-flex-center width-100" >
+                  Higher Emissions
+                </div>
+                <div class="btn-chart-text d-flex-center width-100" >
+                  <img src="/resources/img/about-local-climate-graph-higherem.png" class="img-btn-chart width-80 height-80"/>
+                </div>
+                <div class="btn-chart-text d-flex-center width-100" >
+                  Range of climate model projections for 2006-2100 assuming global emissions of heat-trapping gases continue increasing through 2100. Red line shows weighted mean of all projections at each time step.
+                </div>
+              </div>
+            </div>
+
+          </div>
+
+
+          <!-- <div class="padding-bottom-half padding-top more-info-description" >This graph shows how often the selected threshold has been exceeded per year. For consistency,
+          this chart excludes any years that are missing more than five daily temperature reports or more
+          than one precipitation report in a single month. Data from
+          <a target="_blank" href="https://www.ncdc.noaa.gov/data-access/land-based-station-data/land-based-datasets/global-historical-climatology-network-ghcn">
+            Global Historical Climatology Network</a>, served by <a target="_blank" href="http://www.rcc-acis.org/">ACIS</a>.
+          </div> -->
+        </span>
+      </div>
+
+
       </div>
     </div>
 
