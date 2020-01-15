@@ -80,12 +80,12 @@ $animation-duration: 0.4s;
       }
 
       @mixin label-inactive() {
-        font: $font-weight-normal 14px Roboto, Helvetica, "Helvetica Neue", Arial, sans-serif !important;
+        font: $font-weight-normal 14px $roboto !important;
         transform: translateY(0);
       }
 
       @mixin label-active() {
-        font: $font-weight-normal 12px Roboto, Helvetica, "Helvetica Neue", Arial, sans-serif !important;
+        font: $font-weight-normal 12px $roboto !important;
         transform: translateY(-28px);
       }
 
@@ -117,7 +117,7 @@ $animation-duration: 0.4s;
         z-index: 500;
         cursor: pointer;
         float: left;
-        font: 700 16px Roboto, Helvetica, "Helvetica Neue", Arial, sans-serif !important;
+        font: 700 16px $roboto !important;
         position: relative;
         bottom: 0px;
         left: 0px;
@@ -189,7 +189,7 @@ $animation-duration: 0.4s;
         border-top: 1px solid $ce3-blue3;
         color: $ce3-blue3;
         display: block;
-        font: 500 14px Roboto, Helvetica, "Helvetica Neue", Arial, sans-serif !important;
+        font: 500 14px $roboto !important;
         outline: 0;
         padding: $ce3-default-padding;
         width: 100%;

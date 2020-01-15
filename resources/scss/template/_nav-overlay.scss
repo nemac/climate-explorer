@@ -4,7 +4,7 @@
   position: fixed;
   border: 20px solid $white;
   color: $white;
-  
+
   .close {
     position: fixed;
     top: 20px;
@@ -17,10 +17,10 @@
     mix-blend-mode: screen;
     z-index: 2;
   }
-  
+
   .slide {
     @include full-size;
-    
+
     .slide-bg {
       @include full-size;
       background-repeat: no-repeat;
@@ -38,36 +38,36 @@
 
 #nav-overlay {
   z-index: 600;
-  
+
   #nav-close {
   }
-  
+
   #nav-cycle {
     @include full-size;
     z-index: 1;
   }
-  
+
   #nav-search {
     .slide-bg {
       background-image: url(../img/bg_contours-lightblue.png);
     }
-    
+
     h3 {
       padding: 0 3%;
       background: transparentize($white, 0.9);
-      
+
       input {
-        font: 1.625rem/1em $sans-heavy;
+        font: 1.625rem/1em $roboto;
       }
     }
   }
-  
+
   #nav-variables {
     .slide-bg {
       background-image: url(../img/bg_contours-blue.png);
     }
   }
-  
+
   #nav-stations {
     .slide-bg {
       background-image: url(../img/bg_contours-orange.png);
@@ -75,7 +75,7 @@
       -webkit-filter: brightness(.9) contrast(.9);
     }
   }
-  
+
   #nav-controls {
     position: absolute;
     top: 5%;
@@ -83,38 +83,38 @@
     width: 60%;
     z-index: 3;
     text-align: center;
-    
+
     a {
       display: block;
       margin: 0 5% 0 0;
       padding: 18px 0;
       color: $white;
-      font: 1rem/1em $sans-heavy;
+      font: 1rem/1em $roboto;
       white-space: nowrap;
       border: 5px solid transparent;
       @include transition(0.25s);
-      
+
       &:hover {
         border-color: transparentize($white, 0.75);
       }
-      
+
       .icon {
         margin: -4px 8px 0 0;
         font-size: 1.375rem;
       }
     }
-    
+
     li {
       float: left;
       width: 33%;
-      
+
       &.cycle-pager-active {
         a {
           border-color: $white;
         }
       }
     }
-    
+
     #nav-overlay-home {
       display: none;
       //position: absolute;
@@ -123,7 +123,7 @@
       //padding: 18px;
     }
   }
-  
+
   .nav-content-wrap {
     position: absolute;
     top: 20%;
@@ -136,12 +136,12 @@
     a {
       color: $white;
     }
-    
+
     h3 {
       margin: 0 0 5% 0;
       color: $white;
-      font: 1.625rem/4.875rem $sans-heavy;
-      
+      font: 1.625rem/4.875rem $roboto;
+
       .icon {
         margin-right: 20px;
       }
@@ -154,12 +154,12 @@
       }
     }
   }
-  
+
   .nav-content {
     nav {
       height: 40px;
       padding: 0 4%;
-      
+
       a {
         position: relative;
         display: block;
@@ -168,7 +168,7 @@
         font: 300 1.125rem/1em $roboto;
         text-transform: uppercase;
         color: $white;
-        
+
         span {
           position: relative;
           display: inline-block;
@@ -177,7 +177,7 @@
           border-bottom: 2px solid $white;
           @include transition(0.25s);
           vertical-align: top;
-            
+
           &:after {
             content: '';
             display: block;
@@ -192,12 +192,12 @@
             @include transition(0.25s);
           }
         }
-        
+
         &.fs-tabs-active {
           span {
             margin: 0;
             border-bottom-width: 4px;
-            
+
             &:after {
               bottom: -16px;
               margin: 0 0 0 -6px;
@@ -207,20 +207,20 @@
         }
       }
     }
-    
+
     .tab {
       margin: -6px 0 0 0;
       padding: 6% 4%;
       background: transparentize($white, 0.9);
-      
+
       ol {
         @include legacy-clearfix;
-        
+
         & > li {
           float: left;
           font: 400 1.25rem/1em $roboto;
           //counter-increment: customlistcounter;
-          
+
           &:before {
             //content: counter(customlistcounter) " ";
             float: left;
@@ -230,15 +230,15 @@
             font-weight: 600;
             color: $orange1;
           }
-          
+
           &:first-child {
             //counter-reset: customlistcounter;
           }
         }
-      
+
         ul {
           margin: 15px 0 0 0;
-          
+
           li {
             float: none!important;
             width: auto!important;
@@ -247,38 +247,38 @@
           }
         }
       }
-      
+
       ol,
       ul {
-        
+
         &.col-2 {
           @include legacy-clearfix;
-          
+
           li {
             float: left;
             width: 50%;
           }
         }
-        
+
         &.col-3 {
           @include legacy-clearfix;
-          
+
           li {
             float: left;
             width: 33%;
           }
         }
-        
+
         &.col-4 {
           @include legacy-clearfix;
-          
+
           li {
             float: left;
             width: 25%;
           }
         }
       }
-      
+
       a {
         //font: 300 1.25rem/1em $roboto;
       }
@@ -314,12 +314,12 @@
       left: 20%;
       width: 60%;
       @include transform(translateY(-50%));
-      
+
       h3 {
-        font: 1.625rem/1em $sans-heavy;
+        font: 1.625rem/1em $roboto;
         margin: 0 0 40px 0;
       }
-      
+
       p {
         margin: 0 0 20px 0;
         line-height: 2em;
@@ -348,7 +348,7 @@ body {
       filter: blur(3px);
     }
   }
-  
+
   &.detail-open {
     #nav-overlay {
       -webkit-filter: blur(6px);
