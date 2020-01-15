@@ -61,8 +61,8 @@ $home-text-transparency: .25;
   align-content: start;
 }
 
-.describe-main {
-  font: 500 24px $roboto !important;
+.describe-main-secondary {
+  font: 500 18px $roboto !important;
   color: $blue2;
   max-height: 100px !important;
   @include border-radius(5px, 5px);
@@ -72,6 +72,18 @@ $home-text-transparency: .25;
     height: auto !important;
     padding-bottom: $ce3-padding-half !important;
   }
+
+  .describe-main {
+    font: 500 24px $roboto !important;
+    color: $blue2;
+    max-height: 100px !important;
+    @include border-radius(5px, 5px);
+
+    @include medium {
+      max-height: 250px !important;
+      height: auto !important;
+      padding-bottom: $ce3-padding-half !important;
+    }
 }
 
 .rounded-box {
