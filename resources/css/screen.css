@@ -7675,7 +7675,7 @@ readers do not read off random characters that represent icons */
 @font-face {
   font-family: 'Font Awesome 5 Free';
   font-style: normal;
-  font-weight: 900;
+  font-weight: 600;
   font-display: auto;
   src: url("../fonts/fa-solid-900.eot");
   src: url("../fonts/fa-solid-900.eot?#iefix") format("embedded-opentype"), url("../fonts/fa-solid-900.woff2") format("woff2"), url("../fonts/fa-solid-900.woff") format("woff"), url("../fonts/fa-solid-900.ttf") format("truetype"), url("../fonts/fa-solid-900.svg#fontawesome") format("svg");
@@ -7685,7 +7685,7 @@ readers do not read off random characters that represent icons */
 .fa,
 .fas {
   font-family: 'Font Awesome 5 Free';
-  font-weight: 900;
+  font-weight: 600;
 }
 
 /*! formstone v0.8.26 [grid.css] 2015-11-01 | MIT License | formstone.it */
@@ -14094,9 +14094,9 @@ h6 {
 .btn-default.more-info {
   border: 1px solid rgba(18, 64, 134, 0.05) !important;
   background-color: #FBFCFE !important;
-  -webkit-border-radius: 5px 5px;
-  -moz-border-radius: 5px / 5px;
-  border-radius: 5px / 5px;
+  -webkit-border-radius: 25px 25px;
+  -moz-border-radius: 25px / 25px;
+  border-radius: 25px / 25px;
   padding-left: 12px;
 }
 
