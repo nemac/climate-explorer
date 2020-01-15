@@ -59,7 +59,7 @@
     #card-image-row {
       img {
         -webkit-filter: grayscale(60%) contrast(50%);; /* Safari 6.0 - 9.0 */
-        filter: grayscale(60%) contrast(50%);;        
+        filter: grayscale(60%) contrast(50%);;
       }
     }
     #card-text {
@@ -180,7 +180,7 @@
 }
 
 #card-title-icon {
-  font: 700 18px $roboto !important;
+  font: $font-weight-meduim 18px $roboto !important;
   padding-bottom: $ce3-padding-half !important;
   max-height: 28px;
 }

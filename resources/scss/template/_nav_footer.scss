@@ -53,7 +53,7 @@
 
 .nav-footer-item {
   cursor: pointer;
-  font: 500 14px $roboto !important;
+  font: $font-weight-normal 14px $roboto !important;
   color: $ce3-darkgray !important;
   justify-content: center !important;
   align-items: center !important;
@@ -90,7 +90,7 @@
   @include nav-footer-330-max {
     font-size: 28px !important;
   }
-  font-weight: 500 !important;
+  font-weight: $font-weight-normal !important;
   @include nav-footer-400-min {
     justify-content: center !important;
     align-content: center !important;
@@ -99,7 +99,7 @@
 
 .nav-footer-item-selected {
   cursor: pointer;
-  font: 600 14px $roboto !important;
+  font: $font-weight-normal-plus 14px $roboto !important;
   color: $ce3-blue3 !important;
   justify-content: center !important;
   align-content: center !important;
@@ -120,19 +120,19 @@
   }
 
   .nav-footer-label {
-    font-weight: 600 !important;
+    font-weight: $font-weight-normal-plus !important;
     color: $ce3-blue3 !important;
   }
 
   .nav-footer-icon {
-    font-weight: 600 !important;
+    font-weight: $font-weight-normal-plus !important;
     color: $ce3-blue3 !important;
   }
 }
 
 .nav-footer-label {
   font-size: 14px !important;
-  font-weight: 500;
+  font-weight: $font-weight-normal;
   justify-content: center !important;
   align-content: center !important;
   align-self: center !important;
@@ -174,7 +174,7 @@
 }
 
 .nav-footer-area-title {
-  font: 500 16px $roboto !important;
+  font: $font-weight-normal 16px $roboto !important;
   color: $ce3-darkgray !important;
 }
 

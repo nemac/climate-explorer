@@ -12603,7 +12603,7 @@ This file is due for a cleanup. Please do not add to the mess.
     width: 100%;
     padding: 5%;
     background: transparent;
-    font: 1.25rem/1em "CESans", Roboto, Helvetica, "Helvetica Neue", Arial, sans-serif;
+    font: 1.25rem/1em Roboto, Helvetica, "Helvetica Neue", Arial, sans-serif;
     color: #ffffff;
   }
   /* line 723, resources/scss/_media.scss */
@@ -12993,7 +12993,7 @@ This file is due for a cleanup. Please do not add to the mess.
 
 /* line 130, resources/scss/screen.scss */
 body {
-  font: 300 16px "CESans", Roboto, Helvetica, "Helvetica Neue", Arial, sans-serif;
+  font: 300 16px Roboto, Helvetica, "Helvetica Neue", Arial, sans-serif;
   color: #124086;
 }
 
@@ -13012,34 +13012,34 @@ img {
 
 /* line 143, resources/scss/screen.scss */
 h1 {
-  font: 800 24px "CESans", Roboto, Helvetica, "Helvetica Neue", Arial, sans-serif;
+  font: 800 24px Roboto, Helvetica, "Helvetica Neue", Arial, sans-serif;
   text-transform: uppercase;
 }
 
 /* line 147, resources/scss/screen.scss */
 h2 {
-  font: 800 18px "CESans", Roboto, Helvetica, "Helvetica Neue", Arial, sans-serif;
+  font: 800 18px Roboto, Helvetica, "Helvetica Neue", Arial, sans-serif;
   text-transform: uppercase;
 }
 
 /* line 151, resources/scss/screen.scss */
 h3 {
-  font: 800 16px "CESans", Roboto, Helvetica, "Helvetica Neue", Arial, sans-serif;
+  font: 800 16px Roboto, Helvetica, "Helvetica Neue", Arial, sans-serif;
 }
 
 /* line 154, resources/scss/screen.scss */
 h4 {
-  font: 800 14px "CESans", Roboto, Helvetica, "Helvetica Neue", Arial, sans-serif;
+  font: 800 14px Roboto, Helvetica, "Helvetica Neue", Arial, sans-serif;
 }
 
 /* line 157, resources/scss/screen.scss */
 h5 {
-  font: 800 12px "CESans", Roboto, Helvetica, "Helvetica Neue", Arial, sans-serif;
+  font: 800 12px Roboto, Helvetica, "Helvetica Neue", Arial, sans-serif;
 }
 
 /* line 160, resources/scss/screen.scss */
 h6 {
-  font: 600 12px "CESans", Roboto, Helvetica, "Helvetica Neue", Arial, sans-serif;
+  font: 600 12px Roboto, Helvetica, "Helvetica Neue", Arial, sans-serif;
 }
 
 /* line 164, resources/scss/screen.scss */
@@ -13082,12 +13082,12 @@ h6 {
 
 /* line 196, resources/scss/screen.scss */
 .main-font-description {
-  font: 500 24px "CESans", Roboto, Helvetica, "Helvetica Neue", Arial, sans-serif !important;
+  font: 500 24px Roboto, Helvetica, "Helvetica Neue", Arial, sans-serif !important;
 }
 
 /* line 200, resources/scss/screen.scss */
 .font-description {
-  font: 500 24px "CESans", Roboto, Helvetica, "Helvetica Neue", Arial, sans-serif !important;
+  font: 500 24px Roboto, Helvetica, "Helvetica Neue", Arial, sans-serif !important;
 }
 
 /* line 203, resources/scss/screen.scss */
@@ -13125,7 +13125,7 @@ h6 {
   cursor: pointer;
   display: inline-block;
   position: relative;
-  font: 500 14px "CESans", Roboto, Helvetica, "Helvetica Neue", Arial, sans-serif !important;
+  font: 500 14px Roboto, Helvetica, "Helvetica Neue", Arial, sans-serif !important;
   color: #124086;
   width: 100%;
   height: 36px !important;
@@ -13354,7 +13354,7 @@ h6 {
 
 /* line 402, resources/scss/screen.scss */
 .pac-container {
-  font: 500 14px "CESans", Roboto, Helvetica, "Helvetica Neue", Arial, sans-serif !important;
+  font: 500 14px Roboto, Helvetica, "Helvetica Neue", Arial, sans-serif !important;
   display: block;
   z-index: 999;
   margin: 0;
@@ -13442,7 +13442,7 @@ h6 {
 
 /* line 471, resources/scss/screen.scss */
 .font-title {
-  font: 500 24px "CESans", Roboto, Helvetica, "Helvetica Neue", Arial, sans-serif !important;
+  font: 500 24px Roboto, Helvetica, "Helvetica Neue", Arial, sans-serif !important;
   color: #FBFCFE !important;
 }
 
@@ -13874,7 +13874,7 @@ h6 {
   background-color: #777 !important;
   color: rgba(251, 252, 254, 0.5) !important;
   height: 36px !important;
-  font: 500 14px "CESans", Roboto, Helvetica, "Helvetica Neue", Arial, sans-serif !important;
+  font: 500 14px Roboto, Helvetica, "Helvetica Neue", Arial, sans-serif !important;
   border: 1px solid rgba(18, 64, 134, 0.5) !important;
 }
 
@@ -13896,7 +13896,7 @@ h6 {
 .btn-histobs:focus.description, .btn-histobs:hover.description {
   cursor: default;
   background-color: #777 !important;
-  font: 500 14px "CESans", Roboto, Helvetica, "Helvetica Neue", Arial, sans-serif !important;
+  font: 500 14px Roboto, Helvetica, "Helvetica Neue", Arial, sans-serif !important;
 }
 
 /* line 807, resources/scss/screen.scss */
@@ -13927,7 +13927,7 @@ h6 {
   background-color: #D6D6D6 !important;
   color: rgba(18, 64, 134, 0.5) !important;
   height: 36px !important;
-  font: 500 14px "CESans", Roboto, Helvetica, "Helvetica Neue", Arial, sans-serif !important;
+  font: 500 14px Roboto, Helvetica, "Helvetica Neue", Arial, sans-serif !important;
   border: 1px solid rgba(18, 64, 134, 0.5) !important;
 }
 
@@ -13949,7 +13949,7 @@ h6 {
 .btn-hismod:hover.description, .btn-hismod:focus.description {
   cursor: default;
   background-color: #D6D6D6 !important;
-  font: 500 14px "CESans", Roboto, Helvetica, "Helvetica Neue", Arial, sans-serif !important;
+  font: 500 14px Roboto, Helvetica, "Helvetica Neue", Arial, sans-serif !important;
 }
 
 /* line 850, resources/scss/screen.scss */
@@ -13980,7 +13980,7 @@ h6 {
   background-color: #98BCEB !important;
   color: rgba(18, 64, 134, 0.5) !important;
   height: 36px !important;
-  font: 500 14px "CESans", Roboto, Helvetica, "Helvetica Neue", Arial, sans-serif !important;
+  font: 500 14px Roboto, Helvetica, "Helvetica Neue", Arial, sans-serif !important;
   border: 1px solid rgba(18, 64, 134, 0.5) !important;
 }
 
@@ -14002,7 +14002,7 @@ h6 {
 .btn-lower-emissions:hover.description, .btn-lower-emissions:focus.description {
   cursor: default;
   background-color: #98BCEB !important;
-  font: 500 14px "CESans", Roboto, Helvetica, "Helvetica Neue", Arial, sans-serif !important;
+  font: 500 14px Roboto, Helvetica, "Helvetica Neue", Arial, sans-serif !important;
 }
 
 /* line 893, resources/scss/screen.scss */
@@ -14033,7 +14033,7 @@ h6 {
   background-color: #FBB4AA !important;
   color: rgba(18, 64, 134, 0.5) !important;
   height: 36px !important;
-  font: 500 14px "CESans", Roboto, Helvetica, "Helvetica Neue", Arial, sans-serif !important;
+  font: 500 14px Roboto, Helvetica, "Helvetica Neue", Arial, sans-serif !important;
   border: 1px solid rgba(18, 64, 134, 0.5) !important;
 }
 
@@ -14055,7 +14055,7 @@ h6 {
 .btn-higher-emissions:hover.description, .btn-higher-emissions:focus.description {
   cursor: default;
   background-color: #FBB4AA !important;
-  font: 500 14px "CESans", Roboto, Helvetica, "Helvetica Neue", Arial, sans-serif !important;
+  font: 500 14px Roboto, Helvetica, "Helvetica Neue", Arial, sans-serif !important;
 }
 
 /* line 936, resources/scss/screen.scss */
@@ -14086,7 +14086,7 @@ h6 {
   height: 36px !important;
   background-color: #E9F1FC !important;
   color: #124086 !important;
-  font: 500 14px "CESans", Roboto, Helvetica, "Helvetica Neue", Arial, sans-serif !important;
+  font: 500 14px Roboto, Helvetica, "Helvetica Neue", Arial, sans-serif !important;
   border: 1px solid rgba(18, 64, 134, 0.5) !important;
 }
 
@@ -14150,7 +14150,7 @@ h6 {
   height: 36px !important;
   background-color: #E9F1FC !important;
   color: #a4c3f3 !important;
-  font: 500 14px "CESans", Roboto, Helvetica, "Helvetica Neue", Arial, sans-serif !important;
+  font: 500 14px Roboto, Helvetica, "Helvetica Neue", Arial, sans-serif !important;
   border: 1px solid #a4c3f3 !important;
 }
 
@@ -14200,7 +14200,7 @@ h6 {
   z-index: 999 !important;
   background-color: #124086 !important;
   color: #E9F1FC !important;
-  font: 500 14px "CESans", Roboto, Helvetica, "Helvetica Neue", Arial, sans-serif !important;
+  font: 500 14px Roboto, Helvetica, "Helvetica Neue", Arial, sans-serif !important;
   border: 1px solid rgba(18, 64, 134, 0.5) !important;
 }
 
@@ -14675,20 +14675,20 @@ h6 {
 input.input-inner-default {
   background-color: #E9F1FC;
   color: #124086;
-  font: 800 18px "CESans", Roboto, Helvetica, "Helvetica Neue", Arial, sans-serif !important;
+  font: 800 18px Roboto, Helvetica, "Helvetica Neue", Arial, sans-serif !important;
 }
 
 /* line 1358, resources/scss/screen.scss */
 input.input-inner-default::placeholder {
   background-color: #E9F1FC;
   color: #124086;
-  font: 800 18px "CESans", Roboto, Helvetica, "Helvetica Neue", Arial, sans-serif !important;
+  font: 800 18px Roboto, Helvetica, "Helvetica Neue", Arial, sans-serif !important;
 }
 
 /* line 1364, resources/scss/screen.scss */
 input.input-inner-default:focus::placeholder {
   color: rgba(18, 64, 134, 0.5);
-  font: 800 18px "CESans", Roboto, Helvetica, "Helvetica Neue", Arial, sans-serif !important;
+  font: 800 18px Roboto, Helvetica, "Helvetica Neue", Arial, sans-serif !important;
   -moz-transition: 0.25s;
   -o-transition: 0.25s;
   -webkit-transition: 0.25s;
@@ -15050,7 +15050,7 @@ input.input-inner-default:focus {
   z-index: 1000;
   padding: 12px;
   background: #FBFCFE;
-  font: 1.125rem/1em "CESans", Roboto, Helvetica, "Helvetica Neue", Arial, sans-serif;
+  font: 1.125rem/1em Roboto, Helvetica, "Helvetica Neue", Arial, sans-serif;
   color: #233a70;
   -webkit-box-shadow: 0 0 8px rgba(0, 88, 207, 0.25);
   -moz-box-shadow: 0 0 8px rgba(0, 88, 207, 0.25);
@@ -15729,7 +15729,7 @@ input.input-inner-default:focus {
   -ms-border-radius: 24px !important;
   -o-border-radius: 24px !important;
   border-radius: 24px !important;
-  font: 0.85rem/34px "CESans", Roboto, Helvetica, "Helvetica Neue", Arial, sans-serif;
+  font: 0.85rem/34px Roboto, Helvetica, "Helvetica Neue", Arial, sans-serif;
   font-weight: 500;
   color: #124086;
   border: 0px;
@@ -15950,7 +15950,7 @@ input.input-inner-default:focus {
   display: block;
   float: left;
   width: 25%;
-  font: 300 1.125rem/1em "CESans", Roboto, Helvetica, "Helvetica Neue", Arial, sans-serif;
+  font: 300 1.125rem/1em Roboto, Helvetica, "Helvetica Neue", Arial, sans-serif;
   text-transform: uppercase;
   color: #ffffff;
 }
@@ -16021,7 +16021,7 @@ input.input-inner-default:focus {
 /* line 219, resources/scss/template/_nav-overlay.scss */
 #nav-overlay .nav-content .tab ol > li {
   float: left;
-  font: 400 1.25rem/1em "CESans", Roboto, Helvetica, "Helvetica Neue", Arial, sans-serif;
+  font: 400 1.25rem/1em Roboto, Helvetica, "Helvetica Neue", Arial, sans-serif;
 }
 
 /* line 224, resources/scss/template/_nav-overlay.scss */
@@ -16044,7 +16044,7 @@ input.input-inner-default:focus {
   float: none !important;
   width: auto !important;
   margin: 0 0 10px 0;
-  font: 300 1rem/1em "CESans", Roboto, Helvetica, "Helvetica Neue", Arial, sans-serif;
+  font: 300 1rem/1em Roboto, Helvetica, "Helvetica Neue", Arial, sans-serif;
 }
 
 /* line 201, resources/scss/_mixins.scss */
@@ -16264,7 +16264,7 @@ body.detail-open #nav-overlay {
 /* line 54, resources/scss/template/_nav_footer.scss */
 .nav-footer-item {
   cursor: pointer;
-  font: 500 14px "CESans", Roboto, Helvetica, "Helvetica Neue", Arial, sans-serif !important;
+  font: 500 14px Roboto, Helvetica, "Helvetica Neue", Arial, sans-serif !important;
   color: #585858 !important;
   justify-content: center !important;
   align-items: center !important;
@@ -16342,7 +16342,7 @@ body.detail-open #nav-overlay {
 /* line 100, resources/scss/template/_nav_footer.scss */
 .nav-footer-item-selected {
   cursor: pointer;
-  font: 600 14px "CESans", Roboto, Helvetica, "Helvetica Neue", Arial, sans-serif !important;
+  font: 600 14px Roboto, Helvetica, "Helvetica Neue", Arial, sans-serif !important;
   color: #124086 !important;
   justify-content: center !important;
   align-content: center !important;
@@ -16455,7 +16455,7 @@ body.detail-open #nav-overlay {
 
 /* line 176, resources/scss/template/_nav_footer.scss */
 .nav-footer-area-title {
-  font: 500 16px "CESans", Roboto, Helvetica, "Helvetica Neue", Arial, sans-serif !important;
+  font: 500 16px Roboto, Helvetica, "Helvetica Neue", Arial, sans-serif !important;
   color: #585858 !important;
 }
 
@@ -16618,7 +16618,7 @@ body.detail-open #nav-overlay {
 
 /* line 21, resources/scss/template/_secondary_header.scss */
 #secondary-header .secondary-font-title {
-  font: 500 24px "CESans", Roboto, Helvetica, "Helvetica Neue", Arial, sans-serif !important;
+  font: 500 24px Roboto, Helvetica, "Helvetica Neue", Arial, sans-serif !important;
   white-space: nowrap;
   width: 70%;
   color: #FBFCFE !important;
@@ -16642,14 +16642,14 @@ body.detail-open #nav-overlay {
 @media screen and (max-width: 768px) {
   /* line 21, resources/scss/template/_secondary_header.scss */
   #secondary-header .secondary-font-title {
-    font: 500 18px "CESans", Roboto, Helvetica, "Helvetica Neue", Arial, sans-serif !important;
+    font: 500 18px Roboto, Helvetica, "Helvetica Neue", Arial, sans-serif !important;
   }
 }
 
 /* line 43, resources/scss/template/_secondary_header.scss */
 #secondary-header .topnav a {
   text-decoration: none;
-  font: 500 18px "CESans", Roboto, Helvetica, "Helvetica Neue", Arial, sans-serif;
+  font: 500 18px Roboto, Helvetica, "Helvetica Neue", Arial, sans-serif;
 }
 
 /* line 50, resources/scss/template/_secondary_header.scss */
@@ -16720,7 +16720,7 @@ body.detail-open #nav-overlay {
 
 /* line 32, resources/scss/template/_main_header.scss */
 #main-header .main-font-title {
-  font: 500 36px "CESans", Roboto, Helvetica, "Helvetica Neue", Arial, sans-serif !important;
+  font: 500 36px Roboto, Helvetica, "Helvetica Neue", Arial, sans-serif !important;
   width: 70%;
   color: #FBFCFE !important;
   align-self: center;
@@ -16736,7 +16736,7 @@ body.detail-open #nav-overlay {
 @media screen and (max-width: 768px) {
   /* line 32, resources/scss/template/_main_header.scss */
   #main-header .main-font-title {
-    font: 500 18px "CESans", Roboto, Helvetica, "Helvetica Neue", Arial, sans-serif !important;
+    font: 500 18px Roboto, Helvetica, "Helvetica Neue", Arial, sans-serif !important;
   }
 }
 
@@ -16750,12 +16750,12 @@ body.detail-open #nav-overlay {
 /* line 53, resources/scss/template/_main_header.scss */
 #main-header .topnav a {
   text-decoration: none;
-  font: 500 18px "CESans", Roboto, Helvetica, "Helvetica Neue", Arial, sans-serif;
+  font: 500 18px Roboto, Helvetica, "Helvetica Neue", Arial, sans-serif;
 }
 
 /* line 60, resources/scss/template/_main_header.scss */
 #main-header #main-nav a .icon {
-  font: 500 18px "CESans", Roboto, Helvetica, "Helvetica Neue", Arial, sans-serif !important;
+  font: 500 18px Roboto, Helvetica, "Helvetica Neue", Arial, sans-serif !important;
 }
 
 /* line 64, resources/scss/template/_main_header.scss */
@@ -16862,7 +16862,7 @@ body.detail-open #nav-overlay {
 
 /* line 64, resources/scss/pages/_home.scss */
 .describe-main {
-  font: 500 24px "CESans", Roboto, Helvetica, "Helvetica Neue", Arial, sans-serif !important;
+  font: 500 24px Roboto, Helvetica, "Helvetica Neue", Arial, sans-serif !important;
   color: #233a70;
   max-height: 100px !important;
   -webkit-border-radius: 5px 5px;
@@ -16881,7 +16881,7 @@ body.detail-open #nav-overlay {
 
 /* line 77, resources/scss/pages/_home.scss */
 .describe-main-secondary {
-  font: 500 18px "CESans", Roboto, Helvetica, "Helvetica Neue", Arial, sans-serif !important;
+  font: 500 18px Roboto, Helvetica, "Helvetica Neue", Arial, sans-serif !important;
   color: #233a70;
   max-height: 100px !important;
   -webkit-border-radius: 5px 5px;
@@ -16918,20 +16918,20 @@ body.detail-open #nav-overlay {
 input.input-inner {
   background-color: #E9F1FC;
   color: #124086;
-  font: 800 24px "CESans", Roboto, Helvetica, "Helvetica Neue", Arial, sans-serif !important;
+  font: 800 24px Roboto, Helvetica, "Helvetica Neue", Arial, sans-serif !important;
 }
 
 /* line 106, resources/scss/pages/_home.scss */
 input.input-inner::placeholder {
   background-color: #E9F1FC;
   color: #124086;
-  font: 800 24px "CESans", Roboto, Helvetica, "Helvetica Neue", Arial, sans-serif !important;
+  font: 800 24px Roboto, Helvetica, "Helvetica Neue", Arial, sans-serif !important;
 }
 
 /* line 112, resources/scss/pages/_home.scss */
 input.input-inner:focus::placeholder {
   color: rgba(18, 64, 134, 0.5);
-  font: 800 24px "CESans", Roboto, Helvetica, "Helvetica Neue", Arial, sans-serif !important;
+  font: 800 24px Roboto, Helvetica, "Helvetica Neue", Arial, sans-serif !important;
   -moz-transition: 0.25s;
   -o-transition: 0.25s;
   -webkit-transition: 0.25s;
@@ -17228,7 +17228,7 @@ input.input-inner:focus {
 #downloads-select-wrapper, #stations-select-wrapper {
   background-color: #E9F1FC;
   color: #124086;
-  font: 500 14px "CESans", Roboto, Helvetica, "Helvetica Neue", Arial, sans-serif !important;
+  font: 500 14px Roboto, Helvetica, "Helvetica Neue", Arial, sans-serif !important;
 }
 
 @media screen and (max-width: 900px) {
@@ -17252,14 +17252,14 @@ input.input-inner:focus {
 #downloads-select-wrapper li.disabled:hover, #downloads-select-wrapper li.disabled:focus, #stations-select-wrapper li.disabled:hover, #stations-select-wrapper li.disabled:focus {
   color: #a4c3f3 !important;
   background: #E9F1FC !important;
-  font: 500 14px "CESans", Roboto, Helvetica, "Helvetica Neue", Arial, sans-serif !important;
+  font: 500 14px Roboto, Helvetica, "Helvetica Neue", Arial, sans-serif !important;
 }
 
 /* line 200, resources/scss/pages/_local-climate-charts.scss */
 #chartmap-select-wrapper, #time-select-wrapper, #presentation-select-wrapper, #tidalzoom-select-wrapper {
   background-color: #E9F1FC;
   color: #124086;
-  font: 500 14px "CESans", Roboto, Helvetica, "Helvetica Neue", Arial, sans-serif !important;
+  font: 500 14px Roboto, Helvetica, "Helvetica Neue", Arial, sans-serif !important;
   margin-left: 6px !important;
   margin-right: 6px !important;
   display: none !important;
@@ -17454,7 +17454,7 @@ input.input-inner:focus {
 /* line 342, resources/scss/pages/_local-climate-charts.scss */
 #slider-value-low, #slider-value-mid, #slider-value-high {
   display: flex;
-  font: 500 18px "CESans", Roboto, Helvetica, "Helvetica Neue", Arial, sans-serif !important;
+  font: 500 18px Roboto, Helvetica, "Helvetica Neue", Arial, sans-serif !important;
   color: #124086 !important;
   height: 25px !important;
   width: 50px !important;
@@ -17537,7 +17537,7 @@ input.input-inner:focus {
   padding: 12px;
   background-color: #f4c3b1 !important;
   color: #E05B2C !important;
-  font: 500 14px "CESans", Roboto, Helvetica, "Helvetica Neue", Arial, sans-serif !important;
+  font: 500 14px Roboto, Helvetica, "Helvetica Neue", Arial, sans-serif !important;
   border: 1px solid #E05B2C !important;
   -webkit-border-radius: 5px 5px;
   -moz-border-radius: 5px / 5px;
@@ -17825,7 +17825,7 @@ input.input-inner:focus {
   padding: 12px;
   background-color: #f4c3b1 !important;
   color: #E05B2C !important;
-  font: 500 14px "CESans", Roboto, Helvetica, "Helvetica Neue", Arial, sans-serif !important;
+  font: 500 14px Roboto, Helvetica, "Helvetica Neue", Arial, sans-serif !important;
   border: 1px solid #E05B2C !important;
   -webkit-border-radius: 5px 5px;
   -moz-border-radius: 5px / 5px;
@@ -17875,7 +17875,7 @@ input.input-inner:focus {
 
 /* line 105, resources/scss/pages/_local-climate-maps.scss */
 #map-row .scenario-map-legend-container .legend-unit-label {
-  font: 500 14px "CESans", Roboto, Helvetica, "Helvetica Neue", Arial, sans-serif !important;
+  font: 500 14px Roboto, Helvetica, "Helvetica Neue", Arial, sans-serif !important;
   padding-bottom: 6px;
 }
 
@@ -18324,7 +18324,7 @@ input.input-inner:focus {
   padding: 12px;
   background-color: #E9F1FC !important;
   color: #124086 !important;
-  font: 500 14px "CESans", Roboto, Helvetica, "Helvetica Neue", Arial, sans-serif !important;
+  font: 500 14px Roboto, Helvetica, "Helvetica Neue", Arial, sans-serif !important;
   border: 1px solid rgba(18, 64, 134, 0.5) !important;
   -webkit-border-radius: 5px 5px;
   -moz-border-radius: 5px / 5px;
@@ -18972,7 +18972,7 @@ input.input-inner:focus {
   padding: 12px;
   background-color: #E9F1FC !important;
   color: #124086 !important;
-  font: 500 14px "CESans", Roboto, Helvetica, "Helvetica Neue", Arial, sans-serif !important;
+  font: 500 14px Roboto, Helvetica, "Helvetica Neue", Arial, sans-serif !important;
   border: 1px solid rgba(18, 64, 134, 0.5) !important;
   -webkit-border-radius: 5px 5px;
   -moz-border-radius: 5px / 5px;
@@ -19016,7 +19016,7 @@ input.input-inner:focus {
 #historical-thresholds-viewport #btn-tidalzoom.active {
   background-color: #124086 !important;
   color: #E9F1FC !important;
-  font: 500 14px "CESans", Roboto, Helvetica, "Helvetica Neue", Arial, sans-serif !important;
+  font: 500 14px Roboto, Helvetica, "Helvetica Neue", Arial, sans-serif !important;
   border: 1px solid rgba(18, 64, 134, 0.5) !important;
 }
 
@@ -19427,7 +19427,7 @@ input.input-inner:focus {
   padding: 12px;
   background-color: #E9F1FC !important;
   color: #124086 !important;
-  font: 500 14px "CESans", Roboto, Helvetica, "Helvetica Neue", Arial, sans-serif !important;
+  font: 500 14px Roboto, Helvetica, "Helvetica Neue", Arial, sans-serif !important;
   border: 1px solid rgba(18, 64, 134, 0.5) !important;
   -webkit-border-radius: 5px 5px;
   -moz-border-radius: 5px / 5px;
@@ -19460,7 +19460,7 @@ input.input-inner:focus {
 #high-tide-flooding-viewport #btn-tidalzoom.active {
   background-color: #124086 !important;
   color: #E9F1FC !important;
-  font: 500 14px "CESans", Roboto, Helvetica, "Helvetica Neue", Arial, sans-serif !important;
+  font: 500 14px Roboto, Helvetica, "Helvetica Neue", Arial, sans-serif !important;
   border: 1px solid rgba(18, 64, 134, 0.5) !important;
 }
 
@@ -19930,7 +19930,7 @@ s
 
 /* line 90, resources/scss/pages/_variable.scss */
 .scenario-map-overlay-container .year.right-year-slider-container, .scenario-map-overlay-container .year.left-year-slider-container {
-  font: 500 0.9rem/0.9rem "CESans", Roboto, Helvetica, "Helvetica Neue", Arial, sans-serif !important;
+  font: 500 0.9rem/0.9rem Roboto, Helvetica, "Helvetica Neue", Arial, sans-serif !important;
   background-color: #E9F1FC !important;
   color: #124086 !important;
   transition: none !important;
@@ -20059,7 +20059,7 @@ s
   flex-grow: 0;
   min-width: 0;
   padding: 0px 1rem;
-  font: 500 0.9rem/0.9rem "CESans", Roboto, Helvetica, "Helvetica Neue", Arial, sans-serif;
+  font: 500 0.9rem/0.9rem Roboto, Helvetica, "Helvetica Neue", Arial, sans-serif;
   background-color: rgba(233, 241, 252, 0.96);
   color: #124086;
   -webkit-border-radius: 5px 5px;
@@ -20362,7 +20362,7 @@ s
 
 /* line 182, resources/scss/pages/_cards-home.scss */
 #card-title-icon {
-  font: 700 18px "CESans", Roboto, Helvetica, "Helvetica Neue", Arial, sans-serif !important;
+  font: 700 18px Roboto, Helvetica, "Helvetica Neue", Arial, sans-serif !important;
   padding-bottom: 6px !important;
   max-height: 28px;
 }
@@ -20513,7 +20513,7 @@ s
 #about-viewport ul, #about-viewport ol {
   margin: 0 20px 30px 20px;
   padding: 0 0 0 30px;
-  font: 300 1rem/1.5em "CESans", Roboto, Helvetica, "Helvetica Neue", Arial, sans-serif;
+  font: 300 1rem/1.5em Roboto, Helvetica, "Helvetica Neue", Arial, sans-serif;
 }
 
 /* line 85, resources/scss/pages/about.scss */
@@ -20534,7 +20534,7 @@ s
 /* line 98, resources/scss/pages/about.scss */
 #about-viewport dl {
   margin: 0 0 30px 0;
-  font: 300 1rem/1.5em "CESans", Roboto, Helvetica, "Helvetica Neue", Arial, sans-serif;
+  font: 300 1rem/1.5em Roboto, Helvetica, "Helvetica Neue", Arial, sans-serif;
 }
 
 /* line 102, resources/scss/pages/about.scss */
@@ -21417,7 +21417,7 @@ https://raw.github.com/shagstrom/split-pane/master/LICENSE
 .feedback-trigger-small {
   position: absolute;
   cursor: pointer;
-  font: 500 18px "CESans", Roboto, Helvetica, "Helvetica Neue", Arial, sans-serif;
+  font: 500 18px Roboto, Helvetica, "Helvetica Neue", Arial, sans-serif;
   top: calc(100% - 48px);
   left: calc(100% - 48px);
   width: 48px;
@@ -21482,7 +21482,7 @@ https://raw.github.com/shagstrom/split-pane/master/LICENSE
   cursor: pointer;
   width: 400px;
   text-align: center;
-  font: 600 16px "CESans", Roboto, Helvetica, "Helvetica Neue", Arial, sans-serif;
+  font: 600 16px Roboto, Helvetica, "Helvetica Neue", Arial, sans-serif;
   background-color: #124086;
   color: #E9F1FC;
   padding: 12px;

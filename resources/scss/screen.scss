@@ -86,14 +86,18 @@ $brown1: #904848;
 $grey1: #5f5f5f;
 $grey2: #ebebeb;
 
-
+$font-weight-normal: 500;
+$font-weight-normal-plus: 600;
+$font-weight-meduim: 700;
+$font-weight-heavy: 800;
+$font-weight-very-heavy: 900;
 
 //orange bg #f6602f
 
 // fonts
 
 // $roboto: Roboto, Helvetica, 'Helvetica Neue', Arial, sans-serif;
-$roboto: 'CESans', Roboto, Helvetica, 'Helvetica Neue', Arial, sans-serif;
+$roboto:  Roboto, Helvetica, 'Helvetica Neue', Arial, sans-serif;
 $sans-book: 'CESans', Roboto, Helvetica, 'Helvetica Neue', Arial, sans-serif;
 $sans-heavy: 'CESans-Heavy', Roboto, Helvetica, 'Helvetica Neue', Arial, sans-serif;
 
@@ -194,11 +198,11 @@ h6 {
 
 // font classes
 .main-font-description {
-   font: 500 24px $roboto !important;
+   font: $font-weight-normal 24px $roboto !important;
 }
 
 .font-description {
-   font: 500 24px $roboto !important;
+   font: $font-weight-normal 24px $roboto !important;
 }
 .main-btn-height {
   height: $ce3-main-btn-height !important;
@@ -268,7 +272,7 @@ h6 {
     position: absolute;
     background-color: $ce3-blue6;
     font-family: 'Font Awesome 5 Free';
-    font-weight: 900;
+    font-weight: $font-weight-very-heavy;
     content: '\f0d7';
     right: 0px;
     bottom: 6px;
@@ -299,7 +303,7 @@ h6 {
 .download-link {
   &:hover, &:focus {
     outline: none !important;
-    font-weight: 600;
+    font-weight: $font-weight-normal-plus;
   }
 }
 
@@ -340,7 +344,7 @@ h6 {
 
   .default-select-option-group {
     padding: $ce3-padding-half !important;
-    font-weight: 600 !important;
+    font-weight: $font-weight-normal-plus !important;
     width: 100%;
   }
 
@@ -796,11 +800,11 @@ h6 {
   &:focus, &:hover {
     background-color: darken(#777, 5) !important;
     outline: none !important;
-    font-weight: 600 !important;
+    font-weight: $font-weight-normal-plus !important;
     &.description {
       cursor: default;
       background-color: #777 !important;
-      font: 500 14px $roboto !important;
+      font: $font-weight-normal 14px $roboto !important;
     }
   }
 
@@ -818,7 +822,7 @@ h6 {
       background-color: lighten(#777, 10) !important;
       color: lighten(#777, 25) !important;
       outline: none !important;
-      font-weight: 500 !important;
+      font-weight: $font-weight-normal !important;
     }
   }
 }
@@ -839,11 +843,11 @@ h6 {
   &:hover, &:focus {
     background-color: darken(#D6D6D6, 10) !important;
     outline: none !important;
-    font-weight: 600 !important;
+    font-weight: $font-weight-normal-plus !important;
     &.description {
       cursor: default;
       background-color: #D6D6D6 !important;
-      font: 500 14px $roboto !important;
+      font: $font-weight-normal 14px $roboto !important;
     }
   }
 
@@ -861,7 +865,7 @@ h6 {
       background-color: lighten(#D6D6D6, 10) !important;
       color: lighten($ce3-blue3, 30) !important;
       outline: none !important;
-      font-weight: 500 !important;
+      font-weight: $font-weight-normal !important;
     }
   }
 }
@@ -882,11 +886,11 @@ h6 {
   &:hover, &:focus {
     background-color: darken($ce3-lower-emissions, 10) !important;
     outline: none !important;
-    font-weight: 600 !important;
+    font-weight: $font-weight-normal-plus !important;
     &.description {
       cursor: default;
       background-color: $ce3-lower-emissions !important;
-      font: 500 14px $roboto !important;
+      font: $font-weight-normal 14px $roboto !important;
     }
   }
 
@@ -904,7 +908,7 @@ h6 {
       background-color: lighten($ce3-lower-emissions, 10) !important;
       color: lighten($ce3-blue3, 30) !important;
       outline: none !important;
-      font-weight: 500 !important;
+      font-weight: $font-weight-normal !important;
     }
   }
 }
@@ -925,11 +929,11 @@ h6 {
   &:hover, &:focus  {
     background-color: darken(#FBB4AA, 10) !important;
     outline: none !important;
-    font-weight: 600 !important;
+    font-weight: $font-weight-normal-plus !important;
     &.description {
       cursor: default;
       background-color: #FBB4AA !important;
-      font: 500 14px $roboto !important;
+      font: $font-weight-normal 14px $roboto !important;
     }
   }
 
@@ -947,7 +951,7 @@ h6 {
       background-color: lighten($ce3-higher-emissions, 10) !important;
       color: lighten($ce3-blue3, 30) !important;
       outline: none !important;
-      font-weight: 500 !important;
+      font-weight: $font-weight-normal !important;
     }
   }
 }
@@ -958,7 +962,7 @@ h6 {
   height: $ce3-btnheight !important;
   background-color: $ce3-blue5 !important;
   color: $ce3-blue3 !important;
-  font: 500 14px $roboto !important;
+  font: $font-weight-normal 14px $roboto !important;
   border: 1px solid $ce3-blue3alpha !important;
 
   &.more-info {
@@ -986,7 +990,7 @@ h6 {
     color: $ce3-blue3 !important;
     border: 1px solid $ce3-blue3alpha !important;
     outline: none !important;
-    font-weight: 600 !important;
+    font-weight: $font-weight-normal-plus !important;
   }
 
 
@@ -994,7 +998,7 @@ h6 {
     position: inherit;
     background-color: #FBFCFE;
     font-family: 'Font Awesome 5 Free';
-    font-weight: 900;
+    font-weight: $font-weight-very-heavy;
     margin-left: 12px;
     margin-right: 6px;
     width: 24px;
@@ -1075,7 +1079,7 @@ h6 {
     color: $ce3-blue5 !important;
     border: 1px solid $ce3-blue3alpha !important;
     outline: none !important;
-    font-weight: 600 !important;
+    font-weight: $font-weight-normal-plus !important;
   }
 
   &.btn-default-disabled {
@@ -1115,16 +1119,16 @@ h6 {
 
 .select-styled {
   &:hover, &:focus {
-    font-weight: 600;
+    font-weight: $font-weight-normal-plus;
 
     a {
       color: darken($ce3-blue3, 10) !important;
-      font-weight: 600;
+      font-weight: $font-weight-normal-plus;
     }
     outline: none !important;
 
     &.disabled {
-      font-weight: 500;
+      font-weight: $font-weight-normal;
       color: $ce3-disabled-font !important;
       outline: none !important;
     }
@@ -1273,12 +1277,12 @@ h6 {
 
 .text-info-box {
   font-size: 18px !important;
-  font-weight: 700 !important;
+  font-weight:  $font-weight-meduim !important;
 }
 
 .text-info-box-secondary {
   font-size: 18px !important;
-  font-weight: 500 !important;
+  font-weight:  $font-weight-normal !important;
 }
 
 #cards-search-input {
@@ -1305,7 +1309,7 @@ h6 {
   @include border-radius($icon-rect-size, $icon-rect-size);
   margin-top: 7px !important;
   font-size: 14px !important;
-  font-weight: 800 !important;
+  font-weight:  $font-weight-heavy !important;
   padding: 5px !important;
   margin-left: $ce3-padding-half;
 
@@ -1352,18 +1356,18 @@ h6 {
 input.input-inner-default {
   background-color: $ce3-blue5;
   color: $ce3-blue3;
-  font: 800 18px $roboto !important;
+  font: $font-weight-heavy 18px $roboto !important;
 }
 
 input.input-inner-default::placeholder  {
   background-color: $ce3-blue5;
   color: $ce3-blue3;
-  font: 800 18px $roboto !important;
+  font: $font-weight-heavy 18px $roboto !important;
 }
 
 input.input-inner-default:focus::placeholder  {
   color: $ce3-blue3alpha;
-  font: 800 18px $roboto !important;
+  font: $font-weight-heavy 18px $roboto !important;
   -moz-transition: 0.25s;
   -o-transition: 0.25s;
   -webkit-transition: 0.25s;
@@ -2030,7 +2034,7 @@ input.input-inner-default:focus  {
 .feedback-trigger-small {
   position: absolute;
   cursor: pointer;
-  font: 500 18px $roboto;
+  font: $font-weight-normal 18px $roboto;
   top: calc(100% - 48px);
   left: calc(100% - 48px);
   width: 48px;
@@ -2095,7 +2099,7 @@ input.input-inner-default:focus  {
     }
   }
 
-  font: 600 16px $roboto;
+  font: $font-weight-normal-plus 16px $roboto;
   background-color: $ce3-blue3;
   color: $ce3-blue5;
   padding: $ce3-default-padding;
@@ -2120,7 +2124,7 @@ input.input-inner-default:focus  {
     align-content: center !important;
     justify-content: center !important;
     font-size: 24px;
-    font-weight: 600;
+    font-weight: $font-weight-normal-plus;
   }
 
   .about-tool-content  {

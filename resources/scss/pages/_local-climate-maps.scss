@@ -65,7 +65,7 @@
   padding: $ce3-default-padding;
   background-color: lighten($ce3-warning-state, 30)!important;
   color: $ce3-warning-state !important;
-  font: 500 14px $roboto !important;
+  font: $font-weight-normal 14px $roboto !important;
   border: 1px solid $ce3-warning-state !important;
   @include border-radius(5px, 5px);
 }
@@ -103,7 +103,7 @@
 
   .scenario-map-legend-container {
     .legend-unit-label {
-      font: 500 14px $roboto !important;
+      font: $font-weight-normal 14px $roboto !important;
       padding-bottom: $ce3-padding-half;
     }
   }
@@ -411,7 +411,7 @@
       background-color: transparentize($ce3-blue3, 0.04);
       color: $ce3-blue5 !important;
       font-family: 'Font Awesome 5 Free';
-      font-weight: 900;
+      font-weight: $font-weight-very-heavy;
       // @include transform(rotate(-90deg));
       content: '\f0d9\00a0\00a0\00a0\f0da';
       width: 48px;

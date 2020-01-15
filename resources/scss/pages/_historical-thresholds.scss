@@ -61,7 +61,7 @@ $animation-duration: 0.4s;
       top: calc(100% - 187px);
     }
   }
-  
+
   #stations-map-wrap {
     min-height: 150px !important
   }
@@ -80,12 +80,12 @@ $animation-duration: 0.4s;
       }
 
       @mixin label-inactive() {
-        font: 500 14px Roboto, Helvetica, "Helvetica Neue", Arial, sans-serif !important;
+        font: $font-weight-normal 14px Roboto, Helvetica, "Helvetica Neue", Arial, sans-serif !important;
         transform: translateY(0);
       }
 
       @mixin label-active() {
-        font: 500 12px Roboto, Helvetica, "Helvetica Neue", Arial, sans-serif !important;
+        font: $font-weight-normal 12px Roboto, Helvetica, "Helvetica Neue", Arial, sans-serif !important;
         transform: translateY(-28px);
       }
 
@@ -149,7 +149,7 @@ $animation-duration: 0.4s;
         @include label-active();
         white-space: pre;
         display: block;
-        font-weight: normal;
+        font-weight: $font-weight-normal;
         left: -24px;
         margin: 0;
         // padding: 26px 6px;
@@ -466,7 +466,7 @@ $animation-duration: 0.4s;
          }
 
    .text-info-box.label {
-     font-weight: 500 !important;
+     font-weight: $font-weight-normal !important;
    }
 
    .esri-expand__container {

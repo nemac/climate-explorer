@@ -62,7 +62,7 @@ $home-text-transparency: .25;
 }
 
 .describe-main {
-  font: 500 24px $roboto !important;
+  font: $font-weight-normal 24px $roboto !important;
   color: $blue2;
   max-height: 100px !important;
   @include border-radius(5px, 5px);
@@ -75,7 +75,7 @@ $home-text-transparency: .25;
 }
 
 .describe-main-secondary {
-  font: 500 18px $roboto !important;
+  font: $font-weight-normal 18px $roboto !important;
   color: $blue2;
   max-height: 100px !important;
   @include border-radius(5px, 5px);
@@ -100,7 +100,7 @@ $home-text-transparency: .25;
 input.input-inner {
   background-color: $ce3-blue5;
   color: $ce3-blue3;
-  font: 800 24px $roboto !important;
+  font: $font-weight-heavy 24px $roboto !important;
 }
 
 input.input-inner::placeholder  {
@@ -111,7 +111,7 @@ input.input-inner::placeholder  {
 
 input.input-inner:focus::placeholder  {
   color: $ce3-blue3alpha;
-  font: 800 24px $roboto !important;
+  font: $font-weight-heavy 24px $roboto !important;
   -moz-transition: 0.25s;
   -o-transition: 0.25s;
   -webkit-transition: 0.25s;
@@ -130,7 +130,7 @@ input.input-inner:focus  {
   @include border-radius($icon-rect-size, $icon-rect-size);
   margin-top: 10px;
   font-size: 18px;
-  font-weight: 800;
+  font-weight: $font-weight-heavy;
 }
 
 .main-logos {

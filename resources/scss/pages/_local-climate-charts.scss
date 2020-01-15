@@ -122,7 +122,7 @@
       &:hover, &:focus {
         outline: none !important;
         color: lighten($ce3-blue5, 20) !important;
-        font-weight: 600;
+        font-weight: $font-weight-normal-plus;
 
         &.disabled {
           color: $ce3-blue5alpha !important;
@@ -178,7 +178,7 @@
 #downloads-select-wrapper, #stations-select-wrapper, {
   background-color: $ce3-blue5;
   color: $ce3-blue3;
-  font: 500 14px $roboto !important;
+  font: $font-weight-normal 14px $roboto !important;
 
   @include medium {
     display: none !important;
@@ -192,7 +192,7 @@
     &:hover, &:focus  {
       color: $ce3-disabled-font !important;
       background:  $ce3-blue5  !important;
-      font: 500 14px $roboto !important;
+      font: $font-weight-normal 14px $roboto !important;
     }
   }
 }
@@ -200,7 +200,7 @@
 #chartmap-select-wrapper, #time-select-wrapper, #presentation-select-wrapper, #tidalzoom-select-wrapper {
   background-color: $ce3-blue5;
   color: $ce3-blue3;
-  font: 500 14px $roboto !important;
+  font: $font-weight-normal 14px $roboto !important;
   margin-left: $ce3-padding-half !important;
   margin-right: $ce3-padding-half !important;
   display: none !important;

@@ -19,7 +19,7 @@
   }
 
   .secondary-font-title {
-     font: 500 24px $roboto !important;
+     font: $font-weight-normal 24px $roboto !important;
      white-space: nowrap;
      width: 70%;
 
@@ -34,7 +34,7 @@
      }
 
      @include small {
-       font: 500 18px $roboto !important;
+       font: $font-weight-normal 18px $roboto !important;
      }
      color: $ce3-blue6 !important;
      align-self: center;
@@ -42,7 +42,7 @@
 
   .topnav a {
     text-decoration: none;
-    font: 500 18px $roboto;
+    font: $font-weight-normal 18px $roboto;
   }
 
   #secondary-nav {

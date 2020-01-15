@@ -60,7 +60,7 @@
     padding: $ce3-default-padding;
     background-color: $ce3-blue5 !important;
     color: $ce3-blue3 !important;
-    font: 500 14px $roboto !important;
+    font: $font-weight-normal 14px $roboto !important;
     border: 1px solid $ce3-blue3alpha !important;
     @include border-radius(5px, 5px);
   }
@@ -279,7 +279,7 @@
   }
 
   .text-info-box.label {
-    font-weight: 500 !important;
+    font-weight: $font-weight-normal !important;
   }
 
   .esri-expand__container {
@@ -296,7 +296,7 @@
       margin: 0.2rem 0.25rem;
       display: block;
       font-size: 0.75rem;
-      font-weight: bold;
+      font-weight: $font-weight-meduim;
     }
 
     .legend-image {

@@ -278,7 +278,7 @@
     background: $ce3-blue5;
     @include border-radius(24px !important);
     font: 0.85rem/34px $roboto;
-    font-weight: 500;
+    font-weight: $font-weight-normal;
     color: $ce3-blue3;
     border: 0px;
     outline: none;

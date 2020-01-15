@@ -88,7 +88,7 @@
     // }
 
     &.right-year-slider-container, &.left-year-slider-container {
-      font: 500 0.9rem/0.9rem $roboto !important;
+      font: $font-weight-normal 0.9rem/0.9rem $roboto !important;
       background-color: $ce3-blue5 !important;
       color: $ce3-blue3 !important;
       transition: none !important;
@@ -189,7 +189,7 @@
     flex-grow: 0;
     min-width: 0;
     padding: 0px 1rem;
-    font: 500 0.9rem/0.9rem $roboto;
+    font: $font-weight-normal 0.9rem/0.9rem $roboto;
     background-color: transparentize($ce3-blue5, 0.04);
     color: $ce3-blue3;
     @include border-radius(5px, 5px);
@@ -217,7 +217,7 @@
     top: -2.6rem;
     left: -1rem;
     padding: 0.5rem;
-    font: 0.9rem/0.9rem Roboto, Helvetica, "Helvetica Neue", Arial, sans-serif;
+    font: $font-weight-normal 0.9rem/0.9rem Roboto, Helvetica, "Helvetica Neue", Arial, sans-serif;
   }
 
   .map-tooltip:after {
