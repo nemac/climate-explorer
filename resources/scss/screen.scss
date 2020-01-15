@@ -964,7 +964,20 @@ h6 {
     border: 1px solid $ce3-blue3alphad !important;
     background-color: $ce3-blue6 !important;
     @include border-radius(25px, 25px);
-    padding-left: 12px;
+    padding-left: $ce3-default-padding;
+    @include medium {
+      padding-left: $ce3-default-padding;
+      padding-top: $ce3-default-padding;
+      width: 100% !important;
+
+      .more {
+        float: left;
+      }
+
+      .more-icon, .less-icon {
+        float: right;
+      }
+    }
   }
 
   a {

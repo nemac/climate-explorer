@@ -217,6 +217,16 @@
   }
 }
 
+.chart-info-row-btn {
+  @include medium {
+    margin-left: 0px !important;
+    margin-right: 0px !important;
+    height: auto !important;
+    margin-top: $ce3-padding-half !important;
+    width: 100% !important;
+  }
+}
+
 #filters-row {
   .select-options {
     margin-top: 0px !important;
