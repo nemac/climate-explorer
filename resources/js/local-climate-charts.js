@@ -621,6 +621,9 @@ $(function () {
         googleAnalyticsEvent('click', 'toggle-chart-info', 'close');
       }
 
+      setTimeout(function () {
+          window.cbl_chart.resize();
+      }, 500);
       // // force draw and resize of charts
       // showGraphs();
       // forceResize();

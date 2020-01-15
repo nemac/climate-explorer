@@ -86,20 +86,15 @@ $brown1: #904848;
 $grey1: #5f5f5f;
 $grey2: #ebebeb;
 
+// fonts
+$roboto:  Roboto, Helvetica, 'Helvetica Neue', Arial, sans-serif; // default should be everywhere
+$sans-book: 'CESans', Roboto, Helvetica, 'Helvetica Neue', Arial, sans-serif; // legacy left out for consistency
+$sans-heavy: 'CESans-Heavy', Roboto, Helvetica, 'Helvetica Neue', Arial, sans-serif;  // legacy left out for consistency
 $font-weight-normal: 500;
-$font-weight-normal-plus: 600;
-$font-weight-meduim: 700;
+$font-weight-normal-plus: 500; // 600;
+$font-weight-meduim: 500; // 700;
 $font-weight-heavy: 800;
 $font-weight-very-heavy: 900;
-
-//orange bg #f6602f
-
-// fonts
-
-// $roboto: Roboto, Helvetica, 'Helvetica Neue', Arial, sans-serif;
-$roboto:  Roboto, Helvetica, 'Helvetica Neue', Arial, sans-serif;
-$sans-book: 'CESans', Roboto, Helvetica, 'Helvetica Neue', Arial, sans-serif;
-$sans-heavy: 'CESans-Heavy', Roboto, Helvetica, 'Helvetica Neue', Arial, sans-serif;
 
 // IMPORTS
 @import "compass/functions";
