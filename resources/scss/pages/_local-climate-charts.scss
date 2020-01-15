@@ -488,6 +488,24 @@
   @include medium {
     order: 1;
   }
+
+  .explainer-spacer {
+    padding-top: $ce3-default-padding*2 !important;
+  }
+
+  .chart-info-img, .chart-info-text {
+    @include medium {
+      width: 100% !important;
+    }
+  }
+  .chart-info-img {
+    @include medium {
+      display: flex !important;
+      align-items: center !important;
+      align-content: center !important;
+      justify-content: center !important;
+    }
+  }
 }
 
 #annual-slider-wrapper {

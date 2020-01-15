@@ -649,6 +649,9 @@ $(function () {
             $('.opt-not-ak').addClass('default-select-option-disabled');
             $('.btn-monthly').addClass('btn-default-disabled');
             $('.btn-map').addClass('btn-default-disabled');
+            $('#more-info-description .btn-histobs').removeClass('disabled');
+            $('#more-info-description .btn-lower-emissions').removeClass('disabled');
+            $('#more-info-description .btn-lower-emissions').addClass('selected');
 
             // temporary fix for Aleutians West
             if (cityStateCE.includes('Aleutians West') > 0) {
