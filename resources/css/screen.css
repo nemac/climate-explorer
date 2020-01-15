@@ -10226,6 +10226,41 @@ https://raw.github.com/shagstrom/split-pane/master/LICENSE
   width: 50%;
 }
 
+/* line 886, resources/scss/screen.scss */
+.ce3-badge {
+  position: relative;
+  width: 30%;
+  height: 30%;
+  text-align: center;
+  font: 1rem/1.25em "CESans-Heavy", Helvetica, "Helvetica Neue", Arial, sans-serif;
+  background-color: #f5442d;
+  color: #ffffff;
+  z-index: 5;
+  top: -10px;
+  left: 25%;
+  padding: 12px;
+}
+
+/* line 900, resources/scss/screen.scss */
+.ce3-badge h4 {
+  font: 1.5rem/1em "CESans-Heavy", Helvetica, "Helvetica Neue", Arial, sans-serif;
+  line-height: 2rem;
+  padding: 12px;
+}
+
+/* line 906, resources/scss/screen.scss */
+.ce3-badge h5 {
+  font: 1.1rem/1em "CESans", Roboto, Helvetica, "Helvetica Neue", Arial, sans-serif;
+  padding: 6px;
+  text-decoration: underline;
+}
+
+/* line 912, resources/scss/screen.scss */
+.ce3-badge a {
+  text-decoration: none;
+  color: #ffffff;
+}
+
 @media screen and (max-width: 1200px) {
   /* line 2, resources/scss/_media.scss */
   h1 {

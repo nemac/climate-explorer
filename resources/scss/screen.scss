@@ -882,6 +882,39 @@ h6 {
 #pane-right {
   width: 50%;
 }
+
+.ce3-badge {
+
+  position: relative;
+  width: 30%;
+  height: 30%;
+  text-align: center;
+  font: 1rem/1.25em $sans-heavy;
+  background-color: $orange1;
+  color: $white;
+  z-index: 5;
+  top: -10px;
+  left: 25%;
+  padding: 12px;
+
+  h4 {
+    font: 1.5rem/1em $sans-heavy;
+    line-height: 2rem;
+    padding: 12px;
+  }
+
+  h5 {
+    font: 1.1rem/1em $sans-book;
+    padding: 6px;
+    text-decoration: underline;
+  }
+
+  a {
+    text-decoration: none;
+    color: $white;
+  }
+}
+
 // MEDIA QUERIES
 
 @import "media";
