@@ -149,12 +149,31 @@ $(function () {
   // updates the visible text for the station pulldown with the information from the state url
   updateStationSelectText({stationName, stationId})
 
+  // show more about charts
+  function showMoreCharts() {
+    const target = $('#chart-info-row .more-info.btn-default');
+    // show description of charts
+    if (target.hasClass('d-none')) {
+      target.removeClass('d-none');
+    }
+  }
+
+  // don't show more about charts
+  function dontShowMoreCharts() {
+    const target = $('#chart-info-row .more-info.btn-default');
+    // show description of charts
+    if (!target.hasClass('d-none')) {
+      target.addClass('d-none');
+    }
+  }
+
   // show graph overlay.
   // graph is visbile and on page just pushed of viewable area
   // so we can intialize it when needed
   function showGraphs() {
     const stationsGraphRowElem = document.getElementById('stations-graph-row');
     const stationsMapRowElem = document.getElementById('stations-map-row');
+    showMoreCharts();
 
     // unhide chart overlay
     if (stationsGraphRowElem) {
@@ -175,6 +194,7 @@ $(function () {
   function showMap() {
     const stationsGraphRowElem = document.getElementById('stations-graph-row');
     const stationsMapRowElem = document.getElementById('stations-map-row');
+    dontShowMoreCharts();
 
     // unhide chart overlay
     if (stationsGraphRowElem) {
