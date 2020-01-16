@@ -657,7 +657,7 @@ $(function () {
             $('#more-info-description .btn-lower-emissions').addClass('selected');
 
             // temporary fix for Aleutians West
-            if (cityStateCE.includes('Aleutians West') > 0) {
+            if (cityStateCE.includes('Aleutians West') > 0 || countyCE.includes('Aleutians West') > 0) {
               const messsageElemChart = document.getElementById('chart-message');
               if (messsageElemChart) {
                 const rect = document.getElementById('chart-wrap').getBoundingClientRect();;
