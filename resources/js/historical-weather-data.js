@@ -10,6 +10,7 @@ $(function () {
   const cityStateCE = window.ce.ce('getLocationPageState')['city'];
   const countyCE = window.ce.ce('getLocationPageState')['county'];
   let isAlaska = false;
+  let isHawaii = false;
 
   if (cityStateCE) {
       isAlaska = (cityStateCE.indexOf('Alaska') > 0 || cityStateCE.indexOf(', AK') > 0);
