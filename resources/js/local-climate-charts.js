@@ -682,7 +682,7 @@ $(function () {
                 const rect = document.getElementById('chart-wrap').getBoundingClientRect();;
                 messsageElemChart.style.left = `${(rect.right - rect.left)/4}px`;
                 messsageElemChart.style.top = `${((rect.bottom + rect.top)/2.5)}px`;
-                messsageElemChart.innerHTML = `The chart and data for ${cityStateCE}, is currently unavailable.`
+                messsageElemChart.innerHTML = `The chart and data for ${cityStateCE}, is currently not available.`
                 messsageElemChart.classList.remove('d-none');
               }
             }
