@@ -58,16 +58,12 @@
     </div>
 
     <div id="info-row" class="padding-vertical width-100" >
-      <!-- d-flex-row flex-justify padding-top-half padding-bottom-half d-flex-center -->
       <div class="rounded-filters-box padding-default width-100">
 
         <div class="filter-border-bottom d-flex-row">
 
           <div id="info-text-wrapper" class="width-90">
             <i class="fas fa-chart-bar icon-info-box"></i>
-            <!-- <span id="default-city-state" class="text-info-box" ></span>
-            <span id="" class="text-info-box" > in </span>
-            <span id="default-city-county" class="text-info-box"></span> -->
             <span id="station-info-none" class="padding-horizontal">Select a Station</span>
 
             <span id="station-info" class="padding-horizontal d-none">
@@ -112,9 +108,6 @@
             </div>
           </div>
 
-
-          <!-- <div id="threshold_inputs_wraper" class="padding-horrizontal-half padding-vertical-half default-btn-height d-flex-left width-80"> -->
-
             <div id="threshold-variable-select-wrapper" class="rounded-choice-box padding-horrizontal-half padding-vertical-half default-btn-height d-flex-center width-20">
               <div class="select threshold-variable-select">
                 <div tabindex="5007" id="threshold-variable-select-vis" class="select-styled" rel="precipitation">Precipitation</div>
@@ -151,7 +144,14 @@
               <div tabindex="5017" class="window-button window-up">+</div>
             </div>
 
-          <!-- </div> -->
+            <div tabindex="5009" id="chart-info-row" class="chart-info-row-btn rounded-choice-box default-btn-height d-flex-row flex-justify padding-bottom-half d-flex-left d-none " >
+              <div class="more-info btn-default">
+                <span class="more">More about the graph</span>
+                <span class="less d-none">Less about the graph</span>
+                <span class="fas fa-info more-info more-icon"></span>
+                <span class="fas fa-info more-info less-icon d-none"></span>
+              </div>
+            </div>
 
         </div>
 
@@ -172,15 +172,11 @@
     </div>
 
     <div id="station-info-row" class="d-flex-row flex-justify padding-bottom d-flex-left d-none" >
-      <h4 class="more-info btn-default">
-        <span class="more">More about the graph</span>
-        <span class="less d-none">Less about the graph</span>
-        <!-- <span class="fas fa-question-circle padding-horrizontal-half"></span> -->
-        <span class="fas fa-caret-down more-info more-icon"></span>
-        <span class="fas fa-caret-up more-info less-icon d-none"></span>
-      </h4>
-      <span id="more-info-description" class="d-none" >
-        <div class="padding-bottom-half more-info-description" >This graph shows how often the selected threshold has been exceeded per year. For consistency,
+      <span id="more-info-description" class="rounded-description-box d-none" >
+        <div class="padding-default">
+          <h2>Reading the thresholds charts</h2>
+        </div>
+        <div class="chart-info-text btn-chart-text left-padding padding-bottom-half" >This graph shows how often the selected threshold has been exceeded per year. For consistency,
         this chart excludes any years that are missing more than five daily temperature reports or more
         than one precipitation report in a single month. Data from
         <a target="_blank" href="https://www.ncdc.noaa.gov/data-access/land-based-station-data/land-based-datasets/global-historical-climatology-network-ghcn">
@@ -192,7 +188,6 @@
 
 
   </div>
-    <!-- </div> -->
 
     {{> nav_footer }}
     {{> footer }}

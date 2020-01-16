@@ -1118,27 +1118,27 @@ $(function () {
   $("#thresholds-container").item({ threshold: thresholdValueTEMP }).item('update');
 
 
-    $('#station-info-row .more-info.btn-default').click( function (e) {
+    $('#chart-info-row .more-info.btn-default').click( function (e) {
       const target = $('#more-info-description');
       // show description of charts
       if (target.hasClass('d-none')) {
         target.removeClass('d-none');
-        $('#station-info-row .more').addClass('d-none');
-        $('#station-info-row .more-icon').addClass('d-none');
+        $('#chart-info-row .more').addClass('d-none');
+        $('#chart-info-row .more-icon').addClass('d-none');
 
-        $('#station-info-row .less').removeClass('d-none');
-        $('#station-info-row .less-icon').removeClass('d-none');
+        $('#chart-info-row .less').removeClass('d-none');
+        $('#chart-info-row .less-icon').removeClass('d-none');
 
         // ga event action, category, label
         googleAnalyticsEvent('click', 'toggle-chart-info', 'open');
       // hide description of charts
       } else {
         target.addClass('d-none');
-        $('#station-info-row .more').removeClass('d-none');
-        $('#station-info-row .more-icon').removeClass('d-none');
+        $('#chart-info-row .more').removeClass('d-none');
+        $('#chart-info-row .more-icon').removeClass('d-none');
 
-        $('#station-info-row .less').addClass('d-none');
-        $('#station-info-row .less-icon').addClass('d-none');
+        $('#chart-info-row .less').addClass('d-none');
+        $('#chart-info-row .less-icon').addClass('d-none');
 
         // ga event action, category, label
         googleAnalyticsEvent('click', 'toggle-chart-info', 'close');

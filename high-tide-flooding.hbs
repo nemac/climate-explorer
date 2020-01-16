@@ -68,9 +68,6 @@
 
           <div id="info-text-wrapper" class="width-90">
             <i class="fas fa-water icon-info-box"></i>
-            <!-- <span id="default-city-state" class="text-info-box" ></span>
-            <span id="" class="text-info-box" > in </span>
-            <span id="default-city-county" class="text-info-box"></span> -->
             <span id="station-info-none" class="padding-horizontal">Select a Station</span>
             <span id="station-info" class="padding-horizontal d-none">
               <span id="default-station-label" class="text-info-box label" >Station id: </span>
@@ -135,6 +132,17 @@
             </div>
           </div>
 
+          <div tabindex="5011" id="chart-info-row" class="chart-info-row-btn rounded-choice-box default-btn-height d-flex-row flex-justify padding-bottom-half d-flex-left d-none " >
+            <div class="more-info btn-default">
+              <span class="more">More about the graph</span>
+              <span class="less d-none">Less about the graph</span>
+              <!-- <span class="fas fa-caret-down more-info more-icon"></span>
+              <span class="fas fa-caret-up more-info less-icon d-none"></span> -->
+              <span class="fas fa-info more-info more-icon"></span>
+              <span class="fas fa-info more-info less-icon d-none"></span>
+            </div>
+          </div>
+
 
         </div>
 
@@ -155,15 +163,11 @@
     </div>
 
     <div id="station-info-row" class="d-flex-row flex-justify padding-bottom d-flex-left d-none" >
-      <h4 class="more-info btn-default">
-        <span class="more">More about the graph</span>
-        <span class="less d-none">Less about the graph</span>
-        <!-- <span class="fas fa-question-circle padding-horrizontal-half"></span> -->
-        <span class="fas fa-caret-down more-info more-icon"></span>
-        <span class="fas fa-caret-up more-info less-icon d-none"></span>
-      </h4>
-      <span id="more-info-description" class="d-none" >
-        <div class="padding-bottom-half more-info-description" >Click 'Historical' button to zoom in on or out from the observational period.
+      <span id="more-info-description" class="rounded-description-box d-none" >
+        <div class="padding-default">
+          <h2>Reading the tidal flooding charts</h2>
+        </div>
+        <div class="chart-info-text btn-chart-text left-padding padding-bottom-half" >Click 'Historical' button to zoom in on or out from the observational period.
           Place your cursor over the curves on this graph for details. Gray bars from 1950 to 2016 show observed annual
           counts of high-tide flooding. Red and blue curves show the average number of high-tide flooding events projected
           for future years under two scenarios. Data from
