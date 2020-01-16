@@ -1010,6 +1010,7 @@ $(function () {
 
       // updates the visible text for the station pulldown with the information from the state url
       updateStationSelectText({stationName: options.stationName, stationId: options.stationId})
+      renderStationInfo(options.stationId, options.stationName);
 
       options.threshold = thresholdValue;
       options.window = windowValue;

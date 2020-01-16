@@ -593,6 +593,13 @@ h6 {
   }
 }
 
+.left-padding {
+  padding-left: $ce3-default-horizontal-padding !important;
+  @include medium {
+    padding-left: $ce3-default-horizontal-padding/2 !important;
+  }
+}
+
 .bottom-padding {
   padding-bottom: $ce3-default-vertical-padding !important;
   @include medium {
