@@ -412,7 +412,6 @@
       color: $ce3-blue5 !important;
       font-family: 'Font Awesome 5 Free';
       font-weight: $font-weight-very-heavy;
-      // @include transform(rotate(-90deg));
       content: '\f0d9\00a0\00a0\00a0\f0da';
       width: 48px;
       height: 36px;
@@ -435,4 +434,10 @@
   &:focus {
     outline: none !important;
   }
+}
+
+.warning-link {
+  color: darken($ce3-warning-state, 20);
+  font-weight: $font-weight-heavy;
+  text-decoration: underline;
 }

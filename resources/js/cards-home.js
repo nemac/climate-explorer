@@ -4,9 +4,11 @@ $(function () {
   const cityStateCE = window.ce.ce('getLocationPageState')['city'];
   const countyCE = window.ce.ce('getLocationPageState')['county'];
   let isAlaska = false;
+  let isHawaii = false;
 
   if (cityStateCE) {
-      isAlaska = (cityStateCE.indexOf('Alaska') > 0 || cityStateCE.indexOf(', AK') > 0)
+      isAlaska = (cityStateCE.indexOf('Alaska') > 0 || cityStateCE.indexOf(', AK') > 0);
+      isHawaii = (cityStateCE.indexOf('Hawaii') > 0 || cityStateCE.indexOf(', HI') > 0);
   }
 
   $('#default-city-state').text(cityStateCE);
@@ -21,7 +23,7 @@ $(function () {
   }
 
   if (cityStateCE) {
-    if (isAlaska) {
+    if (isAlaska || isHawaii) {
       $('#default-in').html('—');
       $('.opt-not-ak').addClass('default-select-option-disabled');
       $('.card-local-maps').addClass('card-disabled');

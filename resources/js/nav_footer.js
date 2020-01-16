@@ -5,29 +5,31 @@ $(function () {
   const cityStateCE = window.ce.ce('getLocationPageState')['city'];
   const countyCE = window.ce.ce('getLocationPageState')['county'];
   let isAlaska = false;
+  let isHawaii = false;
 
   if (cityStateCE) {
-      isAlaska = (cityStateCE.indexOf('Alaska') > 0 || cityStateCE.indexOf(', AK') > 0)
+      isAlaska = (cityStateCE.indexOf('Alaska') > 0 || cityStateCE.indexOf(', AK') > 0);
+      isHawaii = (cityStateCE.indexOf('Hawaii') > 0 || cityStateCE.indexOf(', HI') > 0);
   }
 
   // setup some constants
   const navConstants = setNavItemsCostants();
 
   if (cityStateCE) {
-    if (isAlaska) {
+    if (isAlaska || isHawaii) {
       $('#local-climate-maps-nav-footer').addClass('nav-disabled');
     }
   }
 
   // add click events to footer
   // uses invisiable a link
-  addNavlick('home', 'home', navConstants.selectorAddOn);
-  addNavlick('local-climate-charts', 'local-climate-charts', navConstants.selectorAddOn);
-  addNavlick('local-climate-maps', 'local-climate-maps', navConstants.selectorAddOn);
-  addNavlick('national-climate-maps', 'national-climate-maps', navConstants.selectorAddOn);
-  addNavlick('historical-weather-data', 'historical-weather-data', navConstants.selectorAddOn);
-  addNavlick('hightide-flooding', 'hightide-flooding', navConstants.selectorAddOn);
-  addNavlick('historical-thresholds', 'historical-thresholds', navConstants.selectorAddOn);
+  addNavClick('home', 'home', navConstants.selectorAddOn);
+  addNavClick('local-climate-charts', 'local-climate-charts', navConstants.selectorAddOn);
+  addNavClick('local-climate-maps', 'local-climate-maps', navConstants.selectorAddOn);
+  addNavClick('national-climate-maps', 'national-climate-maps', navConstants.selectorAddOn);
+  addNavClick('historical-weather-data', 'historical-weather-data', navConstants.selectorAddOn);
+  addNavClick('hightide-flooding', 'hightide-flooding', navConstants.selectorAddOn);
+  addNavClick('historical-thresholds', 'historical-thresholds', navConstants.selectorAddOn);
 
   updateNavBar();
   addMoreClickEvent();
@@ -272,7 +274,7 @@ $(function () {
 
 
   // adds a click event to got to card location
-  function addNavlick(selector, nav, selectorAddOn) {
+  function addNavClick(selector, nav, selectorAddOn) {
     // setup some constants
     const navConstants = setNavItemsCostants();
     const $selectorElem = $(`#${selector}${navConstants.selectorAddOn}`);

@@ -5,9 +5,11 @@ $(function () {
   const cityStateCE = window.ce.ce('getLocationPageState')['city'];
   const countyCE = window.ce.ce('getLocationPageState')['county'];
   let isAlaska = false;
+  let isHawaii = false;
 
   if (cityStateCE) {
-      isAlaska = (cityStateCE.indexOf('Alaska') > 0 || cityStateCE.indexOf(', AK') > 0)
+      isAlaska = (cityStateCE.indexOf('Alaska') > 0 || cityStateCE.indexOf(', AK') > 0);
+      isHawaii = (cityStateCE.indexOf('Hawaii') > 0 || cityStateCE.indexOf(', HI') > 0);
   }
 
   $('#default-city-state').text(cityStateCE);
@@ -22,7 +24,7 @@ $(function () {
   }
 
   if (cityStateCE) {
-    if (isAlaska) {
+    if (isAlaska || isHawaii) {
       $('#default-in').html('—');
       $('.opt-not-ak').addClass('default-select-option-disabled');
     } else {
@@ -720,13 +722,32 @@ $(function () {
         const messsageElem = document.getElementById('map-message');
         if (messsageElem) {
           if (!options.isCenterConus) {
-            // get map parent element - which provides the correct dimensions for the map
+              const selector = 'local-climate-charts';
+              const nav = 'local-climate-charts';
+              const selectorAddOn = '-nav-footer';
+
+              // remove existing nav search url parameters
+              // otherwise we use the first one which is most likely the wrong page
+              const seachParams = removeUrlParam('nav')
+
+              // get the invisiable link just outside the element node tree
+              // if inside we have issues will bubbling propogation
+              const link = document.querySelector(`#${selector}-secretlink${selectorAddOn}`);
+
+              // set the url and search params
+              const url = `${$(link).attr('href')}/${seachParams}&nav=${nav}`
+
+              // get map parent element - which provides the correct dimensions for the map
               const rect = document.getElementById('map-wrap').getBoundingClientRect();
               // messsageElem.style.left = `${(rect.right - rect.left)/3}px`;
               // messsageElem.style.top = `-${((rect.bottom - rect.top)/2)}px`;
               messsageElem.style.left = `${(rect.right - rect.left)/3}px`;
               messsageElem.style.top = `-${((rect.bottom - rect.top)-6)}px`;
-              messsageElem.innerHTML = 'The location on the map is outside the Continental United States. Currently, there is no climate map data available for this location.'
+              if (isAlaska) {
+                messsageElem.innerHTML = `The location on the map is outside the Continental United States. Currently, there is no climate map data available for this location. If you are looking for climate information about this location, refer to the <a class="warning-link" href="${url}">local charts</a> page.`
+              } else {
+                messsageElem.innerHTML = `The location on the map is outside the Continental United States. Currently, there is no climate map data available for this location.`
+              }
               messsageElem.classList.remove('d-none');
           } else {
             messsageElem.classList.add('d-none');

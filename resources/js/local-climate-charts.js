@@ -5,9 +5,11 @@ $(function () {
     const cityStateCE = window.ce.ce('getLocationPageState')['city'];
     const countyCE = window.ce.ce('getLocationPageState')['county'];
     let isAlaska = false;
+    let isHawaii = false;
 
     if (cityStateCE) {
-        isAlaska = (cityStateCE.indexOf('Alaska') > 0 || cityStateCE.indexOf(', AK') > 0)
+        isAlaska = (cityStateCE.indexOf('Alaska') > 0 || cityStateCE.indexOf(', AK') > 0);
+        isHawaii = (cityStateCE.indexOf('Hawaii') > 0 || cityStateCE.indexOf(', HI') > 0);
     }
 
     $('#default-city-state').text(cityStateCE);
@@ -569,22 +571,39 @@ $(function () {
         $('#monthly-select-wrapper').addClass('d-none');
         $('#monthly-select-wrapper').removeClass('d-flex-center');
     }
-
-    window.cbl_chart = new ClimateByLocationWidget($("div#chart-123")[0], {
-        'font': 'Roboto',
-        'responsive': true,
-        'frequency': 'annual',
-        'timeperiod': '2025',
-        'county': window.ce.ce('getLocationPageState')['fips'],
-        'variable': window.ce.ce('getVariablesPageState')['variable'] || 'tmax',
-        'scenario': 'both',
-        'presentation': 'absolute',
-        'pmedian': true,
-        'hmedian': false,
-        'histobs': false,
-        'histmod': true,
-        'xrangefunc': xrangeset(1950, 2099)
-    });
+    // temp fix fo Hawaii leave out the fips...
+    if ( !isHawaii ) {
+      window.cbl_chart = new ClimateByLocationWidget($("div#chart-123")[0], {
+          'font': 'Roboto',
+          'responsive': true,
+          'frequency': 'annual',
+          'timeperiod': '2025',
+          'county': window.ce.ce('getLocationPageState')['fips'],
+          'variable': window.ce.ce('getVariablesPageState')['variable'] || 'tmax',
+          'scenario': 'both',
+          'presentation': 'absolute',
+          'pmedian': true,
+          'hmedian': false,
+          'histobs': false,
+          'histmod': true,
+          'xrangefunc': xrangeset(1950, 2099)
+      });
+    } else {
+      window.cbl_chart = new ClimateByLocationWidget($("div#chart-123")[0], {
+          'font': 'Roboto',
+          'responsive': true,
+          'frequency': 'annual',
+          'timeperiod': '2025',
+          'variable': window.ce.ce('getVariablesPageState')['variable'] || 'tmax',
+          'scenario': 'both',
+          'presentation': 'absolute',
+          'pmedian': true,
+          'hmedian': false,
+          'histobs': false,
+          'histmod': true,
+          'xrangefunc': xrangeset(1950, 2099)
+      });
+    }
 
     setTimeout(function () {
         window.cbl_chart.resize();
@@ -642,7 +661,7 @@ $(function () {
     }
 
     if (cityStateCE) {
-        if (isAlaska) {
+        if (isAlaska || isHawaii) {
              $('#default-in').html('—');
             $('#download-observed-data').addClass('default-select-option-disabled');
             $('#download-observed-data').addClass('disabled');
@@ -656,8 +675,8 @@ $(function () {
             $('#more-info-description .btn-lower-emissions').removeClass('disabled');
             $('#more-info-description .btn-lower-emissions').addClass('selected');
 
-            // temporary fix for Aleutians West
-            if (cityStateCE.includes('Aleutians West') > 0 || countyCE.includes('Aleutians West') > 0) {
+            // temporary fix for Aleutians West and Hawaii
+            if (cityStateCE.includes('Aleutians West') > 0 || countyCE.includes('Aleutians West') > 0 || isHawaii) {
               const messsageElemChart = document.getElementById('chart-message');
               if (messsageElemChart) {
                 const rect = document.getElementById('chart-wrap').getBoundingClientRect();;

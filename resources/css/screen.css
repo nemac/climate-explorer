@@ -18292,7 +18292,7 @@ input.input-inner:focus {
   font-size: 1.25rem;
 }
 
-/* line 435, resources/scss/pages/_local-climate-maps.scss */
+/* line 434, resources/scss/pages/_local-climate-maps.scss */
 #temperature-map:focus,
 .esri-view-root:focus,
 .esri-view-surface:focus,
@@ -18300,6 +18300,13 @@ input.input-inner:focus {
 .esri-view:focus,
 .esri-bitmap:focus {
   outline: none !important;
+}
+
+/* line 439, resources/scss/pages/_local-climate-maps.scss */
+.warning-link {
+  color: #913615;
+  font-weight: 800;
+  text-decoration: underline;
 }
 
 /* line 5, resources/scss/pages/_historical-weather-data.scss */
