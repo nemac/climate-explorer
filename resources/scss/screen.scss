@@ -799,6 +799,9 @@ h6 {
   height: $ce3-btnheight !important;
   font: 500 14px $roboto !important;
   border: 1px solid $ce3-blue3alpha !important;
+  margin-left: $ce3-default-padding;
+  margin-right: $ce3-default-padding;
+  @include border-radius(5px, 5px);
 
   @include medium {
     height: $ce3-btnheight-smallecreen !important;
@@ -842,6 +845,9 @@ h6 {
   height: $ce3-btnheight !important;
   font: 500 14px $roboto !important;
   border: 1px solid $ce3-blue3alpha !important;
+  margin-left: $ce3-default-padding;
+  margin-right: $ce3-default-padding;
+  @include border-radius(5px, 5px);
 
   @include medium {
     height: $ce3-btnheight-smallecreen !important;
@@ -885,6 +891,9 @@ h6 {
   height: $ce3-btnheight !important;
   font: 500 14px $roboto !important;
   border: 1px solid $ce3-blue3alpha !important;
+  margin-left: $ce3-default-padding;
+  margin-right: $ce3-default-padding;
+  @include border-radius(5px, 5px);
 
   @include medium {
     height: $ce3-btnheight-smallecreen !important;
@@ -928,6 +937,9 @@ h6 {
   height: $ce3-btnheight !important;
   font: 500 14px $roboto !important;
   border: 1px solid $ce3-blue3alpha !important;
+  margin-left: $ce3-default-padding;
+  margin-right: $ce3-default-padding;
+  @include border-radius(5px, 5px);
 
   @include medium {
     height: $ce3-btnheight-smallecreen !important;
@@ -2200,8 +2212,10 @@ input.input-inner-default:focus  {
       width: 50% !important;
       height: 50% !important;
     }
+
     #btn-chart {
       width: 100% !important;
+
       &.circle-box-left {
         @include border-radius(5px);
       }
