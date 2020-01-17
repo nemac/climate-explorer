@@ -252,6 +252,16 @@
   #btn-chart {
     width: 100% !important;
     height: 30px !important;
+    height: $ce3-btnheight-legends !important;
+    margin-left: $ce3-default-padding;
+    margin-right: $ce3-default-padding;
+    @include border-radius(5px, 5px);
+    &.btn-default-selected {
+      height: $ce3-btnheight-legends !important;
+      margin-left: $ce3-default-padding;
+      margin-right: $ce3-default-padding;
+      @include border-radius(5px, 5px !important);
+    }
   }
 
   @include medium {
@@ -366,6 +376,9 @@
 
   #btn-chart {
     height: $ce3-btnheight-legends !important;
+    margin-left: $ce3-default-padding;
+    margin-right: $ce3-default-padding;
+    @include border-radius(5px, 5px);
   }
 
   @include medium {
@@ -377,6 +390,7 @@
     #btn-chart {
       height: $ce3-btnheight-smallecreen !important;
       width: 100% !important;
+      margin-top: $ce3-default-padding;
     }
     .circle-box-left {
       @include border-top-radius(5px);
