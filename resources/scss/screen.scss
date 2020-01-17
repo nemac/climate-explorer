@@ -1212,6 +1212,13 @@ h6 {
   }
 }
 
+#cards-viewport .rounded-filters-box {
+  min-height: 70px !important;
+  @include medium {
+    min-height: 105px !important;
+  }
+}
+
 .rounded-box-secondary {
   @include border-radius(5px, 5px);
 }
