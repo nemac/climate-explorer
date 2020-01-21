@@ -16801,12 +16801,18 @@ body.detail-open #nav-overlay {
 }
 
 /* line 5, resources/scss/template/_secondary_header.scss */
+#secondary-header .secondary-home-logo {
+  font-size: 24px !important;
+  color: #FBFCFE !important;
+}
+
+/* line 10, resources/scss/template/_secondary_header.scss */
 #secondary-header .secondary-logo {
   height: 36px;
   width: auto;
 }
 
-/* line 8, resources/scss/template/_secondary_header.scss */
+/* line 13, resources/scss/template/_secondary_header.scss */
 #secondary-header .secondary-logo img {
   height: 44px;
   width: auto;
@@ -16815,13 +16821,13 @@ body.detail-open #nav-overlay {
 }
 
 @media screen and (max-width: 599px) {
-  /* line 15, resources/scss/template/_secondary_header.scss */
+  /* line 21, resources/scss/template/_secondary_header.scss */
   #secondary-header .secondary-logo img {
     content: url(/resources/img/crt-logo-mobile.png);
   }
 }
 
-/* line 21, resources/scss/template/_secondary_header.scss */
+/* line 27, resources/scss/template/_secondary_header.scss */
 #secondary-header .secondary-font-title {
   font: 500 24px Roboto, Helvetica, "Helvetica Neue", Arial, sans-serif !important;
   white-space: nowrap;
@@ -16831,47 +16837,47 @@ body.detail-open #nav-overlay {
 }
 
 @media screen and (max-width: 399px) {
-  /* line 27, resources/scss/template/_secondary_header.scss */
+  /* line 33, resources/scss/template/_secondary_header.scss */
   #secondary-header .secondary-font-title .extra-title {
     display: none !important;
   }
 }
 
 @media screen and (max-width: 599px) {
-  /* line 21, resources/scss/template/_secondary_header.scss */
+  /* line 27, resources/scss/template/_secondary_header.scss */
   #secondary-header .secondary-font-title {
     width: 25%;
   }
 }
 
 @media screen and (max-width: 768px) {
-  /* line 21, resources/scss/template/_secondary_header.scss */
+  /* line 27, resources/scss/template/_secondary_header.scss */
   #secondary-header .secondary-font-title {
     font: 500 18px Roboto, Helvetica, "Helvetica Neue", Arial, sans-serif !important;
   }
 }
 
-/* line 43, resources/scss/template/_secondary_header.scss */
+/* line 49, resources/scss/template/_secondary_header.scss */
 #secondary-header .topnav a {
   text-decoration: none;
   font: 500 18px Roboto, Helvetica, "Helvetica Neue", Arial, sans-serif;
 }
 
-/* line 50, resources/scss/template/_secondary_header.scss */
+/* line 56, resources/scss/template/_secondary_header.scss */
 #secondary-header #secondary-nav a .text {
   display: inline-block;
   color: #FBFCFE;
   padding: 0 .5rem 0 .5rem;
 }
 
-/* line 58, resources/scss/template/_secondary_header.scss */
+/* line 64, resources/scss/template/_secondary_header.scss */
 #secondary-header #header-logo {
   margin: 0 2% 0 0;
   height: 36px;
   width: auto;
 }
 
-/* line 62, resources/scss/template/_secondary_header.scss */
+/* line 68, resources/scss/template/_secondary_header.scss */
 #secondary-header #header-logo img {
   height: 36px;
   width: auto;
