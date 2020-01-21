@@ -17792,12 +17792,12 @@ input.input-inner:focus {
 
 /* line 455, resources/scss/pages/_local-climate-charts.scss */
 #chart-row.closed-filters #monthly-select-wrapper {
-  height: 30px !important;
+  height: 250px !important;
 }
 
 /* line 459, resources/scss/pages/_local-climate-charts.scss */
 #chart-row.closed-filters #legend-wrapper {
-  height: 30px !important;
+  height: 300px !important;
 }
 
 @media screen and (max-width: 1240px) {
@@ -17831,11 +17831,11 @@ input.input-inner:focus {
   }
   /* line 488, resources/scss/pages/_local-climate-charts.scss */
   #chart-row.closed-filters #monthly-select-wrapper {
-    height: 30px !important;
+    height: 250px !important;
   }
   /* line 492, resources/scss/pages/_local-climate-charts.scss */
   #chart-row.closed-filters #legend-wrapper {
-    height: 30px !important;
+    height: 300px !important;
   }
 }
 
