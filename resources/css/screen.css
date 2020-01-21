@@ -13923,7 +13923,7 @@ h6 {
 
 /* line 819, resources/scss/screen.scss */
 .btn-histobs .inner-histobs:hover, .btn-histobs .inner-histobs:focus {
-  background-color: #5e5e5e !important;
+  background-color: #777777 !important;
   outline: none !important;
   font-weight: 500 !important;
 }
@@ -13958,13 +13958,13 @@ h6 {
 /* line 847, resources/scss/screen.scss */
 .btn-histobs.disabled {
   cursor: default;
-  background-color: white !important;
+  background-color: #d2ddf4 !important;
   color: #4a88e7 !important;
 }
 
 /* line 852, resources/scss/screen.scss */
 .btn-histobs.disabled:hover, .btn-histobs.disabled:focus {
-  background-color: white !important;
+  background-color: #d2ddf4 !important;
   color: #4a88e7 !important;
   outline: none !important;
   font-weight: 500 !important;
@@ -14008,7 +14008,7 @@ h6 {
 
 /* line 886, resources/scss/screen.scss */
 .btn-hismod .inner-hismod:hover, .btn-hismod .inner-hismod:focus {
-  background-color: #bdbdbd !important;
+  background-color: #D6D6D6 !important;
   outline: none !important;
   font-weight: 500 !important;
 }
@@ -14043,13 +14043,13 @@ h6 {
 /* line 914, resources/scss/screen.scss */
 .btn-hismod.disabled {
   cursor: default;
-  background-color: white !important;
+  background-color: #d2ddf4 !important;
   color: #4a88e7 !important;
 }
 
 /* line 919, resources/scss/screen.scss */
 .btn-hismod.disabled:hover, .btn-hismod.disabled:focus {
-  background-color: white !important;
+  background-color: #d2ddf4 !important;
   color: #4a88e7 !important;
   outline: none !important;
   font-weight: 500 !important;
@@ -14093,7 +14093,7 @@ h6 {
 
 /* line 953, resources/scss/screen.scss */
 .btn-lower-emissions .inner-lower-emmisions:hover, .btn-lower-emissions .inner-lower-emmisions:focus {
-  background-color: #6da0e3 !important;
+  background-color: #98BCEB !important;
   outline: none !important;
   font-weight: 500 !important;
 }
@@ -14128,13 +14128,13 @@ h6 {
 /* line 981, resources/scss/screen.scss */
 .btn-lower-emissions.disabled {
   cursor: default;
-  background-color: white !important;
+  background-color: #d2ddf4 !important;
   color: #4a88e7 !important;
 }
 
 /* line 986, resources/scss/screen.scss */
 .btn-lower-emissions.disabled:hover, .btn-lower-emissions.disabled:focus {
-  background-color: white !important;
+  background-color: #d2ddf4 !important;
   color: #4a88e7 !important;
   outline: none !important;
   font-weight: 500 !important;
@@ -14178,7 +14178,7 @@ h6 {
 
 /* line 1020, resources/scss/screen.scss */
 .btn-higher-emissions .inner-higher-emmisions:hover, .btn-higher-emissions .inner-higher-emmisions:focus {
-  background-color: #f98979 !important;
+  background-color: #FBB4AA !important;
   outline: none !important;
   font-weight: 500 !important;
 }
@@ -14213,13 +14213,13 @@ h6 {
 /* line 1048, resources/scss/screen.scss */
 .btn-higher-emissions.disabled {
   cursor: default;
-  background-color: white !important;
+  background-color: #e7edf9 !important;
   color: #4a88e7 !important;
 }
 
 /* line 1053, resources/scss/screen.scss */
 .btn-higher-emissions.disabled:hover, .btn-higher-emissions.disabled:focus {
-  background-color: white !important;
+  background-color: #d2ddf4 !important;
   color: #4a88e7 !important;
   outline: none !important;
   font-weight: 500 !important;

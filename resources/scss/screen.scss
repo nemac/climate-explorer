@@ -817,7 +817,7 @@ h6 {
     @include border-radius(5px, 5px);
 
     &:hover, &:focus  {
-      background-color: darken($ce3-historical-observed, 10) !important;
+      background-color: $ce3-historical-observed !important;
       outline: none !important;
       font-weight: $font-weight-normal-plus !important;
       &.description {
@@ -846,11 +846,11 @@ h6 {
 
   &.disabled {
     cursor: default;
-    background-color: lighten($ce3-blue6, 10) !important;
+    background-color: darken($ce3-blue6, 10) !important;
     color: lighten($ce3-blue3, 30) !important;
 
     &:hover, &:focus {
-      background-color: lighten($ce3-blue6, 10) !important;
+      background-color: darken($ce3-blue6, 10) !important;
       color: lighten($ce3-blue3, 30) !important;
       outline: none !important;
       font-weight: $font-weight-normal !important;
@@ -884,7 +884,7 @@ h6 {
     @include border-radius(5px, 5px);
 
     &:hover, &:focus  {
-      background-color: darken($ce3-historical-modeled, 10) !important;
+      background-color: $ce3-historical-modeled !important;
       outline: none !important;
       font-weight: $font-weight-normal-plus !important;
       &.description {
@@ -913,11 +913,11 @@ h6 {
 
   &.disabled {
     cursor: default;
-    background-color: lighten($ce3-blue6, 10) !important;
+    background-color: darken($ce3-blue6, 10) !important;
     color: lighten($ce3-blue3, 30) !important;
 
     &:hover, &:focus {
-      background-color: lighten($ce3-blue6, 10) !important;
+      background-color: darken($ce3-blue6, 10) !important;
       color: lighten($ce3-blue3, 30) !important;
       outline: none !important;
       font-weight: $font-weight-normal !important;
@@ -951,7 +951,7 @@ h6 {
     @include border-radius(5px, 5px);
 
     &:hover, &:focus  {
-      background-color: darken($ce3-lower-emissions, 10) !important;
+      background-color: $ce3-lower-emissions !important;
       outline: none !important;
       font-weight: $font-weight-normal-plus !important;
       &.description {
@@ -980,11 +980,11 @@ h6 {
 
   &.disabled {
     cursor: default;
-    background-color: lighten($ce3-blue6, 10) !important;
+    background-color: darken($ce3-blue6, 10) !important;
     color: lighten($ce3-blue3, 30) !important;
 
     &:hover, &:focus {
-      background-color: lighten($ce3-blue6, 10) !important;
+      background-color: darken($ce3-blue6, 10) !important;
       color: lighten($ce3-blue3, 30) !important;
       outline: none !important;
       font-weight: $font-weight-normal !important;
@@ -1018,7 +1018,7 @@ h6 {
     @include border-radius(5px, 5px);
 
     &:hover, &:focus  {
-      background-color: darken($ce3-higher-emissions, 10) !important;
+      background-color:$ce3-higher-emissions !important;
       outline: none !important;
       font-weight: $font-weight-normal-plus !important;
       &.description {
@@ -1047,11 +1047,11 @@ h6 {
 
   &.disabled {
     cursor: default;
-    background-color: lighten($ce3-blue6, 5) !important;
+    background-color: darken($ce3-blue6, 5) !important;
     color: lighten($ce3-blue3, 30) !important;
 
     &:hover, &:focus {
-      background-color: lighten($ce3-blue6, 10) !important;
+      background-color: darken($ce3-blue6, 10) !important;
       color: lighten($ce3-blue3, 30) !important;
       outline: none !important;
       font-weight: $font-weight-normal !important;
