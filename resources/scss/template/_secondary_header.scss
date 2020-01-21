@@ -25,7 +25,8 @@
   }
 
   .secondary-font-title {
-     font: $font-weight-normal 24px $roboto !important;
+     // font: $font-weight-normal 24px $roboto !important;
+     font: $font-weight-normal 24px $sans-heavy !important;
      white-space: nowrap;
      width: 70%;
 
@@ -40,7 +41,7 @@
      }
 
      @include small {
-       font: $font-weight-normal 18px $roboto !important;
+       font: $font-weight-normal 18px $sans-book !important;
      }
      color: $ce3-blue6 !important;
      align-self: center;

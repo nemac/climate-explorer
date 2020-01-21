@@ -16829,7 +16829,7 @@ body.detail-open #nav-overlay {
 
 /* line 27, resources/scss/template/_secondary_header.scss */
 #secondary-header .secondary-font-title {
-  font: 500 24px Roboto, Helvetica, "Helvetica Neue", Arial, sans-serif !important;
+  font: 500 24px "CESans-Heavy", Roboto, Helvetica, "Helvetica Neue", Arial, sans-serif !important;
   white-space: nowrap;
   width: 70%;
   color: #FBFCFE !important;
@@ -16837,7 +16837,7 @@ body.detail-open #nav-overlay {
 }
 
 @media screen and (max-width: 399px) {
-  /* line 33, resources/scss/template/_secondary_header.scss */
+  /* line 34, resources/scss/template/_secondary_header.scss */
   #secondary-header .secondary-font-title .extra-title {
     display: none !important;
   }
@@ -16853,31 +16853,31 @@ body.detail-open #nav-overlay {
 @media screen and (max-width: 768px) {
   /* line 27, resources/scss/template/_secondary_header.scss */
   #secondary-header .secondary-font-title {
-    font: 500 18px Roboto, Helvetica, "Helvetica Neue", Arial, sans-serif !important;
+    font: 500 18px "CESans", Roboto, Helvetica, "Helvetica Neue", Arial, sans-serif !important;
   }
 }
 
-/* line 49, resources/scss/template/_secondary_header.scss */
+/* line 50, resources/scss/template/_secondary_header.scss */
 #secondary-header .topnav a {
   text-decoration: none;
   font: 500 18px Roboto, Helvetica, "Helvetica Neue", Arial, sans-serif;
 }
 
-/* line 56, resources/scss/template/_secondary_header.scss */
+/* line 57, resources/scss/template/_secondary_header.scss */
 #secondary-header #secondary-nav a .text {
   display: inline-block;
   color: #FBFCFE;
   padding: 0 .5rem 0 .5rem;
 }
 
-/* line 64, resources/scss/template/_secondary_header.scss */
+/* line 65, resources/scss/template/_secondary_header.scss */
 #secondary-header #header-logo {
   margin: 0 2% 0 0;
   height: 36px;
   width: auto;
 }
 
-/* line 68, resources/scss/template/_secondary_header.scss */
+/* line 69, resources/scss/template/_secondary_header.scss */
 #secondary-header #header-logo img {
   height: 36px;
   width: auto;
@@ -16897,93 +16897,106 @@ body.detail-open #nav-overlay {
 }
 
 /* line 9, resources/scss/template/_main_header.scss */
+#main-header .main-home-logo {
+  font-size: 36px !important;
+  color: #FBFCFE !important;
+}
+
+@media screen and (max-width: 768px) {
+  /* line 9, resources/scss/template/_main_header.scss */
+  #main-header .main-home-logo {
+    font-size: 24px !important;
+  }
+}
+
+/* line 18, resources/scss/template/_main_header.scss */
 #main-header .main-logo {
   height: 60px;
   width: auto;
 }
 
 @media screen and (max-width: 768px) {
-  /* line 9, resources/scss/template/_main_header.scss */
+  /* line 18, resources/scss/template/_main_header.scss */
   #main-header .main-logo {
     height: 36px;
   }
 }
 
-/* line 17, resources/scss/template/_main_header.scss */
+/* line 25, resources/scss/template/_main_header.scss */
 #main-header .main-logo img {
   height: 60px;
   width: auto;
 }
 
 @media screen and (max-width: 768px) {
-  /* line 17, resources/scss/template/_main_header.scss */
+  /* line 25, resources/scss/template/_main_header.scss */
   #main-header .main-logo img {
     height: 36px;
   }
 }
 
 @media screen and (max-width: 599px) {
-  /* line 26, resources/scss/template/_main_header.scss */
+  /* line 35, resources/scss/template/_main_header.scss */
   #main-header .main-logo img {
     content: url(/resources/img/crt-logo-mobile.png);
   }
 }
 
-/* line 32, resources/scss/template/_main_header.scss */
+/* line 41, resources/scss/template/_main_header.scss */
 #main-header .main-font-title {
-  font: 500 36px Roboto, Helvetica, "Helvetica Neue", Arial, sans-serif !important;
+  font: 500 36px "CESans-Heavy", Roboto, Helvetica, "Helvetica Neue", Arial, sans-serif !important;
   width: 70%;
   color: #FBFCFE !important;
   align-self: center;
 }
 
 @media screen and (max-width: 399px) {
-  /* line 37, resources/scss/template/_main_header.scss */
+  /* line 47, resources/scss/template/_main_header.scss */
   #main-header .main-font-title .extra-title {
     display: none !important;
   }
 }
 
 @media screen and (max-width: 768px) {
-  /* line 32, resources/scss/template/_main_header.scss */
+  /* line 41, resources/scss/template/_main_header.scss */
   #main-header .main-font-title {
-    font: 500 18px Roboto, Helvetica, "Helvetica Neue", Arial, sans-serif !important;
+    font: 500 18px "CESans", Roboto, Helvetica, "Helvetica Neue", Arial, sans-serif !important;
   }
 }
 
 @media screen and (max-width: 599px) {
-  /* line 32, resources/scss/template/_main_header.scss */
+  /* line 41, resources/scss/template/_main_header.scss */
   #main-header .main-font-title {
     width: 50%;
   }
 }
 
-/* line 53, resources/scss/template/_main_header.scss */
+/* line 63, resources/scss/template/_main_header.scss */
 #main-header .topnav a {
   text-decoration: none;
   font: 500 18px Roboto, Helvetica, "Helvetica Neue", Arial, sans-serif;
 }
 
-/* line 60, resources/scss/template/_main_header.scss */
+/* line 70, resources/scss/template/_main_header.scss */
 #main-header #main-nav a .icon {
   font: 500 18px Roboto, Helvetica, "Helvetica Neue", Arial, sans-serif !important;
 }
 
-/* line 64, resources/scss/template/_main_header.scss */
+/* line 74, resources/scss/template/_main_header.scss */
 #main-header #main-nav a .text {
   display: inline-block;
   color: #FBFCFE;
   padding: 0 .5rem 0 .5rem;
 }
 
-/* line 72, resources/scss/template/_main_header.scss */
+/* line 82, resources/scss/template/_main_header.scss */
 #main-header #header-logo {
   margin: 0 2% 0 0;
   height: 60px;
   width: auto;
 }
 
-/* line 76, resources/scss/template/_main_header.scss */
+/* line 86, resources/scss/template/_main_header.scss */
 #main-header #header-logo img {
   height: 60px;
   width: auto;
