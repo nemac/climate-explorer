@@ -549,7 +549,7 @@ $(function () {
             $('#slider-value-low').text(minValue);
         }
 
-        $('#monthly-select-wrapper').hide();
+        // $('#monthly-select-wrapper').hide();
     }
 
     function annualSliderOn() {

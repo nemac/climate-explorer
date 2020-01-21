@@ -60,6 +60,8 @@
   height: auto !important;
   @include border-radius(5px, 5px);
   border: 1px solid $ce3-blue3 !important;
+  border: 1px solid $ce3-blue5 !important; // noborder
+  @include box-shadow(0px 2px 3px transparentize(#000, 0.761));  // noborder
 
   &.card-disabled {
     cursor: default;
@@ -76,11 +78,13 @@
 
   &:focus, &:hover {
     border: 1px solid darken($ce3-blue3, 10) !important;
+    border: 1px solid $ce3-blue5 !important; // noborder
     @include box-shadow(0px 5px 10px transparentize(#000, 0.761));
     outline: none;
     &.card-disabled{
       @include box-shadow(0px 0px 0px transparentize(#000, 0.761));
       border: 1px solid $ce3-blue3 !important;
+      border: 1px solid $ce3-blue5 !important; // noborder
       outline: none;
     }
   }
@@ -144,7 +148,9 @@
   height: 85px !important;
   min-height: 85px !important;
   z-index: 2;
-  @include border-radius(5px, 5px);
+  @include border-bottom-left-radius(5px);
+  @include border-bottom-right-radius(5px);
+   @include border-radius(0px, 5px);  // noborder
 
   @include medium {
     flex: 1 1 150px !important;

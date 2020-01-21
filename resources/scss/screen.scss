@@ -36,7 +36,7 @@ $ce3-border-color: $ce3-blue3alphad;
 $ce3-lower-emissions: #98BCEB;
 $ce3-higher-emissions: #FBB4AA;
 $ce3-historical-modeled: #D6D6D6;
-$ce3-historical-observed: #ADADAD;
+$ce3-historical-observed: #777777;
 $ce3-yearly-exceedance: #317AD8;
 $ce3-normal-range: #ABDDA4;
 $ce3-actual-range: #3288BD;
@@ -794,53 +794,7 @@ h6 {
 .btn-histobs {
   cursor: pointer;
   text-decoration: line-through !important;
-  background-color: #777 !important;
-  color: transparentize($ce3-blue6, 0.5) !important;
-  height: $ce3-btnheight !important;
-  font: 500 14px $roboto !important;
-  border: 1px solid $ce3-blue3alpha !important;
-  margin-left: $ce3-default-padding;
-  margin-right: $ce3-default-padding;
-  @include border-radius(5px, 5px);
-
-  @include medium {
-    height: $ce3-btnheight-smallecreen !important;
-  }
-
-  &:focus, &:hover {
-    background-color: darken(#777, 5) !important;
-    outline: none !important;
-    font-weight: $font-weight-normal-plus !important;
-    &.description {
-      cursor: default;
-      background-color: #777 !important;
-      font: $font-weight-normal 14px $roboto !important;
-    }
-  }
-
-  &.selected {
-    color: $ce3-blue6 !important;
-    text-decoration: unset !important;
-  }
-
-  &.disabled {
-    cursor: default;
-    background-color: lighten(#777, 10) !important;
-    color: lighten(#777, 25) !important;
-
-    &:hover, &:focus {
-      background-color: lighten(#777, 10) !important;
-      color: lighten(#777, 25) !important;
-      outline: none !important;
-      font-weight: $font-weight-normal !important;
-    }
-  }
-}
-
-.btn-hismod {
-  cursor: pointer;
-  text-decoration: line-through !important;
-  background-color: #D6D6D6 !important;
+  background-color: $ce3-blue6 !important;
   color: transparentize($ce3-blue3, 0.5) !important;
   height: $ce3-btnheight !important;
   font: 500 14px $roboto !important;
@@ -853,13 +807,33 @@ h6 {
     height: $ce3-btnheight-smallecreen !important;
   }
 
-  &:hover, &:focus {
-    background-color: darken(#D6D6D6, 10) !important;
+  .inner-histobs{
+    background-color: $ce3-historical-observed !important;
+    border: 1px solid darken($ce3-historical-observed, 10);
+    height: 18px;
+    width: $ce3-btnheight-smallecreen;
+    margin: $ce3-default-padding;
+    @include border-radius(5px, 5px);
+
+    &:hover, &:focus  {
+      background-color: darken($ce3-historical-observed, 10) !important;
+      outline: none !important;
+      font-weight: $font-weight-normal-plus !important;
+      &.description {
+        cursor: default;
+        background-color: $ce3-historical-observed !important;
+        font: $font-weight-normal 14px $roboto !important;
+      }
+    }
+  }
+
+  &:focus, &:hover {
+    background-color: darken($ce3-blue6, 5) !important;
     outline: none !important;
     font-weight: $font-weight-normal-plus !important;
     &.description {
       cursor: default;
-      background-color: #D6D6D6 !important;
+      background-color: $ce3-blue6 !important;
       font: $font-weight-normal 14px $roboto !important;
     }
   }
@@ -871,11 +845,77 @@ h6 {
 
   &.disabled {
     cursor: default;
-    background-color: lighten(#D6D6D6, 10) !important;
+    background-color: lighten($ce3-blue6, 10) !important;
     color: lighten($ce3-blue3, 30) !important;
 
     &:hover, &:focus {
-      background-color: lighten(#D6D6D6, 10) !important;
+      background-color: lighten($ce3-blue6, 10) !important;
+      color: lighten($ce3-blue3, 30) !important;
+      outline: none !important;
+      font-weight: $font-weight-normal !important;
+    }
+  }
+}
+
+.btn-hismod {
+  cursor: pointer;
+  text-decoration: line-through !important;
+  background-color: $ce3-blue6 !important;
+  color: transparentize($ce3-blue3, 0.5) !important;
+  height: $ce3-btnheight !important;
+  font: 500 14px $roboto !important;
+  border: 1px solid $ce3-blue3alpha !important;
+  margin-left: $ce3-default-padding;
+  margin-right: $ce3-default-padding;
+  @include border-radius(5px, 5px);
+
+  @include medium {
+    height: $ce3-btnheight-smallecreen !important;
+  }
+
+  .inner-hismod {
+    background-color: $ce3-historical-modeled !important;
+    border: 1px solid darken($ce3-historical-modeled, 10);
+    height: 18px;
+    width: $ce3-btnheight-smallecreen;
+    margin: $ce3-default-padding;
+    @include border-radius(5px, 5px);
+
+    &:hover, &:focus  {
+      background-color: darken($ce3-historical-modeled, 10) !important;
+      outline: none !important;
+      font-weight: $font-weight-normal-plus !important;
+      &.description {
+        cursor: default;
+        background-color: $ce3-historical-modeled !important;
+        font: $font-weight-normal 14px $roboto !important;
+      }
+    }
+  }
+
+  &:hover, &:focus {
+    background-color: darken($ce3-blue6, 10) !important;
+    outline: none !important;
+    font-weight: $font-weight-normal-plus !important;
+    &.description {
+      cursor: default;
+      background-color: $ce3-blue6 !important;
+      font: $font-weight-normal 14px $roboto !important;
+    }
+  }
+
+  &.selected {
+    color: $ce3-blue3 !important;
+    text-decoration: unset !important;
+  }
+
+  &.disabled {
+    cursor: default;
+    background-color: lighten($ce3-blue6, 10) !important;
+    color: lighten($ce3-blue3, 30) !important;
+
+    &:hover, &:focus {
+      background-color: lighten($ce3-blue6, 10) !important;
       color: lighten($ce3-blue3, 30) !important;
       outline: none !important;
       font-weight: $font-weight-normal !important;
@@ -886,7 +926,7 @@ h6 {
 .btn-lower-emissions {
   cursor: pointer;
   text-decoration: line-through !important;
-  background-color: $ce3-lower-emissions !important;
+  background-color: $ce3-blue6 !important;
   color: transparentize($ce3-blue3, 0.5) !important;
   height: $ce3-btnheight !important;
   font: 500 14px $roboto !important;
@@ -899,13 +939,33 @@ h6 {
     height: $ce3-btnheight-smallecreen !important;
   }
 
+  .inner-lower-emmisions {
+    background-color: $ce3-lower-emissions !important;
+    border: 1px solid darken($ce3-lower-emissions, 10);
+    height: 18px;
+    width: $ce3-btnheight-smallecreen;
+    margin: $ce3-default-padding;
+    @include border-radius(5px, 5px);
+
+    &:hover, &:focus  {
+      background-color: darken($ce3-lower-emissions, 10) !important;
+      outline: none !important;
+      font-weight: $font-weight-normal-plus !important;
+      &.description {
+        cursor: default;
+        background-color: $ce3-lower-emissions !important;
+        font: $font-weight-normal 14px $roboto !important;
+      }
+    }
+  }
+
   &:hover, &:focus {
-    background-color: darken($ce3-lower-emissions, 10) !important;
+    background-color: darken($ce3-blue6, 10) !important;
     outline: none !important;
     font-weight: $font-weight-normal-plus !important;
     &.description {
       cursor: default;
-      background-color: $ce3-lower-emissions !important;
+      background-color: $ce3-blue6 !important;
       font: $font-weight-normal 14px $roboto !important;
     }
   }
@@ -917,11 +977,11 @@ h6 {
 
   &.disabled {
     cursor: default;
-    background-color: lighten($ce3-lower-emissions, 10) !important;
+    background-color: lighten($ce3-blue6, 10) !important;
     color: lighten($ce3-blue3, 30) !important;
 
     &:hover, &:focus {
-      background-color: lighten($ce3-lower-emissions, 10) !important;
+      background-color: lighten($ce3-blue6, 10) !important;
       color: lighten($ce3-blue3, 30) !important;
       outline: none !important;
       font-weight: $font-weight-normal !important;
@@ -932,7 +992,7 @@ h6 {
 .btn-higher-emissions {
   cursor: pointer;
   text-decoration: line-through !important;
-  background-color: #FBB4AA !important;
+  background-color: $ce3-blue6 !important;
   color: transparentize($ce3-blue3, 0.5) !important;
   height: $ce3-btnheight !important;
   font: 500 14px $roboto !important;
@@ -945,13 +1005,33 @@ h6 {
     height: $ce3-btnheight-smallecreen !important;
   }
 
+  .inner-higher-emmisions {
+    background-color: $ce3-higher-emissions !important;
+    border: 1px solid darken($ce3-higher-emissions, 10);
+    height: 18px;
+    width: $ce3-btnheight-smallecreen;
+    margin: $ce3-default-padding;
+    @include border-radius(5px, 5px);
+
+    &:hover, &:focus  {
+      background-color: darken($ce3-higher-emissions, 10) !important;
+      outline: none !important;
+      font-weight: $font-weight-normal-plus !important;
+      &.description {
+        cursor: default;
+        background-color: $ce3-higher-emissions !important;
+        font: $font-weight-normal 14px $roboto !important;
+      }
+    }
+  }
+
   &:hover, &:focus  {
-    background-color: darken(#FBB4AA, 10) !important;
+    background-color: darken($ce3-blue6, 5) !important;
     outline: none !important;
     font-weight: $font-weight-normal-plus !important;
     &.description {
       cursor: default;
-      background-color: #FBB4AA !important;
+      background-color: $ce3-blue6 !important;
       font: $font-weight-normal 14px $roboto !important;
     }
   }
@@ -963,11 +1043,11 @@ h6 {
 
   &.disabled {
     cursor: default;
-    background-color: lighten($ce3-higher-emissions, 10) !important;
+    background-color: lighten($ce3-blue6, 5) !important;
     color: lighten($ce3-blue3, 30) !important;
 
     &:hover, &:focus {
-      background-color: lighten($ce3-higher-emissions, 10) !important;
+      background-color: lighten($ce3-blue6, 10) !important;
       color: lighten($ce3-blue3, 30) !important;
       outline: none !important;
       font-weight: $font-weight-normal !important;
@@ -1213,9 +1293,9 @@ h6 {
 }
 
 #cards-viewport .rounded-filters-box {
-  min-height: 70px !important;
+  min-height: $ce3-btnheight !important;
   @include medium {
-    min-height: 105px !important;
+    min-height: $ce3-btnheight !important;
   }
 }
 
