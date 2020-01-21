@@ -548,8 +548,7 @@ $(function () {
             $('#slider-value-high').text(maxValue);
             $('#slider-value-low').text(minValue);
         }
-
-        // $('#monthly-select-wrapper').hide();
+        monthlySelectOff();
     }
 
     function annualSliderOn() {
