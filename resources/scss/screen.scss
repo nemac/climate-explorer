@@ -801,6 +801,7 @@ h6 {
   border: 1px solid $ce3-blue3alpha !important;
   margin-left: $ce3-default-padding;
   margin-right: $ce3-default-padding;
+  min-width: 200px;
   @include border-radius(5px, 5px);
 
   @include medium {
@@ -867,6 +868,7 @@ h6 {
   border: 1px solid $ce3-blue3alpha !important;
   margin-left: $ce3-default-padding;
   margin-right: $ce3-default-padding;
+  min-width: 200px;
   @include border-radius(5px, 5px);
 
   @include medium {
@@ -933,6 +935,7 @@ h6 {
   border: 1px solid $ce3-blue3alpha !important;
   margin-left: $ce3-default-padding;
   margin-right: $ce3-default-padding;
+  min-width: 200px;
   @include border-radius(5px, 5px);
 
   @include medium {
@@ -999,6 +1002,7 @@ h6 {
   border: 1px solid $ce3-blue3alpha !important;
   margin-left: $ce3-default-padding;
   margin-right: $ce3-default-padding;
+  min-width: 200px;
   @include border-radius(5px, 5px);
 
   @include medium {
