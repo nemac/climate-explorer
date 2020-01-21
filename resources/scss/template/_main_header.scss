@@ -9,6 +9,8 @@
   .main-home-logo {
     font-size: 36px !important;
     color: $ce3-blue6 !important;
+    background: lighten($ce3-blue2, 5);
+    @include border-radius(5px, 5px);
 
     @include small {
       font-size: 24px !important;
