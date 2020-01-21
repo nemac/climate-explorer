@@ -17860,7 +17860,7 @@ input.input-inner:focus {
 @media screen and (max-width: 900px) {
   /* line 508, resources/scss/pages/_local-climate-charts.scss */
   #chart-info-row {
-    order: 1;
+    order: 3;
   }
 }
 
