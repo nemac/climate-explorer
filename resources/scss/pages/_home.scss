@@ -46,6 +46,10 @@ $home-text-back-background: rgba(233, 241, 252, 0.9);
       }
     }
 
+    @include very-small {
+      width: 100% !important;
+    }
+
     a {
       cursor: pointer;
       display: inline-block;
@@ -147,8 +151,14 @@ $home-text-back-background: rgba(233, 241, 252, 0.9);
     }
 
     @include very-small {
-      max-width: 200px;
-      min-width: 200px;
+      max-width: 225px;
+      min-width: 225px;
+      top: calc(100% - 10%);
+    }
+
+    @include tiny {
+      max-width: 220px;
+      min-width: 220px;
       top: calc(100% - 10%);
     }
   }
@@ -278,6 +288,10 @@ $home-text-back-background: rgba(233, 241, 252, 0.9);
 .input-outer-main {
   background-color: $ce3-blue6;
   color: $ce3-blue6;
+
+  @include very-small {
+    width: 100% !important;
+  }
 }
 
 .input-outer {
@@ -300,6 +314,9 @@ input.input-inner {
     width: 80% !important;
   }
   @include very-small {
+    width: 80% !important;
+  }
+  @include tiny {
     width: 70% !important;
   }
 }

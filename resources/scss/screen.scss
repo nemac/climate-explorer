@@ -415,7 +415,12 @@ h6 {
 
   @include small {
     max-height: 250px !important;
-    top: 2px;
+  }
+
+  @include very-small {
+    max-height: 175px !important;
+    top: -443px !important;
+    position: relative !important;
   }
 
   .pac-item {
@@ -438,7 +443,7 @@ h6 {
   }
 }
 
-.pac-container:empty{
+.pac-container:empty {
 }
 
 #filters-row {

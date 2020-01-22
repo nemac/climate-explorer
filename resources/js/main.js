@@ -876,7 +876,7 @@ App.prototype.locationSearch = function () {
     setTimeout(function () {
       const pacElem = document.querySelector('.pac-container');
       pacElem.setAttribute('style',
-            `width: ${pacWidth}px !important; left: ${rect.left}px !important; top: ${rect.top+rect.height+1}px !important;`
+            `width: ${pacWidth}px !important; left: ${rect.left}px !important; top: ${rect.top+rect.height+1}px;`
           );
     }, 1);
   }

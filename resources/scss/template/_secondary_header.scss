@@ -10,17 +10,17 @@
   }
 
   .secondary-logo {
-    height: $ce3-main-logo-height;
+    height: 36px;
     width: auto;
 
     @include small {
-      height: $ce3-secondary-logo-height;
+      height: 36px;
     }
     img {
-      height: $ce3-main-logo-height;
+      height: 36px;
 
       @include small {
-        height: $ce3-secondary-logo-height;
+        height: 36px;
       }
       width: auto;
     }
