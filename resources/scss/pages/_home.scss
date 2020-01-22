@@ -274,9 +274,14 @@ $home-text-back-background: rgba(233, 241, 252, 0.9);
   }
 }
 
-.input-outer {
+.input-outer-main {
   background-color: $ce3-blue6;
-  color: $ce3-blue5;
+  color: $ce3-blue6;
+}
+
+.input-outer {
+  background-color: $ce3-blue5;
+  color: $ce3-blue6;
 }
 
 input.input-inner {
@@ -361,7 +366,6 @@ input.input-inner:focus  {
   @include tiny {
     top: 48px;
   }
-
 
   a {
     background-color: $ce3-blue6;
