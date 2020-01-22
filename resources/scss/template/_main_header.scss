@@ -37,11 +37,12 @@
       img {
         content:url(/resources/img/crt-logo-mobile.png);
       }
+      height: 34px;
+      width: auto;
     }
   }
 
   .main-font-title {
-    // font: 500 36px $roboto !important;
     font: $font-weight-normal 36px $sans-heavy !important;
     width: 70%;
 
@@ -55,6 +56,7 @@
     }
 
     @include very-small {
+      font: $font-weight-normal 14px $sans-book !important;
       width: 50%;
     }
 
