@@ -82,6 +82,7 @@ $home-text-back-background: rgba(233, 241, 252, 0.9);
 
       a {
         color: $blue2 !important;
+        z-index: 2 !important;
       }
     }
   }

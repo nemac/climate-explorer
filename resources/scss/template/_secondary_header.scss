@@ -10,28 +10,47 @@
   }
 
   .secondary-logo {
-    height: $ce3-secondary-logo-height;
+    height: $ce3-main-logo-height;
     width: auto;
 
+    @include small {
+      height: $ce3-secondary-logo-height;
+    }
     img {
-      height: 44px;
+      height: $ce3-main-logo-height;
+
+      @include small {
+        height: $ce3-secondary-logo-height;
+      }
       width: auto;
-      margin-top: -6px;
-      padding: 3px;
     }
 
     @include very-small  {
       img {
         content:url(/resources/img/crt-logo-mobile.png);
       }
+      height: 34px;
+      width: auto;
     }
   }
 
   .secondary-font-title {
      // font: $font-weight-normal 24px $roboto !important;
-     font: $font-weight-normal 24px $sans-heavy !important;
+     font: $font-weight-normal 24px $roboto !important;
      white-space: nowrap;
      width: 70%;
+
+
+
+     @include small {
+       font: $font-weight-normal 18px $roboto !important;
+       width: 50%;
+     }
+
+     @include very-small  {
+       font: $font-weight-normal 14px $roboto !important;
+       width: 50%;
+     }
 
      @include tiny {
        .extra-title {
@@ -39,13 +58,6 @@
        }
      }
 
-     @include very-small  {
-       width: 25%;
-     }
-
-     @include small {
-       font: $font-weight-normal 18px $sans-book !important;
-     }
      color: $ce3-blue6 !important;
      align-self: center;
   }
@@ -72,6 +84,10 @@
     img {
       height: $ce3-secondary-logo-height;
       width: auto;
+
+      @include small {
+        height: $ce3-secondary-logo-height;
+      }
     }
   }
 }
