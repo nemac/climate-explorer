@@ -17113,7 +17113,7 @@ body.detail-open #nav-overlay {
 }
 
 /* line 49, resources/scss/pages/_home.scss */
-#home-viewport #suggested-cities li {
+#home-viewport #suggested-cities a {
   cursor: pointer;
   display: inline-block;
   width: 30%;
@@ -17133,40 +17133,36 @@ body.detail-open #nav-overlay {
   -webkit-box-shadow: 0px 1px 2px rgba(0, 0, 0, 0.239);
   -moz-box-shadow: 0px 1px 2px rgba(0, 0, 0, 0.239);
   box-shadow: 0px 1px 2px rgba(0, 0, 0, 0.239);
+  color: #233a70 !important;
+  z-index: 2 !important;
 }
 
 @media screen and (max-width: 900px) {
   /* line 49, resources/scss/pages/_home.scss */
-  #home-viewport #suggested-cities li {
+  #home-viewport #suggested-cities a {
     width: 40%;
   }
 }
 
 @media screen and (max-width: 599px) {
   /* line 49, resources/scss/pages/_home.scss */
-  #home-viewport #suggested-cities li {
+  #home-viewport #suggested-cities a {
     width: 100%;
   }
 }
 
 /* line 71, resources/scss/pages/_home.scss */
-#home-viewport #suggested-cities li:hover, #home-viewport #suggested-cities li:focus {
+#home-viewport #suggested-cities a:hover, #home-viewport #suggested-cities a:focus {
   outline: none !important;
   background-color: #dee7f7 !important;
-  color: white !important;
+  color: #3558aa !important;
   font-weight: 500;
 }
 
 /* line 77, resources/scss/pages/_home.scss */
-#home-viewport #suggested-cities li:hover.disabled, #home-viewport #suggested-cities li:focus.disabled {
+#home-viewport #suggested-cities a:hover.disabled, #home-viewport #suggested-cities a:focus.disabled {
   color: rgba(233, 241, 252, 0.5) !important;
   outline: none !important;
-}
-
-/* line 83, resources/scss/pages/_home.scss */
-#home-viewport #suggested-cities li a {
-  color: #233a70 !important;
-  z-index: 2 !important;
 }
 
 /* line 90, resources/scss/pages/_home.scss */

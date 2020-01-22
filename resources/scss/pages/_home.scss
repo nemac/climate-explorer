@@ -46,7 +46,7 @@ $home-text-back-background: rgba(233, 241, 252, 0.9);
       }
     }
 
-    li {
+    a {
       cursor: pointer;
       display: inline-block;
       width: 30%;
@@ -71,7 +71,7 @@ $home-text-back-background: rgba(233, 241, 252, 0.9);
       &:hover, &:focus {
         outline: none !important;
         background-color: darken($ce3-blue6, 7) !important;
-        color: lighten($ce3-blue5, 15) !important;
+        color: lighten($blue2, 15) !important;
         font-weight: $font-weight-normal-plus;
 
         &.disabled {
@@ -80,10 +80,10 @@ $home-text-back-background: rgba(233, 241, 252, 0.9);
         }
       }
 
-      a {
+      // a {
         color: $blue2 !important;
         z-index: 2 !important;
-      }
+      // }
     }
   }
 
