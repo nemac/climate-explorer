@@ -184,7 +184,17 @@ $home-text-back-background: rgba(233, 241, 252, 0.9);
       }
     }
 
+    @include small {
+      margin-top: 84px;
+      margin-left: 12px;
+    }
+
     @include very-small {
+      margin-top: 84px;
+      margin-left: 12px;
+    }
+
+    @include tiny {
       margin-top: 74px;
       margin-left: 12px;
     }

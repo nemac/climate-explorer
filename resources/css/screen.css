@@ -17274,7 +17274,23 @@ body.detail-open #nav-overlay {
   }
 }
 
+@media screen and (max-width: 768px) {
+  /* line 155, resources/scss/pages/_home.scss */
+  #home-viewport .search-row {
+    margin-top: 84px;
+    margin-left: 12px;
+  }
+}
+
 @media screen and (max-width: 599px) {
+  /* line 155, resources/scss/pages/_home.scss */
+  #home-viewport .search-row {
+    margin-top: 84px;
+    margin-left: 12px;
+  }
+}
+
+@media screen and (max-width: 399px) {
   /* line 155, resources/scss/pages/_home.scss */
   #home-viewport .search-row {
     margin-top: 74px;
@@ -17297,82 +17313,82 @@ body.detail-open #nav-overlay {
   }
 }
 
-/* line 203, resources/scss/pages/_home.scss */
+/* line 213, resources/scss/pages/_home.scss */
 #home-text {
   margin-bottom: 12px;
   margin-left: 64px;
 }
 
 @media screen and (max-height: 800px) {
-  /* line 203, resources/scss/pages/_home.scss */
+  /* line 213, resources/scss/pages/_home.scss */
   #home-text {
     padding-top: 12px;
   }
 }
 
 @media screen and (max-height: 800px) {
-  /* line 203, resources/scss/pages/_home.scss */
+  /* line 213, resources/scss/pages/_home.scss */
   #home-text {
     width: 90% !important;
   }
 }
 
 @media screen and (max-width: 768px) {
-  /* line 203, resources/scss/pages/_home.scss */
+  /* line 213, resources/scss/pages/_home.scss */
   #home-text {
     padding-top: 60px;
     width: 80% !important;
   }
 }
 
-/* line 218, resources/scss/pages/_home.scss */
+/* line 228, resources/scss/pages/_home.scss */
 #home-text h4 {
   font: 800 24px Roboto, Helvetica, "Helvetica Neue", Arial, sans-serif !important;
   text-align: center;
 }
 
 @media screen and (max-height: 800px) {
-  /* line 218, resources/scss/pages/_home.scss */
+  /* line 228, resources/scss/pages/_home.scss */
   #home-text h4 {
     font: 800 20px Roboto, Helvetica, "Helvetica Neue", Arial, sans-serif !important;
   }
 }
 
 @media screen and (max-width: 768px) {
-  /* line 218, resources/scss/pages/_home.scss */
+  /* line 228, resources/scss/pages/_home.scss */
   #home-text h4 {
     font: 800 20px Roboto, Helvetica, "Helvetica Neue", Arial, sans-serif !important;
   }
 }
 
 @media screen and (max-width: 1240px) {
-  /* line 218, resources/scss/pages/_home.scss */
+  /* line 228, resources/scss/pages/_home.scss */
   #home-text h4 {
     width: 100%;
   }
 }
 
-/* line 232, resources/scss/pages/_home.scss */
+/* line 242, resources/scss/pages/_home.scss */
 #home-text h5 {
   font: 500 18px Roboto, Helvetica, "Helvetica Neue", Arial, sans-serif !important;
   text-align: center;
 }
 
 @media screen and (max-height: 800px) {
-  /* line 232, resources/scss/pages/_home.scss */
+  /* line 242, resources/scss/pages/_home.scss */
   #home-text h5 {
     font: 500 16px Roboto, Helvetica, "Helvetica Neue", Arial, sans-serif !important;
   }
 }
 
 @media screen and (max-width: 768px) {
-  /* line 232, resources/scss/pages/_home.scss */
+  /* line 242, resources/scss/pages/_home.scss */
   #home-text h5 {
     font: 500 16px Roboto, Helvetica, "Helvetica Neue", Arial, sans-serif !important;
   }
 }
 
-/* line 243, resources/scss/pages/_home.scss */
+/* line 253, resources/scss/pages/_home.scss */
 #home-text .home-text-box {
   background: rgba(233, 241, 252, 0.75) !important;
   padding: 24px;
@@ -17384,20 +17400,20 @@ body.detail-open #nav-overlay {
 }
 
 @media screen and (max-height: 800px) {
-  /* line 243, resources/scss/pages/_home.scss */
+  /* line 253, resources/scss/pages/_home.scss */
   #home-text .home-text-box {
     padding: 24px;
   }
 }
 
 @media screen and (max-width: 599px) {
-  /* line 203, resources/scss/pages/_home.scss */
+  /* line 213, resources/scss/pages/_home.scss */
   #home-text {
     margin-left: 12px;
   }
 }
 
-/* line 259, resources/scss/pages/_home.scss */
+/* line 269, resources/scss/pages/_home.scss */
 .rounded-box {
   -webkit-border-radius: 5px 5px;
   -moz-border-radius: 5px / 5px;
@@ -17408,19 +17424,19 @@ body.detail-open #nav-overlay {
 }
 
 @media screen and (max-height: 800px) {
-  /* line 259, resources/scss/pages/_home.scss */
+  /* line 269, resources/scss/pages/_home.scss */
   .rounded-box {
     width: 100% !important;
   }
 }
 
-/* line 267, resources/scss/pages/_home.scss */
+/* line 277, resources/scss/pages/_home.scss */
 .input-outer {
   background-color: #FBFCFE;
   color: #E9F1FC;
 }
 
-/* line 272, resources/scss/pages/_home.scss */
+/* line 282, resources/scss/pages/_home.scss */
 input.input-inner {
   background-color: #FBFCFE;
   color: #124086;
@@ -17428,7 +17444,7 @@ input.input-inner {
 }
 
 @media screen and (max-height: 800px) {
-  /* line 272, resources/scss/pages/_home.scss */
+  /* line 282, resources/scss/pages/_home.scss */
   input.input-inner {
     width: 90% !important;
     height: 36px !important;
@@ -17436,27 +17452,27 @@ input.input-inner {
 }
 
 @media screen and (max-width: 900px) {
-  /* line 272, resources/scss/pages/_home.scss */
+  /* line 282, resources/scss/pages/_home.scss */
   input.input-inner {
     width: 80% !important;
   }
 }
 
 @media screen and (max-width: 768px) {
-  /* line 272, resources/scss/pages/_home.scss */
+  /* line 282, resources/scss/pages/_home.scss */
   input.input-inner {
     width: 80% !important;
   }
 }
 
 @media screen and (max-width: 599px) {
-  /* line 272, resources/scss/pages/_home.scss */
+  /* line 282, resources/scss/pages/_home.scss */
   input.input-inner {
     width: 70% !important;
   }
 }
 
-/* line 291, resources/scss/pages/_home.scss */
+/* line 301, resources/scss/pages/_home.scss */
 input.input-inner::placeholder {
   background-color: #FBFCFE;
   color: #124086;
@@ -17464,13 +17480,13 @@ input.input-inner::placeholder {
 }
 
 @media screen and (max-width: 900px) {
-  /* line 291, resources/scss/pages/_home.scss */
+  /* line 301, resources/scss/pages/_home.scss */
   input.input-inner::placeholder {
     font: 800 18px Roboto, Helvetica, "Helvetica Neue", Arial, sans-serif !important;
   }
 }
 
-/* line 300, resources/scss/pages/_home.scss */
+/* line 310, resources/scss/pages/_home.scss */
 input.input-inner:focus::placeholder {
   color: rgba(18, 64, 134, 0.5);
   font: 800 24px Roboto, Helvetica, "Helvetica Neue", Arial, sans-serif !important;
@@ -17481,18 +17497,18 @@ input.input-inner:focus::placeholder {
 }
 
 @media screen and (max-width: 900px) {
-  /* line 300, resources/scss/pages/_home.scss */
+  /* line 310, resources/scss/pages/_home.scss */
   input.input-inner:focus::placeholder {
     font: 800 18px Roboto, Helvetica, "Helvetica Neue", Arial, sans-serif !important;
   }
 }
 
-/* line 312, resources/scss/pages/_home.scss */
+/* line 322, resources/scss/pages/_home.scss */
 input.input-inner:focus {
   outline: none !important;
 }
 
-/* line 316, resources/scss/pages/_home.scss */
+/* line 326, resources/scss/pages/_home.scss */
 .search-main {
   width: 40px;
   height: 40px;
@@ -17506,13 +17522,13 @@ input.input-inner:focus {
 }
 
 @media screen and (max-height: 800px) {
-  /* line 316, resources/scss/pages/_home.scss */
+  /* line 326, resources/scss/pages/_home.scss */
   .search-main {
     margin-top: 6px;
   }
 }
 
-/* line 330, resources/scss/pages/_home.scss */
+/* line 340, resources/scss/pages/_home.scss */
 .main-logos {
   position: relative;
   top: -84px;
@@ -17521,7 +17537,7 @@ input.input-inner:focus {
 }
 
 @media screen and (max-width: 900px) {
-  /* line 330, resources/scss/pages/_home.scss */
+  /* line 340, resources/scss/pages/_home.scss */
   .main-logos {
     top: 48px;
     margin-right: -12px !important;
@@ -17530,34 +17546,34 @@ input.input-inner:focus {
 }
 
 @media screen and (max-width: 768px) {
-  /* line 330, resources/scss/pages/_home.scss */
+  /* line 340, resources/scss/pages/_home.scss */
   .main-logos {
     top: 48px;
   }
 }
 
 @media screen and (max-width: 599px) {
-  /* line 330, resources/scss/pages/_home.scss */
+  /* line 340, resources/scss/pages/_home.scss */
   .main-logos {
     top: 48px;
   }
 }
 
 @media screen and (max-width: 399px) {
-  /* line 330, resources/scss/pages/_home.scss */
+  /* line 340, resources/scss/pages/_home.scss */
   .main-logos {
     top: 48px;
   }
 }
 
-/* line 355, resources/scss/pages/_home.scss */
+/* line 365, resources/scss/pages/_home.scss */
 .main-logos a {
   background-color: #FBFCFE;
   width: 60px;
   height: 60px;
 }
 
-/* line 361, resources/scss/pages/_home.scss */
+/* line 371, resources/scss/pages/_home.scss */
 .main-logos #global-change {
   width: 120px;
   padding-right: 12px;
