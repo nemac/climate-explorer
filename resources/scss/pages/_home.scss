@@ -19,7 +19,9 @@ $home-text-back-background: rgba(233, 241, 252, 0.9);
     min-height: 420px !important;
     @include very-small {
       top: 48px;
-      height: calc(100% - 48px) !important;
+    }
+    @include medium {
+      height: calc(100% + 48px) !important;
     }
   }
 
@@ -35,6 +37,7 @@ $home-text-back-background: rgba(233, 241, 252, 0.9);
 
 
     .suggested-cities-desc {
+      padding: $ce3-padding-half;
       font: $font-weight-normal 18px $roboto !important;
       color: $blue2;
       margin-bottom: $ce3-padding-half;
@@ -59,7 +62,12 @@ $home-text-back-background: rgba(233, 241, 252, 0.9);
       margin-bottom: $ce3-padding-half;
       @include border-radius(5px, 5px);
       @include box-shadow(0px 1px 2px transparentize(#000, 0.761));
-
+      @include medium {
+        width: 40%;
+      }
+      @include very-small {
+        width: 100%;
+      }
       &:hover, &:focus {
         outline: none !important;
         background-color: darken($ce3-blue6, 7) !important;
@@ -133,15 +141,15 @@ $home-text-back-background: rgba(233, 241, 252, 0.9);
       max-width: 100%;
       top: calc(100% - 20%);
       left: 5%;
-      max-height: 80px !important;
+      max-height: 120px !important;
       padding-bottom: $ce3-padding-half !important;
     }
 
-    // @include medium {
-    //   max-height: 250px !important;
-    //   height: auto !important;
-    //   padding-bottom: $ce3-padding-half !important;
-    // }
+    @include very-small {
+      max-width: 200px;
+      min-width: 200px;
+      top: calc(100% - 10%);
+    }
   }
 
   .search-row {
@@ -175,10 +183,20 @@ $home-text-back-background: rgba(233, 241, 252, 0.9);
         left: 5px;
       }
     }
+
+    @include very-small {
+      margin-top: 74px;
+      margin-left: 12px;
+    }
   }
 
   @include small {
     height: calc(100% - 48px) !important;
+  }
+
+  @include very-small {
+    height: auto !important;
+    display: flex !important;
   }
 }
 
@@ -192,9 +210,9 @@ $home-text-back-background: rgba(233, 241, 252, 0.9);
   @include medium-height {
     width: 90% !important;
   }
-
   @include small {
     padding-top: 60px;
+    width: 80% !important
   }
 
   h4 {
@@ -202,12 +220,21 @@ $home-text-back-background: rgba(233, 241, 252, 0.9);
     @include medium-height {
       font: $font-weight-heavy 20px $roboto !important;
     }
+    @include small {
+      font: $font-weight-heavy 20px $roboto !important;
+    }
+    @include large {
+      width: 100%;
+    }
     text-align: center;
   }
 
   h5 {
     font: $font-weight-normal 18px $roboto !important;
     @include medium-height {
+      font: $font-weight-normal 16px $roboto !important;
+    }
+    @include small {
       font: $font-weight-normal 16px $roboto !important;
     }
     text-align: center;
@@ -222,7 +249,10 @@ $home-text-back-background: rgba(233, 241, 252, 0.9);
     @include medium-height {
       padding: 24px;
     }
+  }
 
+  @include very-small {
+    margin-left: 12px;
   }
 }
 
@@ -232,7 +262,6 @@ $home-text-back-background: rgba(233, 241, 252, 0.9);
   @include medium-height {
     width: 100% !important;
   }
-
 }
 
 .input-outer {
@@ -248,17 +277,32 @@ input.input-inner {
     width: 90% !important;
     height: 36px !important;
   }
+  @include medium {
+    width: 80% !important;
+  }
+  @include small {
+    width: 80% !important;
+  }
+  @include very-small {
+    width: 70% !important;
+  }
 }
 
 input.input-inner::placeholder  {
   background-color: $ce3-blue6;
   color: $ce3-blue3;
   font: 800 24px $roboto !important;
+  @include medium {
+    font: 800 18px $roboto !important;
+  }
 }
 
 input.input-inner:focus::placeholder  {
   color: $ce3-blue3alpha;
   font: $font-weight-heavy 24px $roboto !important;
+  @include medium {
+    font: 800 18px $roboto !important;
+  }
   -moz-transition: 0.25s;
   -o-transition: 0.25s;
   -webkit-transition: 0.25s;
@@ -281,7 +325,6 @@ input.input-inner:focus  {
   @include medium-height {
     margin-top: 6px;
   }
-
 }
 
 .main-logos {
@@ -291,21 +334,21 @@ input.input-inner:focus  {
   z-index: -1;
 
   @include medium {
-    top: 6px;
+    top: 48px;
     margin-right: -$ce3-default-padding !important;
     padding-right: $ce3-default-padding/2;
   }
 
   @include small {
-    top: -42px;
+    top: 48px;
   }
 
   @include very-small {
-    top: -8px;
+    top: 48px;
   }
 
   @include tiny {
-    top: -8px;
+    top: 48px;
   }
 
 
