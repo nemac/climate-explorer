@@ -16,44 +16,48 @@
     {{> main_header }}
 
 
-  <div id="home-viewport" class="home-container padding-default d-flex-center d-flex-column" >
-    <div id="home-text" class="splash-text d-flex-center d-flex-wrap width-90">
-      <span class="describe-main padding-horrizontal padding-bottom-half width-100">Explore graphs and maps of historical and projected climate variables for any county in the contiguous United States.</span>
-      <span class="describe-main-secondary padding-horrizontal width-100"><stong>New!</stong> Climate projection charts are now available for boroughs in Alaska.</span>
+  <div id="home-viewport" class="home-container padding-default d-flex-left d-flex-column" >
+    <div id="home-text" class="d-flex d-flex-column width-70 padding-bottom">
+      <span class="describe-title padding-horrizontal padding-bottom-half width-100">The Climate Explorer</span>
+      <div class="home-text-box d-flex">
+        <div class="describe-main padding-horrizontal padding-bottom-half width-100">Explore graphs and maps of historical and projected climate variables for any county in the contiguous United States.</div>
+        <div class="describe-main-secondary d-flex-center d-flex-wrap padding-horrizontal padding-bottom-half">
+          <h4 class="d-flex-center">New!</h4>
+          <h5 class="d-flex-center">Climate projection charts are now available for boroughs in Alaska.</h5>
+        </div>
+      </div>
     </div>
 
-    <div class="search-row d-flex d-flex-column width-100 padding-bottom">
-      <div class="rounded-box input-outer padding-horrizontal bottom-padding main-btn-height width-100">
-        <input id="" type="text" class="location-mapper input-inner border-none main-btn-height width-90" autocomplete="off" placeholder="Enter county, city, or zip code">
+    <div class="search-row d-flex d-flex-column d-flex-center width-80 padding-bottom">
+      <div class="rounded-box input-outer padding-horrizontal bottom-padding main-btn-height width-75">
+        <input id="" type="text" class="location-mapper input-inner border-none main-btn-height width-90" autocomplete="off" placeholder="To get started, enter a county, city, or zip code">
         <span class="icon icon-search search-main float-right padding-default"></span>
       </div>
-      <div id="suggested-cities" class="padding-default width-100">
-        <span>or choose from the following suggested cities:</span>
+      <div id="suggested-cities" class="padding-default width-75">
+        <div class="suggested-cities-desc" >or choose from the following suggested cities:</div>
         <ul>
-          <li><a href="/cards-home/?county=New%20York+County&city=New%20York,%20NY&fips=36061&lat=40.7127753&lon=-74.0059728">New York City, NY</a></li>
-          <li><a href="/cards-home/?county=Los+Angeles+County&city=Los%20Angeles,%20CA&fips=06037&lat=34.0522342&lon=-118.2436849">Los Angeles, CA</a></li>
-          <li><a href="/cards-home/?county=Cook+County&city=Chicago,%20IL&fips=17031&lat=41.8781136&lon=-87.62979819999998">Chicago, IL</a></li>
-          <li><a href="/cards-home/?county=Maricopa+County&city=Phoenix,%20AZ&fips=04013&lat=33.4483771&lon=-112.07403729999999">Phoenix, AZ</a></li>
-          <li><a href="/cards-home/?county=Harris+County&city=Houston,%20TX&fips=48201&lat=29.7604267&lon=-95.3698028">Houston, TX</a></li>
+          <li class="pt-1"><a href="/cards-home/?county=New%20York+County&city=New%20York,%20NY&fips=36061&lat=40.7127753&lon=-74.0059728">New York City, NY</a></li>
+          <li class="pt-1"><a href="/cards-home/?county=Los+Angeles+County&city=Los%20Angeles,%20CA&fips=06037&lat=34.0522342&lon=-118.2436849">Los Angeles, CA</a></li>
+          <li class="pt-1"><a href="/cards-home/?county=Cook+County&city=Chicago,%20IL&fips=17031&lat=41.8781136&lon=-87.62979819999998">Chicago, IL</a></li>
+          <li class="pt-1"><a href="/cards-home/?county=Maricopa+County&city=Phoenix,%20AZ&fips=04013&lat=33.4483771&lon=-112.07403729999999">Phoenix, AZ</a></li>
+          <li class="pt-1"><a href="/cards-home/?county=Harris+County&city=Houston,%20TX&fips=48201&lat=29.7604267&lon=-95.3698028">Houston, TX</a></li>
         </ul>
       </div>
     </div>
-
-    <div class="main-logos padding-horrizontal d-flex d-flex-bottom width-90">
-      <a class="d-flex-bottom"><img src="/resources/img/logo_noaa.png" alt='NOAA'></a>
-      <a class="d-flex-bottom "><img src="/resources/img/logo_nasa.png" alt='NASA'></a>
-      <a class="d-flex-bottom "><img src="/resources/img/logo_usgs.png" alt='usgs'></a>
-      <a class="d-flex-bottom "><img src="/resources/img/logo_epa.png" alt='EPA'></a>
-      <a class="d-flex-bottom "><img src="/resources/img/logo_usdi.png" alt='USDI'></a>
-      <a class="d-flex-bottom "><img src="/resources/img/logo_nemac.png" alt='NEMAC'></a>
-      <a class="d-flex-bottom " id="global-change"><img src="/resources/img/logo_global-change.png"></a>
-    </div>
-
-
-
   </div>
 
   {{> footer}}
+
+  <div class="main-logos padding-horrizontal d-flex d-flex-bottom width-100">
+    <a class="d-flex-bottom"><img src="/resources/img/logo_noaa.png" alt='NOAA'></a>
+    <a class="d-flex-bottom "><img src="/resources/img/logo_nasa.png" alt='NASA'></a>
+    <a class="d-flex-bottom "><img src="/resources/img/logo_usgs.png" alt='usgs'></a>
+    <a class="d-flex-bottom "><img src="/resources/img/logo_epa.png" alt='EPA'></a>
+    <a class="d-flex-bottom "><img src="/resources/img/logo_usdi.png" alt='USDI'></a>
+    <a class="d-flex-bottom "><img src="/resources/img/logo_nemac.png" alt='NEMAC'></a>
+    <a class="d-flex-bottom " id="global-change"><img src="/resources/img/logo_global-change.png"></a>
+  </div>
+
   <script type="text/javascript" src="/resources/js/secondary_header.js"></script>
   <script type="text/javascript" src="/resources/js/ce3-ui-components.js"></script>
 
