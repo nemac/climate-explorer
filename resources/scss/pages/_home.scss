@@ -29,10 +29,18 @@ $home-text-back-background: rgba(233, 241, 252, 0.9);
     line-height: 22px;
     @include border-radius(5px, 5px);
 
+    @include medium-height {
+      width: 100% !important;
+    }
+
+
     .suggested-cities-desc {
       font: $font-weight-normal 18px $roboto !important;
       color: $blue2;
       margin-bottom: $ce3-padding-half;
+      @include medium-height {
+        font: $font-weight-normal 16px $roboto !important;
+      }
     }
 
     li {
@@ -76,10 +84,16 @@ $home-text-back-background: rgba(233, 241, 252, 0.9);
 
   .describe-title {
     font: $font-weight-meduim 64px $sans-heavy !important;
+    @include medium-height {
+      font: $font-weight-meduim 56px $sans-heavy !important;
+    }
   }
 
   .describe-main {
     font: $font-weight-normal 24px $roboto !important;
+    @include medium-height {
+      font: $font-weight-normal 18px $roboto !important;
+    }
     color: $blue2;
     max-height: 100px !important;
     @include border-radius(5px, 5px);
@@ -94,27 +108,65 @@ $home-text-back-background: rgba(233, 241, 252, 0.9);
   .describe-main-secondary {
     font: $font-weight-normal 18px $roboto !important;
     color: $ce3-blue6;
-    max-height: 125px !important;
+    max-height: 115px !important;
     background: $orange1;
-    padding: 24px !important;
+    padding: $ce3-default-padding*2 !important;
     position: absolute;
     top: 74px;
-    max-width: 250px;
+    max-width: 325px;
+    min-width: 325px;
     left: 60%;
+
+    @include medium-height {
+      max-height: 85px !important;
+      max-width: 275px;
+      min-width: 275px;
+      left: 70%;
+      top: 64px;
+      padding: $ce3-default-padding !important;
+    }
+
     @include border-radius(5px, 5px);
 
-    @include medium {
-      max-height: 250px !important;
-      height: auto !important;
+    @include large {
+      width: 90%;
+      max-width: 100%;
+      top: calc(100% - 20%);
+      left: 5%;
+      max-height: 80px !important;
       padding-bottom: $ce3-padding-half !important;
     }
+
+    // @include medium {
+    //   max-height: 250px !important;
+    //   height: auto !important;
+    //   padding-bottom: $ce3-padding-half !important;
+    // }
   }
 
   .search-row {
-    margin-top: 56px;
+    height: auto;
+    margin-top: 64px;
     margin-bottom: $ce3-default-padding;
     margin-bottom: $ce3-default-padding;
     margin-left: 65px;
+
+    .main-btn-height {
+      @include medium-height {
+        height: 48px !important;
+        width: 36px;
+        margin-top: 0px;
+        font-size: 16px;
+      }
+    }
+    @include medium-height {
+      margin-top: 56px;
+      .icon-search:before {
+        position: relative;
+        top: 0px;
+        left: 0px;
+      }
+    }
 
     @include medium {
       .icon-search:before {
@@ -131,9 +183,15 @@ $home-text-back-background: rgba(233, 241, 252, 0.9);
 }
 
 #home-text {
-  padding-top: $ce3-default-padding*5;
+  @include medium-height {
+    padding-top: $ce3-default-padding;
+  }
+
   margin-bottom: $ce3-default-padding;
   margin-left: 64px;
+  @include medium-height {
+    width: 90% !important;
+  }
 
   @include small {
     padding-top: 60px;
@@ -141,11 +199,17 @@ $home-text-back-background: rgba(233, 241, 252, 0.9);
 
   h4 {
     font: $font-weight-heavy 24px $roboto !important;
+    @include medium-height {
+      font: $font-weight-heavy 20px $roboto !important;
+    }
     text-align: center;
   }
 
   h5 {
     font: $font-weight-normal 18px $roboto !important;
+    @include medium-height {
+      font: $font-weight-normal 16px $roboto !important;
+    }
     text-align: center;
   }
 
@@ -155,15 +219,20 @@ $home-text-back-background: rgba(233, 241, 252, 0.9);
     padding: 36px;
     position: relative;
     @include border-radius(5px, 5px);
+    @include medium-height {
+      padding: 24px;
+    }
+
   }
 }
-
-
-
 
 .rounded-box {
   @include border-radius(5px, 5px);
   @include box-shadow(0px 2px 4px transparentize(#000, 0.761));
+  @include medium-height {
+    width: 100% !important;
+  }
+
 }
 
 .input-outer {
@@ -175,6 +244,10 @@ input.input-inner {
   background-color: $ce3-blue6;
   color: $ce3-blue3;
   font: $font-weight-heavy 24px $roboto !important;
+  @include medium-height {
+    width: 90% !important;
+    height: 36px !important;
+  }
 }
 
 input.input-inner::placeholder  {
@@ -205,11 +278,13 @@ input.input-inner:focus  {
   margin-top: 10px;
   font-size: 18px;
   font-weight: $font-weight-heavy;
+  @include medium-height {
+    margin-top: 6px;
+  }
+
 }
 
 .main-logos {
-  // flex: 0 1 $ce3-main-bottom !important;
-  // margin-right: -24px !important;
   position: relative;
   top: -84px;
   padding-right: $ce3-default-padding*2 !important;
