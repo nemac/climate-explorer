@@ -30,6 +30,8 @@ $home-text-back-background: rgba(233, 241, 252, 0.9);
     @include border-radius(5px, 5px);
 
     .suggested-cities-desc {
+      font: $font-weight-normal 18px $roboto !important;
+      color: $blue2;
       margin-bottom: $ce3-padding-half;
     }
 
@@ -44,7 +46,7 @@ $home-text-back-background: rgba(233, 241, 252, 0.9);
       border: 1px solid $ce3-blue3alpha !important;
       padding: $ce3-padding-half;
       padding-left: $ce3-default-padding;
-      color: $ce3-blue3 !important;
+      color: $blue2 !important;
       font: $font-weight-meduim 14px $roboto !important;
       margin-bottom: $ce3-padding-half;
       @include border-radius(5px, 5px);
@@ -62,6 +64,9 @@ $home-text-back-background: rgba(233, 241, 252, 0.9);
         }
       }
 
+      a {
+        color: $blue2 !important;
+      }
     }
   }
 
@@ -70,7 +75,7 @@ $home-text-back-background: rgba(233, 241, 252, 0.9);
   }
 
   .describe-title {
-    font: $font-weight-meduim 82px $sans-heavy !important;
+    font: $font-weight-meduim 64px $sans-heavy !important;
   }
 
   .describe-main {
@@ -89,11 +94,11 @@ $home-text-back-background: rgba(233, 241, 252, 0.9);
   .describe-main-secondary {
     font: $font-weight-normal 18px $roboto !important;
     color: $ce3-blue6;
-    max-height: 150px !important;
+    max-height: 125px !important;
     background: $orange1;
     padding: 24px !important;
     position: absolute;
-    top: 100px;
+    top: 74px;
     max-width: 250px;
     left: 60%;
     @include border-radius(5px, 5px);
@@ -106,10 +111,10 @@ $home-text-back-background: rgba(233, 241, 252, 0.9);
   }
 
   .search-row {
-    margin-top: 100px;
+    margin-top: 56px;
     margin-bottom: $ce3-default-padding;
     margin-bottom: $ce3-default-padding;
-    margin-left: 64px;
+    margin-left: 65px;
 
     @include medium {
       .icon-search:before {
@@ -146,7 +151,7 @@ $home-text-back-background: rgba(233, 241, 252, 0.9);
 
   .home-text-box {
     background: $ce3-blue5alpha2 !important;
-    padding: $ce3-default-padding*3;
+    padding: $ce3-default-padding*2;
     padding: 36px;
     position: relative;
     @include border-radius(5px, 5px);
@@ -207,7 +212,8 @@ input.input-inner:focus  {
   // margin-right: -24px !important;
   position: relative;
   top: -84px;
-  padding-right: $ce3-default-padding;
+  padding-right: $ce3-default-padding*2 !important;
+  z-index: -1;
 
   @include medium {
     top: 6px;
