@@ -300,6 +300,7 @@ input.input-inner {
 
 input.input-inner::placeholder  {
   background-color: $ce3-blue6;
+  opacity: 1 !important;
   color: $ce3-blue3;
   font: 800 24px $roboto !important;
   @include medium {
