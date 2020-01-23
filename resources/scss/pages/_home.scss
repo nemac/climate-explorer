@@ -1,5 +1,24 @@
 $home-text-transparency: .25;
 $home-text-back-background: rgba(233, 241, 252, 0.9);
+
+html, body {
+  height: 100%;
+}
+
+@include small {
+  html {
+    height: auto;
+  }
+  body  {
+    position: relative;
+    height: auto !important;
+  }
+
+  #home-viewport:after {
+    position: absolute !important;
+  }
+}
+
 #home-viewport {
   margin: 24px;
   height: calc(100% - 132px) !important;
@@ -21,7 +40,7 @@ $home-text-back-background: rgba(233, 241, 252, 0.9);
       top: 48px;
     }
     @include medium {
-      height: calc(100% + 48px) !important;
+      height: calc(100% - 100px) !important;
     }
   }
 
