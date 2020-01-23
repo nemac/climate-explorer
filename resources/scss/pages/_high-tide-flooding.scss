@@ -58,10 +58,10 @@
     }
     text-align: center;
     padding: $ce3-default-padding;
-    background-color: $ce3-blue5 !important;
-    color: $ce3-blue3 !important;
+    background-color: $ce3-warning-state !important;
+    color: $ce3-blue6 !important;
     font: $font-weight-normal 14px $roboto !important;
-    border: 1px solid $ce3-blue3alpha !important;
+    border: 1px solid lighten($ce3-warning-state, 10) !important;
     @include border-radius(5px, 5px);
   }
 

@@ -95,9 +95,20 @@
     margin: $ce3-padding-half !important;
   }
 
+  @include medium {
+    max-height: 400px !important;
+  }
+
   @include small {
     width: 90% !important;
     height: auto !important;
+    max-height: 320px !important;
+  }
+
+  @include very-small {
+    width: 90% !important;
+    height: auto !important;
+    max-height: 240px !important;
   }
 }
 
@@ -119,10 +130,11 @@
     flex-flow: row wrap !important;
     padding-right: $ce3-default-padding/2 !important;
     left: $ce3-default-padding/2 !important;
+    max-height: 1240px !important;
   }
 
-  @include medium {
-    min-height: 912px !important;
+  @include small {
+    max-height: 1240px !important;
   }
 }
 
@@ -130,12 +142,18 @@
   justify-content: center !important;
   align-content: center !important;
   @include border-radius(5px, 5px);
+  max-height: 222px;
 
   z-index: 1;
+
+  @include small {
+    max-height: 110px;
+  }
 
   @include medium {
     justify-content: start !important;
     align-content: start !important;
+    max-height: 250px;
   }
 }
 
@@ -147,6 +165,7 @@
   flex: 1 1 85px !important;
   height: 85px !important;
   min-height: 85px !important;
+  max-height: 120px !important;
   z-index: 2;
   @include border-bottom-left-radius(5px);
   @include border-bottom-right-radius(5px);
@@ -155,7 +174,8 @@
   @include medium {
     flex: 1 1 150px !important;
     height: 150px !important;
-    min-height: 150px !important;
+    min-height: 85px !important;
+    max-height: 120px;
   }
 
   @include tall {
