@@ -20,20 +20,26 @@ html, body {
 }
 
 #home-viewport {
-  margin: 24px;
-  height: calc(100% - 132px) !important;
+  margin: 0px;
+  height: calc(100% - 48px) !important;
   min-height: 420px !important;
+
+  @include medium {
+    margin-left: 24px;
+  }
 
   &:after{
     content: '';
     background: url(/resources/img/bg_splash-pinal.jpg) center no-repeat;
     position: absolute;
-    top: 80px;
+    top: 48px;
     left: 0;
-    height: calc(100% - 128px) !important;
+    height: calc(100% - 94px) !important;
     width: calc(100% - 48px);
     z-index: -1;
-    margin: 24px;
+    // margin: 24px;
+    margin-left: 24px;
+    margin-top: 24px;
     background-size: cover;
     min-height: 420px !important;
     @include very-small {
@@ -250,7 +256,7 @@ html, body {
   }
 
   @include medium-height {
-    padding-top: $ce3-default-padding;
+    padding-top: $ce3-default-padding*3;
   }
 
   margin-bottom: $ce3-default-padding;
@@ -395,7 +401,7 @@ input.input-inner:focus  {
 
 .main-logos {
   position: relative;
-  top: -74px;
+  top: -72px;
   padding-right: $ce3-default-padding*2 !important;
   z-index: -1;
 
