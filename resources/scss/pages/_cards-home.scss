@@ -110,6 +110,10 @@
   }
 
   @include tiny {
+    max-height: 200px !important;
+  }
+
+  @include to-small-to-see {
     max-height: 175px !important;
   }
 }
@@ -146,6 +150,16 @@
   @include very-small {
     max-height: 1240px !important;
     min-height: 710px !important;
+  }
+
+  @include tiny {
+    max-height: 1000px !important;
+    min-height: 640px !important;
+  }
+
+  @include to-small-to-see {
+    max-height: 800px !important;
+    min-height: 560px !important;
   }
 }
 
