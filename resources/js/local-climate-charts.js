@@ -351,7 +351,11 @@ $(function () {
 
     // this function changes chart layers based on what the user
     // clicks on
-    function updateChartLayers(target) {
+    function updateChartLayers(inTarget) {
+        let target = inTarget;
+        if ($(inTarget).attr('class').includes('inner')) {
+          target = $(inTarget).parent();
+        }
         target.toggleClass('selected');
         const allItems = $(target).parent().children();
 
@@ -665,7 +669,9 @@ $(function () {
             $('#download-observed-data').addClass('default-select-option-disabled');
             $('#download-observed-data').addClass('disabled');
             $('.btn-histobs').addClass('disabled');
+            $('.inner-histobs').addClass('disabled');
             $('.btn-lower-emissions').addClass('disabled');
+            $('.inner-lower-emmisions').addClass('disabled');
             $('.btn-lower-emissions').removeClass('selected');
             $('.opt-not-ak').addClass('default-select-option-disabled');
             $('.btn-monthly').addClass('btn-default-disabled');
