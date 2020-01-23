@@ -17122,7 +17122,7 @@ html, body {
 
 /* line 53, resources/scss/pages/_home.scss */
 #home-viewport #suggested-cities {
-  background: rgba(233, 241, 252, 0.75) !important;
+  background: rgba(233, 241, 252, 0.9) !important;
   margin-top: 12px;
   line-height: 22px;
   -webkit-border-radius: 5px 5px;
@@ -17361,7 +17361,7 @@ html, body {
   /* line 193, resources/scss/pages/_home.scss */
   #home-viewport .search-row {
     margin-top: 84px;
-    margin-left: 12px;
+    margin-left: 58px;
   }
 }
 
@@ -17378,7 +17378,7 @@ html, body {
   /* line 193, resources/scss/pages/_home.scss */
   #home-viewport .search-row {
     margin-top: 74px;
-    margin-left: 12px;
+    margin-left: 3px;
   }
 }
 
@@ -17489,7 +17489,7 @@ html, body {
 
 /* line 302, resources/scss/pages/_home.scss */
 #home-text .home-text-box {
-  background: rgba(233, 241, 252, 0.75) !important;
+  background: rgba(233, 241, 252, 0.9) !important;
   padding: 24px;
   padding: 36px;
   position: relative;
