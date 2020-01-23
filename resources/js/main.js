@@ -872,11 +872,12 @@ App.prototype.locationSearch = function () {
   const resetResultsStyle = function() {
     const elem = document.querySelector('.location-mapper').parentElement;
     const rect = elem.getBoundingClientRect();
+    const offsetTop = elem.offsetTop;
     const pacWidth = rect.width;
     setTimeout(function () {
       const pacElem = document.querySelector('.pac-container');
       pacElem.setAttribute('style',
-            `width: ${pacWidth}px !important; left: ${rect.left}px !important; top: ${rect.top+rect.height+1}px;`
+            `width: ${pacWidth}px !important; left: ${rect.left}px !important; top: ${offsetTop+rect.height+1}px;`
           );
     }, 1);
   }

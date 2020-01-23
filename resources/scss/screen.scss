@@ -418,9 +418,7 @@ h6 {
   }
 
   @include very-small {
-    max-height: 175px !important;
-    top: -443px !important;
-    position: relative !important;
+    max-height: 150px !important;
   }
 
   .pac-item {
@@ -485,6 +483,10 @@ h6 {
 
 .border-default {
   border: 1px solid $ce3-blue3alpha !important;
+}
+
+.height-auto {
+  height: auto !important;
 }
 
 .height-100 {
