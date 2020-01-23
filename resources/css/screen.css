@@ -18313,7 +18313,7 @@ input.input-inner:focus {
 
 /* line 462, resources/scss/pages/_local-climate-charts.scss */
 #chart-row.closed-filters #legend-wrapper {
-  height: 300px !important;
+  height: 50px !important;
 }
 
 @media screen and (max-width: 1240px) {
@@ -18351,7 +18351,7 @@ input.input-inner:focus {
   }
   /* line 495, resources/scss/pages/_local-climate-charts.scss */
   #chart-row.closed-filters #legend-wrapper {
-    height: 300px !important;
+    height: 50px !important;
   }
 }
 
