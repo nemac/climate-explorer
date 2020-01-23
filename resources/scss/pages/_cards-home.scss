@@ -97,18 +97,20 @@
 
   @include medium {
     max-height: 400px !important;
+    height: 100% !important;
   }
 
   @include small {
-    width: 90% !important;
-    height: auto !important;
+    height: 100% !important;
     max-height: 320px !important;
   }
 
   @include very-small {
-    width: 90% !important;
-    height: auto !important;
-    max-height: 240px !important;
+    max-height: 225px !important;
+  }
+
+  @include tiny {
+    max-height: 175px !important;
   }
 }
 
@@ -118,6 +120,7 @@
   flex-flow: row nowrap !important;
   padding-right: $ce3-default-padding !important;
   left: $ce3-default-padding !important;
+  max-height: 1800px;
 
   @include large {
     justify-content: center !important;
@@ -131,10 +134,18 @@
     padding-right: $ce3-default-padding/2 !important;
     left: $ce3-default-padding/2 !important;
     max-height: 1240px !important;
+    min-height: 1000px !important;
+    height: 100% !important;
   }
 
   @include small {
     max-height: 1240px !important;
+    min-height: 1000px !important;
+  }
+
+  @include very-small {
+    max-height: 1240px !important;
+    min-height: 710px !important;
   }
 }
 
@@ -142,7 +153,7 @@
   justify-content: center !important;
   align-content: center !important;
   @include border-radius(5px, 5px);
-  max-height: 222px;
+  max-height: 400px;
 
   z-index: 1;
 
@@ -154,6 +165,7 @@
     justify-content: start !important;
     align-content: start !important;
     max-height: 250px;
+    height: 100% !important;
   }
 }
 
@@ -213,7 +225,7 @@
   }
 
   @include small {
-    min-height: auto !important;
+    min-height: 80px !important;
   }
 }
 
