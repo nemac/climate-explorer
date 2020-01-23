@@ -173,12 +173,14 @@ html, body {
       max-width: 225px;
       min-width: 225px;
       top: calc(100% - 10%);
+      left: calc( 103% - 100%);
     }
 
     @include tiny {
       max-width: 220px;
       min-width: 220px;
-      top: calc(100% - 10%);
+      top: calc(100% - 15%);
+      left: calc( 103% - 100%);
     }
   }
 
@@ -222,6 +224,7 @@ html, body {
     @include very-small {
       margin-top: 84px;
       margin-left: 12px;
+      width: 90% !important;
     }
 
     @include tiny {
@@ -243,7 +246,7 @@ html, body {
 #home-text {
   @include nav-footer-900-min {
     padding-top: 80px;
-    width: 80% !important
+    width: 80% !important;
   }
 
   @include medium-height {
@@ -255,9 +258,14 @@ html, body {
   @include medium-height {
     width: 90% !important;
   }
+
   @include small {
     padding-top: 60px;
-    width: 80% !important
+    width: 80% !important;
+  }
+
+  @include very-small {
+    width: 90% !important;
   }
 
   h4 {
