@@ -17371,6 +17371,14 @@ body.detail-open #nav-overlay {
   margin-left: 64px;
 }
 
+@media screen and (min-width: 900px) {
+  /* line 224, resources/scss/pages/_home.scss */
+  #home-text {
+    padding-top: 80px;
+    width: 80% !important;
+  }
+}
+
 @media screen and (max-height: 800px) {
   /* line 224, resources/scss/pages/_home.scss */
   #home-text {
@@ -17393,54 +17401,54 @@ body.detail-open #nav-overlay {
   }
 }
 
-/* line 239, resources/scss/pages/_home.scss */
+/* line 244, resources/scss/pages/_home.scss */
 #home-text h4 {
   font: 800 24px Roboto, Helvetica, "Helvetica Neue", Arial, sans-serif !important;
   text-align: center;
 }
 
 @media screen and (max-height: 800px) {
-  /* line 239, resources/scss/pages/_home.scss */
+  /* line 244, resources/scss/pages/_home.scss */
   #home-text h4 {
     font: 800 20px Roboto, Helvetica, "Helvetica Neue", Arial, sans-serif !important;
   }
 }
 
 @media screen and (max-width: 768px) {
-  /* line 239, resources/scss/pages/_home.scss */
+  /* line 244, resources/scss/pages/_home.scss */
   #home-text h4 {
     font: 800 20px Roboto, Helvetica, "Helvetica Neue", Arial, sans-serif !important;
   }
 }
 
 @media screen and (max-width: 1240px) {
-  /* line 239, resources/scss/pages/_home.scss */
+  /* line 244, resources/scss/pages/_home.scss */
   #home-text h4 {
     width: 100%;
   }
 }
 
-/* line 253, resources/scss/pages/_home.scss */
+/* line 258, resources/scss/pages/_home.scss */
 #home-text h5 {
   font: 500 18px Roboto, Helvetica, "Helvetica Neue", Arial, sans-serif !important;
   text-align: center;
 }
 
 @media screen and (max-height: 800px) {
-  /* line 253, resources/scss/pages/_home.scss */
+  /* line 258, resources/scss/pages/_home.scss */
   #home-text h5 {
     font: 500 16px Roboto, Helvetica, "Helvetica Neue", Arial, sans-serif !important;
   }
 }
 
 @media screen and (max-width: 768px) {
-  /* line 253, resources/scss/pages/_home.scss */
+  /* line 258, resources/scss/pages/_home.scss */
   #home-text h5 {
     font: 500 16px Roboto, Helvetica, "Helvetica Neue", Arial, sans-serif !important;
   }
 }
 
-/* line 264, resources/scss/pages/_home.scss */
+/* line 269, resources/scss/pages/_home.scss */
 #home-text .home-text-box {
   background: rgba(233, 241, 252, 0.75) !important;
   padding: 24px;
@@ -17452,7 +17460,7 @@ body.detail-open #nav-overlay {
 }
 
 @media screen and (max-height: 800px) {
-  /* line 264, resources/scss/pages/_home.scss */
+  /* line 269, resources/scss/pages/_home.scss */
   #home-text .home-text-box {
     padding: 24px;
   }
@@ -17465,7 +17473,7 @@ body.detail-open #nav-overlay {
   }
 }
 
-/* line 280, resources/scss/pages/_home.scss */
+/* line 285, resources/scss/pages/_home.scss */
 .rounded-box {
   -webkit-border-radius: 5px 5px;
   -moz-border-radius: 5px / 5px;
@@ -17476,32 +17484,32 @@ body.detail-open #nav-overlay {
 }
 
 @media screen and (max-height: 800px) {
-  /* line 280, resources/scss/pages/_home.scss */
+  /* line 285, resources/scss/pages/_home.scss */
   .rounded-box {
     width: 100% !important;
   }
 }
 
-/* line 288, resources/scss/pages/_home.scss */
+/* line 293, resources/scss/pages/_home.scss */
 .input-outer-main {
   background-color: #FBFCFE;
   color: #FBFCFE;
 }
 
 @media screen and (max-width: 599px) {
-  /* line 288, resources/scss/pages/_home.scss */
+  /* line 293, resources/scss/pages/_home.scss */
   .input-outer-main {
     width: 100% !important;
   }
 }
 
-/* line 297, resources/scss/pages/_home.scss */
+/* line 302, resources/scss/pages/_home.scss */
 .input-outer {
   background-color: #E9F1FC;
   color: #FBFCFE;
 }
 
-/* line 302, resources/scss/pages/_home.scss */
+/* line 307, resources/scss/pages/_home.scss */
 input.input-inner {
   background-color: #FBFCFE;
   color: #124086;
@@ -17509,7 +17517,7 @@ input.input-inner {
 }
 
 @media screen and (max-height: 800px) {
-  /* line 302, resources/scss/pages/_home.scss */
+  /* line 307, resources/scss/pages/_home.scss */
   input.input-inner {
     width: 90% !important;
     height: 36px !important;
@@ -17517,34 +17525,34 @@ input.input-inner {
 }
 
 @media screen and (max-width: 900px) {
-  /* line 302, resources/scss/pages/_home.scss */
+  /* line 307, resources/scss/pages/_home.scss */
   input.input-inner {
     width: 80% !important;
   }
 }
 
 @media screen and (max-width: 768px) {
-  /* line 302, resources/scss/pages/_home.scss */
+  /* line 307, resources/scss/pages/_home.scss */
   input.input-inner {
     width: 80% !important;
   }
 }
 
 @media screen and (max-width: 599px) {
-  /* line 302, resources/scss/pages/_home.scss */
+  /* line 307, resources/scss/pages/_home.scss */
   input.input-inner {
     width: 80% !important;
   }
 }
 
 @media screen and (max-width: 399px) {
-  /* line 302, resources/scss/pages/_home.scss */
+  /* line 307, resources/scss/pages/_home.scss */
   input.input-inner {
     width: 70% !important;
   }
 }
 
-/* line 324, resources/scss/pages/_home.scss */
+/* line 329, resources/scss/pages/_home.scss */
 input.input-inner::placeholder {
   background-color: #FBFCFE;
   opacity: 1 !important;
@@ -17553,13 +17561,13 @@ input.input-inner::placeholder {
 }
 
 @media screen and (max-width: 900px) {
-  /* line 324, resources/scss/pages/_home.scss */
+  /* line 329, resources/scss/pages/_home.scss */
   input.input-inner::placeholder {
     font: 800 18px Roboto, Helvetica, "Helvetica Neue", Arial, sans-serif !important;
   }
 }
 
-/* line 334, resources/scss/pages/_home.scss */
+/* line 339, resources/scss/pages/_home.scss */
 input.input-inner:focus::placeholder {
   color: rgba(18, 64, 134, 0.5);
   font: 800 24px Roboto, Helvetica, "Helvetica Neue", Arial, sans-serif !important;
@@ -17570,18 +17578,18 @@ input.input-inner:focus::placeholder {
 }
 
 @media screen and (max-width: 900px) {
-  /* line 334, resources/scss/pages/_home.scss */
+  /* line 339, resources/scss/pages/_home.scss */
   input.input-inner:focus::placeholder {
     font: 800 18px Roboto, Helvetica, "Helvetica Neue", Arial, sans-serif !important;
   }
 }
 
-/* line 346, resources/scss/pages/_home.scss */
+/* line 351, resources/scss/pages/_home.scss */
 input.input-inner:focus {
   outline: none !important;
 }
 
-/* line 350, resources/scss/pages/_home.scss */
+/* line 355, resources/scss/pages/_home.scss */
 .search-main {
   width: 40px;
   height: 40px;
@@ -17595,13 +17603,13 @@ input.input-inner:focus {
 }
 
 @media screen and (max-height: 800px) {
-  /* line 350, resources/scss/pages/_home.scss */
+  /* line 355, resources/scss/pages/_home.scss */
   .search-main {
     margin-top: 6px;
   }
 }
 
-/* line 364, resources/scss/pages/_home.scss */
+/* line 369, resources/scss/pages/_home.scss */
 .main-logos {
   position: relative;
   top: -84px;
@@ -17610,7 +17618,7 @@ input.input-inner:focus {
 }
 
 @media screen and (max-width: 900px) {
-  /* line 364, resources/scss/pages/_home.scss */
+  /* line 369, resources/scss/pages/_home.scss */
   .main-logos {
     top: 48px;
     margin-right: -12px !important;
@@ -17619,34 +17627,34 @@ input.input-inner:focus {
 }
 
 @media screen and (max-width: 768px) {
-  /* line 364, resources/scss/pages/_home.scss */
+  /* line 369, resources/scss/pages/_home.scss */
   .main-logos {
     top: 48px;
   }
 }
 
 @media screen and (max-width: 599px) {
-  /* line 364, resources/scss/pages/_home.scss */
+  /* line 369, resources/scss/pages/_home.scss */
   .main-logos {
     top: 48px;
   }
 }
 
 @media screen and (max-width: 399px) {
-  /* line 364, resources/scss/pages/_home.scss */
+  /* line 369, resources/scss/pages/_home.scss */
   .main-logos {
     top: 48px;
   }
 }
 
-/* line 388, resources/scss/pages/_home.scss */
+/* line 393, resources/scss/pages/_home.scss */
 .main-logos a {
   background-color: #FBFCFE;
   width: 60px;
   height: 60px;
 }
 
-/* line 394, resources/scss/pages/_home.scss */
+/* line 399, resources/scss/pages/_home.scss */
 .main-logos #global-change {
   width: 120px;
   padding-right: 12px;

@@ -222,6 +222,11 @@ $home-text-back-background: rgba(233, 241, 252, 0.9);
 }
 
 #home-text {
+  @include nav-footer-900-min {
+    padding-top: 80px;
+    width: 80% !important
+  }
+
   @include medium-height {
     padding-top: $ce3-default-padding;
   }
