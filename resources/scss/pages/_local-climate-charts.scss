@@ -422,8 +422,11 @@
     }
     text-align: center;
     padding: $ce3-default-padding;
-    background-color: lighten($ce3-warning-state, 30)!important;
-    color: $ce3-warning-state !important;
+
+    background-color: $ce3-warning-state!important;
+    color: $ce3-blue6 !important;
+    // background-color: lighten($ce3-warning-state, 30)!important;
+    // color: $ce3-warning-state !important;
     font: 500 14px $roboto !important;
     border: 1px solid $ce3-warning-state !important;
     @include border-radius(5px, 5px);
