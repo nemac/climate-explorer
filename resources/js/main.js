@@ -885,6 +885,7 @@ App.prototype.locationSearch = function () {
     const pacWidth = rect.width;
     setTimeout(function () {
       const pacElem = document.querySelector('.pac-container');
+      pacElem.classList.remove('d-none');
       pacElem.setAttribute('style',
             `width: ${pacWidth}px !important; left: ${rect.left}px !important; top: ${offsetTop+rect.height+1}px;`
           );
@@ -894,7 +895,7 @@ App.prototype.locationSearch = function () {
   const resetResultsStyleOff = function() {
     setTimeout(function () {
       const pacElem = document.querySelector('.pac-container');
-
+      if (!pacElem.classList.contains('d-none')){pacElem.classList.add('d-none');}
       pacElem.setAttribute('style',
             `width: 0px !important; left: -99999px !important; top:  -99999px;`
           );
