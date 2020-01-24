@@ -1516,13 +1516,18 @@ input.input-inner-default {
 }
 
 input.input-inner-default::placeholder  {
+  opacity: 1 !important;
   background-color: $ce3-blue5;
   color: $ce3-blue3;
   font: $font-weight-heavy 18px $roboto !important;
 }
 
+input.input-inner-default::-moz-placeholder, input.input-inner-default:-moz-placeholder {
+  padding-bottom: 6px;
+}
+
 input.input-inner-default:focus::placeholder  {
-  color: $ce3-blue3alpha;
+  color: transparentize($ce3-blue3, 0.5);
   font: $font-weight-heavy 18px $roboto !important;
   -moz-transition: 0.25s;
   -o-transition: 0.25s;

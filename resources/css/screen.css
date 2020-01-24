@@ -14898,12 +14898,18 @@ input.input-inner-default {
 
 /* line 1518, resources/scss/screen.scss */
 input.input-inner-default::placeholder {
+  opacity: 1 !important;
   background-color: #E9F1FC;
   color: #124086;
   font: 800 18px Roboto, Helvetica, "Helvetica Neue", Arial, sans-serif !important;
 }
 
-/* line 1524, resources/scss/screen.scss */
+/* line 1525, resources/scss/screen.scss */
+input.input-inner-default::-moz-placeholder, input.input-inner-default:-moz-placeholder {
+  padding-bottom: 6px;
+}
+
+/* line 1529, resources/scss/screen.scss */
 input.input-inner-default:focus::placeholder {
   color: rgba(18, 64, 134, 0.5);
   font: 800 18px Roboto, Helvetica, "Helvetica Neue", Arial, sans-serif !important;
@@ -14913,25 +14919,25 @@ input.input-inner-default:focus::placeholder {
   transition: 0.25s;
 }
 
-/* line 1533, resources/scss/screen.scss */
+/* line 1538, resources/scss/screen.scss */
 input.input-inner-default:focus {
   outline: none !important;
 }
 
-/* line 1537, resources/scss/screen.scss */
+/* line 1542, resources/scss/screen.scss */
 #search-row {
   min-height: 50px;
 }
 
 @media screen and (max-width: 900px) {
-  /* line 1537, resources/scss/screen.scss */
+  /* line 1542, resources/scss/screen.scss */
   #search-row {
     min-height: 50px;
     display: block !important;
   }
 }
 
-/* line 1549, resources/scss/screen.scss */
+/* line 1554, resources/scss/screen.scss */
 #high-tide-flooding-viewport #search-row,
 #historical-thresholds-viewport #search-row,
 #historical-weather-data-viewport #search-row {
@@ -14939,7 +14945,7 @@ input.input-inner-default:focus {
 }
 
 @media screen and (max-width: 900px) {
-  /* line 1549, resources/scss/screen.scss */
+  /* line 1554, resources/scss/screen.scss */
   #high-tide-flooding-viewport #search-row,
   #historical-thresholds-viewport #search-row,
   #historical-weather-data-viewport #search-row {
@@ -14948,20 +14954,20 @@ input.input-inner-default:focus {
   }
 }
 
-/* line 1558, resources/scss/screen.scss */
+/* line 1563, resources/scss/screen.scss */
 #info-row, #search-row, #chart-row, #map-row {
   width: 100% !important;
   align-self: center !important;
 }
 
 @media screen and (max-width: 768px) {
-  /* line 1558, resources/scss/screen.scss */
+  /* line 1563, resources/scss/screen.scss */
   #info-row, #search-row, #chart-row, #map-row {
     width: 90% !important;
   }
 }
 
-/* line 1568, resources/scss/screen.scss */
+/* line 1573, resources/scss/screen.scss */
 #map-for-print-right, #map-for-print-left {
   position: absolute;
   left: 0px;
@@ -14971,7 +14977,7 @@ input.input-inner-default:focus {
   z-index: 0;
 }
 
-/* line 1575, resources/scss/screen.scss */
+/* line 1580, resources/scss/screen.scss */
 #map-for-print-right img, #map-for-print-left img {
   width: 100%;
   height: auto;
@@ -14980,12 +14986,12 @@ input.input-inner-default:focus {
   left: 0px;
 }
 
-/* line 1582, resources/scss/screen.scss */
+/* line 1587, resources/scss/screen.scss */
 #map-for-print-right .attribution, #map-for-print-left .attribution {
   top: calc(100% - 17px);
 }
 
-/* line 1586, resources/scss/screen.scss */
+/* line 1591, resources/scss/screen.scss */
 #map-for-print-right .botttom-controls, #map-for-print-left .botttom-controls {
   max-height: 54px;
   height: 54px;
@@ -14994,7 +15000,7 @@ input.input-inner-default:focus {
   left: 24px;
 }
 
-/* line 1594, resources/scss/screen.scss */
+/* line 1599, resources/scss/screen.scss */
 #map-for-print-right .title, #map-for-print-left .title {
   background-color: rgba(233, 241, 252, 0.75) !important;
   max-height: 42px;
@@ -15011,7 +15017,7 @@ input.input-inner-default:focus {
   border-top-right-radius: 5px;
 }
 
-/* line 1606, resources/scss/screen.scss */
+/* line 1611, resources/scss/screen.scss */
 #map-for-print-right .legend, #map-for-print-left .legend {
   max-height: 250px;
   height: 250px;
@@ -15020,12 +15026,12 @@ input.input-inner-default:focus {
   left: 24px;
 }
 
-/* line 1618, resources/scss/screen.scss */
+/* line 1623, resources/scss/screen.scss */
 .d-xs-only {
   display: none;
 }
 
-/* line 1624, resources/scss/screen.scss */
+/* line 1629, resources/scss/screen.scss */
 .button {
   position: relative;
   display: inline-block;
@@ -15038,7 +15044,7 @@ input.input-inner-default:focus {
   transition: 0.25s;
 }
 
-/* line 1632, resources/scss/screen.scss */
+/* line 1637, resources/scss/screen.scss */
 .button:before, .button:after {
   content: '';
   display: block;
@@ -15047,37 +15053,37 @@ input.input-inner-default:focus {
   top: 50%;
 }
 
-/* line 1643, resources/scss/screen.scss */
+/* line 1648, resources/scss/screen.scss */
 .button.display-blocks {
   display: block;
 }
 
-/* line 1649, resources/scss/screen.scss */
+/* line 1654, resources/scss/screen.scss */
 .button .icon {
   margin: -2px 10px 0 0;
 }
 
-/* line 1654, resources/scss/screen.scss */
+/* line 1659, resources/scss/screen.scss */
 .button.plus:before {
   width: 14px;
   height: 4px;
   margin-top: -2px;
 }
 
-/* line 1660, resources/scss/screen.scss */
+/* line 1665, resources/scss/screen.scss */
 .button.plus:after {
   width: 4px;
   height: 14px;
   margin: -7px 5px 0 0;
 }
 
-/* line 1668, resources/scss/screen.scss */
+/* line 1673, resources/scss/screen.scss */
 .button.arrow-right:before, .button.arrow-right:after {
   width: 10px;
   height: 4px;
 }
 
-/* line 1674, resources/scss/screen.scss */
+/* line 1679, resources/scss/screen.scss */
 .button.arrow-right:before {
   -webkit-transform: rotate(-45deg);
   -moz-transform: rotate(-45deg);
@@ -15087,7 +15093,7 @@ input.input-inner-default:focus {
   margin-top: 1px;
 }
 
-/* line 1679, resources/scss/screen.scss */
+/* line 1684, resources/scss/screen.scss */
 .button.arrow-right:after {
   -webkit-transform: rotate(45deg);
   -moz-transform: rotate(45deg);
@@ -15097,7 +15103,7 @@ input.input-inner-default:focus {
   margin-top: -4px;
 }
 
-/* line 1686, resources/scss/screen.scss */
+/* line 1691, resources/scss/screen.scss */
 .button.close:before, .button.close:after {
   right: 6px;
   width: 24px;
@@ -15105,7 +15111,7 @@ input.input-inner-default:focus {
   margin-top: -4px;
 }
 
-/* line 1694, resources/scss/screen.scss */
+/* line 1699, resources/scss/screen.scss */
 .button.close:before {
   -webkit-transform: rotate(-45deg);
   -moz-transform: rotate(-45deg);
@@ -15114,7 +15120,7 @@ input.input-inner-default:focus {
   transform: rotate(-45deg);
 }
 
-/* line 1698, resources/scss/screen.scss */
+/* line 1703, resources/scss/screen.scss */
 .button.close:after {
   -webkit-transform: rotate(45deg);
   -moz-transform: rotate(45deg);
@@ -15123,113 +15129,113 @@ input.input-inner-default:focus {
   transform: rotate(45deg);
 }
 
-/* line 1705, resources/scss/screen.scss */
+/* line 1710, resources/scss/screen.scss */
 .button.color-white {
   color: #ffffff;
 }
 
-/* line 1708, resources/scss/screen.scss */
+/* line 1713, resources/scss/screen.scss */
 .button.color-white:before, .button.color-white:after {
   background: #ffffff;
 }
 
-/* line 1714, resources/scss/screen.scss */
+/* line 1719, resources/scss/screen.scss */
 .button.color-orange {
   color: #f5442d !important;
 }
 
-/* line 1717, resources/scss/screen.scss */
+/* line 1722, resources/scss/screen.scss */
 .button.color-orange:before, .button.color-orange:after {
   background: #f5442d !important;
 }
 
-/* line 1723, resources/scss/screen.scss */
+/* line 1728, resources/scss/screen.scss */
 .button.color-orange.arrow-right:before {
   background: #f5442d !important;
 }
 
-/* line 1727, resources/scss/screen.scss */
+/* line 1732, resources/scss/screen.scss */
 .button.color-orange.arrow-right:after {
   background: #f5442d !important;
 }
 
-/* line 1735, resources/scss/screen.scss */
+/* line 1740, resources/scss/screen.scss */
 .button.border-white {
   border-color: #ffffff;
   color: #ffffff;
 }
 
-/* line 1739, resources/scss/screen.scss */
+/* line 1744, resources/scss/screen.scss */
 .button.border-white:before, .button.border-white:after {
   background: #ffffff;
 }
 
-/* line 1745, resources/scss/screen.scss */
+/* line 1750, resources/scss/screen.scss */
 .button.border-trans {
   border-color: transparent;
 }
 
-/* line 1749, resources/scss/screen.scss */
+/* line 1754, resources/scss/screen.scss */
 .button.border-none {
   border: none;
 }
 
-/* line 1755, resources/scss/screen.scss */
+/* line 1760, resources/scss/screen.scss */
 .button.bg-trans {
   background: transparent;
 }
 
-/* line 1759, resources/scss/screen.scss */
+/* line 1764, resources/scss/screen.scss */
 .button.bg-white {
   background: white;
 }
 
-/* line 1768, resources/scss/screen.scss */
+/* line 1773, resources/scss/screen.scss */
 .button.hover-bg-white:hover {
   background: #ffffff;
   color: #0058cf;
   mix-blend-mode: screen;
 }
 
-/* line 1773, resources/scss/screen.scss */
+/* line 1778, resources/scss/screen.scss */
 .button.hover-bg-white:hover:before, .button.hover-bg-white:hover:after {
   background: #000000;
 }
 
-/* line 1782, resources/scss/screen.scss */
+/* line 1787, resources/scss/screen.scss */
 .button.blend-screen {
   mix-blend-mode: screen;
 }
 
-/* line 1785, resources/scss/screen.scss */
+/* line 1790, resources/scss/screen.scss */
 .button.blend-screen:before, .button.blend-screen:after {
   background: #000000;
 }
 
-/* line 1790, resources/scss/screen.scss */
+/* line 1795, resources/scss/screen.scss */
 .button.blend-screen:hover {
   color: #000000;
 }
 
-/* line 1797, resources/scss/screen.scss */
+/* line 1802, resources/scss/screen.scss */
 .icon {
   display: inline-block;
   vertical-align: middle;
 }
 
-/* line 1803, resources/scss/screen.scss */
+/* line 1808, resources/scss/screen.scss */
 .stuck {
   position: fixed;
   top: 0;
 }
 
-/* line 1808, resources/scss/screen.scss */
+/* line 1813, resources/scss/screen.scss */
 .varriable-option-item {
   width: 100%;
   height: 44px;
 }
 
-/* line 1813, resources/scss/screen.scss */
+/* line 1818, resources/scss/screen.scss */
 .varriable-option-tooltip {
   position: relative;
   padding-top: 12px;
@@ -15241,26 +15247,26 @@ input.input-inner-default:focus {
 }
 
 @media screen and (max-width: 1400px) and (min-width: 900px) {
-  /* line 1813, resources/scss/screen.scss */
+  /* line 1818, resources/scss/screen.scss */
   .varriable-option-tooltip {
     width: 20%;
   }
 }
 
 @media screen and (max-width: 599px) {
-  /* line 1813, resources/scss/screen.scss */
+  /* line 1818, resources/scss/screen.scss */
   .varriable-option-tooltip {
     width: 20%;
   }
 }
 
-/* line 1831, resources/scss/screen.scss */
+/* line 1836, resources/scss/screen.scss */
 .varriable-option-tooltip:hover {
   color: #124086;
   background: #d3e3f9;
 }
 
-/* line 1837, resources/scss/screen.scss */
+/* line 1842, resources/scss/screen.scss */
 .tooltip {
   position: relative;
   display: block;
@@ -15275,7 +15281,7 @@ input.input-inner-default:focus {
   box-shadow: 0 0 8px rgba(0, 88, 207, 0.25);
 }
 
-/* line 1848, resources/scss/screen.scss */
+/* line 1853, resources/scss/screen.scss */
 .tooltip .tooltip-arrow::before {
   position: absolute;
   left: calc(100% + 12px);
@@ -15297,7 +15303,7 @@ input.input-inner-default:focus {
   clear: both;
 }
 
-/* line 1863, resources/scss/screen.scss */
+/* line 1868, resources/scss/screen.scss */
 .chart-legend .legend-item {
   position: relative;
   float: left;
@@ -15315,12 +15321,12 @@ input.input-inner-default:focus {
   transition: 0.25s;
 }
 
-/* line 1876, resources/scss/screen.scss */
+/* line 1881, resources/scss/screen.scss */
 .chart-legend .legend-item:hover {
   border: 1px solid #eeeeee;
 }
 
-/* line 1880, resources/scss/screen.scss */
+/* line 1885, resources/scss/screen.scss */
 .chart-legend .legend-item:after {
   content: "\e91f";
   display: block;
@@ -15347,64 +15353,64 @@ input.input-inner-default:focus {
   transition: 0.25s;
 }
 
-/* line 1899, resources/scss/screen.scss */
+/* line 1904, resources/scss/screen.scss */
 .chart-legend .legend-item.selected {
   border: 1px solid #bbbbbb;
 }
 
-/* line 1904, resources/scss/screen.scss */
+/* line 1909, resources/scss/screen.scss */
 .chart-legend .legend-item.selected:after {
   opacity: 1;
 }
 
-/* line 1910, resources/scss/screen.scss */
+/* line 1915, resources/scss/screen.scss */
 .chart-legend .legend-item-block {
   height: 20px;
 }
 
-/* line 1914, resources/scss/screen.scss */
+/* line 1919, resources/scss/screen.scss */
 .chart-legend .legend-item-line {
   height: 5px;
 }
 
-/* line 1919, resources/scss/screen.scss */
+/* line 1924, resources/scss/screen.scss */
 .chart-legend .legend-item-block#rcp45-block, .chart-legend .legend-item-block#preciprcp45-block, .chart-legend .legend-item-block #derivercp45-block {
   background: #99bcec;
 }
 
-/* line 1925, resources/scss/screen.scss */
+/* line 1930, resources/scss/screen.scss */
 .chart-legend .legend-item-block#rcp85-block, .chart-legend .legend-item-block#preciprcp85-block, .chart-legend .legend-item-block#derivercp85-block {
   background: #fbb4ab;
 }
 
-/* line 1931, resources/scss/screen.scss */
+/* line 1936, resources/scss/screen.scss */
 .chart-legend .legend-item-block#historical-block, .chart-legend .legend-item-block#preciphistorical-block, .chart-legend .legend-item-block#derivehistorical-block {
   background: #d6d6d6;
 }
 
-/* line 1939, resources/scss/screen.scss */
+/* line 1944, resources/scss/screen.scss */
 .chart-legend .legend-item-line#over-baseline-block, .chart-legend .legend-item-line#precipover-baseline-block, .chart-legend .legend-item-line#deriveover-baseline-block {
   background: #cd6760;
 }
 
-/* line 1945, resources/scss/screen.scss */
+/* line 1950, resources/scss/screen.scss */
 .chart-legend .legend-item-line#under-baseline-block, .chart-legend .legend-item-line#precipunder-baseline-block, .chart-legend .legend-item-line#deriveunder-baseline-block {
   margin-top: 20px;
   background: #6194c8;
 }
 
-/* line 1952, resources/scss/screen.scss */
+/* line 1957, resources/scss/screen.scss */
 .chart-legend .legend-item-line#rcp45-line, .chart-legend .legend-item-line#preciprcp45-line, .chart-legend .legend-item-line#derivercp45-line {
   margin-top: 20px;
   background: #0058cf;
 }
 
-/* line 1959, resources/scss/screen.scss */
+/* line 1964, resources/scss/screen.scss */
 .chart-legend .legend-item-line#rcp85-line, .chart-legend .legend-item-line#preciprcp85-line, .chart-legend .legend-item-line#derivercp85-line {
   background: #f5442d;
 }
 
-/* line 1968, resources/scss/screen.scss */
+/* line 1973, resources/scss/screen.scss */
 .download-panel {
   display: none;
   position: fixed;
@@ -15419,7 +15425,7 @@ input.input-inner-default:focus {
   opacity: 0.95;
 }
 
-/* line 1983, resources/scss/screen.scss */
+/* line 1988, resources/scss/screen.scss */
 .download-panel .download-inner {
   margin: auto;
   position: absolute;
@@ -15435,22 +15441,22 @@ input.input-inner-default:focus {
   padding: 30px;
 }
 
-/* line 1993, resources/scss/screen.scss */
+/* line 1998, resources/scss/screen.scss */
 .download-panel .download-inner p {
   margin: 0 0 20px 0;
 }
 
-/* line 1997, resources/scss/screen.scss */
+/* line 2002, resources/scss/screen.scss */
 .download-panel .download-inner li {
   margin: 0 0 10px 0;
 }
 
-/* line 2001, resources/scss/screen.scss */
+/* line 2006, resources/scss/screen.scss */
 .download-panel .download-inner a {
   color: #ffffff;
 }
 
-/* line 2006, resources/scss/screen.scss */
+/* line 2011, resources/scss/screen.scss */
 .download-panel #download-dismiss-button, .download-panel .download-dismiss-button {
   display: block;
   position: absolute;
@@ -16853,7 +16859,7 @@ body.detail-open #nav-overlay {
   }
 }
 
-/* line 2025, resources/scss/screen.scss */
+/* line 2030, resources/scss/screen.scss */
 #desktop-warning {
   display: none;
 }
@@ -17646,7 +17652,7 @@ input.input-inner {
 input.input-inner::placeholder {
   background-color: #FBFCFE;
   opacity: 1 !important;
-  color: #124086;
+  color: rgba(18, 64, 134, 0.8);
   font: 800 24px Roboto, Helvetica, "Helvetica Neue", Arial, sans-serif !important;
 }
 
@@ -22243,7 +22249,7 @@ s
   cursor: default;
 }
 
-/* line 2073, resources/scss/screen.scss */
+/* line 2078, resources/scss/screen.scss */
 .ui-autocomplete {
   position: absolute;
   top: 0;
@@ -22251,7 +22257,7 @@ s
   cursor: default;
 }
 
-/* line 2079, resources/scss/screen.scss */
+/* line 2084, resources/scss/screen.scss */
 .ui-menu {
   display: block;
   padding: 10px;
@@ -22264,12 +22270,12 @@ s
   box-shadow: 0 0 12px rgba(35, 58, 112, 0.25);
 }
 
-/* line 2088, resources/scss/screen.scss */
+/* line 2093, resources/scss/screen.scss */
 .ui-menu .ui-menu {
   position: absolute;
 }
 
-/* line 2092, resources/scss/screen.scss */
+/* line 2097, resources/scss/screen.scss */
 .ui-menu .ui-menu-item {
   position: relative;
   margin: 0;
@@ -22277,7 +22283,7 @@ s
   cursor: pointer;
 }
 
-/* line 2099, resources/scss/screen.scss */
+/* line 2104, resources/scss/screen.scss */
 .ui-menu .ui-menu-divider {
   margin: 5px 0;
   height: 0;
@@ -22286,12 +22292,12 @@ s
   border-width: 1px 0 0 0;
 }
 
-/* line 2108, resources/scss/screen.scss */
+/* line 2113, resources/scss/screen.scss */
 .ui-accordion .ui-accordion-header {
   outline: none;
 }
 
-/* line 2111, resources/scss/screen.scss */
+/* line 2116, resources/scss/screen.scss */
 .ui-accordion .ui-accordion-header .ui-accordion-header-icon {
   display: inline-block;
   position: static;
@@ -22300,14 +22306,14 @@ s
   overflow: visible;
 }
 
-/* line 2121, resources/scss/screen.scss */
+/* line 2126, resources/scss/screen.scss */
 .accordion-plain .ui-accordion-header {
   padding: 8px 0;
   color: #233a70;
   line-height: 28px;
 }
 
-/* line 2126, resources/scss/screen.scss */
+/* line 2131, resources/scss/screen.scss */
 .accordion-plain .ui-accordion-header .ui-accordion-header-icon {
   display: block;
   float: left;
@@ -22317,17 +22323,17 @@ s
   line-height: 28px;
 }
 
-/* line 2136, resources/scss/screen.scss */
+/* line 2141, resources/scss/screen.scss */
 .accordion-plain .accordion-text {
   padding: 20px 40px;
 }
 
-/* line 2142, resources/scss/screen.scss */
+/* line 2147, resources/scss/screen.scss */
 .tabs-plain .tabs-plain-list li {
   display: inline-block;
 }
 
-/* line 2145, resources/scss/screen.scss */
+/* line 2150, resources/scss/screen.scss */
 .tabs-plain .tabs-plain-list li a {
   display: block;
   padding: 8px 10px;
@@ -22466,13 +22472,13 @@ https://raw.github.com/shagstrom/split-pane/master/LICENSE
   cursor: row-resize;
 }
 
-/* line 2159, resources/scss/screen.scss */
+/* line 2164, resources/scss/screen.scss */
 .pretty-split-pane-frame .split-pane > .split-pane-divider.dragged.touch {
   background: blue;
   opacity: 0.25;
 }
 
-/* line 2163, resources/scss/screen.scss */
+/* line 2168, resources/scss/screen.scss */
 .split-pane-divider {
   right: 50%;
   width: 12px;
@@ -22482,7 +22488,7 @@ https://raw.github.com/shagstrom/split-pane/master/LICENSE
   box-shadow: 0 0 10px rgba(35, 58, 112, 0.25);
 }
 
-/* line 2169, resources/scss/screen.scss */
+/* line 2174, resources/scss/screen.scss */
 .pane-content {
   position: absolute;
   top: 0;
@@ -22492,18 +22498,18 @@ https://raw.github.com/shagstrom/split-pane/master/LICENSE
   overflow: auto;
 }
 
-/* line 2173, resources/scss/screen.scss */
+/* line 2178, resources/scss/screen.scss */
 #pane-left {
   right: 50%;
   margin-right: 12px;
 }
 
-/* line 2177, resources/scss/screen.scss */
+/* line 2182, resources/scss/screen.scss */
 #pane-right {
   width: 50%;
 }
 
-/* line 2181, resources/scss/screen.scss */
+/* line 2186, resources/scss/screen.scss */
 .ui-tooltip {
   background-color: #0058cf;
   color: white;
@@ -22513,7 +22519,7 @@ https://raw.github.com/shagstrom/split-pane/master/LICENSE
   padding-top: 0;
 }
 
-/* line 2190, resources/scss/screen.scss */
+/* line 2195, resources/scss/screen.scss */
 .feedback-trigger-small {
   position: absolute;
   cursor: pointer;
@@ -22545,13 +22551,13 @@ https://raw.github.com/shagstrom/split-pane/master/LICENSE
 }
 
 @media screen and (max-width: 499px) {
-  /* line 2190, resources/scss/screen.scss */
+  /* line 2195, resources/scss/screen.scss */
   .feedback-trigger-small {
     top: calc(100% - 128px);
   }
 }
 
-/* line 2214, resources/scss/screen.scss */
+/* line 2219, resources/scss/screen.scss */
 .feedback-trigger-small:hover {
   background-color: #195abc;
   -webkit-box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.239);
@@ -22559,7 +22565,7 @@ https://raw.github.com/shagstrom/split-pane/master/LICENSE
   box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.239);
 }
 
-/* line 2220, resources/scss/screen.scss */
+/* line 2225, resources/scss/screen.scss */
 #feedback-close-button-yes, #feedback-close-button-no {
   background-color: #FBFCFE;
   line-height: 32px;
@@ -22576,12 +22582,12 @@ https://raw.github.com/shagstrom/split-pane/master/LICENSE
   height: 30px;
 }
 
-/* line 2231, resources/scss/screen.scss */
+/* line 2236, resources/scss/screen.scss */
 #feedback-close-button-yes:hover, #feedback-close-button-no:hover {
   background-color: #beceef;
 }
 
-/* line 2236, resources/scss/screen.scss */
+/* line 2241, resources/scss/screen.scss */
 .feedback-trigger {
   position: absolute;
   background-color: #124086;
@@ -22604,32 +22610,32 @@ https://raw.github.com/shagstrom/split-pane/master/LICENSE
 }
 
 @media screen and (max-width: 768px) {
-  /* line 2236, resources/scss/screen.scss */
+  /* line 2241, resources/scss/screen.scss */
   .feedback-trigger {
     width: 100%;
     left: 0px;
   }
 }
 
-/* line 2250, resources/scss/screen.scss */
+/* line 2255, resources/scss/screen.scss */
 .feedback-trigger .feedback-text {
   padding-left: 6px;
 }
 
-/* line 2254, resources/scss/screen.scss */
+/* line 2259, resources/scss/screen.scss */
 .feedback-trigger .feedback-icon {
   font-size: 18px;
   vertical-align: middle;
 }
 
 @media screen and (max-width: 768px) {
-  /* line 2254, resources/scss/screen.scss */
+  /* line 2259, resources/scss/screen.scss */
   .feedback-trigger .feedback-icon {
     display: none;
   }
 }
 
-/* line 2270, resources/scss/screen.scss */
+/* line 2275, resources/scss/screen.scss */
 .feedback-trigger:hover {
   background-color: #195abc;
   -webkit-box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.239);
@@ -22637,7 +22643,7 @@ https://raw.github.com/shagstrom/split-pane/master/LICENSE
   box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.239);
 }
 
-/* line 2276, resources/scss/screen.scss */
+/* line 2281, resources/scss/screen.scss */
 .about-tool-row {
   height: auto;
   align-items: start !important;
@@ -22645,7 +22651,7 @@ https://raw.github.com/shagstrom/split-pane/master/LICENSE
   justify-content: start !important;
 }
 
-/* line 2282, resources/scss/screen.scss */
+/* line 2287, resources/scss/screen.scss */
 .about-tool-row.about-tool-equals {
   align-items: center !important;
   align-content: center !important;
@@ -22654,7 +22660,7 @@ https://raw.github.com/shagstrom/split-pane/master/LICENSE
   font-weight: 500;
 }
 
-/* line 2290, resources/scss/screen.scss */
+/* line 2295, resources/scss/screen.scss */
 .about-tool-row .about-tool-content {
   line-height: unset !important;
   margin: 0px !important;
@@ -22662,41 +22668,41 @@ https://raw.github.com/shagstrom/split-pane/master/LICENSE
   padding-top: 12px;
 }
 
-/* line 2296, resources/scss/screen.scss */
+/* line 2301, resources/scss/screen.scss */
 .about-tool-row .about-tool-content.img-holder-left {
   justify-content: start !important;
 }
 
-/* line 2298, resources/scss/screen.scss */
+/* line 2303, resources/scss/screen.scss */
 .about-tool-row .about-tool-content.img-holder-left img {
   border: 1px solid;
 }
 
 @media screen and (max-width: 900px) {
-  /* line 2296, resources/scss/screen.scss */
+  /* line 2301, resources/scss/screen.scss */
   .about-tool-row .about-tool-content.img-holder-left {
     justify-content: center !important;
   }
 }
 
-/* line 2306, resources/scss/screen.scss */
+/* line 2311, resources/scss/screen.scss */
 .about-tool-row .about-tool-content.img-holder-right {
   justify-content: flex-end !important;
 }
 
-/* line 2308, resources/scss/screen.scss */
+/* line 2313, resources/scss/screen.scss */
 .about-tool-row .about-tool-content.img-holder-right img {
   border: 1px solid;
 }
 
 @media screen and (max-width: 900px) {
-  /* line 2306, resources/scss/screen.scss */
+  /* line 2311, resources/scss/screen.scss */
   .about-tool-row .about-tool-content.img-holder-right {
     justify-content: center !important;
   }
 }
 
-/* line 2316, resources/scss/screen.scss */
+/* line 2321, resources/scss/screen.scss */
 .about-tool-row .about-tool-content img {
   display: block;
   max-width: 100%;
@@ -22705,33 +22711,33 @@ https://raw.github.com/shagstrom/split-pane/master/LICENSE
   height: 100%;
 }
 
-/* line 2324, resources/scss/screen.scss */
+/* line 2329, resources/scss/screen.scss */
 .about-tool-row .about-tool-content .sample-img {
   max-height: 200px;
   width: auto;
 }
 
-/* line 2330, resources/scss/screen.scss */
+/* line 2335, resources/scss/screen.scss */
 .about-tool-row .btn-chart-text {
   padding: 12px;
 }
 
 @media screen and (max-width: 900px) {
-  /* line 2276, resources/scss/screen.scss */
+  /* line 2281, resources/scss/screen.scss */
   .about-tool-row {
     width: 100% !important;
     border-bottom: 1px solid #124086;
   }
-  /* line 2339, resources/scss/screen.scss */
+  /* line 2344, resources/scss/screen.scss */
   .about-tool-row .img-btn-chart {
     width: 50% !important;
     height: 50% !important;
   }
-  /* line 2344, resources/scss/screen.scss */
+  /* line 2349, resources/scss/screen.scss */
   .about-tool-row #btn-chart {
     width: 100% !important;
   }
-  /* line 2347, resources/scss/screen.scss */
+  /* line 2352, resources/scss/screen.scss */
   .about-tool-row #btn-chart.circle-box-left {
     -webkit-border-radius: 5px;
     -moz-border-radius: 5px;
@@ -22739,7 +22745,7 @@ https://raw.github.com/shagstrom/split-pane/master/LICENSE
     -o-border-radius: 5px;
     border-radius: 5px;
   }
-  /* line 2350, resources/scss/screen.scss */
+  /* line 2355, resources/scss/screen.scss */
   .about-tool-row #btn-chart.circle-box-right {
     -webkit-border-radius: 5px;
     -moz-border-radius: 5px;
@@ -22747,7 +22753,7 @@ https://raw.github.com/shagstrom/split-pane/master/LICENSE
     -o-border-radius: 5px;
     border-radius: 5px;
   }
-  /* line 2353, resources/scss/screen.scss */
+  /* line 2358, resources/scss/screen.scss */
   .about-tool-row #btn-chart.circle-box-center {
     -webkit-border-radius: 5px;
     -moz-border-radius: 5px;
