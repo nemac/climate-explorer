@@ -9,12 +9,21 @@ $(function () {
   enableCustomSelect('download-select');
   enableCustomSelect('threshold-variable-select');
 
-  // get city, state from state url
-  $('#default-city-state').text(window.ce.ce('getLocationPageState')['city']);
-  $('#default-city-county').text(window.ce.ce('getLocationPageState')['county']);
-  $('#cards-search-input').val(window.ce.ce('getLocationPageState')['city']);
+  const cityStateCE = window.ce.ce('getLocationPageState')['city'];
+  const countyCE = window.ce.ce('getLocationPageState')['county'];
+  let isAlaska = false;
+  let isHawaii = false;
 
-  if (!window.ce.ce('getLocationPageState')['city']) {
+  if (cityStateCE) {
+      isAlaska = (cityStateCE.indexOf('Alaska') > 0 || cityStateCE.indexOf(', AK') > 0);
+      isHawaii = (cityStateCE.indexOf('Hawaii') > 0 || cityStateCE.indexOf(', HI') > 0);
+  }
+
+  $('#default-city-state').text(cityStateCE);
+  $('#default-city-county').text(countyCE);
+  $('#cards-search-input').attr("placeholder", cityStateCE);
+
+  if (!countyCE) {
     $('#cards-search-input').attr("placeholder", "Location missing, enter a county, city, or zip code");
   }
 

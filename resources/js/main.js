@@ -6,7 +6,7 @@ var App = function App(data_base_url) {
   //if(top != self) {
   //  window.open(location.href, '_top');
   // }
-
+  this.doSearch = true;
   this.frequency = {
     'temperature-chart': 'annual',
     'precipitation-chart': 'annual',
@@ -24,6 +24,15 @@ App.prototype.getCountyCodes = function () {
     self.locationSearch();
   });
 };
+App.prototype.doSearch = function () {
+  var self = this;
+  this.fips_codes = null;
+  $.getJSON(this.data_base_url + 'fips_codes.json', function (data) {
+    self.fips_codes = data;
+    self.locationSearch();
+  });
+};
+
 
 App.prototype.locationSearch = function () {
   var self = this;
@@ -882,29 +891,49 @@ App.prototype.locationSearch = function () {
     }, 1);
   }
 
-  $('.location-mapper').focus( function() {
-    resetResultsStyle();
+  const resetResultsStyleOff = function() {
+    setTimeout(function () {
+      const pacElem = document.querySelector('.pac-container');
+
+      pacElem.setAttribute('style',
+            `width: 0px !important; left: -99999px !important; top:  -99999px;`
+          );
+    }, 1);
+  }
+
+  $('.location-mapper').focus( function(e) {
+    this.doSearch = false;
+    resetResultsStyleOff();
   })
 
+  $('.location-mapper').focusout( function() {
+    resetResultsStyleOff();
+  })
+
+
   $('.location-mapper').keydown( function() {
+    this.doSearch = true;
     resetResultsStyle();
   })
 
   $('.location-mapper').keyup( function() {
+    this.doSearch = true;
     resetResultsStyle();
   })
 
   $('.location-mapper').keypress( function() {
+    this.doSearch = true;
     resetResultsStyle();
   })
 
   $('.location-mapper').change( function() {
+    this.doSearch = true;
     resetResultsStyle();
   })
 
   // adds events for geocodeing locations - this gets the city, countty, fips code
   $(".location-mapper").bind("geocode:result", function (event, result) {
-
+   if (!this.doSearch){return null;}
    var data = {};
    $.each(result.address_components, function (index, object) {
      var name = object.types[0];

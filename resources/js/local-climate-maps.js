@@ -14,7 +14,7 @@ $(function () {
 
   $('#default-city-state').text(cityStateCE);
   $('#default-city-county').text(countyCE);
-  $('#cards-search-input').val(cityStateCE);
+  $('#cards-search-input').attr("placeholder", cityStateCE);
 
   if (!cityStateCE) {
     $('#default-in').addClass('d-none');

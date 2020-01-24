@@ -13,7 +13,7 @@ $(function () {
 
   $('#default-city-state').text(cityStateCE);
   $('#default-city-county').text(countyCE);
-  $('#cards-search-input').val(cityStateCE);
+  $('#cards-search-input').attr("placeholder", cityStateCE);
 
   if (!cityStateCE) {
     $('#default-city-state').addClass('d-none');
