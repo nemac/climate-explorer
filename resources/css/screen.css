@@ -18377,7 +18377,7 @@ input.input-inner:focus {
 @media screen and (max-height: 700px) {
   /* line 464, resources/scss/pages/_local-climate-charts.scss */
   #chart-row .chart-wrap {
-    height: calc(100% - 105px) !important;
+    height: calc(100% - 85px) !important;
     min-height: 125px !important;
   }
 }
