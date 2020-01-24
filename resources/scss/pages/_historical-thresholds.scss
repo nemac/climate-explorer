@@ -23,6 +23,11 @@ $animation-duration: 0.4s;
   background-color: $white;
   height: calc(100% - 48px - 6px - 100px) !important;
   min-height: calc(100% - 48px - 6px - 100px) !important;
+
+  @include kind-of-tiny {
+    min-height: calc(100% - 48px - 12px - 64px) !important;
+    height: calc(100% - 48px - 12px - 64px) !important;
+  }
   overflow: auto !important;
   flex: 1 1 auto !important;
   margin-bottom: 6px;
@@ -33,6 +38,10 @@ $animation-duration: 0.4s;
     height: 5px;
     position: absolute;
     top: calc(100% - 105px);
+
+    @include kind-of-tiny {
+      top: calc(100% - 75px);
+    }
     left: -2px;
     @include box-shadow( inset 0 -2px 2px transparentize(#000, 0.7));
   }
@@ -52,6 +61,10 @@ $animation-duration: 0.4s;
       height: calc(100% - 48px - 12px - 100px) !important;
       &:after {
         top: calc(100% - 117px);
+
+        @include kind-of-tiny {
+          top: calc(100% - 147px);
+        }
       }
     }
 
@@ -59,6 +72,15 @@ $animation-duration: 0.4s;
     height: calc(100% - 48px - 12px - 170px) !important;
     &:after {
       top: calc(100% - 187px);
+
+      @include kind-of-tiny {
+        top: calc(100% - 147px);
+      }
+    }
+
+    @include kind-of-tiny {
+      min-height: calc(100% - 48px - 12px - 130px) !important;
+      height: calc(100% - 48px - 12px - 130px) !important;
     }
   }
 

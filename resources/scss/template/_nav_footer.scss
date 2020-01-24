@@ -6,15 +6,24 @@
     flex: 0 1 $ce3-main-bottom !important;
     height: $ce3-main-bottom !important;
     align-self: flex-end !important;
+    @include kind-of-tiny {
+      flex: 0 1 70px !important;
+      height: 70px !important;
+    }
 
     &.expanded {
       @include nav-footer-850-min {
-        flex: 0 1 100px !important;
-        height: 100px !important;
+        flex: 0 1 70px !important;
+        height: 70px !important;
       }
 
       flex: 0 1 170px !important;
       height: 170px !important;
+
+      @include kind-of-tiny {
+        flex: 0 1 130px !important;
+        height: 130px !important;
+      }
     }
 }
 
@@ -47,6 +56,24 @@
     .padding-horrizontal {
       padding-left: $ce3-default-horizontal-padding/2 !important;
       padding-right: $ce3-default-horizontal-padding/2 !important;
+    }
+  }
+
+  .padding-horrizontal {
+    @include kind-of-tiny {
+      padding-right: 35px !important;
+    }
+
+    @include tiny {
+      padding-right: 30px !important;
+    }
+    
+    @include kind-of-small-to-see {
+      padding-right: 21px !important;
+    }
+
+    @include to-small-to-see {
+      padding-right: $ce3-default-horizontal-padding !important;
     }
   }
 }
@@ -184,7 +211,7 @@
   margin-right: 6px !important;
   width: 30% !important;
 
-  @include nav-footer-950-max{
+  @include nav-footer-950-max {
     width: 20% !important;
   }
 
@@ -282,6 +309,9 @@
     .nav-footer-area-line {
       // display: none !important;
     }
+  }
 
+  @include kind-of-tiny {
+    display: none !important;
   }
 }
