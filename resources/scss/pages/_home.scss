@@ -176,16 +176,17 @@ html, body {
     }
 
     @include very-small {
-      max-width: 225px;
-      min-width: 225px;
+      width: 90%;
+      max-width: 100%;
       top: calc(100% - 10%);
       left: calc( 103% - 100%);
     }
 
     @include tiny {
-      max-width: 220px;
-      min-width: 220px;
-      top: calc(100% - 15%);
+      width: 87%;
+      max-width: 74%;
+      min-width: 87%;
+      top: calc(100% - 11%);
       left: calc( 103% - 100%);
     }
   }
@@ -272,6 +273,14 @@ html, body {
 
   @include very-small {
     width: 90% !important;
+  }
+
+  @include tiny {
+    width: 87% !important;
+  }
+
+  @include to-small-to-see {
+    width: 87% !important;
   }
 
   h4 {
