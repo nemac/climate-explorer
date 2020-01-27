@@ -1,6 +1,7 @@
 $home-text-transparency: .25;
 $home-text-back-background: rgba(233, 241, 252, 0.9);
 
+
 html, body {
   height: 100%;
 }
@@ -16,6 +17,12 @@ html, body {
 
   #home-viewport:after {
     position: absolute !important;
+  }
+}
+
+#page-home {
+  .secondary-font-title {
+      display: none !important;
   }
 }
 
