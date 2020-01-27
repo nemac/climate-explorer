@@ -370,7 +370,7 @@ input.input-inner::placeholder  {
 }
 
 input.input-inner:focus::placeholder  {
-  color: transparentize($ce3-blue3, 0.5);
+  color: transparentize($ce3-blue3, 0.6);
   font: $font-weight-heavy 24px $roboto !important;
   @include medium {
     font: 800 18px $roboto !important;

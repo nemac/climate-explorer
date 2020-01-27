@@ -14911,7 +14911,7 @@ input.input-inner-default::-moz-placeholder, input.input-inner-default:-moz-plac
 
 /* line 1529, resources/scss/screen.scss */
 input.input-inner-default:focus::placeholder {
-  color: rgba(18, 64, 134, 0.5);
+  color: rgba(18, 64, 134, 0.4);
   font: 800 18px Roboto, Helvetica, "Helvetica Neue", Arial, sans-serif !important;
   -moz-transition: 0.25s;
   -o-transition: 0.25s;
@@ -17665,7 +17665,7 @@ input.input-inner::placeholder {
 
 /* line 372, resources/scss/pages/_home.scss */
 input.input-inner:focus::placeholder {
-  color: rgba(18, 64, 134, 0.5);
+  color: rgba(18, 64, 134, 0.4);
   font: 800 24px Roboto, Helvetica, "Helvetica Neue", Arial, sans-serif !important;
   -moz-transition: 0.25s;
   -o-transition: 0.25s;

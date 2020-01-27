@@ -1527,7 +1527,7 @@ input.input-inner-default::-moz-placeholder, input.input-inner-default:-moz-plac
 }
 
 input.input-inner-default:focus::placeholder  {
-  color: transparentize($ce3-blue3, 0.5);
+  color: transparentize($ce3-blue3, 0.6);
   font: $font-weight-heavy 18px $roboto !important;
   -moz-transition: 0.25s;
   -o-transition: 0.25s;
