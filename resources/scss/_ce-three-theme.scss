@@ -29,6 +29,12 @@
   width: 450px !important;
   left: 450px !important;
 
+  ul {
+    list-style-type: square;
+    list-style-position: inside;
+    padding: $ce3-padding-half;
+  }
+
   @include medium {
     position: absolute;
     max-width: 400px !important;

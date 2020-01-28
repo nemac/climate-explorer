@@ -15497,6 +15497,13 @@ input.input-inner-default:focus {
   left: 450px !important;
 }
 
+/* line 32, resources/scss/_ce-three-theme.scss */
+.tippy-tooltip.ce-three-theme ul {
+  list-style-type: square;
+  list-style-position: inside;
+  padding: 6px;
+}
+
 @media screen and (max-width: 900px) {
   /* line 22, resources/scss/_ce-three-theme.scss */
   .tippy-tooltip.ce-three-theme {
@@ -15519,45 +15526,45 @@ input.input-inner-default:focus {
   }
 }
 
-/* line 49, resources/scss/_ce-three-theme.scss */
+/* line 55, resources/scss/_ce-three-theme.scss */
 .tippy-tooltip.ce-three-theme[x-placement^=top] .tippy-arrow {
   border-top: 8px solid #FBFCFE;
   border-right: 8px solid transparent;
   border-left: 8px solid transparent;
 }
 
-/* line 55, resources/scss/_ce-three-theme.scss */
+/* line 61, resources/scss/_ce-three-theme.scss */
 .tippy-tooltip.ce-three-theme[x-placement^=bottom] .tippy-arrow {
   border-bottom: 8px solid #FBFCFE;
   border-right: 8px solid transparent;
   border-left: 8px solid transparent;
 }
 
-/* line 61, resources/scss/_ce-three-theme.scss */
+/* line 67, resources/scss/_ce-three-theme.scss */
 .tippy-tooltip.ce-three-theme[x-placement^=left] .tippy-arrow {
   border-left: 8px solid #FBFCFE;
   border-top: 8px solid transparent;
   border-bottom: 8px solid transparent;
 }
 
-/* line 67, resources/scss/_ce-three-theme.scss */
+/* line 73, resources/scss/_ce-three-theme.scss */
 .tippy-tooltip.ce-three-theme[x-placement^=right] .tippy-arrow {
   border-right: 8px solid #FBFCFE;
   border-top: 8px solid transparent;
   border-bottom: 8px solid transparent;
 }
 
-/* line 73, resources/scss/_ce-three-theme.scss */
+/* line 79, resources/scss/_ce-three-theme.scss */
 .tippy-tooltip.ce-three-theme .tippy-backdrop {
   background-color: #FBFCFE;
 }
 
-/* line 77, resources/scss/_ce-three-theme.scss */
+/* line 83, resources/scss/_ce-three-theme.scss */
 .tippy-tooltip.ce-three-theme .tippy-roundarrow {
   fill: #FBFCFE;
 }
 
-/* line 81, resources/scss/_ce-three-theme.scss */
+/* line 87, resources/scss/_ce-three-theme.scss */
 .tippy-tooltip.ce-three-theme[data-animatefill] {
   background-color: initial;
 }

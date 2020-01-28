@@ -501,7 +501,7 @@ function makeTip(elem) {
       interactive: false,
       hideOnClick: false,
       flipOnUpdate: false
-    }));    
+    }));
   }
 }
 
