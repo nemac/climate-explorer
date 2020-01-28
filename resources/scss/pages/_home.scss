@@ -33,6 +33,7 @@ html, body {
 
   @include medium {
     margin-left: 24px;
+    margin-top: 24px;
   }
 
   &:after{
@@ -66,7 +67,7 @@ html, body {
     @include large {
       width: 100% !important;
     }
-    
+
     @include medium-height {
       width: 100% !important;
     }
@@ -274,8 +275,20 @@ html, body {
 
   margin-bottom: $ce3-default-padding;
   margin-left: 64px;
+
   @include medium-height {
     width: 90% !important;
+  }
+
+  @include large {
+    padding-top: 80px;
+    @include medium-height {
+      padding-top: 30px !important;
+    }
+  }
+
+  @include medium {
+    padding-top: 80px;
   }
 
   @include small {
