@@ -63,6 +63,10 @@ html, body {
     line-height: 22px;
     @include border-radius(5px, 5px);
 
+    @include large {
+      width: 100% !important;
+    }
+    
     @include medium-height {
       width: 100% !important;
     }
@@ -213,6 +217,7 @@ html, body {
         font-size: 16px;
       }
     }
+
     @include medium-height {
       margin-top: 56px;
       .icon-search:before {
@@ -342,6 +347,10 @@ html, body {
 .input-outer-main {
   background-color: $ce3-blue6;
   color: $ce3-blue6;
+
+  @include large {
+    width: 100% !important;
+  }
 
   @include very-small {
     width: 100% !important;
