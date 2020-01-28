@@ -11,6 +11,16 @@
     height: calc(100% - 48px - 12px - 64px) !important;
   }
 
+  ul {
+    list-style-type: square;
+    list-style-position: inside;
+    padding: $ce3-padding-half;
+    li {
+      margin-left: $ce3-padding-half;
+      margin-top: $ce3-padding-half;
+    }
+  }
+
   &:after {
     content: '';
     width: 100%;
