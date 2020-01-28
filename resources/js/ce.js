@@ -370,7 +370,7 @@ especially when it comes to interacting with the DOM and handling events.
     },
 
     getNavState: function getNavState() {
-      var pages = ["local-climate-charts", "local-climate-maps", "high-tide-flooding", "historical-weather-data","variables", "stations", "about", "definitions", "faq"];
+      var pages = ["local-climate-charts", "local-climate-maps", "high-tide-flooding", "historical-weather-data","variables", "stations", "about", "glossary", "faq"];
       var state = this.getUrlParams({
         slide: 'menu',
         detail: 'menuDetail'
@@ -382,7 +382,7 @@ especially when it comes to interacting with the DOM and handling events.
     },
 
     setNavState: function setNavState(state) {
-      var pages = ["local-climate-charts", "local-climate-maps", "high-tide-flooding", "historical-weather-data", "variables", "stations", "about", "definitions", "faq"];
+      var pages = ["local-climate-charts", "local-climate-maps", "high-tide-flooding", "historical-weather-data", "variables", "stations", "about", "glossary", "faq"];
       if (Object.keys(state).includes('slide')) {
         this.setUrlParam('menu', pages[state['slide']]);
       } else {
@@ -472,8 +472,8 @@ especially when it comes to interacting with the DOM and handling events.
         case 'about':
           breadcrumb_text = 'About';
           break;
-        case 'definitions':
-          breadcrumb_text = 'Definitions';
+        case 'glossary':
+          breadcrumb_text = 'glossary';
           break;
         case 'faq':
           breadcrumb_text = 'FAQ';

@@ -4,7 +4,7 @@ $(function () {
 
   addAboutlick('credits');
   addAboutlick('about');
-  addAboutlick('definitions');
+  addAboutlick('glossary');
   addAboutlick('faq');
 
 
