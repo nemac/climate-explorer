@@ -8,4 +8,8147 @@ module.exports=function($,window,errorHandler){if(!_INCLUDED){require("./draggab
 }multigraph.normalize();multigraph.div(options.div);$(options.div).css("cursor","pointer");multigraph.init();multigraph.registerEvents(options);multigraph.registerCommonDataCallback(function(event){multigraph.redraw()});return multigraph};Multigraph.createCanvasGraph=function(options){var muglPromise,deferred;try{require("../../events/all.js")($,window,options.messageHandler.error);muglPromise=$.ajax({url:options.mugl,dataType:"text"});deferred=$.Deferred()}catch(e){throw e}muglPromise.done(function(data){try{var multigraph=generateInitialGraph(data,options);deferred.resolve(multigraph)}catch(e){throw e}});return deferred.promise()};Multigraph.createCanvasGraphFromString=function(options){var deferred;try{require("../../events/all.js")($,window,options.messageHandler.error);deferred=$.Deferred();var multigraph=generateInitialGraph(options.muglString,options);deferred.resolve(multigraph)}catch(e){throw e}return deferred.promise()};return Multigraph}},{"../../core/multigraph.js":48,"../../events/all.js":72,"../../math/point.js":104,"../../parser/json/json_parser.js":119,"../../parser/xml/jquery_xml_parser.js":144,"../../util/validationFunctions.js":158}],91:[function(require,module,exports){module.exports=function(){var Plotarea=require("../../core/plotarea.js");if(typeof Plotarea.render==="function"){return Plotarea}Plotarea.respondsTo("render",function(graph,context){var plotBox=graph.plotBox(),border=this.border();if(this.color()!==null){context.save();context.fillStyle=this.color().getHexString("#");context.fillRect(0,0,plotBox.width(),plotBox.height());context.restore()}if(border>0){context.save();context.lineWidth=border;context.strokeStyle=this.bordercolor().getHexString("#");context.strokeRect(-border/2,-border/2,plotBox.width()+border,plotBox.height()+border);context.restore()}});return Plotarea}},{"../../core/plotarea.js":56}],92:[function(require,module,exports){var _INCLUDED=false;module.exports=function(){var BandRenderer=require("../../../core/renderers/band_renderer.js");if(_INCLUDED){return BandRenderer}_INCLUDED=true;BandRenderer.hasA("state");BandRenderer.respondsTo("begin",function(context){var state={context:context,run:[],linecolor:this.getOptionValue("linecolor"),line1color:this.getOptionValue("line1color"),line2color:this.getOptionValue("line2color"),linewidth:this.getOptionValue("linewidth"),line1width:this.getOptionValue("line1width"),line2width:this.getOptionValue("line2width"),fillcolor:this.getOptionValue("fillcolor"),fillopacity:this.getOptionValue("fillopacity")};this.state(state)});BandRenderer.respondsTo("dataPoint",function(datap){var state=this.state();if(this.isMissing(datap)){if(state.run.length>0){this.renderRun();state.run=[]}}else{var p=this.transformPoint(datap);state.run.push(p)}});BandRenderer.respondsTo("end",function(){var state=this.state();if(state.run.length>0){this.renderRun()}});var strokeRunLine=function(context,run,whichLine,color,defaultColor,width,defaultWidth){var i;width=width>=0?width:defaultWidth;if(width>0){color=color!==null?color:defaultColor;context.save();context.strokeStyle=color.getHexString("#");context.lineWidth=width;context.beginPath();context.moveTo(run[0][0],run[0][whichLine]);for(i=1;i<run.length;++i){context.lineTo(run[i][0],run[i][whichLine])}context.stroke();context.restore()}};BandRenderer.respondsTo("renderRun",function(){var state=this.state(),context=state.context,run=state.run,i;context.save();context.globalAlpha=state.fillopacity;context.fillStyle=state.fillcolor.getHexString("#");context.beginPath();context.moveTo(run[0][0],run[0][1]);for(i=1;i<run.length;++i){context.lineTo(run[i][0],run[i][1])}context.lineTo(run[run.length-1][0],run[run.length-1][2]);for(i=run.length-1;i>=0;--i){context.lineTo(run[i][0],run[i][2])}context.fill();context.restore();strokeRunLine(context,run,1,state.line1color,state.linecolor,state.line1width,state.linewidth);strokeRunLine(context,run,2,state.line2color,state.linecolor,state.line2width,state.linewidth)});BandRenderer.respondsTo("renderLegendIcon",function(context,x,y,icon){var state=this.state(),iconWidth=icon.width(),iconHeight=icon.height();context.save();context.transform(1,0,0,1,x,y);context.save();if(iconWidth<10||iconHeight<10){context.fillStyle=state.fillcolor.toRGBA()}else{context.fillStyle="#FFFFFF"}context.fillRect(0,0,iconWidth,iconHeight);context.restore();context.strokeStyle=state.line2color!==null?state.line2color:state.linecolor;context.lineWidth=state.line2width>=0?state.line2width:state.linewidth;context.fillStyle=state.fillcolor.toRGBA(state.fillopacity);context.beginPath();context.moveTo(0,2*iconHeight/8);context.lineTo(0,6*iconHeight/8);context.lineTo(iconWidth,7*iconHeight/8);context.lineTo(iconWidth,3*iconHeight/8);context.lineTo(0,2*iconHeight/8);context.fill();context.stroke();context.restore()});return BandRenderer}},{"../../../core/renderers/band_renderer.js":59}],93:[function(require,module,exports){var _INCLUDED=false;module.exports=function(){var BarRenderer=require("../../../core/renderers/bar_renderer.js");if(_INCLUDED){return BarRenderer}_INCLUDED=true;BarRenderer.hasA("settings");BarRenderer.respondsTo("begin",function(context){var settings={context:context,barpixelwidth:this.getOptionValue("barwidth").getRealValue()*this.plot().horizontalaxis().axisToDataRatio(),baroffset:this.getOptionValue("baroffset"),barpixelbase:this.getOptionValue("barbase")!==null?this.plot().verticalaxis().dataValueToAxisValue(this.getOptionValue("barbase")):0,fillcolor:this.getOptionValue("fillcolor"),linecolor:this.getOptionValue("linecolor"),hidelines:this.getOptionValue("hidelines"),barGroups:[],currentBarGroup:null,prevCorner:null,pixelEdgeTolerance:1};this.settings(settings)});BarRenderer.respondsTo("dataPoint",function(datap){if(this.isMissing(datap)){return}var settings=this.settings(),context=settings.context,p=this.transformPoint(datap),x0=p[0]+settings.baroffset,x1=p[0]+settings.baroffset+settings.barpixelwidth;context.save();context.fillStyle=this.getOptionValue("fillcolor",datap[1]).getHexString("#");context.fillRect(x0,settings.barpixelbase,settings.barpixelwidth,p[1]-settings.barpixelbase);context.restore();if(settings.barpixelwidth>settings.hidelines){if(settings.prevCorner===null){settings.currentBarGroup=[[x0,p[1]]]}else{if(Math.abs(x0-settings.prevCorner[0])<=settings.pixelEdgeTolerance){settings.currentBarGroup.push([x0,p[1]])}else{settings.currentBarGroup.push(settings.prevCorner);settings.barGroups.push(settings.currentBarGroup);settings.currentBarGroup=[[x0,p[1]]]}}settings.prevCorner=[x1,p[1]]}});BarRenderer.respondsTo("end",function(){var settings=this.settings(),context=settings.context,barpixelbase=settings.barpixelbase,max=Math.max,min=Math.min,p,barGroup,i,j,n;if(settings.prevCorner!==null&&settings.currentBarGroup!==null){settings.currentBarGroup.push(settings.prevCorner);settings.barGroups.push(settings.currentBarGroup)}context.save();context.strokeStyle=settings.linecolor.getHexString("#");context.beginPath();for(i=0;i<settings.barGroups.length;i++){barGroup=settings.barGroups[i];n=barGroup.length;if(n<2){return}context.moveTo(barGroup[1][0],barGroup[0][1]);context.lineTo(barGroup[0][0],barGroup[0][1]);context.lineTo(barGroup[0][0],barpixelbase);context.lineTo(barGroup[1][0],barpixelbase);for(j=1;j<n-1;++j){context.moveTo(barGroup[j][0],min(barGroup[j-1][1],barGroup[j][1],barpixelbase));context.lineTo(barGroup[j][0],max(barGroup[j-1][1],barGroup[j][1],barpixelbase));context.moveTo(barGroup[j][0],barGroup[j][1]);context.lineTo(barGroup[j+1][0],barGroup[j][1]);context.moveTo(barGroup[j][0],barpixelbase);context.lineTo(barGroup[j+1][0],barpixelbase)}context.moveTo(barGroup[n-1][0],barGroup[n-1][1]);context.lineTo(barGroup[n-1][0],barpixelbase)}context.stroke();context.restore()});BarRenderer.respondsTo("renderLegendIcon",function(context,x,y,icon){var settings=this.settings(),rendererFillColor=this.getOptionValue("fillcolor",0).toRGBA(this.getOptionValue("fillopacity",0));context.save();context.transform(1,0,0,1,x,y);context.fillStyle="rgba(255, 255, 255, 1)";context.fillRect(0,0,icon.width(),icon.height());context.lineWidth=1;context.fillStyle=rendererFillColor;if(settings.barpixelwidth<settings.hidelines){context.strokeStyle=rendererFillColor}else{context.strokeStyle=this.getOptionValue("linecolor",0).toRGBA()}var iconWidth=icon.width(),iconHeight=icon.height(),barwidth;if(iconWidth>20||iconHeight>20){barwidth=iconWidth/6}else if(iconWidth>10||iconHeight>10){barwidth=iconWidth/4}else{barwidth=iconWidth/4}if(iconWidth>20&&iconHeight>20){context.fillRect(iconWidth/4-barwidth/2,0,barwidth,iconHeight/2);context.strokeRect(iconWidth/4-barwidth/2,0,barwidth,iconHeight/2);context.fillRect(iconWidth-iconWidth/4-barwidth/2,0,barwidth,iconHeight/3);context.strokeRect(iconWidth-iconWidth/4-barwidth/2,0,barwidth,iconHeight/3)}context.fillRect(iconWidth/2-barwidth/2,0,barwidth,iconHeight-iconHeight/4);context.strokeRect(iconWidth/2-barwidth/2,0,barwidth,iconHeight-iconHeight/4);context.restore()});return BarRenderer}},{"../../../core/renderers/bar_renderer.js":60}],94:[function(require,module,exports){var _INCLUDED=false;module.exports=function(){var FillRenderer=require("../../../core/renderers/fill_renderer.js"),mathUtil=require("../../../math/util.js");if(_INCLUDED){return FillRenderer}_INCLUDED=true;FillRenderer.hasA("state");FillRenderer.respondsTo("begin",function(context){var state={context:context,run:[],previouspoint:null,linecolor:this.getOptionValue("linecolor"),linewidth:this.getOptionValue("linewidth"),fillcolor:this.getOptionValue("fillcolor"),downfillcolor:this.getOptionValue("downfillcolor"),fillopacity:this.getOptionValue("fillopacity"),fillbase:this.getOptionValue("fillbase"),currentfillcolor:null};if(state.downfillcolor===null){state.downfillcolor=state.fillcolor}if(state.fillbase!==null){state.fillpixelbase=this.plot().verticalaxis().dataValueToAxisValue(state.fillbase)}else{state.fillpixelbase=0}this.state(state);context.save();context.fillStyle=state.fillcolor.getHexString("#")});FillRenderer.respondsTo("dataPoint",function(datap){var state=this.state(),fillpixelbase=state.fillpixelbase,fillcolor,linecolor,p;if(this.isMissing(datap)){if(state.previouspoint!==null){state.run.push([state.previouspoint[0],fillpixelbase]);this.renderRun();state.run=[];state.previouspoint=null}return}p=this.transformPoint(datap);if(p[1]>=fillpixelbase){fillcolor=state.fillcolor}else{fillcolor=state.downfillcolor}if(state.run.length===0){state.run.push([p[0],fillpixelbase])}else{if(!fillcolor.eq(state.currentfillcolor)){var x=mathUtil.safe_interp(fillpixelbase,state.previouspoint[1],p[1],state.previouspoint[0],p[0]);state.run.push([x,fillpixelbase]);state.run.push([x,fillpixelbase]);this.renderRun();state.run=[];state.run.push([x,fillpixelbase]);state.run.push([x,fillpixelbase])}}state.run.push(p);state.previouspoint=p;state.currentfillcolor=fillcolor});FillRenderer.respondsTo("end",function(){var state=this.state(),context=state.context;if(state.run.length>0){state.run.push([state.run[state.run.length-1][0],state.fillpixelbase]);this.renderRun()}context.restore()});FillRenderer.respondsTo("renderRun",function(){var state=this.state(),context=state.context,i;context.save();context.globalAlpha=state.fillopacity;context.fillStyle=state.currentfillcolor.getHexString("#");context.beginPath();context.moveTo(state.run[0][0],state.run[0][1]);for(i=1;i<state.run.length;++i){context.lineTo(state.run[i][0],state.run[i][1])}context.fill();context.restore();context.save();context.strokeStyle=state.linecolor.getHexString("#");context.lineWidth=state.linewidth;context.beginPath();context.moveTo(state.run[1][0],state.run[1][1]);for(i=2;i<state.run.length-1;++i){context.lineTo(state.run[i][0],state.run[i][1])}context.stroke();context.restore()});FillRenderer.respondsTo("renderLegendIcon",function(context,x,y,icon){var state=this.state(),iconWidth=icon.width(),iconHeight=icon.height();context.save();context.transform(1,0,0,1,x,y);context.save();if(iconWidth<10||iconHeight<10){context.fillStyle=state.fillcolor.toRGBA()}else{context.fillStyle="rgba(255, 255, 255, 1)"}context.fillRect(0,0,iconWidth,iconHeight);context.restore();context.strokeStyle=state.linecolor.toRGBA();context.lineWidth=state.linewidth;context.fillStyle=state.fillcolor.toRGBA(state.fillopacity);context.beginPath();context.moveTo(0,0);if(iconWidth>10||iconHeight>10){if(iconWidth>20||iconHeight>20){context.lineTo(iconWidth/6,iconHeight/2);context.lineTo(iconWidth/3,iconHeight/4)}context.lineTo(iconWidth/2,iconHeight-iconHeight/4);if(iconWidth>20||iconHeight>20){context.lineTo(iconWidth-iconWidth/3,iconHeight/4);context.lineTo(iconWidth-iconWidth/6,iconHeight/2)}}context.lineTo(iconWidth,0);context.stroke();context.fill();context.restore()});return FillRenderer}},{"../../../core/renderers/fill_renderer.js":61,"../../../math/util.js":106}],95:[function(require,module,exports){var _INCLUDED=false;module.exports=function(){var PointlineRenderer=require("../../../core/renderers/pointline_renderer.js"),Renderer=require("../../../core/renderer.js");if(_INCLUDED){return PointlineRenderer}_INCLUDED=true;PointlineRenderer.hasA("settings");PointlineRenderer.respondsTo("begin",function(context){var settings={context:context,points:[],first:true,pointshape:this.getOptionValue("pointshape"),pointcolor:this.getOptionValue("pointcolor"),pointopacity:this.getOptionValue("pointopacity"),pointsize:this.getOptionValue("pointsize"),pointoutlinewidth:this.getOptionValue("pointoutlinewidth"),pointoutlinecolor:this.getOptionValue("pointoutlinecolor"),linestroke:this.getOptionValue("linestroke"),linecolor:this.getOptionValue("linecolor"),linewidth:this.getOptionValue("linewidth")};if(this.type()===Renderer.LINE){settings.pointsize=0}if(this.type()===Renderer.POINT){settings.linewidth=0}this.settings(settings);if(settings.linewidth>0){context.save();context.beginPath();if(settings.linestroke===PointlineRenderer.DASHED){context.setLineDash([5,5])}context.lineWidth=settings.linewidth;context.strokeStyle=settings.linecolor.getHexString("#")}if(this.filter()){this.filter().reset()}});PointlineRenderer.respondsTo("dataPoint",function(datap){var settings=this.settings(),context=settings.context,p;if(this.isMissing(datap)){settings.first=true;return}p=this.transformPoint(datap);if(this.filter()){if(this.filter().filter(datap,p)){return}}if(settings.linewidth>0){if(settings.first){context.moveTo(p[0],p[1]);settings.first=false}else{context.lineTo(p[0],p[1])}}if(settings.pointsize>0){settings.points.push(p)}});PointlineRenderer.respondsTo("end",function(){var settings=this.settings(),context=settings.context;if(settings.linewidth>0){context.stroke();context.restore()}if(settings.pointsize>0){this.drawPoints()}});PointlineRenderer.respondsTo("drawPoints",function(p){var settings=this.settings(),context=settings.context,points=settings.points,pointshape=settings.pointshape,i;context.save();context.beginPath();if(pointshape===PointlineRenderer.PLUS||pointshape===PointlineRenderer.X){context.strokeStyle=settings.pointcolor.getHexString("#");context.lineWidth=settings.pointoutlinewidth}else{context.fillStyle=settings.pointcolor.toRGBA(settings.pointopacity);context.strokeStyle=settings.pointoutlinecolor.getHexString("#");context.lineWidth=settings.pointoutlinewidth}for(i=0;i<points.length;++i){this.drawPoint(context,settings,points[i])}if(!(pointshape===PointlineRenderer.PLUS||pointshape===PointlineRenderer.X)){context.fill()}context.stroke();context.restore()});PointlineRenderer.respondsTo("drawPoint",function(context,settings,p){var pointsize=settings.pointsize,p0=p[0],p1=p[1],a,b,d;switch(settings.pointshape){case PointlineRenderer.PLUS:context.moveTo(p0,p1-pointsize);context.lineTo(p0,p1+pointsize);context.moveTo(p0-pointsize,p1);context.lineTo(p0+pointsize,p1);return;case PointlineRenderer.X:d=.7071*pointsize;context.moveTo(p0-d,p1-d);context.lineTo(p0+d,p1+d);context.moveTo(p0-d,p1+d);context.lineTo(p0+d,p1-d);return;case PointlineRenderer.SQUARE:context.moveTo(p0-pointsize,p1-pointsize);context.lineTo(p0+pointsize,p1-pointsize);context.lineTo(p0+pointsize,p1+pointsize);context.lineTo(p0-pointsize,p1+pointsize);return;case PointlineRenderer.TRIANGLE:d=1.5*pointsize;a=.866025*d;b=.5*d;context.moveTo(p0,p1+d);context.lineTo(p0+a,p1-b);context.lineTo(p0-a,p1-b);return;case PointlineRenderer.DIAMOND:d=1.5*pointsize;context.moveTo(p0-pointsize,p1);context.lineTo(p0,p1+d);context.lineTo(p0+pointsize,p1);context.lineTo(p0,p1-d);return;case PointlineRenderer.STAR:d=1.5*pointsize;context.moveTo(p0-d*0,p1+d*1);context.lineTo(p0+d*.3536,p1+d*.3536);context.lineTo(p0+d*.9511,p1+d*.309);context.lineTo(p0+d*.4455,p1-d*.227);context.lineTo(p0+d*.5878,p1-d*.809);context.lineTo(p0-d*.0782,p1-d*.4938);context.lineTo(p0-d*.5878,p1-d*.809);context.lineTo(p0-d*.4938,p1-d*.0782);context.lineTo(p0-d*.9511,p1+d*.309);context.lineTo(p0-d*.227,p1+d*.4455);return;case PointlineRenderer.CIRCLE:context.moveTo(p0+pointsize,p1);context.arc(p0,p1,pointsize,0,2*Math.PI,false);return}});PointlineRenderer.respondsTo("renderLegendIcon",function(context,x,y,icon){var settings=this.settings(),pointshape=settings.pointshape,iconWidth=icon.width(),iconHeight=icon.height();context.save();context.fillStyle="rgba(255, 255, 255, 1)";context.fillRect(x,y,iconWidth,iconHeight);if(settings.linewidth>0){context.strokeStyle=settings.linecolor.toRGBA();context.lineWidth=settings.linewidth;context.beginPath();context.moveTo(x,y+iconHeight/2);context.lineTo(x+iconWidth,y+iconHeight/2);context.stroke()}if(settings.pointsize>0){context.beginPath();if(pointshape===PointlineRenderer.PLUS||pointshape===PointlineRenderer.X){context.strokeStyle=settings.pointcolor.toRGBA();context.lineWidth=settings.pointoutlinewidth}else{context.fillStyle=settings.pointcolor.toRGBA(settings.pointopacity);context.strokeStyle=settings.pointoutlinecolor.toRGBA();context.lineWidth=settings.pointoutlinewidth}this.drawPoint(context,settings,[x+iconWidth/2,y+iconHeight/2]);if(!(pointshape===PointlineRenderer.PLUS||pointshape===PointlineRenderer.X)){context.fill()}context.stroke()}context.restore()});return PointlineRenderer}},{"../../../core/renderer.js":57,"../../../core/renderers/pointline_renderer.js":62}],96:[function(require,module,exports){var _INCLUDED=false;module.exports=function(){var RangeBarRenderer=require("../../../core/renderers/rangebar_renderer.js");if(_INCLUDED){return RangeBarRenderer}_INCLUDED=true;RangeBarRenderer.hasA("state");RangeBarRenderer.respondsTo("begin",function(context){var state={context:context,run:[],barpixelwidth:this.getOptionValue("barwidth").getRealValue()*this.plot().horizontalaxis().axisToDataRatio(),barpixeloffset:0,baroffset:this.getOptionValue("baroffset"),fillcolor:this.getOptionValue("fillcolor"),fillopacity:this.getOptionValue("fillopacity"),linecolor:this.getOptionValue("linecolor"),linewidth:this.getOptionValue("linewidth"),hidelines:this.getOptionValue("hidelines")};state.barpixeloffset=state.barpixelwidth*state.baroffset;this.state(state);context.save();context.beginPath()});RangeBarRenderer.respondsTo("dataPoint",function(datap){if(this.isMissing(datap)){return}var state=this.state(),context=state.context,p=this.transformPoint(datap),x0=p[0]-state.barpixeloffset,x1=x0+state.barpixelwidth;context.moveTo(x0,p[1]);context.lineTo(x0,p[2]);context.lineTo(x1,p[2]);context.lineTo(x1,p[1]);context.lineTo(x0,p[1])});RangeBarRenderer.respondsTo("end",function(){var state=this.state(),context=state.context;context.globalAlpha=state.fillopacity;context.fillStyle=state.fillcolor.getHexString("#");context.fill();if(state.linewidth>0&&state.barpixelwidth>state.hidelines){context.strokeStyle=state.linecolor.getHexString("#");context.lineWidth=state.linewidth;context.stroke()}context.restore()});RangeBarRenderer.respondsTo("renderLegendIcon",function(context,x,y,icon){var state=this.state(),iconWidth=icon.width(),iconHeight=icon.height(),barwidth;context.save();context.transform(1,0,0,1,x,y);context.save();context.strokeStyle="#FFFFFF";context.fillStyle="#FFFFFF";context.fillRect(0,0,iconWidth,iconHeight);context.restore();context.fillStyle=state.fillcolor.toRGBA(state.fillopacity);context.lineWidth=state.linewidth;if(state.barpixelwidth<10){context.strokeStyle=state.fillcolor.toRGBA(state.fillopacity)}else{context.strokeStyle=state.linecolor.getHexString("#")}if(iconWidth>20||iconHeight>20){barwidth=iconWidth/6}else if(iconWidth>10||iconHeight>10){barwidth=iconWidth/4}else{barwidth=iconWidth/4}if(iconWidth>20&&iconHeight>20){context.fillRect(iconWidth/4-barwidth/2,iconHeight/8,barwidth,iconHeight/2);context.strokeRect(iconWidth/4-barwidth/2,iconHeight/8,barwidth,iconHeight/2);context.fillRect(iconWidth-iconWidth/4-barwidth/2,iconHeight/4,barwidth,iconHeight/3);context.strokeRect(iconWidth-iconWidth/4-barwidth/2,iconHeight/4,barwidth,iconHeight/3)}context.fillRect(iconWidth/2-barwidth/2,0,barwidth,iconHeight-iconHeight/4);context.strokeRect(iconWidth/2-barwidth/2,0,barwidth,iconHeight-iconHeight/4);context.restore()});return RangeBarRenderer}},{"../../../core/renderers/rangebar_renderer.js":63}],97:[function(require,module,exports){module.exports=function(){var Text=require("../../core/text.js");if(typeof Text.drawText==="function"){return Text}Text.respondsTo("initializeGeometry",function(graphicsContext){var origWidth,origHeight,rotatedWidth,rotatedHeight;graphicsContext.context.save();if(this.font()!==""){graphicsContext.context.font=this.font()}else if(graphicsContext.fontSize!==undefined){graphicsContext.context.font=graphicsContext.fontSize+" sans-serif"}origWidth=this.measureStringWidth(graphicsContext.context);origHeight=this.measureStringHeight(graphicsContext.context);graphicsContext.context.restore();if(graphicsContext.angle!==undefined){var angle=graphicsContext.angle/180*Math.PI;rotatedWidth=Math.abs(Math.cos(angle))*origWidth+Math.abs(Math.sin(angle))*origHeight;rotatedHeight=Math.abs(Math.sin(angle))*origWidth+Math.abs(Math.cos(angle))*origHeight}else{rotatedWidth=origWidth;rotatedHeight=origHeight}this.origWidth(origWidth);this.origHeight(origHeight);this.rotatedWidth(rotatedWidth);this.rotatedHeight(rotatedHeight);return this});Text.respondsTo("measureStringWidth",function(context){if(this.string()===undefined){throw new Error("measureStringWidth requires the string attr to be set.")}var metrics=context.measureText(this.string());return metrics.width});Text.respondsTo("measureStringHeight",function(context){if(this.string()===undefined){throw new Error("measureStringHeight requires the string attr to be set.")}var metrics=context.measureText("M"),newlineCount=this.string().match(/\n/g);return(newlineCount!==null?newlineCount.length+1:1)*metrics.width});Text.respondsTo("setTransform",function(context,anchor,base,position,angle){context.transform(1,0,0,-1,0,2*base.y());context.transform(1,0,0,1,base.x(),base.y());context.transform(1,0,0,1,position.x(),-position.y());context.rotate(-angle*Math.PI/180);context.transform(1,0,0,1,-anchor.x(),anchor.y())});Text.respondsTo("drawText",function(context,anchor,base,position,angle){context.save();this.setTransform(context,anchor,base,position,angle);if(this.font()!==""){context.font=this.font()}context.fillText(this.string(),0,0);context.restore()});return Text}},{"../../core/text.js":64}],98:[function(require,module,exports){module.exports=function(){var Window=require("../../core/window.js");if(typeof Window.render==="function"){return Window}Window.respondsTo("render",function(context,width,height){var m=this.margin().left();context.save();context.fillStyle=this.bordercolor().getHexString("#");context.fillRect(m,m,width-2*m,height-2*m);context.restore()});return Window}},{"../../core/window.js":70}],99:[function(require,module,exports){require("../lib/ajaxthrottle/src/ajaxthrottle.js");require("../lib/lightbox/lightbox.js");require("../lib/jquery/jquery.mousewheel.js");require("../lib/busy-spinner/busy_spinner.js");require("../lib/error-display/build/errorDisplay.js");require("../lib/requestanimationframe/requestanimationframe.js");require("./parser/xml/jquery_xml_parser.js")($);require("./parser/json/json_parser.js")($);require("./graphics/canvas/all.js")($,window);require("./events/multigraph.js")($,window,undefined);var Multigraph=require("./core/multigraph.js")($);var utilityFunctions=require("./util/utilityFunctions.js");var parsingFunctions=require("./util/parsingFunctions.js");var validationFunctions=require("./util/validationFunctions.js");window.multigraph={core:{Multigraph:Multigraph,CSVData:require("./core/csv_data.js")($),WebServiceData:require("./core/web_service_data.js")($),ArrayData:require("./core/array_data.js"),Axis:require("./core/axis.js"),AxisBinding:require("./core/axis_binding.js"),AxisTitle:require("./core/axis_title.js"),Background:require("./core/background.js"),ConstantPlot:require("./core/constant_plot.js"),Data:require("./core/data.js"),DataFormatter:require("./core/data_formatter.js"),DataMeasure:require("./core/data_measure.js"),DataPlot:require("./core/data_plot.js"),DataValue:require("./core/data_value.js"),DataVariable:require("./core/data_variable.js"),Datatips:require("./core/datatips.js"),DatatipsVariable:require("./core/datatips_variable.js"),DatetimeFormatter:require("./core/datetime_formatter.js"),DatetimeMeasure:require("./core/datetime_measure.js"),DatetimeValue:require("./core/datetime_value.js"),EventEmitter:require("./core/event_emitter.js"),FilterOption:require("./core/filter_option.js"),Filter:require("./core/filter.js"),Graph:require("./core/graph.js"),Grid:require("./core/grid.js"),Icon:require("./core/icon.js"),Img:require("./core/img.js"),Labeler:require("./core/labeler.js"),Legend:require("./core/legend.js"),Mixin:require("./core/mixin.js"),NumberFormatter:require("./core/number_formatter.js"),NumberMeasure:require("./core/number_measure.js"),NumberValue:require("./core/number_value.js"),Pan:require("./core/pan.js"),PeriodicArrayData:require("./core/periodic_array_data.js"),Plot:require("./core/plot.js"),PlotLegend:require("./core/plot_legend.js"),Plotarea:require("./core/plotarea.js"),Renderer:require("./core/renderer.js"),BandRenderer:require("./core/renderers/band_renderer.js"),BarRenderer:require("./core/renderers/bar_renderer.js"),FillRenderer:require("./core/renderers/fill_renderer.js"),PointlineRenderer:require("./core/renderers/pointline_renderer.js"),RangeBarRenderer:require("./core/renderers/rangebar_renderer.js"),Text:require("./core/text.js"),Title:require("./core/title.js"),Warning:require("./core/warning.js"),WebServiceDataCacheNode:require("./core/web_service_data_cache_node.js"),WebServiceDataIterator:require("./core/web_service_data_iterator.js"),Window:require("./core/window.js"),Zoom:require("./core/zoom.js"),browserHasCanvasSupport:Multigraph.browserHasCanvasSupport,browserHasSVGSupport:Multigraph.browserHasSVGSupport},create:Multigraph.create,math:{Box:require("./math/box.js"),Displacement:require("./math/displacement.js"),Enum:require("./math/enum.js"),Insets:require("./math/insets.js"),Point:require("./math/point.js"),RGBColor:require("./math/rgb_color.js"),util:require("./math/util.js")},parser:{jquery:{stringToJQueryXMLObj:require("./parser/xml/jquery_xml_parser.js")($).stringToJQueryXMLObj}},utilityFunctions:{getKeys:utilityFunctions.getKeys,insertDefaults:utilityFunctions.insertDefaults,getDefaultValuesFromXSD:utilityFunctions.getDefaultValuesFromXSD,parseAttribute:parsingFunctions.parseAttribute,parseInteger:parsingFunctions.parseInteger,parseBoolean:parsingFunctions.parseBoolean,getXMLAttr:parsingFunctions.getXMLAttr,validateNumberRange:validationFunctions.validateNumberRange,typeOf:validationFunctions.typeOf},jermaine:require("../lib/jermaine/src/jermaine.js"),jQuery:$};window.sprintf=require("sprintf")},{"../lib/ajaxthrottle/src/ajaxthrottle.js":1,"../lib/busy-spinner/busy_spinner.js":2,"../lib/error-display/build/errorDisplay.js":3,"../lib/jermaine/src/jermaine.js":9,"../lib/jquery/jquery.mousewheel.js":13,"../lib/lightbox/lightbox.js":14,"../lib/requestanimationframe/requestanimationframe.js":15,"./core/array_data.js":17,"./core/axis.js":18,"./core/axis_binding.js":19,"./core/axis_title.js":20,"./core/background.js":21,"./core/constant_plot.js":24,"./core/csv_data.js":25,"./core/data.js":26,"./core/data_formatter.js":27,"./core/data_measure.js":28,"./core/data_plot.js":29,"./core/data_value.js":30,"./core/data_variable.js":31,"./core/datatips.js":32,"./core/datatips_variable.js":33,"./core/datetime_formatter.js":34,"./core/datetime_measure.js":35,"./core/datetime_value.js":37,"./core/event_emitter.js":38,"./core/filter.js":39,"./core/filter_option.js":40,"./core/graph.js":41,"./core/grid.js":42,"./core/icon.js":43,"./core/img.js":44,"./core/labeler.js":45,"./core/legend.js":46,"./core/mixin.js":47,"./core/multigraph.js":48,"./core/number_formatter.js":49,"./core/number_measure.js":50,"./core/number_value.js":51,"./core/pan.js":52,"./core/periodic_array_data.js":53,"./core/plot.js":54,"./core/plot_legend.js":55,"./core/plotarea.js":56,"./core/renderer.js":57,"./core/renderers/band_renderer.js":59,"./core/renderers/bar_renderer.js":60,"./core/renderers/fill_renderer.js":61,"./core/renderers/pointline_renderer.js":62,"./core/renderers/rangebar_renderer.js":63,"./core/text.js":64,"./core/title.js":65,"./core/warning.js":66,"./core/web_service_data.js":67,"./core/web_service_data_cache_node.js":68,"./core/web_service_data_iterator.js":69,"./core/window.js":70,"./core/zoom.js":71,"./events/multigraph.js":76,"./graphics/canvas/all.js":80,"./math/box.js":100,"./math/displacement.js":101,"./math/enum.js":102,"./math/insets.js":103,"./math/point.js":104,"./math/rgb_color.js":105,"./math/util.js":106,"./parser/json/json_parser.js":119,"./parser/xml/jquery_xml_parser.js":144,"./util/parsingFunctions.js":156,"./util/utilityFunctions.js":157,"./util/validationFunctions.js":158,sprintf:16}],100:[function(require,module,exports){var jermaine=require("../../lib/jermaine/src/jermaine.js");var Box=new jermaine.Model("Box",function(){this.hasA("width").which.isA("number");this.hasA("height").which.isA("number");this.isBuiltWith("width","height")});module.exports=Box},{"../../lib/jermaine/src/jermaine.js":9}],101:[function(require,module,exports){var jermaine=require("../../lib/jermaine/src/jermaine.js"),validationFunctions=require("../util/validationFunctions.js");var Displacement={};Displacement=new jermaine.Model("Displacement",function(){this.hasA("a").which.validatesWith(function(a){return validationFunctions.validateNumberRange(a,-1,1)});this.hasA("b").which.isA("integer").and.defaultsTo(0);this.isBuiltWith("a","%b");this.respondsTo("calculateLength",function(totalLength){return this.a()*totalLength+this.b()});this.respondsTo("calculateCoordinate",function(totalLength){return(this.a()+1)*totalLength/2+this.b()})});Displacement.regExp=/^([\+\-]?[0-9\.]+)([+\-])([0-9\.+\-]+)$/;Displacement.parse=function(string){if(typeof string!=="string"){string=String(string)}var ar=Displacement.regExp.exec(string),d,a,b,sign;if(string===undefined){d=new Displacement(1)}else if(ar!==null){a=parseFloat(ar[1]);b=parseFloat(ar[3]);switch(ar[2]){case"+":sign=1;break;case"-":sign=-1;break;default:sign=0;break}d=new Displacement(a,sign*b)}else{a=parseFloat(string);d=new Displacement(a)}return d};module.exports=Displacement},{"../../lib/jermaine/src/jermaine.js":9,"../util/validationFunctions.js":158}],102:[function(require,module,exports){var Enum=function(name){var instances={};var Enum=function(key){if(instances[key]!==undefined){throw new Error("attempt to redefine "+name+" Enum with key '"+key+"'")}this.enumType=name;this.key=key;instances[key]=this};Enum.parse=function(key){return instances[key]};Enum.prototype.toString=function(){return this.key};Enum.isInstance=function(obj){return obj!==undefined&&obj!==null&&obj.enumType===name};return Enum};module.exports=Enum},{}],103:[function(require,module,exports){var jermaine=require("../../lib/jermaine/src/jermaine.js");
 var Insets=new jermaine.Model("Insets",function(){this.hasA("top").which.isA("number");this.hasA("left").which.isA("number");this.hasA("bottom").which.isA("number");this.hasA("right").which.isA("number");this.respondsTo("set",function(top,left,bottom,right){this.top(top);this.left(left);this.bottom(bottom);this.right(right)});this.isBuiltWith("top","left","bottom","right")});module.exports=Insets},{"../../lib/jermaine/src/jermaine.js":9}],104:[function(require,module,exports){var jermaine=require("../../lib/jermaine/src/jermaine.js");var Point=new jermaine.Model("Point",function(){this.hasA("x").which.isA("number");this.hasA("y").which.isA("number");this.isBuiltWith("x","y");this.respondsTo("eq",function(p){return this.x()===p.x()&&this.y()===p.y()})});var regExp=/^\s*([0-9\-\+\.eE]+)(,|\s+|\s*,\s+|\s+,\s*)([0-9\-\+\.eE]+)\s*$/;Point.parse=function(string){var ar=regExp.exec(string),p;if(!ar||ar.length!==4){throw new Error("cannot parse string '"+string+"' as a Point")}return new Point(parseFloat(ar[1]),parseFloat(ar[3]))};module.exports=Point},{"../../lib/jermaine/src/jermaine.js":9}],105:[function(require,module,exports){var jermaine=require("../../lib/jermaine/src/jermaine.js");var validationFunctions=require("../util/validationFunctions.js");var RGBColor=new jermaine.Model("RGBColor",function(){this.hasA("r").which.validatesWith(function(r){return validationFunctions.validateNumberRange(r,0,1)});this.hasA("g").which.validatesWith(function(g){return validationFunctions.validateNumberRange(g,0,1)});this.hasA("b").which.validatesWith(function(b){return validationFunctions.validateNumberRange(b,0,1)});var numberToHex=function(number){number=parseInt(number*255,10).toString(16);if(number.length===1){number="0"+number}return number};this.respondsTo("getHexString",function(prefix){if(!prefix){prefix="0x"}return prefix+numberToHex(this.r())+numberToHex(this.g())+numberToHex(this.b())});this.respondsTo("toRGBA",function(alpha){if(alpha===undefined){alpha=1}if(typeof alpha!=="number"){throw new Error("RGBColor.toRGBA: The argument, if present, must be a number")}return"rgba("+255*this.r()+", "+255*this.g()+", "+255*this.b()+", "+alpha+")"});this.respondsTo("eq",function(color){return this.r()===color.r()&&this.g()===color.g()&&this.b()===color.b()});this.isBuiltWith("r","g","b")});RGBColor.colorNameIsDeprecated=function(colorName){switch(colorName){case"grey":return"0xeeeeee";case"skyblue":return"0x87ceeb";case"khaki":return"0xf0e68c";case"orange":return"0xffa500";case"salmon":return"0xfa8072";case"olive":return"0x9acd32";case"sienna":return"0xa0522d";case"pink":return"0xffb5c5";case"violet":return"0xee82ee"}return false};RGBColor.parse=function(input){var red,green,blue,grey,parsedInput,colorObj;if(input===undefined){return undefined}else if(typeof input==="string"){parsedInput=input.toLowerCase();switch(parsedInput){case"black":red=0;green=0;blue=0;break;case"red":red=1;green=0;blue=0;break;case"green":red=0;green=1;blue=0;break;case"blue":red=0;green=0;blue=1;break;case"yellow":red=1;green=1;blue=0;break;case"magenta":red=1;green=0;blue=1;break;case"cyan":red=0;green=1;blue=1;break;case"white":red=1;green=1;blue=1;break;case"grey":grey=parseInt("ee",16)/255;red=grey;green=grey;blue=grey;break;case"skyblue":red=parseInt("87",16)/255;green=parseInt("ce",16)/255;blue=parseInt("eb",16)/255;break;case"khaki":red=parseInt("f0",16)/255;green=parseInt("e6",16)/255;blue=parseInt("8c",16)/255;break;case"orange":red=parseInt("ff",16)/255;green=parseInt("a5",16)/255;blue=parseInt("00",16)/255;break;case"salmon":red=parseInt("fa",16)/255;green=parseInt("80",16)/255;blue=parseInt("72",16)/255;break;case"olive":red=parseInt("9a",16)/255;green=parseInt("cd",16)/255;blue=parseInt("32",16)/255;break;case"sienna":red=parseInt("a0",16)/255;green=parseInt("52",16)/255;blue=parseInt("2d",16)/255;break;case"pink":red=parseInt("ff",16)/255;green=parseInt("b5",16)/255;blue=parseInt("c5",16)/255;break;case"violet":red=parseInt("ee",16)/255;green=parseInt("82",16)/255;blue=parseInt("ee",16)/255;break;default:parsedInput=parsedInput.replace(/(0(x|X)|#)/,"");if(parsedInput.search(new RegExp(/([^0-9a-f])/))!==-1){throw new Error("'"+input+"' is not a valid color")}if(parsedInput.length===6){red=parseInt(parsedInput.substring(0,2),16)/255;green=parseInt(parsedInput.substring(2,4),16)/255;blue=parseInt(parsedInput.substring(4,6),16)/255}else if(parsedInput.length===3){red=parseInt(parsedInput.charAt(0),16)/15;green=parseInt(parsedInput.charAt(1),16)/15;blue=parseInt(parsedInput.charAt(2),16)/15}else{throw new Error("'"+input+"' is not a valid color")}break}colorObj=new RGBColor(red,green,blue);return colorObj}throw new Error("'"+input+"' is not a valid color")};module.exports=RGBColor},{"../../lib/jermaine/src/jermaine.js":9,"../util/validationFunctions.js":158}],106:[function(require,module,exports){Util={};Util.interp=function(x,x0,x1,y0,y1){return y0+(y1-y0)*(x-x0)/(x1-x0)};Util.safe_interp=function(x,x0,x1,y0,y1){if(x0===x1){return(y0+y1)/2}return Util.interp(x,x0,x1,y0,y1)};Util.l2dist=function(x1,y1,x2,y2){var dx=x1-x2;var dy=y1-y2;return Math.sqrt(dx*dx+dy*dy)};module.exports=Util},{}],107:[function(require,module,exports){require("./labeler.js");require("./axis_title.js");require("./grid.js");require("./pan.js");require("./zoom.js");var Axis=require("../../core/axis.js"),pF=require("../../util/parsingFunctions.js"),vF=require("../../util/validationFunctions.js"),uF=require("../../util/utilityFunctions.js");var parseLabels=function(json,axis){var spacings,labelers=axis.labelers(),Labeler=require("../../core/labeler.js"),DataValue=require("../../core/data_value.js"),i;spacings=[];if(json!==undefined){if(json.spacing!==undefined){spacings=vF.typeOf(json.spacing)==="array"?json.spacing:[json.spacing]}}if(spacings.length>0){for(i=0;i<spacings.length;++i){labelers.add(Labeler.parseJSON(json,axis,undefined,spacings[i]))}}else if(json!==undefined&&json.label!==undefined&&json.label.length>0){var defaults=Labeler.parseJSON(json,axis,undefined,null);json.label.forEach(function(e){var spacing=[];if(e.spacing!==undefined){spacing=vF.typeOf(e.spacing)==="array"?e.spacing:[e.spacing]}spacing.forEach(function(s){labelers.add(Labeler.parseJSON(e,axis,defaults,s))})})}else{var defaultValues=uF.getDefaultValuesFromXSD().horizontalaxis.labels;var defaultSpacings=axis.type()===DataValue.NUMBER?defaultValues.defaultNumberSpacing:defaultValues.defaultDatetimeSpacing;for(i=0;i<defaultSpacings.length;++i){labelers.add(Labeler.parseJSON(json,axis,undefined,defaultSpacings[i]))}}};Axis.parseJSON=function(json,orientation,messageHandler,multigraph){var DataValue=require("../../core/data_value.js"),Point=require("../../math/point.js"),RGBColor=require("../../math/rgb_color.js"),Displacement=require("../../math/displacement.js"),AxisTitle=require("../../core/axis_title.js"),Grid=require("../../core/grid.js"),Pan=require("../../core/pan.js"),Zoom=require("../../core/zoom.js"),AxisBinding=require("../../core/axis_binding.js"),axis=new Axis(orientation),parseAttribute=pF.parseAttribute,parseDisplacement=Displacement.parse,parseJSONPoint=function(p){return new Point(p[0],p[1])},parseRGBColor=RGBColor.parse,attr,child,value;if(json){parseAttribute(json.id,axis.id);parseAttribute(json.type,axis.type,DataValue.parseType);parseAttribute(json.length,axis.length,parseDisplacement);(function(){var positionbase=json.positionbase;if(positionbase){messageHandler.warning('Use of deprecated axis attribute "positionbase"; use "base" attribute instead');if(positionbase==="left"||positionbase==="bottom"){axis.base(new Point(-1,-1))}else if(positionbase==="right"){axis.base(new Point(1,-1))}else if(positionbase==="top"){axis.base(new Point(-1,1))}}})();attr=json.position;if(attr!==undefined){if(vF.typeOf(attr)==="array"){axis.position(parseJSONPoint(attr))}else{if(vF.isNumberNotNaN(attr)){if(orientation===Axis.HORIZONTAL){axis.position(new Point(0,attr))}else{axis.position(new Point(attr,0))}}else{throw new Error("axis position '"+attr+"' is of the wrong type; it should be a number or a point")}}}if("min"in json){axis.min(uF.coerceToString(json.min))}if(axis.min()!=="auto"){axis.dataMin(DataValue.parse(axis.type(),axis.min()))}if("max"in json){axis.max(uF.coerceToString(json.max))}if(axis.max()!=="auto"){axis.dataMax(DataValue.parse(axis.type(),axis.max()))}parseAttribute(json.pregap,axis.pregap);parseAttribute(json.postgap,axis.postgap);parseAttribute(json.anchor,axis.anchor);parseAttribute(json.base,axis.base,parseJSONPoint);parseAttribute(json.minposition,axis.minposition,parseDisplacement);parseAttribute(json.maxposition,axis.maxposition,parseDisplacement);parseAttribute(json.minoffset,axis.minoffset);parseAttribute(json.maxoffset,axis.maxoffset);parseAttribute(json.color,axis.color,parseRGBColor);parseAttribute(json.tickcolor,axis.tickcolor,parseRGBColor);parseAttribute(json.tickwidth,axis.tickwidth);parseAttribute(json.tickmin,axis.tickmin);parseAttribute(json.tickmax,axis.tickmax);parseAttribute(json.highlightstyle,axis.highlightstyle);parseAttribute(json.linewidth,axis.linewidth);if("title"in json){if(typeof json.title==="boolean"){if(json.title){axis.title(new AxisTitle(axis))}else{axis.title(AxisTitle.parseJSON({},axis))}}else{axis.title(AxisTitle.parseJSON(json.title,axis))}}else{axis.title(new AxisTitle(axis))}if(json.grid){axis.grid(Grid.parseJSON(json.grid))}if(json.visible!==undefined){axis.visible(json.visible)}if("pan"in json){axis.pan(Pan.parseJSON(json.pan,axis.type()))}if("zoom"in json){axis.zoom(Zoom.parseJSON(json.zoom,axis.type()))}if(json.labels){parseLabels(json.labels,axis)}if(json.binding){var bindingMinDataValue=DataValue.parse(axis.type(),json.binding.min),bindingMaxDataValue=DataValue.parse(axis.type(),json.binding.max);if(typeof json.binding.id!=="string"){throw new Error("invalid axis binding id: '"+json.binding.id+"'")}if(!DataValue.isInstance(bindingMinDataValue)){throw new Error("invalid axis binding min: '"+json.binding.min+"'")}if(!DataValue.isInstance(bindingMaxDataValue)){throw new Error("invalid axis binding max: '"+json.binding.max+"'")}AxisBinding.findByIdOrCreateNew(json.binding.id).addAxis(axis,bindingMinDataValue,bindingMaxDataValue,multigraph)}}return axis};module.exports=Axis},{"../../core/axis.js":18,"../../core/axis_binding.js":19,"../../core/axis_title.js":20,"../../core/data_value.js":30,"../../core/grid.js":42,"../../core/labeler.js":45,"../../core/pan.js":52,"../../core/zoom.js":71,"../../math/displacement.js":101,"../../math/point.js":104,"../../math/rgb_color.js":105,"../../util/parsingFunctions.js":156,"../../util/utilityFunctions.js":157,"../../util/validationFunctions.js":158,"./axis_title.js":108,"./grid.js":116,"./labeler.js":120,"./pan.js":123,"./zoom.js":130}],108:[function(require,module,exports){var AxisTitle=require("../../core/axis_title.js");AxisTitle.parseJSON=function(json,axis){var title=new AxisTitle(axis),Text=require("../../core/text.js"),Point=require("../../math/point.js"),parseAttribute=require("../../util/parsingFunctions.js").parseAttribute,nonEmptyTitle=false,parseJSONPoint=function(p){return new Point(p[0],p[1])},text;if(json){text=json.text;if(text!==""&&text!==undefined){title.content(new Text(text));nonEmptyTitle=true}parseAttribute(json.anchor,title.anchor,parseJSONPoint);parseAttribute(json.base,title.base);parseAttribute(json.position,title.position,parseJSONPoint);parseAttribute(json.angle,title.angle);parseAttribute(json.font,title.font)}if(nonEmptyTitle===true){return title}return undefined};module.exports=AxisTitle},{"../../core/axis_title.js":20,"../../core/text.js":64,"../../math/point.js":104,"../../util/parsingFunctions.js":156}],109:[function(require,module,exports){var Background=require("../../core/background.js");Background.parseJSON=function(json,multigraph){var background=new Background,parseAttribute=require("../../util/parsingFunctions.js").parseAttribute,RGBColor=require("../../math/rgb_color.js"),Img=require("../../core/img.js"),child;if(json){parseAttribute(json.color,background.color,RGBColor.parse);if(json.img){background.img(Img.parseJSON(json.img,multigraph))}}return background};module.exports=Background},{"../../core/background.js":21,"../../core/img.js":44,"../../math/rgb_color.js":105,"../../util/parsingFunctions.js":156}],110:[function(require,module,exports){module.exports=function($){var Data=require("../../core/data.js");if(typeof Data.parseJSON==="function"){return Data}Data.parseJSON=function(json,multigraph,messageHandler){var ArrayData=require("../../core/array_data.js"),DataVariable=require("../../core/data_variable.js"),DataMeasure=require("../../core/data_measure.js"),PeriodicArrayData=require("../../core/periodic_array_data.js"),CSVData=require("../../core/csv_data.js")($),WebServiceData=require("../../core/web_service_data.js")($),Multigraph=require("../../core/multigraph.js")($),pF=require("../../util/parsingFunctions.js"),vF=require("../../util/validationFunctions.js"),uF=require("../../util/utilityFunctions.js"),defaultMissingvalueString,defaultMissingopString,dataVariables=[],data,adap,adapter=ArrayData;require("./data_variable.js");if(json){adap=json.adapter;if(adap!==undefined&&adap!==""){adapter=Multigraph.getDataAdapter(adap);if(adapter===undefined){throw new Error("Missing data adapater: "+adap)}}if(json.missingvalue){defaultMissingvalueString=uF.coerceToString(json.missingvalue)}defaultMissingopString=json.missingop;if(json.variables){json.variables.forEach(function(variable){dataVariables.push(DataVariable.parseJSON(variable))})}var haveRepeat=false,period;if("repeat"in json){var periodProp=vF.typeOf(json.repeat)==="object"?json.repeat.period:json.repeat;if(periodProp===undefined||periodProp===""){messageHandler.warning("repeat requires a period; data treated as non-repeating")}else{period=DataMeasure.parse(dataVariables[0].type(),periodProp);haveRepeat=true}}if(json.values){var stringValues=json.values;if(haveRepeat){data=new PeriodicArrayData(dataVariables,stringValues,period)}else{data=new ArrayData(dataVariables,stringValues)}}if(json.csv){var filename=vF.typeOf(json.csv)==="object"?json.csv.location:json.csv;data=new CSVData(dataVariables,multigraph?multigraph.rebaseUrl(filename):filename,messageHandler,multigraph?multigraph.getAjaxThrottle(filename):undefined)}if(json.service){var location=vF.typeOf(json.service)==="object"?json.service.location:json.service;data=new WebServiceData(dataVariables,multigraph?multigraph.rebaseUrl(location):location,messageHandler,multigraph?multigraph.getAjaxThrottle(location):undefined);if(vF.typeOf(json.service)==="object"&&"format"in json.service){data.format(json.service.format)}}if("id"in json){data.id(json.id)}}if(data){if(defaultMissingvalueString!==undefined){data.defaultMissingvalue(defaultMissingvalueString)}if(defaultMissingopString!==undefined){data.defaultMissingop(defaultMissingopString)}data.adapter(adapter)}return data};return Data}},{"../../core/array_data.js":17,"../../core/csv_data.js":25,"../../core/data.js":26,"../../core/data_measure.js":28,"../../core/data_variable.js":31,"../../core/multigraph.js":48,"../../core/periodic_array_data.js":53,"../../core/web_service_data.js":67,"../../util/parsingFunctions.js":156,"../../util/utilityFunctions.js":157,"../../util/validationFunctions.js":158,"./data_variable.js":111}],111:[function(require,module,exports){var DataVariable=require("../../core/data_variable.js");DataVariable.parseJSON=function(json,data){var variable,pF=require("../../util/parsingFunctions.js"),parseAttribute=pF.parseAttribute,DataValue=require("../../core/data_value.js"),attr;if(json&&json.id){variable=new DataVariable(json.id);parseAttribute(json.column,variable.column);parseAttribute(json.type,variable.type,DataValue.parseType);parseAttribute(json.missingvalue,variable.missingvalue,function(v){return DataValue.parse(variable.type(),v)});parseAttribute(json.missingop,variable.missingop,DataValue.parseComparator)}return variable};module.exports=DataVariable},{"../../core/data_value.js":30,"../../core/data_variable.js":31,"../../util/parsingFunctions.js":156}],112:[function(require,module,exports){var Datatips=require("../../core/datatips.js");Datatips.parseJSON=function(json){var datatips=new Datatips,RGBColor=require("../../math/rgb_color.js"),DatatipsVariable=require("../../core/datatips_variable.js"),pF=require("../../util/parsingFunctions.js"),uF=require("../../util/utilityFunctions.js"),parseRGBColor=RGBColor.parse,parseAttribute=pF.parseAttribute,parseInteger=pF.parseInteger,child;if(json){if(json["variable-formats"]){json["variable-formats"].forEach(function(fmt){var dtv=new DatatipsVariable;dtv.formatString(fmt);datatips.variables().add(dtv)})}parseAttribute(json.format,datatips.formatString);parseAttribute(json.bgcolor,datatips.bgcolor,parseRGBColor);parseAttribute(json.bgalpha,datatips.bgalpha);parseAttribute(json.border,datatips.border);parseAttribute(json.bordercolor,datatips.bordercolor,parseRGBColor);parseAttribute(json.pad,datatips.pad)}return datatips};module.exports=Datatips},{"../../core/datatips.js":32,"../../core/datatips_variable.js":33,"../../math/rgb_color.js":105,"../../util/parsingFunctions.js":156,"../../util/utilityFunctions.js":157}],113:[function(require,module,exports){var Filter=require("../../core/filter.js");Filter.parseJSON=function(json){var filter=new Filter,FilterOption=require("../../core/filter_option.js"),pF=require("../../util/parsingFunctions.js"),uF=require("../../util/utilityFunctions.js"),o;require("./filter_option.js");if(json){if(json.options){for(opt in json.options){if(json.options.hasOwnProperty(opt)){o=new FilterOption;o.name(opt);o.value(uF.coerceToString(json.options[opt]));filter.options().add(o)}}}pF.parseAttribute(json.type,filter.type);return filter}return Filter};module.exports=Filter},{"../../core/filter.js":39,"../../core/filter_option.js":40,"../../util/parsingFunctions.js":156,"../../util/utilityFunctions.js":157,"./filter_option.js":114}],114:[function(require,module,exports){var FilterOption=require("../../core/filter_option.js");FilterOption.parseJSON=function(json){var pF=require("../../util/parsingFunctions.js"),uF=require("../../util/utilityFunctions.js"),option=new FilterOption;if(json){option.name(json.name);if("value"in json&&json.value!==""){option.value(uF.coerceToString(json.value))}}return option};module.exports=FilterOption},{"../../core/filter_option.js":40,"../../util/parsingFunctions.js":156,"../../util/utilityFunctions.js":157}],115:[function(require,module,exports){module.exports=function($){var Graph=require("../../core/graph.js"),pF=require("../../util/parsingFunctions.js");if(typeof Graph.parseJSON==="function"){return Graph}Graph.parseJSON=function(json,multigraph,messageHandler){var graph=new Graph,Axis=require("../../core/axis.js"),Window=require("../../core/window.js"),Legend=require("../../core/legend.js"),Background=require("../../core/background.js"),Plotarea=require("../../core/plotarea.js"),ConsecutiveDistanceFilter=require("../../core/consecutive_distance_filter.js"),Title=require("../../core/title.js"),Data=require("../../core/data.js"),Plot=require("../../core/plot.js"),uF=require("../../util/utilityFunctions.js"),vF=require("../../util/validationFunctions.js"),defaults=uF.getDefaultValuesFromXSD(),child;require("./window.js");require("./legend.js");require("./background.js");require("./plotarea.js");require("./title.js");require("./axis.js");require("./data.js")($);require("./plot.js");graph.multigraph(multigraph);if(json){if(json.window){graph.window(Window.parseJSON(json.window))}if("legend"in json){graph.legend(Legend.parseJSON(json.legend))}else{graph.legend(Legend.parseJSON())}if(json.background){graph.background(Background.parseJSON(json.background,graph.multigraph()))}if(json.plotarea){graph.plotarea(Plotarea.parseJSON(json.plotarea))}if(json.title){graph.title(Title.parseJSON(json.title,graph))}if("filter"in json){if(vF.typeOf(json.filter)==="object"){if(typeof json.filter.type!=="undefined"&&json.filter.type!=="consecutivedistance"){throw new Error("unknown filter type: "+json.filter.type)}graph.filter(new ConsecutiveDistanceFilter(json.filter))}else{if(vF.typeOf(json.filter)!=="boolean"){throw new Error("invalid filter property: "+json.filter)}else if(json.filter){graph.filter(new ConsecutiveDistanceFilter({}))}}}var haxes=json.horizontalaxis?json.horizontalaxis:json.horizontalaxes;if(json.horizontalaxis&&json.horizontalaxes){throw new Error("graph may not have both 'horizontalaxis' and 'horizontalaxes'")}if(haxes){if(vF.typeOf(haxes)==="array"){haxes.forEach(function(axis){graph.axes().add(Axis.parseJSON(axis,Axis.HORIZONTAL,messageHandler,graph.multigraph()))})}else{graph.axes().add(Axis.parseJSON(haxes,Axis.HORIZONTAL,messageHandler,graph.multigraph()))}}var vaxes=json.verticalaxis?json.verticalaxis:json.verticalaxes;if(json.verticalaxis&&json.verticalaxes){throw new Error("graph may not have both 'verticalaxis' and 'verticalaxes'")}if(vaxes){if(vF.typeOf(vaxes)==="array"){vaxes.forEach(function(axis){graph.axes().add(Axis.parseJSON(axis,Axis.VERTICAL,messageHandler,graph.multigraph()))})}else{graph.axes().add(Axis.parseJSON(vaxes,Axis.VERTICAL,messageHandler,graph.multigraph()))}}function addAjaxThrottle(t){var pattern=t.pattern?t.pattern:defaults.throttle.pattern,requests=t.requests?t.requests:defaults.throttle.requests,period=t.period?t.period:defaults.throttle.period,concurrent=t.concurrent?t.concurrent:defaults.throttle.concurrent;multigraph.addAjaxThrottle(pattern,requests,period,concurrent)}var throttles=json.throttle?json.throttle:json.throttles;if(json.throttle&&json.throttles){throw new Error("graph may not have both 'throttle' and 'throttles'")}if(throttles){if(vF.typeOf(throttles)==="array"){throttles.forEach(addAjaxThrottle)}else{addAjaxThrottle(throttles)}}if(json.data){if(vF.typeOf(json.data)==="array"){json.data.forEach(function(data){graph.data().add(Data.parseJSON(data,graph.multigraph(),messageHandler))})}else{graph.data().add(Data.parseJSON(json.data,graph.multigraph(),messageHandler))}}var plots=json.plot?json.plot:json.plots;if(json.plot&&json.plots){throw new Error("graph may not have both 'plot' and 'plots'")}if(plots){if(vF.typeOf(plots)==="array"){plots.forEach(function(plot){graph.plots().add(Plot.parseJSON(plot,graph,messageHandler))})}else{graph.plots().add(Plot.parseJSON(plots,graph,messageHandler))}}graph.postParse()}return graph};return Graph}},{"../../core/axis.js":18,"../../core/background.js":21,"../../core/consecutive_distance_filter.js":23,"../../core/data.js":26,"../../core/graph.js":41,"../../core/legend.js":46,"../../core/plot.js":54,"../../core/plotarea.js":56,"../../core/title.js":65,"../../core/window.js":70,"../../util/parsingFunctions.js":156,"../../util/utilityFunctions.js":157,"../../util/validationFunctions.js":158,"./axis.js":107,"./background.js":109,"./data.js":110,"./legend.js":121,"./plot.js":124,"./plotarea.js":126,"./title.js":128,"./window.js":129}],116:[function(require,module,exports){var Grid=require("../../core/grid.js");Grid.parseJSON=function(json){var grid=new Grid,RGBColor=require("../../math/rgb_color.js"),parseAttribute=require("../../util/parsingFunctions.js").parseAttribute,attr;if(json){parseAttribute(json.color,grid.color,RGBColor.parse);attr=json.visible;if(attr!==undefined){grid.visible(attr)}else{grid.visible(true)}}return grid};module.exports=Grid},{"../../core/grid.js":42,"../../math/rgb_color.js":105,"../../util/parsingFunctions.js":156}],117:[function(require,module,exports){var Icon=require("../../core/icon.js");Icon.parseJSON=function(json){var icon=new Icon,parseAttribute=require("../../util/parsingFunctions.js").parseAttribute;if(json){parseAttribute(json.height,icon.height);parseAttribute(json.width,icon.width);parseAttribute(json.border,icon.border)}return icon};module.exports=Icon},{"../../core/icon.js":43,"../../util/parsingFunctions.js":156}],118:[function(require,module,exports){var Img=require("../../core/img.js");Img.parseJSON=function(json,multigraph){var img,parseAttribute=require("../../util/parsingFunctions.js").parseAttribute,Point=require("../../math/point.js"),parseJSONPoint=function(p){return new Point(p[0],p[1])};if(json&&json.src!==undefined){var src=json.src;if(!src){throw new Error('img requires a "src" property')}if(multigraph){src=multigraph.rebaseUrl(src)}img=new Img(src);parseAttribute(json.anchor,img.anchor,parseJSONPoint);parseAttribute(json.base,img.base,parseJSONPoint);parseAttribute(json.position,img.position,parseJSONPoint);parseAttribute(json.frame,img.frame,function(value){return value.toLowerCase()})}return img};module.exports=Img},{"../../core/img.js":44,"../../math/point.js":104,"../../util/parsingFunctions.js":156}],119:[function(require,module,exports){var included=false;module.exports=function($){if(included){return}included=true;require("./data.js")($);require("./graph.js")($);require("./multigraph.js")($);require("./axis.js");require("./axis_title.js");require("./background.js");require("./datatips.js");require("./data_variable.js");require("./filter.js");require("./filter_option.js");require("./grid.js");require("./icon.js");require("./img.js");require("./json_parser.js");require("./labeler.js");require("./legend.js");require("./pan.js");require("./plotarea.js");require("./plot.js");require("./plot_legend.js");require("./renderer.js");require("./title.js");require("./window.js");require("./zoom.js")}},{"./axis.js":107,"./axis_title.js":108,"./background.js":109,"./data.js":110,"./data_variable.js":111,"./datatips.js":112,"./filter.js":113,"./filter_option.js":114,"./graph.js":115,"./grid.js":116,"./icon.js":117,"./img.js":118,"./json_parser.js":119,"./labeler.js":120,"./legend.js":121,"./multigraph.js":122,"./pan.js":123,"./plot.js":124,"./plot_legend.js":125,"./plotarea.js":126,"./renderer.js":127,"./title.js":128,"./window.js":129,"./zoom.js":130}],120:[function(require,module,exports){var Labeler=require("../../core/labeler.js");Labeler.parseJSON=function(json,axis,defaults,spacing){var labeler,Point=require("../../math/point.js"),RGBColor=require("../../math/rgb_color.js"),DataMeasure=require("../../core/data_measure.js"),DataValue=require("../../core/data_value.js"),DataFormatter=require("../../core/data_formatter.js"),CategoryFormatter=require("../../core/category_formatter.js"),pF=require("../../util/parsingFunctions.js"),vF=require("../../util/validationFunctions.js"),parseJSONPoint=function(p){return new Point(p[0],p[1])};var parseLabelerAttribute=function(value,attribute,preprocessor,defaultName){if(!pF.parseAttribute(value,attribute,preprocessor)&&defaults!==undefined){attribute(defaults[defaultName]())}};var parseDataFormatter=function(type){return function(value){return DataFormatter.create(type,value)}};var parseDataValue=function(type){return function(value){return DataValue.parse(type,value)}};if(json){labeler=new Labeler(axis);if(spacing!==null){if(spacing===undefined){spacing=json.spacing}parseLabelerAttribute(spacing,labeler.spacing,function(v){return DataMeasure.parse(axis.type(),v)},"spacing")}if(vF.typeOf(json.format)==="array"){parseLabelerAttribute(json.format,labeler.formatter,function(format){return new CategoryFormatter(json.format)},undefined)}else{parseLabelerAttribute(json.format,labeler.formatter,parseDataFormatter(axis.type()),"formatter")}parseLabelerAttribute(json.start,labeler.start,parseDataValue(axis.type()),"start");parseLabelerAttribute(json.angle,labeler.angle,undefined,"angle");parseLabelerAttribute(json.position,labeler.position,parseJSONPoint,"position");parseLabelerAttribute(json.anchor,labeler.anchor,parseJSONPoint,"anchor");parseLabelerAttribute(json.densityfactor,labeler.densityfactor,undefined,"densityfactor");parseLabelerAttribute(json.color,labeler.color,RGBColor.parse,"color");parseLabelerAttribute(json.font,labeler.font,undefined,"font");parseLabelerAttribute(json.visible,labeler.visible,pF.parseBoolean,"visible")}return labeler};module.exports=Labeler},{"../../core/category_formatter.js":22,"../../core/data_formatter.js":27,"../../core/data_measure.js":28,"../../core/data_value.js":30,"../../core/labeler.js":45,"../../math/point.js":104,"../../math/rgb_color.js":105,"../../util/parsingFunctions.js":156,"../../util/validationFunctions.js":158}],121:[function(require,module,exports){var Legend=require("../../core/legend.js");Legend.parseJSON=function(json){var legend=new Legend,pF=require("../../util/parsingFunctions.js"),Point=require("../../math/point.js"),RGBColor=require("../../math/rgb_color.js"),Point=require("../../math/point.js"),Icon=require("../../core/icon.js"),parseAttribute=pF.parseAttribute,parseJSONPoint=function(p){return new Point(p[0],p[1])};require("./icon.js");if(typeof json==="boolean"){parseAttribute(json,legend.visible)}else if(json){parseAttribute(json.visible,legend.visible,pF.parseBoolean);parseAttribute(json.base,legend.base,parseJSONPoint);parseAttribute(json.anchor,legend.anchor,parseJSONPoint);parseAttribute(json.position,legend.position,parseJSONPoint);parseAttribute(json.frame,legend.frame);parseAttribute(json.color,legend.color,RGBColor.parse);parseAttribute(json.bordercolor,legend.bordercolor,RGBColor.parse);parseAttribute(json.opacity,legend.opacity);parseAttribute(json.border,legend.border);parseAttribute(json.rows,legend.rows);parseAttribute(json.columns,legend.columns);parseAttribute(json.cornerradius,legend.cornerradius);parseAttribute(json.padding,legend.padding);if(json.icon){legend.icon(Icon.parseJSON(json.icon))}}return legend};module.exports=Legend},{"../../core/icon.js":43,"../../core/legend.js":46,"../../math/point.js":104,"../../math/rgb_color.js":105,"../../util/parsingFunctions.js":156,"./icon.js":117}],122:[function(require,module,exports){module.exports=function($){var Multigraph=require("../../core/multigraph.js")($);if(typeof Multigraph.parseJSON==="function"){return Multigraph}Multigraph.parseJSON=function(json,mugl,messageHandler){var multigraph=new Multigraph,graphs=multigraph.graphs(),Graph=require("../../core/graph.js"),vF=require("../../util/validationFunctions.js");require("./graph.js")($);multigraph.mugl(mugl);if(json){if(vF.typeOf(json)==="array"){json.forEach(function(graph){graphs.add(Graph.parseJSON(graph,multigraph,messageHandler))})}else{graphs.add(Graph.parseJSON(json,multigraph,messageHandler))}}return multigraph};return Multigraph}},{"../../core/graph.js":41,"../../core/multigraph.js":48,"../../util/validationFunctions.js":158,"./graph.js":115}],123:[function(require,module,exports){var Pan=require("../../core/pan.js");Pan.parseJSON=function(json,type){var pan=new Pan,pF=require("../../util/parsingFunctions.js"),vF=require("../../util/validationFunctions.js"),parseAttribute=pF.parseAttribute,parseBoolean=pF.parseBoolean,DataValue=require("../../core/data_value.js"),parseDataValue=function(v){return DataValue.parse(type,v)};if(vF.typeOf(json)==="boolean"){parseAttribute(json,pan.allowed,parseBoolean)}else if(json){parseAttribute(json.allowed,pan.allowed,parseBoolean);parseAttribute(json.min,pan.min,parseDataValue);parseAttribute(json.max,pan.max,parseDataValue)}return pan};module.exports=Pan},{"../../core/data_value.js":30,"../../core/pan.js":52,"../../util/parsingFunctions.js":156,"../../util/validationFunctions.js":158}],124:[function(require,module,exports){var Plot=require("../../core/plot.js");Plot.parseJSON=function(json,graph,messageHandler){var DataPlot=require("../../core/data_plot.js"),PlotLegend=require("../../core/plot_legend.js"),ConstantPlot=require("../../core/constant_plot.js"),DataValue=require("../../core/data_value.js"),DateTimeValue=require("../../core/datetime_value.js"),Renderer=require("../../core/renderer.js"),Filter=require("../../core/filter.js"),ConsecutiveDistanceFilter=require("../../core/consecutive_distance_filter.js"),Datatips=require("../../core/datatips.js"),pF=require("../../util/parsingFunctions.js"),vF=require("../../util/validationFunctions.js"),plot,haxis,vaxis,variable,attr;
 require("./plot_legend.js");require("./renderer.js");require("./filter.js");require("./datatips.js");function key(obj){return Object.keys(obj)[0]}function keyCount(obj){return Object.keys(obj).length}function looks_like_data_value(v){if(vF.typeOf(v)==="number"){return true}else if(vF.typeOf(v)==="string"){if(!isNaN(v)){return true}else{try{DatetimeValue.parse(v)}catch(e){return false}return true}}else{return false}}if(json){var vars={horizontal:[],vertical:[]};var axisid={horizontal:undefined,vertical:undefined};var constant_value=undefined;if(json.verticalaxis){if(vF.typeOf(json.verticalaxis)==="array"){vars.vertical=json.verticalaxis}else if(vF.typeOf(json.verticalaxis)==="number"){constant_value=DataValue.parse(DataValue.NUMBER,json.verticalaxis)}else if(vF.typeOf(json.verticalaxis)==="string"){if(looks_like_data_value(json.verticalaxis)){constant_value=DataValue.parse(DataValue.DATETIME,json.verticalaxis)}else{axisid.vertical=json.verticalaxis;vaxis=graph.axisById(axisid.vertical);if(typeof vaxis==="undefined"){throw new Error("plot refers to unknown vertical axis id: "+axisid.vertical)}}}else if(vF.typeOf(json.verticalaxis)==="object"){if(keyCount(json.verticalaxis)!==1){throw new Error("plot.verticalaxis object must contain exactly one key/value pair")}axisid.vertical=key(json.verticalaxis);vaxis=graph.axisById(axisid.vertical);if(typeof vaxis==="undefined"){throw new Error("plot refers to unknown vertical axis id: "+axisid.vertical)}if(vF.typeOf(json.verticalaxis[axisid.vertical])!=="undefined"){if(vF.typeOf(json.verticalaxis[axisid.vertical])==="array"){vars.vertical=json.verticalaxis[axisid.vertical]}else{if(vF.typeOf(json.verticalaxis[axisid.vertical])==="number"){if(vaxis.type()!==DataValue.NUMBER){throw new Error("constant value of '"+json.verticalaxis[axisid.vertical]+"' not appropriate for axis of type '"+vaxis.type()+"'")}constant_value=DataValue.parse(DataValue.NUMBER,json.verticalaxis[axisid.vertical])}else{if(vF.typeOf(json.verticalaxis[axisid.vertical])!=="string"){throw new Error("value for key '"+axisid.vertical+"' for verticalaxis is of wrong type")}if(looks_like_data_value(json.verticalaxis[axisid.vertical])){constant_value=DataValue.parse(vaxis.type(),json.verticalaxis[axisid.vertical])}else{vars.vertical=[json.verticalaxis[axisid.vertical]]}}}}}}if(constant_value!==undefined){plot=new ConstantPlot(constant_value)}else{plot=new DataPlot}plot.verticalaxis(vaxis);if(json.horizontalaxis){if(vF.typeOf(json.horizontalaxis)==="array"){vars.horizontal=json.horizontalaxis}else if(vF.typeOf(json.horizontalaxis)==="string"){axisid.horizontal=json.horizontalaxis;haxis=graph.axisById(axisid.horizontal);if(haxis!==undefined){plot.horizontalaxis(haxis)}else{throw new Error("Plot Horizontal Axis Error: The graph does not contain an axis with an id of '"+axisid.horizontal+"'")}}else if(vF.typeOf(json.horizontalaxis)==="object"){if(keyCount(json.horizontalaxis)!==1){throw new Error("plot.horizontalaxis object must contain exactly one key/value pair")}axisid.horizontal=key(json.horizontalaxis);haxis=graph.axisById(axisid.horizontal);if(haxis!==undefined){plot.horizontalaxis(haxis)}else{throw new Error("Plot Horizontal Axis Error: The graph does not contain an axis with an id of '"+axisid.horizontal+"'")}if(vF.typeOf(json.horizontalaxis[axisid.horizontal])!=="undefined"){if(vF.typeOf(json.horizontalaxis[axisid.horizontal])==="array"){vars.horizontal=json.horizontalaxis[axisid.horizontal]}else{if(vF.typeOf(json.horizontalaxis[axisid.horizontal])!=="string"){throw new Error("value for key '"+axisid.horizontal+"' for horizontalaxis is of wrong type")}vars.horizontal=[json.horizontalaxis[axisid.horizontal]]}}}}if(plot instanceof DataPlot){if(vars.horizontal.length==0){plot.variable().add(null)}if(graph){var allvars=[].concat(vars.horizontal,vars.vertical);allvars.forEach(function(vid){variable=graph.variableById(vid);if(variable!==undefined){plot.data(variable.data());plot.variable().add(variable)}else{throw new Error("Plot Variable Error: No Data tag contains a variable with an id of '"+vid+"'")}})}}if("legend"in json){plot.legend(PlotLegend.parseJSON(json.legend,plot))}else{plot.legend(PlotLegend.parseJSON(undefined,plot))}if("renderer"in json&&("style"in json||"options"in json)){throw new Error("plot may not contain both 'renderer' and 'style', or 'renderer' and 'options'")}if(json.visible!==undefined){plot.visible(json.visible)}if("renderer"in json){plot.renderer(Renderer.parseJSON(json.renderer,plot,messageHandler))}else if("style"in json){plot.renderer(Renderer.parseJSON({type:json.style,options:json.options},plot,messageHandler))}else if("options"in json){plot.renderer(Renderer.parseJSON({type:"line",options:json.options},plot,messageHandler))}if("filter"in json){if(vF.typeOf(json.filter)==="object"){if(typeof json.filter.type!=="undefined"&&json.filter.type!=="consecutivedistance"){throw new Error("unknown filter type: "+json.filter.type)}plot.renderer().filter(new ConsecutiveDistanceFilter(json.filter))}else if(vF.typeOf(json.filter)==="boolean"){if(json.filter){if(graph&&graph.filter()){plot.renderer().filter(graph.filter())}else{plot.renderer().filter(new ConsecutiveDistanceFilter({}))}}}else{throw new Error("invalid filter property: "+json.filter)}}else if(graph&&graph.filter()){plot.renderer().filter(graph.filter())}if("datatips"in json){plot.datatips(Datatips.parseJSON(json.datatips))}}return plot};module.exports=Plot},{"../../core/consecutive_distance_filter.js":23,"../../core/constant_plot.js":24,"../../core/data_plot.js":29,"../../core/data_value.js":30,"../../core/datatips.js":32,"../../core/datetime_value.js":37,"../../core/filter.js":39,"../../core/plot.js":54,"../../core/plot_legend.js":55,"../../core/renderer.js":57,"../../util/parsingFunctions.js":156,"../../util/validationFunctions.js":158,"./datatips.js":112,"./filter.js":113,"./plot_legend.js":125,"./renderer.js":127}],125:[function(require,module,exports){var PlotLegend=require("../../core/plot_legend.js");PlotLegend.parseJSON=function(json,plot){var legend=new PlotLegend,pF=require("../../util/parsingFunctions.js"),Text=require("../../core/text.js"),parseAttribute=pF.parseAttribute,child;if(typeof json==="boolean"){legend.visible(json)}else{if(json){parseAttribute(json.visible,legend.visible,pF.parseBoolean);parseAttribute(json.label,legend.label,function(value){return new Text(value)})}}if(legend.label()===undefined){if(typeof plot.variable==="function"&&plot.variable().size()>=2){legend.label(new Text(plot.variable().at(1).id()))}else{legend.label(new Text("plot"))}}return legend};module.exports=PlotLegend},{"../../core/plot_legend.js":55,"../../core/text.js":64,"../../util/parsingFunctions.js":156}],126:[function(require,module,exports){var Plotarea=require("../../core/plotarea.js");Plotarea.parseJSON=function(json){var plotarea=new Plotarea,margin=plotarea.margin(),pF=require("../../util/parsingFunctions.js"),RGBColor=require("../../math/rgb_color.js"),parseRGBColor=RGBColor.parse,parseAttribute=pF.parseAttribute,parseInteger=pF.parseInteger;if(json){parseAttribute(json.marginbottom,margin.bottom);parseAttribute(json.marginleft,margin.left);parseAttribute(json.margintop,margin.top);parseAttribute(json.marginright,margin.right);parseAttribute(json.border,plotarea.border);parseAttribute(json.color,plotarea.color,parseRGBColor);parseAttribute(json.bordercolor,plotarea.bordercolor,parseRGBColor)}return plotarea};module.exports=Plotarea},{"../../core/plotarea.js":56,"../../math/rgb_color.js":105,"../../util/parsingFunctions.js":156}],127:[function(require,module,exports){var Renderer=require("../../core/renderer.js");Renderer.parseJSON=function(json,plot,messageHandler){var DataValue=require("../../core/data_value.js"),NumberValue=require("../../core/number_value.js"),Warning=require("../../core/warning.js"),pF=require("../../util/parsingFunctions.js"),vF=require("../../util/validationFunctions.js"),rendererType,renderer,opt;require("../../core/renderers/all_renderers.js");function setOption(name,value,min,max){try{renderer.setOptionFromString(name,value,min,max)}catch(e){if(e instanceof Warning){messageHandler.warning(e)}else{throw e}}}if(json&&json.type!==undefined){rendererType=Renderer.Type.parse(json.type);if(!Renderer.Type.isInstance(rendererType)){throw new Error("unknown renderer type '"+json.type+"'")}renderer=Renderer.create(rendererType);renderer.plot(plot);if(json.options){for(opt in json.options){if(json.options.hasOwnProperty(opt)){if(vF.typeOf(json.options[opt])==="array"){json.options[opt].forEach(function(subopt){setOption(opt,subopt.value,subopt.min,subopt.max)})}else{setOption(opt,json.options[opt])}}}}}return renderer};module.exports=Renderer},{"../../core/data_value.js":30,"../../core/number_value.js":51,"../../core/renderer.js":57,"../../core/renderers/all_renderers.js":58,"../../core/warning.js":66,"../../util/parsingFunctions.js":156,"../../util/validationFunctions.js":158}],128:[function(require,module,exports){var Title=require("../../core/title.js");Title.parseJSON=function(json,graph){var Point=require("../../math/point.js"),RGBColor=require("../../math/rgb_color.js"),Text=require("../../core/text.js"),pF=require("../../util/parsingFunctions.js"),parseJSONPoint=function(p){return new Point(p[0],p[1])},parseRGBColor=RGBColor.parse,parseAttribute=pF.parseAttribute,title;if(json){var text=json.text;if(text!==""){title=new Title(new Text(text),graph)}else{return undefined}parseAttribute(json.frame,title.frame,function(value){return value.toLowerCase()});parseAttribute(json.border,title.border);parseAttribute(json.color,title.color,parseRGBColor);parseAttribute(json.bordercolor,title.bordercolor,parseRGBColor);parseAttribute(json.opacity,title.opacity);parseAttribute(json.padding,title.padding);parseAttribute(json.cornerradius,title.cornerradius);parseAttribute(json.anchor,title.anchor,parseJSONPoint);parseAttribute(json.base,title.base,parseJSONPoint);parseAttribute(json.position,title.position,parseJSONPoint)}return title};module.exports=Title},{"../../core/text.js":64,"../../core/title.js":65,"../../math/point.js":104,"../../math/rgb_color.js":105,"../../util/parsingFunctions.js":156}],129:[function(require,module,exports){var Window=require("../../core/window.js");Window.parseJSON=function(json){var w=new Window,RGBColor=require("../../math/rgb_color.js"),pF=require("../../util/parsingFunctions.js"),parseAttribute=pF.parseAttribute,parseInteger=pF.parseInteger,attr;if(json){parseAttribute(json.width,w.width);parseAttribute(json.height,w.height);parseAttribute(json.border,w.border);attr=json.margin;if(attr!==undefined){w.margin().set(attr,attr,attr,attr)}attr=json.padding;if(attr!==undefined){w.padding().set(attr,attr,attr,attr)}parseAttribute(json.bordercolor,w.bordercolor,RGBColor.parse)}return w};module.exports=Window},{"../../core/window.js":70,"../../math/rgb_color.js":105,"../../util/parsingFunctions.js":156}],130:[function(require,module,exports){var Zoom=require("../../core/zoom.js");Zoom.parseJSON=function(json,type){var zoom=new Zoom,DataValue=require("../../core/data_value.js"),DataMeasure=require("../../core/data_measure.js"),pF=require("../../util/parsingFunctions.js"),vF=require("../../util/validationFunctions.js"),parseAttribute=pF.parseAttribute,parseBoolean=pF.parseBoolean,parseDataMeasure=function(v){return DataMeasure.parse(type,v)},attr;if(vF.typeOf(json)==="boolean"){parseAttribute(json,zoom.allowed,parseBoolean)}else if(json){parseAttribute(json.allowed,zoom.allowed,parseBoolean);parseAttribute(json.min,zoom.min,parseDataMeasure);parseAttribute(json.max,zoom.max,parseDataMeasure);attr=json.anchor;if(attr!==undefined){if(typeof attr==="string"&&attr.toLowerCase()==="none"){zoom.anchor(null)}else{zoom.anchor(DataValue.parse(type,attr))}}}return zoom};module.exports=Zoom},{"../../core/data_measure.js":28,"../../core/data_value.js":30,"../../core/zoom.js":71,"../../util/parsingFunctions.js":156,"../../util/validationFunctions.js":158}],131:[function(require,module,exports){module.exports=function($){var Axis=require("../../core/axis.js"),pF=require("../../util/parsingFunctions.js");if(typeof Axis.parseXML==="function"){return Axis}var parseLabels=function(xml,axis){var spacingStrings=[],spacingString,labelsTag=xml.find("labels"),labelTags=xml.find("label"),labelers=axis.labelers(),Labeler=require("../../core/labeler.js"),DataValue=require("../../core/data_value.js"),utilityFunctions=require("../../util/utilityFunctions.js"),i;spacingString=$.trim(pF.getXMLAttr(labelsTag,"spacing"));if(spacingString!==""){spacingStrings=spacingString.split(/\s+/)}if(spacingStrings.length>0){for(i=0;i<spacingStrings.length;++i){labelers.add(Labeler.parseXML(labelsTag,axis,undefined,spacingStrings[i]))}}else if(labelTags.length>0){var defaults=Labeler.parseXML(labelsTag,axis,undefined,null);$.each(labelTags,function(j,e){spacingString=$.trim(pF.getXMLAttr($(e),"spacing"));spacingStrings=[];if(spacingString!==""){spacingStrings=spacingString.split(/\s+/)}for(i=0;i<spacingStrings.length;++i){labelers.add(Labeler.parseXML($(e),axis,defaults,spacingStrings[i]))}})}else{var defaultValues=utilityFunctions.getDefaultValuesFromXSD().horizontalaxis.labels;var defaultSpacings=axis.type()===DataValue.NUMBER?defaultValues.defaultNumberSpacing:defaultValues.defaultDatetimeSpacing;for(i=0;i<defaultSpacings.length;++i){labelers.add(Labeler.parseXML(labelsTag,axis,undefined,defaultSpacings[i]))}}};Axis.parseXML=function(xml,orientation,messageHandler,multigraph){var DataValue=require("../../core/data_value.js"),Point=require("../../math/point.js"),RGBColor=require("../../math/rgb_color.js"),Displacement=require("../../math/displacement.js"),AxisTitle=require("../../core/axis_title.js"),Grid=require("../../core/grid.js"),Pan=require("../../core/pan.js"),Zoom=require("../../core/zoom.js"),AxisBinding=require("../../core/axis_binding.js"),axis=new Axis(orientation),parseAttribute=pF.parseAttribute,parseInteger=pF.parseInteger,parseDisplacement=Displacement.parse,parsePoint=Point.parse,parseRGBColor=RGBColor.parse,attr,child,value;if(xml){parseAttribute(pF.getXMLAttr(xml,"id"),axis.id);parseAttribute(pF.getXMLAttr(xml,"type"),axis.type,DataValue.parseType);parseAttribute(pF.getXMLAttr(xml,"length"),axis.length,parseDisplacement);(function(){var positionbase=pF.getXMLAttr(xml,"positionbase");if(positionbase){messageHandler.warning('Use of deprecated axis attribute "positionbase"; use "base" attribute instead');if(positionbase==="left"||positionbase==="bottom"){axis.base(parsePoint("-1 -1"))}else if(positionbase==="right"){axis.base(parsePoint("1 -1"))}else if(positionbase==="top"){axis.base(parsePoint("-1 1"))}}})();attr=pF.getXMLAttr(xml,"position");if(attr!==undefined){try{axis.position(parsePoint(attr))}catch(e){value=parseInt(attr,10);if(value!==value){throw e}if(orientation===Axis.HORIZONTAL){axis.position(new Point(0,value))}else{axis.position(new Point(value,0))}}}axis.min(pF.getXMLAttr(xml,"min"));if(axis.min()!=="auto"){axis.dataMin(DataValue.parse(axis.type(),axis.min()))}axis.max(pF.getXMLAttr(xml,"max"));if(axis.max()!=="auto"){axis.dataMax(DataValue.parse(axis.type(),axis.max()))}parseAttribute(pF.getXMLAttr(xml,"pregap"),axis.pregap,parseFloat);parseAttribute(pF.getXMLAttr(xml,"postgap"),axis.postgap,parseFloat);parseAttribute(pF.getXMLAttr(xml,"anchor"),axis.anchor,parseFloat);parseAttribute(pF.getXMLAttr(xml,"base"),axis.base,parsePoint);parseAttribute(pF.getXMLAttr(xml,"minposition"),axis.minposition,parseDisplacement);parseAttribute(pF.getXMLAttr(xml,"maxposition"),axis.maxposition,parseDisplacement);parseAttribute(pF.getXMLAttr(xml,"minoffset"),axis.minoffset,parseFloat);parseAttribute(pF.getXMLAttr(xml,"maxoffset"),axis.maxoffset,parseFloat);parseAttribute(pF.getXMLAttr(xml,"color"),axis.color,parseRGBColor);parseAttribute(pF.getXMLAttr(xml,"tickcolor"),axis.tickcolor,parseRGBColor);parseAttribute(pF.getXMLAttr(xml,"tickwidth"),axis.tickwidth,parseInteger);parseAttribute(pF.getXMLAttr(xml,"tickmin"),axis.tickmin,parseInteger);parseAttribute(pF.getXMLAttr(xml,"tickmax"),axis.tickmax,parseInteger);parseAttribute(pF.getXMLAttr(xml,"highlightstyle"),axis.highlightstyle);parseAttribute(pF.getXMLAttr(xml,"linewidth"),axis.linewidth,parseInteger);child=xml.find("title");if(child.length>0){axis.title(AxisTitle.parseXML(child,axis))}else{axis.title(new AxisTitle(axis))}child=xml.find("grid");if(child.length>0){axis.grid(Grid.parseXML(child))}child=xml.find("pan");if(child.length>0){axis.pan(Pan.parseXML(child,axis.type()))}child=xml.find("zoom");if(child.length>0){axis.zoom(Zoom.parseXML(child,axis.type()))}if(xml.find("labels").length>0){parseLabels(xml,axis)}child=xml.find("binding");if(child.length>0){var bindingIdAttr=pF.getXMLAttr(child,"id"),bindingMinAttr=pF.getXMLAttr(child,"min"),bindingMaxAttr=pF.getXMLAttr(child,"max"),bindingMinDataValue=DataValue.parse(axis.type(),bindingMinAttr),bindingMaxDataValue=DataValue.parse(axis.type(),bindingMaxAttr);if(typeof bindingIdAttr!=="string"||bindingIdAttr.length<=0){throw new Error("invalid axis binding id: '"+bindingIdAttr+"'")}if(!DataValue.isInstance(bindingMinDataValue)){throw new Error("invalid axis binding min: '"+bindingMinAttr+"'")}if(!DataValue.isInstance(bindingMaxDataValue)){throw new Error("invalid axis binding max: '"+bindingMaxAttr+"'")}AxisBinding.findByIdOrCreateNew(bindingIdAttr).addAxis(axis,bindingMinDataValue,bindingMaxDataValue,multigraph)}}return axis};return Axis}},{"../../core/axis.js":18,"../../core/axis_binding.js":19,"../../core/axis_title.js":20,"../../core/data_value.js":30,"../../core/grid.js":42,"../../core/labeler.js":45,"../../core/pan.js":52,"../../core/zoom.js":71,"../../math/displacement.js":101,"../../math/point.js":104,"../../math/rgb_color.js":105,"../../util/parsingFunctions.js":156,"../../util/utilityFunctions.js":157}],132:[function(require,module,exports){var AxisTitle=require("../../core/axis_title.js");AxisTitle.parseXML=function(xml,axis){var title=new AxisTitle(axis),Text=require("../../core/text.js"),Point=require("../../math/point.js"),pF=require("../../util/parsingFunctions.js"),nonEmptyTitle=false,parsePoint=Point.parse,text,parseTitleAttribute=function(value,attribute,preprocessor){if(pF.parseAttribute(value,attribute,preprocessor)){}};if(xml){text=xml.text();if(text!==""){title.content(new Text(text));nonEmptyTitle=true}parseTitleAttribute(pF.getXMLAttr(xml,"anchor"),title.anchor,parsePoint);parseTitleAttribute(pF.getXMLAttr(xml,"base"),title.base,parseFloat);parseTitleAttribute(pF.getXMLAttr(xml,"position"),title.position,parsePoint);parseTitleAttribute(pF.getXMLAttr(xml,"angle"),title.angle,parseFloat)}if(nonEmptyTitle===true){return title}return undefined};module.exports=AxisTitle},{"../../core/axis_title.js":20,"../../core/text.js":64,"../../math/point.js":104,"../../util/parsingFunctions.js":156}],133:[function(require,module,exports){var Background=require("../../core/background.js");Background.parseXML=function(xml,multigraph){var background=new Background,pF=require("../../util/parsingFunctions.js"),RGBColor=require("../../math/rgb_color.js"),Img=require("../../core/img.js"),child;if(xml){pF.parseAttribute(pF.getXMLAttr(xml,"color"),background.color,RGBColor.parse);child=xml.find("img");if(child.length>0){background.img(Img.parseXML(child,multigraph))}}return background};module.exports=Background},{"../../core/background.js":21,"../../core/img.js":44,"../../math/rgb_color.js":105,"../../util/parsingFunctions.js":156}],134:[function(require,module,exports){module.exports=function($){var Data=require("../../core/data.js");if(typeof Data.parseXML==="function"){return Data}Data.parseXML=function(xml,multigraph,messageHandler){var ArrayData=require("../../core/array_data.js"),DataVariable=require("../../core/data_variable.js"),DataMeasure=require("../../core/data_measure.js"),PeriodicArrayData=require("../../core/periodic_array_data.js"),CSVData=require("../../core/csv_data.js")($),WebServiceData=require("../../core/web_service_data.js")($),Multigraph=require("../../core/multigraph.js")($),pF=require("../../util/parsingFunctions.js"),variables_xml,defaultMissingvalueString,defaultMissingopString,dataVariables=[],data,adap,adapter=ArrayData;if(xml){adap=pF.getXMLAttr($(xml),"adapter");if(adap!==undefined&&adap!==""){adapter=Multigraph.getDataAdapter(adap);if(adapter===undefined){throw new Error("Missing data adapater: "+adap)}}variables_xml=xml.find("variables");defaultMissingvalueString=pF.getXMLAttr(variables_xml,"missingvalue");defaultMissingopString=pF.getXMLAttr(variables_xml,"missingop");var variables=variables_xml.find(">variable");if(variables.length>0){$.each(variables,function(i,e){dataVariables.push(DataVariable.parseXML($(e)))})}var haveRepeat=false,period,repeat_xml=$(xml.find(">repeat"));if(repeat_xml.length>0){var periodString=pF.getXMLAttr($(repeat_xml),"period");if(periodString===undefined||periodString===""){messageHandler.warning("<repeat> tag requires a 'period' attribute; data treated as non-repeating")}else{period=DataMeasure.parse(dataVariables[0].type(),periodString);haveRepeat=true}}var values_xml=$(xml.find(">values"));if(values_xml.length>0){values_xml=values_xml[0];var stringValues=adapter.textToStringArray(dataVariables,$(values_xml).text());if(haveRepeat){data=new PeriodicArrayData(dataVariables,stringValues,period)}else{data=new ArrayData(dataVariables,stringValues)}}var csv_xml=$(xml.find(">csv"));if(csv_xml.length>0){csv_xml=csv_xml[0];var filename=pF.getXMLAttr($(csv_xml),"location");data=new CSVData(dataVariables,multigraph?multigraph.rebaseUrl(filename):filename,messageHandler,multigraph?multigraph.getAjaxThrottle(filename):undefined)}var service_xml=$(xml.find(">service"));if(service_xml.length>0){service_xml=$(service_xml[0]);var location=pF.getXMLAttr(service_xml,"location");data=new WebServiceData(dataVariables,multigraph?multigraph.rebaseUrl(location):location,messageHandler,multigraph?multigraph.getAjaxThrottle(location):undefined);var format=pF.getXMLAttr(service_xml,"format");if(format){data.format(format)}}}if(data){if(defaultMissingvalueString!==undefined){data.defaultMissingvalue(defaultMissingvalueString)}if(defaultMissingopString!==undefined){data.defaultMissingop(defaultMissingopString)}data.adapter(adapter)}return data};return Data}},{"../../core/array_data.js":17,"../../core/csv_data.js":25,"../../core/data.js":26,"../../core/data_measure.js":28,"../../core/data_variable.js":31,"../../core/multigraph.js":48,"../../core/periodic_array_data.js":53,"../../core/web_service_data.js":67,"../../util/parsingFunctions.js":156}],135:[function(require,module,exports){var DataVariable=require("../../core/data_variable.js");DataVariable.parseXML=function(xml,data){var variable,pF=require("../../util/parsingFunctions.js"),parseAttribute=pF.parseAttribute,DataValue=require("../../core/data_value.js"),attr;if(xml&&pF.getXMLAttr(xml,"id")){variable=new DataVariable(pF.getXMLAttr(xml,"id"));parseAttribute(pF.getXMLAttr(xml,"column"),variable.column,pF.parseInteger);parseAttribute(pF.getXMLAttr(xml,"type"),variable.type,DataValue.parseType);parseAttribute(pF.getXMLAttr(xml,"missingvalue"),variable.missingvalue,function(v){return DataValue.parse(variable.type(),v)});parseAttribute(pF.getXMLAttr(xml,"missingop"),variable.missingop,DataValue.parseComparator)}return variable};module.exports=DataVariable},{"../../core/data_value.js":30,"../../core/data_variable.js":31,"../../util/parsingFunctions.js":156}],136:[function(require,module,exports){module.exports=function($){var Datatips=require("../../core/datatips.js");if(typeof Datatips.parseXML==="function"){return Datatips}Datatips.parseXML=function(xml){var datatips=new Datatips,RGBColor=require("../../math/rgb_color.js"),DatatipsVariable=require("../../core/datatips_variable.js"),pF=require("../../util/parsingFunctions.js"),parseRGBColor=RGBColor.parse,parseAttribute=pF.parseAttribute,parseInteger=pF.parseInteger,child;if(xml){child=xml.find("variable");if(child.length>0){$.each(child,function(i,e){datatips.variables().add(DatatipsVariable.parseXML($(e)))})}parseAttribute(pF.getXMLAttr(xml,"format"),datatips.formatString);parseAttribute(pF.getXMLAttr(xml,"bgcolor"),datatips.bgcolor,parseRGBColor);parseAttribute(pF.getXMLAttr(xml,"bgalpha"),datatips.bgalpha,parseFloat);parseAttribute(pF.getXMLAttr(xml,"border"),datatips.border,parseInteger);parseAttribute(pF.getXMLAttr(xml,"bordercolor"),datatips.bordercolor,parseRGBColor);parseAttribute(pF.getXMLAttr(xml,"pad"),datatips.pad,parseInteger)}return datatips};return Datatips}},{"../../core/datatips.js":32,"../../core/datatips_variable.js":33,"../../math/rgb_color.js":105,"../../util/parsingFunctions.js":156}],137:[function(require,module,exports){var DatatipsVariable=require("../../core/datatips_variable.js");DatatipsVariable.parseXML=function(xml){var variable=new DatatipsVariable,pF=require("../../util/parsingFunctions.js");if(xml){pF.parseAttribute(pF.getXMLAttr(xml,"format"),variable.formatString)}return variable};module.exports=DatatipsVariable},{"../../core/datatips_variable.js":33,"../../util/parsingFunctions.js":156}],138:[function(require,module,exports){module.exports=function($){var Filter=require("../../core/filter.js");if(typeof Filter.parseXML==="function"){return Filter}Filter.parseXML=function(xml){var filter=new Filter,FilterOption=require("../../core/filter_option.js"),pF=require("../../util/parsingFunctions.js"),child;if(xml){child=xml.find("option");if(child.length>0){$.each(child,function(i,e){filter.options().add(FilterOption.parseXML($(e)))})}pF.parseAttribute(pF.getXMLAttr(xml,"type"),filter.type)}return filter};return Filter}},{"../../core/filter.js":39,"../../core/filter_option.js":40,"../../util/parsingFunctions.js":156}],139:[function(require,module,exports){var FilterOption=require("../../core/filter_option.js");FilterOption.parseXML=function(xml){var pF=require("../../util/parsingFunctions.js"),option=new FilterOption;if(xml){option.name(pF.getXMLAttr(xml,"name"));option.value(pF.getXMLAttr(xml,"value")===""?undefined:pF.getXMLAttr(xml,"value"))}return option};module.exports=FilterOption},{"../../core/filter_option.js":40,"../../util/parsingFunctions.js":156}],140:[function(require,module,exports){module.exports=function($){var Graph=require("../../core/graph.js"),pF=require("../../util/parsingFunctions.js");if(typeof Graph.parseXML==="function"){return Graph}var checkDeprecatedColorNames=function(xml,messageHandler){var RGBColor=require("../../math/rgb_color.js"),$xml=$(xml),attributes=$xml[0].attributes,children=$xml.children(),colorNameIsDeprecated=RGBColor.colorNameIsDeprecated,dep;if(xml.nodeName==="option"){if(/color/.test(pF.getXMLAttr($xml,"name"))){dep=colorNameIsDeprecated(pF.getXMLAttr($xml,"value"));if(dep){messageHandler.warning('Warning: color string "'+pF.getXMLAttr($xml,"value")+'" is deprecated; use "'+dep+'" instead')}}}if(attributes){$.each(attributes,function(){if(/color/.test(this.name)){dep=colorNameIsDeprecated(this.value);if(dep){messageHandler.warning('Warning: color string "'+this.value+'" is deprecated; use "'+dep+'" instead')}}})}if(children){children.each(function(){checkDeprecatedColorNames(this,messageHandler)})}};Graph.parseXML=function(xml,multigraph,messageHandler){var graph=new Graph,Axis=require("../../core/axis.js"),Window=require("../../core/window.js"),Legend=require("../../core/legend.js"),Background=require("../../core/background.js"),Plotarea=require("../../core/plotarea.js"),Title=require("../../core/title.js"),Data=require("../../core/data.js"),Plot=require("../../core/plot.js"),utilityFunctions=require("../../util/utilityFunctions.js"),defaults=utilityFunctions.getDefaultValuesFromXSD(),child;graph.multigraph(multigraph);if(xml){try{checkDeprecatedColorNames(xml,messageHandler)}catch(e){}child=xml.find(">window");if(child.length>0){graph.window(Window.parseXML(child))}child=xml.find(">legend");if(child.length>0){graph.legend(Legend.parseXML(child))}else{graph.legend(Legend.parseXML())}child=xml.find(">background");if(child.length>0){graph.background(Background.parseXML(child,graph.multigraph()))}child=xml.find(">plotarea");if(child.length>0){graph.plotarea(Plotarea.parseXML(child))}child=xml.find(">title");if(child.length>0){graph.title(Title.parseXML(child,graph))}$.each(xml.find(">horizontalaxis"),function(i,e){graph.axes().add(Axis.parseXML($(e),Axis.HORIZONTAL,messageHandler,graph.multigraph()))});$.each(xml.find(">verticalaxis"),function(i,e){graph.axes().add(Axis.parseXML($(e),Axis.VERTICAL,messageHandler,graph.multigraph()))});$.each(xml.find(">throttle"),function(i,e){var pattern=pF.getXMLAttr($(e),"pattern")?pF.getXMLAttr($(e),"pattern"):defaults.throttle.pattern,requests=pF.getXMLAttr($(e),"requests")?pF.getXMLAttr($(e),"requests"):defaults.throttle.requests,period=pF.getXMLAttr($(e),"period")?pF.getXMLAttr($(e),"period"):defaults.throttle.period,concurrent=pF.getXMLAttr($(e),"concurrent")?pF.getXMLAttr($(e),"concurrent"):defaults.throttle.concurrent;multigraph.addAjaxThrottle(pattern,requests,period,concurrent)});$.each(xml.find(">data"),function(i,e){graph.data().add(Data.parseXML($(e),graph.multigraph(),messageHandler))});$.each(xml.find(">plot"),function(i,e){graph.plots().add(Plot.parseXML($(e),graph,messageHandler))});graph.postParse()}return graph};return Graph}},{"../../core/axis.js":18,"../../core/background.js":21,"../../core/data.js":26,"../../core/graph.js":41,"../../core/legend.js":46,"../../core/plot.js":54,"../../core/plotarea.js":56,"../../core/title.js":65,"../../core/window.js":70,"../../math/rgb_color.js":105,"../../util/parsingFunctions.js":156,"../../util/utilityFunctions.js":157}],141:[function(require,module,exports){var Grid=require("../../core/grid.js");Grid.parseXML=function(xml){var grid=new Grid,RGBColor=require("../../math/rgb_color.js"),pF=require("../../util/parsingFunctions.js"),parseAttribute=pF.parseAttribute,attr;if(xml){parseAttribute(pF.getXMLAttr(xml,"color"),grid.color,RGBColor.parse);attr=pF.getXMLAttr(xml,"visible");if(attr!==undefined){grid.visible(pF.parseBoolean(attr))}else{grid.visible(true)}}return grid};module.exports=Grid},{"../../core/grid.js":42,"../../math/rgb_color.js":105,"../../util/parsingFunctions.js":156}],142:[function(require,module,exports){var Icon=require("../../core/icon.js");Icon.parseXML=function(xml){var icon=new Icon,pF=require("../../util/parsingFunctions.js"),parseAttribute=pF.parseAttribute,parseInteger=pF.parseInteger;if(xml){parseAttribute(pF.getXMLAttr(xml,"height"),icon.height,parseInteger);parseAttribute(pF.getXMLAttr(xml,"width"),icon.width,parseInteger);parseAttribute(pF.getXMLAttr(xml,"border"),icon.border,parseInteger)}return icon};module.exports=Icon},{"../../core/icon.js":43,"../../util/parsingFunctions.js":156}],143:[function(require,module,exports){var Img=require("../../core/img.js");Img.parseXML=function(xml,multigraph){var img,pF=require("../../util/parsingFunctions.js"),Point=require("../../math/point.js"),parseAttribute=pF.parseAttribute,parsePoint=Point.parse;if(xml&&pF.getXMLAttr(xml,"src")!==undefined){var src=pF.getXMLAttr(xml,"src");if(!src){throw new Error('img elment requires a "src" attribute value')}if(multigraph){src=multigraph.rebaseUrl(src)}img=new Img(src);parseAttribute(pF.getXMLAttr(xml,"anchor"),img.anchor,parsePoint);parseAttribute(pF.getXMLAttr(xml,"base"),img.base,parsePoint);parseAttribute(pF.getXMLAttr(xml,"position"),img.position,parsePoint);parseAttribute(pF.getXMLAttr(xml,"frame"),img.frame,function(value){return value.toLowerCase()})}return img};module.exports=Img},{"../../core/img.js":44,"../../math/point.js":104,"../../util/parsingFunctions.js":156}],144:[function(require,module,exports){var JQueryXMLParser;module.exports=function($){if(typeof JQueryXMLParser!="undefined"){return JQueryXMLParser}JQueryXMLParser={};require("./axis.js")($);require("./data.js")($);require("./datatips.js")($);require("./filter.js")($);require("./graph.js")($);require("./multigraph.js")($);
-require("./plot.js")($);require("./renderer.js")($);require("./axis_title.js");require("./background.js");require("./datatips_variable.js");require("./data_variable.js");require("./filter_option.js");require("./grid.js");require("./icon.js");require("./img.js");require("./labeler.js");require("./legend.js");require("./pan.js");require("./plotarea.js");require("./plot_legend.js");require("./title.js");require("./window.js");require("./zoom.js");JQueryXMLParser.stringToJQueryXMLObj=function(thingy){if(typeof thingy!=="string"){return $(thingy)}var xml=$.parseXML(thingy);return $($(xml).children()[0])};return JQueryXMLParser}},{"./axis.js":131,"./axis_title.js":132,"./background.js":133,"./data.js":134,"./data_variable.js":135,"./datatips.js":136,"./datatips_variable.js":137,"./filter.js":138,"./filter_option.js":139,"./graph.js":140,"./grid.js":141,"./icon.js":142,"./img.js":143,"./labeler.js":145,"./legend.js":146,"./multigraph.js":147,"./pan.js":148,"./plot.js":149,"./plot_legend.js":150,"./plotarea.js":151,"./renderer.js":152,"./title.js":153,"./window.js":154,"./zoom.js":155}],145:[function(require,module,exports){var Labeler=require("../../core/labeler.js");Labeler.parseXML=function(xml,axis,defaults,spacing){var labeler,Point=require("../../math/point.js"),RGBColor=require("../../math/rgb_color.js"),DataMeasure=require("../../core/data_measure.js"),DataValue=require("../../core/data_value.js"),DataFormatter=require("../../core/data_formatter.js"),pF=require("../../util/parsingFunctions.js"),parsePoint=Point.parse;var parseLabelerAttribute=function(value,attribute,preprocessor,defaultName){if(!pF.parseAttribute(value,attribute,preprocessor)&&defaults!==undefined){attribute(defaults[defaultName]())}};var parseDataFormatter=function(type){return function(value){return DataFormatter.create(type,value)}};var parseDataValue=function(type){return function(value){return DataValue.parse(type,value)}};if(xml){labeler=new Labeler(axis);if(spacing!==null){if(spacing===undefined){spacing=pF.getXMLAttr(xml,"spacing")}parseLabelerAttribute(spacing,labeler.spacing,function(v){return DataMeasure.parse(axis.type(),v)},"spacing")}parseLabelerAttribute(pF.getXMLAttr(xml,"format"),labeler.formatter,parseDataFormatter(axis.type()),"formatter");parseLabelerAttribute(pF.getXMLAttr(xml,"start"),labeler.start,parseDataValue(axis.type()),"start");parseLabelerAttribute(pF.getXMLAttr(xml,"angle"),labeler.angle,parseFloat,"angle");parseLabelerAttribute(pF.getXMLAttr(xml,"position"),labeler.position,parsePoint,"position");parseLabelerAttribute(pF.getXMLAttr(xml,"anchor"),labeler.anchor,parsePoint,"anchor");parseLabelerAttribute(pF.getXMLAttr(xml,"densityfactor"),labeler.densityfactor,parseFloat,"densityfactor");parseLabelerAttribute(pF.getXMLAttr(xml,"color"),labeler.color,RGBColor.parse,"color");parseLabelerAttribute(pF.getXMLAttr(xml,"visible"),labeler.visible,pF.parseBoolean,"visible")}return labeler};module.exports=Labeler},{"../../core/data_formatter.js":27,"../../core/data_measure.js":28,"../../core/data_value.js":30,"../../core/labeler.js":45,"../../math/point.js":104,"../../math/rgb_color.js":105,"../../util/parsingFunctions.js":156}],146:[function(require,module,exports){var Legend=require("../../core/legend.js");Legend.parseXML=function(xml){var legend=new Legend,pF=require("../../util/parsingFunctions.js"),Point=require("../../math/point.js"),RGBColor=require("../../math/rgb_color.js"),Icon=require("../../core/icon.js"),parseAttribute=pF.parseAttribute,parseInteger=pF.parseInteger,parsePoint=Point.parse,parseRGBColor=RGBColor.parse,child;if(xml){parseAttribute(pF.getXMLAttr(xml,"visible"),legend.visible,pF.parseBoolean);parseAttribute(pF.getXMLAttr(xml,"base"),legend.base,parsePoint);parseAttribute(pF.getXMLAttr(xml,"anchor"),legend.anchor,parsePoint);parseAttribute(pF.getXMLAttr(xml,"position"),legend.position,parsePoint);parseAttribute(pF.getXMLAttr(xml,"frame"),legend.frame);parseAttribute(pF.getXMLAttr(xml,"color"),legend.color,parseRGBColor);parseAttribute(pF.getXMLAttr(xml,"bordercolor"),legend.bordercolor,parseRGBColor);parseAttribute(pF.getXMLAttr(xml,"opacity"),legend.opacity,parseFloat);parseAttribute(pF.getXMLAttr(xml,"border"),legend.border,parseInteger);parseAttribute(pF.getXMLAttr(xml,"rows"),legend.rows,parseInteger);parseAttribute(pF.getXMLAttr(xml,"columns"),legend.columns,parseInteger);parseAttribute(pF.getXMLAttr(xml,"cornerradius"),legend.cornerradius,parseInteger);parseAttribute(pF.getXMLAttr(xml,"padding"),legend.padding,parseInteger);child=xml.find("icon");if(child.length>0){legend.icon(Icon.parseXML(child))}}return legend};module.exports=Legend},{"../../core/icon.js":43,"../../core/legend.js":46,"../../math/point.js":104,"../../math/rgb_color.js":105,"../../util/parsingFunctions.js":156}],147:[function(require,module,exports){module.exports=function($){var Multigraph=require("../../core/multigraph.js")($);if(typeof Multigraph.parseXML==="function"){return Multigraph}Multigraph.parseXML=function(xml,mugl,messageHandler){var multigraph=new Multigraph,graphs=multigraph.graphs(),Graph=require("../../core/graph.js"),child;multigraph.mugl(mugl);if(xml){child=xml.find(">graph");if(child.length>0){$.each(child,function(i,e){graphs.add(Graph.parseXML($(e),multigraph,messageHandler))})}else if(child.length===0&&xml.children().length>0){graphs.add(Graph.parseXML(xml,multigraph,messageHandler))}}return multigraph};return Multigraph}},{"../../core/graph.js":41,"../../core/multigraph.js":48}],148:[function(require,module,exports){var Pan=require("../../core/pan.js");Pan.parseXML=function(xml,type){var pan=new Pan,pF=require("../../util/parsingFunctions.js"),DataValue=require("../../core/data_value.js"),parseAttribute=pF.parseAttribute,parseDataValue=function(v){return DataValue.parse(type,v)};if(xml){parseAttribute(pF.getXMLAttr(xml,"allowed"),pan.allowed,pF.parseBoolean);parseAttribute(pF.getXMLAttr(xml,"min"),pan.min,parseDataValue);parseAttribute(pF.getXMLAttr(xml,"max"),pan.max,parseDataValue)}return pan};module.exports=Pan},{"../../core/data_value.js":30,"../../core/pan.js":52,"../../util/parsingFunctions.js":156}],149:[function(require,module,exports){module.exports=function($){var Plot=require("../../core/plot.js");if(typeof Plot.parseXML==="function"){return Plot}Plot.parseXML=function(xml,graph,messageHandler){var DataPlot=require("../../core/data_plot.js"),PlotLegend=require("../../core/plot_legend.js"),ConstantPlot=require("../../core/constant_plot.js"),DataValue=require("../../core/data_value.js"),Renderer=require("../../core/renderer.js"),Filter=require("../../core/filter.js"),Datatips=require("../../core/datatips.js"),pF=require("../../util/parsingFunctions.js"),plot,haxis,vaxis,variable,attr,child;if(xml){child=xml.find(">verticalaxis");if(child.length===1&&pF.getXMLAttr(child,"ref")!==undefined){if(graph){vaxis=graph.axisById(pF.getXMLAttr(child,"ref"));if(vaxis===undefined){throw new Error("Plot Vertical Axis Error: The graph does not contain an axis with an id of '"+pF.getXMLAttr(child,"ref")+"'")}}}child=xml.find("verticalaxis constant");if(child.length>0){var constantValueString=pF.getXMLAttr(child,"value");if(constantValueString===undefined){throw new Error("Constant Plot Error: A 'value' attribute is needed to define a Constant Plot")}plot=new ConstantPlot(DataValue.parse(vaxis.type(),constantValueString))}else{plot=new DataPlot}plot.verticalaxis(vaxis);child=xml.find(">horizontalaxis");if(child.length===1&&pF.getXMLAttr(child,"ref")!==undefined){if(graph){haxis=graph.axisById(pF.getXMLAttr(child,"ref"));if(haxis!==undefined){plot.horizontalaxis(haxis)}else{throw new Error("Plot Horizontal Axis Error: The graph does not contain an axis with an id of '"+pF.getXMLAttr(child,"ref")+"'")}}}if(plot instanceof DataPlot){if(xml.find("horizontalaxis variable").length===0){plot.variable().add(null)}child=xml.find("horizontalaxis variable, verticalaxis variable");if(child.length>0){if(graph){$.each(child,function(i,e){attr=pF.getXMLAttr($(e),"ref");variable=graph.variableById(attr);if(variable!==undefined){plot.data(variable.data());plot.variable().add(variable)}else{throw new Error("Plot Variable Error: No Data tag contains a variable with an id of '"+attr+"'")}})}}}child=xml.find("legend");if(child.length>0){plot.legend(PlotLegend.parseXML(child,plot))}else{plot.legend(PlotLegend.parseXML(undefined,plot))}child=xml.find("renderer");if(child.length>0){plot.renderer(Renderer.parseXML(child,plot,messageHandler))}child=xml.find("filter");if(child.length>0){plot.filter(Filter.parseXML(child))}child=xml.find("datatips");if(child.length>0){plot.datatips(Datatips.parseXML(child))}}return plot};return Plot}},{"../../core/constant_plot.js":24,"../../core/data_plot.js":29,"../../core/data_value.js":30,"../../core/datatips.js":32,"../../core/filter.js":39,"../../core/plot.js":54,"../../core/plot_legend.js":55,"../../core/renderer.js":57,"../../util/parsingFunctions.js":156}],150:[function(require,module,exports){var PlotLegend=require("../../core/plot_legend.js");PlotLegend.parseXML=function(xml,plot){var legend=new PlotLegend,pF=require("../../util/parsingFunctions.js"),Text=require("../../core/text.js"),parseAttribute=pF.parseAttribute,child;if(xml){parseAttribute(pF.getXMLAttr(xml,"visible"),legend.visible,pF.parseBoolean);parseAttribute(pF.getXMLAttr(xml,"label"),legend.label,function(value){return new Text(value)})}if(legend.label()===undefined){if(typeof plot.variable==="function"&&plot.variable().size()>=2){legend.label(new Text(plot.variable().at(1).id()))}else{legend.label(new Text("plot"))}}return legend};module.exports=PlotLegend},{"../../core/plot_legend.js":55,"../../core/text.js":64,"../../util/parsingFunctions.js":156}],151:[function(require,module,exports){var Plotarea=require("../../core/plotarea.js");Plotarea.parseXML=function(xml){var plotarea=new Plotarea,margin=plotarea.margin(),pF=require("../../util/parsingFunctions.js"),RGBColor=require("../../math/rgb_color.js"),parseRGBColor=RGBColor.parse,parseAttribute=pF.parseAttribute,parseInteger=pF.parseInteger;if(xml){parseAttribute(pF.getXMLAttr(xml,"marginbottom"),margin.bottom,parseInteger);parseAttribute(pF.getXMLAttr(xml,"marginleft"),margin.left,parseInteger);parseAttribute(pF.getXMLAttr(xml,"margintop"),margin.top,parseInteger);parseAttribute(pF.getXMLAttr(xml,"marginright"),margin.right,parseInteger);parseAttribute(pF.getXMLAttr(xml,"border"),plotarea.border,parseInteger);parseAttribute(pF.getXMLAttr(xml,"color"),plotarea.color,parseRGBColor);parseAttribute(pF.getXMLAttr(xml,"bordercolor"),plotarea.bordercolor,parseRGBColor)}return plotarea};module.exports=Plotarea},{"../../core/plotarea.js":56,"../../math/rgb_color.js":105,"../../util/parsingFunctions.js":156}],152:[function(require,module,exports){module.exports=function($){var Renderer=require("../../core/renderer.js");if(typeof Renderer.parseXML==="function"){return Renderer}Renderer.parseXML=function(xml,plot,messageHandler){var DataValue=require("../../core/data_value.js"),NumberValue=require("../../core/number_value.js"),Warning=require("../../core/warning.js"),pF=require("../../util/parsingFunctions.js"),rendererType,renderer,opt;require("../../core/renderers/all_renderers.js");if(xml&&pF.getXMLAttr(xml,"type")!==undefined){rendererType=Renderer.Type.parse(pF.getXMLAttr(xml,"type"));if(!Renderer.Type.isInstance(rendererType)){throw new Error("unknown renderer type '"+pF.getXMLAttr(xml,"type")+"'")}renderer=Renderer.create(rendererType);renderer.plot(plot);if(xml.find("option").length>0){(function(renderer,xml,plot,messageHandler){var i,missingValueOption=xml.find("option[name=missingvalue]"),missingOpOption=xml.find("option[name=missingop]");if(missingValueOption.length>0||missingOpOption.length>0){var columns=plot.data().columns(),column;for(i=0;i<columns.size();++i){column=columns.at(i);if(column.type()===DataValue.NUMBER){if(missingValueOption.length>0&&column.missingvalue()===undefined){column.missingvalue(NumberValue.parse(pF.getXMLAttr(missingValueOption,"value")))}if(missingOpOption.length>0&&column.missingop()===undefined){column.missingop(DataValue.parseComparator(pF.getXMLAttr(missingOpOption,"value")))}}}}if(missingValueOption.length>0){messageHandler.warning("Renderer option 'missingvalue' is deprecated; "+"use 'missingvalue' attribute of 'data'/'variable'; instead");missingValueOption.remove()}if(missingOpOption.length>0){messageHandler.warning("Renderer option 'missingop' is deprecated; "+"use 'missingvalue' attribute of 'data'/'variable'; instead");missingOpOption.remove()}})(renderer,xml,plot,messageHandler);$.each(xml.find(">option"),function(i,e){try{renderer.setOptionFromString(pF.getXMLAttr($(e),"name"),pF.getXMLAttr($(e),"value"),pF.getXMLAttr($(e),"min"),pF.getXMLAttr($(e),"max"))}catch(e){if(e instanceof Warning){messageHandler.warning(e)}else{throw e}}})}}return renderer};return Renderer}},{"../../core/data_value.js":30,"../../core/number_value.js":51,"../../core/renderer.js":57,"../../core/renderers/all_renderers.js":58,"../../core/warning.js":66,"../../util/parsingFunctions.js":156}],153:[function(require,module,exports){var Title=require("../../core/title.js");Title.parseXML=function(xml,graph){var Point=require("../../math/point.js"),RGBColor=require("../../math/rgb_color.js"),Text=require("../../core/text.js"),pF=require("../../util/parsingFunctions.js"),parsePoint=Point.parse,parseRGBColor=RGBColor.parse,parseAttribute=pF.parseAttribute,parseInteger=pF.parseInteger,title;if(xml){var text=xml.text();if(text!==""){title=new Title(new Text(text),graph)}else{return undefined}parseAttribute(pF.getXMLAttr(xml,"frame"),title.frame,function(value){return value.toLowerCase()});parseAttribute(pF.getXMLAttr(xml,"border"),title.border,parseInteger);parseAttribute(pF.getXMLAttr(xml,"color"),title.color,parseRGBColor);parseAttribute(pF.getXMLAttr(xml,"bordercolor"),title.bordercolor,parseRGBColor);parseAttribute(pF.getXMLAttr(xml,"opacity"),title.opacity,parseFloat);parseAttribute(pF.getXMLAttr(xml,"padding"),title.padding,parseInteger);parseAttribute(pF.getXMLAttr(xml,"cornerradius"),title.cornerradius,parseInteger);parseAttribute(pF.getXMLAttr(xml,"anchor"),title.anchor,parsePoint);parseAttribute(pF.getXMLAttr(xml,"base"),title.base,parsePoint);parseAttribute(pF.getXMLAttr(xml,"position"),title.position,parsePoint)}return title};module.exports=Title},{"../../core/text.js":64,"../../core/title.js":65,"../../math/point.js":104,"../../math/rgb_color.js":105,"../../util/parsingFunctions.js":156}],154:[function(require,module,exports){var Window=require("../../core/window.js");Window.parseXML=function(xml){var w=new Window,RGBColor=require("../../math/rgb_color.js"),pF=require("../../util/parsingFunctions.js"),parseAttribute=pF.parseAttribute,parseInteger=pF.parseInteger,attr;if(xml){parseAttribute(pF.getXMLAttr(xml,"width"),w.width,parseInteger);parseAttribute(pF.getXMLAttr(xml,"height"),w.height,parseInteger);parseAttribute(pF.getXMLAttr(xml,"border"),w.border,parseInteger);attr=pF.getXMLAttr(xml,"margin");if(attr!==undefined){(function(m){w.margin().set(m,m,m,m)})(parseInt(attr,10))}attr=pF.getXMLAttr(xml,"padding");if(attr!==undefined){(function(m){w.padding().set(m,m,m,m)})(parseInt(attr,10))}parseAttribute(pF.getXMLAttr(xml,"bordercolor"),w.bordercolor,RGBColor.parse)}return w};module.exports=Window},{"../../core/window.js":70,"../../math/rgb_color.js":105,"../../util/parsingFunctions.js":156}],155:[function(require,module,exports){var Zoom=require("../../core/zoom.js");Zoom.parseXML=function(xml,type){var zoom=new Zoom,DataValue=require("../../core/data_value.js"),DataMeasure=require("../../core/data_measure.js"),pF=require("../../util/parsingFunctions.js"),parseAttribute=pF.parseAttribute,parseDataMeasure=function(v){return DataMeasure.parse(type,v)},attr;if(xml){parseAttribute(pF.getXMLAttr(xml,"allowed"),zoom.allowed,pF.parseBoolean);parseAttribute(pF.getXMLAttr(xml,"min"),zoom.min,parseDataMeasure);parseAttribute(pF.getXMLAttr(xml,"max"),zoom.max,parseDataMeasure);attr=pF.getXMLAttr(xml,"anchor");if(attr!==undefined){if(attr.toLowerCase()==="none"){zoom.anchor(null)}else{zoom.anchor(DataValue.parse(type,attr))}}}return zoom};module.exports=Zoom},{"../../core/data_measure.js":28,"../../core/data_value.js":30,"../../core/zoom.js":71,"../../util/parsingFunctions.js":156}],156:[function(require,module,exports){var ParsingFunctions={};ParsingFunctions.parseAttribute=function(value,attribute,preprocessor){if(value!==undefined){attribute(preprocessor!==undefined?preprocessor(value):value);return true}return false};ParsingFunctions.parseInteger=function(value){return parseInt(value,10)};ParsingFunctions.parseBoolean=function(param){if(typeof param==="string"){switch(param.toLowerCase()){case"true":case"yes":return true;case"false":case"no":return false;default:return param}}else{return param}};ParsingFunctions.getXMLAttr=function(node,attrname){if(node.length>=1&&node[0].hasAttribute(attrname)){return node.attr(attrname)}return undefined};module.exports=ParsingFunctions},{}],157:[function(require,module,exports){utilityFunctions={};utilityFunctions.getKeys=function(obj){var keys=[],key;for(key in obj){if(obj.hasOwnProperty(key)){keys.push(key)}}return keys};utilityFunctions.coerceToString=function(s){if(typeof s!=="undefined"){return String(s)}else{return s}};utilityFunctions.insertDefaults=function(elem,defaults,attributes){var i;for(i=0;i<attributes.length;i++){if(defaults[attributes[i]]!==undefined&&(typeof defaults[attributes[i]]!=="object"||defaults[attributes[i]]===null)){if(elem.attributes().indexOf(attributes[i])>-1){elem.attribute(attributes[i]).defaultsTo(defaults[attributes[i]])}}}return elem};utilityFunctions.getDefaultValuesFromXSD=function(){var DatetimeValue=require("../core/datetime_value.js"),NumberValue=require("../core/number_value.js"),Displacement=require("../math/displacement.js"),Insets=require("../math/insets.js"),Point=require("../math/point.js"),RGBColor=require("../math/rgb_color.js");return{window:{border:2,margin:function(){return new Insets(2,2,2,2)},padding:function(){return new Insets(5,5,5,5)},bordercolor:function(){return new RGBColor.parse("0x000000")}},legend:{icon:{height:30,width:40,border:1},visible:null,base:function(){return new Point(1,1)},anchor:function(){return new Point(1,1)},position:function(){return new Point(0,0)},frame:"plot",color:function(){return new RGBColor.parse("0xffffff")},bordercolor:function(){return new RGBColor.parse("0x000000")},opacity:1,border:1,rows:undefined,columns:undefined,cornerradius:0,padding:0},background:{img:{src:undefined,anchor:function(){return new Point(-1,-1)},base:function(){return new Point(-1,-1)},position:function(){return new Point(0,0)},frame:"padding"},color:"0xffffff"},plotarea:{margin:function(){return new Insets(10,38,35,35)},border:0,color:null,bordercolor:function(){return new RGBColor.parse("0xeeeeee")}},title:{text:undefined,frame:"padding",border:0,color:function(){return new RGBColor.parse("0xffffff")},bordercolor:function(){return new RGBColor.parse("0x000000")},opacity:1,padding:0,cornerradius:15,anchor:function(){return new Point(0,1)},base:function(){return new Point(0,1)},position:function(){return new Point(0,0)}},horizontalaxis:{title:{content:undefined,anchor:undefined,base:0,position:undefined,"position-horizontal-top":function(){return new Point(0,15)},"position-horizontal-bottom":function(){return new Point(0,-18)},"position-vertical-right":function(){return new Point(33,0)},"position-vertical-left":function(){return new Point(-25,0)},"anchor-horizontal-top":function(){return new Point(0,-1)},"anchor-horizontal-bottom":function(){return new Point(0,1)},"anchor-vertical-right":function(){return new Point(-1,0)},"anchor-vertical-left":function(){return new Point(1,0)},angle:0},labels:{label:{format:undefined,position:undefined,anchor:undefined,"position-horizontal-top":function(){return new Point(0,5)},"position-horizontal-bottom":function(){return new Point(0,-5)},"position-vertical-right":function(){return new Point(5,0)},"position-vertical-left":function(){return new Point(-8,0)},"anchor-horizontal-top":function(){return new Point(0,-1)},"anchor-horizontal-bottom":function(){return new Point(0,1)},"anchor-vertical-right":function(){return new Point(-1,0)},"anchor-vertical-left":function(){return new Point(1,0)},angle:0,spacing:undefined,densityfactor:1,color:function(){return new RGBColor.parse("0x000000")},visible:true},"start-number":function(){return new NumberValue(0)},"start-datetime":function(){return new DatetimeValue(0)},angle:0,position:function(){return new Point(0,0)},anchor:function(){return new Point(0,0)},color:function(){return new RGBColor.parse("0x000000")},visible:true,defaultNumberSpacing:[1e4,5e3,2e3,1e3,500,200,100,50,20,10,5,2,1,.1,.01,.001],defaultDatetimeSpacing:["1000Y","500Y","200Y","100Y","50Y","20Y","10Y","5Y","2Y","1Y","6M","3M","2M","1M","7D","3D","2D","1D","12H","6H","3H","2H","1H"],"function":undefined,densityfactor:undefined},grid:{color:function(){return new RGBColor.parse("0xeeeeee")},visible:false},pan:{allowed:true,min:null,max:null},zoom:{allowed:true,min:undefined,max:undefined,anchor:null},binding:{id:undefined,min:undefined,max:undefined},id:undefined,type:"number",length:function(){return new Displacement(1,0)},position:function(){return new Point(0,0)},pregap:0,postgap:0,anchor:-1,base:function(){return new Point(-1,-1)},min:"auto",minoffset:0,minposition:function(){return new Displacement(-1,0)},max:"auto",maxoffset:0,maxposition:function(){return new Displacement(1,0)},positionbase:undefined,color:function(){return new RGBColor(0,0,0)},tickmin:-3,tickmax:3,tickcolor:null,highlightstyle:"axis",linewidth:1,orientation:undefined},verticalaxis:{title:{content:undefined,anchor:function(){return new Point(0,-20)},position:function(){return new Point(0,1)},angle:"0"},labels:{label:{format:undefined,start:undefined,angle:undefined,position:undefined,anchor:undefined,spacing:undefined,densityfactor:undefined},format:"%1d",visible:"true",start:"0",angle:"0.0",position:"0 0",anchor:"0 0","function":undefined,densityfactor:undefined},grid:{visible:"false"},pan:{allowed:"yes",min:undefined,max:undefined},zoom:{allowed:"yes",min:undefined,max:undefined,anchor:"none"},binding:{id:undefined,min:undefined,max:undefined},id:undefined,type:"number",position:"0 0",pregap:"0",postgap:"0",anchor:"-1",base:"-1 1",min:"auto",minoffset:"0",minposition:"-1",max:"auto",maxoffset:"0",maxposition:"1",positionbase:undefined,tickmin:"-3",tickmax:"3",highlightstyle:"axis",linewidth:"1",orientation:undefined},plot:{legend:{visible:true,label:undefined},horizontalaxis:{variable:{ref:undefined,factor:undefined},constant:{value:undefined},ref:undefined},verticalaxis:{variable:{ref:undefined,factor:undefined},constant:{value:undefined},ref:undefined},filter:{option:{name:undefined,value:undefined},type:undefined},renderer:{option:{name:undefined,value:undefined,min:undefined,max:undefined},type:function(){var Renderer=require("../core/renderer.js");return Renderer.Type.parse("line")}},datatips:{variable:{"formatString-number":"%.2f","formatString-datetime":"%d %n %Y"},formatString:"{0}: {1}",bgcolor:function(){return RGBColor.parse("0xeeeeee")},bgalpha:1,border:1,bordercolor:function(){return RGBColor.parse("0x000000")},pad:2}},throttle:{pattern:"",requests:0,period:0,concurrent:0},data:{variables:{variable:{id:undefined,column:undefined,type:"number",missingvalue:undefined,missingop:undefined},missingvalue:"-9000",missingop:"eq"},values:{content:undefined},csv:{location:undefined},service:{location:undefined}}}};module.exports=utilityFunctions},{"../core/datetime_value.js":37,"../core/number_value.js":51,"../core/renderer.js":57,"../math/displacement.js":101,"../math/insets.js":103,"../math/point.js":104,"../math/rgb_color.js":105}],158:[function(require,module,exports){var ValidationFunctions={};ValidationFunctions.validateNumberRange=function(number,lowerBound,upperBound){return typeof number==="number"&&number>=lowerBound&&number<=upperBound};ValidationFunctions.typeOf=function(value){var s=typeof value;if(s==="object"){if(value){if(Object.prototype.toString.call(value)==="[object Array]"){s="array"}}else{s="null"}}return s};ValidationFunctions.isNumberNotNaN=function(x){return typeof x==="number"&&x===x};module.exports=ValidationFunctions},{}]},{},[99]);
+require("./plot.js")($);require("./renderer.js")($);require("./axis_title.js");require("./background.js");require("./datatips_variable.js");require("./data_variable.js");require("./filter_option.js");require("./grid.js");require("./icon.js");require("./img.js");require("./labeler.js");require("./legend.js");require("./pan.js");require("./plotarea.js");require("./plot_legend.js");require("./title.js");require("./window.js");require("./zoom.js");JQueryXMLParser.stringToJQueryXMLObj=function(thingy){if(typeof thingy!=="string"){return $(thingy)}var xml=$.parseXML(thingy);return $($(xml).children()[0])};return JQueryXMLParser}},{"./axis.js":131,"./axis_title.js":132,"./background.js":133,"./data.js":134,"./data_variable.js":135,"./datatips.js":136,"./datatips_variable.js":137,"./filter.js":138,"./filter_option.js":139,"./graph.js":140,"./grid.js":141,"./icon.js":142,"./img.js":143,"./labeler.js":145,"./legend.js":146,"./multigraph.js":147,"./pan.js":148,"./plot.js":149,"./plot_legend.js":150,"./plotarea.js":151,"./renderer.js":152,"./title.js":153,"./window.js":154,"./zoom.js":155}],145:[function(require,module,exports){var Labeler=require("../../core/labeler.js");Labeler.parseXML=function(xml,axis,defaults,spacing){var labeler,Point=require("../../math/point.js"),RGBColor=require("../../math/rgb_color.js"),DataMeasure=require("../../core/data_measure.js"),DataValue=require("../../core/data_value.js"),DataFormatter=require("../../core/data_formatter.js"),pF=require("../../util/parsingFunctions.js"),parsePoint=Point.parse;var parseLabelerAttribute=function(value,attribute,preprocessor,defaultName){if(!pF.parseAttribute(value,attribute,preprocessor)&&defaults!==undefined){attribute(defaults[defaultName]())}};var parseDataFormatter=function(type){return function(value){return DataFormatter.create(type,value)}};var parseDataValue=function(type){return function(value){return DataValue.parse(type,value)}};if(xml){labeler=new Labeler(axis);if(spacing!==null){if(spacing===undefined){spacing=pF.getXMLAttr(xml,"spacing")}parseLabelerAttribute(spacing,labeler.spacing,function(v){return DataMeasure.parse(axis.type(),v)},"spacing")}parseLabelerAttribute(pF.getXMLAttr(xml,"format"),labeler.formatter,parseDataFormatter(axis.type()),"formatter");parseLabelerAttribute(pF.getXMLAttr(xml,"start"),labeler.start,parseDataValue(axis.type()),"start");parseLabelerAttribute(pF.getXMLAttr(xml,"angle"),labeler.angle,parseFloat,"angle");parseLabelerAttribute(pF.getXMLAttr(xml,"position"),labeler.position,parsePoint,"position");parseLabelerAttribute(pF.getXMLAttr(xml,"anchor"),labeler.anchor,parsePoint,"anchor");parseLabelerAttribute(pF.getXMLAttr(xml,"densityfactor"),labeler.densityfactor,parseFloat,"densityfactor");parseLabelerAttribute(pF.getXMLAttr(xml,"color"),labeler.color,RGBColor.parse,"color");parseLabelerAttribute(pF.getXMLAttr(xml,"visible"),labeler.visible,pF.parseBoolean,"visible")}return labeler};module.exports=Labeler},{"../../core/data_formatter.js":27,"../../core/data_measure.js":28,"../../core/data_value.js":30,"../../core/labeler.js":45,"../../math/point.js":104,"../../math/rgb_color.js":105,"../../util/parsingFunctions.js":156}],146:[function(require,module,exports){var Legend=require("../../core/legend.js");Legend.parseXML=function(xml){var legend=new Legend,pF=require("../../util/parsingFunctions.js"),Point=require("../../math/point.js"),RGBColor=require("../../math/rgb_color.js"),Icon=require("../../core/icon.js"),parseAttribute=pF.parseAttribute,parseInteger=pF.parseInteger,parsePoint=Point.parse,parseRGBColor=RGBColor.parse,child;if(xml){parseAttribute(pF.getXMLAttr(xml,"visible"),legend.visible,pF.parseBoolean);parseAttribute(pF.getXMLAttr(xml,"base"),legend.base,parsePoint);parseAttribute(pF.getXMLAttr(xml,"anchor"),legend.anchor,parsePoint);parseAttribute(pF.getXMLAttr(xml,"position"),legend.position,parsePoint);parseAttribute(pF.getXMLAttr(xml,"frame"),legend.frame);parseAttribute(pF.getXMLAttr(xml,"color"),legend.color,parseRGBColor);parseAttribute(pF.getXMLAttr(xml,"bordercolor"),legend.bordercolor,parseRGBColor);parseAttribute(pF.getXMLAttr(xml,"opacity"),legend.opacity,parseFloat);parseAttribute(pF.getXMLAttr(xml,"border"),legend.border,parseInteger);parseAttribute(pF.getXMLAttr(xml,"rows"),legend.rows,parseInteger);parseAttribute(pF.getXMLAttr(xml,"columns"),legend.columns,parseInteger);parseAttribute(pF.getXMLAttr(xml,"cornerradius"),legend.cornerradius,parseInteger);parseAttribute(pF.getXMLAttr(xml,"padding"),legend.padding,parseInteger);child=xml.find("icon");if(child.length>0){legend.icon(Icon.parseXML(child))}}return legend};module.exports=Legend},{"../../core/icon.js":43,"../../core/legend.js":46,"../../math/point.js":104,"../../math/rgb_color.js":105,"../../util/parsingFunctions.js":156}],147:[function(require,module,exports){module.exports=function($){var Multigraph=require("../../core/multigraph.js")($);if(typeof Multigraph.parseXML==="function"){return Multigraph}Multigraph.parseXML=function(xml,mugl,messageHandler){var multigraph=new Multigraph,graphs=multigraph.graphs(),Graph=require("../../core/graph.js"),child;multigraph.mugl(mugl);if(xml){child=xml.find(">graph");if(child.length>0){$.each(child,function(i,e){graphs.add(Graph.parseXML($(e),multigraph,messageHandler))})}else if(child.length===0&&xml.children().length>0){graphs.add(Graph.parseXML(xml,multigraph,messageHandler))}}return multigraph};return Multigraph}},{"../../core/graph.js":41,"../../core/multigraph.js":48}],148:[function(require,module,exports){var Pan=require("../../core/pan.js");Pan.parseXML=function(xml,type){var pan=new Pan,pF=require("../../util/parsingFunctions.js"),DataValue=require("../../core/data_value.js"),parseAttribute=pF.parseAttribute,parseDataValue=function(v){return DataValue.parse(type,v)};if(xml){parseAttribute(pF.getXMLAttr(xml,"allowed"),pan.allowed,pF.parseBoolean);parseAttribute(pF.getXMLAttr(xml,"min"),pan.min,parseDataValue);parseAttribute(pF.getXMLAttr(xml,"max"),pan.max,parseDataValue)}return pan};module.exports=Pan},{"../../core/data_value.js":30,"../../core/pan.js":52,"../../util/parsingFunctions.js":156}],149:[function(require,module,exports){module.exports=function($){var Plot=require("../../core/plot.js");if(typeof Plot.parseXML==="function"){return Plot}Plot.parseXML=function(xml,graph,messageHandler){var DataPlot=require("../../core/data_plot.js"),PlotLegend=require("../../core/plot_legend.js"),ConstantPlot=require("../../core/constant_plot.js"),DataValue=require("../../core/data_value.js"),Renderer=require("../../core/renderer.js"),Filter=require("../../core/filter.js"),Datatips=require("../../core/datatips.js"),pF=require("../../util/parsingFunctions.js"),plot,haxis,vaxis,variable,attr,child;if(xml){child=xml.find(">verticalaxis");if(child.length===1&&pF.getXMLAttr(child,"ref")!==undefined){if(graph){vaxis=graph.axisById(pF.getXMLAttr(child,"ref"));if(vaxis===undefined){throw new Error("Plot Vertical Axis Error: The graph does not contain an axis with an id of '"+pF.getXMLAttr(child,"ref")+"'")}}}child=xml.find("verticalaxis constant");if(child.length>0){var constantValueString=pF.getXMLAttr(child,"value");if(constantValueString===undefined){throw new Error("Constant Plot Error: A 'value' attribute is needed to define a Constant Plot")}plot=new ConstantPlot(DataValue.parse(vaxis.type(),constantValueString))}else{plot=new DataPlot}plot.verticalaxis(vaxis);child=xml.find(">horizontalaxis");if(child.length===1&&pF.getXMLAttr(child,"ref")!==undefined){if(graph){haxis=graph.axisById(pF.getXMLAttr(child,"ref"));if(haxis!==undefined){plot.horizontalaxis(haxis)}else{throw new Error("Plot Horizontal Axis Error: The graph does not contain an axis with an id of '"+pF.getXMLAttr(child,"ref")+"'")}}}if(plot instanceof DataPlot){if(xml.find("horizontalaxis variable").length===0){plot.variable().add(null)}child=xml.find("horizontalaxis variable, verticalaxis variable");if(child.length>0){if(graph){$.each(child,function(i,e){attr=pF.getXMLAttr($(e),"ref");variable=graph.variableById(attr);if(variable!==undefined){plot.data(variable.data());plot.variable().add(variable)}else{throw new Error("Plot Variable Error: No Data tag contains a variable with an id of '"+attr+"'")}})}}}child=xml.find("legend");if(child.length>0){plot.legend(PlotLegend.parseXML(child,plot))}else{plot.legend(PlotLegend.parseXML(undefined,plot))}child=xml.find("renderer");if(child.length>0){plot.renderer(Renderer.parseXML(child,plot,messageHandler))}child=xml.find("filter");if(child.length>0){plot.filter(Filter.parseXML(child))}child=xml.find("datatips");if(child.length>0){plot.datatips(Datatips.parseXML(child))}}return plot};return Plot}},{"../../core/constant_plot.js":24,"../../core/data_plot.js":29,"../../core/data_value.js":30,"../../core/datatips.js":32,"../../core/filter.js":39,"../../core/plot.js":54,"../../core/plot_legend.js":55,"../../core/renderer.js":57,"../../util/parsingFunctions.js":156}],150:[function(require,module,exports){var PlotLegend=require("../../core/plot_legend.js");PlotLegend.parseXML=function(xml,plot){var legend=new PlotLegend,pF=require("../../util/parsingFunctions.js"),Text=require("../../core/text.js"),parseAttribute=pF.parseAttribute,child;if(xml){parseAttribute(pF.getXMLAttr(xml,"visible"),legend.visible,pF.parseBoolean);parseAttribute(pF.getXMLAttr(xml,"label"),legend.label,function(value){return new Text(value)})}if(legend.label()===undefined){if(typeof plot.variable==="function"&&plot.variable().size()>=2){legend.label(new Text(plot.variable().at(1).id()))}else{legend.label(new Text("plot"))}}return legend};module.exports=PlotLegend},{"../../core/plot_legend.js":55,"../../core/text.js":64,"../../util/parsingFunctions.js":156}],151:[function(require,module,exports){var Plotarea=require("../../core/plotarea.js");Plotarea.parseXML=function(xml){var plotarea=new Plotarea,margin=plotarea.margin(),pF=require("../../util/parsingFunctions.js"),RGBColor=require("../../math/rgb_color.js"),parseRGBColor=RGBColor.parse,parseAttribute=pF.parseAttribute,parseInteger=pF.parseInteger;if(xml){parseAttribute(pF.getXMLAttr(xml,"marginbottom"),margin.bottom,parseInteger);parseAttribute(pF.getXMLAttr(xml,"marginleft"),margin.left,parseInteger);parseAttribute(pF.getXMLAttr(xml,"margintop"),margin.top,parseInteger);parseAttribute(pF.getXMLAttr(xml,"marginright"),margin.right,parseInteger);parseAttribute(pF.getXMLAttr(xml,"border"),plotarea.border,parseInteger);parseAttribute(pF.getXMLAttr(xml,"color"),plotarea.color,parseRGBColor);parseAttribute(pF.getXMLAttr(xml,"bordercolor"),plotarea.bordercolor,parseRGBColor)}return plotarea};module.exports=Plotarea},{"../../core/plotarea.js":56,"../../math/rgb_color.js":105,"../../util/parsingFunctions.js":156}],152:[function(require,module,exports){module.exports=function($){var Renderer=require("../../core/renderer.js");if(typeof Renderer.parseXML==="function"){return Renderer}Renderer.parseXML=function(xml,plot,messageHandler){var DataValue=require("../../core/data_value.js"),NumberValue=require("../../core/number_value.js"),Warning=require("../../core/warning.js"),pF=require("../../util/parsingFunctions.js"),rendererType,renderer,opt;require("../../core/renderers/all_renderers.js");if(xml&&pF.getXMLAttr(xml,"type")!==undefined){rendererType=Renderer.Type.parse(pF.getXMLAttr(xml,"type"));if(!Renderer.Type.isInstance(rendererType)){throw new Error("unknown renderer type '"+pF.getXMLAttr(xml,"type")+"'")}renderer=Renderer.create(rendererType);renderer.plot(plot);if(xml.find("option").length>0){(function(renderer,xml,plot,messageHandler){var i,missingValueOption=xml.find("option[name=missingvalue]"),missingOpOption=xml.find("option[name=missingop]");if(missingValueOption.length>0||missingOpOption.length>0){var columns=plot.data().columns(),column;for(i=0;i<columns.size();++i){column=columns.at(i);if(column.type()===DataValue.NUMBER){if(missingValueOption.length>0&&column.missingvalue()===undefined){column.missingvalue(NumberValue.parse(pF.getXMLAttr(missingValueOption,"value")))}if(missingOpOption.length>0&&column.missingop()===undefined){column.missingop(DataValue.parseComparator(pF.getXMLAttr(missingOpOption,"value")))}}}}if(missingValueOption.length>0){messageHandler.warning("Renderer option 'missingvalue' is deprecated; "+"use 'missingvalue' attribute of 'data'/'variable'; instead");missingValueOption.remove()}if(missingOpOption.length>0){messageHandler.warning("Renderer option 'missingop' is deprecated; "+"use 'missingvalue' attribute of 'data'/'variable'; instead");missingOpOption.remove()}})(renderer,xml,plot,messageHandler);$.each(xml.find(">option"),function(i,e){try{renderer.setOptionFromString(pF.getXMLAttr($(e),"name"),pF.getXMLAttr($(e),"value"),pF.getXMLAttr($(e),"min"),pF.getXMLAttr($(e),"max"))}catch(e){if(e instanceof Warning){messageHandler.warning(e)}else{throw e}}})}}return renderer};return Renderer}},{"../../core/data_value.js":30,"../../core/number_value.js":51,"../../core/renderer.js":57,"../../core/renderers/all_renderers.js":58,"../../core/warning.js":66,"../../util/parsingFunctions.js":156}],153:[function(require,module,exports){var Title=require("../../core/title.js");Title.parseXML=function(xml,graph){var Point=require("../../math/point.js"),RGBColor=require("../../math/rgb_color.js"),Text=require("../../core/text.js"),pF=require("../../util/parsingFunctions.js"),parsePoint=Point.parse,parseRGBColor=RGBColor.parse,parseAttribute=pF.parseAttribute,parseInteger=pF.parseInteger,title;if(xml){var text=xml.text();if(text!==""){title=new Title(new Text(text),graph)}else{return undefined}parseAttribute(pF.getXMLAttr(xml,"frame"),title.frame,function(value){return value.toLowerCase()});parseAttribute(pF.getXMLAttr(xml,"border"),title.border,parseInteger);parseAttribute(pF.getXMLAttr(xml,"color"),title.color,parseRGBColor);parseAttribute(pF.getXMLAttr(xml,"bordercolor"),title.bordercolor,parseRGBColor);parseAttribute(pF.getXMLAttr(xml,"opacity"),title.opacity,parseFloat);parseAttribute(pF.getXMLAttr(xml,"padding"),title.padding,parseInteger);parseAttribute(pF.getXMLAttr(xml,"cornerradius"),title.cornerradius,parseInteger);parseAttribute(pF.getXMLAttr(xml,"anchor"),title.anchor,parsePoint);parseAttribute(pF.getXMLAttr(xml,"base"),title.base,parsePoint);parseAttribute(pF.getXMLAttr(xml,"position"),title.position,parsePoint)}return title};module.exports=Title},{"../../core/text.js":64,"../../core/title.js":65,"../../math/point.js":104,"../../math/rgb_color.js":105,"../../util/parsingFunctions.js":156}],154:[function(require,module,exports){var Window=require("../../core/window.js");Window.parseXML=function(xml){var w=new Window,RGBColor=require("../../math/rgb_color.js"),pF=require("../../util/parsingFunctions.js"),parseAttribute=pF.parseAttribute,parseInteger=pF.parseInteger,attr;if(xml){parseAttribute(pF.getXMLAttr(xml,"width"),w.width,parseInteger);parseAttribute(pF.getXMLAttr(xml,"height"),w.height,parseInteger);parseAttribute(pF.getXMLAttr(xml,"border"),w.border,parseInteger);attr=pF.getXMLAttr(xml,"margin");if(attr!==undefined){(function(m){w.margin().set(m,m,m,m)})(parseInt(attr,10))}attr=pF.getXMLAttr(xml,"padding");if(attr!==undefined){(function(m){w.padding().set(m,m,m,m)})(parseInt(attr,10))}parseAttribute(pF.getXMLAttr(xml,"bordercolor"),w.bordercolor,RGBColor.parse)}return w};module.exports=Window},{"../../core/window.js":70,"../../math/rgb_color.js":105,"../../util/parsingFunctions.js":156}],155:[function(require,module,exports){var Zoom=require("../../core/zoom.js");Zoom.parseXML=function(xml,type){var zoom=new Zoom,DataValue=require("../../core/data_value.js"),DataMeasure=require("../../core/data_measure.js"),pF=require("../../util/parsingFunctions.js"),parseAttribute=pF.parseAttribute,parseDataMeasure=function(v){return DataMeasure.parse(type,v)},attr;if(xml){parseAttribute(pF.getXMLAttr(xml,"allowed"),zoom.allowed,pF.parseBoolean);parseAttribute(pF.getXMLAttr(xml,"min"),zoom.min,parseDataMeasure);parseAttribute(pF.getXMLAttr(xml,"max"),zoom.max,parseDataMeasure);attr=pF.getXMLAttr(xml,"anchor");if(attr!==undefined){if(attr.toLowerCase()==="none"){zoom.anchor(null)}else{zoom.anchor(DataValue.parse(type,attr))}}}return zoom};module.exports=Zoom},{"../../core/data_measure.js":28,"../../core/data_value.js":30,"../../core/zoom.js":71,"../../util/parsingFunctions.js":156}],156:[function(require,module,exports){var ParsingFunctions={};ParsingFunctions.parseAttribute=function(value,attribute,preprocessor){if(value!==undefined){attribute(preprocessor!==undefined?preprocessor(value):value);return true}return false};ParsingFunctions.parseInteger=function(value){return parseInt(value,10)};ParsingFunctions.parseBoolean=function(param){if(typeof param==="string"){switch(param.toLowerCase()){case"true":case"yes":return true;case"false":case"no":return false;default:return param}}else{return param}};ParsingFunctions.getXMLAttr=function(node,attrname){if(node.length>=1&&node[0].hasAttribute(attrname)){return node.attr(attrname)}return undefined};module.exports=ParsingFunctions},{}],157:[function(require,module,exports){utilityFunctions={};utilityFunctions.getKeys=function(obj){var keys=[],key;for(key in obj){if(obj.hasOwnProperty(key)){keys.push(key)}}return keys};utilityFunctions.coerceToString=function(s){if(typeof s!=="undefined"){return String(s)}else{return s}};utilityFunctions.insertDefaults=function(elem,defaults,attributes){var i;for(i=0;i<attributes.length;i++){if(defaults[attributes[i]]!==undefined&&(typeof defaults[attributes[i]]!=="object"||defaults[attributes[i]]===null)){if(elem.attributes().indexOf(attributes[i])>-1){elem.attribute(attributes[i]).defaultsTo(defaults[attributes[i]])}}}return elem};utilityFunctions.getDefaultValuesFromXSD=function(){var DatetimeValue=require("../core/datetime_value.js"),NumberValue=require("../core/number_value.js"),Displacement=require("../math/displacement.js"),Insets=require("../math/insets.js"),Point=require("../math/point.js"),RGBColor=require("../math/rgb_color.js");return{window:{border:2,margin:function(){return new Insets(2,2,2,2)},padding:function(){return new Insets(5,5,5,5)},bordercolor:function(){return new RGBColor.parse("0x000000")}},legend:{icon:{height:30,width:40,border:1},visible:null,base:function(){return new Point(1,1)},anchor:function(){return new Point(1,1)},position:function(){return new Point(0,0)},frame:"plot",color:function(){return new RGBColor.parse("0xffffff")},bordercolor:function(){return new RGBColor.parse("0x000000")},opacity:1,border:1,rows:undefined,columns:undefined,cornerradius:0,padding:0},background:{img:{src:undefined,anchor:function(){return new Point(-1,-1)},base:function(){return new Point(-1,-1)},position:function(){return new Point(0,0)},frame:"padding"},color:"0xffffff"},plotarea:{margin:function(){return new Insets(10,38,35,35)},border:0,color:null,bordercolor:function(){return new RGBColor.parse("0xeeeeee")}},title:{text:undefined,frame:"padding",border:0,color:function(){return new RGBColor.parse("0xffffff")},bordercolor:function(){return new RGBColor.parse("0x000000")},opacity:1,padding:0,cornerradius:15,anchor:function(){return new Point(0,1)},base:function(){return new Point(0,1)},position:function(){return new Point(0,0)}},horizontalaxis:{title:{content:undefined,anchor:undefined,base:0,position:undefined,"position-horizontal-top":function(){return new Point(0,15)},"position-horizontal-bottom":function(){return new Point(0,-18)},"position-vertical-right":function(){return new Point(33,0)},"position-vertical-left":function(){return new Point(-25,0)},"anchor-horizontal-top":function(){return new Point(0,-1)},"anchor-horizontal-bottom":function(){return new Point(0,1)},"anchor-vertical-right":function(){return new Point(-1,0)},"anchor-vertical-left":function(){return new Point(1,0)},angle:0},labels:{label:{format:undefined,position:undefined,anchor:undefined,"position-horizontal-top":function(){return new Point(0,5)},"position-horizontal-bottom":function(){return new Point(0,-5)},"position-vertical-right":function(){return new Point(5,0)},"position-vertical-left":function(){return new Point(-8,0)},"anchor-horizontal-top":function(){return new Point(0,-1)},"anchor-horizontal-bottom":function(){return new Point(0,1)},"anchor-vertical-right":function(){return new Point(-1,0)},"anchor-vertical-left":function(){return new Point(1,0)},angle:0,spacing:undefined,densityfactor:1,color:function(){return new RGBColor.parse("0x000000")},visible:true},"start-number":function(){return new NumberValue(0)},"start-datetime":function(){return new DatetimeValue(0)},angle:0,position:function(){return new Point(0,0)},anchor:function(){return new Point(0,0)},color:function(){return new RGBColor.parse("0x000000")},visible:true,defaultNumberSpacing:[1e4,5e3,2e3,1e3,500,200,100,50,20,10,5,2,1,.1,.01,.001],defaultDatetimeSpacing:["1000Y","500Y","200Y","100Y","50Y","20Y","10Y","5Y","2Y","1Y","6M","3M","2M","1M","7D","3D","2D","1D","12H","6H","3H","2H","1H"],"function":undefined,densityfactor:undefined},grid:{color:function(){return new RGBColor.parse("0xeeeeee")},visible:false},pan:{allowed:true,min:null,max:null},zoom:{allowed:true,min:undefined,max:undefined,anchor:null},binding:{id:undefined,min:undefined,max:undefined},id:undefined,type:"number",length:function(){return new Displacement(1,0)},position:function(){return new Point(0,0)},pregap:0,postgap:0,anchor:-1,base:function(){return new Point(-1,-1)},min:"auto",minoffset:0,minposition:function(){return new Displacement(-1,0)},max:"auto",maxoffset:0,maxposition:function(){return new Displacement(1,0)},positionbase:undefined,color:function(){return new RGBColor(0,0,0)},tickmin:-3,tickmax:3,tickcolor:null,highlightstyle:"axis",linewidth:1,orientation:undefined},verticalaxis:{title:{content:undefined,anchor:function(){return new Point(0,-20)},position:function(){return new Point(0,1)},angle:"0"},labels:{label:{format:undefined,start:undefined,angle:undefined,position:undefined,anchor:undefined,spacing:undefined,densityfactor:undefined},format:"%1d",visible:"true",start:"0",angle:"0.0",position:"0 0",anchor:"0 0","function":undefined,densityfactor:undefined},grid:{visible:"false"},pan:{allowed:"yes",min:undefined,max:undefined},zoom:{allowed:"yes",min:undefined,max:undefined,anchor:"none"},binding:{id:undefined,min:undefined,max:undefined},id:undefined,type:"number",position:"0 0",pregap:"0",postgap:"0",anchor:"-1",base:"-1 1",min:"auto",minoffset:"0",minposition:"-1",max:"auto",maxoffset:"0",maxposition:"1",positionbase:undefined,tickmin:"-3",tickmax:"3",highlightstyle:"axis",linewidth:"1",orientation:undefined},plot:{legend:{visible:true,label:undefined},horizontalaxis:{variable:{ref:undefined,factor:undefined},constant:{value:undefined},ref:undefined},verticalaxis:{variable:{ref:undefined,factor:undefined},constant:{value:undefined},ref:undefined},filter:{option:{name:undefined,value:undefined},type:undefined},renderer:{option:{name:undefined,value:undefined,min:undefined,max:undefined},type:function(){var Renderer=require("../core/renderer.js");return Renderer.Type.parse("line")}},datatips:{variable:{"formatString-number":"%.2f","formatString-datetime":"%d %n %Y"},formatString:"{0}: {1}",bgcolor:function(){return RGBColor.parse("0xeeeeee")},bgalpha:1,border:1,bordercolor:function(){return RGBColor.parse("0x000000")},pad:2}},throttle:{pattern:"",requests:0,period:0,concurrent:0},data:{variables:{variable:{id:undefined,column:undefined,type:"number",missingvalue:undefined,missingop:undefined},missingvalue:"-9000",missingop:"eq"},values:{content:undefined},csv:{location:undefined},service:{location:undefined}}}};module.exports=utilityFunctions},{"../core/datetime_value.js":37,"../core/number_value.js":51,"../core/renderer.js":57,"../math/displacement.js":101,"../math/insets.js":103,"../math/point.js":104,"../math/rgb_color.js":105}],158:[function(require,module,exports){var ValidationFunctions={};ValidationFunctions.validateNumberRange=function(number,lowerBound,upperBound){return typeof number==="number"&&number>=lowerBound&&number<=upperBound};ValidationFunctions.typeOf=function(value){var s=typeof value;if(s==="object"){if(value){if(Object.prototype.toString.call(value)==="[object Array]"){s="array"}}else{s="null"}}return s};ValidationFunctions.isNumberNotNaN=function(x){return typeof x==="number"&&x===x};module.exports=ValidationFunctions},{}]},{},[99]);(function (global, factory) {
+  typeof exports === 'object' && typeof module !== 'undefined' ? module.exports = factory(require('core-js/stable')) :
+  typeof define === 'function' && define.amd ? define(['core-js/stable'], factory) :
+  (global = global || self, global.ClimateByLocationWidget = factory());
+}(this, function () { 'use strict';
+
+  function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) {
+    try {
+      var info = gen[key](arg);
+      var value = info.value;
+    } catch (error) {
+      reject(error);
+      return;
+    }
+
+    if (info.done) {
+      resolve(value);
+    } else {
+      Promise.resolve(value).then(_next, _throw);
+    }
+  }
+
+  function _asyncToGenerator(fn) {
+    return function () {
+      var self = this,
+          args = arguments;
+      return new Promise(function (resolve, reject) {
+        var gen = fn.apply(self, args);
+
+        function _next(value) {
+          asyncGeneratorStep(gen, resolve, reject, _next, _throw, "next", value);
+        }
+
+        function _throw(err) {
+          asyncGeneratorStep(gen, resolve, reject, _next, _throw, "throw", err);
+        }
+
+        _next(undefined);
+      });
+    };
+  }
+
+  function _classCallCheck(instance, Constructor) {
+    if (!(instance instanceof Constructor)) {
+      throw new TypeError("Cannot call a class as a function");
+    }
+  }
+
+  function _defineProperties(target, props) {
+    for (var i = 0; i < props.length; i++) {
+      var descriptor = props[i];
+      descriptor.enumerable = descriptor.enumerable || false;
+      descriptor.configurable = true;
+      if ("value" in descriptor) descriptor.writable = true;
+      Object.defineProperty(target, descriptor.key, descriptor);
+    }
+  }
+
+  function _createClass(Constructor, protoProps, staticProps) {
+    if (protoProps) _defineProperties(Constructor.prototype, protoProps);
+    if (staticProps) _defineProperties(Constructor, staticProps);
+    return Constructor;
+  }
+
+  function _slicedToArray(arr, i) {
+    return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _nonIterableRest();
+  }
+
+  function _arrayWithHoles(arr) {
+    if (Array.isArray(arr)) return arr;
+  }
+
+  function _iterableToArrayLimit(arr, i) {
+    var _arr = [];
+    var _n = true;
+    var _d = false;
+    var _e = undefined;
+
+    try {
+      for (var _i = arr[Symbol.iterator](), _s; !(_n = (_s = _i.next()).done); _n = true) {
+        _arr.push(_s.value);
+
+        if (i && _arr.length === i) break;
+      }
+    } catch (err) {
+      _d = true;
+      _e = err;
+    } finally {
+      try {
+        if (!_n && _i["return"] != null) _i["return"]();
+      } finally {
+        if (_d) throw _e;
+      }
+    }
+
+    return _arr;
+  }
+
+  function _nonIterableRest() {
+    throw new TypeError("Invalid attempt to destructure non-iterable instance");
+  }
+
+  /**
+   * Copyright (c) 2014-present, Facebook, Inc.
+   *
+   * This source code is licensed under the MIT license found in the
+   * LICENSE file in the root directory of this source tree.
+   */
+
+  !(function(global) {
+
+    var Op = Object.prototype;
+    var hasOwn = Op.hasOwnProperty;
+    var undefined$1; // More compressible than void 0.
+    var $Symbol = typeof Symbol === "function" ? Symbol : {};
+    var iteratorSymbol = $Symbol.iterator || "@@iterator";
+    var asyncIteratorSymbol = $Symbol.asyncIterator || "@@asyncIterator";
+    var toStringTagSymbol = $Symbol.toStringTag || "@@toStringTag";
+
+    var inModule = typeof module === "object";
+    var runtime = global.regeneratorRuntime;
+    if (runtime) {
+      if (inModule) {
+        // If regeneratorRuntime is defined globally and we're in a module,
+        // make the exports object identical to regeneratorRuntime.
+        module.exports = runtime;
+      }
+      // Don't bother evaluating the rest of this file if the runtime was
+      // already defined globally.
+      return;
+    }
+
+    // Define the runtime globally (as expected by generated code) as either
+    // module.exports (if we're in a module) or a new, empty object.
+    runtime = global.regeneratorRuntime = inModule ? module.exports : {};
+
+    function wrap(innerFn, outerFn, self, tryLocsList) {
+      // If outerFn provided and outerFn.prototype is a Generator, then outerFn.prototype instanceof Generator.
+      var protoGenerator = outerFn && outerFn.prototype instanceof Generator ? outerFn : Generator;
+      var generator = Object.create(protoGenerator.prototype);
+      var context = new Context(tryLocsList || []);
+
+      // The ._invoke method unifies the implementations of the .next,
+      // .throw, and .return methods.
+      generator._invoke = makeInvokeMethod(innerFn, self, context);
+
+      return generator;
+    }
+    runtime.wrap = wrap;
+
+    // Try/catch helper to minimize deoptimizations. Returns a completion
+    // record like context.tryEntries[i].completion. This interface could
+    // have been (and was previously) designed to take a closure to be
+    // invoked without arguments, but in all the cases we care about we
+    // already have an existing method we want to call, so there's no need
+    // to create a new function object. We can even get away with assuming
+    // the method takes exactly one argument, since that happens to be true
+    // in every case, so we don't have to touch the arguments object. The
+    // only additional allocation required is the completion record, which
+    // has a stable shape and so hopefully should be cheap to allocate.
+    function tryCatch(fn, obj, arg) {
+      try {
+        return { type: "normal", arg: fn.call(obj, arg) };
+      } catch (err) {
+        return { type: "throw", arg: err };
+      }
+    }
+
+    var GenStateSuspendedStart = "suspendedStart";
+    var GenStateSuspendedYield = "suspendedYield";
+    var GenStateExecuting = "executing";
+    var GenStateCompleted = "completed";
+
+    // Returning this object from the innerFn has the same effect as
+    // breaking out of the dispatch switch statement.
+    var ContinueSentinel = {};
+
+    // Dummy constructor functions that we use as the .constructor and
+    // .constructor.prototype properties for functions that return Generator
+    // objects. For full spec compliance, you may wish to configure your
+    // minifier not to mangle the names of these two functions.
+    function Generator() {}
+    function GeneratorFunction() {}
+    function GeneratorFunctionPrototype() {}
+
+    // This is a polyfill for %IteratorPrototype% for environments that
+    // don't natively support it.
+    var IteratorPrototype = {};
+    IteratorPrototype[iteratorSymbol] = function () {
+      return this;
+    };
+
+    var getProto = Object.getPrototypeOf;
+    var NativeIteratorPrototype = getProto && getProto(getProto(values([])));
+    if (NativeIteratorPrototype &&
+        NativeIteratorPrototype !== Op &&
+        hasOwn.call(NativeIteratorPrototype, iteratorSymbol)) {
+      // This environment has a native %IteratorPrototype%; use it instead
+      // of the polyfill.
+      IteratorPrototype = NativeIteratorPrototype;
+    }
+
+    var Gp = GeneratorFunctionPrototype.prototype =
+      Generator.prototype = Object.create(IteratorPrototype);
+    GeneratorFunction.prototype = Gp.constructor = GeneratorFunctionPrototype;
+    GeneratorFunctionPrototype.constructor = GeneratorFunction;
+    GeneratorFunctionPrototype[toStringTagSymbol] =
+      GeneratorFunction.displayName = "GeneratorFunction";
+
+    // Helper for defining the .next, .throw, and .return methods of the
+    // Iterator interface in terms of a single ._invoke method.
+    function defineIteratorMethods(prototype) {
+      ["next", "throw", "return"].forEach(function(method) {
+        prototype[method] = function(arg) {
+          return this._invoke(method, arg);
+        };
+      });
+    }
+
+    runtime.isGeneratorFunction = function(genFun) {
+      var ctor = typeof genFun === "function" && genFun.constructor;
+      return ctor
+        ? ctor === GeneratorFunction ||
+          // For the native GeneratorFunction constructor, the best we can
+          // do is to check its .name property.
+          (ctor.displayName || ctor.name) === "GeneratorFunction"
+        : false;
+    };
+
+    runtime.mark = function(genFun) {
+      if (Object.setPrototypeOf) {
+        Object.setPrototypeOf(genFun, GeneratorFunctionPrototype);
+      } else {
+        genFun.__proto__ = GeneratorFunctionPrototype;
+        if (!(toStringTagSymbol in genFun)) {
+          genFun[toStringTagSymbol] = "GeneratorFunction";
+        }
+      }
+      genFun.prototype = Object.create(Gp);
+      return genFun;
+    };
+
+    // Within the body of any async function, `await x` is transformed to
+    // `yield regeneratorRuntime.awrap(x)`, so that the runtime can test
+    // `hasOwn.call(value, "__await")` to determine if the yielded value is
+    // meant to be awaited.
+    runtime.awrap = function(arg) {
+      return { __await: arg };
+    };
+
+    function AsyncIterator(generator) {
+      function invoke(method, arg, resolve, reject) {
+        var record = tryCatch(generator[method], generator, arg);
+        if (record.type === "throw") {
+          reject(record.arg);
+        } else {
+          var result = record.arg;
+          var value = result.value;
+          if (value &&
+              typeof value === "object" &&
+              hasOwn.call(value, "__await")) {
+            return Promise.resolve(value.__await).then(function(value) {
+              invoke("next", value, resolve, reject);
+            }, function(err) {
+              invoke("throw", err, resolve, reject);
+            });
+          }
+
+          return Promise.resolve(value).then(function(unwrapped) {
+            // When a yielded Promise is resolved, its final value becomes
+            // the .value of the Promise<{value,done}> result for the
+            // current iteration. If the Promise is rejected, however, the
+            // result for this iteration will be rejected with the same
+            // reason. Note that rejections of yielded Promises are not
+            // thrown back into the generator function, as is the case
+            // when an awaited Promise is rejected. This difference in
+            // behavior between yield and await is important, because it
+            // allows the consumer to decide what to do with the yielded
+            // rejection (swallow it and continue, manually .throw it back
+            // into the generator, abandon iteration, whatever). With
+            // await, by contrast, there is no opportunity to examine the
+            // rejection reason outside the generator function, so the
+            // only option is to throw it from the await expression, and
+            // let the generator function handle the exception.
+            result.value = unwrapped;
+            resolve(result);
+          }, reject);
+        }
+      }
+
+      var previousPromise;
+
+      function enqueue(method, arg) {
+        function callInvokeWithMethodAndArg() {
+          return new Promise(function(resolve, reject) {
+            invoke(method, arg, resolve, reject);
+          });
+        }
+
+        return previousPromise =
+          // If enqueue has been called before, then we want to wait until
+          // all previous Promises have been resolved before calling invoke,
+          // so that results are always delivered in the correct order. If
+          // enqueue has not been called before, then it is important to
+          // call invoke immediately, without waiting on a callback to fire,
+          // so that the async generator function has the opportunity to do
+          // any necessary setup in a predictable way. This predictability
+          // is why the Promise constructor synchronously invokes its
+          // executor callback, and why async functions synchronously
+          // execute code before the first await. Since we implement simple
+          // async functions in terms of async generators, it is especially
+          // important to get this right, even though it requires care.
+          previousPromise ? previousPromise.then(
+            callInvokeWithMethodAndArg,
+            // Avoid propagating failures to Promises returned by later
+            // invocations of the iterator.
+            callInvokeWithMethodAndArg
+          ) : callInvokeWithMethodAndArg();
+      }
+
+      // Define the unified helper method that is used to implement .next,
+      // .throw, and .return (see defineIteratorMethods).
+      this._invoke = enqueue;
+    }
+
+    defineIteratorMethods(AsyncIterator.prototype);
+    AsyncIterator.prototype[asyncIteratorSymbol] = function () {
+      return this;
+    };
+    runtime.AsyncIterator = AsyncIterator;
+
+    // Note that simple async functions are implemented on top of
+    // AsyncIterator objects; they just return a Promise for the value of
+    // the final result produced by the iterator.
+    runtime.async = function(innerFn, outerFn, self, tryLocsList) {
+      var iter = new AsyncIterator(
+        wrap(innerFn, outerFn, self, tryLocsList)
+      );
+
+      return runtime.isGeneratorFunction(outerFn)
+        ? iter // If outerFn is a generator, return the full iterator.
+        : iter.next().then(function(result) {
+            return result.done ? result.value : iter.next();
+          });
+    };
+
+    function makeInvokeMethod(innerFn, self, context) {
+      var state = GenStateSuspendedStart;
+
+      return function invoke(method, arg) {
+        if (state === GenStateExecuting) {
+          throw new Error("Generator is already running");
+        }
+
+        if (state === GenStateCompleted) {
+          if (method === "throw") {
+            throw arg;
+          }
+
+          // Be forgiving, per 25.3.3.3.3 of the spec:
+          // https://people.mozilla.org/~jorendorff/es6-draft.html#sec-generatorresume
+          return doneResult();
+        }
+
+        context.method = method;
+        context.arg = arg;
+
+        while (true) {
+          var delegate = context.delegate;
+          if (delegate) {
+            var delegateResult = maybeInvokeDelegate(delegate, context);
+            if (delegateResult) {
+              if (delegateResult === ContinueSentinel) continue;
+              return delegateResult;
+            }
+          }
+
+          if (context.method === "next") {
+            // Setting context._sent for legacy support of Babel's
+            // function.sent implementation.
+            context.sent = context._sent = context.arg;
+
+          } else if (context.method === "throw") {
+            if (state === GenStateSuspendedStart) {
+              state = GenStateCompleted;
+              throw context.arg;
+            }
+
+            context.dispatchException(context.arg);
+
+          } else if (context.method === "return") {
+            context.abrupt("return", context.arg);
+          }
+
+          state = GenStateExecuting;
+
+          var record = tryCatch(innerFn, self, context);
+          if (record.type === "normal") {
+            // If an exception is thrown from innerFn, we leave state ===
+            // GenStateExecuting and loop back for another invocation.
+            state = context.done
+              ? GenStateCompleted
+              : GenStateSuspendedYield;
+
+            if (record.arg === ContinueSentinel) {
+              continue;
+            }
+
+            return {
+              value: record.arg,
+              done: context.done
+            };
+
+          } else if (record.type === "throw") {
+            state = GenStateCompleted;
+            // Dispatch the exception by looping back around to the
+            // context.dispatchException(context.arg) call above.
+            context.method = "throw";
+            context.arg = record.arg;
+          }
+        }
+      };
+    }
+
+    // Call delegate.iterator[context.method](context.arg) and handle the
+    // result, either by returning a { value, done } result from the
+    // delegate iterator, or by modifying context.method and context.arg,
+    // setting context.delegate to null, and returning the ContinueSentinel.
+    function maybeInvokeDelegate(delegate, context) {
+      var method = delegate.iterator[context.method];
+      if (method === undefined$1) {
+        // A .throw or .return when the delegate iterator has no .throw
+        // method always terminates the yield* loop.
+        context.delegate = null;
+
+        if (context.method === "throw") {
+          if (delegate.iterator.return) {
+            // If the delegate iterator has a return method, give it a
+            // chance to clean up.
+            context.method = "return";
+            context.arg = undefined$1;
+            maybeInvokeDelegate(delegate, context);
+
+            if (context.method === "throw") {
+              // If maybeInvokeDelegate(context) changed context.method from
+              // "return" to "throw", let that override the TypeError below.
+              return ContinueSentinel;
+            }
+          }
+
+          context.method = "throw";
+          context.arg = new TypeError(
+            "The iterator does not provide a 'throw' method");
+        }
+
+        return ContinueSentinel;
+      }
+
+      var record = tryCatch(method, delegate.iterator, context.arg);
+
+      if (record.type === "throw") {
+        context.method = "throw";
+        context.arg = record.arg;
+        context.delegate = null;
+        return ContinueSentinel;
+      }
+
+      var info = record.arg;
+
+      if (! info) {
+        context.method = "throw";
+        context.arg = new TypeError("iterator result is not an object");
+        context.delegate = null;
+        return ContinueSentinel;
+      }
+
+      if (info.done) {
+        // Assign the result of the finished delegate to the temporary
+        // variable specified by delegate.resultName (see delegateYield).
+        context[delegate.resultName] = info.value;
+
+        // Resume execution at the desired location (see delegateYield).
+        context.next = delegate.nextLoc;
+
+        // If context.method was "throw" but the delegate handled the
+        // exception, let the outer generator proceed normally. If
+        // context.method was "next", forget context.arg since it has been
+        // "consumed" by the delegate iterator. If context.method was
+        // "return", allow the original .return call to continue in the
+        // outer generator.
+        if (context.method !== "return") {
+          context.method = "next";
+          context.arg = undefined$1;
+        }
+
+      } else {
+        // Re-yield the result returned by the delegate method.
+        return info;
+      }
+
+      // The delegate iterator is finished, so forget it and continue with
+      // the outer generator.
+      context.delegate = null;
+      return ContinueSentinel;
+    }
+
+    // Define Generator.prototype.{next,throw,return} in terms of the
+    // unified ._invoke helper method.
+    defineIteratorMethods(Gp);
+
+    Gp[toStringTagSymbol] = "Generator";
+
+    // A Generator should always return itself as the iterator object when the
+    // @@iterator function is called on it. Some browsers' implementations of the
+    // iterator prototype chain incorrectly implement this, causing the Generator
+    // object to not be returned from this call. This ensures that doesn't happen.
+    // See https://github.com/facebook/regenerator/issues/274 for more details.
+    Gp[iteratorSymbol] = function() {
+      return this;
+    };
+
+    Gp.toString = function() {
+      return "[object Generator]";
+    };
+
+    function pushTryEntry(locs) {
+      var entry = { tryLoc: locs[0] };
+
+      if (1 in locs) {
+        entry.catchLoc = locs[1];
+      }
+
+      if (2 in locs) {
+        entry.finallyLoc = locs[2];
+        entry.afterLoc = locs[3];
+      }
+
+      this.tryEntries.push(entry);
+    }
+
+    function resetTryEntry(entry) {
+      var record = entry.completion || {};
+      record.type = "normal";
+      delete record.arg;
+      entry.completion = record;
+    }
+
+    function Context(tryLocsList) {
+      // The root entry object (effectively a try statement without a catch
+      // or a finally block) gives us a place to store values thrown from
+      // locations where there is no enclosing try statement.
+      this.tryEntries = [{ tryLoc: "root" }];
+      tryLocsList.forEach(pushTryEntry, this);
+      this.reset(true);
+    }
+
+    runtime.keys = function(object) {
+      var keys = [];
+      for (var key in object) {
+        keys.push(key);
+      }
+      keys.reverse();
+
+      // Rather than returning an object with a next method, we keep
+      // things simple and return the next function itself.
+      return function next() {
+        while (keys.length) {
+          var key = keys.pop();
+          if (key in object) {
+            next.value = key;
+            next.done = false;
+            return next;
+          }
+        }
+
+        // To avoid creating an additional object, we just hang the .value
+        // and .done properties off the next function object itself. This
+        // also ensures that the minifier will not anonymize the function.
+        next.done = true;
+        return next;
+      };
+    };
+
+    function values(iterable) {
+      if (iterable) {
+        var iteratorMethod = iterable[iteratorSymbol];
+        if (iteratorMethod) {
+          return iteratorMethod.call(iterable);
+        }
+
+        if (typeof iterable.next === "function") {
+          return iterable;
+        }
+
+        if (!isNaN(iterable.length)) {
+          var i = -1, next = function next() {
+            while (++i < iterable.length) {
+              if (hasOwn.call(iterable, i)) {
+                next.value = iterable[i];
+                next.done = false;
+                return next;
+              }
+            }
+
+            next.value = undefined$1;
+            next.done = true;
+
+            return next;
+          };
+
+          return next.next = next;
+        }
+      }
+
+      // Return an iterator with no values.
+      return { next: doneResult };
+    }
+    runtime.values = values;
+
+    function doneResult() {
+      return { value: undefined$1, done: true };
+    }
+
+    Context.prototype = {
+      constructor: Context,
+
+      reset: function(skipTempReset) {
+        this.prev = 0;
+        this.next = 0;
+        // Resetting context._sent for legacy support of Babel's
+        // function.sent implementation.
+        this.sent = this._sent = undefined$1;
+        this.done = false;
+        this.delegate = null;
+
+        this.method = "next";
+        this.arg = undefined$1;
+
+        this.tryEntries.forEach(resetTryEntry);
+
+        if (!skipTempReset) {
+          for (var name in this) {
+            // Not sure about the optimal order of these conditions:
+            if (name.charAt(0) === "t" &&
+                hasOwn.call(this, name) &&
+                !isNaN(+name.slice(1))) {
+              this[name] = undefined$1;
+            }
+          }
+        }
+      },
+
+      stop: function() {
+        this.done = true;
+
+        var rootEntry = this.tryEntries[0];
+        var rootRecord = rootEntry.completion;
+        if (rootRecord.type === "throw") {
+          throw rootRecord.arg;
+        }
+
+        return this.rval;
+      },
+
+      dispatchException: function(exception) {
+        if (this.done) {
+          throw exception;
+        }
+
+        var context = this;
+        function handle(loc, caught) {
+          record.type = "throw";
+          record.arg = exception;
+          context.next = loc;
+
+          if (caught) {
+            // If the dispatched exception was caught by a catch block,
+            // then let that catch block handle the exception normally.
+            context.method = "next";
+            context.arg = undefined$1;
+          }
+
+          return !! caught;
+        }
+
+        for (var i = this.tryEntries.length - 1; i >= 0; --i) {
+          var entry = this.tryEntries[i];
+          var record = entry.completion;
+
+          if (entry.tryLoc === "root") {
+            // Exception thrown outside of any try block that could handle
+            // it, so set the completion value of the entire function to
+            // throw the exception.
+            return handle("end");
+          }
+
+          if (entry.tryLoc <= this.prev) {
+            var hasCatch = hasOwn.call(entry, "catchLoc");
+            var hasFinally = hasOwn.call(entry, "finallyLoc");
+
+            if (hasCatch && hasFinally) {
+              if (this.prev < entry.catchLoc) {
+                return handle(entry.catchLoc, true);
+              } else if (this.prev < entry.finallyLoc) {
+                return handle(entry.finallyLoc);
+              }
+
+            } else if (hasCatch) {
+              if (this.prev < entry.catchLoc) {
+                return handle(entry.catchLoc, true);
+              }
+
+            } else if (hasFinally) {
+              if (this.prev < entry.finallyLoc) {
+                return handle(entry.finallyLoc);
+              }
+
+            } else {
+              throw new Error("try statement without catch or finally");
+            }
+          }
+        }
+      },
+
+      abrupt: function(type, arg) {
+        for (var i = this.tryEntries.length - 1; i >= 0; --i) {
+          var entry = this.tryEntries[i];
+          if (entry.tryLoc <= this.prev &&
+              hasOwn.call(entry, "finallyLoc") &&
+              this.prev < entry.finallyLoc) {
+            var finallyEntry = entry;
+            break;
+          }
+        }
+
+        if (finallyEntry &&
+            (type === "break" ||
+             type === "continue") &&
+            finallyEntry.tryLoc <= arg &&
+            arg <= finallyEntry.finallyLoc) {
+          // Ignore the finally entry if control is not jumping to a
+          // location outside the try/catch block.
+          finallyEntry = null;
+        }
+
+        var record = finallyEntry ? finallyEntry.completion : {};
+        record.type = type;
+        record.arg = arg;
+
+        if (finallyEntry) {
+          this.method = "next";
+          this.next = finallyEntry.finallyLoc;
+          return ContinueSentinel;
+        }
+
+        return this.complete(record);
+      },
+
+      complete: function(record, afterLoc) {
+        if (record.type === "throw") {
+          throw record.arg;
+        }
+
+        if (record.type === "break" ||
+            record.type === "continue") {
+          this.next = record.arg;
+        } else if (record.type === "return") {
+          this.rval = this.arg = record.arg;
+          this.method = "return";
+          this.next = "end";
+        } else if (record.type === "normal" && afterLoc) {
+          this.next = afterLoc;
+        }
+
+        return ContinueSentinel;
+      },
+
+      finish: function(finallyLoc) {
+        for (var i = this.tryEntries.length - 1; i >= 0; --i) {
+          var entry = this.tryEntries[i];
+          if (entry.finallyLoc === finallyLoc) {
+            this.complete(entry.completion, entry.afterLoc);
+            resetTryEntry(entry);
+            return ContinueSentinel;
+          }
+        }
+      },
+
+      "catch": function(tryLoc) {
+        for (var i = this.tryEntries.length - 1; i >= 0; --i) {
+          var entry = this.tryEntries[i];
+          if (entry.tryLoc === tryLoc) {
+            var record = entry.completion;
+            if (record.type === "throw") {
+              var thrown = record.arg;
+              resetTryEntry(entry);
+            }
+            return thrown;
+          }
+        }
+
+        // The context.catch method must only be called with a location
+        // argument that corresponds to a known catch block.
+        throw new Error("illegal catch attempt");
+      },
+
+      delegateYield: function(iterable, resultName, nextLoc) {
+        this.delegate = {
+          iterator: values(iterable),
+          resultName: resultName,
+          nextLoc: nextLoc
+        };
+
+        if (this.method === "next") {
+          // Deliberately forget the last sent value so that we don't
+          // accidentally pass it on to the delegate.
+          this.arg = undefined$1;
+        }
+
+        return ContinueSentinel;
+      }
+    };
+  })(
+    // In sloppy mode, unbound `this` refers to the global object, fallback to
+    // Function constructor if we're in global strict mode. That is sadly a form
+    // of indirect eval which violates Content Security Policy.
+    (function() { return this })() || Function("return this")()
+  );
+
+  /** Detect free variable `global` from Node.js. */
+  var freeGlobal = typeof global == 'object' && global && global.Object === Object && global;
+
+  /** Detect free variable `self`. */
+  var freeSelf = typeof self == 'object' && self && self.Object === Object && self;
+
+  /** Used as a reference to the global object. */
+  var root = freeGlobal || freeSelf || Function('return this')();
+
+  /** Built-in value references. */
+  var Symbol$1 = root.Symbol;
+
+  /** Used for built-in method references. */
+  var objectProto = Object.prototype;
+
+  /** Used to check objects for own properties. */
+  var hasOwnProperty = objectProto.hasOwnProperty;
+
+  /**
+   * Used to resolve the
+   * [`toStringTag`](http://ecma-international.org/ecma-262/7.0/#sec-object.prototype.tostring)
+   * of values.
+   */
+  var nativeObjectToString = objectProto.toString;
+
+  /** Built-in value references. */
+  var symToStringTag = Symbol$1 ? Symbol$1.toStringTag : undefined;
+
+  /**
+   * A specialized version of `baseGetTag` which ignores `Symbol.toStringTag` values.
+   *
+   * @private
+   * @param {*} value The value to query.
+   * @returns {string} Returns the raw `toStringTag`.
+   */
+  function getRawTag(value) {
+    var isOwn = hasOwnProperty.call(value, symToStringTag),
+        tag = value[symToStringTag];
+
+    try {
+      value[symToStringTag] = undefined;
+      var unmasked = true;
+    } catch (e) {}
+
+    var result = nativeObjectToString.call(value);
+    if (unmasked) {
+      if (isOwn) {
+        value[symToStringTag] = tag;
+      } else {
+        delete value[symToStringTag];
+      }
+    }
+    return result;
+  }
+
+  /** Used for built-in method references. */
+  var objectProto$1 = Object.prototype;
+
+  /**
+   * Used to resolve the
+   * [`toStringTag`](http://ecma-international.org/ecma-262/7.0/#sec-object.prototype.tostring)
+   * of values.
+   */
+  var nativeObjectToString$1 = objectProto$1.toString;
+
+  /**
+   * Converts `value` to a string using `Object.prototype.toString`.
+   *
+   * @private
+   * @param {*} value The value to convert.
+   * @returns {string} Returns the converted string.
+   */
+  function objectToString(value) {
+    return nativeObjectToString$1.call(value);
+  }
+
+  /** `Object#toString` result references. */
+  var nullTag = '[object Null]',
+      undefinedTag = '[object Undefined]';
+
+  /** Built-in value references. */
+  var symToStringTag$1 = Symbol$1 ? Symbol$1.toStringTag : undefined;
+
+  /**
+   * The base implementation of `getTag` without fallbacks for buggy environments.
+   *
+   * @private
+   * @param {*} value The value to query.
+   * @returns {string} Returns the `toStringTag`.
+   */
+  function baseGetTag(value) {
+    if (value == null) {
+      return value === undefined ? undefinedTag : nullTag;
+    }
+    return (symToStringTag$1 && symToStringTag$1 in Object(value))
+      ? getRawTag(value)
+      : objectToString(value);
+  }
+
+  /**
+   * Checks if `value` is object-like. A value is object-like if it's not `null`
+   * and has a `typeof` result of "object".
+   *
+   * @static
+   * @memberOf _
+   * @since 4.0.0
+   * @category Lang
+   * @param {*} value The value to check.
+   * @returns {boolean} Returns `true` if `value` is object-like, else `false`.
+   * @example
+   *
+   * _.isObjectLike({});
+   * // => true
+   *
+   * _.isObjectLike([1, 2, 3]);
+   * // => true
+   *
+   * _.isObjectLike(_.noop);
+   * // => false
+   *
+   * _.isObjectLike(null);
+   * // => false
+   */
+  function isObjectLike(value) {
+    return value != null && typeof value == 'object';
+  }
+
+  /** `Object#toString` result references. */
+  var symbolTag = '[object Symbol]';
+
+  /**
+   * Checks if `value` is classified as a `Symbol` primitive or object.
+   *
+   * @static
+   * @memberOf _
+   * @since 4.0.0
+   * @category Lang
+   * @param {*} value The value to check.
+   * @returns {boolean} Returns `true` if `value` is a symbol, else `false`.
+   * @example
+   *
+   * _.isSymbol(Symbol.iterator);
+   * // => true
+   *
+   * _.isSymbol('abc');
+   * // => false
+   */
+  function isSymbol(value) {
+    return typeof value == 'symbol' ||
+      (isObjectLike(value) && baseGetTag(value) == symbolTag);
+  }
+
+  /**
+   * A specialized version of `_.map` for arrays without support for iteratee
+   * shorthands.
+   *
+   * @private
+   * @param {Array} [array] The array to iterate over.
+   * @param {Function} iteratee The function invoked per iteration.
+   * @returns {Array} Returns the new mapped array.
+   */
+  function arrayMap(array, iteratee) {
+    var index = -1,
+        length = array == null ? 0 : array.length,
+        result = Array(length);
+
+    while (++index < length) {
+      result[index] = iteratee(array[index], index, array);
+    }
+    return result;
+  }
+
+  /**
+   * Checks if `value` is classified as an `Array` object.
+   *
+   * @static
+   * @memberOf _
+   * @since 0.1.0
+   * @category Lang
+   * @param {*} value The value to check.
+   * @returns {boolean} Returns `true` if `value` is an array, else `false`.
+   * @example
+   *
+   * _.isArray([1, 2, 3]);
+   * // => true
+   *
+   * _.isArray(document.body.children);
+   * // => false
+   *
+   * _.isArray('abc');
+   * // => false
+   *
+   * _.isArray(_.noop);
+   * // => false
+   */
+  var isArray = Array.isArray;
+
+  /** Used as references for various `Number` constants. */
+  var INFINITY = 1 / 0;
+
+  /** Used to convert symbols to primitives and strings. */
+  var symbolProto = Symbol$1 ? Symbol$1.prototype : undefined,
+      symbolToString = symbolProto ? symbolProto.toString : undefined;
+
+  /**
+   * The base implementation of `_.toString` which doesn't convert nullish
+   * values to empty strings.
+   *
+   * @private
+   * @param {*} value The value to process.
+   * @returns {string} Returns the string.
+   */
+  function baseToString(value) {
+    // Exit early for strings to avoid a performance hit in some environments.
+    if (typeof value == 'string') {
+      return value;
+    }
+    if (isArray(value)) {
+      // Recursively convert values (susceptible to call stack limits).
+      return arrayMap(value, baseToString) + '';
+    }
+    if (isSymbol(value)) {
+      return symbolToString ? symbolToString.call(value) : '';
+    }
+    var result = (value + '');
+    return (result == '0' && (1 / value) == -INFINITY) ? '-0' : result;
+  }
+
+  /**
+   * Checks if `value` is the
+   * [language type](http://www.ecma-international.org/ecma-262/7.0/#sec-ecmascript-language-types)
+   * of `Object`. (e.g. arrays, functions, objects, regexes, `new Number(0)`, and `new String('')`)
+   *
+   * @static
+   * @memberOf _
+   * @since 0.1.0
+   * @category Lang
+   * @param {*} value The value to check.
+   * @returns {boolean} Returns `true` if `value` is an object, else `false`.
+   * @example
+   *
+   * _.isObject({});
+   * // => true
+   *
+   * _.isObject([1, 2, 3]);
+   * // => true
+   *
+   * _.isObject(_.noop);
+   * // => true
+   *
+   * _.isObject(null);
+   * // => false
+   */
+  function isObject(value) {
+    var type = typeof value;
+    return value != null && (type == 'object' || type == 'function');
+  }
+
+  /** Used as references for various `Number` constants. */
+  var NAN = 0 / 0;
+
+  /** Used to match leading and trailing whitespace. */
+  var reTrim = /^\s+|\s+$/g;
+
+  /** Used to detect bad signed hexadecimal string values. */
+  var reIsBadHex = /^[-+]0x[0-9a-f]+$/i;
+
+  /** Used to detect binary string values. */
+  var reIsBinary = /^0b[01]+$/i;
+
+  /** Used to detect octal string values. */
+  var reIsOctal = /^0o[0-7]+$/i;
+
+  /** Built-in method references without a dependency on `root`. */
+  var freeParseInt = parseInt;
+
+  /**
+   * Converts `value` to a number.
+   *
+   * @static
+   * @memberOf _
+   * @since 4.0.0
+   * @category Lang
+   * @param {*} value The value to process.
+   * @returns {number} Returns the number.
+   * @example
+   *
+   * _.toNumber(3.2);
+   * // => 3.2
+   *
+   * _.toNumber(Number.MIN_VALUE);
+   * // => 5e-324
+   *
+   * _.toNumber(Infinity);
+   * // => Infinity
+   *
+   * _.toNumber('3.2');
+   * // => 3.2
+   */
+  function toNumber(value) {
+    if (typeof value == 'number') {
+      return value;
+    }
+    if (isSymbol(value)) {
+      return NAN;
+    }
+    if (isObject(value)) {
+      var other = typeof value.valueOf == 'function' ? value.valueOf() : value;
+      value = isObject(other) ? (other + '') : other;
+    }
+    if (typeof value != 'string') {
+      return value === 0 ? value : +value;
+    }
+    value = value.replace(reTrim, '');
+    var isBinary = reIsBinary.test(value);
+    return (isBinary || reIsOctal.test(value))
+      ? freeParseInt(value.slice(2), isBinary ? 2 : 8)
+      : (reIsBadHex.test(value) ? NAN : +value);
+  }
+
+  /** Used as references for various `Number` constants. */
+  var INFINITY$1 = 1 / 0,
+      MAX_INTEGER = 1.7976931348623157e+308;
+
+  /**
+   * Converts `value` to a finite number.
+   *
+   * @static
+   * @memberOf _
+   * @since 4.12.0
+   * @category Lang
+   * @param {*} value The value to convert.
+   * @returns {number} Returns the converted number.
+   * @example
+   *
+   * _.toFinite(3.2);
+   * // => 3.2
+   *
+   * _.toFinite(Number.MIN_VALUE);
+   * // => 5e-324
+   *
+   * _.toFinite(Infinity);
+   * // => 1.7976931348623157e+308
+   *
+   * _.toFinite('3.2');
+   * // => 3.2
+   */
+  function toFinite(value) {
+    if (!value) {
+      return value === 0 ? value : 0;
+    }
+    value = toNumber(value);
+    if (value === INFINITY$1 || value === -INFINITY$1) {
+      var sign = (value < 0 ? -1 : 1);
+      return sign * MAX_INTEGER;
+    }
+    return value === value ? value : 0;
+  }
+
+  /**
+   * Converts `value` to an integer.
+   *
+   * **Note:** This method is loosely based on
+   * [`ToInteger`](http://www.ecma-international.org/ecma-262/7.0/#sec-tointeger).
+   *
+   * @static
+   * @memberOf _
+   * @since 4.0.0
+   * @category Lang
+   * @param {*} value The value to convert.
+   * @returns {number} Returns the converted integer.
+   * @example
+   *
+   * _.toInteger(3.2);
+   * // => 3
+   *
+   * _.toInteger(Number.MIN_VALUE);
+   * // => 0
+   *
+   * _.toInteger(Infinity);
+   * // => 1.7976931348623157e+308
+   *
+   * _.toInteger('3.2');
+   * // => 3
+   */
+  function toInteger(value) {
+    var result = toFinite(value),
+        remainder = result % 1;
+
+    return result === result ? (remainder ? result - remainder : result) : 0;
+  }
+
+  /**
+   * This method returns the first argument it receives.
+   *
+   * @static
+   * @since 0.1.0
+   * @memberOf _
+   * @category Util
+   * @param {*} value Any value.
+   * @returns {*} Returns `value`.
+   * @example
+   *
+   * var object = { 'a': 1 };
+   *
+   * console.log(_.identity(object) === object);
+   * // => true
+   */
+  function identity(value) {
+    return value;
+  }
+
+  /** `Object#toString` result references. */
+  var asyncTag = '[object AsyncFunction]',
+      funcTag = '[object Function]',
+      genTag = '[object GeneratorFunction]',
+      proxyTag = '[object Proxy]';
+
+  /**
+   * Checks if `value` is classified as a `Function` object.
+   *
+   * @static
+   * @memberOf _
+   * @since 0.1.0
+   * @category Lang
+   * @param {*} value The value to check.
+   * @returns {boolean} Returns `true` if `value` is a function, else `false`.
+   * @example
+   *
+   * _.isFunction(_);
+   * // => true
+   *
+   * _.isFunction(/abc/);
+   * // => false
+   */
+  function isFunction(value) {
+    if (!isObject(value)) {
+      return false;
+    }
+    // The use of `Object#toString` avoids issues with the `typeof` operator
+    // in Safari 9 which returns 'object' for typed arrays and other constructors.
+    var tag = baseGetTag(value);
+    return tag == funcTag || tag == genTag || tag == asyncTag || tag == proxyTag;
+  }
+
+  /** Used to detect overreaching core-js shims. */
+  var coreJsData = root['__core-js_shared__'];
+
+  /** Used to detect methods masquerading as native. */
+  var maskSrcKey = (function() {
+    var uid = /[^.]+$/.exec(coreJsData && coreJsData.keys && coreJsData.keys.IE_PROTO || '');
+    return uid ? ('Symbol(src)_1.' + uid) : '';
+  }());
+
+  /**
+   * Checks if `func` has its source masked.
+   *
+   * @private
+   * @param {Function} func The function to check.
+   * @returns {boolean} Returns `true` if `func` is masked, else `false`.
+   */
+  function isMasked(func) {
+    return !!maskSrcKey && (maskSrcKey in func);
+  }
+
+  /** Used for built-in method references. */
+  var funcProto = Function.prototype;
+
+  /** Used to resolve the decompiled source of functions. */
+  var funcToString = funcProto.toString;
+
+  /**
+   * Converts `func` to its source code.
+   *
+   * @private
+   * @param {Function} func The function to convert.
+   * @returns {string} Returns the source code.
+   */
+  function toSource(func) {
+    if (func != null) {
+      try {
+        return funcToString.call(func);
+      } catch (e) {}
+      try {
+        return (func + '');
+      } catch (e) {}
+    }
+    return '';
+  }
+
+  /**
+   * Used to match `RegExp`
+   * [syntax characters](http://ecma-international.org/ecma-262/7.0/#sec-patterns).
+   */
+  var reRegExpChar = /[\\^$.*+?()[\]{}|]/g;
+
+  /** Used to detect host constructors (Safari). */
+  var reIsHostCtor = /^\[object .+?Constructor\]$/;
+
+  /** Used for built-in method references. */
+  var funcProto$1 = Function.prototype,
+      objectProto$2 = Object.prototype;
+
+  /** Used to resolve the decompiled source of functions. */
+  var funcToString$1 = funcProto$1.toString;
+
+  /** Used to check objects for own properties. */
+  var hasOwnProperty$1 = objectProto$2.hasOwnProperty;
+
+  /** Used to detect if a method is native. */
+  var reIsNative = RegExp('^' +
+    funcToString$1.call(hasOwnProperty$1).replace(reRegExpChar, '\\$&')
+    .replace(/hasOwnProperty|(function).*?(?=\\\()| for .+?(?=\\\])/g, '$1.*?') + '$'
+  );
+
+  /**
+   * The base implementation of `_.isNative` without bad shim checks.
+   *
+   * @private
+   * @param {*} value The value to check.
+   * @returns {boolean} Returns `true` if `value` is a native function,
+   *  else `false`.
+   */
+  function baseIsNative(value) {
+    if (!isObject(value) || isMasked(value)) {
+      return false;
+    }
+    var pattern = isFunction(value) ? reIsNative : reIsHostCtor;
+    return pattern.test(toSource(value));
+  }
+
+  /**
+   * Gets the value at `key` of `object`.
+   *
+   * @private
+   * @param {Object} [object] The object to query.
+   * @param {string} key The key of the property to get.
+   * @returns {*} Returns the property value.
+   */
+  function getValue(object, key) {
+    return object == null ? undefined : object[key];
+  }
+
+  /**
+   * Gets the native function at `key` of `object`.
+   *
+   * @private
+   * @param {Object} object The object to query.
+   * @param {string} key The key of the method to get.
+   * @returns {*} Returns the function if it's native, else `undefined`.
+   */
+  function getNative(object, key) {
+    var value = getValue(object, key);
+    return baseIsNative(value) ? value : undefined;
+  }
+
+  /* Built-in method references that are verified to be native. */
+  var WeakMap = getNative(root, 'WeakMap');
+
+  /** Built-in value references. */
+  var objectCreate = Object.create;
+
+  /**
+   * The base implementation of `_.create` without support for assigning
+   * properties to the created object.
+   *
+   * @private
+   * @param {Object} proto The object to inherit from.
+   * @returns {Object} Returns the new object.
+   */
+  var baseCreate = (function() {
+    function object() {}
+    return function(proto) {
+      if (!isObject(proto)) {
+        return {};
+      }
+      if (objectCreate) {
+        return objectCreate(proto);
+      }
+      object.prototype = proto;
+      var result = new object;
+      object.prototype = undefined;
+      return result;
+    };
+  }());
+
+  /**
+   * A faster alternative to `Function#apply`, this function invokes `func`
+   * with the `this` binding of `thisArg` and the arguments of `args`.
+   *
+   * @private
+   * @param {Function} func The function to invoke.
+   * @param {*} thisArg The `this` binding of `func`.
+   * @param {Array} args The arguments to invoke `func` with.
+   * @returns {*} Returns the result of `func`.
+   */
+  function apply(func, thisArg, args) {
+    switch (args.length) {
+      case 0: return func.call(thisArg);
+      case 1: return func.call(thisArg, args[0]);
+      case 2: return func.call(thisArg, args[0], args[1]);
+      case 3: return func.call(thisArg, args[0], args[1], args[2]);
+    }
+    return func.apply(thisArg, args);
+  }
+
+  /**
+   * Copies the values of `source` to `array`.
+   *
+   * @private
+   * @param {Array} source The array to copy values from.
+   * @param {Array} [array=[]] The array to copy values to.
+   * @returns {Array} Returns `array`.
+   */
+  function copyArray(source, array) {
+    var index = -1,
+        length = source.length;
+
+    array || (array = Array(length));
+    while (++index < length) {
+      array[index] = source[index];
+    }
+    return array;
+  }
+
+  /** Used to detect hot functions by number of calls within a span of milliseconds. */
+  var HOT_COUNT = 800,
+      HOT_SPAN = 16;
+
+  /* Built-in method references for those with the same name as other `lodash` methods. */
+  var nativeNow = Date.now;
+
+  /**
+   * Creates a function that'll short out and invoke `identity` instead
+   * of `func` when it's called `HOT_COUNT` or more times in `HOT_SPAN`
+   * milliseconds.
+   *
+   * @private
+   * @param {Function} func The function to restrict.
+   * @returns {Function} Returns the new shortable function.
+   */
+  function shortOut(func) {
+    var count = 0,
+        lastCalled = 0;
+
+    return function() {
+      var stamp = nativeNow(),
+          remaining = HOT_SPAN - (stamp - lastCalled);
+
+      lastCalled = stamp;
+      if (remaining > 0) {
+        if (++count >= HOT_COUNT) {
+          return arguments[0];
+        }
+      } else {
+        count = 0;
+      }
+      return func.apply(undefined, arguments);
+    };
+  }
+
+  /**
+   * Creates a function that returns `value`.
+   *
+   * @static
+   * @memberOf _
+   * @since 2.4.0
+   * @category Util
+   * @param {*} value The value to return from the new function.
+   * @returns {Function} Returns the new constant function.
+   * @example
+   *
+   * var objects = _.times(2, _.constant({ 'a': 1 }));
+   *
+   * console.log(objects);
+   * // => [{ 'a': 1 }, { 'a': 1 }]
+   *
+   * console.log(objects[0] === objects[1]);
+   * // => true
+   */
+  function constant(value) {
+    return function() {
+      return value;
+    };
+  }
+
+  var defineProperty = (function() {
+    try {
+      var func = getNative(Object, 'defineProperty');
+      func({}, '', {});
+      return func;
+    } catch (e) {}
+  }());
+
+  /**
+   * The base implementation of `setToString` without support for hot loop shorting.
+   *
+   * @private
+   * @param {Function} func The function to modify.
+   * @param {Function} string The `toString` result.
+   * @returns {Function} Returns `func`.
+   */
+  var baseSetToString = !defineProperty ? identity : function(func, string) {
+    return defineProperty(func, 'toString', {
+      'configurable': true,
+      'enumerable': false,
+      'value': constant(string),
+      'writable': true
+    });
+  };
+
+  /**
+   * Sets the `toString` method of `func` to return `string`.
+   *
+   * @private
+   * @param {Function} func The function to modify.
+   * @param {Function} string The `toString` result.
+   * @returns {Function} Returns `func`.
+   */
+  var setToString = shortOut(baseSetToString);
+
+  /**
+   * The base implementation of `_.findIndex` and `_.findLastIndex` without
+   * support for iteratee shorthands.
+   *
+   * @private
+   * @param {Array} array The array to inspect.
+   * @param {Function} predicate The function invoked per iteration.
+   * @param {number} fromIndex The index to search from.
+   * @param {boolean} [fromRight] Specify iterating from right to left.
+   * @returns {number} Returns the index of the matched value, else `-1`.
+   */
+  function baseFindIndex(array, predicate, fromIndex, fromRight) {
+    var length = array.length,
+        index = fromIndex + (fromRight ? 1 : -1);
+
+    while ((fromRight ? index-- : ++index < length)) {
+      if (predicate(array[index], index, array)) {
+        return index;
+      }
+    }
+    return -1;
+  }
+
+  /** Used as references for various `Number` constants. */
+  var MAX_SAFE_INTEGER = 9007199254740991;
+
+  /** Used to detect unsigned integer values. */
+  var reIsUint = /^(?:0|[1-9]\d*)$/;
+
+  /**
+   * Checks if `value` is a valid array-like index.
+   *
+   * @private
+   * @param {*} value The value to check.
+   * @param {number} [length=MAX_SAFE_INTEGER] The upper bounds of a valid index.
+   * @returns {boolean} Returns `true` if `value` is a valid index, else `false`.
+   */
+  function isIndex(value, length) {
+    var type = typeof value;
+    length = length == null ? MAX_SAFE_INTEGER : length;
+
+    return !!length &&
+      (type == 'number' ||
+        (type != 'symbol' && reIsUint.test(value))) &&
+          (value > -1 && value % 1 == 0 && value < length);
+  }
+
+  /**
+   * The base implementation of `assignValue` and `assignMergeValue` without
+   * value checks.
+   *
+   * @private
+   * @param {Object} object The object to modify.
+   * @param {string} key The key of the property to assign.
+   * @param {*} value The value to assign.
+   */
+  function baseAssignValue(object, key, value) {
+    if (key == '__proto__' && defineProperty) {
+      defineProperty(object, key, {
+        'configurable': true,
+        'enumerable': true,
+        'value': value,
+        'writable': true
+      });
+    } else {
+      object[key] = value;
+    }
+  }
+
+  /**
+   * Performs a
+   * [`SameValueZero`](http://ecma-international.org/ecma-262/7.0/#sec-samevaluezero)
+   * comparison between two values to determine if they are equivalent.
+   *
+   * @static
+   * @memberOf _
+   * @since 4.0.0
+   * @category Lang
+   * @param {*} value The value to compare.
+   * @param {*} other The other value to compare.
+   * @returns {boolean} Returns `true` if the values are equivalent, else `false`.
+   * @example
+   *
+   * var object = { 'a': 1 };
+   * var other = { 'a': 1 };
+   *
+   * _.eq(object, object);
+   * // => true
+   *
+   * _.eq(object, other);
+   * // => false
+   *
+   * _.eq('a', 'a');
+   * // => true
+   *
+   * _.eq('a', Object('a'));
+   * // => false
+   *
+   * _.eq(NaN, NaN);
+   * // => true
+   */
+  function eq(value, other) {
+    return value === other || (value !== value && other !== other);
+  }
+
+  /** Used for built-in method references. */
+  var objectProto$3 = Object.prototype;
+
+  /** Used to check objects for own properties. */
+  var hasOwnProperty$2 = objectProto$3.hasOwnProperty;
+
+  /**
+   * Assigns `value` to `key` of `object` if the existing value is not equivalent
+   * using [`SameValueZero`](http://ecma-international.org/ecma-262/7.0/#sec-samevaluezero)
+   * for equality comparisons.
+   *
+   * @private
+   * @param {Object} object The object to modify.
+   * @param {string} key The key of the property to assign.
+   * @param {*} value The value to assign.
+   */
+  function assignValue(object, key, value) {
+    var objValue = object[key];
+    if (!(hasOwnProperty$2.call(object, key) && eq(objValue, value)) ||
+        (value === undefined && !(key in object))) {
+      baseAssignValue(object, key, value);
+    }
+  }
+
+  /**
+   * Copies properties of `source` to `object`.
+   *
+   * @private
+   * @param {Object} source The object to copy properties from.
+   * @param {Array} props The property identifiers to copy.
+   * @param {Object} [object={}] The object to copy properties to.
+   * @param {Function} [customizer] The function to customize copied values.
+   * @returns {Object} Returns `object`.
+   */
+  function copyObject(source, props, object, customizer) {
+    var isNew = !object;
+    object || (object = {});
+
+    var index = -1,
+        length = props.length;
+
+    while (++index < length) {
+      var key = props[index];
+
+      var newValue = customizer
+        ? customizer(object[key], source[key], key, object, source)
+        : undefined;
+
+      if (newValue === undefined) {
+        newValue = source[key];
+      }
+      if (isNew) {
+        baseAssignValue(object, key, newValue);
+      } else {
+        assignValue(object, key, newValue);
+      }
+    }
+    return object;
+  }
+
+  /* Built-in method references for those with the same name as other `lodash` methods. */
+  var nativeMax = Math.max;
+
+  /**
+   * A specialized version of `baseRest` which transforms the rest array.
+   *
+   * @private
+   * @param {Function} func The function to apply a rest parameter to.
+   * @param {number} [start=func.length-1] The start position of the rest parameter.
+   * @param {Function} transform The rest array transform.
+   * @returns {Function} Returns the new function.
+   */
+  function overRest(func, start, transform) {
+    start = nativeMax(start === undefined ? (func.length - 1) : start, 0);
+    return function() {
+      var args = arguments,
+          index = -1,
+          length = nativeMax(args.length - start, 0),
+          array = Array(length);
+
+      while (++index < length) {
+        array[index] = args[start + index];
+      }
+      index = -1;
+      var otherArgs = Array(start + 1);
+      while (++index < start) {
+        otherArgs[index] = args[index];
+      }
+      otherArgs[start] = transform(array);
+      return apply(func, this, otherArgs);
+    };
+  }
+
+  /**
+   * The base implementation of `_.rest` which doesn't validate or coerce arguments.
+   *
+   * @private
+   * @param {Function} func The function to apply a rest parameter to.
+   * @param {number} [start=func.length-1] The start position of the rest parameter.
+   * @returns {Function} Returns the new function.
+   */
+  function baseRest(func, start) {
+    return setToString(overRest(func, start, identity), func + '');
+  }
+
+  /** Used as references for various `Number` constants. */
+  var MAX_SAFE_INTEGER$1 = 9007199254740991;
+
+  /**
+   * Checks if `value` is a valid array-like length.
+   *
+   * **Note:** This method is loosely based on
+   * [`ToLength`](http://ecma-international.org/ecma-262/7.0/#sec-tolength).
+   *
+   * @static
+   * @memberOf _
+   * @since 4.0.0
+   * @category Lang
+   * @param {*} value The value to check.
+   * @returns {boolean} Returns `true` if `value` is a valid length, else `false`.
+   * @example
+   *
+   * _.isLength(3);
+   * // => true
+   *
+   * _.isLength(Number.MIN_VALUE);
+   * // => false
+   *
+   * _.isLength(Infinity);
+   * // => false
+   *
+   * _.isLength('3');
+   * // => false
+   */
+  function isLength(value) {
+    return typeof value == 'number' &&
+      value > -1 && value % 1 == 0 && value <= MAX_SAFE_INTEGER$1;
+  }
+
+  /**
+   * Checks if `value` is array-like. A value is considered array-like if it's
+   * not a function and has a `value.length` that's an integer greater than or
+   * equal to `0` and less than or equal to `Number.MAX_SAFE_INTEGER`.
+   *
+   * @static
+   * @memberOf _
+   * @since 4.0.0
+   * @category Lang
+   * @param {*} value The value to check.
+   * @returns {boolean} Returns `true` if `value` is array-like, else `false`.
+   * @example
+   *
+   * _.isArrayLike([1, 2, 3]);
+   * // => true
+   *
+   * _.isArrayLike(document.body.children);
+   * // => true
+   *
+   * _.isArrayLike('abc');
+   * // => true
+   *
+   * _.isArrayLike(_.noop);
+   * // => false
+   */
+  function isArrayLike(value) {
+    return value != null && isLength(value.length) && !isFunction(value);
+  }
+
+  /**
+   * Checks if the given arguments are from an iteratee call.
+   *
+   * @private
+   * @param {*} value The potential iteratee value argument.
+   * @param {*} index The potential iteratee index or key argument.
+   * @param {*} object The potential iteratee object argument.
+   * @returns {boolean} Returns `true` if the arguments are from an iteratee call,
+   *  else `false`.
+   */
+  function isIterateeCall(value, index, object) {
+    if (!isObject(object)) {
+      return false;
+    }
+    var type = typeof index;
+    if (type == 'number'
+          ? (isArrayLike(object) && isIndex(index, object.length))
+          : (type == 'string' && index in object)
+        ) {
+      return eq(object[index], value);
+    }
+    return false;
+  }
+
+  /**
+   * Creates a function like `_.assign`.
+   *
+   * @private
+   * @param {Function} assigner The function to assign values.
+   * @returns {Function} Returns the new assigner function.
+   */
+  function createAssigner(assigner) {
+    return baseRest(function(object, sources) {
+      var index = -1,
+          length = sources.length,
+          customizer = length > 1 ? sources[length - 1] : undefined,
+          guard = length > 2 ? sources[2] : undefined;
+
+      customizer = (assigner.length > 3 && typeof customizer == 'function')
+        ? (length--, customizer)
+        : undefined;
+
+      if (guard && isIterateeCall(sources[0], sources[1], guard)) {
+        customizer = length < 3 ? undefined : customizer;
+        length = 1;
+      }
+      object = Object(object);
+      while (++index < length) {
+        var source = sources[index];
+        if (source) {
+          assigner(object, source, index, customizer);
+        }
+      }
+      return object;
+    });
+  }
+
+  /** Used for built-in method references. */
+  var objectProto$4 = Object.prototype;
+
+  /**
+   * Checks if `value` is likely a prototype object.
+   *
+   * @private
+   * @param {*} value The value to check.
+   * @returns {boolean} Returns `true` if `value` is a prototype, else `false`.
+   */
+  function isPrototype(value) {
+    var Ctor = value && value.constructor,
+        proto = (typeof Ctor == 'function' && Ctor.prototype) || objectProto$4;
+
+    return value === proto;
+  }
+
+  /**
+   * The base implementation of `_.times` without support for iteratee shorthands
+   * or max array length checks.
+   *
+   * @private
+   * @param {number} n The number of times to invoke `iteratee`.
+   * @param {Function} iteratee The function invoked per iteration.
+   * @returns {Array} Returns the array of results.
+   */
+  function baseTimes(n, iteratee) {
+    var index = -1,
+        result = Array(n);
+
+    while (++index < n) {
+      result[index] = iteratee(index);
+    }
+    return result;
+  }
+
+  /** `Object#toString` result references. */
+  var argsTag = '[object Arguments]';
+
+  /**
+   * The base implementation of `_.isArguments`.
+   *
+   * @private
+   * @param {*} value The value to check.
+   * @returns {boolean} Returns `true` if `value` is an `arguments` object,
+   */
+  function baseIsArguments(value) {
+    return isObjectLike(value) && baseGetTag(value) == argsTag;
+  }
+
+  /** Used for built-in method references. */
+  var objectProto$5 = Object.prototype;
+
+  /** Used to check objects for own properties. */
+  var hasOwnProperty$3 = objectProto$5.hasOwnProperty;
+
+  /** Built-in value references. */
+  var propertyIsEnumerable = objectProto$5.propertyIsEnumerable;
+
+  /**
+   * Checks if `value` is likely an `arguments` object.
+   *
+   * @static
+   * @memberOf _
+   * @since 0.1.0
+   * @category Lang
+   * @param {*} value The value to check.
+   * @returns {boolean} Returns `true` if `value` is an `arguments` object,
+   *  else `false`.
+   * @example
+   *
+   * _.isArguments(function() { return arguments; }());
+   * // => true
+   *
+   * _.isArguments([1, 2, 3]);
+   * // => false
+   */
+  var isArguments = baseIsArguments(function() { return arguments; }()) ? baseIsArguments : function(value) {
+    return isObjectLike(value) && hasOwnProperty$3.call(value, 'callee') &&
+      !propertyIsEnumerable.call(value, 'callee');
+  };
+
+  /**
+   * This method returns `false`.
+   *
+   * @static
+   * @memberOf _
+   * @since 4.13.0
+   * @category Util
+   * @returns {boolean} Returns `false`.
+   * @example
+   *
+   * _.times(2, _.stubFalse);
+   * // => [false, false]
+   */
+  function stubFalse() {
+    return false;
+  }
+
+  /** Detect free variable `exports`. */
+  var freeExports = typeof exports == 'object' && exports && !exports.nodeType && exports;
+
+  /** Detect free variable `module`. */
+  var freeModule = freeExports && typeof module == 'object' && module && !module.nodeType && module;
+
+  /** Detect the popular CommonJS extension `module.exports`. */
+  var moduleExports = freeModule && freeModule.exports === freeExports;
+
+  /** Built-in value references. */
+  var Buffer = moduleExports ? root.Buffer : undefined;
+
+  /* Built-in method references for those with the same name as other `lodash` methods. */
+  var nativeIsBuffer = Buffer ? Buffer.isBuffer : undefined;
+
+  /**
+   * Checks if `value` is a buffer.
+   *
+   * @static
+   * @memberOf _
+   * @since 4.3.0
+   * @category Lang
+   * @param {*} value The value to check.
+   * @returns {boolean} Returns `true` if `value` is a buffer, else `false`.
+   * @example
+   *
+   * _.isBuffer(new Buffer(2));
+   * // => true
+   *
+   * _.isBuffer(new Uint8Array(2));
+   * // => false
+   */
+  var isBuffer = nativeIsBuffer || stubFalse;
+
+  /** `Object#toString` result references. */
+  var argsTag$1 = '[object Arguments]',
+      arrayTag = '[object Array]',
+      boolTag = '[object Boolean]',
+      dateTag = '[object Date]',
+      errorTag = '[object Error]',
+      funcTag$1 = '[object Function]',
+      mapTag = '[object Map]',
+      numberTag = '[object Number]',
+      objectTag = '[object Object]',
+      regexpTag = '[object RegExp]',
+      setTag = '[object Set]',
+      stringTag = '[object String]',
+      weakMapTag = '[object WeakMap]';
+
+  var arrayBufferTag = '[object ArrayBuffer]',
+      dataViewTag = '[object DataView]',
+      float32Tag = '[object Float32Array]',
+      float64Tag = '[object Float64Array]',
+      int8Tag = '[object Int8Array]',
+      int16Tag = '[object Int16Array]',
+      int32Tag = '[object Int32Array]',
+      uint8Tag = '[object Uint8Array]',
+      uint8ClampedTag = '[object Uint8ClampedArray]',
+      uint16Tag = '[object Uint16Array]',
+      uint32Tag = '[object Uint32Array]';
+
+  /** Used to identify `toStringTag` values of typed arrays. */
+  var typedArrayTags = {};
+  typedArrayTags[float32Tag] = typedArrayTags[float64Tag] =
+  typedArrayTags[int8Tag] = typedArrayTags[int16Tag] =
+  typedArrayTags[int32Tag] = typedArrayTags[uint8Tag] =
+  typedArrayTags[uint8ClampedTag] = typedArrayTags[uint16Tag] =
+  typedArrayTags[uint32Tag] = true;
+  typedArrayTags[argsTag$1] = typedArrayTags[arrayTag] =
+  typedArrayTags[arrayBufferTag] = typedArrayTags[boolTag] =
+  typedArrayTags[dataViewTag] = typedArrayTags[dateTag] =
+  typedArrayTags[errorTag] = typedArrayTags[funcTag$1] =
+  typedArrayTags[mapTag] = typedArrayTags[numberTag] =
+  typedArrayTags[objectTag] = typedArrayTags[regexpTag] =
+  typedArrayTags[setTag] = typedArrayTags[stringTag] =
+  typedArrayTags[weakMapTag] = false;
+
+  /**
+   * The base implementation of `_.isTypedArray` without Node.js optimizations.
+   *
+   * @private
+   * @param {*} value The value to check.
+   * @returns {boolean} Returns `true` if `value` is a typed array, else `false`.
+   */
+  function baseIsTypedArray(value) {
+    return isObjectLike(value) &&
+      isLength(value.length) && !!typedArrayTags[baseGetTag(value)];
+  }
+
+  /**
+   * The base implementation of `_.unary` without support for storing metadata.
+   *
+   * @private
+   * @param {Function} func The function to cap arguments for.
+   * @returns {Function} Returns the new capped function.
+   */
+  function baseUnary(func) {
+    return function(value) {
+      return func(value);
+    };
+  }
+
+  /** Detect free variable `exports`. */
+  var freeExports$1 = typeof exports == 'object' && exports && !exports.nodeType && exports;
+
+  /** Detect free variable `module`. */
+  var freeModule$1 = freeExports$1 && typeof module == 'object' && module && !module.nodeType && module;
+
+  /** Detect the popular CommonJS extension `module.exports`. */
+  var moduleExports$1 = freeModule$1 && freeModule$1.exports === freeExports$1;
+
+  /** Detect free variable `process` from Node.js. */
+  var freeProcess = moduleExports$1 && freeGlobal.process;
+
+  /** Used to access faster Node.js helpers. */
+  var nodeUtil = (function() {
+    try {
+      // Use `util.types` for Node.js 10+.
+      var types = freeModule$1 && freeModule$1.require && freeModule$1.require('util').types;
+
+      if (types) {
+        return types;
+      }
+
+      // Legacy `process.binding('util')` for Node.js < 10.
+      return freeProcess && freeProcess.binding && freeProcess.binding('util');
+    } catch (e) {}
+  }());
+
+  /* Node.js helper references. */
+  var nodeIsTypedArray = nodeUtil && nodeUtil.isTypedArray;
+
+  /**
+   * Checks if `value` is classified as a typed array.
+   *
+   * @static
+   * @memberOf _
+   * @since 3.0.0
+   * @category Lang
+   * @param {*} value The value to check.
+   * @returns {boolean} Returns `true` if `value` is a typed array, else `false`.
+   * @example
+   *
+   * _.isTypedArray(new Uint8Array);
+   * // => true
+   *
+   * _.isTypedArray([]);
+   * // => false
+   */
+  var isTypedArray = nodeIsTypedArray ? baseUnary(nodeIsTypedArray) : baseIsTypedArray;
+
+  /** Used for built-in method references. */
+  var objectProto$6 = Object.prototype;
+
+  /** Used to check objects for own properties. */
+  var hasOwnProperty$4 = objectProto$6.hasOwnProperty;
+
+  /**
+   * Creates an array of the enumerable property names of the array-like `value`.
+   *
+   * @private
+   * @param {*} value The value to query.
+   * @param {boolean} inherited Specify returning inherited property names.
+   * @returns {Array} Returns the array of property names.
+   */
+  function arrayLikeKeys(value, inherited) {
+    var isArr = isArray(value),
+        isArg = !isArr && isArguments(value),
+        isBuff = !isArr && !isArg && isBuffer(value),
+        isType = !isArr && !isArg && !isBuff && isTypedArray(value),
+        skipIndexes = isArr || isArg || isBuff || isType,
+        result = skipIndexes ? baseTimes(value.length, String) : [],
+        length = result.length;
+
+    for (var key in value) {
+      if ((inherited || hasOwnProperty$4.call(value, key)) &&
+          !(skipIndexes && (
+             // Safari 9 has enumerable `arguments.length` in strict mode.
+             key == 'length' ||
+             // Node.js 0.10 has enumerable non-index properties on buffers.
+             (isBuff && (key == 'offset' || key == 'parent')) ||
+             // PhantomJS 2 has enumerable non-index properties on typed arrays.
+             (isType && (key == 'buffer' || key == 'byteLength' || key == 'byteOffset')) ||
+             // Skip index properties.
+             isIndex(key, length)
+          ))) {
+        result.push(key);
+      }
+    }
+    return result;
+  }
+
+  /**
+   * Creates a unary function that invokes `func` with its argument transformed.
+   *
+   * @private
+   * @param {Function} func The function to wrap.
+   * @param {Function} transform The argument transform.
+   * @returns {Function} Returns the new function.
+   */
+  function overArg(func, transform) {
+    return function(arg) {
+      return func(transform(arg));
+    };
+  }
+
+  /* Built-in method references for those with the same name as other `lodash` methods. */
+  var nativeKeys = overArg(Object.keys, Object);
+
+  /** Used for built-in method references. */
+  var objectProto$7 = Object.prototype;
+
+  /** Used to check objects for own properties. */
+  var hasOwnProperty$5 = objectProto$7.hasOwnProperty;
+
+  /**
+   * The base implementation of `_.keys` which doesn't treat sparse arrays as dense.
+   *
+   * @private
+   * @param {Object} object The object to query.
+   * @returns {Array} Returns the array of property names.
+   */
+  function baseKeys(object) {
+    if (!isPrototype(object)) {
+      return nativeKeys(object);
+    }
+    var result = [];
+    for (var key in Object(object)) {
+      if (hasOwnProperty$5.call(object, key) && key != 'constructor') {
+        result.push(key);
+      }
+    }
+    return result;
+  }
+
+  /**
+   * Creates an array of the own enumerable property names of `object`.
+   *
+   * **Note:** Non-object values are coerced to objects. See the
+   * [ES spec](http://ecma-international.org/ecma-262/7.0/#sec-object.keys)
+   * for more details.
+   *
+   * @static
+   * @since 0.1.0
+   * @memberOf _
+   * @category Object
+   * @param {Object} object The object to query.
+   * @returns {Array} Returns the array of property names.
+   * @example
+   *
+   * function Foo() {
+   *   this.a = 1;
+   *   this.b = 2;
+   * }
+   *
+   * Foo.prototype.c = 3;
+   *
+   * _.keys(new Foo);
+   * // => ['a', 'b'] (iteration order is not guaranteed)
+   *
+   * _.keys('hi');
+   * // => ['0', '1']
+   */
+  function keys(object) {
+    return isArrayLike(object) ? arrayLikeKeys(object) : baseKeys(object);
+  }
+
+  /**
+   * This function is like
+   * [`Object.keys`](http://ecma-international.org/ecma-262/7.0/#sec-object.keys)
+   * except that it includes inherited enumerable properties.
+   *
+   * @private
+   * @param {Object} object The object to query.
+   * @returns {Array} Returns the array of property names.
+   */
+  function nativeKeysIn(object) {
+    var result = [];
+    if (object != null) {
+      for (var key in Object(object)) {
+        result.push(key);
+      }
+    }
+    return result;
+  }
+
+  /** Used for built-in method references. */
+  var objectProto$8 = Object.prototype;
+
+  /** Used to check objects for own properties. */
+  var hasOwnProperty$6 = objectProto$8.hasOwnProperty;
+
+  /**
+   * The base implementation of `_.keysIn` which doesn't treat sparse arrays as dense.
+   *
+   * @private
+   * @param {Object} object The object to query.
+   * @returns {Array} Returns the array of property names.
+   */
+  function baseKeysIn(object) {
+    if (!isObject(object)) {
+      return nativeKeysIn(object);
+    }
+    var isProto = isPrototype(object),
+        result = [];
+
+    for (var key in object) {
+      if (!(key == 'constructor' && (isProto || !hasOwnProperty$6.call(object, key)))) {
+        result.push(key);
+      }
+    }
+    return result;
+  }
+
+  /**
+   * Creates an array of the own and inherited enumerable property names of `object`.
+   *
+   * **Note:** Non-object values are coerced to objects.
+   *
+   * @static
+   * @memberOf _
+   * @since 3.0.0
+   * @category Object
+   * @param {Object} object The object to query.
+   * @returns {Array} Returns the array of property names.
+   * @example
+   *
+   * function Foo() {
+   *   this.a = 1;
+   *   this.b = 2;
+   * }
+   *
+   * Foo.prototype.c = 3;
+   *
+   * _.keysIn(new Foo);
+   * // => ['a', 'b', 'c'] (iteration order is not guaranteed)
+   */
+  function keysIn(object) {
+    return isArrayLike(object) ? arrayLikeKeys(object, true) : baseKeysIn(object);
+  }
+
+  /** Used to match property names within property paths. */
+  var reIsDeepProp = /\.|\[(?:[^[\]]*|(["'])(?:(?!\1)[^\\]|\\.)*?\1)\]/,
+      reIsPlainProp = /^\w*$/;
+
+  /**
+   * Checks if `value` is a property name and not a property path.
+   *
+   * @private
+   * @param {*} value The value to check.
+   * @param {Object} [object] The object to query keys on.
+   * @returns {boolean} Returns `true` if `value` is a property name, else `false`.
+   */
+  function isKey(value, object) {
+    if (isArray(value)) {
+      return false;
+    }
+    var type = typeof value;
+    if (type == 'number' || type == 'symbol' || type == 'boolean' ||
+        value == null || isSymbol(value)) {
+      return true;
+    }
+    return reIsPlainProp.test(value) || !reIsDeepProp.test(value) ||
+      (object != null && value in Object(object));
+  }
+
+  /* Built-in method references that are verified to be native. */
+  var nativeCreate = getNative(Object, 'create');
+
+  /**
+   * Removes all key-value entries from the hash.
+   *
+   * @private
+   * @name clear
+   * @memberOf Hash
+   */
+  function hashClear() {
+    this.__data__ = nativeCreate ? nativeCreate(null) : {};
+    this.size = 0;
+  }
+
+  /**
+   * Removes `key` and its value from the hash.
+   *
+   * @private
+   * @name delete
+   * @memberOf Hash
+   * @param {Object} hash The hash to modify.
+   * @param {string} key The key of the value to remove.
+   * @returns {boolean} Returns `true` if the entry was removed, else `false`.
+   */
+  function hashDelete(key) {
+    var result = this.has(key) && delete this.__data__[key];
+    this.size -= result ? 1 : 0;
+    return result;
+  }
+
+  /** Used to stand-in for `undefined` hash values. */
+  var HASH_UNDEFINED = '__lodash_hash_undefined__';
+
+  /** Used for built-in method references. */
+  var objectProto$9 = Object.prototype;
+
+  /** Used to check objects for own properties. */
+  var hasOwnProperty$7 = objectProto$9.hasOwnProperty;
+
+  /**
+   * Gets the hash value for `key`.
+   *
+   * @private
+   * @name get
+   * @memberOf Hash
+   * @param {string} key The key of the value to get.
+   * @returns {*} Returns the entry value.
+   */
+  function hashGet(key) {
+    var data = this.__data__;
+    if (nativeCreate) {
+      var result = data[key];
+      return result === HASH_UNDEFINED ? undefined : result;
+    }
+    return hasOwnProperty$7.call(data, key) ? data[key] : undefined;
+  }
+
+  /** Used for built-in method references. */
+  var objectProto$a = Object.prototype;
+
+  /** Used to check objects for own properties. */
+  var hasOwnProperty$8 = objectProto$a.hasOwnProperty;
+
+  /**
+   * Checks if a hash value for `key` exists.
+   *
+   * @private
+   * @name has
+   * @memberOf Hash
+   * @param {string} key The key of the entry to check.
+   * @returns {boolean} Returns `true` if an entry for `key` exists, else `false`.
+   */
+  function hashHas(key) {
+    var data = this.__data__;
+    return nativeCreate ? (data[key] !== undefined) : hasOwnProperty$8.call(data, key);
+  }
+
+  /** Used to stand-in for `undefined` hash values. */
+  var HASH_UNDEFINED$1 = '__lodash_hash_undefined__';
+
+  /**
+   * Sets the hash `key` to `value`.
+   *
+   * @private
+   * @name set
+   * @memberOf Hash
+   * @param {string} key The key of the value to set.
+   * @param {*} value The value to set.
+   * @returns {Object} Returns the hash instance.
+   */
+  function hashSet(key, value) {
+    var data = this.__data__;
+    this.size += this.has(key) ? 0 : 1;
+    data[key] = (nativeCreate && value === undefined) ? HASH_UNDEFINED$1 : value;
+    return this;
+  }
+
+  /**
+   * Creates a hash object.
+   *
+   * @private
+   * @constructor
+   * @param {Array} [entries] The key-value pairs to cache.
+   */
+  function Hash(entries) {
+    var index = -1,
+        length = entries == null ? 0 : entries.length;
+
+    this.clear();
+    while (++index < length) {
+      var entry = entries[index];
+      this.set(entry[0], entry[1]);
+    }
+  }
+
+  // Add methods to `Hash`.
+  Hash.prototype.clear = hashClear;
+  Hash.prototype['delete'] = hashDelete;
+  Hash.prototype.get = hashGet;
+  Hash.prototype.has = hashHas;
+  Hash.prototype.set = hashSet;
+
+  /**
+   * Removes all key-value entries from the list cache.
+   *
+   * @private
+   * @name clear
+   * @memberOf ListCache
+   */
+  function listCacheClear() {
+    this.__data__ = [];
+    this.size = 0;
+  }
+
+  /**
+   * Gets the index at which the `key` is found in `array` of key-value pairs.
+   *
+   * @private
+   * @param {Array} array The array to inspect.
+   * @param {*} key The key to search for.
+   * @returns {number} Returns the index of the matched value, else `-1`.
+   */
+  function assocIndexOf(array, key) {
+    var length = array.length;
+    while (length--) {
+      if (eq(array[length][0], key)) {
+        return length;
+      }
+    }
+    return -1;
+  }
+
+  /** Used for built-in method references. */
+  var arrayProto = Array.prototype;
+
+  /** Built-in value references. */
+  var splice = arrayProto.splice;
+
+  /**
+   * Removes `key` and its value from the list cache.
+   *
+   * @private
+   * @name delete
+   * @memberOf ListCache
+   * @param {string} key The key of the value to remove.
+   * @returns {boolean} Returns `true` if the entry was removed, else `false`.
+   */
+  function listCacheDelete(key) {
+    var data = this.__data__,
+        index = assocIndexOf(data, key);
+
+    if (index < 0) {
+      return false;
+    }
+    var lastIndex = data.length - 1;
+    if (index == lastIndex) {
+      data.pop();
+    } else {
+      splice.call(data, index, 1);
+    }
+    --this.size;
+    return true;
+  }
+
+  /**
+   * Gets the list cache value for `key`.
+   *
+   * @private
+   * @name get
+   * @memberOf ListCache
+   * @param {string} key The key of the value to get.
+   * @returns {*} Returns the entry value.
+   */
+  function listCacheGet(key) {
+    var data = this.__data__,
+        index = assocIndexOf(data, key);
+
+    return index < 0 ? undefined : data[index][1];
+  }
+
+  /**
+   * Checks if a list cache value for `key` exists.
+   *
+   * @private
+   * @name has
+   * @memberOf ListCache
+   * @param {string} key The key of the entry to check.
+   * @returns {boolean} Returns `true` if an entry for `key` exists, else `false`.
+   */
+  function listCacheHas(key) {
+    return assocIndexOf(this.__data__, key) > -1;
+  }
+
+  /**
+   * Sets the list cache `key` to `value`.
+   *
+   * @private
+   * @name set
+   * @memberOf ListCache
+   * @param {string} key The key of the value to set.
+   * @param {*} value The value to set.
+   * @returns {Object} Returns the list cache instance.
+   */
+  function listCacheSet(key, value) {
+    var data = this.__data__,
+        index = assocIndexOf(data, key);
+
+    if (index < 0) {
+      ++this.size;
+      data.push([key, value]);
+    } else {
+      data[index][1] = value;
+    }
+    return this;
+  }
+
+  /**
+   * Creates an list cache object.
+   *
+   * @private
+   * @constructor
+   * @param {Array} [entries] The key-value pairs to cache.
+   */
+  function ListCache(entries) {
+    var index = -1,
+        length = entries == null ? 0 : entries.length;
+
+    this.clear();
+    while (++index < length) {
+      var entry = entries[index];
+      this.set(entry[0], entry[1]);
+    }
+  }
+
+  // Add methods to `ListCache`.
+  ListCache.prototype.clear = listCacheClear;
+  ListCache.prototype['delete'] = listCacheDelete;
+  ListCache.prototype.get = listCacheGet;
+  ListCache.prototype.has = listCacheHas;
+  ListCache.prototype.set = listCacheSet;
+
+  /* Built-in method references that are verified to be native. */
+  var Map = getNative(root, 'Map');
+
+  /**
+   * Removes all key-value entries from the map.
+   *
+   * @private
+   * @name clear
+   * @memberOf MapCache
+   */
+  function mapCacheClear() {
+    this.size = 0;
+    this.__data__ = {
+      'hash': new Hash,
+      'map': new (Map || ListCache),
+      'string': new Hash
+    };
+  }
+
+  /**
+   * Checks if `value` is suitable for use as unique object key.
+   *
+   * @private
+   * @param {*} value The value to check.
+   * @returns {boolean} Returns `true` if `value` is suitable, else `false`.
+   */
+  function isKeyable(value) {
+    var type = typeof value;
+    return (type == 'string' || type == 'number' || type == 'symbol' || type == 'boolean')
+      ? (value !== '__proto__')
+      : (value === null);
+  }
+
+  /**
+   * Gets the data for `map`.
+   *
+   * @private
+   * @param {Object} map The map to query.
+   * @param {string} key The reference key.
+   * @returns {*} Returns the map data.
+   */
+  function getMapData(map, key) {
+    var data = map.__data__;
+    return isKeyable(key)
+      ? data[typeof key == 'string' ? 'string' : 'hash']
+      : data.map;
+  }
+
+  /**
+   * Removes `key` and its value from the map.
+   *
+   * @private
+   * @name delete
+   * @memberOf MapCache
+   * @param {string} key The key of the value to remove.
+   * @returns {boolean} Returns `true` if the entry was removed, else `false`.
+   */
+  function mapCacheDelete(key) {
+    var result = getMapData(this, key)['delete'](key);
+    this.size -= result ? 1 : 0;
+    return result;
+  }
+
+  /**
+   * Gets the map value for `key`.
+   *
+   * @private
+   * @name get
+   * @memberOf MapCache
+   * @param {string} key The key of the value to get.
+   * @returns {*} Returns the entry value.
+   */
+  function mapCacheGet(key) {
+    return getMapData(this, key).get(key);
+  }
+
+  /**
+   * Checks if a map value for `key` exists.
+   *
+   * @private
+   * @name has
+   * @memberOf MapCache
+   * @param {string} key The key of the entry to check.
+   * @returns {boolean} Returns `true` if an entry for `key` exists, else `false`.
+   */
+  function mapCacheHas(key) {
+    return getMapData(this, key).has(key);
+  }
+
+  /**
+   * Sets the map `key` to `value`.
+   *
+   * @private
+   * @name set
+   * @memberOf MapCache
+   * @param {string} key The key of the value to set.
+   * @param {*} value The value to set.
+   * @returns {Object} Returns the map cache instance.
+   */
+  function mapCacheSet(key, value) {
+    var data = getMapData(this, key),
+        size = data.size;
+
+    data.set(key, value);
+    this.size += data.size == size ? 0 : 1;
+    return this;
+  }
+
+  /**
+   * Creates a map cache object to store key-value pairs.
+   *
+   * @private
+   * @constructor
+   * @param {Array} [entries] The key-value pairs to cache.
+   */
+  function MapCache(entries) {
+    var index = -1,
+        length = entries == null ? 0 : entries.length;
+
+    this.clear();
+    while (++index < length) {
+      var entry = entries[index];
+      this.set(entry[0], entry[1]);
+    }
+  }
+
+  // Add methods to `MapCache`.
+  MapCache.prototype.clear = mapCacheClear;
+  MapCache.prototype['delete'] = mapCacheDelete;
+  MapCache.prototype.get = mapCacheGet;
+  MapCache.prototype.has = mapCacheHas;
+  MapCache.prototype.set = mapCacheSet;
+
+  /** Error message constants. */
+  var FUNC_ERROR_TEXT = 'Expected a function';
+
+  /**
+   * Creates a function that memoizes the result of `func`. If `resolver` is
+   * provided, it determines the cache key for storing the result based on the
+   * arguments provided to the memoized function. By default, the first argument
+   * provided to the memoized function is used as the map cache key. The `func`
+   * is invoked with the `this` binding of the memoized function.
+   *
+   * **Note:** The cache is exposed as the `cache` property on the memoized
+   * function. Its creation may be customized by replacing the `_.memoize.Cache`
+   * constructor with one whose instances implement the
+   * [`Map`](http://ecma-international.org/ecma-262/7.0/#sec-properties-of-the-map-prototype-object)
+   * method interface of `clear`, `delete`, `get`, `has`, and `set`.
+   *
+   * @static
+   * @memberOf _
+   * @since 0.1.0
+   * @category Function
+   * @param {Function} func The function to have its output memoized.
+   * @param {Function} [resolver] The function to resolve the cache key.
+   * @returns {Function} Returns the new memoized function.
+   * @example
+   *
+   * var object = { 'a': 1, 'b': 2 };
+   * var other = { 'c': 3, 'd': 4 };
+   *
+   * var values = _.memoize(_.values);
+   * values(object);
+   * // => [1, 2]
+   *
+   * values(other);
+   * // => [3, 4]
+   *
+   * object.a = 2;
+   * values(object);
+   * // => [1, 2]
+   *
+   * // Modify the result cache.
+   * values.cache.set(object, ['a', 'b']);
+   * values(object);
+   * // => ['a', 'b']
+   *
+   * // Replace `_.memoize.Cache`.
+   * _.memoize.Cache = WeakMap;
+   */
+  function memoize(func, resolver) {
+    if (typeof func != 'function' || (resolver != null && typeof resolver != 'function')) {
+      throw new TypeError(FUNC_ERROR_TEXT);
+    }
+    var memoized = function() {
+      var args = arguments,
+          key = resolver ? resolver.apply(this, args) : args[0],
+          cache = memoized.cache;
+
+      if (cache.has(key)) {
+        return cache.get(key);
+      }
+      var result = func.apply(this, args);
+      memoized.cache = cache.set(key, result) || cache;
+      return result;
+    };
+    memoized.cache = new (memoize.Cache || MapCache);
+    return memoized;
+  }
+
+  // Expose `MapCache`.
+  memoize.Cache = MapCache;
+
+  /** Used as the maximum memoize cache size. */
+  var MAX_MEMOIZE_SIZE = 500;
+
+  /**
+   * A specialized version of `_.memoize` which clears the memoized function's
+   * cache when it exceeds `MAX_MEMOIZE_SIZE`.
+   *
+   * @private
+   * @param {Function} func The function to have its output memoized.
+   * @returns {Function} Returns the new memoized function.
+   */
+  function memoizeCapped(func) {
+    var result = memoize(func, function(key) {
+      if (cache.size === MAX_MEMOIZE_SIZE) {
+        cache.clear();
+      }
+      return key;
+    });
+
+    var cache = result.cache;
+    return result;
+  }
+
+  /** Used to match property names within property paths. */
+  var rePropName = /[^.[\]]+|\[(?:(-?\d+(?:\.\d+)?)|(["'])((?:(?!\2)[^\\]|\\.)*?)\2)\]|(?=(?:\.|\[\])(?:\.|\[\]|$))/g;
+
+  /** Used to match backslashes in property paths. */
+  var reEscapeChar = /\\(\\)?/g;
+
+  /**
+   * Converts `string` to a property path array.
+   *
+   * @private
+   * @param {string} string The string to convert.
+   * @returns {Array} Returns the property path array.
+   */
+  var stringToPath = memoizeCapped(function(string) {
+    var result = [];
+    if (string.charCodeAt(0) === 46 /* . */) {
+      result.push('');
+    }
+    string.replace(rePropName, function(match, number, quote, subString) {
+      result.push(quote ? subString.replace(reEscapeChar, '$1') : (number || match));
+    });
+    return result;
+  });
+
+  /**
+   * Converts `value` to a string. An empty string is returned for `null`
+   * and `undefined` values. The sign of `-0` is preserved.
+   *
+   * @static
+   * @memberOf _
+   * @since 4.0.0
+   * @category Lang
+   * @param {*} value The value to convert.
+   * @returns {string} Returns the converted string.
+   * @example
+   *
+   * _.toString(null);
+   * // => ''
+   *
+   * _.toString(-0);
+   * // => '-0'
+   *
+   * _.toString([1, 2, 3]);
+   * // => '1,2,3'
+   */
+  function toString(value) {
+    return value == null ? '' : baseToString(value);
+  }
+
+  /**
+   * Casts `value` to a path array if it's not one.
+   *
+   * @private
+   * @param {*} value The value to inspect.
+   * @param {Object} [object] The object to query keys on.
+   * @returns {Array} Returns the cast property path array.
+   */
+  function castPath(value, object) {
+    if (isArray(value)) {
+      return value;
+    }
+    return isKey(value, object) ? [value] : stringToPath(toString(value));
+  }
+
+  /** Used as references for various `Number` constants. */
+  var INFINITY$2 = 1 / 0;
+
+  /**
+   * Converts `value` to a string key if it's not a string or symbol.
+   *
+   * @private
+   * @param {*} value The value to inspect.
+   * @returns {string|symbol} Returns the key.
+   */
+  function toKey(value) {
+    if (typeof value == 'string' || isSymbol(value)) {
+      return value;
+    }
+    var result = (value + '');
+    return (result == '0' && (1 / value) == -INFINITY$2) ? '-0' : result;
+  }
+
+  /**
+   * The base implementation of `_.get` without support for default values.
+   *
+   * @private
+   * @param {Object} object The object to query.
+   * @param {Array|string} path The path of the property to get.
+   * @returns {*} Returns the resolved value.
+   */
+  function baseGet(object, path) {
+    path = castPath(path, object);
+
+    var index = 0,
+        length = path.length;
+
+    while (object != null && index < length) {
+      object = object[toKey(path[index++])];
+    }
+    return (index && index == length) ? object : undefined;
+  }
+
+  /**
+   * Gets the value at `path` of `object`. If the resolved value is
+   * `undefined`, the `defaultValue` is returned in its place.
+   *
+   * @static
+   * @memberOf _
+   * @since 3.7.0
+   * @category Object
+   * @param {Object} object The object to query.
+   * @param {Array|string} path The path of the property to get.
+   * @param {*} [defaultValue] The value returned for `undefined` resolved values.
+   * @returns {*} Returns the resolved value.
+   * @example
+   *
+   * var object = { 'a': [{ 'b': { 'c': 3 } }] };
+   *
+   * _.get(object, 'a[0].b.c');
+   * // => 3
+   *
+   * _.get(object, ['a', '0', 'b', 'c']);
+   * // => 3
+   *
+   * _.get(object, 'a.b.c', 'default');
+   * // => 'default'
+   */
+  function get(object, path, defaultValue) {
+    var result = object == null ? undefined : baseGet(object, path);
+    return result === undefined ? defaultValue : result;
+  }
+
+  /**
+   * Appends the elements of `values` to `array`.
+   *
+   * @private
+   * @param {Array} array The array to modify.
+   * @param {Array} values The values to append.
+   * @returns {Array} Returns `array`.
+   */
+  function arrayPush(array, values) {
+    var index = -1,
+        length = values.length,
+        offset = array.length;
+
+    while (++index < length) {
+      array[offset + index] = values[index];
+    }
+    return array;
+  }
+
+  /** Built-in value references. */
+  var getPrototype = overArg(Object.getPrototypeOf, Object);
+
+  /** `Object#toString` result references. */
+  var objectTag$1 = '[object Object]';
+
+  /** Used for built-in method references. */
+  var funcProto$2 = Function.prototype,
+      objectProto$b = Object.prototype;
+
+  /** Used to resolve the decompiled source of functions. */
+  var funcToString$2 = funcProto$2.toString;
+
+  /** Used to check objects for own properties. */
+  var hasOwnProperty$9 = objectProto$b.hasOwnProperty;
+
+  /** Used to infer the `Object` constructor. */
+  var objectCtorString = funcToString$2.call(Object);
+
+  /**
+   * Checks if `value` is a plain object, that is, an object created by the
+   * `Object` constructor or one with a `[[Prototype]]` of `null`.
+   *
+   * @static
+   * @memberOf _
+   * @since 0.8.0
+   * @category Lang
+   * @param {*} value The value to check.
+   * @returns {boolean} Returns `true` if `value` is a plain object, else `false`.
+   * @example
+   *
+   * function Foo() {
+   *   this.a = 1;
+   * }
+   *
+   * _.isPlainObject(new Foo);
+   * // => false
+   *
+   * _.isPlainObject([1, 2, 3]);
+   * // => false
+   *
+   * _.isPlainObject({ 'x': 0, 'y': 0 });
+   * // => true
+   *
+   * _.isPlainObject(Object.create(null));
+   * // => true
+   */
+  function isPlainObject(value) {
+    if (!isObjectLike(value) || baseGetTag(value) != objectTag$1) {
+      return false;
+    }
+    var proto = getPrototype(value);
+    if (proto === null) {
+      return true;
+    }
+    var Ctor = hasOwnProperty$9.call(proto, 'constructor') && proto.constructor;
+    return typeof Ctor == 'function' && Ctor instanceof Ctor &&
+      funcToString$2.call(Ctor) == objectCtorString;
+  }
+
+  /* Built-in method references for those with the same name as other `lodash` methods. */
+  var nativeIsFinite = root.isFinite,
+      nativeMin = Math.min;
+
+  /**
+   * Creates a function like `_.round`.
+   *
+   * @private
+   * @param {string} methodName The name of the `Math` method to use when rounding.
+   * @returns {Function} Returns the new round function.
+   */
+  function createRound(methodName) {
+    var func = Math[methodName];
+    return function(number, precision) {
+      number = toNumber(number);
+      precision = precision == null ? 0 : nativeMin(toInteger(precision), 292);
+      if (precision && nativeIsFinite(number)) {
+        // Shift with exponential notation to avoid floating-point issues.
+        // See [MDN](https://mdn.io/round#Examples) for more details.
+        var pair = (toString(number) + 'e').split('e'),
+            value = func(pair[0] + 'e' + (+pair[1] + precision));
+
+        pair = (toString(value) + 'e').split('e');
+        return +(pair[0] + 'e' + (+pair[1] - precision));
+      }
+      return func(number);
+    };
+  }
+
+  /**
+   * Removes all key-value entries from the stack.
+   *
+   * @private
+   * @name clear
+   * @memberOf Stack
+   */
+  function stackClear() {
+    this.__data__ = new ListCache;
+    this.size = 0;
+  }
+
+  /**
+   * Removes `key` and its value from the stack.
+   *
+   * @private
+   * @name delete
+   * @memberOf Stack
+   * @param {string} key The key of the value to remove.
+   * @returns {boolean} Returns `true` if the entry was removed, else `false`.
+   */
+  function stackDelete(key) {
+    var data = this.__data__,
+        result = data['delete'](key);
+
+    this.size = data.size;
+    return result;
+  }
+
+  /**
+   * Gets the stack value for `key`.
+   *
+   * @private
+   * @name get
+   * @memberOf Stack
+   * @param {string} key The key of the value to get.
+   * @returns {*} Returns the entry value.
+   */
+  function stackGet(key) {
+    return this.__data__.get(key);
+  }
+
+  /**
+   * Checks if a stack value for `key` exists.
+   *
+   * @private
+   * @name has
+   * @memberOf Stack
+   * @param {string} key The key of the entry to check.
+   * @returns {boolean} Returns `true` if an entry for `key` exists, else `false`.
+   */
+  function stackHas(key) {
+    return this.__data__.has(key);
+  }
+
+  /** Used as the size to enable large array optimizations. */
+  var LARGE_ARRAY_SIZE = 200;
+
+  /**
+   * Sets the stack `key` to `value`.
+   *
+   * @private
+   * @name set
+   * @memberOf Stack
+   * @param {string} key The key of the value to set.
+   * @param {*} value The value to set.
+   * @returns {Object} Returns the stack cache instance.
+   */
+  function stackSet(key, value) {
+    var data = this.__data__;
+    if (data instanceof ListCache) {
+      var pairs = data.__data__;
+      if (!Map || (pairs.length < LARGE_ARRAY_SIZE - 1)) {
+        pairs.push([key, value]);
+        this.size = ++data.size;
+        return this;
+      }
+      data = this.__data__ = new MapCache(pairs);
+    }
+    data.set(key, value);
+    this.size = data.size;
+    return this;
+  }
+
+  /**
+   * Creates a stack cache object to store key-value pairs.
+   *
+   * @private
+   * @constructor
+   * @param {Array} [entries] The key-value pairs to cache.
+   */
+  function Stack(entries) {
+    var data = this.__data__ = new ListCache(entries);
+    this.size = data.size;
+  }
+
+  // Add methods to `Stack`.
+  Stack.prototype.clear = stackClear;
+  Stack.prototype['delete'] = stackDelete;
+  Stack.prototype.get = stackGet;
+  Stack.prototype.has = stackHas;
+  Stack.prototype.set = stackSet;
+
+  /** Detect free variable `exports`. */
+  var freeExports$2 = typeof exports == 'object' && exports && !exports.nodeType && exports;
+
+  /** Detect free variable `module`. */
+  var freeModule$2 = freeExports$2 && typeof module == 'object' && module && !module.nodeType && module;
+
+  /** Detect the popular CommonJS extension `module.exports`. */
+  var moduleExports$2 = freeModule$2 && freeModule$2.exports === freeExports$2;
+
+  /** Built-in value references. */
+  var Buffer$1 = moduleExports$2 ? root.Buffer : undefined,
+      allocUnsafe = Buffer$1 ? Buffer$1.allocUnsafe : undefined;
+
+  /**
+   * Creates a clone of  `buffer`.
+   *
+   * @private
+   * @param {Buffer} buffer The buffer to clone.
+   * @param {boolean} [isDeep] Specify a deep clone.
+   * @returns {Buffer} Returns the cloned buffer.
+   */
+  function cloneBuffer(buffer, isDeep) {
+    if (isDeep) {
+      return buffer.slice();
+    }
+    var length = buffer.length,
+        result = allocUnsafe ? allocUnsafe(length) : new buffer.constructor(length);
+
+    buffer.copy(result);
+    return result;
+  }
+
+  /**
+   * A specialized version of `_.filter` for arrays without support for
+   * iteratee shorthands.
+   *
+   * @private
+   * @param {Array} [array] The array to iterate over.
+   * @param {Function} predicate The function invoked per iteration.
+   * @returns {Array} Returns the new filtered array.
+   */
+  function arrayFilter(array, predicate) {
+    var index = -1,
+        length = array == null ? 0 : array.length,
+        resIndex = 0,
+        result = [];
+
+    while (++index < length) {
+      var value = array[index];
+      if (predicate(value, index, array)) {
+        result[resIndex++] = value;
+      }
+    }
+    return result;
+  }
+
+  /**
+   * This method returns a new empty array.
+   *
+   * @static
+   * @memberOf _
+   * @since 4.13.0
+   * @category Util
+   * @returns {Array} Returns the new empty array.
+   * @example
+   *
+   * var arrays = _.times(2, _.stubArray);
+   *
+   * console.log(arrays);
+   * // => [[], []]
+   *
+   * console.log(arrays[0] === arrays[1]);
+   * // => false
+   */
+  function stubArray() {
+    return [];
+  }
+
+  /** Used for built-in method references. */
+  var objectProto$c = Object.prototype;
+
+  /** Built-in value references. */
+  var propertyIsEnumerable$1 = objectProto$c.propertyIsEnumerable;
+
+  /* Built-in method references for those with the same name as other `lodash` methods. */
+  var nativeGetSymbols = Object.getOwnPropertySymbols;
+
+  /**
+   * Creates an array of the own enumerable symbols of `object`.
+   *
+   * @private
+   * @param {Object} object The object to query.
+   * @returns {Array} Returns the array of symbols.
+   */
+  var getSymbols = !nativeGetSymbols ? stubArray : function(object) {
+    if (object == null) {
+      return [];
+    }
+    object = Object(object);
+    return arrayFilter(nativeGetSymbols(object), function(symbol) {
+      return propertyIsEnumerable$1.call(object, symbol);
+    });
+  };
+
+  /**
+   * The base implementation of `getAllKeys` and `getAllKeysIn` which uses
+   * `keysFunc` and `symbolsFunc` to get the enumerable property names and
+   * symbols of `object`.
+   *
+   * @private
+   * @param {Object} object The object to query.
+   * @param {Function} keysFunc The function to get the keys of `object`.
+   * @param {Function} symbolsFunc The function to get the symbols of `object`.
+   * @returns {Array} Returns the array of property names and symbols.
+   */
+  function baseGetAllKeys(object, keysFunc, symbolsFunc) {
+    var result = keysFunc(object);
+    return isArray(object) ? result : arrayPush(result, symbolsFunc(object));
+  }
+
+  /**
+   * Creates an array of own enumerable property names and symbols of `object`.
+   *
+   * @private
+   * @param {Object} object The object to query.
+   * @returns {Array} Returns the array of property names and symbols.
+   */
+  function getAllKeys(object) {
+    return baseGetAllKeys(object, keys, getSymbols);
+  }
+
+  /* Built-in method references that are verified to be native. */
+  var DataView = getNative(root, 'DataView');
+
+  /* Built-in method references that are verified to be native. */
+  var Promise$1 = getNative(root, 'Promise');
+
+  /* Built-in method references that are verified to be native. */
+  var Set = getNative(root, 'Set');
+
+  /** `Object#toString` result references. */
+  var mapTag$1 = '[object Map]',
+      objectTag$2 = '[object Object]',
+      promiseTag = '[object Promise]',
+      setTag$1 = '[object Set]',
+      weakMapTag$1 = '[object WeakMap]';
+
+  var dataViewTag$1 = '[object DataView]';
+
+  /** Used to detect maps, sets, and weakmaps. */
+  var dataViewCtorString = toSource(DataView),
+      mapCtorString = toSource(Map),
+      promiseCtorString = toSource(Promise$1),
+      setCtorString = toSource(Set),
+      weakMapCtorString = toSource(WeakMap);
+
+  /**
+   * Gets the `toStringTag` of `value`.
+   *
+   * @private
+   * @param {*} value The value to query.
+   * @returns {string} Returns the `toStringTag`.
+   */
+  var getTag = baseGetTag;
+
+  // Fallback for data views, maps, sets, and weak maps in IE 11 and promises in Node.js < 6.
+  if ((DataView && getTag(new DataView(new ArrayBuffer(1))) != dataViewTag$1) ||
+      (Map && getTag(new Map) != mapTag$1) ||
+      (Promise$1 && getTag(Promise$1.resolve()) != promiseTag) ||
+      (Set && getTag(new Set) != setTag$1) ||
+      (WeakMap && getTag(new WeakMap) != weakMapTag$1)) {
+    getTag = function(value) {
+      var result = baseGetTag(value),
+          Ctor = result == objectTag$2 ? value.constructor : undefined,
+          ctorString = Ctor ? toSource(Ctor) : '';
+
+      if (ctorString) {
+        switch (ctorString) {
+          case dataViewCtorString: return dataViewTag$1;
+          case mapCtorString: return mapTag$1;
+          case promiseCtorString: return promiseTag;
+          case setCtorString: return setTag$1;
+          case weakMapCtorString: return weakMapTag$1;
+        }
+      }
+      return result;
+    };
+  }
+
+  var getTag$1 = getTag;
+
+  /** Built-in value references. */
+  var Uint8Array = root.Uint8Array;
+
+  /**
+   * Creates a clone of `arrayBuffer`.
+   *
+   * @private
+   * @param {ArrayBuffer} arrayBuffer The array buffer to clone.
+   * @returns {ArrayBuffer} Returns the cloned array buffer.
+   */
+  function cloneArrayBuffer(arrayBuffer) {
+    var result = new arrayBuffer.constructor(arrayBuffer.byteLength);
+    new Uint8Array(result).set(new Uint8Array(arrayBuffer));
+    return result;
+  }
+
+  /**
+   * Creates a clone of `typedArray`.
+   *
+   * @private
+   * @param {Object} typedArray The typed array to clone.
+   * @param {boolean} [isDeep] Specify a deep clone.
+   * @returns {Object} Returns the cloned typed array.
+   */
+  function cloneTypedArray(typedArray, isDeep) {
+    var buffer = isDeep ? cloneArrayBuffer(typedArray.buffer) : typedArray.buffer;
+    return new typedArray.constructor(buffer, typedArray.byteOffset, typedArray.length);
+  }
+
+  /**
+   * Initializes an object clone.
+   *
+   * @private
+   * @param {Object} object The object to clone.
+   * @returns {Object} Returns the initialized clone.
+   */
+  function initCloneObject(object) {
+    return (typeof object.constructor == 'function' && !isPrototype(object))
+      ? baseCreate(getPrototype(object))
+      : {};
+  }
+
+  /** Used to stand-in for `undefined` hash values. */
+  var HASH_UNDEFINED$2 = '__lodash_hash_undefined__';
+
+  /**
+   * Adds `value` to the array cache.
+   *
+   * @private
+   * @name add
+   * @memberOf SetCache
+   * @alias push
+   * @param {*} value The value to cache.
+   * @returns {Object} Returns the cache instance.
+   */
+  function setCacheAdd(value) {
+    this.__data__.set(value, HASH_UNDEFINED$2);
+    return this;
+  }
+
+  /**
+   * Checks if `value` is in the array cache.
+   *
+   * @private
+   * @name has
+   * @memberOf SetCache
+   * @param {*} value The value to search for.
+   * @returns {number} Returns `true` if `value` is found, else `false`.
+   */
+  function setCacheHas(value) {
+    return this.__data__.has(value);
+  }
+
+  /**
+   *
+   * Creates an array cache object to store unique values.
+   *
+   * @private
+   * @constructor
+   * @param {Array} [values] The values to cache.
+   */
+  function SetCache(values) {
+    var index = -1,
+        length = values == null ? 0 : values.length;
+
+    this.__data__ = new MapCache;
+    while (++index < length) {
+      this.add(values[index]);
+    }
+  }
+
+  // Add methods to `SetCache`.
+  SetCache.prototype.add = SetCache.prototype.push = setCacheAdd;
+  SetCache.prototype.has = setCacheHas;
+
+  /**
+   * A specialized version of `_.some` for arrays without support for iteratee
+   * shorthands.
+   *
+   * @private
+   * @param {Array} [array] The array to iterate over.
+   * @param {Function} predicate The function invoked per iteration.
+   * @returns {boolean} Returns `true` if any element passes the predicate check,
+   *  else `false`.
+   */
+  function arraySome(array, predicate) {
+    var index = -1,
+        length = array == null ? 0 : array.length;
+
+    while (++index < length) {
+      if (predicate(array[index], index, array)) {
+        return true;
+      }
+    }
+    return false;
+  }
+
+  /**
+   * Checks if a `cache` value for `key` exists.
+   *
+   * @private
+   * @param {Object} cache The cache to query.
+   * @param {string} key The key of the entry to check.
+   * @returns {boolean} Returns `true` if an entry for `key` exists, else `false`.
+   */
+  function cacheHas(cache, key) {
+    return cache.has(key);
+  }
+
+  /** Used to compose bitmasks for value comparisons. */
+  var COMPARE_PARTIAL_FLAG = 1,
+      COMPARE_UNORDERED_FLAG = 2;
+
+  /**
+   * A specialized version of `baseIsEqualDeep` for arrays with support for
+   * partial deep comparisons.
+   *
+   * @private
+   * @param {Array} array The array to compare.
+   * @param {Array} other The other array to compare.
+   * @param {number} bitmask The bitmask flags. See `baseIsEqual` for more details.
+   * @param {Function} customizer The function to customize comparisons.
+   * @param {Function} equalFunc The function to determine equivalents of values.
+   * @param {Object} stack Tracks traversed `array` and `other` objects.
+   * @returns {boolean} Returns `true` if the arrays are equivalent, else `false`.
+   */
+  function equalArrays(array, other, bitmask, customizer, equalFunc, stack) {
+    var isPartial = bitmask & COMPARE_PARTIAL_FLAG,
+        arrLength = array.length,
+        othLength = other.length;
+
+    if (arrLength != othLength && !(isPartial && othLength > arrLength)) {
+      return false;
+    }
+    // Assume cyclic values are equal.
+    var stacked = stack.get(array);
+    if (stacked && stack.get(other)) {
+      return stacked == other;
+    }
+    var index = -1,
+        result = true,
+        seen = (bitmask & COMPARE_UNORDERED_FLAG) ? new SetCache : undefined;
+
+    stack.set(array, other);
+    stack.set(other, array);
+
+    // Ignore non-index properties.
+    while (++index < arrLength) {
+      var arrValue = array[index],
+          othValue = other[index];
+
+      if (customizer) {
+        var compared = isPartial
+          ? customizer(othValue, arrValue, index, other, array, stack)
+          : customizer(arrValue, othValue, index, array, other, stack);
+      }
+      if (compared !== undefined) {
+        if (compared) {
+          continue;
+        }
+        result = false;
+        break;
+      }
+      // Recursively compare arrays (susceptible to call stack limits).
+      if (seen) {
+        if (!arraySome(other, function(othValue, othIndex) {
+              if (!cacheHas(seen, othIndex) &&
+                  (arrValue === othValue || equalFunc(arrValue, othValue, bitmask, customizer, stack))) {
+                return seen.push(othIndex);
+              }
+            })) {
+          result = false;
+          break;
+        }
+      } else if (!(
+            arrValue === othValue ||
+              equalFunc(arrValue, othValue, bitmask, customizer, stack)
+          )) {
+        result = false;
+        break;
+      }
+    }
+    stack['delete'](array);
+    stack['delete'](other);
+    return result;
+  }
+
+  /**
+   * Converts `map` to its key-value pairs.
+   *
+   * @private
+   * @param {Object} map The map to convert.
+   * @returns {Array} Returns the key-value pairs.
+   */
+  function mapToArray(map) {
+    var index = -1,
+        result = Array(map.size);
+
+    map.forEach(function(value, key) {
+      result[++index] = [key, value];
+    });
+    return result;
+  }
+
+  /**
+   * Converts `set` to an array of its values.
+   *
+   * @private
+   * @param {Object} set The set to convert.
+   * @returns {Array} Returns the values.
+   */
+  function setToArray(set) {
+    var index = -1,
+        result = Array(set.size);
+
+    set.forEach(function(value) {
+      result[++index] = value;
+    });
+    return result;
+  }
+
+  /** Used to compose bitmasks for value comparisons. */
+  var COMPARE_PARTIAL_FLAG$1 = 1,
+      COMPARE_UNORDERED_FLAG$1 = 2;
+
+  /** `Object#toString` result references. */
+  var boolTag$1 = '[object Boolean]',
+      dateTag$1 = '[object Date]',
+      errorTag$1 = '[object Error]',
+      mapTag$2 = '[object Map]',
+      numberTag$1 = '[object Number]',
+      regexpTag$1 = '[object RegExp]',
+      setTag$2 = '[object Set]',
+      stringTag$1 = '[object String]',
+      symbolTag$1 = '[object Symbol]';
+
+  var arrayBufferTag$1 = '[object ArrayBuffer]',
+      dataViewTag$2 = '[object DataView]';
+
+  /** Used to convert symbols to primitives and strings. */
+  var symbolProto$1 = Symbol$1 ? Symbol$1.prototype : undefined,
+      symbolValueOf = symbolProto$1 ? symbolProto$1.valueOf : undefined;
+
+  /**
+   * A specialized version of `baseIsEqualDeep` for comparing objects of
+   * the same `toStringTag`.
+   *
+   * **Note:** This function only supports comparing values with tags of
+   * `Boolean`, `Date`, `Error`, `Number`, `RegExp`, or `String`.
+   *
+   * @private
+   * @param {Object} object The object to compare.
+   * @param {Object} other The other object to compare.
+   * @param {string} tag The `toStringTag` of the objects to compare.
+   * @param {number} bitmask The bitmask flags. See `baseIsEqual` for more details.
+   * @param {Function} customizer The function to customize comparisons.
+   * @param {Function} equalFunc The function to determine equivalents of values.
+   * @param {Object} stack Tracks traversed `object` and `other` objects.
+   * @returns {boolean} Returns `true` if the objects are equivalent, else `false`.
+   */
+  function equalByTag(object, other, tag, bitmask, customizer, equalFunc, stack) {
+    switch (tag) {
+      case dataViewTag$2:
+        if ((object.byteLength != other.byteLength) ||
+            (object.byteOffset != other.byteOffset)) {
+          return false;
+        }
+        object = object.buffer;
+        other = other.buffer;
+
+      case arrayBufferTag$1:
+        if ((object.byteLength != other.byteLength) ||
+            !equalFunc(new Uint8Array(object), new Uint8Array(other))) {
+          return false;
+        }
+        return true;
+
+      case boolTag$1:
+      case dateTag$1:
+      case numberTag$1:
+        // Coerce booleans to `1` or `0` and dates to milliseconds.
+        // Invalid dates are coerced to `NaN`.
+        return eq(+object, +other);
+
+      case errorTag$1:
+        return object.name == other.name && object.message == other.message;
+
+      case regexpTag$1:
+      case stringTag$1:
+        // Coerce regexes to strings and treat strings, primitives and objects,
+        // as equal. See http://www.ecma-international.org/ecma-262/7.0/#sec-regexp.prototype.tostring
+        // for more details.
+        return object == (other + '');
+
+      case mapTag$2:
+        var convert = mapToArray;
+
+      case setTag$2:
+        var isPartial = bitmask & COMPARE_PARTIAL_FLAG$1;
+        convert || (convert = setToArray);
+
+        if (object.size != other.size && !isPartial) {
+          return false;
+        }
+        // Assume cyclic values are equal.
+        var stacked = stack.get(object);
+        if (stacked) {
+          return stacked == other;
+        }
+        bitmask |= COMPARE_UNORDERED_FLAG$1;
+
+        // Recursively compare objects (susceptible to call stack limits).
+        stack.set(object, other);
+        var result = equalArrays(convert(object), convert(other), bitmask, customizer, equalFunc, stack);
+        stack['delete'](object);
+        return result;
+
+      case symbolTag$1:
+        if (symbolValueOf) {
+          return symbolValueOf.call(object) == symbolValueOf.call(other);
+        }
+    }
+    return false;
+  }
+
+  /** Used to compose bitmasks for value comparisons. */
+  var COMPARE_PARTIAL_FLAG$2 = 1;
+
+  /** Used for built-in method references. */
+  var objectProto$d = Object.prototype;
+
+  /** Used to check objects for own properties. */
+  var hasOwnProperty$a = objectProto$d.hasOwnProperty;
+
+  /**
+   * A specialized version of `baseIsEqualDeep` for objects with support for
+   * partial deep comparisons.
+   *
+   * @private
+   * @param {Object} object The object to compare.
+   * @param {Object} other The other object to compare.
+   * @param {number} bitmask The bitmask flags. See `baseIsEqual` for more details.
+   * @param {Function} customizer The function to customize comparisons.
+   * @param {Function} equalFunc The function to determine equivalents of values.
+   * @param {Object} stack Tracks traversed `object` and `other` objects.
+   * @returns {boolean} Returns `true` if the objects are equivalent, else `false`.
+   */
+  function equalObjects(object, other, bitmask, customizer, equalFunc, stack) {
+    var isPartial = bitmask & COMPARE_PARTIAL_FLAG$2,
+        objProps = getAllKeys(object),
+        objLength = objProps.length,
+        othProps = getAllKeys(other),
+        othLength = othProps.length;
+
+    if (objLength != othLength && !isPartial) {
+      return false;
+    }
+    var index = objLength;
+    while (index--) {
+      var key = objProps[index];
+      if (!(isPartial ? key in other : hasOwnProperty$a.call(other, key))) {
+        return false;
+      }
+    }
+    // Assume cyclic values are equal.
+    var stacked = stack.get(object);
+    if (stacked && stack.get(other)) {
+      return stacked == other;
+    }
+    var result = true;
+    stack.set(object, other);
+    stack.set(other, object);
+
+    var skipCtor = isPartial;
+    while (++index < objLength) {
+      key = objProps[index];
+      var objValue = object[key],
+          othValue = other[key];
+
+      if (customizer) {
+        var compared = isPartial
+          ? customizer(othValue, objValue, key, other, object, stack)
+          : customizer(objValue, othValue, key, object, other, stack);
+      }
+      // Recursively compare objects (susceptible to call stack limits).
+      if (!(compared === undefined
+            ? (objValue === othValue || equalFunc(objValue, othValue, bitmask, customizer, stack))
+            : compared
+          )) {
+        result = false;
+        break;
+      }
+      skipCtor || (skipCtor = key == 'constructor');
+    }
+    if (result && !skipCtor) {
+      var objCtor = object.constructor,
+          othCtor = other.constructor;
+
+      // Non `Object` object instances with different constructors are not equal.
+      if (objCtor != othCtor &&
+          ('constructor' in object && 'constructor' in other) &&
+          !(typeof objCtor == 'function' && objCtor instanceof objCtor &&
+            typeof othCtor == 'function' && othCtor instanceof othCtor)) {
+        result = false;
+      }
+    }
+    stack['delete'](object);
+    stack['delete'](other);
+    return result;
+  }
+
+  /** Used to compose bitmasks for value comparisons. */
+  var COMPARE_PARTIAL_FLAG$3 = 1;
+
+  /** `Object#toString` result references. */
+  var argsTag$2 = '[object Arguments]',
+      arrayTag$1 = '[object Array]',
+      objectTag$3 = '[object Object]';
+
+  /** Used for built-in method references. */
+  var objectProto$e = Object.prototype;
+
+  /** Used to check objects for own properties. */
+  var hasOwnProperty$b = objectProto$e.hasOwnProperty;
+
+  /**
+   * A specialized version of `baseIsEqual` for arrays and objects which performs
+   * deep comparisons and tracks traversed objects enabling objects with circular
+   * references to be compared.
+   *
+   * @private
+   * @param {Object} object The object to compare.
+   * @param {Object} other The other object to compare.
+   * @param {number} bitmask The bitmask flags. See `baseIsEqual` for more details.
+   * @param {Function} customizer The function to customize comparisons.
+   * @param {Function} equalFunc The function to determine equivalents of values.
+   * @param {Object} [stack] Tracks traversed `object` and `other` objects.
+   * @returns {boolean} Returns `true` if the objects are equivalent, else `false`.
+   */
+  function baseIsEqualDeep(object, other, bitmask, customizer, equalFunc, stack) {
+    var objIsArr = isArray(object),
+        othIsArr = isArray(other),
+        objTag = objIsArr ? arrayTag$1 : getTag$1(object),
+        othTag = othIsArr ? arrayTag$1 : getTag$1(other);
+
+    objTag = objTag == argsTag$2 ? objectTag$3 : objTag;
+    othTag = othTag == argsTag$2 ? objectTag$3 : othTag;
+
+    var objIsObj = objTag == objectTag$3,
+        othIsObj = othTag == objectTag$3,
+        isSameTag = objTag == othTag;
+
+    if (isSameTag && isBuffer(object)) {
+      if (!isBuffer(other)) {
+        return false;
+      }
+      objIsArr = true;
+      objIsObj = false;
+    }
+    if (isSameTag && !objIsObj) {
+      stack || (stack = new Stack);
+      return (objIsArr || isTypedArray(object))
+        ? equalArrays(object, other, bitmask, customizer, equalFunc, stack)
+        : equalByTag(object, other, objTag, bitmask, customizer, equalFunc, stack);
+    }
+    if (!(bitmask & COMPARE_PARTIAL_FLAG$3)) {
+      var objIsWrapped = objIsObj && hasOwnProperty$b.call(object, '__wrapped__'),
+          othIsWrapped = othIsObj && hasOwnProperty$b.call(other, '__wrapped__');
+
+      if (objIsWrapped || othIsWrapped) {
+        var objUnwrapped = objIsWrapped ? object.value() : object,
+            othUnwrapped = othIsWrapped ? other.value() : other;
+
+        stack || (stack = new Stack);
+        return equalFunc(objUnwrapped, othUnwrapped, bitmask, customizer, stack);
+      }
+    }
+    if (!isSameTag) {
+      return false;
+    }
+    stack || (stack = new Stack);
+    return equalObjects(object, other, bitmask, customizer, equalFunc, stack);
+  }
+
+  /**
+   * The base implementation of `_.isEqual` which supports partial comparisons
+   * and tracks traversed objects.
+   *
+   * @private
+   * @param {*} value The value to compare.
+   * @param {*} other The other value to compare.
+   * @param {boolean} bitmask The bitmask flags.
+   *  1 - Unordered comparison
+   *  2 - Partial comparison
+   * @param {Function} [customizer] The function to customize comparisons.
+   * @param {Object} [stack] Tracks traversed `value` and `other` objects.
+   * @returns {boolean} Returns `true` if the values are equivalent, else `false`.
+   */
+  function baseIsEqual(value, other, bitmask, customizer, stack) {
+    if (value === other) {
+      return true;
+    }
+    if (value == null || other == null || (!isObjectLike(value) && !isObjectLike(other))) {
+      return value !== value && other !== other;
+    }
+    return baseIsEqualDeep(value, other, bitmask, customizer, baseIsEqual, stack);
+  }
+
+  /** Used to compose bitmasks for value comparisons. */
+  var COMPARE_PARTIAL_FLAG$4 = 1,
+      COMPARE_UNORDERED_FLAG$2 = 2;
+
+  /**
+   * The base implementation of `_.isMatch` without support for iteratee shorthands.
+   *
+   * @private
+   * @param {Object} object The object to inspect.
+   * @param {Object} source The object of property values to match.
+   * @param {Array} matchData The property names, values, and compare flags to match.
+   * @param {Function} [customizer] The function to customize comparisons.
+   * @returns {boolean} Returns `true` if `object` is a match, else `false`.
+   */
+  function baseIsMatch(object, source, matchData, customizer) {
+    var index = matchData.length,
+        length = index,
+        noCustomizer = !customizer;
+
+    if (object == null) {
+      return !length;
+    }
+    object = Object(object);
+    while (index--) {
+      var data = matchData[index];
+      if ((noCustomizer && data[2])
+            ? data[1] !== object[data[0]]
+            : !(data[0] in object)
+          ) {
+        return false;
+      }
+    }
+    while (++index < length) {
+      data = matchData[index];
+      var key = data[0],
+          objValue = object[key],
+          srcValue = data[1];
+
+      if (noCustomizer && data[2]) {
+        if (objValue === undefined && !(key in object)) {
+          return false;
+        }
+      } else {
+        var stack = new Stack;
+        if (customizer) {
+          var result = customizer(objValue, srcValue, key, object, source, stack);
+        }
+        if (!(result === undefined
+              ? baseIsEqual(srcValue, objValue, COMPARE_PARTIAL_FLAG$4 | COMPARE_UNORDERED_FLAG$2, customizer, stack)
+              : result
+            )) {
+          return false;
+        }
+      }
+    }
+    return true;
+  }
+
+  /**
+   * Checks if `value` is suitable for strict equality comparisons, i.e. `===`.
+   *
+   * @private
+   * @param {*} value The value to check.
+   * @returns {boolean} Returns `true` if `value` if suitable for strict
+   *  equality comparisons, else `false`.
+   */
+  function isStrictComparable(value) {
+    return value === value && !isObject(value);
+  }
+
+  /**
+   * Gets the property names, values, and compare flags of `object`.
+   *
+   * @private
+   * @param {Object} object The object to query.
+   * @returns {Array} Returns the match data of `object`.
+   */
+  function getMatchData(object) {
+    var result = keys(object),
+        length = result.length;
+
+    while (length--) {
+      var key = result[length],
+          value = object[key];
+
+      result[length] = [key, value, isStrictComparable(value)];
+    }
+    return result;
+  }
+
+  /**
+   * A specialized version of `matchesProperty` for source values suitable
+   * for strict equality comparisons, i.e. `===`.
+   *
+   * @private
+   * @param {string} key The key of the property to get.
+   * @param {*} srcValue The value to match.
+   * @returns {Function} Returns the new spec function.
+   */
+  function matchesStrictComparable(key, srcValue) {
+    return function(object) {
+      if (object == null) {
+        return false;
+      }
+      return object[key] === srcValue &&
+        (srcValue !== undefined || (key in Object(object)));
+    };
+  }
+
+  /**
+   * The base implementation of `_.matches` which doesn't clone `source`.
+   *
+   * @private
+   * @param {Object} source The object of property values to match.
+   * @returns {Function} Returns the new spec function.
+   */
+  function baseMatches(source) {
+    var matchData = getMatchData(source);
+    if (matchData.length == 1 && matchData[0][2]) {
+      return matchesStrictComparable(matchData[0][0], matchData[0][1]);
+    }
+    return function(object) {
+      return object === source || baseIsMatch(object, source, matchData);
+    };
+  }
+
+  /**
+   * The base implementation of `_.hasIn` without support for deep paths.
+   *
+   * @private
+   * @param {Object} [object] The object to query.
+   * @param {Array|string} key The key to check.
+   * @returns {boolean} Returns `true` if `key` exists, else `false`.
+   */
+  function baseHasIn(object, key) {
+    return object != null && key in Object(object);
+  }
+
+  /**
+   * Checks if `path` exists on `object`.
+   *
+   * @private
+   * @param {Object} object The object to query.
+   * @param {Array|string} path The path to check.
+   * @param {Function} hasFunc The function to check properties.
+   * @returns {boolean} Returns `true` if `path` exists, else `false`.
+   */
+  function hasPath(object, path, hasFunc) {
+    path = castPath(path, object);
+
+    var index = -1,
+        length = path.length,
+        result = false;
+
+    while (++index < length) {
+      var key = toKey(path[index]);
+      if (!(result = object != null && hasFunc(object, key))) {
+        break;
+      }
+      object = object[key];
+    }
+    if (result || ++index != length) {
+      return result;
+    }
+    length = object == null ? 0 : object.length;
+    return !!length && isLength(length) && isIndex(key, length) &&
+      (isArray(object) || isArguments(object));
+  }
+
+  /**
+   * Checks if `path` is a direct or inherited property of `object`.
+   *
+   * @static
+   * @memberOf _
+   * @since 4.0.0
+   * @category Object
+   * @param {Object} object The object to query.
+   * @param {Array|string} path The path to check.
+   * @returns {boolean} Returns `true` if `path` exists, else `false`.
+   * @example
+   *
+   * var object = _.create({ 'a': _.create({ 'b': 2 }) });
+   *
+   * _.hasIn(object, 'a');
+   * // => true
+   *
+   * _.hasIn(object, 'a.b');
+   * // => true
+   *
+   * _.hasIn(object, ['a', 'b']);
+   * // => true
+   *
+   * _.hasIn(object, 'b');
+   * // => false
+   */
+  function hasIn(object, path) {
+    return object != null && hasPath(object, path, baseHasIn);
+  }
+
+  /** Used to compose bitmasks for value comparisons. */
+  var COMPARE_PARTIAL_FLAG$5 = 1,
+      COMPARE_UNORDERED_FLAG$3 = 2;
+
+  /**
+   * The base implementation of `_.matchesProperty` which doesn't clone `srcValue`.
+   *
+   * @private
+   * @param {string} path The path of the property to get.
+   * @param {*} srcValue The value to match.
+   * @returns {Function} Returns the new spec function.
+   */
+  function baseMatchesProperty(path, srcValue) {
+    if (isKey(path) && isStrictComparable(srcValue)) {
+      return matchesStrictComparable(toKey(path), srcValue);
+    }
+    return function(object) {
+      var objValue = get(object, path);
+      return (objValue === undefined && objValue === srcValue)
+        ? hasIn(object, path)
+        : baseIsEqual(srcValue, objValue, COMPARE_PARTIAL_FLAG$5 | COMPARE_UNORDERED_FLAG$3);
+    };
+  }
+
+  /**
+   * The base implementation of `_.property` without support for deep paths.
+   *
+   * @private
+   * @param {string} key The key of the property to get.
+   * @returns {Function} Returns the new accessor function.
+   */
+  function baseProperty(key) {
+    return function(object) {
+      return object == null ? undefined : object[key];
+    };
+  }
+
+  /**
+   * A specialized version of `baseProperty` which supports deep paths.
+   *
+   * @private
+   * @param {Array|string} path The path of the property to get.
+   * @returns {Function} Returns the new accessor function.
+   */
+  function basePropertyDeep(path) {
+    return function(object) {
+      return baseGet(object, path);
+    };
+  }
+
+  /**
+   * Creates a function that returns the value at `path` of a given object.
+   *
+   * @static
+   * @memberOf _
+   * @since 2.4.0
+   * @category Util
+   * @param {Array|string} path The path of the property to get.
+   * @returns {Function} Returns the new accessor function.
+   * @example
+   *
+   * var objects = [
+   *   { 'a': { 'b': 2 } },
+   *   { 'a': { 'b': 1 } }
+   * ];
+   *
+   * _.map(objects, _.property('a.b'));
+   * // => [2, 1]
+   *
+   * _.map(_.sortBy(objects, _.property(['a', 'b'])), 'a.b');
+   * // => [1, 2]
+   */
+  function property(path) {
+    return isKey(path) ? baseProperty(toKey(path)) : basePropertyDeep(path);
+  }
+
+  /**
+   * The base implementation of `_.iteratee`.
+   *
+   * @private
+   * @param {*} [value=_.identity] The value to convert to an iteratee.
+   * @returns {Function} Returns the iteratee.
+   */
+  function baseIteratee(value) {
+    // Don't store the `typeof` result in a variable to avoid a JIT bug in Safari 9.
+    // See https://bugs.webkit.org/show_bug.cgi?id=156034 for more details.
+    if (typeof value == 'function') {
+      return value;
+    }
+    if (value == null) {
+      return identity;
+    }
+    if (typeof value == 'object') {
+      return isArray(value)
+        ? baseMatchesProperty(value[0], value[1])
+        : baseMatches(value);
+    }
+    return property(value);
+  }
+
+  /**
+   * Creates a base function for methods like `_.forIn` and `_.forOwn`.
+   *
+   * @private
+   * @param {boolean} [fromRight] Specify iterating from right to left.
+   * @returns {Function} Returns the new base function.
+   */
+  function createBaseFor(fromRight) {
+    return function(object, iteratee, keysFunc) {
+      var index = -1,
+          iterable = Object(object),
+          props = keysFunc(object),
+          length = props.length;
+
+      while (length--) {
+        var key = props[fromRight ? length : ++index];
+        if (iteratee(iterable[key], key, iterable) === false) {
+          break;
+        }
+      }
+      return object;
+    };
+  }
+
+  /**
+   * The base implementation of `baseForOwn` which iterates over `object`
+   * properties returned by `keysFunc` and invokes `iteratee` for each property.
+   * Iteratee functions may exit iteration early by explicitly returning `false`.
+   *
+   * @private
+   * @param {Object} object The object to iterate over.
+   * @param {Function} iteratee The function invoked per iteration.
+   * @param {Function} keysFunc The function to get the keys of `object`.
+   * @returns {Object} Returns `object`.
+   */
+  var baseFor = createBaseFor();
+
+  /**
+   * This function is like `assignValue` except that it doesn't assign
+   * `undefined` values.
+   *
+   * @private
+   * @param {Object} object The object to modify.
+   * @param {string} key The key of the property to assign.
+   * @param {*} value The value to assign.
+   */
+  function assignMergeValue(object, key, value) {
+    if ((value !== undefined && !eq(object[key], value)) ||
+        (value === undefined && !(key in object))) {
+      baseAssignValue(object, key, value);
+    }
+  }
+
+  /**
+   * This method is like `_.isArrayLike` except that it also checks if `value`
+   * is an object.
+   *
+   * @static
+   * @memberOf _
+   * @since 4.0.0
+   * @category Lang
+   * @param {*} value The value to check.
+   * @returns {boolean} Returns `true` if `value` is an array-like object,
+   *  else `false`.
+   * @example
+   *
+   * _.isArrayLikeObject([1, 2, 3]);
+   * // => true
+   *
+   * _.isArrayLikeObject(document.body.children);
+   * // => true
+   *
+   * _.isArrayLikeObject('abc');
+   * // => false
+   *
+   * _.isArrayLikeObject(_.noop);
+   * // => false
+   */
+  function isArrayLikeObject(value) {
+    return isObjectLike(value) && isArrayLike(value);
+  }
+
+  /**
+   * Gets the value at `key`, unless `key` is "__proto__" or "constructor".
+   *
+   * @private
+   * @param {Object} object The object to query.
+   * @param {string} key The key of the property to get.
+   * @returns {*} Returns the property value.
+   */
+  function safeGet(object, key) {
+    if (key === 'constructor' && typeof object[key] === 'function') {
+      return;
+    }
+
+    if (key == '__proto__') {
+      return;
+    }
+
+    return object[key];
+  }
+
+  /**
+   * Converts `value` to a plain object flattening inherited enumerable string
+   * keyed properties of `value` to own properties of the plain object.
+   *
+   * @static
+   * @memberOf _
+   * @since 3.0.0
+   * @category Lang
+   * @param {*} value The value to convert.
+   * @returns {Object} Returns the converted plain object.
+   * @example
+   *
+   * function Foo() {
+   *   this.b = 2;
+   * }
+   *
+   * Foo.prototype.c = 3;
+   *
+   * _.assign({ 'a': 1 }, new Foo);
+   * // => { 'a': 1, 'b': 2 }
+   *
+   * _.assign({ 'a': 1 }, _.toPlainObject(new Foo));
+   * // => { 'a': 1, 'b': 2, 'c': 3 }
+   */
+  function toPlainObject(value) {
+    return copyObject(value, keysIn(value));
+  }
+
+  /**
+   * A specialized version of `baseMerge` for arrays and objects which performs
+   * deep merges and tracks traversed objects enabling objects with circular
+   * references to be merged.
+   *
+   * @private
+   * @param {Object} object The destination object.
+   * @param {Object} source The source object.
+   * @param {string} key The key of the value to merge.
+   * @param {number} srcIndex The index of `source`.
+   * @param {Function} mergeFunc The function to merge values.
+   * @param {Function} [customizer] The function to customize assigned values.
+   * @param {Object} [stack] Tracks traversed source values and their merged
+   *  counterparts.
+   */
+  function baseMergeDeep(object, source, key, srcIndex, mergeFunc, customizer, stack) {
+    var objValue = safeGet(object, key),
+        srcValue = safeGet(source, key),
+        stacked = stack.get(srcValue);
+
+    if (stacked) {
+      assignMergeValue(object, key, stacked);
+      return;
+    }
+    var newValue = customizer
+      ? customizer(objValue, srcValue, (key + ''), object, source, stack)
+      : undefined;
+
+    var isCommon = newValue === undefined;
+
+    if (isCommon) {
+      var isArr = isArray(srcValue),
+          isBuff = !isArr && isBuffer(srcValue),
+          isTyped = !isArr && !isBuff && isTypedArray(srcValue);
+
+      newValue = srcValue;
+      if (isArr || isBuff || isTyped) {
+        if (isArray(objValue)) {
+          newValue = objValue;
+        }
+        else if (isArrayLikeObject(objValue)) {
+          newValue = copyArray(objValue);
+        }
+        else if (isBuff) {
+          isCommon = false;
+          newValue = cloneBuffer(srcValue, true);
+        }
+        else if (isTyped) {
+          isCommon = false;
+          newValue = cloneTypedArray(srcValue, true);
+        }
+        else {
+          newValue = [];
+        }
+      }
+      else if (isPlainObject(srcValue) || isArguments(srcValue)) {
+        newValue = objValue;
+        if (isArguments(objValue)) {
+          newValue = toPlainObject(objValue);
+        }
+        else if (!isObject(objValue) || isFunction(objValue)) {
+          newValue = initCloneObject(srcValue);
+        }
+      }
+      else {
+        isCommon = false;
+      }
+    }
+    if (isCommon) {
+      // Recursively merge objects and arrays (susceptible to call stack limits).
+      stack.set(srcValue, newValue);
+      mergeFunc(newValue, srcValue, srcIndex, customizer, stack);
+      stack['delete'](srcValue);
+    }
+    assignMergeValue(object, key, newValue);
+  }
+
+  /**
+   * The base implementation of `_.merge` without support for multiple sources.
+   *
+   * @private
+   * @param {Object} object The destination object.
+   * @param {Object} source The source object.
+   * @param {number} srcIndex The index of `source`.
+   * @param {Function} [customizer] The function to customize merged values.
+   * @param {Object} [stack] Tracks traversed source values and their merged
+   *  counterparts.
+   */
+  function baseMerge(object, source, srcIndex, customizer, stack) {
+    if (object === source) {
+      return;
+    }
+    baseFor(source, function(srcValue, key) {
+      stack || (stack = new Stack);
+      if (isObject(srcValue)) {
+        baseMergeDeep(object, source, key, srcIndex, baseMerge, customizer, stack);
+      }
+      else {
+        var newValue = customizer
+          ? customizer(safeGet(object, key), srcValue, (key + ''), object, source, stack)
+          : undefined;
+
+        if (newValue === undefined) {
+          newValue = srcValue;
+        }
+        assignMergeValue(object, key, newValue);
+      }
+    }, keysIn);
+  }
+
+  /**
+   * Creates a `_.find` or `_.findLast` function.
+   *
+   * @private
+   * @param {Function} findIndexFunc The function to find the collection index.
+   * @returns {Function} Returns the new find function.
+   */
+  function createFind(findIndexFunc) {
+    return function(collection, predicate, fromIndex) {
+      var iterable = Object(collection);
+      if (!isArrayLike(collection)) {
+        var iteratee = baseIteratee(predicate);
+        collection = keys(collection);
+        predicate = function(key) { return iteratee(iterable[key], key, iterable); };
+      }
+      var index = findIndexFunc(collection, predicate, fromIndex);
+      return index > -1 ? iterable[iteratee ? collection[index] : index] : undefined;
+    };
+  }
+
+  /* Built-in method references for those with the same name as other `lodash` methods. */
+  var nativeMax$1 = Math.max;
+
+  /**
+   * This method is like `_.find` except that it returns the index of the first
+   * element `predicate` returns truthy for instead of the element itself.
+   *
+   * @static
+   * @memberOf _
+   * @since 1.1.0
+   * @category Array
+   * @param {Array} array The array to inspect.
+   * @param {Function} [predicate=_.identity] The function invoked per iteration.
+   * @param {number} [fromIndex=0] The index to search from.
+   * @returns {number} Returns the index of the found element, else `-1`.
+   * @example
+   *
+   * var users = [
+   *   { 'user': 'barney',  'active': false },
+   *   { 'user': 'fred',    'active': false },
+   *   { 'user': 'pebbles', 'active': true }
+   * ];
+   *
+   * _.findIndex(users, function(o) { return o.user == 'barney'; });
+   * // => 0
+   *
+   * // The `_.matches` iteratee shorthand.
+   * _.findIndex(users, { 'user': 'fred', 'active': false });
+   * // => 1
+   *
+   * // The `_.matchesProperty` iteratee shorthand.
+   * _.findIndex(users, ['active', false]);
+   * // => 0
+   *
+   * // The `_.property` iteratee shorthand.
+   * _.findIndex(users, 'active');
+   * // => 2
+   */
+  function findIndex(array, predicate, fromIndex) {
+    var length = array == null ? 0 : array.length;
+    if (!length) {
+      return -1;
+    }
+    var index = fromIndex == null ? 0 : toInteger(fromIndex);
+    if (index < 0) {
+      index = nativeMax$1(length + index, 0);
+    }
+    return baseFindIndex(array, baseIteratee(predicate), index);
+  }
+
+  /**
+   * Iterates over elements of `collection`, returning the first element
+   * `predicate` returns truthy for. The predicate is invoked with three
+   * arguments: (value, index|key, collection).
+   *
+   * @static
+   * @memberOf _
+   * @since 0.1.0
+   * @category Collection
+   * @param {Array|Object} collection The collection to inspect.
+   * @param {Function} [predicate=_.identity] The function invoked per iteration.
+   * @param {number} [fromIndex=0] The index to search from.
+   * @returns {*} Returns the matched element, else `undefined`.
+   * @example
+   *
+   * var users = [
+   *   { 'user': 'barney',  'age': 36, 'active': true },
+   *   { 'user': 'fred',    'age': 40, 'active': false },
+   *   { 'user': 'pebbles', 'age': 1,  'active': true }
+   * ];
+   *
+   * _.find(users, function(o) { return o.age < 40; });
+   * // => object for 'barney'
+   *
+   * // The `_.matches` iteratee shorthand.
+   * _.find(users, { 'age': 1, 'active': true });
+   * // => object for 'pebbles'
+   *
+   * // The `_.matchesProperty` iteratee shorthand.
+   * _.find(users, ['active', false]);
+   * // => object for 'fred'
+   *
+   * // The `_.property` iteratee shorthand.
+   * _.find(users, 'active');
+   * // => object for 'barney'
+   */
+  var find = createFind(findIndex);
+
+  /**
+   * The base implementation of `_.gt` which doesn't coerce arguments.
+   *
+   * @private
+   * @param {*} value The value to compare.
+   * @param {*} other The other value to compare.
+   * @returns {boolean} Returns `true` if `value` is greater than `other`,
+   *  else `false`.
+   */
+  function baseGt(value, other) {
+    return value > other;
+  }
+
+  /**
+   * The base implementation of `_.lt` which doesn't coerce arguments.
+   *
+   * @private
+   * @param {*} value The value to compare.
+   * @param {*} other The other value to compare.
+   * @returns {boolean} Returns `true` if `value` is less than `other`,
+   *  else `false`.
+   */
+  function baseLt(value, other) {
+    return value < other;
+  }
+
+  /**
+   * The base implementation of methods like `_.max` and `_.min` which accepts a
+   * `comparator` to determine the extremum value.
+   *
+   * @private
+   * @param {Array} array The array to iterate over.
+   * @param {Function} iteratee The iteratee invoked per iteration.
+   * @param {Function} comparator The comparator used to compare values.
+   * @returns {*} Returns the extremum value.
+   */
+  function baseExtremum(array, iteratee, comparator) {
+    var index = -1,
+        length = array.length;
+
+    while (++index < length) {
+      var value = array[index],
+          current = iteratee(value);
+
+      if (current != null && (computed === undefined
+            ? (current === current && !isSymbol(current))
+            : comparator(current, computed)
+          )) {
+        var computed = current,
+            result = value;
+      }
+    }
+    return result;
+  }
+
+  /**
+   * Computes the maximum value of `array`. If `array` is empty or falsey,
+   * `undefined` is returned.
+   *
+   * @static
+   * @since 0.1.0
+   * @memberOf _
+   * @category Math
+   * @param {Array} array The array to iterate over.
+   * @returns {*} Returns the maximum value.
+   * @example
+   *
+   * _.max([4, 2, 8, 6]);
+   * // => 8
+   *
+   * _.max([]);
+   * // => undefined
+   */
+  function max(array) {
+    return (array && array.length)
+      ? baseExtremum(array, identity, baseGt)
+      : undefined;
+  }
+
+  /**
+   * The base implementation of `_.sum` and `_.sumBy` without support for
+   * iteratee shorthands.
+   *
+   * @private
+   * @param {Array} array The array to iterate over.
+   * @param {Function} iteratee The function invoked per iteration.
+   * @returns {number} Returns the sum.
+   */
+  function baseSum(array, iteratee) {
+    var result,
+        index = -1,
+        length = array.length;
+
+    while (++index < length) {
+      var current = iteratee(array[index]);
+      if (current !== undefined) {
+        result = result === undefined ? current : (result + current);
+      }
+    }
+    return result;
+  }
+
+  /** Used as references for various `Number` constants. */
+  var NAN$1 = 0 / 0;
+
+  /**
+   * The base implementation of `_.mean` and `_.meanBy` without support for
+   * iteratee shorthands.
+   *
+   * @private
+   * @param {Array} array The array to iterate over.
+   * @param {Function} iteratee The function invoked per iteration.
+   * @returns {number} Returns the mean.
+   */
+  function baseMean(array, iteratee) {
+    var length = array == null ? 0 : array.length;
+    return length ? (baseSum(array, iteratee) / length) : NAN$1;
+  }
+
+  /**
+   * Computes the mean of the values in `array`.
+   *
+   * @static
+   * @memberOf _
+   * @since 4.0.0
+   * @category Math
+   * @param {Array} array The array to iterate over.
+   * @returns {number} Returns the mean.
+   * @example
+   *
+   * _.mean([4, 2, 8, 6]);
+   * // => 5
+   */
+  function mean(array) {
+    return baseMean(array, identity);
+  }
+
+  /**
+   * This method is like `_.assign` except that it recursively merges own and
+   * inherited enumerable string keyed properties of source objects into the
+   * destination object. Source properties that resolve to `undefined` are
+   * skipped if a destination value exists. Array and plain object properties
+   * are merged recursively. Other objects and value types are overridden by
+   * assignment. Source objects are applied from left to right. Subsequent
+   * sources overwrite property assignments of previous sources.
+   *
+   * **Note:** This method mutates `object`.
+   *
+   * @static
+   * @memberOf _
+   * @since 0.5.0
+   * @category Object
+   * @param {Object} object The destination object.
+   * @param {...Object} [sources] The source objects.
+   * @returns {Object} Returns `object`.
+   * @example
+   *
+   * var object = {
+   *   'a': [{ 'b': 2 }, { 'd': 4 }]
+   * };
+   *
+   * var other = {
+   *   'a': [{ 'c': 3 }, { 'e': 5 }]
+   * };
+   *
+   * _.merge(object, other);
+   * // => { 'a': [{ 'b': 2, 'c': 3 }, { 'd': 4, 'e': 5 }] }
+   */
+  var merge = createAssigner(function(object, source, srcIndex) {
+    baseMerge(object, source, srcIndex);
+  });
+
+  /**
+   * Computes the minimum value of `array`. If `array` is empty or falsey,
+   * `undefined` is returned.
+   *
+   * @static
+   * @since 0.1.0
+   * @memberOf _
+   * @category Math
+   * @param {Array} array The array to iterate over.
+   * @returns {*} Returns the minimum value.
+   * @example
+   *
+   * _.min([4, 2, 8, 6]);
+   * // => 2
+   *
+   * _.min([]);
+   * // => undefined
+   */
+  function min(array) {
+    return (array && array.length)
+      ? baseExtremum(array, identity, baseLt)
+      : undefined;
+  }
+
+  /* Built-in method references for those with the same name as other `lodash` methods. */
+  var nativeCeil = Math.ceil,
+      nativeMax$2 = Math.max;
+
+  /**
+   * The base implementation of `_.range` and `_.rangeRight` which doesn't
+   * coerce arguments.
+   *
+   * @private
+   * @param {number} start The start of the range.
+   * @param {number} end The end of the range.
+   * @param {number} step The value to increment or decrement by.
+   * @param {boolean} [fromRight] Specify iterating from right to left.
+   * @returns {Array} Returns the range of numbers.
+   */
+  function baseRange(start, end, step, fromRight) {
+    var index = -1,
+        length = nativeMax$2(nativeCeil((end - start) / (step || 1)), 0),
+        result = Array(length);
+
+    while (length--) {
+      result[fromRight ? length : ++index] = start;
+      start += step;
+    }
+    return result;
+  }
+
+  /**
+   * Creates a `_.range` or `_.rangeRight` function.
+   *
+   * @private
+   * @param {boolean} [fromRight] Specify iterating from right to left.
+   * @returns {Function} Returns the new range function.
+   */
+  function createRange(fromRight) {
+    return function(start, end, step) {
+      if (step && typeof step != 'number' && isIterateeCall(start, end, step)) {
+        end = step = undefined;
+      }
+      // Ensure the sign of `-0` is preserved.
+      start = toFinite(start);
+      if (end === undefined) {
+        end = start;
+        start = 0;
+      } else {
+        end = toFinite(end);
+      }
+      step = step === undefined ? (start < end ? 1 : -1) : toFinite(step);
+      return baseRange(start, end, step, fromRight);
+    };
+  }
+
+  /**
+   * Creates an array of numbers (positive and/or negative) progressing from
+   * `start` up to, but not including, `end`. A step of `-1` is used if a negative
+   * `start` is specified without an `end` or `step`. If `end` is not specified,
+   * it's set to `start` with `start` then set to `0`.
+   *
+   * **Note:** JavaScript follows the IEEE-754 standard for resolving
+   * floating-point values which can produce unexpected results.
+   *
+   * @static
+   * @since 0.1.0
+   * @memberOf _
+   * @category Util
+   * @param {number} [start=0] The start of the range.
+   * @param {number} end The end of the range.
+   * @param {number} [step=1] The value to increment or decrement by.
+   * @returns {Array} Returns the range of numbers.
+   * @see _.inRange, _.rangeRight
+   * @example
+   *
+   * _.range(4);
+   * // => [0, 1, 2, 3]
+   *
+   * _.range(-4);
+   * // => [0, -1, -2, -3]
+   *
+   * _.range(1, 5);
+   * // => [1, 2, 3, 4]
+   *
+   * _.range(0, 20, 5);
+   * // => [0, 5, 10, 15]
+   *
+   * _.range(0, -4, -1);
+   * // => [0, -1, -2, -3]
+   *
+   * _.range(1, 4, 0);
+   * // => [1, 1, 1]
+   *
+   * _.range(0);
+   * // => []
+   */
+  var range = createRange();
+
+  /**
+   * Computes `number` rounded to `precision`.
+   *
+   * @static
+   * @memberOf _
+   * @since 3.10.0
+   * @category Math
+   * @param {number} number The number to round.
+   * @param {number} [precision=0] The precision to round to.
+   * @returns {number} Returns the rounded number.
+   * @example
+   *
+   * _.round(4.006);
+   * // => 4
+   *
+   * _.round(4.006, 2);
+   * // => 4.01
+   *
+   * _.round(4060, -2);
+   * // => 4100
+   */
+  var round = createRound('round');
+
+  /* globals jQuery, window */
+
+  var ClimateByLocationWidget =
+  /*#__PURE__*/
+  function () {
+    /**
+     *
+     *
+     * 'county'         : selectedCounty,       // 5-character fips code for county
+     * 'frequency'    : selectedFrequency,    // time frequency of graph to display ("annual", "monthly", or "seasonal")
+     * 'timeperiod'   : selectedTimePeriod,   // time period center for monthly/seasonal graphs ("2025", "2050", or "2075"); only
+     * relevant for monthly or seasonal frequency)
+     * 'variable'     : selectedVariable,     // name of variable to display; see climate-by-location.js for list of variables
+     * 'scenario'     : selectedScenario,     // name of scenario to display: "both", "rcp45", or "rcp85"
+     * 'presentation' : selectedPresentation  // name of presentation; "absolute" or "anomaly" (only relevant for annual frequency)
+     * 'div'           :  "div#widget",         // jquery-style selector for the dom element that you want the graph to appear in
+     * 'font'          : 'Roboto',
+     * 'frequency'     :  $('#frequency').val(),    // time frequency of graph to display ("annual", "monthly", or "seasonal")
+     * 'timeperiod'    :  selectedTimePeriod,   // time period center for monthly/seasonal graphs ("2025", "2050", or "2075")
+     * 'county'          :  selectedCounty,       // 5-character fips code for county (as a string)
+     * 'state'          :  selectedState,       // 2-character abbreviation code for state (as a string)
+     * 'variable'      :  selectedVariable,     // name of variable to display; see climate-by-location.js for list of variables
+     * 'scenario'      :  selectedScenario,     // name of scenario to display; both, rcp45, or rcp85
+     * 'presentation'  :  selectedPresentation  // name of presentation; absolute or anomaly with respect to a baseline value
+     * required:
+     * state or county
+     *
+     * optional, but no default provided:
+     * font  (defaults to whatever the browser's default canvas font is)
+     *
+     * optional, with defaults provided:
+     * unitsystem        ("english")
+     * frequency         ("annual")
+     * variable          ("tmax")
+     * presentation      ("absolute")
+     * scenario          ("both")
+     * timeperiod        ("2025")
+     *
+     * @param element as jquery object, string query selector, or element object
+     * @param options
+     */
+    function ClimateByLocationWidget(element) {
+      var _this = this;
+
+      var options = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : {};
+
+      _classCallCheck(this, ClimateByLocationWidget);
+
+      this.options = merge({}, this.config_default, options);
+
+      if (typeof element === "string") {
+        element = $(this.element);
+      }
+
+      if (element instanceof $) {
+        element = element[0];
+      }
+
+      this.element = element;
+      this.$element = $(this.element);
+
+      if (!element) {
+        console.log('Climate By Location widget created with no element. Nothing will be displayed.');
+      }
+
+      this.dataurls = null;
+      this.multigraph = null;
+      this.multigraph_config = merge(this.multigraph_config_default, {
+        plots: this.plots_config.map(function (c) {
+          return c.plot_config;
+        }),
+        data: this._data_layout_config.map(function (c) {
+          return c.data_config;
+        })
+      });
+      this.$element.html("<div class='graph' style='width: 100%; height: 100%;'></div>");
+      $('.errorDisplayDetails').remove();
+      this.$graphdiv = this.$element.find('div.graph');
+      this.$graphdiv.multigraph({
+        muglString: this.multigraph_config,
+        noscroll: true
+      });
+      $(window).resize(this.resize.bind(this));
+      this.resolve_multigraph = null;
+      this.when_multigraph = new Promise(function (resolve) {
+        _this.resolve_multigraph = resolve;
+      });
+      this.$graphdiv.multigraph('done', function (multigraph) {
+        _this.multigraph = multigraph;
+
+        _this.resolve_multigraph(multigraph);
+      }.bind(this));
+      this.when_multigraph.then(function () {
+        _this.axes = {
+          x_annual: _this.multigraph.graphs().at(0).axes().at(0),
+          x_monthly: _this.multigraph.graphs().at(0).axes().at(1),
+          x_seasonal: _this.multigraph.graphs().at(0).axes().at(2),
+          y: _this.multigraph.graphs().at(0).axes().at(3)
+        };
+
+        _this.axes.x_annual.addListener('dataRangeSet', function (e) {
+          if (_this.options.xrangefunc) {
+            var _min = Math.ceil(e.min.getRealValue());
+
+            var _max = Math.floor(e.max.getRealValue());
+
+            _this.options.xrangefunc(_min, _max);
+          }
+        }.bind(_this));
+
+        _this.update();
+      });
+    }
+
+    _createClass(ClimateByLocationWidget, [{
+      key: "set_options",
+      value: function set_options(options) {
+        var old_options = Object.assign({}, this.options);
+        this.options = merge({}, old_options, options);
+
+        if (this.options.state !== old_options.state && this.options.county === old_options.county) {
+          this.options.county = null;
+        }
+
+        this._bool_options.forEach(function (option) {
+          if (typeof options[option] === "string") {
+            options[option] = options[option].toLowerCase() === "true";
+          }
+        });
+
+        if (!get(ClimateByLocationWidget, ['frequencies', this.options.frequency, 'supports_region'], function () {
+          return true;
+        })(this.get_region_value())) {
+          this.options.frequency = ClimateByLocationWidget.get_variables(this.get_region_value())[0].id;
+        }
+
+        if (!get(ClimateByLocationWidget, ['variables', this.options.variable, 'supports_region'], function () {
+          return true;
+        })(this.get_region_value())) {
+          this.options.variable = ClimateByLocationWidget.get_variables(this.options.frequency, null, this.get_region_value())[0].id;
+        }
+
+        this._update_plot_visibilities();
+
+        if (this.options.yzoom !== old_options.yzoom) {
+          this.axes.y.zoom().allowed(this.options.yzoom);
+        }
+
+        if (this.options.ypan !== old_options.ypan) {
+          this.axes.y.pan().allowed(this.options.ypan);
+        } // if font changed, set it in all the relevant places
+
+
+        if (this.options.font !== old_options.font) {
+          var i, j;
+
+          for (i = 0; i < this.multigraph.graphs().at(0).axes().size(); ++i) {
+            var axis = this.multigraph.graphs().at(0).axes().at(i);
+
+            if (axis.title()) {
+              axis.title().font("14px" + this.options.font);
+            }
+
+            for (j = 0; j < axis.labelers().size(); ++j) {
+              axis.labelers().at(j).font("12px" + this.options.font);
+            }
+          }
+        } // if frequency, state, county, or variable changed, trigger a larger update cycle (new data + plots maybe changed):
+
+
+        if (this.options.frequency !== old_options.frequency || this.options.state !== old_options.state || this.options.county !== old_options.county || this.options.presentation !== old_options.presentation || this.options.variable !== old_options.variable) {
+          this.update();
+        } else {
+          this.multigraph.render();
+        }
+
+        return this;
+      }
+    }, {
+      key: "_reset_dataurls",
+      value: function _reset_dataurls() {
+        this.dataurls = {
+          hist_obs: '',
+          hist_mod: '',
+          proj_mod: ''
+        };
+      }
+      /**
+       * Requests the widget update according to its current options. Use `set_options()` to changes options instead.
+       * @returns {Promise<void>}
+       */
+
+    }, {
+      key: "update",
+      value: function () {
+        var _update = _asyncToGenerator(
+        /*#__PURE__*/
+        regeneratorRuntime.mark(function _callee() {
+          return regeneratorRuntime.wrap(function _callee$(_context) {
+            while (1) {
+              switch (_context.prev = _context.next) {
+                case 0:
+                  if (!(!!this.options.county || !!this.options.state)) {
+                    _context.next = 14;
+                    break;
+                  }
+
+                  if (!(this.options.frequency === "annual")) {
+                    _context.next = 6;
+                    break;
+                  }
+
+                  _context.next = 4;
+                  return this._update_annual();
+
+                case 4:
+                  _context.next = 14;
+                  break;
+
+                case 6:
+                  if (!(this.options.frequency === "monthly")) {
+                    _context.next = 11;
+                    break;
+                  }
+
+                  _context.next = 9;
+                  return this._update_monthly();
+
+                case 9:
+                  _context.next = 14;
+                  break;
+
+                case 11:
+                  if (!(this.options.frequency === "seasonal")) {
+                    _context.next = 14;
+                    break;
+                  }
+
+                  _context.next = 14;
+                  return this._update_seasonal();
+
+                case 14:
+                case "end":
+                  return _context.stop();
+              }
+            }
+          }, _callee, this);
+        }));
+
+        function update() {
+          return _update.apply(this, arguments);
+        }
+
+        return update;
+      }()
+    }, {
+      key: "_update_annual",
+      value: function () {
+        var _update_annual2 = _asyncToGenerator(
+        /*#__PURE__*/
+        regeneratorRuntime.mark(function _callee2() {
+          var _this2 = this;
+
+          return regeneratorRuntime.wrap(function _callee2$(_context2) {
+            while (1) {
+              switch (_context2.prev = _context2.next) {
+                case 0:
+                  this.axes.x_annual.visible(true);
+                  this.axes.x_monthly.visible(false);
+                  this.axes.x_seasonal.visible(false);
+                  this.hide_all_plots();
+
+                  this._reset_dataurls();
+
+                  this._show_spinner();
+
+                  if (ClimateByLocationWidget.is_ak_region(this.get_region_value())) {
+                    _context2.next = 10;
+                    break;
+                  }
+
+                  return _context2.abrupt("return", Promise.all([this._get_historical_observed_livneh_data(), this._get_historical_loca_model_data(), this._get_projected_loca_model_data()]).then(function (_ref) {
+                    var _ref2 = _slicedToArray(_ref, 3),
+                        hist_obs_data = _ref2[0],
+                        hist_mod_data = _ref2[1],
+                        proj_mod_data = _ref2[2];
+
+                    _this2._hide_spinner();
+
+                    var variable_config = find(ClimateByLocationWidget.variables, function (c) {
+                      return c.id === _this2.options.variable;
+                    });
+                    var convfunc = variable_config.dataconverters[_this2.options.unitsystem];
+                    hist_obs_data = _this2._map_2d_data(hist_obs_data, convfunc);
+                    hist_mod_data = _this2._map_2d_data(hist_mod_data, convfunc);
+                    proj_mod_data = _this2._map_2d_data(proj_mod_data, convfunc);
+
+                    var avg = _this2._average(hist_obs_data, 1961, 1990);
+
+                    if (_this2.options.presentation === "anomaly") {
+                      if (_this2.options.variable === "pcpn") {
+                        hist_obs_data = _this2._percent_anomalies(hist_obs_data, avg);
+                        hist_mod_data = _this2._percent_anomalies(hist_mod_data, avg);
+                        proj_mod_data = _this2._percent_anomalies(proj_mod_data, avg);
+                      } else {
+                        hist_obs_data = _this2._anomalies(hist_obs_data, avg);
+                        hist_mod_data = _this2._anomalies(hist_mod_data, avg);
+                        proj_mod_data = _this2._anomalies(proj_mod_data, avg);
+                      }
+                    }
+
+                    var range = _this2._scale_range(_this2._datas_range([hist_obs_data, hist_mod_data, proj_mod_data]), _this2.options.yAxisRangeScaleFactor);
+
+                    _this2.axes.y.setDataRange(range.min, range.max);
+
+                    _this2.axes.y.title().content().string(variable_config.ytitles.annual[_this2.options.presentation][_this2.options.unitsystem]);
+
+                    _this2._set_data_array('annual_hist_obs', hist_obs_data);
+
+                    _this2._set_data_array('annual_hist_mod', hist_mod_data);
+
+                    _this2._set_data_array('annual_proj_mod', proj_mod_data);
+
+                    _this2._update_plot_visibilities();
+
+                    _this2._update_hist_obs_bar_plot_base(avg);
+
+                    _this2.multigraph.render();
+                  }.bind(this)));
+
+                case 10:
+                  return _context2.abrupt("return", this._update_annual_ak());
+
+                case 11:
+                case "end":
+                  return _context2.stop();
+              }
+            }
+          }, _callee2, this);
+        }));
+
+        function _update_annual() {
+          return _update_annual2.apply(this, arguments);
+        }
+
+        return _update_annual;
+      }()
+    }, {
+      key: "_update_seasonal",
+      value: function () {
+        var _update_seasonal2 = _asyncToGenerator(
+        /*#__PURE__*/
+        regeneratorRuntime.mark(function _callee3() {
+          var _this3 = this;
+
+          return regeneratorRuntime.wrap(function _callee3$(_context3) {
+            while (1) {
+              switch (_context3.prev = _context3.next) {
+                case 0:
+                  this.axes.x_annual.visible(false);
+                  this.axes.x_monthly.visible(false);
+                  this.axes.x_seasonal.visible(true);
+                  this.hide_all_plots();
+
+                  this._reset_dataurls();
+
+                  this._show_spinner();
+
+                  return _context3.abrupt("return", Promise.all([this._get_historical_observed_livneh_data(), this._get_projected_loca_model_data()]).then(function (_ref3) {
+                    var _ref4 = _slicedToArray(_ref3, 2),
+                        hist_obs_data = _ref4[0],
+                        proj_mod_data = _ref4[1];
+
+                    _this3._hide_spinner(); // The incoming data has month values 1,4,7,10.  Here we replace these with the values 0,1,2,3:
+
+
+                    hist_obs_data.forEach(function (v) {
+                      v[0] = Math.floor(v[0] / 3);
+                    });
+                    proj_mod_data.forEach(function (v) {
+                      v[0] = Math.floor(v[0] / 3);
+                    });
+                    var variable_config = find(ClimateByLocationWidget.variables, function (c) {
+                      return c.id === _this3.options.variable;
+                    });
+                    var convfunc = variable_config.dataconverters[_this3.options.unitsystem];
+                    hist_obs_data = _this3._map_2d_data(hist_obs_data, convfunc);
+                    proj_mod_data = _this3._map_2d_data(proj_mod_data, convfunc);
+
+                    var range = _this3._scale_range(_this3._datas_range([hist_obs_data, proj_mod_data]), _this3.options.yAxisRangeScaleFactor);
+
+                    _this3.axes.y.setDataRange(range.min, range.max);
+
+                    _this3.axes.y.title().content().string(variable_config.ytitles.seasonal[_this3.options.unitsystem]);
+
+                    _this3._set_data_array('seasonal_hist_obs', hist_obs_data);
+
+                    _this3._set_data_array('seasonal_proj_mod', proj_mod_data);
+
+                    _this3._update_plot_visibilities();
+
+                    _this3.multigraph.render();
+                  }.bind(this)));
+
+                case 7:
+                case "end":
+                  return _context3.stop();
+              }
+            }
+          }, _callee3, this);
+        }));
+
+        function _update_seasonal() {
+          return _update_seasonal2.apply(this, arguments);
+        }
+
+        return _update_seasonal;
+      }()
+    }, {
+      key: "_update_monthly",
+      value: function () {
+        var _update_monthly2 = _asyncToGenerator(
+        /*#__PURE__*/
+        regeneratorRuntime.mark(function _callee4() {
+          var _this4 = this;
+
+          return regeneratorRuntime.wrap(function _callee4$(_context4) {
+            while (1) {
+              switch (_context4.prev = _context4.next) {
+                case 0:
+                  this.axes.x_annual.visible(false);
+                  this.axes.x_monthly.visible(true);
+                  this.axes.x_seasonal.visible(false);
+                  this.hide_all_plots();
+
+                  this._reset_dataurls();
+
+                  this._show_spinner();
+
+                  return _context4.abrupt("return", Promise.all([this._get_historical_observed_livneh_data(), this._get_projected_loca_model_data()]).then(function (_ref5) {
+                    var _ref6 = _slicedToArray(_ref5, 2),
+                        hist_obs_data = _ref6[0],
+                        proj_mod_data = _ref6[1];
+
+                    _this4._hide_spinner();
+
+                    var variable_config = find(ClimateByLocationWidget.variables, function (c) {
+                      return c.id === _this4.options.variable;
+                    });
+                    var convfunc = variable_config.dataconverters[_this4.options.unitsystem];
+                    hist_obs_data = _this4._map_2d_data(hist_obs_data, convfunc);
+                    proj_mod_data = _this4._map_2d_data(proj_mod_data, convfunc);
+
+                    var range = _this4._scale_range(_this4._datas_range([hist_obs_data, proj_mod_data]), _this4.options.yAxisRangeScaleFactor);
+
+                    _this4.axes.y.setDataRange(range.min, range.max);
+
+                    _this4.axes.y.title().content().string(variable_config.ytitles.monthly[_this4.options.unitsystem]);
+
+                    _this4._set_data_array('monthly_hist_obs', hist_obs_data);
+
+                    _this4._set_data_array('monthly_proj_mod', proj_mod_data);
+
+                    _this4._update_plot_visibilities();
+
+                    _this4.multigraph.render();
+                  }.bind(this)));
+
+                case 7:
+                case "end":
+                  return _context4.stop();
+              }
+            }
+          }, _callee4, this);
+        }));
+
+        function _update_monthly() {
+          return _update_monthly2.apply(this, arguments);
+        }
+
+        return _update_monthly;
+      }()
+    }, {
+      key: "_update_annual_ak",
+      value: function () {
+        var _update_annual_ak2 = _asyncToGenerator(
+        /*#__PURE__*/
+        regeneratorRuntime.mark(function _callee5() {
+          var _this5 = this;
+
+          var hist_sdate, hist_edate, hist_sdate_year, hist_edate_year, mod_edate_year;
+          return regeneratorRuntime.wrap(function _callee5$(_context5) {
+            while (1) {
+              switch (_context5.prev = _context5.next) {
+                case 0:
+                  // get data for GFDL-CM3 and NCAR-CCSM4
+                  hist_sdate = '1970-01-01';
+                  hist_edate = '2005-12-31';
+                  hist_sdate_year = parseInt(String(hist_sdate).slice(0, 4));
+                  hist_edate_year = parseInt(String(hist_edate).slice(0, 4));
+                  mod_edate_year = parseInt(String(this._model_edate).slice(0, 4));
+                  return _context5.abrupt("return", Promise.all([this._fetch_acis_data('snap:GFDL-CM3:rcp85', hist_sdate_year, mod_edate_year), this._fetch_acis_data('snap:NCAR-CCSM4:rcp85', hist_sdate_year, mod_edate_year)]).then(function (_ref7) {
+                    var _ref8 = _slicedToArray(_ref7, 2),
+                        gfdl_cm3_rcp85 = _ref8[0],
+                        ncar_ccsm4_rcp85 = _ref8[1];
+
+                    // split into hist mod vs proj mod
+                    var hist_mod_data = [];
+                    var proj_mod_data = [];
+
+                    function _rolling_window_average(collection, year) {
+                      var window_size = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : 10;
+                      return mean(range(window_size).map(function (x) {
+                        return get(collection, year - x);
+                      }).filter(function (y) {
+                        return !!y;
+                      }));
+                    }
+
+                    for (var key = hist_sdate_year; key <= hist_edate_year; key++) {
+                      //year,gfdl_cm3_rcp85, gfdl_cm3_rcp45, ncar_ccsm4_rcp85, ncar_ccsm4_rcp45
+                      var y = [_rolling_window_average(gfdl_cm3_rcp85, key), _rolling_window_average(ncar_ccsm4_rcp85, key)];
+                      hist_mod_data.push([key, min(y), max(y)]);
+                    }
+
+                    var proj_edate_year = parseInt(String(_this5._model_edate).slice(0, 4));
+
+                    for (var _key = hist_edate_year + 1; _key <= mod_edate_year; _key++) {
+                      //year,gfdl_cm3_rcp85, gfdl_cm3_rcp45, ncar_ccsm4_rcp85, ncar_ccsm4_rcp45
+                      var _y = [_rolling_window_average(gfdl_cm3_rcp85, _key), _rolling_window_average(ncar_ccsm4_rcp85, _key)];
+                      proj_mod_data.push([_key, min(_y), null, max(_y), null]);
+                    }
+
+                    hist_mod_data = _this5._round_2d_values(hist_mod_data, 1);
+                    proj_mod_data = _this5._round_2d_values(proj_mod_data, 1); // Sort by index before returning
+
+                    hist_mod_data.sort(function (a, b) {
+                      return (a[0] > b[0]) - (a[0] < b[0]);
+                    });
+                    proj_mod_data.sort(function (a, b) {
+                      return (a[0] > b[0]) - (a[0] < b[0]);
+                    });
+                    _this5.dataurls.hist_mod = _this5._format_export_data(['year', 'gfdl_cm3_rcp85', 'ncar_ccsm4_rcp85'], hist_mod_data);
+                    _this5.dataurls.proj_mod = _this5._format_export_data(['year', 'gfdl_cm3_rcp85', 'ncar_ccsm4_rcp85'], proj_mod_data);
+
+                    _this5._hide_spinner();
+
+                    var variable_config = find(ClimateByLocationWidget.variables, function (c) {
+                      return c.id === _this5.options.variable;
+                    });
+                    var convfunc = variable_config.dataconverters[_this5.options.unitsystem];
+                    hist_mod_data = _this5._map_2d_data(hist_mod_data, convfunc);
+                    proj_mod_data = _this5._map_2d_data(proj_mod_data, convfunc);
+
+                    var range$1 = _this5._scale_range(_this5._datas_range([hist_mod_data, proj_mod_data]), _this5.options.yAxisRangeScaleFactor);
+
+                    _this5.axes.y.setDataRange(range$1.min, range$1.max);
+
+                    _this5.axes.y.title().content().string(variable_config.ytitles.annual[_this5.options.presentation][_this5.options.unitsystem]);
+
+                    _this5._set_data_array('annual_hist_mod_ak', hist_mod_data);
+
+                    _this5._set_data_array('annual_proj_mod_ak', proj_mod_data);
+
+                    _this5._update_plot_visibilities();
+
+                    _this5.multigraph.render();
+                  }));
+
+                case 6:
+                case "end":
+                  return _context5.stop();
+              }
+            }
+          }, _callee5, this);
+        }));
+
+        function _update_annual_ak() {
+          return _update_annual_ak2.apply(this, arguments);
+        }
+
+        return _update_annual_ak;
+      }()
+    }, {
+      key: "_update_hist_obs_bar_plot_base",
+      value: function _update_hist_obs_bar_plot_base(avg) {
+        {
+          // Set the base level for the annual hist_obs bar plot --- this is the y-level
+          // at which the bars are based ("barbase" plot option), as well as the level
+          // that determines the colors of the bars ("min"/"max" property of the "fillcolor"
+          // option -- above this level is red, below it is green).
+          var ref = avg;
+
+          if (this.options.presentation === "anomaly") {
+            if (this.options.variable === "pcpn") {
+              ref = 100;
+            } else {
+              ref = 0;
+            }
+          }
+
+          var number_val = new window.multigraph.core.NumberValue(ref);
+          var plot = this.find_plot_instance(null, 'annual', 'hist_obs');
+
+          if (!plot) {
+            return;
+          }
+
+          plot.renderer().options().barbase().at(0).value(number_val);
+          var j;
+
+          for (j = 1; j < plot.renderer().options().fillcolor().size(); ++j) {
+            if (plot.renderer().options().fillcolor().at(j).min()) {
+              plot.renderer().options().fillcolor().at(j).min(number_val);
+            }
+
+            if (plot.renderer().options().fillcolor().at(j).max()) {
+              plot.renderer().options().fillcolor().at(j).max(number_val);
+            }
+          }
+        }
+      }
+      /**
+       * Updates the data that multigraph has for a given dataset
+       * @param id the alias for the dataset
+       * @param data the new data
+       * @private
+       */
+
+    }, {
+      key: "_set_data_array",
+      value: function _set_data_array(id, data) {
+        // The following function takes a jermaine attr_list instance and returns
+        // a plain JS array containing all its values
+        function attr_list_array(attr_list) {
+          var a = [],
+              i;
+
+          for (i = 0; i < attr_list.size(); ++i) {
+            a.push(attr_list.at(i));
+          }
+
+          return a;
+        } // find the data object
+
+
+        var data_obj = this.multigraph.graphs().at(0).data().at(find(this._data_layout_config, function (c) {
+          return c.id === id;
+        }).data_config_idx); // conform shape and set new data
+
+        data_obj.array(window.multigraph.core.ArrayData.stringArrayToDataValuesArray(attr_list_array(data_obj.columns()), data));
+      }
+    }, {
+      key: "find_plot_config",
+      value: function find_plot_config() {
+        var frequency = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : null;
+        var regime = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : null;
+        var stat = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : null;
+        var scenario = arguments.length > 3 && arguments[3] !== undefined ? arguments[3] : null;
+        var timeperiod = arguments.length > 4 && arguments[4] !== undefined ? arguments[4] : null;
+        return find(this.plots_config, function (plot_config) {
+          return frequency === plot_config.frequency && regime === plot_config.regime && stat === plot_config.stat && scenario === plot_config.scenario && timeperiod === plot_config.timeperiod;
+        });
+      }
+    }, {
+      key: "find_plot_instance",
+      value: function find_plot_instance() {
+        var plot_index = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : null;
+        var frequency = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : null;
+        var regime = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : null;
+        var stat = arguments.length > 3 && arguments[3] !== undefined ? arguments[3] : null;
+        var scenario = arguments.length > 4 && arguments[4] !== undefined ? arguments[4] : null;
+        var timeperiod = arguments.length > 5 && arguments[5] !== undefined ? arguments[5] : null;
+
+        if (plot_index !== null) {
+          try {
+            return this.multigraph.graphs().at(0).plots().at(plot_index);
+          } catch (e) {
+            return null;
+          }
+        }
+
+        try {
+          return this.multigraph.graphs().at(0).plots().at(get(this.find_plot_config(frequency, regime, stat, scenario, timeperiod), 'plot_index'));
+        } catch (e) {
+          return null;
+        }
+      }
+      /**
+       * Hides all plots in the graph
+       */
+
+    }, {
+      key: "hide_all_plots",
+      value: function hide_all_plots() {
+        var _this6 = this;
+
+        this.plots_config.forEach(function (plot_config) {
+          var plot = _this6.find_plot_instance(plot_config.plot_index);
+
+          if (!!plot) {
+            plot.visible(false);
+          }
+        });
+      }
+    }, {
+      key: "_update_plot_visibilities",
+      value: function _update_plot_visibilities() {
+        var _this7 = this;
+
+        var is_plot_visible = function is_plot_visible(plot_config) {
+          if (_this7.options.frequency !== plot_config.frequency) {
+            return false;
+          }
+
+          if (plot_config.frequency === "annual") {
+            // don't show ak plots for non-ak and don't show non-ak plots for ak.
+            if (ClimateByLocationWidget.is_ak_region(_this7.get_region_value()) ? plot_config.region !== "ak" : plot_config.region === "ak") {
+              return false;
+            }
+
+            if (plot_config.regime === "hist_obs") {
+              return _this7.options.histobs;
+            }
+
+            if (plot_config.regime === "hist_mod") {
+              if (plot_config.stat === "med") {
+                return _this7.options.histmod && _this7.options.hmedian;
+              } else {
+                if (_this7.options.hrange !== plot_config.stat && _this7.options.hrange !== "both") {
+                  return false;
+                }
+
+                return _this7.options.histmod;
+              }
+            } // frequency==="annual" && regime==="proj_mod":
+
+
+            if (_this7.options.scenario !== plot_config.scenario && _this7.options.scenario !== "both") {
+              return false;
+            }
+
+            if (plot_config.stat === "med") {
+              return _this7.options.pmedian;
+            }
+
+            return !(_this7.options.prange !== plot_config.stat && _this7.options.prange !== "both");
+          } else {
+            if (plot_config.regime === "hist_obs") {
+              return _this7.options.histobs;
+            }
+
+            if (plot_config.regime === "hist_mod") {
+              return false;
+            }
+
+            if (_this7.options.timeperiod !== plot_config.timeperiod) {
+              return false;
+            }
+
+            if (_this7.options.scenario !== plot_config.scenario && _this7.options.scenario !== "both") {
+              return false;
+            }
+
+            if (plot_config.stat === "med") {
+              return _this7.options.pmedian;
+            }
+
+            return !(_this7.options.prange !== plot_config.stat && _this7.options.prange !== "both");
+          }
+        };
+
+        this.plots_config.forEach(function (plot_config) {
+          var plot = _this7.find_plot_instance(plot_config.plot_index);
+
+          if (!!plot) {
+            plot.visible(is_plot_visible(plot_config));
+          }
+        });
+      }
+    }, {
+      key: "_get_region_reduction",
+      value: function _get_region_reduction() {
+        if (this.options.county) {
+          return {
+            'area_reduce': 'county_mean'
+          };
+        }
+
+        if (this.options.state) {
+          return {
+            'area_reduce': 'state_mean'
+          };
+        }
+      }
+      /**
+       * Gets the county or state that is currently selected.
+       */
+
+    }, {
+      key: "get_region_value",
+      value: function get_region_value() {
+        return this.options.county || this.options.state || null;
+      }
+    }, {
+      key: "_get_region_parameters",
+      value: function _get_region_parameters() {
+        if (this.options.county) {
+          return {
+            "county": this.options.county
+          };
+        }
+
+        if (this.options.state) {
+          return {
+            "state": this.options.state
+          };
+        } else {
+          throw new Error('county/state not valid');
+        }
+      }
+    }, {
+      key: "_map_2d_data",
+      value: function _map_2d_data(data, f) {
+        // Takes a 2D data array, and modifies it in-place by replacing each y value
+        // with the result of passing that y value to the function f.  The "y" values
+        // consist of all values on every row EXCEPT for the 1st column.
+        var i, j;
+
+        for (i = 0; i < data.length; ++i) {
+          for (j = 1; j < data[i].length; ++j) {
+            data[i][j] = f(data[i][j]);
+          }
+        }
+
+        return data;
+      }
+    }, {
+      key: "_datas_range",
+      value: function _datas_range(datas) {
+        // Takes an array of data arrays, and returns a JS object giving the min and max
+        // values present in all the data.  Each element of the incoming datas array
+        // is a 2D array whose first column is an x value, and all the remaining columns
+        // are "y" columns.  This function returns the min and max of all the y column
+        // in all the data arrays.
+        var min = datas[0][0][1];
+        var max = datas[0][0][1];
+        datas.forEach(function (data) {
+          data.forEach(function (row) {
+            row.slice(1).forEach(function (value) {
+              if (value === null) {
+                return;
+              }
+
+              if (value < min) {
+                min = value;
+              }
+
+              if (value > max) {
+                max = value;
+              }
+            });
+          });
+        });
+        return {
+          min: min,
+          max: max
+        };
+      }
+    }, {
+      key: "_scale_range",
+      value: function _scale_range(range, factor) {
+        // Take an object of the form returned by _datas_range() above, and scale its
+        // min and max values by a factor, returning a new object of the same form.
+        var r = (range.max - range.min) / 2;
+        var c = (range.max + range.min) / 2;
+        return {
+          min: c - r * factor,
+          max: c + r * factor
+        };
+      }
+    }, {
+      key: "_get_historical_observed_livneh_data",
+      value: function () {
+        var _get_historical_observed_livneh_data2 = _asyncToGenerator(
+        /*#__PURE__*/
+        regeneratorRuntime.mark(function _callee6() {
+          var _this8 = this;
+
+          var freq, variableConfig, elems;
+          return regeneratorRuntime.wrap(function _callee6$(_context6) {
+            while (1) {
+              switch (_context6.prev = _context6.next) {
+                case 0:
+                  freq = this.options.frequency === 'annual' ? 'annual' : 'monthly';
+                  variableConfig = find(ClimateByLocationWidget.variables, function (c) {
+                    return c.id === _this8.options.variable;
+                  });
+                  elems = [$.extend(variableConfig['acis_elements'][freq], this._get_region_reduction())];
+                  return _context6.abrupt("return", $.ajax({
+                    url: this.options.data_api_endpoint,
+                    type: "POST",
+                    contentType: "application/json; charset=utf-8",
+                    dataType: "json",
+                    timeout: 60000,
+                    data: JSON.stringify($.extend({
+                      "sdate": "1950-01-01",
+                      "edate": "2013-12-31",
+                      // "edate": (String(new Date().getFullYear() - 1)),
+                      "grid": 'livneh',
+                      "elems": elems
+                    }, this._get_region_parameters()))
+                  }).then(function (response) {
+                    var data;
+
+                    if (_this8.options.frequency === 'annual') {
+                      data = [];
+                      response.data.forEach(function (record) {
+                        if (undefined !== record[1][_this8.get_region_value()] && String(record[1][_this8.get_region_value()]) !== '-999' && String(record[1][_this8.get_region_value()]) !== '') {
+                          data.push([record[0], round(record[1][_this8.get_region_value()], 1)]);
+                        }
+                      }.bind(_this8));
+                      _this8.dataurls.hist_obs = 'data:text/csv;base64,' + window.btoa('year,' + find(ClimateByLocationWidget.variables, function (c) {
+                        return c.id === _this8.options.variable;
+                      }).id + '\n' + data.join('\n'));
+                      return data;
+                    } else if (_this8.options.frequency === 'monthly' || _this8.options.frequency === 'seasonal') {
+                      //then build output of [[month(1-12), weighted mean]].
+                      data = {
+                        '01': [],
+                        '02': [],
+                        '03': [],
+                        '04': [],
+                        '05': [],
+                        '06': [],
+                        '07': [],
+                        '08': [],
+                        '09': [],
+                        '10': [],
+                        '11': [],
+                        '12': []
+                      };
+                      response.data.forEach(function (record) {
+                        if (undefined !== record[1][_this8.get_region_value()]) {
+                          data[record[0].slice(-2)].push(parseFloat(record[1][_this8.get_region_value()]));
+                        }
+                      }.bind(_this8)); //group monthly data by season
+
+                      if (_this8.options.frequency === 'seasonal') {
+                        var seasons = {
+                          "01": ["12", "01", "02"],
+                          "04": ["03", "04", "05"],
+                          "07": ["06", "07", "08"],
+                          "10": ["09", "10", "11"]
+                        };
+                        data = Object.keys(seasons).reduce(function (acc, season) {
+                          acc[season] = [].concat(data[seasons[season][0]], data[seasons[season][1]], data[seasons[season][2]]);
+                          return acc;
+                        }, {});
+                      }
+
+                      var _mean = Object.keys(data).reduce(function (acc, key) {
+                        acc[key] = round(data[key].reduce(function (a, b) {
+                          return a + b;
+                        }) / data[key].length, 1);
+                        return acc;
+                      }, {}); // let median = Object.keys(data).reduce( (acc, key) => {
+                      //   data[key].sort( (a, b) => {
+                      //     return a - b;
+                      //   });
+                      //   let half = Math.floor(data[key].length / 2);
+                      //   if (data[key].length % 2)
+                      //     acc[key] = Math.round(data[key][half]* 10) / 10;
+                      //   else
+                      //     acc[key] = round(((data[key][half - 1] + data[key][half]) / 2.0), 1);
+                      //   return acc;
+                      // }, {});
+                      //return [[month, weighted mean]]
+
+
+                      data = Object.keys(data).reduce(function (acc, key) {
+                        acc.push([parseInt(key), null, _mean[key]]);
+                        return acc;
+                      }, []).sort(function (a, b) {
+                        return parseInt(a[0]) - parseInt(b[0]);
+                      });
+                      _this8.dataurls.hist_obs = _this8._format_export_data(['month', 'weighted_mean'], data);
+                      return data;
+                    }
+                  }.bind(this)));
+
+                case 4:
+                case "end":
+                  return _context6.stop();
+              }
+            }
+          }, _callee6, this);
+        }));
+
+        function _get_historical_observed_livneh_data() {
+          return _get_historical_observed_livneh_data2.apply(this, arguments);
+        }
+
+        return _get_historical_observed_livneh_data;
+      }()
+    }, {
+      key: "_fetch_acis_data",
+      value: function () {
+        var _fetch_acis_data2 = _asyncToGenerator(
+        /*#__PURE__*/
+        regeneratorRuntime.mark(function _callee7(grid, sdate, edate) {
+          var _this9 = this;
+
+          var freq, elems;
+          return regeneratorRuntime.wrap(function _callee7$(_context7) {
+            while (1) {
+              switch (_context7.prev = _context7.next) {
+                case 0:
+                  freq = this.options.frequency === 'annual' ? 'annual' : 'monthly';
+                  elems = [$.extend(find(ClimateByLocationWidget.variables, function (c) {
+                    return c.id === _this9.options.variable;
+                  })['acis_elements'][freq], this._get_region_reduction())];
+                  return _context7.abrupt("return", $.ajax({
+                    url: this.options.data_api_endpoint,
+                    type: "POST",
+                    contentType: "application/json; charset=utf-8",
+                    dataType: "json",
+                    data: JSON.stringify($.extend({
+                      "grid": grid,
+                      "sdate": String(sdate),
+                      "edate": String(edate),
+                      "elems": elems
+                    }, this._get_region_parameters()))
+                  }).then(function (response) {
+                    var data = {};
+                    response.data.forEach(function (record) {
+                      if (undefined !== record[1][_this9.get_region_value()] && String(record[1][_this9.get_region_value()]) !== '-999' && String(record[1][_this9.get_region_value()]) !== '') {
+                        data[record[0]] = record[1][_this9.get_region_value()];
+                      }
+                    }.bind(_this9));
+                    return data;
+                  }.bind(this)));
+
+                case 3:
+                case "end":
+                  return _context7.stop();
+              }
+            }
+          }, _callee7, this);
+        }));
+
+        function _fetch_acis_data(_x, _x2, _x3) {
+          return _fetch_acis_data2.apply(this, arguments);
+        }
+
+        return _fetch_acis_data;
+      }()
+    }, {
+      key: "_get_historical_loca_model_data",
+      value: function () {
+        var _get_historical_loca_model_data2 = _asyncToGenerator(
+        /*#__PURE__*/
+        regeneratorRuntime.mark(function _callee8() {
+          var _this10 = this;
+
+          var edate;
+          return regeneratorRuntime.wrap(function _callee8$(_context8) {
+            while (1) {
+              switch (_context8.prev = _context8.next) {
+                case 0:
+                  // let edate = (String(new Date().getFullYear())) + '-01-01';
+                  edate = '2006-12-31';
+                  return _context8.abrupt("return", Promise.all([this._fetch_acis_data('loca:wMean:rcp85', '1950-01-01', edate), this._fetch_acis_data('loca:allMin:rcp85', '1950-01-01', edate), this._fetch_acis_data('loca:allMax:rcp85', '1950-01-01', edate)]).then(function (_ref9) {
+                    var _ref10 = _slicedToArray(_ref9, 3),
+                        wMean = _ref10[0],
+                        min = _ref10[1],
+                        max = _ref10[2];
+
+                    var data = [];
+
+                    for (var key = 1950; key <= 2006; key++) {
+                      var values = {};
+                      values.wMean = wMean.hasOwnProperty(key) ? round(wMean[key], 1) : null;
+                      values.min = min.hasOwnProperty(key) ? round(min[key], 1) : null;
+                      values.max = max.hasOwnProperty(key) ? round(max[key], 1) : null; //year,mean,min,max,?,?
+
+                      data.push([String(key), values.wMean, values.min, values.max, null, null]);
+                    } // Sort before returning
+
+
+                    data.sort(function (a, b) {
+                      return (a[0] > b[0]) - (a[0] < b[0]);
+                    });
+                    _this10.dataurls.hist_mod = _this10._format_export_data(['year', 'weighted_mean', 'min', 'max'], data);
+                    return data;
+                  }.bind(this)));
+
+                case 2:
+                case "end":
+                  return _context8.stop();
+              }
+            }
+          }, _callee8, this);
+        }));
+
+        function _get_historical_loca_model_data() {
+          return _get_historical_loca_model_data2.apply(this, arguments);
+        }
+
+        return _get_historical_loca_model_data;
+      }()
+    }, {
+      key: "_get_projected_loca_model_data",
+      value: function () {
+        var _get_projected_loca_model_data2 = _asyncToGenerator(
+        /*#__PURE__*/
+        regeneratorRuntime.mark(function _callee9() {
+          var _this11 = this;
+
+          var sdate;
+          return regeneratorRuntime.wrap(function _callee9$(_context9) {
+            while (1) {
+              switch (_context9.prev = _context9.next) {
+                case 0:
+                  if (this.options.frequency === 'annual') {
+                    // sdate = (String(new Date().getFullYear())) + '-01-01';
+                    sdate = '2006-01-01';
+                  } else {
+                    sdate = '2010-01-01';
+                  }
+
+                  return _context9.abrupt("return", Promise.all([this._fetch_acis_data('loca:wMean:rcp45', sdate, this._model_edate), this._fetch_acis_data('loca:allMin:rcp45', sdate, this._model_edate), this._fetch_acis_data('loca:allMax:rcp45', sdate, this._model_edate), this._fetch_acis_data('loca:wMean:rcp85', sdate, this._model_edate), this._fetch_acis_data('loca:allMin:rcp85', sdate, this._model_edate), this._fetch_acis_data('loca:allMax:rcp85', sdate, this._model_edate)]).then(function (_ref11) {
+                    var _ref12 = _slicedToArray(_ref11, 6),
+                        wMean45 = _ref12[0],
+                        min45 = _ref12[1],
+                        max45 = _ref12[2],
+                        wMean85 = _ref12[3],
+                        min85 = _ref12[4],
+                        max85 = _ref12[5];
+
+                    var data;
+                    var months_seasons = {
+                      "01": "01",
+                      "02": "01",
+                      "03": "04",
+                      "04": "04",
+                      "05": "04",
+                      "06": "07",
+                      "07": "07",
+                      "08": "07",
+                      "09": "10",
+                      "10": "10",
+                      "11": "10",
+                      "12": "01"
+                    };
+
+                    if (_this11.options.frequency === 'annual') {
+                      data = []; // Extract values
+
+                      for (var key = 2006; key < 2100; key++) {
+                        var values = {};
+                        values.wMean45 = wMean45.hasOwnProperty(key) ? round(wMean45[key], 1) : null;
+                        values.min45 = min45.hasOwnProperty(key) ? round(min45[key], 1) : null;
+                        values.max45 = max45.hasOwnProperty(key) ? round(max45[key], 1) : null;
+                        values.wMean85 = wMean85.hasOwnProperty(key) ? round(wMean85[key], 1) : null;
+                        values.min85 = min85.hasOwnProperty(key) ? round(min85[key], 1) : null;
+                        values.max85 = max85.hasOwnProperty(key) ? round(max85[key], 1) : null; //year,rcp45mean,rcp45min,rcp45max,rcp45p10,rcp45p90,rcp85mean,rcp85min,rcp85max,rcp85p10,rcp85p90
+
+                        data.push([String(key), values.wMean45, values.min45, values.max45, null, null, values.wMean85, values.min85, values.max85, null, null]);
+                      } // Sort before returning
+
+
+                      data.sort(function (a, b) {
+                        return (a[0] > b[0]) - (a[0] < b[0]);
+                      });
+                      _this11.dataurls.proj_mod = _this11._format_export_data(['year', 'rcp45_weighted_mean', 'rcp45_min', 'rcp45_max', 'rcp85_weighted mean', 'rcp85_min', 'rcp85_max'], data);
+                      return data;
+                    } else if (_this11.options.frequency === 'monthly' || _this11.options.frequency === 'seasonal') {
+                      data = {};
+                      [2025, 2050, 2075].forEach(function (yearRange) {
+                        data[yearRange] = {};
+
+                        _this11._months.forEach(function (month) {
+                          var season_month = month;
+
+                          if (_this11.options.frequency === 'seasonal') {
+                            //for seasonal group by season, not month.
+                            season_month = months_seasons[month];
+                          }
+
+                          if (undefined === data[yearRange][season_month]) {
+                            data[yearRange][season_month] = {};
+                          }
+
+                          var datasets = {
+                            'wMean45': wMean45,
+                            'wMean85': wMean85,
+                            'min45': min45,
+                            'max45': max45,
+                            'min85': min85,
+                            'max85': max85
+                          };
+                          Object.keys(datasets).forEach(function (dataset) {
+                            if (undefined === data[yearRange][season_month][dataset]) {
+                              data[yearRange][season_month][dataset] = [];
+                            }
+
+                            for (var year = yearRange - 15; year < yearRange + 15; year++) {
+                              var year_month = String(year) + '-' + String(month);
+
+                              if (datasets[dataset].hasOwnProperty(year_month)) {
+                                data[yearRange][season_month][dataset].push(datasets[dataset][year_month]);
+                              }
+                            }
+                          });
+                        });
+                      }); // mean values by month
+
+                      Object.keys(data).forEach(function (yearRange) {
+                        Object.keys(data[yearRange]).forEach(function (month) {
+                          ['wMean45', 'wMean85', 'min45', 'min85', 'max45', 'max85'].forEach(function (valueName) {
+                            var length = data[yearRange][month][valueName].length;
+                            var sum = data[yearRange][month][valueName].reduce(function (acc, value) {
+                              return acc + value;
+                            }, 0);
+                            data[yearRange][month][valueName] = sum / length;
+                          });
+                        });
+                      }); // reformat to expected output
+                      // [ month,2025rcp45_max,2025rcp45_weighted_mean,2025rcp45_min,2025rcp45_p10,2025rcp45_p90,2025rcp85_max,2025rcp85_weighted_mean,2025rcp85_min,2025rcp85_p10,2025rcp85_p90,2050rcp45_max,2050rcp45_weighted_mean,2050rcp45_min,2050rcp45_p10,2050rcp45_p90,2050rcp85_max,2050rcp85_weighted_mean,2050rcp85_min,2050rcp85_p10,2050rcp85_p90,2075rcp45_max,2075rcp45_weighted_mean,2075rcp45_min,2075rcp45_p10,2075rcp45_p90,2075rcp85_max,2075rcp85_weighted_mean,2075rcp85_min,2075rcp85_p10,2075rcp85_p90 ]
+
+                      var dataByMonth = {};
+                      var months = _this11._months;
+
+                      if (_this11.options.frequency === 'seasonal') {
+                        months = ['01', '04', '07', '10'];
+                      }
+
+                      months.forEach(function (month) {
+                        dataByMonth[month] = {};
+                        [2025, 2050, 2075].forEach(function (yearRange) {
+                          ['45', '85'].forEach(function (scenario) {
+                            ['max', 'wMean', 'min'].forEach(function (valueName) {
+                              dataByMonth[month][String(yearRange) + 'rcp' + String(scenario) + '_' + String(valueName)] = data[yearRange][month][String(valueName) + String(scenario)];
+                            });
+                          });
+                        });
+                      });
+                      var result = [];
+                      Object.keys(dataByMonth).forEach(function (month) {
+                        result.push([month, dataByMonth[month]['2025rcp45_max'], dataByMonth[month]['2025rcp45_wMean'], dataByMonth[month]['2025rcp45_min'], null, null, dataByMonth[month]['2025rcp85_max'], dataByMonth[month]['2025rcp85_wMean'], dataByMonth[month]['2025rcp85_min'], null, null, dataByMonth[month]['2050rcp45_max'], dataByMonth[month]['2050rcp45_wMean'], dataByMonth[month]['2050rcp45_min'], null, null, dataByMonth[month]['2050rcp85_max'], dataByMonth[month]['2050rcp85_wMean'], dataByMonth[month]['2050rcp85_min'], null, null, dataByMonth[month]['2075rcp45_max'], dataByMonth[month]['2075rcp45_wMean'], dataByMonth[month]['2075rcp45_min'], null, null, dataByMonth[month]['2075rcp85_max'], dataByMonth[month]['2075rcp85_wMean'], dataByMonth[month]['2075rcp85_min'], null, null]);
+                      }); // Sort before returning
+
+                      result.sort(function (a, b) {
+                        return (a[0] > b[0]) - (a[0] < b[0]);
+                      });
+                      _this11.dataurls.proj_mod = _this11._format_export_data(['month', '2025_rcp45_max', '2025_rcp45_weighted_mean', '2025_rcp45_min', '2025_rcp85_max', '2025_rcp85_weighted_mean', '2025_rcp85_min', '2050_rcp45_max', '2050_rcp45_weighted_mean', '2050_rcp45_min', '2050_rcp85_max', '2050_rcp85_weighted_mean', '2050_rcp85_min', '2075_rcp45_max', '2075_rcp45_weighted_mean', '2075_rcp45_min', '2075_rcp85_max', '2075_rcp85_weighted_mean', '2075_rcp85_min'], result);
+                      return result;
+                    }
+                  }.bind(this)));
+
+                case 2:
+                case "end":
+                  return _context9.stop();
+              }
+            }
+          }, _callee9, this);
+        }));
+
+        function _get_projected_loca_model_data() {
+          return _get_projected_loca_model_data2.apply(this, arguments);
+        }
+
+        return _get_projected_loca_model_data;
+      }()
+      /**
+       * Transform an anchor element to download the current graph as an image. Return false on failure / no data.
+       * @param link
+       * @returns {boolean}
+       */
+
+    }, {
+      key: "download_image",
+      value: function download_image(link) {
+        link.href = this.$graphdiv.find('canvas')[0].toDataURL('image/png');
+        link.download = [this.options.get_region_label.bind(this)(), this.options.frequency, this.options.variable, "graph"].join('-').replace(/ /g, '_') + '.png';
+        return true;
+      }
+      /**
+       * Transform an anchor element to download the historic observed data. Return false on failure / no data.
+       * @param link
+       * @returns {boolean}
+       */
+
+    }, {
+      key: "download_hist_obs_data",
+      value: function download_hist_obs_data(link) {
+        if (!this.dataurls.hist_obs) {
+          link.href = '#nodata';
+          return false;
+        }
+
+        link.href = this.dataurls.hist_obs;
+        link.download = [this.options.get_region_label.bind(this)(), this.options.frequency, "hist_obs", this.options.variable].join('-').replace(/ /g, '_') + '.csv';
+        return true;
+      }
+      /**
+       * Transform an anchor element to download the historic modelled data. Return false on failure / no data.
+       * @param link
+       * @returns {boolean}
+       */
+
+    }, {
+      key: "download_hist_mod_data",
+      value: function download_hist_mod_data(link) {
+        if (!this.dataurls.hist_mod) {
+          link.href = '#nodata';
+          return false;
+        }
+
+        link.href = this.dataurls.hist_mod;
+        link.download = [this.options.get_region_label.bind(this)(), this.options.frequency, "hist_mod", this.options.variable].join('-').replace(/ /g, '_') + '.csv';
+        return true;
+      }
+      /**
+       * Transform an anchor element to download the projected modelled data. Return false on failure / no data.
+       * @param link
+       * @returns {boolean}
+       */
+
+    }, {
+      key: "download_proj_mod_data",
+      value: function download_proj_mod_data(link) {
+        if (!this.dataurls.proj_mod) {
+          link.href = '#nodata';
+          return false;
+        }
+
+        link.href = this.dataurls.proj_mod;
+        link.download = [this.options.get_region_label.bind(this)(), this.options.frequency, "proj_mod", this.options.variable].join('-').replace(/ /g, '_') + '.csv';
+        return true;
+      }
+    }, {
+      key: "_set_range",
+      value: function _set_range(axis, min, max) {
+        var pan = axis.pan();
+        var panMin = pan ? pan.min().getRealValue() : null;
+        var panMax = pan ? pan.max().getRealValue() : null;
+        var zoom = axis.zoom();
+        var zoomMin = zoom ? zoom.min().getRealValue() : null;
+        var zoomMax = zoom ? zoom.max().getRealValue() : null;
+
+        if (panMax !== null && max > panMax) {
+          return false;
+        }
+
+        if (panMin !== null && min < panMin) {
+          return false;
+        }
+
+        if (zoomMax !== null && max - min > zoomMax) {
+          return false;
+        }
+
+        if (zoomMin !== null && max - min < zoomMin) {
+          return false;
+        }
+
+        axis.setDataRange(min - 0.5, max + 0.5);
+        this.multigraph.render();
+        return true;
+      }
+      /**
+       * This function will set the range of data visible on the graph's x-axis when an annual data graph is displayed (monthly and seasonal data graphs have fixed x-axes).
+       *
+       * @param min
+       * @param max
+       * @returns {boolean}
+       */
+
+    }, {
+      key: "set_x_axis_range",
+      value: function set_x_axis_range(min, max) {
+        return this._set_range(this.axes.x_annual, min, max);
+      }
+      /**
+       * Forces multigraph to resize to its container
+       */
+
+    }, {
+      key: "resize",
+      value: function resize() {
+        if (this.multigraph) {
+          this.multigraph.resize();
+        }
+      }
+    }, {
+      key: "_average",
+      value: function _average(data, first_year, last_year) {
+        //    [[1921,1.3,33.5,2.5,...],
+        //     [1922,1.3,33.5,2.5,...],
+        //     ...]
+        var sum = 0;
+        var n = 0;
+        data.forEach(function (row) {
+          if (row[0] >= first_year && row[0] <= last_year) {
+            sum += row[1];
+            ++n;
+          }
+        });
+        return sum / n;
+      }
+    }, {
+      key: "_anomalies",
+      value: function _anomalies(data, ref) {
+        return data.map(function (row) {
+          var arow = [row[0]];
+          var i;
+
+          for (i = 1; i < row.length; ++i) {
+            if (row[i] === null) {
+              arow[i] = row[i];
+              continue;
+            }
+
+            arow[i] = row[i] - ref;
+          }
+
+          return arow;
+        });
+      }
+    }, {
+      key: "_percent_anomalies",
+      value: function _percent_anomalies(data, ref) {
+        return data.map(function (row) {
+          var arow = [row[0]];
+          var i;
+
+          for (i = 1; i < row.length; ++i) {
+            if (row[i] === null) {
+              arow[i] = row[i];
+              continue;
+            }
+
+            arow[i] = 100 * row[i] / ref;
+          }
+
+          return arow;
+        });
+      }
+    }, {
+      key: "_show_spinner",
+      value: function _show_spinner() {
+        this._hide_spinner();
+
+        var style = "<style>.cwg-spinner { margin-top: -2.5rem; border-radius: 100%;border-style: solid;border-width: 0.25rem;height: 5rem;width: 5rem;animation: basic 1s infinite linear; border-color: rgba(0, 0, 0, 0.2);border-top-color: rgba(0, 0, 0, 1); }@keyframes basic {0%   { transform: rotate(0); }100% { transform: rotate(359.9deg); }} .cwg-spinner-wrapper {display:flex; align-items: center; justify-content: center; }</style>";
+        $("<div class='cwg-spinner-wrapper'><div class='cwg-spinner'></div></div>").css({
+          position: "absolute",
+          width: "100%",
+          height: "100%",
+          left: 0,
+          top: 0,
+          zIndex: 1000000
+        }).append(style).appendTo(this.$element.css("position", "relative"));
+      }
+    }, {
+      key: "_hide_spinner",
+      value: function _hide_spinner() {
+        this.$element.find('.cwg-spinner-wrapper').remove();
+      }
+    }, {
+      key: "_format_export_data",
+      value: function _format_export_data(column_labels, data) {
+        var export_data = data.map(function (row) {
+          return row.filter(function (cell) {
+            return cell !== null;
+          });
+        });
+        export_data.unshift(column_labels);
+        return 'data:text/csv;base64,' + window.btoa(export_data.map(function (a) {
+          return a.join(', ');
+        }).join('\n'));
+      }
+    }, {
+      key: "_round_2d_values",
+      value: function _round_2d_values(data) {
+        var ndigits = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : 1;
+        return data.map(function (row) {
+          return row.map(function (cell) {
+            return Number.isFinite(cell) ? round(cell, ndigits) : null;
+          });
+        });
+      }
+    }, {
+      key: "_bool_options",
+      get: function get() {
+        return ['pmedian', 'hmedian', 'histobs', 'histmod', 'yzoom', 'ypan'];
+      }
+      /**
+       * The default config for the widget
+       */
+
+    }, {
+      key: "config_default",
+      get: function get() {
+        return {
+          // default values:
+          unitsystem: "english",
+          variable: "tmax",
+          frequency: "annual",
+          scenario: "both",
+          timeperiod: "2025",
+          presentation: "absolute",
+          hrange: "minmax",
+          // deprecated
+          prange: "minmax",
+          // deprecated
+          pmedian: false,
+          hmedian: false,
+          histobs: true,
+          histmod: true,
+          yzoom: true,
+          ypan: true,
+          data_api_endpoint: 'https://grid2.rcc-acis.org/GridData',
+          colors: {
+            reds: {
+              line: '#f5442d',
+              innerBand: '#f65642',
+              outerBand: '#f76956'
+            },
+            blues: {
+              line: '#0058cf',
+              innerBand: '#1968d3',
+              outerBand: '#3279d8'
+            },
+            grays: {
+              innerBand: "#aaaaaa",
+              outerBand: "#bbbbbb" //original hard-coded values
+              //innerBand: "#999999",
+              //outerBand: "#cccccc"
+
+            },
+            opacities: {
+              ann_hist_1090: 0.6,
+              ann_hist_minmax: 0.6,
+              ann_proj_1090: 0.5,
+              ann_proj_minmax: 0.5,
+              mon_proj_1090: 0.5,
+              mon_proj_minmax: 0.5 //original hard-coded values
+              //ann_hist_1090: 0.5,
+              //ann_hist_minmax: 0.7,
+              //ann_proj_1090: 0.3,
+              //ann_proj_minmax: 0.3,
+              //mon_proj_1090: 0.3,
+              //mon_proj_minmax: 0.3,
+
+            }
+          },
+          //font: no default for this one; defaults to canvas's default font
+          county: null,
+          state: null,
+          get_region_label: this.get_region_value.bind(this),
+          // Data ranges will get scaled by this factor when setting y axis ranges.
+          // Previously was 1.1, but set to 1 now to avoid awkard negative values for
+          // things that can never be negative.
+          yAxisRangeScaleFactor: 1
+        };
+      }
+      /**
+       * The default config template for multigraph
+       */
+
+    }, {
+      key: "multigraph_config_default",
+      get: function get() {
+        return {
+          legend: false,
+          window: {
+            border: 0,
+            padding: 0,
+            margin: 0
+          },
+
+          /*
+          background: {
+             img : {
+                src: "demo.png",
+                anchor: [0, 0],
+                base: [0, 0],
+                frame: "padding"
+           }
+          }, */
+          plotarea: {
+            marginleft: 55,
+            marginright: 0
+          },
+          horizontalaxis: [{
+            id: "x_annual",
+            min: 1949.5,
+            max: 2099.5,
+            title: false,
+            // { text: "Year" },
+            visible: true,
+            labels: {
+              label: [{
+                format: "%1d",
+                spacing: [100, 50, 20, 10, 5, 2, 1]
+              }]
+            },
+            pan: {
+              min: 1949.5,
+              max: 2099.5
+            },
+            zoom: {
+              min: "10Y",
+              max: "151Y"
+            },
+            grid: true
+          }, {
+            id: "x_monthly",
+            min: -2,
+            max: 12,
+            title: false,
+            // { text: "Month" },
+            visible: false,
+            labels: {
+              label: [{
+                format: ["Dec", "Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov"],
+                spacing: [1]
+              }]
+            },
+            pan: {
+              allowed: "no"
+            },
+            zoom: {
+              allowed: "no"
+            },
+            grid: true
+          }, {
+            id: "x_seasonal",
+            min: -0.5,
+            max: 3.5,
+            title: false,
+            // { text: "Season" },
+            visible: false,
+            labels: {
+              label: [{
+                format: ["Winter", "Spring", "Summer",
+                /* or */
+                "Fall"],
+
+                /*        all you have to do is call... */
+                spacing: [1]
+              }]
+            },
+            pan: {
+              allowed: "no"
+            },
+            zoom: {
+              allowed: "no"
+              /*            pan: {
+                            min: -0.5,
+                            max: 3.5
+                          },
+                          zoom: {
+                            min: 1,
+                            max: 4
+                          }
+              */
+
+            }
+          }],
+          verticalaxis: {
+            id: "y",
+            min: 0,
+            max: 2000,
+            grid: true,
+            title: {
+              text: " ",
+              angle: 90,
+              anchor: [0, -1],
+              position: [-40, 0]
+            },
+            visible: true,
+            labels: {
+              label: [{
+                format: "%1d",
+                spacing: [10000, 5000, 2000, 1000, 500, 200, 100, 50, 20, 10, 5, 2, 1]
+              }, {
+                format: "%.1f",
+                spacing: [0.5, 0.2, 0.1]
+              }, {
+                format: "%.2f",
+                spacing: [0.05, 0.02, 0.01]
+              }]
+            },
+            pan: {
+              allowed: "yes",
+              min: -7500.5,
+              max: 10000.5
+            },
+            zoom: {
+              allowed: "yes",
+              min: 0.05,
+              max: 10000
+            }
+          },
+          plots: [],
+          data: []
+        };
+      }
+      /**
+       * Gets configuration for plots in the form [{frequency, regime, stat, scenario, timeperiod, plot_index,  plot_config}...]
+       * @returns {*[]|*}
+       */
+
+    }, {
+      key: "plots_config",
+      get: function get() {
+        if (!this._plots_config) {
+          // shorthand to create a band plot config
+          var band_plot = function band_plot(x_axis, x, y_axis, y0, y1, fill_color, fill_opacity) {
+            var plot = {
+              visible: false,
+              horizontalaxis: {},
+              // populated below
+              verticalaxis: {},
+              // populated below
+              style: "band",
+              options: {
+                fillcolor: fill_color,
+                fillopacity: fill_opacity,
+                linewidth: 0
+              }
+            }; // must use [] notation here since keys are variables:
+
+            plot.horizontalaxis[x_axis] = x;
+            plot.verticalaxis[y_axis] = [y0, y1];
+            return plot;
+          }; // shorthand for a bar plot config at a specified y reference line
+
+
+          var bar_plot_based_at = function bar_plot_based_at(x_axis, x, y_axis, y, ref) {
+            // (colors are hard-coded in this one, but not for any good reason)
+            var plot = {
+              visible: false,
+              horizontalaxis: {},
+              // populated below
+              verticalaxis: {},
+              // populated below
+              style: "bar",
+              options: {
+                barbase: ref,
+                fillcolor: [{
+                  "value": "0x777777",
+                  "min": ref
+                }, {
+                  "value": "0x777777",
+                  "max": ref
+                }],
+                barwidth: 1,
+                baroffset: 0.5,
+                linecolor: "#000000",
+                hidelines: 999
+              }
+            }; // must use [] notation here since keys are variables:
+
+            plot.horizontalaxis[x_axis] = x;
+            plot.verticalaxis[y_axis] = y;
+            return plot;
+          }; // shorthand to create a line plot config
+
+
+          var line_plot = function line_plot(x_axis, x, y_axis, y, line_color, dashed) {
+            var plot = {
+              visible: false,
+              horizontalaxis: {},
+              // populated below
+              verticalaxis: {},
+              // populated below
+              style: "line",
+              options: {
+                linecolor: line_color,
+                linestroke: dashed ? "dashed" : "solid",
+                linewidth: 2
+              }
+            }; // must use [] notation here since keys are variables:
+
+            plot.horizontalaxis[x_axis] = x;
+            plot.verticalaxis[y_axis] = y;
+            return plot;
+          }; // shorthand to create a range bar plot config
+
+
+          var range_bar_plot = function range_bar_plot(x_axis, x, y_axis, y0, y1, bar_color, line_color, baroffset, fillopacity) {
+            var plot = {
+              horizontalaxis: {},
+              // populated below
+              verticalaxis: {},
+              // populated below
+              style: "rangebar",
+              options: {
+                fillcolor: bar_color,
+                fillopacity: fillopacity,
+                barwidth: 0.5,
+                baroffset: baroffset,
+                linecolor: line_color
+              }
+            }; // must use [] notation here since keys are variables:
+
+            plot.horizontalaxis[x_axis] = x;
+            plot.verticalaxis[y_axis] = [y0, y1];
+            return plot;
+          }; // shorthand to create a plot config record
+
+
+          var p = function p(plot_config) {
+            var frequency = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : null;
+            var regime = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : null;
+            var stat = arguments.length > 3 && arguments[3] !== undefined ? arguments[3] : null;
+            var scenario = arguments.length > 4 && arguments[4] !== undefined ? arguments[4] : null;
+            var timeperiod = arguments.length > 5 && arguments[5] !== undefined ? arguments[5] : null;
+            var region = arguments.length > 6 && arguments[6] !== undefined ? arguments[6] : null;
+            var plot_index = arguments.length > 7 && arguments[7] !== undefined ? arguments[7] : -1;
+            return {
+              plot_config: plot_config,
+              frequency: frequency,
+              regime: regime,
+              stat: stat,
+              scenario: scenario,
+              timeperiod: timeperiod,
+              region: region,
+              plot_index: plot_index
+            };
+          };
+
+          this._plots_config = [//
+          // annual CONUS plots:
+          //
+          p(band_plot("x_annual", "annual_hist_mod_x", "y", "annual_hist_mod_min", "annual_hist_mod_max", this.options.colors.grays.outerBand, this.options.colors.opacities.ann_hist_minmax), "annual", "hist_mod", "minmax"), p(band_plot("x_annual", "annual_hist_mod_x", "y", "annual_hist_mod_p10", "annual_hist_mod_p90", this.options.colors.grays.innerBand, this.options.colors.opacities.ann_hist_1090), "annual", "hist_mod", "p1090"), p(band_plot("x_annual", "annual_proj_mod_x", "y", "annual_proj_mod_min_rcp45", "annual_proj_mod_max_rcp45", this.options.colors.blues.outerBand, this.options.colors.opacities.ann_proj_minmax), "annual", "proj_mod", "minmax", "rcp45"), p(band_plot("x_annual", "annual_proj_mod_x", "y", "annual_proj_mod_p10_rcp45", "annual_proj_mod_p90_rcp45", this.options.colors.blues.innerBand, this.options.colors.opacities.ann_proj_1090), "annual", "proj_mod", "p1090", "rcp45"), p(band_plot("x_annual", "annual_proj_mod_x", "y", "annual_proj_mod_min_rcp85", "annual_proj_mod_max_rcp85", this.options.colors.reds.outerBand, this.options.colors.opacities.ann_proj_minmax), "annual", "proj_mod", "minmax", "rcp85"), p(band_plot("x_annual", "annual_proj_mod_x", "y", "annual_proj_mod_p10_rcp85", "annual_proj_mod_p90_rcp85", this.options.colors.reds.innerBand, this.options.colors.opacities.ann_proj_1090), "annual", "proj_mod", "p1090", "rcp85"), p(bar_plot_based_at("x_annual", "annual_hist_obs_x", "y", "annual_hist_obs_y", 0), "annual", "hist_obs"), p(line_plot("x_annual", "annual_hist_mod_x", "y", "annual_hist_mod_med", "#000000"), "annual", "hist_mod", "med"), p(line_plot("x_annual", "annual_proj_mod_x", "y", "annual_proj_mod_med_rcp45", this.options.colors.blues.line), "annual", "proj_mod", "med", "rcp45"), p(line_plot("x_annual", "annual_proj_mod_x", "y", "annual_proj_mod_med_rcp85", this.options.colors.reds.line), "annual", "proj_mod", "med", "rcp85"), //
+          // monthly CONUS plots:
+          //
+          p(line_plot("x_monthly", "monthly_hist_obs_x", "y", "monthly_hist_obs_med", "#000000"), "monthly", "hist_obs", "med"), p(band_plot("x_monthly", "monthly_proj_mod_x", "y", "monthly_proj_mod_min_rcp45_2025", "monthly_proj_mod_max_rcp45_2025", this.options.colors.blues.innerBand, this.options.colors.opacities.mon_proj_minmax), "monthly", "proj_mod", "minmax", "rcp45", "2025"), p(band_plot("x_monthly", "monthly_proj_mod_x", "y", "monthly_proj_mod_min_rcp85_2025", "monthly_proj_mod_max_rcp85_2025", this.options.colors.reds.innerBand, this.options.colors.opacities.mon_proj_minmax), "monthly", "proj_mod", "minmax", "rcp85", "2025"), p(band_plot("x_monthly", "monthly_proj_mod_x", "y", "monthly_proj_mod_p10_rcp45_2025", "monthly_proj_mod_p90_rcp45_2025", this.options.colors.blues.innerBand, this.options.colors.opacities.mon_proj_1090), "monthly", "proj_mod", "p1090", "rcp45", "2025"), p(band_plot("x_monthly", "monthly_proj_mod_x", "y", "monthly_proj_mod_p10_rcp85_2025", "monthly_proj_mod_p90_rcp85_2025", this.options.colors.reds.innerBand, this.options.colors.opacities.mon_proj_1090), "monthly", "proj_mod", "p1090", "rcp85", "2025"), p(line_plot("x_monthly", "monthly_proj_mod_x", "y", "monthly_proj_mod_med_rcp45_2025", this.options.colors.blues.outerBand), "monthly", "proj_mod", "med", "rcp45", "2025"), p(line_plot("x_monthly", "monthly_proj_mod_x", "y", "monthly_proj_mod_med_rcp85_2025", this.options.colors.reds.line), "monthly", "proj_mod", "med", "rcp85", "2025"), p(band_plot("x_monthly", "monthly_proj_mod_x", "y", "monthly_proj_mod_min_rcp45_2050", "monthly_proj_mod_max_rcp45_2050", this.options.colors.blues.innerBand, this.options.colors.opacities.mon_proj_minmax), "monthly", "proj_mod", "minmax", "rcp45", "2050"), p(band_plot("x_monthly", "monthly_proj_mod_x", "y", "monthly_proj_mod_min_rcp85_2050", "monthly_proj_mod_max_rcp85_2050", this.options.colors.reds.innerBand, this.options.colors.opacities.mon_proj_minmax), "monthly", "proj_mod", "minmax", "rcp85", "2050"), p(band_plot("x_monthly", "monthly_proj_mod_x", "y", "monthly_proj_mod_p10_rcp45_2050", "monthly_proj_mod_p90_rcp45_2050", this.options.colors.blues.innerBand, this.options.colors.opacities.mon_proj_1090), "monthly", "proj_mod", "p1090", "rcp45", "2050"), p(band_plot("x_monthly", "monthly_proj_mod_x", "y", "monthly_proj_mod_p10_rcp85_2050", "monthly_proj_mod_p90_rcp85_2050", this.options.colors.reds.innerBand, this.options.colors.opacities.mon_proj_1090), "monthly", "proj_mod", "p1090", "rcp85", "2050"), p(line_plot("x_monthly", "monthly_proj_mod_x", "y", "monthly_proj_mod_med_rcp45_2050", this.options.colors.blues.outerBand), "monthly", "proj_mod", "med", "rcp45", "2050"), p(line_plot("x_monthly", "monthly_proj_mod_x", "y", "monthly_proj_mod_med_rcp85_2050", this.options.colors.reds.line), "monthly", "proj_mod", "med", "rcp85", "2050"), p(band_plot("x_monthly", "monthly_proj_mod_x", "y", "monthly_proj_mod_min_rcp45_2075", "monthly_proj_mod_max_rcp45_2075", this.options.colors.blues.innerBand, this.options.colors.opacities.mon_proj_minmax), "monthly", "proj_mod", "minmax", "rcp45", "2075"), p(band_plot("x_monthly", "monthly_proj_mod_x", "y", "monthly_proj_mod_min_rcp85_2075", "monthly_proj_mod_max_rcp85_2075", this.options.colors.reds.innerBand, this.options.colors.opacities.mon_proj_minmax), "monthly", "proj_mod", "minmax", "rcp85", "2075"), p(band_plot("x_monthly", "monthly_proj_mod_x", "y", "monthly_proj_mod_p10_rcp45_2075", "monthly_proj_mod_p90_rcp45_2075", this.options.colors.blues.innerBand, this.options.colors.opacities.mon_proj_1090), "monthly", "proj_mod", "p1090", "rcp45", "2075"), p(band_plot("x_monthly", "monthly_proj_mod_x", "y", "monthly_proj_mod_p10_rcp85_2075", "monthly_proj_mod_p90_rcp85_2075", this.options.colors.reds.innerBand, this.options.colors.opacities.mon_proj_1090), "monthly", "proj_mod", "p1090", "rcp85", "2075"), p(line_plot("x_monthly", "monthly_proj_mod_x", "y", "monthly_proj_mod_med_rcp45_2075", this.options.colors.blues.outerBand), "monthly", "proj_mod", "med", "rcp45", "2075"), p(line_plot("x_monthly", "monthly_proj_mod_x", "y", "monthly_proj_mod_med_rcp85_2075", this.options.colors.reds.line), "monthly", "proj_mod", "med", "rcp85", "2075"), //
+          // seasonal CONUS plots
+          //
+          // Uncomment to show historical ranges
+          //range_bar_plot("x_seasonal", "seasonal_hist_obs_x", "y", "seasonal_hist_obs_p10", "seasonal_hist_obs_p90",  "#cccccc", "#cccccc", 0.5, 0.7);
+          p(range_bar_plot("x_seasonal", "seasonal_proj_mod_x", "y", "seasonal_proj_mod_min_rcp45_2025", "seasonal_proj_mod_max_rcp45_2025", this.options.colors.blues.innerBand, this.options.colors.blues.innerBand, 0.25, 0.4), "seasonal", "proj_mod", "minmax", "rcp45", "2025"), p(range_bar_plot("x_seasonal", "seasonal_proj_mod_x", "y", "seasonal_proj_mod_min_rcp85_2025", "seasonal_proj_mod_max_rcp85_2025", this.options.colors.reds.innerBand, this.options.colors.reds.innerBand, 0.0, 0.4), "seasonal", "proj_mod", "minmax", "rcp85", "2025"), p(range_bar_plot("x_seasonal", "seasonal_proj_mod_x", "y", "seasonal_proj_mod_p10_rcp45_2025", "seasonal_proj_mod_p90_rcp45_2025", this.options.colors.blues.innerBand, this.options.colors.blues.innerBand, 0.25, 0.4), "seasonal", "proj_mod", "p1090", "rcp45", "2025"), p(range_bar_plot("x_seasonal", "seasonal_proj_mod_x", "y", "seasonal_proj_mod_p10_rcp85_2025", "seasonal_proj_mod_p90_rcp85_2025", this.options.colors.reds.innerBand, this.options.colors.reds.innerBand, 0.0, 0.4), "seasonal", "proj_mod", "p1090", "rcp85", "2025"), p(range_bar_plot("x_seasonal", "seasonal_proj_mod_x", "y", "seasonal_proj_mod_min_rcp45_2050", "seasonal_proj_mod_max_rcp45_2050", this.options.colors.blues.innerBand, this.options.colors.blues.innerBand, 0.25, 0.4), "seasonal", "proj_mod", "minmax", "rcp45", "2050"), p(range_bar_plot("x_seasonal", "seasonal_proj_mod_x", "y", "seasonal_proj_mod_min_rcp85_2050", "seasonal_proj_mod_max_rcp85_2050", this.options.colors.reds.innerBand, this.options.colors.reds.innerBand, 0.0, 0.4), "seasonal", "proj_mod", "minmax", "rcp85", "2050"), p(range_bar_plot("x_seasonal", "seasonal_proj_mod_x", "y", "seasonal_proj_mod_p10_rcp45_2050", "seasonal_proj_mod_p90_rcp45_2050", this.options.colors.blues.innerBand, this.options.colors.blues.innerBand, 0.25, 0.4), "seasonal", "proj_mod", "p1090", "rcp45", "2050"), p(range_bar_plot("x_seasonal", "seasonal_proj_mod_x", "y", "seasonal_proj_mod_p10_rcp85_2050", "seasonal_proj_mod_p90_rcp85_2050", this.options.colors.reds.innerBand, this.options.colors.reds.innerBand, 0.0, 0.4), "seasonal", "proj_mod", "p1090", "rcp85", "2050"), p(range_bar_plot("x_seasonal", "seasonal_proj_mod_x", "y", "seasonal_proj_mod_min_rcp45_2075", "seasonal_proj_mod_max_rcp45_2075", this.options.colors.blues.innerBand, this.options.colors.blues.innerBand, 0.25, 0.4), "seasonal", "proj_mod", "minmax", "rcp45", "2075"), p(range_bar_plot("x_seasonal", "seasonal_proj_mod_x", "y", "seasonal_proj_mod_min_rcp85_2075", "seasonal_proj_mod_max_rcp85_2075", this.options.colors.reds.innerBand, this.options.colors.reds.innerBand, 0.0, 0.4), "seasonal", "proj_mod", "minmax", "rcp85", "2075"), p(range_bar_plot("x_seasonal", "seasonal_proj_mod_x", "y", "seasonal_proj_mod_p10_rcp45_2075", "seasonal_proj_mod_p90_rcp45_2075", this.options.colors.blues.innerBand, this.options.colors.blues.innerBand, 0.25, 0.4), "seasonal", "proj_mod", "p1090", "rcp45", "2075"), p(range_bar_plot("x_seasonal", "seasonal_proj_mod_x", "y", "seasonal_proj_mod_p10_rcp85_2075", "seasonal_proj_mod_p90_rcp85_2075", this.options.colors.reds.innerBand, this.options.colors.reds.innerBand, 0.0, 0.4), "seasonal", "proj_mod", "p1090", "rcp85", "2075"), p(range_bar_plot("x_seasonal", "seasonal_hist_obs_x", "y", "seasonal_hist_obs_med", "seasonal_hist_obs_med", "#000000", "#000000", 0.5, 1.0), "seasonal", "hist_obs", "med"), p(range_bar_plot("x_seasonal", "seasonal_proj_mod_x", "y", "seasonal_proj_mod_med_rcp45_2025", "seasonal_proj_mod_med_rcp45_2025", "#0000ff", "#0000ff", 0.25, 1.0), "seasonal", "proj_mod", "med", "rcp45", "2025"), p(range_bar_plot("x_seasonal", "seasonal_proj_mod_x", "y", "seasonal_proj_mod_med_rcp85_2025", "seasonal_proj_mod_med_rcp85_2025", this.options.colors.reds.line, this.options.colors.reds.line, 0.0, 1.0), "seasonal", "proj_mod", "med", "rcp85", "2025"), p(range_bar_plot("x_seasonal", "seasonal_proj_mod_x", "y", "seasonal_proj_mod_med_rcp45_2050", "seasonal_proj_mod_med_rcp45_2050", "#0000ff", "#0000ff", 0.25, 1.0), "seasonal", "proj_mod", "med", "rcp45", "2050"), p(range_bar_plot("x_seasonal", "seasonal_proj_mod_x", "y", "seasonal_proj_mod_med_rcp85_2050", "seasonal_proj_mod_med_rcp85_2050", this.options.colors.reds.line, this.options.colors.reds.line, 0.0, 1.0), "seasonal", "proj_mod", "med", "rcp85", "2050"), p(range_bar_plot("x_seasonal", "seasonal_proj_mod_x", "y", "seasonal_proj_mod_med_rcp45_2075", "seasonal_proj_mod_med_rcp45_2075", "#0000ff", "#0000ff", 0.25, 1.0), "seasonal", "proj_mod", "med", "rcp45", "2075"), p(range_bar_plot("x_seasonal", "seasonal_proj_mod_x", "y", "seasonal_proj_mod_med_rcp85_2075", "seasonal_proj_mod_med_rcp85_2075", this.options.colors.reds.line, this.options.colors.reds.line, 0.0, 1.0), "seasonal", "proj_mod", "med", "rcp85", "2075"), // annual AK plots:
+          p(band_plot("x_annual", "annual_hist_mod_ak_x", "y", "annual_hist_mod_gfdl_cm3_y", "annual_hist_mod_ncar_ccsm4_y", this.options.colors.grays.outerBand, this.options.colors.opacities.ann_hist_minmax), "annual", "hist_mod", "minmax", null, null, 'ak'), p(band_plot("x_annual", "annual_proj_mod_ak_x", "y", "annual_proj_mod_gfdl_cm3_rcp85_y", "annual_proj_mod_ncar_ccsm4_rcp85_y", this.options.colors.reds.outerBand, this.options.colors.opacities.ann_proj_minmax), "annual", "annual_proj", "minmax", "rcp85", null, 'ak')]; // assign indexes based on array position.
+
+          this._plots_config = this._plots_config.map(function (plot_config, idx) {
+            plot_config.plot_index = idx;
+            return plot_config;
+          });
+        }
+
+        return this._plots_config;
+      }
+    }, {
+      key: "_data_layout_config",
+      get: function get() {
+        if (!this._data_config) {
+          var _data_layout_record = function _data_layout_record() {
+            var id = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : null;
+            var data_config = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : null;
+            var data_entry_idx = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : -1;
+            return {
+              id: id,
+              data_config: data_config,
+              data_config_idx: data_entry_idx
+            };
+          };
+
+          this._data_config = [_data_layout_record('annual_hist_obs', {
+            variables: [{
+              id: "annual_hist_obs_x"
+            }, {
+              id: "annual_hist_obs_y"
+            }],
+            values: [[-9999, 0]]
+          }), _data_layout_record('annual_hist_mod', {
+            variables: [{
+              id: "annual_hist_mod_x"
+            }, {
+              id: "annual_hist_mod_med"
+            }, {
+              id: "annual_hist_mod_min"
+            }, {
+              id: "annual_hist_mod_max"
+            }, {
+              id: "annual_hist_mod_p10"
+            }, {
+              id: "annual_hist_mod_p90"
+            }],
+            values: [[-9999, 0, 0, 0, 0, 0, 0]]
+          }), _data_layout_record('annual_proj_mod', {
+            variables: [{
+              id: "annual_proj_mod_x"
+            }, {
+              id: "annual_proj_mod_med_rcp45"
+            }, {
+              id: "annual_proj_mod_min_rcp45"
+            }, {
+              id: "annual_proj_mod_max_rcp45"
+            }, {
+              id: "annual_proj_mod_p10_rcp45"
+            }, {
+              id: "annual_proj_mod_p90_rcp45"
+            }, {
+              id: "annual_proj_mod_med_rcp85"
+            }, {
+              id: "annual_proj_mod_min_rcp85"
+            }, {
+              id: "annual_proj_mod_max_rcp85"
+            }, {
+              id: "annual_proj_mod_p10_rcp85"
+            }, {
+              id: "annual_proj_mod_p90_rcp85"
+            }],
+            values: [[-9999, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]]
+          }), _data_layout_record('monthly_hist_obs', {
+            variables: [{
+              id: "monthly_hist_obs_x"
+            }, {
+              id: "monthly_hist_obs_mean30"
+            }, {
+              id: "monthly_hist_obs_med"
+            }],
+            values: [[-9999, 0, 0]],
+            repeat: {
+              period: 12
+            }
+          }), _data_layout_record('monthly_proj_mod', {
+            variables: [{
+              id: "monthly_proj_mod_x"
+            }, {
+              id: "monthly_proj_mod_max_rcp45_2025"
+            }, {
+              id: "monthly_proj_mod_med_rcp45_2025"
+            }, {
+              id: "monthly_proj_mod_min_rcp45_2025"
+            }, {
+              id: "monthly_proj_mod_p10_rcp45_2025"
+            }, {
+              id: "monthly_proj_mod_p90_rcp45_2025"
+            }, {
+              id: "monthly_proj_mod_max_rcp85_2025"
+            }, {
+              id: "monthly_proj_mod_med_rcp85_2025"
+            }, {
+              id: "monthly_proj_mod_min_rcp85_2025"
+            }, {
+              id: "monthly_proj_mod_p10_rcp85_2025"
+            }, {
+              id: "monthly_proj_mod_p90_rcp85_2025"
+            }, {
+              id: "monthly_proj_mod_max_rcp45_2050"
+            }, {
+              id: "monthly_proj_mod_med_rcp45_2050"
+            }, {
+              id: "monthly_proj_mod_min_rcp45_2050"
+            }, {
+              id: "monthly_proj_mod_p10_rcp45_2050"
+            }, {
+              id: "monthly_proj_mod_p90_rcp45_2050"
+            }, {
+              id: "monthly_proj_mod_max_rcp85_2050"
+            }, {
+              id: "monthly_proj_mod_med_rcp85_2050"
+            }, {
+              id: "monthly_proj_mod_min_rcp85_2050"
+            }, {
+              id: "monthly_proj_mod_p10_rcp85_2050"
+            }, {
+              id: "monthly_proj_mod_p90_rcp85_2050"
+            }, {
+              id: "monthly_proj_mod_max_rcp45_2075"
+            }, {
+              id: "monthly_proj_mod_med_rcp45_2075"
+            }, {
+              id: "monthly_proj_mod_min_rcp45_2075"
+            }, {
+              id: "monthly_proj_mod_p10_rcp45_2075"
+            }, {
+              id: "monthly_proj_mod_p90_rcp45_2075"
+            }, {
+              id: "monthly_proj_mod_max_rcp85_2075"
+            }, {
+              id: "monthly_proj_mod_med_rcp85_2075"
+            }, {
+              id: "monthly_proj_mod_min_rcp85_2075"
+            }, {
+              id: "monthly_proj_mod_p10_rcp85_2075"
+            }, {
+              id: "monthly_proj_mod_p90_rcp85_2075"
+            }],
+            values: [[-9999, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]],
+            repeat: {
+              period: 12
+            }
+          }), _data_layout_record('seasonal_hist_obs', {
+            variables: [{
+              id: "seasonal_hist_obs_x"
+            }, {
+              id: "seasonal_hist_obs_mean30"
+            }, {
+              id: "seasonal_hist_obs_med"
+            }],
+            values: [[-9999, 0, 0]],
+            repeat: {
+              period: 4
+            }
+          }), _data_layout_record('seasonal_proj_mod', {
+            variables: [{
+              id: "seasonal_proj_mod_x"
+            }, {
+              id: "seasonal_proj_mod_max_rcp45_2025"
+            }, {
+              id: "seasonal_proj_mod_med_rcp45_2025"
+            }, {
+              id: "seasonal_proj_mod_min_rcp45_2025"
+            }, {
+              id: "seasonal_proj_mod_p10_rcp45_2025"
+            }, {
+              id: "seasonal_proj_mod_p90_rcp45_2025"
+            }, {
+              id: "seasonal_proj_mod_max_rcp85_2025"
+            }, {
+              id: "seasonal_proj_mod_med_rcp85_2025"
+            }, {
+              id: "seasonal_proj_mod_min_rcp85_2025"
+            }, {
+              id: "seasonal_proj_mod_p10_rcp85_2025"
+            }, {
+              id: "seasonal_proj_mod_p90_rcp85_2025"
+            }, {
+              id: "seasonal_proj_mod_max_rcp45_2050"
+            }, {
+              id: "seasonal_proj_mod_med_rcp45_2050"
+            }, {
+              id: "seasonal_proj_mod_min_rcp45_2050"
+            }, {
+              id: "seasonal_proj_mod_p10_rcp45_2050"
+            }, {
+              id: "seasonal_proj_mod_p90_rcp45_2050"
+            }, {
+              id: "seasonal_proj_mod_max_rcp85_2050"
+            }, {
+              id: "seasonal_proj_mod_med_rcp85_2050"
+            }, {
+              id: "seasonal_proj_mod_min_rcp85_2050"
+            }, {
+              id: "seasonal_proj_mod_p10_rcp85_2050"
+            }, {
+              id: "seasonal_proj_mod_p90_rcp85_2050"
+            }, {
+              id: "seasonal_proj_mod_max_rcp45_2075"
+            }, {
+              id: "seasonal_proj_mod_med_rcp45_2075"
+            }, {
+              id: "seasonal_proj_mod_min_rcp45_2075"
+            }, {
+              id: "seasonal_proj_mod_p10_rcp45_2075"
+            }, {
+              id: "seasonal_proj_mod_p90_rcp45_2075"
+            }, {
+              id: "seasonal_proj_mod_max_rcp85_2075"
+            }, {
+              id: "seasonal_proj_mod_med_rcp85_2075"
+            }, {
+              id: "seasonal_proj_mod_min_rcp85_2075"
+            }, {
+              id: "seasonal_proj_mod_p10_rcp85_2075"
+            }, {
+              id: "seasonal_proj_mod_p90_rcp85_2075"
+            }],
+            values: [[-9999, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]],
+            repeat: {
+              period: 4
+            }
+          }), _data_layout_record('annual_hist_mod_ak', {
+            variables: [{
+              id: "annual_hist_mod_ak_x"
+            }, {
+              id: "annual_hist_mod_gfdl_cm3_y"
+            }, {
+              id: "annual_hist_mod_ncar_ccsm4_y"
+            }],
+            values: [[-9999, 0, 0]]
+          }), _data_layout_record('annual_proj_mod_ak', {
+            variables: [{
+              id: "annual_proj_mod_ak_x"
+            }, {
+              id: "annual_proj_mod_gfdl_cm3_rcp85_y"
+            }, {
+              id: "annual_proj_mod_gfdl_cm3_rcp45_y"
+            }, {
+              id: "annual_proj_mod_ncar_ccsm4_rcp85_y"
+            }, {
+              id: "annual_proj_mod_ncar_ccsm4_rcp45_y"
+            }],
+            values: [[-9999, 0, 0, 0, 0]]
+          })];
+          this._data_config = this._data_config.map(function (_data_config, idx) {
+            _data_config.data_config_idx = idx;
+            return _data_config;
+          });
+        }
+
+        return this._data_config;
+      }
+    }, {
+      key: "_months",
+      get: function get() {
+        return ['01', '02', '03', '04', '05', '06', '07', '08', '09', '10', '11', '12'];
+      }
+    }, {
+      key: "_model_edate",
+      get: function get() {
+        return '2099-12-31';
+      }
+      /**
+       * Gets available variable options for a specified combination of frequency and region.
+       *
+       * @param frequency
+       * @param unitsystem
+       * @param region
+       * @returns {{id: *, title: *}[]}
+       */
+
+    }], [{
+      key: "get_variables",
+      value: function get_variables(frequency, unitsystem, region) {
+        unitsystem = unitsystem || 'english';
+        return ClimateByLocationWidget.variables.filter(function (v) {
+          return frequency in v.ytitles && (typeof v.supports_region === "function" ? v.supports_region(region) : true);
+        }).map(function (v) {
+          return {
+            id: v.id,
+            title: v.title[unitsystem]
+          };
+        });
+      }
+      /**
+       * Gets available frequency options for a specified region.
+       *
+       * @param region
+       * @returns {{id: (string), title: (string)}[]}
+       */
+
+    }, {
+      key: "get_frequencies",
+      value: function get_frequencies(region) {
+        return ClimateByLocationWidget.frequencies.filter(function (f) {
+          return typeof f.supports_region === "function" ? f.supports_region(region) : true;
+        }).map(function (v) {
+          return {
+            id: v.id,
+            title: v.title
+          };
+        });
+      }
+      /**
+       * This function is used to toggle features based on whether the selected region is in Alaska or not.
+       *
+       * @param region
+       * @returns {boolean}
+       */
+
+    }, {
+      key: "is_ak_region",
+      value: function is_ak_region(region) {
+        return String(region).startsWith('02') || region === 'AK';
+      }
+    }, {
+      key: "variables",
+      get: function get() {
+        return [{
+          id: "tmax",
+          title: {
+            english: "Average Daily Max Temp",
+            metric: "Average Daily Max Temp"
+          },
+          acis_elements: {
+            annual: {
+              "name": "maxt",
+              "units": "degreeF",
+              "interval": "yly",
+              "duration": "yly",
+              "reduce": "mean"
+            },
+            monthly: {
+              "name": "maxt",
+              "units": "degreeF",
+              "interval": "mly",
+              "duration": "mly",
+              "reduce": "mean"
+            }
+          },
+          dataconverters: {
+            metric: fahrenheit_to_celsius,
+            english: no_conversion
+          },
+          ytitles: {
+            annual: {
+              absolute: {
+                english: "Average Daily Max Temp (°F)",
+                metric: "Average Daily Max Temp (°C)"
+              },
+              anomaly: {
+                english: "Average Daily Max Temp departure (°F)",
+                metric: "Average Daily Max Temp departure (°C)"
+              }
+            },
+            monthly: {
+              english: "Average Daily Max Temp (°F)",
+              metric: "Average Daily Max Temp (°C)"
+            },
+            seasonal: {
+              english: "Average Daily Max Temp (°F)",
+              metric: "Average Daily Max Temp (°C)"
+            }
+          },
+          supports_region: function supports_region() {
+            return true;
+          }
+        }, {
+          id: "tmin",
+          title: {
+            english: "Average Daily Min Temp",
+            metric: "Average Daily Min Temp"
+          },
+          acis_elements: {
+            annual: {
+              "name": "mint",
+              "units": "degreeF",
+              "interval": "yly",
+              "duration": "yly",
+              "reduce": "mean"
+            },
+            monthly: {
+              "name": "mint",
+              "units": "degreeF",
+              "interval": "mly",
+              "duration": "mly",
+              "reduce": "mean"
+            }
+          },
+          dataconverters: {
+            metric: fahrenheit_to_celsius,
+            english: no_conversion
+          },
+          ytitles: {
+            annual: {
+              absolute: {
+                english: "Average Daily Min Temp (°F)",
+                metric: "Average Daily Min Temp (°C)"
+              },
+              anomaly: {
+                english: "Average Daily Min Temp departure (°F)",
+                metric: "Average Daily Min Temp departure (°C)"
+              }
+            },
+            monthly: {
+              english: "Average Daily Min Temp (°F)",
+              metric: "Average Daily Min Temp (°C)"
+            },
+            seasonal: {
+              english: "Average Daily Min Temp (°F)",
+              metric: "Average Daily Min Temp (°C)"
+            }
+          },
+          supports_region: function supports_region() {
+            return true;
+          }
+        }, {
+          id: "days_tmax_gt_50f",
+          title: {
+            english: "Days per year with max above 50°F",
+            metric: "Days per year with max above 10°C"
+          },
+          acis_elements: {
+            annual: {
+              "name": "maxt",
+              "interval": "yly",
+              "duration": "yly",
+              "reduce": "cnt_gt_50"
+            }
+          },
+          dataconverters: {
+            metric: no_conversion,
+            english: no_conversion
+          },
+          ytitles: {
+            annual: {
+              absolute: {
+                english: "Days per year with max above 50°F",
+                metric: "Days per year with max above 10°C"
+              },
+              anomaly: {
+                english: "Days per year with max above 50°F",
+                metric: "Days per year with max above 10°C"
+              }
+            }
+          },
+          supports_region: ClimateByLocationWidget.is_ak_region
+        }, {
+          id: "days_tmax_gt_60f",
+          title: {
+            english: "Days per year with max above 60°F",
+            metric: "Days per year with max above 15.5°C"
+          },
+          acis_elements: {
+            annual: {
+              "name": "maxt",
+              "interval": "yly",
+              "duration": "yly",
+              "reduce": "cnt_gt_60"
+            }
+          },
+          dataconverters: {
+            metric: no_conversion,
+            english: no_conversion
+          },
+          ytitles: {
+            annual: {
+              absolute: {
+                english: "Days per year with max above 60°F",
+                metric: "Days per year with max above 15.5°C"
+              },
+              anomaly: {
+                english: "Days per year with max above 60°F",
+                metric: "Days per year with max above 15.5°C"
+              }
+            }
+          },
+          supports_region: ClimateByLocationWidget.is_ak_region
+        }, {
+          id: "days_tmax_gt_70f",
+          title: {
+            english: "Days per year with max above 70°F",
+            metric: "Days per year with max above 21.1°C"
+          },
+          acis_elements: {
+            annual: {
+              "name": "maxt",
+              "interval": "yly",
+              "duration": "yly",
+              "reduce": "cnt_gt_70"
+            }
+          },
+          dataconverters: {
+            metric: no_conversion,
+            english: no_conversion
+          },
+          ytitles: {
+            annual: {
+              absolute: {
+                english: "Days per year with max above 70°F",
+                metric: "Days per year with max above 21.1°C"
+              },
+              anomaly: {
+                english: "Days per year with max above 70°F",
+                metric: "Days per year with max above 21.1°C"
+              }
+            }
+          },
+          supports_region: ClimateByLocationWidget.is_ak_region
+        }, {
+          id: "days_tmax_gt_80f",
+          title: {
+            english: "Days per year with max above 80°F",
+            metric: "Days per year with max above 26.6°C"
+          },
+          acis_elements: {
+            annual: {
+              "name": "maxt",
+              "interval": "yly",
+              "duration": "yly",
+              "reduce": "cnt_gt_80"
+            }
+          },
+          dataconverters: {
+            metric: no_conversion,
+            english: no_conversion
+          },
+          ytitles: {
+            annual: {
+              absolute: {
+                english: "Days per year with max above 80°F",
+                metric: "Days per year with max above 26.6°C"
+              },
+              anomaly: {
+                english: "Days per year with max above 80°F",
+                metric: "Days per year with max above 26.6°C"
+              }
+            }
+          },
+          supports_region: ClimateByLocationWidget.is_ak_region
+        }, {
+          id: "days_tmax_gt_90f",
+          title: {
+            english: "Days per year with max above 90°F",
+            metric: "Days per year with max above 32.2°C"
+          },
+          acis_elements: {
+            annual: {
+              "name": "maxt",
+              "interval": "yly",
+              "duration": "yly",
+              "reduce": "cnt_gt_90"
+            }
+          },
+          dataconverters: {
+            metric: no_conversion,
+            english: no_conversion
+          },
+          ytitles: {
+            annual: {
+              absolute: {
+                english: "Days per year with max above 90°F",
+                metric: "Days per year with max above 32.2°C"
+              },
+              anomaly: {
+                english: "Days per year with max above 90°F",
+                metric: "Days per year with max above 32.2°C"
+              }
+            }
+          },
+          supports_region: function supports_region() {
+            return true;
+          }
+        }, {
+          id: "days_tmax_gt_95f",
+          title: {
+            english: "Days per year with max above 95°F",
+            metric: "Days per year with max above 35°C"
+          },
+          acis_elements: {
+            annual: {
+              "name": "maxt",
+              "interval": "yly",
+              "duration": "yly",
+              "reduce": "cnt_gt_95"
+            }
+          },
+          dataconverters: {
+            metric: no_conversion,
+            english: no_conversion
+          },
+          ytitles: {
+            annual: {
+              absolute: {
+                english: "Days per year with max above 95°F",
+                metric: "Days per year with max above 35°C"
+              },
+              anomaly: {
+                english: "Days per year with max above 95°F departure",
+                metric: "Days per year with max above 35°C departure"
+              }
+            }
+          },
+          supports_region: function supports_region(region) {
+            return !ClimateByLocationWidget.is_ak_region(region);
+          }
+        }, {
+          id: "days_tmax_gt_100f",
+          title: {
+            english: "Days per year with max above 100°F",
+            metric: "Days per year with max above 37.7°C"
+          },
+          acis_elements: {
+            annual: {
+              "name": "maxt",
+              "interval": "yly",
+              "duration": "yly",
+              "reduce": "cnt_gt_100"
+            }
+          },
+          dataconverters: {
+            metric: no_conversion,
+            english: no_conversion
+          },
+          ytitles: {
+            annual: {
+              absolute: {
+                english: "Days per year with max above 100°F",
+                metric: "Days per year with max above 37.7°C"
+              },
+              anomaly: {
+                english: "Days per year with max above 100°F",
+                metric: "Days per year with max above 37.7°C"
+              }
+            }
+          },
+          supports_region: function supports_region(region) {
+            return !ClimateByLocationWidget.is_ak_region(region);
+          }
+        }, {
+          id: "days_tmax_gt_105f",
+          title: {
+            english: "Days per year with max above 105°F",
+            metric: "Days per year with max above 40.5°C"
+          },
+          acis_elements: {
+            annual: {
+              "name": "maxt",
+              "interval": "yly",
+              "duration": "yly",
+              "reduce": "cnt_gt_105"
+            }
+          },
+          dataconverters: {
+            metric: no_conversion,
+            english: no_conversion
+          },
+          ytitles: {
+            annual: {
+              absolute: {
+                english: "Days per year with max above 105°F",
+                metric: "Days per year with max above 40.5°C"
+              },
+              anomaly: {
+                english: "Days per year with max above 105°F departure",
+                metric: "Days per year with max above 40.5°C departure"
+              }
+            }
+          },
+          supports_region: function supports_region(region) {
+            return !ClimateByLocationWidget.is_ak_region(region);
+          }
+        }, {
+          id: "days_tmax_lt_32f",
+          title: {
+            english: "Days per year with max below 32°F (Icing days)",
+            metric: "Days per year with max below 0°C (Icing days)"
+          },
+          acis_elements: {
+            annual: {
+              "name": "maxt",
+              "interval": "yly",
+              "duration": "yly",
+              "reduce": "cnt_lt_32"
+            }
+          },
+          dataconverters: {
+            metric: no_conversion,
+            english: no_conversion
+          },
+          ytitles: {
+            annual: {
+              absolute: {
+                english: "Days per year with max below 32°F (Icing days)",
+                metric: "Days per year with max below 0°C (Icing days)"
+              },
+              anomaly: {
+                english: "Days per year with max below 32°F departure",
+                metric: "Days per year with max below 0°C departure"
+              }
+            }
+          },
+          supports_region: function supports_region() {
+            return true;
+          }
+        }, {
+          id: "days_tmin_lt_32f",
+          title: {
+            english: "Days per year with min below 32°F (frost days)",
+            metric: "Days per year with min below 0°C (frost days)"
+          },
+          acis_elements: {
+            annual: {
+              "name": "mint",
+              "interval": "yly",
+              "duration": "yly",
+              "reduce": "cnt_lt_32"
+            }
+          },
+          dataconverters: {
+            metric: no_conversion,
+            english: no_conversion
+          },
+          ytitles: {
+            annual: {
+              absolute: {
+                english: "Days per year with min below 32°F (frost days)",
+                metric: "Days per year with min below 0°C (frost days)"
+              },
+              anomaly: {
+                english: "Days per year with min below 32°F (frost days)",
+                metric: "Days per year with min below 0°C (frost days)"
+              }
+            }
+          },
+          supports_region: function supports_region() {
+            return true;
+          }
+        }, {
+          id: "days_tmin_lt_minus_40f",
+          title: {
+            english: "Days per year with min below -40°F",
+            metric: "Days per year with min below -40°C"
+          },
+          acis_elements: {
+            annual: {
+              "name": "mint",
+              "interval": "yly",
+              "duration": "yly",
+              "reduce": "cnt_lt_-40"
+            }
+          },
+          dataconverters: {
+            metric: no_conversion,
+            english: no_conversion
+          },
+          ytitles: {
+            annual: {
+              absolute: {
+                english: "Days per year with min below -40°F",
+                metric: "Days per year with min below -40°C"
+              },
+              anomaly: {
+                english: "Days per year with min below -40°F",
+                metric: "Days per year with min below -40°C"
+              }
+            }
+          },
+          supports_region: ClimateByLocationWidget.is_ak_region
+        }, {
+          id: "days_tmin_gt_60f",
+          title: {
+            english: "Days per year with min above 60°F",
+            metric: "Days per year with min above 15.5°C"
+          },
+          acis_elements: {
+            annual: {
+              "name": "mint",
+              "interval": "yly",
+              "duration": "yly",
+              "reduce": "cnt_gt_80"
+            },
+            monthly: {
+              "name": "mint",
+              "interval": "mly",
+              "duration": "mly",
+              "reduce": "cnt_gt_80"
+            }
+          },
+          dataconverters: {
+            metric: no_conversion,
+            english: no_conversion
+          },
+          ytitles: {
+            annual: {
+              absolute: {
+                english: "Days per year with min above 60°F",
+                metric: "Days per year with min above 15.5°C"
+              },
+              anomaly: {
+                english: "Days per year with min above 60°F departure",
+                metric: "Days per year with min above 15.5°C departure"
+              }
+            }
+          },
+          supports_region: ClimateByLocationWidget.is_ak_region
+        }, {
+          id: "days_tmin_gt_80f",
+          title: {
+            english: "Days per year with min above 80°F",
+            metric: "Days per year with min above 26.6°C"
+          },
+          acis_elements: {
+            annual: {
+              "name": "mint",
+              "interval": "yly",
+              "duration": "yly",
+              "reduce": "cnt_gt_80"
+            },
+            monthly: {
+              "name": "mint",
+              "interval": "mly",
+              "duration": "mly",
+              "reduce": "cnt_gt_80"
+            }
+          },
+          dataconverters: {
+            metric: no_conversion,
+            english: no_conversion
+          },
+          ytitles: {
+            annual: {
+              absolute: {
+                english: "Days per year with min above 80°F",
+                metric: "Days per year with min above 26.6°C"
+              },
+              anomaly: {
+                english: "Days per year with min above 80°F departure",
+                metric: "Days per year with min above 26.6°C departure"
+              }
+            }
+          },
+          supports_region: function supports_region(region) {
+            return !ClimateByLocationWidget.is_ak_region(region);
+          }
+        }, {
+          id: "days_tmin_gt_90f",
+          title: {
+            english: "Days per year with min above 90°F",
+            metric: "Days per year with min above 32.2°C"
+          },
+          acis_elements: {
+            annual: {
+              "name": "mint",
+              "interval": "yly",
+              "duration": "yly",
+              "reduce": "cnt_gt_90"
+            },
+            monthly: {
+              "name": "mint",
+              "interval": "mly",
+              "duration": "mly",
+              "reduce": "cnt_gt_90"
+            }
+          },
+          dataconverters: {
+            metric: no_conversion,
+            english: no_conversion
+          },
+          ytitles: {
+            annual: {
+              absolute: {
+                english: "Days per year with min above 90°F",
+                metric: "Days per year with min above 32.2°C"
+              },
+              anomaly: {
+                english: "Days per year with min above 90°F departure",
+                metric: "Days per year with min above 32.2°C departure"
+              }
+            }
+          },
+          supports_region: function supports_region(region) {
+            return !ClimateByLocationWidget.is_ak_region(region);
+          }
+        }, {
+          id: "hdd_65f",
+          title: {
+            english: "Heating Degree Days",
+            metric: "Heating Degree Days"
+          },
+          acis_elements: {
+            annual: {
+              "name": "hdd",
+              "interval": "yly",
+              "duration": "yly",
+              "reduce": "sum"
+            }
+          },
+          dataconverters: {
+            metric: fdd_to_cdd,
+            english: no_conversion
+          },
+          ytitles: {
+            annual: {
+              absolute: {
+                english: "Heating Degree Days (°F-days)",
+                metric: "Heating Degree Days (°C-days)"
+              },
+              anomaly: {
+                english: "Heating Degree Days departure (°F-days)",
+                metric: "Heating Degree Days departure (°C-days)"
+              }
+            }
+          },
+          supports_region: function supports_region() {
+            return true;
+          }
+        }, {
+          id: "cdd_65f",
+          title: {
+            english: "Cooling Degree Days",
+            metric: "Cooling Degree Days"
+          },
+          acis_elements: {
+            annual: {
+              "name": "cdd",
+              "interval": "yly",
+              "duration": "yly",
+              "reduce": "sum"
+            }
+          },
+          dataconverters: {
+            metric: fdd_to_cdd,
+            english: no_conversion
+          },
+          ytitles: {
+            annual: {
+              absolute: {
+                english: "Cooling Degree Days (°F-days)",
+                metric: "Cooling Degree Days (°C-days)"
+              },
+              anomaly: {
+                english: "Cooling Degree Days departure (°F-days)",
+                metric: "Cooling Degree Days departure (°C-days)"
+              }
+            }
+          },
+          supports_region: function supports_region() {
+            return true;
+          }
+        }, {
+          id: "gdd",
+          title: {
+            english: "Growing Degree Days",
+            metric: "Growing Degree Days"
+          },
+          acis_elements: {
+            annual: {
+              "name": "gdd",
+              "interval": "yly",
+              "duration": "yly",
+              "reduce": "sum"
+            }
+          },
+          dataconverters: {
+            metric: no_conversion,
+            english: no_conversion
+          },
+          ytitles: {
+            annual: {
+              absolute: {
+                english: "Growing Degree Days (°F-days)",
+                metric: "Growing Degree Days (°C-days)"
+              },
+              anomaly: {
+                english: "Growing Degree Days departure (°F-days)",
+                metric: "Growing Degree Days departure (°C-days)"
+              }
+            }
+          },
+          supports_region: function supports_region() {
+            return true;
+          }
+        }, {
+          id: "gddmod",
+          title: {
+            english: "Modified Growing Degree Days",
+            metric: "Modified Growing Degree Days"
+          },
+          acis_elements: {
+            annual: {
+              "name": "gdd",
+              "duration": "yly",
+              "limit": [86, 50],
+              "interval": "yly",
+              "reduce": "sum"
+            }
+          },
+          dataconverters: {
+            metric: no_conversion,
+            english: no_conversion
+          },
+          ytitles: {
+            annual: {
+              absolute: {
+                english: "Modified Growing Degree Days (°F-days)",
+                metric: "Modified Growing Degree Days (°C-days)"
+              },
+              anomaly: {
+                english: "Modified Growing Degree Days departure (°F-days)",
+                metric: "Modified Growing Degree Days departure (°C-days)"
+              }
+            }
+          },
+          supports_region: function supports_region() {
+            return true;
+          }
+        }, {
+          id: "gdd_32f",
+          title: {
+            english: "Thawing Degree Days",
+            metric: "Thawing Degree Days"
+          },
+          acis_elements: {
+            annual: {
+              "name": "gdd32",
+              "interval": "yly",
+              "duration": "yly",
+              "reduce": "sum"
+            }
+          },
+          dataconverters: {
+            metric: fdd_to_cdd,
+            english: no_conversion
+          },
+          ytitles: {
+            annual: {
+              absolute: {
+                english: "Thawing Degree Days (°F-days)",
+                metric: "Thawing Degree Days (°C-days)"
+              },
+              anomaly: {
+                english: "Thawing Degree Days departure (°F-days)",
+                metric: "Thawing Degree Days departure (°C-days)"
+              }
+            }
+          },
+          supports_region: ClimateByLocationWidget.is_ak_region
+        }, {
+          id: "hdd_32f",
+          title: {
+            english: "Freezing Degree Days",
+            metric: "Freezing Degree Days"
+          },
+          acis_elements: {
+            annual: {
+              "name": "hdd32",
+              "interval": "yly",
+              "duration": "yly",
+              "reduce": "sum"
+            }
+          },
+          dataconverters: {
+            metric: fdd_to_cdd,
+            english: no_conversion
+          },
+          ytitles: {
+            annual: {
+              absolute: {
+                english: "Freezing Degree Days (°F-days)",
+                metric: "Freezing Degree Days (°C-days)"
+              },
+              anomaly: {
+                english: "Freezing Degree Days departure (°F-days)",
+                metric: "Freezing Degree Days departure (°C-days)"
+              }
+            }
+          },
+          supports_region: ClimateByLocationWidget.is_ak_region
+        }, {
+          id: "pcpn",
+          title: {
+            english: "Total Precipitation",
+            metric: "Total Precipitation"
+          },
+          acis_elements: {
+            annual: {
+              "name": "pcpn",
+              "interval": "yly",
+              "duration": "yly",
+              "reduce": "sum",
+              "units": "inch"
+            },
+            monthly: {
+              "name": "pcpn",
+              "interval": "mly",
+              "duration": "mly",
+              "reduce": "sum",
+              "units": "inch"
+            }
+          },
+          dataconverters: {
+            metric: inches_to_mm,
+            english: no_conversion
+          },
+          ytitles: {
+            annual: {
+              absolute: {
+                english: "Total Precipitation (in.)",
+                metric: "Total Precipitation"
+              },
+              anomaly: {
+                english: "Total Precipitation departure (%)",
+                metric: "Total Precipitation departure (%)"
+              }
+            },
+            monthly: {
+              english: "Total Precipitation (in.)",
+              metric: "Total Precipitation"
+            },
+            seasonal: {
+              english: "Total Precipitation (in.)",
+              metric: "Total Precipitation"
+            }
+          },
+          supports_region: function supports_region() {
+            return true;
+          }
+        }, {
+          id: "days_dry_days",
+          title: {
+            english: "Dry Days",
+            metric: "Dry Days"
+          },
+          acis_elements: {
+            annual: {
+              "name": "pcpn",
+              "interval": "yly",
+              "duration": "yly",
+              "reduce": "cnt_lt_0.01"
+            },
+            monthly: {
+              "name": "pcpn",
+              "interval": "mly",
+              "duration": "mly",
+              "reduce": "cnt_lt_0.01"
+            }
+          },
+          dataconverters: {
+            metric: no_conversion,
+            english: no_conversion
+          },
+          ytitles: {
+            annual: {
+              absolute: {
+                english: "Dry Days (days/period)",
+                metric: "Dry Days (days/period)"
+              },
+              anomaly: {
+                english: "Dry Days (days/period)",
+                metric: "Dry Days (days/period)"
+              }
+            },
+            seasonal: {
+              english: "Dry Days (days/period)",
+              metric: "Dry Days (days/period)"
+            }
+          },
+          supports_region: function supports_region() {
+            return true;
+          }
+        }, {
+          id: "days_pcpn_gt_0_25in",
+          title: {
+            english: "Days per year with more than 0.25in precipitation",
+            metric: "Days per year with more than 6.35mm precipitation"
+          },
+          acis_elements: {
+            annual: {
+              "name": "pcpn",
+              "interval": "yly",
+              "duration": "yly",
+              "reduce": "cnt_gt_1"
+            }
+          },
+          dataconverters: {
+            metric: no_conversion,
+            english: no_conversion
+          },
+          ytitles: {
+            annual: {
+              absolute: {
+                english: "Days per year with more than 0.25in precipitation",
+                metric: "Days per year with more than 6.35mm precipitation"
+              },
+              anomaly: {
+                english: "Days per year with more than 0.25in precipitation departure",
+                metric: "Days per year with more than 6.35mm precipitation departure"
+              }
+            }
+          },
+          supports_region: ClimateByLocationWidget.is_ak_region
+        }, {
+          id: "days_pcpn_gt_1in",
+          title: {
+            english: "Days per year with more than 1in precip",
+            metric: "Days per year with more than 25.3mm precip"
+          },
+          acis_elements: {
+            annual: {
+              "name": "pcpn",
+              "interval": "yly",
+              "duration": "yly",
+              "reduce": "cnt_gt_1"
+            }
+          },
+          dataconverters: {
+            metric: no_conversion,
+            english: no_conversion
+          },
+          ytitles: {
+            annual: {
+              absolute: {
+                english: "Days per year with more than 1in precip",
+                metric: "Days per year with more than 25.3mm precip"
+              },
+              anomaly: {
+                english: "Days per year with more than 1in precip departure",
+                metric: "Days per year with more than 25.3mm precip departure"
+              }
+            }
+          },
+          supports_region: function supports_region() {
+            return true;
+          }
+        }, {
+          id: "days_pcpn_gt_2in",
+          title: {
+            english: "Days per year with more than 2in precip",
+            metric: "Days per year with more than 50.8mm precip"
+          },
+          acis_elements: {
+            annual: {
+              "name": "pcpn",
+              "interval": "yly",
+              "duration": "yly",
+              "reduce": "cnt_gt_2"
+            }
+          },
+          dataconverters: {
+            metric: no_conversion,
+            english: no_conversion
+          },
+          ytitles: {
+            annual: {
+              absolute: {
+                english: "Days per year with more than 2in precip",
+                metric: "Days of Precipitation Above 50.8mm"
+              },
+              anomaly: {
+                english: "Days per year with more than 2in precip departure",
+                metric: "Days of Precipitation Above 50.8mm departure"
+              }
+            }
+          },
+          supports_region: function supports_region() {
+            return true;
+          }
+        }, {
+          id: "days_pcpn_gt_3in",
+          title: {
+            english: "Days per year with more than 3in precip",
+            metric: "Days per year with more than 76.2mm precip"
+          },
+          acis_elements: {
+            annual: {
+              "name": "pcpn",
+              "interval": "yly",
+              "duration": "yly",
+              "reduce": "cnt_gt_3"
+            }
+          },
+          dataconverters: {
+            metric: no_conversion,
+            english: no_conversion
+          },
+          ytitles: {
+            annual: {
+              absolute: {
+                english: "Days per year with more than 3in precip",
+                metric: "Days per year with more than 76.2mm precip"
+              },
+              anomaly: {
+                english: "Days per year with more than 3in precip departure",
+                metric: "Days per year with more than 76.2mm precip departure"
+              }
+            }
+          },
+          supports_region: function supports_region() {
+            return true;
+          }
+        }, {
+          id: "days_pcpn_gt_4in",
+          title: {
+            english: "Days per year with more than 4in precip",
+            metric: "Days per year with more than 101.6mm precip"
+          },
+          acis_elements: {
+            annual: {
+              "name": "pcpn",
+              "interval": "yly",
+              "duration": "yly",
+              "reduce": "cnt_gt_4"
+            }
+          },
+          dataconverters: {
+            metric: no_conversion,
+            english: no_conversion
+          },
+          ytitles: {
+            annual: {
+              absolute: {
+                english: "Days per year with more than 4in precip",
+                metric: "Days per year with more than 101.6mm precip"
+              },
+              anomaly: {
+                english: "Days per year with more than 4in precip departure",
+                metric: "Days per year with more than 101.6mm precip departure"
+              }
+            }
+          },
+          supports_region: function supports_region(region) {
+            return !ClimateByLocationWidget.is_ak_region(region);
+          }
+        }];
+      }
+    }, {
+      key: "frequencies",
+      get: function get() {
+        return [{
+          id: 'annual',
+          title: 'Annual',
+          supports_region: function supports_region() {
+            return true;
+          }
+        }, {
+          id: 'monthly',
+          title: 'Monthly',
+          supports_region: function supports_region(region) {
+            return !ClimateByLocationWidget.is_ak_region(region);
+          }
+        }, {
+          id: 'seasonal',
+          title: 'Seasonal',
+          supports_region: function supports_region(region) {
+            return !ClimateByLocationWidget.is_ak_region(region);
+          }
+        }];
+      }
+    }]);
+
+    return ClimateByLocationWidget;
+  }(); //
+
+  (function ($) {
+    if (!$.hasOwnProperty('widget')) {
+      console.log("jQuery Widget not found, disabled support for Climate By Location jQuery api.");
+      return;
+    }
+
+    $.widget("nemac.climate_by_location", {
+      element: null,
+      climate_by_location_widget: null,
+      _create: function _create() {
+        this.climate_by_location_widget = new ClimateByLocationWidget(this.element, this.options);
+      },
+      _setOptions: function _setOptions(options) {
+        this.climate_by_location_widget.set_options(options);
+        return this;
+      },
+      update: function update() {
+        this.climate_by_location_widget.update();
+      },
+      resize: function resize() {
+        this.climate_by_location_widget.resize();
+      },
+      setXRange: function setXRange(min, max) {
+        return this.climate_by_location_widget.set_x_axis_range(min, max);
+      },
+      get_variables: function get_variables(frequency, unitsystem, region) {
+        return ClimateByLocationWidget.get_variables(frequency, unitsystem, region);
+      },
+      download_image: function download_image(link) {
+        this.climate_by_location_widget.download_image(link);
+      },
+      download_hist_obs_data: function download_hist_obs_data(link) {
+        this.climate_by_location_widget.download_hist_obs_data(link);
+      },
+      download_hist_mod_data: function download_hist_mod_data(link) {
+        this.climate_by_location_widget.download_hist_mod_data(link);
+      },
+      download_proj_mod_data: function download_proj_mod_data(link) {
+        this.climate_by_location_widget.download_proj_mod_data(link);
+      }
+    });
+  })(jQuery); //
+  // Utility functions
+  //
+
+
+  function fahrenheit_to_celsius(f) {
+    return 5 / 9 * (f - 32);
+  }
+
+  function fdd_to_cdd(fdd) {
+    return fdd / 9 * 5;
+  }
+
+  function inches_to_mm(inches) {
+    return inches * 25.4;
+  }
+
+  function no_conversion(x) {
+    return x;
+  }
+
+  return ClimateByLocationWidget;
+
+}));

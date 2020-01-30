@@ -6,12 +6,21 @@
   flex: 1 1 auto !important;
   margin-bottom: 6px;
 
+  @include kind-of-tiny {
+    min-height: calc(100% - 48px - 12px - 64px) !important;
+    height: calc(100% - 48px - 12px - 64px) !important;
+  }
+
   &:after {
     content: '';
     width: 100%;
     height: 5px;
     position: absolute;
     top: calc(100% - 105px);
+
+    @include kind-of-tiny {
+      top: calc(100% - 75px);
+    }
     left: -2px;
     @include box-shadow( inset 0 -2px 2px transparentize(#000, 0.7));
   }
@@ -23,6 +32,10 @@
       height: calc(100% - 48px - 12px - 100px) !important;
       &:after {
         top: calc(100% - 117px);
+
+        @include kind-of-tiny {
+          top: calc(100% - 147px);
+        }
       }
     }
 
@@ -30,6 +43,15 @@
     height: calc(100% - 48px - 12px - 170px) !important;
     &:after {
       top: calc(100% - 187px);
+
+      @include kind-of-tiny {
+        top: calc(100% - 147px);
+      }
+    }
+
+    @include kind-of-tiny {
+      min-height: calc(100% - 48px - 12px - 130px) !important;
+      height: calc(100% - 48px - 12px - 130px) !important;
     }
   }
 
@@ -106,9 +128,6 @@
     }
 
     .select-styled {
-      // background-color: $ce3-blue3 !important;
-      // color: $ce3-blue5 !important;
-
       a {
         color: $ce3-blue5 !important;
       }
@@ -120,6 +139,17 @@
       &:after {
         background-color: $ce3-blue5 !important;
         color: $ce3-blue3 !important;
+      }
+
+      &:hover, &:focus {
+        outline: none !important;
+        color: lighten($ce3-blue5, 20) !important;
+        font-weight: $font-weight-normal-plus;
+
+        &.disabled {
+          color: $ce3-blue5alpha !important;
+          outline: none !important;
+        }
       }
     }
 
@@ -139,7 +169,21 @@
         a {
           color: $ce3-blue5 !important;
         }
-        &:hover {
+
+        &:hover, &:focus  {
+          color: $ce3-blue5 !important;
+          background:  lighten($ce3-blue4, 7)  !important;
+
+          &.default-select-option-disabled {
+            color: $ce3-blue5alpha !important;
+            background: $ce3-blue3 !important;;
+            cursor: default !important;
+          }
+        }
+      }
+
+      span {
+        &:hover, &:focus  {
           color: $ce3-blue5 !important;
           background:  lighten($ce3-blue4, 7)  !important;
         }
@@ -156,17 +200,29 @@
 #downloads-select-wrapper, #stations-select-wrapper, {
   background-color: $ce3-blue5;
   color: $ce3-blue3;
-  font: 500 14px $roboto !important;
+  font: $font-weight-normal 14px $roboto !important;
 
   @include medium {
     display: none !important;
   }
+
+  li.disabled {
+    color: $ce3-disabled-font !important;
+    a {
+      color: $ce3-disabled-font !important;
+    }
+    &:hover, &:focus  {
+      color: $ce3-disabled-font !important;
+      background:  $ce3-blue5  !important;
+      font: $font-weight-normal 14px $roboto !important;
+    }
+  }
 }
 
-#chartmap-select-wrapper, #time-select-wrapper, #presentation-select-wrapper {
+#chartmap-select-wrapper, #time-select-wrapper, #presentation-select-wrapper, #tidalzoom-select-wrapper {
   background-color: $ce3-blue5;
   color: $ce3-blue3;
-  font: 500 14px $roboto !important;
+  font: $font-weight-normal 14px $roboto !important;
   margin-left: $ce3-padding-half !important;
   margin-right: $ce3-padding-half !important;
   display: none !important;
@@ -183,19 +239,29 @@
   }
 }
 
+.chart-info-row-btn {
+  @include medium {
+    margin-left: 0px !important;
+    margin-right: 0px !important;
+    height: auto !important;
+    margin-top: $ce3-padding-half !important;
+    width: 100% !important;
+  }
+}
+
 #filters-row {
   .select-options {
     margin-top: 0px !important;
   }
 }
 
-#chartmap-wrapper, #time-wrapper, #presentation-wrapper  {
+#chartmap-wrapper, #time-wrapper, #presentation-wrapper, #tidalzoom-wrapper  {
   @include medium {
     display: none !important;
   }
 }
 
-#varriable-select-wrapper, #chartmap-wrapper, #time-wrapper, #presentation-wrapper {
+#varriable-select-wrapper, #chartmap-wrapper, #time-wrapper, #presentation-wrapper, #tidalzoom-wrapper   {
   @include medium {
     height: auto !important;
     width: 100% !important;
@@ -208,6 +274,16 @@
   #btn-chart {
     width: 100% !important;
     height: 30px !important;
+    height: $ce3-btnheight-legends !important;
+    margin-left: $ce3-default-padding;
+    margin-right: $ce3-default-padding;
+    @include border-radius(5px, 5px);
+    &.btn-default-selected {
+      height: $ce3-btnheight-legends !important;
+      margin-left: $ce3-default-padding;
+      margin-right: $ce3-default-padding;
+      @include border-radius(5px, 5px !important);
+    }
   }
 
   @include medium {
@@ -287,12 +363,7 @@
   border: unset !important;
   top: -4px !important;
 
-  &:focus {
-    outline: none !important;
-    @include box-shadow(0px 0px 0px 8px  transparentize($ce3-blue3, 0.75) !important);
-  }
-
-  &:hover {
+  &:hover, &:focus {
     outline: none !important;
     @include box-shadow(0px 0px 0px 8px  transparentize($ce3-blue3, 0.75) !important);
   }
@@ -323,8 +394,13 @@
   padding-top: $ce3-default-padding !important;
   padding-bottom: $ce3-default-padding !important;
   width: 60% !important;
+  height: $ce3-btnheight-legends !important;
+
   #btn-chart {
-    height: $ce3-btnheight-legends !important
+    height: $ce3-btnheight-legends !important;
+    margin-left: $ce3-default-padding;
+    margin-right: $ce3-default-padding;
+    @include border-radius(5px, 5px);
   }
 
   @include medium {
@@ -336,6 +412,7 @@
     #btn-chart {
       height: $ce3-btnheight-smallecreen !important;
       width: 100% !important;
+      margin-top: $ce3-default-padding;
     }
     .circle-box-left {
       @include border-top-radius(5px);
@@ -352,35 +429,66 @@
   justify-content: space-evenly !important;
   height: 100% !important;
 
-  @include medium-min {
-    height: calc(100% - 195px) !important;
+  .chart-nodata-message {
+    z-index: 500;
+    width: 50%;
+    position: absolute;
+    top: -250px;
+    left: 150px;
+    @include very-small {
+      position: relative;
+      top: -50px !important;
+      left: -25% !important;
+      width: 50%;
+      margin-left: -25%;
+    }
+    text-align: center;
+    padding: $ce3-default-padding;
+
+    background-color: $ce3-warning-state!important;
+    color: $ce3-blue6 !important;
+    // background-color: lighten($ce3-warning-state, 30)!important;
+    // color: $ce3-warning-state !important;
+    font: 500 14px $roboto !important;
+    border: 1px solid $ce3-warning-state !important;
+    @include border-radius(5px, 5px);
   }
+
+  @include medium-height {
+    .chart-wrap {
+      height: calc(100% - 95px) !important;
+    }
+  }
+
+  @include short {
+    .chart-wrap {
+      height: calc(100% - 85px) !important;
+      min-height: 125px !important;
+    }
+  }
+
 
   &.closed-filters {
     @include medium-min {
       height: calc(100% - 135px) !important;
     }
 
-    .chart-wrap {
-      // height: calc(100%) !important;
-    }
-
     #annual-slider-wrapper {
-      height: 7% !important;
+      height: $ce3-btnheight-legends !important;
     }
 
     #monthly-select-wrapper {
-      height: 7% !important;
+      height: 250px !important;
     }
 
     #legend-wrapper {
-      height: 7% !important;
+      height: 50px !important;
     }
   }
 
   @include large {
     justify-content: center !important;
-    height: auto !important;
+    height: calc(100% - 75px) !important;
     min-height: unset !important;
   }
 
@@ -399,19 +507,19 @@
       }
 
       #annual-slider-wrapper {
-        height: auto !important;
+        height: $ce3-btnheight-legends !important;
       }
 
       #monthly-select-wrapper {
-        height: auto !important;
+        height: 250px !important;
       }
 
       #legend-wrapper {
-        height: auto !important;
+        height: 300px !important;
       }
     }
-
   }
+
   @include very-small {
     height: auto !important;
     order: 1;
@@ -422,13 +530,52 @@
   }
 }
 
+#chart-info-row {
+  &:hover, &:focus {
+    outline: none;
+  }
+  @include medium {
+    order: 3;
+  }
+
+  .explainer-spacer {
+    padding-top: $ce3-default-padding*2 !important;
+  }
+
+  .chart-info-img, .chart-info-text {
+    @include medium {
+      width: 100% !important;
+    }
+  }
+  .chart-info-img {
+    @include medium {
+      display: flex !important;
+      align-items: center !important;
+      align-content: center !important;
+      justify-content: center !important;
+    }
+  }
+}
+
 #annual-slider-wrapper {
   @include medium {
-    height: auto !important;
+    height: $ce3-btnheight-legends !important;
     order: 2;
-    // #slider-range {
-    //   // width: 60% !important;
-    // }
+  }
+}
+
+#more-info-description  {
+  .about-tool-row {
+    width: 100% !important;
+  }
+  ul {
+    list-style-type: square;
+    list-style-position: inside;
+    padding: $ce3-padding-half;
+    li {
+      margin-left: $ce3-padding-half;
+      margin-top: $ce3-padding-half;
+    }
   }
 }
 

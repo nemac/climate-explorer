@@ -19,48 +19,49 @@
   <div id="search-row" class="padding-horizontal d-flex-row flex-justify padding-top padding-bottom-half d-flex-justify" >
 
     <div class="rounded-box-secondary input-outer padding-horrizontal bottom-padding default-btn-height search-box-secondary width-40">
-      <input id="cards-search-input" type="text" class="location-mapper input-inner-default border-none default-btn-height width-90" autocomplete="off" placeholder="Enter county, city, or zip code">
+      <input tabindex="1" id="cards-search-input" type="text" class="location-mapper input-inner-default border-none default-btn-height" autocomplete="off" placeholder="Enter county, city, or zip code">
       <span class="icon icon-search search-default float-right padding-default"></span>
+      <div id="clear-location-wrapper" class="">
+        <a id="clear-location-link" href="../historical-weather-data" class="d-none"></a>
+        <span id="clear-location" nav="historical-weather-data" link="clear-location-link" class="fas fa-times-circle"></span>
+      </div>
     </div>
 
     <div id="stations-select-wrapper" class="rounded-choice-box padding-horrizontal default-btn-height top-select-wrapper d-flex-center">
       <div class="select stations-select">
-        <div id="stations-select-vis" class="select-styled" rel="station-1">Stations</div>
+        <div tabindex="20" id="stations-select-vis" class="select-styled" rel="station-1">Stations</div>
         <ul class="select-options">
-          <li rel="station-1" class="default-select-option">Stations 1</li>
-          <li rel="station-2" class="default-select-option">Stations 2</li>
+          <li tabindex="21" rel="station-1" class="default-select-option">Stations 1</li>
+          <li tabindex="22" rel="station-2" class="default-select-option">Stations 2</li>
         </ul>
       </div>
     </div>
 
-    <div id="downloads-select-wrapper" class="rounded-choice-box padding-horrizontal default-btn-height top-select-wrapper d-flex-center">
+    <div id="downloads-select-wrapper" class="rounded-choice-box padding-horrizontal default-btn-height top-select-wrapper d-flex-center disabled">
 
       <div class="select download-select">
-        <div id="downnloads-select-vis" class="select-styled disabled" rel="none" href="javascript:void(0);">
+        <div tabindex="5000" id="downnloads-select-vis" class="select-styled disabled" rel="none" href="javascript:void(0);">
           <i class="fas fa-download select-icon"></i>
           <a rel="none" href="javascript:void(0);" >Downloads</a>
         </div>
         <ul class="select-options" style="display: none;">
-          <li icon="fas fa-download select-icon"  class="default-select-option">
-            <a rel="none" href="javascript:void(0);" >Downloads</a>
-          </li>
           <div icon="fas fa-temperature-high select-icon" class="default-select-option-group">
             <i class="fas fa-temperature-high select-icon"></i>Temperature
           </div>
-          <li rel="download-temperature-image" icon="fas fa-download select-icon" href="javascript:void(0);" class="default-select-option">
-            <a rel="download-temperature-image" href="javascript:void(0);" >Download temperature image</a>
+          <li tabindex="5001" rel="download-temperature-image" icon="fas fa-download select-icon" href="javascript:void(0);" class="default-select-option">
+            <a tabindex="5001" rel="download-temperature-image" class="download-link" href="javascript:void(0);" >Download temperature image</a>
           </li>
-          <li rel="download-temperature-data" icon="fas fa-download select-icon" href="javascript:void(0);" class="default-select-option">
-            <a rel="download-temperature-data" href="javascript:void(0);" >Download temperature data</a>
+          <li tabindex="5002" rel="download-temperature-data" icon="fas fa-download select-icon" href="javascript:void(0);" class="default-select-option">
+            <a tabindex="5002" rel="download-temperature-data" class="download-link" href="javascript:void(0);" >Download temperature data</a>
           </li>
           <div icon="fas fa-cloud-rain select-icon" class="default-select-option-group">
             <i class="fas fa-cloud-rain select-icon"></i>Precipitation
           </div>
-          <li rel="download-image" icon="fas fa-download select-icon" href="javascript:void(0);" class="default-select-option">
-            <a rel="download-precipitation-image" href="javascript:void(0);" >Download precipitation image</a>
+          <li tabindex="5003" rel="download-image" icon="fas fa-download select-icon" href="javascript:void(0);" class="default-select-option">
+            <a tabindex="5004" rel="download-precipitation-image" class="download-link" href="javascript:void(0);" >Download precipitation image</a>
           </li>
-          <li rel="download-precipitation-observed-data" icon="fas fa-download select-icon" href="javascript:void(0);" class="default-select-option">
-            <a rel="download-precipitation-data" href="javascript:void(0);" >Download precipitation data</a>
+          <li tabindex="5004" rel="download-precipitation-observed-data" icon="fas fa-download select-icon" href="javascript:void(0);" class="default-select-option">
+            <a tabindex="5004" rel="download-precipitation-data" class="download-link" href="javascript:void(0);" >Download precipitation data</a>
           </li>
 
         </ul>
@@ -72,13 +73,10 @@
   <div id="info-row" class="padding-vertical width-100" >
     <div class="rounded-filters-box padding-default width-100">
 
-      <div class="d-flex-row">
+      <div class="filter-border-bottom d-flex-row">
 
         <div id="info-text-wrapper" class="width-90">
           <i class="fas fa-chart-area icon-info-box"></i>
-          <!-- <span id="default-city-state" class="text-info-box" ></span>
-          <span id="" class="text-info-box" > in </span>
-          <span id="default-city-county" class="text-info-box"></span> -->
           <span id="station-info-none" class="padding-horizontal">Select a Station</span>
           <span id="station-info" class="padding-horizontal d-none">
             <span id="default-station-label" class="text-info-box label" >Station id: </span>
@@ -104,21 +102,30 @@
         <a id="chartmap-btn-chart-link"  href="../historical-weather-data" class="d-none"></a>
         <a id="chartmap-btn-map-link"  href="../historical-weather-data" class="d-none">Map</a>
         <div id="chartmap-wrapper" class="padding-horrizontal-half padding-vertical-half default-btn-height d-flex-center width-20 disabled">
-          <div id="btn-chart" class="btn-chart btn-default circle-box-left d-flex-center width-50" val="chart" nav="historical-weather-data" link="chartmap-btn-chart-link" sel="chartmap-select-vis">
+          <div tabindex="5005" id="btn-chart" class="btn-chart btn-default circle-box-left d-flex-center width-50" val="chart" nav="historical-weather-data" link="chartmap-btn-chart-link" sel="chartmap-select-vis">
             Chart
           </div>
-          <div id="btn-chart" class="btn-map btn-default-selected circle-box-right d-flex-center width-50"  nav="historical-weather-data"  val="map" link="chartmap-btn-map-link" sel="chartmap-select-vis">
+          <div tabindex="5006" id="btn-chart" class="btn-map btn-default-selected circle-box-right d-flex-center width-50"  nav="historical-weather-data"  val="map" link="chartmap-btn-map-link" sel="chartmap-select-vis">
             Map
           </div>
         </div>
 
         <div id="chartmap-select-wrapper" class="rounded-choice-box padding-horrizontal-half padding-vertical-half default-btn-height d-flex-center width-20">
           <div class="select chartmap-select">
-            <div id="chartmap-select-vis" class="select-styled" rel="chart">Map</div>
+            <div tabindex="5007" id="chartmap-select-vis" class="select-styled" rel="chart">Map</div>
             <ul class="select-options">
-              <li id="chartmap-select-chart-link" rel="chart" class="default-select-option" nav="historical-weather-data" link="chartmap-btn-chart-link" >Chart</li>
-              <li id="chartmap-select-map-link" rel="map" class="default-select-option" nav="historical-weather-data" link="chartmap-btn-map-link">Map</li>
+              <li tabindex="5008" rel="chart" id="chartmap-select-chart-link" class="default-select-option" nav="historical-weather-data" link="chartmap-btn-chart-link" >Chart</li>
+              <li tabindex="5009" rel="map" id="chartmap-select-map-link" class="default-select-option" nav="historical-weather-data" link="chartmap-btn-map-link">Map</li>
             </ul>
+          </div>
+        </div>
+
+        <div tabindex="5009" id="chart-info-row" class="chart-info-row-btn rounded-choice-box default-btn-height d-flex-row flex-justify padding-bottom-half d-flex-left" >
+          <div class="more-info btn-default d-none">
+            <span class="fas fa-info more-info more-icon"></span>
+            <span class="fas fa-info more-info less-icon d-none"></span>
+            <span class="more">About the graph</span>
+            <span class="less d-none">About the graph</span>
           </div>
         </div>
 
@@ -141,19 +148,27 @@
     </div>
   </div>
 
-  <div id="station-info-row" class="d-flex-row flex-justify padding-horrizontal padding-bottom d-flex-left d-none" >
-    <span class="padding-bottom-half" >Pan or zoom on these graphs to view other years. Place your cursor on either axis and then scroll, click-and-drag,
-      or hold down your SHIFT key and scroll to adjust the display.
-    </span>
-    <span class="padding-top-half" >Blue bars on temperature graphs indicate the range of observed temperatures for each day; the green band shows Climate Normals
-      for temperature&mdash;the average temperature range at that station from 1981-2010. Blue areas on precipitation graphs
-      track year-to-date cumulative precipitation; the black line shows Climate Normals for precipitation.
-      Data from <a target="_blank" href="https://www.ncdc.noaa.gov/data-access/land-based-station-data/land-based-datasets/global-historical-climatology-network-ghcn">
-        Global Historical Climatology Network-Daily dataset</a>,
-      served by  <a target="_blank"  href="http://www.rcc-acis.org/">ACIS</a>.
+  <div id="station-info-row" class="d-flex-row flex-justify padding-bottom d-flex-left d-none" >
+    <span id="more-info-description" class="rounded-description-box d-none" >
+      <div class="more-caret d-flex-center">
+        <span class="fas fa-angle-down"></span>
+      </div>
+
+      <div class="padding-default">
+        <h2>Reading the historical weather charts</h2>
+      </div>
+      <div class="chart-info-text btn-chart-text left-padding padding-bottom-half" >Blue bars on temperature graphs indicate the range of observed temperatures for each day; the green band shows Climate Normals
+        for temperature&mdash;the average temperature range at that station from 1981-2010. Blue areas on precipitation graphs
+        track year-to-date cumulative precipitation; the black line shows Climate Normals for precipitation.
+        Data from <a target="_blank" href="https://www.ncdc.noaa.gov/data-access/land-based-station-data/land-based-datasets/global-historical-climatology-network-ghcn">
+          Global Historical Climatology Network-Daily dataset</a>,
+        served by <a target="_blank"  href="http://www.rcc-acis.org/">ACIS</a>.
+      </div>
+      <div class="chart-info-text btn-chart-text left-padding padding-bottom-half" >Pan or zoom on these graphs to view other years. Place your cursor on either axis and then scroll, click-and-drag,
+        or hold down your SHIFT key and scroll to adjust the display.
+      </div>
     </span>
   </div>
-
 
 </div>
 <!-- </div> -->
@@ -172,5 +187,6 @@ integrity="sha384-duFUjKTSNoxEspdJNwr83CUgRxclf0ueKJB9DU/Vbit6bfWgzvZsHW6H1JLBBX
 <script type="text/javascript" src="/resources/js/ce3-ui-components.js"></script>
 <script type="text/javascript" src="/resources/js/historical-weather-data.js"></script>
 <script type="text/javascript" src="/resources/js/nouislider.min.js"></script>
+<script type="text/javascript" src="/resources/js/secondary_header.js"></script>
 </body>
 </html>

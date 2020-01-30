@@ -6,15 +6,24 @@
     flex: 0 1 $ce3-main-bottom !important;
     height: $ce3-main-bottom !important;
     align-self: flex-end !important;
+    @include kind-of-tiny {
+      flex: 0 1 70px !important;
+      height: 70px !important;
+    }
 
     &.expanded {
       @include nav-footer-850-min {
-        flex: 0 1 100px !important;
-        height: 100px !important;
+        flex: 0 1 70px !important;
+        height: 70px !important;
       }
 
       flex: 0 1 170px !important;
       height: 170px !important;
+
+      @include kind-of-tiny {
+        flex: 0 1 130px !important;
+        height: 130px !important;
+      }
     }
 }
 
@@ -49,14 +58,46 @@
       padding-right: $ce3-default-horizontal-padding/2 !important;
     }
   }
+
+  .padding-horrizontal {
+    @include kind-of-tiny {
+      padding-right: 35px !important;
+    }
+
+    @include tiny {
+      padding-right: 30px !important;
+    }
+    
+    @include kind-of-small-to-see {
+      padding-right: 21px !important;
+    }
+
+    @include to-small-to-see {
+      padding-right: $ce3-default-horizontal-padding !important;
+    }
+  }
 }
 
 .nav-footer-item {
   cursor: pointer;
-  font: 500 14px $roboto !important;
+  font: $font-weight-normal 14px $roboto !important;
   color: $ce3-darkgray !important;
   justify-content: center !important;
   align-items: center !important;
+  &.nav-disabled {
+    cursor: default;
+    color: lighten($ce3-darkgray, 10) !important;
+  }
+
+  &:hover, &:focus {
+    @include border-radius(5px, 5px);
+    @include box-shadow(0px 2px 4px transparentize(#000, 0.761));
+    outline: none !important;
+    &.nav-disabled {
+      @include border-radius(0px, 0px);
+      @include box-shadow(0px 0px 0px transparentize(#000, 0.761));
+    }
+  }
 
   .nav-footer-label {
     color: $ce3-darkgray !important;
@@ -76,7 +117,7 @@
   @include nav-footer-330-max {
     font-size: 28px !important;
   }
-  font-weight: 500 !important;
+  font-weight: $font-weight-normal !important;
   @include nav-footer-400-min {
     justify-content: center !important;
     align-content: center !important;
@@ -85,28 +126,40 @@
 
 .nav-footer-item-selected {
   cursor: pointer;
-  font: 600 14px $roboto !important;
+  font: $font-weight-normal-plus 14px $roboto !important;
   color: $ce3-blue3 !important;
   justify-content: center !important;
   align-content: center !important;
   align-self: center !important;
+  &.nav-disabled {
+    cursor: default;
+    color: lighten($ce3-blue3, 10) !important;
+  }
+
+  &:hover, &:focus {
+    @include border-radius(5px, 5px);
+    @include box-shadow(0px 2px 4px transparentize(#000, 0.761));
+    outline: none !important;
+    &.nav-disabled {
+      @include border-radius(0px, 0px);
+      @include box-shadow(0px 0px 0px transparentize(#000, 0.761));
+    }
+  }
 
   .nav-footer-label {
-    // font-size: 16px !important;
-    font-weight: 600 !important;
+    font-weight: $font-weight-normal-plus !important;
     color: $ce3-blue3 !important;
   }
 
   .nav-footer-icon {
-    // font-size: 50px !important;
-    font-weight: 600 !important;
+    font-weight: $font-weight-normal-plus !important;
     color: $ce3-blue3 !important;
   }
 }
 
 .nav-footer-label {
   font-size: 14px !important;
-  font-weight: 500;
+  font-weight: $font-weight-normal;
   justify-content: center !important;
   align-content: center !important;
   align-self: center !important;
@@ -115,6 +168,12 @@
   }
   @include nav-footer-1224-max {
     display: none
+  }
+}
+
+.nav-disabled {
+  .nav-footer-label, .nav-footer-icon {
+    color: lighten($ce3-darkgray, 25) !important;
   }
 }
 
@@ -142,7 +201,7 @@
 }
 
 .nav-footer-area-title {
-  font: 500 16px $roboto !important;
+  font: $font-weight-normal 16px $roboto !important;
   color: $ce3-darkgray !important;
 }
 
@@ -152,7 +211,7 @@
   margin-right: 6px !important;
   width: 30% !important;
 
-  @include nav-footer-950-max{
+  @include nav-footer-950-max {
     width: 20% !important;
   }
 
@@ -250,6 +309,9 @@
     .nav-footer-area-line {
       // display: none !important;
     }
+  }
 
+  @include kind-of-tiny {
+    display: none !important;
   }
 }

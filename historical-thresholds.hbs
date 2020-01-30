@@ -19,36 +19,37 @@
     <div id="search-row" class="padding-horizontal d-flex-row flex-justify padding-top padding-bottom-half d-flex-justify" >
 
       <div class="rounded-box-secondary input-outer padding-horrizontal bottom-padding default-btn-height search-box-secondary width-40">
-        <input id="cards-search-input" type="text" class="location-mapper input-inner-default border-none default-btn-height width-90" autocomplete="off" placeholder="Enter county, city, or zip code">
+        <input tabindex="1" id="cards-search-input" type="text" class="location-mapper input-inner-default border-none default-btn-height" autocomplete="off" placeholder="Enter county, city, or zip code">
         <span class="icon icon-search search-default float-right padding-default"></span>
+        <div id="clear-location-wrapper" class="">
+          <a id="clear-location-link"  href="../historical-thresholds" class="d-none"></a>
+          <span id="clear-location" nav="historical-thresholds" link="clear-location-link" class="fas fa-times-circle"></span>
+        </div>
       </div>
 
       <div id="stations-select-wrapper" class="rounded-choice-box padding-horrizontal default-btn-height top-select-wrapper d-flex-center">
         <div class="select stations-select">
-          <div id="stations-select-vis" class="select-styled" rel="station-1">Stations</div>
+          <div tabindex="20" id="stations-select-vis" class="select-styled" rel="station-1">Stations</div>
           <ul class="select-options">
-            <li rel="station-1" class="default-select-option">Stations 1</li>
-            <li rel="station-2" class="default-select-option">Stations 2</li>
+            <li tabindex="21" rel="station-1" class="default-select-option">Stations 1</li>
+            <li tabindex="20" rel="station-2" class="default-select-option">Stations 2</li>
           </ul>
         </div>
       </div>
 
-      <div id="downloads-select-wrapper" class="rounded-choice-box padding-horrizontal default-btn-height top-select-wrapper d-flex-center">
+      <div id="downloads-select-wrapper" class="rounded-choice-box padding-horrizontal default-btn-height top-select-wrapper d-flex-center disabled">
 
         <div class="select download-select">
-          <div id="downnloads-select-vis" class="select-styled disabled" rel="none" href="javascript:void(0);">
+          <div tabindex="5000" id="downnloads-select-vis" class="select-styled disabled" rel="none" href="javascript:void(0);">
             <i class="fas fa-download select-icon"></i>
-            <a rel="none" href="javascript:void(0);" >Downloads</a>
+            <a rel="none" class="download-link" href="javascript:void(0);" >Downloads</a>
           </div>
           <ul class="select-options" style="display: none;">
-            <li icon="fas fa-download select-icon"  class="default-select-option">
-              <a rel="none" href="javascript:void(0);" >Downloads</a>
-            </li>
             <li rel="download-thresholds-image" icon="fas fa-download select-icon" href="javascript:void(0);" class="default-select-option">
-              <a rel="download-thresholds-image" href="javascript:void(0);" >Download threshold image</a>
+              <a tabindex="5001" rel="download-thresholds-image" class="download-link" href="javascript:void(0);" >Download threshold image</a>
             </li>
             <li rel="download-thresholds-data" icon="fas fa-download select-icon" href="javascript:void(0);" class="default-select-option">
-              <a rel="download-thresholds-data" href="javascript:void(0);" >Download threshold data</a>
+              <a tabindex="5002" rel="download-thresholds-data" class="download-link" href="javascript:void(0);" >Download threshold data</a>
             </li>
           </ul>
         </div>
@@ -57,16 +58,12 @@
     </div>
 
     <div id="info-row" class="padding-vertical width-100" >
-      <!-- d-flex-row flex-justify padding-top-half padding-bottom-half d-flex-center -->
       <div class="rounded-filters-box padding-default width-100">
 
-        <div class="d-flex-row">
+        <div class="filter-border-bottom d-flex-row">
 
           <div id="info-text-wrapper" class="width-90">
             <i class="fas fa-chart-bar icon-info-box"></i>
-            <!-- <span id="default-city-state" class="text-info-box" ></span>
-            <span id="" class="text-info-box" > in </span>
-            <span id="default-city-county" class="text-info-box"></span> -->
             <span id="station-info-none" class="padding-horizontal">Select a Station</span>
 
             <span id="station-info" class="padding-horizontal d-none">
@@ -93,10 +90,10 @@
           <a id="chartmap-btn-chart-link"  href="../historical-weather-data" class="d-none"></a>
           <a id="chartmap-btn-map-link"  href="../historical-weather-data" class="d-none">Map</a>
           <div id="chartmap-wrapper" class="padding-horrizontal-half padding-vertical-half default-btn-height d-flex-center width-20 disabled">
-            <div id="btn-chart" class="btn-chart btn-default circle-box-left d-flex-center width-50" val="chart" nav="historical-weather-data" link="chartmap-btn-chart-link" sel="chartmap-select-vis">
+            <div tabindex="5003" id="btn-chart" class="btn-chart btn-default circle-box-left d-flex-center width-50" val="chart" nav="historical-weather-data" link="chartmap-btn-chart-link" sel="chartmap-select-vis">
               Chart
             </div>
-            <div id="btn-chart" class="btn-map btn-default-selected circle-box-right d-flex-center width-50"  nav="historical-weather-data"  val="map" link="chartmap-btn-map-link" sel="chartmap-select-vis">
+            <div tabindex="5004" id="btn-chart" class="btn-map btn-default-selected circle-box-right d-flex-center width-50"  nav="historical-weather-data"  val="map" link="chartmap-btn-map-link" sel="chartmap-select-vis">
               Map
             </div>
           </div>
@@ -105,23 +102,20 @@
             <div class="select chartmap-select">
               <div id="chartmap-select-vis" class="select-styled" rel="map">Map</div>
               <ul class="select-options">
-                <li id="chartmap-select-chart-link" rel="chart" class="default-select-option" nav="historical-weather-data" link="chartmap-btn-chart-link" >Chart</li>
-                <li id="chartmap-select-map-link" rel="map" class="default-select-option" nav="historical-weather-data" link="chartmap-btn-map-link">Map</li>
+                <li tabindex="5005" id="chartmap-select-chart-link" rel="chart" class="default-select-option" nav="historical-weather-data" link="chartmap-btn-chart-link" >Chart</li>
+                <li tabindex="5006" id="chartmap-select-map-link" rel="map" class="default-select-option" nav="historical-weather-data" link="chartmap-btn-map-link">Map</li>
               </ul>
             </div>
           </div>
 
-
-          <!-- <div id="threshold_inputs_wraper" class="padding-horrizontal-half padding-vertical-half default-btn-height d-flex-left width-80"> -->
-
             <div id="threshold-variable-select-wrapper" class="rounded-choice-box padding-horrizontal-half padding-vertical-half default-btn-height d-flex-center width-20">
               <div class="select threshold-variable-select">
-                <div id="threshold-variable-select-vis" class="select-styled" rel="precipitation">Precipitation</div>
+                <div tabindex="5007" id="threshold-variable-select-vis" class="select-styled" rel="precipitation">Precipitation</div>
                 <ul class="select-options">
-                  <li id="threshold-variable-select-chart-link" rel="precipitation" class="default-select-option" nav="historical-weather-data" link="threshold-variable-btn-chart-link" >Precipitation</li>
-                  <li id="threshold-variable-select-map-link" rel="tavg" class="default-select-option" nav="historical-weather-data" link="threshold-variable-btn-map-link">Average Temperature</li>
-                  <li id="threshold-variable-select-map-link" rel="tmax" class="default-select-option" nav="historical-weather-data" link="threshold-variable-btn-map-link">Maximum Temperature</li>
-                  <li id="threshold-variable-select-map-link" rel="tmin" class="default-select-option" nav="historical-weather-data" link="threshold-variable-btn-map-link">Minimum Temperature</li>
+                  <li tabindex="5008" id="threshold-variable-select-chart-link" rel="precipitation" class="default-select-option" nav="historical-weather-data" link="threshold-variable-btn-chart-link" >Precipitation</li>
+                  <li tabindex="5009" id="threshold-variable-select-map-link" rel="tavg" class="default-select-option" nav="historical-weather-data" link="threshold-variable-btn-map-link">Average Temperature</li>
+                  <li tabindex="5010" id="threshold-variable-select-map-link" rel="tmax" class="default-select-option" nav="historical-weather-data" link="threshold-variable-btn-map-link">Maximum Temperature</li>
+                  <li tabindex="5011" id="threshold-variable-select-map-link" rel="tmin" class="default-select-option" nav="historical-weather-data" link="threshold-variable-btn-map-link">Minimum Temperature</li>
                 </ul>
               </div>
             </div>
@@ -129,28 +123,35 @@
 
             <div id="threshold_value_form_field" class="form-field padding-horrizontal-half padding-vertical-half default-btn-height d-flex width-15">
 
-              <div class="threshold-button threshold-down">-</div>
+              <div tabindex="5012" class="threshold-button threshold-down">-</div>
                 <div class="form-field-control height-100">
-                  <input id="threshold-value" type="number" class="form-field-input height-100" placeholder=" " min="0" max="200" value="1" autofocus="autofocus" step="0.1"/>
+                  <input tabindex="5013" id="threshold-value" type="number" class="form-field-input height-100" placeholder=" " min="0" max="200" value="1" autofocus="autofocus" step="0.1"/>
                   <label for="threshold-value" class="form-field-label height-100">Threshold<span id="threshold-unit"> in inches</span></label>
                   <div class="form-field-bar height-100"></div>
                 </div>
-                <div class="threshold-button threshold-up">+</div>
+                <div tabindex="5014" class="threshold-button threshold-up">+</div>
 
               </div>
 
             <div id="window_value_form_field" class="form-field padding-horrizontal-half padding-vertical-half default-btn-height d-flex width-15">
 
-              <div class="window-button window-down">-</div>
+              <div tabindex="5015" class="window-button window-down">-</div>
               <div class="form-field-control height-100">
-                <input id="window-value" type="number" class="form-field-input height-100" placeholder=" " min="0" max="365" value="1" autofocus="autofocus" step="1"/>
+                <input tabindex="5016" id="window-value" type="number" class="form-field-input height-100" placeholder=" " min="0" max="365" value="1" autofocus="autofocus" step="1"/>
                 <label for="window-value" class="form-field-label height-100">Window<span id="window-unit"> in days</span></label>
                 <div class="form-field-bar height-100"></div>
               </div>
-              <div class="window-button window-up">+</div>
+              <div tabindex="5017" class="window-button window-up">+</div>
             </div>
 
-          <!-- </div> -->
+            <div tabindex="5009" id="chart-info-row" class="chart-info-row-btn rounded-choice-box default-btn-height d-flex-row flex-justify padding-bottom-half d-flex-left d-none " >
+              <div class="more-info btn-default">
+                <span class="fas fa-info more-info more-icon"></span>
+                <span class="fas fa-info more-info less-icon d-none"></span>
+                <span class="more">About the graph</span>
+                <span class="less d-none">About the graph</span>
+              </div>
+            </div>
 
         </div>
 
@@ -170,23 +171,27 @@
       </div>
     </div>
 
-    <div id="station-info-row" class="padding-vertical width-100" >
+    <div id="station-info-row" class="d-flex-row flex-justify padding-bottom d-flex-left d-none" >
+      <span id="more-info-description" class="rounded-description-box d-none" >
+        <div class="more-caret d-flex-center">
+          <span class="fas fa-angle-down"></span>
+        </div>
 
-    <!-- d-flex-row flex-justify padding-horrizontal padding-bottom d-flex-left d-none" > -->
-      <!-- <span class="padding-bottom-half" >Pan or zoom on these graphs to view other years. Place your cursor on either axis and then scroll, click-and-drag,
-        or hold down your SHIFT key and scroll to adjust the display.
-      </span> -->
-      <span class="padding-top-half" >This graph shows how often the selected threshold has been exceeded per year. For consistency,
+        <div class="padding-default">
+          <h2>Reading the thresholds charts</h2>
+        </div>
+        <div class="chart-info-text btn-chart-text left-padding padding-bottom-half" >This graph shows how often the selected threshold has been exceeded per year. For consistency,
         this chart excludes any years that are missing more than five daily temperature reports or more
         than one precipitation report in a single month. Data from
         <a target="_blank" href="https://www.ncdc.noaa.gov/data-access/land-based-station-data/land-based-datasets/global-historical-climatology-network-ghcn">
-          Global Historical Climatology Network</a>, served by <a  target="_blank" href="http://www.rcc-acis.org/">ACIS</a>..
+          Global Historical Climatology Network</a>, served by <a target="_blank" href="http://www.rcc-acis.org/">ACIS</a>.
+        </div>
       </span>
     </div>
 
 
+
   </div>
-    <!-- </div> -->
 
     {{> nav_footer }}
     {{> footer }}
@@ -196,7 +201,6 @@
     <script type="text/javascript" src="/resources/js/stationsMap.js"></script>
     <script type="text/javascript" src="/resources/js/stationAnnualGraph.js"></script>
     <script type="text/javascript" src="/resources/vendor/item/jquery.fl-item.min.js"></script>
-    <script type="text/javascript" src="/resources/vendor/climate-widget-graph/climate-widget-graph.js"></script>
     <script src="https://unpkg.com/terraformer@1.0.8/terraformer.js" integrity="sha384-+M797Pj3WZVCwMmLbOxAoaWYcKJo8NSxItmI48ytcLNeAnfn1d/IckFn31jEqrzP"
     crossorigin="anonymous"></script>
     <script src="https://unpkg.com/terraformer-arcgis-parser@1.0.5/terraformer-arcgis-parser.js"
@@ -204,6 +208,6 @@
     <script type="text/javascript" src="/resources/js/ce3-ui-components.js"></script>
     <script type="text/javascript" src="/resources/js/historical-thresholds.js"></script>
     <script type="text/javascript" src="/resources/js/nouislider.min.js"></script>
-
+    <script type="text/javascript" src="/resources/js/secondary_header.js"></script>
   </body>
   </html>

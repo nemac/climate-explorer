@@ -9,12 +9,16 @@ $ce3-blue2: #0D3064; // main header
 $ce3-blue2alpha: rgba(13, 48, 100, 0.50);
 $ce3-blue3: #124086; // text, button backgrounds, selected icon borders. main color
 $ce3-blue3alpha: rgba(18,64,134,0.50);  // some borders and color disabled items
+$ce3-blue3alphad: rgba(18,64,134,0.05);  // some borders and color disabled items
 $ce3-blue4: #1D6ADD;  // some backgrounds and borders
 $ce3-blue5: #E9F1FC; // button text boxes, not slected radio buttons
 $ce3-blue5alpha: rgba(233, 241, 252,0.50);
+$ce3-blue5alpha2: rgba(233, 241, 252,0.90);
 $ce3-blue6: #FBFCFE; // text for dark backgrounds, light backgrounds, backgrounds for boxes and pulldowns
 // $ce3-darkgray: #4D4D4D; // icon not selected
 $ce3-darkgray: #585858; // #4D4D4D; // icon not selected
+$ce3-error-state: #DB303D; // error state focus and text
+$ce3-warning-state: #f5652d; // #E05B2C; // error state focus and text
 
 $ce3-dark-background: $ce3-blue3;
 $ce3-dark-font: $ce3-blue3;
@@ -24,14 +28,16 @@ $ce3-light-background: $ce3-blue5;
 $ce3-verylight-background: $ce3-blue6;
 $ce3-verylight-font: $ce3-blue6;
 
-$ce3-disabled-font: $ce3-blue3alpha;
-$ce3-border-color: $ce3-blue3alpha;
+$ce3-disabled-font: lighten($ce3-blue3, 50);;
+$ce3-disabled-border: lighten($ce3-blue3, 50);;
+
+$ce3-border-color: $ce3-blue3alphad;
 
 // chart colors - used for legend buttons
 $ce3-lower-emissions: #98BCEB;
 $ce3-higher-emissions: #FBB4AA;
 $ce3-historical-modeled: #D6D6D6;
-$ce3-historical-observed: #ADADAD;
+$ce3-historical-observed: #777777;
 $ce3-yearly-exceedance: #317AD8;
 $ce3-normal-range: #ABDDA4;
 $ce3-actual-range: #3288BD;
@@ -69,30 +75,28 @@ $ce3-default-horizontal-padding: 12px;
 $ce3-padding-big-break: 48px;
 
 $ce3-main-bottom: 100px;
-// $border-radius-5: @include border-radius(5px, 5px);
-//
-// $border-radius-15: @include border-radius(25px, 5px);
 
 $white: #ffffff;
 $black: #000000;
 $blue1: #0058cf;
 $blue2: #233a70;
 $blue3: #d5e8f2;
-$orange1: #f5442d;
+$orange1: #f5442d; //#f5652d
 //$orange1: #d44525;
 $brown1: #904848;
 $grey1: #5f5f5f;
 $grey2: #ebebeb;
 
-
-
-//orange bg #f6602f
-
 // fonts
-
-$roboto: Roboto, Helvetica, 'Helvetica Neue', Arial, sans-serif;
-$sans-book: 'CESans', Roboto, Helvetica, 'Helvetica Neue', Arial, sans-serif;
-$sans-heavy: 'CESans-Heavy', Roboto, Helvetica, 'Helvetica Neue', Arial, sans-serif;
+$montserrat:  Montserrat, Roboto, Helvetica, 'Helvetica Neue', Arial, sans-serif; // default should be everywhere
+$roboto:  Roboto, Helvetica, 'Helvetica Neue', Arial, sans-serif; // default should be everywhere
+$sans-book: 'CESans', Roboto, Helvetica, 'Helvetica Neue', Arial, sans-serif; // legacy left out for consistency
+$sans-heavy: 'CESans-Heavy', Roboto, Helvetica, 'Helvetica Neue', Arial, sans-serif;  // legacy left out for consistency
+$font-weight-normal: 500;
+$font-weight-normal-plus: 500; // 600;
+$font-weight-meduim: 500; // 700;
+$font-weight-heavy: 800;
+$font-weight-very-heavy: 900;
 
 // IMPORTS
 @import "compass/functions";
@@ -191,11 +195,11 @@ h6 {
 
 // font classes
 .main-font-description {
-   font: 500 24px $roboto !important;
+   font: $font-weight-normal 24px $roboto !important;
 }
 
 .font-description {
-   font: 500 24px $roboto !important;
+   font: $font-weight-normal 24px $roboto !important;
 }
 .main-btn-height {
   height: $ce3-main-btn-height !important;
@@ -265,7 +269,7 @@ h6 {
     position: absolute;
     background-color: $ce3-blue6;
     font-family: 'Font Awesome 5 Free';
-    font-weight: 900;
+    font-weight: $font-weight-very-heavy;
     content: '\f0d7';
     right: 0px;
     bottom: 6px;
@@ -293,6 +297,12 @@ h6 {
     right: -2px;
   }
 }
+.download-link {
+  &:hover, &:focus {
+    outline: none !important;
+    font-weight: $font-weight-normal-plus;
+  }
+}
 
 .select-options {
   display: none;
@@ -300,12 +310,22 @@ h6 {
   top: 8px;
   right: 0;
   left: 0;
-  z-index: 999;
+  z-index: 1000;
   margin: 0;
   padding: 0;
   list-style: none;
   background-color: $ce3-blue5;
   max-height: 400px !important;
+
+  @include short {
+    max-height: 250px !important;
+  }
+
+  @include very-short {
+    max-height: 175px !important;
+    top: 2px;
+  }
+
   overflow: auto !important;
   @include border-radius(5px, 5px);
   @include box-shadow(0px 2px 4px transparentize(#000, 0.761));
@@ -321,7 +341,8 @@ h6 {
 
   .default-select-option-group {
     padding: $ce3-padding-half !important;
-    font-weight: 600 !important;
+    font-weight: $font-weight-normal-plus !important;
+    width: 100%;
   }
 
   .default-select-option-disabled {
@@ -336,15 +357,45 @@ h6 {
     border-top: 1px solid $ce3-blue5;
     @include border-radius(5px, 5px);
     @include transition(all 0.15s ease-in);
+    width: 100%;
+    &.with-tip {
+      width: 90%;
+    }
+
+    @include very-large-mid {
+      &.with-tip {
+        width: 80%;
+      }
+    }
+
+    @include very-small {
+      &.with-tip {
+        width: 80%;
+      }
+    }
+
     a {
       color: $ce3-blue3 !important;
     }
-    &:hover {
+
+    &:hover, &:focus {
+      outline: none !important;
       color: $ce3-blue3;
       background:  darken($ce3-blue5, 5);
+      &.default-select-option-disabled {
+        color: $ce3-disabled-font !important;
+        background: $ce3-blue3 !important;;
+        cursor: default !important;
+      }
     }
+
     &[rel="hide"] {
       display: none;
+    }
+  }
+  span {
+    &:hover, &:focus {
+      outline: none !important;
     }
   }
 }
@@ -365,7 +416,10 @@ h6 {
 
   @include small {
     max-height: 250px !important;
-    top: 2px;
+  }
+
+  @include very-small {
+    max-height: 150px !important;
   }
 
   .pac-item {
@@ -388,7 +442,14 @@ h6 {
   }
 }
 
-.pac-container:empty{
+.pac-container:empty {
+}
+
+#filters-row {
+  padding-left: $ce3-default-padding*2;
+  &.padding-top {
+    padding-top: $ce3-default-padding+10 !important;
+  }
 }
 
 @include medium {
@@ -396,6 +457,18 @@ h6 {
     .select-options {
       margin-top: 0px !important;
     }
+  }
+}
+
+.filter-border-bottom {
+  padding-bottom: $ce3-padding-half;
+  border-bottom: 1px solid $ce3-blue3alpha;
+}
+
+.closed-filters {
+  .filter-border-bottom {
+    padding-bottom: $ce3-padding-half;
+    border-bottom: 0px solid $ce3-blue3alpha;
   }
 }
 
@@ -411,6 +484,10 @@ h6 {
 
 .border-default {
   border: 1px solid $ce3-blue3alpha !important;
+}
+
+.height-auto {
+  height: auto !important;
 }
 
 .height-100 {
@@ -462,6 +539,10 @@ h6 {
   width: 80% !important;
 }
 
+.width-85 {
+  width: 85% !important;
+}
+
 .width-70 {
   width: 70% !important;
 }
@@ -510,10 +591,21 @@ h6 {
   width: 5% !important;
 }
 
+.last-variable-space {
+  margin-bottom: $ce3-default-padding+$ce3-padding-half !important;
+}
+
 .right-padding {
   padding-right: $ce3-default-horizontal-padding !important;
   @include medium {
     padding-right: $ce3-default-horizontal-padding/2 !important;
+  }
+}
+
+.left-padding {
+  padding-left: $ce3-default-horizontal-padding !important;
+  @include medium {
+    padding-left: $ce3-default-horizontal-padding/2 !important;
   }
 }
 
@@ -676,6 +768,11 @@ h6 {
   justify-content: center !important;
 }
 
+.d-flex-vertical-center {
+  display: flex !important;
+  align-items: center !important;
+}
+
 .d-flex-left {
   display: flex !important;
   align-items: flex-start !important;
@@ -706,114 +803,303 @@ h6 {
 .btn-histobs {
   cursor: pointer;
   text-decoration: line-through !important;
-  background-color: #777 !important;
-  color: transparentize($ce3-blue6, 0.5) !important;
+  background-color: $ce3-blue6 !important;
+  color: transparentize($ce3-blue3, 0.5) !important;
   height: $ce3-btnheight !important;
   font: 500 14px $roboto !important;
   border: 1px solid $ce3-blue3alpha !important;
+  margin-left: $ce3-default-padding;
+  margin-right: $ce3-default-padding;
+  min-width: 200px;
+  @include border-radius(5px, 5px);
 
   @include medium {
     height: $ce3-btnheight-smallecreen !important;
   }
 
-  &:hover {
-    background-color: darken(#777, 5) !important;
+  .inner-histobs{
+    background-color: $ce3-historical-observed !important;
+    border: 1px solid darken($ce3-historical-observed, 10);
+    height: 18px;
+    width: $ce3-btnheight-smallecreen;
+    margin: $ce3-default-padding;
+    @include border-radius(5px, 5px);
+
+    &:hover, &:focus  {
+      background-color: $ce3-historical-observed !important;
+      outline: none !important;
+      font-weight: $font-weight-normal-plus !important;
+      &.description {
+        cursor: default;
+        background-color: $ce3-historical-observed !important;
+        font: $font-weight-normal 14px $roboto !important;
+      }
+    }
   }
-  &:focus {
-    background-color: darken(#777, 5) !important;
+
+  &:focus, &:hover {
+    background-color: darken($ce3-blue6, 5) !important;
     outline: none !important;
+    font-weight: $font-weight-normal-plus !important;
+    &.description {
+      cursor: default;
+      background-color: $ce3-blue6 !important;
+      font: $font-weight-normal 14px $roboto !important;
+    }
   }
+
   &.selected {
-    color: $ce3-blue6 !important;
+    color: $ce3-blue3 !important;
     text-decoration: unset !important;
+  }
+
+  &.disabled {
+    cursor: default;
+    background-color: darken($ce3-blue6, 10) !important;
+    color: lighten($ce3-blue3, 30) !important;
+
+    &:hover, &:focus {
+      background-color: darken($ce3-blue6, 10) !important;
+      color: lighten($ce3-blue3, 30) !important;
+      outline: none !important;
+      font-weight: $font-weight-normal !important;
+    }
   }
 }
 
 .btn-hismod {
   cursor: pointer;
   text-decoration: line-through !important;
-  background-color: #D6D6D6 !important;
+  background-color: $ce3-blue6 !important;
   color: transparentize($ce3-blue3, 0.5) !important;
   height: $ce3-btnheight !important;
   font: 500 14px $roboto !important;
   border: 1px solid $ce3-blue3alpha !important;
+  margin-left: $ce3-default-padding;
+  margin-right: $ce3-default-padding;
+  min-width: 200px;
+  @include border-radius(5px, 5px);
 
   @include medium {
     height: $ce3-btnheight-smallecreen !important;
   }
 
-  &:hover {
-    background-color: darken(#D6D6D6, 10) !important;
+  .inner-hismod {
+    background-color: $ce3-historical-modeled !important;
+    border: 1px solid darken($ce3-historical-modeled, 10);
+    height: 18px;
+    width: $ce3-btnheight-smallecreen;
+    margin: $ce3-default-padding;
+    @include border-radius(5px, 5px);
+
+    &:hover, &:focus  {
+      background-color: $ce3-historical-modeled !important;
+      outline: none !important;
+      font-weight: $font-weight-normal-plus !important;
+      &.description {
+        cursor: default;
+        background-color: $ce3-historical-modeled !important;
+        font: $font-weight-normal 14px $roboto !important;
+      }
+    }
   }
-  &:focus {
-    background-color: darken(#D6D6D6, 10) !important;
+
+  &:hover, &:focus {
+    background-color: darken($ce3-blue6, 10) !important;
     outline: none !important;
+    font-weight: $font-weight-normal-plus !important;
+    &.description {
+      cursor: default;
+      background-color: $ce3-blue6 !important;
+      font: $font-weight-normal 14px $roboto !important;
+    }
   }
+
   &.selected {
     color: $ce3-blue3 !important;
     text-decoration: unset !important;
+  }
+
+  &.disabled {
+    cursor: default;
+    background-color: darken($ce3-blue6, 10) !important;
+    color: lighten($ce3-blue3, 30) !important;
+
+    &:hover, &:focus {
+      background-color: darken($ce3-blue6, 10) !important;
+      color: lighten($ce3-blue3, 30) !important;
+      outline: none !important;
+      font-weight: $font-weight-normal !important;
+    }
   }
 }
 
 .btn-lower-emissions {
   cursor: pointer;
   text-decoration: line-through !important;
-  background-color: #98BCEB !important;
+  background-color: $ce3-blue6 !important;
   color: transparentize($ce3-blue3, 0.5) !important;
   height: $ce3-btnheight !important;
   font: 500 14px $roboto !important;
   border: 1px solid $ce3-blue3alpha !important;
+  margin-left: $ce3-default-padding;
+  margin-right: $ce3-default-padding;
+  min-width: 200px;
+  @include border-radius(5px, 5px);
 
   @include medium {
     height: $ce3-btnheight-smallecreen !important;
   }
 
-  &:hover {
-    background-color: darken(#98BCEB, 10) !important;
+  .inner-lower-emmisions {
+    background-color: $ce3-lower-emissions !important;
+    border: 1px solid darken($ce3-lower-emissions, 10);
+    height: 18px;
+    width: $ce3-btnheight-smallecreen;
+    margin: $ce3-default-padding;
+    @include border-radius(5px, 5px);
+
+    &:hover, &:focus  {
+      background-color: $ce3-lower-emissions !important;
+      outline: none !important;
+      font-weight: $font-weight-normal-plus !important;
+      &.description {
+        cursor: default;
+        background-color: $ce3-lower-emissions !important;
+        font: $font-weight-normal 14px $roboto !important;
+      }
+    }
   }
-  &:focus {
-    background-color: darken(#98BCEB, 10) !important;
+
+  &:hover, &:focus {
+    background-color: darken($ce3-blue6, 10) !important;
     outline: none !important;
+    font-weight: $font-weight-normal-plus !important;
+    &.description {
+      cursor: default;
+      background-color: $ce3-blue6 !important;
+      font: $font-weight-normal 14px $roboto !important;
+    }
   }
+
   &.selected {
     color: $ce3-blue3 !important;
     text-decoration: unset !important;
+  }
+
+  &.disabled {
+    cursor: default;
+    background-color: darken($ce3-blue6, 10) !important;
+    color: lighten($ce3-blue3, 30) !important;
+
+    &:hover, &:focus {
+      background-color: darken($ce3-blue6, 10) !important;
+      color: lighten($ce3-blue3, 30) !important;
+      outline: none !important;
+      font-weight: $font-weight-normal !important;
+    }
   }
 }
 
 .btn-higher-emissions {
   cursor: pointer;
   text-decoration: line-through !important;
-  background-color: #FBB4AA !important;
+  background-color: $ce3-blue6 !important;
   color: transparentize($ce3-blue3, 0.5) !important;
   height: $ce3-btnheight !important;
   font: 500 14px $roboto !important;
   border: 1px solid $ce3-blue3alpha !important;
+  margin-left: $ce3-default-padding;
+  margin-right: $ce3-default-padding;
+  min-width: 200px;
+  @include border-radius(5px, 5px);
 
   @include medium {
     height: $ce3-btnheight-smallecreen !important;
   }
 
-  &:hover {
-    background-color: darken(#FBB4AA, 10) !important;
+  .inner-higher-emmisions {
+    background-color: $ce3-higher-emissions !important;
+    border: 1px solid darken($ce3-higher-emissions, 10);
+    height: 18px;
+    width: $ce3-btnheight-smallecreen;
+    margin: $ce3-default-padding;
+    @include border-radius(5px, 5px);
+
+    &:hover, &:focus  {
+      background-color:$ce3-higher-emissions !important;
+      outline: none !important;
+      font-weight: $font-weight-normal-plus !important;
+      &.description {
+        cursor: default;
+        background-color: $ce3-higher-emissions !important;
+        font: $font-weight-normal 14px $roboto !important;
+      }
+    }
   }
-  &:focus {
-    background-color: darken(#FBB4AA, 10) !important;
+
+  &:hover, &:focus  {
+    background-color: darken($ce3-blue6, 5) !important;
     outline: none !important;
+    font-weight: $font-weight-normal-plus !important;
+    &.description {
+      cursor: default;
+      background-color: $ce3-blue6 !important;
+      font: $font-weight-normal 14px $roboto !important;
+    }
   }
+
   &.selected {
     color: $ce3-blue3 !important;
     text-decoration: unset !important;
+  }
+
+  &.disabled {
+    cursor: default;
+    background-color: darken($ce3-blue6, 5) !important;
+    color: lighten($ce3-blue3, 30) !important;
+
+    &:hover, &:focus {
+      background-color: darken($ce3-blue6, 10) !important;
+      color: lighten($ce3-blue3, 30) !important;
+      outline: none !important;
+      font-weight: $font-weight-normal !important;
+    }
   }
 }
 
 .btn-default {
   cursor: pointer;
+  padding: $ce3-default-padding/2;
   height: $ce3-btnheight !important;
   background-color: $ce3-blue5 !important;
   color: $ce3-blue3 !important;
-  font: 500 14px $roboto !important;
+  font: $font-weight-normal 14px $roboto !important;
   border: 1px solid $ce3-blue3alpha !important;
+
+  &.more-info {
+    border: 1px solid $ce3-blue3alpha !important;
+    background-color: $ce3-blue6 !important;
+    @include border-radius(25px, 25px);
+
+    span.more, span.less {
+      padding-right: 16px;
+    }
+
+    @include medium {
+      padding-left: $ce3-default-padding;
+      padding-top: $ce3-default-padding;
+      width: 100% !important;
+
+      .more {
+        float: left;
+      }
+
+      .more-icon, .less-icon {
+        float: right;
+      }
+    }
+  }
 
   a {
     cursor: pointer;
@@ -825,18 +1111,32 @@ h6 {
     height: $ce3-btnheight-smallecreen !important;
   }
 
-  &:focus {
+    &:hover, &:focus {
     background-color: darken($ce3-blue5, 7) !important;
+    &.more-info {
+      background-color: darken($ce3-blue6, 7) !important;
+    }
     color: $ce3-blue3 !important;
     border: 1px solid $ce3-blue3alpha !important;
-    outline: none !important
+    outline: none !important;
+    font-weight: $font-weight-normal-plus !important;
   }
 
-  &:hover {
-    background-color: darken($ce3-blue5, 7) !important;
-    color: $ce3-blue3 !important;
-    border: 1px solid $ce3-blue3alpha !important;
-    outline: none !important
+
+  .more-info:before {
+    position: inherit;
+    background-color: $ce3-blue6;
+    font-family: 'Font Awesome 5 Free';
+    font-weight: $font-weight-very-heavy;
+    margin-left: $ce3-default-padding/2;
+    margin-right: $ce3-default-padding/4;
+    width: 18px;
+    height: 18px;
+    @include border-radius(18px, 18px);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 14px;
   }
 }
 
@@ -846,24 +1146,27 @@ h6 {
   background-color: $ce3-blue5 !important;
   color: $ce3-disabled-font !important;
   font: 500 14px $roboto !important;
-  border: 1px solid $ce3-blue3alpha !important;
+  border: 1px solid $ce3-disabled-border !important;
 
   @include medium {
     height: $ce3-btnheight-smallecreen !important;
   }
 
-  &:focus {
-    background-color: darken($ce3-blue5, 10) !important;
-    color: $ce3-blue3 !important;
-    border: 1px solid $ce3-blue3alpha !important;
+  &:hover, &:focus {
+    background-color: $ce3-blue5 !important;
+    color: $ce3-disabled-font !important;
+    border: 1px solid $ce3-disabled-border !important;
     outline: none !important
   }
 
-  &:hover {
-    background-color: darken($ce3-blue5, 10) !important;
-    color: $ce3-blue3 !important;
-    border: 1px solid $ce3-blue3alpha !important;
-    outline: none !important
+  &.disabled-seasonal {
+    background: $ce3-blue5 !important;
+    color: $ce3-disabled-font !important;
+    border: 1px solid $ce3-disabled-border !important;
+
+    &:focus, &:hover {
+      border: 1px solid $ce3-disabled-border !important;
+    }
   }
 }
 
@@ -884,7 +1187,6 @@ h6 {
     color: $ce3-blue5 !important;
   }
 
-
   &.circle-box-left {
     margin-right: -12px !important;
   }
@@ -898,28 +1200,27 @@ h6 {
     margin-left: -12px !important;
   }
 
-  &.btn-default-disabled {
-    color: darken($ce3-blue5, 12) !important;
-    background-color: lighten($ce3-blue3, 7) !important;
-
-  }
-
   @include medium {
     height: $ce3-btnheight-smallecreen !important;
   }
 
-  &:focus {
+  &:focus ,&:hover {
     background-color: lighten($ce3-blue4, 7) !important;
     color: $ce3-blue5 !important;
     border: 1px solid $ce3-blue3alpha !important;
-    outline: none !important
+    outline: none !important;
+    font-weight: $font-weight-normal-plus !important;
   }
 
-  &:hover {
-    background-color: lighten($ce3-blue4, 7) !important;
-    color: $ce3-blue5 !important;
-    border: 1px solid $ce3-blue3alpha !important;
-    outline: none !important
+  &.btn-default-disabled {
+    color: darken($ce3-blue5, 12) !important;
+    background-color: lighten($ce3-blue3, 25) !important;
+
+    &:focus, &:hover {
+      background-color: lighten($ce3-blue3, 25) !important;
+      color: darken($ce3-blue5, 12) !important;
+      outline: none !important
+    }
   }
 }
 
@@ -934,8 +1235,58 @@ h6 {
     max-height: $ce3-btnheight-smallecreen !important;
   }
 
-  &:hover {
+  &:hover, &:focus {
     background-color: darken($ce3-blue5, 7) !important;
+    outline: none !important;
+  }
+
+  &.disabled:hover, &.disabled:focus  {
+    color: $ce3-blue3 !important;
+    background-color: $ce3-blue5 !important;
+    outline: none !important;
+  }
+}
+
+.select-styled {
+  &:hover, &:focus {
+    font-weight: $font-weight-normal-plus;
+
+    a {
+      color: darken($ce3-blue3, 10) !important;
+      font-weight: $font-weight-normal-plus;
+    }
+    outline: none !important;
+
+    &.disabled {
+      font-weight: $font-weight-normal;
+      color: $ce3-disabled-font !important;
+      outline: none !important;
+    }
+  }
+}
+
+.rounded-description-box {
+  @include border-radius(5px, 5px);
+  background-color: $ce3-blue6;
+  color: $ce3-blue3;
+  border: 1px solid $ce3-border-color !important;
+  margin: $ce3-default-padding;
+
+  @include medium {
+    margin-top: $ce3-default-padding*2 !important;
+  }
+
+  .more-caret {
+    @include border-radius(5px, 5px);
+    background-color: $ce3-blue3;
+    color: $ce3-blue6;
+    border: 1px solid $ce3-border-color;
+    width: 48px;
+    height: 48px;
+    font-size: 24px;
+    position: relative;
+    top: -32px;
+    left: 24px;
   }
 }
 
@@ -965,10 +1316,21 @@ h6 {
     min-height: 1px !important;
   }
 
+  &:hover, &:focus {
+    outline: none !important;
+  }
+
   #station-info {
     @include medium {
       min-height: 100px !important;
     }
+  }
+}
+
+#cards-viewport .rounded-filters-box {
+  min-height: $ce3-btnheight !important;
+  @include medium {
+    min-height: $ce3-btnheight !important;
   }
 }
 
@@ -1069,41 +1431,104 @@ h6 {
 
 .text-info-box {
   font-size: 18px !important;
-  font-weight: 700 !important;
+  font-weight:  $font-weight-meduim !important;
 }
 
 .text-info-box-secondary {
   font-size: 18px !important;
-  font-weight: 500 !important;
+  font-weight:  $font-weight-normal !important;
+}
+
+#cards-search-input {
+  width: 80% !important;
+  text-indent: $ce3-padding-half;
+
+  @include largeish {
+    width: 75% !important;
+  }
+
+  @include medium {
+    width: 90% !important;
+  }
+  @include small {
+    width: 75% !important;
+  }
 }
 
 .search-default {
   $icon-rect-size: 24px;
+  color:$ce3-blue3 !important;
   width: $icon-rect-size !important;
   height: $icon-rect-size !important;
   background-color: $ce3-blue6 !important;
   @include border-radius($icon-rect-size, $icon-rect-size);
   margin-top: 7px !important;
   font-size: 14px !important;
-  font-weight: 800 !important;
+  font-weight:  $font-weight-heavy !important;
   padding: 5px !important;
+  margin-left: $ce3-padding-half;
+
+  &.fa-times-circle {
+    cursor: pointer;
+
+    &:hover {
+      background-color: darken($ce3-blue6, 10) !important;
+    }
+  }
+}
+
+#clear-location-wrapper {
+  cursor: pointer;
+  color: $ce3-blue3;
+  width: $ce3-btnheight;
+  height: $ce3-btnheight - 1;
+  background-color: $ce3-blue6;
+  border: 1px solid $ce3-blue3alphad;
+  @include border-bottom-left-radius(5px);
+  @include border-top-left-radius(5px);
+  margin-left: -12px;
+  padding-left: 5px;
+  float: left;
+  @include medium {
+    height: $ce3-btnheight-smallecreen - 1;
+  }
+
+  #clear-location {
+    width: 100%;
+    height: 100%;
+    margin-top: 9px;
+    @include medium {
+      margin-top: 16px;
+    }
+
+    padding-left: 6px;
+  }
+
+  &:hover {
+    background-color: darken($ce3-blue5, 5);
+  }
 }
 
 input.input-inner-default {
   background-color: $ce3-blue5;
   color: $ce3-blue3;
-  font: 800 18px $roboto !important;
+  font: $font-weight-heavy 18px $roboto !important;
 }
 
 input.input-inner-default::placeholder  {
+  opacity: 1 !important;
   background-color: $ce3-blue5;
   color: $ce3-blue3;
-  font: 800 18px $roboto !important;
+  font: $font-weight-heavy 18px $roboto !important;
+}
+
+input.input-inner-default::-moz-placeholder, input.input-inner-default:-moz-placeholder {
+  padding-bottom: 6px;
 }
 
 input.input-inner-default:focus::placeholder  {
-  color: $ce3-blue3alpha;
-  font: 800 18px $roboto !important;
+  color: transparentize($ce3-blue3, 0.6);
+  font: $font-weight-heavy 18px $roboto !important;
   -moz-transition: 0.25s;
   -o-transition: 0.25s;
   -webkit-transition: 0.25s;
@@ -1117,8 +1542,21 @@ input.input-inner-default:focus  {
 #search-row {
   min-height: 50px;
   @include medium {
-    min-height: 106px;
+    min-height: 50px;
     display: block !important;
+  }
+}
+
+
+#high-tide-flooding-viewport,
+#historical-thresholds-viewport,
+#historical-weather-data-viewport {
+  #search-row {
+    min-height: 50px;
+    @include medium {
+      min-height: 106px;
+      display: block !important;
+    }
   }
 }
 
@@ -1182,21 +1620,6 @@ input.input-inner-default:focus  {
 }
 
 // CLASSES
-.tooltip {
-  display: block !important;
-  margin-left: 8px !important;
-  padding: 4px !important;
-  font-size: 12px !important;
-}
-
-//remove this if tooltip.js positioning is changed from "right"
-.tooltip:after {
-  bottom: 25% !important;
-  left: -3px !important;
-  margin-left: -7px !important;
-  border-color: transparent #ffffff transparent transparent !important;
-}
-
 .d-xs-only {
   display: none;
 }
@@ -1207,7 +1630,7 @@ input.input-inner-default:focus  {
   position: relative;
   display: inline-block;
   padding: 20px 40px;
-  font: 1rem/1em $sans-heavy;
+  font: 1rem/1em $roboto;
   border: 10px solid transparent;
   @include transition(0.25s);
 
@@ -1245,24 +1668,6 @@ input.input-inner-default:focus  {
       margin: -7px 5px 0 0;
     }
   }
-
-  //&.arrow-left {
-  //  &:before,
-  //  &:after {
-  //    width: 10px;
-  //    height: 4px;
-  //  }
-  //
-  //  &:before {
-  //    @include rotate(-45deg);
-  //    margin-top: -4px;
-  //  }
-  //
-  //  &:after {
-  //    @include rotate(45deg);
-  //    margin-top: 1px;
-  //  }
-  //}
 
   &.arrow-right {
     &:before,
@@ -1404,31 +1809,55 @@ input.input-inner-default:focus  {
   position: fixed;
   top: 0;
 }
-// tooltip
+
+  .varriable-option-item {
+    width: 100%;
+    height: 44px;
+  }
+
+  .varriable-option-tooltip {
+    position: relative;
+    padding-top: 12px;
+    height: 44px;
+    width: 10%;
+    padding-left: 18px !important;
+
+    @include very-large-mid {
+      width: 20%;
+    }
+
+    @include very-small {
+      width: 20%;
+    }
+
+    z-index: 1000;
+    font-size: 20px;
+
+    &:hover {
+      color: $ce3-blue3;
+      background:  darken($ce3-blue5, 5);
+    }
+  }
 
 .tooltip {
-  display: none;
-  position: absolute;
-  top: -55px;
-  white-space: nowrap;
-  left: 50%;
+  position: relative;
+  display: block;
+  max-width: 60%;
+  z-index: 1000;
   padding: 12px;
-  background: $white;
-  text-align: center;
+  background: $ce3-blue6;
   font: 1.125rem/1em $roboto;
   color: $blue2;
-  @include transform(translateX(-50%));
   @include box-shadow(0 0 8px transparentize($blue1, 0.75));
 
-  &:after {
-    content: '';
-    display: block;
-    position: absolute;
-    bottom: -10px;
-    left: 50%;
-    margin-left: -5px;
-    border: 5px solid $white;
-    border-color: $white transparent transparent transparent;
+  .tooltip-arrow::before {
+      position: absolute;
+      left: calc(100% + 12px);
+      content: "";
+      border-style: solid;
+      border-width: .4rem 0 .4rem .4rem;
+      border-color: transparent;
+      border-left-color: $ce3-blue6;
   }
 }
 // chart legend
@@ -1587,7 +2016,7 @@ input.input-inner-default:focus  {
   }
 }
 // SOCIAL
-
+@import "ce-three-theme";
 @import "template/share";
 
 // NAV OVERLAY
@@ -1598,178 +2027,13 @@ input.input-inner-default:focus  {
 @import "template/nav_footer";
 // PAGE STRUCTURE
 
-
-//.feedback-btn {
-//  position: absolute;
-//  right: 0;
-//  top: 45%;
-//  width: 2rem;
-//  transform: rotate(90deg);
-//  z-index: 90000;
-//  font: 1rem/1em "CESans", Helvetica, "Helvetica Neue", Arial, sans-serif;
-//  .feedback-btn-text {
-//    background-color: $blue1;
-//    color: #fff;
-//    padding: .3rem .5rem;
-//    border: solid white 1px;
-//  }
-//}
-// HEADER
-
 #desktop-warning {
   display: none;
 }
-@import "template/main_header";
 @import "template/secondary_header";
+@import "template/main_header";
 
-
-// zoom / legend
-//
-// .ui-slider-label {
-//   position: absolute;
-//   width: 21px;
-//   height: 21px;
-//   border: 3px solid $orange1;
-//   color: $orange1;
-//   font: 0.75rem/0.75rem $sans-heavy;
-//   @include border-radius(50%);
-//   @include no-text;
-//   cursor: pointer;
-//
-//   &:before,
-//   &:after {
-//     content: '';
-//     display: block;
-//     position: absolute;
-//     top: 7px;
-//     left: 3px;
-//     width: 9px;
-//     height: 3px;
-//     margin: -1px 0 0 0;
-//     background: $orange1;
-//   }
-//
-//   &.minus {
-//   }
-//
-//   &.plus {
-//     &:after {
-//       top: 4px;
-//       left: 6px;
-//       width: 3px;
-//       height: 9px;
-//     }
-//   }
-//
-//   &.range-label {
-//     bottom: 0;
-//     width: auto;
-//     @include undo-no-text;
-//     font: 300 0.875rem/1em $roboto;
-//     color: $grey1;
-//     border: none;
-//     @include border-radius(none);
-//
-//     &:before,
-//     &:after {
-//       display: none;
-//     }
-//
-//     &.min {
-//       left: 0;
-//     }
-//
-//     &.mid {
-//       left: 50%;
-//       @include transform(translateX(-50%));
-//     }
-//
-//     &.max {
-//       right: 0;
-//     }
-//   }
-// }
-//
-// .legend-wrap {
-//   .legend {
-//
-//     .color {
-//       display: inline-block;
-//       height: 0;
-//       background: red;
-//       vertical-align: middle;
-//     }
-//
-//   }
-// }
-// .zoom {
-//   position: absolute;
-//   top: 30%;
-//   right: 20px;
-//   width: 40px;
-//   height: 40%;
-//   background: transparentize($white, 0.5);
-//   @include transition(0.25s);
-//
-//   &:hover {
-//     background: transparentize($white, 0.1);
-//   }
-//
-//   .zoom-slider {
-//     left: calc(50% - 3px);
-//     top: 17%;
-//     width: 6px;
-//     height: 66%;
-//   }
-//
-//   .ui-slider-handle {
-//     @include transition(0.15s);
-//   }
-//
-//   .zoom-label {
-//     left: 50%;
-//     margin-left: -10px;
-//
-//     &.minus {
-//       bottom: 10px;
-//     }
-//
-//     &.plus {
-//       top: 10px;
-//     }
-//   }
-// }
-.page-splash {
-  padding: 8% 0;
-  color: $blue2;
-
-  .splash-text {
-    max-width: 65%;
-    padding-left: calc(4% + 10px);
-    //mix-blend-mode: hard-light;
-
-    h1 {
-      margin: 0 0 20px 0;
-    }
-
-    h4 {
-      margin: 0 0 40px 0;
-      color: $orange1;
-    }
-
-    p {
-      width: 75%;
-      margin: 0 0 20px 0;
-      font: 400 1.375rem/1.5em $roboto;
-    }
-  }
-
-  .share-widget {
-    top: 0;
-    right: 0;
-  }
-}
-// HOME PAGE
+// // HOME PAGE
 
 @import "pages/home";
 
@@ -1797,98 +2061,8 @@ input.input-inner-default:focus  {
 @import "pages/cards-home";
 
 
-// STANDARD PAGE
-
-.page-type-text {
-  #viewport {
-    background-color: transparentize($blue3, 0.5);
-    //top: 20px;
-    height: calc(100% - 40px);
-    //margin-top: 95px;
-  }
-}
-#standard-splash {
-  padding-bottom: 40px;
-}
-
-#standard-body {
-  max-width: 75%;
-  padding-left: calc(4% + 10px);
-
-  a {
-    text-decoration: underline;
-  }
-
-  p {
-    line-height: 1.75em;
-    margin: 0 0 20px 0;
-  }
-
-  strong {
-    font-weight: 600;
-  }
-
-  h2 {
-    margin: 30px 0;
-    font-size: 2rem;
-    color: $blue1;
-  }
-
-  h3 {
-    margin: 20px 0;
-    font-size: 1.75rem;
-    color: $orange1;
-  }
-
-  h4 {
-    margin: 0 0 15px 0;
-    font-size: 1.25rem;
-    line-height: 1.375em;
-  }
-
-  ul, ol {
-    margin: 0 20px 30px 20px;
-    padding: 0 0 0 30px;
-    font: 300 1rem/1.5em $roboto;
-
-    li {
-      margin: 0 0 10px 0;
-    }
-  }
-
-  ol {
-    list-style-type: decimal;
-  }
-
-  li {
-    list-style-type: disc;
-  }
-
-  dl {
-    margin: 0 0 30px 0;
-    font: 300 1rem/1.5em $roboto;
-
-    dt {
-      margin: 0 0 15px 0;
-      padding-bottom: 10px;
-      border-bottom: 1px solid #dddddd;
-      color: #444444;
-      font-weight: 400;
-    }
-
-    dd {
-      margin: 0 0 25px 0;
-    }
-  }
-
-  hr {
-    display: block;
-    height: 3px;
-    margin: 60px 0;
-    border: none;
-    background: $orange1;
-  }
-}
+// about, definitions, creds, faq
+@import "pages/about";
 // PLUGINS
 
 // tour
@@ -1901,11 +2075,6 @@ input.input-inner-default:focus  {
 @import "plugins/toggles";
 
 // jquery UI
-
-// .ui-slider-horizontal {
-//   height: 6px;
-// }
-
 .ui-autocomplete {
   position: absolute;
   top: 0;
@@ -2021,4 +2190,175 @@ input.input-inner-default:focus  {
   font-size: .6rem;
   height: 1.5rem;
   padding-top: 0;
+}
+
+.feedback-trigger-small {
+  position: absolute;
+  cursor: pointer;
+  font: $font-weight-normal 18px $roboto;
+  top: calc(100% - 48px);
+  @include kind-of-tiny {
+    top: calc(100% - 128px);
+  }
+  left: calc(100% - 48px);
+  width: 48px;
+  height: 48px;
+  display:inline-block;
+  text-align: center;
+  vertical-align: middle;
+  background-color: $ce3-blue3;
+  color: $ce3-blue5;
+  padding-top: $ce3-default-padding;
+  padding-left: 3px;
+  @include border-top-left-radius(48px);
+  @include border-bottom-left-radius(48px);
+  @include border-top-right-radius(48px);
+  @include box-shadow(0px 2px 4px transparentize(#000, 0.761));
+  z-index: 1000;
+
+  &:hover {
+    background-color: lighten($ce3-blue3, 12);
+    @include box-shadow(0px 4px 8px transparentize(#000, 0.761));
+  }
+}
+
+#feedback-close-button-yes, #feedback-close-button-no {
+  background-color: $ce3-blue6;
+  line-height: 32px;
+  margin-left: $ce3-default-padding;
+  color: $ce3-blue3;
+  @include border-radius(4px);
+  cursor: pointer;
+  display: inline-block;
+  width: 42px;
+  height: 30px;
+
+  &:hover {
+    background-color: darken($ce3-blue6, 15);
+  }
+}
+
+.feedback-trigger {
+  position: absolute;
+  background-color: $ce3-blue3;
+  top: calc(100% - 54px);
+  left: calc(100% - 400px);
+  cursor: pointer;
+  width: 400px;
+  text-align: center;
+
+  @include small {
+    width: 100%;
+    left: 0px;
+  }
+
+  .feedback-text {
+    padding-left: $ce3-padding-half;
+  }
+
+  .feedback-icon {
+    font-size: 18px;
+    vertical-align: middle;
+    @include small {
+      display: none;
+    }
+  }
+
+  font: $font-weight-normal-plus 16px $roboto;
+  background-color: $ce3-blue3;
+  color: $ce3-blue5;
+  padding: $ce3-default-padding;
+  @include box-shadow(0px 2px 4px transparentize(#000, 0.761));
+  @include border-top-left-radius(24px);
+  display: inline-block;
+
+  &:hover {
+    background-color: lighten($ce3-blue3, 12);
+    @include box-shadow(0px 4px 8px transparentize(#000, 0.761));
+  }
+}
+
+.about-tool-row {
+  height: auto;
+  align-items: start !important;
+  align-content: start !important;
+  justify-content: start !important;
+
+  &.about-tool-equals {
+    align-items: center !important;
+    align-content: center !important;
+    justify-content: center !important;
+    font-size: 24px;
+    font-weight: $font-weight-normal-plus;
+  }
+
+  .about-tool-content  {
+    line-height: unset !important;
+    margin: 0px !important;
+    padding-bottom: $ce3-default-padding;
+    padding-top: $ce3-default-padding;
+
+    &.img-holder-left {
+      justify-content: start !important;
+      img {
+        border: 1px solid;
+      }
+      @include medium {
+        justify-content: center !important;
+      }
+    }
+
+    &.img-holder-right {
+      justify-content: flex-end !important;
+      img {
+        border: 1px solid;
+      }
+      @include medium {
+        justify-content: center !important;
+      }
+    }
+
+    img {
+      display: block;
+      max-width: 100%;
+      height: auto;
+      width: 100%;
+      height: 100%;
+    }
+
+    .sample-img {
+      max-height: 200px;
+      width: auto;
+    }
+  }
+
+  .btn-chart-text {
+    padding: $ce3-default-padding;
+  }
+
+
+  @include medium {
+    width: 100% !important;
+    border-bottom: 1px solid $ce3-blue3;
+
+    .img-btn-chart {
+      width: 50% !important;
+      height: 50% !important;
+    }
+
+    #btn-chart {
+      width: 100% !important;
+
+      &.circle-box-left {
+        @include border-radius(5px);
+      }
+      &.circle-box-right {
+        @include border-radius(5px);
+      }
+      &.circle-box-center  {
+        @include border-radius(5px);
+      }
+    }
+  }
+
 }

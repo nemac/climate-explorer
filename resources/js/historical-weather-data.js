@@ -7,13 +7,27 @@ $(function () {
   enableCustomSelect('download-select');
 
   // get city, state from state url
-  $('#default-city-state').text(window.ce.ce('getLocationPageState')['city']);
-  $('#default-city-county').text(window.ce.ce('getLocationPageState')['county']);
-  $('#cards-search-input').val(window.ce.ce('getLocationPageState')['city']);
+  const cityStateCE = window.ce.ce('getLocationPageState')['city'];
+  const countyCE = window.ce.ce('getLocationPageState')['county'];
+  let isAlaska = false;
+  let isHawaii = false;
+
+  if (cityStateCE) {
+      isAlaska = (cityStateCE.indexOf('Alaska') > 0 || cityStateCE.indexOf(', AK') > 0);
+      isHawaii = (cityStateCE.indexOf('Hawaii') > 0 || cityStateCE.indexOf(', HI') > 0);
+  }
+
+  $('#default-city-state').text(cityStateCE);
+  $('#default-city-county').text(countyCE);
+  $('#cards-search-input').attr("placeholder", cityStateCE);
+
+  if (!countyCE) {
+    $('#cards-search-input').attr("placeholder", "Location missing, enter a county, city, or zip code");
+  }
 
   let stationsMapState = window.ce.ce("getStationsMapState");
-  const county =  window.ce.ce('getLocationPageState')['county']
-  const city = window.ce.ce('getLocationPageState')['city']
+  const county = countyCE
+  const city = cityStateCE
   const zoom = window.ce.ce('getLocationPageState')['zoom'] || 9;
   const lat = window.ce.ce('getLocationPageState')['lat'];
   const lon = window.ce.ce('getLocationPageState')['lon'];
@@ -24,6 +38,7 @@ $(function () {
   const tidalStationName = stationsMapState['tidalStationName'];
   const tidalStationMOverMHHW = stationsMapState['tidalStationMOverMHHW'];
   const center = [lat, lon]
+
 
   // initialize staion map state from url values
   stationsMapState = {
@@ -40,6 +55,12 @@ $(function () {
     zoom,
     center
   };
+
+  $('#clear-location').click( function(e){
+    const target = $(e.target);
+    handleClearLocationClick(target);
+  })
+
 
   // updates the visible text for the station pulldown with the information from the state url
   function updateStationSelectText(stations) {
@@ -65,11 +86,29 @@ $(function () {
 
     // update graphs with new station id and station name
     $('#multi-chart').stationAnnualGraph({ variable: 'temperature', station: stations.stationId, stationName: stations.stationName });
-    $('#multi-precip-chart').stationAnnualGraph({ variable: 'precipitation', station:  stations.stationId, stationName: stations.stationName });
+    $('#multi-precip-chart').stationAnnualGraph({ variable: 'precipitation', station: stations.stationId, stationName: stations.stationName });
   }
 
   // updates the visible text for the station pulldown with the information from the state url
   updateStationSelectText({stationName, stationId})
+
+  // show more about charts
+  function showMoreCharts() {
+    const target = $('#chart-info-row .more-info.btn-default');
+    // show description of charts
+    if (target.hasClass('d-none')) {
+      target.removeClass('d-none');
+    }
+  }
+
+  // don't show more about charts
+  function dontShowMoreCharts() {
+    const target = $('#chart-info-row .more-info.btn-default');
+    // show description of charts
+    if (!target.hasClass('d-none')) {
+      target.addClass('d-none');
+    }
+  }
 
   // show graph overlay.
   // graph is visbile and on page just pushed of viewable area
@@ -77,7 +116,7 @@ $(function () {
   function showGraphs() {
     const stationsGraphRowElem = document.getElementById('stations-graph-row');
     const stationsMapRowElem = document.getElementById('stations-map-row');
-
+    showMoreCharts();
     // unhide chart overlay
     if (stationsGraphRowElem) {
       stationsGraphRowElem.classList.remove('d-off');
@@ -97,7 +136,7 @@ $(function () {
   function showMap() {
     const stationsGraphRowElem = document.getElementById('stations-graph-row');
     const stationsMapRowElem = document.getElementById('stations-map-row');
-
+    dontShowMoreCharts();
     // unhide chart overlay
     if (stationsGraphRowElem) {
       stationsGraphRowElem.classList.remove('d-flex');
@@ -136,6 +175,8 @@ $(function () {
         // unhide chart overlay
         showGraphs();
     }
+    // ga event action, category, label
+    googleAnalyticsEvent('change', 'chartmap', RelorVal(target));
     forceResize();
   }
 
@@ -159,6 +200,11 @@ $(function () {
   }
 
   function toggleDownloads() {
+    const targetParent = $('#downloads-select-wrapper');
+    if (targetParent.hasClass('disabled')) {
+      targetParent.removeClass('disabled');
+    }
+
     const target = $('#downnloads-select-vis');
     if (target.hasClass('disabled')) {
       target.removeClass('disabled');
@@ -215,6 +261,9 @@ $(function () {
     const stationsMapState = window.ce.ce("getStationsMapState");
     const stationId = stationsMapState['stationId'];
 
+    // ga event action, category, label
+    googleAnalyticsEvent('click', 'download', downloadAction);
+
     // capture what we are downloading
     switch (downloadAction) {
       case 'download-precipitation-image': // download image
@@ -222,7 +271,7 @@ $(function () {
         event.target.download = "daily_vs_climate_precip_" + stationId + ".png";
         break;
       case 'download-precipitation-data':
-        $('#multi-chart').stationAnnualGraph('downloadPrecipitationData', event.currentTarget);
+        $('#multi-precip-chart').stationAnnualGraph('downloadPrecipitationData', event.currentTarget);
         break;
       case 'download-temperature-image': // download image
         event.target.href = $("#multi-chart canvas")[0].toDataURL('image/png');
@@ -288,6 +337,35 @@ $(function () {
   })
 
   // eanbles time chart, map click events
+  $('#chartmap-wrapper').keyup( function(e) {
+    if (e.keyCode === 13){
+      const target = $(e.target);
+      const notDisabled = (!target.hasClass('btn-default-disabled') || !target.hasClass('disabled'));
+
+      if ( notDisabled ) {
+
+        // toggle button visual state
+        toggleButton($(target));
+
+        // change select pulldowns for resposnive mode
+        setSelectFromButton(target);
+
+        // check val of button to see if user is on map  or chart
+        // hide or unhide the appropriate overlay (map, chart)
+        chooseGraphOrMap(target);
+        toggleChartInfoText(RelorVal(target));
+      }
+
+      // reset map and chart sizes
+      setMapSize();
+      chooseGraphOrMap(target);
+
+      // ga event action, category, label
+      googleAnalyticsEvent('click-tab', 'chartmap', target);
+    }
+  })
+
+  // eanbles time chart, map click events
   $('#chartmap-wrapper').click( function(e) {
     const target = $(e.target);
     const notDisabled = (!target.hasClass('btn-default-disabled') || !target.hasClass('disabled'));
@@ -309,6 +387,9 @@ $(function () {
     // reset map and chart sizes
     setMapSize();
     chooseGraphOrMap(target);
+
+    // ga event action, category, label
+    googleAnalyticsEvent('click', 'chartmap', target);
   })
 
   // in repsonsive mode the time is a pulldown this eanbles the change of the chart map
@@ -364,8 +445,12 @@ $(function () {
     const target = $(e.target);
     if (target.hasClass('closed-filters')) {
       target.removeClass('closed-filters');
+        // ga event action, category, label
+        googleAnalyticsEvent('click', 'toggle-filters', 'open');
     } else {
       target.addClass('closed-filters');
+        // ga event action, category, label
+        googleAnalyticsEvent('click', 'toggle-filters', 'close');
     }
 
     const infoRowElem = $('#info-row');
@@ -382,7 +467,7 @@ $(function () {
       $(chartRowElem).addClass('closed-filters');
     }
 
-    const stationsMapRowElem = $('#stations-map-wrap');
+    const stationsMapRowElem = $('#stations-map-row');
     if ($(stationsMapRowElem).hasClass('closed-filters')) {
       $(stationsMapRowElem).removeClass('closed-filters');
     } else {
@@ -393,8 +478,6 @@ $(function () {
       // reset map and chart sizes
       // filer transistion means heigh will be updates in few seconds
       // so delaying the resize ensures proper size
-      showGraphs();
-      forceResize();
       setMapSize();
     }, 600);
   })
@@ -403,6 +486,9 @@ $(function () {
     // When state changes, just pass the current options along directly for this page.
     // If we re-use the stationsMap widget on another page there may be more handling to do.
     change: function change(event, options) {
+      // error check
+      if (options.currentstations) {return null}
+
       window.ce.ce('setStationsMapState', options);
       renderStationInfo(options.stationId, options.stationName);
 
@@ -436,10 +522,15 @@ $(function () {
       chartPulldownChartText()
 
       // reset graphs
-      resetGraphs({variable: 'temperature', stationId: options.stationId, stationName: options.stationName });;
+      resetGraphs({
+        variable: 'temperature',
+        stationId: options.stationId,
+        stationName: options.stationName
+      });
 
       // updates the visible text for the station pulldown with the information from the state url
       updateStationSelectText({stationName: options.stationName, stationId: options.stationId})
+      renderStationInfo(options.stationId, options.stationName);
 
       window.ce.ce('setStationsMapState', options);
 
@@ -447,8 +538,12 @@ $(function () {
 
       toggleDownloads();
 
-      // reset map and chart sizes
-      setMapSize();
+      setTimeout(function () {
+        // reset map and chart sizes
+        // filer transistion means heigh will be updates in few seconds
+        // so delaying the resize ensures proper size
+        setMapSize();
+      }, 100);
     }
   }, stationsMapState));
 
@@ -533,5 +628,35 @@ $(function () {
     setMapSize();
   })
 
+  $('#chart-info-row .more-info.btn-default').click( function (e) {
+    const target = $('#more-info-description');
+    // show description of charts
+    if (target.hasClass('d-none')) {
+      target.removeClass('d-none');
+      $('#chart-info-row .more').addClass('d-none');
+      $('#chart-info-row .more-icon').addClass('d-none');
 
+      $('#chart-info-row .less').removeClass('d-none');
+      $('#chart-info-row .less-icon').removeClass('d-none');
+
+      // ga event action, category, label
+      googleAnalyticsEvent('click', 'toggle-chart-info', 'open');
+    // hide description of charts
+    } else {
+      target.addClass('d-none');
+      $('#chart-info-row .more').removeClass('d-none');
+      $('#chart-info-row .more-icon').removeClass('d-none');
+
+      $('#chart-info-row .less').addClass('d-none');
+      $('#chart-info-row .less-icon').addClass('d-none');
+
+      // ga event action, category, label
+      googleAnalyticsEvent('click', 'toggle-chart-info', 'close');
+    }
+
+    // force draw and resize of charts
+    showGraphs();
+    forceResize();
+    setMapSize();
+  })
 });

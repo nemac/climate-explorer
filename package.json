@@ -7,21 +7,25 @@
     "build": "npm run html:build && npm run js:build && npm run data:build && npm run css:build",
     "data:build": "mkdir -p dist/resources && cp -rf resources/data resources/img dist/resources/",
     "js:build": "mkdir -p dist/resources && babel resources/js --out-dir dist/resources/js && cp -rf resources/vendor dist/resources/ && cp node_modules/jquery-ui-touch-punch/jquery.ui.touch-punch.min.js dist/resources/js && cp node_modules/nouislider/distribute/nouislider.min.js  dist/resources/js",
-    "html:pages": "echo \"index location local-climate-charts historical-weather-data high-tide-flooding historical-thresholds local-climate-maps national-climate-maps stations variables error faq definitions credits about 404 cards-home\"",
+    "html:pages": "echo \"index location local-climate-charts historical-weather-data high-tide-flooding historical-thresholds local-climate-maps national-climate-maps stations variables error faq glossary credits about 404 cards-home\"",
     "html:build": "mkdir -p dist; bundlebars --compile --data config.yml --partials template --partialExt -o dist/ ./*.hbs; htmlpages=$(npm run html:pages --silent); for f in $htmlpages; do echo $f && mv dist/$f.hbs dist/$f.html && mkdir -p dist/${f} && cp -f dist/${f}.html dist/${f}/index.html; done;",
     "css:build": "node-sass -o resources/css/ resources/scss/screen.scss --include-path node_modules/compass-mixins/lib/ --output-style expanded --source-comments && mkdir -p dist/resources && cp -rf resources/fonts resources/css dist/resources/ && cp node_modules/nouislider/distribute/nouislider.min.css  dist/resources/css",
     "css:watch": "node-sass -o resources/css/ resources/scss/screen.scss --include-path node_modules/compass-mixins/lib/ --output-style expanded --source-comments -wr",
     "deploy:fli": "aws s3 sync --delete --no-follow-symlinks dist/ s3://climate-explorer/ &&  aws cloudfront create-invalidation --distribution-id E34SU5ZJ0O3LC0 --paths '/*'",
     "deploy:nemac": "aws s3 sync --delete --no-follow-symlinks dist/ s3://climateexplorer2.nemac.org/ &&  aws cloudfront create-invalidation --distribution-id E1Q1S8U8911R6D --paths '/*'",
-    "start": "static -a 0.0.0.0 -p 8080 dist/"
+    "deploy:ce3dev": "aws s3 sync --delete --no-follow-symlinks dist/ s3://climate-explorer3-dev.nemac.org/ &&  aws cloudfront create-invalidation --distribution-id E48HJ11B8EHXY --paths '/*'",
+    "deploy:ce3-production": "aws s3 sync --delete --no-follow-symlinks dist/ s3://climate-explorer3-prod.nemac.org/ &&  aws cloudfront create-invalidation --distribution-id E1Q1S8U8911R6D --paths '/*'",
+    "deploy:ce26-legacy": "aws s3 sync --delete --no-follow-symlinks dist/ s3://climate-explorer26.nemac.org/ &&  aws cloudfront create-invalidation --distribution-id E2HEBFH20UVKTH --paths '/*'",
+    "start": "static -a 127.0.0.1 -p 8080 dist/",
+    "git:submodules": "git submodule add git@github.com:nemac/climate-by-location.git resources/vendor/climate-by-location"
   },
   "repository": {
     "type": "git",
-    "url": "git+ssh://git@bitbucket.org/jwilson-waystone/climate-explorer.git"
+    "url": "git@github.com:nemac/climate-explorer.git"
   },
   "author": "",
   "license": "UNLICENSED",
-  "homepage": "https://bitbucket.org/jwilson-waystone/climate-explorer#readme",
+  "homepage": "https://github.com/nemac/climate-explorer/blob/master/readme.md",
   "devDependencies": {
     "babel-cli": "^6.26.0",
     "babel-plugin-transform-es2015-literals": "^6.22.0",
@@ -30,7 +34,7 @@
     "bundlebars": "^1.2.0",
     "compass-mixins": "github:Igosuki/compass-mixins",
     "es6-promise": "^4.2.4",
-    "handlebars": "^4.1.2",
+    "handlebars": "^4.4.2",
     "node-sass": "^4.12.0",
     "node-static": "^0.7.10"
   },
@@ -39,7 +43,6 @@
     "jquery-ui-touch-punch": "^0.2.3",
     "nouislider": "^13.1.5",
     "popper.js": "^1.14.7",
-    "terraformer-arcgis-parser": "^1.1.0",
-    "tooltip.js": "^1.3.1"
+    "terraformer-arcgis-parser": "^1.1.0"
   }
 }

@@ -4,6 +4,34 @@
   @media screen and (max-width: 599px) { @content; }
 }
 
+@mixin kind-of-tiny {
+  @media screen and (max-width: 499px) { @content; }
+}
+
+@mixin tiny {
+  @media screen and (max-width: 399px) { @content; }
+}
+
+@mixin kind-of-small-to-see {
+  @media screen and (max-width: 360px) { @content; }
+}
+
+@mixin to-small-to-see {
+  @media screen and (max-width: 320px) { @content; }
+}
+
+@mixin very-small-min {
+  @media screen and (min-width: 599px) { @content; }
+}
+
+@mixin very-mid-small {
+  @media screen and (max-width: 900px) and (min-width: 599px) { @content; }
+}
+
+@mixin very-large-mid {
+  @media screen and (max-width: 1400px) and (min-width: 900px) { @content; }
+}
+
 @mixin small {
   @media screen and (max-width: 768px) { @content; }
 }
@@ -20,8 +48,32 @@
   @media screen and (min-width: 850px) { @content; }
 }
 
+@mixin very-large {
+  @media screen and (max-width: 1400px) { @content; }
+}
+
 @mixin large {
   @media screen and (max-width: 1240px) { @content; }
+}
+
+@mixin largeish {
+  @media screen and (max-width: 1100px) { @content; }
+}
+
+@mixin medium-height {
+  @media screen and (max-height: 800px) { @content; }
+}
+
+@mixin short {
+  @media screen and (max-height: 700px) { @content; }
+}
+
+@mixin very-short {
+  @media screen and (max-height: 500px) { @content; }
+}
+
+@mixin very-very-short {
+  @media screen and (max-height: 400px) { @content; }
 }
 
 @mixin tall {

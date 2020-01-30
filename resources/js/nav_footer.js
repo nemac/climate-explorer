@@ -2,25 +2,34 @@
 
 $(function () {
 
-  $('#default-city-state').text(window.ce.ce('getLocationPageState')['city']);
-  $('#default-city-county').text(window.ce.ce('getLocationPageState')['county']);
-  $('#cards-search-input').val(window.ce.ce('getLocationPageState')['city']);
+  const cityStateCE = window.ce.ce('getLocationPageState')['city'];
+  const countyCE = window.ce.ce('getLocationPageState')['county'];
+  let isAlaska = false;
+  let isHawaii = false;
+
+  if (cityStateCE) {
+      isAlaska = (cityStateCE.indexOf('Alaska') > 0 || cityStateCE.indexOf(', AK') > 0);
+      isHawaii = (cityStateCE.indexOf('Hawaii') > 0 || cityStateCE.indexOf(', HI') > 0);
+  }
 
   // setup some constants
   const navConstants = setNavItemsCostants();
 
+  if (cityStateCE) {
+    if (isAlaska || isHawaii) {
+      $('#local-climate-maps-nav-footer').addClass('nav-disabled');
+    }
+  }
+
   // add click events to footer
   // uses invisiable a link
-  addNavlick('home', 'home', navConstants.selectorAddOn);
-  addNavlick('local-climate-charts', 'local-climate-charts', navConstants.selectorAddOn);
-  addNavlick('local-climate-maps', 'local-climate-maps', navConstants.selectorAddOn);
-  addNavlick('national-climate-maps', 'national-climate-maps', navConstants.selectorAddOn);
-  addNavlick('historical-weather-data', 'historical-weather-data', navConstants.selectorAddOn);
-  addNavlick('hightide-flooding', 'hightide-flooding', navConstants.selectorAddOn);
-  addNavlick('historical-thresholds', 'historical-thresholds', navConstants.selectorAddOn);
-  //
-  // // addNavlick('more', 'more', navConstants.selectorAddOn);
-  // addNavlick('hightide-flooding', 'hightide-flooding', navConstants.selectorAddOn);
+  addNavClick('home', 'home', navConstants.selectorAddOn);
+  addNavClick('local-climate-charts', 'local-climate-charts', navConstants.selectorAddOn);
+  addNavClick('local-climate-maps', 'local-climate-maps', navConstants.selectorAddOn);
+  addNavClick('national-climate-maps', 'national-climate-maps', navConstants.selectorAddOn);
+  addNavClick('historical-weather-data', 'historical-weather-data', navConstants.selectorAddOn);
+  addNavClick('hightide-flooding', 'hightide-flooding', navConstants.selectorAddOn);
+  addNavClick('historical-thresholds', 'historical-thresholds', navConstants.selectorAddOn);
 
   updateNavBar();
   addMoreClickEvent();
@@ -125,6 +134,9 @@ $(function () {
     addClass(lessRow1Elem, 'expanded');
 
     addClassAll(navFooterAreaLineElem, 'expanded');
+
+    // ga event action, category, label
+    googleAnalyticsEvent('click', 'navbar', 'more');
   }
 
     // this function adds click event handler
@@ -159,6 +171,9 @@ $(function () {
       removeClass(lessRow1Elem, 'expanded');
 
       removeClassAll(navFooterAreaLineElem, 'expanded');
+
+      // ga event action, category, label
+      googleAnalyticsEvent('click', 'navbar', 'less');
     }
 
   // this function checks if the nav item would be hidden behind the more item
@@ -259,16 +274,45 @@ $(function () {
 
 
   // adds a click event to got to card location
-  function addNavlick(selector, nav, selectorAddOn) {
+  function addNavClick(selector, nav, selectorAddOn) {
     // setup some constants
     const navConstants = setNavItemsCostants();
+    const $selectorElem = $(`#${selector}${navConstants.selectorAddOn}`);
+    // if disabled exit
+    if ( $selectorElem.hasClass('nav-disabled' )){
+      return null;
+    }
+
+    // find the the nav-item and add click event
+    $(`#${selector}${selectorAddOn}`).keyup( function(e) {
+      if (e.keyCode === 13){
+        e.stopPropagation();
+        // remove existing nav search url parameters
+        // otherwise we use the first one which is most likely the wrong page
+        const seachParams = removeUrlParam('nav')
+
+        // get the invisiable link just outside the element node tree
+        // if inside we have issues will bubbling propogation
+        const link = document.querySelector(`#${selector}-secretlink${navConstants.selectorAddOn}`);
+
+        // set the url and search params
+        const url = `${$(link).attr('href')}/${seachParams}&nav=${nav}`
+        $(link).attr('href', url);
+
+        // ga event action, category, label
+        googleAnalyticsEvent('click-tab', 'navbar', nav);
+
+        // force click on invisible link
+        link.click();
+      }
+    });
 
     // find the the nav-item and add click event
     $(`#${selector}${selectorAddOn}`).click( function(e) {
       e.stopPropagation();
       // remove existing nav search url parameters
       // otherwise we use the first one which is most likely the wrong page
-      const seachParams =  removeUrlParam('nav')
+      const seachParams = removeUrlParam('nav')
 
       // get the invisiable link just outside the element node tree
       // if inside we have issues will bubbling propogation
@@ -277,6 +321,9 @@ $(function () {
       // set the url and search params
       const url = `${$(link).attr('href')}/${seachParams}&nav=${nav}`
       $(link).attr('href', url);
+
+      // ga event action, category, label
+      googleAnalyticsEvent('click', 'navbar', nav);
 
       // force click on invisible link
       link.click();

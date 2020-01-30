@@ -2,6 +2,11 @@
   background-color: $white;
   height: calc(100% - 48px - 6px - 100px) !important;
   min-height: calc(100% - 48px - 6px - 100px) !important;
+
+  @include kind-of-tiny {
+    min-height: calc(100% - 48px - 12px - 64px) !important;
+    height: calc(100% - 48px - 12px - 64px) !important;
+  }
   overflow: auto !important;
   flex: 1 1 auto !important;
   margin-bottom: 6px;
@@ -12,6 +17,10 @@
     height: 5px;
     position: absolute;
     top: calc(100% - 105px);
+
+    @include kind-of-tiny {
+      top: calc(100% - 75px);
+    }
     left: -2px;
     @include box-shadow( inset 0 -2px 2px transparentize(#000, 0.7));
   }
@@ -22,6 +31,10 @@
       height: calc(100% - 48px - 12px - 100px) !important;
       &:after {
         top: calc(100% - 117px);
+
+        @include kind-of-tiny {
+          top: calc(100% - 147px);
+        }
       }
     }
 
@@ -29,17 +42,74 @@
     height: calc(100% - 48px - 12px - 170px) !important;
     &:after {
       top: calc(100% - 187px);
+
+      @include kind-of-tiny {
+        top: calc(100% - 147px);
+      }
+    }
+
+    @include kind-of-tiny {
+      min-height: calc(100% - 48px - 12px - 130px) !important;
+      height: calc(100% - 48px - 12px - 130px) !important;
+    }
+  }
+
+  .text-info-box {
+    @include medium {
+      width: 100% !important;
+      white-space: nowrap;
     }
   }
 }
 
+#cards-search-input {
+  &.nosearch {
+    border-bottom: 3px solid transparentize($ce3-error-state, .1) !important;
+
+    &:focus::placeholder{
+      color: transparentize($ce3-error-state, .6);
+    }
+
+    &::placeholder {
+      color: $ce3-error-state;
+    }
+  }
+}
 
 #data-card {
   cursor: pointer;
   width: 32%  !important;
   height: auto !important;
   @include border-radius(5px, 5px);
-  border: 1px solid $ce3-border-color !important;
+  border: 1px solid $ce3-blue3 !important;
+  border: 1px solid $ce3-blue5 !important; // noborder
+  @include box-shadow(0px 2px 3px transparentize(#000, 0.761));  // noborder
+
+  &.card-disabled {
+    cursor: default;
+    #card-image-row {
+      img {
+        -webkit-filter: grayscale(60%) contrast(50%);; /* Safari 6.0 - 9.0 */
+        filter: grayscale(60%) contrast(50%);;
+      }
+    }
+    #card-text {
+      color: darken($ce3-blue6, 20) !important;
+    }
+  }
+
+  &:focus, &:hover {
+    border: 1px solid darken($ce3-blue3, 10) !important;
+    border: 1px solid $ce3-blue5 !important; // noborder
+    @include box-shadow(0px 5px 10px transparentize(#000, 0.761));
+    outline: none;
+    &.card-disabled{
+      @include box-shadow(0px 0px 0px transparentize(#000, 0.761));
+      border: 1px solid $ce3-blue3 !important;
+      border: 1px solid $ce3-blue5 !important; // noborder
+      outline: none;
+    }
+  }
 
   @include large {
     width: 90% !important;
@@ -47,9 +117,26 @@
     margin: $ce3-padding-half !important;
   }
 
+  @include medium {
+    max-height: 400px !important;
+    height: 100% !important;
+  }
+
   @include small {
-    width: 90% !important;
-    height: auto !important;
+    height: 100% !important;
+    max-height: 320px !important;
+  }
+
+  @include very-small {
+    max-height: 225px !important;
+  }
+
+  @include tiny {
+    max-height: 200px !important;
+  }
+
+  @include to-small-to-see {
+    max-height: 175px !important;
   }
 }
 
@@ -59,6 +146,7 @@
   flex-flow: row nowrap !important;
   padding-right: $ce3-default-padding !important;
   left: $ce3-default-padding !important;
+  max-height: 1800px;
 
   @include large {
     justify-content: center !important;
@@ -71,35 +159,71 @@
     flex-flow: row wrap !important;
     padding-right: $ce3-default-padding/2 !important;
     left: $ce3-default-padding/2 !important;
+    max-height: 1240px !important;
+    min-height: 1000px !important;
+    height: 100% !important;
   }
 
-  @include medium {
-    min-height: 912px !important;
+  @include small {
+    max-height: 1240px !important;
+    min-height: 1000px !important;
+  }
+
+  @include very-small {
+    max-height: 1240px !important;
+    min-height: 710px !important;
+  }
+
+  @include tiny {
+    max-height: 1000px !important;
+    min-height: 640px !important;
+  }
+
+  @include to-small-to-see {
+    max-height: 800px !important;
+    min-height: 560px !important;
   }
 }
 
 #card-image-row {
-  background-color: $ce3-blue3 !important;
   justify-content: center !important;
   align-content: center !important;
+  @include border-radius(5px, 5px);
+  max-height: 400px;
+
+  z-index: 1;
+
+  @include small {
+    max-height: 110px;
+  }
 
   @include medium {
     justify-content: start !important;
     align-content: start !important;
+    max-height: 250px;
+    height: 100% !important;
   }
 }
 
 #card-text {
-  background-color: $ce3-blue3 !important;
-  color: $ce3-blue6 !important;
+  // background-color: $ce3-blue3 !important;
+  // color: $ce3-blue6 !important;
+  background-color: $ce3-blue5 !important;
+  color: $ce3-blue3 !important;
   flex: 1 1 85px !important;
   height: 85px !important;
   min-height: 85px !important;
+  max-height: 120px !important;
+  z-index: 2;
+  @include border-bottom-left-radius(5px);
+  @include border-bottom-right-radius(5px);
+   @include border-radius(0px, 5px);  // noborder
 
   @include medium {
     flex: 1 1 150px !important;
     height: 150px !important;
-    min-height: 150px !important;
+    min-height: 85px !important;
+    max-height: 120px;
   }
 
   @include tall {
@@ -137,12 +261,12 @@
   }
 
   @include small {
-    min-height: auto !important;
+    min-height: 80px !important;
   }
 }
 
 #card-title-icon {
-  font: 700 18px $roboto !important;
+  font: $font-weight-meduim 18px $roboto !important;
   padding-bottom: $ce3-padding-half !important;
   max-height: 28px;
 }

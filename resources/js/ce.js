@@ -354,6 +354,8 @@ especially when it comes to interacting with the DOM and handling events.
     setVariablesMapState: function setVariablesMapState(state) {
       Object.keys(state).includes('variable') ? this.setUrlParam('id', state['variable']) : null;
       Object.keys(state).includes('county') ? this.setUrlParam('county', state['county']) : null;
+      Object.keys(state).includes('city') ? this.setUrlParam('city', state['city']) : null;
+      Object.keys(state).includes('fips') ? this.setUrlParam('fips', state['fips']) : null;
       Object.keys(state).includes('season') ? this.setUrlParam('season', state['season']) : null;
       Object.keys(state).includes('leftScenario') ? this.setUrlParam('left', state['leftScenario']) : null;
       Object.keys(state).includes('leftYear') ? this.setUrlParam('leftyear', state['leftYear']) : null;
@@ -368,7 +370,7 @@ especially when it comes to interacting with the DOM and handling events.
     },
 
     getNavState: function getNavState() {
-      var pages = ["local-climate-charts", "local-climate-maps", "high-tide-flooding", "historical-weather-data","variables", "stations"];
+      var pages = ["local-climate-charts", "local-climate-maps", "high-tide-flooding", "historical-weather-data","variables", "stations", "about", "glossary", "faq"];
       var state = this.getUrlParams({
         slide: 'menu',
         detail: 'menuDetail'
@@ -380,7 +382,7 @@ especially when it comes to interacting with the DOM and handling events.
     },
 
     setNavState: function setNavState(state) {
-      var pages = ["local-climate-charts", "local-climate-maps", "high-tide-flooding", "historical-weather-data", "variables", "stations"];
+      var pages = ["local-climate-charts", "local-climate-maps", "high-tide-flooding", "historical-weather-data", "variables", "stations", "about", "glossary", "faq"];
       if (Object.keys(state).includes('slide')) {
         this.setUrlParam('menu', pages[state['slide']]);
       } else {
@@ -470,8 +472,8 @@ especially when it comes to interacting with the DOM and handling events.
         case 'about':
           breadcrumb_text = 'About';
           break;
-        case 'definitions':
-          breadcrumb_text = 'Definitions';
+        case 'glossary':
+          breadcrumb_text = 'glossary';
           break;
         case 'faq':
           breadcrumb_text = 'FAQ';

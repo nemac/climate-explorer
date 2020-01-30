@@ -1,23 +1,41 @@
-#share-widget-wrapper {
+
+
+#share-widget-wrapper, #about-widget-wrapper {
   width: 48px !important;
   height: 32px !important;
   min-width: 48px;
   padding-top: 3px;
   margin-right: 0px;
-  margin-left: auto;
+  &.main {
+    padding-top: 32px;
+  }
+  @include small {
+    &.main {
+      padding-top: 3px;
+    }
+  }
   @include very-small  {
     margin-right: -6px;
   }
+
 }
 
+
+#about-widget-wrapper {
+  margin-left: auto;
+  width: 148px !important;
+  @include very-small  {
+    width: 48px !important;
+    margin-right: 3px !important;
+  }
+}
 
 .share-widget {
   cursor: pointer;
   background: $ce3-blue3;
   @include border-radius(5px !important);
   max-width: 40px;
-  @include medium {
-  }
+
   z-index: 10;
   padding: 6px;
   margin-right: 12px;
@@ -58,7 +76,7 @@
 
   .share-trigger {
     text-align: center;
-    font: 0.625rem/1em $sans-heavy;
+    font: 0.625rem/1em $roboto;
     @include border-radius(5px !important);
     color: $ce3-blue5;
     z-index: 2;
@@ -76,6 +94,7 @@
     margin-left: -5px;
     margin-top: 6px;
     width: 40px;
+
     @include very-small  {
       width: 40px;
       min-width: 40px;
@@ -91,6 +110,7 @@
     li {
       width: 40px;
       min-width: 40px;
+
       height: 60px;
       @include very-small  {
         width: 40px;
@@ -128,6 +148,106 @@
       margin: 0 auto;
     }
   }
+
+  // about widget
+  &.about {
+    width: 148px;
+    max-width: 148px;
+    max-height: 36px;
+
+    @include very-mid-small {
+      margin-right: 38px;
+    }
+
+    @include very-small {
+      width: 46px;
+      max-width: 46px;
+    }
+
+    .icon {
+      width: 25%;
+      height: 100%;
+      float: left;
+      line-height: 14px;
+      padding-top: 12px;
+      font-size: 1.5rem;
+
+      @include very-small {
+        font-size: 1.25rem;
+        padding-top: 18px;
+      }
+    }
+
+    .share-icon {
+      vertical-align: middle;
+      @include very-small {
+        font-size: 1.25rem;
+      }
+    }
+
+    a {
+      @include very-small {
+        padding-top: 0px;
+        width: 40px !important;
+        max-width: 40px !important;
+        min-width: 40px !important;
+      }
+
+      display: block !important;
+      width: 100% !important;
+      height: 100% !important;
+      vertical-align: middle;
+
+    }
+
+    ul {
+      width: 137px;
+      text-indent: 0px;
+      margin-top: 0px;
+
+      @include very-small {
+        width: 46px;
+        max-width: 46px;
+      }
+
+      li {
+        width: 137px;
+        padding-top: 5px;
+
+        a {
+          padding-top: $ce3-default-padding;
+          @include very-small {
+            padding-top: 0px;
+          }
+        }
+
+        @include very-small {
+          width: 46px;
+          max-width: 46px;
+        }
+
+        .a-share-label {
+          vertical-align: middle;
+          font-size: 14px;
+          line-height: 14px;
+          width: 75%;
+          height: 100%;
+          float: left;
+          padding-top: 12px;
+          text-align: start;
+          padding-left: 12px;
+          text-indent: 0px;
+
+          @include very-small {
+            display: none;
+          }
+
+        }
+      }
+    }
+  }
+
+
 }
 
 #share-permalink-input {
@@ -158,7 +278,7 @@
     background: $ce3-blue5;
     @include border-radius(24px !important);
     font: 0.85rem/34px $roboto;
-    font-weight: 500;
+    font-weight: $font-weight-normal;
     color: $ce3-blue3;
     border: 0px;
     outline: none;

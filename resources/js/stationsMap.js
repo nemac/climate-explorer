@@ -384,12 +384,14 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
 
       // make li for select pulldown
       let stationLi = '';
+      let indx = 21;
       currentstationsSorted.forEach( (station) => {
         if (this.options.mode === 'high_tide_flooding') {
-          stationLi += `<li rel="${station.properties.id}|${station.properties.name}|${station.properties.mOverMHHW}|" class="default-select-option">${station.properties.name} - (${station.properties.id})</li>\n`;
+          stationLi += `<li tabindex="${indx}" rel="${station.properties.id}|${station.properties.name}|${station.properties.mOverMHHW}|" class="default-select-option">${station.properties.name} - (${station.properties.id})</li>\n`;
         } else {
-          stationLi += `<li rel="${station.properties.id},${station.properties.name}" class="default-select-option">${station.properties.name} - (${station.properties.id})</li>\n`;
+          stationLi += `<li tabindex="${indx}" rel="${station.properties.id},${station.properties.name}" class="default-select-option">${station.properties.name} - (${station.properties.id})</li>\n`;
         }
+        indx += 1;
       })
 
       // update select elem if it exists

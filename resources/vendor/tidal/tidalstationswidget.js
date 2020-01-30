@@ -2,7 +2,7 @@
 (function ($) {
 
 
-  
+
   if (typeof($.widget) === 'undefined') {
     console.error("jQuery Widget not found.");
     return
@@ -16,10 +16,10 @@
     },
     scales: {
       full: {x_max: 2100, y_max: 365, y_step: 75},
-      historic: {x_max: 2020, y_max: 50, y_step: 10}
+      historical: {x_max: 2020, y_max: 50, y_step: 10}
     },
     data: {},
-    
+
     _create: function (options) {
       this.nodes = {};
       $.getJSON(this.options.data_url, function (json) {
@@ -39,21 +39,21 @@
       }
     },
     zoomToggle: function () {
-      if (this.options.scale === 'historic') {
+      if (this.options.scale === 'historical') {
         this.options.scale = 'full';
       }
       else {
-        this.options.scale = 'historic';
+        this.options.scale = 'historical';
       }
-      
-      
+
+
       this.chart.options.scales.xAxes[0].ticks.max = this.scales[this.options.scale].x_max;
       this.chart.options.scales.yAxes[0].ticks.max = this.scales[this.options.scale].y_max;
       this.chart.options.scales.yAxes[0].ticks.stepSize = this.scales[this.options.scale].y_step;
       this.chart.update();
-      
+
     },
-    
+
     _update: function () {
       if (!this.options.station) {
         return
@@ -70,7 +70,7 @@
           }
         }
       }
-      
+
       // turn projected data values into an array
       let labels = [];
       let data_rcp45 = [];
@@ -78,7 +78,7 @@
       for (let i = 1950; i <= 2100; i++) {
         // build an array of labels
         labels.push(i);
-        
+
         // prepend 0s to historical range
         if (i <= 2000) {
           data_rcp45.push(0);
@@ -88,7 +88,7 @@
           data_rcp85.push(this.data.int[String(this.options.station)][i]);
         }
       }
-      
+
       // compose chart
       if (this.chart !== undefined) {
         this.chart.destroy()
@@ -112,7 +112,7 @@
           datasets: [
             {
               data: data_hist,
-              label: "Historic",
+              label: "Historical",
               backgroundColor: "#d6d6d6",
               borderColor: "#aaaaaa",
               borderWidth: 3,
@@ -144,12 +144,20 @@
           // events: [],
           tooltips: {
             mode: 'index',
+            intersect: false,
+            itemSort: function(a, b) {
+              return b.datasetIndex - a.datasetIndex
+            },
             callbacks: {
               label: function (tooltipItem, data) {
                 let value = data.datasets[tooltipItem.datasetIndex].data[tooltipItem.index];
                 return data.datasets[tooltipItem.datasetIndex].label + ': ' + (Math.round(value * 10) / 10) + ' days';
               }
             }
+          },
+          hover: {
+            mode: 'index',
+            intersect: false
           },
           legend: {
             display: true,
@@ -161,7 +169,7 @@
             yAxes: [{
               scaleLabel: {
                 fontSize: 16,
-                labelString: 'Annual Days with High-tide Flooding',
+                labelString: 'Annual Days with High-Tide Flooding',
                 display: true
               },
               ticks: {

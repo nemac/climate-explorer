@@ -14,26 +14,20 @@
 
   {{> secondary_header }}
 
-  <!-- <div id="main-content-wrap">
-
-    {{> share }}
-
-    <div id="location-search">
-      <input type="text" class="autocomplete location-mapper" autocomplete="off" placeholder="Search another City, County or Zip code">
-    </div>
-
-  </div> -->
-
     <div id="local-climate-maps-viewport" class="padding-horrizontal d-flex d-flex-column">
 
       <div id="search-row" class="padding-horizontal d-flex-row flex-justify padding-top padding-bottom-half d-flex-justify" >
 
         <div class="rounded-box-secondary input-outer padding-horrizontal bottom-padding default-btn-height search-box-secondary width-40">
-          <input id="cards-search-input" type="text" class="location-mapper input-inner-default border-none default-btn-height width-90" autocomplete="off" placeholder="Enter county, city, or zip code">
+          <input  tabindex="1" id="cards-search-input" type="text" class="location-mapper input-inner-default border-none default-btn-height" autocomplete="off" placeholder="Enter county, city, or zip code">
           <span class="icon icon-search search-default float-right padding-default"></span>
+          <div id="clear-location-wrapper" class="">
+            <a id="clear-location-link"  href="../local-climate-maps" class="d-none"></a>
+            <span id="clear-location" nav="local-climate-maps" link="clear-location-link" class="fas fa-times-circle"></span>
+          </div>
         </div>
 
-        <div id="stations-select-wrapper" class="rounded-choice-box padding-horrizontal default-btn-height top-select-wrapper d-flex-center">
+        <div id="stations-select-wrapper" class="rounded-choice-box padding-horrizontal default-btn-height top-select-wrapper d-flex-center disabled">
           <div class="select">
             <div id="stations-select-vis" class="select-styled disabled" rel="none">Stations</div>
             <ul class="select-options" style="display: none;">
@@ -49,19 +43,16 @@
         <div id="downloads-select-wrapper" class="rounded-choice-box padding-horrizontal default-btn-height top-select-wrapper d-flex-center">
 
           <div class="select download-select">
-            <div id="downnloads-select-vis" class="select-styled" rel="none" >
+            <div tabindex="1" id="downnloads-select-vis" class="select-styled" rel="none" >
               <i class="fas fa-download select-icon"></i>
               <a rel="none" href="javascript:void(0);" >Downloads</a>
             </div>
             <ul class="select-options" style="display: none;">
-              <li icon="fas fa-download select-icon"  class="default-select-option">
-                <a rel="none" href="javascript:void(0);" >Downloads</a>
-              </li>
               <li rel="download-lefttmap-image" icon="fas fa-download select-icon" href="javascript:void(0);" class="default-select-option">
-                <a rel="download-lefttmap-image" href="javascript:void(0);" >Download left map as image</a>
+                <a tabindex="2" rel="download-lefttmap-image" class="download-link" href="javascript:void(0);" >Download left map as image</a>
               </li>
               <li rel="download-rightmap-image" icon="fas fa-download select-icon" href="javascript:void(0);" class="default-select-option">
-                <a rel="download-rightmap-image" href="javascript:void(0);" >Download right map as image</a>
+                <a tabindex="2" rel="download-rightmap-image" class="download-link" href="javascript:void(0);" >Download right map as image</a>
               </li>
             </ul>
           </div>
@@ -72,14 +63,14 @@
       <div id="info-row" class="padding-vertical width-100" >
         <div class="rounded-filters-box padding-default width-100">
 
-          <div class="d-flex-row">
+          <div class="filter-border-bottom d-flex-row">
 
             <div id="info-text-wrapper" class="width-90">
               <i class="fas fa-map-marked-alt icon-info-box"></i>
               <span id="default-city-state" class="text-info-box" ></span>
-              <span id="" class="text-info-box" > in </span>
+              <span id="default-in" class="text-info-box" > in </span>
               <span id="default-city-county" class="text-info-box"></span>
-              <span id="" class="text-info-box" > - </span>
+              <span id="default-dash" class="text-info-box" > - </span>
               <span id="default-chart-map-varriable" class="text-info-box" rel="tmax">Avg Daily Max Temp (°F)</span>
             </div>
 
@@ -94,96 +85,64 @@
           <div id="filters-row" class="d-flex-row flex-justify padding-top padding-bottom d-flex-left" >
 
             <div id="varriable-select-wrapper" class="rounded-choice-box padding-horrizontal-half padding-vertical-half default-btn-height d-flex-center width-30">
-              <div class="select varriable-select">
-                <div id="varriable-select-vis" class="select-styled" rel="tmax">Avg Daily Max Temp (°F)</div>
-                <ul class="select-options">
-                  <div icon="fas fa-temperature-high select-icon" class="default-select-option-group">
-                    <i class="fas fa-temperature-high select-icon"></i>Temperature
-                  </div>
-                  <li rel="tmax" class="default-select-option">Avg Daily Max Temp (°F)</li>
-                  <li rel="tmin" class="default-select-option">Avg Daily Min Temp (°F)</li>
-                  <li rel="days_tmax_gt_90f" class="default-select-option">Days w/ max > 90°F</li>
-                  <li rel="days_tmax_gt_95f" class="default-select-option">Days w/ max > 95°F</li>
-                  <li rel="days_tmax_gt_100f" class="default-select-option">Days w/ max > 100°F</li>
-                  <li rel="days_tmax_gt_105f" class="default-select-option">Days w/ max > 105°F</li>
-                  <li rel="days_tmax_lt_32f" class="default-select-option">Days w/ max < 32°F</li>
-                  <li rel="days_tmin_lt_32f" class="default-select-option">Days w/ min < 32°F</li>
-                  <li rel="days_tmin_gt_80f" class="default-select-option">Days w/ min > 80°F</li>
-                  <li rel="days_tmin_gt_90f" class="default-select-option">Days w/ min > 90°F</li>
-                  <div icon="fas fa-cloud-rain select-icon" class="default-select-option-group">
-                    <i class="fas fa-cloud-rain select-icon"></i>Precipitation
-                  </div>
-                  <li rel="pcpn" class="default-select-option">Total precipitation</li>
-                  <li rel="days_pcpn_gt_1in" class="default-select-option">Days w/ > 1 in Precipitation</li>
-                  <li rel="days_pcpn_gt_3in" class="default-select-option">Days w/ > 3 in Precipitation</li>
-                  <li rel="days_dry_days" class="default-select-option">Dry Days</li>
-                  <div icon="fas fa-bacon select-icon" class="default-select-option-group">
-                    <i class="fas fa-bacon select-icon"></i>Other
-                  </div>
-                  <li rel="cdd_65f" class="default-select-option">Cooling Degree Days</li>
-                  <li rel="gdd" class="default-select-option">Growing Degree Days</li>
-                  <li rel="hdd_65f" class="default-select-option">Heating Degree Days</li>
-                  <li rel="gddmod" class="default-select-option">Modified Growing Degree Days</li>
-                </ul>
-              </div>
+              {{> variable-selector }}
             </div>
+
             <a id="national-climate-maps-secretlink-forcharts" href="../local-climate-charts" class="d-none"></a>
 
             <a id="chartmap-btn-chart-link"  href="../local-climate-charts" class="d-none"></a>
             <a id="chartmap-btn-map-link"  href="../local-climate-maps" class="d-none">Map</a>
             <div id="chartmap-wrapper" class="padding-horrizontal-half padding-vertical-half default-btn-height d-flex-center width-20 disabled">
-              <div id="btn-chart" class="btn-chart btn-default circle-box-left d-flex-center width-50" val="chart" nav="local-climate-charts" link="chartmap-btn-chart-link" sel="chartmap-select-vis">
+              <div tabindex="100" id="btn-chart" class="btn-chart btn-default circle-box-left d-flex-center width-50" val="chart" nav="local-climate-charts" link="chartmap-btn-chart-link" sel="chartmap-select-vis">
                 Chart
               </div>
-              <div id="btn-chart" class="btn-map btn-default-selected circle-box-right d-flex-center width-50"  nav="local-climate-maps"  val="map" link="chartmap-btn-map-link" sel="chartmap-select-vis">
+              <div tabindex="101" id="btn-chart" class="btn-map btn-default-selected circle-box-right d-flex-center width-50"  nav="local-climate-maps"  val="map" link="chartmap-btn-map-link" sel="chartmap-select-vis">
                 Map
               </div>
             </div>
 
             <div id="chartmap-select-wrapper" class="rounded-choice-box padding-horrizontal-half padding-vertical-half default-btn-height d-flex-center width-20">
               <div class="select chartmap-select">
-                <div id="chartmap-select-vis" class="select-styled" rel="chart">Map</div>
+                <div tabindex="102" id="chartmap-select-vis" class="select-styled" rel="chart">Map</div>
                 <ul class="select-options">
-                  <li id="chartmap-select-chart-link" rel="chart" class="default-select-option" nav="local-climate-charts" link="chartmap-btn-chart-link" >Chart</li>
-                  <li id="chartmap-select-map-link" rel="map" class="default-select-option" nav="local-climate-maps" link="chartmap-btn-map-link">Map</li>
+                  <li tabindex="103" id="chartmap-select-chart-link" rel="chart" class="default-select-option" nav="local-climate-charts" link="chartmap-btn-chart-link" >Chart</li>
+                  <li tabindex="104" id="chartmap-select-map-link" rel="map" class="default-select-option" nav="local-climate-maps" link="chartmap-btn-map-link">Map</li>
                 </ul>
               </div>
             </div>
 
             <div id="time-wrapper" class="padding-horrizontal-half padding-vertical-half default-btn-height d-flex-center width-30">
-              <div id="btn-chart" class="btn-summer btn-default-selected circle-box-left d-flex-center width-50" val="summer" sel="time-select-vis">
-                Summer
+              <div tabindex="105" id="btn-chart" class="btn-annual btn-default-selected circle-box-left d-flex-center width-50" val="annual" sel="time-select-vis">
+                Annual
               </div>
-              <div id="btn-chart" class="btn-fall btn-default circle-box-middle d-flex-center width-50" val="fall" sel="time-select-vis" >
-                Fall
-              </div>
-              <div id="btn-chart" class="btn-winter btn-default circle-box-middle d-flex-center width-50" val="winter" sel="time-select-vis" >
-                Winter
-              </div>
-              <div id="btn-chart" class="btn-spring btn-default circle-box-middle d-flex-center width-50" val="spring" sel="time-select-vis" >
+              <div tabindex="106" id="btn-chart" class="btn-spring btn-default circle-box-middle d-flex-center width-50" val="spring" sel="time-select-vis" >
                 Spring
               </div>
-              <div id="btn-chart" class="btn-spring btn-default circle-box-right d-flex-center width-50" val="annual" sel="time-select-vis" >
-                Annual
+              <div tabindex="107" id="btn-chart" class="btn-summer btn-default circle-box-middle d-flex-center width-50" val="summer" sel="time-select-vis" >
+                Summer
+              </div>
+              <div tabindex="108" id="btn-chart" class="btn-fall btn-default circle-box-middle d-flex-center width-50" val="fall" sel="time-select-vis" >
+                Fall
+              </div>
+              <div tabindex="109" id="btn-chart" class="btn-winter btn-default circle-box-right d-flex-center width-50" val="winter" sel="time-select-vis" >
+                Winter
               </div>
             </div>
 
             <div id="time-select-wrapper" class="rounded-choice-box padding-horrizontal-half padding-vertical-half default-btn-height d-flex-center width-20">
               <div class="select time-select">
-                <div id="time-select-vis" class="select-styled" rel="summer">Summer</div>
+                <div tabindex="110" id="time-select-vis" class="select-styled" rel="Annual">Annual</div>
                 <ul class="select-options">
-                  <li rel="summer" class="default-select-option">Summer</li>
-                  <li rel="fall" class="default-select-option">Fall</li>
-                  <li rel="winter" class="default-select-option">Winter</li>
-                  <li rel="spring" class="default-select-option">Spring</li>
-                  <li rel="annual" class="default-select-option">Annual</li>
+                  <li tabindex="111" rel="annual" class="default-select-option">Annual</li>
+                  <li tabindex="112" rel="spring" class="default-select-option">Spring</li>
+                  <li tabindex="113" rel="summer" class="default-select-option">Summer</li>
+                  <li tabindex="114" rel="fall" class="default-select-option">Fall</li>
+                  <li tabindex="115" rel="winter" class="default-select-option">Winter</li>
                 </ul>
               </div>
             </div>
 
-
           </div>
-
 
 
         </div>
@@ -198,6 +157,7 @@
           <div id="map-wrap" class="map-wrap width-100 height-100 ">
             <!-- <div id="chart-123" class="chart-canvas width-100 height-100" data-chart-ID="123"></div> -->
             <div id="temperature-map" class="map-element"></div>
+            <div id="map-message" class="map-nodata-message d-none"></div>
           </div>
 
       </div>
@@ -208,6 +168,7 @@
 {{> nav_footer }}
 {{> footer }}
 
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Turf.js/5.1.6/turf.min.js" integrity="sha256-Nhtik+K3xORhs5S9o0qlol4eRNB9O5OyTOJqbLucPk8=" crossorigin="anonymous"></script>
 <script src="https://unpkg.com/terraformer@1.0.8/terraformer.js" integrity="sha384-+M797Pj3WZVCwMmLbOxAoaWYcKJo8NSxItmI48ytcLNeAnfn1d/IckFn31jEqrzP"
         crossorigin="anonymous"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/0.4.1/html2canvas.min.js" integrity="sha256-c3RzsUWg+y2XljunEQS0LqWdQ04X1D3j22fd/8JCAKw=" crossorigin="anonymous"></script>
@@ -218,6 +179,7 @@
 <script type="text/javascript" src="/resources/js/scenarioComparisonMap.js"></script>
 <script type="text/javascript" src="/resources/js/ce3-ui-components.js"></script>
 <script type="text/javascript" src="/resources/js/local-climate-maps.js"></script>
+<script type="text/javascript" src="/resources/js/secondary_header.js"></script>
 <script type="text/javascript" src="/resources/js/nouislider.min.js"></script>
 </body>
 </html>

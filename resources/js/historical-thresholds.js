@@ -9,10 +9,23 @@ $(function () {
   enableCustomSelect('download-select');
   enableCustomSelect('threshold-variable-select');
 
-  // get city, state from state url
-  $('#default-city-state').text(window.ce.ce('getLocationPageState')['city']);
-  $('#default-city-county').text(window.ce.ce('getLocationPageState')['county']);
-  $('#cards-search-input').val(window.ce.ce('getLocationPageState')['city']);
+  const cityStateCE = window.ce.ce('getLocationPageState')['city'];
+  const countyCE = window.ce.ce('getLocationPageState')['county'];
+  let isAlaska = false;
+  let isHawaii = false;
+
+  if (cityStateCE) {
+      isAlaska = (cityStateCE.indexOf('Alaska') > 0 || cityStateCE.indexOf(', AK') > 0);
+      isHawaii = (cityStateCE.indexOf('Hawaii') > 0 || cityStateCE.indexOf(', HI') > 0);
+  }
+
+  $('#default-city-state').text(cityStateCE);
+  $('#default-city-county').text(countyCE);
+  $('#cards-search-input').attr("placeholder", cityStateCE);
+
+  if (!countyCE) {
+    $('#cards-search-input').attr("placeholder", "Location missing, enter a county, city, or zip code");
+  }
 
   let stationsMapState = window.ce.ce("getStationsMapState");
   const county =  window.ce.ce('getLocationPageState')['county']
@@ -30,6 +43,7 @@ $(function () {
   const threshold = stationsMapState['threshold']  || 1;
   const windowValue = stationsMapState['window']  || 1;
   const thresholdVariable = stationsMapState['thresholdVariable']  || 'precipitation';
+
 
   // initialize staion map state from url values
   stationsMapState = {
@@ -66,12 +80,19 @@ $(function () {
     barColor: '#307bda' // Color for bars.
   };
 
-  updateThresholdVariableSelectText(initialObj);
-  $('#threshold-value').val(initialObj.threshold);
-  $('#window-value').val(initialObj.window);
+  $('#clear-location').click( function(e){
+    const target = $(e.target);
+    handleClearLocationClick(target);
+  })
 
-   $("#thresholds-container").item(initialObj);
-   $("#thresholds-container").item(initialObj);
+  if ( stationId ) {
+    updateThresholdVariableSelectText(initialObj);
+    $('#threshold-value').val(initialObj.threshold);
+    $('#window-value').val(initialObj.window);
+
+     $("#thresholds-container").item(initialObj);
+     $("#thresholds-container").item(initialObj);
+  }
 
   // updates the visible text for the station pulldown with the information from the state url
   function updateStationSelectText(stations) {
@@ -137,12 +158,31 @@ $(function () {
   // updates the visible text for the station pulldown with the information from the state url
   updateStationSelectText({stationName, stationId})
 
+  // show more about charts
+  function showMoreCharts() {
+    const target = $('#chart-info-row .more-info.btn-default');
+    // show description of charts
+    if (target.hasClass('d-none')) {
+      target.removeClass('d-none');
+    }
+  }
+
+  // don't show more about charts
+  function dontShowMoreCharts() {
+    const target = $('#chart-info-row .more-info.btn-default');
+    // show description of charts
+    if (!target.hasClass('d-none')) {
+      target.addClass('d-none');
+    }
+  }
+
   // show graph overlay.
   // graph is visbile and on page just pushed of viewable area
   // so we can intialize it when needed
   function showGraphs() {
     const stationsGraphRowElem = document.getElementById('stations-graph-row');
     const stationsMapRowElem = document.getElementById('stations-map-row');
+    showMoreCharts();
 
     // unhide chart overlay
     if (stationsGraphRowElem) {
@@ -163,6 +203,7 @@ $(function () {
   function showMap() {
     const stationsGraphRowElem = document.getElementById('stations-graph-row');
     const stationsMapRowElem = document.getElementById('stations-map-row');
+    dontShowMoreCharts();
 
     // unhide chart overlay
     if (stationsGraphRowElem) {
@@ -202,6 +243,8 @@ $(function () {
         // unhide chart overlay
         showGraphs();
     }
+    // ga event action, category, label
+    googleAnalyticsEvent('change', 'chartmap', RelorVal(target));
     forceResize();
   }
 
@@ -225,6 +268,11 @@ $(function () {
   }
 
   function toggleDownloads() {
+    const targetParent = $('#downloads-select-wrapper');
+    if (targetParent.hasClass('disabled')) {
+      targetParent.removeClass('disabled');
+    }
+
     const target = $('#downnloads-select-vis');
     if (target.hasClass('disabled')) {
       target.removeClass('disabled');
@@ -293,6 +341,9 @@ $(function () {
     const stationsMapState = window.ce.ce("getStationsMapState");
     const stationId = stationsMapState['stationId'];
 
+    // ga event action, category, label
+    googleAnalyticsEvent('click', 'download', downloadAction);
+
     // capture what we are downloading
     switch (downloadAction) {
       case 'download-thresholds-image': // download image
@@ -305,6 +356,47 @@ $(function () {
       default:
       event.target.href = $("#thresholds-container canvas")[0].toDataURL('image/png');
       event.target.download = "thresholds_" + stationId + ".png";
+    }
+  });
+
+
+
+  // imcrement threshold
+  $('.threshold-up').keyup( function (e) {
+    if (e.keyCode === 13){
+      const target = $(e.target);
+      const thresholdValueElem = document.getElementById('threshold-value');
+
+      // ensure thresholdValue element exits
+      if (thresholdValueElem) {
+
+        // get thresholdValue element values
+        const min = parseFloat(thresholdValueElem.getAttribute('min')).toFixed(1);
+        const max = parseFloat(thresholdValueElem.getAttribute('max')).toFixed(1);
+        const step = parseFloat(thresholdValueElem.getAttribute('step')).toFixed(1);
+        const val = parseFloat($(thresholdValueElem).val()).toFixed(1);
+        const newVal = parseFloat(parseFloat(val) + parseFloat(step)).toFixed(1);
+        if (parseFloat(newVal) > parseFloat(max)) {
+          $(thresholdValueElem).val(val);
+        } else {
+          $(thresholdValueElem).val(newVal);
+
+          const stations = $('#stations-select-vis').attr('rel').split(',');
+          const stationName = stations[1];
+          const stationId = stations[0];
+          const variableValue = $('#threshold-variable-select-vis').attr('rel'); //  , thresholdValue: variableValue
+
+          // change map url state
+          window.ce.ce('setStationsMapState', { stationId, stationName, threshold: newVal, thresholdValue: variableValue});
+
+          // ga event action, category, label
+          googleAnalyticsEvent('click-tab', 'threshold-up', newVal);
+
+          $("#thresholds-container").item({
+            threshold: newVal,
+          }).item('update');
+        }
+      }
     }
   });
 
@@ -335,6 +427,9 @@ $(function () {
         // change map url state
         window.ce.ce('setStationsMapState', { stationId, stationName, threshold: newVal, thresholdValue: variableValue});
 
+        // ga event action, category, label
+        googleAnalyticsEvent('click', 'threshold-up', newVal);
+
         $("#thresholds-container").item({
           threshold: newVal,
         }).item('update');
@@ -342,7 +437,43 @@ $(function () {
     }
   });
 
-  // descrememt threshold
+  // decrememt threshold
+  $('.threshold-down').keyup( function (e) {
+    if (e.keyCode === 13){
+      const target = $(e.target);
+      const thresholdValueElem = document.getElementById('threshold-value');
+      if (thresholdValueElem) {
+        const min = parseFloat(thresholdValueElem.getAttribute('min')).toFixed(1);
+        const max = parseFloat(thresholdValueElem.getAttribute('max')).toFixed(1);
+        const step = parseFloat(thresholdValueElem.getAttribute('step')).toFixed(1);
+        const val = parseFloat($(thresholdValueElem).val()).toFixed(1);
+        const newVal = parseFloat(parseFloat(val) - parseFloat(step)).toFixed(1);
+
+        if (parseFloat(newVal) < parseFloat(min)) {
+          $(thresholdValueElem).val(val);
+        } else {
+          $(thresholdValueElem).val(newVal);
+
+          const stations = $('#stations-select-vis').attr('rel').split(',');
+          const stationName = stations[1];
+          const stationId = stations[0];
+          const variableValue = $('#threshold-variable-select-vis').attr('rel'); //  , thresholdValue: variableValue
+
+          // change map url state
+          window.ce.ce('setStationsMapState', { stationId, stationName, threshold: newVal, thresholdValue: variableValue});
+
+          // ga event action, category, label
+          googleAnalyticsEvent('click-tab', 'threshold-down', newVal);
+
+          $("#thresholds-container").item({
+            threshold: newVal,
+          }).item('update');
+        }
+      }
+    }
+  });
+
+  // decrememt threshold
   $('.threshold-down').click( function (e) {
     const target = $(e.target);
     const thresholdValueElem = document.getElementById('threshold-value');
@@ -366,9 +497,48 @@ $(function () {
         // change map url state
         window.ce.ce('setStationsMapState', { stationId, stationName, threshold: newVal, thresholdValue: variableValue});
 
+        // ga event action, category, label
+        googleAnalyticsEvent('click', 'threshold-down', newVal);
+
         $("#thresholds-container").item({
           threshold: newVal,
         }).item('update');
+      }
+    }
+  });
+
+  // imcrement window
+  $('.window-up').keyup( function (e) {
+    if (e.keyCode === 13){
+      const target = $(e.target);
+      const windowValueElem = document.getElementById('window-value');
+      if (windowValueElem) {
+        const min = parseFloat(windowValueElem.getAttribute('min')).toFixed(1);
+        const max = parseFloat(windowValueElem.getAttribute('max')).toFixed(1);
+        const step = parseFloat(windowValueElem.getAttribute('step')).toFixed(1);
+        const val = parseFloat($(windowValueElem).val()).toFixed(1);
+        const newVal = parseFloat(parseFloat(val) + parseFloat(step)).toFixed(1);
+
+        if (parseFloat(newVal) > parseFloat(max)) {
+          $(windowValueElem).val(val);
+        } else {
+          $(windowValueElem).val(newVal);
+
+          const stations = $('#stations-select-vis').attr('rel').split(',');
+          const stationName = stations[1];
+          const stationId = stations[0];
+          const variableValue = $('#threshold-variable-select-vis').attr('rel'); //  , thresholdValue: variableValue
+
+          // change map url state
+          window.ce.ce('setStationsMapState', {stationId, stationName,  window: newVal, thresholdValue: variableValue});
+
+          // ga event action, category, label
+          googleAnalyticsEvent('click-tab', 'window-up', newVal);
+
+          $("#thresholds-container").item({
+            window: newVal,
+          }).item('update');
+        }
       }
     }
   });
@@ -397,12 +567,52 @@ $(function () {
         // change map url state
         window.ce.ce('setStationsMapState', {stationId, stationName,  window: newVal, thresholdValue: variableValue});
 
+        // ga event action, category, label
+        googleAnalyticsEvent('click', 'window-up', newVal);
+
         $("#thresholds-container").item({
           window: newVal,
         }).item('update');
       }
     }
   });
+
+  // descrememt window
+  $('.window-down').keyup( function (e) {
+    if (e.keyCode === 13){
+      const target = $(e.target);
+      const windowValueElem = document.getElementById('window-value');
+      if (windowValueElem) {
+        const min = parseFloat(windowValueElem.getAttribute('min')).toFixed(1);
+        const max = parseFloat(windowValueElem.getAttribute('max')).toFixed(1);
+        const step = parseFloat(windowValueElem.getAttribute('step')).toFixed(1);
+        const val = parseFloat($(windowValueElem).val()).toFixed(1);
+        const newVal = parseFloat(parseFloat(val) - parseFloat(step)).toFixed(1);
+
+        if (parseFloat(newVal) < parseFloat(min)) {
+          $(windowValueElem).val(val);
+        } else {
+          $(windowValueElem).val(newVal);
+
+          const stations = $('#stations-select-vis').attr('rel').split(',');
+          const stationName = stations[1];
+          const stationId = stations[0];
+          const variableValue = $('#threshold-variable-select-vis').attr('rel'); //  , thresholdValue: variableValue
+
+          // change map url state
+          window.ce.ce('setStationsMapState', { stationId, stationName, window: newVal,  thresholdValue: variableValue });
+
+          // ga event action, category, label
+          googleAnalyticsEvent('click-tab', 'window-down', newVal);
+
+          $("#thresholds-container").item({
+            window: newVal,
+          }).item('update');
+        }
+      }
+    }
+  });
+
 
   // descrememt window
   $('.window-down').click( function (e) {
@@ -427,6 +637,9 @@ $(function () {
 
         // change map url state
         window.ce.ce('setStationsMapState', { stationId, stationName, window: newVal,  thresholdValue: variableValue });
+
+        // ga event action, category, label
+        googleAnalyticsEvent('click', 'window-down', newVal);
 
         $("#thresholds-container").item({
           window: newVal,
@@ -590,6 +803,9 @@ $(function () {
     // change map url state
     window.ce.ce('setStationsMapState', { stationId, stationName, threshold: newValue, thresholdValue: variableValue});
 
+    // ga event action, category, label
+    googleAnalyticsEvent('click', 'threshold-value', newValue);
+
     // update chart with new threshold value
     $("#thresholds-container").item({ threshold: newValue }).item('update');
 
@@ -608,11 +824,44 @@ $(function () {
     // change map url state
     window.ce.ce('setStationsMapState', { stationId, stationName, window: newValue, thresholdValue: variableValue});
 
+    // ga event action, category, label
+    googleAnalyticsEvent('click', 'window-value', newValue);
+
 
     // update chart with new threshold value
     $("#thresholds-container").item({ window: newValue }).item('update');
 
   });
+
+  // eanbles time chart, map click events
+  $('#chartmap-wrapper').keyup( function(e) {
+    if (e.keyCode === 13){
+      const target = $(e.target);
+      const notDisabled = (!target.hasClass('btn-default-disabled') || !target.hasClass('disabled'));
+
+      if ( notDisabled ) {
+
+        // toggle button visual state
+        toggleButton($(target));
+
+        // change select pulldowns for resposnive mode
+        setSelectFromButton(target);
+
+        // check val of button to see if user is on map  or chart
+        // hide or unhide the appropriate overlay (map, chart)
+        chooseGraphOrMap(target);
+        toggleChartInfoText(RelorVal(target));
+      }
+
+      // reset map and chart sizes
+      setMapSize();
+      chooseGraphOrMap(target);
+
+      // ga event action, category, label
+      googleAnalyticsEvent('click-tab', 'chartmap', target);
+    }
+  });
+
 
   // eanbles time chart, map click events
   $('#chartmap-wrapper').click( function(e) {
@@ -636,6 +885,9 @@ $(function () {
     // reset map and chart sizes
     setMapSize();
     chooseGraphOrMap(target);
+
+    // ga event action, category, label
+    googleAnalyticsEvent('click', 'chartmap', target);
   });
 
   // in repsonsive mode the time is a pulldown this eanbles the change of the chart map
@@ -691,8 +943,12 @@ $(function () {
     const target = $(e.target);
     if (target.hasClass('closed-filters')) {
       target.removeClass('closed-filters');
+        // ga event action, category, label
+        googleAnalyticsEvent('click', 'toggle-filters', 'open');
     } else {
       target.addClass('closed-filters');
+        // ga event action, category, label
+        googleAnalyticsEvent('click', 'toggle-filters', 'close');
     }
 
     const infoRowElem = $('#info-row');
@@ -732,19 +988,25 @@ $(function () {
       renderStationInfo(options.stationId, options.stationName);
 
       const messsageElem = document.getElementById('stations-map-message');
-      // check if there are any tidal stations in map extent
-      if (options.currentstations.features.length === 0) {
-        // get map parent element - which provides the correct dimensions for the map
-        if (messsageElem) {
-          const rect = document.getElementById('stations-map-wrap').getBoundingClientRect();
-          messsageElem.style.left = `${(rect.right - rect.left)/3}px`;
-          messsageElem.style.top = `-${((rect.bottom - rect.top)/2)}px`;
-          messsageElem.innerHTML = 'There are no weather stations within the map view.'
-          messsageElem.classList.remove('d-none');
+
+      if (options.currentstations) {
+        // check if there are any tidal stations in map extent
+        if (options.currentstations.features.length === 0) {
+          // get map parent element - which provides the correct dimensions for the map
+          if (messsageElem) {
+            const rect = document.getElementById('stations-map-wrap').getBoundingClientRect();
+            messsageElem.style.left = `${(rect.right - rect.left)/3}px`;
+            messsageElem.style.top = `-${((rect.bottom - rect.top)/2)}px`;
+            messsageElem.innerHTML = 'There are no weather stations within the map view.'
+            messsageElem.classList.remove('d-none');
+          }
+        } else {
+          messsageElem.classList.add('d-none');
         }
       } else {
         messsageElem.classList.add('d-none');
       }
+
     },
 
 
@@ -777,6 +1039,7 @@ $(function () {
 
       // updates the visible text for the station pulldown with the information from the state url
       updateStationSelectText({stationName: options.stationName, stationId: options.stationId})
+      renderStationInfo(options.stationId, options.stationName);
 
       options.threshold = thresholdValue;
       options.window = windowValue;
@@ -882,4 +1145,37 @@ $(function () {
   // this is a bit hacky way of resolving....
   let thresholdValueTEMP = parseFloat($('#threshold-value').val());
   $("#thresholds-container").item({ threshold: thresholdValueTEMP }).item('update');
+
+
+    $('#chart-info-row .more-info.btn-default').click( function (e) {
+      const target = $('#more-info-description');
+      // show description of charts
+      if (target.hasClass('d-none')) {
+        target.removeClass('d-none');
+        $('#chart-info-row .more').addClass('d-none');
+        $('#chart-info-row .more-icon').addClass('d-none');
+
+        $('#chart-info-row .less').removeClass('d-none');
+        $('#chart-info-row .less-icon').removeClass('d-none');
+
+        // ga event action, category, label
+        googleAnalyticsEvent('click', 'toggle-chart-info', 'open');
+      // hide description of charts
+      } else {
+        target.addClass('d-none');
+        $('#chart-info-row .more').removeClass('d-none');
+        $('#chart-info-row .more-icon').removeClass('d-none');
+
+        $('#chart-info-row .less').addClass('d-none');
+        $('#chart-info-row .less-icon').addClass('d-none');
+
+        // ga event action, category, label
+        googleAnalyticsEvent('click', 'toggle-chart-info', 'close');
+      }
+
+      // force draw and resize of charts
+      showGraphs();
+      forceResize();
+      setMapSize();
+    })
 });

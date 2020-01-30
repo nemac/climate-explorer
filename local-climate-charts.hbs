@@ -14,28 +14,22 @@
 
   {{> secondary_header }}
 
-  <!-- <div id="main-content-wrap">
-
-    {{> share }}
-
-    <div id="location-search">
-      <input type="text" class="autocomplete location-mapper" autocomplete="off" placeholder="Search another City, County or Zip code">
-    </div>
-
-  </div> -->
-
     <div id="local-climate-charts-viewport" class="padding-horrizontal d-flex d-flex-column">
 
       <div id="search-row" class="padding-horizontal d-flex-row flex-justify padding-top padding-bottom-half d-flex-justify" >
 
         <div class="rounded-box-secondary input-outer padding-horrizontal bottom-padding default-btn-height search-box-secondary width-40">
-          <input id="cards-search-input" type="text" class="location-mapper input-inner-default border-none default-btn-height width-90" autocomplete="off" placeholder="Enter county, city, or zip code">
+          <input tabindex="0" id="cards-search-input" type="text" class="location-mapper input-inner-default border-none default-btn-height" autocomplete="off" placeholder="Enter county, city, or zip code">
           <span class="icon icon-search search-default float-right padding-default"></span>
+          <div id="clear-location-wrapper" class="">
+            <a id="clear-location-link"  href="../local-climate-charts" class="d-none"></a>
+            <span id="clear-location" nav="local-climate-charts" link="clear-location-link" class="fas fa-times-circle"></span>
+          </div>
         </div>
 
-        <div id="stations-select-wrapper" class="rounded-choice-box padding-horrizontal default-btn-height top-select-wrapper d-flex-center">
+        <div id="stations-select-wrapper" class="rounded-choice-box padding-horrizontal default-btn-height top-select-wrapper d-flex-center disabled">
           <div class="select">
-            <div id="stations-select-vis" class="select-styled disabled" rel="none">Stations</div>
+            <div tabindex="1" id="stations-select-vis" class="select-styled disabled" rel="none">Stations</div>
             <ul class="select-options" style="display: none;">
               <li rel="none" class="default-select-option">Stations</li>
               <li rel="station-1" class="default-select-option">Stations 1</li>
@@ -49,28 +43,25 @@
         <div id="downloads-select-wrapper" class="rounded-choice-box padding-horrizontal default-btn-height top-select-wrapper d-flex-center">
 
           <div class="select download-select">
-            <div id="downnloads-select-vis" class="select-styled" rel="none" href="javascript:void(0);">
+            <div tabindex="2" id="downnloads-select-vis" class="select-styled" rel="none" href="javascript:void(0);">
               <i class="fas fa-download select-icon"></i>
-              <a rel="none" href="javascript:void(0);" >Downloads</a>
+              <a rel="none" class="download-link" href="javascript:void(0);" >Downloads</a>
             </div>
             <ul class="select-options" style="display: none;">
-              <li icon="fas fa-download select-icon"  class="default-select-option">
-                <a rel="none" href="javascript:void(0);" >Downloads</a>
+              <li id="download-image" rel="download-image" icon="fas fa-download select-icon" href="javascript:void(0);" class="default-select-option">
+                <a tabindex="3" rel="download-image" class="download-link" href="javascript:void(0);" >Download image</a>
               </li>
-              <li rel="download-image" icon="fas fa-download select-icon" href="javascript:void(0);" class="default-select-option">
-                <a rel="download-image" href="javascript:void(0);" >Download image</a>
+              <li id="download-observed-data" rel="download-observed-data" icon="fas fa-download select-icon" href="javascript:void(0);" class="default-select-option">
+                <a tabindex="4" rel="download-observed-data" class="download-link" href="javascript:void(0);" >Download Observed Data</a>
               </li>
-              <li rel="download-observed-data" icon="fas fa-download select-icon" href="javascript:void(0);" class="default-select-option">
-                <a rel="download-observed-data" href="javascript:void(0);" >Download Observed Data</a>
+              <li id="download-historical-modeled-data" rel="download-historical-modeled-data" icon="fas fa-download select-icon" href="javascript:void(0);" class="default-select-option">
+                <a tabindex="5" rel="download-historical-modeled-data" class="download-link" href="javascript:void(0);" >Download Historical Modeled Data</a>
               </li>
-              <li rel="download-historical-modeled-data" icon="fas fa-download select-icon" href="javascript:void(0);" class="default-select-option">
-                <a rel="download-historical-modeled-data" href="javascript:void(0);" >Download Historical Modeled Data</a>
+              <li id="download-projected-modeled-data" rel="download-projected-modeled-data" icon="fas fa-download select-icon" href="javascript:void(0);" class="default-select-option">
+                <a tabindex="6" rel="download-projected-modeled-data" class="download-link" href="javascript:void(0);" >Projected Modeled Data</a>
               </li>
-              <li rel="download-projected-modeled-data" icon="fas fa-download select-icon" href="javascript:void(0);" class="default-select-option">
-                <a rel="download-projected-modeled-data" href="javascript:void(0);" >Projected Modeled Data</a>
-              </li>
-              <li rel="download-interpreting" icon="fas fa-download select-icon" class="default-select-option">
-                <a rel="download-interpreting" href="/resources/data/Key-to-Climate-Explorer-Download-Filenames-and-Column-Headings.xlsx" >Information for Interpreting Data</a>
+              <li id="download-interpreting" rel="download-interpreting" icon="fas fa-download select-icon" class="default-select-option">
+                <a tabindex="7" rel="download-interpreting" class="download-link" href="/resources/data/Key-to-Climate-Explorer-Download-Filenames-and-Column-Headings.xlsx" >Information for Interpreting Data</a>
               </li>
             </ul>
           </div>
@@ -78,17 +69,17 @@
 
       </div>
 
-      <div id="info-row" class="padding-vertical width-100" >
+      <div id="info-row" class="padding-top width-100" >
         <div class="rounded-filters-box padding-default width-100">
 
-          <div class="d-flex-row">
+          <div class="filter-border-bottom d-flex-row">
 
             <div id="info-text-wrapper" class="width-90">
               <i class="fas fa-chart-line icon-info-box"></i>
               <span id="default-city-state" class="text-info-box" ></span>
-              <span id="" class="text-info-box" > in </span>
+              <span id="default-in" class="text-info-box" > in </span>
               <span id="default-city-county" class="text-info-box"></span>
-              <span id="" class="text-info-box" > - </span>
+              <span id="default-dash" class="text-info-box" > - </span>
               <span id="default-chart-map-varriable" class="text-info-box" rel="tmax">Avg Daily Max Temp (°F)</span>
             </div>
 
@@ -100,153 +91,115 @@
 
           </div>
 
-          <div id="filters-row" class="d-flex-row flex-justify padding-top padding-bottom d-flex-left" >
+          <div id="filters-row" class="d-flex-row flex-justify padding-top  d-flex-left" >
 
             <div id="varriable-select-wrapper" class="rounded-choice-box padding-horrizontal-half padding-vertical-half default-btn-height d-flex-center width-30">
-              <div class="select varriable-select">
-                <div id="varriable-select-vis" class="select-styled" rel="tmax">Avg Daily Max Temp (°F)</div>
-                <ul class="select-options">
-                  <div icon="fas fa-temperature-high select-icon" class="default-select-option-group">
-                    <i class="fas fa-temperature-high select-icon"></i>Temperature
-                  </div>
-                  <li rel="tmax" class="default-select-option">Avg Daily Max Temp (°F)</li>
-                  <li rel="tmin" class="default-select-option">Avg Daily Min Temp (°F)</li>
-                  <li rel="days_tmax_gt_90f" class="default-select-option">Days w/ max > 90°F</li>
-                  <li rel="days_tmax_gt_95f" class="default-select-option">Days w/ max > 95°F</li>
-                  <li rel="days_tmax_gt_100f" class="default-select-option">Days w/ max > 100°F</li>
-                  <li rel="days_tmax_gt_105f" class="default-select-option">Days w/ max > 105°F</li>
-                  <li rel="days_tmax_lt_32f" class="default-select-option">Days w/ max < 32°F</li>
-                  <li rel="days_tmin_lt_32f" class="default-select-option">Days w/ min < 32°F</li>
-                  <li rel="days_tmin_gt_80f" class="default-select-option">Days w/ min > 80°F</li>
-                  <li rel="days_tmin_gt_90f" class="default-select-option">Days w/ min > 90°F</li>
-                  <div icon="fas fa-cloud-rain select-icon" class="default-select-option-group">
-                    <i class="fas fa-cloud-rain select-icon"></i>Precipitation
-                  </div>
-                  <li rel="pcpn" class="default-select-option">Total precipitation</li>
-                  <li rel="days_pcpn_gt_1in" class="default-select-option">Days w/ > 1 in Precipitation</li>
-                  <li rel="days_pcpn_gt_3in" class="default-select-option">Days w/ > 3 in Precipitation</li>
-                  <li rel="days_dry_days" class="default-select-option">Dry Days</li>
-                  <div icon="fas fa-bacon select-icon" class="default-select-option-group">
-                    <i class="fas fa-bacon select-icon"></i>Other
-                  </div>
-                  <li rel="cdd_65f" class="default-select-option">Cooling Degree Days</li>
-                  <li rel="gdd" class="default-select-option">Growing Degree Days</li>
-                  <li rel="hdd_65f" class="default-select-option">Heating Degree Days</li>
-                  <li rel="gddmod" class="default-select-option">Modified Growing Degree Days</li>
-                </ul>
-              </div>
+              {{> variable-selector }}
             </div>
 
 
             <a id="chartmap-btn-chart-link"  href="../local-climate-charts" class="d-none"></a>
             <a id="chartmap-btn-map-link"  href="../local-climate-maps" class="d-none">Map</a>
             <div id="chartmap-wrapper" class="padding-horrizontal-half padding-vertical-half default-btn-height d-flex-center width-20">
-              <div id="btn-chart" class="btn-chart btn-default-selected circle-box-left d-flex-center width-50" val="chart" nav="local-climate-charts" link="chartmap-btn-chart-link" sel="chartmap-select-vis">
+              <div tabindex="100" id="btn-chart" class="btn-chart btn-default-selected circle-box-left d-flex-center width-50" val="chart" nav="local-climate-charts" link="chartmap-btn-chart-link" sel="chartmap-select-vis">
                 Chart
               </div>
-              <div id="btn-chart" class="btn-map btn-default circle-box-right d-flex-center width-50"  nav="local-climate-maps"  val="map" link="chartmap-btn-map-link" sel="chartmap-select-vis">
+              <div tabindex="101" id="btn-chart" class="btn-map btn-default circle-box-right d-flex-center width-50"  nav="local-climate-maps"  val="map" link="chartmap-btn-map-link" sel="chartmap-select-vis">
                 Map
               </div>
             </div>
 
             <div id="chartmap-select-wrapper" class="rounded-choice-box padding-horrizontal-half padding-vertical-half default-btn-height d-flex-center width-20">
               <div class="select chartmap-select">
-                <div id="chartmap-select-vis" class="select-styled" rel="chart">Chart</div>
+                <div tabindex="102" id="chartmap-select-vis" class="select-styled" rel="chart">Chart</div>
                 <ul class="select-options">
-                  <li id="chartmap-select-chart-link" rel="chart" class="default-select-option" nav="local-climate-charts" link="chartmap-btn-chart-link" >Chart</li>
-                  <li id=chartmap-select-map-link"" rel="map" class="default-select-option" nav="local-climate-maps" link="chartmap-btn-map-link">Map</li>
+                  <li tabindex="103" id="chartmap-select-chart-link" rel="chart" class="default-select-option" nav="local-climate-charts" link="chartmap-btn-chart-link" >Chart</li>
+                  <li tabindex="104" id=chartmap-select-map-link"" rel="map" class="default-select-option" nav="local-climate-maps" link="chartmap-btn-map-link">Map</li>
                 </ul>
                 </ul>
               </div>
             </div>
 
             <div id="time-wrapper" class="padding-horrizontal-half padding-vertical-half default-btn-height d-flex-center width-20">
-              <div id="btn-chart" class="btn-annual btn-default-selected circle-box-left d-flex-center width-50" val="annual" sel="time-select-vis">
+              <div tabindex="105" id="btn-chart" class="btn-annual btn-default-selected circle-box-left d-flex-center width-50" val="annual" sel="time-select-vis">
                 Annual
               </div>
-              <div id="btn-chart" class="btn-monthly btn-default circle-box-right d-flex-center width-50" val="monthly" sel="time-select-vis" >
+              <div tabindex="106" id="btn-chart" class="btn-monthly btn-default circle-box-right d-flex-center width-50" val="monthly" sel="time-select-vis" >
                 Monthly
               </div>
             </div>
 
             <div id="time-select-wrapper" class="rounded-choice-box padding-horrizontal-half padding-vertical-half default-btn-height d-flex-center width-20">
               <div class="select time-select">
-                <div id="time-select-vis" class="select-styled" rel="annual">Annual</div>
+                <div tabindex="107" id="time-select-vis" class="select-styled" rel="annual">Annual</div>
                 <ul class="select-options">
-                  <li rel="annual" class="default-select-option">Annual</li>
-                  <li rel="monthly" class="default-select-option">Monthly</li>
+                  <li tabindex="108" rel="annual" class="default-select-option">Annual</li>
+                  <li tabindex="109" rel="monthly" class="default-select-option">Monthly</li>
                 </ul>
               </div>
             </div>
 
-            <!-- <div id="presentation-wrapper" class="padding-horrizontal-half padding-vertical-half default-btn-height d-flex-center width-25">
-              <div id="btn-chart" class="btn-absolute btn-default-selected circle-box-left d-flex-center width-50"  val="absolute" sel="presentation-select-vis">
-                Actual
-              </div>
-              <div id="btn-chart" class="btn-anomaly btn-default circle-box-right d-flex-center width-50" val="anomaly" sel="presentation-select-vis">
-                Anomaly
+            <div tabindex="110" id="chart-info-row" class="chart-info-row-btn rounded-choice-box default-btn-height d-flex-row flex-justify padding-bottom-half d-flex-left d-none " >
+              <div class="more-info btn-default">
+                <span class="fas fa-info more-info more-icon"></span>
+                <span class="fas fa-info more-info less-icon d-none"></span>
+                <span class="more">About the graph</span>
+                <span class="less d-none">About the graph</span>
               </div>
             </div>
-
-            <div id="presentation-select-wrapper" class="rounded-choice-box padding-horrizontal-half padding-vertical-half default-btn-height d-flex-center width-100">
-              <div class="select presentation-select">
-                <div id="presentation-select-vis" class="select-styled" rel="absolute">Actual</div>
-                <ul class="select-options">
-                  <li rel="absolute" class="default-select-option">Actual</li>
-                  <li rel="anomaly" class="default-select-option">Anomaly</li>
-                </ul>
-              </div>
-            </div> -->
-
-
 
           </div>
-
-
-
         </div>
       </div>
 
-
-
       <div id="chart-row" class="padding-horizontal padding-top-half padding-bottom-half d-flex-row flex-justify" >
 
-          <div class="chart-wrap d-flex d-flex-center width-100 height-80">
+          <div id="chart-wrap" class="chart-wrap d-flex d-flex-center width-100 height-80">
             <div id="chart-123" class="chart-canvas width-100 height-100" data-chart-ID="123"></div>
+            <div id="chart-message" class="chart-nodata-message d-none"></div>
           </div>
-          <div id="annual-slider-wrapper" class="slider-wrap padding-default width-100 d-flex-center d-none height-10">
+          <div id="annual-slider-wrapper" class="slider-wrap padding-default width-100 d-flex-center d-none">
             <div id="slider-value-low" class="width-10 height-100"></div>
             <div id="slider-range" class="width-80 height-25"></div>
             <div id="slider-value-high" class="width-10 height-100"></div>
           </div>
 
-          <div id="legend-wrapper" class="padding-horrizontal-half default-btn-height d-flex-center height-10">
-            <div id="btn-chart" class="btn-histobs circle-box-left d-flex-center width-50" val="histobs" >
+          <div id="legend-wrapper" class="padding-horrizontal-half default-btn-height d-flex-center">
+            <div tabindex="111" id="btn-chart" class="btn-histobs d-flex-center width-50" val="histobs" >
               Historical Observed
+              <div class="inner-histobs" val="histobs" ></div>
             </div>
-            <div id="btn-chart" class="btn-hismod selected d-flex-center width-50" val="hist_mod"  >
+            <div tabindex="112" id="btn-chart" class="btn-hismod selected d-flex-center width-50" val="hist_mod"  >
               Historical Modeled
+              <div class="inner-hismod" val="hist_mod"></div>
             </div>
-            <div id="btn-chart" class="btn-lower-emissions selected  d-flex-center width-50" val="rcp45"  >
+            <div tabindex="113" id="btn-chart" class="btn-lower-emissions selected  d-flex-center width-50" val="rcp45"  >
               Lower Emissions
+              <div class="inner-lower-emmisions" val="rcp45" ></div>
             </div>
-            <div id="btn-chart" class="btn-higher-emissions selected circle-box-right d-flex-center width-50" val="rcp85"  >
+            <div tabindex="40" id="btn-chart" class="btn-higher-emissions selected d-flex-center width-50" val="rcp85"  >
               Higher Emissions
+              <div class="inner-higher-emmisions" val="rcp85"></div>
             </div>
           </div>
 
-          <div id="monthly-select-wrapper" class="padding-horrizontal-half padding-vertical-half default-btn-height d-flex-center d-none width-60">
-            <div id="btn-chart" class="btn-default-selected circle-box-left d-flex-center width-33" val="2025" >
+          <div id="monthly-select-wrapper" class="padding-horrizontal-half padding-vertical-half default-btn-height d-none width-60">
+            <div tabindex="114" id="btn-chart" class="btn-default-selected d-flex-center width-33" val="2025" >
               Centered on 2025
             </div>
-            <div id="btn-chart" class="btn-default circle-box-middle d-flex-center width-33" val="2050"  >
+            <div tabindex="115" id="btn-chart" class="btn-default d-flex-center width-33" val="2050"  >
               Centered on 2050
             </div>
-            <div id="btn-chart" class="btn-default circle-box-right d-flex-center width-33" val="2075"  >
+            <div tabindex="116" id="btn-chart" class="btn-default d-flex-center width-33" val="2075"  >
               Centered on 2075
             </div>
           </div>
       </div>
+
+      <div tabindex="117" id="chart-info-row" class="d-flex-row flex-justify padding-bottom-half d-flex-left d-none" >
+        {{> chart-explainer }}
+      </div>
+
       </div>
     </div>
 
@@ -260,5 +213,7 @@
 <script type="text/javascript" src="/resources/js/ce3-ui-components.js"></script>
 <script type="text/javascript" src="/resources/js/local-climate-charts.js"></script>
 <script type="text/javascript" src="/resources/js/nouislider.min.js"></script>
+<script type="text/javascript" src="/resources/js/secondary_header.js"></script>
+
 </body>
 </html>

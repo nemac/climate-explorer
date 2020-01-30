@@ -1,17 +1,43 @@
 'use strict';
 
 $(function () {
-  // var activeVariableTemperature = 'tmax';
-  // var activeVariablePrecipitation = 'pcpn';
-  // var activeVariableDerived = 'hdd';
-
   // get city, state from state url
-  $('#default-city-state').text(window.ce.ce('getLocationPageState')['city']);
-  $('#default-city-county').text(window.ce.ce('getLocationPageState')['county']);
-  $('#cards-search-input').val(window.ce.ce('getLocationPageState')['city']);
+  const cityStateCE = window.ce.ce('getLocationPageState')['city'];
+  const countyCE = window.ce.ce('getLocationPageState')['county'];
+  let isAlaska = false;
+  let isHawaii = false;
 
+  if (cityStateCE) {
+      isAlaska = (cityStateCE.indexOf('Alaska') > 0 || cityStateCE.indexOf(', AK') > 0);
+      isHawaii = (cityStateCE.indexOf('Hawaii') > 0 || cityStateCE.indexOf(', HI') > 0);
+  }
 
-  // let mapcenter = window.ce.ce('getLocationPageState')['center'];
+  $('#default-city-state').text(cityStateCE);
+  $('#default-city-county').text(countyCE);
+  $('#cards-search-input').attr("placeholder", cityStateCE);
+
+  if (!cityStateCE) {
+    $('#default-in').addClass('d-none');
+    $('#default-dash').addClass('d-none');
+    $('#cards-search-input').addClass('nosearch');
+    $('#cards-search-input').attr("placeholder", "Location missing, enter a county, city, or zip code");
+  }
+
+  if (cityStateCE) {
+    if (isAlaska || isHawaii) {
+      $('#default-in').html('—');
+      $('.opt-not-ak').addClass('default-select-option-disabled');
+    } else {
+      $('.opt-only-ak').addClass('default-select-option-disabled');
+    }
+
+    if (cityStateCE.indexOf('County') > 0  ) {
+      $('#default-in').addClass('d-none');
+      $('#default-dash').addClass('d-none');
+      $('#default-city-county').text('');
+    }
+  }
+
   let mapExtent = window.ce.ce('getLocationPageState')['extent'];
   let mapZoom = window.ce.ce('getLocationPageState')['zoom'] || 9;
   let lat = window.ce.ce('getLocationPageState')['lat'];
@@ -48,6 +74,8 @@ $(function () {
   enableCustomSelect('chartmap-select');
   enableCustomSelect('time-select');
 
+  initVarriableToolTips();
+
   // valid seasonal varriables
   // seasonal timeperoid is only valud for limitited varriables
   // to dissable those varriabls from the user we use this constant
@@ -66,10 +94,19 @@ $(function () {
     exportRight();
   })
 
+  $('#clear-location').click( function(e){
+    const target = $(e.target);
+    handleClearLocationClick(target);
+  })
+
   // function to enable downloads (images and data)
   $('.download-select li a').click( function (e) {
     const downloadAction = $(this).attr('rel');
     $('#temperature-map').spinner();
+
+    // ga event action, category, label
+    googleAnalyticsEvent('click', 'download', downloadAction);
+
     // capture what we are downloading
     switch (downloadAction) {
       case 'download-rightmap-image': // download image
@@ -100,8 +137,8 @@ $(function () {
   function getBase64Image(img) {
     var canvas = document.createElement("canvas");
     // hardcoded until there is a better way
-    canvas.width = 147;
-    canvas.height = 605;
+    canvas.width = 280;
+    canvas.height = 800;
     var ctx = canvas.getContext("2d");
     ctx.drawImage(img, 0, 0);
     var dataURL = canvas.toDataURL("image/png").replace("image/png", "image/octet-stream");;
@@ -121,9 +158,10 @@ $(function () {
       foreignObjectRendering: true,
       onrendered: function(canvas) {
 
+        const emissionsText = $('#rightScenario-select-vis').text().toLowerCase().replace(' ','_');
         var a = document.createElement('a');
         a.href = canvas.toDataURL("image/png").replace("image/png", "image/octet-stream");
-        a.download = `local-climate-map-${variable}-right.png`;
+        a.download = `local-climate-map-${variable}-${emissionsText}-right.png`;
         document.body.appendChild(a);
         a.click();
         elem.classList.add('d-none');
@@ -146,9 +184,10 @@ $(function () {
       foreignObjectRendering: true,
       onrendered: function(canvas) {
 
+        const emissionsText = $('#leftScenario-select-vis').text().toLowerCase().replace(' ','_');
         var a = document.createElement('a');
         a.href = canvas.toDataURL("image/png").replace("image/png", "image/octet-stream");
-        a.download = `local-climate-map-${variable}-left.png`;
+        a.download = `local-climate-map-${variable}-${emissionsText}-left.png`;
         document.body.appendChild(a);
         a.click();
         elem.classList.add('d-none');
@@ -222,9 +261,23 @@ $(function () {
       removeContainer: true,
       foreignObjectRendering: true,
       onrendered: function(canvas) {
-        const imageUrl  = canvas.toDataURL("image/png").replace("image/png", "image/octet-stream");
-        const base64temp = getBase64Image($('.esri-expand__content .legend-image')[0])
-        addImage(base64temp, 'right', 'legend');
+
+        const imgurl = $('.esri-expand__content .legend-image')[0].src;
+        let imageExists = new Image();
+        imageExists.addEventListener('load', imageFound);
+        imageExists.addEventListener('error', imageNotFound);
+        imageExists.src = imgurl;
+
+        function imageFound() {
+            const imageUrl  = canvas.toDataURL("image/png").replace("image/png", "image/octet-stream");
+            const base64temp = getBase64Image($('.esri-expand__content .legend-image')[0])
+            addImage(base64temp, 'right', 'legend');
+            return true;
+        }
+
+        function imageNotFound() {
+          return false;
+        }
       }
     });
 
@@ -334,9 +387,22 @@ $(function () {
       removeContainer: true,
       foreignObjectRendering: true,
       onrendered: function(canvas) {
-        const imageUrl  = canvas.toDataURL("image/png").replace("image/png", "image/octet-stream");
-        const base64temp = getBase64Image($('.esri-expand__content .legend-image')[0])
-        addImage(base64temp, 'left', 'legend');
+        const imgurl = $('.esri-expand__content .legend-image')[0].src;
+        let imageExists = new Image();
+        imageExists.addEventListener('load', imageFound);
+        imageExists.addEventListener('error', imageNotFound);
+        imageExists.src = imgurl;
+
+        function imageFound() {
+            const imageUrl  = canvas.toDataURL("image/png").replace("image/png", "image/octet-stream");
+            const base64temp = getBase64Image($('.esri-expand__content .legend-image')[0])
+            addImage(base64temp, 'left', 'legend');
+            return true;
+        }
+
+        function imageNotFound() {
+          return false;
+        }
       }
     });
 
@@ -386,9 +452,13 @@ $(function () {
   $('#filters-toggle').click( function(e) {
     const target = $(e.target);
     if (target.hasClass('closed-filters')) {
+      // ga event action, category, label
+      googleAnalyticsEvent('click', 'toggle-filters', 'open');
       target.removeClass('closed-filters');
     } else {
       target.addClass('closed-filters');
+      // ga event action, category, label
+      googleAnalyticsEvent('click', 'toggle-filters', 'closed');
     }
 
     const infoRowElem = $('#info-row');
@@ -417,7 +487,7 @@ $(function () {
   // eanbles time chart, map click events
   $('#chartmap-wrapper').click( function(e) {
     const target = $(e.target);
-    const notDisabled = (!target.hasClass('btn-default-disabled') || !target.hasClass('disabled'));
+    const notDisabled = !target.hasClass('btn-default-disabled');
 
     if ( notDisabled ) {
 
@@ -428,6 +498,26 @@ $(function () {
       setSelectFromButton(target);
 
       handleChartMapClick(target);
+    }
+  })
+
+  // eanbles time chart, map click events
+  $('#chartmap-wrapper').keyup( function(e) {
+    const target = $(e.target);
+    const notDisabled = !target.hasClass('btn-default-disabled');
+
+    if ( notDisabled ) {
+      if (e.keyCode === 13){
+        const target = $(e.target);
+
+        // toggle button visual state
+        toggleButton($(target));
+
+        // change select pulldowns for resposnive mode
+        setSelectFromButton(target);
+
+        handleChartMapClick(target);
+      }
     }
   })
 
@@ -442,7 +532,6 @@ $(function () {
   $('#time-wrapper').click( function(e) {
     const target = $(e.target);
     const notDisabled = !target.hasClass('btn-default-disabled');
-
     // not all varriables can display monthly chart
     // when the varriable cannot display monthly chart do
     // do execute the click event
@@ -457,13 +546,42 @@ $(function () {
 
       // change map varriable
       updateSeason(val);
+
+      // ga event action, category, label
+      googleAnalyticsEvent('click', 'update-time', val);
+    }
+  })
+
+  // eanbles time annual, monlthly click events
+  $('#time-wrapper').keyup( function(e) {
+    if (e.keyCode === 13){
+      const target = $(e.target);
+      const notDisabled = !target.hasClass('btn-default-disabled');
+      // not all varriables can display monthly chart
+      // when the varriable cannot display monthly chart do
+      // do execute the click event
+      if ( notDisabled ) {
+        const val = target.attr('val')
+
+        // toggle button visual state
+        toggleButton(target);
+
+        // change select pulldowns for resposnive mode
+        setSelectFromButton(target);
+
+        // change map varriable
+        updateSeason(val);
+
+        // ga event action, category, label
+        googleAnalyticsEvent('click-tab', 'update-time', val);
+      }
     }
   })
 
   // in repsonsive mode the time is a pulldown this eanbles the change of the chart map
   $('#chartmap-select-vis').bind('cs-changed', function(e) {
     const target = $(e.target);
-    const notDisabled = !target.hasClass('disabled');
+    const notDisabled = !target.hasClass('btn-default-disabled');
     if ( notDisabled ) {
       const val = $('#time-select-vis').attr('rel')
 
@@ -484,32 +602,55 @@ $(function () {
       // disable varriablles if they are valid time period
       const isvalid =   jQuery.inArray( variable , validSeasonal);
       if (  isvalid < 0 ) {
+        const val = 'annual';
+        $(window.precipitationScenariosMap).scenarioComparisonMap({ season: val });
+        const target = $('#btn-chart.btn-annual');
+        // toggle button visual state
+        toggleButton(target);
+
+        // change select pulldowns for resposnive mode
+        setSelectFromButton(target);
+
+        // change map varriable
+        updateSeason(val);
+
         $('.btn-summer').addClass('btn-default-disabled');
+        $('.btn-summer').addClass('disabled-seasonal');
         $('.btn-summer').removeClass('btn-default');
 
         $('.btn-winter').addClass('btn-default-disabled');
+        $('.btn-winter').addClass('disabled-seasonal');
         $('.btn-winter').removeClass('btn-default');
 
         $('.btn-fall').addClass('btn-default-disabled');
+        $('.btn-fall').addClass('disabled-seasonal');
         $('.btn-fall').removeClass('btn-default');
 
+
         $('.btn-spring').addClass('btn-default-disabled');
+        $('.btn-spring').addClass('disabled-seasonal');
         $('.btn-spring').removeClass('btn-default');
 
         $('#time-select-vis').addClass('disabled');
+        $('.btn-summer').addClass('disabled-seasonal');
         $('#time-select-wrapper').addClass('disabled');
 
       } else {
+
         $('.btn-summer').removeClass('btn-default-disabled');
+        $('.btn-summer').removeClass('disabled-seasonal');
         $('.btn-summer').addClass('btn-default');
 
         $('.btn-winter').removeClass('btn-default-disabled');
+        $('.btn-winter').removeClass('disabled-seasonal');
         $('.btn-winter').addClass('btn-default');
 
         $('.btn-fall').removeClass('btn-default-disabled');
+        $('.btn-fall').removeClass('disabled-seasonal');
         $('.btn-fall').addClass('btn-default');
 
         $('.btn-spring').removeClass('btn-default-disabled');
+        $('.btn-spring').removeClass('disabled-seasonal');
         $('.btn-spring').addClass('btn-default');
 
         $('#time-select-vis').removeClass('disabled');
@@ -549,6 +690,7 @@ $(function () {
     const variable = window.ce.ce('getVariablesPageState')['variable'] || 'tmax';
     window.precipitationScenariosMap = $('#temperature-map').scenarioComparisonMap({
       variable: 'tmax',
+      season: 'annual',
       extent: mapExtent,
       center: mapcenter,
       zoom: mapZoom,
@@ -563,21 +705,63 @@ $(function () {
 
         if ( variable !== undefined) {
           const $styledSelect = $('.select.varriable-select div.select-styled');
-          $(`[rel="${variable}"]`).click();
+          $(`li[rel="${variable}"]`).click();
 
-          // change map varriable
-          if (window.precipitationScenariosMap) {
-            $(window.precipitationScenariosMap).scenarioComparisonMap({ variable });
-          }
+          // // change map varriable
+          // if (window.precipitationScenariosMap) {
+          //   $(window.precipitationScenariosMap).scenarioComparisonMap({ variable: variable });
+          // }
         }
 
       },
+      // when user pans zooms intiate to check current exent
+      // for alaska and islands to display not map data message...
+      changeExtent: function changeExtent(event, options) {
+        // console.log('changeExtent', options.extent, options.center, options.isCenterConus)
+        // xmin: -178.44, xmax: -13.56, ymin: 22.72, ymax: 50.93
+        const messsageElem = document.getElementById('map-message');
+        if (messsageElem) {
+          if (!options.isCenterConus) {
+              const selector = 'local-climate-charts';
+              const nav = 'local-climate-charts';
+              const selectorAddOn = '-nav-footer';
+
+              // remove existing nav search url parameters
+              // otherwise we use the first one which is most likely the wrong page
+              const seachParams = removeUrlParam('nav')
+
+              // get the invisiable link just outside the element node tree
+              // if inside we have issues will bubbling propogation
+              const link = document.querySelector(`#${selector}-secretlink${selectorAddOn}`);
+
+              // set the url and search params
+              const url = `${$(link).attr('href')}/${seachParams}&nav=${nav}`
+
+              // get map parent element - which provides the correct dimensions for the map
+              const rect = document.getElementById('map-wrap').getBoundingClientRect();
+              // messsageElem.style.left = `${(rect.right - rect.left)/3}px`;
+              // messsageElem.style.top = `-${((rect.bottom - rect.top)/2)}px`;
+              messsageElem.style.left = `${(rect.right - rect.left)/3}px`;
+              messsageElem.style.top = `-${((rect.bottom - rect.top)-6)}px`;
+              if (isAlaska) {
+                messsageElem.innerHTML = `The location on the map is outside the Continental United States. Currently, there is no climate map data available for this location. If you are looking for climate information about this location, refer to the <a class="warning-link" href="${url}">local charts</a> page.`
+              } else {
+                messsageElem.innerHTML = `The location on the map is outside the Continental United States. Currently, there is no climate map data available for this location.`
+              }
+              messsageElem.classList.remove('d-none');
+          } else {
+            messsageElem.classList.add('d-none');
+          }
+      }
+    },
+
       change: function change(event) {
         window.precipitationScenariosMap.scenarioComparisonMap("getShowSeasonControls") ? $("#precipitation-map-season").show(200) : $("#precipitation-map-season").hide();
       }
     });
     window.precipitationScenariosMap.scenarioComparisonMap("getShowSeasonControls") ? $("#precipitation-map-season").show(200) : $("#precipitation-map-season").hide();
   }
+
 
   if (!isNational()) {
     window.stations = $('#temperature-map').scenarioComparisonMap(_extends({

@@ -23,6 +23,11 @@ $animation-duration: 0.4s;
   background-color: $white;
   height: calc(100% - 48px - 6px - 100px) !important;
   min-height: calc(100% - 48px - 6px - 100px) !important;
+
+  @include kind-of-tiny {
+    min-height: calc(100% - 48px - 12px - 64px) !important;
+    height: calc(100% - 48px - 12px - 64px) !important;
+  }
   overflow: auto !important;
   flex: 1 1 auto !important;
   margin-bottom: 6px;
@@ -33,6 +38,10 @@ $animation-duration: 0.4s;
     height: 5px;
     position: absolute;
     top: calc(100% - 105px);
+
+    @include kind-of-tiny {
+      top: calc(100% - 75px);
+    }
     left: -2px;
     @include box-shadow( inset 0 -2px 2px transparentize(#000, 0.7));
   }
@@ -52,6 +61,10 @@ $animation-duration: 0.4s;
       height: calc(100% - 48px - 12px - 100px) !important;
       &:after {
         top: calc(100% - 117px);
+
+        @include kind-of-tiny {
+          top: calc(100% - 147px);
+        }
       }
     }
 
@@ -59,6 +72,15 @@ $animation-duration: 0.4s;
     height: calc(100% - 48px - 12px - 170px) !important;
     &:after {
       top: calc(100% - 187px);
+
+      @include kind-of-tiny {
+        top: calc(100% - 147px);
+      }
+    }
+
+    @include kind-of-tiny {
+      min-height: calc(100% - 48px - 12px - 130px) !important;
+      height: calc(100% - 48px - 12px - 130px) !important;
     }
   }
 
@@ -80,12 +102,12 @@ $animation-duration: 0.4s;
       }
 
       @mixin label-inactive() {
-        font: 500 14px Roboto, Helvetica, "Helvetica Neue", Arial, sans-serif !important;
+        font: $font-weight-normal 14px $roboto !important;
         transform: translateY(0);
       }
 
       @mixin label-active() {
-        font: 500 12px Roboto, Helvetica, "Helvetica Neue", Arial, sans-serif !important;
+        font: $font-weight-normal 12px $roboto !important;
         transform: translateY(-28px);
       }
 
@@ -117,7 +139,7 @@ $animation-duration: 0.4s;
         z-index: 500;
         cursor: pointer;
         float: left;
-        font: 700 16px Roboto, Helvetica, "Helvetica Neue", Arial, sans-serif !important;
+        font: 700 16px $roboto !important;
         position: relative;
         bottom: 0px;
         left: 0px;
@@ -149,7 +171,7 @@ $animation-duration: 0.4s;
         @include label-active();
         white-space: pre;
         display: block;
-        font-weight: normal;
+        font-weight: $font-weight-normal;
         left: -24px;
         margin: 0;
         // padding: 26px 6px;
@@ -163,15 +185,11 @@ $animation-duration: 0.4s;
       .form-field-control {
         background: $ce3-blue5;
         line-height: $ce3-btnheight !important;
-        // @include border-top-left-radius(5px);
-        // @include border-top-right-radius(5px);
-        // overflow: hidden;
         position: relative;
         width: 100%;
       }
 
       .form-field-bar {
-        // border-bottom: 2px solid $ce3-blue3;
         bottom: 0;
         content: "";
         display: block;
@@ -193,10 +211,9 @@ $animation-duration: 0.4s;
         border-top: 1px solid $ce3-blue3;
         color: $ce3-blue3;
         display: block;
-        font: 500 14px Roboto, Helvetica, "Helvetica Neue", Arial, sans-serif !important;
-        // margin-top: 24px;
+        font: 500 14px $roboto !important;
         outline: 0;
-        padding: $ce3-default-padding; //$ce3-default-padding 0 $ce3-default-padding;
+        padding: $ce3-default-padding;
         width: 100%;
 
         // IE 10-11
@@ -218,7 +235,6 @@ $animation-duration: 0.4s;
             @include label-active();
           }
           ~ .form-field-bar {
-            // border-bottom: 2px solid $ce3-blue3;
             transform: scaleX(150);
           }
         }
@@ -237,10 +253,10 @@ $animation-duration: 0.4s;
     }
     text-align: center;
     padding: $ce3-default-padding;
-    background-color: $ce3-blue5 !important;
-    color: $ce3-blue3 !important;
+    background-color: $ce3-warning-state !important;
+    color: $ce3-blue6 !important;
     font: 500 14px $roboto !important;
-    border: 1px solid $ce3-blue3alpha !important;
+    border: 1px solid lighten($ce3-warning-state, 10) !important;
     @include border-radius(5px, 5px);
   }
 
@@ -268,14 +284,7 @@ $animation-duration: 0.4s;
        font: 500 14px $roboto !important;
        border: 1px solid $ce3-blue3alpha !important;
 
-       &:focus {
-         background-color: lighten($ce3-blue4, 7) !important;
-         color: $ce3-blue5 !important;
-         border: 1px solid $ce3-blue3alpha !important;
-         outline: none !important
-       }
-
-       &:hover {
+       &:hover, &:focus {
          background-color: lighten($ce3-blue4, 7) !important;
          color: $ce3-blue5 !important;
          border: 1px solid $ce3-blue3alpha !important;
@@ -283,6 +292,7 @@ $animation-duration: 0.4s;
        }
      }
    }
+
    #chartmap-wrapper {
      width: 20% !important;
    }
@@ -308,7 +318,6 @@ $animation-duration: 0.4s;
 
    #stations-map-row {
      justify-content: space-evenly !important;
-     // height: 100% !important;
 
      &.closed-filters {
        .stations-map-wrap {
@@ -442,16 +451,32 @@ $animation-duration: 0.4s;
          }
 
          #station-info-row {
+           @include transition(0.5s);
+           @include transition-property(all);
+           @include transition-timing-function(ease-out)
+
+           #more-info-description {
+             padding-left: $ce3-default-padding/2;
+           }
+
+           .more-info-description {
+             padding-top: $ce3-default-padding/2;
+             width: 100%;
+           }
+
            @include medium {
-             // padding-top: 350px !important;
              min-height: 250px;
              max-height: 250px !important;
              height: 250px !important;
              display: block !important;
            }
+
+           @include small {
+             width: 90% !important;
+           }
          }
 
-         #stations-map-row, #stations-graph-row, #station-info-row {
+         #stations-map-row, #stations-graph-row {
            align-self: center;
            @include small {
              width: 90% !important;
@@ -463,7 +488,7 @@ $animation-duration: 0.4s;
          }
 
    .text-info-box.label {
-     font-weight: 500 !important;
+     font-weight: $font-weight-normal !important;
    }
 
    .esri-expand__container {

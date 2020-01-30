@@ -1,10 +1,42 @@
 'use strict';
 
 $(function () {
+  const cityStateCE = window.ce.ce('getLocationPageState')['city'];
+  const countyCE = window.ce.ce('getLocationPageState')['county'];
+  let isAlaska = false;
+  let isHawaii = false;
 
-  $('#default-city-state').text(window.ce.ce('getLocationPageState')['city']);
-  $('#default-city-county').text(window.ce.ce('getLocationPageState')['county']);
-  $('#cards-search-input').val(window.ce.ce('getLocationPageState')['city']);
+  if (cityStateCE) {
+      isAlaska = (cityStateCE.indexOf('Alaska') > 0 || cityStateCE.indexOf(', AK') > 0);
+      isHawaii = (cityStateCE.indexOf('Hawaii') > 0 || cityStateCE.indexOf(', HI') > 0);
+  }
+
+  $('#default-city-state').text(cityStateCE);
+  $('#default-city-county').text(countyCE);
+  $('#cards-search-input').attr("placeholder", cityStateCE);
+
+  if (!cityStateCE) {
+    $('#default-city-state').addClass('d-none');
+    $('#default-in').addClass('d-none');
+    $('#default-city-county').addClass('d-none');
+    $('#cards-search-input').attr("placeholder", "Location missing, enter a county, city, or zip code");
+  }
+
+  if (cityStateCE) {
+    if (isAlaska || isHawaii) {
+      $('#default-in').html('—');
+      $('.opt-not-ak').addClass('default-select-option-disabled');
+      $('.card-local-maps').addClass('card-disabled');
+    } else {
+      $('.opt-only-ak').addClass('default-select-option-disabled');
+    }
+
+    if (cityStateCE.indexOf('County') > 0  ) {
+      $('#default-in').addClass('d-none');
+      $('#default-dash').addClass('d-none');
+      $('#default-city-county').text('');
+    }
+  }
 
   addCardClick('card-local-charts','local-climate-charts');
   addCardClick('card-local-maps','local-climate-maps');
@@ -13,8 +45,45 @@ $(function () {
   addCardClick('card-hightide-flooding', 'hightide-flooding');
   addCardClick('card-historical-thresholds', 'historical-thresholds');
 
+  $('#clear-location').click( function(e){
+    const target = $(e.target);
+    handleClearLocationClick(target);
+  })
+
   // adds a click event to got to card location
   function addCardClick(selctor, nav) {
+    // setup some constants
+    const $selectorElem = $(`.${selctor}`);
+    // if disabled exit
+    if ( $selectorElem.hasClass('card-disabled' )){
+      return null;
+    }
+
+    // find the the nav-item and add click event
+    $(`.${selctor}`).keyup( function(e) {
+      if (e.keyCode === 13){
+        e.stopPropagation();
+
+        // remove existing nav search url parameters
+        // otherwise we use the first one which is most likely the wrong page
+        const link = document.querySelector(`#${selctor}-secretlink`);
+
+        // get the invisiable link just outside the element node tree
+        // if inside we have issues will bubbling propogation
+        const seachParams =  removeUrlParam('nav');
+
+        // set the url and search params
+        const url = `${$(link).attr('href')}/${seachParams}&nav=${nav}`
+        $(link).attr('href', url);
+
+        // ga event action, category, label
+        googleAnalyticsEvent('click-tab', 'card', nav);
+
+        // force click on invisiable link
+        link.click();
+      }
+    });
+
     // find the the nav-item and add click event
     $(`.${selctor}`).click( function(e) {
       e.stopPropagation();
@@ -30,6 +99,9 @@ $(function () {
       // set the url and search params
       const url = `${$(link).attr('href')}/${seachParams}&nav=${nav}`
       $(link).attr('href', url);
+
+      // ga event action, category, label
+      googleAnalyticsEvent('click', 'card', nav);
 
       // force click on invisiable link
       link.click();

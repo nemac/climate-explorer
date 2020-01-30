@@ -24,9 +24,6 @@
 
       var destination = viewport_scrolltop + element_position;
 
-      //console.log(element_position);
-      //console.log(destination);
-
       $('#viewport').animate({
         scrollTop: destination - offset
       }, speed);
@@ -266,7 +263,7 @@
 
     $(window).resize(function () {
       if ($('body').hasClass('page-type-location') || $('body').hasClass('page-type-text')) {
-        $('#viewport').css('height', $(window).height() - 40 - parseInt($('#viewport').css('margin-top')) + 'px');
+        // $('#viewport').css('height', $(window).height() - 40 - parseInt($('#viewport').css('margin-top')) + 'px');
       }
     });
 
@@ -443,7 +440,10 @@
       } else {
         $(this).addClass('open').siblings('ul').animate({
           height: '180px'
-        }, 500);
+        }, 200);
+        $(this).addClass('open').siblings('ul.about').animate({
+          height: '180px'
+        }, 200);
       }
     });
 
@@ -538,7 +538,7 @@
 
       if (parent_tab_name === 'temperature-chart') {
         setTimeout(function () {
-          tempChart.resize();
+          cbl_chart.resize();
         }, 100);
       }
 
@@ -755,7 +755,7 @@
         $('.ui-slider-range').addClass('accent-background').html('<span class="icon icon-arrow-left-right"></span>');
 
         setTimeout(function () {
-          tempChart.resize();
+          cbl_chart.resize();
           precipChart.resize();
           derivedChart.resize();
         }, 1500);
