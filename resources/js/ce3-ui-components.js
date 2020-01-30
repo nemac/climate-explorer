@@ -631,11 +631,8 @@ function updateValidVarriable() {
       isHawaii = (cityStateCE.indexOf('Hawaii') > 0 || cityStateCE.indexOf(', HI') > 0);
   }
 
-  console.log('updateValidVarriable', cityStateCE, isAlaska, isHawaii);
-
   if (cityStateCE) {
       if (isAlaska || isHawaii) {
-        console.log('in isAlaska, isHawaii', cityStateCE, isAlaska, isHawaii);
            $('#default-in').html('—');
           $('#download-observed-data').addClass('default-select-option-disabled');
           $('#download-observed-data').addClass('disabled');
