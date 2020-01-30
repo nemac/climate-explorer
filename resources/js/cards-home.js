@@ -42,7 +42,7 @@ $(function () {
   addCardClick('card-local-maps','local-climate-maps');
   addCardClick('card-national-maps','national-climate-maps');
   addCardClick('card-historical-weather-data','historical-weather-data');
-  addCardClick('card-hightide-flooding', 'hightide-flooding');
+  addCardClick('card-high-tide-flooding', 'high-tide-flooding');
   addCardClick('card-historical-thresholds', 'historical-thresholds');
 
   $('#clear-location').click( function(e){
@@ -68,8 +68,8 @@ $(function () {
         // otherwise we use the first one which is most likely the wrong page
         const link = document.querySelector(`#${selctor}-secretlink`);
 
-        // get the invisiable link just outside the element node tree
-        // if inside we have issues will bubbling propogation
+        // get the invisible link just outside the element node tree
+        // if inside we have issues will bubbling propagation
         const seachParams =  removeUrlParam('nav');
 
         // set the url and search params
@@ -79,7 +79,7 @@ $(function () {
         // ga event action, category, label
         googleAnalyticsEvent('click-tab', 'card', nav);
 
-        // force click on invisiable link
+        // force click on invisible link
         link.click();
       }
     });
@@ -92,8 +92,8 @@ $(function () {
       // otherwise we use the first one which is most likely the wrong page
       const link = document.querySelector(`#${selctor}-secretlink`);
 
-      // get the invisiable link just outside the element node tree
-      // if inside we have issues will bubbling propogation
+      // get the invisible link just outside the element node tree
+      // if inside we have issues will bubbling propagation
       const seachParams =  removeUrlParam('nav');
 
       // set the url and search params
@@ -103,7 +103,7 @@ $(function () {
       // ga event action, category, label
       googleAnalyticsEvent('click', 'card', nav);
 
-      // force click on invisiable link
+      // force click on invisible link
       link.click();
     });
   }

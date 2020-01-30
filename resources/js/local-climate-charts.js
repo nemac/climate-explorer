@@ -31,10 +31,10 @@ $(function () {
         }
     }
 
-    // enable custom selction boxes
+    // enable custom selection boxes
     enableCustomSelect('download-select');
     enableCustomSelect('stations-select');
-    enableCustomSelect('varriable-select');
+    enableCustomSelect('variable-select');
     enableCustomSelect('chartmap-select');
     enableCustomSelect('time-select');
     enableCustomSelect('presentation-select');
@@ -44,9 +44,9 @@ $(function () {
     initVarriableToolTips();
     monthlySelectOff();
 
-    // valid monlthly varriables
-    // monlthly timeperoid is only valud for limitited varriables
-    // to dissable those varriabls from the user we use this constant
+    // valid monthly variables
+    // monthly timeperiod is only valid for limited variables
+    // to disable those variables from the user we use this constant
     const validMonthly = ['tmax', 'tmin', 'pcpn'];
 
     $('#clear-location').click(function (e) {
@@ -116,7 +116,7 @@ $(function () {
         }, 600);
     });
 
-    // eanbles time chart, map click events
+    // enables time chart, map click events
     $('#chartmap-wrapper').keyup(function (e) {
         const target = $(e.target);
         const notDisabled = !target.hasClass('btn-default-disabled');
@@ -128,18 +128,18 @@ $(function () {
               // toggle button visual state
               toggleButton($(target));
 
-              // change select pulldowns for resposnive mode
+              // change select pulldowns for responsive mode
               setSelectFromButton(target);
 
               handleChartMapClick(target);
 
               // ga event action, category, label
-              googleAnalyticsEvent('clickt-tab', 'chartmap', target);
+              googleAnalyticsEvent('click-tab', 'chartmap', target);
           }
         }
     });
 
-    // eanbles time chart, map click events
+    // enables time chart, map click events
     $('#chartmap-wrapper').click(function (e) {
         const target = $(e.target);
         const notDisabled = !target.hasClass('btn-default-disabled');
@@ -148,7 +148,7 @@ $(function () {
           // toggle button visual state
           toggleButton($(target));
 
-          // change select pulldowns for resposnive mode
+          // change select pulldowns for responsive mode
           setSelectFromButton(target);
 
           handleChartMapClick(target);
@@ -158,13 +158,13 @@ $(function () {
         }
     });
 
-    // eanbles time annual, monlthly click events
+    // enables time annual, monthly click events
     $('#time-wrapper').click(function (e) {
         const target = $(e.target);
         const notDisabled = !target.hasClass('btn-default-disabled');
 
-        // not all varriables can display monthly chart
-        // when the varriable cannot display monthly chart do
+        // not all variables can display monthly chart
+        // when the variable cannot display monthly chart do
         // do execute the click event
         if (notDisabled) {
             const val = target.attr('val');
@@ -178,7 +178,7 @@ $(function () {
             // update chart frequency slider based on timeperiod
             updateFrequencySlider(val);
 
-            // change select pulldowns for resposnive mode
+            // change select pulldowns for responsive mode
             setSelectFromButton(target);
 
             // ga event action, category, label
@@ -186,14 +186,14 @@ $(function () {
         }
     });
 
-    // eanbles time annual, monlthly click events
+    // enables time annual, monthly click events
     $('#time-wrapper').keyup(function (e) {
         if (e.keyCode === 13) {
             const target = $(e.target);
             const notDisabled = !target.hasClass('btn-default-disabled');
 
-            // not all varriables can display monthly chart
-            // when the varriable cannot display monthly chart do
+            // not all variables can display monthly chart
+            // when the variable cannot display monthly chart do
             // do execute the click event
             if (notDisabled) {
                 const val = target.attr('val');
@@ -207,7 +207,7 @@ $(function () {
                 // update chart frequency slider based on timeperiod
                 updateFrequencySlider(val);
 
-                // change select pulldowns for resposnive mode
+                // change select pulldowns for responsive mode
                 setSelectFromButton(target);
 
                 // ga event action, category, label
@@ -216,7 +216,7 @@ $(function () {
         }
     });
 
-    // in repsonsive mode the time is a pulldown this eanbles the change of the chart map
+    // in responsive mode the time is a dropdown this enables the change of the chart map
     $('#chartmap-select-vis').bind('cs-changed', function (e) {
         const target = $(e.target);
         const notDisabled = !target.hasClass('btn-default-disabled');
@@ -230,7 +230,7 @@ $(function () {
         }
     });
 
-    // in repsonsive mode the time is a pulldown this eanbles the change of the timeperiod
+    // in responsive mode the time is a dropdown this enables the change of the timeperiod
     // to update the chart
     $('#time-select-vis').bind('cs-changed', function (e) {
         const target = $(e.target);
@@ -291,14 +291,14 @@ $(function () {
         // updates the chart for actual to anomaly
         updatePresentation(val);
 
-        // updates the select pulldown for repsonsive mode
+        // updates the select dropdown for responsive mode
         setSelectFromButton(target);
 
         // ga event action, category, label
         googleAnalyticsEvent('click', 'presentation', val);
     });
 
-    // in repsonsive mode the presentation is a pulldown this eanbles the change of the presentation
+    // in responsive mode the presentation is a dropdown this enables the change of the presentation
     // to update the chart
     $('#presentation-select-vis').bind('cs-changed', function (e) {
         const val = $('#presentation-select-vis').attr('rel');
@@ -306,11 +306,11 @@ $(function () {
         // toggle button visual state
         toggleButton($(`.btn-${$('#presentation-select-vis').attr('rel')}`));
 
-        // updates the button for when leaving repsonsive mode (small screen)
+        // updates the button for when leaving responsive mode (small screen)
         updatePresentation(val)
     });
 
-    // adds time perioid click
+    // adds time period click
     $('#monthly-select-wrapper').click(function (e) {
         const target = $(e.target);
         const val = target.attr('val');
@@ -325,10 +325,10 @@ $(function () {
         googleAnalyticsEvent('click-tab', 'monthly-select-wrapper', val);
     });
 
-    // binds update of chart varriable to change of selector
-    $('#varriable-select-vis').bind('cs-changed', function (e) {
-        const variable = $('#varriable-select-vis').attr('rel');
-        // update the chart based on char varriable
+    // binds update of chart variable to change of selector
+    $('#variable-select-vis').bind('cs-changed', function (e) {
+        const variable = $('#variable-select-vis').attr('rel');
+        // update the chart based on char variable
         window.cbl_chart.set_options({
             variable
         });
@@ -336,9 +336,9 @@ $(function () {
         window.ce.ce('setVariablesMapState', {variable});
 
         // update the text
-        updateTitle($('#varriable-select-vis').text());
+        updateTitle($('#variable-select-vis').text());
 
-        // disable varriablles if they are valid time period
+        // disable variables if they are valid time period
         const isvalid = jQuery.inArray(variable, validMonthly);
         if (isvalid < 0) {
             $('[val="monthly"]').addClass('btn-default-disabled');
@@ -388,7 +388,7 @@ $(function () {
             scenario = 'rcp85';
         }
 
-        // Neihter rcp45 & rcp85
+        // Neither rcp45 & rcp85
         if (!merged.rcp45 && !merged.rcp85) {
             scenario = '';
         }
@@ -408,24 +408,24 @@ $(function () {
         });
     }
 
-    // this function forces a map legend button to be selcted css class
+    // this function forces a map legend button to be selected css class
     function forceSlected(selector) {
         $(selector).addClass('selected');
     }
 
-    // this function firce a map legend to be "un selected" css class
+    // this function force a map legend to be "un selected" css class
     function forceUnSlected(selector) {
         $(selector).removeClass('selected');
     }
 
     // this function Updates the chart title.
     function updateTitle(chartText) {
-        $('#default-chart-map-varriable').html(chartText);
+        $('#default-chart-map-variable').html(chartText);
     }
 
-    // this function dissables varriables when monthly period is selected
+    // this function dissables variables when monthly period is selected
     function validVarrablesDisable() {
-        $('#varriable-select-wrapper .default-select-option').each(function () {
+        $('#variable-select-wrapper .default-select-option').each(function () {
             const attribute = $(this).attr('rel');
             const isvalid = jQuery.inArray(attribute, validMonthly);
             if (isvalid < 0) {
@@ -435,18 +435,18 @@ $(function () {
         })
     }
 
-    // this function enables varriables when annual period is selected
+    // this function enables variables when annual period is selected
     function validVarrablesEnable() {
-        $('#varriable-select-wrapper .default-select-option-disabled').each(function () {
+        $('#variable-select-wrapper .default-select-option-disabled').each(function () {
             const attribute = $(this).attr('rel');
             $(this).removeClass('default-select-option-disabled');
             $(this).addClass('default-select-option');
         })
     }
 
-    // update slider dispaly
+    // update slider display
     // monthly uses choice buttons
-    // anuall uses slider of years 1950-2099
+    // annual uses slider of years 1950-2099
     function updateFrequencySlider(targetval) {
         switch (targetval) {
             case 'annual':
@@ -470,7 +470,7 @@ $(function () {
     function updateFrequency(targetval) {
         window.cbl_chart.set_options({
             frequency: targetval,
-            variable: $('#varriable-select-vis').attr('rel'),
+            variable: $('#variable-select-vis').attr('rel'),
             histobs: true,
         });
         forceSlected('.btn-histobs');
@@ -653,10 +653,10 @@ $(function () {
 
     const variable = window.ce.ce('getVariablesPageState')['variable'];
     if (variable !== undefined) {
-        const $styledSelect = $('.select.varriable-select div.select-styled');
+        const $styledSelect = $('.select.variable-select div.select-styled');
         $(`[rel="${variable}"]`).click();
 
-        // // change chart varriable
+        // // change chart variable
         // window.cbl_chart.set_options({
         //   variable
         // });

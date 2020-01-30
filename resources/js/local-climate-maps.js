@@ -62,23 +62,23 @@ $(function () {
   }
 
 
-  // enable custom selction boxes
+  // enable custom selection boxes
   enableCustomSelect('download-select');
   enableCustomSelect('stations-select');
-  enableCustomSelect('varriable-select');
+  enableCustomSelect('variable-select');
   enableCustomSelect('chartmap-select');
   enableCustomSelect('time-select');
 
   initVarriableToolTips();
 
-  // valid seasonal varriables
-  // seasonal timeperoid is only valud for limitited varriables
-  // to dissable those varriabls from the user we use this constant
+  // valid seasonal variables
+  // seasonal timeperiod is only valid for limited variables
+  // to disable those variables from the user we use this constant
   const validSeasonal = ['tmax', 'tmin', 'pcpn'];
 
   // this function Updates the chart title.
   function updateTitle(chartText) {
-    $('#default-chart-map-varriable').html(chartText);
+    $('#default-chart-map-variable').html(chartText);
   }
 
   window.addEventListener('last-left-image-added', function(e) {
@@ -285,7 +285,7 @@ $(function () {
       foreignObjectRendering: true,
       onrendered: function(canvas) {
         const imageUrl  = canvas.toDataURL("image/png").replace("image/png", "image/octet-stream");
-        addImage(imageUrl, 'right', 'botttom-controls');
+        addImage(imageUrl, 'right', 'bottom-controls');
       }
     });
 
@@ -423,7 +423,7 @@ $(function () {
       foreignObjectRendering: true,
       onrendered: function(canvas) {
         const imageUrl  = canvas.toDataURL("image/png").replace("image/png", "image/octet-stream");
-        addImage(imageUrl, 'left', 'botttom-controls');
+        addImage(imageUrl, 'left', 'bottom-controls');
       }
     });
 
@@ -472,14 +472,14 @@ $(function () {
 
     setTimeout(function () {
       // reset map and chart sizes
-      // filer transistion means heigh will be updates in few seconds
+      // filer transition means heigh will be updates in few seconds
       // so delaying the resize ensures proper size
       setMapSize();
     }, 600);
 
   })
 
-  // eanbles time chart, map click events
+  // enables time chart, map click events
   $('#chartmap-wrapper').click( function(e) {
     const target = $(e.target);
     const notDisabled = !target.hasClass('btn-default-disabled');
@@ -489,14 +489,14 @@ $(function () {
       // toggle button visual state
       toggleButton($(target));
 
-      // change select pulldowns for resposnive mode
+      // change select pulldowns for responsive mode
       setSelectFromButton(target);
 
       handleChartMapClick(target);
     }
   })
 
-  // eanbles time chart, map click events
+  // enables time chart, map click events
   $('#chartmap-wrapper').keyup( function(e) {
     const target = $(e.target);
     const notDisabled = !target.hasClass('btn-default-disabled');
@@ -508,7 +508,7 @@ $(function () {
         // toggle button visual state
         toggleButton($(target));
 
-        // change select pulldowns for resposnive mode
+        // change select pulldowns for responsive mode
         setSelectFromButton(target);
 
         handleChartMapClick(target);
@@ -523,12 +523,12 @@ $(function () {
     }
   }
 
-  // eanbles time annual, monlthly click events
+  // enables time annual, monthly click events
   $('#time-wrapper').click( function(e) {
     const target = $(e.target);
     const notDisabled = !target.hasClass('btn-default-disabled');
-    // not all varriables can display monthly chart
-    // when the varriable cannot display monthly chart do
+    // not all variables can display monthly chart
+    // when the variable cannot display monthly chart do
     // do execute the click event
     if ( notDisabled ) {
       const val = target.attr('val')
@@ -536,10 +536,10 @@ $(function () {
       // toggle button visual state
       toggleButton(target);
 
-      // change select pulldowns for resposnive mode
+      // change select pulldowns for responsive mode
       setSelectFromButton(target);
 
-      // change map varriable
+      // change map variable
       updateSeason(val);
 
       // ga event action, category, label
@@ -547,13 +547,13 @@ $(function () {
     }
   })
 
-  // eanbles time annual, monlthly click events
+  // enables time annual, monthly click events
   $('#time-wrapper').keyup( function(e) {
     if (e.keyCode === 13){
       const target = $(e.target);
       const notDisabled = !target.hasClass('btn-default-disabled');
-      // not all varriables can display monthly chart
-      // when the varriable cannot display monthly chart do
+      // not all variables can display monthly chart
+      // when the variable cannot display monthly chart do
       // do execute the click event
       if ( notDisabled ) {
         const val = target.attr('val')
@@ -561,10 +561,10 @@ $(function () {
         // toggle button visual state
         toggleButton(target);
 
-        // change select pulldowns for resposnive mode
+        // change select pulldowns for responsive mode
         setSelectFromButton(target);
 
-        // change map varriable
+        // change map variable
         updateSeason(val);
 
         // ga event action, category, label
@@ -573,7 +573,7 @@ $(function () {
     }
   })
 
-  // in repsonsive mode the time is a pulldown this eanbles the change of the chart map
+  // in responsive mode the time is a dropdown this enables the change of the chart map
   $('#chartmap-select-vis').bind('cs-changed', function(e) {
     const target = $(e.target);
     const notDisabled = !target.hasClass('btn-default-disabled');
@@ -587,14 +587,14 @@ $(function () {
     }
   })
 
-  // event hanlder a for when map varriable changes
-  $('#varriable-select-vis').bind('cs-changed', function(e) {
+  // event hanlder a for when map variable changes
+  $('#variable-select-vis').bind('cs-changed', function(e) {
     const target = $(e.target);
     const notDisabled = !target.hasClass('btn-default-disabled');
     if ( notDisabled ) {
-      const variable = $('#varriable-select-vis').attr('rel')
+      const variable = $('#variable-select-vis').attr('rel')
       window.ce.ce('setVariablesMapState',{variable})
-      // disable varriablles if they are valid time period
+      // disable variables if they are valid time period
       const isvalid =   jQuery.inArray( variable , validSeasonal);
       if (  isvalid < 0 ) {
         const val = 'annual';
@@ -603,10 +603,10 @@ $(function () {
         // toggle button visual state
         toggleButton(target);
 
-        // change select pulldowns for resposnive mode
+        // change select pulldowns for responsive mode
         setSelectFromButton(target);
 
-        // change map varriable
+        // change map variable
         updateSeason(val);
 
         $('.btn-summer').addClass('btn-default-disabled');
@@ -654,23 +654,23 @@ $(function () {
       }
 
       // update the text
-      updateTitle($('#varriable-select-vis').text());
+      updateTitle($('#variable-select-vis').text());
 
-      // change map varriable
+      // change map variable
       if (window.precipitationScenariosMap) {
         $(window.precipitationScenariosMap).scenarioComparisonMap({ variable });
       }
     }
   })
 
-  // in resposnive mode, event hanlder a for when season (time) varriable changes
+  // in responsive mode, event hanlder a for when season (time) variable changes
   $('#time-select-vis').bind('cs-changed', function(e) {
     const target = $(e.target);
     const notDisabled = !target.hasClass('btn-default-disabled');
     if ( notDisabled ) {
       const val = $('#time-select-vis').attr('rel')
 
-      // change map varriable
+      // change map variable
       updateSeason(val);
     }
   })
@@ -699,10 +699,10 @@ $(function () {
         enableCustomSelect('rightScenario-select');
 
         if ( variable !== undefined) {
-          const $styledSelect = $('.select.varriable-select div.select-styled');
+          const $styledSelect = $('.select.variable-select div.select-styled');
           $(`li[rel="${variable}"]`).click();
 
-          // // change map varriable
+          // // change map variable
           // if (window.precipitationScenariosMap) {
           //   $(window.precipitationScenariosMap).scenarioComparisonMap({ variable: variable });
           // }
@@ -725,8 +725,8 @@ $(function () {
               // otherwise we use the first one which is most likely the wrong page
               const seachParams = removeUrlParam('nav')
 
-              // get the invisiable link just outside the element node tree
-              // if inside we have issues will bubbling propogation
+              // get the invisible link just outside the element node tree
+              // if inside we have issues will bubbling propagation
               const link = document.querySelector(`#${selector}-secretlink${selectorAddOn}`);
 
               // set the url and search params

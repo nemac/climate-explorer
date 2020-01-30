@@ -1,4 +1,4 @@
-// TO DO Need to revist this so tab, return on pulldowns are not duplciated code aka needs a function
+// TO DO Need to revist this so tab, return on pulldowns are not duplicated code aka needs a function
 // that also deals with this contexts
 
 //  when we get stations in the map extent
@@ -6,7 +6,7 @@
 // so we need to re add them
 function reEnableSelectNewItems(uniqueSelector){
   const $styledSelect = $(`.select.${uniqueSelector} div.select-styled`);
-  // if disabled exit and do not enable pulldown
+  // if disabled exit and do not enable dropdown
   if ( $styledSelect.hasClass( 'disabled' )){
     return null;
   }
@@ -119,7 +119,7 @@ function reEnableSelectNewItems(uniqueSelector){
 // function enables custom selection dropdown from a li element
 function enableCustomSelect(uniqueSelector) {
   const $styledSelect = $(`.select.${uniqueSelector} div.select-styled`);
-  // if disabled exit and do not enable pulldown
+  // if disabled exit and do not enable dropdown
   if ( $styledSelect.hasClass( 'disabled' )){
     return null;
   }
@@ -270,7 +270,7 @@ function enableCustomSelect(uniqueSelector) {
     }
   });
 
-  // hide pulldown when user clicks anywhere outside of selected area
+  // hide dropdown when user clicks anywhere outside of selected area
   $(document).click(function() {
     $styledSelect.removeClass('active');
     $list.hide();
@@ -405,9 +405,9 @@ function forceResize() {
   el.dispatchEvent(event);
 }
 
-// init tool helpers for varriables in varriable pulldowns on map and chart pages
+// init tool helpers for variables in variable pulldowns on map and chart pages
 function initVarriableToolTips() {
-  // const listWidth = -500 //(document.getElementById('varriable-select-vis').offsetWidth - 24)* -1
+  // const listWidth = -500 //(document.getElementById('variable-select-vis').offsetWidth - 24)* -1
   const tmaxReference = document.getElementById('tmax-tooltip');
   makeTip(tmaxReference);
 

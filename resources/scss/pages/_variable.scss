@@ -43,7 +43,7 @@
     width: 14rem;
     margin: 5px;
 
-    @include map-varriables-min-max {
+    @include map-variables-min-max {
       width: 42% !important;
     }
 
@@ -94,7 +94,7 @@
       transition: none !important;
 
       @include border-radius(5px, 5px !important);
-      @include map-varriables-min-max {
+      @include map-variables-min-max {
         max-width: none !important;
         min-width: 0px !important;
         width: 50% !important;

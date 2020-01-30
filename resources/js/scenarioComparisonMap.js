@@ -471,7 +471,7 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
     },
     _initControlsOverlay: function _initControlsOverlay() {
       this.nodes.$controlsOverLayContainer = $('<div>', { 'class': 'scenario-map-overlay-container' });
-      this.nodes.$controlsOverLayContainer.append('        \n        <div class="movable slider-div">\n          <div class="handle"></div>\n        </div>\n        <div class="bottom-scenario-controls">\n          <div class="left-scenario-controls">\n            <div class="left-scenario-dropdown">\n              <div id="leftScenario-select-wrapper" class="rounded-choice-box padding-horrizontal-half padding-vertical-half default-btn-height d-flex-center width-100">\n<div class="select leftScenario-select">\n  <div id="leftScenario-select-vis" class="select-styled" rel="historical">Historical</div>\n  <ul class="select-options">\n    <li id="leftScenario-select" rel="historical" class="default-select-option leftScenario-option-historical">Historical</li>\n    <li id="leftScenario-select" rel="rcp45" class="default-select-option leftScenario-option-lower">Lower Emissions</li>\n  </ul>\n</div>\n</div>\n           </div>\n            <div class="year left-year-slider-container">\n              <div class="year-label year-min"></div>\n              <div class="left-year-slider"></div>\n              <div class="year-label year-max"></div>\n            </div>\n          </div>\n          <div class="right-scenario-controls">\n        \n            <div class="right-scenario-dropdown">\n             <div id="rightScenario-select-wrapper" class="rounded-choice-box padding-horrizontal-half padding-vertical-half default-btn-height d-flex-center width-100">\n  <div class="select rightScenario-select">\n    <div id="rightScenario-select-vis" class="select-styled" rel="rcp85">Higher Emissions</div>\n    <ul class="select-options">\n      <li id="rightScenario-select" rel="rcp85" class="default-select-option rightScenario-option-higher">Higher Emissions</li>\n      <li id="rightScenario-select-map" rel="rcp45" class="default-select-option rightScenario-option-lower">Lower Emissions</li>\n    </ul>\n  </div>\n</div>\n</div>\n            <div class="year right-year-slider-container">\n              <div class="year-label year-min"></div>\n              <div class="right-year-slider"></div>\n              <div class="year-label year-max"></div>\n            </div>\n          </div>\n        </div>\n                  \n            ');
+      this.nodes.$controlsOverLayContainer.append('        \n        <div class="movable slider-div">\n          <div class="handle"></div>\n        </div>\n        <div class="bottom-scenario-controls">\n          <div class="left-scenario-controls">\n            <div class="left-scenario-dropdown">\n              <div id="leftScenario-select-wrapper" class="rounded-choice-box padding-horizontal-half padding-vertical-half default-btn-height d-flex-center width-100">\n<div class="select leftScenario-select">\n  <div id="leftScenario-select-vis" class="select-styled" rel="historical">Historical</div>\n  <ul class="select-options">\n    <li id="leftScenario-select" rel="historical" class="default-select-option leftScenario-option-historical">Historical</li>\n    <li id="leftScenario-select" rel="rcp45" class="default-select-option leftScenario-option-lower">Lower Emissions</li>\n  </ul>\n</div>\n</div>\n           </div>\n            <div class="year left-year-slider-container">\n              <div class="year-label year-min"></div>\n              <div class="left-year-slider"></div>\n              <div class="year-label year-max"></div>\n            </div>\n          </div>\n          <div class="right-scenario-controls">\n        \n            <div class="right-scenario-dropdown">\n             <div id="rightScenario-select-wrapper" class="rounded-choice-box padding-horizontal-half padding-vertical-half default-btn-height d-flex-center width-100">\n  <div class="select rightScenario-select">\n    <div id="rightScenario-select-vis" class="select-styled" rel="rcp85">Higher Emissions</div>\n    <ul class="select-options">\n      <li id="rightScenario-select" rel="rcp85" class="default-select-option rightScenario-option-higher">Higher Emissions</li>\n      <li id="rightScenario-select-map" rel="rcp45" class="default-select-option rightScenario-option-lower">Lower Emissions</li>\n    </ul>\n  </div>\n</div>\n</div>\n            <div class="year right-year-slider-container">\n              <div class="year-label year-min"></div>\n              <div class="right-year-slider"></div>\n              <div class="year-label year-max"></div>\n            </div>\n          </div>\n        </div>\n                  \n            ');
       $(this.nodes.mapContainer).append(this.nodes.$controlsOverLayContainer);
 
       this.nodes.$controlsOverLayContainer.find('.movable.slider-div').draggable({
@@ -534,7 +534,7 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
 
           // for some reason lat long is backwards and to center a map you must pass long lat.
           // here I am switching lat long from center of tha map which is long lat back lat long order
-          // this will although keeping the state url consistent accross local climate maps and stations map
+          // this will although keeping the state url consistent across local climate maps and stations map
           this.options.lat = Math.round(latlon[1]*100)/100;
           this.options.lon = Math.round(latlon[0]*100)/100;
           this.options.center = [this.options.lat, this.options.lon]
@@ -565,7 +565,7 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
           }
 
           // make sure turf has been added
-          // add if center point is within the conus extent defeind by
+          // add if center point is within the conus extent defined by
           // const bbox = [-128.74, 24.23,  -64.1, 51.41];
           if (typeof turf !== "undefined") {
             const bbox = [-128.74, 24.23,  -64.1, 51.41]; // conus extent
@@ -1255,8 +1255,8 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
 
               // e.stopPropagation();
 
-              // get the invisiable link just outside the element node tree
-              // if inside we have issues will bubbling propogation
+              // get the invisible link just outside the element node tree
+              // if inside we have issues will bubbling propagation
               const link = document.querySelector('#national-climate-maps-secretlink-forcharts');
               const params = `?fips=${this.options.county}&county=${this.options.countyName}`
               // set the url and search params
@@ -2043,7 +2043,7 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
     _updateLeftScenarioSelect: function _updateLeftScenarioSelect() {
       var _this7 = this;
 
-      // check if varriable is precip then disable the historical and select lower emmissions
+      // check if variable is precip then disable the historical and select lower emmissions
       if (_this7.options.variable === 'pcpn') {
         $('#leftScenario-select-vis').attr('rel','rcp45');
         $('#leftScenario-select-vis').html('Lower Emissions');

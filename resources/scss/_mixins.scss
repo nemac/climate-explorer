@@ -153,8 +153,8 @@
 }
 
 
-// varriables
-@mixin map-varriables-min-max {
+// variables
+@mixin map-variables-min-max {
   @media screen and (max-width: 1185px) and (min-width: 901px)  { @content; }
 }
 

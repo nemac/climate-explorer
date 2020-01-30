@@ -14,11 +14,11 @@
 
   {{> secondary_header }}
 
-    <div id="local-climate-maps-viewport" class="padding-horrizontal d-flex d-flex-column">
+    <div id="local-climate-maps-viewport" class="padding-horizontal d-flex d-flex-column">
 
       <div id="search-row" class="padding-horizontal d-flex-row flex-justify padding-top padding-bottom-half d-flex-justify" >
 
-        <div class="rounded-box-secondary input-outer padding-horrizontal bottom-padding default-btn-height search-box-secondary width-40">
+        <div class="rounded-box-secondary input-outer padding-horizontal bottom-padding default-btn-height search-box-secondary width-40">
           <input  tabindex="1" id="cards-search-input" type="text" class="location-mapper input-inner-default border-none default-btn-height" autocomplete="off" placeholder="Enter county, city, or zip code">
           <span class="icon icon-search search-default float-right padding-default"></span>
           <div id="clear-location-wrapper" class="">
@@ -27,7 +27,7 @@
           </div>
         </div>
 
-        <div id="stations-select-wrapper" class="rounded-choice-box padding-horrizontal default-btn-height top-select-wrapper d-flex-center disabled">
+        <div id="stations-select-wrapper" class="rounded-choice-box padding-horizontal default-btn-height top-select-wrapper d-flex-center disabled">
           <div class="select">
             <div id="stations-select-vis" class="select-styled disabled" rel="none">Stations</div>
             <ul class="select-options" style="display: none;">
@@ -40,10 +40,10 @@
           </div>
         </div>
 
-        <div id="downloads-select-wrapper" class="rounded-choice-box padding-horrizontal default-btn-height top-select-wrapper d-flex-center">
+        <div id="downloads-select-wrapper" class="rounded-choice-box padding-horizontal default-btn-height top-select-wrapper d-flex-center">
 
           <div class="select download-select">
-            <div tabindex="1" id="downnloads-select-vis" class="select-styled" rel="none" >
+            <div tabindex="1" id="downloads-select-vis" class="select-styled" rel="none" >
               <i class="fas fa-download select-icon"></i>
               <a rel="none" href="javascript:void(0);" >Downloads</a>
             </div>
@@ -71,7 +71,7 @@
               <span id="default-in" class="text-info-box" > in </span>
               <span id="default-city-county" class="text-info-box"></span>
               <span id="default-dash" class="text-info-box" > - </span>
-              <span id="default-chart-map-varriable" class="text-info-box" rel="tmax">Avg Daily Max Temp (°F)</span>
+              <span id="default-chart-map-variable" class="text-info-box" rel="tmax">Avg Daily Max Temp (°F)</span>
             </div>
 
             <div id="filters-toggle" class="width-10">
@@ -84,7 +84,7 @@
 
           <div id="filters-row" class="d-flex-row flex-justify padding-top padding-bottom d-flex-left" >
 
-            <div id="varriable-select-wrapper" class="rounded-choice-box padding-horrizontal-half padding-vertical-half default-btn-height d-flex-center width-30">
+            <div id="variable-select-wrapper" class="rounded-choice-box padding-horizontal-half padding-vertical-half default-btn-height d-flex-center width-30">
               {{> variable-selector }}
             </div>
 
@@ -92,7 +92,7 @@
 
             <a id="chartmap-btn-chart-link"  href="../local-climate-charts" class="d-none"></a>
             <a id="chartmap-btn-map-link"  href="../local-climate-maps" class="d-none">Map</a>
-            <div id="chartmap-wrapper" class="padding-horrizontal-half padding-vertical-half default-btn-height d-flex-center width-20 disabled">
+            <div id="chartmap-wrapper" class="padding-horizontal-half padding-vertical-half default-btn-height d-flex-center width-20 disabled">
               <div tabindex="100" id="btn-chart" class="btn-chart btn-default circle-box-left d-flex-center width-50" val="chart" nav="local-climate-charts" link="chartmap-btn-chart-link" sel="chartmap-select-vis">
                 Chart
               </div>
@@ -101,7 +101,7 @@
               </div>
             </div>
 
-            <div id="chartmap-select-wrapper" class="rounded-choice-box padding-horrizontal-half padding-vertical-half default-btn-height d-flex-center width-20">
+            <div id="chartmap-select-wrapper" class="rounded-choice-box padding-horizontal-half padding-vertical-half default-btn-height d-flex-center width-20">
               <div class="select chartmap-select">
                 <div tabindex="102" id="chartmap-select-vis" class="select-styled" rel="chart">Map</div>
                 <ul class="select-options">
@@ -111,7 +111,7 @@
               </div>
             </div>
 
-            <div id="time-wrapper" class="padding-horrizontal-half padding-vertical-half default-btn-height d-flex-center width-30">
+            <div id="time-wrapper" class="padding-horizontal-half padding-vertical-half default-btn-height d-flex-center width-30">
               <div tabindex="105" id="btn-chart" class="btn-annual btn-default-selected circle-box-left d-flex-center width-50" val="annual" sel="time-select-vis">
                 Annual
               </div>
@@ -129,7 +129,7 @@
               </div>
             </div>
 
-            <div id="time-select-wrapper" class="rounded-choice-box padding-horrizontal-half padding-vertical-half default-btn-height d-flex-center width-20">
+            <div id="time-select-wrapper" class="rounded-choice-box padding-horizontal-half padding-vertical-half default-btn-height d-flex-center width-20">
               <div class="select time-select">
                 <div tabindex="110" id="time-select-vis" class="select-styled" rel="Annual">Annual</div>
                 <ul class="select-options">
