@@ -619,3 +619,52 @@ if (storageAvailable()) {
     offFeedbackSmall();
   }
 }
+
+function updateValidVarriable() {
+  const cityStateCE = window.ce.ce('getLocationPageState')['city'];
+  const countyCE = window.ce.ce('getLocationPageState')['county'];
+  let isAlaska = false;
+  let isHawaii = false;
+
+  if (cityStateCE) {
+      isAlaska = (cityStateCE.indexOf('Alaska') > 0 || cityStateCE.indexOf(', AK') > 0);
+      isHawaii = (cityStateCE.indexOf('Hawaii') > 0 || cityStateCE.indexOf(', HI') > 0);
+  }
+
+  console.log('updateValidVarriable', cityStateCE, isAlaska, isHawaii);
+
+  if (cityStateCE) {
+      if (isAlaska || isHawaii) {
+        console.log('in isAlaska, isHawaii', cityStateCE, isAlaska, isHawaii);
+           $('#default-in').html('—');
+          $('#download-observed-data').addClass('default-select-option-disabled');
+          $('#download-observed-data').addClass('disabled');
+          $('.btn-histobs').addClass('disabled');
+          $('.inner-histobs').addClass('disabled');
+          $('.btn-lower-emissions').addClass('disabled');
+          $('.inner-lower-emmisions').addClass('disabled');
+          $('.btn-lower-emissions').removeClass('selected');
+          $('.opt-not-ak').removeClass('default-select-option-disabled');
+          $('.btn-monthly').addClass('btn-default-disabled');
+          $('.btn-map').addClass('btn-default-disabled');
+          $('#more-info-description .btn-histobs').removeClass('disabled');
+          $('#more-info-description .btn-lower-emissions').removeClass('disabled');
+          $('#more-info-description .btn-lower-emissions').addClass('selected');
+
+          // temporary fix for Aleutians West and Hawaii
+          if (cityStateCE.includes('Aleutians West') > 0 || countyCE.includes('Aleutians West') > 0 || isHawaii) {
+            const messsageElemChart = document.getElementById('chart-message');
+            if (messsageElemChart) {
+              const rect = document.getElementById('chart-wrap').getBoundingClientRect();;
+              messsageElemChart.style.left = `${(rect.right - rect.left)/4}px`;
+              messsageElemChart.style.top = `${((rect.bottom + rect.top)/2.5)}px`;
+              messsageElemChart.innerHTML = `The chart and data for ${cityStateCE}, is currently not available.`
+              messsageElemChart.classList.remove('d-none');
+            }
+          }
+
+      } else {
+        $('.opt-only-ak').addClass('default-select-option-disabled');
+      }
+  }
+}

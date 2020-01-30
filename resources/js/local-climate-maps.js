@@ -24,19 +24,14 @@ $(function () {
   }
 
   if (cityStateCE) {
-    if (isAlaska || isHawaii) {
-      $('#default-in').html('—');
-      $('.opt-not-ak').addClass('default-select-option-disabled');
-    } else {
-      $('.opt-only-ak').addClass('default-select-option-disabled');
-    }
-
     if (cityStateCE.indexOf('County') > 0  ) {
       $('#default-in').addClass('d-none');
       $('#default-dash').addClass('d-none');
       $('#default-city-county').text('');
     }
   }
+
+  updateValidVarriable();
 
   let mapExtent = window.ce.ce('getLocationPageState')['extent'];
   let mapZoom = window.ce.ce('getLocationPageState')['zoom'] || 9;
@@ -824,5 +819,9 @@ $(function () {
     setMapSize();
   })
 
-
+  updateValidVarriable();
+  window.addEventListener('location-changed',() => {
+    console.log('location-changed')
+    updateValidVarriable();
+  })
 });
