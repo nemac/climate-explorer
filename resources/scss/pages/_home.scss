@@ -442,7 +442,8 @@ input.input-inner:focus  {
   top: -72px;
   padding-right: $ce3-default-padding*2 !important;
   z-index: -1;
-
+  margin-bottom: -50px;
+  
   @include medium {
     top: 48px;
     margin-right: -$ce3-default-padding !important;

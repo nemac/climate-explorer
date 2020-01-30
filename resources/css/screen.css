@@ -17774,6 +17774,7 @@ input.input-inner:focus {
   top: -72px;
   padding-right: 24px !important;
   z-index: -1;
+  margin-bottom: -50px;
 }
 
 @media screen and (max-width: 900px) {
@@ -17806,14 +17807,14 @@ input.input-inner:focus {
   }
 }
 
-/* line 464, resources/scss/pages/_home.scss */
+/* line 465, resources/scss/pages/_home.scss */
 .main-logos a {
   background-color: #FBFCFE;
   width: 50px;
   height: 50px;
 }
 
-/* line 470, resources/scss/pages/_home.scss */
+/* line 471, resources/scss/pages/_home.scss */
 .main-logos #global-change {
   width: 120px;
   padding-right: 12px;
