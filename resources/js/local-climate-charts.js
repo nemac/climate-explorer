@@ -493,7 +493,6 @@ $(function () {
         });
     }
 
-
     // This function will be called whenever the user changes the x-scale in the graph.
     function xrangesetmon() {
         // Force the slider thumbs to adjust to the appropriate place
@@ -665,6 +664,7 @@ $(function () {
 
     if (cityStateCE) {
         if (isAlaska || isHawaii) {
+          console.log('in isAlaska, isHawaii', cityStateCE, isAlaska, isHawaii);
              $('#default-in').html('—');
             $('#download-observed-data').addClass('default-select-option-disabled');
             $('#download-observed-data').addClass('disabled');
@@ -696,5 +696,10 @@ $(function () {
           $('.opt-only-ak').addClass('default-select-option-disabled');
         }
     }
-
+    
+    updateValidVarriable();
+    window.addEventListener('location-changed',() => {
+      console.log('location-changed');
+      updateValidVarriable();
+    })
 });

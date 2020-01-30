@@ -1017,7 +1017,8 @@ App.prototype.locationSearch = function () {
 
       // ga event action, category, label
       googleAnalyticsEvent('search', 'location', fips + '-' + city + '-' + county);
-
+      const leftMapDoneEvent = new CustomEvent('location-changed');
+      window.dispatchEvent(leftMapDoneEvent);
       const zoom = 7;
       window.location.href = `/${page}/?county=` + county + '&city=' + city + '&fips=' + fips + '&lat=' + lat + '&lon=' + lon + '&zoom=' + zoom + '&nav=' + navLocation;
     }
