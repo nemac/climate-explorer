@@ -821,7 +821,6 @@ $(function () {
 
   updateValidVarriable();
   window.addEventListener('location-changed',() => {
-    console.log('location-changed')
     updateValidVarriable();
   })
 });
