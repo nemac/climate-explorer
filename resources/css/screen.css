@@ -13652,14 +13652,14 @@ h6 {
 }
 
 /* line 630, resources/scss/screen.scss */
-.padding-horrizontal {
+.padding-horizontal {
   padding-left: 12px !important;
   padding-right: 12px !important;
 }
 
 @media screen and (max-width: 900px) {
   /* line 630, resources/scss/screen.scss */
-  .padding-horrizontal {
+  .padding-horizontal {
     padding-left: 6px !important;
     padding-right: 6px !important;
   }
@@ -13680,14 +13680,14 @@ h6 {
 }
 
 /* line 648, resources/scss/screen.scss */
-.padding-horrizontal-half {
+.padding-horizontal-half {
   padding-left: 6px !important;
   padding-right: 6px !important;
 }
 
 @media screen and (max-width: 900px) {
   /* line 648, resources/scss/screen.scss */
-  .padding-horrizontal-half {
+  .padding-horizontal-half {
     padding-left: 3px !important;
     padding-right: 3px !important;
   }
@@ -13768,14 +13768,14 @@ h6 {
 }
 
 /* line 700, resources/scss/screen.scss */
-.margin-horrizontal {
+.margin-horizontal {
   margin-left: 12px !important;
   margin-right: 12px !important;
 }
 
 @media screen and (max-width: 900px) {
   /* line 700, resources/scss/screen.scss */
-  .margin-horrizontal {
+  .margin-horizontal {
     margin-left: 6px !important;
     margin-right: 6px !important;
   }
@@ -14992,7 +14992,7 @@ input.input-inner-default:focus {
 }
 
 /* line 1591, resources/scss/screen.scss */
-#map-for-print-right .botttom-controls, #map-for-print-left .botttom-controls {
+#map-for-print-right .bottom-controls, #map-for-print-left .bottom-controls {
   max-height: 54px;
   height: 54px;
   width: auto;
@@ -15230,13 +15230,13 @@ input.input-inner-default:focus {
 }
 
 /* line 1813, resources/scss/screen.scss */
-.varriable-option-item {
+.variable-option-item {
   width: 100%;
   height: 44px;
 }
 
 /* line 1818, resources/scss/screen.scss */
-.varriable-option-tooltip {
+.variable-option-tooltip {
   position: relative;
   padding-top: 12px;
   height: 44px;
@@ -15248,20 +15248,20 @@ input.input-inner-default:focus {
 
 @media screen and (max-width: 1400px) and (min-width: 900px) {
   /* line 1818, resources/scss/screen.scss */
-  .varriable-option-tooltip {
+  .variable-option-tooltip {
     width: 20%;
   }
 }
 
 @media screen and (max-width: 599px) {
   /* line 1818, resources/scss/screen.scss */
-  .varriable-option-tooltip {
+  .variable-option-tooltip {
     width: 20%;
   }
 }
 
 /* line 1836, resources/scss/screen.scss */
-.varriable-option-tooltip:hover {
+.variable-option-tooltip:hover {
   color: #124086;
   background: #d3e3f9;
 }
@@ -17922,7 +17922,7 @@ input.input-inner:focus {
 }
 
 /* line 74, resources/scss/pages/_local-climate-charts.scss */
-#varriable-select-wrapper {
+#variable-select-wrapper {
   background-color: #124086 !important;
   color: #E9F1FC !important;
   padding-right: 6px !important;
@@ -17931,30 +17931,30 @@ input.input-inner:focus {
 
 @media screen and (max-width: 900px) {
   /* line 74, resources/scss/pages/_local-climate-charts.scss */
-  #varriable-select-wrapper {
+  #variable-select-wrapper {
     margin-right: 0px !important;
   }
 }
 
 /* line 84, resources/scss/pages/_local-climate-charts.scss */
-#varriable-select-wrapper:hover {
+#variable-select-wrapper:hover {
   background-color: #397ee5 !important;
 }
 
 /* line 87, resources/scss/pages/_local-climate-charts.scss */
-#varriable-select-wrapper:hover .select-styled {
+#variable-select-wrapper:hover .select-styled {
   background-color: #397ee5 !important;
 }
 
 /* line 92, resources/scss/pages/_local-climate-charts.scss */
-#varriable-select-wrapper ::-webkit-scrollbar {
+#variable-select-wrapper ::-webkit-scrollbar {
   width: 6px;
   border: 1px solid #E9F1FC;
   background-color: #E9F1FC;
 }
 
 /* line 97, resources/scss/pages/_local-climate-charts.scss */
-#varriable-select-wrapper ::-webkit-scrollbar-thumb {
+#variable-select-wrapper ::-webkit-scrollbar-thumb {
   background-color: #0D3064;
   border-radius: 6px;
   -webkit-border-radius: 6px !important;
@@ -17962,114 +17962,114 @@ input.input-inner:focus {
 }
 
 /* line 102, resources/scss/pages/_local-climate-charts.scss */
-#varriable-select-wrapper ::-webkit-scrollbar-thumb:vertical {
+#variable-select-wrapper ::-webkit-scrollbar-thumb:vertical {
   height: 6px;
 }
 
 /* line 107, resources/scss/pages/_local-climate-charts.scss */
-#varriable-select-wrapper ::-webkit-scrollbar-track {
+#variable-select-wrapper ::-webkit-scrollbar-track {
   border: 1px solid #1D6ADD;
   background-color: #E9F1FC;
 }
 
 /* line 112, resources/scss/pages/_local-climate-charts.scss */
-#varriable-select-wrapper ::-webkit-scrollbar-track-piece {
+#variable-select-wrapper ::-webkit-scrollbar-track-piece {
   margin-right: 10px;
   height: 6px;
   width: 6px;
 }
 
 /* line 118, resources/scss/pages/_local-climate-charts.scss */
-#varriable-select-wrapper ::-webkit-scrollbar-corner {
+#variable-select-wrapper ::-webkit-scrollbar-corner {
   display: none;
 }
 
 /* line 123, resources/scss/pages/_local-climate-charts.scss */
-#varriable-select-wrapper .varriable-select {
+#variable-select-wrapper .variable-select {
   color: #E9F1FC !important;
 }
 
 /* line 126, resources/scss/pages/_local-climate-charts.scss */
-#varriable-select-wrapper .varriable-select .select {
+#variable-select-wrapper .variable-select .select {
   color: #E9F1FC !important;
 }
 
 /* line 131, resources/scss/pages/_local-climate-charts.scss */
-#varriable-select-wrapper .varriable-select .select-styled a {
+#variable-select-wrapper .variable-select .select-styled a {
   color: #E9F1FC !important;
 }
 
 /* line 135, resources/scss/pages/_local-climate-charts.scss */
-#varriable-select-wrapper .varriable-select .select-styled.disabled {
+#variable-select-wrapper .variable-select .select-styled.disabled {
   color: rgba(233, 241, 252, 0.5) !important;
 }
 
 /* line 139, resources/scss/pages/_local-climate-charts.scss */
-#varriable-select-wrapper .varriable-select .select-styled:after {
+#variable-select-wrapper .variable-select .select-styled:after {
   background-color: #E9F1FC !important;
   color: #124086 !important;
 }
 
 /* line 144, resources/scss/pages/_local-climate-charts.scss */
-#varriable-select-wrapper .varriable-select .select-styled:hover, #varriable-select-wrapper .varriable-select .select-styled:focus {
+#variable-select-wrapper .variable-select .select-styled:hover, #variable-select-wrapper .variable-select .select-styled:focus {
   outline: none !important;
   color: white !important;
   font-weight: 500;
 }
 
 /* line 149, resources/scss/pages/_local-climate-charts.scss */
-#varriable-select-wrapper .varriable-select .select-styled:hover.disabled, #varriable-select-wrapper .varriable-select .select-styled:focus.disabled {
+#variable-select-wrapper .variable-select .select-styled:hover.disabled, #variable-select-wrapper .variable-select .select-styled:focus.disabled {
   color: rgba(233, 241, 252, 0.5) !important;
   outline: none !important;
 }
 
 /* line 156, resources/scss/pages/_local-climate-charts.scss */
-#varriable-select-wrapper .varriable-select .select-options {
+#variable-select-wrapper .variable-select .select-options {
   background-color: #124086 !important;
   color: #E9F1FC !important;
 }
 
 /* line 160, resources/scss/pages/_local-climate-charts.scss */
-#varriable-select-wrapper .varriable-select .select-options a {
+#variable-select-wrapper .variable-select .select-options a {
   color: #E9F1FC !important;
 }
 
 /* line 163, resources/scss/pages/_local-climate-charts.scss */
-#varriable-select-wrapper .varriable-select .select-options .default-select-option-disabled {
+#variable-select-wrapper .variable-select .select-options .default-select-option-disabled {
   color: rgba(233, 241, 252, 0.5) !important;
 }
 
 /* line 167, resources/scss/pages/_local-climate-charts.scss */
-#varriable-select-wrapper .varriable-select .select-options li {
+#variable-select-wrapper .variable-select .select-options li {
   border-top: 1px solid #124086;
 }
 
 /* line 169, resources/scss/pages/_local-climate-charts.scss */
-#varriable-select-wrapper .varriable-select .select-options li a {
+#variable-select-wrapper .variable-select .select-options li a {
   color: #E9F1FC !important;
 }
 
 /* line 173, resources/scss/pages/_local-climate-charts.scss */
-#varriable-select-wrapper .varriable-select .select-options li:hover, #varriable-select-wrapper .varriable-select .select-options li:focus {
+#variable-select-wrapper .variable-select .select-options li:hover, #variable-select-wrapper .variable-select .select-options li:focus {
   color: #E9F1FC !important;
   background: #397ee5 !important;
 }
 
 /* line 177, resources/scss/pages/_local-climate-charts.scss */
-#varriable-select-wrapper .varriable-select .select-options li:hover.default-select-option-disabled, #varriable-select-wrapper .varriable-select .select-options li:focus.default-select-option-disabled {
+#variable-select-wrapper .variable-select .select-options li:hover.default-select-option-disabled, #variable-select-wrapper .variable-select .select-options li:focus.default-select-option-disabled {
   color: rgba(233, 241, 252, 0.5) !important;
   background: #124086 !important;
   cursor: default !important;
 }
 
 /* line 186, resources/scss/pages/_local-climate-charts.scss */
-#varriable-select-wrapper .varriable-select .select-options span:hover, #varriable-select-wrapper .varriable-select .select-options span:focus {
+#variable-select-wrapper .variable-select .select-options span:hover, #variable-select-wrapper .variable-select .select-options span:focus {
   color: #E9F1FC !important;
   background: #397ee5 !important;
 }
 
 /* line 196, resources/scss/pages/_local-climate-charts.scss */
-#stations-select, #downnloads-select, #varriable-select {
+#stations-select, #downloads-select, #variable-select {
   display: none !important;
 }
 
@@ -18155,7 +18155,7 @@ input.input-inner:focus {
 
 @media screen and (max-width: 900px) {
   /* line 264, resources/scss/pages/_local-climate-charts.scss */
-  #varriable-select-wrapper, #chartmap-wrapper, #time-wrapper, #presentation-wrapper, #tidalzoom-wrapper {
+  #variable-select-wrapper, #chartmap-wrapper, #time-wrapper, #presentation-wrapper, #tidalzoom-wrapper {
     height: auto !important;
     width: 100% !important;
     padding-top: 6px !important;

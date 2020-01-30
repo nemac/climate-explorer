@@ -18,8 +18,8 @@ $(function () {
       // otherwise we use the first one which is most likely the wrong page
       const seachParams = window.location.search.substring(1)
 
-      // get the invisiable link just outside the element node tree
-      // if inside we have issues will bubbling propogation
+      // get the invisible link just outside the element node tree
+      // if inside we have issues will bubbling propagation
       const link = document.querySelector(`.about-${selector}-link`);
       // set the url and search params
       const url = `/${selector}/?${seachParams}`

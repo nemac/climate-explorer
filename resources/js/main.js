@@ -932,7 +932,7 @@ App.prototype.locationSearch = function () {
     resetResultsStyle();
   })
 
-  // adds events for geocodeing locations - this gets the city, countty, fips code
+  // adds events for geocodeing locations - this gets the city, county, fips code
   $(".location-mapper").bind("geocode:result", function (event, result) {
    if (!this.doSearch){return null;}
    var data = {};

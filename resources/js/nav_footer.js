@@ -22,13 +22,13 @@ $(function () {
   }
 
   // add click events to footer
-  // uses invisiable a link
+  // uses invisible a link
   addNavClick('home', 'home', navConstants.selectorAddOn);
   addNavClick('local-climate-charts', 'local-climate-charts', navConstants.selectorAddOn);
   addNavClick('local-climate-maps', 'local-climate-maps', navConstants.selectorAddOn);
   addNavClick('national-climate-maps', 'national-climate-maps', navConstants.selectorAddOn);
   addNavClick('historical-weather-data', 'historical-weather-data', navConstants.selectorAddOn);
-  addNavClick('hightide-flooding', 'hightide-flooding', navConstants.selectorAddOn);
+  addNavClick('high-tide-flooding', 'high-tide-flooding', navConstants.selectorAddOn);
   addNavClick('historical-thresholds', 'historical-thresholds', navConstants.selectorAddOn);
 
   updateNavBar();
@@ -201,7 +201,7 @@ $(function () {
       navFooterItemSelected: 'nav-footer-item-selected',
       navFooterItemNOTSelected: 'nav-footer-item',
       selectorAddOn: '-nav-footer',
-      moreNavs: ['-999', 'historical-weather-data', 'historical-thresholds', 'hightide-flooding'],
+      moreNavs: ['-999', 'historical-weather-data', 'historical-thresholds', 'high-tide-flooding'],
       moreNavFooter: 'more-nav-footer',
       expandedWrapperNavFooterElem: 'expanded-wrapper-nav-footer',
       moreWrapperNavFooterElem: 'more-wrapper-nav-footer',
@@ -261,7 +261,7 @@ $(function () {
       navLocationElem.classList.add(navConstants.navFooterItemSelected);
 
       // if the nav item is stations based it maybe hidden in more
-      // in repsonsive mode so we should highlight also
+      // in responsive mode so we should highlight also
       if (isMoreNavItem > 0) {
         const moreElem = document.querySelector(`#more${navConstants.selectorAddOn}`)
         moreElem.classList.remove(navConstants.navFooterItemNOTSelected);
@@ -291,8 +291,8 @@ $(function () {
         // otherwise we use the first one which is most likely the wrong page
         const seachParams = removeUrlParam('nav')
 
-        // get the invisiable link just outside the element node tree
-        // if inside we have issues will bubbling propogation
+        // get the invisible link just outside the element node tree
+        // if inside we have issues will bubbling propagation
         const link = document.querySelector(`#${selector}-secretlink${navConstants.selectorAddOn}`);
 
         // set the url and search params
@@ -314,8 +314,8 @@ $(function () {
       // otherwise we use the first one which is most likely the wrong page
       const seachParams = removeUrlParam('nav')
 
-      // get the invisiable link just outside the element node tree
-      // if inside we have issues will bubbling propogation
+      // get the invisible link just outside the element node tree
+      // if inside we have issues will bubbling propagation
       const link = document.querySelector(`#${selector}-secretlink${navConstants.selectorAddOn}`);
 
       // set the url and search params
@@ -333,7 +333,7 @@ $(function () {
 
   // check if a parentelemet contains a dom id
   // deals with event bubbling so we can check
-  // if the child is in a specifc parent
+  // if the child is in a specific parent
   function ParentContains(target, id) {
     for (let p = target && target.parentElement; p; p = p.parentElement) {
       if (p.id === id) { return true; }

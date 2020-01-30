@@ -11,7 +11,7 @@ $ce3-blue3: #124086; // text, button backgrounds, selected icon borders. main co
 $ce3-blue3alpha: rgba(18,64,134,0.50);  // some borders and color disabled items
 $ce3-blue3alphad: rgba(18,64,134,0.05);  // some borders and color disabled items
 $ce3-blue4: #1D6ADD;  // some backgrounds and borders
-$ce3-blue5: #E9F1FC; // button text boxes, not slected radio buttons
+$ce3-blue5: #E9F1FC; // button text boxes, not selected radio buttons
 $ce3-blue5alpha: rgba(233, 241, 252,0.50);
 $ce3-blue5alpha2: rgba(233, 241, 252,0.90);
 $ce3-blue6: #FBFCFE; // text for dark backgrounds, light backgrounds, backgrounds for boxes and pulldowns
@@ -45,8 +45,8 @@ $ce3-actual-range: #3288BD;
 // shapes for map
 $ce3-tidal-stations-fill: $ce3-blue3;
 $ce3-tidal-stations-border: #1D64DD;
-$ce3-historical-treshold-fill: #DB303D;
-$ce3-historical-treshold-border: $ce3-higher-emissions;
+$ce3-historical-threshold-fill: #DB303D;
+$ce3-historical-threshold-border: $ce3-higher-emissions;
 $ce3-historical-weather-fill: #ABDDA4;
 $ce3-historical-weather-border: #1D64DD;
 
@@ -57,13 +57,13 @@ $ce3-main-logo-height: 60px;
 $ce3-secondary-logo-height: 36px;
 
 $ce3-main-btn-height: 60px;
-$ce3-btnheight: 36px;
-$ce3-btnheight-legends: 30px;
+$ce3-btn-height: 36px;
+$ce3-btn-height-legends: 30px;
 
-$ce3-btnheight-smallecreen: 48px;
-$ce3-btnheight-smallecreen-legend: 36px;
+$ce3-btn-height-smallecreen: 48px;
+$ce3-btn-height-smallecreen-legend: 36px;
 
-$ce3-btninnerheight: 24px;
+$ce3-btn-inner-height: 24px;
 
 $ce3-main-title-font-size: 48px;
 $ce3-secondary-title-font-size: 24px;
@@ -206,9 +206,9 @@ h6 {
 }
 
 .default-btn-height {
-  height: $ce3-btnheight !important;
+  height: $ce3-btn-height !important;
   @include medium {
-    height: $ce3-btnheight-smallecreen !important;
+    height: $ce3-btn-height-smallecreen !important;
   }
 }
 
@@ -230,9 +230,9 @@ h6 {
   font: 500 14px $roboto !important;
   color: $ce3-blue3;
   width: 100%;
-  height: $ce3-btnheight !important;
+  height: $ce3-btn-height !important;
   @include medium {
-    height: $ce3-btnheight-smallecreen !important;
+    height: $ce3-btn-height-smallecreen !important;
  }
 }
 
@@ -627,7 +627,7 @@ h6 {
   }
 }
 
-.padding-horrizontal {
+.padding-horizontal {
   padding-left: $ce3-default-horizontal-padding !important;
   padding-right: $ce3-default-horizontal-padding !important;
   @include medium {
@@ -645,7 +645,7 @@ h6 {
   }
 }
 
-.padding-horrizontal-half {
+.padding-horizontal-half {
   padding-left: $ce3-padding-half !important;
   padding-right: $ce3-padding-half !important;
   @include medium {
@@ -697,7 +697,7 @@ h6 {
   }
 }
 
-.margin-horrizontal {
+.margin-horizontal {
   margin-left: $ce3-default-horizontal-padding !important;
   margin-right: $ce3-default-horizontal-padding !important;
   @include medium {
@@ -805,7 +805,7 @@ h6 {
   text-decoration: line-through !important;
   background-color: $ce3-blue6 !important;
   color: transparentize($ce3-blue3, 0.5) !important;
-  height: $ce3-btnheight !important;
+  height: $ce3-btn-height !important;
   font: 500 14px $roboto !important;
   border: 1px solid $ce3-blue3alpha !important;
   margin-left: $ce3-default-padding;
@@ -814,14 +814,14 @@ h6 {
   @include border-radius(5px, 5px);
 
   @include medium {
-    height: $ce3-btnheight-smallecreen !important;
+    height: $ce3-btn-height-smallecreen !important;
   }
 
   .inner-histobs{
     background-color: $ce3-historical-observed !important;
     border: 1px solid darken($ce3-historical-observed, 10);
     height: 18px;
-    width: $ce3-btnheight-smallecreen;
+    width: $ce3-btn-height-smallecreen;
     margin: $ce3-default-padding;
     @include border-radius(5px, 5px);
 
@@ -872,7 +872,7 @@ h6 {
   text-decoration: line-through !important;
   background-color: $ce3-blue6 !important;
   color: transparentize($ce3-blue3, 0.5) !important;
-  height: $ce3-btnheight !important;
+  height: $ce3-btn-height !important;
   font: 500 14px $roboto !important;
   border: 1px solid $ce3-blue3alpha !important;
   margin-left: $ce3-default-padding;
@@ -881,14 +881,14 @@ h6 {
   @include border-radius(5px, 5px);
 
   @include medium {
-    height: $ce3-btnheight-smallecreen !important;
+    height: $ce3-btn-height-smallecreen !important;
   }
 
   .inner-hismod {
     background-color: $ce3-historical-modeled !important;
     border: 1px solid darken($ce3-historical-modeled, 10);
     height: 18px;
-    width: $ce3-btnheight-smallecreen;
+    width: $ce3-btn-height-smallecreen;
     margin: $ce3-default-padding;
     @include border-radius(5px, 5px);
 
@@ -939,7 +939,7 @@ h6 {
   text-decoration: line-through !important;
   background-color: $ce3-blue6 !important;
   color: transparentize($ce3-blue3, 0.5) !important;
-  height: $ce3-btnheight !important;
+  height: $ce3-btn-height !important;
   font: 500 14px $roboto !important;
   border: 1px solid $ce3-blue3alpha !important;
   margin-left: $ce3-default-padding;
@@ -948,14 +948,14 @@ h6 {
   @include border-radius(5px, 5px);
 
   @include medium {
-    height: $ce3-btnheight-smallecreen !important;
+    height: $ce3-btn-height-smallecreen !important;
   }
 
   .inner-lower-emmisions {
     background-color: $ce3-lower-emissions !important;
     border: 1px solid darken($ce3-lower-emissions, 10);
     height: 18px;
-    width: $ce3-btnheight-smallecreen;
+    width: $ce3-btn-height-smallecreen;
     margin: $ce3-default-padding;
     @include border-radius(5px, 5px);
 
@@ -1006,7 +1006,7 @@ h6 {
   text-decoration: line-through !important;
   background-color: $ce3-blue6 !important;
   color: transparentize($ce3-blue3, 0.5) !important;
-  height: $ce3-btnheight !important;
+  height: $ce3-btn-height !important;
   font: 500 14px $roboto !important;
   border: 1px solid $ce3-blue3alpha !important;
   margin-left: $ce3-default-padding;
@@ -1015,14 +1015,14 @@ h6 {
   @include border-radius(5px, 5px);
 
   @include medium {
-    height: $ce3-btnheight-smallecreen !important;
+    height: $ce3-btn-height-smallecreen !important;
   }
 
   .inner-higher-emmisions {
     background-color: $ce3-higher-emissions !important;
     border: 1px solid darken($ce3-higher-emissions, 10);
     height: 18px;
-    width: $ce3-btnheight-smallecreen;
+    width: $ce3-btn-height-smallecreen;
     margin: $ce3-default-padding;
     @include border-radius(5px, 5px);
 
@@ -1071,7 +1071,7 @@ h6 {
 .btn-default {
   cursor: pointer;
   padding: $ce3-default-padding/2;
-  height: $ce3-btnheight !important;
+  height: $ce3-btn-height !important;
   background-color: $ce3-blue5 !important;
   color: $ce3-blue3 !important;
   font: $font-weight-normal 14px $roboto !important;
@@ -1108,7 +1108,7 @@ h6 {
   }
 
   @include medium {
-    height: $ce3-btnheight-smallecreen !important;
+    height: $ce3-btn-height-smallecreen !important;
   }
 
     &:hover, &:focus {
@@ -1142,14 +1142,14 @@ h6 {
 
 .btn-default-disabled {
   cursor: default;
-  height: $ce3-btnheight !important;
+  height: $ce3-btn-height !important;
   background-color: $ce3-blue5 !important;
   color: $ce3-disabled-font !important;
   font: 500 14px $roboto !important;
   border: 1px solid $ce3-disabled-border !important;
 
   @include medium {
-    height: $ce3-btnheight-smallecreen !important;
+    height: $ce3-btn-height-smallecreen !important;
   }
 
   &:hover, &:focus {
@@ -1172,7 +1172,7 @@ h6 {
 
 .btn-default-selected {
   cursor: pointer;
-  height: $ce3-btnheight !important;
+  height: $ce3-btn-height !important;
   @include border-left-radius(25px !important);
   @include border-right-radius(25px !important);
   z-index: 999 !important;
@@ -1201,7 +1201,7 @@ h6 {
   }
 
   @include medium {
-    height: $ce3-btnheight-smallecreen !important;
+    height: $ce3-btn-height-smallecreen !important;
   }
 
   &:focus ,&:hover {
@@ -1231,8 +1231,8 @@ h6 {
   min-height: 36px !important;
   max-height: 36px !important;
   @include medium {
-    min-height: $ce3-btnheight-smallecreen !important;
-    max-height: $ce3-btnheight-smallecreen !important;
+    min-height: $ce3-btn-height-smallecreen !important;
+    max-height: $ce3-btn-height-smallecreen !important;
   }
 
   &:hover, &:focus {
@@ -1328,9 +1328,9 @@ h6 {
 }
 
 #cards-viewport .rounded-filters-box {
-  min-height: $ce3-btnheight !important;
+  min-height: $ce3-btn-height !important;
   @include medium {
-    min-height: $ce3-btnheight !important;
+    min-height: $ce3-btn-height !important;
   }
 }
 
@@ -1480,8 +1480,8 @@ h6 {
 #clear-location-wrapper {
   cursor: pointer;
   color: $ce3-blue3;
-  width: $ce3-btnheight;
-  height: $ce3-btnheight - 1;
+  width: $ce3-btn-height;
+  height: $ce3-btn-height - 1;
   background-color: $ce3-blue6;
   border: 1px solid $ce3-blue3alphad;
   @include border-bottom-left-radius(5px);
@@ -1490,7 +1490,7 @@ h6 {
   padding-left: 5px;
   float: left;
   @include medium {
-    height: $ce3-btnheight-smallecreen - 1;
+    height: $ce3-btn-height-smallecreen - 1;
   }
 
   #clear-location {
@@ -1588,7 +1588,7 @@ input.input-inner-default:focus  {
       top: calc(100% - 17px);
     }
 
-    .botttom-controls {
+    .bottom-controls {
       max-height: 54px;
       height: 54px;
       width: auto;
@@ -1810,12 +1810,12 @@ input.input-inner-default:focus  {
   top: 0;
 }
 
-  .varriable-option-item {
+  .variable-option-item {
     width: 100%;
     height: 44px;
   }
 
-  .varriable-option-tooltip {
+  .variable-option-tooltip {
     position: relative;
     padding-top: 12px;
     height: 44px;

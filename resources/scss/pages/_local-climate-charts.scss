@@ -70,8 +70,8 @@
   }
 }
 
-// make the varriable more visually  important
-#varriable-select-wrapper {
+// make the variable more visually  important
+#variable-select-wrapper {
 
   background-color: $ce3-blue3 !important;
   color: $ce3-blue5  !important;
@@ -120,7 +120,7 @@
     }
   }
 
-  .varriable-select {
+  .variable-select {
     color: $ce3-blue5  !important;
 
     .select {
@@ -193,7 +193,7 @@
 
 }
 
-#stations-select, #downnloads-select, #varriable-select {
+#stations-select, #downloads-select, #variable-select {
   display: none !important;
 }
 
@@ -261,7 +261,7 @@
   }
 }
 
-#varriable-select-wrapper, #chartmap-wrapper, #time-wrapper, #presentation-wrapper, #tidalzoom-wrapper   {
+#variable-select-wrapper, #chartmap-wrapper, #time-wrapper, #presentation-wrapper, #tidalzoom-wrapper   {
   @include medium {
     height: auto !important;
     width: 100% !important;
@@ -274,12 +274,12 @@
   #btn-chart {
     width: 100% !important;
     height: 30px !important;
-    height: $ce3-btnheight-legends !important;
+    height: $ce3-btn-height-legends !important;
     margin-left: $ce3-default-padding;
     margin-right: $ce3-default-padding;
     @include border-radius(5px, 5px);
     &.btn-default-selected {
-      height: $ce3-btnheight-legends !important;
+      height: $ce3-btn-height-legends !important;
       margin-left: $ce3-default-padding;
       margin-right: $ce3-default-padding;
       @include border-radius(5px, 5px !important);
@@ -394,10 +394,10 @@
   padding-top: $ce3-default-padding !important;
   padding-bottom: $ce3-default-padding !important;
   width: 60% !important;
-  height: $ce3-btnheight-legends !important;
+  height: $ce3-btn-height-legends !important;
 
   #btn-chart {
-    height: $ce3-btnheight-legends !important;
+    height: $ce3-btn-height-legends !important;
     margin-left: $ce3-default-padding;
     margin-right: $ce3-default-padding;
     @include border-radius(5px, 5px);
@@ -410,7 +410,7 @@
     width: 100% !important;
     padding-bottom: $ce3-default-padding !important;
     #btn-chart {
-      height: $ce3-btnheight-smallecreen !important;
+      height: $ce3-btn-height-smallecreen !important;
       width: 100% !important;
       margin-top: $ce3-default-padding;
     }
@@ -474,7 +474,7 @@
     }
 
     #annual-slider-wrapper {
-      height: $ce3-btnheight-legends !important;
+      height: $ce3-btn-height-legends !important;
     }
 
     #monthly-select-wrapper {
@@ -507,7 +507,7 @@
       }
 
       #annual-slider-wrapper {
-        height: $ce3-btnheight-legends !important;
+        height: $ce3-btn-height-legends !important;
       }
 
       #monthly-select-wrapper {
@@ -559,7 +559,7 @@
 
 #annual-slider-wrapper {
   @include medium {
-    height: $ce3-btnheight-legends !important;
+    height: $ce3-btn-height-legends !important;
     order: 2;
   }
 }

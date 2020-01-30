@@ -40,7 +40,7 @@ $(function () {
   const center = [lat, lon]
 
 
-  // initialize staion map state from url values
+  // initialize station map state from url values
   stationsMapState = {
     city,
     county,
@@ -62,7 +62,7 @@ $(function () {
   })
 
 
-  // updates the visible text for the station pulldown with the information from the state url
+  // updates the visible text for the station dropdown with the information from the state url
   function updateStationSelectText(stations) {
     const stationsSelectElem = $('#stations-select-vis');
     if (stationsSelectElem) {
@@ -89,7 +89,7 @@ $(function () {
     $('#multi-precip-chart').stationAnnualGraph({ variable: 'precipitation', station: stations.stationId, stationName: stations.stationName });
   }
 
-  // updates the visible text for the station pulldown with the information from the state url
+  // updates the visible text for the station dropdown with the information from the state url
   updateStationSelectText({stationName, stationId})
 
   // show more about charts
@@ -111,13 +111,13 @@ $(function () {
   }
 
   // show graph overlay.
-  // graph is visbile and on page just pushed of viewable area
-  // so we can intialize it when needed
+  // graph is visible and on page just pushed of viewable area
+  // so we can initialize it when needed
   function showGraphs() {
     const stationsGraphRowElem = document.getElementById('stations-graph-row');
     const stationsMapRowElem = document.getElementById('stations-map-row');
     showMoreCharts();
-    // unhide chart overlay
+    // show chart overlay
     if (stationsGraphRowElem) {
       stationsGraphRowElem.classList.remove('d-off');
       stationsGraphRowElem.classList.add('d-flex');
@@ -131,26 +131,26 @@ $(function () {
   }
 
   // show map overlay.
-  // map is visbile and on page just pushed of viewable area
-  // so we can intialize it when needed
+  // map is visible and on page just pushed of viewable area
+  // so we can initialize it when needed
   function showMap() {
     const stationsGraphRowElem = document.getElementById('stations-graph-row');
     const stationsMapRowElem = document.getElementById('stations-map-row');
     dontShowMoreCharts();
-    // unhide chart overlay
+    // show chart overlay
     if (stationsGraphRowElem) {
       stationsGraphRowElem.classList.remove('d-flex');
       stationsGraphRowElem.classList.add('d-off');
     }
 
-    // unhide map overlay
+    // show map overlay
     if (stationsMapRowElem) {
       stationsMapRowElem.classList.add('d-flex');
       stationsMapRowElem.classList.remove('d-off');
     }
   }
 
-  // reuturn attribute of html element based on rel for dropdown or val based on button
+  // return attribute of html element based on rel for dropdown or val based on button
   // we probably should switch all elements to val for consistency.
   function RelorVal(target){
     if (target.attr('val') === undefined || target.attr('val') === null) {
@@ -161,18 +161,18 @@ $(function () {
 
   function chooseGraphOrMap(target) {
     // check val of button to see if user is on map  or chart
-    // hide or unhide the appropriate overlay (map, chart)
+    // hide or show the appropriate overlay (map, chart)
     switch (RelorVal(target)) {
       case 'chart':
-        // unhide chart overlay
+        // show chart overlay
         showGraphs();
         break;
       case 'map':
-        // unhide map overlay
+        // show map overlay
         showMap();
       break
       default:
-        // unhide chart overlay
+        // show chart overlay
         showGraphs();
     }
     // ga event action, category, label
@@ -185,15 +185,15 @@ $(function () {
     if ( ChartInfoTextElem ) {
       switch (val) {
         case 'chart':
-          // unhide chart text
+          // show chart text
           ChartInfoTextElem.setAttribute("style", 'display: flex;');
           break;
         case 'map':
-          // unhide map overlay
+          // show map overlay
           ChartInfoTextElem.setAttribute("style", 'display: none !important;');
           break
         default:
-          // unhide chart text
+          // show chart text
           ChartInfoTextElem.setAttribute("style", 'display: flex;');
       }
     }
@@ -205,16 +205,16 @@ $(function () {
       targetParent.removeClass('disabled');
     }
 
-    const target = $('#downnloads-select-vis');
+    const target = $('#downloads-select-vis');
     if (target.hasClass('disabled')) {
       target.removeClass('disabled');
       enableCustomSelect('download-select');
     }
   }
 
-  // update chart pulldown to chart as default
+  // update chart dropdown to chart as default
   function chartPulldownChartText(){
-    // updart pulldown default of chart
+    // update dropdown default of chart
     const chartMapElem = $('#chartmap-select-vis');
     if (chartMapElem){
       chartMapElem.attr('rel','chart');
@@ -224,7 +224,7 @@ $(function () {
 
   // if state url has a station render station and not map.
   if (stationId) {
-    // unhide chart overlay
+    // show chart overlay
     showGraphs()
 
     // reset graphs
@@ -233,10 +233,10 @@ $(function () {
     // toggle button visual state
     toggleButton($('.btn-chart'));
 
-    // update chart pulldown to chart as default
+    // update chart dropdown to chart as default
     chartPulldownChartText()
 
-    // updates the visible text for the station pulldown with the information from the state url
+    // updates the visible text for the station dropdown with the information from the state url
     updateStationSelectText({stationName, stationId})
 
     toggleChartInfoText('chart');
@@ -245,7 +245,7 @@ $(function () {
 
     setTimeout(function () {
       // reset map and chart sizes
-      // filer transistion means heigh will be updates in few seconds
+      // filer transition means heigh will be updates in few seconds
       // so delaying the resize ensures proper size
       setMapSize();
     }, 600);
@@ -285,7 +285,7 @@ $(function () {
     }
   });
 
-  // in resposnive mode, event hanlder a for when season (time) varriable changes
+  // in responsive mode, event hanlder a for when season (time) variable changes
   $('#stations-select-vis').bind('cs-changed', function(e) {
     const target = $(e.target);
     const notDisabled = !target.hasClass('disabled');
@@ -300,7 +300,7 @@ $(function () {
       updateStationIDText(`${stationId}`);
       updateStationText(`${stationName}`);
 
-      // change map varriable
+      // change map variable
       window.ce.ce('setStationsMapState', {stationId, stationName});
 
       // state url object
@@ -318,7 +318,7 @@ $(function () {
         center
       };
 
-      // unhide chart overlay
+      // show chart overlay
       showGraphs();
 
       // reset graphs
@@ -336,7 +336,7 @@ $(function () {
     }
   })
 
-  // eanbles time chart, map click events
+  // enables time chart, map click events
   $('#chartmap-wrapper').keyup( function(e) {
     if (e.keyCode === 13){
       const target = $(e.target);
@@ -347,11 +347,11 @@ $(function () {
         // toggle button visual state
         toggleButton($(target));
 
-        // change select pulldowns for resposnive mode
+        // change select pulldowns for responsive mode
         setSelectFromButton(target);
 
         // check val of button to see if user is on map  or chart
-        // hide or unhide the appropriate overlay (map, chart)
+        // hide or show the appropriate overlay (map, chart)
         chooseGraphOrMap(target);
         toggleChartInfoText(RelorVal(target));
       }
@@ -365,7 +365,7 @@ $(function () {
     }
   })
 
-  // eanbles time chart, map click events
+  // enables time chart, map click events
   $('#chartmap-wrapper').click( function(e) {
     const target = $(e.target);
     const notDisabled = (!target.hasClass('btn-default-disabled') || !target.hasClass('disabled'));
@@ -375,11 +375,11 @@ $(function () {
       // toggle button visual state
       toggleButton($(target));
 
-      // change select pulldowns for resposnive mode
+      // change select pulldowns for responsive mode
       setSelectFromButton(target);
 
       // check val of button to see if user is on map  or chart
-      // hide or unhide the appropriate overlay (map, chart)
+      // hide or show the appropriate overlay (map, chart)
       chooseGraphOrMap(target);
       toggleChartInfoText(RelorVal(target));
     }
@@ -392,7 +392,7 @@ $(function () {
     googleAnalyticsEvent('click', 'chartmap', target);
   })
 
-  // in repsonsive mode the time is a pulldown this eanbles the change of the chart map
+  // in responsive mode the time is a dropdown this enables the change of the chart map
   $('#chartmap-select-vis').bind('cs-changed', function(e) {
     const target = $(e.target);
     const notDisabled = !target.hasClass('disabled');
@@ -403,7 +403,7 @@ $(function () {
       toggleButton($(`.btn-${$('#chartmap-select-vis').attr('rel')}`));
 
       // check val of button to see if user is on map  or chart
-      // hide or unhide the appropriate overlay (map, chart)
+      // hide or show the appropriate overlay (map, chart)
       chooseGraphOrMap(target);
       toggleChartInfoText(RelorVal(target));
     }
@@ -413,7 +413,7 @@ $(function () {
 
   // this function Updates the chart title.
   function updateTitle(chartText) {
-    $('#default-chart-map-varriable').html(chartText);
+    $('#default-chart-map-variable').html(chartText);
   }
 
   // this function Updates the chart title.
@@ -476,7 +476,7 @@ $(function () {
 
     setTimeout(function () {
       // reset map and chart sizes
-      // filer transistion means heigh will be updates in few seconds
+      // filer transition means heigh will be updates in few seconds
       // so delaying the resize ensures proper size
       setMapSize();
     }, 600);
@@ -510,15 +510,15 @@ $(function () {
 
     // when user clicks on map station marker
     // show graph hide map
-    // todo add this to puldown events also
+    // todo add this to dropdown events also
     stationUpdated: function(event, options) {
-      // unhide chart overlay
+      // show chart overlay
       showGraphs();
 
       // toggle button to select chart
       toggleButton($('.btn-chart'));
 
-      // update chart pulldown to chart as default
+      // update chart dropdown to chart as default
       chartPulldownChartText()
 
       // reset graphs
@@ -528,7 +528,7 @@ $(function () {
         stationName: options.stationName
       });
 
-      // updates the visible text for the station pulldown with the information from the state url
+      // updates the visible text for the station dropdown with the information from the state url
       updateStationSelectText({stationName: options.stationName, stationId: options.stationId})
       renderStationInfo(options.stationId, options.stationName);
 
@@ -540,7 +540,7 @@ $(function () {
 
       setTimeout(function () {
         // reset map and chart sizes
-        // filer transistion means heigh will be updates in few seconds
+        // filer transition means heigh will be updates in few seconds
         // so delaying the resize ensures proper size
         setMapSize();
       }, 100);

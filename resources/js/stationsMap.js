@@ -226,13 +226,13 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
 
       // for some reason lat long is backwards and to center a map you must pass long lat.
       // here I am switching lat long from center of tha map which is long lat back lat long order
-      // this will although keeping the state url consistent accross local climate maps and stations map
+      // this will although keeping the state url consistent across local climate maps and stations map
       const mapCenter = this.options.lat && this.options.lon  ? [this.options.lon, this.options.lat] :  [-123, 42];
       const mapZoom = this.options.zoom   ? this.options.zoom :  8;
 
       // for some reason lat long is backwards and to center a map you must pass long lat.
       // here I am switching lat long from center of tha map which is long lat back lat long order
-      // this will although keeping the state url consistent accross local climate maps and stations map
+      // this will although keeping the state url consistent across local climate maps and stations map
       this.view = new this.dojoMods.MapView({
         container: this.nodes.mapContainer,
         map: this.map,
@@ -267,7 +267,7 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
 
           // for some reason lat long is backwards and to center a map you must pass long lat.
           // here I am switching lat long from center of tha map which is long lat back lat long order
-          // this will although keeping the state url consistent accross local climate maps and stations map
+          // this will although keeping the state url consistent across local climate maps and stations map
           this.options.lat = Math.round(latlon[1]*100)/100;
           this.options.lon = Math.round(latlon[0]*100)/100;
           this.options.center = [this.options.lat, this.options.lon]
@@ -317,7 +317,7 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
 
                 // console.log('stationary ptsWithin', ptsWithin);
 
-                // update station pulldown and click events
+                // update station dropdown and click events
                 this._updateStationSelect(ptsWithin);
 
                 // ensure function is defined
@@ -382,7 +382,7 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
         return 0;
       });
 
-      // make li for select pulldown
+      // make li for select dropdown
       let stationLi = '';
       let indx = 21;
       currentstationsSorted.forEach( (station) => {
@@ -435,7 +435,7 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
           }.bind(_this));
 
           // add featureLayerJSON must have a object key features
-          //  to be valud arcgis feature json
+          //  to be valid arcgis feature json
           const featureLayerJSON = {
             // create an instance of esri/layers/support/Field for each field object
             fields: [{
