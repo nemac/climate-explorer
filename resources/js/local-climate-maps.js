@@ -739,9 +739,9 @@ $(function () {
               messsageElem.style.left = `${(rect.right - rect.left)/3}px`;
               messsageElem.style.top = `-${((rect.bottom - rect.top)-6)}px`;
               if (isAlaska) {
-                messsageElem.innerHTML = `The location on the map is outside the Continental United States. Currently, there is no climate map data available for this location. If you are looking for climate information about this location, refer to the <a class="warning-link" href="${url}">local charts</a> page.`
+                messsageElem.innerHTML = `The location on the map is outside the contiguous United States. Currently, there is no climate map data available for this location. If you are looking for climate information about this location, refer to the <a class="warning-link" href="${url}">local charts</a> page.`
               } else {
-                messsageElem.innerHTML = `The location on the map is outside the Continental United States. Currently, there is no climate map data available for this location.`
+                messsageElem.innerHTML = `The location on the map is outside the contiguous United States. Currently, there is no climate map data available for this location.`
               }
               messsageElem.classList.remove('d-none');
           } else {
