@@ -47,5 +47,9 @@
   function gtag(){dataLayer.push(arguments);}
   gtag('js', new Date());
 
-  gtag('config', "{{{google_analytics_id}}}");
+  gtag('config', '{{{google_analytics_id}}}',{
+      'custom_map': {
+        'dimension1': 'uuid',
+      }
+     });
 </script>
