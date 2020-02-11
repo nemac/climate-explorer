@@ -510,7 +510,8 @@ function googleAnalyticsEvent(action = '', category = '', label = '', value = 0)
   gtag('event', action, {  // eslint-disable-line
     event_category: category,
     event_label: label,
-    value: `${value}`
+    value: `${value}`,
+    uuid: getUUID()
   });
 }
 
@@ -555,6 +556,47 @@ function neverShowFeedbackAgain() {
   if (storageAvailable()) {
     localStorage.setItem('showfeedback', 'no');
   }
+}
+
+function uuid() {
+  return crypto.getRandomValues(new Uint32Array(4)).join('-');
+}
+
+// ensure the object or variable is valid...
+// TODO: This should probably be looking for positives rather than checking it
+// isn't one of a few negatives. For example this will let booleans, malformed
+// lat/long objects, arrays and floats through when it probably shouldn't. The
+// code doesn't really say what a valid object is other than not undefined,
+// null, empty arrays, empty objects and empty strings.
+//
+// @param obj - typeless
+function checkValidObject(obj) {
+  if (obj === undefined || obj === null) { return false; }
+  if (typeof obj === 'object' && Object.keys(obj).length === 0) { return false; }
+  if (typeof obj === 'string' && obj.length === 0) { return false; }
+
+  return true;
+}
+
+function setUUID() {
+  if (storageAvailable()) {
+    if (!checkValidObject(localStorage.getItem('uuid'))) {
+      localStorage.setItem('uuid', uuid());
+    }
+  }
+}
+
+function getUUID() {
+  if (storageAvailable()) {
+    if (checkValidObject(localStorage.getItem('uuid'))) {
+      return localStorage.getItem('uuid');
+    } else {
+      return 'uuid not available';
+    }
+  } else {
+    return 'uuid not available';
+  }
+  return 'uuid not available';
 }
 
 function offFeedbackAsk() {
@@ -665,3 +707,5 @@ function updateValidVarriable() {
       }
   }
 }
+
+setUUID();
