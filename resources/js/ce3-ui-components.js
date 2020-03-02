@@ -708,4 +708,14 @@ function updateValidVarriable() {
   }
 }
 
+// when user clicks on search icon switch focus to location search box
+const searchIconElem = document.getElementById('location-search-icon');
+if(searchIconElem) {
+  searchIconElem.addEventListener('click', function() {
+    console.log('test');
+    $('#location-search-input').focus();
+    // $('.location-mapper').setCursorPosition(1);
+  });
+}
+
 setUUID();
