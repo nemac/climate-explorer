@@ -33,6 +33,8 @@ $(function () {
 
   updateValidVarriable();
 
+console.log('isNational', isNational())
+
   let mapExtent = window.ce.ce('getLocationPageState')['extent'];
   let mapZoom = window.ce.ce('getLocationPageState')['zoom'] || 9;
   let lat = window.ce.ce('getLocationPageState')['lat'];
@@ -738,7 +740,7 @@ $(function () {
               // messsageElem.style.top = `-${((rect.bottom - rect.top)/2)}px`;
               messsageElem.style.left = `${(rect.right - rect.left)/3}px`;
               messsageElem.style.top = `-${((rect.bottom - rect.top)-6)}px`;
-              if (isAlaska) {
+              if (!isHawaii) {
                 messsageElem.innerHTML = `The location on the map is outside the contiguous United States. Currently, there is no climate map data available for this location. If you are looking for climate information about this location, refer to the <a class="warning-link" href="${url}">local charts</a> page.`
               } else {
                 messsageElem.innerHTML = `The location on the map is outside the contiguous United States. Currently, there is no climate map data available for this location.`
