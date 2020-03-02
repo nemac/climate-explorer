@@ -33,8 +33,6 @@ $(function () {
 
   updateValidVarriable();
 
-console.log('isNational', isNational())
-
   let mapExtent = window.ce.ce('getLocationPageState')['extent'];
   let mapZoom = window.ce.ce('getLocationPageState')['zoom'] || 9;
   let lat = window.ce.ce('getLocationPageState')['lat'];
@@ -714,7 +712,6 @@ console.log('isNational', isNational())
       // when user pans zooms intiate to check current exent
       // for alaska and islands to display not map data message...
       changeExtent: function changeExtent(event, options) {
-        // console.log('changeExtent', options.extent, options.center, options.isCenterConus)
         // xmin: -178.44, xmax: -13.56, ymin: 22.72, ymax: 50.93
         const messsageElem = document.getElementById('map-message');
         if (messsageElem) {
