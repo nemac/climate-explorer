@@ -1249,7 +1249,6 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
               var county = response.features[0];
               this.options.county = county.attributes['FIPS'];
 
-
               this.options.countyName = county.attributes['NAME'];
               this.options.stateName = county.attributes['STATE_NAME'];
 
@@ -1261,7 +1260,6 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
               const params = `?fips=${this.options.county}&county=${this.options.countyName}`
               // set the url and search params
               let url = `${$(link).attr('href')}/?fips=${this.options.county}&lat=${event.mapPoint.latitude}&lon=${event.mapPoint.longitude}&city=${this.options.countyName}  County, ${this.options.stateName} County&county=${this.options.countyName} County&nav=local-climate-charts`
-
               // override for alaska there are no counties so remove count text
               if (county.attributes['STATE_NAME'] === 'Alaska') {
                 // get borrough or census area designation from fips_codes.json
@@ -1292,7 +1290,6 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
                 });
               } else {
                 $(link).attr('href', url);
-
                 // force click on invisible link
                 link.click();
               }
@@ -2128,7 +2125,6 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
       }
       // fill template variables and collapse empty '//' values (that aren't part of the 'https://') as s3 hates them.
       tilesURL = tilesURL.replace('{scenario}', scenario).replace('{season}', season).replace('{season_month}', season_month).replace('{variable}', variable).replace('{year}', year).replace(/\/\//g, (i => m => !i++ ? m : '/')(0));
-      // console.log(tilesURL);
       return tilesURL
     },
     _destroy: function _destroy() {
