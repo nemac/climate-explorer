@@ -428,6 +428,7 @@
 #chart-row {
   justify-content: space-evenly !important;
   height: 100% !important;
+  min-height: 295px;
 
   .chart-nodata-message {
     z-index: 500;
@@ -538,15 +539,15 @@
 
   .rounded-description-box {
     position: relative;
-    top: -8px;
+    top: 8px;
     @include large {
-      top: -8px;
+      top: 8px;
     }
     @include short {
-      top: -8px;
+      top: 8px;
     }
     @include medium-height {
-      top: -8px;
+      top: 8px;
     }
     @include about-graph-overlap {
       top: 50px;
