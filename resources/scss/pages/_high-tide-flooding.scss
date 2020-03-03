@@ -63,6 +63,13 @@
     }
   }
 
+  #station-info-none {
+    strong {
+      font-weight: $font-weight-heavy;
+      color: $ce3-warning-state;
+    }
+  }
+
   #stations-map-wrap {
     min-height: 150px !important
   }
@@ -141,7 +148,6 @@
 
    #stations-map-row {
      justify-content: space-evenly !important;
-s
      &.closed-filters {
        .stations-map-wrap {
          height: 86% !important;
