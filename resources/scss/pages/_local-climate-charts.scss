@@ -428,6 +428,7 @@
 #chart-row {
   justify-content: space-evenly !important;
   height: 100% !important;
+  min-height: 295px;
 
   .chart-nodata-message {
     z-index: 500;
@@ -447,8 +448,6 @@
 
     background-color: $ce3-warning-state!important;
     color: $ce3-blue6 !important;
-    // background-color: lighten($ce3-warning-state, 30)!important;
-    // color: $ce3-warning-state !important;
     font: 500 14px $roboto !important;
     border: 1px solid $ce3-warning-state !important;
     @include border-radius(5px, 5px);
@@ -457,13 +456,14 @@
   @include medium-height {
     .chart-wrap {
       height: calc(100% - 95px) !important;
+      min-height: 200px !important;
     }
   }
 
   @include short {
     .chart-wrap {
       height: calc(100% - 85px) !important;
-      min-height: 125px !important;
+      min-height: 200px !important;
     }
   }
 
@@ -489,11 +489,12 @@
   @include large {
     justify-content: center !important;
     height: calc(100% - 75px) !important;
-    min-height: unset !important;
+    // min-height: unset !important;
   }
 
   @include medium {
-    height: auto !important;
+    height: 650px !important;
+    min-height: 650px;
     order: 1;
     .chart-wrap {
       min-height: 350px !important;
@@ -521,7 +522,8 @@
   }
 
   @include very-small {
-    height: auto !important;
+    height: 650px !important;
+    min-height: 650px;
     order: 1;
     .chart-wrap {
       min-height: 250px !important;
@@ -534,6 +536,27 @@
   &:hover, &:focus {
     outline: none;
   }
+
+  .rounded-description-box {
+    position: relative;
+    top: 8px;
+    @include large {
+      top: 8px;
+    }
+    @include short {
+      top: 8px;
+    }
+    @include medium-height {
+      top: 8px;
+    }
+    @include about-graph-overlap {
+      top: 50px;
+    }
+    @include medium {
+      top: 0px;
+    }
+  }
+
   @include medium {
     order: 3;
   }

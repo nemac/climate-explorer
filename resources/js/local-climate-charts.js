@@ -616,7 +616,7 @@ $(function () {
     });
 
 
-    $('#chart-info-row .more-info.btn-default').click( function (e) {
+    $('#chart-info-row-btn .more-info.btn-default').click( function (e) {
       const target = $('#more-info-description');
       // show description of charts
       if (target.hasClass('d-none')) {
