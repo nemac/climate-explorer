@@ -1,5 +1,10 @@
 
 // normal break points
+@mixin about-graph-overlap {
+  @media screen and (max-width: 1080px) { @content; }
+}
+
+
 @mixin very-small {
   @media screen and (max-width: 599px) { @content; }
 }
