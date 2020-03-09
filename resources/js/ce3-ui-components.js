@@ -712,7 +712,11 @@ function updateValidVarriable() {
 const searchIconElem = document.getElementById('location-search-icon');
 if(searchIconElem) {
   searchIconElem.addEventListener('click', function() {
-    $('#location-search-input').focus();
+    if ($('#location-search-input').val().length > 0) {
+
+    } else {
+      $('#location-search-input').focus();
+    }
   });
 }
 
