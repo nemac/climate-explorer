@@ -684,6 +684,7 @@ function updateValidVarriable() {
           $('.inner-lower-emmisions').addClass('disabled');
           $('.btn-lower-emissions').removeClass('selected');
           // $('.opt-not-ak').removeClass('default-select-option-disabled');
+          $('.not-ak-last').removeClass('last-variable-space');
           $('.opt-not-ak').addClass('d-none');
           $('.opt-only-ak').removeClass('d-none');
           $('.btn-monthly').addClass('btn-default-disabled');
@@ -708,7 +709,7 @@ function updateValidVarriable() {
         // $('.opt-only-ak').addClass('default-select-option-disabled');
         $('.opt-only-ak').addClass('d-none');
         $('.opt-not-ak').removeClass('d-none');
-
+        $('.not-ak-last').addClass('last-variable-space');
       }
   }
 }
