@@ -72,7 +72,7 @@
 
 // make the variable more visually  important
 #variable-select-wrapper {
-
+  max-width: 350px;
   background-color: $ce3-blue3 !important;
   color: $ce3-blue5  !important;
   padding-right: $ce3-padding-half !important;
@@ -265,6 +265,7 @@
   @include medium {
     height: auto !important;
     width: 100% !important;
+    max-width: 100%;
     padding-top: $ce3-padding-half !important;
     padding-bottom:  $ce3-padding-half !important;
   }

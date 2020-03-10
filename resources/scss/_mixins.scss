@@ -29,6 +29,10 @@
   @media screen and (min-width: 599px) { @content; }
 }
 
+@mixin just-before-mobile {
+  @media screen and (max-width: 1050px) and (min-width: 900px) { @content; }
+}
+
 @mixin very-mid-small {
   @media screen and (max-width: 900px) and (min-width: 599px) { @content; }
 }
