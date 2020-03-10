@@ -25,9 +25,9 @@ function reEnableSelectNewItems(uniqueSelector){
        // option item has href make it a element so links work
        var hrefAttr = $(this).attr('href');
        if (typeof hrefAttr !== typeof undefined && hrefAttr !== false) {
-         $styledSelect.html(`<a href="${hrefAttr}" rel="${$(this).attr('rel')}">${$(this).text()}</a>`).removeClass('active');
+         $styledSelect.html(`<a href="${hrefAttr}" rel="${$(this).attr('rel')}">${$(this).text().trim()}</a>`).removeClass('active');
        } else {
-         $styledSelect.text($(this).text()).removeClass('active');
+         $styledSelect.text($(this).text().trim()).removeClass('active');
        }
 
        $styledSelect.attr('rel',$(this).attr('rel'))
@@ -59,9 +59,9 @@ function reEnableSelectNewItems(uniqueSelector){
       // option item has href make it a element so links work
       var hrefAttr = $(this).attr('href');
       if (typeof hrefAttr !== typeof undefined && hrefAttr !== false) {
-        $styledSelect.html(`<a href="${hrefAttr}" rel="${$(this).attr('rel')}">${$(this).text()}</a>`).removeClass('active');
+        $styledSelect.html(`<a href="${hrefAttr}" rel="${$(this).attr('rel')}">${$(this).text().trim()}</a>`).removeClass('active');
       } else {
-        $styledSelect.text($(this).text()).removeClass('active');
+        $styledSelect.text($(this).text().trim()).removeClass('active');
       }
 
       $styledSelect.attr('rel',$(this).attr('rel'))
@@ -174,9 +174,9 @@ function enableCustomSelect(uniqueSelector) {
        // option item has href make it a element so links work
        var hrefAttr = $(this).attr('href');
        if (typeof hrefAttr !== typeof undefined && hrefAttr !== false) {
-         $styledSelect.html(`<a href="${hrefAttr}" rel="${$(this).attr('rel')}">${$(this).text()}</a>`).removeClass('active');
+         $styledSelect.html(`<a href="${hrefAttr}" rel="${$(this).attr('rel')}">${$(this).text().trim()}</a>`).removeClass('active');
        } else {
-         $styledSelect.text($(this).text()).removeClass('active');
+         $styledSelect.text($(this).text().trim()).removeClass('active');
        }
 
        $styledSelect.attr('rel',$(this).attr('rel'))
@@ -211,9 +211,9 @@ function enableCustomSelect(uniqueSelector) {
       // option item has href make it a element so links work
       var hrefAttr = $(this).attr('href');
       if (typeof hrefAttr !== typeof undefined && hrefAttr !== false) {
-        $styledSelect.html(`<a href="${hrefAttr}" rel="${$(this).attr('rel')}">${$(this).text()}</a>`).removeClass('active');
+        $styledSelect.html(`<a href="${hrefAttr}" rel="${$(this).attr('rel')}">${$(this).text().trim()}</a>`).removeClass('active');
       } else {
-        $styledSelect.text($(this).text()).removeClass('active');
+        $styledSelect.text($(this).text().trim()).removeClass('active');
       }
 
       $styledSelect.attr('rel',$(this).attr('rel'))
@@ -683,7 +683,9 @@ function updateValidVarriable() {
           $('.btn-lower-emissions').addClass('disabled');
           $('.inner-lower-emmisions').addClass('disabled');
           $('.btn-lower-emissions').removeClass('selected');
-          $('.opt-not-ak').removeClass('default-select-option-disabled');
+          // $('.opt-not-ak').removeClass('default-select-option-disabled');
+          $('.opt-not-ak').addClass('d-none');
+          $('.opt-only-ak').removeClass('d-none');
           $('.btn-monthly').addClass('btn-default-disabled');
           $('.btn-map').addClass('btn-default-disabled');
           $('#more-info-description .btn-histobs').removeClass('disabled');
@@ -703,7 +705,10 @@ function updateValidVarriable() {
           }
 
       } else {
-        $('.opt-only-ak').addClass('default-select-option-disabled');
+        // $('.opt-only-ak').addClass('default-select-option-disabled');
+        $('.opt-only-ak').addClass('d-none');
+        $('.opt-not-ak').removeClass('d-none');
+
       }
   }
 }
