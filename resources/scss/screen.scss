@@ -185,6 +185,9 @@ h6 {
   &-corner {
     background-color: transparent;
   }
+  &-track {
+    background-color: $ce3-blue5;
+  }
 }
 
 .variable-select {
@@ -210,6 +213,9 @@ h6 {
     }
     &-corner {
     	background-color: transparent;
+    }
+    &-track {
+      background-color: $ce3-blue5;
     }
   }
 }
