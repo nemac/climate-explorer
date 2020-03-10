@@ -193,6 +193,39 @@ h6 {
   }
 }
 
+.variable-select {
+  :hover::-webkit-scrollbar {
+    cursor: pointer;
+    width: 14px;
+    &-thumb {
+      @include border-radius(14px, 14px);
+    }
+  }
+  ::-webkit-scrollbar {
+  	width: 10px;
+  }
+  ::-webkit-scrollbar-thumb {
+  	background-clip: content-box;
+    background-color: $ce3-darkgray;
+  	border: 2px solid transparent;
+  	@include border-radius(10px, 10px);
+  }
+  ::-webkit-scrollbar-button {
+  	width: 0;
+  	height: 0;
+  	display: none;
+  }
+  ::-webkit-scrollbar-corner {
+  	background-color: transparent;
+  }
+  &-track-piece {
+    cursor: pointer;
+    margin-right: unset !important;
+    height: unset !important;
+    width: unset !important;
+  }
+}
+
 // font classes
 .main-font-description {
    font: $font-weight-normal 24px $roboto !important;
