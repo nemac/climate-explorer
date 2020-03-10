@@ -162,34 +162,28 @@ h6 {
   font: 600 12px $roboto;
 }
 
-::-webkit-scrollbar {
-  width: 6px;
-  border: 1px solid $ce3-blue3;
-  background-color: $ce3-blue3;
-
+:hover::-webkit-scrollbar {
+  cursor: pointer;
+  width: 14px;
   &-thumb {
-    background-color: $ce3-blue3;
-    border-radius: 6px;
-    -webkit-border-radius: 6px !important;
-    -moz-border-radius: 6px !important;
-    &:vertical {
-      height: 6px;
-    }
+    @include border-radius(14px, 14px);
   }
-
-  &-track {
-    border: 1px solid $ce3-blue4;
-    background-color: #E9F1FC;
+}
+::-webkit-scrollbar {
+  width: 10px;
+  &-thumb {
+    background-clip: content-box;
+    background-color: $ce3-darkgray;
+    border: 2px solid transparent;
+    @include border-radius(10px, 10px);
   }
-
-  &-track-piece {
-    margin-right: 10px;
-    height: 6px;
-    width: 6px;
-  }
-
-  &-corner {
+  &-button {
+    width: 0;
+    height: 0;
     display: none;
+  }
+  &-corner {
+    background-color: transparent;
   }
 }
 
@@ -203,26 +197,20 @@ h6 {
   }
   ::-webkit-scrollbar {
   	width: 10px;
-  }
-  ::-webkit-scrollbar-thumb {
-  	background-clip: content-box;
-    background-color: $ce3-darkgray;
-  	border: 2px solid transparent;
-  	@include border-radius(10px, 10px);
-  }
-  ::-webkit-scrollbar-button {
-  	width: 0;
-  	height: 0;
-  	display: none;
-  }
-  ::-webkit-scrollbar-corner {
-  	background-color: transparent;
-  }
-  &-track-piece {
-    cursor: pointer;
-    margin-right: unset !important;
-    height: unset !important;
-    width: unset !important;
+    &-thumb {
+    	background-clip: content-box;
+      background-color: $ce3-darkgray;
+    	border: 2px solid transparent;
+    	@include border-radius(10px, 10px);
+    }
+    &-button {
+    	width: 0;
+    	height: 0;
+    	display: none;
+    }
+    &-corner {
+    	background-color: transparent;
+    }
   }
 }
 
