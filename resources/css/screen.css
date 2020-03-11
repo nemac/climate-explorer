@@ -21406,6 +21406,7 @@ input.input-inner:focus {
   font-size: 20px;
   background: rgba(233, 241, 252, 0.75);
   padding: 6px;
+  margin-right: 6px;
   -webkit-border-radius: 5px 5px;
   -moz-border-radius: 5px / 5px;
   border-radius: 5px / 5px;
@@ -21421,7 +21422,7 @@ input.input-inner:focus {
   }
 }
 
-/* line 129, resources/scss/pages/_cards-home.scss */
+/* line 130, resources/scss/pages/_cards-home.scss */
 #data-card:focus, #data-card:hover {
   border: 1px solid #0c2b59 !important;
   border: 1px solid #E9F1FC !important;
@@ -21431,7 +21432,7 @@ input.input-inner:focus {
   outline: none;
 }
 
-/* line 134, resources/scss/pages/_cards-home.scss */
+/* line 135, resources/scss/pages/_cards-home.scss */
 #data-card:focus.card-disabled, #data-card:hover.card-disabled {
   -webkit-box-shadow: 0px 2px 3px rgba(0, 0, 0, 0.239);
   -moz-box-shadow: 0px 2px 3px rgba(0, 0, 0, 0.239);
@@ -21487,7 +21488,7 @@ input.input-inner:focus {
   }
 }
 
-/* line 171, resources/scss/pages/_cards-home.scss */
+/* line 172, resources/scss/pages/_cards-home.scss */
 #card-row {
   justify-content: space-evenly !important;
   height: auto !important;
@@ -21498,7 +21499,7 @@ input.input-inner:focus {
 }
 
 @media screen and (max-width: 1240px) {
-  /* line 171, resources/scss/pages/_cards-home.scss */
+  /* line 172, resources/scss/pages/_cards-home.scss */
   #card-row {
     justify-content: center !important;
     height: auto !important;
@@ -21508,7 +21509,7 @@ input.input-inner:focus {
 }
 
 @media screen and (max-width: 900px) {
-  /* line 171, resources/scss/pages/_cards-home.scss */
+  /* line 172, resources/scss/pages/_cards-home.scss */
   #card-row {
     flex-flow: row wrap !important;
     padding-right: 6px !important;
@@ -21520,7 +21521,7 @@ input.input-inner:focus {
 }
 
 @media screen and (max-width: 768px) {
-  /* line 171, resources/scss/pages/_cards-home.scss */
+  /* line 172, resources/scss/pages/_cards-home.scss */
   #card-row {
     max-height: 1240px !important;
     min-height: 1000px !important;
@@ -21528,7 +21529,7 @@ input.input-inner:focus {
 }
 
 @media screen and (max-width: 599px) {
-  /* line 171, resources/scss/pages/_cards-home.scss */
+  /* line 172, resources/scss/pages/_cards-home.scss */
   #card-row {
     max-height: 1240px !important;
     min-height: 710px !important;
@@ -21536,7 +21537,7 @@ input.input-inner:focus {
 }
 
 @media screen and (max-width: 399px) {
-  /* line 171, resources/scss/pages/_cards-home.scss */
+  /* line 172, resources/scss/pages/_cards-home.scss */
   #card-row {
     max-height: 1000px !important;
     min-height: 640px !important;
@@ -21544,14 +21545,14 @@ input.input-inner:focus {
 }
 
 @media screen and (max-width: 320px) {
-  /* line 171, resources/scss/pages/_cards-home.scss */
+  /* line 172, resources/scss/pages/_cards-home.scss */
   #card-row {
     max-height: 800px !important;
     min-height: 560px !important;
   }
 }
 
-/* line 216, resources/scss/pages/_cards-home.scss */
+/* line 217, resources/scss/pages/_cards-home.scss */
 #card-image-row {
   justify-content: center !important;
   align-content: center !important;
@@ -21563,7 +21564,7 @@ input.input-inner:focus {
 }
 
 @media screen and (max-width: 900px) {
-  /* line 216, resources/scss/pages/_cards-home.scss */
+  /* line 217, resources/scss/pages/_cards-home.scss */
   #card-image-row {
     justify-content: start !important;
     align-content: start !important;
@@ -21573,20 +21574,20 @@ input.input-inner:focus {
 }
 
 @media screen and (max-width: 768px) {
-  /* line 216, resources/scss/pages/_cards-home.scss */
+  /* line 217, resources/scss/pages/_cards-home.scss */
   #card-image-row {
     max-height: 250px;
   }
 }
 
 @media screen and (max-width: 599px) {
-  /* line 216, resources/scss/pages/_cards-home.scss */
+  /* line 217, resources/scss/pages/_cards-home.scss */
   #card-image-row {
     max-height: 150px;
   }
 }
 
-/* line 243, resources/scss/pages/_cards-home.scss */
+/* line 244, resources/scss/pages/_cards-home.scss */
 #card-text {
   position: relative;
   background-color: #E9F1FC !important;
@@ -21612,7 +21613,7 @@ input.input-inner:focus {
 }
 
 @media screen and (max-width: 900px) {
-  /* line 243, resources/scss/pages/_cards-home.scss */
+  /* line 244, resources/scss/pages/_cards-home.scss */
   #card-text {
     flex: 1 1 150px !important;
     height: 150px !important;
@@ -21622,7 +21623,7 @@ input.input-inner:focus {
 }
 
 @media screen and (min-height: 1000px) {
-  /* line 243, resources/scss/pages/_cards-home.scss */
+  /* line 244, resources/scss/pages/_cards-home.scss */
   #card-text {
     flex: 1 1 120px !important;
     height: 120px !important;
@@ -21631,7 +21632,7 @@ input.input-inner:focus {
 }
 
 @media screen and (min-height: 1000px) and (max-width: 900px) {
-  /* line 243, resources/scss/pages/_cards-home.scss */
+  /* line 244, resources/scss/pages/_cards-home.scss */
   #card-text {
     flex: 1 1 150px !important;
     height: 150px !important;
@@ -21640,7 +21641,7 @@ input.input-inner:focus {
 }
 
 @media screen and (min-height: 1200px) {
-  /* line 243, resources/scss/pages/_cards-home.scss */
+  /* line 244, resources/scss/pages/_cards-home.scss */
   #card-text {
     flex: 1 1 150px !important;
     height: 150px !important;
@@ -21649,7 +21650,7 @@ input.input-inner:focus {
 }
 
 @media screen and (min-height: 1200px) and (max-width: 900px) {
-  /* line 243, resources/scss/pages/_cards-home.scss */
+  /* line 244, resources/scss/pages/_cards-home.scss */
   #card-text {
     flex: 1 1 150px !important;
     height: 150px !important;
@@ -21658,7 +21659,7 @@ input.input-inner:focus {
 }
 
 @media screen and (max-width: 900px) {
-  /* line 243, resources/scss/pages/_cards-home.scss */
+  /* line 244, resources/scss/pages/_cards-home.scss */
   #card-text {
     padding-top: 6px !important;
     padding-bottom: 6px !important;
@@ -21668,27 +21669,27 @@ input.input-inner:focus {
 }
 
 @media screen and (max-width: 768px) {
-  /* line 243, resources/scss/pages/_cards-home.scss */
+  /* line 244, resources/scss/pages/_cards-home.scss */
   #card-text {
     min-height: 40px !important;
   }
 }
 
 @media screen and (max-width: 399px) {
-  /* line 243, resources/scss/pages/_cards-home.scss */
+  /* line 244, resources/scss/pages/_cards-home.scss */
   #card-text {
     min-height: 90px !important;
   }
 }
 
-/* line 306, resources/scss/pages/_cards-home.scss */
+/* line 307, resources/scss/pages/_cards-home.scss */
 #card-title-icon {
   font: 500 18px Roboto, Helvetica, "Helvetica Neue", Arial, sans-serif !important;
   padding-bottom: 6px !important;
   max-height: 28px;
 }
 
-/* line 312, resources/scss/pages/_cards-home.scss */
+/* line 313, resources/scss/pages/_cards-home.scss */
 .card-title {
   font-size: 18px !important;
   flex: 1 1 auto !important;
@@ -21696,26 +21697,26 @@ input.input-inner:focus {
 }
 
 @media screen and (max-width: 599px) {
-  /* line 312, resources/scss/pages/_cards-home.scss */
+  /* line 313, resources/scss/pages/_cards-home.scss */
   .card-title {
     font-size: 18px !important;
   }
 }
 
-/* line 322, resources/scss/pages/_cards-home.scss */
+/* line 323, resources/scss/pages/_cards-home.scss */
 .card-title a {
   color: #FBFCFE !important;
   text-decoration: none !important;
 }
 
-/* line 328, resources/scss/pages/_cards-home.scss */
+/* line 329, resources/scss/pages/_cards-home.scss */
 .card-icon {
   flex: 0 0 auto !important;
   font-size: 24px !important;
   margin-right: 12px !important;
 }
 
-/* line 334, resources/scss/pages/_cards-home.scss */
+/* line 335, resources/scss/pages/_cards-home.scss */
 .card-image {
   height: auto !important;
   -webkit-border-radius: 5px 5px;
@@ -21727,13 +21728,13 @@ input.input-inner:focus {
 }
 
 @media screen and (max-width: 900px) {
-  /* line 334, resources/scss/pages/_cards-home.scss */
+  /* line 335, resources/scss/pages/_cards-home.scss */
   .card-image {
     align-self: start !important;
   }
 }
 
-/* line 346, resources/scss/pages/_cards-home.scss */
+/* line 347, resources/scss/pages/_cards-home.scss */
 #card-description {
   font-size: 14px !important;
 }
