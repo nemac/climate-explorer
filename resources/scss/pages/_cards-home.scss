@@ -95,6 +95,10 @@
   border: 1px solid $ce3-blue5 !important; // noborder
   @include box-shadow(0px 2px 3px transparentize(#000, 0.761));  // noborder
 
+  .disabled-text {
+    display: none;
+  }
+
   &.card-disabled {
     cursor: default;
     #card-image-row {
@@ -106,6 +110,20 @@
     #card-text {
       color: darken($ce3-blue6, 20) !important;
     }
+    .disabled-text {
+      position: absolute;
+      top: -75px;
+      font-size: 20px;
+      background: transparentize($ce3-blue5, 0.25);
+      padding: $ce3-padding-half;
+      @include border-radius(5px, 5px);
+      @include small {
+        font-size: 18px;
+      }
+      font-weight: $font-weight-heavy;
+      color: $ce3-blue3 !important;
+      display: inherit;
+    }
   }
 
   &:focus, &:hover {
@@ -114,7 +132,7 @@
     @include box-shadow(0px 5px 10px transparentize(#000, 0.761));
     outline: none;
     &.card-disabled{
-      @include box-shadow(0px 0px 0px transparentize(#000, 0.761));
+      @include box-shadow(0px 2px 3px transparentize(#000, 0.761));  // noborder
       border: 1px solid $ce3-blue3 !important;
       border: 1px solid $ce3-blue5 !important; // noborder
       outline: none;
@@ -223,8 +241,7 @@
 }
 
 #card-text {
-  // background-color: $ce3-blue3 !important;
-  // color: $ce3-blue6 !important;
+  position: relative;
   background-color: $ce3-blue5 !important;
   color: $ce3-blue3 !important;
   flex: 1 1 85px !important;

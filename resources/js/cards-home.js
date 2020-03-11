@@ -31,6 +31,10 @@ $(function () {
       $('.opt-only-ak').addClass('default-select-option-disabled');
     }
 
+    if (isAlaska) {
+      $('.card-high-tide-flooding').addClass('card-disabled');      
+    }
+
     if (cityStateCE.indexOf('County') > 0  ) {
       $('#default-in').addClass('d-none');
       $('#default-dash').addClass('d-none');
