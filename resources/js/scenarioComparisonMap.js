@@ -520,6 +520,7 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
 
       // Watch view's stationary property
       this.dojoMods.watchUtils.whenTrue(this.view, "stationary", function () {
+        console.log('map stop scale and zoom', this.view.scale, this.view.zoom)
         if (this.view.center) {
           const latlon =  this.dojoMods.webMercatorUtils.xyToLngLat(this.view.center.x, this.view.center.y);
 
@@ -1238,6 +1239,9 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
           }
         }
       }).then(function (layer) {
+        // not sure where else to put the scale factor for
+        // county layer this is about scale zoom level 6 I think
+        layer.minScale = 9500000; //approximate map scale to turn off counties
         this.countiesLayer = layer;
         this._mapInitPromise.then(function () {
           this.map.add(this.countiesLayer, 4);
@@ -1757,17 +1761,6 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
         "defaultValue" : null
         }
         ],
-
-
-
-
-
-
-
-
-
-
-
         renderer: {
           type: 'simple',
           symbol: {
@@ -1915,9 +1908,10 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
           }
           break;
         case "showCounties":
-
           this._whenDojoLoaded().then(this._updateCountiesLayer.bind(this)).then(function (layer) {
             layer.visible = value;
+            console.log('showCounties', layer)
+            layer.setScaleRange(2000,20000);
           });
 
           break;
