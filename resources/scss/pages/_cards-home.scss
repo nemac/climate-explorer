@@ -116,6 +116,7 @@
       font-size: 20px;
       background: transparentize($ce3-blue5, 0.25);
       padding: $ce3-padding-half;
+      margin-right: $ce3-padding-half;
       @include border-radius(5px, 5px);
       @include small {
         font-size: 18px;
