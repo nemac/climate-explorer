@@ -1910,7 +1910,6 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
         case "showCounties":
           this._whenDojoLoaded().then(this._updateCountiesLayer.bind(this)).then(function (layer) {
             layer.visible = value;
-            console.log('showCounties', layer)
             layer.setScaleRange(2000,20000);
           });
 
