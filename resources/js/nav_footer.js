@@ -19,6 +19,10 @@ $(function () {
     if (isAlaska || isHawaii) {
       $('#local-climate-maps-nav-footer').addClass('nav-disabled');
     }
+
+    if (isAlaska ) {
+      $('#high-tide-flooding-nav-footer').addClass('nav-disabled');
+    }
   }
 
   // add click events to footer
