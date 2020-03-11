@@ -60,6 +60,16 @@
       white-space: nowrap;
     }
   }
+
+  #data-card.card-empty-data {
+    cursor: default;
+    @include box-shadow(0px 0px 0px transparentize(#000, 1));  // noborder
+    border: 0px solid $white !important;
+    border: 0px solid $white !important; // noborder
+    #card-text {
+      background-color: $white !important;
+    }
+  }
 }
 
 #cards-search-input {
