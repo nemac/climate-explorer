@@ -58,7 +58,7 @@ $(function () {
     lon = null,
     mapcenter = null;
     mapExtent = null;
-    mapZoom = 7;
+    mapZoom = 9;
   }
 
 
@@ -689,7 +689,7 @@ $(function () {
       extent: mapExtent,
       center: mapcenter,
       zoom: mapZoom,
-      showCounties: isNational(),
+      showCounties: true, // isNational() add isNational() if we re-institute national maps again
       layersloaded: function layersloaded() {
         $('#temperature-map').spinner('destroy');
         const rect = document.getElementById('map-wrap').getBoundingClientRect();
