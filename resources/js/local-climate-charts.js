@@ -344,17 +344,14 @@ $(function () {
             $('[val="monthly"]').addClass('btn-default-disabled');
             $('[val="monthly"]').removeClass('btn-default')
             $('[rel="monthly"]').addClass('default-select-option-disabled');
-            // $('[rel="monthly"]').removeClass('default-select-option');
         } else {
             $('[val="monthly"]').removeClass('btn-default-disabled')
             $('[val="monthly"]').addClass('btn-default')
             $('[rel="monthly"]').removeClass('default-select-option-disabled');
-            // $('[rel="monthly"]').add('default-select-option');
         }
         if (isAlaska) {
           $('[val="monthly"]').addClass('btn-default-disabled');
           $('[rel="monthly"]').addClass('default-select-option-disabled');
-          // $('[rel="monthly"]').removeClass('default-select-option');
         }
     });
 

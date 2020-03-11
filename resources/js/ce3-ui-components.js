@@ -689,7 +689,6 @@ function updateValidVarriable() {
           $('.opt-only-ak').removeClass('d-none');
           $('.btn-monthly').addClass('btn-default-disabled');
           $('[rel="monthly"]').addClass('default-select-option-disabled');
-          // $('[rel="monthly"]').removeClass('default-select-option');
           $('[rel="monthly"]').addClass('disabled');
           $('.btn-map').addClass('btn-default-disabled');
           $('#more-info-description .btn-histobs').removeClass('disabled');
