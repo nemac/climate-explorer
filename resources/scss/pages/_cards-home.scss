@@ -170,7 +170,7 @@
     padding-right: $ce3-default-padding/2 !important;
     left: $ce3-default-padding/2 !important;
     max-height: 1240px !important;
-    min-height: 1000px !important;
+    min-height: 1240px !important;
     height: 100% !important;
   }
 
@@ -203,9 +203,7 @@
 
   z-index: 1;
 
-  @include small {
-    max-height: 110px;
-  }
+
 
   @include medium {
     justify-content: start !important;
@@ -213,6 +211,15 @@
     max-height: 250px;
     height: 100% !important;
   }
+
+  @include small {
+    max-height: 250px;
+  }
+
+  @include very-small {
+    max-height: 150px;
+  }
+
 }
 
 #card-text {
@@ -232,7 +239,7 @@
   @include medium {
     flex: 1 1 150px !important;
     height: 150px !important;
-    min-height: 85px !important;
+    min-height: 150px !important;
     max-height: 120px;
   }
 
@@ -241,9 +248,9 @@
     height: 120px !important;
     min-height: 120px !important;
     @include medium {
-      flex: 1 1 85px !important;
-      height: 85px !important;
-      min-height: 85px !important;
+      flex: 1 1 150px !important;
+      height: 150px !important;
+      min-height: 150px !important;
     }
   }
 
@@ -252,9 +259,9 @@
     height: 150px !important;
     min-height: 150px !important;
     @include medium {
-      flex: 1 1 85px !important;
-      height: 85px !important;
-      min-height: 85px !important;
+      flex: 1 1 150px !important;
+      height: 150px !important;
+      min-height: 150px !important;
     }
   }
 
@@ -271,7 +278,11 @@
   }
 
   @include small {
-    min-height: 80px !important;
+    min-height: 40px !important;
+  }
+
+  @include tiny {
+    min-height: 90px !important;
   }
 }
 

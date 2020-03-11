@@ -21487,7 +21487,7 @@ input.input-inner:focus {
     padding-right: 6px !important;
     left: 6px !important;
     max-height: 1240px !important;
-    min-height: 1000px !important;
+    min-height: 1240px !important;
     height: 100% !important;
   }
 }
@@ -21535,13 +21535,6 @@ input.input-inner:focus {
   z-index: 1;
 }
 
-@media screen and (max-width: 768px) {
-  /* line 198, resources/scss/pages/_cards-home.scss */
-  #card-image-row {
-    max-height: 110px;
-  }
-}
-
 @media screen and (max-width: 900px) {
   /* line 198, resources/scss/pages/_cards-home.scss */
   #card-image-row {
@@ -21552,7 +21545,21 @@ input.input-inner:focus {
   }
 }
 
-/* line 218, resources/scss/pages/_cards-home.scss */
+@media screen and (max-width: 768px) {
+  /* line 198, resources/scss/pages/_cards-home.scss */
+  #card-image-row {
+    max-height: 250px;
+  }
+}
+
+@media screen and (max-width: 599px) {
+  /* line 198, resources/scss/pages/_cards-home.scss */
+  #card-image-row {
+    max-height: 150px;
+  }
+}
+
+/* line 225, resources/scss/pages/_cards-home.scss */
 #card-text {
   background-color: #E9F1FC !important;
   color: #124086 !important;
@@ -21577,17 +21584,17 @@ input.input-inner:focus {
 }
 
 @media screen and (max-width: 900px) {
-  /* line 218, resources/scss/pages/_cards-home.scss */
+  /* line 225, resources/scss/pages/_cards-home.scss */
   #card-text {
     flex: 1 1 150px !important;
     height: 150px !important;
-    min-height: 85px !important;
+    min-height: 150px !important;
     max-height: 120px;
   }
 }
 
 @media screen and (min-height: 1000px) {
-  /* line 218, resources/scss/pages/_cards-home.scss */
+  /* line 225, resources/scss/pages/_cards-home.scss */
   #card-text {
     flex: 1 1 120px !important;
     height: 120px !important;
@@ -21596,16 +21603,16 @@ input.input-inner:focus {
 }
 
 @media screen and (min-height: 1000px) and (max-width: 900px) {
-  /* line 218, resources/scss/pages/_cards-home.scss */
+  /* line 225, resources/scss/pages/_cards-home.scss */
   #card-text {
-    flex: 1 1 85px !important;
-    height: 85px !important;
-    min-height: 85px !important;
+    flex: 1 1 150px !important;
+    height: 150px !important;
+    min-height: 150px !important;
   }
 }
 
 @media screen and (min-height: 1200px) {
-  /* line 218, resources/scss/pages/_cards-home.scss */
+  /* line 225, resources/scss/pages/_cards-home.scss */
   #card-text {
     flex: 1 1 150px !important;
     height: 150px !important;
@@ -21614,16 +21621,16 @@ input.input-inner:focus {
 }
 
 @media screen and (min-height: 1200px) and (max-width: 900px) {
-  /* line 218, resources/scss/pages/_cards-home.scss */
+  /* line 225, resources/scss/pages/_cards-home.scss */
   #card-text {
-    flex: 1 1 85px !important;
-    height: 85px !important;
-    min-height: 85px !important;
+    flex: 1 1 150px !important;
+    height: 150px !important;
+    min-height: 150px !important;
   }
 }
 
 @media screen and (max-width: 900px) {
-  /* line 218, resources/scss/pages/_cards-home.scss */
+  /* line 225, resources/scss/pages/_cards-home.scss */
   #card-text {
     padding-top: 6px !important;
     padding-bottom: 6px !important;
@@ -21633,20 +21640,27 @@ input.input-inner:focus {
 }
 
 @media screen and (max-width: 768px) {
-  /* line 218, resources/scss/pages/_cards-home.scss */
+  /* line 225, resources/scss/pages/_cards-home.scss */
   #card-text {
-    min-height: 80px !important;
+    min-height: 40px !important;
   }
 }
 
-/* line 278, resources/scss/pages/_cards-home.scss */
+@media screen and (max-width: 399px) {
+  /* line 225, resources/scss/pages/_cards-home.scss */
+  #card-text {
+    min-height: 90px !important;
+  }
+}
+
+/* line 289, resources/scss/pages/_cards-home.scss */
 #card-title-icon {
   font: 500 18px Roboto, Helvetica, "Helvetica Neue", Arial, sans-serif !important;
   padding-bottom: 6px !important;
   max-height: 28px;
 }
 
-/* line 284, resources/scss/pages/_cards-home.scss */
+/* line 295, resources/scss/pages/_cards-home.scss */
 .card-title {
   font-size: 18px !important;
   flex: 1 1 auto !important;
@@ -21654,26 +21668,26 @@ input.input-inner:focus {
 }
 
 @media screen and (max-width: 599px) {
-  /* line 284, resources/scss/pages/_cards-home.scss */
+  /* line 295, resources/scss/pages/_cards-home.scss */
   .card-title {
     font-size: 18px !important;
   }
 }
 
-/* line 294, resources/scss/pages/_cards-home.scss */
+/* line 305, resources/scss/pages/_cards-home.scss */
 .card-title a {
   color: #FBFCFE !important;
   text-decoration: none !important;
 }
 
-/* line 300, resources/scss/pages/_cards-home.scss */
+/* line 311, resources/scss/pages/_cards-home.scss */
 .card-icon {
   flex: 0 0 auto !important;
   font-size: 24px !important;
   margin-right: 12px !important;
 }
 
-/* line 306, resources/scss/pages/_cards-home.scss */
+/* line 317, resources/scss/pages/_cards-home.scss */
 .card-image {
   height: auto !important;
   -webkit-border-radius: 5px 5px;
@@ -21685,13 +21699,13 @@ input.input-inner:focus {
 }
 
 @media screen and (max-width: 900px) {
-  /* line 306, resources/scss/pages/_cards-home.scss */
+  /* line 317, resources/scss/pages/_cards-home.scss */
   .card-image {
     align-self: start !important;
   }
 }
 
-/* line 318, resources/scss/pages/_cards-home.scss */
+/* line 329, resources/scss/pages/_cards-home.scss */
 #card-description {
   font-size: 14px !important;
 }
