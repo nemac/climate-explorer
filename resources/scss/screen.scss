@@ -1292,6 +1292,49 @@ h6 {
   }
 }
 
+#select-tip-holder {
+    width: 24px;
+    height: 24px;
+
+    @include medium {
+      position: relative;
+      left: 0px;
+      width: 100%;
+      height: 1px;
+      margin-bottom: -48px;
+      top: -48px;
+    }
+    @include to-small-to-see {
+      display: none;
+    }
+
+    #select-tip {
+      width: 24px;
+      height: 24px;
+      font-size: 20px;
+      margin-top: $ce3-padding-half;
+      margin-left: -9px;
+      &:hover, &:focus {
+        outline: none !important;
+      }
+
+      @include medium {
+        &:hover, &:focus {
+          outline: none !important;
+        }
+        position: relative;
+        top: -10px;
+        left: calc(100% - 64px);
+        margin-top: $ce3-default-padding*2 !important;
+        background-color: $ce3-blue3;
+        color: $ce3-blue5;
+        @include border-radius(20px, 20px);
+      }
+    }
+
+
+}
+
 .rounded-description-box {
   @include border-radius(5px, 5px);
   background-color: $ce3-blue6;
@@ -2043,6 +2086,7 @@ input.input-inner-default:focus  {
 }
 // SOCIAL
 @import "ce-three-theme";
+@import "ce-three-main-theme";
 @import "template/share";
 
 // NAV OVERLAY

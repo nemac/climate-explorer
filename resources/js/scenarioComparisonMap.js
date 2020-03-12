@@ -520,7 +520,6 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
 
       // Watch view's stationary property
       this.dojoMods.watchUtils.whenTrue(this.view, "stationary", function () {
-        console.log('map stop scale and zoom', this.view.scale, this.view.zoom)
         if (this.view.center) {
           const latlon =  this.dojoMods.webMercatorUtils.xyToLngLat(this.view.center.x, this.view.center.y);
 

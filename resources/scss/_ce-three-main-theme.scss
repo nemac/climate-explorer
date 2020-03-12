@@ -19,15 +19,13 @@
   }
 }
 
-.tippy-tooltip.ce-three-theme {
+.tippy-tooltip.ce-three-main-theme {
 	color: $ce3-blue2;
 	box-shadow: 0 0 20px 4px rgba(154, 161, 177, .15), 0 4px 80px -8px rgba(36, 40, 47, .25), 0 4px 4px -2px rgba(91, 94, 105, .15);
 	background-color: $ce3-blue6;
   text-align: left;
-
   max-width: 450px !important;
   width: 450px !important;
-  left: 450px !important;
 
   ul {
     list-style-type: square;
@@ -39,7 +37,16 @@
     position: absolute;
     max-width: 400px !important;
     width: 400px !important;
-    left: -275px !important;
+    left: -375px !important;
+    top:  55px !important;
+    z-index: 2000;
+  }
+
+  @include kind-of-tiny {
+    position: absolute;
+    max-width: 250px !important;
+    width: 250px !important;
+    left: -250px !important;
     top:  55px !important;
   }
 
@@ -52,38 +59,38 @@
   }
 }
 
-.tippy-tooltip.ce-three-theme[x-placement^=top] .tippy-arrow {
+.tippy-tooltip.ce-three-main-theme[x-placement^=top] .tippy-arrow {
 	border-top: 8px solid $ce3-blue6;
 	border-right: 8px solid transparent;
 	border-left: 8px solid transparent
 }
 
-.tippy-tooltip.ce-three-theme[x-placement^=bottom] .tippy-arrow {
+.tippy-tooltip.ce-three-main-theme[x-placement^=bottom] .tippy-arrow {
 	border-bottom: 8px solid $ce3-blue6;
 	border-right: 8px solid transparent;
 	border-left: 8px solid transparent
 }
 
-.tippy-tooltip.ce-three-theme[x-placement^=left] .tippy-arrow {
+.tippy-tooltip.ce-three-main-theme[x-placement^=left] .tippy-arrow {
 	border-left: 8px solid $ce3-blue6;
 	border-top: 8px solid transparent;
 	border-bottom: 8px solid transparent
 }
 
-.tippy-tooltip.ce-three-theme[x-placement^=right] .tippy-arrow {
+.tippy-tooltip.ce-three-main-theme[x-placement^=right] .tippy-arrow {
 	border-right: 8px solid $ce3-blue6;
 	border-top: 8px solid transparent;
 	border-bottom: 8px solid transparent
 }
 
-.tippy-tooltip.ce-three-theme .tippy-backdrop {
+.tippy-tooltip.ce-three-main-theme .tippy-backdrop {
 	background-color: $ce3-blue6
 }
 
-.tippy-tooltip.ce-three-theme .tippy-roundarrow {
+.tippy-tooltip.ce-three-main-theme .tippy-roundarrow {
 	fill: $ce3-blue6
 }
 
-.tippy-tooltip.ce-three-theme[data-animatefill] {
+.tippy-tooltip.ce-three-main-theme[data-animatefill] {
 	background-color: initial
 }
