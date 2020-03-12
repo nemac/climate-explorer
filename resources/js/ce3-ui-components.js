@@ -515,6 +515,9 @@ function initVarriableToolTips() {
 
   const gdd_32f = document.getElementById('gdd_32f-tooltip');
   makeTip(gdd_32f);
+
+  const select_tip = document.getElementById('select-tip');
+  makeMainTip(select_tip);
 }
 
 function makeMainTip(elem) {
