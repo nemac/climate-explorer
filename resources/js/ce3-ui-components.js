@@ -21,6 +21,8 @@ function reEnableSelectNewItems(uniqueSelector){
        // check if disabled exit if it is
        if ($(this).hasClass('default-select-option-disabled')) {return null}
 
+       recreateToolTip(this);
+
        e.stopPropagation();
        // option item has href make it a element so links work
        var hrefAttr = $(this).attr('href');
@@ -55,6 +57,8 @@ function reEnableSelectNewItems(uniqueSelector){
       // check if disabled exit if it is
       if ($(this).hasClass('default-select-option-disabled')) {return null}
 
+      recreateToolTip(this);
+
       e.stopPropagation();
       // option item has href make it a element so links work
       var hrefAttr = $(this).attr('href');
@@ -82,7 +86,6 @@ function reEnableSelectNewItems(uniqueSelector){
       // trigger custom event so we know the user changed or selected an item
       $styledSelect.trigger('cs-changed' );
   });
-
 
   var $listTips = $(`.select.${uniqueSelector} ul`).children('span');
 
@@ -169,6 +172,7 @@ function enableCustomSelect(uniqueSelector) {
      if (e.keyCode === 13){
        // check if disabled exit if it is
        if ($(this).hasClass('default-select-option-disabled')) {return null}
+       recreateToolTip(this);
 
        e.stopPropagation();
        // option item has href make it a element so links work
@@ -207,6 +211,8 @@ function enableCustomSelect(uniqueSelector) {
       // check if disabled exit if it is
       if ($(this).hasClass('default-select-option-disabled')) {return null}
 
+      recreateToolTip(this);
+
       e.stopPropagation();
       // option item has href make it a element so links work
       var hrefAttr = $(this).attr('href');
@@ -238,7 +244,6 @@ function enableCustomSelect(uniqueSelector) {
   });
 
   var $listTips = $(`.select.${uniqueSelector} ul`).children('span');
-
   $listTips.click(function(e) {
     // check if disabled exit if it is
     if ($(this).hasClass('default-select-option-disabled')) {return null}
@@ -275,6 +280,25 @@ function enableCustomSelect(uniqueSelector) {
     $styledSelect.removeClass('active');
     $list.hide();
   });
+}
+
+// function recreates tool tip for selected variable
+function recreateToolTip(elem) {
+  var listTips = $(elem).children('span.variable-option-tooltip')[0];
+  const tipContent = $(listTips).attr('data-tippy-content');
+  const selectedTipHolderElem = document.getElementById('select-tip-holder');
+
+  if (selectedTipHolderElem) {
+     const tipInnerHTML = selectedTipHolderElem.innerHTML;
+     selectedTipHolderElem.innerHTML = '';
+     selectedTipHolderElem.innerHTML = tipInnerHTML;
+
+    const selectedTipElem = document.getElementById('select-tip');
+    if (selectedTipElem) {
+      $(selectedTipElem).attr('data-tippy-content', tipContent);
+      makeMainTip(selectedTipElem);
+    }
+  }
 }
 
 // function changes button to selected
@@ -493,6 +517,21 @@ function initVarriableToolTips() {
   makeTip(gdd_32f);
 }
 
+function makeMainTip(elem) {
+  if (elem) {
+    elem.addEventListener('mouseover', tippy( elem, {
+      theme: 'ce-three-main',
+      arrow: false,
+      trigger: "mouseenter click",
+      animateFill: false,
+      interactive: true,
+      hideOnClick: true,
+      flipOnUpdate: false,
+      offset: "1,0"
+    }));
+  }
+}
+
 function makeTip(elem) {
   if (elem) {
     elem.addEventListener('mouseover', tippy( elem, {
@@ -500,7 +539,8 @@ function makeTip(elem) {
       arrow: false,
       interactive: false,
       hideOnClick: false,
-      flipOnUpdate: false
+      flipOnUpdate: false,
+      offset: "1,0"
     }));
   }
 }

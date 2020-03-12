@@ -96,7 +96,15 @@
             <div id="variable-select-wrapper" class="rounded-choice-box padding-horizontal-half padding-vertical-half default-btn-height d-flex-center width-30">
               {{> variable-selector }}
             </div>
-
+            <span id="select-tip-holder">
+              <span tabindex="100" rel="select-tip" id="select-tip" class="fas fa-question-circle padding-horizontal-half select-tip" data-tippy-content="
+                <strong>Average Daily Maximum Temperature (°F)</strong><hr/>
+                A day’s highest (maximum) temperature usually occurs in the afternoon. Averaging the daily high temperatures over any period results in a mean maximum temperature for that period.
+                <br />
+                <br />
+                Maximum temperature serves as one measure of comfort and safety for people and for the health of plants and animals. When maximum temperature exceeds particular thresholds, people can become ill and transportation and energy infrastructure may be stressed.">
+              </span>
+            </span>
 
             <a id="chartmap-btn-chart-link"  href="../local-climate-charts" class="d-none"></a>
             <a id="chartmap-btn-map-link"  href="../local-climate-maps" class="d-none">Map</a>
