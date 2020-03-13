@@ -20450,9 +20450,11 @@ input.input-inner:focus {
   }
 }
 
-/* line 282, resources/scss/pages/_historical-thresholds.scss */
-#historical-thresholds-viewport #threshold_value_form_field, #historical-thresholds-viewport #window_value_form_field {
-  max-width: 125px;
+@media screen and (max-width: 1240px) {
+  /* line 282, resources/scss/pages/_historical-thresholds.scss */
+  #historical-thresholds-viewport #threshold_value_form_field, #historical-thresholds-viewport #window_value_form_field {
+    max-width: 125px;
+  }
 }
 
 @media screen and (max-width: 900px) {
@@ -20463,7 +20465,7 @@ input.input-inner:focus {
   }
 }
 
-/* line 291, resources/scss/pages/_historical-thresholds.scss */
+/* line 293, resources/scss/pages/_historical-thresholds.scss */
 #historical-thresholds-viewport #btn-tidalzoom.active {
   background-color: #124086 !important;
   color: #E9F1FC !important;
@@ -20471,7 +20473,7 @@ input.input-inner:focus {
   border: 1px solid rgba(18, 64, 134, 0.5) !important;
 }
 
-/* line 297, resources/scss/pages/_historical-thresholds.scss */
+/* line 299, resources/scss/pages/_historical-thresholds.scss */
 #historical-thresholds-viewport #btn-tidalzoom.active:hover, #historical-thresholds-viewport #btn-tidalzoom.active:focus {
   background-color: #397ee5 !important;
   color: #E9F1FC !important;
@@ -20479,79 +20481,79 @@ input.input-inner:focus {
   outline: none !important;
 }
 
-/* line 306, resources/scss/pages/_historical-thresholds.scss */
+/* line 308, resources/scss/pages/_historical-thresholds.scss */
 #historical-thresholds-viewport #chartmap-wrapper {
   width: 20% !important;
 }
 
 @media screen and (min-width: 901px) {
-  /* line 311, resources/scss/pages/_historical-thresholds.scss */
+  /* line 313, resources/scss/pages/_historical-thresholds.scss */
   #historical-thresholds-viewport #stations-map-row {
     height: calc(100% - 48px - 6px - 140px) !important;
   }
-  /* line 314, resources/scss/pages/_historical-thresholds.scss */
+  /* line 316, resources/scss/pages/_historical-thresholds.scss */
   #historical-thresholds-viewport #stations-map-row.closed-filters {
     height: calc(100% - 48px - 6px) !important;
   }
 }
 
 @media screen and (min-width: 901px) {
-  /* line 320, resources/scss/pages/_historical-thresholds.scss */
+  /* line 322, resources/scss/pages/_historical-thresholds.scss */
   #historical-thresholds-viewport #stations-graph-row {
     height: calc(100% - 48px - 6px - 205px) !important;
   }
-  /* line 323, resources/scss/pages/_historical-thresholds.scss */
+  /* line 325, resources/scss/pages/_historical-thresholds.scss */
   #historical-thresholds-viewport #stations-graph-row.closed-filters {
     height: calc(100% - 48px - 6px) !important;
   }
 }
 
-/* line 329, resources/scss/pages/_historical-thresholds.scss */
+/* line 331, resources/scss/pages/_historical-thresholds.scss */
 #historical-thresholds-viewport #stations-map-row {
   justify-content: space-evenly !important;
 }
 
-/* line 333, resources/scss/pages/_historical-thresholds.scss */
+/* line 335, resources/scss/pages/_historical-thresholds.scss */
 #historical-thresholds-viewport #stations-map-row.closed-filters .stations-map-wrap {
   height: 86% !important;
 }
 
-/* line 338, resources/scss/pages/_historical-thresholds.scss */
+/* line 340, resources/scss/pages/_historical-thresholds.scss */
 #historical-thresholds-viewport #stations-map-row #stations-map {
   width: 100%;
   flex-wrap: wrap;
 }
 
-/* line 342, resources/scss/pages/_historical-thresholds.scss */
+/* line 344, resources/scss/pages/_historical-thresholds.scss */
 #historical-thresholds-viewport #stations-map-row #stations-map:focus {
   outline: none !important;
   border: 0px solid rgba(18, 64, 134, 0.5) !important;
 }
 
-/* line 348, resources/scss/pages/_historical-thresholds.scss */
+/* line 350, resources/scss/pages/_historical-thresholds.scss */
 #historical-thresholds-viewport #stations-map-row .esri-view-user-storage {
   height: unset !important;
 }
 
-/* line 353, resources/scss/pages/_historical-thresholds.scss */
+/* line 355, resources/scss/pages/_historical-thresholds.scss */
 #historical-thresholds-viewport #stations-map-row #stations-map .movable.slider-div {
   top: 0px !important;
 }
 
 @media screen and (max-width: 1240px) {
-  /* line 329, resources/scss/pages/_historical-thresholds.scss */
+  /* line 331, resources/scss/pages/_historical-thresholds.scss */
   #historical-thresholds-viewport #stations-map-row {
     justify-content: center !important;
   }
 }
 
 @media screen and (max-width: 900px) {
-  /* line 329, resources/scss/pages/_historical-thresholds.scss */
+  /* line 331, resources/scss/pages/_historical-thresholds.scss */
   #historical-thresholds-viewport #stations-map-row {
     order: 1;
     padding-bottom: 250px !important;
   }
-  /* line 366, resources/scss/pages/_historical-thresholds.scss */
+  /* line 368, resources/scss/pages/_historical-thresholds.scss */
   #historical-thresholds-viewport #stations-map-row #stations-map {
     width: 100%;
     flex-wrap: wrap;
@@ -20559,12 +20561,12 @@ input.input-inner:focus {
     max-height: 350px !important;
     height: 350px !important;
   }
-  /* line 373, resources/scss/pages/_historical-thresholds.scss */
+  /* line 375, resources/scss/pages/_historical-thresholds.scss */
   #historical-thresholds-viewport #stations-map-row #stations-map .map-wrap {
     min-height: 350px !important;
     height: 350px !important;
   }
-  /* line 378, resources/scss/pages/_historical-thresholds.scss */
+  /* line 380, resources/scss/pages/_historical-thresholds.scss */
   #historical-thresholds-viewport #stations-map-row #stations-map .esri-view-root {
     flex: 0 0 100%;
     height: 100% !important;
@@ -20573,20 +20575,20 @@ input.input-inner:focus {
 }
 
 @media screen and (max-width: 900px) and (max-width: 599px) {
-  /* line 378, resources/scss/pages/_historical-thresholds.scss */
+  /* line 380, resources/scss/pages/_historical-thresholds.scss */
   #historical-thresholds-viewport #stations-map-row #stations-map .esri-view-root {
     z-index: 200;
   }
 }
 
 @media screen and (max-width: 900px) {
-  /* line 387, resources/scss/pages/_historical-thresholds.scss */
+  /* line 389, resources/scss/pages/_historical-thresholds.scss */
   #historical-thresholds-viewport #stations-map-row #stations-map .esri-overlay-surface {
     flex: 0 0 100%;
     height: 100% !important;
     width: 100% !important;
   }
-  /* line 393, resources/scss/pages/_historical-thresholds.scss */
+  /* line 395, resources/scss/pages/_historical-thresholds.scss */
   #historical-thresholds-viewport #stations-map-row #stations-map .esri-view-user-storage {
     overflow: visible !important;
     height: 100% !important;
@@ -20595,7 +20597,7 @@ input.input-inner:focus {
 }
 
 @media screen and (max-width: 900px) and (max-width: 900px) {
-  /* line 393, resources/scss/pages/_historical-thresholds.scss */
+  /* line 395, resources/scss/pages/_historical-thresholds.scss */
   #historical-thresholds-viewport #stations-map-row #stations-map .esri-view-user-storage {
     position: relative !important;
     top: -350px;
@@ -20603,7 +20605,7 @@ input.input-inner:focus {
 }
 
 @media screen and (max-width: 900px) {
-  /* line 403, resources/scss/pages/_historical-thresholds.scss */
+  /* line 405, resources/scss/pages/_historical-thresholds.scss */
   #historical-thresholds-viewport #stations-map-row #stations-map .scenario-map-overlay-container {
     position: relative !important;
     top: 0px !important;
@@ -20615,19 +20617,19 @@ input.input-inner:focus {
 }
 
 @media screen and (max-width: 599px) {
-  /* line 329, resources/scss/pages/_historical-thresholds.scss */
+  /* line 331, resources/scss/pages/_historical-thresholds.scss */
   #historical-thresholds-viewport #stations-map-row {
     height: auto !important;
     order: 1;
   }
-  /* line 418, resources/scss/pages/_historical-thresholds.scss */
+  /* line 420, resources/scss/pages/_historical-thresholds.scss */
   #historical-thresholds-viewport #stations-map-row .map-wrap {
     min-height: 250px !important;
     height: 250px !important;
   }
 }
 
-/* line 425, resources/scss/pages/_historical-thresholds.scss */
+/* line 427, resources/scss/pages/_historical-thresholds.scss */
 #historical-thresholds-viewport .tidal-chart {
   width: calc(100% - 40px);
   height: 100%;
@@ -20636,27 +20638,27 @@ input.input-inner:focus {
 }
 
 @media screen and (max-width: 900px) {
-  /* line 425, resources/scss/pages/_historical-thresholds.scss */
+  /* line 427, resources/scss/pages/_historical-thresholds.scss */
   #historical-thresholds-viewport .tidal-chart {
     width: calc(100%);
   }
 }
 
-/* line 436, resources/scss/pages/_historical-thresholds.scss */
+/* line 438, resources/scss/pages/_historical-thresholds.scss */
 #historical-thresholds-viewport #overlay-chart-container {
   margin: 25px;
   height: 50vh;
   width: calc(100% - 50px);
 }
 
-/* line 442, resources/scss/pages/_historical-thresholds.scss */
+/* line 444, resources/scss/pages/_historical-thresholds.scss */
 #historical-thresholds-viewport #stations-graph-wrap {
   height: 100% !important;
   width: 80%;
 }
 
 @media screen and (max-width: 900px) {
-  /* line 442, resources/scss/pages/_historical-thresholds.scss */
+  /* line 444, resources/scss/pages/_historical-thresholds.scss */
   #historical-thresholds-viewport #stations-graph-wrap {
     min-height: 300px !important;
     max-height: 300px !important;
@@ -20665,13 +20667,13 @@ input.input-inner:focus {
   }
 }
 
-/* line 453, resources/scss/pages/_historical-thresholds.scss */
+/* line 455, resources/scss/pages/_historical-thresholds.scss */
 #historical-thresholds-viewport #stations-map-wrap {
   height: 100%;
 }
 
 @media screen and (max-width: 900px) {
-  /* line 453, resources/scss/pages/_historical-thresholds.scss */
+  /* line 455, resources/scss/pages/_historical-thresholds.scss */
   #historical-thresholds-viewport #stations-map-wrap {
     min-height: 350px !important;
     max-height: 350px !important;
@@ -20680,7 +20682,7 @@ input.input-inner:focus {
   }
 }
 
-/* line 463, resources/scss/pages/_historical-thresholds.scss */
+/* line 465, resources/scss/pages/_historical-thresholds.scss */
 #historical-thresholds-viewport #station-info-row {
   -webkit-transition: 0.5s;
   -moz-transition: 0.5s;
@@ -20696,19 +20698,19 @@ input.input-inner:focus {
   transition-timing-function: ease-out;
 }
 
-/* line 468, resources/scss/pages/_historical-thresholds.scss */
+/* line 470, resources/scss/pages/_historical-thresholds.scss */
 #historical-thresholds-viewport #station-info-row #more-info-description {
   padding-left: 6px;
 }
 
-/* line 472, resources/scss/pages/_historical-thresholds.scss */
+/* line 474, resources/scss/pages/_historical-thresholds.scss */
 #historical-thresholds-viewport #station-info-row .more-info-description {
   padding-top: 6px;
   width: 100%;
 }
 
 @media screen and (max-width: 900px) {
-  /* line 463, resources/scss/pages/_historical-thresholds.scss */
+  /* line 465, resources/scss/pages/_historical-thresholds.scss */
   #historical-thresholds-viewport #station-info-row {
     min-height: 250px;
     max-height: 250px !important;
@@ -20718,72 +20720,72 @@ input.input-inner:focus {
 }
 
 @media screen and (max-width: 768px) {
-  /* line 463, resources/scss/pages/_historical-thresholds.scss */
+  /* line 465, resources/scss/pages/_historical-thresholds.scss */
   #historical-thresholds-viewport #station-info-row {
     width: 90% !important;
   }
 }
 
-/* line 489, resources/scss/pages/_historical-thresholds.scss */
+/* line 491, resources/scss/pages/_historical-thresholds.scss */
 #historical-thresholds-viewport #stations-map-row, #historical-thresholds-viewport #stations-graph-row {
   align-self: center;
 }
 
 @media screen and (max-width: 768px) {
-  /* line 489, resources/scss/pages/_historical-thresholds.scss */
+  /* line 491, resources/scss/pages/_historical-thresholds.scss */
   #historical-thresholds-viewport #stations-map-row, #historical-thresholds-viewport #stations-graph-row {
     width: 90% !important;
   }
 }
 
-/* line 496, resources/scss/pages/_historical-thresholds.scss */
+/* line 498, resources/scss/pages/_historical-thresholds.scss */
 #historical-thresholds-viewport #station-overlay {
   height: 100%;
 }
 
-/* line 500, resources/scss/pages/_historical-thresholds.scss */
+/* line 502, resources/scss/pages/_historical-thresholds.scss */
 #historical-thresholds-viewport .text-info-box.label {
   font-weight: 500 !important;
 }
 
-/* line 504, resources/scss/pages/_historical-thresholds.scss */
+/* line 506, resources/scss/pages/_historical-thresholds.scss */
 #historical-thresholds-viewport .esri-expand__container {
   height: 32px;
   width: 32px;
 }
 
-/* line 509, resources/scss/pages/_historical-thresholds.scss */
+/* line 511, resources/scss/pages/_historical-thresholds.scss */
 #historical-thresholds-viewport .legend-image {
   max-height: 16rem;
   max-width: none;
 }
 
-/* line 514, resources/scss/pages/_historical-thresholds.scss */
+/* line 516, resources/scss/pages/_historical-thresholds.scss */
 #historical-thresholds-viewport .esri-ui-top-left .esri-expand__content, #historical-thresholds-viewport .esri-ui-top-right .esri-expand__content {
   top: -32px !important;
 }
 
-/* line 518, resources/scss/pages/_historical-thresholds.scss */
+/* line 520, resources/scss/pages/_historical-thresholds.scss */
 #historical-thresholds-viewport .esri-view-width-xsmall .esri-component.esri-expand.esri-widget.esri-expand--auto {
   display: none !important;
 }
 
-/* line 522, resources/scss/pages/_historical-thresholds.scss */
+/* line 524, resources/scss/pages/_historical-thresholds.scss */
 #historical-thresholds-viewport .esri-view-width-xsmall .esri-expand--auto .esri-expand__container--expanded {
   position: relative !important;
 }
 
-/* line 526, resources/scss/pages/_historical-thresholds.scss */
+/* line 528, resources/scss/pages/_historical-thresholds.scss */
 #historical-thresholds-viewport .esri-view-width-greater-than-xsmall .esri-expand--auto .esri-expand__content {
   position: relative !important;
 }
 
-/* line 530, resources/scss/pages/_historical-thresholds.scss */
+/* line 532, resources/scss/pages/_historical-thresholds.scss */
 #historical-thresholds-viewport .scenario-map-overlay-container {
   position: relative;
 }
 
-/* line 538, resources/scss/pages/_historical-thresholds.scss */
+/* line 540, resources/scss/pages/_historical-thresholds.scss */
 #historical-thresholds-viewport .esri-view-surface {
   -webkit-border-radius: 5px;
   -moz-border-radius: 5px;
@@ -20792,18 +20794,18 @@ input.input-inner:focus {
   border-radius: 5px;
 }
 
-/* line 542, resources/scss/pages/_historical-thresholds.scss */
+/* line 544, resources/scss/pages/_historical-thresholds.scss */
 #historical-thresholds-viewport .top-select-wrapper {
   width: 34% !important;
 }
 
-/* line 544, resources/scss/pages/_historical-thresholds.scss */
+/* line 546, resources/scss/pages/_historical-thresholds.scss */
 #historical-thresholds-viewport .top-select-wrapper-minor {
   width: 5% !important;
 }
 
 @media screen and (max-width: 900px) {
-  /* line 549, resources/scss/pages/_historical-thresholds.scss */
+  /* line 551, resources/scss/pages/_historical-thresholds.scss */
   #historical-thresholds-viewport .search-box-secondary {
     width: 100% !important;
     display: inline-block !important;

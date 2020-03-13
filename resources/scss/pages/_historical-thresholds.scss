@@ -280,7 +280,9 @@ $animation-duration: 0.4s;
    }
 
    #threshold_value_form_field, #window_value_form_field {
-    max-width: 125px;
+     @include large {
+       max-width: 125px;
+    }
      @include medium {
        max-width: 100%;
        margin-top: 36px;
