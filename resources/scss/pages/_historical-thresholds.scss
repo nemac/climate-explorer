@@ -90,7 +90,7 @@ $animation-duration: 0.4s;
       color: $ce3-warning-state;
     }
   }
-  
+
   #stations-map-wrap {
     min-height: 150px !important
   }
@@ -271,6 +271,7 @@ $animation-duration: 0.4s;
   #threshold_value_form_field, #window_value_form_field {
      display: flex !important;
      padding-right: 24px !important;
+
      @include medium {
        padding-right: 0px !important;
        width: 100% !important;
@@ -279,7 +280,9 @@ $animation-duration: 0.4s;
    }
 
    #threshold_value_form_field, #window_value_form_field {
+    max-width: 125px;
      @include medium {
+       max-width: 100%;
        margin-top: 36px;
      }
    }
@@ -537,7 +540,7 @@ $animation-duration: 0.4s;
    }
 
    .top-select-wrapper {
-     width: 29% !important;
+     width: 34% !important;
      &-minor {
        width: 5% !important;
      }

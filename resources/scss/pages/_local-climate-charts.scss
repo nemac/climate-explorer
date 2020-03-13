@@ -56,7 +56,7 @@
   }
 
   .top-select-wrapper {
-    width: 29% !important;
+    width: 34% !important;
     &-minor {
       width: 5% !important;
     }
@@ -202,10 +202,6 @@
   color: $ce3-blue3;
   font: $font-weight-normal 14px $roboto !important;
 
-  @include medium {
-    display: none !important;
-  }
-
   li.disabled {
     color: $ce3-disabled-font !important;
     a {
@@ -218,6 +214,27 @@
     }
   }
 }
+
+#stations-select-wrapper {
+  @include medium {
+    display: none !important;
+  }
+}
+
+#downloads-select-wrapper {
+  @include medium {
+    margin-left: 0px !important;
+    margin-right: 0px !important;
+    height: auto !important;
+    margin-top: 6px !important;
+    display: inherit !important;
+    width: 100% !important;
+  }
+  @include very-small {
+    display: none !important;
+  }
+}
+
 
 #chartmap-select-wrapper, #time-select-wrapper, #presentation-select-wrapper, #tidalzoom-select-wrapper {
   background-color: $ce3-blue5;
@@ -239,13 +256,52 @@
   }
 }
 
-.chart-info-row-btn {
+#chart-info-row-btn {
+  background-color: $ce3-blue6;
+  &:hover, &:focus {
+   background-color: $ce3-blue6 !important;
+  }
+
+  min-width: 170px;
+  .short-desc {
+    display: none;
+  }
+
+  @media screen and (max-width: 960px){
+    min-width: 130px;
+
+    .long-desc {
+      display: none;
+    }
+
+    .short-desc {
+      display: inline;
+    }
+  }
+
   @include medium {
+    min-width: 100%;
+
+    .short-desc {
+      display: none;
+    }
+
+    .long-desc {
+      display: inline;
+    }
+
+    .btn-default {
+      font-size: 14px !important;
+    }
+
     margin-left: 0px !important;
     margin-right: 0px !important;
     height: auto !important;
     margin-top: $ce3-padding-half !important;
     width: 100% !important;
+    .more, .less {
+      padding-left: $ce3-padding-half;
+    }
   }
 }
 
@@ -259,6 +315,14 @@
   @include medium {
     display: none !important;
   }
+}
+
+#chartmap-wrapper, #time-wrapper {
+  min-width: 160px;
+}
+
+#tidalzoom-wrapper {
+  min-width: 325px;
 }
 
 #variable-select-wrapper, #chartmap-wrapper, #time-wrapper, #presentation-wrapper, #tidalzoom-wrapper   {

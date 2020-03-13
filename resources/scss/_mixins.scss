@@ -4,6 +4,9 @@
   @media screen and (max-width: 1080px) { @content; }
 }
 
+@mixin tablet {
+  @media screen and (max-width: 1024px) { @content; }
+}
 
 @mixin very-small {
   @media screen and (max-width: 599px) { @content; }

@@ -18,7 +18,7 @@
 
       <div id="search-row" class="padding-horizontal d-flex-row flex-justify padding-top padding-bottom-half d-flex-justify" >
 
-        <div class="rounded-box-secondary input-outer padding-horizontal bottom-padding default-btn-height search-box-secondary width-40">
+        <div class="rounded-box-secondary input-outer padding-horizontal bottom-padding default-btn-height search-box-secondary width-65">
           <input  tabindex="1" id="cards-search-input" type="text" class="location-mapper input-inner-default border-none default-btn-height" autocomplete="off" placeholder="Enter county, city, or zip code">
           <span class="icon icon-search search-default float-right padding-default"></span>
           <div id="clear-location-wrapper" class="">
@@ -36,24 +36,6 @@
               <li rel="station-2" class="default-select-option">Stations 2</li>
               <li rel="station-3" class="default-select-option">Stations 3</li>
               <li rel="station-4" class="default-select-option">Stations 4</li>
-            </ul>
-          </div>
-        </div>
-
-        <div id="downloads-select-wrapper" class="rounded-choice-box padding-horizontal default-btn-height top-select-wrapper d-flex-center">
-
-          <div class="select download-select">
-            <div tabindex="1" id="downloads-select-vis" class="select-styled" rel="none" >
-              <i class="fas fa-download select-icon"></i>
-              <a rel="none" href="javascript:void(0);" >Downloads</a>
-            </div>
-            <ul class="select-options" style="display: none;">
-              <li rel="download-lefttmap-image" icon="fas fa-download select-icon" href="javascript:void(0);" class="default-select-option">
-                <a tabindex="2" rel="download-lefttmap-image" class="download-link" href="javascript:void(0);" >Download left map as image</a>
-              </li>
-              <li rel="download-rightmap-image" icon="fas fa-download select-icon" href="javascript:void(0);" class="default-select-option">
-                <a tabindex="2" rel="download-rightmap-image" class="download-link" href="javascript:void(0);" >Download right map as image</a>
-              </li>
             </ul>
           </div>
         </div>
@@ -95,7 +77,7 @@
                 <br />
                 Maximum temperature serves as one measure of comfort and safety for people and for the health of plants and animals. When maximum temperature exceeds particular thresholds, people can become ill and transportation and energy infrastructure may be stressed.">
               </span>
-            </span>            
+            </span>
 
             <a id="national-climate-maps-secretlink-forcharts" href="../local-climate-charts" class="d-none"></a>
 
@@ -110,7 +92,7 @@
               </div>
             </div>
 
-            <div id="chartmap-select-wrapper" class="rounded-choice-box padding-horizontal-half padding-vertical-half default-btn-height d-flex-center width-20">
+            <div id="chartmap-select-wrapper" class="rounded-choice-box padding-horizontal-half padding-vertical-half default-btn-height d-flex-center width-15">
               <div class="select chartmap-select">
                 <div tabindex="102" id="chartmap-select-vis" class="select-styled" rel="chart">Map</div>
                 <ul class="select-options">
@@ -147,6 +129,25 @@
                   <li tabindex="113" rel="summer" class="default-select-option">Summer</li>
                   <li tabindex="114" rel="fall" class="default-select-option">Fall</li>
                   <li tabindex="115" rel="winter" class="default-select-option">Winter</li>
+                </ul>
+              </div>
+            </div>
+
+            <div id="downloads-select-wrapper" class="rounded-choice-box padding-left-half padding-vertical-half default-btn-height d-flex-center">
+
+              <div class="select download-select">
+                <div tabindex="2" id="downloads-select-vis" class="select-styled" rel="none" href="javascript:void(0);">
+                  <i class="fas fa-download select-icon"></i>
+                  <a rel="none" class="download-link-main long-desc" href="javascript:void(0);" >Downloads</a>
+                  <a rel="none" class="download-link-main short-desc" href="javascript:void(0);" >Down</a>
+                </div>
+                <ul class="select-options" style="display: none;">
+                  <li rel="download-lefttmap-image" icon="fas fa-download select-icon" href="javascript:void(0);" class="default-select-option">
+                    <a tabindex="2" rel="download-lefttmap-image" class="download-link" href="javascript:void(0);" >Download left map as image</a>
+                  </li>
+                  <li rel="download-rightmap-image" icon="fas fa-download select-icon" href="javascript:void(0);" class="default-select-option">
+                    <a tabindex="2" rel="download-rightmap-image" class="download-link" href="javascript:void(0);" >Download right map as image</a>
+                  </li>
                 </ul>
               </div>
             </div>
