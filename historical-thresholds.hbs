@@ -18,7 +18,7 @@
 
     <div id="search-row" class="padding-horizontal d-flex-row flex-justify padding-top padding-bottom-half d-flex-justify" >
 
-      <div class="rounded-box-secondary input-outer padding-horizontal bottom-padding default-btn-height search-box-secondary width-40">
+      <div class="rounded-box-secondary input-outer padding-horizontal bottom-padding default-btn-height search-box-secondary width-65">
         <input tabindex="1" id="cards-search-input" type="text" class="location-mapper input-inner-default border-none default-btn-height" autocomplete="off" placeholder="Enter county, city, or zip code">
         <span class="icon icon-search search-default float-right padding-default"></span>
         <div id="clear-location-wrapper" class="">
@@ -33,24 +33,6 @@
           <ul class="select-options">
             <li tabindex="21" rel="station-1" class="default-select-option">Stations 1</li>
             <li tabindex="20" rel="station-2" class="default-select-option">Stations 2</li>
-          </ul>
-        </div>
-      </div>
-
-      <div id="downloads-select-wrapper" class="rounded-choice-box padding-horizontal default-btn-height top-select-wrapper d-flex-center disabled">
-
-        <div class="select download-select">
-          <div tabindex="5000" id="downloads-select-vis" class="select-styled disabled" rel="none" href="javascript:void(0);">
-            <i class="fas fa-download select-icon"></i>
-            <a rel="none" class="download-link" href="javascript:void(0);" >Downloads</a>
-          </div>
-          <ul class="select-options" style="display: none;">
-            <li rel="download-thresholds-image" icon="fas fa-download select-icon" href="javascript:void(0);" class="default-select-option">
-              <a tabindex="5001" rel="download-thresholds-image" class="download-link" href="javascript:void(0);" >Download threshold image</a>
-            </li>
-            <li rel="download-thresholds-data" icon="fas fa-download select-icon" href="javascript:void(0);" class="default-select-option">
-              <a tabindex="5002" rel="download-thresholds-data" class="download-link" href="javascript:void(0);" >Download threshold data</a>
-            </li>
           </ul>
         </div>
       </div>
@@ -97,7 +79,7 @@
             </div>
           </div>
 
-          <div id="chartmap-select-wrapper" class="rounded-choice-box padding-horizontal-half padding-vertical-half default-btn-height d-flex-center width-20">
+          <div id="chartmap-select-wrapper" class="rounded-choice-box padding-left-half padding-vertical-half default-btn-height d-flex-center width-20">
             <div class="select chartmap-select">
               <div id="chartmap-select-vis" class="select-styled" rel="map">Map</div>
               <ul class="select-options">
@@ -120,7 +102,7 @@
             </div>
 
 
-            <div id="threshold_value_form_field" class="form-field padding-horizontal-half padding-vertical-half default-btn-height d-flex width-15">
+            <div id="threshold_value_form_field" class="form-field padding-left-half padding-vertical-half default-btn-height d-flex width-15">
 
               <div tabindex="5012" class="threshold-button threshold-down">-</div>
                 <div class="form-field-control height-100">
@@ -132,7 +114,7 @@
 
               </div>
 
-            <div id="window_value_form_field" class="form-field padding-horizontal-half padding-vertical-half default-btn-height d-flex width-15">
+            <div id="window_value_form_field" class="form-field padding-left-half padding-vertical-half default-btn-height d-flex width-15">
 
               <div tabindex="5015" class="window-button window-down">-</div>
               <div class="form-field-control height-100">
@@ -143,12 +125,32 @@
               <div tabindex="5017" class="window-button window-up">+</div>
             </div>
 
-            <div tabindex="5009" id="chart-info-row" class="chart-info-row-btn rounded-choice-box default-btn-height d-flex-row flex-justify padding-bottom-half d-flex-left d-none " >
-              <div class="more-info btn-default">
+            <div id="downloads-select-wrapper" class="rounded-choice-box padding-left-half padding-vertical-half default-btn-height d-flex-center">
+              <div class="select download-select">
+                <div tabindex="5000" id="downloads-select-vis" class="select-styled" rel="none" href="javascript:void(0);">
+                  <i class="fas fa-download select-icon"></i>
+                  <a rel="none" class="download-link-main long-desc" href="javascript:void(0);" >Downloads</a>
+                  <a rel="none" class="download-link-main short-desc" href="javascript:void(0);" >Down</a>
+                </div>
+                <ul class="select-options" style="display: none;">
+                  <li rel="download-thresholds-image" icon="fas fa-download select-icon" href="javascript:void(0);" class="default-select-option">
+                    <a tabindex="5001" rel="download-thresholds-image" class="download-link" href="javascript:void(0);" >Download threshold image</a>
+                  </li>
+                  <li rel="download-thresholds-data" icon="fas fa-download select-icon" href="javascript:void(0);" class="default-select-option">
+                    <a tabindex="5002" rel="download-thresholds-data" class="download-link" href="javascript:void(0);" >Download threshold data</a>
+                  </li>
+                </ul>
+              </div>
+            </div>
+
+            <div tabindex="5009" id="chart-info-row-btn" class="rounded-choice-box padding-left-half padding-vertical-half default-btn-height d-flex-center width-10" >
+              <div class="more-info btn-default padding-left-half">
                 <span class="fas fa-info more-info more-icon"></span>
                 <span class="fas fa-info more-info less-icon d-none"></span>
-                <span class="more">About the graph</span>
-                <span class="less d-none">About the graph</span>
+                <span class="more short-desc">About</span>
+                <span class="more long-desc">About the graph</span>
+                <span class="more long-desc d-none">About the graph</span>
+                <span class="more short-desc d-none">About</span>
               </div>
             </div>
 

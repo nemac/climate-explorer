@@ -313,9 +313,64 @@ h6 {
   }
 }
 
+#downloads-select-vis.select-styled:after {
+  right: 12px;
+}
+
 #downloads-select-wrapper {
+  width: 15%;
+  .download-link-main {
+    &.short-desc {
+      display: none;
+    }
+  }
+
+  @include about-graph-overlap {
+    width: 13%;
+    display: none;
+    .download-link-main {
+      &.long-desc {
+        display: none;
+      }
+      &.short-desc {
+        display: inline;
+      }
+    }
+  }
+
   .select-styled {
     white-space: normal;
+  }
+  .select-options {
+    min-width: 240px;
+
+    @include tablet {
+      left: -140px;
+    }
+
+    @include medium {
+      width: 100%;
+      left: 0;
+    }
+  }
+
+  @media screen and (max-width: 1000px) {
+    .download-link-main {
+      display: none;
+    }
+  }
+
+  @include medium {
+    .download-link-main {
+      display: inline;
+
+      &.long-desc {
+        display: inline;
+      }
+      &.short-desc {
+        display: none;
+      }
+    }
   }
 }
 
@@ -324,6 +379,7 @@ h6 {
     right: -2px;
   }
 }
+
 .download-link {
   &:hover, &:focus {
     outline: none !important;
@@ -582,6 +638,10 @@ h6 {
   width: 60% !important;
 }
 
+.width-65 {
+  width: 65% !important;
+}
+
 .width-50 {
   width: 50% !important;
 }
@@ -678,6 +738,15 @@ h6 {
   @include medium {
     padding-left: $ce3-padding-half/2 !important;
     padding-right: $ce3-padding-half/2 !important;
+  }
+}
+
+.padding-left-half {
+  padding-left: $ce3-padding-half !important;
+  // padding-right: $ce3-padding-half !important;
+  @include medium {
+    padding-left: $ce3-padding-half/2 !important;
+    // padding-right: $ce3-padding-half/2 !important;
   }
 }
 
@@ -1108,6 +1177,7 @@ h6 {
     border: 1px solid $ce3-blue3alpha !important;
     background-color: $ce3-blue6 !important;
     @include border-radius(25px, 25px);
+    width: 100%;
 
     span.more, span.less {
       padding-right: 16px;
@@ -1294,7 +1364,8 @@ h6 {
 
 #select-tip-holder {
     width: 24px;
-    height: 24px;
+    height: 36px;
+    margin-left: -16px;
 
     @include medium {
       position: relative;
@@ -1309,19 +1380,17 @@ h6 {
     }
 
     #select-tip {
-      width: 24px;
-      height: 24px;
+      width: 36px;
+      height: 36px;
       font-size: 20px;
       margin-top: $ce3-padding-half;
-      margin-left: -9px;
       &:hover, &:focus {
         outline: none !important;
       }
 
       @include medium {
-        &:hover, &:focus {
-          outline: none !important;
-        }
+        width: 0px;
+        height: 0px;
         position: relative;
         top: -10px;
         left: calc(100% - 64px);
@@ -1329,10 +1398,12 @@ h6 {
         background-color: $ce3-blue3;
         color: $ce3-blue5;
         @include border-radius(20px, 20px);
+
+        &:hover, &:focus {
+          outline: none !important;
+        }
       }
     }
-
-
 }
 
 .rounded-description-box {

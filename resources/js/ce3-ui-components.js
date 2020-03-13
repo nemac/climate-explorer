@@ -61,11 +61,13 @@ function reEnableSelectNewItems(uniqueSelector){
 
       e.stopPropagation();
       // option item has href make it a element so links work
-      var hrefAttr = $(this).attr('href');
-      if (typeof hrefAttr !== typeof undefined && hrefAttr !== false) {
-        $styledSelect.html(`<a href="${hrefAttr}" rel="${$(this).attr('rel')}">${$(this).text().trim()}</a>`).removeClass('active');
-      } else {
-        $styledSelect.text($(this).text().trim()).removeClass('active');
+      if ( uniqueSelector !== 'download-select') {
+        var hrefAttr = $(this).attr('href');
+        if (typeof hrefAttr !== typeof undefined && hrefAttr !== false) {
+          $styledSelect.html(`<a href="${hrefAttr}" rel="${$(this).attr('rel')}">${$(this).text().trim()}</a>`).removeClass('active');
+        } else {
+          $styledSelect.text($(this).text().trim()).removeClass('active');
+        }
       }
 
       $styledSelect.attr('rel',$(this).attr('rel'))
@@ -73,12 +75,14 @@ function reEnableSelectNewItems(uniqueSelector){
       $styledSelect.attr('nav',$(this).attr('nav'))
 
       // option item has icon add it
-      var iconAttr = $(this).attr('icon');
-      if (typeof iconAttr !== typeof undefined && iconAttr !== false) {
-        // Element has this attribute
-        var icon = `<i class="${iconAttr}"></i>`;
-      } else {
-        var icon = '';
+      if ( uniqueSelector !== 'download-select') {
+        var iconAttr = $(this).attr('icon');
+        if (typeof iconAttr !== typeof undefined && iconAttr !== false) {
+          // Element has this attribute
+          var icon = `<i class="${iconAttr}"></i>`;
+        } else {
+          var icon = '';
+        }
       }
 
       $styledSelect.prepend(icon);
@@ -176,24 +180,28 @@ function enableCustomSelect(uniqueSelector) {
 
        e.stopPropagation();
        // option item has href make it a element so links work
-       var hrefAttr = $(this).attr('href');
-       if (typeof hrefAttr !== typeof undefined && hrefAttr !== false) {
-         $styledSelect.html(`<a href="${hrefAttr}" rel="${$(this).attr('rel')}">${$(this).text().trim()}</a>`).removeClass('active');
-       } else {
-         $styledSelect.text($(this).text().trim()).removeClass('active');
-       }
+       if ( uniqueSelector !== 'download-select') {
+         var hrefAttr = $(this).attr('href');
+         if (typeof hrefAttr !== typeof undefined && hrefAttr !== false) {
+           $styledSelect.html(`<a href="${hrefAttr}" rel="${$(this).attr('rel')}">${$(this).text().trim()}</a>`).removeClass('active');
+         } else {
+           $styledSelect.text($(this).text().trim()).removeClass('active');
+         }
+      }
 
        $styledSelect.attr('rel',$(this).attr('rel'))
        $styledSelect.attr('link',$(this).attr('link'))
        $styledSelect.attr('nav',$(this).attr('nav'))
 
        // option item has icon add it
-       var iconAttr = $(this).attr('icon');
-       if (typeof iconAttr !== typeof undefined && iconAttr !== false) {
-         // Element has this attribute
-         var icon = `<i class="${iconAttr}"></i>`;
-       } else {
-         var icon = '';
+       if ( uniqueSelector !== 'download-select') {
+         var iconAttr = $(this).attr('icon');
+         if (typeof iconAttr !== typeof undefined && iconAttr !== false) {
+           // Element has this attribute
+           var icon = `<i class="${iconAttr}"></i>`;
+         } else {
+           var icon = '';
+         }
        }
 
        // ga event action, category, label
@@ -210,16 +218,17 @@ function enableCustomSelect(uniqueSelector) {
   $listItems.click(function(e){
       // check if disabled exit if it is
       if ($(this).hasClass('default-select-option-disabled')) {return null}
-
       recreateToolTip(this);
 
       e.stopPropagation();
       // option item has href make it a element so links work
-      var hrefAttr = $(this).attr('href');
-      if (typeof hrefAttr !== typeof undefined && hrefAttr !== false) {
-        $styledSelect.html(`<a href="${hrefAttr}" rel="${$(this).attr('rel')}">${$(this).text().trim()}</a>`).removeClass('active');
-      } else {
-        $styledSelect.text($(this).text().trim()).removeClass('active');
+      if ( uniqueSelector !== 'download-select') {
+        var hrefAttr = $(this).attr('href');
+        if (typeof hrefAttr !== typeof undefined && hrefAttr !== false) {
+          $styledSelect.html(`<a href="${hrefAttr}" rel="${$(this).attr('rel')}">${$(this).text().trim()}</a>`).removeClass('active');
+        } else {
+          $styledSelect.text($(this).text().trim()).removeClass('active');
+        }
       }
 
       $styledSelect.attr('rel',$(this).attr('rel'))
@@ -227,12 +236,14 @@ function enableCustomSelect(uniqueSelector) {
       $styledSelect.attr('nav',$(this).attr('nav'))
 
       // option item has icon add it
-      var iconAttr = $(this).attr('icon');
-      if (typeof iconAttr !== typeof undefined && iconAttr !== false) {
-        // Element has this attribute
-        var icon = `<i class="${iconAttr}"></i>`;
-      } else {
-        var icon = '';
+      if ( uniqueSelector !== 'download-select') {
+        var iconAttr = $(this).attr('icon');
+        if (typeof iconAttr !== typeof undefined && iconAttr !== false) {
+          // Element has this attribute
+          var icon = `<i class="${iconAttr}"></i>`;
+        } else {
+          var icon = '';
+        }
       }
       // ga event action, category, label
       googleAnalyticsEvent('click', 'listitem', $(this).text());

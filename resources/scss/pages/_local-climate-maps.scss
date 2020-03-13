@@ -58,7 +58,7 @@
   }
 
   .top-select-wrapper {
-    width: 29% !important;
+    width: 34% !important;
     &-minor {
       width: 5% !important;
     }
@@ -72,7 +72,13 @@
   }
 
   #time-wrapper {
-    min-width: 350px;
+    min-width: 320px;
+    @include tablet {
+      min-width: 280px;
+    }
+    .btn-default {
+      font-size: .9rem !important
+    }
   }
 }
 

@@ -94,20 +94,20 @@ $(function () {
 
   // show more about charts
   function showMoreCharts() {
-    const target = $('#chart-info-row .more-info.btn-default');
+    const target = $('#chart-info-row-btn .more-info.btn-default');
     // show description of charts
-    if (target.hasClass('d-none')) {
-      target.removeClass('d-none');
-    }
+    // if (target.hasClass('d-none')) {
+    //   target.removeClass('d-none');
+    // }
   }
 
   // don't show more about charts
   function dontShowMoreCharts() {
-    const target = $('#chart-info-row .more-info.btn-default');
+    const target = $('#chart-info-row-btn .more-info.btn-default');
     // show description of charts
-    if (!target.hasClass('d-none')) {
-      target.addClass('d-none');
-    }
+    // if (!target.hasClass('d-none')) {
+    //   target.addClass('d-none');
+    // }
   }
 
   // show graph overlay.
@@ -628,27 +628,27 @@ $(function () {
     setMapSize();
   })
 
-  $('#chart-info-row .more-info.btn-default').click( function (e) {
+  $('#chart-info-row-btn .more-info.btn-default').click( function (e) {
     const target = $('#more-info-description');
     // show description of charts
     if (target.hasClass('d-none')) {
       target.removeClass('d-none');
-      $('#chart-info-row .more').addClass('d-none');
-      $('#chart-info-row .more-icon').addClass('d-none');
-
-      $('#chart-info-row .less').removeClass('d-none');
-      $('#chart-info-row .less-icon').removeClass('d-none');
+      // $('#chart-info-row-btn .more').addClass('d-none');
+      // $('#chart-info-row-btn .more-icon').addClass('d-none');
+      //
+      // $('#chart-info-row-btn .less').removeClass('d-none');
+      // $('#chart-info-row-btn .less-icon').removeClass('d-none');
 
       // ga event action, category, label
       googleAnalyticsEvent('click', 'toggle-chart-info', 'open');
     // hide description of charts
     } else {
       target.addClass('d-none');
-      $('#chart-info-row .more').removeClass('d-none');
-      $('#chart-info-row .more-icon').removeClass('d-none');
-
-      $('#chart-info-row .less').addClass('d-none');
-      $('#chart-info-row .less-icon').addClass('d-none');
+      // $('#chart-info-row-btn .more').removeClass('d-none');
+      // $('#chart-info-row-btn .more-icon').removeClass('d-none');
+      //
+      // $('#chart-info-row-btn .less').addClass('d-none');
+      // $('#chart-info-row-btn .less-icon').addClass('d-none');
 
       // ga event action, category, label
       googleAnalyticsEvent('click', 'toggle-chart-info', 'close');
