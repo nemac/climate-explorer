@@ -13418,7 +13418,7 @@ h6 {
 .select-options li {
   margin: 0;
   padding: 12px 0;
-  text-indent: 15px;
+  text-indent: 12px;
   border-top: 1px solid #E9F1FC;
   -webkit-border-radius: 5px 5px;
   -moz-border-radius: 5px / 5px;
@@ -13515,7 +13515,7 @@ h6 {
 /* line 510, resources/scss/screen.scss */
 .pac-container .pac-item {
   padding: 12px 0;
-  text-indent: 15px;
+  text-indent: 12px;
   border-top: 1px solid #E9F1FC;
   -webkit-border-radius: 5px 5px;
   -moz-border-radius: 5px / 5px;
