@@ -782,4 +782,18 @@ if(searchIconElem) {
   });
 }
 
+// when user clicks on search icon switch focus to location search box
+const searchIconElems = document.querySelectorAll('.icon-search');
+searchIconElems.forEach( (searchIconElem) => {
+  if(searchIconElem) {
+    searchIconElem.addEventListener('click', function() {
+      if ($('#cards-search-input').val().length > 0) {
+
+      } else {
+        $('#cards-search-input').focus();
+      }
+    });
+  }
+})
+
 setUUID();
