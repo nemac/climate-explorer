@@ -321,8 +321,13 @@
   min-width: 160px;
 }
 
+#time-wrapper {
+  margin-left: -12px;
+}
+
 #tidalzoom-wrapper {
   min-width: 325px;
+  margin-left: -12px;
 }
 
 #variable-select-wrapper, #chartmap-wrapper, #time-wrapper, #presentation-wrapper, #tidalzoom-wrapper   {
