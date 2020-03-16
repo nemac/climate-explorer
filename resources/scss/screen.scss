@@ -319,6 +319,8 @@ h6 {
 
 #downloads-select-wrapper {
   width: 15%;
+  border: 1px solid $ce3-blue3alpha !important;
+
   .download-link-main {
     &.short-desc {
       display: none;
@@ -529,7 +531,7 @@ h6 {
 }
 
 #filters-row {
-  padding-left: $ce3-default-padding*2;
+  padding-left: $ce3-default-padding;
   &.padding-top {
     padding-top: $ce3-default-padding+10 !important;
   }
@@ -1175,7 +1177,7 @@ h6 {
 
   &.more-info {
     border: 1px solid $ce3-blue3alpha !important;
-    background-color: $ce3-blue6 !important;
+    background-color: $ce3-blue5 !important;
     @include border-radius(25px, 25px);
     width: 100%;
 
@@ -1208,15 +1210,22 @@ h6 {
     height: $ce3-btn-height-smallecreen !important;
   }
 
-    &:hover, &:focus {
+  &:hover, &:focus {
     background-color: darken($ce3-blue5, 7) !important;
-    &.more-info {
-      background-color: darken($ce3-blue6, 7) !important;
-    }
     color: $ce3-blue3 !important;
     border: 1px solid $ce3-blue3alpha !important;
     outline: none !important;
     font-weight: $font-weight-normal-plus !important;
+  }
+
+  &.more-info {
+    &:hover, &:focus {
+      background-color: darken($ce3-blue5, 7) !important;
+      color: $ce3-blue3 !important;
+      border: 1px solid $ce3-blue3alpha !important;
+      outline: none !important;
+      font-weight: $font-weight-normal-plus !important;
+    }
   }
 
 

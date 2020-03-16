@@ -270,7 +270,7 @@ $animation-duration: 0.4s;
   #stations-select-wrapper, #threshold-variable-select-wrapper,
   #threshold_value_form_field, #window_value_form_field {
      display: flex !important;
-     padding-right: 24px !important;
+     padding-right: $ce3-default-padding !important;
 
      @include medium {
        padding-right: 0px !important;
