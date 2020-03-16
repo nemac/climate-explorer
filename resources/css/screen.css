@@ -15844,7 +15844,7 @@ input.input-inner-default:focus {
     position: absolute;
     max-width: 250px !important;
     width: 250px !important;
-    left: -250px !important;
+    left: -220px !important;
     top: 55px !important;
   }
 }
