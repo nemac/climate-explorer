@@ -89,37 +89,6 @@
     }
   }
 
-  // ::-webkit-scrollbar {
-  //   width: 6px;
-  //   border: 1px solid $ce3-blue5;
-  //   background-color: $ce3-blue5;
-  //
-  //   &-thumb {
-  //     background-color: $ce3-blue2;
-  //     border-radius: 6px;
-  //     -webkit-border-radius: 6px !important;
-  //     -moz-border-radius: 6px !important;
-  //     &:vertical {
-  //       height: 6px;
-  //     }
-  //   }
-  //
-  //   &-track {
-  //     border: 1px solid $ce3-blue4;
-  //     background-color: #E9F1FC;
-  //   }
-  //
-  //   &-track-piece {
-  //     margin-right: 10px;
-  //     height: 6px;
-  //     width: 6px;
-  //   }
-  //
-  //   &-corner {
-  //     display: none;
-  //   }
-  // }
-
   .variable-select {
     color: $ce3-blue5  !important;
 
@@ -348,11 +317,18 @@
     margin-left: $ce3-default-padding;
     margin-right: $ce3-default-padding;
     @include border-radius(5px, 5px);
+    @include box-shadow(0px 1px 2px transparentize(#000, 0.761));  // noborder
+
     &.btn-default-selected {
       height: $ce3-btn-height-legends !important;
       margin-left: $ce3-default-padding;
       margin-right: $ce3-default-padding;
       @include border-radius(5px, 5px !important);
+      @include box-shadow(0px 5px 10px transparentize(#000, 0.761));
+    }
+
+    &:focus, &:hover {
+      @include box-shadow(0px 3px 6px transparentize(#000, 0.761));  // noborder
     }
   }
 
@@ -467,10 +443,163 @@
   height: $ce3-btn-height-legends !important;
 
   #btn-chart {
-    height: $ce3-btn-height-legends !important;
-    margin-left: $ce3-default-padding;
-    margin-right: $ce3-default-padding;
-    @include border-radius(5px, 5px);
+      cursor: pointer;
+      background-color: $ce3-blue5;
+      color: $ce3-blue3;
+      height: $ce3-btn-height;
+      font: 500 14px $roboto;
+      border: 1px solid $ce3-blue3alpha;
+      margin-left: $ce3-default-padding;
+      margin-right: $ce3-default-padding;
+      text-indent: 3px;
+      min-width: 210px;
+      @include border-radius(5px, 5px);
+      @include box-shadow(0px 1px 2px transparentize(#000, 0.761));  // noborder
+
+      @include medium {
+        height: $ce3-btn-height-smallecreen;
+      }
+
+      &:focus, &:hover {
+        background-color: darken($ce3-blue5, 7);
+        color: $ce3-blue3;
+        border: 1px solid $ce3-blue3alpha;
+        outline: none !important;
+        font-weight: $font-weight-normal-plus;
+        @include box-shadow(0px 3px 6px transparentize(#000, 0.761));  // noborder
+
+        &.description {
+          cursor: default;
+          background-color: $ce3-blue5;
+          font: $font-weight-normal 14px $roboto;
+        }
+      }
+
+      &.selected {
+        background-color: $ce3-blue3;
+        color: $ce3-blue5;
+        @include box-shadow(0px 5px 10px transparentize(#000, 0.761));
+
+        &:focus, &:hover {
+          background-color: lighten($ce3-blue4, 7) !important;
+          color: $ce3-blue5;
+          border: 1px solid $ce3-blue3alpha;
+          outline: none !important;
+          font-weight: $font-weight-normal-plus;
+          @include box-shadow(0px 7px 12px transparentize(#000, 0.761));
+
+          &.description {
+            cursor: default;
+            background-color: $ce3-blue3;
+            font: $font-weight-normal 14px $roboto;
+          }
+        }
+      }
+
+      &.disabled {
+        cursor: default;
+        background-color: $ce3-blue5;
+        color: $ce3-disabled-font;
+        border: 1px solid $ce3-disabled-border;
+        @include box-shadow(0px 0px 0px transparentize(#000, 0.761));  // noborder
+
+        &:hover, &:focus {
+          cursor: default;
+          background-color: $ce3-blue5;
+          color: $ce3-disabled-font;
+          border: 1px solid $ce3-disabled-border;
+          @include box-shadow(0px 0px 0px transparentize(#000, 0.761));  // noborder
+        }
+      }
+
+      .inner-histobs {
+        background-color: $ce3-historical-observed;
+        border: 1px solid darken($ce3-historical-observed, 10);
+        height: 18px;
+        width: $ce3-btn-height-smallecreen;
+        margin: $ce3-default-padding;
+        @include border-radius(5px, 5px);
+
+        &.disabled {
+          background-color: lighten($ce3-historical-observed, 12);
+          &:hover, &:focus  {
+            background-color: lighten($ce3-historical-observed, 12);
+          }
+        }
+
+        &:hover, &:focus  {
+          background-color: $ce3-historical-observed;
+          outline: none !important;
+          font-weight: $font-weight-normal-plus;
+        }
+      }
+
+    .inner-hismod {
+      background-color: $ce3-historical-modeled;
+      border: 1px solid darken($ce3-historical-modeled, 10);
+      height: 18px;
+      width: $ce3-btn-height-smallecreen;
+      margin: $ce3-default-padding;
+      @include border-radius(5px, 5px);
+
+      &.disabled {
+        background-color: lighten($ce3-historical-modeled, 12);
+        &:hover, &:focus  {
+          background-color: lighten($ce3-historical-modeled, 12);
+        }
+      }
+
+      &:hover, &:focus  {
+        background-color: $ce3-historical-modeled;
+        outline: none;
+        font-weight: $font-weight-normal-plus;
+      }
+    }
+
+    .inner-lower-emmisions {
+      background-color: $ce3-lower-emissions;
+      border: 1px solid darken($ce3-lower-emissions, 10);
+      height: 18px;
+      width: $ce3-btn-height-smallecreen;
+      margin: $ce3-default-padding;
+      @include border-radius(5px, 5px);
+
+      &.disabled {
+        background-color: lighten($ce3-lower-emissions, 12);
+        &:hover, &:focus  {
+          background-color: lighten($ce3-lower-emissions, 12);
+        }
+      }
+
+      &:hover, &:focus  {
+        background-color: $ce3-lower-emissions;
+        outline: none;
+        font-weight: $font-weight-normal-plus;
+      }
+    }
+
+    .inner-higher-emmisions {
+      background-color: $ce3-higher-emissions;
+      border: 1px solid darken($ce3-higher-emissions, 10);
+      height: 18px;
+      width: $ce3-btn-height-smallecreen;
+      margin: $ce3-default-padding;
+      @include border-radius(5px, 5px);
+
+      &.disabled {
+        background-color: lighten($ce3-higher-emissions, 12);
+        &:hover, &:focus  {
+          background-color: lighten($ce3-higher-emissions, 12);
+        }
+      }
+
+      &:hover, &:focus  {
+        background-color:$ce3-higher-emissions;
+        outline: none;
+        font-weight: $font-weight-normal-plus;
+      }
+    }
+
   }
 
   @include medium {
@@ -492,6 +621,100 @@
       @include border-top-radius(0px);
       @include border-bottom-radius(5px);
     }
+  }
+}
+
+
+#more-info-description {
+  #btn-chart.description {
+    cursor: default;
+    background-color: $ce3-blue6;
+    color: $ce3-blue3;
+    height: $ce3-btn-height;
+    font: 500 14px $roboto;
+    border: 1px solid $ce3-blue3alpha;
+    margin-left: $ce3-default-padding;
+    margin-right: $ce3-default-padding;
+    text-indent: 3px;
+    min-width: 210px;
+    @include border-radius(5px, 5px);
+
+    .inner-histobs {
+      background-color: $ce3-historical-observed;
+      border: 1px solid darken($ce3-historical-observed, 10);
+      height: 18px;
+      width: $ce3-btn-height-smallecreen;
+      margin: $ce3-default-padding;
+      @include border-radius(5px, 5px)
+
+      &.disabled {
+        background-color: $ce3-historical-observed;
+      }
+
+      &:hover, &:focus  {
+        background-color: $ce3-historical-observed;
+        outline: none;
+        font: $font-weight-normal 14px $roboto;
+      }
+    }
+
+    .inner-hismod {
+      background-color: $ce3-historical-modeled;
+      border: 1px solid darken($ce3-historical-modeled, 10);
+      height: 18px;
+      width: $ce3-btn-height-smallecreen;
+      margin: $ce3-default-padding;
+      @include border-radius(5px, 5px);
+
+      &.disabled {
+        background-color: $ce3-historical-modeled;
+      }
+
+      &:hover, &:focus  {
+        background-color: $ce3-historical-modeled;
+        outline: none;
+        font: $font-weight-normal 14px $roboto;
+      }
+    }
+
+    .inner-lower-emmisions {
+      background-color: $ce3-lower-emissions;
+      border: 1px solid darken($ce3-lower-emissions, 10);
+      height: 18px;
+      width: $ce3-btn-height-smallecreen;
+      margin: $ce3-default-padding;
+      @include border-radius(5px, 5px);
+
+      &.disabled {
+        background-color: $ce3-lower-emissions;
+      }
+
+      &:hover, &:focus  {
+        background-color: $ce3-lower-emissions;
+        outline: none;
+        font: $font-weight-normal 14px $roboto;
+      }
+    }
+
+    .inner-higher-emmisions {
+      background-color: $ce3-higher-emissions;
+      border: 1px solid darken($ce3-higher-emissions, 10);
+      height: 18px;
+      width: $ce3-btn-height-smallecreen;
+      margin: $ce3-default-padding;
+      @include border-radius(5px, 5px);
+
+      &.disabled {
+        background-color: $ce3-higher-emissions;
+      }
+
+      &:hover, &:focus  {
+        background-color:$ce3-higher-emissions;
+        outline: none;
+        font: $font-weight-normal 14px $roboto;
+      }
+    }
+
   }
 }
 
