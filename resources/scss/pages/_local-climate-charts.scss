@@ -290,6 +290,11 @@
   min-width: 160px;
 }
 
+#chartmap-wrapper {
+  padding-left: 0px !important;
+  margin-left: -3px;
+}
+
 #time-wrapper {
   margin-left: -12px;
 }
@@ -453,6 +458,9 @@
       margin-right: $ce3-default-padding;
       text-indent: 3px;
       min-width: 210px;
+      @include about-graph-overlap {
+        min-width: 200px;
+      }
       @include border-radius(5px, 5px);
       @include box-shadow(0px 1px 2px transparentize(#000, 0.761));  // noborder
 
@@ -637,6 +645,10 @@
     margin-right: $ce3-default-padding;
     text-indent: 3px;
     min-width: 210px;
+    @include about-graph-overlap {
+      min-width: 190px;
+    }
+
     @include border-radius(5px, 5px);
 
     .inner-histobs {
@@ -645,6 +657,10 @@
       height: 18px;
       width: $ce3-btn-height-smallecreen;
       margin: $ce3-default-padding;
+      @include about-graph-overlap {
+        margin: $ce3-default-padding/2;
+      }
+
       @include border-radius(5px, 5px)
 
       &.disabled {
@@ -664,6 +680,10 @@
       height: 18px;
       width: $ce3-btn-height-smallecreen;
       margin: $ce3-default-padding;
+      @include about-graph-overlap {
+        margin: $ce3-default-padding/2;
+      }
+
       @include border-radius(5px, 5px);
 
       &.disabled {
@@ -683,6 +703,10 @@
       height: 18px;
       width: $ce3-btn-height-smallecreen;
       margin: $ce3-default-padding;
+      @include about-graph-overlap {
+        margin: $ce3-default-padding/2;
+      }
+
       @include border-radius(5px, 5px);
 
       &.disabled {
@@ -702,6 +726,10 @@
       height: 18px;
       width: $ce3-btn-height-smallecreen;
       margin: $ce3-default-padding;
+      @include about-graph-overlap {
+        margin: $ce3-default-padding/2;
+      }
+
       @include border-radius(5px, 5px);
 
       &.disabled {

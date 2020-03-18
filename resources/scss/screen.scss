@@ -1104,9 +1104,13 @@ h6 {
 }
 
 #select-tip-holder {
-    width: 24px;
-    height: 36px;
-    margin-left: -16px;
+    width: 32px;
+    height: 32px;
+    margin-left: -10px;
+    margin-top: 2px;
+    background-color: $ce3-blue3;
+    text-indent: 5px;
+    @include border-radius(32px, 32px);
 
     @include medium {
       position: relative;
@@ -1123,8 +1127,11 @@ h6 {
     #select-tip {
       width: 36px;
       height: 36px;
-      font-size: 20px;
-      margin-top: 9px;
+      font-size: 14px;
+      margin-top: -2px;
+      align-items: center;
+      display: flex;
+      color: $ce3-blue5;
       &:hover, &:focus {
         outline: none !important;
       }
