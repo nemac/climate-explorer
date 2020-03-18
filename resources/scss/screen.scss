@@ -325,6 +325,9 @@ h6 {
     &.short-desc {
       display: none;
     }
+    &:focus {
+      outline: none !important;
+    }
   }
 
   @include about-graph-overlap {
@@ -942,7 +945,11 @@ h6 {
     height: $ce3-btn-height-smallecreen !important;
   }
 
-  &:hover, &:focus {
+  &:focus {
+    outline: none !important;
+  }
+
+  &:hover {
     background-color: darken($ce3-blue5, 7) !important;
     color: $ce3-blue3 !important;
     border: 1px solid $ce3-blue3alpha !important;
@@ -951,7 +958,11 @@ h6 {
   }
 
   &.more-info {
-    &:hover, &:focus {
+    &:focus {
+      outline: none !important;
+    }
+
+    &:hover {
       background-color: darken($ce3-blue5, 7) !important;
       color: $ce3-blue3 !important;
       border: 1px solid $ce3-blue3alpha !important;
@@ -1042,7 +1053,11 @@ h6 {
     height: $ce3-btn-height-smallecreen !important;
   }
 
-  &:focus ,&:hover {
+  &:focus {
+    outline: none !important;
+  }
+
+  &:hover {
     background-color: lighten($ce3-blue4, 7) !important;
     color: $ce3-blue5 !important;
     border: 1px solid $ce3-blue3alpha !important;
@@ -1100,6 +1115,9 @@ h6 {
       color: $ce3-disabled-font !important;
       outline: none !important;
     }
+  }
+  &:focus {
+    outline: none !important;
   }
 }
 

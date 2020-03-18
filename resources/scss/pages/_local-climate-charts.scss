@@ -468,7 +468,11 @@
         height: $ce3-btn-height-smallecreen;
       }
 
-      &:focus, &:hover {
+      &:focus {
+        outline: none !important;
+      }
+
+      &:hover {
         background-color: darken($ce3-blue5, 7);
         color: $ce3-blue3;
         border: 1px solid $ce3-blue3alpha;
@@ -488,7 +492,11 @@
         color: $ce3-blue5;
         @include box-shadow(0px 5px 10px transparentize(#000, 0.761));
 
-        &:focus, &:hover {
+        &:focus {
+          outline: none !important;
+        }
+
+        &:hover {
           background-color: lighten($ce3-blue4, 7) !important;
           color: $ce3-blue5;
           border: 1px solid $ce3-blue3alpha;
