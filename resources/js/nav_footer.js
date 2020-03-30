@@ -34,6 +34,7 @@ $(function () {
   addNavClick('historical-weather-data', 'historical-weather-data', navConstants.selectorAddOn);
   addNavClick('high-tide-flooding', 'high-tide-flooding', navConstants.selectorAddOn);
   addNavClick('historical-thresholds', 'historical-thresholds', navConstants.selectorAddOn);
+  addNavClick('next-steps', 'next-steps', navConstants.selectorAddOn);
 
   updateNavBar();
   addMoreClickEvent();
