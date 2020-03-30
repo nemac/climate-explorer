@@ -12,6 +12,13 @@
     }
 
     &.expanded {
+      #region-based, #station-based {
+        width: 100%;
+      }
+      .first-column {
+        flex-direction: column !important;
+      }
+
       @include nav-footer-850-min {
         flex: 0 1 70px !important;
         height: 70px !important;
@@ -30,6 +37,9 @@
 .nav-footer-row-1 {
   flex-grow: 0 !important;
   align-content: flex-end !important;
+  .first-column {
+    flex-direction: row !important;
+  }
   @include nav-footer-850-max {
     align-content: center !important;
   }
@@ -41,6 +51,7 @@
 
   &.expanded {
     flex-flow: row wrap !important;
+    width: 100%;
   }
 }
 
@@ -67,7 +78,7 @@
     @include tiny {
       padding-right: 30px !important;
     }
-    
+
     @include kind-of-small-to-see {
       padding-right: 21px !important;
     }
@@ -227,7 +238,7 @@
   }
 }
 
-#home-nav-footer {
+#home-nav-footer, #next-steps-nav-footer {
   padding-bottom: 4px;
 }
 

@@ -70,6 +70,13 @@
       background-color: $white !important;
     }
   }
+
+  .rounded-filters-box {
+    min-height: $ce3-btn-height !important;
+    @include medium {
+      min-height: $ce3-btn-height !important;
+    }
+  }
 }
 
 #cards-search-input {

@@ -1238,12 +1238,12 @@ h6 {
   }
 }
 
-#cards-viewport .rounded-filters-box {
-  min-height: $ce3-btn-height !important;
-  @include medium {
-    min-height: $ce3-btn-height !important;
-  }
-}
+// #cards-viewport .rounded-filters-box {
+//   min-height: $ce3-btn-height !important;
+//   @include medium {
+//     min-height: $ce3-btn-height !important;
+//   }
+// }
 
 .rounded-box-secondary {
   @include border-radius(5px, 5px);
@@ -1971,6 +1971,8 @@ input.input-inner-default:focus  {
 // cards-home
 @import "pages/cards-home";
 
+// next-steps
+@import "pages/next-steps";
 
 // about, definitions, creds, faq
 @import "pages/about";
