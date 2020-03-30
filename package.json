@@ -17,7 +17,12 @@
     "deploy:ce3-production": "aws s3 sync --delete --no-follow-symlinks dist/ s3://climate-explorer3-prod.nemac.org/ &&  aws cloudfront create-invalidation --distribution-id E1Q1S8U8911R6D --paths '/*'",
     "deploy:ce26-legacy": "aws s3 sync --delete --no-follow-symlinks dist/ s3://climate-explorer26.nemac.org/ &&  aws cloudfront create-invalidation --distribution-id E2HEBFH20UVKTH --paths '/*'",
     "start": "static -a 127.0.0.1 -p 8080 dist/",
-    "git:submodules": "git submodule add git@github.com:nemac/climate-by-location.git resources/vendor/climate-by-location"
+    "git:submodules": "git submodule add git@github.com:nemac/climate-by-location.git resources/vendor/climate-by-location",
+    "preinstall": "npx npm-force-resolutions"
+  },
+  "resolutions": {
+    "minimist": "^1.2.5",
+    "braces": "^2.3.2"
   },
   "repository": {
     "type": "git",
@@ -31,11 +36,13 @@
     "babel-plugin-transform-es2015-literals": "^6.22.0",
     "babel-plugin-transform-object-assign": "^6.22.0",
     "babel-preset-env": "^1.7.0",
+    "braces": "^2.3.2",
     "bundlebars": "^1.2.0",
     "compass-mixins": "github:Igosuki/compass-mixins",
     "es6-promise": "^4.2.4",
     "handlebars": "^4.4.2",
-    "node-sass": "^4.12.0",
+    "minimist": "^1.2.5",
+    "node-sass": "^4.13.1",
     "node-static": "^0.7.10"
   },
   "dependencies": {
