@@ -42,7 +42,8 @@
     height: calc(100% - 48px - 12px - 170px) !important;
     &:after {
       top: calc(100% - 187px);
-
+      z-index: 1;
+      
       @include kind-of-tiny {
         top: calc(100% - 147px);
       }

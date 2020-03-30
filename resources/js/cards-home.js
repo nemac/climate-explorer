@@ -32,7 +32,7 @@ $(function () {
     }
 
     if (isAlaska) {
-      $('.card-high-tide-flooding').addClass('card-disabled');      
+      $('.card-high-tide-flooding').addClass('card-disabled');
     }
 
     if (cityStateCE.indexOf('County') > 0  ) {
@@ -48,6 +48,8 @@ $(function () {
   addCardClick('card-historical-weather-data','historical-weather-data');
   addCardClick('card-high-tide-flooding', 'high-tide-flooding');
   addCardClick('card-historical-thresholds', 'historical-thresholds');
+  addCardClick('card-historical-thresholds', 'historical-thresholds');
+  addCardClick('card-next-steps', 'next-steps');
 
   $('#clear-location').click( function(e){
     const target = $(e.target);
