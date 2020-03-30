@@ -309,6 +309,12 @@
   @include tiny {
     min-height: 90px !important;
   }
+
+  &.card-text-full {
+    min-height: 100% !important;
+    height: 100% !important;
+    flex: 1 1 100% !important;
+  }
 }
 
 #card-title-icon {
