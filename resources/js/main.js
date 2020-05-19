@@ -24,6 +24,7 @@ App.prototype.getCountyCodes = function () {
     self.locationSearch();
   });
 };
+
 App.prototype.doSearch = function () {
   var self = this;
   this.fips_codes = null;
@@ -961,11 +962,20 @@ App.prototype.locationSearch = function () {
     }
 
     var fips = void 0;
+
     $.each(self.fips_codes[data.administrative_area_level_1_short], function (i, c) {
-      if (c.label === county.replace(/\+/g, ' ') || c.label === county.replace(/\+County/g, ' city')) {
-        fips = c.fips;
-        if (c.label.match('city')) {
-          county = county.replace('+County', '+City');
+      // city countly like in Virginia - deals with city that have county boundaries in Virginia
+      if (data.locality === undefined) {
+        if (c.label === county.replace(/\+/g, ' ')) {
+          fips = c.fips;
+        }
+      // Normal county
+      } else {
+        if (c.label === county.replace(/\+/g, ' ') || c.label === county.replace(/\+County/g, ' city')) {
+          fips = c.fips;
+          if (c.label.match('city')) {
+            county = county.replace('+County', '+City');
+          }
         }
       }
 
