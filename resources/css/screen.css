@@ -22366,7 +22366,7 @@ input.input-inner:focus {
 /* line 100, resources/scss/pages/next-steps.scss */
 #next-steps-viewport #data-card {
   cursor: pointer;
-  width: 32%  !important;
+  width: 49%  !important;
   height: auto !important;
   -webkit-border-radius: 5px 5px;
   -moz-border-radius: 5px / 5px;
