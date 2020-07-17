@@ -73,12 +73,12 @@ $(function () {
     dry_spells: {
       icon: 'drought',
       label: {
-        Midwest: 'Number of dry spells may increase',
-        Northwest: 'Number of dry spells may increase',
-        Southeast: 'Number of dry spells may increase',
-        Southwest: 'Number of dry spells may increase',
-        NorthernGreatPlains: 'Number of dry spells may increase',
-        SouthernGreatPlains: 'Number of dry spells may increase'
+        Midwest: 'Number of <b>dry spells</b> may increase',
+        Northwest: 'Number of <b>dry spells</b> may increase',
+        Southeast: 'Number of <b>dry spells</b> may increase',
+        Southwest: 'Number of <b>dry spells</b> may increase',
+        NorthernGreatPlains: 'Number of <b>dry spells</b> may increase',
+        SouthernGreatPlains: 'Number of <b>dry spells</b> may increase'
       }
     },
     extreme_precip_events: {
@@ -92,8 +92,8 @@ $(function () {
     max_consecutive_dry_days: {
       icon: 'wildfires',
       label: {
-        Northwest: 'Wildfire risk may be increased due to longer periods between preciptation events',
-        Southwest: 'Wildfire risk may be increased due to longer periods between preciptation events'
+          Northwest: '<b>Wildfire</b> risk may be increased due to longer periods between preciptation events',
+          Southwest: '<b>Wildfire</b> risk may be increased due to longer periods between preciptation events'
       }
     },
     max_high_temp: {
@@ -121,10 +121,10 @@ $(function () {
     sea_level_rise: {
       icon: 'coastal-flood',
       label: {
-        Northeast: 'Coastal flooding may increase in part due to sea levels rising globally .5 - 2 feet, and relative sea level rise may be amplified in this region',
-        Southeast: 'Coastal flooding may increase in part due to sea levels rising globally .5 - 2 feet, and relative sea level rise may be amplified in this region',
-        Southwest: 'Coastal flooding may increase in part due to sea levels rising globally .5 - 2 feet',
-        SouthernGreatPlains: 'Coastal flooding may increase in part due to sea levels rising globally .5 - 2 feet'
+          Northeast: '<b>Coastal flooding</b> may increase in part due to sea levels rising globally .5 - 2 feet, and relative sea level rise may be amplified in this region',
+          Southeast: '<b>Coastal flooding</b> may increase in part due to sea levels rising globally .5 - 2 feet, and relative sea level rise may be amplified in this region',
+          Southwest: '<b>Coastal flooding</b> may increase in part due to sea levels rising globally .5 - 2 feet',
+          SouthernGreatPlains: '<b>Coastal flooding</b> may increase in part due to sea levels rising globally .5 - 2 feet'
       }
     }
   };
