@@ -421,15 +421,15 @@ $(function () {
 
     var sliderElem = document.getElementById('slider-range');
     noUiSlider.create(sliderElem, {
-        start: [20, 80],
+        // Handles start at ...
+        start: [1950, 2099],
         connect: true,
         range: {
             'min': 1950,
             'max': 2099
         },
         step: 1,
-        // Handles start at ...
-        start: [1950, 2099]
+
     });
 
     // set slider on slide event
