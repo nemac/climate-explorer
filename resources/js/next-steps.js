@@ -1,11 +1,10 @@
 'use strict';
 
-// get state location information fron URL state management
+// get state location information from URL state management
 // some state management is in main.js and ce.js
 // some ui utility code is in ce3-ui-components.js
 $(function () {
-  // TODO: Replace with S3 URL
-  const dataUrl = "http://localhost:8000/";
+  const topHazardsDataURLTemplate = "/resources/data/top_hazards/{fips}.json";
   const cityStateCE = window.ce.ce('getLocationPageState')['city'];
   const countyCE = window.ce.ce('getLocationPageState')['county'];
   const fips = window.ce.ce('getLocationPageState')['fips'];
@@ -85,9 +84,9 @@ $(function () {
       icon: 'rain-storm',
       directions: ['less', 'more'],
       relative: true,
-      averageLabel: '<%= average %>% <%= dir %> intense <b>rain storm<%= average !== 1 ? "s" : "" %></b> every year',
-      rangeLabel: 'Between <%= formatRange(min, max, "%", directions) %> intense <b>rain storms</b> every year',
-      historicLabel: 'Historically <%= formatHistoric(historicMin, historicMax, "") %> intense rain storms occur every year.'
+      averageLabel: ({average, dir})=>`${ average }% ${ dir } intense <b>rain storm${ average !== 1 ? "s" : "" }</b> every year`,
+      rangeLabel: ({formatRange, directions, min, max})=>`Between ${ formatRange(min, max, "%", directions) } intense <b>rain storms</b> every year`,
+      historicLabel: ({formatHistoric,historicMin, historicMax})=>`Historically ${ formatHistoric(historicMin, historicMax, "") } intense rain storms occur every year.`
     },
     max_consecutive_dry_days: {
       icon: 'wildfires',
@@ -99,9 +98,9 @@ $(function () {
     max_high_temp: {
       icon: 'extreme-hot-days',
       directions: ['colder', 'hotter'],
-      averageLabel: '<b>Extreme hot days</b> that are <%= average %>°F <%= dir %> than the current hottest day',
-      rangeLabel: '<b>Extreme hot days</b> that are between <%= formatRange(min, max, "°F", directions) %> than the current hottest day',
-      historicLabel: 'Historically the hottest day is between <%= formatHistoric(historicMin, historicMax, "°F") %>'
+      averageLabel: ({average, dir})=>`<b>Extreme hot days</b> that are ${ average }°F ${ dir } than the current hottest day`,
+      rangeLabel: ({formatRange, directions, min, max})=>`<b>Extreme hot days</b> that are between ${ formatRange(min, max, "°F", directions) } than the current hottest day`,
+      historicLabel: ({formatHistoric, historicMin, historicMax})=>`Historically the hottest day is between ${ formatHistoric(historicMin, historicMax, "°F") }`
     },
     ocean_acidification: {
       icon: 'ocean-acidification',
@@ -172,52 +171,58 @@ $(function () {
   }
 
   if (fips) {
-    $.get(dataUrl + fips + ".json")
+    $.get(topHazardsDataURLTemplate.replace(/{fips}/g , fips))
       .done(data => {
-        const indicatorElems = data.map(indicatorData => {
-          const id = indicatorData.indicator;
-          const label = indicators[id].label;
-          let content;
-          if (typeof label === "object") {
-            const text = label[ncaRegion] || 'TEXT NEEDED';
-            content = '<div><div>' + text + '</div></div>';
-          } else {
-            let average = indicatorData.future.average - indicatorData.historic.average;
-            let min = indicatorData.future.minimum - indicatorData.historic.average;
-            let max = indicatorData.future.maximum - indicatorData.historic.average;
-            if (indicatorData.relative) {
-              average = (average / indicatorData.historic.average) * 100;
-              min = (min / indicatorData.historic.average) * 100;
-              max = (max / indicatorData.historic.average) * 100;
-            }
-            average = Math.round(average);
-            min = Math.round(min);
-            max = Math.round(max);
-            const context = {
-              formatHistoric: formatHistoric,
-              formatRange: formatRange,
-              average: numFormat.format(Math.abs(average)),
-              historicMin: indicatorData.historic.minimum,
-              historicMax: indicatorData.historic.maximum,
-              directions: indicators[id].directions,
-              dir: indicators[id].directions[average < 0 ? 0 : 1],
-              min: min,
-              max: max
-            };
-            const avgText = _.template(indicators[id].averageLabel)(context);
-            const rangeText = _.template(indicators[id].rangeLabel)(context);
-            const historicText = _.template(indicators[id].historicLabel)(context);
-            content = '<div><span class="indicator-avg">' + avgText + '</span>';
-            content += '<span class="indicator-range">' + rangeText + '</span>';
-            content += '<div class="indicator-historic">' + historicText + '</div></div>';
-          }
-          const img = '<img src="/resources/img/hazards/' + indicators[id].icon + '.svg">';
-          return '<div>' + img + content + '</div>'
-        });
+          $(".next-steps-temperate #card-description").html(`
+            ${data.map(indicatorData => {
+              const id = indicatorData.indicator;
+              const label = indicators[id].label;
+              let content;
+              if (typeof label === "object") {
+                  const text = label[ncaRegion] || 'TEXT NEEDED';
+                  content = `<div><div>${text}</div></div>`;
+              } else {
+                  let average = indicatorData.future.average - indicatorData.historic.average;
+                  let min = indicatorData.future.minimum - indicatorData.historic.average;
+                  let max = indicatorData.future.maximum - indicatorData.historic.average;
+                  if (indicatorData.relative) {
+                      average = (average / indicatorData.historic.average) * 100;
+                      min = (min / indicatorData.historic.average) * 100;
+                      max = (max / indicatorData.historic.average) * 100;
+                  }
+                  average = Math.round(average);
+                  min = Math.round(min);
+                  max = Math.round(max);
+                  const context = {
+                      formatHistoric: formatHistoric,
+                      formatRange: formatRange,
+                      average: numFormat.format(Math.abs(average)),
+                      historicMin: indicatorData.historic.minimum,
+                      historicMax: indicatorData.historic.maximum,
+                      directions: indicators[id].directions,
+                      dir: indicators[id].directions[average < 0 ? 0 : 1],
+                      min: min,
+                      max: max
+                  };
+                  content = `
+                    <div>
+                        <span class="indicator-avg">
+                            ${(((typeof indicators[id].averageLabel) === 'function') ? indicators[id].averageLabel(context) : indicators[id].averageLabel)}
+                        </span>
+                        <span class="indicator-range">
+                            ${(((typeof indicators[id].rangeLabel) === 'function') ? indicators[id].rangeLabel(context) : indicators[id].rangeLabel)}
+                        </span>
+                        <div class="indicator-historic">
+                            ${(((typeof indicators[id].historicLabel) === 'function') ? indicators[id].historicLabel(context) : indicators[id].historicLabel)}
+                        </div>
+                    </div>
+                    `;
+              }
+              return `<div><img src="/resources/img/hazards/${indicators[id].icon}.svg" alt="">${content}</div>`
+          }).join('')}
+          <div class="footer">Displaying average projections for 2035-2064 (using all available models) as compared to 1961-1990. Top regional hazards identified by the <a href="https://nca2018.globalchange.gov/">2016 National Climate Assessment</a></div>
+        `);
 
-        const footer = '<div class="footer">Displaying average projections for 2035-2064 (using all available models) as compared to 1961-1990. Top regional hazards identified by the <a href="https://nca2018.globalchange.gov/">2016 National Climate Assessment</a></div>';
-        const html = indicatorElems.join('') + footer;
-        $(".next-steps-temperate #card-description").html(html);
         $(".next-steps-temperate .card-controls").show();
         $(".next-steps-temperate .card-controls input").lc_switch('', '');
         toggleRange();
@@ -227,7 +232,6 @@ $(function () {
       });
   }
 
-
   // adds clear location when x is clicked next to location search
   $('#clear-location').click( function(e){
     const target = $(e.target);
@@ -236,44 +240,13 @@ $(function () {
 
   $('#temperate-show-range').on('lcs-statuschange', toggleRange);
 
-  //  TODO move this global functions so its not in several places
-  // this function removes existing paramaters of the key undefined
-  // and returns a new search param string.  We need to do this to avoid
-  // mulitple nav paramaters, which would causes issues with only using the first
-  // occurance of the nav parameter - aka we end up on the wrong page
-  function removeUrlParam(key) {
-    var params = decodeURIComponent(window.location.search.substring(1)).split('&');
-    var param = void 0;
-    var newParams = [],
-        href = window.location.href.split('?')[0];
-    var i = void 0;
-
-    if (window.hasOwnProperty('history') === false || window.history.replaceState === false) return;
-
-    for (i = 0; i < params.length; i++) {
-      param = params[i].split('=');
-
-      if (param[0] === key) {
-        continue;
-      }
-
-      newParams.push(`${encodeURIComponent(param[0])}=${encodeURIComponent(param[1])}`);
-    }
-
-    if (params.length !== newParams.length) {
-      return  `?${newParams.join('&')}`;
-    }
-
-    return `?${newParams.join('&')}`;
-  }
-
   function formatHistoric(minNum, maxNum, suffix) {
     const min = numFormat.format(minNum);
     const max = numFormat.format(maxNum);
     if (min === max) {
       return min + suffix;
     }
-    return min + '&nbsp;-&nbsp;' + max + suffix;
+    return `${min}&nbsp;-&nbsp;${max}${suffix}`;
   }
 
   function formatRange(minNum, maxNum, suffix, directions) {
@@ -283,10 +256,10 @@ $(function () {
       return min + suffix;
     }
     if (minNum < 0 && maxNum > 0) {
-      return min + suffix + ' ' + directions[0] + ' and ' + max + suffix + ' ' + directions[1];
+      return `${min + suffix} ${directions[0]} and ${max}${suffix} ${directions[1]}`;
     }
     const direction = maxNum < 0 ? directions[0] : directions[1];
-    return min + '&nbsp;-&nbsp;' + max + suffix + ' ' + direction;
+    return `${min}&nbsp;-&nbsp;${max}${suffix} ${direction}`;
   }
 
   function toggleRange() {
