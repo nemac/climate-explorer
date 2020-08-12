@@ -117,6 +117,7 @@
     #card-text {
       color: darken($ce3-blue6, 20) !important;
     }
+
     .disabled-text {
       position: absolute;
       top: -75px;
@@ -133,6 +134,7 @@
       display: inherit;
     }
   }
+
 
   &:focus, &:hover {
     border: 1px solid darken($ce3-blue3, 10) !important;
@@ -173,6 +175,49 @@
 
   @include to-small-to-see {
     max-height: 175px !important;
+  }
+
+
+
+  // this is not a good way to do it desperately need css library like bootstrap
+  &.card-next-steps {
+
+
+    ::-webkit-scrollbar {
+      &-track {
+        background-color: transparent;
+      }
+    }
+
+    .card-description-holder {
+      background-color: transparent;
+      height: calc(100% - 10px);
+
+      .card-description {
+        overflow-x: auto;
+      }
+    }
+
+    #card-description {
+      overflow-x: scroll;
+    }
+
+    @include small {
+      height: 100% !important;
+      max-height: 350px !important;
+    }
+
+    @include very-small {
+      max-height: 350px !important;
+    }
+
+    @include tiny {
+      max-height: 350px !important;
+    }
+
+    @include to-small-to-see {
+      max-height: 350px !important;
+    }
   }
 }
 
@@ -314,6 +359,23 @@
     min-height: 100% !important;
     height: 100% !important;
     flex: 1 1 100% !important;
+  }
+
+  ul {
+    margin-top: 0;
+    margin-bottom: 1rem;
+    list-style: disc;
+    margin-block-start: .25em;
+    margin-block-end: 1em;
+    margin-inline-start: 0px;
+    margin-inline-end: 0px;
+    padding-inline-start: 15px;
+  }
+
+  li {
+    display: list-item;
+    margin: .25rem;
+    text-align: -webkit-match-parent;
   }
 }
 
