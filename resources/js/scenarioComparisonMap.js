@@ -297,7 +297,7 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
             rightScenario: 'rcp85',
           },
           disabledScenarios: ['historical'],
-          legend_unit: 'Degree Days',
+          legend_unit: 'Dry Days',
         },
         'hdd_65f': {
           title: 'Heating Degree Days',
