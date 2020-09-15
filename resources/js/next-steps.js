@@ -91,8 +91,8 @@ $(function () {
     max_consecutive_dry_days: {
       icon: 'wildfires',
       label: {
-          Northwest: '<b>Wildfire</b> risk may be increased due to longer periods between preciptation events',
-          Southwest: '<b>Wildfire</b> risk may be increased due to longer periods between preciptation events'
+          Northwest: '<b>Wildfire</b> risk may be increased due to longer periods between precipitation events',
+          Southwest: '<b>Wildfire</b> risk may be increased due to longer periods between precipitation events'
       }
     },
     max_high_temp: {
@@ -220,7 +220,7 @@ $(function () {
               }
               return `<div><img src="/resources/img/hazards/${indicators[id].icon}.svg" alt="">${content}</div>`
           }).join('')}
-          <div class="footer">Displaying average projections for 2035-2064 (using all available models) as compared to 1961-1990. Top regional hazards identified by the <a href="https://nca2018.globalchange.gov/">2016 National Climate Assessment</a></div>
+          <div class="footer">Displaying average projections for 2035-2064 (using all available models) as compared to 1961-1990. Top regional hazards identified by the <a href="https://nca2018.globalchange.gov/">2018 National Climate Assessment</a></div>
         `);
 
         $(".next-steps-temperate .card-controls").show();
