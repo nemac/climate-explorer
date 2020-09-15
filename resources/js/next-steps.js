@@ -63,71 +63,72 @@ $(function () {
     changed_seasonal_patterns: {
       icon: 'changed-seasonal-patterns',
       label: {
-        Midwest: '<b>Changed seasonal patterns</b> may affect agricultural productivity',
-        Northeast: '<b>Changed seasonal patterns</b> may affect rural ecosystems, environments, and economies',
-        Southeast: '<b>Changed seasonal patterns</b> may affect health impacts and agricultural, timber, and manufacturing sector economies',
-        NorthernGreatPlains: '<b>Changed seasonal patterns</b> may affect water management systems critical to the region'
+        Midwest: '<b>Changed seasonal patterns</b> may affect agricultural productivity.',
+        Northeast: '<b>Changed seasonal patterns</b> may affect rural ecosystems, environments, and economies.',
+        Southeast: '<b>Changed seasonal patterns</b> may affect health impacts and agricultural, timber, and manufacturing sector economies.',
+        NorthernGreatPlains: '<b>Changed seasonal patterns</b> may affect water management systems critical to the region.'
       }
     },
     dry_spells: {
       icon: 'drought',
       label: {
-        Midwest: 'Number of <b>dry spells</b> may increase',
-        Northwest: 'Number of <b>dry spells</b> may increase',
-        Southeast: 'Number of <b>dry spells</b> may increase',
-        Southwest: 'Number of <b>dry spells</b> may increase',
-        NorthernGreatPlains: 'Number of <b>dry spells</b> may increase',
-        SouthernGreatPlains: 'Number of <b>dry spells</b> may increase'
+        Midwest: '<b>Dry spells</b> — consecutive days without precipitation — may increase slightly.',
+        Northwest: '<b>Dry spells</b> — consecutive days without precipitation — may increase slightly.',
+        Southeast: '<b>Dry spells</b> — consecutive days without precipitation — may increase slightly.',
+        Southwest: '<b>Dry spells</b> — consecutive days without precipitation — may increase slightly.',
+        NorthernGreatPlains: '<b>Dry spells</b> — consecutive days without precipitation — may increase slightly.',
+        SouthernGreatPlains: '<b>Dry spells</b> — consecutive days without precipitation — may increase slightly.'
       }
     },
     extreme_precip_events: {
       icon: 'rain-storm',
-      directions: ['less', 'more'],
+      directions: ['decrease', 'increase'],
       relative: true,
-      averageLabel: ({average, dir})=>`${ average }% ${ dir } intense <b>rain storm${ average !== 1 ? "s" : "" }</b> every year`,
-      rangeLabel: ({formatRange, directions, min, max})=>`Between ${ formatRange(min, max, "%", directions) } intense <b>rain storms</b> every year`,
-      historicLabel: ({formatHistoric,historicMin, historicMax})=>`Historically ${ formatHistoric(historicMin, historicMax, "") } intense rain storms occur every year.`
+        averageLabel: ({average, dir})=>`Annual counts of <b>intense rainstorms</b> – those that drop two or more inches in one day – are projected to ${dir} by ${ average }%.`,
+        rangeLabel: ({formatRange, directions, min, max})=>`Annual counts of <b>intense rainstorms</b> – those that drop two or more inches in one day – are projected to have between a ${ formatRange(min, max, "%", directions) }.`,
+      historicLabel: ({formatHistoric, historicMin, historicMax, location})=>`Historically ${location} has had ${ formatHistoric(historicMin, historicMax, "") } intense rain storms occur every year.`
     },
     max_consecutive_dry_days: {
       icon: 'wildfires',
       label: {
-          Northwest: '<b>Wildfire</b> risk may be increased due to longer periods between precipitation events',
-          Southwest: '<b>Wildfire</b> risk may be increased due to longer periods between precipitation events'
+          Northwest: '<b>Wildfire</b> risk may be increased due to longer periods between precipitation events.',
+          Southwest: '<b>Wildfire</b> risk may be increased due to longer periods between precipitation events.'
       }
     },
     max_high_temp: {
       icon: 'extreme-hot-days',
-      directions: ['colder', 'hotter'],
-      averageLabel: ({average, dir})=>`<b>Extreme hot days</b> that are ${ average }°F ${ dir } than the current hottest day`,
-      rangeLabel: ({formatRange, directions, min, max})=>`<b>Extreme hot days</b> that are between ${ formatRange(min, max, "°F", directions) } than the current hottest day`,
-      historicLabel: ({formatHistoric, historicMin, historicMax})=>`Historically the hottest day is between ${ formatHistoric(historicMin, historicMax, "°F") }`
+      directions: ['decrease', 'increase'],
+      averageLabel: ({average, dir})=>`<b>Extreme temperatures</b> on the hottest days of the year are projected to ${dir} by ${ average }°F.`,
+      rangeLabel: ({formatRange, directions, min, max})=>`<b>Extreme temperatures</b> on the hottest days of the year are projected to have between a ${ formatRange(min, max, "°F", directions) }.`,
+      historicLabel: ({formatHistoric, historicMin, historicMax})=>`Historically between ${ formatHistoric(historicMin, historicMax, "°F") }.`
     },
     ocean_acidification: {
       icon: 'ocean-acidification',
       label: {
-        Northeast: '<b>Ocean warming and acidification</b> may affect commerce, tourism, and recreation',
-        Northwest: '<b>Ocean Acidification</b> may affect the natural resource economy, cultural heritage, built infrastructure, and recreation',
-        Southeast: '<b>Ocean warming and acidification</b> may contribute to coral reef mortality and decline',
-        Southwest: '<b>Ocean warming and acidification</b> may affect homes and other coastal infrastructure, marine flora and fauna, and people who depend on coastal resources',
+        Northeast: '<b>Ocean warming and acidification</b> may affect commerce, tourism, and recreation.',
+        Northwest: '<b>Ocean Acidification</b> may affect the natural resource economy, cultural heritage, built infrastructure, and recreation.',
+        Southeast: '<b>Ocean warming and acidification</b> may contribute to coral reef mortality and decline.',
+        Southwest: '<b>Ocean warming and acidification</b> may affect homes and other coastal infrastructure, marine flora and fauna, and people who depend on coastal resources.',
       }
     },
     saltwater_intrusion: {
       icon: 'salt-water-intrusion',
       label: {
-        SouthernGreatPlains: '<b>Saltwater intrusion</b> may threaten water supplies critical to the region'
+        SouthernGreatPlains: '<b>Saltwater intrusion</b> into underground water supplies may occur as sea level rises in the Southern Great Plains of the United States'
       }
     },
     sea_level_rise: {
       icon: 'coastal-flood',
       label: {
-          Northeast: '<b>Coastal flooding</b> may increase in part due to sea levels rising globally .5 - 2 feet, and relative sea level rise may be amplified in this region',
-          Southeast: '<b>Coastal flooding</b> may increase in part due to sea levels rising globally .5 - 2 feet, and relative sea level rise may be amplified in this region',
-          Southwest: '<b>Coastal flooding</b> may increase in part due to sea levels rising globally .5 - 2 feet',
-          SouthernGreatPlains: '<b>Coastal flooding</b> may increase in part due to sea levels rising globally .5 - 2 feet'
+          Northeast: 'Frequency of <b>coastal flooding</b> may increase as global sea level rises 0.5 - 2 feet, and relative sea level rise may be amplified in the Northeastern United States',
+          Southeast: 'Frequency of <b>coastal flooding</b> may increase as global sea level rises 0.5 - 2 feet, and relative sea level rise may be amplified in the Southeastern United States',
+          Southwest: 'Frequency of <b>coastal flooding</b> may increase as global sea level rises 0.5 - 2 feet',
+          SouthernGreatPlains: 'Frequency of <b>coastal flooding</b> may increase as global sea level rises 0.5 - 2 feet'
       }
     }
   };
   const stateAbbrev = cityStateCE.substring(cityStateCE.length - 2);
+  const location = cityStateCE.substring(0, cityStateCE.length - 4);
   const ncaRegion = stateNCARegions[stateAbbrev];
   const numFormat = new Intl.NumberFormat(undefined, { maximumFractionDigits: 0 });
   let isAlaska = false;
@@ -201,6 +202,7 @@ $(function () {
                       historicMax: indicatorData.historic.maximum,
                       directions: indicators[id].directions,
                       dir: indicators[id].directions[average < 0 ? 0 : 1],
+                      location: location,
                       min: min,
                       max: max
                   };
@@ -256,7 +258,7 @@ $(function () {
       return min + suffix;
     }
     if (minNum < 0 && maxNum > 0) {
-      return `${min + suffix} ${directions[0]} and ${max}${suffix} ${directions[1]}`;
+      return `${min + suffix} ${directions[0]} and a ${max}${suffix} ${directions[1]}`;
     }
     const direction = maxNum < 0 ? directions[0] : directions[1];
     return `${min}&nbsp;-&nbsp;${max}${suffix} ${direction}`;
