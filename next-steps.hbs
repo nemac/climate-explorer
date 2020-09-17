@@ -48,30 +48,35 @@
   <div id="card-row" class="padding-horizontal padding-top-half padding-bottom-half d-flex-row flex-justify" >
 
     <div tabindex="3" id="data-card" class="next-steps-temperate card-xl d-flex d-flex-column" >
-       <div id="card-text" class="card-text d-flex-row width-100">
-         <div id="card-title-icon" class="d-flex-row width-100">
-           <div class="card-title-icon-wrap">
-            <img class="card-icon" src="/resources/img/temperate-mark-neutral.svg" alt="" />
-            <div style="flex: 1">
-                <span class="card-title" >
-                    Top climate concerns
-                </span>
-                <span class="card-subtitle">
-                    Powered by <a href="https://temperate.io">Temperate</a>
-                </span>
-            </div>
-           </div>
-            <div class="card-controls" style="display: none;">
-                <input type="checkbox" class="toggle" id="temperate-show-range">
-                <label for="temperate-show-range">
-                  Show range
-                </label>
-            </div>
-         </div>
-       </div>
-        <div id="card-description" class="d-flex-column width-100">
+      <div id="card-text" class="card-text d-flex-row width-100">
+        <div id="card-title-icon" class="d-flex-row width-100">
+          <div class="card-title-icon-wrap">
+             <img class="card-icon" src="/resources/img/temperate-mark-neutral.svg" alt="" />
+             <div class="card-title-wrap">
+                 <span class="card-title" >
+                     Top climate concerns
+                 </span>
+                 <div class="help-text"></div>
+             </div>
+          </div>
         </div>
-        <div class="disabled-text">Data is not available for this location</div>
+      </div>
+      <div class="card-controls" style="display: none;">
+        <input type="checkbox" class="toggle" id="temperate-show-range">
+        <label for="temperate-show-range">
+          Show full range of projections
+        </label>
+        <a href="javascript:" class="methodology-link">Methodology</a>
+      </div>
+      <div id="card-description" class="d-flex-column width-100">
+      <div class="disabled-text">Data is not available for this location yet, check back soon!</div>
+      </div>
+      <div class="footer">
+        <div style="flex: 1">
+          Temperate guides you through assessing your vulnerability to these potential hazards.
+        </div>
+        <a href="https://temperate.io">Get started with Temperate</a>
+      </div>
     </div>
 
     <a id="next-steps-option-2-secretlink" href="https://www.google.com/" target="_blank" class="d-none"></a>

@@ -22475,22 +22475,19 @@ input.input-inner:focus {
 
 /* line 125, resources/scss/pages/next-steps.scss */
 #next-steps-viewport #data-card.card-disabled .disabled-text {
-  position: absolute;
-  top: unset;
-  bottom: 5px;
-  left: 5px;
-  right: 5px;
+  position: static;
   text-align: center;
   font-size: 20px;
-  background: rgba(233, 241, 252, 0.75);
+  background: none;
   padding: 6px;
-  margin-right: 0;
+  margin: auto 0;
   -webkit-border-radius: 5px 5px;
   -moz-border-radius: 5px / 5px;
   border-radius: 5px / 5px;
   font-weight: 800;
   color: #124086 !important;
   display: block;
+  max-width: 350px;
 }
 
 @media screen and (max-width: 768px) {
@@ -22545,7 +22542,7 @@ input.input-inner:focus {
   }
 }
 
-/* line 174, resources/scss/pages/next-steps.scss */
+/* line 171, resources/scss/pages/next-steps.scss */
 #next-steps-viewport #card-row {
   justify-content: space-evenly !important;
   height: auto !important;
@@ -22556,7 +22553,7 @@ input.input-inner:focus {
 }
 
 @media screen and (max-width: 1240px) {
-  /* line 174, resources/scss/pages/next-steps.scss */
+  /* line 171, resources/scss/pages/next-steps.scss */
   #next-steps-viewport #card-row {
     justify-content: center !important;
     height: auto !important;
@@ -22566,7 +22563,7 @@ input.input-inner:focus {
 }
 
 @media screen and (max-width: 900px) {
-  /* line 174, resources/scss/pages/next-steps.scss */
+  /* line 171, resources/scss/pages/next-steps.scss */
   #next-steps-viewport #card-row {
     flex-flow: row wrap !important;
     padding-right: 6px !important;
@@ -22578,7 +22575,7 @@ input.input-inner:focus {
 }
 
 @media screen and (max-width: 768px) {
-  /* line 174, resources/scss/pages/next-steps.scss */
+  /* line 171, resources/scss/pages/next-steps.scss */
   #next-steps-viewport #card-row {
     max-height: 1240px !important;
     min-height: 1000px !important;
@@ -22586,7 +22583,7 @@ input.input-inner:focus {
 }
 
 @media screen and (max-width: 599px) {
-  /* line 174, resources/scss/pages/next-steps.scss */
+  /* line 171, resources/scss/pages/next-steps.scss */
   #next-steps-viewport #card-row {
     max-height: 1240px !important;
     min-height: 710px !important;
@@ -22594,7 +22591,7 @@ input.input-inner:focus {
 }
 
 @media screen and (max-width: 399px) {
-  /* line 174, resources/scss/pages/next-steps.scss */
+  /* line 171, resources/scss/pages/next-steps.scss */
   #next-steps-viewport #card-row {
     max-height: 1000px !important;
     min-height: 640px !important;
@@ -22602,14 +22599,14 @@ input.input-inner:focus {
 }
 
 @media screen and (max-width: 320px) {
-  /* line 174, resources/scss/pages/next-steps.scss */
+  /* line 171, resources/scss/pages/next-steps.scss */
   #next-steps-viewport #card-row {
     max-height: 800px !important;
     min-height: 560px !important;
   }
 }
 
-/* line 219, resources/scss/pages/next-steps.scss */
+/* line 216, resources/scss/pages/next-steps.scss */
 #next-steps-viewport #card-image-row {
   justify-content: center !important;
   align-content: center !important;
@@ -22621,7 +22618,7 @@ input.input-inner:focus {
 }
 
 @media screen and (max-width: 900px) {
-  /* line 219, resources/scss/pages/next-steps.scss */
+  /* line 216, resources/scss/pages/next-steps.scss */
   #next-steps-viewport #card-image-row {
     justify-content: start !important;
     align-content: start !important;
@@ -22631,20 +22628,20 @@ input.input-inner:focus {
 }
 
 @media screen and (max-width: 768px) {
-  /* line 219, resources/scss/pages/next-steps.scss */
+  /* line 216, resources/scss/pages/next-steps.scss */
   #next-steps-viewport #card-image-row {
     max-height: 250px;
   }
 }
 
 @media screen and (max-width: 599px) {
-  /* line 219, resources/scss/pages/next-steps.scss */
+  /* line 216, resources/scss/pages/next-steps.scss */
   #next-steps-viewport #card-image-row {
     max-height: 150px;
   }
 }
 
-/* line 244, resources/scss/pages/next-steps.scss */
+/* line 241, resources/scss/pages/next-steps.scss */
 #next-steps-viewport #card-text {
   position: relative;
   background-color: #E9F1FC !important;
@@ -22670,25 +22667,23 @@ input.input-inner:focus {
 }
 
 @media screen and (max-width: 900px) {
-  /* line 244, resources/scss/pages/next-steps.scss */
+  /* line 241, resources/scss/pages/next-steps.scss */
   #next-steps-viewport #card-text {
     padding-top: 6px !important;
     padding-bottom: 6px !important;
     padding-left: 12px !important;
     padding-right: 12px !important;
-    max-height: 40px !important;
   }
 }
 
 @media screen and (max-width: 768px) {
-  /* line 244, resources/scss/pages/next-steps.scss */
+  /* line 241, resources/scss/pages/next-steps.scss */
   #next-steps-viewport #card-text {
-    max-height: none !important;
     min-height: auto !important;
   }
 }
 
-/* line 275, resources/scss/pages/next-steps.scss */
+/* line 270, resources/scss/pages/next-steps.scss */
 #next-steps-viewport #card-title-icon {
   font: 500 18px Roboto, Helvetica, "Helvetica Neue", Arial, sans-serif !important;
   padding-bottom: 0 !important;
@@ -22696,12 +22691,18 @@ input.input-inner:focus {
   align-items: center;
 }
 
-/* line 282, resources/scss/pages/next-steps.scss */
+/* line 277, resources/scss/pages/next-steps.scss */
 #next-steps-viewport .card-title-icon-wrap {
   display: flex;
   align-items: center;
   flex: 1;
-  padding-right: 30px;
+}
+
+/* line 283, resources/scss/pages/next-steps.scss */
+#next-steps-viewport .card-title-wrap {
+  flex: 1;
+  padding: 3px;
+  margin-bottom: 4px;
 }
 
 /* line 289, resources/scss/pages/next-steps.scss */
@@ -22709,8 +22710,8 @@ input.input-inner:focus {
   font-size: 18px !important;
   align-self: center !important;
   font-weight: bold;
-  padding: 3px;
-  display: inline;
+  display: block;
+  margin-bottom: 7px;
   white-space: nowrap;
 }
 
@@ -22731,7 +22732,7 @@ input.input-inner:focus {
 #next-steps-viewport .card-icon {
   flex: 0 0 auto !important;
   height: 28px;
-  margin: 0 3px 0 0 !important;
+  margin: 0 3px auto 0 !important;
 }
 
 /* line 313, resources/scss/pages/next-steps.scss */
@@ -22772,63 +22773,110 @@ input.input-inner:focus {
 /* line 340, resources/scss/pages/next-steps.scss */
 #next-steps-viewport .card-controls {
   font-size: 60%;
+  display: flex;
   white-space: nowrap;
+  background-color: #FBFCFE;
+  padding: 3px 12px;
+  border-bottom: 1px solid #ccc;
+  border-top: 1px solid #ccc;
 }
 
-/* line 345, resources/scss/pages/next-steps.scss */
+/* line 349, resources/scss/pages/next-steps.scss */
+#next-steps-viewport .card-controls .lcs_wrap {
+  flex: 0;
+}
+
+/* line 352, resources/scss/pages/next-steps.scss */
+#next-steps-viewport .card-controls .lcs_wrap + label {
+  flex: 1;
+}
+
+/* line 355, resources/scss/pages/next-steps.scss */
+#next-steps-viewport .card-controls .methodology-link {
+  margin: 4px;
+  font-size: 120%;
+  line-height: 20px;
+  vertical-align: middle;
+  text-decoration: underline;
+}
+
+/* line 363, resources/scss/pages/next-steps.scss */
+#next-steps-viewport .help-text {
+  font-size: 14px;
+}
+
+/* line 367, resources/scss/pages/next-steps.scss */
 #next-steps-viewport #card-description {
   font-size: 14px !important;
   padding: 5px;
   background-color: #FBFCFE;
   min-height: 320px;
+  align-items: center;
 }
 
-/* line 351, resources/scss/pages/next-steps.scss */
+/* line 374, resources/scss/pages/next-steps.scss */
 #next-steps-viewport #card-description img {
   height: 40px;
   width: 40px;
   margin: 5px;
 }
 
-/* line 357, resources/scss/pages/next-steps.scss */
+/* line 380, resources/scss/pages/next-steps.scss */
 #next-steps-viewport #card-description b {
   font-weight: bold;
 }
 
-/* line 361, resources/scss/pages/next-steps.scss */
+/* line 384, resources/scss/pages/next-steps.scss */
 #next-steps-viewport #card-description > div {
   display: flex;
   padding: 6px 1px;
+  width: 100%;
 }
 
 @media screen and (max-width: 900px) {
-  /* line 366, resources/scss/pages/next-steps.scss */
+  /* line 390, resources/scss/pages/next-steps.scss */
   #next-steps-viewport #card-description > div:not(:last-child) {
-    border-bottom: 1px solid #124086;
+    border-bottom: 1px solid #ccc;
   }
 }
 
-/* line 371, resources/scss/pages/next-steps.scss */
+/* line 395, resources/scss/pages/next-steps.scss */
 #next-steps-viewport #card-description > div > div {
   margin: auto 0;
   display: flex;
   flex-direction: column;
 }
 
-/* line 377, resources/scss/pages/next-steps.scss */
-#next-steps-viewport #card-description .footer {
-  display: block;
+/* line 403, resources/scss/pages/next-steps.scss */
+#next-steps-viewport .footer {
+  display: flex;
   padding: 10px;
   font-size: small;
+  background-color: #E9F1FC !important;
+  border-top: 1px solid #ccc;
+  color: #124086 !important;
+  align-items: center;
 }
 
-/* line 384, resources/scss/pages/next-steps.scss */
+/* line 412, resources/scss/pages/next-steps.scss */
+#next-steps-viewport .footer a {
+  background-color: #124086;
+  color: #fff;
+  display: flex;
+  text-align: center;
+  flex-direction: column;
+  justify-content: center;
+  padding: 6px 15px;
+  border-radius: 5px;
+}
+
+/* line 424, resources/scss/pages/next-steps.scss */
 #next-steps-viewport .indicator-historic {
   font-size: small;
   font-style: italic;
 }
 
-/* line 389, resources/scss/pages/next-steps.scss */
+/* line 429, resources/scss/pages/next-steps.scss */
 #next-steps-viewport .lcs_wrap {
   display: inline-block;
   direction: ltr;
@@ -22838,21 +22886,21 @@ input.input-inner:focus {
   margin: 6px 2px 6px 0;
 }
 
-/* line 397, resources/scss/pages/next-steps.scss */
+/* line 437, resources/scss/pages/next-steps.scss */
 #next-steps-viewport .lcs_wrap input {
   display: none;
 }
 
-/* line 400, resources/scss/pages/next-steps.scss */
+/* line 440, resources/scss/pages/next-steps.scss */
 #next-steps-viewport .lcs_wrap + label {
   display: inline-block;
   margin: 4px;
   font-size: 120%;
-  line-height: 18px;
+  line-height: 20px;
   vertical-align: middle;
 }
 
-/* line 408, resources/scss/pages/next-steps.scss */
+/* line 448, resources/scss/pages/next-steps.scss */
 #next-steps-viewport .lcs_switch {
   display: inline-block;
   position: relative;
@@ -22867,7 +22915,7 @@ input.input-inner:focus {
   transition: all .2s ease-in-out;
 }
 
-/* line 422, resources/scss/pages/next-steps.scss */
+/* line 462, resources/scss/pages/next-steps.scss */
 #next-steps-viewport .lcs_cursor {
   display: inline-block;
   position: absolute;
@@ -22883,29 +22931,29 @@ input.input-inner:focus {
   transition: all .2s linear;
 }
 
-/* line 439, resources/scss/pages/next-steps.scss */
+/* line 479, resources/scss/pages/next-steps.scss */
 #next-steps-viewport .lcs_switch.lcs_on {
   background: #75b936;
   box-shadow: 0 0 2px #579022 inset;
 }
 
-/* line 443, resources/scss/pages/next-steps.scss */
+/* line 483, resources/scss/pages/next-steps.scss */
 #next-steps-viewport .lcs_switch.lcs_on .lcs_cursor {
   left: 25px;
 }
 
-/* line 449, resources/scss/pages/next-steps.scss */
+/* line 489, resources/scss/pages/next-steps.scss */
 #next-steps-viewport .lcs_switch.lcs_off {
   background: #124086;
   box-shadow: 0px 0px 2px #a4a4a4 inset;
 }
 
-/* line 453, resources/scss/pages/next-steps.scss */
+/* line 493, resources/scss/pages/next-steps.scss */
 #next-steps-viewport .lcs_switch.lcs_off .lcs_cursor {
   left: 11px;
 }
 
-/* line 459, resources/scss/pages/next-steps.scss */
+/* line 499, resources/scss/pages/next-steps.scss */
 #next-steps-viewport .lcs_switch.lcs_disabled {
   opacity: 0.65;
   filter: alpha(opacity=65);

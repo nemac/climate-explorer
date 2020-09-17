@@ -222,9 +222,32 @@ $(function () {
               }
               return `<div><img src="/resources/img/hazards/${indicators[id].icon}.svg" alt="">${content}</div>`
           }).join('')}
-          <div class="footer">Displaying average projections for 2035-2064 (using all available models) as compared to 1961-1990. Top regional hazards identified by the <a href="https://nca2018.globalchange.gov/">2018 National Climate Assessment</a></div>
         `);
 
+        $(".next-steps-temperate .help-text").html(`
+            Top regional hazards for ${cityStateCE}, according to the <a href="https://nca2018.globalchange.gov/">2018 National Climate Assessment.</a> These statements compare projections for the middle third of this century (2035-2064) with average conditions observed from 1961-1990.
+        `)
+
+        const tooltipContent = `
+          <div style="padding: 10px">
+            The Top Hazards displays some potential future climate hazards for the selected location, based on the geographic regions and findings included in the 2018 National Climate Assessment.
+            <br>
+            <br>
+            Each Top Hazard is backed by one of the Climate indicators available in the <a href=\"http://www.rcc-acis.org/\" target=\"_blank\">Applied Climate Information System</a> (ACIS) Web Services. To calculate the value shown, we take the difference of the average value between two 30-year periods: 1961–1990 and 2035–2064. For each 30-year period, the value is calculated using a weighted average of all available models across the entire period, which is then averaged for each grid cell in the LOCA dataset within the selected county.
+          </div>
+        `;
+        tippy($(".next-steps-temperate .methodology-link")[0], {
+          theme: 'ce-three-main',
+          allowHTML: true,
+          content: tooltipContent,
+          arrow: false,
+          trigger: "click",
+          animateFill: false,
+          interactive: true,
+          hideOnClick: true,
+          flipOnUpdate: false,
+          offset: "1,0"
+        });
         $(".next-steps-temperate .card-controls").show();
         $(".next-steps-temperate .card-controls input").lc_switch('', '');
         toggleRange();
