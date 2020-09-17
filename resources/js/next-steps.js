@@ -65,7 +65,7 @@ $(function () {
       label: {
         Midwest: '<b>Changed seasonal patterns</b> may affect agricultural productivity.',
         Northeast: '<b>Changed seasonal patterns</b> may affect rural ecosystems, environments, and economies.',
-        Southeast: '<b>Changed seasonal patterns</b> may affect health impacts and agricultural, timber, and manufacturing sector economies.',
+        Southeast: '<b>Changed seasonal patterns</b> may affect public health and may lead to economic impacts through disruptions in agriculture and manufacturing.',
         NorthernGreatPlains: '<b>Changed seasonal patterns</b> may affect water management systems critical to the region.'
       }
     },
@@ -91,8 +91,8 @@ $(function () {
     max_consecutive_dry_days: {
       icon: 'wildfires',
       label: {
-          Northwest: '<b>Wildfire</b> risk may be increased due to longer periods between precipitation events.',
-          Southwest: '<b>Wildfire</b> risk may be increased due to longer periods between precipitation events.'
+          Northwest: '<b>Wildfire</b> risk may increase with longer periods between precipitation events.',
+          Southwest: '<b>Wildfire</b> risk may increase with longer periods between precipitation events.'
       }
     },
     max_high_temp: {
