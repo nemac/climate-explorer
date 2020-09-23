@@ -219,6 +219,22 @@
       max-height: 350px !important;
     }
   }
+  .card-action {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: $ce3-blue3;
+    border-bottom-left-radius: 5px;
+    border-bottom-right-radius: 5px;
+    color: #fff;
+    padding: 9px 12px;
+    line-height: 16px;
+
+    i.fas {
+      font-size: 16px !important;
+    }
+  }
 }
 
 #card-row {
