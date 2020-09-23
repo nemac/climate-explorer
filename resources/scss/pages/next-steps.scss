@@ -147,11 +147,15 @@
     }
 
     @include medium {
+      height: -moz-fit-content !important;
+      height: -webkit-fit-content !important;
       height: fit-content !important;
       max-height: none !important;
     }
 
     @include small {
+      height: -moz-fit-content !important;
+      height: -webkit-fit-content !important;
       height: fit-content !important;
     }
 

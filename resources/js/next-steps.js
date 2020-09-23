@@ -3,7 +3,7 @@
 // get state location information from URL state management
 // some state management is in main.js and ce.js
 // some ui utility code is in ce3-ui-components.js
-(function ($) {
+$(function() {
   const topHazardsDataURLTemplate = "/resources/data/top_hazards/{fips}.json";
   const cityStateCE = window.ce.ce('getLocationPageState')['city'];
   const countyCE = window.ce.ce('getLocationPageState')['county'];
@@ -288,4 +288,4 @@
     $('.indicator-range').toggle(showRange);
     $('.indicator-avg').toggle(!showRange);
   }
-})(jQuery);
+});

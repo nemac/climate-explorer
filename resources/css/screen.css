@@ -21963,29 +21963,22 @@ input.input-inner:focus {
   }
 }
 
-/* line 187, resources/scss/pages/_cards-home.scss */
+/* line 184, resources/scss/pages/_cards-home.scss */
 #data-card.card-next-steps ::-webkit-scrollbar-track {
   background-color: transparent;
 }
 
-/* line 192, resources/scss/pages/_cards-home.scss */
+/* line 189, resources/scss/pages/_cards-home.scss */
 #data-card.card-next-steps .card-description-holder {
   background-color: transparent;
-  height: calc(100% - 10px);
-}
-
-/* line 196, resources/scss/pages/_cards-home.scss */
-#data-card.card-next-steps .card-description-holder .card-description {
-  overflow-x: auto;
-}
-
-/* line 201, resources/scss/pages/_cards-home.scss */
-#data-card.card-next-steps #card-description {
-  overflow-x: scroll;
+  flex: 1 1 auto;
+  overflow-y: auto;
+  margin: 0 -12px 0 0;
+  padding: 0 12px 0 0;
 }
 
 @media screen and (max-width: 768px) {
-  /* line 183, resources/scss/pages/_cards-home.scss */
+  /* line 182, resources/scss/pages/_cards-home.scss */
   #data-card.card-next-steps {
     height: 100% !important;
     max-height: 350px !important;
@@ -21993,32 +21986,30 @@ input.input-inner:focus {
 }
 
 @media screen and (max-width: 599px) {
-  /* line 183, resources/scss/pages/_cards-home.scss */
+  /* line 182, resources/scss/pages/_cards-home.scss */
   #data-card.card-next-steps {
     max-height: 350px !important;
   }
 }
 
 @media screen and (max-width: 399px) {
-  /* line 183, resources/scss/pages/_cards-home.scss */
+  /* line 182, resources/scss/pages/_cards-home.scss */
   #data-card.card-next-steps {
     max-height: 350px !important;
   }
 }
 
 @media screen and (max-width: 320px) {
-  /* line 183, resources/scss/pages/_cards-home.scss */
+  /* line 182, resources/scss/pages/_cards-home.scss */
   #data-card.card-next-steps {
     max-height: 350px !important;
   }
 }
 
-/* line 222, resources/scss/pages/_cards-home.scss */
+/* line 215, resources/scss/pages/_cards-home.scss */
 #data-card .card-action {
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  right: 0;
+  flex: 0 0 auto;
+  margin: 0 -12px -6px -12px;
   background: #124086;
   border-bottom-left-radius: 5px;
   border-bottom-right-radius: 5px;
@@ -22027,12 +22018,12 @@ input.input-inner:focus {
   line-height: 16px;
 }
 
-/* line 234, resources/scss/pages/_cards-home.scss */
+/* line 225, resources/scss/pages/_cards-home.scss */
 #data-card .card-action i.fas {
   font-size: 16px !important;
 }
 
-/* line 240, resources/scss/pages/_cards-home.scss */
+/* line 231, resources/scss/pages/_cards-home.scss */
 #card-row {
   justify-content: space-evenly !important;
   height: auto !important;
@@ -22043,7 +22034,7 @@ input.input-inner:focus {
 }
 
 @media screen and (max-width: 1240px) {
-  /* line 240, resources/scss/pages/_cards-home.scss */
+  /* line 231, resources/scss/pages/_cards-home.scss */
   #card-row {
     justify-content: center !important;
     height: auto !important;
@@ -22053,7 +22044,7 @@ input.input-inner:focus {
 }
 
 @media screen and (max-width: 900px) {
-  /* line 240, resources/scss/pages/_cards-home.scss */
+  /* line 231, resources/scss/pages/_cards-home.scss */
   #card-row {
     flex-flow: row wrap !important;
     padding-right: 6px !important;
@@ -22065,7 +22056,7 @@ input.input-inner:focus {
 }
 
 @media screen and (max-width: 768px) {
-  /* line 240, resources/scss/pages/_cards-home.scss */
+  /* line 231, resources/scss/pages/_cards-home.scss */
   #card-row {
     max-height: 1240px !important;
     min-height: 1000px !important;
@@ -22073,7 +22064,7 @@ input.input-inner:focus {
 }
 
 @media screen and (max-width: 599px) {
-  /* line 240, resources/scss/pages/_cards-home.scss */
+  /* line 231, resources/scss/pages/_cards-home.scss */
   #card-row {
     max-height: 1240px !important;
     min-height: 710px !important;
@@ -22081,7 +22072,7 @@ input.input-inner:focus {
 }
 
 @media screen and (max-width: 399px) {
-  /* line 240, resources/scss/pages/_cards-home.scss */
+  /* line 231, resources/scss/pages/_cards-home.scss */
   #card-row {
     max-height: 1000px !important;
     min-height: 640px !important;
@@ -22089,14 +22080,14 @@ input.input-inner:focus {
 }
 
 @media screen and (max-width: 320px) {
-  /* line 240, resources/scss/pages/_cards-home.scss */
+  /* line 231, resources/scss/pages/_cards-home.scss */
   #card-row {
     max-height: 800px !important;
     min-height: 560px !important;
   }
 }
 
-/* line 285, resources/scss/pages/_cards-home.scss */
+/* line 276, resources/scss/pages/_cards-home.scss */
 #card-image-row {
   justify-content: center !important;
   align-content: center !important;
@@ -22108,7 +22099,7 @@ input.input-inner:focus {
 }
 
 @media screen and (max-width: 900px) {
-  /* line 285, resources/scss/pages/_cards-home.scss */
+  /* line 276, resources/scss/pages/_cards-home.scss */
   #card-image-row {
     justify-content: start !important;
     align-content: start !important;
@@ -22118,20 +22109,20 @@ input.input-inner:focus {
 }
 
 @media screen and (max-width: 768px) {
-  /* line 285, resources/scss/pages/_cards-home.scss */
+  /* line 276, resources/scss/pages/_cards-home.scss */
   #card-image-row {
     max-height: 250px;
   }
 }
 
 @media screen and (max-width: 599px) {
-  /* line 285, resources/scss/pages/_cards-home.scss */
+  /* line 276, resources/scss/pages/_cards-home.scss */
   #card-image-row {
     max-height: 150px;
   }
 }
 
-/* line 312, resources/scss/pages/_cards-home.scss */
+/* line 303, resources/scss/pages/_cards-home.scss */
 #card-text {
   position: relative;
   background-color: #E9F1FC !important;
@@ -22157,7 +22148,7 @@ input.input-inner:focus {
 }
 
 @media screen and (max-width: 900px) {
-  /* line 312, resources/scss/pages/_cards-home.scss */
+  /* line 303, resources/scss/pages/_cards-home.scss */
   #card-text {
     flex: 1 1 150px !important;
     height: 150px !important;
@@ -22167,7 +22158,7 @@ input.input-inner:focus {
 }
 
 @media screen and (min-height: 1000px) {
-  /* line 312, resources/scss/pages/_cards-home.scss */
+  /* line 303, resources/scss/pages/_cards-home.scss */
   #card-text {
     flex: 1 1 120px !important;
     height: 120px !important;
@@ -22176,7 +22167,7 @@ input.input-inner:focus {
 }
 
 @media screen and (min-height: 1000px) and (max-width: 900px) {
-  /* line 312, resources/scss/pages/_cards-home.scss */
+  /* line 303, resources/scss/pages/_cards-home.scss */
   #card-text {
     flex: 1 1 150px !important;
     height: 150px !important;
@@ -22185,7 +22176,7 @@ input.input-inner:focus {
 }
 
 @media screen and (min-height: 1200px) {
-  /* line 312, resources/scss/pages/_cards-home.scss */
+  /* line 303, resources/scss/pages/_cards-home.scss */
   #card-text {
     flex: 1 1 150px !important;
     height: 150px !important;
@@ -22194,7 +22185,7 @@ input.input-inner:focus {
 }
 
 @media screen and (min-height: 1200px) and (max-width: 900px) {
-  /* line 312, resources/scss/pages/_cards-home.scss */
+  /* line 303, resources/scss/pages/_cards-home.scss */
   #card-text {
     flex: 1 1 150px !important;
     height: 150px !important;
@@ -22203,7 +22194,7 @@ input.input-inner:focus {
 }
 
 @media screen and (max-width: 900px) {
-  /* line 312, resources/scss/pages/_cards-home.scss */
+  /* line 303, resources/scss/pages/_cards-home.scss */
   #card-text {
     padding-top: 6px !important;
     padding-bottom: 6px !important;
@@ -22213,27 +22204,27 @@ input.input-inner:focus {
 }
 
 @media screen and (max-width: 768px) {
-  /* line 312, resources/scss/pages/_cards-home.scss */
+  /* line 303, resources/scss/pages/_cards-home.scss */
   #card-text {
     min-height: 40px !important;
   }
 }
 
 @media screen and (max-width: 399px) {
-  /* line 312, resources/scss/pages/_cards-home.scss */
+  /* line 303, resources/scss/pages/_cards-home.scss */
   #card-text {
     min-height: 90px !important;
   }
 }
 
-/* line 374, resources/scss/pages/_cards-home.scss */
+/* line 365, resources/scss/pages/_cards-home.scss */
 #card-text.card-text-full {
   min-height: 100% !important;
   height: 100% !important;
   flex: 1 1 100% !important;
 }
 
-/* line 380, resources/scss/pages/_cards-home.scss */
+/* line 371, resources/scss/pages/_cards-home.scss */
 #card-text ul {
   margin-top: 0;
   margin-bottom: 1rem;
@@ -22245,21 +22236,22 @@ input.input-inner:focus {
   padding-inline-start: 15px;
 }
 
-/* line 391, resources/scss/pages/_cards-home.scss */
+/* line 382, resources/scss/pages/_cards-home.scss */
 #card-text li {
   display: list-item;
   margin: .25rem;
   text-align: -webkit-match-parent;
 }
 
-/* line 398, resources/scss/pages/_cards-home.scss */
+/* line 389, resources/scss/pages/_cards-home.scss */
 #card-title-icon {
   font: 500 18px Roboto, Helvetica, "Helvetica Neue", Arial, sans-serif !important;
   padding-bottom: 6px !important;
   max-height: 28px;
+  flex-wrap: nowrap !important;
 }
 
-/* line 404, resources/scss/pages/_cards-home.scss */
+/* line 396, resources/scss/pages/_cards-home.scss */
 .card-title {
   font-size: 18px !important;
   flex: 1 1 auto !important;
@@ -22267,26 +22259,26 @@ input.input-inner:focus {
 }
 
 @media screen and (max-width: 599px) {
-  /* line 404, resources/scss/pages/_cards-home.scss */
+  /* line 396, resources/scss/pages/_cards-home.scss */
   .card-title {
     font-size: 18px !important;
   }
 }
 
-/* line 414, resources/scss/pages/_cards-home.scss */
+/* line 406, resources/scss/pages/_cards-home.scss */
 .card-title a {
   color: #FBFCFE !important;
   text-decoration: none !important;
 }
 
-/* line 420, resources/scss/pages/_cards-home.scss */
+/* line 412, resources/scss/pages/_cards-home.scss */
 .card-icon {
   flex: 0 0 auto !important;
   font-size: 24px !important;
   margin-right: 12px !important;
 }
 
-/* line 426, resources/scss/pages/_cards-home.scss */
+/* line 418, resources/scss/pages/_cards-home.scss */
 .card-image {
   height: auto !important;
   -webkit-border-radius: 5px 5px;
@@ -22298,13 +22290,13 @@ input.input-inner:focus {
 }
 
 @media screen and (max-width: 900px) {
-  /* line 426, resources/scss/pages/_cards-home.scss */
+  /* line 418, resources/scss/pages/_cards-home.scss */
   .card-image {
     align-self: start !important;
   }
 }
 
-/* line 438, resources/scss/pages/_cards-home.scss */
+/* line 430, resources/scss/pages/_cards-home.scss */
 #card-description {
   font-size: 14px !important;
 }
@@ -22528,6 +22520,8 @@ input.input-inner:focus {
 @media screen and (max-width: 900px) {
   /* line 100, resources/scss/pages/next-steps.scss */
   #next-steps-viewport #data-card {
+    height: -moz-fit-content !important;
+    height: -webkit-fit-content !important;
     height: fit-content !important;
     max-height: none !important;
   }
@@ -22536,6 +22530,8 @@ input.input-inner:focus {
 @media screen and (max-width: 768px) {
   /* line 100, resources/scss/pages/next-steps.scss */
   #next-steps-viewport #data-card {
+    height: -moz-fit-content !important;
+    height: -webkit-fit-content !important;
     height: fit-content !important;
   }
 }
@@ -22561,7 +22557,7 @@ input.input-inner:focus {
   }
 }
 
-/* line 171, resources/scss/pages/next-steps.scss */
+/* line 175, resources/scss/pages/next-steps.scss */
 #next-steps-viewport #card-row {
   justify-content: space-evenly !important;
   height: auto !important;
@@ -22572,7 +22568,7 @@ input.input-inner:focus {
 }
 
 @media screen and (max-width: 1240px) {
-  /* line 171, resources/scss/pages/next-steps.scss */
+  /* line 175, resources/scss/pages/next-steps.scss */
   #next-steps-viewport #card-row {
     justify-content: center !important;
     height: auto !important;
@@ -22582,7 +22578,7 @@ input.input-inner:focus {
 }
 
 @media screen and (max-width: 900px) {
-  /* line 171, resources/scss/pages/next-steps.scss */
+  /* line 175, resources/scss/pages/next-steps.scss */
   #next-steps-viewport #card-row {
     flex-flow: row wrap !important;
     padding-right: 6px !important;
@@ -22594,7 +22590,7 @@ input.input-inner:focus {
 }
 
 @media screen and (max-width: 768px) {
-  /* line 171, resources/scss/pages/next-steps.scss */
+  /* line 175, resources/scss/pages/next-steps.scss */
   #next-steps-viewport #card-row {
     max-height: 1240px !important;
     min-height: 1000px !important;
@@ -22602,7 +22598,7 @@ input.input-inner:focus {
 }
 
 @media screen and (max-width: 599px) {
-  /* line 171, resources/scss/pages/next-steps.scss */
+  /* line 175, resources/scss/pages/next-steps.scss */
   #next-steps-viewport #card-row {
     max-height: 1240px !important;
     min-height: 710px !important;
@@ -22610,7 +22606,7 @@ input.input-inner:focus {
 }
 
 @media screen and (max-width: 399px) {
-  /* line 171, resources/scss/pages/next-steps.scss */
+  /* line 175, resources/scss/pages/next-steps.scss */
   #next-steps-viewport #card-row {
     max-height: 1000px !important;
     min-height: 640px !important;
@@ -22618,14 +22614,14 @@ input.input-inner:focus {
 }
 
 @media screen and (max-width: 320px) {
-  /* line 171, resources/scss/pages/next-steps.scss */
+  /* line 175, resources/scss/pages/next-steps.scss */
   #next-steps-viewport #card-row {
     max-height: 800px !important;
     min-height: 560px !important;
   }
 }
 
-/* line 216, resources/scss/pages/next-steps.scss */
+/* line 220, resources/scss/pages/next-steps.scss */
 #next-steps-viewport #card-image-row {
   justify-content: center !important;
   align-content: center !important;
@@ -22637,7 +22633,7 @@ input.input-inner:focus {
 }
 
 @media screen and (max-width: 900px) {
-  /* line 216, resources/scss/pages/next-steps.scss */
+  /* line 220, resources/scss/pages/next-steps.scss */
   #next-steps-viewport #card-image-row {
     justify-content: start !important;
     align-content: start !important;
@@ -22647,20 +22643,20 @@ input.input-inner:focus {
 }
 
 @media screen and (max-width: 768px) {
-  /* line 216, resources/scss/pages/next-steps.scss */
+  /* line 220, resources/scss/pages/next-steps.scss */
   #next-steps-viewport #card-image-row {
     max-height: 250px;
   }
 }
 
 @media screen and (max-width: 599px) {
-  /* line 216, resources/scss/pages/next-steps.scss */
+  /* line 220, resources/scss/pages/next-steps.scss */
   #next-steps-viewport #card-image-row {
     max-height: 150px;
   }
 }
 
-/* line 241, resources/scss/pages/next-steps.scss */
+/* line 245, resources/scss/pages/next-steps.scss */
 #next-steps-viewport #card-text {
   position: relative;
   background-color: #E9F1FC !important;
@@ -22686,7 +22682,7 @@ input.input-inner:focus {
 }
 
 @media screen and (max-width: 900px) {
-  /* line 241, resources/scss/pages/next-steps.scss */
+  /* line 245, resources/scss/pages/next-steps.scss */
   #next-steps-viewport #card-text {
     padding-top: 6px !important;
     padding-bottom: 6px !important;
@@ -22696,13 +22692,13 @@ input.input-inner:focus {
 }
 
 @media screen and (max-width: 768px) {
-  /* line 241, resources/scss/pages/next-steps.scss */
+  /* line 245, resources/scss/pages/next-steps.scss */
   #next-steps-viewport #card-text {
     min-height: auto !important;
   }
 }
 
-/* line 270, resources/scss/pages/next-steps.scss */
+/* line 274, resources/scss/pages/next-steps.scss */
 #next-steps-viewport #card-title-icon {
   font: 500 18px Roboto, Helvetica, "Helvetica Neue", Arial, sans-serif !important;
   padding-bottom: 0 !important;
@@ -22710,21 +22706,21 @@ input.input-inner:focus {
   align-items: center;
 }
 
-/* line 277, resources/scss/pages/next-steps.scss */
+/* line 281, resources/scss/pages/next-steps.scss */
 #next-steps-viewport .card-title-icon-wrap {
   display: flex;
   align-items: center;
   flex: 1;
 }
 
-/* line 283, resources/scss/pages/next-steps.scss */
+/* line 287, resources/scss/pages/next-steps.scss */
 #next-steps-viewport .card-title-wrap {
   flex: 1;
   padding: 3px;
   margin-bottom: 4px;
 }
 
-/* line 289, resources/scss/pages/next-steps.scss */
+/* line 293, resources/scss/pages/next-steps.scss */
 #next-steps-viewport .card-title {
   font-size: 18px !important;
   align-self: center !important;
@@ -22735,26 +22731,26 @@ input.input-inner:focus {
 }
 
 @media screen and (max-width: 599px) {
-  /* line 289, resources/scss/pages/next-steps.scss */
+  /* line 293, resources/scss/pages/next-steps.scss */
   #next-steps-viewport .card-title {
     font-size: 18px !important;
   }
 }
 
-/* line 301, resources/scss/pages/next-steps.scss */
+/* line 305, resources/scss/pages/next-steps.scss */
 #next-steps-viewport .card-title a {
   color: #FBFCFE !important;
   text-decoration: none !important;
 }
 
-/* line 307, resources/scss/pages/next-steps.scss */
+/* line 311, resources/scss/pages/next-steps.scss */
 #next-steps-viewport .card-icon {
   flex: 0 0 auto !important;
   height: 28px;
   margin: 0 3px auto 0 !important;
 }
 
-/* line 313, resources/scss/pages/next-steps.scss */
+/* line 317, resources/scss/pages/next-steps.scss */
 #next-steps-viewport .card-image {
   height: auto !important;
   -webkit-border-radius: 5px 5px;
@@ -22766,13 +22762,13 @@ input.input-inner:focus {
 }
 
 @media screen and (max-width: 900px) {
-  /* line 313, resources/scss/pages/next-steps.scss */
+  /* line 317, resources/scss/pages/next-steps.scss */
   #next-steps-viewport .card-image {
     align-self: start !important;
   }
 }
 
-/* line 325, resources/scss/pages/next-steps.scss */
+/* line 329, resources/scss/pages/next-steps.scss */
 #next-steps-viewport .card-subtitle {
   font-size: small;
   display: inline;
@@ -22783,13 +22779,13 @@ input.input-inner:focus {
   white-space: nowrap;
 }
 
-/* line 334, resources/scss/pages/next-steps.scss */
+/* line 338, resources/scss/pages/next-steps.scss */
 #next-steps-viewport .card-subtitle a {
   color: #124086 !important;
   text-decoration: underline !important;
 }
 
-/* line 340, resources/scss/pages/next-steps.scss */
+/* line 344, resources/scss/pages/next-steps.scss */
 #next-steps-viewport .card-controls {
   font-size: 60%;
   display: flex;
@@ -22800,17 +22796,17 @@ input.input-inner:focus {
   border-top: 1px solid #ccc;
 }
 
-/* line 349, resources/scss/pages/next-steps.scss */
+/* line 353, resources/scss/pages/next-steps.scss */
 #next-steps-viewport .card-controls .lcs_wrap {
   flex: 0;
 }
 
-/* line 352, resources/scss/pages/next-steps.scss */
+/* line 356, resources/scss/pages/next-steps.scss */
 #next-steps-viewport .card-controls .lcs_wrap + label {
   flex: 1;
 }
 
-/* line 355, resources/scss/pages/next-steps.scss */
+/* line 359, resources/scss/pages/next-steps.scss */
 #next-steps-viewport .card-controls .methodology-link {
   margin: 4px;
   font-size: 120%;
@@ -22819,12 +22815,12 @@ input.input-inner:focus {
   text-decoration: underline;
 }
 
-/* line 363, resources/scss/pages/next-steps.scss */
+/* line 367, resources/scss/pages/next-steps.scss */
 #next-steps-viewport .help-text {
   font-size: 14px;
 }
 
-/* line 367, resources/scss/pages/next-steps.scss */
+/* line 371, resources/scss/pages/next-steps.scss */
 #next-steps-viewport #card-description {
   font-size: 14px !important;
   padding: 5px;
@@ -22833,19 +22829,19 @@ input.input-inner:focus {
   align-items: center;
 }
 
-/* line 374, resources/scss/pages/next-steps.scss */
+/* line 378, resources/scss/pages/next-steps.scss */
 #next-steps-viewport #card-description img {
   height: 40px;
   width: 40px;
   margin: 5px;
 }
 
-/* line 380, resources/scss/pages/next-steps.scss */
+/* line 384, resources/scss/pages/next-steps.scss */
 #next-steps-viewport #card-description b {
   font-weight: bold;
 }
 
-/* line 384, resources/scss/pages/next-steps.scss */
+/* line 388, resources/scss/pages/next-steps.scss */
 #next-steps-viewport #card-description > div {
   display: flex;
   padding: 6px 1px;
@@ -22853,20 +22849,20 @@ input.input-inner:focus {
 }
 
 @media screen and (max-width: 900px) {
-  /* line 390, resources/scss/pages/next-steps.scss */
+  /* line 394, resources/scss/pages/next-steps.scss */
   #next-steps-viewport #card-description > div:not(:last-child) {
     border-bottom: 1px solid #ccc;
   }
 }
 
-/* line 395, resources/scss/pages/next-steps.scss */
+/* line 399, resources/scss/pages/next-steps.scss */
 #next-steps-viewport #card-description > div > div {
   margin: auto 0;
   display: flex;
   flex-direction: column;
 }
 
-/* line 403, resources/scss/pages/next-steps.scss */
+/* line 407, resources/scss/pages/next-steps.scss */
 #next-steps-viewport .footer {
   display: flex;
   padding: 10px;
@@ -22877,7 +22873,7 @@ input.input-inner:focus {
   align-items: center;
 }
 
-/* line 412, resources/scss/pages/next-steps.scss */
+/* line 416, resources/scss/pages/next-steps.scss */
 #next-steps-viewport .footer a {
   background-color: #124086;
   color: #fff;
@@ -22889,13 +22885,13 @@ input.input-inner:focus {
   border-radius: 5px;
 }
 
-/* line 424, resources/scss/pages/next-steps.scss */
+/* line 428, resources/scss/pages/next-steps.scss */
 #next-steps-viewport .indicator-historic {
   font-size: small;
   font-style: italic;
 }
 
-/* line 429, resources/scss/pages/next-steps.scss */
+/* line 433, resources/scss/pages/next-steps.scss */
 #next-steps-viewport .lcs_wrap {
   display: inline-block;
   direction: ltr;
@@ -22905,12 +22901,12 @@ input.input-inner:focus {
   margin: 6px 2px 6px 0;
 }
 
-/* line 437, resources/scss/pages/next-steps.scss */
+/* line 441, resources/scss/pages/next-steps.scss */
 #next-steps-viewport .lcs_wrap input {
   display: none;
 }
 
-/* line 440, resources/scss/pages/next-steps.scss */
+/* line 444, resources/scss/pages/next-steps.scss */
 #next-steps-viewport .lcs_wrap + label {
   display: inline-block;
   margin: 4px;
@@ -22919,7 +22915,7 @@ input.input-inner:focus {
   vertical-align: middle;
 }
 
-/* line 448, resources/scss/pages/next-steps.scss */
+/* line 452, resources/scss/pages/next-steps.scss */
 #next-steps-viewport .lcs_switch {
   display: inline-block;
   position: relative;
@@ -22934,7 +22930,7 @@ input.input-inner:focus {
   transition: all .2s ease-in-out;
 }
 
-/* line 462, resources/scss/pages/next-steps.scss */
+/* line 466, resources/scss/pages/next-steps.scss */
 #next-steps-viewport .lcs_cursor {
   display: inline-block;
   position: absolute;
@@ -22950,29 +22946,29 @@ input.input-inner:focus {
   transition: all .2s linear;
 }
 
-/* line 479, resources/scss/pages/next-steps.scss */
+/* line 483, resources/scss/pages/next-steps.scss */
 #next-steps-viewport .lcs_switch.lcs_on {
   background: #75b936;
   box-shadow: 0 0 2px #579022 inset;
 }
 
-/* line 483, resources/scss/pages/next-steps.scss */
+/* line 487, resources/scss/pages/next-steps.scss */
 #next-steps-viewport .lcs_switch.lcs_on .lcs_cursor {
   left: 25px;
 }
 
-/* line 489, resources/scss/pages/next-steps.scss */
+/* line 493, resources/scss/pages/next-steps.scss */
 #next-steps-viewport .lcs_switch.lcs_off {
   background: #124086;
   box-shadow: 0px 0px 2px #a4a4a4 inset;
 }
 
-/* line 493, resources/scss/pages/next-steps.scss */
+/* line 497, resources/scss/pages/next-steps.scss */
 #next-steps-viewport .lcs_switch.lcs_off .lcs_cursor {
   left: 11px;
 }
 
-/* line 499, resources/scss/pages/next-steps.scss */
+/* line 503, resources/scss/pages/next-steps.scss */
 #next-steps-viewport .lcs_switch.lcs_disabled {
   opacity: 0.65;
   filter: alpha(opacity=65);
