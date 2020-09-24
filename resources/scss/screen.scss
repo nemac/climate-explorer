@@ -1222,7 +1222,7 @@ h6 {
   max-height:999px;
   @include transition(0.5s);
   @include transition-property(all);
-  @include transition-timing-function(ease-out)
+  @include transition-timing-function(ease-out);
   @include medium {
     min-height: 1px !important;
   }
@@ -1238,12 +1238,12 @@ h6 {
   }
 }
 
-#cards-viewport .rounded-filters-box {
-  min-height: $ce3-btn-height !important;
-  @include medium {
-    min-height: $ce3-btn-height !important;
-  }
-}
+// #cards-viewport .rounded-filters-box {
+//   min-height: $ce3-btn-height !important;
+//   @include medium {
+//     min-height: $ce3-btn-height !important;
+//   }
+// }
 
 .rounded-box-secondary {
   @include border-radius(5px, 5px);
@@ -1971,6 +1971,8 @@ input.input-inner-default:focus  {
 // cards-home
 @import "pages/cards-home";
 
+// next-steps
+@import "pages/next-steps";
 
 // about, definitions, creds, faq
 @import "pages/about";

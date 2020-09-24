@@ -70,6 +70,13 @@
       background-color: $white !important;
     }
   }
+
+  .rounded-filters-box {
+    min-height: $ce3-btn-height !important;
+    @include medium {
+      min-height: $ce3-btn-height !important;
+    }
+  }
 }
 
 #cards-search-input {
@@ -110,6 +117,7 @@
     #card-text {
       color: darken($ce3-blue6, 20) !important;
     }
+
     .disabled-text {
       position: absolute;
       top: -75px;
@@ -126,6 +134,7 @@
       display: inherit;
     }
   }
+
 
   &:focus, &:hover {
     border: 1px solid darken($ce3-blue3, 10) !important;
@@ -166,6 +175,56 @@
 
   @include to-small-to-see {
     max-height: 175px !important;
+  }
+
+
+
+  &.card-next-steps {
+    ::-webkit-scrollbar {
+      &-track {
+        background-color: transparent;
+      }
+    }
+
+    .card-description-holder {
+      background-color: transparent;
+      flex: 1 1 auto;
+      overflow-y: auto;
+      // ensures that scollbar is on right edge of card as needed.
+      margin: 0 -12px 0 0;
+      padding: 0 12px 0 0;
+    }
+
+    @include small {
+      height: 100% !important;
+      max-height: 350px !important;
+    }
+
+    @include very-small {
+      max-height: 350px !important;
+    }
+
+    @include tiny {
+      max-height: 350px !important;
+    }
+
+    @include to-small-to-see {
+      max-height: 350px !important;
+    }
+  }
+  .card-action {
+    flex: 0 0 auto;
+    margin: 0 -12px -6px -12px;
+    background: $ce3-blue3;
+    border-bottom-left-radius: 5px;
+    border-bottom-right-radius: 5px;
+    color: #fff;
+    padding: 9px 12px;
+    line-height: 16px;
+
+    i.fas {
+      font-size: 16px !important;
+    }
   }
 }
 
@@ -302,12 +361,36 @@
   @include tiny {
     min-height: 90px !important;
   }
+
+  &.card-text-full {
+    min-height: 100% !important;
+    height: 100% !important;
+    flex: 1 1 100% !important;
+  }
+
+  ul {
+    margin-top: 0;
+    margin-bottom: 1rem;
+    list-style: disc;
+    margin-block-start: .25em;
+    margin-block-end: 1em;
+    margin-inline-start: 0px;
+    margin-inline-end: 0px;
+    padding-inline-start: 15px;
+  }
+
+  li {
+    display: list-item;
+    margin: .25rem;
+    text-align: -webkit-match-parent;
+  }
 }
 
 #card-title-icon {
   font: $font-weight-meduim 18px $roboto !important;
   padding-bottom: $ce3-padding-half !important;
   max-height: 28px;
+  flex-wrap: nowrap !important;
 }
 
 .card-title {

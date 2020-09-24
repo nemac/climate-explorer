@@ -292,7 +292,6 @@ especially when it comes to interacting with the DOM and handling events.
       var state = this.getUrlParams({
         mode: 'mode',
         county: 'county',
-        variable: 'id',
         stationId: 'station',
         stationName: 'station-name',
         tidalStationMOverMHHW: 'tidal-station-mhhw',

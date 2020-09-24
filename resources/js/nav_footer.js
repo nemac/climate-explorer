@@ -34,6 +34,7 @@ $(function () {
   addNavClick('historical-weather-data', 'historical-weather-data', navConstants.selectorAddOn);
   addNavClick('high-tide-flooding', 'high-tide-flooding', navConstants.selectorAddOn);
   addNavClick('historical-thresholds', 'historical-thresholds', navConstants.selectorAddOn);
+  addNavClick('next-steps', 'next-steps', navConstants.selectorAddOn);
 
   updateNavBar();
   addMoreClickEvent();
@@ -120,6 +121,7 @@ $(function () {
     const highTideFloodingViewport = document.getElementById(navConstants.highTideFloodingViewport);
     const locationMapsViewport = document.getElementById(navConstants.locationMapsViewport);
     const cardsViewport = document.getElementById(navConstants.cardsViewport);
+    const nextStepsViewport = document.getElementById(navConstants.nextStepsViewport);
     const lessWrapperNavFooterElem = document.getElementById(navConstants.lessWrapperNavFooterElem);
     const navFooterAreaLineElem = document.querySelectorAll(`.${navConstants.navFooterAreaLineElem}`);
     const lessRow1Elem = document.getElementById(navConstants.lessRow1Elem);
@@ -134,6 +136,7 @@ $(function () {
     addClass(historicalThresholdsViewport, 'expanded');
     addClass(highTideFloodingViewport, 'expanded');
     addClass(cardsViewport, 'expanded');
+    addClass(nextStepsViewport, 'expanded');
     addClass(lessWrapperNavFooterElem, 'expanded');
     addClass(lessRow1Elem, 'expanded');
 
@@ -157,6 +160,7 @@ $(function () {
       const historicalThresholdsViewport = document.getElementById(navConstants.historicalThresholdsViewport);
       const highTideFloodingViewport = document.getElementById(navConstants.highTideFloodingViewport);
       const cardsViewport = document.getElementById(navConstants.cardsViewport);
+      const nextStepsViewport = document.getElementById(navConstants.nextStepsViewport);
       const lessWrapperNavFooterElem = document.getElementById(navConstants.lessWrapperNavFooterElem);
       const navFooterAreaLineElem = document.querySelectorAll(`.${navConstants.navFooterAreaLineElem}`);
       const lessRow1Elem = document.getElementById(navConstants.lessRow1Elem);
@@ -171,6 +175,7 @@ $(function () {
       removeClass(historicalThresholdsViewport, 'expanded');
       removeClass(highTideFloodingViewport, 'expanded');
       removeClass(cardsViewport, 'expanded');
+      removeClass(nextStepsViewport, 'expanded');
       removeClass(lessWrapperNavFooterElem, 'expanded');
       removeClass(lessRow1Elem, 'expanded');
 
@@ -214,6 +219,7 @@ $(function () {
       navFooterAreaLineElem: 'nav-footer-area-line',
       navFooter: 'nav-footer',
       cardsViewport: 'cards-viewport',
+      nextStepsViewport: 'next-steps-viewport',
       locationChartsViewport: 'local-climate-charts-viewport',
       locationMapsViewport: 'local-climate-maps-viewport',
       historicalWeatherDataViewport: 'historical-weather-data-viewport',
