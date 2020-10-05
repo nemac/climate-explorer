@@ -71,35 +71,31 @@ $(function() {
     },
     dry_spells: {
       icon: 'drought',
-      label: {
-        Midwest: '<b>Dry spells</b> — consecutive days without precipitation — may increase slightly.',
-        Northwest: '<b>Dry spells</b> — consecutive days without precipitation — may increase slightly.',
-        Southeast: '<b>Dry spells</b> — consecutive days without precipitation — may increase slightly.',
-        Southwest: '<b>Dry spells</b> — consecutive days without precipitation — may increase slightly.',
-        NorthernGreatPlains: '<b>Dry spells</b> — consecutive days without precipitation — may increase slightly.',
-        SouthernGreatPlains: '<b>Dry spells</b> — consecutive days without precipitation — may increase slightly.'
-      }
+      directions: ['less', 'more'],
+      averageLabel: ({ average, dir }) => `There is projected to be ${average} ${dir} <b>dry spell${average !== "1" ? "s" : ""}</b> — a period of consecutive days without precipitation — every year.`,
+      rangeLabel: ({ formatMoreLess, directions, min, max }) => `There is projected to be between ${formatMoreLess(min, max, "")} <b>dry spells</b> — periods of consecutive days without precipitation — every year`,
+      historicLabel: ({ formatHistoric, historicAvg, historicMin, historicMax }) => `Historically ${location} has had on average ${formatHistoric(historicAvg, historicMin, historicMax, "")} dry spells every year.`
     },
     extreme_precip_events: {
       icon: 'rain-storm',
       directions: ['decrease', 'increase'],
       relative: true,
-      averageLabel: ({average, dir}) => `Annual counts of <b>intense rainstorms</b> – those that drop two or more inches in one day – are projected to ${dir} by ${average}%.`,
-      rangeLabel: ({ formatRange, directions, min, max }) => `Annual counts of <b>intense rainstorms</b> – those that drop two or more inches in one day – are projected to ${formatRange(min, max, "%", directions)}.`,
+      averageLabel: ({ average, dir }) => `Annual counts of <b>intense rainstorms</b> – those that drop two or more inches in one day — are projected to ${dir} by ${average}%.`,
+      rangeLabel: ({ formatIncreaseDecrease, directions, min, max }) => `Annual counts of <b>intense rainstorms</b> — those that drop two or more inches in one day – are projected to ${formatIncreaseDecrease(min, max, "%")}.`,
       historicLabel: ({ formatHistoric, historicAvg, historicMin, historicMax, location }) => `Historically ${location} has had on average ${formatHistoric(historicAvg, historicMin, historicMax, "")} intense rain storms occur every year.`
     },
     max_consecutive_dry_days: {
       icon: 'wildfires',
-      label: {
-        Northwest: '<b>Wildfire</b> risk may increase with longer periods between precipitation events.',
-        Southwest: '<b>Wildfire</b> risk may increase with longer periods between precipitation events.'
-      }
+      directions: ['decrease', 'increase'],
+      averageLabel: ({ average, dir }) => `<b>Wildfire</b> risk may increase with longer periods between precipitation events, which are projected to ${dir} by ${average} days.`,
+      rangeLabel: ({ formatIncreaseDecrease, directions, min, max }) => `<b>Wildfire</b> risk may increase with longer periods between precipitation events, which are projected to ${formatIncreaseDecrease(min, max, [" day", " days"])}.`,
+      historicLabel: ({ formatHistoric, historicAvg, historicMin, historicMax }) => `Historically the longest yearly dry spell lasts on average ${formatHistoric(historicAvg, historicMin, historicMax, "")} days.`
     },
     max_high_temp: {
       icon: 'extreme-hot-days',
       directions: ['decrease', 'increase'],
       averageLabel: ({average, dir}) => `<b>Extreme temperatures</b> on the hottest days of the year are projected to ${dir} by ${average}°F.`,
-      rangeLabel: ({ formatRange, directions, min, max }) => `<b>Extreme temperatures</b> on the hottest days of the year are projected to ${formatRange(min, max, "°F", directions)}.`,
+      rangeLabel: ({ formatIncreaseDecrease, directions, min, max }) => `<b>Extreme temperatures</b> on the hottest days of the year are projected to ${formatIncreaseDecrease(min, max, "°F")}.`,
       historicLabel: ({ formatHistoric, historicAvg, historicMin, historicMax }) => `Historically on average ${formatHistoric(historicAvg, historicMin, historicMax, "°F")}.`
     },
     ocean_acidification: {
@@ -196,7 +192,8 @@ $(function() {
               max = Math.round(max);
               const context = {
                 formatHistoric: formatHistoric,
-                formatRange: formatRange,
+                formatIncreaseDecrease: formatIncreaseDecrease,
+                formatMoreLess: formatMoreLess,
                 average: numFormat.format(Math.abs(average)),
                 historicAvg: indicatorData.historic.average,
                 historicMin: indicatorData.historic.minimum,
@@ -272,17 +269,31 @@ $(function() {
     return `${avg}${suffix} (between ${min}&nbsp;-&nbsp;${max}${suffix})`;
   }
 
-  function formatRange(minNum, maxNum, suffix, directions) {
+  function formatIncreaseDecrease(minNum, maxNum, suffix) {
     const min = numFormat.format(Math.abs(minNum));
     const max = numFormat.format(Math.abs(maxNum));
-    if (min === max) {
-      return `be ${min}${suffix}`;
+    const [rangeSuffix, singularSuffix] = Array.isArray(suffix) ? suffix : [suffix, suffix];
+    if (numFormat.format(minNum) === numFormat.format(maxNum)) {
+      return `be ${min}${singularSuffix}`;
     }
     if (minNum < 0 && maxNum > 0) {
-      return `have between a ${min}${suffix} ${directions[0]} and a ${max}${suffix} ${directions[1]}`;
+      return `have between a ${min}${rangeSuffix} decrease and a ${max}${rangeSuffix} increase`;
     }
-    const direction = maxNum < 0 ? directions[0] : directions[1];
-    return `${direction} between ${min}&nbsp;-&nbsp;${max}${suffix}`;
+    const direction = maxNum < 0 ? "decrease" : "increase";
+    return `${direction} between ${min}&nbsp;-&nbsp;${max}${singularSuffix}`;
+  }
+
+  function formatMoreLess(minNum, maxNum, suffix) {
+    const min = numFormat.format(Math.abs(minNum));
+    const max = numFormat.format(Math.abs(maxNum));
+    if (numFormat.format(minNum) === numFormat.format(maxNum)) {
+      return min + suffix;
+    }
+    if (minNum < 0 && maxNum > 0) {
+      return `${min + suffix} less and ${max}${suffix} more`;
+    }
+    const direction = maxNum < 0 ? "less" : "more";
+    return `${min}&nbsp;-&nbsp;${max}${suffix} ${direction}`;
   }
 
   function toggleRange() {
