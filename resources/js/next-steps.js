@@ -86,7 +86,7 @@ $(function() {
       relative: true,
       averageLabel: ({average, dir}) => `Annual counts of <b>intense rainstorms</b> – those that drop two or more inches in one day – are projected to ${dir} by ${average}%.`,
       rangeLabel: ({ formatRange, directions, min, max }) => `Annual counts of <b>intense rainstorms</b> – those that drop two or more inches in one day – are projected to ${formatRange(min, max, "%", directions)}.`,
-      historicLabel: ({formatHistoric, historicMin, historicMax, location}) => `Historically ${location} has had ${formatHistoric(historicMin, historicMax, "")} intense rain storms occur every year.`
+      historicLabel: ({ formatHistoric, historicAvg, historicMin, historicMax, location }) => `Historically ${location} has had on average ${formatHistoric(historicAvg, historicMin, historicMax, "")} intense rain storms occur every year.`
     },
     max_consecutive_dry_days: {
       icon: 'wildfires',
@@ -100,7 +100,7 @@ $(function() {
       directions: ['decrease', 'increase'],
       averageLabel: ({average, dir}) => `<b>Extreme temperatures</b> on the hottest days of the year are projected to ${dir} by ${average}°F.`,
       rangeLabel: ({ formatRange, directions, min, max }) => `<b>Extreme temperatures</b> on the hottest days of the year are projected to ${formatRange(min, max, "°F", directions)}.`,
-      historicLabel: ({formatHistoric, historicMin, historicMax}) => `Historically between ${formatHistoric(historicMin, historicMax, "°F")}.`
+      historicLabel: ({ formatHistoric, historicAvg, historicMin, historicMax }) => `Historically on average ${formatHistoric(historicAvg, historicMin, historicMax, "°F")}.`
     },
     ocean_acidification: {
       icon: 'ocean-acidification',
@@ -198,6 +198,7 @@ $(function() {
                 formatHistoric: formatHistoric,
                 formatRange: formatRange,
                 average: numFormat.format(Math.abs(average)),
+                historicAvg: indicatorData.historic.average,
                 historicMin: indicatorData.historic.minimum,
                 historicMax: indicatorData.historic.maximum,
                 directions: indicators[id].directions,
@@ -261,13 +262,14 @@ $(function() {
 
   $('#temperate-show-range').on('lcs-statuschange', toggleRange);
 
-  function formatHistoric(minNum, maxNum, suffix) {
+  function formatHistoric(avgNum, minNum, maxNum, suffix) {
+    const avg = numFormat.format(avgNum);
     const min = numFormat.format(minNum);
     const max = numFormat.format(maxNum);
-    if (min === max) {
-      return min + suffix;
+    if (avg === min === max) {
+      return avg + suffix;
     }
-    return `${min}&nbsp;-&nbsp;${max}${suffix}`;
+    return `${avg}${suffix} (between ${min}&nbsp;-&nbsp;${max}${suffix})`;
   }
 
   function formatRange(minNum, maxNum, suffix, directions) {
