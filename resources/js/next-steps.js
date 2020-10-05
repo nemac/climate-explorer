@@ -85,7 +85,7 @@ $(function() {
       directions: ['decrease', 'increase'],
       relative: true,
       averageLabel: ({average, dir}) => `Annual counts of <b>intense rainstorms</b> – those that drop two or more inches in one day – are projected to ${dir} by ${average}%.`,
-      rangeLabel: ({formatRange, directions, min, max}) => `Annual counts of <b>intense rainstorms</b> – those that drop two or more inches in one day – are projected to have between a ${formatRange(min, max, "%", directions)}.`,
+      rangeLabel: ({ formatRange, directions, min, max }) => `Annual counts of <b>intense rainstorms</b> – those that drop two or more inches in one day – are projected to ${formatRange(min, max, "%", directions)}.`,
       historicLabel: ({formatHistoric, historicMin, historicMax, location}) => `Historically ${location} has had ${formatHistoric(historicMin, historicMax, "")} intense rain storms occur every year.`
     },
     max_consecutive_dry_days: {
@@ -99,7 +99,7 @@ $(function() {
       icon: 'extreme-hot-days',
       directions: ['decrease', 'increase'],
       averageLabel: ({average, dir}) => `<b>Extreme temperatures</b> on the hottest days of the year are projected to ${dir} by ${average}°F.`,
-      rangeLabel: ({formatRange, directions, min, max}) => `<b>Extreme temperatures</b> on the hottest days of the year are projected to have between a ${formatRange(min, max, "°F", directions)}.`,
+      rangeLabel: ({ formatRange, directions, min, max }) => `<b>Extreme temperatures</b> on the hottest days of the year are projected to ${formatRange(min, max, "°F", directions)}.`,
       historicLabel: ({formatHistoric, historicMin, historicMax}) => `Historically between ${formatHistoric(historicMin, historicMax, "°F")}.`
     },
     ocean_acidification: {
@@ -274,13 +274,13 @@ $(function() {
     const min = numFormat.format(Math.abs(minNum));
     const max = numFormat.format(Math.abs(maxNum));
     if (min === max) {
-      return min + suffix;
+      return `be ${min}${suffix}`;
     }
     if (minNum < 0 && maxNum > 0) {
-      return `${min + suffix} ${directions[0]} and a ${max}${suffix} ${directions[1]}`;
+      return `have between a ${min}${suffix} ${directions[0]} and a ${max}${suffix} ${directions[1]}`;
     }
     const direction = maxNum < 0 ? directions[0] : directions[1];
-    return `${min}&nbsp;-&nbsp;${max}${suffix} ${direction}`;
+    return `${direction} between ${min}&nbsp;-&nbsp;${max}${suffix}`;
   }
 
   function toggleRange() {
