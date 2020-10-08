@@ -22834,14 +22834,16 @@ input.input-inner:focus {
   height: 40px;
   width: 40px;
   margin: 5px;
+  min-width: 40px;
+  min-height: 40px;
 }
 
-/* line 384, resources/scss/pages/next-steps.scss */
+/* line 386, resources/scss/pages/next-steps.scss */
 #next-steps-viewport #card-description b {
   font-weight: bold;
 }
 
-/* line 388, resources/scss/pages/next-steps.scss */
+/* line 390, resources/scss/pages/next-steps.scss */
 #next-steps-viewport #card-description > div {
   display: flex;
   padding: 6px 1px;
@@ -22849,20 +22851,20 @@ input.input-inner:focus {
 }
 
 @media screen and (max-width: 900px) {
-  /* line 394, resources/scss/pages/next-steps.scss */
+  /* line 396, resources/scss/pages/next-steps.scss */
   #next-steps-viewport #card-description > div:not(:last-child) {
     border-bottom: 1px solid #ccc;
   }
 }
 
-/* line 399, resources/scss/pages/next-steps.scss */
+/* line 401, resources/scss/pages/next-steps.scss */
 #next-steps-viewport #card-description > div > div {
   margin: auto 0;
   display: flex;
   flex-direction: column;
 }
 
-/* line 407, resources/scss/pages/next-steps.scss */
+/* line 409, resources/scss/pages/next-steps.scss */
 #next-steps-viewport .footer {
   display: flex;
   padding: 10px;
@@ -22873,7 +22875,7 @@ input.input-inner:focus {
   align-items: center;
 }
 
-/* line 416, resources/scss/pages/next-steps.scss */
+/* line 418, resources/scss/pages/next-steps.scss */
 #next-steps-viewport .footer a {
   background-color: #124086;
   color: #fff;
@@ -22885,13 +22887,13 @@ input.input-inner:focus {
   border-radius: 5px;
 }
 
-/* line 428, resources/scss/pages/next-steps.scss */
+/* line 430, resources/scss/pages/next-steps.scss */
 #next-steps-viewport .indicator-historic {
   font-size: small;
   font-style: italic;
 }
 
-/* line 433, resources/scss/pages/next-steps.scss */
+/* line 435, resources/scss/pages/next-steps.scss */
 #next-steps-viewport .lcs_wrap {
   display: inline-block;
   direction: ltr;
@@ -22901,12 +22903,12 @@ input.input-inner:focus {
   margin: 6px 2px 6px 0;
 }
 
-/* line 441, resources/scss/pages/next-steps.scss */
+/* line 443, resources/scss/pages/next-steps.scss */
 #next-steps-viewport .lcs_wrap input {
   display: none;
 }
 
-/* line 444, resources/scss/pages/next-steps.scss */
+/* line 446, resources/scss/pages/next-steps.scss */
 #next-steps-viewport .lcs_wrap + label {
   display: inline-block;
   margin: 4px;
@@ -22915,7 +22917,7 @@ input.input-inner:focus {
   vertical-align: middle;
 }
 
-/* line 452, resources/scss/pages/next-steps.scss */
+/* line 454, resources/scss/pages/next-steps.scss */
 #next-steps-viewport .lcs_switch {
   display: inline-block;
   position: relative;
@@ -22930,7 +22932,7 @@ input.input-inner:focus {
   transition: all .2s ease-in-out;
 }
 
-/* line 466, resources/scss/pages/next-steps.scss */
+/* line 468, resources/scss/pages/next-steps.scss */
 #next-steps-viewport .lcs_cursor {
   display: inline-block;
   position: absolute;
@@ -22946,29 +22948,29 @@ input.input-inner:focus {
   transition: all .2s linear;
 }
 
-/* line 483, resources/scss/pages/next-steps.scss */
+/* line 485, resources/scss/pages/next-steps.scss */
 #next-steps-viewport .lcs_switch.lcs_on {
   background: #75b936;
   box-shadow: 0 0 2px #579022 inset;
 }
 
-/* line 487, resources/scss/pages/next-steps.scss */
+/* line 489, resources/scss/pages/next-steps.scss */
 #next-steps-viewport .lcs_switch.lcs_on .lcs_cursor {
   left: 25px;
 }
 
-/* line 493, resources/scss/pages/next-steps.scss */
+/* line 495, resources/scss/pages/next-steps.scss */
 #next-steps-viewport .lcs_switch.lcs_off {
   background: #124086;
   box-shadow: 0px 0px 2px #a4a4a4 inset;
 }
 
-/* line 497, resources/scss/pages/next-steps.scss */
+/* line 499, resources/scss/pages/next-steps.scss */
 #next-steps-viewport .lcs_switch.lcs_off .lcs_cursor {
   left: 11px;
 }
 
-/* line 503, resources/scss/pages/next-steps.scss */
+/* line 505, resources/scss/pages/next-steps.scss */
 #next-steps-viewport .lcs_switch.lcs_disabled {
   opacity: 0.65;
   filter: alpha(opacity=65);
