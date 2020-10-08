@@ -71,32 +71,36 @@ $(function() {
     },
     dry_spells: {
       icon: 'drought',
-      directions: ['less', 'more'],
-      averageLabel: ({ average, dir }) => `There is projected to be ${average} ${dir} <b>dry spell${average !== "1" ? "s" : ""}</b> — a period of consecutive days without precipitation — every year.`,
-      rangeLabel: ({ formatMoreLess, directions, min, max }) => `There is projected to be between ${formatMoreLess(min, max, "")} <b>dry spells</b> — periods of consecutive days without precipitation — every year`,
-      historicLabel: ({ formatHistoric, historicAvg, historicMin, historicMax }) => `Historically ${location} has had on average ${formatHistoric(historicAvg, historicMin, historicMax, "")} dry spells every year.`
+      directions: ['fewer', 'more'],
+      averageLabel: ({ average, dir }) => `An average of ${average} ${dir} <b>dry spell${average !== "1" ? "s" : ""}</b> — periods of consecutive days without precipitation — are projected per year.`,
+      rangeLabel: ({ formatMoreFewer, min, max }) => `Between ${formatMoreFewer(min, max, "")} <b>dry spells</b> — periods of consecutive days without precipitation — are projected per year.`,
+      historicAvgLabel: ({ historicAvg, location }) => `Historically, ${location} averaged ${historicAvg} dry spells per year.`,
+      historicRangeLabel: ({ historicAvg, historicMin, historicMax, location }) => `Historically, ${location} averaged ${historicAvg} (${historicMin}&nbsp;-&nbsp;${historicMax}) dry spells per year.`
     },
     extreme_precip_events: {
       icon: 'rain-storm',
       directions: ['decrease', 'increase'],
       relative: true,
       averageLabel: ({ average, dir }) => `Annual counts of <b>intense rainstorms</b> – those that drop two or more inches in one day — are projected to ${dir} by ${average}%.`,
-      rangeLabel: ({ formatIncreaseDecrease, directions, min, max }) => `Annual counts of <b>intense rainstorms</b> — those that drop two or more inches in one day – are projected to ${formatIncreaseDecrease(min, max, "%")}.`,
-      historicLabel: ({ formatHistoric, historicAvg, historicMin, historicMax, location }) => `Historically ${location} has had on average ${formatHistoric(historicAvg, historicMin, historicMax, "")} intense rain storms occur every year.`
+      rangeLabel: ({ formatIncreaseDecrease, min, max }) => `Annual counts of <b>intense rainstorms</b> — those that drop two or more inches in one day – are projected to ${formatIncreaseDecrease(min, max, "%")}.`,
+      historicAvgLabel: ({ historicAvg, location }) => `Historically, ${location} averaged ${historicAvg} intense rainstorms per year.`,
+      historicRangeLabel: ({ historicAvg, historicMin, historicMax, location }) => `Historically, ${location} averaged ${historicAvg} (${historicMin}&nbsp;-&nbsp;${historicMax}) intense rainstorms per year.`
     },
     max_consecutive_dry_days: {
       icon: 'wildfires',
       directions: ['decrease', 'increase'],
       averageLabel: ({ average, dir }) => `<b>Wildfire</b> risk may increase with longer periods between precipitation events, which are projected to ${dir} by ${average} days.`,
-      rangeLabel: ({ formatIncreaseDecrease, directions, min, max }) => `<b>Wildfire</b> risk may increase with longer periods between precipitation events, which are projected to ${formatIncreaseDecrease(min, max, [" day", " days"])}.`,
-      historicLabel: ({ formatHistoric, historicAvg, historicMin, historicMax }) => `Historically the longest yearly dry spell lasts on average ${formatHistoric(historicAvg, historicMin, historicMax, "")} days.`
+      rangeLabel: ({ formatIncreaseDecrease, min, max }) => `<b>Wildfire</b> risk may increase with longer periods between precipitation events, which are projected to ${formatIncreaseDecrease(min, max, [" day", " days"])}.`,
+      historicAvgLabel: ({ historicAvg, location }) => `Historically, the longest yearly dry spell in ${location} averaged ${historicAvg} days.`,
+      historicRangeLabel: ({ historicAvg, historicMin, historicMax, location }) => `Historically, the longest yearly dry spell in ${location} averaged ${historicAvg} (${historicMin}&nbsp;-&nbsp;${historicMax}) days.`
     },
     max_high_temp: {
       icon: 'extreme-hot-days',
       directions: ['decrease', 'increase'],
       averageLabel: ({average, dir}) => `<b>Extreme temperatures</b> on the hottest days of the year are projected to ${dir} by ${average}°F.`,
-      rangeLabel: ({ formatIncreaseDecrease, directions, min, max }) => `<b>Extreme temperatures</b> on the hottest days of the year are projected to ${formatIncreaseDecrease(min, max, "°F")}.`,
-      historicLabel: ({ formatHistoric, historicAvg, historicMin, historicMax }) => `Historically on average ${formatHistoric(historicAvg, historicMin, historicMax, "°F")}.`
+      rangeLabel: ({ formatIncreaseDecrease, min, max }) => `<b>Extreme temperatures</b> on the hottest days of the year are projected to ${formatIncreaseDecrease(min, max, "°F")}.`,
+      historicAvgLabel: ({ historicAvg, location }) => `Historically, extreme temperatures in ${location} averaged ${historicAvg}°F.`,
+      historicRangeLabel: ({ historicAvg, historicMin, historicMax, location }) => `Historically, extreme temperatures in ${location} averaged ${historicAvg}°F (${historicMin}&nbsp;-&nbsp;${historicMax}°F).`
     },
     ocean_acidification: {
       icon: 'ocean-acidification',
@@ -191,13 +195,12 @@ $(function() {
               min = Math.round(min);
               max = Math.round(max);
               const context = {
-                formatHistoric: formatHistoric,
                 formatIncreaseDecrease: formatIncreaseDecrease,
-                formatMoreLess: formatMoreLess,
+                formatMoreFewer: formatMoreFewer,
                 average: numFormat.format(Math.abs(average)),
-                historicAvg: indicatorData.historic.average,
-                historicMin: indicatorData.historic.minimum,
-                historicMax: indicatorData.historic.maximum,
+                historicAvg: numFormat.format(indicatorData.historic.average),
+                historicMin: numFormat.format(indicatorData.historic.minimum),
+                historicMax: numFormat.format(indicatorData.historic.maximum),
                 directions: indicators[id].directions,
                 dir: indicators[id].directions[average < 0 ? 0 : 1],
                 location: location,
@@ -207,13 +210,16 @@ $(function() {
               content = `
                     <div>
                         <span class="indicator-avg">
-                            ${(((typeof indicators[id].averageLabel) === 'function') ? indicators[id].averageLabel(context) : indicators[id].averageLabel)}
+                            ${indicators[id].averageLabel(context)}
                         </span>
                         <span class="indicator-range">
-                            ${(((typeof indicators[id].rangeLabel) === 'function') ? indicators[id].rangeLabel(context) : indicators[id].rangeLabel)}
+                            ${indicators[id].rangeLabel(context)}
                         </span>
-                        <div class="indicator-historic">
-                            ${(((typeof indicators[id].historicLabel) === 'function') ? indicators[id].historicLabel(context) : indicators[id].historicLabel)}
+                        <div class="indicator-historic historic-avg">
+                            ${indicators[id].historicAvgLabel(context)}
+                        </div>
+                        <div class="indicator-historic historic-range">
+                            ${indicators[id].historicRangeLabel(context)}
                         </div>
                     </div>
                     `;
@@ -259,16 +265,6 @@ $(function() {
 
   $('#temperate-show-range').on('lcs-statuschange', toggleRange);
 
-  function formatHistoric(avgNum, minNum, maxNum, suffix) {
-    const avg = numFormat.format(avgNum);
-    const min = numFormat.format(minNum);
-    const max = numFormat.format(maxNum);
-    if (avg === min === max) {
-      return avg + suffix;
-    }
-    return `${avg}${suffix} (between ${min}&nbsp;-&nbsp;${max}${suffix})`;
-  }
-
   function formatIncreaseDecrease(minNum, maxNum, suffix) {
     const min = numFormat.format(Math.abs(minNum));
     const max = numFormat.format(Math.abs(maxNum));
@@ -283,22 +279,22 @@ $(function() {
     return `${direction} between ${min}&nbsp;-&nbsp;${max}${singularSuffix}`;
   }
 
-  function formatMoreLess(minNum, maxNum, suffix) {
+  function formatMoreFewer(minNum, maxNum, suffix) {
     const min = numFormat.format(Math.abs(minNum));
     const max = numFormat.format(Math.abs(maxNum));
     if (numFormat.format(minNum) === numFormat.format(maxNum)) {
       return min + suffix;
     }
     if (minNum < 0 && maxNum > 0) {
-      return `${min + suffix} less and ${max}${suffix} more`;
+      return `${min + suffix} fewer and ${max}${suffix} more`;
     }
-    const direction = maxNum < 0 ? "less" : "more";
+    const direction = maxNum < 0 ? "fewer" : "more";
     return `${min}&nbsp;-&nbsp;${max}${suffix} ${direction}`;
   }
 
   function toggleRange() {
     const showRange = $('#temperate-show-range').is(':checked');
-    $('.indicator-range').toggle(showRange);
-    $('.indicator-avg').toggle(!showRange);
+    $('.indicator-range,.historic-range').toggle(showRange);
+    $('.indicator-avg,.historic-avg').toggle(!showRange);
   }
 });
