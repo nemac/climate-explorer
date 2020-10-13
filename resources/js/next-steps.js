@@ -77,9 +77,9 @@ $(function () {
       icon: 'drought',
       directions: ['fewer', 'more'],
       averageLabel: ({ average, dir }) =>
-        `An average of ${average} ${dir} <b>dry spell${
-          average !== '1' ? 's' : ''
-        }</b> — periods of consecutive days without precipitation — are projected per year.`,
+        average === '1'
+          ? `An average of 1 ${dir} <b>dry spell</b> — a period of consecutive days without precipitation — is projected per year`
+          : `An average of ${average} ${dir} <b>dry spells</b> — periods of consecutive days without precipitation — are projected per year`,
       rangeLabel: ({ formatMoreFewer, min, max }) =>
         `Between ${formatMoreFewer(
           min,
