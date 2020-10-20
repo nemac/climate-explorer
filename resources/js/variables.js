@@ -13,7 +13,7 @@ $(document).ready(function () {
     countyselected: function countyselected(event, value) {
       window.countySelected($('.cwg-container')[0], value);
     },
-    layersloaded: function layersloaded(event, value) {
+    layersLoaded: function layersloaded(event, value) {
       $('#variable-map').spinner('destroy');
     }
   }));

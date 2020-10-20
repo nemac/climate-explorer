@@ -4,7 +4,7 @@ end_of_line = crlf
 indent_size = 2
 indent_style = space
 insert_final_newline = true
-max_line_length = 120
+max_line_length = 153
 tab_width = 2
 ij_continuation_indent_size = 4
 ij_formatter_off_tag = @formatter:off
@@ -31,9 +31,6 @@ ij_css_space_after_colon = true
 ij_css_space_before_opening_brace = true
 ij_css_use_double_quotes = true
 ij_css_value_alignment = 0
-
-
-
 
 [*.scss]
 indent_size = 2

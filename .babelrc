@@ -1,13 +1,22 @@
 {
   "presets": [
     [
-      "env", {
-      "targets": {
-        "browsers": ["> 0.5%", "last 2 versions", "safari >= 7", "ie 10"]
-      },
-      "include": ["transform-es2015-arrow-functions", "es6.map","transform-es2015-literals"]
-    }
+      "@babel/preset-env",
+      {
+        "targets": {
+          "browsers": [
+            "> 0.5%",
+            "last 2 versions",
+            "safari >= 7",
+            "ie 10"
+          ]
+        }
+      }
     ]
   ],
-  "plugins": ["transform-object-assign"]
+  "plugins": [
+    "@babel/plugin-transform-arrow-functions",
+    "@babel/transform-object-assign",
+    "@babel/plugin-transform-template-literals"
+  ]
 }

@@ -142,8 +142,8 @@
                   <a tabindex="116" rel="none" class="download-link-main short-desc" href="javascript:void(0);" >Down</a>
                 </div>
                 <ul class="select-options" style="display: none;">
-                  <li rel="download-lefttmap-image" icon="fas fa-download select-icon" href="javascript:void(0);" class="default-select-option">
-                    <a tabindex="117" rel="download-lefttmap-image" class="download-link" href="javascript:void(0);" >Download left map as image</a>
+                  <li rel="download-leftmap-image" icon="fas fa-download select-icon" href="javascript:void(0);" class="default-select-option">
+                    <a tabindex="117" rel="download-leftmap-image" class="download-link" href="javascript:void(0);" >Download left map as image</a>
                   </li>
                   <li rel="download-rightmap-image" icon="fas fa-download select-icon" href="javascript:void(0);" class="default-select-option">
                     <a tabindex="118" rel="download-rightmap-image" class="download-link" href="javascript:void(0);" >Download right map as image</a>
@@ -166,7 +166,7 @@
 
           <div id="map-wrap" class="map-wrap width-100 height-100 ">
             <!-- <div id="chart-123" class="chart-canvas width-100 height-100" data-chart-ID="123"></div> -->
-            <div id="temperature-map" class="map-element"></div>
+            <div id="local-climate-map-element" class="map-element"></div>
             <div id="map-message" class="map-nodata-message d-none"></div>
           </div>
 
@@ -178,15 +178,13 @@
 {{> nav_footer }}
 {{> footer }}
 
-<script src="https://cdnjs.cloudflare.com/ajax/libs/Turf.js/5.1.6/turf.min.js" integrity="sha256-Nhtik+K3xORhs5S9o0qlol4eRNB9O5OyTOJqbLucPk8=" crossorigin="anonymous"></script>
 <script src="https://unpkg.com/terraformer@1.0.8/terraformer.js" integrity="sha384-+M797Pj3WZVCwMmLbOxAoaWYcKJo8NSxItmI48ytcLNeAnfn1d/IckFn31jEqrzP"
         crossorigin="anonymous"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/0.4.1/html2canvas.min.js" integrity="sha256-c3RzsUWg+y2XljunEQS0LqWdQ04X1D3j22fd/8JCAKw=" crossorigin="anonymous"></script>
-<!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/0.5.0-beta4/html2canvas.min.js" integrity="sha256-w6/1B0uwkpR3uX0YUw3k2zzHnq6xDNdVZHLIdz8xV6I=" crossorigin="anonymous"></script> -->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/dom-to-image/2.6.0/dom-to-image.js" integrity="sha256-Tw0/gX6aFDMese6GHQJFL/ZjF+f7edyF9okFVY/B9oU=" crossorigin="anonymous"></script>
+  {{! Uncomment to allow scenarioComparisonMap to load GeoJSON for state/county layers. Currently disabled / not used.
 <script src="https://unpkg.com/terraformer-arcgis-parser@1.0.5/terraformer-arcgis-parser.js"
         integrity="sha384-duFUjKTSNoxEspdJNwr83CUgRxclf0ueKJB9DU/Vbit6bfWgzvZsHW6H1JLBBXhp" crossorigin="anonymous"></script>
-<script type="text/javascript" src="/resources/js/scenarioComparisonMap.js"></script>
+}}
 <script type="text/javascript" src="/resources/js/ce3-ui-components.js"></script>
 <script type="text/javascript" src="/resources/js/local-climate-maps.js"></script>
 <script type="text/javascript" src="/resources/js/secondary_header.js"></script>

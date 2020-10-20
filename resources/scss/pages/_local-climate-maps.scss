@@ -25,7 +25,7 @@
       top: calc(100% - 75px);
     }
     left: -2px;
-    @include box-shadow( inset 0 -2px 2px transparentize(#000, 0.7));
+    @include box-shadow(inset 0 -2px 2px transparentize(#000, 0.7));
   }
 
   &.expanded {
@@ -43,6 +43,7 @@
 
     min-height: calc(100% - 48px - 12px - 170px) !important;
     height: calc(100% - 48px - 12px - 170px) !important;
+
     &:after {
       top: calc(100% - 187px);
 
@@ -59,6 +60,7 @@
 
   .top-select-wrapper {
     width: 34% !important;
+
     &-minor {
       width: 5% !important;
     }
@@ -76,6 +78,7 @@
     @include tablet {
       min-width: 280px;
     }
+
     .btn-default {
       font-size: .9rem !important
     }
@@ -95,7 +98,7 @@
   }
   text-align: center;
   padding: $ce3-default-padding;
-  background-color: $ce3-warning-state!important;
+  background-color: $ce3-warning-state !important;
   color: $ce3-blue6 !important;
   // background-color: lighten($ce3-warning-state, 30)!important;
   // color: $ce3-warning-state !important;
@@ -105,7 +108,7 @@
 }
 
 
-#map-for-print-left , #map-for-print-right {
+#map-for-print-left, #map-for-print-right {
   .legend {
     margin: $ce3-default-padding;
     padding: $ce3-default-padding;
@@ -126,11 +129,11 @@
   &.closed-filters {
     height: calc(100% - 135px) !important;
     // .map-wrap {
-      // height: calc(100% + 40px) !important;
+    // height: calc(100% + 40px) !important;
     // }
   }
 
-  #temperature-map {
+  #local-climate-map-element {
     width: 100%;
     flex-wrap: wrap;
   }
@@ -144,6 +147,55 @@
 
   .scenario-map-overlay-container {
     position: absolute !important;
+  }
+
+  .esri-popup__main-container, .scenario-map-inspect-container {
+    height: -moz-fit-content;
+    height: fit-content;
+    width: 20rem;
+    background: #ffffffed;
+    box-shadow: 2px 1px 5px rgba(0, 0, 0, 0.5);
+    border: solid 1.3px rgba(0, 0, 0, 0.3);
+    padding: 0.35rem 0.25rem;
+    font-size: 0.8rem;
+    font-weight: 500;
+    /* margin: 0rem auto; */
+    padding-left: 0.8rem;
+
+    .esri-popup__content {
+      margin: 0;
+    }
+
+    .area-stats {
+      font-size: 1rem;
+      display: grid;
+      grid-template-columns: min-content auto;
+      grid-gap: 0.6rem;
+      margin-right: 0.5rem;
+      margin-left: 0.5rem;
+      div {
+        margin: 0.35rem 0;
+      }
+      span{
+        line-height: 1.3rem;
+      }
+      sup {
+        vertical-align: super;
+        font-size: 0.5em;
+      }
+
+      .btn-default {
+        margin: 0.6rem auto 0.3rem auto !important;
+        text-decoration: none !important;
+        padding: 1rem 1.3rem;
+        text-align: center;
+        max-width: 70%;
+      }
+
+      .area_social_value, .area_hist_mean_value, .area_rcp45_value, .area_rcp85_value {
+        font-size: 1.3rem;
+      }
+    }
   }
 
   .esri-view-user-storage {
@@ -161,7 +213,7 @@
     }
   }
 
-  #temperature-map {
+  #local-climate-map-element {
     .movable.slider-div {
       top: 0px !important;
     }
@@ -175,7 +227,7 @@
     order: 1;
     padding-bottom: 250px !important;
 
-    #temperature-map {
+    #local-climate-map-element {
       width: 100%;
       flex-wrap: wrap;
       min-height: 350px !important;
@@ -246,6 +298,7 @@
           max-width: 90%;
           min-width: 90%;
           width: 90%;
+
           &:focus, &:hover {
             border-left: 2px $ce3-blue3 solid !important;
           }
@@ -263,6 +316,7 @@
           max-width: 90%;
           min-width: 90%;
           width: 90%;
+
           &:focus, &:hover {
             border-right: 2px $ce3-blue3 solid !important;
           }
@@ -278,6 +332,7 @@
           min-width: 90%;
           width: 90%;
           margin: 0px;
+
           .fs-dropdown.fs-dropdown-mobile {
             width: 100%;
             min-width: 100%;
@@ -301,6 +356,7 @@
           min-width: 90%;
           width: 90%;
           margin: 0px;
+
           .fs-dropdown.fs-dropdown-mobile {
             width: 100%;
             min-width: 100%;
@@ -324,6 +380,8 @@
       min-height: 350px !important;
       height: 350px !important;
     }
+
+
   }
 
   @include very-small {
@@ -370,15 +428,15 @@
 }
 
 .esri-ui-corner .esri-component .esri-expand__content {
-    max-height: 260px !important;
-    height: 260px;
-    @include short {
-      max-height: 200px !important;
-      height: 200px;
-    }
-    background-color: $ce3-blue6;
-    padding: $ce3-padding-half;
-    overflow: hidden;
+  max-height: 260px !important;
+  height: 260px;
+  @include short {
+    max-height: 200px !important;
+    height: 200px;
+  }
+  background-color: $ce3-blue6;
+  padding: $ce3-padding-half;
+  overflow: hidden;
 }
 
 .scenario-map-overlay-container {
@@ -409,7 +467,7 @@
   .esri-basemap-gallery__item-thumbnail {
     height: 64px;
     width: auto;
-    box-shadow: 0 0 0 1px rgba(50,50,50,0.25)
+    box-shadow: 0 0 0 1px rgba(50, 50, 50, 0.25)
   }
 }
 
@@ -430,6 +488,7 @@
   z-index: 100;
   cursor: col-resize;
   box-shadow: 1px 0 2px 0 rgba(0, 0, 0, 0.15);
+
   .handle {
     position: relative;
     top: 50%;
@@ -459,7 +518,7 @@
   }
 }
 
-#temperature-map,
+#local-climate-map-element,
 .esri-view-root,
 .esri-view-surface,
 .esri-display-object,

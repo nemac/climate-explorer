@@ -5,7 +5,9 @@ To setup your development environment use `npm install` then run `npm run build`
 
 * handlebars/bundlebars provides static templating. All files ending in '.hbs' are handlebars templates. Running `npm run html:build` will build the templates using the config file `config.yml`.
 * Sass/SCSS is used for styling and node-sass is used to build the styles. Running `npm run css:build` will build the stylesheets used in this project, or running `npm run css:watch` will automatically build the stylesheets when the source '.scss' files have changed.
-* All javascript in this project is either directly written to be ES5-compatible, whether directly, or by using ES6 and a transpiling process.  
+* All javascript in this project is either directly written to be ES5-compatible, whether directly, or by using ES6 and one of two transpiling processes
+  * Babel: Most files in `resources/js/` are transpiled using babel alone. To run just this step you can use `npm run js:build:babel`.
+  * Rollup + Babel: Rollup.js provides compiling of several of the newer modules and supports not only ES6 syntax, but also ES6 imports! To run just this step you can use `npm run js:build:rollup`.  
 
 
 # Deployment notes

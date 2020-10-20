@@ -8,4 +8,5 @@ deploy/
 .idea/
 /node_modules/
 dist/
+*.iml
 *~
