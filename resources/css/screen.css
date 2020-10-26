@@ -17908,13 +17908,13 @@ input.input-inner:focus {
   }
 }
 
-/* line 44, resources/scss/pages/_local-climate-charts.scss */
+/* line 45, resources/scss/pages/_local-climate-charts.scss */
 #local-climate-charts-viewport.expanded:after {
   top: calc(100% - 187px);
 }
 
 @media screen and (max-width: 499px) {
-  /* line 44, resources/scss/pages/_local-climate-charts.scss */
+  /* line 45, resources/scss/pages/_local-climate-charts.scss */
   #local-climate-charts-viewport.expanded:after {
     top: calc(100% - 147px);
   }
@@ -17928,25 +17928,25 @@ input.input-inner:focus {
   }
 }
 
-/* line 58, resources/scss/pages/_local-climate-charts.scss */
+/* line 59, resources/scss/pages/_local-climate-charts.scss */
 #local-climate-charts-viewport .top-select-wrapper {
   width: 34% !important;
 }
 
-/* line 60, resources/scss/pages/_local-climate-charts.scss */
+/* line 62, resources/scss/pages/_local-climate-charts.scss */
 #local-climate-charts-viewport .top-select-wrapper-minor {
   width: 5% !important;
 }
 
 @media screen and (max-width: 900px) {
-  /* line 65, resources/scss/pages/_local-climate-charts.scss */
+  /* line 67, resources/scss/pages/_local-climate-charts.scss */
   #local-climate-charts-viewport .search-box-secondary {
     width: 100% !important;
     display: inline-block !important;
   }
 }
 
-/* line 74, resources/scss/pages/_local-climate-charts.scss */
+/* line 77, resources/scss/pages/_local-climate-charts.scss */
 #variable-select-wrapper {
   max-width: 350px;
   background-color: #124086 !important;
@@ -17956,129 +17956,140 @@ input.input-inner:focus {
 }
 
 @media screen and (max-width: 900px) {
-  /* line 74, resources/scss/pages/_local-climate-charts.scss */
+  /* line 77, resources/scss/pages/_local-climate-charts.scss */
   #variable-select-wrapper {
     margin-right: 0px !important;
   }
 }
 
-/* line 84, resources/scss/pages/_local-climate-charts.scss */
+/* line 87, resources/scss/pages/_local-climate-charts.scss */
 #variable-select-wrapper:hover {
   background-color: #397ee5 !important;
 }
 
-/* line 87, resources/scss/pages/_local-climate-charts.scss */
+/* line 90, resources/scss/pages/_local-climate-charts.scss */
 #variable-select-wrapper:hover .select-styled {
   background-color: #397ee5 !important;
 }
 
-/* line 92, resources/scss/pages/_local-climate-charts.scss */
+/* line 95, resources/scss/pages/_local-climate-charts.scss */
 #variable-select-wrapper .variable-select {
   color: #E9F1FC !important;
 }
 
-/* line 95, resources/scss/pages/_local-climate-charts.scss */
+/* line 98, resources/scss/pages/_local-climate-charts.scss */
 #variable-select-wrapper .variable-select .select {
   color: #E9F1FC !important;
 }
 
-/* line 100, resources/scss/pages/_local-climate-charts.scss */
+/* line 103, resources/scss/pages/_local-climate-charts.scss */
 #variable-select-wrapper .variable-select .select-styled a {
   color: #E9F1FC !important;
 }
 
-/* line 104, resources/scss/pages/_local-climate-charts.scss */
+/* line 107, resources/scss/pages/_local-climate-charts.scss */
 #variable-select-wrapper .variable-select .select-styled.disabled {
   color: rgba(233, 241, 252, 0.5) !important;
 }
 
-/* line 108, resources/scss/pages/_local-climate-charts.scss */
+/* line 111, resources/scss/pages/_local-climate-charts.scss */
 #variable-select-wrapper .variable-select .select-styled:after {
   background-color: #E9F1FC !important;
   color: #124086 !important;
 }
 
-/* line 113, resources/scss/pages/_local-climate-charts.scss */
+/* line 116, resources/scss/pages/_local-climate-charts.scss */
 #variable-select-wrapper .variable-select .select-styled:hover, #variable-select-wrapper .variable-select .select-styled:focus {
   outline: none !important;
   color: white !important;
   font-weight: 500;
 }
 
-/* line 118, resources/scss/pages/_local-climate-charts.scss */
+/* line 121, resources/scss/pages/_local-climate-charts.scss */
 #variable-select-wrapper .variable-select .select-styled:hover.disabled, #variable-select-wrapper .variable-select .select-styled:focus.disabled {
   color: rgba(233, 241, 252, 0.5) !important;
   outline: none !important;
 }
 
-/* line 125, resources/scss/pages/_local-climate-charts.scss */
+/* line 128, resources/scss/pages/_local-climate-charts.scss */
 #variable-select-wrapper .variable-select .select-options {
   background-color: #124086 !important;
   color: #E9F1FC !important;
 }
 
-/* line 129, resources/scss/pages/_local-climate-charts.scss */
+/* line 132, resources/scss/pages/_local-climate-charts.scss */
 #variable-select-wrapper .variable-select .select-options a {
   color: #E9F1FC !important;
 }
 
-/* line 132, resources/scss/pages/_local-climate-charts.scss */
+/* line 137, resources/scss/pages/_local-climate-charts.scss */
 #variable-select-wrapper .variable-select .select-options .default-select-option-disabled {
   color: rgba(233, 241, 252, 0.5) !important;
 }
 
-/* line 136, resources/scss/pages/_local-climate-charts.scss */
+/* line 141, resources/scss/pages/_local-climate-charts.scss */
 #variable-select-wrapper .variable-select .select-options li {
   border-top: 1px solid #124086;
 }
 
-/* line 138, resources/scss/pages/_local-climate-charts.scss */
+/* line 144, resources/scss/pages/_local-climate-charts.scss */
 #variable-select-wrapper .variable-select .select-options li a {
   color: #E9F1FC !important;
 }
 
-/* line 142, resources/scss/pages/_local-climate-charts.scss */
+/* line 148, resources/scss/pages/_local-climate-charts.scss */
 #variable-select-wrapper .variable-select .select-options li:hover, #variable-select-wrapper .variable-select .select-options li:focus {
   color: #E9F1FC !important;
   background: #397ee5 !important;
 }
 
-/* line 146, resources/scss/pages/_local-climate-charts.scss */
+/* line 152, resources/scss/pages/_local-climate-charts.scss */
 #variable-select-wrapper .variable-select .select-options li:hover.default-select-option-disabled, #variable-select-wrapper .variable-select .select-options li:focus.default-select-option-disabled {
   color: rgba(233, 241, 252, 0.5) !important;
   background: #124086 !important;
   cursor: default !important;
 }
 
-/* line 155, resources/scss/pages/_local-climate-charts.scss */
+/* line 161, resources/scss/pages/_local-climate-charts.scss */
 #variable-select-wrapper .variable-select .select-options span:hover, #variable-select-wrapper .variable-select .select-options span:focus {
   color: #E9F1FC !important;
   background: #397ee5 !important;
 }
 
-/* line 165, resources/scss/pages/_local-climate-charts.scss */
+/* line 171, resources/scss/pages/_local-climate-charts.scss */
 #stations-select, #downloads-select, #variable-select {
   display: none !important;
 }
 
-/* line 169, resources/scss/pages/_local-climate-charts.scss */
+/* line 175, resources/scss/pages/_local-climate-charts.scss */
+#downloads-select-wrapper .select-options li {
+  padding: 0;
+}
+
+/* line 178, resources/scss/pages/_local-climate-charts.scss */
+#downloads-select-wrapper .select-options li a {
+  display: block;
+  line-height: calc(24px + 1em);
+}
+
+/* line 184, resources/scss/pages/_local-climate-charts.scss */
 #downloads-select-wrapper, #stations-select-wrapper {
   background-color: #E9F1FC;
   color: #124086;
   font: 500 14px Roboto, Helvetica, "Helvetica Neue", Arial, sans-serif !important;
 }
 
-/* line 174, resources/scss/pages/_local-climate-charts.scss */
+/* line 189, resources/scss/pages/_local-climate-charts.scss */
 #downloads-select-wrapper li.disabled, #stations-select-wrapper li.disabled {
   color: #a4c3f3 !important;
 }
 
-/* line 176, resources/scss/pages/_local-climate-charts.scss */
+/* line 192, resources/scss/pages/_local-climate-charts.scss */
 #downloads-select-wrapper li.disabled a, #stations-select-wrapper li.disabled a {
   color: #a4c3f3 !important;
 }
 
-/* line 179, resources/scss/pages/_local-climate-charts.scss */
+/* line 196, resources/scss/pages/_local-climate-charts.scss */
 #downloads-select-wrapper li.disabled:hover, #downloads-select-wrapper li.disabled:focus, #stations-select-wrapper li.disabled:hover, #stations-select-wrapper li.disabled:focus {
   color: #a4c3f3 !important;
   background: #E9F1FC !important;
@@ -18086,14 +18097,14 @@ input.input-inner:focus {
 }
 
 @media screen and (max-width: 900px) {
-  /* line 187, resources/scss/pages/_local-climate-charts.scss */
+  /* line 204, resources/scss/pages/_local-climate-charts.scss */
   #stations-select-wrapper {
     display: none !important;
   }
 }
 
 @media screen and (max-width: 900px) {
-  /* line 193, resources/scss/pages/_local-climate-charts.scss */
+  /* line 210, resources/scss/pages/_local-climate-charts.scss */
   #downloads-select-wrapper {
     margin-left: 0px !important;
     margin-right: 0px !important;
@@ -18105,13 +18116,13 @@ input.input-inner:focus {
 }
 
 @media screen and (max-width: 599px) {
-  /* line 193, resources/scss/pages/_local-climate-charts.scss */
+  /* line 210, resources/scss/pages/_local-climate-charts.scss */
   #downloads-select-wrapper {
     display: none !important;
   }
 }
 
-/* line 208, resources/scss/pages/_local-climate-charts.scss */
+/* line 225, resources/scss/pages/_local-climate-charts.scss */
 #chartmap-select-wrapper, #time-select-wrapper, #presentation-select-wrapper, #tidalzoom-select-wrapper {
   background-color: #E9F1FC;
   color: #124086;
@@ -18122,7 +18133,7 @@ input.input-inner:focus {
 }
 
 @media screen and (max-width: 900px) {
-  /* line 208, resources/scss/pages/_local-climate-charts.scss */
+  /* line 225, resources/scss/pages/_local-climate-charts.scss */
   #chartmap-select-wrapper, #time-select-wrapper, #presentation-select-wrapper, #tidalzoom-select-wrapper {
     margin-left: 0px !important;
     margin-right: 0px !important;
@@ -18131,45 +18142,45 @@ input.input-inner:focus {
     display: inherit !important;
     width: 100% !important;
   }
-  /* line 222, resources/scss/pages/_local-climate-charts.scss */
+  /* line 239, resources/scss/pages/_local-climate-charts.scss */
   #chartmap-select-wrapper .select-options, #time-select-wrapper .select-options, #presentation-select-wrapper .select-options, #tidalzoom-select-wrapper .select-options {
     margin-top: 5px !important;
   }
 }
 
-/* line 228, resources/scss/pages/_local-climate-charts.scss */
+/* line 245, resources/scss/pages/_local-climate-charts.scss */
 #chart-info-row-btn {
   background-color: #FBFCFE;
   min-width: 170px;
 }
 
-/* line 230, resources/scss/pages/_local-climate-charts.scss */
+/* line 248, resources/scss/pages/_local-climate-charts.scss */
 #chart-info-row-btn:hover, #chart-info-row-btn:focus {
   background-color: #FBFCFE !important;
 }
 
-/* line 235, resources/scss/pages/_local-climate-charts.scss */
+/* line 254, resources/scss/pages/_local-climate-charts.scss */
 #chart-info-row-btn .short-desc {
   display: none;
 }
 
 @media screen and (max-width: 960px) {
-  /* line 228, resources/scss/pages/_local-climate-charts.scss */
+  /* line 245, resources/scss/pages/_local-climate-charts.scss */
   #chart-info-row-btn {
     min-width: 130px;
   }
-  /* line 242, resources/scss/pages/_local-climate-charts.scss */
+  /* line 261, resources/scss/pages/_local-climate-charts.scss */
   #chart-info-row-btn .long-desc {
     display: none;
   }
-  /* line 246, resources/scss/pages/_local-climate-charts.scss */
+  /* line 265, resources/scss/pages/_local-climate-charts.scss */
   #chart-info-row-btn .short-desc {
     display: inline;
   }
 }
 
 @media screen and (max-width: 900px) {
-  /* line 228, resources/scss/pages/_local-climate-charts.scss */
+  /* line 245, resources/scss/pages/_local-climate-charts.scss */
   #chart-info-row-btn {
     min-width: 100%;
     margin-left: 0px !important;
@@ -18178,60 +18189,60 @@ input.input-inner:focus {
     margin-top: 6px !important;
     width: 100% !important;
   }
-  /* line 254, resources/scss/pages/_local-climate-charts.scss */
+  /* line 273, resources/scss/pages/_local-climate-charts.scss */
   #chart-info-row-btn .short-desc {
     display: none;
   }
-  /* line 258, resources/scss/pages/_local-climate-charts.scss */
+  /* line 277, resources/scss/pages/_local-climate-charts.scss */
   #chart-info-row-btn .long-desc {
     display: inline;
   }
-  /* line 262, resources/scss/pages/_local-climate-charts.scss */
+  /* line 281, resources/scss/pages/_local-climate-charts.scss */
   #chart-info-row-btn .btn-default {
     font-size: 14px !important;
   }
-  /* line 271, resources/scss/pages/_local-climate-charts.scss */
+  /* line 290, resources/scss/pages/_local-climate-charts.scss */
   #chart-info-row-btn .more, #chart-info-row-btn .less {
     padding-left: 6px;
   }
 }
 
-/* line 278, resources/scss/pages/_local-climate-charts.scss */
+/* line 297, resources/scss/pages/_local-climate-charts.scss */
 #filters-row .select-options {
   margin-top: 0px !important;
 }
 
 @media screen and (max-width: 900px) {
-  /* line 283, resources/scss/pages/_local-climate-charts.scss */
+  /* line 302, resources/scss/pages/_local-climate-charts.scss */
   #chartmap-wrapper, #time-wrapper, #presentation-wrapper, #tidalzoom-wrapper {
     display: none !important;
   }
 }
 
-/* line 289, resources/scss/pages/_local-climate-charts.scss */
+/* line 308, resources/scss/pages/_local-climate-charts.scss */
 #chartmap-wrapper, #time-wrapper {
   min-width: 160px;
 }
 
-/* line 293, resources/scss/pages/_local-climate-charts.scss */
+/* line 312, resources/scss/pages/_local-climate-charts.scss */
 #chartmap-wrapper {
   padding-left: 0px !important;
   margin-left: -3px;
 }
 
-/* line 298, resources/scss/pages/_local-climate-charts.scss */
+/* line 317, resources/scss/pages/_local-climate-charts.scss */
 #time-wrapper {
   margin-left: -12px;
 }
 
-/* line 302, resources/scss/pages/_local-climate-charts.scss */
+/* line 321, resources/scss/pages/_local-climate-charts.scss */
 #tidalzoom-wrapper {
   min-width: 325px;
   margin-left: -12px;
 }
 
 @media screen and (max-width: 900px) {
-  /* line 307, resources/scss/pages/_local-climate-charts.scss */
+  /* line 326, resources/scss/pages/_local-climate-charts.scss */
   #variable-select-wrapper, #chartmap-wrapper, #time-wrapper, #presentation-wrapper, #tidalzoom-wrapper {
     height: auto !important;
     width: 100% !important;
@@ -18241,7 +18252,7 @@ input.input-inner:focus {
   }
 }
 
-/* line 318, resources/scss/pages/_local-climate-charts.scss */
+/* line 337, resources/scss/pages/_local-climate-charts.scss */
 #monthly-select-wrapper #btn-chart {
   width: 100% !important;
   height: 30px !important;
@@ -18256,7 +18267,7 @@ input.input-inner:focus {
   box-shadow: 0px 1px 2px rgba(0, 0, 0, 0.239);
 }
 
-/* line 327, resources/scss/pages/_local-climate-charts.scss */
+/* line 346, resources/scss/pages/_local-climate-charts.scss */
 #monthly-select-wrapper #btn-chart.btn-default-selected {
   height: 30px !important;
   margin-left: 12px;
@@ -18269,7 +18280,7 @@ input.input-inner:focus {
   box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.239);
 }
 
-/* line 335, resources/scss/pages/_local-climate-charts.scss */
+/* line 354, resources/scss/pages/_local-climate-charts.scss */
 #monthly-select-wrapper #btn-chart:focus, #monthly-select-wrapper #btn-chart:hover {
   -webkit-box-shadow: 0px 3px 6px rgba(0, 0, 0, 0.239);
   -moz-box-shadow: 0px 3px 6px rgba(0, 0, 0, 0.239);
@@ -18277,21 +18288,21 @@ input.input-inner:focus {
 }
 
 @media screen and (max-width: 900px) {
-  /* line 317, resources/scss/pages/_local-climate-charts.scss */
+  /* line 336, resources/scss/pages/_local-climate-charts.scss */
   #monthly-select-wrapper {
     flex-flow: row wrap !important;
     height: auto !important;
     width: 100% !important;
     padding-bottom: 24px !important;
   }
-  /* line 346, resources/scss/pages/_local-climate-charts.scss */
+  /* line 365, resources/scss/pages/_local-climate-charts.scss */
   #monthly-select-wrapper #btn-chart {
     width: 100% !important;
     height: 48px !important;
     padding-top: 6px !important;
     padding-bottom: 6px !important;
   }
-  /* line 353, resources/scss/pages/_local-climate-charts.scss */
+  /* line 372, resources/scss/pages/_local-climate-charts.scss */
   #monthly-select-wrapper .circle-box-left {
     -moz-border-radius-topleft: 5px !important;
     -webkit-border-top-left-radius: 5px !important;
@@ -18306,7 +18317,7 @@ input.input-inner:focus {
     -webkit-border-bottom-right-radius: 0px !important;
     border-bottom-right-radius: 0px !important;
   }
-  /* line 358, resources/scss/pages/_local-climate-charts.scss */
+  /* line 377, resources/scss/pages/_local-climate-charts.scss */
   #monthly-select-wrapper .circle-box-middle {
     -moz-border-radius-topleft: 0px !important;
     -webkit-border-top-left-radius: 0px !important;
@@ -18321,12 +18332,12 @@ input.input-inner:focus {
     -webkit-border-bottom-right-radius: 0px !important;
     border-bottom-right-radius: 0px !important;
   }
-  /* line 363, resources/scss/pages/_local-climate-charts.scss */
+  /* line 382, resources/scss/pages/_local-climate-charts.scss */
   #monthly-select-wrapper .btn-default-selected.circle-box-left, #monthly-select-wrapper .btn-default-selected.circle-box-right {
     margin-right: 0px !important;
     margin-left: 0px !important;
   }
-  /* line 368, resources/scss/pages/_local-climate-charts.scss */
+  /* line 387, resources/scss/pages/_local-climate-charts.scss */
   #monthly-select-wrapper .circle-box-right {
     -moz-border-radius-topleft: 0px !important;
     -webkit-border-top-left-radius: 0px !important;
@@ -18343,25 +18354,25 @@ input.input-inner:focus {
   }
 }
 
-/* line 375, resources/scss/pages/_local-climate-charts.scss */
+/* line 394, resources/scss/pages/_local-climate-charts.scss */
 #slider-range {
   width: 90% !important;
   margin: auto !important;
 }
 
-/* line 380, resources/scss/pages/_local-climate-charts.scss */
+/* line 399, resources/scss/pages/_local-climate-charts.scss */
 .ui-slider-range {
   display: block !important;
   position: relative !important;
   height: 8px !important;
 }
 
-/* line 386, resources/scss/pages/_local-climate-charts.scss */
+/* line 405, resources/scss/pages/_local-climate-charts.scss */
 .noUi-horizontal {
   height: 8px !important;
 }
 
-/* line 390, resources/scss/pages/_local-climate-charts.scss */
+/* line 409, resources/scss/pages/_local-climate-charts.scss */
 .noUi-target {
   background: #347ae4 !important;
   border-radius: 8px !important;
@@ -18369,18 +18380,18 @@ input.input-inner:focus {
   box-shadow: unset !important;
 }
 
-/* line 397, resources/scss/pages/_local-climate-charts.scss */
+/* line 416, resources/scss/pages/_local-climate-charts.scss */
 .noUi-base {
   background: #347ae4 !important;
   border-radius: 18px !important;
 }
 
-/* line 402, resources/scss/pages/_local-climate-charts.scss */
+/* line 421, resources/scss/pages/_local-climate-charts.scss */
 .noUi-connect {
   background: #124086 !important;
 }
 
-/* line 406, resources/scss/pages/_local-climate-charts.scss */
+/* line 425, resources/scss/pages/_local-climate-charts.scss */
 .noUi-handle {
   cursor: pointer !important;
   background-color: #124086 !important;
@@ -18395,7 +18406,7 @@ input.input-inner:focus {
   top: -4px !important;
 }
 
-/* line 417, resources/scss/pages/_local-climate-charts.scss */
+/* line 436, resources/scss/pages/_local-climate-charts.scss */
 .noUi-handle:hover, .noUi-handle:focus {
   outline: none !important;
   -webkit-box-shadow: 0px 0px 0px 8px rgba(18, 64, 134, 0.25) !important;
@@ -18403,22 +18414,22 @@ input.input-inner:focus {
   box-shadow: 0px 0px 0px 8px rgba(18, 64, 134, 0.25) !important;
 }
 
-/* line 422, resources/scss/pages/_local-climate-charts.scss */
+/* line 441, resources/scss/pages/_local-climate-charts.scss */
 .noUi-handle:before, .noUi-handle:after {
   display: none !important;
 }
 
-/* line 427, resources/scss/pages/_local-climate-charts.scss */
+/* line 446, resources/scss/pages/_local-climate-charts.scss */
 #slider-value-high {
   margin-left: 12px !important;
 }
 
-/* line 431, resources/scss/pages/_local-climate-charts.scss */
+/* line 450, resources/scss/pages/_local-climate-charts.scss */
 #slider-value-low {
   margin-right: 12px !important;
 }
 
-/* line 435, resources/scss/pages/_local-climate-charts.scss */
+/* line 454, resources/scss/pages/_local-climate-charts.scss */
 #slider-value-low, #slider-value-mid, #slider-value-high {
   display: flex;
   font: 500 18px Roboto, Helvetica, "Helvetica Neue", Arial, sans-serif !important;
@@ -18428,7 +18439,7 @@ input.input-inner:focus {
   justify-content: center !important;
 }
 
-/* line 444, resources/scss/pages/_local-climate-charts.scss */
+/* line 463, resources/scss/pages/_local-climate-charts.scss */
 #legend-wrapper {
   padding-top: 12px !important;
   padding-bottom: 12px !important;
@@ -18436,7 +18447,7 @@ input.input-inner:focus {
   height: 30px !important;
 }
 
-/* line 450, resources/scss/pages/_local-climate-charts.scss */
+/* line 469, resources/scss/pages/_local-climate-charts.scss */
 #legend-wrapper #btn-chart {
   cursor: pointer;
   background-color: #E9F1FC;
@@ -18457,25 +18468,25 @@ input.input-inner:focus {
 }
 
 @media screen and (max-width: 1080px) {
-  /* line 450, resources/scss/pages/_local-climate-charts.scss */
+  /* line 469, resources/scss/pages/_local-climate-charts.scss */
   #legend-wrapper #btn-chart {
     min-width: 200px;
   }
 }
 
 @media screen and (max-width: 900px) {
-  /* line 450, resources/scss/pages/_local-climate-charts.scss */
+  /* line 469, resources/scss/pages/_local-climate-charts.scss */
   #legend-wrapper #btn-chart {
     height: 48px;
   }
 }
 
-/* line 471, resources/scss/pages/_local-climate-charts.scss */
+/* line 490, resources/scss/pages/_local-climate-charts.scss */
 #legend-wrapper #btn-chart:focus {
   outline: none !important;
 }
 
-/* line 475, resources/scss/pages/_local-climate-charts.scss */
+/* line 494, resources/scss/pages/_local-climate-charts.scss */
 #legend-wrapper #btn-chart:hover {
   background-color: #caddf8;
   color: #124086;
@@ -18487,14 +18498,14 @@ input.input-inner:focus {
   box-shadow: 0px 3px 6px rgba(0, 0, 0, 0.239);
 }
 
-/* line 483, resources/scss/pages/_local-climate-charts.scss */
+/* line 502, resources/scss/pages/_local-climate-charts.scss */
 #legend-wrapper #btn-chart:hover.description {
   cursor: default;
   background-color: #E9F1FC;
   font: 500 14px Roboto, Helvetica, "Helvetica Neue", Arial, sans-serif;
 }
 
-/* line 490, resources/scss/pages/_local-climate-charts.scss */
+/* line 509, resources/scss/pages/_local-climate-charts.scss */
 #legend-wrapper #btn-chart.selected {
   background-color: #124086;
   color: #E9F1FC;
@@ -18503,12 +18514,12 @@ input.input-inner:focus {
   box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.239);
 }
 
-/* line 495, resources/scss/pages/_local-climate-charts.scss */
+/* line 514, resources/scss/pages/_local-climate-charts.scss */
 #legend-wrapper #btn-chart.selected:focus {
   outline: none !important;
 }
 
-/* line 499, resources/scss/pages/_local-climate-charts.scss */
+/* line 518, resources/scss/pages/_local-climate-charts.scss */
 #legend-wrapper #btn-chart.selected:hover {
   background-color: #397ee5 !important;
   color: #E9F1FC;
@@ -18520,14 +18531,14 @@ input.input-inner:focus {
   box-shadow: 0px 7px 12px rgba(0, 0, 0, 0.239);
 }
 
-/* line 507, resources/scss/pages/_local-climate-charts.scss */
+/* line 526, resources/scss/pages/_local-climate-charts.scss */
 #legend-wrapper #btn-chart.selected:hover.description {
   cursor: default;
   background-color: #124086;
   font: 500 14px Roboto, Helvetica, "Helvetica Neue", Arial, sans-serif;
 }
 
-/* line 515, resources/scss/pages/_local-climate-charts.scss */
+/* line 534, resources/scss/pages/_local-climate-charts.scss */
 #legend-wrapper #btn-chart.disabled {
   cursor: default;
   background-color: #E9F1FC;
@@ -18538,7 +18549,7 @@ input.input-inner:focus {
   box-shadow: 0px 0px 0px rgba(0, 0, 0, 0.239);
 }
 
-/* line 522, resources/scss/pages/_local-climate-charts.scss */
+/* line 541, resources/scss/pages/_local-climate-charts.scss */
 #legend-wrapper #btn-chart.disabled:hover, #legend-wrapper #btn-chart.disabled:focus {
   cursor: default;
   background-color: #E9F1FC;
@@ -18549,7 +18560,7 @@ input.input-inner:focus {
   box-shadow: 0px 0px 0px rgba(0, 0, 0, 0.239);
 }
 
-/* line 531, resources/scss/pages/_local-climate-charts.scss */
+/* line 550, resources/scss/pages/_local-climate-charts.scss */
 #legend-wrapper #btn-chart .inner-histobs {
   background-color: #777777;
   border: 1px solid #5e5e5e;
@@ -18561,25 +18572,25 @@ input.input-inner:focus {
   border-radius: 5px / 5px;
 }
 
-/* line 539, resources/scss/pages/_local-climate-charts.scss */
+/* line 558, resources/scss/pages/_local-climate-charts.scss */
 #legend-wrapper #btn-chart .inner-histobs.disabled {
   background-color: #969696;
 }
 
-/* line 541, resources/scss/pages/_local-climate-charts.scss */
+/* line 561, resources/scss/pages/_local-climate-charts.scss */
 #legend-wrapper #btn-chart .inner-histobs.disabled:hover, #legend-wrapper #btn-chart .inner-histobs.disabled:focus {
   background-color: #969696;
 }
 
-/* line 546, resources/scss/pages/_local-climate-charts.scss */
+/* line 566, resources/scss/pages/_local-climate-charts.scss */
 #legend-wrapper #btn-chart .inner-histobs:hover, #legend-wrapper #btn-chart .inner-histobs:focus {
   background-color: #777777;
   outline: none !important;
   font-weight: 500;
 }
 
-/* line 553, resources/scss/pages/_local-climate-charts.scss */
-#legend-wrapper #btn-chart .inner-hismod {
+/* line 573, resources/scss/pages/_local-climate-charts.scss */
+#legend-wrapper #btn-chart .inner-histmod {
   background-color: #D6D6D6;
   border: 1px solid #bdbdbd;
   height: 18px;
@@ -18590,24 +18601,24 @@ input.input-inner:focus {
   border-radius: 5px / 5px;
 }
 
-/* line 561, resources/scss/pages/_local-climate-charts.scss */
-#legend-wrapper #btn-chart .inner-hismod.disabled {
+/* line 581, resources/scss/pages/_local-climate-charts.scss */
+#legend-wrapper #btn-chart .inner-histmod.disabled {
   background-color: whitesmoke;
 }
 
-/* line 563, resources/scss/pages/_local-climate-charts.scss */
-#legend-wrapper #btn-chart .inner-hismod.disabled:hover, #legend-wrapper #btn-chart .inner-hismod.disabled:focus {
+/* line 584, resources/scss/pages/_local-climate-charts.scss */
+#legend-wrapper #btn-chart .inner-histmod.disabled:hover, #legend-wrapper #btn-chart .inner-histmod.disabled:focus {
   background-color: whitesmoke;
 }
 
-/* line 568, resources/scss/pages/_local-climate-charts.scss */
-#legend-wrapper #btn-chart .inner-hismod:hover, #legend-wrapper #btn-chart .inner-hismod:focus {
+/* line 589, resources/scss/pages/_local-climate-charts.scss */
+#legend-wrapper #btn-chart .inner-histmod:hover, #legend-wrapper #btn-chart .inner-histmod:focus {
   background-color: #D6D6D6;
   outline: none;
   font-weight: 500;
 }
 
-/* line 575, resources/scss/pages/_local-climate-charts.scss */
+/* line 596, resources/scss/pages/_local-climate-charts.scss */
 #legend-wrapper #btn-chart .inner-lower-emmisions {
   background-color: #98BCEB;
   border: 1px solid #6da0e3;
@@ -18619,24 +18630,24 @@ input.input-inner:focus {
   border-radius: 5px / 5px;
 }
 
-/* line 583, resources/scss/pages/_local-climate-charts.scss */
+/* line 604, resources/scss/pages/_local-climate-charts.scss */
 #legend-wrapper #btn-chart .inner-lower-emmisions.disabled {
   background-color: #cbddf5;
 }
 
-/* line 585, resources/scss/pages/_local-climate-charts.scss */
+/* line 607, resources/scss/pages/_local-climate-charts.scss */
 #legend-wrapper #btn-chart .inner-lower-emmisions.disabled:hover, #legend-wrapper #btn-chart .inner-lower-emmisions.disabled:focus {
   background-color: #cbddf5;
 }
 
-/* line 590, resources/scss/pages/_local-climate-charts.scss */
+/* line 612, resources/scss/pages/_local-climate-charts.scss */
 #legend-wrapper #btn-chart .inner-lower-emmisions:hover, #legend-wrapper #btn-chart .inner-lower-emmisions:focus {
   background-color: #98BCEB;
   outline: none;
   font-weight: 500;
 }
 
-/* line 597, resources/scss/pages/_local-climate-charts.scss */
+/* line 619, resources/scss/pages/_local-climate-charts.scss */
 #legend-wrapper #btn-chart .inner-higher-emmisions {
   background-color: #FBB4AA;
   border: 1px solid #f98979;
@@ -18648,17 +18659,17 @@ input.input-inner:focus {
   border-radius: 5px / 5px;
 }
 
-/* line 605, resources/scss/pages/_local-climate-charts.scss */
+/* line 627, resources/scss/pages/_local-climate-charts.scss */
 #legend-wrapper #btn-chart .inner-higher-emmisions.disabled {
   background-color: #fee8e4;
 }
 
-/* line 607, resources/scss/pages/_local-climate-charts.scss */
+/* line 630, resources/scss/pages/_local-climate-charts.scss */
 #legend-wrapper #btn-chart .inner-higher-emmisions.disabled:hover, #legend-wrapper #btn-chart .inner-higher-emmisions.disabled:focus {
   background-color: #fee8e4;
 }
 
-/* line 612, resources/scss/pages/_local-climate-charts.scss */
+/* line 635, resources/scss/pages/_local-climate-charts.scss */
 #legend-wrapper #btn-chart .inner-higher-emmisions:hover, #legend-wrapper #btn-chart .inner-higher-emmisions:focus {
   background-color: #FBB4AA;
   outline: none;
@@ -18666,7 +18677,7 @@ input.input-inner:focus {
 }
 
 @media screen and (max-width: 900px) {
-  /* line 444, resources/scss/pages/_local-climate-charts.scss */
+  /* line 463, resources/scss/pages/_local-climate-charts.scss */
   #legend-wrapper {
     height: auto !important;
     flex-wrap: wrap !important;
@@ -18674,13 +18685,13 @@ input.input-inner:focus {
     width: 100% !important;
     padding-bottom: 12px !important;
   }
-  /* line 627, resources/scss/pages/_local-climate-charts.scss */
+  /* line 650, resources/scss/pages/_local-climate-charts.scss */
   #legend-wrapper #btn-chart {
     height: 48px !important;
     width: 100% !important;
     margin-top: 12px;
   }
-  /* line 632, resources/scss/pages/_local-climate-charts.scss */
+  /* line 655, resources/scss/pages/_local-climate-charts.scss */
   #legend-wrapper .circle-box-left {
     -moz-border-radius-topleft: 5px;
     -webkit-border-top-left-radius: 5px;
@@ -18695,7 +18706,7 @@ input.input-inner:focus {
     -webkit-border-bottom-right-radius: 0px;
     border-bottom-right-radius: 0px;
   }
-  /* line 636, resources/scss/pages/_local-climate-charts.scss */
+  /* line 659, resources/scss/pages/_local-climate-charts.scss */
   #legend-wrapper .circle-box-right {
     -moz-border-radius-topleft: 0px;
     -webkit-border-top-left-radius: 0px;
@@ -18712,7 +18723,7 @@ input.input-inner:focus {
   }
 }
 
-/* line 645, resources/scss/pages/_local-climate-charts.scss */
+/* line 668, resources/scss/pages/_local-climate-charts.scss */
 #more-info-description #btn-chart.description {
   cursor: default;
   background-color: #FBFCFE;
@@ -18730,13 +18741,13 @@ input.input-inner:focus {
 }
 
 @media screen and (max-width: 1080px) {
-  /* line 645, resources/scss/pages/_local-climate-charts.scss */
+  /* line 668, resources/scss/pages/_local-climate-charts.scss */
   #more-info-description #btn-chart.description {
     min-width: 190px;
   }
 }
 
-/* line 662, resources/scss/pages/_local-climate-charts.scss */
+/* line 685, resources/scss/pages/_local-climate-charts.scss */
 #more-info-description #btn-chart.description .inner-histobs {
   background-color: #777777;
   border: 1px solid #5e5e5e;
@@ -18749,26 +18760,26 @@ input.input-inner:focus {
 }
 
 @media screen and (max-width: 1080px) {
-  /* line 662, resources/scss/pages/_local-climate-charts.scss */
+  /* line 685, resources/scss/pages/_local-climate-charts.scss */
   #more-info-description #btn-chart.description .inner-histobs {
     margin: 6px;
   }
 }
 
-/* line 674, resources/scss/pages/_local-climate-charts.scss */
+/* line 697, resources/scss/pages/_local-climate-charts.scss */
 #more-info-description #btn-chart.description .inner-histobs.disabled {
   background-color: #777777;
 }
 
-/* line 678, resources/scss/pages/_local-climate-charts.scss */
+/* line 701, resources/scss/pages/_local-climate-charts.scss */
 #more-info-description #btn-chart.description .inner-histobs:hover, #more-info-description #btn-chart.description .inner-histobs:focus {
   background-color: #777777;
   outline: none;
   font: 500 14px Roboto, Helvetica, "Helvetica Neue", Arial, sans-serif;
 }
 
-/* line 685, resources/scss/pages/_local-climate-charts.scss */
-#more-info-description #btn-chart.description .inner-hismod {
+/* line 708, resources/scss/pages/_local-climate-charts.scss */
+#more-info-description #btn-chart.description .inner-histmod {
   background-color: #D6D6D6;
   border: 1px solid #bdbdbd;
   height: 18px;
@@ -18780,25 +18791,25 @@ input.input-inner:focus {
 }
 
 @media screen and (max-width: 1080px) {
-  /* line 685, resources/scss/pages/_local-climate-charts.scss */
-  #more-info-description #btn-chart.description .inner-hismod {
+  /* line 708, resources/scss/pages/_local-climate-charts.scss */
+  #more-info-description #btn-chart.description .inner-histmod {
     margin: 6px;
   }
 }
 
-/* line 697, resources/scss/pages/_local-climate-charts.scss */
-#more-info-description #btn-chart.description .inner-hismod.disabled {
+/* line 720, resources/scss/pages/_local-climate-charts.scss */
+#more-info-description #btn-chart.description .inner-histmod.disabled {
   background-color: #D6D6D6;
 }
 
-/* line 701, resources/scss/pages/_local-climate-charts.scss */
-#more-info-description #btn-chart.description .inner-hismod:hover, #more-info-description #btn-chart.description .inner-hismod:focus {
+/* line 724, resources/scss/pages/_local-climate-charts.scss */
+#more-info-description #btn-chart.description .inner-histmod:hover, #more-info-description #btn-chart.description .inner-histmod:focus {
   background-color: #D6D6D6;
   outline: none;
   font: 500 14px Roboto, Helvetica, "Helvetica Neue", Arial, sans-serif;
 }
 
-/* line 708, resources/scss/pages/_local-climate-charts.scss */
+/* line 731, resources/scss/pages/_local-climate-charts.scss */
 #more-info-description #btn-chart.description .inner-lower-emmisions {
   background-color: #98BCEB;
   border: 1px solid #6da0e3;
@@ -18811,25 +18822,25 @@ input.input-inner:focus {
 }
 
 @media screen and (max-width: 1080px) {
-  /* line 708, resources/scss/pages/_local-climate-charts.scss */
+  /* line 731, resources/scss/pages/_local-climate-charts.scss */
   #more-info-description #btn-chart.description .inner-lower-emmisions {
     margin: 6px;
   }
 }
 
-/* line 720, resources/scss/pages/_local-climate-charts.scss */
+/* line 743, resources/scss/pages/_local-climate-charts.scss */
 #more-info-description #btn-chart.description .inner-lower-emmisions.disabled {
   background-color: #98BCEB;
 }
 
-/* line 724, resources/scss/pages/_local-climate-charts.scss */
+/* line 747, resources/scss/pages/_local-climate-charts.scss */
 #more-info-description #btn-chart.description .inner-lower-emmisions:hover, #more-info-description #btn-chart.description .inner-lower-emmisions:focus {
   background-color: #98BCEB;
   outline: none;
   font: 500 14px Roboto, Helvetica, "Helvetica Neue", Arial, sans-serif;
 }
 
-/* line 731, resources/scss/pages/_local-climate-charts.scss */
+/* line 754, resources/scss/pages/_local-climate-charts.scss */
 #more-info-description #btn-chart.description .inner-higher-emmisions {
   background-color: #FBB4AA;
   border: 1px solid #f98979;
@@ -18842,32 +18853,32 @@ input.input-inner:focus {
 }
 
 @media screen and (max-width: 1080px) {
-  /* line 731, resources/scss/pages/_local-climate-charts.scss */
+  /* line 754, resources/scss/pages/_local-climate-charts.scss */
   #more-info-description #btn-chart.description .inner-higher-emmisions {
     margin: 6px;
   }
 }
 
-/* line 743, resources/scss/pages/_local-climate-charts.scss */
+/* line 766, resources/scss/pages/_local-climate-charts.scss */
 #more-info-description #btn-chart.description .inner-higher-emmisions.disabled {
   background-color: #FBB4AA;
 }
 
-/* line 747, resources/scss/pages/_local-climate-charts.scss */
+/* line 770, resources/scss/pages/_local-climate-charts.scss */
 #more-info-description #btn-chart.description .inner-higher-emmisions:hover, #more-info-description #btn-chart.description .inner-higher-emmisions:focus {
   background-color: #FBB4AA;
   outline: none;
   font: 500 14px Roboto, Helvetica, "Helvetica Neue", Arial, sans-serif;
 }
 
-/* line 757, resources/scss/pages/_local-climate-charts.scss */
+/* line 780, resources/scss/pages/_local-climate-charts.scss */
 #chart-row {
   justify-content: space-evenly !important;
   height: 100% !important;
   min-height: 295px;
 }
 
-/* line 762, resources/scss/pages/_local-climate-charts.scss */
+/* line 785, resources/scss/pages/_local-climate-charts.scss */
 #chart-row .chart-nodata-message {
   z-index: 500;
   width: 50%;
@@ -18886,7 +18897,7 @@ input.input-inner:focus {
 }
 
 @media screen and (max-width: 599px) {
-  /* line 762, resources/scss/pages/_local-climate-charts.scss */
+  /* line 785, resources/scss/pages/_local-climate-charts.scss */
   #chart-row .chart-nodata-message {
     position: relative;
     top: -50px !important;
@@ -18897,7 +18908,7 @@ input.input-inner:focus {
 }
 
 @media screen and (max-height: 800px) {
-  /* line 786, resources/scss/pages/_local-climate-charts.scss */
+  /* line 809, resources/scss/pages/_local-climate-charts.scss */
   #chart-row .chart-wrap {
     height: calc(100% - 95px) !important;
     min-height: 200px !important;
@@ -18905,7 +18916,7 @@ input.input-inner:focus {
 }
 
 @media screen and (max-height: 700px) {
-  /* line 793, resources/scss/pages/_local-climate-charts.scss */
+  /* line 816, resources/scss/pages/_local-climate-charts.scss */
   #chart-row .chart-wrap {
     height: calc(100% - 85px) !important;
     min-height: 200px !important;
@@ -18913,29 +18924,29 @@ input.input-inner:focus {
 }
 
 @media screen and (min-width: 901px) {
-  /* line 800, resources/scss/pages/_local-climate-charts.scss */
+  /* line 823, resources/scss/pages/_local-climate-charts.scss */
   #chart-row.closed-filters {
     height: calc(100% - 135px) !important;
   }
 }
 
-/* line 805, resources/scss/pages/_local-climate-charts.scss */
+/* line 828, resources/scss/pages/_local-climate-charts.scss */
 #chart-row.closed-filters #annual-slider-wrapper {
   height: 30px !important;
 }
 
-/* line 809, resources/scss/pages/_local-climate-charts.scss */
+/* line 832, resources/scss/pages/_local-climate-charts.scss */
 #chart-row.closed-filters #monthly-select-wrapper {
   height: 250px !important;
 }
 
-/* line 813, resources/scss/pages/_local-climate-charts.scss */
+/* line 836, resources/scss/pages/_local-climate-charts.scss */
 #chart-row.closed-filters #legend-wrapper {
   height: 50px !important;
 }
 
 @media screen and (max-width: 1240px) {
-  /* line 757, resources/scss/pages/_local-climate-charts.scss */
+  /* line 780, resources/scss/pages/_local-climate-charts.scss */
   #chart-row {
     justify-content: center !important;
     height: calc(100% - 75px) !important;
@@ -18943,117 +18954,117 @@ input.input-inner:focus {
 }
 
 @media screen and (max-width: 900px) {
-  /* line 757, resources/scss/pages/_local-climate-charts.scss */
+  /* line 780, resources/scss/pages/_local-climate-charts.scss */
   #chart-row {
     height: 650px !important;
     min-height: 650px;
     order: 1;
   }
-  /* line 828, resources/scss/pages/_local-climate-charts.scss */
+  /* line 851, resources/scss/pages/_local-climate-charts.scss */
   #chart-row .chart-wrap {
     min-height: 350px !important;
     height: 350px !important;
   }
-  /* line 834, resources/scss/pages/_local-climate-charts.scss */
+  /* line 857, resources/scss/pages/_local-climate-charts.scss */
   #chart-row.closed-filters .chart-wrap {
     min-height: 350px !important;
     height: 350px !important;
   }
-  /* line 839, resources/scss/pages/_local-climate-charts.scss */
+  /* line 862, resources/scss/pages/_local-climate-charts.scss */
   #chart-row.closed-filters #annual-slider-wrapper {
     height: 30px !important;
   }
-  /* line 843, resources/scss/pages/_local-climate-charts.scss */
+  /* line 866, resources/scss/pages/_local-climate-charts.scss */
   #chart-row.closed-filters #monthly-select-wrapper {
     height: 250px !important;
   }
-  /* line 847, resources/scss/pages/_local-climate-charts.scss */
+  /* line 870, resources/scss/pages/_local-climate-charts.scss */
   #chart-row.closed-filters #legend-wrapper {
     height: 300px !important;
   }
 }
 
 @media screen and (max-width: 599px) {
-  /* line 757, resources/scss/pages/_local-climate-charts.scss */
+  /* line 780, resources/scss/pages/_local-climate-charts.scss */
   #chart-row {
     height: 650px !important;
     min-height: 650px;
     order: 1;
   }
-  /* line 857, resources/scss/pages/_local-climate-charts.scss */
+  /* line 880, resources/scss/pages/_local-climate-charts.scss */
   #chart-row .chart-wrap {
     min-height: 250px !important;
     height: 250px !important;
   }
 }
 
-/* line 865, resources/scss/pages/_local-climate-charts.scss */
+/* line 888, resources/scss/pages/_local-climate-charts.scss */
 #chart-info-row:hover, #chart-info-row:focus {
   outline: none;
 }
 
-/* line 869, resources/scss/pages/_local-climate-charts.scss */
+/* line 892, resources/scss/pages/_local-climate-charts.scss */
 #chart-info-row .rounded-description-box {
   position: relative;
   top: 8px;
 }
 
 @media screen and (max-width: 1240px) {
-  /* line 869, resources/scss/pages/_local-climate-charts.scss */
+  /* line 892, resources/scss/pages/_local-climate-charts.scss */
   #chart-info-row .rounded-description-box {
     top: 8px;
   }
 }
 
 @media screen and (max-height: 700px) {
-  /* line 869, resources/scss/pages/_local-climate-charts.scss */
+  /* line 892, resources/scss/pages/_local-climate-charts.scss */
   #chart-info-row .rounded-description-box {
     top: 8px;
   }
 }
 
 @media screen and (max-height: 800px) {
-  /* line 869, resources/scss/pages/_local-climate-charts.scss */
+  /* line 892, resources/scss/pages/_local-climate-charts.scss */
   #chart-info-row .rounded-description-box {
     top: 8px;
   }
 }
 
 @media screen and (max-width: 1080px) {
-  /* line 869, resources/scss/pages/_local-climate-charts.scss */
+  /* line 892, resources/scss/pages/_local-climate-charts.scss */
   #chart-info-row .rounded-description-box {
     top: 50px;
   }
 }
 
 @media screen and (max-width: 900px) {
-  /* line 869, resources/scss/pages/_local-climate-charts.scss */
+  /* line 892, resources/scss/pages/_local-climate-charts.scss */
   #chart-info-row .rounded-description-box {
     top: 0px;
   }
 }
 
 @media screen and (max-width: 900px) {
-  /* line 864, resources/scss/pages/_local-climate-charts.scss */
+  /* line 887, resources/scss/pages/_local-climate-charts.scss */
   #chart-info-row {
     order: 3;
   }
 }
 
-/* line 893, resources/scss/pages/_local-climate-charts.scss */
+/* line 916, resources/scss/pages/_local-climate-charts.scss */
 #chart-info-row .explainer-spacer {
   padding-top: 24px !important;
 }
 
 @media screen and (max-width: 900px) {
-  /* line 897, resources/scss/pages/_local-climate-charts.scss */
+  /* line 920, resources/scss/pages/_local-climate-charts.scss */
   #chart-info-row .chart-info-img, #chart-info-row .chart-info-text {
     width: 100% !important;
   }
 }
 
 @media screen and (max-width: 900px) {
-  /* line 902, resources/scss/pages/_local-climate-charts.scss */
+  /* line 926, resources/scss/pages/_local-climate-charts.scss */
   #chart-info-row .chart-info-img {
     display: flex !important;
     align-items: center !important;
@@ -19063,32 +19074,32 @@ input.input-inner:focus {
 }
 
 @media screen and (max-width: 900px) {
-  /* line 912, resources/scss/pages/_local-climate-charts.scss */
+  /* line 936, resources/scss/pages/_local-climate-charts.scss */
   #annual-slider-wrapper {
     height: 30px !important;
     order: 2;
   }
 }
 
-/* line 920, resources/scss/pages/_local-climate-charts.scss */
+/* line 944, resources/scss/pages/_local-climate-charts.scss */
 #more-info-description .about-tool-row {
   width: 100% !important;
 }
 
-/* line 923, resources/scss/pages/_local-climate-charts.scss */
+/* line 948, resources/scss/pages/_local-climate-charts.scss */
 #more-info-description ul {
   list-style-type: square;
   list-style-position: inside;
   padding: 6px;
 }
 
-/* line 927, resources/scss/pages/_local-climate-charts.scss */
+/* line 953, resources/scss/pages/_local-climate-charts.scss */
 #more-info-description ul li {
   margin-left: 6px;
   margin-top: 6px;
 }
 
-/* line 934, resources/scss/pages/_local-climate-charts.scss */
+/* line 960, resources/scss/pages/_local-climate-charts.scss */
 #filters-toggle {
   height: 36px;
   width: 36px;
@@ -19100,19 +19111,19 @@ input.input-inner:focus {
   border-radius: 36px;
 }
 
-/* line 941, resources/scss/pages/_local-climate-charts.scss */
+/* line 967, resources/scss/pages/_local-climate-charts.scss */
 #filters-toggle .select-styled::after {
   background-color: #dce8fa;
   content: '\f0d8';
 }
 
-/* line 946, resources/scss/pages/_local-climate-charts.scss */
+/* line 973, resources/scss/pages/_local-climate-charts.scss */
 #filters-toggle .select-styled.closed-filters::after {
   font-family: 'Font Awesome 5 Free';
   content: '\f0d7';
 }
 
-/* line 954, resources/scss/pages/_local-climate-charts.scss */
+/* line 981, resources/scss/pages/_local-climate-charts.scss */
 #filters-row {
   visibility: visible !important;
   -webkit-transition: 0.6s;
@@ -19129,19 +19140,19 @@ input.input-inner:focus {
   transition-timing-function: ease;
 }
 
-/* line 963, resources/scss/pages/_local-climate-charts.scss */
+/* line 990, resources/scss/pages/_local-climate-charts.scss */
 #info-row.closed-filters .rounded-filters-box {
   min-height: 52px !important;
 }
 
 @media screen and (max-width: 900px) {
-  /* line 963, resources/scss/pages/_local-climate-charts.scss */
+  /* line 990, resources/scss/pages/_local-climate-charts.scss */
   #info-row.closed-filters .rounded-filters-box {
     min-height: 65px !important;
   }
 }
 
-/* line 971, resources/scss/pages/_local-climate-charts.scss */
+/* line 998, resources/scss/pages/_local-climate-charts.scss */
 #info-row.closed-filters #filters-row {
   display: none !important;
   visibility: hidden !important;

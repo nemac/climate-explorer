@@ -129,20 +129,20 @@
                   <a tabindex="109" rel="none" class="download-link-main short-desc" href="javascript:void(0);" >Down</a>
                 </div>
                 <ul class="select-options" style="display: none;">
-                  <li id="download-image" rel="download-image" icon="fas fa-download select-icon" href="javascript:void(0);" class="default-select-option">
-                    <a tabindex="109" rel="download-image" class="download-link" href="javascript:void(0);" >Chart image (.png)</a>
+                  <li id="download-image" class="default-select-option">
+                    <a tabindex="109" class="download-link" href="javascript:void(0);" >Chart image (.png)</a>
                   </li>
-                  <li id="download-observed-data" rel="download-observed-data" icon="fas fa-download select-icon" href="javascript:void(0);" class="default-select-option">
-                    <a tabindex="109" rel="download-observed-data" class="download-link" href="javascript:void(0);" >Historical Observed data (.csv)</a>
+                  <li id="download-observed-data" class="default-select-option">
+                    <a tabindex="109" class="download-link" href="javascript:void(0);" >Historical Observed data (.csv)</a>
                   </li>
-                  <li id="download-historical-modeled-data" rel="download-historical-modeled-data" icon="fas fa-download select-icon" href="javascript:void(0);" class="default-select-option">
-                    <a tabindex="109" rel="download-historical-modeled-data" class="download-link" href="javascript:void(0);" >Historical Modeled data (.csv)</a>
+                  <li id="download-historical-modeled-data" class="default-select-option">
+                    <a tabindex="109" class="download-link" href="javascript:void(0);" >Historical Modeled data (.csv)</a>
                   </li>
-                  <li id="download-projected-modeled-data" rel="download-projected-modeled-data" icon="fas fa-download select-icon" href="javascript:void(0);" class="default-select-option">
-                    <a tabindex="109" rel="download-projected-modeled-data" class="download-link" href="javascript:void(0);" >Projected Modeled data (.csv)</a>
+                  <li id="download-projected-modeled-data" class="default-select-option">
+                    <a tabindex="109" class="download-link" href="javascript:void(0);" >Projected Modeled data (.csv)</a>
                   </li>
-                  <li id="download-interpreting" rel="download-interpreting" icon="fas fa-download select-icon" class="default-select-option">
-                    <a tabindex="109" rel="download-interpreting" class="download-link" href="/resources/data/Climate-Explorer--Key-to-Filenames-and-Column-Headings.xlsx" >Key to column headings (.xlsx)</a>
+                  <li id="download-interpreting" class="default-select-option">
+                    <a tabindex="109" class="download-link" href="/resources/data/Climate-Explorer--Key-to-Filenames-and-Column-Headings.xlsx" >Key to column headings (.xlsx)</a>
                   </li>
                 </ul>
               </div>
@@ -180,9 +180,9 @@
               Historical Observed
               <div class="inner-histobs" val="histobs" ></div>
             </div>
-            <div tabindex="112" id="btn-chart" class="btn-hismod selected d-flex-center width-50" val="hist_mod"  >
+            <div tabindex="112" id="btn-chart" class="btn-histmod selected d-flex-center width-50" val="hist_mod"  >
               Historical Modeled
-              <div class="inner-hismod" val="hist_mod"></div>
+              <div class="inner-histmod" val="hist_mod"></div>
             </div>
             <div tabindex="113" id="btn-chart" class="btn-lower-emissions selected  d-flex-center width-50" val="rcp45"  >
               Lower Emissions
@@ -216,14 +216,15 @@
 
 {{> nav_footer }}
 {{> footer }}
-
+<script charset="utf-8" src="https://cdnjs.cloudflare.com/ajax/libs/plotly.js/1.54.7/plotly-basic.min.js" integrity="sha512-uWFGQaJgmsVg6uyMv7wQ9W0fvlqsK3cRIs/mVMc5Tox68S74OjdZI6Va/Pkc1+fLh6uh+fP8oO8My9n1AgWIAA==" crossorigin="anonymous"></script>
 <script src="https://unpkg.com/terraformer@1.0.8/terraformer.js" integrity="sha384-+M797Pj3WZVCwMmLbOxAoaWYcKJo8NSxItmI48ytcLNeAnfn1d/IckFn31jEqrzP"
         crossorigin="anonymous"></script>
 <script src="https://unpkg.com/terraformer-arcgis-parser@1.0.5/terraformer-arcgis-parser.js"
         integrity="sha384-duFUjKTSNoxEspdJNwr83CUgRxclf0ueKJB9DU/Vbit6bfWgzvZsHW6H1JLBBXhp" crossorigin="anonymous"></script>
+<script src="/resources/vendor/climate-by-location.js"></script>
 <script type="text/javascript" src="/resources/js/ce3-ui-components.js"></script>
 <script type="text/javascript" src="/resources/js/local-climate-charts.js"></script>
-<script type="text/javascript" src="/resources/js/nouislider.min.js"></script>
+<script type="text/javascript" src="/resources/vendor/nouislider.min.js"></script>
 <script type="text/javascript" src="/resources/js/secondary_header.js"></script>
 
 </body>
