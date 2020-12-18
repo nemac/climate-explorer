@@ -606,12 +606,13 @@ $(function () {
     // When state changes, just pass the current options along directly for this page.
     // If we re-use the stationsMap widget on another page there may be more handling to do.
     change: function change(event, options) {
+      if (options.currentstations) {return null}
       window.ce.ce('setStationsMapState', options);
       renderStationInfo(options.tidalStationId, options.tidalStationName, options.tidalStationMOverMHHW);
 
       const messsageElem = document.getElementById('stations-map-message');
       // check if there are any tidal stations in map extent
-      if (options.currentstations.features.length === 0) {
+      if (!!options.currentstations && options.currentstations.features.length === 0) {
         // get map parent element - which provides the correct dimensions for the map
         if (messsageElem) {
           const rect = document.getElementById('stations-map-wrap').getBoundingClientRect();
@@ -639,7 +640,7 @@ $(function () {
       chartPulldownChartText()
 
       // reset graphs
-      resetGraphs({variable: 'temperature', tidalStationId: options.tidalStationId, tidalStationName: options.tidalStationName });;
+      resetGraphs({variable: 'temperature', tidalStationId: options.tidalStationId, tidalStationName: options.tidalStationName });
 
       // updates the visible text for the station dropdown with the information from the state url
       updateStationSelectText({tidalStationName: options.tidalStationName, tidalStationId: options.tidalStationId})

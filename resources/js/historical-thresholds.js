@@ -989,9 +989,8 @@ $(function () {
 
       const messsageElem = document.getElementById('stations-map-message');
 
-      if (options.currentstations) {
         // check if there are any tidal stations in map extent
-        if (options.currentstations.features.length === 0) {
+        if (!!options.currentstations && options.currentstations.features.length === 0) {
           // get map parent element - which provides the correct dimensions for the map
           if (messsageElem) {
             const rect = document.getElementById('stations-map-wrap').getBoundingClientRect();
@@ -1003,9 +1002,6 @@ $(function () {
         } else {
           messsageElem.classList.add('d-none');
         }
-      } else {
-        messsageElem.classList.add('d-none');
-      }
 
     },
 
