@@ -3,7 +3,6 @@
 </div>
 
 <!-- START candidates for minification -->
-<script type="text/javascript" src="/resources/vendor/lodash.js"></script>
 <script type="text/javascript" src="/resources/vendor/formstone/core.js"></script>
 <script type="text/javascript" src="/resources/vendor/formstone/mediaquery.js"></script>
 <script type="text/javascript" src="/resources/vendor/formstone/touch.js"></script>
@@ -22,17 +21,15 @@
 <script type="text/javascript" src="/resources/vendor/tether.js"></script>
 <script type="text/javascript" src="/resources/vendor/shepherd.min.js"></script>
 <script type="text/javascript" src="/resources/vendor/formmapper.js"></script>
-<script type="text/javascript" src="https://unpkg.com/popper.js@^1"></script>
 <script type="text/javascript" src="https://unpkg.com/tooltip.js@^1"></script>
 <script type="text/javascript" src="https://unpkg.com/popper.js@1"></script>
 <script type="text/javascript" src="https://unpkg.com/tippy.js@4"></script>
 
 <!-- END candidates for minification -->
 
-<script type="text/javascript" src="/resources/vendor/climate-by-location.js"></script>
 <script type="text/javascript" src="/resources/js/main.js"></script>
 <script type="text/javascript" src="/resources/js/global_functions.js"></script>
-<script type="text/javascript" src="/resources/vendor/tidal/tidalstationswidget.js"></script>
+
 
 <script>
   $(document).ready(function () {
@@ -42,6 +39,16 @@
 
 <!-- Global site tag (gtag.js) - Google Analytics -->
 <script async src="https://www.googletagmanager.com/gtag/js?id={{{google_analytics_id}}}"></script>
+
+<script>
+  var s = document.createElement("script");
+  s.type = "text/javascript";
+  s.src = window.location.hostname === 'climate.toolkit.gov' ?
+          "https://maps.googleapis.com/maps/api/js?sensor=false&amp;libraries=places&client=gme-noaa&channel=OAR.CLIMATE_GOV_CLIMATE_EXPLORER2" :
+          "https://maps.googleapis.com/maps/api/js?key=AIzaSyBSjujKAutsVyR0GcsfXJvGA-J-54zWT2U&libraries=places";
+  document.head.appendChild(s);
+</script>
+
 <script>
   window.dataLayer = window.dataLayer || [];
   function gtag(){dataLayer.push(arguments);}

@@ -39,10 +39,8 @@ $(function () {
     enableCustomSelect('time-select');
     enableCustomSelect('presentation-select');
 
-    // init slider
-    initSlider();
-    initVarriableToolTips();
-    monthlySelectOff();
+    initVariableToolTips();
+    hideMonthlySelect();
 
     // valid monthly variables
     // monthly timeperiod is only valid for limited variables
@@ -251,8 +249,8 @@ $(function () {
 
     // adds a click event to turn off chart layers aka what you
     // see on the chart
-    $('#legend-wrapper').click(function (e) {
-        const target = $(e.target);
+    $('#legend-wrapper .btn-chart').click(function (e) {
+        const target = $(e.currentTarget);
         const notDisabled = !target.hasClass('disabled');
         if (notDisabled) {
           // update the chart layers
@@ -329,7 +327,7 @@ $(function () {
     $('#variable-select-vis').bind('cs-changed', function (e) {
         const variable = $('#variable-select-vis').attr('rel');
         // update the chart based on char variable
-        window.cbl_chart.set_options({
+        window.cbl_chart.update({
             variable
         });
 
@@ -357,71 +355,28 @@ $(function () {
 
     // this function changes chart layers based on what the user
     // clicks on
-    function updateChartLayers(inTarget) {
-        let target = inTarget;
-        if ($(inTarget).attr('class').includes('inner')) {
-          target = $(inTarget).parent();
-        }
-        target.toggleClass('selected');
-        const allItems = $(target).parent().children();
-
+    function updateChartLayers(el) {
+        const legend_el = $('#legend-wrapper');
+        el.toggleClass('selected');
         // map all buttons and get the val from html val attribute
-        const valid = allItems.map(function () {
-            const elAttribute = $(this).attr('val');
-            var obj = Object.assign({}, this);
-            obj[elAttribute] = $(this).hasClass('selected');
-            return obj;
-        });
+        const visible_layers = {
+          show_historical_observed: legend_el.find('[val="histobs"]').hasClass('selected') || false,
+          show_historical_modeled: legend_el.find('[val="histmod"]').hasClass('selected') || false,
+          show_projected_rcp45: legend_el.find('[val="rcp45"]').hasClass('selected') || false,
+          show_projected_rcp85:  legend_el.find('[val="rcp85"]').hasClass('selected') || false,
+        };
 
-        // flatten the array
-        var merged = Object.assign.apply(Object, valid);
-        let scenario = true;
-
-        // check scenarios
-
-        // both rcp45 & rcp85
-        if (merged.rcp45 && merged.rcp85) {
-            scenario = 'both';
-        }
-
-        // rcp45
-        if (merged.rcp45 && !merged.rcp85) {
-            scenario = 'rcp45';
-        }
-
-        // rcp86
-        if (!merged.rcp45 && merged.rcp85) {
-            scenario = 'rcp85';
-        }
-
-        // Neither rcp45 & rcp85
-        if (!merged.rcp45 && !merged.rcp85) {
-            scenario = '';
-        }
-
-        // set historical
-        const histmod = merged.hist_mod;
-        const histobs = merged.histobs;
 
         // ga event action, category, label
-        googleAnalyticsEvent('change', 'chart', scenario + '-' + histmod + '-' + histobs);
+        googleAnalyticsEvent('change', 'chart', Object.entries(visible_layers).map(a=>a.join('-')).join('-'));
 
         // update chart
-        window.cbl_chart.set_options({
-            scenario,
-            histmod,
-            histobs
-        });
+        window.cbl_chart.update(visible_layers);
     }
 
     // this function forces a map legend button to be selected css class
-    function forceSlected(selector) {
-        $(selector).addClass('selected');
-    }
-
-    // this function force a map legend to be "un selected" css class
-    function forceUnSlected(selector) {
-        $(selector).removeClass('selected');
+    function setSelected(selector, val=true) {
+        $(selector).toggleClass('selected', val);
     }
 
     // this function Updates the chart title.
@@ -456,35 +411,32 @@ $(function () {
     function updateFrequencySlider(targetval) {
         switch (targetval) {
             case 'annual':
-                annualSliderOn();
-                monthlySelectOff();
+                hideMonthlySelect();
                 validVarrablesEnable();
                 break;
             case 'monthly':
-                monthlySelectOn();
-                annualSliderOff();
+                showMonthlySelect();
                 validVarrablesDisable();
                 break;
             default:
-                annualSliderOn();
-                monthlySelectOff();
+                hideMonthlySelect();
                 validVarrablesEnable();
         }
     }
 
     // this function changes the frequency for the charts
     function updateFrequency(targetval) {
-        window.cbl_chart.set_options({
+        window.cbl_chart.update({
             frequency: targetval,
             variable: $('#variable-select-vis').attr('rel'),
-            histobs: true,
+            show_historical_observed: true,
         });
-        forceSlected('.btn-histobs');
+        setSelected('.btn-histobs');
     }
 
     // this function changes the presentation (anomaly,actual) for the charts
     function updatePresentation(targetval) {
-        window.cbl_chart.set_options({
+        window.cbl_chart.update({
             presentation: targetval
         });
     }
@@ -494,124 +446,32 @@ $(function () {
         // ga event action, category, label
         googleAnalyticsEvent('change', 'chart-time-period', targetval);
 
-        window.cbl_chart.set_options({
+        window.cbl_chart.update({
             timeperiod: targetval
         });
     }
 
-    // This function will be called whenever the user changes the x-scale in the graph.
-    function xrangesetmon() {
-        // Force the slider thumbs to adjust to the appropriate place
-        $("#slider-range").slider("option", "values", [0, 1]);
+
+    function showMonthlySelect() {
+        $('#monthly-select-wrapper').removeClass('d-none').addClass('d-flex-center');
     }
 
-    // this function sets the xrangeset
-    function xrangeset(min, max) {
-        // Force the slider thumbs to adjust to the appropriate place
-        var sliderElem = document.getElementById('slider-range');
-        if (sliderElem) {
-            sliderElem.noUiSlider.set([min, max]);
-
-
-            // ga event action, category, label
-            googleAnalyticsEvent('slide', 'update-years', min + "-" + min);
-        }
-    }
-
-    function initSlider() {
-        annualSliderOn();
-        monthlySelectOff();
-
-        var sliderElem = document.getElementById('slider-range');
-        if (sliderElem) {
-            noUiSlider.create(sliderElem, {
-                connect: true,
-                range: {
-                    'min': 1950,
-                    'max': 2099
-                },
-                step: 1,
-                // Handles start at ...
-                start: [1950, 2099]
-            });
-
-            // set slider on slide event
-            sliderElem.noUiSlider.on('slide', function () {
-                const values = sliderElem.noUiSlider.get();
-                const minValue = parseInt(values[0]);
-                const maxValue = parseInt(values[1]);
-                $('#slider-value-high').text(maxValue);
-                $('#slider-value-low').text(minValue);
-
-                // ga event action, category, label
-                googleAnalyticsEvent('slide', 'update-years', minValue + "-" + maxValue);
-
-                // update chart with new max min range
-                return window.cbl_chart.set_x_axis_range(minValue, maxValue);
-            });
-
-            // update chart with default starting min max
-            const values = sliderElem.noUiSlider.get();
-            const minValue = parseInt(values[0]);
-            const maxValue = parseInt(values[1]);
-            $('#slider-value-high').text(maxValue);
-            $('#slider-value-low').text(minValue);
-        }
-        monthlySelectOff();
-    }
-
-    function annualSliderOn() {
-        $('#annual-slider-wrapper').removeClass('d-none');
-        $('#annual-slider-wrapper').addClass('d-flex-center');
-    }
-
-    function annualSliderOff() {
-        $('#annual-slider-wrapper').addClass('d-none');
-        $('#annual-slider-wrapper').removeClass('d-flex-center');
-    }
-
-    function monthlySelectOn() {
-        $('#monthly-select-wrapper').removeClass('d-none');
-        $('#monthly-select-wrapper').addClass('d-flex-center');
-    }
-
-    function monthlySelectOff() {
-        $('#monthly-select-wrapper').addClass('d-none');
-        $('#monthly-select-wrapper').removeClass('d-flex-center');
+    function hideMonthlySelect() {
+        $('#monthly-select-wrapper').addClass('d-none').removeClass('d-flex-center');
     }
     // temp fix fo Hawaii leave out the fips...
-    if ( !isHawaii ) {
-      window.cbl_chart = new ClimateByLocationWidget($("div#chart-123")[0], {
-          'font': 'Roboto',
-          'responsive': true,
-          'frequency': 'annual',
-          'timeperiod': '2025',
-          'county': window.ce.ce('getLocationPageState')['fips'],
-          'variable': window.ce.ce('getVariablesPageState')['variable'] || 'tmax',
-          'scenario': 'both',
-          'presentation': 'absolute',
-          'pmedian': true,
-          'hmedian': false,
-          'histobs': false,
-          'histmod': true,
-          'xrangefunc': xrangeset(1950, 2099)
-      });
-    } else {
-      window.cbl_chart = new ClimateByLocationWidget($("div#chart-123")[0], {
-          'font': 'Roboto',
-          'responsive': true,
-          'frequency': 'annual',
-          'timeperiod': '2025',
-          'variable': window.ce.ce('getVariablesPageState')['variable'] || 'tmax',
-          'scenario': 'both',
-          'presentation': 'absolute',
-          'pmedian': true,
-          'hmedian': false,
-          'histobs': false,
-          'histmod': true,
-          'xrangefunc': xrangeset(1950, 2099)
-      });
-    }
+    window.cbl_chart = new ClimateByLocationWidget($("div#chart-123")[0], {
+        font: 'Roboto',
+        responsive: true,
+        frequency: 'annual',
+        timeperiod: '2025',
+        area_id: window.ce.ce('getLocationPageState')['fips'],
+        variable: window.ce.ce('getVariablesPageState')['variable'] || 'tmax',
+        show_projected_rcp45: true,
+        show_projected_rcp85:true,
+        show_historical_modeled:true,
+        show_historical_observed: false,
+    });
 
     setTimeout(function () {
         window.cbl_chart.resize();
@@ -663,13 +523,13 @@ $(function () {
         $(`[rel="${variable}"]`).click();
 
         // // change chart variable
-        // window.cbl_chart.set_options({
+        // window.cbl_chart.update({
         //   variable
         // });
     }
 
-    updateValidVarriable();
+    updateValidVariable();
     window.addEventListener('location-changed',() => {
-      updateValidVarriable();
+      updateValidVariable();
     })
 });

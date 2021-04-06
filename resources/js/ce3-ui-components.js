@@ -441,7 +441,7 @@ function forceResize() {
 }
 
 // init tool helpers for variables in variable pulldowns on map and chart pages
-function initVarriableToolTips() {
+function initVariableToolTips() {
   // const listWidth = -500 //(document.getElementById('variable-select-vis').offsetWidth - 24)* -1
   const tmaxReference = document.getElementById('tmax-tooltip');
   makeTip(tmaxReference);
@@ -716,7 +716,7 @@ if (storageAvailable()) {
   }
 }
 
-function updateValidVarriable() {
+function updateValidVariable() {
   const cityStateCE = window.ce.ce('getLocationPageState')['city'];
   const countyCE = window.ce.ce('getLocationPageState')['county'];
   let isAlaska = false;

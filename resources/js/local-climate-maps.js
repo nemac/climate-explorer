@@ -31,7 +31,7 @@ $(function () {
     }
   }
 
-  updateValidVarriable();
+  updateValidVariable();
 
   let mapExtent = window.ce.ce('getLocationPageState')['extent'];
   let mapZoom = window.ce.ce('getLocationPageState')['zoom'] || 9;
@@ -69,7 +69,7 @@ $(function () {
   enableCustomSelect('chartmap-select');
   enableCustomSelect('time-select');
 
-  initVarriableToolTips();
+  initVariableToolTips();
 
   // valid seasonal variables
   // seasonal timeperiod is only valid for limited variables
@@ -599,7 +599,7 @@ $(function () {
       if (  isvalid < 0 ) {
         const val = 'annual';
         $(window.precipitationScenariosMap).scenarioComparisonMap({ season: val });
-        const target = $('#btn-chart.btn-annual');
+        const target = $('.btn-chart .btn-annual');
         // toggle button visual state
         toggleButton(target);
 
@@ -818,8 +818,8 @@ $(function () {
     setMapSize();
   })
 
-  updateValidVarriable();
+  updateValidVariable();
   window.addEventListener('location-changed',() => {
-    updateValidVarriable();
+    updateValidVariable();
   })
 });

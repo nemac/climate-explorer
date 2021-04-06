@@ -4,12 +4,13 @@
   "description": "",
   "main": "index.html",
   "scripts": {
-    "build": "npm run html:build && npm run js:build && npm run data:build && npm run css:build",
-    "data:build": "mkdir -p dist/resources && cp -rf resources/data resources/img dist/resources/",
-    "js:build": "mkdir -p dist/resources && babel resources/js --out-dir dist/resources/js && cp -rf resources/vendor dist/resources/ && cp node_modules/jquery-ui-touch-punch/jquery.ui.touch-punch.min.js dist/resources/js && cp node_modules/nouislider/distribute/nouislider.min.js  dist/resources/js",
-    "html:pages": "echo \"index location local-climate-charts historical-weather-data high-tide-flooding historical-thresholds local-climate-maps national-climate-maps stations variables error faq glossary credits about 404 cards-home next-steps\"",
-    "html:build": "mkdir -p dist; bundlebars --compile --data config.yml --partials template --partialExt -o dist/ ./*.hbs; htmlpages=$(npm run html:pages --silent); for f in $htmlpages; do echo $f && mv dist/$f.hbs dist/$f.html && mkdir -p dist/${f} && cp -f dist/${f}.html dist/${f}/index.html; done;",
-    "css:build": "node-sass -o resources/css/ resources/scss/screen.scss --include-path node_modules/compass-mixins/lib/ --output-style expanded --source-comments && mkdir -p dist/resources && cp -rf resources/fonts resources/css dist/resources/ && cp node_modules/nouislider/distribute/nouislider.min.css  dist/resources/css",
+    "build": "npm run html:build & npm run js:build & npm run data:build & npm run css:build",
+    "build-debug": "npm run html:build && npm run js:build && npm run data:build && npm run css:build",
+    "data:build": "mkdir -p dist/resources && rsync -r resources/data/ dist/resources/data/ && rsync -r resources/img/ dist/resources/img/",
+    "js:build": "mkdir -p dist/resources/vendor && babel resources/js --out-dir dist/resources/js && rsync -r resources/vendor/ dist/resources/vendor/ && rsync node_modules/jquery-ui-touch-punch/jquery.ui.touch-punch.min.js dist/resources/vendor/   dist/resources/vendor/ && rsync --copy-links node_modules/climate-by-location/dist/climate_by_location.climate_explorer.bundle.js dist/resources/vendor/",
+    "html:pages": "echo \"index local-climate-charts historical-weather-data high-tide-flooding historical-thresholds local-climate-maps national-climate-maps stations variables error faq glossary credits about 404 cards-home next-steps\"",
+    "html:build": "mkdir -p dist; bundlebars --compile --data config.yml --partials template --partialExt -o dist/ ./*.hbs; htmlpages=$(npm run html:pages --silent); for f in $htmlpages; do echo $f && mv dist/$f.hbs dist/$f.html && mkdir -p dist/${f} && rsync dist/${f}.html dist/${f}/index.html; done;",
+    "css:build": "node-sass -o resources/css/ resources/scss/screen.scss --include-path node_modules/compass-mixins/lib/ --output-style expanded --source-comments && mkdir -p dist/resources/css dist/resources/fonts && rsync -r resources/fonts dist/resources/ && rsync -r resources/css dist/resources/",
     "css:watch": "node-sass -o resources/css/ resources/scss/screen.scss --include-path node_modules/compass-mixins/lib/ --output-style expanded --source-comments -wr",
     "deploy:fli": "aws s3 sync --delete --no-follow-symlinks dist/ s3://climate-explorer/ &&  aws cloudfront create-invalidation --distribution-id E34SU5ZJ0O3LC0 --paths '/*'",
     "deploy:nemac": "aws s3 sync --delete --no-follow-symlinks dist/ s3://climateexplorer2.nemac.org/ &&  aws cloudfront create-invalidation --distribution-id E1Q1S8U8911R6D --paths '/*'",
@@ -46,6 +47,7 @@
     "node-static": "^0.7.10"
   },
   "dependencies": {
+    "climate-by-location": "github:nemac/climate-by-location#3.1.0",
     "formstone": "^1.4.13-1",
     "jquery-ui-touch-punch": "^0.2.3",
     "nouislider": "^13.1.5",

@@ -1,0 +1,3 @@
+[submodule "resources/vendor/climate-by-location"]
+	path = resources/vendor/climate-by-location
+	url = git@github.com:nemac/climate-by-location.git

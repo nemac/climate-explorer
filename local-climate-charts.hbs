@@ -165,32 +165,27 @@
 
       <div id="chart-row" class="padding-horizontal padding-top-half padding-bottom-half d-flex-row flex-justify" >
 
-          <div id="chart-wrap" class="chart-wrap d-flex d-flex-center width-100 height-80">
+          <div id="chart-wrap" class="chart-wrap d-flex d-flex-center width-100">
             <div id="chart-123" class="chart-canvas width-100 height-100" data-chart-ID="123"></div>
             <div id="chart-message" class="chart-nodata-message d-none"></div>
           </div>
-          <div id="annual-slider-wrapper" class="slider-wrap padding-default width-100 d-flex-center d-none">
-            <div id="slider-value-low" class="width-10 height-100"></div>
-            <div id="slider-range" class="width-80 height-25"></div>
-            <div id="slider-value-high" class="width-10 height-100"></div>
-          </div>
 
           <div id="legend-wrapper" class="padding-horizontal-half default-btn-height d-flex-center">
-            <div tabindex="111" id="btn-chart" class="btn-histobs d-flex-center width-50" val="histobs" >
+            <div tabindex="111"  class="btn-chart btn-histobs d-flex-center width-50" val="histobs" >
               Historical Observed
-              <div class="inner-histobs" val="histobs" ></div>
+              <div class="inner-histobs" ></div>
             </div>
-            <div tabindex="112" id="btn-chart" class="btn-hismod selected d-flex-center width-50" val="hist_mod"  >
+            <div tabindex="112" class="btn-chart btn-histmod selected d-flex-center width-50" val="histmod"  >
               Historical Modeled
-              <div class="inner-hismod" val="hist_mod"></div>
+              <div class="inner-histmod"></div>
             </div>
-            <div tabindex="113" id="btn-chart" class="btn-lower-emissions selected  d-flex-center width-50" val="rcp45"  >
+            <div tabindex="113" class="btn-chart btn-lower-emissions selected  d-flex-center width-50" val="rcp45"  >
               Lower Emissions
-              <div class="inner-lower-emmisions" val="rcp45" ></div>
+              <div class="inner-lower-emmisions" ></div>
             </div>
-            <div tabindex="40" id="btn-chart" class="btn-higher-emissions selected d-flex-center width-50" val="rcp85"  >
+            <div tabindex="40" class="btn-chart btn-higher-emissions selected d-flex-center width-50" val="rcp85"  >
               Higher Emissions
-              <div class="inner-higher-emmisions" val="rcp85"></div>
+              <div class="inner-higher-emmisions"></div>
             </div>
           </div>
 
@@ -217,13 +212,18 @@
 {{> nav_footer }}
 {{> footer }}
 
+<script src="https://cdnjs.cloudflare.com/ajax/libs/core-js/2.6.11/core.min.js" integrity="sha512-TfdDRAa9DmMqSYW/UwWmezKavKBwQO1Ek/JKDTnh7dLdU3kAw31zUS2rtl6ulgvGJWkMEPaR5Heu5nA/Aqb49g==" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/plotly.js/1.58.4/plotly-basic.min.js" integrity="sha512-7S1p+6A2VVIWu+EevZqeqXWos1Tn+mroZxpkZ9THWipecJkL7TLg2myv5cIAShu9j3+fjHyCvEh/d7BKegMY1g==" crossorigin="anonymous"></script>
+  <script>
+    window.climate_by_location_config = {areas_json_url:'/resources/data/ce_areas.json'}
+  </script>
+<script type="text/javascript" src="/resources/vendor/climate_by_location.climate_explorer.bundle.js"></script>
 <script src="https://unpkg.com/terraformer@1.0.8/terraformer.js" integrity="sha384-+M797Pj3WZVCwMmLbOxAoaWYcKJo8NSxItmI48ytcLNeAnfn1d/IckFn31jEqrzP"
         crossorigin="anonymous"></script>
 <script src="https://unpkg.com/terraformer-arcgis-parser@1.0.5/terraformer-arcgis-parser.js"
         integrity="sha384-duFUjKTSNoxEspdJNwr83CUgRxclf0ueKJB9DU/Vbit6bfWgzvZsHW6H1JLBBXhp" crossorigin="anonymous"></script>
 <script type="text/javascript" src="/resources/js/ce3-ui-components.js"></script>
 <script type="text/javascript" src="/resources/js/local-climate-charts.js"></script>
-<script type="text/javascript" src="/resources/js/nouislider.min.js"></script>
 <script type="text/javascript" src="/resources/js/secondary_header.js"></script>
 
 </body>

@@ -315,7 +315,7 @@
 }
 
 #monthly-select-wrapper {
-  #btn-chart {
+  .btn-chart  {
     width: 100% !important;
     height: 30px !important;
     height: $ce3-btn-height-legends !important;
@@ -343,7 +343,7 @@
     width: 100% !important;
     padding-bottom: 24px !important;
 
-    #btn-chart {
+    .btn-chart  {
       width: 100% !important;
       height: 48px !important;
       padding-top: $ce3-padding-half !important;
@@ -372,17 +372,6 @@
   }
 }
 
-#slider-range {
-  width: 90% !important;
-  margin: auto !important;
-}
-
-.ui-slider-range {
-  display: block !important;
-  position: relative !important;
-  height: 8px !important;
-}
-
 .noUi-horizontal {
   height: 8px !important;
 }
@@ -390,7 +379,7 @@
 .noUi-target {
     background: lighten($ce3-blue3, 25) !important;
     border-radius: 8px !important;
-    border: 0px transparent transparent;
+    border: 0px transparent;
     box-shadow: unset !important;
 }
 
@@ -424,30 +413,12 @@
   }
 }
 
-#slider-value-high {
-  margin-left: 12px !important
-}
-
-#slider-value-low {
-  margin-right: 12px !important
-}
-
-#slider-value-low, #slider-value-mid, #slider-value-high {
-  display: flex;
-  font: 500 18px $roboto !important;
-  color: $ce3-blue3 !important;
-  height: 25px !important;
-  width: 50px !important;
-  justify-content: center !important;
-}
-
 #legend-wrapper {
+  margin-top: auto;
   padding-top: $ce3-default-padding !important;
   padding-bottom: $ce3-default-padding !important;
-  width: 60% !important;
-  height: $ce3-btn-height-legends !important;
 
-  #btn-chart {
+  .btn-chart  {
       cursor: pointer;
       background-color: $ce3-blue5;
       color: $ce3-blue3;
@@ -464,9 +435,6 @@
       @include border-radius(5px, 5px);
       @include box-shadow(0px 1px 2px transparentize(#000, 0.761));  // noborder
 
-      @include medium {
-        height: $ce3-btn-height-smallecreen;
-      }
 
       &:focus {
         outline: none !important;
@@ -550,7 +518,7 @@
         }
       }
 
-    .inner-hismod {
+    .inner-histmod {
       background-color: $ce3-historical-modeled;
       border: 1px solid darken($ce3-historical-modeled, 10);
       height: 18px;
@@ -624,7 +592,7 @@
     order: 3;
     width: 100% !important;
     padding-bottom: $ce3-default-padding !important;
-    #btn-chart {
+    .btn-chart  {
       height: $ce3-btn-height-smallecreen !important;
       width: 100% !important;
       margin-top: $ce3-default-padding;
@@ -642,7 +610,7 @@
 
 
 #more-info-description {
-  #btn-chart.description {
+  .btn-chart .description {
     cursor: default;
     background-color: $ce3-blue6;
     color: $ce3-blue3;
@@ -669,7 +637,7 @@
         margin: $ce3-default-padding/2;
       }
 
-      @include border-radius(5px, 5px)
+      @include border-radius(5px, 5px);
 
       &.disabled {
         background-color: $ce3-historical-observed;
@@ -682,7 +650,7 @@
       }
     }
 
-    .inner-hismod {
+    .inner-histmod {
       background-color: $ce3-historical-modeled;
       border: 1px solid darken($ce3-historical-modeled, 10);
       height: 18px;
@@ -782,9 +750,13 @@
     @include border-radius(5px, 5px);
   }
 
+  .chart-wrap {
+    flex: 1 1 auto;
+  }
+
   @include medium-height {
     .chart-wrap {
-      height: calc(100% - 95px) !important;
+      //height: calc(100% - 95px) !important;
       min-height: 200px !important;
     }
   }
@@ -802,9 +774,6 @@
       height: calc(100% - 135px) !important;
     }
 
-    #annual-slider-wrapper {
-      height: $ce3-btn-height-legends !important;
-    }
 
     #monthly-select-wrapper {
       height: 250px !important;
@@ -836,9 +805,6 @@
         height: 350px !important;
       }
 
-      #annual-slider-wrapper {
-        height: $ce3-btn-height-legends !important;
-      }
 
       #monthly-select-wrapper {
         height: 250px !important;
