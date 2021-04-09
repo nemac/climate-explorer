@@ -1,11 +1,13 @@
 manager/
-resources/ol3/closure-library/closure/bin/build/
+ol3/closure-library/closure/bin/build/
 *.pyc
 deploy/
-/tools/
+tools/
 .sass-cache/
-/sandbox/
+sandbox/
 .idea/
-/node_modules/
+*.iml
+node_modules/
 dist/
+data/
 *~

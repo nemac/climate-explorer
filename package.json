@@ -4,21 +4,20 @@
   "description": "",
   "main": "index.html",
   "scripts": {
-    "build": "npm run html:build & npm run js:build & npm run data:build & npm run css:build",
-    "build-debug": "npm run html:build && npm run js:build && npm run data:build && npm run css:build",
-    "data:build": "mkdir -p dist/resources && rsync -r resources/data/ dist/resources/data/ && rsync -r resources/img/ dist/resources/img/",
-    "js:build": "mkdir -p dist/resources/vendor && babel resources/js --out-dir dist/resources/js && rsync -r resources/vendor/ dist/resources/vendor/ && rsync node_modules/jquery-ui-touch-punch/jquery.ui.touch-punch.min.js dist/resources/vendor/   dist/resources/vendor/ && rsync --copy-links node_modules/climate-by-location/dist/climate_by_location.climate_explorer.bundle.js dist/resources/vendor/",
-    "html:pages": "echo \"index local-climate-charts historical-weather-data high-tide-flooding historical-thresholds local-climate-maps national-climate-maps stations variables error faq glossary credits about 404 cards-home next-steps\"",
-    "html:build": "mkdir -p dist; bundlebars --compile --data config.yml --partials template --partialExt -o dist/ ./*.hbs; htmlpages=$(npm run html:pages --silent); for f in $htmlpages; do echo $f && mv dist/$f.hbs dist/$f.html && mkdir -p dist/${f} && rsync dist/${f}.html dist/${f}/index.html; done;",
-    "css:build": "node-sass -o resources/css/ resources/scss/screen.scss --include-path node_modules/compass-mixins/lib/ --output-style expanded --source-comments && mkdir -p dist/resources/css dist/resources/fonts && rsync -r resources/fonts dist/resources/ && rsync -r resources/css dist/resources/",
-    "css:watch": "node-sass -o resources/css/ resources/scss/screen.scss --include-path node_modules/compass-mixins/lib/ --output-style expanded --source-comments -wr",
+    "build": "run-p build:*",
+    "build:img": "rsync -r img/ dist/img/",
+    "build:js": "babel js --out-dir dist/js",
+    "build:vendor": "mkdir -p dist/vendor && rsync -r vendor/ dist/vendor/ && rsync node_modules/jquery-ui-touch-punch/jquery.ui.touch-punch.min.js dist/vendor/ dist/vendor/ && rsync --copy-links node_modules/climate-by-location/dist/climate_by_location.climate_explorer.bundle.js dist/vendor/",
+    "build:html": "mkdir -p dist; bundlebars --compile --data config.yml --partials template --partialExt -o dist/ ./pages/*.hbs; for f in ./pages/*.hbs; do  f=${f#./pages/}; f=${f%.hbs}; echo $f && mv dist/$f.hbs dist/$f.html && mkdir -p dist/${f} && rsync dist/${f}.html dist/${f}/index.html; done;",
+    "build:css": "node-sass -o css/ scss/screen.scss --include-path node_modules/compass-mixins/lib/ --output-style expanded --source-comments && mkdir -p dist/css dist/fonts && rsync -r fonts dist/ && rsync -r css dist/",
+    "watch:css": "node-sass -o css/ scss/screen.scss --include-path node_modules/compass-mixins/lib/ --output-style expanded --source-comments -wr",
     "deploy:fli": "aws s3 sync --delete --no-follow-symlinks dist/ s3://climate-explorer/ &&  aws cloudfront create-invalidation --distribution-id E34SU5ZJ0O3LC0 --paths '/*'",
     "deploy:nemac": "aws s3 sync --delete --no-follow-symlinks dist/ s3://climateexplorer2.nemac.org/ &&  aws cloudfront create-invalidation --distribution-id E1Q1S8U8911R6D --paths '/*'",
     "deploy:ce3dev": "aws s3 sync --delete --no-follow-symlinks dist/ s3://climate-explorer3-dev.nemac.org/ &&  aws cloudfront create-invalidation --distribution-id E48HJ11B8EHXY --paths '/*'",
     "deploy:ce3-production": "aws s3 sync --delete --no-follow-symlinks dist/ s3://climate-explorer3-prod.nemac.org/ &&  aws cloudfront create-invalidation --distribution-id E1Q1S8U8911R6D --paths '/*'",
     "deploy:ce26-legacy": "aws s3 sync --delete --no-follow-symlinks dist/ s3://climate-explorer26.nemac.org/ &&  aws cloudfront create-invalidation --distribution-id E2HEBFH20UVKTH --paths '/*'",
     "start": "static -a 127.0.0.1 -p 8082 dist/",
-    "git:submodules": "git submodule add git@github.com:nemac/climate-by-location.git resources/vendor/climate-by-location",
+    "git:submodules": "git submodule add git@github.com:nemac/climate-by-location.git vendor/climate-by-location",
     "preinstall": "npx npm-force-resolutions"
   },
   "resolutions": {
@@ -35,6 +34,7 @@
   "devDependencies": {
     "babel-cli": "^6.26.0",
     "babel-plugin-transform-es2015-literals": "^6.22.0",
+    "babel-plugin-transform-es2015-modules-umd": "^6.24.1",
     "babel-plugin-transform-object-assign": "^6.22.0",
     "babel-preset-env": "^1.7.0",
     "braces": "^2.3.2",
@@ -44,7 +44,8 @@
     "handlebars": "^4.4.2",
     "minimist": "^1.2.5",
     "node-sass": "^4.13.1",
-    "node-static": "^0.7.10"
+    "node-static": "^0.7.10",
+    "npm-run-all": "^4.1.5"
   },
   "dependencies": {
     "climate-by-location": "github:nemac/climate-by-location#3.1.0",

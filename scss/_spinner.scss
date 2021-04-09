@@ -1,0 +1,66 @@
+.logo-spinner-overlay {
+  opacity: 1;
+  display: block;
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background-color: rgba(255, 255, 255, 0.75);
+  z-index: 8000;
+}
+.logo-spinner {
+  position: absolute;
+  top: 40%;
+  top: calc(50% - 73px);
+  left: 40%;
+  left: calc(50% - 167px);
+  .gear1 {
+    margin: 0;
+    padding: 0;
+    position: absolute;
+    top: 92px;
+    background-image: url('/img/gear1.png');
+    width: 35px;
+    left: 85px;
+    height: 35px;
+    background-size: 100%;
+    display: block;
+    text-align: center;
+    transform-origin: center;
+    animation: gear1 0.5s linear infinite
+  }
+  .gear2 {
+    margin: 0;
+    padding: 0;
+    position: absolute;
+    top: 76px;
+    background-image: url(/img/gear2.png);
+    width: 21px;
+    left: 109px;
+    height: 21px;
+    display: block;
+    text-align: center;
+    transform-origin: center;
+    animation: gear2 0.3s linear infinite;
+    background-size: 100%;
+  }
+}
+@keyframes gear1 {
+  0% {
+    transform: rotate(0);
+  }
+
+  100% {
+    transform: rotate(45deg);
+  }
+}
+@keyframes gear2 {
+  0% {
+    transform: rotate(45deg);
+  }
+
+  100% {
+    transform: rotate(0);
+  }
+}
