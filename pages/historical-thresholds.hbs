@@ -28,10 +28,9 @@
 
       <div id="stations-select-wrapper" class="rounded-choice-box padding-horizontal default-btn-height top-select-wrapper d-flex-center">
         <div class="select stations-select">
-          <div tabindex="20" id="stations-select-vis" class="select-styled" data-rel="station-1">Stations</div>
+          <div tabindex="20" id="stations-select-vis" class="select-styled" data-value="">Stations</div>
           <ul class="select-options">
-            <li tabindex="21" data-rel="station-1" class="default-select-option">Stations 1</li>
-            <li tabindex="20" data-rel="station-2" class="default-select-option">Stations 2</li>
+            <li tabindex="21" data-value="" class="default-select-option"></li>
           </ul>
         </div>
       </div>
@@ -57,7 +56,7 @@
 
           <div id="filters-toggle" class="width-10">
             <div class="select filters-toggle-select">
-              <div id="filters-toggle-select-vis" class="select-styled" data-rel="filter"></div>
+              <div id="filters-toggle-select-vis" class="select-styled" data-value="filter"></div>
             </div>
           </div>
 
@@ -78,22 +77,22 @@
 
           <div id="chartmap-select-wrapper" class="rounded-choice-box padding-left-half padding-vertical-half default-btn-height d-flex-center width-20">
             <div class="select chartmap-select">
-              <div id="chartmap-select-vis" class="select-styled" data-rel="map">Map</div>
+              <div id="chartmap-select-vis" class="select-styled" data-value="map">Map</div>
               <ul class="select-options">
-                <li tabindex="5005" id="chartmap-select-chart-link" data-rel="chart" class="default-select-option" data-page="historical-thresholds"  >Chart</li>
-                <li tabindex="5006" id="chartmap-select-map-link" data-rel="map" class="default-select-option" data-page="historical-thresholds" >Map</li>
+                <li tabindex="5005" id="chartmap-select-chart-link" data-value="chart" class="default-select-option" data-page="historical-thresholds"  >Chart</li>
+                <li tabindex="5006" id="chartmap-select-map-link" data-value="map" class="default-select-option" data-page="historical-thresholds" >Map</li>
               </ul>
             </div>
           </div>
 
             <div id="threshold-variable-select-wrapper" class="rounded-choice-box padding-horizontal-half padding-vertical-half default-btn-height d-flex-center width-20">
               <div class="select threshold-variable-select">
-                <div tabindex="5007" id="threshold-variable-select-vis" class="select-styled" data-rel="precipitation">Precipitation</div>
+                <div tabindex="5007" id="threshold-variable-select-vis" class="select-styled" data-value="precipitation">Precipitation</div>
                 <ul class="select-options">
-                  <li tabindex="5008" id="threshold-variable-select-chart-link" data-rel="precipitation" class="default-select-option" data-page="historical-thresholds" >Precipitation</li>
-                  <li tabindex="5009" id="threshold-variable-select-map-link" data-rel="tavg" class="default-select-option" data-page="historical-thresholds" >Average Temperature</li>
-                  <li tabindex="5010" id="threshold-variable-select-map-link" data-rel="tmax" class="default-select-option" data-page="historical-thresholds" >Maximum Temperature</li>
-                  <li tabindex="5011" id="threshold-variable-select-map-link" data-rel="tmin" class="default-select-option" data-page="historical-thresholds" >Minimum Temperature</li>
+                  <li tabindex="5008" id="threshold-variable-select-chart-link" data-value="precipitation" class="default-select-option" data-page="historical-thresholds" >Precipitation</li>
+                  <li tabindex="5009" id="threshold-variable-select-map-link" data-value="tavg" class="default-select-option" data-page="historical-thresholds" >Average Temperature</li>
+                  <li tabindex="5010" id="threshold-variable-select-map-link" data-value="tmax" class="default-select-option" data-page="historical-thresholds" >Maximum Temperature</li>
+                  <li tabindex="5011" id="threshold-variable-select-map-link" data-value="tmin" class="default-select-option" data-page="historical-thresholds" >Minimum Temperature</li>
                 </ul>
               </div>
             </div>
@@ -124,17 +123,17 @@
 
             <div id="downloads-select-wrapper" class="rounded-choice-box padding-left-half padding-vertical-half default-btn-height d-flex-center">
               <div class="select download-select">
-                <div tabindex="5000" id="downloads-select-vis" class="select-styled" data-rel="none" href="javascript:void(0);">
+                <div tabindex="5000" id="downloads-select-vis" class="select-styled" data-value="none" href="javascript:void(0);">
                   <i class="fas fa-download select-icon"></i>
-                  <a data-rel="none" class="download-link-main long-desc" href="javascript:void(0);" >Downloads</a>
-                  <a data-rel="none" class="download-link-main short-desc" href="javascript:void(0);" >Down</a>
+                  <a data-value="none" class="download-link-main long-desc" href="javascript:void(0);" >Downloads</a>
+                  <a data-value="none" class="download-link-main short-desc" href="javascript:void(0);" >Down</a>
                 </div>
                 <ul class="select-options" style="display: none;">
-                  <li data-rel="download-thresholds-image" icon="fas fa-download select-icon" href="javascript:void(0);" class="default-select-option">
-                    <a tabindex="5001" data-rel="download-thresholds-image" class="download-link" href="javascript:void(0);" >Download threshold image</a>
+                  <li data-value="download-thresholds-image" data-icon="fas fa-download select-icon" href="javascript:void(0);" class="default-select-option">
+                    <a tabindex="5001" data-value="download-thresholds-image" class="download-link" href="javascript:void(0);" >Download threshold image</a>
                   </li>
-                  <li data-rel="download-thresholds-data" icon="fas fa-download select-icon" href="javascript:void(0);" class="default-select-option">
-                    <a tabindex="5002" data-rel="download-thresholds-data" class="download-link" href="javascript:void(0);" >Download threshold data</a>
+                  <li data-value="download-thresholds-data" data-icon="fas fa-download select-icon" href="javascript:void(0);" class="default-select-option">
+                    <a tabindex="5002" data-value="download-thresholds-data" class="download-link" href="javascript:void(0);" >Download threshold data</a>
                   </li>
                 </ul>
               </div>

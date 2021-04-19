@@ -386,9 +386,9 @@
       let indx = 21;
       currentstationsSorted.forEach( (station) => {
         if (this.options.mode === 'high_tide_flooding') {
-          stationLi += `<li tabindex="${indx}" data-rel="${station.properties.id}|${station.properties.name}|${station.properties.mOverMHHW}|" class="default-select-option">${station.properties.name} - (${station.properties.id})</li>\n`;
+          stationLi += `<li tabindex="${indx}" data-value="${station.properties.id}|${station.properties.name}|${station.properties.mOverMHHW}|" class="default-select-option">${station.properties.name} - (${station.properties.id})</li>\n`;
         } else {
-          stationLi += `<li tabindex="${indx}" data-rel="${station.properties.id},${station.properties.name}" class="default-select-option">${station.properties.name} - (${station.properties.id})</li>\n`;
+          stationLi += `<li tabindex="${indx}" data-value="${station.properties.id},${station.properties.name}" class="default-select-option">${station.properties.name} - (${station.properties.id})</li>\n`;
         }
         indx += 1;
       })

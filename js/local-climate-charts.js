@@ -48,7 +48,7 @@ $(function () {
 
   // function to enable downloads (images and data)
   $('.download-select li a').click(function (e) {
-    const downloadAction = $(this).data('rel');
+    const downloadAction = $(this).data('value');
     if ($(this).hasClass('disabled')) {
       return null;
     }
@@ -213,10 +213,10 @@ $(function () {
     const target = $(e.target);
     const notDisabled = !target.hasClass('btn-default-disabled');
     if (notDisabled) {
-      const val = $('#time-select-vis').data('rel');
+      const val = $('#time-select-vis').data('value');
 
       // toggle button visual state
-      toggleButton($(`.btn-selector[data-value="${$('#chartmap-select-vis').data('rel')}"]`));
+      toggleButton($(`.btn-selector[data-value="${$('#chartmap-select-vis').data('value')}"]`));
 
       // handleChartMapClick(target);
     }
@@ -228,10 +228,10 @@ $(function () {
     const target = $(e.target);
     const notDisabled = !target.hasClass('btn-default-disabled');
     if (notDisabled) {
-      const val = $('#time-select-vis').data('rel');
+      const val = $('#time-select-vis').data('value');
 
       // toggle button visual state
-      toggleButton($(`.btn-${$('#time-select-vis').data('rel')}`));
+      toggleButton($(`.btn-${$('#time-select-vis').data('value')}`));
 
       // update chart frequency slider based on timeperiod
       updateFrequency(val);
@@ -290,10 +290,10 @@ $(function () {
   // in responsive mode the presentation is a dropdown this enables the change of the presentation
   // to update the chart
   $('#presentation-select-vis').bind('cs-changed', function (e) {
-    const val = $('#presentation-select-vis').data('rel');
+    const val = $('#presentation-select-vis').data('value');
 
     // toggle button visual state
-    toggleButton($(`.btn-${$('#presentation-select-vis').data('rel')}`));
+    toggleButton($(`.btn-${$('#presentation-select-vis').data('value')}`));
 
   });
 
@@ -314,7 +314,7 @@ $(function () {
 
   // binds update of chart variable to change of selector
   $('#variable-select-vis').bind('cs-changed', function (e) {
-    const variable = $('#variable-select-vis').data('rel');
+    const variable = $('#variable-select-vis').data('value');
     // update the chart based on char variable
     window.cbl_chart.update({
       variable
@@ -376,7 +376,7 @@ $(function () {
   // this function disables variables when monthly period is selected
   function validVariablesDisable() {
     $('#variable-select-wrapper .default-select-option').each(function () {
-      const attribute = $(this).data('rel');
+      const attribute = $(this).data('value');
       const isvalid = jQuery.inArray(attribute, validMonthly);
       if (isvalid < 0) {
         $(this).addClass('default-select-option-disabled');
@@ -388,7 +388,7 @@ $(function () {
   // this function enables variables when annual period is selected
   function validVariablesEnable() {
     $('#variable-select-wrapper .default-select-option-disabled').each(function () {
-      const attribute = $(this).data('rel');
+      const attribute = $(this).data('value');
       $(this).removeClass('default-select-option-disabled');
       $(this).addClass('default-select-option');
     })
@@ -417,7 +417,7 @@ $(function () {
   function updateFrequency(targetval) {
     window.cbl_chart.update({
       frequency: targetval,
-      variable: $('#variable-select-vis').data('rel'),
+      variable: $('#variable-select-vis').data('value'),
       show_historical_observed: true,
     });
     setSelected('.btn-histobs');

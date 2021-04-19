@@ -28,10 +28,10 @@
 
     <div id="stations-select-wrapper" class="rounded-choice-box padding-horizontal default-btn-height top-select-wrapper d-flex-center">
       <div class="select stations-select">
-        <div tabindex="20" id="stations-select-vis" class="select-styled" data-rel="station-1">Stations</div>
+        <div tabindex="20" id="stations-select-vis" class="select-styled" data-value="station-1">Stations</div>
         <ul class="select-options">
-          <li tabindex="21" data-rel="station-1" class="default-select-option">Stations 1</li>
-          <li tabindex="22" data-rel="station-2" class="default-select-option">Stations 2</li>
+          <li tabindex="21" data-value="station-1" class="default-select-option">Stations 1</li>
+          <li tabindex="22" data-value="station-2" class="default-select-option">Stations 2</li>
         </ul>
       </div>
     </div>
@@ -57,7 +57,7 @@
 
         <div id="filters-toggle" class="width-10">
           <div class="select filters-toggle-select">
-            <div id="filters-toggle-select-vis" class="select-styled" data-rel="filter"></div>
+            <div id="filters-toggle-select-vis" class="select-styled" data-value="filter"></div>
           </div>
         </div>
 
@@ -77,39 +77,39 @@
 
         <div id="chartmap-select-wrapper" class="rounded-choice-box padding-horizontal-half padding-vertical-half default-btn-height d-flex-center width-20">
           <div class="select chartmap-select">
-            <div tabindex="5007" id="chartmap-select-vis" class="select-styled" data-rel="chart">Map</div>
+            <div tabindex="5007" id="chartmap-select-vis" class="select-styled" data-value="chart">Map</div>
             <ul class="select-options">
-              <li tabindex="5008" data-rel="chart" id="chartmap-select-chart-link" class="default-select-option" data-page="historical-weather-data"  >Chart</li>
-              <li tabindex="5009" data-rel="map" id="chartmap-select-map-link" class="default-select-option" data-page="historical-weather-data" >Map</li>
+              <li tabindex="5008" data-value="chart" id="chartmap-select-chart-link" class="default-select-option" data-page="historical-weather-data"  >Chart</li>
+              <li tabindex="5009" data-value="map" id="chartmap-select-map-link" class="default-select-option" data-page="historical-weather-data" >Map</li>
             </ul>
           </div>
         </div>
 
         <div id="downloads-select-wrapper" class="rounded-choice-box padding-left-half padding-vertical-half default-btn-height d-flex-center">
           <div class="select download-select">
-            <div tabindex="5000" id="downloads-select-vis" class="select-styled" data-rel="none" href="javascript:void(0);">
+            <div tabindex="5000" id="downloads-select-vis" class="select-styled" data-value="none" href="javascript:void(0);">
               <i class="fas fa-download select-icon"></i>
-              <a data-rel="none" class="download-link-main long-desc" href="javascript:void(0);" >Downloads</a>
-              <a data-rel="none" class="download-link-main short-desc" href="javascript:void(0);" >Down</a>
+              <a data-value="none" class="download-link-main long-desc" href="javascript:void(0);" >Downloads</a>
+              <a data-value="none" class="download-link-main short-desc" href="javascript:void(0);" >Down</a>
             </div>
             <ul class="select-options" style="display: none;">
-              <div icon="fas fa-temperature-high select-icon" class="default-select-option-group">
+              <div data-icon="fas fa-temperature-high select-icon" class="default-select-option-group">
                 <i class="fas fa-temperature-high select-icon"></i>Temperature
               </div>
-              <li tabindex="5001" data-rel="download-temperature-image" icon="fas fa-download select-icon" href="javascript:void(0);" class="default-select-option">
-                <a tabindex="5001" data-rel="download-temperature-image" class="download-link" href="javascript:void(0);" >Download temperature image</a>
+              <li tabindex="5001" data-value="download-temperature-image" data-icon="fas fa-download select-icon" href="javascript:void(0);" class="default-select-option">
+                <a tabindex="5001" data-value="download-temperature-image" class="download-link" href="javascript:void(0);" >Download temperature image</a>
               </li>
-              <li tabindex="5002" data-rel="download-temperature-data" icon="fas fa-download select-icon" href="javascript:void(0);" class="default-select-option">
-                <a tabindex="5002" data-rel="download-temperature-data" class="download-link" href="javascript:void(0);" >Download temperature data</a>
+              <li tabindex="5002" data-value="download-temperature-data" data-icon="fas fa-download select-icon" href="javascript:void(0);" class="default-select-option">
+                <a tabindex="5002" data-value="download-temperature-data" class="download-link" href="javascript:void(0);" >Download temperature data</a>
               </li>
-              <div icon="fas fa-cloud-rain select-icon" class="default-select-option-group">
+              <div data-icon="fas fa-cloud-rain select-icon" class="default-select-option-group">
                 <i class="fas fa-cloud-rain select-icon"></i>Precipitation
               </div>
-              <li tabindex="5003" data-rel="download-image" icon="fas fa-download select-icon" href="javascript:void(0);" class="default-select-option">
-                <a tabindex="5004" data-rel="download-precipitation-image" class="download-link" href="javascript:void(0);" >Download precipitation image</a>
+              <li tabindex="5003" data-value="download-image" data-icon="fas fa-download select-icon" href="javascript:void(0);" class="default-select-option">
+                <a tabindex="5004" data-value="download-precipitation-image" class="download-link" href="javascript:void(0);" >Download precipitation image</a>
               </li>
-              <li tabindex="5004" data-rel="download-precipitation-observed-data" icon="fas fa-download select-icon" href="javascript:void(0);" class="default-select-option">
-                <a tabindex="5004" data-rel="download-precipitation-data" class="download-link" href="javascript:void(0);" >Download precipitation data</a>
+              <li tabindex="5004" data-value="download-precipitation-observed-data" data-icon="fas fa-download select-icon" href="javascript:void(0);" class="default-select-option">
+                <a tabindex="5004" data-value="download-precipitation-data" class="download-link" href="javascript:void(0);" >Download precipitation data</a>
               </li>
             </ul>
           </div>

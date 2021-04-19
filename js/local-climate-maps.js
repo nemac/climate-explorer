@@ -93,7 +93,7 @@ $(function () {
 
   // function to enable downloads (images and data)
   $('.download-select li a').click( function (e) {
-    const downloadAction = $(this).data('rel');
+    const downloadAction = $(this).data('value');
     $('#temperature-map').spinner();
 
     // ga event action, category, label
@@ -575,10 +575,10 @@ $(function () {
     const target = $(e.target);
     const notDisabled = !target.hasClass('btn-default-disabled');
     if ( notDisabled ) {
-      const val = $('#time-select-vis').data('rel')
+      const val = $('#time-select-vis').data('value')
 
       // toggle button visual state
-      toggleButton($(`.btn-selector[data-value="${$('#chartmap-select-vis').data('rel')}"]`));
+      toggleButton($(`.btn-selector[data-value="${$('#chartmap-select-vis').data('value')}"]`));
 
       // handleChartMapClick(target);
     }
@@ -589,7 +589,7 @@ $(function () {
     const target = $(e.target);
     const notDisabled = !target.hasClass('btn-default-disabled');
     if ( notDisabled ) {
-      const variable = $('#variable-select-vis').data('rel')
+      const variable = $('#variable-select-vis').data('value')
       window.app.update({variable})
       // disable variables if they are valid time period
       const isvalid =   jQuery.inArray( variable , validSeasonal);
@@ -665,7 +665,7 @@ $(function () {
     const target = $(e.target);
     const notDisabled = !target.hasClass('btn-default-disabled');
     if ( notDisabled ) {
-      const val = $('#time-select-vis').data('rel')
+      const val = $('#time-select-vis').data('value')
 
       // change map variable
       updateSeason(val);
@@ -710,8 +710,8 @@ $(function () {
       // for alaska and islands to display not map data message...
       changeExtent: function changeExtent(event, options) {
         // xmin: -178.44, xmax: -13.56, ymin: 22.72, ymax: 50.93
-        const messsageElem = document.getElementById('map-message');
-        if (messsageElem) {
+        const messageElem = document.getElementById('map-message');
+        if (messageElem) {
           if (!options.isCenterConus) {
               const selector = 'local-climate-charts';
               const nav = 'local-climate-charts';
@@ -730,18 +730,18 @@ $(function () {
 
               // get map parent element - which provides the correct dimensions for the map
               const rect = document.getElementById('map-wrap').getBoundingClientRect();
-              // messsageElem.style.left = `${(rect.right - rect.left)/3}px`;
-              // messsageElem.style.top = `-${((rect.bottom - rect.top)/2)}px`;
-              messsageElem.style.left = `${(rect.right - rect.left)/3}px`;
-              messsageElem.style.top = `-${((rect.bottom - rect.top)-6)}px`;
+              // messageElem.style.left = `${(rect.right - rect.left)/3}px`;
+              // messageElem.style.top = `-${((rect.bottom - rect.top)/2)}px`;
+              messageElem.style.left = `${(rect.right - rect.left)/3}px`;
+              messageElem.style.top = `-${((rect.bottom - rect.top)-6)}px`;
               if (!isHawaii) {
-                messsageElem.innerHTML = `The location on the map is outside the contiguous United States. Currently, there is no climate map data available for this location. If you are looking for climate information about this location, refer to the <a class="warning-link" href="${url}">local charts</a> page.`
+                messageElem.innerHTML = `The location on the map is outside the contiguous United States. Currently, there is no climate map data available for this location. If you are looking for climate information about this location, refer to the <a class="warning-link" href="${url}">local charts</a> page.`
               } else {
-                messsageElem.innerHTML = `The location on the map is outside the contiguous United States. Currently, there is no climate map data available for this location.`
+                messageElem.innerHTML = `The location on the map is outside the contiguous United States. Currently, there is no climate map data available for this location.`
               }
-              messsageElem.classList.remove('d-none');
+              messageElem.classList.remove('d-none');
           } else {
-            messsageElem.classList.add('d-none');
+            messageElem.classList.add('d-none');
           }
       }
     },

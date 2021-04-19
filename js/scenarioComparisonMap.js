@@ -479,10 +479,10 @@
             <div class="left-scenario-dropdown">
               <div id="leftScenario-select-wrapper" class="rounded-choice-box padding-horizontal-half padding-vertical-half default-btn-height d-flex-center width-100">
 <div class="select leftScenario-select">
-  <div id="leftScenario-select-vis" class="select-styled"  data-rel="historical">Historical</div>
-  <ul class="select-options">
-    <li id="leftScenario-select"  data-rel="historical" class="default-select-option leftScenario-option-historical">Historical</li>
-    <li id="leftScenario-select"  data-rel="rcp45" class="default-select-option leftScenario-option-lower">Lower Emissions</li>
+  <div id="leftScenario-select-vis" class="select-styled"  data-value="historical">Historical</div>
+  <ul class="select-options" role="radiogroup">
+    <li role="radio" id="leftScenario-select"  data-value="historical" class="default-select-option leftScenario-option-historical">Historical</li>
+    <li role="radio" id="leftScenario-select"  data-value="rcp45" class="default-select-option leftScenario-option-lower">Lower Emissions</li>
   </ul>
 </div>
 </div>
@@ -498,10 +498,10 @@
             <div class="right-scenario-dropdown">
              <div id="rightScenario-select-wrapper" class="rounded-choice-box padding-horizontal-half padding-vertical-half default-btn-height d-flex-center width-100">
   <div class="select rightScenario-select">
-    <div id="rightScenario-select-vis" class="select-styled" data-rel="rcp85">Higher Emissions</div>
-    <ul class="select-options">
-      <li id="rightScenario-select"  data-rel="rcp85" class="default-select-option rightScenario-option-higher">Higher Emissions</li>
-      <li id="rightScenario-select-map"  data-rel="rcp45" class="default-select-option rightScenario-option-lower">Lower Emissions</li>
+    <div id="rightScenario-select-vis" class="select-styled" data-value="rcp85">Higher Emissions</div>
+    <ul class="select-options" role="listbox">
+      <li role="option" id="rightScenario-select"  data-value="rcp85" class="default-select-option rightScenario-option-higher">Higher Emissions</li>
+      <li role="option" id="rightScenario-select-map"  data-value="rcp45" class="default-select-option rightScenario-option-lower">Lower Emissions</li>
     </ul>
   </div>
 </div>
@@ -2077,7 +2077,7 @@
 
       // check if variable is precip then disable the historical and select lower emmissions
       if (_this7.options.variable === 'pcpn') {
-        $('#leftScenario-select-vis').data('rel','rcp45');
+        $('#leftScenario-select-vis').data('value','rcp45');
         $('#leftScenario-select-vis').html('Lower Emissions');
         $('.leftScenario-option-historical').addClass('d-none');
       } else {
@@ -2087,11 +2087,11 @@
       // leftScenario-select-vis
       if (this.nodes.$leftScenarioSelect === undefined) {
         this.nodes.$leftScenarioSelect = $(this.nodes.$controlsOverLayContainer).find("#leftScenario-select-vis");
-        this.nodes.$leftScenarioSelect.data('rel');
+        this.nodes.$leftScenarioSelect.data('value');
 
         this.nodes.$leftScenarioSelect.bind('cs-changed', function () {
-          if (this.nodes.$leftScenarioSelect.data('rel') !== undefined && this.nodes.$leftScenarioSelect.data('rel') !== null) {
-            this._setOptions({ leftScenario: this.nodes.$leftScenarioSelect.data('rel') });
+          if (this.nodes.$leftScenarioSelect.data('value') !== undefined && this.nodes.$leftScenarioSelect.data('value') !== null) {
+            this._setOptions({ leftScenario: this.nodes.$leftScenarioSelect.data('value') });
           }
         }.bind(this));
       }
@@ -2102,11 +2102,11 @@
 
       if (this.nodes.$rightScenarioSelect === undefined) {
         this.nodes.$rightScenarioSelect = $(this.nodes.$controlsOverLayContainer).find("#rightScenario-select-vis");
-        this.nodes.$rightScenarioSelect.data('rel');
+        this.nodes.$rightScenarioSelect.data('value');
 
         this.nodes.$rightScenarioSelect.bind('cs-changed', function () {
-          if (this.nodes.$rightScenarioSelect.data('rel') !== undefined && this.nodes.$rightScenarioSelect.data('rel') !== null) {
-            this._setOptions({ rightScenario: this.nodes.$rightScenarioSelect.data('rel') });
+          if (this.nodes.$rightScenarioSelect.data('value') !== undefined && this.nodes.$rightScenarioSelect.data('value') !== null) {
+            this._setOptions({ rightScenario: this.nodes.$rightScenarioSelect.data('value') });
           }
         }.bind(this));
       }

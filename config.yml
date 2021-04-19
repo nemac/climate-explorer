@@ -2,121 +2,324 @@
 # This file is a centralized place to define variables which may be used in any HandleBars template file (.hbs).
 #
 google_analytics_id: 'UA-153103803-1'
+  short_label: ""
                       # UA-119744751-1 old Climate Explorer Google Analytics Code
-# Nav config
-nav:
-  # Temperature section
-  temp:
-    - variable: 'tmax'
-      name: 'Avg Daily Max Temp (°F)'
-      overlayname: 'Average Daily Maximum Temperature (°F)'
-      detail: "<p>A day’s highest (maximum) temperature usually occurs in the afternoon. Averaging the daily high temperatures over any period results in a mean maximum temperature for that period.</p><p>Maximum temperature serves as one measure of comfort and safety for people and for the health of plants and animals. When maximum temperature exceeds particular thresholds, people can become ill and transportation and energy infrastructure may be stressed.</p>"
-      source: ''
-    - variable: 'tmin'
-      name: 'Avg Daily Min Temp (°F)'
-      overlayname: 'Average Daily Minimum Temperature (°F)'
-      detail: "<p>A day’s lowest (minimum) temperature usually occurs in the early morning, just before sunrise. Averaging the daily low temperatures for any period results in a mean minimum temperature for that period.</p><p>Periods of low temperature give plants, animals, and people a chance to recover from daytime heat. When minimum temperatures aren’t sufficiently cool, plant and animal responses can trigger ecosystem changes and increased demand for energy can stress energy infrastructure.</p>"
-      source: ''
-    - variable: 'days_tmax_gt_90f'
-      name: 'Days w/ max > 90°F'
-      overlayname: 'Days per year with Maximum Temperature Above 90, 95, 100, or 105°F'
-      detail: "<p>The total number of days per year with maximum temperature above various thresholds is an indicator of how often very hot conditions occur. Depending upon humidity, wind, and physical workload, people who work outdoors or don’t have access to air conditioning may feel very uncomfortable or experience heat stress or illness on very hot days.</p><p>Hot days also stress plants, animals, and human infrastructure such as roads, railroads, and electric lines. Increased demand for electricity to cool homes and buildings can place additional stress on energy infrastructure.</p>"
-      source: ''
-    - variable: 'days_tmax_gt_95f'
-      name: 'Days w/ max > 95°F'
-      overlayname: 'Days per year with Maximum Temperature Above 90, 95, 100, or 105°F'
-      detail: "<p>The total number of days per year with maximum temperature above various thresholds is an indicator of how often very hot conditions occur. Depending upon humidity, wind, and physical workload, people who work outdoors or don’t have access to air conditioning may feel very uncomfortable or experience heat stress or illness on very hot days.</p><p>Hot days also stress plants, animals, and human infrastructure such as roads, railroads, and electric lines. Increased demand for electricity to cool homes and buildings can place additional stress on energy infrastructure.</p>"
-      source: ''
-    - variable: 'days_tmax_gt_100f'
-      name: 'Days w/ max > 100°F'
-      overlayname: 'Days per year with Maximum Temperature Above 90, 95, 100, or 105°F'
-      detail: "<p>The total number of days per year with maximum temperature above various thresholds is an indicator of how often very hot conditions occur. Depending upon humidity, wind, and physical workload, people who work outdoors or don’t have access to air conditioning may feel very uncomfortable or experience heat stress or illness on very hot days.</p><p>Hot days also stress plants, animals, and human infrastructure such as roads, railroads, and electric lines. Increased demand for electricity to cool homes and buildings can place additional stress on energy infrastructure.</p>"
-      source: ''
-    - variable: 'days_tmax_gt_105f'
-      name: 'Days w/ max > 105°F'
-      overlayname: 'Days per year with Maximum Temperature Above 90, 95, 100, or 105°F'
-      detail: "<p>The total number of days per year with maximum temperature above various thresholds is an indicator of how often very hot conditions occur. Depending upon humidity, wind, and physical workload, people who work outdoors or don’t have access to air conditioning may feel very uncomfortable or experience heat stress or illness on very hot days.</p><p>Hot days also stress plants, animals, and human infrastructure such as roads, railroads, and electric lines. Increased demand for electricity to cool homes and buildings can place additional stress on energy infrastructure.</p>"
-      source: ''
-    - variable: 'days_tmax_lt_32f'
-      name: 'Days w/ max < 32°F'
-      overlayname: 'Days per year with Maximum Temperature below 32°F'
-      detail: "<p>The total number of days per year when the highest temperature is less than 32°F (0°C) is an indicator of how often very cold days occur.</p><p>Days when the highest temperature doesn’t rise above the freezing point of water are called “icing days.” The annual number of icing days tells us how much rest plants get from growing; with too few icing days, some plants do not perceive a “reset” signal to begin budding or blooming in the spring. The annual number of icing days can also help predict if populations of insects, such as tree-killing bark beetles, will survive the winter or not.</p>"
-      source: ''
-    - variable: 'days_tmin_lt_32f'
-      name: 'Days w/ min < 32°F'
-      overlayname: 'Days per year with Minimum Temperature below 32°F'
-      detail: "<p>The total number of days per year when the temperature dips below 32°F (0°C) is an indicator of how often cold days occur.</p><p>A decrease in the number of days temperature drops below freezing promotes earlier spring snowmelt and runoff, with important consequences for managing water resources. Below-freezing temperatures can cause driving hazards, aircraft icing, and damage to infrastructure, yet ski resorts and other winter recreation businesses depend on sufficiently cold days to maintain snowpack. Some plants require a cumulative number of days below freezing before they can begin budding or blooming in the spring.</p>"
-      source: ''
-    - variable: 'days_tmin_gt_80f'
-      name: 'Days w/ min > 80°F'
-      overlayname: 'Days With Minimum Temperature above 80 or 90°F'
-      detail: "<p>The total number of days per year when the lowest temperature doesn’t drop below a given threshold is an indicator of how often very warm nights occur.</p><p>When the lowest temperature of a 24-hour period doesn’t dip below 80 or 90°F, plants, animals, and people don’t have a chance to cool down. They can become stressed and susceptible to other negative health impacts. As the number of very warm nights increases, sensitive plants may not produce flowers or viable seeds.</p>"
-      source: ''
-    - variable: 'days_tmin_gt_90f'
-      name: 'Days w/ min > 90°F'
-      overlayname: 'Days With Minimum Temperature above 80 or 90°F'
-      detail: "<p>The total number of days per year when the lowest temperature doesn’t drop below a given threshold is an indicator of how often very warm nights occur.</p><p>When the lowest temperature of a 24-hour period doesn’t dip below 80 or 90°F, plants, animals, and people don’t have a chance to cool down. They can become stressed and susceptible to other negative health impacts. As the number of very warm nights increases, sensitive plants may not produce flowers or viable seeds.</p>"
-      source: ''
-  # Precipitation section
-  precip:
-    - variable: 'pcpn'
-      name: 'Total Precipitation'
-      overlayname: 'Total Precipitation'
-      detail: "<p>Total precipitation over a year, season, or month indicates the average amount of water added to the environment over the indicated period.</p><p>The graph for this variable shows total precipitation in inches. To help users perceive trends in this variable over time however, the map shows precipitation as the percentage change from the long-term average (1961 to 1990).</p>"
-      source: ''
-    - variable: 'days_pcpn_gt_1in'
-      name: 'Days w/ > 1 in'
-      overlayname: 'Days with Precipitation Above 1, 2, or 3 inches'
-      detail: "<p>The number of days per year when locations receive more than 1, 2, or 3 inches of precipitation is an indicator of how often very heavy precipitation events occur. This measurement may also be used as an indicator of flood risk.</p><p>Comparing the number of days with heavy precipitation at a single location over time can reveal a trend of increasing or decreasing flood risk.</p>"
-      source: ''
-    - variable: 'days_pcpn_gt_2in'
-      name: 'Days w/ > 2 in'
-      overlayname: 'Days with Precipitation Above 1, 2, or 3 inches'
-      detail: "<p>The number of days per year when locations receive more than 1, 2, or 3 inches of precipitation is an indicator of how often very heavy precipitation events occur. This measurement may also be used as an indicator of flood risk.</p><p>Comparing the number of days with heavy precipitation at a single location over time can reveal a trend of increasing or decreasing flood risk.</p>"
-      source: ''
-    - variable: 'days_pcpn_gt_3in'
-      name: 'Days w/ > 3 in'
-      overlayname: 'Days with Precipitation Above 1, 2, or 3 inches'
-      detail: "<p>The number of days per year when locations receive more than 1, 2, or 3 inches of precipitation is an indicator of how often very heavy precipitation events occur. This measurement may also be used as an indicator of flood risk.</p><p>Comparing the number of days with heavy precipitation at a single location over time can reveal a trend of increasing or decreasing flood risk.</p>"
-      source: ''
-    - variable: 'days_dry_days'
-      name: 'Dry Days'
-      overlayname: 'Dry Days'
-      detail: "<p>The number of dry days per year—days when precipitation is less than 0.01 inches—gives a sense of the portion of the year when no moisture is being added to the environment. Changes in the number of dry days can indicate a tendency toward drier or wetter conditions.</p><p>The graph for this variable shows counts of Dry Days. To help users perceive trends in numbers of dry days over time however, the map shows dry days as the projected annual number of dry days for each decade minus the 1961-1990 average. Positive values indicate more dry days while negative values indicate fewer dry days.</p>"
-      source: ''
-  # Derived Variables section
-  derived:
-    - variable: 'hdd_65f'
-      name: 'Heating Degree Days'
-      overlayname: 'Heating Degree Days'
-      detail: "<p>The number of heating degree days at any location reflects the amount of energy people use to heat a building when it is cool outside. Lower numbers of heating degree days indicate lower demand for energy.</p><p>Heating degree days measure how much (in degrees), and for how long (in days), outside air temperature is below 65°F. For example, on a day when the average outdoor temperature is 35°F, raising the indoor temperature to 65°F would require 30 degrees of heating multiplied by 1 day, or 30 heating degree days. Engineers and utility companies use a location’s annual number of heating degree days as one input when estimating demand for energy in the cold season.</p>"
-      source: ''
-    - variable: 'cdd_65f'
-      name: 'Cooling Degree Days'
-      overlayname: 'Cooling Degree Days'
-      detail: "<p>The number of cooling degree days at any location reflects the amount of energy people use to cool a building when it is warm outside. Higher numbers of cooling degree days indicate higher demand for energy.</p><p>Cooling degree days measure how much (in degrees), and for how long (in days), outside air temperature is higher than 65°F. For example, on a day when the average outdoor temperature is 85°F, reducing the indoor temperature to 65°F would require 20 degrees of cooling multiplied by 1 day, or 20 cooling degree days. Engineers and utility companies use a location’s annual number of cooling degree days as one input when estimating demand for energy in the warm season.</p>"
-      source: ''
-    - variable: 'gdd'
-      name: 'Growing Degree Days'
-      overlayname: 'Growing Degree Days'
-      detail: "<p>The number of growing degree days per year is used to estimate the growth and development of plants (or insects) during the growing season. Higher numbers of growing-degree days indicate longer and warmer growing conditions.</p><p>As growth occurs only when temperature exceeds a species’ base temperature (for example, 50°F), the number of days times the number of degrees above the base indicates the duration and magnitude of growing conditions.</p>"
-      source: ''
-    - variable: 'gddmod'
-      name: 'Mod. Growing Degree Days'
-      overlayname: 'Modified Growing Degree Days'
-      detail: "<p>Corn growers use the number of modified growing degree days to monitor the development of corn crops. </p><p>As corn development occurs only when temperature is above 50°F but below 86°F, the standard calculation for growing-degree days is modified to omit conditions outside this range. In future decades, regions where temperatures regularly exceed 86°F may be less successful in growing corn.</p>"
-      source: ''
-  # Stations section
-  stations:
-    - variable: 'daily_vs_climate'
-      name: 'Daily vs. Climate'
-      overlayname: 'What does <u>Daily vs. Climate</u> tell us?'
-      detail: 'Graphs for individual observing stations let you compare daily temperatures and precipitation totals to long-term averages. The graphs show when and by how much daily conditions differ from Climate Normals, values that are calculated from observations over the previous three decades.'
-    - variable: 'thresholds'
-      name: 'Thresholds'
-      overlayname: 'What do <u>Thresholds</u> tell us?'
-      detail: 'The phrases “too hot” and “too much rain” mean different things in different situations. This interface lets you select a station and set your own threshold value for temperature or precipitation: results show how often that value has been exceeded per year.</p><p>For example, it may be “too hot” for herds of cattle when temperatures exceed 95°F. A city could have “too much rain” if flooding occurs every time they receive 3 inches of rain over two days.</p><p>Knowing how often thresholds have been reached or exceeded in the past can give you an idea of how frequently the same thresholds may be crossed in the future.'
-    - variable: 'high_tide_flooding'
-      name: ' Days with High-tide Flooding'
-      overlayname: 'What do <u>Days with High-tide Flooding</u> tell us?'
-      detail: 'Over time, increases in the number of days per year when local sea level rises above identified thresholds for flooding generally reflect increases in global sea level. However, changes in local sea level are always the result of global sea level rise paired with land subsidence or uplift: in some locations, the rate of land subsidence is up to three times larger than the global sea level rise signal.</p><p>At each of the tidal gauge stations on the map, emergency managers identified flooding heights related to local impacts such as inundation of low-lying roads or seawater pouring into stormwater systems. Oceanographers compiled these heights for many stations, and then performed statistical analyses on the dataset to establish a threshold flood height at each station. Threshold heights are expressed as distance above the long-term average of the daily highest water level, also known as mean higher high water (MHHW).'
+variables:
+- id: tmax
+  short_label: "Avg Daily Max Temp (°F)"
+  label: "Average Daily Minimum Temperature (°F)"
+  description: "
+           A day’s highest (maximum) temperature usually occurs in the afternoon. Averaging the daily high temperatures over any period results in a mean maximum temperature for that period.
+        <br />
+        <br />
+        Maximum temperature serves as one measure of comfort and safety for people and for the health of plants and animals. When maximum temperature exceeds particular thresholds, people can become ill and transportation and energy infrastructure may be stressed."
+  group: "temperature"
+  area:
+- id: tmin
+  short_label: "Avg Daily Min Temp (°F)"
+  label: "Average Daily Min Temp"
+  description: "
+           A day’s lowest (minimum) temperature usually occurs in the early morning, just before sunrise. Averaging the daily low temperatures for any period results in a mean minimum temperature for that period.
+        <br />
+        <br />
+        Periods of low temperature give plants, animals, and people a chance to recover from daytime heat. When minimum temperatures aren’t sufficiently cool, plant and animal responses can trigger ecosystem changes and increased demand for energy can stress energy infrastructure."
+  group: "temperature"
+  area:
+- id: days_tmax_gt_50f
+  short_label: "Days w/ max > 50°F"
+  label:  "Days per year with max above 50°F"
+  description: "<strong>Days per year with Maximum Temperature Above 50°F</strong><hr/>
+        The annual count of days when the high temperature rises above a selected threshold indicates how frequently locations experience warm, hot, or very hot days.
+        <br />
+        <br />
+        Outdoor workers and people who lack air conditioning may experience extreme discomfort or heat illness on hot days, especially if humidity is high and wind is light. Hot days also stress plants, animals, and infrastructure such as electric lines, roads, and rails. Increased demand for electricity to cool homes and businesses also stresses energy infrastructure on hot days."
+  group: "temperature"
+  area: ak-only
+- id: days_tmax_gt_60f
+  short_label: "Days w/ max > 60°F"
+  label: "Days per year with max above 60°F"
+  description: "<strong>Days per year with Maximum Temperature Above 60°F</strong><hr/>
+        The annual count of days when the high temperature rises above a selected threshold indicates how frequently locations experience warm, hot, or very hot days.
+        <br />
+        <br />
+        Outdoor workers and people who lack air conditioning may experience extreme discomfort or heat illness on hot days, especially if humidity is high and wind is light. Hot days also stress plants, animals, and infrastructure such as electric lines, roads, and rails. Increased demand for electricity to cool homes and businesses also stresses energy infrastructure on hot days."
+  group: "temperature"
+  area: ak-only
+- id: days_tmax_gt_70f
+  short_label: "Days w/ max > 70°F"
+  label: "Days per year with max above 70°F"
+  description: "
+           The annual count of days when the high temperature rises above a selected threshold indicates how frequently locations experience warm, hot, or very hot days.
+        <br />
+        <br />
+        Outdoor workers and people who lack air conditioning may experience extreme discomfort or heat illness on hot days, especially if humidity is high and wind is light. Hot days also stress plants, animals, and infrastructure such as electric lines, roads, and rails. Increased demand for electricity to cool homes and businesses also stresses energy infrastructure on hot days."
+  group: "temperature"
+  area: ak-only
+- id: days_tmax_gt_80f
+  short_label: "Days w/ max > 80°F"
+  label: "Days per year with max above 80°F"
+  description: "
+           The annual count of days when the high temperature rises above a selected threshold indicates how frequently locations experience warm, hot, or very hot days.
+        <br />
+        <br />
+        Outdoor workers and people who lack air conditioning may experience extreme discomfort or heat illness on hot days, especially if humidity is high and wind is light. Hot days also stress plants, animals, and infrastructure such as electric lines, roads, and rails. Increased demand for electricity to cool homes and businesses also stresses energy infrastructure on hot days."
+  group: "temperature"
+  area: ak-only
+- id: days_tmax_gt_90f
+  short_label: "Days w/ max > 90°F"
+  label: "Days per year with max above 90°F"
+  description: "
+           The annual count of days when the high temperature rises above a selected threshold indicates how frequently locations experience warm, hot, or very hot days.
+        <br />
+        <br />
+        Outdoor workers and people who lack air conditioning may experience extreme discomfort or heat illness on hot days, especially if humidity is high and wind is light. Hot days also stress plants, animals, and infrastructure such as electric lines, roads, and rails. Increased demand for electricity to cool homes and businesses also stresses energy infrastructure on hot days."
+  group: "temperature"
+  area:
+- id: days_tmax_gt_95f
+  short_label: "Days w/ max > 95°F"
+  label: "Days per year with max above 95°F"
+  description: "
+           The annual count of days when the high temperature rises above a selected threshold indicates how frequently locations experience warm, hot, or very hot days.
+        <br />
+        <br />
+        Outdoor workers and people who lack air conditioning may experience extreme discomfort or heat illness on hot days, especially if humidity is high and wind is light. Hot days also stress plants, animals, and infrastructure such as electric lines, roads, and rails. Increased demand for electricity to cool homes and businesses also stresses energy infrastructure on hot days."
+  group: "temperature"
+  area:
+- id: days_tmax_gt_100f
+  short_label: "Days w/ max > 100°F"
+  label: "Days per year with max above 100°F"
+  description: "
+           The annual count of days when the high temperature rises above a selected threshold indicates how frequently locations experience warm, hot, or very hot days.
+        <br />
+        <br />
+        Outdoor workers and people who lack air conditioning may experience extreme discomfort or heat illness on hot days, especially if humidity is high and wind is light. Hot days also stress plants, animals, and infrastructure such as electric lines, roads, and rails. Increased demand for electricity to cool homes and businesses also stresses energy infrastructure on hot days."
+  group: "temperature"
+  area:
+- id: days_tmax_gt_105f
+  short_label: "Days w/ max > 105°F"
+  label: "Days per year with max above 105°F"
+  description: "
+           The annual count of days when the high temperature rises above a selected threshold indicates how frequently locations experience warm, hot, or very hot days.
+        <br />
+        <br />
+        Outdoor workers and people who lack air conditioning may experience extreme discomfort or heat illness on hot days, especially if humidity is high and wind is light. Hot days also stress plants, animals, and infrastructure such as electric lines, roads, and rails. Increased demand for electricity to cool homes and businesses also stresses energy infrastructure on hot days."
+  group: "temperature"
+  area:
+- id: days_tmax_lt_32f
+  short_label: "Days w/ max < 32°F"
+  label: "Days per year with max below 32°F (Icing days)"
+  description: "
+           The total number of days per year when the highest temperature is less than 32°F (0°C) is an indicator of how often very cold days occur.
+        <br />
+        <br />
+        Days when the highest temperature doesn't rise above the freezing point of water are called “icing days.” The annual number of icing days tells us how much rest plants get from growing; with too few icing days, some plants do not perceive a “reset” signal to begin budding or blooming in the spring. The annual number of icing days can also help predict if populations of insects, such as tree-killing bark beetles, will survive the winter or not."
+  group: "temperature"
+  area:
+- id: days_tmax_lt_50f
+  short_label: ""
+  label: "Days per year with max below 50°F"
+  description: ""
+  group: "temperature"
+  area: island-only
+- id: days_tmax_lt_65f
+  short_label: ""
+  label:  "Days per year with max below 65°F"
+  description: ""
+  group: "temperature"
+  area: island-only
+- id: days_tmin_lt_32f
+  short_label: "Days w/ min < 32°F"
+  label: "Days per year with min below 32°F (frost days)"
+  description: "
+    <strong>Days per year with Minimum Temperature below 32°F </strong><hr/>
+    The total number of days per year when the temperature dips below 32°F (0°C) is an indicator of how often cold days occur.
+    <br />
+    <br />
+    A decrease in the number of days temperature drops below freezing promotes earlier spring snowmelt and runoff, with important consequences for managing water resources. Below-freezing temperatures can cause driving hazards, aircraft icing, and damage to infrastructure, yet ski resorts and other winter recreation businesses depend on sufficiently cold days to maintain snowpack. Some plants require a cumulative number of days below freezing before they can begin budding or blooming in the spring."
+  group: "temperature"
+  area:
+- id: days_tmin_lt_minus_40f
+  short_label: "Days w/ min < -40°F"
+  label: "Days per year with min below -40°F"
+  description: "
+           In Alaska, the number of days when temperatures drop below -40°F indicates how frequently locations experience extremely cold conditions. Temperatures this low can be dangerous for people and animals, and result in high demand for energy for heating."
+  group: "temperature"
+  area: ak-only
+- id: days_tmin_gt_60f
+  short_label: "Days w/ min > 60°F"
+  label: "Days per year with min above 60°F"
+  description: "
+           In Alaska, the total number of days per year when the overnight low doesn't drop below 60°F is an indicator of how frequently very warm nights occur.
+        <br />
+        <br />
+        When it doesn't cool down at night, people, plants, and animals can become stressed and susceptible to negative health impacts. As the number of warm nights increases, some sensitive plants may not be able to produce flowers or viable seeds."
+  group: "temperature"
+  area: ak-only
+- id: days_tmin_lt_65f
+  short_label: ""
+  label: "Days per year with min below 65°F"
+  description: ""
+  group: "temperature"
+  area: island-only
+- id: days_tmin_gt_75f
+  short_label: ""
+  label: "Days per year with min above 75°F"
+  description: ""
+  group: "temperature"
+  area: island-only
+- id: days_tmin_gt_80f
+  short_label: "Days w/ min > 80°F"
+  label: "Days per year with min above 80°F"
+  description: "
+           The total number of days per year when the lowest temperature doesn't drop below a given threshold is an indicator of how often very warm nights occur.
+        <br />
+        <br />
+        When the lowest temperature of a 24-hour period doesn't dip below 80 or 90°F, plants, animals, and people don't have a chance to cool down. They can become stressed and susceptible to other negative health impacts. As the number of very warm nights increases, sensitive plants may not produce flowers or viable seeds."
+  group: "temperature"
+  area:
+- id: days_tmin_gt_90f
+  short_label: "Days w/ min > 90°F"
+  label: "Days per year with min above 90°F"
+  description: "
+           The total number of days per year when the lowest temperature doesn't drop below a given threshold is an indicator of how often very warm nights occur.
+        <br />
+        <br />
+        When the lowest temperature of a 24-hour period doesn't dip below 80 or 90°F, plants, animals, and people don't have a chance to cool down. They can become stressed and susceptible to other negative health impacts. As the number of very warm nights increases, sensitive plants may not produce flowers or viable seeds."
+  group: "temperature"
+  area:
+- id: hdd_65f
+  label: "Heating Degree Days"
+  description: "
+           The number of heating degree days at any location reflects the amount of energy people use to heat a building when it is cool outside. Lower numbers of heating degree days indicate lower demand for energy.
+        <br />
+        <br />
+        Heating degree days measure how much (in degrees), and for how long (in days), outside air temperature is below 65°F. For example, on a day when the average outdoor temperature is 35°F, raising the indoor temperature to 65°F would require 30 degrees of heating multiplied by 1 day, or 30 heating degree days. Engineers and utility companies use a location's annual number of heating degree days as one input when estimating demand for energy in the cold season."
+  group: "temperature_degree_days"
+  area:
+- id: cdd_65f
+  label: "Cooling Degree Days"
+  description: "
+           The number of cooling degree days at any location reflects the amount of energy people use to cool a building when it is warm outside. Higher numbers of cooling degree days indicate higher demand for energy.
+        <br />
+        <br />
+        Cooling degree days measure how much (in degrees), and for how long (in days), outside air temperature is higher than 65°F. For example, on a day when the average outdoor temperature is 85°F, reducing the indoor temperature to 65°F would require 20 degrees of cooling multiplied by 1 day, or 20 cooling degree days. Engineers and utility companies use a location's annual number of cooling degree days as one input when estimating demand for energy in the warm season."
+  group: "temperature_degree_days"
+  area:
+- id: gdd
+  label: "Growing Degree Days"
+  description: "
+           The number of growing degree days per year is used to estimate the growth and development of plants (or insects) during the growing season. Higher numbers of growing-degree days indicate longer and warmer growing conditions.
+        <br />
+        <br />
+        As growth occurs only when temperature exceeds a species' base temperature (for example, 50°F), the number of days times the number of degrees above the base indicates the duration and magnitude of growing conditions."
+  group: "temperature_degree_days"
+  area:
+- id: gddmod
+  label: "Modified Growing Degree Days"
+  description: "
+           Corn growers use the number of modified growing degree days to monitor the development of corn crops.
+        <br />
+        <br />
+        As corn development occurs only when temperature is above 50°F but below 86°F, the standard calculation for growing-degree days is modified to omit conditions outside this range. In future decades, regions where temperatures regularly exceed 86°F may be less successful in growing corn."
+  group: "temperature_degree_days"
+  area:
+- id: gdd_32f
+  label: "Thawing Degree Days"
+  description: "
+           In late winter and early spring, thawing degree-days are used to monitor the average number of degrees above freezing <u>combined with</u> how long it is above freezing.
+        <br />
+        <br />
+        Projected increases in thawing degree days reflect warmer above-freezing temperatures (for example, 45°F rather than 40°F) and/or shorter durations of above-freezing temperatures.
+        <br />
+        <br />
+        The cumulative number of thawing degree days for a period can be calculated by taking the average number of degrees above freezing times the number of days in the period. For example, with an average temperature of 42°F (10°F above freezing) for one week, 10°F x 7 days = 70 thawing degree days."
+  group: "temperature_degree_days"
+  area: ak-only
+- id: hdd_32f
+  label: "Freezing Degree Days"
+  description: "
+           Freezing degree days measure how far below freezing it is <u>combined with</u> how long it remains below freezing.
+        <br />
+        <br />
+        Projected decreases in freezing degree-days reflect warmer below-freezing temperatures (for example, -10°F rather than -20°F) and/or shorter durations of below-freezing temperatures. Values for freezing degree-days are used to estimate ice growth on lakes and the sea.
+        <br />
+        <br />
+        Cumulative freezing degree days for a period can be calculated by taking the average number of degrees below freezing times the number of days in the period. For example, with an average temperature of 12°F (20°F below freezing) over one week, a location would accumulate (20°F x 7 days) or 140 freezing degree days."
+  group: "temperature_degree_days"
+  area: ak-only
+- id: pcpn
+  short_label: "Total precipitation"
+  label: "Total Precipitation"
+  description: "
+           Total precipitation over a year, season, or month indicates the average amount of water added to the environment over the indicated period.
+        <br /><br />
+        The graph for this variable shows total precipitation in inches. To help users perceive trends in this variable over time however, the map shows precipitation as the percentage change from the long-term average (1961 to 1990)."
+  group: "precipitation"
+  area:
+- id: days_dry_days
+  short_label: ""
+  label: "Dry Days"
+  description: "
+           The number of dry days per year—days when precipitation is less than 0.01 inches—gives a sense of the portion of the year when no moisture is being added to the environment. Changes in the number of dry days can indicate a tendency toward drier or wetter conditions.
+        <br />
+        <br />
+        The graph for this variable shows counts of Dry Days. To help users perceive trends in numbers of dry days over time however, the map shows dry days as the projected annual number of dry days for each decade minus the 1961-1990 average. Positive values indicate more dry days while negative values indicate fewer dry days."
+  group: "temperature"
+  area:
+- id: days_pcpn_gt_0_25in
+  short_label: ""
+  label: "Days per year with more than 0.25in precipitation"
+  description: "
+           Count of days per year on which measurable rain or snow (more than one-quarter inch of liquid water) falls."
+  group: "precipitation"
+  area: ak-only
+- id: days_pcpn_gt_1in
+  short_label: "Days w/ > 1 in Precipitation"
+  label:  "Days per year with more than 1in precip"
+  description: "
+           The number of days per year when locations receive more than 1 inches of precipitation is an indicator of how often very heavy precipitation events occur. This measurement may also be used as an indicator of flood risk.
+        <br />
+        <br >
+        Comparing the number of days with heavy precipitation at a single location over time can reveal a trend of increasing or decreasing flood risk."
+  group: "precipitation"
+  area:
+- id: days_pcpn_gt_2in
+  short_label: "Days w/ > 2 in Precipitation"
+  label: "Days per year with more than 2in precip"
+  description: "
+           The number of days per year when locations receive more than 2 inches of precipitation is an indicator of how often very heavy precipitation events occur. This measurement may also be used as an indicator of flood risk.
+        <br />
+        <br />
+        Comparing the number of days with heavy precipitation at a single location over time can reveal a trend of increasing or decreasing flood risk."
+  group: "precipitation"
+  area:
+- id: days_pcpn_gt_3in
+  short_label: "Days w/ > 3 in Precipitation"
+  label: "Days per year with more than 3in precip"
+  description: "
+           The number of days per year when locations receive more than 3 inches of precipitation is an indicator of how often very heavy precipitation events occur. This measurement may also be used as an indicator of flood risk.
+        <br />
+        <br />
+        Comparing the number of days with heavy precipitation at a single location over time can reveal a trend of increasing or decreasing flood risk."
+  group: "precipitation"
+  area:
+- id: days_pcpn_gt_4in
+  short_label: "Days w/ > 4 in Precipitation"
+  label: "Days per year with more than 4in precip"
+  description: "
+           The number of days per year when locations receive more than 4 inches of precipitation is an indicator of how often very heavy precipitation events occur. This measurement may also be used as an indicator of flood risk.
+        <br />
+        <br />
+        Comparing the number of days with heavy precipitation at a single location over time can reveal a trend of increasing or decreasing flood risk."
+  group: "precipitation"
+  area:
+- id: days_pcpn_gt_5in
+  short_label: "Days w/ > 5 in Precipitation"
+  label: "Days per year with more than 5in precip"
+  description: "
+           The number of days per year when locations receive more than 5 inches of precipitation is an indicator of how often very heavy precipitation events occur. This measurement may also be used as an indicator of flood risk.
+        <br />
+        <br />
+        Comparing the number of days with heavy precipitation at a single location over time can reveal a trend of increasing or decreasing flood risk."
+  group: "precipitation"
+  area: island-only

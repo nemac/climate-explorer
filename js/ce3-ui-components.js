@@ -9,9 +9,9 @@ function reEnableSelectNewItems(uniqueSelector) {
     return null;
   }
 
-  // get list tiems so we can add user interactions
-  var $list = $(`.select.${uniqueSelector} ul`);
-  var $listItems = $(`.select.${uniqueSelector} ul`).children('li');
+  // get list items so we can add user interactions
+  const $list = $(`.select.${uniqueSelector} ul`);
+  const $listItems = $(`.select.${uniqueSelector} ul`).children('li[role="option"]');
 
   // enable click for options
   $listItems.keyup(function (e) {
@@ -25,24 +25,24 @@ function reEnableSelectNewItems(uniqueSelector) {
 
       e.stopPropagation();
       // option item has href make it a element so links work
-      var hrefAttr = $(this).attr('href');
+      const hrefAttr = $(this).attr('href');
       if (typeof hrefAttr !== typeof undefined && hrefAttr !== false) {
-        $styledSelect.html(`<a href="${hrefAttr}" data-rel="${$(this).data('rel')}">${$(this).text().trim()}</a>`).removeClass('active');
+        $styledSelect.html(`<a href="${hrefAttr}" data-value="${$(this).data('value')}">${$(this).text().trim()}</a>`).removeClass('active');
       } else {
         $styledSelect.text($(this).text().trim()).removeClass('active');
       }
 
-      $styledSelect.data('rel', $(this).data('rel'))
+      $styledSelect.data('value', $(this).data('value'))
       $styledSelect.data('link', $(this).data('link'))
       $styledSelect.data('nav', $(this).data('nav'))
-
+      let icon;
       // option item has icon add it
-      var iconAttr = $(this).attr('icon');
+      let iconAttr = $(this).data('icon');
       if (typeof iconAttr !== typeof undefined && iconAttr !== false) {
         // Element has this attribute
-        var icon = `<i class="${iconAttr}"></i>`;
+         icon = `<i class="${iconAttr}"></i>`;
       } else {
-        var icon = '';
+         icon = '';
       }
 
       $styledSelect.prepend(icon);
@@ -65,21 +65,21 @@ function reEnableSelectNewItems(uniqueSelector) {
     e.stopPropagation();
     // option item has href make it a element so links work
     if (uniqueSelector !== 'download-select') {
-      var hrefAttr = $(this).attr('href');
+      const hrefAttr = $(this).attr('href');
       if (typeof hrefAttr !== typeof undefined && hrefAttr !== false) {
-        $styledSelect.html(`<a href="${hrefAttr}" data-rel="${$(this).data('rel')}">${$(this).text().trim()}</a>`).removeClass('active');
+        $styledSelect.html(`<a href="${hrefAttr}" data-value="${$(this).data('value')}">${$(this).text().trim()}</a>`).removeClass('active');
       } else {
         $styledSelect.text($(this).text().trim()).removeClass('active');
       }
     }
 
-    $styledSelect.data('rel', $(this).data('rel'))
+    $styledSelect.data('value', $(this).data('value'))
     $styledSelect.data('link', $(this).data('link'))
     $styledSelect.data('nav', $(this).data('nav'))
 
     // option item has icon add it
     if (uniqueSelector !== 'download-select') {
-      var iconAttr = $(this).attr('icon');
+      const iconAttr = $(this).data('icon');
       if (typeof iconAttr !== typeof undefined && iconAttr !== false) {
         // Element has this attribute
         icon = `<i class="${iconAttr}"></i>`;
@@ -94,7 +94,7 @@ function reEnableSelectNewItems(uniqueSelector) {
     $styledSelect.trigger('cs-changed');
   });
 
-  var $listTips = $(`.select.${uniqueSelector} ul`).children('span');
+  const $listTips = $(`.select.${uniqueSelector} ul`).children('span');
 
   $listTips.click(function (e) {
     // check if disabled exit if it is
@@ -103,11 +103,11 @@ function reEnableSelectNewItems(uniqueSelector) {
     }
     e.stopPropagation();
 
+    const relAttr = $(this).data('value');
     // ga event action, category, label
     googleAnalyticsEvent('click', 'dropdown-tip', relAttr);
 
-    const relAttr = $(this).data('rel');
-    const testItem = $(`li[data-rel='${relAttr}']`);
+    const testItem = $(`li[data-value='${relAttr}']`);
     $(testItem).click();
   });
 
@@ -120,11 +120,11 @@ function reEnableSelectNewItems(uniqueSelector) {
       }
       e.stopPropagation();
 
+      const relAttr = $(this).data('value');
       // ga event action, category, label
       googleAnalyticsEvent('click-tab', 'dropdown-tip', relAttr);
 
-      const relAttr = $(this).data('rel');
-      const testItem = $(`li[data-rel='${relAttr}']`);
+      const testItem = $(`li[data-value='${relAttr}']`);
       $(testItem).click();
     }
   });
@@ -174,9 +174,9 @@ function enableCustomSelect(uniqueSelector) {
     $(this).toggleClass('active').next('ul.select-options').toggle();
   });
 
-  // get list tiems so we can add user interactions
-  var $list = $(`.select.${uniqueSelector} ul`);
-  var $listItems = $(`.select.${uniqueSelector} ul`).children('li');
+  // get list items so we can add user interactions
+  const $list = $(`.select.${uniqueSelector} ul`);
+  const $listItems = $list.children('li[role="option"]');
 
   // enable click for options
   $listItems.keyup(function (e) {
@@ -190,26 +190,27 @@ function enableCustomSelect(uniqueSelector) {
       e.stopPropagation();
       // option item has href make it a element so links work
       if (uniqueSelector !== 'download-select') {
-        var hrefAttr = $(this).attr('href');
+        const hrefAttr = $(this).attr('href');
         if (typeof hrefAttr !== typeof undefined && hrefAttr !== false) {
-          $styledSelect.html(`<a href="${hrefAttr}" data-rel="${$(this).data('rel')}">${$(this).text().trim()}</a>`).removeClass('active');
+          $styledSelect.html(`<a href="${hrefAttr}" data-value="${$(this).data('value')}">${$(this).text().trim()}</a>`).removeClass('active');
         } else {
           $styledSelect.text($(this).text().trim()).removeClass('active');
         }
       }
 
-      $styledSelect.data('rel', $(this).data('rel'))
+      $styledSelect.data('value', $(this).data('value'))
       $styledSelect.data('link', $(this).data('link'))
       $styledSelect.data('nav', $(this).data('nav'))
 
       // option item has icon add it
+      let icon;
       if (uniqueSelector !== 'download-select') {
-        var iconAttr = $(this).attr('icon');
+        const iconAttr = $(this).data('icon');
         if (typeof iconAttr !== typeof undefined && iconAttr !== false) {
           // Element has this attribute
-          var icon = `<i class="${iconAttr}"></i>`;
+          icon = `<i class="${iconAttr}"></i>`;
         } else {
-          var icon = '';
+          icon = '';
         }
       }
 
@@ -234,28 +235,18 @@ function enableCustomSelect(uniqueSelector) {
     e.stopPropagation();
     // option item has href make it a element so links work
     if (uniqueSelector !== 'download-select') {
-      var hrefAttr = $(this).attr('href');
+      const hrefAttr = $(this).attr('href');
       if (typeof hrefAttr !== typeof undefined && hrefAttr !== false) {
-        $styledSelect.html(`<a href="${hrefAttr}" data-rel="${$(this).data('rel')}">${$(this).text().trim()}</a>`).removeClass('active');
+        $styledSelect.html(`<a href="${hrefAttr}" data-value="${$(this).data('value')}">${$(this).text().trim()}</a>`).removeClass('active');
       } else {
         $styledSelect.text($(this).text().trim()).removeClass('active');
       }
     }
 
-    $styledSelect.data('rel', $(this).data('rel'))
+    $styledSelect.data('value', $(this).data('value'))
     $styledSelect.data('link', $(this).data('link'))
     $styledSelect.data('nav', $(this).data('nav'))
 
-    // option item has icon add it
-    if (uniqueSelector !== 'download-select') {
-      var iconAttr = $(this).attr('icon');
-      if (typeof iconAttr !== typeof undefined && iconAttr !== false) {
-        // Element has this attribute
-        var icon = `<i class="${iconAttr}"></i>`;
-      } else {
-        var icon = '';
-      }
-    }
     // ga event action, category, label
     googleAnalyticsEvent('click', 'listitem', $(this).text());
 
@@ -265,7 +256,7 @@ function enableCustomSelect(uniqueSelector) {
     $styledSelect.trigger('cs-changed');
   });
 
-  var $listTips = $(`.select.${uniqueSelector} ul`).children('span');
+  const $listTips = $(`.select.${uniqueSelector} ul`).children('span');
   $listTips.click(function (e) {
     // check if disabled exit if it is
     if ($(this).hasClass('default-select-option-disabled')) {
@@ -273,8 +264,8 @@ function enableCustomSelect(uniqueSelector) {
     }
     e.stopPropagation();
 
-    const relAttr = $(this).data('rel');
-    const testItem = $(`li[data-rel='${relAttr}']`);
+    const relAttr = $(this).data('value');
+    const testItem = $(`li[data-value='${relAttr}']`);
 
     // ga event action, category, label
     googleAnalyticsEvent('click', 'select-list', relAttr);
@@ -291,8 +282,8 @@ function enableCustomSelect(uniqueSelector) {
       }
       e.stopPropagation();
 
-      const relAttr = $(this).data('rel');
-      const testItem = $(`li[data-rel='${relAttr}']`);
+      const relAttr = $(this).data('value');
+      const testItem = $(`li[data-value='${relAttr}']`);
 
       // ga event action, category, label
       googleAnalyticsEvent('click-tab', 'select-list', relAttr);
@@ -310,7 +301,7 @@ function enableCustomSelect(uniqueSelector) {
 
 // function recreates tool tip for selected variable
 function recreateToolTip(elem) {
-  var listTips = $(elem).children('span.variable-option-tooltip')[0];
+  const listTips = $(elem).children('span.variable-option-tooltip')[0];
   const tipContent = $(listTips).attr('data-tippy-content');
   const selectedTipHolderElem = document.getElementById('select-tip-holder');
 
@@ -352,7 +343,7 @@ function setSelectFromButton(target) {
   const selector = target.data('sel');
 
   $(`#${selector}`).text(innerText);
-  $(`#${selector}`).data('rel', val);
+  $(`#${selector}`).data('value', val);
 }
 //
 // // handles click of map/char choice button.
@@ -367,8 +358,8 @@ function setSelectFromButton(target) {
 // }
 
 function forceResize() {
-  var el = document; // This can be your element on which to trigger the event
-  var event = document.createEvent('HTMLEvents');
+  const el = document; // This can be your element on which to trigger the event
+  const event = document.createEvent('HTMLEvents');
   event.initEvent('resize', true, false);
   el.dispatchEvent(event);
 }
@@ -524,6 +515,7 @@ function storageAvailable() {
         e.name === 'QuotaExceededError' ||
         // Firefox
         e.name === 'NS_ERROR_DOM_QUOTA_REACHED') &&
+        storage &&
         // acknowledge QuotaExceededError only if there's something already stored
         storage.length !== 0;
   }
@@ -534,9 +526,9 @@ const feedbackSmallElem = document.getElementById('feedback-trigger-small');
 const feedbackYesElem = document.getElementById('feedback-close-button-yes');
 const feedbackNoElem = document.getElementById('feedback-close-button-no');
 const feedbackLinkElem = document.getElementById('feedback-link');
-
+let localStorage;
 if (storageAvailable()) {
-  const localStorage = window.localStorage;
+  localStorage = window.localStorage;
 }
 
 function neverShowFeedbackAgain() {
@@ -564,11 +556,9 @@ function checkValidObject(obj) {
   if (typeof obj === 'object' && Object.keys(obj).length === 0) {
     return false;
   }
-  if (typeof obj === 'string' && obj.length === 0) {
-    return false;
-  }
+  return !(typeof obj === 'string' && obj.length === 0);
 
-  return true;
+
 }
 
 function setUUID() {
@@ -583,11 +573,7 @@ function getUUID() {
   if (storageAvailable()) {
     if (checkValidObject(localStorage.getItem('uuid'))) {
       return localStorage.getItem('uuid');
-    } else {
-      return 'uuid not available';
     }
-  } else {
-    return 'uuid not available';
   }
   return 'uuid not available';
 }
@@ -660,6 +646,8 @@ function updateValidVariable() {
   const cityStateCE = state['city'];
   const countyCE = state['county'];
   const is_conus_area = state['is_conus_area'];
+  const is_island_area = state['is_island_area'];
+  const is_ak_area = state['is_ak_area'];
   if (cityStateCE) {
     if (!is_conus_area) {
       $('#default-in').html('—');
@@ -668,15 +656,14 @@ function updateValidVariable() {
       $('.btn-histobs').addClass('disabled');
       $('.inner-histobs').addClass('disabled');
       $('.btn-lower-emissions').addClass('disabled');
-      $('.inner-lower-emmisions').addClass('disabled');
+      $('.inner-lower-emissions').addClass('disabled');
       $('.btn-lower-emissions').removeClass('selected');
       // $('.opt-not-ak').removeClass('default-select-option-disabled');
       $('.not-ak-last').removeClass('last-variable-space');
-      $('.opt-not-ak').addClass('d-none');
-      $('.opt-only-ak').removeClass('d-none');
+
       $('.btn-monthly').addClass('btn-default-disabled');
-      $('[data-rel="monthly"]').addClass('default-select-option-disabled');
-      $('[data-rel="monthly"]').addClass('disabled');
+      $('[data-value="monthly"]').addClass('default-select-option-disabled');
+      $('[data-value="monthly"]').addClass('disabled');
       $('.btn-selector[data-value="map"]').addClass('btn-default-disabled');
       $('#more-info-description .btn-histobs').removeClass('disabled');
       $('#more-info-description .btn-lower-emissions').removeClass('disabled');
@@ -684,23 +671,25 @@ function updateValidVariable() {
 
       // temporary fix for Aleutians West
       if (cityStateCE.includes('Aleutians West') > 0 || countyCE.includes('Aleutians West') > 0) {
-        const messsageElemChart = document.getElementById('chart-message');
-        if (messsageElemChart) {
+        const messageElemChart = document.getElementById('chart-message');
+        if (messageElemChart) {
           const rect = document.getElementById('chart-wrap').getBoundingClientRect();
-          ;
-          messsageElemChart.style.left = `${(rect.right - rect.left) / 4}px`;
-          messsageElemChart.style.top = `${((rect.bottom + rect.top) / 2.5)}px`;
-          messsageElemChart.innerHTML = `The chart and data for ${cityStateCE}, is currently not available.`
-          messsageElemChart.classList.remove('d-none');
+
+          messageElemChart.style.left = `${(rect.right - rect.left) / 4}px`;
+          messageElemChart.style.top = `${((rect.bottom + rect.top) / 2.5)}px`;
+          messageElemChart.innerHTML = `The chart and data for ${cityStateCE}, is currently not available.`
+          messageElemChart.classList.remove('d-none');
         }
       }
 
     } else {
       // $('.opt-only-ak').addClass('default-select-option-disabled');
-      $('.opt-only-ak').addClass('d-none');
-      $('.opt-not-ak').removeClass('d-none');
       $('.not-ak-last').addClass('last-variable-space');
     }
+    $('.opt-not-ak').toggleClass('d-none', is_ak_area);
+    $('.opt-only-ak').removeClass('d-none', !is_ak_area);
+    $('.opt-not-island').toggleClass('d-none', is_island_area);
+    $('.opt-only-island').removeClass('d-none', !is_island_area);
   }
 }
 
@@ -781,7 +770,7 @@ $('.share-link').click(function (e) {
 
     }
   } else {
-    var width = 575,
+    const width = 575,
         height = 320,
         left = ($(window).width() - width) / 2,
         top = ($(window).height() - height) / 2,

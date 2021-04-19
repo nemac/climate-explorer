@@ -30,13 +30,13 @@
 
     <div id="stations-select-wrapper" class="rounded-choice-box padding-horizontal default-btn-height top-select-wrapper d-flex-center disabled">
       <div class="select">
-        <div id="stations-select-vis" class="select-styled disabled" data-rel="none">Stations</div>
+        <div id="stations-select-vis" class="select-styled disabled" data-value="none">Stations</div>
         <ul class="select-options" style="display: none;">
-          <li data-rel="none" class="default-select-option">Stations</li>
-          <li data-rel="station-1" class="default-select-option">Stations 1</li>
-          <li data-rel="station-2" class="default-select-option">Stations 2</li>
-          <li data-rel="station-3" class="default-select-option">Stations 3</li>
-          <li data-rel="station-4" class="default-select-option">Stations 4</li>
+          <li data-value="none" class="default-select-option">Stations</li>
+          <li data-value="station-1" class="default-select-option">Stations 1</li>
+          <li data-value="station-2" class="default-select-option">Stations 2</li>
+          <li data-value="station-3" class="default-select-option">Stations 3</li>
+          <li data-value="station-4" class="default-select-option">Stations 4</li>
         </ul>
       </div>
     </div>
@@ -54,12 +54,12 @@
           <span id="default-in" class="text-info-box"> in </span>
           <span id="default-city-county" class="text-info-box"></span>
           <span id="default-dash" class="text-info-box"> - </span>
-          <span id="default-chart-map-variable" class="text-info-box" data-rel="tmax">Avg Daily Max Temp (°F)</span>
+          <span id="default-chart-map-variable" class="text-info-box" data-value="tmax">Avg Daily Max Temp (°F)</span>
         </div>
 
         <div id="filters-toggle" class="width-10">
           <div class="select filters-toggle-select">
-            <div id="filters-toggle-select-vis" class="select-styled" data-rel="filter"></div>
+            <div id="filters-toggle-select-vis" class="select-styled" data-value="filter"></div>
           </div>
         </div>
 
@@ -71,9 +71,9 @@
           {{> variable-selector }}
         </div>
         <span id="select-tip-holder">
-              <span tabindex="100" data-rel="select-tip" id="select-tip" class="fas fa-question padding-left-half select-tip" data-tippy-content="
+              <span tabindex="100" data-value="select-tip" id="select-tip" class="fas fa-question padding-left-half select-tip" data-tippy-content="
                 <strong>Average Daily Maximum Temperature (°F)</strong><hr/>
-                A day’s highest (maximum) temperature usually occurs in the afternoon. Averaging the daily high temperatures over any period results in a mean maximum temperature for that period.
+                A day's highest (maximum) temperature usually occurs in the afternoon. Averaging the daily high temperatures over any period results in a mean maximum temperature for that period.
                 <br />
                 <br />
                 Maximum temperature serves as one measure of comfort and safety for people and for the health of plants and animals. When maximum temperature exceeds particular thresholds, people can become ill and transportation and energy infrastructure may be stressed.">
@@ -93,12 +93,12 @@
 
         <div id="chartmap-select-wrapper" class="rounded-choice-box padding-left-half padding-vertical-half default-btn-height d-flex-center width-15">
           <div class="select chartmap-select">
-            <div tabindex="102" id="chartmap-select-vis" class="select-styled" data-rel="chart">Chart</div>
+            <div tabindex="102" id="chartmap-select-vis" class="select-styled" data-value="chart">Chart</div>
             <ul class="select-options">
-              <li tabindex="103" id="chartmap-select-chart-link" data-rel="chart" class="default-select-option" data-page="local-climate-charts"
+              <li tabindex="103" id="chartmap-select-chart-link" data-value="chart" class="default-select-option" data-page="local-climate-charts"
                   >Chart
               </li>
-              <li tabindex="104" id=chartmap-select-map-link"" data-rel="map" class="default-select-option" data-page="local-climate-maps"
+              <li tabindex="104" id=chartmap-select-map-link"" data-value="map" class="default-select-option" data-page="local-climate-maps"
                   >Map
               </li>
             </ul>
@@ -119,10 +119,10 @@
 
         <div id="time-select-wrapper" class="rounded-choice-box padding-left-half padding-vertical-half default-btn-height d-flex-center width-15">
           <div class="select time-select">
-            <div tabindex="107" id="time-select-vis" class="select-styled" data-rel="annual">Annual</div>
+            <div tabindex="107" id="time-select-vis" class="select-styled" data-value="annual">Annual</div>
             <ul class="select-options">
-              <li tabindex="108" data-rel="annual" class="default-select-option">Annual</li>
-              <li tabindex="109" data-rel="monthly" class="default-select-option">Monthly</li>
+              <li tabindex="108" data-value="annual" class="default-select-option">Annual</li>
+              <li tabindex="109" data-value="monthly" class="default-select-option">Monthly</li>
             </ul>
           </div>
         </div>
@@ -130,29 +130,29 @@
         <div id="downloads-select-wrapper" class="rounded-choice-box padding-left-half padding-vertical-half default-btn-height d-flex-center">
 
           <div tabindex="109" class="select download-select">
-            <div tabindex="109" id="downloads-select-vis" class="select-styled" data-rel="none" href="javascript:void(0);">
+            <div tabindex="109" id="downloads-select-vis" class="select-styled" data-value="none" href="javascript:void(0);">
               <i class="fas fa-download select-icon"></i>
-              <a tabindex="109" data-rel="none" class="download-link-main long-desc" href="javascript:void(0);">Downloads</a>
-              <a tabindex="109" data-rel="none" class="download-link-main short-desc" href="javascript:void(0);">Down</a>
+              <a tabindex="109" data-value="none" class="download-link-main long-desc" href="javascript:void(0);">Downloads</a>
+              <a tabindex="109" data-value="none" class="download-link-main short-desc" href="javascript:void(0);">Down</a>
             </div>
             <ul class="select-options" style="display: none;">
-              <li id="download-image" data-rel="download-image" icon="fas fa-download select-icon" href="javascript:void(0);" class="default-select-option">
-                <a tabindex="109" data-rel="download-image" class="download-link" href="javascript:void(0);">Chart image (.png)</a>
+              <li id="download-image" data-value="download-image" data-icon="fas fa-download select-icon" href="javascript:void(0);" class="default-select-option">
+                <a tabindex="109" data-value="download-image" class="download-link" href="javascript:void(0);">Chart image (.png)</a>
               </li>
-              <li id="download-observed-data" data-rel="download-observed-data" icon="fas fa-download select-icon" href="javascript:void(0);"
+              <li id="download-observed-data" data-value="download-observed-data" data-icon="fas fa-download select-icon" href="javascript:void(0);"
                   class="default-select-option">
-                <a tabindex="109" data-rel="download-observed-data" class="download-link" href="javascript:void(0);">Historical Observed data (.csv)</a>
+                <a tabindex="109" data-value="download-observed-data" class="download-link" href="javascript:void(0);">Historical Observed data (.csv)</a>
               </li>
-              <li id="download-historical-modeled-data" data-rel="download-historical-modeled-data" icon="fas fa-download select-icon" href="javascript:void(0);"
+              <li id="download-historical-modeled-data" data-value="download-historical-modeled-data" data-icon="fas fa-download select-icon" href="javascript:void(0);"
                   class="default-select-option">
-                <a tabindex="109" data-rel="download-historical-modeled-data" class="download-link" href="javascript:void(0);">Historical Modeled data (.csv)</a>
+                <a tabindex="109" data-value="download-historical-modeled-data" class="download-link" href="javascript:void(0);">Historical Modeled data (.csv)</a>
               </li>
-              <li id="download-projected-modeled-data" data-rel="download-projected-modeled-data" icon="fas fa-download select-icon" href="javascript:void(0);"
+              <li id="download-projected-modeled-data" data-value="download-projected-modeled-data" data-icon="fas fa-download select-icon" href="javascript:void(0);"
                   class="default-select-option">
-                <a tabindex="109" data-rel="download-projected-modeled-data" class="download-link" href="javascript:void(0);">Projected Modeled data (.csv)</a>
+                <a tabindex="109" data-value="download-projected-modeled-data" class="download-link" href="javascript:void(0);">Projected Modeled data (.csv)</a>
               </li>
-              <li id="download-interpreting" data-rel="download-interpreting" icon="fas fa-download select-icon" class="default-select-option">
-                <a tabindex="109" data-rel="download-interpreting" class="download-link" href="/data/Climate-Explorer--Key-to-Filenames-and-Column-Headings.xlsx">Key
+              <li id="download-interpreting" data-value="download-interpreting" data-icon="fas fa-download select-icon" class="default-select-option">
+                <a tabindex="109" data-value="download-interpreting" class="download-link" href="/data/Climate-Explorer--Key-to-Filenames-and-Column-Headings.xlsx">Key
                   to column headings (.xlsx)</a>
               </li>
             </ul>
@@ -192,11 +192,11 @@
       </div>
       <div role="button" tabindex="113" class="btn-selector btn-lower-emissions selected  d-flex-center width-50" data-value="rcp45">
         Lower Emissions
-        <div class="inner-lower-emmisions"></div>
+        <div class="inner-lower-emissions"></div>
       </div>
       <div role="button" tabindex="40" class="btn-selector btn-higher-emissions selected d-flex-center width-50" data-value="rcp85">
         Higher Emissions
-        <div class="inner-higher-emmisions"></div>
+        <div class="inner-higher-emissions"></div>
       </div>
     </div>
 

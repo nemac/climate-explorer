@@ -53,7 +53,7 @@ $(function () {
     const stationsSelectElem = $('#stations-select-vis');
     if (stationsSelectElem) {
       if (!!stations.tidalStationId) {
-        stationsSelectElem.data('rel', `${stations.tidalStationId}|${stations.tidalStationName}`);
+        stationsSelectElem.data('value', `${stations.tidalStationId}|${stations.tidalStationName}`);
         stationsSelectElem.text(`${stations.tidalStationName} - (${stations.tidalStationId})`);
       }
     }
@@ -71,7 +71,7 @@ $(function () {
 
           const tidalZoomElem = $('#tidalzoom-select-vis');
           if (tidalZoomElem) {
-            tidalZoomElem.data('rel', 'hm');
+            tidalZoomElem.data('value', 'hm');
             tidalZoomElem.text('Historical & Modeled');
 
             // ga event action, category, label
@@ -93,7 +93,7 @@ $(function () {
 
         const tidalZoomElem = $('#tidalzoom-select-vis');
         if (tidalZoomElem) {
-          tidalZoomElem.data('rel', 'hm');
+          tidalZoomElem.data('value', 'hm');
           tidalZoomElem.text('Historical & Modeled');
 
           // ga event action, category, label
@@ -114,7 +114,7 @@ $(function () {
 
         const tidalZoomElem = $('#tidalzoom-select-vis');
         if (tidalZoomElem) {
-          tidalZoomElem.data('rel', 'h');
+          tidalZoomElem.data('value', 'h');
           tidalZoomElem.text('Historical');
 
           // ga event action, category, label
@@ -136,7 +136,7 @@ $(function () {
 
           const tidalZoomElem = $('#tidalzoom-select-vis');
           if (tidalZoomElem) {
-            tidalZoomElem.data('rel', 'h');
+            tidalZoomElem.data('value', 'h');
             tidalZoomElem.text('Historical');
 
             // ga event action, category, label
@@ -155,7 +155,7 @@ $(function () {
 
     const notDisabled = !target.hasClass('btn-default-disabled');
     if (notDisabled) {
-      const val = $('#tidalzoom-select-vis').data('rel');
+      const val = $('#tidalzoom-select-vis').data('value');
       if (!$(`.btn-tidalzoom-${val}`).hasClass('btn-default-selected')) {
         // toggle button visual state
         $(`.btn-tidalzoom-hm`).removeClass('btn-default-selected');
@@ -261,7 +261,7 @@ $(function () {
   // we probably should switch all elements to val for consistency.
   function RelorVal(target) {
     if (target.data('value') === undefined || target.data('value') === null) {
-      return target.data('rel');
+      return target.data('value');
     }
     return target.data('value');
   }
@@ -325,7 +325,7 @@ $(function () {
     // update dropdown default of chart
     const chartMapElem = $('#chartmap-select-vis');
     if (chartMapElem) {
-      chartMapElem.data('rel', 'chart');
+      chartMapElem.data('value', 'chart');
       chartMapElem.text('Chart');
     }
   }
@@ -366,7 +366,7 @@ $(function () {
 
   // function to enable downloads (images and data)
   $('.download-select li a').click(function (e) {
-    const downloadAction = $(this).data('rel');
+    const downloadAction = $(this).data('value');
     const tidalStationId = window.app.state['tidalStationId'];
 
     // ga event action, category, label
@@ -392,7 +392,7 @@ $(function () {
     const target = $(e.target);
     const notDisabled = !target.hasClass('disabled');
     if (notDisabled) {
-      const val = $('#stations-select-vis').data('rel').split('|');
+      const val = $('#stations-select-vis').data('value').split('|');
       const tidalStationName = val[1];
       const tidalStationId = val[0];
       const tidalStationMOverMHHW = val[2];
@@ -485,10 +485,10 @@ $(function () {
     const target = $(e.target);
     const notDisabled = !target.hasClass('disabled');
     if (notDisabled) {
-      const val = $('#time-select-vis').data('rel')
+      const val = $('#time-select-vis').data('value')
 
       // toggle button visual state
-      toggleButton($(`.btn-selector[data-value="${$('#chartmap-select-vis').data('rel')}"]`));
+      toggleButton($(`.btn-selector[data-value="${$('#chartmap-select-vis').data('value')}"]`));
 
       // check val of button to see if user is on map  or chart
       // hide or show the appropriate overlay (map, chart)
@@ -587,19 +587,19 @@ $(function () {
       window.app.update(options);
       renderStationInfo(options.tidalStationId, options.tidalStationName, options.tidalStationMOverMHHW);
 
-      const messsageElem = document.getElementById('stations-map-message');
+      const messageElem = document.getElementById('stations-map-message');
       // check if there are any tidal stations in map extent
       if (!!options.currentstations && options.currentstations.features.length === 0) {
         // get map parent element - which provides the correct dimensions for the map
-        if (messsageElem) {
+        if (messageElem) {
           const rect = document.getElementById('stations-map-wrap').getBoundingClientRect();
-          messsageElem.style.left = `${(rect.right - rect.left) / 3}px`;
-          messsageElem.style.top = `-${((rect.bottom - rect.top) / 2)}px`;
-          messsageElem.innerHTML = 'Pan the map to a coastal location to select a tidal gauge station.'
-          messsageElem.classList.remove('d-none');
+          messageElem.style.left = `${(rect.right - rect.left) / 3}px`;
+          messageElem.style.top = `-${((rect.bottom - rect.top) / 2)}px`;
+          messageElem.innerHTML = 'Pan the map to a coastal location to select a tidal gauge station.'
+          messageElem.classList.remove('d-none');
         }
       } else {
-        messsageElem.classList.add('d-none');
+        messageElem.classList.add('d-none');
       }
     },
 
@@ -642,12 +642,12 @@ $(function () {
     // get map parent element - which provides the correct dimensions for the map
     const rect = document.getElementById('stations-map-wrap').getBoundingClientRect();
 
-    const messsageElem = document.getElementById('stations-map-message');
+    const messageElem = document.getElementById('stations-map-message');
     // get map parent element - which provides the correct dimensions for the map
-    if (messsageElem) {
+    if (messageElem) {
       const rect = document.getElementById('stations-map-wrap').getBoundingClientRect();
-      messsageElem.style.left = `${(rect.right - rect.left) / 3}px`;
-      messsageElem.style.top = `-${((rect.bottom - rect.top) / 2)}px`;
+      messageElem.style.left = `${(rect.right - rect.left) / 3}px`;
+      messageElem.style.top = `-${((rect.bottom - rect.top) / 2)}px`;
     }
 
     // set size of map overlay
