@@ -1,8 +1,13 @@
+import head from '../template/head'
+import secondary_header from '../template/secondary_header';
+import footer from '../template/footer';
+
+export default (config) => `
 <!doctype html>
 <html lang='en' class="width-100">
 <head>
 
-  {{> head }}
+  ${head(config)}
 
   <meta property="fb:app_id" content="187816851587993">
   <meta property="og:url" content="/">
@@ -13,7 +18,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
 </head>
 <body id="page-home" class="width-100 height-100">
-  {{> secondary_header }}
+  ${secondary_header(config)}
 
 
   <div id="home-viewport" class="home-container padding-default d-flex-left d-flex-column" >
@@ -46,7 +51,7 @@
     </div>
   </div>
 
-  {{> footer}}
+  ${footer(config)}
 
   <div class="main-logos padding-horizontal d-flex d-flex-bottom width-100" style="z-index: 99;">
     <a class="d-flex-bottom"><img src="/img/logo_noaa.png" alt='NOAA' title="NOAA"></a>
@@ -63,3 +68,4 @@
 
 </body>
 </html>
+`

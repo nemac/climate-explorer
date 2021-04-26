@@ -1,7 +1,13 @@
+import head from '../template/head'
+import secondary_header from '../template/secondary_header';
+import footer from '../template/footer';
+import nav_footer from '../template/nav_footer';
+
+export default (config) => `
 <!doctype html>
 <html lang='en' class="width-100 height-100">
 <head>
-  {{> head }}
+  ${head(config)}
   <meta property="fb:app_id" content="187816851587993">
   <meta property="og:url" content="historical-thresholds">
   <meta property="og:type" content="article">
@@ -12,7 +18,7 @@
 
 <body class="width-100 height-100">
 
-  {{> secondary_header }}
+  ${secondary_header(config)}
 
   <div id="historical-thresholds-viewport" class="padding-horizontal d-flex d-flex-column">
 
@@ -187,8 +193,8 @@
     </div>
   </div>
 
-    {{> nav_footer }}
-    {{> footer }}
+    ${nav_footer(config)}
+    ${footer(config)}
 
     <script src="https://unpkg.com/@esri/arcgis-to-geojson-utils"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Turf.js/5.1.6/turf.min.js" integrity="sha256-Nhtik+K3xORhs5S9o0qlol4eRNB9O5OyTOJqbLucPk8=" crossorigin="anonymous"></script>
@@ -207,3 +213,4 @@
     <script type="text/javascript" src="/js/secondary_header.js"></script>
   </body>
   </html>
+`

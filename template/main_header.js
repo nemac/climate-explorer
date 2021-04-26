@@ -1,3 +1,4 @@
+export default (config) => `
 <!-- BEGIN HEADER TEMPLATE -->
 
 <header id="main-header" class="flex-container  padding-default width-100 ">
@@ -77,3 +78,4 @@
 <script type="text/javascript" src="/js/secondary_header.js"></script>
 
 <!-- END HEADER TEMPLATE -->
+`

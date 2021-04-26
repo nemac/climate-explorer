@@ -1,3 +1,5 @@
+export default (config) => `
+
 <!-- BEGIN HEADER TEMPLATE -->
 
 
@@ -30,3 +32,4 @@
 </div> -->
 
 <!-- END HEADER TEMPLATE -->
+`

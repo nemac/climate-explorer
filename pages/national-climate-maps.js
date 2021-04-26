@@ -1,7 +1,14 @@
+import head from '../template/head'
+import secondary_header from '../template/secondary_header';
+import variable_selector from '../template/variable-selector';
+import footer from '../template/footer';
+import nav_footer from '../template/nav_footer';
+
+export default (config) => `
 <!doctype html>
 <html lang='en' class="width-100 height-100">
 <head>
-  {{> head }}
+  ${head(config)}
   <meta property="fb:app_id" content="187816851587993">
   <meta property="og:url" content="/">
   <meta property="og:type" content="article">
@@ -12,7 +19,7 @@
 
 <body class="width-100 height-100">
 
-  {{> secondary_header }}
+  ${secondary_header(config)}
     <div id="local-climate-maps-viewport" class="padding-horizontal d-flex d-flex-column">
 
       <div id="search-row" class="padding-horizontal d-flex-row flex-justify padding-top padding-bottom-half d-flex-justify" >
@@ -84,7 +91,7 @@
           <div id="filters-row" class="d-flex-row flex-justify padding-top padding-bottom d-flex-left" >
 
             <div id="variable-select-wrapper" class="rounded-choice-box padding-horizontal-half padding-vertical-half default-btn-height d-flex-center width-30">
-              {{> variable-selector }}
+              ${variable_selector(config)}
             </div>
 
             <a id="national-climate-maps-secretlink-forcharts" href="/local-climate-charts" class="d-none"></a>
@@ -139,8 +146,8 @@
       </div>
     </div>
 
-{{> nav_footer }}
-{{> footer }}
+${nav_footer(config)}
+${footer(config)}
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/Turf.js/5.1.6/turf.min.js" integrity="sha256-Nhtik+K3xORhs5S9o0qlol4eRNB9O5OyTOJqbLucPk8=" crossorigin="anonymous"></script>
 <script src="https://unpkg.com/terraformer@1.0.8/terraformer.js" integrity="sha384-+M797Pj3WZVCwMmLbOxAoaWYcKJo8NSxItmI48ytcLNeAnfn1d/IckFn31jEqrzP"
@@ -155,3 +162,4 @@
 
 </body>
 </html>
+`

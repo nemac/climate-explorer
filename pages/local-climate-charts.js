@@ -1,7 +1,15 @@
+import head from '../template/head'
+import secondary_header from '../template/secondary_header';
+import variable_selector from '../template/variable-selector';
+import footer from '../template/footer';
+import nav_footer from '../template/nav_footer';
+import chart_explainer from '../template/chart-explainer';
+
+export default (config) => `
 <!doctype html>
 <html lang='en' class="width-100 height-100">
 <head>
-  {{> head }}
+  ${head(config)}
   <meta property="fb:app_id" content="187816851587993">
   <meta property="og:url" content="/">
   <meta property="og:type" content="article">
@@ -13,7 +21,7 @@
 
 <body class="width-100 height-100">
 
-{{> secondary_header }}
+${secondary_header(config)}
 
 <div id="local-climate-charts-viewport" class="padding-horizontal d-flex d-flex-column">
 
@@ -68,7 +76,7 @@
       <div id="filters-row" class="d-flex-row flex-justify padding-top  d-flex-left">
 
         <div id="variable-select-wrapper" class="rounded-choice-box padding-left-half padding-vertical-half default-btn-height d-flex-center width-30">
-          {{> variable-selector }}
+          ${variable_selector(config)}
         </div>
         <span id="select-tip-holder">
               <span tabindex="100" data-value="select-tip" id="select-tip" class="fas fa-question padding-left-half select-tip" data-tippy-content="
@@ -214,14 +222,14 @@
   </div>
 
   <div tabindex="117" id="chart-info-row" class="d-flex-row flex-justify padding-bottom-half d-flex-left d-none">
-    {{> chart-explainer }}
+    ${chart_explainer(config)}
   </div>
 
 </div>
 </div>
 
-{{> nav_footer }}
-{{> footer }}
+${nav_footer(config)}
+${footer(config)}
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/core-js/2.6.11/core.min.js"
         integrity="sha512-TfdDRAa9DmMqSYW/UwWmezKavKBwQO1Ek/JKDTnh7dLdU3kAw31zUS2rtl6ulgvGJWkMEPaR5Heu5nA/Aqb49g==" crossorigin="anonymous"></script>
@@ -241,3 +249,4 @@
 
 </body>
 </html>
+`

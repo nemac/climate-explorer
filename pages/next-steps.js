@@ -1,12 +1,14 @@
-import footer from '../template/footer.js'
-
+import head from '../template/head'
+import secondary_header from '../template/secondary_header';
+import footer from '../template/footer';
+import nav_footer from '../template/nav_footer';
 
 export default (config)=>`
 
 <!doctype html>
 <html lang='en' class="width-100 height-100">
 <head>
-  {{> head }}
+  ${head(config)}
   <meta property="fb:app_id" content="187816851587993">
   <meta property="og:url" content="/">
   <meta property="og:type" content="article">
@@ -18,7 +20,7 @@ export default (config)=>`
 
 <body class="width-100 height-100">
 
-{{> secondary_header }}
+${secondary_header(config)}
 
 <div id="next-steps-viewport" class="padding-horizontal d-flex d-flex-column">
 
@@ -89,7 +91,7 @@ export default (config)=>`
   </div>
 </div>
 
-{{> nav_footer }}
+${nav_footer(config)}
 ${footer(config)}
 
 <script type="text/javascript" src="/js/next-steps.js"></script>

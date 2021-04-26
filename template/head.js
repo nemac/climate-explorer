@@ -1,3 +1,4 @@
+export default (config) => `
 <title>Climate Explorer</title>
 
 <meta charset="utf-8">
@@ -21,3 +22,4 @@
 <!--<script type="text/javascript" src="/js/ce.js"></script>-->
 <script type="text/javascript" src="/js/spinner.js"></script>
 
+`

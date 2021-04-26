@@ -1,7 +1,13 @@
+import head from '../template/head'
+import secondary_header from '../template/secondary_header';
+import footer from '../template/footer';
+import nav_footer from '../template/nav_footer';
+
+export default (config) => `
 <!doctype html>
 <html lang='en' class="width-100 height-100">
 <head>
-  {{> head }}
+  ${head(config)}
   <meta property="fb:app_id" content="187816851587993" />
   <meta property="og:url" content="/faq.php" />
   <meta property="og:type" content="article" />
@@ -13,7 +19,7 @@
 
 <body class="width-100 height-100">
 
-  {{> secondary_header }}
+  ${secondary_header(config)}
 
   <div id="about-viewport" class="padding-horizontal d-flex d-flex-column">
     <div id="about-text-row" class="padding-vertical width-100" >
@@ -270,8 +276,8 @@
   </div>
 
 
-  {{> nav_footer }}
-  {{> footer }}
+  ${nav_footer(config)}
+  ${footer(config)}
 
   <script src="https://unpkg.com/terraformer@1.0.8/terraformer.js" integrity="sha384-+M797Pj3WZVCwMmLbOxAoaWYcKJo8NSxItmI48ytcLNeAnfn1d/IckFn31jEqrzP"
   crossorigin="anonymous"></script>
@@ -281,3 +287,4 @@
   <script type="text/javascript" src="/js/secondary_header.js"></script>
 </body>
 </html>
+`

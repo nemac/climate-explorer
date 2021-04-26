@@ -1,3 +1,5 @@
+
+export default (config) => `
 <!-- BEGIN HEADER TEMPLATE -->
 
 <header id="secondary-header" class="flex-container  padding-default-half width-100 ">
@@ -75,3 +77,4 @@
     </span>
 </header>
 <!-- END HEADER TEMPLATE -->
+`

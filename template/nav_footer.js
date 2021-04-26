@@ -1,3 +1,7 @@
+import feedback from './feedack';
+
+export default (config) => `
+
 <!-- BEGIN NAV FOOTER TEMPLATE -->
 
 <div id="nav-footer" class="d-flex-row padding-horizontal padding-top-half padding-bottom d-flex d-flex-center width-100">
@@ -198,11 +202,11 @@
       </div>
 
     </div>
-
-      {{> feedack }}
+      ${feedback(config)}
   </div>
 </div>
 
 <script type="text/javascript" src="/js/nav_footer.js"></script>
 
 <!-- END NAV FOOTER TEMPLATE -->
+`

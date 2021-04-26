@@ -1,3 +1,4 @@
+export default (config) => `
 <div class="share-widget">
   <a href="#" class="share-trigger"><span class="icon icon-social"></span>Share</a>
   <ul>
@@ -10,3 +11,4 @@
     <input type="text" id="share_link" value="">
   </div>
 </div>
+`

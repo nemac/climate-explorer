@@ -1,3 +1,4 @@
+export default (config) => `
 <div id="more-info-description" class="rounded-description-box d-none" >
   <div class="more-caret d-flex-center">
     <span class="fas fa-angle-down"></span>
@@ -116,3 +117,4 @@
 
 
 </div>
+`
