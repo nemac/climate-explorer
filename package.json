@@ -53,6 +53,7 @@
     "jquery-ui-touch-punch": "^0.2.3",
     "nouislider": "^13.1.5",
     "popper.js": "^1.14.7",
+    "template-literals-cli": "^0.2.0",
     "terraformer-arcgis-parser": "^1.1.0"
   }
 }

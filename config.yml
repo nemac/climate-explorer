@@ -1,9 +1,7 @@
 #
 # This file is a centralized place to define variables which may be used in any HandleBars template file (.hbs).
 #
-google_analytics_id: 'UA-153103803-1'
-  short_label: ""
-                      # UA-119744751-1 old Climate Explorer Google Analytics Code
+google_analytics_id: 'UA-153103803-1' # UA-119744751-1 old Climate Explorer Google Analytics Code
 variables:
 - id: tmax
   short_label: "Avg Daily Max Temp (°F)"
@@ -14,7 +12,7 @@ variables:
         <br />
         Maximum temperature serves as one measure of comfort and safety for people and for the health of plants and animals. When maximum temperature exceeds particular thresholds, people can become ill and transportation and energy infrastructure may be stressed."
   group: "temperature"
-  area:
+  area: null
 - id: tmin
   short_label: "Avg Daily Min Temp (°F)"
   label: "Average Daily Min Temp"
@@ -24,7 +22,7 @@ variables:
         <br />
         Periods of low temperature give plants, animals, and people a chance to recover from daytime heat. When minimum temperatures aren’t sufficiently cool, plant and animal responses can trigger ecosystem changes and increased demand for energy can stress energy infrastructure."
   group: "temperature"
-  area:
+  area: null
 - id: days_tmax_gt_50f
   short_label: "Days w/ max > 50°F"
   label:  "Days per year with max above 50°F"
@@ -74,7 +72,7 @@ variables:
         <br />
         Outdoor workers and people who lack air conditioning may experience extreme discomfort or heat illness on hot days, especially if humidity is high and wind is light. Hot days also stress plants, animals, and infrastructure such as electric lines, roads, and rails. Increased demand for electricity to cool homes and businesses also stresses energy infrastructure on hot days."
   group: "temperature"
-  area:
+  area: null
 - id: days_tmax_gt_95f
   short_label: "Days w/ max > 95°F"
   label: "Days per year with max above 95°F"
@@ -84,7 +82,7 @@ variables:
         <br />
         Outdoor workers and people who lack air conditioning may experience extreme discomfort or heat illness on hot days, especially if humidity is high and wind is light. Hot days also stress plants, animals, and infrastructure such as electric lines, roads, and rails. Increased demand for electricity to cool homes and businesses also stresses energy infrastructure on hot days."
   group: "temperature"
-  area:
+  area: null
 - id: days_tmax_gt_100f
   short_label: "Days w/ max > 100°F"
   label: "Days per year with max above 100°F"
@@ -94,7 +92,7 @@ variables:
         <br />
         Outdoor workers and people who lack air conditioning may experience extreme discomfort or heat illness on hot days, especially if humidity is high and wind is light. Hot days also stress plants, animals, and infrastructure such as electric lines, roads, and rails. Increased demand for electricity to cool homes and businesses also stresses energy infrastructure on hot days."
   group: "temperature"
-  area:
+  area: null
 - id: days_tmax_gt_105f
   short_label: "Days w/ max > 105°F"
   label: "Days per year with max above 105°F"
@@ -104,7 +102,7 @@ variables:
         <br />
         Outdoor workers and people who lack air conditioning may experience extreme discomfort or heat illness on hot days, especially if humidity is high and wind is light. Hot days also stress plants, animals, and infrastructure such as electric lines, roads, and rails. Increased demand for electricity to cool homes and businesses also stresses energy infrastructure on hot days."
   group: "temperature"
-  area:
+  area: null
 - id: days_tmax_lt_32f
   short_label: "Days w/ max < 32°F"
   label: "Days per year with max below 32°F (Icing days)"
@@ -114,7 +112,7 @@ variables:
         <br />
         Days when the highest temperature doesn't rise above the freezing point of water are called “icing days.” The annual number of icing days tells us how much rest plants get from growing; with too few icing days, some plants do not perceive a “reset” signal to begin budding or blooming in the spring. The annual number of icing days can also help predict if populations of insects, such as tree-killing bark beetles, will survive the winter or not."
   group: "temperature"
-  area:
+  area: null
 - id: days_tmax_lt_50f
   short_label: ""
   label: "Days per year with max below 50°F"
@@ -137,7 +135,7 @@ variables:
     <br />
     A decrease in the number of days temperature drops below freezing promotes earlier spring snowmelt and runoff, with important consequences for managing water resources. Below-freezing temperatures can cause driving hazards, aircraft icing, and damage to infrastructure, yet ski resorts and other winter recreation businesses depend on sufficiently cold days to maintain snowpack. Some plants require a cumulative number of days below freezing before they can begin budding or blooming in the spring."
   group: "temperature"
-  area:
+  area: null
 - id: days_tmin_lt_minus_40f
   short_label: "Days w/ min < -40°F"
   label: "Days per year with min below -40°F"
@@ -176,7 +174,7 @@ variables:
         <br />
         When the lowest temperature of a 24-hour period doesn't dip below 80 or 90°F, plants, animals, and people don't have a chance to cool down. They can become stressed and susceptible to other negative health impacts. As the number of very warm nights increases, sensitive plants may not produce flowers or viable seeds."
   group: "temperature"
-  area:
+  area: null
 - id: days_tmin_gt_90f
   short_label: "Days w/ min > 90°F"
   label: "Days per year with min above 90°F"
@@ -186,7 +184,7 @@ variables:
         <br />
         When the lowest temperature of a 24-hour period doesn't dip below 80 or 90°F, plants, animals, and people don't have a chance to cool down. They can become stressed and susceptible to other negative health impacts. As the number of very warm nights increases, sensitive plants may not produce flowers or viable seeds."
   group: "temperature"
-  area:
+  area: null
 - id: hdd_65f
   label: "Heating Degree Days"
   description: "
@@ -195,7 +193,7 @@ variables:
         <br />
         Heating degree days measure how much (in degrees), and for how long (in days), outside air temperature is below 65°F. For example, on a day when the average outdoor temperature is 35°F, raising the indoor temperature to 65°F would require 30 degrees of heating multiplied by 1 day, or 30 heating degree days. Engineers and utility companies use a location's annual number of heating degree days as one input when estimating demand for energy in the cold season."
   group: "temperature_degree_days"
-  area:
+  area: null
 - id: cdd_65f
   label: "Cooling Degree Days"
   description: "
@@ -204,7 +202,7 @@ variables:
         <br />
         Cooling degree days measure how much (in degrees), and for how long (in days), outside air temperature is higher than 65°F. For example, on a day when the average outdoor temperature is 85°F, reducing the indoor temperature to 65°F would require 20 degrees of cooling multiplied by 1 day, or 20 cooling degree days. Engineers and utility companies use a location's annual number of cooling degree days as one input when estimating demand for energy in the warm season."
   group: "temperature_degree_days"
-  area:
+  area: null
 - id: gdd
   label: "Growing Degree Days"
   description: "
@@ -213,7 +211,7 @@ variables:
         <br />
         As growth occurs only when temperature exceeds a species' base temperature (for example, 50°F), the number of days times the number of degrees above the base indicates the duration and magnitude of growing conditions."
   group: "temperature_degree_days"
-  area:
+  area: null
 - id: gddmod
   label: "Modified Growing Degree Days"
   description: "
@@ -222,7 +220,7 @@ variables:
         <br />
         As corn development occurs only when temperature is above 50°F but below 86°F, the standard calculation for growing-degree days is modified to omit conditions outside this range. In future decades, regions where temperatures regularly exceed 86°F may be less successful in growing corn."
   group: "temperature_degree_days"
-  area:
+  area: null
 - id: gdd_32f
   label: "Thawing Degree Days"
   description: "
@@ -255,7 +253,7 @@ variables:
         <br /><br />
         The graph for this variable shows total precipitation in inches. To help users perceive trends in this variable over time however, the map shows precipitation as the percentage change from the long-term average (1961 to 1990)."
   group: "precipitation"
-  area:
+  area: null
 - id: days_dry_days
   short_label: ""
   label: "Dry Days"
@@ -265,7 +263,7 @@ variables:
         <br />
         The graph for this variable shows counts of Dry Days. To help users perceive trends in numbers of dry days over time however, the map shows dry days as the projected annual number of dry days for each decade minus the 1961-1990 average. Positive values indicate more dry days while negative values indicate fewer dry days."
   group: "temperature"
-  area:
+  area: null
 - id: days_pcpn_gt_0_25in
   short_label: ""
   label: "Days per year with more than 0.25in precipitation"
@@ -282,7 +280,7 @@ variables:
         <br >
         Comparing the number of days with heavy precipitation at a single location over time can reveal a trend of increasing or decreasing flood risk."
   group: "precipitation"
-  area:
+  area: null
 - id: days_pcpn_gt_2in
   short_label: "Days w/ > 2 in Precipitation"
   label: "Days per year with more than 2in precip"
@@ -292,7 +290,7 @@ variables:
         <br />
         Comparing the number of days with heavy precipitation at a single location over time can reveal a trend of increasing or decreasing flood risk."
   group: "precipitation"
-  area:
+  area: null
 - id: days_pcpn_gt_3in
   short_label: "Days w/ > 3 in Precipitation"
   label: "Days per year with more than 3in precip"
@@ -302,7 +300,7 @@ variables:
         <br />
         Comparing the number of days with heavy precipitation at a single location over time can reveal a trend of increasing or decreasing flood risk."
   group: "precipitation"
-  area:
+  area: null
 - id: days_pcpn_gt_4in
   short_label: "Days w/ > 4 in Precipitation"
   label: "Days per year with more than 4in precip"
@@ -312,7 +310,7 @@ variables:
         <br />
         Comparing the number of days with heavy precipitation at a single location over time can reveal a trend of increasing or decreasing flood risk."
   group: "precipitation"
-  area:
+  area: null
 - id: days_pcpn_gt_5in
   short_label: "Days w/ > 5 in Precipitation"
   label: "Days per year with more than 5in precip"

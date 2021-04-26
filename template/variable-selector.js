@@ -1,11 +1,11 @@
 const get_option = variable => `
-            <li tabindex="0" data-value="${variable.id}" class="default-select-option with-tip variable-option-item float-left  ${area === 'ak-only' ? "opt-ak" : (area==='island-only'?"opt-island":"") }">
-          <span class="variable-option-text float-left">${variable.short_label || variable.label}</span>
-          <span tabindex="0" data-value="${variable.id}" id="${variable.id}-tooltip" class="fas fa-question-circle padding-horizontal-half variable-option-tooltip float-left" data-tippy-content="
-              <strong>${variable.label}</strong><hr/>
-              ${variable.description}">
-            </span>
-        </li>
+  <li tabindex="0" data-value="${variable.id}" class="default-select-option with-tip variable-option-item float-left  ${variable.area === 'ak-only' ? "opt-ak" : (variable.area==='island-only'?"opt-island":"") }">
+    <span class="variable-option-text float-left">${variable.short_label || variable.label}</span>
+    <span tabindex="0" data-value="${variable.id}" id="${variable.id}-tooltip" class="fas fa-question-circle padding-horizontal-half variable-option-tooltip float-left" data-tippy-content="
+        <strong>${variable.label}</strong><hr/>
+        ${variable.description}">
+      </span>
+  </li>
 `;
 
 

@@ -1,3 +1,4 @@
+export default (config)=>`
 <div id="desktop-warning">
   <p>The Climate Explorer is optimized for desktop use. Please visit the site on a desktop computer.</p>
 </div>
@@ -32,7 +33,7 @@
 
 
 <!-- Global site tag (gtag.js) - Google Analytics -->
-<script async src="https://www.googletagmanager.com/gtag/js?id={{{google_analytics_id}}}"></script>
+<script async src="https://www.googletagmanager.com/gtag/js?id=${config.google_analytics_id}"></script>
 
 <script>
   var s = document.createElement("script");
@@ -48,9 +49,10 @@
   function gtag(){dataLayer.push(arguments);}
   gtag('js', new Date());
 
-  gtag('config', '{{{google_analytics_id}}}',{
+  gtag('config', '${config.google_analytics_id}',{
       'custom_map': {
         'dimension1': 'uuid',
       }
      });
 </script>
+`

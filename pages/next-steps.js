@@ -1,3 +1,8 @@
+import footer from '../template/footer.js'
+
+
+export default (config)=>`
+
 <!doctype html>
 <html lang='en' class="width-100 height-100">
 <head>
@@ -85,10 +90,11 @@
 </div>
 
 {{> nav_footer }}
-{{> footer }}
+${footer(config)}
 
 <script type="text/javascript" src="/js/next-steps.js"></script>
 <script type="text/javascript" src="/js/ce3-ui-components.js"></script>
 <script type="text/javascript" src="/js/secondary_header.js"></script>
 </body>
 </html>
+`
