@@ -35,14 +35,13 @@ function reEnableSelectNewItems(uniqueSelector) {
       $styledSelect.data('value', $(this).data('value'))
       $styledSelect.data('link', $(this).data('link'))
       $styledSelect.data('nav', $(this).data('nav'))
-      let icon;
+      let icon = '';
       // option item has icon add it
       let iconAttr = $(this).data('icon');
-      if (typeof iconAttr !== typeof undefined && iconAttr !== false) {
+      
+      if (!!iconAttr) {
         // Element has this attribute
          icon = `<i class="${iconAttr}"></i>`;
-      } else {
-         icon = '';
       }
 
       $styledSelect.prepend(icon);
@@ -250,7 +249,7 @@ function enableCustomSelect(uniqueSelector) {
     // ga event action, category, label
     googleAnalyticsEvent('click', 'listitem', $(this).text());
 
-    $styledSelect.prepend(icon);
+    // $styledSelect.prepend(icon);
     $list.hide();
     // trigger custom event so we know the user changed or selected an item
     $styledSelect.trigger('cs-changed');
@@ -647,7 +646,7 @@ function updateValidVariable() {
   const countyCE = state['county'];
   const is_conus_area = state['is_conus_area'];
   const is_island_area = state['is_island_area'];
-  const is_ak_area = state['is_ak_area'];
+  const is_alaska_area = state['is_alaska_area'];
   if (cityStateCE) {
     if (!is_conus_area) {
       $('#default-in').html('—');
@@ -686,10 +685,13 @@ function updateValidVariable() {
       // $('.opt-only-ak').addClass('default-select-option-disabled');
       $('.not-ak-last').addClass('last-variable-space');
     }
-    $('.opt-not-ak').toggleClass('d-none', is_ak_area);
-    $('.opt-only-ak').removeClass('d-none', !is_ak_area);
-    $('.opt-not-island').toggleClass('d-none', is_island_area);
-    $('.opt-only-island').removeClass('d-none', !is_island_area);
+
+    $('body').toggleClass('is-ak-area', is_alaska_area).toggleClass('is-island-area', is_island_area);
+
+    // $('.opt-not-ak').toggleClass('d-none', is_ak_area);
+    // $('.opt-only-ak').removeClass('d-none', !is_ak_area);
+    // $('.opt-not-island').toggleClass('d-none', is_island_area);
+    // $('.opt-only-island').removeClass('d-none', !is_island_area);
   }
 }
 

@@ -2275,3 +2275,13 @@ input.input-inner-default:focus  {
   }
 
 }
+
+// Hide based on area type as set by body class
+
+body:not(.is-ak-area) .opt-only-ak, body:not(.is-island-area) .opt-only-island {
+  display: none !important;
+}
+
+body.is-ak-area .opt-not-ak, body.is-island-area .opt-not-island {
+  display: none !important;
+}

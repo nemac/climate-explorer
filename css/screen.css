@@ -23743,3 +23743,13 @@ https://raw.github.com/shagstrom/split-pane/master/LICENSE
     border-radius: 5px;
   }
 }
+
+/* line 2281, scss/screen.scss */
+body:not(.is-ak-area) .opt-only-ak, body:not(.is-island-area) .opt-only-island {
+  display: none !important;
+}
+
+/* line 2285, scss/screen.scss */
+body.is-ak-area .opt-not-ak, body.is-island-area .opt-not-island {
+  display: none !important;
+}

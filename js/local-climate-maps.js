@@ -596,7 +596,7 @@ $(function () {
       if (  isvalid < 0 ) {
         const val = 'annual';
         $(window.precipitationScenariosMap).scenarioComparisonMap({ season: val });
-        const target = $('.btn-selector .btn-annual');
+        const target = $('.btn-selector.btn-annual');
         // toggle button visual state
         toggleButton(target);
 

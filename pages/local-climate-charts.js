@@ -236,7 +236,7 @@ ${footer(config)}
 <script src="https://cdnjs.cloudflare.com/ajax/libs/plotly.js/1.58.4/plotly-basic.min.js"
         integrity="sha512-7S1p+6A2VVIWu+EevZqeqXWos1Tn+mroZxpkZ9THWipecJkL7TLg2myv5cIAShu9j3+fjHyCvEh/d7BKegMY1g==" crossorigin="anonymous"></script>
 <script>
-  window.climate_by_location_config = {areas_json_url: '/data/ce_areas.json'}
+  window.climate_by_location_config = {areas_json_url: 'https://crt-climate-explorer.nemac.org/data/ce_areas.json'}
 </script>
 <script type="text/javascript" src="/vendor/climate_by_location.climate_explorer.bundle.js"></script>
 <script src="https://unpkg.com/terraformer@1.0.8/terraformer.js" integrity="sha384-+M797Pj3WZVCwMmLbOxAoaWYcKJo8NSxItmI48ytcLNeAnfn1d/IckFn31jEqrzP"

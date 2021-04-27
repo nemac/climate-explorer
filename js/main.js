@@ -25,7 +25,7 @@ const url_param_names = {
 
 export default class App {
   constructor() {
-    this.data_base_url = '/data/';
+    this.data_base_url = 'https://crt-climate-explorer.nemac.org/data/';
     this._state = {};
     //if(top != this) {
     //  window.open(location.href, '_top');

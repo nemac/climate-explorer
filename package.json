@@ -5,10 +5,10 @@
   "main": "index.html",
   "scripts": {
     "build": "run-p build:*",
-    "build:img": "rsync -r img/ dist/img/",
+    "build:img": "mkdir -p dist/img && rsync -r img/ dist/img/",
     "build:js": "babel js --out-dir dist/js",
     "build:vendor": "mkdir -p dist/vendor && rsync -r vendor/ dist/vendor/ && rsync node_modules/jquery-ui-touch-punch/jquery.ui.touch-punch.min.js dist/vendor/ dist/vendor/ && rsync --copy-links node_modules/climate-by-location/dist/climate_by_location.climate_explorer.bundle.js dist/vendor/",
-    "build:html": "mkdir -p dist; npx template-literals --config config.json --outdir dist/ pages/*.js && mv dist/$f.hbs dist/$f.html && mkdir -p dist/${f} && rsync dist/${f}.html dist/${f}/index.html; done;",
+    "build:html": "mkdir -p dist && npx template-literals --config config.yml --indexes --outdir dist/ pages/*.js",
     "build:css": "node-sass -o css/ scss/screen.scss --include-path node_modules/compass-mixins/lib/ --output-style expanded --source-comments && mkdir -p dist/css dist/fonts && rsync -r fonts dist/ && rsync -r css dist/",
     "watch:css": "node-sass -o css/ scss/screen.scss --include-path node_modules/compass-mixins/lib/ --output-style expanded --source-comments -wr",
     "deploy:fli": "aws s3 sync --delete --no-follow-symlinks dist/ s3://climate-explorer/ &&  aws cloudfront create-invalidation --distribution-id E34SU5ZJ0O3LC0 --paths '/*'",
