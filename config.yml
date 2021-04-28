@@ -114,13 +114,13 @@ variables:
   group: "temperature"
   area: null
 - id: days_tmax_lt_50f
-  short_label: ""
+  short_label: "Days w/ max < 50°F"
   label: "Days per year with max below 50°F"
   description: ""
   group: "temperature"
   area: island-only
 - id: days_tmax_lt_65f
-  short_label: ""
+  short_label: "Days w/ max < 65°F"
   label:  "Days per year with max below 65°F"
   description: ""
   group: "temperature"
@@ -154,13 +154,13 @@ variables:
   group: "temperature"
   area: ak-only
 - id: days_tmin_lt_65f
-  short_label: ""
+  short_label: "Days w/ min < 65°F"
   label: "Days per year with min below 65°F"
   description: ""
   group: "temperature"
   area: island-only
 - id: days_tmin_gt_75f
-  short_label: ""
+  short_label: "Days w/ min > 75°F"
   label: "Days per year with min above 75°F"
   description: ""
   group: "temperature"
@@ -255,7 +255,7 @@ variables:
   group: "precipitation"
   area: null
 - id: days_dry_days
-  short_label: ""
+  short_label: "Dry Days"
   label: "Dry Days"
   description: "
            The number of dry days per year—days when precipitation is less than 0.01 inches—gives a sense of the portion of the year when no moisture is being added to the environment. Changes in the number of dry days can indicate a tendency toward drier or wetter conditions.
@@ -265,7 +265,7 @@ variables:
   group: "temperature"
   area: null
 - id: days_pcpn_gt_0_25in
-  short_label: ""
+  short_label: "Days w/ > 0.25 in Precipitation"
   label: "Days per year with more than 0.25in precipitation"
   description: "
            Count of days per year on which measurable rain or snow (more than one-quarter inch of liquid water) falls."
