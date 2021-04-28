@@ -11,20 +11,20 @@ const get_option = variable => `
 
 export default (config) =>`
 <div class="select variable-select">
-  <div tabindex="8" id="variable-select-vis" class="select-styled" data-rel="tmax">Avg Daily Max Temp (°F)</div>
+  <div tabindex="8" id="variable-select-vis" class="select-styled" data-value="tmax">Avg Daily Max Temp (°F)</div>
   <ul class="select-options">
-    <div icon="fas fa-temperature-high select-icon" class="default-select-option-group">
+    <div data-icon="fas fa-temperature-high select-icon" class="default-select-option-group">
       <i class="fas fa-temperature-high select-icon"></i>Temperature
     </div>
     ${config.variables.filter(a=>a.group==="temperature").map(get_option).join('')}
 
-    <div icon="fas fa-cloud-rain select-icon" class="default-select-option-group">
+    <div data-icon="fas fa-cloud-rain select-icon" class="default-select-option-group">
       <i class="fas fa-cloud-rain select-icon"></i>Precipitation
     </div>
         
     ${config.variables.filter(a=>a.group==="precipitation").map(get_option).join('')}
 
-    <div icon="fas fa-bacon select-icon" class="default-select-option-group">
+    <div data-icon="fas fa-bacon select-icon" class="default-select-option-group">
       <i class="fas fa-bacon select-icon"></i>Other
     </div>
 

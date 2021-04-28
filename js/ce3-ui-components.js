@@ -1,4 +1,3 @@
-
 //  when we get stations in the map extent
 // the addition of the new stations removes existing click events
 // so we need to re add them
@@ -14,84 +13,54 @@ function reEnableSelectNewItems(uniqueSelector) {
   const $listItems = $(`.select.${uniqueSelector} ul`).children('li[role="option"]');
 
   // enable click for options
-  $listItems.keyup(function (e) {
-    if (e.keyCode === 13) {
-      // check if disabled exit if it is
-      if ($(this).hasClass('default-select-option-disabled')) {
-        return null
-      }
 
-      recreateToolTip(this);
+  $listItems.on('click keyup keydown', ((e) => {
+        // suppress scrolling on spacebar
+        if (e.type === 'keydown' && e.keyCode === 32) {
+          e.preventDefault();
+          return;
+        }
+        // trigger navigation
+        const value = $(e.currentTarget).data('value');
+        if (e.type === 'click' || (e.type === 'keyup' && (e.keyCode === 32 || e.keyCode === 13))) {
+          // check if disabled exit if it is
+          if ($(e.currentTarget).hasClass('default-select-option-disabled')) {
+            return null
+          }
 
-      e.stopPropagation();
-      // option item has href make it a element so links work
-      const hrefAttr = $(this).attr('href');
-      if (typeof hrefAttr !== typeof undefined && hrefAttr !== false) {
-        $styledSelect.html(`<a href="${hrefAttr}" data-value="${$(this).data('value')}">${$(this).text().trim()}</a>`).removeClass('active');
-      } else {
-        $styledSelect.text($(this).text().trim()).removeClass('active');
-      }
+          recreateToolTip(e.currentTarget);
 
-      $styledSelect.data('value', $(this).data('value'))
-      $styledSelect.data('link', $(this).data('link'))
-      $styledSelect.data('nav', $(this).data('nav'))
-      let icon = '';
-      // option item has icon add it
-      let iconAttr = $(this).data('icon');
-      
-      if (!!iconAttr) {
-        // Element has this attribute
-         icon = `<i class="${iconAttr}"></i>`;
-      }
+          e.stopPropagation();
+          // option item has href make it a element so links work
+          if (uniqueSelector !== 'download-select') {
+            const hrefAttr = $(e.currentTarget).attr('href');
+            if (typeof hrefAttr !== typeof undefined && hrefAttr !== false) {
+              $styledSelect.html(`<a href="${hrefAttr}" data-value="${value}">${$(e.currentTarget).text().trim()}</a>`).removeClass('active');
+            } else {
+              $styledSelect.text($(e.currentTarget).text().trim()).removeClass('active');
+            }
+          }
 
-      $styledSelect.prepend(icon);
-      $list.hide();
-      // trigger custom event so we know the user changed or selected an item
-      $styledSelect.trigger('cs-changed');
-    }
-  });
+          $styledSelect.data('value', value)
+          $styledSelect.data('link', $(e.currentTarget).data('link'))
+          $styledSelect.data('nav', $(e.currentTarget).data('nav'))
+          // option item has icon add it
+          let icon = '';
+          if (uniqueSelector !== 'download-select') {
+            const iconAttr = $(e.currentTarget).data('icon');
+            if (!!iconAttr) {
+              // Element has e.currentTarget attribute
+              icon = `<i class="${iconAttr}"></i>`;
+            }
+          }
+          $styledSelect.prepend(icon);
+          $list.hide();
+          // trigger custom event so we know the user changed or selected an item
+          $styledSelect.trigger('cs-changed');
 
-  // enable key down for options
-  $listItems.click(function (e) {
-    let icon;
-// check if disabled exit if it is
-    if ($(this).hasClass('default-select-option-disabled')) {
-      return null
-    }
-
-    recreateToolTip(this);
-
-    e.stopPropagation();
-    // option item has href make it a element so links work
-    if (uniqueSelector !== 'download-select') {
-      const hrefAttr = $(this).attr('href');
-      if (typeof hrefAttr !== typeof undefined && hrefAttr !== false) {
-        $styledSelect.html(`<a href="${hrefAttr}" data-value="${$(this).data('value')}">${$(this).text().trim()}</a>`).removeClass('active');
-      } else {
-        $styledSelect.text($(this).text().trim()).removeClass('active');
-      }
-    }
-
-    $styledSelect.data('value', $(this).data('value'))
-    $styledSelect.data('link', $(this).data('link'))
-    $styledSelect.data('nav', $(this).data('nav'))
-
-    // option item has icon add it
-    if (uniqueSelector !== 'download-select') {
-      const iconAttr = $(this).data('icon');
-      if (typeof iconAttr !== typeof undefined && iconAttr !== false) {
-        // Element has this attribute
-        icon = `<i class="${iconAttr}"></i>`;
-      } else {
-        icon = '';
-      }
-    }
-
-    $styledSelect.prepend(icon);
-    $list.hide();
-    // trigger custom event so we know the user changed or selected an item
-    $styledSelect.trigger('cs-changed');
-  });
+        }
+      }).bind(this)
+  );
 
   const $listTips = $(`.select.${uniqueSelector} ul`).children('span');
 
@@ -102,11 +71,11 @@ function reEnableSelectNewItems(uniqueSelector) {
     }
     e.stopPropagation();
 
-    const relAttr = $(this).data('value');
+    const value = $(this).data('value');
     // ga event action, category, label
-    googleAnalyticsEvent('click', 'dropdown-tip', relAttr);
+    googleAnalyticsEvent('click', 'dropdown-tip', value);
 
-    const testItem = $(`li[data-value='${relAttr}']`);
+    const testItem = $(`li[data-value='${value}']`);
     $(testItem).click();
   });
 
@@ -119,14 +88,15 @@ function reEnableSelectNewItems(uniqueSelector) {
       }
       e.stopPropagation();
 
-      const relAttr = $(this).data('value');
+      const value = $(this).data('value');
       // ga event action, category, label
-      googleAnalyticsEvent('click-tab', 'dropdown-tip', relAttr);
+      googleAnalyticsEvent('click-tab', 'dropdown-tip', value);
 
-      const testItem = $(`li[data-value='${relAttr}']`);
+      const testItem = $(`li[data-value='${value}']`);
       $(testItem).click();
     }
   });
+
 }
 
 // function enables custom selection dropdown from a li element
@@ -188,7 +158,7 @@ function enableCustomSelect(uniqueSelector) {
 
       e.stopPropagation();
       // option item has href make it a element so links work
-      if (uniqueSelector !== 'download-select') {
+      if (uniqueSelector !== 'download-select') { // do not update label text for download-select
         const hrefAttr = $(this).attr('href');
         if (typeof hrefAttr !== typeof undefined && hrefAttr !== false) {
           $styledSelect.html(`<a href="${hrefAttr}" data-value="${$(this).data('value')}">${$(this).text().trim()}</a>`).removeClass('active');
@@ -263,11 +233,11 @@ function enableCustomSelect(uniqueSelector) {
     }
     e.stopPropagation();
 
-    const relAttr = $(this).data('value');
-    const testItem = $(`li[data-value='${relAttr}']`);
+    const value = $(this).data('value');
+    const testItem = $(`li[data-value='${value}']`);
 
     // ga event action, category, label
-    googleAnalyticsEvent('click', 'select-list', relAttr);
+    googleAnalyticsEvent('click', 'select-list', value);
 
     $(testItem).click();
   });
@@ -281,18 +251,18 @@ function enableCustomSelect(uniqueSelector) {
       }
       e.stopPropagation();
 
-      const relAttr = $(this).data('value');
-      const testItem = $(`li[data-value='${relAttr}']`);
+      const value = $(this).data('value');
+      const testItem = $(`li[data-value='${value}']`);
 
       // ga event action, category, label
-      googleAnalyticsEvent('click-tab', 'select-list', relAttr);
+      googleAnalyticsEvent('click-tab', 'select-list', value);
 
       $(testItem).click();
     }
   });
 
   // hide dropdown when user clicks anywhere outside of selected area
-  $(document).click(function () {
+  $(document).one('click', function () {
     $styledSelect.removeClass('active');
     $list.hide();
   });
@@ -344,6 +314,7 @@ function setSelectFromButton(target) {
   $(`#${selector}`).text(innerText);
   $(`#${selector}`).data('value', val);
 }
+
 //
 // // handles click of map/char choice button.
 // // requires the html element has a custom attributes:
@@ -647,6 +618,9 @@ function updateValidVariable() {
   const is_conus_area = state['is_conus_area'];
   const is_island_area = state['is_island_area'];
   const is_alaska_area = state['is_alaska_area'];
+
+  $('body').toggleClass('is-ak-area', is_alaska_area).toggleClass('is-island-area', is_island_area);
+
   if (cityStateCE) {
     if (!is_conus_area) {
       $('#default-in').html('—');
@@ -686,8 +660,13 @@ function updateValidVariable() {
       $('.not-ak-last').addClass('last-variable-space');
     }
 
-    $('body').toggleClass('is-ak-area', is_alaska_area).toggleClass('is-island-area', is_island_area);
 
+    if (!!state['variable']) {
+      const selected_list_item = $(`.variable-select li[data-value="${state["variable"]}"]:visible`);
+      if (!!selected_list_item) {
+        $(`.select.variable-select div.select-styled`).text(selected_list_item.text().trim()).removeClass('active');
+      }
+    }
     // $('.opt-not-ak').toggleClass('d-none', is_ak_area);
     // $('.opt-only-ak').removeClass('d-none', !is_ak_area);
     // $('.opt-not-island').toggleClass('d-none', is_island_area);

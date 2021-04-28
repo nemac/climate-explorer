@@ -50,19 +50,6 @@ export default class App {
       }
     });
 
-    $('[data-page]').on('click keyup keydown', function (e) {
-      // suppress scrolling on spacebar
-      if (e.type === 'keydown' && e.keyCode === 32) {
-        e.preventDefault();
-        return;
-      }
-      // trigger navigation
-      if (e.type === 'click' || (e.type === 'keyup' && (e.keyCode === 32 || e.keyCode === 13))) {
-        window.app.update({page: $(e.currentTarget).data('page')});
-      }
-    });
-
-
     $('#clear-location').on('click keyup keydown', function (e) {
       // suppress scrolling on spacebar
       if (e.type === 'keydown' && e.keyCode === 32) {

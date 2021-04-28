@@ -37,7 +37,7 @@ $(function () {
   let mapZoom = state['zoom'] || 9;
   let lat = state['lat'];
   let lon = state['lon'];
-  let variable = state['id'] || 'tmax';
+  let variable = state['variable'] || 'tmax';
   let city = state['city'];
   let county = state['county'];
   let mapcenter = [lon, lat];
