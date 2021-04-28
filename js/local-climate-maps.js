@@ -680,6 +680,7 @@ $(function () {
   if (typeof window.precipitationScenariosMap === 'undefined') {
     $('#temperature-map').spinner();
     const variable = state['variable'] || 'tmax';
+
     window.precipitationScenariosMap = $('#temperature-map').scenarioComparisonMap({
       variable: 'tmax',
       season: 'annual',
@@ -713,29 +714,17 @@ $(function () {
         const messageElem = document.getElementById('map-message');
         if (messageElem) {
           if (!options.isCenterConus) {
-              const selector = 'local-climate-charts';
-              const nav = 'local-climate-charts';
-              const selectorAddOn = '-nav-footer';
-
-              // remove existing nav search url parameters
-              // otherwise we use the first one which is most likely the wrong page
-              const searchParams = removeUrlParam('nav')
-
-              // get the invisible link just outside the element node tree
-              // if inside we have issues will bubbling propagation
-              const link = document.querySelector(`#${selector}-secretlink${selectorAddOn}`);
-
-              // set the url and search params
-              const url = `${$(link).attr('href')}/${searchParams}&nav=${nav}`
-
+            
               // get map parent element - which provides the correct dimensions for the map
               const rect = document.getElementById('map-wrap').getBoundingClientRect();
+              
               // messageElem.style.left = `${(rect.right - rect.left)/3}px`;
               // messageElem.style.top = `-${((rect.bottom - rect.top)/2)}px`;
               messageElem.style.left = `${(rect.right - rect.left)/3}px`;
               messageElem.style.top = `-${((rect.bottom - rect.top)-6)}px`;
               if (!isHawaii) {
-                messageElem.innerHTML = `The location on the map is outside the contiguous United States. Currently, there is no climate map data available for this location. If you are looking for climate information about this location, refer to the <a class="warning-link" href="${url}">local charts</a> page.`
+                //refer use to click chart button instead of link in message
+                messageElem.innerHTML = `The location on the map is outside the contiguous United States. Currently, there is no climate map data available for this location. If you are looking for climate information about this location, refer to the Chart tab.`
               } else {
                 messageElem.innerHTML = `The location on the map is outside the contiguous United States. Currently, there is no climate map data available for this location.`
               }
