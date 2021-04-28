@@ -143,7 +143,7 @@ $(function () {
       // change select dropdowns for responsive mode
       setSelectFromButton(target);
 
-      handleChartMapClick(target);
+      //handleChartMapClick(target);
 
       // ga event action, category, label
       googleAnalyticsEvent('click', 'chartmap', target);

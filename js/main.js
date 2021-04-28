@@ -99,6 +99,7 @@ export default class App {
 
   // pass the mutated part of the state
   update(state) {
+
     const old_state = this._state;
     if (!('page' in old_state)) {
       old_state.page = window.location.pathname.replace(/\//g, '') || null;
