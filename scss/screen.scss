@@ -2285,3 +2285,7 @@ body:not(.is-ak-area) .opt-only-ak, body:not(.is-island-area) .opt-only-island {
 body.is-ak-area .opt-not-ak, body.is-island-area .opt-not-island {
   display: none !important;
 }
+
+#chart {
+  width: 100%;
+}

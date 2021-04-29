@@ -1,0 +1,19 @@
+{
+  "name": "high-tide-flooding-widget",
+  "version": "1.0.0",
+  "description": "This widget displays a timeline of high-tide flooding with historical observations from 1950-2016, and modeled projections from 2000-2100. The data are from Billy Sweet at NOAA; see also Sweet and Park (2014).",
+  "main": "tidalstationswidget.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/nemac/high-tide-flooding-widget.git"
+  },
+  "author": "UNCA's NEMAC",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/nemac/high-tide-flooding-widget/issues"
+  },
+  "homepage": "https://github.com/nemac/high-tide-flooding-widget#readme"
+}

@@ -154,7 +154,8 @@ export default (config) => `
 
     <div id="stations-graph-row" class="padding-vertical width-100 height-100" >
       <div id="stations-graph-wrap" class="width-100 height-100 d-flex-row">
-        <div id="tidal-chart" class="tidal-chart d-flex-center width-100"></div>
+        <div id="tidal-chart" class="tidal-chart d-flex-center width-100">
+        </div>
       </div>
     </div>
 
@@ -187,9 +188,13 @@ export default (config) => `
     <script src="https://unpkg.com/@esri/arcgis-to-geojson-utils"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Turf.js/5.1.6/turf.min.js" integrity="sha256-Nhtik+K3xORhs5S9o0qlol4eRNB9O5OyTOJqbLucPk8=" crossorigin="anonymous"></script>
     <script type="text/javascript" src="/js/stationsMap.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.1/Chart.bundle.min.js" integrity="sha256-N4u5BjTLNwmGul6RgLoESPNqDFVUibVuOYhP4gJgrew=" crossorigin="anonymous"></script>
+    <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
     <script type="text/javascript" src="/js/stationAnnualGraph.js"></script>
-    <script type="text/javascript" src="/vendor/tidal/tidalstationswidget.js"></script>
+
+    <!-- <script type="text/javascript" src="/vendor/tidal/tidalstationswidget.js"></script> -->
+    
+    <script type="text/javascript" src="/vendor/high-tide-flooding-widget/tidalstationswidget.js"></script>
+
     <script src="https://unpkg.com/terraformer@1.0.8/terraformer.js" integrity="sha384-+M797Pj3WZVCwMmLbOxAoaWYcKJo8NSxItmI48ytcLNeAnfn1d/IckFn31jEqrzP"
     crossorigin="anonymous"></script>
     <script src="https://unpkg.com/terraformer-arcgis-parser@1.0.5/terraformer-arcgis-parser.js"

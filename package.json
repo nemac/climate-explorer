@@ -7,7 +7,7 @@
     "build": "run-p build:*",
     "build:img": "mkdir -p dist/img && rsync -r img/ dist/img/",
     "build:js": "babel js --out-dir dist/js",
-    "build:vendor": "mkdir -p dist/vendor && rsync -r vendor/ dist/vendor/ && rsync node_modules/jquery-ui-touch-punch/jquery.ui.touch-punch.min.js dist/vendor/ dist/vendor/ && rsync --copy-links node_modules/climate-by-location/dist/climate_by_location.climate_explorer.bundle.js dist/vendor/",
+    "build:vendor": "mkdir -p dist/vendor && rsync -r vendor/ dist/vendor/ && rsync -r node_modules/high-tide-flooding-widget vendor && rsync node_modules/jquery-ui-touch-punch/jquery.ui.touch-punch.min.js dist/vendor/ dist/vendor/ && rsync --copy-links node_modules/climate-by-location/dist/climate_by_location.climate_explorer.bundle.js dist/vendor/",
     "build:html": "mkdir -p dist && npx template-literals --config config.yml --indexes --outdir dist/ pages/*.js",
     "build:css": "node-sass -o css/ scss/screen.scss --include-path node_modules/compass-mixins/lib/ --output-style expanded --source-comments && mkdir -p dist/css dist/fonts && rsync -r fonts dist/ && rsync -r css dist/",
     "watch:css": "node-sass -o css/ scss/screen.scss --include-path node_modules/compass-mixins/lib/ --output-style expanded --source-comments -wr",
@@ -50,6 +50,7 @@
   "dependencies": {
     "climate-by-location": "github:nemac/climate-by-location#3.1.0",
     "formstone": "^1.4.13-1",
+    "high-tide-flooding-widget": "github:nemac/high-tide-flooding-widget",
     "jquery-ui-touch-punch": "^0.2.3",
     "nouislider": "^13.1.5",
     "popper.js": "^1.14.7",
