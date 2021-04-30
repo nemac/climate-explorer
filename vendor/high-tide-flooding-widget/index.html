@@ -195,11 +195,17 @@
         $( "#tidal-chart" ).tidalstationwidget();
       });
 
+      var zoomed = false;
+
       $('#station').change(function () {
         $( "#tidal-chart" ).tidalstationwidget({station: $('#station').val()})
+        zoomed = false;
+
+        $('#zoom-btn').css({"background-color": "#c9302c", "border-color": "#ac2925"})
+
       });
 
-      var zoomed = false;
+      
       $('#zoom-btn').click(function(){
         $( "#tidal-chart" ).tidalstationwidget('zoomToggle');
         zoomed = !zoomed;
