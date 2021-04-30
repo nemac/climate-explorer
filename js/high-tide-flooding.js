@@ -181,7 +181,7 @@ $(function () {
     // update graphs with new station id and station name
     $("#tidal-chart").tidalstationwidget({
       station: stations.tidalStationId,
-      data_url: '/vendor/high-tide-flooding-widget/tidal_data.json', // defaults to tidal_data.json
+      data_url: '../vendor/high-tide-flooding-widget/tidal_data.json', // defaults to tidal_data.json
       responsive: true // set to false to disable ChartJS responsive sizing.
     });
 

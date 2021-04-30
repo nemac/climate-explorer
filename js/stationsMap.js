@@ -98,7 +98,7 @@
       // Map layers
       dailyStationsLayerURL: "/data/stations_whitelist.json",
       thresholdStationsLayerURL: "/data/stations_whitelist.json",
-      tidalStationsLayerURL: "/vendor/high-tide-flooding-widget/tidal_stations.json",
+      tidalStationsLayerURL: "../vendor/high-tide-flooding-widget/tidal_stations.json",
       dailyStationsDataURL: "https://data.rcc-acis.org/StnData",
       thresholdStationsDataURL: "https://data.rcc-acis.org/StnData",
       // Controls debug output

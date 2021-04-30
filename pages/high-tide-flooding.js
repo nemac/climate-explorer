@@ -193,7 +193,7 @@ export default (config) => `
 
     <!-- <script type="text/javascript" src="/vendor/tidal/tidalstationswidget.js"></script> -->
     
-    <script type="text/javascript" src="/vendor/high-tide-flooding-widget/tidalstationswidget.js"></script>
+    <script type="text/javascript" src="../vendor/high-tide-flooding-widget/tidalstationswidget.js"></script>
 
     <script src="https://unpkg.com/terraformer@1.0.8/terraformer.js" integrity="sha384-+M797Pj3WZVCwMmLbOxAoaWYcKJo8NSxItmI48ytcLNeAnfn1d/IckFn31jEqrzP"
     crossorigin="anonymous"></script>

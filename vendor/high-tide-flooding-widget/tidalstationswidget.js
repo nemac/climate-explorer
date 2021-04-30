@@ -10,11 +10,61 @@
       responsive: true,
       station: '',
       data_url: 'tidal_data.json',
-      scale: 'full'
+      scale: 'full',
+      layout: {
+        yaxis2: {
+          type: 'linear',
+          matches: 'y',
+          overlaying: 'y',
+          showline: false,
+          showgrid: false,
+          showticklabels: false,
+          nticks: 0
+        },
+        xaxis: {
+          tickmode: "linear",
+          tick0: 1950,
+          dtick: 10,
+          ticks: "outside",
+          linecolor: 'rgb(0,0,0)',
+          side: "bottom",
+          range: [1950, 2100]
+        },
+        yaxis: {
+          tickmode: "linear",
+          tick0: 0,
+          dtick: 75,
+          ticks: "outside",
+          side: "left",
+          linecolor: 'rgb(0,0,0)',
+          title: {
+            text: 'Annual Days with High-Tide Flooding',
+            font: {
+              size: 12,
+              color: '#494949'
+            }
+          },
+          range: [0, 365]
+        },
+        legend: {
+          "orientation": "h"
+        },
+        hovermode: 'x unified',
+        plotly_layout_defaults: {
+          hoverdistance: 50,
+          autosize: true,
+          margin: {
+            l: 50,
+            t: 12,
+            r: 12,
+            b: 30
+          }
+        }
+      }
     },
     scales: {
-      full: {x_max: 2100, y_max: 365, y_step: 75},
-      historical: {x_max: 2020, y_max: 50, y_step: 10}
+      full: {xrange: [1950, 2100], yrange: [0, 365]},
+      historical: {xrange: [1950, 2020], yrange: [0, 365]}
     },
     data: {},
 
@@ -44,11 +94,10 @@
         this.options.scale = 'historical';
       }
 
-
-      this.chart.options.scales.xAxes[0].ticks.max = this.scales[this.options.scale].x_max;
-      this.chart.options.scales.yAxes[0].ticks.max = this.scales[this.options.scale].y_max;
-      this.chart.options.scales.yAxes[0].ticks.stepSize = this.scales[this.options.scale].y_step;
-      this.chart.update();
+      this.options.layout.xaxis.range = this.scales[this.options.scale].xrange;
+      this.options.layout.yaxis.range = this.scales[this.options.scale].yrange;
+      // console.log(this.scales[this.options.scale]);
+      this._update();
 
     },
 
@@ -96,17 +145,19 @@
         }
       }
 
-      const tidalChart = document.getElementById('tidal-chart');
+      let tidalChart = document.getElementById('tidal-chart');
 
-      if(!tidalChart) {
+      if(!tidalChart || tidalChart === null) {
         return;
       }
 
-      const chartDiv = document.createElement("div");
-      chartDiv.id = "chart";
-      chartDiv.style = "70vh";
+      let chartDiv = document.getElementById("chart");
 
-      tidalChart.appendChild(chartDiv);
+      if(!chartDiv || chartDiv === null) {
+        chartDiv = document.createElement("div");
+        chartDiv.id = "chart";
+        tidalChart.appendChild(chartDiv);
+      }
 
       let chart_historic = {
         type: "bar",
@@ -163,42 +214,56 @@
       }
       let data = [chart_historic, chart_rcp45, chart_rcp85]
     
-      let layout = {
-          yaxis2: {
-            type: 'linear',
-            matches: 'y',
-            overlaying: 'y',
-            showline: false,
-            showgrid: false,
-            showticklabels: false,
-            nticks: 0
-          },
-          xaxis: {
-            tickmode: "linear",
-            dtick: 10,
-            ticks: "outside",
-            linecolor: 'rgb(0,0,0)'
-          },
-          yaxis: {
-            tickmode: "linear",
-            dtick: 75,
-            ticks: "outside",
-            side: "left",
-            linecolor: 'rgb(0,0,0)',
-            title: {
-              text: 'Annual Days with High-Tide Flooding',
-              font: {
-                size: 12,
-                color: '#494949'
-              }
-            }
-          },
-          legend: {
-            "orientation": "h"
-          },
-          hovermode: 'x unified',
-          
-      }
+      // let layout = {
+      //     yaxis2: {
+      //       type: 'linear',
+      //       matches: 'y',
+      //       overlaying: 'y',
+      //       showline: false,
+      //       showgrid: false,
+      //       showticklabels: false,
+      //       nticks: 0
+      //     },
+      //     xaxis: {
+      //       tickmode: "linear",
+      //       tick0: 1950,
+      //       dtick: 10,
+      //       ticks: "outside",
+      //       linecolor: 'rgb(0,0,0)',
+      //       side: "bottom",
+      //       range: [1950, 2020]
+      //     },
+      //     yaxis: {
+      //       tickmode: "linear",
+      //       tick0: 0,
+      //       dtick: 75,
+      //       ticks: "outside",
+      //       side: "left",
+      //       linecolor: 'rgb(0,0,0)',
+      //       title: {
+      //         text: 'Annual Days with High-Tide Flooding',
+      //         font: {
+      //           size: 12,
+      //           color: '#494949'
+      //         }
+      //       },
+      //       range: [0, 365]
+      //     },
+      //     legend: {
+      //       "orientation": "h"
+      //     },
+      //     hovermode: 'x unified',
+      //     plotly_layout_defaults: {
+      //       hoverdistance: 50,
+      //       autosize: true,
+      //       margin: {
+      //         l: 50,
+      //         t: 12,
+      //         r: 12,
+      //         b: 30
+      //       }
+      //     }
+      // }
     
       let config = {
           responsive: true,
@@ -206,7 +271,7 @@
           modeBarButtonsToRemove: ['toImage', 'lasso2d', 'select2d','resetScale2d']
       }
     
-      Plotly.react(chartDiv, data, layout, config);
+      Plotly.react(chartDiv, data, this.options.layout, config);
 
     }
   });

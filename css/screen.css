@@ -23755,6 +23755,14 @@ body.is-ak-area .opt-not-ak, body.is-island-area .opt-not-island {
 }
 
 /* line 2289, scss/screen.scss */
+#tidal-chart {
+  display: flex;
+  flex-direction: column;
+}
+
+/* line 2294, scss/screen.scss */
 #chart {
+  flex: 1;
   width: 100%;
+  height: 100vh;
 }
