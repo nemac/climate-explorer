@@ -11,6 +11,7 @@
       station: '',
       data_url: 'tidal_data.json',
       scale: 'full',
+      hist_ymax: 1,
       layout: {
         yaxis2: {
           type: 'linear',
@@ -50,21 +51,19 @@
           "orientation": "h"
         },
         hovermode: 'x unified',
-        plotly_layout_defaults: {
-          hoverdistance: 50,
-          autosize: true,
-          margin: {
-            l: 50,
-            t: 12,
-            r: 12,
-            b: 30
-          }
+        hoverdistance: 50,
+        autosize: true,
+        margin: {
+          l: 50,
+          t: 5,
+          r: 5,
+          b: 5
         }
       }
     },
     scales: {
-      full: {xrange: [1950, 2100], yrange: [0, 365]},
-      historical: {xrange: [1950, 2020], yrange: [0, 365]}
+      full: {xrange: [1950, 2100], yrange: [0, 365], y_dtick: 75},
+      historical: {xrange: [1950, 2020], yrange: [0, 365], y_dtick: 5}
     },
     data: {},
 
@@ -94,9 +93,12 @@
         this.options.scale = 'historical';
       }
 
+      this.scales.historical.yrange = [0, this.options.hist_ymax * 2];
+
       this.options.layout.xaxis.range = this.scales[this.options.scale].xrange;
       this.options.layout.yaxis.range = this.scales[this.options.scale].yrange;
-      // console.log(this.scales[this.options.scale]);
+      this.options.layout.yaxis.dtick = this.scales[this.options.scale].y_dtick;
+
       this._update();
 
     },
@@ -116,7 +118,12 @@
           if(typeof flood_data === 'undefined') {
             data_hist.push(0);
           } else {
-            data_hist.push(this.data.floods_historical[String(this.options.station)][i]);
+            data_hist.push(flood_data);
+
+            if(this.options.hist_ymax < flood_data) {
+              this.options.hist_ymax = flood_data;
+            }
+
           }
         }
         catch (e) {
