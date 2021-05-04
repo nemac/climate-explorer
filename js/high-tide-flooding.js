@@ -195,7 +195,7 @@ $(function () {
     widget.options.responsive = true;
 
     widget.create();
-
+    
     $('#tidal_station').change(function () {
       widget.setOptions('station', stations.tidalStationId);
     });
