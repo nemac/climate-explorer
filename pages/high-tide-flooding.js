@@ -191,15 +191,14 @@ export default (config) => `
     <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
     <script type="text/javascript" src="/js/stationAnnualGraph.js"></script>
 
-    <!-- <script type="text/javascript" src="/vendor/tidal/tidalstationswidget.js"></script> -->
+    <script type="text/javascript" src="/vendor/tidalstationswidget.js"></script>
     
-    <script type="text/javascript" src="../vendor/high-tide-flooding-widget/tidalstationswidget.js"></script>
-
     <script src="https://unpkg.com/terraformer@1.0.8/terraformer.js" integrity="sha384-+M797Pj3WZVCwMmLbOxAoaWYcKJo8NSxItmI48ytcLNeAnfn1d/IckFn31jEqrzP"
     crossorigin="anonymous"></script>
     <script src="https://unpkg.com/terraformer-arcgis-parser@1.0.5/terraformer-arcgis-parser.js"
     integrity="sha384-duFUjKTSNoxEspdJNwr83CUgRxclf0ueKJB9DU/Vbit6bfWgzvZsHW6H1JLBBXhp" crossorigin="anonymous"></script>
     <script type="text/javascript" src="/js/ce3-ui-components.js"></script>
+
     <script type="text/javascript" src="/js/high-tide-flooding.js"></script>
 
     <script type="text/javascript" src="/js/secondary_header.js"></script>

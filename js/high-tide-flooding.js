@@ -1,11 +1,13 @@
 'use strict';
 
 $(function () {
-
+ 
   enableCustomSelect('chartmap-select');
   enableCustomSelect('stations-select');
   enableCustomSelect('download-select');
   enableCustomSelect('tidalzoom-select');
+
+  const widget = new TidalStationsWidget($('#tidal-chart')[0]); // this is using the rollup name now and not the name of the class
 
   const state = window.app.state
   const cityStateCE = state['city'];
@@ -65,7 +67,9 @@ $(function () {
       // only allow click event if button is not disabled
       if (!$(".btn-tidalzoom-hm").hasClass('btn-default-disabled')) {
         if (!$(".btn-tidalzoom-hm").hasClass('btn-default-selected')) {
-          $("#tidal-chart").tidalstationwidget('zoomToggle');
+       
+          widget.zoomToggle();
+
           $('.btn-tidalzoom-hm').addClass('btn-default-selected');
           $('.btn-tidalzoom-h').removeClass('btn-default-selected');
 
@@ -87,7 +91,9 @@ $(function () {
     // only allow click event if button is not disabled
     if (!$(".btn-tidalzoom-hm").hasClass('btn-default-disabled')) {
       if (!$(".btn-tidalzoom-hm").hasClass('btn-default-selected')) {
-        $("#tidal-chart").tidalstationwidget('zoomToggle');
+
+        widget.zoomToggle();
+
         $('.btn-tidalzoom-hm').addClass('btn-default-selected');
         $('.btn-tidalzoom-h').removeClass('btn-default-selected');
 
@@ -108,7 +114,9 @@ $(function () {
     // only allow click event if button is not disabled
     if (!$(".btn-tidalzoom-h").hasClass('btn-default-disabled')) {
       if (!$(".btn-tidalzoom-h").hasClass('btn-default-selected')) {
-        $("#tidal-chart").tidalstationwidget('zoomToggle');
+
+        widget.zoomToggle();
+
         $('.btn-tidalzoom-hm').removeClass('btn-default-selected');
         $('.btn-tidalzoom-h').addClass('btn-default-selected');
 
@@ -130,7 +138,9 @@ $(function () {
       // only allow click event if button is not disabled
       if (!$(".btn-tidalzoom-h").hasClass('btn-default-disabled')) {
         if (!$(".btn-tidalzoom-h").hasClass('btn-default-selected')) {
-          $("#tidal-chart").tidalstationwidget('zoomToggle');
+
+          widget.zoomToggle();
+
           $('.btn-tidalzoom-hm').removeClass('btn-default-selected');
           $('.btn-tidalzoom-h').addClass('btn-default-selected');
 
@@ -163,7 +173,7 @@ $(function () {
 
         $(`.btn-tidalzoom-${val}`).addClass('btn-default-selected');
 
-        $("#tidal-chart").tidalstationwidget('zoomToggle');
+        widget.zoomToggle();
       }
     }
   })
@@ -179,14 +189,15 @@ $(function () {
     $('#stations-graph-wrap').append('<div id="tidal-chart" class="tidal-chart d-flex-center width-100"></div>');
 
     // update graphs with new station id and station name
-    $("#tidal-chart").tidalstationwidget({
-      station: stations.tidalStationId,
-      data_url: '../vendor/high-tide-flooding-widget/tidal_data.json', // defaults to tidal_data.json
-      responsive: true // set to false to disable ChartJS responsive sizing.
-    });
+    
+    widget.options.station = stations.tidalStationId;
+    widget.options.data_url = 'https://crt-climate-explorer.nemac.org/data/high-tide-flooding-widget/tidal_data.json';
+    widget.options.responsive = true;
+
+    widget.create();
 
     $('#tidal_station').change(function () {
-      $("#tidal-chart").tidalstationwidget({tidalStation: stations.tidalStationId});
+      widget.setOptions('station', stations.tidalStationId);
     });
 
     $('.btn-tidalzoom-hm').removeClass('btn-default-disabled');
