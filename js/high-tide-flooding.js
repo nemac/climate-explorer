@@ -342,7 +342,7 @@ $(function () {
 
     // reset graphs
     resetGraphs({variable: 'temperature', tidalStationId, tidalStationName});
-    ;
+    widget.request_update({'station': tidalStationId});
 
     // toggle button visual state
     toggleButton($('.btn-selector[data-value="chart"]'));
@@ -416,6 +416,7 @@ $(function () {
 
       // reset graphs
       resetGraphs({variable: 'temperature', tidalStationId, tidalStationName});
+      widget.request_update({'station': tidalStationId});
 
       // toggle button visual state
       toggleButton($('.btn-selector[data-value="chart"]'));
