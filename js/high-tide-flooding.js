@@ -36,8 +36,6 @@ $(function () {
   const tidalStationMOverMHHW = state['tidalStationMOverMHHW'];
   const center = [lat, lon]
 
-  widget.request_update({'station': tidalStationId});
-
   // initialize station map state from url values
   let stationsMapState = {
     city,
@@ -165,7 +163,7 @@ $(function () {
   // in responsive mode the time is a dropdown this enables the change of the zoom of to
   // historical vs zoom to historical and modeled
   $('#tidalzoom-select-vis').bind('cs-changed', function (e) {
-    console.log('#tidalzoom-select-vis')
+  
     const target = $(e.target);
 
     const notDisabled = !target.hasClass('btn-default-disabled');
@@ -614,6 +612,7 @@ $(function () {
     // show graph hide map
     // todo add this to dropdown events also
     stationUpdated: function (event, options) {
+
       // show chart overlay
       showGraphs();
 
@@ -625,6 +624,8 @@ $(function () {
 
       // reset graphs
       resetGraphs({variable: 'temperature', tidalStationId: options.tidalStationId, tidalStationName: options.tidalStationName});
+
+      widget.request_update({'station': options.tidalStationId});
 
       // updates the visible text for the station dropdown with the information from the state url
       updateStationSelectText({tidalStationName: options.tidalStationName, tidalStationId: options.tidalStationId})
