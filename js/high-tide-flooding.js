@@ -7,7 +7,10 @@ $(function () {
   enableCustomSelect('download-select');
   enableCustomSelect('tidalzoom-select');
 
-  const widget = new TidalStationsWidget($('#tidal-chart')[0]); // this is using the rollup name now and not the name of the class
+  const widget = new TidalStationsWidget($('#tidal-chart')[0], {
+    data_url: 'https://crt-climate-explorer.nemac.org/data/high-tide-flooding-widget/tidal_data.json',
+    responsive: true
+  }); // this is using the rollup name now and not the name of the class
 
   const state = window.app.state
   const cityStateCE = state['city'];
@@ -32,6 +35,8 @@ $(function () {
   const tidalStationName = state['tidalStationName'];
   const tidalStationMOverMHHW = state['tidalStationMOverMHHW'];
   const center = [lat, lon]
+
+  widget.request_update({'station': tidalStationId});
 
   // initialize station map state from url values
   let stationsMapState = {
@@ -182,22 +187,13 @@ $(function () {
   // so we move them off the screen.  this not ideal but we can move
   // trade them with the map when we the use needs them
   function resetGraphs(stations) {
-    // remove and reset old graphs
-    $('#stations-graph-wrap').empty();
-
-    // add new graph wrappers so they will initialize
-    $('#stations-graph-wrap').append('<div id="tidal-chart" class="tidal-chart d-flex-center width-100"></div>');
 
     // update graphs with new station id and station name
     
-    widget.options.station = stations.tidalStationId;
-    widget.options.data_url = 'https://crt-climate-explorer.nemac.org/data/high-tide-flooding-widget/tidal_data.json';
-    widget.options.responsive = true;
-
-    widget.create();
+    // widget.options.station = stations.tidalStationId;
     
     $('#tidal_station').change(function () {
-      widget.setOptions('station', stations.tidalStationId);
+      widget.request_update({'station': stations.tidalStationId});
     });
 
     $('.btn-tidalzoom-hm').removeClass('btn-default-disabled');
