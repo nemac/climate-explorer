@@ -119,7 +119,7 @@ export default (config) => `
            <i class="card-icon fas fa-water"></i>
          </div>
          <div id="card-description" class="d-flex-column width-100">
-           View the number of high-tide floods in the past and projected for the future.
+           Explore the number of days per year with high-tide floods.
          </div>
          <div class="disabled-text">Data is not available for this location</div>
        </div>
@@ -142,7 +142,7 @@ export default (config) => `
            <i class="card-icon fas fa-chart-area"></i>
          </div>
          <div id="card-description" class="d-flex-column width-100">
-           Compare daily weather at local observing stations to long-term climate.
+           Compare observed daily weather to long-term climate.
          </div>
          <div class="disabled-text">Data is not available for this location</div>
        </div>

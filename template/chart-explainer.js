@@ -13,7 +13,7 @@ export default (config) => `
 
       <div  id="btn-chart"  class="d-flex-row d-flex-center width-25">
         <div  role="button" class="btn-selector btn-histobs description  d-flex-center width-100 selected" >
-          Historical Observed
+          Observations
           <div class="inner-histobs"></div>
         </div>
         <div class="btn-chart-text d-flex-center width-100" >
@@ -28,7 +28,7 @@ export default (config) => `
 
       <div  id="btn-chart"  class="d-flex-row d-flex-center width-25">
         <div  role="button" class="btn-selector btn-histmod description selected  d-flex-center width-100" >
-          Historical Modeled
+          Modeled History
           <div class="inner-histmod"></div>
         </div>
         <div class="btn-chart-text d-flex-center width-100" >

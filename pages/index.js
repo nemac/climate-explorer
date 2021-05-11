@@ -25,7 +25,7 @@ export default (config) => `
     <div id="home-text" class="d-flex d-flex-column width-80 padding-bottom">
       <span class="describe-title padding-horizontal padding-bottom-half width-100">The Climate Explorer</span>
       <div class="home-text-box d-flex">
-        <div class="describe-main padding-horizontal padding-bottom-half width-100">Explore how climate is projected to change in your location.</div>
+        <div class="describe-main padding-horizontal padding-bottom-half width-100">Explore how climate is projected to change in your county.</div>
         <div class="describe-main-secondary d-flex-center d-flex-wrap padding-horizontal padding-bottom-half">
           <h4 class="d-flex-center">New!</h4>
           <h5>Climate projection charts are now available for <a href="/faq/#supported-areas" style="color: white; text-decoration: underline;

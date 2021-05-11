@@ -172,8 +172,8 @@ ${secondary_header(config)}
             <span class="fas fa-info more-info more-icon"></span>
             <span class="fas fa-info more-info less-icon d-none"></span>
             <span class="more short-desc">About</span>
-            <span class="more long-desc">About the graph</span>
-            <span class="more long-desc d-none">About the graph</span>
+            <span class="more long-desc">How to read</span>
+            <span class="more long-desc d-none">How to read</span>
             <span class="more short-desc d-none">About</span>
           </div>
         </div>
@@ -191,11 +191,11 @@ ${secondary_header(config)}
 
     <div id="legend-wrapper" class="padding-horizontal-half default-btn-height d-flex-center">
       <div role="button" tabindex="111" class="btn-selector btn-histobs d-flex-center width-50" data-value="histobs">
-        Historical Observed
+        Observations
         <div class="inner-histobs"></div>
       </div>
       <div role="button" tabindex="112" class="btn-selector btn-histmod selected d-flex-center width-50" data-value="histmod">
-        Historical Modeled
+        Modeled History
         <div class="inner-histmod"></div>
       </div>
       <div role="button" tabindex="113" class="btn-selector btn-lower-emissions selected  d-flex-center width-50" data-value="rcp45">

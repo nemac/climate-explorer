@@ -127,8 +127,8 @@ export default (config) => `
             <span class="fas fa-info more-info more-icon"></span>
             <span class="fas fa-info more-info less-icon d-none"></span>
             <span class="more short-desc">About</span>
-            <span class="more long-desc">About the graph</span>
-            <span class="more long-desc d-none">About the graph</span>
+            <span class="more long-desc">How to read</span>
+            <span class="more long-desc d-none">How to read</span>
             <span class="more short-desc d-none">About</span>
           </div>
         </div>

@@ -16,7 +16,7 @@ export default (config) => `
           <div class="share-widget about">
             <a href="#" class="share-trigger">
               <span class="fas fa-info-circle share-icon"></span>
-              <span class="a-share-label">About this site</span>
+              <span class="a-share-label">About the data</span>
             </a>
             <ul class="about">
               <li>

@@ -4,7 +4,7 @@
 google_analytics_id: 'UA-153103803-1' # UA-119744751-1 old Climate Explorer Google Analytics Code
 variables:
 - id: tmax
-  short_label: "Avg Daily Max Temp (°F)"
+  short_label: "Average Daily Maximum Temp (°F)"
   label: "Average Daily Minimum Temperature (°F)"
   description: "
            A day’s highest (maximum) temperature usually occurs in the afternoon. Averaging the daily high temperatures over any period results in a mean maximum temperature for that period.
@@ -14,7 +14,7 @@ variables:
   group: "temperature"
   area: null
 - id: tmin
-  short_label: "Avg Daily Min Temp (°F)"
+  short_label: "Average Daily Minimum Temp (°F)"
   label: "Average Daily Min Temp"
   description: "
            A day’s lowest (minimum) temperature usually occurs in the early morning, just before sunrise. Averaging the daily low temperatures for any period results in a mean minimum temperature for that period.
@@ -24,7 +24,7 @@ variables:
   group: "temperature"
   area: null
 - id: days_tmax_gt_50f
-  short_label: "Days w/ max > 50°F"
+  short_label: "Days w/ maximum temp > 50°F"
   label:  "Days per year with max above 50°F"
   description: "<strong>Days per year with Maximum Temperature Above 50°F</strong><hr/>
         The annual count of days when the high temperature rises above a selected threshold indicates how frequently locations experience warm, hot, or very hot days.
@@ -34,7 +34,7 @@ variables:
   group: "temperature"
   area: ak-only
 - id: days_tmax_gt_60f
-  short_label: "Days w/ max > 60°F"
+  short_label: "Days w/ maximum temp > 60°F"
   label: "Days per year with max above 60°F"
   description: "<strong>Days per year with Maximum Temperature Above 60°F</strong><hr/>
         The annual count of days when the high temperature rises above a selected threshold indicates how frequently locations experience warm, hot, or very hot days.
@@ -44,7 +44,7 @@ variables:
   group: "temperature"
   area: ak-only
 - id: days_tmax_gt_70f
-  short_label: "Days w/ max > 70°F"
+  short_label: "Days w/ maximum temp > 70°F"
   label: "Days per year with max above 70°F"
   description: "
            The annual count of days when the high temperature rises above a selected threshold indicates how frequently locations experience warm, hot, or very hot days.
@@ -54,7 +54,7 @@ variables:
   group: "temperature"
   area: ak-only
 - id: days_tmax_gt_80f
-  short_label: "Days w/ max > 80°F"
+  short_label: "Days w/ maximum temp > 80°F"
   label: "Days per year with max above 80°F"
   description: "
            The annual count of days when the high temperature rises above a selected threshold indicates how frequently locations experience warm, hot, or very hot days.
@@ -64,7 +64,7 @@ variables:
   group: "temperature"
   area: ak-only
 - id: days_tmax_gt_90f
-  short_label: "Days w/ max > 90°F"
+  short_label: "Days w/ maximum temp > 90°F"
   label: "Days per year with max above 90°F"
   description: "
            The annual count of days when the high temperature rises above a selected threshold indicates how frequently locations experience warm, hot, or very hot days.
@@ -74,7 +74,7 @@ variables:
   group: "temperature"
   area: null
 - id: days_tmax_gt_95f
-  short_label: "Days w/ max > 95°F"
+  short_label: "Days w/ maximum temp > 95°F"
   label: "Days per year with max above 95°F"
   description: "
            The annual count of days when the high temperature rises above a selected threshold indicates how frequently locations experience warm, hot, or very hot days.
@@ -84,7 +84,7 @@ variables:
   group: "temperature"
   area: null
 - id: days_tmax_gt_100f
-  short_label: "Days w/ max > 100°F"
+  short_label: "Days w/ maximum temp > 100°F"
   label: "Days per year with max above 100°F"
   description: "
            The annual count of days when the high temperature rises above a selected threshold indicates how frequently locations experience warm, hot, or very hot days.
@@ -94,7 +94,7 @@ variables:
   group: "temperature"
   area: null
 - id: days_tmax_gt_105f
-  short_label: "Days w/ max > 105°F"
+  short_label: "Days w/ maximum temp > 105°F"
   label: "Days per year with max above 105°F"
   description: "
            The annual count of days when the high temperature rises above a selected threshold indicates how frequently locations experience warm, hot, or very hot days.
@@ -104,7 +104,7 @@ variables:
   group: "temperature"
   area: null
 - id: days_tmax_lt_32f
-  short_label: "Days w/ max < 32°F"
+  short_label: "Days w/ maximum temp < 32°F"
   label: "Days per year with max below 32°F (Icing days)"
   description: "
            The total number of days per year when the highest temperature is less than 32°F (0°C) is an indicator of how often very cold days occur.
@@ -114,19 +114,19 @@ variables:
   group: "temperature"
   area: null
 - id: days_tmax_lt_50f
-  short_label: "Days w/ max < 50°F"
+  short_label: "Days w/ maximum temp < 50°F"
   label: "Days per year with max below 50°F"
   description: ""
   group: "temperature"
   area: island-only
 - id: days_tmax_lt_65f
-  short_label: "Days w/ max < 65°F"
+  short_label: "Days w/ maximum temp < 65°F"
   label:  "Days per year with max below 65°F"
   description: ""
   group: "temperature"
   area: island-only
 - id: days_tmin_lt_32f
-  short_label: "Days w/ min < 32°F"
+  short_label: "Days w/ minimum temp < 32°F"
   label: "Days per year with min below 32°F (frost days)"
   description: "
     <strong>Days per year with Minimum Temperature below 32°F </strong><hr/>
@@ -137,14 +137,14 @@ variables:
   group: "temperature"
   area: null
 - id: days_tmin_lt_minus_40f
-  short_label: "Days w/ min < -40°F"
+  short_label: "Days w/ minimum temp < -40°F"
   label: "Days per year with min below -40°F"
   description: "
            In Alaska, the number of days when temperatures drop below -40°F indicates how frequently locations experience extremely cold conditions. Temperatures this low can be dangerous for people and animals, and result in high demand for energy for heating."
   group: "temperature"
   area: ak-only
 - id: days_tmin_gt_60f
-  short_label: "Days w/ min > 60°F"
+  short_label: "Days w/ minimum temp > 60°F"
   label: "Days per year with min above 60°F"
   description: "
            In Alaska, the total number of days per year when the overnight low doesn't drop below 60°F is an indicator of how frequently very warm nights occur.
@@ -154,19 +154,19 @@ variables:
   group: "temperature"
   area: ak-only
 - id: days_tmin_lt_65f
-  short_label: "Days w/ min < 65°F"
+  short_label: "Days w/ minimum temp < 65°F"
   label: "Days per year with min below 65°F"
   description: ""
   group: "temperature"
   area: island-only
 - id: days_tmin_gt_75f
-  short_label: "Days w/ min > 75°F"
+  short_label: "Days w/ minimum temp > 75°F"
   label: "Days per year with min above 75°F"
   description: ""
   group: "temperature"
   area: island-only
 - id: days_tmin_gt_80f
-  short_label: "Days w/ min > 80°F"
+  short_label: "Days w/ minimum temp > 80°F"
   label: "Days per year with min above 80°F"
   description: "
            The total number of days per year when the lowest temperature doesn't drop below a given threshold is an indicator of how often very warm nights occur.
@@ -176,7 +176,7 @@ variables:
   group: "temperature"
   area: null
 - id: days_tmin_gt_90f
-  short_label: "Days w/ min > 90°F"
+  short_label: "Days w/ minimum temp > 90°F"
   label: "Days per year with min above 90°F"
   description: "
            The total number of days per year when the lowest temperature doesn't drop below a given threshold is an indicator of how often very warm nights occur.
@@ -272,8 +272,8 @@ variables:
   group: "precipitation"
   area: ak-only
 - id: days_pcpn_gt_1in
-  short_label: "Days w/ > 1 in Precipitation"
-  label:  "Days per year with more than 1in precip"
+  short_label: 'Days w/ > 1" Precipitation'
+  label:  "Days per year with more than 1in precipitation"
   description: "
            The number of days per year when locations receive more than 1 inches of precipitation is an indicator of how often very heavy precipitation events occur. This measurement may also be used as an indicator of flood risk.
         <br />
@@ -282,8 +282,8 @@ variables:
   group: "precipitation"
   area: null
 - id: days_pcpn_gt_2in
-  short_label: "Days w/ > 2 in Precipitation"
-  label: "Days per year with more than 2in precip"
+  short_label: 'Days w/ > 2" Precipitation'
+  label: "Days per year with more than 2in precipitation"
   description: "
            The number of days per year when locations receive more than 2 inches of precipitation is an indicator of how often very heavy precipitation events occur. This measurement may also be used as an indicator of flood risk.
         <br />
@@ -292,8 +292,8 @@ variables:
   group: "precipitation"
   area: null
 - id: days_pcpn_gt_3in
-  short_label: "Days w/ > 3 in Precipitation"
-  label: "Days per year with more than 3in precip"
+  short_label: 'Days w/ > 3" Precipitation'
+  label: "Days per year with more than 3in precipitation"
   description: "
            The number of days per year when locations receive more than 3 inches of precipitation is an indicator of how often very heavy precipitation events occur. This measurement may also be used as an indicator of flood risk.
         <br />
@@ -302,8 +302,8 @@ variables:
   group: "precipitation"
   area: null
 - id: days_pcpn_gt_4in
-  short_label: "Days w/ > 4 in Precipitation"
-  label: "Days per year with more than 4in precip"
+  short_label: 'Days w/ > 4" Precipitation'
+  label: "Days per year with more than 4in precipitation"
   description: "
            The number of days per year when locations receive more than 4 inches of precipitation is an indicator of how often very heavy precipitation events occur. This measurement may also be used as an indicator of flood risk.
         <br />
@@ -312,8 +312,8 @@ variables:
   group: "precipitation"
   area: null
 - id: days_pcpn_gt_5in
-  short_label: "Days w/ > 5 in Precipitation"
-  label: "Days per year with more than 5in precip"
+  short_label: 'Days w/ > 5" Precipitation'
+  label: "Days per year with more than 5in precipitation"
   description: "
            The number of days per year when locations receive more than 5 inches of precipitation is an indicator of how often very heavy precipitation events occur. This measurement may also be used as an indicator of flood risk.
         <br />
