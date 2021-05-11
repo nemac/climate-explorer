@@ -5,7 +5,7 @@
       "targets": {
         "browsers": ["> 0.5%", "last 2 versions"]
       },
-      "include": ["transform-es2015-arrow-functions", "es6.map","transform-es2015-literals",]
+      "include": ["transform-es2015-arrow-functions", "es6.map","transform-es2015-literals"]
     }
     ]
   ],

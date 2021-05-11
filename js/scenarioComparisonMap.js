@@ -253,7 +253,7 @@
             season: 'annual'
           },
           disabledScenarios: ['historical'],
-          legend_unit: '% Change',
+          legend_unit: 'Days',
           legend_note: 'Note: Maps are anomalies from 1961-1990 baseline'
         },
         'days_pcpn_gt_1in': {
@@ -263,7 +263,7 @@
             leftScenario: 'historical',
             rightScenario: 'rcp85',
           },
-          legend_unit: '% Change',
+          legend_unit: 'Days',
           legend_note: 'Note: Maps are anomalies from 1961-1990 baseline'
 
         },
@@ -274,7 +274,7 @@
             leftScenario: 'historical',
             rightScenario: 'rcp85',
           },
-          legend_unit: '% Change',
+          legend_unit: 'Days',
           legend_note: 'Note: Maps are anomalies from 1961-1990 baseline'
         },
         'days_pcpn_gt_3in': {
@@ -284,7 +284,7 @@
             leftScenario: 'historical',
             rightScenario: 'rcp85',
           },
-          legend_unit: '% Change',
+          legend_unit: 'Days',
           legend_note: 'Note: Maps are anomalies from 1961-1990 baseline'
 
         },
