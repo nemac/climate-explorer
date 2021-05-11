@@ -13,7 +13,7 @@ $(function () {
       isHawaii = (cityStateCE.indexOf('Hawaii') > 0 || cityStateCE.indexOf(', HI') > 0);
   }
 
-  $('#default-city-state').text(cityStateCE);
+  //$('#default-city-state').text(cityStateCE);
   $('#default-city-county').text(countyCE);
   $('#cards-search-input').attr("placeholder", cityStateCE);
 

@@ -11,7 +11,7 @@ $(function () {
   const city = state['city'];
   const county = state['county'];
 
-  $('#default-city-state').text(city);
+  //$('#default-city-state').text(city);
   $('#default-city-county').text(county);
   $('#cards-search-input').attr("placeholder", city);
 

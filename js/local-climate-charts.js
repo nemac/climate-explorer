@@ -8,7 +8,7 @@ $(function () {
   const area_label = state['area_label'];
   const is_alaska_area = state['is_alaska_area'];
 
-  $('#default-city-state').text(city_label || '');
+  //$('#default-city-state').text(city_label || '');
   $('#default-city-county').text(county_label || area_label);
   $('#cards-search-input').attr("placeholder", city_label || area_label);
 
