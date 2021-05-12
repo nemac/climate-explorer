@@ -11,7 +11,7 @@ const get_option = variable => `
 
 export default (config) =>`
 <div class="select variable-select">
-  <div tabindex="8" id="variable-select-vis" class="select-styled" data-value="tmax">Avg Daily Max Temp (°F)</div>
+  <div tabindex="8" id="variable-select-vis" class="select-styled" data-value="tmax">Average Daily Maximum Temp (°F)</div>
   <ul class="select-options">
     <div data-icon="fas fa-temperature-high select-icon" class="default-select-option-group">
       <i class="fas fa-temperature-high select-icon"></i>Temperature

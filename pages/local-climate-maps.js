@@ -59,7 +59,7 @@ export default (config) => `
               <span id="default-in" class="text-info-box" > in </span>
               <span id="default-city-county" class="text-info-box"></span>
               <span id="default-dash" class="text-info-box" > - </span>
-              <span id="default-chart-map-variable" class="text-info-box" data-value="tmax">Avg Daily Max Temp (°F)</span>
+              <span id="default-chart-map-variable" class="text-info-box" data-value="tmax">Average Daily Maximum Temp (°F)</span>
             </div>
 
             <div id="filters-toggle" class="width-10">

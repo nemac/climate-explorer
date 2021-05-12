@@ -612,6 +612,7 @@ if (storageAvailable()) {
 }
 
 function updateValidVariable() {
+  console.log("updateValidVariable()");
   const state = window.app.state
   const cityStateCE = state['city'];
   const countyCE = state['county'];
@@ -662,7 +663,7 @@ function updateValidVariable() {
 
 
     if (!!state['variable']) {
-      const selected_list_item = $(`.variable-select li[data-value="${state["variable"]}"]:visible`);
+      const selected_list_item = $(`.variable-select li[data-value="${state["variable"]}"]`);
       if (!!selected_list_item) {
         $(`.select.variable-select div.select-styled`).text(selected_list_item.text().trim()).removeClass('active');
       }
