@@ -202,14 +202,11 @@ $(function () {
   };
 
   // update ui with city state or county information
-  //$('#default-city-state').text(cityStateCE);
   $('#default-city-county').text(countyCE);
   $('#cards-search-input').attr('placeholder', cityStateCE);
 
   // if city state is no defined add missing location warning
   if (!cityStateCE) {
-    $('#default-city-state').addClass('d-none');
-    $('#default-in').addClass('d-none');
     $('#default-city-county').addClass('d-none');
     $('#cards-search-input').attr(
         'placeholder',
@@ -218,7 +215,6 @@ $(function () {
   }
   // if  Alaska or Hawaii disable text not applicable for locations
   if (!is_conus_area) {
-    $('#default-in').html('—');
     $('.opt-not-ak').addClass('default-select-option-disabled');
     $('.next-steps-temperate').addClass('card-disabled');
   }
@@ -235,7 +231,6 @@ $(function () {
 
   if (cityStateCE) {
     if (cityStateCE.indexOf('County') > 0) {
-      $('#default-in').addClass('d-none');
       $('#default-dash').addClass('d-none');
       $('#default-city-county').text('');
     }

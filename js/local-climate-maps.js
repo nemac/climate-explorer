@@ -4,29 +4,26 @@ $(function () {
   // get city, state from state url
   const state = window.app.state;
   const cityStateCE = state['city'];
-  const countyCE =    state['county'];
+  const countyCE = state['county'];
   let isAlaska = false;
   let isHawaii = false;
 
   if (cityStateCE) {
-      isAlaska = (cityStateCE.indexOf('Alaska') > 0 || cityStateCE.indexOf(', AK') > 0);
-      isHawaii = (cityStateCE.indexOf('Hawaii') > 0 || cityStateCE.indexOf(', HI') > 0);
+    isAlaska = (cityStateCE.indexOf('Alaska') > 0 || cityStateCE.indexOf(', AK') > 0);
+    isHawaii = (cityStateCE.indexOf('Hawaii') > 0 || cityStateCE.indexOf(', HI') > 0);
   }
 
-  //$('#default-city-state').text(cityStateCE);
   $('#default-city-county').text(countyCE);
   $('#cards-search-input').attr("placeholder", cityStateCE);
 
   if (!cityStateCE) {
-    $('#default-in').addClass('d-none');
     $('#default-dash').addClass('d-none');
     $('#cards-search-input').addClass('nosearch');
     $('#cards-search-input').attr("placeholder", "Location missing, enter a county, city, or zip code");
   }
 
   if (cityStateCE) {
-    if (cityStateCE.indexOf('County') > 0  ) {
-      $('#default-in').addClass('d-none');
+    if (cityStateCE.indexOf('County') > 0) {
       $('#default-dash').addClass('d-none');
       $('#default-city-county').text('');
     }
@@ -53,15 +50,6 @@ $(function () {
     id: variable
   };
 
-  if (isNational()) {
-    lat = null,
-    lon = null,
-    mapcenter = null;
-    mapExtent = null;
-    mapZoom = 9;
-  }
-
-
   // enable custom selection boxes
   enableCustomSelect('download-select');
   enableCustomSelect('stations-select');
@@ -81,18 +69,17 @@ $(function () {
     $('#default-chart-map-variable').html(chartText);
   }
 
-  window.addEventListener('last-left-image-added', function(e) {
+  window.addEventListener('last-left-image-added', function (e) {
     exportLeft();
   })
 
-  window.addEventListener('last-right-image-added', function(e) {
+  window.addEventListener('last-right-image-added', function (e) {
     exportRight();
   })
 
 
-
   // function to enable downloads (images and data)
-  $('.download-select li a').click( function (e) {
+  $('.download-select li a').click(function (e) {
     const downloadAction = $(this).data('value');
     $('#temperature-map').spinner();
 
@@ -112,7 +99,7 @@ $(function () {
     }
   });
 
-  function addImage(imageUrl, side='left', cssclass='none', add=false){
+  function addImage(imageUrl, side = 'left', cssclass = 'none', add = false) {
     if (add) {
       const elem = document.getElementById(`map-for-print-${side}`);
       elem.innerHTML = '';
@@ -122,7 +109,7 @@ $(function () {
     if (cssclass) {
       img.classList.add(cssclass)
     }
-    img.setAttribute('crossorigin','anonymous');
+    img.setAttribute('crossorigin', 'anonymous');
     document.getElementById(`map-for-print-${side}`).appendChild(img);
   }
 
@@ -133,7 +120,8 @@ $(function () {
     canvas.height = 800;
     var ctx = canvas.getContext("2d");
     ctx.drawImage(img, 0, 0);
-    var dataURL = canvas.toDataURL("image/png").replace("image/png", "image/octet-stream");;
+    var dataURL = canvas.toDataURL("image/png").replace("image/png", "image/octet-stream");
+    ;
     return dataURL.replace(/^data:image\/(png|jpg);base64,/, "");
   }
 
@@ -142,15 +130,15 @@ $(function () {
     const elem = document.getElementById('map-for-print-right');
     elem.classList.remove('d-none');
 
-    html2canvas($('#map-for-print-right') , {
+    html2canvas($('#map-for-print-right'), {
       allowTaint: true,
       useCORS: true,
       backgroundColor: null,
       letterRendering: 1,
       foreignObjectRendering: true,
-      onrendered: function(canvas) {
+      onrendered: function (canvas) {
 
-        const emissionsText = $('#rightScenario-select-vis').text().toLowerCase().replace(' ','_');
+        const emissionsText = $('#rightScenario-select-vis').text().toLowerCase().replace(' ', '_');
         var a = document.createElement('a');
         a.href = canvas.toDataURL("image/png").replace("image/png", "image/octet-stream");
         a.download = `local-climate-map-${variable}-${emissionsText}-right.png`;
@@ -168,15 +156,15 @@ $(function () {
     const elem = document.getElementById('map-for-print-left');
     elem.classList.remove('d-none');
 
-    html2canvas($('#map-for-print-left') , {
+    html2canvas($('#map-for-print-left'), {
       allowTaint: true,
       useCORS: true,
       backgroundColor: null,
       letterRendering: 1,
       foreignObjectRendering: true,
-      onrendered: function(canvas) {
+      onrendered: function (canvas) {
 
-        const emissionsText = $('#leftScenario-select-vis').text().toLowerCase().replace(' ','_');
+        const emissionsText = $('#leftScenario-select-vis').text().toLowerCase().replace(' ', '_');
         var a = document.createElement('a');
         a.href = canvas.toDataURL("image/png").replace("image/png", "image/octet-stream");
         a.download = `local-climate-map-${variable}-${emissionsText}-left.png`;
@@ -191,40 +179,40 @@ $(function () {
 
   function mapToImageRight() {
     // base map
-    html2canvas($('#temperature-map .esri-view-root .esri-view-surface canvas.esri-display-object')[0] , {
+    html2canvas($('#temperature-map .esri-view-root .esri-view-surface canvas.esri-display-object')[0], {
       allowTaint: true,
       useCORS: true,
       backgroundColor: null,
       removeContainer: true,
       foreignObjectRendering: true,
-      onrendered: function(canvas) {
-        const imageUrl  = canvas.toDataURL("image/png").replace("image/png", "image/octet-stream");
+      onrendered: function (canvas) {
+        const imageUrl = canvas.toDataURL("image/png").replace("image/png", "image/octet-stream");
         addImage(imageUrl, 'right', 'basemap', true);
       }
     });
 
     // export right map
-    html2canvas($('#temperature-map .esri-view-root .esri-view-surface canvas.esri-display-object')[2] , {
+    html2canvas($('#temperature-map .esri-view-root .esri-view-surface canvas.esri-display-object')[2], {
       allowTaint: true,
       useCORS: true,
       backgroundColor: null,
       removeContainer: true,
       foreignObjectRendering: true,
-      onrendered: function(canvas) {
-        const imageUrl  = canvas.toDataURL("image/png").replace("image/png", "image/octet-stream");
+      onrendered: function (canvas) {
+        const imageUrl = canvas.toDataURL("image/png").replace("image/png", "image/octet-stream");
         addImage(imageUrl, 'right', 'rightmap');
       }
     });
 
     // export label and state boundaries overlay
-    html2canvas($('#temperature-map .esri-view-root .esri-view-surface canvas.esri-display-object')[4] , {
+    html2canvas($('#temperature-map .esri-view-root .esri-view-surface canvas.esri-display-object')[4], {
       allowTaint: true,
       useCORS: true,
       backgroundColor: null,
       removeContainer: true,
       foreignObjectRendering: true,
-      onrendered: function(canvas) {
-        const imageUrl  = canvas.toDataURL("image/png").replace("image/png", "image/octet-stream");
+      onrendered: function (canvas) {
+        const imageUrl = canvas.toDataURL("image/png").replace("image/png", "image/octet-stream");
         addImage(imageUrl, 'right', 'label-boundaries-overlay1');
       }
     });
@@ -232,27 +220,27 @@ $(function () {
     // export label and state boundaries overlay
     const canvasLength = $('#temperature-map .esri-view-root .esri-view-surface canvas.esri-display-object').length;
     if (canvasLength >= 6) {
-      html2canvas($('#temperature-map .esri-view-root .esri-view-surface canvas.esri-display-object')[5] , {
+      html2canvas($('#temperature-map .esri-view-root .esri-view-surface canvas.esri-display-object')[5], {
         allowTaint: true,
         useCORS: true,
         backgroundColor: null,
         removeContainer: true,
         foreignObjectRendering: true,
-        onrendered: function(canvas) {
-          const imageUrl  = canvas.toDataURL("image/png").replace("image/png", "image/octet-stream");
+        onrendered: function (canvas) {
+          const imageUrl = canvas.toDataURL("image/png").replace("image/png", "image/octet-stream");
           addImage(imageUrl, 'right', 'label-boundaries-overlay2');
         }
       });
     }
 
     // export legend
-    html2canvas($('.esri-expand__content .legend-image') , {
+    html2canvas($('.esri-expand__content .legend-image'), {
       allowTaint: true,
       useCORS: true,
       backgroundColor: null,
       removeContainer: true,
       foreignObjectRendering: true,
-      onrendered: function(canvas) {
+      onrendered: function (canvas) {
 
         const imgurl = $('.esri-expand__content .legend-image')[0].src;
         let imageExists = new Image();
@@ -261,10 +249,10 @@ $(function () {
         imageExists.src = imgurl;
 
         function imageFound() {
-            const imageUrl  = canvas.toDataURL("image/png").replace("image/png", "image/octet-stream");
-            const base64temp = getBase64Image($('.esri-expand__content .legend-image')[0])
-            addImage(base64temp, 'right', 'legend');
-            return true;
+          const imageUrl = canvas.toDataURL("image/png").replace("image/png", "image/octet-stream");
+          const base64temp = getBase64Image($('.esri-expand__content .legend-image')[0])
+          addImage(base64temp, 'right', 'legend');
+          return true;
         }
 
         function imageNotFound() {
@@ -274,40 +262,40 @@ $(function () {
     });
 
     // export right controls
-    html2canvas($('.bottom-scenario-controls .right-scenario-controls') , {
+    html2canvas($('.bottom-scenario-controls .right-scenario-controls'), {
       allowTaint: true,
       useCORS: true,
       backgroundColor: null,
       removeContainer: true,
       foreignObjectRendering: true,
-      onrendered: function(canvas) {
-        const imageUrl  = canvas.toDataURL("image/png").replace("image/png", "image/octet-stream");
+      onrendered: function (canvas) {
+        const imageUrl = canvas.toDataURL("image/png").replace("image/png", "image/octet-stream");
         addImage(imageUrl, 'right', 'bottom-controls');
       }
     });
 
     // export right title
-    html2canvas($('#info-text-wrapper') , {
+    html2canvas($('#info-text-wrapper'), {
       allowTaint: true,
       useCORS: true,
       backgroundColor: null,
       removeContainer: true,
       foreignObjectRendering: true,
-      onrendered: function(canvas) {
-        const imageUrl  = canvas.toDataURL("image/png").replace("image/png", "image/octet-stream");
+      onrendered: function (canvas) {
+        const imageUrl = canvas.toDataURL("image/png").replace("image/png", "image/octet-stream");
         addImage(imageUrl, 'right', 'title');
       }
     });
 
     // export attribution
-    html2canvas($('.esri-ui-inner-container.esri-ui-manual-container .esri-component.esri-attribution.esri-widget') , {
+    html2canvas($('.esri-ui-inner-container.esri-ui-manual-container .esri-component.esri-attribution.esri-widget'), {
       allowTaint: true,
       useCORS: true,
       backgroundColor: null,
       removeContainer: true,
       foreignObjectRendering: true,
-      onrendered: function(canvas) {
-        const imageUrl  = canvas.toDataURL("image/png").replace("image/png", "image/octet-stream");
+      onrendered: function (canvas) {
+        const imageUrl = canvas.toDataURL("image/png").replace("image/png", "image/octet-stream");
         addImage(imageUrl, 'right', 'attribution');
         const leftMapDoneEvent = new CustomEvent('last-right-image-added');
         window.dispatchEvent(leftMapDoneEvent);
@@ -317,40 +305,40 @@ $(function () {
 
   function mapToImageLeft() {
     // base map
-    html2canvas($('#temperature-map .esri-view-root .esri-view-surface canvas.esri-display-object')[0] , {
+    html2canvas($('#temperature-map .esri-view-root .esri-view-surface canvas.esri-display-object')[0], {
       allowTaint: true,
       useCORS: true,
       backgroundColor: null,
       removeContainer: true,
       foreignObjectRendering: true,
-      onrendered: function(canvas) {
-        const imageUrl  = canvas.toDataURL("image/png").replace("image/png", "image/octet-stream");
+      onrendered: function (canvas) {
+        const imageUrl = canvas.toDataURL("image/png").replace("image/png", "image/octet-stream");
         addImage(imageUrl, 'left', 'basemap', true);
       }
     });
 
     // export left map
-    html2canvas($('#temperature-map .esri-view-root .esri-view-surface canvas.esri-display-object')[1] , {
+    html2canvas($('#temperature-map .esri-view-root .esri-view-surface canvas.esri-display-object')[1], {
       allowTaint: true,
       useCORS: true,
       backgroundColor: null,
       removeContainer: true,
       foreignObjectRendering: true,
-      onrendered: function(canvas) {
-        const imageUrl  = canvas.toDataURL("image/png").replace("image/png", "image/octet-stream");
+      onrendered: function (canvas) {
+        const imageUrl = canvas.toDataURL("image/png").replace("image/png", "image/octet-stream");
         addImage(imageUrl, 'left', 'leftmap');
       }
     });
 
     // export label and state boundaries overlay
-    html2canvas($('#temperature-map .esri-view-root .esri-view-surface canvas.esri-display-object')[4] , {
+    html2canvas($('#temperature-map .esri-view-root .esri-view-surface canvas.esri-display-object')[4], {
       allowTaint: true,
       useCORS: true,
       backgroundColor: null,
       removeContainer: true,
       foreignObjectRendering: true,
-      onrendered: function(canvas) {
-        const imageUrl  = canvas.toDataURL("image/png").replace("image/png", "image/octet-stream");
+      onrendered: function (canvas) {
+        const imageUrl = canvas.toDataURL("image/png").replace("image/png", "image/octet-stream");
         addImage(imageUrl, 'left', 'label-boundaries-overlay1');
       }
     });
@@ -358,27 +346,27 @@ $(function () {
     // export label and state boundaries overlay
     const canvasLength = $('#temperature-map .esri-view-root .esri-view-surface canvas.esri-display-object').length;
     if (canvasLength >= 6) {
-      html2canvas($('#temperature-map .esri-view-root .esri-view-surface canvas.esri-display-object')[5] , {
+      html2canvas($('#temperature-map .esri-view-root .esri-view-surface canvas.esri-display-object')[5], {
         allowTaint: true,
         useCORS: true,
         backgroundColor: null,
         removeContainer: true,
         foreignObjectRendering: true,
-        onrendered: function(canvas) {
-          const imageUrl  = canvas.toDataURL("image/png").replace("image/png", "image/octet-stream");
+        onrendered: function (canvas) {
+          const imageUrl = canvas.toDataURL("image/png").replace("image/png", "image/octet-stream");
           addImage(imageUrl, 'left', 'label-boundaries-overlay2');
         }
       });
     }
 
     // export legend
-    html2canvas($('.esri-expand__content .legend-image') , {
+    html2canvas($('.esri-expand__content .legend-image'), {
       allowTaint: true,
       useCORS: true,
       backgroundColor: null,
       removeContainer: true,
       foreignObjectRendering: true,
-      onrendered: function(canvas) {
+      onrendered: function (canvas) {
         const imgurl = $('.esri-expand__content .legend-image')[0].src;
         let imageExists = new Image();
         imageExists.addEventListener('load', imageFound);
@@ -386,10 +374,10 @@ $(function () {
         imageExists.src = imgurl;
 
         function imageFound() {
-            const imageUrl  = canvas.toDataURL("image/png").replace("image/png", "image/octet-stream");
-            const base64temp = getBase64Image($('.esri-expand__content .legend-image')[0])
-            addImage(base64temp, 'left', 'legend');
-            return true;
+          const imageUrl = canvas.toDataURL("image/png").replace("image/png", "image/octet-stream");
+          const base64temp = getBase64Image($('.esri-expand__content .legend-image')[0])
+          addImage(base64temp, 'left', 'legend');
+          return true;
         }
 
         function imageNotFound() {
@@ -399,40 +387,40 @@ $(function () {
     });
 
     // export left title
-    html2canvas($('#info-text-wrapper') , {
+    html2canvas($('#info-text-wrapper'), {
       allowTaint: true,
       useCORS: true,
       backgroundColor: null,
       removeContainer: true,
       foreignObjectRendering: true,
-      onrendered: function(canvas) {
-        const imageUrl  = canvas.toDataURL("image/png").replace("image/png", "image/octet-stream");
+      onrendered: function (canvas) {
+        const imageUrl = canvas.toDataURL("image/png").replace("image/png", "image/octet-stream");
         addImage(imageUrl, 'left', 'title');
       }
     });
 
     // export left controls
-    html2canvas($('.bottom-scenario-controls .left-scenario-controls') , {
+    html2canvas($('.bottom-scenario-controls .left-scenario-controls'), {
       allowTaint: true,
       useCORS: true,
       backgroundColor: null,
       removeContainer: true,
       foreignObjectRendering: true,
-      onrendered: function(canvas) {
-        const imageUrl  = canvas.toDataURL("image/png").replace("image/png", "image/octet-stream");
+      onrendered: function (canvas) {
+        const imageUrl = canvas.toDataURL("image/png").replace("image/png", "image/octet-stream");
         addImage(imageUrl, 'left', 'bottom-controls');
       }
     });
 
     // export attribution
-    html2canvas($('.esri-ui-inner-container.esri-ui-manual-container .esri-component.esri-attribution.esri-widget') , {
+    html2canvas($('.esri-ui-inner-container.esri-ui-manual-container .esri-component.esri-attribution.esri-widget'), {
       allowTaint: true,
       useCORS: true,
       backgroundColor: null,
       removeContainer: true,
       foreignObjectRendering: true,
-      onrendered: function(canvas) {
-        const imageUrl  = canvas.toDataURL("image/png").replace("image/png", "image/octet-stream");
+      onrendered: function (canvas) {
+        const imageUrl = canvas.toDataURL("image/png").replace("image/png", "image/octet-stream");
         addImage(imageUrl, 'left', 'attribution');
         const leftMapDoneEvent = new CustomEvent('last-left-image-added');
         window.dispatchEvent(leftMapDoneEvent);
@@ -441,7 +429,7 @@ $(function () {
   }
 
   // toggle filters click
-  $('#filters-toggle').click( function(e) {
+  $('#filters-toggle').click(function (e) {
     const target = $(e.target);
     if (target.hasClass('closed-filters')) {
       // ga event action, category, label
@@ -477,11 +465,11 @@ $(function () {
   })
 
   // enables time chart, map click events
-  $('#chartmap-wrapper').click( function(e) {
+  $('#chartmap-wrapper').click(function (e) {
     const target = $(e.target);
     const notDisabled = !target.hasClass('btn-default-disabled');
 
-    if ( notDisabled ) {
+    if (notDisabled) {
 
       // toggle button visual state
       toggleButton($(target));
@@ -494,12 +482,12 @@ $(function () {
   })
 
   // enables time chart, map click events
-  $('#chartmap-wrapper').keyup( function(e) {
+  $('#chartmap-wrapper').keyup(function (e) {
     const target = $(e.target);
     const notDisabled = !target.hasClass('btn-default-disabled');
 
-    if ( notDisabled ) {
-      if (e.keyCode === 13){
+    if (notDisabled) {
+      if (e.keyCode === 13) {
         const target = $(e.target);
 
         // toggle button visual state
@@ -516,18 +504,18 @@ $(function () {
   // update season map
   function updateSeason(targetval) {
     if (window.precipitationScenariosMap) {
-      $(window.precipitationScenariosMap).scenarioComparisonMap({ season: targetval });
+      $(window.precipitationScenariosMap).scenarioComparisonMap({season: targetval});
     }
   }
 
   // enables time annual, monthly click events
-  $('#time-wrapper').click( function(e) {
+  $('#time-wrapper').click(function (e) {
     const target = $(e.target);
     const notDisabled = !target.hasClass('btn-default-disabled');
     // not all variables can display monthly chart
     // when the variable cannot display monthly chart do
     // do execute the click event
-    if ( notDisabled ) {
+    if (notDisabled) {
       const val = target.data('value')
 
       // toggle button visual state
@@ -545,14 +533,14 @@ $(function () {
   })
 
   // enables time annual, monthly click events
-  $('#time-wrapper').keyup( function(e) {
-    if (e.keyCode === 13){
+  $('#time-wrapper').keyup(function (e) {
+    if (e.keyCode === 13) {
       const target = $(e.target);
       const notDisabled = !target.hasClass('btn-default-disabled');
       // not all variables can display monthly chart
       // when the variable cannot display monthly chart do
       // do execute the click event
-      if ( notDisabled ) {
+      if (notDisabled) {
         const val = target.data('value')
 
         // toggle button visual state
@@ -571,10 +559,10 @@ $(function () {
   })
 
   // in responsive mode the time is a dropdown this enables the change of the chart map
-  $('#chartmap-select-vis').bind('cs-changed', function(e) {
+  $('#chartmap-select-vis').bind('cs-changed', function (e) {
     const target = $(e.target);
     const notDisabled = !target.hasClass('btn-default-disabled');
-    if ( notDisabled ) {
+    if (notDisabled) {
       const val = $('#time-select-vis').data('value')
 
       // toggle button visual state
@@ -585,17 +573,17 @@ $(function () {
   })
 
   // event handler a for when map variable changes
-  $('#variable-select-vis').bind('cs-changed', function(e) {
+  $('#variable-select-vis').bind('cs-changed', function (e) {
     const target = $(e.target);
     const notDisabled = !target.hasClass('btn-default-disabled');
-    if ( notDisabled ) {
+    if (notDisabled) {
       const variable = $('#variable-select-vis').data('value')
       window.app.update({variable})
       // disable variables if they are valid time period
-      const isvalid =   jQuery.inArray( variable , validSeasonal);
-      if (  isvalid < 0 ) {
+      const isvalid = jQuery.inArray(variable, validSeasonal);
+      if (isvalid < 0) {
         const val = 'annual';
-        $(window.precipitationScenariosMap).scenarioComparisonMap({ season: val });
+        $(window.precipitationScenariosMap).scenarioComparisonMap({season: val});
         const target = $('.btn-selector.btn-annual');
         // toggle button visual state
         toggleButton(target);
@@ -655,26 +643,22 @@ $(function () {
 
       // change map variable
       if (window.precipitationScenariosMap) {
-        $(window.precipitationScenariosMap).scenarioComparisonMap({ variable });
+        $(window.precipitationScenariosMap).scenarioComparisonMap({variable});
       }
     }
   })
 
   // in responsive mode, event handler a for when season (time) variable changes
-  $('#time-select-vis').bind('cs-changed', function(e) {
+  $('#time-select-vis').bind('cs-changed', function (e) {
     const target = $(e.target);
     const notDisabled = !target.hasClass('btn-default-disabled');
-    if ( notDisabled ) {
+    if (notDisabled) {
       const val = $('#time-select-vis').data('value')
 
       // change map variable
       updateSeason(val);
     }
   })
-
-  function isNational(){
-    return (state['nav'] ===  'national-climate-maps' )
-  }
 
   $('#temperature-map').height($('#temperature-map').parent().height());
   if (typeof window.precipitationScenariosMap === 'undefined') {
@@ -687,7 +671,7 @@ $(function () {
       extent: mapExtent,
       center: mapcenter,
       zoom: mapZoom,
-      showCounties: true, // isNational() add isNational() if we re-institute national maps again
+      showCounties: true,
       layersloaded: function layersloaded() {
         $('#temperature-map').spinner('destroy');
         const rect = document.getElementById('map-wrap').getBoundingClientRect();
@@ -696,7 +680,7 @@ $(function () {
         enableCustomSelect('leftScenario-select');
         enableCustomSelect('rightScenario-select');
 
-        if ( variable !== undefined) {
+        if (variable !== undefined) {
           const $styledSelect = $('.select.variable-select div.select-styled');
           $(`li[rel="${variable}"]`).click();
 
@@ -714,44 +698,35 @@ $(function () {
         const messageElem = document.getElementById('map-message');
         if (messageElem) {
           if (!options.isCenterConus) {
-            
-              // get map parent element - which provides the correct dimensions for the map
-              const rect = document.getElementById('map-wrap').getBoundingClientRect();
-              
-              // messageElem.style.left = `${(rect.right - rect.left)/3}px`;
-              // messageElem.style.top = `-${((rect.bottom - rect.top)/2)}px`;
-              messageElem.style.left = `${(rect.right - rect.left)/3}px`;
-              messageElem.style.top = `-${((rect.bottom - rect.top)-6)}px`;
-              if (!isHawaii) {
-                //refer use to click chart button instead of link in message
-                messageElem.innerHTML = `The location on the map is outside the contiguous United States. Currently, there is no climate map data available for this location. If you are looking for climate information about this location, refer to the Chart tab.`
-              } else {
-                messageElem.innerHTML = `The location on the map is outside the contiguous United States. Currently, there is no climate map data available for this location.`
-              }
-              messageElem.classList.remove('d-none');
+
+            // get map parent element - which provides the correct dimensions for the map
+            const rect = document.getElementById('map-wrap').getBoundingClientRect();
+
+            // messageElem.style.left = `${(rect.right - rect.left)/3}px`;
+            // messageElem.style.top = `-${((rect.bottom - rect.top)/2)}px`;
+            messageElem.style.left = `${(rect.right - rect.left) / 3}px`;
+            messageElem.style.top = `-${((rect.bottom - rect.top) - 6)}px`;
+            if (!isHawaii) {
+              //refer use to click chart button instead of link in message
+              messageElem.innerHTML = `The location on the map is outside the contiguous United States. Currently, there is no climate map data available for this location. If you are looking for climate information about this location, refer to the Chart tab.`
+            } else {
+              messageElem.innerHTML = `The location on the map is outside the contiguous United States. Currently, there is no climate map data available for this location.`
+            }
+            messageElem.classList.remove('d-none');
           } else {
             messageElem.classList.add('d-none');
           }
-      }
-    },
+        }
+      },
 
-      change: function change(event) {
+      change: function change(event, options) {
         window.precipitationScenariosMap.scenarioComparisonMap("getShowSeasonControls") ? $("#precipitation-map-season").show(200) : $("#precipitation-map-season").hide();
+        window.app.update(options);
       }
     });
     window.precipitationScenariosMap.scenarioComparisonMap("getShowSeasonControls") ? $("#precipitation-map-season").show(200) : $("#precipitation-map-season").hide();
   }
 
-
-  if (!isNational()) {
-    window.stations = $('#temperature-map').scenarioComparisonMap(Object.assign({
-      // When state changes, just pass the current options along directly for this page.
-      // If we re-use the stationsMap widget on another page there may be more handling to do.
-      change: function change(event, options) {
-        window.app.update( options);
-      },
-    }, locationMapState ));
-  }
 
   function setMapSize() {
     $('#temperature-map').height($('#temperature-map').parent().height())
@@ -805,7 +780,7 @@ $(function () {
   })
 
   updateValidVariable();
-  window.addEventListener('location-changed',() => {
+  window.addEventListener('location-changed', () => {
     updateValidVariable();
   })
 });

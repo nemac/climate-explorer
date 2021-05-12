@@ -12,7 +12,6 @@ $(function () {
   const cityStateCE = state['city'];
   const countyCE = state['county'];
 
-  //$('#default-city-state').text(cityStateCE);
   $('#default-city-county').text(countyCE);
   $('#cards-search-input').attr("placeholder", cityStateCE);
 

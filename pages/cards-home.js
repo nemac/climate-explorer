@@ -39,11 +39,8 @@ export default (config) => `
       <div class="d-flex-row">
 
         <div id="info-text-wrapper" class="width-100">
-          <!-- <i class="fas fa-compass icon-info-box"></i> -->
           <i class="fas fa-th-large icon-info-box"></i>
           <span id="" class="text-info-box" >Select one of the following for</span>
-          <span id="default-city-state" class="text-info-box" ></span>
-          <span id="default-in" class="text-info-box" > in </span>
           <span id="default-city-county" class="text-info-box"></span>
         </div>
       </div>

@@ -8,23 +8,19 @@ $(function () {
   const area_label = state['area_label'];
   const is_alaska_area = state['is_alaska_area'];
 
-  //$('#default-city-state').text(city_label || '');
   $('#default-city-county').text(county_label || area_label);
   $('#cards-search-input').attr("placeholder", city_label || area_label);
 
 
-  if (!city_label) {
-    $('#default-in').addClass('d-none');
-  }
   if (!city_label && !area_label) {
-    $('#default-in,#default-dash').addClass('d-none');
+    $('#default-dash').addClass('d-none');
     $('#cards-search-input').addClass('nosearch');
     $('#cards-search-input').attr("placeholder", "Location missing, enter a county, city, or zip code");
   }
 
   if (city_label) {
     if (city_label.indexOf('County') > 0) {
-      $('#default-in,#default-dash').addClass('d-none');
+      $('#default-dash').addClass('d-none');
       $('#default-city-county').text('');
     }
   }
@@ -442,28 +438,31 @@ $(function () {
     $('#monthly-select-wrapper').addClass('d-none').removeClass('d-flex-center');
   }
 
-  // temp fix fo Hawaii leave out the fips...
-  window.cbl_chart = new ClimateByLocationWidget($("div#chart-123")[0], {
-    font: 'Roboto',
-    responsive: true,
-    frequency: 'annual',
-    timeperiod: '2025',
-    area_id: state['fips'] || state['area_id'],
-    variable: state['variable'] || 'tmax',
-    show_projected_rcp45: true,
-    show_projected_rcp85: true,
-    show_historical_modeled: true,
-    show_historical_observed: false,
-  });
+  Promise.allSettled([ClimateByLocationWidget.when_areas(), ClimateByLocationWidget.when_variables()]).then(
+      () => {
 
-  setTimeout(function () {
-    window.cbl_chart.resize();
-  }, 700);
+        window.cbl_chart = new ClimateByLocationWidget($("div#chart-123")[0], {
+          font: 'Roboto',
+          responsive: true,
+          frequency: 'annual',
+          timeperiod: '2025',
+          area_id: state['fips'] || state['area_id'],
+          variable: state['variable'] || 'tmax',
+          show_projected_rcp45: true,
+          show_projected_rcp85: true,
+          show_historical_modeled: true,
+          show_historical_observed: false,
+        });
 
-  $(window).resize(function () {
-    window.cbl_chart.resize();
-  });
+        setTimeout(function () {
+          window.cbl_chart.resize();
+        }, 700);
 
+        $(window).resize(function () {
+          window.cbl_chart.resize();
+        });
+
+      });
 
   $('#chart-info-row-btn .more-info.btn-default').click(function (e) {
     const target = $('#more-info-description');

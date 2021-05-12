@@ -58,8 +58,6 @@ ${secondary_header(config)}
 
         <div id="info-text-wrapper" class="width-90">
           <i class="fas fa-chart-line icon-info-box"></i>
-          <span id="default-city-state" class="text-info-box"></span>
-          <span id="default-in" class="text-info-box"> in </span>
           <span id="default-city-county" class="text-info-box"></span>
           <span id="default-dash" class="text-info-box"> - </span>
           <span id="default-chart-map-variable" class="text-info-box" data-value="tmax">Average Daily Maximum Temp (°F)</span>

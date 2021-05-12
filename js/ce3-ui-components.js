@@ -612,7 +612,6 @@ if (storageAvailable()) {
 }
 
 function updateValidVariable() {
-  console.log("updateValidVariable()");
   const state = window.app.state
   const cityStateCE = state['city'];
   const countyCE = state['county'];
@@ -624,7 +623,6 @@ function updateValidVariable() {
 
   if (cityStateCE) {
     if (!is_conus_area) {
-      $('#default-in').html('—');
       $('#download-observed-data').addClass('default-select-option-disabled');
       $('#download-observed-data').addClass('disabled');
       $('.btn-histobs').addClass('disabled');
@@ -665,7 +663,26 @@ function updateValidVariable() {
     if (!!state['variable']) {
       const selected_list_item = $(`.variable-select li[data-value="${state["variable"]}"]`);
       if (!!selected_list_item) {
-        $(`.select.variable-select div.select-styled`).text(selected_list_item.text().trim()).removeClass('active');
+
+        let is_valid_variable = true;
+
+        if(is_conus_area && (selected_list_item.hasClass('opt-only-ak') || selected_list_item.hasClass('opt-only-island'))) {
+          is_valid_variable = false;
+        } else if(is_island_area && (selected_list_item.hasClass('opt-only-ak') || selected_list_item.hasClass('opt-not-island'))) {
+          is_valid_variable = false;
+        } else if(is_alaska_area && (selected_list_item.hasClass('opt-not-ak') || selected_list_item.hasClass('opt-only-island'))) {
+          is_valid_variable = false;
+        }
+
+        if((is_conus_area && (selected_list_item.hasClass('opt-only-ak') || selected_list_item.hasClass('opt-only-island')))
+            || (is_island_area && (selected_list_item.hasClass('opt-only-ak') || selected_list_item.hasClass('opt-not-island')))
+            || (is_alaska_area && (selected_list_item.hasClass('opt-not-ak') || selected_list_item.hasClass('opt-only-island')))) {
+          window.app.update({variable: 'tmax'});
+        } else {
+          $(`.select.variable-select div.select-styled`).text(selected_list_item.text().trim()).removeClass('active');
+        }
+
+
       }
     }
     // $('.opt-not-ak').toggleClass('d-none', is_ak_area);
