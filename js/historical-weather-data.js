@@ -382,11 +382,6 @@ $(function () {
   })
 
   // this function Updates the chart title.
-  function updateTitle(chartText) {
-    $('#default-chart-map-variable').html(chartText);
-  }
-
-  // this function Updates the chart title.
   function updateStationText(text) {
     $('#default-station').html(text);
   }

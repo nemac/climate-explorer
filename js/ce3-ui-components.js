@@ -336,7 +336,6 @@ function forceResize() {
 
 // init tool helpers for variables in variable dropdowns on map and chart pages
 function initVariableToolTips() {
-  // const listWidth = -500 //(document.getElementById('variable-select-vis').offsetWidth - 24)* -1
   const tmaxReference = document.getElementById('tmax-tooltip');
   makeTip(tmaxReference);
 
@@ -663,26 +662,14 @@ function updateValidVariable() {
     if (!!state['variable']) {
       const selected_list_item = $(`.variable-select li[data-value="${state["variable"]}"]`);
       if (!!selected_list_item) {
-
-        let is_valid_variable = true;
-
-        if(is_conus_area && (selected_list_item.hasClass('opt-only-ak') || selected_list_item.hasClass('opt-only-island'))) {
-          is_valid_variable = false;
-        } else if(is_island_area && (selected_list_item.hasClass('opt-only-ak') || selected_list_item.hasClass('opt-not-island'))) {
-          is_valid_variable = false;
-        } else if(is_alaska_area && (selected_list_item.hasClass('opt-not-ak') || selected_list_item.hasClass('opt-only-island'))) {
-          is_valid_variable = false;
-        }
-
         if((is_conus_area && (selected_list_item.hasClass('opt-only-ak') || selected_list_item.hasClass('opt-only-island')))
             || (is_island_area && (selected_list_item.hasClass('opt-only-ak') || selected_list_item.hasClass('opt-not-island')))
             || (is_alaska_area && (selected_list_item.hasClass('opt-not-ak') || selected_list_item.hasClass('opt-only-island')))) {
           window.app.update({variable: 'tmax'});
-        } else {
-          $(`.select.variable-select div.select-styled`).text(selected_list_item.text().trim()).removeClass('active');
+          return
         }
-
-
+        $('.select.variable-select div.select-styled').text(selected_list_item.text().trim()).removeClass('active');
+        $('#default-chart-map-variable').text(selected_list_item.text().trim())
       }
     }
     // $('.opt-not-ak').toggleClass('d-none', is_ak_area);

@@ -64,11 +64,6 @@ $(function () {
   // to disable those variables from the user we use this constant
   const validSeasonal = ['tmax', 'tmin', 'pcpn'];
 
-  // this function Updates the chart title.
-  function updateTitle(chartText) {
-    $('#default-chart-map-variable').html(chartText);
-  }
-
   window.addEventListener('last-left-image-added', function (e) {
     exportLeft();
   })
@@ -578,21 +573,20 @@ $(function () {
     const notDisabled = !target.hasClass('btn-default-disabled');
     if (notDisabled) {
       const variable = $('#variable-select-vis').data('value')
+      $('#default-chart-map-variable').text(target.text().trim())
       window.app.update({variable})
       // disable variables if they are valid time period
       const isvalid = jQuery.inArray(variable, validSeasonal);
       if (isvalid < 0) {
-        const val = 'annual';
-        $(window.precipitationScenariosMap).scenarioComparisonMap({season: val});
+        $(window.precipitationScenariosMap).scenarioComparisonMap({season: 'annual'});
         const target = $('.btn-selector.btn-annual');
         // toggle button visual state
         toggleButton(target);
-
         // change select dropdowns for responsive mode
         setSelectFromButton(target);
 
         // change map variable
-        updateSeason(val);
+        updateSeason('annual');
 
         $('.btn-summer').addClass('btn-default-disabled');
         $('.btn-summer').addClass('disabled-seasonal');
@@ -638,9 +632,6 @@ $(function () {
 
       }
 
-      // update the text
-      updateTitle($('#variable-select-vis').text());
-
       // change map variable
       if (window.precipitationScenariosMap) {
         $(window.precipitationScenariosMap).scenarioComparisonMap({variable});
@@ -666,7 +657,7 @@ $(function () {
     const variable = state['variable'] || 'tmax';
 
     window.precipitationScenariosMap = $('#temperature-map').scenarioComparisonMap({
-      variable: 'tmax',
+      variable: variable,
       season: 'annual',
       extent: mapExtent,
       center: mapcenter,
@@ -719,9 +710,9 @@ $(function () {
         }
       },
 
-      change: function change(event, options) {
+      change: function change(event, {variable, lat, lon, zoom}) {
         window.precipitationScenariosMap.scenarioComparisonMap("getShowSeasonControls") ? $("#precipitation-map-season").show(200) : $("#precipitation-map-season").hide();
-        window.app.update(options);
+        window.app.update({variable, lat, lon, zoom});
       }
     });
     window.precipitationScenariosMap.scenarioComparisonMap("getShowSeasonControls") ? $("#precipitation-map-season").show(200) : $("#precipitation-map-season").hide();

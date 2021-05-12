@@ -311,15 +311,13 @@ $(function () {
   // binds update of chart variable to change of selector
   $('#variable-select-vis').bind('cs-changed', function (e) {
     const variable = $('#variable-select-vis').data('value');
+    $('#default-chart-map-variable').text($(e.target).text().trim())
     // update the chart based on char variable
     window.cbl_chart.update({
       variable
     });
 
     window.app.update({variable});
-
-    // update the text
-    updateTitle($('#variable-select-vis').text());
 
     // disable variables if they are valid time period
     const isvalid = jQuery.inArray(variable, validMonthly);
@@ -362,11 +360,6 @@ $(function () {
   // this function forces a map legend button to be selected css class
   function setSelected(selector, value = true) {
     $(selector).toggleClass('selected', value);
-  }
-
-  // this function Updates the chart title.
-  function updateTitle(chartText) {
-    $('#default-chart-map-variable').html(chartText);
   }
 
   // this function disables variables when monthly period is selected
