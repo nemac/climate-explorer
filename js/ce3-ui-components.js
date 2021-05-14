@@ -101,8 +101,10 @@ function reEnableSelectNewItems(uniqueSelector) {
 
 // function enables custom selection dropdown from a li element
 function enableCustomSelect(uniqueSelector) {
+
   const $styledSelect = $(`.select.${uniqueSelector} div.select-styled`);
   // if disabled exit and do not enable dropdown
+
   if ($styledSelect.hasClass('disabled')) {
     return null;
   }
@@ -145,6 +147,7 @@ function enableCustomSelect(uniqueSelector) {
 
   // get list items so we can add user interactions
   const $list = $(`.select.${uniqueSelector} ul`);
+
   const $listItems = $list.children('li[role="option"]');
 
   // enable click for options
@@ -266,6 +269,7 @@ function enableCustomSelect(uniqueSelector) {
     $styledSelect.removeClass('active');
     $list.hide();
   });
+
 }
 
 // function recreates tool tip for selected variable

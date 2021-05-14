@@ -481,8 +481,8 @@
 <div class="select leftScenario-select">
   <div id="leftScenario-select-vis" class="select-styled"  data-value="historical">Historical</div>
   <ul class="select-options" role="radiogroup">
-    <li role="radio" id="leftScenario-select"  data-value="historical" class="default-select-option leftScenario-option-historical">Historical</li>
-    <li role="radio" id="leftScenario-select"  data-value="rcp45" class="default-select-option leftScenario-option-lower">Lower Emissions</li>
+    <li role="option" id="leftScenario-select"  data-value="historical" class="default-select-option leftScenario-option-historical">Historical</li>
+    <li role="option" id="leftScenario-select"  data-value="rcp45" class="default-select-option leftScenario-option-lower">Lower Emissions</li>
   </ul>
 </div>
 </div>
