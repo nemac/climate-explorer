@@ -84,11 +84,65 @@ ${secondary_header(config)}
       </div>
     </div>
 
+
+
+
+
+
+
+
+    <div tabindex="4" id="data-card" class="next-steps-nar card-xl d-flex d-flex-column">
+      <div id="card-text" class="card-text d-flex-row width-100">
+        <div id="card-title-icon" class="d-flex-row width-100">
+          <div class="card-title-icon-wrap">
+            <i class="fas fa-map-marked-alt icon-info-box"></i>
+            <div class="card-title-wrap">
+                 <span class="card-title">
+                     At Risk Neighborhoods
+                 </span>
+              <div class="help-text"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="card-controls" style="display: none;">
+      </div>
+      <div id="card-description" class="d-flex-column width-100" style="padding:0px;border-top:1px solid #ccc;">
+        <div class="disabled-text">Data is not available for this location</div>
+      </div>
+      <div class="footer">
+        <div style="flex: 1">
+          
+        </div>
+        <a class="tool-link" href="https://headwaterseconomics.org/apps/neighborhoods-at-risk" target="_blank" data-rel="noreferrer">Discover more with Neighborhoods At Risk</a>
+      </div>
+    </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
     <a id="next-steps-option-2-secretlink" href="https://www.google.com/" target="_blank" class="d-none"></a>
     <div tabindex="3" id="data-card" class="card-empty-data card-xl d-flex d-flex-column">
     </div>
 
+
+
   </div>
+
+
 </div>
 
 ${nav_footer(config)}

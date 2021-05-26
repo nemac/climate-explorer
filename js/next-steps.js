@@ -372,4 +372,58 @@ $(function () {
     $('.indicator-range,.historic-range').toggle(showRange);
     $('.indicator-avg,.historic-avg').toggle(!showRange);
   }
+
+  // Neighborhoods-at-risk
+  if (fips) {
+    $(".next-steps-nar .help-text").html(`
+      ${countyCE} has -- census tracts where vulnerabilities to climate change exceed the county median.
+    `);   
+
+    const appLink = `https://headwaterseconomics.org/apps/neighborhoods-at-risk/${parseInt(fips,10).toString()}/explore/map`;
+    $(".next-steps-nar .tool-link").attr('href',appLink);
+    
+    $(".next-steps-nar #card-description").html(`
+      <div class="next-steps-spinner-container" style="position: absolute; width: 100%; height: 100%; left: 0px; top: 0px; z-index: 1000000;">
+        <style>
+          .next-steps-spinner { margin-top: -2.5rem; border-radius: 100%;border-style: solid;border-width: 0.25rem;height: 5rem;width: 5rem;animation: basic 1s infinite linear; border-color: rgba(0, 0, 0, 0.2);border-top-color: rgba(0, 0, 0, 1); }@keyframes basic {0%   { transform: rotate(0); }100% { transform: rotate(359.9deg); }ß} 
+          .next-steps-spinner-container {display:flex; flex-flow: column; align-items: center; justify-content: center; background-color: rgba(255,255,255, 0.4); }   
+        </style>
+        <div class="next-steps-spinner"></div></div>
+    `);
+
+    $.getJSON(`https://api.headwaterseconomics.org/narWidget/${parseInt(fips,10).toString()}`, (function (data) {
+
+      const width = $(".next-steps-nar #card-description")[0].offsetWidth;
+      const height = $(".next-steps-nar #card-description")[0].offsetHeight;
+      const mapSrc = data.mapImg.replace('{width}',width.toString()).replace('{height}',height.toString());
+
+      $(".next-steps-nar .help-text").html(`
+        ${countyCE} has ${data.tractsCount} census tracts where vulnerabilities to climate change exceed the county median.
+      `); 
+
+      $(".next-steps-nar #card-description").html(`
+        <div style="padding:0px;">
+          <a href="${appLink}" target="_blank" data-rel="noreferrer">
+            <img style="width:${width}px;height:${height}px;margin:0px;" src="${encodeURI(mapSrc)}" alt="">
+          </a>
+          <div style="position:absolute;bottom:80px;left:5px;display:flex;flex-direction:row;padding:5px;border:1px solid #ccc; background:white;pointer-events:none;">
+            <svg viewBox="0 0 16 16" width="16" height="16">
+              <rect
+                x="0.5"
+                y="0.5"
+                width="15"
+                height="15"
+                style="fill:rgba(61, 113, 153, 0.45);stroke-width:1;stroke:rgb(61, 113, 153);"
+              />
+            </svg>
+            <label style="padding-left:10px;color:#848484;">Vulnerable Tract</label>
+          </div>
+        </div
+      `);
+
+    }))
+    
+  }
+
+
 });
