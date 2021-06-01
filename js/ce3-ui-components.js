@@ -627,8 +627,10 @@ function updateValidVariable() {
 
   if (cityStateCE) {
     if (!is_conus_area) {
+
       $('#download-observed-data').addClass('default-select-option-disabled');
       $('#download-observed-data').addClass('disabled');
+      $('#download-observed-data').addClass('d-none');
 
       // $('.btn-histobs').addClass('disabled');
 
@@ -703,6 +705,18 @@ function updateValidVariable() {
     // $('.opt-only-ak').removeClass('d-none', !is_ak_area);
     // $('.opt-not-island').toggleClass('d-none', is_island_area);
     // $('.opt-only-island').removeClass('d-none', !is_island_area);
+  } else {
+
+    //Hawaii islands have city null, thus it was never adding/removing these classes when visiting hawaii cities.
+
+    if(!is_conus_area && is_island_area) {
+      $('.btn-histobs').removeClass('d-flex-center');
+      $('.btn-histobs').addClass('d-none');
+
+      $('#download-observed-data').addClass('default-select-option-disabled');
+      $('#download-observed-data').addClass('disabled');
+      $('#download-observed-data').addClass('d-none');
+    }
   }
 }
 
