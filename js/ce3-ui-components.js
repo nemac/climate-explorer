@@ -629,9 +629,19 @@ function updateValidVariable() {
     if (!is_conus_area) {
       $('#download-observed-data').addClass('default-select-option-disabled');
       $('#download-observed-data').addClass('disabled');
-      $('.btn-histobs').addClass('disabled');
+
+      // $('.btn-histobs').addClass('disabled');
+
+      $('.btn-histobs').removeClass('d-flex-center');
+      $('.btn-histobs').addClass('d-none');
+
       $('.inner-histobs').addClass('disabled');
-      $('.btn-lower-emissions').addClass('disabled');
+
+      // $('.btn-lower-emissions').addClass('disabled');
+
+      $('.btn-lower-emissions').removeClass('d-flex-center');
+      $('.btn-lower-emissions').addClass('d-none');
+
       $('.inner-lower-emissions').addClass('disabled');
       $('.btn-lower-emissions').removeClass('selected');
       // $('.opt-not-ak').removeClass('default-select-option-disabled');
