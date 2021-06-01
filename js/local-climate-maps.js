@@ -708,9 +708,9 @@ $(function () {
             messageElem.style.top = `-${((rect.bottom - rect.top) - 6)}px`;
             if (!isHawaii) {
               //refer use to click chart button instead of link in message
-              messageElem.innerHTML = `The location on the map is outside the contiguous United States. Currently, there is no climate map data available for this location. If you are looking for climate information about this location, refer to the Chart tab.`
+              messageElem.innerHTML = `Mapped climate data are available for counties in the contiguous United States. For locations outside of this area, click the Graph button to view data.`
             } else {
-              messageElem.innerHTML = `The location on the map is outside the contiguous United States. Currently, there is no climate map data available for this location.`
+              messageElem.innerHTML = `Mapped climate data are available for counties in the contiguous United States. For locations outside of this area, click the Graph button to view data.`
             }
             messageElem.classList.remove('d-none');
           } else {

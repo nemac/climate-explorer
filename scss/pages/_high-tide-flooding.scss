@@ -282,7 +282,7 @@
          #station-info-row {
            @include transition(0.5s);
            @include transition-property(all);
-           @include transition-timing-function(ease-out)
+           @include transition-timing-function(ease-out);
 
            #more-info-description {
              padding-left: $ce3-default-padding/2;

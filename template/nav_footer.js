@@ -68,10 +68,10 @@ export default (config) => `
               <i class="fas fa-chart-line"></i>
             </div>
             <div class="nav-footer-label">
-              Climate Charts
+              Climate Graphs
             </div>
             <div class="nav-footer-label-smallscreen">
-              Climate Charts
+              Climate Graphs
             </div>
             <div class="nav-footer-label-verysmallscreen">
               Charts

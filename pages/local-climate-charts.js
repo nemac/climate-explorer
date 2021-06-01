@@ -89,7 +89,7 @@ ${secondary_header(config)}
         <div id="chartmap-wrapper" class="padding-horizontal-half padding-vertical-half default-btn-height d-flex-center width-15">
           <div tabindex="100" role="button" class="btn-selector btn-chart btn-default-selected circle-box-left d-flex-center width-50" data-value="chart"
                data-page="local-climate-charts" data-sel="chartmap-select-vis">
-            Chart
+            Graph
           </div>
           <div tabindex="101" role="button" class="btn-selector btn-map btn-default circle-box-right d-flex-center width-50" data-page="local-climate-maps"
                data-value="map"  data-sel="chartmap-select-vis">

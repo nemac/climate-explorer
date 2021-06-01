@@ -74,7 +74,7 @@ export default (config) => `
           <a id="national-climate-maps-secretlink-forcharts" href="/historical-weather-data" class="d-none"></a>
           <div id="chartmap-wrapper" class="padding-horizontal-half padding-vertical-half default-btn-height d-flex-center width-20 disabled">
             <div tabindex="5003" role="button" class="btn-selector btn-chart btn-default circle-box-left d-flex-center width-50" data-value="chart" data-page="historical-thresholds" data-sel="chartmap-select-vis">
-              Chart
+              Graph
             </div>
             <div tabindex="5004" role="button" class="btn-selector btn-default-selected circle-box-right d-flex-center width-50"  data-page="historical-thresholds"  data-value="map" data-sel="chartmap-select-vis">
               Map

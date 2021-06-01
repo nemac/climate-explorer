@@ -82,7 +82,7 @@ export default (config) => `
          <div id="card-description" class="d-flex-column width-100">
            Compare past and projected future conditions in your county.
          </div>
-         <div class="disabled-text">Data is not available for this location</div>
+         <div class="disabled-text">Maps are not available for this location</div>
        </div>
     </div>
 
@@ -93,7 +93,7 @@ export default (config) => `
        <div id="card-text" class="card-text d-flex-row width-100">
          <div id="card-title-icon" class="d-flex-row width-100">
            <div class="card-title" >
-             Climate Charts
+             Climate Graphs
            </div>
            <i class="card-icon fas fa-chart-line"></i>
          </div>
@@ -118,7 +118,7 @@ export default (config) => `
          <div id="card-description" class="d-flex-column width-100">
            Explore the number of days per year with high-tide floods.
          </div>
-         <div class="disabled-text">Data is not available for this location</div>
+         <div class="disabled-text">High-tide flooding data not available for this location</div>
        </div>
     </div>
 
