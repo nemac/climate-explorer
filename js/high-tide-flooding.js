@@ -720,6 +720,9 @@ $(function () {
     // show description of charts
     if (target.hasClass('d-none')) {
       target.removeClass('d-none');
+
+      console.log(state);
+
       // $('#chart-info-row-btn .more').addClass('d-none');
       // $('#chart-info-row-btn .more-icon').addClass('d-none');
       //

@@ -475,6 +475,16 @@ $(function () {
       $('#chart-info-row .less').removeClass('d-none');
       $('#chart-info-row .less-icon').removeClass('d-none');
 
+      if(state.is_alaska_area) {
+        if(!$('.how-to-read-conus').hasClass('d-none')) {
+          $('.how-to-read-conus').addClass('d-none');
+        }
+      } else if(state.is_conus_area) {
+        if(!$('.how-to-read-ak').hasClass('d-none')) {
+          $('.how-to-read-ak').addClass('d-none');
+        }
+      }
+
       // ga event action, category, label
       googleAnalyticsEvent('click', 'toggle-chart-info', 'open');
       // hide description of charts
