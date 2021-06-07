@@ -2,7 +2,7 @@
 
 // get state location information from URL state management
 // some state management is in main.js and ce.js
-// some ui utility code is in ce3-ui-components.js
+// some ui utility code is in ce3_ui_components.js
 $(function () {
   const topHazardsDataURLTemplate = '/data/top_hazards/{fips}.json';
   const state = window.app.state;

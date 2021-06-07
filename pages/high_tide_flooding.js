@@ -9,7 +9,7 @@ export default (config) => `
 <head>
   ${head(config)}
   <meta property="fb:app_id" content="187816851587993">
-  <meta property="og:url" content="high-tide-flooding">
+  <meta property="og:url" content="high_tide_flooding">
   <meta property="og:type" content="article">
   <meta property="og:title" content="Location data for Buncombe County, NC">
   <meta property="og:description" content="The Climate Explorer allows you to view historical and projected climate variables and assess the impacts of climate change on the things you care about">
@@ -28,7 +28,7 @@ export default (config) => `
         <input tabindex="1" id="cards-search-input" type="text" class="location-mapper input-inner-default border-none default-btn-height" autocomplete="off" placeholder="Enter county, city, or zip code">
         <span class="icon icon-search search-default float-right padding-default"></span>
         <div id="clear-location-wrapper" class="">
-          <span id="clear-location" data-page="high-tide-flooding" class="fas fa-times-circle"></span>
+          <span id="clear-location" data-page="high_tide_flooding" class="fas fa-times-circle"></span>
         </div>
       </div>
 
@@ -74,10 +74,10 @@ export default (config) => `
         <div id="filters-row" class="d-flex-row flex-justify padding-top padding-bottom d-flex-left" >
 
           <div id="chartmap-wrapper" class="padding-horizontal-half padding-vertical-half default-btn-height d-flex-center width-20 disabled">
-            <div tabindex="5004" role="button" class="btn-selector btn-chart btn-default circle-box-left d-flex-center width-50" data-value="chart" data-page="high-tide-flooding" data-sel="chartmap-select-vis">
+            <div tabindex="5004" role="button" class="btn-selector btn-chart btn-default circle-box-left d-flex-center width-50" data-value="chart" data-page="high_tide_flooding" data-sel="chartmap-select-vis">
               Graph
             </div>
-            <div tabindex="5005" role="button" class="btn-selector btn-map btn-default-selected circle-box-right d-flex-center width-50"  data-page="high-tide-flooding"  data-value="map" data-sel="chartmap-select-vis">
+            <div tabindex="5005" role="button" class="btn-selector btn-map btn-default-selected circle-box-right d-flex-center width-50"  data-page="high_tide_flooding"  data-value="map" data-sel="chartmap-select-vis">
               Map
             </div>
           </div>
@@ -86,8 +86,8 @@ export default (config) => `
             <div class="select chartmap-select">
               <div tabindex="5006" id="chartmap-select-vis" class="select-styled" data-value="chart">Map</div>
               <ul class="select-options" role="radiogroup">
-                <li role="radio" tabindex="5007" id="chartmap-select-chart-link" data-value="chart" class="default-select-option" data-page="high-tide-flooding">Chart</li>
-                <li role="radio" tabindex="5008" id="chartmap-select-map-link" data-value="map" class="default-select-option" data-page="high-tide-flooding">Map</li>
+                <li role="radio" tabindex="5007" id="chartmap-select-chart-link" data-value="chart" class="default-select-option" data-page="high_tide_flooding">Chart</li>
+                <li role="radio" tabindex="5008" id="chartmap-select-map-link" data-value="map" class="default-select-option" data-page="high_tide_flooding">Map</li>
               </ul>
             </div>
           </div>
@@ -105,8 +105,8 @@ export default (config) => `
             <div class="select tidalzoom-select">
               <div tabindex="5011" id="tidalzoom-select-vis" class="select-styled" data-value="hm">Historical & Modeled</div>
               <ul class="select-options">
-                <li tabindex="5012" id="tidalzoom-select-chart-link" data-value="hm" class="default-select-option" data-page="high-tide-flooding">Historical & Modeled</li>
-                <li tabindex="5013" id="tidalzoom-select-map-link" data-value="h" class="default-select-option" data-page="high-tide-flooding" >Historical</li>
+                <li tabindex="5012" id="tidalzoom-select-chart-link" data-value="hm" class="default-select-option" data-page="high_tide_flooding">Historical & Modeled</li>
+                <li tabindex="5013" id="tidalzoom-select-map-link" data-value="h" class="default-select-option" data-page="high_tide_flooding" >Historical</li>
               </ul>
             </div>
           </div>
@@ -187,9 +187,9 @@ export default (config) => `
 
     <script src="https://unpkg.com/@esri/arcgis-to-geojson-utils"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Turf.js/5.1.6/turf.min.js" integrity="sha256-Nhtik+K3xORhs5S9o0qlol4eRNB9O5OyTOJqbLucPk8=" crossorigin="anonymous"></script>
-    <script type="text/javascript" src="/js/stationsMap.js"></script>
+    <script type="text/javascript" src="/js/stations_map.js"></script>
     <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
-    <script type="text/javascript" src="/js/stationAnnualGraph.js"></script>
+    <script type="text/javascript" src="/js/station_annual_graph.js"></script>
 
     <script type="text/javascript" src="/vendor/tidalstationswidget.js"></script>
     
@@ -197,9 +197,9 @@ export default (config) => `
     crossorigin="anonymous"></script>
     <script src="https://unpkg.com/terraformer-arcgis-parser@1.0.5/terraformer-arcgis-parser.js"
     integrity="sha384-duFUjKTSNoxEspdJNwr83CUgRxclf0ueKJB9DU/Vbit6bfWgzvZsHW6H1JLBBXhp" crossorigin="anonymous"></script>
-    <script type="text/javascript" src="/js/ce3-ui-components.js"></script>
+    <script type="text/javascript" src="/js/ce3_ui_components.js"></script>
 
-    <script type="text/javascript" src="/js/high-tide-flooding.js"></script>
+    <script type="text/javascript" src="/js/high_tide_flooding.js"></script>
 
     <script type="text/javascript" src="/js/secondary_header.js"></script>
   </body>

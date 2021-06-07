@@ -1305,7 +1305,7 @@
               const link = document.querySelector('#national-climate-maps-secretlink-forcharts');
               const params = `?fips=${this.options.county}&county=${this.options.countyName}`
               // set the url and search params
-              let url = `${$(link).attr('href')}/?fips=${this.options.county}&lat=${event.mapPoint.latitude}&lon=${event.mapPoint.longitude}&city=${this.options.countyName}  County, ${this.options.stateName} County&county=${this.options.countyName} County&nav=local-climate-charts`
+              let url = `${$(link).attr('href')}/?fips=${this.options.county}&lat=${event.mapPoint.latitude}&lon=${event.mapPoint.longitude}&city=${this.options.countyName}  County, ${this.options.stateName} County&county=${this.options.countyName} County&nav=climate_graphs`
               // override for alaska there are no counties so remove count text
               if (county.attributes['STATE_NAME'] === 'Alaska') {
                 // get borrough or census area designation from fips_codes.json
@@ -1330,7 +1330,7 @@
 
                   const akCounty = jsondata.AK.filter( element => element.fips === county.attributes['FIPS'] );
                   const akCountLabel = akCounty[0].label;
-                  url = `${$(link).attr('href')}/?fips=${fips}&lat=${event.mapPoint.latitude}&lon=${event.mapPoint.longitude}&city=${county.attributes['NAME']}, AK&county=${akCountLabel}&nav=local-climate-charts`
+                  url = `${$(link).attr('href')}/?fips=${fips}&lat=${event.mapPoint.latitude}&lon=${event.mapPoint.longitude}&city=${county.attributes['NAME']}, AK&county=${akCountLabel}&nav=climate_graphs`
                   $(link).attr('href', url);
                   link.click();
                 });

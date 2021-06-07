@@ -1,6 +1,6 @@
 import head from '../template/head'
 import secondary_header from '../template/secondary_header';
-import variable_selector from '../template/variable-selector';
+import variable_selector from '../template/variable_selector';
 import footer from '../template/footer';
 import nav_footer from '../template/nav_footer';
 
@@ -28,7 +28,7 @@ export default (config) => `
           <input tabindex="1" id="cards-search-input" type="text" class="location-mapper input-inner-default border-none default-btn-height" autocomplete="off" placeholder="Enter county, city, or zip code">
           <span class="icon icon-search search-default float-right padding-default"></span>
           <div id="clear-location-wrapper" class="">
-            <span id="clear-location" data-page="national-climate-maps" class="fas fa-times-circle"></span>
+            <span id="clear-location" data-page="national_climate_maps" class="fas fa-times-circle"></span>
           </div>
         </div>
 
@@ -92,7 +92,7 @@ export default (config) => `
               ${variable_selector(config)}
             </div>
 
-            <a id="national-climate-maps-secretlink-forcharts" href="/local-climate-charts" class="d-none"></a>
+            <a id="national-climate-maps-secretlink-forcharts" href="/climate_graphs" class="d-none"></a>
 
             <div id="time-wrapper" class="padding-horizontal-half padding-vertical-half default-btn-height d-flex-center width-30">
               <div tabindex="101" role="button" class="btn-selector btn-annual btn-default-selected circle-box-left d-flex-center width-50" data-value="annual" data-sel="time-select-vis">
@@ -153,9 +153,9 @@ ${footer(config)}
 <script src="https://unpkg.com/terraformer-arcgis-parser@1.0.5/terraformer-arcgis-parser.js"
         integrity="sha384-duFUjKTSNoxEspdJNwr83CUgRxclf0ueKJB9DU/Vbit6bfWgzvZsHW6H1JLBBXhp" crossorigin="anonymous"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/0.4.1/html2canvas.min.js" integrity="sha256-c3RzsUWg+y2XljunEQS0LqWdQ04X1D3j22fd/8JCAKw=" crossorigin="anonymous"></script>
-<script type="text/javascript" src="/js/scenarioComparisonMap.js"></script>
-<script type="text/javascript" src="/js/ce3-ui-components.js"></script>
-<script type="text/javascript" src="/js/local-climate-maps.js"></script>
+<script type="text/javascript" src="/js/scenario_comparison_map.js"></script>
+<script type="text/javascript" src="/js/ce3_ui_components.js"></script>
+<script type="text/javascript" src="/js/climate_maps.js"></script>
 <script type="text/javascript" src="/js/secondary_header.js"></script>
 
 </body>

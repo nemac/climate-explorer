@@ -63,7 +63,7 @@ export default (config) => `
 
         <div class="padding-horizontal d-flex-fill d-flex-row nav-footer-items">
 
-          <div tabindex="10002" id="local-climate-charts-nav-footer" class="d-flex d-flex-bottom padding-horizontal d-flex-column nav-footer-item" role="button" data-page="local-climate-charts">
+          <div tabindex="10002" id="local-climate-charts-nav-footer" class="d-flex d-flex-bottom padding-horizontal d-flex-column nav-footer-item" role="button" data-page="climate_graphs">
             <div class="nav-footer-icon">
               <i class="fas fa-chart-line"></i>
             </div>
@@ -78,7 +78,7 @@ export default (config) => `
             </div>
           </div>
 
-          <div tabindex="10003" id="local-climate-maps-nav-footer" class="d-flex d-flex-bottom padding-horizontal d-flex-column nav-footer-item" role="button" data-page="local-climate-maps">
+          <div tabindex="10003" id="local-climate-maps-nav-footer" class="d-flex d-flex-bottom padding-horizontal d-flex-column nav-footer-item" role="button" data-page="climate_maps">
             <div class="nav-footer-icon">
               <i class="fas fa-map-marked-alt"></i>
             </div>
@@ -126,7 +126,7 @@ export default (config) => `
 
         <div id="expanded-wrapper-nav-footer" class="padding-horizontal d-flex-row nav-footer-items">
 
-          <div tabindex="10005" id="historical-weather-data-nav-footer" class="d-flex d-flex-bottom padding-horizontal d-flex-column nav-footer-item" role="button" data-page="historical-weather-data">
+          <div tabindex="10005" id="historical-weather-data-nav-footer" class="d-flex d-flex-bottom padding-horizontal d-flex-column nav-footer-item" role="button" data-page="historical_weather_data">
             <div class="nav-footer-icon">
               <i class="fas fa-chart-area"></i>
             </div>
@@ -141,7 +141,7 @@ export default (config) => `
             </div>
           </div>
 
-          <div tabindex="10006" id="historical-thresholds-nav-footer" class="d-flex d-flex-center d-flex-bottom padding-horizontal d-flex-column nav-footer-item" role="button" data-page="historical-thresholds">
+          <div tabindex="10006" id="historical-thresholds-nav-footer" class="d-flex d-flex-center d-flex-bottom padding-horizontal d-flex-column nav-footer-item" role="button" data-page="historical_thresholds">
             <div class="nav-footer-icon">
               <i class="fas fa-chart-bar"></i>
             </div>
@@ -156,7 +156,7 @@ export default (config) => `
             </div>
           </div>
 
-          <div tabindex="10007" id="high-tide-flooding-nav-footer" class="d-flex d-flex-bottom padding-horizontal d-flex-column nav-footer-item" role="button" data-page="high-tide-flooding">
+          <div tabindex="10007" id="high-tide-flooding-nav-footer" class="d-flex d-flex-bottom padding-horizontal d-flex-column nav-footer-item" role="button" data-page="high_tide_flooding">
             <div class="nav-footer-icon">
               <i class="fas fa-water"></i>
             </div>

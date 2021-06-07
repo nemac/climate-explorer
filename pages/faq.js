@@ -194,21 +194,21 @@ export default (config) => `
           <p>
             The LOCA dataset offers downscaled CMIP5 projections for the contiguous U.S. plus portions of Canada and Mexico, but not for Alaska, Hawai'i, or other U.S. Territories. We have added projections for Alaska from the <a href="https://www.snap.uaf.edu/" target="_blank">Scenarios Network for Alaska + Arctic Planning (SNAP)</a>. Additionally, climate projections are available Hawai'i and other U.S. Territories:
           <ul style="list-style: none">
-          <li><a  href="/cards-home/?area-id=hawaii_north&area-label=Northern+Hawaiian+Islands+%28Oahu%2C+Kauai%29&lat=20.4&lon=-160.8" target="_blank">Northern Hawaiian Islands (Oahu, Kauai)</a></li>
-          <li><a  href="/cards-home/?area-id=hawaii_south&area-label=Southern+Hawaiian+Islands+%28Hawai%27i%2C+Maui%2C+Molokai%29&lat=18.7&lon=-157.4" target="_blank">Southern Hawaiian Islands (Hawai'i, Maui, Molokai)</a></li>
-          <li><a  href="/cards-home/?area-id=puerto_rico_ne&area-label=Northeastern+Puerto+Rico+%28San+Juan%2C+Caguas%29&lat=18.03356&lon=-66.3373" target="_blank">Northeastern Puerto Rico (San Juan, Caguas)</a></li>
-          <li><a  href="/cards-home/?area-id=puerto_rico_sw&area-label=Southwestern+Puerto+Rico+%28Mayaguez%2C+Ponce%29&lat=17.454&lon=-68.0816" target="_blank">Southwestern Puerto Rico (Mayaguez, Ponce)</a></li>
-          <li><a  href="/cards-home/?area-id=guam&area-label=Guam&lat=13.2&lon=144.4" target="_blank">Guam</a></li>
-          <li><a  href="/cards-home/?area-id=us_virgin_islands&area-label=US+Virgin+Islands&lat=17.596903&lon=-64.927612" target="_blank">US Virgin Islands</a></li>
-          <li><a  href="/cards-home/?area-id=american_samoa&area-label=American+Samoa&lat=-14.552944&lon=-170.874588" target="_blank">American Samoa</a></li>
-          <li><a  href="/cards-home/?area-id=midway_islands&area-label=Midway+Islands&lat=28.1976585966&lon=-177.389597134" target="_blank">Midway Islands</a></li>
-          <li><a  href="/cards-home/?area-id=northern_mariana_islands&area-label=Northern+Mariana+Islands&lat=14.0&lon=143.51" target="_blank">Northern Mariana Islands</a></li>
-          <li><a  href="/cards-home/?area-id=baker_island&area-label=Baker+Island+%28uninhabited%29&lat=0.19033437683&lon=-176.485829231" target="_blank">Baker Island (uninhabited)</a></li>
-          <li><a  href="/cards-home/?area-id=johnston_atoll&area-label=Johnston+Atoll+%28uninhabited%29&lat=16.7210147164&lon=-169.549509244" target="_blank">Johnston Atoll (uninhabited)</a></li>
-          <li><a  href="/cards-home/?area-id=jarvis_island&area-label=Jarvis+Island+%28uninhabited%29&lat=-0.388767184358&lon=-160.029977994" target="_blank">Jarvis Island (uninhabited)</a></li>
-          <li><a  href="/cards-home/?area-id=palmyra_atoll_kingman_reef&area-label=Palmyra+Atoll+and+Kingman+Reef+%28uninhabited%29&lat=5.550381&lon=-162.877808" target="_blank">Palmyra Atoll and Kingman Reef (uninhabited)</a></li>
-          <li><a  href="/cards-home/?area-id=howland_island&area-label=Howland+Island+%28uninhabited%29&lat=0.790187893157&lon=-176.640492317" target="_blank">Howland Island (uninhabited)</a></li>
-          <li><a  href="/cards-home/?area-id=wake_island&area-label=Wake Island&lat=19.2755801457&lon=166.619395379" target="_blank">Wake Island</a></li>
+          <li><a  href="/cards_home/?area-id=hawaii_north&area-label=Northern+Hawaiian+Islands+%28Oahu%2C+Kauai%29&lat=20.4&lon=-160.8" target="_blank">Northern Hawaiian Islands (Oahu, Kauai)</a></li>
+          <li><a  href="/cards_home/?area-id=hawaii_south&area-label=Southern+Hawaiian+Islands+%28Hawai%27i%2C+Maui%2C+Molokai%29&lat=18.7&lon=-157.4" target="_blank">Southern Hawaiian Islands (Hawai'i, Maui, Molokai)</a></li>
+          <li><a  href="/cards_home/?area-id=puerto_rico_ne&area-label=Northeastern+Puerto+Rico+%28San+Juan%2C+Caguas%29&lat=18.03356&lon=-66.3373" target="_blank">Northeastern Puerto Rico (San Juan, Caguas)</a></li>
+          <li><a  href="/cards_home/?area-id=puerto_rico_sw&area-label=Southwestern+Puerto+Rico+%28Mayaguez%2C+Ponce%29&lat=17.454&lon=-68.0816" target="_blank">Southwestern Puerto Rico (Mayaguez, Ponce)</a></li>
+          <li><a  href="/cards_home/?area-id=guam&area-label=Guam&lat=13.2&lon=144.4" target="_blank">Guam</a></li>
+          <li><a  href="/cards_home/?area-id=us_virgin_islands&area-label=US+Virgin+Islands&lat=17.596903&lon=-64.927612" target="_blank">US Virgin Islands</a></li>
+          <li><a  href="/cards_home/?area-id=american_samoa&area-label=American+Samoa&lat=-14.552944&lon=-170.874588" target="_blank">American Samoa</a></li>
+          <li><a  href="/cards_home/?area-id=midway_islands&area-label=Midway+Islands&lat=28.1976585966&lon=-177.389597134" target="_blank">Midway Islands</a></li>
+          <li><a  href="/cards_home/?area-id=northern_mariana_islands&area-label=Northern+Mariana+Islands&lat=14.0&lon=143.51" target="_blank">Northern Mariana Islands</a></li>
+          <li><a  href="/cards_home/?area-id=baker_island&area-label=Baker+Island+%28uninhabited%29&lat=0.19033437683&lon=-176.485829231" target="_blank">Baker Island (uninhabited)</a></li>
+          <li><a  href="/cards_home/?area-id=johnston_atoll&area-label=Johnston+Atoll+%28uninhabited%29&lat=16.7210147164&lon=-169.549509244" target="_blank">Johnston Atoll (uninhabited)</a></li>
+          <li><a  href="/cards_home/?area-id=jarvis_island&area-label=Jarvis+Island+%28uninhabited%29&lat=-0.388767184358&lon=-160.029977994" target="_blank">Jarvis Island (uninhabited)</a></li>
+          <li><a  href="/cards_home/?area-id=palmyra_atoll_kingman_reef&area-label=Palmyra+Atoll+and+Kingman+Reef+%28uninhabited%29&lat=5.550381&lon=-162.877808" target="_blank">Palmyra Atoll and Kingman Reef (uninhabited)</a></li>
+          <li><a  href="/cards_home/?area-id=howland_island&area-label=Howland+Island+%28uninhabited%29&lat=0.790187893157&lon=-176.640492317" target="_blank">Howland Island (uninhabited)</a></li>
+          <li><a  href="/cards_home/?area-id=wake_island&area-label=Wake Island&lat=19.2755801457&lon=166.619395379" target="_blank">Wake Island</a></li>
           </ul>
 
           </p>
@@ -283,7 +283,7 @@ export default (config) => `
   crossorigin="anonymous"></script>
   <script src="https://unpkg.com/terraformer-arcgis-parser@1.0.5/terraformer-arcgis-parser.js"
   integrity="sha384-duFUjKTSNoxEspdJNwr83CUgRxclf0ueKJB9DU/Vbit6bfWgzvZsHW6H1JLBBXhp" crossorigin="anonymous"></script>
-  <script type="text/javascript" src="/js/ce3-ui-components.js"></script>
+  <script type="text/javascript" src="/js/ce3_ui_components.js"></script>
   <script type="text/javascript" src="/js/secondary_header.js"></script>
 </body>
 </html>

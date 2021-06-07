@@ -68,7 +68,7 @@ export default (config) => `
        </div>
     </div> -->
 
-    <div tabindex="3" id="data-card" class="card-local-maps d-flex d-flex-column" data-page="local-climate-maps" >
+    <div tabindex="3" id="data-card" class="card-local-maps d-flex d-flex-column" data-page="climate_maps" >
       <div id="card-image-row" class="d-flex-row d-flex-fill width-100">
          <img class="card-image" src="/img/card-local-maps.png" alt="example-chart"/>
        </div>
@@ -86,7 +86,7 @@ export default (config) => `
        </div>
     </div>
 
-    <div tabindex="2" id="data-card" class="card-local-charts d-flex d-flex-column" data-page="local-climate-charts">
+    <div tabindex="2" id="data-card" class="card-local-charts d-flex d-flex-column" data-page="climate_graphs">
       <div id="card-image-row" class="d-flex-row d-flex-fill width-100">
         <img class="card-image" src="/img/card-local-charts.png" />
        </div>
@@ -104,7 +104,7 @@ export default (config) => `
        </div>
     </div>
 
-    <div tabindex="6" id="data-card" class="card-high-tide-flooding d-flex d-flex-column" data-page="high-tide-flooding" >
+    <div tabindex="6" id="data-card" class="card-high-tide-flooding d-flex d-flex-column" data-page="high_tide_flooding" >
       <div id="card-image-row" class="d-flex-row d-flex-fill width-100">
          <img class="card-image" src="/img/card-tidal-data.png" />
        </div>
@@ -127,7 +127,7 @@ export default (config) => `
   <div id="card-row" class="padding-horizontal padding-top-half padding-bottom-half d-flex-row flex-justify" >
 
 
-    <div tabindex="4" id="data-card" class="card-historical-weather-data d-flex d-flex-column" data-page="historical-weather-data">
+    <div tabindex="4" id="data-card" class="card-historical-weather-data d-flex d-flex-column" data-page="historical_weather_data">
       <div id="card-image-row" class="d-flex-row d-flex-fill width-100">
          <img class="card-image" src="/img/card-hist-daily.png" />
        </div>
@@ -145,7 +145,7 @@ export default (config) => `
        </div>
     </div>
 
-    <div tabindex="5" id="data-card" class="card-historical-thresholds d-flex d-flex-column" data-page="historical-thresholds" >
+    <div tabindex="5" id="data-card" class="card-historical-thresholds d-flex d-flex-column" data-page="historical_thresholds" >
       <div id="card-image-row" class="d-flex-row d-flex-fill width-100">
         <img class="card-image" src="/img/card-hist-thresholds.png" />
        </div>
@@ -201,8 +201,8 @@ ${footer(config)}
         crossorigin="anonymous"></script>
 <script src="https://unpkg.com/terraformer-arcgis-parser@1.0.5/terraformer-arcgis-parser.js"
         integrity="sha384-duFUjKTSNoxEspdJNwr83CUgRxclf0ueKJB9DU/Vbit6bfWgzvZsHW6H1JLBBXhp" crossorigin="anonymous"></script>
-<script type="text/javascript" src="/js/cards-home.js"></script>
-<script type="text/javascript" src="/js/ce3-ui-components.js"></script>
+<script type="text/javascript" src="/js/cards_home.js"></script>
+<script type="text/javascript" src="/js/ce3_ui_components.js"></script>
 <script type="text/javascript" src="/js/secondary_header.js"></script>
 </body>
 </html>

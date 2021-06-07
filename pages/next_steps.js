@@ -94,8 +94,8 @@ ${secondary_header(config)}
 ${nav_footer(config)}
 ${footer(config)}
 
-<script type="text/javascript" src="/js/next-steps.js"></script>
-<script type="text/javascript" src="/js/ce3-ui-components.js"></script>
+<script type="text/javascript" src="/js/next_steps.js"></script>
+<script type="text/javascript" src="/js/ce3_ui_components.js"></script>
 <script type="text/javascript" src="/js/secondary_header.js"></script>
 </body>
 </html>

@@ -1,9 +1,9 @@
 import head from '../template/head'
 import secondary_header from '../template/secondary_header';
-import variable_selector from '../template/variable-selector';
+import variable_selector from '../template/variable_selector';
 import footer from '../template/footer';
 import nav_footer from '../template/nav_footer';
-import chart_explainer from '../template/chart-explainer';
+import chart_explainer from '../template/chart_explainer';
 
 export default (config) => `
 <!doctype html>
@@ -32,7 +32,7 @@ ${secondary_header(config)}
              placeholder="Enter county, city, or zip code">
       <span class="icon icon-search search-default float-right padding-default"></span>
       <div id="clear-location-wrapper" class="">
-        <span id="clear-location" data-page="local-climate-charts" class="fas fa-times-circle"></span>
+        <span id="clear-location" data-page="climate_graphs" class="fas fa-times-circle"></span>
       </div>
     </div>
 
@@ -88,10 +88,10 @@ ${secondary_header(config)}
 
         <div id="chartmap-wrapper" class="padding-horizontal-half padding-vertical-half default-btn-height d-flex-center width-15">
           <div tabindex="100" role="button" class="btn-selector btn-chart btn-default-selected circle-box-left d-flex-center width-50" data-value="chart"
-               data-page="local-climate-charts" data-sel="chartmap-select-vis">
+               data-page="climate_graphs" data-sel="chartmap-select-vis">
             Graph
           </div>
-          <div tabindex="101" role="button" class="btn-selector btn-map btn-default circle-box-right d-flex-center width-50" data-page="local-climate-maps"
+          <div tabindex="101" role="button" class="btn-selector btn-map btn-default circle-box-right d-flex-center width-50" data-page="climate_maps"
                data-value="map"  data-sel="chartmap-select-vis">
             Map
           </div>
@@ -101,10 +101,10 @@ ${secondary_header(config)}
           <div class="select chartmap-select">
             <div tabindex="102" id="chartmap-select-vis" class="select-styled" data-value="chart">Chart</div>
             <ul class="select-options">
-              <li tabindex="103" id="chartmap-select-chart-link" data-value="chart" class="default-select-option" data-page="local-climate-charts"
+              <li tabindex="103" id="chartmap-select-chart-link" data-value="chart" class="default-select-option" data-page="climate_graphs"
                   >Chart
               </li>
-              <li tabindex="104" id=chartmap-select-map-link"" data-value="map" class="default-select-option" data-page="local-climate-maps"
+              <li tabindex="104" id=chartmap-select-map-link"" data-value="map" class="default-select-option" data-page="climate_maps"
                   >Map
               </li>
             </ul>
@@ -241,8 +241,8 @@ ${footer(config)}
         crossorigin="anonymous"></script>
 <script src="https://unpkg.com/terraformer-arcgis-parser@1.0.5/terraformer-arcgis-parser.js"
         integrity="sha384-duFUjKTSNoxEspdJNwr83CUgRxclf0ueKJB9DU/Vbit6bfWgzvZsHW6H1JLBBXhp" crossorigin="anonymous"></script>
-<script type="text/javascript" src="/js/ce3-ui-components.js"></script>
-<script type="text/javascript" src="/js/local-climate-charts.js"></script>
+<script type="text/javascript" src="/js/ce3_ui_components.js"></script>
+<script type="text/javascript" src="/js/climate_graphs.js"></script>
 <script type="text/javascript" src="/js/secondary_header.js"></script>
 
 </body>
