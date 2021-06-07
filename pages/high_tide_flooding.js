@@ -74,7 +74,7 @@ export default (config) => `
         <div id="filters-row" class="d-flex-row flex-justify padding-top padding-bottom d-flex-left" >
 
           <div id="chartmap-wrapper" class="padding-horizontal-half padding-vertical-half default-btn-height d-flex-center width-20 disabled">
-            <div tabindex="5004" role="button" class="btn-selector btn-chart btn-default circle-box-left d-flex-center width-50" data-value="chart" data-page="high_tide_flooding" data-sel="chartmap-select-vis">
+            <div tabindex="5004" role="button" class="btn-selector btn-chart btn-default circle-box-left d-flex-center width-50 btn-default-disabled" data-value="chart" data-page="high_tide_flooding" data-sel="chartmap-select-vis">
               Graph
             </div>
             <div tabindex="5005" role="button" class="btn-selector btn-map btn-default-selected circle-box-right d-flex-center width-50"  data-page="high_tide_flooding"  data-value="map" data-sel="chartmap-select-vis">

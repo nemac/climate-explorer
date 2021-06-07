@@ -407,6 +407,12 @@ $(function () {
       updateStationText(`${tidalStationName}`);
       updatestationMOverMHHWText(`${tidalStationMOverMHHW}m over MHHW`);
 
+      const graphBtn = document.getElementById("chartmap-wrapper").getElementsByTagName("div")[0];
+
+      if(graphBtn && graphBtn.classList.contains("btn-default-disabled")) {
+        graphBtn.classList.remove("btn-default-disabled");
+      }
+
       // change map variable
       window.app.update( {tidalStationId, tidalStationName, tidalStationMOverMHHW});
 
@@ -433,7 +439,8 @@ $(function () {
   $('#chartmap-wrapper').keyup(function (e) {
     if (e.keyCode === 13) {
       const target = $(e.target);
-      const notDisabled = (!target.hasClass('btn-default-disabled') || !target.hasClass('disabled'));
+      //const notDisabled = (!target.hasClass('btn-default-disabled') || !target.hasClass('disabled'));
+      const notDisabled = !target.hasClass('btn-default-disabled') && !target.hasClass('disabled');
 
       if (notDisabled) {
 
@@ -451,7 +458,7 @@ $(function () {
 
       // reset map and chart sizes
       setMapSize();
-      chooseGraphOrMap(target);
+      //chooseGraphOrMap(target);
 
       // ga event action, category, label
       googleAnalyticsEvent('click-tab', 'chartmap', target);
@@ -461,7 +468,8 @@ $(function () {
   // enables time chart, map click events
   $('#chartmap-wrapper').click(function (e) {
     const target = $(e.target);
-    const notDisabled = (!target.hasClass('btn-default-disabled') || !target.hasClass('disabled'));
+    //const notDisabled = (!target.hasClass('btn-default-disabled') || !target.hasClass('disabled'));
+    const notDisabled = !target.hasClass('btn-default-disabled') && !target.hasClass('disabled');
 
     if (notDisabled) {
 
@@ -479,7 +487,7 @@ $(function () {
 
     // reset map and chart sizes
     setMapSize();
-    chooseGraphOrMap(target);
+    //chooseGraphOrMap(target);
 
     // ga event action, category, label
     googleAnalyticsEvent('click', 'chartmap', target);
