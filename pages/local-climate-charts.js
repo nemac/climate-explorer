@@ -165,7 +165,7 @@ ${secondary_header(config)}
           </div>
         </div>
 
-        <div tabindex="110" id="chart-info-row-btn" class="rounded-choice-box padding-left-half padding-vertical-half default-btn-height d-flex-center width-10">
+        <div tabindex="110" id="chart-info-row-btn" class="rounded-choice-box padding-left-half padding-vertical-half default-btn-height d-flex-center">
           <div class="more-info btn-default padding-left-half">
             <span class="fas fa-info more-info more-icon"></span>
             <span class="fas fa-info more-info less-icon d-none"></span>

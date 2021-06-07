@@ -96,8 +96,8 @@
       // Additional elements
       stationOverlayContainerId: "station-overlay-container",
       // Map layers
-      dailyStationsLayerURL: "/vendor/temp_data/stations_whitelist.json",
-      thresholdStationsLayerURL: "/vendor/temp_data/stations_whitelist.json",
+      dailyStationsLayerURL: "https://crt-climate-explorer.nemac.org/data/stations_whitelist.json",
+      thresholdStationsLayerURL: "https://crt-climate-explorer.nemac.org/data/stations_whitelist.json",
       tidalStationsLayerURL: "https://crt-climate-explorer.nemac.org/data/high-tide-flooding-widget/tidal_stations.json",
       dailyStationsDataURL: "https://data.rcc-acis.org/StnData",
       thresholdStationsDataURL: "https://data.rcc-acis.org/StnData",

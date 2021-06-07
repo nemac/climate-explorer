@@ -17704,7 +17704,6 @@ input.input-inner:focus {
 /* line 228, scss/pages/_local-climate-charts.scss */
 #chart-info-row-btn {
   background-color: #FBFCFE;
-  min-width: 170px;
 }
 
 /* line 230, scss/pages/_local-climate-charts.scss */
