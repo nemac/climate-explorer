@@ -475,11 +475,32 @@ $(function () {
       $('#chart-info-row .less').removeClass('d-none');
       $('#chart-info-row .less-icon').removeClass('d-none');
 
+      // Only show 'How to read' of the area we are at (ex: How to read Alaska)
       if(state.is_alaska_area) {
+
         if(!$('.how-to-read-conus').hasClass('d-none')) {
           $('.how-to-read-conus').addClass('d-none');
         }
+
+        if(!$('.how-to-read-island').hasClass('d-none')) {
+          $('.how-to-read-island').addClass('d-none');
+        }
+
       } else if(state.is_conus_area) {
+        if(!$('.how-to-read-ak').hasClass('d-none')) {
+          $('.how-to-read-ak').addClass('d-none');
+        }
+
+        if(!$('.how-to-read-island').hasClass('d-none')) {
+          $('.how-to-read-island').addClass('d-none');
+        }
+
+      } else if(state.is_island_area) {
+
+        if(!$('.how-to-read-conus').hasClass('d-none')) {
+          $('.how-to-read-conus').addClass('d-none');
+        }
+
         if(!$('.how-to-read-ak').hasClass('d-none')) {
           $('.how-to-read-ak').addClass('d-none');
         }
