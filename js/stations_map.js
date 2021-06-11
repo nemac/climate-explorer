@@ -1,4 +1,3 @@
-'use strict';
 // Use AMD loader if present, if not use global jQuery
 
 

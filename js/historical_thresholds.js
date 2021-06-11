@@ -1,4 +1,5 @@
-'use strict';
+import './main.js';
+import './stations_map.js';
 
 // add auto hide for what is this.
 
@@ -52,6 +53,11 @@ $(function () {
     zoom,
     center
   };
+
+  if(!!stationId) {
+    $('[data-value="chart"]').removeClass('btn-default-disabled');
+  }
+
   const thresholdStationsDataURL = "https://data.rcc-acis.org/StnData";
   const initialObj = {
     station: stationsMapState.stationId, // GHCN-D Station id (required)
@@ -168,6 +174,8 @@ $(function () {
     const stationsGraphRowElem = document.getElementById('stations-graph-row');
     const stationsMapRowElem = document.getElementById('stations-map-row');
     showMoreCharts();
+
+    $('[data-value="chart"]').removeClass('btn-default-disabled');
 
     // show chart overlay
     if (stationsGraphRowElem) {
@@ -849,9 +857,19 @@ $(function () {
 
 
   // enables time chart, map click events
-  $('#chartmap-wrapper').click( function(e) {
+  $('#chartmap-wrapper').on('click keyup keydown', function(e) {
+
+    if (e.type === 'keydown' && e.keyCode === 32) {
+      e.preventDefault();
+      return;
+    }
+
+    if (!(e.type === 'click' || (e.type === 'keyup' && (e.keyCode === 32 || e.keyCode === 13)))) {
+      return;
+    }
+
     const target = $(e.target);
-    const notDisabled = (!target.hasClass('btn-default-disabled') || !target.hasClass('disabled'));
+    const notDisabled = !target.hasClass('btn-default-disabled') && !target.hasClass('disabled');
 
     if ( notDisabled ) {
 

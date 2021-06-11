@@ -32,7 +32,7 @@ ${secondary_header(config)}
              placeholder="Enter county, city, or zip code">
       <span class="icon icon-search search-default float-right padding-default"></span>
       <div id="clear-location-wrapper" class="">
-        <span id="clear-location" data-page="next-steps" class="fas fa-times-circle"></span>
+        <span id="clear-location" data-page="next_steps" class="fas fa-times-circle"></span>
       </div>
     </div>
   </div>
@@ -95,8 +95,6 @@ ${nav_footer(config)}
 ${footer(config)}
 
 <script type="text/javascript" src="/js/next_steps.js"></script>
-<script type="text/javascript" src="/js/ce3_ui_components.js"></script>
-<script type="text/javascript" src="/js/secondary_header.js"></script>
 </body>
 </html>
 `

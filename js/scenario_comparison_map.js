@@ -1,4 +1,3 @@
-'use strict';
 // Use AMD loader if present, if not use global jQuery
 /* global require, define, Terraformer */
 import merge from '../node_modules/lodash-es/merge.js';
@@ -6,6 +5,7 @@ import get from '../node_modules/lodash-es/get.js';
 import mean from '../node_modules/lodash-es/mean.js';
 import isEqual from '../node_modules/lodash-es/isEqual.js';
 import {number_to_human, round_to_n_significant_figures, round} from './utils';
+import './main.js';
 
 // noinspection JSIgnoredPromiseFromCall
 export default class ScenarioComparisonMap {
@@ -195,7 +195,7 @@ export default class ScenarioComparisonMap {
             season: 'annual'
           },
           disabledScenarios: ['historical'],
-          legend_unit: '% Change',
+          legend_unit: 'Days',
           legend_note: 'Note: Maps are anomalies from 1961-1990 baseline'
         },
         'days_pcpn_gt_1in': {
@@ -205,7 +205,7 @@ export default class ScenarioComparisonMap {
             leftScenario: 'historical',
             rightScenario: 'rcp85',
           },
-          legend_unit: '% Change',
+          legend_unit: 'Days',
           legend_note: 'Note: Maps are anomalies from 1961-1990 baseline'
 
         },
@@ -216,7 +216,7 @@ export default class ScenarioComparisonMap {
             leftScenario: 'historical',
             rightScenario: 'rcp85',
           },
-          legend_unit: '% Change',
+          legend_unit: 'Days',
           legend_note: 'Note: Maps are anomalies from 1961-1990 baseline'
         },
         'days_pcpn_gt_3in': {
@@ -226,7 +226,7 @@ export default class ScenarioComparisonMap {
             leftScenario: 'historical',
             rightScenario: 'rcp85',
           },
-          legend_unit: '% Change',
+          legend_unit: 'Days',
           legend_note: 'Note: Maps are anomalies from 1961-1990 baseline'
 
         },
@@ -457,10 +457,10 @@ export default class ScenarioComparisonMap {
             <div id="leftScenario-select-wrapper"
                  class="rounded-choice-box padding-horizontal-half padding-vertical-half default-btn-height d-flex-center width-100">
               <div class="select leftScenario-select">
-                <div id="leftScenario-select-vis" class="select-styled" rel="historical">Historical</div>
-                <ul class="select-options">
-                  <li rel="historical" class="default-select-option leftScenario-option-historical">Historical</li>
-                  <li rel="rcp45" class="default-select-option leftScenario-option-lower">Lower Emissions</li>
+  <div id="leftScenario-select-vis" class="select-styled"  data-value="historical">Historical</div>
+  <ul class="select-options" role="radiogroup">
+    <li role="option" id="leftScenario-select"  data-value="historical" class="default-select-option leftScenario-option-historical">Historical</li>
+    <li role="option" id="leftScenario-select"  data-value="rcp45" class="default-select-option leftScenario-option-lower">Lower Emissions</li>
                 </ul>
               </div>
             </div>
@@ -477,10 +477,10 @@ export default class ScenarioComparisonMap {
             <div id="rightScenario-select-wrapper"
                  class="rounded-choice-box padding-horizontal-half padding-vertical-half default-btn-height d-flex-center width-100">
               <div class="select rightScenario-select">
-                <div id="rightScenario-select-vis" class="select-styled" rel="rcp85">Higher Emissions</div>
-                <ul class="select-options">
-                  <li id="rightScenario-select" rel="rcp85" class="default-select-option rightScenario-option-higher">Higher Emissions</li>
-                  <li id="rightScenario-select-map" rel="rcp45" class="default-select-option rightScenario-option-lower">Lower Emissions</li>
+    <div id="rightScenario-select-vis" class="select-styled" data-value="rcp85">Higher Emissions</div>
+    <ul class="select-options" role="listbox">
+      <li role="option" id="rightScenario-select"  data-value="rcp85" class="default-select-option rightScenario-option-higher">Higher Emissions</li>
+      <li role="option" id="rightScenario-select-map"  data-value="rcp45" class="default-select-option rightScenario-option-lower">Lower Emissions</li>
                 </ul>
               </div>
             </div>
@@ -2130,7 +2130,7 @@ export default class ScenarioComparisonMap {
         this.nodes.$leftYearTooltip.text(this.options.scenarios[this.options.leftScenario].years[ui.value].label);
       },
       change: (event, ui) => {
-        this.nodes.$leftYearSlider.attr('data-value', ui.value);
+        this.nodes.$leftYearSlider.data('value', ui.value);
 
         this.update({leftYear: this.options.scenarios[this.options.leftScenario].years[ui.value].value});
       }
@@ -2164,7 +2164,7 @@ export default class ScenarioComparisonMap {
         this.nodes.$rightYearTooltip.text(this.options.scenarios[this.options.rightScenario].years[ui.value].label);
       },
       change: (event, ui) => {
-        this.nodes.$rightYearSlider.attr('data-value', ui.value);
+        this.nodes.$rightYearSlider.data('value', ui.value);
 
         this.update({rightYear: this.options.scenarios[this.options.rightScenario].years[ui.value].value});
       }
@@ -2177,7 +2177,7 @@ export default class ScenarioComparisonMap {
 
     // check if variable is precip then disable the historical and select lower emmissions
     if (_this7.options.variable === 'pcpn') {
-      $('#leftScenario-select-vis').attr('rel', 'rcp45');
+      $('#leftScenario-select-vis').data('value', 'rcp45');
       $('#leftScenario-select-vis').html('Lower Emissions');
       $('.leftScenario-option-historical').addClass('d-none');
     } else {
@@ -2187,11 +2187,11 @@ export default class ScenarioComparisonMap {
     // leftScenario-select-vis
     if (this.nodes.$leftScenarioSelect === undefined) {
       this.nodes.$leftScenarioSelect = $(this.nodes.$controlsOverLayContainer).find("#leftScenario-select-vis");
-      this.nodes.$leftScenarioSelect.attr('rel');
+      this.nodes.$leftScenarioSelect.data('value');
 
       this.nodes.$leftScenarioSelect.bind('cs-changed', () => {
-        if (this.nodes.$leftScenarioSelect.attr('rel') !== undefined && this.nodes.$leftScenarioSelect.attr('rel') !== null) {
-          this.update({leftScenario: this.nodes.$leftScenarioSelect.attr('rel')});
+        if (this.nodes.$leftScenarioSelect.data('value') !== undefined && this.nodes.$leftScenarioSelect.data('value') !== null) {
+          this.update({leftScenario: this.nodes.$leftScenarioSelect.data('value')});
         }
       });
     }
@@ -2200,11 +2200,11 @@ export default class ScenarioComparisonMap {
   _updateRightScenarioSelect() {
     if (this.nodes.$rightScenarioSelect === undefined) {
       this.nodes.$rightScenarioSelect = $(this.nodes.$controlsOverLayContainer).find("#rightScenario-select-vis");
-      this.nodes.$rightScenarioSelect.attr('rel');
+      this.nodes.$rightScenarioSelect.data('value');
 
       this.nodes.$rightScenarioSelect.bind('cs-changed', () => {
-        if (this.nodes.$rightScenarioSelect.attr('rel') !== undefined && this.nodes.$rightScenarioSelect.attr('rel') !== null) {
-          this.update({rightScenario: this.nodes.$rightScenarioSelect.attr('rel')});
+        if (this.nodes.$rightScenarioSelect.data('value') !== undefined && this.nodes.$rightScenarioSelect.data('value') !== null) {
+          this.update({rightScenario: this.nodes.$rightScenarioSelect.data('value')});
         }
       });
     }
@@ -2239,7 +2239,7 @@ export default class ScenarioComparisonMap {
     let legend_note = ('legend_note' in this.options.variables[this.options.variable] && !!this.options.variables[this.options.variable]['legend_note']) ? this.options.variables[this.options.variable]['legend_note'] : null;
     this.nodes.$legendContainer.html(`
         <span class="legend-unit-label">${this.options.variables[this.options.variable]['legend_unit']}</span>
-        <img alt="legend image" class="legend-image" src="/resources/img/legends/${legendFilename}.png">
+        <img alt="legend image" class="legend-image" src="/img/legends/${legendFilename}.png">
         ${!!legend_note ? `<span class="legend-note-label">${legend_note}</span>` : ''}
       `);
   }

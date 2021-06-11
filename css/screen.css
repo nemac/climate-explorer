@@ -17409,8 +17409,8 @@ input.input-inner:focus {
   padding-right: 12px;
 }
 
-/* line 1, scss/pages/_local-climate-charts.scss */
-#local-climate-charts-viewport {
+/* line 1, scss/pages/_climate_graphs.scss */
+#climate-graphs-viewport {
   background-color: #ffffff;
   height: calc(100% - 48px - 6px - 100px) !important;
   min-height: calc(100% - 48px - 6px - 100px) !important;
@@ -17420,15 +17420,15 @@ input.input-inner:focus {
 }
 
 @media screen and (max-width: 499px) {
-  /* line 1, scss/pages/_local-climate-charts.scss */
-  #local-climate-charts-viewport {
+  /* line 1, scss/pages/_climate_graphs.scss */
+  #climate-graphs-viewport {
     min-height: calc(100% - 48px - 12px - 64px) !important;
     height: calc(100% - 48px - 12px - 64px) !important;
   }
 }
 
-/* line 14, scss/pages/_local-climate-charts.scss */
-#local-climate-charts-viewport:after {
+/* line 14, scss/pages/_climate_graphs.scss */
+#climate-graphs-viewport:after {
   content: '';
   width: 100%;
   height: 5px;
@@ -17441,76 +17441,76 @@ input.input-inner:focus {
 }
 
 @media screen and (max-width: 499px) {
-  /* line 14, scss/pages/_local-climate-charts.scss */
-  #local-climate-charts-viewport:after {
+  /* line 14, scss/pages/_climate_graphs.scss */
+  #climate-graphs-viewport:after {
     top: calc(100% - 75px);
   }
 }
 
-/* line 29, scss/pages/_local-climate-charts.scss */
-#local-climate-charts-viewport.expanded {
+/* line 29, scss/pages/_climate_graphs.scss */
+#climate-graphs-viewport.expanded {
   min-height: calc(100% - 48px - 12px - 170px) !important;
   height: calc(100% - 48px - 12px - 170px) !important;
 }
 
 @media screen and (min-width: 850px) {
-  /* line 29, scss/pages/_local-climate-charts.scss */
-  #local-climate-charts-viewport.expanded {
+  /* line 29, scss/pages/_climate_graphs.scss */
+  #climate-graphs-viewport.expanded {
     min-height: calc(100% - 48px - 12px - 100px) !important;
     height: calc(100% - 48px - 12px - 100px) !important;
   }
-  /* line 33, scss/pages/_local-climate-charts.scss */
-  #local-climate-charts-viewport.expanded:after {
+  /* line 33, scss/pages/_climate_graphs.scss */
+  #climate-graphs-viewport.expanded:after {
     top: calc(100% - 117px);
   }
 }
 
 @media screen and (min-width: 850px) and (max-width: 499px) {
-  /* line 33, scss/pages/_local-climate-charts.scss */
-  #local-climate-charts-viewport.expanded:after {
+  /* line 33, scss/pages/_climate_graphs.scss */
+  #climate-graphs-viewport.expanded:after {
     top: calc(100% - 147px);
   }
 }
 
-/* line 44, scss/pages/_local-climate-charts.scss */
-#local-climate-charts-viewport.expanded:after {
+/* line 44, scss/pages/_climate_graphs.scss */
+#climate-graphs-viewport.expanded:after {
   top: calc(100% - 187px);
 }
 
 @media screen and (max-width: 499px) {
-  /* line 44, scss/pages/_local-climate-charts.scss */
-  #local-climate-charts-viewport.expanded:after {
+  /* line 44, scss/pages/_climate_graphs.scss */
+  #climate-graphs-viewport.expanded:after {
     top: calc(100% - 147px);
   }
 }
 
 @media screen and (max-width: 499px) {
-  /* line 29, scss/pages/_local-climate-charts.scss */
-  #local-climate-charts-viewport.expanded {
+  /* line 29, scss/pages/_climate_graphs.scss */
+  #climate-graphs-viewport.expanded {
     min-height: calc(100% - 48px - 12px - 130px) !important;
     height: calc(100% - 48px - 12px - 130px) !important;
   }
 }
 
-/* line 58, scss/pages/_local-climate-charts.scss */
-#local-climate-charts-viewport .top-select-wrapper {
+/* line 58, scss/pages/_climate_graphs.scss */
+#climate-graphs-viewport .top-select-wrapper {
   width: 34% !important;
 }
 
-/* line 60, scss/pages/_local-climate-charts.scss */
-#local-climate-charts-viewport .top-select-wrapper-minor {
+/* line 60, scss/pages/_climate_graphs.scss */
+#climate-graphs-viewport .top-select-wrapper-minor {
   width: 5% !important;
 }
 
 @media screen and (max-width: 900px) {
-  /* line 65, scss/pages/_local-climate-charts.scss */
-  #local-climate-charts-viewport .search-box-secondary {
+  /* line 65, scss/pages/_climate_graphs.scss */
+  #climate-graphs-viewport .search-box-secondary {
     width: 100% !important;
     display: inline-block !important;
   }
 }
 
-/* line 74, scss/pages/_local-climate-charts.scss */
+/* line 74, scss/pages/_climate_graphs.scss */
 #variable-select-wrapper {
   max-width: 350px;
   background-color: #124086 !important;
@@ -17520,129 +17520,129 @@ input.input-inner:focus {
 }
 
 @media screen and (max-width: 900px) {
-  /* line 74, scss/pages/_local-climate-charts.scss */
+  /* line 74, scss/pages/_climate_graphs.scss */
   #variable-select-wrapper {
     margin-right: 0px !important;
   }
 }
 
-/* line 84, scss/pages/_local-climate-charts.scss */
+/* line 84, scss/pages/_climate_graphs.scss */
 #variable-select-wrapper:hover {
   background-color: #397ee5 !important;
 }
 
-/* line 87, scss/pages/_local-climate-charts.scss */
+/* line 87, scss/pages/_climate_graphs.scss */
 #variable-select-wrapper:hover .select-styled {
   background-color: #397ee5 !important;
 }
 
-/* line 92, scss/pages/_local-climate-charts.scss */
+/* line 92, scss/pages/_climate_graphs.scss */
 #variable-select-wrapper .variable-select {
   color: #E9F1FC !important;
 }
 
-/* line 95, scss/pages/_local-climate-charts.scss */
+/* line 95, scss/pages/_climate_graphs.scss */
 #variable-select-wrapper .variable-select .select {
   color: #E9F1FC !important;
 }
 
-/* line 100, scss/pages/_local-climate-charts.scss */
+/* line 100, scss/pages/_climate_graphs.scss */
 #variable-select-wrapper .variable-select .select-styled a {
   color: #E9F1FC !important;
 }
 
-/* line 104, scss/pages/_local-climate-charts.scss */
+/* line 104, scss/pages/_climate_graphs.scss */
 #variable-select-wrapper .variable-select .select-styled.disabled {
   color: rgba(233, 241, 252, 0.5) !important;
 }
 
-/* line 108, scss/pages/_local-climate-charts.scss */
+/* line 108, scss/pages/_climate_graphs.scss */
 #variable-select-wrapper .variable-select .select-styled:after {
   background-color: #E9F1FC !important;
   color: #124086 !important;
 }
 
-/* line 113, scss/pages/_local-climate-charts.scss */
+/* line 113, scss/pages/_climate_graphs.scss */
 #variable-select-wrapper .variable-select .select-styled:hover, #variable-select-wrapper .variable-select .select-styled:focus {
   outline: none !important;
   color: white !important;
   font-weight: 500;
 }
 
-/* line 118, scss/pages/_local-climate-charts.scss */
+/* line 118, scss/pages/_climate_graphs.scss */
 #variable-select-wrapper .variable-select .select-styled:hover.disabled, #variable-select-wrapper .variable-select .select-styled:focus.disabled {
   color: rgba(233, 241, 252, 0.5) !important;
   outline: none !important;
 }
 
-/* line 125, scss/pages/_local-climate-charts.scss */
+/* line 125, scss/pages/_climate_graphs.scss */
 #variable-select-wrapper .variable-select .select-options {
   background-color: #124086 !important;
   color: #E9F1FC !important;
 }
 
-/* line 129, scss/pages/_local-climate-charts.scss */
+/* line 129, scss/pages/_climate_graphs.scss */
 #variable-select-wrapper .variable-select .select-options a {
   color: #E9F1FC !important;
 }
 
-/* line 132, scss/pages/_local-climate-charts.scss */
+/* line 132, scss/pages/_climate_graphs.scss */
 #variable-select-wrapper .variable-select .select-options .default-select-option-disabled {
   color: rgba(233, 241, 252, 0.5) !important;
 }
 
-/* line 136, scss/pages/_local-climate-charts.scss */
+/* line 136, scss/pages/_climate_graphs.scss */
 #variable-select-wrapper .variable-select .select-options li {
   border-top: 1px solid #124086;
 }
 
-/* line 138, scss/pages/_local-climate-charts.scss */
+/* line 138, scss/pages/_climate_graphs.scss */
 #variable-select-wrapper .variable-select .select-options li a {
   color: #E9F1FC !important;
 }
 
-/* line 142, scss/pages/_local-climate-charts.scss */
+/* line 142, scss/pages/_climate_graphs.scss */
 #variable-select-wrapper .variable-select .select-options li:hover, #variable-select-wrapper .variable-select .select-options li:focus {
   color: #E9F1FC !important;
   background: #397ee5 !important;
 }
 
-/* line 146, scss/pages/_local-climate-charts.scss */
+/* line 146, scss/pages/_climate_graphs.scss */
 #variable-select-wrapper .variable-select .select-options li:hover.default-select-option-disabled, #variable-select-wrapper .variable-select .select-options li:focus.default-select-option-disabled {
   color: rgba(233, 241, 252, 0.5) !important;
   background: #124086 !important;
   cursor: default !important;
 }
 
-/* line 155, scss/pages/_local-climate-charts.scss */
+/* line 155, scss/pages/_climate_graphs.scss */
 #variable-select-wrapper .variable-select .select-options span:hover, #variable-select-wrapper .variable-select .select-options span:focus {
   color: #E9F1FC !important;
   background: #397ee5 !important;
 }
 
-/* line 165, scss/pages/_local-climate-charts.scss */
+/* line 165, scss/pages/_climate_graphs.scss */
 #stations-select, #downloads-select, #variable-select {
   display: none !important;
 }
 
-/* line 169, scss/pages/_local-climate-charts.scss */
+/* line 169, scss/pages/_climate_graphs.scss */
 #downloads-select-wrapper, #stations-select-wrapper {
   background-color: #E9F1FC;
   color: #124086;
   font: 500 14px Roboto, Helvetica, "Helvetica Neue", Arial, sans-serif !important;
 }
 
-/* line 174, scss/pages/_local-climate-charts.scss */
+/* line 174, scss/pages/_climate_graphs.scss */
 #downloads-select-wrapper li.disabled, #stations-select-wrapper li.disabled {
   color: #a4c3f3 !important;
 }
 
-/* line 176, scss/pages/_local-climate-charts.scss */
+/* line 176, scss/pages/_climate_graphs.scss */
 #downloads-select-wrapper li.disabled a, #stations-select-wrapper li.disabled a {
   color: #a4c3f3 !important;
 }
 
-/* line 179, scss/pages/_local-climate-charts.scss */
+/* line 179, scss/pages/_climate_graphs.scss */
 #downloads-select-wrapper li.disabled:hover, #downloads-select-wrapper li.disabled:focus, #stations-select-wrapper li.disabled:hover, #stations-select-wrapper li.disabled:focus {
   color: #a4c3f3 !important;
   background: #E9F1FC !important;
@@ -17650,14 +17650,14 @@ input.input-inner:focus {
 }
 
 @media screen and (max-width: 900px) {
-  /* line 187, scss/pages/_local-climate-charts.scss */
+  /* line 187, scss/pages/_climate_graphs.scss */
   #stations-select-wrapper {
     display: none !important;
   }
 }
 
 @media screen and (max-width: 900px) {
-  /* line 193, scss/pages/_local-climate-charts.scss */
+  /* line 193, scss/pages/_climate_graphs.scss */
   #downloads-select-wrapper {
     margin-left: 0px !important;
     margin-right: 0px !important;
@@ -17669,13 +17669,13 @@ input.input-inner:focus {
 }
 
 @media screen and (max-width: 599px) {
-  /* line 193, scss/pages/_local-climate-charts.scss */
+  /* line 193, scss/pages/_climate_graphs.scss */
   #downloads-select-wrapper {
     display: none !important;
   }
 }
 
-/* line 208, scss/pages/_local-climate-charts.scss */
+/* line 208, scss/pages/_climate_graphs.scss */
 #chartmap-select-wrapper, #time-select-wrapper, #presentation-select-wrapper, #tidalzoom-select-wrapper {
   background-color: #E9F1FC;
   color: #124086;
@@ -17686,7 +17686,7 @@ input.input-inner:focus {
 }
 
 @media screen and (max-width: 900px) {
-  /* line 208, scss/pages/_local-climate-charts.scss */
+  /* line 208, scss/pages/_climate_graphs.scss */
   #chartmap-select-wrapper, #time-select-wrapper, #presentation-select-wrapper, #tidalzoom-select-wrapper {
     margin-left: 0px !important;
     margin-right: 0px !important;
@@ -17695,44 +17695,44 @@ input.input-inner:focus {
     display: inherit !important;
     width: 100% !important;
   }
-  /* line 222, scss/pages/_local-climate-charts.scss */
+  /* line 222, scss/pages/_climate_graphs.scss */
   #chartmap-select-wrapper .select-options, #time-select-wrapper .select-options, #presentation-select-wrapper .select-options, #tidalzoom-select-wrapper .select-options {
     margin-top: 5px !important;
   }
 }
 
-/* line 228, scss/pages/_local-climate-charts.scss */
+/* line 228, scss/pages/_climate_graphs.scss */
 #chart-info-row-btn {
   background-color: #FBFCFE;
 }
 
-/* line 230, scss/pages/_local-climate-charts.scss */
+/* line 230, scss/pages/_climate_graphs.scss */
 #chart-info-row-btn:hover, #chart-info-row-btn:focus {
   background-color: #FBFCFE !important;
 }
 
-/* line 235, scss/pages/_local-climate-charts.scss */
+/* line 235, scss/pages/_climate_graphs.scss */
 #chart-info-row-btn .short-desc {
   display: none;
 }
 
 @media screen and (max-width: 960px) {
-  /* line 228, scss/pages/_local-climate-charts.scss */
+  /* line 228, scss/pages/_climate_graphs.scss */
   #chart-info-row-btn {
     min-width: 130px;
   }
-  /* line 242, scss/pages/_local-climate-charts.scss */
+  /* line 242, scss/pages/_climate_graphs.scss */
   #chart-info-row-btn .long-desc {
     display: none;
   }
-  /* line 246, scss/pages/_local-climate-charts.scss */
+  /* line 246, scss/pages/_climate_graphs.scss */
   #chart-info-row-btn .short-desc {
     display: inline;
   }
 }
 
 @media screen and (max-width: 900px) {
-  /* line 228, scss/pages/_local-climate-charts.scss */
+  /* line 228, scss/pages/_climate_graphs.scss */
   #chart-info-row-btn {
     min-width: 100%;
     margin-left: 0px !important;
@@ -17741,60 +17741,60 @@ input.input-inner:focus {
     margin-top: 6px !important;
     width: 100% !important;
   }
-  /* line 254, scss/pages/_local-climate-charts.scss */
+  /* line 254, scss/pages/_climate_graphs.scss */
   #chart-info-row-btn .short-desc {
     display: none;
   }
-  /* line 258, scss/pages/_local-climate-charts.scss */
+  /* line 258, scss/pages/_climate_graphs.scss */
   #chart-info-row-btn .long-desc {
     display: inline;
   }
-  /* line 262, scss/pages/_local-climate-charts.scss */
+  /* line 262, scss/pages/_climate_graphs.scss */
   #chart-info-row-btn .btn-default {
     font-size: 14px !important;
   }
-  /* line 271, scss/pages/_local-climate-charts.scss */
+  /* line 271, scss/pages/_climate_graphs.scss */
   #chart-info-row-btn .more, #chart-info-row-btn .less {
     padding-left: 6px;
   }
 }
 
-/* line 278, scss/pages/_local-climate-charts.scss */
+/* line 278, scss/pages/_climate_graphs.scss */
 #filters-row .select-options {
   margin-top: 0px !important;
 }
 
 @media screen and (max-width: 900px) {
-  /* line 283, scss/pages/_local-climate-charts.scss */
+  /* line 283, scss/pages/_climate_graphs.scss */
   #chartmap-wrapper, #time-wrapper, #presentation-wrapper, #tidalzoom-wrapper {
     display: none !important;
   }
 }
 
-/* line 289, scss/pages/_local-climate-charts.scss */
+/* line 289, scss/pages/_climate_graphs.scss */
 #chartmap-wrapper, #time-wrapper {
   min-width: 160px;
 }
 
-/* line 293, scss/pages/_local-climate-charts.scss */
+/* line 293, scss/pages/_climate_graphs.scss */
 #chartmap-wrapper {
   padding-left: 0px !important;
   margin-left: -3px;
 }
 
-/* line 298, scss/pages/_local-climate-charts.scss */
+/* line 298, scss/pages/_climate_graphs.scss */
 #time-wrapper {
   margin-left: -12px;
 }
 
-/* line 302, scss/pages/_local-climate-charts.scss */
+/* line 302, scss/pages/_climate_graphs.scss */
 #tidalzoom-wrapper {
   min-width: 325px;
   margin-left: -12px;
 }
 
 @media screen and (max-width: 900px) {
-  /* line 307, scss/pages/_local-climate-charts.scss */
+  /* line 307, scss/pages/_climate_graphs.scss */
   #variable-select-wrapper, #chartmap-wrapper, #time-wrapper, #presentation-wrapper, #tidalzoom-wrapper {
     height: auto !important;
     width: 100% !important;
@@ -17804,12 +17804,12 @@ input.input-inner:focus {
   }
 }
 
-/* line 317, scss/pages/_local-climate-charts.scss */
+/* line 317, scss/pages/_climate_graphs.scss */
 #monthly-select-wrapper {
   margin-top: 6px;
 }
 
-/* line 319, scss/pages/_local-climate-charts.scss */
+/* line 319, scss/pages/_climate_graphs.scss */
 #monthly-select-wrapper .btn-selector {
   width: 100% !important;
   height: 30px !important;
@@ -17824,7 +17824,7 @@ input.input-inner:focus {
   box-shadow: 0px 1px 2px rgba(0, 0, 0, 0.239);
 }
 
-/* line 328, scss/pages/_local-climate-charts.scss */
+/* line 328, scss/pages/_climate_graphs.scss */
 #monthly-select-wrapper .btn-selector.btn-default-selected {
   height: 30px !important;
   margin-left: 12px;
@@ -17837,7 +17837,7 @@ input.input-inner:focus {
   box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.239);
 }
 
-/* line 336, scss/pages/_local-climate-charts.scss */
+/* line 336, scss/pages/_climate_graphs.scss */
 #monthly-select-wrapper .btn-selector:focus, #monthly-select-wrapper .btn-selector:hover {
   -webkit-box-shadow: 0px 3px 6px rgba(0, 0, 0, 0.239);
   -moz-box-shadow: 0px 3px 6px rgba(0, 0, 0, 0.239);
@@ -17845,21 +17845,21 @@ input.input-inner:focus {
 }
 
 @media screen and (max-width: 900px) {
-  /* line 317, scss/pages/_local-climate-charts.scss */
+  /* line 317, scss/pages/_climate_graphs.scss */
   #monthly-select-wrapper {
     flex-flow: row wrap !important;
     height: auto !important;
     width: 100% !important;
     padding-bottom: 24px !important;
   }
-  /* line 347, scss/pages/_local-climate-charts.scss */
+  /* line 347, scss/pages/_climate_graphs.scss */
   #monthly-select-wrapper .btn-selector {
     width: 100% !important;
     height: 48px !important;
     padding-top: 6px !important;
     padding-bottom: 6px !important;
   }
-  /* line 354, scss/pages/_local-climate-charts.scss */
+  /* line 354, scss/pages/_climate_graphs.scss */
   #monthly-select-wrapper .circle-box-left {
     -moz-border-radius-topleft: 5px !important;
     -webkit-border-top-left-radius: 5px !important;
@@ -17874,7 +17874,7 @@ input.input-inner:focus {
     -webkit-border-bottom-right-radius: 0px !important;
     border-bottom-right-radius: 0px !important;
   }
-  /* line 359, scss/pages/_local-climate-charts.scss */
+  /* line 359, scss/pages/_climate_graphs.scss */
   #monthly-select-wrapper .circle-box-middle {
     -moz-border-radius-topleft: 0px !important;
     -webkit-border-top-left-radius: 0px !important;
@@ -17889,12 +17889,12 @@ input.input-inner:focus {
     -webkit-border-bottom-right-radius: 0px !important;
     border-bottom-right-radius: 0px !important;
   }
-  /* line 364, scss/pages/_local-climate-charts.scss */
+  /* line 364, scss/pages/_climate_graphs.scss */
   #monthly-select-wrapper .btn-default-selected.circle-box-left, #monthly-select-wrapper .btn-default-selected.circle-box-right {
     margin-right: 0px !important;
     margin-left: 0px !important;
   }
-  /* line 369, scss/pages/_local-climate-charts.scss */
+  /* line 369, scss/pages/_climate_graphs.scss */
   #monthly-select-wrapper .circle-box-right {
     -moz-border-radius-topleft: 0px !important;
     -webkit-border-top-left-radius: 0px !important;
@@ -17911,12 +17911,12 @@ input.input-inner:focus {
   }
 }
 
-/* line 376, scss/pages/_local-climate-charts.scss */
+/* line 376, scss/pages/_climate_graphs.scss */
 .noUi-horizontal {
   height: 8px !important;
 }
 
-/* line 380, scss/pages/_local-climate-charts.scss */
+/* line 380, scss/pages/_climate_graphs.scss */
 .noUi-target {
   background: #347ae4 !important;
   border-radius: 8px !important;
@@ -17924,18 +17924,18 @@ input.input-inner:focus {
   box-shadow: unset !important;
 }
 
-/* line 387, scss/pages/_local-climate-charts.scss */
+/* line 387, scss/pages/_climate_graphs.scss */
 .noUi-base {
   background: #347ae4 !important;
   border-radius: 18px !important;
 }
 
-/* line 392, scss/pages/_local-climate-charts.scss */
+/* line 392, scss/pages/_climate_graphs.scss */
 .noUi-connect {
   background: #124086 !important;
 }
 
-/* line 396, scss/pages/_local-climate-charts.scss */
+/* line 396, scss/pages/_climate_graphs.scss */
 .noUi-handle {
   cursor: pointer !important;
   background-color: #124086 !important;
@@ -17950,7 +17950,7 @@ input.input-inner:focus {
   top: -4px !important;
 }
 
-/* line 407, scss/pages/_local-climate-charts.scss */
+/* line 407, scss/pages/_climate_graphs.scss */
 .noUi-handle:hover, .noUi-handle:focus {
   outline: none !important;
   -webkit-box-shadow: 0px 0px 0px 8px rgba(18, 64, 134, 0.25) !important;
@@ -17958,19 +17958,19 @@ input.input-inner:focus {
   box-shadow: 0px 0px 0px 8px rgba(18, 64, 134, 0.25) !important;
 }
 
-/* line 412, scss/pages/_local-climate-charts.scss */
+/* line 412, scss/pages/_climate_graphs.scss */
 .noUi-handle:before, .noUi-handle:after {
   display: none !important;
 }
 
-/* line 417, scss/pages/_local-climate-charts.scss */
+/* line 417, scss/pages/_climate_graphs.scss */
 #legend-wrapper {
   margin-top: 12px !important;
   padding-top: 12px !important;
   padding-bottom: 12px !important;
 }
 
-/* line 422, scss/pages/_local-climate-charts.scss */
+/* line 422, scss/pages/_climate_graphs.scss */
 #legend-wrapper .btn-selector {
   cursor: pointer;
   background-color: #E9F1FC;
@@ -17991,18 +17991,18 @@ input.input-inner:focus {
 }
 
 @media screen and (max-width: 1080px) {
-  /* line 422, scss/pages/_local-climate-charts.scss */
+  /* line 422, scss/pages/_climate_graphs.scss */
   #legend-wrapper .btn-selector {
     min-width: 200px;
   }
 }
 
-/* line 440, scss/pages/_local-climate-charts.scss */
+/* line 440, scss/pages/_climate_graphs.scss */
 #legend-wrapper .btn-selector:focus {
   outline: none !important;
 }
 
-/* line 444, scss/pages/_local-climate-charts.scss */
+/* line 444, scss/pages/_climate_graphs.scss */
 #legend-wrapper .btn-selector:hover {
   background-color: #caddf8;
   color: #124086;
@@ -18014,14 +18014,14 @@ input.input-inner:focus {
   box-shadow: 0px 3px 6px rgba(0, 0, 0, 0.239);
 }
 
-/* line 452, scss/pages/_local-climate-charts.scss */
+/* line 452, scss/pages/_climate_graphs.scss */
 #legend-wrapper .btn-selector:hover.description {
   cursor: default;
   background-color: #E9F1FC;
   font: 500 14px Roboto, Helvetica, "Helvetica Neue", Arial, sans-serif;
 }
 
-/* line 459, scss/pages/_local-climate-charts.scss */
+/* line 459, scss/pages/_climate_graphs.scss */
 #legend-wrapper .btn-selector.selected {
   background-color: #124086;
   color: #E9F1FC;
@@ -18030,12 +18030,12 @@ input.input-inner:focus {
   box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.239);
 }
 
-/* line 464, scss/pages/_local-climate-charts.scss */
+/* line 464, scss/pages/_climate_graphs.scss */
 #legend-wrapper .btn-selector.selected:focus {
   outline: none !important;
 }
 
-/* line 468, scss/pages/_local-climate-charts.scss */
+/* line 468, scss/pages/_climate_graphs.scss */
 #legend-wrapper .btn-selector.selected:hover {
   background-color: #397ee5 !important;
   color: #E9F1FC;
@@ -18047,14 +18047,14 @@ input.input-inner:focus {
   box-shadow: 0px 7px 12px rgba(0, 0, 0, 0.239);
 }
 
-/* line 476, scss/pages/_local-climate-charts.scss */
+/* line 476, scss/pages/_climate_graphs.scss */
 #legend-wrapper .btn-selector.selected:hover.description {
   cursor: default;
   background-color: #124086;
   font: 500 14px Roboto, Helvetica, "Helvetica Neue", Arial, sans-serif;
 }
 
-/* line 484, scss/pages/_local-climate-charts.scss */
+/* line 484, scss/pages/_climate_graphs.scss */
 #legend-wrapper .btn-selector.disabled {
   cursor: default;
   background-color: #E9F1FC;
@@ -18065,7 +18065,7 @@ input.input-inner:focus {
   box-shadow: 0px 0px 0px rgba(0, 0, 0, 0.239);
 }
 
-/* line 491, scss/pages/_local-climate-charts.scss */
+/* line 491, scss/pages/_climate_graphs.scss */
 #legend-wrapper .btn-selector.disabled:hover, #legend-wrapper .btn-selector.disabled:focus {
   cursor: default;
   background-color: #E9F1FC;
@@ -18076,7 +18076,7 @@ input.input-inner:focus {
   box-shadow: 0px 0px 0px rgba(0, 0, 0, 0.239);
 }
 
-/* line 500, scss/pages/_local-climate-charts.scss */
+/* line 500, scss/pages/_climate_graphs.scss */
 #legend-wrapper .btn-selector .inner-histobs {
   background-color: #777777;
   border: 1px solid #5e5e5e;
@@ -18088,24 +18088,24 @@ input.input-inner:focus {
   border-radius: 5px / 5px;
 }
 
-/* line 508, scss/pages/_local-climate-charts.scss */
+/* line 508, scss/pages/_climate_graphs.scss */
 #legend-wrapper .btn-selector .inner-histobs.disabled {
   background-color: #969696;
 }
 
-/* line 510, scss/pages/_local-climate-charts.scss */
+/* line 510, scss/pages/_climate_graphs.scss */
 #legend-wrapper .btn-selector .inner-histobs.disabled:hover, #legend-wrapper .btn-selector .inner-histobs.disabled:focus {
   background-color: #969696;
 }
 
-/* line 515, scss/pages/_local-climate-charts.scss */
+/* line 515, scss/pages/_climate_graphs.scss */
 #legend-wrapper .btn-selector .inner-histobs:hover, #legend-wrapper .btn-selector .inner-histobs:focus {
   background-color: #777777;
   outline: none !important;
   font-weight: 500;
 }
 
-/* line 522, scss/pages/_local-climate-charts.scss */
+/* line 522, scss/pages/_climate_graphs.scss */
 #legend-wrapper .btn-selector .inner-histmod {
   background-color: #D6D6D6;
   border: 1px solid #bdbdbd;
@@ -18117,24 +18117,24 @@ input.input-inner:focus {
   border-radius: 5px / 5px;
 }
 
-/* line 530, scss/pages/_local-climate-charts.scss */
+/* line 530, scss/pages/_climate_graphs.scss */
 #legend-wrapper .btn-selector .inner-histmod.disabled {
   background-color: whitesmoke;
 }
 
-/* line 532, scss/pages/_local-climate-charts.scss */
+/* line 532, scss/pages/_climate_graphs.scss */
 #legend-wrapper .btn-selector .inner-histmod.disabled:hover, #legend-wrapper .btn-selector .inner-histmod.disabled:focus {
   background-color: whitesmoke;
 }
 
-/* line 537, scss/pages/_local-climate-charts.scss */
+/* line 537, scss/pages/_climate_graphs.scss */
 #legend-wrapper .btn-selector .inner-histmod:hover, #legend-wrapper .btn-selector .inner-histmod:focus {
   background-color: #D6D6D6;
   outline: none;
   font-weight: 500;
 }
 
-/* line 544, scss/pages/_local-climate-charts.scss */
+/* line 544, scss/pages/_climate_graphs.scss */
 #legend-wrapper .btn-selector .inner-lower-emissions {
   background-color: #98BCEB;
   border: 1px solid #6da0e3;
@@ -18146,24 +18146,24 @@ input.input-inner:focus {
   border-radius: 5px / 5px;
 }
 
-/* line 552, scss/pages/_local-climate-charts.scss */
+/* line 552, scss/pages/_climate_graphs.scss */
 #legend-wrapper .btn-selector .inner-lower-emissions.disabled {
   background-color: #cbddf5;
 }
 
-/* line 554, scss/pages/_local-climate-charts.scss */
+/* line 554, scss/pages/_climate_graphs.scss */
 #legend-wrapper .btn-selector .inner-lower-emissions.disabled:hover, #legend-wrapper .btn-selector .inner-lower-emissions.disabled:focus {
   background-color: #cbddf5;
 }
 
-/* line 559, scss/pages/_local-climate-charts.scss */
+/* line 559, scss/pages/_climate_graphs.scss */
 #legend-wrapper .btn-selector .inner-lower-emissions:hover, #legend-wrapper .btn-selector .inner-lower-emissions:focus {
   background-color: #98BCEB;
   outline: none;
   font-weight: 500;
 }
 
-/* line 566, scss/pages/_local-climate-charts.scss */
+/* line 566, scss/pages/_climate_graphs.scss */
 #legend-wrapper .btn-selector .inner-higher-emissions {
   background-color: #FBB4AA;
   border: 1px solid #f98979;
@@ -18175,17 +18175,17 @@ input.input-inner:focus {
   border-radius: 5px / 5px;
 }
 
-/* line 574, scss/pages/_local-climate-charts.scss */
+/* line 574, scss/pages/_climate_graphs.scss */
 #legend-wrapper .btn-selector .inner-higher-emissions.disabled {
   background-color: #fee8e4;
 }
 
-/* line 576, scss/pages/_local-climate-charts.scss */
+/* line 576, scss/pages/_climate_graphs.scss */
 #legend-wrapper .btn-selector .inner-higher-emissions.disabled:hover, #legend-wrapper .btn-selector .inner-higher-emissions.disabled:focus {
   background-color: #fee8e4;
 }
 
-/* line 581, scss/pages/_local-climate-charts.scss */
+/* line 581, scss/pages/_climate_graphs.scss */
 #legend-wrapper .btn-selector .inner-higher-emissions:hover, #legend-wrapper .btn-selector .inner-higher-emissions:focus {
   background-color: #FBB4AA;
   outline: none;
@@ -18193,7 +18193,7 @@ input.input-inner:focus {
 }
 
 @media screen and (max-width: 900px) {
-  /* line 417, scss/pages/_local-climate-charts.scss */
+  /* line 417, scss/pages/_climate_graphs.scss */
   #legend-wrapper {
     height: auto !important;
     flex-wrap: wrap !important;
@@ -18201,13 +18201,13 @@ input.input-inner:focus {
     width: 100% !important;
     padding-bottom: 12px !important;
   }
-  /* line 596, scss/pages/_local-climate-charts.scss */
+  /* line 596, scss/pages/_climate_graphs.scss */
   #legend-wrapper .btn-selector {
     height: 48px !important;
     width: 100% !important;
     margin-top: 12px;
   }
-  /* line 601, scss/pages/_local-climate-charts.scss */
+  /* line 601, scss/pages/_climate_graphs.scss */
   #legend-wrapper .circle-box-left {
     -moz-border-radius-topleft: 5px;
     -webkit-border-top-left-radius: 5px;
@@ -18222,7 +18222,7 @@ input.input-inner:focus {
     -webkit-border-bottom-right-radius: 0px;
     border-bottom-right-radius: 0px;
   }
-  /* line 605, scss/pages/_local-climate-charts.scss */
+  /* line 605, scss/pages/_climate_graphs.scss */
   #legend-wrapper .circle-box-right {
     -moz-border-radius-topleft: 0px;
     -webkit-border-top-left-radius: 0px;
@@ -18239,7 +18239,7 @@ input.input-inner:focus {
   }
 }
 
-/* line 614, scss/pages/_local-climate-charts.scss */
+/* line 614, scss/pages/_climate_graphs.scss */
 #more-info-description .btn-selector .description {
   cursor: default;
   background-color: #FBFCFE;
@@ -18257,13 +18257,13 @@ input.input-inner:focus {
 }
 
 @media screen and (max-width: 1080px) {
-  /* line 614, scss/pages/_local-climate-charts.scss */
+  /* line 614, scss/pages/_climate_graphs.scss */
   #more-info-description .btn-selector .description {
     min-width: 190px;
   }
 }
 
-/* line 631, scss/pages/_local-climate-charts.scss */
+/* line 631, scss/pages/_climate_graphs.scss */
 #more-info-description .btn-selector .description .inner-histobs {
   background-color: #777777;
   border: 1px solid #5e5e5e;
@@ -18276,25 +18276,25 @@ input.input-inner:focus {
 }
 
 @media screen and (max-width: 1080px) {
-  /* line 631, scss/pages/_local-climate-charts.scss */
+  /* line 631, scss/pages/_climate_graphs.scss */
   #more-info-description .btn-selector .description .inner-histobs {
     margin: 6px;
   }
 }
 
-/* line 643, scss/pages/_local-climate-charts.scss */
+/* line 643, scss/pages/_climate_graphs.scss */
 #more-info-description .btn-selector .description .inner-histobs.disabled {
   background-color: #777777;
 }
 
-/* line 647, scss/pages/_local-climate-charts.scss */
+/* line 647, scss/pages/_climate_graphs.scss */
 #more-info-description .btn-selector .description .inner-histobs:hover, #more-info-description .btn-selector .description .inner-histobs:focus {
   background-color: #777777;
   outline: none;
   font: 500 14px Roboto, Helvetica, "Helvetica Neue", Arial, sans-serif;
 }
 
-/* line 654, scss/pages/_local-climate-charts.scss */
+/* line 654, scss/pages/_climate_graphs.scss */
 #more-info-description .btn-selector .description .inner-histmod {
   background-color: #D6D6D6;
   border: 1px solid #bdbdbd;
@@ -18307,25 +18307,25 @@ input.input-inner:focus {
 }
 
 @media screen and (max-width: 1080px) {
-  /* line 654, scss/pages/_local-climate-charts.scss */
+  /* line 654, scss/pages/_climate_graphs.scss */
   #more-info-description .btn-selector .description .inner-histmod {
     margin: 6px;
   }
 }
 
-/* line 666, scss/pages/_local-climate-charts.scss */
+/* line 666, scss/pages/_climate_graphs.scss */
 #more-info-description .btn-selector .description .inner-histmod.disabled {
   background-color: #D6D6D6;
 }
 
-/* line 670, scss/pages/_local-climate-charts.scss */
+/* line 670, scss/pages/_climate_graphs.scss */
 #more-info-description .btn-selector .description .inner-histmod:hover, #more-info-description .btn-selector .description .inner-histmod:focus {
   background-color: #D6D6D6;
   outline: none;
   font: 500 14px Roboto, Helvetica, "Helvetica Neue", Arial, sans-serif;
 }
 
-/* line 677, scss/pages/_local-climate-charts.scss */
+/* line 677, scss/pages/_climate_graphs.scss */
 #more-info-description .btn-selector .description .inner-lower-emissions {
   background-color: #98BCEB;
   border: 1px solid #6da0e3;
@@ -18338,25 +18338,25 @@ input.input-inner:focus {
 }
 
 @media screen and (max-width: 1080px) {
-  /* line 677, scss/pages/_local-climate-charts.scss */
+  /* line 677, scss/pages/_climate_graphs.scss */
   #more-info-description .btn-selector .description .inner-lower-emissions {
     margin: 6px;
   }
 }
 
-/* line 689, scss/pages/_local-climate-charts.scss */
+/* line 689, scss/pages/_climate_graphs.scss */
 #more-info-description .btn-selector .description .inner-lower-emissions.disabled {
   background-color: #98BCEB;
 }
 
-/* line 693, scss/pages/_local-climate-charts.scss */
+/* line 693, scss/pages/_climate_graphs.scss */
 #more-info-description .btn-selector .description .inner-lower-emissions:hover, #more-info-description .btn-selector .description .inner-lower-emissions:focus {
   background-color: #98BCEB;
   outline: none;
   font: 500 14px Roboto, Helvetica, "Helvetica Neue", Arial, sans-serif;
 }
 
-/* line 700, scss/pages/_local-climate-charts.scss */
+/* line 700, scss/pages/_climate_graphs.scss */
 #more-info-description .btn-selector .description .inner-higher-emissions {
   background-color: #FBB4AA;
   border: 1px solid #f98979;
@@ -18369,25 +18369,25 @@ input.input-inner:focus {
 }
 
 @media screen and (max-width: 1080px) {
-  /* line 700, scss/pages/_local-climate-charts.scss */
+  /* line 700, scss/pages/_climate_graphs.scss */
   #more-info-description .btn-selector .description .inner-higher-emissions {
     margin: 6px;
   }
 }
 
-/* line 712, scss/pages/_local-climate-charts.scss */
+/* line 712, scss/pages/_climate_graphs.scss */
 #more-info-description .btn-selector .description .inner-higher-emissions.disabled {
   background-color: #FBB4AA;
 }
 
-/* line 716, scss/pages/_local-climate-charts.scss */
+/* line 716, scss/pages/_climate_graphs.scss */
 #more-info-description .btn-selector .description .inner-higher-emissions:hover, #more-info-description .btn-selector .description .inner-higher-emissions:focus {
   background-color: #FBB4AA;
   outline: none;
   font: 500 14px Roboto, Helvetica, "Helvetica Neue", Arial, sans-serif;
 }
 
-/* line 726, scss/pages/_local-climate-charts.scss */
+/* line 726, scss/pages/_climate_graphs.scss */
 #chart-row {
   justify-content: space-evenly !important;
   height: 100% !important;
@@ -18395,7 +18395,7 @@ input.input-inner:focus {
   align-items: center;
 }
 
-/* line 732, scss/pages/_local-climate-charts.scss */
+/* line 732, scss/pages/_climate_graphs.scss */
 #chart-row .chart-nodata-message {
   z-index: 500;
   width: 50%;
@@ -18414,7 +18414,7 @@ input.input-inner:focus {
 }
 
 @media screen and (max-width: 599px) {
-  /* line 732, scss/pages/_local-climate-charts.scss */
+  /* line 732, scss/pages/_climate_graphs.scss */
   #chart-row .chart-nodata-message {
     position: relative;
     top: -50px !important;
@@ -18424,21 +18424,21 @@ input.input-inner:focus {
   }
 }
 
-/* line 755, scss/pages/_local-climate-charts.scss */
+/* line 755, scss/pages/_climate_graphs.scss */
 #chart-row .chart-wrap {
   flex: 1 1 auto;
   overflow: hidden;
 }
 
 @media screen and (max-height: 800px) {
-  /* line 761, scss/pages/_local-climate-charts.scss */
+  /* line 761, scss/pages/_climate_graphs.scss */
   #chart-row .chart-wrap {
     min-height: 200px !important;
   }
 }
 
 @media screen and (max-height: 700px) {
-  /* line 768, scss/pages/_local-climate-charts.scss */
+  /* line 768, scss/pages/_climate_graphs.scss */
   #chart-row .chart-wrap {
     height: calc(100% - 85px) !important;
     min-height: 200px !important;
@@ -18446,24 +18446,24 @@ input.input-inner:focus {
 }
 
 @media screen and (min-width: 901px) {
-  /* line 775, scss/pages/_local-climate-charts.scss */
+  /* line 775, scss/pages/_climate_graphs.scss */
   #chart-row.closed-filters {
     height: calc(100% - 135px) !important;
   }
 }
 
-/* line 781, scss/pages/_local-climate-charts.scss */
+/* line 781, scss/pages/_climate_graphs.scss */
 #chart-row.closed-filters #monthly-select-wrapper {
   height: 250px !important;
 }
 
-/* line 785, scss/pages/_local-climate-charts.scss */
+/* line 785, scss/pages/_climate_graphs.scss */
 #chart-row.closed-filters #legend-wrapper {
   height: 50px !important;
 }
 
 @media screen and (max-width: 1240px) {
-  /* line 726, scss/pages/_local-climate-charts.scss */
+  /* line 726, scss/pages/_climate_graphs.scss */
   #chart-row {
     justify-content: center !important;
     height: calc(100% - 75px) !important;
@@ -18471,113 +18471,113 @@ input.input-inner:focus {
 }
 
 @media screen and (max-width: 900px) {
-  /* line 726, scss/pages/_local-climate-charts.scss */
+  /* line 726, scss/pages/_climate_graphs.scss */
   #chart-row {
     height: 650px !important;
     min-height: 650px;
     order: 1;
   }
-  /* line 800, scss/pages/_local-climate-charts.scss */
+  /* line 800, scss/pages/_climate_graphs.scss */
   #chart-row .chart-wrap {
     min-height: 350px !important;
     height: 350px !important;
   }
-  /* line 806, scss/pages/_local-climate-charts.scss */
+  /* line 806, scss/pages/_climate_graphs.scss */
   #chart-row.closed-filters .chart-wrap {
     min-height: 350px !important;
     height: 350px !important;
   }
-  /* line 812, scss/pages/_local-climate-charts.scss */
+  /* line 812, scss/pages/_climate_graphs.scss */
   #chart-row.closed-filters #monthly-select-wrapper {
     height: 250px !important;
   }
-  /* line 816, scss/pages/_local-climate-charts.scss */
+  /* line 816, scss/pages/_climate_graphs.scss */
   #chart-row.closed-filters #legend-wrapper {
     height: 300px !important;
   }
 }
 
 @media screen and (max-width: 599px) {
-  /* line 726, scss/pages/_local-climate-charts.scss */
+  /* line 726, scss/pages/_climate_graphs.scss */
   #chart-row {
     height: 650px !important;
     min-height: 650px;
     order: 1;
   }
-  /* line 826, scss/pages/_local-climate-charts.scss */
+  /* line 826, scss/pages/_climate_graphs.scss */
   #chart-row .chart-wrap {
     min-height: 250px !important;
     height: 250px !important;
   }
 }
 
-/* line 834, scss/pages/_local-climate-charts.scss */
+/* line 834, scss/pages/_climate_graphs.scss */
 #chart-info-row:hover, #chart-info-row:focus {
   outline: none;
 }
 
-/* line 838, scss/pages/_local-climate-charts.scss */
+/* line 838, scss/pages/_climate_graphs.scss */
 #chart-info-row .rounded-description-box {
   position: relative;
   top: 8px;
 }
 
 @media screen and (max-width: 1240px) {
-  /* line 838, scss/pages/_local-climate-charts.scss */
+  /* line 838, scss/pages/_climate_graphs.scss */
   #chart-info-row .rounded-description-box {
     top: 8px;
   }
 }
 
 @media screen and (max-height: 700px) {
-  /* line 838, scss/pages/_local-climate-charts.scss */
+  /* line 838, scss/pages/_climate_graphs.scss */
   #chart-info-row .rounded-description-box {
     top: 8px;
   }
 }
 
 @media screen and (max-height: 800px) {
-  /* line 838, scss/pages/_local-climate-charts.scss */
+  /* line 838, scss/pages/_climate_graphs.scss */
   #chart-info-row .rounded-description-box {
     top: 8px;
   }
 }
 
 @media screen and (max-width: 1080px) {
-  /* line 838, scss/pages/_local-climate-charts.scss */
+  /* line 838, scss/pages/_climate_graphs.scss */
   #chart-info-row .rounded-description-box {
     top: 50px;
   }
 }
 
 @media screen and (max-width: 900px) {
-  /* line 838, scss/pages/_local-climate-charts.scss */
+  /* line 838, scss/pages/_climate_graphs.scss */
   #chart-info-row .rounded-description-box {
     top: 0px;
   }
 }
 
 @media screen and (max-width: 900px) {
-  /* line 833, scss/pages/_local-climate-charts.scss */
+  /* line 833, scss/pages/_climate_graphs.scss */
   #chart-info-row {
     order: 3;
   }
 }
 
-/* line 862, scss/pages/_local-climate-charts.scss */
+/* line 862, scss/pages/_climate_graphs.scss */
 #chart-info-row .explainer-spacer {
   padding-top: 24px !important;
 }
 
 @media screen and (max-width: 900px) {
-  /* line 866, scss/pages/_local-climate-charts.scss */
+  /* line 866, scss/pages/_climate_graphs.scss */
   #chart-info-row .chart-info-img, #chart-info-row .chart-info-text {
     width: 100% !important;
   }
 }
 
 @media screen and (max-width: 900px) {
-  /* line 871, scss/pages/_local-climate-charts.scss */
+  /* line 871, scss/pages/_climate_graphs.scss */
   #chart-info-row .chart-info-img {
     display: flex !important;
     align-items: center !important;
@@ -18587,32 +18587,32 @@ input.input-inner:focus {
 }
 
 @media screen and (max-width: 900px) {
-  /* line 881, scss/pages/_local-climate-charts.scss */
+  /* line 881, scss/pages/_climate_graphs.scss */
   #annual-slider-wrapper {
     height: 30px !important;
     order: 2;
   }
 }
 
-/* line 889, scss/pages/_local-climate-charts.scss */
+/* line 889, scss/pages/_climate_graphs.scss */
 #more-info-description .about-tool-row {
   width: 100% !important;
 }
 
-/* line 892, scss/pages/_local-climate-charts.scss */
+/* line 892, scss/pages/_climate_graphs.scss */
 #more-info-description ul {
   list-style-type: square;
   list-style-position: inside;
   padding: 6px;
 }
 
-/* line 896, scss/pages/_local-climate-charts.scss */
+/* line 896, scss/pages/_climate_graphs.scss */
 #more-info-description ul li {
   margin-left: 6px;
   margin-top: 6px;
 }
 
-/* line 903, scss/pages/_local-climate-charts.scss */
+/* line 903, scss/pages/_climate_graphs.scss */
 #filters-toggle {
   height: 36px;
   width: 36px;
@@ -18624,19 +18624,19 @@ input.input-inner:focus {
   border-radius: 36px;
 }
 
-/* line 910, scss/pages/_local-climate-charts.scss */
+/* line 910, scss/pages/_climate_graphs.scss */
 #filters-toggle .select-styled::after {
   background-color: #dce8fa;
   content: '\f0d8';
 }
 
-/* line 915, scss/pages/_local-climate-charts.scss */
+/* line 915, scss/pages/_climate_graphs.scss */
 #filters-toggle .select-styled.closed-filters::after {
   font-family: 'Font Awesome 5 Free';
   content: '\f0d7';
 }
 
-/* line 923, scss/pages/_local-climate-charts.scss */
+/* line 923, scss/pages/_climate_graphs.scss */
 #filters-row {
   visibility: visible !important;
   -webkit-transition: 0.6s;
@@ -18653,26 +18653,26 @@ input.input-inner:focus {
   transition-timing-function: ease;
 }
 
-/* line 932, scss/pages/_local-climate-charts.scss */
+/* line 932, scss/pages/_climate_graphs.scss */
 #info-row.closed-filters .rounded-filters-box {
   min-height: 52px !important;
 }
 
 @media screen and (max-width: 900px) {
-  /* line 932, scss/pages/_local-climate-charts.scss */
+  /* line 932, scss/pages/_climate_graphs.scss */
   #info-row.closed-filters .rounded-filters-box {
     min-height: 65px !important;
   }
 }
 
-/* line 940, scss/pages/_local-climate-charts.scss */
+/* line 940, scss/pages/_climate_graphs.scss */
 #info-row.closed-filters #filters-row {
   display: none !important;
   visibility: hidden !important;
 }
 
-/* line 4, scss/pages/_local-climate-maps.scss */
-#local-climate-maps-viewport {
+/* line 4, scss/pages/_climate_maps.scss */
+#climate-maps-viewport {
   background-color: #ffffff;
   height: calc(100% - 48px - 6px - 100px) !important;
   min-height: calc(100% - 48px - 6px - 100px) !important;
@@ -18682,15 +18682,15 @@ input.input-inner:focus {
 }
 
 @media screen and (max-width: 499px) {
-  /* line 4, scss/pages/_local-climate-maps.scss */
-  #local-climate-maps-viewport {
+  /* line 4, scss/pages/_climate_maps.scss */
+  #climate-maps-viewport {
     min-height: calc(100% - 48px - 12px - 64px) !important;
     height: calc(100% - 48px - 12px - 64px) !important;
   }
 }
 
-/* line 17, scss/pages/_local-climate-maps.scss */
-#local-climate-maps-viewport:after {
+/* line 17, scss/pages/_climate_maps.scss */
+#climate-maps-viewport:after {
   content: '';
   width: 100%;
   height: 5px;
@@ -18703,93 +18703,93 @@ input.input-inner:focus {
 }
 
 @media screen and (max-width: 499px) {
-  /* line 17, scss/pages/_local-climate-maps.scss */
-  #local-climate-maps-viewport:after {
+  /* line 17, scss/pages/_climate_maps.scss */
+  #climate-maps-viewport:after {
     top: calc(100% - 75px);
   }
 }
 
-/* line 31, scss/pages/_local-climate-maps.scss */
-#local-climate-maps-viewport.expanded {
+/* line 31, scss/pages/_climate_maps.scss */
+#climate-maps-viewport.expanded {
   min-height: calc(100% - 48px - 12px - 170px) !important;
   height: calc(100% - 48px - 12px - 170px) !important;
 }
 
 @media screen and (min-width: 850px) {
-  /* line 31, scss/pages/_local-climate-maps.scss */
-  #local-climate-maps-viewport.expanded {
+  /* line 31, scss/pages/_climate_maps.scss */
+  #climate-maps-viewport.expanded {
     min-height: calc(100% - 48px - 12px - 100px) !important;
     height: calc(100% - 48px - 12px - 100px) !important;
   }
-  /* line 35, scss/pages/_local-climate-maps.scss */
-  #local-climate-maps-viewport.expanded:after {
+  /* line 35, scss/pages/_climate_maps.scss */
+  #climate-maps-viewport.expanded:after {
     top: calc(100% - 117px);
   }
 }
 
 @media screen and (min-width: 850px) and (max-width: 499px) {
-  /* line 35, scss/pages/_local-climate-maps.scss */
-  #local-climate-maps-viewport.expanded:after {
+  /* line 35, scss/pages/_climate_maps.scss */
+  #climate-maps-viewport.expanded:after {
     top: calc(100% - 147px);
   }
 }
 
-/* line 46, scss/pages/_local-climate-maps.scss */
-#local-climate-maps-viewport.expanded:after {
+/* line 46, scss/pages/_climate_maps.scss */
+#climate-maps-viewport.expanded:after {
   top: calc(100% - 187px);
 }
 
 @media screen and (max-width: 499px) {
-  /* line 46, scss/pages/_local-climate-maps.scss */
-  #local-climate-maps-viewport.expanded:after {
+  /* line 46, scss/pages/_climate_maps.scss */
+  #climate-maps-viewport.expanded:after {
     top: calc(100% - 147px);
   }
 }
 
 @media screen and (max-width: 499px) {
-  /* line 31, scss/pages/_local-climate-maps.scss */
-  #local-climate-maps-viewport.expanded {
+  /* line 31, scss/pages/_climate_maps.scss */
+  #climate-maps-viewport.expanded {
     min-height: calc(100% - 48px - 12px - 130px) !important;
     height: calc(100% - 48px - 12px - 130px) !important;
   }
 }
 
-/* line 60, scss/pages/_local-climate-maps.scss */
-#local-climate-maps-viewport .top-select-wrapper {
+/* line 60, scss/pages/_climate_maps.scss */
+#climate-maps-viewport .top-select-wrapper {
   width: 34% !important;
 }
 
-/* line 62, scss/pages/_local-climate-maps.scss */
-#local-climate-maps-viewport .top-select-wrapper-minor {
+/* line 62, scss/pages/_climate_maps.scss */
+#climate-maps-viewport .top-select-wrapper-minor {
   width: 5% !important;
 }
 
 @media screen and (max-width: 900px) {
-  /* line 67, scss/pages/_local-climate-maps.scss */
-  #local-climate-maps-viewport .search-box-secondary {
+  /* line 67, scss/pages/_climate_maps.scss */
+  #climate-maps-viewport .search-box-secondary {
     width: 100% !important;
     display: inline-block !important;
   }
 }
 
-/* line 74, scss/pages/_local-climate-maps.scss */
-#local-climate-maps-viewport #time-wrapper {
+/* line 74, scss/pages/_climate_maps.scss */
+#climate-maps-viewport #time-wrapper {
   min-width: 320px;
 }
 
 @media screen and (max-width: 1024px) {
-  /* line 74, scss/pages/_local-climate-maps.scss */
-  #local-climate-maps-viewport #time-wrapper {
+  /* line 74, scss/pages/_climate_maps.scss */
+  #climate-maps-viewport #time-wrapper {
     min-width: 280px;
   }
 }
 
-/* line 79, scss/pages/_local-climate-maps.scss */
-#local-climate-maps-viewport #time-wrapper .btn-default {
+/* line 79, scss/pages/_climate_maps.scss */
+#climate-maps-viewport #time-wrapper .btn-default {
   font-size: .9rem !important;
 }
 
-/* line 85, scss/pages/_local-climate-maps.scss */
+/* line 85, scss/pages/_climate_maps.scss */
 .map-nodata-message {
   z-index: 500;
   width: 50%;
@@ -18808,7 +18808,7 @@ input.input-inner:focus {
 }
 
 @media screen and (max-width: 599px) {
-  /* line 85, scss/pages/_local-climate-maps.scss */
+  /* line 85, scss/pages/_climate_maps.scss */
   .map-nodata-message {
     top: -200px !important;
     left: 10% !important;
@@ -18816,7 +18816,7 @@ input.input-inner:focus {
   }
 }
 
-/* line 109, scss/pages/_local-climate-maps.scss */
+/* line 109, scss/pages/_climate_maps.scss */
 #map-for-print-left .legend, #map-for-print-right .legend {
   margin: 12px;
   padding: 12px;
@@ -18825,77 +18825,137 @@ input.input-inner:focus {
   top: 34px;
 }
 
-/* line 118, scss/pages/_local-climate-maps.scss */
+/* line 118, scss/pages/_climate_maps.scss */
 #map-row {
   justify-content: space-evenly !important;
 }
 
 @media screen and (min-width: 901px) {
-  /* line 118, scss/pages/_local-climate-maps.scss */
+  /* line 118, scss/pages/_climate_maps.scss */
   #map-row {
     height: calc(100% - 205px) !important;
   }
 }
 
-/* line 126, scss/pages/_local-climate-maps.scss */
+/* line 126, scss/pages/_climate_maps.scss */
 #map-row.closed-filters {
   height: calc(100% - 135px) !important;
 }
 
-/* line 133, scss/pages/_local-climate-maps.scss */
+/* line 133, scss/pages/_climate_maps.scss */
 #map-row #local-climate-map-element {
   width: 100%;
   flex-wrap: wrap;
 }
 
-/* line 139, scss/pages/_local-climate-maps.scss */
+/* line 139, scss/pages/_climate_maps.scss */
 #map-row .scenario-map-legend-container .legend-unit-label {
   font: 500 14px Roboto, Helvetica, "Helvetica Neue", Arial, sans-serif !important;
   padding-bottom: 6px;
 }
 
-/* line 145, scss/pages/_local-climate-maps.scss */
+/* line 145, scss/pages/_climate_maps.scss */
 #map-row .scenario-map-overlay-container {
   position: absolute !important;
 }
 
-/* line 149, scss/pages/_local-climate-maps.scss */
+/* line 149, scss/pages/_climate_maps.scss */
+#map-row .esri-popup__main-container, #map-row .scenario-map-inspect-container {
+  height: -moz-fit-content;
+  height: fit-content;
+  width: 20rem;
+  background: #ffffffed;
+  box-shadow: 2px 1px 5px rgba(0, 0, 0, 0.5);
+  border: solid 1.3px rgba(0, 0, 0, 0.3);
+  padding: 0.35rem 0.25rem;
+  font-size: 0.8rem;
+  font-weight: 500;
+  /* margin: 0rem auto; */
+  padding-left: 0.8rem;
+}
+
+/* line 162, scss/pages/_climate_maps.scss */
+#map-row .esri-popup__main-container .esri-popup__content, #map-row .scenario-map-inspect-container .esri-popup__content {
+  margin: 0;
+}
+
+/* line 166, scss/pages/_climate_maps.scss */
+#map-row .esri-popup__main-container .area-stats, #map-row .scenario-map-inspect-container .area-stats {
+  font-size: 1rem;
+  display: grid;
+  grid-template-columns: min-content auto;
+  grid-gap: 0.6rem;
+  margin-right: 0.5rem;
+  margin-left: 0.5rem;
+}
+
+/* line 173, scss/pages/_climate_maps.scss */
+#map-row .esri-popup__main-container .area-stats div, #map-row .scenario-map-inspect-container .area-stats div {
+  margin: 0.35rem 0;
+}
+
+/* line 176, scss/pages/_climate_maps.scss */
+#map-row .esri-popup__main-container .area-stats span, #map-row .scenario-map-inspect-container .area-stats span {
+  line-height: 1.3rem;
+}
+
+/* line 179, scss/pages/_climate_maps.scss */
+#map-row .esri-popup__main-container .area-stats sup, #map-row .scenario-map-inspect-container .area-stats sup {
+  vertical-align: super;
+  font-size: 0.5em;
+}
+
+/* line 184, scss/pages/_climate_maps.scss */
+#map-row .esri-popup__main-container .area-stats .btn-default, #map-row .scenario-map-inspect-container .area-stats .btn-default {
+  margin: 0.6rem auto 0.3rem auto !important;
+  text-decoration: none !important;
+  padding: 1rem 1.3rem;
+  text-align: center;
+  max-width: 70%;
+}
+
+/* line 192, scss/pages/_climate_maps.scss */
+#map-row .esri-popup__main-container .area-stats .area_social_value, #map-row .esri-popup__main-container .area-stats .area_hist_mean_value, #map-row .esri-popup__main-container .area-stats .area_rcp45_value, #map-row .esri-popup__main-container .area-stats .area_rcp85_value, #map-row .scenario-map-inspect-container .area-stats .area_social_value, #map-row .scenario-map-inspect-container .area-stats .area_hist_mean_value, #map-row .scenario-map-inspect-container .area-stats .area_rcp45_value, #map-row .scenario-map-inspect-container .area-stats .area_rcp85_value {
+  font-size: 1.3rem;
+}
+
+/* line 198, scss/pages/_climate_maps.scss */
 #map-row .esri-view-user-storage {
   height: unset !important;
 }
 
-/* line 153, scss/pages/_local-climate-maps.scss */
+/* line 202, scss/pages/_climate_maps.scss */
 #map-row .bottom-scenario-controls .rounded-choice-box {
   min-height: 100% !important;
   max-height: 100% !important;
   background-color: #E9F1FC !important;
 }
 
-/* line 158, scss/pages/_local-climate-maps.scss */
+/* line 207, scss/pages/_climate_maps.scss */
 #map-row .bottom-scenario-controls .rounded-choice-box:hover, #map-row .bottom-scenario-controls .rounded-choice-box:focus {
   background-color: #caddf8 !important;
   outline: none !important;
 }
 
-/* line 165, scss/pages/_local-climate-maps.scss */
+/* line 214, scss/pages/_climate_maps.scss */
 #map-row #local-climate-map-element .movable.slider-div {
   top: 0px !important;
 }
 
 @media screen and (max-width: 1240px) {
-  /* line 118, scss/pages/_local-climate-maps.scss */
+  /* line 118, scss/pages/_climate_maps.scss */
   #map-row {
     justify-content: center !important;
   }
 }
 
 @media screen and (max-width: 900px) {
-  /* line 118, scss/pages/_local-climate-maps.scss */
+  /* line 118, scss/pages/_climate_maps.scss */
   #map-row {
     order: 1;
     padding-bottom: 250px !important;
   }
-  /* line 178, scss/pages/_local-climate-maps.scss */
+  /* line 227, scss/pages/_climate_maps.scss */
   #map-row #local-climate-map-element {
     width: 100%;
     flex-wrap: wrap;
@@ -18903,25 +18963,25 @@ input.input-inner:focus {
     max-height: 350px !important;
     height: 350px !important;
   }
-  /* line 185, scss/pages/_local-climate-maps.scss */
+  /* line 234, scss/pages/_climate_maps.scss */
   #map-row #local-climate-map-element .esri-view-root {
     flex: 0 0 100%;
     height: 100% !important;
     width: 100% !important;
   }
-  /* line 191, scss/pages/_local-climate-maps.scss */
+  /* line 240, scss/pages/_climate_maps.scss */
   #map-row #local-climate-map-element .esri-overlay-surface {
     flex: 0 0 100%;
     height: 100% !important;
     width: 100% !important;
   }
-  /* line 197, scss/pages/_local-climate-maps.scss */
+  /* line 246, scss/pages/_climate_maps.scss */
   #map-row #local-climate-map-element .esri-view-user-storage {
     overflow: visible !important;
     height: 100% !important;
     width: 100% !important;
   }
-  /* line 203, scss/pages/_local-climate-maps.scss */
+  /* line 252, scss/pages/_climate_maps.scss */
   #map-row #local-climate-map-element .scenario-map-overlay-container {
     position: relative !important;
     top: 0px !important;
@@ -18930,13 +18990,13 @@ input.input-inner:focus {
     height: 100% !important;
     margin: 0px !important;
   }
-  /* line 212, scss/pages/_local-climate-maps.scss */
+  /* line 261, scss/pages/_climate_maps.scss */
   #map-row #local-climate-map-element .movable.slider-div {
     height: 350px;
     top: -350px !important;
     z-index: 200;
   }
-  /* line 218, scss/pages/_local-climate-maps.scss */
+  /* line 267, scss/pages/_climate_maps.scss */
   #map-row #local-climate-map-element .bottom-scenario-controls {
     position: inherit !important;
     top: -175px !important;
@@ -18944,7 +19004,7 @@ input.input-inner:focus {
     height: 100% !important;
     padding: 1rem 0rem !important;
   }
-  /* line 226, scss/pages/_local-climate-maps.scss */
+  /* line 275, scss/pages/_climate_maps.scss */
   #map-row #local-climate-map-element .bottom-scenario-controls .left-scenario-controls {
     width: 100% !important;
     flex: 1 0 100% !important;
@@ -18953,7 +19013,7 @@ input.input-inner:focus {
     position: relative;
     top: -225px;
   }
-  /* line 235, scss/pages/_local-climate-maps.scss */
+  /* line 284, scss/pages/_climate_maps.scss */
   #map-row #local-climate-map-element .bottom-scenario-controls .right-scenario-controls {
     width: 100% !important;
     flex: 1 0 100% !important;
@@ -18963,53 +19023,53 @@ input.input-inner:focus {
     top: -225px;
     left: -100%;
   }
-  /* line 245, scss/pages/_local-climate-maps.scss */
+  /* line 294, scss/pages/_climate_maps.scss */
   #map-row #local-climate-map-element .bottom-scenario-controls .left-year-slider-container {
     max-width: 90%;
     min-width: 90%;
     width: 90%;
   }
-  /* line 249, scss/pages/_local-climate-maps.scss */
+  /* line 298, scss/pages/_climate_maps.scss */
   #map-row #local-climate-map-element .bottom-scenario-controls .left-year-slider-container:focus, #map-row #local-climate-map-element .bottom-scenario-controls .left-year-slider-container:hover {
     border-left: 2px #124086 solid !important;
   }
-  /* line 254, scss/pages/_local-climate-maps.scss */
+  /* line 303, scss/pages/_climate_maps.scss */
   #map-row #local-climate-map-element .bottom-scenario-controls #leftScenario-select-wrapper {
     border-left: 2px #124086 solid !important;
   }
-  /* line 258, scss/pages/_local-climate-maps.scss */
+  /* line 307, scss/pages/_climate_maps.scss */
   #map-row #local-climate-map-element .bottom-scenario-controls #rightScenario-select-wrapper {
     border-right: 2px #124086 solid !important;
   }
-  /* line 262, scss/pages/_local-climate-maps.scss */
+  /* line 311, scss/pages/_climate_maps.scss */
   #map-row #local-climate-map-element .bottom-scenario-controls .right-year-slider-container {
     max-width: 90%;
     min-width: 90%;
     width: 90%;
   }
-  /* line 266, scss/pages/_local-climate-maps.scss */
+  /* line 315, scss/pages/_climate_maps.scss */
   #map-row #local-climate-map-element .bottom-scenario-controls .right-year-slider-container:focus, #map-row #local-climate-map-element .bottom-scenario-controls .right-year-slider-container:hover {
     border-right: 2px #124086 solid !important;
   }
-  /* line 271, scss/pages/_local-climate-maps.scss */
+  /* line 320, scss/pages/_climate_maps.scss */
   #map-row #local-climate-map-element .bottom-scenario-controls .fs-dropdown-options {
     position: relative;
     left: -150px;
   }
-  /* line 276, scss/pages/_local-climate-maps.scss */
+  /* line 325, scss/pages/_climate_maps.scss */
   #map-row #local-climate-map-element .bottom-scenario-controls .left-scenario-dropdown {
     max-width: 90%;
     min-width: 90%;
     width: 90%;
     margin: 0px;
   }
-  /* line 281, scss/pages/_local-climate-maps.scss */
+  /* line 330, scss/pages/_climate_maps.scss */
   #map-row #local-climate-map-element .bottom-scenario-controls .left-scenario-dropdown .fs-dropdown.fs-dropdown-mobile {
     width: 100%;
     min-width: 100%;
     border-left: 2px #124086 solid;
   }
-  /* line 288, scss/pages/_local-climate-maps.scss */
+  /* line 337, scss/pages/_climate_maps.scss */
   #map-row #local-climate-map-element .bottom-scenario-controls .left-year-slider-container {
     position: relative;
     top: 24px;
@@ -19018,7 +19078,7 @@ input.input-inner:focus {
     width: 90%;
     border-left: 2px #124086 solid;
   }
-  /* line 297, scss/pages/_local-climate-maps.scss */
+  /* line 346, scss/pages/_climate_maps.scss */
   #map-row #local-climate-map-element .bottom-scenario-controls .right-scenario-dropdown {
     position: relative;
     top: 150px;
@@ -19027,13 +19087,13 @@ input.input-inner:focus {
     width: 90%;
     margin: 0px;
   }
-  /* line 304, scss/pages/_local-climate-maps.scss */
+  /* line 353, scss/pages/_climate_maps.scss */
   #map-row #local-climate-map-element .bottom-scenario-controls .right-scenario-dropdown .fs-dropdown.fs-dropdown-mobile {
     width: 100%;
     min-width: 100%;
     border-right: 2px #124086 solid;
   }
-  /* line 312, scss/pages/_local-climate-maps.scss */
+  /* line 361, scss/pages/_climate_maps.scss */
   #map-row #local-climate-map-element .bottom-scenario-controls .right-year-slider-container {
     position: relative;
     top: 175px;
@@ -19042,7 +19102,7 @@ input.input-inner:focus {
     width: 90%;
     border-right: 2px #124086 solid;
   }
-  /* line 323, scss/pages/_local-climate-maps.scss */
+  /* line 372, scss/pages/_climate_maps.scss */
   #map-row .map-wrap {
     min-height: 350px !important;
     height: 350px !important;
@@ -19050,57 +19110,57 @@ input.input-inner:focus {
 }
 
 @media screen and (max-width: 599px) {
-  /* line 118, scss/pages/_local-climate-maps.scss */
+  /* line 118, scss/pages/_climate_maps.scss */
   #map-row {
     height: auto !important;
     order: 1;
   }
-  /* line 333, scss/pages/_local-climate-maps.scss */
+  /* line 382, scss/pages/_climate_maps.scss */
   #map-row .map-wrap {
     min-height: 250px !important;
     height: 250px !important;
   }
 }
 
-/* line 341, scss/pages/_local-climate-maps.scss */
+/* line 390, scss/pages/_climate_maps.scss */
 .esri-expand__container {
   height: 32px;
   width: 32px;
 }
 
-/* line 346, scss/pages/_local-climate-maps.scss */
+/* line 395, scss/pages/_climate_maps.scss */
 .legend-image {
   max-height: 16rem;
   max-width: none;
 }
 
-/* line 351, scss/pages/_local-climate-maps.scss */
+/* line 400, scss/pages/_climate_maps.scss */
 .esri-view-surface .esri-display-object {
   width: 100%;
   height: 100%;
 }
 
-/* line 356, scss/pages/_local-climate-maps.scss */
+/* line 405, scss/pages/_climate_maps.scss */
 .esri-ui-top-left .esri-expand__content, .esri-ui-top-right .esri-expand__content {
   top: -32px !important;
 }
 
-/* line 360, scss/pages/_local-climate-maps.scss */
+/* line 409, scss/pages/_climate_maps.scss */
 .esri-view-width-xsmall .esri-component.esri-expand.esri-widget.esri-expand--auto {
   display: none !important;
 }
 
-/* line 364, scss/pages/_local-climate-maps.scss */
+/* line 413, scss/pages/_climate_maps.scss */
 .esri-view-width-xsmall .esri-expand--auto .esri-expand__container--expanded {
   position: relative !important;
 }
 
-/* line 368, scss/pages/_local-climate-maps.scss */
+/* line 417, scss/pages/_climate_maps.scss */
 .esri-view-width-greater-than-xsmall .esri-expand--auto .esri-expand__content {
   position: relative !important;
 }
 
-/* line 372, scss/pages/_local-climate-maps.scss */
+/* line 421, scss/pages/_climate_maps.scss */
 .esri-ui-corner .esri-component .esri-expand__content {
   max-height: 260px !important;
   height: 260px;
@@ -19110,36 +19170,36 @@ input.input-inner:focus {
 }
 
 @media screen and (max-height: 700px) {
-  /* line 372, scss/pages/_local-climate-maps.scss */
+  /* line 421, scss/pages/_climate_maps.scss */
   .esri-ui-corner .esri-component .esri-expand__content {
     max-height: 200px !important;
     height: 200px;
   }
 }
 
-/* line 384, scss/pages/_local-climate-maps.scss */
+/* line 433, scss/pages/_climate_maps.scss */
 .scenario-map-overlay-container {
   position: relative;
 }
 
-/* line 388, scss/pages/_local-climate-maps.scss */
+/* line 437, scss/pages/_climate_maps.scss */
 .esri-expand__content.esri-expand__content--expanded {
   width: 100px;
 }
 
 @media screen and (max-height: 700px) {
-  /* line 388, scss/pages/_local-climate-maps.scss */
+  /* line 437, scss/pages/_climate_maps.scss */
   .esri-expand__content.esri-expand__content--expanded {
     width: 90px;
   }
 }
 
-/* line 395, scss/pages/_local-climate-maps.scss */
+/* line 444, scss/pages/_climate_maps.scss */
 .esri-expand__content.esri-expand__content--expanded .legend-note-label {
   display: none;
 }
 
-/* line 399, scss/pages/_local-climate-maps.scss */
+/* line 448, scss/pages/_climate_maps.scss */
 .esri-expand__content.esri-expand__content--expanded img {
   margin-top: 6px;
   height: 224px;
@@ -19147,26 +19207,26 @@ input.input-inner:focus {
 }
 
 @media screen and (max-height: 700px) {
-  /* line 399, scss/pages/_local-climate-maps.scss */
+  /* line 448, scss/pages/_climate_maps.scss */
   .esri-expand__content.esri-expand__content--expanded img {
     height: 164px;
     width: 55px;
   }
 }
 
-/* line 409, scss/pages/_local-climate-maps.scss */
+/* line 458, scss/pages/_climate_maps.scss */
 .esri-expand__content.esri-expand__content--expanded .esri-basemap-gallery__item-thumbnail {
   height: 64px;
   width: auto;
   box-shadow: 0 0 0 1px rgba(50, 50, 50, 0.25);
 }
 
-/* line 416, scss/pages/_local-climate-maps.scss */
+/* line 465, scss/pages/_climate_maps.scss */
 .esri-view {
   padding: 12px;
 }
 
-/* line 420, scss/pages/_local-climate-maps.scss */
+/* line 469, scss/pages/_climate_maps.scss */
 .esri-view-surface {
   -webkit-border-radius: 5px;
   -moz-border-radius: 5px;
@@ -19175,7 +19235,7 @@ input.input-inner:focus {
   border-radius: 5px;
 }
 
-/* line 424, scss/pages/_local-climate-maps.scss */
+/* line 473, scss/pages/_climate_maps.scss */
 .movable {
   width: 4px;
   height: 100%;
@@ -19187,7 +19247,7 @@ input.input-inner:focus {
   box-shadow: 1px 0 2px 0 rgba(0, 0, 0, 0.15);
 }
 
-/* line 433, scss/pages/_local-climate-maps.scss */
+/* line 482, scss/pages/_climate_maps.scss */
 .movable .handle {
   position: relative;
   top: 50%;
@@ -19202,7 +19262,7 @@ input.input-inner:focus {
   box-shadow: 1px 0 2px 0 rgba(0, 0, 0, 0.15);
 }
 
-/* line 442, scss/pages/_local-climate-maps.scss */
+/* line 491, scss/pages/_climate_maps.scss */
 .movable .handle:after {
   cursor: col-resize;
   position: absolute;
@@ -19221,7 +19281,7 @@ input.input-inner:focus {
   font-size: 1.25rem;
 }
 
-/* line 468, scss/pages/_local-climate-maps.scss */
+/* line 517, scss/pages/_climate_maps.scss */
 #local-climate-map-element:focus,
 .esri-view-root:focus,
 .esri-view-surface:focus,
@@ -19231,20 +19291,20 @@ input.input-inner:focus {
   outline: none !important;
 }
 
-/* line 473, scss/pages/_local-climate-maps.scss */
+/* line 522, scss/pages/_climate_maps.scss */
 .warning-link {
   color: #b33809;
   font-weight: 800;
   text-decoration: underline;
 }
 
-/* line 5, scss/pages/_historical-weather-data.scss */
+/* line 5, scss/pages/_historical_weather_data.scss */
 .d-off {
   position: absolute;
   left: -1000000px;
 }
 
-/* line 10, scss/pages/_historical-weather-data.scss */
+/* line 10, scss/pages/_historical_weather_data.scss */
 #historical-weather-data-viewport {
   background-color: #ffffff;
   height: calc(100% - 48px - 6px - 100px) !important;
@@ -19255,14 +19315,14 @@ input.input-inner:focus {
 }
 
 @media screen and (max-width: 499px) {
-  /* line 10, scss/pages/_historical-weather-data.scss */
+  /* line 10, scss/pages/_historical_weather_data.scss */
   #historical-weather-data-viewport {
     min-height: calc(100% - 48px - 12px - 64px) !important;
     height: calc(100% - 48px - 12px - 64px) !important;
   }
 }
 
-/* line 23, scss/pages/_historical-weather-data.scss */
+/* line 23, scss/pages/_historical_weather_data.scss */
 #historical-weather-data-viewport:after {
   content: '';
   width: 100%;
@@ -19276,69 +19336,69 @@ input.input-inner:focus {
 }
 
 @media screen and (max-width: 499px) {
-  /* line 23, scss/pages/_historical-weather-data.scss */
+  /* line 23, scss/pages/_historical_weather_data.scss */
   #historical-weather-data-viewport:after {
     top: calc(100% - 75px);
   }
 }
 
-/* line 37, scss/pages/_historical-weather-data.scss */
+/* line 37, scss/pages/_historical_weather_data.scss */
 #historical-weather-data-viewport.expanded {
   min-height: calc(100% - 48px - 12px - 170px) !important;
   height: calc(100% - 48px - 12px - 170px) !important;
 }
 
 @media screen and (min-width: 850px) {
-  /* line 37, scss/pages/_historical-weather-data.scss */
+  /* line 37, scss/pages/_historical_weather_data.scss */
   #historical-weather-data-viewport.expanded {
     min-height: calc(100% - 48px - 12px - 100px) !important;
     height: calc(100% - 48px - 12px - 100px) !important;
   }
-  /* line 41, scss/pages/_historical-weather-data.scss */
+  /* line 41, scss/pages/_historical_weather_data.scss */
   #historical-weather-data-viewport.expanded:after {
     top: calc(100% - 117px);
   }
 }
 
 @media screen and (min-width: 850px) and (max-width: 499px) {
-  /* line 41, scss/pages/_historical-weather-data.scss */
+  /* line 41, scss/pages/_historical_weather_data.scss */
   #historical-weather-data-viewport.expanded:after {
     top: calc(100% - 147px);
   }
 }
 
-/* line 52, scss/pages/_historical-weather-data.scss */
+/* line 52, scss/pages/_historical_weather_data.scss */
 #historical-weather-data-viewport.expanded:after {
   top: calc(100% - 187px);
 }
 
 @media screen and (max-width: 499px) {
-  /* line 52, scss/pages/_historical-weather-data.scss */
+  /* line 52, scss/pages/_historical_weather_data.scss */
   #historical-weather-data-viewport.expanded:after {
     top: calc(100% - 147px);
   }
 }
 
 @media screen and (max-width: 499px) {
-  /* line 37, scss/pages/_historical-weather-data.scss */
+  /* line 37, scss/pages/_historical_weather_data.scss */
   #historical-weather-data-viewport.expanded {
     min-height: calc(100% - 48px - 12px - 130px) !important;
     height: calc(100% - 48px - 12px - 130px) !important;
   }
 }
 
-/* line 67, scss/pages/_historical-weather-data.scss */
+/* line 67, scss/pages/_historical_weather_data.scss */
 #historical-weather-data-viewport #station-info-none strong {
   font-weight: 800;
   color: #f5652d;
 }
 
-/* line 73, scss/pages/_historical-weather-data.scss */
+/* line 73, scss/pages/_historical_weather_data.scss */
 #historical-weather-data-viewport #stations-map-wrap {
   min-height: 150px !important;
 }
 
-/* line 77, scss/pages/_historical-weather-data.scss */
+/* line 77, scss/pages/_historical_weather_data.scss */
 #historical-weather-data-viewport .map-nostations-message {
   z-index: 500;
   width: 25%;
@@ -19357,7 +19417,7 @@ input.input-inner:focus {
 }
 
 @media screen and (max-width: 599px) {
-  /* line 77, scss/pages/_historical-weather-data.scss */
+  /* line 77, scss/pages/_historical_weather_data.scss */
   #historical-weather-data-viewport .map-nostations-message {
     top: -200px !important;
     left: 10% !important;
@@ -19365,86 +19425,86 @@ input.input-inner:focus {
   }
 }
 
-/* line 97, scss/pages/_historical-weather-data.scss */
+/* line 97, scss/pages/_historical_weather_data.scss */
 #historical-weather-data-viewport #stations-select-wrapper {
   display: flex !important;
 }
 
 @media screen and (max-width: 900px) {
-  /* line 97, scss/pages/_historical-weather-data.scss */
+  /* line 97, scss/pages/_historical_weather_data.scss */
   #historical-weather-data-viewport #stations-select-wrapper {
     width: 100% !important;
     margin-top: 6px;
   }
 }
 
-/* line 105, scss/pages/_historical-weather-data.scss */
+/* line 105, scss/pages/_historical_weather_data.scss */
 #historical-weather-data-viewport #chartmap-wrapper {
   width: 30% !important;
 }
 
 @media screen and (min-width: 901px) {
-  /* line 109, scss/pages/_historical-weather-data.scss */
+  /* line 109, scss/pages/_historical_weather_data.scss */
   #historical-weather-data-viewport #stations-map-row {
     height: calc(100% - 48px - 6px - 140px) !important;
   }
-  /* line 112, scss/pages/_historical-weather-data.scss */
+  /* line 112, scss/pages/_historical_weather_data.scss */
   #historical-weather-data-viewport #stations-map-row.closed-filters {
     height: calc(100% - 48px - 6px) !important;
   }
 }
 
 @media screen and (min-width: 901px) {
-  /* line 118, scss/pages/_historical-weather-data.scss */
+  /* line 118, scss/pages/_historical_weather_data.scss */
   #historical-weather-data-viewport #stations-graph-row {
     height: calc(100% - 48px - 6px - 205px) !important;
   }
-  /* line 121, scss/pages/_historical-weather-data.scss */
+  /* line 121, scss/pages/_historical_weather_data.scss */
   #historical-weather-data-viewport #stations-graph-row.closed-filters {
     height: calc(100% - 48px - 6px) !important;
   }
 }
 
-/* line 127, scss/pages/_historical-weather-data.scss */
+/* line 127, scss/pages/_historical_weather_data.scss */
 #historical-weather-data-viewport #stations-map-row {
   justify-content: space-evenly !important;
 }
 
-/* line 131, scss/pages/_historical-weather-data.scss */
+/* line 131, scss/pages/_historical_weather_data.scss */
 #historical-weather-data-viewport #stations-map-row.closed-filters .stations-map-wrap {
   height: 86% !important;
 }
 
-/* line 136, scss/pages/_historical-weather-data.scss */
+/* line 136, scss/pages/_historical_weather_data.scss */
 #historical-weather-data-viewport #stations-map-row #stations-map {
   width: 100%;
   flex-wrap: wrap;
 }
 
-/* line 141, scss/pages/_historical-weather-data.scss */
+/* line 141, scss/pages/_historical_weather_data.scss */
 #historical-weather-data-viewport #stations-map-row .esri-view-user-storage {
   height: unset !important;
 }
 
-/* line 146, scss/pages/_historical-weather-data.scss */
+/* line 146, scss/pages/_historical_weather_data.scss */
 #historical-weather-data-viewport #stations-map-row #stations-map .movable.slider-div {
   top: 0px !important;
 }
 
 @media screen and (max-width: 1240px) {
-  /* line 127, scss/pages/_historical-weather-data.scss */
+  /* line 127, scss/pages/_historical_weather_data.scss */
   #historical-weather-data-viewport #stations-map-row {
     justify-content: center !important;
   }
 }
 
 @media screen and (max-width: 900px) {
-  /* line 127, scss/pages/_historical-weather-data.scss */
+  /* line 127, scss/pages/_historical_weather_data.scss */
   #historical-weather-data-viewport #stations-map-row {
     order: 1;
     padding-bottom: 250px !important;
   }
-  /* line 159, scss/pages/_historical-weather-data.scss */
+  /* line 159, scss/pages/_historical_weather_data.scss */
   #historical-weather-data-viewport #stations-map-row #stations-map {
     width: 100%;
     flex-wrap: wrap;
@@ -19452,12 +19512,12 @@ input.input-inner:focus {
     max-height: 350px !important;
     height: 350px !important;
   }
-  /* line 166, scss/pages/_historical-weather-data.scss */
+  /* line 166, scss/pages/_historical_weather_data.scss */
   #historical-weather-data-viewport #stations-map-row #stations-map .map-wrap {
     min-height: 350px !important;
     height: 350px !important;
   }
-  /* line 171, scss/pages/_historical-weather-data.scss */
+  /* line 171, scss/pages/_historical_weather_data.scss */
   #historical-weather-data-viewport #stations-map-row #stations-map .esri-view-root {
     flex: 0 0 100%;
     height: 100% !important;
@@ -19466,20 +19526,20 @@ input.input-inner:focus {
 }
 
 @media screen and (max-width: 900px) and (max-width: 599px) {
-  /* line 171, scss/pages/_historical-weather-data.scss */
+  /* line 171, scss/pages/_historical_weather_data.scss */
   #historical-weather-data-viewport #stations-map-row #stations-map .esri-view-root {
     z-index: 200;
   }
 }
 
 @media screen and (max-width: 900px) {
-  /* line 180, scss/pages/_historical-weather-data.scss */
+  /* line 180, scss/pages/_historical_weather_data.scss */
   #historical-weather-data-viewport #stations-map-row #stations-map .esri-overlay-surface {
     flex: 0 0 100%;
     height: 100% !important;
     width: 100% !important;
   }
-  /* line 186, scss/pages/_historical-weather-data.scss */
+  /* line 186, scss/pages/_historical_weather_data.scss */
   #historical-weather-data-viewport #stations-map-row #stations-map .esri-view-user-storage {
     overflow: visible !important;
     height: 100% !important;
@@ -19488,7 +19548,7 @@ input.input-inner:focus {
 }
 
 @media screen and (max-width: 900px) and (max-width: 900px) {
-  /* line 186, scss/pages/_historical-weather-data.scss */
+  /* line 186, scss/pages/_historical_weather_data.scss */
   #historical-weather-data-viewport #stations-map-row #stations-map .esri-view-user-storage {
     position: relative !important;
     top: -350px;
@@ -19496,7 +19556,7 @@ input.input-inner:focus {
 }
 
 @media screen and (max-width: 900px) {
-  /* line 196, scss/pages/_historical-weather-data.scss */
+  /* line 196, scss/pages/_historical_weather_data.scss */
   #historical-weather-data-viewport #stations-map-row #stations-map .scenario-map-overlay-container {
     position: relative !important;
     top: 0px !important;
@@ -19508,19 +19568,19 @@ input.input-inner:focus {
 }
 
 @media screen and (max-width: 599px) {
-  /* line 127, scss/pages/_historical-weather-data.scss */
+  /* line 127, scss/pages/_historical_weather_data.scss */
   #historical-weather-data-viewport #stations-map-row {
     height: auto !important;
     order: 1;
   }
-  /* line 211, scss/pages/_historical-weather-data.scss */
+  /* line 211, scss/pages/_historical_weather_data.scss */
   #historical-weather-data-viewport #stations-map-row .map-wrap {
     min-height: 250px !important;
     height: 250px !important;
   }
 }
 
-/* line 218, scss/pages/_historical-weather-data.scss */
+/* line 218, scss/pages/_historical_weather_data.scss */
 #historical-weather-data-viewport .left_chart {
   width: calc(50% - 40px);
   height: 100%;
@@ -19529,13 +19589,13 @@ input.input-inner:focus {
 }
 
 @media screen and (max-width: 900px) {
-  /* line 218, scss/pages/_historical-weather-data.scss */
+  /* line 218, scss/pages/_historical_weather_data.scss */
   #historical-weather-data-viewport .left_chart {
     width: calc(100%);
   }
 }
 
-/* line 228, scss/pages/_historical-weather-data.scss */
+/* line 228, scss/pages/_historical_weather_data.scss */
 #historical-weather-data-viewport .right_chart {
   width: calc(50% - 40px);
   height: 100%;
@@ -19544,13 +19604,13 @@ input.input-inner:focus {
 }
 
 @media screen and (max-width: 900px) {
-  /* line 228, scss/pages/_historical-weather-data.scss */
+  /* line 228, scss/pages/_historical_weather_data.scss */
   #historical-weather-data-viewport .right_chart {
     width: calc(100%);
   }
 }
 
-/* line 238, scss/pages/_historical-weather-data.scss */
+/* line 238, scss/pages/_historical_weather_data.scss */
 #historical-weather-data-viewport #overlay-chart-container {
   margin: 25px;
   height: 50vh;
@@ -19558,7 +19618,7 @@ input.input-inner:focus {
 }
 
 @media screen and (max-width: 900px) {
-  /* line 244, scss/pages/_historical-weather-data.scss */
+  /* line 244, scss/pages/_historical_weather_data.scss */
   #historical-weather-data-viewport #stations-graph-row {
     min-height: 610px !important;
     max-height: 610px !important;
@@ -19566,14 +19626,14 @@ input.input-inner:focus {
   }
 }
 
-/* line 252, scss/pages/_historical-weather-data.scss */
+/* line 252, scss/pages/_historical_weather_data.scss */
 #historical-weather-data-viewport #stations-graph-wrap {
   height: 100% !important;
   width: 80%;
 }
 
 @media screen and (max-width: 900px) {
-  /* line 252, scss/pages/_historical-weather-data.scss */
+  /* line 252, scss/pages/_historical_weather_data.scss */
   #historical-weather-data-viewport #stations-graph-wrap {
     min-height: 300px !important;
     max-height: 300px !important;
@@ -19581,13 +19641,13 @@ input.input-inner:focus {
   }
 }
 
-/* line 262, scss/pages/_historical-weather-data.scss */
+/* line 262, scss/pages/_historical_weather_data.scss */
 #historical-weather-data-viewport #stations-map-wrap {
   height: 100%;
 }
 
 @media screen and (max-width: 900px) {
-  /* line 262, scss/pages/_historical-weather-data.scss */
+  /* line 262, scss/pages/_historical_weather_data.scss */
   #historical-weather-data-viewport #stations-map-wrap {
     min-height: 350px !important;
     max-height: 350px !important;
@@ -19596,7 +19656,7 @@ input.input-inner:focus {
   }
 }
 
-/* line 272, scss/pages/_historical-weather-data.scss */
+/* line 272, scss/pages/_historical_weather_data.scss */
 #historical-weather-data-viewport #station-info-row {
   -webkit-transition: 0.5s;
   -moz-transition: 0.5s;
@@ -19612,19 +19672,19 @@ input.input-inner:focus {
   transition-timing-function: ease-out;
 }
 
-/* line 277, scss/pages/_historical-weather-data.scss */
+/* line 277, scss/pages/_historical_weather_data.scss */
 #historical-weather-data-viewport #station-info-row #more-info-description {
   padding-left: 6px;
 }
 
-/* line 281, scss/pages/_historical-weather-data.scss */
+/* line 281, scss/pages/_historical_weather_data.scss */
 #historical-weather-data-viewport #station-info-row .more-info-description {
   padding-top: 6px;
   width: 100%;
 }
 
 @media screen and (max-width: 900px) {
-  /* line 272, scss/pages/_historical-weather-data.scss */
+  /* line 272, scss/pages/_historical_weather_data.scss */
   #historical-weather-data-viewport #station-info-row {
     min-height: 250px;
     max-height: 250px !important;
@@ -19634,49 +19694,49 @@ input.input-inner:focus {
 }
 
 @media screen and (max-width: 768px) {
-  /* line 272, scss/pages/_historical-weather-data.scss */
+  /* line 272, scss/pages/_historical_weather_data.scss */
   #historical-weather-data-viewport #station-info-row {
     align-self: center;
     width: 90% !important;
   }
 }
 
-/* line 299, scss/pages/_historical-weather-data.scss */
+/* line 299, scss/pages/_historical_weather_data.scss */
 #historical-weather-data-viewport #stations-map-row, #historical-weather-data-viewport #stations-graph-row {
   align-self: center;
 }
 
 @media screen and (max-width: 768px) {
-  /* line 299, scss/pages/_historical-weather-data.scss */
+  /* line 299, scss/pages/_historical_weather_data.scss */
   #historical-weather-data-viewport #stations-map-row, #historical-weather-data-viewport #stations-graph-row {
     width: 90% !important;
   }
 }
 
-/* line 306, scss/pages/_historical-weather-data.scss */
+/* line 306, scss/pages/_historical_weather_data.scss */
 #historical-weather-data-viewport #station-overlay {
   height: 100%;
 }
 
-/* line 310, scss/pages/_historical-weather-data.scss */
+/* line 310, scss/pages/_historical_weather_data.scss */
 #historical-weather-data-viewport .text-info-box.label {
   font-weight: 500 !important;
 }
 
-/* line 314, scss/pages/_historical-weather-data.scss */
+/* line 314, scss/pages/_historical_weather_data.scss */
 #historical-weather-data-viewport .esri-expand__container {
   height: 32px;
   width: 32px;
 }
 
-/* line 319, scss/pages/_historical-weather-data.scss */
+/* line 319, scss/pages/_historical_weather_data.scss */
 #historical-weather-data-viewport .scenario-map-legend-container {
   max-width: 7rem;
   background: #ffffff;
   padding: 0.15rem 0.1rem;
 }
 
-/* line 324, scss/pages/_historical-weather-data.scss */
+/* line 324, scss/pages/_historical_weather_data.scss */
 #historical-weather-data-viewport .scenario-map-legend-container .legend-unit-label {
   margin: 0.2rem 0.25rem;
   display: block;
@@ -19684,45 +19744,45 @@ input.input-inner:focus {
   font-weight: 500;
 }
 
-/* line 331, scss/pages/_historical-weather-data.scss */
+/* line 331, scss/pages/_historical_weather_data.scss */
 #historical-weather-data-viewport .scenario-map-legend-container .legend-image {
   display: block;
   max-width: 5.2rem;
 }
 
-/* line 336, scss/pages/_historical-weather-data.scss */
+/* line 336, scss/pages/_historical_weather_data.scss */
 #historical-weather-data-viewport .scenario-map-legend-container .legend-note-label {
   display: block;
   font-size: 0.7rem;
   margin: 0.1rem 0.3rem;
 }
 
-/* line 343, scss/pages/_historical-weather-data.scss */
+/* line 343, scss/pages/_historical_weather_data.scss */
 #historical-weather-data-viewport .esri-ui-top-left .esri-expand__content, #historical-weather-data-viewport .esri-ui-top-right .esri-expand__content {
   top: -32px !important;
 }
 
-/* line 347, scss/pages/_historical-weather-data.scss */
+/* line 347, scss/pages/_historical_weather_data.scss */
 #historical-weather-data-viewport .esri-view-width-xsmall .esri-component.esri-expand.esri-widget.esri-expand--auto {
   display: none !important;
 }
 
-/* line 351, scss/pages/_historical-weather-data.scss */
+/* line 351, scss/pages/_historical_weather_data.scss */
 #historical-weather-data-viewport .esri-view-width-xsmall .esri-expand--auto .esri-expand__container--expanded {
   position: relative !important;
 }
 
-/* line 355, scss/pages/_historical-weather-data.scss */
+/* line 355, scss/pages/_historical_weather_data.scss */
 #historical-weather-data-viewport .esri-view-width-greater-than-xsmall .esri-expand--auto .esri-expand__content {
   position: relative !important;
 }
 
-/* line 359, scss/pages/_historical-weather-data.scss */
+/* line 359, scss/pages/_historical_weather_data.scss */
 #historical-weather-data-viewport .scenario-map-overlay-container {
   position: relative;
 }
 
-/* line 367, scss/pages/_historical-weather-data.scss */
+/* line 367, scss/pages/_historical_weather_data.scss */
 #historical-weather-data-viewport .esri-view-surface {
   -webkit-border-radius: 5px;
   -moz-border-radius: 5px;
@@ -19731,36 +19791,36 @@ input.input-inner:focus {
   border-radius: 5px;
 }
 
-/* line 371, scss/pages/_historical-weather-data.scss */
+/* line 371, scss/pages/_historical_weather_data.scss */
 #historical-weather-data-viewport .top-select-wrapper {
   width: 34% !important;
 }
 
-/* line 373, scss/pages/_historical-weather-data.scss */
+/* line 373, scss/pages/_historical_weather_data.scss */
 #historical-weather-data-viewport .top-select-wrapper-minor {
   width: 5% !important;
 }
 
 @media screen and (max-width: 900px) {
-  /* line 378, scss/pages/_historical-weather-data.scss */
+  /* line 378, scss/pages/_historical_weather_data.scss */
   #historical-weather-data-viewport .search-box-secondary {
     width: 100% !important;
     display: inline-block !important;
   }
 }
 
-/* line 385, scss/pages/_historical-weather-data.scss */
+/* line 385, scss/pages/_historical_weather_data.scss */
 #historical-weather-data-viewport .ui-icon {
   background-image: none !important;
 }
 
-/* line 5, scss/pages/_historical-thresholds.scss */
+/* line 5, scss/pages/_historical_thresholds.scss */
 .d-off {
   position: absolute;
   left: -1000000px;
 }
 
-/* line 22, scss/pages/_historical-thresholds.scss */
+/* line 22, scss/pages/_historical_thresholds.scss */
 #historical-thresholds-viewport {
   background-color: #ffffff;
   height: calc(100% - 48px - 6px - 100px) !important;
@@ -19771,14 +19831,14 @@ input.input-inner:focus {
 }
 
 @media screen and (max-width: 499px) {
-  /* line 22, scss/pages/_historical-thresholds.scss */
+  /* line 22, scss/pages/_historical_thresholds.scss */
   #historical-thresholds-viewport {
     min-height: calc(100% - 48px - 12px - 64px) !important;
     height: calc(100% - 48px - 12px - 64px) !important;
   }
 }
 
-/* line 35, scss/pages/_historical-thresholds.scss */
+/* line 35, scss/pages/_historical_thresholds.scss */
 #historical-thresholds-viewport:after {
   content: '';
   width: 100%;
@@ -19792,92 +19852,92 @@ input.input-inner:focus {
 }
 
 @media screen and (max-width: 499px) {
-  /* line 35, scss/pages/_historical-thresholds.scss */
+  /* line 35, scss/pages/_historical_thresholds.scss */
   #historical-thresholds-viewport:after {
     top: calc(100% - 75px);
   }
 }
 
-/* line 49, scss/pages/_historical-thresholds.scss */
+/* line 49, scss/pages/_historical_thresholds.scss */
 #historical-thresholds-viewport input[type=number] {
   height: 30px;
 }
 
-/* line 53, scss/pages/_historical-thresholds.scss */
+/* line 53, scss/pages/_historical_thresholds.scss */
 #historical-thresholds-viewport input[type=number]:hover::-webkit-inner-spin-button {
   width: 14px;
   height: 30px;
 }
 
-/* line 58, scss/pages/_historical-thresholds.scss */
+/* line 58, scss/pages/_historical_thresholds.scss */
 #historical-thresholds-viewport.expanded {
   min-height: calc(100% - 48px - 12px - 170px) !important;
   height: calc(100% - 48px - 12px - 170px) !important;
 }
 
 @media screen and (min-width: 850px) {
-  /* line 58, scss/pages/_historical-thresholds.scss */
+  /* line 58, scss/pages/_historical_thresholds.scss */
   #historical-thresholds-viewport.expanded {
     min-height: calc(100% - 48px - 12px - 100px) !important;
     height: calc(100% - 48px - 12px - 100px) !important;
   }
-  /* line 62, scss/pages/_historical-thresholds.scss */
+  /* line 62, scss/pages/_historical_thresholds.scss */
   #historical-thresholds-viewport.expanded:after {
     top: calc(100% - 117px);
   }
 }
 
 @media screen and (min-width: 850px) and (max-width: 499px) {
-  /* line 62, scss/pages/_historical-thresholds.scss */
+  /* line 62, scss/pages/_historical_thresholds.scss */
   #historical-thresholds-viewport.expanded:after {
     top: calc(100% - 147px);
   }
 }
 
-/* line 73, scss/pages/_historical-thresholds.scss */
+/* line 73, scss/pages/_historical_thresholds.scss */
 #historical-thresholds-viewport.expanded:after {
   top: calc(100% - 187px);
 }
 
 @media screen and (max-width: 499px) {
-  /* line 73, scss/pages/_historical-thresholds.scss */
+  /* line 73, scss/pages/_historical_thresholds.scss */
   #historical-thresholds-viewport.expanded:after {
     top: calc(100% - 147px);
   }
 }
 
 @media screen and (max-width: 499px) {
-  /* line 58, scss/pages/_historical-thresholds.scss */
+  /* line 58, scss/pages/_historical_thresholds.scss */
   #historical-thresholds-viewport.expanded {
     min-height: calc(100% - 48px - 12px - 130px) !important;
     height: calc(100% - 48px - 12px - 130px) !important;
   }
 }
 
-/* line 88, scss/pages/_historical-thresholds.scss */
+/* line 88, scss/pages/_historical_thresholds.scss */
 #historical-thresholds-viewport #station-info-none strong {
   font-weight: 800;
   color: #f5652d;
 }
 
-/* line 94, scss/pages/_historical-thresholds.scss */
+/* line 94, scss/pages/_historical_thresholds.scss */
 #historical-thresholds-viewport #stations-map-wrap {
   min-height: 150px !important;
 }
 
-/* line 99, scss/pages/_historical-thresholds.scss */
+/* line 99, scss/pages/_historical_thresholds.scss */
 #historical-thresholds-viewport input[type=number]::-webkit-inner-spin-button,
 #historical-thresholds-viewport input[type=number]::-webkit-outer-spin-button {
   -webkit-appearance: none;
   margin: 0;
 }
 
-/* line 106, scss/pages/_historical-thresholds.scss */
+/* line 106, scss/pages/_historical_thresholds.scss */
 #historical-thresholds-viewport input[type=number] {
   -moz-appearance: textfield;
 }
 
-/* line 121, scss/pages/_historical-thresholds.scss */
+/* line 121, scss/pages/_historical_thresholds.scss */
 #historical-thresholds-viewport .threshold-button.threshold-up,
 #historical-thresholds-viewport .window-button.window-up {
   z-index: 500;
@@ -19901,7 +19961,7 @@ input.input-inner:focus {
   border: 1px solid rgba(18, 64, 134, 0.5);
 }
 
-/* line 138, scss/pages/_historical-thresholds.scss */
+/* line 138, scss/pages/_historical_thresholds.scss */
 #historical-thresholds-viewport .threshold-button.threshold-up:hover, #historical-thresholds-viewport .threshold-button.threshold-up:focus,
 #historical-thresholds-viewport .window-button.window-up:hover,
 #historical-thresholds-viewport .window-button.window-up:focus {
@@ -19909,7 +19969,7 @@ input.input-inner:focus {
   background-color: #d2ddf4 !important;
 }
 
-/* line 144, scss/pages/_historical-thresholds.scss */
+/* line 144, scss/pages/_historical_thresholds.scss */
 #historical-thresholds-viewport .threshold-button.threshold-down,
 #historical-thresholds-viewport .window-button.window-down {
   z-index: 500;
@@ -19934,7 +19994,7 @@ input.input-inner:focus {
   border: 1px solid rgba(18, 64, 134, 0.5);
 }
 
-/* line 162, scss/pages/_historical-thresholds.scss */
+/* line 162, scss/pages/_historical_thresholds.scss */
 #historical-thresholds-viewport .threshold-button.threshold-down:hover, #historical-thresholds-viewport .threshold-button.threshold-down:focus,
 #historical-thresholds-viewport .window-button.window-down:hover,
 #historical-thresholds-viewport .window-button.window-down:focus {
@@ -19942,7 +20002,7 @@ input.input-inner:focus {
   background-color: #d2ddf4 !important;
 }
 
-/* line 168, scss/pages/_historical-thresholds.scss */
+/* line 168, scss/pages/_historical_thresholds.scss */
 #historical-thresholds-viewport .form-field {
   display: block;
   padding-bottom: 0px !important;
@@ -19951,7 +20011,7 @@ input.input-inner:focus {
   line-height: 36px !important;
 }
 
-/* line 177, scss/pages/_historical-thresholds.scss */
+/* line 177, scss/pages/_historical_thresholds.scss */
 #historical-thresholds-viewport .form-field-label {
   font: 500 12px Roboto, Helvetica, "Helvetica Neue", Arial, sans-serif !important;
   transform: translateY(-28px);
@@ -19967,7 +20027,7 @@ input.input-inner:focus {
   height: 18px !important;
 }
 
-/* line 192, scss/pages/_historical-thresholds.scss */
+/* line 192, scss/pages/_historical_thresholds.scss */
 #historical-thresholds-viewport .form-field-control {
   background: #E9F1FC;
   line-height: 36px !important;
@@ -19975,7 +20035,7 @@ input.input-inner:focus {
   width: 100%;
 }
 
-/* line 199, scss/pages/_historical-thresholds.scss */
+/* line 199, scss/pages/_historical_thresholds.scss */
 #historical-thresholds-viewport .form-field-bar {
   bottom: 0;
   content: "";
@@ -19989,7 +20049,7 @@ input.input-inner:focus {
   width: 1%;
 }
 
-/* line 212, scss/pages/_historical-thresholds.scss */
+/* line 212, scss/pages/_historical_thresholds.scss */
 #historical-thresholds-viewport .form-field-input {
   appearance: none;
   float: left;
@@ -20005,31 +20065,31 @@ input.input-inner:focus {
   width: 100%;
 }
 
-/* line 228, scss/pages/_historical-thresholds.scss */
+/* line 228, scss/pages/_historical_thresholds.scss */
 #historical-thresholds-viewport .form-field-input:-ms-input-placeholder ~ .form-field-label {
   font: 500 14px Roboto, Helvetica, "Helvetica Neue", Arial, sans-serif !important;
   transform: translateY(0);
 }
 
-/* line 234, scss/pages/_historical-thresholds.scss */
+/* line 234, scss/pages/_historical_thresholds.scss */
 #historical-thresholds-viewport .form-field-input:placeholder-shown ~ .form-field-label {
   font: 500 14px Roboto, Helvetica, "Helvetica Neue", Arial, sans-serif !important;
   transform: translateY(0);
 }
 
-/* line 240, scss/pages/_historical-thresholds.scss */
+/* line 240, scss/pages/_historical_thresholds.scss */
 #historical-thresholds-viewport .form-field-input:focus ~ .form-field-label {
   color: #124086;
   font: 500 12px Roboto, Helvetica, "Helvetica Neue", Arial, sans-serif !important;
   transform: translateY(-28px);
 }
 
-/* line 244, scss/pages/_historical-thresholds.scss */
+/* line 244, scss/pages/_historical_thresholds.scss */
 #historical-thresholds-viewport .form-field-input:focus ~ .form-field-bar {
   transform: scaleX(150);
 }
 
-/* line 250, scss/pages/_historical-thresholds.scss */
+/* line 250, scss/pages/_historical_thresholds.scss */
 #historical-thresholds-viewport .map-nostations-message {
   z-index: 500;
   width: 25%;
@@ -20048,7 +20108,7 @@ input.input-inner:focus {
 }
 
 @media screen and (max-width: 599px) {
-  /* line 250, scss/pages/_historical-thresholds.scss */
+  /* line 250, scss/pages/_historical_thresholds.scss */
   #historical-thresholds-viewport .map-nostations-message {
     top: -200px !important;
     left: 10% !important;
@@ -20056,7 +20116,7 @@ input.input-inner:focus {
   }
 }
 
-/* line 270, scss/pages/_historical-thresholds.scss */
+/* line 270, scss/pages/_historical_thresholds.scss */
 #historical-thresholds-viewport #stations-select-wrapper, #historical-thresholds-viewport #threshold-variable-select-wrapper,
 #historical-thresholds-viewport #threshold_value_form_field, #historical-thresholds-viewport #window_value_form_field {
   display: flex !important;
@@ -20064,7 +20124,7 @@ input.input-inner:focus {
 }
 
 @media screen and (max-width: 900px) {
-  /* line 270, scss/pages/_historical-thresholds.scss */
+  /* line 270, scss/pages/_historical_thresholds.scss */
   #historical-thresholds-viewport #stations-select-wrapper, #historical-thresholds-viewport #threshold-variable-select-wrapper,
   #historical-thresholds-viewport #threshold_value_form_field, #historical-thresholds-viewport #window_value_form_field {
     padding-right: 0px !important;
@@ -20074,21 +20134,21 @@ input.input-inner:focus {
 }
 
 @media screen and (max-width: 1240px) {
-  /* line 282, scss/pages/_historical-thresholds.scss */
+  /* line 282, scss/pages/_historical_thresholds.scss */
   #historical-thresholds-viewport #threshold_value_form_field, #historical-thresholds-viewport #window_value_form_field {
     max-width: 125px;
   }
 }
 
 @media screen and (max-width: 900px) {
-  /* line 282, scss/pages/_historical-thresholds.scss */
+  /* line 282, scss/pages/_historical_thresholds.scss */
   #historical-thresholds-viewport #threshold_value_form_field, #historical-thresholds-viewport #window_value_form_field {
     max-width: 100%;
     margin-top: 36px;
   }
 }
 
-/* line 293, scss/pages/_historical-thresholds.scss */
+/* line 293, scss/pages/_historical_thresholds.scss */
 #historical-thresholds-viewport #btn-tidalzoom.active {
   background-color: #124086 !important;
   color: #E9F1FC !important;
@@ -20096,7 +20156,7 @@ input.input-inner:focus {
   border: 1px solid rgba(18, 64, 134, 0.5) !important;
 }
 
-/* line 299, scss/pages/_historical-thresholds.scss */
+/* line 299, scss/pages/_historical_thresholds.scss */
 #historical-thresholds-viewport #btn-tidalzoom.active:hover, #historical-thresholds-viewport #btn-tidalzoom.active:focus {
   background-color: #397ee5 !important;
   color: #E9F1FC !important;
@@ -20104,79 +20164,79 @@ input.input-inner:focus {
   outline: none !important;
 }
 
-/* line 308, scss/pages/_historical-thresholds.scss */
+/* line 308, scss/pages/_historical_thresholds.scss */
 #historical-thresholds-viewport #chartmap-wrapper {
   width: 20% !important;
 }
 
 @media screen and (min-width: 901px) {
-  /* line 313, scss/pages/_historical-thresholds.scss */
+  /* line 313, scss/pages/_historical_thresholds.scss */
   #historical-thresholds-viewport #stations-map-row {
     height: calc(100% - 48px - 6px - 140px) !important;
   }
-  /* line 316, scss/pages/_historical-thresholds.scss */
+  /* line 316, scss/pages/_historical_thresholds.scss */
   #historical-thresholds-viewport #stations-map-row.closed-filters {
     height: calc(100% - 48px - 6px) !important;
   }
 }
 
 @media screen and (min-width: 901px) {
-  /* line 322, scss/pages/_historical-thresholds.scss */
+  /* line 322, scss/pages/_historical_thresholds.scss */
   #historical-thresholds-viewport #stations-graph-row {
     height: calc(100% - 48px - 6px - 205px) !important;
   }
-  /* line 325, scss/pages/_historical-thresholds.scss */
+  /* line 325, scss/pages/_historical_thresholds.scss */
   #historical-thresholds-viewport #stations-graph-row.closed-filters {
     height: calc(100% - 48px - 6px) !important;
   }
 }
 
-/* line 331, scss/pages/_historical-thresholds.scss */
+/* line 331, scss/pages/_historical_thresholds.scss */
 #historical-thresholds-viewport #stations-map-row {
   justify-content: space-evenly !important;
 }
 
-/* line 335, scss/pages/_historical-thresholds.scss */
+/* line 335, scss/pages/_historical_thresholds.scss */
 #historical-thresholds-viewport #stations-map-row.closed-filters .stations-map-wrap {
   height: 86% !important;
 }
 
-/* line 340, scss/pages/_historical-thresholds.scss */
+/* line 340, scss/pages/_historical_thresholds.scss */
 #historical-thresholds-viewport #stations-map-row #stations-map {
   width: 100%;
   flex-wrap: wrap;
 }
 
-/* line 344, scss/pages/_historical-thresholds.scss */
+/* line 344, scss/pages/_historical_thresholds.scss */
 #historical-thresholds-viewport #stations-map-row #stations-map:focus {
   outline: none !important;
   border: 0px solid rgba(18, 64, 134, 0.5) !important;
 }
 
-/* line 350, scss/pages/_historical-thresholds.scss */
+/* line 350, scss/pages/_historical_thresholds.scss */
 #historical-thresholds-viewport #stations-map-row .esri-view-user-storage {
   height: unset !important;
 }
 
-/* line 355, scss/pages/_historical-thresholds.scss */
+/* line 355, scss/pages/_historical_thresholds.scss */
 #historical-thresholds-viewport #stations-map-row #stations-map .movable.slider-div {
   top: 0px !important;
 }
 
 @media screen and (max-width: 1240px) {
-  /* line 331, scss/pages/_historical-thresholds.scss */
+  /* line 331, scss/pages/_historical_thresholds.scss */
   #historical-thresholds-viewport #stations-map-row {
     justify-content: center !important;
   }
 }
 
 @media screen and (max-width: 900px) {
-  /* line 331, scss/pages/_historical-thresholds.scss */
+  /* line 331, scss/pages/_historical_thresholds.scss */
   #historical-thresholds-viewport #stations-map-row {
     order: 1;
     padding-bottom: 250px !important;
   }
-  /* line 368, scss/pages/_historical-thresholds.scss */
+  /* line 368, scss/pages/_historical_thresholds.scss */
   #historical-thresholds-viewport #stations-map-row #stations-map {
     width: 100%;
     flex-wrap: wrap;
@@ -20184,12 +20244,12 @@ input.input-inner:focus {
     max-height: 350px !important;
     height: 350px !important;
   }
-  /* line 375, scss/pages/_historical-thresholds.scss */
+  /* line 375, scss/pages/_historical_thresholds.scss */
   #historical-thresholds-viewport #stations-map-row #stations-map .map-wrap {
     min-height: 350px !important;
     height: 350px !important;
   }
-  /* line 380, scss/pages/_historical-thresholds.scss */
+  /* line 380, scss/pages/_historical_thresholds.scss */
   #historical-thresholds-viewport #stations-map-row #stations-map .esri-view-root {
     flex: 0 0 100%;
     height: 100% !important;
@@ -20198,20 +20258,20 @@ input.input-inner:focus {
 }
 
 @media screen and (max-width: 900px) and (max-width: 599px) {
-  /* line 380, scss/pages/_historical-thresholds.scss */
+  /* line 380, scss/pages/_historical_thresholds.scss */
   #historical-thresholds-viewport #stations-map-row #stations-map .esri-view-root {
     z-index: 200;
   }
 }
 
 @media screen and (max-width: 900px) {
-  /* line 389, scss/pages/_historical-thresholds.scss */
+  /* line 389, scss/pages/_historical_thresholds.scss */
   #historical-thresholds-viewport #stations-map-row #stations-map .esri-overlay-surface {
     flex: 0 0 100%;
     height: 100% !important;
     width: 100% !important;
   }
-  /* line 395, scss/pages/_historical-thresholds.scss */
+  /* line 395, scss/pages/_historical_thresholds.scss */
   #historical-thresholds-viewport #stations-map-row #stations-map .esri-view-user-storage {
     overflow: visible !important;
     height: 100% !important;
@@ -20220,7 +20280,7 @@ input.input-inner:focus {
 }
 
 @media screen and (max-width: 900px) and (max-width: 900px) {
-  /* line 395, scss/pages/_historical-thresholds.scss */
+  /* line 395, scss/pages/_historical_thresholds.scss */
   #historical-thresholds-viewport #stations-map-row #stations-map .esri-view-user-storage {
     position: relative !important;
     top: -350px;
@@ -20228,7 +20288,7 @@ input.input-inner:focus {
 }
 
 @media screen and (max-width: 900px) {
-  /* line 405, scss/pages/_historical-thresholds.scss */
+  /* line 405, scss/pages/_historical_thresholds.scss */
   #historical-thresholds-viewport #stations-map-row #stations-map .scenario-map-overlay-container {
     position: relative !important;
     top: 0px !important;
@@ -20240,19 +20300,19 @@ input.input-inner:focus {
 }
 
 @media screen and (max-width: 599px) {
-  /* line 331, scss/pages/_historical-thresholds.scss */
+  /* line 331, scss/pages/_historical_thresholds.scss */
   #historical-thresholds-viewport #stations-map-row {
     height: auto !important;
     order: 1;
   }
-  /* line 420, scss/pages/_historical-thresholds.scss */
+  /* line 420, scss/pages/_historical_thresholds.scss */
   #historical-thresholds-viewport #stations-map-row .map-wrap {
     min-height: 250px !important;
     height: 250px !important;
   }
 }
 
-/* line 427, scss/pages/_historical-thresholds.scss */
+/* line 427, scss/pages/_historical_thresholds.scss */
 #historical-thresholds-viewport .tidal-chart {
   width: calc(100% - 40px);
   height: 100%;
@@ -20261,27 +20321,27 @@ input.input-inner:focus {
 }
 
 @media screen and (max-width: 900px) {
-  /* line 427, scss/pages/_historical-thresholds.scss */
+  /* line 427, scss/pages/_historical_thresholds.scss */
   #historical-thresholds-viewport .tidal-chart {
     width: calc(100%);
   }
 }
 
-/* line 438, scss/pages/_historical-thresholds.scss */
+/* line 438, scss/pages/_historical_thresholds.scss */
 #historical-thresholds-viewport #overlay-chart-container {
   margin: 25px;
   height: 50vh;
   width: calc(100% - 50px);
 }
 
-/* line 444, scss/pages/_historical-thresholds.scss */
+/* line 444, scss/pages/_historical_thresholds.scss */
 #historical-thresholds-viewport #stations-graph-wrap {
   height: 100% !important;
   width: 80%;
 }
 
 @media screen and (max-width: 900px) {
-  /* line 444, scss/pages/_historical-thresholds.scss */
+  /* line 444, scss/pages/_historical_thresholds.scss */
   #historical-thresholds-viewport #stations-graph-wrap {
     min-height: 300px !important;
     max-height: 300px !important;
@@ -20290,13 +20350,13 @@ input.input-inner:focus {
   }
 }
 
-/* line 455, scss/pages/_historical-thresholds.scss */
+/* line 455, scss/pages/_historical_thresholds.scss */
 #historical-thresholds-viewport #stations-map-wrap {
   height: 100%;
 }
 
 @media screen and (max-width: 900px) {
-  /* line 455, scss/pages/_historical-thresholds.scss */
+  /* line 455, scss/pages/_historical_thresholds.scss */
   #historical-thresholds-viewport #stations-map-wrap {
     min-height: 350px !important;
     max-height: 350px !important;
@@ -20305,7 +20365,7 @@ input.input-inner:focus {
   }
 }
 
-/* line 465, scss/pages/_historical-thresholds.scss */
+/* line 465, scss/pages/_historical_thresholds.scss */
 #historical-thresholds-viewport #station-info-row {
   -webkit-transition: 0.5s;
   -moz-transition: 0.5s;
@@ -20321,19 +20381,19 @@ input.input-inner:focus {
   transition-timing-function: ease-out;
 }
 
-/* line 470, scss/pages/_historical-thresholds.scss */
+/* line 470, scss/pages/_historical_thresholds.scss */
 #historical-thresholds-viewport #station-info-row #more-info-description {
   padding-left: 6px;
 }
 
-/* line 474, scss/pages/_historical-thresholds.scss */
+/* line 474, scss/pages/_historical_thresholds.scss */
 #historical-thresholds-viewport #station-info-row .more-info-description {
   padding-top: 6px;
   width: 100%;
 }
 
 @media screen and (max-width: 900px) {
-  /* line 465, scss/pages/_historical-thresholds.scss */
+  /* line 465, scss/pages/_historical_thresholds.scss */
   #historical-thresholds-viewport #station-info-row {
     min-height: 250px;
     max-height: 250px !important;
@@ -20343,72 +20403,72 @@ input.input-inner:focus {
 }
 
 @media screen and (max-width: 768px) {
-  /* line 465, scss/pages/_historical-thresholds.scss */
+  /* line 465, scss/pages/_historical_thresholds.scss */
   #historical-thresholds-viewport #station-info-row {
     width: 90% !important;
   }
 }
 
-/* line 491, scss/pages/_historical-thresholds.scss */
+/* line 491, scss/pages/_historical_thresholds.scss */
 #historical-thresholds-viewport #stations-map-row, #historical-thresholds-viewport #stations-graph-row {
   align-self: center;
 }
 
 @media screen and (max-width: 768px) {
-  /* line 491, scss/pages/_historical-thresholds.scss */
+  /* line 491, scss/pages/_historical_thresholds.scss */
   #historical-thresholds-viewport #stations-map-row, #historical-thresholds-viewport #stations-graph-row {
     width: 90% !important;
   }
 }
 
-/* line 498, scss/pages/_historical-thresholds.scss */
+/* line 498, scss/pages/_historical_thresholds.scss */
 #historical-thresholds-viewport #station-overlay {
   height: 100%;
 }
 
-/* line 502, scss/pages/_historical-thresholds.scss */
+/* line 502, scss/pages/_historical_thresholds.scss */
 #historical-thresholds-viewport .text-info-box.label {
   font-weight: 500 !important;
 }
 
-/* line 506, scss/pages/_historical-thresholds.scss */
+/* line 506, scss/pages/_historical_thresholds.scss */
 #historical-thresholds-viewport .esri-expand__container {
   height: 32px;
   width: 32px;
 }
 
-/* line 511, scss/pages/_historical-thresholds.scss */
+/* line 511, scss/pages/_historical_thresholds.scss */
 #historical-thresholds-viewport .legend-image {
   max-height: 16rem;
   max-width: none;
 }
 
-/* line 516, scss/pages/_historical-thresholds.scss */
+/* line 516, scss/pages/_historical_thresholds.scss */
 #historical-thresholds-viewport .esri-ui-top-left .esri-expand__content, #historical-thresholds-viewport .esri-ui-top-right .esri-expand__content {
   top: -32px !important;
 }
 
-/* line 520, scss/pages/_historical-thresholds.scss */
+/* line 520, scss/pages/_historical_thresholds.scss */
 #historical-thresholds-viewport .esri-view-width-xsmall .esri-component.esri-expand.esri-widget.esri-expand--auto {
   display: none !important;
 }
 
-/* line 524, scss/pages/_historical-thresholds.scss */
+/* line 524, scss/pages/_historical_thresholds.scss */
 #historical-thresholds-viewport .esri-view-width-xsmall .esri-expand--auto .esri-expand__container--expanded {
   position: relative !important;
 }
 
-/* line 528, scss/pages/_historical-thresholds.scss */
+/* line 528, scss/pages/_historical_thresholds.scss */
 #historical-thresholds-viewport .esri-view-width-greater-than-xsmall .esri-expand--auto .esri-expand__content {
   position: relative !important;
 }
 
-/* line 532, scss/pages/_historical-thresholds.scss */
+/* line 532, scss/pages/_historical_thresholds.scss */
 #historical-thresholds-viewport .scenario-map-overlay-container {
   position: relative;
 }
 
-/* line 540, scss/pages/_historical-thresholds.scss */
+/* line 540, scss/pages/_historical_thresholds.scss */
 #historical-thresholds-viewport .esri-view-surface {
   -webkit-border-radius: 5px;
   -moz-border-radius: 5px;
@@ -20417,31 +20477,31 @@ input.input-inner:focus {
   border-radius: 5px;
 }
 
-/* line 544, scss/pages/_historical-thresholds.scss */
+/* line 544, scss/pages/_historical_thresholds.scss */
 #historical-thresholds-viewport .top-select-wrapper {
   width: 34% !important;
 }
 
-/* line 546, scss/pages/_historical-thresholds.scss */
+/* line 546, scss/pages/_historical_thresholds.scss */
 #historical-thresholds-viewport .top-select-wrapper-minor {
   width: 5% !important;
 }
 
 @media screen and (max-width: 900px) {
-  /* line 551, scss/pages/_historical-thresholds.scss */
+  /* line 551, scss/pages/_historical_thresholds.scss */
   #historical-thresholds-viewport .search-box-secondary {
     width: 100% !important;
     display: inline-block !important;
   }
 }
 
-/* line 5, scss/pages/_high-tide-flooding.scss */
+/* line 5, scss/pages/_high_tide_flooding.scss */
 .d-off {
   position: absolute;
   left: -1000000px;
 }
 
-/* line 10, scss/pages/_high-tide-flooding.scss */
+/* line 10, scss/pages/_high_tide_flooding.scss */
 #high-tide-flooding-viewport {
   background-color: #ffffff;
   height: calc(100% - 48px - 6px - 100px) !important;
@@ -20452,14 +20512,14 @@ input.input-inner:focus {
 }
 
 @media screen and (max-width: 499px) {
-  /* line 10, scss/pages/_high-tide-flooding.scss */
+  /* line 10, scss/pages/_high_tide_flooding.scss */
   #high-tide-flooding-viewport {
     min-height: calc(100% - 48px - 12px - 64px) !important;
     height: calc(100% - 48px - 12px - 64px) !important;
   }
 }
 
-/* line 23, scss/pages/_high-tide-flooding.scss */
+/* line 23, scss/pages/_high_tide_flooding.scss */
 #high-tide-flooding-viewport:after {
   content: '';
   width: 100%;
@@ -20473,69 +20533,69 @@ input.input-inner:focus {
 }
 
 @media screen and (max-width: 499px) {
-  /* line 23, scss/pages/_high-tide-flooding.scss */
+  /* line 23, scss/pages/_high_tide_flooding.scss */
   #high-tide-flooding-viewport:after {
     top: calc(100% - 75px);
   }
 }
 
-/* line 37, scss/pages/_high-tide-flooding.scss */
+/* line 37, scss/pages/_high_tide_flooding.scss */
 #high-tide-flooding-viewport.expanded {
   min-height: calc(100% - 48px - 12px - 170px) !important;
   height: calc(100% - 48px - 12px - 170px) !important;
 }
 
 @media screen and (min-width: 850px) {
-  /* line 37, scss/pages/_high-tide-flooding.scss */
+  /* line 37, scss/pages/_high_tide_flooding.scss */
   #high-tide-flooding-viewport.expanded {
     min-height: calc(100% - 48px - 12px - 100px) !important;
     height: calc(100% - 48px - 12px - 100px) !important;
   }
-  /* line 41, scss/pages/_high-tide-flooding.scss */
+  /* line 41, scss/pages/_high_tide_flooding.scss */
   #high-tide-flooding-viewport.expanded:after {
     top: calc(100% - 117px);
   }
 }
 
 @media screen and (min-width: 850px) and (max-width: 499px) {
-  /* line 41, scss/pages/_high-tide-flooding.scss */
+  /* line 41, scss/pages/_high_tide_flooding.scss */
   #high-tide-flooding-viewport.expanded:after {
     top: calc(100% - 147px);
   }
 }
 
 @media screen and (min-width: 850px) and (max-width: 499px) and (max-width: 499px) {
-  /* line 41, scss/pages/_high-tide-flooding.scss */
+  /* line 41, scss/pages/_high_tide_flooding.scss */
   #high-tide-flooding-viewport.expanded:after {
     top: calc(100% - 147px);
   }
 }
 
 @media screen and (min-width: 850px) and (max-width: 499px) {
-  /* line 37, scss/pages/_high-tide-flooding.scss */
+  /* line 37, scss/pages/_high_tide_flooding.scss */
   #high-tide-flooding-viewport.expanded {
     min-height: calc(100% - 48px - 12px - 130px) !important;
     height: calc(100% - 48px - 12px - 130px) !important;
   }
 }
 
-/* line 61, scss/pages/_high-tide-flooding.scss */
+/* line 61, scss/pages/_high_tide_flooding.scss */
 #high-tide-flooding-viewport.expanded:after {
   top: calc(100% - 187px);
 }
 
-/* line 67, scss/pages/_high-tide-flooding.scss */
+/* line 67, scss/pages/_high_tide_flooding.scss */
 #high-tide-flooding-viewport #station-info-none strong {
   font-weight: 800;
   color: #f5652d;
 }
 
-/* line 73, scss/pages/_high-tide-flooding.scss */
+/* line 73, scss/pages/_high_tide_flooding.scss */
 #high-tide-flooding-viewport #stations-map-wrap {
   min-height: 150px !important;
 }
 
-/* line 77, scss/pages/_high-tide-flooding.scss */
+/* line 77, scss/pages/_high_tide_flooding.scss */
 #high-tide-flooding-viewport .map-nostations-message {
   z-index: 500;
   width: 25%;
@@ -20554,7 +20614,7 @@ input.input-inner:focus {
 }
 
 @media screen and (max-width: 599px) {
-  /* line 77, scss/pages/_high-tide-flooding.scss */
+  /* line 77, scss/pages/_high_tide_flooding.scss */
   #high-tide-flooding-viewport .map-nostations-message {
     top: -200px !important;
     left: 10% !important;
@@ -20562,20 +20622,20 @@ input.input-inner:focus {
   }
 }
 
-/* line 97, scss/pages/_high-tide-flooding.scss */
+/* line 97, scss/pages/_high_tide_flooding.scss */
 #high-tide-flooding-viewport #stations-select-wrapper {
   display: flex !important;
 }
 
 @media screen and (max-width: 900px) {
-  /* line 97, scss/pages/_high-tide-flooding.scss */
+  /* line 97, scss/pages/_high_tide_flooding.scss */
   #high-tide-flooding-viewport #stations-select-wrapper {
     width: 100% !important;
     margin-top: 6px;
   }
 }
 
-/* line 106, scss/pages/_high-tide-flooding.scss */
+/* line 106, scss/pages/_high_tide_flooding.scss */
 #high-tide-flooding-viewport #btn-tidalzoom.active {
   background-color: #124086 !important;
   color: #E9F1FC !important;
@@ -20583,7 +20643,7 @@ input.input-inner:focus {
   border: 1px solid rgba(18, 64, 134, 0.5) !important;
 }
 
-/* line 112, scss/pages/_high-tide-flooding.scss */
+/* line 112, scss/pages/_high_tide_flooding.scss */
 #high-tide-flooding-viewport #btn-tidalzoom.active:focus {
   background-color: #397ee5 !important;
   color: #E9F1FC !important;
@@ -20591,7 +20651,7 @@ input.input-inner:focus {
   outline: none !important;
 }
 
-/* line 119, scss/pages/_high-tide-flooding.scss */
+/* line 119, scss/pages/_high_tide_flooding.scss */
 #high-tide-flooding-viewport #btn-tidalzoom.active:hover {
   background-color: #397ee5 !important;
   color: #E9F1FC !important;
@@ -20599,79 +20659,79 @@ input.input-inner:focus {
   outline: none !important;
 }
 
-/* line 127, scss/pages/_high-tide-flooding.scss */
+/* line 127, scss/pages/_high_tide_flooding.scss */
 #high-tide-flooding-viewport #chartmap-wrapper {
   width: 30% !important;
 }
 
 @media screen and (min-width: 901px) {
-  /* line 131, scss/pages/_high-tide-flooding.scss */
+  /* line 131, scss/pages/_high_tide_flooding.scss */
   #high-tide-flooding-viewport #stations-map-row {
     height: calc(100% - 48px - 6px - 140px) !important;
   }
-  /* line 134, scss/pages/_high-tide-flooding.scss */
+  /* line 134, scss/pages/_high_tide_flooding.scss */
   #high-tide-flooding-viewport #stations-map-row.closed-filters {
     height: calc(100% - 48px - 6px - 80px) !important;
   }
 }
 
 @media screen and (min-width: 901px) {
-  /* line 140, scss/pages/_high-tide-flooding.scss */
+  /* line 140, scss/pages/_high_tide_flooding.scss */
   #high-tide-flooding-viewport #stations-graph-row {
     height: calc(100% - 48px - 6px - 180px) !important;
   }
-  /* line 143, scss/pages/_high-tide-flooding.scss */
+  /* line 143, scss/pages/_high_tide_flooding.scss */
   #high-tide-flooding-viewport #stations-graph-row.closed-filters {
     height: calc(100% - 48px - 6px - 80px) !important;
   }
 }
 
-/* line 149, scss/pages/_high-tide-flooding.scss */
+/* line 149, scss/pages/_high_tide_flooding.scss */
 #high-tide-flooding-viewport #stations-map-row {
   justify-content: space-evenly !important;
 }
 
-/* line 152, scss/pages/_high-tide-flooding.scss */
+/* line 152, scss/pages/_high_tide_flooding.scss */
 #high-tide-flooding-viewport #stations-map-row.closed-filters .stations-map-wrap {
   height: 86% !important;
 }
 
-/* line 157, scss/pages/_high-tide-flooding.scss */
+/* line 157, scss/pages/_high_tide_flooding.scss */
 #high-tide-flooding-viewport #stations-map-row #stations-map {
   width: 100%;
   flex-wrap: wrap;
 }
 
-/* line 161, scss/pages/_high-tide-flooding.scss */
+/* line 161, scss/pages/_high_tide_flooding.scss */
 #high-tide-flooding-viewport #stations-map-row #stations-map:focus {
   outline: none !important;
   border: 0px solid rgba(18, 64, 134, 0.5) !important;
 }
 
-/* line 167, scss/pages/_high-tide-flooding.scss */
+/* line 167, scss/pages/_high_tide_flooding.scss */
 #high-tide-flooding-viewport #stations-map-row .esri-view-user-storage {
   height: unset !important;
 }
 
-/* line 172, scss/pages/_high-tide-flooding.scss */
+/* line 172, scss/pages/_high_tide_flooding.scss */
 #high-tide-flooding-viewport #stations-map-row #stations-map .movable.slider-div {
   top: 0px !important;
 }
 
 @media screen and (max-width: 1240px) {
-  /* line 149, scss/pages/_high-tide-flooding.scss */
+  /* line 149, scss/pages/_high_tide_flooding.scss */
   #high-tide-flooding-viewport #stations-map-row {
     justify-content: center !important;
   }
 }
 
 @media screen and (max-width: 900px) {
-  /* line 149, scss/pages/_high-tide-flooding.scss */
+  /* line 149, scss/pages/_high_tide_flooding.scss */
   #high-tide-flooding-viewport #stations-map-row {
     order: 1;
     padding-bottom: 250px !important;
   }
-  /* line 185, scss/pages/_high-tide-flooding.scss */
+  /* line 185, scss/pages/_high_tide_flooding.scss */
   #high-tide-flooding-viewport #stations-map-row #stations-map {
     width: 100%;
     flex-wrap: wrap;
@@ -20679,12 +20739,12 @@ input.input-inner:focus {
     max-height: 350px !important;
     height: 350px !important;
   }
-  /* line 192, scss/pages/_high-tide-flooding.scss */
+  /* line 192, scss/pages/_high_tide_flooding.scss */
   #high-tide-flooding-viewport #stations-map-row #stations-map .map-wrap {
     min-height: 350px !important;
     height: 350px !important;
   }
-  /* line 197, scss/pages/_high-tide-flooding.scss */
+  /* line 197, scss/pages/_high_tide_flooding.scss */
   #high-tide-flooding-viewport #stations-map-row #stations-map .esri-view-root {
     flex: 0 0 100%;
     height: 100% !important;
@@ -20693,20 +20753,20 @@ input.input-inner:focus {
 }
 
 @media screen and (max-width: 900px) and (max-width: 599px) {
-  /* line 197, scss/pages/_high-tide-flooding.scss */
+  /* line 197, scss/pages/_high_tide_flooding.scss */
   #high-tide-flooding-viewport #stations-map-row #stations-map .esri-view-root {
     z-index: 200;
   }
 }
 
 @media screen and (max-width: 900px) {
-  /* line 206, scss/pages/_high-tide-flooding.scss */
+  /* line 206, scss/pages/_high_tide_flooding.scss */
   #high-tide-flooding-viewport #stations-map-row #stations-map .esri-overlay-surface {
     flex: 0 0 100%;
     height: 100% !important;
     width: 100% !important;
   }
-  /* line 212, scss/pages/_high-tide-flooding.scss */
+  /* line 212, scss/pages/_high_tide_flooding.scss */
   #high-tide-flooding-viewport #stations-map-row #stations-map .esri-view-user-storage {
     overflow: visible !important;
     height: 100% !important;
@@ -20715,7 +20775,7 @@ input.input-inner:focus {
 }
 
 @media screen and (max-width: 900px) and (max-width: 900px) {
-  /* line 212, scss/pages/_high-tide-flooding.scss */
+  /* line 212, scss/pages/_high_tide_flooding.scss */
   #high-tide-flooding-viewport #stations-map-row #stations-map .esri-view-user-storage {
     position: relative !important;
     top: -350px;
@@ -20723,7 +20783,7 @@ input.input-inner:focus {
 }
 
 @media screen and (max-width: 900px) {
-  /* line 222, scss/pages/_high-tide-flooding.scss */
+  /* line 222, scss/pages/_high_tide_flooding.scss */
   #high-tide-flooding-viewport #stations-map-row #stations-map .scenario-map-overlay-container {
     position: relative !important;
     top: 0px !important;
@@ -20735,19 +20795,19 @@ input.input-inner:focus {
 }
 
 @media screen and (max-width: 599px) {
-  /* line 149, scss/pages/_high-tide-flooding.scss */
+  /* line 149, scss/pages/_high_tide_flooding.scss */
   #high-tide-flooding-viewport #stations-map-row {
     height: auto !important;
     order: 1;
   }
-  /* line 237, scss/pages/_high-tide-flooding.scss */
+  /* line 237, scss/pages/_high_tide_flooding.scss */
   #high-tide-flooding-viewport #stations-map-row .map-wrap {
     min-height: 250px !important;
     height: 250px !important;
   }
 }
 
-/* line 244, scss/pages/_high-tide-flooding.scss */
+/* line 244, scss/pages/_high_tide_flooding.scss */
 #high-tide-flooding-viewport .tidal-chart {
   width: calc(100% - 40px);
   height: 100%;
@@ -20756,27 +20816,27 @@ input.input-inner:focus {
 }
 
 @media screen and (max-width: 900px) {
-  /* line 244, scss/pages/_high-tide-flooding.scss */
+  /* line 244, scss/pages/_high_tide_flooding.scss */
   #high-tide-flooding-viewport .tidal-chart {
     width: calc(100%);
   }
 }
 
-/* line 255, scss/pages/_high-tide-flooding.scss */
+/* line 255, scss/pages/_high_tide_flooding.scss */
 #high-tide-flooding-viewport #overlay-chart-container {
   margin: 25px;
   height: 50vh;
   width: calc(100% - 50px);
 }
 
-/* line 261, scss/pages/_high-tide-flooding.scss */
+/* line 261, scss/pages/_high_tide_flooding.scss */
 #high-tide-flooding-viewport #stations-graph-wrap {
   height: 100% !important;
   width: 80%;
 }
 
 @media screen and (max-width: 900px) {
-  /* line 261, scss/pages/_high-tide-flooding.scss */
+  /* line 261, scss/pages/_high_tide_flooding.scss */
   #high-tide-flooding-viewport #stations-graph-wrap {
     min-height: 300px !important;
     max-height: 300px !important;
@@ -20785,13 +20845,13 @@ input.input-inner:focus {
   }
 }
 
-/* line 272, scss/pages/_high-tide-flooding.scss */
+/* line 272, scss/pages/_high_tide_flooding.scss */
 #high-tide-flooding-viewport #stations-map-wrap {
   height: 100%;
 }
 
 @media screen and (max-width: 900px) {
-  /* line 272, scss/pages/_high-tide-flooding.scss */
+  /* line 272, scss/pages/_high_tide_flooding.scss */
   #high-tide-flooding-viewport #stations-map-wrap {
     min-height: 350px !important;
     max-height: 350px !important;
@@ -20800,7 +20860,7 @@ input.input-inner:focus {
   }
 }
 
-/* line 282, scss/pages/_high-tide-flooding.scss */
+/* line 282, scss/pages/_high_tide_flooding.scss */
 #high-tide-flooding-viewport #station-info-row {
   -webkit-transition: 0.5s;
   -moz-transition: 0.5s;
@@ -20816,19 +20876,19 @@ input.input-inner:focus {
   transition-timing-function: ease-out;
 }
 
-/* line 287, scss/pages/_high-tide-flooding.scss */
+/* line 287, scss/pages/_high_tide_flooding.scss */
 #high-tide-flooding-viewport #station-info-row #more-info-description {
   padding-left: 6px;
 }
 
-/* line 291, scss/pages/_high-tide-flooding.scss */
+/* line 291, scss/pages/_high_tide_flooding.scss */
 #high-tide-flooding-viewport #station-info-row .more-info-description {
   padding-top: 6px;
   width: 100%;
 }
 
 @media screen and (max-width: 900px) {
-  /* line 282, scss/pages/_high-tide-flooding.scss */
+  /* line 282, scss/pages/_high_tide_flooding.scss */
   #high-tide-flooding-viewport #station-info-row {
     min-height: 250px;
     max-height: 250px !important;
@@ -20838,72 +20898,72 @@ input.input-inner:focus {
 }
 
 @media screen and (max-width: 768px) {
-  /* line 282, scss/pages/_high-tide-flooding.scss */
+  /* line 282, scss/pages/_high_tide_flooding.scss */
   #high-tide-flooding-viewport #station-info-row {
     width: 90% !important;
   }
 }
 
-/* line 308, scss/pages/_high-tide-flooding.scss */
+/* line 308, scss/pages/_high_tide_flooding.scss */
 #high-tide-flooding-viewport #stations-map-row, #high-tide-flooding-viewport #stations-graph-row {
   align-self: center;
 }
 
 @media screen and (max-width: 768px) {
-  /* line 308, scss/pages/_high-tide-flooding.scss */
+  /* line 308, scss/pages/_high_tide_flooding.scss */
   #high-tide-flooding-viewport #stations-map-row, #high-tide-flooding-viewport #stations-graph-row {
     width: 90% !important;
   }
 }
 
-/* line 316, scss/pages/_high-tide-flooding.scss */
+/* line 316, scss/pages/_high_tide_flooding.scss */
 #high-tide-flooding-viewport #station-overlay {
   height: 100%;
 }
 
-/* line 320, scss/pages/_high-tide-flooding.scss */
+/* line 320, scss/pages/_high_tide_flooding.scss */
 #high-tide-flooding-viewport .text-info-box.label {
   font-weight: 500 !important;
 }
 
-/* line 324, scss/pages/_high-tide-flooding.scss */
+/* line 324, scss/pages/_high_tide_flooding.scss */
 #high-tide-flooding-viewport .esri-expand__container {
   height: 32px;
   width: 32px;
 }
 
-/* line 329, scss/pages/_high-tide-flooding.scss */
+/* line 329, scss/pages/_high_tide_flooding.scss */
 #high-tide-flooding-viewport .legend-image {
   max-height: 16rem;
   max-width: none;
 }
 
-/* line 334, scss/pages/_high-tide-flooding.scss */
+/* line 334, scss/pages/_high_tide_flooding.scss */
 #high-tide-flooding-viewport .esri-ui-top-left .esri-expand__content, #high-tide-flooding-viewport .esri-ui-top-right .esri-expand__content {
   top: -32px !important;
 }
 
-/* line 338, scss/pages/_high-tide-flooding.scss */
+/* line 338, scss/pages/_high_tide_flooding.scss */
 #high-tide-flooding-viewport .esri-view-width-xsmall .esri-component.esri-expand.esri-widget.esri-expand--auto {
   display: none !important;
 }
 
-/* line 342, scss/pages/_high-tide-flooding.scss */
+/* line 342, scss/pages/_high_tide_flooding.scss */
 #high-tide-flooding-viewport .esri-view-width-xsmall .esri-expand--auto .esri-expand__container--expanded {
   position: relative !important;
 }
 
-/* line 346, scss/pages/_high-tide-flooding.scss */
+/* line 346, scss/pages/_high_tide_flooding.scss */
 #high-tide-flooding-viewport .esri-view-width-greater-than-xsmall .esri-expand--auto .esri-expand__content {
   position: relative !important;
 }
 
-/* line 350, scss/pages/_high-tide-flooding.scss */
+/* line 350, scss/pages/_high_tide_flooding.scss */
 #high-tide-flooding-viewport .scenario-map-overlay-container {
   position: relative;
 }
 
-/* line 358, scss/pages/_high-tide-flooding.scss */
+/* line 358, scss/pages/_high_tide_flooding.scss */
 #high-tide-flooding-viewport .esri-view-surface {
   -webkit-border-radius: 5px;
   -moz-border-radius: 5px;
@@ -20912,18 +20972,18 @@ input.input-inner:focus {
   border-radius: 5px;
 }
 
-/* line 362, scss/pages/_high-tide-flooding.scss */
+/* line 362, scss/pages/_high_tide_flooding.scss */
 #high-tide-flooding-viewport .top-select-wrapper {
   width: 34% !important;
 }
 
-/* line 364, scss/pages/_high-tide-flooding.scss */
+/* line 364, scss/pages/_high_tide_flooding.scss */
 #high-tide-flooding-viewport .top-select-wrapper-minor {
   width: 5% !important;
 }
 
 @media screen and (max-width: 900px) {
-  /* line 369, scss/pages/_high-tide-flooding.scss */
+  /* line 369, scss/pages/_high_tide_flooding.scss */
   #high-tide-flooding-viewport .search-box-secondary {
     width: 100% !important;
     display: inline-block !important;
@@ -21228,7 +21288,7 @@ input.input-inner:focus {
   box-shadow: 0 0 8px rgba(0, 88, 207, 0.25);
 }
 
-/* line 1, scss/pages/_cards-home.scss */
+/* line 1, scss/pages/_cards_home.scss */
 #cards-viewport {
   background-color: #ffffff;
   height: calc(100% - 48px - 6px - 100px) !important;
@@ -21239,14 +21299,14 @@ input.input-inner:focus {
 }
 
 @media screen and (max-width: 499px) {
-  /* line 1, scss/pages/_cards-home.scss */
+  /* line 1, scss/pages/_cards_home.scss */
   #cards-viewport {
     min-height: calc(100% - 48px - 12px - 64px) !important;
     height: calc(100% - 48px - 12px - 64px) !important;
   }
 }
 
-/* line 14, scss/pages/_cards-home.scss */
+/* line 14, scss/pages/_cards_home.scss */
 #cards-viewport:after {
   content: '';
   width: 100%;
@@ -21260,51 +21320,51 @@ input.input-inner:focus {
 }
 
 @media screen and (max-width: 499px) {
-  /* line 14, scss/pages/_cards-home.scss */
+  /* line 14, scss/pages/_cards_home.scss */
   #cards-viewport:after {
     top: calc(100% - 75px);
   }
 }
 
-/* line 28, scss/pages/_cards-home.scss */
+/* line 28, scss/pages/_cards_home.scss */
 #cards-viewport.expanded {
   min-height: calc(100% - 48px - 12px - 170px) !important;
   height: calc(100% - 48px - 12px - 170px) !important;
 }
 
 @media screen and (min-width: 850px) {
-  /* line 28, scss/pages/_cards-home.scss */
+  /* line 28, scss/pages/_cards_home.scss */
   #cards-viewport.expanded {
     min-height: calc(100% - 48px - 12px - 100px) !important;
     height: calc(100% - 48px - 12px - 100px) !important;
   }
-  /* line 32, scss/pages/_cards-home.scss */
+  /* line 32, scss/pages/_cards_home.scss */
   #cards-viewport.expanded:after {
     top: calc(100% - 117px);
   }
 }
 
 @media screen and (min-width: 850px) and (max-width: 499px) {
-  /* line 32, scss/pages/_cards-home.scss */
+  /* line 32, scss/pages/_cards_home.scss */
   #cards-viewport.expanded:after {
     top: calc(100% - 147px);
   }
 }
 
-/* line 43, scss/pages/_cards-home.scss */
+/* line 43, scss/pages/_cards_home.scss */
 #cards-viewport.expanded:after {
   top: calc(100% - 187px);
 }
 
 @media screen and (max-width: 499px) {
-  /* line 43, scss/pages/_cards-home.scss */
+  /* line 43, scss/pages/_cards_home.scss */
   #cards-viewport.expanded:after {
     top: calc(100% - 147px);
   }
 }
 
 @media screen and (max-width: 499px) {
-  /* line 28, scss/pages/_cards-home.scss */
+  /* line 28, scss/pages/_cards_home.scss */
   #cards-viewport.expanded {
     min-height: calc(100% - 48px - 12px - 130px) !important;
     height: calc(100% - 48px - 12px - 130px) !important;
@@ -21312,14 +21372,14 @@ input.input-inner:focus {
 }
 
 @media screen and (max-width: 900px) {
-  /* line 57, scss/pages/_cards-home.scss */
+  /* line 57, scss/pages/_cards_home.scss */
   #cards-viewport .text-info-box {
     width: 100% !important;
     white-space: nowrap;
   }
 }
 
-/* line 64, scss/pages/_cards-home.scss */
+/* line 64, scss/pages/_cards_home.scss */
 #cards-viewport #data-card.card-empty-data {
   cursor: default;
   -webkit-box-shadow: 0px 0px 0px rgba(0, 0, 0, 0);
@@ -21329,39 +21389,39 @@ input.input-inner:focus {
   border: 0px solid #ffffff !important;
 }
 
-/* line 69, scss/pages/_cards-home.scss */
+/* line 69, scss/pages/_cards_home.scss */
 #cards-viewport #data-card.card-empty-data #card-text {
   background-color: #ffffff !important;
 }
 
-/* line 74, scss/pages/_cards-home.scss */
+/* line 74, scss/pages/_cards_home.scss */
 #cards-viewport .rounded-filters-box {
   min-height: 36px !important;
 }
 
 @media screen and (max-width: 900px) {
-  /* line 74, scss/pages/_cards-home.scss */
+  /* line 74, scss/pages/_cards_home.scss */
   #cards-viewport .rounded-filters-box {
     min-height: 36px !important;
   }
 }
 
-/* line 83, scss/pages/_cards-home.scss */
+/* line 83, scss/pages/_cards_home.scss */
 #cards-search-input.nosearch {
   border-bottom: 3px solid rgba(219, 48, 61, 0.9) !important;
 }
 
-/* line 86, scss/pages/_cards-home.scss */
+/* line 86, scss/pages/_cards_home.scss */
 #cards-search-input.nosearch:focus::placeholder {
   color: rgba(219, 48, 61, 0.4);
 }
 
-/* line 90, scss/pages/_cards-home.scss */
+/* line 90, scss/pages/_cards_home.scss */
 #cards-search-input.nosearch::placeholder {
   color: #DB303D;
 }
 
-/* line 96, scss/pages/_cards-home.scss */
+/* line 96, scss/pages/_cards_home.scss */
 #data-card {
   cursor: pointer;
   width: 32%  !important;
@@ -21376,29 +21436,29 @@ input.input-inner:focus {
   box-shadow: 0px 2px 3px rgba(0, 0, 0, 0.239);
 }
 
-/* line 105, scss/pages/_cards-home.scss */
+/* line 105, scss/pages/_cards_home.scss */
 #data-card .disabled-text {
   display: none;
 }
 
-/* line 109, scss/pages/_cards-home.scss */
+/* line 109, scss/pages/_cards_home.scss */
 #data-card.card-disabled {
   cursor: default;
 }
 
-/* line 112, scss/pages/_cards-home.scss */
+/* line 112, scss/pages/_cards_home.scss */
 #data-card.card-disabled #card-image-row img {
   -webkit-filter: grayscale(60%) contrast(50%);
   /* Safari 6.0 - 9.0 */
   filter: grayscale(60%) contrast(50%);
 }
 
-/* line 117, scss/pages/_cards-home.scss */
+/* line 117, scss/pages/_cards_home.scss */
 #data-card.card-disabled #card-text {
   color: #a9bfea !important;
 }
 
-/* line 121, scss/pages/_cards-home.scss */
+/* line 121, scss/pages/_cards_home.scss */
 #data-card.card-disabled .disabled-text {
   position: absolute;
   top: -75px;
@@ -21415,13 +21475,13 @@ input.input-inner:focus {
 }
 
 @media screen and (max-width: 768px) {
-  /* line 121, scss/pages/_cards-home.scss */
+  /* line 121, scss/pages/_cards_home.scss */
   #data-card.card-disabled .disabled-text {
     font-size: 18px;
   }
 }
 
-/* line 139, scss/pages/_cards-home.scss */
+/* line 139, scss/pages/_cards_home.scss */
 #data-card:focus, #data-card:hover {
   border: 1px solid #0c2b59 !important;
   border: 1px solid #E9F1FC !important;
@@ -21431,7 +21491,7 @@ input.input-inner:focus {
   outline: none;
 }
 
-/* line 144, scss/pages/_cards-home.scss */
+/* line 144, scss/pages/_cards_home.scss */
 #data-card:focus.card-disabled, #data-card:hover.card-disabled {
   -webkit-box-shadow: 0px 2px 3px rgba(0, 0, 0, 0.239);
   -moz-box-shadow: 0px 2px 3px rgba(0, 0, 0, 0.239);
@@ -21442,7 +21502,7 @@ input.input-inner:focus {
 }
 
 @media screen and (max-width: 1240px) {
-  /* line 96, scss/pages/_cards-home.scss */
+  /* line 96, scss/pages/_cards_home.scss */
   #data-card {
     width: 90% !important;
     height: auto !important;
@@ -21451,7 +21511,7 @@ input.input-inner:focus {
 }
 
 @media screen and (max-width: 900px) {
-  /* line 96, scss/pages/_cards-home.scss */
+  /* line 96, scss/pages/_cards_home.scss */
   #data-card {
     max-height: 400px !important;
     height: 100% !important;
@@ -21459,7 +21519,7 @@ input.input-inner:focus {
 }
 
 @media screen and (max-width: 768px) {
-  /* line 96, scss/pages/_cards-home.scss */
+  /* line 96, scss/pages/_cards_home.scss */
   #data-card {
     height: 100% !important;
     max-height: 320px !important;
@@ -21467,32 +21527,32 @@ input.input-inner:focus {
 }
 
 @media screen and (max-width: 599px) {
-  /* line 96, scss/pages/_cards-home.scss */
+  /* line 96, scss/pages/_cards_home.scss */
   #data-card {
     max-height: 225px !important;
   }
 }
 
 @media screen and (max-width: 399px) {
-  /* line 96, scss/pages/_cards-home.scss */
+  /* line 96, scss/pages/_cards_home.scss */
   #data-card {
     max-height: 200px !important;
   }
 }
 
 @media screen and (max-width: 320px) {
-  /* line 96, scss/pages/_cards-home.scss */
+  /* line 96, scss/pages/_cards_home.scss */
   #data-card {
     max-height: 175px !important;
   }
 }
 
-/* line 184, scss/pages/_cards-home.scss */
+/* line 184, scss/pages/_cards_home.scss */
 #data-card.card-next-steps ::-webkit-scrollbar-track {
   background-color: transparent;
 }
 
-/* line 189, scss/pages/_cards-home.scss */
+/* line 189, scss/pages/_cards_home.scss */
 #data-card.card-next-steps .card-description-holder {
   background-color: transparent;
   flex: 1 1 auto;
@@ -21502,7 +21562,7 @@ input.input-inner:focus {
 }
 
 @media screen and (max-width: 768px) {
-  /* line 182, scss/pages/_cards-home.scss */
+  /* line 182, scss/pages/_cards_home.scss */
   #data-card.card-next-steps {
     height: 100% !important;
     max-height: 350px !important;
@@ -21510,27 +21570,27 @@ input.input-inner:focus {
 }
 
 @media screen and (max-width: 599px) {
-  /* line 182, scss/pages/_cards-home.scss */
+  /* line 182, scss/pages/_cards_home.scss */
   #data-card.card-next-steps {
     max-height: 350px !important;
   }
 }
 
 @media screen and (max-width: 399px) {
-  /* line 182, scss/pages/_cards-home.scss */
+  /* line 182, scss/pages/_cards_home.scss */
   #data-card.card-next-steps {
     max-height: 350px !important;
   }
 }
 
 @media screen and (max-width: 320px) {
-  /* line 182, scss/pages/_cards-home.scss */
+  /* line 182, scss/pages/_cards_home.scss */
   #data-card.card-next-steps {
     max-height: 350px !important;
   }
 }
 
-/* line 215, scss/pages/_cards-home.scss */
+/* line 215, scss/pages/_cards_home.scss */
 #data-card .card-action {
   flex: 0 0 auto;
   margin: 0 -12px -6px -12px;
@@ -21540,12 +21600,12 @@ input.input-inner:focus {
   line-height: 16px;
 }
 
-/* line 225, scss/pages/_cards-home.scss */
+/* line 225, scss/pages/_cards_home.scss */
 #data-card .card-action i.fas {
   font-size: 16px !important;
 }
 
-/* line 231, scss/pages/_cards-home.scss */
+/* line 231, scss/pages/_cards_home.scss */
 #card-row {
   justify-content: space-evenly !important;
   height: auto !important;
@@ -21556,7 +21616,7 @@ input.input-inner:focus {
 }
 
 @media screen and (max-width: 1240px) {
-  /* line 231, scss/pages/_cards-home.scss */
+  /* line 231, scss/pages/_cards_home.scss */
   #card-row {
     justify-content: center !important;
     height: auto !important;
@@ -21566,7 +21626,7 @@ input.input-inner:focus {
 }
 
 @media screen and (max-width: 900px) {
-  /* line 231, scss/pages/_cards-home.scss */
+  /* line 231, scss/pages/_cards_home.scss */
   #card-row {
     flex-flow: row wrap !important;
     padding-right: 6px !important;
@@ -21578,7 +21638,7 @@ input.input-inner:focus {
 }
 
 @media screen and (max-width: 768px) {
-  /* line 231, scss/pages/_cards-home.scss */
+  /* line 231, scss/pages/_cards_home.scss */
   #card-row {
     max-height: 1240px !important;
     min-height: 1000px !important;
@@ -21586,7 +21646,7 @@ input.input-inner:focus {
 }
 
 @media screen and (max-width: 599px) {
-  /* line 231, scss/pages/_cards-home.scss */
+  /* line 231, scss/pages/_cards_home.scss */
   #card-row {
     max-height: 1240px !important;
     min-height: 710px !important;
@@ -21594,7 +21654,7 @@ input.input-inner:focus {
 }
 
 @media screen and (max-width: 399px) {
-  /* line 231, scss/pages/_cards-home.scss */
+  /* line 231, scss/pages/_cards_home.scss */
   #card-row {
     max-height: 1000px !important;
     min-height: 640px !important;
@@ -21602,14 +21662,14 @@ input.input-inner:focus {
 }
 
 @media screen and (max-width: 320px) {
-  /* line 231, scss/pages/_cards-home.scss */
+  /* line 231, scss/pages/_cards_home.scss */
   #card-row {
     max-height: 800px !important;
     min-height: 560px !important;
   }
 }
 
-/* line 276, scss/pages/_cards-home.scss */
+/* line 276, scss/pages/_cards_home.scss */
 #card-image-row {
   justify-content: center !important;
   align-content: center !important;
@@ -21621,7 +21681,7 @@ input.input-inner:focus {
 }
 
 @media screen and (max-width: 900px) {
-  /* line 276, scss/pages/_cards-home.scss */
+  /* line 276, scss/pages/_cards_home.scss */
   #card-image-row {
     justify-content: start !important;
     align-content: start !important;
@@ -21631,20 +21691,20 @@ input.input-inner:focus {
 }
 
 @media screen and (max-width: 768px) {
-  /* line 276, scss/pages/_cards-home.scss */
+  /* line 276, scss/pages/_cards_home.scss */
   #card-image-row {
     max-height: 250px;
   }
 }
 
 @media screen and (max-width: 599px) {
-  /* line 276, scss/pages/_cards-home.scss */
+  /* line 276, scss/pages/_cards_home.scss */
   #card-image-row {
     max-height: 150px;
   }
 }
 
-/* line 303, scss/pages/_cards-home.scss */
+/* line 303, scss/pages/_cards_home.scss */
 #card-text {
   position: relative;
   background-color: #E9F1FC !important;
@@ -21671,7 +21731,7 @@ input.input-inner:focus {
 }
 
 @media screen and (max-width: 900px) {
-  /* line 303, scss/pages/_cards-home.scss */
+  /* line 303, scss/pages/_cards_home.scss */
   #card-text {
     flex: 1 1 150px !important;
     height: 150px !important;
@@ -21681,7 +21741,7 @@ input.input-inner:focus {
 }
 
 @media screen and (min-height: 1000px) {
-  /* line 303, scss/pages/_cards-home.scss */
+  /* line 303, scss/pages/_cards_home.scss */
   #card-text {
     flex: 1 1 120px !important;
     height: 120px !important;
@@ -21690,7 +21750,7 @@ input.input-inner:focus {
 }
 
 @media screen and (min-height: 1000px) and (max-width: 900px) {
-  /* line 303, scss/pages/_cards-home.scss */
+  /* line 303, scss/pages/_cards_home.scss */
   #card-text {
     flex: 1 1 150px !important;
     height: 150px !important;
@@ -21699,7 +21759,7 @@ input.input-inner:focus {
 }
 
 @media screen and (min-height: 1200px) {
-  /* line 303, scss/pages/_cards-home.scss */
+  /* line 303, scss/pages/_cards_home.scss */
   #card-text {
     flex: 1 1 150px !important;
     height: 150px !important;
@@ -21708,7 +21768,7 @@ input.input-inner:focus {
 }
 
 @media screen and (min-height: 1200px) and (max-width: 900px) {
-  /* line 303, scss/pages/_cards-home.scss */
+  /* line 303, scss/pages/_cards_home.scss */
   #card-text {
     flex: 1 1 150px !important;
     height: 150px !important;
@@ -21717,7 +21777,7 @@ input.input-inner:focus {
 }
 
 @media screen and (max-width: 900px) {
-  /* line 303, scss/pages/_cards-home.scss */
+  /* line 303, scss/pages/_cards_home.scss */
   #card-text {
     padding-top: 6px !important;
     padding-bottom: 6px !important;
@@ -21727,27 +21787,27 @@ input.input-inner:focus {
 }
 
 @media screen and (max-width: 768px) {
-  /* line 303, scss/pages/_cards-home.scss */
+  /* line 303, scss/pages/_cards_home.scss */
   #card-text {
     min-height: 40px !important;
   }
 }
 
 @media screen and (max-width: 399px) {
-  /* line 303, scss/pages/_cards-home.scss */
+  /* line 303, scss/pages/_cards_home.scss */
   #card-text {
     min-height: 90px !important;
   }
 }
 
-/* line 366, scss/pages/_cards-home.scss */
+/* line 366, scss/pages/_cards_home.scss */
 #card-text.card-text-full {
   min-height: 100% !important;
   height: 100% !important;
   flex: 1 1 100% !important;
 }
 
-/* line 372, scss/pages/_cards-home.scss */
+/* line 372, scss/pages/_cards_home.scss */
 #card-text ul {
   margin-top: 0;
   margin-bottom: 1rem;
@@ -21759,14 +21819,14 @@ input.input-inner:focus {
   padding-inline-start: 15px;
 }
 
-/* line 383, scss/pages/_cards-home.scss */
+/* line 383, scss/pages/_cards_home.scss */
 #card-text li {
   display: list-item;
   margin: .25rem;
   text-align: -webkit-match-parent;
 }
 
-/* line 390, scss/pages/_cards-home.scss */
+/* line 390, scss/pages/_cards_home.scss */
 #card-title-icon {
   font: 500 18px Roboto, Helvetica, "Helvetica Neue", Arial, sans-serif !important;
   padding-bottom: 6px !important;
@@ -21774,7 +21834,7 @@ input.input-inner:focus {
   flex-wrap: nowrap !important;
 }
 
-/* line 397, scss/pages/_cards-home.scss */
+/* line 397, scss/pages/_cards_home.scss */
 .card-title {
   font-size: 18px !important;
   flex: 1 1 auto !important;
@@ -21782,26 +21842,26 @@ input.input-inner:focus {
 }
 
 @media screen and (max-width: 599px) {
-  /* line 397, scss/pages/_cards-home.scss */
+  /* line 397, scss/pages/_cards_home.scss */
   .card-title {
     font-size: 18px !important;
   }
 }
 
-/* line 407, scss/pages/_cards-home.scss */
+/* line 407, scss/pages/_cards_home.scss */
 .card-title a {
   color: #FBFCFE !important;
   text-decoration: none !important;
 }
 
-/* line 413, scss/pages/_cards-home.scss */
+/* line 413, scss/pages/_cards_home.scss */
 .card-icon {
   flex: 0 0 auto !important;
   font-size: 24px !important;
   margin-right: 12px !important;
 }
 
-/* line 419, scss/pages/_cards-home.scss */
+/* line 419, scss/pages/_cards_home.scss */
 .card-image {
   height: auto !important;
   -webkit-border-radius: 5px 5px;
@@ -21813,18 +21873,18 @@ input.input-inner:focus {
 }
 
 @media screen and (max-width: 900px) {
-  /* line 419, scss/pages/_cards-home.scss */
+  /* line 419, scss/pages/_cards_home.scss */
   .card-image {
     align-self: start !important;
   }
 }
 
-/* line 431, scss/pages/_cards-home.scss */
+/* line 431, scss/pages/_cards_home.scss */
 #card-description {
   font-size: 14px !important;
 }
 
-/* line 1, scss/pages/next-steps.scss */
+/* line 1, scss/pages/_next_steps.scss */
 #next-steps-viewport {
   background-color: #ffffff;
   height: calc(100% - 48px - 6px - 100px) !important;
@@ -21838,14 +21898,14 @@ input.input-inner:focus {
 }
 
 @media screen and (max-width: 499px) {
-  /* line 1, scss/pages/next-steps.scss */
+  /* line 1, scss/pages/_next_steps.scss */
   #next-steps-viewport {
     min-height: calc(100% - 48px - 12px - 64px) !important;
     height: calc(100% - 48px - 12px - 64px) !important;
   }
 }
 
-/* line 14, scss/pages/next-steps.scss */
+/* line 14, scss/pages/_next_steps.scss */
 #next-steps-viewport:after {
   content: '';
   width: 100%;
@@ -21859,52 +21919,52 @@ input.input-inner:focus {
 }
 
 @media screen and (max-width: 499px) {
-  /* line 14, scss/pages/next-steps.scss */
+  /* line 14, scss/pages/_next_steps.scss */
   #next-steps-viewport:after {
     top: calc(100% - 75px);
   }
 }
 
-/* line 28, scss/pages/next-steps.scss */
+/* line 28, scss/pages/_next_steps.scss */
 #next-steps-viewport.expanded {
   min-height: calc(100% - 48px - 12px - 170px) !important;
   height: calc(100% - 48px - 12px - 170px) !important;
 }
 
 @media screen and (min-width: 850px) {
-  /* line 28, scss/pages/next-steps.scss */
+  /* line 28, scss/pages/_next_steps.scss */
   #next-steps-viewport.expanded {
     min-height: calc(100% - 48px - 12px - 100px) !important;
     height: calc(100% - 48px - 12px - 100px) !important;
   }
-  /* line 32, scss/pages/next-steps.scss */
+  /* line 32, scss/pages/_next_steps.scss */
   #next-steps-viewport.expanded:after {
     top: calc(100% - 117px);
   }
 }
 
 @media screen and (min-width: 850px) and (max-width: 499px) {
-  /* line 32, scss/pages/next-steps.scss */
+  /* line 32, scss/pages/_next_steps.scss */
   #next-steps-viewport.expanded:after {
     top: calc(100% - 147px);
   }
 }
 
-/* line 43, scss/pages/next-steps.scss */
+/* line 43, scss/pages/_next_steps.scss */
 #next-steps-viewport.expanded:after {
   top: calc(100% - 187px);
   z-index: 1;
 }
 
 @media screen and (max-width: 499px) {
-  /* line 43, scss/pages/next-steps.scss */
+  /* line 43, scss/pages/_next_steps.scss */
   #next-steps-viewport.expanded:after {
     top: calc(100% - 147px);
   }
 }
 
 @media screen and (max-width: 499px) {
-  /* line 28, scss/pages/next-steps.scss */
+  /* line 28, scss/pages/_next_steps.scss */
   #next-steps-viewport.expanded {
     min-height: calc(100% - 48px - 12px - 130px) !important;
     height: calc(100% - 48px - 12px - 130px) !important;
@@ -21912,14 +21972,14 @@ input.input-inner:focus {
 }
 
 @media screen and (max-width: 900px) {
-  /* line 58, scss/pages/next-steps.scss */
+  /* line 58, scss/pages/_next_steps.scss */
   #next-steps-viewport .text-info-box {
     width: 100% !important;
     white-space: nowrap;
   }
 }
 
-/* line 65, scss/pages/next-steps.scss */
+/* line 65, scss/pages/_next_steps.scss */
 #next-steps-viewport #data-card.card-empty-data {
   cursor: default;
   -webkit-box-shadow: 0px 0px 0px rgba(0, 0, 0, 0);
@@ -21928,12 +21988,12 @@ input.input-inner:focus {
   border: 0px solid #ffffff !important;
 }
 
-/* line 69, scss/pages/next-steps.scss */
+/* line 69, scss/pages/_next_steps.scss */
 #next-steps-viewport #data-card.card-empty-data #card-text {
   background-color: #ffffff !important;
 }
 
-/* line 72, scss/pages/next-steps.scss */
+/* line 72, scss/pages/_next_steps.scss */
 #next-steps-viewport #data-card.card-empty-data:hover, #next-steps-viewport #data-card.card-empty-data:focus {
   border: 0px solid #ffffff !important;
   -webkit-box-shadow: 0px 0px 0px rgba(0, 0, 0, 0);
@@ -21942,34 +22002,34 @@ input.input-inner:focus {
   outline: none;
 }
 
-/* line 79, scss/pages/next-steps.scss */
+/* line 79, scss/pages/_next_steps.scss */
 #next-steps-viewport .rounded-filters-box {
   min-height: 36px !important;
 }
 
 @media screen and (max-width: 900px) {
-  /* line 79, scss/pages/next-steps.scss */
+  /* line 79, scss/pages/_next_steps.scss */
   #next-steps-viewport .rounded-filters-box {
     min-height: 36px !important;
   }
 }
 
-/* line 87, scss/pages/next-steps.scss */
+/* line 87, scss/pages/_next_steps.scss */
 #next-steps-viewport #cards-search-input.nosearch {
   border-bottom: 3px solid rgba(219, 48, 61, 0.9) !important;
 }
 
-/* line 90, scss/pages/next-steps.scss */
+/* line 90, scss/pages/_next_steps.scss */
 #next-steps-viewport #cards-search-input.nosearch:focus::placeholder {
   color: rgba(219, 48, 61, 0.4);
 }
 
-/* line 94, scss/pages/next-steps.scss */
+/* line 94, scss/pages/_next_steps.scss */
 #next-steps-viewport #cards-search-input.nosearch::placeholder {
   color: #DB303D;
 }
 
-/* line 100, scss/pages/next-steps.scss */
+/* line 100, scss/pages/_next_steps.scss */
 #next-steps-viewport #data-card {
   cursor: default;
   width: 49%  !important;
@@ -21985,29 +22045,29 @@ input.input-inner:focus {
   position: relative;
 }
 
-/* line 110, scss/pages/next-steps.scss */
+/* line 110, scss/pages/_next_steps.scss */
 #next-steps-viewport #data-card .disabled-text {
   display: none;
 }
 
-/* line 114, scss/pages/next-steps.scss */
+/* line 114, scss/pages/_next_steps.scss */
 #next-steps-viewport #data-card.card-disabled {
   cursor: default;
 }
 
-/* line 117, scss/pages/next-steps.scss */
+/* line 117, scss/pages/_next_steps.scss */
 #next-steps-viewport #data-card.card-disabled #card-image-row img {
   -webkit-filter: grayscale(60%) contrast(50%);
   /* Safari 6.0 - 9.0 */
   filter: grayscale(60%) contrast(50%);
 }
 
-/* line 122, scss/pages/next-steps.scss */
+/* line 122, scss/pages/_next_steps.scss */
 #next-steps-viewport #data-card.card-disabled #card-text {
   color: #a9bfea !important;
 }
 
-/* line 125, scss/pages/next-steps.scss */
+/* line 125, scss/pages/_next_steps.scss */
 #next-steps-viewport #data-card.card-disabled .disabled-text {
   position: static;
   text-align: center;
@@ -22025,14 +22085,14 @@ input.input-inner:focus {
 }
 
 @media screen and (max-width: 768px) {
-  /* line 125, scss/pages/next-steps.scss */
+  /* line 125, scss/pages/_next_steps.scss */
   #next-steps-viewport #data-card.card-disabled .disabled-text {
     font-size: 18px;
   }
 }
 
 @media screen and (max-width: 1240px) {
-  /* line 100, scss/pages/next-steps.scss */
+  /* line 100, scss/pages/_next_steps.scss */
   #next-steps-viewport #data-card {
     width: 90% !important;
     height: auto !important;
@@ -22041,7 +22101,7 @@ input.input-inner:focus {
 }
 
 @media screen and (max-width: 900px) {
-  /* line 100, scss/pages/next-steps.scss */
+  /* line 100, scss/pages/_next_steps.scss */
   #next-steps-viewport #data-card {
     height: -moz-fit-content !important;
     height: -webkit-fit-content !important;
@@ -22051,7 +22111,7 @@ input.input-inner:focus {
 }
 
 @media screen and (max-width: 768px) {
-  /* line 100, scss/pages/next-steps.scss */
+  /* line 100, scss/pages/_next_steps.scss */
   #next-steps-viewport #data-card {
     height: -moz-fit-content !important;
     height: -webkit-fit-content !important;
@@ -22060,27 +22120,27 @@ input.input-inner:focus {
 }
 
 @media screen and (max-width: 599px) {
-  /* line 100, scss/pages/next-steps.scss */
+  /* line 100, scss/pages/_next_steps.scss */
   #next-steps-viewport #data-card {
     max-height: none !important;
   }
 }
 
 @media screen and (max-width: 399px) {
-  /* line 100, scss/pages/next-steps.scss */
+  /* line 100, scss/pages/_next_steps.scss */
   #next-steps-viewport #data-card {
     max-height: none !important;
   }
 }
 
 @media screen and (max-width: 320px) {
-  /* line 100, scss/pages/next-steps.scss */
+  /* line 100, scss/pages/_next_steps.scss */
   #next-steps-viewport #data-card {
     max-height: none !important;
   }
 }
 
-/* line 175, scss/pages/next-steps.scss */
+/* line 175, scss/pages/_next_steps.scss */
 #next-steps-viewport #card-row {
   justify-content: space-evenly !important;
   height: auto !important;
@@ -22091,7 +22151,7 @@ input.input-inner:focus {
 }
 
 @media screen and (max-width: 1240px) {
-  /* line 175, scss/pages/next-steps.scss */
+  /* line 175, scss/pages/_next_steps.scss */
   #next-steps-viewport #card-row {
     justify-content: center !important;
     height: auto !important;
@@ -22101,7 +22161,7 @@ input.input-inner:focus {
 }
 
 @media screen and (max-width: 900px) {
-  /* line 175, scss/pages/next-steps.scss */
+  /* line 175, scss/pages/_next_steps.scss */
   #next-steps-viewport #card-row {
     flex-flow: row wrap !important;
     padding-right: 6px !important;
@@ -22113,7 +22173,7 @@ input.input-inner:focus {
 }
 
 @media screen and (max-width: 768px) {
-  /* line 175, scss/pages/next-steps.scss */
+  /* line 175, scss/pages/_next_steps.scss */
   #next-steps-viewport #card-row {
     max-height: 1240px !important;
     min-height: 1000px !important;
@@ -22121,7 +22181,7 @@ input.input-inner:focus {
 }
 
 @media screen and (max-width: 599px) {
-  /* line 175, scss/pages/next-steps.scss */
+  /* line 175, scss/pages/_next_steps.scss */
   #next-steps-viewport #card-row {
     max-height: 1240px !important;
     min-height: 710px !important;
@@ -22129,7 +22189,7 @@ input.input-inner:focus {
 }
 
 @media screen and (max-width: 399px) {
-  /* line 175, scss/pages/next-steps.scss */
+  /* line 175, scss/pages/_next_steps.scss */
   #next-steps-viewport #card-row {
     max-height: 1000px !important;
     min-height: 640px !important;
@@ -22137,14 +22197,14 @@ input.input-inner:focus {
 }
 
 @media screen and (max-width: 320px) {
-  /* line 175, scss/pages/next-steps.scss */
+  /* line 175, scss/pages/_next_steps.scss */
   #next-steps-viewport #card-row {
     max-height: 800px !important;
     min-height: 560px !important;
   }
 }
 
-/* line 220, scss/pages/next-steps.scss */
+/* line 220, scss/pages/_next_steps.scss */
 #next-steps-viewport #card-image-row {
   justify-content: center !important;
   align-content: center !important;
@@ -22156,7 +22216,7 @@ input.input-inner:focus {
 }
 
 @media screen and (max-width: 900px) {
-  /* line 220, scss/pages/next-steps.scss */
+  /* line 220, scss/pages/_next_steps.scss */
   #next-steps-viewport #card-image-row {
     justify-content: start !important;
     align-content: start !important;
@@ -22166,20 +22226,20 @@ input.input-inner:focus {
 }
 
 @media screen and (max-width: 768px) {
-  /* line 220, scss/pages/next-steps.scss */
+  /* line 220, scss/pages/_next_steps.scss */
   #next-steps-viewport #card-image-row {
     max-height: 250px;
   }
 }
 
 @media screen and (max-width: 599px) {
-  /* line 220, scss/pages/next-steps.scss */
+  /* line 220, scss/pages/_next_steps.scss */
   #next-steps-viewport #card-image-row {
     max-height: 150px;
   }
 }
 
-/* line 245, scss/pages/next-steps.scss */
+/* line 245, scss/pages/_next_steps.scss */
 #next-steps-viewport #card-text {
   position: relative;
   background-color: #E9F1FC !important;
@@ -22206,7 +22266,7 @@ input.input-inner:focus {
 }
 
 @media screen and (max-width: 900px) {
-  /* line 245, scss/pages/next-steps.scss */
+  /* line 245, scss/pages/_next_steps.scss */
   #next-steps-viewport #card-text {
     padding-top: 6px !important;
     padding-bottom: 6px !important;
@@ -22216,13 +22276,13 @@ input.input-inner:focus {
 }
 
 @media screen and (max-width: 768px) {
-  /* line 245, scss/pages/next-steps.scss */
+  /* line 245, scss/pages/_next_steps.scss */
   #next-steps-viewport #card-text {
     min-height: auto !important;
   }
 }
 
-/* line 275, scss/pages/next-steps.scss */
+/* line 275, scss/pages/_next_steps.scss */
 #next-steps-viewport #card-title-icon {
   font: 500 18px Roboto, Helvetica, "Helvetica Neue", Arial, sans-serif !important;
   padding-bottom: 0 !important;
@@ -22230,21 +22290,21 @@ input.input-inner:focus {
   align-items: center;
 }
 
-/* line 282, scss/pages/next-steps.scss */
+/* line 282, scss/pages/_next_steps.scss */
 #next-steps-viewport .card-title-icon-wrap {
   display: flex;
   align-items: center;
   flex: 1;
 }
 
-/* line 288, scss/pages/next-steps.scss */
+/* line 288, scss/pages/_next_steps.scss */
 #next-steps-viewport .card-title-wrap {
   flex: 1;
   padding: 3px;
   margin-bottom: 4px;
 }
 
-/* line 294, scss/pages/next-steps.scss */
+/* line 294, scss/pages/_next_steps.scss */
 #next-steps-viewport .card-title {
   font-size: 18px !important;
   align-self: center !important;
@@ -22255,26 +22315,26 @@ input.input-inner:focus {
 }
 
 @media screen and (max-width: 599px) {
-  /* line 294, scss/pages/next-steps.scss */
+  /* line 294, scss/pages/_next_steps.scss */
   #next-steps-viewport .card-title {
     font-size: 18px !important;
   }
 }
 
-/* line 306, scss/pages/next-steps.scss */
+/* line 306, scss/pages/_next_steps.scss */
 #next-steps-viewport .card-title a {
   color: #FBFCFE !important;
   text-decoration: none !important;
 }
 
-/* line 312, scss/pages/next-steps.scss */
+/* line 312, scss/pages/_next_steps.scss */
 #next-steps-viewport .card-icon {
   flex: 0 0 auto !important;
   height: 28px;
   margin: 0 3px auto 0 !important;
 }
 
-/* line 318, scss/pages/next-steps.scss */
+/* line 318, scss/pages/_next_steps.scss */
 #next-steps-viewport .card-image {
   height: auto !important;
   -webkit-border-radius: 5px 5px;
@@ -22286,13 +22346,13 @@ input.input-inner:focus {
 }
 
 @media screen and (max-width: 900px) {
-  /* line 318, scss/pages/next-steps.scss */
+  /* line 318, scss/pages/_next_steps.scss */
   #next-steps-viewport .card-image {
     align-self: start !important;
   }
 }
 
-/* line 330, scss/pages/next-steps.scss */
+/* line 330, scss/pages/_next_steps.scss */
 #next-steps-viewport .card-subtitle {
   font-size: small;
   display: inline;
@@ -22303,13 +22363,13 @@ input.input-inner:focus {
   white-space: nowrap;
 }
 
-/* line 339, scss/pages/next-steps.scss */
+/* line 339, scss/pages/_next_steps.scss */
 #next-steps-viewport .card-subtitle a {
   color: #124086 !important;
   text-decoration: underline !important;
 }
 
-/* line 345, scss/pages/next-steps.scss */
+/* line 345, scss/pages/_next_steps.scss */
 #next-steps-viewport .card-controls {
   font-size: 60%;
   display: flex;
@@ -22320,17 +22380,17 @@ input.input-inner:focus {
   border-top: 1px solid #ccc;
 }
 
-/* line 354, scss/pages/next-steps.scss */
+/* line 354, scss/pages/_next_steps.scss */
 #next-steps-viewport .card-controls .lcs_wrap {
   flex: 0;
 }
 
-/* line 357, scss/pages/next-steps.scss */
+/* line 357, scss/pages/_next_steps.scss */
 #next-steps-viewport .card-controls .lcs_wrap + label {
   flex: 1;
 }
 
-/* line 360, scss/pages/next-steps.scss */
+/* line 360, scss/pages/_next_steps.scss */
 #next-steps-viewport .card-controls .methodology-link {
   margin: 4px;
   font-size: 120%;
@@ -22339,13 +22399,13 @@ input.input-inner:focus {
   text-decoration: underline;
 }
 
-/* line 368, scss/pages/next-steps.scss */
+/* line 368, scss/pages/_next_steps.scss */
 #next-steps-viewport .help-text {
   font-size: 14px;
   line-height: 1.4em;
 }
 
-/* line 374, scss/pages/next-steps.scss */
+/* line 374, scss/pages/_next_steps.scss */
 #next-steps-viewport #card-description {
   font-size: 14px !important;
   padding: 5px;
@@ -22355,7 +22415,7 @@ input.input-inner:focus {
   line-height: 1.4em;
 }
 
-/* line 382, scss/pages/next-steps.scss */
+/* line 382, scss/pages/_next_steps.scss */
 #next-steps-viewport #card-description img {
   height: 40px;
   width: 40px;
@@ -22364,12 +22424,12 @@ input.input-inner:focus {
   min-height: 40px;
 }
 
-/* line 390, scss/pages/next-steps.scss */
+/* line 390, scss/pages/_next_steps.scss */
 #next-steps-viewport #card-description b {
   font-weight: bold;
 }
 
-/* line 394, scss/pages/next-steps.scss */
+/* line 394, scss/pages/_next_steps.scss */
 #next-steps-viewport #card-description > div {
   display: flex;
   padding: 6px 1px;
@@ -22377,20 +22437,20 @@ input.input-inner:focus {
 }
 
 @media screen and (max-width: 900px) {
-  /* line 400, scss/pages/next-steps.scss */
+  /* line 400, scss/pages/_next_steps.scss */
   #next-steps-viewport #card-description > div:not(:last-child) {
     border-bottom: 1px solid #ccc;
   }
 }
 
-/* line 405, scss/pages/next-steps.scss */
+/* line 405, scss/pages/_next_steps.scss */
 #next-steps-viewport #card-description > div > div {
   margin: auto 0;
   display: flex;
   flex-direction: column;
 }
 
-/* line 413, scss/pages/next-steps.scss */
+/* line 413, scss/pages/_next_steps.scss */
 #next-steps-viewport .footer {
   display: flex;
   padding: 10px;
@@ -22401,7 +22461,7 @@ input.input-inner:focus {
   align-items: center;
 }
 
-/* line 422, scss/pages/next-steps.scss */
+/* line 422, scss/pages/_next_steps.scss */
 #next-steps-viewport .footer a {
   background-color: #124086;
   color: #fff;
@@ -22413,13 +22473,13 @@ input.input-inner:focus {
   border-radius: 5px;
 }
 
-/* line 434, scss/pages/next-steps.scss */
+/* line 434, scss/pages/_next_steps.scss */
 #next-steps-viewport .indicator-historic {
   font-size: small;
   font-style: italic;
 }
 
-/* line 439, scss/pages/next-steps.scss */
+/* line 439, scss/pages/_next_steps.scss */
 #next-steps-viewport .lcs_wrap {
   display: inline-block;
   direction: ltr;
@@ -22429,12 +22489,12 @@ input.input-inner:focus {
   margin: 6px 2px 6px 0;
 }
 
-/* line 447, scss/pages/next-steps.scss */
+/* line 447, scss/pages/_next_steps.scss */
 #next-steps-viewport .lcs_wrap input {
   display: none;
 }
 
-/* line 450, scss/pages/next-steps.scss */
+/* line 450, scss/pages/_next_steps.scss */
 #next-steps-viewport .lcs_wrap + label {
   display: inline-block;
   margin: 4px;
@@ -22443,7 +22503,7 @@ input.input-inner:focus {
   vertical-align: middle;
 }
 
-/* line 458, scss/pages/next-steps.scss */
+/* line 458, scss/pages/_next_steps.scss */
 #next-steps-viewport .lcs_switch {
   display: inline-block;
   position: relative;
@@ -22458,7 +22518,7 @@ input.input-inner:focus {
   transition: all .2s ease-in-out;
 }
 
-/* line 472, scss/pages/next-steps.scss */
+/* line 472, scss/pages/_next_steps.scss */
 #next-steps-viewport .lcs_cursor {
   display: inline-block;
   position: absolute;
@@ -22474,36 +22534,36 @@ input.input-inner:focus {
   transition: all .2s linear;
 }
 
-/* line 489, scss/pages/next-steps.scss */
+/* line 489, scss/pages/_next_steps.scss */
 #next-steps-viewport .lcs_switch.lcs_on {
   background: #75b936;
   box-shadow: 0 0 2px #579022 inset;
 }
 
-/* line 493, scss/pages/next-steps.scss */
+/* line 493, scss/pages/_next_steps.scss */
 #next-steps-viewport .lcs_switch.lcs_on .lcs_cursor {
   left: 25px;
 }
 
-/* line 499, scss/pages/next-steps.scss */
+/* line 499, scss/pages/_next_steps.scss */
 #next-steps-viewport .lcs_switch.lcs_off {
   background: #124086;
   box-shadow: 0px 0px 2px #a4a4a4 inset;
 }
 
-/* line 503, scss/pages/next-steps.scss */
+/* line 503, scss/pages/_next_steps.scss */
 #next-steps-viewport .lcs_switch.lcs_off .lcs_cursor {
   left: 11px;
 }
 
-/* line 509, scss/pages/next-steps.scss */
+/* line 509, scss/pages/_next_steps.scss */
 #next-steps-viewport .lcs_switch.lcs_disabled {
   opacity: 0.65;
   filter: alpha(opacity=65);
   cursor: default;
 }
 
-/* line 2, scss/pages/about.scss */
+/* line 2, scss/pages/_about.scss */
 #about-viewport {
   background-color: #ffffff;
   color: #124086;
@@ -22514,7 +22574,7 @@ input.input-inner:focus {
   margin-bottom: 6px;
 }
 
-/* line 11, scss/pages/about.scss */
+/* line 11, scss/pages/_about.scss */
 #about-viewport:after {
   content: '';
   width: 100%;
@@ -22527,103 +22587,103 @@ input.input-inner:focus {
   box-shadow: inset 0 -2px 2px rgba(0, 0, 0, 0.3);
 }
 
-/* line 21, scss/pages/about.scss */
+/* line 21, scss/pages/_about.scss */
 #about-viewport #about-text-row {
   width: 90% !important;
   align-self: center !important;
 }
 
 @media screen and (max-width: 768px) {
-  /* line 21, scss/pages/about.scss */
+  /* line 21, scss/pages/_about.scss */
   #about-viewport #about-text-row {
     width: 90% !important;
   }
 }
 
-/* line 30, scss/pages/about.scss */
+/* line 30, scss/pages/_about.scss */
 #about-viewport a {
   color: #1D6ADD;
   text-decoration: underline;
 }
 
-/* line 35, scss/pages/about.scss */
+/* line 35, scss/pages/_about.scss */
 #about-viewport p {
   line-height: 1.75em;
   margin: 0 0 20px 0;
 }
 
-/* line 40, scss/pages/about.scss */
+/* line 40, scss/pages/_about.scss */
 #about-viewport strong {
   font-weight: 600;
 }
 
-/* line 44, scss/pages/about.scss */
+/* line 44, scss/pages/_about.scss */
 #about-viewport h2 {
   margin: 30px 0;
   font-size: 2rem;
   color: #0D3064;
 }
 
-/* line 50, scss/pages/about.scss */
+/* line 50, scss/pages/_about.scss */
 #about-viewport h3 {
   margin: 20px 0;
   font-size: 1.75rem;
   color: #124086;
 }
 
-/* line 56, scss/pages/about.scss */
+/* line 56, scss/pages/_about.scss */
 #about-viewport h4 {
   margin: 0 0 15px 0;
   font-size: 1.25rem;
   line-height: 1.375em;
 }
 
-/* line 63, scss/pages/about.scss */
+/* line 63, scss/pages/_about.scss */
 #about-viewport #standard-body h2 {
   margin: 30px 0;
   font-size: 2rem;
   color: #154b9c;
 }
 
-/* line 69, scss/pages/about.scss */
+/* line 69, scss/pages/_about.scss */
 #about-viewport #standard-body h3 {
   color: #1855b3;
 }
 
-/* line 73, scss/pages/about.scss */
+/* line 73, scss/pages/_about.scss */
 #about-viewport #standard-body h4 {
   color: #1855b3;
 }
 
-/* line 80, scss/pages/about.scss */
+/* line 80, scss/pages/_about.scss */
 #about-viewport ul, #about-viewport ol {
   margin: 0 20px 30px 20px;
   padding: 0 0 0 30px;
   font: 300 1rem/1.5em Roboto, Helvetica, "Helvetica Neue", Arial, sans-serif;
 }
 
-/* line 85, scss/pages/about.scss */
+/* line 85, scss/pages/_about.scss */
 #about-viewport ul li, #about-viewport ol li {
   margin: 0 0 10px 0;
 }
 
-/* line 90, scss/pages/about.scss */
+/* line 90, scss/pages/_about.scss */
 #about-viewport ol {
   list-style-type: decimal;
 }
 
-/* line 94, scss/pages/about.scss */
+/* line 94, scss/pages/_about.scss */
 #about-viewport li {
   list-style-type: disc;
 }
 
-/* line 98, scss/pages/about.scss */
+/* line 98, scss/pages/_about.scss */
 #about-viewport dl {
   margin: 0 0 30px 0;
   font: 300 1rem/1.5em Roboto, Helvetica, "Helvetica Neue", Arial, sans-serif;
 }
 
-/* line 102, scss/pages/about.scss */
+/* line 102, scss/pages/_about.scss */
 #about-viewport dl dt {
   margin: 0 0 15px 0;
   padding-bottom: 10px;
@@ -22632,12 +22692,12 @@ input.input-inner:focus {
   font-weight: 400;
 }
 
-/* line 110, scss/pages/about.scss */
+/* line 110, scss/pages/_about.scss */
 #about-viewport dl dd {
   margin: 0 0 25px 0;
 }
 
-/* line 115, scss/pages/about.scss */
+/* line 115, scss/pages/_about.scss */
 #about-viewport hr {
   display: block;
   height: 3px;

@@ -7,11 +7,15 @@
 //     "rollup": "^2.31.0"
 
 import babel from '@rollup/plugin-babel';
-import nodeResolve from '@rollup/plugin-node-resolve';
-let production = process.env.build_env === 'prod' || process.env.build_env === 'production'
+// import nodeResolve from '@rollup/plugin-node-resolve';
+
+let production = process.env.build_env === 'prod' || process.env.build_env === 'production';
+let pkg = process.env.pkg;
+
 const plugins = [
   // nodeResolve(),
 ];
+
 if (production){
   plugins.push(
       babel({
@@ -20,24 +24,32 @@ if (production){
       })
   )
 }
-export default [
-  {
-    input: './js/climate_maps.js',
-    output: {
-      file: 'dist/js/climate_maps.js',
-      format: 'umd',
-      name: 'LocalClimateMaps',
-      sourcemap: !production ? 'inline' : false,
-    },
-    plugins: plugins
-  },{
-    input: './js/scenario_comparison_map.js',
-    output: {
-      file: 'dist/js/scenario_comparison_map.js',
-      format: 'umd',
-      name: 'ScenarioMapComparison',
-      sourcemap: !production ? 'inline' : false,
-    },
-    plugins: plugins
+let pages = [
+  'cards_home',
+  'climate_graphs',
+  'climate_maps',
+  'high_tide_flooding',
+  'historical_thresholds',
+  'historical_weather_data',
+  'index',
+  'next_steps'
+]; // Pages 404, error, about, faq, glossary do not have their own JS packages
+
+let packages = []
+
+for(const p of pages) {
+  if (!pkg || p === pkg) {
+    packages.push({
+      input: `./js/${p}.js`,
+      output: {
+        file: `./dist/js/${p}.js`,
+        format: 'umd',
+        name: p,
+        sourcemap: !production ? 'inline' : false,
+      },
+      plugins: plugins
+    })
   }
-];
+}
+
+export default packages;

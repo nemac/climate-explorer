@@ -10,8 +10,8 @@ const navConstants = {
   navFooter: '#nav-footer',
   cardsViewport: '#cards-viewport',
   nextStepsViewport: '#next-steps-viewport',
-  locationChartsViewport: '#local-climate-charts-viewport',
-  locationMapsViewport: '#local-climate-maps-viewport',
+  locationChartsViewport: '#climate-graphs-viewport',
+  locationMapsViewport: '#climate-maps-viewport',
   historicalWeatherDataViewport: '#historical-weather-data-viewport',
   historicalThresholdsViewport: '#historical-thresholds-viewport',
   highTideFloodingViewport: '#high-tide-flooding-viewport',
@@ -29,7 +29,7 @@ $(function () {
 
   if (area_id) {
     if (!is_conus_area) {
-      $('#local-climate-maps-nav-footer').addClass('nav-disabled');
+      $('#climate-maps-nav-footer').addClass('nav-disabled');
     }
 
     if (is_alaska_area) {
@@ -105,27 +105,24 @@ $(function () {
     });
 
     // get new active nav item and chance display class
-    let navLocationElem = document.querySelector(`#${page}-nav-footer`)
+    let navLocationElem = document.querySelector(`#${page.replace(/_/g, '-')}-nav-footer`) || document.querySelector('#home-nav-footer')
 
     // make nav location home if element is null
-    if (navLocationElem === undefined || navLocationElem === null) {
-      page = 'home';
-      navLocationElem = document.querySelector(`#${page}-nav-footer`)
-    }
+    if (!!navLocationElem) {
+      // turnoff unselected and add selected class
+      navLocationElem.classList.remove('nav-footer-item');
+      navLocationElem.classList.add('nav-footer-item-selected');
 
-    // turnoff unselected and add selected class
-    navLocationElem.classList.remove('nav-footer-item');
-    navLocationElem.classList.add('nav-footer-item-selected');
-
-    // if the nav item is stations based it maybe hidden in more
-    // in responsive mode so we should highlight also
-    if (isMoreNavItem > 0) {
-      const moreElem = document.querySelector(`#more-nav-footer`)
-      moreElem.classList.remove('nav-footer-item');
-      moreElem.classList.add(navConstants.navFooterItemSelected);
-    } else {
-      const moreElem = document.querySelector(`#more-nav-footer`)
-      moreElem.classList.remove(navConstants.navFooterItemSelected);
+      // if the nav item is stations based it maybe hidden in more
+      // in responsive mode so we should highlight also
+      if (isMoreNavItem > 0) {
+        const moreElem = document.querySelector(`#more-nav-footer`)
+        moreElem.classList.remove('nav-footer-item');
+        moreElem.classList.add(navConstants.navFooterItemSelected);
+      } else {
+        const moreElem = document.querySelector(`#more-nav-footer`)
+        moreElem.classList.remove(navConstants.navFooterItemSelected);
+      }
     }
   }
 });

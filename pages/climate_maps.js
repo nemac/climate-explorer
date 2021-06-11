@@ -21,7 +21,7 @@ export default (config) => `
 
   ${secondary_header(config)}
 
-    <div id="local-climate-maps-viewport" class="padding-horizontal d-flex d-flex-column">
+    <div id="climate-maps-viewport" class="padding-horizontal d-flex d-flex-column">
 
       <div id="search-row" class="padding-horizontal d-flex-row flex-justify padding-top padding-bottom-half d-flex-justify" >
 
@@ -185,10 +185,7 @@ ${footer(config)}
 <script src="https://cdnjs.cloudflare.com/ajax/libs/dom-to-image/2.6.0/dom-to-image.js" integrity="sha256-Tw0/gX6aFDMese6GHQJFL/ZjF+f7edyF9okFVY/B9oU=" crossorigin="anonymous"></script>
 <script src="https://unpkg.com/terraformer-arcgis-parser@1.0.5/terraformer-arcgis-parser.js"
         integrity="sha384-duFUjKTSNoxEspdJNwr83CUgRxclf0ueKJB9DU/Vbit6bfWgzvZsHW6H1JLBBXhp" crossorigin="anonymous"></script>
-<script type="text/javascript" src="/js/scenario_comparison_map.js"></script>
-<script type="text/javascript" src="/js/ce3_ui_components.js"></script>
 <script type="text/javascript" src="/js/climate_maps.js"></script>
-<script type="text/javascript" src="/js/secondary_header.js"></script>
 
 </body>
 </html>

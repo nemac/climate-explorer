@@ -23,7 +23,7 @@ export default (config) => `
 
 ${secondary_header(config)}
 
-<div id="local-climate-charts-viewport" class="padding-horizontal d-flex d-flex-column">
+<div id="climate-graphs-viewport" class="padding-horizontal d-flex d-flex-column">
 
   <div id="search-row" class="padding-horizontal d-flex-row flex-justify padding-top padding-bottom-half d-flex-justify">
 
@@ -91,7 +91,7 @@ ${secondary_header(config)}
                data-page="climate_graphs" data-sel="chartmap-select-vis">
             Graph
           </div>
-          <div tabindex="101" role="button" class="btn-selector btn-map btn-default circle-box-right d-flex-center width-50" data-page="climate_maps"
+          <div tabindex="101" role="button" class="btn-selector btn-map btn-default circle-box-right d-flex-center width-50 btn-default-disabled" data-page="climate_maps"
                data-value="map"  data-sel="chartmap-select-vis">
             Map
           </div>
@@ -241,9 +241,7 @@ ${footer(config)}
         crossorigin="anonymous"></script>
 <script src="https://unpkg.com/terraformer-arcgis-parser@1.0.5/terraformer-arcgis-parser.js"
         integrity="sha384-duFUjKTSNoxEspdJNwr83CUgRxclf0ueKJB9DU/Vbit6bfWgzvZsHW6H1JLBBXhp" crossorigin="anonymous"></script>
-<script type="text/javascript" src="/js/ce3_ui_components.js"></script>
 <script type="text/javascript" src="/js/climate_graphs.js"></script>
-<script type="text/javascript" src="/js/secondary_header.js"></script>
 
 </body>
 </html>

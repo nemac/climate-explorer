@@ -1,4 +1,5 @@
-'use strict';
+import './main.js';
+import './stations_map.js';
 
 $(function () {
  
@@ -51,6 +52,9 @@ $(function () {
     center
   };
 
+  if(!!stationId) {
+    $('[data-value="chart"]').removeClass('btn-default-disabled');
+  }
 
   // updates the visible text for the station dropdown with the information from the state url
   function updateStationSelectText(stations) {
@@ -226,6 +230,8 @@ $(function () {
     const stationsGraphRowElem = document.getElementById('stations-graph-row');
     const stationsMapRowElem = document.getElementById('stations-map-row');
     showMoreCharts();
+
+    $('[data-value="chart"]').removeClass('btn-default-disabled');
 
     // show chart overlay
     if (stationsGraphRowElem) {
@@ -406,12 +412,6 @@ $(function () {
       updateStationIDText(`${tidalStationId}`);
       updateStationText(`${tidalStationName}`);
       updatestationMOverMHHWText(`${tidalStationMOverMHHW}m over MHHW`);
-
-      const graphBtn = document.getElementById("chartmap-wrapper").getElementsByTagName("div")[0];
-
-      if(graphBtn && graphBtn.classList.contains("btn-default-disabled")) {
-        graphBtn.classList.remove("btn-default-disabled");
-      }
 
       // change map variable
       window.app.update( {tidalStationId, tidalStationName, tidalStationMOverMHHW});

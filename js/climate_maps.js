@@ -1,4 +1,4 @@
-'use strict';
+import './main.js';
 import ScenarioComparisonMap from "./scenario_comparison_map.js";
 /* globals html2canvas */
 
@@ -78,7 +78,6 @@ $(function () {
   window.addEventListener('last-right-image-added', function (e) {
     exportRight();
   })
-
 
   // function to enable downloads (images and data)
   $('.download-select li a').click(function (e) {
@@ -564,6 +563,9 @@ $(function () {
   $('#chartmap-select-vis').bind('cs-changed', function (e) {
     const target = $(e.target);
     const notDisabled = !target.hasClass('btn-default-disabled');
+
+
+
     if (notDisabled) {
       const val = $('#time-select-vis').data('value')
 
@@ -684,7 +686,7 @@ $(function () {
 
         if (variable !== undefined) {
           const $styledSelect = $('.select.variable-select div.select-styled');
-          $(`li[rel="${variable}"]`).click();
+          $(`li[data-value="${variable}"]`).click();
         }
     },
       changeExtent: function changeExtent(event, options) {

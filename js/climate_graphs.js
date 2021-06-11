@@ -1,4 +1,4 @@
-'use strict';
+import './main.js';
 
 $(function () {
   // get city, state from state url
@@ -7,6 +7,11 @@ $(function () {
   const county_label = state['county'];
   const area_label = state['area_label'];
   const is_alaska_area = state['is_alaska_area'];
+  const is_conus_area = state['is_conus_area'];
+
+  if(is_conus_area) {
+    $('[data-page="climate_maps"]').removeClass("btn-default-disabled");
+  }
 
   $('#default-city-county').text(county_label || area_label);
   $('#cards-search-input').attr("placeholder", city_label || area_label);
@@ -312,9 +317,12 @@ $(function () {
   $('#variable-select-vis').bind('cs-changed', function (e) {
     const variable = $('#variable-select-vis').data('value');
     // update the chart based on char variable
-    window.cbl_chart.update({
-      variable
-    });
+
+    if(window.cbl_chart) {
+      window.cbl_chart.update({
+        variable
+      });
+    }
 
     window.app.update({variable});
 
@@ -326,15 +334,15 @@ $(function () {
     if (isvalid < 0) {
       $('[data-value="monthly"]').addClass('btn-default-disabled');
       $('[data-value="monthly"]').removeClass('btn-default')
-      $('[rel="monthly"]').addClass('default-select-option-disabled');
+      $('[data-value="monthly"]').addClass('default-select-option-disabled');
     } else {
       $('[data-value="monthly"]').removeClass('btn-default-disabled')
       $('[data-value="monthly"]').addClass('btn-default')
-      $('[rel="monthly"]').removeClass('default-select-option-disabled');
+      $('[data-value="monthly"]').removeClass('default-select-option-disabled');
     }
     if (is_alaska_area) {
       $('[data-value="monthly"]').addClass('btn-default-disabled');
-      $('[rel="monthly"]').addClass('default-select-option-disabled');
+      $('[data-value="monthly"]').addClass('default-select-option-disabled');
     }
   });
 
@@ -533,7 +541,7 @@ $(function () {
   const variable = state['variable'];
   if (variable !== undefined) {
     const $styledSelect = $('.select.variable-select div.select-styled');
-    $(`[rel="${variable}"]`).click();
+    $(`[data-value="${variable}"]`).click();
 
     // // change chart variable
     // window.cbl_chart.update({

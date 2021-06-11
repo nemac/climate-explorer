@@ -1,7 +1,6 @@
 /**
  * This module provides a spinner widget. Just call it on any container with `$('.container').spinner()`, then call `$('.container').spinner('destroy')` when you're done.
  */
-'use strict';
 // Use AMD loader if present, if not use global jQuery
 
 (function (root, factory) {

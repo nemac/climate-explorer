@@ -75,7 +75,7 @@ export default (config) => `
     </span>
 </header>
 
-<script type="text/javascript" src="/js/secondary_header.js"></script>
+<!--<script type="text/javascript" src="/js/secondary_header.js"></script>-->
 
 <!-- END HEADER TEMPLATE -->
 `

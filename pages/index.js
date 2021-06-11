@@ -63,9 +63,7 @@ export default (config) => `
     <a class="d-flex-bottom" id="global-change"><img src="/img/logo_global-change.png" title="GlobalChange.gov"></a>
   </div>
 
-  <script type="text/javascript" src="/js/secondary_header.js"></script>
-  <script type="text/javascript" src="/js/ce3_ui_components.js"></script>
-
+  <script type="text/javascript" src="/js/index.js"></script>
 </body>
 </html>
 `

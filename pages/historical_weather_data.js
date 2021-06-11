@@ -73,7 +73,7 @@ export default (config) => `
       <div id="filters-row" class="d-flex-row flex-justify padding-top padding-bottom d-flex-left" >
 
         <div id="chartmap-wrapper" class="padding-horizontal-half padding-vertical-half default-btn-height d-flex-center width-20 disabled">
-          <div tabindex="5005" role="button" class="btn-selector btn-chart btn-default circle-box-left d-flex-center width-50" data-value="chart"  data-page="historical_weather_data" data-sel="chartmap-select-vis">
+          <div tabindex="5005" role="button" class="btn-selector btn-chart btn-default circle-box-left d-flex-center width-50 btn-default-disabled" data-value="chart"  data-page="historical_weather_data" data-sel="chartmap-select-vis">
             Graph
           </div>
           <div tabindex="5006" role="button" class="btn-selector btn-map btn-default-selected circle-box-right d-flex-center width-50"  data-page="historical_weather_data"  data-value="map" data-sel="chartmap-select-vis">
@@ -182,17 +182,13 @@ ${footer(config)}
 
 <script src="https://unpkg.com/@esri/arcgis-to-geojson-utils"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/Turf.js/5.1.6/turf.min.js" integrity="sha256-Nhtik+K3xORhs5S9o0qlol4eRNB9O5OyTOJqbLucPk8=" crossorigin="anonymous"></script>
-<script type="text/javascript" src="/js/stations_map.js"></script>
 <script type="text/javascript" src="/vendor/climate-widget-graph.js"></script>
-<script type="text/javascript" src="/js/station_annual_graph.js"></script>
 <script src="https://unpkg.com/terraformer@1.0.8/terraformer.js" integrity="sha384-+M797Pj3WZVCwMmLbOxAoaWYcKJo8NSxItmI48ytcLNeAnfn1d/IckFn31jEqrzP"
 crossorigin="anonymous"></script>
 <script src="https://unpkg.com/terraformer-arcgis-parser@1.0.5/terraformer-arcgis-parser.js"
 integrity="sha384-duFUjKTSNoxEspdJNwr83CUgRxclf0ueKJB9DU/Vbit6bfWgzvZsHW6H1JLBBXhp" crossorigin="anonymous"></script>
-<script type="text/javascript" src="/js/ce3_ui_components.js"></script>
 <script type="text/javascript" src="/js/historical_weather_data.js"></script>
 
-<script type="text/javascript" src="/js/secondary_header.js"></script>
 </body>
 </html>
 `

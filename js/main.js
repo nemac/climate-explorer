@@ -1,4 +1,7 @@
-'use strict';
+import './ce3_ui_components.js';
+import './secondary_header.js';
+import './nav_footer.js';
+
 
 const url_param_names = {
   'variable': 'id',
@@ -44,6 +47,11 @@ class App {
         e.preventDefault();
         return;
       }
+
+      if($(e.currentTarget).hasClass('nav-disabled') || $(e.currentTarget).hasClass('btn-default-disabled')) {
+        return;
+      }
+
       // trigger navigation
       if (e.type === 'click' || (e.type === 'keyup' && (e.keyCode === 32 || e.keyCode === 13))) {
         window.app.update({page: $(e.currentTarget).data('page')});
@@ -56,6 +64,7 @@ class App {
         e.preventDefault();
         return;
       }
+
       // trigger navigation
       if (e.type === 'click' || (e.type === 'keyup' && (e.keyCode === 32 || e.keyCode === 13))) {
         this.update({
@@ -297,13 +306,23 @@ class App {
               break
             }
           }
+          if (!fips && data.administrative_area_level_1_short === 'AK' && data.administrative_area_level_2) {
+            const borough = data.administrative_area_level_2.replace(city_replace_pattern, '')
+            const borough_replace_pattern = /\s(Borough|Census Area|Municipality|City and Borough)/g;
+            for (const c of this.fips_codes[data.administrative_area_level_1_short]) {
+              if (c.label.replace(borough_replace_pattern, '') === borough) {
+                fips = c.fips;
+                break;
+              }
+            }
+          }
         }
       }
 
 
       let page = window.location.pathname.replace(/\//g, '');
       if (!page) {
-        page = 'cards-home';
+        page = 'cards_home';
       }
 
       let area_id, area_label;

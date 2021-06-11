@@ -19,7 +19,5 @@ export default (config) => `
 
 <script src="https://cdn.jsdelivr.net/npm/es6-promise@4.2.4/dist/es6-promise.auto.min.js" integrity="sha384-tQnfZyyk7ZX5leaWDkq9qAvwSkSvH0ouVfrxLn12X9Y2DS8nDa8pHXFH9LLKJdo/" crossorigin="anonymous"></script>
 
-<!--<script type="text/javascript" src="/js/ce.js"></script>-->
-<script type="text/javascript" src="/js/spinner.js"></script>
 
 `

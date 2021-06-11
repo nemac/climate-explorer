@@ -13,7 +13,7 @@ export default (config) => `
         <div class="d-flex-center d-flex-row padding-horizontal nav-footer-area-title" >
         </div>
 
-        <div tabindex="10000" id="home-nav-footer" class="padding-horizontal d-flex-bottom d-flex-row nav-footer-item" role="button" data-page="cards-home">
+        <div tabindex="10000" id="home-nav-footer" class="padding-horizontal d-flex-bottom d-flex-row nav-footer-item" role="button" data-page="cards_home">
           <div class="d-flex d-flex-bottom d-flex-column">
             <div class="nav-footer-icon">
               <!-- <i class="fas fa-compass"></i> -->
@@ -31,7 +31,7 @@ export default (config) => `
           </div>
         </div>
 
-        <div tabindex="10000" id="next-steps-nav-footer" class="padding-horizontal d-flex-bottom d-flex-row nav-footer-item" role="button" data-page="next-steps">
+        <div tabindex="10000" id="next-steps-nav-footer" class="padding-horizontal d-flex-bottom d-flex-row nav-footer-item" role="button" data-page="next_steps">
           <div class="d-flex d-flex-bottom d-flex-column">
             <div class="nav-footer-icon">
               <i class="fas fa-map-signs icon-info-box"></i>
@@ -63,7 +63,7 @@ export default (config) => `
 
         <div class="padding-horizontal d-flex-fill d-flex-row nav-footer-items">
 
-          <div tabindex="10002" id="local-climate-charts-nav-footer" class="d-flex d-flex-bottom padding-horizontal d-flex-column nav-footer-item" role="button" data-page="climate_graphs">
+          <div tabindex="10002" id="climate-graphs-nav-footer" class="d-flex d-flex-bottom padding-horizontal d-flex-column nav-footer-item" role="button" data-page="climate_graphs">
             <div class="nav-footer-icon">
               <i class="fas fa-chart-line"></i>
             </div>
@@ -78,7 +78,7 @@ export default (config) => `
             </div>
           </div>
 
-          <div tabindex="10003" id="local-climate-maps-nav-footer" class="d-flex d-flex-bottom padding-horizontal d-flex-column nav-footer-item" role="button" data-page="climate_maps">
+          <div tabindex="10003" id="climate-maps-nav-footer" class="d-flex d-flex-bottom padding-horizontal d-flex-column nav-footer-item" role="button" data-page="climate_maps">
             <div class="nav-footer-icon">
               <i class="fas fa-map-marked-alt"></i>
             </div>
@@ -181,7 +181,7 @@ export default (config) => `
           <div class="d-flex-center d-flex-row padding-horizontal nav-footer-area-title" >
           </div>
 
-          <div tabindex="10008" id="less-wrapper-nav-footer" class="padding-horizontal d-flex-bottom d-flex-row nav-footer-item" role="button" data-page="cards-home">
+          <div tabindex="10008" id="less-wrapper-nav-footer" class="padding-horizontal d-flex-bottom d-flex-row nav-footer-item" role="button" data-page="cards_home">
             <div class="d-flex d-flex-bottom d-flex-column">
               <div class="nav-footer-icon">
                 <i class="fas fa-ellipsis-h"></i>
@@ -206,7 +206,6 @@ export default (config) => `
   </div>
 </div>
 
-<script type="text/javascript" src="/js/nav_footer.js"></script>
 
 <!-- END NAV FOOTER TEMPLATE -->
 `

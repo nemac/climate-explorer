@@ -325,7 +325,7 @@ function setSelectFromButton(target) {
 // // link - which is the element id for the hidden <a> element
 // // nav - contains the html page/ nav footer name
 // function handleChartMapClick(target) {
-//   window.app.update({page:'local-climate-maps'});
+//   window.app.update({page:'climate-maps'});
 //
 //   // ga event action, category, label
 //   googleAnalyticsEvent('click', 'chartmap', nav);

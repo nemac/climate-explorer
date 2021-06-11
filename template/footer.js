@@ -15,7 +15,6 @@ export default (config)=>`
 <script type="text/javascript" src="/vendor/jquery.cycle2.min.js"></script>
 <script type="text/javascript" src="/vendor/jquery.waypoints.min.js"></script>
 <script type="text/javascript" src="/vendor/jquery.waypoints.sticky.min.js"></script>
-<!--<script type="text/javascript" src="/vendor/split-pane.min.js"></script>-->
 <script type="text/javascript" src="/vendor/download.js"></script>
 <script type="text/javascript" src="/vendor/jquery.hoverintent.min.js"></script>
 <script type="text/javascript" src="/vendor/sweetalert.min.js"></script>
@@ -27,10 +26,6 @@ export default (config)=>`
 <script type="text/javascript" src="https://unpkg.com/tippy.js@4"></script>
 
 <!-- END candidates for minification -->
-
-<script type="text/javascript" src="/js/main.js"></script>
-<!--<script type="text/javascript" src="/js/global_functions.js"></script>-->
-
 
 <!-- Global site tag (gtag.js) - Google Analytics -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=${config.google_analytics_id}"></script>

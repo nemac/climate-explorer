@@ -1,4 +1,6 @@
-'use strict';
+import './main.js';
+import './stations_map.js';
+import './station_annual_graph.js';
 
 $(function () {
 
@@ -10,6 +12,7 @@ $(function () {
   const state = window.app.state;
   const city = state['city'];
   const county = state['county'];
+
 
   $('#default-city-county').text(county);
   $('#cards-search-input').attr("placeholder", city);
@@ -44,7 +47,9 @@ $(function () {
     center
   };
 
-
+  if(!!stationId) {
+    $('[data-value="chart"]').removeClass('btn-default-disabled');
+  }
 
   // updates the visible text for the station dropdown with the information from the state url
   function updateStationSelectText(stations) {
@@ -101,6 +106,9 @@ $(function () {
     const stationsGraphRowElem = document.getElementById('stations-graph-row');
     const stationsMapRowElem = document.getElementById('stations-map-row');
     showMoreCharts();
+
+    $('[data-value="chart"]').removeClass('btn-default-disabled');
+
     // show chart overlay
     if (stationsGraphRowElem) {
       stationsGraphRowElem.classList.remove('d-off');
@@ -287,7 +295,6 @@ $(function () {
       // change map variable
       window.app.update({stationId, stationName});
 
-
       // show chart overlay
       showGraphs();
 
@@ -307,38 +314,9 @@ $(function () {
   })
 
   // enables time chart, map click events
-  $('#chartmap-wrapper').keyup( function(e) {
-    if (e.keyCode === 13){
-      const target = $(e.target);
-      const notDisabled = (!target.hasClass('btn-default-disabled') || !target.hasClass('disabled'));
-
-      if ( notDisabled ) {
-
-        // toggle button visual state
-        toggleButton($(target));
-
-        // change select dropdowns for responsive mode
-        setSelectFromButton(target);
-
-        // check val of button to see if user is on map  or chart
-        // hide or show the appropriate overlay (map, chart)
-        chooseGraphOrMap(target);
-        toggleChartInfoText(RelorVal(target));
-      }
-
-      // reset map and chart sizes
-      setMapSize();
-      chooseGraphOrMap(target);
-
-      // ga event action, category, label
-      googleAnalyticsEvent('click-tab', 'chartmap', target);
-    }
-  })
-
-  // enables time chart, map click events
   $('#chartmap-wrapper').click( function(e) {
     const target = $(e.target);
-    const notDisabled = (!target.hasClass('btn-default-disabled') || !target.hasClass('disabled'));
+    const notDisabled = !target.hasClass('btn-default-disabled') && !target.hasClass('disabled');
 
     if ( notDisabled ) {
 

@@ -1,7 +1,7 @@
-// NOTE most of the css will be found _local-climate-charts.scscc
+// NOTE most of the css will be found _climate-graphs.scscc
 // only when we need to overide or add missing css will the css appear here
 
-#local-climate-maps-viewport {
+#climate-maps-viewport {
   background-color: $white;
   height: calc(100% - 48px - 6px - 100px) !important;
   min-height: calc(100% - 48px - 6px - 100px) !important;
@@ -144,6 +144,55 @@
 
   .scenario-map-overlay-container {
     position: absolute !important;
+  }
+
+  .esri-popup__main-container, .scenario-map-inspect-container {
+    height: -moz-fit-content;
+    height: fit-content;
+    width: 20rem;
+    background: #ffffffed;
+    box-shadow: 2px 1px 5px rgba(0, 0, 0, 0.5);
+    border: solid 1.3px rgba(0, 0, 0, 0.3);
+    padding: 0.35rem 0.25rem;
+    font-size: 0.8rem;
+    font-weight: 500;
+    /* margin: 0rem auto; */
+    padding-left: 0.8rem;
+
+    .esri-popup__content {
+      margin: 0;
+    }
+
+    .area-stats {
+      font-size: 1rem;
+      display: grid;
+      grid-template-columns: min-content auto;
+      grid-gap: 0.6rem;
+      margin-right: 0.5rem;
+      margin-left: 0.5rem;
+      div {
+        margin: 0.35rem 0;
+      }
+      span{
+        line-height: 1.3rem;
+      }
+      sup {
+        vertical-align: super;
+        font-size: 0.5em;
+      }
+
+      .btn-default {
+        margin: 0.6rem auto 0.3rem auto !important;
+        text-decoration: none !important;
+        padding: 1rem 1.3rem;
+        text-align: center;
+        max-width: 70%;
+      }
+
+      .area_social_value, .area_hist_mean_value, .area_rcp45_value, .area_rcp85_value {
+        font-size: 1.3rem;
+      }
+    }
   }
 
   .esri-view-user-storage {

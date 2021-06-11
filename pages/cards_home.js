@@ -28,7 +28,7 @@ export default (config) => `
       <input id="cards-search-input" type="text" class="location-mapper input-inner-default border-none default-btn-height width-90" autocomplete="off" placeholder="Enter county, city, or zip code" aria-label="Enter county, city, or zip code">
       <span class="icon icon-search search-default float-right padding-default"></span>
       <div id="clear-location-wrapper" class="">
-        <span id="clear-location" data-page="cards-home" class="fas fa-times-circle"></span>
+        <span id="clear-location" data-page="cards_home" class="fas fa-times-circle"></span>
       </div>
     </div>
   </div>
@@ -144,7 +144,7 @@ export default (config) => `
        </div>
     </div>
 
-    <div tabindex="4" id="data-card" class="card-next-steps d-flex d-flex-column" data-page="next-steps">
+    <div tabindex="4" id="data-card" class="card-next-steps d-flex d-flex-column" data-page="next_steps">
       <!-- <div id="card-image-row" class="d-flex-row d-flex-fill width-100">
          <img class="card-image" src="/img/card-empty.png" />
        </div> -->
@@ -183,8 +183,6 @@ ${footer(config)}
 <script src="https://unpkg.com/terraformer-arcgis-parser@1.0.5/terraformer-arcgis-parser.js"
         integrity="sha384-duFUjKTSNoxEspdJNwr83CUgRxclf0ueKJB9DU/Vbit6bfWgzvZsHW6H1JLBBXhp" crossorigin="anonymous"></script>
 <script type="text/javascript" src="/js/cards_home.js"></script>
-<script type="text/javascript" src="/js/ce3_ui_components.js"></script>
-<script type="text/javascript" src="/js/secondary_header.js"></script>
 </body>
 </html>
 `

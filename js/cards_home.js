@@ -1,4 +1,4 @@
-'use strict';
+import './main.js';
 
 $(function () {
   const state = window.app.state;
@@ -29,7 +29,7 @@ $(function () {
       $('.opt-only-ak').addClass('default-select-option-disabled');
     }
 
-    if (city_label.indexOf('County') > 0) {
+    if (!!city_label && city_label.indexOf('County') > 0) {
       $('#default-dash').addClass('d-none');
       $('#default-city-county').text('');
     }
