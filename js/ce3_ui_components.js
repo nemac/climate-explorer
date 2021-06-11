@@ -500,14 +500,14 @@ const feedbackSmallElem = document.getElementById('feedback-trigger-small');
 const feedbackYesElem = document.getElementById('feedback-close-button-yes');
 const feedbackNoElem = document.getElementById('feedback-close-button-no');
 const feedbackLinkElem = document.getElementById('feedback-link');
-let localStorage;
+let local_storage;
 if (storageAvailable()) {
-  localStorage = window.localStorage;
+  local_storage = window.localStorage;
 }
 
 function neverShowFeedbackAgain() {
   if (storageAvailable()) {
-    localStorage.setItem('showfeedback', 'no');
+    local_storage.setItem('showfeedback', 'no');
   }
 }
 
@@ -537,16 +537,16 @@ function checkValidObject(obj) {
 
 function setUUID() {
   if (storageAvailable()) {
-    if (!checkValidObject(localStorage.getItem('uuid'))) {
-      localStorage.setItem('uuid', uuid());
+    if (!checkValidObject(local_storage.getItem('uuid'))) {
+      local_storage.setItem('uuid', uuid());
     }
   }
 }
 
 function getUUID() {
   if (storageAvailable()) {
-    if (checkValidObject(localStorage.getItem('uuid'))) {
-      return localStorage.getItem('uuid');
+    if (checkValidObject(local_storage.getItem('uuid'))) {
+      return local_storage.getItem('uuid');
     }
   }
   return 'uuid not available';
@@ -597,7 +597,7 @@ if (feedbackNoElem) {
 
 if (feedbackSmallElem) {
   feedbackSmallElem.addEventListener('click', function () {
-    localStorage.removeItem('showfeedback');
+    local_storage.removeItem('showfeedback');
     onFeedbackAsk();
     offFeedbackSmall();
   })
@@ -605,7 +605,7 @@ if (feedbackSmallElem) {
 
 
 if (storageAvailable()) {
-  const showStorage = localStorage.getItem('showfeedback');
+  const showStorage = local_storage.getItem('showfeedback');
   if (showStorage === 'no') {
     offFeedbackAsk();
     onFeedbackSmall();

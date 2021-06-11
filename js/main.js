@@ -23,7 +23,7 @@ const url_param_names = {
 };
 
 
-export default class App {
+class App {
   constructor() {
     this.data_base_url = 'https://crt-climate-explorer.nemac.org/data/';
     this._state = {};
@@ -305,9 +305,7 @@ export default class App {
       if (!page) {
         page = 'cards-home';
       }
-      if (page === 'national-climate-maps') {
-        page = 'local-climate-maps'
-      }
+
       let area_id, area_label;
       if (!!fips && fips.slice(0, 2) !== '15') {
         // ga event action, category, label

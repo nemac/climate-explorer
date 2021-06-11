@@ -49,25 +49,6 @@ export default (config) => `
 
   <div id="card-row" class="padding-horizontal padding-top-half padding-bottom-half d-flex-row flex-justify" >
 
-    <!--
-    <div tabindex="1" id="data-card" class="card-national-maps d-flex d-flex-column" data-page="national-climate-maps" >
-       <div id="card-image-row" class="d-flex-row d-flex-fill width-100">
-          <img class="card-image" src="/img/card-nat-maps.png" />
-       </div>
-       <div id="card-text" class="card-text d-flex-row width-100">
-         <div id="card-title-icon" class="d-flex-row width-100">
-           <div class="card-title" >
-             National Climate Maps
-           </div>
-           <span class="card-icon stateface stateface-us"></span>
-         </div>
-         <div id="card-description" class="d-flex-column width-100">
-            Compare maps of past and projected future conditions.
-         </div>
-         <div class="disabled-text">Data is not available for this location</div>
-       </div>
-    </div> -->
-
     <div tabindex="3" id="data-card" class="card-local-maps d-flex d-flex-column" data-page="climate_maps" >
       <div id="card-image-row" class="d-flex-row d-flex-fill width-100">
          <img class="card-image" src="/img/card-local-maps.png" alt="example-chart"/>

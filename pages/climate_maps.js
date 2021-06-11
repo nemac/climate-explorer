@@ -166,7 +166,7 @@ export default (config) => `
 
           <div id="map-wrap" class="map-wrap width-100 height-100 ">
             <!-- <div id="chart-123" class="chart-canvas width-100 height-100" data-chart-ID="123"></div> -->
-            <div id="temperature-map" class="map-element"></div>
+            <div id="local-climate-map-element" class="map-element"></div>
             <div id="map-message" class="map-nodata-message d-none"></div>
           </div>
 

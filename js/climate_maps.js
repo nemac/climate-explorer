@@ -1,4 +1,6 @@
 'use strict';
+import ScenarioComparisonMap from "./scenario_comparison_map.js";
+/* globals html2canvas */
 
 $(function () {
   // get city, state from state url
@@ -81,7 +83,7 @@ $(function () {
   // function to enable downloads (images and data)
   $('.download-select li a').click(function (e) {
     const downloadAction = $(this).data('value');
-    $('#temperature-map').spinner();
+    $('#local-climate-map-element').spinner();
 
     // ga event action, category, label
     googleAnalyticsEvent('click', 'download', downloadAction);
@@ -104,7 +106,7 @@ $(function () {
       const elem = document.getElementById(`map-for-print-${side}`);
       elem.innerHTML = '';
     }
-    var img = document.createElement('img');
+    let img = document.createElement('img');
     img.src = imageUrl;
     if (cssclass) {
       img.classList.add(cssclass)
@@ -114,13 +116,13 @@ $(function () {
   }
 
   function getBase64Image(img) {
-    var canvas = document.createElement("canvas");
+    let canvas = document.createElement("canvas");
     // hardcoded until there is a better way
     canvas.width = 280;
     canvas.height = 800;
-    var ctx = canvas.getContext("2d");
+    let ctx = canvas.getContext("2d");
     ctx.drawImage(img, 0, 0);
-    var dataURL = canvas.toDataURL("image/png").replace("image/png", "image/octet-stream");
+    let dataURL = canvas.toDataURL("image/png").replace("image/png", "image/octet-stream");
     ;
     return dataURL.replace(/^data:image\/(png|jpg);base64,/, "");
   }
@@ -139,14 +141,14 @@ $(function () {
       onrendered: function (canvas) {
 
         const emissionsText = $('#rightScenario-select-vis').text().toLowerCase().replace(' ', '_');
-        var a = document.createElement('a');
+        let a = document.createElement('a');
         a.href = canvas.toDataURL("image/png").replace("image/png", "image/octet-stream");
         a.download = `local-climate-map-${variable}-${emissionsText}-right.png`;
         document.body.appendChild(a);
         a.click();
         elem.classList.add('d-none');
         document.body.removeChild(a);
-        $('#temperature-map').spinner('destroy');
+        $('#local-climate-map-element').spinner('destroy');
       }
     });
   }
@@ -165,21 +167,21 @@ $(function () {
       onrendered: function (canvas) {
 
         const emissionsText = $('#leftScenario-select-vis').text().toLowerCase().replace(' ', '_');
-        var a = document.createElement('a');
+        let a = document.createElement('a');
         a.href = canvas.toDataURL("image/png").replace("image/png", "image/octet-stream");
         a.download = `local-climate-map-${variable}-${emissionsText}-left.png`;
         document.body.appendChild(a);
         a.click();
         elem.classList.add('d-none');
         document.body.removeChild(a);
-        $('#temperature-map').spinner('destroy');
+        $('#local-climate-map-element').spinner('destroy');
       }
     });
   }
 
   function mapToImageRight() {
     // base map
-    html2canvas($('#temperature-map .esri-view-root .esri-view-surface canvas.esri-display-object')[0], {
+    html2canvas($('#local-climate-map-element .esri-view-root .esri-view-surface canvas.esri-display-object')[0], {
       allowTaint: true,
       useCORS: true,
       backgroundColor: null,
@@ -192,7 +194,7 @@ $(function () {
     });
 
     // export right map
-    html2canvas($('#temperature-map .esri-view-root .esri-view-surface canvas.esri-display-object')[2], {
+    html2canvas($('#local-climate-map-element .esri-view-root .esri-view-surface canvas.esri-display-object')[2], {
       allowTaint: true,
       useCORS: true,
       backgroundColor: null,
@@ -205,7 +207,7 @@ $(function () {
     });
 
     // export label and state boundaries overlay
-    html2canvas($('#temperature-map .esri-view-root .esri-view-surface canvas.esri-display-object')[4], {
+    html2canvas($('#local-climate-map-element .esri-view-root .esri-view-surface canvas.esri-display-object')[4], {
       allowTaint: true,
       useCORS: true,
       backgroundColor: null,
@@ -218,9 +220,9 @@ $(function () {
     });
 
     // export label and state boundaries overlay
-    const canvasLength = $('#temperature-map .esri-view-root .esri-view-surface canvas.esri-display-object').length;
+    const canvasLength = $('#local-climate-map-element .esri-view-root .esri-view-surface canvas.esri-display-object').length;
     if (canvasLength >= 6) {
-      html2canvas($('#temperature-map .esri-view-root .esri-view-surface canvas.esri-display-object')[5], {
+      html2canvas($('#local-climate-map-element .esri-view-root .esri-view-surface canvas.esri-display-object')[5], {
         allowTaint: true,
         useCORS: true,
         backgroundColor: null,
@@ -305,7 +307,7 @@ $(function () {
 
   function mapToImageLeft() {
     // base map
-    html2canvas($('#temperature-map .esri-view-root .esri-view-surface canvas.esri-display-object')[0], {
+    html2canvas($('#local-climate-map-element .esri-view-root .esri-view-surface canvas.esri-display-object')[0], {
       allowTaint: true,
       useCORS: true,
       backgroundColor: null,
@@ -318,7 +320,7 @@ $(function () {
     });
 
     // export left map
-    html2canvas($('#temperature-map .esri-view-root .esri-view-surface canvas.esri-display-object')[1], {
+    html2canvas($('#local-climate-map-element .esri-view-root .esri-view-surface canvas.esri-display-object')[1], {
       allowTaint: true,
       useCORS: true,
       backgroundColor: null,
@@ -331,7 +333,7 @@ $(function () {
     });
 
     // export label and state boundaries overlay
-    html2canvas($('#temperature-map .esri-view-root .esri-view-surface canvas.esri-display-object')[4], {
+    html2canvas($('#local-climate-map-element .esri-view-root .esri-view-surface canvas.esri-display-object')[4], {
       allowTaint: true,
       useCORS: true,
       backgroundColor: null,
@@ -344,9 +346,9 @@ $(function () {
     });
 
     // export label and state boundaries overlay
-    const canvasLength = $('#temperature-map .esri-view-root .esri-view-surface canvas.esri-display-object').length;
+    const canvasLength = $('#local-climate-map-element .esri-view-root .esri-view-surface canvas.esri-display-object').length;
     if (canvasLength >= 6) {
-      html2canvas($('#temperature-map .esri-view-root .esri-view-surface canvas.esri-display-object')[5], {
+      html2canvas($('#local-climate-map-element .esri-view-root .esri-view-surface canvas.esri-display-object')[5], {
         allowTaint: true,
         useCORS: true,
         backgroundColor: null,
@@ -503,8 +505,8 @@ $(function () {
 
   // update season map
   function updateSeason(targetval) {
-    if (window.precipitationScenariosMap) {
-      $(window.precipitationScenariosMap).scenarioComparisonMap({season: targetval});
+    if (window.scenarioComparisonMap) {
+      window.scenarioComparisonMap.update({season: targetval});
     }
   }
 
@@ -583,7 +585,7 @@ $(function () {
       const isvalid = jQuery.inArray(variable, validSeasonal);
       if (isvalid < 0) {
         const val = 'annual';
-        $(window.precipitationScenariosMap).scenarioComparisonMap({season: val});
+        window.scenarioComparisonMap.update({season: val});
         const target = $('.btn-selector.btn-annual');
         // toggle button visual state
         toggleButton(target);
@@ -642,8 +644,8 @@ $(function () {
       updateTitle($('#variable-select-vis').text());
 
       // change map variable
-      if (window.precipitationScenariosMap) {
-        $(window.precipitationScenariosMap).scenarioComparisonMap({variable});
+      if (window.scenarioComparisonMap) {
+        window.scenarioComparisonMap.update({variable});
       }
     }
   })
@@ -660,20 +662,20 @@ $(function () {
     }
   })
 
-  $('#temperature-map').height($('#temperature-map').parent().height());
-  if (typeof window.precipitationScenariosMap === 'undefined') {
-    $('#temperature-map').spinner();
+  $('#local-climate-map-element').height($('#local-climate-map-element').parent().height());
+  if (typeof window.scenarioComparisonMap === 'undefined') {
+    $('#local-climate-map-element').spinner();
     const variable = state['variable'] || 'tmax';
 
-    window.precipitationScenariosMap = $('#temperature-map').scenarioComparisonMap({
+    window.scenarioComparisonMap = new ScenarioComparisonMap(document.querySelector('#local-climate-map-element'), {
       variable: 'tmax',
       season: 'annual',
       extent: mapExtent,
-      center: mapcenter,
+      center: [lon, lat],
       zoom: mapZoom,
-      showCounties: true,
-      layersloaded: function layersloaded() {
-        $('#temperature-map').spinner('destroy');
+      showCounties: true, // isNational() add isNational() if we re-institute national maps again
+      layersLoaded: function layersloaded() {
+        $('#local-climate-map-element').spinner('destroy');
         const rect = document.getElementById('map-wrap').getBoundingClientRect();
         document.querySelector('.esri-view-root').style.minWidth = `${rect.width}px`;
         document.querySelector('.esri-view-root').style.height = `${rect.height}px`;
@@ -683,16 +685,8 @@ $(function () {
         if (variable !== undefined) {
           const $styledSelect = $('.select.variable-select div.select-styled');
           $(`li[rel="${variable}"]`).click();
-
-          // // change map variable
-          // if (window.precipitationScenariosMap) {
-          //   $(window.precipitationScenariosMap).scenarioComparisonMap({ variable: variable });
-          // }
         }
-
-      },
-      // when user pans zooms intiate to check current exent
-      // for alaska and islands to display not map data message...
+    },
       changeExtent: function changeExtent(event, options) {
         // xmin: -178.44, xmax: -13.56, ymin: 22.72, ymax: 50.93
         const messageElem = document.getElementById('map-message');
@@ -718,18 +712,15 @@ $(function () {
           }
         }
       },
-
-      change: function change(event, options) {
-        window.precipitationScenariosMap.scenarioComparisonMap("getShowSeasonControls") ? $("#precipitation-map-season").show(200) : $("#precipitation-map-season").hide();
-        window.app.update(options);
+      change: function change() {
+        window.scenarioComparisonMap.getShowSeasonControls() ? $("#precipitation-map-season").show(200) : $("#precipitation-map-season").hide();
       }
-    });
-    window.precipitationScenariosMap.scenarioComparisonMap("getShowSeasonControls") ? $("#precipitation-map-season").show(200) : $("#precipitation-map-season").hide();
-  }
-
+      });
+    window.scenarioComparisonMap.getShowSeasonControls() ? $("#precipitation-map-season").show(200) : $("#precipitation-map-season").hide();
+    }
 
   function setMapSize() {
-    $('#temperature-map').height($('#temperature-map').parent().height())
+    $('#local-climate-map-element-map').height($('#local-climate-map-element').parent().height())
 
     const rect = document.getElementById('map-wrap').getBoundingClientRect();
     const infoRowRect = document.getElementById('info-row').getBoundingClientRect();
@@ -745,13 +736,13 @@ $(function () {
       document.querySelector('.esri-view-user-storage').style.maxWidth = `${rect.width}px`;
     }
 
-    if (document.querySelector('#temperature-map')) {
-      document.querySelector('#temperature-map').style.minWidth = `${rect.width}px`;
-      document.querySelector('#temperature-map').style.maxWidth = `${rect.width}px`;
-      document.querySelector('#temperature-map').style.height = `${rect.height}px`;
-      document.querySelector('#temperature-map').style.minHeight = `${rect.height}px`;
-      document.querySelector('#temperature-map').style.maxHeight = `${rect.height}px`;
-      document.querySelector('#temperature-map').style.minWidth = `${rect.width}px`;
+    if (document.querySelector('#local-climate-map-element')) {
+      document.querySelector('#local-climate-map-element').style.minWidth = `${rect.width}px`;
+      document.querySelector('#local-climate-map-element').style.maxWidth = `${rect.width}px`;
+      document.querySelector('#local-climate-map-element').style.height = `${rect.height}px`;
+      document.querySelector('#local-climate-map-element').style.minHeight = `${rect.height}px`;
+      document.querySelector('#local-climate-map-element').style.maxHeight = `${rect.height}px`;
+      document.querySelector('#local-climate-map-element').style.minWidth = `${rect.width}px`;
     }
 // -infoRowRect.height
     document.querySelector('.scenario-map-overlay-container').style.top = `${rect.top}px`;

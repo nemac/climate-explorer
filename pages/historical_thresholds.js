@@ -71,7 +71,6 @@ export default (config) => `
 
         <div id="filters-row" class="d-flex-row flex-justify padding-top padding-bottom d-flex-left" >
 
-          <a id="national-climate-maps-secretlink-forcharts" href="/historical_weather_data" class="d-none"></a>
           <div id="chartmap-wrapper" class="padding-horizontal-half padding-vertical-half default-btn-height d-flex-center width-20 disabled">
             <div tabindex="5003" role="button" class="btn-selector btn-chart btn-default circle-box-left d-flex-center width-50" data-value="chart" data-page="historical_thresholds" data-sel="chartmap-select-vis">
               Graph

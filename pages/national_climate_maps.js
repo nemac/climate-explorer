@@ -92,8 +92,6 @@ export default (config) => `
               ${variable_selector(config)}
             </div>
 
-            <a id="national-climate-maps-secretlink-forcharts" href="/climate_graphs" class="d-none"></a>
-
             <div id="time-wrapper" class="padding-horizontal-half padding-vertical-half default-btn-height d-flex-center width-30">
               <div tabindex="101" role="button" class="btn-selector btn-annual btn-default-selected circle-box-left d-flex-center width-50" data-value="annual" data-sel="time-select-vis">
                 Annual
@@ -136,7 +134,7 @@ export default (config) => `
       <div id="map-row" class="padding-horizontal padding-top-half width-100 height-100 d-flex" >
 
           <div id="map-wrap" class="map-wrap width-100 height-100 ">
-            <div id="temperature-map" class="map-element"></div>
+            <div id="local-climate-map-element" class="map-element"></div>
             <div id="map-message" class="map-nodata-message d-none"></div>
           </div>
 

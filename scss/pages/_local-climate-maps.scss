@@ -130,7 +130,7 @@
     // }
   }
 
-  #temperature-map {
+  #local-climate-map-element {
     width: 100%;
     flex-wrap: wrap;
   }
@@ -161,7 +161,7 @@
     }
   }
 
-  #temperature-map {
+  #local-climate-map-element {
     .movable.slider-div {
       top: 0px !important;
     }
@@ -175,7 +175,7 @@
     order: 1;
     padding-bottom: 250px !important;
 
-    #temperature-map {
+    #local-climate-map-element {
       width: 100%;
       flex-wrap: wrap;
       min-height: 350px !important;
@@ -459,7 +459,7 @@
   }
 }
 
-#temperature-map,
+#local-climate-map-element,
 .esri-view-root,
 .esri-view-surface,
 .esri-display-object,
