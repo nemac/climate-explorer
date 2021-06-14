@@ -830,7 +830,7 @@ $(function () {
   $('#chartmap-wrapper').keyup( function(e) {
     if (e.keyCode === 13){
       const target = $(e.target);
-      const notDisabled = (!target.hasClass('btn-default-disabled') || !target.hasClass('disabled'));
+      const notDisabled = !target.hasClass('btn-default-disabled') && !target.hasClass('disabled');
 
       if ( notDisabled ) {
 
@@ -848,7 +848,7 @@ $(function () {
 
       // reset map and chart sizes
       setMapSize();
-      chooseGraphOrMap(target);
+      //chooseGraphOrMap(target);
 
       // ga event action, category, label
       googleAnalyticsEvent('click-tab', 'chartmap', target);
@@ -887,7 +887,7 @@ $(function () {
 
     // reset map and chart sizes
     setMapSize();
-    chooseGraphOrMap(target);
+    //chooseGraphOrMap(target);
 
     // ga event action, category, label
     googleAnalyticsEvent('click', 'chartmap', target);

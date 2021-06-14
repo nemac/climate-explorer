@@ -637,7 +637,7 @@ $(function () {
 
       // updates the visible text for the station dropdown with the information from the state url
       updateStationSelectText({tidalStationName: options.tidalStationName, tidalStationId: options.tidalStationId})
-      renderStationInfo(tidalStationName, tidalStationId, tidalStationMOverMHHW);
+      renderStationInfo(options.tidalStationName, options.tidalStationId, options.tidalStationMOverMHHW);
 
       // todo restrict this down so we're not passing ALL options in here
       window.app.update(options);

@@ -334,7 +334,7 @@ $(function () {
 
     // reset map and chart sizes
     setMapSize();
-    chooseGraphOrMap(target);
+    //chooseGraphOrMap(target);
 
     // ga event action, category, label
     googleAnalyticsEvent('click', 'chartmap', target);
