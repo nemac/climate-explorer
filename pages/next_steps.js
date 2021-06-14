@@ -121,7 +121,7 @@ ${secondary_header(config)}
 ${nav_footer(config)}
 ${footer(config)}
 
-<script type="text/javascript" src="/js/next_steps.js"></script>
+<script type="${config.env === 'dev'? 'module':  'text/javascript'}" src="/js/next_steps.js"></script>
 </body>
 </html>
 `

@@ -4,7 +4,7 @@ import merge from '../node_modules/lodash-es/merge.js';
 import get from '../node_modules/lodash-es/get.js';
 import mean from '../node_modules/lodash-es/mean.js';
 import isEqual from '../node_modules/lodash-es/isEqual.js';
-import {number_to_human, round_to_n_significant_figures, round} from './utils';
+import {number_to_human, round_to_n_significant_figures, round} from './utils.js';
 import './main.js';
 
 // noinspection JSIgnoredPromiseFromCall

@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.html",
   "scripts": {
-    "build": "run-p build:**",
+    "build": "rm -rf dist/ && run-p build:**",
     "build:img": "mkdir -p dist/img && rsync -r img/ dist/img/",
     "build:js:cards_home": "rollup -c --environment=\"pkg:cards_home\"",
     "build:js:climate_graphs": "rollup -c --environment=\"pkg:climate_graphs\"",
@@ -24,6 +24,7 @@
     "deploy:ce3-production": "aws s3 sync --delete --no-follow-symlinks dist/ s3://climate-explorer3-prod.nemac.org/ &&  aws cloudfront create-invalidation --distribution-id E1Q1S8U8911R6D --paths '/*'",
     "deploy:ce26-legacy": "aws s3 sync --delete --no-follow-symlinks dist/ s3://climate-explorer26.nemac.org/ &&  aws cloudfront create-invalidation --distribution-id E2HEBFH20UVKTH --paths '/*'",
     "start": "static -a 127.0.0.1 -p 8082 dist/",
+    "start:dev": "npm run build:html -- -- env=dev && rm -rf dist/js dist/node_modules && ln -srf node_modules js dist/ && static -a 127.0.0.1 -p 8082 dist/",
     "git:submodules": "git submodule add git@github.com:nemac/climate-by-location.git vendor/climate-by-location",
     "preinstall": "npx npm-force-resolutions"
   },

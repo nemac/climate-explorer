@@ -182,7 +182,7 @@ ${footer(config)}
         crossorigin="anonymous"></script>
 <script src="https://unpkg.com/terraformer-arcgis-parser@1.0.5/terraformer-arcgis-parser.js"
         integrity="sha384-duFUjKTSNoxEspdJNwr83CUgRxclf0ueKJB9DU/Vbit6bfWgzvZsHW6H1JLBBXhp" crossorigin="anonymous"></script>
-<script type="text/javascript" src="/js/cards_home.js"></script>
+<script type="${config.env === 'dev'? 'module':  'text/javascript'}" src="/js/cards_home.js"></script>
 </body>
 </html>
 `

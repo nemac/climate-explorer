@@ -63,7 +63,7 @@ export default (config) => `
     <a class="d-flex-bottom" id="global-change"><img src="/img/logo_global-change.png" title="GlobalChange.gov"></a>
   </div>
 
-  <script type="text/javascript" src="/js/index.js"></script>
+  <script type="${config.env === 'dev'? 'module':  'text/javascript'}" src="/js/index.js"></script>
 </body>
 </html>
 `

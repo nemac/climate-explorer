@@ -38,7 +38,7 @@ ${secondary_header(config)}
 </div>
 
 ${footer(config)}
-<script type="text/javascript" src="/js/index.js"></script>
+<script type="${config.env === 'dev'? 'module':  'text/javascript'}" src="/js/index.js"></script>
 </body>
 </html>
 `
