@@ -25,14 +25,17 @@ To set up your development environment use `npm install` then run `npm run build
 
 #### Additional tools and what they do
 
-* handlebars/bundlebars provides static templating. All files ending in '.hbs' are handlebars templates. Running `npm run html:build` will build the page templates using the config file `config.yml`.
-* Sass/SCSS is used for styling and node-sass is used to build the styles. Running `npm run css:build` will build the stylesheets used in this project, or running `npm run css:watch` will automatically build the stylesheets when the source '.scss' files have changed.
-* All javascript in this project is written to be ES5-compatible, whether directly, or by using ES6 and a transpiling process.  
+* The package `template-literal-cli` provides static templating. All files in the pages directory are those templates. Running `npm run build:html` will build the page templates using the config file `config.yml`.
+* Sass/SCSS is used for styling and node-sass is used to build the styles. Running `npm run build:css` will build the stylesheets used in this project, or running `npm run watch:css` will automatically build the stylesheets when the source '.scss' files have changed.
+* All javascript in this project is written to be ES5-compatible, whether directly, or by using ES6 and a transpiling process.
 
+###Node version
+
+This current build of the project is using node version `v16.0.0` and npm version `7.10.0`.
 
 ## Deployment notes
 
-This project is intended for deployment as a static site, but there are a handful of services aside from the code in this repo that are expected. Most notably, the "Variables" page depends on TMS webtile services for all of its maps. Additionally, Google Analytics has been included at the bottom of `footer.hbs`. It can be removed, or the account it is attached to can be changed via "google_analytics_id" in `config.yml`
+This project is intended for deployment as a static site, but there are a handful of services aside from the code in this repo that are expected. Most notably, the "Variables" page depends on TMS webtile services for all of its maps. <del>Additionally, Google Analytics has been included at the bottom of `footer.hbs`. It can be removed, or the account it is attached to can be changed via "google_analytics_id" in `config.yml`</del>
 
 
 ## State variables
