@@ -37,7 +37,7 @@ ${secondary_header(config)}
     </div>
   </div>
 
-  <div id="info-row" class="padding-vertical width-100">
+  <div id="info-row" class="padding-vertical padding-horizontal width-100">
     <div class="rounded-filters-box padding-default width-100">
 
       <div class="d-flex-row">
@@ -81,6 +81,33 @@ ${secondary_header(config)}
           Temperate guides you through assessing your vulnerability to these potential hazards.
         </div>
         <a href="https://temperate.io" target="_blank" data-value="noreferrer">Get started with Temperate</a>
+      </div>
+    </div>
+
+    <div tabindex="4" id="data-card" class="next-steps-nar card-xl d-flex d-flex-column" style="margin-left: 1rem;">
+      <div id="card-text" class="card-text d-flex-row width-100">
+        <div id="card-title-icon" class="d-flex-row width-100">
+          <div class="card-title-icon-wrap">
+            <i class="fas fa-map-marked-alt icon-info-box"></i>
+            <div class="card-title-wrap">
+                 <span class="card-title">
+                     At Risk Neighborhoods
+                 </span>
+              <div class="help-text"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="card-controls" style="display: none;">
+      </div>
+      <div id="card-description" class="d-flex-column width-100" style="padding:0px;border-top:1px solid #ccc;">
+        <div class="disabled-text">Data is not available for this location</div>
+      </div>
+      <div class="footer">
+        <div style="flex: 1">
+          
+        </div>
+        <a class="tool-link" href="https://headwaterseconomics.org/apps/neighborhoods-at-risk" target="_blank" data-rel="noreferrer">Discover more with Neighborhoods At Risk</a>
       </div>
     </div>
 

@@ -33,7 +33,7 @@ export default (config) => `
     </div>
   </div>
 
-  <div id="info-row" class="padding-vertical width-100" >
+  <div id="info-row" class="padding-vertical padding-horizontal width-100" >
     <div class="rounded-filters-box padding-default width-100">
 
       <div class="d-flex-row">
