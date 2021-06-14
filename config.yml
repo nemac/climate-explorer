@@ -310,7 +310,7 @@ variables:
         <br />
         Comparing the number of days with heavy precipitation at a single location over time can reveal a trend of increasing or decreasing flood risk."
   group: "precipitation"
-  area: null
+  area: island-only
 - id: days_pcpn_gt_5in
   short_label: 'Days w/ > 5" Precipitation'
   label: "Days per year with more than 5in precipitation"

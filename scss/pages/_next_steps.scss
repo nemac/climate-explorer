@@ -63,6 +63,10 @@
   }
 
   #data-card.card-empty-data {
+
+    @include large {
+      display: none !important;
+    }
     cursor: default;
     @include box-shadow(0px 0px 0px transparentize(#000, 1));  // noborder
     border: 0px solid $white !important;

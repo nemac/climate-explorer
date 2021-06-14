@@ -85,10 +85,10 @@ ${secondary_header(config)}
     </div>
 
     <div tabindex="4" id="data-card" class="next-steps-nar card-xl d-flex d-flex-column" style="margin-left: 1rem;">
-      <div id="card-text" class="card-text d-flex-row width-100">
+      <div id="card-text" class="card-text d-flex-row width-100" style="flex-grow: 0 !important;">
         <div id="card-title-icon" class="d-flex-row width-100">
           <div class="card-title-icon-wrap">
-            <i class="fas fa-map-marked-alt icon-info-box"></i>
+            <img src="/img/logo-HE-NAR.png" class="card-icon" alt="HeadWater Economics Neighborhoods at Risk"/>
             <div class="card-title-wrap">
                  <span class="card-title">
                      At Risk Neighborhoods
@@ -100,14 +100,14 @@ ${secondary_header(config)}
       </div>
       <div class="card-controls" style="display: none;">
       </div>
-      <div id="card-description" class="d-flex-column width-100" style="padding:0px;border-top:1px solid #ccc;">
+      <div id="card-description" class="d-flex-column width-100" style="padding:0px;border-top:1px solid #ccc;flex-grow:1 !important;">
         <div class="disabled-text">Data is not available for this location</div>
       </div>
       <div class="footer">
         <div style="flex: 1">
-          
+         Neighborhoods at Risk provides neighborhood-level information (by census-tract) about potentially vulnerable people and climate change.
         </div>
-        <a class="tool-link" href="https://headwaterseconomics.org/apps/neighborhoods-at-risk" target="_blank" data-rel="noreferrer">Discover more with Neighborhoods At Risk</a>
+        <a class="tool-link" href="https://headwaterseconomics.org/apps/neighborhoods-at-risk" target="_blank" data-rel="noreferrer">Explore Neighborhoods At Risk</a>
       </div>
     </div>
 
