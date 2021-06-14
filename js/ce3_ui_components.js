@@ -610,8 +610,13 @@ if (storageAvailable()) {
     offFeedbackAsk();
     onFeedbackSmall();
   } else {
-    onFeedbackAsk();
-    offFeedbackSmall();
+    // delay 50 seconds
+    onFeedbackSmall();
+    setTimeout(()=>{
+      onFeedbackAsk();
+      offFeedbackSmall();
+    }, 1000 * 50)
+
   }
 }
 
