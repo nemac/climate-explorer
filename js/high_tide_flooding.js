@@ -244,6 +244,8 @@ $(function () {
       stationsMapRowElem.classList.add('d-off');
       stationsMapRowElem.classList.remove('d-flex');
     }
+
+    $('.more-info').removeClass('btn-default-disabled');
   }
 
   // show map overlay.
@@ -727,12 +729,15 @@ $(function () {
   })
 
   $('#chart-info-row-btn .more-info.btn-default').click(function (e) {
+
+    let disabled = $('.more-info').hasClass('btn-default-disabled');
+
+    if(disabled) return;
+
     const target = $('#more-info-description');
     // show description of charts
     if (target.hasClass('d-none')) {
       target.removeClass('d-none');
-
-      console.log(state);
 
       // $('#chart-info-row-btn .more').addClass('d-none');
       // $('#chart-info-row-btn .more-icon').addClass('d-none');

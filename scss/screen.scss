@@ -911,7 +911,7 @@ h6 {
   border: 1px solid $ce3-blue3alpha !important;
 
   &.more-info {
-    border: 1px solid $ce3-blue3alpha !important;
+    //border: 1px solid $ce3-blue3alpha !important;
     background-color: $ce3-blue5 !important;
     @include border-radius(25px, 25px);
     width: 100%;
@@ -959,15 +959,15 @@ h6 {
 
   &.more-info {
     &:focus {
-      outline: none !important;
+      //outline: none !important;
     }
 
     &:hover {
-      background-color: darken($ce3-blue5, 7) !important;
-      color: $ce3-blue3 !important;
-      border: 1px solid $ce3-blue3alpha !important;
-      outline: none !important;
-      font-weight: $font-weight-normal-plus !important;
+    //  background-color: darken($ce3-blue5, 7) !important;
+    //  color: $ce3-blue3 !important;
+    //  border: 1px solid $ce3-blue3alpha !important;
+    //  outline: none !important;
+    //  font-weight: $font-weight-normal-plus !important;
     }
   }
 

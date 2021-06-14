@@ -145,7 +145,7 @@ export default (config) => `
             </div>
 
             <div tabindex="5009" id="chart-info-row-btn" class="rounded-choice-box padding-left-half padding-vertical-half default-btn-height d-flex-center" >
-              <div class="more-info btn-default padding-left-half">
+              <div class="more-info btn-default padding-left-half btn-default-disabled">
                 <span class="fas fa-info more-info more-icon"></span>
                 <span class="fas fa-info more-info less-icon d-none"></span>
                 <span class="more short-desc">About</span>
