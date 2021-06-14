@@ -385,15 +385,18 @@ $(function () {
     // capture what we are downloading
     switch (downloadAction) {
       case 'download-tidal-image': // download image
-        event.target.href = $("#tidal-chart canvas")[0].toDataURL('image/png');
-        event.target.download = "high_tide_flooding_" + tidalStationId + ".png";
+
+          if(widget) {
+            widget.request_download_image();
+          }
+
         break;
       case 'download-tidal-data':
         $('#multi-chart').stationAnnualGraph('downloadPrecipitationData', event.currentTarget);
         break;
       default:
-        event.target.href = $("#tidal-chart canvas")[0].toDataURL('image/png');
-        event.target.download = "high_tide_flooding_" + tidalStationId + ".png";
+        e.target.href = $("#tidal-chart canvas")[0].toDataURL('image/png');
+        e.target.download = "high_tide_flooding_" + tidalStationId + ".png";
     }
   });
 
