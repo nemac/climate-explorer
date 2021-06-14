@@ -25,8 +25,7 @@
     "deploy:ce26-legacy": "aws s3 sync --delete --no-follow-symlinks dist/ s3://climate-explorer26.nemac.org/ &&  aws cloudfront create-invalidation --distribution-id E2HEBFH20UVKTH --paths '/*'",
     "start": "static -a 127.0.0.1 -p 8082 dist/",
     "start:dev": "npm run build:html -- -- env=dev && rm -rf dist/js dist/node_modules && ln -srf node_modules js dist/ && static -a 127.0.0.1 -p 8082 dist/",
-    "git:submodules": "git submodule add git@github.com:nemac/climate-by-location.git vendor/climate-by-location",
-    "preinstall": "npx npm-force-resolutions"
+    "git:submodules": "git submodule add git@github.com:nemac/climate-by-location.git vendor/climate-by-location"
   },
   "repository": {
     "type": "git",
