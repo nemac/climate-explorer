@@ -44,4 +44,18 @@ This project has a number of url-persisted state variables that are passed from 
 
 # Changelog
 
+## 3.1.0
+
+- (breaking) Moved pages `local-climate-charts`, `local-climate-maps` to `climate_graphs` and `climate_maps`, respectively. All other pages now use underscores (`_`) instead of dashes (`-`).
+- (breaking) Revised global state management to use `/js/main.js` (formerly `ce.js`). All url updates should now happen in `main.js`.
+- Added support for Alaska Boroughs and many US Island Territories via `area_id` instead of relying only on fips codes (see also: `main.js`). Currently `climate_maps` is not available for either, and `high_tide_flooding` is not available for AK areas.
+- Changed area search to allow searching any type of places supported by the Google Places API so that places like "wake atoll" can be searched. Not all islands are searchable, see full list in FAQ page. Note that some areas support variables not available for CONUS.
+- Merged many dependency project updates to switch graphs from MultiGraph and Chart.js to Plotly.js.
+- Added the Headwaters Economics "Neighborhoods At Risk" (NAR) project as a new card on the "Take Action" page (formerly "Next Steps").  
+- Added new "area inspection" functionality to the `climate_maps` page to support clicking a county to get more information in the map.
+- Changed High tide flooding to use the NOAA CO-OPS Derived Product API (DPAPI) for observations and projections. This also switches the high tide flooding to count years as Jan-Dec instead of using Meterological years. 
+
+## 3.0
+
+Complete user interface revamp for improved responsiveness and added limited mobile device compatibility. 
 
