@@ -691,8 +691,10 @@ function updateValidVariable() {
             || (is_island_area && (selected_list_item.hasClass('opt-only-ak') || selected_list_item.hasClass('opt-not-island')))
             || (is_alaska_area && (selected_list_item.hasClass('opt-not-ak') || selected_list_item.hasClass('opt-only-island')))) {
           window.app.update({variable: 'tmax'});
+          updateValidVariable();
           return
         }
+
         $('.select.variable-select div.select-styled').text(selected_list_item.text().trim()).removeClass('active');
         $('#default-chart-map-variable').text(selected_list_item.text().trim())
       }

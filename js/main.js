@@ -48,7 +48,7 @@ class App {
         return;
       }
 
-      if($(e.currentTarget).hasClass('nav-disabled') || $(e.currentTarget).hasClass('btn-default-disabled')) {
+      if($(e.currentTarget).hasClass('nav-disabled') || $(e.currentTarget).hasClass('btn-default-disabled') || $(e.currentTarget).hasClass('card-disabled')) {
         return;
       }
 
