@@ -5,16 +5,16 @@ export default (config) => `
     <span class="fas fa-angle-down"></span>
   </div>
 
-    <div id ="" class="padding-horizontal padding-top padding-bottom-half how-to-read-conus">
+    <div class="padding-horizontal padding-top padding-bottom-half how-to-read-conus">
         
         <div class="padding-default">
             <h2>Reading the local climate charts</h2>
         </div>
         
-        <div id="" class="padding-horizontal padding-top padding-bottom-half d-flex-center" >
-            <div id="" class="about-tool-row d-flex-row padding-horizontal width-100 d-flex-center">
+        <div class="padding-horizontal padding-top padding-bottom-half d-flex-center" >
+            <div class="about-tool-row d-flex-row padding-horizontal width-100 d-flex-center">
         
-              <div  id="btn-chart"  class="d-flex-row d-flex-center width-25">
+              <div class="d-flex-row d-flex-center width-25">
                 <div  role="button" class="btn-selector btn-histobs description  d-flex-center width-100 selected" >
                   Observations
                   <div class="inner-histobs"></div>
@@ -29,7 +29,7 @@ export default (config) => `
                 </div>
               </div>
         
-              <div  id="btn-chart"  class="d-flex-row d-flex-center width-25">
+              <div class="d-flex-row d-flex-center width-25">
                 <div  role="button" class="btn-selector btn-histmod description selected  d-flex-center width-100" >
                   Modeled History
                   <div class="inner-histmod"></div>
@@ -42,7 +42,7 @@ export default (config) => `
                 </div>
               </div>
         
-              <div  id="btn-chart"  class="d-flex-row d-flex-center width-25">
+              <div class="d-flex-row d-flex-center width-25">
                 <div  role="button" class="btn-selector btn-lower-emissions description selected d-flex-center width-100">
                   Lower Emissions
                   <div class="inner-lower-emissions"></div>
@@ -55,7 +55,7 @@ export default (config) => `
                 </div>
               </div>
         
-              <div  id="btn-chart"  class="d-flex-row d-flex-center width-25">
+              <div class="d-flex-row d-flex-center width-25">
                 <div role="button" class="btn-selector btn-higher-emissions description selected d-flex-center width-100" >
                   Higher Emissions
                   <div class="inner-higher-emissions"></div>
@@ -70,12 +70,12 @@ export default (config) => `
             </div>
         </div>
 
-        <div id="" class="explainer-spacer padding-horizontal padding-bottom-half d-flex-center" >
-            <div id="" class="about-tool-row d-flex-row padding-horizontal width-100 d-flex-center">
-              <div  id="btn-chart"  class="d-flex-row d-flex-start width-100">
+        <div class="explainer-spacer padding-horizontal padding-bottom-half d-flex-center" >
+            <div class="about-tool-row d-flex-row padding-horizontal width-100 d-flex-center">
+              <div  class="d-flex-row d-flex-start width-100">
                 <h2>How We Represent Global Climate Model Results</h2>
               </div>
-              <div  id="btn-chart"  class="d-flex-row d-flex-start width-100">
+              <div class="d-flex-row d-flex-start width-100">
                 <div class="chart-info-img btn-chart-text d-flex-start height-50 width-25" >
                   <img src="/img/graph-explain.png" class="img-btn-chart width-60 height-60"/>
                 </div>
@@ -90,17 +90,17 @@ export default (config) => `
     
     </div>
   
-    <div id="" class="explainer-spacer padding-horizontal padding-bottom-half how-to-read-ak" >
+    <div class="explainer-spacer padding-horizontal padding-bottom-half how-to-read-ak" >
         
         <div class="padding-default">
             <h2>HOW TO READ ALASKA CLIMATE GRAPHS</h2>
         </div>
         
-        <div id="" class="explainer-spacer padding-horizontal padding-bottom-half d-flex-center" >
+        <div class="explainer-spacer padding-horizontal padding-bottom-half d-flex-center" >
         
-            <div id="" class="about-tool-row d-flex-row padding-horizontal width-100 d-flex-center">
+            <div class="about-tool-row d-flex-row padding-horizontal width-100 d-flex-center">
       
-              <div  id="btn-chart"  class="d-flex-row d-flex-start width-100">
+              <div class="d-flex-row d-flex-start width-100">
                 <div class="d-block">
                     <div class="chart-info-img btn-chart-text d-flex-start" >
                         <img src="/img/about-local-climate-graph-ak-modeled.png" class="img-btn-chart width-75"/>
@@ -116,9 +116,9 @@ export default (config) => `
               </div>
             </div>
         
-            <div id="" class="about-tool-row d-flex-row padding-horizontal width-100 d-flex-center">
+            <div class="about-tool-row d-flex-row padding-horizontal width-100 d-flex-center">
 
-              <div  id="btn-chart"  class="d-flex-row d-flex-start width-100">
+              <div  class="d-flex-row d-flex-start width-100">
                 <div class="d-block">
                     <div class="chart-info-img btn-chart-text d-flex-start" >
                         <img src="/img/about-local-climate-graph-ak-high-emission.png" class="img-btn-chart width-75"/>
@@ -140,31 +140,16 @@ export default (config) => `
         </div>
     </div>
 
-    <div id ="" class="padding-horizontal padding-top padding-bottom-half how-to-read-island">
+    <div class="padding-horizontal padding-top padding-bottom-half how-to-read-island">
             
             <div class="padding-default">
                 <h2>HOW TO READ ISLAND CLIMATE GRAPHS</h2>
             </div>
             
-            <div id="" class="padding-horizontal padding-top padding-bottom-half d-flex-center" >
-                <div id="" class="about-tool-row d-flex-row padding-horizontal width-100 d-flex-center">
+            <div class="padding-horizontal padding-top padding-bottom-half d-flex-center" >
+                <div class="about-tool-row d-flex-row padding-horizontal width-100 d-flex-center">
             
-                  <div  id="btn-chart"  class="d-flex-row d-flex-center width-25">
-                    <div  role="button" class="btn-selector btn-histobs description  d-flex-center width-100 selected" >
-                      Observations
-                      <div class="inner-histobs"></div>
-                    </div>
-                    <div class="btn-chart-text d-flex-center width-100" >
-                      <img src="/img/about-local-climate-graph-histobs.png" class="img-btn-chart width-60 height-60"/>
-                    </div>
-                    <div class="btn-chart-text d-flex-center width-100" >
-                      Observed annual averages, shown as the difference from the long-term average for the late 1900s. The horizontal line from which bars extend up and down is the average from 1961-1990.
-                      <br /><br />
-                      Note: Checking how observations vary within the range of historical modeled values can help you recognize how future observations may vary about the range of projected values.
-                    </div>
-                  </div>
-            
-                  <div  id="btn-chart"  class="d-flex-row d-flex-center width-25">
+                  <div class="d-flex-row d-flex-center width-25">
                     <div  role="button" class="btn-selector btn-histmod description selected  d-flex-center width-100" >
                       Modeled History
                       <div class="inner-histmod"></div>
@@ -177,7 +162,7 @@ export default (config) => `
                     </div>
                   </div>
             
-                  <div  id="btn-chart"  class="d-flex-row d-flex-center width-25">
+                  <div class="d-flex-row d-flex-center width-25">
                     <div  role="button" class="btn-selector btn-lower-emissions description selected d-flex-center width-100">
                       Lower Emissions
                       <div class="inner-lower-emissions"></div>
@@ -190,7 +175,7 @@ export default (config) => `
                     </div>
                   </div>
             
-                  <div  id="btn-chart"  class="d-flex-row d-flex-center width-25">
+                  <div class="d-flex-row d-flex-center width-25">
                     <div role="button" class="btn-selector btn-higher-emissions description selected d-flex-center width-100" >
                       Higher Emissions
                       <div class="inner-higher-emissions"></div>
@@ -206,11 +191,11 @@ export default (config) => `
             </div>
     
             <div id="" class="explainer-spacer padding-horizontal padding-bottom-half d-flex-center" >
-                <div id="" class="about-tool-row d-flex-row padding-horizontal width-100 d-flex-center">
-                  <div  id="btn-chart"  class="d-flex-row d-flex-start width-100">
+                <div class="about-tool-row d-flex-row padding-horizontal width-100 d-flex-center">
+                  <div class="d-flex-row d-flex-start width-100">
                     <h2>How We Represent Global Climate Model Results</h2>
                   </div>
-                  <div  id="btn-chart"  class="d-flex-row d-flex-start width-100">
+                  <div class="d-flex-row d-flex-start width-100">
                     <div class="chart-info-img btn-chart-text d-flex-start height-50 width-25" >
                       <img src="/img/graph-explain.png" class="img-btn-chart width-60 height-60"/>
                     </div>
