@@ -1333,7 +1333,7 @@ export default class ScenarioComparisonMap {
       <span class="area_rcp45_value">${round_to_n_significant_figures(stats['rcp45'], 3)} ${unit_label}</span><span>${this.options.rightYear}&#32;Lower&#32;Emissions Projection</span>
       <span class="area_rcp85_value">${round_to_n_significant_figures(stats['rcp85'])} ${unit_label}</span><span>${this.options.rightYear}&#32;Higher&#32;Emissions Projection</span>
       ${!!population ? `<span class="area_social_value">${number_to_human(population)}</span><span>Population (2017)</span>` : ''}
-      <div style="grid-column: 1 / span 2"><a class="btn-default btn-default-selected d-flex-center" style="margin: 0.4rem auto !important;" href="${url}">Switch to graph</a></div>
+      <div style="grid-column: 1 / span 2"><a class="btn-area-stats d-flex-center" style="margin: 0.4rem auto !important;" href="${url}">Switch to graph</a></div>
       `
     return div
   }

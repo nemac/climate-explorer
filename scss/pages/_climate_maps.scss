@@ -181,13 +181,27 @@
         font-size: 0.5em;
       }
 
-      .btn-default {
-        margin: 0.6rem auto 0.3rem auto !important;
-        text-decoration: none !important;
-        padding: 1rem 1.3rem;
-        text-align: center;
-        max-width: 70%;
+      .btn-area-stats {
+        background-color: #adc2e6;
+        padding: 0.5rem 0.5rem;
+        color: white;
+        border-radius: 5px;
+        text-decoration: none;
+        transition: background-color 200ms ease-in;
       }
+
+      .btn-area-stats:hover {
+        background-color: #2986ff;
+      }
+
+
+      //.btn-default {
+      //  margin: 0.6rem auto 0.3rem auto !important;
+      //  text-decoration: none !important;
+      //  padding: 1rem 1.3rem;
+      //  text-align: center;
+      //  max-width: 70%;
+      //}
 
       .area_social_value, .area_hist_mean_value, .area_rcp45_value, .area_rcp85_value {
         font-size: 1.3rem;
