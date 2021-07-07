@@ -414,7 +414,8 @@
   }
 }
 
-#legend-wrapper {
+
+#legend-wrapper, {
   margin-top: $ce3-default-padding !important;
   padding-top: $ce3-default-padding !important;
   padding-bottom: $ce3-default-padding !important;
@@ -497,93 +498,8 @@
         }
       }
 
-      .inner-histobs {
-        background-color: $ce3-historical-observed;
-        border: 1px solid darken($ce3-historical-observed, 10);
-        height: 18px;
-        width: $ce3-btn-height-smallecreen;
-        margin: $ce3-default-padding;
-        @include border-radius(5px, 5px);
 
-        &.disabled {
-          background-color: lighten($ce3-historical-observed, 12);
-          &:hover, &:focus  {
-            background-color: lighten($ce3-historical-observed, 12);
-          }
-        }
 
-        &:hover, &:focus  {
-          background-color: $ce3-historical-observed;
-          outline: none !important;
-          font-weight: $font-weight-normal-plus;
-        }
-      }
-
-    .inner-histmod {
-      background-color: $ce3-historical-modeled;
-      border: 1px solid darken($ce3-historical-modeled, 10);
-      height: 18px;
-      width: $ce3-btn-height-smallecreen;
-      margin: $ce3-default-padding;
-      @include border-radius(5px, 5px);
-
-      &.disabled {
-        background-color: lighten($ce3-historical-modeled, 12);
-        &:hover, &:focus  {
-          background-color: lighten($ce3-historical-modeled, 12);
-        }
-      }
-
-      &:hover, &:focus  {
-        background-color: $ce3-historical-modeled;
-        outline: none;
-        font-weight: $font-weight-normal-plus;
-      }
-    }
-
-    .inner-lower-emissions {
-      background-color: $ce3-lower-emissions;
-      border: 1px solid darken($ce3-lower-emissions, 10);
-      height: 18px;
-      width: $ce3-btn-height-smallecreen;
-      margin: $ce3-default-padding;
-      @include border-radius(5px, 5px);
-
-      &.disabled {
-        background-color: lighten($ce3-lower-emissions, 12);
-        &:hover, &:focus  {
-          background-color: lighten($ce3-lower-emissions, 12);
-        }
-      }
-
-      &:hover, &:focus  {
-        background-color: $ce3-lower-emissions;
-        outline: none;
-        font-weight: $font-weight-normal-plus;
-      }
-    }
-
-    .inner-higher-emissions {
-      background-color: $ce3-higher-emissions;
-      border: 1px solid darken($ce3-higher-emissions, 10);
-      height: 18px;
-      width: $ce3-btn-height-smallecreen;
-      margin: $ce3-default-padding;
-      @include border-radius(5px, 5px);
-
-      &.disabled {
-        background-color: lighten($ce3-higher-emissions, 12);
-        &:hover, &:focus  {
-          background-color: lighten($ce3-higher-emissions, 12);
-        }
-      }
-
-      &:hover, &:focus  {
-        background-color:$ce3-higher-emissions;
-        outline: none;
-        font-weight: $font-weight-normal-plus;
-      }
-    }
 
   }
 
@@ -609,6 +525,97 @@
   }
 }
 
+
+.about-tool-row .btn-selector,  #legend-wrapper .btn-selector {
+  .inner-histobs {
+    background-color: $ce3-historical-observed;
+    border: 1px solid darken($ce3-historical-observed, 10);
+    height: 18px;
+    width: $ce3-btn-height-smallecreen;
+    margin: $ce3-default-padding;
+    @include border-radius(5px, 5px);
+
+    &.disabled {
+      background-color: lighten($ce3-historical-observed, 12);
+      &:hover, &:focus  {
+        background-color: lighten($ce3-historical-observed, 12);
+      }
+    }
+
+    &:hover, &:focus  {
+      background-color: $ce3-historical-observed;
+      outline: none !important;
+      font-weight: $font-weight-normal-plus;
+    }
+  }
+
+  .inner-histmod {
+    background-color: $ce3-historical-modeled;
+    border: 1px solid darken($ce3-historical-modeled, 10);
+    height: 18px;
+    width: $ce3-btn-height-smallecreen;
+    margin: $ce3-default-padding;
+    @include border-radius(5px, 5px);
+
+    &.disabled {
+      background-color: lighten($ce3-historical-modeled, 12);
+      &:hover, &:focus  {
+        background-color: lighten($ce3-historical-modeled, 12);
+      }
+    }
+
+    &:hover, &:focus  {
+      background-color: $ce3-historical-modeled;
+      outline: none;
+      font-weight: $font-weight-normal-plus;
+    }
+  }
+
+  .inner-lower-emissions {
+    background-color: $ce3-lower-emissions;
+    border: 1px solid darken($ce3-lower-emissions, 10);
+    height: 18px;
+    width: $ce3-btn-height-smallecreen;
+    margin: $ce3-default-padding;
+    @include border-radius(5px, 5px);
+
+    &.disabled {
+      background-color: lighten($ce3-lower-emissions, 12);
+      &:hover, &:focus  {
+        background-color: lighten($ce3-lower-emissions, 12);
+      }
+    }
+
+    &:hover, &:focus  {
+      background-color: $ce3-lower-emissions;
+      outline: none;
+      font-weight: $font-weight-normal-plus;
+    }
+  }
+
+  .inner-higher-emissions {
+    background-color: $ce3-higher-emissions;
+    border: 1px solid darken($ce3-higher-emissions, 10);
+    height: 18px;
+    width: $ce3-btn-height-smallecreen;
+    margin: $ce3-default-padding;
+    @include border-radius(5px, 5px);
+
+    &.disabled {
+      background-color: lighten($ce3-higher-emissions, 12);
+      &:hover, &:focus  {
+        background-color: lighten($ce3-higher-emissions, 12);
+      }
+    }
+
+    &:hover, &:focus  {
+      background-color:$ce3-higher-emissions;
+      outline: none;
+      font-weight: $font-weight-normal-plus;
+    }
+  }
+
+}
 
 #more-info-description {
   .btn-selector .description {

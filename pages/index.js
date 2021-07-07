@@ -29,7 +29,7 @@ export default (config) => `
         <div class="describe-main-secondary d-flex-center d-flex-wrap padding-horizontal padding-bottom-half">
           <h4 class="d-flex-center">New!</h4>
           <h5>Climate projection charts are now available for <a href="/faq/#supported-areas" style="color: white; text-decoration: underline;
-">US territories and Hawai'i</a>.</h5>
+">Hawai'i and U.S. territories</a>.</h5>
         </div>
       </div>
     </div>

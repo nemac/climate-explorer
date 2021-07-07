@@ -189,17 +189,17 @@ export default (config) => `
             The light gray band shows the range of modeled data (hindcast) for the historical period. To produce these results, global climate models were initialized to historical conditions, and then run in “forecast” mode to model conditions through 2015.
           </p>
         </div>
-        <h4 id="supported-areas">What areas have climate projections outside of the contiguous US?</h4>
+        <h4 id="supported-areas">For which areas outside of the contiguous U.S. does the Climate Explorer have projections?</h4>
         <div class="accordion-text">
           <p>
-            The LOCA dataset offers downscaled CMIP5 projections for the contiguous U.S. plus portions of Canada and Mexico, but not for Alaska, Hawai'i, or other U.S. Territories. We have added projections for Alaska from the <a href="https://www.snap.uaf.edu/" target="_blank">Scenarios Network for Alaska + Arctic Planning (SNAP)</a>. Additionally, climate projections are available Hawai'i and other U.S. Territories:
+            The LOCA dataset offers downscaled CMIP5 projections for the contiguous U.S. plus portions of Canada and Mexico, but not for Alaska, Hawai'i, or other U.S. Territories. We have added projections for Alaska from the <a href="https://www.snap.uaf.edu/" target="_blank">Scenarios Network for Alaska + Arctic Planning (SNAP)</a>. In 2021, we added climate projections for Hawai'i and United States territories in the Pacific Ocean and Caribbean Sea. Island projections come from CMIP5 global climate model simulations: projections for individual islands were calculated as the average of the three grid points closest to the geographic center of each island.
           <ul style="list-style: none">
           <li><a  href="/cards_home/?area-id=hawaii_north&area-label=Northern+Hawaiian+Islands+%28Oahu%2C+Kauai%29&lat=20.4&lon=-160.8" target="_blank">Northern Hawaiian Islands (Oahu, Kauai)</a></li>
           <li><a  href="/cards_home/?area-id=hawaii_south&area-label=Southern+Hawaiian+Islands+%28Hawai%27i%2C+Maui%2C+Molokai%29&lat=18.7&lon=-157.4" target="_blank">Southern Hawaiian Islands (Hawai'i, Maui, Molokai)</a></li>
           <li><a  href="/cards_home/?area-id=puerto_rico_ne&area-label=Northeastern+Puerto+Rico+%28San+Juan%2C+Caguas%29&lat=18.03356&lon=-66.3373" target="_blank">Northeastern Puerto Rico (San Juan, Caguas)</a></li>
           <li><a  href="/cards_home/?area-id=puerto_rico_sw&area-label=Southwestern+Puerto+Rico+%28Mayaguez%2C+Ponce%29&lat=17.454&lon=-68.0816" target="_blank">Southwestern Puerto Rico (Mayaguez, Ponce)</a></li>
           <li><a  href="/cards_home/?area-id=guam&area-label=Guam&lat=13.2&lon=144.4" target="_blank">Guam</a></li>
-          <li><a  href="/cards_home/?area-id=us_virgin_islands&area-label=US+Virgin+Islands&lat=17.596903&lon=-64.927612" target="_blank">US Virgin Islands</a></li>
+          <li><a  href="/cards_home/?area-id=us_virgin_islands&area-label=US+Virgin+Islands&lat=17.596903&lon=-64.927612" target="_blank">U.S. Virgin Islands</a></li>
           <li><a  href="/cards_home/?area-id=american_samoa&area-label=American+Samoa&lat=-14.552944&lon=-170.874588" target="_blank">American Samoa</a></li>
           <li><a  href="/cards_home/?area-id=midway_islands&area-label=Midway+Islands&lat=28.1976585966&lon=-177.389597134" target="_blank">Midway Islands</a></li>
           <li><a  href="/cards_home/?area-id=northern_mariana_islands&area-label=Northern+Mariana+Islands&lat=14.0&lon=143.51" target="_blank">Northern Mariana Islands</a></li>
