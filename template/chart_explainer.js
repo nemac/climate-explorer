@@ -146,11 +146,15 @@ export default (config) => `
                 <h2>HOW TO READ ISLAND CLIMATE GRAPHS</h2>
             </div>
             
+            <div class="btn-chart-text d-flex-center width-100 padding-default">
+              Modeled History (hindcasts) and future projections for Hawai'i and U.S. Island Territories come from CMIP5 global climate model simulations. Projections for individual islands were calculated as the average of the three grid points closest to the geographic center of each island.
+            </div>
+            
             <div class="padding-horizontal padding-top padding-bottom-half d-flex-center" >
                 <div class="about-tool-row d-flex-row padding-horizontal width-100 d-flex-center">
             
                   <div class="d-flex-row d-flex-center width-25">
-                    <div  role="button" class="btn-selector btn-histmod description selected  d-flex-center width-100" >
+                    <div  role="button" class="btn-selector btn-histmod description selected d-flex-center width-100" >
                       Modeled History
                       <div class="inner-histmod"></div>
                     </div>

@@ -18868,7 +18868,6 @@ input.input-inner:focus {
 #map-row .esri-popup__main-container .area-stats, #map-row .scenario-map-inspect-container .area-stats {
   font-size: 1rem;
   display: grid;
-  grid-template-columns: min-content auto;
   grid-gap: 0.6rem;
   margin-right: 0.5rem;
   margin-left: 0.5rem;

@@ -147,18 +147,18 @@ ${secondary_header(config)}
               </li>
               <li id="download-observed-data" data-value="download-observed-data" data-icon="fas fa-download select-icon" href="javascript:void(0);"
                   class="default-select-option">
-                <a tabindex="109" data-value="download-observed-data" class="download-link" href="javascript:void(0);">Historical Observed data (.csv)</a>
+                <a tabindex="109" data-value="download-observed-data" class="download-link" href="javascript:void(0);">Observations (.csv)</a>
               </li>
               <li id="download-historical-modeled-data" data-value="download-historical-modeled-data" data-icon="fas fa-download select-icon" href="javascript:void(0);"
                   class="default-select-option">
-                <a tabindex="109" data-value="download-historical-modeled-data" class="download-link" href="javascript:void(0);">Historical Modeled data (.csv)</a>
+                <a tabindex="109" data-value="download-historical-modeled-data" class="download-link" href="javascript:void(0);">Modeled History (.csv)</a>
               </li>
               <li id="download-projected-modeled-data" data-value="download-projected-modeled-data" data-icon="fas fa-download select-icon" href="javascript:void(0);"
                   class="default-select-option">
-                <a tabindex="109" data-value="download-projected-modeled-data" class="download-link" href="javascript:void(0);">Projected Modeled data (.csv)</a>
+                <a tabindex="109" data-value="download-projected-modeled-data" class="download-link" href="javascript:void(0);">Projections (.csv)</a>
               </li>
               <li id="download-interpreting" data-value="download-interpreting" data-icon="fas fa-download select-icon" class="default-select-option">
-                <a tabindex="109" data-value="download-interpreting" class="download-link" href="/data/Climate-Explorer--Key-to-Filenames-and-Column-Headings.xlsx">Key
+                <a tabindex="109" data-value="download-interpreting" class="download-link" href="https://crt-climate-explorer.nemac.org/resources/data/Climate-Explorer--Key-to-Filenames-and-Column-Headings.xlsx">Key
                   to column headings (.xlsx)</a>
               </li>
             </ul>

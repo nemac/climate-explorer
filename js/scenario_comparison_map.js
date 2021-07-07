@@ -1329,11 +1329,11 @@ export default class ScenarioComparisonMap {
     div.classList.add('area-stats')
     const unit_label = this.options.variables[this.options.variable]['legend_unit'].replace('Fahrenheit', 'F').replace(' ', '&nbsp;')
     div.innerHTML = `
-      <span class="area_hist_mean_value">${round_to_n_significant_figures(stats['hist_mean'], 3)}<sup>${unit_label}</sup></span><span>1961-1990&#32;Average</span>
-      <span class="area_rcp45_value">${round_to_n_significant_figures(stats['rcp45'], 3)}<sup>${unit_label}</sup></span><span>${this.options.rightYear}&#32;Lower&#32;Emissions</span>
-      <span class="area_rcp85_value">${round_to_n_significant_figures(stats['rcp85'])}<sup>${unit_label}</sup></span><span>${this.options.rightYear}&#32;Higher&#32;Emissions</span>
-      ${!!population ? `<span class="area_social_value">${number_to_human(population)}</span><span>Population<sup>(2017)</sup></span>` : ''}
-      <div style="grid-column: 1 / span 2"><a class="btn-default btn-default-selected d-flex-center" style="margin: 0.4rem auto !important;" href="${url}">Show Chart</a></div>
+      <span class="area_hist_mean_value">${round_to_n_significant_figures(stats['hist_mean'], 3)} ${unit_label}</span><span>1961-1990&#32;Observed Average</span>
+      <span class="area_rcp45_value">${round_to_n_significant_figures(stats['rcp45'], 3)} ${unit_label}</span><span>${this.options.rightYear}&#32;Lower&#32;Emissions Projection</span>
+      <span class="area_rcp85_value">${round_to_n_significant_figures(stats['rcp85'])} ${unit_label}</span><span>${this.options.rightYear}&#32;Higher&#32;Emissions Projection</span>
+      ${!!population ? `<span class="area_social_value">${number_to_human(population)}</span><span>Population (2017)</span>` : ''}
+      <div style="grid-column: 1 / span 2"><a class="btn-default btn-default-selected d-flex-center" style="margin: 0.4rem auto !important;" href="${url}">Switch to graph</a></div>
       `
     return div
   }
