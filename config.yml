@@ -262,7 +262,7 @@ variables:
         <br />
         <br />
         The graph for this variable shows counts of Dry Days. To help users perceive trends in numbers of dry days over time however, the map shows dry days as the projected annual number of dry days for each decade minus the 1961-1990 average. Positive values indicate more dry days while negative values indicate fewer dry days."
-  group: "temperature"
+  group: "precipitation"
   area: null
 - id: days_pcpn_gt_0_25in
   short_label: "Days w/ > 0.25 in Precipitation"

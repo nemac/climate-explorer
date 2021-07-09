@@ -76,7 +76,7 @@
     <Redirect>
       <Protocol>https</Protocol>
       <HostName>climate-explorer3-dev.nemac.org</HostName>
-      <ReplaceKeyPrefixWith>credits/</ReplaceKeyPrefixWith>
+      <ReplaceKeyPrefixWith>about/</ReplaceKeyPrefixWith>
     </Redirect>
   </RoutingRule>
   <RoutingRule>

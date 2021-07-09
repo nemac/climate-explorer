@@ -158,8 +158,7 @@ ${secondary_header(config)}
                 <a tabindex="109" data-value="download-projected-modeled-data" class="download-link" href="javascript:void(0);">Projections (.csv)</a>
               </li>
               <li id="download-interpreting" data-value="download-interpreting" data-icon="fas fa-download select-icon" class="default-select-option">
-                <a tabindex="109" data-value="download-interpreting" class="download-link" href="https://crt-climate-explorer.nemac.org/data/Climate-Explorer--Key-to-Filenames-and-Column-Headings.xlsx">Key
-                  to column headings (.xlsx)</a>
+                <a tabindex="109" data-value="download-interpreting" class="download-link" href="https://crt-climate-explorer.nemac.org/data/Climate-Explorer--Documentation-for-Downloads.xlsx">Documentation for Downloads (.xlsx)</a>
               </li>
             </ul>
           </div>
