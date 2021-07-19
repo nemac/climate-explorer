@@ -82,7 +82,7 @@ export default (config) => `
           For Alaska boroughs, hindcasts and projections are based on results from two climate models, GFDL-CM3 and NCAR-CCSM4. <a href="http://ckan.snap.uaf.edu/dataset/historical-and-projected-dynamically-downscaled-climate-data-for-the-state-of-alaska-and-surrou" target="_blank">Downscaled results for Alaska</a> were produced by the <a href="https://casc.alaska.edu/" target="_blank">Alaska Climate Adaptation and Science Center</a> using the Weather Research and Forecasting (<a href="https://www.mmm.ucar.edu/weather-research-and-forecasting-model" target="_blank">WRF</a>) model (Version 3.5). On climate graphs for Alaska boroughs, values from the two climate models have been smoothed by a 10-year rolling average.
           </p>
           <p>
-          For Hawai’i and U.S. island territories, modeled history and future projections come from CMIP5 global climate model simulations. Projections for individual islands are the average of the three global climate model grid points closest to the geographic center of each island.
+          For Hawai’i and U.S. island territories, modeled history and future projections come from CMIP5 global climate model simulations. Raw values from the models have not been downscaled or bias-corrected. Projections for specific islands are the average of the three global climate model grid points closest to the geographic center of each island.
           </p>
         </div>
         
@@ -136,12 +136,12 @@ export default (config) => `
         <h4>For which areas outside of the contiguous U.S. does the Climate Explorer have projections?</h4>
         <div class="accordion-text">
           <p>
-            The LOCA dataset offers downscaled CMIP5 projections for the contiguous U.S. plus portions of Canada and Mexico, but not for Alaska, Hawai'i, or other U.S. territories. In collaboration with climate scientists from the region, we added projections for Alaska from the <a href="https://www.snap.uaf.edu/">Scenarios Network for Alaska + Arctic Planning (SNAP)</a>. In 2021, we added climate projections for Hawai'i and United States territories in the Pacific Ocean and Caribbean Sea. Island projections come from CMIP5 global climate model simulations: projections for individual islands were calculated as the average of the three grid points closest to the geographic center of each island. Modeled history and projections are available for the following island locations:
+            The LOCA dataset offers downscaled CMIP5 projections for the contiguous U.S. plus portions of Canada and Mexico, but not for Alaska, Hawai'i, or other U.S. territories. In collaboration with climate scientists from the region, we added projections for Alaska from the <a href="https://www.snap.uaf.edu/">Scenarios Network for Alaska + Arctic Planning (SNAP)</a>. In 2021, we added climate projections for Hawai'i and United States territories in the Pacific Ocean and Caribbean Sea. Data for Hawai'i and U.S. territories come from CMIP5 global climate model simulations. Raw values from the models have not been downscaled or bias-corrected. Values provided for individual islands and island groups are averages of the three model grid points closest to the geographic center of each territory. Modeled history and projections are available for the following island locations:
           </p>
           <p>
             <ul style="list-style: none">
-              <li><a  href="/cards_home/?area-id=hawaii_north&area-label=Northern+Hawaiian+Islands+%28Oahu%2C+Kauai%29&lat=20.4&lon=-160.8" target="_blank">Northern Hawaiian Islands (Oahu, Kauai)</a></li>
-              <li><a  href="/cards_home/?area-id=hawaii_south&area-label=Southern+Hawaiian+Islands+%28Hawai%27i%2C+Maui%2C+Molokai%29&lat=18.7&lon=-157.4" target="_blank">Southern Hawaiian Islands (Hawai'i, Maui, Molokai)</a></li>
+              <li><a  href="/cards_home/?area-id=hawaii_north&area-label=Northern+Hawaiian+Islands+%28Oahu%2C+Kauai%29&lat=20.4&lon=-160.8" target="_blank">Northern Hawaiian Islands (Honolulu County, Kauaʻi County, and Northwestern Hawaiian Islands)</a></li>
+              <li><a  href="/cards_home/?area-id=hawaii_south&area-label=Southern+Hawaiian+Islands+%28Hawai%27i%2C+Maui%2C+Molokai%29&lat=18.7&lon=-157.4" target="_blank">Southern Hawaiian Islands (Maui County, Hawai'i County)</a></li>
               <li><a  href="/cards_home/?area-id=puerto_rico_ne&area-label=Northeastern+Puerto+Rico+%28San+Juan%2C+Caguas%29&lat=18.03356&lon=-66.3373" target="_blank">Northeastern Puerto Rico (San Juan, Caguas)</a></li>
               <li><a  href="/cards_home/?area-id=puerto_rico_sw&area-label=Southwestern+Puerto+Rico+%28Mayaguez%2C+Ponce%29&lat=17.454&lon=-68.0816" target="_blank">Southwestern Puerto Rico (Mayaguez, Ponce)</a></li>
               <li><a  href="/cards_home/?area-id=guam&area-label=Guam&lat=13.2&lon=144.4" target="_blank">Guam</a></li>
