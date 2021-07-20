@@ -177,7 +177,12 @@ var _slicedToArray = function () { function sliceIterator(arr, i) { var _arr = [
     },
 
     downloadTemperatureData: function downloadTemperatureData(link) {
-      link.href = 'data:text/csv;base64,' + window.btoa('date,min,max,normal_min,normal_max' + '\n' + this.temperatureData);
+      link.href = 'data:text/csv;base64,' + window.btoa('date,min,max,normal_min,normal_max' + '\n' + this.temperatureData
+          .split('\n')
+          .map((row)=>{
+            const cells = row.split(',');
+            return [cells[0], cells[2], cells[1], cells[4], cells[3]].join(',')
+          }).join('\n'));
       link.download = [this.options.station, "temperature", 'degreeF'].join('-').replace(/ /g, '_') + '.csv';
     },
 

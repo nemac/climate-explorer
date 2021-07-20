@@ -94,10 +94,10 @@ export default (config) => `
               <div class="select threshold-variable-select">
                 <div tabindex="5007" id="threshold-variable-select-vis" class="select-styled" data-value="precipitation">Precipitation</div>
                 <ul class="select-options">
-                  <li tabindex="5008" id="threshold-variable-select-chart-link" data-value="precipitation" class="default-select-option" data-page="historical_thresholds" >Precipitation</li>
-                  <li tabindex="5009" id="threshold-variable-select-map-link" data-value="tavg" class="default-select-option" data-page="historical_thresholds" >Average Temperature</li>
-                  <li tabindex="5010" id="threshold-variable-select-map-link" data-value="tmax" class="default-select-option" data-page="historical_thresholds" >Maximum Temperature</li>
-                  <li tabindex="5011" id="threshold-variable-select-map-link" data-value="tmin" class="default-select-option" data-page="historical_thresholds" >Minimum Temperature</li>
+                  <li tabindex="5008" role="option" id="threshold-variable-select-chart-link" data-value="precipitation" class="default-select-option" data-page="historical_thresholds">Precipitation</li>
+                  <li tabindex="5009" role="option" id="threshold-variable-select-map-link" data-value="tavg" class="default-select-option" data-page="historical_thresholds" >Average Temperature</li>
+                  <li tabindex="5010" role="option" id="threshold-variable-select-map-link" data-value="tmax" class="default-select-option" data-page="historical_thresholds" >Maximum Temperature</li>
+                  <li tabindex="5011" role="option" id="threshold-variable-select-map-link" data-value="tmin" class="default-select-option" data-page="historical_thresholds" >Minimum Temperature</li>
                 </ul>
               </div>
             </div>
@@ -194,7 +194,7 @@ export default (config) => `
 
     ${nav_footer(config)}
     ${footer(config)}
-
+    
     <script src="https://unpkg.com/@esri/arcgis-to-geojson-utils"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Turf.js/5.1.6/turf.min.js" integrity="sha256-Nhtik+K3xORhs5S9o0qlol4eRNB9O5OyTOJqbLucPk8=" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.1/Chart.bundle.min.js" integrity="sha256-N4u5BjTLNwmGul6RgLoESPNqDFVUibVuOYhP4gJgrew=" crossorigin="anonymous"></script>

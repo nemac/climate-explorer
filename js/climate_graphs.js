@@ -55,26 +55,32 @@ $(function () {
     }
     // ga event action, category, label
     googleAnalyticsEvent('click', 'download', downloadAction);
-
+    let download_promise;
     // capture what we are downloading
     switch (downloadAction) {
       case 'download-image': // download image
-        window.cbl_chart.download_image(this);
+        download_promise = window.cbl_chart.download_image(this);
         break;
       case 'download-observed-data':
-        window.cbl_chart.download_hist_obs_data(this);
+        download_promise = window.cbl_chart.download_hist_obs_data(this);
         break;
       case 'download-historical-modeled-data':
-        window.cbl_chart.download_hist_mod_data(this);
+        download_promise = window.cbl_chart.download_hist_mod_data(this)
         break;
       case 'download-projected-modeled-data':
-        window.cbl_chart.download_proj_mod_data(this);
+        download_promise = window.cbl_chart.download_proj_mod_data(this);
         break;
       case 'download-interpreting':
         break;
       default:
-        window.cbl_chart.download_image(this);
+        download_promise = window.cbl_chart.download_image(this);
     }
+    download_promise.catch((e)=>{
+      $(this).append(`<span id="download-err" style="color: #ff5d5d;">Not available for current area / variable / frequency selection.</span>`);
+      window.setTimeout(()=>{
+        $('#download-err').remove()
+      }, 1500)
+    });
   });
 
   // toggle filters click

@@ -182,11 +182,11 @@ ${footer(config)}
 
 <script src="https://unpkg.com/@esri/arcgis-to-geojson-utils"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/Turf.js/5.1.6/turf.min.js" integrity="sha256-Nhtik+K3xORhs5S9o0qlol4eRNB9O5OyTOJqbLucPk8=" crossorigin="anonymous"></script>
-<script type="text/javascript" src="/vendor/climate-widget-graph.js"></script>
 <script src="https://unpkg.com/terraformer@1.0.8/terraformer.js" integrity="sha384-+M797Pj3WZVCwMmLbOxAoaWYcKJo8NSxItmI48ytcLNeAnfn1d/IckFn31jEqrzP"
 crossorigin="anonymous"></script>
 <script src="https://unpkg.com/terraformer-arcgis-parser@1.0.5/terraformer-arcgis-parser.js"
 integrity="sha384-duFUjKTSNoxEspdJNwr83CUgRxclf0ueKJB9DU/Vbit6bfWgzvZsHW6H1JLBBXhp" crossorigin="anonymous"></script>
+<script src="/vendor/multigraph.min.js"></script>
 <script type="${config.env === 'dev'? 'module':  'text/javascript'}" src="/js/historical_weather_data.js"></script>
 
 </body>
