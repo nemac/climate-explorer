@@ -50,7 +50,7 @@ export default (config) => `
 
           <div id="info-text-wrapper" class="width-90">
             <i class="fas fa-chart-bar icon-info-box"></i>
-            <span id="station-info-none" class="padding-horizontal"><strong>Please select a station on the map or from the Stations dropdown menu.</strong></span>
+            <span id="station-info-none" class="padding-horizontal"><strong>Please select a station on the map or from the Stations dropdown menu. You may need to zoom out to see more stations.</strong></span>
             <span id="station-info" class="padding-horizontal d-none">
               <span id="default-station-label" class="text-info-box label" >Station id: </span>
               <span id="default-station" class="text-info-box data right-padding" ></span>
