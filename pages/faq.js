@@ -140,8 +140,8 @@ export default (config) => `
           </p>
           <p>
             <ul style="list-style: none">
-              <li><a  href="/cards_home/?area-id=hawaii_north&area-label=Northern+Hawaiian+Islands+%28Oahu%2C+Kauai%29&lat=20.4&lon=-160.8" target="_blank">Northern Hawaiian Islands (Honolulu County, Kauaʻi County)</a></li>
-              <li><a  href="/cards_home/?area-id=hawaii_south&area-label=Southern+Hawaiian+Islands+%28Hawai%27i%2C+Maui%2C+Molokai%29&lat=18.7&lon=-157.4" target="_blank">Southern Hawaiian Islands (Maui County, Hawai'i County)</a></li>
+              <li><a  href="/cards_home/?area-id=hawaii_north&area-label=Northern+Hawaiian+Islands+%28Honolulu+County%2C+Kaua%CA%BBi+County%29&lat=34.0522342&lon=-118.2436849" target="_blank">Northern Hawaiian Islands (Honolulu County, Kauaʻi County)</a></li>
+              <li><a  href="/cards_home/?area-id=hawaii_south&area-label=Southern+Hawaiian+Islands+%28Maui+County%2C+Hawai%27i+County%29&lat=34.0522342&lon=-118.2436849" target="_blank">Southern Hawaiian Islands (Maui County, Hawai'i County)</a></li>
               <li><a  href="/cards_home/?area-id=puerto_rico_ne&area-label=Northeastern+Puerto+Rico+%28San+Juan%2C+Caguas%29&lat=18.03356&lon=-66.3373" target="_blank">Northeastern Puerto Rico (San Juan, Caguas)</a></li>
               <li><a  href="/cards_home/?area-id=puerto_rico_sw&area-label=Southwestern+Puerto+Rico+%28Mayaguez%2C+Ponce%29&lat=17.454&lon=-68.0816" target="_blank">Southwestern Puerto Rico (Mayaguez, Ponce)</a></li>
               <li><a  href="/cards_home/?area-id=guam&area-label=Guam&lat=13.2&lon=144.4" target="_blank">Guam</a></li>

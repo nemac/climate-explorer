@@ -46,7 +46,7 @@ export default (config) => `
         <a href="/cards_home/?county=Anchorage%20Municipality&city=Anchorage,%20AK&fips=02020&lat=61.2180556&lon=-149.9002778">Anchorage, AK</a>
         <a href="/cards_home/?county=Maricopa+County&city=Phoenix,%20AZ&fips=04013&lat=33.4483771&lon=-112.07403729999999">Phoenix, AZ</a>
         <a href="/cards_home/?county=Harris+County&city=Houston,%20TX&fips=48201&lat=29.7604267&lon=-95.3698028">Houston, TX</a>
-        <a href="/cards_home/?area-id=hawaii_north&area-label=Northern+Hawaiian+Islands+%28Oahu%2C+Kauai%29&zoom=8&lat=21.3069444&lon=-157.8583333">Honolulu, HI</a>
+        <a href="/cards_home/?area-id=hawaii_north&area-label=Northern+Hawaiian+Islands+%28Honolulu+County%2C+Kaua%CA%BBi+County%29&zoom=8&lat=21.3069444&lon=-157.8583333">Honolulu, HI</a>
       </div>
     </div>
   </div>
