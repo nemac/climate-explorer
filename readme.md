@@ -34,7 +34,10 @@ To set up your development environment use `npm install` then run `npm run build
 ## Deployment notes
 
 This project is intended for deployment as a static site, but there are a handful of services aside from the code in this repo that are expected:
-- Most notably, the "Variables" page depends on TMS webtile services for all of its maps. Additionally, Google Analytics has been included at the bottom of `/template/footer.js`. It can be removed, or the account it is attached to can be changed via "google_analytics_id" in `config.yml`
+- Most climate graphs depend on either a NOAA or ACIS API.
+- Climate maps depend on TMS webtile services hosted at `https://crt-climate-explorer.nemac.org/webtiles/*`.
+- The "Next Steps" page depends on third party data and APIs.  
+- Google Analytics has been included at the bottom of `/template/footer.js`. It can be removed, or the account it is attached to can be changed via "google_analytics_id" in `config.yml`
 
 As of 2021, many data JSON files have been moved out of the Climate Explorer source repo to be hosted at `https://crt-climate-explorer.nemac.org/data/`
 
