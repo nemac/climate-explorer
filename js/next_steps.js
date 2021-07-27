@@ -211,7 +211,7 @@ $(function () {
     $('#default-city-county').addClass('d-none');
     $('#cards-search-input').attr(
         'placeholder',
-        'Location missing, enter a county, city, or zip code'
+        'Location missing, enter a county or city name'
     );
   }
   // if  Alaska or Hawaii disable text not applicable for locations

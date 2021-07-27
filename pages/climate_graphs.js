@@ -29,7 +29,7 @@ ${secondary_header(config)}
 
     <div class="rounded-box-secondary input-outer padding-horizontal bottom-padding default-btn-height search-box-secondary width-65">
       <input tabindex="0" id="cards-search-input" type="text" class="location-mapper input-inner-default border-none default-btn-height" autocomplete="off"
-             placeholder="Enter county, city, or zip code">
+             placeholder="Enter county or city name">
       <span class="icon icon-search search-default float-right padding-default"></span>
       <div id="clear-location-wrapper" class="">
         <span id="clear-location" data-page="climate_graphs" class="fas fa-times-circle"></span>

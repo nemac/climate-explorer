@@ -18,7 +18,7 @@ $(function () {
   $('#cards-search-input').attr("placeholder", city);
 
   if (!county) {
-    $('#cards-search-input').attr("placeholder", "Location missing, enter a county, city, or zip code");
+    $('#cards-search-input').attr("placeholder", "Location missing, enter a county or city name");
   }
 
   const zoom = state['zoom'] || 9;

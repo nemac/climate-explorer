@@ -26,7 +26,7 @@ export default (config) => `
       <div id="search-row" class="padding-horizontal d-flex-row flex-justify padding-top padding-bottom-half d-flex-justify" >
 
         <div class="rounded-box-secondary input-outer padding-horizontal bottom-padding default-btn-height search-box-secondary width-65">
-          <input  tabindex="1" id="cards-search-input" type="text" class="location-mapper input-inner-default border-none default-btn-height" autocomplete="off" placeholder="Enter county, city, or zip code">
+          <input  tabindex="1" id="cards-search-input" type="text" class="location-mapper input-inner-default border-none default-btn-height" autocomplete="off" placeholder="Enter county or city name">
           <span class="icon icon-search search-default float-right padding-default"></span>
           <div id="clear-location-wrapper" class="">
             <span id="clear-location" data-page="climate_maps"  class="fas fa-times-circle"></span>

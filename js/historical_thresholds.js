@@ -17,7 +17,7 @@ $(function () {
   $('#cards-search-input').attr("placeholder", cityStateCE);
 
   if (!countyCE) {
-    $('#cards-search-input').attr("placeholder", "Location missing, enter a county, city, or zip code");
+    $('#cards-search-input').attr("placeholder", "Location missing, enter a county or city name");
   }
 
   const county =  state['county']

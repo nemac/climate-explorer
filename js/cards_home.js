@@ -15,7 +15,7 @@ $(function () {
   if (!city_label && !area_label) {
     $('#default-dash').addClass('d-none');
     $('#cards-search-input').addClass('nosearch');
-    $('#cards-search-input').attr("placeholder", "Location missing, enter a county, city, or zip code");
+    $('#cards-search-input').attr("placeholder", "Location missing, enter a county or city name");
   }
 
   if (city_label || area_label) {
