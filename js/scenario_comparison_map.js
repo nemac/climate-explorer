@@ -1329,10 +1329,16 @@ export default class ScenarioComparisonMap {
     div.classList.add('area-stats')
     const unit_label = this.options.variables[this.options.variable]['legend_unit'].replace('Fahrenheit', 'F').replace(' ', '&nbsp;')
     div.innerHTML = `
-      <span class="area_hist_mean_value">${round_to_n_significant_figures(stats['hist_mean'], 3)} ${unit_label}</span><span>1961-1990&#32;Observed Average</span>
-      <span class="area_rcp45_value">${round_to_n_significant_figures(stats['rcp45'], 3)} ${unit_label}</span><span>${this.options.rightYear}&#32;Lower&#32;Emissions Projection</span>
-      <span class="area_rcp85_value">${round_to_n_significant_figures(stats['rcp85'])} ${unit_label}</span><span>${this.options.rightYear}&#32;Higher&#32;Emissions Projection</span>
-      ${!!population ? `<span class="area_social_value">${number_to_human(population)}</span><span>Population (2017)</span>` : ''}
+      <div style="font-size: 1rem; grid-column: 1 / span 2;">${this.options.variables[this.options.variable].title}</div>
+      <div class="label1" >${this.options.rightYear} projection</div>
+      <div class="label2 bg-rcp85">Higher Emissions</div>
+      <span class="area_rcp85_value bg-rcp85" style="grid-column: 1 / span 2; padding-left: 1rem;" >${round_to_n_significant_figures(stats['rcp85'])}</span>
+      <div class="label2 bg-rcp45">Lower Emissions</div>
+      <span class="area_rcp45_value bg-rcp45" style="grid-column: 1 / span 2; padding-left: 1rem;">${round_to_n_significant_figures(stats['rcp45'], 3)}</span>
+      <div class="label1 bg-hist" style="font-size: 0.8rem;">1961-1990&#32;observed average</div>
+      <span class="area_hist_mean_value bg-hist" style="grid-column: 1 / span 2; padding-left: 1rem;">${round_to_n_significant_figures(stats['hist_mean'], 3)}</span>
+     
+      ${!!population ? `<div class="label1">Population (2017)</div><span style="grid-column: 1 / span 2; padding-left: 1rem;" class="area_social_value">${number_to_human(population)}</span>` : ''}
       <div style="grid-column: 1 / span 2;" class="d-flex-center"><a class="btn-default d-flex-center default-btn-height padding-horizontal rounded-choice-box" style="margin: 0.4rem auto !important;" href="${url}">Switch to graph</a></div>
       `
     return div

@@ -436,15 +436,10 @@ $(function () {
     // When state changes, just pass the current options along directly for this page.
     // If we re-use the stationsMap widget on another page there may be more handling to do.
     change: function change(event, options) {
-      // error check
-      if (options.currentstations) {return null}
-
-      window.app.update( options);
-      renderStationInfo(options.stationId, options.stationName);
 
       const messageElem = document.getElementById('stations-map-message');
       // check if there are any tidal stations in map extent
-      if (!!options.currentstations && options.currentstations.features.length === 0) {
+      if (typeof options.currentstations !== "undefined" && options.currentstations.length === 0) {
         // get map parent element - which provides the correct dimensions for the map
         if (messageElem) {
           const rect = document.getElementById('stations-map').getBoundingClientRect();
@@ -453,9 +448,15 @@ $(function () {
           messageElem.innerHTML = 'There are no weather stations within the map view.'
           messageElem.classList.remove('d-none');
         }
-      } else {
+        return null;
+      }
+
+      window.app.update( options);
+      renderStationInfo(options.stationId, options.stationName);
+      if (messageElem){
         messageElem.classList.add('d-none');
       }
+
     },
 
     // when user clicks on map station marker

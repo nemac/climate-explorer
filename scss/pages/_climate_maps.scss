@@ -149,37 +149,32 @@
   .esri-popup__main-container, .scenario-map-inspect-container {
     height: -moz-fit-content;
     height: fit-content;
-    width: 20rem;
+    width: 17rem;
+    padding: 0.45rem 0.55rem;
     background: #ffffffed;
     box-shadow: 2px 1px 5px rgba(0, 0, 0, 0.5);
     border: solid 1.3px rgba(0, 0, 0, 0.3);
-    padding: 0.35rem 0.25rem;
-    font-size: 0.8rem;
+    font-size: 1rem;
     font-weight: 500;
     /* margin: 0rem auto; */
-    padding-left: 0.8rem;
-
+    .esri-popup__header-title {
+      font-size: 0.9rem;
+      line-height: 1.5rem;
+      font-weight: 500;
+    }
     .esri-popup__content {
       margin: 0;
     }
 
     .area-stats {
-      font-size: 1rem;
       display: grid;
-      //grid-template-columns: min-content auto;
-      grid-gap: 0.6rem;
+      grid-template-columns: auto auto;
+      //grid-gap: 0.6rem;
       margin-right: 0.5rem;
       margin-left: 0.5rem;
-      div {
-        margin: 0.35rem 0;
-      }
-      span{
-        line-height: 1.3rem;
-      }
-      sup {
-        vertical-align: super;
-        font-size: 0.5em;
-      }
+      font-size: 1rem;
+      font-weight: 500;
+      line-height: 1.5rem;
 
       .btn-default {
         margin: 0.6rem auto 0.3rem auto !important;
@@ -188,8 +183,16 @@
       }
 
       .area_social_value, .area_hist_mean_value, .area_rcp45_value, .area_rcp85_value {
-        font-size: 1.3rem;
+        font-size: 1.1rem;
+        padding-left: 1rem;
+        padding-bottom: 0.25rem
       }
+
+      .bg-rcp85 { background-color: rgba(247,105,86,0.1)}
+      .bg-rcp45 { background-color: rgba(50,121,216,0.1)}
+      .bg-hist { background: rgba(187,187,187,0.1)}
+      .label1 { font-size: 1rem; font-weight: 700; line-height: 1.5rem; grid-column: 1 / span 2;}
+      .label2 { font-size: 0.7rem; padding-left: 0.3rem; line-height: 1rem; grid-column: 1 / span 2}
     }
   }
 

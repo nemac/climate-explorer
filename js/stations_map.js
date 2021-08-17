@@ -122,7 +122,7 @@
       if (this.dojoMods === undefined) {
         return false;
       }
-      for (var i = 0; i < this.dojoDeps; i++) {
+      for (let i = 0; i < this.dojoDeps; i++) {
         if (!this.dojoMods.hasOwnProperty(this.dojoDeps[i][i].split('/').pop())) {
           return false;
         }
@@ -154,11 +154,11 @@
             async: 1,
             deps: this.dojoDeps
           };
-          var arcgisStyles = document.createElement("link");
+          const arcgisStyles = document.createElement("link");
           arcgisStyles.rel = 'stylesheet';
           arcgisStyles.href = 'https://js.arcgis.com/4.9/esri/css/main.css';
           document.head.appendChild(arcgisStyles);
-          var arcgisScripts = document.createElement("script");
+          const arcgisScripts = document.createElement("script");
           arcgisScripts.type = "text/javascript";
           arcgisScripts.src = "https://js.arcgis.com/4.9/";
           document.head.appendChild(arcgisScripts);
@@ -178,10 +178,10 @@
     _registerDojoMods: function _registerDojoMods(resolve) {
       require(this.dojoDeps, function (resolve) {
         //get the list of modules
-        var mods = Array.prototype.slice.call(arguments, 1);
+        const mods = Array.prototype.slice.call(arguments, 1);
         this.dojoMods = {};
         // preserve the modules on this.dojoMods for later reference.
-        for (var i = 0; i < mods.length; i++) {
+        for (let i = 0; i < mods.length; i++) {
           this.dojoMods[this.dojoDeps[i].split('/').pop()] = mods[i];
         }
         resolve();
@@ -225,8 +225,8 @@
       // for some reason lat long is backwards and to center a map you must pass long lat.
       // here I am switching lat long from center of tha map which is long lat back lat long order
       // this will although keeping the state url consistent across local climate maps and stations map
-      const mapCenter = this.options.lat && this.options.lon  ? [this.options.lon, this.options.lat] :  [-123, 42];
-      const mapZoom = this.options.zoom   ? this.options.zoom :  8;
+      const mapCenter = this.options.lat && this.options.lon ? [this.options.lon, this.options.lat] : [-123, 42];
+      const mapZoom = this.options.zoom ? this.options.zoom : 8;
 
       // for some reason lat long is backwards and to center a map you must pass long lat.
       // here I am switching lat long from center of tha map which is long lat back lat long order
@@ -252,31 +252,31 @@
       this.dojoMods.watchUtils.whenTrue(this.view, "stationary", function () {
         // Get the new extent of the view when view is stationary.
         if (this.view.center) {
-          const latlon =  this.dojoMods.webMercatorUtils.xyToLngLat(this.view.center.x, this.view.center.y);
+          const latlon = this.dojoMods.webMercatorUtils.xyToLngLat(this.view.center.x, this.view.center.y);
 
           // for some odd reason I can't identify the first
           // lat and long value is between 1 and -1 this is not something a user
           // has done so we ignore it.
           // of course if a user actually does pan that part of the map it will not be passed to the state url
           // and could cause issues later...
-          if (latlon[0] <= 1 && latlon[0]  >= -1) {
+          if (latlon[0] <= 1 && latlon[0] >= -1) {
             return null;
           }
 
           // for some reason lat long is backwards and to center a map you must pass long lat.
           // here I am switching lat long from center of tha map which is long lat back lat long order
           // this will although keeping the state url consistent across local climate maps and stations map
-          this.options.lat = Math.round(latlon[1]*100)/100;
-          this.options.lon = Math.round(latlon[0]*100)/100;
+          this.options.lat = Math.round(latlon[1] * 100) / 100;
+          this.options.lon = Math.round(latlon[0] * 100) / 100;
           this.options.center = [this.options.lat, this.options.lon]
         }
 
         // make sure the extent is defined than get the current map extent
-        // use extent to get a list of current statiobs.
+        // use extent to get a list of current stations.
         if (this.view.extent) {
-          var xymin = this.dojoMods.webMercatorUtils.xyToLngLat(this.view.extent.xmin, this.view.extent.ymin);
-          var xymax = this.dojoMods.webMercatorUtils.xyToLngLat(this.view.extent.xmax, this.view.extent.ymax);
-          var quickRound = function quickRound(num) {
+          const xymin = this.dojoMods.webMercatorUtils.xyToLngLat(this.view.extent.xmin, this.view.extent.ymin);
+          const xymax = this.dojoMods.webMercatorUtils.xyToLngLat(this.view.extent.xmax, this.view.extent.ymax);
+          const quickRound = function quickRound(num) {
             return Math.round(num * 100 + Number.EPSILON) / 100;
           };
           this.options.extent = {
@@ -289,49 +289,29 @@
           // make sure layers item exists we will assume first layer
           // is the layer in question we will need to rethink this if we have multiple
           // layers, but as of now we have only ONE
+          let ptsWithin_promise = Promise.resolve();
+
           if (this.map.layers.items[0]) {
-              // create arcgis json from layer
-              const firstLayerJSON = {
-                fields: this.map.layers.items[0].fields,
-                geometryType: this.map.layers.items[0].geometryType,
-                spatialReference: { wkid: this.map.layers.items[0].spatialReference.wkid },
-                features: this.map.layers.items[0].features
-              };
-
-              // make geojson from arcgis json data so we can use turf to do a points in polygon
-              // maje sure esri arcgis utils and turf have been added via script tag
-              if (typeof ArcgisToGeojsonUtils !== "undefined" && typeof turf !== "undefined") {
-                const LayerGeoJSON = ArcgisToGeojsonUtils.arcgisToGeoJSON(firstLayerJSON, "ObjectID" );
-
-                // make polygon from current map extent
-                // need to check performance on full extent may limit (full extent is acting funny)
-                // but this is working for most scales.  we probably need to limit bigger than conus
-                // limit the populatiing the list.
-                const bbox = [xymin[0], xymin[1], xymax[0], xymax[1]];
-                const poly = turf.bboxPolygon(bbox);
-
-                // get station points within exte polygon
-                var ptsWithin = turf.pointsWithinPolygon(LayerGeoJSON, poly);
-
-                // console.log('stationary ptsWithin', ptsWithin);
-
-                // update station dropdown and click events
-                this._updateStationSelect(ptsWithin);
-
-                // ensure function is defined
-                if (typeof reEnableSelectNewItems !== "undefined") {
-                  reEnableSelectNewItems('stations-select');
-                }
-                // add current object view object in case we need it again
-                this.view.currentstations = ptsWithin;
-                this.options.currentstations = ptsWithin;
+            // get station points within extent bbox
+            ptsWithin_promise = this.map.layers.items[0].queryFeatures({geometry: this.view.extent}).then((ptsWithin)=>{
+              // update station dropdown and click events
+              this._updateStationSelect(ptsWithin.features);
+              // ensure function is defined
+              if (typeof reEnableSelectNewItems !== "undefined") {
+                reEnableSelectNewItems('stations-select');
               }
+              // add current object view object in case we need it again
+              this.view.currentstations = ptsWithin.features;
+              this.options.currentstations = ptsWithin.features;
+            });
           }
           // sets url state zoom level
           if (this.view.zoom && this.view.zoom > 0) {
-            this.options.zoom = Math.round(this.view.zoom*100)/100;
+            this.options.zoom = Math.round(this.view.zoom * 100) / 100;
           }
-          this._trigger('change', null, this.options);
+          ptsWithin_promise.then(()=> {
+            this._trigger('change', null, this.options);
+          });
         }
       }.bind(this));
 
@@ -360,38 +340,41 @@
       this.locateWidget = new this.dojoMods.Locate({
         view: this.view, // Attaches the Locate button to the view
         graphic: new this.dojoMods.Graphic({
-          symbol: { type: "simple-marker" // overwrites the default symbol used for the
+          symbol: {
+            type: "simple-marker" // overwrites the default symbol used for the
             // graphic placed at the location of the user when found
-          } })
+          }
+        })
       });
 
       this.view.ui.add(this.locateWidget, "top-left");
     },
-    _updateStationSelect: function _updateStationSelect(currentstations){
-      // sort hubs by name A-Z
-      const currentstationsSorted = currentstations.features.sort((a, b) => {
-        if (a.properties.name > b.properties.name) {
-          return 1;
-        }
-        if (a.properties.name < b.properties.name) {
-          return -1;
-        }
-        // a must be equal to b
-        return 0;
-      });
-
+    _updateStationSelect: function _updateStationSelect(currentstations) {
       // make li for select dropdown
       let stationLi = '';
       let indx = 21;
-      currentstationsSorted.forEach( (station) => {
-        if (this.options.mode === 'high_tide_flooding') {
-          stationLi += `<li tabindex="${indx}" data-value="${station.properties.id}|${station.properties.name}|${station.properties.mOverMHHW}|" class="default-select-option" role="option">${station.properties.name} - (${station.properties.id})</li>\n`;
-        } else {
-          stationLi += `<li tabindex="${indx}" data-value="${station.properties.id},${station.properties.name}" class="default-select-option" role="option">${station.properties.name} - (${station.properties.id})</li>\n`;
-        }
-        indx += 1;
-      })
+      if (currentstations.length > 0) {
+        // sort hubs by name A-Z
+        const currentstationsSorted = currentstations.sort((a, b) => {
+          if (a.attributes.name > b.attributes.name) {
+            return 1;
+          }
+          if (a.attributes.name < b.attributes.name) {
+            return -1;
+          }
+          // a must be equal to b
+          return 0;
+        });
 
+        for (const station of currentstationsSorted) {
+          if (this.options.mode === 'high_tide_flooding') {
+            stationLi += `<li tabindex="${indx}" data-value="${station.attributes.id}|${station.attributes.name}|${station.attributes.mOverMHHW}|" class="default-select-option" role="option">${station.attributes.name} - (${station.attributes.id})</li>\n`;
+          } else {
+            stationLi += `<li tabindex="${indx}" data-value="${station.attributes.id},${station.attributes.name}" class="default-select-option" role="option">${station.attributes.name} - (${station.attributes.id})</li>\n`;
+          }
+          indx += 1;
+        }
+      }
       // update select elem if it exists
       const stationsElem = document.querySelector('#stations-select-wrapper .select-options')
       if (stationsElem) {
@@ -399,7 +382,7 @@
       }
     },
     _createStationLayer: function _createStationLayer(layerURL, options) {
-      var _this = this;
+      const _this = this;
 
       // We implement our own json layer creator
       if (layerURL.endsWith('json')) {
@@ -415,7 +398,7 @@
             console.log('Failed to retrieve station data. Refresh to try again.');
             throw 'Failed to retrieve station data. Refresh to try again.';
           }
-          var features = [];
+          const features = [];
           data.forEach(function (station, index) {
             features.push(new this.dojoMods.Graphic({
               geometry: {
@@ -455,19 +438,19 @@
             }],
             objectIdField: "ObjectID",
             geometryType: "point",
-            spatialReference: { wkid: 4326 },
+            spatialReference: {wkid: 4326},
             features: features,
             source: features
           };
-        return new _this.dojoMods.FeatureLayer(Object.assign(featureLayerJSON, options));
+          return new _this.dojoMods.FeatureLayer(Object.assign(featureLayerJSON, options));
         });
       } else {
         //if url is a feature service or csv we use the provided methods for creating them.
-        var layerClass = this.dojoMods.FeatureLayer;
+        let layerClass = this.dojoMods.FeatureLayer;
         if (layerURL.endsWith('csv')) {
           layerClass = this.dojoMods.CSVLayer;
         }
-        return Promise.resolve(new layerClass(Object.assign({ url: layerURL }, options)));
+        return Promise.resolve(new layerClass(Object.assign({url: layerURL}, options)));
       }
     },
     _initDailyStationsLayer: function _initDailyStationsLayer() {
@@ -496,17 +479,17 @@
               }
             });
             this.view.hitTest(event).then(function (response) {
-              if(response.results.length > 0){
+              if (response.results.length > 0) {
                 // make pointer cursor - mouse IS over a station feature
                 document.getElementById('stations-map').style.cursor = "pointer";
               } else {
                 // make default cursor - mouse IS NOT over station feature
                 document.getElementById('stations-map').style.cursor = "default";
               }
-              var station = response.results.filter(function (result) {
+              const station = response.results.filter(function (result) {
                 return result.graphic.layer === this.dailyStationsLayer;
               }.bind(this))[0].graphic;
-              var refEl = $('circle:hover').first();
+              const refEl = $('circle:hover').first();
               if (!("stationTooltip" in refEl)) {
                 refEl.stationTooltip = new Tooltip(refEl, {
                   placement: 'right',
@@ -519,10 +502,10 @@
           }.bind(this));
           this.view.on("click", function (event) {
             this.view.hitTest(event).then(function (response) {
-              var station = response.results.filter(function (result) {
+              const station = response.results.filter(function (result) {
                 return result.graphic.layer === this.dailyStationsLayer;
               }.bind(this))[0].graphic;
-              this._setOptions({ stationName: station.attributes.name, stationId: station.attributes.id });
+              this._setOptions({stationName: station.attributes.name, stationId: station.attributes.id});
               this._trigger('stationUpdated', null, this.options);
             }.bind(this));
           }.bind(this));
@@ -566,17 +549,17 @@
               }
             });
             this.view.hitTest(event).then(function (response) {
-              if(response.results.length > 0){
+              if (response.results.length > 0) {
                 // make pointer cursor - mouse IS over a station feature
                 document.getElementById('stations-map').style.cursor = "pointer";
               } else {
                 // make default cursor - mouse IS NOT over station feature
                 document.getElementById('stations-map').style.cursor = "default";
               }
-              var station = response.results.filter(function (result) {
+              const station = response.results.filter(function (result) {
                 return result.graphic.layer === this.thresholdStationsLayer;
               }.bind(this))[0].graphic;
-              var refEl = $('circle:hover').first();
+              const refEl = $('circle:hover').first();
               if (!("stationTooltip" in refEl)) {
                 refEl.stationTooltip = new Tooltip(refEl, {
                   placement: 'right',
@@ -589,10 +572,10 @@
           }.bind(this));
           this.view.on("click", function (event) {
             this.view.hitTest(event).then(function (response) {
-              var station = response.results.filter(function (result) {
+              const station = response.results.filter(function (result) {
                 return result.graphic.layer === this.thresholdStationsLayer;
               }.bind(this))[0].graphic;
-              this._setOptions({ stationName: station.attributes.name, stationId: station.attributes.id });
+              this._setOptions({stationName: station.attributes.name, stationId: station.attributes.id});
               this._trigger('stationUpdated', null, this.options);
             }.bind(this));
           }.bind(this));
@@ -627,17 +610,17 @@
             });
             this.view.hitTest(event).then(function (response) {
 
-              if(response.results.length > 0){
+              if (response.results.length > 0) {
                 // make pointer cursor - mouse IS over a station feature
                 document.getElementById('stations-map').style.cursor = "pointer";
               } else {
                 // make default cursor - mouse IS NOT over station feature
                 document.getElementById('stations-map').style.cursor = "default";
               }
-              var station = response.results.filter(function (result) {
+              const station = response.results.filter(function (result) {
                 return result.graphic.layer === this.tidalStationsLayer;
               }.bind(this))[0].graphic;
-              var refEl = $('circle:hover').first();
+              const refEl = $('circle:hover').first();
               if (!("stationTooltip" in refEl)) {
                 refEl.stationTooltip = new Tooltip(refEl, {
                   placement: 'right',
@@ -650,10 +633,14 @@
           }.bind(this));
           this.view.on("click", function (event) {
             this.view.hitTest(event).then(function (response) {
-              var station = response.results.filter(function (result) {
+              const station = response.results.filter(function (result) {
                 return result.graphic.layer === this.tidalStationsLayer;
               }.bind(this))[0].graphic;
-              this._setOptions({ tidalStationName: station.attributes.name, tidalStationId: station.attributes.id, tidalStationMOverMHHW: station.attributes.mOverMHHW || null });
+              this._setOptions({
+                tidalStationName: station.attributes.name,
+                tidalStationId: station.attributes.id,
+                tidalStationMOverMHHW: station.attributes.mOverMHHW || null
+              });
               this._trigger('stationUpdated', null, this.options);
             }.bind(this));
           }.bind(this));
@@ -669,7 +656,8 @@
 
     // I find it useful to separate out my event handler logic just for
     // organization and readability's sake, but it's certainly not necessary
-    _addHandlers: function _addHandlers() {},
+    _addHandlers: function _addHandlers() {
+    },
 
     // Allows the widget to react to option changes. Any custom behaviors
     // can be configured here.
@@ -678,7 +666,7 @@
       this._super(key, value);
       // And now we can act on that change
       switch (key) {
-        // Not necessary in all cases, but likely enough to me to include it here
+          // Not necessary in all cases, but likely enough to me to include it here
         case "state":
           this._init();
           break;
@@ -742,7 +730,7 @@
     },
 
     _setOptions: function _setOptions(options) {
-      var old_options = Object.assign({}, this.options);
+      const old_options = Object.assign({}, this.options);
       this._super(options);
       if (this.options.stationId !== old_options.stationId) {
         this._stationSelected();
@@ -751,7 +739,7 @@
         this.view.goTo(new this.dojoMods.Extent(this.options.extent));
       } else if (this.options.center !== old_options.center && this.options.center !== null) {
         this.options.extent = null;
-        this.view.goTo({ center: new this.dojoMods.Point({ latitude: this.options.center[0], longitude: this.options.center[1] }), zoom: this.options.zoom });
+        this.view.goTo({center: new this.dojoMods.Point({latitude: this.options.center[0], longitude: this.options.center[1]}), zoom: this.options.zoom});
       }
       this._trigger('change', null, this.options);
       return this;
@@ -770,7 +758,7 @@
           break;
         case 'thresholds':
           return null;
-        // all handled via html in template now
+          // all handled via html in template now
           break;
         case 'high_tide_flooding':
           return null;
@@ -807,7 +795,7 @@
 
     _toLoggerMethod: function _toLoggerMethod(method, args) {
       args = Array.prototype.slice.call(arguments, 1);
-      var logger = this.options.logger || console;
+      const logger = this.options.logger || console;
       logger.error.apply(logger, args);
     },
 
