@@ -20,32 +20,166 @@ export default (config) => `
 
   ${secondary_header(config)}
 
-<div id="cards-viewport" class="padding-horizontal d-flex d-flex-column">
-
-
-  <div id="search-row" class="padding-horizontal d-flex-row flex-justify padding-top padding-bottom-half d-flex-justify" >
-    <div class="rounded-box-secondary input-outer padding-horizontal bottom-padding default-btn-height width-100">
-      <input id="cards-search-input" type="text" class="location-mapper input-inner-default border-none default-btn-height width-90" autocomplete="off" placeholder="Enter county or city name" aria-label="Enter county or city name">
-      <span class="icon icon-search search-default float-right padding-default"></span>
-      <div id="clear-location-wrapper" class="">
-        <span id="clear-location" data-page="cards_home" class="fas fa-times-circle"></span>
+    <div class="container-fluid">
+    
+      <div class="input-group mb-3 search-input-group rounded-3 border border-1">
+        <button id="clear-location" class="btn search-icons" type="button"><span class="fas fa-times-circle"></span></button>
+        <input id="cards-search-input" class="form-control location-mapper" type="text" placeholder="Enter county or city name" aria-label="Enter county or city name">
+        <button class="btn search-icons" type="button"><span class="icon-search"></span></button>
       </div>
-    </div>
-  </div>
-
-  <div id="info-row" class="padding-vertical padding-horizontal width-100" >
-    <div class="rounded-filters-box padding-default width-100">
-
-      <div class="d-flex-row">
-
-        <div id="info-text-wrapper" class="width-100">
+      
+      <div class="select-county-card rounded-3 border border-1 mb-3">
+        <div class="p-2">
           <i class="fas fa-th-large icon-info-box"></i>
-          <span id="" class="text-info-box" >Select one of the following for</span>
-          <span id="default-city-county" class="text-info-box"></span>
+          <span class="text-info-box" >Select one of the following for</span>
+          <span id="default-city-county"></span>
         </div>
+        
       </div>
+      
+      <div class="row mb-3"> 
+        <div class="col-sm-4"> 
+            <div class="col-sm-12 p-0 card border border-1 rounded shadow-sm data-card">
+              <div>
+                <img class="img-fluid" src="/img/card-local-maps.png" alt="example-chart"/>
+             </div>
+             
+             <div class="m-2">
+               <div class="d-flex flex-row justify-content-between">
+                  <span class="card-title">Climate Maps</span>
+                  <i class="fas fa-map-marked-alt"></i>
+               </div>
+             </div>
+             
+             <div class="m-2">
+               Compare past and projected future conditions in your county.
+             </div>
+             
+             <div class="disabled-text m-2">Maps are not available for this location.</div>
+        
+            </div>
+        </div>
+        
+        <div class="col-sm-4"> 
+            <div class="col-sm-12 p-0 card border border-1 rounded shadow-sm data-card">
+              <div>
+                <img class="img-fluid" src="/img/card-local-charts.png" alt="example climate chart"/>
+             </div>
+             
+             <div class="m-2">
+               <div class="d-flex flex-row justify-content-between">
+                  <span class="card-title">Climate Graphs</span>
+                  <i class="fas fa-chart-line icon-size"></i>
+               </div>
+             </div>
+             
+             <div class="m-2">
+               Check past and projected values for climate variables.
+             </div>
+             
+             <div class="disabled-text m-2">Data is not available for this location.</div>
+        
+            </div>
+        </div>
+        
+        <div class="col-sm-4"> 
+            <div class="col-sm-12 p-0 card border border-1 rounded shadow-sm data-card">
+              <div>
+                <img class="img-fluid" src="/img/card-tidal-data.png" alt="Tidal chart data image"/>
+             </div>
+             
+             <div class="m-2">
+               <div class="d-flex flex-row justify-content-between">
+                  <span class="card-title">High-Tide Flooding</span>
+                  <span class="fas fa-water"></span>
+               </div>
+             </div>
+             
+             <div class="m-2">
+               Explore the number of days per year with high-tide floods.
+             </div>
+             
+             <div class="disabled-text m-2">High-tide flooding data not available for this location.</div>
+        
+            </div>
+        </div>
+        
+      </div>
+      
+      <div class="row mb-3"> 
+        <div class="col-sm-4"> 
+            <div class="col-sm-12 p-0 card border border-1 rounded shadow-sm">
+              <div>
+                <img class="img-fluid" src="/img/card-hist-daily.png" />
+             </div>
+             
+             <div class="m-2">
+               <div class="d-flex flex-row justify-content-between">
+                  <span class="card-title">Historical Weather Data</span>
+                  <span class="card-icon fas fa-chart-area"></span>
+               </div>
+             </div>
+             
+             <div class="m-2">
+               Compare observed daily weather to long-term climate.
+             </div>
+             
+             <div class="disabled-text m-2">Data is not available for this location</div>
+        
+            </div>
+        </div>
+        
+        <div class="col-sm-4"> 
+            <div class="col-sm-12 p-0 card border border-1 rounded shadow-sm">
+              <div>
+                <img class="img-fluid" src="/img/card-hist-daily.png" />
+             </div>
+             
+             <div class="m-2">
+               <div class="d-flex flex-row justify-content-between">
+                  <span class="card-title">Historical Weather Data</span>
+                  <span class="card-icon fas fa-chart-area"></span>
+               </div>
+             </div>
+             
+             <div class="m-2">
+               Compare observed daily weather to long-term climate.
+             </div>
+             
+             <div class="disabled-text m-2">Data is not available for this location</div>
+        
+            </div>
+        </div>
+        
+        <div class="col-sm-4"> 
+            <div class="col-sm-12 p-0 card border border-1 rounded shadow-sm">
+              <div>
+                <img class="img-fluid" src="/img/card-hist-daily.png" />
+             </div>
+             
+             <div class="m-2">
+               <div class="d-flex flex-row justify-content-between">
+                  <span class="card-title">Historical Weather Data</span>
+                  <span class="card-icon fas fa-chart-area"></span>
+               </div>
+             </div>
+             
+             <div class="m-2">
+               Compare observed daily weather to long-term climate.
+             </div>
+             
+             <div class="disabled-text m-2">Data is not available for this location</div>
+        
+            </div>
+        </div>
+        
+      </div>
+
     </div>
-  </div>
+
+
+
+<div id="cards-viewport" class="padding-horizontal d-flex d-flex-column">
 
   <div id="card-row" class="padding-horizontal padding-top-half padding-bottom-half d-flex-row flex-justify" >
 
@@ -106,7 +240,6 @@ export default (config) => `
   </div>
 
   <div id="card-row" class="padding-horizontal padding-top-half padding-bottom-half d-flex-row flex-justify" >
-
 
     <div tabindex="4" id="data-card" class="card-historical-weather-data d-flex d-flex-column" data-page="historical_weather_data">
       <div id="card-image-row" class="d-flex-row d-flex-fill width-100">
@@ -182,7 +315,7 @@ ${footer(config)}
         crossorigin="anonymous"></script>
 <script src="https://unpkg.com/terraformer-arcgis-parser@1.0.5/terraformer-arcgis-parser.js"
         integrity="sha384-duFUjKTSNoxEspdJNwr83CUgRxclf0ueKJB9DU/Vbit6bfWgzvZsHW6H1JLBBXhp" crossorigin="anonymous"></script>
-<script type="${config.env === 'dev'? 'module':  'text/javascript'}" src="/js/cards_home.js"></script>
+<script type="${config.env === 'dev' ? 'module' : 'text/javascript'}" src="/js/cards_home.js"></script>
 </body>
 </html>
 `

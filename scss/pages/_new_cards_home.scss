@@ -1,0 +1,62 @@
+$search-input-background: #E9F1FC;
+$search-icon-color: #124086;
+
+.search-input-group {
+  border-color: $search-input-background;
+
+  input {
+    background-color: $search-input-background;
+    color: $search-icon-color;
+    font-weight: bold;
+    border: none;
+  }
+
+  input:focus {
+    color: $search-icon-color !important;
+    background-color: $search-input-background !important;
+  }
+
+  input::placeholder {
+    color: $search-icon-color;
+    opacity: 0.5;
+  }
+
+  button {
+    background-color: white;
+
+    span {
+      color: $search-icon-color;
+    }
+  }
+}
+
+.select-county-card {
+
+  border-color: $search-input-background;
+
+  .icon-info-box {
+    font-size: 1.5rem;
+  }
+
+  #default-city-county {
+    color: $search-icon-color;
+    font-weight: bold;
+  }
+}
+
+.card {
+  background-color: $search-input-background;
+}
+
+.card-title {
+  font-weight: bold;
+}
+
+.data-card {
+  cursor: pointer;
+
+  i {
+    font-size: 1.5rem;
+  }
+
+}
