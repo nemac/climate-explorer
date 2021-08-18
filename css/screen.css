@@ -16450,42 +16450,47 @@ input.input-inner-default:focus {
   background-color: #0D3064;
 }
 
-/* line 9, scss/template/_header.scss */
+/* line 10, scss/template/_header.scss */
+.navbar h2 {
+  color: white;
+}
+
+/* line 14, scss/template/_header.scss */
 .navbar .navbar-brand {
   background-color: #124086;
 }
 
-/* line 12, scss/template/_header.scss */
+/* line 17, scss/template/_header.scss */
 .navbar .navbar-brand i {
   color: white;
 }
 
-/* line 17, scss/template/_header.scss */
+/* line 22, scss/template/_header.scss */
 .navbar .nav-item {
   background-color: #124086;
 }
 
-/* line 20, scss/template/_header.scss */
+/* line 25, scss/template/_header.scss */
 .navbar .nav-item a {
   color: white;
 }
 
-/* line 25, scss/template/_header.scss */
+/* line 30, scss/template/_header.scss */
 .navbar .dropdown-menu {
   background-color: #D3E3F9;
 }
 
-/* line 28, scss/template/_header.scss */
+/* line 33, scss/template/_header.scss */
 .navbar .dropdown-menu a {
   color: #0D3064;
 }
 
-/* line 32, scss/template/_header.scss */
+/* line 37, scss/template/_header.scss */
 .navbar .dropdown-menu a:hover {
   background-color: #A6C6F3;
 }
 
-/* line 38, scss/template/_header.scss */
+/* line 43, scss/template/_header.scss */
 .navbar #crt-logo {
   max-height: 2rem;
   max-width: 2.5rem;

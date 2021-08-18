@@ -4,7 +4,12 @@ $navbar-dropdown-background: #D3E3F9;
 $navbar-hover-background: #A6C6F3;
 
 .navbar {
+
   background-color: $navbar-background;
+
+  h2 {
+    color: white;
+  }
 
   .navbar-brand {
     background-color: $navbar-button-background;
