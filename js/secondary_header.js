@@ -7,7 +7,6 @@ $(function () {
   addAboutlick('glossary');
   addAboutlick('faq');
 
-
   // adds a click event to got to card location
   function addAboutlick(selector) {
     // find the the about-item and add click event
@@ -33,3 +32,5 @@ $(function () {
   }
 
 });
+
+

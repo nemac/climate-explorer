@@ -1221,7 +1221,6 @@ function to_latin(value) {
   });
 }
 
-
 // IIFE
 if (typeof window.app === "undefined") {
   window.app = new App();

@@ -1941,6 +1941,8 @@ input.input-inner-default:focus  {
 #desktop-warning {
   display: none;
 }
+
+@import "template/header";
 @import "template/secondary_header";
 @import "template/main_header";
 
