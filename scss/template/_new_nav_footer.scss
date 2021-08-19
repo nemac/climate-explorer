@@ -1,0 +1,17 @@
+.footer-icon {
+  font-size: 2rem;
+}
+
+.footer-icon-title {
+  font-size: 1rem;
+}
+
+.footer-button {
+  transition: box-shadow .3s;
+}
+
+.footer-button:hover {
+  box-shadow: 0 0 11px rgba(33,33,33,.2);
+  box-sizing: border-box;
+  cursor: pointer;
+}

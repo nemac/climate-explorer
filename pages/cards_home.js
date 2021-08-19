@@ -16,7 +16,7 @@ export default (config) => `
   <meta property="og:image" content="/img/og.jpg">
 </head>
 
-<body class="width-100 height-100">
+<body class="d-flex d-flex-column min-vh-100">
 
   ${secondary_header(config)}
 
