@@ -54,9 +54,19 @@ $search-icon-color: #124086;
 
 .data-card {
   cursor: pointer;
+  transition: transform ease-in 200ms;
 
   i {
     font-size: 1.5rem;
   }
 
+  ul {
+    list-style-type: disc !important;
+    list-style-position: inside;
+  }
+
+}
+
+.data-card:hover {
+  transform: scale(1.02);
 }

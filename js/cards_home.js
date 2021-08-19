@@ -21,7 +21,7 @@ $(function () {
   if (city_label || area_label) {
     if (!is_conus_area) {
       $('.opt-not-ak').addClass('default-select-option-disabled');
-      $('.card-local-maps').addClass('card-disabled');
+      $('.card-local-maps').addClass('card-disabled');  //switch to querySelector(".data-card[data-page='climate_maps']")
     }
     if (is_alaska_area) {
       $('.card-high-tide-flooding').addClass('card-disabled');
