@@ -1,0 +1,32 @@
+@import "../color_utils";
+
+.stations-dropdown {
+  border-color: $input-box-border;
+
+  a {
+    text-align: left;
+    color: $navbar-button-background;
+  }
+
+  ul {
+    background-color: $search-input-background;
+
+    a {
+      transition: background-color 200ms ease-in;
+    }
+
+    a:hover {
+      background-color: $navbar-hover-background;
+    }
+  }
+}
+
+#stations-dropdown-menu {
+  background-color: $search-input-background;
+}
+
+/* this is to disable the carrot from bootstraps dropdown
+.dropdown-toggle::after {
+  display: none;
+}
+*/

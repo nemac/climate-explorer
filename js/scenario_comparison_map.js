@@ -493,6 +493,7 @@ export default class ScenarioComparisonMap {
         </div>
       </div>
     `);
+
     $(this.nodes.mapContainer).append(this.nodes.$controlsOverLayContainer);
 
     this.nodes.$controlsOverLayContainer.find('.movable.slider-div').draggable({

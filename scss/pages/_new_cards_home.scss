@@ -1,23 +1,22 @@
-$search-input-background: #E9F1FC;
-$search-icon-color: #124086;
+@import "../color_utils";
 
 .search-input-group {
-  border-color: $search-input-background;
+  border-color: $input-box-border;
 
   input {
     background-color: $search-input-background;
-    color: $search-icon-color;
+    color: $navbar-button-background;
     font-weight: bold;
     border: none;
   }
 
   input:focus {
-    color: $search-icon-color !important;
+    color: $navbar-button-background !important;
     background-color: $search-input-background !important;
   }
 
   input::placeholder {
-    color: $search-icon-color;
+    color: $navbar-button-background;
     opacity: 0.5;
   }
 
@@ -25,7 +24,7 @@ $search-icon-color: #124086;
     background-color: white;
 
     span {
-      color: $search-icon-color;
+      color: $navbar-button-background;
     }
   }
 }
@@ -39,7 +38,7 @@ $search-icon-color: #124086;
   }
 
   #default-city-county {
-    color: $search-icon-color;
+    color: $navbar-button-background;
     font-weight: bold;
   }
 }

@@ -17,9 +17,33 @@ export default (config) => `
   <meta property="og:image" content="/img/og.jpg">
 </head>
 
-<body class="width-100 height-100">
+<body>
 
   ${secondary_header(config)}
+
+    <div class="container-fluid">
+    
+      <div class="d-flex flex-row"> 
+        
+        <div class="input-group mb-3 search-input-group rounded-3 border border-1 w-75 me-2">
+          <button id="clear-location" class="btn search-icons" type="button"><span class="fas fa-times-circle"></span></button>
+          <input id="cards-search-input" class="form-control location-mapper" type="text" placeholder="Enter county or city name" aria-label="Enter county or city name">
+        </div>
+        
+        <div class="dropdown w-25 rounded-3 border border-1 mb-3 stations-dropdown">
+            <a class="btn dropdown-toggle w-100" href="#" role="button" id="stations-dropdown-menu" data-bs-toggle="dropdown" aria-expanded="false">
+              Stations
+            </a>
+          
+            <ul class="dropdown-menu w-100" aria-labelledby="dropdown">
+              <li><a class="dropdown-item" href="#">Action</a></li>
+              <li><a class="dropdown-item" href="#">Another action</a></li>
+              <li><a class="dropdown-item" href="#">Something else here</a></li>
+            </ul>
+        </div>
+      </div>
+    
+    </div>
 
     <div id="climate-maps-viewport" class="padding-horizontal d-flex d-flex-column">
 
@@ -158,14 +182,12 @@ export default (config) => `
         </div>
       </div>
 
-
       <div id="map-for-print-left" class="d-off d-none"></div>
       <div id="map-for-print-right" class="d-off d-none"></div>
 
       <div id="map-row" class="padding-horizontal padding-top-half width-100 height-100 d-flex" >
 
           <div id="map-wrap" class="map-wrap width-100 height-100 ">
-            <!-- <div id="chart-123" class="chart-canvas width-100 height-100" data-chart-ID="123"></div> -->
             <div id="local-climate-map-element" class="map-element"></div>
             <div id="map-message" class="map-nodata-message d-none"></div>
           </div>

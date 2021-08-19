@@ -6,7 +6,7 @@ export default (config) => `
 
 <div class="container-fluid"> 
 
-    <div class="d-flex mt-auto rounded-2 border border-top-1">
+    <div class="d-flex mt-auto fixed-bottom">
         <div class="col-3 p-2 mt-auto">
             <div class="d-flex flex-row justify-content-evenly"> 
                 <div class="d-flex flex-column align-items-center rounded-2 p-1 footer-button" data-page="cards_home">

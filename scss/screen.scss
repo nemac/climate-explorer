@@ -1954,7 +1954,8 @@ input.input-inner-default:focus  {
 // LOCATIOn
 
 @import "pages/climate_graphs";
-@import "pages/climate_maps";
+@import "pages/climate_maps"; // remove once bootstrap refactoring done
+@import "pages/new_climate_maps";
 @import "pages/historical_weather_data";
 @import "pages/historical_thresholds";
 @import "pages/high_tide_flooding";

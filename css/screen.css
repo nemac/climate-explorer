@@ -16407,52 +16407,52 @@ input.input-inner-default:focus {
   display: none;
 }
 
-/* line 6, scss/template/_header.scss */
+/* line 3, scss/template/_header.scss */
 .navbar {
   background-color: #0D3064;
 }
 
-/* line 10, scss/template/_header.scss */
+/* line 7, scss/template/_header.scss */
 .navbar h2 {
   color: white;
 }
 
-/* line 14, scss/template/_header.scss */
+/* line 11, scss/template/_header.scss */
 .navbar .navbar-brand {
   background-color: #124086;
 }
 
-/* line 17, scss/template/_header.scss */
+/* line 14, scss/template/_header.scss */
 .navbar .navbar-brand i {
   color: white;
 }
 
-/* line 22, scss/template/_header.scss */
+/* line 19, scss/template/_header.scss */
 .navbar .nav-item {
   background-color: #124086;
 }
 
-/* line 25, scss/template/_header.scss */
+/* line 22, scss/template/_header.scss */
 .navbar .nav-item a {
   color: white;
 }
 
-/* line 30, scss/template/_header.scss */
+/* line 27, scss/template/_header.scss */
 .navbar .dropdown-menu {
   background-color: #D3E3F9;
 }
 
-/* line 33, scss/template/_header.scss */
+/* line 30, scss/template/_header.scss */
 .navbar .dropdown-menu a {
   color: #0D3064;
 }
 
-/* line 37, scss/template/_header.scss */
+/* line 34, scss/template/_header.scss */
 .navbar .dropdown-menu a:hover {
   background-color: #A6C6F3;
 }
 
-/* line 43, scss/template/_header.scss */
+/* line 40, scss/template/_header.scss */
 .navbar #crt-logo {
   max-height: 2rem;
   max-width: 2.5rem;
@@ -19318,6 +19318,42 @@ input.input-inner:focus {
   text-decoration: underline;
 }
 
+/* line 3, scss/pages/_new_climate_maps.scss */
+.stations-dropdown {
+  border-color: #DEE2E6;
+}
+
+/* line 6, scss/pages/_new_climate_maps.scss */
+.stations-dropdown a {
+  text-align: left;
+  color: #124086;
+}
+
+/* line 11, scss/pages/_new_climate_maps.scss */
+.stations-dropdown ul {
+  background-color: #E9F1FC;
+}
+
+/* line 14, scss/pages/_new_climate_maps.scss */
+.stations-dropdown ul a {
+  transition: background-color 200ms ease-in;
+}
+
+/* line 18, scss/pages/_new_climate_maps.scss */
+.stations-dropdown ul a:hover {
+  background-color: #A6C6F3;
+}
+
+/* line 24, scss/pages/_new_climate_maps.scss */
+#stations-dropdown-menu {
+  background-color: #E9F1FC;
+}
+
+/* this is to disable the carrot from bootstraps dropdown
+.dropdown-toggle::after {
+  display: none;
+}
+*/
 /* line 5, scss/pages/_historical_weather_data.scss */
 .d-off {
   position: absolute;
@@ -21308,12 +21344,12 @@ input.input-inner:focus {
   box-shadow: 0 0 8px rgba(0, 88, 207, 0.25);
 }
 
-/* line 4, scss/pages/_new_cards_home.scss */
+/* line 3, scss/pages/_new_cards_home.scss */
 .search-input-group {
-  border-color: #E9F1FC;
+  border-color: #DEE2E6;
 }
 
-/* line 7, scss/pages/_new_cards_home.scss */
+/* line 6, scss/pages/_new_cards_home.scss */
 .search-input-group input {
   background-color: #E9F1FC;
   color: #124086;
@@ -21321,72 +21357,72 @@ input.input-inner:focus {
   border: none;
 }
 
-/* line 14, scss/pages/_new_cards_home.scss */
+/* line 13, scss/pages/_new_cards_home.scss */
 .search-input-group input:focus {
   color: #124086 !important;
   background-color: #E9F1FC !important;
 }
 
-/* line 19, scss/pages/_new_cards_home.scss */
+/* line 18, scss/pages/_new_cards_home.scss */
 .search-input-group input::placeholder {
   color: #124086;
   opacity: 0.5;
 }
 
-/* line 24, scss/pages/_new_cards_home.scss */
+/* line 23, scss/pages/_new_cards_home.scss */
 .search-input-group button {
   background-color: white;
 }
 
-/* line 27, scss/pages/_new_cards_home.scss */
+/* line 26, scss/pages/_new_cards_home.scss */
 .search-input-group button span {
   color: #124086;
 }
 
-/* line 33, scss/pages/_new_cards_home.scss */
+/* line 32, scss/pages/_new_cards_home.scss */
 .select-county-card {
   border-color: #E9F1FC;
 }
 
-/* line 37, scss/pages/_new_cards_home.scss */
+/* line 36, scss/pages/_new_cards_home.scss */
 .select-county-card .icon-info-box {
   font-size: 1.5rem;
 }
 
-/* line 41, scss/pages/_new_cards_home.scss */
+/* line 40, scss/pages/_new_cards_home.scss */
 .select-county-card #default-city-county {
   color: #124086;
   font-weight: bold;
 }
 
-/* line 47, scss/pages/_new_cards_home.scss */
+/* line 46, scss/pages/_new_cards_home.scss */
 .card {
   background-color: #E9F1FC;
 }
 
-/* line 51, scss/pages/_new_cards_home.scss */
+/* line 50, scss/pages/_new_cards_home.scss */
 .cards-home-title {
   font-weight: bold;
 }
 
-/* line 55, scss/pages/_new_cards_home.scss */
+/* line 54, scss/pages/_new_cards_home.scss */
 .data-card {
   cursor: pointer;
   transition: transform ease-in 200ms;
 }
 
-/* line 59, scss/pages/_new_cards_home.scss */
+/* line 58, scss/pages/_new_cards_home.scss */
 .data-card i {
   font-size: 1.5rem;
 }
 
-/* line 63, scss/pages/_new_cards_home.scss */
+/* line 62, scss/pages/_new_cards_home.scss */
 .data-card ul {
   list-style-type: disc !important;
   list-style-position: inside;
 }
 
-/* line 70, scss/pages/_new_cards_home.scss */
+/* line 69, scss/pages/_new_cards_home.scss */
 .data-card:hover {
   transform: scale(1.02);
 }
@@ -22803,7 +22839,7 @@ input.input-inner:focus {
   cursor: default;
 }
 
-/* line 1995, scss/screen.scss */
+/* line 1996, scss/screen.scss */
 .ui-autocomplete {
   position: absolute;
   top: 0;
@@ -22811,7 +22847,7 @@ input.input-inner:focus {
   cursor: default;
 }
 
-/* line 2001, scss/screen.scss */
+/* line 2002, scss/screen.scss */
 .ui-menu {
   display: block;
   padding: 10px;
@@ -22824,12 +22860,12 @@ input.input-inner:focus {
   box-shadow: 0 0 12px rgba(35, 58, 112, 0.25);
 }
 
-/* line 2010, scss/screen.scss */
+/* line 2011, scss/screen.scss */
 .ui-menu .ui-menu {
   position: absolute;
 }
 
-/* line 2014, scss/screen.scss */
+/* line 2015, scss/screen.scss */
 .ui-menu .ui-menu-item {
   position: relative;
   margin: 0;
@@ -22837,7 +22873,7 @@ input.input-inner:focus {
   cursor: pointer;
 }
 
-/* line 2021, scss/screen.scss */
+/* line 2022, scss/screen.scss */
 .ui-menu .ui-menu-divider {
   margin: 5px 0;
   height: 0;
@@ -22846,12 +22882,12 @@ input.input-inner:focus {
   border-width: 1px 0 0 0;
 }
 
-/* line 2030, scss/screen.scss */
+/* line 2031, scss/screen.scss */
 .ui-accordion .ui-accordion-header {
   outline: none;
 }
 
-/* line 2033, scss/screen.scss */
+/* line 2034, scss/screen.scss */
 .ui-accordion .ui-accordion-header .ui-accordion-header-icon {
   display: inline-block;
   position: static;
@@ -22860,14 +22896,14 @@ input.input-inner:focus {
   overflow: visible;
 }
 
-/* line 2043, scss/screen.scss */
+/* line 2044, scss/screen.scss */
 .accordion-plain .ui-accordion-header {
   padding: 8px 0;
   color: #233a70;
   line-height: 28px;
 }
 
-/* line 2048, scss/screen.scss */
+/* line 2049, scss/screen.scss */
 .accordion-plain .ui-accordion-header .ui-accordion-header-icon {
   display: block;
   float: left;
@@ -22877,17 +22913,17 @@ input.input-inner:focus {
   line-height: 28px;
 }
 
-/* line 2058, scss/screen.scss */
+/* line 2059, scss/screen.scss */
 .accordion-plain .accordion-text {
   padding: 20px 40px;
 }
 
-/* line 2064, scss/screen.scss */
+/* line 2065, scss/screen.scss */
 .tabs-plain .tabs-plain-list li {
   display: inline-block;
 }
 
-/* line 2067, scss/screen.scss */
+/* line 2068, scss/screen.scss */
 .tabs-plain .tabs-plain-list li a {
   display: block;
   padding: 8px 10px;
@@ -23026,13 +23062,13 @@ https://raw.github.com/shagstrom/split-pane/master/LICENSE
   cursor: row-resize;
 }
 
-/* line 2081, scss/screen.scss */
+/* line 2082, scss/screen.scss */
 .pretty-split-pane-frame .split-pane > .split-pane-divider.dragged.touch {
   background: blue;
   opacity: 0.25;
 }
 
-/* line 2085, scss/screen.scss */
+/* line 2086, scss/screen.scss */
 .split-pane-divider {
   right: 50%;
   width: 12px;
@@ -23042,7 +23078,7 @@ https://raw.github.com/shagstrom/split-pane/master/LICENSE
   box-shadow: 0 0 10px rgba(35, 58, 112, 0.25);
 }
 
-/* line 2091, scss/screen.scss */
+/* line 2092, scss/screen.scss */
 .pane-content {
   position: absolute;
   top: 0;
@@ -23052,18 +23088,18 @@ https://raw.github.com/shagstrom/split-pane/master/LICENSE
   overflow: auto;
 }
 
-/* line 2095, scss/screen.scss */
+/* line 2096, scss/screen.scss */
 #pane-left {
   right: 50%;
   margin-right: 12px;
 }
 
-/* line 2099, scss/screen.scss */
+/* line 2100, scss/screen.scss */
 #pane-right {
   width: 50%;
 }
 
-/* line 2103, scss/screen.scss */
+/* line 2104, scss/screen.scss */
 .ui-tooltip {
   background-color: #0058cf;
   color: white;
@@ -23073,7 +23109,7 @@ https://raw.github.com/shagstrom/split-pane/master/LICENSE
   padding-top: 0;
 }
 
-/* line 2112, scss/screen.scss */
+/* line 2113, scss/screen.scss */
 .feedback-trigger-small {
   position: absolute;
   cursor: pointer;
@@ -23105,13 +23141,13 @@ https://raw.github.com/shagstrom/split-pane/master/LICENSE
 }
 
 @media screen and (max-width: 499px) {
-  /* line 2112, scss/screen.scss */
+  /* line 2113, scss/screen.scss */
   .feedback-trigger-small {
     top: calc(100% - 128px);
   }
 }
 
-/* line 2136, scss/screen.scss */
+/* line 2137, scss/screen.scss */
 .feedback-trigger-small:hover {
   background-color: #195abc;
   -webkit-box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.239);
@@ -23119,7 +23155,7 @@ https://raw.github.com/shagstrom/split-pane/master/LICENSE
   box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.239);
 }
 
-/* line 2142, scss/screen.scss */
+/* line 2143, scss/screen.scss */
 #feedback-close-button-yes, #feedback-close-button-no {
   background-color: #FBFCFE;
   line-height: 32px;
@@ -23136,12 +23172,12 @@ https://raw.github.com/shagstrom/split-pane/master/LICENSE
   height: 30px;
 }
 
-/* line 2153, scss/screen.scss */
+/* line 2154, scss/screen.scss */
 #feedback-close-button-yes:hover, #feedback-close-button-no:hover {
   background-color: #beceef;
 }
 
-/* line 2158, scss/screen.scss */
+/* line 2159, scss/screen.scss */
 .feedback-trigger {
   position: absolute;
   background-color: #124086;
@@ -23164,32 +23200,32 @@ https://raw.github.com/shagstrom/split-pane/master/LICENSE
 }
 
 @media screen and (max-width: 768px) {
-  /* line 2158, scss/screen.scss */
+  /* line 2159, scss/screen.scss */
   .feedback-trigger {
     width: 100%;
     left: 0px;
   }
 }
 
-/* line 2172, scss/screen.scss */
+/* line 2173, scss/screen.scss */
 .feedback-trigger .feedback-text {
   padding-left: 6px;
 }
 
-/* line 2176, scss/screen.scss */
+/* line 2177, scss/screen.scss */
 .feedback-trigger .feedback-icon {
   font-size: 18px;
   vertical-align: middle;
 }
 
 @media screen and (max-width: 768px) {
-  /* line 2176, scss/screen.scss */
+  /* line 2177, scss/screen.scss */
   .feedback-trigger .feedback-icon {
     display: none;
   }
 }
 
-/* line 2192, scss/screen.scss */
+/* line 2193, scss/screen.scss */
 .feedback-trigger:hover {
   background-color: #195abc;
   -webkit-box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.239);
@@ -23197,7 +23233,7 @@ https://raw.github.com/shagstrom/split-pane/master/LICENSE
   box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.239);
 }
 
-/* line 2198, scss/screen.scss */
+/* line 2199, scss/screen.scss */
 .about-tool-row {
   height: auto;
   align-items: start !important;
@@ -23205,7 +23241,7 @@ https://raw.github.com/shagstrom/split-pane/master/LICENSE
   justify-content: start !important;
 }
 
-/* line 2204, scss/screen.scss */
+/* line 2205, scss/screen.scss */
 .about-tool-row.about-tool-equals {
   align-items: center !important;
   align-content: center !important;
@@ -23214,7 +23250,7 @@ https://raw.github.com/shagstrom/split-pane/master/LICENSE
   font-weight: 500;
 }
 
-/* line 2212, scss/screen.scss */
+/* line 2213, scss/screen.scss */
 .about-tool-row .about-tool-content {
   line-height: unset !important;
   margin: 0px !important;
@@ -23222,41 +23258,41 @@ https://raw.github.com/shagstrom/split-pane/master/LICENSE
   padding-top: 12px;
 }
 
-/* line 2218, scss/screen.scss */
+/* line 2219, scss/screen.scss */
 .about-tool-row .about-tool-content.img-holder-left {
   justify-content: start !important;
 }
 
-/* line 2220, scss/screen.scss */
+/* line 2221, scss/screen.scss */
 .about-tool-row .about-tool-content.img-holder-left img {
   border: 1px solid;
 }
 
 @media screen and (max-width: 900px) {
-  /* line 2218, scss/screen.scss */
+  /* line 2219, scss/screen.scss */
   .about-tool-row .about-tool-content.img-holder-left {
     justify-content: center !important;
   }
 }
 
-/* line 2228, scss/screen.scss */
+/* line 2229, scss/screen.scss */
 .about-tool-row .about-tool-content.img-holder-right {
   justify-content: flex-end !important;
 }
 
-/* line 2230, scss/screen.scss */
+/* line 2231, scss/screen.scss */
 .about-tool-row .about-tool-content.img-holder-right img {
   border: 1px solid;
 }
 
 @media screen and (max-width: 900px) {
-  /* line 2228, scss/screen.scss */
+  /* line 2229, scss/screen.scss */
   .about-tool-row .about-tool-content.img-holder-right {
     justify-content: center !important;
   }
 }
 
-/* line 2238, scss/screen.scss */
+/* line 2239, scss/screen.scss */
 .about-tool-row .about-tool-content img {
   display: block;
   max-width: 100%;
@@ -23265,33 +23301,33 @@ https://raw.github.com/shagstrom/split-pane/master/LICENSE
   height: 100%;
 }
 
-/* line 2246, scss/screen.scss */
+/* line 2247, scss/screen.scss */
 .about-tool-row .about-tool-content .sample-img {
   max-height: 200px;
   width: auto;
 }
 
-/* line 2252, scss/screen.scss */
+/* line 2253, scss/screen.scss */
 .about-tool-row .btn-chart-text {
   padding: 12px;
 }
 
 @media screen and (max-width: 900px) {
-  /* line 2198, scss/screen.scss */
+  /* line 2199, scss/screen.scss */
   .about-tool-row {
     width: 100% !important;
     border-bottom: 1px solid #124086;
   }
-  /* line 2261, scss/screen.scss */
+  /* line 2262, scss/screen.scss */
   .about-tool-row .img-btn-chart {
     width: 50% !important;
     height: 50% !important;
   }
-  /* line 2266, scss/screen.scss */
+  /* line 2267, scss/screen.scss */
   .about-tool-row .btn-selector {
     width: 100% !important;
   }
-  /* line 2269, scss/screen.scss */
+  /* line 2270, scss/screen.scss */
   .about-tool-row .btn-selector.circle-box-left {
     -webkit-border-radius: 5px;
     -moz-border-radius: 5px;
@@ -23299,7 +23335,7 @@ https://raw.github.com/shagstrom/split-pane/master/LICENSE
     -o-border-radius: 5px;
     border-radius: 5px;
   }
-  /* line 2272, scss/screen.scss */
+  /* line 2273, scss/screen.scss */
   .about-tool-row .btn-selector.circle-box-right {
     -webkit-border-radius: 5px;
     -moz-border-radius: 5px;
@@ -23307,7 +23343,7 @@ https://raw.github.com/shagstrom/split-pane/master/LICENSE
     -o-border-radius: 5px;
     border-radius: 5px;
   }
-  /* line 2275, scss/screen.scss */
+  /* line 2276, scss/screen.scss */
   .about-tool-row .btn-selector.circle-box-center {
     -webkit-border-radius: 5px;
     -moz-border-radius: 5px;
@@ -23317,23 +23353,23 @@ https://raw.github.com/shagstrom/split-pane/master/LICENSE
   }
 }
 
-/* line 2285, scss/screen.scss */
+/* line 2286, scss/screen.scss */
 body:not(.is-ak-area) .opt-only-ak, body:not(.is-island-area) .opt-only-island {
   display: none !important;
 }
 
-/* line 2289, scss/screen.scss */
+/* line 2290, scss/screen.scss */
 body.is-ak-area .opt-not-ak, body.is-island-area .opt-not-island {
   display: none !important;
 }
 
-/* line 2293, scss/screen.scss */
+/* line 2294, scss/screen.scss */
 #tidal-chart {
   display: flex;
   flex-direction: column;
 }
 
-/* line 2298, scss/screen.scss */
+/* line 2299, scss/screen.scss */
 .chart {
   flex: 1;
   width: 100%;
