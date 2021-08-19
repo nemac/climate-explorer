@@ -30,9 +30,9 @@ export default (config) => `
       
       <div class="select-county-card rounded-3 border border-1 mb-3">
         
-        <div class="p-2">
-          <i class="fas fa-th-large icon-info-box"></i>
-          <span class="text-info-box" >Select one of the following for</span>
+        <div class="p-2 d-flex align-items-center">
+          <i class="fas fa-th-large icon-info-box me-2"></i>
+          <span class="text-info-box me-1">Select one of the following for</span>
           <span id="default-city-county"></span>
         </div>
         
@@ -47,8 +47,8 @@ export default (config) => `
              </div>
              
              <div class="m-2">
-               <div class="d-flex flex-row justify-content-between">
-                  <span class="card-title">Climate Maps</span>
+               <div class="d-flex flex-row align-items-center justify-content-between">
+                  <span class="cards-home-title">Climate Maps</span>
                   <i class="fas fa-map-marked-alt"></i>
                </div>
              </div>
@@ -70,7 +70,7 @@ export default (config) => `
              
              <div class="m-2">
                <div class="d-flex flex-row justify-content-between">
-                  <span class="card-title">Climate Graphs</span>
+                  <span class="cards-home-title">Climate Graphs</span>
                   <i class="fas fa-chart-line icon-size"></i>
                </div>
              </div>
@@ -92,7 +92,7 @@ export default (config) => `
              
              <div class="m-2">
                <div class="d-flex flex-row justify-content-between">
-                  <span class="card-title">High-Tide Flooding</span>
+                  <span class="cards-home-title">High-Tide Flooding</span>
                   <i class="fas fa-water"></i>
                </div>
              </div>
@@ -119,7 +119,7 @@ export default (config) => `
              
              <div class="m-2">
                <div class="d-flex flex-row justify-content-between">
-                  <span class="card-title">Historical Weather Data</span>
+                  <span class="cards-home-title">Historical Weather Data</span>
                   <i class="fas fa-chart-area"></i>
                </div>
              </div>
@@ -141,7 +141,7 @@ export default (config) => `
              
              <div class="m-2">
                <div class="d-flex flex-row justify-content-between">
-                  <span class="card-title">Historical Thresholds</span>
+                  <span class="cards-home-title">Historical Thresholds</span>
                   <i class="fas fa-chart-area"></i>
                </div>
              </div>
@@ -159,7 +159,7 @@ export default (config) => `
             <div class="col-sm-12 p-0 card border border-1 rounded shadow-sm data-card h-100" data-page="next_steps">
                 <div class="m-2"> 
                   <div class="d-flex flex-row justify-content-between">
-                     <span class="card-title">Ready to plan for resilience?</span>
+                     <span class="cards-home-title">Ready to plan for resilience?</span>
                      <i class="fas fa-map-signs"></i>
                   </div>
                 </div>
