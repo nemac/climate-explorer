@@ -17769,20 +17769,10 @@ input.input-inner:focus {
   }
 }
 
-/* line 289, scss/pages/_climate_graphs.scss */
-#chartmap-wrapper, #time-wrapper {
-  min-width: 160px;
-}
-
 /* line 293, scss/pages/_climate_graphs.scss */
 #chartmap-wrapper {
   padding-left: 0px !important;
   margin-left: -3px;
-}
-
-/* line 298, scss/pages/_climate_graphs.scss */
-#time-wrapper {
-  margin-left: -12px;
 }
 
 /* line 302, scss/pages/_climate_graphs.scss */
@@ -18770,23 +18760,6 @@ input.input-inner:focus {
   }
 }
 
-/* line 74, scss/pages/_climate_maps.scss */
-#climate-maps-viewport #time-wrapper {
-  min-width: 320px;
-}
-
-@media screen and (max-width: 1024px) {
-  /* line 74, scss/pages/_climate_maps.scss */
-  #climate-maps-viewport #time-wrapper {
-    min-width: 280px;
-  }
-}
-
-/* line 79, scss/pages/_climate_maps.scss */
-#climate-maps-viewport #time-wrapper .btn-default {
-  font-size: .9rem !important;
-}
-
 /* line 85, scss/pages/_climate_maps.scss */
 .map-nodata-message {
   z-index: 500;
@@ -19319,34 +19292,56 @@ input.input-inner:focus {
 }
 
 /* line 3, scss/pages/_new_climate_maps.scss */
+.dropdown-menu {
+  max-height: 15rem;
+  overflow: auto;
+}
+
+/* line 8, scss/pages/_new_climate_maps.scss */
 .stations-dropdown {
   border-color: #DEE2E6;
 }
 
-/* line 6, scss/pages/_new_climate_maps.scss */
+/* line 11, scss/pages/_new_climate_maps.scss */
 .stations-dropdown a {
   text-align: left;
   color: #124086;
 }
 
-/* line 11, scss/pages/_new_climate_maps.scss */
+/* line 16, scss/pages/_new_climate_maps.scss */
 .stations-dropdown ul {
   background-color: #E9F1FC;
 }
 
-/* line 14, scss/pages/_new_climate_maps.scss */
+/* line 19, scss/pages/_new_climate_maps.scss */
 .stations-dropdown ul a {
   transition: background-color 200ms ease-in;
 }
 
-/* line 18, scss/pages/_new_climate_maps.scss */
+/* line 23, scss/pages/_new_climate_maps.scss */
 .stations-dropdown ul a:hover {
   background-color: #A6C6F3;
 }
 
-/* line 24, scss/pages/_new_climate_maps.scss */
+/* line 29, scss/pages/_new_climate_maps.scss */
 #stations-dropdown-menu {
   background-color: #E9F1FC;
+}
+
+/* line 33, scss/pages/_new_climate_maps.scss */
+.info-section {
+  background-color: #E9F1FC;
+}
+
+/* line 37, scss/pages/_new_climate_maps.scss */
+.info-section span, .info-section i {
+  color: #124086;
+  font-weight: bold;
+}
+
+/* line 42, scss/pages/_new_climate_maps.scss */
+.info-section .border {
+  border-color: #DEE2E6;
 }
 
 /* this is to disable the carrot from bootstraps dropdown

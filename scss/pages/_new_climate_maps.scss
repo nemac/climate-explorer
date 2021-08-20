@@ -1,5 +1,10 @@
 @import "../color_utils";
 
+.dropdown-menu {
+  max-height: 15rem;
+  overflow: auto;
+}
+
 .stations-dropdown {
   border-color: $input-box-border;
 
@@ -23,6 +28,21 @@
 
 #stations-dropdown-menu {
   background-color: $search-input-background;
+}
+
+.info-section {
+
+  background-color: $search-input-background;
+
+  span, i {
+    color: $navbar-button-background;
+    font-weight: bold;
+  }
+
+  .border {
+    border-color: $input-box-border;
+  }
+
 }
 
 /* this is to disable the carrot from bootstraps dropdown

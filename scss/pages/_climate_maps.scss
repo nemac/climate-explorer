@@ -71,15 +71,15 @@
     }
   }
 
-  #time-wrapper {
-    min-width: 320px;
-    @include tablet {
-      min-width: 280px;
-    }
-    .btn-default {
-      font-size: .9rem !important
-    }
-  }
+  //#time-wrapper {
+  //  min-width: 320px;
+  //  @include tablet {
+  //    min-width: 280px;
+  //  }
+  //  .btn-default {
+  //    font-size: .9rem !important
+  //  }
+  //}
 }
 
 .map-nodata-message {

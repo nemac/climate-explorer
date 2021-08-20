@@ -36,61 +36,150 @@ export default (config) => `
             </a>
           
             <ul class="dropdown-menu w-100" aria-labelledby="dropdown">
-              <li><a class="dropdown-item" href="#">Action</a></li>
-              <li><a class="dropdown-item" href="#">Another action</a></li>
-              <li><a class="dropdown-item" href="#">Something else here</a></li>
+              <li><a class="dropdown-item" href="#">Station 1</a></li>
+              <li><a class="dropdown-item" href="#">Station 2</a></li>
+              <li><a class="dropdown-item" href="#">Station 3</a></li>
             </ul>
         </div>
       </div>
     
+      <div class="info-section">
+          <div class="border border-1 rounded-3"> 
+            <div class="m-3 mb-3 btn" type="button" data-bs-toggle="collapse" data-bs-target="#collapse-info-section" aria-expanded="true" aria-controls="collapse-info-section">
+                <i class="fas fa-map-marked-alt me-2"></i>
+                <span id="default-city-county"></span>
+                <span> - </span>
+                <span id="default-chart-map-variable" data-value="tmax">Average Daily Maximum Temp (°F)</span>
+            </div>
+            <div class="row m-3 collapse show" id="collapse-info-section"> 
+              
+              <div class="d-flex flex-row">
+                  <div class="d-flex flex-row align-items-center"> 
+                    <div class="dropdown rounded-3 border border-1 me-1 w-100">
+                      <a class="btn dropdown-toggle w-100" href="#" role="button" id="stations-dropdown-menu" data-bs-toggle="dropdown" aria-expanded="true">
+                        Stations
+                      </a>
+                    
+                      <ul class="dropdown-menu w-100" aria-labelledby="dropdown">
+                          ${variable_selector(config)}
+                      </ul>
+                    </div>
+                    <span class="fa fa-question ms-2 me-2" aria-hidden="true"></span>
+                  </div>
+                  
+                  <div class=""> 
+                    <div class="btn-group w-100" role="group"> 
+                      <input type="radio" class="btn-check" name="graph-map" id="graph-selection" autocomplete="off" data-page="climate_graphs"  data-sel="chartmap-select-vis">
+                      <label class="btn btn-secondary ms-1" for="graph-selection">Graph</label>
+                      
+                      <input type="radio" class="btn-check" name="graph-map" id="map-selection" autocomplete="off" data-page="climate_maps"  data-value="map" data-sel="chartmap-select-vis">
+                      <label class="btn btn-primary me-1" for="map-selection">Map</label>
+                    </div>
+                  </div>
+                  
+                  <div id="time-wrapper" class="btn-group ms-1 me-1">
+                    <input type="radio" class="btn-check" name="annual-season" id="annual-selection" autocomplete="off" data-value="annual" data-sel="time-select-vis">
+                    <label class="btn btn-secondary ms-1" for="annual-selection">Annual</label>
+                    
+                    <input type="radio" class="btn-check" name="annual-season" id="spring-selection" autocomplete="off" data-value="spring" data-sel="time-select-vis">
+                    <label class="btn btn-secondary" for="spring-selection">Spring</label>
+                    
+                    <input type="radio" class="btn-check" name="annual-season" id="summer-selection" autocomplete="off" data-value="summer" data-sel="time-select-vis">
+                    <label class="btn btn-secondary" for="summer-selection">Summer</label>
+                    
+                    <input type="radio" class="btn-check" name="annual-season" id="fall-selection" autocomplete="off" data-value="fall" data-sel="time-select-vis">
+                    <label class="btn btn-secondary" for="fall-selection">Fall</label>                  
+                    
+                    <input type="radio" class="btn-check" name="annual-season" id="winter-selection" autocomplete="off" data-value="winter" data-sel="time-select-vis">
+                    <label class="btn btn-secondary me-1" for="winter-selection">Winter</label>
+                  </div>
+                  
+                  <div class="col-12"> 
+                  <div class="dropdown rounded-3 border border-1 me-1">
+                    <a class="btn dropdown-toggle w-100" href="#" role="button" id="stations-dropdown-menu" data-bs-toggle="dropdown" aria-expanded="false">
+                      Downloads
+                    </a>
+                  
+                    <ul class="dropdown-menu w-100" aria-labelledby="dropdown">
+                      <li><a class="dropdown-item" href="#">Station 1</a></li>
+                      <li><a class="dropdown-item" href="#">Station 2</a></li>
+                      <li><a class="dropdown-item" href="#">Station 3</a></li>
+                    </ul>
+                  </div>
+                </div>
+              </div>
+              
+              <div class="col-3 p-0">   
+                <div class="col-12 d-flex flex-row align-items-center"> 
+                  <div class="dropdown rounded-3 border border-1 me-1 w-100">
+                    <a class="btn dropdown-toggle w-100" href="#" role="button" id="stations-dropdown-menu" data-bs-toggle="dropdown" aria-expanded="true">
+                      Stations
+                    </a>
+                  
+                    <ul class="dropdown-menu w-100" aria-labelledby="dropdown">
+                        ${variable_selector(config)}
+                    </ul>
+                  </div>
+                  <span class="fa fa-question ms-2 me-2" aria-hidden="true"></span>
+                </div>
+                  
+              </div>
+
+              <div class="col-2 p-0"> 
+                <div class="col-12"> 
+                  <div class="btn-group w-100" role="group"> 
+                    <input type="radio" class="btn-check" name="graph-map" id="graph-selection" autocomplete="off" data-page="climate_graphs"  data-sel="chartmap-select-vis">
+                    <label class="btn btn-secondary ms-1" for="graph-selection">Graph</label>
+                    
+                    <input type="radio" class="btn-check" name="graph-map" id="map-selection" autocomplete="off" data-page="climate_maps"  data-value="map" data-sel="chartmap-select-vis">
+                    <label class="btn btn-primary me-1" for="map-selection">Map</label>
+                  </div>
+                </div>
+              </div>
+              
+              <div class="col-5 p-0"> 
+                <div id="time-wrapper" class="col-12 btn-group ms-1 me-1">
+                  <input type="radio" class="btn-check" name="annual-season" id="annual-selection" autocomplete="off" data-value="annual" data-sel="time-select-vis">
+                  <label class="btn btn-secondary ms-1" for="annual-selection">Annual</label>
+                  
+                  <input type="radio" class="btn-check" name="annual-season" id="spring-selection" autocomplete="off" data-value="spring" data-sel="time-select-vis">
+                  <label class="btn btn-secondary" for="spring-selection">Spring</label>
+                  
+                  <input type="radio" class="btn-check" name="annual-season" id="summer-selection" autocomplete="off" data-value="summer" data-sel="time-select-vis">
+                  <label class="btn btn-secondary" for="summer-selection">Summer</label>
+                  
+                  <input type="radio" class="btn-check" name="annual-season" id="fall-selection" autocomplete="off" data-value="fall" data-sel="time-select-vis">
+                  <label class="btn btn-secondary" for="fall-selection">Fall</label>                  
+                  
+                  <input type="radio" class="btn-check" name="annual-season" id="winter-selection" autocomplete="off" data-value="winter" data-sel="time-select-vis">
+                  <label class="btn btn-secondary me-1" for="winter-selection">Winter</label>
+                </div>
+              </div>
+              
+              <div class="col-2 p-0"> 
+                <div class="col-12"> 
+                  <div class="dropdown rounded-3 border border-1 me-1">
+                    <a class="btn dropdown-toggle w-100" href="#" role="button" id="stations-dropdown-menu" data-bs-toggle="dropdown" aria-expanded="false">
+                      Downloads
+                    </a>
+                  
+                    <ul class="dropdown-menu w-100" aria-labelledby="dropdown">
+                      <li><a class="dropdown-item" href="#">Station 1</a></li>
+                      <li><a class="dropdown-item" href="#">Station 2</a></li>
+                      <li><a class="dropdown-item" href="#">Station 3</a></li>
+                    </ul>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div> 
+      </div>
     </div>
 
     <div id="climate-maps-viewport" class="padding-horizontal d-flex d-flex-column">
 
-      <div id="search-row" class="padding-horizontal d-flex-row flex-justify padding-top padding-bottom-half d-flex-justify" >
-
-        <div class="rounded-box-secondary input-outer padding-horizontal bottom-padding default-btn-height search-box-secondary width-65">
-          <input  tabindex="1" id="cards-search-input" type="text" class="location-mapper input-inner-default border-none default-btn-height" autocomplete="off" placeholder="Enter county or city name">
-          <span class="icon icon-search search-default float-right padding-default"></span>
-          <div id="clear-location-wrapper" class="">
-            <span id="clear-location" data-page="climate_maps"  class="fas fa-times-circle"></span>
-          </div>
-        </div>
-
-        <div id="stations-select-wrapper" class="rounded-choice-box padding-horizontal default-btn-height top-select-wrapper d-flex-center disabled">
-          <div class="select">
-            <div id="stations-select-vis" class="select-styled disabled" data-value="none">Stations</div>
-            <ul class="select-options" style="display: none;">
-              <li data-value="none" class="default-select-option">Stations</li>
-              <li data-value="station-1" class="default-select-option">Stations 1</li>
-              <li data-value="station-2" class="default-select-option">Stations 2</li>
-              <li data-value="station-3" class="default-select-option">Stations 3</li>
-              <li data-value="station-4" class="default-select-option">Stations 4</li>
-            </ul>
-          </div>
-        </div>
-
-      </div>
-
       <div id="info-row" class="padding-vertical padding-horizontal width-100" >
         <div class="rounded-filters-box padding-default width-100">
-
-          <div class="filter-border-bottom d-flex-row">
-
-            <div id="info-text-wrapper" class="width-90">
-              <i class="fas fa-map-marked-alt icon-info-box"></i>
-              <span id="default-city-county" class="text-info-box"></span>
-              <span id="default-dash" class="text-info-box" > - </span>
-              <span id="default-chart-map-variable" class="text-info-box" data-value="tmax">Average Daily Maximum Temp (°F)</span>
-            </div>
-
-            <div id="filters-toggle" class="width-10">
-              <div class="select filters-toggle-select">
-                <div id="filters-toggle-select-vis" class="select-styled" data-value="filter"></div>
-              </div>
-            </div>
-
-          </div>
 
           <div id="filters-row" class="d-flex-row flex-justify padding-top d-flex-left" >
 
