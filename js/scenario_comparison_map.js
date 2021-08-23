@@ -454,13 +454,12 @@ export default class ScenarioComparisonMap {
       <div class="bottom-scenario-controls">
         <div class="left-scenario-controls">
           <div class="left-scenario-dropdown">
-            <div id="leftScenario-select-wrapper"
-                 class="rounded-choice-box padding-horizontal-half padding-vertical-half default-btn-height d-flex-center width-100">
+            <div id="leftScenario-select-wrapper" class="rounded-choice-box padding-horizontal-half padding-vertical-half default-btn-height d-flex-center width-100">
               <div class="select leftScenario-select">
-  <div id="leftScenario-select-vis" class="select-styled"  data-value="historical">Historical</div>
-  <ul class="select-options" role="radiogroup">
-    <li role="option" id="leftScenario-select"  data-value="historical" class="default-select-option leftScenario-option-historical">Historical</li>
-    <li role="option" id="leftScenario-select"  data-value="rcp45" class="default-select-option leftScenario-option-lower">Lower Emissions</li>
+                <div id="leftScenario-select-vis" class="select-styled"  data-value="historical">Historical</div>
+                <ul class="select-options" role="radiogroup">
+                  <li role="option" id="leftScenario-select"  data-value="historical" class="default-select-option leftScenario-option-historical">Historical</li>
+                  <li role="option" id="leftScenario-select"  data-value="rcp45" class="default-select-option leftScenario-option-lower">Lower Emissions</li>
                 </ul>
               </div>
             </div>
@@ -477,10 +476,10 @@ export default class ScenarioComparisonMap {
             <div id="rightScenario-select-wrapper"
                  class="rounded-choice-box padding-horizontal-half padding-vertical-half default-btn-height d-flex-center width-100">
               <div class="select rightScenario-select">
-    <div id="rightScenario-select-vis" class="select-styled" data-value="rcp85">Higher Emissions</div>
-    <ul class="select-options" role="listbox">
-      <li role="option" id="rightScenario-select"  data-value="rcp85" class="default-select-option rightScenario-option-higher">Higher Emissions</li>
-      <li role="option" id="rightScenario-select-map"  data-value="rcp45" class="default-select-option rightScenario-option-lower">Lower Emissions</li>
+                <div id="rightScenario-select-vis" class="select-styled" data-value="rcp85">Higher Emissions</div>
+                <ul class="select-options" role="listbox">
+                  <li role="option" id="rightScenario-select"  data-value="rcp85" class="default-select-option rightScenario-option-higher">Higher Emissions</li>
+                  <li role="option" id="rightScenario-select-map"  data-value="rcp45" class="default-select-option rightScenario-option-lower">Lower Emissions</li>
                 </ul>
               </div>
             </div>

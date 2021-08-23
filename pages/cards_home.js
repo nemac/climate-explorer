@@ -5,7 +5,7 @@ import footer from '../template/footer';
 
 export default (config) => `
 <!doctype html>
-<html lang='en' class="width-100 height-100">
+<html lang='en'>
 <head>
   ${head(config)}
   <meta property="fb:app_id" content="187816851587993">
@@ -20,12 +20,11 @@ export default (config) => `
 
   ${secondary_header(config)}
 
-    <div class="container-fluid">
+    <div class="container-fluid cards-home-body mb-3">
     
       <div class="input-group mb-3 search-input-group rounded-3 border border-1">
         <button id="clear-location" class="btn search-icons" type="button"><span class="fas fa-times-circle"></span></button>
         <input id="cards-search-input" class="form-control location-mapper" type="text" placeholder="Enter county or city name" aria-label="Enter county or city name">
-        <button class="btn search-icons" type="button"><span class="icon-search"></span></button>
       </div>
       
       <div class="select-county-card rounded-3 border border-1 mb-3">
@@ -38,9 +37,9 @@ export default (config) => `
         
       </div>
       
-      <div class="row mb-3"> 
+      <div class="row"> 
         
-        <div class="col-sm-4"> 
+        <div class="col-sm-4 mb-3"> 
             <div class="col-sm-12 p-0 card border border-1 rounded shadow-sm data-card h-100" data-page="climate_maps">
               <div>
                 <img class="img-fluid" src="/img/card-local-maps.png" alt="example-chart"/>
@@ -62,7 +61,7 @@ export default (config) => `
             </div>
         </div>
         
-        <div class="col-sm-4"> 
+        <div class="col-sm-4 mb-3"> 
             <div class="col-sm-12 p-0 card border border-1 rounded shadow-sm data-card h-100" data-page="climate_graphs">
               <div>
                 <img class="img-fluid" src="/img/card-local-charts.png" alt="example climate chart"/>
@@ -84,7 +83,7 @@ export default (config) => `
             </div>
         </div>
         
-        <div class="col-sm-4"> 
+        <div class="col-sm-4 mb-3"> 
             <div class="col-sm-12 p-0 card border border-1 rounded shadow-sm data-card h-100 data-page="high_tide_flooding"">
               <div>
                 <img class="img-fluid" src="/img/card-tidal-data.png" alt="Tidal chart data image"/>
@@ -108,9 +107,9 @@ export default (config) => `
         
       </div>
       
-      <div class="row mb-3"> 
+      <div class="row"> 
         
-        <div class="col-sm-4"> 
+        <div class="col-sm-4 mb-3"> 
         
             <div class="col-sm-12 p-0 card border border-1 rounded shadow-sm data-card h-100" data-page="historical_weather_data">
               <div>
@@ -133,7 +132,7 @@ export default (config) => `
             </div>
         </div>
         
-        <div class="col-sm-4"> 
+        <div class="col-sm-4 mb-3"> 
             <div class="col-sm-12 p-0 card border border-1 rounded shadow-sm data-card h-100" data-page="historical_thresholds">
               <div>
                 <img class="img-fluid" src="/img/card-hist-thresholds.png" alt="historical weather thresholds image"/>
@@ -155,7 +154,7 @@ export default (config) => `
             </div>
         </div>
         
-        <div class="col-sm-4"> 
+        <div class="col-sm-4 mb-3"> 
             <div class="col-sm-12 p-0 card border border-1 rounded shadow-sm data-card h-100" data-page="next_steps">
                 <div class="m-2"> 
                   <div class="d-flex flex-row justify-content-between">

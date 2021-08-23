@@ -5,10 +5,13 @@
   overflow: auto;
 }
 
-.stations-dropdown {
+.stations-dropdown, .download-dropdown {
+
+  background-color: $search-input-background;
   border-color: $input-box-border;
 
   a {
+    background-color: $search-input-background;
     text-align: left;
     color: $navbar-button-background;
   }
@@ -26,13 +29,39 @@
   }
 }
 
-#stations-dropdown-menu {
+#filter-dropdown-menu {
+  background-color: $navbar-background;
+  color: $search-input-background;
+}
+
+#filter-tooltip {
+  height: 2rem;
+  width: 2.3rem;
+  color: white;
+  background-color: $navbar-background;
+  border-radius: 50%;
+}
+
+.selected-item {
+  background-color: $navbar-background;
+  color: $search-input-background;
+}
+
+.selected-item:hover {
+  background-color: $navbar-button-background;
+  color: $search-input-background;
+}
+
+.default-selection {
   background-color: $search-input-background;
+  color: $navbar-background;
+}
+
+.default-selection:hover {
+  background-color: $navbar-hover-background;
 }
 
 .info-section {
-
-  background-color: $search-input-background;
 
   span, i {
     color: $navbar-button-background;
@@ -44,6 +73,22 @@
   }
 
 }
+
+#collapse-info-section {
+  ul {
+    background-color: $search-input-background;
+
+    a:hover {
+      background-color: $navbar-hover-background;
+    }
+
+    li:hover {
+      background-color: $navbar-hover-background;
+    }
+
+  }
+}
+
 
 /* this is to disable the carrot from bootstraps dropdown
 .dropdown-toggle::after {

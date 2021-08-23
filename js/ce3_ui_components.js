@@ -295,6 +295,8 @@ function recreateToolTip(elem) {
 function toggleButton(selector) {
   toggleAllButtonsOff(selector.get())
   // $(selector).addClass('btn-default-selected');
+  $(selector).addClass('selected-item');
+  $(selector).removeClass('default-selection');
 }
 
 // function changes selector buttons to off
@@ -303,6 +305,8 @@ function toggleAllButtonsOff(btnElem) {
   const elems = parentElem.childNodes;
   elems.forEach((elem) => {
     if (elem instanceof Element) {
+      elem.classList.remove('selected-item');
+      elem.classList.add('default-selection');
       // elem.classList.remove('btn-default-selected');
       // elem.classList.add('btn-default');
     }
