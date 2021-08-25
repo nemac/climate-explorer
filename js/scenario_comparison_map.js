@@ -10,7 +10,7 @@ import './main.js';
 // noinspection JSIgnoredPromiseFromCall
 export default class ScenarioComparisonMap {
   constructor(element, options) {
-    this.element = element
+    this.element = $('#map-element');
     this.options = {
       state: null,
       county: null,
@@ -287,7 +287,7 @@ export default class ScenarioComparisonMap {
     this.leftLayer = null;
     this.rightLayer = null;
 
-    this.nodes.mapContainer = this.element;
+    this.nodes.mapContainer = element;
     this.nodes.stationOverlayContainer = $('#' + this.options.stationOverlayContainerId)[0];
 
     this.options.variable = this.options.variable || 'tmax';
@@ -446,7 +446,11 @@ export default class ScenarioComparisonMap {
   }
 
   _initControlsOverlay() {
-    this.nodes.$controlsOverLayContainer = $('<div>', {'class': 'scenario-map-overlay-container'});
+
+    console.log(this.nodes);
+
+    this.nodes.$controlsOverLayContainer = $('<div>', {'class': 'scenario-map-overlay-container w-100'});
+
     this.nodes.$controlsOverLayContainer.append(`
       <div class="movable slider-div">
         <div class="handle"></div>
@@ -493,7 +497,8 @@ export default class ScenarioComparisonMap {
       </div>
     `);
 
-    $(this.nodes.mapContainer).append(this.nodes.$controlsOverLayContainer);
+    // $(this.nodes.mapContainer).append(this.nodes.$controlsOverLayContainer);
+    $(this.element).append(this.nodes.$controlsOverLayContainer);
 
     this.nodes.$controlsOverLayContainer.find('.movable.slider-div').draggable({
       axis: "x",
@@ -511,6 +516,7 @@ export default class ScenarioComparisonMap {
     this._updateRightScenarioSelect();
     this._updateLeftYearSlider();
     this._updateRightYearSlider();
+
   }
 
   _initMap() {

@@ -1,3 +1,5 @@
+@import "../color_utils";
+
 .footer-icon {
   font-size: 2rem;
 }
@@ -10,12 +12,18 @@
   transition: box-shadow .3s;
 }
 
-.nav-background-color {
+.footer-element {
   background-color: white;
+
+  border-color: $input-box-border;
 }
 
 .footer-button:hover {
   box-shadow: 0 0 11px rgba(33,33,33,.2);
   box-sizing: border-box;
   cursor: pointer;
+}
+
+.footer-ellipsis {
+  color: $navbar-background;
 }

@@ -74,6 +74,10 @@
 
 }
 
+.filter-dropdown-menu {
+  max-height: 80vh;
+}
+
 #collapse-info-section {
   ul {
     background-color: $search-input-background;
@@ -89,9 +93,15 @@
   }
 }
 
-
-/* this is to disable the carrot from bootstraps dropdown
-.dropdown-toggle::after {
-  display: none;
+#map-element {
+  position: relative;
+  max-height: 60vh;
 }
-*/
+
+#local-climate-map-element {
+  position: absolute;
+}
+
+.bottom-scenario-controls {
+
+}

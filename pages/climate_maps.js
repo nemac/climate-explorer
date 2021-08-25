@@ -21,7 +21,7 @@ export default (config) => `
 
   ${secondary_header(config)}
 
-    <div class="container-fluid mb-3">
+    <div class="container-fluid top-spacing mb-3">
     
       <div class="d-flex flex-row"> 
         
@@ -60,9 +60,14 @@ export default (config) => `
                         Average Daily Maximum Temperature (°F)
                       </a>
                     
-                      <ul class="dropdown-menu variable-select w-100" aria-labelledby="filter-dropdown-menu">
+                      <div class="dropdown-menu filter-dropdown-menu" aria-labelledby="filter-dropdown-menu">
+                         <div class="d-flex">
+                             ${variable_selector(config)}
+                         </div>
+                      </div>
+                      <!--<ul class="dropdown-menu variable-select w-100" aria-labelledby="filter-dropdown-menu">
                           ${variable_selector(config)}
-                      </ul>
+                      </ul>-->
                     </div>
                     <span id="filter-tooltip" class="fa fa-question d-flex justify-content-center align-items-center" aria-hidden="true"></span>
                   </div>
@@ -130,11 +135,11 @@ export default (config) => `
   
         <div id="map-row" class="padding-horizontal w-100 d-flex">
   
-            <div id="map-wrap" class="map-wrap width-100">
+            <div id="map-element" class="d-flex w-100"> 
               <div id="local-climate-map-element" class="map-element p-0"></div>
               <div id="map-message" class="map-nodata-message d-none"></div>
             </div>
-  
+
         </div>
   
       </div>

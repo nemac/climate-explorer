@@ -4,10 +4,18 @@ export default (config) => `
 
 <!-- BEGIN NAV FOOTER TEMPLATE -->
 
-<div class="container-fluid"> 
-
-    <div class="d-flex mt-auto fixed-bottom">
-        <div class="col-12 p-2 nav-background-color border-top border-2 mt-auto">
+<nav class="navbar fixed-bottom navbar-expand-sm footer-element border-top p-0">
+  <div class="container-fluid">
+    
+    <button class="navbar-toggler m-auto" type="button" data-bs-toggle="collapse" data-bs-target="#footerSupportedContent" aria-controls="footerSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon d-flex justify-content-center align-items-center">
+        <i class="fa fa-ellipsis-h footer-ellipsis"></i>
+      </span>
+    </button>
+    
+    <div class="collapse navbar-collapse mt-2 mb-2" id="footerSupportedContent">
+      <ul class="navbar-nav w-100">
+        <li class="nav-item dropdown me-2 rounded-3 w-100">
             <div class="d-flex flex-row justify-content-evenly"> 
                 <div class="d-flex flex-column align-items-center rounded-2 p-1 footer-button" data-page="cards_home">
                     <i class="fas fa-th-large footer-icon"></i>
@@ -41,10 +49,12 @@ export default (config) => `
                     <span class="footer-icon-title">High-Tide Flooding</span>
                 </div>
             </div>
-        </div>
+        </li>
+      </ul>
     </div>
-     ${feedback(config)}
-</div>
+    
+  </div>
+</nav>
 
 <!-- END NAV FOOTER TEMPLATE -->
 `

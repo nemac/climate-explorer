@@ -683,9 +683,9 @@ $(function () {
       showCounties: true, // isNational() add isNational() if we re-institute national maps again
       layersLoaded: function layersloaded() {
         $('#local-climate-map-element').spinner('destroy');
-        const rect = document.getElementById('map-wrap').getBoundingClientRect();
-        document.querySelector('.esri-view-root').style.minWidth = `${rect.width}px`;
-        document.querySelector('.esri-view-root').style.height = `${rect.height}px`;
+        // const rect = document.getElementById('map-wrap').getBoundingClientRect();
+        // document.querySelector('.esri-view-root').style.minWidth = `${rect.width}px`;
+        // document.querySelector('.esri-view-root').style.height = `${rect.height}px`;
         enableCustomSelect('leftScenario-select');
         enableCustomSelect('rightScenario-select');
 
@@ -727,48 +727,23 @@ $(function () {
     }
 
   function setMapSize() {
-    $('#local-climate-map-element-map').height($('#local-climate-map-element').parent().height())
 
-    const rect = document.getElementById('map-wrap').getBoundingClientRect();
-    const infoRowRect = document.getElementById('info-row').getBoundingClientRect();
+    $('#map-element').css({"maxHeight": "65vh"});
 
-    // if (document.querySelector('.esri-view-root')) {
-    //   document.querySelector('.esri-view-root').style.minWidth = `${rect.width}px`;
-    //   document.querySelector('.esri-view-root').style.maxWidth = `${rect.width}px`;
-    //   document.querySelector('.esri-view-root').style.height = `${rect.height}px`;
-    // }
-    //
-    // if (document.querySelector('.esri-view-user-storage')) {
-    //   document.querySelector('.esri-view-user-storage').style.minWidth = `${rect.width}px`;
-    //   document.querySelector('.esri-view-user-storage').style.maxWidth = `${rect.width}px`;
-    // }
-    //
-    // if (document.querySelector('#local-climate-map-element')) {
-    //   document.querySelector('#local-climate-map-element').style.minWidth = `${rect.width}px`;
-    //   document.querySelector('#local-climate-map-element').style.maxWidth = `${rect.width}px`;
-    //   document.querySelector('#local-climate-map-element').style.height = `${rect.height}px`;
-    //   document.querySelector('#local-climate-map-element').style.minHeight = `${rect.height}px`;
-    //   document.querySelector('#local-climate-map-element').style.maxHeight = `${rect.height}px`;
-    //   document.querySelector('#local-climate-map-element').style.minWidth = `${rect.width}px`;
-    // }
-    //
-    // document.querySelector('.scenario-map-overlay-container').style.top = `${rect.top}px`;
-    // document.querySelector('.scenario-map-overlay-container').style.left = `${rect.left}px`;
-    // document.querySelector('.scenario-map-overlay-container').style.width = `${rect.width}px`;
-    // document.querySelector('.scenario-map-overlay-container').style.height = `${rect.height}px`;
-    // document.querySelector('.scenario-map-overlay-container').style.minHeight = `${rect.height}px`;
-    // document.querySelector('.scenario-map-overlay-container').style.maxHeight = `${rect.height}px`;
-    //
-    //
-    // document.querySelector('#map-for-print-left').style.top = `${rect.top}px`;
-    // document.querySelector('#map-for-print-left').style.left = `${rect.left}px`;
-    // document.querySelector('#map-for-print-left').style.width = `${rect.width}px`;
-    // document.querySelector('#map-for-print-left').style.height = `${rect.height}px`;
-    //
-    // document.querySelector('#map-for-print-right').style.top = `${rect.top}px`;
-    // document.querySelector('#map-for-print-right').style.left = `${rect.left}px`;
-    // document.querySelector('#map-for-print-right').style.width = `${rect.width}px`;
-    // document.querySelector('#map-for-print-right').style.height = `${rect.height}px`;
+    let map_element = document.getElementById("map-element");
+
+    let climate_map_element = document.getElementById("local-climate-map-element");
+
+    climate_map_element.style.height = (map_element.getBoundingClientRect().height / 16) + "rem";
+
+    let climate_map_height = climate_map_element.getBoundingClientRect().height / 16;
+
+    let bottom_controls = document.querySelector(".bottom-scenario-controls");
+    bottom_controls.style.top = (climate_map_height - 6) + "rem";
+
+    let slider = document.querySelector(".movable");
+    slider.style.height = climate_map_height + "rem";
+
   }
 
   setMapSize();
