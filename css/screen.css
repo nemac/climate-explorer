@@ -19285,39 +19285,38 @@ input.input-inner:focus {
 
 /* line 8, scss/pages/_new_climate_maps.scss */
 .stations-dropdown, .download-dropdown {
-  background-color: #E9F1FC;
   border-color: #DEE2E6;
 }
 
-/* line 13, scss/pages/_new_climate_maps.scss */
+/* line 12, scss/pages/_new_climate_maps.scss */
 .stations-dropdown a, .download-dropdown a {
   background-color: #E9F1FC;
   text-align: left;
   color: #124086;
 }
 
-/* line 19, scss/pages/_new_climate_maps.scss */
+/* line 18, scss/pages/_new_climate_maps.scss */
 .stations-dropdown ul, .download-dropdown ul {
   background-color: #E9F1FC;
 }
 
-/* line 22, scss/pages/_new_climate_maps.scss */
+/* line 21, scss/pages/_new_climate_maps.scss */
 .stations-dropdown ul a, .download-dropdown ul a {
   transition: background-color 200ms ease-in;
 }
 
-/* line 26, scss/pages/_new_climate_maps.scss */
+/* line 25, scss/pages/_new_climate_maps.scss */
 .stations-dropdown ul a:hover, .download-dropdown ul a:hover {
   background-color: #A6C6F3;
 }
 
-/* line 32, scss/pages/_new_climate_maps.scss */
+/* line 31, scss/pages/_new_climate_maps.scss */
 #filter-dropdown-menu {
   background-color: #0D3064;
   color: #E9F1FC;
 }
 
-/* line 37, scss/pages/_new_climate_maps.scss */
+/* line 36, scss/pages/_new_climate_maps.scss */
 #filter-tooltip {
   height: 2rem;
   width: 2.3rem;
@@ -19326,69 +19325,81 @@ input.input-inner:focus {
   border-radius: 50%;
 }
 
-/* line 45, scss/pages/_new_climate_maps.scss */
+/* line 44, scss/pages/_new_climate_maps.scss */
 .selected-item {
   background-color: #0D3064;
   color: #E9F1FC;
 }
 
-/* line 50, scss/pages/_new_climate_maps.scss */
+/* line 49, scss/pages/_new_climate_maps.scss */
 .selected-item:hover {
   background-color: #124086;
   color: #E9F1FC;
 }
 
-/* line 55, scss/pages/_new_climate_maps.scss */
+/* line 54, scss/pages/_new_climate_maps.scss */
 .default-selection {
   background-color: #E9F1FC;
   color: #0D3064;
 }
 
-/* line 60, scss/pages/_new_climate_maps.scss */
+/* line 59, scss/pages/_new_climate_maps.scss */
 .default-selection:hover {
   background-color: #A6C6F3;
 }
 
-/* line 66, scss/pages/_new_climate_maps.scss */
+/* line 65, scss/pages/_new_climate_maps.scss */
 .info-section span, .info-section i {
   color: #124086;
   font-weight: bold;
 }
 
-/* line 71, scss/pages/_new_climate_maps.scss */
+/* line 70, scss/pages/_new_climate_maps.scss */
 .info-section .border {
   border-color: #DEE2E6;
 }
 
-/* line 77, scss/pages/_new_climate_maps.scss */
+/* line 76, scss/pages/_new_climate_maps.scss */
 .filter-dropdown-menu {
   max-height: 80vh;
 }
 
-/* line 82, scss/pages/_new_climate_maps.scss */
+/* line 81, scss/pages/_new_climate_maps.scss */
 #collapse-info-section ul {
   background-color: #E9F1FC;
 }
 
-/* line 85, scss/pages/_new_climate_maps.scss */
+/* line 84, scss/pages/_new_climate_maps.scss */
 #collapse-info-section ul a:hover {
   background-color: #A6C6F3;
 }
 
-/* line 89, scss/pages/_new_climate_maps.scss */
+/* line 88, scss/pages/_new_climate_maps.scss */
 #collapse-info-section ul li:hover {
   background-color: #A6C6F3;
 }
 
-/* line 96, scss/pages/_new_climate_maps.scss */
+/* line 95, scss/pages/_new_climate_maps.scss */
 #map-element {
   position: relative;
   max-height: 60vh;
 }
 
-/* line 101, scss/pages/_new_climate_maps.scss */
+/* line 100, scss/pages/_new_climate_maps.scss */
 #local-climate-map-element {
   position: absolute;
+}
+
+/* line 104, scss/pages/_new_climate_maps.scss */
+.average-year-label {
+  background-color: #E9F1FC;
+  border: 2px solid #DEE2E6;
+}
+
+/* line 108, scss/pages/_new_climate_maps.scss */
+.average-year-label span {
+  color: #124086;
+  font-weight: bold;
 }
 
 /* line 5, scss/pages/_historical_weather_data.scss */

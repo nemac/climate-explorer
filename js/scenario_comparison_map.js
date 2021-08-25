@@ -457,29 +457,37 @@ export default class ScenarioComparisonMap {
       </div>
       <div class="bottom-scenario-controls">
         <div class="left-scenario-controls">
-          <div class="left-scenario-dropdown">
-            <div id="leftScenario-select-wrapper" class="rounded-choice-box padding-horizontal-half padding-vertical-half default-btn-height d-flex-center width-100">
-              <div class="select leftScenario-select">
-                <div id="leftScenario-select-vis" class="select-styled"  data-value="historical">Historical</div>
-                <ul class="select-options" role="radiogroup">
-                  <li role="option" id="leftScenario-select"  data-value="historical" class="default-select-option leftScenario-option-historical">Historical</li>
-                  <li role="option" id="leftScenario-select"  data-value="rcp45" class="default-select-option leftScenario-option-lower">Lower Emissions</li>
-                </ul>
+            <div class="leftScenario-select d-flex align-items-center w-75">
+              <div class="ms-2 me-2 download-dropdown"> 
+                <div class="dropdown rounded-3 border border-1">
+                  <a class="btn dropdown-toggle ps-4 pe-4 w-100" href="#" role="button" id="scenario-map-historical-dropdown-menu" data-bs-toggle="dropdown" aria-expanded="false">
+                      Historical
+                  </a>
+                
+                  <ul class="dropdown-menu download-select" aria-labelledby="scenario-map-historical-dropdown-menu">
+                    <li role="option" data-value="historical" class="dropdown-item leftScenario-option-historical">Historical</li>
+                    <li role="option" data-value="rcp45" class="dropdown-item leftScenario-option-lower">Lower Emissions</li>
+                  </ul>
+                </div>
+              </div>
+              
+               <div class="left-year-slider-container rounded-3">
+                  <div class="average-year-label p-2 rounded-3">
+                    <span></span> 
+                  </div>
+                  <div class="year-label year-min"></div>
+                  <div class="left-year-slider"></div>
+                  <div class="year-label year-max"></div>
               </div>
             </div>
-          </div>
-          <div class="year left-year-slider-container">
-            <div class="year-label year-min"></div>
-            <div class="left-year-slider"></div>
-            <div class="year-label year-max"></div>
-          </div>
         </div>
+        
         <div class="right-scenario-controls">
       
           <div class="right-scenario-dropdown">
             <div id="rightScenario-select-wrapper"
                  class="rounded-choice-box padding-horizontal-half padding-vertical-half default-btn-height d-flex-center width-100">
-              <div class="select rightScenario-select">
+              <div class="rightScenario-select">
                 <div id="rightScenario-select-vis" class="select-styled" data-value="rcp85">Higher Emissions</div>
                 <ul class="select-options" role="listbox">
                   <li role="option" id="rightScenario-select"  data-value="rcp85" class="default-select-option rightScenario-option-higher">Higher Emissions</li>
@@ -2108,8 +2116,11 @@ export default class ScenarioComparisonMap {
     const _this5 = this;
 
     //override to disable left year slider for historical
+
+    console.log(this.options);
+
     if (this.options.leftYear === 'avg') {
-      this.nodes.$controlsOverLayContainer.find('.left-year-slider-container').addClass('disabled').text(this.options.scenarios[this.options.leftScenario].years.slice(-1)[0].label);
+      this.nodes.$controlsOverLayContainer.find('.left-year-slider-container').find('.average-year-label').find('span').text(this.options.scenarios[this.options.leftScenario].years.slice(-1)[0].label);
       delete this.nodes['$leftYearSlider'];
       delete this.nodes['$leftYearTooltip'];
       return;

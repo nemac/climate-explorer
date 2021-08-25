@@ -7,7 +7,6 @@
 
 .stations-dropdown, .download-dropdown {
 
-  background-color: $search-input-background;
   border-color: $input-box-border;
 
   a {
@@ -102,6 +101,12 @@
   position: absolute;
 }
 
-.bottom-scenario-controls {
+.average-year-label {
+  background-color: $search-input-background;
+  border: 2px solid $input-box-border;
 
+  span {
+    color: $navbar-button-background;
+    font-weight: bold;
+  }
 }

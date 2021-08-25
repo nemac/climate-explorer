@@ -65,9 +65,6 @@ export default (config) => `
                              ${variable_selector(config)}
                          </div>
                       </div>
-                      <!--<ul class="dropdown-menu variable-select w-100" aria-labelledby="filter-dropdown-menu">
-                          ${variable_selector(config)}
-                      </ul>-->
                     </div>
                     <span id="filter-tooltip" class="fa fa-question d-flex justify-content-center align-items-center" aria-hidden="true"></span>
                   </div>
@@ -116,7 +113,7 @@ export default (config) => `
                         </li>
                       </ul>
                     </div>
-                </div>
+                  </div>
               </div>
               
             </div>
