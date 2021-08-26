@@ -2118,7 +2118,8 @@ export default class ScenarioComparisonMap {
     if (this.options.leftYear === 'avg') {
       this.nodes.$controlsOverLayContainer.find('.average-year-label').removeClass('d-none');
       this.nodes.$controlsOverLayContainer.find('.left-year-slider-container').removeClass('year');
-      this.nodes.$controlsOverLayContainer.find('.left-year-slider .year-label').addClass('d-none');
+      this.nodes.$controlsOverLayContainer.find('.left-year-slider').addClass('d-none');
+      this.nodes.$controlsOverLayContainer.find('.year-label').addClass('d-none');
       this.nodes.$controlsOverLayContainer.find('.left-year-slider-container').find('.average-year-label').find('span').text(this.options.scenarios[this.options.leftScenario].years.slice(-1)[0].label);
       delete this.nodes['$leftYearSlider'];
       delete this.nodes['$leftYearTooltip'];
@@ -2141,7 +2142,9 @@ export default class ScenarioComparisonMap {
 
     this.nodes.$controlsOverLayContainer.find('.average-year-label').addClass('d-none');
     this.nodes.$controlsOverLayContainer.find('.left-year-slider-container').addClass('year');
-    this.nodes.$controlsOverLayContainer.find('.left-year-slider .year-label').removeClass('d-none');
+    this.nodes.$controlsOverLayContainer.find('.left-year-slider').removeClass('d-none');
+    this.nodes.$controlsOverLayContainer.find('.year-label').removeClass('d-none');
+
     this.nodes.$leftYearTooltip.text(this.options.scenarios[this.options.leftScenario].years.find(v => v.value === _this5.options.leftYear.toString()).label);
     this.nodes.$controlsOverLayContainer.find('.left-year-slider-container .year-min').text(this.options.scenarios[this.options.leftScenario].years[0].label);
     this.nodes.$controlsOverLayContainer.find('.left-year-slider-container .year-max').text(maxLabel);
