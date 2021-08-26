@@ -19362,41 +19362,70 @@ input.input-inner:focus {
 /* line 76, scss/pages/_new_climate_maps.scss */
 .filter-dropdown-menu {
   max-height: 80vh;
+  background-color: #E9F1FC;
 }
 
-/* line 81, scss/pages/_new_climate_maps.scss */
+/* line 80, scss/pages/_new_climate_maps.scss */
+.filter-dropdown-menu .variable-option-text {
+  color: #124086;
+  font-weight: normal;
+}
+
+/* line 85, scss/pages/_new_climate_maps.scss */
+.filter-dropdown-menu .dropdown-item {
+  transition: background-color 200ms ease-in;
+}
+
+/* line 89, scss/pages/_new_climate_maps.scss */
+.filter-dropdown-menu .dropdown-item:hover {
+  background-color: #A6C6F3;
+  cursor: pointer;
+}
+
+/* line 95, scss/pages/_new_climate_maps.scss */
+.filter-dropdown-header {
+  text-align: center;
+}
+
+/* line 99, scss/pages/_new_climate_maps.scss */
+.filter-dropdown-header i, .filter-dropdown-header span {
+  color: #0D3064;
+  font-weight: bold;
+}
+
+/* line 107, scss/pages/_new_climate_maps.scss */
 #collapse-info-section ul {
   background-color: #E9F1FC;
 }
 
-/* line 84, scss/pages/_new_climate_maps.scss */
+/* line 110, scss/pages/_new_climate_maps.scss */
 #collapse-info-section ul a:hover {
   background-color: #A6C6F3;
 }
 
-/* line 88, scss/pages/_new_climate_maps.scss */
+/* line 114, scss/pages/_new_climate_maps.scss */
 #collapse-info-section ul li:hover {
   background-color: #A6C6F3;
 }
 
-/* line 95, scss/pages/_new_climate_maps.scss */
+/* line 121, scss/pages/_new_climate_maps.scss */
 #map-element {
   position: relative;
   max-height: 60vh;
 }
 
-/* line 100, scss/pages/_new_climate_maps.scss */
+/* line 126, scss/pages/_new_climate_maps.scss */
 #local-climate-map-element {
   position: absolute;
 }
 
-/* line 104, scss/pages/_new_climate_maps.scss */
+/* line 130, scss/pages/_new_climate_maps.scss */
 .average-year-label {
   background-color: #E9F1FC;
   border: 2px solid #DEE2E6;
 }
 
-/* line 108, scss/pages/_new_climate_maps.scss */
+/* line 134, scss/pages/_new_climate_maps.scss */
 .average-year-label span {
   color: #124086;
   font-weight: bold;

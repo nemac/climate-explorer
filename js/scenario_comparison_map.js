@@ -447,8 +447,6 @@ export default class ScenarioComparisonMap {
 
   _initControlsOverlay() {
 
-    console.log(this.nodes);
-
     this.nodes.$controlsOverLayContainer = $('<div>', {'class': 'scenario-map-overlay-container w-100'});
 
     this.nodes.$controlsOverLayContainer.append(`
@@ -2117,9 +2115,10 @@ export default class ScenarioComparisonMap {
 
     //override to disable left year slider for historical
 
-    console.log(this.options);
-
     if (this.options.leftYear === 'avg') {
+      this.nodes.$controlsOverLayContainer.find('.average-year-label').removeClass('d-none');
+      this.nodes.$controlsOverLayContainer.find('.left-year-slider-container').removeClass('year');
+      this.nodes.$controlsOverLayContainer.find('.left-year-slider .year-label').addClass('d-none');
       this.nodes.$controlsOverLayContainer.find('.left-year-slider-container').find('.average-year-label').find('span').text(this.options.scenarios[this.options.leftScenario].years.slice(-1)[0].label);
       delete this.nodes['$leftYearSlider'];
       delete this.nodes['$leftYearTooltip'];
@@ -2140,6 +2139,9 @@ export default class ScenarioComparisonMap {
       maxLabel = '2000';
     }
 
+    this.nodes.$controlsOverLayContainer.find('.average-year-label').addClass('d-none');
+    this.nodes.$controlsOverLayContainer.find('.left-year-slider-container').addClass('year');
+    this.nodes.$controlsOverLayContainer.find('.left-year-slider .year-label').removeClass('d-none');
     this.nodes.$leftYearTooltip.text(this.options.scenarios[this.options.leftScenario].years.find(v => v.value === _this5.options.leftYear.toString()).label);
     this.nodes.$controlsOverLayContainer.find('.left-year-slider-container .year-min').text(this.options.scenarios[this.options.leftScenario].years[0].label);
     this.nodes.$controlsOverLayContainer.find('.left-year-slider-container .year-max').text(maxLabel);

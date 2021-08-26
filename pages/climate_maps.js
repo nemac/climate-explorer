@@ -55,14 +55,14 @@ export default (config) => `
               
               <div class="d-flex flex-row">
                   <div class="d-flex flex-row align-items-center"> 
-                    <div class="dropdown variable-select rounded-3 border border-1 me-2 w-100">
-                      <a class="btn dropdown-toggle w-100" href="#" role="button" id="filter-dropdown-menu" data-bs-toggle="dropdown" aria-expanded="true">
+                    <div class="dropdown rounded-3 border border-1 me-2 w-100">
+                      <a class="btn dropdown-toggle w-100" href="#" id="filter-dropdown-menu" data-bs-toggle="dropdown" aria-expanded="true" data-value="tmax">
                         Average Daily Maximum Temperature (°F)
                       </a>
                     
-                      <div class="dropdown-menu filter-dropdown-menu" aria-labelledby="filter-dropdown-menu">
-                         <div class="d-flex">
-                             ${variable_selector(config)}
+                      <div class="dropdown-menu filter-dropdown-menu p-2" aria-labelledby="filter-dropdown-menu">
+                         <div class="d-lg-flex">
+                            ${variable_selector(config)}
                          </div>
                       </div>
                     </div>
@@ -81,19 +81,19 @@ export default (config) => `
                   
                   <div id="time-wrapper" class="btn-group">
                     <input type="radio" class="btn-check" name="annual-season" id="annual-selection" autocomplete="off" data-value="annual" data-sel="time-select-vis">
-                    <label class="btn ps-4 pe-4 selected-item" for="annual-selection">Annual</label>
+                    <label id="annual-selection-label" class="btn ps-4 pe-4 selected-item" for="annual-selection">Annual</label>
                     
                     <input type="radio" class="btn-check" name="annual-season" id="spring-selection" autocomplete="off" data-value="spring" data-sel="time-select-vis">
-                    <label class="btn ps-4 pe-4 default-selection" for="spring-selection">Spring</label>
+                    <label id="spring-selection-label" class="btn ps-4 pe-4 default-selection" for="spring-selection">Spring</label>
                     
                     <input type="radio" class="btn-check" name="annual-season" id="summer-selection" autocomplete="off" data-value="summer" data-sel="time-select-vis">
-                    <label class="btn ps-4 pe-4 default-selection" for="summer-selection">Summer</label>
+                    <label id="summer-selection-label" class="btn ps-4 pe-4 default-selection" for="summer-selection">Summer</label>
                     
                     <input type="radio" class="btn-check" name="annual-season" id="fall-selection" autocomplete="off" data-value="fall" data-sel="time-select-vis">
-                    <label class="btn ps-4 pe-4 default-selection" for="fall-selection">Fall</label>                  
+                    <label id="fall-selection-label" class="btn ps-4 pe-4 default-selection" for="fall-selection">Fall</label>                  
                     
                     <input type="radio" class="btn-check" name="annual-season" id="winter-selection" autocomplete="off" data-value="winter" data-sel="time-select-vis">
-                    <label class="btn ps-4 pe-4 default-selection" for="winter-selection">Winter</label>
+                    <label id="winter-selection-label" class="btn ps-4 pe-4 default-selection" for="winter-selection">Winter</label>
                   </div>
                   
                   <div class="ms-2 me-2 download-dropdown"> 

@@ -102,106 +102,18 @@ function reEnableSelectNewItems(uniqueSelector) {
 // function enables custom selection dropdown from a li element
 function enableCustomSelect(uniqueSelector) {
 
-  const $styledSelect = $(`.select.${uniqueSelector} div.select-styled`);
-  // if disabled exit and do not enable dropdown
+  const $styledSelect = $(`#${uniqueSelector}`);
 
-  if ($styledSelect.hasClass('disabled')) {
-    return null;
-  }
+  // List of all dropdown items
+  const $list = $(`.${uniqueSelector}`)
+  const $listItems = $list.children('li[role="option"]');
 
-  // enable click and show options
-  $styledSelect.keyup(function (e) {
-    if (e.keyCode === 13) {
-      if ($(e.target).hasClass('disabled')) {
-        return null;
-      }
-
-      // ga event action, category, label
-      googleAnalyticsEvent('click-tab', 'dropdown', uniqueSelector);
-
-      $(`.select.${uniqueSelector} div.select-styled.active`).not(this).each(function () {
-        $(this).removeClass('active').next('ul.select-options').hide();
-      });
-      $(this).toggleClass('active').next('ul.select-options').toggle();
-    }
-
-    e.stopPropagation();
-  });
-
-  // enable click and show options
-  $styledSelect.click(function (e) {
-    e.stopPropagation();
-
-    if ($(e.target).hasClass('disabled')) {
+  $listItems.click(function (e) {
+    // check if disabled exit if it is
+    if ($(this).hasClass('disabled')) {
       return null;
     }
 
-    // ga event action, category, label
-    googleAnalyticsEvent('click', 'dropdown', uniqueSelector);
-
-    $(`.select.${uniqueSelector} div.select-styled.active`).not(this).each(function () {
-      $(this).removeClass('active').next('ul.select-options').hide();
-    });
-    $(this).toggleClass('active').next('ul.select-options').toggle();
-  });
-
-  // get list items so we can add user interactions
-  const $list = $(`.select.${uniqueSelector} ul`);
-
-  const $listItems = $list.children('li[role="option"]');
-
-  // enable click for options
-  $listItems.keyup(function (e) {
-    if (e.keyCode === 13) {
-      // check if disabled exit if it is
-      if ($(this).hasClass('default-select-option-disabled')) {
-        return null
-      }
-      recreateToolTip(this);
-
-      e.stopPropagation();
-      // option item has href make it a element so links work
-      if (uniqueSelector !== 'download-select') { // do not update label text for download-select
-        const hrefAttr = $(this).attr('href');
-        if (typeof hrefAttr !== typeof undefined && hrefAttr !== false) {
-          $styledSelect.html(`<a href="${hrefAttr}" data-value="${$(this).data('value')}">${$(this).text().trim()}</a>`).removeClass('active');
-        } else {
-          $styledSelect.text($(this).text().trim()).removeClass('active');
-        }
-      }
-
-      $styledSelect.data('value', $(this).data('value'))
-      $styledSelect.data('link', $(this).data('link'))
-      $styledSelect.data('nav', $(this).data('nav'))
-
-      // option item has icon add it
-      let icon;
-      if (uniqueSelector !== 'download-select') {
-        const iconAttr = $(this).data('icon');
-        if (typeof iconAttr !== typeof undefined && iconAttr !== false) {
-          // Element has this attribute
-          icon = `<i class="${iconAttr}"></i>`;
-        } else {
-          icon = '';
-        }
-      }
-
-      // ga event action, category, label
-      googleAnalyticsEvent('click-tab', 'listitem', $(this).text());
-
-      $styledSelect.prepend(icon);
-      $list.hide();
-      // trigger custom event so we know the user changed or selected an item
-      $styledSelect.trigger('cs-changed');
-    }
-  });
-
-  // enable key down for options
-  $listItems.click(function (e) {
-    // check if disabled exit if it is
-    if ($(this).hasClass('default-select-option-disabled')) {
-      return null
-    }
     recreateToolTip(this);
 
     e.stopPropagation();
@@ -211,8 +123,9 @@ function enableCustomSelect(uniqueSelector) {
       if (typeof hrefAttr !== typeof undefined && hrefAttr !== false) {
         $styledSelect.html(`<a href="${hrefAttr}" data-value="${$(this).data('value')}">${$(this).text().trim()}</a>`).removeClass('active');
       } else {
-        $styledSelect.text($(this).text().trim()).removeClass('active');
+        $styledSelect.text($(this).text().trim());
       }
+
     }
 
     $styledSelect.data('value', $(this).data('value'))
@@ -222,13 +135,12 @@ function enableCustomSelect(uniqueSelector) {
     // ga event action, category, label
     googleAnalyticsEvent('click', 'listitem', $(this).text());
 
-    // $styledSelect.prepend(icon);
-    $list.hide();
     // trigger custom event so we know the user changed or selected an item
     $styledSelect.trigger('cs-changed');
   });
 
   const $listTips = $(`.select.${uniqueSelector} ul`).children('span');
+
   $listTips.click(function (e) {
     // check if disabled exit if it is
     if ($(this).hasClass('default-select-option-disabled')) {
@@ -262,12 +174,6 @@ function enableCustomSelect(uniqueSelector) {
 
       $(testItem).click();
     }
-  });
-
-  // hide dropdown when user clicks anywhere outside of selected area
-  $(document).one('click', function () {
-    $styledSelect.removeClass('active');
-    $list.hide();
   });
 
 }
@@ -307,8 +213,6 @@ function toggleAllButtonsOff(btnElem) {
     if (elem instanceof Element) {
       elem.classList.remove('selected-item');
       elem.classList.add('default-selection');
-      // elem.classList.remove('btn-default-selected');
-      // elem.classList.add('btn-default');
     }
   });
 }
@@ -322,18 +226,6 @@ function setSelectFromButton(target) {
   $(`#${selector}`).text(innerText);
   $(`#${selector}`).data('value', val);
 }
-
-//
-// // handles click of map/char choice button.
-// // requires the html element has a custom attributes:
-// // link - which is the element id for the hidden <a> element
-// // nav - contains the html page/ nav footer name
-// function handleChartMapClick(target) {
-//   window.app.update({page:'climate-maps'});
-//
-//   // ga event action, category, label
-//   googleAnalyticsEvent('click', 'chartmap', nav);
-// }
 
 function forceResize() {
   const el = document; // This can be your element on which to trigger the event
@@ -470,7 +362,6 @@ function googleAnalyticsEvent(action = '', category = '', label = '', value = 0)
     uuid: getUUID()
   });
 }
-
 
 // feedback for beta. remove after we go live?
 function storageAvailable() {

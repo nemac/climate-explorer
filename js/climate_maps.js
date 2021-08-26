@@ -55,7 +55,7 @@ $(function () {
   // enable custom selection boxes
   enableCustomSelect('download-select');
   enableCustomSelect('stations-select');
-  enableCustomSelect('variable-select');
+  enableCustomSelect('filter-dropdown-menu');
   enableCustomSelect('chartmap-select');
   enableCustomSelect('time-select');
 
@@ -566,10 +566,9 @@ $(function () {
 
   // in responsive mode the time is a dropdown this enables the change of the chart map
   $('#chartmap-select-vis').bind('cs-changed', function (e) {
+
     const target = $(e.target);
     const notDisabled = !target.hasClass('btn-default-disabled');
-
-
 
     if (notDisabled) {
       const val = $('#time-select-vis').data('value')
@@ -582,18 +581,23 @@ $(function () {
   })
 
   // event handler a for when map variable changes
-  $('#variable-select-vis').bind('cs-changed', function (e) {
+  $('#filter-dropdown-menu').bind('cs-changed', function (e) {
+
     const target = $(e.target);
-    const notDisabled = !target.hasClass('btn-default-disabled');
-    if (notDisabled) {
-      const variable = $('#variable-select-vis').data('value')
+    const disabled = target.hasClass('disabled');
+
+    if (!disabled) {
+      const variable = $('#filter-dropdown-menu').data('value')
       window.app.update({variable})
+
       // disable variables if they are valid time period
-      const isvalid = jQuery.inArray(variable, validSeasonal);
-      if (isvalid < 0) {
+      const is_valid = jQuery.inArray(variable, validSeasonal);
+      if (is_valid < 0) {
+
         const val = 'annual';
         window.scenarioComparisonMap.update({season: val});
-        const target = $('.btn-selector.btn-annual');
+
+        const target = $('#annual-selection');
         // toggle button visual state
         toggleButton(target);
 
@@ -603,52 +607,24 @@ $(function () {
         // change map variable
         updateSeason(val);
 
-        $('.btn-summer').addClass('btn-default-disabled');
-        $('.btn-summer').addClass('disabled-seasonal');
-        $('.btn-summer').removeClass('btn-default');
+        //add disabled to 'Annual, Spring, etc' buttons
+        $('#time-wrapper input').addClass('disabled');
+        $('#time-wrapper label').addClass('disabled');
 
-        $('.btn-winter').addClass('btn-default-disabled');
-        $('.btn-winter').addClass('disabled-seasonal');
-        $('.btn-winter').removeClass('btn-default');
-
-        $('.btn-fall').addClass('btn-default-disabled');
-        $('.btn-fall').addClass('disabled-seasonal');
-        $('.btn-fall').removeClass('btn-default');
-
-
-        $('.btn-spring').addClass('btn-default-disabled');
-        $('.btn-spring').addClass('disabled-seasonal');
-        $('.btn-spring').removeClass('btn-default');
-
-        $('#time-select-vis').addClass('disabled');
-        $('.btn-summer').addClass('disabled-seasonal');
-        $('#time-select-wrapper').addClass('disabled');
+        $('#annual-selection-label').addClass('selected-item');
+        $('#annual-selection').removeClass('disabled');
+        $('#annual-selection-label').removeClass('disabled');
+        $('#annual-selection-label').removeClass('default-selection');
 
       } else {
 
-        $('.btn-summer').removeClass('btn-default-disabled');
-        $('.btn-summer').removeClass('disabled-seasonal');
-        $('.btn-summer').addClass('btn-default');
-
-        $('.btn-winter').removeClass('btn-default-disabled');
-        $('.btn-winter').removeClass('disabled-seasonal');
-        $('.btn-winter').addClass('btn-default');
-
-        $('.btn-fall').removeClass('btn-default-disabled');
-        $('.btn-fall').removeClass('disabled-seasonal');
-        $('.btn-fall').addClass('btn-default');
-
-        $('.btn-spring').removeClass('btn-default-disabled');
-        $('.btn-spring').removeClass('disabled-seasonal');
-        $('.btn-spring').addClass('btn-default');
-
-        $('#time-select-vis').removeClass('disabled');
-        $('#time-select-wrapper').removeClass('disabled');
+        $('#time-wrapper input').removeClass('disabled');
+        $('#time-wrapper label').removeClass('disabled');
 
       }
 
       // update the text
-      updateTitle($('#variable-select-vis').text());
+      updateTitle($('#filter-dropdown-menu').text());
 
       // change map variable
       if (window.scenarioComparisonMap) {

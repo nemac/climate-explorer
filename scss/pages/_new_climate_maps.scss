@@ -75,7 +75,33 @@
 
 .filter-dropdown-menu {
   max-height: 80vh;
+  background-color: $search-input-background;
+
+  .variable-option-text {
+    color: $navbar-button-background;
+    font-weight: normal;
+  }
+
+  .dropdown-item {
+    transition: background-color 200ms ease-in;
+  }
+
+  .dropdown-item:hover {
+    background-color: $navbar-hover-background;
+    cursor: pointer;
+  }
 }
+
+.filter-dropdown-header {
+
+  text-align: center;
+
+  i, span {
+    color: $navbar-background;
+    font-weight: bold;
+  }
+}
+
 
 #collapse-info-section {
   ul {
