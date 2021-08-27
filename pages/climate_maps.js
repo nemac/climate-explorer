@@ -31,14 +31,12 @@ export default (config) => `
         </div>
         
         <div class="dropdown w-25 rounded-3 border border-1 mb-3 stations-dropdown">
-            <a class="btn dropdown-toggle w-100" href="#" role="button" id="stations-dropdown-menu" data-bs-toggle="dropdown" aria-expanded="false">
+            <a class="btn dropdown-toggle disabled w-100" href="#" role="button" id="stations-dropdown-menu" data-bs-toggle="dropdown" aria-expanded="false">
               Stations
             </a>
           
             <ul class="dropdown-menu w-100" aria-labelledby="stations-dropdown-menu">
               <li><a class="dropdown-item" href="#">Station 1</a></li>
-              <li><a class="dropdown-item" href="#">Station 2</a></li>
-              <li><a class="dropdown-item" href="#">Station 3</a></li>
             </ul>
         </div>
       </div>
