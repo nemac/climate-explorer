@@ -136,3 +136,15 @@
     font-weight: bold;
   }
 }
+
+.left-scenario-dropdown-menu, .right-scenario-dropdown-menu {
+
+  .dropdown-item {
+    transition: background-color 200ms ease-in;
+  }
+
+  .dropdown-item:hover {
+    background-color: $navbar-hover-background;
+    cursor: pointer;
+  }
+}

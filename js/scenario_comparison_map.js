@@ -454,15 +454,16 @@ export default class ScenarioComparisonMap {
         <div class="handle"></div>
       </div>
       <div class="bottom-scenario-controls">
+        
         <div class="left-scenario-controls">
             <div class="leftScenario-select d-flex align-items-center w-75">
               <div class="ms-2 me-2 download-dropdown"> 
                 <div class="dropdown rounded-3 border border-1">
-                  <a class="btn dropdown-toggle ps-4 pe-4 w-100" href="#" role="button" id="scenario-map-historical-dropdown-menu" data-bs-toggle="dropdown" aria-expanded="false">
+                  <a class="btn dropdown-toggle ps-4 pe-4 w-100" role="button" id="left-scenario-dropdown-menu" data-bs-toggle="dropdown" aria-expanded="false" data-value="historical">
                       Historical
                   </a>
                 
-                  <ul class="dropdown-menu download-select" aria-labelledby="scenario-map-historical-dropdown-menu">
+                  <ul class="dropdown-menu left-scenario-dropdown-menu" aria-labelledby="left-scenario-dropdown-menu">
                     <li role="option" data-value="historical" class="dropdown-item leftScenario-option-historical">Historical</li>
                     <li role="option" data-value="rcp45" class="dropdown-item leftScenario-option-lower">Lower Emissions</li>
                   </ul>
@@ -480,20 +481,21 @@ export default class ScenarioComparisonMap {
             </div>
         </div>
         
-        <div class="right-scenario-controls">
-      
-          <div class="right-scenario-dropdown">
-            <div id="rightScenario-select-wrapper"
-                 class="rounded-choice-box padding-horizontal-half padding-vertical-half default-btn-height d-flex-center width-100">
-              <div class="rightScenario-select">
-                <div id="rightScenario-select-vis" class="select-styled" data-value="rcp85">Higher Emissions</div>
-                <ul class="select-options" role="listbox">
-                  <li role="option" id="rightScenario-select"  data-value="rcp85" class="default-select-option rightScenario-option-higher">Higher Emissions</li>
-                  <li role="option" id="rightScenario-select-map"  data-value="rcp45" class="default-select-option rightScenario-option-lower">Lower Emissions</li>
-                </ul>
-              </div>
+        <div class="right-scenario-controls align-items-center"> 
+          
+          <div class="ms-2 me-2 download-dropdown"> 
+            <div class="dropdown rounded-3 border border-1">
+              <a class="btn dropdown-toggle ps-4 pe-4 w-100" role="button" id="right-scenario-dropdown-menu" data-bs-toggle="dropdown" aria-expanded="false" data-value="rcp85">
+                  Higher Emissions
+              </a>
+            
+              <ul class="dropdown-menu right-scenario-dropdown-menu" aria-labelledby="right-scenario-dropdown-menu">
+                <li role="option" data-value="rcp85" class="dropdown-item rightScenario-option-higher">Higher Emissions</li>
+                <li role="option" data-value="rcp45" class="dropdown-item rightScenario-option-lower">Lower Emissions</li>
+              </ul>
             </div>
           </div>
+          
           <div class="year right-year-slider-container">
             <div class="year-label year-min"></div>
             <div class="right-year-slider"></div>
@@ -2116,11 +2118,13 @@ export default class ScenarioComparisonMap {
     //override to disable left year slider for historical
 
     if (this.options.leftYear === 'avg') {
+
       this.nodes.$controlsOverLayContainer.find('.average-year-label').removeClass('d-none');
-      this.nodes.$controlsOverLayContainer.find('.left-year-slider-container').removeClass('year');
+      this.nodes.$controlsOverLayContainer.find('.left-year-slider-container').removeClass('year w-100');
       this.nodes.$controlsOverLayContainer.find('.left-year-slider').addClass('d-none');
-      this.nodes.$controlsOverLayContainer.find('.year-label').addClass('d-none');
       this.nodes.$controlsOverLayContainer.find('.left-year-slider-container').find('.average-year-label').find('span').text(this.options.scenarios[this.options.leftScenario].years.slice(-1)[0].label);
+      this.nodes.$controlsOverLayContainer.find('.left-year-slider-container').find('.year-label').addClass('d-none');
+
       delete this.nodes['$leftYearSlider'];
       delete this.nodes['$leftYearTooltip'];
       return;
@@ -2141,7 +2145,7 @@ export default class ScenarioComparisonMap {
     }
 
     this.nodes.$controlsOverLayContainer.find('.average-year-label').addClass('d-none');
-    this.nodes.$controlsOverLayContainer.find('.left-year-slider-container').addClass('year');
+    this.nodes.$controlsOverLayContainer.find('.left-year-slider-container').addClass('year w-100');
     this.nodes.$controlsOverLayContainer.find('.left-year-slider').removeClass('d-none');
     this.nodes.$controlsOverLayContainer.find('.year-label').removeClass('d-none');
 
@@ -2205,16 +2209,16 @@ export default class ScenarioComparisonMap {
 
     // check if variable is precip then disable the historical and select lower emmissions
     if (_this7.options.variable === 'pcpn') {
-      $('#leftScenario-select-vis').data('value', 'rcp45');
-      $('#leftScenario-select-vis').html('Lower Emissions');
+      $('#left-scenario-dropdown-menu').data('value', 'rcp45');
+      $('#left-scenario-dropdown-menu').html('Lower Emissions');
       $('.leftScenario-option-historical').addClass('d-none');
     } else {
       $('.leftScenario-option-historical').removeClass('d-none');
     }
 
-    // leftScenario-select-vis
+    // left-scenario-dropdown-menu
     if (this.nodes.$leftScenarioSelect === undefined) {
-      this.nodes.$leftScenarioSelect = $(this.nodes.$controlsOverLayContainer).find("#leftScenario-select-vis");
+      this.nodes.$leftScenarioSelect = $(this.nodes.$controlsOverLayContainer).find("#left-scenario-dropdown-menu");
       this.nodes.$leftScenarioSelect.data('value');
 
       this.nodes.$leftScenarioSelect.bind('cs-changed', () => {
@@ -2227,7 +2231,7 @@ export default class ScenarioComparisonMap {
 
   _updateRightScenarioSelect() {
     if (this.nodes.$rightScenarioSelect === undefined) {
-      this.nodes.$rightScenarioSelect = $(this.nodes.$controlsOverLayContainer).find("#rightScenario-select-vis");
+      this.nodes.$rightScenarioSelect = $(this.nodes.$controlsOverLayContainer).find("#right-scenario-dropdown-menu");
       this.nodes.$rightScenarioSelect.data('value');
 
       this.nodes.$rightScenarioSelect.bind('cs-changed', () => {

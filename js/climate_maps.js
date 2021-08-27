@@ -662,8 +662,8 @@ $(function () {
         // const rect = document.getElementById('map-wrap').getBoundingClientRect();
         // document.querySelector('.esri-view-root').style.minWidth = `${rect.width}px`;
         // document.querySelector('.esri-view-root').style.height = `${rect.height}px`;
-        enableCustomSelect('leftScenario-select');
-        enableCustomSelect('rightScenario-select');
+        enableCustomSelect('left-scenario-dropdown-menu');
+        enableCustomSelect('right-scenario-dropdown-menu');
 
         if (variable !== undefined) {
           const $styledSelect = $('.select.variable-select div.select-styled');

@@ -104,12 +104,12 @@ export default (config) => `
                         </a>
                     
                       <ul class="dropdown-menu download-select" aria-labelledby="download-dropdown-menu">
-                        <li class="dropdown-item default-select-option" data-value="download-lefttmap-image" data-icon="fas fa-download select-icon" href="javascript:void(0);">
-                          <a data-value="download-lefttmap-image" class="download-link" href="javascript:void(0);" >Download left map as image</a>
+                        <li class="default-select-option" data-value="download-lefttmap-image" data-icon="fas fa-download select-icon" href="javascript:void(0);">
+                          <a class="dropdown-item download-link" data-value="download-lefttmap-image" href="javascript:void(0);" >Download left map as image</a>
                         </li>
                         
-                        <li class="dropdown-item default-select-option" data-value="download-rightmap-image" data-icon="fas fa-download select-icon" href="javascript:void(0);">
-                          <a data-value="download-rightmap-image" class="download-link" href="javascript:void(0);" >Download right map as image</a>
+                        <li class="default-select-option" data-value="download-rightmap-image" data-icon="fas fa-download select-icon" href="javascript:void(0);">
+                          <a class="dropdown-item download-link" data-value="download-rightmap-image" href="javascript:void(0);" >Download right map as image</a>
                         </li>
                       </ul>
                     </div>

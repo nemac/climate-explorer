@@ -135,6 +135,10 @@ function enableCustomSelect(uniqueSelector) {
     // ga event action, category, label
     googleAnalyticsEvent('click', 'listitem', $(this).text());
 
+    // Closing the dropdown after clicking an item
+    $styledSelect.removeClass('show');
+    $styledSelect.closest('.dropdown').find('.dropdown-menu').removeClass('show');
+
     // trigger custom event so we know the user changed or selected an item
     $styledSelect.trigger('cs-changed');
   });

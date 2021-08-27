@@ -19431,6 +19431,17 @@ input.input-inner:focus {
   font-weight: bold;
 }
 
+/* line 142, scss/pages/_new_climate_maps.scss */
+.left-scenario-dropdown-menu .dropdown-item, .right-scenario-dropdown-menu .dropdown-item {
+  transition: background-color 200ms ease-in;
+}
+
+/* line 146, scss/pages/_new_climate_maps.scss */
+.left-scenario-dropdown-menu .dropdown-item:hover, .right-scenario-dropdown-menu .dropdown-item:hover {
+  background-color: #A6C6F3;
+  cursor: pointer;
+}
+
 /* line 5, scss/pages/_historical_weather_data.scss */
 .d-off {
   position: absolute;
