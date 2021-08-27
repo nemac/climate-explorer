@@ -78,20 +78,20 @@ export default (config) => `
                   </div>
                   
                   <div id="time-wrapper" class="btn-group">
-                    <input type="radio" class="btn-check" name="annual-season" id="annual-selection" autocomplete="off" data-value="annual" data-sel="time-select-vis">
-                    <label id="annual-selection-label" class="btn ps-4 pe-4 selected-item" for="annual-selection">Annual</label>
+<!--                    <input type="radio" class="btn-check" name="annual-season" id="annual-selection" autocomplete="off" data-value="annual" data-sel="time-select-vis">-->
+                    <label id="annual-selection-label" class="btn ps-4 pe-4 selected-item" for="annual-selection" data-value="annual">Annual</label>
                     
-                    <input type="radio" class="btn-check" name="annual-season" id="spring-selection" autocomplete="off" data-value="spring" data-sel="time-select-vis">
-                    <label id="spring-selection-label" class="btn ps-4 pe-4 default-selection" for="spring-selection">Spring</label>
+<!--                    <input type="radio" class="btn-check" name="annual-season" id="spring-selection" autocomplete="off" data-value="spring" data-sel="time-select-vis">-->
+                    <label id="spring-selection-label" class="btn ps-4 pe-4 default-selection" for="spring-selection" data-value="spring">Spring</label>
                     
-                    <input type="radio" class="btn-check" name="annual-season" id="summer-selection" autocomplete="off" data-value="summer" data-sel="time-select-vis">
-                    <label id="summer-selection-label" class="btn ps-4 pe-4 default-selection" for="summer-selection">Summer</label>
+<!--                    <input type="radio" class="btn-check" name="annual-season" id="summer-selection" autocomplete="off" data-value="summer" data-sel="time-select-vis">-->
+                    <label id="summer-selection-label" class="btn ps-4 pe-4 default-selection" for="summer-selection" data-value="summer">Summer</label>
                     
-                    <input type="radio" class="btn-check" name="annual-season" id="fall-selection" autocomplete="off" data-value="fall" data-sel="time-select-vis">
-                    <label id="fall-selection-label" class="btn ps-4 pe-4 default-selection" for="fall-selection">Fall</label>                  
+<!--                    <input type="radio" class="btn-check" name="annual-season" id="fall-selection" autocomplete="off" data-value="fall" data-sel="time-select-vis">-->
+                    <label id="fall-selection-label" class="btn ps-4 pe-4 default-selection" for="fall-selection" data-value="fall">Fall</label>                  
                     
-                    <input type="radio" class="btn-check" name="annual-season" id="winter-selection" autocomplete="off" data-value="winter" data-sel="time-select-vis">
-                    <label id="winter-selection-label" class="btn ps-4 pe-4 default-selection" for="winter-selection">Winter</label>
+<!--                    <input type="radio" class="btn-check" name="annual-season" id="winter-selection" autocomplete="off" data-value="winter" data-sel="time-select-vis">-->
+                    <label id="winter-selection-label" class="btn ps-4 pe-4 default-selection" for="winter-selection" data-value="winter">Winter</label>
                   </div>
                   
                   <div class="ms-2 me-2 download-dropdown"> 

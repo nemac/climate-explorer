@@ -33,7 +33,7 @@ $(function () {
   // enable custom selection boxes
   enableCustomSelect('download-select');
   enableCustomSelect('stations-select');
-  enableCustomSelect('variable-select');
+  enableCustomSelect('filter-dropdown-menu');
   enableCustomSelect('chartmap-select');
   enableCustomSelect('time-select');
   enableCustomSelect('presentation-select');
@@ -159,13 +159,19 @@ $(function () {
 
   // enables time annual, monthly click events
   $('#time-wrapper').click(function (e) {
+
     const target = $(e.target);
-    const notDisabled = !target.hasClass('btn-default-disabled');
+
+    if(!target.hasClass("btn")) {
+      return;
+    }
+
+    const disabled = target.hasClass('disabled');
 
     // not all variables can display monthly chart
     // when the variable cannot display monthly chart do
     // do execute the click event
-    if (notDisabled) {
+    if (!disabled) {
       const val = target.data('value');
 
       // toggle button visual state
@@ -182,36 +188,6 @@ $(function () {
 
       // ga event action, category, label
       googleAnalyticsEvent('click', 'update-time', val);
-    }
-  });
-
-  // enables time annual, monthly click events
-  $('#time-wrapper').keyup(function (e) {
-    if (e.keyCode === 13) {
-      const target = $(e.target);
-      const notDisabled = !target.hasClass('btn-default-disabled');
-
-      // not all variables can display monthly chart
-      // when the variable cannot display monthly chart do
-      // do execute the click event
-      if (notDisabled) {
-        const val = target.data('value');
-
-        // toggle button visual state
-        toggleButton(target);
-
-        // update chart frequency value
-        updateFrequency(val);
-
-        // update chart frequency slider based on timeperiod
-        updateFrequencySlider(val);
-
-        // change select dropdowns for responsive mode
-        setSelectFromButton(target);
-
-        // ga event action, category, label
-        googleAnalyticsEvent('click-tab', 'update-time', val);
-      }
     }
   });
 
@@ -320,8 +296,9 @@ $(function () {
   });
 
   // binds update of chart variable to change of selector
-  $('#variable-select-vis').bind('cs-changed', function (e) {
-    const variable = $('#variable-select-vis').data('value');
+  $('#filter-dropdown-menu').bind('cs-changed', function (e) {
+
+    const variable = $('#filter-dropdown-menu').data('value');
     // update the chart based on char variable
 
     if(window.cbl_chart) {
@@ -333,22 +310,25 @@ $(function () {
     window.app.update({variable});
 
     // update the text
-    updateTitle($('#variable-select-vis').text());
+    updateTitle($('#filter-dropdown-menu').text());
 
     // disable variables if they are valid time period
-    const isvalid = jQuery.inArray(variable, validMonthly);
-    if (isvalid < 0) {
-      $('[data-value="monthly"]').addClass('btn-default-disabled');
-      $('[data-value="monthly"]').removeClass('btn-default')
-      $('[data-value="monthly"]').addClass('default-select-option-disabled');
+    const is_valid = jQuery.inArray(variable, validMonthly);
+
+    if (is_valid < 0) {
+      $('[data-value="monthly"]').addClass('disabled');
+      $('[data-value="monthly"]').removeClass('selected-item');
+      $('#monthly-selection-label').addClass('disabled');
+      $('#monthly-selection-label').removeClass('selected-item');
     } else {
-      $('[data-value="monthly"]').removeClass('btn-default-disabled')
-      $('[data-value="monthly"]').addClass('btn-default')
-      $('[data-value="monthly"]').removeClass('default-select-option-disabled');
+      $('[data-value="monthly"]').removeClass('disabled')
+      $('[data-value="monthly"]').addClass('default-selection')
+      $('#monthly-selection-label').removeClass('disabled');
+      $('#monthly-selection-label').addClass('default-selection');
     }
     if (is_alaska_area) {
-      $('[data-value="monthly"]').addClass('btn-default-disabled');
-      $('[data-value="monthly"]').addClass('default-select-option-disabled');
+      $('[data-value="monthly"]').addClass('disabled');
+      $('#monthly-selection-label').addClass('disabled');
     }
   });
 

@@ -19,164 +19,120 @@ export default (config) => `
   <meta property="og:image" content="/img/og.jpg">
 </head>
 
-<body class="width-100 height-100">
+<body>
 
 ${secondary_header(config)}
 
-<div id="climate-graphs-viewport" class="padding-horizontal d-flex d-flex-column">
+<div class="container-fluid top-spacing">
 
-  <div id="search-row" class="padding-horizontal d-flex-row flex-justify padding-top padding-bottom-half d-flex-justify">
-
-    <div class="rounded-box-secondary input-outer padding-horizontal bottom-padding default-btn-height search-box-secondary width-65">
-      <input tabindex="0" id="cards-search-input" type="text" class="location-mapper input-inner-default border-none default-btn-height" autocomplete="off"
-             placeholder="Enter county or city name">
-      <span class="icon icon-search search-default float-right padding-default"></span>
-      <div id="clear-location-wrapper" class="">
-        <span id="clear-location" data-page="climate_graphs" class="fas fa-times-circle"></span>
-      </div>
+  <div class="d-flex flex-row"> 
+        
+    <div class="input-group mb-3 search-input-group rounded-3 border border-1 w-75 me-2">
+      <button id="clear-location" class="btn search-icons" type="button"><span class="fas fa-times-circle"></span></button>
+      <input id="cards-search-input" class="form-control location-mapper" type="text" placeholder="Enter county or city name" aria-label="Enter county or city name">
     </div>
-
-    <div id="stations-select-wrapper" class="rounded-choice-box padding-horizontal default-btn-height top-select-wrapper d-flex-center disabled">
-      <div class="select">
-        <div id="stations-select-vis" class="select-styled disabled" data-value="none">Stations</div>
-        <ul class="select-options" style="display: none;">
-          <li data-value="none" class="default-select-option">Stations</li>
-          <li data-value="station-1" class="default-select-option">Stations 1</li>
-          <li data-value="station-2" class="default-select-option">Stations 2</li>
-          <li data-value="station-3" class="default-select-option">Stations 3</li>
-          <li data-value="station-4" class="default-select-option">Stations 4</li>
+    
+    <div class="dropdown w-25 rounded-3 border border-1 mb-3 stations-dropdown">
+        <a class="btn dropdown-toggle disabled w-100" href="#" role="button" id="stations-dropdown-menu" data-bs-toggle="dropdown" aria-expanded="false">
+          Stations
+        </a>
+      
+        <ul class="dropdown-menu w-100" aria-labelledby="stations-dropdown-menu">
+          <li><a class="dropdown-item" href="#">Station 1</a></li>
         </ul>
-      </div>
     </div>
-
   </div>
 
-  <div id="info-row" class="padding-vertical padding-horizontal width-100">
-    <div class="rounded-filters-box padding-default width-100">
-
-      <div class="filter-border-bottom d-flex-row">
-
-        <div id="info-text-wrapper" class="width-90">
-          <i class="fas fa-chart-line icon-info-box"></i>
-          <span id="default-city-county" class="text-info-box"></span>
-          <span id="default-dash" class="text-info-box"> - </span>
-          <span id="default-chart-map-variable" class="text-info-box" data-value="tmax">Average Daily Maximum Temp (°F)</span>
+  <div class="info-section">
+      <div class="border border-1 rounded-3"> 
+        
+        <div class="m-3 mb-3 btn p-0" type="button" data-bs-toggle="collapse" data-bs-target="#collapse-info-section" aria-expanded="true" aria-controls="collapse-info-section">
+            <i class="fas fa-chart-line me-2"></i>
+            <span id="default-city-county"></span>
+            <span> - </span>
+            <span id="default-chart-map-variable" data-value="tmax">Average Daily Maximum Temp (°F)</span>
         </div>
-
-        <div id="filters-toggle" class="width-10">
-          <div class="select filters-toggle-select">
-            <div id="filters-toggle-select-vis" class="select-styled" data-value="filter"></div>
+        
+        <div class="m-3 collapse show" id="collapse-info-section"> 
+          
+          <div class="d-flex flex-row">
+              <div class="d-flex flex-row align-items-center"> 
+                <div class="dropdown rounded-3 border border-1 me-2 w-100">
+                  <a class="btn dropdown-toggle w-100" href="#" id="filter-dropdown-menu" data-bs-toggle="dropdown" aria-expanded="true" data-value="tmax">
+                    Average Daily Maximum Temperature (°F)
+                  </a>
+                
+                  <div class="dropdown-menu filter-dropdown-menu p-2" aria-labelledby="filter-dropdown-menu">
+                     <div class="d-lg-flex">
+                        ${variable_selector(config)}
+                     </div>
+                  </div>
+                </div>
+                <span id="filter-tooltip" class="fa fa-question d-flex justify-content-center align-items-center" aria-hidden="true"></span>
+              </div>
+              
+              <div class="ms-2 me-2"> 
+                <div class="btn-group border rounded-3 graph-map-selection" role="group"> 
+                  <input type="radio" class="btn-check" name="graph-map" id="graph-selection" autocomplete="off" data-page="climate_graphs"  data-sel="chartmap-select-vis">
+                  <label class="btn ps-4 pe-4 selected-item" for="graph-selection">Graph</label>
+                  
+                  <input type="radio" class="btn-check" name="graph-map" id="map-selection" autocomplete="off" data-page="climate_maps"  data-value="map" data-sel="chartmap-select-vis">
+                  <label class="btn ps-4 pe-4 default-selection" for="map-selection">Map</label>
+                </div>
+              </div>
+               
+              <div id="time-wrapper" class="btn-group">
+                <!--<input type="radio" class="btn-check" name="annual-season" id="annual-selection" autocomplete="off" data-value="annual" data-sel="time-select-vis">-->
+                <label id="annual-selection-label" class="btn ps-4 pe-4 selected-item" for="annual-selection" data-value="annual" data-sel="time-select-vis">Annual</label>
+                
+                <!--<input type="radio" class="btn-check" name="annual-season" id="spring-selection" autocomplete="off" data-value="monthly" data-sel="time-select-vis">-->
+                <label id="monthly-selection-label" class="btn ps-4 pe-4 default-selection" for="spring-selection" data-value="monthly" data-sel="time-select-vis">Monthly</label>
+              </div>
+              
+              <div class="ms-2 me-2 download-dropdown"> 
+                <div class="dropdown rounded-3 border border-1">
+                  <a class="btn dropdown-toggle ps-4 pe-4 w-100" href="#" role="button" id="download-dropdown-menu" data-bs-toggle="dropdown" aria-expanded="false">
+                      <span class="fas fa-download select-icon"></span>
+                      Downloads
+                    </a>
+                
+                  <ul class="dropdown-menu download-select" aria-labelledby="download-dropdown-menu">
+                    <li id="download-image" data-value="download-image" data-icon="fas fa-download select-icon" href="javascript:void(0);" class="default-select-option">
+                      <a tabindex="109" data-value="download-image" class="download-link" href="javascript:void(0);">Chart image (.png)</a>
+                    </li>
+                    <li id="download-observed-data" data-value="download-observed-data" data-icon="fas fa-download select-icon" href="javascript:void(0);"
+                        class="default-select-option">
+                      <a tabindex="109" data-value="download-observed-data" class="download-link" href="javascript:void(0);">Observations (.csv)</a>
+                    </li>
+                    <li id="download-historical-modeled-data" data-value="download-historical-modeled-data" data-icon="fas fa-download select-icon" href="javascript:void(0);"
+                        class="default-select-option">
+                      <a tabindex="109" data-value="download-historical-modeled-data" class="download-link" href="javascript:void(0);">Modeled History (.csv)</a>
+                    </li>
+                    <li id="download-projected-modeled-data" data-value="download-projected-modeled-data" data-icon="fas fa-download select-icon" href="javascript:void(0);"
+                        class="default-select-option">
+                      <a tabindex="109" data-value="download-projected-modeled-data" class="download-link" href="javascript:void(0);">Projections (.csv)</a>
+                    </li>
+                    <li id="download-interpreting" data-value="download-interpreting" data-icon="fas fa-download select-icon" class="default-select-option">
+                      <a tabindex="109" data-value="download-interpreting" class="download-link" href="https://crt-climate-explorer.nemac.org/data/Climate-Explorer--Documentation-for-Downloads.xlsx">Documentation for Downloads (.xlsx)</a>
+                    </li>
+                  </ul>
+                </div>
+              </div>
+              
+              <div tabindex="110" id="chart-info-row-btn" class="rounded-choice-box padding-left-half padding-vertical-half default-btn-height d-flex-center">
+                <div class="more-info btn-default padding-left-half">
+                  <span class="fas fa-info more-info more-icon"></span>
+                  <span class="fas fa-info more-info less-icon d-none"></span>
+                  <span class="more short-desc">About</span>
+                  <span class="more long-desc">How to read</span>
+                  <span class="more long-desc d-none">How to read</span>
+                  <span class="more short-desc d-none">About</span>
+                </div>
+              </div>
           </div>
+          
         </div>
-
-      </div>
-
-      <div id="filters-row" class="d-flex-row flex-justify padding-top  d-flex-left">
-
-        <div id="variable-select-wrapper" class="rounded-choice-box padding-left-half padding-vertical-half default-btn-height d-flex-center width-30">
-          ${variable_selector(config)}
-        </div>
-        <span id="select-tip-holder">
-              <span tabindex="100" data-value="select-tip" id="select-tip" class="fas fa-question padding-left-half select-tip" data-tippy-content="
-                <strong>Average Daily Maximum Temperature (°F)</strong><hr/>
-                A day's highest (maximum) temperature usually occurs in the afternoon. Averaging the daily high temperatures over any period results in a mean maximum temperature for that period.
-                <br />
-                <br />
-                Maximum temperature serves as one measure of comfort and safety for people and for the health of plants and animals. When maximum temperature exceeds particular thresholds, people can become ill and transportation and energy infrastructure may be stressed.">
-              </span>
-            </span>
-
-        <div id="chartmap-wrapper" class="padding-horizontal-half padding-vertical-half default-btn-height d-flex-center width-15">
-          <div tabindex="100" role="button" class="btn-selector btn-chart btn-default-selected circle-box-left d-flex-center width-50" data-value="chart"
-               data-page="climate_graphs" data-sel="chartmap-select-vis">
-            Graph
-          </div>
-          <div tabindex="101" role="button" class="btn-selector btn-map btn-default circle-box-right d-flex-center width-50 btn-default-disabled" data-page="climate_maps"
-               data-value="map"  data-sel="chartmap-select-vis">
-            Map
-          </div>
-        </div>
-
-        <div id="chartmap-select-wrapper" class="rounded-choice-box padding-left-half padding-vertical-half default-btn-height d-flex-center width-15">
-          <div class="select chartmap-select">
-            <div tabindex="102" id="chartmap-select-vis" class="select-styled" data-value="chart">Chart</div>
-            <ul class="select-options">
-              <li tabindex="103" id="chartmap-select-chart-link" data-value="chart" class="default-select-option" data-page="climate_graphs"
-                  >Chart
-              </li>
-              <li tabindex="104" id=chartmap-select-map-link"" data-value="map" class="default-select-option" data-page="climate_maps"
-                  >Map
-              </li>
-            </ul>
-            </ul>
-          </div>
-        </div>
-
-        <div id="time-wrapper" class="padding-left-half padding-vertical-half default-btn-height d-flex-center width-15">
-          <div tabindex="105" role="button" class="btn-selector btn-annual btn-default-selected circle-box-left d-flex-center width-50" data-value="annual"
-               data-sel="time-select-vis">
-            Annual
-          </div>
-          <div tabindex="106" role="button" class="btn-selector btn-monthly btn-default circle-box-right d-flex-center width-50" data-value="monthly"
-               data-sel="time-select-vis">
-            Monthly
-          </div>
-        </div>
-
-        <div id="time-select-wrapper" class="rounded-choice-box padding-left-half padding-vertical-half default-btn-height d-flex-center width-15">
-          <div class="select time-select">
-            <div tabindex="107" id="time-select-vis" class="select-styled" data-value="annual">Annual</div>
-            <ul class="select-options">
-              <li tabindex="108" data-value="annual" class="default-select-option">Annual</li>
-              <li tabindex="109" data-value="monthly" class="default-select-option">Monthly</li>
-            </ul>
-          </div>
-        </div>
-
-        <div id="downloads-select-wrapper" class="rounded-choice-box padding-left-half padding-vertical-half default-btn-height d-flex-center">
-
-          <div tabindex="109" class="select download-select">
-            <div tabindex="109" id="downloads-select-vis" class="select-styled" data-value="none" href="javascript:void(0);">
-              <i class="fas fa-download select-icon"></i>
-              <a tabindex="109" data-value="none" class="download-link-main long-desc" href="javascript:void(0);">Downloads</a>
-              <a tabindex="109" data-value="none" class="download-link-main short-desc" href="javascript:void(0);">Down</a>
-            </div>
-            <ul class="select-options" style="display: none;">
-              <li id="download-image" data-value="download-image" data-icon="fas fa-download select-icon" href="javascript:void(0);" class="default-select-option">
-                <a tabindex="109" data-value="download-image" class="download-link" href="javascript:void(0);">Chart image (.png)</a>
-              </li>
-              <li id="download-observed-data" data-value="download-observed-data" data-icon="fas fa-download select-icon" href="javascript:void(0);"
-                  class="default-select-option">
-                <a tabindex="109" data-value="download-observed-data" class="download-link" href="javascript:void(0);">Observations (.csv)</a>
-              </li>
-              <li id="download-historical-modeled-data" data-value="download-historical-modeled-data" data-icon="fas fa-download select-icon" href="javascript:void(0);"
-                  class="default-select-option">
-                <a tabindex="109" data-value="download-historical-modeled-data" class="download-link" href="javascript:void(0);">Modeled History (.csv)</a>
-              </li>
-              <li id="download-projected-modeled-data" data-value="download-projected-modeled-data" data-icon="fas fa-download select-icon" href="javascript:void(0);"
-                  class="default-select-option">
-                <a tabindex="109" data-value="download-projected-modeled-data" class="download-link" href="javascript:void(0);">Projections (.csv)</a>
-              </li>
-              <li id="download-interpreting" data-value="download-interpreting" data-icon="fas fa-download select-icon" class="default-select-option">
-                <a tabindex="109" data-value="download-interpreting" class="download-link" href="https://crt-climate-explorer.nemac.org/data/Climate-Explorer--Documentation-for-Downloads.xlsx">Documentation for Downloads (.xlsx)</a>
-              </li>
-            </ul>
-          </div>
-        </div>
-
-        <div tabindex="110" id="chart-info-row-btn" class="rounded-choice-box padding-left-half padding-vertical-half default-btn-height d-flex-center">
-          <div class="more-info btn-default padding-left-half">
-            <span class="fas fa-info more-info more-icon"></span>
-            <span class="fas fa-info more-info less-icon d-none"></span>
-            <span class="more short-desc">About</span>
-            <span class="more long-desc">How to read</span>
-            <span class="more long-desc d-none">How to read</span>
-            <span class="more short-desc d-none">About</span>
-          </div>
-        </div>
-
-      </div>
-    </div>
+      </div> 
   </div>
 
   <div id="chart-row" class="padding-horizontal padding-top-half padding-bottom-half d-flex-column flex-justify">

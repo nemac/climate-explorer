@@ -511,17 +511,20 @@ $(function () {
 
   // enables time annual, monthly click events
   $('#time-wrapper').click(function (e) {
+
     const target = $(e.target);
 
     if(!target.hasClass("btn")) {
       return;
     }
 
-    const notDisabled = !target.hasClass('btn-default-disabled');
+    const disabled = target.hasClass('disabled');
+
     // not all variables can display monthly chart
     // when the variable cannot display monthly chart do
     // do execute the click event
-    if (notDisabled) {
+    if (!disabled) {
+
       const val = target.data('value')
 
       // toggle button visual state
@@ -535,32 +538,6 @@ $(function () {
 
       // ga event action, category, label
       googleAnalyticsEvent('click', 'update-time', val);
-    }
-  })
-
-  // enables time annual, monthly click events
-  $('#time-wrapper').keyup(function (e) {
-    if (e.keyCode === 13) {
-      const target = $(e.target);
-      const notDisabled = !target.hasClass('btn-default-disabled');
-      // not all variables can display monthly chart
-      // when the variable cannot display monthly chart do
-      // do execute the click event
-      if (notDisabled) {
-        const val = target.data('value')
-
-        // toggle button visual state
-        toggleButton(target);
-
-        // change select dropdowns for responsive mode
-        setSelectFromButton(target);
-
-        // change map variable
-        updateSeason(val);
-
-        // ga event action, category, label
-        googleAnalyticsEvent('click-tab', 'update-time', val);
-      }
     }
   })
 
@@ -659,9 +636,6 @@ $(function () {
       showCounties: true, // isNational() add isNational() if we re-institute national maps again
       layersLoaded: function layersloaded() {
         $('#local-climate-map-element').spinner('destroy');
-        // const rect = document.getElementById('map-wrap').getBoundingClientRect();
-        // document.querySelector('.esri-view-root').style.minWidth = `${rect.width}px`;
-        // document.querySelector('.esri-view-root').style.height = `${rect.height}px`;
         enableCustomSelect('left-scenario-dropdown-menu');
         enableCustomSelect('right-scenario-dropdown-menu');
 
@@ -677,12 +651,15 @@ $(function () {
           if (!options.isCenterConus) {
 
             // get map parent element - which provides the correct dimensions for the map
-            const rect = document.getElementById('map-wrap').getBoundingClientRect();
+            const rect = document.getElementById('map-element').getBoundingClientRect();
 
-            // messageElem.style.left = `${(rect.right - rect.left)/3}px`;
-            // messageElem.style.top = `-${((rect.bottom - rect.top)/2)}px`;
-            messageElem.style.left = `${(rect.right - rect.left) / 3}px`;
-            messageElem.style.top = `-${((rect.bottom - rect.top) - 6)}px`;
+            // messageElem.style.left = `${(rect.right - rect.left) / 3}px`;
+            // messageElem.style.top = `-${((rect.bottom - rect.top) - 6)}px`;
+
+            messageElem.style.left = ((rect.width / 16) / 3) + "rem";
+            messageElem.style.top = ((rect.height / 16) / 4) + "rem";
+            messageElem.style.height = "4rem";
+
             if (!isHawaii) {
               //refer use to click chart button instead of link in message
               messageElem.innerHTML = `Mapped climate data are available for counties in the contiguous United States. For locations outside of this area, click the Graph button to view data.`
@@ -710,7 +687,7 @@ $(function () {
 
     let climate_map_element = document.getElementById("local-climate-map-element");
 
-    climate_map_element.style.height = (map_element.getBoundingClientRect().height / 16) + "rem";
+    climate_map_element.style.height = ((map_element.getBoundingClientRect().height / 16) - 5) + "rem";
 
     let climate_map_height = climate_map_element.getBoundingClientRect().height / 16;
 
