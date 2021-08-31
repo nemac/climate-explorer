@@ -653,9 +653,6 @@ $(function () {
             // get map parent element - which provides the correct dimensions for the map
             const rect = document.getElementById('map-element').getBoundingClientRect();
 
-            // messageElem.style.left = `${(rect.right - rect.left) / 3}px`;
-            // messageElem.style.top = `-${((rect.bottom - rect.top) - 6)}px`;
-
             messageElem.style.left = ((rect.width / 16) / 3) + "rem";
             messageElem.style.top = ((rect.height / 16) / 4) + "rem";
             messageElem.style.height = "4rem";
@@ -679,15 +676,32 @@ $(function () {
     window.scenarioComparisonMap.getShowSeasonControls() ? $("#precipitation-map-season").show(200) : $("#precipitation-map-season").hide();
     }
 
+  /**
+   * This function handles the resizing of the map on climate_maps page. It takes the height of the top nav bar
+   * and the height of the footer which it then adds as padding to the top and the bottom of the element containing
+   * the map element.
+   *
+   * The #.height / 16 is attempting to convert it from pixels to rem (1 rem = 16px)
+   */
   function setMapSize() {
 
-    $('#map-element').css({"maxHeight": "65vh"});
+    let nav_element = document.querySelector(".navbar-element");
+    let footer_element = document.querySelector(".footer-element");
+
+    let nav_height = nav_element.getBoundingClientRect().height / 16;
+    let footer_height = footer_element.getBoundingClientRect().height / 16;
+
+    let climate_maps_body = document.querySelector(".climate-maps-body");
+    climate_maps_body.style.paddingTop = nav_height + "rem";
+    climate_maps_body.style.paddingBottom = footer_height + "rem";
 
     let map_element = document.getElementById("map-element");
 
+    map_element.style.height = "100% !important";
+
     let climate_map_element = document.getElementById("local-climate-map-element");
 
-    climate_map_element.style.height = ((map_element.getBoundingClientRect().height / 16) - 5) + "rem";
+    climate_map_element.style.height = "100%";
 
     let climate_map_height = climate_map_element.getBoundingClientRect().height / 16;
 

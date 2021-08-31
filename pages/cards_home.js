@@ -84,7 +84,7 @@ export default (config) => `
       </div>
       
       <div class="col-sm-4 mb-3"> 
-          <div class="col-sm-12 p-0 card border border-1 rounded shadow-sm data-card h-100 data-page="high_tide_flooding"">
+          <div class="col-sm-12 p-0 card border border-1 rounded shadow-sm data-card h-100" data-page="high_tide_flooding">
             <div>
                 <img class="img-fluid" src="/img/card-tidal-data.png" alt="Tidal chart data image"/>
              </div>

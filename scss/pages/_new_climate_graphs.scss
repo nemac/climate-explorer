@@ -1,0 +1,42 @@
+@import "../color_utils";
+
+.chart-info {
+  background-color: $search-input-background;
+  transition: background-color 200ms ease-in;
+
+  span {
+    color: $navbar-button-background !important;
+    font-weight: normal !important;
+  }
+
+  &:hover {
+    background-color: $navbar-hover-background;
+  }
+}
+
+.btn-histobs, .btn-histmod, .btn-lower-emissions, .btn-higher-emissions {
+  background-color: $search-input-background;
+  color: $navbar-button-background;
+
+  transition: background-color 200ms ease-in;
+
+  &:hover {
+    background-color: $navbar-hover-background;
+  }
+}
+
+.inner-histobs {
+  background-color: #777777;
+}
+
+.inner-histmod {
+  background-color: #D6D6D6;
+}
+
+.inner-lower-emissions {
+  background-color: #98BCEB;
+}
+
+.inner-higher-emissions {
+  background-color: #FBB4AA;
+}

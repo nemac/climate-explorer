@@ -97,37 +97,28 @@ ${secondary_header(config)}
                     </a>
                 
                   <ul class="dropdown-menu download-select" aria-labelledby="download-dropdown-menu">
-                    <li id="download-image" data-value="download-image" data-icon="fas fa-download select-icon" href="javascript:void(0);" class="default-select-option">
-                      <a tabindex="109" data-value="download-image" class="download-link" href="javascript:void(0);">Chart image (.png)</a>
+                    <li id="download-image" data-value="download-image" data-icon="fas fa-download select-icon" href="javascript:void(0);">
+                      <a class="dropdown-item" tabindex="109" data-value="download-image" href="javascript:void(0);">Chart image (.png)</a>
                     </li>
-                    <li id="download-observed-data" data-value="download-observed-data" data-icon="fas fa-download select-icon" href="javascript:void(0);"
-                        class="default-select-option">
-                      <a tabindex="109" data-value="download-observed-data" class="download-link" href="javascript:void(0);">Observations (.csv)</a>
+                    <li id="download-observed-data" data-value="download-observed-data" data-icon="fas fa-download select-icon" href="javascript:void(0);">
+                      <a class="dropdown-item" tabindex="109" data-value="download-observed-data" href="javascript:void(0);">Observations (.csv)</a>
                     </li>
-                    <li id="download-historical-modeled-data" data-value="download-historical-modeled-data" data-icon="fas fa-download select-icon" href="javascript:void(0);"
-                        class="default-select-option">
-                      <a tabindex="109" data-value="download-historical-modeled-data" class="download-link" href="javascript:void(0);">Modeled History (.csv)</a>
+                    <li id="download-historical-modeled-data" data-value="download-historical-modeled-data" data-icon="fas fa-download select-icon" href="javascript:void(0);">
+                      <a class="dropdown-item" tabindex="109" data-value="download-historical-modeled-data" href="javascript:void(0);">Modeled History (.csv)</a>
                     </li>
-                    <li id="download-projected-modeled-data" data-value="download-projected-modeled-data" data-icon="fas fa-download select-icon" href="javascript:void(0);"
-                        class="default-select-option">
-                      <a tabindex="109" data-value="download-projected-modeled-data" class="download-link" href="javascript:void(0);">Projections (.csv)</a>
+                    <li id="download-projected-modeled-data" data-value="download-projected-modeled-data" data-icon="fas fa-download select-icon" href="javascript:void(0);">
+                      <a class="dropdown-item" tabindex="109" data-value="download-projected-modeled-data" href="javascript:void(0);">Projections (.csv)</a>
                     </li>
-                    <li id="download-interpreting" data-value="download-interpreting" data-icon="fas fa-download select-icon" class="default-select-option">
-                      <a tabindex="109" data-value="download-interpreting" class="download-link" href="https://crt-climate-explorer.nemac.org/data/Climate-Explorer--Documentation-for-Downloads.xlsx">Documentation for Downloads (.xlsx)</a>
+                    <li id="download-interpreting" data-value="download-interpreting" data-icon="fas fa-download select-icon">
+                      <a class="dropdown-item" tabindex="109" data-value="download-interpreting" href="https://crt-climate-explorer.nemac.org/data/Climate-Explorer--Documentation-for-Downloads.xlsx">Documentation for Downloads (.xlsx)</a>
                     </li>
                   </ul>
                 </div>
               </div>
               
-              <div tabindex="110" id="chart-info-row-btn" class="rounded-choice-box padding-left-half padding-vertical-half default-btn-height d-flex-center">
-                <div class="more-info btn-default padding-left-half">
-                  <span class="fas fa-info more-info more-icon"></span>
-                  <span class="fas fa-info more-info less-icon d-none"></span>
-                  <span class="more short-desc">About</span>
-                  <span class="more long-desc">How to read</span>
-                  <span class="more long-desc d-none">How to read</span>
-                  <span class="more short-desc d-none">About</span>
-                </div>
+              <div id="chart-info-row-btn" class="btn chart-info ps-3 pe-3 border border-1" data-bs-toggle="modal" data-bs-target="#aboutModal">
+                  <i class="fas fa-info me-2"></i>
+                  <span>About</span>
               </div>
           </div>
           
@@ -135,46 +126,49 @@ ${secondary_header(config)}
       </div> 
   </div>
 
-  <div id="chart-row" class="padding-horizontal padding-top-half padding-bottom-half d-flex-column flex-justify">
+  <div id="chart-row" class="d-flex-column border border-1 mt-3 rounded-3">
 
     <div id="chart-wrap" class="chart-wrap d-flex d-flex-center width-100">
       <div id="chart-123" class="chart-canvas width-100 height-100" data-chart-ID="123"></div>
       <div id="chart-message" class="chart-nodata-message d-none"></div>
     </div>
 
-    <div id="legend-wrapper" class="padding-horizontal-half default-btn-height d-flex-center">
-      <div role="button" tabindex="111" class="btn-selector btn-histobs d-flex-center width-50" data-value="histobs">
+    <div id="legend-wrapper" class="d-flex-center mb-2">
+      <div class="btn btn-histobs d-flex-center border border-1 m-1 rounded-3" data-value="histobs">
+        <div class="inner-histobs ps-3 pe-3 pt-2 pb-2 me-2 rounded-3"></div>
         Observations
-        <div class="inner-histobs"></div>
       </div>
-      <div role="button" tabindex="112" class="btn-selector btn-histmod selected d-flex-center width-50" data-value="histmod">
+      <div class="btn btn-histmod d-flex-center selected-item border border-1 m-1 rounded-3" data-value="histmod">
+        <div class="inner-histmod ps-3 pe-3 pt-2 pb-2 me-2 rounded-3"></div>
         Modeled History
-        <div class="inner-histmod"></div>
       </div>
-      <div role="button" tabindex="113" class="btn-selector btn-lower-emissions selected  d-flex-center width-50" data-value="rcp45">
+      <div class="btn btn-lower-emissions selected-item d-flex-center border border-1 m-1 rounded-3" data-value="rcp45">
+        <div class="inner-lower-emissions ps-3 pe-3 pt-2 pb-2 me-2 rounded-3"></div>
         Lower Emissions
-        <div class="inner-lower-emissions"></div>
       </div>
-      <div role="button" tabindex="40" class="btn-selector btn-higher-emissions selected d-flex-center width-50" data-value="rcp85">
+      <div class="btn btn-higher-emissions selected-item d-flex-center border border-1 m-1 rounded-3"  data-value="rcp85">
+        <div class="inner-higher-emissions ps-3 pe-3 pt-2 pb-2 me-2 rounded-3"></div>
         Higher Emissions
-        <div class="inner-higher-emissions"></div>
       </div>
     </div>
 
-    <div id="monthly-select-wrapper" class="padding-horizontal-half padding-vertical-half default-btn-height d-none width-60">
-      <div role="button" tabindex="114" class="btn-selector btn-default-selected d-flex-center width-33" data-value="2025">
+    <div id="monthly-select-wrapper" class="mb-2 d-none">
+      <div class="btn selected-item d-flex-center border border-1 m-1 rounded-3" data-value="2025">
         2010-2040 average
       </div>
-      <div role="button" tabindex="115" class="btn-selector btn-default d-flex-center width-33" data-value="2050">
+      
+      <div class="btn default-selection d-flex-center border border-1 m-1 rounded-3" data-value="2050">
         2035-2065 average
       </div>
-      <div role="button" tabindex="116" class="btn-selector btn-default d-flex-center width-33" data-value="2075">
+  
+      <div class="btn default-selection d-flex-center border border-1 m-1 rounded-3" data-value="2075">
         2060-2090 average
       </div>
     </div>
   </div>
 
-  <div tabindex="117" id="chart-info-row" class="d-flex-row flex-justify padding-bottom-half d-flex-left d-none">
+
+  <div id="chart-info-row" class="d-flex-row flex-justify padding-bottom-half d-flex-left d-none">
     ${chart_explainer(config)}
   </div>
 

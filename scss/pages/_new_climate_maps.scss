@@ -102,7 +102,6 @@
   }
 }
 
-
 #collapse-info-section {
   ul {
     background-color: $search-input-background;
@@ -147,4 +146,12 @@
     background-color: $navbar-hover-background;
     cursor: pointer;
   }
+}
+
+#map-row {
+  height: 100% !important;
+}
+
+.climate-maps-body {
+  height: calc(100vh - 7rem);
 }

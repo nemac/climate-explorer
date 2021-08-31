@@ -523,6 +523,7 @@ if (storageAvailable()) {
 }
 
 function updateValidVariable() {
+
   const state = window.app.state
   const cityStateCE = state['city'];
   const countyCE = state['county'];
@@ -535,56 +536,57 @@ function updateValidVariable() {
   if (cityStateCE) {
     if (!is_conus_area) {
 
-      $('#download-observed-data').addClass('default-select-option-disabled');
+      // Remove this observed data download from dropdown
       $('#download-observed-data').addClass('disabled');
       $('#download-observed-data').addClass('d-none');
 
-      // $('.btn-histobs').addClass('disabled');
-
+      // Disable Observations button
       $('.btn-histobs').removeClass('d-flex-center');
       $('.btn-histobs').addClass('d-none');
-
       $('.inner-histobs').addClass('disabled');
 
-      // $('.btn-lower-emissions').addClass('disabled');
-
+      // Disable Lower Emissions button
       $('.btn-lower-emissions').removeClass('d-flex-center');
       $('.btn-lower-emissions').addClass('d-none');
-
       $('.inner-lower-emissions').addClass('disabled');
-      $('.btn-lower-emissions').removeClass('selected');
-      // $('.opt-not-ak').removeClass('default-select-option-disabled');
-      $('.not-ak-last').removeClass('last-variable-space');
 
-      $('.btn-monthly').addClass('btn-default-disabled');
-      $('[data-value="monthly"]').addClass('default-select-option-disabled');
+      // Disable the Monthly button
+      $('#monthly-selection-label').addClass('disabled');
       $('[data-value="monthly"]').addClass('disabled');
-      $('.btn-selector[data-value="map"]').addClass('btn-default-disabled');
+
+      // Disable the Map button
+      $('#map-selection').addClass('disabled');
+      $('[for="map-selection"]').addClass('disabled');
+
       $('#more-info-description .btn-histobs').removeClass('disabled');
       $('#more-info-description .btn-lower-emissions').removeClass('disabled');
       $('#more-info-description .btn-lower-emissions').addClass('selected');
 
       // temporary fix for Aleutians West
       if (cityStateCE.includes('Aleutians West') > 0 || countyCE.includes('Aleutians West') > 0) {
+
         const messageElemChart = document.getElementById('chart-message');
+
         if (messageElemChart) {
           const rect = document.getElementById('chart-wrap').getBoundingClientRect();
 
-          messageElemChart.style.left = `${(rect.right - rect.left) / 4}px`;
-          messageElemChart.style.top = `${((rect.bottom + rect.top) / 2.5)}px`;
+          messageElemChart.style.left = ((rect.width / 16) / 3) + "rem";
+          messageElemChart.style.top = ((rect.height / 16) / 4) + "rem";
+          messageElemChart.style.height = "4rem";
           messageElemChart.innerHTML = `The chart and data for ${cityStateCE}, is currently not available.`
           messageElemChart.classList.remove('d-none');
         }
       }
 
-    } else {
-      // $('.opt-only-ak').addClass('default-select-option-disabled');
-      $('.not-ak-last').addClass('last-variable-space');
     }
+    // else {
+    //   // $('.opt-only-ak').addClass('default-select-option-disabled');
+    //   // $('.not-ak-last').addClass('last-variable-space');
+    // }
 
 
     if (!!state['variable']) {
-      const selected_list_item = $(`.variable-select li[data-value="${state["variable"]}"]`);
+      const selected_list_item = $(`.filter-dropdown-menu li[data-value="${state["variable"]}"]`);
       if (!!selected_list_item) {
         if((is_conus_area && (selected_list_item.hasClass('opt-only-ak') || selected_list_item.hasClass('opt-only-island')))
             || (is_island_area && (selected_list_item.hasClass('opt-only-ak') || selected_list_item.hasClass('opt-not-island')))
@@ -594,14 +596,11 @@ function updateValidVariable() {
           return
         }
 
-        $('.select.variable-select div.select-styled').text(selected_list_item.text().trim()).removeClass('active');
+        // $('.select.variable-select div.select-styled').text(selected_list_item.text().trim()).removeClass('active');
         $('#default-chart-map-variable').text(selected_list_item.text().trim())
       }
     }
-    // $('.opt-not-ak').toggleClass('d-none', is_ak_area);
-    // $('.opt-only-ak').removeClass('d-none', !is_ak_area);
-    // $('.opt-not-island').toggleClass('d-none', is_island_area);
-    // $('.opt-only-island').removeClass('d-none', !is_island_area);
+
   } else {
 
     //Hawaii islands have city null, thus it was never adding/removing these classes when visiting hawaii cities.
@@ -615,6 +614,8 @@ function updateValidVariable() {
       $('#download-observed-data').addClass('d-none');
     }
   }
+
+  $('#collapse-info-section').addClass('show');
 }
 
 // when user clicks on search icon switch focus to location search box

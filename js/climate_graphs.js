@@ -8,9 +8,34 @@ $(function () {
   const area_label = state['area_label'];
   const is_alaska_area = state['is_alaska_area'];
   const is_conus_area = state['is_conus_area'];
+  const is_island_area = state['is_island_area'];
 
   if(is_conus_area) {
-    $('[data-page="climate_maps"]').removeClass("btn-default-disabled");
+    $('#map-selection').removeClass('disabled');
+    $('[for="map-selection"]').removeClass('disabled');
+
+    $('.how-to-read-conus').removeClass('d-none');
+    $('.how-to-read-ak').addClass('d-none');
+    $('.how-to-read-island').addClass('d-none');
+
+  } else if(is_alaska_area) {
+
+    $('#map-selection').addClass('disabled');
+    $('[for="map-selection"]').addClass('disabled');
+
+    $('.how-to-read-conus').addClass('d-none');
+    $('.how-to-read-ak').removeClass('d-none');
+    $('.how-to-read-island').addClass('d-none');
+
+  } else if(is_island_area) {
+
+    $('#map-selection').addClass('disabled');
+    $('[for="map-selection"]').addClass('disabled');
+
+    $('.how-to-read-conus').addClass('d-none');
+    $('.how-to-read-ak').addClass('d-none');
+    $('.how-to-read-island').removeClass('d-none');
+
   }
 
   $('#default-city-county').text(county_label || area_label);
@@ -226,10 +251,12 @@ $(function () {
 
   // adds a click event to turn off chart layers aka what you
   // see on the chart
-  $('#legend-wrapper .btn-selector').click(function (e) {
+  $('#legend-wrapper .btn').click(function (e) {
+
     const target = $(e.currentTarget);
-    const notDisabled = !target.hasClass('disabled');
-    if (notDisabled) {
+    const disabled = target.hasClass('disabled');
+
+    if (!disabled) {
       // update the chart layers
       updateChartLayers(target);
 
@@ -281,7 +308,7 @@ $(function () {
   });
 
   // adds time period click
-  $('#monthly-select-wrapper .btn-selector').click(function (e) {
+  $('#monthly-select-wrapper .btn').click(function (e) {
     const target = $(e.target);
     const val = target.data('value');
 
@@ -335,14 +362,16 @@ $(function () {
   // this function changes chart layers based on what the user
   // clicks on
   function updateChartLayers(el) {
+
     const legend_el = $('#legend-wrapper');
-    el.toggleClass('selected');
+
+    el.toggleClass('selected-item');
     // map all buttons and get the val from html val attribute
     const visible_layers = {
-      show_historical_observed: legend_el.find('[data-value="histobs"]').hasClass('selected') || false,
-      show_historical_modeled: legend_el.find('[data-value="histmod"]').hasClass('selected') || false,
-      show_projected_rcp45: legend_el.find('[data-value="rcp45"]').hasClass('selected') || false,
-      show_projected_rcp85: legend_el.find('[data-value="rcp85"]').hasClass('selected') || false,
+      show_historical_observed: legend_el.find('[data-value="histobs"]').hasClass('selected-item') || false,
+      show_historical_modeled: legend_el.find('[data-value="histmod"]').hasClass('selected-item') || false,
+      show_projected_rcp45: legend_el.find('[data-value="rcp45"]').hasClass('selected-item') || false,
+      show_projected_rcp85: legend_el.find('[data-value="rcp85"]').hasClass('selected-item') || false,
     };
 
 
@@ -458,7 +487,7 @@ $(function () {
 
       });
 
-  $('#chart-info-row-btn .more-info.btn-default').click(function (e) {
+  $('#chart-info-row-btn').click(function (e) {
     const target = $('#more-info-description');
     // show description of charts
     if (target.hasClass('d-none')) {
@@ -518,10 +547,7 @@ $(function () {
     setTimeout(function () {
       window.cbl_chart.resize();
     }, 500);
-    // // force draw and resize of charts
-    // showGraphs();
-    // forceResize();
-    // setMapSize();
+
   })
 
   const variable = state['variable'];

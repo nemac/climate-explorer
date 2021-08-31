@@ -21,9 +21,9 @@ export default (config) => `
 
   ${secondary_header(config)}
 
-    <div class="container-fluid top-spacing mb-3">
+   <div class="container-fluid d-flex-column mb-3 climate-maps-body"> <!-- top-spacing-->
     
-      <div class="d-flex flex-row"> 
+      <div class="d-flex flex-row mt-3"> 
         
         <div class="input-group mb-3 search-input-group rounded-3 border border-1 w-75 me-2">
           <button id="clear-location" class="btn search-icons" type="button"><span class="fas fa-times-circle"></span></button>
@@ -41,7 +41,7 @@ export default (config) => `
         </div>
       </div>
     
-      <div class="info-section">
+      <div class="info-section mb-2">
           <div class="border border-1 rounded-3"> 
             <div class="m-3 mb-3 btn p-0" type="button" data-bs-toggle="collapse" data-bs-target="#collapse-info-section" aria-expanded="true" aria-controls="collapse-info-section">
                 <i class="fas fa-map-marked-alt me-2"></i>
@@ -118,27 +118,27 @@ export default (config) => `
           </div> 
       </div>
     
-    </div>
-    
-    <div id="climate-maps-viewport">
-  
+      <div id="climate-maps-viewport">
+
         <div id="info-row" class="width-100">
         </div>
   
         <div id="map-for-print-left" class="d-off d-none"></div>
         <div id="map-for-print-right" class="d-off d-none"></div>
   
-        <div id="map-row" class="padding-horizontal w-100 d-flex">
+        <div id="map-row" class="w-100 d-flex">
   
             <div id="map-element" class="d-flex w-100"> 
-              <div id="local-climate-map-element" class="map-element p-0"></div>
+              <div id="local-climate-map-element" class="map-element p-0" style="height: 100% !important;"></div>
               <div id="map-message" class="map-nodata-message d-none"></div>
             </div>
-
+  
         </div>
   
       </div>
-
+    
+    </div>
+    
 
 ${nav_footer(config)}
 ${footer(config)}
