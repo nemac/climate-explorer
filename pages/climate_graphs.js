@@ -23,9 +23,9 @@ export default (config) => `
 
 ${secondary_header(config)}
 
-<div class="container-fluid top-spacing">
+<div class="container-fluid climate-graphs-body">
 
-  <div class="d-flex flex-row"> 
+  <div class="d-flex flex-row mt-3"> 
         
     <div class="input-group mb-3 search-input-group rounded-3 border border-1 w-75 me-2">
       <button id="clear-location" class="btn search-icons" type="button"><span class="fas fa-times-circle"></span></button>
@@ -55,8 +55,8 @@ ${secondary_header(config)}
         
         <div class="m-3 collapse show" id="collapse-info-section"> 
           
-          <div class="d-flex flex-row">
-              <div class="d-flex flex-row align-items-center"> 
+          <div class="row">
+              <div class="col-md-12 col-lg-8 col-xl-3 d-flex flex-row align-items-center mt-1 mb-1" style="text-align: center;"> 
                 <div class="dropdown rounded-3 border border-1 me-2 w-100">
                   <a class="btn dropdown-toggle w-100" href="#" id="filter-dropdown-menu" data-bs-toggle="dropdown" aria-expanded="true" data-value="tmax">
                     Average Daily Maximum Temperature (°F)
@@ -71,8 +71,8 @@ ${secondary_header(config)}
                 <span id="filter-tooltip" class="fa fa-question d-flex justify-content-center align-items-center" aria-hidden="true"></span>
               </div>
               
-              <div class="ms-2 me-2"> 
-                <div class="btn-group border rounded-3 graph-map-selection" role="group"> 
+              <div class="col-md-12 col-lg-4 col-xl-2 mt-1 mb-1" style="text-align: center;"> 
+                <div class="btn-group border rounded-3 graph-map-selection w-100" role="group"> 
                   <input type="radio" class="btn-check" name="graph-map" id="graph-selection" autocomplete="off" data-page="climate_graphs"  data-sel="chartmap-select-vis">
                   <label class="btn ps-4 pe-4 selected-item" for="graph-selection">Graph</label>
                   
@@ -81,17 +81,14 @@ ${secondary_header(config)}
                 </div>
               </div>
                
-              <div id="time-wrapper" class="btn-group">
-                <!--<input type="radio" class="btn-check" name="annual-season" id="annual-selection" autocomplete="off" data-value="annual" data-sel="time-select-vis">-->
+              <div class="col-md-12 col-lg-4 col-xl-2 btn-group mt-1 mb-1" style="text-align: center;" id="time-wrapper">
                 <label id="annual-selection-label" class="btn ps-4 pe-4 selected-item" for="annual-selection" data-value="annual" data-sel="time-select-vis">Annual</label>
-                
-                <!--<input type="radio" class="btn-check" name="annual-season" id="spring-selection" autocomplete="off" data-value="monthly" data-sel="time-select-vis">-->
                 <label id="monthly-selection-label" class="btn ps-4 pe-4 default-selection" for="spring-selection" data-value="monthly" data-sel="time-select-vis">Monthly</label>
               </div>
               
-              <div class="ms-2 me-2 download-dropdown"> 
+              <div class="col-md-12 col-lg-4 col-xl-2 download-dropdown mt-1 mb-1" style="text-align: center;"> 
                 <div class="dropdown rounded-3 border border-1">
-                  <a class="btn dropdown-toggle ps-4 pe-4 w-100" href="#" role="button" id="download-dropdown-menu" data-bs-toggle="dropdown" aria-expanded="false">
+                  <a class="btn dropdown-toggle ps-4 pe-4 w-100" href="#" style="text-align: center;" role="button" id="download-dropdown-menu" data-bs-toggle="dropdown" aria-expanded="false">
                       <span class="fas fa-download select-icon"></span>
                       Downloads
                     </a>
@@ -116,7 +113,7 @@ ${secondary_header(config)}
                 </div>
               </div>
               
-              <div id="chart-info-row-btn" class="btn chart-info ps-3 pe-3 border border-1" data-bs-toggle="modal" data-bs-target="#aboutModal">
+              <div class="col-md-12 col-lg-4 col-xl-1 btn chart-info border border-1 mt-1 mb-1" style="text-align: center;" id="chart-info-row-btn" data-bs-toggle="modal" data-bs-target="#aboutModal">
                   <i class="fas fa-info me-2"></i>
                   <span>About</span>
               </div>
@@ -133,7 +130,7 @@ ${secondary_header(config)}
       <div id="chart-message" class="chart-nodata-message d-none"></div>
     </div>
 
-    <div id="legend-wrapper" class="d-flex-center mb-2">
+    <div id="legend-wrapper" class="d-flex-center flex-wrap mb-2">
       <div class="btn btn-histobs d-flex-center border border-1 m-1 rounded-3" data-value="histobs">
         <div class="inner-histobs ps-3 pe-3 pt-2 pb-2 me-2 rounded-3"></div>
         Observations
@@ -152,7 +149,7 @@ ${secondary_header(config)}
       </div>
     </div>
 
-    <div id="monthly-select-wrapper" class="mb-2 d-none">
+    <div id="monthly-select-wrapper" class="d-flex-center flex-wrap mb-2 d-none">
       <div class="btn selected-item d-flex-center border border-1 m-1 rounded-3" data-value="2025">
         2010-2040 average
       </div>

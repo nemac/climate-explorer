@@ -574,6 +574,33 @@ $(function () {
     // });
   }
 
+  /**
+   * This function handles the resizing of the map on climate_graphs page. It takes the height of the top nav bar
+   * and the height of the footer which it then adds as padding to the top and the bottom of the element containing the .climate-graphs-body
+   * class.
+   *
+   * The #.height / 16 is attempting to convert it from pixels to rem (1 rem = 16px)
+   */
+  function setBodySize() {
+
+    let nav_element = document.querySelector(".navbar-element");
+    let footer_element = document.querySelector(".footer-element");
+
+    let nav_height = nav_element.getBoundingClientRect().height / 16;
+    let footer_height = footer_element.getBoundingClientRect().height / 16;
+
+    let climate_graphs_body = document.querySelector(".climate-graphs-body");
+    climate_graphs_body.style.paddingTop = nav_height + "rem";
+    climate_graphs_body.style.paddingBottom = footer_height + "rem";
+
+  }
+
+  setBodySize();
+
+  $(window).resize(function () {
+    setBodySize();
+  })
+
   updateValidVariable();
   window.addEventListener('location-changed', () => {
     updateValidVariable();
