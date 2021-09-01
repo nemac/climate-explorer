@@ -49,6 +49,13 @@
 
 .cards-home-title {
   font-weight: bold;
+  color: $navbar-button-background;
+}
+
+.cards-home-text {
+  font-weight: normal;
+  color: $navbar-button-background;
+  text-align: start;
 }
 
 .data-card {
@@ -76,4 +83,13 @@
 
 .bottom-spacing {
   padding-bottom: 6rem;
+}
+
+.disabled-text {
+  position: absolute;
+  left: 48%;
+  top: 48%;
+  transform: translate(-50%, -50%);
+  color: white;
+  background-color: black;
 }

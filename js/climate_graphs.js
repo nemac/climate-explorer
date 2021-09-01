@@ -10,6 +10,14 @@ $(function () {
   const is_conus_area = state['is_conus_area'];
   const is_island_area = state['is_island_area'];
 
+
+  /**
+   * Disable specific buttons in the info section.
+   *  ex: Disable Maps and Monthly for Alaska regions.
+   *
+   * Disable specific cards/footer_nav items for different regions.
+   *  ex: Disable climate_maps and high_tide_flooding for Alaska regions.
+   */
   if(is_conus_area) {
     $('#map-selection').removeClass('disabled');
     $('[for="map-selection"]').removeClass('disabled');
@@ -23,11 +31,16 @@ $(function () {
     $('#map-selection').addClass('disabled');
     $('[for="map-selection"]').addClass('disabled');
 
+    $('[data-page="climate_maps"]').addClass('disabled');
+    $('[data-page="high_tide_flooding"]').addClass('disabled');
+
     $('.how-to-read-conus').addClass('d-none');
     $('.how-to-read-ak').removeClass('d-none');
     $('.how-to-read-island').addClass('d-none');
 
   } else if(is_island_area) {
+
+    $('[data-page="climate_maps"]').addClass('disabled');
 
     $('#map-selection').addClass('disabled');
     $('[for="map-selection"]').addClass('disabled');

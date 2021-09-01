@@ -40,67 +40,67 @@ export default (config) => `
     <div class="row"> 
       
       <div class="col-sm-4 mb-3"> 
-          <div class="col-sm-12 p-0 card border border-1 rounded shadow-sm data-card h-100" data-page="climate_maps">
+          <div class="col-sm-12 p-0 btn card border border-1 rounded shadow-sm data-card h-100" data-page="climate_maps">
             <div>
               <img class="img-fluid" src="/img/card-local-maps.png" alt="example-chart"/>
            </div>
            
-           <div class="m-2">
+           <div class="m-2 cards-home-title">
              <div class="d-flex flex-row align-items-center justify-content-between">
-                <span class="cards-home-title">Climate Maps</span>
+                <span>Climate Maps</span>
                 <i class="fas fa-map-marked-alt"></i>
              </div>
            </div>
            
-           <div class="m-2">
+           <div class="m-2 cards-home-text">
              Compare past and projected future conditions in your county.
            </div>
            
-           <div class="disabled-text m-2">Maps are not available for this location.</div>
+           <div class="disabled-text rounded-3 p-2 d-none m-2">Maps are not available for this location.</div>
       
           </div>
       </div>
       
       <div class="col-sm-4 mb-3"> 
-          <div class="col-sm-12 p-0 card border border-1 rounded shadow-sm data-card h-100" data-page="climate_graphs">
+          <div class="col-sm-12 p-0 btn card border border-1 rounded shadow-sm data-card h-100" data-page="climate_graphs">
             <div>
               <img class="img-fluid" src="/img/card-local-charts.png" alt="example climate chart"/>
            </div>
            
-           <div class="m-2">
+           <div class="m-2 cards-home-title">
              <div class="d-flex flex-row justify-content-between">
                 <span class="cards-home-title">Climate Graphs</span>
                 <i class="fas fa-chart-line icon-size"></i>
              </div>
            </div>
            
-           <div class="m-2">
+           <div class="m-2 cards-home-text">
              Check past and projected values for climate variables.
            </div>
            
-           <div class="disabled-text m-2">Data is not available for this location.</div>
+           <div class="disabled-text rounded-3 p-2 d-none m-2">Data is not available for this location.</div>
       
           </div>
       </div>
       
       <div class="col-sm-4 mb-3"> 
-          <div class="col-sm-12 p-0 card border border-1 rounded shadow-sm data-card h-100" data-page="high_tide_flooding">
+          <div class="col-sm-12 p-0 btn card border border-1 rounded shadow-sm data-card h-100" data-page="high_tide_flooding">
             <div>
                 <img class="img-fluid" src="/img/card-tidal-data.png" alt="Tidal chart data image"/>
              </div>
              
-             <div class="m-2">
+             <div class="m-2 cards-home-title">
                <div class="d-flex flex-row justify-content-between">
-                  <span class="cards-home-title">High-Tide Flooding</span>
+                  <span>High-Tide Flooding</span>
                   <i class="fas fa-water"></i>
                </div>
              </div>
              
-             <div class="m-2">
+             <div class="m-2 cards-home-text">
                Explore the number of days per year with high-tide floods.
              </div>
              
-             <div class="disabled-text m-2">High-tide flooding data not available for this location.</div>
+             <div class="disabled-text rounded-3 p-2 d-none m-2">High-tide flooding data not available for this location.</div>
         
           </div>
       </div>
@@ -111,59 +111,59 @@ export default (config) => `
       
       <div class="col-sm-4 mb-3"> 
       
-          <div class="col-sm-12 p-0 card border border-1 rounded shadow-sm data-card h-100" data-page="historical_weather_data">
+          <div class="col-sm-12 p-0 btn card border border-1 rounded shadow-sm data-card h-100" data-page="historical_weather_data">
             <div>
               <img class="img-fluid" src="/img/card-hist-daily.png" />
            </div>
            
-           <div class="m-2">
+           <div class="m-2 cards-home-title">
              <div class="d-flex flex-row justify-content-between">
-                <span class="cards-home-title">Historical Weather Data</span>
+                <span>Historical Weather Data</span>
                 <i class="fas fa-chart-area"></i>
              </div>
            </div>
            
-           <div class="m-2">
+           <div class="m-2 cards-home-text">
              Compare observed daily weather to long-term climate.
            </div>
            
-           <div class="disabled-text m-2">Data is not available for this location</div>
+           <div class="disabled-text rounded-3 p-2 d-none m-2">Data is not available for this location</div>
       
           </div>
       </div>
       
       <div class="col-sm-4 mb-3"> 
-          <div class="col-sm-12 p-0 card border border-1 rounded shadow-sm data-card h-100" data-page="historical_thresholds">
+          <div class="col-sm-12 p-0 btn card border border-1 rounded shadow-sm data-card h-100" data-page="historical_thresholds">
             <div>
               <img class="img-fluid" src="/img/card-hist-thresholds.png" alt="historical weather thresholds image"/>
            </div>
            
-           <div class="m-2">
+           <div class="m-2 cards-home-title">
              <div class="d-flex flex-row justify-content-between">
-                <span class="cards-home-title">Historical Thresholds</span>
+                <span>Historical Thresholds</span>
                 <i class="fas fa-chart-area"></i>
              </div>
            </div>
            
-           <div class="m-2">
+           <div class="m-2 cards-home-text">
              Check how often temperature or precipitation has exceeded user-defined values.
            </div>
            
-           <div class="disabled-text m-2">Data is not available for this location.</div>
+           <div class="disabled-text rounded-3 p-2 d-none m-2">Data is not available for this location.</div>
       
           </div>
       </div>
       
       <div class="col-sm-4 mb-3"> 
-          <div class="col-sm-12 p-0 card border border-1 rounded shadow-sm data-card h-100" data-page="next_steps">
+          <div class="col-sm-12 p-0 btn card border border-1 rounded shadow-sm data-card h-100" data-page="next_steps">
               <div class="m-2"> 
-                <div class="d-flex flex-row justify-content-between">
-                   <span class="cards-home-title">Ready to plan for resilience?</span>
+                <div class="d-flex flex-row justify-content-between cards-home-title">
+                   <span>Ready to plan for resilience?</span>
                    <i class="fas fa-map-signs"></i>
                 </div>
               </div>
 
-             <div class="m-2">
+             <div class="m-2 cards-home-text">
                <div>
                   <div class="mb-2">
                       <span>Resources from our partners can help you identify what matters to your community and evaluate how climate change could affect it:</span>
@@ -177,7 +177,7 @@ export default (config) => `
                </div>
              </div>
              
-             <div class="m-2 mt-auto"> 
+             <div class="m-2 mt-auto cards-home-text"> 
                 <div> 
                   <span class="me-2">Explore planning tools</span>
                   <span class="fas fa-arrow-right"></span>

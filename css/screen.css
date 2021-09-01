@@ -16392,23 +16392,25 @@ input.input-inner-default:focus {
 
 /* line 11, scss/template/_new_nav_footer.scss */
 .footer-button {
-  transition: box-shadow .3s;
+  transition: box-shadow 150ms ease-in, color 200ms ease-in;
+  color: #0D3064;
 }
 
 /* line 15, scss/template/_new_nav_footer.scss */
-.footer-element {
-  background-color: white;
-  border-color: #7D98C1;
-}
-
-/* line 21, scss/template/_new_nav_footer.scss */
 .footer-button:hover {
+  color: #124086;
   box-shadow: 0 0 11px rgba(33, 33, 33, 0.2);
   box-sizing: border-box;
   cursor: pointer;
 }
 
-/* line 27, scss/template/_new_nav_footer.scss */
+/* line 23, scss/template/_new_nav_footer.scss */
+.footer-element {
+  background-color: white;
+  border-color: #7D98C1;
+}
+
+/* line 29, scss/template/_new_nav_footer.scss */
 .footer-ellipsis {
   color: #0D3064;
 }
@@ -20299,38 +20301,56 @@ input.input-inner:focus {
 /* line 50, scss/pages/_new_cards_home.scss */
 .cards-home-title {
   font-weight: bold;
+  color: #124086;
 }
 
-/* line 54, scss/pages/_new_cards_home.scss */
+/* line 55, scss/pages/_new_cards_home.scss */
+.cards-home-text {
+  font-weight: normal;
+  color: #124086;
+  text-align: start;
+}
+
+/* line 61, scss/pages/_new_cards_home.scss */
 .data-card {
   cursor: pointer;
   transition: transform ease-in 200ms;
 }
 
-/* line 58, scss/pages/_new_cards_home.scss */
+/* line 65, scss/pages/_new_cards_home.scss */
 .data-card i {
   font-size: 1.5rem;
 }
 
-/* line 62, scss/pages/_new_cards_home.scss */
+/* line 69, scss/pages/_new_cards_home.scss */
 .data-card ul {
   list-style-type: disc !important;
   list-style-position: inside;
 }
 
-/* line 69, scss/pages/_new_cards_home.scss */
+/* line 76, scss/pages/_new_cards_home.scss */
 .data-card:hover {
   transform: scale(1.02);
 }
 
-/* line 73, scss/pages/_new_cards_home.scss */
+/* line 80, scss/pages/_new_cards_home.scss */
 .top-spacing {
   padding-top: 5rem;
 }
 
-/* line 77, scss/pages/_new_cards_home.scss */
+/* line 84, scss/pages/_new_cards_home.scss */
 .bottom-spacing {
   padding-bottom: 6rem;
+}
+
+/* line 88, scss/pages/_new_cards_home.scss */
+.disabled-text {
+  position: absolute;
+  left: 48%;
+  top: 48%;
+  transform: translate(-50%, -50%);
+  color: white;
+  background-color: black;
 }
 
 /* line 1, scss/pages/_next_steps.scss */

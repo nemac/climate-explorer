@@ -9,19 +9,21 @@
 }
 
 .footer-button {
-  transition: box-shadow .3s;
+  transition: box-shadow 150ms ease-in, color 200ms ease-in;
+  color: $navbar-background;
+
+  &:hover {
+    color: $navbar-button-background;
+    box-shadow: 0 0 11px rgba(33,33,33,.2);
+    box-sizing: border-box;
+    cursor: pointer;
+  }
 }
 
 .footer-element {
   background-color: white;
 
   border-color: $input-box-border;
-}
-
-.footer-button:hover {
-  box-shadow: 0 0 11px rgba(33,33,33,.2);
-  box-sizing: border-box;
-  cursor: pointer;
 }
 
 .footer-ellipsis {

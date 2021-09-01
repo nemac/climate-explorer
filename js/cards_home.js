@@ -18,13 +18,18 @@ $(function () {
     $('#cards-search-input').attr("placeholder", "Location missing, enter a county or city name");
   }
 
+  /**
+   * Disable specific cards/footer_nav items for different regions.
+   *  ex: Disable climate_maps and high_tide_flooding for Alaska regions.
+   */
   if (city_label || area_label) {
     if (!is_conus_area) {
-      $('.opt-not-ak').addClass('default-select-option-disabled');
-      $('.card-local-maps').addClass('card-disabled');  //switch to querySelector(".data-card[data-page='climate_maps']")
+      $('[data-page="climate_maps"]').addClass('disabled');
+      $('[data-page="climate_maps"]').find(".disabled-text").removeClass("d-none");
     }
     if (is_alaska_area) {
-      $('.card-high-tide-flooding').addClass('card-disabled');
+      $('[data-page="high_tide_flooding"]').addClass('disabled');
+      $('[data-page="high_tide_flooding"]').find(".disabled-text").removeClass("d-none");
     } else {
       $('.opt-only-ak').addClass('default-select-option-disabled');
     }
