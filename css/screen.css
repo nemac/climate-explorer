@@ -17467,6 +17467,11 @@ input.input-inner:focus {
   background-color: #FBB4AA;
 }
 
+/* line 44, scss/pages/_new_climate_graphs.scss */
+.chart-explainer-fake-buttons {
+  background-color: #E9F1FC;
+}
+
 /* line 4, scss/pages/_climate_maps.scss */
 #climate-maps-viewport {
   background-color: #ffffff;
