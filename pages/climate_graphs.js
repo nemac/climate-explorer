@@ -6,7 +6,7 @@ import nav_footer from '../template/nav_footer';
 import chart_explainer from '../template/chart_explainer';
 
 export default (config) => `
-<!doctype html>
+<!DOCTYPE  html>
 <html lang='en' class="width-100 height-100">
 <head>
   ${head(config)}
@@ -89,9 +89,9 @@ ${secondary_header(config)}
               <div class="col-md-12 col-lg-4 col-xl-2 download-dropdown mt-1 mb-1" style="text-align: center;"> 
                 <div class="dropdown rounded-3 border border-1">
                   <a class="btn dropdown-toggle ps-4 pe-4 w-100" href="#" style="text-align: center;" role="button" id="download-dropdown-menu" data-bs-toggle="dropdown" aria-expanded="false">
-                      <span class="fas fa-download select-icon"></span>
-                      Downloads
-                    </a>
+                    <span class="fas fa-download select-icon"></span>
+                    Downloads
+                  </a>
                 
                   <ul class="dropdown-menu download-select" aria-labelledby="download-dropdown-menu">
                     <li id="download-image" data-value="download-image" data-icon="fas fa-download select-icon" href="javascript:void(0);">
@@ -170,8 +170,6 @@ ${secondary_header(config)}
   </div>
 
 </div>
-</div>
-
 ${nav_footer(config)}
 ${footer(config)}
 

@@ -1,0 +1,14 @@
+@import "../color_utils";
+
+.stations-dropdown-ul {
+  li {
+    color: $navbar-button-background;
+
+    transition: background-color 200ms ease-in;
+  }
+
+  li:hover {
+    background-color: $navbar-hover-background;
+    cursor: pointer;
+  }
+}

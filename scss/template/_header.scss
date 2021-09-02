@@ -35,6 +35,16 @@
       background-color: $navbar-hover-background;
     }
 
+    .dropdown-item {
+      color: $navbar-background !important;
+
+      &:hover {
+        background-color: $navbar-hover-background !important;
+        cursor: pointer !important;
+      }
+
+    }
+
   }
 
   #crt-logo {

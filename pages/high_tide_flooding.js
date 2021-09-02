@@ -5,7 +5,7 @@ import nav_footer from '../template/nav_footer';
 
 export default (config) => `
 <!doctype html>
-<html lang='en' class="width-100 height-100">
+<html lang='en'>
 <head>
   ${head(config)}
   <meta property="fb:app_id" content="187816851587993">
@@ -16,134 +16,90 @@ export default (config) => `
   <meta property="og:image" content="/img/og.jpg">
 </head>
 
-<body class="width-100 height-100">
+<body>
 
   ${secondary_header(config)}
 
-  <div id="high-tide-flooding-viewport" class="padding-horizontal d-flex d-flex-column">
-
-    <div id="search-row" class="padding-horizontal d-flex-row flex-justify padding-top padding-bottom-half d-flex-justify" >
-
-      <div class="rounded-box-secondary input-outer padding-horizontal bottom-padding default-btn-height search-box-secondary width-65">
-        <input tabindex="1" id="cards-search-input" type="text" class="location-mapper input-inner-default border-none default-btn-height" autocomplete="off" placeholder="Enter county or city name">
-        <span class="icon icon-search search-default float-right padding-default"></span>
-        <div id="clear-location-wrapper" class="">
-          <span id="clear-location" data-page="high_tide_flooding" class="fas fa-times-circle"></span>
+    <div class="container-fluid high-tide-flooding-body top-spacing"> <!-- replace top-spacing with dynamic sizing -->
+        <div class="d-flex flex-row mt-3"> 
+            <div class="input-group mb-3 search-input-group rounded-3 border border-1 w-75 me-2">
+              <button id="clear-location" class="btn search-icons" type="button"><span class="fas fa-times-circle"></span></button>
+              <input id="cards-search-input" class="form-control location-mapper" type="text" placeholder="Enter county or city name" aria-label="Enter county or city name">
+            </div>
+              
+            <div class="dropdown w-25 rounded-3 border border-1 mb-3 stations-dropdown">
+                <a class="btn dropdown-toggle w-100" href="#" role="button" id="stations-dropdown-menu" data-bs-toggle="dropdown" aria-expanded="false">
+                  Stations
+                </a>
+              
+                <ul class="dropdown-menu stations-dropdown-ul w-100" aria-labelledby="stations-dropdown-menu">
+                </ul>
+            </div>
         </div>
-      </div>
-
-      <div id="stations-select-wrapper" class="rounded-choice-box padding-horizontal default-btn-height top-select-wrapper d-flex-center">
-        <div class="select stations-select">
-          <div tabindex="20" id="stations-select-vis" class="select-styled" data-value="">Stations</div>
-          <ul class="select-options" role="listbox">
-            <li tabindex="21" data-value="" class="default-select-option"></li>
-          </ul>
-        </div>
-      </div>
-
-    </div>
-
-    <div id="info-row" class="padding-vertical padding-horizontal width-100" >
-      <div class="rounded-filters-box padding-default width-100">
-
-        <div class="filter-border-bottom d-flex-row">
-
-          <div id="info-text-wrapper" class="width-90">
-            <i class="fas fa-water icon-info-box"></i>
-            <span id="station-info-none" class="padding-horizontal"><strong>Please select a station on the map or from the Stations dropdown menu. You may need to zoom out to see more stations.</strong></span>
-            <span id="station-info" class="padding-horizontal d-none">
-              <span id="default-station-label" class="text-info-box label" >Station id: </span>
-              <span id="default-station" class="text-info-box data right-padding" ></span>
-              <span id="default-station-id-label" class="text-info-box label" >Station: </span>
-              <span id="default-station-id" class="text-info-box data right-padding" ></span>
-              <span id="default-stationMOverMHHW-label" class="text-info-box label" >Local threshold: </span>
-              <span id="default-stationMOverMHHW" class="text-info-box data right-padding" ></span>
-            </span>
-          </div>
-
-
-          <div id="filters-toggle" class="width-10">
-            <div class="select filters-toggle-select">
-              <div id="filters-toggle-select-vis" class="select-styled" data-value="filter"></div>
-            </div>
-          </div>
-
-        </div>
-
-
-        <div id="filters-row" class="d-flex-row flex-justify padding-top padding-bottom d-flex-left" >
-
-          <div id="chartmap-wrapper" class="padding-horizontal-half padding-vertical-half default-btn-height d-flex-center width-20 disabled">
-            <div tabindex="5004" role="button" class="btn-selector btn-chart btn-default circle-box-left d-flex-center width-50 btn-default-disabled" data-value="chart" data-page="high_tide_flooding" data-sel="chartmap-select-vis">
-              Graph
-            </div>
-            <div tabindex="5005" role="button" class="btn-selector btn-map btn-default-selected circle-box-right d-flex-center width-50"  data-page="high_tide_flooding"  data-value="map" data-sel="chartmap-select-vis">
-              Map
-            </div>
-          </div>
-
-          <div id="chartmap-select-wrapper" class="rounded-choice-box padding-horizontal-half padding-vertical-half default-btn-height d-flex-center width-20">
-            <div class="select chartmap-select">
-              <div tabindex="5006" id="chartmap-select-vis" class="select-styled" data-value="chart">Map</div>
-              <ul class="select-options" role="radiogroup">
-                <li role="radio" tabindex="5007" id="chartmap-select-chart-link" data-value="chart" class="default-select-option" data-page="high_tide_flooding">Chart</li>
-                <li role="radio" tabindex="5008" id="chartmap-select-map-link" data-value="map" class="default-select-option" data-page="high_tide_flooding">Map</li>
-              </ul>
-            </div>
-          </div>
-
-          <div id="tidalzoom-wrapper" class="padding-horizontal-half padding-vertical-half default-btn-height d-flex-center width-30">
-            <div tabindex="5009" id="btn-tidalzoom" class="btn-tidalzoom-h btn-default circle-box-left d-flex-center width-90 btn-default-disabled" data-value="Historical" >
-              Historical
-            </div>
-            <div tabindex="5010" id="btn-tidalzoom" class="btn-tidalzoom-hm btn-default circle-box-right d-flex-center width-90 btn-default-disabled" data-value="Historical and Modeled" >
-              Historical & Modeled
-            </div>
-          </div>
-
-          <div id="tidalzoom-select-wrapper" class="rounded-choice-box padding-horizontal-half padding-vertical-half default-btn-height d-flex-center width-20">
-            <div class="select tidalzoom-select">
-              <div tabindex="5011" id="tidalzoom-select-vis" class="select-styled" data-value="hm">Historical & Modeled</div>
-              <ul class="select-options">
-                <li tabindex="5012" id="tidalzoom-select-chart-link" data-value="hm" class="default-select-option" data-page="high_tide_flooding">Historical & Modeled</li>
-                <li tabindex="5013" id="tidalzoom-select-map-link" data-value="h" class="default-select-option" data-page="high_tide_flooding" >Historical</li>
-              </ul>
-            </div>
-          </div>
-
-          <div id="downloads-select-wrapper" class="rounded-choice-box padding-left-half padding-vertical-half default-btn-height d-flex-center">
-            <div class="select download-select">
-              <div tabindex="5001" id="downloads-select-vis" class="select-styled" data-value="none" href="javascript:void(0);">
-                <i class="fas fa-download select-icon"></i>
-                <span class="download-link-main long-desc" >Downloads</span>
-                <span class="download-link-main short-desc">Down</span>
+        
+        <div class="info-section">
+            <div class="border border-1 rounded-3"> 
+              
+              <div class="m-3"> 
+                <span id="station-info-none"><strong>Please select a station on the map or from the Stations dropdown menu. You may need to zoom out to see more stations.</strong></span>
+                <span id="station-info" class="d-none">
+                  <span id="default-station-label" class="text-info-box label" >Station id: </span>
+                  <span id="default-station" class="text-info-box data right-padding" ></span>
+                  <span id="default-station-id-label" class="text-info-box label" >Station: </span>
+                  <span id="default-station-id" class="text-info-box data right-padding" ></span>
+                  <span id="default-stationMOverMHHW-label" class="text-info-box label" >Local threshold: </span>
+                  <span id="default-stationMOverMHHW" class="text-info-box data right-padding" ></span>
+                </span>
               </div>
-              <ul class="select-options" style="display: none;">
-                <li data-value="download-tidal-image" data-icon="fas fa-download select-icon" href="javascript:void(0);" class="default-select-option">
-                  <a tabindex="5002" data-value="download-tidal-image" class="download-link" href="javascript:void(0);" >Download tidal flooding image</a>
-                </li>
-                <li data-value="download-tidal-data" data-icon="fas fa-download select-icon" href="javascript:void(0);" class="default-select-option">
-                  <a tabindex="5003" data-value="download-tidal-data" class="download-link" href="https://tidesandcurrents.noaa.gov/publications/techrpt86_PaP_of_HTFlooding.csv" >Download tidal flooding data</a>
-                </li>
-              </ul>
-            </div>
-          </div>
-
-          <div tabindex="5011" id="chart-info-row-btn" class="rounded-choice-box padding-left-half padding-vertical-half default-btn-height d-flex-center" >
-            <div class="more-info btn-default padding-left-half btn-default-disabled">
-              <span class="fas fa-info more-info more-icon"></span>
-              <span class="fas fa-info more-info less-icon d-none"></span>
-              <span class="more short-desc">About</span>
-              <span class="more long-desc">How to read</span>
-              <span class="more long-desc d-none">How to read</span>
-              <span class="more short-desc d-none">About</span>
-            </div>
-          </div>
-
+              
+              <div class="m-3 collapse show" id="collapse-info-section"> 
+                
+                <div class="row">
+                    
+                    <div class="col-md-12 col-lg-6 col-xl-2 mt-1 mb-1" style="text-align: center;"> 
+                      <div class="btn-group border rounded-3 graph-map-selection w-100" role="group"> 
+                        <label class="btn ps-4 pe-4 default-selection disabled" id="chartmap-select-chart-link" data-value="chart" data-page="high_tide_flooding">Graph</label>
+                        <label class="btn ps-4 pe-4 selected-item" id="chartmap-select-map-link" data-value="chart" data-page="high_tide_flooding" data-sel="chartmap-select-vis">Map</label>
+                      </div>
+                    </div>
+                     
+                    <div class="col-md-12 col-lg-6 col-xl-3 btn-group mt-1 mb-1" style="text-align: center;" id="time-wrapper">
+                      <label id="historical-selection" class="btn ps-4 pe-4 default-selection disabled" id="btn-tidalzoom" data-value="Historical">Historical</label>
+                      <label id="historical-model-selection" class="btn ps-4 pe-4 default-selection disabled" id="btn-tidalzoom"
+data-value="Historical and Modeled">Historical & Modeled</label>
+                    </div>
+                    
+                    <div class="col-md-12 col-lg-6 col-xl-2 download-dropdown mt-1 mb-1" style="text-align: center;"> 
+                      <div class="dropdown rounded-3 border border-1">
+                        <a class="btn dropdown-toggle ps-4 pe-4 w-100 disabled" href="#" style="text-align: center;" role="button" id="download-dropdown-menu" data-bs-toggle="dropdown" aria-expanded="false">
+                          <span class="fas fa-download select-icon"></span>
+                          Downloads
+                        </a>
+                      
+                        <ul class="dropdown-menu download-select" aria-labelledby="download-dropdown-menu">
+                          <li data-value="download-tidal-image" data-icon="fas fa-download select-icon" href="javascript:void(0);">
+                            <a data-value="download-tidal-image" class="dropdown-item" href="javascript:void(0);" >Download tidal flooding image</a>
+                          </li>
+                          <li data-value="download-tidal-data" data-icon="fas fa-download select-icon" href="javascript:void(0);">
+                            <a data-value="download-tidal-data" class="dropdown-item" href="https://tidesandcurrents.noaa.gov/publications/techrpt86_PaP_of_HTFlooding.csv">Download tidal flooding data</a>
+                          </li>
+                        </ul>
+                      </div>
+                    </div>
+                    
+                    <div class="col-md-12 col-lg-6 col-xl-1 btn chart-info border border-1 mt-1 mb-1 disabled" style="text-align: center;" id="chart-info-row-btn" data-bs-toggle="modal" data-bs-target="#aboutModal">
+                        <i class="fas fa-info me-2"></i>
+                        <span>About</span>
+                    </div>
+                </div>
+                
+              </div>
+            </div> 
         </div>
 
-      </div>
     </div>
+
+  <div id="high-tide-flooding-viewport" class="padding-horizontal d-flex d-flex-column">
 
     <div id="stations-map-row" class="padding-top-half width-100 height-100 d-flex" >
       <div id="stations-map-wrap" class="map-wrap width-100 height-100 ">
@@ -178,7 +134,23 @@ export default (config) => `
         </div>
       </span>
     </div>
-
+        <div class="modal fade" id="aboutModal" tabindex="-1" aria-labelledby="aboutModalLabel" aria-hidden="true">
+              <div class="modal-dialog modal-xl">
+                <div class="modal-content">
+                  <div class="modal-header">
+                    <h3 class="modal-title" id="aboutModalLabel">READING THE TIDAL FLOODING CHARTS</h3>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                  </div>
+                  <div class="modal-body">
+                  
+                      <div> 
+                      Click 'Historical' button to zoom in on or out from the observational period. Place your cursor over the curves on this graph for details. Gray bars from 1950 to 2016 show observed annual counts of high-tide flooding. Red and blue curves show the average number of high-tide flooding events projected for future years under two scenarios. Data from <a target="_blank" href="https://tidesandcurrents.noaa.gov/publications/techrpt86_PaP_of_HTFlooding.pdf">NOAA Technical Report NOS CO-OPS 086 - Patterns and Projections of High-Tide Flooding</a>.
+                      </div>
+                  
+                  </div>
+                </div>
+              </div>
+            </div>
     </div>
     <!-- </div> -->
 

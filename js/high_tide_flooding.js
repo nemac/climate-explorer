@@ -58,7 +58,7 @@ $(function () {
 
   // updates the visible text for the station dropdown with the information from the state url
   function updateStationSelectText(stations) {
-    const stationsSelectElem = $('#stations-select-vis');
+    const stationsSelectElem = $('#stations-dropdown-menu');
     if (stationsSelectElem) {
       if (!!stations.tidalStationId) {
         stationsSelectElem.data('value', `${stations.tidalStationId}|${stations.tidalStationName}`);
@@ -67,101 +67,58 @@ $(function () {
     }
   }
 
-  // zoom to historical part of chart
-  $('.btn-tidalzoom-hm').keyup(function (e) {
-    if (e.keyCode === 13) {
-      // only allow click event if button is not disabled
-      if (!$(".btn-tidalzoom-hm").hasClass('btn-default-disabled')) {
-        if (!$(".btn-tidalzoom-hm").hasClass('btn-default-selected')) {
-       
-          widget.zoomToggle();
+  /**
+   * Clicking Historical & Modeled button
+   */
+  $('#historical-model-selection').click(function (e) {
 
-          $('.btn-tidalzoom-hm').addClass('btn-default-selected');
-          $('.btn-tidalzoom-h').removeClass('btn-default-selected');
+    let disabled = $("#historical-model-selection").hasClass('disabled');
 
-          const tidalZoomElem = $('#tidalzoom-select-vis');
-          if (tidalZoomElem) {
-            tidalZoomElem.data('value', 'hm');
-            tidalZoomElem.text('Historical & Modeled');
+    if(disabled) return;
 
-            // ga event action, category, label
-            googleAnalyticsEvent('click-tab', 'tidalzoom', 'Historical & Modeled');
-          }
-        }
-      }
-    }
+    let is_selected = $("#historical-model-selection").hasClass('selected-item');
+
+    if(is_selected) return;
+
+    widget.zoomToggle();
+
+    // Make the clicked button the new selection.
+    $("#historical-model-selection").removeClass('default-selection');
+    $("#historical-model-selection").addClass('selected-item');
+
+    // Remove the selection from the old button.
+    $("#historical-selection").removeClass('selected-item');
+    $("#historical-selection").addClass('default-selection');
+
+    googleAnalyticsEvent('click', 'tidalzoom', 'Historical & Modeled');
   });
 
-  // zoom to historical part of chart
-  $('.btn-tidalzoom-hm').click(function (e) {
-    // only allow click event if button is not disabled
-    if (!$(".btn-tidalzoom-hm").hasClass('btn-default-disabled')) {
-      if (!$(".btn-tidalzoom-hm").hasClass('btn-default-selected')) {
+  /**
+   * Clicking Historical button
+   */
+  $('#historical-selection').click(function (e) {
 
-        widget.zoomToggle();
+    let disabled = $("#historical-selection").hasClass('disabled');
 
-        $('.btn-tidalzoom-hm').addClass('btn-default-selected');
-        $('.btn-tidalzoom-h').removeClass('btn-default-selected');
+    if(disabled) return;
 
-        const tidalZoomElem = $('#tidalzoom-select-vis');
-        if (tidalZoomElem) {
-          tidalZoomElem.data('value', 'hm');
-          tidalZoomElem.text('Historical & Modeled');
+    let is_selected = $("#historical-selection").hasClass('selected-item');
 
-          // ga event action, category, label
-          googleAnalyticsEvent('click', 'tidalzoom', 'Historical & Modeled');
-        }
-      }
-    }
+    if(is_selected) return;
+
+    widget.zoomToggle();
+
+    // Make the clicked button the new selection.
+    $("#historical-selection").removeClass('default-selection');
+    $("#historical-selection").addClass('selected-item');
+
+    // Remove the selection from the old button.
+    $("#historical-model-selection").removeClass('selected-item');
+    $("#historical-model-selection").addClass('default-selection');
+
+    googleAnalyticsEvent('click', 'tidalzoom', 'Historical');
   });
 
-  // zoom to historical part of chart
-  $('.btn-tidalzoom-h').click(function (e) {
-    // only allow click event if button is not disabled
-    if (!$(".btn-tidalzoom-h").hasClass('btn-default-disabled')) {
-      if (!$(".btn-tidalzoom-h").hasClass('btn-default-selected')) {
-
-        widget.zoomToggle();
-
-        $('.btn-tidalzoom-hm').removeClass('btn-default-selected');
-        $('.btn-tidalzoom-h').addClass('btn-default-selected');
-
-        const tidalZoomElem = $('#tidalzoom-select-vis');
-        if (tidalZoomElem) {
-          tidalZoomElem.data('value', 'h');
-          tidalZoomElem.text('Historical');
-
-          // ga event action, category, label
-          googleAnalyticsEvent('click', 'tidalzoom', 'Historical');
-        }
-      }
-    }
-  });
-
-  // zoom to historical part of chart
-  $('.btn-tidalzoom-h').keyup(function (e) {
-    if (e.keyCode === 13) {
-      // only allow click event if button is not disabled
-      if (!$(".btn-tidalzoom-h").hasClass('btn-default-disabled')) {
-        if (!$(".btn-tidalzoom-h").hasClass('btn-default-selected')) {
-
-          widget.zoomToggle();
-
-          $('.btn-tidalzoom-hm').removeClass('btn-default-selected');
-          $('.btn-tidalzoom-h').addClass('btn-default-selected');
-
-          const tidalZoomElem = $('#tidalzoom-select-vis');
-          if (tidalZoomElem) {
-            tidalZoomElem.data('value', 'h');
-            tidalZoomElem.text('Historical');
-
-            // ga event action, category, label
-            googleAnalyticsEvent('click-tab', 'tidalzoom', 'Historical');
-          }
-        }
-      }
-    }
-  });
 
   // in responsive mode the time is a dropdown this enables the change of the zoom of to
   // historical vs zoom to historical and modeled
@@ -174,8 +131,8 @@ $(function () {
       const val = $('#tidalzoom-select-vis').data('value');
       if (!$(`.btn-tidalzoom-${val}`).hasClass('btn-default-selected')) {
         // toggle button visual state
-        $(`.btn-tidalzoom-hm`).removeClass('btn-default-selected');
-        $(`.btn-tidalzoom-h`).removeClass('btn-default-selected');
+        $(`#historical-model-selection`).removeClass('btn-default-selected');
+        $(`#historical-selection`).removeClass('btn-default-selected');
 
         $(`.btn-tidalzoom-${val}`).addClass('btn-default-selected');
 
@@ -197,9 +154,12 @@ $(function () {
       widget.request_update({'station': stations.tidalStationId});
     });
 
-    $('.btn-tidalzoom-hm').removeClass('btn-default-disabled');
-    $('.btn-tidalzoom-h').removeClass('btn-default-disabled');
-    $('.btn-tidalzoom-hm').addClass('btn-default-selected');
+    $('#historical-model-selection').removeClass('disabled');
+    $('#historical-model-selection').removeClass('default-selection');
+    $('#historical-model-selection').addClass('selected-item');
+
+    $('#historical-selection').removeClass('disabled');
+    $('#historical-selection').addClass('default-selection');
   }
 
   // updates the visible text for the station dropdown with the information from the state url
@@ -320,16 +280,14 @@ $(function () {
   }
 
   function toggleDownloads() {
-    const targetParent = $('#downloads-select-wrapper');
+
+    const targetParent = $('#download-dropdown-menu');
+
     if (targetParent.hasClass('disabled')) {
       targetParent.removeClass('disabled');
     }
 
-    const target = $('#downloads-select-vis');
-    if (target.hasClass('disabled')) {
-      target.removeClass('disabled');
-      enableCustomSelect('download-select');
-    }
+    enableCustomSelect('download-select');
   }
 
   // update chart dropdown to chart as default
@@ -352,10 +310,13 @@ $(function () {
     widget.request_update({'station': tidalStationId});
 
     // toggle button visual state
-    toggleButton($('.btn-selector[data-value="chart"]'));
+    $('#chartmap-select-chart-link').removeClass('disabled');
+    toggleButton($('#chartmap-select-chart-link'));
 
     // update chart dropdown to chart as default
     chartDropdownChartText()
+
+    $('#chart-info-row-btn').removeClass('disabled');
 
     // updates the visible text for the station dropdown with the information from the state url
     updateStationSelectText({tidalStationName, tidalStationId})
@@ -403,11 +364,13 @@ $(function () {
   });
 
   // in responsive mode, event handler a for when season (time) variable changes
-  $('#stations-select-vis').bind('cs-changed', function (e) {
+  $('#stations-dropdown-menu').bind('cs-changed', function (e) {
+
     const target = $(e.target);
-    const notDisabled = !target.hasClass('disabled');
-    if (notDisabled) {
-      const val = $('#stations-select-vis').data('value').split('|');
+    const disabled = target.hasClass('disabled');
+
+    if (!disabled) {
+      const val = target.data('value').split('|');
       const tidalStationName = val[1];
       const tidalStationId = val[0];
       const tidalStationMOverMHHW = val[2];
@@ -429,7 +392,8 @@ $(function () {
       widget.request_update({'station': tidalStationId});
 
       // toggle button visual state
-      toggleButton($('.btn-selector[data-value="chart"]'));
+      $('#chartmap-select-chart-link').removeClass('disabled');
+      toggleButton($('#chartmap-select-chart-link'));
 
       toggleChartInfoText('chart');
 
@@ -440,61 +404,41 @@ $(function () {
     }
   })
 
-  // enables time chart, map click events
-  $('#chartmap-wrapper').keyup(function (e) {
-    if (e.keyCode === 13) {
-      const target = $(e.target);
-      //const notDisabled = (!target.hasClass('btn-default-disabled') || !target.hasClass('disabled'));
-      const notDisabled = !target.hasClass('btn-default-disabled') && !target.hasClass('disabled');
+  $('#chartmap-select-chart-link').click(function(e) {
 
-      if (notDisabled) {
+    const target = $(e.target);
 
-        // toggle button visual state
-        toggleButton($(target));
+    const disabled =  target.hasClass('disabled');
 
-        // change select dropdowns for responsive mode
-        setSelectFromButton(target);
+    if(disabled) return;
 
-        // check val of button to see if user is on map  or chart
-        // hide or show the appropriate overlay (map, chart)
-        chooseGraphOrMap(target);
-        toggleChartInfoText(RelorVal(target));
-      }
+    const selected = target.hasClass('selected-item');
 
-      // reset map and chart sizes
-      setMapSize();
-      //chooseGraphOrMap(target);
+    if(selected) return;
 
-      // ga event action, category, label
-      googleAnalyticsEvent('click-tab', 'chartmap', target);
-    }
+    toggleButton($(target));
+
+    showGraphs();
+
+    googleAnalyticsEvent('click', 'chartmap', target);
   })
 
-  // enables time chart, map click events
-  $('#chartmap-wrapper').click(function (e) {
+  $('#chartmap-select-map-link').click(function(e) {
+
     const target = $(e.target);
-    //const notDisabled = (!target.hasClass('btn-default-disabled') || !target.hasClass('disabled'));
-    const notDisabled = !target.hasClass('btn-default-disabled') && !target.hasClass('disabled');
 
-    if (notDisabled) {
+    const disabled =  target.hasClass('disabled');
 
-      // toggle button visual state
-      toggleButton($(target));
+    if(disabled) return;
 
-      // change select dropdowns for responsive mode
-      setSelectFromButton(target);
+    const selected = target.hasClass('selected-item');
 
-      // check val of button to see if user is on map  or chart
-      // hide or show the appropriate overlay (map, chart)
-      chooseGraphOrMap(target);
-      toggleChartInfoText(RelorVal(target));
-    }
+    if(selected) return;
 
-    // reset map and chart sizes
-    setMapSize();
-    //chooseGraphOrMap(target);
+    toggleButton($(target));
 
-    // ga event action, category, label
+    showMap();
+
     googleAnalyticsEvent('click', 'chartmap', target);
   })
 
@@ -632,10 +576,11 @@ $(function () {
       showGraphs();
 
       // toggle button to select chart
-      toggleButton($(`.btn-selector[data-value="chart"]`));
+      $(`#chartmap-select-chart-link`).removeClass("disabled");
+      toggleButton($(`#chartmap-select-chart-link`));
 
       // update chart dropdown to chart as default
-      chartDropdownChartText()
+      chartDropdownChartText();
 
       // reset graphs
       resetGraphs({variable: 'temperature', tidalStationId: options.tidalStationId, tidalStationName: options.tidalStationName});

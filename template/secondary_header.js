@@ -41,7 +41,7 @@ export default (config) => `
             </ul>
           </li>
         <li id="crt-logo" class="dropdown m-2 rounded-3">
-          <a href="https://toolkit.climate.gov/" target="_blank"">
+          <a href="https://toolkit.climate.gov/" target="_blank">
             <img src="/img/crt-logo-mobile.png" alt="U.S. Climate Resilience Toolkit, Climate Explorer" class="d-inline-block align-text-top">
           </a>
         </li>

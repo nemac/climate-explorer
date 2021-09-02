@@ -2,15 +2,15 @@
 // the addition of the new stations removes existing click events
 // so we need to re add them
 function reEnableSelectNewItems(uniqueSelector) {
-  const $styledSelect = $(`.select.${uniqueSelector} div.select-styled`);
+
+  const $styledSelect = $('#stations-dropdown-menu');
   // if disabled exit and do not enable dropdown
   if ($styledSelect.hasClass('disabled')) {
     return null;
   }
 
   // get list items so we can add user interactions
-  const $list = $(`.select.${uniqueSelector} ul`);
-  const $listItems = $(`.select.${uniqueSelector} ul`).children('li[role="option"]');
+  const $listItems = $('.stations-dropdown-ul li');
 
   // enable click for options
 
@@ -24,7 +24,7 @@ function reEnableSelectNewItems(uniqueSelector) {
         const value = $(e.currentTarget).data('value');
         if (e.type === 'click' || (e.type === 'keyup' && (e.keyCode === 32 || e.keyCode === 13))) {
           // check if disabled exit if it is
-          if ($(e.currentTarget).hasClass('default-select-option-disabled')) {
+          if ($(e.currentTarget).hasClass('disabled')) {
             return null
           }
 
@@ -37,7 +37,7 @@ function reEnableSelectNewItems(uniqueSelector) {
             if (typeof hrefAttr !== typeof undefined && hrefAttr !== false) {
               $styledSelect.html(`<a href="${hrefAttr}" data-value="${value}">${$(e.currentTarget).text().trim()}</a>`).removeClass('active');
             } else {
-              $styledSelect.text($(e.currentTarget).text().trim()).removeClass('active');
+              $styledSelect.text($(e.currentTarget).text().trim());
             }
           }
 
@@ -54,7 +54,9 @@ function reEnableSelectNewItems(uniqueSelector) {
             }
           }
           $styledSelect.prepend(icon);
-          $list.hide();
+
+          $styledSelect.removeClass('show');
+          $styledSelect.closest('.dropdown').find('.dropdown-menu').removeClass('show');
           // trigger custom event so we know the user changed or selected an item
           $styledSelect.trigger('cs-changed');
 

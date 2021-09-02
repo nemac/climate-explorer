@@ -225,55 +225,6 @@
   }
 }
 
-#chart-info-row-btn {
-  background-color: $ce3-blue6;
-  &:hover, &:focus {
-   background-color: $ce3-blue6 !important;
-  }
-
-  //min-width: 170px;
-  .short-desc {
-    display: none;
-  }
-
-  @media screen and (max-width: 960px){
-    min-width: 130px;
-
-    .long-desc {
-      display: none;
-    }
-
-    .short-desc {
-      display: inline;
-    }
-  }
-
-  @include medium {
-    min-width: 100%;
-
-    .short-desc {
-      display: none;
-    }
-
-    .long-desc {
-      display: inline;
-    }
-
-    .btn-default {
-      font-size: 14px !important;
-    }
-
-    margin-left: 0px !important;
-    margin-right: 0px !important;
-    height: auto !important;
-    margin-top: $ce3-padding-half !important;
-    width: 100% !important;
-    .more, .less {
-      padding-left: $ce3-padding-half;
-    }
-  }
-}
-
 #filters-row {
   .select-options {
     margin-top: 0px !important;

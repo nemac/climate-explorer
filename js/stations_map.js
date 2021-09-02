@@ -368,15 +368,15 @@
 
         for (const station of currentstationsSorted) {
           if (this.options.mode === 'high_tide_flooding') {
-            stationLi += `<li tabindex="${indx}" data-value="${station.attributes.id}|${station.attributes.name}|${station.attributes.mOverMHHW}|" class="default-select-option" role="option">${station.attributes.name} - (${station.attributes.id})</li>\n`;
+            stationLi += `<li tabindex="${indx}" data-value="${station.attributes.id}|${station.attributes.name}|${station.attributes.mOverMHHW}|" class="dropdown-item">${station.attributes.name} - (${station.attributes.id})</li>\n`;
           } else {
-            stationLi += `<li tabindex="${indx}" data-value="${station.attributes.id},${station.attributes.name}" class="default-select-option" role="option">${station.attributes.name} - (${station.attributes.id})</li>\n`;
+            stationLi += `<li tabindex="${indx}" data-value="${station.attributes.id},${station.attributes.name}" class="dropdown-item">${station.attributes.name} - (${station.attributes.id})</li>\n`;
           }
           indx += 1;
         }
       }
       // update select elem if it exists
-      const stationsElem = document.querySelector('#stations-select-wrapper .select-options')
+      const stationsElem = document.querySelector('.stations-dropdown-ul');
       if (stationsElem) {
         stationsElem.innerHTML = stationLi;
       }
