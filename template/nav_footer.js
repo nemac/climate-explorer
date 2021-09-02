@@ -7,20 +7,29 @@ export default (config) => `
 <nav class="navbar fixed-bottom navbar-expand-sm footer-element border-top p-0">
   <div class="container-fluid">
     
-    <button class="navbar-toggler m-auto" type="button" data-bs-toggle="collapse" data-bs-target="#footerSupportedContent" aria-controls="footerSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-      <span class="navbar-toggler-icon d-flex justify-content-center align-items-center">
-        <i class="fa fa-ellipsis-h footer-ellipsis"></i>
-      </span>
-    </button>
+    <div class="d-flex-column btn align-items-center rounded-2 p-1 footer-button" data-page="cards_home">
+      <i class="fas fa-th-large footer-icon me-2"></i>
+      <p>Cards Home</p>
+    </div>
+    
+    <div class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#footerSupportedContent" aria-controls="footerSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    
+      <div class="navbar-toggler-icon d-flex justify-content-center align-items-center">
+        
+        <div class="d-flex justify-content-between align-items-center w-100"> 
+          <div> 
+              <i class="fa fa-ellipsis-h footer-ellipsis"></i>
+          </div>
+        </div>
+
+        
+      </div>
+    </div>
     
     <div class="collapse navbar-collapse mt-2 mb-2" id="footerSupportedContent">
       <ul class="navbar-nav w-100">
         <li class="nav-item dropdown me-2 rounded-3 w-100">
             <div class="d-flex flex-row justify-content-evenly"> 
-                <div class="d-flex btn flex-column align-items-center rounded-2 p-1 footer-button" data-page="cards_home">
-                    <i class="fas fa-th-large footer-icon"></i>
-                    <span class="footer-icon-title">Cards Home</span>
-                </div>
                 <div class="d-flex btn flex-column align-items-center rounded-2 p-1 footer-button" data-page="next_steps"> 
                     <i class="fas fa-map-signs footer-icon"></i>
                     <span class="footer-icon-title">Take Action</span>
