@@ -126,36 +126,6 @@ $(function () {
     }
   }
 
-  // return attribute of html element based on rel for dropdown or val based on button
-  // we probably should switch all elements to val for consistency.
-  function RelorVal(target){
-    if (target.data('value') === undefined || target.data('value') === null) {
-      return target.data('value');
-    }
-    return  target.data('value');
-  }
-
-  function chooseGraphOrMap(target) {
-    // check val of button to see if user is on map  or chart
-    // hide or show the appropriate overlay (map, chart)
-    switch (RelorVal(target)) {
-      case 'chart':
-        // show chart overlay
-        showGraphs();
-        break;
-      case 'map':
-        // show map overlay
-        showMap();
-      break
-      default:
-        // show chart overlay
-        showGraphs();
-    }
-    // ga event action, category, label
-    googleAnalyticsEvent('change', 'chartmap', RelorVal(target));
-    forceResize();
-  }
-
   function toggleChartInfoText(val) {
     const ChartInfoTextElem = document.getElementById('station-info-row');
     if ( ChartInfoTextElem ) {
@@ -195,7 +165,11 @@ $(function () {
     }
   }
 
-  // if state url has a station render station and not map.
+  /**
+   * If the stationId already exists in the state then we don't
+   * need to show the Map first. This automatically enables the
+   * graph and shows the graph view.
+   */
   if (stationId) {
     // show chart overlay
     showGraphs()
@@ -270,7 +244,9 @@ $(function () {
   });
 
 
-  // function to enable downloads (images and data)
+  /**
+   * Handles clicking of the download dropdown.
+   */
   $('.download-select li a').click( function (e) {
     const downloadAction = $(this).data('value');
     const state = window.app.state;
@@ -299,93 +275,6 @@ $(function () {
         $('#multi-chart').stationAnnualGraph('downloadTemperatureData', e.currentTarget);
     }
   });
-
-  // in responsive mode, event handler a for when season (time) variable changes
-  $('#stations-select-vis').bind('cs-changed', function(e) {
-    const target = $(e.target);
-    const notDisabled = !target.hasClass('disabled');
-    if ( notDisabled ) {
-      const val = $('#stations-select-vis').data('value').split(',');
-      const stationName = val[1];
-      const stationId = val[0];
-
-
-      document.getElementById('station-info').classList.remove('d-none');
-      document.getElementById('station-info-none').classList.add('d-none');
-      updateStationIDText(`${stationId}`);
-      updateStationText(`${stationName}`);
-
-      // change map variable
-      window.app.update({stationId, stationName});
-
-      // show chart overlay
-      showGraphs();
-
-      // reset graphs
-      resetGraphs({variable: 'temperature', stationId, stationName });
-
-      // toggle button visual state
-      toggleButton($(`.btn-selector[data-value="chart"]`));
-
-      toggleChartInfoText('chart');
-
-      toggleDownloads();
-
-      // reset map and chart sizes
-      setMapSize();
-    }
-  })
-
-  // enables time chart, map click events
-  $('#chartmap-wrapper').click( function(e) {
-    const target = $(e.target);
-    const notDisabled = !target.hasClass('btn-default-disabled') && !target.hasClass('disabled');
-
-    if ( notDisabled ) {
-
-      // toggle button visual state
-      toggleButton($(target));
-
-      // change select dropdowns for responsive mode
-      setSelectFromButton(target);
-
-      // check val of button to see if user is on map  or chart
-      // hide or show the appropriate overlay (map, chart)
-      chooseGraphOrMap(target);
-      toggleChartInfoText(RelorVal(target));
-    }
-
-    // reset map and chart sizes
-    setMapSize();
-    //chooseGraphOrMap(target);
-
-    // ga event action, category, label
-    googleAnalyticsEvent('click', 'chartmap', target);
-  })
-
-  // in responsive mode the time is a dropdown this enables the change of the chart map
-  $('#chartmap-select-vis').bind('cs-changed', function(e) {
-    const target = $(e.target);
-    const notDisabled = !target.hasClass('disabled');
-    if ( notDisabled ) {
-      const val = $('#time-select-vis').data('value')
-
-      // toggle button visual state
-      toggleButton($(`.btn-selector[data-value="${$('#chartmap-select-vis').data('value')}"]`));
-
-      // check val of button to see if user is on map  or chart
-      // hide or show the appropriate overlay (map, chart)
-      chooseGraphOrMap(target);
-      toggleChartInfoText(RelorVal(target));
-    }
-    // reset map and chart sizes
-    setMapSize();
-  })
-
-  // this function Updates the chart title.
-  function updateTitle(chartText) {
-    $('#default-chart-map-variable').html(chartText);
-  }
 
   // this function Updates the chart title.
   function updateStationText(text) {
