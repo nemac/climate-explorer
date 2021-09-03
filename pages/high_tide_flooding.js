@@ -20,7 +20,7 @@ export default (config) => `
 
   ${secondary_header(config)}
 
-    <div class="container-fluid high-tide-flooding-body top-spacing"> <!-- replace top-spacing with dynamic sizing -->
+    <div class="container-fluid high-tide-flooding-body h-100">
         <div class="d-flex flex-row mt-3"> 
             <div class="input-group mb-3 search-input-group rounded-3 border border-1 w-75 me-2">
               <button id="clear-location" class="btn search-icons" type="button"><span class="fas fa-times-circle"></span></button>
@@ -43,11 +43,11 @@ export default (config) => `
               <div class="m-3"> 
                 <span id="station-info-none"><strong>Please select a station on the map or from the Stations dropdown menu. You may need to zoom out to see more stations.</strong></span>
                 <span id="station-info" class="d-none">
-                  <span id="default-station-label" class="text-info-box label" >Station id: </span>
+                  <span id="default-station-label" class="text-info-box label">Station id: </span>
                   <span id="default-station" class="text-info-box data right-padding" ></span>
-                  <span id="default-station-id-label" class="text-info-box label" >Station: </span>
+                  <span id="default-station-id-label" class="text-info-box label">Station: </span>
                   <span id="default-station-id" class="text-info-box data right-padding" ></span>
-                  <span id="default-stationMOverMHHW-label" class="text-info-box label" >Local threshold: </span>
+                  <span id="default-stationMOverMHHW-label" class="text-info-box label">Local threshold: </span>
                   <span id="default-stationMOverMHHW" class="text-info-box data right-padding" ></span>
                 </span>
               </div>
@@ -97,44 +97,42 @@ data-value="Historical and Modeled">Historical & Modeled</label>
             </div> 
         </div>
 
-    </div>
-
-  <div id="high-tide-flooding-viewport" class="padding-horizontal d-flex d-flex-column">
-
-    <div id="stations-map-row" class="padding-top-half width-100 height-100 d-flex" >
-      <div id="stations-map-wrap" class="map-wrap width-100 height-100 ">
-        <div id="stations-map" class="map-element"></div>
-        <div id="stations-map-message" class="map-nostations-message d-none"></div>
-      </div>
-    </div>
-
-    <div id="stations-graph-row" class="padding-vertical width-100 height-100" >
-      <div id="stations-graph-wrap" class="width-100 height-100 d-flex-row">
-        <div id="tidal-chart" class="tidal-chart d-flex-center width-100">
-        </div>
-      </div>
-    </div>
-
-    <div id="station-info-row" class="d-flex-row flex-justify padding-bottom d-flex-left d-none" >
-      <span id="more-info-description" class="rounded-description-box d-none" >
-        <div class="more-caret d-flex-center">
-          <span class="fas fa-angle-down"></span>
-        </div>
-
-        <div class="padding-default">
-          <h2>Reading the tidal flooding charts</h2>
-        </div>
-        <div class="chart-info-text btn-chart-text left-padding padding-bottom-half" >Click 'Historical' button to zoom in on or out from the observational period.
-          Place your cursor over the curves on this graph for details. Gray bars from 1950 to 2016 show observed annual
-          counts of high-tide flooding. Red and blue curves show the average number of high-tide flooding events projected
-          for future years under two scenarios. Data from
-          <a target="_blank" href="https://tidesandcurrents.noaa.gov/publications/techrpt86_PaP_of_HTFlooding.pdf">
-            NOAA Technical Report NOS CO-OPS 086 - Patterns and Projections of High-Tide Flooding
-          </a>.
-        </div>
-      </span>
-    </div>
-        <div class="modal fade" id="aboutModal" tabindex="-1" aria-labelledby="aboutModalLabel" aria-hidden="true">
+        <div id="high-tide-flooding-viewport" class="d-flex d-flex-column">
+        
+            <div id="stations-map-row" class="padding-top-half width-100 height-100 d-flex" >
+              <div id="stations-map-wrap" class="map-wrap width-100 height-100 ">
+                <div id="stations-map" class="map-element"></div>
+                <div id="stations-map-message" class="map-nostations-message d-none"></div>
+              </div>
+            </div>
+        
+            <div id="stations-graph-row" class="padding-vertical width-100 height-100" >
+              <div id="stations-graph-wrap" class="width-100 height-100 d-flex-row">
+                <div id="tidal-chart" class="tidal-chart d-flex-center width-100">
+                </div>
+              </div>
+            </div>
+        
+            <div id="station-info-row" class="d-flex-row flex-justify padding-bottom d-flex-left d-none" >
+              <span id="more-info-description" class="rounded-description-box d-none" >
+                <div class="more-caret d-flex-center">
+                  <span class="fas fa-angle-down"></span>
+                </div>
+        
+                <div class="padding-default">
+                  <h2>Reading the tidal flooding charts</h2>
+                </div>
+                <div class="chart-info-text btn-chart-text left-padding padding-bottom-half" >Click 'Historical' button to zoom in on or out from the observational period.
+                  Place your cursor over the curves on this graph for details. Gray bars from 1950 to 2016 show observed annual
+                  counts of high-tide flooding. Red and blue curves show the average number of high-tide flooding events projected
+                  for future years under two scenarios. Data from
+                  <a target="_blank" href="https://tidesandcurrents.noaa.gov/publications/techrpt86_PaP_of_HTFlooding.pdf">
+                    NOAA Technical Report NOS CO-OPS 086 - Patterns and Projections of High-Tide Flooding
+                  </a>.
+                </div>
+              </span>
+            </div>
+            <div class="modal fade" id="aboutModal" tabindex="-1" aria-labelledby="aboutModalLabel" aria-hidden="true">
               <div class="modal-dialog modal-xl">
                 <div class="modal-content">
                   <div class="modal-header">
@@ -151,7 +149,11 @@ data-value="Historical and Modeled">Historical & Modeled</label>
                 </div>
               </div>
             </div>
+        </div>
+
     </div>
+
+    
     <!-- </div> -->
 
     ${nav_footer(config)}

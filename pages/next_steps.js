@@ -6,7 +6,7 @@ import nav_footer from '../template/nav_footer';
 export default (config)=>`
 
 <!doctype html>
-<html lang='en' class="width-100 height-100">
+<html lang='en'>
 <head>
   ${head(config)}
   <meta property="fb:app_id" content="187816851587993">
@@ -22,7 +22,7 @@ export default (config)=>`
 
 ${secondary_header(config)}
 
-<div id="next-steps-viewport" class="padding-horizontal d-flex d-flex-column">
+<div id="next-steps-viewport" class="container-fluid d-flex-column">
 
   <div id="search-row"
        class="padding-horizontal d-flex-row flex-justify padding-top padding-bottom-half d-flex-justify">

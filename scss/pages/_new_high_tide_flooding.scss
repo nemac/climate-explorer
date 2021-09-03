@@ -12,3 +12,11 @@
     cursor: pointer;
   }
 }
+
+#default-station-label ,#default-station-id-label, #default-stationMOverMHHW-label {
+  font-weight: bold !important;
+}
+
+#default-station ,#default-station-id, #default-stationMOverMHHW {
+  font-weight: normal !important;
+}

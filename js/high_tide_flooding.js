@@ -53,7 +53,7 @@ $(function () {
   };
 
   if(!!stationId) {
-    $('[data-value="chart"]').removeClass('btn-default-disabled');
+    $('#chartmap-select-chart-link').removeClass('disabled');
   }
 
   // updates the visible text for the station dropdown with the information from the state url
@@ -363,33 +363,34 @@ $(function () {
     }
   });
 
-  // in responsive mode, event handler a for when season (time) variable changes
+  /**
+   * When a station is selected from the dropdown menu this is triggered.
+   */
   $('#stations-dropdown-menu').bind('cs-changed', function (e) {
 
     const target = $(e.target);
     const disabled = target.hasClass('disabled');
 
     if (!disabled) {
-      const val = target.data('value').split('|');
-      const tidalStationName = val[1];
-      const tidalStationId = val[0];
-      const tidalStationMOverMHHW = val[2];
+
+      const val = $('#stations-select-vis').data('value').split(',');
+      const stationName = val[1];
+      const stationId = val[0];
+
 
       document.getElementById('station-info').classList.remove('d-none');
       document.getElementById('station-info-none').classList.add('d-none');
-      updateStationIDText(`${tidalStationId}`);
-      updateStationText(`${tidalStationName}`);
-      updatestationMOverMHHWText(`${tidalStationMOverMHHW}m over MHHW`);
+      updateStationIDText(`${stationId}`);
+      updateStationText(`${stationName}`);
 
       // change map variable
-      window.app.update( {tidalStationId, tidalStationName, tidalStationMOverMHHW});
+      window.app.update({stationId, stationName});
 
       // show chart overlay
       showGraphs();
 
       // reset graphs
-      resetGraphs({variable: 'temperature', tidalStationId, tidalStationName});
-      widget.request_update({'station': tidalStationId});
+      resetGraphs({variable: 'temperature', stationId, stationName });
 
       // toggle button visual state
       $('#chartmap-select-chart-link').removeClass('disabled');
@@ -401,8 +402,9 @@ $(function () {
 
       // reset map and chart sizes
       setMapSize();
+
     }
-  })
+  });
 
   $('#chartmap-select-chart-link').click(function(e) {
 
@@ -668,11 +670,27 @@ $(function () {
     }
   }
 
+  function setBodySize() {
+
+    let nav_element = document.querySelector(".navbar-element");
+    let footer_element = document.querySelector(".footer-element");
+
+    let nav_height = nav_element.getBoundingClientRect().height / 16;
+    let footer_height = footer_element.getBoundingClientRect().height / 16;
+
+    let high_tide_body = document.querySelector(".high-tide-flooding-body");
+    high_tide_body.style.paddingTop = nav_height + "rem";
+    high_tide_body.style.paddingBottom = footer_height + "rem";
+
+  }
+
   // reset map and chart sizes
   setMapSize();
+  setBodySize();
 
   $(window).resize(function () {
     setMapSize();
+    setBodySize();
   })
 
   $('#chart-info-row-btn .more-info.btn-default').click(function (e) {
