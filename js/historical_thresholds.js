@@ -20,8 +20,8 @@ $(function () {
     $('#cards-search-input').attr("placeholder", "Location missing, enter a county or city name");
   }
 
-  const county =  state['county']
-  const city =    state['city']
+  const county =  state['county'];
+  const city =    state['city'];
   const zoom =    state['zoom'] || 9;
   const lat =     state['lat'];
   const lon =     state['lon'];

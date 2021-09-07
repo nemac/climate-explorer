@@ -1,0 +1,21 @@
+@import "../color_utils";
+
+#selection-dropdown-menu {
+  background-color: $search-input-background;
+  color: $navbar-button-background;
+}
+
+.selection-dropdown {
+
+  li {
+    color: $navbar-button-background;
+
+    transition: background-color 200ms ease-in;
+  }
+
+  li:hover {
+    background-color: $navbar-hover-background;
+    cursor: pointer;
+  }
+
+}

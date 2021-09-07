@@ -71,8 +71,8 @@ export default (config) => `
                         Downloads
                       </a>
                     
-                      <ul class="dropdown-menu download-select" aria-labelledby="download-dropdown-menu">
-                        <div data-icon="fas fa-temperature-high select-icon" class="d-flex justify-content-center">
+                      <ul class="dropdown-menu download-select w-100" aria-labelledby="download-dropdown-menu">
+                        <div data-icon="fas fa-temperature-high select-icon" class="d-flex ms-3 select-icon">
                           <i class="fas fa-temperature-high me-2"></i>Temperature
                         </div>
                         <li tabindex="5001" data-value="download-temperature-image" data-icon="fas fa-download select-icon" href="javascript:void(0);">
@@ -81,7 +81,7 @@ export default (config) => `
                         <li tabindex="5002" data-value="download-temperature-data" data-icon="fas fa-download select-icon" href="javascript:void(0);" class="mb-2">
                           <a tabindex="5002" data-value="download-temperature-data" class="dropdown-item" href="javascript:void(0);" >Download temperature data</a>
                         </li>
-                        <div data-icon="fas fa-cloud-rain select-icon" class="d-flex justify-content-center">
+                        <div data-icon="fas fa-cloud-rain select-icon" class="d-flex ms-3 select-icon">
                           <i class="fas fa-cloud-rain me-2"></i>Precipitation
                         </div>
                         <li tabindex="5003" data-value="download-image" data-icon="fas fa-download select-icon" href="javascript:void(0);">

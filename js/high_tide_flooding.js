@@ -373,24 +373,28 @@ $(function () {
 
     if (!disabled) {
 
-      const val = $('#stations-select-vis').data('value').split(',');
-      const stationName = val[1];
-      const stationId = val[0];
+      const val = target.data('value').split('|');
 
+      const tidalStationName = val[1];
+      const tidalStationId = val[0];
+      const tidalStationMOverMHHW = val[2];
 
       document.getElementById('station-info').classList.remove('d-none');
       document.getElementById('station-info-none').classList.add('d-none');
-      updateStationIDText(`${stationId}`);
-      updateStationText(`${stationName}`);
+
+      updateStationIDText(`${tidalStationId}`);
+      updateStationText(`${tidalStationName}`);
+      updatestationMOverMHHWText(`${tidalStationMOverMHHW}m over MHHW`);
 
       // change map variable
-      window.app.update({stationId, stationName});
+      window.app.update({tidalStationId, tidalStationName, tidalStationMOverMHHW});
 
       // show chart overlay
       showGraphs();
 
       // reset graphs
-      resetGraphs({variable: 'temperature', stationId, stationName });
+      resetGraphs({variable: 'temperature', tidalStationId, tidalStationName });
+      widget.request_update({'station': tidalStationId});
 
       // toggle button visual state
       $('#chartmap-select-chart-link').removeClass('disabled');

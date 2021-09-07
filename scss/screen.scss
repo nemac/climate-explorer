@@ -1,3 +1,4 @@
+@import "./color_utils";
 // VARIABLES
 
 // colors
@@ -246,8 +247,8 @@ h6 {
 }
 
 .select-icon {
-  margin-right: $ce3-default-padding !important;
-  margin-top: $ce3-padding-half/2 !important;
+  font-weight: bold;
+  color: $navbar-button-background;
 }
 
 .select {
@@ -1948,6 +1949,7 @@ input.input-inner-default:focus  {
 @import "pages/new_climate_maps";
 @import "pages/historical_weather_data";
 @import "pages/historical_thresholds";
+@import "pages/new_historical_thresholds";
 @import "pages/high_tide_flooding";
 @import "pages/new_high_tide_flooding";
 
