@@ -83,8 +83,8 @@ export default (config) => `
       
                     <div tabindex="5012" class="btn border border-1 threshold-down">-</div>
                       <div class="form-field-control height-100">
-                        <input tabindex="5013" id="threshold-value" type="number" class="form-field-input" placeholder=" " min="0" max="200" value="1" autofocus="autofocus" step="0.1"/>
-                        <label for="threshold-value" class="form-field-label height-100">Threshold<span id="threshold-unit"> in inches</span></label>
+                        <input tabindex="5013" id="threshold-value" type="number" class="form-field-input border-0" placeholder=" " min="0" max="200" value="1" autofocus="autofocus" step="0.1"/>
+                        <label for="threshold-value" class="form-field-label height-100">Threshold in<span id="threshold-unit"> inches</span></label>
                         <div class="form-field-bar height-100"></div>
                       </div>
                       <div tabindex="5014" class="btn border border-1 threshold-up">+</div>
@@ -95,8 +95,8 @@ export default (config) => `
         
                       <div tabindex="5015" class="btn border border-1 window-down">-</div>
                       <div class="form-field-control height-100">
-                        <input tabindex="5016" id="window-value" type="number" class="form-field-input" placeholder=" " min="0" max="365" value="1" autofocus="autofocus" step="1"/>
-                        <label for="window-value" class="form-field-label height-100">Window<span id="window-unit"> in days</span></label>
+                        <input tabindex="5016" id="window-value" type="number" class="form-field-input border-0" placeholder=" " min="0" max="365" value="1" autofocus="autofocus" step="1"/>
+                        <label for="window-value" class="form-field-label height-100">Window in<span id="window-unit"> days</span></label>
                         <div class="form-field-bar height-100"></div>
                       </div>
                       <div tabindex="5017" class="btn border border-1 window-up">+</div>
@@ -146,21 +146,29 @@ export default (config) => `
           </div>
       
           <div id="station-info-row" class="d-flex-row flex-justify padding-bottom d-flex-left d-none" >
-            <span id="more-info-description" class="rounded-description-box d-none" >
-              <div class="more-caret d-flex-center">
-                <span class="fas fa-angle-down"></span>
+              <div class="modal fade" id="aboutModal" tabindex="-1" aria-labelledby="aboutModalLabel" aria-hidden="true">
+                <div class="modal-dialog modal-xl">
+                  <div class="modal-content">
+                    <div class="modal-header">
+                      <h3 class="modal-title" id="aboutModalLabel">READING THE THRESHOLDS CHARTS</h3>
+                      <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                    
+                        <div class="mb-3">This graph shows how often the selected threshold has been exceeded per year. For consistency,
+                        this chart excludes any years that are missing more than five daily temperature reports or more
+                        than one precipitation report in a single month. Data from
+                        <a target="_blank" href="https://www.ncdc.noaa.gov/data-access/land-based-station-data/land-based-datasets/global-historical-climatology-network-ghcn">
+                          Global Historical Climatology Network</a>, served by <a target="_blank" href="http://www.rcc-acis.org/">ACIS</a>.
+                        </div>
+                        <div>
+                        Pan or zoom on these graphs to view other years. Place your cursor on either axis and then scroll, click-and-drag, or hold down your SHIFT key and scroll to adjust the display.
+                        </div>
+                    
+                    </div>
+                  </div>
+                </div>
               </div>
-      
-              <div class="padding-default">
-                <h2>Reading the thresholds charts</h2>
-              </div>
-              <div class="chart-info-text btn-chart-text left-padding padding-bottom-half" >This graph shows how often the selected threshold has been exceeded per year. For consistency,
-              this chart excludes any years that are missing more than five daily temperature reports or more
-              than one precipitation report in a single month. Data from
-              <a target="_blank" href="https://www.ncdc.noaa.gov/data-access/land-based-station-data/land-based-datasets/global-historical-climatology-network-ghcn">
-                Global Historical Climatology Network</a>, served by <a target="_blank" href="http://www.rcc-acis.org/">ACIS</a>.
-              </div>
-            </span>
           </div>
         </div>
 

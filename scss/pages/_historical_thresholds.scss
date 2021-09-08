@@ -213,10 +213,8 @@ $animation-duration: 0.4s;
         appearance: none;
         float: left;
         background: transparent;
-        border: 0;
-        border-bottom: 1px solid $ce3-blue3;
-        border-top: 1px solid $ce3-blue3;
         color: $ce3-blue3;
+        text-align: center;
         display: block;
         font: 500 14px $roboto !important;
         outline: 0;
@@ -498,10 +496,6 @@ $animation-duration: 0.4s;
          #station-overlay {
            height: 100%;
          }
-
-   .text-info-box.label {
-     font-weight: $font-weight-normal !important;
-   }
 
    .esri-expand__container {
      height: 32px;
