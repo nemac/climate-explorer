@@ -8,7 +8,9 @@ $(function () {
   enableCustomSelect('chartmap-select');
   enableCustomSelect('stations-select');
   enableCustomSelect('download-select');
-  enableCustomSelect('threshold-variable-select');
+  enableCustomSelect('stations-dropdown-menu');
+  enableCustomSelect('selection-dropdown-menu');
+
   const state = window.app.state;
   const cityStateCE = state['city'];
   const countyCE = state['county'];
@@ -54,10 +56,6 @@ $(function () {
     center
   };
 
-  if(!!stationId) {
-    $('[data-value="chart"]').removeClass('btn-default-disabled');
-  }
-
   const thresholdStationsDataURL = "https://data.rcc-acis.org/StnData";
   const initialObj = {
     station: stationsMapState.stationId, // GHCN-D Station id (required)
@@ -74,20 +72,9 @@ $(function () {
     barColor: '#307bda' // Color for bars.
   };
 
-
-
-  if ( stationId ) {
-    updateThresholdVariableSelectText(initialObj);
-    $('#threshold-value').val(initialObj.threshold);
-    $('#window-value').val(initialObj.window);
-
-     $("#thresholds-container").item(initialObj);
-     $("#thresholds-container").item(initialObj);
-  }
-
   // updates the visible text for the station dropdown with the information from the state url
   function updateStationSelectText(stations) {
-    const stationsSelectElem = $('#stations-select-vis');
+    const stationsSelectElem = $('#stations-dropdown-menu');
     if (stationsSelectElem) {
       if ( !!stations.stationId) {
         stationsSelectElem.data('value',`${stations.stationId},${stations.stationName}`);
@@ -98,7 +85,7 @@ $(function () {
 
   // updates the visible text for the Threshold Variable dropdown with the information from the state url
   function updateThresholdVariableSelectText(initialObj) {
-    const thresholdVariableSelectElem = $('#threshold-variable-select-vis');
+    const thresholdVariableSelectElem = $('#selection-dropdown-menu');
     const thresholdVariable = initialObj.variable;
 
     if (thresholdVariableSelectElem) {
@@ -263,15 +250,9 @@ $(function () {
   }
 
   function toggleDownloads() {
-    const targetParent = $('#downloads-select-wrapper');
+    const targetParent = $('#download-dropdown-menu');
     if (targetParent.hasClass('disabled')) {
       targetParent.removeClass('disabled');
-    }
-
-    const target = $('#downloads-select-vis');
-    if (target.hasClass('disabled')) {
-      target.removeClass('disabled');
-      enableCustomSelect('download-select');
     }
   }
 
@@ -286,12 +267,20 @@ $(function () {
   }
 
   // if state url has a station render station and not map.
-  if (stationId) {
+  if(stationId) {
+
+    updateThresholdVariableSelectText(initialObj);
+    $('#threshold-value').val(initialObj.threshold);
+    $('#window-value').val(initialObj.window);
+
+    $("#thresholds-container").item(initialObj);
+    $("#thresholds-container").item(initialObj);
+
     // // show chart overlay
     showGraphs()
 
     // get current threshold values
-    const variableValue = $('#threshold-variable-select-vis').data('value');
+    const variableValue = $('#selection-dropdown-menu').data('value');
     const windowValue = parseInt($('#window-value').val());
     const thresholdValue = parseFloat($('#threshold-value').val());
 
@@ -306,7 +295,12 @@ $(function () {
     });
 
     // toggle button visual state
-    toggleButton($('.btn-selector[data-value="chart"]'));
+    $(`#chartmap-select-chart-link`).removeClass("disabled");
+    toggleButton($(`#chartmap-select-chart-link`));
+
+    $('#chart-info-row-btn').removeClass('disabled');
+
+    $('#selection-dropdown-menu').removeClass('disabled');
 
     // update chart dropdown to chart as default
     chartDropdownChartText()
@@ -323,11 +317,13 @@ $(function () {
       // filer transition means heigh will be updates in few seconds
       // so delaying the resize ensures proper size
       setMapSize();
+      setBodySize();
     }, 600);
   } else {
     showMap();
     toggleChartInfoText('map');
     setMapSize();
+    setBodySize();
   }
 
   // function to enable downloads (images and data)
@@ -354,49 +350,9 @@ $(function () {
     }
   });
 
-
-
-  // imcrement threshold
-  $('.threshold-up').keyup( function (e) {
-    if (e.keyCode === 13){
-      const target = $(e.target);
-      const thresholdValueElem = document.getElementById('threshold-value');
-
-      // ensure thresholdValue element exits
-      if (thresholdValueElem) {
-
-        // get thresholdValue element values
-        const min = parseFloat(thresholdValueElem.getAttribute('min')).toFixed(1);
-        const max = parseFloat(thresholdValueElem.getAttribute('max')).toFixed(1);
-        const step = parseFloat(thresholdValueElem.getAttribute('step')).toFixed(1);
-        const val = parseFloat($(thresholdValueElem).val()).toFixed(1);
-        const newVal = parseFloat(parseFloat(val) + parseFloat(step)).toFixed(1);
-        if (parseFloat(newVal) > parseFloat(max)) {
-          $(thresholdValueElem).val(val);
-        } else {
-          $(thresholdValueElem).val(newVal);
-
-          const stations = $('#stations-select-vis').data('value').split(',');
-          const stationName = stations[1];
-          const stationId = stations[0];
-          const variableValue = $('#threshold-variable-select-vis').data('value'); //  , thresholdValue: variableValue
-
-          // change map url state
-          window.app.update( { stationId, stationName, threshold: newVal, thresholdValue: variableValue});
-
-          // ga event action, category, label
-          googleAnalyticsEvent('click-tab', 'threshold-up', newVal);
-
-          $("#thresholds-container").item({
-            threshold: newVal,
-          }).item('update');
-        }
-      }
-    }
-  });
-
   // imcrement threshold
   $('.threshold-up').click( function (e) {
+
     const target = $(e.target);
     const thresholdValueElem = document.getElementById('threshold-value');
 
@@ -404,20 +360,21 @@ $(function () {
     if (thresholdValueElem) {
 
       // get thresholdValue element values
-      const min = parseFloat(thresholdValueElem.getAttribute('min')).toFixed(1);
       const max = parseFloat(thresholdValueElem.getAttribute('max')).toFixed(1);
       const step = parseFloat(thresholdValueElem.getAttribute('step')).toFixed(1);
       const val = parseFloat($(thresholdValueElem).val()).toFixed(1);
       const newVal = parseFloat(parseFloat(val) + parseFloat(step)).toFixed(1);
+
       if (parseFloat(newVal) > parseFloat(max)) {
         $(thresholdValueElem).val(val);
       } else {
+
         $(thresholdValueElem).val(newVal);
 
-        const stations = $('#stations-select-vis').data('value').split(',');
+        const stations = $('#stations-dropdown-menu').data('value').split(',');
         const stationName = stations[1];
         const stationId = stations[0];
-        const variableValue = $('#threshold-variable-select-vis').data('value'); //  , thresholdValue: variableValue
+        const variableValue = $('#selection-dropdown-menu').data('value'); //  , thresholdValue: variableValue
 
         // change map url state
         window.app.update( { stationId, stationName, threshold: newVal, thresholdValue: variableValue});
@@ -433,48 +390,14 @@ $(function () {
   });
 
   // decrememt threshold
-  $('.threshold-down').keyup( function (e) {
-    if (e.keyCode === 13){
-      const target = $(e.target);
-      const thresholdValueElem = document.getElementById('threshold-value');
-      if (thresholdValueElem) {
-        const min = parseFloat(thresholdValueElem.getAttribute('min')).toFixed(1);
-        const max = parseFloat(thresholdValueElem.getAttribute('max')).toFixed(1);
-        const step = parseFloat(thresholdValueElem.getAttribute('step')).toFixed(1);
-        const val = parseFloat($(thresholdValueElem).val()).toFixed(1);
-        const newVal = parseFloat(parseFloat(val) - parseFloat(step)).toFixed(1);
-
-        if (parseFloat(newVal) < parseFloat(min)) {
-          $(thresholdValueElem).val(val);
-        } else {
-          $(thresholdValueElem).val(newVal);
-
-          const stations = $('#stations-select-vis').data('value').split(',');
-          const stationName = stations[1];
-          const stationId = stations[0];
-          const variableValue = $('#threshold-variable-select-vis').data('value'); //  , thresholdValue: variableValue
-
-          // change map url state
-          window.app.update( { stationId, stationName, threshold: newVal, thresholdValue: variableValue});
-
-          // ga event action, category, label
-          googleAnalyticsEvent('click-tab', 'threshold-down', newVal);
-
-          $("#thresholds-container").item({
-            threshold: newVal,
-          }).item('update');
-        }
-      }
-    }
-  });
-
-  // decrememt threshold
   $('.threshold-down').click( function (e) {
+
     const target = $(e.target);
     const thresholdValueElem = document.getElementById('threshold-value');
+
     if (thresholdValueElem) {
+
       const min = parseFloat(thresholdValueElem.getAttribute('min')).toFixed(1);
-      const max = parseFloat(thresholdValueElem.getAttribute('max')).toFixed(1);
       const step = parseFloat(thresholdValueElem.getAttribute('step')).toFixed(1);
       const val = parseFloat($(thresholdValueElem).val()).toFixed(1);
       const newVal = parseFloat(parseFloat(val) - parseFloat(step)).toFixed(1);
@@ -484,10 +407,10 @@ $(function () {
       } else {
         $(thresholdValueElem).val(newVal);
 
-        const stations = $('#stations-select-vis').data('value').split(',');
+        const stations = $('#stations-dropdown-menu').data('value').split(',');
         const stationName = stations[1];
         const stationId = stations[0];
-        const variableValue = $('#threshold-variable-select-vis').data('value'); //  , thresholdValue: variableValue
+        const variableValue = $('#selection-dropdown-menu').data('value'); //  , thresholdValue: variableValue
 
         // change map url state
         window.app.update( { stationId, stationName, threshold: newVal, thresholdValue: variableValue});
@@ -503,47 +426,12 @@ $(function () {
   });
 
   // imcrement window
-  $('.window-up').keyup( function (e) {
-    if (e.keyCode === 13){
-      const target = $(e.target);
-      const windowValueElem = document.getElementById('window-value');
-      if (windowValueElem) {
-        const min = parseFloat(windowValueElem.getAttribute('min')).toFixed(1);
-        const max = parseFloat(windowValueElem.getAttribute('max')).toFixed(1);
-        const step = parseFloat(windowValueElem.getAttribute('step')).toFixed(1);
-        const val = parseFloat($(windowValueElem).val()).toFixed(1);
-        const newVal = parseFloat(parseFloat(val) + parseFloat(step)).toFixed(1);
-
-        if (parseFloat(newVal) > parseFloat(max)) {
-          $(windowValueElem).val(val);
-        } else {
-          $(windowValueElem).val(newVal);
-
-          const stations = $('#stations-select-vis').data('value').split(',');
-          const stationName = stations[1];
-          const stationId = stations[0];
-          const variableValue = $('#threshold-variable-select-vis').data('value'); //  , thresholdValue: variableValue
-
-          // change map url state
-          window.app.update( {stationId, stationName,  window: newVal, thresholdValue: variableValue});
-
-          // ga event action, category, label
-          googleAnalyticsEvent('click-tab', 'window-up', newVal);
-
-          $("#thresholds-container").item({
-            window: newVal,
-          }).item('update');
-        }
-      }
-    }
-  });
-
-  // imcrement window
   $('.window-up').click( function (e) {
-    const target = $(e.target);
+
     const windowValueElem = document.getElementById('window-value');
+
     if (windowValueElem) {
-      const min = parseFloat(windowValueElem.getAttribute('min')).toFixed(1);
+
       const max = parseFloat(windowValueElem.getAttribute('max')).toFixed(1);
       const step = parseFloat(windowValueElem.getAttribute('step')).toFixed(1);
       const val = parseFloat($(windowValueElem).val()).toFixed(1);
@@ -554,10 +442,10 @@ $(function () {
       } else {
         $(windowValueElem).val(newVal);
 
-        const stations = $('#stations-select-vis').data('value').split(',');
+        const stations = $('#stations-dropdown-menu').data('value').split(',');
         const stationName = stations[1];
         const stationId = stations[0];
-        const variableValue = $('#threshold-variable-select-vis').data('value'); //  , thresholdValue: variableValue
+        const variableValue = $('#selection-dropdown-menu').data('value'); //  , thresholdValue: variableValue
 
         // change map url state
         window.app.update( {stationId, stationName,  window: newVal, thresholdValue: variableValue});
@@ -571,43 +459,6 @@ $(function () {
       }
     }
   });
-
-  // descrememt window
-  $('.window-down').keyup( function (e) {
-    if (e.keyCode === 13){
-      const target = $(e.target);
-      const windowValueElem = document.getElementById('window-value');
-      if (windowValueElem) {
-        const min = parseFloat(windowValueElem.getAttribute('min')).toFixed(1);
-        const max = parseFloat(windowValueElem.getAttribute('max')).toFixed(1);
-        const step = parseFloat(windowValueElem.getAttribute('step')).toFixed(1);
-        const val = parseFloat($(windowValueElem).val()).toFixed(1);
-        const newVal = parseFloat(parseFloat(val) - parseFloat(step)).toFixed(1);
-
-        if (parseFloat(newVal) < parseFloat(min)) {
-          $(windowValueElem).val(val);
-        } else {
-          $(windowValueElem).val(newVal);
-
-          const stations = $('#stations-select-vis').data('value').split(',');
-          const stationName = stations[1];
-          const stationId = stations[0];
-          const variableValue = $('#threshold-variable-select-vis').data('value'); //  , thresholdValue: variableValue
-
-          // change map url state
-          window.app.update( { stationId, stationName, window: newVal,  thresholdValue: variableValue });
-
-          // ga event action, category, label
-          googleAnalyticsEvent('click-tab', 'window-down', newVal);
-
-          $("#thresholds-container").item({
-            window: newVal,
-          }).item('update');
-        }
-      }
-    }
-  });
-
 
   // descrememt window
   $('.window-down').click( function (e) {
@@ -625,10 +476,10 @@ $(function () {
       } else {
         $(windowValueElem).val(newVal);
 
-        const stations = $('#stations-select-vis').data('value').split(',');
+        const stations = $('#stations-dropdown-menu').data('value').split(',');
         const stationName = stations[1];
         const stationId = stations[0];
-        const variableValue = $('#threshold-variable-select-vis').data('value'); //  , thresholdValue: variableValue
+        const variableValue = $('#selection-dropdown-menu').data('value'); //  , thresholdValue: variableValue
 
         // change map url state
         window.app.update( { stationId, stationName, window: newVal,  thresholdValue: variableValue });
@@ -644,11 +495,13 @@ $(function () {
   });
 
   function thresholdVariableChanged(target) {
-    const notDisabled = !target.hasClass('disabled');
-    if ( notDisabled ) {
-      const val = $('#threshold-variable-select-vis').data('value');
+    const disabled = target.hasClass('disabled');
+    if (!disabled) {
+
+      const val = $('#selection-dropdown-menu').data('value');
       const thresholdValueElem = document.getElementById('threshold-value');
       const windowValueElem = document.getElementById('window-value');
+
       if (thresholdValueElem) {
         // capture what we are downloading
         switch (val) {
@@ -698,7 +551,7 @@ $(function () {
       const windowValue = parseInt($('#window-value').val());
       const thresholdValue = parseFloat($('#threshold-value').val());
 
-      const stations = $('#stations-select-vis').data('value').split(',');
+      const stations = target.data('value').split(',');
       const stationName = stations[1];
       const stationId = stations[0];
 
@@ -713,17 +566,16 @@ $(function () {
 
     }
   }
-  // in responsive mode, event handler a for when season (time) variable changes
-  $('#threshold-variable-select-vis').bind('cs-changed', function(e) {
-    thresholdVariableChanged($(e.target));
-  });
 
   // in responsive mode, event handler a for when season (time) variable changes
-  $('#stations-select-vis').bind('cs-changed', function(e) {
+  $('#stations-dropdown-menu').bind('cs-changed', function(e) {
+
     const target = $(e.target);
-    const notDisabled = !target.hasClass('disabled');
-    if ( notDisabled ) {
-      const val = $('#stations-select-vis').data('value').split(',');
+    const disabled = target.hasClass('disabled');
+
+    if (!disabled) {
+
+      const val = target.data('value').split(',');
       const stationName = val[1];
       const stationId = val[0];
 
@@ -733,30 +585,12 @@ $(function () {
       updateStationText(`${stationName}`);
 
       // get current threshold values
-      const variableValue = $('#threshold-variable-select-vis').data('value');
+      const variableValue = $('#selection-dropdown-menu').data('value');
       const windowValue = parseInt($('#window-value').val());
       const thresholdValue = parseFloat($('#threshold-value').val());
 
       // change map variable
       window.app.update( {stationId, stationName, threshold: thresholdValue, window: windowValue, thresholdVariable: variableValue});
-
-      // state url object
-      let stationsMapState = {
-        county,
-        mode,
-        stationId,
-        stationName,
-        tidalStationId,
-        tidalStationName,
-        tidalStationMOverMHHW,
-        lat,
-        lon,
-        zoom,
-        center,
-        threshold: thresholdValue,
-        window: windowValue,
-        thresholdVariable: variableValue
-      };
 
       // show chart overlay
       showGraphs();
@@ -771,10 +605,13 @@ $(function () {
       });
 
       // make sure selector actually changes
-      thresholdVariableChanged($('#threshold-variable-select-vis'));
+      thresholdVariableChanged($('#selection-dropdown-menu'));
 
       // toggle button visual state
-      toggleButton($('.btn-selector[data-value="chart"]'));
+      $(`#chartmap-select-chart-link`).removeClass("disabled");
+      toggleButton($(`#chartmap-select-chart-link`));
+
+      $('#chart-info-row-btn').removeClass('disabled');
 
       toggleChartInfoText('chart');
 
@@ -782,7 +619,12 @@ $(function () {
 
       // reset map and chart sizes
       setMapSize();
+      setBodySize();
     }
+  })
+
+  $('#selection-dropdown-menu').bind('cs-changed', function(e) {
+    thresholdVariableChanged($(e.target));
   })
 
   // in responsive mode, event handler a for when  threshold value (inches of rain temp in F) changes
@@ -828,38 +670,7 @@ $(function () {
 
   });
 
-  // enables time chart, map click events
-  $('#chartmap-wrapper').keyup( function(e) {
-    if (e.keyCode === 13){
-      const target = $(e.target);
-      const notDisabled = !target.hasClass('btn-default-disabled') && !target.hasClass('disabled');
-
-      if ( notDisabled ) {
-
-        // toggle button visual state
-        toggleButton($(target));
-
-        // change select dropdowns for responsive mode
-        setSelectFromButton(target);
-
-        // check val of button to see if user is on map  or chart
-        // hide or show the appropriate overlay (map, chart)
-        chooseGraphOrMap(target);
-        toggleChartInfoText(RelorVal(target));
-      }
-
-      // reset map and chart sizes
-      setMapSize();
-      //chooseGraphOrMap(target);
-
-      // ga event action, category, label
-      googleAnalyticsEvent('click-tab', 'chartmap', target);
-    }
-  });
-
-
-  // enables time chart, map click events
-  $('#chartmap-wrapper').on('click keyup keydown', function(e) {
+  $('#chartmap-select-chart-link').click(function(e) {
 
     if (e.type === 'keydown' && e.keyCode === 32) {
       e.preventDefault();
@@ -871,53 +682,51 @@ $(function () {
     }
 
     const target = $(e.target);
-    const notDisabled = !target.hasClass('btn-default-disabled') && !target.hasClass('disabled');
 
-    if ( notDisabled ) {
+    const disabled =  target.hasClass('disabled');
 
-      // toggle button visual state
-      toggleButton($(target));
+    if(disabled) return;
 
-      // change select dropdowns for responsive mode
-      setSelectFromButton(target);
+    const selected = target.hasClass('selected-item');
 
-      // check val of button to see if user is on map  or chart
-      // hide or show the appropriate overlay (map, chart)
-      chooseGraphOrMap(target);
-      toggleChartInfoText(RelorVal(target));
-    }
+    if(selected) return;
 
-    // reset map and chart sizes
-    setMapSize();
-    //chooseGraphOrMap(target);
+    toggleButton($(target));
 
-    // ga event action, category, label
+    showGraphs();
+
     googleAnalyticsEvent('click', 'chartmap', target);
-  });
-
-  // in responsive mode the time is a dropdown this enables the change of the chart map
-  $('#chartmap-select-vis').bind('cs-changed', function(e) {
-    const target = $(e.target);
-    const notDisabled = !target.hasClass('disabled');
-    if ( notDisabled ) {
-      const val = $('#time-select-vis').data('value')
-
-      // toggle button visual state
-      toggleButton($(`.btn-selector[data-value="${$('#chartmap-select-vis').data('value')}"]`));
-
-      // check val of button to see if user is on map  or chart
-      // hide or show the appropriate overlay (map, chart)
-      chooseGraphOrMap(target);
-      toggleChartInfoText(RelorVal(target));
-    }
-    // reset map and chart sizes
-    setMapSize();
   })
 
-  // this function Updates the chart title.
-  function updateTitle(chartText) {
-    $('#default-chart-map-variable').html(chartText);
-  }
+  $('#chartmap-select-map-link').click(function(e) {
+
+    if (e.type === 'keydown' && e.keyCode === 32) {
+      e.preventDefault();
+      return;
+    }
+
+    if (!(e.type === 'click' || (e.type === 'keyup' && (e.keyCode === 32 || e.keyCode === 13)))) {
+      return;
+    }
+
+    const target = $(e.target);
+
+    const disabled =  target.hasClass('disabled');
+
+    if(disabled) return;
+
+    const selected = target.hasClass('selected-item');
+
+    if(selected) return;
+
+    toggleButton($(target));
+
+    showMap();
+    setMapSize();
+    setBodySize();
+
+    googleAnalyticsEvent('click', 'chartmap', target);
+  })
 
   // this function Updates the chart title.
   function updateStationText(text) {
@@ -1024,13 +833,18 @@ $(function () {
       showGraphs();
 
       // toggle button to select chart
-      toggleButton($('.btn-selector[data-value="chart"]'));
+      $(`#chartmap-select-chart-link`).removeClass("disabled");
+      toggleButton($(`#chartmap-select-chart-link`));
+
+      $('#chart-info-row-btn').removeClass('disabled');
+
+      $('#selection-dropdown-menu').removeClass('disabled');
 
       // update chart dropdown to chart as default
       chartDropdownChartText()
 
       // get current threshold values
-      const variableValue = $('#threshold-variable-select-vis').data('value');
+      const variableValue = $('#selection-dropdown-menu').data('value');
       const windowValue = parseInt($('#window-value').val());
       const thresholdValue = parseFloat($('#threshold-value').val());
 
@@ -1051,13 +865,13 @@ $(function () {
       options.window = windowValue;
       options.thresholdVariable = variableValue;
 
-      window.app.update( options);
+      window.app.update(options);
 
       toggleChartInfoText('chart');
 
       toggleDownloads();
 
-      thresholdVariableChanged($('#threshold-variable-select-vis'));
+      thresholdVariableChanged($('#stations-dropdown-menu'));
 
       setTimeout(function () {
         // reset map and chart sizes
@@ -1140,11 +954,27 @@ $(function () {
     }
   }
 
+  function setBodySize() {
+
+    let nav_element = document.querySelector(".navbar-element");
+    let footer_element = document.querySelector(".footer-element");
+
+    let nav_height = nav_element.getBoundingClientRect().height / 16;
+    let footer_height = footer_element.getBoundingClientRect().height / 16;
+
+    let high_tide_body = document.querySelector(".historical-thresholds-body");
+    high_tide_body.style.paddingTop = nav_height + "rem";
+    high_tide_body.style.paddingBottom = footer_height + "rem";
+
+  }
+
   // reset map and chart sizes
   setMapSize();
+  setBodySize();
 
   $(window).resize(function () {
     setMapSize();
+    setBodySize();
   })
 
   // not sure why but on initialize does not update the graph so this makes sure url updates happen.
