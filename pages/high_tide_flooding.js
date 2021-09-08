@@ -87,9 +87,11 @@ data-value="Historical and Modeled">Historical & Modeled</label>
                       </div>
                     </div>
                     
-                    <div class="col-md-12 col-lg-6 col-xl-1 btn chart-info border border-1 mt-1 mb-1 disabled" style="text-align: center;" id="chart-info-row-btn" data-bs-toggle="modal" data-bs-target="#aboutModal">
-                        <i class="fas fa-info me-2"></i>
-                        <span>About</span>
+                    <div class="col-md-12 col-lg-6 col-xl-1 " style="text-align: center;">
+                        <div class="btn chart-info border border-1 mt-1 mb-1 w-100 disabled" id="chart-info-row-btn" data-bs-toggle="modal" data-bs-target="#aboutModal">
+                          <i class="fas fa-info me-2"></i>
+                          <span>About</span>
+                        </div>
                     </div>
                 </div>
                 
@@ -113,25 +115,6 @@ data-value="Historical and Modeled">Historical & Modeled</label>
               </div>
             </div>
         
-            <div id="station-info-row" class="d-flex-row flex-justify padding-bottom d-flex-left d-none" >
-              <span id="more-info-description" class="rounded-description-box d-none" >
-                <div class="more-caret d-flex-center">
-                  <span class="fas fa-angle-down"></span>
-                </div>
-        
-                <div class="padding-default">
-                  <h2>Reading the tidal flooding charts</h2>
-                </div>
-                <div class="chart-info-text btn-chart-text left-padding padding-bottom-half" >Click 'Historical' button to zoom in on or out from the observational period.
-                  Place your cursor over the curves on this graph for details. Gray bars from 1950 to 2016 show observed annual
-                  counts of high-tide flooding. Red and blue curves show the average number of high-tide flooding events projected
-                  for future years under two scenarios. Data from
-                  <a target="_blank" href="https://tidesandcurrents.noaa.gov/publications/techrpt86_PaP_of_HTFlooding.pdf">
-                    NOAA Technical Report NOS CO-OPS 086 - Patterns and Projections of High-Tide Flooding
-                  </a>.
-                </div>
-              </span>
-            </div>
             <div class="modal fade" id="aboutModal" tabindex="-1" aria-labelledby="aboutModalLabel" aria-hidden="true">
               <div class="modal-dialog modal-xl">
                 <div class="modal-content">
