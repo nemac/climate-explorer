@@ -18118,11 +18118,17 @@ input.input-inner:focus {
 
 /* line 31, scss/pages/_new_climate_maps.scss */
 #filter-dropdown-menu {
-  background-color: #0D3064;
-  color: #E9F1FC;
+  background-color: #E9F1FC;
+  color: #124086;
+  transition: background-color 200ms ease-in;
 }
 
-/* line 36, scss/pages/_new_climate_maps.scss */
+/* line 37, scss/pages/_new_climate_maps.scss */
+#filter-dropdown-menu:hover {
+  background-color: #A6C6F3;
+}
+
+/* line 42, scss/pages/_new_climate_maps.scss */
 #filter-tooltip {
   height: 2rem;
   width: 2.3rem;
@@ -18131,129 +18137,129 @@ input.input-inner:focus {
   border-radius: 50%;
 }
 
-/* line 44, scss/pages/_new_climate_maps.scss */
+/* line 50, scss/pages/_new_climate_maps.scss */
 .selected-item {
   background-color: #0D3064;
   color: #E9F1FC;
 }
 
-/* line 49, scss/pages/_new_climate_maps.scss */
+/* line 55, scss/pages/_new_climate_maps.scss */
 .selected-item:hover {
   background-color: #124086;
   color: #E9F1FC;
 }
 
-/* line 54, scss/pages/_new_climate_maps.scss */
+/* line 60, scss/pages/_new_climate_maps.scss */
 .default-selection {
   background-color: #E9F1FC;
   color: #0D3064;
 }
 
-/* line 59, scss/pages/_new_climate_maps.scss */
+/* line 65, scss/pages/_new_climate_maps.scss */
 .default-selection:hover {
   background-color: #A6C6F3;
 }
 
-/* line 65, scss/pages/_new_climate_maps.scss */
+/* line 71, scss/pages/_new_climate_maps.scss */
 .info-section span, .info-section i {
   color: #124086;
   font-weight: bold;
 }
 
-/* line 70, scss/pages/_new_climate_maps.scss */
+/* line 76, scss/pages/_new_climate_maps.scss */
 .info-section .border {
   border-color: #7D98C1;
 }
 
-/* line 76, scss/pages/_new_climate_maps.scss */
+/* line 82, scss/pages/_new_climate_maps.scss */
 .filter-dropdown-menu {
   max-height: 80vh;
   background-color: #E9F1FC;
 }
 
-/* line 80, scss/pages/_new_climate_maps.scss */
+/* line 86, scss/pages/_new_climate_maps.scss */
 .filter-dropdown-menu .variable-option-text {
   color: #124086;
   font-weight: normal;
 }
 
-/* line 85, scss/pages/_new_climate_maps.scss */
+/* line 91, scss/pages/_new_climate_maps.scss */
 .filter-dropdown-menu .dropdown-item {
   transition: background-color 200ms ease-in;
 }
 
-/* line 89, scss/pages/_new_climate_maps.scss */
+/* line 95, scss/pages/_new_climate_maps.scss */
 .filter-dropdown-menu .dropdown-item:hover {
   background-color: #A6C6F3;
   cursor: pointer;
 }
 
-/* line 95, scss/pages/_new_climate_maps.scss */
+/* line 101, scss/pages/_new_climate_maps.scss */
 .filter-dropdown-header {
   text-align: center;
 }
 
-/* line 99, scss/pages/_new_climate_maps.scss */
+/* line 105, scss/pages/_new_climate_maps.scss */
 .filter-dropdown-header i, .filter-dropdown-header span {
   color: #0D3064;
   font-weight: bold;
 }
 
-/* line 106, scss/pages/_new_climate_maps.scss */
+/* line 112, scss/pages/_new_climate_maps.scss */
 #collapse-info-section ul {
   background-color: #E9F1FC;
 }
 
-/* line 109, scss/pages/_new_climate_maps.scss */
+/* line 115, scss/pages/_new_climate_maps.scss */
 #collapse-info-section ul a:hover {
   background-color: #A6C6F3;
 }
 
-/* line 113, scss/pages/_new_climate_maps.scss */
+/* line 119, scss/pages/_new_climate_maps.scss */
 #collapse-info-section ul li:hover {
   background-color: #A6C6F3;
 }
 
-/* line 120, scss/pages/_new_climate_maps.scss */
+/* line 126, scss/pages/_new_climate_maps.scss */
 #map-element {
   position: relative;
   max-height: 60vh;
 }
 
-/* line 125, scss/pages/_new_climate_maps.scss */
+/* line 131, scss/pages/_new_climate_maps.scss */
 #local-climate-map-element {
   position: absolute;
 }
 
-/* line 129, scss/pages/_new_climate_maps.scss */
+/* line 135, scss/pages/_new_climate_maps.scss */
 .average-year-label {
   background-color: #E9F1FC;
   border: 2px solid #7D98C1;
 }
 
-/* line 133, scss/pages/_new_climate_maps.scss */
+/* line 139, scss/pages/_new_climate_maps.scss */
 .average-year-label span {
   color: #124086;
   font-weight: bold;
 }
 
-/* line 141, scss/pages/_new_climate_maps.scss */
+/* line 147, scss/pages/_new_climate_maps.scss */
 .left-scenario-dropdown-menu .dropdown-item, .right-scenario-dropdown-menu .dropdown-item {
   transition: background-color 200ms ease-in;
 }
 
-/* line 145, scss/pages/_new_climate_maps.scss */
+/* line 151, scss/pages/_new_climate_maps.scss */
 .left-scenario-dropdown-menu .dropdown-item:hover, .right-scenario-dropdown-menu .dropdown-item:hover {
   background-color: #A6C6F3;
   cursor: pointer;
 }
 
-/* line 151, scss/pages/_new_climate_maps.scss */
+/* line 157, scss/pages/_new_climate_maps.scss */
 #map-row {
   height: 100% !important;
 }
 
-/* line 155, scss/pages/_new_climate_maps.scss */
+/* line 161, scss/pages/_new_climate_maps.scss */
 .climate-maps-body {
   height: calc(100vh - 7rem);
 }
@@ -21106,11 +21112,10 @@ h2 {
 
 /* line 29, scss/pages/_about.scss */
 .page-text dd {
-  margin-left: 0.5rem;
   margin-bottom: 1rem;
 }
 
-/* line 34, scss/pages/_about.scss */
+/* line 33, scss/pages/_about.scss */
 .page-text h3 {
   margin-top: 1.2rem;
   margin-bottom: 1.2rem;
@@ -21118,7 +21123,7 @@ h2 {
   color: #124086;
 }
 
-/* line 41, scss/pages/_about.scss */
+/* line 40, scss/pages/_about.scss */
 .page-text h4 {
   margin-top: 1.2rem;
   margin-bottom: 1.2rem;
@@ -21126,7 +21131,7 @@ h2 {
   color: #124086;
 }
 
-/* line 48, scss/pages/_about.scss */
+/* line 47, scss/pages/_about.scss */
 .page-text li {
   list-style: disc;
   margin-left: 2rem;
@@ -22231,23 +22236,33 @@ https://raw.github.com/shagstrom/split-pane/master/LICENSE
   }
 }
 
-/* line 2279, scss/screen.scss */
+/* line 2277, scss/screen.scss */
+#download-dropdown-menu {
+  transition: background-color 200ms ease-in;
+}
+
+/* line 2280, scss/screen.scss */
+#download-dropdown-menu:hover {
+  background-color: #A6C6F3;
+}
+
+/* line 2287, scss/screen.scss */
 body:not(.is-ak-area) .opt-only-ak, body:not(.is-island-area) .opt-only-island {
   display: none !important;
 }
 
-/* line 2283, scss/screen.scss */
+/* line 2291, scss/screen.scss */
 body.is-ak-area .opt-not-ak, body.is-island-area .opt-not-island {
   display: none !important;
 }
 
-/* line 2287, scss/screen.scss */
+/* line 2295, scss/screen.scss */
 #tidal-chart {
   display: flex;
   flex-direction: column;
 }
 
-/* line 2292, scss/screen.scss */
+/* line 2300, scss/screen.scss */
 .chart {
   flex: 1;
   width: 100%;

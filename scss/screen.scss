@@ -2274,6 +2274,14 @@ input.input-inner-default:focus  {
 
 }
 
+#download-dropdown-menu {
+  transition: background-color 200ms ease-in;
+
+  &:hover {
+    background-color: $navbar-hover-background;
+  }
+}
+
 // Hide based on area type as set by body class
 
 body:not(.is-ak-area) .opt-only-ak, body:not(.is-island-area) .opt-only-island {

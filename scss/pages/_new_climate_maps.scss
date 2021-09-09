@@ -29,8 +29,14 @@
 }
 
 #filter-dropdown-menu {
-  background-color: $navbar-background;
-  color: $search-input-background;
+  background-color: $search-input-background;
+  color: $navbar-button-background;
+
+  transition: background-color 200ms ease-in;
+
+  &:hover {
+    background-color: $navbar-hover-background;
+  }
 }
 
 #filter-tooltip {
