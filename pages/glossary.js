@@ -5,7 +5,7 @@ import nav_footer from '../template/nav_footer';
 
 export default (config)=> `
 <!doctype html>
-<html lang='en' class="width-100 height-100">
+<html lang='en'>
 <head>
   ${head(config)}
   <meta property="fb:app_id" content="187816851587993" />
@@ -16,20 +16,21 @@ export default (config)=> `
   <meta property="og:image" content="/img/og.jpg" />
 </head>
 
-<body class="width-100 height-100">
+<body>
 
   ${secondary_header(config)}
 
-  <div id="about-viewport" class="padding-horizontal d-flex d-flex-column">
+  <div class="padding-horizontal d-flex d-flex-column glossary-page-body">
 
-    <div id="about-text-row" class="padding-vertical width-100" >
+    <div>
 
-      <div class="splash-text">
+      <div class="main-title mt-3">
         <h2>Glossary</h2>
+        <hr>        
       </div>
 
-      <div id="standard-body" class="page-text">
-
+      <div class="page-text mb-2">
+    
         <dl>
 
           <dt>Actual</dt>
@@ -183,10 +184,8 @@ export default (config)=> `
 
       </div>
 
-
     </div>
-
-
+    
   </div>
 
   ${nav_footer(config)}
@@ -197,6 +196,18 @@ export default (config)=> `
   <script src="https://unpkg.com/terraformer-arcgis-parser@1.0.5/terraformer-arcgis-parser.js"
   integrity="sha384-duFUjKTSNoxEspdJNwr83CUgRxclf0ueKJB9DU/Vbit6bfWgzvZsHW6H1JLBBXhp" crossorigin="anonymous"></script>
   <script type="${config.env === 'dev'? 'module':  'text/javascript'}" src="/js/index.js"></script>
+  
+    <script>
+      let nav_element = document.querySelector(".navbar-element");
+      let footer_element = document.querySelector(".footer-element");
+  
+      let nav_height = nav_element.getBoundingClientRect().height / 16;
+      let footer_height = footer_element.getBoundingClientRect().height / 16;
+  
+      let glossary_page_body = document.querySelector(".glossary-page-body");
+      glossary_page_body.style.paddingTop = nav_height + "rem";
+      glossary_page_body.style.paddingBottom = footer_height + "rem";
+  </script>
 </body>
 </html>
 `

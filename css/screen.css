@@ -21097,6 +21097,20 @@ h2 {
 }
 
 /* line 22, scss/pages/_about.scss */
+.page-text dt {
+  margin-top: 1rem;
+  margin-bottom: 1rem;
+  color: #124086;
+  font-weight: bold;
+}
+
+/* line 29, scss/pages/_about.scss */
+.page-text dd {
+  margin-left: 0.5rem;
+  margin-bottom: 1rem;
+}
+
+/* line 34, scss/pages/_about.scss */
 .page-text h3 {
   margin-top: 1.2rem;
   margin-bottom: 1.2rem;
@@ -21104,7 +21118,7 @@ h2 {
   color: #124086;
 }
 
-/* line 29, scss/pages/_about.scss */
+/* line 41, scss/pages/_about.scss */
 .page-text h4 {
   margin-top: 1.2rem;
   margin-bottom: 1.2rem;
@@ -21112,7 +21126,7 @@ h2 {
   color: #124086;
 }
 
-/* line 36, scss/pages/_about.scss */
+/* line 48, scss/pages/_about.scss */
 .page-text li {
   list-style: disc;
   margin-left: 2rem;

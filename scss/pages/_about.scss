@@ -19,6 +19,17 @@ h2 {
     margin-bottom: 1rem;
   }
 
+  dt {
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+    color: $navbar-button-background;
+    font-weight: bold;
+  }
+
+  dd {
+    margin-bottom: 1rem;
+  }
+
   h3 {
     margin-top: 1.2rem;
     margin-bottom: 1.2rem;
