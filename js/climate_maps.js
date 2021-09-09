@@ -574,7 +574,7 @@ $(function () {
         const val = 'annual';
         window.scenarioComparisonMap.update({season: val});
 
-        const target = $('#annual-selection');
+        const target = $('#annual-selection-label');
         // toggle button visual state
         toggleButton(target);
 
@@ -585,17 +585,13 @@ $(function () {
         updateSeason(val);
 
         //add disabled to 'Annual, Spring, etc' buttons
-        $('#time-wrapper input').addClass('disabled');
         $('#time-wrapper label').addClass('disabled');
 
         $('#annual-selection-label').addClass('selected-item');
-        $('#annual-selection').removeClass('disabled');
         $('#annual-selection-label').removeClass('disabled');
         $('#annual-selection-label').removeClass('default-selection');
 
       } else {
-
-        $('#time-wrapper input').removeClass('disabled');
         $('#time-wrapper label').removeClass('disabled');
 
       }
