@@ -1,7 +1,7 @@
-import head from '../template/head';
-import main_header from '../template/main_header';
-import share from '../template/share';
-import footer from '../template/footer';
+import head from '../template/head.js';
+import footer from '../template/footer.js';
+import nav_footer from '../template/nav_footer.js';
+import secondary_header from "../template/secondary_header.js";
 
 export default (config) => `
 <!doctype html>
@@ -10,31 +10,24 @@ export default (config) => `
   ${head(config)}
 </head>
 
-<body id="page-about" class="page-type-text">
-<div class="cd-cover-layer"></div>
-${main_header(config)}
+<body>
 
-<div id="viewport">
-  <div id="main-content-wrap">
+${secondary_header(config)}
 
-    ${share(config)}
+<div class="container-fluid d-flex justify-content-center align-items-center" style="height: 100vh;">
 
-    <section id="standard-splash" class="page-splash">
-      <div class="splash-text">
-        <h1>404</h1>
-      </div>
-    </section>
-
-    <section id="standard-body" class="page-text">
-      <hr>
-      <h2>File Not Found</h2>
-    </section>
+    <div class="d-flex-column justify-content-center align-items-center p-5 rounded-3" style="background-color: #D3E3F9;">
+        <h2>File not found.</h2>
+        <h3>404</h3>
+    </div>
 
 
-  </div>
+
 </div>
 
+${nav_footer(config)}
 ${footer(config)}
+
 <script type="${config.env === 'dev'? 'module':  'text/javascript'}" src="/js/index.js"></script>
 </body>
 </html>

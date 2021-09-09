@@ -21072,147 +21072,50 @@ input.input-inner:focus {
   cursor: default;
 }
 
-/* line 2, scss/pages/_about.scss */
-#about-viewport {
-  background-color: #ffffff;
+/* line 3, scss/pages/_about.scss */
+h2 {
   color: #124086;
-  height: calc(100% - 48px - 6px - 100px);
-  min-height: calc(100% - 48px - 6px - 100px);
-  overflow: auto;
-  flex: 1 1 auto;
-  margin-bottom: 6px;
-}
-
-/* line 11, scss/pages/_about.scss */
-#about-viewport:after {
-  content: '';
-  width: 100%;
-  height: 5px;
-  position: absolute;
-  top: calc(100% - 105px);
-  left: -2px;
-  -webkit-box-shadow: inset 0 -2px 2px rgba(0, 0, 0, 0.3);
-  -moz-box-shadow: inset 0 -2px 2px rgba(0, 0, 0, 0.3);
-  box-shadow: inset 0 -2px 2px rgba(0, 0, 0, 0.3);
-}
-
-/* line 21, scss/pages/_about.scss */
-#about-viewport #about-text-row {
-  width: 90% !important;
-  align-self: center !important;
-}
-
-@media screen and (max-width: 768px) {
-  /* line 21, scss/pages/_about.scss */
-  #about-viewport #about-text-row {
-    width: 90% !important;
-  }
-}
-
-/* line 30, scss/pages/_about.scss */
-#about-viewport a {
-  color: #1D6ADD;
-  text-decoration: underline;
-}
-
-/* line 35, scss/pages/_about.scss */
-#about-viewport p {
-  line-height: 1.75em;
-  margin: 0 0 20px 0;
-}
-
-/* line 40, scss/pages/_about.scss */
-#about-viewport strong {
-  font-weight: 600;
-}
-
-/* line 44, scss/pages/_about.scss */
-#about-viewport h2 {
-  margin: 30px 0;
   font-size: 2rem;
-  color: #0D3064;
+  font-weight: bold;
 }
 
-/* line 50, scss/pages/_about.scss */
-#about-viewport h3 {
-  margin: 20px 0;
-  font-size: 1.75rem;
-  color: #124086;
+/* line 9, scss/pages/_about.scss */
+.page-text {
+  font-size: 1.2rem;
 }
 
-/* line 56, scss/pages/_about.scss */
-#about-viewport h4 {
-  margin: 0 0 15px 0;
-  font-size: 1.25rem;
-  line-height: 1.375em;
+/* line 12, scss/pages/_about.scss */
+.page-text hr {
+  margin-bottom: 2rem;
+  margin-top: 2rem;
 }
 
-/* line 63, scss/pages/_about.scss */
-#about-viewport #standard-body h2 {
-  margin: 30px 0;
-  font-size: 2rem;
-  color: #154b9c;
+/* line 17, scss/pages/_about.scss */
+.page-text p {
+  margin-top: 1rem;
+  margin-bottom: 1rem;
 }
 
-/* line 69, scss/pages/_about.scss */
-#about-viewport #standard-body h3 {
-  color: #1855b3;
+/* line 22, scss/pages/_about.scss */
+.page-text h3 {
+  margin-top: 1.2rem;
+  margin-bottom: 1.2rem;
+  font-size: 1.5rem;
 }
 
-/* line 73, scss/pages/_about.scss */
-#about-viewport #standard-body h4 {
-  color: #1855b3;
+/* line 28, scss/pages/_about.scss */
+.page-text h3 {
+  margin-top: 1.2rem;
+  margin-bottom: 1.2rem;
+  font-size: 1.5rem;
 }
 
-/* line 80, scss/pages/_about.scss */
-#about-viewport ul, #about-viewport ol {
-  margin: 0 20px 30px 20px;
-  padding: 0 0 0 30px;
-  font: 300 1rem/1.5em Roboto, Helvetica, "Helvetica Neue", Arial, sans-serif;
-}
-
-/* line 85, scss/pages/_about.scss */
-#about-viewport ul li, #about-viewport ol li {
-  margin: 0 0 10px 0;
-}
-
-/* line 90, scss/pages/_about.scss */
-#about-viewport ol {
-  list-style-type: decimal;
-}
-
-/* line 94, scss/pages/_about.scss */
-#about-viewport li {
-  list-style-type: disc;
-}
-
-/* line 98, scss/pages/_about.scss */
-#about-viewport dl {
-  margin: 0 0 30px 0;
-  font: 300 1rem/1.5em Roboto, Helvetica, "Helvetica Neue", Arial, sans-serif;
-}
-
-/* line 102, scss/pages/_about.scss */
-#about-viewport dl dt {
-  margin: 0 0 15px 0;
-  padding-bottom: 10px;
-  border-bottom: 1px solid rgba(18, 64, 134, 0.05);
-  color: #0D3064;
-  font-weight: 400;
-}
-
-/* line 110, scss/pages/_about.scss */
-#about-viewport dl dd {
-  margin: 0 0 25px 0;
-}
-
-/* line 115, scss/pages/_about.scss */
-#about-viewport hr {
-  display: block;
-  height: 3px;
-  margin: 60px 0;
-  border: none;
-  background: rgba(18, 64, 134, 0.05);
+/* line 34, scss/pages/_about.scss */
+.page-text li {
+  list-style: disc;
+  margin-left: 2rem;
+  margin-top: 0.3rem;
+  margin-bottom: 0.3rem;
 }
 
 /* line 1, scss/plugins/_shepherd-theme-arrows.scss */

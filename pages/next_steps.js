@@ -18,39 +18,30 @@ export default (config)=>`
   <meta property="og:image" content="/img/og.jpg">
 </head>
 
-<body class="width-100 height-100">
+<body>
 
 ${secondary_header(config)}
 
 <div id="next-steps-viewport" class="container-fluid d-flex-column">
 
-  <div id="search-row"
-       class="padding-horizontal d-flex-row flex-justify padding-top padding-bottom-half d-flex-justify">
-    <div class="rounded-box-secondary input-outer padding-horizontal bottom-padding default-btn-height width-100">
-      <input id="cards-search-input" type="text"
-             class="location-mapper input-inner-default border-none default-btn-height width-90" autocomplete="off"
-             placeholder="Enter county or city name">
-      <span class="icon icon-search search-default float-right padding-default"></span>
-      <div id="clear-location-wrapper" class="">
-        <span id="clear-location" data-page="next_steps" class="fas fa-times-circle"></span>
+  <div class="d-flex flex-row mt-3"> 
+      <div class="input-group mb-3 search-input-group rounded-3 border border-1 w-75 me-2">
+        <button id="clear-location" class="btn search-icons" type="button"><span class="fas fa-times-circle"></span></button>
+        <input id="cards-search-input" class="form-control location-mapper" type="text" placeholder="Enter county or city name" aria-label="Enter county or city name">
       </div>
-    </div>
   </div>
 
-  <div id="info-row" class="padding-vertical padding-horizontal width-100">
-    <div class="rounded-filters-box padding-default width-100">
-
-      <div class="d-flex-row">
-
-        <div id="info-text-wrapper" class="width-100">
-          <i class="fas fa-map-signs icon-info-box"></i>
-          <span id="" class="text-info-box">Explore planning tools available from our partners</span>
+  <div class="info-section mb-2">
+      <div class="border border-1 rounded-3"> 
+        
+        <div class="m-3 mb-3 btn p-0" type="button">
+            <i class="fas fa-map-signs me-2"></i>
+            <span id="default-chart-map-variable" style="font-weight: normal !important;">Explore planning tools available from our partners</span>
         </div>
       </div>
-    </div>
   </div>
 
-  <div id="card-row" class="padding-horizontal padding-top-half padding-bottom-half d-flex-row flex-justify">
+  <div id="card-row" class="d-flex-row flex-justify">
 
     <div tabindex="3" id="data-card" class="next-steps-temperate card-xl d-flex d-flex-column">
       <div id="card-text" class="card-text d-flex-row width-100">
