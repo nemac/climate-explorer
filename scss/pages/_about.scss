@@ -1,7 +1,7 @@
 @import "../color_utils";
 
 h2 {
-  color: $navbar-button-background;
+  color: $navbar-background;
   font-size: 2rem;
   font-weight: bold;
 }
@@ -23,12 +23,14 @@ h2 {
     margin-top: 1.2rem;
     margin-bottom: 1.2rem;
     font-size: 1.5rem;
+    color: $navbar-button-background;
   }
 
-  h3 {
+  h4 {
     margin-top: 1.2rem;
     margin-bottom: 1.2rem;
-    font-size: 1.5rem;
+    font-size: 1.2rem;
+    color: $navbar-button-background;
   }
 
   li {

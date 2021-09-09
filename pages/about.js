@@ -20,15 +20,16 @@ export default (config) => `
 
   ${secondary_header(config)}
 
-  <div class="container-fluid d-flex d-flex-column testing-body">
+  <div class="container-fluid d-flex d-flex-column about-page-body">
 
     <div>
 
-      <div class="main-title mt-3">
+      <div class="main-title mt-3 mb-3">
         <h2>ABOUT The U.S. Climate Resilience Toolkit CLIMATE EXPLORER (version 3.1)</h2>
       </div>
 
       <div class="page-text">
+
         <p>
           The Climate Explorer gives users a way to check how climate conditions in the United States are projected to change over the coming decades. This information—derived from global climate models—is available for counties and county-equivalents for all 50 states and U.S. territories in the United States.
         </p>
@@ -218,10 +219,9 @@ export default (config) => `
       let nav_height = nav_element.getBoundingClientRect().height / 16;
       let footer_height = footer_element.getBoundingClientRect().height / 16;
   
-      let high_tide_body = document.querySelector(".testing-body");
-      high_tide_body.style.paddingTop = nav_height + "rem";
-      high_tide_body.style.paddingBottom = footer_height + "rem";
-    
+      let about_page_body = document.querySelector(".about-page-body");
+      about_page_body.style.paddingTop = nav_height + "rem";
+      about_page_body.style.paddingBottom = footer_height + "rem";
   </script>
   
 </body>

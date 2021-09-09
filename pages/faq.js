@@ -5,7 +5,7 @@ import nav_footer from '../template/nav_footer';
 
 export default (config) => `
 <!doctype html>
-<html lang='en' class="width-100 height-100">
+<html lang='en'>
 <head>
   ${head(config)}
   <meta property="fb:app_id" content="187816851587993" />
@@ -17,29 +17,32 @@ export default (config) => `
 </head>
 
 
-<body class="width-100 height-100">
+<body>
 
   ${secondary_header(config)}
 
-  <div id="about-viewport" class="padding-horizontal d-flex d-flex-column">
-    <div id="about-text-row" class="padding-vertical width-100" >
+  <div class="container-fluid d-flex d-flex-column faq-page-body">
+    
+    <div>
 
-      <div class="splash-text">
+      <div class="main-title mt-3">
         <h2>FREQUENTLY ASKED QUESTIONS</h2>
       </div>
 
-      <div id="standard-body" class="page-text ui-accordion ui-widget ui-helper-reset">
+      <div class="page-text">
+
+        <hr>
 
         <h2>USING THE CLIMATE EXPLORER TOOL</h2>
-        <h4>How can I submit questions or comments, or report a bug or broken link?</h4>
-        <div class="accordion-text">
+        <h3>How can I submit questions or comments, or report a bug or broken link?</h3>
+        <div>
           <p>
             We'd love to hear from you. Please send questions, comments, or suggestions to <a href="mailto:noaa.toolkit@noaa.gov" target="_blank">noaa.toolkit@noaa.gov</a>. Expect a reply within a few days to one week.
           </p>
         </div>
         
         <h4>Is there a tutorial or educational activity to help new users read and understand the tool’s maps and graphs?</h4>
-        <div class="accordion-text">
+        <div>
           <p>
           Yes. See <a href="https://arcg.is/15mvy80" target="_blank">Using Climate Explorer to get a feel for Future Conditions</a> 
           </p>
@@ -48,20 +51,22 @@ export default (config) => `
         <h4>
           Do I have permission to use images of the graphs, maps, and text in the Climate Explorer?
         </h4>
-        <div class="accordion-text">
+        <div>
           <p>
           Yes. The graphs, maps, and text available in the Climate Explorer are public information and may be downloaded, reproduced, and distributed freely. Please credit the U.S. Climate Resilience Toolkit Climate Explorer as the source.
           </p>
         </div>
         
         <h4>What is the recommended citation for information in the Climate Explorer?</h4>
-        <div class="accordion-text">
+        <div>
           <p>U.S. Federal Government, 2021: U.S. Climate Resilience Toolkit Climate Explorer. [Online] https://crt-climate-explorer.nemac.org/ Accessed {DATE}.</p>
         </div>
 
+        <hr>
+
         <h2>DATA IN THE CLIMATE EXPLORER</h2>
         <h4>What are the conditions represented by the blue, red, and gray bands in the tool's charts?</h4>
-        <div class="accordion-text">
+        <div>
           <p>
             The blue band shows the range of projections for a possible future in which global emissions of heat-trapping gases peak around 2040 and then become stable. Labeled as “Lower Emissions” in Climate Explorer, this scenario is known as Representative Concentration Pathway 4.5, or RCP 4.5. This scenario represents a path in which the atmosphere's radiative forcing in 2100 is 4.5 Watts per square meter higher than pre-industrial values, without ever exceeding that value.
           </p>
@@ -74,7 +79,7 @@ export default (config) => `
         </div>
         
         <h4>Where did the climate projection data in Climate Explorer come from?</h4>
-        <div class="accordion-text">
+        <div>
           <p>
             Modeled data for the contiguous United States are based on statistical downscaling of temperature and precipitation projections from the Coupled Model Intercomparison Project Phase 5 (<a href="https://esgf-node.llnl.gov/projects/cmip5/" target="_blank">CMIP5</a>) using Localized Constructed Analogs (<a href="http://loca.ucsd.edu/" target="_blank">LOCA</a>). LOCA data for historical and future periods are freely available for the contiguous United States, Southern Canada, and Northern Mexico via <a href="https://catalog.data.gov/dataset/projected-future-loca-statistical-downscaling-localized-constructed-analogs-statistically-downs" target="_blank">Data.gov</a>.
           </p>
@@ -87,21 +92,21 @@ export default (config) => `
         </div>
         
         <h4>Where did the observation data for contiguous U.S. locations come from?</h4>
-        <div class="accordion-text">
+        <div>
           <p>
             A gridded observational dataset aggregated by <a href="https://www.nature.com/articles/sdata201542">Livneh et al. (2013, 2015)</a> was used to calculate observed averages counties in the contiguous United States. Annual observations—shown as dark gray bars in Climate Explorer’s annual graphs—extend above or below the 30-year average measured from 1961-1990. Livneh data are freely available via <a href="https://catalog.data.gov/dataset/a-spatially-comprehensive-hydrologic-model-based-data-set-for-mexico-the-u-s-and-sout-1950-2013" target="_blank">Data.gov</a>.
           </p>
         </div>
         
         <h4>Why do the historical observations end in 2013? Why don’t you show observations up to the previous year?</h4>
-        <div class="accordion-text">
+        <div>
           <p>
             The observational dataset in the Climate Explorer was published in 2013 and updated in 2015. More recent data has been collected (for example, see the <a href="https://www.ncdc.noaa.gov/ghcn-daily-description" target="_blank">Global Historical Climatology Network - Daily</a> dataset) yet the recent data have not been gridded and processed in accordance with the Livneh protocols. Slight differences in protocols for developing and updating datasets make one-to-one comparisons between Livneh and other observational datasets difficult, though disparate observational datasets show similar trends.
           </p>
         </div>
 
         <h4>Why did the Climate Explorer team select the LOCA dataset for downscaled projections?</h4>
-        <div class="accordion-text">
+        <div>
           <p>
             Communities that undertake resilience-building tasks are often most concerned with the potential impacts of extreme events, yet until recently, downscaled climate projections were not designed to represent these extremes well. We chose the Localized Constructed Analogs (LOCA) dataset based on its improved ability to represent extremes at high spatial resolution, relative to its predecessors (<a href="https://journals.ametsoc.org/view/journals/hydr/15/6/jhm-d-14-0082_1.xml" target="_blank">Pierce et al., 2014</a>). LOCA was developed for the California Climate Change Assessment, the Southwest Climate Science Center and other U.S. planning efforts, including the Fourth National Climate Assessment of the U.S. Global Change Research Program.
           </p>
@@ -111,7 +116,7 @@ export default (config) => `
         </div>
         
         <h4>How many models are represented by the range of projections in Climate Explorer?</h4>
-        <div class="accordion-text">
+        <div>
           <p>
             For counties in the contiguous United States, 32 of the global climate models that participated in the Coupled Model Intercomparison Project Phase 5 (CMIP5) were used to produce the range of projections. Models represented in LOCA data are: ACCESS1-0, ACCESS1-3, CCSM4, CESM1-BGC, CESM1-CAM5, CMCC-CM, CMCC-CMS, CNRM-CM5, CSIRO-Mk3-6-0, CanESM2,, EC-EARTH, FGOALS-g2, GFDL-CM3, GFDL-ESM2G, GFDL-ESM2M, GISS-E2-H, GISS-E2-R, HadGEM2-AO, HadGEM2-CC, HadGEM2-ES, IPSL-CM5A-LR, IPSL-CM5A-MR, MIROC-ESM, MIROC-ESM-CHEM, MIROC5, MPI-ESM-LR, MPI-ESM-MR, MRI-CGCM3, NorESM1-M, Bcc-csm1-1, Bcc-csm1-1-m, and inmcm4.
           </p>
@@ -121,7 +126,7 @@ export default (config) => `
         </div>
         
         <h4>Where do the sea level projections come from?</h4>
-        <div class="accordion-text">
+        <div>
           <p>
             William Sweet and other researchers at NOAA's National Ocean Service used the latest peer-reviewed estimates of global sea level rise and local reports of flooding impacts to produce these estimates. Combined with information on local land subsidence or uplift, oceanographers estimated the frequency of high-tide flooding at each location during future decades out to 2100. The graphs show observed annual high-tide flood days through 2016 and projections for the number of days per year when inundation will exceed a locally defined level through 2100.
           </p>
@@ -134,7 +139,7 @@ export default (config) => `
         </div>
         
         <h4 id="supported-areas">For which areas outside of the contiguous U.S. does the Climate Explorer have projections?</h4>
-        <div class="accordion-text">
+        <div>
           <p>
             The LOCA dataset offers downscaled CMIP5 projections for the contiguous U.S. plus portions of Canada and Mexico, but not for Alaska, Hawai'i, or other U.S. territories. In collaboration with climate scientists from the region, we added projections for Alaska from the <a href="https://www.snap.uaf.edu/">Scenarios Network for Alaska + Arctic Planning (SNAP)</a>. In 2021, we added climate projections for Hawai'i and United States territories in the Pacific Ocean and Caribbean Sea. Data for Hawai'i and U.S. territories come from CMIP5 global climate model simulations. Raw values from the models have not been downscaled or bias-corrected. Values provided for individual islands and island groups are averages of the three model grid points closest to the geographic center of each territory. Modeled history and projections are available for the following island locations:
           </p>
@@ -160,14 +165,14 @@ export default (config) => `
         </div>
         
         <h4>How did you decide which stations and years to show in the Daily vs. Climate and Thresholds graphs in the Weather & Tidal Stations section?</h4>
-        <div class="accordion-text">
+        <div>
           <p>
             We started with a pool of all stations in the Global Historical Climatology Network - Daily dataset that are located within the contiguous United States. In a first pass, we eliminated stations that did not record data during the past 30 years. In our second pass, we documented which stations were missing more than 5 temperature records in a single month or more than 1 precipitation record in a single month, and excluded these years from the thresholding function. We deleted all stations where records did not meet these criteria for at least 10% of the years in its period of record.
           </p>
         </div>
         
         <h4>What is represented in the High-tide flooding graphs?</h4>
-        <div class="accordion-text">
+        <div>
           <p>
             High-tide flooding graphs show observed and projected changes in the frequency of high-tide flooding—events when sea water laps onto land to inundate some portion of normally dry land. These floods have also been called nuisance, sunny day, or recurrent flooding. At each station, local emergency managers and NOAA Weather Forecasting Offices have identified flooding thresholds (expressed as heights above local mean high higher water) related to impacts such as flooding of low-lying roads or infiltration into storm-water systems. Oceanographers compiled these heights for many stations, and then performed statistical analyses on the dataset to establish threshold flood heights for each station.
           </p>
@@ -179,9 +184,11 @@ export default (config) => `
           </p>
         </div>
         
+        <hr>
+        
         <h2>ABOUT CLIMATE PROJECTIONS</h2>
         <h4>What important considerations should users keep in mind when exploring climate projections?</h4>
-        <div class="accordion-text">
+        <div>
           <p>
             Climate projections can provide useful information for making decisions about the future, but they should not be the sole basis for decision-making. It's important to understand the limitations of climate models when interpreting or using their results:
           <ul style="list-style: none">
@@ -198,14 +205,14 @@ export default (config) => `
         </div>
         
         <h4>What are Representative Concentration Pathways (RCPs)?</h4>
-        <div class="accordion-text">
+        <div>
           <p>Representative Concentration Pathways (RCPs) represent different storylines about how the abundance of heat-trapping gases in Earth's atmosphere will change through the year 2100. The Intergovernmental Panel on Climate Change (IPCC) defined four pathways (RCP 2.6, RCP 4.5, RCP 6, and RCP 8.5) to serve as a consistent set of conditions for which global climate models would calculate projections. Though each of the RCPs defines a radiative forcing level for the year 2100, Earth's average surface temperature will continue to increase beyond the end of this century under all scenarios.
           </p>
           <p>To learn more, view <a href="https://link.springer.com/article/10.1007/s10584-013-0906-1" target="_blank">a summary table</a> describing the four RCPs</p>
         </div>
         
         <h4>Which RCP should I use? Which is most likely to occur?</h4>
-        <div class="accordion-text">
+        <div>
           <p>
             According to the Intergovernmental Panel on Climate Change, the Representative Concentration Pathways (RCPs) should not be considered policy-prescriptive because they were developed to support scientific research on various possible climate change futures, without making any judgment as to their desirability or probability. These scenarios reflect choices individuals and society will make over coming decades, so there is uncertainty regarding the actual year-to-year change in greenhouse gases. RCPs are not considered to be forecasts, nor do they represent absolute bounds on the realm of possibility. While they all represent plausible scenarios for the future, none of the RCPs are intended to serve as predictions, best guesses, most likely, or more plausible pathways than the others.
           </p>
@@ -218,7 +225,7 @@ export default (config) => `
         </div>
         
         <h4>What errors, uncertainties, and assumptions are inherent in climate projection data?</h4>
-        <div class="accordion-text">
+        <div>
           <p>
             While there is substantial and increasing skill at projecting future climate conditions, no climate model will ever simulate the climate system perfectly. Noteworthy sources of uncertainty exist in all climate projections, including those offered in the Climate Explorer.
           </p>
@@ -243,9 +250,11 @@ Beyond spatial interpolation and natural interannual variability, other elements
           </p>
         </div>
         
+        <hr>
+        
         <h2>CONSIDERATIONS FOR USING CLIMATE EXPLORER</h2>
         <h4>Isn’t there another tool called Climate Explorer?</h4>
-        <div class="accordion-text">
+        <div>
           <p>
             Yes, the KNMI Climate Explorer is a scientific tool developed and maintained by Koninklijk Nederlands Meteorologisch Instituut (also known as the Royal Netherlands Meteorological Institute).
           </p>
@@ -254,7 +263,7 @@ Beyond spatial interpolation and natural interannual variability, other elements
         </div>
         
         <h4>Why can I only get county-scale climate projections in Climate Explorer? Where can I get climate projections at higher spatial and temporal resolution?</h4>
-        <div class="accordion-text">
+        <div>
           <p>
             After deliberating on the appropriate scale at which to offer climate projections in Climate Explorer, we chose to strike a balance between providing information at a scale that is relevant to local adaptation decision making and that recognizes important constraints, such as of the coarse spatial resolution of gridded historical observations and uncertainties inherent in projecting future climate conditions. Our team of climate model experts agreed that averaging the LOCA data for every county in the contiguous United States provided the best balance between these considerations.
           </p>
@@ -266,28 +275,30 @@ Beyond spatial interpolation and natural interannual variability, other elements
         </div>
         
         <h4>Why do maps for precipitation projections show such large variations for % difference?</h4>
-        <div class="accordion-text">
+        <div>
           <p>
             In areas where annual precipitation is relatively low, any change in annual precipitation represents a fairly large percentage difference. For instance, if an area that currently receives 8 inches of rain per year is projected to receive 12 inches per year at some point in the future, the change is 50%. Conversely, if precipitation over a relatively wet area changes, the percentage change is smaller. For example, if an area that currently receives 50 inches of rain per year is projected to reach 55 inches per year in the future, the change is 10%.
           </p>
         </div>
         
         <h4>In the "Days of Precipitation Above 1 Inch" charts, why are historical observed values so different from historical modeled values for some counties and not for others?</h4>
-        <div class="accordion-text">
+        <div>
           <p>
             For counties that have diverse land elevations and/or are situated near the ocean or large inland water body, statistically downscaled climate projections tend to under-predict the number of days with high precipitation values. Similarly, statistically downscaled climate projections tend to over-predict the number of days with drizzle. Comparing observed values with historical model values can reveal counties where this bias is apparent. Climate modelers are aware of the problem and are actively working to remove such biases from their models.
           </p>
         </div>
         
+        <hr>
+        
         <h2>CONTACTING THE CLIMATE EXPLORER TEAM</h2>
         <h4>How may I contribute maps and data to the Climate Explorer, or assist in its development?</h4>
-        <div class="accordion-text">
+        <div>
             <p>If you have maps or data that you would like to offer as candidates for inclusion in the Climate Explorer, let us know by emailing <a href="mailto:noaa.toolkit@noaa.gov" target="_blank">noaa.toolkit@noaa.gov</a>. If you would like to add to or evolve the tool's functionality, please note that the code repository for Climate Explorer is freely available on GitHub. Please note: We'd be happy to hear of your efforts to reuse this code, but the Climate Explorer team can not offer technical support for such efforts.
             </p>
         </div>
         
         <h4>Contact</h4>
-        <div class="accordion-text">
+        <div>
             <p>If you have questions or comments on the Climate Explorer, please direct them to <a href="mailto:noaa.toolkit@noaa.gov" target="_blank">noaa.toolkit@noaa.gov</a>.
             </p>
         </div>
@@ -305,6 +316,19 @@ Beyond spatial interpolation and natural interannual variability, other elements
   <script src="https://unpkg.com/terraformer-arcgis-parser@1.0.5/terraformer-arcgis-parser.js"
   integrity="sha384-duFUjKTSNoxEspdJNwr83CUgRxclf0ueKJB9DU/Vbit6bfWgzvZsHW6H1JLBBXhp" crossorigin="anonymous"></script>
   <script type="${config.env === 'dev'? 'module':  'text/javascript'}" src="/js/index.js"></script>
+  
+  <script>
+      let nav_element = document.querySelector(".navbar-element");
+      let footer_element = document.querySelector(".footer-element");
+  
+      let nav_height = nav_element.getBoundingClientRect().height / 16;
+      let footer_height = footer_element.getBoundingClientRect().height / 16;
+  
+      let faq_page_body = document.querySelector(".faq-page-body");
+      faq_page_body.style.paddingTop = nav_height + "rem";
+      faq_page_body.style.paddingBottom = footer_height + "rem";
+  </script>
+  
 </body>
 </html>
 `

@@ -21074,7 +21074,7 @@ input.input-inner:focus {
 
 /* line 3, scss/pages/_about.scss */
 h2 {
-  color: #124086;
+  color: #0D3064;
   font-size: 2rem;
   font-weight: bold;
 }
@@ -21101,16 +21101,18 @@ h2 {
   margin-top: 1.2rem;
   margin-bottom: 1.2rem;
   font-size: 1.5rem;
+  color: #124086;
 }
 
-/* line 28, scss/pages/_about.scss */
-.page-text h3 {
+/* line 29, scss/pages/_about.scss */
+.page-text h4 {
   margin-top: 1.2rem;
   margin-bottom: 1.2rem;
-  font-size: 1.5rem;
+  font-size: 1.2rem;
+  color: #124086;
 }
 
-/* line 34, scss/pages/_about.scss */
+/* line 36, scss/pages/_about.scss */
 .page-text li {
   list-style: disc;
   margin-left: 2rem;
