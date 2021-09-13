@@ -314,7 +314,7 @@
 
   #left-header {
     width: calc(40% + 10px);
-    @include transition(0.5s);
+    //@include transition(0.5s);
   }
 
   body.left-header-closed {
@@ -429,7 +429,7 @@
     width: 70%;
     margin: 6%;
     margin-bottom: 18%;
-    @include transform(none);
+    //@include transform(none);
   }
 
   // PAGE

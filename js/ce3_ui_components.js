@@ -598,7 +598,6 @@ function updateValidVariable() {
           return
         }
 
-        // $('.select.variable-select div.select-styled').text(selected_list_item.text().trim()).removeClass('active');
         $('#default-chart-map-variable').text(selected_list_item.text().trim())
       }
     }

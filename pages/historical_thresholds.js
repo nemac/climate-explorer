@@ -85,23 +85,23 @@ export default (config) => `
                         </div>
                       </div>
                        
-                     <div id="threshold_value_form_field" class="form-field d-flex width-15 info-section">
+                      <div class="col-md-12 col-lg-6 col-xl-2 mt-lg-4 mt-xl-0 form-field d-flex info-section" id="threshold_value_form_field">
       
-                    <div tabindex="5012" class="btn border border-1 threshold-down">-</div>
-                      <div class="form-field-control height-100">
+                        <div tabindex="5012" class="btn border border-1 threshold-down">-</div>
+                            <div class="form-field-control height-100">
                         <input tabindex="5013" id="threshold-value" type="number" class="form-field-input border-0" placeholder=" " min="0" max="200" value="1" autofocus="autofocus" step="0.1"/>
                         <label for="threshold-value" class="form-field-label height-100">Threshold in<span id="threshold-unit"> inches</span></label>
                         <div class="form-field-bar height-100"></div>
                       </div>
-                      <div tabindex="5014" class="btn border border-1 threshold-up">+</div>
+                        <div tabindex="5014" class="btn border border-1 threshold-up">+</div>
         
-                    </div>
+                      </div>
       
-                        <div id="window_value_form_field" class="form-field d-flex width-15 info-section">
+                      <div class="col-md-12 col-lg-6 col-xl-2 mt-lg-4 mt-xl-0 form-field d-flex info-section" id="window_value_form_field">
         
-                      <div tabindex="5015" class="btn border border-1 window-down">-</div>
+                      <div class="btn border border-1 window-down">-</div>
                       <div class="form-field-control height-100">
-                        <input tabindex="5016" id="window-value" type="number" class="form-field-input border-0" placeholder=" " min="0" max="365" value="1" autofocus="autofocus" step="1"/>
+                        <input id="window-value" type="number" class="form-field-input border-0" placeholder=" " min="0" max="365" value="1" autofocus="autofocus" step="1"/>
                         <label for="window-value" class="form-field-label height-100">Window in<span id="window-unit"> days</span></label>
                         <div class="form-field-bar height-100"></div>
                       </div>

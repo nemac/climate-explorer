@@ -36,12 +36,9 @@ ${secondary_header(config)}
 
           <div class="col-12 col-md-5 col-lg-4"> 
             <div class="dropdown rounded-2 border border-1 mb-3 stations-dropdown">
-                <a class="btn dropdown-toggle w-100 d-flex justify-content-between align-items-center" href="#" role="button" id="stations-dropdown-menu" data-bs-toggle="dropdown" aria-expanded="false">
+                <a class="btn dropdown-toggle w-100 d-flex justify-content-between align-items-center disabled" href="#" role="button" id="stations-dropdown-menu" data-bs-toggle="dropdown" aria-expanded="false">
                   Stations
                 </a>
-              
-                <ul class="dropdown-menu stations-dropdown-ul w-100" aria-labelledby="stations-dropdown-menu">
-                </ul>
             </div>
           </div>
           
