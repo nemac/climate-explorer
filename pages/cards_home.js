@@ -22,12 +22,12 @@ export default (config) => `
 
   <div class="main-wrapper container-fluid top-spacing bottom-spacing mb-3">
   
-    <div class="input-group mb-3 search-input-group rounded-3 border border-1">
+    <div class="input-group mb-3 search-input-group rounded-2 border border-1">
       <button id="clear-location" class="btn search-icons" type="button"><span class="fas fa-times-circle"></span></button>
       <input id="cards-search-input" class="form-control location-mapper" type="text" placeholder="Enter county or city name" aria-label="Enter county or city name">
     </div>
     
-    <div class="select-county-card rounded-3 border border-1 mb-3">
+    <div class="select-county-card rounded-2 border border-1 mb-3">
       
       <div class="p-2 d-flex align-items-center">
         <i class="fas fa-th-large icon-info-box me-2"></i>
@@ -56,7 +56,7 @@ export default (config) => `
              Compare past and projected future conditions in your county.
            </div>
            
-           <div class="disabled-text rounded-3 p-2 d-none m-2">Maps are not available for this location.</div>
+           <div class="disabled-text rounded-2 p-2 d-none m-2">Maps are not available for this location.</div>
       
           </div>
       </div>
@@ -78,7 +78,7 @@ export default (config) => `
              Check past and projected values for climate variables.
            </div>
            
-           <div class="disabled-text rounded-3 p-2 d-none m-2">Data is not available for this location.</div>
+           <div class="disabled-text rounded-2 p-2 d-none m-2">Data is not available for this location.</div>
       
           </div>
       </div>
@@ -100,7 +100,7 @@ export default (config) => `
                Explore the number of days per year with high-tide floods.
              </div>
              
-             <div class="disabled-text rounded-3 p-2 d-none m-2">High-tide flooding data not available for this location.</div>
+             <div class="disabled-text rounded-2 p-2 d-none m-2">High-tide flooding data not available for this location.</div>
         
           </div>
       </div>
@@ -127,7 +127,7 @@ export default (config) => `
              Compare observed daily weather to long-term climate.
            </div>
            
-           <div class="disabled-text rounded-3 p-2 d-none m-2">Data is not available for this location</div>
+           <div class="disabled-text rounded-2 p-2 d-none m-2">Data is not available for this location</div>
       
           </div>
       </div>
@@ -149,7 +149,7 @@ export default (config) => `
              Check how often temperature or precipitation has exceeded user-defined values.
            </div>
            
-           <div class="disabled-text rounded-3 p-2 d-none m-2">Data is not available for this location.</div>
+           <div class="disabled-text rounded-2 p-2 d-none m-2">Data is not available for this location.</div>
       
           </div>
       </div>

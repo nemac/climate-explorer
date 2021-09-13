@@ -563,17 +563,6 @@ $(function () {
 
   })
 
-  const variable = state['variable'];
-  if (variable !== undefined) {
-    const $styledSelect = $('.select.variable-select div.select-styled');
-    $(`[data-value="${variable}"]`).click();
-
-    // // change chart variable
-    // window.cbl_chart.update({
-    //   variable
-    // });
-  }
-
   /**
    * This function handles the resizing of the map on climate_graphs page. It takes the height of the top nav bar
    * and the height of the footer which it then adds as padding to the top and the bottom of the element containing the .climate-graphs-body

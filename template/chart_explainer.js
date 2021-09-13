@@ -20,8 +20,8 @@ export default (config) => `
                       
                       <div class="col-sm-12 col-md-3">
                       
-                          <div class="d-flex justify-content-center border border-1 rounded-3 chart-explainer-fake-buttons mb-2 pt-1 pb-1"> 
-                              <div class="inner-histobs ps-3 pe-3 pt-2 pb-2 me-2 rounded-3"></div>
+                          <div class="d-flex justify-content-center border border-1 rounded-2 chart-explainer-fake-buttons mb-2 pt-1 pb-1"> 
+                              <div class="inner-histobs ps-3 pe-3 pt-2 pb-2 me-2 rounded-2"></div>
                               Observations
                           </div>
                       
@@ -50,8 +50,8 @@ export default (config) => `
                   
                       <div class="col-sm-12 col-md-3">
                           
-                              <div class="d-flex justify-content-center border border-1 rounded-3 chart-explainer-fake-buttons mb-2 pt-1 pb-1"> 
-                                  <div class="inner-histmod ps-3 pe-3 pt-2 pb-2 me-2 rounded-3"></div>
+                              <div class="d-flex justify-content-center border border-1 rounded-2 chart-explainer-fake-buttons mb-2 pt-1 pb-1"> 
+                                  <div class="inner-histmod ps-3 pe-3 pt-2 pb-2 me-2 rounded-2"></div>
                                   Modeled History
                               </div>
                           
@@ -69,8 +69,8 @@ export default (config) => `
                       
                       <div class="col-sm-12 col-md-3">
                           
-                          <div class="d-flex justify-content-center border border-1 rounded-3 chart-explainer-fake-buttons mb-2 pt-1 pb-1"> 
-                              <div class="inner-lower-emissions ps-3 pe-3 pt-2 pb-2 me-2 rounded-3"></div>
+                          <div class="d-flex justify-content-center border border-1 rounded-2 chart-explainer-fake-buttons mb-2 pt-1 pb-1"> 
+                              <div class="inner-lower-emissions ps-3 pe-3 pt-2 pb-2 me-2 rounded-2"></div>
                               Lower Emissions
                           </div>
                       
@@ -94,8 +94,8 @@ export default (config) => `
                       
                       <div class="col-sm-12 col-md-3">
                           
-                          <div class="d-flex justify-content-center mb-2 border border-1 rounded-3 chart-explainer-fake-buttons pt-1 pb-1"> 
-                              <div class="inner-higher-emissions ps-3 pe-3 pt-2 pb-2 me-2 rounded-3"></div>
+                          <div class="d-flex justify-content-center mb-2 border border-1 rounded-2 chart-explainer-fake-buttons pt-1 pb-1"> 
+                              <div class="inner-higher-emissions ps-3 pe-3 pt-2 pb-2 me-2 rounded-2"></div>
                               Higher Emissions
                           </div>
                       
@@ -147,8 +147,8 @@ export default (config) => `
                       
                       <div class="col-sm-12 col-md-6">
                           
-                              <div class="d-flex justify-content-center border border-1 rounded-3 chart-explainer-fake-buttons mb-2 pt-1 pb-1"> 
-                                  <div class="inner-histmod ps-3 pe-3 pt-2 pb-2 me-2 rounded-3"></div>
+                              <div class="d-flex justify-content-center border border-1 rounded-2 chart-explainer-fake-buttons mb-2 pt-1 pb-1"> 
+                                  <div class="inner-histmod ps-3 pe-3 pt-2 pb-2 me-2 rounded-2"></div>
                                   Modeled History
                               </div>
                           
@@ -166,8 +166,8 @@ export default (config) => `
                       
                       <div class="col-sm-12 col-md-6">
                           
-                          <div class="d-flex justify-content-center mb-2 border border-1 rounded-3 chart-explainer-fake-buttons pt-1 pb-1"> 
-                              <div class="inner-higher-emissions ps-3 pe-3 pt-2 pb-2 me-2 rounded-3"></div>
+                          <div class="d-flex justify-content-center mb-2 border border-1 rounded-2 chart-explainer-fake-buttons pt-1 pb-1"> 
+                              <div class="inner-higher-emissions ps-3 pe-3 pt-2 pb-2 me-2 rounded-2"></div>
                               Higher Emissions
                           </div>
                       
@@ -197,8 +197,8 @@ export default (config) => `
                         
                         <div class="col-sm-12 col-md-4">
                             
-                                <div class="d-flex justify-content-center border border-1 rounded-3 chart-explainer-fake-buttons mb-2 pt-1 pb-1"> 
-                                    <div class="inner-histmod ps-3 pe-3 pt-2 pb-2 me-2 rounded-3"></div>
+                                <div class="d-flex justify-content-center border border-1 rounded-2 chart-explainer-fake-buttons mb-2 pt-1 pb-1"> 
+                                    <div class="inner-histmod ps-3 pe-3 pt-2 pb-2 me-2 rounded-2"></div>
                                     Modeled History
                                 </div>
                             
@@ -216,8 +216,8 @@ export default (config) => `
                         
                         <div class="col-sm-12 col-md-4">
                             
-                            <div class="d-flex justify-content-center border border-1 rounded-3 chart-explainer-fake-buttons mb-2 pt-1 pb-1"> 
-                                <div class="inner-lower-emissions ps-3 pe-3 pt-2 pb-2 me-2 rounded-3"></div>
+                            <div class="d-flex justify-content-center border border-1 rounded-2 chart-explainer-fake-buttons mb-2 pt-1 pb-1"> 
+                                <div class="inner-lower-emissions ps-3 pe-3 pt-2 pb-2 me-2 rounded-2"></div>
                                 Lower Emissions
                             </div>
                         
@@ -241,8 +241,8 @@ export default (config) => `
                         
                         <div class="col-sm-12 col-md-4">
                             
-                            <div class="d-flex justify-content-center mb-2 border border-1 rounded-3 chart-explainer-fake-buttons pt-1 pb-1"> 
-                                <div class="inner-higher-emissions ps-3 pe-3 pt-2 pb-2 me-2 rounded-3"></div>
+                            <div class="d-flex justify-content-center mb-2 border border-1 rounded-2 chart-explainer-fake-buttons pt-1 pb-1"> 
+                                <div class="inner-higher-emissions ps-3 pe-3 pt-2 pb-2 me-2 rounded-2"></div>
                                 Higher Emissions
                             </div>
                         

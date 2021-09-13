@@ -5,7 +5,7 @@ export default (config) => `
 <nav class="navbar fixed-top navbar-expand-sm navbar-element">
   <div class="container-fluid">
     
-    <a class="navbar-brand p-2 rounded-3" href="/">
+    <a class="navbar-brand p-2 rounded-2" href="/">
       <i class="fas fa-home"></i>
     </a>
     
@@ -19,7 +19,7 @@ export default (config) => `
     
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
       <ul class="navbar-nav ms-auto">
-        <li class="nav-item dropdown m-2 rounded-3">
+        <li class="nav-item dropdown m-2 rounded-2">
             <a class="nav-link dropdown-toggle p-2" href="#" id="about-data-dropdown-menu-link" role="button" data-bs-toggle="dropdown" aria-expanded="false">
               <span class="fas fa-info-circle share-icon"></span>
               About the data
@@ -30,7 +30,7 @@ export default (config) => `
               <li><a class="dropdown-item" href="/faq"><span class="icon fas fa-question-circle me-1"></span> FAQ</a></li>
             </ul>
         </li>
-        <li class="nav-item dropdown m-2 rounded-3">
+        <li class="nav-item dropdown m-2 rounded-2">
             <a class="nav-link dropdown-toggle p-2" href="#" id="social-media-dropdown-menu-link" role="button" data-bs-toggle="dropdown" aria-expanded="false">
               <span class="fa fa-share-alt"></span>
             </a>
@@ -40,7 +40,7 @@ export default (config) => `
               <li><a class="dropdown-item" href="#"><span class="icon-link me-1"></span> Copy Permalink</a></li>
             </ul>
           </li>
-        <li id="crt-logo" class="dropdown m-2 rounded-3">
+        <li id="crt-logo" class="dropdown m-2 rounded-2">
           <a href="https://toolkit.climate.gov/" target="_blank">
             <img src="/img/crt-logo-mobile.png" alt="U.S. Climate Resilience Toolkit, Climate Explorer" class="d-inline-block align-text-top">
           </a>

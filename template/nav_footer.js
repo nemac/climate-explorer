@@ -22,13 +22,12 @@ export default (config) => `
           </div>
         </div>
 
-        
       </div>
     </div>
     
     <div class="collapse navbar-collapse mt-2 mb-2" id="footerSupportedContent">
       <ul class="navbar-nav w-100">
-        <li class="nav-item dropdown me-2 rounded-3 w-100">
+        <li class="nav-item dropdown me-2 rounded-2 w-100">
             <div class="d-flex flex-row justify-content-evenly"> 
                 <div class="d-flex btn flex-column align-items-center rounded-2 p-1 footer-button" data-page="next_steps"> 
                     <i class="fas fa-map-signs footer-icon"></i>

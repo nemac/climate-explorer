@@ -23,24 +23,30 @@ export default (config) => `
     <div class="container-fluid d-flex-column historical-thresholds-body h-100"> 
       <div id="historical-thresholds-viewport" class="d-flex-column">
       
-          <div class="d-flex flex-row mt-3"> 
-              <div class="input-group mb-3 search-input-group rounded-3 border border-1 w-75 me-2">
-                <button id="clear-location" class="btn search-icons" type="button"><span class="fas fa-times-circle"></span></button>
-                <input id="cards-search-input" class="form-control location-mapper" type="text" placeholder="Enter county or city name" aria-label="Enter county or city name">
-              </div>
-                
-              <div class="dropdown w-25 rounded-3 border border-1 mb-3 stations-dropdown">
-                  <a class="btn dropdown-toggle w-100" href="#" role="button" id="stations-dropdown-menu" data-bs-toggle="dropdown" aria-expanded="false">
-                    Stations
-                  </a>
-                
-                  <ul class="dropdown-menu stations-dropdown-ul w-100" aria-labelledby="stations-dropdown-menu">
-                  </ul>
-              </div>
+      <div class="mt-3 row"> 
+            
+          <div class="col-12 col-md-7 col-lg-8"> 
+            <div class="input-group mb-3 search-input-group rounded-2 border border-1 me-2">
+              <button id="clear-location" class="btn search-icons" type="button"><span class="fas fa-times-circle"></span></button>
+              <input id="cards-search-input" class="form-control location-mapper" type="text" placeholder="Enter county or city name" aria-label="Enter county or city name">
+            </div>
           </div>
+
+          <div class="col-12 col-md-5 col-lg-4"> 
+            <div class="dropdown rounded-2 border border-1 mb-3 stations-dropdown">
+                <a class="btn dropdown-toggle w-100 d-flex justify-content-between align-items-center" href="#" role="button" id="stations-dropdown-menu" data-bs-toggle="dropdown" aria-expanded="false">
+                  Stations
+                </a>
+              
+                <ul class="dropdown-menu stations-dropdown-ul w-100" aria-labelledby="stations-dropdown-menu">
+                </ul>
+            </div>
+          </div>
+          
+      </div>
       
           <div class="info-section">
-              <div class="border border-1 rounded-3"> 
+              <div class="border border-1 rounded-2"> 
                 
                 <div class="m-3"> 
                   <span id="station-info-none"><strong>Please select a station on the map or from the Stations dropdown menu. You may need to zoom out to see more stations.</strong></span>
@@ -56,15 +62,15 @@ export default (config) => `
                   
                   <div class="row align-items-center">
                       
-                      <div class="col-md-12 col-lg-6 col-xl-2 mt-1 mb-1" style="text-align: center;"> 
-                        <div class="btn-group border rounded-3 graph-map-selection w-100" role="group"> 
+                      <div class="col-md-12 col-lg-6 col-xl-2 mt-1 mb-1 info-section"> 
+                        <div class="btn-group border rounded-2 graph-map-selection w-100" role="group"> 
                           <label class="btn ps-4 pe-4 default-selection disabled" id="chartmap-select-chart-link" data-value="chart" data-page="historical_thresholds" data-sel="chartmap-select-vis">Graph</label>
                           <label class="btn ps-4 pe-4 selected-item" id="chartmap-select-map-link" data-page="historical_thresholds" data-value="map" data-sel="chartmap-select-vis">Map</label>
                         </div>
                       </div>
                        
-                      <div class="col-md-12 col-lg-6 col-xl-2 selection-dropdown mt-1 mb-1" style="text-align: center;"> 
-                        <div class="dropdown rounded-3 border border-1">
+                      <div class="col-md-12 col-lg-6 col-xl-2 selection-dropdown mt-1 mb-1 info-section"> 
+                        <div class="dropdown rounded-2 border border-1">
                           <a class="btn dropdown-toggle ps-4 pe-4 w-100 disabled" href="#" style="text-align: center;" role="button" id="selection-dropdown-menu" data-bs-toggle="dropdown" aria-expanded="false" data-value="precipitation">
                             Precipitation
                           </a>
@@ -79,7 +85,7 @@ export default (config) => `
                         </div>
                       </div>
                        
-                     <div id="threshold_value_form_field" class="form-field d-flex width-15">
+                     <div id="threshold_value_form_field" class="form-field d-flex width-15 info-section">
       
                     <div tabindex="5012" class="btn border border-1 threshold-down">-</div>
                       <div class="form-field-control height-100">
@@ -91,7 +97,7 @@ export default (config) => `
         
                     </div>
       
-                    <div id="window_value_form_field" class="form-field d-flex width-15">
+                        <div id="window_value_form_field" class="form-field d-flex width-15 info-section">
         
                       <div tabindex="5015" class="btn border border-1 window-down">-</div>
                       <div class="form-field-control height-100">
@@ -102,8 +108,8 @@ export default (config) => `
                       <div tabindex="5017" class="btn border border-1 window-up">+</div>
                     </div>
                          
-                      <div class="col-md-12 col-lg-6 col-xl-2 download-dropdown mt-1 mb-1" style="text-align: center;"> 
-                        <div class="dropdown rounded-3 border border-1">
+                      <div class="col-md-12 col-lg-6 col-xl-2 download-dropdown mt-1 mb-1 info-section"> 
+                        <div class="dropdown rounded-2 border border-1">
                           <a class="btn dropdown-toggle ps-4 pe-4 w-100 disabled" href="#" style="text-align: center;" role="button" id="download-dropdown-menu" data-bs-toggle="dropdown" aria-expanded="false">
                             <span class="fas fa-download select-icon"></span>
                             Downloads
@@ -120,7 +126,7 @@ export default (config) => `
                         </div>
                       </div>
                       
-                      <div class="col-md-12 col-lg-6 col-xl-1 " style="text-align: center;">
+                      <div class="col-md-12 col-lg-6 col-xl-1 info-section">
                         <div class="btn chart-info border border-1 mt-1 mb-1 w-100 disabled" id="chart-info-row-btn" data-bs-toggle="modal" data-bs-target="#aboutModal">
                           <i class="fas fa-info me-2"></i>
                           <span>About</span>

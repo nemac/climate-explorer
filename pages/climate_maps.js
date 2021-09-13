@@ -23,31 +23,35 @@ export default (config) => `
 
    <div class="container-fluid d-flex-column mb-3 climate-maps-body">
     
-      <div class="d-flex flex-row mt-3"> 
-        
-        <div class="input-group mb-3 search-input-group rounded-3 border border-1 w-75 me-2">
-          <button id="clear-location" class="btn search-icons" type="button"><span class="fas fa-times-circle"></span></button>
-          <input id="cards-search-input" class="form-control location-mapper" type="text" placeholder="Enter county or city name" aria-label="Enter county or city name">
-        </div>
-        
-        <div class="dropdown w-25 rounded-3 border border-1 mb-3 stations-dropdown">
-            <a class="btn dropdown-toggle disabled w-100" href="#" role="button" id="stations-dropdown-menu" data-bs-toggle="dropdown" aria-expanded="false">
-              Stations
-            </a>
+      <div class="mt-3 row"> 
+            
+          <div class="col-12 col-md-7 col-lg-8"> 
+            <div class="input-group mb-3 search-input-group rounded-2 border border-1 me-2">
+              <button id="clear-location" class="btn search-icons" type="button"><span class="fas fa-times-circle"></span></button>
+              <input id="cards-search-input" class="form-control location-mapper" type="text" placeholder="Enter county or city name" aria-label="Enter county or city name">
+            </div>
+          </div>
+
+          <div class="col-12 col-md-5 col-lg-4"> 
+            <div class="dropdown rounded-2 border border-1 mb-3 stations-dropdown">
+                <a class="btn dropdown-toggle w-100 d-flex justify-content-between align-items-center" href="#" role="button" id="stations-dropdown-menu" data-bs-toggle="dropdown" aria-expanded="false">
+                  Stations
+                </a>
+              
+                <ul class="dropdown-menu stations-dropdown-ul w-100" aria-labelledby="stations-dropdown-menu">
+                </ul>
+            </div>
+          </div>
           
-            <ul class="dropdown-menu w-100" aria-labelledby="stations-dropdown-menu">
-              <li><a class="dropdown-item" href="#">Station 1</a></li>
-            </ul>
-        </div>
       </div>
     
       <div class="info-section mb-2">
-          <div class="border border-1 rounded-3"> 
+          <div class="border border-1 rounded-2"> 
             
-            <div class="m-3 mb-3 btn p-0" type="button" data-bs-toggle="collapse" data-bs-target="#collapse-info-section" aria-expanded="true" aria-controls="collapse-info-section">
+            <div class="m-3 mb-3 btn p-0 d-flex" type="button" data-bs-toggle="collapse" data-bs-target="#collapse-info-section" aria-expanded="true" aria-controls="collapse-info-section">
                 <i class="fas fa-map-marked-alt me-2"></i>
                 <span id="default-city-county"></span>
-                <span> - </span>
+                <span class="ms-1 me-1"> - </span>
                 <span id="default-chart-map-variable" data-value="tmax">Average Daily Maximum Temp (°F)</span>
             </div>
             
@@ -55,8 +59,8 @@ export default (config) => `
               
               <div class="row">
                   
-                  <div class="col-md-12 col-lg-3 order-xs-1 d-flex flex-row align-items-center mb-1 mt-1" style="text-align: center;"> 
-                    <div class="dropdown rounded-3 border border-1 me-2 w-100">
+                  <div class="col-md-12 col-lg-3 order-xs-1 d-flex flex-row align-items-center mb-1 mt-1 info-section"> 
+                    <div class="dropdown rounded-2 border border-1 me-2 w-100">
                       <a class="btn dropdown-toggle w-100" href="#" id="filter-dropdown-menu" data-bs-toggle="dropdown" aria-expanded="true" data-value="tmax">
                         Average Daily Maximum Temperature (°F)
                       </a>
@@ -70,8 +74,8 @@ export default (config) => `
                     <span id="filter-tooltip" class="fa fa-question d-flex justify-content-center align-items-center" aria-hidden="true"></span>
                   </div>
                   
-                  <div class="col-md-12 col-lg-2 order-xs-2 mb-1 mt-1" style="text-align: center;"> 
-                    <div class="btn-group border rounded-3 graph-map-selection w-100" role="group"> 
+                  <div class="col-md-12 col-lg-2 order-xs-2 mb-1 mt-1 info-section"> 
+                    <div class="btn-group border rounded-2 graph-map-selection w-100" role="group"> 
                       <input type="radio" class="btn-check" name="graph-map" id="graph-selection" autocomplete="off" data-page="climate_graphs"  data-sel="chartmap-select-vis">
                       <label class="btn ps-4 pe-4 default-selection" for="graph-selection">Graph</label>
                       
@@ -80,7 +84,7 @@ export default (config) => `
                     </div>
                   </div>
                   
-                  <div class="col-md-12 col-lg-5 order-xs-4 btn-group d-flex-wrap mb-1 mt-1" id="time-wrapper" style="text-align: center;">
+                  <div class="col-md-12 col-lg-5 order-xs-4 btn-group d-flex-wrap mb-1 mt-1 info-section" id="time-wrapper">
                     <label id="annual-selection-label" class="btn ps-4 pe-4 selected-item" for="annual-selection" data-value="annual">Annual</label>
                     <label id="spring-selection-label" class="btn ps-4 pe-4 default-selection" for="spring-selection" data-value="spring">Spring</label>
                     <label id="summer-selection-label" class="btn ps-4 pe-4 default-selection" for="summer-selection" data-value="summer">Summer</label>
@@ -88,8 +92,8 @@ export default (config) => `
                     <label id="winter-selection-label" class="btn ps-4 pe-4 default-selection" for="winter-selection" data-value="winter">Winter</label>
                   </div>
                   
-                  <div class="col-md-12 col-lg-2 order-xs-3 download-dropdown mb-1 mt-1" style="text-align: center;"> 
-                    <div class="dropdown rounded-3 border border-1">
+                  <div class="col-md-12 col-lg-2 order-xs-3 download-dropdown mb-1 mt-1 info-section"> 
+                    <div class="dropdown rounded-2 border border-1">
                       <a class="btn dropdown-toggle ps-4 pe-4 w-100" href="#" role="button" id="download-dropdown-menu" data-bs-toggle="dropdown" aria-expanded="false" style="text-align: center;">
                           <span class="fas fa-download select-icon"></span>
                           Downloads

@@ -21,24 +21,30 @@ export default (config) => `
   ${secondary_header(config)}
 
     <div class="container-fluid high-tide-flooding-body h-100">
-        <div class="d-flex flex-row mt-3"> 
-            <div class="input-group mb-3 search-input-group rounded-3 border border-1 w-75 me-2">
+      <div class="mt-3 row"> 
+            
+          <div class="col-12 col-md-7 col-lg-8"> 
+            <div class="input-group mb-3 search-input-group rounded-2 border border-1 me-2">
               <button id="clear-location" class="btn search-icons" type="button"><span class="fas fa-times-circle"></span></button>
               <input id="cards-search-input" class="form-control location-mapper" type="text" placeholder="Enter county or city name" aria-label="Enter county or city name">
             </div>
-              
-            <div class="dropdown w-25 rounded-3 border border-1 mb-3 stations-dropdown">
-                <a class="btn dropdown-toggle w-100" href="#" role="button" id="stations-dropdown-menu" data-bs-toggle="dropdown" aria-expanded="false">
+          </div>
+
+          <div class="col-12 col-md-5 col-lg-4"> 
+            <div class="dropdown rounded-2 border border-1 mb-3 stations-dropdown">
+                <a class="btn dropdown-toggle w-100 d-flex justify-content-between align-items-center" href="#" role="button" id="stations-dropdown-menu" data-bs-toggle="dropdown" aria-expanded="false">
                   Stations
                 </a>
               
                 <ul class="dropdown-menu stations-dropdown-ul w-100" aria-labelledby="stations-dropdown-menu">
                 </ul>
             </div>
-        </div>
+          </div>
+          
+      </div>
         
         <div class="info-section">
-            <div class="border border-1 rounded-3"> 
+            <div class="border border-1 rounded-2"> 
               
               <div class="m-3"> 
                 <span id="station-info-none"><strong>Please select a station on the map or from the Stations dropdown menu. You may need to zoom out to see more stations.</strong></span>
@@ -56,21 +62,21 @@ export default (config) => `
                 
                 <div class="row">
                     
-                    <div class="col-md-12 col-lg-6 col-xl-2 mt-1 mb-1" style="text-align: center;"> 
-                      <div class="btn-group border rounded-3 graph-map-selection w-100" role="group"> 
+                    <div class="col-md-12 col-lg-6 col-xl-2 mt-1 mb-1 info-section"> 
+                      <div class="btn-group border rounded-2 graph-map-selection w-100" role="group"> 
                         <label class="btn ps-4 pe-4 default-selection disabled" id="chartmap-select-chart-link" data-value="chart" data-page="high_tide_flooding">Graph</label>
                         <label class="btn ps-4 pe-4 selected-item" id="chartmap-select-map-link" data-value="chart" data-page="high_tide_flooding" data-sel="chartmap-select-vis">Map</label>
                       </div>
                     </div>
                      
-                    <div class="col-md-12 col-lg-6 col-xl-3 btn-group mt-1 mb-1" style="text-align: center;" id="time-wrapper">
+                    <div class="col-md-12 col-lg-6 col-xl-3 btn-group mt-1 mb-1 info-section" id="time-wrapper">
                       <label id="historical-selection" class="btn ps-4 pe-4 default-selection disabled" id="btn-tidalzoom" data-value="Historical">Historical</label>
                       <label id="historical-model-selection" class="btn ps-4 pe-4 default-selection disabled" id="btn-tidalzoom"
 data-value="Historical and Modeled">Historical & Modeled</label>
                     </div>
                     
-                    <div class="col-md-12 col-lg-6 col-xl-2 download-dropdown mt-1 mb-1" style="text-align: center;"> 
-                      <div class="dropdown rounded-3 border border-1">
+                    <div class="col-md-12 col-lg-6 col-xl-2 download-dropdown mt-1 mb-1 info-section"> 
+                      <div class="dropdown rounded-2 border border-1">
                         <a class="btn dropdown-toggle ps-4 pe-4 w-100 disabled" href="#" style="text-align: center;" role="button" id="download-dropdown-menu" data-bs-toggle="dropdown" aria-expanded="false">
                           <span class="fas fa-download select-icon"></span>
                           Downloads
@@ -87,7 +93,7 @@ data-value="Historical and Modeled">Historical & Modeled</label>
                       </div>
                     </div>
                     
-                    <div class="col-md-12 col-lg-6 col-xl-1 " style="text-align: center;">
+                    <div class="col-md-12 col-lg-6 col-xl-1 info-section">
                         <div class="btn chart-info border border-1 mt-1 mb-1 w-100 disabled" id="chart-info-row-btn" data-bs-toggle="modal" data-bs-target="#aboutModal">
                           <i class="fas fa-info me-2"></i>
                           <span>About</span>
