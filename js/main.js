@@ -374,7 +374,7 @@ const bbox_areas = [
   [-64.927612, 17.596903, -64.464813, 18.34, "us_virgin_islands", "US Virgin Islands"],
   [-66.3373, 18.03356, -64.0679, 18.9505, "puerto_rico_ne", "Northeastern Puerto Rico (San Juan, Caguas)"],
   [-68.0816, 17.454, -66.3073, 18.5588, "puerto_rico_sw", "Southwestern Puerto Rico (Mayaguez, Ponce)"],
-  [-157.4, 18.7, -153.9, 21.3, "hawaii_south", "Southern Hawaiian Islands (Hawai'i, Maui, Molokai)"],
+  [-157.4, 18.7, -153.9, 21.3, "hawaii_south", "Southern Hawaiian Islands (Maui County, Hawai'i County)"],
   [-160.029977994, -0.388767184358, -159.9, -0.372491143352, "jarvis_island", "Jarvis Island (uninhabited)"],
   [-160.8, 20.4, -157.3, 23.0, "hawaii_north", "Northern Hawaiian Islands (Honolulu County, Kauaʻi County)"],
   [-162.877808, 5.550381, -161.600647, 6.820080, "palmyra_atoll_kingman_reef", "Palmyra Atoll and Kingman Reef (uninhabited)"],
