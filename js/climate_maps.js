@@ -10,6 +10,9 @@ $(function () {
   let isAlaska = false;
   let isHawaii = false;
 
+  $('.footer-button').removeClass('footer-button-selected');
+  $('[data-page="climate_maps"]').addClass('footer-button-selected');
+
   if (cityStateCE) {
     isAlaska = (cityStateCE.indexOf('Alaska') > 0 || cityStateCE.indexOf(', AK') > 0);
     isHawaii = (cityStateCE.indexOf('Hawaii') > 0 || cityStateCE.indexOf(', HI') > 0);

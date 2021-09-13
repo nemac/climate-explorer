@@ -7,7 +7,7 @@ export default (config) => `
 <nav class="navbar fixed-bottom navbar-expand-sm footer-element border-top p-0">
   <div class="container-fluid">
     
-    <div class="d-flex-column btn align-items-center rounded-2 p-1 footer-button" data-page="cards_home">
+    <div class="d-flex-column btn align-items-center rounded-2 p-1 footer-button footer-button-selected" data-page="cards_home">
       <i class="fas fa-th-large footer-icon me-2"></i>
       <p>Cards Home</p>
     </div>

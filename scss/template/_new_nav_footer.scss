@@ -9,6 +9,16 @@
 }
 
 .footer-button {
+  color: gray;
+  transition: color 200ms ease-in;
+
+  &:hover {
+    color: $navbar-button-background;
+    cursor: pointer;
+  }
+}
+
+.footer-button-selected {
   transition: color 200ms ease-in;
   color: $navbar-background;
 

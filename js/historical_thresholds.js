@@ -15,6 +15,9 @@ $(function () {
   const cityStateCE = state['city'];
   const countyCE = state['county'];
 
+  $('.footer-button').removeClass('footer-button-selected');
+  $('[data-page="historical_thresholds"]').addClass('footer-button-selected');
+
   $('#default-city-county').text(countyCE);
   $('#cards-search-input').attr("placeholder", cityStateCE);
 

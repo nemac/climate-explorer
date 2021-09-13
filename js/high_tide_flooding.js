@@ -13,6 +13,9 @@ $(function () {
     responsive: true
   }); // this is using the rollup name now and not the name of the class
 
+  $('.footer-button').removeClass('footer-button-selected');
+  $('[data-page="high_tide_flooding"]').addClass('footer-button-selected');
+
   const state = window.app.state
   const cityStateCE = state['city'];
   const countyCE = state['county'];

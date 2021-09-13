@@ -10,6 +10,8 @@ $(function () {
   const is_conus_area = state['is_conus_area'];
   const is_island_area = state['is_island_area'];
 
+  $('.footer-button').removeClass('footer-button-selected');
+  $('[data-page="climate_graphs"]').addClass('footer-button-selected');
 
   /**
    * Disable specific buttons in the info section.

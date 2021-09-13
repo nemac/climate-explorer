@@ -13,6 +13,8 @@ $(function () {
   const city = state['city'];
   const county = state['county'];
 
+  $('.footer-button').removeClass('footer-button-selected');
+  $('[data-page="historical_weather_data"]').addClass('footer-button-selected');
 
   $('#default-city-county').text(county);
   $('#cards-search-input').attr("placeholder", city);
@@ -214,7 +216,6 @@ $(function () {
       const val = target.data('value').split(',');
       const stationName = val[1];
       const stationId = val[0];
-
 
       document.getElementById('station-info').classList.remove('d-none');
       document.getElementById('station-info-none').classList.add('d-none');

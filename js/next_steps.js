@@ -202,6 +202,9 @@ $(function () {
     },
   };
 
+  $('.footer-button').removeClass('footer-button-selected');
+  $('[data-page="next_steps"]').addClass('footer-button-selected');
+
   // update ui with city state or county information
   $('#default-city-county').text(countyCE);
   $('#cards-search-input').attr('placeholder', cityStateCE);

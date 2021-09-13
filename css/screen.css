@@ -16379,8 +16379,8 @@ input.input-inner-default:focus {
 
 /* line 11, scss/template/_new_nav_footer.scss */
 .footer-button {
+  color: gray;
   transition: color 200ms ease-in;
-  color: #0D3064;
 }
 
 /* line 15, scss/template/_new_nav_footer.scss */
@@ -16390,12 +16390,24 @@ input.input-inner-default:focus {
 }
 
 /* line 21, scss/template/_new_nav_footer.scss */
+.footer-button-selected {
+  transition: color 200ms ease-in;
+  color: #0D3064;
+}
+
+/* line 25, scss/template/_new_nav_footer.scss */
+.footer-button-selected:hover {
+  color: #124086;
+  cursor: pointer;
+}
+
+/* line 31, scss/template/_new_nav_footer.scss */
 .footer-element {
   background-color: white;
   border-color: #7D98C1;
 }
 
-/* line 27, scss/template/_new_nav_footer.scss */
+/* line 37, scss/template/_new_nav_footer.scss */
 .footer-ellipsis {
   color: #0D3064;
 }

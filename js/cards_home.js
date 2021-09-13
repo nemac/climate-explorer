@@ -12,6 +12,9 @@ $(function () {
   $('#cards-search-input').attr("placeholder", city_label || area_label);
 
 
+  $('.footer-button').removeClass('footer-button-selected');
+  $('[data-page="cards_home"]').addClass('footer-button-selected');
+
   if (!city_label && !area_label) {
     $('#default-dash').addClass('d-none');
     $('#cards-search-input').addClass('nosearch');

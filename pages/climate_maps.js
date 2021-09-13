@@ -92,7 +92,7 @@ export default (config) => `
                     <label id="winter-selection-label" class="btn ps-4 pe-4 default-selection" for="winter-selection" data-value="winter">Winter</label>
                   </div>
                   
-                  <div class="col-md-12 col-lg-2 order-xs-3 download-dropdown mb-1 mt-1 info-section"> 
+                  <div class="col-md-12 col-lg-1 order-xs-3 download-dropdown mb-1 mt-1 info-section"> 
                     <div class="dropdown rounded-2 border border-1">
                       <a class="btn dropdown-toggle ps-4 pe-4 w-100" href="#" role="button" id="download-dropdown-menu" data-bs-toggle="dropdown" aria-expanded="false" style="text-align: center;">
                           <span class="fas fa-download select-icon"></span>

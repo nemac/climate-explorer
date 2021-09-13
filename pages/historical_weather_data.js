@@ -70,7 +70,7 @@ export default (config) => `
                     </div>
                   </div>
                    
-                  <div class="col-md-12 col-lg-6 col-xl-2 download-dropdown mt-1 mb-1 info-section"> 
+                  <div class="col-md-12 col-lg-6 col-xl-1 download-dropdown mt-1 mb-1 info-section"> 
                     <div class="dropdown rounded-2 border border-1">
                       <a class="btn dropdown-toggle ps-4 pe-4 w-100 disabled" href="#" style="text-align: center;" role="button" id="download-dropdown-menu" data-bs-toggle="dropdown" aria-expanded="false">
                         <span class="fas fa-download select-icon"></span>
