@@ -22277,3 +22277,8 @@ body.is-ak-area .opt-not-ak, body.is-island-area .opt-not-island {
   min-width: fit-content;
   text-align: center;
 }
+
+/* line 2316, scss/screen.scss */
+.disabled {
+  filter: opacity(0.4);
+}
