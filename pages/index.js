@@ -34,9 +34,9 @@ export default (config) => `
       </div>
     </div>
 
-    <div class="search-row d-flex d-flex-column d-flex-left width-80 padding-bottom">
-      <div class="rounded-box input-outer-main padding-horizontal bottom-padding main-btn-height width-75">
-        <input id="location-search-input" type="text" class="location-mapper input-inner border-none main-btn-height width-90" autocomplete="off" placeholder="To get started, enter a city, county, or other placename" aria-label="To get started, enter a city, county, or other placename">
+    <div class="search-row d-flex d-flex-column d-flex-left w-100 padding-bottom">
+      <div class="rounded-box input-outer-main padding-horizontal bottom-padding main-btn-height w-75">
+        <input id="location-search-input" type="text" class="location-mapper input-inner border-none main-btn-height w-75" autocomplete="off" placeholder="To get started, enter a city, county, or other placename" aria-label="To get started, enter a city, county, or other placename">
           <span id="location-search-icon" class="icon icon-search search-main float-right padding-default"></span>
       </div>
       <div id="suggested-cities" class="padding-default width-75">

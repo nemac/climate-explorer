@@ -115,7 +115,7 @@ ${secondary_header(config)}
               </div>
               
               <div class="col-md-12 col-lg-4 col-xl-1 info-section">
-                <div class="btn chart-info border border-1 mt-1 mb-1 w-100 disabled" id="chart-info-row-btn" data-bs-toggle="modal" data-bs-target="#aboutModal">
+                <div class="btn chart-info border border-1 mt-1 mb-1 w-100" id="chart-info-row-btn" data-bs-toggle="modal" data-bs-target="#aboutModal">
                   <i class="fas fa-info me-2"></i>
                   <span>About</span>
                 </div>
