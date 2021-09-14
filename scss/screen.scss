@@ -1525,8 +1525,8 @@ input.input-inner-default:focus  {
   }
 }
 // SOCIAL
-@import "ce-three-theme";
-@import "ce-three-main-theme";
+//@import "ce-three-theme";
+//@import "ce-three-main-theme";
 @import "template/share";
 
 // NAV OVERLAY
@@ -1915,4 +1915,24 @@ body.is-ak-area .opt-not-ak, body.is-island-area .opt-not-island {
 
 .disabled {
   filter: opacity(0.4);
+}
+
+.tippy-tooltip.testing-theme-theme {
+  background-color: white;
+
+  hr {
+    color: $navbar-background;
+    font-weight: bold;
+  }
+}
+
+.tippy-title {
+  color: $navbar-background;
+  font-weight: bold;
+  font-size: 1rem;
+}
+
+.tippy-body {
+  color: $navbar-background;
+  font-size: 0.95rem;
 }

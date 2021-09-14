@@ -333,28 +333,48 @@ function initVariableToolTips() {
 
 function makeMainTip(elem) {
   if (elem) {
+    // elem.addEventListener('mouseover', tippy(elem, {
+    //   theme: 'ce-three-main',
+    //   arrow: false,
+    //   trigger: "mouseenter click",
+    //   animateFill: false,
+    //   interactive: true,
+    //   hideOnClick: true,
+    //   flipOnUpdate: false,
+    //   offset: "1,0"
+    // }));
+
     elem.addEventListener('mouseover', tippy(elem, {
-      theme: 'ce-three-main',
+      theme: 'testing-theme',
       arrow: false,
-      trigger: "mouseenter click",
-      animateFill: false,
-      interactive: true,
-      hideOnClick: true,
+      interactive: false,
+      hideOnClick: false,
       flipOnUpdate: false,
-      offset: "1,0"
+      animateFill: false,
+      placement: 'right'
     }));
   }
 }
 
 function makeTip(elem) {
   if (elem) {
+    // elem.addEventListener('mouseover', tippy(elem, {
+    //   theme: 'ce-three',
+    //   arrow: false,
+    //   interactive: false,
+    //   hideOnClick: false,
+    //   flipOnUpdate: false,
+    //   offset: "1,0"
+    // }));
+
     elem.addEventListener('mouseover', tippy(elem, {
-      theme: 'ce-three',
+      theme: 'testing-theme',
       arrow: false,
       interactive: false,
       hideOnClick: false,
       flipOnUpdate: false,
-      offset: "1,0"
+      animateFill: false,
+      placement: 'right'
     }));
   }
 }

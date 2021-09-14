@@ -1,9 +1,10 @@
 const get_option = variable => `
   <li role="option" data-value="${variable.id}" class="dropdown-item d-flex justify-content-between align-items-center ps-0 pe-0 pt-1 pb-1 rounded-2 ${variable.area === 'ak-only' ? "opt-only-ak" : (variable.area==='island-only'?"opt-only-island":"") }">
     <span class="variable-option-text float-left ms-2 me-2">${variable.short_label || variable.label}</span>
-    <span data-value="${variable.id}" id="${variable.id}-tooltip" class="fas fa-question-circle me-2" data-tippy-content="
-        <strong>${variable.label}</strong><hr/>
-        ${variable.description}">
+    <span data-value="${variable.id}" id="${variable.id}-tooltip" class="fas fa-question-circle me-2 tippy-box" data-tippy-content="
+        <p class='tippy-title'>${variable.label}</p>
+        <hr/>
+        <span class='tippy-body'>${variable.description}</span>>">
     </span>
   </li>
 `;
