@@ -25,9 +25,9 @@ export default (config) => `
               About the data
             </a>
             <ul class="dropdown-menu" aria-labelledby="about-data-dropdown-menu-link">
-              <li><a class="dropdown-item" href="/about"><span class="icon fas fa-info-circle me-1"></span> About</a></li>
-              <li><a class="dropdown-item" href="/glossary"><span class="icon fas fa-book me-1"></span> Glossary</a></li>
-              <li><a class="dropdown-item" href="/faq"><span class="icon fas fa-question-circle me-1"></span> FAQ</a></li>
+              <li><a class="dropdown-item" href="/about" style="font-size: 1.1rem;"><span class="icon fas fa-info-circle me-1"></span> About</a></li>
+              <li><a class="dropdown-item" href="/glossary" style="font-size: 1.1rem;"><span class="icon fas fa-book me-1"></span> Glossary</a></li>
+              <li><a class="dropdown-item" href="/faq" style="font-size: 1.1rem;"><span class="icon fas fa-question-circle me-1"></span> FAQ</a></li>
             </ul>
         </li>
         <li class="nav-item dropdown m-2 rounded-2">
@@ -37,7 +37,7 @@ export default (config) => `
             <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="social-media-dropdown-menu-link">
               <li><a class="dropdown-item" href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fcrt-climate-explorer.nemac.org%2Fstations%2F%3Fid%3Dhigh_tide_flooding%26extent%3D-86.27%252C-71.21%252C32.47%252C38.43%26zoom%3D7%26station-mhhw%3D0.54" target="_blank"><span class="icon-facebook me-1"></span> Facebook</a></li>
               <li><a class="dropdown-item" href="https://twitter.com/intent/tweet?text=https%3A%2F%2Fcrt-climate-explorer.nemac.org%2Fstations%2F%3Fid%3Dhigh_tide_flooding%26extent%3D-86.27%252C-71.21%252C32.47%252C38.43%26zoom%3D7%26station-mhhw%3D0.54" target="_blank"><span class="icon-twitter me-1"></span> Twitter</a></li>
-              <li><a class="dropdown-item" href="#"><span class="icon-link me-1"></span> Copy Permalink</a></li>
+              <li><a class="dropdown-item" href="#" onclick="copyUrl()"><span class="icon-link me-1"></span> Copy Permalink</a></li>
             </ul>
           </li>
         <li id="crt-logo" class="dropdown m-2 rounded-2">
@@ -49,6 +49,19 @@ export default (config) => `
     </div>
     
   </div>
+  
+  <script>
+    function copyUrl() {
+      let dummy = document.createElement('input'),
+      text = window.location.href;
+      
+      document.body.appendChild(dummy);
+      dummy.value = text;
+      dummy.select();
+      document.execCommand('copy');
+      document.body.removeChild(dummy);
+    }
+  </script>
 </nav>
 
 <!-- END SECONDARY_HEADER TEMPLATE -->
