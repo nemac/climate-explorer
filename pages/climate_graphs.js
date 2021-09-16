@@ -59,7 +59,7 @@ ${secondary_header(config)}
           <div class="row">
               <div class="col-md-12 col-lg-8 col-xl-3 d-flex flex-row align-items-center mt-1 mb-1 info-section"> 
                 <div class="dropdown rounded-2 border border-1 me-2 w-100">
-                  <a class="btn dropdown-toggle w-100" href="#" id="filter-dropdown-menu" data-bs-toggle="dropdown" aria-expanded="true" data-value="tmax">
+                  <a class="d-flex justify-content-between align-items-center btn dropdown-toggle w-100" href="#" id="filter-dropdown-menu" data-bs-toggle="dropdown" aria-expanded="true" data-value="tmax">
                     Average Daily Maximum Temperature (°F)
                   </a>
                 
@@ -74,11 +74,8 @@ ${secondary_header(config)}
               
               <div class="col-md-12 col-lg-4 col-xl-2 mt-1 mb-1 info-section" style="text-align: center;"> 
                 <div class="btn-group border rounded-2 graph-map-selection w-100" role="group"> 
-                  <input type="radio" class="btn-check" name="graph-map" id="graph-selection" autocomplete="off" data-page="climate_graphs"  data-sel="chartmap-select-vis">
-                  <label class="btn ps-4 pe-4 selected-item" for="graph-selection">Graph</label>
-                  
-                  <input type="radio" class="btn-check" name="graph-map" id="map-selection" autocomplete="off" data-page="climate_maps"  data-value="map" data-sel="chartmap-select-vis">
-                  <label class="btn ps-4 pe-4 default-selection" for="map-selection">Map</label>
+                  <label id="graph-selection" class="btn ps-4 pe-4 selected-item" data-page="climate_graphs" data-sel="chartmap-select-vis">Graph</label>
+                  <label id="map-selection" class="btn ps-4 pe-4 default-selection" data-page="climate_maps" data-value="map" data-sel="chartmap-select-vis">Map</label>
                 </div>
               </div>
                
@@ -96,19 +93,19 @@ ${secondary_header(config)}
                 
                   <ul class="dropdown-menu download-select" aria-labelledby="download-dropdown-menu">
                     <li id="download-image" data-value="download-image" data-icon="fas fa-download select-icon" href="javascript:void(0);">
-                      <a class="dropdown-item" tabindex="109" data-value="download-image" href="javascript:void(0);">Chart image (.png)</a>
+                      <a class="dropdown-item" data-value="download-image" href="javascript:void(0);">Chart image (.png)</a>
                     </li>
                     <li id="download-observed-data" data-value="download-observed-data" data-icon="fas fa-download select-icon" href="javascript:void(0);">
-                      <a class="dropdown-item" tabindex="109" data-value="download-observed-data" href="javascript:void(0);">Observations (.csv)</a>
+                      <a class="dropdown-item" data-value="download-observed-data" href="javascript:void(0);">Observations (.csv)</a>
                     </li>
                     <li id="download-historical-modeled-data" data-value="download-historical-modeled-data" data-icon="fas fa-download select-icon" href="javascript:void(0);">
-                      <a class="dropdown-item" tabindex="109" data-value="download-historical-modeled-data" href="javascript:void(0);">Modeled History (.csv)</a>
+                      <a class="dropdown-item" data-value="download-historical-modeled-data" href="javascript:void(0);">Modeled History (.csv)</a>
                     </li>
                     <li id="download-projected-modeled-data" data-value="download-projected-modeled-data" data-icon="fas fa-download select-icon" href="javascript:void(0);">
-                      <a class="dropdown-item" tabindex="109" data-value="download-projected-modeled-data" href="javascript:void(0);">Projections (.csv)</a>
+                      <a class="dropdown-item" data-value="download-projected-modeled-data" href="javascript:void(0);">Projections (.csv)</a>
                     </li>
                     <li id="download-interpreting" data-value="download-interpreting" data-icon="fas fa-download select-icon">
-                      <a class="dropdown-item" tabindex="109" data-value="download-interpreting" href="https://crt-climate-explorer.nemac.org/data/Climate-Explorer--Documentation-for-Downloads.xlsx">Documentation for Downloads (.xlsx)</a>
+                      <a class="dropdown-item" data-value="download-interpreting" href="https://crt-climate-explorer.nemac.org/data/Climate-Explorer--Documentation-for-Downloads.xlsx">Documentation for Downloads (.xlsx)</a>
                     </li>
                   </ul>
                 </div>

@@ -39,7 +39,7 @@ export default (config) => `
         <input id="location-search-input" type="text" class="location-mapper input-inner border-none main-btn-height w-75" autocomplete="off" placeholder="To get started, enter a city, county, or other placename" aria-label="To get started, enter a city, county, or other placename">
           <span id="location-search-icon" class="icon icon-search search-main float-right padding-default"></span>
       </div>
-      <div id="suggested-cities" class="padding-default width-75">
+      <div id="suggested-cities" class="padding-default w-75">
         <div class="suggested-cities-desc" >or click one of these cities:</div>
         <a href="/cards_home/?county=New%20York+County&city=New%20York,%20NY&fips=36061&lat=40.7127753&lon=-74.0059728">New York City, NY</a>
         <a href="/cards_home/?county=Los+Angeles+County&city=Los%20Angeles,%20CA&fips=06037&lat=34.0522342&lon=-118.2436849">Los Angeles, CA</a>

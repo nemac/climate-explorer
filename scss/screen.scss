@@ -1079,6 +1079,13 @@ input.input-inner-default:focus  {
   text-align: left;
 }
 
+#station-info-none {
+  strong {
+    font-weight: bold;
+    color: #ff2b2b;
+  }
+}
+
 #map-for-print {
   &-right, &-left {
     position: absolute;

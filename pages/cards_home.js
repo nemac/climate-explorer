@@ -20,9 +20,9 @@ export default (config) => `
 
   ${secondary_header(config)}
 
-  <div class="main-wrapper container-fluid top-spacing bottom-spacing mb-3">
+  <div class="main-wrapper container-fluid cards-home-body mb-3">
   
-    <div class="input-group mb-3 search-input-group rounded-2 border border-1">
+    <div class="input-group mb-3 search-input-group rounded-2 border border-1 mt-3">
       <button id="clear-location" class="btn search-icons" type="button"><span class="fas fa-times-circle"></span></button>
       <input id="cards-search-input" class="form-control location-mapper" type="text" placeholder="Enter county or city name" aria-label="Enter county or city name">
     </div>
@@ -39,7 +39,7 @@ export default (config) => `
     
     <div class="row"> 
       
-      <div class="col-sm-4 mb-3"> 
+      <div class="col-12 col-md-6 col-lg-4 mb-3"> 
           <div class="col-sm-12 p-0 btn card border border-1 rounded shadow-sm data-card h-100" data-page="climate_maps">
             <div>
               <img class="img-fluid" src="/img/card-local-maps.png" alt="example-chart"/>
@@ -61,7 +61,7 @@ export default (config) => `
           </div>
       </div>
       
-      <div class="col-sm-4 mb-3"> 
+      <div class="col-12 col-md-6 col-lg-4 mb-3"> 
           <div class="col-sm-12 p-0 btn card border border-1 rounded shadow-sm data-card h-100" data-page="climate_graphs">
             <div>
               <img class="img-fluid" src="/img/card-local-charts.png" alt="example climate chart"/>
@@ -83,7 +83,7 @@ export default (config) => `
           </div>
       </div>
       
-      <div class="col-sm-4 mb-3"> 
+      <div class="col-12 col-md-6 col-lg-4 mb-3"> 
           <div class="col-sm-12 p-0 btn card border border-1 rounded shadow-sm data-card h-100" data-page="high_tide_flooding">
             <div>
                 <img class="img-fluid" src="/img/card-tidal-data.png" alt="Tidal chart data image"/>
@@ -105,11 +105,7 @@ export default (config) => `
           </div>
       </div>
     
-    </div>
-    
-    <div class="row"> 
-      
-      <div class="col-sm-4 mb-3"> 
+      <div class="col-12 col-md-6 col-lg-4 mb-3"> 
       
           <div class="col-sm-12 p-0 btn card border border-1 rounded shadow-sm data-card h-100" data-page="historical_weather_data">
             <div>
@@ -132,7 +128,7 @@ export default (config) => `
           </div>
       </div>
       
-      <div class="col-sm-4 mb-3"> 
+      <div class="col-12 col-md-6 col-lg-4 mb-3"> 
           <div class="col-sm-12 p-0 btn card border border-1 rounded shadow-sm data-card h-100" data-page="historical_thresholds">
             <div>
               <img class="img-fluid" src="/img/card-hist-thresholds.png" alt="historical weather thresholds image"/>
@@ -154,7 +150,7 @@ export default (config) => `
           </div>
       </div>
       
-      <div class="col-sm-4 mb-3"> 
+      <div class="col-12 col-md-6 col-lg-4 mb-3"> 
           <div class="col-sm-12 p-0 btn card border border-1 rounded shadow-sm data-card h-100" data-page="next_steps">
               <div class="m-2"> 
                 <div class="d-flex flex-row justify-content-between cards-home-title">
@@ -185,6 +181,12 @@ export default (config) => `
              </div>
           </div>
       </div>
+    
+    </div>
+    
+    <div class="row"> 
+      
+
       
     </div>
 

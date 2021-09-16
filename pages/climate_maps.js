@@ -58,7 +58,7 @@ export default (config) => `
                   
                   <div class="col-md-12 col-lg-3 order-xs-1 d-flex flex-row align-items-center mb-1 mt-1 info-section"> 
                     <div class="dropdown rounded-2 border border-1 me-2 w-100">
-                      <a class="btn dropdown-toggle w-100" href="#" id="filter-dropdown-menu" data-bs-toggle="dropdown" aria-expanded="true" data-value="tmax">
+                      <a class="d-flex justify-content-between align-items-center btn dropdown-toggle w-100" href="#" id="filter-dropdown-menu" data-bs-toggle="dropdown" aria-expanded="true" data-value="tmax">
                         Average Daily Maximum Temperature (°F)
                       </a>
                     

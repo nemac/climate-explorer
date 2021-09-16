@@ -4,7 +4,7 @@ export default (config) => `
 
 <!-- BEGIN NAV FOOTER TEMPLATE -->
 
-<nav class="navbar fixed-bottom navbar-expand-sm footer-element border-top p-0">
+<nav class="navbar fixed-bottom navbar-expand-lg footer-element border-top p-0">
   <div class="container-fluid">
     
     <div class="d-flex-column btn align-items-center rounded-2 p-1 footer-button footer-button-selected" data-page="cards_home">

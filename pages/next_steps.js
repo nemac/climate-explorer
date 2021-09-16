@@ -22,19 +22,19 @@ export default (config)=>`
 
 ${secondary_header(config)}
 
-<div id="next-steps-viewport" class="container-fluid d-flex-column">
+<div id="next-steps-viewport" class="container-fluid d-flex-column next-step-body">
 
   <div class="d-flex flex-row mt-3"> 
-      <div class="input-group mb-3 search-input-group rounded-2 border border-1 w-75 me-2">
+      <div class="input-group mb-3 search-input-group rounded-2 border border-1 w-100">
         <button id="clear-location" class="btn search-icons" type="button"><span class="fas fa-times-circle"></span></button>
         <input id="cards-search-input" class="form-control location-mapper" type="text" placeholder="Enter county or city name" aria-label="Enter county or city name">
       </div>
   </div>
 
   <div class="info-section mb-2">
-      <div class="border border-1 rounded-2"> 
+      <div class="d-flex border border-1 rounded-2"> 
         
-        <div class="m-3 mb-3 btn p-0" type="button">
+        <div class="m-3 btn p-0">
             <i class="fas fa-map-signs me-2"></i>
             <span id="default-chart-map-variable" style="font-weight: normal !important;">Explore planning tools available from our partners</span>
         </div>

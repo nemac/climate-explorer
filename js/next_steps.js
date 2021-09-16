@@ -435,4 +435,25 @@ $(function () {
 
     }))
   }
+
+  function setBodySize() {
+
+    let nav_element = document.querySelector(".navbar-element");
+    let footer_element = document.querySelector(".footer-element");
+
+    let nav_height = nav_element.getBoundingClientRect().height / 16;
+    let footer_height = footer_element.getBoundingClientRect().height / 16;
+
+    let next_step_body = document.querySelector(".next-step-body");
+    next_step_body.style.paddingTop = nav_height + "rem";
+    next_step_body.style.paddingBottom = footer_height + "rem";
+
+  }
+
+  setBodySize();
+
+  $(window).resize(function () {
+    setBodySize();
+  })
+
 });

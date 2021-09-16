@@ -14347,6 +14347,12 @@ input.input-inner-default:focus {
 }
 
 /* line 1083, scss/screen.scss */
+#station-info-none strong {
+  font-weight: bold;
+  color: #ff2b2b;
+}
+
+/* line 1090, scss/screen.scss */
 #map-for-print-right, #map-for-print-left {
   position: absolute;
   left: 0px;
@@ -14356,7 +14362,7 @@ input.input-inner-default:focus {
   z-index: 0;
 }
 
-/* line 1090, scss/screen.scss */
+/* line 1097, scss/screen.scss */
 #map-for-print-right img, #map-for-print-left img {
   width: 100%;
   height: auto;
@@ -14365,12 +14371,12 @@ input.input-inner-default:focus {
   left: 0px;
 }
 
-/* line 1097, scss/screen.scss */
+/* line 1104, scss/screen.scss */
 #map-for-print-right .attribution, #map-for-print-left .attribution {
   top: calc(100% - 17px);
 }
 
-/* line 1101, scss/screen.scss */
+/* line 1108, scss/screen.scss */
 #map-for-print-right .bottom-controls, #map-for-print-left .bottom-controls {
   max-height: 54px;
   height: 54px;
@@ -14379,7 +14385,7 @@ input.input-inner-default:focus {
   left: 24px;
 }
 
-/* line 1109, scss/screen.scss */
+/* line 1116, scss/screen.scss */
 #map-for-print-right .title, #map-for-print-left .title {
   background-color: rgba(233, 241, 252, 0.75) !important;
   max-height: 42px;
@@ -14396,7 +14402,7 @@ input.input-inner-default:focus {
   border-top-right-radius: 5px;
 }
 
-/* line 1121, scss/screen.scss */
+/* line 1128, scss/screen.scss */
 #map-for-print-right .legend, #map-for-print-left .legend {
   max-height: 250px;
   height: 250px;
@@ -14405,12 +14411,12 @@ input.input-inner-default:focus {
   left: 24px;
 }
 
-/* line 1133, scss/screen.scss */
+/* line 1140, scss/screen.scss */
 .d-xs-only {
   display: none;
 }
 
-/* line 1139, scss/screen.scss */
+/* line 1146, scss/screen.scss */
 .button {
   position: relative;
   display: inline-block;
@@ -14423,7 +14429,7 @@ input.input-inner-default:focus {
   transition: 0.25s;
 }
 
-/* line 1147, scss/screen.scss */
+/* line 1154, scss/screen.scss */
 .button:before, .button:after {
   content: '';
   display: block;
@@ -14432,37 +14438,37 @@ input.input-inner-default:focus {
   top: 50%;
 }
 
-/* line 1158, scss/screen.scss */
+/* line 1165, scss/screen.scss */
 .button.display-blocks {
   display: block;
 }
 
-/* line 1164, scss/screen.scss */
+/* line 1171, scss/screen.scss */
 .button .icon {
   margin: -2px 10px 0 0;
 }
 
-/* line 1169, scss/screen.scss */
+/* line 1176, scss/screen.scss */
 .button.plus:before {
   width: 14px;
   height: 4px;
   margin-top: -2px;
 }
 
-/* line 1175, scss/screen.scss */
+/* line 1182, scss/screen.scss */
 .button.plus:after {
   width: 4px;
   height: 14px;
   margin: -7px 5px 0 0;
 }
 
-/* line 1183, scss/screen.scss */
+/* line 1190, scss/screen.scss */
 .button.arrow-right:before, .button.arrow-right:after {
   width: 10px;
   height: 4px;
 }
 
-/* line 1189, scss/screen.scss */
+/* line 1196, scss/screen.scss */
 .button.arrow-right:before {
   -webkit-transform: rotate(-45deg);
   -moz-transform: rotate(-45deg);
@@ -14472,7 +14478,7 @@ input.input-inner-default:focus {
   margin-top: 1px;
 }
 
-/* line 1194, scss/screen.scss */
+/* line 1201, scss/screen.scss */
 .button.arrow-right:after {
   -webkit-transform: rotate(45deg);
   -moz-transform: rotate(45deg);
@@ -14482,7 +14488,7 @@ input.input-inner-default:focus {
   margin-top: -4px;
 }
 
-/* line 1201, scss/screen.scss */
+/* line 1208, scss/screen.scss */
 .button.close:before, .button.close:after {
   right: 6px;
   width: 24px;
@@ -14490,7 +14496,7 @@ input.input-inner-default:focus {
   margin-top: -4px;
 }
 
-/* line 1209, scss/screen.scss */
+/* line 1216, scss/screen.scss */
 .button.close:before {
   -webkit-transform: rotate(-45deg);
   -moz-transform: rotate(-45deg);
@@ -14499,7 +14505,7 @@ input.input-inner-default:focus {
   transform: rotate(-45deg);
 }
 
-/* line 1213, scss/screen.scss */
+/* line 1220, scss/screen.scss */
 .button.close:after {
   -webkit-transform: rotate(45deg);
   -moz-transform: rotate(45deg);
@@ -14508,113 +14514,113 @@ input.input-inner-default:focus {
   transform: rotate(45deg);
 }
 
-/* line 1220, scss/screen.scss */
+/* line 1227, scss/screen.scss */
 .button.color-white {
   color: #ffffff;
 }
 
-/* line 1223, scss/screen.scss */
+/* line 1230, scss/screen.scss */
 .button.color-white:before, .button.color-white:after {
   background: #ffffff;
 }
 
-/* line 1229, scss/screen.scss */
+/* line 1236, scss/screen.scss */
 .button.color-orange {
   color: #f5442d !important;
 }
 
-/* line 1232, scss/screen.scss */
+/* line 1239, scss/screen.scss */
 .button.color-orange:before, .button.color-orange:after {
   background: #f5442d !important;
 }
 
-/* line 1238, scss/screen.scss */
+/* line 1245, scss/screen.scss */
 .button.color-orange.arrow-right:before {
   background: #f5442d !important;
 }
 
-/* line 1242, scss/screen.scss */
+/* line 1249, scss/screen.scss */
 .button.color-orange.arrow-right:after {
   background: #f5442d !important;
 }
 
-/* line 1250, scss/screen.scss */
+/* line 1257, scss/screen.scss */
 .button.border-white {
   border-color: #ffffff;
   color: #ffffff;
 }
 
-/* line 1254, scss/screen.scss */
+/* line 1261, scss/screen.scss */
 .button.border-white:before, .button.border-white:after {
   background: #ffffff;
 }
 
-/* line 1260, scss/screen.scss */
+/* line 1267, scss/screen.scss */
 .button.border-trans {
   border-color: transparent;
 }
 
-/* line 1264, scss/screen.scss */
+/* line 1271, scss/screen.scss */
 .button.border-none {
   border: none;
 }
 
-/* line 1270, scss/screen.scss */
+/* line 1277, scss/screen.scss */
 .button.bg-trans {
   background: transparent;
 }
 
-/* line 1274, scss/screen.scss */
+/* line 1281, scss/screen.scss */
 .button.bg-white {
   background: white;
 }
 
-/* line 1283, scss/screen.scss */
+/* line 1290, scss/screen.scss */
 .button.hover-bg-white:hover {
   background: #ffffff;
   color: #0058cf;
   mix-blend-mode: screen;
 }
 
-/* line 1288, scss/screen.scss */
+/* line 1295, scss/screen.scss */
 .button.hover-bg-white:hover:before, .button.hover-bg-white:hover:after {
   background: #000000;
 }
 
-/* line 1297, scss/screen.scss */
+/* line 1304, scss/screen.scss */
 .button.blend-screen {
   mix-blend-mode: screen;
 }
 
-/* line 1300, scss/screen.scss */
+/* line 1307, scss/screen.scss */
 .button.blend-screen:before, .button.blend-screen:after {
   background: #000000;
 }
 
-/* line 1305, scss/screen.scss */
+/* line 1312, scss/screen.scss */
 .button.blend-screen:hover {
   color: #000000;
 }
 
-/* line 1312, scss/screen.scss */
+/* line 1319, scss/screen.scss */
 .icon {
   display: inline-block;
   vertical-align: middle;
 }
 
-/* line 1318, scss/screen.scss */
+/* line 1325, scss/screen.scss */
 .stuck {
   position: fixed;
   top: 0;
 }
 
-/* line 1323, scss/screen.scss */
+/* line 1330, scss/screen.scss */
 .variable-option-item {
   width: 100%;
   height: 44px;
 }
 
-/* line 1328, scss/screen.scss */
+/* line 1335, scss/screen.scss */
 .variable-option-text {
   width: 70%;
   min-width: 215px;
@@ -14623,14 +14629,14 @@ input.input-inner-default:focus {
 }
 
 @media screen and (max-width: 1050px) and (min-width: 900px) {
-  /* line 1328, scss/screen.scss */
+  /* line 1335, scss/screen.scss */
   .variable-option-text {
     font-size: .7rem;
     min-width: 175px;
   }
 }
 
-/* line 1339, scss/screen.scss */
+/* line 1346, scss/screen.scss */
 .variable-option-tooltip {
   height: 24px;
   padding-top: 3px;
@@ -14638,13 +14644,13 @@ input.input-inner-default:focus {
   font-size: 20px;
 }
 
-/* line 1345, scss/screen.scss */
+/* line 1352, scss/screen.scss */
 .variable-option-tooltip:hover {
   color: #124086;
   background: #d3e3f9;
 }
 
-/* line 1351, scss/screen.scss */
+/* line 1358, scss/screen.scss */
 .tooltip {
   position: relative;
   display: block;
@@ -14659,7 +14665,7 @@ input.input-inner-default:focus {
   box-shadow: 0 0 8px rgba(0, 88, 207, 0.25);
 }
 
-/* line 1362, scss/screen.scss */
+/* line 1369, scss/screen.scss */
 .tooltip .tooltip-arrow::before {
   position: absolute;
   left: calc(100% + 12px);
@@ -14681,7 +14687,7 @@ input.input-inner-default:focus {
   clear: both;
 }
 
-/* line 1377, scss/screen.scss */
+/* line 1384, scss/screen.scss */
 .chart-legend .legend-item {
   position: relative;
   float: left;
@@ -14699,12 +14705,12 @@ input.input-inner-default:focus {
   transition: 0.25s;
 }
 
-/* line 1390, scss/screen.scss */
+/* line 1397, scss/screen.scss */
 .chart-legend .legend-item:hover {
   border: 1px solid #eeeeee;
 }
 
-/* line 1394, scss/screen.scss */
+/* line 1401, scss/screen.scss */
 .chart-legend .legend-item:after {
   content: "\e91f";
   display: block;
@@ -14731,64 +14737,64 @@ input.input-inner-default:focus {
   transition: 0.25s;
 }
 
-/* line 1413, scss/screen.scss */
+/* line 1420, scss/screen.scss */
 .chart-legend .legend-item.selected {
   border: 1px solid #bbbbbb;
 }
 
-/* line 1418, scss/screen.scss */
+/* line 1425, scss/screen.scss */
 .chart-legend .legend-item.selected:after {
   opacity: 1;
 }
 
-/* line 1424, scss/screen.scss */
+/* line 1431, scss/screen.scss */
 .chart-legend .legend-item-block {
   height: 20px;
 }
 
-/* line 1428, scss/screen.scss */
+/* line 1435, scss/screen.scss */
 .chart-legend .legend-item-line {
   height: 5px;
 }
 
-/* line 1433, scss/screen.scss */
+/* line 1440, scss/screen.scss */
 .chart-legend .legend-item-block#rcp45-block, .chart-legend .legend-item-block#preciprcp45-block, .chart-legend .legend-item-block #derivercp45-block {
   background: #99bcec;
 }
 
-/* line 1439, scss/screen.scss */
+/* line 1446, scss/screen.scss */
 .chart-legend .legend-item-block#rcp85-block, .chart-legend .legend-item-block#preciprcp85-block, .chart-legend .legend-item-block#derivercp85-block {
   background: #fbb4ab;
 }
 
-/* line 1445, scss/screen.scss */
+/* line 1452, scss/screen.scss */
 .chart-legend .legend-item-block#historical-block, .chart-legend .legend-item-block#preciphistorical-block, .chart-legend .legend-item-block#derivehistorical-block {
   background: #d6d6d6;
 }
 
-/* line 1453, scss/screen.scss */
+/* line 1460, scss/screen.scss */
 .chart-legend .legend-item-line#over-baseline-block, .chart-legend .legend-item-line#precipover-baseline-block, .chart-legend .legend-item-line#deriveover-baseline-block {
   background: #cd6760;
 }
 
-/* line 1459, scss/screen.scss */
+/* line 1466, scss/screen.scss */
 .chart-legend .legend-item-line#under-baseline-block, .chart-legend .legend-item-line#precipunder-baseline-block, .chart-legend .legend-item-line#deriveunder-baseline-block {
   margin-top: 20px;
   background: #6194c8;
 }
 
-/* line 1466, scss/screen.scss */
+/* line 1473, scss/screen.scss */
 .chart-legend .legend-item-line#rcp45-line, .chart-legend .legend-item-line#preciprcp45-line, .chart-legend .legend-item-line#derivercp45-line {
   margin-top: 20px;
   background: #0058cf;
 }
 
-/* line 1473, scss/screen.scss */
+/* line 1480, scss/screen.scss */
 .chart-legend .legend-item-line#rcp85-line, .chart-legend .legend-item-line#preciprcp85-line, .chart-legend .legend-item-line#derivercp85-line {
   background: #f5442d;
 }
 
-/* line 1482, scss/screen.scss */
+/* line 1489, scss/screen.scss */
 .download-panel {
   display: none;
   position: fixed;
@@ -14803,7 +14809,7 @@ input.input-inner-default:focus {
   opacity: 0.95;
 }
 
-/* line 1497, scss/screen.scss */
+/* line 1504, scss/screen.scss */
 .download-panel .download-inner {
   margin: auto;
   position: absolute;
@@ -14819,22 +14825,22 @@ input.input-inner-default:focus {
   padding: 30px;
 }
 
-/* line 1507, scss/screen.scss */
+/* line 1514, scss/screen.scss */
 .download-panel .download-inner p {
   margin: 0 0 20px 0;
 }
 
-/* line 1511, scss/screen.scss */
+/* line 1518, scss/screen.scss */
 .download-panel .download-inner li {
   margin: 0 0 10px 0;
 }
 
-/* line 1515, scss/screen.scss */
+/* line 1522, scss/screen.scss */
 .download-panel .download-inner a {
   color: #ffffff;
 }
 
-/* line 1520, scss/screen.scss */
+/* line 1527, scss/screen.scss */
 .download-panel #download-dismiss-button, .download-panel .download-dismiss-button {
   display: block;
   position: absolute;
@@ -15765,7 +15771,7 @@ input.input-inner-default:focus {
   color: #0D3064;
 }
 
-/* line 1538, scss/screen.scss */
+/* line 1545, scss/screen.scss */
 #desktop-warning {
   display: none;
 }
@@ -17709,18 +17715,12 @@ input.input-inner:focus {
   }
 }
 
-/* line 67, scss/pages/_historical_weather_data.scss */
-#historical-weather-data-viewport #station-info-none strong {
-  font-weight: 800;
-  color: #f5652d;
-}
-
-/* line 73, scss/pages/_historical_weather_data.scss */
+/* line 66, scss/pages/_historical_weather_data.scss */
 #historical-weather-data-viewport #stations-map-wrap {
   min-height: 150px !important;
 }
 
-/* line 77, scss/pages/_historical_weather_data.scss */
+/* line 70, scss/pages/_historical_weather_data.scss */
 #historical-weather-data-viewport .map-nostations-message {
   z-index: 500;
   width: 25%;
@@ -17739,7 +17739,7 @@ input.input-inner:focus {
 }
 
 @media screen and (max-width: 599px) {
-  /* line 77, scss/pages/_historical_weather_data.scss */
+  /* line 70, scss/pages/_historical_weather_data.scss */
   #historical-weather-data-viewport .map-nostations-message {
     top: -200px !important;
     left: 10% !important;
@@ -17747,86 +17747,86 @@ input.input-inner:focus {
   }
 }
 
-/* line 97, scss/pages/_historical_weather_data.scss */
+/* line 90, scss/pages/_historical_weather_data.scss */
 #historical-weather-data-viewport #stations-select-wrapper {
   display: flex !important;
 }
 
 @media screen and (max-width: 900px) {
-  /* line 97, scss/pages/_historical_weather_data.scss */
+  /* line 90, scss/pages/_historical_weather_data.scss */
   #historical-weather-data-viewport #stations-select-wrapper {
     width: 100% !important;
     margin-top: 6px;
   }
 }
 
-/* line 105, scss/pages/_historical_weather_data.scss */
+/* line 98, scss/pages/_historical_weather_data.scss */
 #historical-weather-data-viewport #chartmap-wrapper {
   width: 30% !important;
 }
 
 @media screen and (min-width: 901px) {
-  /* line 109, scss/pages/_historical_weather_data.scss */
+  /* line 102, scss/pages/_historical_weather_data.scss */
   #historical-weather-data-viewport #stations-map-row {
     height: calc(100% - 48px - 6px - 140px) !important;
   }
-  /* line 112, scss/pages/_historical_weather_data.scss */
+  /* line 105, scss/pages/_historical_weather_data.scss */
   #historical-weather-data-viewport #stations-map-row.closed-filters {
     height: calc(100% - 48px - 6px) !important;
   }
 }
 
 @media screen and (min-width: 901px) {
-  /* line 118, scss/pages/_historical_weather_data.scss */
+  /* line 111, scss/pages/_historical_weather_data.scss */
   #historical-weather-data-viewport #stations-graph-row {
     height: calc(100% - 48px - 6px - 205px) !important;
   }
-  /* line 121, scss/pages/_historical_weather_data.scss */
+  /* line 114, scss/pages/_historical_weather_data.scss */
   #historical-weather-data-viewport #stations-graph-row.closed-filters {
     height: calc(100% - 48px - 6px) !important;
   }
 }
 
-/* line 127, scss/pages/_historical_weather_data.scss */
+/* line 120, scss/pages/_historical_weather_data.scss */
 #historical-weather-data-viewport #stations-map-row {
   justify-content: space-evenly !important;
 }
 
-/* line 131, scss/pages/_historical_weather_data.scss */
+/* line 124, scss/pages/_historical_weather_data.scss */
 #historical-weather-data-viewport #stations-map-row.closed-filters .stations-map-wrap {
   height: 86% !important;
 }
 
-/* line 136, scss/pages/_historical_weather_data.scss */
+/* line 129, scss/pages/_historical_weather_data.scss */
 #historical-weather-data-viewport #stations-map-row #stations-map {
   width: 100%;
   flex-wrap: wrap;
 }
 
-/* line 141, scss/pages/_historical_weather_data.scss */
+/* line 134, scss/pages/_historical_weather_data.scss */
 #historical-weather-data-viewport #stations-map-row .esri-view-user-storage {
   height: unset !important;
 }
 
-/* line 146, scss/pages/_historical_weather_data.scss */
+/* line 139, scss/pages/_historical_weather_data.scss */
 #historical-weather-data-viewport #stations-map-row #stations-map .movable.slider-div {
   top: 0px !important;
 }
 
 @media screen and (max-width: 1240px) {
-  /* line 127, scss/pages/_historical_weather_data.scss */
+  /* line 120, scss/pages/_historical_weather_data.scss */
   #historical-weather-data-viewport #stations-map-row {
     justify-content: center !important;
   }
 }
 
 @media screen and (max-width: 900px) {
-  /* line 127, scss/pages/_historical_weather_data.scss */
+  /* line 120, scss/pages/_historical_weather_data.scss */
   #historical-weather-data-viewport #stations-map-row {
     order: 1;
     padding-bottom: 250px !important;
   }
-  /* line 159, scss/pages/_historical_weather_data.scss */
+  /* line 152, scss/pages/_historical_weather_data.scss */
   #historical-weather-data-viewport #stations-map-row #stations-map {
     width: 100%;
     flex-wrap: wrap;
@@ -17834,12 +17834,12 @@ input.input-inner:focus {
     max-height: 350px !important;
     height: 350px !important;
   }
-  /* line 166, scss/pages/_historical_weather_data.scss */
+  /* line 159, scss/pages/_historical_weather_data.scss */
   #historical-weather-data-viewport #stations-map-row #stations-map .map-wrap {
     min-height: 350px !important;
     height: 350px !important;
   }
-  /* line 171, scss/pages/_historical_weather_data.scss */
+  /* line 164, scss/pages/_historical_weather_data.scss */
   #historical-weather-data-viewport #stations-map-row #stations-map .esri-view-root {
     flex: 0 0 100%;
     height: 100% !important;
@@ -17848,20 +17848,20 @@ input.input-inner:focus {
 }
 
 @media screen and (max-width: 900px) and (max-width: 599px) {
-  /* line 171, scss/pages/_historical_weather_data.scss */
+  /* line 164, scss/pages/_historical_weather_data.scss */
   #historical-weather-data-viewport #stations-map-row #stations-map .esri-view-root {
     z-index: 200;
   }
 }
 
 @media screen and (max-width: 900px) {
-  /* line 180, scss/pages/_historical_weather_data.scss */
+  /* line 173, scss/pages/_historical_weather_data.scss */
   #historical-weather-data-viewport #stations-map-row #stations-map .esri-overlay-surface {
     flex: 0 0 100%;
     height: 100% !important;
     width: 100% !important;
   }
-  /* line 186, scss/pages/_historical_weather_data.scss */
+  /* line 179, scss/pages/_historical_weather_data.scss */
   #historical-weather-data-viewport #stations-map-row #stations-map .esri-view-user-storage {
     overflow: visible !important;
     height: 100% !important;
@@ -17870,7 +17870,7 @@ input.input-inner:focus {
 }
 
 @media screen and (max-width: 900px) and (max-width: 900px) {
-  /* line 186, scss/pages/_historical_weather_data.scss */
+  /* line 179, scss/pages/_historical_weather_data.scss */
   #historical-weather-data-viewport #stations-map-row #stations-map .esri-view-user-storage {
     position: relative !important;
     top: -350px;
@@ -17878,7 +17878,7 @@ input.input-inner:focus {
 }
 
 @media screen and (max-width: 900px) {
-  /* line 196, scss/pages/_historical_weather_data.scss */
+  /* line 189, scss/pages/_historical_weather_data.scss */
   #historical-weather-data-viewport #stations-map-row #stations-map .scenario-map-overlay-container {
     position: relative !important;
     top: 0px !important;
@@ -17890,19 +17890,19 @@ input.input-inner:focus {
 }
 
 @media screen and (max-width: 599px) {
-  /* line 127, scss/pages/_historical_weather_data.scss */
+  /* line 120, scss/pages/_historical_weather_data.scss */
   #historical-weather-data-viewport #stations-map-row {
     height: auto !important;
     order: 1;
   }
-  /* line 211, scss/pages/_historical_weather_data.scss */
+  /* line 204, scss/pages/_historical_weather_data.scss */
   #historical-weather-data-viewport #stations-map-row .map-wrap {
     min-height: 250px !important;
     height: 250px !important;
   }
 }
 
-/* line 218, scss/pages/_historical_weather_data.scss */
+/* line 211, scss/pages/_historical_weather_data.scss */
 #historical-weather-data-viewport .left_chart {
   width: calc(50% - 40px);
   height: 100%;
@@ -17911,13 +17911,13 @@ input.input-inner:focus {
 }
 
 @media screen and (max-width: 900px) {
-  /* line 218, scss/pages/_historical_weather_data.scss */
+  /* line 211, scss/pages/_historical_weather_data.scss */
   #historical-weather-data-viewport .left_chart {
     width: calc(100%);
   }
 }
 
-/* line 228, scss/pages/_historical_weather_data.scss */
+/* line 221, scss/pages/_historical_weather_data.scss */
 #historical-weather-data-viewport .right_chart {
   width: calc(50% - 40px);
   height: 100%;
@@ -17926,13 +17926,13 @@ input.input-inner:focus {
 }
 
 @media screen and (max-width: 900px) {
-  /* line 228, scss/pages/_historical_weather_data.scss */
+  /* line 221, scss/pages/_historical_weather_data.scss */
   #historical-weather-data-viewport .right_chart {
     width: calc(100%);
   }
 }
 
-/* line 238, scss/pages/_historical_weather_data.scss */
+/* line 231, scss/pages/_historical_weather_data.scss */
 #historical-weather-data-viewport #overlay-chart-container {
   margin: 25px;
   height: 50vh;
@@ -17940,7 +17940,7 @@ input.input-inner:focus {
 }
 
 @media screen and (max-width: 900px) {
-  /* line 244, scss/pages/_historical_weather_data.scss */
+  /* line 237, scss/pages/_historical_weather_data.scss */
   #historical-weather-data-viewport #stations-graph-row {
     min-height: 610px !important;
     max-height: 610px !important;
@@ -17948,14 +17948,14 @@ input.input-inner:focus {
   }
 }
 
-/* line 252, scss/pages/_historical_weather_data.scss */
+/* line 245, scss/pages/_historical_weather_data.scss */
 #historical-weather-data-viewport #stations-graph-wrap {
   height: 100% !important;
   width: 80%;
 }
 
 @media screen and (max-width: 900px) {
-  /* line 252, scss/pages/_historical_weather_data.scss */
+  /* line 245, scss/pages/_historical_weather_data.scss */
   #historical-weather-data-viewport #stations-graph-wrap {
     min-height: 300px !important;
     max-height: 300px !important;
@@ -17963,13 +17963,13 @@ input.input-inner:focus {
   }
 }
 
-/* line 262, scss/pages/_historical_weather_data.scss */
+/* line 255, scss/pages/_historical_weather_data.scss */
 #historical-weather-data-viewport #stations-map-wrap {
   height: 100%;
 }
 
 @media screen and (max-width: 900px) {
-  /* line 262, scss/pages/_historical_weather_data.scss */
+  /* line 255, scss/pages/_historical_weather_data.scss */
   #historical-weather-data-viewport #stations-map-wrap {
     min-height: 350px !important;
     max-height: 350px !important;
@@ -17978,7 +17978,7 @@ input.input-inner:focus {
   }
 }
 
-/* line 272, scss/pages/_historical_weather_data.scss */
+/* line 265, scss/pages/_historical_weather_data.scss */
 #historical-weather-data-viewport #station-info-row {
   -webkit-transition: 0.5s;
   -moz-transition: 0.5s;
@@ -17994,19 +17994,19 @@ input.input-inner:focus {
   transition-timing-function: ease-out;
 }
 
-/* line 277, scss/pages/_historical_weather_data.scss */
+/* line 270, scss/pages/_historical_weather_data.scss */
 #historical-weather-data-viewport #station-info-row #more-info-description {
   padding-left: 6px;
 }
 
-/* line 281, scss/pages/_historical_weather_data.scss */
+/* line 274, scss/pages/_historical_weather_data.scss */
 #historical-weather-data-viewport #station-info-row .more-info-description {
   padding-top: 6px;
   width: 100%;
 }
 
 @media screen and (max-width: 900px) {
-  /* line 272, scss/pages/_historical_weather_data.scss */
+  /* line 265, scss/pages/_historical_weather_data.scss */
   #historical-weather-data-viewport #station-info-row {
     min-height: 250px;
     max-height: 250px !important;
@@ -18016,44 +18016,44 @@ input.input-inner:focus {
 }
 
 @media screen and (max-width: 768px) {
-  /* line 272, scss/pages/_historical_weather_data.scss */
+  /* line 265, scss/pages/_historical_weather_data.scss */
   #historical-weather-data-viewport #station-info-row {
     align-self: center;
     width: 90% !important;
   }
 }
 
-/* line 299, scss/pages/_historical_weather_data.scss */
+/* line 292, scss/pages/_historical_weather_data.scss */
 #historical-weather-data-viewport #stations-map-row, #historical-weather-data-viewport #stations-graph-row {
   align-self: center;
 }
 
 @media screen and (max-width: 768px) {
-  /* line 299, scss/pages/_historical_weather_data.scss */
+  /* line 292, scss/pages/_historical_weather_data.scss */
   #historical-weather-data-viewport #stations-map-row, #historical-weather-data-viewport #stations-graph-row {
     width: 90% !important;
   }
 }
 
-/* line 306, scss/pages/_historical_weather_data.scss */
+/* line 299, scss/pages/_historical_weather_data.scss */
 #historical-weather-data-viewport #station-overlay {
   height: 100%;
 }
 
-/* line 310, scss/pages/_historical_weather_data.scss */
+/* line 303, scss/pages/_historical_weather_data.scss */
 #historical-weather-data-viewport .esri-expand__container {
   height: 32px;
   width: 32px;
 }
 
-/* line 315, scss/pages/_historical_weather_data.scss */
+/* line 308, scss/pages/_historical_weather_data.scss */
 #historical-weather-data-viewport .scenario-map-legend-container {
   max-width: 7rem;
   background: #ffffff;
   padding: 0.15rem 0.1rem;
 }
 
-/* line 320, scss/pages/_historical_weather_data.scss */
+/* line 313, scss/pages/_historical_weather_data.scss */
 #historical-weather-data-viewport .scenario-map-legend-container .legend-unit-label {
   margin: 0.2rem 0.25rem;
   display: block;
@@ -18061,45 +18061,45 @@ input.input-inner:focus {
   font-weight: 500;
 }
 
-/* line 327, scss/pages/_historical_weather_data.scss */
+/* line 320, scss/pages/_historical_weather_data.scss */
 #historical-weather-data-viewport .scenario-map-legend-container .legend-image {
   display: block;
   max-width: 5.2rem;
 }
 
-/* line 332, scss/pages/_historical_weather_data.scss */
+/* line 325, scss/pages/_historical_weather_data.scss */
 #historical-weather-data-viewport .scenario-map-legend-container .legend-note-label {
   display: block;
   font-size: 0.7rem;
   margin: 0.1rem 0.3rem;
 }
 
-/* line 339, scss/pages/_historical_weather_data.scss */
+/* line 332, scss/pages/_historical_weather_data.scss */
 #historical-weather-data-viewport .esri-ui-top-left .esri-expand__content, #historical-weather-data-viewport .esri-ui-top-right .esri-expand__content {
   top: -32px !important;
 }
 
-/* line 343, scss/pages/_historical_weather_data.scss */
+/* line 336, scss/pages/_historical_weather_data.scss */
 #historical-weather-data-viewport .esri-view-width-xsmall .esri-component.esri-expand.esri-widget.esri-expand--auto {
   display: none !important;
 }
 
-/* line 347, scss/pages/_historical_weather_data.scss */
+/* line 340, scss/pages/_historical_weather_data.scss */
 #historical-weather-data-viewport .esri-view-width-xsmall .esri-expand--auto .esri-expand__container--expanded {
   position: relative !important;
 }
 
-/* line 351, scss/pages/_historical_weather_data.scss */
+/* line 344, scss/pages/_historical_weather_data.scss */
 #historical-weather-data-viewport .esri-view-width-greater-than-xsmall .esri-expand--auto .esri-expand__content {
   position: relative !important;
 }
 
-/* line 355, scss/pages/_historical_weather_data.scss */
+/* line 348, scss/pages/_historical_weather_data.scss */
 #historical-weather-data-viewport .scenario-map-overlay-container {
   position: relative;
 }
 
-/* line 363, scss/pages/_historical_weather_data.scss */
+/* line 356, scss/pages/_historical_weather_data.scss */
 #historical-weather-data-viewport .esri-view-surface {
   -webkit-border-radius: 5px;
   -moz-border-radius: 5px;
@@ -18108,25 +18108,25 @@ input.input-inner:focus {
   border-radius: 5px;
 }
 
-/* line 367, scss/pages/_historical_weather_data.scss */
+/* line 360, scss/pages/_historical_weather_data.scss */
 #historical-weather-data-viewport .top-select-wrapper {
   width: 34% !important;
 }
 
-/* line 369, scss/pages/_historical_weather_data.scss */
+/* line 362, scss/pages/_historical_weather_data.scss */
 #historical-weather-data-viewport .top-select-wrapper-minor {
   width: 5% !important;
 }
 
 @media screen and (max-width: 900px) {
-  /* line 374, scss/pages/_historical_weather_data.scss */
+  /* line 367, scss/pages/_historical_weather_data.scss */
   #historical-weather-data-viewport .search-box-secondary {
     width: 100% !important;
     display: inline-block !important;
   }
 }
 
-/* line 381, scss/pages/_historical_weather_data.scss */
+/* line 374, scss/pages/_historical_weather_data.scss */
 #historical-weather-data-viewport .ui-icon {
   background-image: none !important;
 }
@@ -18897,18 +18897,12 @@ input.input-inner:focus {
   top: calc(100% - 187px);
 }
 
-/* line 67, scss/pages/_high_tide_flooding.scss */
-#high-tide-flooding-viewport #station-info-none strong {
-  font-weight: 800;
-  color: #f5652d;
-}
-
-/* line 73, scss/pages/_high_tide_flooding.scss */
+/* line 66, scss/pages/_high_tide_flooding.scss */
 #high-tide-flooding-viewport #stations-map-wrap {
   min-height: 150px !important;
 }
 
-/* line 77, scss/pages/_high_tide_flooding.scss */
+/* line 70, scss/pages/_high_tide_flooding.scss */
 #high-tide-flooding-viewport .map-nostations-message {
   z-index: 500;
   width: 25%;
@@ -18927,7 +18921,7 @@ input.input-inner:focus {
 }
 
 @media screen and (max-width: 599px) {
-  /* line 77, scss/pages/_high_tide_flooding.scss */
+  /* line 70, scss/pages/_high_tide_flooding.scss */
   #high-tide-flooding-viewport .map-nostations-message {
     top: -200px !important;
     left: 10% !important;
@@ -18935,20 +18929,20 @@ input.input-inner:focus {
   }
 }
 
-/* line 97, scss/pages/_high_tide_flooding.scss */
+/* line 90, scss/pages/_high_tide_flooding.scss */
 #high-tide-flooding-viewport #stations-select-wrapper {
   display: flex !important;
 }
 
 @media screen and (max-width: 900px) {
-  /* line 97, scss/pages/_high_tide_flooding.scss */
+  /* line 90, scss/pages/_high_tide_flooding.scss */
   #high-tide-flooding-viewport #stations-select-wrapper {
     width: 100% !important;
     margin-top: 6px;
   }
 }
 
-/* line 106, scss/pages/_high_tide_flooding.scss */
+/* line 99, scss/pages/_high_tide_flooding.scss */
 #high-tide-flooding-viewport #btn-tidalzoom.active {
   background-color: #124086 !important;
   color: #E9F1FC !important;
@@ -18956,7 +18950,7 @@ input.input-inner:focus {
   border: 1px solid rgba(18, 64, 134, 0.5) !important;
 }
 
-/* line 112, scss/pages/_high_tide_flooding.scss */
+/* line 105, scss/pages/_high_tide_flooding.scss */
 #high-tide-flooding-viewport #btn-tidalzoom.active:focus {
   background-color: #397ee5 !important;
   color: #E9F1FC !important;
@@ -18964,7 +18958,7 @@ input.input-inner:focus {
   outline: none !important;
 }
 
-/* line 119, scss/pages/_high_tide_flooding.scss */
+/* line 112, scss/pages/_high_tide_flooding.scss */
 #high-tide-flooding-viewport #btn-tidalzoom.active:hover {
   background-color: #397ee5 !important;
   color: #E9F1FC !important;
@@ -18972,79 +18966,79 @@ input.input-inner:focus {
   outline: none !important;
 }
 
-/* line 127, scss/pages/_high_tide_flooding.scss */
+/* line 120, scss/pages/_high_tide_flooding.scss */
 #high-tide-flooding-viewport #chartmap-wrapper {
   width: 30% !important;
 }
 
 @media screen and (min-width: 901px) {
-  /* line 131, scss/pages/_high_tide_flooding.scss */
+  /* line 124, scss/pages/_high_tide_flooding.scss */
   #high-tide-flooding-viewport #stations-map-row {
     height: calc(100% - 48px - 6px - 140px) !important;
   }
-  /* line 134, scss/pages/_high_tide_flooding.scss */
+  /* line 127, scss/pages/_high_tide_flooding.scss */
   #high-tide-flooding-viewport #stations-map-row.closed-filters {
     height: calc(100% - 48px - 6px - 80px) !important;
   }
 }
 
 @media screen and (min-width: 901px) {
-  /* line 140, scss/pages/_high_tide_flooding.scss */
+  /* line 133, scss/pages/_high_tide_flooding.scss */
   #high-tide-flooding-viewport #stations-graph-row {
     height: calc(100% - 48px - 6px - 180px) !important;
   }
-  /* line 143, scss/pages/_high_tide_flooding.scss */
+  /* line 136, scss/pages/_high_tide_flooding.scss */
   #high-tide-flooding-viewport #stations-graph-row.closed-filters {
     height: calc(100% - 48px - 6px - 80px) !important;
   }
 }
 
-/* line 149, scss/pages/_high_tide_flooding.scss */
+/* line 142, scss/pages/_high_tide_flooding.scss */
 #high-tide-flooding-viewport #stations-map-row {
   justify-content: space-evenly !important;
 }
 
-/* line 152, scss/pages/_high_tide_flooding.scss */
+/* line 145, scss/pages/_high_tide_flooding.scss */
 #high-tide-flooding-viewport #stations-map-row.closed-filters .stations-map-wrap {
   height: 86% !important;
 }
 
-/* line 157, scss/pages/_high_tide_flooding.scss */
+/* line 150, scss/pages/_high_tide_flooding.scss */
 #high-tide-flooding-viewport #stations-map-row #stations-map {
   width: 100%;
   flex-wrap: wrap;
 }
 
-/* line 161, scss/pages/_high_tide_flooding.scss */
+/* line 154, scss/pages/_high_tide_flooding.scss */
 #high-tide-flooding-viewport #stations-map-row #stations-map:focus {
   outline: none !important;
   border: 0px solid rgba(18, 64, 134, 0.5) !important;
 }
 
-/* line 167, scss/pages/_high_tide_flooding.scss */
+/* line 160, scss/pages/_high_tide_flooding.scss */
 #high-tide-flooding-viewport #stations-map-row .esri-view-user-storage {
   height: unset !important;
 }
 
-/* line 172, scss/pages/_high_tide_flooding.scss */
+/* line 165, scss/pages/_high_tide_flooding.scss */
 #high-tide-flooding-viewport #stations-map-row #stations-map .movable.slider-div {
   top: 0px !important;
 }
 
 @media screen and (max-width: 1240px) {
-  /* line 149, scss/pages/_high_tide_flooding.scss */
+  /* line 142, scss/pages/_high_tide_flooding.scss */
   #high-tide-flooding-viewport #stations-map-row {
     justify-content: center !important;
   }
 }
 
 @media screen and (max-width: 900px) {
-  /* line 149, scss/pages/_high_tide_flooding.scss */
+  /* line 142, scss/pages/_high_tide_flooding.scss */
   #high-tide-flooding-viewport #stations-map-row {
     order: 1;
     padding-bottom: 250px !important;
   }
-  /* line 185, scss/pages/_high_tide_flooding.scss */
+  /* line 178, scss/pages/_high_tide_flooding.scss */
   #high-tide-flooding-viewport #stations-map-row #stations-map {
     width: 100%;
     flex-wrap: wrap;
@@ -19052,12 +19046,12 @@ input.input-inner:focus {
     max-height: 350px !important;
     height: 350px !important;
   }
-  /* line 192, scss/pages/_high_tide_flooding.scss */
+  /* line 185, scss/pages/_high_tide_flooding.scss */
   #high-tide-flooding-viewport #stations-map-row #stations-map .map-wrap {
     min-height: 350px !important;
     height: 350px !important;
   }
-  /* line 197, scss/pages/_high_tide_flooding.scss */
+  /* line 190, scss/pages/_high_tide_flooding.scss */
   #high-tide-flooding-viewport #stations-map-row #stations-map .esri-view-root {
     flex: 0 0 100%;
     height: 100% !important;
@@ -19066,20 +19060,20 @@ input.input-inner:focus {
 }
 
 @media screen and (max-width: 900px) and (max-width: 599px) {
-  /* line 197, scss/pages/_high_tide_flooding.scss */
+  /* line 190, scss/pages/_high_tide_flooding.scss */
   #high-tide-flooding-viewport #stations-map-row #stations-map .esri-view-root {
     z-index: 200;
   }
 }
 
 @media screen and (max-width: 900px) {
-  /* line 206, scss/pages/_high_tide_flooding.scss */
+  /* line 199, scss/pages/_high_tide_flooding.scss */
   #high-tide-flooding-viewport #stations-map-row #stations-map .esri-overlay-surface {
     flex: 0 0 100%;
     height: 100% !important;
     width: 100% !important;
   }
-  /* line 212, scss/pages/_high_tide_flooding.scss */
+  /* line 205, scss/pages/_high_tide_flooding.scss */
   #high-tide-flooding-viewport #stations-map-row #stations-map .esri-view-user-storage {
     overflow: visible !important;
     height: 100% !important;
@@ -19088,7 +19082,7 @@ input.input-inner:focus {
 }
 
 @media screen and (max-width: 900px) and (max-width: 900px) {
-  /* line 212, scss/pages/_high_tide_flooding.scss */
+  /* line 205, scss/pages/_high_tide_flooding.scss */
   #high-tide-flooding-viewport #stations-map-row #stations-map .esri-view-user-storage {
     position: relative !important;
     top: -350px;
@@ -19096,7 +19090,7 @@ input.input-inner:focus {
 }
 
 @media screen and (max-width: 900px) {
-  /* line 222, scss/pages/_high_tide_flooding.scss */
+  /* line 215, scss/pages/_high_tide_flooding.scss */
   #high-tide-flooding-viewport #stations-map-row #stations-map .scenario-map-overlay-container {
     position: relative !important;
     top: 0px !important;
@@ -19108,19 +19102,19 @@ input.input-inner:focus {
 }
 
 @media screen and (max-width: 599px) {
-  /* line 149, scss/pages/_high_tide_flooding.scss */
+  /* line 142, scss/pages/_high_tide_flooding.scss */
   #high-tide-flooding-viewport #stations-map-row {
     height: auto !important;
     order: 1;
   }
-  /* line 237, scss/pages/_high_tide_flooding.scss */
+  /* line 230, scss/pages/_high_tide_flooding.scss */
   #high-tide-flooding-viewport #stations-map-row .map-wrap {
     min-height: 250px !important;
     height: 250px !important;
   }
 }
 
-/* line 244, scss/pages/_high_tide_flooding.scss */
+/* line 237, scss/pages/_high_tide_flooding.scss */
 #high-tide-flooding-viewport .tidal-chart {
   width: calc(100% - 40px);
   height: 100%;
@@ -19129,27 +19123,27 @@ input.input-inner:focus {
 }
 
 @media screen and (max-width: 900px) {
-  /* line 244, scss/pages/_high_tide_flooding.scss */
+  /* line 237, scss/pages/_high_tide_flooding.scss */
   #high-tide-flooding-viewport .tidal-chart {
     width: calc(100%);
   }
 }
 
-/* line 255, scss/pages/_high_tide_flooding.scss */
+/* line 248, scss/pages/_high_tide_flooding.scss */
 #high-tide-flooding-viewport #overlay-chart-container {
   margin: 25px;
   height: 50vh;
   width: calc(100% - 50px);
 }
 
-/* line 261, scss/pages/_high_tide_flooding.scss */
+/* line 254, scss/pages/_high_tide_flooding.scss */
 #high-tide-flooding-viewport #stations-graph-wrap {
   height: 100% !important;
   width: 80%;
 }
 
 @media screen and (max-width: 900px) {
-  /* line 261, scss/pages/_high_tide_flooding.scss */
+  /* line 254, scss/pages/_high_tide_flooding.scss */
   #high-tide-flooding-viewport #stations-graph-wrap {
     min-height: 300px !important;
     max-height: 300px !important;
@@ -19158,13 +19152,13 @@ input.input-inner:focus {
   }
 }
 
-/* line 272, scss/pages/_high_tide_flooding.scss */
+/* line 265, scss/pages/_high_tide_flooding.scss */
 #high-tide-flooding-viewport #stations-map-wrap {
   height: 100%;
 }
 
 @media screen and (max-width: 900px) {
-  /* line 272, scss/pages/_high_tide_flooding.scss */
+  /* line 265, scss/pages/_high_tide_flooding.scss */
   #high-tide-flooding-viewport #stations-map-wrap {
     min-height: 350px !important;
     max-height: 350px !important;
@@ -19173,7 +19167,7 @@ input.input-inner:focus {
   }
 }
 
-/* line 282, scss/pages/_high_tide_flooding.scss */
+/* line 275, scss/pages/_high_tide_flooding.scss */
 #high-tide-flooding-viewport #station-info-row {
   -webkit-transition: 0.5s;
   -moz-transition: 0.5s;
@@ -19189,19 +19183,19 @@ input.input-inner:focus {
   transition-timing-function: ease-out;
 }
 
-/* line 287, scss/pages/_high_tide_flooding.scss */
+/* line 280, scss/pages/_high_tide_flooding.scss */
 #high-tide-flooding-viewport #station-info-row #more-info-description {
   padding-left: 6px;
 }
 
-/* line 291, scss/pages/_high_tide_flooding.scss */
+/* line 284, scss/pages/_high_tide_flooding.scss */
 #high-tide-flooding-viewport #station-info-row .more-info-description {
   padding-top: 6px;
   width: 100%;
 }
 
 @media screen and (max-width: 900px) {
-  /* line 282, scss/pages/_high_tide_flooding.scss */
+  /* line 275, scss/pages/_high_tide_flooding.scss */
   #high-tide-flooding-viewport #station-info-row {
     min-height: 250px;
     max-height: 250px !important;
@@ -19211,72 +19205,72 @@ input.input-inner:focus {
 }
 
 @media screen and (max-width: 768px) {
-  /* line 282, scss/pages/_high_tide_flooding.scss */
+  /* line 275, scss/pages/_high_tide_flooding.scss */
   #high-tide-flooding-viewport #station-info-row {
     width: 90% !important;
   }
 }
 
-/* line 308, scss/pages/_high_tide_flooding.scss */
+/* line 301, scss/pages/_high_tide_flooding.scss */
 #high-tide-flooding-viewport #stations-map-row, #high-tide-flooding-viewport #stations-graph-row {
   align-self: center;
 }
 
 @media screen and (max-width: 768px) {
-  /* line 308, scss/pages/_high_tide_flooding.scss */
+  /* line 301, scss/pages/_high_tide_flooding.scss */
   #high-tide-flooding-viewport #stations-map-row, #high-tide-flooding-viewport #stations-graph-row {
     width: 90% !important;
   }
 }
 
-/* line 316, scss/pages/_high_tide_flooding.scss */
+/* line 309, scss/pages/_high_tide_flooding.scss */
 #high-tide-flooding-viewport #station-overlay {
   height: 100%;
 }
 
-/* line 320, scss/pages/_high_tide_flooding.scss */
+/* line 313, scss/pages/_high_tide_flooding.scss */
 #high-tide-flooding-viewport .text-info-box.label {
   font-weight: 500 !important;
 }
 
-/* line 324, scss/pages/_high_tide_flooding.scss */
+/* line 317, scss/pages/_high_tide_flooding.scss */
 #high-tide-flooding-viewport .esri-expand__container {
   height: 32px;
   width: 32px;
 }
 
-/* line 329, scss/pages/_high_tide_flooding.scss */
+/* line 322, scss/pages/_high_tide_flooding.scss */
 #high-tide-flooding-viewport .legend-image {
   max-height: 16rem;
   max-width: none;
 }
 
-/* line 334, scss/pages/_high_tide_flooding.scss */
+/* line 327, scss/pages/_high_tide_flooding.scss */
 #high-tide-flooding-viewport .esri-ui-top-left .esri-expand__content, #high-tide-flooding-viewport .esri-ui-top-right .esri-expand__content {
   top: -32px !important;
 }
 
-/* line 338, scss/pages/_high_tide_flooding.scss */
+/* line 331, scss/pages/_high_tide_flooding.scss */
 #high-tide-flooding-viewport .esri-view-width-xsmall .esri-component.esri-expand.esri-widget.esri-expand--auto {
   display: none !important;
 }
 
-/* line 342, scss/pages/_high_tide_flooding.scss */
+/* line 335, scss/pages/_high_tide_flooding.scss */
 #high-tide-flooding-viewport .esri-view-width-xsmall .esri-expand--auto .esri-expand__container--expanded {
   position: relative !important;
 }
 
-/* line 346, scss/pages/_high_tide_flooding.scss */
+/* line 339, scss/pages/_high_tide_flooding.scss */
 #high-tide-flooding-viewport .esri-view-width-greater-than-xsmall .esri-expand--auto .esri-expand__content {
   position: relative !important;
 }
 
-/* line 350, scss/pages/_high_tide_flooding.scss */
+/* line 343, scss/pages/_high_tide_flooding.scss */
 #high-tide-flooding-viewport .scenario-map-overlay-container {
   position: relative;
 }
 
-/* line 358, scss/pages/_high_tide_flooding.scss */
+/* line 351, scss/pages/_high_tide_flooding.scss */
 #high-tide-flooding-viewport .esri-view-surface {
   -webkit-border-radius: 5px;
   -moz-border-radius: 5px;
@@ -19285,18 +19279,18 @@ input.input-inner:focus {
   border-radius: 5px;
 }
 
-/* line 362, scss/pages/_high_tide_flooding.scss */
+/* line 355, scss/pages/_high_tide_flooding.scss */
 #high-tide-flooding-viewport .top-select-wrapper {
   width: 34% !important;
 }
 
-/* line 364, scss/pages/_high_tide_flooding.scss */
+/* line 357, scss/pages/_high_tide_flooding.scss */
 #high-tide-flooding-viewport .top-select-wrapper-minor {
   width: 5% !important;
 }
 
 @media screen and (max-width: 900px) {
-  /* line 369, scss/pages/_high_tide_flooding.scss */
+  /* line 362, scss/pages/_high_tide_flooding.scss */
   #high-tide-flooding-viewport .search-box-secondary {
     width: 100% !important;
     display: inline-block !important;
@@ -21063,7 +21057,7 @@ h2 {
   cursor: default;
 }
 
-/* line 1594, scss/screen.scss */
+/* line 1601, scss/screen.scss */
 .ui-autocomplete {
   position: absolute;
   top: 0;
@@ -21071,7 +21065,7 @@ h2 {
   cursor: default;
 }
 
-/* line 1600, scss/screen.scss */
+/* line 1607, scss/screen.scss */
 .ui-menu {
   display: block;
   padding: 10px;
@@ -21084,12 +21078,12 @@ h2 {
   box-shadow: 0 0 12px rgba(35, 58, 112, 0.25);
 }
 
-/* line 1609, scss/screen.scss */
+/* line 1616, scss/screen.scss */
 .ui-menu .ui-menu {
   position: absolute;
 }
 
-/* line 1613, scss/screen.scss */
+/* line 1620, scss/screen.scss */
 .ui-menu .ui-menu-item {
   position: relative;
   margin: 0;
@@ -21097,7 +21091,7 @@ h2 {
   cursor: pointer;
 }
 
-/* line 1620, scss/screen.scss */
+/* line 1627, scss/screen.scss */
 .ui-menu .ui-menu-divider {
   margin: 5px 0;
   height: 0;
@@ -21106,12 +21100,12 @@ h2 {
   border-width: 1px 0 0 0;
 }
 
-/* line 1629, scss/screen.scss */
+/* line 1636, scss/screen.scss */
 .ui-accordion .ui-accordion-header {
   outline: none;
 }
 
-/* line 1632, scss/screen.scss */
+/* line 1639, scss/screen.scss */
 .ui-accordion .ui-accordion-header .ui-accordion-header-icon {
   display: inline-block;
   position: static;
@@ -21120,14 +21114,14 @@ h2 {
   overflow: visible;
 }
 
-/* line 1642, scss/screen.scss */
+/* line 1649, scss/screen.scss */
 .accordion-plain .ui-accordion-header {
   padding: 8px 0;
   color: #233a70;
   line-height: 28px;
 }
 
-/* line 1647, scss/screen.scss */
+/* line 1654, scss/screen.scss */
 .accordion-plain .ui-accordion-header .ui-accordion-header-icon {
   display: block;
   float: left;
@@ -21137,17 +21131,17 @@ h2 {
   line-height: 28px;
 }
 
-/* line 1657, scss/screen.scss */
+/* line 1664, scss/screen.scss */
 .accordion-plain .accordion-text {
   padding: 20px 40px;
 }
 
-/* line 1663, scss/screen.scss */
+/* line 1670, scss/screen.scss */
 .tabs-plain .tabs-plain-list li {
   display: inline-block;
 }
 
-/* line 1666, scss/screen.scss */
+/* line 1673, scss/screen.scss */
 .tabs-plain .tabs-plain-list li a {
   display: block;
   padding: 8px 10px;
@@ -21286,13 +21280,13 @@ https://raw.github.com/shagstrom/split-pane/master/LICENSE
   cursor: row-resize;
 }
 
-/* line 1680, scss/screen.scss */
+/* line 1687, scss/screen.scss */
 .pretty-split-pane-frame .split-pane > .split-pane-divider.dragged.touch {
   background: blue;
   opacity: 0.25;
 }
 
-/* line 1684, scss/screen.scss */
+/* line 1691, scss/screen.scss */
 .split-pane-divider {
   right: 50%;
   width: 12px;
@@ -21302,7 +21296,7 @@ https://raw.github.com/shagstrom/split-pane/master/LICENSE
   box-shadow: 0 0 10px rgba(35, 58, 112, 0.25);
 }
 
-/* line 1690, scss/screen.scss */
+/* line 1697, scss/screen.scss */
 .pane-content {
   position: absolute;
   top: 0;
@@ -21312,18 +21306,18 @@ https://raw.github.com/shagstrom/split-pane/master/LICENSE
   overflow: auto;
 }
 
-/* line 1694, scss/screen.scss */
+/* line 1701, scss/screen.scss */
 #pane-left {
   right: 50%;
   margin-right: 12px;
 }
 
-/* line 1698, scss/screen.scss */
+/* line 1705, scss/screen.scss */
 #pane-right {
   width: 50%;
 }
 
-/* line 1702, scss/screen.scss */
+/* line 1709, scss/screen.scss */
 .ui-tooltip {
   background-color: #0058cf;
   color: white;
@@ -21333,7 +21327,7 @@ https://raw.github.com/shagstrom/split-pane/master/LICENSE
   padding-top: 0;
 }
 
-/* line 1711, scss/screen.scss */
+/* line 1718, scss/screen.scss */
 .feedback-trigger-small {
   position: absolute;
   cursor: pointer;
@@ -21365,13 +21359,13 @@ https://raw.github.com/shagstrom/split-pane/master/LICENSE
 }
 
 @media screen and (max-width: 499px) {
-  /* line 1711, scss/screen.scss */
+  /* line 1718, scss/screen.scss */
   .feedback-trigger-small {
     top: calc(100% - 128px);
   }
 }
 
-/* line 1735, scss/screen.scss */
+/* line 1742, scss/screen.scss */
 .feedback-trigger-small:hover {
   background-color: #195abc;
   -webkit-box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.239);
@@ -21379,7 +21373,7 @@ https://raw.github.com/shagstrom/split-pane/master/LICENSE
   box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.239);
 }
 
-/* line 1741, scss/screen.scss */
+/* line 1748, scss/screen.scss */
 #feedback-close-button-yes, #feedback-close-button-no {
   background-color: #FBFCFE;
   line-height: 32px;
@@ -21396,12 +21390,12 @@ https://raw.github.com/shagstrom/split-pane/master/LICENSE
   height: 30px;
 }
 
-/* line 1752, scss/screen.scss */
+/* line 1759, scss/screen.scss */
 #feedback-close-button-yes:hover, #feedback-close-button-no:hover {
   background-color: #beceef;
 }
 
-/* line 1757, scss/screen.scss */
+/* line 1764, scss/screen.scss */
 .feedback-trigger {
   position: absolute;
   background-color: #124086;
@@ -21424,32 +21418,32 @@ https://raw.github.com/shagstrom/split-pane/master/LICENSE
 }
 
 @media screen and (max-width: 768px) {
-  /* line 1757, scss/screen.scss */
+  /* line 1764, scss/screen.scss */
   .feedback-trigger {
     width: 100%;
     left: 0px;
   }
 }
 
-/* line 1771, scss/screen.scss */
+/* line 1778, scss/screen.scss */
 .feedback-trigger .feedback-text {
   padding-left: 6px;
 }
 
-/* line 1775, scss/screen.scss */
+/* line 1782, scss/screen.scss */
 .feedback-trigger .feedback-icon {
   font-size: 18px;
   vertical-align: middle;
 }
 
 @media screen and (max-width: 768px) {
-  /* line 1775, scss/screen.scss */
+  /* line 1782, scss/screen.scss */
   .feedback-trigger .feedback-icon {
     display: none;
   }
 }
 
-/* line 1791, scss/screen.scss */
+/* line 1798, scss/screen.scss */
 .feedback-trigger:hover {
   background-color: #195abc;
   -webkit-box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.239);
@@ -21457,7 +21451,7 @@ https://raw.github.com/shagstrom/split-pane/master/LICENSE
   box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.239);
 }
 
-/* line 1797, scss/screen.scss */
+/* line 1804, scss/screen.scss */
 .about-tool-row {
   height: auto;
   align-items: start !important;
@@ -21465,7 +21459,7 @@ https://raw.github.com/shagstrom/split-pane/master/LICENSE
   justify-content: start !important;
 }
 
-/* line 1803, scss/screen.scss */
+/* line 1810, scss/screen.scss */
 .about-tool-row.about-tool-equals {
   align-items: center !important;
   align-content: center !important;
@@ -21474,7 +21468,7 @@ https://raw.github.com/shagstrom/split-pane/master/LICENSE
   font-weight: 500;
 }
 
-/* line 1811, scss/screen.scss */
+/* line 1818, scss/screen.scss */
 .about-tool-row .about-tool-content {
   line-height: unset !important;
   margin: 0px !important;
@@ -21482,41 +21476,41 @@ https://raw.github.com/shagstrom/split-pane/master/LICENSE
   padding-top: 12px;
 }
 
-/* line 1817, scss/screen.scss */
+/* line 1824, scss/screen.scss */
 .about-tool-row .about-tool-content.img-holder-left {
   justify-content: start !important;
 }
 
-/* line 1819, scss/screen.scss */
+/* line 1826, scss/screen.scss */
 .about-tool-row .about-tool-content.img-holder-left img {
   border: 1px solid;
 }
 
 @media screen and (max-width: 900px) {
-  /* line 1817, scss/screen.scss */
+  /* line 1824, scss/screen.scss */
   .about-tool-row .about-tool-content.img-holder-left {
     justify-content: center !important;
   }
 }
 
-/* line 1827, scss/screen.scss */
+/* line 1834, scss/screen.scss */
 .about-tool-row .about-tool-content.img-holder-right {
   justify-content: flex-end !important;
 }
 
-/* line 1829, scss/screen.scss */
+/* line 1836, scss/screen.scss */
 .about-tool-row .about-tool-content.img-holder-right img {
   border: 1px solid;
 }
 
 @media screen and (max-width: 900px) {
-  /* line 1827, scss/screen.scss */
+  /* line 1834, scss/screen.scss */
   .about-tool-row .about-tool-content.img-holder-right {
     justify-content: center !important;
   }
 }
 
-/* line 1837, scss/screen.scss */
+/* line 1844, scss/screen.scss */
 .about-tool-row .about-tool-content img {
   display: block;
   max-width: 100%;
@@ -21525,33 +21519,33 @@ https://raw.github.com/shagstrom/split-pane/master/LICENSE
   height: 100%;
 }
 
-/* line 1845, scss/screen.scss */
+/* line 1852, scss/screen.scss */
 .about-tool-row .about-tool-content .sample-img {
   max-height: 200px;
   width: auto;
 }
 
-/* line 1851, scss/screen.scss */
+/* line 1858, scss/screen.scss */
 .about-tool-row .btn-chart-text {
   padding: 12px;
 }
 
 @media screen and (max-width: 900px) {
-  /* line 1797, scss/screen.scss */
+  /* line 1804, scss/screen.scss */
   .about-tool-row {
     width: 100% !important;
     border-bottom: 1px solid #124086;
   }
-  /* line 1860, scss/screen.scss */
+  /* line 1867, scss/screen.scss */
   .about-tool-row .img-btn-chart {
     width: 50% !important;
     height: 50% !important;
   }
-  /* line 1865, scss/screen.scss */
+  /* line 1872, scss/screen.scss */
   .about-tool-row .btn-selector {
     width: 100% !important;
   }
-  /* line 1868, scss/screen.scss */
+  /* line 1875, scss/screen.scss */
   .about-tool-row .btn-selector.circle-box-left {
     -webkit-border-radius: 5px;
     -moz-border-radius: 5px;
@@ -21559,7 +21553,7 @@ https://raw.github.com/shagstrom/split-pane/master/LICENSE
     -o-border-radius: 5px;
     border-radius: 5px;
   }
-  /* line 1871, scss/screen.scss */
+  /* line 1878, scss/screen.scss */
   .about-tool-row .btn-selector.circle-box-right {
     -webkit-border-radius: 5px;
     -moz-border-radius: 5px;
@@ -21567,7 +21561,7 @@ https://raw.github.com/shagstrom/split-pane/master/LICENSE
     -o-border-radius: 5px;
     border-radius: 5px;
   }
-  /* line 1874, scss/screen.scss */
+  /* line 1881, scss/screen.scss */
   .about-tool-row .btn-selector.circle-box-center {
     -webkit-border-radius: 5px;
     -moz-border-radius: 5px;
@@ -21577,69 +21571,69 @@ https://raw.github.com/shagstrom/split-pane/master/LICENSE
   }
 }
 
-/* line 1882, scss/screen.scss */
+/* line 1889, scss/screen.scss */
 #download-dropdown-menu {
   transition: background-color 200ms ease-in;
 }
 
-/* line 1885, scss/screen.scss */
+/* line 1892, scss/screen.scss */
 #download-dropdown-menu:hover {
   background-color: #A6C6F3;
 }
 
-/* line 1892, scss/screen.scss */
+/* line 1899, scss/screen.scss */
 body:not(.is-ak-area) .opt-only-ak, body:not(.is-island-area) .opt-only-island {
   display: none !important;
 }
 
-/* line 1896, scss/screen.scss */
+/* line 1903, scss/screen.scss */
 body.is-ak-area .opt-not-ak, body.is-island-area .opt-not-island {
   display: none !important;
 }
 
-/* line 1900, scss/screen.scss */
+/* line 1907, scss/screen.scss */
 #tidal-chart {
   display: flex;
   flex-direction: column;
 }
 
-/* line 1905, scss/screen.scss */
+/* line 1912, scss/screen.scss */
 .chart {
   flex: 1;
   width: 100%;
   height: 100vh;
 }
 
-/* line 1911, scss/screen.scss */
+/* line 1918, scss/screen.scss */
 .info-section {
   min-width: fit-content;
   text-align: center;
 }
 
-/* line 1916, scss/screen.scss */
+/* line 1923, scss/screen.scss */
 .disabled {
   filter: opacity(0.4);
 }
 
-/* line 1920, scss/screen.scss */
+/* line 1927, scss/screen.scss */
 .tippy-tooltip.testing-theme-theme {
   background-color: white;
 }
 
-/* line 1923, scss/screen.scss */
+/* line 1930, scss/screen.scss */
 .tippy-tooltip.testing-theme-theme hr {
   color: #0D3064;
   font-weight: bold;
 }
 
-/* line 1929, scss/screen.scss */
+/* line 1936, scss/screen.scss */
 .tippy-title {
   color: #0D3064;
   font-weight: bold;
   font-size: 1rem;
 }
 
-/* line 1935, scss/screen.scss */
+/* line 1942, scss/screen.scss */
 .tippy-body {
   color: #0D3064;
   font-size: 0.95rem;
