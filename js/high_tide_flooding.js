@@ -620,6 +620,7 @@ $(function () {
     const rect = document.getElementById('stations-map-wrap').getBoundingClientRect();
 
     const messageElem = document.getElementById('stations-map-message');
+
     // get map parent element - which provides the correct dimensions for the map
     if (messageElem) {
       const rect = document.getElementById('stations-map-wrap').getBoundingClientRect();
@@ -653,28 +654,21 @@ $(function () {
     let graphWidth = graphRect.width;
 
     // set size of temp chart
-    if (graphRect.width <= 900) {
-      if (document.querySelector('#stations-graph-row')) {
-        document.querySelector('#stations-graph-row').style.height = `350px`;
-        document.querySelector('#stations-graph-row').style.minHeight = `350px`;
-      }
-    }
+    // if (graphRect.width <= 900) {
+    //   if (document.querySelector('#stations-graph-row')) {
+    //     document.querySelector('#stations-graph-row').style.height = `350px`;
+    //     document.querySelector('#stations-graph-row').style.minHeight = `350px`;
+    //   }
+    // }
 
     // set size of tidal-chart chart
-    if (document.querySelector('#tidal-chart')) {
-      document.querySelector('#tidal-chart').style.minWidth = `${graphWidth}px`;
-      document.querySelector('#tidal-chart').style.maxWidth = `${graphWidth}px`;
-      document.querySelector('#tidal-chart').style.width = `${graphWidth}px`;
-      document.querySelector('#tidal-chart').style.height = `${graphRect.height}px`;
-    }
+    // if (document.querySelector('#tidal-chart')) {
+    //   document.querySelector('#tidal-chart').style.minWidth = `${graphWidth}px`;
+    //   document.querySelector('#tidal-chart').style.maxWidth = `${graphWidth}px`;
+    //   document.querySelector('#tidal-chart').style.width = `${graphWidth}px`;
+    //   document.querySelector('#tidal-chart').style.height = `${graphRect.height}px`;
+    // }
 
-    // set size of map
-    if (document.querySelector('.chartjs-size-monitor')) {
-      document.querySelector('.chartjs-size-monitor').style.minWidth = `${graphWidth}px`;
-      document.querySelector('.chartjs-size-monitor').style.maxWidth = `${graphWidth}px`;
-      document.querySelector('.chartjs-size-monitor').style.width = `${graphWidth}px`;
-      document.querySelector('.chartjs-size-monitor').style.height = `${graphRect.height}px`;
-    }
   }
 
   function setBodySize() {
@@ -688,6 +682,21 @@ $(function () {
     let high_tide_body = document.querySelector(".high-tide-flooding-body");
     high_tide_body.style.paddingTop = nav_height + "rem";
     high_tide_body.style.paddingBottom = footer_height + "rem";
+
+    let high_tide_flood = document.getElementById("high-tide-flooding-viewport");
+
+    let flood_body = document.querySelector(".high-tide-flooding-body");
+    let body_height = flood_body.getBoundingClientRect().height / 16;
+
+    let search_row = document.querySelector(".search-station-row");
+    let search_height = search_row.getBoundingClientRect().height / 16;
+
+    let info_section = document.querySelector(".info-section");
+    let info_height = info_section.getBoundingClientRect().height / 16;
+
+    let height = body_height - search_height - info_height - nav_height - footer_height;
+
+    high_tide_flood.style.setProperty('height', `calc(${height}rem - 1rem`); // the '- 1rem' represents the margin value on the .search-station-row div. (mt-3 = 1rem)
 
   }
 

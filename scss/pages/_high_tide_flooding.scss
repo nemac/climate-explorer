@@ -9,59 +9,54 @@
 
 #high-tide-flooding-viewport {
   background-color: $white;
-  height: calc(100% - 48px - 6px - 100px) !important;
-  min-height: calc(100% - 48px - 6px - 100px) !important;
 
-  @include kind-of-tiny {
-    min-height: calc(100% - 48px - 12px - 64px) !important;
-    height: calc(100% - 48px - 12px - 64px) !important;
-  }
-  overflow: auto !important;
-  flex: 1 1 auto !important;
-  margin-bottom: 6px;
 
-  &:after {
-    content: '';
-    width: 100%;
-    height: 5px;
-    position: absolute;
-    top: calc(100% - 105px);
+  //overflow: auto !important;
+  //flex: 1 1 auto !important;
+  //margin-bottom: 6px;
+  //
+  //&:after {
+  //  content: '';
+  //  width: 100%;
+  //  height: 5px;
+  //  position: absolute;
+  //  top: calc(100% - 105px);
+  //
+  //  @include kind-of-tiny {
+  //    top: calc(100% - 75px);
+  //  }
+  //  left: -2px;
+  //  @include box-shadow( inset 0 -2px 2px transparentize(#000, 0.7));
+  //}
 
-    @include kind-of-tiny {
-      top: calc(100% - 75px);
-    }
-    left: -2px;
-    @include box-shadow( inset 0 -2px 2px transparentize(#000, 0.7));
-  }
-
-  &.expanded {
-    @include medium-expand-bottom {
-      min-height: calc(100% - 48px - 12px - 100px) !important;
-      height: calc(100% - 48px - 12px - 100px) !important;
-      &:after {
-        top: calc(100% - 117px);
-
-        @include kind-of-tiny {
-          top: calc(100% - 147px);
-
-          @include kind-of-tiny {
-            top: calc(100% - 147px);
-          }
-        }
-      }
-
-      @include kind-of-tiny {
-        min-height: calc(100% - 48px - 12px - 130px) !important;
-        height: calc(100% - 48px - 12px - 130px) !important;
-      }
-    }
-
-    min-height: calc(100% - 48px - 12px - 170px) !important;
-    height: calc(100% - 48px - 12px - 170px) !important;
-    &:after {
-      top: calc(100% - 187px);
-    }
-  }
+  //&.expanded {
+  //  @include medium-expand-bottom {
+  //    min-height: calc(100% - 48px - 12px - 100px) !important;
+  //    height: calc(100% - 48px - 12px - 100px) !important;
+  //    &:after {
+  //      top: calc(100% - 117px);
+  //
+  //      @include kind-of-tiny {
+  //        top: calc(100% - 147px);
+  //
+  //        @include kind-of-tiny {
+  //          top: calc(100% - 147px);
+  //        }
+  //      }
+  //    }
+  //
+  //    @include kind-of-tiny {
+  //      min-height: calc(100% - 48px - 12px - 130px) !important;
+  //      height: calc(100% - 48px - 12px - 130px) !important;
+  //    }
+  //  }
+  //
+  //  min-height: calc(100% - 48px - 12px - 170px) !important;
+  //  height: calc(100% - 48px - 12px - 170px) !important;
+  //  &:after {
+  //    top: calc(100% - 187px);
+  //  }
+  //}
 
   #stations-map-wrap {
     min-height: 150px !important
@@ -131,12 +126,12 @@
    }
 
    #stations-graph-row {
-     @include medium-min {
-       height: calc(100% - 48px - 6px - 180px ) !important;
-       &.closed-filters {
-         height: calc(100% - 48px - 6px - 80px ) !important;
-       }
-     }
+     //@include medium-min {
+     //  height: calc(100% - 48px - 6px - 180px ) !important;
+     //  &.closed-filters {
+     //    height: calc(100% - 48px - 6px - 80px ) !important;
+     //  }
+     //}
    }
 
    #stations-map-row {
@@ -234,15 +229,15 @@
      }
    }
 
-         .tidal-chart {
-           width: calc(100% - 40px);
-           @include medium {
-             width: calc(100%);
-           }
-           height: 100%;
-           background-color: white;
-           padding-right: $ce3-padding-half;
-         }
+         //.tidal-chart {
+         //  width: calc(100% - 40px);
+         //  @include medium {
+         //    width: calc(100%);
+         //  }
+         //  height: 100%;
+         //  background-color: white;
+         //  padding-right: $ce3-padding-half;
+         //}
 
 
          #overlay-chart-container {
@@ -252,14 +247,14 @@
          }
 
          #stations-graph-wrap {
-           height: 100% !important;
-           width: 80%;
-           @include medium {
-             min-height: 300px !important;
-             max-height: 300px !important;
-             height: 300px !important;
-             display: block !important;
-           }
+           //height: 100% !important;
+           //width: 80%;
+           //@include medium {
+           //  min-height: 300px !important;
+           //  max-height: 300px !important;
+           //  height: 300px !important;
+           //  display: block !important;
+           //}
          }
 
          #stations-map-wrap {
@@ -298,12 +293,12 @@
            }
          }
 
-         #stations-map-row, #stations-graph-row {
-           align-self: center;
-           @include small {
-             width: 90% !important;
-           }
-         }
+         //#stations-map-row, #stations-graph-row {
+         //  align-self: center;
+         //  //@include small {
+         //  //  width: 90% !important;
+         //  //}
+         //}
 
 
          #station-overlay {

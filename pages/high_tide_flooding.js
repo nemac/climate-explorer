@@ -21,7 +21,7 @@ export default (config) => `
   ${secondary_header(config)}
 
     <div class="container-fluid high-tide-flooding-body h-100">
-      <div class="mt-3 row"> 
+        <div class="mt-3 row search-station-row"> 
             
           <div class="col-12 col-md-7 col-lg-8"> 
             <div class="input-group mb-3 search-input-group rounded-2 border border-1 me-2">
@@ -114,9 +114,9 @@ data-value="Historical and Modeled">Historical & Modeled</label>
               </div>
             </div>
         
-            <div id="stations-graph-row" class="padding-vertical width-100 height-100" >
-              <div id="stations-graph-wrap" class="width-100 height-100 d-flex-row">
-                <div id="tidal-chart" class="tidal-chart d-flex-center width-100">
+            <div id="stations-graph-row" class="w-100 h-100" >
+              <div id="stations-graph-wrap" class="w-100 d-flex-row">
+                <div id="tidal-chart" class="tidal-chart d-flex-center w-100">
                 </div>
               </div>
             </div>
