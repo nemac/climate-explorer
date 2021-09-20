@@ -82,48 +82,48 @@
     @include border-radius(5px, 5px);
   }
 
-  #stations-select-wrapper {
-     display: flex !important;
-     @include medium {
-       width: 100% !important;
-       margin-top: 6px;
-     }
-   }
+  //#stations-select-wrapper {
+  //   display: flex !important;
+  //   @include medium {
+  //     width: 100% !important;
+  //     margin-top: 6px;
+  //   }
+  // }
 
-   #btn-tidalzoom {
-     &.active {
-       background-color: $ce3-blue3 !important;
-       color: $ce3-blue5 !important;
-       font: $font-weight-normal 14px $roboto !important;
-       border: 1px solid $ce3-blue3alpha !important;
+   //#btn-tidalzoom {
+   //  &.active {
+   //    background-color: $ce3-blue3 !important;
+   //    color: $ce3-blue5 !important;
+   //    font: $font-weight-normal 14px $roboto !important;
+   //    border: 1px solid $ce3-blue3alpha !important;
+   //
+   //    &:focus {
+   //      background-color: lighten($ce3-blue4, 7) !important;
+   //      color: $ce3-blue5 !important;
+   //      border: 1px solid $ce3-blue3alpha !important;
+   //      outline: none !important
+   //    }
+   //
+   //    &:hover {
+   //      background-color: lighten($ce3-blue4, 7) !important;
+   //      color: $ce3-blue5 !important;
+   //      border: 1px solid $ce3-blue3alpha !important;
+   //      outline: none !important
+   //    }
+   //  }
+   //}
+   //#chartmap-wrapper {
+   //  width: 30% !important;
+   //}
 
-       &:focus {
-         background-color: lighten($ce3-blue4, 7) !important;
-         color: $ce3-blue5 !important;
-         border: 1px solid $ce3-blue3alpha !important;
-         outline: none !important
-       }
-
-       &:hover {
-         background-color: lighten($ce3-blue4, 7) !important;
-         color: $ce3-blue5 !important;
-         border: 1px solid $ce3-blue3alpha !important;
-         outline: none !important
-       }
-     }
-   }
-   #chartmap-wrapper {
-     width: 30% !important;
-   }
-
-   #stations-map-row {
-     @include medium-min {
-       height: calc(100% - 48px - 6px - 140px ) !important;
-       &.closed-filters {
-         height: calc(100% - 48px - 6px - 80px ) !important;
-       }
-     }
-   }
+   //#stations-map-row {
+   //  @include medium-min {
+   //    height: calc(100% - 48px - 6px - 140px ) !important;
+   //    &.closed-filters {
+   //      height: calc(100% - 48px - 6px - 80px ) !important;
+   //    }
+   //  }
+   //}
 
    #stations-graph-row {
      //@include medium-min {
@@ -135,7 +135,8 @@
    }
 
    #stations-map-row {
-     justify-content: space-evenly !important;
+     //justify-content: space-evenly !important;
+
      &.closed-filters {
        .stations-map-wrap {
          height: 86% !important;

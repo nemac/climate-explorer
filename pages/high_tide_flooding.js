@@ -107,8 +107,8 @@ data-value="Historical and Modeled">Historical & Modeled</label>
 
         <div id="high-tide-flooding-viewport" class="d-flex d-flex-column">
         
-            <div id="stations-map-row" class="padding-top-half width-100 height-100 d-flex" >
-              <div id="stations-map-wrap" class="map-wrap width-100 height-100 ">
+            <div id="stations-map-row" class="d-flex h-100 w-100">
+              <div id="stations-map-wrap" class="map-wrap h-100 w-100">
                 <div id="stations-map" class="map-element"></div>
                 <div id="stations-map-message" class="map-nostations-message d-none"></div>
               </div>

@@ -332,12 +332,12 @@ $(function () {
       // reset map and chart sizes
       // filer transition means heigh will be updates in few seconds
       // so delaying the resize ensures proper size
-      setMapSize();
+      setBodySize();
     }, 600);
   } else {
     showMap();
     toggleChartInfoText('map');
-    setMapSize();
+    setBodySize();
   }
 
   // function to enable downloads (images and data)
@@ -408,7 +408,7 @@ $(function () {
       toggleDownloads();
 
       // reset map and chart sizes
-      setMapSize();
+      setBodySize();
 
     }
   });
@@ -427,6 +427,7 @@ $(function () {
 
     toggleButton($(target));
 
+    setBodySize();
     showGraphs();
 
     googleAnalyticsEvent('click', 'chartmap', target);
@@ -446,6 +447,7 @@ $(function () {
 
     toggleButton($(target));
 
+    setBodySize();
     showMap();
 
     googleAnalyticsEvent('click', 'chartmap', target);
@@ -467,7 +469,7 @@ $(function () {
       toggleChartInfoText(RelorVal(target));
     }
     // reset map and chart sizes
-    setMapSize();
+    setBodySize();
   })
 
   // this function Updates the chart title.
@@ -543,7 +545,7 @@ $(function () {
       // reset map and chart sizes
       // filer transition means heigh will be updates in few seconds
       // so delaying the resize ensures proper size
-      setMapSize();
+      setBodySize();
     }, 600);
   })
 
@@ -608,7 +610,7 @@ $(function () {
       toggleDownloads();
 
       // reset map and chart sizes
-      setMapSize();
+      setBodySize();
     }
   }, stationsMapState));
 
@@ -629,25 +631,25 @@ $(function () {
     }
 
     // set size of map overlay
-    if (document.querySelector('.esri-view-root')) {
-      document.querySelector('.esri-view-root').style.minWidth = `${rect.width}px`;
-      document.querySelector('.esri-view-root').style.maxWidth = `${rect.width}px`;
-      document.querySelector('.esri-view-root').style.height = `${rect.height}px`;
-    }
-
-    // set size of map overlay
-    if (document.querySelector('.esri-view-user-storage')) {
-      document.querySelector('.esri-view-user-storage').style.minWidth = `${rect.width}px`;
-      document.querySelector('.esri-view-user-storage').style.maxWidth = `${rect.width}px`;
-    }
+    // if (document.querySelector('.esri-view-root')) {
+    //   document.querySelector('.esri-view-root').style.minWidth = `${rect.width}px`;
+    //   document.querySelector('.esri-view-root').style.maxWidth = `${rect.width}px`;
+    //   document.querySelector('.esri-view-root').style.height = `${rect.height}px`;
+    // }
+    //
+    // // set size of map overlay
+    // if (document.querySelector('.esri-view-user-storage')) {
+    //   document.querySelector('.esri-view-user-storage').style.minWidth = `${rect.width}px`;
+    //   document.querySelector('.esri-view-user-storage').style.maxWidth = `${rect.width}px`;
+    // }
 
     // set size of map
-    if (document.querySelector('#stations-map')) {
-      document.querySelector('#stations-map').style.minWidth = `${rect.width}px`;
-      document.querySelector('#stations-map').style.maxWidth = `${rect.width}px`;
-      document.querySelector('#stations-map').style.width = `${rect.width}px`;
-      document.querySelector('#stations-map').style.height = `${rect.height}px`;
-    }
+    // if (document.querySelector('#stations-map')) {
+    //   document.querySelector('#stations-map').style.minWidth = `${rect.width}px`;
+    //   document.querySelector('#stations-map').style.maxWidth = `${rect.width}px`;
+    //   document.querySelector('#stations-map').style.width = `${rect.width}px`;
+    //   document.querySelector('#stations-map').style.height = `${rect.height}px`;
+    // }
 
     // get graph parent element - which provides the correct dimensions for the graph
     const graphRect = document.getElementById('stations-graph-wrap').getBoundingClientRect();
@@ -698,14 +700,22 @@ $(function () {
 
     high_tide_flood.style.setProperty('height', `calc(${height}rem - 1rem`); // the '- 1rem' represents the margin value on the .search-station-row div. (mt-3 = 1rem)
 
+    $('#stations-map').height(high_tide_flood.style.height);
+
+    const messageElem = document.getElementById('stations-map-message');
+
+    // get map parent element - which provides the correct dimensions for the map
+    if (messageElem) {
+      const rect = document.getElementById('stations-map-wrap').getBoundingClientRect();
+      messageElem.style.left = `${(rect.right - rect.left) / 3}px`;
+      messageElem.style.top = `-${((rect.bottom - rect.top) / 2)}px`;
+    }
   }
 
   // reset map and chart sizes
-  setMapSize();
   setBodySize();
 
   $(window).resize(function () {
-    setMapSize();
     setBodySize();
   })
 
@@ -744,6 +754,6 @@ $(function () {
     // force draw and resize of charts
     showGraphs();
     forceResize();
-    setMapSize();
+    setBodySize();
   })
 });
