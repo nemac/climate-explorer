@@ -3,7 +3,7 @@ export default (config) => `
     <!-- Modal -->
     <div class="modal fade" id="aboutModal" tabindex="-1" aria-labelledby="aboutModalLabel" aria-hidden="true">
       <div class="modal-dialog modal-xl">
-        <div class="modal-content">
+        <div class="modal-content p-3">
           <div class="modal-header">
             <h3 class="modal-title" id="aboutModalLabel">HOW TO READ</h3>
             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
@@ -18,7 +18,7 @@ export default (config) => `
               
                 <div class="row"> 
                       
-                      <div class="col-sm-12 col-md-3">
+                      <div class="col-12 col-md-6 col-lg-3">
                       
                           <div class="d-flex justify-content-center border border-1 rounded-2 chart-explainer-fake-buttons mb-2 pt-1 pb-1"> 
                               <div class="inner-histobs ps-3 pe-3 pt-2 pb-2 me-2 rounded-2"></div>
@@ -48,7 +48,7 @@ export default (config) => `
                           </div>
                       </div>                
                   
-                      <div class="col-sm-12 col-md-3">
+                      <div class="col-12 col-md-6 col-lg-3">
                           
                               <div class="d-flex justify-content-center border border-1 rounded-2 chart-explainer-fake-buttons mb-2 pt-1 pb-1"> 
                                   <div class="inner-histmod ps-3 pe-3 pt-2 pb-2 me-2 rounded-2"></div>
@@ -67,7 +67,7 @@ export default (config) => `
                               
                           </div>                
                       
-                      <div class="col-sm-12 col-md-3">
+                      <div class="col-12 col-md-6 col-lg-3">
                           
                           <div class="d-flex justify-content-center border border-1 rounded-2 chart-explainer-fake-buttons mb-2 pt-1 pb-1"> 
                               <div class="inner-lower-emissions ps-3 pe-3 pt-2 pb-2 me-2 rounded-2"></div>
@@ -92,7 +92,7 @@ export default (config) => `
                           
                       </div>
                       
-                      <div class="col-sm-12 col-md-3">
+                      <div class="col-12 col-md-6 col-lg-3">
                           
                           <div class="d-flex justify-content-center mb-2 border border-1 rounded-2 chart-explainer-fake-buttons pt-1 pb-1"> 
                               <div class="inner-higher-emissions ps-3 pe-3 pt-2 pb-2 me-2 rounded-2"></div>
@@ -110,8 +110,7 @@ export default (config) => `
                           </div>
                              
                       </div>     
-           
-                        
+              
                 </div> 
                 
                 <hr>
@@ -145,7 +144,7 @@ export default (config) => `
               
                 <div class="row"> 
                       
-                      <div class="col-sm-12 col-md-6">
+                      <div class="col-12 col-md-6">
                           
                               <div class="d-flex justify-content-center border border-1 rounded-2 chart-explainer-fake-buttons mb-2 pt-1 pb-1"> 
                                   <div class="inner-histmod ps-3 pe-3 pt-2 pb-2 me-2 rounded-2"></div>
@@ -164,7 +163,7 @@ export default (config) => `
                               
                           </div>                
                       
-                      <div class="col-sm-12 col-md-6">
+                      <div class="col-12 col-md-6">
                           
                           <div class="d-flex justify-content-center mb-2 border border-1 rounded-2 chart-explainer-fake-buttons pt-1 pb-1"> 
                               <div class="inner-higher-emissions ps-3 pe-3 pt-2 pb-2 me-2 rounded-2"></div>
@@ -184,6 +183,10 @@ export default (config) => `
                       </div>     
                             
                 </div> 
+
+                <div> 
+                    <p>NOTE: As the LOCA projections dataset used for the lower 48 does not include Alaska, the Climate Explorer team and climate scientists at the Alaska Climate Adaptation and Science Center selected SNAP Data as the data source for Alaska.</p>
+                </div>
                      
               </div>
             
@@ -195,7 +198,7 @@ export default (config) => `
                 
                   <div class="row"> 
                         
-                        <div class="col-sm-12 col-md-4">
+                        <div class="col-12 col-md-6 col-lg-4">
                             
                                 <div class="d-flex justify-content-center border border-1 rounded-2 chart-explainer-fake-buttons mb-2 pt-1 pb-1"> 
                                     <div class="inner-histmod ps-3 pe-3 pt-2 pb-2 me-2 rounded-2"></div>
@@ -214,7 +217,7 @@ export default (config) => `
                                 
                             </div>                
                         
-                        <div class="col-sm-12 col-md-4">
+                        <div class="col-12 col-md-6 col-lg-4">
                             
                             <div class="d-flex justify-content-center border border-1 rounded-2 chart-explainer-fake-buttons mb-2 pt-1 pb-1"> 
                                 <div class="inner-lower-emissions ps-3 pe-3 pt-2 pb-2 me-2 rounded-2"></div>
@@ -239,7 +242,7 @@ export default (config) => `
                             
                         </div>
                         
-                        <div class="col-sm-12 col-md-4">
+                        <div class="col-12 col-md-6 col-lg-4">
                             
                             <div class="d-flex justify-content-center mb-2 border border-1 rounded-2 chart-explainer-fake-buttons pt-1 pb-1"> 
                                 <div class="inner-higher-emissions ps-3 pe-3 pt-2 pb-2 me-2 rounded-2"></div>

@@ -123,7 +123,7 @@ data-value="Historical and Modeled">Historical & Modeled</label>
         
             <div class="modal fade" id="aboutModal" tabindex="-1" aria-labelledby="aboutModalLabel" aria-hidden="true">
               <div class="modal-dialog modal-xl">
-                <div class="modal-content">
+                <div class="modal-content p-3">
                   <div class="modal-header">
                     <h3 class="modal-title" id="aboutModalLabel">READING THE TIDAL FLOODING CHARTS</h3>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>

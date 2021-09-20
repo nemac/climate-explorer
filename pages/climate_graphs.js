@@ -47,7 +47,7 @@ ${secondary_header(config)}
   <div class="info-section">
       <div class="border border-1 rounded-2"> 
         
-        <div class="m-3 mb-3 btn p-0 d-flex" type="button" data-bs-toggle="collapse" data-bs-target="#collapse-info-section" aria-expanded="true" aria-controls="collapse-info-section">
+        <div class="m-3 mb-3 btn p-0 d-flex align-items-center" type="button" data-bs-toggle="collapse" data-bs-target="#collapse-info-section" aria-expanded="true" aria-controls="collapse-info-section">
             <i class="fas fa-chart-line me-2"></i>
             <span id="default-city-county"></span>
             <span class="ms-1 me-1"> - </span>
@@ -131,7 +131,7 @@ ${secondary_header(config)}
     </div>
 
     <div id="legend-wrapper" class="d-flex-center flex-wrap mb-2">
-      <div class="btn btn-histobs d-flex-center border border-1 m-1 rounded-2" data-value="histobs">
+      <div class="btn btn-histobs d-flex-center selected-item border border-1 m-1 rounded-2" data-value="histobs">
         <div class="inner-histobs ps-3 pe-3 pt-2 pb-2 me-2 rounded-2"></div>
         Observations
       </div>

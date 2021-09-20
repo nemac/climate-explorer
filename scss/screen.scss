@@ -1547,7 +1547,6 @@ input.input-inner-default:focus  {
 }
 
 @import "template/header";
-@import "template/secondary_header";
 @import "template/main_header";
 
 // // HOME PAGE
@@ -1942,4 +1941,8 @@ body.is-ak-area .opt-not-ak, body.is-island-area .opt-not-island {
 .tippy-body {
   color: $navbar-background;
   font-size: 0.95rem;
+}
+
+.popover-header {
+  background-color: transparent !important;
 }

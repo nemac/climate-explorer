@@ -15738,7 +15738,7 @@ input.input-inner-default:focus {
 
 /* line 11, scss/template/_new_nav_footer.scss */
 .footer-button {
-  color: gray;
+  color: #585858;
   transition: color 200ms ease-in;
 }
 
@@ -15838,123 +15838,10 @@ input.input-inner-default:focus {
   max-width: 2.5rem;
 }
 
-/* line 1, scss/template/_secondary_header.scss */
-#secondary-header {
-  background: #0D3064;
-  height: 48px;
-}
-
-/* line 5, scss/template/_secondary_header.scss */
-#secondary-header .secondary-home-logo {
-  font-size: 24px !important;
-  color: #FBFCFE !important;
-  background: #103b7b;
-  -webkit-border-radius: 5px 5px;
-  -moz-border-radius: 5px / 5px;
-  border-radius: 5px / 5px;
-}
-
-/* line 12, scss/template/_secondary_header.scss */
-#secondary-header .secondary-logo {
-  height: 36px;
-  width: auto;
-}
-
-@media screen and (max-width: 768px) {
-  /* line 12, scss/template/_secondary_header.scss */
-  #secondary-header .secondary-logo {
-    height: 36px;
-  }
-}
-
-/* line 19, scss/template/_secondary_header.scss */
-#secondary-header .secondary-logo img {
-  height: 36px;
-  width: auto;
-}
-
-@media screen and (max-width: 768px) {
-  /* line 19, scss/template/_secondary_header.scss */
-  #secondary-header .secondary-logo img {
-    height: 36px;
-  }
-}
-
-@media screen and (max-width: 599px) {
-  /* line 12, scss/template/_secondary_header.scss */
-  #secondary-header .secondary-logo {
-    height: 34px;
-    width: auto;
-  }
-  /* line 29, scss/template/_secondary_header.scss */
-  #secondary-header .secondary-logo img {
-    content: url(/img/crt-logo-mobile.png);
-  }
-}
-
-/* line 37, scss/template/_secondary_header.scss */
-#secondary-header .secondary-font-title {
-  font: 500 24px Roboto, Helvetica, "Helvetica Neue", Arial, sans-serif !important;
-  white-space: nowrap;
-  width: 70%;
-  color: #FBFCFE !important;
-  align-self: center;
-}
-
-@media screen and (max-width: 768px) {
-  /* line 37, scss/template/_secondary_header.scss */
-  #secondary-header .secondary-font-title {
-    font: 500 18px Roboto, Helvetica, "Helvetica Neue", Arial, sans-serif !important;
-    width: 50%;
-  }
-}
-
-@media screen and (max-width: 599px) {
-  /* line 37, scss/template/_secondary_header.scss */
-  #secondary-header .secondary-font-title {
-    font: 500 14px Roboto, Helvetica, "Helvetica Neue", Arial, sans-serif !important;
-    width: 50%;
-  }
-}
-
-@media screen and (max-width: 399px) {
-  /* line 56, scss/template/_secondary_header.scss */
-  #secondary-header .secondary-font-title .extra-title {
-    display: none !important;
-  }
-}
-
-/* line 65, scss/template/_secondary_header.scss */
-#secondary-header .topnav a {
-  text-decoration: none;
-  font: 500 18px Roboto, Helvetica, "Helvetica Neue", Arial, sans-serif;
-}
-
-/* line 72, scss/template/_secondary_header.scss */
-#secondary-header #secondary-nav a .text {
-  display: inline-block;
-  color: #FBFCFE;
-  padding: 0 .5rem 0 .5rem;
-}
-
-/* line 80, scss/template/_secondary_header.scss */
-#secondary-header #header-logo {
-  margin: 0 2% 0 0;
-  height: 36px;
-  width: auto;
-}
-
-/* line 84, scss/template/_secondary_header.scss */
-#secondary-header #header-logo img {
-  height: 36px;
-  width: auto;
-}
-
-@media screen and (max-width: 768px) {
-  /* line 84, scss/template/_secondary_header.scss */
-  #secondary-header #header-logo img {
-    height: 36px;
-  }
+/* line 56, scss/template/_header.scss */
+.header-title {
+  text-transform: none !important;
+  font-size: 1.5rem !important;
 }
 
 /* line 1, scss/template/_main_header.scss */
@@ -20867,7 +20754,7 @@ h2 {
   cursor: default;
 }
 
-/* line 1601, scss/screen.scss */
+/* line 1600, scss/screen.scss */
 .ui-autocomplete {
   position: absolute;
   top: 0;
@@ -20875,7 +20762,7 @@ h2 {
   cursor: default;
 }
 
-/* line 1607, scss/screen.scss */
+/* line 1606, scss/screen.scss */
 .ui-menu {
   display: block;
   padding: 10px;
@@ -20888,12 +20775,12 @@ h2 {
   box-shadow: 0 0 12px rgba(35, 58, 112, 0.25);
 }
 
-/* line 1616, scss/screen.scss */
+/* line 1615, scss/screen.scss */
 .ui-menu .ui-menu {
   position: absolute;
 }
 
-/* line 1620, scss/screen.scss */
+/* line 1619, scss/screen.scss */
 .ui-menu .ui-menu-item {
   position: relative;
   margin: 0;
@@ -20901,7 +20788,7 @@ h2 {
   cursor: pointer;
 }
 
-/* line 1627, scss/screen.scss */
+/* line 1626, scss/screen.scss */
 .ui-menu .ui-menu-divider {
   margin: 5px 0;
   height: 0;
@@ -20910,12 +20797,12 @@ h2 {
   border-width: 1px 0 0 0;
 }
 
-/* line 1636, scss/screen.scss */
+/* line 1635, scss/screen.scss */
 .ui-accordion .ui-accordion-header {
   outline: none;
 }
 
-/* line 1639, scss/screen.scss */
+/* line 1638, scss/screen.scss */
 .ui-accordion .ui-accordion-header .ui-accordion-header-icon {
   display: inline-block;
   position: static;
@@ -20924,14 +20811,14 @@ h2 {
   overflow: visible;
 }
 
-/* line 1649, scss/screen.scss */
+/* line 1648, scss/screen.scss */
 .accordion-plain .ui-accordion-header {
   padding: 8px 0;
   color: #233a70;
   line-height: 28px;
 }
 
-/* line 1654, scss/screen.scss */
+/* line 1653, scss/screen.scss */
 .accordion-plain .ui-accordion-header .ui-accordion-header-icon {
   display: block;
   float: left;
@@ -20941,17 +20828,17 @@ h2 {
   line-height: 28px;
 }
 
-/* line 1664, scss/screen.scss */
+/* line 1663, scss/screen.scss */
 .accordion-plain .accordion-text {
   padding: 20px 40px;
 }
 
-/* line 1670, scss/screen.scss */
+/* line 1669, scss/screen.scss */
 .tabs-plain .tabs-plain-list li {
   display: inline-block;
 }
 
-/* line 1673, scss/screen.scss */
+/* line 1672, scss/screen.scss */
 .tabs-plain .tabs-plain-list li a {
   display: block;
   padding: 8px 10px;
@@ -21090,13 +20977,13 @@ https://raw.github.com/shagstrom/split-pane/master/LICENSE
   cursor: row-resize;
 }
 
-/* line 1687, scss/screen.scss */
+/* line 1686, scss/screen.scss */
 .pretty-split-pane-frame .split-pane > .split-pane-divider.dragged.touch {
   background: blue;
   opacity: 0.25;
 }
 
-/* line 1691, scss/screen.scss */
+/* line 1690, scss/screen.scss */
 .split-pane-divider {
   right: 50%;
   width: 12px;
@@ -21106,7 +20993,7 @@ https://raw.github.com/shagstrom/split-pane/master/LICENSE
   box-shadow: 0 0 10px rgba(35, 58, 112, 0.25);
 }
 
-/* line 1697, scss/screen.scss */
+/* line 1696, scss/screen.scss */
 .pane-content {
   position: absolute;
   top: 0;
@@ -21116,18 +21003,18 @@ https://raw.github.com/shagstrom/split-pane/master/LICENSE
   overflow: auto;
 }
 
-/* line 1701, scss/screen.scss */
+/* line 1700, scss/screen.scss */
 #pane-left {
   right: 50%;
   margin-right: 12px;
 }
 
-/* line 1705, scss/screen.scss */
+/* line 1704, scss/screen.scss */
 #pane-right {
   width: 50%;
 }
 
-/* line 1709, scss/screen.scss */
+/* line 1708, scss/screen.scss */
 .ui-tooltip {
   background-color: #0058cf;
   color: white;
@@ -21137,7 +21024,7 @@ https://raw.github.com/shagstrom/split-pane/master/LICENSE
   padding-top: 0;
 }
 
-/* line 1718, scss/screen.scss */
+/* line 1717, scss/screen.scss */
 .feedback-trigger-small {
   position: absolute;
   cursor: pointer;
@@ -21169,13 +21056,13 @@ https://raw.github.com/shagstrom/split-pane/master/LICENSE
 }
 
 @media screen and (max-width: 499px) {
-  /* line 1718, scss/screen.scss */
+  /* line 1717, scss/screen.scss */
   .feedback-trigger-small {
     top: calc(100% - 128px);
   }
 }
 
-/* line 1742, scss/screen.scss */
+/* line 1741, scss/screen.scss */
 .feedback-trigger-small:hover {
   background-color: #195abc;
   -webkit-box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.239);
@@ -21183,7 +21070,7 @@ https://raw.github.com/shagstrom/split-pane/master/LICENSE
   box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.239);
 }
 
-/* line 1748, scss/screen.scss */
+/* line 1747, scss/screen.scss */
 #feedback-close-button-yes, #feedback-close-button-no {
   background-color: #FBFCFE;
   line-height: 32px;
@@ -21200,12 +21087,12 @@ https://raw.github.com/shagstrom/split-pane/master/LICENSE
   height: 30px;
 }
 
-/* line 1759, scss/screen.scss */
+/* line 1758, scss/screen.scss */
 #feedback-close-button-yes:hover, #feedback-close-button-no:hover {
   background-color: #beceef;
 }
 
-/* line 1764, scss/screen.scss */
+/* line 1763, scss/screen.scss */
 .feedback-trigger {
   position: absolute;
   background-color: #124086;
@@ -21228,32 +21115,32 @@ https://raw.github.com/shagstrom/split-pane/master/LICENSE
 }
 
 @media screen and (max-width: 768px) {
-  /* line 1764, scss/screen.scss */
+  /* line 1763, scss/screen.scss */
   .feedback-trigger {
     width: 100%;
     left: 0px;
   }
 }
 
-/* line 1778, scss/screen.scss */
+/* line 1777, scss/screen.scss */
 .feedback-trigger .feedback-text {
   padding-left: 6px;
 }
 
-/* line 1782, scss/screen.scss */
+/* line 1781, scss/screen.scss */
 .feedback-trigger .feedback-icon {
   font-size: 18px;
   vertical-align: middle;
 }
 
 @media screen and (max-width: 768px) {
-  /* line 1782, scss/screen.scss */
+  /* line 1781, scss/screen.scss */
   .feedback-trigger .feedback-icon {
     display: none;
   }
 }
 
-/* line 1798, scss/screen.scss */
+/* line 1797, scss/screen.scss */
 .feedback-trigger:hover {
   background-color: #195abc;
   -webkit-box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.239);
@@ -21261,7 +21148,7 @@ https://raw.github.com/shagstrom/split-pane/master/LICENSE
   box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.239);
 }
 
-/* line 1804, scss/screen.scss */
+/* line 1803, scss/screen.scss */
 .about-tool-row {
   height: auto;
   align-items: start !important;
@@ -21269,7 +21156,7 @@ https://raw.github.com/shagstrom/split-pane/master/LICENSE
   justify-content: start !important;
 }
 
-/* line 1810, scss/screen.scss */
+/* line 1809, scss/screen.scss */
 .about-tool-row.about-tool-equals {
   align-items: center !important;
   align-content: center !important;
@@ -21278,7 +21165,7 @@ https://raw.github.com/shagstrom/split-pane/master/LICENSE
   font-weight: 500;
 }
 
-/* line 1818, scss/screen.scss */
+/* line 1817, scss/screen.scss */
 .about-tool-row .about-tool-content {
   line-height: unset !important;
   margin: 0px !important;
@@ -21286,41 +21173,41 @@ https://raw.github.com/shagstrom/split-pane/master/LICENSE
   padding-top: 12px;
 }
 
-/* line 1824, scss/screen.scss */
+/* line 1823, scss/screen.scss */
 .about-tool-row .about-tool-content.img-holder-left {
   justify-content: start !important;
 }
 
-/* line 1826, scss/screen.scss */
+/* line 1825, scss/screen.scss */
 .about-tool-row .about-tool-content.img-holder-left img {
   border: 1px solid;
 }
 
 @media screen and (max-width: 900px) {
-  /* line 1824, scss/screen.scss */
+  /* line 1823, scss/screen.scss */
   .about-tool-row .about-tool-content.img-holder-left {
     justify-content: center !important;
   }
 }
 
-/* line 1834, scss/screen.scss */
+/* line 1833, scss/screen.scss */
 .about-tool-row .about-tool-content.img-holder-right {
   justify-content: flex-end !important;
 }
 
-/* line 1836, scss/screen.scss */
+/* line 1835, scss/screen.scss */
 .about-tool-row .about-tool-content.img-holder-right img {
   border: 1px solid;
 }
 
 @media screen and (max-width: 900px) {
-  /* line 1834, scss/screen.scss */
+  /* line 1833, scss/screen.scss */
   .about-tool-row .about-tool-content.img-holder-right {
     justify-content: center !important;
   }
 }
 
-/* line 1844, scss/screen.scss */
+/* line 1843, scss/screen.scss */
 .about-tool-row .about-tool-content img {
   display: block;
   max-width: 100%;
@@ -21329,33 +21216,33 @@ https://raw.github.com/shagstrom/split-pane/master/LICENSE
   height: 100%;
 }
 
-/* line 1852, scss/screen.scss */
+/* line 1851, scss/screen.scss */
 .about-tool-row .about-tool-content .sample-img {
   max-height: 200px;
   width: auto;
 }
 
-/* line 1858, scss/screen.scss */
+/* line 1857, scss/screen.scss */
 .about-tool-row .btn-chart-text {
   padding: 12px;
 }
 
 @media screen and (max-width: 900px) {
-  /* line 1804, scss/screen.scss */
+  /* line 1803, scss/screen.scss */
   .about-tool-row {
     width: 100% !important;
     border-bottom: 1px solid #124086;
   }
-  /* line 1867, scss/screen.scss */
+  /* line 1866, scss/screen.scss */
   .about-tool-row .img-btn-chart {
     width: 50% !important;
     height: 50% !important;
   }
-  /* line 1872, scss/screen.scss */
+  /* line 1871, scss/screen.scss */
   .about-tool-row .btn-selector {
     width: 100% !important;
   }
-  /* line 1875, scss/screen.scss */
+  /* line 1874, scss/screen.scss */
   .about-tool-row .btn-selector.circle-box-left {
     -webkit-border-radius: 5px;
     -moz-border-radius: 5px;
@@ -21363,7 +21250,7 @@ https://raw.github.com/shagstrom/split-pane/master/LICENSE
     -o-border-radius: 5px;
     border-radius: 5px;
   }
-  /* line 1878, scss/screen.scss */
+  /* line 1877, scss/screen.scss */
   .about-tool-row .btn-selector.circle-box-right {
     -webkit-border-radius: 5px;
     -moz-border-radius: 5px;
@@ -21371,7 +21258,7 @@ https://raw.github.com/shagstrom/split-pane/master/LICENSE
     -o-border-radius: 5px;
     border-radius: 5px;
   }
-  /* line 1881, scss/screen.scss */
+  /* line 1880, scss/screen.scss */
   .about-tool-row .btn-selector.circle-box-center {
     -webkit-border-radius: 5px;
     -moz-border-radius: 5px;
@@ -21381,70 +21268,75 @@ https://raw.github.com/shagstrom/split-pane/master/LICENSE
   }
 }
 
-/* line 1889, scss/screen.scss */
+/* line 1888, scss/screen.scss */
 #download-dropdown-menu {
   transition: background-color 200ms ease-in;
 }
 
-/* line 1892, scss/screen.scss */
+/* line 1891, scss/screen.scss */
 #download-dropdown-menu:hover {
   background-color: #A6C6F3;
 }
 
-/* line 1899, scss/screen.scss */
+/* line 1898, scss/screen.scss */
 body:not(.is-ak-area) .opt-only-ak, body:not(.is-island-area) .opt-only-island {
   display: none !important;
 }
 
-/* line 1903, scss/screen.scss */
+/* line 1902, scss/screen.scss */
 body.is-ak-area .opt-not-ak, body.is-island-area .opt-not-island {
   display: none !important;
 }
 
-/* line 1907, scss/screen.scss */
+/* line 1906, scss/screen.scss */
 #tidal-chart {
   display: flex;
   flex-direction: column;
 }
 
-/* line 1912, scss/screen.scss */
+/* line 1911, scss/screen.scss */
 .chart {
   flex: 1;
   width: 100%;
   height: 100vh;
 }
 
-/* line 1918, scss/screen.scss */
+/* line 1917, scss/screen.scss */
 .info-section {
   min-width: fit-content;
   text-align: center;
 }
 
-/* line 1923, scss/screen.scss */
+/* line 1922, scss/screen.scss */
 .disabled {
   filter: opacity(0.4);
 }
 
-/* line 1927, scss/screen.scss */
+/* line 1926, scss/screen.scss */
 .tippy-tooltip.testing-theme-theme {
   background-color: white;
 }
 
-/* line 1930, scss/screen.scss */
+/* line 1929, scss/screen.scss */
 .tippy-tooltip.testing-theme-theme hr {
   color: #0D3064;
   font-weight: bold;
 }
 
-/* line 1936, scss/screen.scss */
+/* line 1935, scss/screen.scss */
 .tippy-title {
   color: #0D3064;
   font-weight: bold;
   font-size: 1rem;
 }
 
-/* line 1942, scss/screen.scss */
+/* line 1941, scss/screen.scss */
 .tippy-body {
   color: #0D3064;
   font-size: 0.95rem;
+}
+
+/* line 1946, scss/screen.scss */
+.popover-header {
+  background-color: transparent !important;
 }

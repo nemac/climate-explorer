@@ -489,7 +489,7 @@ $(function () {
           show_projected_rcp45: true,
           show_projected_rcp85: true,
           show_historical_modeled: true,
-          show_historical_observed: false,
+          show_historical_observed: true,
         });
 
         setTimeout(function () {

@@ -9,7 +9,7 @@ export default (config) => `
       <i class="fas fa-home"></i>
     </a>
     
-    <h2>Climate Explorer</h2>
+    <h2 class="header-title">The Climate Explorer</h2>
     
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon">

@@ -614,65 +614,6 @@ $(function () {
     }
   }, stationsMapState));
 
-  // resize map when browser is resized
-  function setMapSize() {
-    $('#stations-map').height($('#stations-map').parent().height())
-
-    // get map parent element - which provides the correct dimensions for the map
-    const rect = document.getElementById('stations-map-wrap').getBoundingClientRect();
-
-    const messageElem = document.getElementById('stations-map-message');
-
-    // get map parent element - which provides the correct dimensions for the map
-    if (messageElem) {
-      const rect = document.getElementById('stations-map-wrap').getBoundingClientRect();
-      messageElem.style.left = `${(rect.right - rect.left) / 3}px`;
-      messageElem.style.top = `-${((rect.bottom - rect.top) / 2)}px`;
-    }
-
-    // set size of map overlay
-    // if (document.querySelector('.esri-view-root')) {
-    //   document.querySelector('.esri-view-root').style.minWidth = `${rect.width}px`;
-    //   document.querySelector('.esri-view-root').style.maxWidth = `${rect.width}px`;
-    //   document.querySelector('.esri-view-root').style.height = `${rect.height}px`;
-    // }
-    //
-    // // set size of map overlay
-    // if (document.querySelector('.esri-view-user-storage')) {
-    //   document.querySelector('.esri-view-user-storage').style.minWidth = `${rect.width}px`;
-    //   document.querySelector('.esri-view-user-storage').style.maxWidth = `${rect.width}px`;
-    // }
-
-    // set size of map
-    // if (document.querySelector('#stations-map')) {
-    //   document.querySelector('#stations-map').style.minWidth = `${rect.width}px`;
-    //   document.querySelector('#stations-map').style.maxWidth = `${rect.width}px`;
-    //   document.querySelector('#stations-map').style.width = `${rect.width}px`;
-    //   document.querySelector('#stations-map').style.height = `${rect.height}px`;
-    // }
-
-    // get graph parent element - which provides the correct dimensions for the graph
-    const graphRect = document.getElementById('stations-graph-wrap').getBoundingClientRect();
-    let graphWidth = graphRect.width;
-
-    // set size of temp chart
-    // if (graphRect.width <= 900) {
-    //   if (document.querySelector('#stations-graph-row')) {
-    //     document.querySelector('#stations-graph-row').style.height = `350px`;
-    //     document.querySelector('#stations-graph-row').style.minHeight = `350px`;
-    //   }
-    // }
-
-    // set size of tidal-chart chart
-    // if (document.querySelector('#tidal-chart')) {
-    //   document.querySelector('#tidal-chart').style.minWidth = `${graphWidth}px`;
-    //   document.querySelector('#tidal-chart').style.maxWidth = `${graphWidth}px`;
-    //   document.querySelector('#tidal-chart').style.width = `${graphWidth}px`;
-    //   document.querySelector('#tidal-chart').style.height = `${graphRect.height}px`;
-    // }
-
-  }
-
   function setBodySize() {
 
     let nav_element = document.querySelector(".navbar-element");
