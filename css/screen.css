@@ -21340,3 +21340,9 @@ body.is-ak-area .opt-not-ak, body.is-island-area .opt-not-island {
 .popover-header {
   background-color: transparent !important;
 }
+
+/* line 1951, scss/screen.scss */
+.climate_by_location_popover hr, .high_tide_flooding_popover hr {
+  background-color: transparent !important;
+  opacity: 1 !important;
+}

@@ -8,7 +8,7 @@ $(function () {
   enableCustomSelect('download-select');
   enableCustomSelect('tidalzoom-select');
 
-  const widget = new TidalStationWidget.default($('#tidal-chart')[0], {
+  const widget = new TidalStationWidget($('#tidal-chart')[0], {
     data_url: 'https://crt-climate-explorer.nemac.org/data/high-tide-flooding-widget/tidal_data.json',
     responsive: true
   }); // this is using the rollup name now and not the name of the class
@@ -640,6 +640,7 @@ $(function () {
     let height = body_height - search_height - info_height - nav_height - footer_height;
 
     high_tide_flood.style.setProperty('height', `calc(${height}rem - 1rem`); // the '- 1rem' represents the margin value on the .search-station-row div. (mt-3 = 1rem)
+    // switch to outerHeight to account for margin
 
     $('#stations-map').height(high_tide_flood.style.height);
 
