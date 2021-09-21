@@ -11,7 +11,7 @@ $(function () {
   const widget = new TidalStationWidget($('#tidal-chart')[0], {
     data_url: 'https://crt-climate-explorer.nemac.org/data/high-tide-flooding-widget/tidal_data.json',
     responsive: true
-  }); // this is using the rollup name now and not the name of the class
+  });
 
   $('.footer-button').removeClass('footer-button-selected');
   $('[data-page="high_tide_flooding"]').addClass('footer-button-selected');

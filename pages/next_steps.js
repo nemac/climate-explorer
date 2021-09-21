@@ -3,7 +3,7 @@ import secondary_header from '../template/secondary_header';
 import footer from '../template/footer';
 import nav_footer from '../template/nav_footer';
 
-export default (config)=>`
+export default (config) => `
 
 <!doctype html>
 <html lang='en'>
@@ -112,7 +112,7 @@ ${secondary_header(config)}
 ${nav_footer(config)}
 ${footer(config)}
 
-<script type="${config.env === 'dev'? 'module':  'text/javascript'}" src="/js/next_steps.js"></script>
+<script type="${config.env === 'dev' ? 'module' : 'text/javascript'}" src="/js/next_steps.js"></script>
 </body>
 </html>
 `

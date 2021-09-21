@@ -9,12 +9,12 @@ $ce3-blue1: #0B2752; // very dark
 $ce3-blue2: #0D3064; // main header
 $ce3-blue2alpha: rgba(13, 48, 100, 0.50);
 $ce3-blue3: #124086; // text, button backgrounds, selected icon borders. main color
-$ce3-blue3alpha: rgba(18,64,134,0.50);  // some borders and color disabled items
-$ce3-blue3alphad: rgba(18,64,134,0.05);  // some borders and color disabled items
-$ce3-blue4: #1D6ADD;  // some backgrounds and borders
+$ce3-blue3alpha: rgba(18, 64, 134, 0.50); // some borders and color disabled items
+$ce3-blue3alphad: rgba(18, 64, 134, 0.05); // some borders and color disabled items
+$ce3-blue4: #1D6ADD; // some backgrounds and borders
 $ce3-blue5: #E9F1FC; // button text boxes, not selected radio buttons
-$ce3-blue5alpha: rgba(233, 241, 252,0.50);
-$ce3-blue5alpha2: rgba(233, 241, 252,0.90);
+$ce3-blue5alpha: rgba(233, 241, 252, 0.50);
+$ce3-blue5alpha2: rgba(233, 241, 252, 0.90);
 $ce3-blue6: #FBFCFE; // text for dark backgrounds, light backgrounds, backgrounds for boxes and dropdowns
 // $ce3-darkgray: #4D4D4D; // icon not selected
 $ce3-darkgray: #585858; // #4D4D4D; // icon not selected
@@ -29,8 +29,10 @@ $ce3-light-background: $ce3-blue5;
 $ce3-verylight-background: $ce3-blue6;
 $ce3-verylight-font: $ce3-blue6;
 
-$ce3-disabled-font: lighten($ce3-blue3, 50);;
-$ce3-disabled-border: lighten($ce3-blue3, 50);;
+$ce3-disabled-font: lighten($ce3-blue3, 50);
+;
+$ce3-disabled-border: lighten($ce3-blue3, 50);
+;
 
 $ce3-border-color: $ce3-blue3alphad;
 
@@ -89,10 +91,10 @@ $grey1: #5f5f5f;
 $grey2: #ebebeb;
 
 // fonts
-$montserrat:  Montserrat, Roboto, Helvetica, 'Helvetica Neue', Arial, sans-serif; // default should be everywhere
-$roboto:  Roboto, Helvetica, 'Helvetica Neue', Arial, sans-serif; // default should be everywhere
+$montserrat: Montserrat, Roboto, Helvetica, 'Helvetica Neue', Arial, sans-serif; // default should be everywhere
+$roboto: Roboto, Helvetica, 'Helvetica Neue', Arial, sans-serif; // default should be everywhere
 $sans-book: 'CESans', Roboto, Helvetica, 'Helvetica Neue', Arial, sans-serif; // legacy left out for consistency
-$sans-heavy: 'CESans-Heavy', Roboto, Helvetica, 'Helvetica Neue', Arial, sans-serif;  // legacy left out for consistency
+$sans-heavy: 'CESans-Heavy', Roboto, Helvetica, 'Helvetica Neue', Arial, sans-serif; // legacy left out for consistency
 $font-weight-normal: 500;
 $font-weight-normal-plus: 500; // 600;
 $font-weight-meduim: 500; // 700;
@@ -133,32 +135,40 @@ body {
   font: 300 16px $roboto;
   color: $ce3-blue3;
 }
+
 a {
   color: $ce3-blue4;
   text-decoration: none;
 }
+
 img {
   display: block;
   max-width: 100%;
   height: auto;
 }
+
 h1 {
   font: 800 24px $roboto;
   text-transform: uppercase;
 }
+
 h2 {
   font: 800 18px $roboto;
   text-transform: uppercase;
 }
+
 h3 {
   font: 800 16px $roboto;
 }
+
 h4 {
   font: 800 14px $roboto;
 }
+
 h5 {
   font: 800 12px $roboto;
 }
+
 h6 {
   font: 600 12px $roboto;
 }
@@ -170,22 +180,27 @@ h6 {
     @include border-radius(14px, 14px);
   }
 }
+
 ::-webkit-scrollbar {
   width: 12px;
+
   &-thumb {
     background-clip: content-box;
     background-color: $ce3-darkgray;
     border: 2px solid transparent;
     @include border-radius(10px, 10px);
   }
+
   &-button {
     width: 0;
     height: 0;
     display: none;
   }
+
   &-corner {
     background-color: transparent;
   }
+
   &-track {
     background-color: $ce3-blue5;
   }
@@ -195,26 +210,32 @@ h6 {
   :hover::-webkit-scrollbar {
     cursor: pointer;
     width: 14px;
+
     &-thumb {
       @include border-radius(14px, 14px);
     }
   }
+
   ::-webkit-scrollbar {
-  	width: 10px;
+    width: 10px;
+
     &-thumb {
-    	background-clip: content-box;
+      background-clip: content-box;
       background-color: $ce3-darkgray;
-    	border: 2px solid transparent;
-    	@include border-radius(10px, 10px);
+      border: 2px solid transparent;
+      @include border-radius(10px, 10px);
     }
+
     &-button {
-    	width: 0;
-    	height: 0;
-    	display: none;
+      width: 0;
+      height: 0;
+      display: none;
     }
+
     &-corner {
-    	background-color: transparent;
+      background-color: transparent;
     }
+
     &-track {
       background-color: $ce3-blue5;
     }
@@ -223,12 +244,13 @@ h6 {
 
 // font classes
 .main-font-description {
-   font: $font-weight-normal 24px $roboto !important;
+  font: $font-weight-normal 24px $roboto !important;
 }
 
 .font-description {
-   font: $font-weight-normal 24px $roboto !important;
+  font: $font-weight-normal 24px $roboto !important;
 }
+
 .main-btn-height {
   height: $ce3-main-btn-height !important;
 }
@@ -261,10 +283,10 @@ h6 {
   height: $ce3-btn-height !important;
   @include medium {
     height: $ce3-btn-height-smallecreen !important;
- }
+  }
 }
 
-#filters-toggle .select-styled:after  {
+#filters-toggle .select-styled:after {
   @include small {
     right: -2px;
   }
@@ -298,17 +320,20 @@ h6 {
     border-top: 1px solid $ce3-blue5;
     @include border-radius(5px, 5px);
     @include transition(all 0.15s ease-in);
+
     a {
       color: $ce3-blue3 !important;
     }
+
     &:hover {
       color: $ce3-blue3;
-      background:  darken($ce3-blue5, 5);
+      background: darken($ce3-blue5, 5);
     }
   }
+
   .pac-item-selected {
     color: $ce3-blue3;
-    background:  darken($ce3-blue5, 5);
+    background: darken($ce3-blue5, 5);
   }
 }
 
@@ -333,8 +358,8 @@ h6 {
 }
 
 .font-title {
-   font: 500 24px $roboto !important;
-   color: $ce3-blue6 !important;
+  font: 500 24px $roboto !important;
+  color: $ce3-blue6 !important;
 }
 
 .border-none {
@@ -388,9 +413,9 @@ h6 {
 }
 
 .padding-default {
-  padding: $ce3-default-horizontal-padding  $ce3-default-vertical-padding !important;
+  padding: $ce3-default-horizontal-padding $ce3-default-vertical-padding !important;
   @include medium {
-    padding: $ce3-default-horizontal-padding/2  $ce3-default-vertical-padding/2 !important;
+    padding: $ce3-default-horizontal-padding/2 $ce3-default-vertical-padding/2 !important;
   }
 }
 
@@ -436,6 +461,7 @@ h6 {
     padding-bottom: $ce3-padding-half/2 !important;
   }
 }
+
 .padding-bottom {
   padding-bottom: $ce3-default-horizontal-padding !important;
   @include medium {
@@ -489,7 +515,7 @@ h6 {
 }
 
 .d-none {
-  display: none!important;
+  display: none !important;
 }
 
 .d-flex {
@@ -503,6 +529,7 @@ h6 {
 .d-flex-wrap {
   flex-wrap: wrap !important;
 }
+
 .d-flex-row {
   display: flex !important;
   flex-flow: row wrap !important;
@@ -531,8 +558,8 @@ h6 {
 }
 
 .d-flex-fill {
-    display: flex !important;
-    flex: 1 1 auto !important;
+  display: flex !important;
+  flex: 1 1 auto !important;
 }
 
 .d-flex-center {
@@ -751,7 +778,7 @@ h6 {
     outline: none !important;
   }
 
-  &.disabled:hover, &.disabled:focus  {
+  &.disabled:hover, &.disabled:focus {
     color: $ce3-blue3 !important;
     background-color: $ce3-blue5 !important;
     outline: none !important;
@@ -766,6 +793,7 @@ h6 {
       color: darken($ce3-blue3, 10) !important;
       font-weight: $font-weight-normal-plus;
     }
+
     outline: none !important;
 
     &.disabled {
@@ -774,64 +802,66 @@ h6 {
       outline: none !important;
     }
   }
+
   &:focus {
     outline: none !important;
   }
 }
 
 #select-tip-holder {
-    width: 32px;
-    height: 32px;
-    margin-left: -10px;
-    margin-top: 2px;
-    background-color: $ce3-blue3;
-    text-indent: 5px;
-    @include border-radius(32px, 32px);
+  width: 32px;
+  height: 32px;
+  margin-left: -10px;
+  margin-top: 2px;
+  background-color: $ce3-blue3;
+  text-indent: 5px;
+  @include border-radius(32px, 32px);
+
+  @include medium {
+    position: relative;
+    left: 0px;
+    width: 100%;
+    height: 1px;
+    margin-bottom: -48px;
+    top: 0px;
+    background-color: transparent;
+  }
+  @include to-small-to-see {
+    display: none;
+  }
+
+  #select-tip {
+    width: 36px;
+    height: 36px;
+    font-size: 14px;
+    margin-top: -2px;
+    align-items: center;
+    display: flex;
+    color: $ce3-blue5;
+
+    &:hover, &:focus {
+      outline: none !important;
+    }
 
     @include medium {
       position: relative;
-      left: 0px;
-      width: 100%;
-      height: 1px;
-      margin-bottom: -48px;
-      top: 0px;
-      background-color: transparent;
-    }
-    @include to-small-to-see {
-      display: none;
-    }
+      width: 24px;
+      height: 24px;
+      top: -36px;
+      left: calc(100% - 64px);
+      background-color: $ce3-blue5;
+      color: $ce3-blue3;
+      @include border-radius(20px, 20px);
 
-    #select-tip {
-      width: 36px;
-      height: 36px;
-      font-size: 14px;
-      margin-top: -2px;
-      align-items: center;
-      display: flex;
-      color: $ce3-blue5;
+      &:before {
+        margin-left: -1px;
+      }
+
       &:hover, &:focus {
         outline: none !important;
       }
-
-      @include medium {
-        position: relative;
-        width: 24px;
-        height: 24px;
-        top: -36px;
-        left: calc(100% - 64px);
-        background-color: $ce3-blue5;
-        color: $ce3-blue3;
-        @include border-radius(20px, 20px);
-
-        &:before {
-          margin-left: -1px;
-        }
-
-        &:hover, &:focus {
-          outline: none !important;
-        }
-      }
     }
+  }
 }
 
 .rounded-description-box {
@@ -877,7 +907,7 @@ h6 {
   border: 1px solid $ce3-border-color !important;
   min-height: 112px !important;
   height: auto !important;
-  max-height:999px;
+  max-height: 999px;
   @include transition(0.5s);
   @include transition-property(all);
   @include transition-timing-function(ease-out);
@@ -982,7 +1012,7 @@ h6 {
 
 .text-info-box-secondary {
   font-size: 18px !important;
-  font-weight:  $font-weight-normal !important;
+  font-weight: $font-weight-normal !important;
 }
 
 #cards-search-input {
@@ -1003,14 +1033,14 @@ h6 {
 
 .search-default {
   $icon-rect-size: 24px;
-  color:$ce3-blue3 !important;
+  color: $ce3-blue3 !important;
   width: $icon-rect-size !important;
   height: $icon-rect-size !important;
   background-color: $ce3-blue6 !important;
   @include border-radius($icon-rect-size, $icon-rect-size);
   margin-top: 7px !important;
   font-size: 14px !important;
-  font-weight:  $font-weight-heavy !important;
+  font-weight: $font-weight-heavy !important;
   padding: 5px !important;
   margin-left: $ce3-padding-half;
 
@@ -1029,7 +1059,7 @@ input.input-inner-default {
   font: $font-weight-heavy 18px $roboto !important;
 }
 
-input.input-inner-default::placeholder  {
+input.input-inner-default::placeholder {
   opacity: 1 !important;
   background-color: $ce3-blue5;
   color: $ce3-blue3;
@@ -1040,7 +1070,7 @@ input.input-inner-default::-moz-placeholder, input.input-inner-default:-moz-plac
   padding-bottom: 6px;
 }
 
-input.input-inner-default:focus::placeholder  {
+input.input-inner-default:focus::placeholder {
   color: transparentize($ce3-blue3, 0.6);
   font: $font-weight-heavy 18px $roboto !important;
   -moz-transition: 0.25s;
@@ -1049,7 +1079,7 @@ input.input-inner-default:focus::placeholder  {
   transition: 0.25s;
 }
 
-input.input-inner-default:focus  {
+input.input-inner-default:focus {
   outline: none !important;
 }
 
@@ -1094,6 +1124,7 @@ input.input-inner-default:focus  {
     width: 100%;
     height: 100%;
     z-index: 0;
+
     img {
       width: 100%;
       height: auto;
@@ -1101,6 +1132,7 @@ input.input-inner-default:focus  {
       top: 0px;
       left: 0px;
     }
+
     .attribution {
       top: calc(100% - 17px);
     }
@@ -1133,6 +1165,7 @@ input.input-inner-default:focus  {
       left: 24px;
     }
   }
+
   // opacity: 0.5;
 }
 
@@ -1314,12 +1347,14 @@ input.input-inner-default:focus  {
     }
   }
 }
+
 // icon
 
 .icon {
   display: inline-block;
   vertical-align: middle;
 }
+
 // waypoints sticky
 
 .stuck {
@@ -1327,33 +1362,33 @@ input.input-inner-default:focus  {
   top: 0;
 }
 
-  .variable-option-item {
-    width: 100%;
-    height: 44px;
-  }
+.variable-option-item {
+  width: 100%;
+  height: 44px;
+}
 
-  .variable-option-text {
-    width: 70%;
-    min-width: 215px;
-    height: 24px;
-    padding-top: 3px;
-    @include just-before-mobile {
-      font-size: .7rem;
-      min-width: 175px;
-    }
+.variable-option-text {
+  width: 70%;
+  min-width: 215px;
+  height: 24px;
+  padding-top: 3px;
+  @include just-before-mobile {
+    font-size: .7rem;
+    min-width: 175px;
   }
+}
 
-  .variable-option-tooltip {
-    height: 24px;
-    padding-top: 3px;
-    z-index: 1000;
-    font-size: 20px;
+.variable-option-tooltip {
+  height: 24px;
+  padding-top: 3px;
+  z-index: 1000;
+  font-size: 20px;
 
-    &:hover {
-      color: $ce3-blue3;
-      background:  darken($ce3-blue5, 5);
-    }
+  &:hover {
+    color: $ce3-blue3;
+    background: darken($ce3-blue5, 5);
   }
+}
 
 .tooltip {
   position: relative;
@@ -1367,15 +1402,16 @@ input.input-inner-default:focus  {
   @include box-shadow(0 0 8px transparentize($blue1, 0.75));
 
   .tooltip-arrow::before {
-      position: absolute;
-      left: calc(100% + 12px);
-      content: "";
-      border-style: solid;
-      border-width: .4rem 0 .4rem .4rem;
-      border-color: transparent;
-      border-left-color: $ce3-blue6;
+    position: absolute;
+    left: calc(100% + 12px);
+    content: "";
+    border-style: solid;
+    border-width: .4rem 0 .4rem .4rem;
+    border-color: transparent;
+    border-left-color: $ce3-blue6;
   }
 }
+
 // chart legend
 
 .chart-legend {
@@ -1484,6 +1520,7 @@ input.input-inner-default:focus  {
     }
   }
 }
+
 // download
 
 .download-panel {
@@ -1531,6 +1568,7 @@ input.input-inner-default:focus  {
     right: 0;
   }
 }
+
 // SOCIAL
 //@import "ce-three-theme";
 //@import "ce-three-main-theme";
@@ -1603,6 +1641,7 @@ input.input-inner-default:focus  {
   left: 0;
   cursor: default;
 }
+
 .ui-menu {
   display: block;
   padding: 10px;
@@ -1631,6 +1670,7 @@ input.input-inner-default:focus  {
     border-width: 1px 0 0 0;
   }
 }
+
 .ui-accordion {
   .ui-accordion-header {
     outline: none;
@@ -1644,6 +1684,7 @@ input.input-inner-default:focus  {
     }
   }
 }
+
 .accordion-plain {
   .ui-accordion-header {
     padding: 8px 0;
@@ -1664,6 +1705,7 @@ input.input-inner-default:focus  {
     padding: 20px 40px;
   }
 }
+
 .tabs-plain {
   .tabs-plain-list {
     li {
@@ -1679,6 +1721,7 @@ input.input-inner-default:focus  {
     }
   }
 }
+
 // split pane
 
 @import "plugins/split-pane";
@@ -1687,20 +1730,24 @@ input.input-inner-default:focus  {
   background: blue;
   opacity: 0.25;
 }
+
 .split-pane-divider {
   right: 50%;
   width: 12px;
   background: $white;
   @include box-shadow(0 0 10px transparentize($blue2, 0.75));
 }
+
 .pane-content {
   @include full-size;
   overflow: auto;
 }
+
 #pane-left {
   right: 50%;
   margin-right: 12px;
 }
+
 #pane-right {
   width: 50%;
 }
@@ -1725,7 +1772,7 @@ input.input-inner-default:focus  {
   left: calc(100% - 48px);
   width: 48px;
   height: 48px;
-  display:inline-block;
+  display: inline-block;
   text-align: center;
   vertical-align: middle;
   background-color: $ce3-blue3;
@@ -1814,7 +1861,7 @@ input.input-inner-default:focus  {
     font-weight: $font-weight-normal-plus;
   }
 
-  .about-tool-content  {
+  .about-tool-content {
     line-height: unset !important;
     margin: 0px !important;
     padding-bottom: $ce3-default-padding;
@@ -1822,9 +1869,11 @@ input.input-inner-default:focus  {
 
     &.img-holder-left {
       justify-content: start !important;
+
       img {
         border: 1px solid;
       }
+
       @include medium {
         justify-content: center !important;
       }
@@ -1832,9 +1881,11 @@ input.input-inner-default:focus  {
 
     &.img-holder-right {
       justify-content: flex-end !important;
+
       img {
         border: 1px solid;
       }
+
       @include medium {
         justify-content: center !important;
       }
@@ -1868,16 +1919,18 @@ input.input-inner-default:focus  {
       height: 50% !important;
     }
 
-    .btn-selector  {
+    .btn-selector {
       width: 100% !important;
 
       &.circle-box-left {
         @include border-radius(5px);
       }
+
       &.circle-box-right {
         @include border-radius(5px);
       }
-      &.circle-box-center  {
+
+      &.circle-box-center {
         @include border-radius(5px);
       }
     }
@@ -1943,12 +1996,16 @@ body.is-ak-area .opt-not-ak, body.is-island-area .opt-not-island {
   font-size: 0.95rem;
 }
 
-.popover-header {
-  background-color: transparent !important;
-}
-
 .climate_by_location_popover, .high_tide_flooding_popover {
-  hr{
+
+  .popover-header {
+    background-color: transparent !important;
+    border-bottom: none !important;
+    padding: 0 !important;
+    margin: 0.25rem 0 !important;
+  }
+
+  hr {
     background-color: transparent !important;
     opacity: 1 !important;
   }

@@ -1,4 +1,4 @@
-export default (config)=>`
+export default (config) => `
 <div id="desktop-warning">
   <p>The Climate Explorer is optimized for desktop use. Please visit the site on a desktop computer.</p>
 </div>

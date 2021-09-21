@@ -3,7 +3,7 @@ import secondary_header from '../template/secondary_header';
 import share from '../template/share';
 import footer from '../template/footer';
 
-export default (config)=>`
+export default (config) => `
 <!doctype html>
 <html>
 <head>
@@ -38,7 +38,7 @@ ${secondary_header(config)}
 </div>
 
 ${footer(config)}
-<script type="${config.env === 'dev'? 'module':  'text/javascript'}" src="/js/index.js"></script>
+<script type="${config.env === 'dev' ? 'module' : 'text/javascript'}" src="/js/index.js"></script>
 </body>
 </html>
 `
