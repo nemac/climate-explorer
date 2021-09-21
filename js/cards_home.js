@@ -43,24 +43,6 @@ $(function () {
     }
   }
 
-  function setBodySize() {
-
-    let nav_element = document.querySelector(".navbar-element");
-    let footer_element = document.querySelector(".footer-element");
-
-    let nav_height = nav_element.getBoundingClientRect().height / 16;
-    let footer_height = footer_element.getBoundingClientRect().height / 16;
-
-    let cards_home_body = document.querySelector(".cards-home-body");
-    cards_home_body.style.paddingTop = nav_height + "rem";
-    cards_home_body.style.paddingBottom = footer_height + "rem";
-
-  }
-
   setBodySize();
-
-  $(window).resize(function () {
-    setBodySize();
-  })
 
 });

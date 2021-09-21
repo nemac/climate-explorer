@@ -332,12 +332,12 @@ $(function () {
       // reset map and chart sizes
       // filer transition means heigh will be updates in few seconds
       // so delaying the resize ensures proper size
-      setBodySize();
+      setMapSize();
     }, 600);
   } else {
     showMap();
     toggleChartInfoText('map');
-    setBodySize();
+    setMapSize();
   }
 
   // function to enable downloads (images and data)
@@ -408,7 +408,7 @@ $(function () {
       toggleDownloads();
 
       // reset map and chart sizes
-      setBodySize();
+      setMapSize();
 
     }
   });
@@ -427,7 +427,7 @@ $(function () {
 
     toggleButton($(target));
 
-    setBodySize();
+    setMapSize();
     showGraphs();
 
     googleAnalyticsEvent('click', 'chartmap', target);
@@ -447,7 +447,7 @@ $(function () {
 
     toggleButton($(target));
 
-    setBodySize();
+    setMapSize();
     showMap();
 
     googleAnalyticsEvent('click', 'chartmap', target);
@@ -469,7 +469,7 @@ $(function () {
       toggleChartInfoText(RelorVal(target));
     }
     // reset map and chart sizes
-    setBodySize();
+    setMapSize();
   })
 
   // this function Updates the chart title.
@@ -545,7 +545,7 @@ $(function () {
       // reset map and chart sizes
       // filer transition means heigh will be updates in few seconds
       // so delaying the resize ensures proper size
-      setBodySize();
+      setMapSize();
     }, 600);
   })
 
@@ -610,32 +610,28 @@ $(function () {
       toggleDownloads();
 
       // reset map and chart sizes
-      setBodySize();
+      setMapSize();
     }
   }, stationsMapState));
 
-  function setBodySize() {
+  function setMapSize() {
 
     let nav_element = document.querySelector(".navbar-element");
     let footer_element = document.querySelector(".footer-element");
 
-    let nav_height = nav_element.getBoundingClientRect().height / 16;
-    let footer_height = footer_element.getBoundingClientRect().height / 16;
-
-    let high_tide_body = document.querySelector(".high-tide-flooding-body");
-    high_tide_body.style.paddingTop = nav_height + "rem";
-    high_tide_body.style.paddingBottom = footer_height + "rem";
+    let nav_height = px_to_rem(nav_element.getBoundingClientRect().height);
+    let footer_height = px_to_rem(footer_element.getBoundingClientRect().height);
 
     let high_tide_flood = document.getElementById("high-tide-flooding-viewport");
 
-    let flood_body = document.querySelector(".high-tide-flooding-body");
-    let body_height = flood_body.getBoundingClientRect().height / 16;
+    let flood_body = document.querySelector(".body-size");
+    let body_height = px_to_rem(flood_body.getBoundingClientRect().height);
 
     let search_row = document.querySelector(".search-station-row");
-    let search_height = search_row.getBoundingClientRect().height / 16;
+    let search_height = px_to_rem(search_row.getBoundingClientRect().height);
 
     let info_section = document.querySelector(".info-section");
-    let info_height = info_section.getBoundingClientRect().height / 16;
+    let info_height = px_to_rem(info_section.getBoundingClientRect().height);
 
     let height = body_height - search_height - info_height - nav_height - footer_height;
 
@@ -655,10 +651,10 @@ $(function () {
   }
 
   // reset map and chart sizes
-  setBodySize();
+  setMapSize();
 
   $(window).resize(function () {
-    setBodySize();
+    setMapSize();
   })
 
   $('#chart-info-row-btn .more-info.btn-default').click(function (e) {
@@ -672,30 +668,17 @@ $(function () {
     if (target.hasClass('d-none')) {
       target.removeClass('d-none');
 
-      // $('#chart-info-row-btn .more').addClass('d-none');
-      // $('#chart-info-row-btn .more-icon').addClass('d-none');
-      //
-      // $('#chart-info-row-btn .less').removeClass('d-none');
-      // $('#chart-info-row-btn .less-icon').removeClass('d-none');
-
       // ga event action, category, label
       googleAnalyticsEvent('click', 'toggle-chart-info', 'open');
       // hide description of charts
     } else {
       target.addClass('d-none');
-      // $('#chart-info-row-btn .more').removeClass('d-none');
-      // $('#chart-info-row-btn .more-icon').removeClass('d-none');
-      //
-      // $('#chart-info-row-btn .less').addClass('d-none');
-      // $('#chart-info-row-btn .less-icon').addClass('d-none');
-
-      // ga event action, category, label
       googleAnalyticsEvent('click', 'toggle-chart-info', 'close');
     }
 
     // force draw and resize of charts
     showGraphs();
     forceResize();
-    setBodySize();
+    setMapSize();
   })
 });

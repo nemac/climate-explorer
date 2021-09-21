@@ -21,7 +21,7 @@ export default (config) => `
 
   ${secondary_header(config)}
 
-<div class="container-fluid d-flex-column historical-weather-data-body h-100">
+<div class="container-fluid d-flex-column body-size h-100">
   
   <div id="historical-weather-data-viewport" class="d-flex d-flex-column">
   

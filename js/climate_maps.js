@@ -464,6 +464,7 @@ $(function () {
       // filer transition means heigh will be updates in few seconds
       // so delaying the resize ensures proper size
       setMapSize();
+      setBodySize();
     }, 600);
 
   })
@@ -684,16 +685,6 @@ $(function () {
    */
   function setMapSize() {
 
-    let nav_element = document.querySelector(".navbar-element");
-    let footer_element = document.querySelector(".footer-element");
-
-    let nav_height = nav_element.getBoundingClientRect().height / 16;
-    let footer_height = footer_element.getBoundingClientRect().height / 16;
-
-    let climate_maps_body = document.querySelector(".climate-maps-body");
-    climate_maps_body.style.paddingTop = nav_height + "rem";
-    climate_maps_body.style.paddingBottom = footer_height + "rem";
-
     let map_element = document.getElementById("map-element");
 
     map_element.style.height = "100% !important";
@@ -702,7 +693,7 @@ $(function () {
 
     climate_map_element.style.height = "100%";
 
-    let climate_map_height = climate_map_element.getBoundingClientRect().height / 16;
+    let climate_map_height = px_to_rem(climate_map_element.getBoundingClientRect().height);
 
     let bottom_controls = document.querySelector(".bottom-scenario-controls");
     bottom_controls.style.top = (climate_map_height - 6) + "rem";
@@ -713,6 +704,7 @@ $(function () {
   }
 
   setMapSize();
+  setBodySize();
 
   $(window).resize(function () {
     setMapSize();

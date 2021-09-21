@@ -21,7 +21,7 @@ export default (config) => `
 
   ${secondary_header(config)}
 
-    <div class="container-fluid high-tide-flooding-body h-100">
+    <div class="container-fluid body-size h-100">
         <div class="mt-3 row search-station-row"> 
             
           <div class="col-12 col-md-7 col-lg-8"> 

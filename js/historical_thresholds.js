@@ -957,27 +957,12 @@ $(function () {
     }
   }
 
-  function setBodySize() {
-
-    let nav_element = document.querySelector(".navbar-element");
-    let footer_element = document.querySelector(".footer-element");
-
-    let nav_height = nav_element.getBoundingClientRect().height / 16;
-    let footer_height = footer_element.getBoundingClientRect().height / 16;
-
-    let high_tide_body = document.querySelector(".historical-thresholds-body");
-    high_tide_body.style.paddingTop = nav_height + "rem";
-    high_tide_body.style.paddingBottom = footer_height + "rem";
-
-  }
-
   // reset map and chart sizes
   setMapSize();
   setBodySize();
 
   $(window).resize(function () {
     setMapSize();
-    setBodySize();
   })
 
   // not sure why but on initialize does not update the graph so this makes sure url updates happen.
@@ -996,22 +981,12 @@ $(function () {
       // show description of charts
       if (target.hasClass('d-none')) {
         target.removeClass('d-none');
-        // $('#chart-info-row-btn .more').addClass('d-none');
-        // $('#chart-info-row-btn .more-icon').addClass('d-none');
-        //
-        // $('#chart-info-row-btn .less').removeClass('d-none');
-        // $('#chart-info-row-btn .less-icon').removeClass('d-none');
 
         // ga event action, category, label
         googleAnalyticsEvent('click', 'toggle-chart-info', 'open');
       // hide description of charts
       } else {
         target.addClass('d-none');
-        // $('#chart-info-row-btn .more').removeClass('d-none');
-        // $('#chart-info-row-btn .more-icon').removeClass('d-none');
-        //
-        // $('#chart-info-row-btn .less').addClass('d-none');
-        // $('#chart-info-row-btn .less-icon').addClass('d-none');
 
         // ga event action, category, label
         googleAnalyticsEvent('click', 'toggle-chart-info', 'close');

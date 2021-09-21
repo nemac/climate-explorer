@@ -19,7 +19,7 @@ export default (config) => `
   </head>
   <body>
   ${secondary_header(config)}
-  <div class="padding-horizontal d-flex d-flex-column glossary-page-body">
+  <div class="padding-horizontal d-flex d-flex-column body-size">
     <div>
       <div class="main-title mt-3">
         <h2>Glossary</h2>
@@ -165,17 +165,6 @@ export default (config) => `
   <script src="https://unpkg.com/terraformer-arcgis-parser@1.0.5/terraformer-arcgis-parser.js"
           integrity="sha384-duFUjKTSNoxEspdJNwr83CUgRxclf0ueKJB9DU/Vbit6bfWgzvZsHW6H1JLBBXhp" crossorigin="anonymous"></script>
   <script type="${config.env === 'dev' ? 'module' : 'text/javascript'}" src="/js/index.js"></script>
-  <script>
-    let nav_element = document.querySelector(".navbar-element");
-    let footer_element = document.querySelector(".footer-element");
-
-    let nav_height = nav_element.getBoundingClientRect().height / 16;
-    let footer_height = footer_element.getBoundingClientRect().height / 16;
-
-    let glossary_page_body = document.querySelector(".glossary-page-body");
-    glossary_page_body.style.paddingTop = nav_height + "rem";
-    glossary_page_body.style.paddingBottom = footer_height + "rem";
-  </script>
   </body>
   </html>
 `

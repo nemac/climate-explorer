@@ -358,14 +358,6 @@ function makeMainTip(elem) {
 
 function makeTip(elem) {
   if (elem) {
-    // elem.addEventListener('mouseover', tippy(elem, {
-    //   theme: 'ce-three',
-    //   arrow: false,
-    //   interactive: false,
-    //   hideOnClick: false,
-    //   flipOnUpdate: false,
-    //   offset: "1,0"
-    // }));
 
     elem.addEventListener('mouseover', tippy(elem, {
       theme: 'testing-theme',
@@ -727,6 +719,34 @@ $('.share-link').click(function (e) {
   }
 })
 
+/**
+ * This function handles the dynamic sizing of the body by adding padding to the top and bottom of the page to account for the
+ * stickied nav and footer.
+ */
+function setBodySize() {
+
+  let nav_element = document.querySelector(".navbar-element");
+  let footer_element = document.querySelector(".footer-element");
+
+  let nav_height = px_to_rem(nav_element.getBoundingClientRect().height);
+  let footer_height = px_to_rem(footer_element.getBoundingClientRect().height);
+
+  let body = document.querySelector(".body-size");
+  body.style.paddingTop = nav_height + "rem";
+  body.style.paddingBottom = footer_height + "rem";
+
+}
+
+setBodySize();
+
+$(window).resize(function () {
+  setBodySize();
+})
+
+function px_to_rem(px) {
+  const base_font_size = parseInt(window.getComputedStyle(document.body).getPropertyValue('font-size').replace(/\D/g, ''));
+  return px / base_font_size;
+}
 
 // todo cleanup global functions
 window.googleAnalyticsEvent = googleAnalyticsEvent;
@@ -737,3 +757,5 @@ window.toggleButton = toggleButton;
 window.setSelectFromButton = setSelectFromButton;
 window.forceResize = forceResize;
 window.reEnableSelectNewItems = reEnableSelectNewItems;
+window.px_to_rem = px_to_rem;
+window.setBodySize = setBodySize;

@@ -22,7 +22,7 @@ export default (config) => `
 
   ${secondary_header(config)}
 
-  <div class="container-fluid d-flex d-flex-column faq-page-body">
+  <div class="container-fluid d-flex d-flex-column body-size">
     
     <div>
 
@@ -317,19 +317,7 @@ Beyond spatial interpolation and natural interannual variability, other elements
   <script src="https://unpkg.com/terraformer-arcgis-parser@1.0.5/terraformer-arcgis-parser.js"
   integrity="sha384-duFUjKTSNoxEspdJNwr83CUgRxclf0ueKJB9DU/Vbit6bfWgzvZsHW6H1JLBBXhp" crossorigin="anonymous"></script>
   <script type="${config.env === 'dev' ? 'module' : 'text/javascript'}" src="/js/index.js"></script>
-  
-  <script>
-      let nav_element = document.querySelector(".navbar-element");
-      let footer_element = document.querySelector(".footer-element");
-  
-      let nav_height = nav_element.getBoundingClientRect().height / 16;
-      let footer_height = footer_element.getBoundingClientRect().height / 16;
-  
-      let faq_page_body = document.querySelector(".faq-page-body");
-      faq_page_body.style.paddingTop = nav_height + "rem";
-      faq_page_body.style.paddingBottom = footer_height + "rem";
-  </script>
-  
+
 </body>
 </html>
 `

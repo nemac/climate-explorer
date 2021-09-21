@@ -524,27 +524,12 @@ $(function () {
     }
   }
 
-  function setBodySize() {
-
-    let nav_element = document.querySelector(".navbar-element");
-    let footer_element = document.querySelector(".footer-element");
-
-    let nav_height = nav_element.getBoundingClientRect().height / 16;
-    let footer_height = footer_element.getBoundingClientRect().height / 16;
-
-    let historical_data_body = document.querySelector(".historical-weather-data-body");
-    historical_data_body.style.paddingTop = nav_height + "rem";
-    historical_data_body.style.paddingBottom = footer_height + "rem";
-
-  }
-
   // reset map and chart sizes
   setMapSize();
   setBodySize();
 
   $(window).resize(function () {
     setMapSize();
-    setBodySize();
   })
 
   $('#chart-info-row-btn .more-info.btn-default').click( function (e) {

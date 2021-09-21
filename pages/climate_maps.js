@@ -7,7 +7,7 @@ import nav_footer from '../template/nav_footer';
 // language=HTML
 export default (config) => `
   <!doctype html>
-  <html lang='en' class="width-100 height-100">
+  <html lang='en'">
   <head>
     ${head(config)}
     <meta property="fb:app_id" content="187816851587993">
@@ -20,7 +20,7 @@ export default (config) => `
   </head>
   <body>
   ${secondary_header(config)}
-  <div class="container-fluid d-flex-column mb-3 climate-maps-body">
+  <div class="container-fluid d-flex-column mb-3 h-100 body-size">
     <div class="mt-3 row">
       <div class="col-12 col-md-7 col-lg-8">
         <div class="input-group mb-3 search-input-group rounded-2 border border-1 me-2">

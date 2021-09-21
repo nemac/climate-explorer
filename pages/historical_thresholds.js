@@ -19,7 +19,7 @@ export default (config) => `
   </head>
   <body>
   ${secondary_header(config)}
-  <div class="container-fluid d-flex-column historical-thresholds-body h-100">
+  <div class="container-fluid d-flex-column body-size h-100">
     <div id="historical-thresholds-viewport" class="d-flex-column">
       <div class="mt-3 row">
         <div class="col-12 col-md-7 col-lg-8">

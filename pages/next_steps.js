@@ -22,7 +22,7 @@ export default (config) => `
 
 ${secondary_header(config)}
 
-<div id="next-steps-viewport" class="container-fluid d-flex-column next-step-body">
+<div id="next-steps-viewport" class="container-fluid d-flex-column body-size">
 
   <div class="d-flex flex-row mt-3"> 
       <div class="input-group mb-3 search-input-group rounded-2 border border-1 w-100">

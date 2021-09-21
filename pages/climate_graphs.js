@@ -21,7 +21,7 @@ export default (config) => `
   </head>
   <body>
   ${secondary_header(config)}
-  <div class="container-fluid climate-graphs-body">
+  <div class="container-fluid body-size">
     <div class="mt-3 row">
       <div class="col-12 col-md-7 col-lg-8">
         <div class="input-group mb-3 search-input-group rounded-2 border border-1 me-2">
