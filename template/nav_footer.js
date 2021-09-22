@@ -24,10 +24,6 @@ export default (config) => `
         <ul class="navbar-nav w-100">
           <li class="nav-item dropdown me-2 rounded-2 w-100">
             <div class="d-flex flex-row justify-content-evenly">
-              <div class="d-flex btn flex-column align-items-center rounded-2 p-1 footer-button" data-page="next_steps">
-                <i class="fas fa-map-signs footer-icon"></i>
-                <span class="footer-icon-title">Take Action</span>
-              </div>
               <div class="d-flex btn flex-column align-items-center rounded-2 p-1 footer-button" data-page="climate_graphs">
                 <i class="fas fa-chart-line footer-icon"></i>
                 <span class="footer-icon-title">Climate Graphs</span>
@@ -47,6 +43,10 @@ export default (config) => `
               <div class="d-flex btn flex-column align-items-center rounded-2 p-1 footer-button" data-page="high_tide_flooding">
                 <i class="fas fa-water footer-icon"></i>
                 <span class="footer-icon-title">High-Tide Flooding</span>
+              </div>
+              <div class="d-flex btn flex-column align-items-center rounded-2 p-1 footer-button" data-page="next_steps">
+                <i class="fas fa-map-signs footer-icon"></i>
+                <span class="footer-icon-title">Take Action</span>
               </div>
             </div>
           </li>

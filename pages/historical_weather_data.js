@@ -23,9 +23,7 @@ export default (config) => `
 
 <div class="container-fluid d-flex-column body-size h-100">
   
-  <div id="historical-weather-data-viewport" class="d-flex d-flex-column">
-  
-      <div class="mt-3 row"> 
+      <div class="mt-3 row search-station-row"> 
             
           <div class="col-12 col-md-7 col-lg-8"> 
             <div class="input-group mb-3 search-input-group rounded-2 border border-1 me-2">
@@ -112,22 +110,23 @@ export default (config) => `
             </div>
           </div> 
       </div>
- 
-      <div id="stations-map-row" class="padding-top-half width-100 height-100 d-flex" >
-        <div id="stations-map-wrap" class="map-wrap width-100 height-100 ">
-          <div id="stations-map" class="map-element h-100"></div>
-          <div id="stations-map-message" class="map-nostations-message d-none"></div>
-        </div>
-      </div>
   
-      <div id="stations-graph-row" class="padding-vertical width-100 height-100" >
-        <div id="stations-graph-wrap" class="width-100 height-100 d-flex-row">
-            <div id="multi-chart" class="left_chart d-flex-center width-50"></div>
-            <div id="multi-precip-chart" class="right_chart d-flex-center width-50"></div>
-        </div>
+      <div id="historical-weather-data-viewport" class="d-flex d-flex-column">
+          <div id="stations-map-row" class="padding-top-half width-100 height-100 d-flex" >
+            <div id="stations-map-wrap" class="map-wrap width-100 height-100 ">
+              <div id="stations-map" class="map-element h-100"></div>
+              <div id="stations-map-message" class="map-nostations-message d-none"></div>
+            </div>
+          </div>
+      
+          <div id="stations-graph-row" class="padding-vertical width-100 height-100" >
+            <div id="stations-graph-wrap" class="width-100 height-100 d-flex-row">
+                <div id="multi-chart" class="left_chart d-flex-center width-50"></div>
+                <div id="multi-precip-chart" class="right_chart d-flex-center width-50"></div>
+            </div>
+          </div>
       </div>
-  
-        <div id="station-info-row" class="d-flex-row flex-justify padding-bottom d-flex-left d-none">
+      <div id="station-info-row" class="d-flex-row flex-justify padding-bottom d-flex-left d-none">
       <div class="modal fade" id="aboutModal" tabindex="-1" aria-labelledby="aboutModalLabel" aria-hidden="true">
         <div class="modal-dialog modal-xl">
           <div class="modal-content p-3">
@@ -150,7 +149,7 @@ export default (config) => `
       </div>
     </div>
   
-  </div>
+
 
 </div>
 
