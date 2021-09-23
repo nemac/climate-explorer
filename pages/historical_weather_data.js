@@ -76,24 +76,24 @@ export default (config) => `
                         Downloads
                       </a>
                     
-                      <ul class="dropdown-menu download-select w-100" aria-labelledby="download-dropdown-menu">
+                      <ul class="dropdown-menu download-select" aria-labelledby="download-dropdown-menu">
                         <div data-icon="fas fa-temperature-high select-icon" class="d-flex ms-3 select-icon">
                           <i class="fas fa-temperature-high me-2"></i>Temperature
                         </div>
-                        <li tabindex="5001" data-value="download-temperature-image" data-icon="fas fa-download select-icon" href="javascript:void(0);">
-                          <a tabindex="5001" data-value="download-temperature-image" class="dropdown-item" href="javascript:void(0);" >Download temperature image</a>
+                        <li data-value="download-temperature-image" data-icon="fas fa-download select-icon" href="javascript:void(0);">
+                          <a data-value="download-temperature-image" class="dropdown-item" href="javascript:void(0);" >Download temperature image</a>
                         </li>
-                        <li tabindex="5002" data-value="download-temperature-data" data-icon="fas fa-download select-icon" href="javascript:void(0);" class="mb-2">
-                          <a tabindex="5002" data-value="download-temperature-data" class="dropdown-item" href="javascript:void(0);" >Download temperature data</a>
+                        <li data-value="download-temperature-data" data-icon="fas fa-download select-icon" href="javascript:void(0);" class="mb-2">
+                          <a data-value="download-temperature-data" class="dropdown-item" href="javascript:void(0);" >Download temperature data</a>
                         </li>
                         <div data-icon="fas fa-cloud-rain select-icon" class="d-flex ms-3 select-icon">
                           <i class="fas fa-cloud-rain me-2"></i>Precipitation
                         </div>
-                        <li tabindex="5003" data-value="download-image" data-icon="fas fa-download select-icon" href="javascript:void(0);">
-                          <a tabindex="5004" data-value="download-precipitation-image" class="dropdown-item" href="javascript:void(0);" >Download precipitation image</a>
+                        <li data-value="download-image" data-icon="fas fa-download select-icon" href="javascript:void(0);">
+                          <a data-value="download-precipitation-image" class="dropdown-item" href="javascript:void(0);" >Download precipitation image</a>
                         </li>
-                        <li tabindex="5004" data-value="download-precipitation-observed-data" data-icon="fas fa-download select-icon" href="javascript:void(0);">
-                          <a tabindex="5004" data-value="download-precipitation-data" class="dropdown-item" href="javascript:void(0);" >Download precipitation data</a>
+                        <li data-value="download-precipitation-observed-data" data-icon="fas fa-download select-icon" href="javascript:void(0);">
+                          <a data-value="download-precipitation-data" class="dropdown-item" href="javascript:void(0);" >Download precipitation data</a>
                         </li>
                       </ul>
                     </div>
