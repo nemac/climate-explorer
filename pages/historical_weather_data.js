@@ -128,7 +128,7 @@ export default (config) => `
       </div>
       <div id="station-info-row" class="d-flex-row flex-justify padding-bottom d-flex-left d-none">
       <div class="modal fade" id="aboutModal" tabindex="-1" aria-labelledby="aboutModalLabel" aria-hidden="true">
-        <div class="modal-dialog modal-xl">
+        <div class="modal-dialog modal-fullscreen-md-down modal-xl">
           <div class="modal-content p-3">
             <div class="modal-header">
               <h3 class="modal-title" id="aboutModalLabel">READING THE HISTORICAL WEATHER CHARTS</h3>
