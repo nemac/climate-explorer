@@ -395,7 +395,6 @@ $(function () {
   // decrememt threshold
   $('.threshold-down').click( function (e) {
 
-    const target = $(e.target);
     const thresholdValueElem = document.getElementById('threshold-value');
 
     if (thresholdValueElem) {
@@ -435,12 +434,12 @@ $(function () {
 
     if (windowValueElem) {
 
-      const max = parseFloat(windowValueElem.getAttribute('max')).toFixed(1);
-      const step = parseFloat(windowValueElem.getAttribute('step')).toFixed(1);
-      const val = parseFloat($(windowValueElem).val()).toFixed(1);
-      const newVal = parseFloat(parseFloat(val) + parseFloat(step)).toFixed(1);
+      const max = parseInt(windowValueElem.getAttribute('max'));
+      const step = parseInt(windowValueElem.getAttribute('step'));
+      const val = parseInt($(windowValueElem).val());
+      const newVal = parseInt(parseInt(val) + parseInt(step));
 
-      if (parseFloat(newVal) > parseFloat(max)) {
+      if (parseInt(newVal) > parseInt(max)) {
         $(windowValueElem).val(val);
       } else {
         $(windowValueElem).val(newVal);
@@ -465,16 +464,15 @@ $(function () {
 
   // descrememt window
   $('.window-down').click( function (e) {
-    const target = $(e.target);
+
     const windowValueElem = document.getElementById('window-value');
     if (windowValueElem) {
-      const min = parseFloat(windowValueElem.getAttribute('min')).toFixed(1);
-      const max = parseFloat(windowValueElem.getAttribute('max')).toFixed(1);
-      const step = parseFloat(windowValueElem.getAttribute('step')).toFixed(1);
-      const val = parseFloat($(windowValueElem).val()).toFixed(1);
-      const newVal = parseFloat(parseFloat(val) - parseFloat(step)).toFixed(1);
+      const min = parseInt(windowValueElem.getAttribute('min'));
+      const step = parseInt(windowValueElem.getAttribute('step'));
+      const val = parseInt($(windowValueElem).val());
+      const newVal = parseInt(parseInt(val) - parseInt(step));
 
-      if (parseFloat(newVal) < parseFloat(min)) {
+      if (parseInt(newVal) < parseInt(min)) {
         $(windowValueElem).val(val);
       } else {
         $(windowValueElem).val(newVal);
@@ -514,7 +512,7 @@ $(function () {
             thresholdValueElem.setAttribute('step', .1);
             thresholdValueElem.setAttribute('value', 1);
             $(thresholdValueElem).val(1);
-            document.getElementById('threshold-unit').innerHTML = ' in inches';
+            document.getElementById('threshold-unit').innerHTML = ' inches';
             break;
           case 'tavg':
             thresholdValueElem.setAttribute('min', -200);
@@ -632,44 +630,57 @@ $(function () {
 
   // in responsive mode, event handler a for when  threshold value (inches of rain temp in F) changes
   $('#threshold-value').change( function(e) {
-    const target = $(e.target);
-    const newValue = parseFloat($(target).val());
 
-    const stations = $('#stations-select-vis').data('value').split(',');
+    const thresholdValueElem = document.getElementById('threshold-value');
+
+    if(!thresholdValueElem) return;
+
+    const val = parseFloat($(thresholdValueElem).val()).toFixed(1);
+
+    if(isNaN(val)) return;
+
+    const stations = $('#stations-dropdown-menu').data('value').split(',');
     const stationName = stations[1];
     const stationId = stations[0];
-    const variableValue = $('#threshold-variable-select-vis').data('value'); //  , thresholdValue: variableValue
+    const variableValue = $('#selection-dropdown-menu').data('value'); //  , thresholdValue: variableValue
 
     // change map url state
-    window.app.update( { stationId, stationName, threshold: newValue, thresholdValue: variableValue});
+    window.app.update( { stationId, stationName, threshold: val, thresholdValue: variableValue});
 
     // ga event action, category, label
-    googleAnalyticsEvent('click', 'threshold-value', newValue);
+    googleAnalyticsEvent('click', 'threshold-value', val);
 
-    // update chart with new threshold value
-    $("#thresholds-container").item({ threshold: newValue }).item('update');
+    $("#thresholds-container").item({
+      threshold: val,
+    }).item('update');
 
   });
 
   // in responsive mode, event handler a for when  window value (duration of days) changes
   $('#window-value').change( function(e) {
-    const target = $(e.target);
-    const newValue = parseInt($(target).val());
 
-    const stations = $('#stations-select-vis').data('value').split(',');
+    const windowValueElem = document.getElementById('window-value');
+
+    if(!windowValueElem) return;
+
+    const val = parseFloat($(windowValueElem).val());
+
+    if(isNaN(val)) return;
+
+    const stations = $('#stations-dropdown-menu').data('value').split(',');
     const stationName = stations[1];
     const stationId = stations[0];
-    const variableValue = $('#threshold-variable-select-vis').data('value'); //  , thresholdValue: variableValue
+    const variableValue = $('#selection-dropdown-menu').data('value'); //  , thresholdValue: variableValue
 
     // change map url state
-    window.app.update( { stationId, stationName, window: newValue, thresholdValue: variableValue});
+    window.app.update( { stationId, stationName, window: val, thresholdValue: variableValue});
 
     // ga event action, category, label
-    googleAnalyticsEvent('click', 'window-value', newValue);
+    googleAnalyticsEvent('click', 'window-value', val);
 
-
-    // update chart with new threshold value
-    $("#thresholds-container").item({ window: newValue }).item('update');
+    $("#thresholds-container").item({
+      window: val,
+    }).item('update');
 
   });
 

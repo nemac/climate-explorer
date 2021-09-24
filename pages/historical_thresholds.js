@@ -76,26 +76,57 @@ export default (config) => `
                   </ul>
                 </div>
               </div>
-              <div class="col-md-12 col-lg-6 col-xl-2 mt-lg-4 mt-xl-0 form-field d-flex info-section" id="threshold_value_form_field">
-                <div tabindex="5012" class="btn border border-1 threshold-down">-</div>
-                <div class="form-field-control height-100">
-                  <input tabindex="5013" id="threshold-value" type="number" class="form-field-input border-0" placeholder=" " min="0" max="200" value="1"
-                         autofocus="autofocus" step="0.1"/>
-                  <label for="threshold-value" class="form-field-label height-100">Threshold in<span id="threshold-unit"> inches</span></label>
-                  <div class="form-field-bar height-100"></div>
+              
+              
+              <div class="col-md-12 col-lg-6 col-xl-2 mt-lg-4 mt-xl-0 mt-4">
+                
+                <div class="input-group">
+                  <div class="input-group-prepend">
+                    <button class="btn btn-outline-secondary threshold-down" type="button">-</button>
+                  </div>
+                  <input id="threshold-value" type="text" class="form-control" placeholder="Threshold in inches" aria-label="" aria-describedby="basic-addon1" min="0" max="200" value="1" step="0.1">
+                  <label class="historical-threshold-input" for="threshold-value">Threshold in<span id="threshold-unit"> inches</span></label>
+                  <div class="input-group-append">
+                    <button class="btn btn-outline-secondary threshold-up" type="button">+</button>
+                  </div>
                 </div>
-                <div tabindex="5014" class="btn border border-1 threshold-up">+</div>
+                
               </div>
-              <div class="col-md-12 col-lg-6 col-xl-2 mt-lg-4 mt-xl-0 form-field d-flex info-section" id="window_value_form_field">
-                <div class="btn border border-1 window-down">-</div>
-                <div class="form-field-control height-100">
-                  <input id="window-value" type="number" class="form-field-input border-0" placeholder=" " min="0" max="365" value="1" autofocus="autofocus"
-                         step="1"/>
-                  <label for="window-value" class="form-field-label height-100">Window in<span id="window-unit"> days</span></label>
-                  <div class="form-field-bar height-100"></div>
+
+              <div class="col-md-12 col-lg-6 col-xl-2 mt-lg-4 mt-xl-0 mt-4">
+                
+                <div class="input-group">
+                  <div class="input-group-prepend">
+                    <button class="btn btn-outline-secondary window-down" type="button">-</button>
+                  </div>
+                  <input id="window-value" type="text" class="form-control" placeholder="Window in days" min="0" max="365" value="1" step="1">
+                  <label class="historical-threshold-input" for="window-value">Window in<span id="window-unit"> days</label>
+                  <div class="input-group-append">
+                    <button class="btn btn-outline-secondary window-up" type="button">+</button>
+                  </div>
                 </div>
-                <div tabindex="5017" class="btn border border-1 window-up">+</div>
+
               </div>
+              
+<!--              <div class="col-md-12 col-lg-6 col-xl-2 mt-lg-4 mt-xl-0 form-field d-flex info-section" id="threshold_value_form_field">-->
+<!--                <div tabindex="5012" class="btn border border-1 threshold-down">-</div>-->
+<!--                <div class="form-field-control height-100">-->
+<!--                  <input tabindex="5013" id="threshold-value" type="number" class="form-field-input border-0" placeholder=" " min="0" max="200" value="1"-->
+<!--                         autofocus="autofocus" step="0.1"/>-->
+<!--                  <label for="threshold-value" class="form-field-label height-100">Threshold in<span id="threshold-unit"> inches</span></label>-->
+<!--                  <div class="form-field-bar height-100"></div>-->
+<!--                </div>-->
+<!--                <div tabindex="5014" class="btn border border-1 threshold-up">+</div>-->
+<!--              </div>-->
+<!--              <div class="col-md-12 col-lg-6 col-xl-2 mt-lg-4 mt-xl-0 form-field d-flex info-section" id="window_value_form_field">-->
+<!--                <div class="btn border border-1 window-down">-</div>-->
+<!--                <div class="form-field-control height-100">-->
+<!--                  <input id="window-value" type="number" class="form-field-input border-0" placeholder=" " min="0" max="365" value="1" autofocus="autofocus" step="1"/>-->
+<!--                  <label for="window-value" class="form-field-label height-100">Window in<span id="window-unit"> days</span></label>-->
+<!--                  <div class="form-field-bar height-100"></div>-->
+<!--                </div>-->
+<!--                <div tabindex="5017" class="btn border border-1 window-up">+</div>-->
+<!--              </div>-->
               <div class="col-md-12 col-lg-6 col-xl-1 download-dropdown mt-1 mb-1 info-section">
                 <div class="dropdown rounded-2 border border-1">
                   <a class="btn dropdown-toggle ps-4 pe-4 w-100 disabled" href="#" style="text-align: center;" role="button" id="download-dropdown-menu"

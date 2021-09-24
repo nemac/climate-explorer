@@ -18442,6 +18442,12 @@ input.input-inner:focus {
   cursor: pointer;
 }
 
+/* line 23, scss/pages/_new_historical_thresholds.scss */
+.historical-threshold-input {
+  position: absolute;
+  transform: translateY(-1.5rem);
+}
+
 /* line 5, scss/pages/_high_tide_flooding.scss */
 .d-off {
   position: absolute;
