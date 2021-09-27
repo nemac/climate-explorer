@@ -727,13 +727,18 @@ function setBodySize() {
 
   let nav_element = document.querySelector(".navbar-element");
   let footer_element = document.querySelector(".footer-element");
-
-  let nav_height = px_to_rem(nav_element.getBoundingClientRect().height);
-  let footer_height = px_to_rem(footer_element.getBoundingClientRect().height);
-
   let body = document.querySelector(".body-size");
-  body.style.paddingTop = nav_height + "rem";
-  body.style.paddingBottom = footer_height + "rem";
+
+  if(nav_element) {
+    let nav_height = px_to_rem(nav_element.getBoundingClientRect().height);
+    body.style.paddingTop = nav_height + "rem";
+  }
+
+  if(footer_element) {
+    let footer_height = px_to_rem(footer_element.getBoundingClientRect().height);
+    body.style.paddingBottom = footer_height + "rem";
+  }
+
 
 }
 

@@ -175,7 +175,6 @@ class App {
     $('#share_link').val(window.location.href);
   }
 
-
   fetchCountyCodes() {
     this.fips_codes = null;
     $.getJSON(this.data_base_url + 'fips_codes.json', (function (data) {
