@@ -112,22 +112,23 @@ export default (config) => `
       </div>
   
       <div id="historical-weather-data-viewport" class="d-flex d-flex-column">
-          <div id="stations-map-row" class="padding-top-half width-100 height-100 d-flex" >
-            <div id="stations-map-wrap" class="map-wrap width-100 height-100 ">
+          <div id="stations-map-row" class="padding-top-half w-100 h-100 d-flex" >
+            <div id="stations-map-wrap" class="map-wrap w-100 h-100">
               <div id="stations-map" class="map-element h-100"></div>
               <div id="stations-map-message" class="map-nostations-message d-none"></div>
             </div>
           </div>
       
-          <div id="stations-graph-row" class="padding-vertical width-100 height-100" >
-            <div id="stations-graph-wrap" class="width-100 height-100 d-flex-row">
+          <div id="stations-graph-row" class="padding-vertical w-100 h-100" >
+            <div id="stations-graph-wrap" class="w-100 h-100 d-flex-row">
                 <div id="multi-chart" class="left_chart d-flex-center width-50"></div>
                 <div id="multi-precip-chart" class="right_chart d-flex-center width-50"></div>
             </div>
           </div>
       </div>
+  
       <div id="station-info-row" class="d-flex-row flex-justify padding-bottom d-flex-left d-none">
-      <div class="modal fade" id="aboutModal" tabindex="-1" aria-labelledby="aboutModalLabel" aria-hidden="true">
+        <div class="modal fade" id="aboutModal" tabindex="-1" aria-labelledby="aboutModalLabel" aria-hidden="true">
         <div class="modal-dialog modal-fullscreen-md-down modal-xl">
           <div class="modal-content p-3">
             <div class="modal-header">
@@ -148,9 +149,6 @@ export default (config) => `
         </div>
       </div>
     </div>
-  
-
-
 </div>
 
 

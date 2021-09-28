@@ -1576,8 +1576,7 @@ input.input-inner-default:focus {
 
 // NAV OVERLAY
 
-@import "template/nav_footer"; //remove after done with bootstrap refactor
-@import "template/new_nav_footer";
+@import "template/nav_footer";
 // PAGE STRUCTURE
 
 #desktop-warning {
@@ -1585,7 +1584,6 @@ input.input-inner-default:focus {
 }
 
 @import "template/header";
-@import "template/main_header";
 
 // // HOME PAGE
 
@@ -1597,8 +1595,8 @@ input.input-inner-default:focus {
 @import "pages/climate_maps"; // remove once bootstrap refactoring done
 @import "pages/new_climate_maps";
 @import "pages/historical_weather_data";
-@import "pages/new_historical_thresholds";
-@import "pages/new_high_tide_flooding";
+@import "pages/historical_thresholds";
+@import "pages/high_tide_flooding";
 
 // VARIABLES
 

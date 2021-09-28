@@ -1,328 +1,39 @@
-#more-wrapper-nav-footer {
-  cursor: pointer !important;
+@import "../color_utils";
+
+.footer-icon {
+  font-size: 2rem;
 }
 
-#nav-footer {
-    flex: 0 1 $ce3-main-bottom !important;
-    height: $ce3-main-bottom !important;
-    align-self: flex-end !important;
-    @include kind-of-tiny {
-      flex: 0 1 70px !important;
-      height: 70px !important;
-    }
-
-    &.expanded {
-      #region-based, #station-based {
-        width: 100%;
-      }
-      .first-column {
-        flex-direction: column !important;
-      }
-
-      @include nav-footer-850-min {
-        flex: 0 1 70px !important;
-        height: 70px !important;
-      }
-
-      flex: 0 1 170px !important;
-      height: 170px !important;
-
-      @include kind-of-tiny {
-        flex: 0 1 130px !important;
-        height: 130px !important;
-      }
-    }
+.footer-icon-title {
+  font-size: 1rem;
 }
 
-.nav-footer-row-1 {
-  flex-grow: 0 !important;
-  align-content: flex-end !important;
-  .first-column {
-    flex-direction: row !important;
-  }
-  @include nav-footer-850-max {
-    align-content: center !important;
+.footer-button {
+  color: #585858;
+  transition: color 200ms ease-in;
+
+  &:hover {
+    color: $navbar-button-background;
+    cursor: pointer;
   }
 }
 
-.nav-footer-row-2 {
-  flex-grow: 4 !important;
-  flex-flow: row nowrap !important;
+.footer-button-selected {
+  transition: color 200ms ease-in;
+  color: $navbar-background;
 
-  &.expanded {
-    flex-flow: row wrap !important;
-    width: 100%;
+  &:hover {
+    color: $navbar-button-background;
+    cursor: pointer;
   }
 }
 
-.nav-footer-items {
-  justify-content: space-evenly !important;
+.footer-element {
+  background-color: white;
 
-  @include nav-footer-900-max {
-    padding-bottom: $ce3-default-vertical-padding/2;
-    flex-wrap: nowrap !important;
-  }
-
-  @include nav-footer-1177-max {
-    .padding-horrizontal {
-      padding-left: $ce3-default-horizontal-padding/2 !important;
-      padding-right: $ce3-default-horizontal-padding/2 !important;
-    }
-  }
-
-  .padding-horrizontal {
-    @include kind-of-tiny {
-      padding-right: 35px !important;
-    }
-
-    @include tiny {
-      padding-right: 30px !important;
-    }
-
-    @include kind-of-small-to-see {
-      padding-right: 21px !important;
-    }
-
-    @include to-small-to-see {
-      padding-right: $ce3-default-horizontal-padding !important;
-    }
-  }
+  border-color: $input-box-border;
 }
 
-.nav-footer-item {
-  cursor: pointer;
-  font: $font-weight-normal 14px $roboto !important;
-  color: $ce3-darkgray !important;
-  justify-content: center !important;
-  align-items: center !important;
-  &.nav-disabled {
-    cursor: default;
-    color: lighten($ce3-darkgray, 10) !important;
-  }
-
-  &:hover, &:focus {
-    @include border-radius(5px, 5px);
-    @include box-shadow(0px 2px 4px transparentize(#000, 0.761));
-    outline: none !important;
-    &.nav-disabled {
-      @include border-radius(0px, 0px);
-      @include box-shadow(0px 0px 0px transparentize(#000, 0.761));
-    }
-  }
-
-  .nav-footer-label {
-    color: $ce3-darkgray !important;
-  }
-
-  @include nav-footer-500-max {
-    max-width: 80px !important;
-  }
-}
-
-.nav-footer-icon {
-  color: $ce3-darkgray !important;
-  font-size: 36px !important;
-  @include nav-footer-820-max {
-    font-size: 28px !important;
-  }
-  @include nav-footer-330-max {
-    font-size: 28px !important;
-  }
-  font-weight: $font-weight-normal !important;
-  @include nav-footer-400-min {
-    justify-content: center !important;
-    align-content: center !important;
-    align-self: center !important;  }
-}
-
-.nav-footer-item-selected {
-  cursor: pointer;
-  font: $font-weight-normal-plus 14px $roboto !important;
-  color: $ce3-blue3 !important;
-  justify-content: center !important;
-  align-content: center !important;
-  align-self: center !important;
-  &.nav-disabled {
-    cursor: default;
-    color: lighten($ce3-blue3, 10) !important;
-  }
-
-  &:hover, &:focus {
-    @include border-radius(5px, 5px);
-    @include box-shadow(0px 2px 4px transparentize(#000, 0.761));
-    outline: none !important;
-    &.nav-disabled {
-      @include border-radius(0px, 0px);
-      @include box-shadow(0px 0px 0px transparentize(#000, 0.761));
-    }
-  }
-
-  .nav-footer-label {
-    font-weight: $font-weight-normal-plus !important;
-    color: $ce3-blue3 !important;
-  }
-
-  .nav-footer-icon {
-    font-weight: $font-weight-normal-plus !important;
-    color: $ce3-blue3 !important;
-  }
-}
-
-.nav-footer-label {
-  font-size: 14px !important;
-  font-weight: $font-weight-normal;
-  justify-content: center !important;
-  align-content: center !important;
-  align-self: center !important;
-  @include nav-footer-950-max{
-    flex-flow: row wrap !important;
-  }
-  @include nav-footer-1224-max {
-    display: none
-  }
-}
-
-.nav-disabled {
-  .nav-footer-label, .nav-footer-icon {
-    color: lighten($ce3-darkgray, 25) !important;
-  }
-}
-
-.nav-footer-label-smallscreen {
-  @include nav-footer-1225-min {
-    display: none
-  }
-  @include nav-footer-500-max {
-    display: none
-  }
-}
-
-.nav-footer-label-verysmallscreen {
-  @include nav-footer-501-min {
-    display: none !important;
-  }
-  @include nav-footer-501-max {
-    font-size: 14px !important;
-    display: flex !important;
-  }
-  @include nav-footer-376-max {
-    font-size: 12px !important;
-    display: flex !important;
-  }
-}
-
-.nav-footer-area-title {
-  font: $font-weight-normal 16px $roboto !important;
-  color: $ce3-darkgray !important;
-}
-
-.nav-footer-area-line {
-  border-top: 1px dotted $ce3-darkgray !important;
-  margin-left: 6px !important;
-  margin-right: 6px !important;
-  width: 30% !important;
-
-  @include nav-footer-950-max {
-    width: 20% !important;
-  }
-
-  &.expanded {
-    display: flex !important;
-    width: 30% !important;
-  }
-
-  @include nav-footer-360-max {
-    &.expanded {
-      width: 20% !important;
-    }
-  }
-}
-
-#home-nav-footer, #next-steps-nav-footer {
-  padding-bottom: 4px;
-}
-
-#station-based {
-  @include nav-footer-600-max {
-    .nav-footer-area-line {
-      display: none !important;
-      &.expanded {
-        display: flex !important;
-        width: 30% !important;
-      }
-    }
-  }
-  @include nav-footer-360-max {
-    .nav-footer-area-line.expanded {
-      width: 20% !important;
-    }
-  }
-}
-
-#more-wrapper-nav-footer {
-  &.expanded {
-    display: none !important;
-  }
-
-  @include nav-footer-900-min {
-    display: none !important;
-  }
-}
-
-#less-row-1 {
-  display: none !important;
-
-  &.expanded {
-    display: flex !important;
-  }
-}
-
-#less-wrapper-nav-footer {
-  display: none !important;
-
-  @include nav-footer-900-max {
-    display: none !important;
-  }
-
-  &.expanded {
-    display: flex !important;
-  }
-}
-
-#expanded-wrapper-nav-footer {
-  &.expanded {
-    display: flex !important
-  }
-
-  @include nav-footer-900-max {
-    display: none !important;
-  }
-}
-
-.nav-footer-area-title {
-  .nav-footer-area-text-smallecreen {
-    display: none !important;
-  }
-
-  @include nav-footer-900-max {
-    min-height: 21px !important;
-    height: 21px !important;
-    max-height: 21px !important;
-
-    .nav-footer-area-text {
-      display: none !important;
-    }
-
-    .nav-footer-area-text-smallecreen {
-      display: inherit !important;
-    }
-
-    .nav-footer-area-line {
-      // display: none !important;
-    }
-  }
-
-  @include kind-of-tiny {
-    display: none !important;
-  }
+.footer-ellipsis {
+  color: $navbar-background;
 }
