@@ -17808,12 +17808,12 @@ input.input-inner-default:focus {
   box-shadow: 0 0 8px rgba(0, 88, 207, 0.25);
 }
 
-/* line 3, scss/pages/_new_cards_home.scss */
+/* line 3, scss/pages/_cards_home.scss */
 .search-input-group {
   border-color: #7D98C1;
 }
 
-/* line 6, scss/pages/_new_cards_home.scss */
+/* line 6, scss/pages/_cards_home.scss */
 .search-input-group input {
   background-color: #E9F1FC;
   color: #124086;
@@ -17821,95 +17821,95 @@ input.input-inner-default:focus {
   border: none;
 }
 
-/* line 13, scss/pages/_new_cards_home.scss */
+/* line 13, scss/pages/_cards_home.scss */
 .search-input-group input:focus {
   color: #124086 !important;
   background-color: #E9F1FC !important;
 }
 
-/* line 18, scss/pages/_new_cards_home.scss */
+/* line 18, scss/pages/_cards_home.scss */
 .search-input-group input::placeholder {
   color: #124086;
   opacity: 0.5;
 }
 
-/* line 23, scss/pages/_new_cards_home.scss */
+/* line 23, scss/pages/_cards_home.scss */
 .search-input-group button {
   background-color: white;
 }
 
-/* line 26, scss/pages/_new_cards_home.scss */
+/* line 26, scss/pages/_cards_home.scss */
 .search-input-group button span {
   color: #124086;
 }
 
-/* line 32, scss/pages/_new_cards_home.scss */
+/* line 32, scss/pages/_cards_home.scss */
 .select-county-card {
   border-color: #E9F1FC;
 }
 
-/* line 36, scss/pages/_new_cards_home.scss */
+/* line 36, scss/pages/_cards_home.scss */
 .select-county-card .icon-info-box {
   font-size: 1.5rem;
 }
 
-/* line 40, scss/pages/_new_cards_home.scss */
+/* line 40, scss/pages/_cards_home.scss */
 .select-county-card #default-city-county {
   color: #124086;
   font-weight: bold;
 }
 
-/* line 46, scss/pages/_new_cards_home.scss */
+/* line 46, scss/pages/_cards_home.scss */
 .card {
   background-color: #E9F1FC;
 }
 
-/* line 50, scss/pages/_new_cards_home.scss */
+/* line 50, scss/pages/_cards_home.scss */
 .cards-home-title {
   font-weight: bold;
   color: #124086;
 }
 
-/* line 55, scss/pages/_new_cards_home.scss */
+/* line 55, scss/pages/_cards_home.scss */
 .cards-home-text {
   font-weight: normal;
   color: #124086;
   text-align: start;
 }
 
-/* line 61, scss/pages/_new_cards_home.scss */
+/* line 61, scss/pages/_cards_home.scss */
 .data-card {
   cursor: pointer;
   transition: transform ease-in 200ms;
 }
 
-/* line 65, scss/pages/_new_cards_home.scss */
+/* line 65, scss/pages/_cards_home.scss */
 .data-card i {
   font-size: 1.5rem;
 }
 
-/* line 69, scss/pages/_new_cards_home.scss */
+/* line 69, scss/pages/_cards_home.scss */
 .data-card ul {
   list-style-type: disc !important;
   list-style-position: inside;
 }
 
-/* line 76, scss/pages/_new_cards_home.scss */
+/* line 76, scss/pages/_cards_home.scss */
 .data-card:hover {
   transform: scale(1.02);
 }
 
-/* line 80, scss/pages/_new_cards_home.scss */
+/* line 80, scss/pages/_cards_home.scss */
 .top-spacing {
   padding-top: 5rem;
 }
 
-/* line 84, scss/pages/_new_cards_home.scss */
+/* line 84, scss/pages/_cards_home.scss */
 .bottom-spacing {
   padding-bottom: 6rem;
 }
 
-/* line 88, scss/pages/_new_cards_home.scss */
+/* line 88, scss/pages/_cards_home.scss */
 .disabled-text {
   position: absolute;
   left: 48%;
