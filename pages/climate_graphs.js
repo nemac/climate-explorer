@@ -8,7 +8,7 @@ import chart_explainer from '../template/chart_explainer';
 // language=HTML
 export default (config) => `
   <!DOCTYPE  html>
-  <html lang='en' class="width-100 height-100">
+  <html lang='en'>
   <head>
     ${head(config)}
     <meta property="fb:app_id" content="187816851587993">

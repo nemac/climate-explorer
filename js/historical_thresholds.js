@@ -897,7 +897,7 @@ $(function () {
   }, stationsMapState));
 
   // resize map when browser is resized
-  function setMapSize() {
+  function setMapSize2() {
     $('#stations-map').height($('#stations-map').parent().height())
 
     // get map parent element - which provides the correct dimensions for the map
@@ -966,6 +966,34 @@ $(function () {
       document.querySelector('.chartjs-size-monitor').style.width = `${graphWidth}px`;
       document.querySelector('.chartjs-size-monitor').style.height = `${graphRect.height}px`;
     }
+  }
+
+  function setMapSize() {
+
+    let nav_element = document.querySelector(".navbar-element");
+    let footer_element = document.querySelector(".footer-element");
+
+    let nav_height = px_to_rem(nav_element.getBoundingClientRect().height);
+    let footer_height = px_to_rem(footer_element.getBoundingClientRect().height);
+
+    let high_tide_flood = document.getElementById("historical-thresholds-viewport");
+
+    let flood_body = document.querySelector(".body-size");
+    let body_height = px_to_rem(flood_body.getBoundingClientRect().height);
+
+    let search_row = document.querySelector(".search-station-row");
+    let search_height = px_to_rem(search_row.getBoundingClientRect().height);
+
+    let info_section = document.querySelector(".info-section");
+    let info_height = px_to_rem(info_section.getBoundingClientRect().height);
+
+    let height = body_height - search_height - info_height - nav_height - footer_height;
+
+    high_tide_flood.style.setProperty('height', `calc(${height}rem - 1rem`); // the '- 1rem' represents the margin value on the .search-station-row div. (mt-3 = 1rem)
+    // switch to outerHeight to account for margin
+
+    $('#stations-map').height(high_tide_flood.style.height);
+    $('#thresholds-container').height(high_tide_flood.style.height);
   }
 
   // reset map and chart sizes

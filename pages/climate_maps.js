@@ -7,7 +7,7 @@ import nav_footer from '../template/nav_footer';
 // language=HTML
 export default (config) => `
   <!doctype html>
-  <html lang='en'">
+  <html lang='en' class="h-100">
   <head>
     ${head(config)}
     <meta property="fb:app_id" content="187816851587993">
@@ -18,7 +18,7 @@ export default (config) => `
           content="The Climate Explorer allows you to view historical and projected climate variables and assess the impacts of climate change on the things you care about">
     <meta property="og:image" content="/img/og.jpg">
   </head>
-  <body>
+  <body class="h-100">
   ${secondary_header(config)}
   <div class="container-fluid d-flex-column mb-3 h-100 body-size">
     <div class="mt-3 row">

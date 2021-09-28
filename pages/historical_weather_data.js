@@ -6,7 +6,7 @@ import nav_footer from '../template/nav_footer';
 // language=HTML
 export default (config) => `
 <!doctype html>
-<html lang='en'>
+<html lang='en' class="h-100">
 <head>
   ${head(config)}
   <meta property="fb:app_id" content="187816851587993">
@@ -17,7 +17,7 @@ export default (config) => `
   <meta property="og:image" content="/img/og.jpg">
 </head>
 
-<body>
+<body class="h-100">
 
   ${secondary_header(config)}
 

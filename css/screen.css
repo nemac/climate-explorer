@@ -16954,7 +16954,7 @@ input.input-inner-default:focus {
   margin-bottom: 6px;
 }
 
-/* line 24, scss/pages/_historical_weather_data.scss */
+/* line 16, scss/pages/_historical_weather_data.scss */
 #historical-weather-data-viewport:after {
   content: '';
   width: 100%;
@@ -16965,30 +16965,30 @@ input.input-inner-default:focus {
 }
 
 @media screen and (max-width: 499px) {
-  /* line 24, scss/pages/_historical_weather_data.scss */
+  /* line 16, scss/pages/_historical_weather_data.scss */
   #historical-weather-data-viewport:after {
     top: calc(100% - 75px);
   }
 }
 
-/* line 53, scss/pages/_historical_weather_data.scss */
+/* line 32, scss/pages/_historical_weather_data.scss */
 #historical-weather-data-viewport.expanded:after {
   top: calc(100% - 187px);
 }
 
 @media screen and (max-width: 499px) {
-  /* line 53, scss/pages/_historical_weather_data.scss */
+  /* line 32, scss/pages/_historical_weather_data.scss */
   #historical-weather-data-viewport.expanded:after {
     top: calc(100% - 147px);
   }
 }
 
-/* line 67, scss/pages/_historical_weather_data.scss */
+/* line 42, scss/pages/_historical_weather_data.scss */
 #historical-weather-data-viewport #stations-map-wrap {
   min-height: 150px !important;
 }
 
-/* line 71, scss/pages/_historical_weather_data.scss */
+/* line 46, scss/pages/_historical_weather_data.scss */
 #historical-weather-data-viewport .map-nostations-message {
   z-index: 500;
   width: 25%;
@@ -17007,7 +17007,7 @@ input.input-inner-default:focus {
 }
 
 @media screen and (max-width: 599px) {
-  /* line 71, scss/pages/_historical_weather_data.scss */
+  /* line 46, scss/pages/_historical_weather_data.scss */
   #historical-weather-data-viewport .map-nostations-message {
     top: -200px !important;
     left: 10% !important;
@@ -17015,25 +17015,25 @@ input.input-inner-default:focus {
   }
 }
 
-/* line 91, scss/pages/_historical_weather_data.scss */
+/* line 66, scss/pages/_historical_weather_data.scss */
 #historical-weather-data-viewport #stations-select-wrapper {
   display: flex !important;
 }
 
 @media screen and (max-width: 900px) {
-  /* line 91, scss/pages/_historical_weather_data.scss */
+  /* line 66, scss/pages/_historical_weather_data.scss */
   #historical-weather-data-viewport #stations-select-wrapper {
     width: 100% !important;
     margin-top: 6px;
   }
 }
 
-/* line 99, scss/pages/_historical_weather_data.scss */
+/* line 74, scss/pages/_historical_weather_data.scss */
 #historical-weather-data-viewport #chartmap-wrapper {
   width: 30% !important;
 }
 
-/* line 212, scss/pages/_historical_weather_data.scss */
+/* line 78, scss/pages/_historical_weather_data.scss */
 #historical-weather-data-viewport .left_chart {
   width: calc(50% - 40px);
   height: 100%;
@@ -17042,13 +17042,13 @@ input.input-inner-default:focus {
 }
 
 @media screen and (max-width: 900px) {
-  /* line 212, scss/pages/_historical_weather_data.scss */
+  /* line 78, scss/pages/_historical_weather_data.scss */
   #historical-weather-data-viewport .left_chart {
     width: calc(100%);
   }
 }
 
-/* line 222, scss/pages/_historical_weather_data.scss */
+/* line 88, scss/pages/_historical_weather_data.scss */
 #historical-weather-data-viewport .right_chart {
   width: calc(50% - 40px);
   height: 100%;
@@ -17057,38 +17057,38 @@ input.input-inner-default:focus {
 }
 
 @media screen and (max-width: 900px) {
-  /* line 222, scss/pages/_historical_weather_data.scss */
+  /* line 88, scss/pages/_historical_weather_data.scss */
   #historical-weather-data-viewport .right_chart {
     width: calc(100%);
   }
 }
 
-/* line 232, scss/pages/_historical_weather_data.scss */
+/* line 98, scss/pages/_historical_weather_data.scss */
 #historical-weather-data-viewport #overlay-chart-container {
   margin: 25px;
   height: 50vh;
   width: calc(100% - 50px);
 }
 
-/* line 300, scss/pages/_historical_weather_data.scss */
+/* line 104, scss/pages/_historical_weather_data.scss */
 #historical-weather-data-viewport #station-overlay {
   height: 100%;
 }
 
-/* line 304, scss/pages/_historical_weather_data.scss */
+/* line 108, scss/pages/_historical_weather_data.scss */
 #historical-weather-data-viewport .esri-expand__container {
   height: 32px;
   width: 32px;
 }
 
-/* line 309, scss/pages/_historical_weather_data.scss */
+/* line 113, scss/pages/_historical_weather_data.scss */
 #historical-weather-data-viewport .scenario-map-legend-container {
   max-width: 7rem;
   background: #ffffff;
   padding: 0.15rem 0.1rem;
 }
 
-/* line 314, scss/pages/_historical_weather_data.scss */
+/* line 118, scss/pages/_historical_weather_data.scss */
 #historical-weather-data-viewport .scenario-map-legend-container .legend-unit-label {
   margin: 0.2rem 0.25rem;
   display: block;
@@ -17096,45 +17096,45 @@ input.input-inner-default:focus {
   font-weight: 500;
 }
 
-/* line 321, scss/pages/_historical_weather_data.scss */
+/* line 125, scss/pages/_historical_weather_data.scss */
 #historical-weather-data-viewport .scenario-map-legend-container .legend-image {
   display: block;
   max-width: 5.2rem;
 }
 
-/* line 326, scss/pages/_historical_weather_data.scss */
+/* line 130, scss/pages/_historical_weather_data.scss */
 #historical-weather-data-viewport .scenario-map-legend-container .legend-note-label {
   display: block;
   font-size: 0.7rem;
   margin: 0.1rem 0.3rem;
 }
 
-/* line 333, scss/pages/_historical_weather_data.scss */
+/* line 137, scss/pages/_historical_weather_data.scss */
 #historical-weather-data-viewport .esri-ui-top-left .esri-expand__content, #historical-weather-data-viewport .esri-ui-top-right .esri-expand__content {
   top: -32px !important;
 }
 
-/* line 337, scss/pages/_historical_weather_data.scss */
+/* line 141, scss/pages/_historical_weather_data.scss */
 #historical-weather-data-viewport .esri-view-width-xsmall .esri-component.esri-expand.esri-widget.esri-expand--auto {
   display: none !important;
 }
 
-/* line 341, scss/pages/_historical_weather_data.scss */
+/* line 145, scss/pages/_historical_weather_data.scss */
 #historical-weather-data-viewport .esri-view-width-xsmall .esri-expand--auto .esri-expand__container--expanded {
   position: relative !important;
 }
 
-/* line 345, scss/pages/_historical_weather_data.scss */
+/* line 149, scss/pages/_historical_weather_data.scss */
 #historical-weather-data-viewport .esri-view-width-greater-than-xsmall .esri-expand--auto .esri-expand__content {
   position: relative !important;
 }
 
-/* line 349, scss/pages/_historical_weather_data.scss */
+/* line 153, scss/pages/_historical_weather_data.scss */
 #historical-weather-data-viewport .scenario-map-overlay-container {
   position: relative;
 }
 
-/* line 357, scss/pages/_historical_weather_data.scss */
+/* line 161, scss/pages/_historical_weather_data.scss */
 #historical-weather-data-viewport .esri-view-surface {
   -webkit-border-radius: 5px;
   -moz-border-radius: 5px;
@@ -17143,685 +17143,27 @@ input.input-inner-default:focus {
   border-radius: 5px;
 }
 
-/* line 361, scss/pages/_historical_weather_data.scss */
+/* line 165, scss/pages/_historical_weather_data.scss */
 #historical-weather-data-viewport .top-select-wrapper {
   width: 34% !important;
 }
 
-/* line 363, scss/pages/_historical_weather_data.scss */
+/* line 167, scss/pages/_historical_weather_data.scss */
 #historical-weather-data-viewport .top-select-wrapper-minor {
   width: 5% !important;
 }
 
 @media screen and (max-width: 900px) {
-  /* line 368, scss/pages/_historical_weather_data.scss */
+  /* line 172, scss/pages/_historical_weather_data.scss */
   #historical-weather-data-viewport .search-box-secondary {
     width: 100% !important;
     display: inline-block !important;
   }
 }
 
-/* line 375, scss/pages/_historical_weather_data.scss */
+/* line 179, scss/pages/_historical_weather_data.scss */
 #historical-weather-data-viewport .ui-icon {
   background-image: none !important;
-}
-
-/* line 5, scss/pages/_historical_thresholds.scss */
-.d-off {
-  position: absolute;
-  left: -1000000px;
-}
-
-/* line 22, scss/pages/_historical_thresholds.scss */
-#historical-thresholds-viewport {
-  background-color: #ffffff;
-  height: calc(100% - 48px - 6px - 100px) !important;
-  min-height: calc(100% - 48px - 6px - 100px) !important;
-  flex: 1 1 auto !important;
-  margin-bottom: 6px;
-}
-
-@media screen and (max-width: 499px) {
-  /* line 22, scss/pages/_historical_thresholds.scss */
-  #historical-thresholds-viewport {
-    min-height: calc(100% - 48px - 12px - 64px) !important;
-    height: calc(100% - 48px - 12px - 64px) !important;
-  }
-}
-
-/* line 35, scss/pages/_historical_thresholds.scss */
-#historical-thresholds-viewport:after {
-  content: '';
-  width: 100%;
-  height: 5px;
-  position: absolute;
-  top: calc(100% - 105px);
-  left: -2px;
-  -webkit-box-shadow: inset 0 -2px 2px rgba(0, 0, 0, 0.3);
-  -moz-box-shadow: inset 0 -2px 2px rgba(0, 0, 0, 0.3);
-  box-shadow: inset 0 -2px 2px rgba(0, 0, 0, 0.3);
-}
-
-@media screen and (max-width: 499px) {
-  /* line 35, scss/pages/_historical_thresholds.scss */
-  #historical-thresholds-viewport:after {
-    top: calc(100% - 75px);
-  }
-}
-
-/* line 49, scss/pages/_historical_thresholds.scss */
-#historical-thresholds-viewport input[type=number] {
-  height: 30px;
-}
-
-/* line 53, scss/pages/_historical_thresholds.scss */
-#historical-thresholds-viewport input[type=number]:hover::-webkit-inner-spin-button {
-  width: 14px;
-  height: 30px;
-}
-
-/* line 58, scss/pages/_historical_thresholds.scss */
-#historical-thresholds-viewport.expanded {
-  min-height: calc(100% - 48px - 12px - 170px) !important;
-  height: calc(100% - 48px - 12px - 170px) !important;
-}
-
-@media screen and (min-width: 850px) {
-  /* line 58, scss/pages/_historical_thresholds.scss */
-  #historical-thresholds-viewport.expanded {
-    min-height: calc(100% - 48px - 12px - 100px) !important;
-    height: calc(100% - 48px - 12px - 100px) !important;
-  }
-  /* line 62, scss/pages/_historical_thresholds.scss */
-  #historical-thresholds-viewport.expanded:after {
-    top: calc(100% - 117px);
-  }
-}
-
-@media screen and (min-width: 850px) and (max-width: 499px) {
-  /* line 62, scss/pages/_historical_thresholds.scss */
-  #historical-thresholds-viewport.expanded:after {
-    top: calc(100% - 147px);
-  }
-}
-
-/* line 73, scss/pages/_historical_thresholds.scss */
-#historical-thresholds-viewport.expanded:after {
-  top: calc(100% - 187px);
-}
-
-@media screen and (max-width: 499px) {
-  /* line 73, scss/pages/_historical_thresholds.scss */
-  #historical-thresholds-viewport.expanded:after {
-    top: calc(100% - 147px);
-  }
-}
-
-@media screen and (max-width: 499px) {
-  /* line 58, scss/pages/_historical_thresholds.scss */
-  #historical-thresholds-viewport.expanded {
-    min-height: calc(100% - 48px - 12px - 130px) !important;
-    height: calc(100% - 48px - 12px - 130px) !important;
-  }
-}
-
-/* line 88, scss/pages/_historical_thresholds.scss */
-#historical-thresholds-viewport #station-info-none strong {
-  font-weight: 800;
-  color: #f5652d;
-}
-
-/* line 94, scss/pages/_historical_thresholds.scss */
-#historical-thresholds-viewport #stations-map-wrap {
-  min-height: 150px !important;
-}
-
-/* line 99, scss/pages/_historical_thresholds.scss */
-#historical-thresholds-viewport input[type=number]::-webkit-inner-spin-button,
-#historical-thresholds-viewport input[type=number]::-webkit-outer-spin-button {
-  -webkit-appearance: none;
-  margin: 0;
-}
-
-/* line 106, scss/pages/_historical_thresholds.scss */
-#historical-thresholds-viewport input[type=number] {
-  -moz-appearance: textfield;
-}
-
-/* line 121, scss/pages/_historical_thresholds.scss */
-#historical-thresholds-viewport .threshold-button.threshold-up,
-#historical-thresholds-viewport .window-button.window-up {
-  z-index: 500;
-  cursor: pointer;
-  float: right;
-  position: relative;
-  height: 36px;
-  width: 36px;
-  top: 0px;
-  left: 0px;
-  align-items: center;
-  justify-content: center;
-  display: flex;
-  background-color: #FBFCFE;
-  -moz-border-radius-bottomright: 5px;
-  -webkit-border-bottom-right-radius: 5px;
-  border-bottom-right-radius: 5px;
-  -moz-border-radius-topright: 5px;
-  -webkit-border-top-right-radius: 5px;
-  border-top-right-radius: 5px;
-  border: 1px solid rgba(18, 64, 134, 0.5);
-}
-
-/* line 138, scss/pages/_historical_thresholds.scss */
-#historical-thresholds-viewport .threshold-button.threshold-up:hover, #historical-thresholds-viewport .threshold-button.threshold-up:focus,
-#historical-thresholds-viewport .window-button.window-up:hover,
-#historical-thresholds-viewport .window-button.window-up:focus {
-  outline: none;
-  background-color: #d2ddf4 !important;
-}
-
-/* line 144, scss/pages/_historical_thresholds.scss */
-#historical-thresholds-viewport .threshold-button.threshold-down,
-#historical-thresholds-viewport .window-button.window-down {
-  z-index: 500;
-  cursor: pointer;
-  float: left;
-  font: 700 16px Roboto, Helvetica, "Helvetica Neue", Arial, sans-serif !important;
-  position: relative;
-  bottom: 0px;
-  left: 0px;
-  height: 36px;
-  width: 36px;
-  align-items: center;
-  justify-content: center;
-  display: flex;
-  background-color: #FBFCFE;
-  -moz-border-radius-topleft: 5px;
-  -webkit-border-top-left-radius: 5px;
-  border-top-left-radius: 5px;
-  -moz-border-radius-bottomleft: 5px;
-  -webkit-border-bottom-left-radius: 5px;
-  border-bottom-left-radius: 5px;
-  border: 1px solid rgba(18, 64, 134, 0.5);
-}
-
-/* line 162, scss/pages/_historical_thresholds.scss */
-#historical-thresholds-viewport .threshold-button.threshold-down:hover, #historical-thresholds-viewport .threshold-button.threshold-down:focus,
-#historical-thresholds-viewport .window-button.window-down:hover,
-#historical-thresholds-viewport .window-button.window-down:focus {
-  outline: none;
-  background-color: #d2ddf4 !important;
-}
-
-/* line 168, scss/pages/_historical_thresholds.scss */
-#historical-thresholds-viewport .form-field {
-  display: block;
-  padding-bottom: 0px !important;
-  padding-top: 0px !important;
-  height: 36px !important;
-  line-height: 36px !important;
-}
-
-/* line 177, scss/pages/_historical_thresholds.scss */
-#historical-thresholds-viewport .form-field-label {
-  font: 500 12px Roboto, Helvetica, "Helvetica Neue", Arial, sans-serif !important;
-  transform: translateY(-28px);
-  white-space: pre;
-  display: block;
-  font-weight: 500;
-  left: -24px;
-  margin: 0;
-  position: absolute;
-  top: 10px;
-  transition: all 0.4s;
-  width: 100%;
-  height: 18px !important;
-}
-
-/* line 192, scss/pages/_historical_thresholds.scss */
-#historical-thresholds-viewport .form-field-control {
-  background: #E9F1FC;
-  line-height: 36px !important;
-  position: relative;
-  width: 100%;
-}
-
-/* line 199, scss/pages/_historical_thresholds.scss */
-#historical-thresholds-viewport .form-field-bar {
-  bottom: 0;
-  content: "";
-  display: block;
-  left: 0;
-  margin: 0 auto;
-  position: absolute;
-  right: 0;
-  transform: scaleX(0);
-  transition: all 0.4s;
-  width: 1%;
-}
-
-/* line 212, scss/pages/_historical_thresholds.scss */
-#historical-thresholds-viewport .form-field-input {
-  appearance: none;
-  float: left;
-  background: transparent;
-  color: #124086;
-  text-align: center;
-  display: block;
-  font: 500 14px Roboto, Helvetica, "Helvetica Neue", Arial, sans-serif !important;
-  outline: 0;
-  padding: 12px;
-  width: 100%;
-}
-
-/* line 226, scss/pages/_historical_thresholds.scss */
-#historical-thresholds-viewport .form-field-input:-ms-input-placeholder ~ .form-field-label {
-  font: 500 14px Roboto, Helvetica, "Helvetica Neue", Arial, sans-serif !important;
-  transform: translateY(0);
-}
-
-/* line 232, scss/pages/_historical_thresholds.scss */
-#historical-thresholds-viewport .form-field-input:placeholder-shown ~ .form-field-label {
-  font: 500 14px Roboto, Helvetica, "Helvetica Neue", Arial, sans-serif !important;
-  transform: translateY(0);
-}
-
-/* line 238, scss/pages/_historical_thresholds.scss */
-#historical-thresholds-viewport .form-field-input:focus ~ .form-field-label {
-  color: #124086;
-  font: 500 12px Roboto, Helvetica, "Helvetica Neue", Arial, sans-serif !important;
-  transform: translateY(-28px);
-}
-
-/* line 242, scss/pages/_historical_thresholds.scss */
-#historical-thresholds-viewport .form-field-input:focus ~ .form-field-bar {
-  transform: scaleX(150);
-}
-
-/* line 248, scss/pages/_historical_thresholds.scss */
-#historical-thresholds-viewport .map-nostations-message {
-  z-index: 500;
-  width: 25%;
-  position: relative;
-  top: -250px;
-  left: 150px;
-  text-align: center;
-  padding: 12px;
-  background-color: #f5652d !important;
-  color: #FBFCFE !important;
-  font: 500 14px Roboto, Helvetica, "Helvetica Neue", Arial, sans-serif !important;
-  border: 1px solid #f7895e !important;
-  -webkit-border-radius: 5px 5px;
-  -moz-border-radius: 5px / 5px;
-  border-radius: 5px / 5px;
-}
-
-@media screen and (max-width: 599px) {
-  /* line 248, scss/pages/_historical_thresholds.scss */
-  #historical-thresholds-viewport .map-nostations-message {
-    top: -200px !important;
-    left: 10% !important;
-    width: 80%;
-  }
-}
-
-/* line 268, scss/pages/_historical_thresholds.scss */
-#historical-thresholds-viewport #stations-select-wrapper, #historical-thresholds-viewport #threshold-variable-select-wrapper,
-#historical-thresholds-viewport #threshold_value_form_field, #historical-thresholds-viewport #window_value_form_field {
-  display: flex !important;
-  padding-right: 12px !important;
-}
-
-@media screen and (max-width: 900px) {
-  /* line 268, scss/pages/_historical_thresholds.scss */
-  #historical-thresholds-viewport #stations-select-wrapper, #historical-thresholds-viewport #threshold-variable-select-wrapper,
-  #historical-thresholds-viewport #threshold_value_form_field, #historical-thresholds-viewport #window_value_form_field {
-    padding-right: 0px !important;
-    width: 100% !important;
-    margin-top: 6px;
-  }
-}
-
-/* line 291, scss/pages/_historical_thresholds.scss */
-#historical-thresholds-viewport #btn-tidalzoom.active {
-  background-color: #124086 !important;
-  color: #E9F1FC !important;
-  font: 500 14px Roboto, Helvetica, "Helvetica Neue", Arial, sans-serif !important;
-  border: 1px solid rgba(18, 64, 134, 0.5) !important;
-}
-
-/* line 297, scss/pages/_historical_thresholds.scss */
-#historical-thresholds-viewport #btn-tidalzoom.active:hover, #historical-thresholds-viewport #btn-tidalzoom.active:focus {
-  background-color: #397ee5 !important;
-  color: #E9F1FC !important;
-  border: 1px solid rgba(18, 64, 134, 0.5) !important;
-  outline: none !important;
-}
-
-/* line 306, scss/pages/_historical_thresholds.scss */
-#historical-thresholds-viewport #chartmap-wrapper {
-  width: 20% !important;
-}
-
-@media screen and (min-width: 901px) {
-  /* line 311, scss/pages/_historical_thresholds.scss */
-  #historical-thresholds-viewport #stations-map-row {
-    height: calc(100% - 48px - 6px - 140px) !important;
-  }
-  /* line 314, scss/pages/_historical_thresholds.scss */
-  #historical-thresholds-viewport #stations-map-row.closed-filters {
-    height: calc(100% - 48px - 6px) !important;
-  }
-}
-
-@media screen and (min-width: 901px) {
-  /* line 320, scss/pages/_historical_thresholds.scss */
-  #historical-thresholds-viewport #stations-graph-row {
-    height: calc(100% - 48px - 6px - 205px) !important;
-  }
-  /* line 323, scss/pages/_historical_thresholds.scss */
-  #historical-thresholds-viewport #stations-graph-row.closed-filters {
-    height: calc(100% - 48px - 6px) !important;
-  }
-}
-
-/* line 329, scss/pages/_historical_thresholds.scss */
-#historical-thresholds-viewport #stations-map-row {
-  justify-content: space-evenly !important;
-}
-
-/* line 333, scss/pages/_historical_thresholds.scss */
-#historical-thresholds-viewport #stations-map-row.closed-filters .stations-map-wrap {
-  height: 86% !important;
-}
-
-/* line 338, scss/pages/_historical_thresholds.scss */
-#historical-thresholds-viewport #stations-map-row #stations-map {
-  width: 100%;
-  flex-wrap: wrap;
-}
-
-/* line 342, scss/pages/_historical_thresholds.scss */
-#historical-thresholds-viewport #stations-map-row #stations-map:focus {
-  outline: none !important;
-  border: 0px solid rgba(18, 64, 134, 0.5) !important;
-}
-
-/* line 348, scss/pages/_historical_thresholds.scss */
-#historical-thresholds-viewport #stations-map-row .esri-view-user-storage {
-  height: unset !important;
-}
-
-/* line 353, scss/pages/_historical_thresholds.scss */
-#historical-thresholds-viewport #stations-map-row #stations-map .movable.slider-div {
-  top: 0px !important;
-}
-
-@media screen and (max-width: 1240px) {
-  /* line 329, scss/pages/_historical_thresholds.scss */
-  #historical-thresholds-viewport #stations-map-row {
-    justify-content: center !important;
-  }
-}
-
-@media screen and (max-width: 900px) {
-  /* line 329, scss/pages/_historical_thresholds.scss */
-  #historical-thresholds-viewport #stations-map-row {
-    order: 1;
-    padding-bottom: 250px !important;
-  }
-  /* line 366, scss/pages/_historical_thresholds.scss */
-  #historical-thresholds-viewport #stations-map-row #stations-map {
-    width: 100%;
-    flex-wrap: wrap;
-    min-height: 350px !important;
-    max-height: 350px !important;
-    height: 350px !important;
-  }
-  /* line 373, scss/pages/_historical_thresholds.scss */
-  #historical-thresholds-viewport #stations-map-row #stations-map .map-wrap {
-    min-height: 350px !important;
-    height: 350px !important;
-  }
-  /* line 378, scss/pages/_historical_thresholds.scss */
-  #historical-thresholds-viewport #stations-map-row #stations-map .esri-view-root {
-    flex: 0 0 100%;
-    height: 100% !important;
-    width: 100% !important;
-  }
-}
-
-@media screen and (max-width: 900px) and (max-width: 599px) {
-  /* line 378, scss/pages/_historical_thresholds.scss */
-  #historical-thresholds-viewport #stations-map-row #stations-map .esri-view-root {
-    z-index: 200;
-  }
-}
-
-@media screen and (max-width: 900px) {
-  /* line 387, scss/pages/_historical_thresholds.scss */
-  #historical-thresholds-viewport #stations-map-row #stations-map .esri-overlay-surface {
-    flex: 0 0 100%;
-    height: 100% !important;
-    width: 100% !important;
-  }
-  /* line 393, scss/pages/_historical_thresholds.scss */
-  #historical-thresholds-viewport #stations-map-row #stations-map .esri-view-user-storage {
-    overflow: visible !important;
-    height: 100% !important;
-    width: 100% !important;
-  }
-}
-
-@media screen and (max-width: 900px) and (max-width: 900px) {
-  /* line 393, scss/pages/_historical_thresholds.scss */
-  #historical-thresholds-viewport #stations-map-row #stations-map .esri-view-user-storage {
-    position: relative !important;
-    top: -350px;
-  }
-}
-
-@media screen and (max-width: 900px) {
-  /* line 403, scss/pages/_historical_thresholds.scss */
-  #historical-thresholds-viewport #stations-map-row #stations-map .scenario-map-overlay-container {
-    position: relative !important;
-    top: 0px !important;
-    left: 0px !important;
-    width: 100% !important;
-    height: 100% !important;
-    margin: 0px !important;
-  }
-}
-
-@media screen and (max-width: 599px) {
-  /* line 329, scss/pages/_historical_thresholds.scss */
-  #historical-thresholds-viewport #stations-map-row {
-    height: auto !important;
-    order: 1;
-  }
-  /* line 418, scss/pages/_historical_thresholds.scss */
-  #historical-thresholds-viewport #stations-map-row .map-wrap {
-    min-height: 250px !important;
-    height: 250px !important;
-  }
-}
-
-/* line 425, scss/pages/_historical_thresholds.scss */
-#historical-thresholds-viewport .tidal-chart {
-  width: calc(100% - 40px);
-  height: 100%;
-  background-color: white;
-  padding-right: 6px;
-}
-
-@media screen and (max-width: 900px) {
-  /* line 425, scss/pages/_historical_thresholds.scss */
-  #historical-thresholds-viewport .tidal-chart {
-    width: calc(100%);
-  }
-}
-
-/* line 436, scss/pages/_historical_thresholds.scss */
-#historical-thresholds-viewport #overlay-chart-container {
-  margin: 25px;
-  height: 50vh;
-  width: calc(100% - 50px);
-}
-
-/* line 442, scss/pages/_historical_thresholds.scss */
-#historical-thresholds-viewport #stations-graph-wrap {
-  height: 100% !important;
-  width: 80%;
-}
-
-@media screen and (max-width: 900px) {
-  /* line 442, scss/pages/_historical_thresholds.scss */
-  #historical-thresholds-viewport #stations-graph-wrap {
-    min-height: 300px !important;
-    max-height: 300px !important;
-    height: 300px !important;
-    display: block !important;
-  }
-}
-
-/* line 453, scss/pages/_historical_thresholds.scss */
-#historical-thresholds-viewport #stations-map-wrap {
-  height: 100%;
-}
-
-@media screen and (max-width: 900px) {
-  /* line 453, scss/pages/_historical_thresholds.scss */
-  #historical-thresholds-viewport #stations-map-wrap {
-    min-height: 350px !important;
-    max-height: 350px !important;
-    height: 350px !important;
-    display: block !important;
-  }
-}
-
-/* line 463, scss/pages/_historical_thresholds.scss */
-#historical-thresholds-viewport #station-info-row {
-  -webkit-transition: 0.5s;
-  -moz-transition: 0.5s;
-  -o-transition: 0.5s;
-  transition: 0.5s;
-  -webkit-transition-property: all;
-  -moz-transition-property: all;
-  -o-transition-property: all;
-  transition-property: all;
-  -webkit-transition-timing-function: ease-out;
-  -moz-transition-timing-function: ease-out;
-  -o-transition-timing-function: ease-out;
-  transition-timing-function: ease-out;
-}
-
-/* line 468, scss/pages/_historical_thresholds.scss */
-#historical-thresholds-viewport #station-info-row #more-info-description {
-  padding-left: 6px;
-}
-
-/* line 472, scss/pages/_historical_thresholds.scss */
-#historical-thresholds-viewport #station-info-row .more-info-description {
-  padding-top: 6px;
-  width: 100%;
-}
-
-@media screen and (max-width: 900px) {
-  /* line 463, scss/pages/_historical_thresholds.scss */
-  #historical-thresholds-viewport #station-info-row {
-    min-height: 250px;
-    max-height: 250px !important;
-    height: 250px !important;
-    display: block !important;
-  }
-}
-
-@media screen and (max-width: 768px) {
-  /* line 463, scss/pages/_historical_thresholds.scss */
-  #historical-thresholds-viewport #station-info-row {
-    width: 90% !important;
-  }
-}
-
-/* line 489, scss/pages/_historical_thresholds.scss */
-#historical-thresholds-viewport #stations-map-row, #historical-thresholds-viewport #stations-graph-row {
-  align-self: center;
-}
-
-@media screen and (max-width: 768px) {
-  /* line 489, scss/pages/_historical_thresholds.scss */
-  #historical-thresholds-viewport #stations-map-row, #historical-thresholds-viewport #stations-graph-row {
-    width: 90% !important;
-  }
-}
-
-/* line 496, scss/pages/_historical_thresholds.scss */
-#historical-thresholds-viewport #station-overlay {
-  height: 100%;
-}
-
-/* line 500, scss/pages/_historical_thresholds.scss */
-#historical-thresholds-viewport .esri-expand__container {
-  height: 32px;
-  width: 32px;
-}
-
-/* line 505, scss/pages/_historical_thresholds.scss */
-#historical-thresholds-viewport .legend-image {
-  max-height: 16rem;
-  max-width: none;
-}
-
-/* line 510, scss/pages/_historical_thresholds.scss */
-#historical-thresholds-viewport .esri-ui-top-left .esri-expand__content, #historical-thresholds-viewport .esri-ui-top-right .esri-expand__content {
-  top: -32px !important;
-}
-
-/* line 514, scss/pages/_historical_thresholds.scss */
-#historical-thresholds-viewport .esri-view-width-xsmall .esri-component.esri-expand.esri-widget.esri-expand--auto {
-  display: none !important;
-}
-
-/* line 518, scss/pages/_historical_thresholds.scss */
-#historical-thresholds-viewport .esri-view-width-xsmall .esri-expand--auto .esri-expand__container--expanded {
-  position: relative !important;
-}
-
-/* line 522, scss/pages/_historical_thresholds.scss */
-#historical-thresholds-viewport .esri-view-width-greater-than-xsmall .esri-expand--auto .esri-expand__content {
-  position: relative !important;
-}
-
-/* line 526, scss/pages/_historical_thresholds.scss */
-#historical-thresholds-viewport .scenario-map-overlay-container {
-  position: relative;
-}
-
-/* line 534, scss/pages/_historical_thresholds.scss */
-#historical-thresholds-viewport .esri-view-surface {
-  -webkit-border-radius: 5px;
-  -moz-border-radius: 5px;
-  -ms-border-radius: 5px;
-  -o-border-radius: 5px;
-  border-radius: 5px;
-}
-
-/* line 538, scss/pages/_historical_thresholds.scss */
-#historical-thresholds-viewport .top-select-wrapper {
-  width: 34% !important;
-}
-
-/* line 540, scss/pages/_historical_thresholds.scss */
-#historical-thresholds-viewport .top-select-wrapper-minor {
-  width: 5% !important;
-}
-
-@media screen and (max-width: 900px) {
-  /* line 545, scss/pages/_historical_thresholds.scss */
-  #historical-thresholds-viewport .search-box-secondary {
-    width: 100% !important;
-    display: inline-block !important;
-  }
 }
 
 /* line 3, scss/pages/_new_historical_thresholds.scss */
@@ -19907,7 +19249,7 @@ h2 {
   cursor: default;
 }
 
-/* line 1637, scss/screen.scss */
+/* line 1636, scss/screen.scss */
 .ui-autocomplete {
   position: absolute;
   top: 0;
@@ -19915,7 +19257,7 @@ h2 {
   cursor: default;
 }
 
-/* line 1644, scss/screen.scss */
+/* line 1643, scss/screen.scss */
 .ui-menu {
   display: block;
   padding: 10px;
@@ -19928,12 +19270,12 @@ h2 {
   box-shadow: 0 0 12px rgba(35, 58, 112, 0.25);
 }
 
-/* line 1653, scss/screen.scss */
+/* line 1652, scss/screen.scss */
 .ui-menu .ui-menu {
   position: absolute;
 }
 
-/* line 1657, scss/screen.scss */
+/* line 1656, scss/screen.scss */
 .ui-menu .ui-menu-item {
   position: relative;
   margin: 0;
@@ -19941,7 +19283,7 @@ h2 {
   cursor: pointer;
 }
 
-/* line 1664, scss/screen.scss */
+/* line 1663, scss/screen.scss */
 .ui-menu .ui-menu-divider {
   margin: 5px 0;
   height: 0;
@@ -19950,12 +19292,12 @@ h2 {
   border-width: 1px 0 0 0;
 }
 
-/* line 1674, scss/screen.scss */
+/* line 1673, scss/screen.scss */
 .ui-accordion .ui-accordion-header {
   outline: none;
 }
 
-/* line 1677, scss/screen.scss */
+/* line 1676, scss/screen.scss */
 .ui-accordion .ui-accordion-header .ui-accordion-header-icon {
   display: inline-block;
   position: static;
@@ -19964,14 +19306,14 @@ h2 {
   overflow: visible;
 }
 
-/* line 1688, scss/screen.scss */
+/* line 1687, scss/screen.scss */
 .accordion-plain .ui-accordion-header {
   padding: 8px 0;
   color: #233a70;
   line-height: 28px;
 }
 
-/* line 1693, scss/screen.scss */
+/* line 1692, scss/screen.scss */
 .accordion-plain .ui-accordion-header .ui-accordion-header-icon {
   display: block;
   float: left;
@@ -19981,17 +19323,17 @@ h2 {
   line-height: 28px;
 }
 
-/* line 1703, scss/screen.scss */
+/* line 1702, scss/screen.scss */
 .accordion-plain .accordion-text {
   padding: 20px 40px;
 }
 
-/* line 1710, scss/screen.scss */
+/* line 1709, scss/screen.scss */
 .tabs-plain .tabs-plain-list li {
   display: inline-block;
 }
 
-/* line 1713, scss/screen.scss */
+/* line 1712, scss/screen.scss */
 .tabs-plain .tabs-plain-list li a {
   display: block;
   padding: 8px 10px;
@@ -20130,13 +19472,13 @@ https://raw.github.com/shagstrom/split-pane/master/LICENSE
   cursor: row-resize;
 }
 
-/* line 1728, scss/screen.scss */
+/* line 1727, scss/screen.scss */
 .pretty-split-pane-frame .split-pane > .split-pane-divider.dragged.touch {
   background: blue;
   opacity: 0.25;
 }
 
-/* line 1733, scss/screen.scss */
+/* line 1732, scss/screen.scss */
 .split-pane-divider {
   right: 50%;
   width: 12px;
@@ -20146,7 +19488,7 @@ https://raw.github.com/shagstrom/split-pane/master/LICENSE
   box-shadow: 0 0 10px rgba(35, 58, 112, 0.25);
 }
 
-/* line 1740, scss/screen.scss */
+/* line 1739, scss/screen.scss */
 .pane-content {
   position: absolute;
   top: 0;
@@ -20156,18 +19498,18 @@ https://raw.github.com/shagstrom/split-pane/master/LICENSE
   overflow: auto;
 }
 
-/* line 1745, scss/screen.scss */
+/* line 1744, scss/screen.scss */
 #pane-left {
   right: 50%;
   margin-right: 12px;
 }
 
-/* line 1750, scss/screen.scss */
+/* line 1749, scss/screen.scss */
 #pane-right {
   width: 50%;
 }
 
-/* line 1754, scss/screen.scss */
+/* line 1753, scss/screen.scss */
 .ui-tooltip {
   background-color: #0058cf;
   color: white;
@@ -20177,7 +19519,7 @@ https://raw.github.com/shagstrom/split-pane/master/LICENSE
   padding-top: 0;
 }
 
-/* line 1763, scss/screen.scss */
+/* line 1762, scss/screen.scss */
 .feedback-trigger-small {
   position: absolute;
   cursor: pointer;
@@ -20209,13 +19551,13 @@ https://raw.github.com/shagstrom/split-pane/master/LICENSE
 }
 
 @media screen and (max-width: 499px) {
-  /* line 1763, scss/screen.scss */
+  /* line 1762, scss/screen.scss */
   .feedback-trigger-small {
     top: calc(100% - 128px);
   }
 }
 
-/* line 1787, scss/screen.scss */
+/* line 1786, scss/screen.scss */
 .feedback-trigger-small:hover {
   background-color: #195abc;
   -webkit-box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.239);
@@ -20223,7 +19565,7 @@ https://raw.github.com/shagstrom/split-pane/master/LICENSE
   box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.239);
 }
 
-/* line 1793, scss/screen.scss */
+/* line 1792, scss/screen.scss */
 #feedback-close-button-yes, #feedback-close-button-no {
   background-color: #FBFCFE;
   line-height: 32px;
@@ -20240,12 +19582,12 @@ https://raw.github.com/shagstrom/split-pane/master/LICENSE
   height: 30px;
 }
 
-/* line 1804, scss/screen.scss */
+/* line 1803, scss/screen.scss */
 #feedback-close-button-yes:hover, #feedback-close-button-no:hover {
   background-color: #beceef;
 }
 
-/* line 1809, scss/screen.scss */
+/* line 1808, scss/screen.scss */
 .feedback-trigger {
   position: absolute;
   background-color: #124086;
@@ -20268,32 +19610,32 @@ https://raw.github.com/shagstrom/split-pane/master/LICENSE
 }
 
 @media screen and (max-width: 768px) {
-  /* line 1809, scss/screen.scss */
+  /* line 1808, scss/screen.scss */
   .feedback-trigger {
     width: 100%;
     left: 0px;
   }
 }
 
-/* line 1823, scss/screen.scss */
+/* line 1822, scss/screen.scss */
 .feedback-trigger .feedback-text {
   padding-left: 6px;
 }
 
-/* line 1827, scss/screen.scss */
+/* line 1826, scss/screen.scss */
 .feedback-trigger .feedback-icon {
   font-size: 18px;
   vertical-align: middle;
 }
 
 @media screen and (max-width: 768px) {
-  /* line 1827, scss/screen.scss */
+  /* line 1826, scss/screen.scss */
   .feedback-trigger .feedback-icon {
     display: none;
   }
 }
 
-/* line 1843, scss/screen.scss */
+/* line 1842, scss/screen.scss */
 .feedback-trigger:hover {
   background-color: #195abc;
   -webkit-box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.239);
@@ -20301,7 +19643,7 @@ https://raw.github.com/shagstrom/split-pane/master/LICENSE
   box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.239);
 }
 
-/* line 1849, scss/screen.scss */
+/* line 1848, scss/screen.scss */
 .about-tool-row {
   height: auto;
   align-items: start !important;
@@ -20309,7 +19651,7 @@ https://raw.github.com/shagstrom/split-pane/master/LICENSE
   justify-content: start !important;
 }
 
-/* line 1855, scss/screen.scss */
+/* line 1854, scss/screen.scss */
 .about-tool-row.about-tool-equals {
   align-items: center !important;
   align-content: center !important;
@@ -20318,7 +19660,7 @@ https://raw.github.com/shagstrom/split-pane/master/LICENSE
   font-weight: 500;
 }
 
-/* line 1863, scss/screen.scss */
+/* line 1862, scss/screen.scss */
 .about-tool-row .about-tool-content {
   line-height: unset !important;
   margin: 0px !important;
@@ -20326,41 +19668,41 @@ https://raw.github.com/shagstrom/split-pane/master/LICENSE
   padding-top: 12px;
 }
 
-/* line 1869, scss/screen.scss */
+/* line 1868, scss/screen.scss */
 .about-tool-row .about-tool-content.img-holder-left {
   justify-content: start !important;
 }
 
-/* line 1872, scss/screen.scss */
+/* line 1871, scss/screen.scss */
 .about-tool-row .about-tool-content.img-holder-left img {
   border: 1px solid;
 }
 
 @media screen and (max-width: 900px) {
-  /* line 1869, scss/screen.scss */
+  /* line 1868, scss/screen.scss */
   .about-tool-row .about-tool-content.img-holder-left {
     justify-content: center !important;
   }
 }
 
-/* line 1881, scss/screen.scss */
+/* line 1880, scss/screen.scss */
 .about-tool-row .about-tool-content.img-holder-right {
   justify-content: flex-end !important;
 }
 
-/* line 1884, scss/screen.scss */
+/* line 1883, scss/screen.scss */
 .about-tool-row .about-tool-content.img-holder-right img {
   border: 1px solid;
 }
 
 @media screen and (max-width: 900px) {
-  /* line 1881, scss/screen.scss */
+  /* line 1880, scss/screen.scss */
   .about-tool-row .about-tool-content.img-holder-right {
     justify-content: center !important;
   }
 }
 
-/* line 1893, scss/screen.scss */
+/* line 1892, scss/screen.scss */
 .about-tool-row .about-tool-content img {
   display: block;
   max-width: 100%;
@@ -20369,33 +19711,33 @@ https://raw.github.com/shagstrom/split-pane/master/LICENSE
   height: 100%;
 }
 
-/* line 1901, scss/screen.scss */
+/* line 1900, scss/screen.scss */
 .about-tool-row .about-tool-content .sample-img {
   max-height: 200px;
   width: auto;
 }
 
-/* line 1907, scss/screen.scss */
+/* line 1906, scss/screen.scss */
 .about-tool-row .btn-chart-text {
   padding: 12px;
 }
 
 @media screen and (max-width: 900px) {
-  /* line 1849, scss/screen.scss */
+  /* line 1848, scss/screen.scss */
   .about-tool-row {
     width: 100% !important;
     border-bottom: 1px solid #124086;
   }
-  /* line 1916, scss/screen.scss */
+  /* line 1915, scss/screen.scss */
   .about-tool-row .img-btn-chart {
     width: 50% !important;
     height: 50% !important;
   }
-  /* line 1921, scss/screen.scss */
+  /* line 1920, scss/screen.scss */
   .about-tool-row .btn-selector {
     width: 100% !important;
   }
-  /* line 1924, scss/screen.scss */
+  /* line 1923, scss/screen.scss */
   .about-tool-row .btn-selector.circle-box-left {
     -webkit-border-radius: 5px;
     -moz-border-radius: 5px;
@@ -20403,7 +19745,7 @@ https://raw.github.com/shagstrom/split-pane/master/LICENSE
     -o-border-radius: 5px;
     border-radius: 5px;
   }
-  /* line 1928, scss/screen.scss */
+  /* line 1927, scss/screen.scss */
   .about-tool-row .btn-selector.circle-box-right {
     -webkit-border-radius: 5px;
     -moz-border-radius: 5px;
@@ -20411,7 +19753,7 @@ https://raw.github.com/shagstrom/split-pane/master/LICENSE
     -o-border-radius: 5px;
     border-radius: 5px;
   }
-  /* line 1932, scss/screen.scss */
+  /* line 1931, scss/screen.scss */
   .about-tool-row .btn-selector.circle-box-center {
     -webkit-border-radius: 5px;
     -moz-border-radius: 5px;
@@ -20421,76 +19763,76 @@ https://raw.github.com/shagstrom/split-pane/master/LICENSE
   }
 }
 
-/* line 1940, scss/screen.scss */
+/* line 1939, scss/screen.scss */
 #download-dropdown-menu {
   transition: background-color 200ms ease-in;
 }
 
-/* line 1943, scss/screen.scss */
+/* line 1942, scss/screen.scss */
 #download-dropdown-menu:hover {
   background-color: #A6C6F3;
 }
 
-/* line 1950, scss/screen.scss */
+/* line 1949, scss/screen.scss */
 body:not(.is-ak-area) .opt-only-ak, body:not(.is-island-area) .opt-only-island {
   display: none !important;
 }
 
-/* line 1954, scss/screen.scss */
+/* line 1953, scss/screen.scss */
 body.is-ak-area .opt-not-ak, body.is-island-area .opt-not-island {
   display: none !important;
 }
 
-/* line 1958, scss/screen.scss */
+/* line 1957, scss/screen.scss */
 #tidal-chart {
   display: flex;
   flex-direction: column;
 }
 
-/* line 1963, scss/screen.scss */
+/* line 1962, scss/screen.scss */
 .chart {
   flex: 1;
   width: 100%;
   height: 100vh;
 }
 
-/* line 1969, scss/screen.scss */
+/* line 1968, scss/screen.scss */
 .info-section {
   min-width: fit-content;
   min-width: -moz-fit-content;
   text-align: center;
 }
 
-/* line 1975, scss/screen.scss */
+/* line 1974, scss/screen.scss */
 .disabled {
   filter: opacity(0.4);
 }
 
-/* line 1979, scss/screen.scss */
+/* line 1978, scss/screen.scss */
 .tippy-tooltip.testing-theme-theme {
   background-color: white;
 }
 
-/* line 1982, scss/screen.scss */
+/* line 1981, scss/screen.scss */
 .tippy-tooltip.testing-theme-theme hr {
   color: #0D3064;
   font-weight: bold;
 }
 
-/* line 1988, scss/screen.scss */
+/* line 1987, scss/screen.scss */
 .tippy-title {
   color: #0D3064;
   font-weight: bold;
   font-size: 1rem;
 }
 
-/* line 1994, scss/screen.scss */
+/* line 1993, scss/screen.scss */
 .tippy-body {
   color: #0D3064;
   font-size: 0.95rem;
 }
 
-/* line 2001, scss/screen.scss */
+/* line 2000, scss/screen.scss */
 .climate_by_location_popover .popover-header, .high_tide_flooding_popover .popover-header {
   background-color: transparent !important;
   border-bottom: none !important;
@@ -20498,7 +19840,7 @@ body.is-ak-area .opt-not-ak, body.is-island-area .opt-not-island {
   margin: 0.25rem 0 !important;
 }
 
-/* line 2008, scss/screen.scss */
+/* line 2007, scss/screen.scss */
 .climate_by_location_popover hr, .high_tide_flooding_popover hr {
   background-color: transparent !important;
   opacity: 1 !important;

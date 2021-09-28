@@ -6,7 +6,7 @@ import nav_footer from '../template/nav_footer';
 // language=HTML
 export default (config) => `
   <!doctype html>
-  <html lang='en'>
+  <html lang='en' class="h-100">
   <head>
     ${head(config)}
     <meta property="fb:app_id" content="187816851587993">
@@ -17,7 +17,7 @@ export default (config) => `
           content="The Climate Explorer allows you to view historical and projected climate variables and assess the impacts of climate change on the things you care about">
     <meta property="og:image" content="/img/og.jpg">
   </head>
-  <body>
+  <body class="h-100">
   ${secondary_header(config)}
   <div class="container-fluid d-flex-column body-size h-100">
       <div class="mt-3 row search-station-row">
@@ -107,26 +107,7 @@ export default (config) => `
                 </div>
 
               </div>
-              
-<!--              <div class="col-md-12 col-lg-6 col-xl-2 mt-lg-4 mt-xl-0 form-field d-flex info-section" id="threshold_value_form_field">-->
-<!--                <div tabindex="5012" class="btn border border-1 threshold-down">-</div>-->
-<!--                <div class="form-field-control height-100">-->
-<!--                  <input tabindex="5013" id="threshold-value" type="number" class="form-field-input border-0" placeholder=" " min="0" max="200" value="1"-->
-<!--                         autofocus="autofocus" step="0.1"/>-->
-<!--                  <label for="threshold-value" class="form-field-label height-100">Threshold in<span id="threshold-unit"> inches</span></label>-->
-<!--                  <div class="form-field-bar height-100"></div>-->
-<!--                </div>-->
-<!--                <div tabindex="5014" class="btn border border-1 threshold-up">+</div>-->
-<!--              </div>-->
-<!--              <div class="col-md-12 col-lg-6 col-xl-2 mt-lg-4 mt-xl-0 form-field d-flex info-section" id="window_value_form_field">-->
-<!--                <div class="btn border border-1 window-down">-</div>-->
-<!--                <div class="form-field-control height-100">-->
-<!--                  <input id="window-value" type="number" class="form-field-input border-0" placeholder=" " min="0" max="365" value="1" autofocus="autofocus" step="1"/>-->
-<!--                  <label for="window-value" class="form-field-label height-100">Window in<span id="window-unit"> days</span></label>-->
-<!--                  <div class="form-field-bar height-100"></div>-->
-<!--                </div>-->
-<!--                <div tabindex="5017" class="btn border border-1 window-up">+</div>-->
-<!--              </div>-->
+    
               <div class="col-md-12 col-lg-6 col-xl-1 download-dropdown mt-1 mb-1 info-section">
                 <div class="dropdown rounded-2 border border-1">
                   <a class="btn dropdown-toggle ps-4 pe-4 w-100 disabled" href="#" style="text-align: center;" role="button" id="download-dropdown-menu"
@@ -157,15 +138,15 @@ export default (config) => `
     
       <div id="historical-thresholds-viewport" class="d-flex-column">
         
-        <div id="stations-map-row" class="padding-top-half width-100 height-100 d-flex">
-          <div id="stations-map-wrap" class="map-wrap width-100 height-100 ">
+        <div id="stations-map-row" class="d-flex w-100 h-100">
+          <div id="stations-map-wrap" class="map-wrap w-100 h-100">
             <div id="stations-map" class="map-element"></div>
             <div id="stations-map-message" class="map-nostations-message d-none"></div>
           </div>
         </div>
         
-        <div id="stations-graph-row" class="padding-vertical width-100 height-100">
-          <div id="stations-graph-wrap" class="width-100 height-100 d-flex-row">
+        <div id="stations-graph-row" class="w-100 h-100">
+          <div id="stations-graph-wrap" class="w-100 h-100 d-flex-row">
             <div id="thresholds-container" class="d-flex-center width-100"></div>
           </div>
         </div>

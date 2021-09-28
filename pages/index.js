@@ -33,7 +33,7 @@ export default (config) => `
     <div class="d-flex-column mt-3">
       <div class="d-flex-column p-2 new-info col-12 col-xl-2 offset-xl-5 rounded-2">
         <h4>New!</h4>
-        <span>Climate projection charts are now available for <a href="https://climate-explorer.fernleafinteractive.com/faq/#supported-areas">Hawai'i and U.S. territories.</a></span>
+        <span>Climate projection charts are now available for <a href="/faq/#supported-areas">Hawai'i and U.S. territories.</a></span>
       </div>
 
       <div class="d-flex mb-3 search-input-group rounded-2 border border-1 mt-3 col-12 col-xl-6">
