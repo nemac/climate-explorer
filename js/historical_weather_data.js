@@ -196,12 +196,12 @@ $(function () {
       // reset map and chart sizes
       // filer transition means heigh will be updates in few seconds
       // so delaying the resize ensures proper size
-      setMapSize();
+      setGraphSize();
     }, 600);
   } else {
     showMap();
     toggleChartInfoText('map');
-    setMapSize();
+    setGraphSize();
   }
 
   /**
@@ -240,7 +240,7 @@ $(function () {
       toggleDownloads();
 
       // reset map and chart sizes
-      setMapSize();
+      setGraphSize();
     }
   });
 
@@ -339,7 +339,7 @@ $(function () {
       // reset map and chart sizes
       // filer transition means heigh will be updates in few seconds
       // so delaying the resize ensures proper size
-      setMapSize();
+      setGraphSize();
     }, 600);
   })
 
@@ -445,116 +445,17 @@ $(function () {
         // reset map and chart sizes
         // filer transition means heigh will be updates in few seconds
         // so delaying the resize ensures proper size
-        setMapSize();
+        setGraphSize();
       }, 100);
     }
   }, stationsMapState));
 
-  // resize map when browser is resized
-  function setMapSize2() {
-    $('#stations-map').height($('#stations-map').parent().height())
-
-    // get map parent element - which provides the correct dimensions for the map
-    const rect = document.getElementById('stations-map-wrap').getBoundingClientRect();
-
-    const messageElem = document.getElementById('stations-map-message');
-    // get map parent element - which provides the correct dimensions for the map
-    if (messageElem) {
-      const rect = document.getElementById('stations-map-wrap').getBoundingClientRect();
-      messageElem.style.left = `${(rect.right - rect.left)/3}px`;
-      messageElem.style.top = `-${((rect.bottom - rect.top)/2)}px`;
-    }
-
-    // set size of map overlay
-    if (document.querySelector('.esri-view-root')) {
-      document.querySelector('.esri-view-root').style.minWidth = `${rect.width}px`;
-      document.querySelector('.esri-view-root').style.maxWidth = `${rect.width}px`;
-      document.querySelector('.esri-view-root').style.height = `${rect.height}px`;
-    }
-
-    // set size of map overlay
-    if (document.querySelector('.esri-view-user-storage')) {
-      document.querySelector('.esri-view-user-storage').style.minWidth = `${rect.width}px`;
-      document.querySelector('.esri-view-user-storage').style.maxWidth = `${rect.width}px`;
-    }
-
-    // set size of map
-    if (document.querySelector('#stations-map')) {
-      document.querySelector('#stations-map').style.minWidth = `${rect.width}px`;
-      document.querySelector('#stations-map').style.maxWidth = `${rect.width}px`;
-      document.querySelector('#stations-map').style.width = `${rect.width}px`;
-      document.querySelector('#stations-map').style.height = `${rect.height}px`;
-    }
-
-    // get graph parent element - which provides the correct dimensions for the graph
-    const graphRect = document.getElementById('stations-graph-wrap').getBoundingClientRect();
-    let graphWidth = graphRect.width/2;
-
-    // when smaller than 900 (full size)
-    // expand graphs to cover 100%
-    if (graphRect.width <= 882) {
-      graphWidth = graphRect.width;
-    }
-
-    // set size of temp chart
-    if (document.querySelector('#multi-chart')) {
-      document.querySelector('#multi-chart').style.minWidth = `${graphWidth}px`;
-      document.querySelector('#multi-chart').style.maxWidth = `${graphWidth}px`;
-      document.querySelector('#multi-chart').style.width = `${graphWidth}px`;
-      document.querySelector('#multi-chart').style.height = `${graphRect.height}px`;
-    }
-
-    // set size of precip chart
-    if (document.querySelector('#multi-precip-chart')) {
-      document.querySelector('#multi-precip-chart').style.minWidth = `${graphWidth}px`;
-      document.querySelector('#multi-precip-chart').style.maxWidth = `${graphWidth}px`;
-      document.querySelector('#multi-precip-chart').style.width = `${graphWidth}px`;
-      document.querySelector('#multi-precip-chart').style.height = `${graphRect.height}px`;
-    }
-  }
-
-  function setMapSize() {
-
-    let nav_element = document.querySelector(".navbar-element");
-    let footer_element = document.querySelector(".footer-element");
-
-    let nav_height = px_to_rem(nav_element.getBoundingClientRect().height);
-    let footer_height = px_to_rem(footer_element.getBoundingClientRect().height);
-
-    let high_tide_flood = document.getElementById("historical-weather-data-viewport");
-
-    let flood_body = document.querySelector(".body-size");
-    let body_height = px_to_rem(flood_body.getBoundingClientRect().height);
-
-    let search_row = document.querySelector(".search-station-row");
-    let search_height = px_to_rem(search_row.getBoundingClientRect().height);
-
-    let info_section = document.querySelector(".info-section");
-    let info_height = px_to_rem(info_section.getBoundingClientRect().height);
-
-    let height = body_height - search_height - info_height - nav_height - footer_height;
-
-    high_tide_flood.style.setProperty('height', `calc(${height}rem - 1rem`); // the '- 1rem' represents the margin value on the .search-station-row div. (mt-3 = 1rem)
-    // switch to outerHeight to account for margin
-    //
-    // $('#stations-map').height(high_tide_flood.style.height);
-    //
-    // const messageElem = document.getElementById('stations-map-message');
-    //
-    // // get map parent element - which provides the correct dimensions for the map
-    // if (messageElem) {
-    //   const rect = document.getElementById('stations-map-wrap').getBoundingClientRect();
-    //   messageElem.style.left = `${(rect.right - rect.left) / 3}px`;
-    //   messageElem.style.top = `-${((rect.bottom - rect.top) / 2)}px`;
-    // }
-  }
-
   // reset map and chart sizes
-  setMapSize();
+  setGraphSize();
   setBodySize();
 
   $(window).resize(function () {
-    setMapSize();
+    setGraphSize();
   })
 
   $('#chart-info-row-btn .more-info.btn-default').click( function (e) {
@@ -567,22 +468,12 @@ $(function () {
     // show description of charts
     if (target.hasClass('d-none')) {
       target.removeClass('d-none');
-      // $('#chart-info-row-btn .more').addClass('d-none');
-      // $('#chart-info-row-btn .more-icon').addClass('d-none');
-      //
-      // $('#chart-info-row-btn .less').removeClass('d-none');
-      // $('#chart-info-row-btn .less-icon').removeClass('d-none');
 
       // ga event action, category, label
       googleAnalyticsEvent('click', 'toggle-chart-info', 'open');
     // hide description of charts
     } else {
       target.addClass('d-none');
-      // $('#chart-info-row-btn .more').removeClass('d-none');
-      // $('#chart-info-row-btn .more-icon').removeClass('d-none');
-      //
-      // $('#chart-info-row-btn .less').addClass('d-none');
-      // $('#chart-info-row-btn .less-icon').addClass('d-none');
 
       // ga event action, category, label
       googleAnalyticsEvent('click', 'toggle-chart-info', 'close');
@@ -591,6 +482,6 @@ $(function () {
     // force draw and resize of charts
     showGraphs();
     forceResize();
-    setMapSize();
+    setGraphSize();
   })
 });

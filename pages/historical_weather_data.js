@@ -111,7 +111,7 @@ export default (config) => `
           </div> 
       </div>
   
-      <div id="historical-weather-data-viewport" class="d-flex d-flex-column">
+      <div id="historical-weather-data-viewport" class="graph-body d-flex d-flex-column">
           <div id="stations-map-row" class="padding-top-half w-100 h-100 d-flex" >
             <div id="stations-map-wrap" class="map-wrap w-100 h-100">
               <div id="stations-map" class="map-element h-100"></div>

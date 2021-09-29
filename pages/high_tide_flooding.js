@@ -42,7 +42,7 @@ export default (config) => `
             </div>
           </div>
           
-      </div>
+        </div>
         
         <div class="info-section">
             <div class="border border-1 rounded-2"> 
@@ -106,11 +106,11 @@ data-value="Historical and Modeled">Historical & Modeled</label>
             </div> 
         </div>
 
-        <div id="high-tide-flooding-viewport" class="d-flex d-flex-column">
+        <div id="high-tide-flooding-viewport" class="graph-body d-flex d-flex-column">
         
             <div id="stations-map-row" class="d-flex h-100 w-100">
               <div id="stations-map-wrap" class="map-wrap h-100 w-100">
-                <div id="stations-map" class="map-element"></div>
+                <div id="stations-map" class="map-element h-100"></div>
                 <div id="stations-map-message" class="map-nostations-message d-none"></div>
               </div>
             </div>

@@ -114,7 +114,7 @@ export default (config) => `
         </div>
       </div>
     </div>
-    <div id="chart-row" class="d-flex-column border border-1 mt-3 rounded-2" style="overflow-y: auto;">
+    <div id="chart-row" class="graph-body d-flex-column border border-1 rounded-2" style="overflow-y: auto;">
       <div id="chart-wrap" class="chart-wrap d-flex d-flex-center width-100">
         <div id="chart-123" class="chart-canvas width-100 height-100" style="min-height: 20rem;" data-chart-ID="123"></div>
         <div id="chart-message" class="chart-nodata-message d-none"></div>

@@ -136,18 +136,18 @@ export default (config) => `
         </div>
       </div>
     
-      <div id="historical-thresholds-viewport" class="d-flex-column">
+      <div id="historical-thresholds-viewport" class="graph-body d-flex-column">
         
         <div id="stations-map-row" class="d-flex w-100 h-100">
           <div id="stations-map-wrap" class="map-wrap w-100 h-100">
-            <div id="stations-map" class="map-element"></div>
+            <div id="stations-map" class="map-element h-100"></div>
             <div id="stations-map-message" class="map-nostations-message d-none"></div>
           </div>
         </div>
         
         <div id="stations-graph-row" class="w-100 h-100">
           <div id="stations-graph-wrap" class="w-100 h-100 d-flex-row">
-            <div id="thresholds-container" class="d-flex-center width-100"></div>
+            <div id="thresholds-container" class="d-flex-center w-100 h-100"></div>
           </div>
         </div>
         

@@ -332,12 +332,14 @@ $(function () {
       // reset map and chart sizes
       // filer transition means heigh will be updates in few seconds
       // so delaying the resize ensures proper size
-      setMapSize();
+      setGraphSize();
+      mapMessage();
     }, 600);
   } else {
     showMap();
     toggleChartInfoText('map');
-    setMapSize();
+    setGraphSize();
+    mapMessage();
   }
 
   // function to enable downloads (images and data)
@@ -408,8 +410,8 @@ $(function () {
       toggleDownloads();
 
       // reset map and chart sizes
-      setMapSize();
-
+      setGraphSize();
+      mapMessage();
     }
   });
 
@@ -427,7 +429,8 @@ $(function () {
 
     toggleButton($(target));
 
-    setMapSize();
+    setGraphSize();
+    mapMessage();
     showGraphs();
 
     googleAnalyticsEvent('click', 'chartmap', target);
@@ -447,7 +450,8 @@ $(function () {
 
     toggleButton($(target));
 
-    setMapSize();
+    setGraphSize();
+    mapMessage();
     showMap();
 
     googleAnalyticsEvent('click', 'chartmap', target);
@@ -469,7 +473,8 @@ $(function () {
       toggleChartInfoText(RelorVal(target));
     }
     // reset map and chart sizes
-    setMapSize();
+    setGraphSize();
+    mapMessage();
   })
 
   // this function Updates the chart title.
@@ -545,7 +550,8 @@ $(function () {
       // reset map and chart sizes
       // filer transition means heigh will be updates in few seconds
       // so delaying the resize ensures proper size
-      setMapSize();
+      setGraphSize();
+      mapMessage();
     }, 600);
   })
 
@@ -610,36 +616,12 @@ $(function () {
       toggleDownloads();
 
       // reset map and chart sizes
-      setMapSize();
+      setGraphSize();
+      mapMessage();
     }
   }, stationsMapState));
 
-  function setMapSize() {
-
-    let nav_element = document.querySelector(".navbar-element");
-    let footer_element = document.querySelector(".footer-element");
-
-    let nav_height = px_to_rem(nav_element.getBoundingClientRect().height);
-    let footer_height = px_to_rem(footer_element.getBoundingClientRect().height);
-
-    let high_tide_flood = document.getElementById("high-tide-flooding-viewport");
-
-    let flood_body = document.querySelector(".body-size");
-    let body_height = px_to_rem(flood_body.getBoundingClientRect().height);
-
-    let search_row = document.querySelector(".search-station-row");
-    let search_height = px_to_rem(search_row.getBoundingClientRect().height);
-
-    let info_section = document.querySelector(".info-section");
-    let info_height = px_to_rem(info_section.getBoundingClientRect().height);
-
-    let height = body_height - search_height - info_height - nav_height - footer_height;
-
-    high_tide_flood.style.setProperty('height', `calc(${height}rem - 1rem`); // the '- 1rem' represents the margin value on the .search-station-row div. (mt-3 = 1rem)
-    // switch to outerHeight to account for margin
-
-    $('#stations-map').height(high_tide_flood.style.height);
-
+  function mapMessage() {
     const messageElem = document.getElementById('stations-map-message');
 
     // get map parent element - which provides the correct dimensions for the map
@@ -651,10 +633,12 @@ $(function () {
   }
 
   // reset map and chart sizes
-  setMapSize();
+  setGraphSize();
+  mapMessage();
 
   $(window).resize(function () {
-    setMapSize();
+    setGraphSize();
+    mapMessage();
   })
 
   $('#chart-info-row-btn .more-info.btn-default').click(function (e) {
@@ -679,6 +663,7 @@ $(function () {
     // force draw and resize of charts
     showGraphs();
     forceResize();
-    setMapSize();
+    setGraphSize();
+    mapMessage();
   })
 });

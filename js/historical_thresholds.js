@@ -319,13 +319,15 @@ $(function () {
       // reset map and chart sizes
       // filer transition means heigh will be updates in few seconds
       // so delaying the resize ensures proper size
-      setMapSize();
+      setGraphSize();
+      setThresholdsContainer();
       setBodySize();
     }, 600);
   } else {
     showMap();
     toggleChartInfoText('map');
-    setMapSize();
+    setGraphSize();
+    setThresholdsContainer();
     setBodySize();
   }
 
@@ -619,7 +621,8 @@ $(function () {
       toggleDownloads();
 
       // reset map and chart sizes
-      setMapSize();
+      setGraphSize();
+      setThresholdsContainer();
       setBodySize();
     }
   })
@@ -736,7 +739,8 @@ $(function () {
     toggleButton($(target));
 
     showMap();
-    setMapSize();
+    setGraphSize();
+    setThresholdsContainer();
     setBodySize();
 
     googleAnalyticsEvent('click', 'chartmap', target);
@@ -804,7 +808,8 @@ $(function () {
       // reset map and chart sizes
       // filer transition means heigh will be updates in few seconds
       // so delaying the resize ensures proper size
-      setMapSize();
+      setGraphSize();
+      setThresholdsContainer();
     }, 600);
   })
 
@@ -891,7 +896,8 @@ $(function () {
         // reset map and chart sizes
         // filer transition means heigh will be updates in few seconds
         // so delaying the resize ensures proper size
-        setMapSize();
+        setGraphSize();
+        setThresholdsContainer();
       }, 100);
     }
   }, stationsMapState));
@@ -968,40 +974,19 @@ $(function () {
     }
   }
 
-  function setMapSize() {
-
-    let nav_element = document.querySelector(".navbar-element");
-    let footer_element = document.querySelector(".footer-element");
-
-    let nav_height = px_to_rem(nav_element.getBoundingClientRect().height);
-    let footer_height = px_to_rem(footer_element.getBoundingClientRect().height);
-
-    let high_tide_flood = document.getElementById("historical-thresholds-viewport");
-
-    let flood_body = document.querySelector(".body-size");
-    let body_height = px_to_rem(flood_body.getBoundingClientRect().height);
-
-    let search_row = document.querySelector(".search-station-row");
-    let search_height = px_to_rem(search_row.getBoundingClientRect().height);
-
-    let info_section = document.querySelector(".info-section");
-    let info_height = px_to_rem(info_section.getBoundingClientRect().height);
-
-    let height = body_height - search_height - info_height - nav_height - footer_height;
-
-    high_tide_flood.style.setProperty('height', `calc(${height}rem - 1rem`); // the '- 1rem' represents the margin value on the .search-station-row div. (mt-3 = 1rem)
-    // switch to outerHeight to account for margin
-
-    $('#stations-map').height(high_tide_flood.style.height);
-    $('#thresholds-container').height(high_tide_flood.style.height);
+  function setThresholdsContainer() {
+    let graph_body = document.querySelector(".graph-body");
+    $('#thresholds-container').height(graph_body.style.height);
   }
 
   // reset map and chart sizes
-  setMapSize();
+  setGraphSize();
+  setThresholdsContainer();
   setBodySize();
 
   $(window).resize(function () {
-    setMapSize();
+    setGraphSize();
+    setThresholdsContainer();
   })
 
   // not sure why but on initialize does not update the graph so this makes sure url updates happen.
@@ -1034,6 +1019,7 @@ $(function () {
       // force draw and resize of charts
       showGraphs();
       forceResize();
-      setMapSize();
+      setGraphSize();
+      setThresholdsContainer();
     })
 });

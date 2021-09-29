@@ -739,7 +739,30 @@ function setBodySize() {
     body.style.paddingBottom = footer_height + "rem";
   }
 
+}
 
+function setGraphSize() {
+
+  let nav_element = document.querySelector(".navbar-element");
+  let footer_element = document.querySelector(".footer-element");
+
+  let nav_height = px_to_rem(nav_element.getBoundingClientRect().height);
+  let footer_height = px_to_rem(footer_element.getBoundingClientRect().height);
+
+  let graph_body = document.querySelector(".graph-body");
+
+  let body_size = document.querySelector(".body-size");
+  let body_height = px_to_rem(body_size.getBoundingClientRect().height);
+
+  let search_row = document.querySelector(".search-station-row");
+  let search_height = px_to_rem(search_row.getBoundingClientRect().height);
+
+  let info_section = document.querySelector(".info-section");
+  let info_height = px_to_rem(info_section.getBoundingClientRect().height);
+
+  let height = body_height - search_height - info_height - nav_height - footer_height;
+
+  graph_body.style.setProperty('height', `calc(${height}rem - 1rem`);
 }
 
 setBodySize();
@@ -764,3 +787,4 @@ window.forceResize = forceResize;
 window.reEnableSelectNewItems = reEnableSelectNewItems;
 window.px_to_rem = px_to_rem;
 window.setBodySize = setBodySize;
+window.setGraphSize = setGraphSize;
