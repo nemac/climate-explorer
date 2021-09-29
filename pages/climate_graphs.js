@@ -8,7 +8,7 @@ import chart_explainer from '../template/chart_explainer';
 // language=HTML
 export default (config) => `
   <!DOCTYPE  html>
-  <html lang='en'>
+<html lang='en' class="h-100">
   <head>
     ${head(config)}
     <meta property="fb:app_id" content="187816851587993">
@@ -19,10 +19,10 @@ export default (config) => `
           content="The Climate Explorer allows you to view historical and projected climate variables and assess the impacts of climate change on the things you care about">
     <meta property="og:image" content="/img/og.jpg">
   </head>
-  <body>
+  <body class="h-100">
   ${secondary_header(config)}
-  <div class="container-fluid body-size">
-    <div class="mt-3 row">
+  <div class="container-fluid body-size h-100">
+    <div class="mt-3 search-station-row row">
       <div class="col-12 col-md-7 col-lg-8">
         <div class="input-group mb-3 search-input-group rounded-2 border border-1 me-2">
           <button id="clear-location" class="btn search-icons" type="button"><span class="fas fa-times-circle"></span></button>
@@ -114,7 +114,7 @@ export default (config) => `
         </div>
       </div>
     </div>
-    <div id="chart-row" class="d-flex-column border border-1 mt-3 rounded-2">
+    <div id="chart-row" class="d-flex-column border border-1 mt-3 rounded-2" style="overflow-y: auto;">
       <div id="chart-wrap" class="chart-wrap d-flex d-flex-center width-100">
         <div id="chart-123" class="chart-canvas width-100 height-100" style="min-height: 20rem;" data-chart-ID="123"></div>
         <div id="chart-message" class="chart-nodata-message d-none"></div>

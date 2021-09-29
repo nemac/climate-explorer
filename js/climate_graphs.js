@@ -470,10 +470,13 @@ $(function () {
 
   function showMonthlySelect() {
     $('#monthly-select-wrapper').removeClass('d-none').addClass('d-flex-center');
+    setGraphSize();
+    document.getElementById("monthly-select-wrapper").scrollIntoView({behavior: "smooth"});
   }
 
   function hideMonthlySelect() {
     $('#monthly-select-wrapper').addClass('d-none').removeClass('d-flex-center');
+    setGraphSize();
   }
 
   Promise.allSettled([ClimateByLocationWidget.when_areas(), ClimateByLocationWidget.when_variables()]).then(
@@ -565,7 +568,40 @@ $(function () {
 
   })
 
+
+  function setGraphSize() {
+
+    let nav_element = document.querySelector(".navbar-element");
+    let footer_element = document.querySelector(".footer-element");
+
+    let nav_height = px_to_rem(nav_element.getBoundingClientRect().height);
+    let footer_height = px_to_rem(footer_element.getBoundingClientRect().height);
+
+    let high_tide_flood = document.getElementById("chart-row");
+
+    let flood_body = document.querySelector(".body-size");
+    let body_height = px_to_rem(flood_body.getBoundingClientRect().height);
+
+    let search_row = document.querySelector(".search-station-row");
+    let search_height = px_to_rem(search_row.getBoundingClientRect().height);
+
+    let info_section = document.querySelector(".info-section");
+    let info_height = px_to_rem(info_section.getBoundingClientRect().height);
+
+    let height = body_height - search_height - info_height - nav_height - footer_height;
+
+    high_tide_flood.style.setProperty('height', `calc(${height}rem - 2rem`);
+
+    $('#chart-wrap').addClass('h-100');
+
+  }
+
   setBodySize();
+  setGraphSize();
+
+  $(window).resize(function() {
+    setGraphSize();
+  })
 
   updateValidVariable();
   window.addEventListener('location-changed', () => {
