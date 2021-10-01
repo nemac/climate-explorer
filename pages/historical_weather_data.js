@@ -118,13 +118,13 @@ export default (config) => `
               <div id="stations-map-message" class="map-nostations-message d-none"></div>
             </div>
           </div>
-      
-          <div id="stations-graph-row" class="padding-vertical w-100 h-100" >
-            <div id="stations-graph-wrap" class="w-100 h-100 d-flex-row">
-                <div id="multi-chart" class="left_chart d-flex-center width-50"></div>
-                <div id="multi-precip-chart" class="right_chart d-flex-center width-50"></div>
-            </div>
-          </div>
+      </div>
+
+      <div id="stations-graph-row" class="w-100 h-100" >
+        <div id="stations-graph-wrap" class="d-flex-row w-100 h-100">
+          <div id="multi-chart" class="left_chart col-12 col-lg-6 h-100"></div>
+          <div id="multi-precip-chart" class="right_chart col-12 col-lg-6 h-100"></div>
+        </div>
       </div>
   
       <div id="station-info-row" class="d-flex-row flex-justify padding-bottom d-flex-left d-none">

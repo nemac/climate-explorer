@@ -770,49 +770,6 @@ $(function () {
 
   renderStationInfo(stationName, stationId);
 
-  // toggle filters click
-  $('#filters-toggle').click( function(e) {
-    const target = $(e.target);
-    if (target.hasClass('closed-filters')) {
-      target.removeClass('closed-filters');
-        // ga event action, category, label
-        googleAnalyticsEvent('click', 'toggle-filters', 'open');
-    } else {
-      target.addClass('closed-filters');
-        // ga event action, category, label
-        googleAnalyticsEvent('click', 'toggle-filters', 'close');
-    }
-
-    const infoRowElem = $('#info-row');
-    if ($(infoRowElem).hasClass('closed-filters')) {
-      $(infoRowElem).removeClass('closed-filters');
-    } else {
-      $(infoRowElem).addClass('closed-filters');
-    }
-
-    const chartRowElem = $('#stations-graph-row');
-    if ($(chartRowElem).hasClass('closed-filters')) {
-      $(chartRowElem).removeClass('closed-filters');
-    } else {
-      $(chartRowElem).addClass('closed-filters');
-    }
-
-    const stationsMapRowElem = $('#stations-map-row');
-    if ($(stationsMapRowElem).hasClass('closed-filters')) {
-      $(stationsMapRowElem).removeClass('closed-filters');
-    } else {
-      $(stationsMapRowElem).addClass('closed-filters');
-    }
-
-    setTimeout(function () {
-      // reset map and chart sizes
-      // filer transition means heigh will be updates in few seconds
-      // so delaying the resize ensures proper size
-      setGraphSize();
-      setThresholdsContainer();
-    }, 600);
-  })
-
   window.stations = $('#stations-map').stationsMap(Object.assign({
     // When state changes, just pass the current options along directly for this page.
     // If we re-use the stationsMap widget on another page there may be more handling to do.

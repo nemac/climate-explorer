@@ -66,8 +66,8 @@ export default (config) => `
             </div>
             <div class="col-md-12 col-lg-4 col-xl-2 mt-1 mb-1 info-section" style="text-align: center;">
               <div class="btn-group border rounded-2 graph-map-selection w-100" role="group">
-                <label id="graph-selection" class="btn ps-4 pe-4 selected-item" data-page="climate_graphs" data-sel="chartmap-select-vis">Graph</label>
-                <label id="map-selection" class="btn ps-4 pe-4 default-selection" data-page="climate_maps" data-value="map" data-sel="chartmap-select-vis">Map</label>
+                <label id="graph-selection" class="btn ps-4 pe-4 selected-item" data-page="climate_graphs">Graph</label>
+                <label id="map-selection" class="btn ps-4 pe-4 default-selection" data-page="climate_maps" data-value="map">Map</label>
               </div>
             </div>
             <div class="col-md-12 col-lg-4 col-xl-2 btn-group mt-1 mb-1 info-section" id="time-wrapper">

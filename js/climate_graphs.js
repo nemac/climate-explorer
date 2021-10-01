@@ -123,38 +123,6 @@ $(function () {
     });
   });
 
-  // toggle filters click
-  $('#filters-toggle').click(function (e) {
-    const target = $(e.target);
-    if (target.hasClass('closed-filters')) {
-      // ga event action, category, label
-      googleAnalyticsEvent('click', 'toggle-filters', 'open');
-      target.removeClass('closed-filters');
-    } else {
-      target.addClass('closed-filters');
-      // ga event action, category, label
-      googleAnalyticsEvent('click', 'toggle-filters', 'close');
-    }
-
-    const infoRowElem = $('#info-row');
-    if ($(infoRowElem).hasClass('closed-filters')) {
-      $(infoRowElem).removeClass('closed-filters');
-    } else {
-      $(infoRowElem).addClass('closed-filters');
-    }
-
-    const chartRowElem = $('#chart-row');
-    if ($(chartRowElem).hasClass('closed-filters')) {
-      $(chartRowElem).removeClass('closed-filters');
-    } else {
-      $(chartRowElem).addClass('closed-filters');
-    }
-
-    setTimeout(function () {
-      window.cbl_chart.resize();
-    }, 600);
-  });
-
   // enables time chart, map click events
   $('#chartmap-wrapper').keyup(function (e) {
     const target = $(e.target);
@@ -228,39 +196,6 @@ $(function () {
 
       // ga event action, category, label
       googleAnalyticsEvent('click', 'update-time', val);
-    }
-  });
-
-  // in responsive mode the time is a dropdown this enables the change of the chart map
-  $('#chartmap-select-vis').bind('cs-changed', function (e) {
-    const target = $(e.target);
-    const notDisabled = !target.hasClass('btn-default-disabled');
-    if (notDisabled) {
-      const val = $('#time-select-vis').data('value');
-
-      // toggle button visual state
-      toggleButton($(`.btn-selector[data-value="${$('#chartmap-select-vis').data('value')}"]`));
-
-      // handleChartMapClick(target);
-    }
-  });
-
-  // in responsive mode the time is a dropdown this enables the change of the timeperiod
-  // to update the chart
-  $('#time-select-vis').bind('cs-changed', function (e) {
-    const target = $(e.target);
-    const notDisabled = !target.hasClass('btn-default-disabled');
-    if (notDisabled) {
-      const val = $('#time-select-vis').data('value');
-
-      // toggle button visual state
-      toggleButton($(`.btn-${$('#time-select-vis').data('value')}`));
-
-      // update chart frequency slider based on timeperiod
-      updateFrequency(val);
-
-      // update chart frequency slider based on timeperiod
-      updateFrequencySlider(val);
     }
   });
 

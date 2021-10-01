@@ -286,12 +286,6 @@ h6 {
   }
 }
 
-#filters-toggle .select-styled:after {
-  @include small {
-    right: -2px;
-  }
-}
-
 .pac-container {
   font: 500 14px $roboto !important;
   display: block;

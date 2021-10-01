@@ -168,31 +168,12 @@ $(function () {
   // updates the visible text for the station dropdown with the information from the state url
   updateStationSelectText({tidalStationName, tidalStationId})
 
-  // show more about charts
-  function showMoreCharts() {
-    const target = $('#chart-info-row-btn .more-info.btn-default');
-    // show description of charts
-    // if (target.hasClass('d-none')) {
-    //   target.removeClass('d-none');
-    // }
-  }
-
-  // don't show more about charts
-  function dontShowMoreCharts() {
-    const target = $('#chart-info-row-btn .more-info.btn-default');
-    // show description of charts
-    // if (!target.hasClass('d-none')) {
-    //   target.addClass('d-none');
-    // }
-  }
-
   // show graph overlay.
   // graph is visible and on page just pushed of viewable area
   // so we can initialize it when needed
   function showGraphs() {
     const stationsGraphRowElem = document.getElementById('stations-graph-row');
     const stationsMapRowElem = document.getElementById('stations-map-row');
-    showMoreCharts();
 
     $('[data-value="chart"]').removeClass('btn-default-disabled');
 
@@ -217,7 +198,6 @@ $(function () {
   function showMap() {
     const stationsGraphRowElem = document.getElementById('stations-graph-row');
     const stationsMapRowElem = document.getElementById('stations-map-row');
-    dontShowMoreCharts();
 
     // show chart overlay
     if (stationsGraphRowElem) {
@@ -293,16 +273,6 @@ $(function () {
     enableCustomSelect('download-select');
   }
 
-  // update chart dropdown to chart as default
-  function chartDropdownChartText() {
-    // update dropdown default of chart
-    const chartMapElem = $('#chartmap-select-vis');
-    if (chartMapElem) {
-      chartMapElem.data('value', 'chart');
-      chartMapElem.text('Chart');
-    }
-  }
-
   // if state url has a station render station and not map.
   if (tidalStationId) {
     // show chart overlay
@@ -315,9 +285,6 @@ $(function () {
     // toggle button visual state
     $('#chartmap-select-chart-link').removeClass('disabled');
     toggleButton($('#chartmap-select-chart-link'));
-
-    // update chart dropdown to chart as default
-    chartDropdownChartText()
 
     $('#chart-info-row-btn').removeClass('disabled');
 
@@ -457,31 +424,6 @@ $(function () {
     googleAnalyticsEvent('click', 'chartmap', target);
   })
 
-  // in responsive mode the time is a dropdown this enables the change of the chart map
-  $('#chartmap-select-vis').bind('cs-changed', function (e) {
-    const target = $(e.target);
-    const notDisabled = !target.hasClass('disabled');
-    if (notDisabled) {
-      const val = $('#time-select-vis').data('value')
-
-      // toggle button visual state
-      toggleButton($(`.btn-selector[data-value="${$('#chartmap-select-vis').data('value')}"]`));
-
-      // check val of button to see if user is on map  or chart
-      // hide or show the appropriate overlay (map, chart)
-      chooseGraphOrMap(target);
-      toggleChartInfoText(RelorVal(target));
-    }
-    // reset map and chart sizes
-    setGraphSize();
-    mapMessage();
-  })
-
-  // this function Updates the chart title.
-  function updateTitle(chartText) {
-    $('#default-chart-map-variable').html(chartText);
-  }
-
   // this function Updates the chart title.
   function updateStationText(text) {
     $('#default-station').html(text);
@@ -512,49 +454,6 @@ $(function () {
 
   renderStationInfo(tidalStationName, tidalStationId, tidalStationMOverMHHW);
 
-  // toggle filters click
-  $('#filters-toggle').click(function (e) {
-    const target = $(e.target);
-    if (target.hasClass('closed-filters')) {
-      target.removeClass('closed-filters');
-      // ga event action, category, label
-      googleAnalyticsEvent('click', 'toggle-filters', 'open');
-    } else {
-      target.addClass('closed-filters');
-      // ga event action, category, label
-      googleAnalyticsEvent('click', 'toggle-filters', 'close');
-    }
-
-    const infoRowElem = $('#info-row');
-    if ($(infoRowElem).hasClass('closed-filters')) {
-      $(infoRowElem).removeClass('closed-filters');
-    } else {
-      $(infoRowElem).addClass('closed-filters');
-    }
-
-    const chartRowElem = $('#stations-graph-row');
-    if ($(chartRowElem).hasClass('closed-filters')) {
-      $(chartRowElem).removeClass('closed-filters');
-    } else {
-      $(chartRowElem).addClass('closed-filters');
-    }
-
-    const stationsMapRowElem = $('#stations-map-row');
-    if ($(stationsMapRowElem).hasClass('closed-filters')) {
-      $(stationsMapRowElem).removeClass('closed-filters');
-    } else {
-      $(stationsMapRowElem).addClass('closed-filters');
-    }
-
-    setTimeout(function () {
-      // reset map and chart sizes
-      // filer transition means heigh will be updates in few seconds
-      // so delaying the resize ensures proper size
-      setGraphSize();
-      mapMessage();
-    }, 600);
-  })
-
   window.stations = $('#stations-map').stationsMap(Object.assign({
     // When state changes, just pass the current options along directly for this page.
     // If we re-use the stationsMap widget on another page there may be more handling to do.
@@ -581,7 +480,6 @@ $(function () {
         messageElem.classList.add('d-none');
       }
 
-
     },
 
     // when user clicks on map station marker
@@ -595,9 +493,6 @@ $(function () {
       // toggle button to select chart
       $(`#chartmap-select-chart-link`).removeClass("disabled");
       toggleButton($(`#chartmap-select-chart-link`));
-
-      // update chart dropdown to chart as default
-      chartDropdownChartText();
 
       // reset graphs
       resetGraphs({variable: 'temperature', tidalStationId: options.tidalStationId, tidalStationName: options.tidalStationName});

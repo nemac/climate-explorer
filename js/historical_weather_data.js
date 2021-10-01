@@ -72,8 +72,8 @@ $(function () {
     $('#stations-graph-wrap').empty();
 
     // add new graph wrappers so they will initialize
-    $('#stations-graph-wrap').append('<div id="multi-chart" class="left_chart d-flex-center width-50"></div>');
-    $('#stations-graph-wrap').append('<div id="multi-precip-chart" class="left_chart d-flex-center width-50"></div>');
+    $('#stations-graph-wrap').append('<div id="multi-chart" class="left_chart col-12 col-lg-6 h-100"></div>');
+    $('#stations-graph-wrap').append('<div id="multi-precip-chart" class="left_chart col-12 col-lg-6 h-100"></div>');
 
     // update graphs with new station id and station name
     $('#multi-chart').stationAnnualGraph({ variable: 'temperature', station: stations.stationId, stationName: stations.stationName });
@@ -301,48 +301,6 @@ $(function () {
 
   renderStationInfo(stationName, stationId);
 
-  // toggle filters click
-  $('#filters-toggle').click( function(e) {
-    const target = $(e.target);
-    if (target.hasClass('closed-filters')) {
-      target.removeClass('closed-filters');
-        // ga event action, category, label
-        googleAnalyticsEvent('click', 'toggle-filters', 'open');
-    } else {
-      target.addClass('closed-filters');
-        // ga event action, category, label
-        googleAnalyticsEvent('click', 'toggle-filters', 'close');
-    }
-
-    const infoRowElem = $('#info-row');
-    if ($(infoRowElem).hasClass('closed-filters')) {
-      $(infoRowElem).removeClass('closed-filters');
-    } else {
-      $(infoRowElem).addClass('closed-filters');
-    }
-
-    const chartRowElem = $('#stations-graph-row');
-    if ($(chartRowElem).hasClass('closed-filters')) {
-      $(chartRowElem).removeClass('closed-filters');
-    } else {
-      $(chartRowElem).addClass('closed-filters');
-    }
-
-    const stationsMapRowElem = $('#stations-map-row');
-    if ($(stationsMapRowElem).hasClass('closed-filters')) {
-      $(stationsMapRowElem).removeClass('closed-filters');
-    } else {
-      $(stationsMapRowElem).addClass('closed-filters');
-    }
-
-    setTimeout(function () {
-      // reset map and chart sizes
-      // filer transition means heigh will be updates in few seconds
-      // so delaying the resize ensures proper size
-      setGraphSize();
-    }, 600);
-  })
-
   $('#chartmap-select-chart-link').click(function(e) {
 
     const target = $(e.target);
@@ -453,6 +411,12 @@ $(function () {
   // reset map and chart sizes
   setGraphSize();
   setBodySize();
+
+  function setChartSize() {
+
+
+
+  }
 
   $(window).resize(function () {
     setGraphSize();

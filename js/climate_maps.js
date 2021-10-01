@@ -432,43 +432,6 @@ $(function () {
     });
   }
 
-  // toggle filters click
-  $('#filters-toggle').click(function (e) {
-    const target = $(e.target);
-    if (target.hasClass('closed-filters')) {
-      // ga event action, category, label
-      googleAnalyticsEvent('click', 'toggle-filters', 'open');
-      target.removeClass('closed-filters');
-    } else {
-      target.addClass('closed-filters');
-      // ga event action, category, label
-      googleAnalyticsEvent('click', 'toggle-filters', 'closed');
-    }
-
-    const infoRowElem = $('#info-row');
-    if ($(infoRowElem).hasClass('closed-filters')) {
-      $(infoRowElem).removeClass('closed-filters');
-    } else {
-      $(infoRowElem).addClass('closed-filters');
-    }
-
-    const chartRowElem = $('#map-row');
-    if ($(chartRowElem).hasClass('closed-filters')) {
-      $(chartRowElem).removeClass('closed-filters');
-    } else {
-      $(chartRowElem).addClass('closed-filters');
-    }
-
-    setTimeout(function () {
-      // reset map and chart sizes
-      // filer transition means heigh will be updates in few seconds
-      // so delaying the resize ensures proper size
-      setMapSize();
-      setBodySize();
-    }, 600);
-
-  })
-
   // enables time chart, map click events
   $('#chartmap-wrapper').click(function (e) {
     const target = $(e.target);
