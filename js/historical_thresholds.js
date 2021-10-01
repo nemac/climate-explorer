@@ -139,31 +139,12 @@ $(function () {
   // updates the visible text for the station dropdown with the information from the state url
   updateStationSelectText({stationName, stationId})
 
-  // show more about charts
-  function showMoreCharts() {
-    const target = $('#chart-info-row-btn .more-info.btn-default');
-    // show description of charts
-    // if (target.hasClass('d-none')) {
-    //   target.removeClass('d-none');
-    // }
-  }
-
-  // don't show more about charts
-  function dontShowMoreCharts() {
-    const target = $('#chart-info-row-btn .more-info.btn-default');
-    // show description of charts
-    // if (!target.hasClass('d-none')) {
-    //   target.addClass('d-none');
-    // }
-  }
-
   // show graph overlay.
   // graph is visible and on page just pushed of viewable area
   // so we can initialize it when needed
   function showGraphs() {
     const stationsGraphRowElem = document.getElementById('stations-graph-row');
     const stationsMapRowElem = document.getElementById('stations-map-row');
-    showMoreCharts();
 
     $('[data-value="chart"]').removeClass('btn-default-disabled');
 
@@ -188,7 +169,6 @@ $(function () {
   function showMap() {
     const stationsGraphRowElem = document.getElementById('stations-graph-row');
     const stationsMapRowElem = document.getElementById('stations-map-row');
-    dontShowMoreCharts();
 
     // show chart overlay
     if (stationsGraphRowElem) {
@@ -201,36 +181,6 @@ $(function () {
       stationsMapRowElem.classList.add('d-flex');
       stationsMapRowElem.classList.remove('d-none');
     }
-  }
-
-  // return attribute of html element based on rel for dropdown or val based on button
-  // we probably should switch all elements to val for consistency.
-  function RelorVal(target){
-    if (target.data('value') === undefined || target.data('value') === null) {
-      return target.data('value');
-    }
-    return  target.data('value');
-  }
-
-  function chooseGraphOrMap(target){
-    // check val of button to see if user is on map  or chart
-    // hide or show the appropriate overlay (map, chart)
-    switch (RelorVal(target)) {
-      case 'chart':
-        // show chart overlay
-        showGraphs();
-        break;
-      case 'map':
-        // show map overlay
-        showMap();
-      break
-      default:
-        // show chart overlay
-        showGraphs();
-    }
-    // ga event action, category, label
-    googleAnalyticsEvent('change', 'chartmap', RelorVal(target));
-    forceResize();
   }
 
   function toggleChartInfoText(val) {
@@ -256,16 +206,6 @@ $(function () {
     const targetParent = $('#download-dropdown-menu');
     if (targetParent.hasClass('disabled')) {
       targetParent.removeClass('disabled');
-    }
-  }
-
-  // update chart dropdown to chart as default
-  function chartDropdownChartText(){
-    // update dropdown default of chart
-    const chartMapElem = $('#chartmap-select-vis');
-    if (chartMapElem){
-      chartMapElem.data('value','chart');
-      chartMapElem.text('Chart');
     }
   }
 
@@ -304,9 +244,6 @@ $(function () {
     $('#chart-info-row-btn').removeClass('disabled');
 
     $('#selection-dropdown-menu').removeClass('disabled');
-
-    // update chart dropdown to chart as default
-    chartDropdownChartText()
 
     // updates the visible text for the station dropdown with the information from the state url
     updateStationSelectText({stationName, stationId})
@@ -503,7 +440,6 @@ $(function () {
 
       const val = $('#selection-dropdown-menu').data('value');
       const thresholdValueElem = document.getElementById('threshold-value');
-      const windowValueElem = document.getElementById('window-value');
 
       if (thresholdValueElem) {
         // capture what we are downloading
@@ -816,9 +752,6 @@ $(function () {
 
       $('#selection-dropdown-menu').removeClass('disabled');
 
-      // update chart dropdown to chart as default
-      chartDropdownChartText()
-
       // get current threshold values
       const variableValue = $('#selection-dropdown-menu').data('value');
       const windowValue = parseInt($('#window-value').val());
@@ -859,78 +792,6 @@ $(function () {
     }
   }, stationsMapState));
 
-  // resize map when browser is resized
-  function setMapSize2() {
-    $('#stations-map').height($('#stations-map').parent().height())
-
-    // get map parent element - which provides the correct dimensions for the map
-    const rect = document.getElementById('stations-map-wrap').getBoundingClientRect();
-
-    const messageElem = document.getElementById('stations-map-message');
-    // get map parent element - which provides the correct dimensions for the map
-    if (messageElem) {
-      const rect = document.getElementById('stations-map-wrap').getBoundingClientRect();
-      messageElem.style.left = `${(rect.right - rect.left)/3}px`;
-      messageElem.style.top = `-${((rect.bottom - rect.top)/2)}px`;
-    }
-
-    // set size of map overlay
-    if (document.querySelector('.esri-view-root')) {
-      document.querySelector('.esri-view-root').style.minWidth = `${rect.width}px`;
-      document.querySelector('.esri-view-root').style.maxWidth = `${rect.width}px`;
-      document.querySelector('.esri-view-root').style.height = `${rect.height}px`;
-    }
-
-    // set size of map overlay
-    if (document.querySelector('.esri-view-user-storage')) {
-      document.querySelector('.esri-view-user-storage').style.minWidth = `${rect.width}px`;
-      document.querySelector('.esri-view-user-storage').style.maxWidth = `${rect.width}px`;
-    }
-
-    // set size of map
-    if (document.querySelector('#stations-map')) {
-      document.querySelector('#stations-map').style.minWidth = `${rect.width}px`;
-      document.querySelector('#stations-map').style.maxWidth = `${rect.width}px`;
-      document.querySelector('#stations-map').style.width = `${rect.width}px`;
-      document.querySelector('#stations-map').style.height = `${rect.height}px`;
-    }
-
-    // get graph parent element - which provides the correct dimensions for the graph
-    const graphRect = document.getElementById('stations-graph-wrap').getBoundingClientRect();
-    let graphWidth = graphRect.width;
-
-    // when smaller than 900 (full size)
-    // expand graphs to cover 100%
-    if (graphRect.width <= 882) {
-      graphWidth = graphRect.width;
-    }
-
-    // set size of temp chart
-    if (graphRect.width <= 900) {
-      if (document.querySelector('#stations-graph-row')) {
-        document.querySelector('#stations-graph-row').style.height = `350px`;
-        document.querySelector('#stations-graph-row').style.minHeight = `350px`;
-      }
-    }
-
-    // set size of temp chart
-    if (document.querySelector('#thresholds-container')) {
-      document.querySelector('#thresholds-container').style.minWidth = `${graphWidth}px`;
-      document.querySelector('#thresholds-container').style.maxWidth = `${graphWidth}px`;
-      document.querySelector('#thresholds-container').style.width = `${graphWidth}px`;
-      document.querySelector('#thresholds-container').style.height = `${graphRect.height}px`;
-      document.querySelector('#thresholds-container').style.maxHeight = `${graphRect.height}px`;
-    }
-
-    // set size of map
-    if (document.querySelector('.chartjs-size-monitor')) {
-      document.querySelector('.chartjs-size-monitor').style.minWidth = `${graphWidth}px`;
-      document.querySelector('.chartjs-size-monitor').style.maxWidth = `${graphWidth}px`;
-      document.querySelector('.chartjs-size-monitor').style.width = `${graphWidth}px`;
-      document.querySelector('.chartjs-size-monitor').style.height = `${graphRect.height}px`;
-    }
-  }
-
   function setThresholdsContainer() {
     let graph_body = document.querySelector(".graph-body");
     $('#thresholds-container').height(graph_body.style.height);
@@ -949,8 +810,8 @@ $(function () {
   // not sure why but on initialize does not update the graph so this makes sure url updates happen.
   // this is a bit hacky way of resolving....
   let thresholdValueTEMP = parseFloat($('#threshold-value').val());
-  $("#thresholds-container").item({ threshold: thresholdValueTEMP }).item('update');
 
+  $("#thresholds-container").item({ threshold: thresholdValueTEMP }).item('update');
 
     $('#chart-info-row-btn .more-info.btn-default').click( function (e) {
 
