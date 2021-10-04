@@ -23,7 +23,7 @@ export default (config) => `
 
   <div class="container-fluid index-page h-100 body-size">
     
-    <div class="body-wrapper p-4 m-4">
+    <div class="body-wrapper p-4 m-md-4 m-sm-0">
     
       <div class="mt-3">
         <h2>The Climate Explorer</h2>
@@ -34,7 +34,7 @@ export default (config) => `
   
       <div class="d-flex-column mt-3">
         
-        <div class="d-flex mb-3 search-input-group rounded-2 border border-1 mt-3 col-12 col-xl-6">
+        <div class="d-flex mb-3 search-input-group rounded-2 border border-1 mt-3 col-12 col-xl-8">
           <input class="form-control location-mapper" type="text" placeholder="To get started, enter a city or county" aria-label="Enter county or city name">
           <span class="d-flex align-items-center p-2"><span class="icon icon-search p-2"></span></span>
         </div> 
@@ -43,11 +43,6 @@ export default (config) => `
       <div class="default-cities col-12 col-xl-6 row m-0 rounded-2"> 
         <div>      
           <span>or click one of these cities:</span>
-        </div>
-        
-        <div class="new-info mt-1">
-          <span style="font-weight: bold;">New!</span>
-          <span> Climate projection charts are now available for <a href="/faq/#supported-areas">Hawai'i and U.S. territories.</a></span>
         </div>
         
         <div class="mt-2 row g-1">
@@ -70,6 +65,12 @@ export default (config) => `
             <a class="btn border w-100" href="/cards_home/?area-id=hawaii_north&area-label=Northern+Hawaiian+Islands+%28Honolulu+County%2C+Kaua%CA%BBi+County%29&zoom=8&lat=21.5925&lon=-158.999&zoom=9">Honolulu, HI</a>
           </div>
         </div>
+
+        <div class="new-info pt-3">
+          <span style="font-weight: bold;">New!</span>
+          <span> Climate projection charts are now available for <a href="/faq/#supported-areas">Hawai'i and U.S. territories.</a></span>
+        </div>
+        
       </div>
   
       <div class="main-logos d-flex d-flex-bottom width-100" style="z-index: 99;">

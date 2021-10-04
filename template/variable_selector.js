@@ -25,7 +25,7 @@ export default (config) => `
 </div>
 
 
-<div data-icon="fas fa-cloud-rain" class="m-2">
+<div data-icon="fas fa-cloud-rain" class="m-2 p-2">
     <div class="filter-dropdown-header mb-2"> 
       <i class="fas fa-cloud-rain select-icon"></i>
       <span>Precipitation</span>
@@ -38,7 +38,7 @@ export default (config) => `
     
 
 
-<div data-icon="fas fa-bacon" class="m-2 mb-2">
+<div data-icon="fas fa-bacon" class="m-2 mb-2 p-2">
     <div class="filter-dropdown-header"> 
       <i class="fas fa-bacon"></i>
       <span>Other</span>

@@ -18,7 +18,7 @@ export default (config) => `
   </head>
   <body class="h-100">
   ${secondary_header(config)}
-  <div class="main-wrapper container-fluid body-size mb-3 h-100">
+  <div class="main-wrapper container-fluid body-size mb-3">
     <div class="input-group mb-3 search-input-group rounded-2 border border-1 mt-3">
       <button id="clear-location" class="btn search-icons" type="button"><span class="fas fa-times-circle"></span></button>
       <input id="cards-search-input" class="form-control location-mapper" type="text" placeholder="Enter county or city name" aria-label="Enter county or city name">

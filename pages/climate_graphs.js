@@ -66,14 +66,14 @@ export default (config) => `
             </div>
             <div class="col-md-12 col-lg-4 col-xl-2 mt-1 mb-1 info-section" style="text-align: center;">
               <div class="btn-group border rounded-2 graph-map-selection w-100" role="group">
-                <label id="graph-selection" class="btn ps-4 pe-4 selected-item" data-page="climate_graphs">Graph</label>
-                <label id="map-selection" class="btn ps-4 pe-4 default-selection" data-page="climate_maps" data-value="map">Map</label>
+                <label id="graph-selection" class="btn ps-4 pe-4 selected-item w-50" data-page="climate_graphs">Graph</label>
+                <label id="map-selection" class="btn ps-4 pe-4 default-selection w-50" data-page="climate_maps" data-value="map">Map</label>
               </div>
             </div>
             <div class="col-md-12 col-lg-4 col-xl-2 btn-group mt-1 mb-1 info-section" id="time-wrapper">
-              <label id="annual-selection-label" class="btn ps-4 pe-4 selected-item" for="annual-selection" data-value="annual"
+              <label id="annual-selection-label" class="btn ps-4 pe-4 selected-item w-50" for="annual-selection" data-value="annual"
                      data-sel="time-select-vis">Annual</label>
-              <label id="monthly-selection-label" class="btn ps-4 pe-4 default-selection" for="spring-selection" data-value="monthly" data-sel="time-select-vis">Monthly</label>
+              <label id="monthly-selection-label" class="btn ps-4 pe-4 default-selection w-50" for="spring-selection" data-value="monthly" data-sel="time-select-vis">Monthly</label>
             </div>
             <div class="col-md-12 col-lg-4 col-xl-1 download-dropdown mt-1 mb-1 info-section">
               <div class="dropdown rounded-2 border border-1">
