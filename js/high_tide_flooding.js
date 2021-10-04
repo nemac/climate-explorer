@@ -179,13 +179,13 @@ $(function () {
 
     // show chart overlay
     if (stationsGraphRowElem) {
-      stationsGraphRowElem.classList.remove('d-off');
+      stationsGraphRowElem.classList.remove('d-none');
       stationsGraphRowElem.classList.add('d-flex');
     }
 
     // hide chart overlay
     if (stationsMapRowElem) {
-      stationsMapRowElem.classList.add('d-off');
+      stationsMapRowElem.classList.add('d-none');
       stationsMapRowElem.classList.remove('d-flex');
     }
 
@@ -202,13 +202,13 @@ $(function () {
     // show chart overlay
     if (stationsGraphRowElem) {
       stationsGraphRowElem.classList.remove('d-flex');
-      stationsGraphRowElem.classList.add('d-off');
+      stationsGraphRowElem.classList.add('d-none');
     }
 
     // show map overlay
     if (stationsMapRowElem) {
       stationsMapRowElem.classList.add('d-flex');
-      stationsMapRowElem.classList.remove('d-off');
+      stationsMapRowElem.classList.remove('d-none');
     }
   }
 

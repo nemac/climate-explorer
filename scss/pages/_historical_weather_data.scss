@@ -1,182 +1,182 @@
-// NOTE most of the css will be found _climate-graphs.scscc
-// only when we need to overide or add missing css will the css appear here
-
-
-.d-off {
-  position: absolute;
-  left: -1000000px;
-}
-
-#historical-weather-data-viewport {
-  background-color: $white;
-
-  flex: 1 1 auto !important;
-  margin-bottom: 6px;
-
-  &:after {
-    content: '';
-    width: 100%;
-    height: 5px;
-    position: absolute;
-    top: calc(100% - 105px);
-
-    @include kind-of-tiny {
-      top: calc(100% - 75px);
-    }
-    left: -2px;
-    //@include box-shadow( inset 0 -2px 2px transparentize(#000, 0.7));
-  }
-
-  &.expanded {
-
-    &:after {
-      top: calc(100% - 187px);
-
-      @include kind-of-tiny {
-        top: calc(100% - 147px);
-      }
-    }
-
-  }
-
-  #stations-map-wrap {
-    min-height: 150px !important
-  }
-
-  .map-nostations-message {
-    z-index: 500;
-    width: 25%;
-    position: relative;
-    top: -250px;
-    left: 150px;
-    @include very-small {
-      top: -200px !important;
-      left: 10% !important;
-      width: 80%;
-    }
-    text-align: center;
-    padding: $ce3-default-padding;
-    background-color: $ce3-warning-state !important;
-    color: $ce3-blue6 !important;
-    font: $font-weight-normal 14px $roboto !important;
-    border: 1px solid lighten($ce3-warning-state, 10) !important;
-    @include border-radius(5px, 5px);
-  }
-
-  #stations-select-wrapper {
-    display: flex !important;
-    @include medium {
-      width: 100% !important;
-      margin-top: 6px;
-    }
-  }
-
-  #chartmap-wrapper {
-    width: 30% !important;
-  }
-
-  .left_chart {
-    width: calc(50% - 40px);
-    @include medium {
-      width: calc(100%);
-    }
-    height: 100%;
-    background-color: white;
-    padding-right: $ce3-padding-half;
-  }
-
-  .right_chart {
-    width: calc(50% - 40px);
-    @include medium {
-      width: calc(100%);
-    }
-    height: 100%;
-    background-color: white;
-    padding-left: $ce3-padding-half;
-  }
-
-  #overlay-chart-container {
-    margin: 25px;
-    height: 50vh;
-    width: calc(100% - 50px);
-  }
-
-  #station-overlay {
-    height: 100%;
-  }
-
-  .esri-expand__container {
-    height: 32px;
-    width: 32px;
-  }
-
-  .scenario-map-legend-container {
-    max-width: 7rem;
-    background: #ffffff;
-    padding: 0.15rem 0.1rem;
-
-    .legend-unit-label {
-      margin: 0.2rem 0.25rem;
-      display: block;
-      font-size: 0.75rem;
-      font-weight: $font-weight-meduim;
-    }
-
-    .legend-image {
-      display: block;
-      max-width: 5.2rem
-    }
-
-    .legend-note-label {
-      display: block;
-      font-size: 0.7rem;
-      margin: 0.1rem 0.3rem
-    }
-  }
-
-  .esri-ui-top-left .esri-expand__content, .esri-ui-top-right .esri-expand__content {
-    top: -32px !important;
-  }
-
-  .esri-view-width-xsmall .esri-component.esri-expand.esri-widget.esri-expand--auto {
-    display: none !important;
-  }
-
-  .esri-view-width-xsmall .esri-expand--auto .esri-expand__container--expanded {
-    position: relative !important;
-  }
-
-  .esri-view-width-greater-than-xsmall .esri-expand--auto .esri-expand__content {
-    position: relative !important;
-  }
-
-  .scenario-map-overlay-container {
-    position: relative;
-  }
-
-  .esri-view {
-    // padding: $ce3-default-padding;
-  }
-
-  .esri-view-surface {
-    @include border-radius(5px);
-  }
-
-  .top-select-wrapper {
-    width: 34% !important;
-    &-minor {
-      width: 5% !important;
-    }
-  }
-
-  .search-box-secondary {
-    @include medium {
-      width: 100% !important;
-      display: inline-block !important;
-    }
-  }
-
-  .ui-icon {
-    background-image: none !important;
-  }
-}
+//// NOTE most of the css will be found _climate-graphs.scscc
+//// only when we need to overide or add missing css will the css appear here
+//
+//
+//.d-none {
+//  position: absolute;
+//  left: -1000000px;
+//}
+//
+//#historical-weather-data-viewport {
+//  background-color: $white;
+//
+//  flex: 1 1 auto !important;
+//  margin-bottom: 6px;
+//
+//  &:after {
+//    content: '';
+//    width: 100%;
+//    height: 5px;
+//    position: absolute;
+//    top: calc(100% - 105px);
+//
+//    @include kind-of-tiny {
+//      top: calc(100% - 75px);
+//    }
+//    left: -2px;
+//    //@include box-shadow( inset 0 -2px 2px transparentize(#000, 0.7));
+//  }
+//
+//  &.expanded {
+//
+//    &:after {
+//      top: calc(100% - 187px);
+//
+//      @include kind-of-tiny {
+//        top: calc(100% - 147px);
+//      }
+//    }
+//
+//  }
+//
+//  #stations-map-wrap {
+//    min-height: 150px !important
+//  }
+//
+//  .map-nostations-message {
+//    z-index: 500;
+//    width: 25%;
+//    position: relative;
+//    top: -250px;
+//    left: 150px;
+//    @include very-small {
+//      top: -200px !important;
+//      left: 10% !important;
+//      width: 80%;
+//    }
+//    text-align: center;
+//    padding: $ce3-default-padding;
+//    background-color: $ce3-warning-state !important;
+//    color: $ce3-blue6 !important;
+//    font: $font-weight-normal 14px $roboto !important;
+//    border: 1px solid lighten($ce3-warning-state, 10) !important;
+//    @include border-radius(5px, 5px);
+//  }
+//
+//  #stations-select-wrapper {
+//    display: flex !important;
+//    @include medium {
+//      width: 100% !important;
+//      margin-top: 6px;
+//    }
+//  }
+//
+//  #chartmap-wrapper {
+//    width: 30% !important;
+//  }
+//
+//  .left_chart {
+//    width: calc(50% - 40px);
+//    @include medium {
+//      width: calc(100%);
+//    }
+//    height: 100%;
+//    background-color: white;
+//    padding-right: $ce3-padding-half;
+//  }
+//
+//  .right_chart {
+//    width: calc(50% - 40px);
+//    @include medium {
+//      width: calc(100%);
+//    }
+//    height: 100%;
+//    background-color: white;
+//    padding-left: $ce3-padding-half;
+//  }
+//
+//  #overlay-chart-container {
+//    margin: 25px;
+//    height: 50vh;
+//    width: calc(100% - 50px);
+//  }
+//
+//  #station-overlay {
+//    height: 100%;
+//  }
+//
+//  .esri-expand__container {
+//    height: 32px;
+//    width: 32px;
+//  }
+//
+//  .scenario-map-legend-container {
+//    max-width: 7rem;
+//    background: #ffffff;
+//    padding: 0.15rem 0.1rem;
+//
+//    .legend-unit-label {
+//      margin: 0.2rem 0.25rem;
+//      display: block;
+//      font-size: 0.75rem;
+//      font-weight: $font-weight-meduim;
+//    }
+//
+//    .legend-image {
+//      display: block;
+//      max-width: 5.2rem
+//    }
+//
+//    .legend-note-label {
+//      display: block;
+//      font-size: 0.7rem;
+//      margin: 0.1rem 0.3rem
+//    }
+//  }
+//
+//  .esri-ui-top-left .esri-expand__content, .esri-ui-top-right .esri-expand__content {
+//    top: -32px !important;
+//  }
+//
+//  .esri-view-width-xsmall .esri-component.esri-expand.esri-widget.esri-expand--auto {
+//    display: none !important;
+//  }
+//
+//  .esri-view-width-xsmall .esri-expand--auto .esri-expand__container--expanded {
+//    position: relative !important;
+//  }
+//
+//  .esri-view-width-greater-than-xsmall .esri-expand--auto .esri-expand__content {
+//    position: relative !important;
+//  }
+//
+//  .scenario-map-overlay-container {
+//    position: relative;
+//  }
+//
+//  .esri-view {
+//    // padding: $ce3-default-padding;
+//  }
+//
+//  .esri-view-surface {
+//    @include border-radius(5px);
+//  }
+//
+//  .top-select-wrapper {
+//    width: 34% !important;
+//    &-minor {
+//      width: 5% !important;
+//    }
+//  }
+//
+//  .search-box-secondary {
+//    @include medium {
+//      width: 100% !important;
+//      display: inline-block !important;
+//    }
+//  }
+//
+//  .ui-icon {
+//    background-image: none !important;
+//  }
+//}

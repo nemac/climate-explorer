@@ -104,8 +104,8 @@ export default (config) => `
     <div id="climate-maps-viewport" class="h-100">
       <div id="info-row" class="w-100">
       </div>
-      <div id="map-for-print-left" class="d-off d-none"></div>
-      <div id="map-for-print-right" class="d-off d-none"></div>
+      <div id="map-for-print-left" class="d-none d-none"></div>
+      <div id="map-for-print-right" class="d-none d-none"></div>
       <div id="map-row" class="w-100 d-flex">
         <div id="map-element" class="d-flex w-100">
           <div id="local-climate-map-element" class="map-element p-0 h-100 w-100" style="height: 100% !important;"></div>

@@ -72,8 +72,8 @@ $(function () {
     $('#stations-graph-wrap').empty();
 
     // add new graph wrappers so they will initialize
-    $('#stations-graph-wrap').append('<div id="multi-chart" class="left_chart col-12 col-lg-6 h-100"></div>');
-    $('#stations-graph-wrap').append('<div id="multi-precip-chart" class="left_chart col-12 col-lg-6 h-100"></div>');
+    $('#stations-graph-wrap').append('<div id="multi-chart" class="chart-body col-12 col-lg-6"></div>');
+    $('#stations-graph-wrap').append('<div id="multi-precip-chart" class="chart-body col-12 col-lg-6"></div>');
 
     // update graphs with new station id and station name
     $('#multi-chart').stationAnnualGraph({ variable: 'temperature', station: stations.stationId, stationName: stations.stationName });
@@ -93,15 +93,17 @@ $(function () {
     $('#chartmap-select-chart-link').removeClass('default-selection');
     $('#chartmap-select-chart-link').addClass('selected-item');
 
+    $("#historical-weather-data-viewport").addClass("d-none");
+
     // show chart overlay
     if (stationsGraphRowElem) {
-      stationsGraphRowElem.classList.remove('d-off');
+      stationsGraphRowElem.classList.remove('d-none');
       stationsGraphRowElem.classList.add('d-flex');
     }
 
     // hide chart overlay
     if (stationsMapRowElem) {
-      stationsMapRowElem.classList.add('d-off');
+      stationsMapRowElem.classList.add('d-none');
       stationsMapRowElem.classList.remove('d-flex');
     }
 
@@ -115,16 +117,18 @@ $(function () {
     const stationsGraphRowElem = document.getElementById('stations-graph-row');
     const stationsMapRowElem = document.getElementById('stations-map-row');
 
+    $("#historical-weather-data-viewport").removeClass("d-none");
+
     // show chart overlay
     if (stationsGraphRowElem) {
       stationsGraphRowElem.classList.remove('d-flex');
-      stationsGraphRowElem.classList.add('d-off');
+      stationsGraphRowElem.classList.add('d-none');
     }
 
     // show map overlay
     if (stationsMapRowElem) {
       stationsMapRowElem.classList.add('d-flex');
-      stationsMapRowElem.classList.remove('d-off');
+      stationsMapRowElem.classList.remove('d-none');
     }
   }
 
@@ -196,12 +200,12 @@ $(function () {
       // reset map and chart sizes
       // filer transition means heigh will be updates in few seconds
       // so delaying the resize ensures proper size
-      setGraphSize();
+      setGraphSizeWeatherData();
     }, 600);
   } else {
     showMap();
     toggleChartInfoText('map');
-    setGraphSize();
+    setGraphSizeWeatherData();
   }
 
   /**
@@ -240,7 +244,7 @@ $(function () {
       toggleDownloads();
 
       // reset map and chart sizes
-      setGraphSize();
+      setGraphSizeWeatherData();
     }
   });
 
@@ -403,23 +407,51 @@ $(function () {
         // reset map and chart sizes
         // filer transition means heigh will be updates in few seconds
         // so delaying the resize ensures proper size
-        setGraphSize();
+        setGraphSizeWeatherData();
       }, 100);
     }
   }, stationsMapState));
 
   // reset map and chart sizes
-  setGraphSize();
+  setGraphSizeWeatherData();
   setBodySize();
 
   function setChartSize() {
 
+    let nav_element = document.querySelector(".navbar-element");
+    let footer_element = document.querySelector(".footer-element");
 
+    let nav_height = px_to_rem(nav_element.getBoundingClientRect().height);
+    let footer_height = px_to_rem(footer_element.getBoundingClientRect().height);
 
+    let graph_body = document.querySelector("#stations-graph-wrap");
+
+    let body_size = document.querySelector(".body-size");
+    let body_height = px_to_rem(body_size.getBoundingClientRect().height);
+
+    let search_row = document.querySelector(".search-station-row");
+    let search_height = px_to_rem(search_row.getBoundingClientRect().height);
+
+    let info_section = document.querySelector(".info-section");
+    let info_height = px_to_rem(info_section.getBoundingClientRect().height);
+
+    let height = body_height - search_height - info_height - nav_height - footer_height;
+
+    graph_body.style.setProperty('height', `calc(${height}rem - 1rem)`);
+
+    let canvas = graph_body.getElementsByTagName("canvas");
+
+    if(canvas.length > 0) {
+      canvas[0].style.setProperty('height', `calc(${height}rem - 1rem)`);
+      canvas[1].style.setProperty('height', `calc(${height}rem - 1rem)`);
+    }
   }
 
+  // setChartSize();
+
   $(window).resize(function () {
-    setGraphSize();
+    setGraphSizeWeatherData();
+    // setChartSize();
   })
 
   $('#chart-info-row-btn .more-info.btn-default').click( function (e) {
@@ -446,6 +478,6 @@ $(function () {
     // force draw and resize of charts
     showGraphs();
     forceResize();
-    setGraphSize();
+    setGraphSizeWeatherData();
   })
 });
