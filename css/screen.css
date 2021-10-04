@@ -16339,6 +16339,13 @@ input.input-inner-default:focus {
   height: calc(100vh - 7rem);
 }
 
+@media (min-width: 992px) {
+  /* line 2, scss/pages/_historical_weather_data.scss */
+  #multi-precip-chart {
+    padding-bottom: 0 !important;
+  }
+}
+
 /* line 3, scss/pages/_historical_thresholds.scss */
 #selection-dropdown-menu {
   background-color: #E9F1FC;
