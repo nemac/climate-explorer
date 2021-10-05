@@ -7,13 +7,13 @@
 //     "rollup": "^2.31.0"
 
 import babel from '@rollup/plugin-babel';
-// import nodeResolve from '@rollup/plugin-node-resolve';
+import nodeResolve from '@rollup/plugin-node-resolve';
 
 let production = process.env.build_env === 'prod' || process.env.build_env === 'production';
 let pkg = process.env.pkg;
 
 const plugins = [
-  // nodeResolve(),
+  nodeResolve()
 ];
 
 if (production){

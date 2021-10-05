@@ -2,7 +2,6 @@ import './ce3_ui_components.js';
 import './secondary_header.js';
 import './nav_footer.js';
 
-
 const url_param_names = {
   'variable': 'id',
   'city': 'city',
@@ -24,7 +23,6 @@ const url_param_names = {
   'thresholdVariable': 'threshold-variable',
   // page
 };
-
 
 class App {
   constructor() {

@@ -1,6 +1,7 @@
 //  when we get stations in the map extent
 // the addition of the new stations removes existing click events
 // so we need to re add them
+
 function reEnableSelectNewItems(uniqueSelector) {
 
   const $styledSelect = $('#stations-dropdown-menu');
