@@ -23,7 +23,7 @@ export default (config) => `
 <script type="text/javascript" src="/vendor/formmapper.js"></script>
 <script type="text/javascript" src="https://unpkg.com/tooltip.js@^1"></script>
 <!--<script type="text/javascript" src="https://unpkg.com/popper.js@1"></script>-->
-<script type="text/javascript" src="https://unpkg.com/tippy.js@4"></script>
+<!--<script type="text/javascript" src="https://unpkg.com/tippy.js@4"></script>-->
 
 <!-- END candidates for minification -->
 
