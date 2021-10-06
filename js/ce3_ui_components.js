@@ -806,6 +806,22 @@ function px_to_rem(px) {
   return px / base_font_size;
 }
 
+let accordion = $(".test-click");
+
+// When the accordion is closed, it should resize the graph
+
+if(accordion.length > 0) {
+
+  accordion.on('click', function() {
+
+    setTimeout(() => {
+      setGraphSize();
+    }, 300);
+
+  })
+
+}
+
 // todo cleanup global functions
 window.googleAnalyticsEvent = googleAnalyticsEvent;
 window.enableCustomSelect = enableCustomSelect;

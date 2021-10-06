@@ -41,7 +41,7 @@ export default (config) => `
     </div>
     <div class="info-section">
       <div class="border border-1 rounded-2">
-        <div class="m-3 mb-3 btn p-0 d-flex align-items-center" type="button" data-bs-toggle="collapse" data-bs-target="#collapse-info-section" aria-expanded="true"
+        <div class="m-3 mb-3 btn p-0 d-flex align-items-center test-click" type="button" data-bs-toggle="collapse" data-bs-target="#collapse-info-section" aria-expanded="true"
              aria-controls="collapse-info-section">
           <i class="fas fa-chart-line me-2"></i>
           <span id="default-city-county"></span>
