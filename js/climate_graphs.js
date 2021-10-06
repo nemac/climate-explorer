@@ -411,6 +411,7 @@ $(function () {
 
   function hideMonthlySelect() {
     $('#monthly-select-wrapper').addClass('d-none').removeClass('d-flex-center');
+    document.getElementById("legend-wrapper").scrollIntoView({behavior: "smooth"});
     setGraphSize();
   }
 
@@ -507,6 +508,8 @@ $(function () {
 
   setBodySize();
   setGraphSize();
+
+  document.getElementById("legend-wrapper").scrollIntoView({behavior: "smooth"});
 
   $(window).resize(function() {
     setGraphSize();

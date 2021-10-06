@@ -28507,7 +28507,7 @@ input.input-inner-default:focus {
   position: absolute;
   top: 0;
   left: 0;
-  z-index: 10000;
+  z-index: 1;
   right: 0;
   border-bottom: 0.15rem solid #0058cf;
 }
@@ -28526,7 +28526,7 @@ input.input-inner-default:focus {
   position: absolute;
   top: 0;
   left: 0;
-  z-index: 10000;
+  z-index: 1;
   right: 0;
   border-bottom: 0.15rem solid #f5442d;
 }
