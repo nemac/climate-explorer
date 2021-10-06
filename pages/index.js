@@ -21,9 +21,9 @@ export default (config) => `
 <body class="h-100">
   ${secondary_header(config)}
 
-  <div class="container-fluid index-page h-100 body-size">
+  <div class="container-fluid index-page h-100 body-size w-100">
     
-    <div class="body-wrapper p-4 m-md-4 m-sm-0">
+    <div class="body-wrapper p-4 m-md-4 m-sm-0 w-100">
     
       <div class="mt-3">
         <h2>The Climate Explorer</h2>
@@ -40,7 +40,7 @@ export default (config) => `
         </div> 
       </div>
       
-      <div class="default-cities col-12 col-xl-6 row m-0 rounded-2"> 
+      <div class="default-cities col-12 col-xl-8 row m-0 rounded-2"> 
         <div>      
           <span>or click one of these cities:</span>
         </div>
