@@ -31710,3 +31710,23 @@ body.is-ak-area .opt-not-ak, body.is-island-area .opt-not-island {
   background-color: transparent !important;
   opacity: 1 !important;
 }
+
+/* line 2001, scss/screen.scss */
+.accordion-button {
+  background-color: white;
+  box-shadow: none;
+  width: auto !important;
+  color: #0D3064 !important;
+}
+
+/* line 2007, scss/screen.scss */
+.accordion-button:not(.collapsed) {
+  background-color: white !important;
+  box-shadow: none !important;
+  color: #0D3064 !important;
+}
+
+/* line 2013, scss/screen.scss */
+.accordion-button:after {
+  color: #0D3064 !important;
+}

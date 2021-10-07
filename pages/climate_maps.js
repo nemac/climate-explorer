@@ -20,17 +20,17 @@ export default (config) => `
   </head>
   <body class="h-100">
   ${secondary_header(config)}
-  <div class="container-fluid d-flex-column mb-3 h-100 body-size">
-    <div class="mt-3 row">
+  <div class="container-fluid d-flex-column h-100 body-size">
+    <div class="row mt-2">
       <div class="col-12 col-md-7 col-lg-8">
-        <div class="input-group mb-3 search-input-group rounded-2 border border-1 me-2">
+        <div class="input-group search-input-group rounded-2 border border-1 me-2">
           <button id="clear-location" class="btn search-icons" type="button"><span class="fas fa-times-circle"></span></button>
           <input id="cards-search-input" class="form-control location-mapper" type="text" placeholder="Enter county or city name"
                  aria-label="Enter county or city name">
         </div>
       </div>
       <div class="col-12 col-md-5 col-lg-4">
-        <div class="dropdown rounded-2 border border-1 mb-3 stations-dropdown">
+        <div class="dropdown rounded-2 border border-1 stations-dropdown">
           <a class="btn dropdown-toggle w-100 d-flex justify-content-between align-items-center disabled" href="#" role="button" id="stations-dropdown-menu"
              data-bs-toggle="dropdown" aria-expanded="false">
             Stations
@@ -38,19 +38,22 @@ export default (config) => `
         </div>
       </div>
     </div>
-    <div class="info-section mb-2">
+    <div class="info-section mt-2">
       <div class="border border-1 rounded-2">
-        <div class="m-3 mb-3 btn p-0 d-flex align-items-center" type="button" data-bs-toggle="collapse" data-bs-target="#collapse-info-section" aria-expanded="true"
-             aria-controls="collapse-info-section">
-          <i class="fas fa-map-marked-alt me-2"></i>
-          <span id="default-city-county"></span>
-          <span class="ms-1 me-1"> - </span>
-          <span id="default-chart-map-variable" data-value="tmax">Average Daily Maximum Temp (°F)</span>
+        <div class="d-flex justify-content-between">
+          <div class="m-2 p-0 d-flex align-items-center">
+            <i class="fas fa-chart-line me-2"></i>
+            <span id="default-city-county"></span>
+            <span class="ms-1 me-1"> - </span>
+            <span id="default-chart-map-variable" data-value="tmax">Average Daily Maximum Temp (°F)</span>
+          </div>
+          <div class="accordion-button accordion-click" type="button" data-bs-toggle="collapse" data-bs-target="#collapse-info-section" aria-expanded="true"
+               aria-controls="collapse-info-section"></div>
         </div>
-        <div class="m-3 collapse show" id="collapse-info-section">
+        <div class="m-2 collapse show" id="collapse-info-section">
           <div class="row">
             <div class="col-md-12 col-lg-3 order-xs-1 d-flex flex-row align-items-center mb-1 mt-1 info-section">
-              <div class="dropdown rounded-2 border border-1 me-2 w-100">
+              <div class="dropdown rounded-2 border border-1 w-100">
                 <a class="d-flex justify-content-between align-items-center btn dropdown-toggle w-100" href="#" id="filter-dropdown-menu" data-bs-toggle="dropdown"
                    aria-expanded="true" data-value="tmax">
                   Average Daily Maximum Temperature (°F)
@@ -61,7 +64,6 @@ export default (config) => `
                   </div>
                 </div>
               </div>
-              <span id="filter-tooltip" class="fa fa-question d-flex justify-content-center align-items-center" aria-hidden="true"></span>
             </div>
             <div class="col-md-12 col-lg-2 order-xs-2 mb-1 mt-1 info-section">
               <div class="btn-group border rounded-2 graph-map-selection w-100" role="group">
@@ -101,7 +103,7 @@ export default (config) => `
         </div>
       </div>
     </div>
-    <div id="climate-maps-viewport" class="h-100">
+    <div id="climate-maps-viewport" class="h-100 mt-2">
       <div id="info-row" class="w-100">
       </div>
       <div id="map-for-print-left" class="d-none d-none"></div>

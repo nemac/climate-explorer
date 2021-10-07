@@ -1997,3 +1997,21 @@ body.is-ak-area .opt-not-ak, body.is-island-area .opt-not-island {
     opacity: 1 !important;
   }
 }
+
+.accordion-button {
+  background-color: white;
+  box-shadow: none;
+  width: auto !important;
+  color: $navbar-background !important;
+
+  &:not(.collapsed) {
+    background-color: white !important;
+    box-shadow: none !important;
+    color: $navbar-background !important;
+  }
+
+  &:after {
+    color: $navbar-background !important;
+  }
+
+}

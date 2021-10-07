@@ -20,16 +20,16 @@ export default (config) => `
   <body class="h-100">
   ${secondary_header(config)}
   <div class="container-fluid d-flex-column body-size h-100">
-      <div class="mt-3 row search-station-row">
+      <div class="mt-2 row search-station-row">
         <div class="col-12 col-md-7 col-lg-8">
-          <div class="input-group mb-3 search-input-group rounded-2 border border-1 me-2">
+          <div class="input-group search-input-group rounded-2 border border-1 me-2">
             <button id="clear-location" class="btn search-icons" type="button"><span class="fas fa-times-circle"></span></button>
             <input id="cards-search-input" class="form-control location-mapper" type="text" placeholder="Enter county or city name"
                    aria-label="Enter county or city name">
           </div>
         </div>
         <div class="col-12 col-md-5 col-lg-4">
-          <div class="dropdown rounded-2 border border-1 mb-3 stations-dropdown">
+          <div class="dropdown rounded-2 border border-1 stations-dropdown">
             <a class="btn dropdown-toggle w-100 d-flex justify-content-between align-items-center" href="#" role="button" id="stations-dropdown-menu"
                data-bs-toggle="dropdown" aria-expanded="false">
               Stations
@@ -40,9 +40,9 @@ export default (config) => `
         </div>
       </div>
       
-      <div class="info-section">
+      <div class="info-section mt-2">
         <div class="border border-1 rounded-2">
-          <div class="m-3">
+          <div class="m-2">
             <span
                 id="station-info-none"><strong>Please select a station on the map or from the Stations dropdown menu. You may need to zoom out to see more stations.</strong></span>
             <span id="station-info" class="d-none">
@@ -52,7 +52,7 @@ export default (config) => `
                     <span id="default-station-id" class="text-info-box data right-padding"></span>
                   </span>
           </div>
-          <div class="m-3 collapse show" id="collapse-info-section">
+          <div class="m-2 collapse show" id="collapse-info-section">
             <div class="row align-items-center">
               <div class="col-md-12 col-lg-6 col-xl-2 mt-1 mb-1 info-section">
                 <div class="btn-group border rounded-2 graph-map-selection w-100" role="group">

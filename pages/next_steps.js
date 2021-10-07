@@ -24,24 +24,24 @@ ${secondary_header(config)}
 
 <div id="next-steps-viewport" class="container-fluid d-flex-column body-size">
 
-  <div class="d-flex flex-row mt-3"> 
-      <div class="input-group mb-3 search-input-group rounded-2 border border-1 w-100">
+  <div class="d-flex flex-row mt-2"> 
+      <div class="input-group search-input-group rounded-2 border border-1 w-100">
         <button id="clear-location" class="btn search-icons" type="button"><span class="fas fa-times-circle"></span></button>
         <input id="cards-search-input" class="form-control location-mapper" type="text" placeholder="Enter county or city name" aria-label="Enter county or city name">
       </div>
   </div>
 
-  <div class="info-section mb-2">
+  <div class="info-section mt-2">
       <div class="d-flex border border-1 rounded-2"> 
         
-        <div class="m-3 btn p-0">
+        <div class="m-2 btn p-0">
             <i class="fas fa-map-signs me-2"></i>
             <span id="default-chart-map-variable" style="font-weight: normal !important;">Explore planning tools available from our partners</span>
         </div>
       </div>
   </div>
 
-  <div id="card-row" class="d-flex-row flex-justify">
+  <div id="card-row" class="d-flex-row flex-justify mt-2">
 
     <div tabindex="3" id="data-card" class="next-steps-temperate card-xl d-flex d-flex-column">
       <div id="card-text" class="card-text d-flex-row width-100">

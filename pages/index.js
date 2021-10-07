@@ -23,7 +23,7 @@ export default (config) => `
 
   <div class="container-fluid index-page h-100 body-size w-100">
     
-    <div class="body-wrapper p-4 m-md-4 m-sm-0 w-100">
+    <div class="body-wrapper p-4 m-md-4 m-sm-0">
     
       <div class="mt-3">
         <h2>The Climate Explorer</h2>
@@ -36,7 +36,7 @@ export default (config) => `
         
         <div class="d-flex mb-3 search-input-group rounded-2 border border-1 mt-3 col-12 col-xl-8">
           <input class="form-control location-mapper" type="text" placeholder="To get started, enter a city or county" aria-label="Enter county or city name">
-          <span class="d-flex align-items-center p-2"><span class="icon icon-search p-2"></span></span>
+          <span class="d-flex align-items-center p-2"><span class="icon icon-search p-2" onclick="document.querySelector('.location-mapper').focus()"></span></span>
         </div> 
       </div>
       

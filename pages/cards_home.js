@@ -19,18 +19,18 @@ export default (config) => `
   <body class="h-100">
   ${secondary_header(config)}
   <div class="main-wrapper container-fluid body-size mb-3">
-    <div class="input-group mb-3 search-input-group rounded-2 border border-1 mt-3">
+    <div class="input-group search-input-group rounded-2 border border-1 mt-2">
       <button id="clear-location" class="btn search-icons" type="button"><span class="fas fa-times-circle"></span></button>
       <input id="cards-search-input" class="form-control location-mapper" type="text" placeholder="Enter county or city name" aria-label="Enter county or city name">
     </div>
-    <div class="select-county-card rounded-2 border border-1 mb-3">
+    <div class="select-county-card rounded-2 border border-1 mt-2">
       <div class="p-2 d-flex align-items-center">
         <i class="fas fa-th-large icon-info-box me-2"></i>
         <span class="text-info-box me-1">Select one of the following for</span>
         <span id="default-city-county"></span>
       </div>
     </div>
-    <div class="row">
+    <div class="row mt-2">
       
       <div class="col-12 col-lg-6 col-xl-4 mb-3"> 
           <div class="col-sm-12 p-0 btn card border border-1 rounded shadow-sm data-card h-100" tabindex=0 role="button" data-page="climate_maps">

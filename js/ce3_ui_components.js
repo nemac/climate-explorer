@@ -808,7 +808,7 @@ function px_to_rem(px) {
   return px / base_font_size;
 }
 
-let accordion = $(".test-click");
+let accordion = $(".accordion-click");
 
 // When the accordion is closed, it should resize the graph
 
@@ -817,6 +817,7 @@ if(accordion.length > 0) {
   accordion.on('click', function() {
 
     setTimeout(() => {
+      window.dispatchEvent(new Event('resize'));
       setGraphSize();
     }, 300);
 
