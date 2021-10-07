@@ -797,6 +797,19 @@ function setGraphSizeWeatherData() {
   // chart_body.style.setProperty('height', `calc(${height}rem - 1rem`);
 }
 
+function noStationsMapMessage(msg) {
+
+  let message_element = $("#stations-map-message");
+
+  if(!message_element) return;
+
+  message_element.text(msg);
+  message_element.css({"position": "absolute", "left": "48%", "top": "48%", "transform": "translate(-50%, -50%)", "background-color": "#F5652D", "color": "white"});
+
+  message_element.removeClass("d-none");
+
+}
+
 setBodySize();
 
 $(window).resize(function () {
@@ -838,3 +851,4 @@ window.px_to_rem = px_to_rem;
 window.setBodySize = setBodySize;
 window.setGraphSize = setGraphSize;
 window.setGraphSizeWeatherData = setGraphSizeWeatherData;
+window.noStationsMapMessage = noStationsMapMessage;

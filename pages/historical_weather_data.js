@@ -112,10 +112,10 @@ export default (config) => `
       </div>
   
       <div id="historical-weather-data-viewport" class="graph-body d-flex d-flex-column mt-2">
-          <div id="stations-map-row" class="padding-top-half w-100 h-100 d-flex" >
+          <div id="stations-map-row" class="padding-top-half w-100 h-100 d-flex" style="position: relative;">
             <div id="stations-map-wrap" class="map-wrap w-100 h-100">
               <div id="stations-map" class="map-element h-100"></div>
-              <div id="stations-map-message" class="map-nostations-message d-none"></div>
+              <div id="stations-map-message" class="pt-2 pb-2 pe-1 ps-1 rounded-2 d-none"></div>
             </div>
           </div>
          

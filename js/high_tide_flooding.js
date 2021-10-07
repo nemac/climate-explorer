@@ -458,26 +458,19 @@ $(function () {
     // When state changes, just pass the current options along directly for this page.
     // If we re-use the stationsMap widget on another page there may be more handling to do.
     change: function change(event, options) {
-      const messageElem = document.getElementById('stations-map-message');
-      // show message if there are no tidal stations in map extent
+
       if (typeof options.currentstations !== "undefined" && options.currentstations.length === 0) {
-        // get map parent element - which provides the correct dimensions for the map
-        if (messageElem) {
-          const rect = document.getElementById('stations-map-wrap').getBoundingClientRect();
-          messageElem.style.left = `${(rect.right - rect.left) / 3}px`;
-          messageElem.style.top = `-${((rect.bottom - rect.top) / 2)}px`;
-          messageElem.style.pointerEvents = 'none';
-          messageElem.innerHTML = 'Move the map to a coastal location to select a tidal gauge station.'
-          messageElem.classList.remove('d-none');
-        }
+        noStationsMapMessage('Move the map to a coastal location to select a tidal gauge station.');
         return null
       }
       // todo restrict this down so we're not passing ALL options in here
       window.app.update(options);
       renderStationInfo(options.tidalStationId, options.tidalStationName, options.tidalStationMOverMHHW);
 
-      if (messageElem) {
-        messageElem.classList.add('d-none');
+      let message_element = $("#stations-map-message");
+
+      if(message_element) {
+        message_element.addClass("d-none");
       }
 
     },

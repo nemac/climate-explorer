@@ -348,24 +348,19 @@ $(function () {
     // If we re-use the stationsMap widget on another page there may be more handling to do.
     change: function change(event, options) {
 
-      const messageElem = document.getElementById('stations-map-message');
       // check if there are any tidal stations in map extent
       if (typeof options.currentstations !== "undefined" && options.currentstations.length === 0) {
-        // get map parent element - which provides the correct dimensions for the map
-        if (messageElem) {
-          const rect = document.getElementById('stations-map').getBoundingClientRect();
-          messageElem.style.left = `${(rect.right - rect.left)/3}px`;
-          messageElem.style.top = `-${((rect.bottom - rect.top)/2)}px`;
-          messageElem.innerHTML = 'There are no weather stations within the map view.'
-          messageElem.classList.remove('d-none');
-        }
+        noStationsMapMessage('There are no weather stations within the map view.');
         return null;
       }
 
       window.app.update( options);
       renderStationInfo(options.stationId, options.stationName);
-      if (messageElem){
-        messageElem.classList.add('d-none');
+
+      let message_element = $("#stations-map-message");
+
+      if(message_element) {
+        message_element.addClass("d-none");
       }
 
     },

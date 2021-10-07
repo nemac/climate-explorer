@@ -42,7 +42,7 @@ export default (config) => `
       
       <div class="info-section mt-2">
         <div class="border border-1 rounded-2">
-          <div class="m-2">
+          <div class="ms-2 me-2 mt-2 mb-3">
             <span
                 id="station-info-none"><strong>Please select a station on the map or from the Stations dropdown menu. You may need to zoom out to see more stations.</strong></span>
             <span id="station-info" class="d-none">
@@ -139,9 +139,9 @@ export default (config) => `
       <div id="historical-thresholds-viewport" class="graph-body d-flex-column">
         
         <div id="stations-map-row" class="d-flex w-100 h-100">
-          <div id="stations-map-wrap" class="map-wrap w-100 h-100">
+          <div id="stations-map-wrap" class="map-wrap w-100 h-100" style="position: relative;">
             <div id="stations-map" class="map-element h-100"></div>
-            <div id="stations-map-message" class="map-nostations-message d-none"></div>
+            <div id="stations-map-message" class="pt-2 pb-2 pe-1 rounded-2 ps-1 d-none"></div>
           </div>
         </div>
         
