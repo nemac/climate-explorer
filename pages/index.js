@@ -50,7 +50,7 @@ export default (config) => `
             <a class="btn border w-100" href="/cards_home/?county=New%20York+County&city=New%20York,%20NY&fips=36061&lat=40.7127753&lon=-74.0059728">New York City, NY</a>
           </div>
           <div class="col-lg-4 col-12">
-            <a class="btn border w-100" href="/cards_home/?county=Los+Angeles+County&city=Los%20Angeles,%20CA&fips=06037&lat=34.0522342&lon=-118.2436849">Lost Angeles, CA</a>
+            <a class="btn border w-100" href="/cards_home/?county=Los+Angeles+County&city=Los%20Angeles,%20CA&fips=06037&lat=34.0522342&lon=-118.2436849">Los Angeles, CA</a>
           </div>
           <div class="col-lg-4 col-12">
             <a class="btn border w-100" href="/cards_home/?county=Anchorage%20Municipality&city=Anchorage,%20AK&fips=02020&lat=61.2180556&lon=-149.9002778">Anchorage, AK</a>

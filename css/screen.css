@@ -31668,30 +31668,36 @@ body.is-ak-area .opt-not-ak, body.is-island-area .opt-not-island {
 }
 
 /* line 1960, scss/screen.scss */
-.tippy-tooltip.testing-theme-theme {
+.tippy-box[data-theme~='testing-theme'] {
   background-color: white;
+  border: 1px solid #A6C6F3;
 }
 
-/* line 1963, scss/screen.scss */
-.tippy-tooltip.testing-theme-theme hr {
+/* line 1965, scss/screen.scss */
+.tippy-box[data-theme~='testing-theme'] hr {
   color: #0D3064;
   font-weight: bold;
 }
 
-/* line 1969, scss/screen.scss */
+/* line 1971, scss/screen.scss */
+.tippy-tooltip.testing-theme-theme {
+  background-color: white;
+}
+
+/* line 1975, scss/screen.scss */
 .tippy-title {
   color: #0D3064;
   font-weight: bold;
   font-size: 1rem;
 }
 
-/* line 1975, scss/screen.scss */
+/* line 1981, scss/screen.scss */
 .tippy-body {
   color: #0D3064;
   font-size: 0.95rem;
 }
 
-/* line 1982, scss/screen.scss */
+/* line 1988, scss/screen.scss */
 .climate_by_location_popover .popover-header, .high_tide_flooding_popover .popover-header {
   background-color: transparent !important;
   border-bottom: none !important;
@@ -31699,7 +31705,7 @@ body.is-ak-area .opt-not-ak, body.is-island-area .opt-not-island {
   margin: 0.25rem 0 !important;
 }
 
-/* line 1989, scss/screen.scss */
+/* line 1995, scss/screen.scss */
 .climate_by_location_popover hr, .high_tide_flooding_popover hr {
   background-color: transparent !important;
   opacity: 1 !important;

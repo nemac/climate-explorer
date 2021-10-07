@@ -350,9 +350,10 @@ function makeMainTip(elem) {
       arrow: false,
       interactive: false,
       hideOnClick: false,
-      flipOnUpdate: false,
+      allowHTML: true,
+      // flipOnUpdate: false,
       animateFill: false,
-      placement: 'right'
+      placement: 'left'
     }));
   }
 }
@@ -364,8 +365,9 @@ function makeTip(elem) {
       theme: 'testing-theme',
       arrow: false,
       interactive: false,
+      allowHTML: true,
       hideOnClick: false,
-      flipOnUpdate: false,
+      // flipOnUpdate: false,
       animateFill: false,
       placement: 'right'
     }));

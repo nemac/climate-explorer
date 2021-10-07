@@ -1957,13 +1957,19 @@ body.is-ak-area .opt-not-ak, body.is-island-area .opt-not-island {
   filter: opacity(0.4);
 }
 
-.tippy-tooltip.testing-theme-theme {
+.tippy-box[data-theme~='testing-theme'] {
   background-color: white;
+
+  border: 1px solid $navbar-hover-background;
 
   hr {
     color: $navbar-background;
     font-weight: bold;
   }
+}
+
+.tippy-tooltip.testing-theme-theme {
+  background-color: white;
 }
 
 .tippy-title {
