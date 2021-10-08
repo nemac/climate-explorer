@@ -8,7 +8,7 @@ import chart_explainer from '../template/chart_explainer';
 // language=HTML
 export default (config) => `
   <!DOCTYPE  html>
-<html lang='en' class="h-100">
+  <html lang='en' class="h-100">
   <head>
     ${head(config)}
     <meta property="fb:app_id" content="187816851587993">
@@ -24,14 +24,14 @@ export default (config) => `
   <div class="container-fluid body-size h-100" style="overflow-y:auto;">
     <div class="mt-2 search-station-row row">
       <div class="col-12 col-md-7 col-lg-8">
-        <div class="input-group mb-2 search-input-group rounded-2 border border-1 me-2">
+        <div class="input-group search-input-group rounded-2 border border-1 me-2">
           <button id="clear-location" class="btn search-icons" type="button"><span class="fas fa-times-circle"></span></button>
           <input id="cards-search-input" class="form-control location-mapper" type="text" placeholder="Enter county or city name"
                  aria-label="Enter county or city name">
         </div>
       </div>
       <div class="col-12 col-md-5 col-lg-4">
-        <div class="dropdown rounded-2 border border-1 mb-2 stations-dropdown">
+        <div class="dropdown rounded-2 border border-1 stations-dropdown">
           <a class="btn dropdown-toggle w-100 d-flex justify-content-between align-items-center disabled" href="#" role="button" id="stations-dropdown-menu"
              data-bs-toggle="dropdown" aria-expanded="false">
             Stations
@@ -39,10 +39,10 @@ export default (config) => `
         </div>
       </div>
     </div>
-    <div class="info-section mb-2">
+    <div class="info-section mt-2">
       <div class="border border-1 rounded-2">
         <div class="d-flex justify-content-between">
-          <div class="m-2 btn p-0 d-flex align-items-center">
+          <div class="m-2 d-flex align-items-center">
             <i class="fas fa-chart-line me-2"></i>
             <span id="default-city-county"></span>
             <span class="ms-1 me-1"> - </span>
@@ -51,8 +51,7 @@ export default (config) => `
           <div class="accordion-button accordion-click" type="button" data-bs-toggle="collapse" data-bs-target="#collapse-info-section" aria-expanded="true"
                aria-controls="collapse-info-section"></div>
         </div>
-        
-        <div class="m-2 collapse show" id="collapse-info-section">
+        <div class="m-2 mt-0 collapse show" id="collapse-info-section">
           <div class="row">
             <div class="col-md-12 col-lg-8 col-xl-3 d-flex flex-row align-items-center mt-1 mb-1 info-section">
               <div class="dropdown rounded-2 border border-1 w-100">
@@ -86,18 +85,16 @@ export default (config) => `
                   Downloads
                 </a>
                 <ul class="dropdown-menu download-select" aria-labelledby="download-dropdown-menu">
-                  <li id="download-image" data-value="download-image" data-icon="fas fa-download select-icon" href="javascript:void(0);">
+                  <li id="download-image" data-value="download-image" data-icon="fas fa-download select-icon">
                     <a class="dropdown-item" data-value="download-image" href="javascript:void(0);">Chart image (.png)</a>
                   </li>
-                  <li id="download-observed-data" data-value="download-observed-data" data-icon="fas fa-download select-icon" href="javascript:void(0);">
+                  <li id="download-observed-data" data-value="download-observed-data" data-icon="fas fa-download select-icon">
                     <a class="dropdown-item" data-value="download-observed-data" href="javascript:void(0);">Observations (.csv)</a>
                   </li>
-                  <li id="download-historical-modeled-data" data-value="download-historical-modeled-data" data-icon="fas fa-download select-icon"
-                      href="javascript:void(0);">
+                  <li id="download-historical-modeled-data" data-value="download-historical-modeled-data" data-icon="fas fa-download select-icon">
                     <a class="dropdown-item" data-value="download-historical-modeled-data" href="javascript:void(0);">Modeled History (.csv)</a>
                   </li>
-                  <li id="download-projected-modeled-data" data-value="download-projected-modeled-data" data-icon="fas fa-download select-icon"
-                      href="javascript:void(0);">
+                  <li id="download-projected-modeled-data" data-value="download-projected-modeled-data" data-icon="fas fa-download select-icon">
                     <a class="dropdown-item" data-value="download-projected-modeled-data" href="javascript:void(0);">Projections (.csv)</a>
                   </li>
                   <li id="download-interpreting" data-value="download-interpreting" data-icon="fas fa-download select-icon">
@@ -117,7 +114,7 @@ export default (config) => `
         </div>
       </div>
     </div>
-    <div id="chart-row" class="graph-body d-flex-column border border-1 rounded-2" style="min-height: 30rem;">
+    <div id="chart-row" class="graph-body d-flex-column" style="min-height: 30rem;">
       <div id="chart-wrap" class="chart-wrap d-flex d-flex-center width-100">
         <div id="chart-123" class="chart-canvas width-100 height-100" data-chart-ID="123"></div>
         <div id="chart-message" class="chart-nodata-message d-none"></div>
@@ -153,7 +150,7 @@ export default (config) => `
         2060-2090 average
       </div>
     </div>
-    
+
     <div id="chart-info-row" class="d-flex-row flex-justify padding-bottom-half d-flex-left d-none">
       ${chart_explainer(config)}
     </div>

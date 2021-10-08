@@ -21,7 +21,7 @@ export default (config) => `
   <body class="h-100">
   ${secondary_header(config)}
   <div class="container-fluid d-flex-column h-100 body-size">
-    <div class="row mt-2">
+    <div class="row mt-2 search-station-row">
       <div class="col-12 col-md-7 col-lg-8">
         <div class="input-group search-input-group rounded-2 border border-1 me-2">
           <button id="clear-location" class="btn search-icons" type="button"><span class="fas fa-times-circle"></span></button>
@@ -41,7 +41,7 @@ export default (config) => `
     <div class="info-section mt-2">
       <div class="border border-1 rounded-2">
         <div class="d-flex justify-content-between">
-          <div class="m-2 p-0 d-flex align-items-center">
+          <div class="m-2 d-flex align-items-center">
             <i class="fas fa-chart-line me-2"></i>
             <span id="default-city-county"></span>
             <span class="ms-1 me-1"> - </span>
@@ -50,7 +50,7 @@ export default (config) => `
           <div class="accordion-button accordion-click" type="button" data-bs-toggle="collapse" data-bs-target="#collapse-info-section" aria-expanded="true"
                aria-controls="collapse-info-section"></div>
         </div>
-        <div class="m-2 collapse show" id="collapse-info-section">
+        <div class="m-2 mt-0 collapse show" id="collapse-info-section">
           <div class="row">
             <div class="col-md-12 col-lg-3 order-xs-1 d-flex flex-row align-items-center mb-1 mt-1 info-section">
               <div class="dropdown rounded-2 border border-1 w-100">
@@ -90,10 +90,10 @@ export default (config) => `
                   Downloads
                 </a>
                 <ul class="dropdown-menu download-select" aria-labelledby="download-dropdown-menu">
-                  <li class="default-select-option" data-value="download-lefttmap-image" data-icon="fas fa-download select-icon" href="javascript:void(0);">
+                  <li class="default-select-option" data-value="download-lefttmap-image" data-icon="fas fa-download select-icon">
                     <a class="dropdown-item download-link" data-value="download-lefttmap-image" href="javascript:void(0);">Download left map as image</a>
                   </li>
-                  <li class="default-select-option" data-value="download-rightmap-image" data-icon="fas fa-download select-icon" href="javascript:void(0);">
+                  <li class="default-select-option" data-value="download-rightmap-image" data-icon="fas fa-download select-icon">
                     <a class="dropdown-item download-link" data-value="download-rightmap-image" href="javascript:void(0);">Download right map as image</a>
                   </li>
                 </ul>
@@ -103,12 +103,12 @@ export default (config) => `
         </div>
       </div>
     </div>
-    <div id="climate-maps-viewport" class="h-100 mt-2">
+    <div id="climate-maps-viewport" class="h-100 mt-2 pb-2" style="min-height:35rem;">
       <div id="info-row" class="w-100">
       </div>
       <div id="map-for-print-left" class="d-none d-none"></div>
       <div id="map-for-print-right" class="d-none d-none"></div>
-      <div id="map-row" class="w-100 d-flex">
+      <div id="map-row" class="w-100 d-flex" style="overflow: hidden">
         <div id="map-element" class="d-flex w-100">
           <div id="local-climate-map-element" class="map-element p-0 h-100 w-100" style="height: 100% !important;"></div>
           <div id="map-message" class="map-nodata-message d-none"></div>

@@ -763,9 +763,18 @@ function setGraphSize() {
   let info_section = document.querySelector(".info-section");
   let info_height = px_to_rem(info_section.getBoundingClientRect().height);
 
-  let height = body_height - search_height - info_height - nav_height - footer_height;
+  let legend_heights = 0;
+  let legend_el = document.querySelector("#legend-wrapper");
+  if (legend_el) {
+    legend_heights += px_to_rem(legend_el.getBoundingClientRect().height);
+  }
+  let monthly_legend_el = document.querySelector("#monthly-select-wrapper");
+  if (monthly_legend_el) {
+    legend_heights += px_to_rem(monthly_legend_el.getBoundingClientRect().height);
+  }
+  let height = body_height - search_height - info_height - nav_height - footer_height - legend_heights;
 
-  graph_body.style.setProperty('height', `calc(${height}rem - 1rem`);
+  graph_body.style.setProperty('height', `calc(${height}rem - 1.75rem`);
 }
 
 function setGraphSizeWeatherData() {

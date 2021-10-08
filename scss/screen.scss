@@ -1,6 +1,5 @@
 @import "./color_utils";
 @import "../node_modules/bootstrap/scss/functions";
-@import "../node_modules/bootstrap/scss/bootstrap";
 
 // ce3 colors
 $ce3-blue1: #0B2752; // very dark
@@ -98,6 +97,10 @@ $font-weight-normal-plus: 500; // 600;
 $font-weight-meduim: 500; // 700;
 $font-weight-heavy: 800;
 $font-weight-very-heavy: 900;
+
+// end Bootstrap customization
+
+@import "../node_modules/bootstrap/scss/bootstrap";
 
 // IMPORTS
 @import "compass/functions";
@@ -1582,8 +1585,7 @@ input.input-inner-default:focus {
 // LOCATIOn
 
 @import "pages/climate_graphs";
-@import "pages/climate_maps"; // remove once bootstrap refactoring done
-@import "pages/new_climate_maps";
+@import "pages/climate_maps";
 @import "pages/historical_weather_data";
 @import "pages/historical_thresholds";
 @import "pages/high_tide_flooding";
@@ -1948,8 +1950,8 @@ body.is-ak-area .opt-not-ak, body.is-island-area .opt-not-island {
 }
 
 .info-section {
-  min-width: fit-content;
   min-width: -moz-fit-content;
+  min-width: fit-content;
   text-align: center;
 }
 
@@ -2003,6 +2005,8 @@ body.is-ak-area .opt-not-ak, body.is-island-area .opt-not-island {
   box-shadow: none;
   width: auto !important;
   color: $navbar-background !important;
+  padding-top: $spacer * .5 !important;
+  padding-bottom: $spacer * .5 !important;
 
   &:not(.collapsed) {
     background-color: white !important;
