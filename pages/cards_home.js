@@ -1,5 +1,5 @@
 import head from '../template/head'
-import secondary_header from '../template/secondary_header';
+import secondary_header from '../template/nav_header';
 import nav_footer from '../template/nav_footer';
 import footer from '../template/footer';
 // language=HTML

@@ -1,7 +1,7 @@
 // language=HTML
 export default (config) => `
   <!-- BEGIN SECONDARY_HEADER TEMPLATE -->
-  <nav class="navbar fixed-top navbar-expand-sm navbar-element">
+  <nav class="navbar sticky-top navbar-expand-sm navbar-element">
     <div class="container-fluid">
       <a class="navbar-brand p-2 rounded-2" href="/">
         <i class="fas fa-home"></i>

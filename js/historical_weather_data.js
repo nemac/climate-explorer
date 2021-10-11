@@ -414,7 +414,7 @@ $(function () {
   function setChartSize() {
 
     let nav_element = document.querySelector(".navbar-element");
-    let footer_element = document.querySelector(".footer-element");
+    let footer_element = document.querySelector(".nav_footer");
 
     let nav_height = px_to_rem(nav_element.getBoundingClientRect().height);
     let footer_height = px_to_rem(footer_element.getBoundingClientRect().height);

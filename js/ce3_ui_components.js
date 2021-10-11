@@ -727,9 +727,9 @@ $('.share-link').click(function (e) {
  * stickied nav and footer.
  */
 function setBodySize() {
-
+  return
   let nav_element = document.querySelector(".navbar-element");
-  let footer_element = document.querySelector(".footer-element");
+  let footer_element = document.querySelector(".nav_footer");
   let body = document.querySelector(".body-size");
 
   if(nav_element) {
@@ -745,9 +745,9 @@ function setBodySize() {
 }
 
 function setGraphSize() {
-
+  return
   let nav_element = document.querySelector(".navbar-element");
-  let footer_element = document.querySelector(".footer-element");
+  let footer_element = document.querySelector(".nav_footer");
 
   let nav_height = px_to_rem(nav_element.getBoundingClientRect().height);
   let footer_height = px_to_rem(footer_element.getBoundingClientRect().height);
@@ -778,9 +778,9 @@ function setGraphSize() {
 }
 
 function setGraphSizeWeatherData() {
-
+  return
   let nav_element = document.querySelector(".navbar-element");
-  let footer_element = document.querySelector(".footer-element");
+  let footer_element = document.querySelector(".nav_footer");
 
   let nav_height = px_to_rem(nav_element.getBoundingClientRect().height);
   let footer_height = px_to_rem(footer_element.getBoundingClientRect().height);

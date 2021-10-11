@@ -1,5 +1,5 @@
 import head from '../template/head'
-import secondary_header from '../template/secondary_header';
+import secondary_header from '../template/nav_header';
 import variable_selector from '../template/variable_selector';
 import footer from '../template/footer';
 import nav_footer from '../template/nav_footer';
@@ -8,7 +8,7 @@ import chart_explainer from '../template/chart_explainer';
 // language=HTML
 export default (config) => `
   <!DOCTYPE  html>
-  <html lang='en' class="h-100">
+  <html lang='en'>
   <head>
     ${head(config)}
     <meta property="fb:app_id" content="187816851587993">
@@ -19,7 +19,7 @@ export default (config) => `
           content="The Climate Explorer allows you to view historical and projected climate variables and assess the impacts of climate change on the things you care about">
     <meta property="og:image" content="/img/og.jpg">
   </head>
-  <body class="h-100">
+  <body>
   ${secondary_header(config)}
   <div class="container-fluid body-size h-100" style="overflow-y:auto;">
     <div class="mt-2 search-station-row row">
@@ -114,6 +114,7 @@ export default (config) => `
         </div>
       </div>
     </div>
+    
     <div id="chart-row" class="graph-body d-flex-column" style="min-height: 30rem;">
       <div id="chart-wrap" class="chart-wrap d-flex d-flex-center width-100">
         <div id="chart-123" class="chart-canvas width-100 height-100" data-chart-ID="123"></div>

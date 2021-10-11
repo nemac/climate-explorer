@@ -1,7 +1,7 @@
 export default (config) => `
-<div id="desktop-warning">
-  <p>The Climate Explorer is optimized for desktop use. Please visit the site on a desktop computer.</p>
-</div>
+<!--[if IE]>
+    <p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience and security. <button onclick="$('.browserupgrade').remove()"></button></p>
+<![endif]-->
 
 <!-- START candidates for minification -->
 <script type="text/javascript" src="/vendor/formstone/core.js"></script>

@@ -1,5 +1,11 @@
-@import "./color_utils";
 @import "../node_modules/bootstrap/scss/functions";
+
+$search-input-background: #E9F1FC;
+$navbar-background: #0D3064;
+$navbar-button-background: #124086;
+$navbar-dropdown-background: #D3E3F9;
+$navbar-hover-background: #A6C6F3;
+$input-box-border: #7D98C1;
 
 // ce3 colors
 $ce3-blue1: #0B2752; // very dark
@@ -60,8 +66,8 @@ $ce3-main-btn-height: 60px;
 $ce3-btn-height: 36px;
 $ce3-btn-height-legends: 30px;
 
-$ce3-btn-height-smallecreen: 48px;
-$ce3-btn-height-smallecreen-legend: 36px;
+$ce3-btn-height-smallscreen: 48px;
+$ce3-btn-height-smallscreen-legend: 36px;
 
 $ce3-btn-inner-height: 24px;
 
@@ -94,7 +100,7 @@ $sans-book: 'CESans', Roboto, Helvetica, 'Helvetica Neue', Arial, sans-serif; //
 $sans-heavy: 'CESans-Heavy', Roboto, Helvetica, 'Helvetica Neue', Arial, sans-serif; // legacy left out for consistency
 $font-weight-normal: 500;
 $font-weight-normal-plus: 500; // 600;
-$font-weight-meduim: 500; // 700;
+$font-weight-medium: 500; // 700;
 $font-weight-heavy: 800;
 $font-weight-very-heavy: 900;
 
@@ -259,7 +265,7 @@ h6 {
 .default-btn-height {
   height: $ce3-btn-height !important;
   @include medium {
-    height: $ce3-btn-height-smallecreen !important;
+    height: $ce3-btn-height-smallscreen !important;
   }
 }
 
@@ -283,7 +289,7 @@ h6 {
   width: 100%;
   height: $ce3-btn-height !important;
   @include medium {
-    height: $ce3-btn-height-smallecreen !important;
+    height: $ce3-btn-height-smallscreen !important;
   }
 }
 
@@ -637,7 +643,7 @@ h6 {
   }
 
   @include medium {
-    height: $ce3-btn-height-smallecreen !important;
+    height: $ce3-btn-height-smallscreen !important;
   }
 
   &:focus {
@@ -678,7 +684,7 @@ h6 {
   border: 1px solid $ce3-disabled-border !important;
 
   @include medium {
-    height: $ce3-btn-height-smallecreen !important;
+    height: $ce3-btn-height-smallscreen !important;
   }
 
   &:hover, &:focus {
@@ -730,7 +736,7 @@ h6 {
   }
 
   @include medium {
-    height: $ce3-btn-height-smallecreen !important;
+    height: $ce3-btn-height-smallscreen !important;
   }
 
   &:focus {
@@ -764,8 +770,8 @@ h6 {
   min-height: 36px !important;
   max-height: 36px !important;
   @include medium {
-    min-height: $ce3-btn-height-smallecreen !important;
-    max-height: $ce3-btn-height-smallecreen !important;
+    min-height: $ce3-btn-height-smallscreen !important;
+    max-height: $ce3-btn-height-smallscreen !important;
   }
 
   &:hover, &:focus {
@@ -1572,15 +1578,12 @@ input.input-inner-default:focus {
 @import "template/nav_footer";
 // PAGE STRUCTURE
 
-#desktop-warning {
-  display: none;
-}
 
 @import "template/header";
 
 // // HOME PAGE
 
-@import "pages/_home";
+@import "pages/_index";
 
 // LOCATIOn
 
@@ -2019,3 +2022,20 @@ body.is-ak-area .opt-not-ak, body.is-island-area .opt-not-island {
   }
 
 }
+
+html, body {
+  min-height: 100vh;
+  width: 100%;
+}
+body {
+  overflow: auto;
+  display: flex;
+  justify-content: stretch;
+  flex-flow: column nowrap;
+}
+
+main {
+  min-height: 50rem;
+  flex: 1 1 auto;
+}
+

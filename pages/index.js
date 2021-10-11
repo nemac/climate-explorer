@@ -1,11 +1,11 @@
 import head from '../template/head'
-import secondary_header from '../template/secondary_header';
+import secondary_header from '../template/nav_header';
 import footer from '../template/footer';
 
 // language=HTML
 export default (config) => `
 <!doctype html>
-<html lang='en' class="h-100 w-100">
+<html lang='en'>
 <head>
 
   ${head(config)}
@@ -18,10 +18,10 @@ export default (config) => `
   <meta property="og:image" content="/img/og.jpg">
   <meta name="viewport" content="width=device-width, initial-scale=1">
 </head>
-<body class="h-100">
+<body>
   ${secondary_header(config)}
 
-  <div class="container-fluid index-page h-100 body-size w-100">
+  <main class="container-fluid index-page" style="position: relative">
     
     <div class="body-wrapper p-4 m-md-4 m-sm-0">
     
@@ -85,7 +85,7 @@ export default (config) => `
     
     </div>
   
-  </div>
+  </main>
 
  ${footer(config)}
 

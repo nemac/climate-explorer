@@ -1,5 +1,3 @@
-@import "../color_utils";
-
 .index-page {
   background: url(/img/bg_splash-pinal.jpg) no-repeat center center fixed;
   -webkit-background-size: cover;
@@ -68,7 +66,7 @@
   }
 
   .main-logos {
-    position: fixed;
+    position: absolute;
     bottom: 0;
     right: 0;
 

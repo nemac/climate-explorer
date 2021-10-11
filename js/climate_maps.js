@@ -647,7 +647,7 @@ $(function () {
    * The #.height / 16 is attempting to convert it from pixels to rem (1 rem = 16px)
    */
   function setMapSize() {
-
+    return
     let map_element = document.getElementById("map-element");
 
     map_element.style.height = "100% !important";

@@ -1,5 +1,5 @@
 import head from '../template/head'
-import secondary_header from '../template/secondary_header';
+import secondary_header from '../template/nav_header';
 import variable_selector from '../template/variable_selector';
 import footer from '../template/footer';
 import nav_footer from '../template/nav_footer';
@@ -7,7 +7,7 @@ import nav_footer from '../template/nav_footer';
 // language=HTML
 export default (config) => `
   <!doctype html>
-  <html lang='en' class="h-100">
+  <html lang='en'>
   <head>
     ${head(config)}
     <meta property="fb:app_id" content="187816851587993">
@@ -18,9 +18,9 @@ export default (config) => `
           content="The Climate Explorer allows you to view historical and projected climate variables and assess the impacts of climate change on the things you care about">
     <meta property="og:image" content="/img/og.jpg">
   </head>
-  <body class="h-100">
+  <body>
   ${secondary_header(config)}
-  <div class="container-fluid d-flex-column h-100 body-size">
+  <main class="container-fluid d-flex-column" style="position: relative;">
     <div class="row mt-2 search-station-row">
       <div class="col-12 col-md-7 col-lg-8">
         <div class="input-group search-input-group rounded-2 border border-1 me-2">
@@ -103,19 +103,19 @@ export default (config) => `
         </div>
       </div>
     </div>
-    <div id="climate-maps-viewport" class="h-100 mt-2 pb-2" style="min-height:35rem;">
+    <div id="climate-maps-viewport" class="d-flex flex-column mt-2 pb-2" style="min-height:35rem;">
       <div id="info-row" class="w-100">
       </div>
       <div id="map-for-print-left" class="d-none d-none"></div>
       <div id="map-for-print-right" class="d-none d-none"></div>
-      <div id="map-row" class="w-100 d-flex" style="overflow: hidden">
-        <div id="map-element" class="d-flex w-100">
-          <div id="local-climate-map-element" class="map-element p-0 h-100 w-100" style="height: 100% !important;"></div>
+      <div id="map-row" class="w-100 flex-grow-1 d-flex flex-column" style="overflow: hidden">
+        <div id="map-element" class="d-flex flex-column w-100">
+          <div id="local-climate-map-element" class="map-element p-0 flex-grow-1"></div>
           <div id="map-message" class="map-nodata-message d-none"></div>
         </div>
       </div>
     </div>
-  </div>
+  </main>
   ${nav_footer(config)}
   ${footer(config)}
   <script src="https://unpkg.com/terraformer@1.0.8/terraformer.js" integrity="sha384-+M797Pj3WZVCwMmLbOxAoaWYcKJo8NSxItmI48ytcLNeAnfn1d/IckFn31jEqrzP"

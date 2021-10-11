@@ -1,5 +1,5 @@
 import head from '../template/head'
-import secondary_header from '../template/secondary_header';
+import secondary_header from '../template/nav_header';
 import share from '../template/share';
 import footer from '../template/footer';
 
