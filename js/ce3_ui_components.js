@@ -722,90 +722,6 @@ $('.share-link').click(function (e) {
   }
 })
 
-/**
- * This function handles the dynamic sizing of the body by adding padding to the top and bottom of the page to account for the
- * stickied nav and footer.
- */
-function setBodySize() {
-  return
-  let nav_element = document.querySelector(".navbar-element");
-  let footer_element = document.querySelector(".nav_footer");
-  let body = document.querySelector(".body-size");
-
-  if(nav_element) {
-    let nav_height = px_to_rem(nav_element.getBoundingClientRect().height);
-    body.style.paddingTop = nav_height + "rem";
-  }
-
-  if(footer_element) {
-    let footer_height = px_to_rem(footer_element.getBoundingClientRect().height);
-    body.style.paddingBottom = footer_height + "rem";
-  }
-
-}
-
-function setGraphSize() {
-  return
-  let nav_element = document.querySelector(".navbar-element");
-  let footer_element = document.querySelector(".nav_footer");
-
-  let nav_height = px_to_rem(nav_element.getBoundingClientRect().height);
-  let footer_height = px_to_rem(footer_element.getBoundingClientRect().height);
-
-  let graph_body = document.querySelector(".graph-body");
-
-  let body_size = document.querySelector(".body-size");
-  let body_height = px_to_rem(body_size.getBoundingClientRect().height);
-
-  let search_row = document.querySelector(".search-station-row");
-  let search_height = px_to_rem(search_row.getBoundingClientRect().height);
-
-  let info_section = document.querySelector(".info-section");
-  let info_height = px_to_rem(info_section.getBoundingClientRect().height);
-
-  let legend_heights = 0;
-  let legend_el = document.querySelector("#legend-wrapper");
-  if (legend_el) {
-    legend_heights += px_to_rem(legend_el.getBoundingClientRect().height);
-  }
-  let monthly_legend_el = document.querySelector("#monthly-select-wrapper");
-  if (monthly_legend_el) {
-    legend_heights += px_to_rem(monthly_legend_el.getBoundingClientRect().height);
-  }
-  let height = body_height - search_height - info_height - nav_height - footer_height - legend_heights;
-
-  graph_body.style.setProperty('height', `calc(${height}rem - 1.75rem`);
-}
-
-function setGraphSizeWeatherData() {
-  return
-  let nav_element = document.querySelector(".navbar-element");
-  let footer_element = document.querySelector(".nav_footer");
-
-  let nav_height = px_to_rem(nav_element.getBoundingClientRect().height);
-  let footer_height = px_to_rem(footer_element.getBoundingClientRect().height);
-
-  let graph_body = document.querySelector(".graph-body");
-
-  let body_size = document.querySelector(".body-size");
-  let body_height = px_to_rem(body_size.getBoundingClientRect().height);
-
-  let search_row = document.querySelector(".search-station-row");
-  let search_height = px_to_rem(search_row.getBoundingClientRect().height);
-
-  let info_section = document.querySelector(".info-section");
-  let info_height = px_to_rem(info_section.getBoundingClientRect().height);
-
-  let height = body_height - search_height - info_height - nav_height - footer_height;
-
-  graph_body.style.setProperty('height', `calc(${height}rem - 1rem`);
-
-  $(".chart-body").height(`calc(${height}rem - 2rem`);
-  $("#multi-precip-chart").css('padding-bottom', `${footer_height}rem`);
-  // let chart_body = document.querySelector(".chart-body");
-  // chart_body.style.setProperty('height', `calc(${height}rem - 1rem`);
-}
-
 function noStationsMapMessage(msg) {
 
   let message_element = $("#stations-map-message");
@@ -819,32 +735,10 @@ function noStationsMapMessage(msg) {
 
 }
 
-setBodySize();
-
-$(window).resize(function () {
-  setBodySize();
-})
 
 function px_to_rem(px) {
   const base_font_size = parseInt(window.getComputedStyle(document.body).getPropertyValue('font-size').replace(/\D/g, ''));
   return px / base_font_size;
-}
-
-let accordion = $(".accordion-click");
-
-// When the accordion is closed, it should resize the graph
-
-if(accordion.length > 0) {
-
-  accordion.on('click', function() {
-
-    setTimeout(() => {
-      window.dispatchEvent(new Event('resize'));
-      setGraphSize();
-    }, 300);
-
-  })
-
 }
 
 // todo cleanup global functions
@@ -857,7 +751,4 @@ window.setSelectFromButton = setSelectFromButton;
 window.forceResize = forceResize;
 window.reEnableSelectNewItems = reEnableSelectNewItems;
 window.px_to_rem = px_to_rem;
-window.setBodySize = setBodySize;
-window.setGraphSize = setGraphSize;
-window.setGraphSizeWeatherData = setGraphSizeWeatherData;
 window.noStationsMapMessage = noStationsMapMessage;

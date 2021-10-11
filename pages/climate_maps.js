@@ -20,7 +20,7 @@ export default (config) => `
   </head>
   <body>
   ${secondary_header(config)}
-  <main class="container-fluid d-flex-column" style="position: relative;">
+  <main class="container-fluid d-flex flex-column" style="position: relative;">
     <div class="row mt-2 search-station-row">
       <div class="col-12 col-md-7 col-lg-8">
         <div class="input-group search-input-group rounded-2 border border-1 me-2">
@@ -90,8 +90,8 @@ export default (config) => `
                   Downloads
                 </a>
                 <ul class="dropdown-menu download-select" aria-labelledby="download-dropdown-menu">
-                  <li class="default-select-option" data-value="download-lefttmap-image" data-icon="fas fa-download select-icon">
-                    <a class="dropdown-item download-link" data-value="download-lefttmap-image" href="javascript:void(0);">Download left map as image</a>
+                  <li class="default-select-option" data-value="download-leftmap-image" data-icon="fas fa-download select-icon">
+                    <a class="dropdown-item download-link" data-value="download-leftmap-image" href="javascript:void(0);">Download left map as image</a>
                   </li>
                   <li class="default-select-option" data-value="download-rightmap-image" data-icon="fas fa-download select-icon">
                     <a class="dropdown-item download-link" data-value="download-rightmap-image" href="javascript:void(0);">Download right map as image</a>
@@ -103,13 +103,13 @@ export default (config) => `
         </div>
       </div>
     </div>
-    <div id="climate-maps-viewport" class="d-flex flex-column mt-2 pb-2" style="min-height:35rem;">
+    <div id="climate-maps-viewport" class="d-flex flex-column flex-grow-1 mt-2 pb-2" style="min-height:35rem;">
       <div id="info-row" class="w-100">
       </div>
       <div id="map-for-print-left" class="d-none d-none"></div>
       <div id="map-for-print-right" class="d-none d-none"></div>
       <div id="map-row" class="w-100 flex-grow-1 d-flex flex-column" style="overflow: hidden">
-        <div id="map-element" class="d-flex flex-column w-100">
+        <div id="map-element" class="d-flex flex-column w-100 flex-grow-1">
           <div id="local-climate-map-element" class="map-element p-0 flex-grow-1"></div>
           <div id="map-message" class="map-nodata-message d-none"></div>
         </div>
@@ -122,7 +122,6 @@ export default (config) => `
           crossorigin="anonymous"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/0.4.1/html2canvas.min.js" integrity="sha256-c3RzsUWg+y2XljunEQS0LqWdQ04X1D3j22fd/8JCAKw="
           crossorigin="anonymous"></script>
-  <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/0.5.0-beta4/html2canvas.min.js" integrity="sha256-w6/1B0uwkpR3uX0YUw3k2zzHnq6xDNdVZHLIdz8xV6I=" crossorigin="anonymous"></script> -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/dom-to-image/2.6.0/dom-to-image.js" integrity="sha256-Tw0/gX6aFDMese6GHQJFL/ZjF+f7edyF9okFVY/B9oU="
           crossorigin="anonymous"></script>
   <script src="https://unpkg.com/terraformer-arcgis-parser@1.0.5/terraformer-arcgis-parser.js"

@@ -436,6 +436,4 @@ $(function () {
     }))
   }
 
-  setBodySize();
-
 });

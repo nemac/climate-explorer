@@ -127,9 +127,6 @@
   position: relative;
 }
 
-#local-climate-map-element {
-  position: absolute;
-}
 
 .average-year-label {
   background-color: $search-input-background;
@@ -153,10 +150,344 @@
   }
 }
 
-#map-row {
-  height: 100% !important;
+// NOTE most of the css will be found _climate-graphs.scscc
+// only when we need to overide or add missing css will the css appear here
+
+#climate-maps-viewport {
+  background-color: $white;
+  overflow-x: auto;
+  //height: calc(100% - 7rem) !important;
+  //min-height: calc(100% - 7rem) !important;
+  //
+  //@include kind-of-tiny {
+  //  min-height: calc(100% - 48px - 12px - 64px) !important;
+  //  height: calc(100% - 48px - 12px - 64px) !important;
+  //}
+  flex: 1 1 auto !important;
+  margin-bottom: 6px;
+
+  //&:after {
+  //  content: '';
+  //  width: 100%;
+  //  height: 5px;
+  //  position: absolute;
+  //  top: calc(100% - 105px);
+  //
+  //  @include kind-of-tiny {
+  //    top: calc(100% - 75px);
+  //  }
+  //  left: -2px;
+  //  @include box-shadow( inset 0 -2px 2px transparentize(#000, 0.7));
+  //}
+
+  //&.expanded {
+  //  @include medium-expand-bottom {
+  //    min-height: calc(100% - 48px - 12px - 100px) !important;
+  //    height: calc(100% - 48px - 12px - 100px) !important;
+  //    &:after {
+  //      top: calc(100% - 117px);
+  //
+  //      @include kind-of-tiny {
+  //        top: calc(100% - 147px);
+  //      }
+  //    }
+  //  }
+  //
+  //  min-height: calc(100% - 48px - 12px - 170px) !important;
+  //  height: calc(100% - 48px - 12px - 170px) !important;
+  //  &:after {
+  //    top: calc(100% - 187px);
+  //
+  //    @include kind-of-tiny {
+  //      top: calc(100% - 147px);
+  //    }
+  //  }
+  //
+  //  @include kind-of-tiny {
+  //    min-height: calc(100% - 48px - 12px - 130px) !important;
+  //    height: calc(100% - 48px - 12px - 130px) !important;
+  //  }
+  //}
+  //
+  //.top-select-wrapper {
+  //  width: 34% !important;
+  //  &-minor {
+  //    width: 5% !important;
+  //  }
+  //}
+  //
+  //.search-box-secondary {
+  //  @include medium {
+  //    width: 100% !important;
+  //    display: inline-block !important;
+  //  }
+  //}
+
+  //#time-wrapper {
+  //  min-width: 320px;
+  //  @include tablet {
+  //    min-width: 280px;
+  //  }
+  //  .btn-default {
+  //    font-size: .9rem !important
+  //  }
+  //}
 }
 
-.climate-maps-body {
-  height: calc(100vh - 7rem);
+.map-nodata-message {
+  z-index: 500;
+  width: 50%;
+  position: relative;
+  top: -250px;
+  left: 150px;
+  @include very-small {
+    top: -200px !important;
+    left: 10% !important;
+    width: 80%;
+  }
+  text-align: center;
+  padding: $ce3-default-padding;
+  background-color: $ce3-warning-state!important;
+  color: $ce3-blue6 !important;
+  // background-color: lighten($ce3-warning-state, 30)!important;
+  // color: $ce3-warning-state !important;
+  font: $font-weight-normal 14px $roboto !important;
+  border: 1px solid $ce3-warning-state !important;
+  @include border-radius(5px, 5px);
+}
+
+
+#map-for-print-left , #map-for-print-right {
+  .legend {
+    margin: $ce3-default-padding;
+    padding: $ce3-default-padding;
+    background-color: white;
+    position: relative;
+    top: 34px;
+  }
+}
+
+#map-row {
+  justify-content: space-evenly !important;
+  min-width: 60rem;
+
+  #local-climate-map-element {
+    width: 100%;
+    flex-wrap: wrap;
+  }
+
+  .scenario-map-legend-container {
+    .legend-unit-label {
+      font: $font-weight-normal 14px $roboto !important;
+      padding-bottom: $ce3-padding-half;
+    }
+  }
+
+  .scenario-map-overlay-container {
+    position: absolute;
+    top:0;
+    left:0;
+    right:0;
+    bottom:0;
+  }
+
+  .bottom-scenario-controls {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+  }
+  .esri-popup__main-container, .scenario-map-inspect-container {
+    height: -moz-fit-content;
+    height: fit-content;
+    width: 17rem;
+    padding: 0.45rem 0.55rem;
+    background: #ffffffed;
+    box-shadow: 2px 1px 5px rgba(0, 0, 0, 0.5);
+    border: solid 1.3px rgba(0, 0, 0, 0.3);
+    font-size: 1rem;
+    font-weight: 500;
+    /* margin: 0rem auto; */
+    .esri-popup__header-title {
+      font-size: 0.9rem;
+      line-height: 1.5rem;
+      font-weight: 500;
+    }
+    .esri-popup__content {
+      margin: 0;
+    }
+
+    .area-stats {
+      display: grid;
+      grid-template-columns: auto auto;
+      //grid-gap: 0.6rem;
+      margin-right: 0.5rem;
+      margin-left: 0.5rem;
+      font-size: 1rem;
+      font-weight: 500;
+      line-height: 1.5rem;
+
+      .btn-default {
+        margin: 0.6rem auto 0.3rem auto !important;
+        text-decoration: none !important;
+        text-align: center;
+      }
+
+      .area_social_value, .area_hist_mean_value, .area_rcp45_value, .area_rcp85_value {
+        font-size: 1.1rem;
+        padding-left: 1rem;
+        padding-bottom: 0.25rem
+      }
+
+      .bg-rcp85 { background-color: rgba(247,105,86,0.1)}
+      .bg-rcp45 { background-color: rgba(50,121,216,0.1)}
+      .bg-hist { background: rgba(187,187,187,0.1)}
+      .label1 { font-size: 1rem; font-weight: 700; line-height: 1.5rem; grid-column: 1 / span 2;}
+      .label2 { font-size: 0.7rem; padding-left: 0.3rem; line-height: 1rem; grid-column: 1 / span 2}
+    }
+  }
+
+  .esri-view-user-storage {
+    height: unset !important;
+  }
+}
+
+
+.esri-expand__container {
+  height: 32px;
+  width: 32px;
+}
+
+.legend-image {
+  max-height: 16rem;
+  max-width: none;
+}
+
+.esri-view-surface .esri-display-object {
+  width: 100%;
+  height: 100%;
+}
+
+.esri-ui-top-left .esri-expand__content, .esri-ui-top-right .esri-expand__content {
+  top: -32px !important;
+}
+
+.esri-view-width-xsmall .esri-component.esri-expand.esri-widget.esri-expand--auto {
+  display: none !important;
+}
+
+.esri-view-width-xsmall .esri-expand--auto .esri-expand__container--expanded {
+  position: relative !important;
+}
+
+.esri-view-width-greater-than-xsmall .esri-expand--auto .esri-expand__content {
+  position: relative !important;
+}
+
+.esri-ui-corner .esri-component .esri-expand__content {
+  max-height: 260px !important;
+  height: 260px;
+  @include short {
+    max-height: 200px !important;
+    height: 200px;
+  }
+  background-color: $ce3-blue6;
+  padding: $ce3-padding-half;
+  overflow: hidden;
+}
+
+.scenario-map-overlay-container {
+  position: relative;
+}
+
+.esri-expand__content.esri-expand__content--expanded {
+  width: 100px;
+
+  @include short {
+    width: 90px;
+  }
+
+  .legend-note-label {
+    display: none;
+  }
+
+  img {
+    margin-top: $ce3-padding-half;
+    height: 224px;
+    width: 76px;
+    @include short {
+      height: 164px;
+      width: 55px;
+    }
+  }
+
+  .esri-basemap-gallery__item-thumbnail {
+    height: 64px;
+    width: auto;
+    box-shadow: 0 0 0 1px rgba(50,50,50,0.25)
+  }
+}
+
+.esri-view {
+  padding: $ce3-default-padding;
+}
+
+.esri-view-surface {
+  @include border-radius(5px);
+}
+
+.movable {
+  position: absolute;
+  width: 4px;
+  height: 100%;
+  top: 0;
+  margin: 0;
+  padding: 0 !important;
+  background: $ce3-blue5;
+  z-index: 100;
+  cursor: col-resize;
+  box-shadow: 1px 0 2px 0 rgba(0, 0, 0, 0.15);
+  .handle {
+    position: relative;
+    top: 50%;
+    left: -23px;
+    width: 48px;
+    height: 36px;
+    @include border-radius(20px);
+    box-shadow: 1px 0 2px 0 rgba(0, 0, 0, 0.15);
+
+    &:after {
+      cursor: col-resize;
+      position: absolute;
+      background-color: transparentize($ce3-blue3, 0.04);
+      color: $ce3-blue5 !important;
+      font-family: 'Font Awesome 5 Free';
+      font-weight: $font-weight-very-heavy;
+      content: '\f0d9\00a0\00a0\00a0\f0da';
+      width: 48px;
+      height: 36px;
+      border-radius: 36px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border: none !important;
+      font-size: 1.25rem;
+    }
+  }
+}
+
+#local-climate-map-element,
+.esri-view-root,
+.esri-view-surface,
+.esri-display-object,
+.esri-view,
+.esri-bitmap {
+  &:focus {
+    outline: none !important;
+  }
+}
+
+.warning-link {
+  color: darken($ce3-warning-state, 20);
+  font-weight: $font-weight-heavy;
+  text-decoration: underline;
 }

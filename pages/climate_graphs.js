@@ -21,7 +21,7 @@ export default (config) => `
   </head>
   <body>
   ${secondary_header(config)}
-  <div class="container-fluid body-size h-100" style="overflow-y:auto;">
+  <main class="container-fluid body-size">
     <div class="mt-2 search-station-row row">
       <div class="col-12 col-md-7 col-lg-8">
         <div class="input-group search-input-group rounded-2 border border-1 me-2">
@@ -115,47 +115,47 @@ export default (config) => `
       </div>
     </div>
     
-    <div id="chart-row" class="graph-body d-flex-column" style="min-height: 30rem;">
-      <div id="chart-wrap" class="chart-wrap d-flex d-flex-center width-100">
-        <div id="chart-123" class="chart-canvas width-100 height-100" data-chart-ID="123"></div>
+    <div id="chart-row" class="graph-body d-flex flex-column flex-grow-1">
+      <div id="chart-wrap" class="chart-wrap d-flex flex-column flex-grow-1">
+        <div id="chart-123" class="chart-canvas flex-grow-1" data-chart-ID="123" style="height: 250px;"></div>
         <div id="chart-message" class="chart-nodata-message d-none"></div>
       </div>
-    </div>
 
-    <div id="legend-wrapper" class="d-flex-center flex-wrap mb-2">
-      <div class="btn btn-histobs d-flex-center selected-item border border-1 m-1 rounded-2" data-value="histobs">
-        <div class="inner-histobs ps-3 pe-3 pt-2 pb-2 me-2 rounded-2"></div>
-        Observations
+      <div id="legend-wrapper" class="d-flex-center flex-wrap mb-2">
+        <div class="btn btn-histobs d-flex-center selected-item border border-1 m-1 rounded-2" data-value="histobs">
+          <div class="inner-histobs ps-3 pe-3 pt-2 pb-2 me-2 rounded-2"></div>
+          Observations
+        </div>
+        <div class="btn btn-histmod d-flex-center selected-item border border-1 m-1 rounded-2" data-value="histmod">
+          <div class="inner-histmod ps-3 pe-3 pt-2 pb-2 me-2 rounded-2"></div>
+          Modeled History
+        </div>
+        <div class="btn btn-lower-emissions selected-item d-flex-center border border-1 m-1 rounded-2" data-value="rcp45">
+          <div class="inner-lower-emissions ps-3 pe-3 pt-2 pb-2 me-2 rounded-2"></div>
+          Lower Emissions
+        </div>
+        <div class="btn btn-higher-emissions selected-item d-flex-center border border-1 m-1 rounded-2" data-value="rcp85">
+          <div class="inner-higher-emissions ps-3 pe-3 pt-2 pb-2 me-2 rounded-2"></div>
+          Higher Emissions
+        </div>
       </div>
-      <div class="btn btn-histmod d-flex-center selected-item border border-1 m-1 rounded-2" data-value="histmod">
-        <div class="inner-histmod ps-3 pe-3 pt-2 pb-2 me-2 rounded-2"></div>
-        Modeled History
+      <div id="monthly-select-wrapper" class="d-flex-center flex-wrap mb-2 d-none">
+        <div class="btn selected-item d-flex-center border border-1 m-1 rounded-2" data-value="2025">
+          2010-2040 average
+        </div>
+        <div class="btn default-selection d-flex-center border border-1 m-1 rounded-2" data-value="2050">
+          2035-2065 average
+        </div>
+        <div class="btn default-selection d-flex-center border border-1 m-1 rounded-2" data-value="2075">
+          2060-2090 average
+        </div>
       </div>
-      <div class="btn btn-lower-emissions selected-item d-flex-center border border-1 m-1 rounded-2" data-value="rcp45">
-        <div class="inner-lower-emissions ps-3 pe-3 pt-2 pb-2 me-2 rounded-2"></div>
-        Lower Emissions
-      </div>
-      <div class="btn btn-higher-emissions selected-item d-flex-center border border-1 m-1 rounded-2" data-value="rcp85">
-        <div class="inner-higher-emissions ps-3 pe-3 pt-2 pb-2 me-2 rounded-2"></div>
-        Higher Emissions
-      </div>
+      
     </div>
-    <div id="monthly-select-wrapper" class="d-flex-center flex-wrap mb-2 d-none">
-      <div class="btn selected-item d-flex-center border border-1 m-1 rounded-2" data-value="2025">
-        2010-2040 average
-      </div>
-      <div class="btn default-selection d-flex-center border border-1 m-1 rounded-2" data-value="2050">
-        2035-2065 average
-      </div>
-      <div class="btn default-selection d-flex-center border border-1 m-1 rounded-2" data-value="2075">
-        2060-2090 average
-      </div>
-    </div>
-
-    <div id="chart-info-row" class="d-flex-row flex-justify padding-bottom-half d-flex-left d-none">
+    <div id="chart-info-row" class="d-flex flex-justify padding-bottom-half d-flex-left d-none">
       ${chart_explainer(config)}
     </div>
-  </div>
+  </main>
   ${nav_footer(config)}
   ${footer(config)}
   <script src="https://cdnjs.cloudflare.com/ajax/libs/core-js/2.6.11/core.min.js"

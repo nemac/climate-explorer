@@ -95,7 +95,7 @@ $(function () {
       case 'download-rightmap-image': // download image
         mapToImageRight();
         break;
-      case 'download-lefttmap-image': // download image
+      case 'download-leftmap-image': // download image
         mapToImageLeft();
         break;
       default:
@@ -638,40 +638,6 @@ $(function () {
       });
     window.scenarioComparisonMap.getShowSeasonControls() ? $("#precipitation-map-season").show(200) : $("#precipitation-map-season").hide();
     }
-
-  /**
-   * This function handles the resizing of the map on climate_maps page. It takes the height of the top nav bar
-   * and the height of the footer which it then adds as padding to the top and the bottom of the element containing
-   * the map element.
-   *
-   * The #.height / 16 is attempting to convert it from pixels to rem (1 rem = 16px)
-   */
-  function setMapSize() {
-    return
-    let map_element = document.getElementById("map-element");
-
-    map_element.style.height = "100% !important";
-
-    let climate_map_element = document.getElementById("local-climate-map-element");
-
-    climate_map_element.style.height = "100%";
-
-    let climate_map_height = px_to_rem(climate_map_element.getBoundingClientRect().height);
-
-    let bottom_controls = document.querySelector(".bottom-scenario-controls");
-    bottom_controls.style.top = (climate_map_height - 6) + "rem";
-
-    let slider = document.querySelector(".movable");
-    slider.style.height = climate_map_height + "rem";
-
-  }
-
-  setMapSize();
-  setBodySize();
-
-  $(window).resize(function () {
-    setMapSize();
-  })
 
   updateValidVariable();
   window.addEventListener('location-changed', () => {

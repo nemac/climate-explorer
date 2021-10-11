@@ -125,24 +125,24 @@ $(function () {
 
   // in responsive mode the time is a dropdown this enables the change of the zoom of to
   // historical vs zoom to historical and modeled
-  $('#tidalzoom-select-vis').bind('cs-changed', function (e) {
-  
-    const target = $(e.target);
-
-    const notDisabled = !target.hasClass('btn-default-disabled');
-    if (notDisabled) {
-      const val = $('#tidalzoom-select-vis').data('value');
-      if (!$(`.btn-tidalzoom-${val}`).hasClass('btn-default-selected')) {
-        // toggle button visual state
-        $(`#historical-model-selection`).removeClass('btn-default-selected');
-        $(`#historical-selection`).removeClass('btn-default-selected');
-
-        $(`.btn-tidalzoom-${val}`).addClass('btn-default-selected');
-
-        widget.zoomToggle();
-      }
-    }
-  })
+  // $('#tidalzoom-select-vis').bind('cs-changed', function (e) {
+  //
+  //   const target = $(e.target);
+  //
+  //   const notDisabled = !target.hasClass('btn-default-disabled');
+  //   if (notDisabled) {
+  //     const val = $('#tidalzoom-select-vis').data('value');
+  //     if (!$(`.btn-tidalzoom-${val}`).hasClass('btn-default-selected')) {
+  //       // toggle button visual state
+  //       $(`#historical-model-selection`).removeClass('btn-default-selected');
+  //       $(`#historical-selection`).removeClass('btn-default-selected');
+  //
+  //       $(`.btn-tidalzoom-${val}`).addClass('btn-default-selected');
+  //
+  //       widget.zoomToggle();
+  //     }
+  //   }
+  // })
 
   // the way graphs are handled and initialized require them to visible
   // so we move them off the screen.  this not ideal but we can move
@@ -299,13 +299,11 @@ $(function () {
       // reset map and chart sizes
       // filer transition means heigh will be updates in few seconds
       // so delaying the resize ensures proper size
-      setGraphSize();
       mapMessage();
     }, 600);
   } else {
     showMap();
     toggleChartInfoText('map');
-    setGraphSize();
     mapMessage();
   }
 
@@ -377,7 +375,7 @@ $(function () {
       toggleDownloads();
 
       // reset map and chart sizes
-      setGraphSize();
+      
       mapMessage();
     }
   });
@@ -396,7 +394,7 @@ $(function () {
 
     toggleButton($(target));
 
-    setGraphSize();
+    
     mapMessage();
     showGraphs();
 
@@ -417,7 +415,7 @@ $(function () {
 
     toggleButton($(target));
 
-    setGraphSize();
+    
     mapMessage();
     showMap();
 
@@ -503,8 +501,9 @@ $(function () {
 
       toggleDownloads();
 
+      $('#chart-info-row-btn').removeClass('disabled');
       // reset map and chart sizes
-      setGraphSize();
+      
       mapMessage();
     }
   }, stationsMapState));
@@ -521,11 +520,11 @@ $(function () {
   }
 
   // reset map and chart sizes
-  setGraphSize();
+  
   mapMessage();
 
   $(window).resize(function () {
-    setGraphSize();
+    
     mapMessage();
   })
 
@@ -551,7 +550,7 @@ $(function () {
     // force draw and resize of charts
     showGraphs();
     forceResize();
-    setGraphSize();
+    
     mapMessage();
   })
 });

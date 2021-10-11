@@ -405,14 +405,14 @@ $(function () {
 
   function showMonthlySelect() {
     $('#monthly-select-wrapper').removeClass('d-none').addClass('d-flex-center');
-    setGraphSize();
+
     document.getElementById("monthly-select-wrapper").scrollIntoView({behavior: "smooth"});
   }
 
   function hideMonthlySelect() {
     $('#monthly-select-wrapper').addClass('d-none').removeClass('d-flex-center');
     document.getElementById("legend-wrapper").scrollIntoView({behavior: "smooth"});
-    setGraphSize();
+
   }
 
   Promise.allSettled([ClimateByLocationWidget.when_areas(), ClimateByLocationWidget.when_variables()]).then(
@@ -438,8 +438,6 @@ $(function () {
         $(window).resize(function () {
           window.cbl_chart.resize();
         });
-
-        $('#chart-wrap').addClass('h-100');
 
       });
 
@@ -506,14 +504,8 @@ $(function () {
 
   })
 
-  setBodySize();
-  setGraphSize();
 
   document.getElementById("legend-wrapper").scrollIntoView({behavior: "smooth"});
-
-  $(window).resize(function() {
-    setGraphSize();
-  })
 
   updateValidVariable();
   window.addEventListener('location-changed', () => {

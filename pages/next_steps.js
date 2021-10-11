@@ -22,7 +22,7 @@ export default (config) => `
 
 ${secondary_header(config)}
 
-<div id="next-steps-viewport" class="container-fluid d-flex-column body-size">
+<div id="next-steps-viewport" class="container-fluid d-flex flex-column body-size">
 
   <div class="d-flex flex-row mt-2"> 
       <div class="input-group search-input-group rounded-2 border border-1 w-100">
@@ -41,11 +41,11 @@ ${secondary_header(config)}
       </div>
   </div>
 
-  <div id="card-row" class="d-flex-row flex-justify mt-2">
+  <div id="card-row" class="d-flex flex-justify mt-2">
 
-    <div tabindex="3" id="data-card" class="next-steps-temperate card-xl d-flex d-flex-column">
-      <div id="card-text" class="card-text d-flex-row width-100">
-        <div id="card-title-icon" class="d-flex-row width-100">
+    <div tabindex="3" id="data-card" class="next-steps-temperate card-xl d-flex flex-column">
+      <div id="card-text" class="card-text d-flex w-100">
+        <div id="card-title-icon" class="d-flex w-100">
           <div class="card-title-icon-wrap">
             <img class="card-icon" src="/img/temperate-mark-neutral.svg" alt=""/>
             <div class="card-title-wrap">
@@ -64,7 +64,7 @@ ${secondary_header(config)}
         </label>
         <a href="javascript:" class="methodology-link">Methodology</a>
       </div>
-      <div id="card-description" class="d-flex-column width-100">
+      <div id="card-description" class="d-flex flex-column w-100">
         <div class="disabled-text">Data is not available for this location</div>
       </div>
       <div class="footer">
@@ -75,9 +75,9 @@ ${secondary_header(config)}
       </div>
     </div>
 
-    <div tabindex="4" id="data-card" class="next-steps-nar card-xl d-flex d-flex-column" style="margin-left: 1rem;">
-      <div id="card-text" class="card-text d-flex-row width-100" style="flex-grow: 0 !important;">
-        <div id="card-title-icon" class="d-flex-row width-100">
+    <div tabindex="4" id="data-card" class="next-steps-nar card-xl d-flex flex-column" style="margin-left: 1rem;">
+      <div id="card-text" class="card-text d-flex w-100" style="flex-grow: 0 !important;">
+        <div id="card-title-icon" class="d-flex w-100">
           <div class="card-title-icon-wrap">
             <img src="/img/logo-HE-NAR.png" class="card-icon" alt="HeadWater Economics Neighborhoods at Risk"/>
             <div class="card-title-wrap">
@@ -91,7 +91,7 @@ ${secondary_header(config)}
       </div>
       <div class="card-controls" style="display: none;">
       </div>
-      <div id="card-description" class="d-flex-column width-100" style="padding:0px;border-top:1px solid #ccc;flex-grow:1 !important;">
+      <div id="card-description" class="d-flex flex-column w-100" style="padding:0px;border-top:1px solid #ccc;flex-grow:1 !important;">
         <div class="disabled-text">Data is not available for this location</div>
       </div>
       <div class="footer">
@@ -103,7 +103,7 @@ ${secondary_header(config)}
     </div>
 
     <a id="next-steps-option-2-secretlink" href="https://www.google.com/" target="_blank" class="d-none"></a>
-    <div tabindex="3" id="data-card" class="card-empty-data card-xl d-flex d-flex-column">
+    <div tabindex="3" id="data-card" class="card-empty-data card-xl d-flex flex-column">
     </div>
 
   </div>

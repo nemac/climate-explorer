@@ -6,7 +6,7 @@ import nav_footer from '../template/nav_footer';
 // language=HTML
 export default (config) => `
 <!doctype html>
-<html lang='en' class="h-100">
+<html lang='en'>
 <head>
   ${head(config)}
   <meta property="fb:app_id" content="187816851587993">
@@ -17,11 +17,11 @@ export default (config) => `
   <meta property="og:image" content="/img/og.jpg">
 </head>
 
-<body class="h-100">
+<body>
 
   ${secondary_header(config)}
 
-<div class="container-fluid d-flex-column body-size h-100">
+<main class="container-fluid d-flex flex-column">
   
       <div class="mt-2 row search-station-row"> 
             
@@ -111,16 +111,16 @@ export default (config) => `
           </div> 
       </div>
   
-      <div id="historical-weather-data-viewport" class="graph-body d-flex d-flex-column mt-2">
-          <div id="stations-map-row" class="padding-top-half w-100 h-100 d-flex" style="position: relative;">
-            <div id="stations-map-wrap" class="map-wrap w-100 h-100">
-              <div id="stations-map" class="map-element h-100"></div>
+      <div id="historical-weather-data-viewport" class="graph-body mt-2 flex-grow-1" style="display: flex; flex-flow: column nowrap; flex: 1 1 auto; position:relative;">
+          <div id="stations-map-row" class="padding-top-half" style="display: flex; flex-flow: column nowrap; flex: 1 1 auto; position:relative;">
+            <div id="stations-map-wrap" class="map-wrap d-flex flex-column flex-grow-1">
+              <div id="stations-map" class="map-element flex-grow-1"></div>
               <div id="stations-map-message" class="pt-2 pb-2 pe-1 ps-1 rounded-2 d-none"></div>
             </div>
           </div>
          
-          <div id="stations-graph-row" class="h-100 w-100" >
-            <div id="stations-graph-wrap" class="d-flex-row w-100 h-100">
+          <div id="stations-graph-row" style="display: flex; flex-flow: column nowrap; flex: 1 1 auto; position:relative;" >
+            <div id="stations-graph-wrap" class="d-flex flex-grow-1">
               <div id="multi-chart" class="chart-body left_chart col-12 col-lg-6 h-100"></div>
               <div id="multi-precip-chart" class="chart-body right_chart col-12 col-lg-6 h-100"></div>
             </div>
@@ -128,7 +128,7 @@ export default (config) => `
       
       </div>
   
-      <div id="station-info-row" class="d-flex-row flex-justify padding-bottom d-flex-left d-none">
+      <div id="station-info-row" class="d-flex flex-justify padding-bottom d-flex-left d-none">
         <div class="modal fade" id="aboutModal" tabindex="-1" aria-labelledby="aboutModalLabel" aria-hidden="true">
         <div class="modal-dialog modal-fullscreen-md-down modal-xl">
           <div class="modal-content p-3">
@@ -150,7 +150,7 @@ export default (config) => `
         </div>
       </div>
     </div>
-</div>
+</main>
 
 
 ${nav_footer(config)}

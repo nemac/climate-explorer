@@ -22,7 +22,7 @@ export default (config) => `
 
   ${secondary_header(config)}
 
-  <div class="container-fluid d-flex d-flex-column body-size">
+  <main class="container-fluid d-flex flex-column">
     
     <div>
 
@@ -306,7 +306,7 @@ Beyond spatial interpolation and natural interannual variability, other elements
       
       </div>
     </div>
-  </div>
+  </main>
 
 
   ${nav_footer(config)}

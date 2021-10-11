@@ -6,7 +6,7 @@ import nav_footer from '../template/nav_footer';
 // language=HTML
 export default (config) => `
 <!doctype html>
-<html lang='en' class="h-100">
+<html lang='en'>
 <head>
   ${head(config)}
   <meta property="fb:app_id" content="187816851587993">
@@ -17,11 +17,11 @@ export default (config) => `
   <meta property="og:image" content="/img/og.jpg">
 </head>
 
-<body class="h-100">
+<body>
 
   ${secondary_header(config)}
 
-    <div class="container-fluid body-size h-100">
+    <main class="container-fluid">
         <div class="mt-2 row search-station-row"> 
             
           <div class="col-12 col-md-7 col-lg-8"> 
@@ -71,8 +71,8 @@ export default (config) => `
                     </div>
                      
                     <div class="col-md-12 col-lg-6 col-xl-3 btn-group mt-1 mb-1 info-section" id="time-wrapper">
-                      <label id="historical-selection" class="btn ps-4 pe-4 default-selection disabled" id="btn-tidalzoom" data-value="Historical">Historical</label>
-                      <label id="historical-model-selection" class="btn ps-4 pe-4 default-selection disabled" id="btn-tidalzoom"
+                      <label id="historical-selection" class="btn ps-4 pe-4 default-selection disabled" data-value="Historical">Historical</label>
+                      <label id="historical-model-selection" class="btn ps-4 pe-4 default-selection disabled"
 data-value="Historical and Modeled">Historical & Modeled</label>
                     </div>
                     
@@ -106,18 +106,18 @@ data-value="Historical and Modeled">Historical & Modeled</label>
             </div> 
         </div>
 
-        <div id="high-tide-flooding-viewport" class="graph-body d-flex d-flex-column mt-2">
+        <div id="high-tide-flooding-viewport" class="graph-body mt-2" style="display: flex; flex-flow: column nowrap; flex: 1 1 auto; position:relative;">
         
-            <div id="stations-map-row" class="d-flex h-100 w-100">
-              <div id="stations-map-wrap" class="map-wrap h-100 w-100" style="position: relative;">
-                <div id="stations-map" class="map-element h-100"></div>
-                <div id="stations-map-message" class="pt-2 pb-2 pe-1 rounded-2 ps-1 d-none"></div>
+            <div id="stations-map-row" style="display: flex; flex-flow: column nowrap; flex: 1 1 auto; position:relative;">
+              <div id="stations-map-wrap" class="map-wrap d-flex flex-column flex-grow-1">
+                <div id="stations-map" class="map-element flex-grow-1"></div>
+                <div id="stations-map-message" class="py-2 px-1 rounded-2  d-none"></div>
               </div>
             </div>
         
-            <div id="stations-graph-row" class="w-100 h-100" >
-              <div id="stations-graph-wrap" class="w-100 d-flex-row">
-                <div id="tidal-chart" class="tidal-chart d-flex-center w-100">
+            <div id="stations-graph-row" class="w-100 h-100" style="display: flex; flex-flow: column nowrap; flex: 1 1 auto; position:relative;">
+              <div id="stations-graph-wrap" class="d-flex flex-column flex-grow-1">
+                <div id="tidal-chart" class="tidal-chart">
                 </div>
               </div>
             </div>
@@ -141,7 +141,7 @@ data-value="Historical and Modeled">Historical & Modeled</label>
             </div>
         </div>
 
-    </div>
+    </main>
 
     
     <!-- </div> -->

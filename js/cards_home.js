@@ -43,6 +43,4 @@ $(function () {
     }
   }
 
-  setBodySize();
-
 });

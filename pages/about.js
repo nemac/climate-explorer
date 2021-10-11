@@ -19,7 +19,7 @@ export default (config) => `
   </head>
   <body>
   ${secondary_header(config)}
-  <div class="container-fluid d-flex d-flex-column body-size">
+  <main class="container-fluid d-flex flex-column">
     <div>
       <div class="main-title mt-3 mb-3">
         <h2>ABOUT The U.S. Climate Resilience Toolkit CLIMATE EXPLORER (version 3.1)</h2>
@@ -236,7 +236,7 @@ export default (config) => `
         </p>
       </div>
     </div>
-  </div>
+  </main>
   ${nav_footer(config)}
   ${footer(config)}
   <script src="https://unpkg.com/terraformer@1.0.8/terraformer.js" integrity="sha384-+M797Pj3WZVCwMmLbOxAoaWYcKJo8NSxItmI48ytcLNeAnfn1d/IckFn31jEqrzP"

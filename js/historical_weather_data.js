@@ -93,8 +93,6 @@ $(function () {
     $('#chartmap-select-chart-link').removeClass('default-selection');
     $('#chartmap-select-chart-link').addClass('selected-item');
 
-    $("#historical-weather-data-viewport").addClass("d-none");
-
     // show chart overlay
     if (stationsGraphRowElem) {
       stationsGraphRowElem.classList.remove('d-none');
@@ -116,8 +114,6 @@ $(function () {
   function showMap() {
     const stationsGraphRowElem = document.getElementById('stations-graph-row');
     const stationsMapRowElem = document.getElementById('stations-map-row');
-
-    $("#historical-weather-data-viewport").removeClass("d-none");
 
     // show chart overlay
     if (stationsGraphRowElem) {
@@ -196,16 +192,9 @@ $(function () {
 
     toggleDownloads();
 
-    setTimeout(function () {
-      // reset map and chart sizes
-      // filer transition means heigh will be updates in few seconds
-      // so delaying the resize ensures proper size
-      setGraphSizeWeatherData();
-    }, 600);
   } else {
     showMap();
     toggleChartInfoText('map');
-    setGraphSizeWeatherData();
   }
 
   /**
@@ -243,11 +232,8 @@ $(function () {
 
       toggleDownloads();
 
-      // reset map and chart sizes
-      setGraphSizeWeatherData();
     }
   });
-
 
   /**
    * Handles clicking of the download dropdown.
@@ -402,52 +388,9 @@ $(function () {
         // reset map and chart sizes
         // filer transition means heigh will be updates in few seconds
         // so delaying the resize ensures proper size
-        setGraphSizeWeatherData();
       }, 100);
     }
   }, stationsMapState));
-
-  // reset map and chart sizes
-  setGraphSizeWeatherData();
-  setBodySize();
-
-  function setChartSize() {
-
-    let nav_element = document.querySelector(".navbar-element");
-    let footer_element = document.querySelector(".nav_footer");
-
-    let nav_height = px_to_rem(nav_element.getBoundingClientRect().height);
-    let footer_height = px_to_rem(footer_element.getBoundingClientRect().height);
-
-    let graph_body = document.querySelector("#stations-graph-wrap");
-
-    let body_size = document.querySelector(".body-size");
-    let body_height = px_to_rem(body_size.getBoundingClientRect().height);
-
-    let search_row = document.querySelector(".search-station-row");
-    let search_height = px_to_rem(search_row.getBoundingClientRect().height);
-
-    let info_section = document.querySelector(".info-section");
-    let info_height = px_to_rem(info_section.getBoundingClientRect().height);
-
-    let height = body_height - search_height - info_height - nav_height - footer_height;
-
-    graph_body.style.setProperty('height', `calc(${height}rem - 1rem)`);
-
-    let canvas = graph_body.getElementsByTagName("canvas");
-
-    if(canvas.length > 0) {
-      canvas[0].style.setProperty('height', `calc(${height}rem - 1rem)`);
-      canvas[1].style.setProperty('height', `calc(${height}rem - 1rem)`);
-    }
-  }
-
-  // setChartSize();
-
-  $(window).resize(function () {
-    setGraphSizeWeatherData();
-    // setChartSize();
-  })
 
   $('#chart-info-row-btn .more-info.btn-default').click( function (e) {
 
@@ -473,6 +416,6 @@ $(function () {
     // force draw and resize of charts
     showGraphs();
     forceResize();
-    setGraphSizeWeatherData();
+
   })
 });

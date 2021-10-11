@@ -6,7 +6,7 @@ import nav_footer from '../template/nav_footer';
 // language=HTML
 export default (config) => `
   <!doctype html>
-  <html lang='en' class="h-100">
+  <html lang='en'>
   <head>
     ${head(config)}
     <meta property="fb:app_id" content="187816851587993">
@@ -17,9 +17,9 @@ export default (config) => `
           content="The Climate Explorer allows you to view historical and projected climate variables and assess the impacts of climate change on the things you care about">
     <meta property="og:image" content="/img/og.jpg">
   </head>
-  <body class="h-100">
+  <body>
   ${secondary_header(config)}
-  <div class="container-fluid d-flex-column body-size h-100">
+  <main class="container-fluid">
       <div class="mt-2 row search-station-row">
         <div class="col-12 col-md-7 col-lg-8">
           <div class="input-group search-input-group rounded-2 border border-1 me-2">
@@ -42,7 +42,7 @@ export default (config) => `
       
       <div class="info-section mt-2">
         <div class="border border-1 rounded-2">
-          <div class="ms-2 me-2 mt-2 mb-3">
+          <div class="m-2 mb-3">
             <span
                 id="station-info-none"><strong>Please select a station on the map or from the Stations dropdown menu. You may need to zoom out to see more stations.</strong></span>
             <span id="station-info" class="d-none">
@@ -136,22 +136,22 @@ export default (config) => `
         </div>
       </div>
     
-      <div id="historical-thresholds-viewport" class="graph-body d-flex-column">
+      <div id="historical-thresholds-viewport" class="graph-body d-flex flex-column flex-grow-1">
         
-        <div id="stations-map-row" class="d-flex w-100 h-100">
-          <div id="stations-map-wrap" class="map-wrap w-100 h-100" style="position: relative;">
-            <div id="stations-map" class="map-element h-100"></div>
-            <div id="stations-map-message" class="pt-2 pb-2 pe-1 rounded-2 ps-1 d-none"></div>
+        <div id="stations-map-row" style="display: flex; flex-flow: column nowrap; flex: 1 1 auto; position:relative;">
+          <div id="stations-map-wrap" class="map-wrap" style="display: flex; flex-flow: column nowrap; flex: 1 1 auto; position:relative;">
+            <div id="stations-map" class="map-element flex-grow-1"></div>
+            <div id="stations-map-message" class="py-2 px-1 rounded-2 d-none"></div>
           </div>
         </div>
         
-        <div id="stations-graph-row" class="w-100 h-100">
-          <div id="stations-graph-wrap" class="w-100 h-100 d-flex-row">
-            <div id="thresholds-container" class="d-flex-center w-100 h-100"></div>
+        <div id="stations-graph-row" style="display: flex; flex-flow: column nowrap; flex: 1 1 auto; position:relative;">
+          <div id="stations-graph-wrap" class="d-flex flex-column flex-grow-1">
+            <div id="thresholds-container"></div>
           </div>
         </div>
         
-        <div id="station-info-row" class="d-flex-row flex-justify padding-bottom d-flex-left d-none">
+        <div id="station-info-row" class="d-flex flex-justify padding-bottom d-flex-left d-none">
           <div class="modal fade" id="aboutModal" tabindex="-1" aria-labelledby="aboutModalLabel" aria-hidden="true">
             <div class="modal-dialog modal-fullscreen-md-down modal-xl">
               <div class="modal-content p-3">
@@ -178,7 +178,7 @@ export default (config) => `
         </div>
       
       </div>
-  </div>
+  </main>
   ${nav_footer(config)}
   ${footer(config)}
   <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.1/Chart.bundle.min.js" integrity="sha256-N4u5BjTLNwmGul6RgLoESPNqDFVUibVuOYhP4gJgrew="

@@ -124,7 +124,7 @@ $(function () {
     $('#stations-graph-wrap').empty();
 
     // add new graph wrappers so they will initialize
-    $('#stations-graph-wrap').append('<div id="thresholds-container" class="d-flex-center width-100"></div>');
+    $('#stations-graph-wrap').append('<div id="thresholds-container" class="flex-grow-1"></div>');
 
     // update graphs with new station id and station name
     $('#thresholds-container').item({
@@ -256,16 +256,12 @@ $(function () {
       // reset map and chart sizes
       // filer transition means heigh will be updates in few seconds
       // so delaying the resize ensures proper size
-      setGraphSize();
       setThresholdsContainer();
-      setBodySize();
     }, 600);
   } else {
     showMap();
     toggleChartInfoText('map');
-    setGraphSize();
     setThresholdsContainer();
-    setBodySize();
   }
 
   // function to enable downloads (images and data)
@@ -557,9 +553,7 @@ $(function () {
       toggleDownloads();
 
       // reset map and chart sizes
-      setGraphSize();
       setThresholdsContainer();
-      setBodySize();
     }
   })
 
@@ -675,9 +669,7 @@ $(function () {
     toggleButton($(target));
 
     showMap();
-    setGraphSize();
     setThresholdsContainer();
-    setBodySize();
 
     googleAnalyticsEvent('click', 'chartmap', target);
   })
@@ -778,26 +770,16 @@ $(function () {
         // reset map and chart sizes
         // filer transition means heigh will be updates in few seconds
         // so delaying the resize ensures proper size
-        setGraphSize();
         setThresholdsContainer();
       }, 100);
     }
   }, stationsMapState));
 
   function setThresholdsContainer() {
+    return;
     let graph_body = document.querySelector(".graph-body");
     $('#thresholds-container').height(graph_body.style.height);
   }
-
-  // reset map and chart sizes
-  setGraphSize();
-  setThresholdsContainer();
-  setBodySize();
-
-  $(window).resize(function () {
-    setGraphSize();
-    setThresholdsContainer();
-  })
 
   // not sure why but on initialize does not update the graph so this makes sure url updates happen.
   // this is a bit hacky way of resolving....
@@ -828,8 +810,7 @@ $(function () {
 
       // force draw and resize of charts
       showGraphs();
-      forceResize();
-      setGraphSize();
+      forceResize()
       setThresholdsContainer();
     })
 });

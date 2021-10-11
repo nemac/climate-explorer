@@ -5,7 +5,7 @@ import footer from '../template/footer';
 // language=HTML
 export default (config) => `
   <!doctype html>
-  <html lang='en' class="h-100">
+  <html lang='en'>
   <head>
     ${head(config)}
     <meta property="fb:app_id" content="187816851587993">
@@ -18,7 +18,7 @@ export default (config) => `
   </head>
   <body class="h-100">
   ${secondary_header(config)}
-  <div class="main-wrapper container-fluid body-size mb-3">
+  <main class="main-wrapper container-fluid body-size mb-3">
     <div class="input-group search-input-group rounded-2 border border-1 mt-2">
       <button id="clear-location" class="btn search-icons" type="button"><span class="fas fa-times-circle"></span></button>
       <input id="cards-search-input" class="form-control location-mapper" type="text" placeholder="Enter county or city name" aria-label="Enter county or city name">
@@ -153,7 +153,7 @@ export default (config) => `
       </div>
     
     </div>
-  </div>
+  </main>
   ${nav_footer(config)}
   ${footer(config)}
   <script src="https://unpkg.com/terraformer@1.0.8/terraformer.js" integrity="sha384-+M797Pj3WZVCwMmLbOxAoaWYcKJo8NSxItmI48ytcLNeAnfn1d/IckFn31jEqrzP"

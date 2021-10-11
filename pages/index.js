@@ -32,7 +32,7 @@ export default (config) => `
         </div>
       </div>
   
-      <div class="d-flex-column mt-3">
+      <div class="d-flex flex-column mt-3">
         
         <div class="d-flex mb-3 search-input-group rounded-2 border border-1 mt-3 col-12 col-xl-8">
           <input class="form-control location-mapper" type="text" placeholder="To get started, enter a city or county" aria-label="Enter county or city name">
@@ -73,7 +73,7 @@ export default (config) => `
         
       </div>
   
-      <div class="main-logos d-flex d-flex-bottom width-100" style="z-index: 99;">
+      <div class="main-logos d-flex-bottom w-100" style="z-index: 99;">
         <a class="d-flex-bottom"><img src="/img/logo_noaa.png" alt='NOAA' title="NOAA"></a>
         <a class="d-flex-bottom"><img src="/img/logo_nasa.png" alt='NASA' title="NASA"></a>
         <a class="d-flex-bottom"><img src="/img/logo_usgs.png" alt='USGS' title="USGS"></a>
