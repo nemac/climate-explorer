@@ -1,6 +1,7 @@
 import head from '../template/head'
 import secondary_header from '../template/nav_header';
 import footer from '../template/footer';
+import {version_suffix} from "../template/template_utils";
 
 // language=HTML
 export default (config) => `
@@ -89,7 +90,7 @@ export default (config) => `
 
  ${footer(config)}
 
-  <script type="${config.env === 'dev' ? 'module' : 'text/javascript'}" src="/js/index.js"></script>
+  <script type="${config.env === 'dev' ? 'module' : 'text/javascript'}" src="/js/index.js${version_suffix()}"></script>
 </body>
 </html>
 `

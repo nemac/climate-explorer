@@ -5,6 +5,7 @@ import footer from '../template/footer';
 import nav_footer from '../template/nav_footer';
 import chart_explainer from '../template/chart_explainer';
 
+import {version_suffix} from "../template/template_utils";
 // language=HTML
 export default (config) => `
   <!DOCTYPE  html>
@@ -165,12 +166,12 @@ export default (config) => `
   <script>
     window.climate_by_location_config = {areas_json_url: 'https://crt-climate-explorer.nemac.org/data/ce_areas.json'}
   </script>
-  <script type="text/javascript" src="/vendor/climate_by_location.climate_explorer.bundle.js"></script>
+  <script type="text/javascript" src="/vendor/climate_by_location.climate_explorer.bundle.js${version_suffix()}"></script>
   <script src="https://unpkg.com/terraformer@1.0.8/terraformer.js" integrity="sha384-+M797Pj3WZVCwMmLbOxAoaWYcKJo8NSxItmI48ytcLNeAnfn1d/IckFn31jEqrzP"
           crossorigin="anonymous"></script>
   <script src="https://unpkg.com/terraformer-arcgis-parser@1.0.5/terraformer-arcgis-parser.js"
           integrity="sha384-duFUjKTSNoxEspdJNwr83CUgRxclf0ueKJB9DU/Vbit6bfWgzvZsHW6H1JLBBXhp" crossorigin="anonymous"></script>
-  <script type="${config.env === 'dev' ? 'module' : 'text/javascript'}" src="/js/climate_graphs.js"></script>
+  <script type="${config.env === 'dev' ? 'module' : 'text/javascript'}" src="/js/climate_graphs.js${version_suffix()}"></script>
   </body>
   </html>
 `

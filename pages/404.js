@@ -2,6 +2,7 @@ import head from '../template/head.js';
 import footer from '../template/footer.js';
 import nav_footer from '../template/nav_footer.js';
 import secondary_header from "../template/nav_header.js";
+import {version_suffix} from "../template/template_utils";
 
 // language=HTML
 export default (config) => `
@@ -20,7 +21,7 @@ export default (config) => `
   </div>
   ${nav_footer(config)}
   ${footer(config)}
-  <script type="${config.env === 'dev' ? 'module' : 'text/javascript'}" src="/js/index.js"></script>
+  <script type="${config.env === 'dev' ? 'module' : 'text/javascript'}" src="/js/index.js${version_suffix()}"></script>
   </body>
   </html>
 `

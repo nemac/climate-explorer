@@ -1,26 +1,28 @@
+
+import {version_suffix} from "./template_utils.js";
 export default (config) => `
 <!--[if IE]>
     <p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience and security. <button onclick="$('.browserupgrade').remove()"></button></p>
 <![endif]-->
 
 <!-- START candidates for minification -->
-<script type="text/javascript" src="/vendor/formstone/core.js"></script>
-<script type="text/javascript" src="/vendor/formstone/mediaquery.js"></script>
-<script type="text/javascript" src="/vendor/formstone/touch.js"></script>
-<script type="text/javascript" src="/vendor/formstone/scrollbar.js"></script>
-<script type="text/javascript" src="/vendor/formstone/dropdown.js"></script>
-<script type="text/javascript" src="/vendor/formstone/equalize.js"></script>
-<script type="text/javascript" src="/vendor/formstone/swap.js"></script>
-<script type="text/javascript" src="/vendor/lc_switch.min.js"></script>
-<script type="text/javascript" src="/vendor/jquery.cycle2.min.js"></script>
-<script type="text/javascript" src="/vendor/jquery.waypoints.min.js"></script>
-<script type="text/javascript" src="/vendor/jquery.waypoints.sticky.min.js"></script>
-<script type="text/javascript" src="/vendor/download.js"></script>
-<script type="text/javascript" src="/vendor/jquery.hoverintent.min.js"></script>
-<script type="text/javascript" src="/vendor/sweetalert.min.js"></script>
-<script type="text/javascript" src="/vendor/tether.js"></script>
-<script type="text/javascript" src="/vendor/shepherd.min.js"></script>
-<script type="text/javascript" src="/vendor/formmapper.js"></script>
+<script type="text/javascript" src="/vendor/formstone/core.js${version_suffix()}"></script>
+<script type="text/javascript" src="/vendor/formstone/mediaquery.js${version_suffix()}"></script>
+<script type="text/javascript" src="/vendor/formstone/touch.js${version_suffix()}"></script>
+<script type="text/javascript" src="/vendor/formstone/scrollbar.js${version_suffix()}"></script>
+<script type="text/javascript" src="/vendor/formstone/dropdown.js${version_suffix()}"></script>
+<script type="text/javascript" src="/vendor/formstone/equalize.js${version_suffix()}"></script>
+<script type="text/javascript" src="/vendor/formstone/swap.js${version_suffix()}"></script>
+<script type="text/javascript" src="/vendor/lc_switch.min.js${version_suffix()}"></script>
+<script type="text/javascript" src="/vendor/jquery.cycle2.min.js${version_suffix()}"></script>
+<script type="text/javascript" src="/vendor/jquery.waypoints.min.js${version_suffix()}"></script>
+<script type="text/javascript" src="/vendor/jquery.waypoints.sticky.min.js${version_suffix()}"></script>
+<script type="text/javascript" src="/vendor/download.js${version_suffix()}"></script>
+<script type="text/javascript" src="/vendor/jquery.hoverintent.min.js${version_suffix()}"></script>
+<script type="text/javascript" src="/vendor/sweetalert.min.js${version_suffix()}"></script>
+<script type="text/javascript" src="/vendor/tether.js${version_suffix()}"></script>
+<script type="text/javascript" src="/vendor/shepherd.min.js${version_suffix()}"></script>
+<script type="text/javascript" src="/vendor/formmapper.js${version_suffix()}"></script>
 <script type="text/javascript" src="https://unpkg.com/tooltip.js@^1"></script>
 <!--<script type="text/javascript" src="https://unpkg.com/popper.js@1"></script>-->
 <!--<script type="text/javascript" src="https://unpkg.com/tippy.js@4"></script>-->

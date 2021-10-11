@@ -1,4 +1,6 @@
 // language=HTML
+import {version_suffix} from "./template_utils.js";
+
 export default (config) => `
   <title>Climate Explorer</title>
   <meta charset="utf-8">
@@ -10,7 +12,7 @@ export default (config) => `
   <script src="https://cdnjs.cloudflare.com/ajax/libs/tippy.js/6.3.2/tippy-bundle.umd.js"></script>
   <link rel="shortcut icon" href="https://toolkit.climate.gov/sites/default/files/favicon_2.ico" type="image/vnd.microsoft.icon">
   <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-  <link rel="stylesheet" media="screen" href="/css/screen.css">
+  <link rel="stylesheet" media="screen" href="/css/screen.css${version_suffix()}">
   <script src="https://cdnjs.cloudflare.com/ajax/libs/feather-icons/4.28.0/feather.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
           crossorigin="anonymous"></script>

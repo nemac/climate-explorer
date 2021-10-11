@@ -2,6 +2,7 @@ import head from '../template/head'
 import secondary_header from '../template/nav_header';
 import footer from '../template/footer';
 import nav_footer from '../template/nav_footer';
+import {version_suffix} from "../template/template_utils";
 
 export default (config) => `
 
@@ -112,7 +113,7 @@ ${secondary_header(config)}
 ${nav_footer(config)}
 ${footer(config)}
 
-<script type="${config.env === 'dev' ? 'module' : 'text/javascript'}" src="/js/next_steps.js"></script>
+<script type="${config.env === 'dev' ? 'module' : 'text/javascript'}" src="/js/next_steps.js${version_suffix()}"></script>
 </body>
 </html>
 `

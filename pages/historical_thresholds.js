@@ -2,6 +2,7 @@ import head from '../template/head'
 import secondary_header from '../template/nav_header';
 import footer from '../template/footer';
 import nav_footer from '../template/nav_footer';
+import {version_suffix} from "../template/template_utils";
 
 // language=HTML
 export default (config) => `
@@ -185,12 +186,12 @@ export default (config) => `
           crossorigin="anonymous"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/lodash.js/4.17.19/lodash.min.js"
           integrity="sha512-/A6lxqQJVUIMnx8B/bx/ERfeuJnqoWPJdUxN8aBj+tZYL35O998ry7UUGoN65PSUNlJNrqKZrDENi4i1c3zy4Q==" crossorigin="anonymous"></script>
-  <script type="text/javascript" src="/vendor/item/jquery.fl-item.min.js"></script>
+  <script type="text/javascript" src="/vendor/item/jquery.fl-item.min.js${version_suffix()}"></script>
   <script src="https://unpkg.com/terraformer@1.0.8/terraformer.js" integrity="sha384-+M797Pj3WZVCwMmLbOxAoaWYcKJo8NSxItmI48ytcLNeAnfn1d/IckFn31jEqrzP"
           crossorigin="anonymous"></script>
   <script src="https://unpkg.com/terraformer-arcgis-parser@1.0.5/terraformer-arcgis-parser.js"
           integrity="sha384-duFUjKTSNoxEspdJNwr83CUgRxclf0ueKJB9DU/Vbit6bfWgzvZsHW6H1JLBBXhp" crossorigin="anonymous"></script>
-  <script type="${config.env === 'dev' ? 'module' : 'text/javascript'}" src="/js/historical_thresholds.js"></script>
+  <script type="${config.env === 'dev' ? 'module' : 'text/javascript'}" src="/js/historical_thresholds.js${version_suffix()}"></script>
   </body>
   </html>
 `

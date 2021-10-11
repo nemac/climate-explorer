@@ -2,6 +2,7 @@ import head from '../template/head'
 import secondary_header from '../template/nav_header';
 import footer from '../template/footer';
 import nav_footer from '../template/nav_footer';
+import {version_suffix} from "../template/template_utils";
 
 // language=HTML
 export default (config) => `
@@ -151,14 +152,14 @@ data-value="Historical and Modeled">Historical & Modeled</label>
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/plotly.js/1.58.4/plotly-basic.min.js" integrity="sha512-7S1p+6A2VVIWu+EevZqeqXWos1Tn+mroZxpkZ9THWipecJkL7TLg2myv5cIAShu9j3+fjHyCvEh/d7BKegMY1g==" crossorigin="anonymous"></script>
 
-    <script type="text/javascript" src="/vendor/tidalstationswidget.js"></script>
+    <script type="text/javascript" src="/vendor/tidalstationswidget.js${version_suffix()}"></script>
     
     <script src="https://unpkg.com/terraformer@1.0.8/terraformer.js" integrity="sha384-+M797Pj3WZVCwMmLbOxAoaWYcKJo8NSxItmI48ytcLNeAnfn1d/IckFn31jEqrzP"
     crossorigin="anonymous"></script>
     <script src="https://unpkg.com/terraformer-arcgis-parser@1.0.5/terraformer-arcgis-parser.js"
     integrity="sha384-duFUjKTSNoxEspdJNwr83CUgRxclf0ueKJB9DU/Vbit6bfWgzvZsHW6H1JLBBXhp" crossorigin="anonymous"></script>
 
-    <script type="${config.env === 'dev' ? 'module' : 'text/javascript'}" src="/js/high_tide_flooding.js"></script>
+    <script type="${config.env === 'dev' ? 'module' : 'text/javascript'}" src="/js/high_tide_flooding.js${version_suffix()}"></script>
   </body>
   </html>
 `

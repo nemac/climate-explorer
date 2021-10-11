@@ -3,6 +3,7 @@ import secondary_header from '../template/nav_header';
 import share from '../template/share';
 import footer from '../template/footer';
 
+import {version_suffix} from "../template/template_utils";
 export default (config) => `
 <!doctype html>
 <html>
@@ -38,7 +39,7 @@ ${secondary_header(config)}
 </div>
 
 ${footer(config)}
-<script type="${config.env === 'dev' ? 'module' : 'text/javascript'}" src="/js/index.js"></script>
+<script type="${config.env === 'dev' ? 'module' : 'text/javascript'}" src="/js/index.js${version_suffix()}"></script>
 </body>
 </html>
 `
