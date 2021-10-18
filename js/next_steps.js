@@ -12,6 +12,9 @@ $(function () {
   const cityStateCE = state['city'] || '';
   const countyCE =    state['county'];
   const fips =        state['fips'];
+
+  update_meta_tag(countyCE, cityStateCE);
+
   const stateNCARegions = {
     AL: 'Southeast',
     AR: 'Southeast',

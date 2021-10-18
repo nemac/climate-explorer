@@ -20,6 +20,8 @@ $(function () {
   const cityStateCE = state['city'];
   const countyCE = state['county'];
 
+  update_meta_tag(countyCE, cityStateCE);
+
   $('#default-city-county').text(countyCE);
   $('#cards-search-input').attr("placeholder", cityStateCE);
 

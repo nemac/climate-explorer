@@ -10,6 +10,8 @@ $(function () {
   let isAlaska = false;
   let isHawaii = false;
 
+  update_meta_tag(countyCE, cityStateCE);
+
   $('.footer-button').removeClass('footer-button-selected');
   $('[data-page="climate_maps"]').addClass('footer-button-selected');
 

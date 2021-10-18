@@ -10,6 +10,8 @@ $(function () {
   const is_conus_area = state['is_conus_area'];
   const is_island_area = state['is_island_area'];
 
+  update_meta_tag(county_label, city_label);
+
   $('.footer-button').removeClass('footer-button-selected');
   $('[data-page="climate_graphs"]').addClass('footer-button-selected');
 

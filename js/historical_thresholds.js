@@ -41,6 +41,8 @@ $(function () {
   const windowValue = state['window']  || 1;
   const thresholdVariable = state['thresholdVariable']  || 'precipitation';
 
+  update_meta_tag(county, city);
+
   let stationsMapState = {
     city,
     county,

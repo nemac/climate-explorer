@@ -13,7 +13,7 @@ export default (config) => `
   <meta property="fb:app_id" content="187816851587993">
   <meta property="og:url" content="historical_weather_data">
   <meta property="og:type" content="article">
-  <meta property="og:title" content="Location data for Buncombe County, NC">
+  <meta property="og:title" content="Climate Explorer">
   <meta property="og:description" content="The Climate Explorer allows you to view historical and projected climate variables and assess the impacts of climate change on the things you care about">
   <meta property="og:image" content="/img/og.jpg">
 </head>

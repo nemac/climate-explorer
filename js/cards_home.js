@@ -8,6 +8,8 @@ $(function () {
   const is_alaska_area = state['is_alaska_area'];
   const is_conus_area = state['is_conus_area'];
 
+  update_meta_tag(county_label, city_label);
+
   $('#default-city-county').text(county_label || area_label);
   $('#cards-search-input').attr("placeholder", city_label || area_label);
 

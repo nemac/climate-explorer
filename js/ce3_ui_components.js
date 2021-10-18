@@ -735,10 +735,13 @@ function noStationsMapMessage(msg) {
 
 }
 
-
 function px_to_rem(px) {
   const base_font_size = parseInt(window.getComputedStyle(document.body).getPropertyValue('font-size').replace(/\D/g, ''));
   return px / base_font_size;
+}
+
+function update_meta_tag(county_label, city_label) {
+  document.querySelector('meta[property="og:title"]').setAttribute('content', county_label + " - " + city_label);
 }
 
 // todo cleanup global functions
@@ -752,3 +755,4 @@ window.forceResize = forceResize;
 window.reEnableSelectNewItems = reEnableSelectNewItems;
 window.px_to_rem = px_to_rem;
 window.noStationsMapMessage = noStationsMapMessage;
+window.update_meta_tag = update_meta_tag;

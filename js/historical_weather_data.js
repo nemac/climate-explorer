@@ -34,6 +34,8 @@ $(function () {
   const tidalStationMOverMHHW = state['tidalStationMOverMHHW'];
   const center = [lat, lon]
 
+  update_meta_tag(county, city);
+
   let stationsMapState = {
     city,
     county,
