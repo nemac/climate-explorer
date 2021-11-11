@@ -1535,8 +1535,7 @@ input.input-inner-default:focus {
 
 @import "pages/climate_graphs";
 @import "pages/climate_maps";
-@import "pages/historical_weather_data";
-@import "pages/historical_thresholds";
+@import "pages/extreme_events";
 @import "pages/high_tide_flooding";
 
 // VARIABLES
@@ -1987,3 +1986,29 @@ main {
   flex-flow: column nowrap;
 }
 
+.graph-container {
+  position: relative;
+  display: flex;
+  flex-flow: column nowrap;
+}
+
+.graph-wrapper {
+  position: relative;
+  display: flex;
+  flex-flow: column nowrap;
+  flex: 1 1 auto;
+}
+
+.graph-item {
+  position: relative;
+  display: flex;
+  flex-flow: column nowrap;
+  flex: 1 1 auto;
+}
+
+.climate-by-station-view {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  flex: 1 1 auto;
+}

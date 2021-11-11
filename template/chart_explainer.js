@@ -51,7 +51,7 @@ export default (config) => `
                 </div>
                 <div class="mb-2">
                   <p>
-                    The gray band shows the range of values modeled (hindcast) for 1950–2005. The top edge of the band represents the maximum value modeled at each
+                    The gray band shows the range of values modeled (hindcast) for 1950–2005. The top edge of the band resents the maximum value modeled at each
                     time step; the bottom edge of the band represents the minimum. All other model results are within the shaded portion.
                   </p>
                 </div>

@@ -29,8 +29,7 @@ let pages = [
   'climate_graphs',
   'climate_maps',
   'high_tide_flooding',
-  'historical_thresholds',
-  'historical_weather_data',
+  'extreme_events',
   'index',
   'next_steps'
 ]; // Pages 404, error, about, faq, glossary do not have their own JS packages

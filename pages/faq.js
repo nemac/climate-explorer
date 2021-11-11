@@ -1,4 +1,4 @@
-import head from '../template/head'
+import head from '../template/head';
 import secondary_header from '../template/nav_header';
 import footer from '../template/footer';
 import nav_footer from '../template/nav_footer';
@@ -166,7 +166,7 @@ export default (config) => `
           </p>
         </div>
         
-        <h4>How did you decide which stations and years to show in the Daily vs. Climate and Thresholds graphs in the Weather & Tidal Stations section?</h4>
+        <h4>How did you decide which stations and years to show in the Extreme Events & Tidal Stations section?</h4>
         <div>
           <p>
             We started with a pool of all stations in the Global Historical Climatology Network - Daily dataset that are located within the contiguous United States. In a first pass, we eliminated stations that did not record data during the past 30 years. In our second pass, we documented which stations were missing more than 5 temperature records in a single month or more than 1 precipitation record in a single month, and excluded these years from the thresholding function. We deleted all stations where records did not meet these criteria for at least 10% of the years in its period of record.
@@ -176,7 +176,7 @@ export default (config) => `
         <h4>What is represented in the High-tide flooding graphs?</h4>
         <div>
           <p>
-            High-tide flooding graphs show observed and projected changes in the frequency of high-tide flooding—events when sea water laps onto land to inundate some portion of normally dry land. These floods have also been called nuisance, sunny day, or recurrent flooding. At each station, local emergency managers and NOAA Weather Forecasting Offices have identified flooding thresholds (expressed as heights above local mean high higher water) related to impacts such as flooding of low-lying roads or infiltration into storm-water systems. Oceanographers compiled these heights for many stations, and then performed statistical analyses on the dataset to establish threshold flood heights for each station.
+            High-tide flooding graphs show observed and projected changes in the frequency of high-tide flooding—events when seawater laps onto land to inundate some portion of normally dry land. These floods have also been called nuisance, sunny day, or recurrent flooding. At each station, local emergency managers and NOAA Weather Forecasting Offices have identified flooding thresholds (expressed as heights above local mean high higher water) related to impacts such as flooding of low-lying roads or infiltration into storm-water systems. Oceanographers compiled these heights for many stations, and then performed statistical analyses on the dataset to establish threshold flood heights for each station.
           </p>
           <p>
             For stations in the study, graphs show the observed annual number of days with high tide flooding through 2016, and projections for the annual number of high tide flooding days through 2100, for higher and lower emissions scenarios.

@@ -32,13 +32,9 @@ export default (config) => `
                 <i class="fas fa-chart-line footer-icon"></i>
                 <span class="footer-icon-title">Climate Graphs</span>
               </div>
-              <div class="d-flex btn flex-column align-items-center rounded-2 p-1 footer-button" data-page="historical_weather_data">
-                <i class="fas fa-chart-area footer-icon"></i>
-                <span class="footer-icon-title">Historical Weather Data</span>
-              </div>
-              <div class="d-flex btn flex-column align-items-center rounded-2 p-1 footer-button" data-page="historical_thresholds">
+              <div class="d-flex btn flex-column align-items-center rounded-2 p-1 footer-button" data-page="extreme_events">
                 <i class="fas fa-chart-bar footer-icon"></i>
-                <span class="footer-icon-title">Historical Thresholds</span>
+                <span class="footer-icon-title">Extreme Events</span>
               </div>
               <div class="d-flex btn flex-column align-items-center rounded-2 p-1 footer-button" data-page="high_tide_flooding">
                 <i class="fas fa-water footer-icon"></i>

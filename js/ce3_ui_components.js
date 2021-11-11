@@ -207,7 +207,6 @@ function recreateToolTip(elem) {
 // function changes selector button to selected
 function toggleButton(selector) {
   toggleAllButtonsOff(selector.get())
-  // $(selector).addClass('btn-default-selected');
   $(selector).addClass('selected-item');
   $(selector).removeClass('default-selection');
 }
@@ -740,6 +739,7 @@ function px_to_rem(px) {
   return px / base_font_size;
 }
 
+// This doesn't work, because web crawlers don't run the javascript and only pickup what is originally in the HTML.
 function update_meta_tag(county_label, city_label) {
   document.querySelector('meta[property="og:title"]').setAttribute('content', county_label + " - " + city_label);
 }

@@ -12,8 +12,6 @@ const navConstants = {
   nextStepsViewport: '#next-steps-viewport',
   locationChartsViewport: '#climate-graphs-viewport',
   locationMapsViewport: '#climate-maps-viewport',
-  historicalWeatherDataViewport: '#historical-weather-data-viewport',
-  historicalThresholdsViewport: '#historical-thresholds-viewport',
   highTideFloodingViewport: '#high-tide-flooding-viewport',
   lessWrapperNavFooterElem: '#less-wrapper-nav-footer',
   lessRow1Elem: '#less-row-1'
@@ -79,7 +77,7 @@ $(function () {
   // this function checks if the nav item would be hidden behind the more item
   function isMoreNav(navLocation) {
     // check if nav item is a more nav
-    return jQuery.inArray(navLocation, ['-999', 'historical-weather-data', 'historical-thresholds', 'high-tide-flooding']);
+    return jQuery.inArray(navLocation, ['-999', 'historical-thresholds', 'high-tide-flooding']);
   }
 
   // this function updates the nav bar so the current page is appears "selected"

@@ -10,11 +10,10 @@
     "build:js:climate_graphs": "rollup -c --environment=\"pkg:climate_graphs\"",
     "build:js:climate_maps": "rollup -c --environment=\"pkg:climate_maps\"",
     "build:js:high_tide_flooding": "rollup -c --environment=\"pkg:high_tide_flooding\"",
-    "build:js:historical_thresholds": "rollup -c --environment=\"pkg:historical_thresholds\"",
-    "build:js:historical_weather_data": "rollup -c --environment=\"pkg:historical_weather_data\"",
+    "build:js:extreme_events": "rollup -c --environment=\"pkg:extreme_events\"",
     "build:js:index": "rollup -c --environment=\"pkg:index\"",
     "build:js:next_steps": "rollup -c --environment=\"pkg:next_steps\"",
-    "build:vendor": "mkdir -p dist/vendor && mkdir -p vendor && rsync -act vendor/ dist/vendor/ && rsync -act node_modules/high-tide-flooding-widget/dist/tidalstationswidget.js dist/vendor/ && rsync -act node_modules/jquery-ui-touch-punch/jquery.ui.touch-punch.min.js dist/vendor/ dist/vendor/ && rsync -act node_modules/climate-by-location/dist/climate_by_location.climate_explorer.bundle.js dist/vendor/",
+    "build:vendor": "mkdir -p dist/vendor && mkdir -p vendor && rsync -act vendor/ dist/vendor/ && rsync -act node_modules/high-tide-flooding-widget/dist/tidalstationswidget.js dist/vendor/ && rsync -act node_modules/jquery-ui-touch-punch/jquery.ui.touch-punch.min.js dist/vendor/ dist/vendor/ && rsync -act node_modules/climate-by-location/dist/climate_by_location.climate_explorer.bundle.js dist/vendor/ && rsync -actL node_modules/climate-by-station/dist/climate_by_station_widget.js dist/vendor/",
     "build:html": "mkdir -p dist && npx template-literals --config config.yml --indexes --outdir dist/ pages/*.js",
     "build:css": "node-sass -o css/ scss/screen.scss --include-path node_modules/compass-mixins/lib/ --output-style expanded --source-comments && mkdir -p dist/css dist/fonts && rsync -act fonts dist/ && rsync -act css dist/",
     "watch:css": "node-sass -o css/ scss/screen.scss --include-path node_modules/compass-mixins/lib/ --output-style expanded --source-comments -wr",
@@ -23,7 +22,7 @@
     "deploy:ce3-production": "aws s3 sync --delete --no-follow-symlinks dist/ s3://climate-explorer3-prod.nemac.org/ && aws cloudfront create-invalidation --distribution-id E1Q1S8U8911R6D --paths '/*'",
     "start": "static -a localhost -p 8082 dist/",
     "start:dev": "npm run build:html -- -- env=dev && rm -rf dist/js dist/node_modules && ln -srf node_modules js dist/ && static -a localhost -p 8082 dist/",
-    "update_deps": "rm -rf package-lock.json && npm install climate-by-location@github:nemac/climate-by-location github:nemac/high-tide-flooding-widget"
+    "update_deps": "rm -rf package-lock.json && npm install climate-by-location@github:nemac/climate-by-location github:nemac/high-tide-flooding-widget github:nemac/climate-by-station"
   },
   "repository": {
     "type": "git",
@@ -56,6 +55,7 @@
     "babel-plugin-polyfill-regenerator": "^0.2.2",
     "bootstrap": "^5.1.1",
     "climate-by-location": "github:nemac/climate-by-location",
+    "climate-by-station": "github:nemac/climate-by-station",
     "formstone": "^1.4.13-1",
     "high-tide-flooding-widget": "github:nemac/high-tide-flooding-widget",
     "jquery-ui-touch-punch": "^0.2.3",

@@ -87,34 +87,15 @@ export default (config) => `
           <div class="disabled-text rounded-2 p-2 d-none m-2">High-tide flooding data not available for this location.</div>
         </div>
       </div>
-    
-      <div class="col-12 col-lg-6 col-xl-4 mb-3"> 
       
-          <div class="col-sm-12 p-0 btn card border border-1 rounded shadow-sm data-card h-100" tabindex=0 role="button" data-page="historical_weather_data">
+      <div class="col-12 col-lg-6 col-xl-4 mb-3"> 
+          <div class="col-sm-12 p-0 btn card border border-1 rounded shadow-sm data-card h-100" tabindex=0 role="button" data-page="extreme_events">
           <div>
-            <img class="img-fluid" src="/img/card-hist-daily.png"/>
+            <img class="img-fluid" src="/img/card-extreme-events.png" alt="Extreme events image"/>
           </div>
           <div class="m-2 cards-home-title">
             <div class="d-flex flex-row justify-content-between">
-              <span>Historical Weather Data</span>
-              <i class="fas fa-chart-area"></i>
-            </div>
-          </div>
-          <div class="m-2 cards-home-text">
-            Compare observed daily weather to long-term climate.
-          </div>
-          <div class="disabled-text rounded-2 p-2 d-none m-2">Data is not available for this location</div>
-        </div>
-      </div>
-      
-      <div class="col-12 col-lg-6 col-xl-4 mb-3"> 
-          <div class="col-sm-12 p-0 btn card border border-1 rounded shadow-sm data-card h-100" tabindex=0 role="button" data-page="historical_thresholds">
-          <div>
-            <img class="img-fluid" src="/img/card-hist-thresholds.png" alt="historical weather thresholds image"/>
-          </div>
-          <div class="m-2 cards-home-title">
-            <div class="d-flex flex-row justify-content-between">
-              <span>Historical Thresholds</span>
+              <span>Extreme Events</span>
               <i class="fas fa-chart-area"></i>
             </div>
           </div>
