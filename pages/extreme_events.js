@@ -18,7 +18,7 @@ export default (config) => `
           content="The Climate Explorer allows you to view historical and projected climate variables and assess the impacts of climate change on the things you care about">
     <meta property="og:image" content="/img/og.jpg">
   </head>
-  <body>
+  <body class="extreme-events">
   ${secondary_header(config)}
   <main class="container-fluid">
       <div class="mt-2 row search-station-row">
@@ -55,7 +55,7 @@ export default (config) => `
           </div>
           <div class="m-2 collapse show" id="collapse-info-section">
             <div class="row align-items-center">
-              <div class="col-md-12 col-lg-6 col-xl-2 mt-1 mb-1 info-section">
+              <div class="col-md-12 col-lg-6 col-xl-1 mt-1 mb-1 info-section">
                 <div class="btn-group border rounded-2 graph-map-selection w-100" role="group">
                   <label class="btn ps-4 pe-4 default-selection disabled" id="chartmap-select-chart-link" data-value="chart" data-page="extreme_events"
                          data-sel="chartmap-select-vis">Graph</label>
@@ -69,12 +69,37 @@ export default (config) => `
                      data-bs-toggle="dropdown" aria-expanded="false" data-value="precipitation">
                     Precipitation
                   </a>
-                  <ul class="dropdown-menu selection-dropdown-menu w-100" aria-labelledby="selection-dropdown-menu">
-                    <li role="option" data-value="precipitation" class="dropdown-item" data-page="extreme_events">Precipitation</li>
-                    <li role="option" data-value="tavg" class="dropdown-item" data-page="extreme_events">Average Temperature</li>
-                    <li role="option" data-value="tmax" class="dropdown-item" data-page="extreme_events">Maximum Temperature</li>
-                    <li role="option" data-value="tmin" class="dropdown-item" data-page="extreme_events">Minimum Temperature</li>
-                  </ul>
+                  <div class="dropdown-menu p-2">
+                    <div class="d-lg-flex">
+                      <div class="m-2 p-2">
+                        <div class="mb-2">
+                          <i class="fas fa-temperature-high"></i>
+                          <span>Variables</span>
+                        </div>
+                        <ul class="selection-dropdown-menu w-100">
+                          <li role="option" data-value="precipitation" class="dropdown-item" data-page="extreme_events">Precipitation</li>
+                          <li role="option" data-value="tavg" class="dropdown-item" data-page="extreme_events">Average Temperature</li>
+                          <li role="option" data-value="tmax" class="dropdown-item" data-page="extreme_events">Maximum Temperature</li>
+                          <li role="option" data-value="tmin" class="dropdown-item" data-page="extreme_events">Minimum Temperature</li>
+                        </ul>
+                      </div>
+                      
+                      <div class="m-2 p-2">
+                        <div class="mb-2">
+                          <i class="fas fa-temperature-high"></i>
+                          <span>Presets</span>
+                        </div>
+                        <ul class="selection-dropdown-menu w-100">
+                          <li role="option" data-value="preset-1" class="dropdown-item" data-page="extreme_events">3-day precipitation at least 90th percentile</li>
+                          <li role="option" data-value="preset-2" class="dropdown-item" data-page="extreme_events">1-day precipitation no more than 0.01in (dry days)</li>
+                          <li role="option" data-value="preset-3" class="dropdown-item" data-page="extreme_events">1-day max temp at least 95 °F</li>
+                          <li role="option" data-value="preset-4" class="dropdown-item" data-page="extreme_events">3-day min temp at least 90 °F (hot-nights)</li>
+                          <li role="option" data-value="preset-5" class="dropdown-item" data-page="extreme_events">1-day min temp no more than 32 °F (frost days)</li>
+                          <li role="option" data-value="preset-6" class="dropdown-item" data-page="extreme_events">1-day max temp no more than 32 °F (icing days)</li>
+                        </ul>
+                      </div>
+                    </div>  
+                  </div>
                 </div>
               </div>
               
@@ -84,7 +109,7 @@ export default (config) => `
                 <div class="input-group">
                   <label for="window_days" class="input-group-text">Window</label>
                   <input id="window_days" class="form-control" type="number" name="window_days" value="1" min="1" max="30">
-                  <span class="input-group-text">Days</span>
+                  <span class="input-group-text" style="background-color: #E9F1FC;">Days</span>
                 </div>
                 
               </div>
@@ -98,7 +123,36 @@ export default (config) => `
                 </div>
 
               </div>
-    
+
+              <div class="col-md-12 col-lg-6 col-xl-1 percentile-dropdown mt-1 mb-1 info-section">
+                <div class="dropdown default-selection rounded-2 border border-1">
+                  <a class="btn dropdown-toggle ps-4 pe-4 w-100" href="#" style="text-align: center;" role="button" id="percentile-dropdown-menu"
+                     data-bs-toggle="dropdown" aria-expanded="false">
+                    Percentiles
+                  </a>
+                  <ul class="dropdown-menu percentile-dropdown-menu percentile-select" aria-labelledby="percentile-dropdown-menu">
+                    <li role="option" data-value="10" class="dropdown-item default-select-option">10th</li>
+                    <li role="option" data-value="25" class="dropdown-item default-select-option">25th</li>
+                    <li role="option" data-value="50" class="dropdown-item default-select-option">50th</li>
+                    <li role="option" data-value="75" class="dropdown-item default-select-option">75th</li>
+                    <li role="option" data-value="90" class="dropdown-item default-select-option">90th</li>
+                  </ul>
+                </div>
+              </div>
+
+              <div class="col-md-12 col-lg-6 col-xl-1 operator-dropdown mt-1 mb-1 info-section">
+                <div class="dropdown default-selection rounded-2 border border-1">
+                  <a class="btn dropdown-toggle ps-4 pe-4 w-100" href="#" style="text-align: center;" role="button" id="operator-dropdown-menu"
+                     data-bs-toggle="dropdown" aria-expanded="false">
+                    Operator
+                  </a>
+                  <ul class="dropdown-menu operator-dropdown-menu operator-select" aria-labelledby="operator-dropdown-menu">
+                    <li role="option" data-value=">=" class="dropdown-item default-select-option">at least (>=)</li>
+                    <li role="option" data-value="<=" class="dropdown-item default-select-option">not more than (<=)</li>
+                  </ul>
+                </div>
+              </div>
+              
               <div class="col-md-12 col-lg-6 col-xl-1 download-dropdown mt-1 mb-1 info-section">
                 <div class="dropdown rounded-2 border border-1">
                   <a class="btn dropdown-toggle ps-4 pe-4 w-100 disabled" href="#" style="text-align: center;" role="button" id="download-dropdown-menu"
@@ -116,6 +170,7 @@ export default (config) => `
                   </ul>
                 </div>
               </div>
+              
               <div class="col-md-12 col-lg-6 col-xl-1 info-section">
                 <div class="btn chart-info border border-1 mt-1 mb-1 w-100 disabled" id="chart-info-row-btn" data-bs-toggle="modal" data-bs-target="#aboutModal">
                   <i class="fas fa-info me-2"></i>
@@ -129,7 +184,7 @@ export default (config) => `
     
       <div id="historical-thresholds-viewport" class="h-100" style="display: flex; flex-flow: column nowrap; flex: 1 1 auto; position: relative;">
 
-        <div class="row">
+        <div class="row" style="height: 20rem;">
             <div class="graph-container col-12">
               <div class="graph-wrapper">
                 <div id="annual-exceedance-view" class="graph-item"></div>
@@ -150,7 +205,7 @@ export default (config) => `
               <div class="graph-wrapper shadow-sm">
                 <div id="absolute-view" class="graph-item"></div>
               </div>
-              <div class="more-btn" style="position: absolute; left: 50%; top: 50%; transform: translate(-50%, -50%); display: none;">
+              <div class="more-btn" style="position: absolute; left: 50%; top: 50%; transform: translate(-50%, -50%); display: >
                 <button class="btn btn-secondary">More</button>
               </div>
             </div>

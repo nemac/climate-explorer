@@ -749,7 +749,37 @@
       if (this.options.stationId === null) {
         return;
       }
+      try {
+        this.thresholdStationsLayer.queryFeatures({objectIds: this.options.stationId, returnGeometry: true}).then((results) => {
+          if (get(results, 'features', []).length > 0) {
+            this.view.graphics.removeAll();
+            this.view.graphics.add(Object.assign(results.features[0], {
+              symbol: {
+                type: 'simple-fill',
+                color: "rgba(0,0,0,0)",
+                outline: {
+                  width: 3,
+                  color: "rgba(50,50,50,1)"
+                }
+              }
+            }));
+          }
+        }, );
+        this.view.graphics.add(Object.assign(aggregation_group_selection.graphic, {
+          symbol: {
+            type: 'simple-fill',
+            color: "rgba(0,0,0,0)",
+            outline: {
+              width: 3,
+              color: "rgba(50,50,50,1)"
+            }
+          }
+        }));
+      }
+      catch(ex){
 
+        console.log(ex)
+      }
       $(this.nodes.stationOverlayContainer).css('visibility', 'visible');
       switch (this.options.mode) {
         case 'daily_vs_climate':

@@ -1,34 +1,56 @@
+.extreme-events {
 
-
-#selection-dropdown-menu {
-  background-color: $search-input-background;
-  color: $navbar-button-background;
-}
-
-.selection-dropdown {
-
-  li {
+  #selection-dropdown-menu {
+    background-color: $search-input-background;
     color: $navbar-button-background;
-
-    transition: background-color 200ms ease-in;
   }
 
-  li:hover {
-    background-color: $navbar-hover-background;
-    cursor: pointer;
+  .selection-dropdown {
+
+    li {
+      color: $navbar-button-background;
+
+      transition: background-color 200ms ease-in;
+    }
+
+    li:hover {
+      background-color: $navbar-hover-background;
+      cursor: pointer;
+    }
+
   }
 
+  .historical-threshold-input {
+    position: absolute;
+    transform: translateY(-1.5rem);
+  }
+
+  #thresholds-container {
+    height: 200px;
+  }
+
+  .more-btn-container:hover .more-btn{
+    display: block !important;
+  }
+
+  .dropdown-menu {
+    background-color: $search-input-background;
+  }
+
+  .input-group {
+    label {
+      background-color: $search-input-background;
+      color: $navbar-background;
+    }
+  }
+
+  #variable_unit_label {
+    background-color: $search-input-background;
+    color: $navbar-background;
+  }
+
+  .default-selection a {
+    color: $navbar-background;
+  }
 }
 
-.historical-threshold-input {
-  position: absolute;
-  transform: translateY(-1.5rem);
-}
-
-#thresholds-container {
-  height: 200px;
-}
-
-.more-btn-container:hover .more-btn{
-  display: block !important;
-}

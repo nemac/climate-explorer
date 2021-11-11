@@ -10,6 +10,8 @@ $(function () {
   enableCustomSelect('download-select');
   enableCustomSelect('stations-dropdown-menu');
   enableCustomSelect('selection-dropdown-menu');
+  enableCustomSelect('percentile-dropdown-menu');
+  enableCustomSelect('operator-dropdown-menu');
 
   const state = window.app.state;
   const cityStateCE = state['city'];
@@ -25,11 +27,11 @@ $(function () {
     $('#cards-search-input').attr("placeholder", "Location missing, enter a county or city name");
   }
 
-  const county =  state['county'];
-  const city =    state['city'];
-  const zoom =    state['zoom'] || 9;
-  const lat =     state['lat'];
-  const lon =     state['lon'];
+  const county = state['county'];
+  const city = state['city'];
+  const zoom = state['zoom'] || 9;
+  const lat = state['lat'];
+  const lon = state['lon'];
   const mode = 'thresholds'  // stationsMapState['mode'];
   const stationId = state['stationId'];
   const stationName = state['stationName'];
@@ -37,9 +39,10 @@ $(function () {
   const tidalStationName = state['tidalStationName'];
   const tidalStationMOverMHHW = state['tidalStationMOverMHHW'];
   const center = [lat, lon]
-  const threshold = state['threshold']  || null;
-  const windowValue = state['window']  || 1;
-  const thresholdVariable = state['thresholdVariable']  || 'precipitation';
+  const threshold = state['threshold'] || null;
+  const window_days = state['window_days'] || 1;
+  const threshold_variable = state['threshold_variable'] || 'precipitation';
+  const threshold_operator = state['threshold_operator'] || '>=';
 
   update_meta_tag(county, city);
 
@@ -53,8 +56,8 @@ $(function () {
     tidalStationName,
     tidalStationMOverMHHW,
     threshold,
-    window: windowValue,
-    thresholdVariable,
+    window_days,
+    threshold_variable,
     lat,
     lon,
     zoom,
@@ -67,8 +70,8 @@ $(function () {
   function updateStationSelectText(stations) {
     const stationsSelectElem = $('#stations-dropdown-menu');
     if (stationsSelectElem) {
-      if ( !!stations.stationId) {
-        stationsSelectElem.data('value',`${stations.stationId},${stations.stationName}`);
+      if (!!stations.stationId) {
+        stationsSelectElem.data('value', `${stations.stationId},${stations.stationName}`);
         stationsSelectElem.text(`${stations.stationName} - (${stations.stationId})`);
       }
     }
@@ -79,24 +82,22 @@ $(function () {
     const thresholdVariableSelectElem = $('#selection-dropdown-menu');
 
     if (thresholdVariable) {
-      if ( thresholdVariable !== undefined) {
-        thresholdVariableSelectElem.data('value', thresholdVariable);
-        switch (thresholdVariable) {
-          case 'precipitation':
-            thresholdVariableSelectElem.text('Precipitation');
-            break;
-          case 'tmax':
-            thresholdVariableSelectElem.text('Maximum Temperature');
-            break;
-          case 'tmin':
-            thresholdVariableSelectElem.text('Minimum Temperature');
-            break;
-          case 'tavg':
-            thresholdVariableSelectElem.text('Average Temperature');
-            break;
-          default:
-            thresholdVariableSelectElem.text('Precipitation');
-        }
+      thresholdVariableSelectElem.data('value', thresholdVariable);
+      switch (thresholdVariable) {
+        case 'precipitation':
+          thresholdVariableSelectElem.text('Precipitation');
+          break;
+        case 'tmax':
+          thresholdVariableSelectElem.text('Maximum Temperature');
+          break;
+        case 'tmin':
+          thresholdVariableSelectElem.text('Minimum Temperature');
+          break;
+        case 'tavg':
+          thresholdVariableSelectElem.text('Average Temperature');
+          break;
+        default:
+          thresholdVariableSelectElem.text('Precipitation');
       }
     }
   }
@@ -106,44 +107,72 @@ $(function () {
 
 
   // Handles disabling/enable the graph views, nothing else.
-  function showGraphs() {
+  function show_graphs() {
     $('.graph-row').removeClass("d-none");
 
     $('.more-info').removeClass('btn-default-disabled');
   }
 
-  function updateGraphs(options) {
-
-    if(typeof window.cbs_annual_exceedance === "undefined") {
+  function update_graphs(options) {
+    const threshold_null = options.threshold === null;
+    if (typeof window.cbs_annual_exceedance === "undefined") {
       window.cbs_annual_exceedance = new ClimateByStationWidget($('#annual-exceedance-view'), {
         view_type: 'annual_exceedance',
         ...options
       });
+
+      window.cbs_annual_exceedance.element.addEventListener('update_complete', function (e) {
+        window.app.update({
+          threshold: window.cbs_annual_exceedance.options.threshold,
+          window_days: window.cbs_annual_exceedance.options.window_days
+        })
+
+        document.getElementById("threshold").value = window.cbs_annual_exceedance.options.threshold;
+        document.getElementById("window_days").value = window.cbs_annual_exceedance.options.window_days;
+        document.getElementById("variable_unit_label").innerText = window.cbs_annual_exceedance.variable_unit;
+
+        if (threshold_null &&  window.cbs_annual_exceedance.options.threshold !== null){
+          update_graphs({threshold: window.cbs_annual_exceedance.options.threshold});
+        }
+      })
+
     } else {
       window.cbs_annual_exceedance.update({view_type: 'annual_exceedance', ...options});
     }
 
-    if(typeof window.cbs_histogram === "undefined") {
+    if (typeof window.cbs_histogram === "undefined") {
       window.cbs_histogram = new ClimateByStationWidget($('#histogram-view'), {
-        view_type: 'daily_precipitation_histogram',
+        view_type: options.hasOwnProperty('variable') ? options.variable === 'precipitation' ? 'daily_precipitation_histogram' : 'daily_temperature_histogram' : window.cbs_histogram.options.view_type,
         ...options
       });
+
+      window.cbs_histogram.element.addEventListener('threshold_changed', function (e) {
+        window.app.update({threshold: e.detail.threshold});
+
+        update_graphs({
+          threshold: e.detail.threshold
+        })
+      })
+
     } else {
-      window.cbs_histogram.update({view_type: 'daily_precipitation_histogram', ...options})
+      window.cbs_histogram.update({
+        view_type: options.hasOwnProperty('variable') ? options.variable === 'precipitation' ? 'daily_precipitation_histogram' : 'daily_temperature_histogram' : window.cbs_histogram.options.view_type, ...options
+      })
     }
 
-    if(typeof window.cbs_absolute_view === "undefined") {
+    if (typeof window.cbs_absolute_view === "undefined") {
       window.cbs_absolute_view = new ClimateByStationWidget($('#absolute-view'), {
-        view_type: 'daily_precipitation_absolute',
-        ...options
+        view_type: options.hasOwnProperty('variable') ? options.variable === 'precipitation' ? 'daily_precipitation_absolute' : 'daily_temperature_absolute' : window.cbs_absolute_view.options.view_type, ...options
       });
     } else {
-      window.cbs_absolute_view.update({view_type: 'daily_precipitation_absolute', ...options})
+      window.cbs_absolute_view.update({
+        view_type: options.hasOwnProperty('variable') ? options.variable === 'precipitation' ? 'daily_precipitation_absolute' : 'daily_temperature_absolute' : window.cbs_absolute_view.options.view_type, ...options
+      });
     }
 
   }
 
-  function toggleDownloads() {
+  function toggle_downloads() {
     const targetParent = $('#download-dropdown-menu');
     if (targetParent.hasClass('disabled')) {
       targetParent.removeClass('disabled');
@@ -151,20 +180,21 @@ $(function () {
   }
 
   // if state url has a station render station and not map.
-  if(stationId) {
+  if (stationId) {
 
-    updateGraphs({
+    update_graphs({
       station: stationId,
       threshold: threshold,
-      window_days: windowValue,
-      variable: thresholdVariable
+      window_days: window_days,
+      variable: threshold_variable,
+      threshold_operator: threshold_operator
     });
 
-    updateThresholdVariableSelectText(thresholdVariable);
-    $('#threshold-value').val(threshold);
-    $('#window-value').val(windowValue);
+    updateThresholdVariableSelectText(threshold_variable);
+    $('#threshold').val(threshold);
+    $('#window_days').val(window_days);
 
-    showGraphs()
+    show_graphs()
 
     // Toggle about modal
     $(`#chartmap-select-chart-link`).removeClass("disabled");
@@ -177,12 +207,12 @@ $(function () {
     // updates the visible text for the station dropdown with the information from the state url
     updateStationSelectText({stationName, stationId})
 
-    toggleDownloads();
+    toggle_downloads();
 
   }
 
   // function to enable downloads (images and data)
-  $('.download-select li a').click( function (event) {
+  $('.download-select li a').click(function (event) {
     const downloadAction = $(this).data('value');
     const state = window.app.state;
     const stationId = state['stationId'];
@@ -200,14 +230,14 @@ $(function () {
         $("#thresholds-container").item('downloadExceedanceData', event.currentTarget);
         break;
       default:
-      event.target.href = $("#thresholds-container canvas")[0].toDataURL('image/png');
-      event.target.download = "thresholds_" + stationId + ".png";
+        event.target.href = $("#thresholds-container canvas")[0].toDataURL('image/png');
+        event.target.download = "thresholds_" + stationId + ".png";
     }
   });
 
 
   // in responsive mode, event handler a for when season (time) variable changes
-  $('#stations-dropdown-menu').bind('cs-changed', function(e) {
+  $('#stations-dropdown-menu').bind('cs-changed', function (e) {
 
     const target = $(e.target);
     const disabled = target.hasClass('disabled');
@@ -220,26 +250,26 @@ $(function () {
 
       document.getElementById('station-info').classList.remove('d-none');
       document.getElementById('station-info-none').classList.add('d-none');
-      updateStationIDText(`${stationId}`);
-      updateStationText(`${stationName}`);
+      update_station_id_text(`${stationId}`);
+      update_station_text(`${stationName}`);
 
       // get current threshold values
       const thresholdVariable = $('#selection-dropdown-menu').data('value');
-      const windowValue = parseInt($('#window-value').val());
-      const thresholdValue = parseFloat($('#threshold-value').val());
+      const windowValue = parseInt($('#window').val());
+      const thresholdValue = parseFloat($('#threshold').val());
 
       // change map variable
-      window.app.update( {stationId, stationName, threshold: thresholdValue, window: windowValue, thresholdVariable: thresholdVariable});
+      window.app.update({stationId, stationName, threshold: thresholdValue, window: windowValue, thresholdVariable: thresholdVariable});
 
       // show chart overlay
-      showGraphs();
+      show_graphs();
 
       // reset graphs
-      updateGraphs({
+      update_graphs({
         variable: thresholdVariable,
-        stationId,
-        stationName,
-        window: windowValue,
+        station: stationId,
+        station_label: stationName,
+        window_days: windowValue,
         threshold: thresholdValue
       });
 
@@ -249,61 +279,146 @@ $(function () {
 
       $('#chart-info-row-btn').removeClass('disabled');
 
-      toggleDownloads();
+      toggle_downloads();
 
     }
   })
 
+  $('#selection-dropdown-menu').bind('cs-changed', function (e) {
+    const target = $(e.target);
+    const disabled = target.hasClass('disabled');
+
+    if (!disabled) {
+
+      const data_value = target.data('value');
+      let options = {};
+
+      if (data_value.includes("preset")) {
+
+        if (data_value === "preset-1") {
+
+          options = {
+            variable: 'precipitation',
+            window_days: 3,
+            threshold: null,
+            threshold_operator: ">=",
+            threshold_percentile: 90
+          }
+
+        } else if (data_value === "preset-2") {
+
+          options = {
+            variable: 'precipitation',
+            window_days: 1,
+            threshold: 0.01,
+            threshold_operator: "<=",
+            threshold_percentile: null
+          }
+
+        } else if (data_value === "preset-3") {
+
+          options = {
+            variable: 'tmax',
+            window_days: 1,
+            threshold: 95,
+            threshold_operator: ">=",
+            threshold_percentile: null
+          }
+
+        } else if (data_value === "preset-4") {
+
+          options = {
+            variable: 'tmin',
+            window_days: 3,
+            threshold: 90,
+            threshold_operator: ">=",
+            threshold_percentile: null
+          }
+
+        } else if (data_value === "preset-5") {
+
+          options = {
+            variable: 'tmin',
+            window_days: 1,
+            threshold: 32,
+            threshold_operator: "<=",
+            threshold_percentile: null
+          }
+
+        } else if (data_value === "preset-6") {
+
+          options = {
+            variable: 'tmax',
+            window_days: 1,
+            threshold: 32,
+            threshold_operator: "<=",
+            threshold_percentile: null
+          }
+
+        }
+      } else {
+        options = {
+          variable: data_value
+        }
+      }
+
+      update_graphs(options);
+
+    }
+
+  });
+
+  $('#percentile-dropdown-menu').bind('cs-changed', function (e) {
+    const target = $(e.target);
+    const disabled = target.hasClass('disabled');
+
+    if (!disabled) {
+      const data_value = target.data('value');
+      update_graphs({
+        threshold: null,
+        threshold_percentile: data_value
+      });
+    }
+  });
+
+
+  $('#operator-dropdown-menu').bind('cs-changed', function (e) {
+    const target = $(e.target);
+    const disabled = target.hasClass('disabled');
+
+    if (!disabled) {
+      const data_value = target.data('value');
+
+      window.app.update({threshold_operator: data_value});
+
+      update_graphs({
+        threshold_operator: data_value
+      });
+    }
+  });
+
 
   // in responsive mode, event handler a for when  threshold value (inches of rain temp in F) changes
-  $('#threshold-value').change( function(e) {
+  $('#threshold, #window_days').change(function (e) {
 
-    const thresholdValueElem = document.getElementById('threshold-value');
-
-    if(!thresholdValueElem) return;
-
-    const val = parseFloat($(thresholdValueElem).val()).toFixed(1);
-
-    if(isNaN(val)) return;
-
-    const stations = $('#stations-dropdown-menu').data('value').split(',');
-    const stationName = stations[1];
-    const stationId = stations[0];
-    const thresholdVariable = $('#selection-dropdown-menu').data('value'); //  , thresholdValue: thresholdVariable
+    const threshold = parseFloat($('#threshold').val()).toFixed(2);
+    const window_days = parseFloat($('#window_days').val()).toFixed(0) || 1;
 
     // change map url state
-    window.app.update( { stationId, stationName, threshold: val, thresholdValue: thresholdVariable});
+    window.app.update({threshold, window_days});
+
+    update_graphs({
+      threshold: threshold,
+      window_days: window_days
+    })
 
     // ga event action, category, label
-    googleAnalyticsEvent('click', 'threshold-value', val);
+    googleAnalyticsEvent('click', 'threshold-value', threshold);
+    googleAnalyticsEvent('click', 'window-value', window_days);
 
   });
 
-  // in responsive mode, event handler a for when  window value (duration of days) changes
-  $('#window-value').change( function(e) {
-
-    const windowValueElem = document.getElementById('window-value');
-
-    if(!windowValueElem) return;
-
-    const val = parseFloat($(windowValueElem).val());
-
-    if(isNaN(val)) return;
-
-    const stations = $('#stations-dropdown-menu').data('value').split(',');
-    const stationName = stations[1];
-    const stationId = stations[0];
-    const thresholdVariable = $('#selection-dropdown-menu').data('value'); //  , thresholdValue: thresholdVariable
-
-    // change map url state
-    window.app.update( { stationId, stationName, window: val, thresholdValue: thresholdVariable});
-
-    // ga event action, category, label
-    googleAnalyticsEvent('click', 'window-value', val);
-
-  });
-
-  $('#chartmap-select-chart-link').click(function(e) {
+  $('#chartmap-select-chart-link').click(function (e) {
 
     if (e.type === 'keydown' && e.keyCode === 32) {
       e.preventDefault();
@@ -316,22 +431,22 @@ $(function () {
 
     const target = $(e.target);
 
-    const disabled =  target.hasClass('disabled');
+    const disabled = target.hasClass('disabled');
 
-    if(disabled) return;
+    if (disabled) return;
 
     const selected = target.hasClass('selected-item');
 
-    if(selected) return;
+    if (selected) return;
 
     toggleButton($(target));
 
-    showGraphs();
+    show_graphs();
 
     googleAnalyticsEvent('click', 'chartmap', target);
   })
 
-  $('#chartmap-select-map-link').click(function(e) {
+  $('#chartmap-select-map-link').click(function (e) {
 
     if (e.type === 'keydown' && e.keyCode === 32) {
       e.preventDefault();
@@ -344,13 +459,13 @@ $(function () {
 
     const target = $(e.target);
 
-    const disabled =  target.hasClass('disabled');
+    const disabled = target.hasClass('disabled');
 
-    if(disabled) return;
+    if (disabled) return;
 
     const selected = target.hasClass('selected-item');
 
-    if(selected) return;
+    if (selected) return;
 
     toggleButton($(target));
 
@@ -358,28 +473,28 @@ $(function () {
   })
 
   // this function Updates the chart title.
-  function updateStationText(text) {
+  function update_station_text(text) {
     $('#default-station').html(text);
   }
 
   // this function Updates the chart title.
-  function updateStationIDText(text) {
+  function update_station_id_text(text) {
     $('#default-station-id').html(text);
   }
 
-  function renderStationInfo(stationName, stationId) {
+  function render_station_info(stationName, stationId) {
     if (stationName) {
       document.getElementById('station-info').classList.remove('d-none');
       document.getElementById('station-info-none').classList.add('d-none');
-      updateStationIDText(`${stationId}`);
-      updateStationText(`${stationName}`);
+      update_station_id_text(`${stationId}`);
+      update_station_text(`${stationName}`);
     } else {
       document.getElementById('station-info').classList.add('d-none');
       document.getElementById('station-info-none').classList.remove('d-none');
     }
   }
 
-  renderStationInfo(stationName, stationId);
+  render_station_info(stationName, stationId);
 
   window.stations = $('#stations-map').stationsMap(Object.assign({
     // When state changes, just pass the current options along directly for this page.
@@ -393,11 +508,11 @@ $(function () {
       }
 
       window.app.update(options);
-      renderStationInfo(options.stationId, options.stationName);
+      render_station_info(options.stationId, options.stationName);
 
       let message_element = $("#stations-map-message");
 
-      if(message_element) {
+      if (message_element) {
         message_element.addClass("d-none");
       }
 
@@ -406,15 +521,15 @@ $(function () {
 
     // when user clicks on map station marker
     stationUpdated: (event, options) => {
-      updateGraphs({
-        variable: thresholdVariable,
-        window: windowValue,
+      update_graphs({
+        variable: threshold_variable,
+        window_days: window_days,
         threshold: threshold,
         station: options.stationId,
         station_label: options.stationName
       });
 
-      showGraphs();
+      show_graphs();
 
       // toggle button to select chart
       $(`#chartmap-select-chart-link`).removeClass("disabled");
@@ -427,11 +542,11 @@ $(function () {
 
       // updates the visible text for the station dropdown with the information from the state url
       updateStationSelectText({stationName: options.stationName, stationId: options.stationId})
-      renderStationInfo(options.stationId, options.stationName);
+      render_station_info(options.stationId, options.stationName);
 
       window.app.update(options);
 
-      toggleDownloads();
+      toggle_downloads();
 
     }
   }, stationsMapState));
@@ -440,29 +555,29 @@ $(function () {
   // this is a bit hacky way of resolving....
   let thresholdValueTEMP = parseFloat($('#threshold-value').val());
 
-    $('#chart-info-row-btn .more-info.btn-default').click( function (e) {
+  $('#chart-info-row-btn .more-info.btn-default').click(function (e) {
 
-      let disabled = $('.more-info').hasClass('btn-default-disabled');
+    let disabled = $('.more-info').hasClass('btn-default-disabled');
 
-      if(disabled) return;
+    if (disabled) return;
 
-      const target = $('#more-info-description');
-      // show description of charts
-      if (target.hasClass('d-none')) {
-        target.removeClass('d-none');
+    const target = $('#more-info-description');
+    // show description of charts
+    if (target.hasClass('d-none')) {
+      target.removeClass('d-none');
 
-        // ga event action, category, label
-        googleAnalyticsEvent('click', 'toggle-chart-info', 'open');
+      // ga event action, category, label
+      googleAnalyticsEvent('click', 'toggle-chart-info', 'open');
       // hide description of charts
-      } else {
-        target.addClass('d-none');
+    } else {
+      target.addClass('d-none');
 
-        // ga event action, category, label
-        googleAnalyticsEvent('click', 'toggle-chart-info', 'close');
-      }
+      // ga event action, category, label
+      googleAnalyticsEvent('click', 'toggle-chart-info', 'close');
+    }
 
-      // force draw and resize of charts
-      showGraphs();
-      forceResize()
-    })
+    // force draw and resize of charts
+    show_graphs();
+    forceResize()
+  })
 });

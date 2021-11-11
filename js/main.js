@@ -19,8 +19,9 @@ const url_param_names = {
   'lat': 'lat',
   'lon': 'lon',
   'threshold': 'threshold',
-  'window': 'window',
-  'thresholdVariable': 'threshold-variable',
+  'window_days': 'window',
+  'threshold_variable': 'threshold-variable',
+  'threshold_operator': 'threshold-operator',
   // page
 };
 
