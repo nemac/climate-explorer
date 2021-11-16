@@ -28225,7 +28225,7 @@ input.input-inner-default:focus {
   position: sticky;
   bottom: 0;
   flex: 0 0 auto;
-  z-index: 9999;
+  z-index: 1000;
 }
 
 /* line 41, scss/template/_nav_footer.scss */
@@ -28999,46 +28999,41 @@ input.input-inner-default:focus {
   transition: background-color 200ms ease-in;
 }
 
-/* line 16, scss/pages/_extreme_events.scss */
+/* line 15, scss/pages/_extreme_events.scss */
 .extreme-events .selection-dropdown li:hover {
   background-color: #A6C6F3;
   cursor: pointer;
 }
 
-/* line 23, scss/pages/_extreme_events.scss */
+/* line 22, scss/pages/_extreme_events.scss */
 .extreme-events .historical-threshold-input {
   position: absolute;
   transform: translateY(-1.5rem);
 }
 
 /* line 28, scss/pages/_extreme_events.scss */
-.extreme-events #thresholds-container {
-  height: 200px;
-}
-
-/* line 32, scss/pages/_extreme_events.scss */
 .extreme-events .more-btn-container:hover .more-btn {
   display: block !important;
 }
 
-/* line 36, scss/pages/_extreme_events.scss */
+/* line 32, scss/pages/_extreme_events.scss */
 .extreme-events .dropdown-menu {
   background-color: #E9F1FC;
 }
 
-/* line 41, scss/pages/_extreme_events.scss */
+/* line 37, scss/pages/_extreme_events.scss */
 .extreme-events .input-group label {
   background-color: #E9F1FC;
   color: #0D3064;
 }
 
-/* line 47, scss/pages/_extreme_events.scss */
+/* line 43, scss/pages/_extreme_events.scss */
 .extreme-events #variable_unit_label {
   background-color: #E9F1FC;
   color: #0D3064;
 }
 
-/* line 52, scss/pages/_extreme_events.scss */
+/* line 48, scss/pages/_extreme_events.scss */
 .extreme-events .default-selection a {
   color: #0D3064;
 }

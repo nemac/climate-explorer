@@ -64,8 +64,6 @@ $(function () {
     center
   };
 
-  const thresholdStationsDataURL = "https://data.rcc-acis.org/StnData";
-
   // updates the visible text for the station dropdown with the information from the state url
   function updateStationSelectText(stations) {
     const stationsSelectElem = $('#stations-dropdown-menu');
@@ -131,7 +129,7 @@ $(function () {
         document.getElementById("window_days").value = window.cbs_annual_exceedance.options.window_days;
         document.getElementById("variable_unit_label").innerText = window.cbs_annual_exceedance.variable_unit;
 
-        if (threshold_null &&  window.cbs_annual_exceedance.options.threshold !== null){
+        if (threshold_null && window.cbs_annual_exceedance.options.threshold !== null) {
           update_graphs({threshold: window.cbs_annual_exceedance.options.threshold});
         }
       })
@@ -210,6 +208,63 @@ $(function () {
     toggle_downloads();
 
   }
+
+  $('#daily-graphs-modal-btn').click(() => {
+
+    const state = window.app.state;
+    const station = state['stationId'];
+    // const station_name = state['stationName'];
+    const threshold = state['threshold'] || null;
+    const window_days = state['window_days'] || 1;
+    const threshold_variable = state['threshold_variable'] || 'precipitation';
+    const threshold_operator = state['threshold_operator'] || '>=';
+    if (!threshold_variable) return;
+    if (!!window.cbs_daily_views) {
+      Object.values(window.cbs_daily_views).forEach(a => a.destroy());
+    }
+    window.cbs_daily_views = {}
+
+    $('#daily-graph-other-label').text(threshold_variable === 'precipitation' ? 'Yearly accumulated precipitation':'Daily temperature ranges');
+    if (!window.daily_graphs_modal){
+      const modal_el = document.getElementById('daily-graphs-modal');
+      window.daily_graphs_modal = new bootstrap.Modal(modal_el, {});
+      modal_el.addEventListener('hidden.bs.modal', function (e) {
+        if (!!window.cbs_daily_views) {
+          Object.values(window.cbs_daily_views).forEach(a => a.destroy());
+          window.cbs_daily_views = null;
+        }
+      })
+      modal_el.addEventListener('shown.bs.modal', function (e) {
+        window.cbs_daily_views.absolute_view = window.cbs_absolute_view = new ClimateByStationWidget($('#daily-graph-absolute'), {
+          view_type: threshold_variable === 'precipitation'? 'daily_precipitation_absolute' : 'daily_temperature_absolute',
+          station,
+          threshold,
+          window_days,
+          threshold_variable,
+          threshold_operator
+        });
+        window.cbs_daily_views.normalized_view = window.cbs_absolute_view = new ClimateByStationWidget($('#daily-graph-normalized'), {
+          view_type: threshold_variable === 'precipitation' ? 'daily_precipitation_normalized' : 'daily_temperature_normalized',
+          station,
+          threshold,
+          window_days,
+          threshold_variable,
+          threshold_operator,
+          responsive: true
+        });
+        window.cbs_daily_views.other_view = window.cbs_absolute_view = new ClimateByStationWidget($('#daily-graph-other'), {
+          view_type: threshold_variable === 'precipitation' ? 'daily_precipitation_ytd' : 'daily_temperature_minmax',
+          station,
+          threshold,
+          window_days,
+          threshold_variable,
+          threshold_operator
+        });
+      })
+    }
+    window.daily_graphs_modal.show();
+
+  });
 
   // function to enable downloads (images and data)
   $('.download-select li a').click(function (event) {

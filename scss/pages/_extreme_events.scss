@@ -9,7 +9,6 @@
 
     li {
       color: $navbar-button-background;
-
       transition: background-color 200ms ease-in;
     }
 
@@ -25,9 +24,6 @@
     transform: translateY(-1.5rem);
   }
 
-  #thresholds-container {
-    height: 200px;
-  }
 
   .more-btn-container:hover .more-btn{
     display: block !important;
@@ -52,5 +48,7 @@
   .default-selection a {
     color: $navbar-background;
   }
+
+
 }
 
