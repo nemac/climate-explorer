@@ -75,7 +75,6 @@ $(function () {
     }
   }
 
-
   // updates the visible text for the Threshold Variable dropdown with the information from the state url
   function updateThresholdVariableSelectText(thresholdVariable) {
     const thresholdVariableSelectElem = $('#selection-dropdown-menu');
@@ -225,8 +224,8 @@ $(function () {
     }
     window.cbs_daily_views = {}
 
-    $('#daily-graph-other-label').text(threshold_variable === 'precipitation' ? 'Yearly accumulated precipitation' : 'Daily temperature ranges');
-    if (!window.daily_graphs_modal) {
+    $('#daily-graph-other-label').text(threshold_variable === 'precipitation' ? 'Yearly accumulated precipitation':'Daily temperature ranges');
+    if (!window.daily_graphs_modal){
       const modal_el = document.getElementById('daily-graphs-modal');
       window.daily_graphs_modal = new bootstrap.Modal(modal_el, {});
       modal_el.addEventListener('hidden.bs.modal', function (e) {
@@ -234,10 +233,16 @@ $(function () {
           Object.values(window.cbs_daily_views).forEach(a => a.destroy());
           window.cbs_daily_views = null;
         }
+
+        const ul = $('.download-select-modal');
+        const list = ul.children('li');
+
+        list.off('click');
+
       })
       modal_el.addEventListener('shown.bs.modal', function (e) {
         window.cbs_daily_views.absolute_view = window.cbs_absolute_view = new ClimateByStationWidget($('#daily-graph-absolute'), {
-          view_type: threshold_variable === 'precipitation' ? 'daily_precipitation_absolute' : 'daily_temperature_absolute',
+          view_type: threshold_variable === 'precipitation'? 'daily_precipitation_absolute' : 'daily_temperature_absolute',
           station,
           threshold,
           window_days,
@@ -261,7 +266,9 @@ $(function () {
           threshold_variable,
           threshold_operator
         });
-      })
+
+        download_handle_modal();
+      });
     }
     window.daily_graphs_modal.show();
 
@@ -315,7 +322,7 @@ $(function () {
       const thresholdValue = parseFloat($('#threshold').val());
 
       // change map variable
-      window.app.update({stationId, stationName, threshold: thresholdValue, window: windowValue, thresholdVariable: thresholdVariable});
+      window.app.update({stationId, stationName, threshold: thresholdValue, window: windowValue, threshold_variable: thresholdVariable});
 
       // show chart overlay
       show_graphs();
@@ -412,10 +419,23 @@ $(function () {
           }
 
         }
+
+        window.app.update({
+          threshold: options.threshold,
+          window_days: options.window_days,
+          threshold_operator: options.threshold_operator,
+          threshold_percentile: options.threshold_percentile,
+          threshold_variable: options.variable
+        })
+
       } else {
         options = {
           variable: data_value
         }
+
+        window.app.update({
+          threshold_variable: options.variable
+        })
       }
 
       update_graphs(options);
@@ -622,6 +642,76 @@ $(function () {
 
     }
   }, stationsMapState));
+
+  function download_handle() {
+    const ul = $('.download-select');
+    const list = ul.children('li');
+
+    list.click(function(e) {
+
+      const data_value = e.currentTarget.dataset.value;
+
+      if(data_value.includes("annual_exceedance")) {
+
+        if(data_value.includes("image")) {
+          window.cbs_annual_exceedance.download_image();
+        } else {
+          window.cbs_annual_exceedance.download_annual_exceedance();
+        }
+      } else if(data_value.includes("histogram")) {
+
+        if(data_value.includes("image")) {
+          window.cbs_histogram.download_image();
+        } else {
+          window.cbs_histogram.options.variable === 'precipitation' ? window.cbs_histogram.download_daily_precipitation_histogram() : window.cbs_histogram.download_daily_temperature_histogram();
+        }
+      } else if(data_value.includes("daily_values")) {
+
+        if(data_value.includes("image")) {
+          window.cbs_absolute_view.download_image();
+        } else {
+          window.cbs_absolute_view.options.variable === 'precipitation' ? window.cbs_absolute_view.download_daily_precipitation_absolute() : window.cbs_absolute_view.download_daily_temperature_absolute();
+        }
+      }
+
+    })
+  }
+
+  function download_handle_modal() {
+    const ul = $('.download-select-modal');
+    const list = ul.children('li');
+
+    list.on('click', function(e) {
+
+      const data_value = e.currentTarget.dataset.value;
+
+      if(data_value.includes("absolute")) {
+
+        if(data_value.includes("image")) {
+          window.cbs_daily_views.absolute_view.download_image();
+        } else {
+          window.cbs_daily_views.absolute_view.options.variable === 'precipitation' ? window.cbs_daily_views.absolute_view.download_daily_precipitation_absolute() : window.cbs_daily_views.absolute_view.download_daily_temperature_absolute();
+        }
+      } else if(data_value.includes("normalized")) {
+
+        if(data_value.includes("image")) {
+          window.cbs_daily_views.normalized_view.download_image();
+        } else {
+          window.cbs_daily_views.normalized_view.options.variable === 'precipitation' ? window.cbs_daily_views.normalized_view.download_daily_precipitation_normalized() : window.cbs_daily_views.normalized_view.download_daily_temperature_normalized();
+        }
+      } else if(data_value.includes("other")) {
+
+        if(data_value.includes("image")) {
+          window.cbs_daily_views.other_view.download_image();
+        } else {
+          window.cbs_daily_views.other_view.options.variable === 'precipitation' ? window.cbs_daily_views.other_view.download_daily_precipitation_ytd() : window.cbs_daily_views.other_view.download_daily_temperature_minmax();
+        }
+      }
+
+    })
+  }
+
+  download_handle();
 
   // not sure why but on initialize does not update the graph so this makes sure url updates happen.
   // this is a bit hacky way of resolving....

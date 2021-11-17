@@ -161,12 +161,12 @@ export default (config) => `
                   Downloads
                 </a>
                 <ul class="dropdown-menu download-select" aria-labelledby="download-dropdown-menu">
-                  <li data-value="download-thresholds-image" data-icon="fas fa-download select-icon" href="javascript:void(0);" class="default-select-option">
-                    <a data-value="download-thresholds-image" class="dropdown-item" href="javascript:void(0);">Download threshold image</a>
-                  </li>
-                  <li data-value="download-thresholds-data" data-icon="fas fa-download select-icon" href="javascript:void(0);" class="default-select-option">
-                    <a data-value="download-thresholds-data" class="dropdown-item" href="javascript:void(0);">Download threshold data</a>
-                  </li>
+                  <li class="dropdown-item default-select-option" data-value="annual_exceedance_data">Annual exceedance data (.csv)</li>
+                  <li class="dropdown-item default-select-option" data-value="annual_exceedance_image">Annual exceedance image (.png)</li>
+                  <li class="dropdown-item default-select-option" data-value="histogram_data">Histogram data (.csv)</li>
+                  <li class="dropdown-item default-select-option" data-value="histogram_image">Histogram image (.png)</li>
+                  <li class="dropdown-item default-select-option" data-value="daily_values_data">Daily values data (.csv)</li>
+                  <li class="dropdown-item default-select-option" data-value="daily_values_image">Daily values image (.png)</li>
                 </ul>
               </div>
             </div>
@@ -296,6 +296,24 @@ export default (config) => `
       <div class="modal-content p-3">
         <div class="modal-header">
           <h3 class="modal-title" id="daily-graphs-modal-label">Daily values</h3>
+          <div>
+            
+          </div>
+          <div class="ms-3 dropdown rounded-2 border border-1">
+            <a class="btn dropdown-toggle ps-4 pe-4 w-100" href="#" style="text-align: center;" role="button" id="modal-download-dropdown-menu"
+               data-bs-toggle="dropdown" aria-expanded="false">
+              <span class="fas fa-download select-icon"></span>
+              Downloads
+            </a>
+            <ul class="dropdown-menu download-select-modal" aria-labelledby="modal-download-dropdown-menu">
+              <li class="dropdown-item default-select-option" data-value="absolute_data">Absolute data (.csv)</li>
+              <li class="dropdown-item default-select-option" data-value="absolute_image">Absolute image (.png)</li>
+              <li class="dropdown-item default-select-option" data-value="normalized_data">Normalized  data (.csv)</li>
+              <li class="dropdown-item default-select-option" data-value="normalized_image">Normalized image (.png)</li>
+              <li class="dropdown-item default-select-option" data-value="other_data">Other data (.csv)</li>
+              <li class="dropdown-item default-select-option" data-value="other_image">Other image (.png)</li>
+            </ul>
+          </div>
           <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
         </div>
         <div class="modal-body">
