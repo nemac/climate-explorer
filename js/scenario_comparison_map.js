@@ -1,5 +1,5 @@
 // Use AMD loader if present, if not use global jQuery
-/* global require, define, Terraformer */
+/* globals require, define, Terraformer */
 import merge from '../node_modules/lodash-es/merge.js';
 import get from '../node_modules/lodash-es/get.js';
 import mean from '../node_modules/lodash-es/mean.js';
@@ -10,7 +10,12 @@ import './main.js';
 // noinspection JSIgnoredPromiseFromCall
 export default class ScenarioComparisonMap {
   constructor(element, options) {
-    this.element = $('#map-element');
+    if (typeof element === "string") {
+      element = document.querySelector(this.element);
+    } else if (typeof element === 'object' && typeof element.jquery !== 'undefined') {
+      element = element[0];
+    }
+    this.element = element;
     this.options = {
       state: null,
       county: null,
@@ -280,7 +285,7 @@ export default class ScenarioComparisonMap {
       season_months: {'winter': '01', 'spring': '04', 'summer': '07', 'fall': '10', 'annual': 'annual'},
       area_data_api_endpoint: 'https://grid2.rcc-acis.org/GridData',
     }
-    this.option = merge(this.options, options)
+    this.options = merge(this.options, options)
     // All DOM nodes used by the widget (must be maintained for clean destruction)
     this.nodes = {};
 
@@ -408,7 +413,7 @@ export default class ScenarioComparisonMap {
    * @private
    */
   _registerDojoMods(resolve) {
-    require(this.dojoDeps, (...mods) => {
+    window.require(this.dojoDeps, (...mods) => {
 
       /**
        *
@@ -528,7 +533,7 @@ export default class ScenarioComparisonMap {
   }
 
   _initMap() {
-    /** @type {{findLayerById}} */
+    /** @type {{findLayerById, add, destroy}} */
     this.map = new this.dojoMods.Map({
       basemap: 'topo'
     });
@@ -750,17 +755,16 @@ export default class ScenarioComparisonMap {
         let layerViewContainer = layerView.container;
         layerViewContainer._doRender = layerViewContainer.doRender;
         layerViewContainer.doRender = (a) => {
-          const _this = this;
           layerViewContainer._doRender(a);
-          if (_this.options.swipeX === null) {
-            _this.options.swipeX = layerViewContainer.element.width;
+          if (this.options.swipeX === null) {
+            this.options.swipeX = layerViewContainer.element.width;
           }
-          if (_this.options.swipeX > layerViewContainer.element.width) {
-            _this.options.swipeX = layerViewContainer.element.width;
-            _this.nodes.$controlsOverLayContainer.find('.movable.slider-div').css('left', _this.options.swipeX);
+          if (this.options.swipeX > layerViewContainer.element.width) {
+            this.options.swipeX = layerViewContainer.element.width;
+            this.nodes.$controlsOverLayContainer.find('.movable.slider-div').css('left', this.options.swipeX);
           }
 
-          this._setClipPath(layerViewContainer.element, side, _this.options.swipeX);
+          this._setClipPath(layerViewContainer.element, side, this.options.swipeX);
         };
       });
     });
@@ -2113,7 +2117,6 @@ export default class ScenarioComparisonMap {
   }
 
   _updateLeftYearSlider() {
-    const _this5 = this;
 
     //override to disable left year slider for historical
 
@@ -2149,7 +2152,7 @@ export default class ScenarioComparisonMap {
     this.nodes.$controlsOverLayContainer.find('.left-year-slider').removeClass('d-none');
     this.nodes.$controlsOverLayContainer.find('.year-label').removeClass('d-none');
 
-    this.nodes.$leftYearTooltip.text(this.options.scenarios[this.options.leftScenario].years.find(v => v.value === _this5.options.leftYear.toString()).label);
+    this.nodes.$leftYearTooltip.text(this.options.scenarios[this.options.leftScenario].years.find(v => v.value === this.options.leftYear.toString()).label);
     this.nodes.$controlsOverLayContainer.find('.left-year-slider-container .year-min').text(this.options.scenarios[this.options.leftScenario].years[0].label);
     this.nodes.$controlsOverLayContainer.find('.left-year-slider-container .year-max').text(maxLabel);
     this.nodes.$leftYearSlider.slider({
@@ -2157,7 +2160,7 @@ export default class ScenarioComparisonMap {
       min: 0,
       max: this.options.scenarios[this.options.leftScenario].years.length - 1,
       step: 1,
-      value: this.options.scenarios[this.options.leftScenario].years.findIndex(v => v.value === _this5.options.leftYear.toString()),
+      value: this.options.scenarios[this.options.leftScenario].years.findIndex(v => v.value === this.options.leftYear.toString()),
       slide: (event, ui) => {
         this.nodes.$leftYearTooltip.text(this.options.scenarios[this.options.leftScenario].years[ui.value].label);
       },
@@ -2171,7 +2174,6 @@ export default class ScenarioComparisonMap {
   }
 
   _updateRightYearSlider() {
-    const _this6 = this;
 
     if (this.nodes.$rightYearSlider === undefined) {
       this.nodes.$rightYearSlider = $(this.element).find('.right-year-slider');
@@ -2183,7 +2185,7 @@ export default class ScenarioComparisonMap {
     if (this.options.rightYear === 'avg') {
       maxLabel = '2000';
     }
-    this.nodes.$rightYearTooltip.text(this.options.scenarios[this.options.rightScenario].years.find(v => v.value === _this6.options.rightYear.toString()).label);
+    this.nodes.$rightYearTooltip.text(this.options.scenarios[this.options.rightScenario].years.find(v => v.value === this.options.rightYear.toString()).label);
     this.nodes.$controlsOverLayContainer.find('.right-year-slider-container .year-min').text(this.options.scenarios[this.options.rightScenario].years[0].label);
     this.nodes.$controlsOverLayContainer.find('.right-year-slider-container .year-max').text(maxLabel);
     this.nodes.$rightYearSlider.slider({
@@ -2191,7 +2193,7 @@ export default class ScenarioComparisonMap {
       min: 0,
       max: this.options.scenarios[this.options.rightScenario].years.length - 1,
       step: 1,
-      value: this.options.scenarios[this.options.rightScenario].years.findIndex(v => v.value === _this6.options.rightYear.toString()),
+      value: this.options.scenarios[this.options.rightScenario].years.findIndex(v => v.value === this.options.rightYear.toString()),
       slide: (event, ui) => {
         this.nodes.$rightYearTooltip.text(this.options.scenarios[this.options.rightScenario].years[ui.value].label);
       },
@@ -2205,10 +2207,8 @@ export default class ScenarioComparisonMap {
   }
 
   _updateLeftScenarioSelect() {
-    const _this7 = this;
-
     // check if variable is precip then disable the historical and select lower emmissions
-    if (_this7.options.variable === 'pcpn') {
+    if (this.options.variable === 'pcpn') {
       $('#left-scenario-dropdown-menu').data('value', 'rcp45');
       $('#left-scenario-dropdown-menu').html('Lower Emissions');
       $('.leftScenario-option-historical').addClass('d-none');
@@ -2339,6 +2339,7 @@ export default class ScenarioComparisonMap {
     return this.options.variables[this.options.variable]['seasonal_data'];
   }
 
+  // noinspection JSUnusedGlobalSymbols
   whenDojoMods(callback) {
     if (this.dojoMods !== undefined) {
       callback();

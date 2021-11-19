@@ -1,5 +1,5 @@
 import './main.js';
-import './stations_map.js';
+import StationsMap from './stations_map.js';
 
 $(function () {
  
@@ -454,7 +454,7 @@ $(function () {
 
   renderStationInfo(tidalStationName, tidalStationId, tidalStationMOverMHHW);
 
-  window.stations = $('#stations-map').stationsMap(Object.assign({
+  window.stations = new StationsMap(document.querySelector('#stations-map'), Object.assign({
     // When state changes, just pass the current options along directly for this page.
     // If we re-use the stationsMap widget on another page there may be more handling to do.
     change: function change(event, options) {

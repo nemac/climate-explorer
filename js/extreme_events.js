@@ -1,5 +1,5 @@
 import './main.js';
-import './stations_map.js';
+import StationsMap from './stations_map.js';
 
 // add auto hide for what is this.
 
@@ -145,10 +145,10 @@ $(function () {
       });
 
       window.cbs_histogram.element.addEventListener('threshold_changed', function (e) {
-        window.app.update({threshold: e.detail.threshold});
+        window.app.update({threshold: e.detail});
 
         update_graphs({
-          threshold: e.detail.threshold
+          threshold: e.detail
         })
       })
 
@@ -551,7 +551,7 @@ $(function () {
 
   render_station_info(stationName, stationId);
 
-  window.stations = $('#stations-map').stationsMap(Object.assign({
+  window.stations = new StationsMap(document.querySelector('#stations-map'), Object.assign({
     // When state changes, just pass the current options along directly for this page.
     // If we re-use the stationsMap widget on another page there may be more handling to do.
     change: (event, options) => {
