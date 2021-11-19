@@ -13,6 +13,15 @@ $(function () {
     responsive: true
   });
 
+
+  //TODO
+  // if (this.options.mode === 'high_tide_flooding') {
+  //   stations_dropdown_el.innerHTML = stations.map(station => `<li tabindex="0" data-value="${station.attributes.id}|${station.attributes.name}|${station.attributes.mOverMHHW}|" class="dropdown-item">${station.attributes.name} - (${station.attributes.id})</li>`).join('')
+  // } else {
+
+
+
+
   $('.footer-button').removeClass('footer-button-selected');
   $('[data-page="high_tide_flooding"]').addClass('footer-button-selected');
 

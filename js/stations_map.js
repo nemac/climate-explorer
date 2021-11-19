@@ -2,7 +2,7 @@
 
 import get from '../node_modules/lodash-es/get.js';
 import merge from '../node_modules/lodash-es/merge.js';
-
+import debounce from '../node_modules/lodash-es/debounce.js';
 /* globals require */
 
 
@@ -20,58 +20,37 @@ export default class StationsMap {
       stationId: null,
       stationName: null,
       stationMOverMHHW: null, // only used for tidal stations
-      mode: 'daily_vs_climate', // 'daily_vs_climate','thresholds','high_tide_flooding'
+      mode: 'temp_precip', // 'temp_precip','high_tide_flooding'
       //extent provides the initial view area of the map.
       extent: null,
       // defaultExtent: {xmin: -170, xmax: -70, ymin: 16, ymax: 67},
-      // constrainMapToExtent: {xmin: -180, xmax: -62, ymin: 10, ymax: 54},
+      // constrain_map_to_extent: {xmin: -180, xmax: -62, ymin: 10, ymax: 54},
       //zoom and center are ignored if extent is provided.
       zoom: 3,
       center: [-123, 42],
-      // Additional elements
-      stationOverlayContainerId: "station-overlay-container",
       // Map layers
       dailyStationsLayerURL: "https://crt-climate-explorer.nemac.org/data/stations_whitelist.json",
-      thresholdStationsLayerURL: "https://crt-climate-explorer.nemac.org/data/stations_whitelist.json",
       tidalStationsLayerURL: "https://crt-climate-explorer.nemac.org/data/high-tide-flooding-widget/tidal_stations.json",
       dailyStationsDataURL: "https://data.rcc-acis.org/StnData",
-      thresholdStationsDataURL: "https://data.rcc-acis.org/StnData",
-      // Controls debug output
-      // 0:off, 1:errors only, 2:errors and warnings, 3:everything
-      debug: 0,
-      logger: console,
-      // built-in options
-      disabled: false,
-      // if and how to animate the hiding of the element
-      // http://api.jqueryui.com/jQuery.widget/#option-hide
-      hide: null,
-      // likewise for show
-      // http://api.jqueryui.com/jQuery.widget/#option-show
-      show: null
-
     };
     this.options = merge(this.options, options);
     // All DOM nodes used by the widget (must be maintained for clean destruction)
     this.nodes = {};
 
     this.nodes.mapContainer = this.element;
-    this.nodes.stationOverlayContainer = $('#' + this.options.stationOverlayContainerId)[0];
 
-    this._MapInitPromise = this._whenDojoLoaded().then(this._initMap.bind(this));
+    this._MapInitPromise = this._whenDojoLoaded().then(this._init_map.bind(this));
     switch (this.options.mode) {
-      case 'daily_vs_climate':
-        this._whenDojoLoaded().then(this._initDailyStationsLayer.bind(this));
-        break;
-      case 'thresholds':
-        this._whenDojoLoaded().then(this._initThresholdStationsLayer.bind(this));
+      case 'temp_precip':
+        this._whenDojoLoaded().then(this._init_daily_stations_layer.bind(this));
         break;
       case 'high_tide_flooding':
-        this._whenDojoLoaded().then(this._initTidalStationsLayer.bind(this));
+        this._whenDojoLoaded().then(this._init_tidal_stations_layer.bind(this));
         break;
     }
 
     if (this.options.stationId) {
-      this._stationSelected();
+      this._highlight_selected_station();
     }
 
   }
@@ -201,7 +180,7 @@ export default class StationsMap {
       } else {
         this._registerDojoMods(resolve);
       }
-    }).catch((e)=>console.log(e));
+    }).catch((e) => console.log(e));
     return this._dojoLoadedPromise;
   }
 
@@ -249,7 +228,7 @@ export default class StationsMap {
   }
 
 
-  _initMap() {
+  _init_map() {
     /** @type {{findLayerById, layers, add, basemap, destroy }} */
     this.map = new this.dojoMods.Map({
       basemap: this.options.mode === 'high_tide_flooding' ? 'oceans' : 'topo'
@@ -265,6 +244,7 @@ export default class StationsMap {
      * @property whenLayerView
      * @property hitTest
      * @property popup
+     * @property graphics
      * @property popup.actions
      * @property popup.dockOptions
      * @property popup.dockOptions.position
@@ -283,76 +263,39 @@ export default class StationsMap {
       }
     });
 
-    if (this.options.constrainMapToExtent) {
-      this.constrainMapToExtent = this.dojoMods.webMercatorUtils.geographicToWebMercator(new this.dojoMods.Extent(this.options.constrainMapToExtent));
+    if (this.options.constrain_map_to_extent) {
+      this.constrain_map_to_extent = this.dojoMods.webMercatorUtils.geographicToWebMercator(new this.dojoMods.Extent(this.options.constrain_map_to_extent));
     }
 
     // Watch view's stationary property
-    this.dojoMods.watchUtils.whenTrue(this.view, "stationary", (() => {
-      // Get the new extent of the view when view is stationary.
-      if (this.view.center) {
-        const latlon = this.dojoMods.webMercatorUtils.xyToLngLat(this.view.center.x, this.view.center.y);
+    this.dojoMods.watchUtils.whenTrue(this.view, "stationary", this._view_stationary_handler.bind(this));
 
-        // for some odd reason I can't identify the first
-        // lat and long value is between 1 and -1 this is not something a user
-        // has done so we ignore it.
-        // of course if a user actually does pan that part of the map it will not be passed to the state url
-        // and could cause issues later...
-        if (latlon[0] <= 1 && latlon[0] >= -1) {
-          return null;
-        }
-
-        // for some reason lat long is backwards and to center a map you must pass long lat.
-        // here I am switching lat long from center of tha map which is long lat back lat long order
-        // this will although keeping the state url consistent across local climate maps and stations map
-        this.options.lat = Math.round(latlon[1] * 100) / 100;
-        this.options.lon = Math.round(latlon[0] * 100) / 100;
-        this.options.center = [this.options.lat, this.options.lon]
+    // add a button
+    this.view.ui.add($(`<button class='btn btn-sm btn-primary d-md-none' id='deactivate_map_button'><i class='fas fa-arrows-alt'></i>&nbsp;Activate Map</button>`)[0], {
+      position: 'top-left',
+      index: 0
+    });
+    this._deactivate_map = document.body.clientWidth < 768;
+    $(window).on('resize', () => {
+      this._deactivate_map = document.body.clientWidth < 768;
+      $('#deactivate_map_button').toggleClass('active', !this._deactivate_map);
+      $(this.element).find('.esri-view-surface').first().css('pointer-events', this._deactivate_map ? 'none' : 'auto');
+    });
+    $('#deactivate_map_button').on('click', () => {
+      this._deactivate_map = !this._deactivate_map;
+      $('#deactivate_map_button').toggleClass('active', !this._deactivate_map);
+      $(this.element).find('.esri-view-surface').first().css('pointer-events', this._deactivate_map ? 'none' : 'auto');
+    });
+    const suppress_event_for_deactivated_map = (e) => {
+      if (this._deactivate_map) {
+        e.stopPropagation();
       }
+    };
+    this.view.on("mouse-wheel", suppress_event_for_deactivated_map);
+    this.view.on("drag", suppress_event_for_deactivated_map);
 
-      // make sure the extent is defined than get the current map extent
-      // use extent to get a list of current stations.
-      if (this.view.extent) {
-        const xymin = this.dojoMods.webMercatorUtils.xyToLngLat(this.view.extent.xmin, this.view.extent.ymin);
-        const xymax = this.dojoMods.webMercatorUtils.xyToLngLat(this.view.extent.xmax, this.view.extent.ymax);
-        const quickRound = num => Math.round(num * 100 + Number.EPSILON) / 100;
-        this.options.extent = {
-          xmin: quickRound(xymin[0]),
-          xmax: quickRound(xymax[0]),
-          ymin: quickRound(xymin[1]),
-          ymax: quickRound(xymax[1])
-        };
 
-        // make sure layers item exists we will assume first layer
-        // is the layer in question we will need to rethink this if we have multiple
-        // layers, but as of now we have only ONE
-        let ptsWithin_promise = Promise.resolve();
-
-        if (this.map.layers.items[0]) {
-          // get station points within extent bbox
-          ptsWithin_promise = this.map.layers.items[0].queryFeatures({geometry: this.view.extent}).then((ptsWithin) => {
-            // update station dropdown and click events
-            this._updateStationSelect(ptsWithin.features);
-            // ensure function is defined
-            if (typeof reEnableSelectNewItems !== "undefined") {
-              reEnableSelectNewItems('stations-select');
-            }
-            // add current object view object in case we need it again
-            this.view.currentstations = ptsWithin.features;
-            this.options.currentstations = ptsWithin.features;
-          });
-        }
-        // sets url state zoom level
-        if (this.view.zoom && this.view.zoom > 0) {
-          this.options.zoom = Math.round(this.view.zoom * 100) / 100;
-        }
-        ptsWithin_promise.then(() => {
-          this._trigger('change', null, this.options);
-        });
-      }
-    }));
-
-    this.basemapGallery = new this.dojoMods.BasemapGallery({
+    this.basemap_gallery = new this.dojoMods.BasemapGallery({
       view: this.view,
       container: document.createElement('div')
     });
@@ -360,7 +303,7 @@ export default class StationsMap {
     this.bgExpand = new this.dojoMods.Expand({
       expandIconClass: 'esri-icon-basemap',
       view: this.view,
-      content: this.basemapGallery.domNode
+      content: this.basemap_gallery.domNode
     });
 
     this.view.ui.add(this.bgExpand, 'top-left');
@@ -387,40 +330,16 @@ export default class StationsMap {
     this.view.ui.add(this.locateWidget, "top-left");
   }
 
-  _updateStationSelect(currentstations) {
-    // make li for select dropdown
-    let stationLi = '';
-    let indx = 21;
-    if (currentstations.length > 0) {
-      // sort hubs by name A-Z
-      const currentstationsSorted = currentstations.sort((a, b) => {
-        if (a.attributes.name > b.attributes.name) {
-          return 1;
-        }
-        if (a.attributes.name < b.attributes.name) {
-          return -1;
-        }
-        // a must be equal to b
-        return 0;
-      });
-
-      for (const station of currentstationsSorted) {
-        if (this.options.mode === 'high_tide_flooding') {
-          stationLi += `<li tabindex="${indx}" data-value="${station.attributes.id}|${station.attributes.name}|${station.attributes.mOverMHHW}|" class="dropdown-item">${station.attributes.name} - (${station.attributes.id})</li>\n`;
-        } else {
-          stationLi += `<li tabindex="${indx}" data-value="${station.attributes.id},${station.attributes.name}" class="dropdown-item">${station.attributes.name} - (${station.attributes.id})</li>\n`;
-        }
-        indx += 1;
-      }
-    }
-    // update select elem if it exists
-    const stationsElem = document.querySelector('.stations-dropdown-ul');
-    if (stationsElem) {
-      stationsElem.innerHTML = stationLi;
+  get_active_stations_layer() {
+    if (this.options.mode === 'high_tide_flooding') {
+      return this.tidalStationsLayer
+    } else {
+      return this.dailyStationsLayer
     }
   }
 
-  _createStationLayer(layerURL, options) {
+
+  _create_station_layer(layerURL, options) {
     // We implement our own json layer creator
     if (layerURL.endsWith('json')) {
       return Promise.resolve($.ajax({
@@ -435,9 +354,8 @@ export default class StationsMap {
           console.log('Failed to retrieve station data. Refresh to try again.');
           throw 'Failed to retrieve station data. Refresh to try again.';
         }
-        const features = [];
-        data.forEach((station, index) => {
-          features.push(new this.dojoMods.Graphic({
+        const features = data.map((station, index) => {
+          return new this.dojoMods.Graphic({
             geometry: {
               type: "point", // autocasts as new Point()
               longitude: station.lon,
@@ -447,9 +365,9 @@ export default class StationsMap {
               ObjectID: index,
               id: station.id,
               name: station.station ? station.station : station.name,
-              mOverMHHW: station.derived || null
+              mOverMHHW: station['derived'] || null
             }
-          }));
+          })
         });
 
         // add featureLayerJSON must have a object key features
@@ -491,8 +409,8 @@ export default class StationsMap {
     }
   }
 
-  _initDailyStationsLayer() {
-    this._createStationLayer(this.options.dailyStationsLayerURL, {
+  _init_daily_stations_layer() {
+    this._create_station_layer(this.options.dailyStationsLayerURL, {
       outfields: ['*'],
       renderer: {
         type: "simple", // autocasts as new SimpleRenderer()
@@ -510,119 +428,14 @@ export default class StationsMap {
       this.dailyStationsLayer = layer;
       this._MapInitPromise.then(() => {
         this.map.add(this.dailyStationsLayer);
-        this.view.on("pointer-move", (event) => {
-          $('#stations-map circle').each(() => {
-            if (typeof this.stationTooltip !== "undefined") {
-              this.stationTooltip.hide();
-            }
-          });
-          this.view.hitTest(event).then((response) => {
-            if (response.results.length > 0) {
-              // make pointer cursor - mouse IS over a station feature
-              document.getElementById('stations-map').style.cursor = "pointer";
-            } else {
-              // make default cursor - mouse IS NOT over station feature
-              document.getElementById('stations-map').style.cursor = "default";
-            }
-            const station = response.results.filter((result) => {
-              return result.graphic.layer === this.dailyStationsLayer;
-            })[0].graphic;
-            const refEl = $('circle:hover').first();
-            if (!(typeof refEl.stationTooltip !== "undefined")) {
-              refEl.stationTooltip = new Tooltip(refEl, {
-                placement: 'right',
-                title: station.attributes.name,
-                container: $('#stations-map')[0]
-              });
-            }
-            refEl.stationTooltip.show();
-          });
-        });
-        this.view.on("click", (event) => {
-          this.view.hitTest(event).then((response) => {
-            const station = response.results.filter((result) => {
-              return result.graphic.layer === this.dailyStationsLayer;
-            })[0].graphic;
-            this.update({stationName: station.attributes.name, stationId: station.attributes.id});
-            this._trigger('stationUpdated', null, this.options);
-          });
-        });
+        this.view.on("pointer-move", this._view_mouse_over_handler.bind(this));
+        this.view.on("click", this._view_mouse_click_handler.bind(this));
       });
     });
   }
 
-  _initThresholdStationsLayer() {
-    // if same data, only load one.
-    if (this.options.thresholdStationsLayerURL === this.options.dailyStationsLayerURL) {
-      if (undefined !== this.dailyStationsLayer) {
-        this.thresholdStationsLayer = this.dailyStationsLayer;
-        this.thresholdStationsLayer.visible = true;
-        return;
-      } else {
-        this._initDailyStationsLayer();
-      }
-    }
-    this._createStationLayer(this.options.thresholdStationsLayerURL, {
-      outfields: ['*'],
-      renderer: {
-        type: "simple", // autocasts as new SimpleRenderer()
-        symbol: {
-          type: "simple-marker", // autocasts as new SimpleMarkerSymbol()
-          size: 10,
-          color: "#DB303D",
-          outline: {
-            color: '#FBB4AA',
-            width: 2
-          }
-        }
-      }
-    }).then((layer) => {
-      this.thresholdStationsLayer = layer;
-      this._MapInitPromise.then(() => {
-        this.map.add(this.thresholdStationsLayer);
-        this.view.on("pointer-move", (event) => {
-          $('#stations-map circle').each(() => {
-            if (typeof this.stationTooltip !== "undefined") {
-              this.stationTooltip.hide();
-            }
-          });
-          this.view.hitTest(event).then((response) => {
-            if (response.results.length > 0) {
-              // make pointer cursor - mouse IS over a station feature
-              document.getElementById('stations-map').style.cursor = "pointer";
-            } else {
-              // make default cursor - mouse IS NOT over station feature
-              document.getElementById('stations-map').style.cursor = "default";
-            }
-            const station = response.results.filter((result) => {
-              return result.graphic.layer === this.thresholdStationsLayer;
-            })[0].graphic;
-            const refEl = $('circle:hover').first();
-            if (!(typeof refEl.stationTooltip !== "undefined")) {
-              refEl.stationTooltip = new Tooltip(refEl, {
-                placement: 'right',
-                title: station.attributes.name,
-                container: $('#stations-map')[0]
-              });
-            }
-            refEl.stationTooltip.show();
-          });
-        });
-        this.view.on("click", (event) => {
-          this.view.hitTest(event).then((response) => {
-            const station = response.results.filter((result) => {
-              return result.graphic.layer === this.thresholdStationsLayer;
-            })[0].graphic;
-            this.update({stationName: station.attributes.name, stationId: station.attributes.id});
-            this._trigger('stationUpdated', null, this.options);
-          });
-        });
-      });
-    });
-  }
-
-  _initTidalStationsLayer() {
-    this._createStationLayer(this.options.tidalStationsLayerURL, {
+  _init_tidal_stations_layer() {
+    this._create_station_layer(this.options.tidalStationsLayerURL, {
       outfields: ['*'],
       renderer: {
         type: "simple", // autocasts as new SimpleRenderer()
@@ -640,97 +453,125 @@ export default class StationsMap {
       this.tidalStationsLayer = layer;
       this._MapInitPromise.then(() => {
         this.map.add(this.tidalStationsLayer);
-        this.view.on("pointer-move", (event) => {
-          $('#stations-map circle').each(() => {
-            if (typeof this.stationTooltip !== "undefined") {
-              this.stationTooltip.hide();
-            }
-          });
-          this.view.hitTest(event).then((response) => {
-
-            if (response.results.length > 0) {
-              // make pointer cursor - mouse IS over a station feature
-              document.getElementById('stations-map').style.cursor = "pointer";
-            } else {
-              // make default cursor - mouse IS NOT over station feature
-              document.getElementById('stations-map').style.cursor = "default";
-            }
-            const station = response.results.filter((result) => {
-              return result.graphic.layer === this.tidalStationsLayer;
-            })[0].graphic;
-            const refEl = $('circle:hover').first();
-            if (!(typeof refEl.stationTooltip !== "undefined")) {
-              refEl.stationTooltip = new Tooltip(refEl, {
-                placement: 'right',
-                title: station.attributes.name,
-                container: $('#stations-map')[0]
-              });
-            }
-            refEl.stationTooltip.show();
-          });
-        });
-        this.view.on("click", (event) => {
-          this.view.hitTest(event).then((response) => {
-            const station = response.results.filter((result) => {
-              return result.graphic.layer === this.tidalStationsLayer;
-            })[0].graphic;
-            this.update({
-              tidalStationName: station.attributes.name,
-              tidalStationId: station.attributes.id,
-              tidalStationMOverMHHW: station.attributes.mOverMHHW || null
-            });
-            this._trigger('stationUpdated', null, this.options);
-          });
-        });
+        this.view.on("pointer-move", this._view_mouse_over_handler.bind(this));
+        this.view.on("click", this._view_mouse_click_handler.bind(this));
       });
     });
   }
 
-  _init() {
-    this._trigger('initialized');
+  _view_mouse_click_handler(event) {
+    this.view.hitTest(event).then((response) => {
+      const active_stations_layer = this.get_active_stations_layer()
+      let station = response.results.find((result) => result.graphic.layer === active_stations_layer);
+      if (!station) return;
+      station = station.graphic;
+      let options;
+      if (this.options.mode === 'high_tide_flooding') {
+        options = {
+          tidalStationName: station.attributes.name,
+          tidalStationId: station.attributes.id,
+          tidalStationMOverMHHW: station.attributes.mOverMHHW || null
+        };
+      } else {
+        options = {
+          stationName: station.attributes.name, stationId: station.attributes.id
+        };
+      }
+      this.update(options);
+      this._trigger('station_updated', null, this.options);
+    });
   }
 
-  _setOption(key, value) {
+  _view_mouse_over_handler(event) {
+    return;
+    debounce(() => {
+      this.view.hitTest(event).then((response) => {
+        if (response.results.length > 0) {
+          // make pointer cursor - mouse IS over a station feature
+          document.getElementById('stations-map').style.cursor = "pointer";
+        } else {
+          // make default cursor - mouse IS NOT over station feature
+          document.getElementById('stations-map').style.cursor = "default";
+        }
+        let station = response.results.filter((result) => {
+          return result.graphic.layer === this.dailyStationsLayer;
+        });
+        station = station.graphic
+        const refEl = $('circle:hover').first();
+        if (!(typeof refEl.stationTooltip !== "undefined")) {
+          refEl.stationTooltip = new Tooltip(refEl, {
+            placement: 'right',
+            title: station.attributes.name,
+            container: $('#stations-map')[0]
+          });
+        }
+        refEl.stationTooltip.show();
+      });
+    }, 50, {leading: true, trailing: true})
+  }
+
+  _view_stationary_handler() {
+    // Get the new extent of the view when view is stationary.
+    if (this.view.center) {
+      const [lon, lat] = this.dojoMods.webMercatorUtils.xyToLngLat(this.view.center.x, this.view.center.y);
+
+      //ignore invalid latlon values
+      if (lon <= 1 && lon >= -1) {
+        return null;
+      }
+
+      this.options.lat = Math.round(lat * 100) / 100;
+      this.options.lon = Math.round(lon * 100) / 100;
+      this.options.center = [this.options.lat, this.options.lon]
+    }
+    // sets url state zoom level
+    if (this.view.zoom && this.view.zoom > 0) {
+      this.options.zoom = Math.round(this.view.zoom * 100) / 100;
+    }
+    // make sure the extent is defined than get the current map extent
+    // use extent to get a list of current stations.
+    if (this.view.extent) {
+      const xymin = this.dojoMods.webMercatorUtils.xyToLngLat(this.view.extent.xmin, this.view.extent.ymin);
+      const xymax = this.dojoMods.webMercatorUtils.xyToLngLat(this.view.extent.xmax, this.view.extent.ymax);
+      const quickRound = num => Math.round(num * 100 + Number.EPSILON) / 100;
+      this.options.extent = {
+        xmin: quickRound(xymin[0]),
+        xmax: quickRound(xymax[0]),
+        ymin: quickRound(xymin[1]),
+        ymax: quickRound(xymax[1])
+      };
+
+      const active_stations_layer = this.get_active_stations_layer();
+      if (!!active_stations_layer) {
+        // get station points within extent bbox
+        active_stations_layer.queryFeatures({geometry: this.view.extent}).then((ptsWithin) => {
+          this._trigger('stations_in_extent_changed', null, [ptsWithin.features]);
+        });
+      }
+
+      this._trigger('change', null, this.options);
+
+    }
+  }
+
+
+  _set_option(key, value) {
     // This will actually update the value in the options hash
-    this._super(key, value);
+    this.options[key] = value
+
     // And now we can act on that change
     switch (key) {
         // Not necessary in all cases, but likely enough to me to include it here
-      case "state":
-        this._init();
-        break;
       case "mode":
-        // hide the overlay if it exists
-        $('#station-overlay-container').css('visibility', 'hidden').empty();
-
         switch (this.options.mode) {
-          case 'daily_vs_climate':
-            if (undefined !== this.thresholdStationsLayer) {
-              this.thresholdStationsLayer.visible = false;
-            }
+          case 'temp_precip':
             if (undefined !== this.tidalStationsLayer) {
               this.tidalStationsLayer.visible = false;
             }
             if (undefined !== this.dailyStationsLayer) {
               this.dailyStationsLayer.visible = true;
             } else {
-              this._whenDojoLoaded().then(this._initDailyStationsLayer.bind(this));
-            }
-            if (this.map.basemap.id !== 'topo') {
-              this.map.basemap = 'topo';
-            }
-            break;
-          case 'thresholds':
-            if (undefined !== this.dailyStationsLayer) {
-              this.dailyStationsLayer.visible = false;
-            }
-            if (undefined !== this.tidalStationsLayer) {
-              this.tidalStationsLayer.visible = false;
-            }
-            if (undefined !== this.thresholdStationsLayer) {
-              this.thresholdStationsLayer.visible = true;
-            } else {
-              this._whenDojoLoaded().then(this._initThresholdStationsLayer.bind(this));
+              this._whenDojoLoaded().then(this._init_daily_stations_layer.bind(this));
             }
             if (this.map.basemap.id !== 'topo') {
               this.map.basemap = 'topo';
@@ -740,19 +581,15 @@ export default class StationsMap {
             if (undefined !== this.dailyStationsLayer) {
               this.dailyStationsLayer.visible = false;
             }
-            if (undefined !== this.thresholdStationsLayer) {
-              this.thresholdStationsLayer.visible = false;
-            }
             if (undefined !== this.tidalStationsLayer) {
               this.tidalStationsLayer.visible = true;
             } else {
-              this._whenDojoLoaded().then(this._initTidalStationsLayer.bind(this));
+              this._whenDojoLoaded().then(this._init_tidal_stations_layer.bind(this));
             }
             if (this.map.basemap.id !== 'oceans') {
               this.map.basemap = 'oceans';
             }
             break;
-
         }
         break;
     }
@@ -761,10 +598,10 @@ export default class StationsMap {
   update(options) {
     const old_options = merge({}, this.options);
     for (const k of Object.keys(options)) {
-      this._setOption(k, options[k]);
+      this._set_option(k, options[k]);
     }
     if (this.options.stationId !== old_options.stationId) {
-      this._stationSelected();
+      this._highlight_selected_station();
     }
     if (this.options.extent !== old_options.extent && this.options.extent !== null) {
       this.view.goTo(new this.dojoMods.Extent(this.options.extent));
@@ -776,48 +613,33 @@ export default class StationsMap {
     return this;
   }
 
-  _stationSelected() {
+  _highlight_selected_station() {
     if (this.options.stationId === null) {
       return;
     }
     try {
-      this.thresholdStationsLayer.queryFeatures({objectIds: this.options.stationId, returnGeometry: true}).then((results) => {
-        if (get(results, 'features', []).length > 0) {
-          this.view.graphics.removeAll();
-          this.view.graphics.add(Object.assign(results.features[0].graphic, {
-            symbol: {
-              type: 'simple-fill',
-              color: "rgba(0,0,0,0)",
-              outline: {
-                width: 3,
-                color: "rgba(50,50,50,1)"
+      const active_stations_layer = this.get_active_stations_layer()
+      if (active_stations_layer) {
+        active_stations_layer.queryFeatures({objectIds: this.options.stationId, returnGeometry: true}).then((results) => {
+          if (get(results, 'features', []).length > 0) {
+            this.view.graphics.removeAll();
+            this.view.graphics.add(Object.assign(results.features[0].graphic, {
+              symbol: {
+                type: 'simple-fill',
+                color: "rgba(0,0,0,0)",
+                outline: {
+                  width: 5,
+                  color: "rgba(50,50,50,1)"
+                }
               }
-            }
-          }));
-        }
-      },);
-    } catch (ex) {
+            }));
+          }
+        });
+      }
 
+    } catch (ex) {
       console.log(ex)
     }
-    $(this.nodes.stationOverlayContainer).css('visibility', 'visible');
-    switch (this.options.mode) {
-      case 'daily_vs_climate':
-        return null;
-        // all handled via html in template now
-      case 'thresholds':
-        return null;
-        // all handled via html in template now
-      case 'high_tide_flooding':
-        return null;
-    }
-    $('#station-overlay-close').click(() => {
-      $(this.nodes.stationOverlayContainer).css('visibility', 'hidden');
-      this.options.stationId = null;
-      this.options.stationName = null;
-      this._trigger('change', null, this.options);
-      $(this.nodes.stationOverlayContainer).empty();
-    });
   }
 
   destroy() {
@@ -828,21 +650,8 @@ export default class StationsMap {
     this.map.destroy();
   }
 
-  _log() {
-    this.options.debug === 3 && this._toLoggerMethod('log', arguments);
-  }
-
-
-  _toLoggerMethod(method, args) {
-    args = Array.prototype.slice.call(arguments, 1);
-    const logger = this.options.logger || console;
-    logger.error.apply(logger, args);
-  }
-
-
   // noinspection JSUnusedGlobalSymbols
   whenDojoMods(callback) {
-
     if (this.dojoMods !== undefined) {
       callback();
     } else {

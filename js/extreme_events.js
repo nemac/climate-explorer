@@ -32,7 +32,7 @@ $(function () {
   const zoom = state['zoom'] || 9;
   const lat = state['lat'];
   const lon = state['lon'];
-  const mode = 'thresholds'  // stationsMapState['mode'];
+  const mode = 'temp_precip'
   const stationId = state['stationId'];
   const stationName = state['stationName'];
   const tidalStationId = state['tidalStationId'];
@@ -74,6 +74,7 @@ $(function () {
       }
     }
   }
+
 
   // updates the visible text for the Threshold Variable dropdown with the information from the state url
   function updateThresholdVariableSelectText(thresholdVariable) {
@@ -224,8 +225,8 @@ $(function () {
     }
     window.cbs_daily_views = {}
 
-    $('#daily-graph-other-label').text(threshold_variable === 'precipitation' ? 'Yearly accumulated precipitation':'Daily temperature ranges');
-    if (!window.daily_graphs_modal){
+    $('#daily-graph-other-label').text(threshold_variable === 'precipitation' ? 'Yearly accumulated precipitation' : 'Daily temperature ranges');
+    if (!window.daily_graphs_modal) {
       const modal_el = document.getElementById('daily-graphs-modal');
       window.daily_graphs_modal = new bootstrap.Modal(modal_el, {});
       modal_el.addEventListener('hidden.bs.modal', function (e) {
@@ -236,7 +237,7 @@ $(function () {
       })
       modal_el.addEventListener('shown.bs.modal', function (e) {
         window.cbs_daily_views.absolute_view = window.cbs_absolute_view = new ClimateByStationWidget($('#daily-graph-absolute'), {
-          view_type: threshold_variable === 'precipitation'? 'daily_precipitation_absolute' : 'daily_temperature_absolute',
+          view_type: threshold_variable === 'precipitation' ? 'daily_precipitation_absolute' : 'daily_temperature_absolute',
           station,
           threshold,
           window_days,
@@ -513,7 +514,7 @@ $(function () {
     }
 
     const target = $(e.target);
-
+    e.target.scrollIntoView(true);
     const disabled = target.hasClass('disabled');
 
     if (disabled) return;
@@ -572,10 +573,26 @@ $(function () {
       }
 
     },
+    stations_in_extent_changed: (event, stations) => {
+      // update station dropdown and click events
+      const stations_dropdown_el = document.querySelector('.stations-dropdown-ul');
+      if (stations.length > 0 && stations_dropdown_el) {
+        stations.sort((a, b) => {
+          if (a.attributes.name > b.attributes.name) return 1;
+          if (a.attributes.name < b.attributes.name) return -1;
+          return 0;
+        });
 
+        stations_dropdown_el.innerHTML = stations.map(station => `<li tabindex="0" data-value="${station.attributes.id},${station.attributes.name}" class="dropdown-item">${station.attributes.name} - (${station.attributes.id})</li>`).join('')
+      }
+      if (typeof reEnableSelectNewItems !== "undefined") {
+        reEnableSelectNewItems('stations-select');
+      }
+    },
 
     // when user clicks on map station marker
-    stationUpdated: (event, options) => {
+    station_updated: (event, options) => {
+      $('.graph-row')[0].scrollIntoView(true);
       update_graphs({
         variable: threshold_variable,
         window_days: window_days,
