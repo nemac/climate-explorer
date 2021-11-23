@@ -127,7 +127,7 @@ export default class StationsMap {
 
   // Dojo modules this widget expects to use.
   get dojoDeps() {
-    return ['esri/Map', 'esri/views/MapView', 'esri/layers/FeatureLayer', 'esri/renderers/SimpleRenderer', 'esri/Graphic', 'esri/symbols/WebStyleSymbol', 'esri/symbols/SimpleFillSymbol', 'esri/widgets/Legend', 'esri/widgets/Expand', 'esri/widgets/BasemapGallery', 'esri/widgets/ScaleBar', 'esri/geometry/SpatialReference', 'esri/layers/CSVLayer', 'esri/geometry/Extent', 'esri/geometry/Point', 'esri/widgets/Locate', 'esri/core/watchUtils', 'esri/geometry/support/webMercatorUtils'];
+    return ['esri/Map', 'esri/views/MapView', 'esri/layers/FeatureLayer', 'esri/renderers/SimpleRenderer', 'esri/Graphic', 'esri/symbols/WebStyleSymbol', 'esri/symbols/SimpleFillSymbol', 'esri/widgets/Legend', 'esri/widgets/Expand', 'esri/widgets/BasemapGallery', 'esri/widgets/ScaleBar', 'esri/geometry/SpatialReference', 'esri/layers/CSVLayer', 'esri/geometry/Extent', 'esri/geometry/Point', 'esri/widgets/Locate', 'esri/core/watchUtils', 'esri/geometry/support/webMercatorUtils','esri/tasks/support/Query'];
   }
 
   _dojoLoaded() {
@@ -210,6 +210,7 @@ export default class StationsMap {
        * @property Point
        * @property Polygon
        * @property Locate
+       * @property Query
        * @property CSVLayer
        * @property BasemapGallery
        * @property watchUtils
@@ -483,7 +484,7 @@ export default class StationsMap {
   }
 
   _view_mouse_over_handler(event) {
-    return;
+    return; // todo resolve this once we update to ArcGIS JS API 4.21
     debounce(() => {
       this.view.hitTest(event).then((response) => {
         if (response.results.length > 0) {
@@ -614,21 +615,27 @@ export default class StationsMap {
   }
 
   _highlight_selected_station() {
+    return; //todo fix this once we switch to ArcGIS JS API 4.21
     if (this.options.stationId === null) {
       return;
     }
     try {
       const active_stations_layer = this.get_active_stations_layer()
       if (active_stations_layer) {
-        active_stations_layer.queryFeatures({objectIds: this.options.stationId, returnGeometry: true}).then((results) => {
+        const query = active_stations_layer.createQuery();
+        query.where = `id = '${this.options.stationId}'`
+        query.returnGeometry = true;
+        active_stations_layer.queryFeatures(query).then((results) => {
           if (get(results, 'features', []).length > 0) {
             this.view.graphics.removeAll();
-            this.view.graphics.add(Object.assign(results.features[0].graphic, {
+            this.view.graphics.add(new this.dojoMods.Graphic( {
+
+              geometry: results.features[0].geometry,
               symbol: {
                 type: 'simple-fill',
                 color: "rgba(0,0,0,0)",
                 outline: {
-                  width: 5,
+                  width: 50,
                   color: "rgba(50,50,50,1)"
                 }
               }
