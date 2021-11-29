@@ -225,6 +225,8 @@ $(function () {
     if (!threshold_variable) return;
     if (!!window.cbs_daily_views) {
       Object.values(window.cbs_daily_views).forEach(a => a.destroy());
+      window.daily_graphs_modal.dispose();
+      window.daily_graphs_modal = null;
     }
     window.cbs_daily_views = {}
 
@@ -236,6 +238,8 @@ $(function () {
         if (!!window.cbs_daily_views) {
           Object.values(window.cbs_daily_views).forEach(a => a.destroy());
           window.cbs_daily_views = null;
+          window.daily_graphs_modal.dispose();
+          window.daily_graphs_modal = null;
         }
 
         const ul = $('.download-select-modal');
