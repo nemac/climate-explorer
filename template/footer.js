@@ -48,6 +48,8 @@ export default (config) => `
   gtag('js', new Date());
 
   gtag('config', '${config.google_analytics_id}',{
+      'anonymize_ip': true,
+      'client_storage': 'none',
       'custom_map': {
         'dimension1': 'uuid',
       }
