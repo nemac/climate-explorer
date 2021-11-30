@@ -300,7 +300,7 @@ export default (config) => `
             
           </div>
           <div class="ms-3 dropdown rounded-2 border border-1">
-            <a class="btn dropdown-toggle ps-4 pe-4 w-100" href="#" style="text-align: center;" role="button" id="modal-download-dropdown-menu"
+            <a class="btn dropdown-toggle default-selection ps-4 pe-4 w-100" href="#" style="text-align: center;" role="button" id="modal-download-dropdown-menu"
                data-bs-toggle="dropdown" aria-expanded="false">
               <span class="fas fa-download select-icon"></span>
               Downloads

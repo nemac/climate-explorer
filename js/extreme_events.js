@@ -215,40 +215,47 @@ $(function () {
 
   $('#daily-graphs-modal-btn').click(() => {
 
-    const state = window.app.state;
-    const station = state['stationId'];
+    let state = window.app.state;
+    let station = state['stationId'];
     // const station_name = state['stationName'];
-    const threshold = state['threshold'] || null;
-    const window_days = state['window_days'] || 1;
-    const threshold_variable = state['threshold_variable'] || 'precipitation';
-    const threshold_operator = state['threshold_operator'] || '>=';
+    let threshold = state['threshold'] || null;
+    let window_days = state['window_days'] || 1;
+    let threshold_variable = state['threshold_variable'] || 'precipitation';
+    let threshold_operator = state['threshold_operator'] || '>=';
+
     if (!threshold_variable) return;
+
+    //destroy old views upon modal open click
     if (!!window.cbs_daily_views) {
       Object.values(window.cbs_daily_views).forEach(a => a.destroy());
-      window.daily_graphs_modal.dispose();
-      window.daily_graphs_modal = null;
     }
+
     window.cbs_daily_views = {}
 
     $('#daily-graph-other-label').text(threshold_variable === 'precipitation' ? 'Yearly accumulated precipitation':'Daily temperature ranges');
-    if (!window.daily_graphs_modal){
+
+    if(!window.daily_graphs_modal) {
       const modal_el = document.getElementById('daily-graphs-modal');
       window.daily_graphs_modal = new bootstrap.Modal(modal_el, {});
+
       modal_el.addEventListener('hidden.bs.modal', function (e) {
         if (!!window.cbs_daily_views) {
           Object.values(window.cbs_daily_views).forEach(a => a.destroy());
           window.cbs_daily_views = null;
-          window.daily_graphs_modal.dispose();
-          window.daily_graphs_modal = null;
         }
 
-        const ul = $('.download-select-modal');
-        const list = ul.children('li');
-
-        list.off('click');
-
       })
-      modal_el.addEventListener('shown.bs.modal', function (e) {
+
+      modal_el.addEventListener('shown.bs.modal', (e) => {
+
+        state = window.app.state;
+        station = state['stationId'];
+        // const station_name = state['stationName'];
+        threshold = state['threshold'] || null;
+        window_days = state['window_days'] || 1;
+        threshold_variable = state['threshold_variable'] || 'precipitation';
+        threshold_operator = state['threshold_operator'] || '>=';
+
         window.cbs_daily_views.absolute_view = window.cbs_absolute_view = new ClimateByStationWidget($('#daily-graph-absolute'), {
           view_type: threshold_variable === 'precipitation'? 'daily_precipitation_absolute' : 'daily_temperature_absolute',
           station,
@@ -278,6 +285,7 @@ $(function () {
         download_handle_modal();
       });
     }
+
     window.daily_graphs_modal.show();
 
   });
@@ -542,7 +550,6 @@ $(function () {
     }
 
     const target = $(e.target);
-    e.target.scrollIntoView(true);
     const disabled = target.hasClass('disabled');
 
     if (disabled) return;
@@ -551,7 +558,7 @@ $(function () {
 
     if (selected) return;
 
-    toggleButton($(target));
+    document.getElementById("stations-map-row").scrollIntoView(true);
 
     googleAnalyticsEvent('click', 'chartmap', target);
   })

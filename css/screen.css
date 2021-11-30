@@ -31477,3 +31477,14 @@ main {
   height: 100%;
   flex: 1 1 auto;
 }
+
+/* line 2018, scss/screen.scss */
+#daily-graphs-modal li {
+  transition: background-color 300ms ease-in;
+}
+
+/* line 2021, scss/screen.scss */
+#daily-graphs-modal li:hover {
+  background-color: #A6C6F3;
+  cursor: pointer;
+}

@@ -2012,3 +2012,17 @@ main {
   height: 100%;
   flex: 1 1 auto;
 }
+
+#daily-graphs-modal {
+
+  li {
+    transition: background-color 300ms ease-in;
+
+    &:hover {
+      background-color: $navbar-hover-background;
+      cursor: pointer;
+    }
+  }
+
+
+}

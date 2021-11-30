@@ -272,7 +272,7 @@ export default class StationsMap {
     this.dojoMods.watchUtils.whenTrue(this.view, "stationary", this._view_stationary_handler.bind(this));
 
     // add a button
-    this.view.ui.add($(`<button class='btn btn-sm btn-primary d-md-none' id='deactivate_map_button'><i class='fas fa-arrows-alt'></i>&nbsp;Activate Map</button>`)[0], {
+    this.view.ui.add($(`<button class='btn btn-sm default-selection selected-item d-md-none' id='deactivate_map_button'><i class='fas fa-arrows-alt'></i>&nbsp;Activate Map</button>`)[0], {
       position: 'top-left',
       index: 0
     });
@@ -285,6 +285,7 @@ export default class StationsMap {
     $('#deactivate_map_button').on('click', () => {
       this._deactivate_map = !this._deactivate_map;
       $('#deactivate_map_button').toggleClass('active', !this._deactivate_map);
+      $('#deactivate_map_button').toggleClass('default-selection', this._deactivate_map);
       $(this.element).find('.esri-view-surface').first().css('pointer-events', this._deactivate_map ? 'none' : 'auto');
     });
     const suppress_event_for_deactivated_map = (e) => {
