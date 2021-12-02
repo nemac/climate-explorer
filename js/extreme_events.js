@@ -131,7 +131,7 @@ $(function () {
         document.getElementById("variable_unit_label").innerText = window.cbs_annual_exceedance.variable_unit;
 
         if (threshold_null && window.cbs_annual_exceedance.options.threshold !== null) {
-          update_graphs({threshold: window.cbs_annual_exceedance.options.threshold});
+          // update_graphs({threshold: window.cbs_annual_exceedance.options.threshold});
         }
       })
 
@@ -169,6 +169,18 @@ $(function () {
     } else {
       window.cbs_absolute_view.update({
         view_type: options.hasOwnProperty('variable') ? options.variable === 'precipitation' ? 'daily_precipitation_absolute' : 'daily_temperature_absolute' : window.cbs_absolute_view.options.view_type, ...options
+      });
+    }
+
+    if (typeof window.cbs_natural_language === "undefined") {
+      window.cbs_natural_language = new ClimateByStationWidget($('#plain-language-view'), {
+        view_type: 'natural_language',
+        cache_objs: [{}, window.localStorage],
+        ...options
+      });
+    } else {
+      window.cbs_natural_language.update({
+        view_type: 'natural_language', ...options
       });
     }
 

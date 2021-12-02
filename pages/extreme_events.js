@@ -217,15 +217,8 @@ export default (config) => `
             </div>
             <div class="graph-container col-12 col-md-4 shadow-sm border-0  p-2" style="height:16rem;">
               <div class="graph-wrapper">
-                <div id="plain-language-view" class="graph-item">
-                  <h5 class="mx-1">Plain-language description:</h5>
-                  <p class="m-0 p-2">
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim
-                    veniam,
-                    quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
-                    cillum
-                    dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
-                  </p>
+                <h5 class="mx-1">Plain-language description:</h5>
+                <div id="plain-language-view" class="graph-item mx-1 mt-2">
                 </div>
               </div>
             </div>
