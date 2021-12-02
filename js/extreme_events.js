@@ -268,7 +268,7 @@ $(function () {
         threshold_variable = state['threshold_variable'] || 'precipitation';
         threshold_operator = state['threshold_operator'] || '>=';
 
-        window.cbs_daily_views.absolute_view = window.cbs_absolute_view = new ClimateByStationWidget($('#daily-graph-absolute'), {
+        window.cbs_daily_views.absolute_view = new ClimateByStationWidget($('#daily-graph-absolute'), {
           view_type: threshold_variable === 'precipitation'? 'daily_precipitation_absolute' : 'daily_temperature_absolute',
           station,
           threshold,
@@ -276,7 +276,7 @@ $(function () {
           threshold_variable,
           threshold_operator
         });
-        window.cbs_daily_views.normalized_view = window.cbs_absolute_view = new ClimateByStationWidget($('#daily-graph-normalized'), {
+        window.cbs_daily_views.normalized_view = new ClimateByStationWidget($('#daily-graph-normalized'), {
           view_type: threshold_variable === 'precipitation' ? 'daily_precipitation_normalized' : 'daily_temperature_normalized',
           station,
           threshold,
@@ -285,7 +285,7 @@ $(function () {
           threshold_operator,
           responsive: true
         });
-        window.cbs_daily_views.other_view = window.cbs_absolute_view = new ClimateByStationWidget($('#daily-graph-other'), {
+        window.cbs_daily_views.other_view = new ClimateByStationWidget($('#daily-graph-other'), {
           view_type: threshold_variable === 'precipitation' ? 'daily_precipitation_ytd' : 'daily_temperature_minmax',
           station,
           threshold,
