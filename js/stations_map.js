@@ -293,7 +293,11 @@ export default class StationsMap {
         e.stopPropagation();
       }
     };
-    this.view.on("mouse-wheel", suppress_event_for_deactivated_map);
+    const suppress_event = (e) => {
+        e.stopPropagation();
+    };
+    // suppress mouse events
+    this.view.on("mouse-wheel", suppress_event);
     this.view.on("drag", suppress_event_for_deactivated_map);
 
 
