@@ -466,6 +466,16 @@ $(function () {
         })
       }
 
+      if(options.variable === 'precipitation') {
+        $('#selection-dropdown-menu').text('Precipitation');
+      } else if(options.variable === 'tmax') {
+        $('#selection-dropdown-menu').text('Maximum Temperature');
+      } else if(options.variable === 'tmin') {
+        $('#selection-dropdown-menu').text('Minimum Temperature');
+      } else if(options.variable === 'tavg') {
+        $('#selection-dropdown-menu').text('Average Temperature');
+      }
+
       update_graphs(options);
 
     }
