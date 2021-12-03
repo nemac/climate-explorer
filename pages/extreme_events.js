@@ -218,7 +218,7 @@ export default (config) => `
             <div class="graph-container col-12 col-md-4 shadow-sm border-0  p-2" style="height:16rem;">
               <div class="graph-wrapper">
                 <h5 class="mx-1">Plain-language description:</h5>
-                <div id="plain-language-view" class="graph-item mx-1 mt-2">
+                <div id="plain-language-view" class="graph-item mx-1 mt-2" style="font-size: 1.2rem;">
                 </div>
               </div>
             </div>
@@ -292,17 +292,17 @@ export default (config) => `
           <div>
             
           </div>
-          <div class="ms-3 dropdown rounded-2 border border-1">
+          <div class="ms-5 dropdown rounded-2 border border-1">
             <a class="btn dropdown-toggle default-selection ps-4 pe-4 w-100" href="#" style="text-align: center;" role="button" id="modal-download-dropdown-menu"
                data-bs-toggle="dropdown" aria-expanded="false">
               <span class="fas fa-download select-icon"></span>
               Downloads
             </a>
             <ul class="dropdown-menu download-select-modal" aria-labelledby="modal-download-dropdown-menu">
-              <li class="dropdown-item default-select-option" data-value="absolute_data">Absolute data (.csv)</li>
-              <li class="dropdown-item default-select-option" data-value="absolute_image">Absolute image (.png)</li>
-              <li class="dropdown-item default-select-option" data-value="normalized_data">Normalized  data (.csv)</li>
-              <li class="dropdown-item default-select-option" data-value="normalized_image">Normalized image (.png)</li>
+              <li class="dropdown-item default-select-option" data-value="absolute_data">Observed data (.csv)</li>
+              <li class="dropdown-item default-select-option" data-value="absolute_image">Observed image (.png)</li>
+              <li class="dropdown-item default-select-option" data-value="normalized_data">Observed vs. Normal data (.csv)</li>
+              <li class="dropdown-item default-select-option" data-value="normalized_image">Observed vs. Normal image (.png)</li>
               <li class="dropdown-item default-select-option" data-value="other_data">Other data (.csv)</li>
               <li class="dropdown-item default-select-option" data-value="other_image">Other image (.png)</li>
             </ul>
@@ -310,19 +310,19 @@ export default (config) => `
           <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
         </div>
         <div class="modal-body">
-          <div class="row">
+          <div class="row mt-2">
             <div class="col col-12 d-flex flex-column" style="height: 18rem; overflow: hidden; position: relative;">
               <h5>Observed</h5>
               <div id="daily-graph-absolute" style="height: 18rem; overflow: hidden;"></div>
             </div>
           </div>
-          <div class="row">
+          <div class="row mt-5">
             <div class="col col-12  d-flex flex-column" style="height: 18rem; overflow: hidden;">
               <h5>Observed vs. Normal</h5>
               <div id="daily-graph-normalized" style="height: 18rem; overflow: hidden;"></div>
             </div>
           </div>
-          <div class="row">
+          <div class="row mt-5">
             <div class="col col-12  d-flex flex-column " style="height: 18rem; overflow: hidden;">
               <h5 id="daily-graph-other-label"></h5>
               <div id="daily-graph-other" style="flex: 1 1 auto;"></div>

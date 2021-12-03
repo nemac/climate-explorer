@@ -31478,12 +31478,17 @@ main {
   flex: 1 1 auto;
 }
 
-/* line 2018, scss/screen.scss */
+/* line 2015, scss/screen.scss */
+.climate-by-station-view strong {
+  font-weight: bold;
+}
+
+/* line 2022, scss/screen.scss */
 #daily-graphs-modal li {
   transition: background-color 300ms ease-in;
 }
 
-/* line 2021, scss/screen.scss */
+/* line 2025, scss/screen.scss */
 #daily-graphs-modal li:hover {
   background-color: #A6C6F3;
   cursor: pointer;

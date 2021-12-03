@@ -91,7 +91,7 @@ export default (config) => `
       <div class="col-12 col-lg-6 col-xl-4 mb-3"> 
           <div class="col-sm-12 p-0 btn card border border-1 rounded shadow-sm data-card h-100" tabindex=0 role="button" data-page="extreme_events">
           <div>
-            <img class="img-fluid" src="/img/card-extreme-events.png" alt="Extreme events image"/>
+            <img class="img-fluid" src="/img/card-exceedance.png" alt="Extreme events image"/>
           </div>
           <div class="m-2 cards-home-title">
             <div class="d-flex flex-row justify-content-between">
