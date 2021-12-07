@@ -487,7 +487,7 @@ $(function () {
     // when user clicks on map station marker
     // show graph hide map
     // todo add this to dropdown events also
-    stationUpdated: function (event, options) {
+    station_updated: function (event, options) {
 
       // show chart overlay
       showGraphs();
