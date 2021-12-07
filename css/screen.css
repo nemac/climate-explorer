@@ -28340,59 +28340,59 @@ input.input-inner-default:focus {
 
 /* line 33, scss/pages/_index.scss */
 .index-page .search-input-group span {
-  background-color: white;
+  margin-left: -1.75rem;
 }
 
-/* line 37, scss/pages/_index.scss */
+/* line 38, scss/pages/_index.scss */
 .index-page .search-input-group .icon-search {
   background-color: #0D3064;
   color: white;
   border-radius: 180px;
 }
 
-/* line 45, scss/pages/_index.scss */
+/* line 46, scss/pages/_index.scss */
 .index-page .new-info {
   font-size: 1.3rem;
 }
 
-/* line 48, scss/pages/_index.scss */
+/* line 49, scss/pages/_index.scss */
 .index-page .new-info a {
   color: #124086;
   text-decoration: underline;
   background-color: transparent !important;
 }
 
-/* line 55, scss/pages/_index.scss */
+/* line 56, scss/pages/_index.scss */
 .index-page .default-cities {
   font-size: 1.2rem;
 }
 
-/* line 58, scss/pages/_index.scss */
+/* line 59, scss/pages/_index.scss */
 .index-page .default-cities a {
   background-color: white;
   transition: background-color ease-in 200ms;
 }
 
-/* line 62, scss/pages/_index.scss */
+/* line 63, scss/pages/_index.scss */
 .index-page .default-cities a:hover {
   background-color: #A6C6F3;
 }
 
-/* line 68, scss/pages/_index.scss */
+/* line 69, scss/pages/_index.scss */
 .index-page .main-logos {
   position: absolute;
   bottom: 0;
   right: 0;
 }
 
-/* line 73, scss/pages/_index.scss */
+/* line 74, scss/pages/_index.scss */
 .index-page .main-logos a {
   height: 3rem;
   width: 3rem;
   background-color: white;
 }
 
-/* line 79, scss/pages/_index.scss */
+/* line 80, scss/pages/_index.scss */
 .index-page .main-logos #global-change {
   width: 6rem;
 }
@@ -29036,6 +29036,11 @@ input.input-inner-default:focus {
 /* line 48, scss/pages/_extreme_events.scss */
 .extreme-events .default-selection a {
   color: #0D3064;
+}
+
+/* line 52, scss/pages/_extreme_events.scss */
+.extreme-events .modal-xl {
+  max-width: 98% !important;
 }
 
 /* line 4, scss/pages/_high_tide_flooding.scss */
@@ -31478,18 +31483,18 @@ main {
   flex: 1 1 auto;
 }
 
-/* line 2015, scss/screen.scss */
-.climate-by-station-view strong {
-  font-weight: bold;
-}
-
-/* line 2022, scss/screen.scss */
+/* line 2018, scss/screen.scss */
 #daily-graphs-modal li {
   transition: background-color 300ms ease-in;
 }
 
-/* line 2025, scss/screen.scss */
+/* line 2021, scss/screen.scss */
 #daily-graphs-modal li:hover {
   background-color: #A6C6F3;
   cursor: pointer;
+}
+
+/* line 2028, scss/screen.scss */
+#stations-dropdown-menu {
+  overflow: hidden;
 }

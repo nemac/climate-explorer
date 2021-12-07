@@ -106,7 +106,7 @@ export default (config) => `
 
             
 
-            <div class="col-md-12 col-lg-6 col-xl-2 mt-lg-4 mt-xl-0 mt-4">
+            <div class="col-md-12 col-lg-6 col-xl-2 mt-1 mb-1">
 
               <div class="input-group">
                 <label class="input-group-text" for="threshold">Threshold</label>
@@ -144,7 +144,7 @@ export default (config) => `
                 </ul>
               </div>
             </div>
-            <div class="col-md-12 col-lg-6 col-xl-2 mt-lg-4 mt-xl-0 mt-4">
+            <div class="col-md-12 col-lg-6 col-xl-2 mt-1 mb-1">
 
               <div class="input-group">
                 <label for="window_days" class="input-group-text">Window</label>
@@ -199,24 +199,24 @@ export default (config) => `
 
           <div class="row my-1">
 
-            <div class="graph-container col-12 col-md-4 " style="height: 16rem;">
+            <div class="graph-container col-12 col-md-6 col-lg-4 border-0 p-2" style="height: 16rem;">
 
-              <div class="graph-wrapper shadow-sm border-1 p-2">
+              <div class="graph-wrapper shadow border-1 p-2">
                 <h5 class="">Daily values histogram:</h5>
                 <div id="histogram-view" class="graph-item"></div>
               </div>
             </div>
-            <div class="graph-container col-12 col-md-4 shadow-sm border-0  p-2" style="min-height: 16rem;">
+            <div class="graph-container col-12 col-md-6 col-lg-4 border-0  p-2" style="min-height: 16rem;">
 
-              <div class="graph-wrapper">
-                <div class="d-flex flex-row"><h5>Daily values:</h5>
+              <div class="graph-wrapper shadow">
+                <div class="d-flex flex-row align-items-center"><h5>Daily values:</h5>
                   <button class="btn btn-sm ms-auto" id="daily-graphs-modal-btn"><i class="fas fa-expand me-2"></i>more</button>
                 </div>
-                <div id="absolute-view" class="graph-item"></div>
+                <div id="absolute-view" class="graph-item mt-2"></div>
               </div>
             </div>
-            <div class="graph-container col-12 col-md-4 shadow-sm border-0  p-2" style="height:16rem;">
-              <div class="graph-wrapper">
+            <div class="graph-container col-12 col-md-12 col-lg-4 border-0 p-2">
+              <div class="graph-wrapper shadow p-2">
                 <h5 class="mx-1">Plain-language description:</h5>
                 <div id="plain-language-view" class="graph-item mx-1 mt-2" style="font-size: 1.2rem;">
                 </div>
@@ -285,7 +285,7 @@ export default (config) => `
     </div>
   </div>
   <div class="modal fade" id="daily-graphs-modal" tabindex="-1" aria-labelledby="daily-graphs-modal-label" aria-hidden="true">
-    <div class="modal-dialog modal-fullscreen-md-down modal-xl">
+    <div class="modal-dialog modal-xl modal-fullscreen-md-down">
       <div class="modal-content p-3">
         <div class="modal-header">
           <h3 class="modal-title" id="daily-graphs-modal-label">Daily values</h3>
