@@ -268,6 +268,9 @@ $(function () {
         threshold_variable = state['threshold_variable'] || 'precipitation';
         threshold_operator = state['threshold_operator'] || '>=';
 
+        $('#other_data').text(threshold_variable === 'precipitation' ? 'Yearly accumulated precipitation data (.csv)' : 'Daily temperature ranges (.csv)')
+        $('#other_image').text(threshold_variable === 'precipitation' ? 'Yearly accumulated precipitation image (.png)' : 'Daily temperature ranges (.png)')
+
         window.cbs_daily_views.absolute_view = new ClimateByStationWidget($('#daily-graph-absolute'), {
           view_type: threshold_variable === 'precipitation'? 'daily_precipitation_absolute' : 'daily_temperature_absolute',
           station,

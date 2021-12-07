@@ -303,8 +303,8 @@ export default (config) => `
               <li class="dropdown-item default-select-option" data-value="absolute_image">Observed image (.png)</li>
               <li class="dropdown-item default-select-option" data-value="normalized_data">Observed vs. Normal data (.csv)</li>
               <li class="dropdown-item default-select-option" data-value="normalized_image">Observed vs. Normal image (.png)</li>
-              <li class="dropdown-item default-select-option" data-value="other_data">Other data (.csv)</li>
-              <li class="dropdown-item default-select-option" data-value="other_image">Other image (.png)</li>
+              <li class="dropdown-item default-select-option" id="other_data" data-value="other_data">Other data (.csv)</li>
+              <li class="dropdown-item default-select-option" id="other_image" data-value="other_image">Other image (.png)</li>
             </ul>
           </div>
           <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
