@@ -116,6 +116,7 @@ $(function () {
     if (typeof window.cbs_annual_exceedance === "undefined") {
       window.cbs_annual_exceedance = new ClimateByStationWidget($('#annual-exceedance-view'), {
         view_type: 'annual_exceedance',
+        hide_y_axis_title: true,
         cache_objs: [{}, window.localStorage],
         ...options
       });
@@ -130,6 +131,10 @@ $(function () {
         document.getElementById("window_days").value = window.cbs_annual_exceedance.options.window_days;
         document.getElementById("variable_unit_label").innerText = window.cbs_annual_exceedance.variable_unit;
 
+        $('#annual-exceedance-title').text(window.cbs_annual_exceedance.options.title);
+        $('#histogram-title').text(window.cbs_histogram.options.title);
+        $('#daily-values-title').text(window.cbs_absolute_view.options.title);
+
         if (threshold_null && window.cbs_annual_exceedance.options.threshold !== null) {
           // update_graphs({threshold: window.cbs_annual_exceedance.options.threshold});
         }
@@ -142,6 +147,7 @@ $(function () {
     if (typeof window.cbs_histogram === "undefined") {
       window.cbs_histogram = new ClimateByStationWidget($('#histogram-view'), {
         view_type: options.hasOwnProperty('variable') ? options.variable === 'precipitation' ? 'daily_precipitation_histogram' : 'daily_temperature_histogram' : window.cbs_histogram.options.view_type,
+        hide_y_axis_title: true,
         cache_objs: [{}, window.localStorage],
         ...options
       });
@@ -163,6 +169,7 @@ $(function () {
     if (typeof window.cbs_absolute_view === "undefined") {
       window.cbs_absolute_view = new ClimateByStationWidget($('#absolute-view'), {
         view_type: options.hasOwnProperty('variable') ? options.variable === 'precipitation' ? 'daily_precipitation_absolute' : 'daily_temperature_absolute' : window.cbs_absolute_view.options.view_type,
+        hide_y_axis_title: true,
         cache_objs: [{}, window.localStorage],
         ...options
       });

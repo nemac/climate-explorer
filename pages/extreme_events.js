@@ -189,7 +189,7 @@ export default (config) => `
             <div class="graph-container col-12" style="height: 23rem;">
 
               <div class="graph-wrapper shadow-sm mt-2">
-                <h5 class="">Annual threshold exceedance:</h5>
+                <h5 id="annual-exceedance-title" class="m-1"></h5>
                 <div id="annual-exceedance-view" class="graph-item"></div>
               </div>
             </div>
@@ -202,14 +202,15 @@ export default (config) => `
             <div class="graph-container col-12 col-md-6 col-lg-4 border-0 p-2" style="height: 16rem;">
 
               <div class="graph-wrapper shadow border-1 p-2">
-                <h5 class="">Daily values histogram:</h5>
+                <h5 id="histogram-title"></h5>
                 <div id="histogram-view" class="graph-item"></div>
               </div>
             </div>
             <div class="graph-container col-12 col-md-6 col-lg-4 border-0  p-2" style="min-height: 16rem;">
 
               <div class="graph-wrapper shadow">
-                <div class="d-flex flex-row align-items-center"><h5>Daily values:</h5>
+                <div class="d-flex flex-row align-items-center">
+                  <h5 id="daily-values-title" class="m-1"></h5>
                   <button class="btn btn-sm ms-auto" id="daily-graphs-modal-btn"><i class="fas fa-expand me-2"></i>more</button>
                 </div>
                 <div id="absolute-view" class="graph-item mt-2"></div>
