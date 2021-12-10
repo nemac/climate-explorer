@@ -42,7 +42,7 @@ export default (config) => `
     </div>
     <div class="info-section mt-2">
       <div class="border border-1 rounded-2">
-        <div class="m-2 mb-3">
+        <div class="m-2 mb-1">
           <span
               id="station-info-none"><strong>Please select a station on the map or from the Stations dropdown menu. You may need to zoom out to see more stations.</strong></span>
           <span id="station-info" class="d-none">
@@ -52,7 +52,7 @@ export default (config) => `
               <span id="default-station-id" class="text-info-box data right-padding"></span>
             </span>
         </div>
-        <div class="m-2 collapse show" id="collapse-info-section">
+        <div class="m-2 mt-1 collapse show" id="collapse-info-section">
           <div class="row align-items-center">
             <div class="col-md-12 col-lg-6 col-xl-1 mt-1 mb-1 info-section">
               <div class="btn-group border rounded-2 graph-map-selection w-100" role="group">
@@ -199,15 +199,13 @@ export default (config) => `
 
           <div class="row my-1">
 
-            <div class="graph-container col-12 col-md-6 col-lg-4 border-0 p-2" style="height: 16rem;">
-
-              <div class="graph-wrapper shadow border-1 p-2">
-                <h5 id="histogram-title"></h5>
+            <div class="graph-container col-12 col-md-6 col-lg-4 border-0 p-2" style="min-height: 16rem;">
+              <div class="graph-wrapper shadow border-1">
+                <h5 id="histogram-title" class="m-2"></h5>
                 <div id="histogram-view" class="graph-item"></div>
               </div>
             </div>
             <div class="graph-container col-12 col-md-6 col-lg-4 border-0  p-2" style="min-height: 16rem;">
-
               <div class="graph-wrapper shadow">
                 <div class="d-flex flex-row align-items-center">
                   <h5 id="daily-values-title" class="m-1"></h5>
