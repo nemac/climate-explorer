@@ -31498,3 +31498,8 @@ main {
 #stations-dropdown-menu {
   overflow: hidden;
 }
+
+/* line 2034, scss/screen.scss */
+#histogram-view .point:hover {
+  cursor: pointer;
+}

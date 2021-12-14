@@ -2028,3 +2028,11 @@ main {
 #stations-dropdown-menu {
   overflow: hidden;
 }
+
+#histogram-view {
+
+  .point:hover {
+    cursor: pointer;
+  }
+
+}

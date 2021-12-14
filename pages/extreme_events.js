@@ -189,7 +189,7 @@ export default (config) => `
             <div class="graph-container col-12" style="height: 23rem;">
 
               <div class="graph-wrapper shadow-sm mt-2">
-                <h5 id="annual-exceedance-title" class="m-1"></h5>
+                <h5 id="annual-exceedance-title" class="m-1">Annual threshold exceedance:</h5>
                 <div id="annual-exceedance-view" class="graph-item"></div>
               </div>
             </div>
@@ -201,14 +201,14 @@ export default (config) => `
 
             <div class="graph-container col-12 col-md-6 col-lg-4 border-0 p-2" style="min-height: 16rem;">
               <div class="graph-wrapper shadow border-1">
-                <h5 id="histogram-title" class="m-2"></h5>
+                <h5 id="histogram-title" class="m-2">Number of events</h5>
                 <div id="histogram-view" class="graph-item"></div>
               </div>
             </div>
             <div class="graph-container col-12 col-md-6 col-lg-4 border-0  p-2" style="min-height: 16rem;">
               <div class="graph-wrapper shadow">
                 <div class="d-flex flex-row align-items-center">
-                  <h5 id="daily-values-title" class="m-1"></h5>
+                  <h5 id="daily-values-title" class="m-1">Daily values:</h5>
                   <button class="btn btn-sm ms-auto" id="daily-graphs-modal-btn"><i class="fas fa-expand me-2"></i>more</button>
                 </div>
                 <div id="absolute-view" class="graph-item mt-2"></div>
@@ -275,8 +275,7 @@ export default (config) => `
               Global Historical Climatology Network</a>, served by <a target="_blank" href="http://www.rcc-acis.org/">ACIS</a>.
           </div>
           <div>
-            Pan or zoom on these graphs to view other years using the tools in the top right of each graph or place your cursor on either axis and then
-            click-and-drag to pan along just that axis.
+            Tools at the top right of each graph let you zoom or pan. To zoom in on a shorter period, click and drag across years of interest.
           </div>
 
         </div>

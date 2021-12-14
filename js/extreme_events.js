@@ -132,8 +132,6 @@ $(function () {
         document.getElementById("variable_unit_label").innerText = window.cbs_annual_exceedance.variable_unit;
 
         $('#annual-exceedance-title').text(window.cbs_annual_exceedance.options.title);
-        $('#histogram-title').text(window.cbs_histogram.options.title);
-        $('#daily-values-title').text(window.cbs_absolute_view.options.title);
 
         if (threshold_null && window.cbs_annual_exceedance.options.threshold !== null) {
           // update_graphs({threshold: window.cbs_annual_exceedance.options.threshold});
@@ -173,6 +171,11 @@ $(function () {
         cache_objs: [{}, window.localStorage],
         ...options
       });
+
+      window.cbs_absolute_view.element.addEventListener('update_complete', function (e) {
+        $('#daily-values-title').text(window.cbs_absolute_view.options.title);
+      })
+
     } else {
       window.cbs_absolute_view.update({
         view_type: options.hasOwnProperty('variable') ? options.variable === 'precipitation' ? 'daily_precipitation_absolute' : 'daily_temperature_absolute' : window.cbs_absolute_view.options.view_type, ...options
