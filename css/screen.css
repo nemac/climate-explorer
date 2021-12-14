@@ -31500,6 +31500,11 @@ main {
 }
 
 /* line 2034, scss/screen.scss */
+#histogram-view:hover {
+  cursor: default !important;
+}
+
+/* line 2038, scss/screen.scss */
 #histogram-view .point:hover {
-  cursor: pointer;
+  cursor: pointer !important;
 }

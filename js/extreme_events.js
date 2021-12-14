@@ -228,6 +228,9 @@ $(function () {
 
     $('#selection-dropdown-menu').removeClass('disabled');
 
+    $('#station-id-modal').text(stationId);
+    $('#station-label-modal').text(stationName);
+
     // updates the visible text for the station dropdown with the information from the state url
     updateStationSelectText({stationName, stationId})
 
@@ -539,6 +542,8 @@ $(function () {
       window_days: window_days
     })
 
+    $('#percentile-dropdown-menu').text('Percentiles');
+
     // ga event action, category, label
     googleAnalyticsEvent('click', 'threshold-value', threshold);
     googleAnalyticsEvent('click', 'window-value', window_days);
@@ -608,6 +613,28 @@ $(function () {
     $('#default-station-id').html(text);
   }
 
+  const durationTip = document.getElementById('duration-tooltip');
+  makeTip(durationTip);
+
+  const operatorTip = document.getElementById('operator-dropdown-menu');
+  makeTip(operatorTip);
+
+  function makeTip(elem) {
+    if (elem) {
+
+      elem.addEventListener('mouseover', tippy(elem, {
+        theme: 'testing-theme',
+        arrow: false,
+        interactive: false,
+        allowHTML: true,
+        hideOnClick: false,
+        // flipOnUpdate: false,
+        animateFill: false,
+        placement: 'top'
+      }));
+    }
+  }
+
   function render_station_info(stationName, stationId) {
     if (stationName) {
       document.getElementById('station-info').classList.remove('d-none');
@@ -670,6 +697,9 @@ $(function () {
         station: options.stationId,
         station_label: options.stationName
       });
+
+      $('#station-id-modal').text(options.stationId);
+      $('#station-label-modal').text(options.stationName);
 
       show_graphs();
 

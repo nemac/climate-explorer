@@ -2031,8 +2031,12 @@ main {
 
 #histogram-view {
 
+  &:hover {
+    cursor: default !important;
+  }
+
   .point:hover {
-    cursor: pointer;
+    cursor: pointer !important;
   }
 
 }

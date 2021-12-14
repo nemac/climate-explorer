@@ -134,9 +134,9 @@ export default (config) => `
 
             <div class="col-md-12 col-lg-6 col-xl-1 operator-dropdown mt-1 mb-1 info-section">
               <div class="dropdown default-selection rounded-2 border border-1">
-                <a class="btn dropdown-toggle ps-4 pe-4 w-100" href="#" style="text-align: center;" role="button" id="operator-dropdown-menu"
+                <a class="btn dropdown-toggle ps-4 pe-4 w-100 tippy-box" data-tippy-content="<span class='tippy-body'>Threshold comparison operator</span>" href="#" style="text-align: center;" role="button" id="operator-dropdown-menu"
                    data-bs-toggle="dropdown" aria-expanded="false">
-                  Operator
+                  at least (>=)
                 </a>
                 <ul class="dropdown-menu operator-dropdown-menu operator-select" aria-labelledby="operator-dropdown-menu">
                   <li role="option" data-value=">=" class="dropdown-item default-select-option">at least (>=)</li>
@@ -147,7 +147,7 @@ export default (config) => `
             <div class="col-md-12 col-lg-6 col-xl-2 mt-1 mb-1">
 
               <div class="input-group">
-                <label for="window_days" class="input-group-text">Window</label>
+                <label id="duration-tooltip" for="window_days" class="input-group-text tippy-box" data-tippy-content="<span class='tippy-body'>Period in consecutive days</span>">Duration</label>
                 <input id="window_days" class="form-control" type="number" name="window_days" value="1" min="1" max="30">
                 <span class="input-group-text" style="background-color: #E9F1FC;">days</span>
               </div>
@@ -308,6 +308,16 @@ export default (config) => `
           <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
         </div>
         <div class="modal-body">
+          <div class="d-flex mb-2">
+            <div class="me-3" style="font-weight: bold">
+              StationId:
+              <span id="station-id-modal" style="font-weight: normal"></span>
+            </div>
+            <div style="font-weight: bold">
+              Station:
+              <span id="station-label-modal" style="font-weight: normal"></span>
+            </div>
+          </div>
           <div class="row mt-2">
             <div class="col col-12 d-flex flex-column" style="height: 18rem; overflow: hidden; position: relative;">
               <h5>Observed</h5>
@@ -316,7 +326,7 @@ export default (config) => `
           </div>
           <div class="row mt-5">
             <div class="col col-12  d-flex flex-column" style="height: 18rem; overflow: hidden;">
-              <h5>Observed vs. Normal</h5>
+              <h5>Difference from normal</h5>
               <div id="daily-graph-normalized" style="height: 18rem; overflow: hidden;"></div>
             </div>
           </div>
