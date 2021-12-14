@@ -47,7 +47,7 @@ class App {
         return;
       }
 
-      if($(e.currentTarget).hasClass('nav-disabled') || $(e.currentTarget).hasClass('btn-default-disabled') || $(e.currentTarget).hasClass('card-disabled')) {
+      if ($(e.currentTarget).hasClass('nav-disabled') || $(e.currentTarget).hasClass('btn-default-disabled') || $(e.currentTarget).hasClass('card-disabled')) {
         return;
       }
 
@@ -82,14 +82,28 @@ class App {
       }
     }.bind(this));
 
+    // restore state from url on init
+    this.restore_page_state_from_href();
+    let skipped_page_show = false;
+    // restore state from url to catch back/forward button navigation changes
+    window.addEventListener('pageshow', (event) => {
+      // ignore the first event since we restored on init.
+      if (skipped_page_show) {
+        // Log the state data to the console
+        this.restore_page_state_from_href()
+      }else{
+        skipped_page_show = true;
+      }
+    });
+  }
+
+  restore_page_state_from_href() {
     // restore state from url
     const url_search_params = new URLSearchParams(window.location.search);
     for (const k of Object.keys(url_param_names)) {
       this._state[k] = url_search_params.get(url_param_names[k]) || null;
     }
     this._state.page = window.location.pathname.replace(/\//g, '') || null;
-
-    // this.tour();
   }
 
   // pass the mutated part of the state
@@ -330,7 +344,7 @@ class App {
         const leftMapDoneEvent = new CustomEvent('location-changed');
         window.dispatchEvent(leftMapDoneEvent);
         const zoom = 7;
-        this.update({page, county, city, fips, area_id: fips, lat, lon, zoom, area_label:null});
+        this.update({page, county, city, fips, area_id: fips, lat, lon, zoom, area_label: null});
       } else if (lat && lon) {
         // try to look up the location based on bboxes of known areas
 
@@ -353,11 +367,11 @@ class App {
           this.update({page, area_label, area_id, lat, lon, zoom, fips: null, county: null, city: null});
         }
       }
-      if (!fips && !area_id){
+      if (!fips && !area_id) {
         // do nothing, let the user search for something else.
-        $('#location-search-input').css('transition','color ease-in 0.7s').css('color','#f5652d');
-        setTimeout(()=>{
-          $('#location-search-input').css('transition','').css('color','').val('');
+        $('#location-search-input').css('transition', 'color ease-in 0.7s').css('color', '#f5652d');
+        setTimeout(() => {
+          $('#location-search-input').css('transition', '').css('color', '').val('');
         }, 1000)
       }
 
@@ -1223,3 +1237,5 @@ function to_latin(value) {
 if (typeof window.app === "undefined") {
   window.app = new App();
 }
+
+
