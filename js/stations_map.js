@@ -127,7 +127,7 @@ export default class StationsMap {
 
   // Dojo modules this widget expects to use.
   get dojoDeps() {
-    return ['esri/Map', 'esri/views/MapView', 'esri/layers/FeatureLayer', 'esri/renderers/SimpleRenderer', 'esri/Graphic', 'esri/symbols/WebStyleSymbol', 'esri/symbols/SimpleFillSymbol', 'esri/widgets/Legend', 'esri/widgets/Expand', 'esri/widgets/BasemapGallery', 'esri/widgets/ScaleBar', 'esri/geometry/SpatialReference', 'esri/layers/CSVLayer', 'esri/geometry/Extent', 'esri/geometry/Point', 'esri/widgets/Locate', 'esri/core/watchUtils', 'esri/geometry/support/webMercatorUtils','esri/tasks/support/Query'];
+    return ['esri/Map', 'esri/views/MapView', 'esri/layers/FeatureLayer', 'esri/renderers/SimpleRenderer', 'esri/Graphic', 'esri/symbols/WebStyleSymbol', 'esri/symbols/SimpleFillSymbol', 'esri/widgets/Legend', 'esri/widgets/Expand', 'esri/widgets/BasemapGallery', 'esri/widgets/ScaleBar', 'esri/geometry/SpatialReference', 'esri/layers/CSVLayer', 'esri/geometry/Extent', 'esri/geometry/Point', 'esri/widgets/Locate', 'esri/core/watchUtils', 'esri/geometry/support/webMercatorUtils', 'esri/tasks/support/Query', 'esri/views/input/BrowserEventSource'];
   }
 
   _dojoLoaded() {
@@ -293,11 +293,8 @@ export default class StationsMap {
         e.stopPropagation();
       }
     };
-    const suppress_event = (e) => {
-        e.stopPropagation();
-    };
+
     // suppress mouse events
-    this.view.on("mouse-wheel", suppress_event);
     this.view.on("drag", suppress_event_for_deactivated_map);
 
 
@@ -334,6 +331,11 @@ export default class StationsMap {
     });
 
     this.view.ui.add(this.locateWidget, "top-left");
+
+    // hack to suppress mouse wheel events on map.
+    this.dojoMods.BrowserEventSource.BrowserEventSource.prototype._handleMouseWheel = function () {
+      // do nothing
+    }
   }
 
   get_active_stations_layer() {
@@ -483,6 +485,7 @@ export default class StationsMap {
           stationName: station.attributes.name, stationId: station.attributes.id
         };
       }
+      this._suppress_mouse_wheel_on_view()
       this.update(options);
       this._trigger('station_updated', null, this.options);
     });
@@ -620,38 +623,43 @@ export default class StationsMap {
   }
 
   _highlight_selected_station() {
-    return; //todo fix this once we switch to ArcGIS JS API 4.21
-    if (this.options.stationId === null) {
+    if (this.options.stationId === null || !this._MapInitPromise) {
       return;
     }
-    try {
-      const active_stations_layer = this.get_active_stations_layer()
-      if (active_stations_layer) {
+    this._MapInitPromise.then(() => {
+      try {
+        const active_stations_layer = this.get_active_stations_layer()
+        if (!active_stations_layer || !this.view.stationary) {
+          window.setTimeout(this._highlight_selected_station.bind(this), 100);
+          return
+        }
         const query = active_stations_layer.createQuery();
         query.where = `id = '${this.options.stationId}'`
         query.returnGeometry = true;
         active_stations_layer.queryFeatures(query).then((results) => {
           if (get(results, 'features', []).length > 0) {
             this.view.graphics.removeAll();
-            this.view.graphics.add(new this.dojoMods.Graphic( {
-
-              geometry: results.features[0].geometry,
+            const p = new this.dojoMods.Graphic({
+              geometry: {type: 'point', latitude: results.features[0].geometry.latitude, longitude: results.features[0].geometry.longitude},
               symbol: {
-                type: 'simple-fill',
-                color: "rgba(0,0,0,0)",
+                type: "simple-marker", // autocasts as new SimpleMarkerSymbol()
+                size: 10,
+                color: active_stations_layer.renderer.symbol.color,
                 outline: {
-                  width: 50,
-                  color: "rgba(50,50,50,1)"
+                  color: '#252525',
+                  width: 2
                 }
               }
-            }));
+            });
+            this.view.graphics.add(p);
           }
         });
-      }
 
-    } catch (ex) {
-      console.log(ex)
-    }
+
+      } catch (ex) {
+        console.log(ex)
+      }
+    });
   }
 
   destroy() {
