@@ -2029,14 +2029,4 @@ main {
   overflow: hidden;
 }
 
-#histogram-view {
 
-  &:hover {
-    cursor: default !important;
-  }
-
-  .point:hover {
-    cursor: pointer !important;
-  }
-
-}
