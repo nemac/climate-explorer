@@ -485,7 +485,6 @@ export default class StationsMap {
           stationName: station.attributes.name, stationId: station.attributes.id
         };
       }
-      this._suppress_mouse_wheel_on_view()
       this.update(options);
       this._trigger('station_updated', null, this.options);
     });
