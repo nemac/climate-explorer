@@ -192,7 +192,7 @@ export default class ScenarioComparisonMap {
           legend_unit: 'Days'
         },
         'pcpn': {
-          title: 'Total Precipitation',
+          title: 'Total Precipitation (inches)',
           seasonal_data: true,
           defaultConfig: {
             leftScenario: 'rcp45',
@@ -200,7 +200,7 @@ export default class ScenarioComparisonMap {
             season: 'annual'
           },
           disabledScenarios: ['historical'],
-          legend_unit: 'Days',
+          legend_unit: 'Inches',
           legend_note: 'Note: Maps are anomalies from 1961-1990 baseline'
         },
         'days_pcpn_gt_1in': {
