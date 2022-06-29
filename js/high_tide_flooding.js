@@ -10,9 +10,9 @@ $(function () {
 
   const widget = new TidalStationWidget($('#tidal-chart')[0], {
     data_url: 'https://crt-climate-explorer.nemac.org/data/high-tide-flooding-widget/tidal_data.json',
-    responsive: true
+    responsive: true,
+    isCE: true
   });
-
 
   //TODO
   // if (this.options.mode === 'high_tide_flooding') {
