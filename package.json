@@ -21,7 +21,7 @@
     "deploy:fli": "aws s3 sync --delete --no-follow-symlinks dist/ s3://climate-explorer/ && aws cloudfront create-invalidation --distribution-id E34SU5ZJ0O3LC0 --paths '/*'",
     "deploy:ce3-dev": "aws s3 sync --delete --no-follow-symlinks dist/ s3://climate-explorer3-dev.nemac.org/ && aws cloudfront create-invalidation --distribution-id E48HJ11B8EHXY --paths '/*'",
     "deploy:ce3-production": "aws s3 sync --delete --no-follow-symlinks dist/ s3://climate-explorer3-prod.nemac.org/ && aws cloudfront create-invalidation --distribution-id E1Q1S8U8911R6D --paths '/*'",
-    "start": "static -a localhost -p 8082 dist/",
+    "start": "static -a localhost -p 8083 dist/",
     "start:dev": "npm run build:html -- -- env=dev && rm -rf dist/js dist/node_modules && ln -srf node_modules js dist/ && static -a localhost -p 8082 dist/",
     "update_deps": "rm -rf package-lock.json && npm install climate-by-location@github:nemac/climate-by-location github:nemac/high-tide-flooding-widget"
   },

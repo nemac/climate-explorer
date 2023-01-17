@@ -327,7 +327,7 @@ $(function () {
 
         break;
       case 'download-tidal-data':
-        $('#multi-chart').stationAnnualGraph('downloadPrecipitationData', event.currentTarget);
+        //$('#multi-chart').stationAnnualGraph('downloadPrecipitationData', event.currentTarget);
         break;
       default:
         e.target.href = $("#tidal-chart canvas")[0].toDataURL('image/png');

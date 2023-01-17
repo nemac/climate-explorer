@@ -37,8 +37,7 @@ export default (config) => `
   s.type = "text/javascript";
   s.src = window.location.hostname === 'climate.toolkit.gov' ?
           "https://maps.googleapis.com/maps/api/js?sensor=false&amp;libraries=places&client=gme-noaa&channel=OAR.CLIMATE_GOV_CLIMATE_EXPLORER2" :
-          // "https://maps.googleapis.com/maps/api/js?key=AIzaSyBSjujKAutsVyR0GcsfXJvGA-J-54zWT2U&libraries=places";
-          "https://maps.googleapis.com/maps/api/js?key=AIzaSyDaYwc02FeOuyyFWflk0wXnaHeezhxVW1w&libraries=places";
+          "https://maps.googleapis.com/maps/api/js?key=AIzaSyAwmU7N5Ep139_2zNQzH-q--ACGeQcFePo&libraries=places";
   document.head.appendChild(s);
 </script>
 
