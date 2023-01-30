@@ -88,7 +88,6 @@ $(function () {
   // to disable those variables from the user we use this constant
   const validMonthly = ['tmax', 'tmin', 'pcpn'];
 
-
   // function to enable downloads (images and data)
   $('.download-select li a').click(function (e) {
     const downloadAction = $(this).data('value');
@@ -183,6 +182,20 @@ $(function () {
     // do execute the click event
     if (!disabled) {
       const val = target.data('value');
+
+      if(val === 'monthly') {
+        // disable modeled history for monthly views of avg tmax, avg tmin, and precipitation
+        const disableModHist = validMonthly.indexOf($('#filter-dropdown-menu').data('value'));
+
+        if(disableModHist < 0) {
+          $('[data-value="histmod"]').removeClass('disabled');
+        } else {
+          $('[data-value="histmod"]').addClass('disabled');
+        }
+      } else {
+        $('[data-value="histmod"]').removeClass('disabled');
+      }
+
 
       // toggle button visual state
       toggleButton(target);
@@ -292,18 +305,24 @@ $(function () {
     updateTitle($('#filter-dropdown-menu').text());
 
     // disable variables if they are valid time period
-    const is_valid = jQuery.inArray(variable, validMonthly);
+    const is_valid = validMonthly.indexOf(variable);
+
+    if($('#monthly-selection-label').hasClass('selected-item')) {
+
+    }
 
     if (is_valid < 0) {
       $('[data-value="monthly"]').addClass('disabled');
       $('[data-value="monthly"]').removeClass('selected-item');
       $('#monthly-selection-label').addClass('disabled');
       $('#monthly-selection-label').removeClass('selected-item');
+
     } else {
       $('[data-value="monthly"]').removeClass('disabled')
       $('[data-value="monthly"]').addClass('default-selection')
       $('#monthly-selection-label').removeClass('disabled');
       $('#monthly-selection-label').addClass('default-selection');
+
     }
     if (is_alaska_area) {
       $('[data-value="monthly"]').addClass('disabled');

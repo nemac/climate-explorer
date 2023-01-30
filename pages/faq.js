@@ -61,7 +61,7 @@ export default (config) => `
         
         <h4>What is the recommended citation for information in the Climate Explorer?</h4>
         <div>
-          <p>U.S. Federal Government, 2021: U.S. Climate Resilience Toolkit Climate Explorer. [Online] https://crt-climate-explorer.nemac.org/ Accessed {DATE}.</p>
+          <p>U.S. Federal Government, 2023: U.S. Climate Resilience Toolkit Climate Explorer. [Online] https://crt-climate-explorer.nemac.org/ Accessed {DATE}.</p>
         </div>
 
         <hr>
@@ -107,6 +107,13 @@ export default (config) => `
           </p>
         </div>
 
+        <h4>Can I download climate projections, modeled history, and/or observation data for more than one county at a time?</h4>
+        <div>
+          <p>
+            If you have some programming skills, or are willing to experiment, you are welcome to download and use this <a href="../vendor/ACIS_data_download.ipynb" target="_blank">Jupyter notebook</a> to access climate projections from ACIS webservices. We have used it in <a href="https://colab.research.google.com/" target="_blank">Google's Colabatory</a>. Note that the Climate Explorer team is small, and we do not have the bandwidth to offer technical assistance with this process.
+          </p>
+        </div>
+        
         <h4>Why did the Climate Explorer team select the LOCA dataset for downscaled projections?</h4>
         <div>
           <p>

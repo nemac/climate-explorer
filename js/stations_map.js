@@ -502,6 +502,7 @@
           }.bind(this));
           this.view.on("click", function (event) {
             this.view.hitTest(event).then(function (response) {
+              console.log("1 Hit test:", response)
               const station = response.results.filter(function (result) {
                 return result.graphic.layer === this.dailyStationsLayer;
               }.bind(this))[0].graphic;
@@ -572,6 +573,7 @@
           }.bind(this));
           this.view.on("click", function (event) {
             this.view.hitTest(event).then(function (response) {
+              console.log("2 Hit test:", response)
               const station = response.results.filter(function (result) {
                 return result.graphic.layer === this.thresholdStationsLayer;
               }.bind(this))[0].graphic;
@@ -633,6 +635,7 @@
           }.bind(this));
           this.view.on("click", function (event) {
             this.view.hitTest(event).then(function (response) {
+              console.log("3 Hit test:", response)
               const station = response.results.filter(function (result) {
                 return result.graphic.layer === this.tidalStationsLayer;
               }.bind(this))[0].graphic;
