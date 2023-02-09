@@ -110,7 +110,7 @@ export default (config) => `
         <h4>Can I download climate projections, modeled history, and/or observation data for more than one county at a time?</h4>
         <div>
           <p>
-            If you have some programming skills, or are willing to experiment, you are welcome to download and use this <a href="../vendor/ACIS_data_download.ipynb" target="_blank">Jupyter notebook</a> to access climate projections from ACIS webservices. We have used it in <a href="https://colab.research.google.com/" target="_blank">Google's Colabatory</a>. Note that the Climate Explorer team is small, and we do not have the bandwidth to offer technical assistance with this process.
+            If you have some programming skills, or are willing to experiment, you are welcome to download and use this <a href="../vendor/ACIS_data_download.ipynb" target="_blank">Jupyter notebook</a> to access climate projections from ACIS webservices. We have used it in <a href="https://colab.research.google.com/" target="_blank">Google's Colaboratory</a>. Note that the Climate Explorer team is small, and we do not have the bandwidth to offer technical assistance with this process.
           </p>
         </div>
         
@@ -137,13 +137,23 @@ export default (config) => `
         <h4>Where do the sea level projections come from?</h4>
         <div>
           <p>
-            William Sweet and other researchers at NOAA's National Ocean Service used the latest peer-reviewed estimates of global sea level rise and local reports of flooding impacts to produce these estimates. Combined with information on local land subsidence or uplift, oceanographers estimated the frequency of high-tide flooding at each location during future decades out to 2100. The graphs show observed annual high-tide flood days through 2016 and projections for the number of days per year when inundation will exceed a locally defined level through 2100.
+            The <a href="https://oceanserviceeus2-dev.azurewebsites.net/hazards/sealevelrise/sealevelrise-tech-report.html" target="_blank">2022 Sea Level Rise Technical Report</a> provides sea level rise projections out to the year 2150. This information can help communities assess potential changes in average tide heights and high-tide flooding frequencies. Data in the Climate Explorer come from <a href="https://www.tidesandcurrents.noaa.gov/api-helper/url-generator.html" target="_blank">NOAA: Sea Level Rise API URL Builder</a>.
           </p>
           <p>
             High-tide flooding events should not be envisioned as days-long city-wide floods. Rather, these events result in temporary inundation of low-lying portions of the coastal cities at each station.
           </p>
+        </div>
+
+        <h4>What is represented in the High-tide flooding graphs?</h4>
+        <div>
           <p>
-          For further information, see <a href="https://tidesandcurrents.noaa.gov/publications/techrpt86_PaP_of_HTFlooding.pdf" target="_blank">Patterns and Projections of High-tide flooding along the U.S. Coastline using a Common Impact Threshold</a>.
+            High-tide flooding graphs show observed and projected changes in the number of days per year with high-tide flooding. This type of flooding occurs when sea water laps onto land and covers some portion of normally dry land, either due to normal astronomical alignments or storms or wind pushing water ashore. These floods have also been called nuisance, sunny day, or recurrent flooding. At each station, local emergency managers and NOAA Weather Forecasting Offices identified flooding thresholds related to impacts such as flooding of low-lying roads or infiltration into storm-water systems.
+          </p>
+          <p>
+            For stations in the study, graphs show the observed annual number of days with high tide flooding through 2016, and projections for the annual number of high tide flooding days through 2100, for higher and lower emissions scenarios.
+          </p>
+          <p>
+            For more information, see <a href="https://tidesandcurrents.noaa.gov/publications/techrpt86_PaP_of_HTFlooding.pdf" target="_blank">Patterns and Projections of High-tide flooding along the U.S. Coastline using a Common Impact Threshold</a>.
           </p>
         </div>
         
@@ -173,23 +183,10 @@ export default (config) => `
           </p>
         </div>
         
-        <h4>How did you decide which stations and years to show in the Daily vs. Climate and Thresholds graphs in the Weather & Tidal Stations section?</h4>
+        <h4>How did you decide which stations and years to show in the Historical Weather and Historical Thresholds graphs?</h4>
         <div>
           <p>
             We started with a pool of all stations in the Global Historical Climatology Network - Daily dataset that are located within the contiguous United States. In a first pass, we eliminated stations that did not record data during the past 30 years. In our second pass, we documented which stations were missing more than 5 temperature records in a single month or more than 1 precipitation record in a single month, and excluded these years from the thresholding function. We deleted all stations where records did not meet these criteria for at least 10% of the years in its period of record.
-          </p>
-        </div>
-        
-        <h4>What is represented in the High-tide flooding graphs?</h4>
-        <div>
-          <p>
-            High-tide flooding graphs show observed and projected changes in the frequency of high-tide flooding—events when sea water laps onto land to inundate some portion of normally dry land. These floods have also been called nuisance, sunny day, or recurrent flooding. At each station, local emergency managers and NOAA Weather Forecasting Offices have identified flooding thresholds (expressed as heights above local mean high higher water) related to impacts such as flooding of low-lying roads or infiltration into storm-water systems. Oceanographers compiled these heights for many stations, and then performed statistical analyses on the dataset to establish threshold flood heights for each station.
-          </p>
-          <p>
-            For stations in the study, graphs show the observed annual number of days with high tide flooding through 2016, and projections for the annual number of high tide flooding days through 2100, for higher and lower emissions scenarios.
-          </p>
-          <p>
-            For more information, see <a href="https://tidesandcurrents.noaa.gov/publications/techrpt86_PaP_of_HTFlooding.pdf" target="_blank">Patterns and Projections of High-tide flooding along the U.S. Coastline using a Common Impact Threshold</a>.
           </p>
         </div>
         

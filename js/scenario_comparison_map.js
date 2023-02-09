@@ -1431,6 +1431,8 @@ export default class ScenarioComparisonMap {
         values.push(value[area_id])
       }
     }
+
+    console.log("data: ", variable, area_type, seasonal, [keys, values]);
     return [keys, values];
   }
 

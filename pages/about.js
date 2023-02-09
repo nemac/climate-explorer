@@ -69,9 +69,7 @@ export default (config) => `
         <p>
           For the contiguous United States, graphs and maps for 1950 through 2013 show averages of observations recorded at individual climate and weather stations.
           Station data for temperature and precipitation were interpolated and stored as a gridded observational dataset prepared by Livneh et al. (2013, 2015). This
-          dataset is also used to calculate observed differences from averages for the period 1961-1990. Data are <a target="_blank"
-                                                                                                                     href="https://catalog.data.gov/dataset/a-spatially-comprehensive-hydrologic-model-based-data-set-for-mexico-the-u-s-and-sout-1950-2013">available
-          via Data.gov</a>.
+          dataset is also used to calculate observed differences from averages for the period 1961-1990. Data are available from <a target="_blank" href="https://www.ncei.noaa.gov/access/metadata/landing-page/bin/iso?id=gov.noaa.nodc%3A0129374">NOAA's National Centers for Environmental Information</a>.
         </p>
         <h3>Modeled History and Projections</h3>
         <p>
