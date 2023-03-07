@@ -189,6 +189,13 @@ export default (config) => `
             We started with a pool of all stations in the Global Historical Climatology Network - Daily dataset that are located within the contiguous United States. In a first pass, we eliminated stations that did not record data during the past 30 years. In our second pass, we documented which stations were missing more than 5 temperature records in a single month or more than 1 precipitation record in a single month, and excluded these years from the thresholding function. We deleted all stations where records did not meet these criteria for at least 10% of the years in its period of record.
           </p>
         </div>
+
+        <h4>What happened to the Extreme Events interface that was available during the last half of 2022 and early 2023?</h4>
+        <div>
+          <p>
+            This experimental feature based on station data is available at <a href="https://climate-by-station.fernleafinteractive.com/" target="_blank">here</a>.
+          </p>
+        </div>
         
         <hr>
         
