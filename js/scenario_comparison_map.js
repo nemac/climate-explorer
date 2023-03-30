@@ -568,7 +568,6 @@ export default class ScenarioComparisonMap {
 
 
     this.view.on("click", (event) => {
-      console.log("scenario click")
       this.view.popup.actions = [];
       this.view.popup.dockOptions.position = 'top-right';
       this.view.popup.dockEnabled = true;
@@ -1336,8 +1335,6 @@ export default class ScenarioComparisonMap {
     try {
       stats = await this._get_acis_area_stats(area_type, area_id)
 
-      console.log("pop up stats:", stats)
-
     } catch (ex) {
       this._log(ex)
       div.innerHTML = `<div><span>No data</span></div>`
@@ -1432,7 +1429,6 @@ export default class ScenarioComparisonMap {
       }
     }
 
-    console.log("data: ", variable, area_type, seasonal, [keys, values]);
     return [keys, values];
   }
 

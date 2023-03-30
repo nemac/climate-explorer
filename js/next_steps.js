@@ -351,7 +351,6 @@ $(function () {
 
     update_nar(fips);
     $(window).on('resize', ()=>debounce(()=>{
-      console.log('got here');
       update_nar(fips)
     }, 250, {leading:false, trailing: true})());
   }

@@ -133,7 +133,7 @@ data-value="Historical and Modeled">Historical & Modeled</label>
                   <div class="modal-body">
                   
                       <div> 
-                      Click 'Historical' button to zoom in on or out from the observational period. Place your cursor over the curves on this graph for details. Gray bars from 1950 to 2016 show observed annual counts of high-tide flooding. Red and blue curves show the average number of high-tide flooding events projected for future years under two scenarios. Data from <a target="_blank" href="https://tidesandcurrents.noaa.gov/publications/techrpt86_PaP_of_HTFlooding.pdf">NOAA Technical Report NOS CO-OPS 086 - Patterns and Projections of High-Tide Flooding</a>.
+                      CGray bars show observed annual counts of high-tide flooding at this location. The red and blue curves show projections for decadal averages of annual high-tide flooding events under two scenarios. Roll your cursor over the curves for detailed readouts. Click Historical to zoom to the observed values. Data from <a target="_blank" href="https://api.tidesandcurrents.noaa.gov/dpapi/prod/">NOAA CO-OPS</a>.
                       </div>
                   
                   </div>

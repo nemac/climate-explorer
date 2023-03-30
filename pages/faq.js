@@ -193,7 +193,7 @@ export default (config) => `
         <h4>What happened to the Extreme Events interface that was available during the last half of 2022 and early 2023?</h4>
         <div>
           <p>
-            This experimental feature based on station data is available at <a href="https://climate-by-station.fernleafinteractive.com/" target="_blank">here</a>.
+            This experimental feature based on station data is available <a href="https://climate-by-station.fernleafinteractive.com/" target="_blank">here</a>.
           </p>
         </div>
         
