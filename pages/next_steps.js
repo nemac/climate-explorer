@@ -70,9 +70,9 @@ ${secondary_header(config)}
       </div>
       <div class="footer">
         <div style="flex: 1">
-          Temperate guides you through assessing your vulnerability to these potential hazards.
+          Top Regional Hazards is made possible through work conducted by Element 84.
         </div>
-        <a href="https://temperate.io" target="_blank" data-value="noreferrer">Get started with Temperate</a>
+        <a href="https://www.element84.com/" target="_blank" data-value="noreferrer">Learn about Element 84</a>
       </div>
     </div>
 
