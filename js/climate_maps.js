@@ -153,6 +153,7 @@ $(function () {
         elem.classList.add('d-none');
         document.body.removeChild(a);
         $('#local-climate-map-element').spinner('destroy');
+
       }
     });
   }
@@ -169,7 +170,6 @@ $(function () {
       letterRendering: 1,
       foreignObjectRendering: true,
       onrendered: function (canvas) {
-
         const emissionsText = $('#leftScenario-select-vis').text().toLowerCase().replace(' ', '_');
         let a = document.createElement('a');
         a.href = canvas.toDataURL("image/png").replace("image/png", "image/octet-stream");

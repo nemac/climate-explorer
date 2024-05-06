@@ -455,7 +455,7 @@ export default class ScenarioComparisonMap {
       </div>
       <div class="bottom-scenario-controls">
         
-        <div class="left-scenario-controls">
+        <div class="left-scenario-controls" style="padding-top: 1.5rem;">
             <div class="leftScenario-select d-flex align-items-center w-75">
               <div class="ms-2 me-2 download-dropdown"> 
                 <div class="dropdown rounded-3 border border-1">
@@ -481,7 +481,7 @@ export default class ScenarioComparisonMap {
             </div>
         </div>
         
-        <div class="right-scenario-controls align-items-center"> 
+        <div class="right-scenario-controls align-items-center" style="padding-top: 1.5rem;"> 
           
           <div class="ms-2 me-2 download-dropdown"> 
             <div class="dropdown rounded-3 border border-1">
