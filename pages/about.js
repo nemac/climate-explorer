@@ -91,7 +91,7 @@ export default (config) => `
           the Livneh observational dataset. For the 2020s to the 2090s, we used weighted averages of all model output to calculate average projected values.
         </p>
         <p>
-          To produce maps of Percent Change in Precipitation for the contiguous United States, we first calculated observed monthly averages of Total Precipitation
+          To produce maps of Percent Change in Precipitation for the contiguous United States, we first calculated modeled monthly averages of Total Precipitation
           for the period 1961-1990 (we refer to these values as the 30-year climatology). For January, April, July, and October—the middle month of each season—we
           calculated 10-year averages of Total Precipitation for the 1950s through the 2000s, and subtracted the appropriate monthly climatology from them. We divided
           the difference by the climatology, and then multiplied the result by 100. For future decades, we used the weighted mean of the 32 models in the LOCA dataset
