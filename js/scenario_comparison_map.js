@@ -37,8 +37,8 @@ export default class ScenarioComparisonMap {
       // Additional elements
       legendContainerId: "legend-container",
       //Map reference layers
-      statesLayerURL: 'https://services.arcgis.com/P3ePLMYs2RVChkJx/arcgis/rest/services/USA_States_Generalized/FeatureServer/0',
-      countiesLayerURL: 'https://services.arcgis.com/P3ePLMYs2RVChkJx/arcgis/rest/services/USA_Counties_Generalized/FeatureServer/0',
+      statesLayerURL: 'https://services.arcgis.com/SXbDpmb7xQkk44JV/arcgis/rest/services/USA_States_Generalized/FeatureServer/0',
+      countiesLayerURL: 'https://services.arcgis.com/P3ePLMYs2RVChkJx/arcgis/rest/services/USA_Counties_Generalized_Boundaries/FeatureServer/0',
       // Controls debug output
       // 0:off, 1:errors only, 2:errors and warnings, 3:everything
       debug: 3,
@@ -762,6 +762,8 @@ export default class ScenarioComparisonMap {
 
           this._setClipPath(layerViewContainer.element, side, _this.options.swipeX);
         };
+      }).catch(e => {
+        console.log(e)
       });
     });
     return promise;
@@ -1434,7 +1436,7 @@ export default class ScenarioComparisonMap {
 
 
   _initStatesLayer() {
-    return this._createReferenceLayer(this.options.statesLayerURL, {
+    const stateLayer = this._createReferenceLayer(this.options.statesLayerURL, {
       opacity: 0.5,
       "objectIdFieldName": "FID",
       "uniqueIdField":
@@ -1906,6 +1908,8 @@ export default class ScenarioComparisonMap {
         this.map.add(this.statesLayer, 10);
       });
     });
+
+    return stateLayer;
   }
 
   _createReferenceLayer(layerURL, options) {
