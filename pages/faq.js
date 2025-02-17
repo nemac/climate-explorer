@@ -46,7 +46,7 @@ export default (config) => `
         <h4>Is there a tutorial or educational activity to help new users read and understand the tool’s maps and graphs?</h4>
         <div>
           <p>
-          Yes. See <a href="https://arcg.is/15mvy80" target="_blank">Using Climate Explorer to get a feel for Future Conditions</a> 
+          Yes. See <a href="https://storymaps.arcgis.com/stories/15421d03a5744cf2bf83c9f016eb458c" target="_blank">Getting a feel for your future climate</a>.
           </p>
         </div>
         
@@ -61,7 +61,7 @@ export default (config) => `
         
         <h4>What is the recommended citation for information in the Climate Explorer?</h4>
         <div>
-          <p>U.S. Federal Government, 2023: U.S. Climate Resilience Toolkit Climate Explorer. [Online] https://crt-climate-explorer.nemac.org/ Accessed {DATE}.</p>
+          <p>U.S. Federal Government, 2025: U.S. Climate Resilience Toolkit Climate Explorer. [Online] https://crt-climate-explorer.nemac.org/ Accessed {DATE}.</p>
         </div>
 
         <hr>
@@ -103,7 +103,7 @@ export default (config) => `
         <h4>Why do the historical observations end in 2013? Why don’t you show observations up to the previous year?</h4>
         <div>
           <p>
-            The observational dataset in the Climate Explorer was published in 2013 and updated in 2015. More recent data has been collected (for example, see the <a href="https://www.ncdc.noaa.gov/ghcn-daily-description" target="_blank">Global Historical Climatology Network - Daily</a> dataset) yet the recent data have not been gridded and processed in accordance with the Livneh protocols. Slight differences in protocols for developing and updating datasets make one-to-one comparisons between Livneh and other observational datasets difficult, though disparate observational datasets show similar trends.
+            The observational dataset in the Climate Explorer was published in 2013 and updated in 2015. More recent data has been collected (for example, see <a href="https://www.ncei.noaa.gov/access/monitoring/climate-at-a-glance/county/time-series" target="_blank">Climate at a Glance - Country Time Series</a>) yet the recent data have not been gridded and processed in accordance with the Livneh protocols. Slight differences in protocols for developing and updating datasets make one-to-one comparisons between Livneh and other observational datasets difficult, though disparate observational datasets show similar trends.
           </p>
         </div>
 
